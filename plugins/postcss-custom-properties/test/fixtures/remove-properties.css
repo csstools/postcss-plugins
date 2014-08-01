@@ -1,0 +1,13 @@
+:root {
+  --test-one: test;
+  --test-two: test;
+}
+
+div {
+  color: red;
+}
+
+:root {
+  --test-three: test;
+  --test-four: test;
+}

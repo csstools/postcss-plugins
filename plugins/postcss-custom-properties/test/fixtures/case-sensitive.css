@@ -1,0 +1,9 @@
+:root {
+  --TEST-color: red;
+  --tESt-COLOR: green;
+}
+
+div {
+  color: var(--TEST-color);
+  color: var(--tESt-COLOR);
+}

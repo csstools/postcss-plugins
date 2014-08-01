@@ -1,0 +1,5 @@
+@media screen and (min-width: 320px) {
+  :root {
+    --error: red;
+  }
+}

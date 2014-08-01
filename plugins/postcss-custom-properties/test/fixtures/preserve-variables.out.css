@@ -1,0 +1,23 @@
+:root {
+  --color-one: red;
+  --color-two: blue;
+}
+
+.atthebeginning {
+  color: red;
+  color: var(--color-one);
+  prop: after;
+}
+
+.attheend {
+  prop: before;
+  color: blue;
+  color: var(--color-two);
+}
+
+.surrounded {
+  prop: before;
+  color: green;
+  color: var(--undefined-color, green);
+  otherprop: after;
+}

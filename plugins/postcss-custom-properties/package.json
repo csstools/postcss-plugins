@@ -1,0 +1,29 @@
+{
+  "name": "postcss-custom-properties",
+  "version": "0.0.0",
+  "description": "PostCSS that polyfill CSS custom properties for cascading variable module",
+  "keywords": ["css", "postcss", "postcss-plugin", "custom-properties", "variables", "vars"],
+  "author": "MoOx",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/postcss/postcss-custom-properties.git"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "index.js"
+  ],
+  "dependencies": {
+    "balanced-match": "~0.1.0"
+  },
+  "devDependencies": {
+    "postcss": "^2.1.0",
+    "tap-colorize": "^1.2.0",
+    "tape": "^2.13.4"
+  },
+  "scripts": {
+    "test": "node test | tap-colorize"
+  }
+}

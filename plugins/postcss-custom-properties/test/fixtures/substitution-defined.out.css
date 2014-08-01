@@ -1,0 +1,22 @@
+/**
+ * Test comment
+ */
+
+:root,
+span {
+  --untouched: red;
+}
+
+div {
+  --untouched: red;
+  /* single variable */
+  color: green;
+  /* single variable with tail */
+  color: green !important;
+  /* multiple variables */
+  color: green, blue;
+  /* variable with function in fallback */
+  border: green;
+  /* multiple variables within a function */
+  background: linear-gradient(to top, green, blue);
+}

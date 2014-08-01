@@ -1,0 +1,22 @@
+:root {
+  --nested: green;
+}
+
+div {
+  /* simple fallback */
+  color: var(--missing, green);
+  /* comma-separated fallback */
+  color: var(--missing, green, blue);
+  /* fallback is a function */
+  background: var(--missing, linear-gradient(to top, #000, #111));
+  /* fallback contains a function */
+  background: var(--missing, 1px solid rgba(0, 0, 0, 0.1));
+  /* fallback is a function containing a function */
+  background: var(--missing, linear-gradient(to top, #000, rgba(0, 0, 0, 0.5)));
+  /* fallback contains a defined variable */
+  background: var(--missing, var(--nested));
+  /* fallback contains a defined variable within a function */
+  background: var(--missing, linear-gradient(to top, #000, var(--nested)));
+  /* fallback contains an undefined variable with a fallack */
+  background: var(--missing, var(--also-missing, green));
+}
