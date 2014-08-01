@@ -1,8 +1,15 @@
 {
   "name": "postcss-custom-properties",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "PostCSS that polyfill CSS custom properties for cascading variable module",
-  "keywords": ["css", "postcss", "postcss-plugin", "custom-properties", "variables", "vars"],
+  "keywords": [
+    "css",
+    "postcss",
+    "postcss-plugin",
+    "custom-properties",
+    "variables",
+    "vars"
+  ],
   "author": "MoOx",
   "license": "MIT",
   "repository": {
