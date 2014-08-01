@@ -8,7 +8,7 @@ A [PostCSS](https://github.com/postcss/postcss) plugin to polyfill the
 _[Checkout opened issue to know the state of this plugin](issues)._
 
 Why not `postcss-vars` ? Because [there is already a plugin with this name](http://github.com/iamvdo/postcss-vars) that have severals bugs & untested code.
-But I look forward to merge those 2 plugins & deprecate this one [ref](https://github.com/iamvdo/postcss-vars/issues/4).
+But I look forward to merge those 2 plugins & deprecate this one ([see opened issue](https://github.com/iamvdo/postcss-vars/issues/4)).
 
 ## Installation
 
