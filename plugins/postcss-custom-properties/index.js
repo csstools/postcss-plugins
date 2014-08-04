@@ -2,35 +2,38 @@
  * Module dependencies.
  */
 
-var balanced = require('balanced-match')
+var balanced = require("balanced-match")
 
 /**
  * Constants.
  */
 
-var VAR_PROP_IDENTIFIER = '--'
-var VAR_FUNC_IDENTIFIER = 'var'
+var VAR_PROP_IDENTIFIER = "--"
+var VAR_FUNC_IDENTIFIER = "var"
 
 /**
  * Module export.
  */
 
-module.exports = function (options) {
-
+module.exports = function(options) {
   return function(style) {
     options = options || {}
     var map = {}
     var preserve = (options.preserve === true ? true : false)
 
     // define variables
-    style.eachRule(function (rule) {
+    style.eachRule(function(rule) {
       var varNameIndices = []
-      if (rule.type !== 'rule') return
+      if (rule.type !== "rule") {
+        return
+      }
 
       // only variables declared for `:root` are supported for now
-      if (rule.selectors.length !== 1 || rule.selectors[0] !== ":root" || rule.parent.type !== "root") return
+      if (rule.selectors.length !== 1 || rule.selectors[0] !== ":root" || rule.parent.type !== "root") {
+        return
+      }
 
-      rule.each(function (decl, i) {
+      rule.each(function(decl, i) {
         var prop = decl.prop
         var value = decl.value
 
@@ -47,17 +50,21 @@ module.exports = function (options) {
         }
 
         // remove empty :root {}
-        if (rule.decls.length === 0) rule.removeSelf()
+        if (rule.decls.length === 0) {
+          rule.removeSelf()
+        }
       }
     })
 
     // resolve variables
-    style.eachDecl(function (decl, i) {
+    style.eachDecl(function(decl) {
       var resolvedValue
       var value = decl.value
 
-      // skip values that don't contain variable functions
-      if (!value || value.indexOf(VAR_FUNC_IDENTIFIER + '(') === -1) return
+      // skip values that don’t contain variable functions
+      if (!value || value.indexOf(VAR_FUNC_IDENTIFIER + "(") === -1) {
+        return
+      }
 
       resolvedValue = resolveValue(value, map)
 
@@ -89,21 +96,29 @@ module.exports = function (options) {
  */
 
 function resolveValue(value, map) {
-  // matches `name[, fallback]`, captures 'name' and 'fallback'
+  // matches `name[, fallback]`, captures "name" and "fallback"
   var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/
-  var balancedParens = balanced('(', ')', value)
-  var varStartIndex = value.indexOf('var(')
-  var varRef = balanced('(', ')', value.substring(varStartIndex)).body
+  var balancedParens = balanced("(", ")", value)
+  var varStartIndex = value.indexOf("var(")
+  var varRef = balanced("(", ")", value.substring(varStartIndex)).body
 
-  if (!balancedParens) throw new SyntaxError('postcss-custom-properties: missing closing ")" in the value "' + value + '"')
-  if (varRef === '') throw new Error('postcss-custom-properties: var() must contain a non-whitespace string')
+  if (!balancedParens) {
+    throw new SyntaxError("postcss-custom-properties: missing closing ')' in the value '" + value + "'")
+  }
+  if (varRef === "") {
+    throw new Error("postcss-custom-properties: var() must contain a non-whitespace string")
+  }
 
-  var varFunc = VAR_FUNC_IDENTIFIER + '(' + varRef + ')'
+  var varFunc = VAR_FUNC_IDENTIFIER + "(" + varRef + ")"
 
-  var varResult = varRef.replace(RE_VAR, function (_, name, fallback) {
+  var varResult = varRef.replace(RE_VAR, function(_, name, fallback) {
     var replacement = map[name]
-    if (!replacement && !fallback) throw new Error('postcss-custom-properties: variable "' + name + '" is undefined')
-    if (!replacement && fallback) return fallback
+    if (!replacement && !fallback) {
+      throw new Error("postcss-custom-properties: variable '" + name + "' is undefined")
+    }
+    if (!replacement && fallback) {
+      return fallback
+    }
     return replacement
   })
 
