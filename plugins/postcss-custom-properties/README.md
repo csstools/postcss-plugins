@@ -28,7 +28,10 @@ var customProperties = require('postcss-custom-properties')
 var css = fs.readFileSync('build/build.css', 'utf8')
 
 // process css using postcss-custom-properties
-var out = postcss(customProperties()).process(css).css
+var out = postcss()
+  .use(customProperties())
+  .process(css)
+  .css
 ```
 
 ### Options
@@ -38,7 +41,11 @@ var out = postcss(customProperties()).process(css).css
 Allow you to preserve custom properties & var() usage in output.
 
 ```js
-var out = postcss(customProperties({preserve: true})).process(css).css
+var out = postcss()
+  .use(customProperties({preserve: true}))
+  .process(css)
+  .css
+```
 
 ---
 
