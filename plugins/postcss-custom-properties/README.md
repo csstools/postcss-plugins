@@ -39,6 +39,18 @@ Allow you to preserve custom properties & var() usage in output.
 
 ```js
 var out = postcss(customProperties({preserve: true})).process(css).css
+
+---
+
+## Contributing
+
+Work on a branch, install dev-dependencies, respect coding style & run tests before submitting a bug fix or a feature.
+
+```bash
+git clone https://github.com/postcss/postcss-custom-properties.git
+git checkout -b patch-1
+npm install
+npm test
 ```
 
 ## [Changelog](CHANGELOG.md)
