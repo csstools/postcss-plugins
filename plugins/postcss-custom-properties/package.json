@@ -1,7 +1,7 @@
 {
   "name": "postcss-custom-properties",
   "version": "0.1.0",
-  "description": "PostCSS that polyfills CSS custom properties for cascading variable module",
+  "description": "PostCSS plugin to polyfill W3C CSS Custom Properties for cascading variables",
   "keywords": [
     "css",
     "postcss",
