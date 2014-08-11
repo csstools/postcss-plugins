@@ -46,6 +46,10 @@ var out = postcss()
   .css
 ```
 
+#### `map` (default: `{}`)
+
+Allow you to pass an object of variables
+
 ---
 
 ## Contributing

@@ -19,27 +19,19 @@ function compareFixtures(t, name, options) {
   return t.equal(actual, expected, "processed fixture '" + name + "' should be equal to expected output")
 }
 
-test("throws an error when a variable function is empty", function(t) {
-  var output = function() {
+test("throw errors", function(t) {
+  t.throws(function() {
     return postcss(customProperties()).process(fixture("substitution-empty")).css
-  }
-  t.throws(output, Error, "postcss-custom-properties: var() must contain a non-whitespace string")
-  t.end()
-})
+  }, Error, "postcss-custom-properties: var() must contain a non-whitespace string", "throws an error when a variable function is empty")
 
-test("throws an error when a variable function is malformed", function(t) {
-  var output = function() {
+  t.throws(function() {
     return postcss(customProperties()).process(fixture("substitution-malformed")).css
-  }
-  t.throws(output, SyntaxError, "postcss-custom-properties: missing closing \")\" in the value \"var(--t, rgba(0,0,0,0.5)\"")
-  t.end()
-})
+  }, SyntaxError, "postcss-custom-properties: missing closing \")\" in the value \"var(--t, rgba(0,0,0,0.5)\"", "throws an error when a variable function is malformed")
 
-test("throws an error when a variable function references an undefined variable", function(t) {
-  var output = function() {
+  t.throws(function() {
     return postcss(customProperties()).process(fixture("substitution-undefined")).css
-  }
-  t.throws(output, Error, "postcss-custom-properties: variable \"--t\" is undefined")
+  }, Error, "postcss-custom-properties: variable \"--t\" is undefined", "throws an error when a variable function references an undefined variable")
+
   t.end()
 })
 

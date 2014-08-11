@@ -18,7 +18,7 @@ var VAR_FUNC_IDENTIFIER = "var"
 module.exports = function(options) {
   return function(style) {
     options = options || {}
-    var map = {}
+    var map = options.map || {}
     var preserve = (options.preserve === true ? true : false)
 
     // define variables
