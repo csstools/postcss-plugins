@@ -11,27 +11,47 @@ But I look forward to merge those 2 plugins & deprecate this one ([see opened is
 
 ## Installation
 
-```
-npm install postcss-custom-properties
-```
+    $ npm install postcss-custom-properties
 
 ## Usage
 
 ```js
 // dependencies
-var fs = require('fs')
-var postcss = require('postcss')
-var customProperties = require('postcss-custom-properties')
+var fs = require("fs")
+var postcss = require("postcss")
+var customProperties = require("postcss-custom-properties")
 
 // css to be processed
-var css = fs.readFileSync('build/build.css', 'utf8')
+var css = fs.readFileSync("input.css", "utf8")
 
 // process css using postcss-custom-properties
-var out = postcss()
+var output = postcss()
   .use(customProperties())
   .process(css)
   .css
 ```
+
+Using this `input.css`:
+
+```css
+:root {
+  --color: red;
+}
+
+div {
+  color: var(--color);
+}
+```
+
+you will get:
+
+```css
+div {
+  color: red;
+}
+```
+
+Checkout [tests](test) for more.
 
 ### Options
 
@@ -56,12 +76,10 @@ Allow you to pass an object of variables
 
 Work on a branch, install dev-dependencies, respect coding style & run tests before submitting a bug fix or a feature.
 
-```bash
-git clone https://github.com/postcss/postcss-custom-properties.git
-git checkout -b patch-1
-npm install
-npm test
-```
+    $ git clone https://github.com/postcss/postcss-custom-properties.git
+    $ git checkout -b patch-1
+    $ npm install
+    $ npm test
 
 ## [Changelog](CHANGELOG.md)
 
