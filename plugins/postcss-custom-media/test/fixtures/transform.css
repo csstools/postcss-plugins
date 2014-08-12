@@ -1,0 +1,12 @@
+@custom-media --viewport-max-s (max-width: 30em);
+@custom-media --viewport-min-s (min-width: 30.01em);
+
+body { color: #000  }
+
+@media (--viewport-max-s) {
+  body { font-size: 1rem; }
+}
+
+@media (--viewport-min-s) {
+  body { font-size: 1.2rem; }
+}

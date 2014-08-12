@@ -1,0 +1,5 @@
+body { color: #000  }
+
+@media (--undefined-custom-media) {
+  body { font-size: 1rem; }
+}

@@ -1,0 +1,11 @@
+
+
+body { color: #000  }
+
+@media (max-width: 30em) {
+  body { font-size: 1rem; }
+}
+
+@media (min-width: 30.01em) {
+  body { font-size: 1.2rem; }
+}

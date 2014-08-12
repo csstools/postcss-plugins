@@ -1,0 +1,62 @@
+/**
+* Constants.
+*/
+var EXTENSION_RE = /\((--[\w-]+)\)/
+
+/**
+ * Expose the plugin.
+ */
+module.exports = customMedia
+
+/**
+ * read & replace custom media queries by standard media queries
+ */
+function customMedia() {
+  return function(styles) {
+    var map = {}
+    var toRemove = []
+
+    // read custom media queries
+    styles.eachAtRule(function(rule) {
+      if (rule.name !== "custom-media") {
+        return
+      }
+
+      var params = rule.params.split(" ")
+      // @custom-media <extension-name> <media-query-list>;
+      // map[<extension-name>] = <media-query-list>
+      map[params.shift()] = params.join(" ")
+
+      toRemove.push(rule)
+    })
+
+    // transform custom media query aliases
+    styles.eachAtRule(function(rule) {
+      if (rule.name !== "media") {
+        return
+      }
+
+      rule.params = rule.params.replace(EXTENSION_RE, function(_, name) {
+        if (map[name]) {
+          return map[name]
+        }
+
+        console.warn(gnuMessage("missing @custom-media definition for '" + name + "'. The entire rule has been removed from the output.", rule.source))
+        toRemove.push(rule)
+      })
+    })
+
+    // remove @custom-media
+    toRemove.forEach(function(rule) { rule.removeSelf() })
+  }
+}
+
+/**
+ * return GNU style message
+ *
+ * @param {String} message
+ * @param {Object} source
+ */
+function gnuMessage(message, source) {
+  return (source ? (source.file ? source.file : "<css input>") + ":" + source.start.line + ":" + source.start.column : "") + " " + message
+}
