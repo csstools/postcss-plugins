@@ -66,7 +66,7 @@ module.exports = function(options) {
         return
       }
 
-      resolvedValue = resolveValue(value, map)
+      resolvedValue = resolveValue(value, map, decl.source)
 
       if (!preserve) {
         decl.value = resolvedValue
@@ -92,21 +92,23 @@ module.exports = function(options) {
  *
  * @param {String} value A property value known to contain CSS variable functions
  * @param {Object} map A map of variable names and values
+ * @param {Object} source source object of the declaration containing the rule
  * @return {String} A property value with all CSS variables substituted.
  */
 
-function resolveValue(value, map) {
+function resolveValue(value, map, source) {
   // matches `name[, fallback]`, captures "name" and "fallback"
   var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/
   var balancedParens = balanced("(", ")", value)
   var varStartIndex = value.indexOf("var(")
-  var varRef = balanced("(", ")", value.substring(varStartIndex)).body
 
   if (!balancedParens) {
-    throw new SyntaxError("postcss-custom-properties: missing closing ')' in the value '" + value + "'")
+    throw new SyntaxError(gnuMessage("missing closing ')' in the value '" + value + "'", source))
   }
+
+  var varRef = balanced("(", ")", value.substring(varStartIndex)).body
   if (varRef === "") {
-    throw new Error("postcss-custom-properties: var() must contain a non-whitespace string")
+    throw new Error(gnuMessage("var() must contain a non-whitespace string", source))
   }
 
   var varFunc = VAR_FUNC_IDENTIFIER + "(" + varRef + ")"
@@ -114,7 +116,7 @@ function resolveValue(value, map) {
   var varResult = varRef.replace(RE_VAR, function(_, name, fallback) {
     var replacement = map[name]
     if (!replacement && !fallback) {
-      throw new Error("postcss-custom-properties: variable '" + name + "' is undefined")
+      throw new Error(gnuMessage("variable '" + name + "' is undefined", source))
     }
     if (!replacement && fallback) {
       return fallback
@@ -131,4 +133,14 @@ function resolveValue(value, map) {
   }
 
   return value
+}
+
+/**
+ * return GNU style message
+ *
+ * @param {String} message
+ * @param {Object} source
+ */
+function gnuMessage(message, source) {
+  return (source ? (source.file ? source.file : "<css input>") + ":" + source.start.line + ":" + source.start.column : "") + " " + message
 }

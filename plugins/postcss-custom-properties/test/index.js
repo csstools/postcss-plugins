@@ -22,15 +22,15 @@ function compareFixtures(t, name, options) {
 test("throw errors", function(t) {
   t.throws(function() {
     return postcss(customProperties()).process(fixture("substitution-empty")).css
-  }, Error, "postcss-custom-properties: var() must contain a non-whitespace string", "throws an error when a variable function is empty")
+  }, /must contain a non-whitespace string/, "throws an error when a variable function is empty")
 
   t.throws(function() {
     return postcss(customProperties()).process(fixture("substitution-malformed")).css
-  }, SyntaxError, "postcss-custom-properties: missing closing \")\" in the value \"var(--t, rgba(0,0,0,0.5)\"", "throws an error when a variable function is malformed")
+  }, /missing closing/, "throws an error when a variable function is malformed")
 
   t.throws(function() {
     return postcss(customProperties()).process(fixture("substitution-undefined")).css
-  }, Error, "postcss-custom-properties: variable \"--t\" is undefined", "throws an error when a variable function references an undefined variable")
+  }, /is undefined/, "throws an error when a variable function references an undefined variable")
 
   t.end()
 })
