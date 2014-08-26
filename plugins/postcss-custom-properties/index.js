@@ -10,6 +10,7 @@ var balanced = require("balanced-match")
 
 var VAR_PROP_IDENTIFIER = "--"
 var VAR_FUNC_IDENTIFIER = "var"
+var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/ // matches `name[, fallback]`, captures "name" and "fallback"
 
 /**
  * Module export.
@@ -18,7 +19,7 @@ var VAR_FUNC_IDENTIFIER = "var"
 module.exports = function(options) {
   return function(style) {
     options = options || {}
-    var map = options.map || {}
+    var variables = options.variables || {}
     var preserve = (options.preserve === true ? true : false)
 
     // define variables
@@ -38,7 +39,7 @@ module.exports = function(options) {
         var value = decl.value
 
         if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
-          map[prop] = value
+          variables[prop] = value
           varNameIndices.push(i)
         }
       })
@@ -58,7 +59,6 @@ module.exports = function(options) {
 
     // resolve variables
     style.eachDecl(function(decl) {
-      var resolvedValue
       var value = decl.value
 
       // skip values that don’t contain variable functions
@@ -66,16 +66,14 @@ module.exports = function(options) {
         return
       }
 
-      resolvedValue = resolveValue(value, map, decl.source)
+      resolveValue(value, variables, decl.source).forEach(function(resolvedValue) {
+        var clone = decl.clone()
+        clone.value = resolvedValue
+        decl.parent.insertBefore(decl, clone)
+      })
 
       if (!preserve) {
-        decl.value = resolvedValue
-      }
-      else {
-        decl.parent.insertBefore(decl, {
-          prop: decl.prop,
-          value: resolvedValue
-        })
+        decl.removeSelf()
       }
     })
   }
@@ -91,48 +89,53 @@ module.exports = function(options) {
  * var(name[, fallback])
  *
  * @param {String} value A property value known to contain CSS variable functions
- * @param {Object} map A map of variable names and values
+ * @param {Object} variables A map of variable names and values
  * @param {Object} source source object of the declaration containing the rule
  * @return {String} A property value with all CSS variables substituted.
  */
 
-function resolveValue(value, map, source) {
-  // matches `name[, fallback]`, captures "name" and "fallback"
-  var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/
-  var balancedParens = balanced("(", ")", value)
-  var varStartIndex = value.indexOf("var(")
+function resolveValue(value, variables, source) {
+  var results = []
 
-  if (!balancedParens) {
+  var start = value.indexOf("var(")
+  if (start === -1) {
+    return [value]
+  }
+
+  var matches = balanced("(", ")", value.substring(start))
+
+  if (!matches) {
     throw new SyntaxError(gnuMessage("missing closing ')' in the value '" + value + "'", source))
   }
 
-  var varRef = balanced("(", ")", value.substring(varStartIndex)).body
-  if (varRef === "") {
+  if (matches.body === "") {
     throw new Error(gnuMessage("var() must contain a non-whitespace string", source))
   }
 
-  var varFunc = VAR_FUNC_IDENTIFIER + "(" + varRef + ")"
-
-  var varResult = varRef.replace(RE_VAR, function(_, name, fallback) {
-    var replacement = map[name]
+  matches.body.replace(RE_VAR, function(_, name, fallback) {
+    var replacement = variables[name]
     if (!replacement && !fallback) {
-      throw new Error(gnuMessage("variable '" + name + "' is undefined", source))
+      throw new Error(gnuMessage("variable '" + name + "' is undefined & don't have any fallback", source))
     }
-    if (!replacement && fallback) {
-      return fallback
+    if (fallback) {
+      // resolve the end of the expression before the rest
+      (matches.post ? resolveValue(matches.post, variables, source) : [""]).forEach(function(afterValue) {
+        // resolve fallback values
+        resolveValue(fallback, variables, source).forEach(function(fbValue) {
+          results.push(value.slice(0, start) + fbValue + afterValue)
+        })
+      })
     }
-    return replacement
+
+    if (replacement) {
+      // resolve the end of the expression
+      (matches.post ? resolveValue(matches.post, variables, source) : [""]).forEach(function(afterValue) {
+        results.push(value.slice(0, start) + replacement + afterValue)
+      })
+    }
   })
 
-  // resolve the variable
-  value = value.split(varFunc).join(varResult)
-
-  // recursively resolve any remaining variables in the value
-  if (value.indexOf(VAR_FUNC_IDENTIFIER) !== -1) {
-    value = resolveValue(value, map)
-  }
-
-  return value
+  return results
 }
 
 /**

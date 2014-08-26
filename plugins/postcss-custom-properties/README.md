@@ -66,7 +66,7 @@ var out = postcss()
   .css
 ```
 
-#### `map` (default: `{}`)
+#### `variables` (default: `{}`)
 
 Allow you to pass an object of variables
 

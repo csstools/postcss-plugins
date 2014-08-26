@@ -15,4 +15,7 @@ div {
   background: linear-gradient(to top, #000, green);
   /* fallback contains an undefined variable with a fallack */
   background: green;
+  /* fallback for invalid variables http://www.w3.org/TR/css-variables/#invalid-variables */
+  font-size: 1rem;
+  font-size: green;
 }

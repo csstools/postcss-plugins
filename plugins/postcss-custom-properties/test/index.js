@@ -5,15 +5,19 @@ var test = require("tape")
 var postcss = require("postcss")
 var customProperties = require("..")
 
+function fixturePath(name) {
+  return "test/fixtures/" + name + ".css"
+}
+
 function fixture(name) {
-  return fs.readFileSync("test/fixtures/" + name + ".css", "utf8").trim()
+  return fs.readFileSync(fixturePath(name), "utf8").trim()
 }
 
 function compareFixtures(t, name, options) {
-  var actual = postcss(customProperties(options)).process(fixture(name)).css.trim()
+  var actual = postcss(customProperties(options)).process(fixture(name), {from: fixturePath(name)}).css.trim()
 
   // handy thing: checkout actual in the *.actual.css file
-  fs.writeFile("test/fixtures/" + name + ".actual.css", actual)
+  fs.writeFile(fixturePath(name + ".actual"), actual)
 
   var expected = fixture(name + ".out")
   return t.equal(actual, expected, "processed fixture '" + name + "' should be equal to expected output")

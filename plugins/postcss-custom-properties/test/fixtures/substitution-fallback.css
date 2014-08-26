@@ -19,4 +19,6 @@ div {
   background: var(--missing, linear-gradient(to top, #000, var(--nested)));
   /* fallback contains an undefined variable with a fallack */
   background: var(--missing, var(--also-missing, green));
+  /* fallback for invalid variables http://www.w3.org/TR/css-variables/#invalid-variables */
+  font-size: var(--nested, 1rem);
 }
