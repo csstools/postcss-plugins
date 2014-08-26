@@ -4,10 +4,7 @@
 
 **N.B.** For now the transformation _is not complete_. It currently just aims to provide a future-proof way of using a _limited subset_ of the features provided by native CSS variables.  
 
-_[Checkout opened issue to know the state of this plugin](issues)._
-
-Why not `postcss-vars` ? Because [there is already a plugin with this name](http://github.com/iamvdo/postcss-vars) that have severals bugs & untested code.
-But I look forward to merge those 2 plugins & deprecate this one ([see opened issue](https://github.com/iamvdo/postcss-vars/issues/4)).
+_[Checkout opened issue to know the state of this plugin](https://github.com/postcss/postcss-custom-properties/issues)._
 
 ## Installation
 
