@@ -32,10 +32,11 @@ test("throw errors", function(t) {
     return postcss(customProperties()).process(fixture("substitution-malformed")).css
   }, /missing closing/, "throws an error when a variable function is malformed")
 
-  t.throws(function() {
-    return postcss(customProperties()).process(fixture("substitution-undefined")).css
-  }, /is undefined/, "throws an error when a variable function references an undefined variable")
+  t.end()
+})
 
+test("substitutes nothing when a variable function references an undefined variable", function(t) {
+  compareFixtures(t, "substitution-undefined")
   t.end()
 })
 

@@ -3,5 +3,5 @@ div {
 }
 
 div {
-  color: var(--test, fallback);
+  color: fallback;
 }

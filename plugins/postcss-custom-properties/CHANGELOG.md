@@ -1,6 +1,7 @@
 # 0.3.1 - 2014-08-26
 
 * nested custom properties usages are now correctly resolved
+* undefined var doesn't throw error anymore (just a console warning) & are kept as is in the output
 
 # 0.3.0 - 2014-08-25
 
