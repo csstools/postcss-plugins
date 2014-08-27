@@ -6,6 +6,8 @@
 
 _[Checkout opened issue to know the state of this plugin](https://github.com/postcss/postcss-custom-properties/issues)._
 
+Works great with [postcss-calc](https://github.com/postcss/postcss-calc).
+
 ## Installation
 
     $ npm install postcss-custom-properties
