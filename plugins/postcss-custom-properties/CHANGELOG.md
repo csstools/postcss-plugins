@@ -1,3 +1,7 @@
+# 0.3.1 - 2014-08-26
+
+* nested custom properties usages are now correctly resolved
+
 # 0.3.0 - 2014-08-25
 
 * fallback now are always added by default ([see why](http://www.w3.org/TR/css-variables/#invalid-variables))

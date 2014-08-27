@@ -117,6 +117,8 @@ function resolveValue(value, variables, source) {
     if (!replacement && !fallback) {
       throw new Error(gnuMessage("variable '" + name + "' is undefined & don't have any fallback", source))
     }
+
+    // prepend with fallbacks
     if (fallback) {
       // resolve the end of the expression before the rest
       (matches.post ? resolveValue(matches.post, variables, source) : [""]).forEach(function(afterValue) {
@@ -127,10 +129,22 @@ function resolveValue(value, variables, source) {
       })
     }
 
+    // replace with computed custom properties
     if (replacement) {
       // resolve the end of the expression
       (matches.post ? resolveValue(matches.post, variables, source) : [""]).forEach(function(afterValue) {
-        results.push(value.slice(0, start) + replacement + afterValue)
+        // resolve replacement if it use a custom property
+        resolveValue(replacement, variables, source).forEach(function(replacementValue) {
+          results.push(value.slice(0, start) + replacementValue + afterValue)
+        })
+      })
+    }
+
+    // nothing, just keep original value
+    if (!replacement && !fallback) {
+      // resolve the end of the expression
+      (matches.post ? resolveValue(matches.post, variables, source) : [""]).forEach(function(afterValue) {
+        results.push(value.slice(0, start) + value + afterValue)
       })
     }
   })

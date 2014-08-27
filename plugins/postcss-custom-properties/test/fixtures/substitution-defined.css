@@ -3,7 +3,9 @@
  */
 
 :root {
-  --test-one: green;
+  --test: green;
+  --test-one: var(--test);
+
   --test-two: blue;
   --test-three: yellow;
 }
@@ -15,14 +17,19 @@ span {
 
 div {
   --untouched: red;
+
   /* single variable */
   color: var(--test-one);
+
   /* single variable with tail */
   color: var(--test-one) !important;
+
   /* multiple variables */
   color: var(--test-one), var(--test-two);
+
   /* variable with function in fallback */
   border: var(--test-one, 1px solid rgba(0, 0, 0, 0.1));
+
   /* multiple variables within a function */
   background: linear-gradient(to top, var(--test-one), var(--test-two));
 }

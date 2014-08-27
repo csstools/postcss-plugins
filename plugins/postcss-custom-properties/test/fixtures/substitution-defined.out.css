@@ -9,15 +9,20 @@ span {
 
 div {
   --untouched: red;
+
   /* single variable */
   color: green;
+
   /* single variable with tail */
   color: green !important;
+
   /* multiple variables */
   color: green, blue;
+
   /* variable with function in fallback */
   border: 1px solid rgba(0, 0, 0, 0.1);
   border: green;
+
   /* multiple variables within a function */
   background: linear-gradient(to top, green, blue);
 }

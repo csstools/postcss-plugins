@@ -1,21 +1,33 @@
 div {
   /* simple fallback */
   color: green;
+
   /* comma-separated fallback */
   color: green, blue;
+
   /* fallback is a function */
   background: linear-gradient(to top, #000, #111);
+
   /* fallback contains a function */
   background: 1px solid rgba(0, 0, 0, 0.1);
+
   /* fallback is a function containing a function */
   background: linear-gradient(to top, #000, rgba(0, 0, 0, 0.5));
+
   /* fallback contains a defined variable */
   background: green;
+
   /* fallback contains a defined variable within a function */
   background: linear-gradient(to top, #000, green);
+
   /* fallback contains an undefined variable with a fallack */
   background: green;
+
   /* fallback for invalid variables http://www.w3.org/TR/css-variables/#invalid-variables */
+  font-size: 1rem;
+  font-size: green;
+
+  /* fallback contains an defined variable with a fallack */
   font-size: 1rem;
   font-size: green;
 }
