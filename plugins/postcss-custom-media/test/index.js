@@ -19,7 +19,7 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
 }
 
 test("@custom-media", function(t) {
-  compareFixtures(t, "transform", "should transform custom med")
+  compareFixtures(t, "transform", "should transform custom media")
 
   compareFixtures(t, "undefined", "should remove undefined @media")
 

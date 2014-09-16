@@ -10,3 +10,15 @@ body { color: #000  }
 @media (--viewport-min-s) {
   body { font-size: 1.2rem; }
 }
+
+@media (--viewport-min-s ) {
+
+}
+
+@media ( --viewport-min-s ) {
+
+}
+
+@media ( --viewport-min-s) {
+
+}
