@@ -23,5 +23,12 @@ test("@custom-media", function(t) {
 
   compareFixtures(t, "undefined", "should remove undefined @media")
 
+  compareFixtures(t, "js-defined", "should transform custom media and override local extensions", {
+    extensions: {
+      "--viewport-max-s": "(max-width: 30em)",
+      "--viewport-min-s": "(min-width: 30.01em)"
+    }
+  })
+
   t.end()
 })

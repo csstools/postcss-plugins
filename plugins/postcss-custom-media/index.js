@@ -11,8 +11,10 @@ module.exports = customMedia
 /**
  * read & replace custom media queries by standard media queries
  */
-function customMedia() {
+function customMedia(options) {
   return function(styles) {
+    options = options || {}
+    var extensions = options.extensions || {}
     var map = {}
     var toRemove = []
 
@@ -28,6 +30,11 @@ function customMedia() {
       map[params.shift()] = params.join(" ")
 
       toRemove.push(rule)
+    })
+
+    // apply js-defined media queries
+    Object.keys(extensions).forEach(function(extension) {
+      map[extension] = extensions[extension]
     })
 
     // transform custom media query aliases

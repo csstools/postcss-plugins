@@ -43,6 +43,12 @@ you will get:
 
 Checkout [tests](test) for more examples.
 
+### Options
+
+#### `extensions` (default: `{}`)
+
+Allows you to pass an object to define the `<media-query-list>` for each `<extension-name>`. These definitions will override any that exist in the CSS.
+
 ---
 
 ## Contributing
