@@ -45,6 +45,17 @@ test("substitutes defined variables in `:root` only", function(t) {
   t.end()
 })
 
+test("accepts variables defined from JavaScript, and overrides local definitions", function(t) {
+  compareFixtures(t, "js-defined", {
+    variables: {
+      "--test-one": "js-one",
+      "--test-two": "js-two",
+      "--test-three": "js-three"
+    }
+  })
+  t.end()
+})
+
 test("removes variable properties from the output", function(t) {
   compareFixtures(t, "remove-properties")
   t.end()

@@ -1,0 +1,10 @@
+:root {
+  --test-one: local;
+  --test-two: local;
+}
+
+div {
+  color: var(--test-one);
+  color: var(--test-two);
+  color: var(--test-three);
+}

@@ -21,10 +21,11 @@ module.exports = function(options) {
     options = options || {}
     var variables = options.variables || {}
     var preserve = (options.preserve === true ? true : false)
+    var map = {}
 
     // define variables
     style.eachRule(function(rule) {
-      var varNameIndices = []
+      var toRemove = []
       if (rule.type !== "rule") {
         return
       }
@@ -39,15 +40,15 @@ module.exports = function(options) {
         var value = decl.value
 
         if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
-          variables[prop] = value
-          varNameIndices.push(i)
+          map[prop] = value
+          toRemove.push(i)
         }
       })
 
       // optionally remove `--*` properties from the rule
       if (!preserve) {
-        for (var i = varNameIndices.length - 1; i >= 0; i--) {
-          rule.decls.splice(varNameIndices[i], 1)
+        for (var i = toRemove.length - 1; i >= 0; i--) {
+          rule.decls.splice(toRemove[i], 1)
         }
 
         // remove empty :root {}
@@ -55,6 +56,11 @@ module.exports = function(options) {
           rule.removeSelf()
         }
       }
+    })
+
+    // apply js-defined custom properties
+    Object.keys(variables).forEach(function(variable) {
+      map[variable] = variables[variable]
     })
 
     // resolve variables
@@ -66,7 +72,7 @@ module.exports = function(options) {
         return
       }
 
-      resolveValue(value, variables, decl.source).forEach(function(resolvedValue) {
+      resolveValue(value, map, decl.source).forEach(function(resolvedValue) {
         var clone = decl.clone()
         clone.value = resolvedValue
         decl.parent.insertBefore(decl, clone)
