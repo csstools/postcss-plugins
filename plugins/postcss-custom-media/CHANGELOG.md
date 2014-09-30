@@ -1,3 +1,7 @@
+# 1.1.0 - 2014-09-30
+
+- add support for js-defined media queries (fix [#3](https://github.com/postcss/postcss-custom-media/issues/3))
+
 # 1.0.1 - 2014-09-16
 
 - allow whitespace around custom media name (fix [#2](https://github.com/postcss/postcss-custom-media/issues/2))
