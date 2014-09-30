@@ -1,3 +1,7 @@
+# 0.4.0 - 2014-09-30
+
+* JS-defined properties override CSS-defined
+
 # 0.3.1 - 2014-08-27
 
 * nested custom properties usages are now correctly resolved

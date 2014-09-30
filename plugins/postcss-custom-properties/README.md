@@ -67,7 +67,7 @@ var out = postcss()
 
 #### `variables` (default: `{}`)
 
-Allow you to pass an object of variables
+Allow you to pass an object of variables for `:root`. These definitions will override any that exist in the CSS.
 
 ---
 
