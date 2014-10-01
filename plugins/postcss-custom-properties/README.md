@@ -2,9 +2,7 @@
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS Custom Properties for cascading variables](http://www.w3.org/TR/css-variables/) syntax to more compatible CSS.
 
-**N.B.** For now the transformation _is not complete_. It currently just aims to provide a future-proof way of using a _limited subset (to `:root` selector)_ of the features provided by native CSS custom properties.  
-
-_[Checkout opened issue to know the state of this plugin](https://github.com/postcss/postcss-custom-properties/issues)._
+**N.B.** The transformation _is not complete_. It currently just aims to provide a future-proof way of using a **limited subset (to `:root` selector)** of the features provided by native CSS custom properties. Read [#1](https://github.com/postcss/postcss-custom-properties/issues/1) & [#9](https://github.com/postcss/postcss-custom-properties/issues/9) to know why this limitation exists.
 
 Works great with [postcss-calc](https://github.com/postcss/postcss-calc).
 
