@@ -21,6 +21,8 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
 test("@custom-media", function(t) {
   compareFixtures(t, "transform", "should transform custom media")
 
+  compareFixtures(t, "transform-all", "should replaces all extension names")
+
   compareFixtures(t, "undefined", "should remove undefined @media")
 
   compareFixtures(t, "js-defined", "should transform custom media and override local extensions", {

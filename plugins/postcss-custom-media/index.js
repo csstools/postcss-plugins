@@ -1,7 +1,7 @@
 /**
  * Constants.
  */
-var EXTENSION_RE = /\(\s*(--[\w-]+)\s*\)/
+var EXTENSION_RE = /\(\s*(--[\w-]+)\s*\)/g
 
 /**
  * Expose the plugin.

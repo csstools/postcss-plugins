@@ -1,0 +1,8 @@
+@custom-media --a (foo: bar);
+@custom-media --b (bar: baz);
+
+@media (--a), (--b) {
+  selector {
+    property: value;
+  }
+}
