@@ -19,7 +19,7 @@ function compareFixtures(t, name, options) {
   // handy thing: checkout actual in the *.actual.css file
   fs.writeFile(fixturePath(name + ".actual"), actual)
 
-  var expected = fixture(name + ".out")
+  var expected = fixture(name + ".expected")
   return t.equal(actual, expected, "processed fixture '" + name + "' should be equal to expected output")
 }
 
