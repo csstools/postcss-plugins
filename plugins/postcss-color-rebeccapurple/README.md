@@ -2,6 +2,8 @@
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS `rebeccapurple` color](http://dev.w3.org/csswg/css-color/#valuedef-color-rebeccapurple) to more compatible CSS (rgb()).
 
+_[Why this plugin ?](http://meyerweb.com/eric/thoughts/2014/06/19/rebeccapurple/)_
+
 ## Installation
 
 ```bash
