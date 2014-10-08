@@ -2,7 +2,10 @@
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS `rebeccapurple` color](http://dev.w3.org/csswg/css-color/#valuedef-color-rebeccapurple) to more compatible CSS (rgb()).
 
-_[Why this plugin ?](http://meyerweb.com/eric/thoughts/2014/06/19/rebeccapurple/)_
+## Why this plugin ?
+
+If you did some CSS, I'm sure you know who [Eric Meyer](https://en.wikipedia.org/wiki/Eric_A._Meyer) is, & what he did for this language.  
+In memory of [Eric Meyer’s daughter](http://meyerweb.com/eric/thoughts/2014/06/09/in-memoriam-2/), [W3C added new color rebeccapurple to CSS 4 Color Module](http://lists.w3.org/Archives/Public/www-style/2014Jun/0312.html).
 
 ## Installation
 
