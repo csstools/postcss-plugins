@@ -121,7 +121,7 @@ function resolveValue(value, variables, source) {
   matches.body.replace(RE_VAR, function(_, name, fallback) {
     var replacement = variables[name]
     if (!replacement && !fallback) {
-      console.warn(gnuMessage("variable '" + name + "' is undefined & don't have any fallback", source))
+      console.warn(gnuMessage("variable '" + name + "' is undefined and used without a fallback", source))
     }
 
     // prepend with fallbacks
