@@ -32,6 +32,7 @@ module.exports = function(options) {
 
       // only variables declared for `:root` are supported for now
       if (rule.selectors.length !== 1 || rule.selectors[0] !== ":root" || rule.parent.type !== "root") {
+        console.warn(gnuMessage("Non :root only custom properties in non root level are not supported (" +  rule.selectors + ")"))
         return
       }
 
@@ -165,5 +166,5 @@ function resolveValue(value, variables, source) {
  * @param {Object} source
  */
 function gnuMessage(message, source) {
-  return (source ? (source.file ? source.file : "<css input>") + ":" + source.start.line + ":" + source.start.column : "") + " " + message
+  return (source ? (source.file ? source.file : "<css input>") + ":" + source.start.line + ":" + source.start.column + " " : "") + message
 }

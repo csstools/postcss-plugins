@@ -1,21 +1,25 @@
+# unreleased
+
+- Add warning when a custom prop is used in another place that :root
+
 # 0.4.0 - 2014-09-30
 
-* JS-defined properties override CSS-defined
+- JS-defined properties override CSS-defined
 
 # 0.3.1 - 2014-08-27
 
-* nested custom properties usages are now correctly resolved
-* undefined var doesn't throw error anymore (just a console warning) & are kept as is in the output
+- Nested custom properties usages are now correctly resolved
+- Undefined var doesn't throw error anymore (just a console warning) & are kept as is in the output
 
 # 0.3.0 - 2014-08-26
 
-* fallback now are always added by default ([see why](http://www.w3.org/TR/css-variables/#invalid-variables))
-* `map` option renamed to `variables`
+- Fallback now are always added by default ([see why](http://www.w3.org/TR/css-variables/#invalid-variables))
+- `map` option renamed to `variables`
 
 # 0.2.0 - 2014-08-22
 
-* Add `map` option
-* GNU style error message
+- Add `map` option
+- GNU style error message
 
 # 0.1.0 - 2014-08-01
 
