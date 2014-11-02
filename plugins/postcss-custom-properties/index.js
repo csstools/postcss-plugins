@@ -22,6 +22,7 @@ module.exports = function(options) {
     var variables = options.variables || {}
     var preserve = (options.preserve === true ? true : false)
     var map = {}
+    var importantMap = {}
 
     // define variables
     style.eachRule(function(rule) {
@@ -38,10 +39,11 @@ module.exports = function(options) {
 
       rule.each(function(decl, i) {
         var prop = decl.prop
-        var value = decl.value
-
         if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
-          map[prop] = value
+          if (!map[prop] || !importantMap[prop] || decl.important) {
+            map[prop] = decl.value
+            importantMap[prop] = decl.important
+          }
           toRemove.push(i)
         }
       })

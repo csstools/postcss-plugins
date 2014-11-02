@@ -1,6 +1,7 @@
-# unreleased
+# 1.0.0 - 2014-11-02
 
 - Add warning when a custom prop is used in another place that :root
+- handle !important
 
 # 0.4.0 - 2014-09-30
 

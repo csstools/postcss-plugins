@@ -81,6 +81,11 @@ test("supports case-sensitive variables", function(t) {
   t.end()
 })
 
+test("supports !important", function(t) {
+  compareFixtures(t, "important")
+  t.end()
+})
+
 test("preserves variables when `preserve` is `true`", function(t) {
   compareFixtures(t, "preserve-variables", {preserve: true})
   t.end()
