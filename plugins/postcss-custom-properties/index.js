@@ -33,7 +33,12 @@ module.exports = function(options) {
 
       // only variables declared for `:root` are supported for now
       if (rule.selectors.length !== 1 || rule.selectors[0] !== ":root" || rule.parent.type !== "root") {
-        console.warn(gnuMessage("Non :root only custom properties in non root level are not supported (" +  rule.selectors + ")"))
+        rule.each(function(decl) {
+          var prop = decl.prop
+          if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
+            console.warn(gnuMessage("Custom property ignored: found in another place than top level :root (" +  rule.selectors + " { ... " + prop + ": ... })" + (rule.parent.type !== "root" ? ", in " + rule.parent.type : "")))
+          }
+        })
         return
       }
 
