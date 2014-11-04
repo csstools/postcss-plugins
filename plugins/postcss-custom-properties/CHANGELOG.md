@@ -1,3 +1,7 @@
+# 1.0.2 - 2014-11-04
+
+- More clear message for warning about custom prop used in non top-level :root
+
 # 1.0.1 - 2014-11-03
 
 - fix warning about custom prop used in non :root

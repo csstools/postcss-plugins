@@ -2,13 +2,16 @@
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS Custom Properties for cascading variables](http://www.w3.org/TR/css-variables/) syntax to more compatible CSS.
 
-**N.B.** The transformation _is not complete_. It currently just aims to provide a future-proof way of using a **limited subset (to `:root` selector)** of the features provided by native CSS custom properties. Read [#1](https://github.com/postcss/postcss-custom-properties/issues/1) & [#9](https://github.com/postcss/postcss-custom-properties/issues/9) to know why this limitation exists.
+**N.B.** The transformation _is not complete_. It currently just aims to provide a future-proof way of using a **limited subset (to top-level `:root` selector)** of the features provided by native CSS custom properties.  
+Read [#1](https://github.com/postcss/postcss-custom-properties/issues/1) & [#9](https://github.com/postcss/postcss-custom-properties/issues/9) to know why this limitation exists.
 
 Works great with [postcss-calc](https://github.com/postcss/postcss-calc).
 
 ## Installation
 
-    $ npm install postcss-custom-properties
+```console
+$ npm install postcss-custom-properties
+```
 
 ## Usage
 
@@ -73,10 +76,12 @@ Allow you to pass an object of variables for `:root`. These definitions will ove
 
 Work on a branch, install dev-dependencies, respect coding style & run tests before submitting a bug fix or a feature.
 
-    $ git clone https://github.com/postcss/postcss-custom-properties.git
-    $ git checkout -b patch-1
-    $ npm install
-    $ npm test
+```console
+$ git clone https://github.com/postcss/postcss-custom-properties.git
+$ git checkout -b patch-1
+$ npm install
+$ npm test
+```
 
 ## [Changelog](CHANGELOG.md)
 
