@@ -1,7 +1,7 @@
 {
   "name": "postcss-custom-media",
   "version": "1.2.0",
-  "description": "PostCSS plugin to import CSS files",
+  "description": " PostCSS plugin to transform W3C CSS Custom Media Queries to more compatible CSS",
   "keywords": [
     "css",
     "postcss",
@@ -9,7 +9,7 @@
     "media queries",
     "custom-media"
   ],
-  "author": "MoOx",
+  "author": "Maxime Thirouin",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -18,7 +18,6 @@
   "files": [
     "CHANGELOG.md",
     "LICENSE",
-    "README.md",
     "index.js"
   ],
   "dependencies": {},
