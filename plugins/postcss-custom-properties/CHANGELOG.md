@@ -1,3 +1,7 @@
+# 2.0.0 - 2014-11-12
+
+- Upgrade to postcss 3
+
 # 1.0.2 - 2014-11-04
 
 - More clear message for warning about custom prop used in non top-level :root

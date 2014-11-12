@@ -56,11 +56,11 @@ module.exports = function(options) {
       // optionally remove `--*` properties from the rule
       if (!preserve) {
         for (var i = toRemove.length - 1; i >= 0; i--) {
-          rule.decls.splice(toRemove[i], 1)
+          rule.childs.splice(toRemove[i], 1)
         }
 
         // remove empty :root {}
-        if (rule.decls.length === 0) {
+        if (rule.childs.length === 0) {
           rule.removeSelf()
         }
       }
