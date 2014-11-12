@@ -15,7 +15,7 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
   var actual = postcss().use(plugin(opts)).process(read(postcssOpts.from), postcssOpts).css
   var expected = read(filename("fixtures/" + name + ".expected"))
   fs.writeFile(filename("fixtures/" + name + ".actual"), actual)
-  t.equal(actual, expected, msg)
+  t.equal(actual.trim(), expected.trim(), msg)
 }
 
 test("@custom-media", function(t) {
