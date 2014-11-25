@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 var color = require("color")
+var helpers = require("postcss-message-helpers")
 
 /**
  * Constantes
@@ -14,35 +15,16 @@ var DECIMAL_PRECISION = 100000 // 5 decimals
  */
 module.exports = function plugin() {
   return function(style) {
-    style.eachDecl(function transformDecl(dec) {
-      if (!dec.value) {
+    style.eachDecl(function transformDecl(decl) {
+      if (!decl.value || decl.value.indexOf("#") === -1) {
         return
       }
 
-      dec.value = transform(dec.value, dec.source)
+      decl.value = helpers.try(function transformHexAlphaValue() {
+        return transformHexAlpha(decl.value, decl.source)
+      }, decl.source)
     })
   }
-}
-
-/**
- * Transform colors to rgb() or rgba() on a declaration value
- *
- * @param {String} string
- * @return {String}
- */
-function transform(string, source) {
-  // order of transformation is important
-
-  try {
-    if (string.indexOf("#") > -1) {
-      string = transformHexAlpha(string, source)
-    }
-  }
-  catch (e) {
-    throw new Error(gnuMessage(e.message, source))
-  }
-
-  return string
 }
 
 /**
@@ -88,14 +70,4 @@ function hexaToRgba(hex) {
   }
 
   return color({r: rgb[0], g: rgb[1], b: rgb[2], a: rgb[3]}).rgbaString()
-}
-
-/**
- * return GNU style message
- *
- * @param {String} message
- * @param {Object} source
- */
-function gnuMessage(message, source) {
-  return (source ? (source.file ? source.file : "<css input>") + ":" + source.start.line + ":" + source.start.column + " " : "") + message
 }
