@@ -1,4 +1,9 @@
 /**
+ * Module dependencies
+ */
+var helpers = require("postcss-message-helpers")
+
+/**
  * Constants.
  */
 var EXTENSION_RE = /\(\s*(--[\w-]+)\s*\)/g
@@ -48,7 +53,7 @@ function customMedia(options) {
           return map[name]
         }
 
-        console.warn(gnuMessage("missing @custom-media definition for '" + name + "'. The entire rule has been removed from the output.", rule.source))
+        console.warn(helpers.message("missing @custom-media definition for '" + name + "'. The entire rule has been removed from the output.", rule.source))
         toRemove.push(rule)
       })
     })
@@ -56,14 +61,4 @@ function customMedia(options) {
     // remove @custom-media
     toRemove.forEach(function(rule) { rule.removeSelf() })
   }
-}
-
-/**
- * return GNU style message
- *
- * @param {String} message
- * @param {Object} source
- */
-function gnuMessage(message, source) {
-  return (source ? (source.file ? source.file : "<css input>") + ":" + source.start.line + ":" + source.start.column + " " : "") + message
 }

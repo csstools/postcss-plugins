@@ -1,3 +1,7 @@
+# 1.3.0 - 2014-11-25
+
+- Better gnu message
+
 # 1.2.1 - 2014-10-09
 
 - Fix npm description

@@ -20,7 +20,9 @@
     "LICENSE",
     "index.js"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "postcss-message-helpers": "^1.1.0"
+  },
   "devDependencies": {
     "jscs": "^1.6.2",
     "jshint": "^2.5.6",
