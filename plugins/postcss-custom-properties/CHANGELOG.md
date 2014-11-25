@@ -1,3 +1,7 @@
+# 2.1.0 - 2014-11-25
+
+- Enhanced exceptions & messages
+
 # 2.0.0 - 2014-11-12
 
 - Upgrade to postcss 3

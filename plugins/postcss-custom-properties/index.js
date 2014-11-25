@@ -3,6 +3,7 @@
  */
 
 var balanced = require("balanced-match")
+var helpers = require("postcss-message-helpers")
 
 /**
  * Constants.
@@ -36,7 +37,7 @@ module.exports = function(options) {
         rule.each(function(decl) {
           var prop = decl.prop
           if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
-            console.warn(gnuMessage("Custom property ignored: not scoped to the top-level :root element (" +  rule.selectors + " { ... " + prop + ": ... })" + (rule.parent.type !== "root" ? ", in " + rule.parent.type : "")))
+            console.warn(helpers.message("Custom property ignored: not scoped to the top-level :root element (" +  rule.selectors + " { ... " + prop + ": ... })" + (rule.parent.type !== "root" ? ", in " + rule.parent.type : ""), decl.source))
           }
         })
         return
@@ -80,11 +81,13 @@ module.exports = function(options) {
         return
       }
 
-      resolveValue(value, map, decl.source).forEach(function(resolvedValue) {
-        var clone = decl.clone()
-        clone.value = resolvedValue
-        decl.parent.insertBefore(decl, clone)
-      })
+      helpers.try(function resolve() {
+        resolveValue(value, map, decl.source).forEach(function(resolvedValue) {
+          var clone = decl.clone()
+          clone.value = resolvedValue
+          decl.parent.insertBefore(decl, clone)
+        })
+      }, decl.source)
 
       if (!preserve) {
         decl.removeSelf()
@@ -119,17 +122,17 @@ function resolveValue(value, variables, source) {
   var matches = balanced("(", ")", value.substring(start))
 
   if (!matches) {
-    throw new SyntaxError(gnuMessage("missing closing ')' in the value '" + value + "'", source))
+    throw new SyntaxError("missing closing ')' in the value '" + value + "'")
   }
 
   if (matches.body === "") {
-    throw new Error(gnuMessage("var() must contain a non-whitespace string", source))
+    throw new Error("var() must contain a non-whitespace string")
   }
 
   matches.body.replace(RE_VAR, function(_, name, fallback) {
     var replacement = variables[name]
     if (!replacement && !fallback) {
-      console.warn(gnuMessage("variable '" + name + "' is undefined and used without a fallback", source))
+      console.warn(helpers.message("variable '" + name + "' is undefined and used without a fallback", source))
     }
 
     // prepend with fallbacks
@@ -164,14 +167,4 @@ function resolveValue(value, variables, source) {
   })
 
   return results
-}
-
-/**
- * return GNU style message
- *
- * @param {String} message
- * @param {Object} source
- */
-function gnuMessage(message, source) {
-  return (source ? (source.file ? source.file : "<css input>") + ":" + source.start.line + ":" + source.start.column + " " : "") + message
 }
