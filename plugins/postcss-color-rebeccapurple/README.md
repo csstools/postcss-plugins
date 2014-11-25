@@ -9,7 +9,7 @@ In memory of [Eric Meyer’s daughter](http://meyerweb.com/eric/thoughts/2014/06
 
 ## Installation
 
-```bash
+```console
 $ npm install postcss-color-rebeccapurple
 ```
 
@@ -56,10 +56,12 @@ Checkout [tests](test) for more examples.
 
 Work on a branch, install dev-dependencies, respect coding style & run tests before submitting a bug fix or a feature.
 
-    $ git clone https://github.com/postcss/postcss-color-rebeccapurple.git
-    $ git checkout -b patch-1
-    $ npm install
-    $ npm test
+```console
+$ git clone https://github.com/postcss/postcss-color-rebeccapurple.git
+$ git checkout -b patch-1
+$ npm install
+$ npm test
+```
 
 ## [Changelog](CHANGELOG.md)
 

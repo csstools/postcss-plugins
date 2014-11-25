@@ -23,7 +23,8 @@
     "index.js"
   ],
   "dependencies": {
-    "color": "^0.7.1"
+    "color": "^0.7.1",
+    "postcss-message-helpers": "^1.1.0"
   },
   "devDependencies": {
     "jscs": "^1.6.2",
