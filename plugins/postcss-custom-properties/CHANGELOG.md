@@ -1,3 +1,7 @@
+# 2.1.1 - 2014-12-02
+
+- Fix issue when multiples undefined custom properties are referenced ([#16](https://github.com/postcss/postcss-custom-properties/issues/16))
+
 # 2.1.0 - 2014-11-25
 
 - Enhanced exceptions & messages

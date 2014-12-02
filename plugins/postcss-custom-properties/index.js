@@ -114,7 +114,7 @@ module.exports = function(options) {
 function resolveValue(value, variables, source) {
   var results = []
 
-  var start = value.indexOf("var(")
+  var start = value.indexOf(VAR_FUNC_IDENTIFIER + "(")
   if (start === -1) {
     return [value]
   }
@@ -161,7 +161,7 @@ function resolveValue(value, variables, source) {
     if (!replacement && !fallback) {
       // resolve the end of the expression
       (matches.post ? resolveValue(matches.post, variables, source) : [""]).forEach(function(afterValue) {
-        results.push(value.slice(0, start) + value + afterValue)
+        results.push(value.slice(0, start) + VAR_FUNC_IDENTIFIER + "(" + name + ")" + afterValue)
       })
     }
   })

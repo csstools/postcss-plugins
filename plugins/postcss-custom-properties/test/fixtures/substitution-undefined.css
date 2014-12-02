@@ -1,7 +1,12 @@
-div {
-  color: var(--test);
+:root {
+  --defined: true
 }
 
 div {
+  color: var(--test);
   color: var(--test, fallback);
+  background: linear-gradient(var(--a), var(--b));
+  background: linear-gradient(var(--a), var(--b), var(--defined));
+  background: linear-gradient(var(--a), var(--defined) , var(--b));
+  background: linear-gradient(var(--a), var(--defined) , var(--b), var(--defined));
 }
