@@ -37,7 +37,14 @@ module.exports = function(options) {
         rule.each(function(decl) {
           var prop = decl.prop
           if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
-            console.warn(helpers.message("Custom property ignored: not scoped to the top-level :root element (" +  rule.selectors + " { ... " + prop + ": ... })" + (rule.parent.type !== "root" ? ", in " + rule.parent.type : ""), decl.source))
+            console.warn(
+              helpers.message(
+                "Custom property ignored: not scoped to the top-level :root element (" +
+                rule.selectors +
+                " { ... " + prop + ": ... })" +
+                (rule.parent.type !== "root" ? ", in " + rule.parent.type : ""),
+              decl.source)
+            )
           }
         })
         return
