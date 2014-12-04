@@ -1,0 +1,3 @@
+.foo > a::before img, .foo > a::after img {
+  display: block;
+}

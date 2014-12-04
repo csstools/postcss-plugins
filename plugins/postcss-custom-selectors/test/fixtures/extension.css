@@ -1,0 +1,10 @@
+@custom-selector :--any .foo, .bar;
+@custom-selector --foo .baz;
+
+:--any h1 {
+  margin-top: 16px;
+}
+
+main --foo + p {
+  margin-top: 16px;
+}

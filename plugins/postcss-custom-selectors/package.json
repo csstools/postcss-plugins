@@ -1,0 +1,30 @@
+{
+  "name": "postcss-custom-selector",
+  "version": "1.0.0",
+  "description": "PostCSS plugin",
+  "keywords": [
+    "css",
+    "postcss",
+    "postcss-plugins",
+    "selector",
+    "custom selector"
+  ],
+  "author": "yisi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/postcss/postcss-custom-selector.git"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "index.js"
+  ],
+  "devDependencies": {
+    "postcss": "^3.0.0",
+    "tape": "^3.0.0"
+  },
+  "scripts": {
+    "test": "tape test"
+  }
+}
