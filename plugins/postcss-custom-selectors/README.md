@@ -1,4 +1,4 @@
-# PostCSS Custom Selector [![Build Status](https://travis-ci.org/postcss/postcss-custom-selector.png)](https://travis-ci.org/postcss/postcss-custom-selector)
+# PostCSS Custom Selector [![Build Status](https://travis-ci.org/postcss/postcss-custom-selector.svg)](https://travis-ci.org/postcss/postcss-custom-selector)
 
 > [PostCSS](https://github.com/postcss/postcss) 实现 [W3C CSS Extensions(Custom Selectors)](http://dev.w3.org/csswg/css-extensions/#custom-selectors) 的插件。
 
