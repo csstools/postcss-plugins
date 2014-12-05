@@ -206,7 +206,7 @@ var output = postcss(selector(options))
 input.css
 
 ```css
-@custom-selector :--any .foo, .bar; /* 不会生效 */
+@custom-selector :--any .foo, .bar; /* No effect */
 :--any h1 {
   margin-top: 16px;
 }
@@ -228,7 +228,7 @@ section h1, article h1, aside h1, nav h1 {
 * Adding test cases in the [test](test) directory.
 * Run tests.
 
-```
+```console
 $ git clone https://github.com/postcss/postcss-custom-selectors.git
 $ git checkout -b patch
 $ npm install
