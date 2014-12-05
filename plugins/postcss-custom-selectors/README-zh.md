@@ -4,6 +4,8 @@
 
 [English](README.md)
 
+![GIF Demo](http://v2.freep.cn/3tb_141205230116f6ky512293.gif)
+
 ## 安装
 
     $ npm install postcss-custom-selectors
