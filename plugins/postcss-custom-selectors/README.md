@@ -1,12 +1,12 @@
-# PostCSS Custom Selector [![Build Status](https://travis-ci.org/postcss/postcss-custom-selector.svg)](https://travis-ci.org/postcss/postcss-custom-selector)
+# PostCSS Custom Selectors [![Build Status](https://travis-ci.org/postcss/postcss-custom-selector.svg)](https://travis-ci.org/postcss/postcss-custom-selector)
 
 > [PostCSS](https://github.com/postcss/postcss) 实现 [W3C CSS Extensions(Custom Selectors)](http://dev.w3.org/csswg/css-extensions/#custom-selectors) 的插件。
 
 
 
-## 安装(暂未发布)
+## 安装
 
-    $ npm install postcss-custom-selector
+    $ npm install postcss-custom-selectors
 
 ## 快速开始
 
@@ -14,12 +14,12 @@
 // dependencies
 var fs = require('fs')
 var postcss = require('postcss')
-var selector = require('postcss-custom-selector')
+var selector = require('postcss-custom-selectors')
 
 // css to be processed
 var css = fs.readFileSync('input.css', 'utf8')
 
-// process css using postcss-custom-selector
+// process css using postcss-custom-selectors
 var output = postcss()
   .use(selector())
   .process(css)
@@ -118,31 +118,50 @@ a:link, a:visited {
 ### Grunt
 
 ```js
-grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [require('postcss-custom-selector').postcss]
-    },
-    dist: {
-      src: 'css/*.css'
+module.exports = function(grunt) {
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    postcss: {
+      options: {
+        processors: [
+          require('autoprefixer-core')({ browsers: ['> 0%'] }).postcss, //Other plugin
+          require('postcss-custom-selector')(),
+        ]
+      },
+      dist: {
+        src: ['src/*.css'],
+        dest: 'build/grunt.css'
+      }
     }
-  }
-});
+  });
 
-grunt.loadNpmTasks('grunt-postcss');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-postcss');
+
+  grunt.registerTask('default', ['postcss']);
+}
 ```
 
 ### Gulp
 
 ```js
 var gulp = require('gulp');
+var rename = require('gulp-rename');
 var postcss = require('gulp-postcss');
+var selector = require('postcss-custom-selector')
+var autoprefixer = require('autoprefixer-core')
 
-gulp.task('css', function() {
-  return gulp.src('./src/*.css')
-    .pipe(postcss([require('postcss-custom-selector')]))
-    .pipe(gulp.dest('./dest'));
+gulp.task('default', function () {
+    var processors = [
+        autoprefixer({ browsers: ['> 0%'] }), //Other plugin
+        selector()
+    ];
+    gulp.src('src/*.css')
+        .pipe(postcss(processors))
+        .pipe(rename('gulp.css'))
+        .pipe(gulp.dest('build'))
 });
+gulp.watch('src/*.css', ['default']);
 ```
 
 
@@ -186,11 +205,11 @@ section h1, article h1, aside h1, nav h1 {
 ## 贡献
 
 * 安装相关依赖模块
-* 尊重编码风格（安装）
+* 尊重编码风格（安装 [EditorConfig](http://editorconfig.org/)）
 * 运行测试
 
 ```
-$ git clone https://github.com/postcss/postcss-custom-selector.git
+$ git clone https://github.com/postcss/postcss-custom-selectors.git
 $ git checkout -b patch
 $ npm install
 $ npm test
