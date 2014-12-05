@@ -1,22 +1,24 @@
 {
-  "name": "postcss-custom-selector",
+  "name": "postcss-custom-selectors",
   "version": "1.0.0",
-  "description": "PostCSS plugin",
+  "description": "PostCSS plugin to transform W3C CSS Extensions(Custom Selectors) to more compatible CSS",
   "keywords": [
     "css",
+    "css3"
     "postcss",
     "postcss-plugins",
     "selector",
-    "custom selector"
+    "custom-selector"
   ],
   "author": "yisi",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/postcss/postcss-custom-selector.git"
+    "url": "https://github.com/postcss/postcss-custom-selectors.git"
   },
   "files": [
     "CHANGELOG.md",
+    "README-zh.md",
     "LICENSE",
     "index.js"
   ],

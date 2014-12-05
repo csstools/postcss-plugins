@@ -1,16 +1,16 @@
 # PostCSS Custom Selectors [![Build Status](https://travis-ci.org/postcss/postcss-custom-selectors.svg)](https://travis-ci.org/postcss/postcss-custom-selectors)
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to transform  [W3C CSS Extensions(Custom Selectors)](http://dev.w3.org/csswg/css-extensions/#custom-selectors)  to more compatible CSS.
+> [PostCSS](https://github.com/postcss/postcss) 实现 [W3C CSS Extensions(Custom Selectors)](http://dev.w3.org/csswg/css-extensions/#custom-selectors) 的插件。
 
-[简体中文](README-zh.md)
+[English](README.md)
 
-## Install
+## 安装
 
     $ npm install postcss-custom-selectors
 
-## Quick Start
+## 快速开始
 
-Example 1:
+示例1：
 
 ```js
 // dependencies
@@ -30,7 +30,7 @@ var output = postcss()
 console.log('\n====>Output CSS:\n', output)  
 ```
 
-Or just：
+或者：
 
 ```js
 var output = postcss(selector())
@@ -48,7 +48,7 @@ article --heading + p {
 }
 ```
 
-You will get:
+你将得到：
 
 ```css
 article h1 + p, article h2 + p, article h3 + p, article h4 + p, article h5 + p, article h6 + p {
@@ -56,23 +56,23 @@ article h1 + p, article h2 + p, article h3 + p, article h4 + p, article h5 + p, 
 }
 ```
 
-## CSS syntax
+## CSS 语法
 
     @custom-selector = @custom-selector <extension-name> <selector>;
 
 
-## How to use it
+## 如何使用
 
-### Pseudo-element/Pseudo-class
+### 伪元素/伪类
 
-You can use 
+你可以使用 
 
-* `:` to customise a class.
-* `::`to customise a Pseudo-element.
+* `:` 自定义一个伪类。
+* `::`自定义一个伪元素。
 
-For example to simulate [:any-link](http://dev.w3.org/csswg/selectors/#the-any-link-pseudo) selector：
+例如，模拟一个 [:any-link](http://dev.w3.org/csswg/selectors/#the-any-link-pseudo) 选择器：
 
-Example 2:
+示例2：
 
 input.css:
 
@@ -91,11 +91,11 @@ a:link, a:visited {
   color: blue;
 }
 ```
-### Multiples selectors
+### 多个选择器
 
-`@custom-selector` similar to CSS [`:matches()`](http://dev.w3.org/csswg/selectors-4/#matches) （[`-moz-any()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:any)/[`-webkit-any()`](http://css-tricks.com/almanac/selectors/m/matches/)）selector,But it **doesn’t support** call multiple custom selector in the same selector, e.g.
+`@custom-selector` 类似 CSS [`:matches()`](http://dev.w3.org/csswg/selectors-4/#matches) （[`-moz-any()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:any)/[`-webkit-any()`](http://css-tricks.com/almanac/selectors/m/matches/)）选择器，但是目前**不支持**在同一个选择器中调用多个自定义选择器，例如：
 
-Example 3:
+示例3：
 
 ```css
 @custom-selector --heading h1, h2, h3, h4, h5, h6;
@@ -105,11 +105,11 @@ Example 3:
   font-size: 32px;
 }
 ```
-This will throw an error CSS code.
+将会输出错误的 CSS 代码。
 
 ### Node Watch
 
-Dependence [chokidar](#) module.
+依赖 [chokidar](#) 模块。
 
 ```js
 var fs = require('fs')
@@ -133,6 +133,7 @@ chokidar.watch(src, {
     fs.writeFileSync('output.css', output)
   })
 ```
+index.css 文件中的改动保存后将转换到 output.css
 
 ### Grunt
 
@@ -185,11 +186,11 @@ gulp.watch('src/*.css', ['default']);
 
 
 
-### Options
+### 选项
 
 **`extensions`** (default: `{}`)
 
-This option allows you to customize an object to set the `<extension-name>` (selector alias) and `<selector>`, these definitions will cover the same alias of `@custom-selector` in CSS.
+该选项允许你自定义一个对象来设置 `<extension-name>`（选择器别名）和 `<selector>`，这些定义将覆盖 CSS 中相同别名的 `@custom-selector`。
 
 ```js
 var options = {
@@ -221,12 +222,12 @@ section h1, article h1, aside h1, nav h1 {
 ```
 
 
-## Contribution
+## 贡献
 
-* Install the relevant dependent module.
-* Respect coding style（Install [EditorConfig](http://editorconfig.org/)）.
-* Adding test cases in the [test](test) directory.
-* Run tests.
+* 安装相关的依赖模块。
+* 尊重编码风格（安装 [EditorConfig](http://editorconfig.org/)）。
+* 在[test](test)目录添加测试用例。
+* 运行测试。
 
 ```
 $ git clone https://github.com/postcss/postcss-custom-selectors.git
