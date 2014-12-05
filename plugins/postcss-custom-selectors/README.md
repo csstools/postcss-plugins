@@ -93,7 +93,7 @@ a:link, a:visited {
 ```
 ### Multiples selectors
 
-`@custom-selector` similar to CSS [`:matches()`](http://dev.w3.org/csswg/selectors-4/#matches) （[`-moz-any()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:any)/[`-webkit-any()`](http://css-tricks.com/almanac/selectors/m/matches/)）selector,But it **doesn’t support** call multiple custom selector in the same selector, e.g.
+`@custom-selector` similar to CSS [`:matches()`](http://dev.w3.org/csswg/selectors-4/#matches)([`-moz-any()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:any)/[`-webkit-any()`](http://css-tricks.com/almanac/selectors/m/matches/))selector,but it **doesn’t support** call multiple custom selector in the same selector, e.g.
 
 Example 3:
 
@@ -109,7 +109,7 @@ This will throw an error CSS code.
 
 ### Node Watch
 
-Dependence [chokidar](#) module.
+Dependence [chokidar](https://github.com/paulmillr/chokidar) module.
 
 ```js
 var fs = require('fs')

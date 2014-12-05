@@ -109,7 +109,7 @@ a:link, a:visited {
 
 ### Node Watch
 
-依赖 [chokidar](#) 模块。
+依赖 [chokidar](https://github.com/paulmillr/chokidar) 模块。
 
 ```js
 var fs = require('fs')
