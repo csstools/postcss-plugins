@@ -4,7 +4,7 @@
   "description": "PostCSS plugin to transform W3C CSS Extensions(Custom Selectors) to more compatible CSS",
   "keywords": [
     "css",
-    "css3"
+    "css3",
     "postcss",
     "postcss-plugins",
     "selector",
