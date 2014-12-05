@@ -4,7 +4,7 @@
 
 [简体中文](README-zh.md)
 
-![GIF Demo](http://v2.freep.cn/3tb_141205230116f6ky512293.gif)
+![GIF Demo](http://gtms01.alicdn.com/tps/i1/TB1ZCe3GVXXXXbzXFXXRi48IXXX-780-610.gif)
 
 ## Install
 
