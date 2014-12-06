@@ -268,12 +268,12 @@ nav h1 {
 ```
 
 
-## Contribution
+## Contributing
 
 * Install the relevant dependent module.
 * Respect coding style（Install [EditorConfig](http://editorconfig.org/)）.
 * Adding test cases in the [test](test) directory.
-* Run tests.
+* Run test.
 
 ```console
 $ git clone https://github.com/postcss/postcss-custom-selectors.git
