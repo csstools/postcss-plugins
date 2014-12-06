@@ -6,7 +6,7 @@
 
 ![GIF Demo](http://gtms01.alicdn.com/tps/i1/TB1ZCe3GVXXXXbzXFXXRi48IXXX-780-610.gif)
 
-## Install
+## Installation
 
     $ npm install postcss-custom-selectors
 
