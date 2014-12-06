@@ -53,7 +53,12 @@ article --heading + p {
 你将得到：
 
 ```css
-article h1 + p, article h2 + p, article h3 + p, article h4 + p, article h5 + p, article h6 + p {
+article h1 + p,
+article h2 + p,
+article h3 + p,
+article h4 + p,
+article h5 + p,
+article h6 + p { 
   margin-top: 0;
 }
 ```
@@ -89,7 +94,8 @@ a:--any-link {
 output:
 
 ```css
-a:link, a:visited {
+a:link,
+a:visited {
   color: blue;
 }
 ```
@@ -108,6 +114,17 @@ a:link, a:visited {
 }
 ```
 将会输出错误的 CSS 代码。
+
+```css
+.demo h1,
+.demo h2,
+.demo h3,
+.demo h4,
+.demo h5,
+.demo h6,undefined { 
+  font-size: 32px;
+}
+```
 
 ### Node Watch
 
@@ -135,7 +152,6 @@ chokidar.watch(src, {
     fs.writeFileSync('output.css', output)
   })
 ```
-index.css 文件中的改动保存后将转换到 output.css
 
 ### Grunt
 
@@ -233,8 +249,11 @@ var output = postcss(selector(options))
 input.css
 
 ```css
-@custom-selector :--any .foo, .bar; /* 不会生效 */
-:--any h1 {
+/* 不会生效 */
+section h1,
+article h1,
+aside h1,
+nav h1 {
   margin-top: 16px;
 }
 ```

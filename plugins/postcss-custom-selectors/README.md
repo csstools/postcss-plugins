@@ -53,7 +53,12 @@ article --heading + p {
 You will get:
 
 ```css
-article h1 + p, article h2 + p, article h3 + p, article h4 + p, article h5 + p, article h6 + p {
+article h1 + p,
+article h2 + p,
+article h3 + p,
+article h4 + p,
+article h5 + p,
+article h6 + p { 
   margin-top: 0;
 }
 ```
@@ -63,7 +68,7 @@ article h1 + p, article h2 + p, article h3 + p, article h4 + p, article h5 + p, 
     @custom-selector = @custom-selector <extension-name> <selector>;
 
 
-## How to use it
+## How to use
 
 ### Pseudo-element/Pseudo-class
 
@@ -89,7 +94,8 @@ a:--any-link {
 output:
 
 ```css
-a:link, a:visited {
+a:link,
+a:visited {
   color: blue;
 }
 ```
@@ -108,6 +114,17 @@ Example 3:
 }
 ```
 This will throw an error CSS code.
+
+```css
+.demo h1,
+.demo h2,
+.demo h3,
+.demo h4,
+.demo h5,
+.demo h6,undefined { 
+  font-size: 32px;
+}
+```
 
 ### Node Watch
 
@@ -191,7 +208,7 @@ gulp.watch('src/*.css', ['default']);
 
 #### 1. **`lineBreak`**(default: `true`)
 
-Setting multiple selector whether wrap.
+Set whether  multiple selector wrap.The default is turning on to be a newline.
 
 Close the line breaks.
 
@@ -241,7 +258,11 @@ input.css
 output:
 
 ```css
-section h1, article h1, aside h1, nav h1 {
+/* No effect */
+section h1,
+article h1,
+aside h1,
+nav h1 {
   margin-top: 16px;
 }
 ```
