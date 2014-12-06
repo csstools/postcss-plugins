@@ -17,6 +17,7 @@ function customSelector(options) {
   return function(styles) {
     options = options || {}
     var extensions = options.extensions || {}
+    var line_break = '\n'
     var map = {}
     var toRemove = []
     var customSelectors = {}
@@ -47,6 +48,11 @@ function customSelector(options) {
       customSelectors[extension] = extensions[extension]
     })
 
+    //控制选择器是否换行
+    if (!options.lineBreak  && options.lineBreak == false) {
+       line_break = ' '
+    }
+
     // 转换自定义的选择器别名
     styles.eachRule(function(rule) {
       for (var prop in customSelectors) {
@@ -58,7 +64,7 @@ function customSelector(options) {
             if ($2 == prop) {
               return customSelector.split(",").map(function(selector) {
                 return $1 + selector.trim() + $3
-              }).join(", ")
+              }).join("," + line_break)
             }
           })
 

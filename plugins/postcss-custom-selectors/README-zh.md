@@ -190,7 +190,31 @@ gulp.watch('src/*.css', ['default']);
 
 ### 选项
 
-**`extensions`** (default: `{}`)
+#### 1. **`lineBreak`**(default: `true`)
+
+设置多个选择器是否换行，默认开启换行。
+
+关闭换行：
+
+```js
+var options = {
+  lineBreak: false
+}
+
+var output = postcss(selector(options))
+  .process(css)
+  .css
+```
+
+「示例1」中的 `input.css` 将输出为：
+
+```css
+article h1 + p, article h2 + p, article h3 + p, article h4 + p, article h5 + p, article h6 + p {
+  margin-top: 0;
+}
+```
+
+#### 2. **`extensions`** (default: `{}`)
 
 该选项允许你自定义一个对象来设置 `<extension-name>`（选择器别名）和 `<selector>`，这些定义将覆盖 CSS 中相同别名的 `@custom-selector`。
 

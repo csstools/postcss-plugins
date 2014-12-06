@@ -189,7 +189,31 @@ gulp.watch('src/*.css', ['default']);
 
 ### Options
 
-**`extensions`** (default: `{}`)
+#### 1. **`lineBreak`**(default: `true`)
+
+Setting multiple selector whether wrap.
+
+Close the line breaks.
+
+```js
+var options = {
+  lineBreak: false
+}
+
+var output = postcss(selector(options))
+  .process(css)
+  .css
+```
+
+In the 'Example 1' `input.css` will output:
+
+```css
+article h1 + p, article h2 + p, article h3 + p, article h4 + p, article h5 + p, article h6 + p {
+  margin-top: 0;
+}
+```
+
+#### 2. **`extensions`** (default: `{}`)
 
 This option allows you to customize an object to set the `<extension-name>` (selector alias) and `<selector>`, these definitions will cover the same alias of `@custom-selector` in CSS.
 
