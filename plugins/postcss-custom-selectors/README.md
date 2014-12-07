@@ -272,7 +272,7 @@ nav h1 {
 
 * Install the relevant dependent module.
 * Respect coding style（Install [EditorConfig](http://editorconfig.org/)）.
-* Adding test cases in the [test](test) directory.
+* Add test cases in the [test](test) directory.
 * Run test.
 
 ```console
