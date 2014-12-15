@@ -1,6 +1,6 @@
 # postcss-color-rebeccapurple [![Build Status](https://travis-ci.org/postcss/postcss-color-rebeccapurple.png)](https://travis-ci.org/postcss/postcss-color-rebeccapurple)
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS `rebeccapurple` color](http://dev.w3.org/csswg/css-color/#valuedef-color-rebeccapurple) to more compatible CSS (rgb()).
+> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS `rebeccapurple` color](http://dev.w3.org/csswg/css-color/#valdef-color-rebeccapurple) to more compatible CSS (rgb()).
 
 ## Why this plugin ?
 
