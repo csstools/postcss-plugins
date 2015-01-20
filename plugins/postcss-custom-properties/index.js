@@ -28,9 +28,6 @@ module.exports = function(options) {
     // define variables
     style.eachRule(function(rule) {
       var toRemove = []
-      if (rule.type !== "rule") {
-        return
-      }
 
       // only variables declared for `:root` are supported for now
       if (rule.selectors.length !== 1 || rule.selectors[0] !== ":root" || rule.parent.type !== "root") {
