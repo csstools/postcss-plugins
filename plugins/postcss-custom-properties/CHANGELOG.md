@@ -1,3 +1,9 @@
+# 3.0.0 - 2015-01-20
+
+- Upgrade to postcss 4 ([#18](https://github.com/postcss/postcss-custom-properties/pull/18))
+- Remove some code that seems to be useless ([16ff3c2](https://github.com/postcss/postcss-custom-properties/commit/16ff3c22fe0563a1283411d7866791966fff4c58))
+- Use a new postcss 4 method `cloneBefore` ([604168e](https://github.com/postcss/postcss-custom-properties/commit/604168e4e28379c3a42c8a8255957a65ec6b2c27))
+
 # 2.1.1 - 2014-12-02
 
 - Fix issue when multiples undefined custom properties are referenced ([#16](https://github.com/postcss/postcss-custom-properties/issues/16))
