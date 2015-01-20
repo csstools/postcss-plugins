@@ -87,9 +87,8 @@ module.exports = function(options) {
 
       helpers.try(function resolve() {
         resolveValue(value, map, decl.source).forEach(function(resolvedValue) {
-          var clone = decl.clone()
+          var clone = decl.cloneBefore()
           clone.value = resolvedValue
-          decl.parent.insertBefore(decl, clone)
         })
       }, decl.source)
 
