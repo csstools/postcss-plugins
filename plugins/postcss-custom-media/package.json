@@ -1,6 +1,6 @@
 {
   "name": "postcss-custom-media",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": " PostCSS plugin to transform W3C CSS Custom Media Queries to more compatible CSS",
   "keywords": [
     "css",
