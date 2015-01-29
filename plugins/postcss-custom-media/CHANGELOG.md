@@ -1,7 +1,11 @@
-# 2.0.0 - 2015-01-28
+# 3.0.0 - 2015-01-29
 
 - Added: compatibility with postcss v4.x
 - Removed: compatibility with postcss v3.x
+
+# 2.0.0 [Yanked]
+
+_You never saw this version (this is a bad release that points to 1.0.0)._
 
 # 1.3.0 - 2014-11-25
 
