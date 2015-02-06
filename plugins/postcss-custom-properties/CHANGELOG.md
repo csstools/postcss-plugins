@@ -1,53 +1,56 @@
+# 3.0.1 - 2015-02-06
+
+- Fixed: logs now have filename back ([#19](https://github.com/postcss/postcss-custom-properties/issues/19))
+
 # 3.0.0 - 2015-01-20
 
-- Upgrade to postcss 4 ([#18](https://github.com/postcss/postcss-custom-properties/pull/18))
-- Remove some code that seems to be useless ([16ff3c2](https://github.com/postcss/postcss-custom-properties/commit/16ff3c22fe0563a1283411d7866791966fff4c58))
-- Use a new postcss 4 method `cloneBefore` ([604168e](https://github.com/postcss/postcss-custom-properties/commit/604168e4e28379c3a42c8a8255957a65ec6b2c27))
+- Changed: upgrade to postcss 4 ([#18](https://github.com/postcss/postcss-custom-properties/pull/18))
+- Removed: some code that seems to be useless ([16ff3c2](https://github.com/postcss/postcss-custom-properties/commit/16ff3c22fe0563a1283411d7866791966fff4c58))
 
 # 2.1.1 - 2014-12-02
 
-- Fix issue when multiples undefined custom properties are referenced ([#16](https://github.com/postcss/postcss-custom-properties/issues/16))
+- Fixed: issue when multiples undefined custom properties are referenced ([#16](https://github.com/postcss/postcss-custom-properties/issues/16))
 
 # 2.1.0 - 2014-11-25
 
-- Enhanced exceptions & messages
+- Added: enhanced exceptions & messages
 
 # 2.0.0 - 2014-11-12
 
-- Upgrade to postcss 3
+- Changed: upgrade to postcss 3
 
 # 1.0.2 - 2014-11-04
 
-- More clear message for warning about custom prop used in non top-level :root
+- Fixed: more clear message for warning about custom prop used in non top-level :root
 
 # 1.0.1 - 2014-11-03
 
-- fix warning about custom prop used in non :root
+- Fixed: warning about custom prop used in non :root
 
 # 1.0.0 - 2014-11-02
 
-- Add warning when a custom prop is used in another place than :root
-- handle !important
+- Added: warning when a custom prop is used in another place than :root
+- Added: handle !important
 
 # 0.4.0 - 2014-09-30
 
-- JS-defined properties override CSS-defined
+- Added: JS-defined properties override CSS-defined
 
 # 0.3.1 - 2014-08-27
 
-- Nested custom properties usages are now correctly resolved
-- Undefined var doesn't throw error anymore (just a console warning) & are kept as is in the output
+- Added: nested custom properties usages are now correctly resolved
+- Changed: undefined var doesn't throw error anymore (just a console warning) & are kept as is in the output
 
 # 0.3.0 - 2014-08-26
 
-- Fallback now are always added by default ([see why](http://www.w3.org/TR/css-variables/#invalid-variables))
-- `map` option renamed to `variables`
+- Changed: fallback now are always added by default ([see why](http://www.w3.org/TR/css-variables/#invalid-variables))
+- Changed: `map` option renamed to `variables`
 
 # 0.2.0 - 2014-08-22
 
-- Add `map` option
-- GNU style error message
+- Added: `map` option
+- Changed: GNU style error message
 
 # 0.1.0 - 2014-08-01
 
-First release based on [rework-vars](https://github.com/reworkcss/rework-vars) v3.1.1
+✨ First release based on [rework-vars](https://github.com/reworkcss/rework-vars) v3.1.1

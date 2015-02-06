@@ -1,6 +1,6 @@
 {
   "name": "postcss-custom-properties",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "PostCSS plugin to polyfill W3C CSS Custom Properties for cascading variables",
   "keywords": [
     "css",
@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "balanced-match": "~0.1.0",
-    "postcss-message-helpers": "^1.1.0"
+    "postcss-message-helpers": "^2.0.0"
   },
   "devDependencies": {
     "jscs": "^1.6.2",
