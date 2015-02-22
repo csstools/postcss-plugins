@@ -163,7 +163,7 @@ module.exports = function(grunt) {
       options: {
         processors: [
           require('autoprefixer-core')({ browsers: ['> 0%'] }).postcss, //Other plugin
-          require('postcss-custom-selector')(),
+          require('postcss-custom-selectors')(),
         ]
       },
       dist: {
