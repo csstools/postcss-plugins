@@ -20,7 +20,16 @@ var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/ // matches `name[, fallback]`, captures
 module.exports = function(options) {
   return function(style) {
     options = options || {}
-    var variables = options.variables || {}
+    var userVariables = options.variables || {}
+    var variables =
+      Object.keys(userVariables)
+        .reduce(function(acc, key) {
+          if (key.indexOf("--") !== 0) {
+            acc["--" + key] = userVariables[key]
+          }
+          acc[key] = userVariables[key]
+          return acc
+        }, {})
     var preserve = (options.preserve === true ? true : false)
     var map = {}
     var importantMap = {}

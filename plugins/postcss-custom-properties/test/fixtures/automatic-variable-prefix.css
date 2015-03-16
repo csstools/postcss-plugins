@@ -1,0 +1,4 @@
+div {
+  color: var(--unprefixed);
+  background: var(--prefixed);
+}

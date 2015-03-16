@@ -56,6 +56,16 @@ test("accepts variables defined from JavaScript, and overrides local definitions
   t.end()
 })
 
+test("prefixes js defined variabled with a double dash automatically", function(t) {
+  compareFixtures(t, "automatic-variable-prefix", {
+    variables: {
+      unprefixed: "blue",
+      "--prefixed":  "white"
+    }
+  })
+  t.end()
+})
+
 test("removes variable properties from the output", function(t) {
   compareFixtures(t, "remove-properties")
   t.end()
