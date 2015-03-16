@@ -1,3 +1,8 @@
+# 3.1.0 - 2015-03-16
+
+- Added: variables defined in JS are now automatically prefixed with `--`
+  ([0691784](https://github.com/postcss/postcss-custom-properties/commit/0691784ed2218d7e6b16da8c4df03e2ca0c4798c))
+
 # 3.0.1 - 2015-02-06
 
 - Fixed: logs now have filename back ([#19](https://github.com/postcss/postcss-custom-properties/issues/19))
