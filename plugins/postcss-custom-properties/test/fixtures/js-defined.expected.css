@@ -1,5 +1,7 @@
 div {
-  color: js-one;
-  color: js-two;
-  color: js-three;
+  p: js-one;
+  p: js-two;
+  p: js-three;
+  p: js-one;
+  p: js-one;
 }

@@ -1,3 +1,7 @@
+# 3.2.0 - 2015-03-31
+
+- Added: JS defined variables are now resolved too ([#22](https://github.com/postcss/postcss-custom-properties/issues/22))
+
 # 3.1.0 - 2015-03-16
 
 - Added: variables defined in JS are now automatically prefixed with `--`

@@ -4,7 +4,9 @@
 }
 
 div {
-  color: var(--test-one);
-  color: var(--test-two);
-  color: var(--test-three);
+  p: var(--test-one);
+  p: var(--test-two);
+  p: var(--test-three);
+  p: var(--test-varception);
+  p: var(--test-jsception);
 }
