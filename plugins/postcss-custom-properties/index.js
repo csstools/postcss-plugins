@@ -14,101 +14,6 @@ var VAR_FUNC_IDENTIFIER = "var"
 var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/ // matches `name[, fallback]`, captures "name" and "fallback"
 
 /**
- * Module export.
- */
-
-module.exports = function(options) {
-  return function(style) {
-    options = options || {}
-    var userVariables = options.variables || {}
-    var variables =
-      Object.keys(userVariables)
-        .reduce(function(acc, key) {
-          if (key.indexOf("--") !== 0) {
-            acc["--" + key] = userVariables[key]
-          }
-          acc[key] = userVariables[key]
-          return acc
-        }, {})
-    var preserve = (options.preserve === true ? true : false)
-    var map = {}
-    var importantMap = {}
-
-    // define variables
-    style.eachRule(function(rule) {
-      var toRemove = []
-
-      // only variables declared for `:root` are supported for now
-      if (rule.selectors.length !== 1 || rule.selectors[0] !== ":root" || rule.parent.type !== "root") {
-        rule.each(function(decl) {
-          var prop = decl.prop
-          if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
-            console.warn(
-              helpers.message(
-                "Custom property ignored: not scoped to the top-level :root element (" +
-                rule.selectors +
-                " { ... " + prop + ": ... })" +
-                (rule.parent.type !== "root" ? ", in " + rule.parent.type : ""),
-              decl.source)
-            )
-          }
-        })
-        return
-      }
-
-      rule.each(function(decl, i) {
-        var prop = decl.prop
-        if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
-          if (!map[prop] || !importantMap[prop] || decl.important) {
-            map[prop] = decl.value
-            importantMap[prop] = decl.important
-          }
-          toRemove.push(i)
-        }
-      })
-
-      // optionally remove `--*` properties from the rule
-      if (!preserve) {
-        for (var i = toRemove.length - 1; i >= 0; i--) {
-          rule.nodes.splice(toRemove[i], 1)
-        }
-
-        // remove empty :root {}
-        if (rule.nodes.length === 0) {
-          rule.removeSelf()
-        }
-      }
-    })
-
-    // apply js-defined custom properties
-    Object.keys(variables).forEach(function(variable) {
-      map[variable] = variables[variable]
-    })
-
-    // resolve variables
-    style.eachDecl(function(decl) {
-      var value = decl.value
-
-      // skip values that don’t contain variable functions
-      if (!value || value.indexOf(VAR_FUNC_IDENTIFIER + "(") === -1) {
-        return
-      }
-
-      helpers.try(function resolve() {
-        resolveValue(value, map, decl.source).forEach(function(resolvedValue) {
-          var clone = decl.cloneBefore()
-          clone.value = resolvedValue
-        })
-      }, decl.source)
-
-      if (!preserve) {
-        decl.removeSelf()
-      }
-    })
-  }
-}
-
-/**
  * Resolve CSS variables in a value
  *
  * The second argument to a CSS variable function, if provided, is a fallback
@@ -179,4 +84,99 @@ function resolveValue(value, variables, source) {
   })
 
   return results
+}
+
+/**
+ * Module export.
+ */
+
+module.exports = function(options) {
+  return function(style) {
+    options = options || {}
+    var userVariables = options.variables || {}
+    var variables =
+      Object.keys(userVariables)
+        .reduce(function(acc, key) {
+          if (key.indexOf("--") !== 0) {
+            acc["--" + key] = userVariables[key]
+          }
+          acc[key] = userVariables[key]
+          return acc
+        }, {})
+    var preserve = (options.preserve === true ? true : false)
+    var map = {}
+    var importantMap = {}
+
+    // define variables
+    style.eachRule(function(rule) {
+      var toRemove = []
+
+      // only variables declared for `:root` are supported for now
+      if (rule.selectors.length !== 1 || rule.selectors[0] !== ":root" || rule.parent.type !== "root") {
+        rule.each(function(decl) {
+          var prop = decl.prop
+          if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
+            console.warn(
+              helpers.message(
+                "Custom property ignored: not scoped to the top-level :root element (" +
+                rule.selectors +
+                " { ... " + prop + ": ... })" +
+                (rule.parent.type !== "root" ? ", in " + rule.parent.type : ""),
+              decl.source)
+            )
+          }
+        })
+        return
+      }
+
+      rule.each(function(decl, index) {
+        var prop = decl.prop
+        if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
+          if (!map[prop] || !importantMap[prop] || decl.important) {
+            map[prop] = decl.value
+            importantMap[prop] = decl.important
+          }
+          toRemove.push(index)
+        }
+      })
+
+      // optionally remove `--*` properties from the rule
+      if (!preserve) {
+        for (var i = toRemove.length - 1; i >= 0; i--) {
+          rule.nodes.splice(toRemove[i], 1)
+        }
+
+        // remove empty :root {}
+        if (rule.nodes.length === 0) {
+          rule.removeSelf()
+        }
+      }
+    })
+
+    // apply js-defined custom properties
+    Object.keys(variables).forEach(function(variable) {
+      map[variable] = variables[variable]
+    })
+
+    // resolve variables
+    style.eachDecl(function(decl) {
+      var value = decl.value
+
+      // skip values that don’t contain variable functions
+      if (!value || value.indexOf(VAR_FUNC_IDENTIFIER + "(") === -1) {
+        return
+      }
+
+      helpers.try(function resolve() {
+        resolveValue(value, map, decl.source).forEach(function(resolvedValue) {
+          var clone = decl.cloneBefore()
+          clone.value = resolvedValue
+        })
+      }, decl.source)
+
+      if (!preserve) {
+        decl.removeSelf()
+      }
+    })
+  }
 }
