@@ -155,7 +155,7 @@ module.exports = function(options) {
 
     // apply js-defined custom properties
     Object.keys(variables).forEach(function(variable) {
-      map[variable] = resolveValue(variables[variable], map)
+      map[variable] = variables[variable]
     })
 
     // resolve variables
