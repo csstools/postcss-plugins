@@ -73,11 +73,16 @@ function resolveValue(value, variables, deps, source) {
 
     // replace with computed custom properties
     if (replacement) {
-      deps.push(name);
+      deps.push(name)
+      // resolve replacement if it use a custom property
+      if (!Array.isArray(replacement)) {
+        replacement = resolveValue(replacement, variables, deps, source)
+        variables[name] = replacement
+      }
       // resolve the end of the expression
-      (matches.post ? resolveValue(matches.post, variables, [], source) : [""]).forEach(function(afterValue) {
-        // resolve replacement if it use a custom property
-        resolveValue(replacement, variables, deps, source).forEach(function(replacementValue) {
+      var post = matches.post ? resolveValue(matches.post, variables, [], source) : [""]
+      replacement.forEach(function(replacementValue) {
+        post.forEach(function(afterValue) {
           results.push(value.slice(0, start) + replacementValue + afterValue)
         })
       })
