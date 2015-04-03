@@ -24,11 +24,16 @@ var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/ // matches `name[, fallback]`, captures
  *
  * @param {String} value A property value known to contain CSS variable functions
  * @param {Object} variables A map of variable names and values
+ * @param {Array} deps An array of variable names the current variable depends on
  * @param {Object} source source object of the declaration containing the rule
  * @return {String} A property value with all CSS variables substituted.
  */
 
-function resolveValue(value, variables, source) {
+function resolveValue(value, variables, deps, source) {
+  if (!deps) {
+    deps = []
+  }
+
   var results = []
 
   var start = value.indexOf(VAR_FUNC_IDENTIFIER + "(")
@@ -47,6 +52,9 @@ function resolveValue(value, variables, source) {
   }
 
   matches.body.replace(RE_VAR, function(_, name, fallback) {
+    if (deps.indexOf(name) !== -1) {
+      throw new Error("self-referential variable: " + name)
+    }
     var replacement = variables[name]
     if (!replacement && !fallback) {
       console.warn(helpers.message("variable '" + name + "' is undefined and used without a fallback", source))
@@ -55,9 +63,9 @@ function resolveValue(value, variables, source) {
     // prepend with fallbacks
     if (fallback) {
       // resolve the end of the expression before the rest
-      (matches.post ? resolveValue(matches.post, variables, source) : [""]).forEach(function(afterValue) {
+      (matches.post ? resolveValue(matches.post, variables, [], source) : [""]).forEach(function(afterValue) {
         // resolve fallback values
-        resolveValue(fallback, variables, source).forEach(function(fbValue) {
+        resolveValue(fallback, variables, [], source).forEach(function(fbValue) {
           results.push(value.slice(0, start) + fbValue + afterValue)
         })
       })
@@ -65,10 +73,11 @@ function resolveValue(value, variables, source) {
 
     // replace with computed custom properties
     if (replacement) {
+      deps.push(name);
       // resolve the end of the expression
-      (matches.post ? resolveValue(matches.post, variables, source) : [""]).forEach(function(afterValue) {
+      (matches.post ? resolveValue(matches.post, variables, [], source) : [""]).forEach(function(afterValue) {
         // resolve replacement if it use a custom property
-        resolveValue(replacement, variables, source).forEach(function(replacementValue) {
+        resolveValue(replacement, variables, deps, source).forEach(function(replacementValue) {
           results.push(value.slice(0, start) + replacementValue + afterValue)
         })
       })
@@ -77,7 +86,7 @@ function resolveValue(value, variables, source) {
     // nothing, just keep original value
     if (!replacement && !fallback) {
       // resolve the end of the expression
-      (matches.post ? resolveValue(matches.post, variables, source) : [""]).forEach(function(afterValue) {
+      (matches.post ? resolveValue(matches.post, variables, [], source) : [""]).forEach(function(afterValue) {
         results.push(value.slice(0, start) + VAR_FUNC_IDENTIFIER + "(" + name + ")" + afterValue)
       })
     }
@@ -168,7 +177,7 @@ module.exports = function(options) {
       }
 
       helpers.try(function resolve() {
-        resolveValue(value, map, decl.source).forEach(function(resolvedValue) {
+        resolveValue(value, map, [], decl.source).forEach(function(resolvedValue) {
           var clone = decl.cloneBefore()
           clone.value = resolvedValue
         })
