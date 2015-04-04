@@ -13,8 +13,12 @@ function fixture(name) {
   return fs.readFileSync(fixturePath(name), "utf8").trim()
 }
 
+function resolveFixture(name, options) {
+  return postcss(customProperties(options)).process(fixture(name), {from: fixturePath(name)}).css.trim()
+}
+
 function compareFixtures(t, name, options) {
-  var actual = postcss(customProperties(options)).process(fixture(name), {from: fixturePath(name)}).css.trim()
+  var actual = resolveFixture(name, options)
 
   // handy thing: checkout actual in the *.actual.css file
   fs.writeFile(fixturePath(name + ".actual"), actual)
@@ -100,5 +104,15 @@ test("supports !important", function(t) {
 
 test("preserves variables when `preserve` is `true`", function(t) {
   compareFixtures(t, "preserve-variables", {preserve: true})
+  t.end()
+})
+
+test("throw error for circular variable references", function(t) {
+  t.throws(function() {
+    resolveFixture("self-reference", {preserve: true})
+  }, Error, "should throw error for self-referential variables")
+  t.throws(function() {
+    resolveFixture("circular-reference", {preserve: true})
+  }, Error, "should throw error for circular variable references")
   t.end()
 })
