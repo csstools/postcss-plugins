@@ -59,13 +59,15 @@ function resolveValue(value, variables, deps, source) {
     if (!replacement && !fallback) {
       console.warn(helpers.message("variable '" + name + "' is undefined and used without a fallback", source))
     }
-
+    var resolved, post
     // prepend with fallbacks
     if (fallback) {
+      // resolve fallback values
+      resolved = resolveValue(fallback, variables, [], source)
       // resolve the end of the expression before the rest
-      (matches.post ? resolveValue(matches.post, variables, [], source) : [""]).forEach(function(afterValue) {
-        // resolve fallback values
-        resolveValue(fallback, variables, [], source).forEach(function(fbValue) {
+      post = matches.post ? resolveValue(matches.post, variables, [], source) : [""]
+      resolved.forEach(function(fbValue) {
+        post.forEach(function(afterValue) {
           results.push(value.slice(0, start) + fbValue + afterValue)
         })
       })
@@ -80,7 +82,7 @@ function resolveValue(value, variables, deps, source) {
         variables[name] = replacement
       }
       // resolve the end of the expression
-      var post = matches.post ? resolveValue(matches.post, variables, [], source) : [""]
+      post = matches.post ? resolveValue(matches.post, variables, [], source) : [""]
       replacement.forEach(function(replacementValue) {
         post.forEach(function(afterValue) {
           results.push(value.slice(0, start) + replacementValue + afterValue)
@@ -90,8 +92,9 @@ function resolveValue(value, variables, deps, source) {
 
     // nothing, just keep original value
     if (!replacement && !fallback) {
+      resolved = matches.post ? resolveValue(matches.post, variables, [], source) : [""]
       // resolve the end of the expression
-      (matches.post ? resolveValue(matches.post, variables, [], source) : [""]).forEach(function(afterValue) {
+      resolved.forEach(function(afterValue) {
         results.push(value.slice(0, start) + VAR_FUNC_IDENTIFIER + "(" + name + ")" + afterValue)
       })
     }
