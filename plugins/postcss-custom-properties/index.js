@@ -53,7 +53,7 @@ function resolveValue(value, variables, deps, source) {
 
   matches.body.replace(RE_VAR, function(_, name, fallback) {
     if (deps.indexOf(name) !== -1) {
-      throw new Error("self-referential variable: " + name)
+      throw new Error("circular variable reference: " + name)
     }
     var replacement = variables[name]
     if (!replacement && !fallback) {
