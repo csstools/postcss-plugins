@@ -24,16 +24,11 @@ var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/ // matches `name[, fallback]`, captures
  *
  * @param {String} value A property value known to contain CSS variable functions
  * @param {Object} variables A map of variable names and values
- * @param {Array} deps An array of variable names the current variable depends on
  * @param {Object} source source object of the declaration containing the rule
  * @return {String} A property value with all CSS variables substituted.
  */
 
-function resolveValue(value, variables, deps, source) {
-  if (!deps) {
-    deps = []
-  }
-
+function resolveValue(value, variables, source) {
   var results = []
 
   var start = value.indexOf(VAR_FUNC_IDENTIFIER + "(")
@@ -52,52 +47,66 @@ function resolveValue(value, variables, deps, source) {
   }
 
   matches.body.replace(RE_VAR, function(_, name, fallback) {
-    if (deps.indexOf(name) !== -1) {
-      throw new Error("circular variable reference: " + name)
-    }
-    var replacement = variables[name]
-    if (!replacement && !fallback) {
+    var variable = variables[name]
+    var post
+    // undefined and without fallback, just keep original value
+    if (!variable && !fallback) {
       console.warn(helpers.message("variable '" + name + "' is undefined and used without a fallback", source))
+      post = matches.post ? resolveValue(matches.post, variables, source) : [""]
+      // resolve the end of the expression
+      post.forEach(function(afterValue) {
+        results.push(value.slice(0, start) + VAR_FUNC_IDENTIFIER + "(" + name + ")" + afterValue)
+      })
+      return
     }
-    var resolved, post
+
     // prepend with fallbacks
     if (fallback) {
       // resolve fallback values
-      resolved = resolveValue(fallback, variables, [], source)
+      fallback = resolveValue(fallback, variables, source)
       // resolve the end of the expression before the rest
-      post = matches.post ? resolveValue(matches.post, variables, [], source) : [""]
-      resolved.forEach(function(fbValue) {
+      post = matches.post ? resolveValue(matches.post, variables, source) : [""]
+      fallback.forEach(function(fbValue) {
         post.forEach(function(afterValue) {
           results.push(value.slice(0, start) + fbValue + afterValue)
         })
       })
     }
 
-    // replace with computed custom properties
-    if (replacement) {
-      deps.push(name)
-      // resolve replacement if it use a custom property
-      if (!Array.isArray(replacement)) {
-        replacement = resolveValue(replacement, variables, deps, source)
-        variables[name] = replacement
-      }
-      // resolve the end of the expression
-      post = matches.post ? resolveValue(matches.post, variables, [], source) : [""]
-      replacement.forEach(function(replacementValue) {
-        post.forEach(function(afterValue) {
-          results.push(value.slice(0, start) + replacementValue + afterValue)
-        })
-      })
+    if (!variable) {
+      return
     }
 
-    // nothing, just keep original value
-    if (!replacement && !fallback) {
-      resolved = matches.post ? resolveValue(matches.post, variables, [], source) : [""]
-      // resolve the end of the expression
-      resolved.forEach(function(afterValue) {
-        results.push(value.slice(0, start) + VAR_FUNC_IDENTIFIER + "(" + name + ")" + afterValue)
-      })
+    // replace with computed custom properties
+    if (!variable.resolved) {
+      // circular reference encountered
+      if (variable.deps.indexOf(name) !== -1) {
+        if (!fallback) {
+          console.warn(helpers.message("circular variable reference: " + name, source))
+          variable.value = [variable.value]
+          variable.circular = true
+        }
+        else {
+          variable.value = fallback
+          return
+        }
+      }
+      else {
+        variable.deps.push(name)
+        variable.value = resolveValue(variable.value, variables, source)
+      }
+      variable.resolved = true
     }
+    if (variable.circular && fallback) {
+      return
+    }
+    // resolve the end of the expression
+    post = matches.post ? resolveValue(matches.post, variables, source) : [""]
+    variable.value.forEach(function(replacementValue) {
+      post.forEach(function(afterValue) {
+        results.push(value.slice(0, start) + replacementValue + afterValue)
+      })
+    })
   })
 
   return results
@@ -150,7 +159,12 @@ module.exports = function(options) {
         var prop = decl.prop
         if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
           if (!map[prop] || !importantMap[prop] || decl.important) {
-            map[prop] = decl.value
+            map[prop] = {
+              value: decl.value,
+              deps: [],
+              circular: false,
+              resolved: false,
+            }
             importantMap[prop] = decl.important
           }
           toRemove.push(index)
@@ -172,7 +186,12 @@ module.exports = function(options) {
 
     // apply js-defined custom properties
     Object.keys(variables).forEach(function(variable) {
-      map[variable] = variables[variable]
+      map[variable] = {
+        value: variables[variable],
+        deps: [],
+        circular: false,
+        resolved: false,
+      }
     })
 
     // resolve variables
@@ -185,7 +204,7 @@ module.exports = function(options) {
       }
 
       helpers.try(function resolve() {
-        resolveValue(value, map, [], decl.source).forEach(function(resolvedValue) {
+        resolveValue(value, map, decl.source).forEach(function(resolvedValue) {
           var clone = decl.cloneBefore()
           clone.value = resolvedValue
         })

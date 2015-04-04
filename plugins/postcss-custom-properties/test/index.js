@@ -107,12 +107,14 @@ test("preserves variables when `preserve` is `true`", function(t) {
   t.end()
 })
 
-test("throw error for circular variable references", function(t) {
-  t.throws(function() {
-    resolveFixture("self-reference", {preserve: true})
-  }, Error, "should throw error for self-referential variables")
-  t.throws(function() {
-    resolveFixture("circular-reference", {preserve: true})
-  }, Error, "should throw error for circular variable references")
+test("circular variable references", function(t) {
+  compareFixtures(t, "self-reference")
+  compareFixtures(t, "circular-reference")
+  t.end()
+})
+
+test("circular variable references with fallback", function(t) {
+  compareFixtures(t, "self-reference-fallback")
+  compareFixtures(t, "self-reference-double-fallback")
   t.end()
 })

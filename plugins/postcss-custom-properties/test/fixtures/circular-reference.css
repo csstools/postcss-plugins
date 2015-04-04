@@ -2,3 +2,6 @@
     --color: var(--bg-color);
     --bg-color: var(--color);
 }
+body {
+	color: var(--color);
+}
