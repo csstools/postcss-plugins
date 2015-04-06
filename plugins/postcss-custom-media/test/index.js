@@ -32,5 +32,7 @@ test("@custom-media", function(t) {
     }
   })
 
+  compareFixtures(t, "preserve", "should preserve custom media", {preserve: true})
+
   t.end()
 })

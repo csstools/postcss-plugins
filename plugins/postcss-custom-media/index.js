@@ -20,6 +20,7 @@ function customMedia(options) {
   return function(styles) {
     options = options || {}
     var extensions = options.extensions || {}
+    var preserve = options.preserve
     var map = {}
     var toRemove = []
 
@@ -34,7 +35,9 @@ function customMedia(options) {
       // map[<extension-name>] = <media-query-list>
       map[params.shift()] = params.join(" ")
 
-      toRemove.push(rule)
+      if (!preserve) {
+        toRemove.push(rule)
+      }
     })
 
     // apply js-defined media queries
