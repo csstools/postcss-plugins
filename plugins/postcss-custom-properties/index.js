@@ -119,16 +119,13 @@ function resolveValue(value, variables, source) {
 module.exports = function(options) {
   return function(style) {
     options = options || {}
-    var userVariables = options.variables || {}
-    var variables =
-      Object.keys(userVariables)
-        .reduce(function(acc, key) {
-          if (key.indexOf("--") !== 0) {
-            acc["--" + key] = userVariables[key]
-          }
-          acc[key] = userVariables[key]
-          return acc
-        }, {})
+    var variables = options.variables || {}
+    Object.keys(variables).forEach(function(name) {
+      if (name.slice(0, 2) !== "--") {
+        variables["--" + name] = variables[name]
+        delete variables[name]
+      }
+    })
     var preserve = (options.preserve === true ? true : false)
     var map = {}
     var importantMap = {}
