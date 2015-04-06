@@ -21,6 +21,12 @@ function customMedia(options) {
   return function(styles) {
     options = options || {}
     var extensions = options.extensions || {}
+    Object.keys(extensions).forEach(function(name) {
+      if (name.slice(0, 2) !== "--") {
+        extensions["--" + name] = extensions[name]
+        delete extensions[name]
+      }
+    })
     var append = options.append
     var preserve = append || options.preserve
     var map = {}
