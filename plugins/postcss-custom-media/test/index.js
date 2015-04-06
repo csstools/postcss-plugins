@@ -34,5 +34,12 @@ test("@custom-media", function(t) {
 
   compareFixtures(t, "preserve", "should preserve custom media", {preserve: true})
 
+  compareFixtures(t, "append", "should append custom media", {
+    extensions: {
+      "--viewport-max-s": "(max-width: 30em)",
+    },
+    append: true,
+  })
+
   t.end()
 })

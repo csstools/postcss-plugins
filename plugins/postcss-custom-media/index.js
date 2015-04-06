@@ -1,6 +1,7 @@
 /**
  * Module dependencies
  */
+var postcss = require("postcss")
 var helpers = require("postcss-message-helpers")
 
 /**
@@ -20,7 +21,8 @@ function customMedia(options) {
   return function(styles) {
     options = options || {}
     var extensions = options.extensions || {}
-    var preserve = options.preserve
+    var append = options.append
+    var preserve = append || options.preserve
     var map = {}
     var toRemove = []
 
@@ -41,8 +43,8 @@ function customMedia(options) {
     })
 
     // apply js-defined media queries
-    Object.keys(extensions).forEach(function(extension) {
-      map[extension] = extensions[extension]
+    Object.keys(extensions).forEach(function(name) {
+      map[name] = extensions[name]
     })
 
     // transform custom media query aliases
@@ -60,6 +62,22 @@ function customMedia(options) {
         toRemove.push(rule)
       })
     })
+
+    if (append) {
+      var names = Object.keys(map)
+      if (names.length) {
+        names.forEach(function(name) {
+          var atRule = postcss.atRule({
+            name: "custom-media",
+            afterName: " ",
+            params: name + " " + map[name],
+          })
+          styles.append(atRule)
+        })
+        styles.semicolon = true
+        styles.after = "\n"
+      }
+    }
 
     // remove @custom-media
     toRemove.forEach(function(rule) { rule.removeSelf() })
