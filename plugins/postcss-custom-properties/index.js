@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 
+var postcss = require("postcss")
 var balanced = require("balanced-match")
 var helpers = require("postcss-message-helpers")
 
@@ -126,7 +127,8 @@ module.exports = function(options) {
         delete variables[name]
       }
     })
-    var preserve = (options.preserve === true ? true : false)
+    var append = options.append
+    var preserve = append || options.preserve
     var map = {}
     var importantMap = {}
 
@@ -191,6 +193,16 @@ module.exports = function(options) {
       }
     })
 
+    if (append) {
+      Object.keys(map).forEach(function(name) {
+        var variable = map[name]
+        if (!variable.resolved) {
+          variable.value = resolveValue(variable.value, map)
+          variable.resolved = true
+        }
+      })
+    }
+
     // resolve variables
     style.eachDecl(function(decl) {
       var value = decl.value
@@ -211,5 +223,26 @@ module.exports = function(options) {
         decl.removeSelf()
       }
     })
+
+    if (append) {
+      var names = Object.keys(map)
+      if (names.length) {
+        var container = postcss.rule({
+          selector: ":root",
+          semicolon: true,
+        })
+        names.forEach(function(name) {
+          var variable = map[name]
+          var val = variable.value
+          if (variable.resolved) { val = val[val.length - 1] }
+          var decl = postcss.decl({
+            prop: name,
+            value: val,
+          })
+          container.append(decl)
+        })
+        style.append(container)
+      }
+    }
   }
 }
