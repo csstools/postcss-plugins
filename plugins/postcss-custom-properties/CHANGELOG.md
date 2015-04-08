@@ -1,3 +1,9 @@
+# 3.3.0 - 2015-04-0
+
+- Added: `preserve` now support `"computed"` so only preserve resolved custom properties (see new option below)
+- Added: `appendVariables` allows you (when `preserve` is trulthy) to append your variables as custom properties
+- Added: `strict: false` allows your to avoid too many fallbacks added in your CSS.
+
 # 3.2.0 - 2015-03-31
 
 - Added: JS defined variables are now resolved too ([#22](https://github.com/postcss/postcss-custom-properties/issues/22))
