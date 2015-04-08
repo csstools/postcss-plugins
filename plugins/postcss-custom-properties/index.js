@@ -128,7 +128,7 @@ module.exports = function(options) {
       }
     })
     var append = options.append
-    var preserve = append || options.preserve
+    var preserve = options.preserve
     var map = {}
     var importantMap = {}
 
@@ -193,7 +193,7 @@ module.exports = function(options) {
       }
     })
 
-    if (append) {
+    if (preserve) {
       Object.keys(map).forEach(function(name) {
         var variable = map[name]
         if (!variable.resolved) {
@@ -219,12 +219,12 @@ module.exports = function(options) {
         })
       }, decl.source)
 
-      if (!preserve) {
+      if (!preserve || preserve === "computed") {
         decl.removeSelf()
       }
     })
 
-    if (append) {
+    if (preserve && append) {
       var names = Object.keys(map)
       if (names.length) {
         var container = postcss.rule({

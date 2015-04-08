@@ -1,8 +1,8 @@
 div {
 	p: js-one;
-	p: var(--test-one);
 }
 :root {
 	--test-one: js-one;
 	--test-two: js-two;
+	--test-three: js-one js-two;
 }

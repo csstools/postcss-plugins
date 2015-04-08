@@ -107,6 +107,11 @@ test("preserves variables when `preserve` is `true`", function(t) {
   t.end()
 })
 
+test("preserves computed value when `preserve` is `\"computed\"`", function(t) {
+  compareFixtures(t, "preserve-computed", {preserve: "computed"})
+  t.end()
+})
+
 test("circular variable references", function(t) {
   compareFixtures(t, "self-reference")
   compareFixtures(t, "circular-reference")
@@ -124,8 +129,10 @@ test("append variables", function(t) {
     variables: {
       "--test-one": "js-one",
       "test-two": "js-two",
+      "test-three": "var(--test-one, one) var(--test-two, two)",
     },
     append: true,
+    preserve: "computed",
   })
   t.end()
 })
