@@ -57,7 +57,7 @@ Checkout [tests](test) for more.
 
 #### `preserve` (default: `false`)
 
-Allow you to preserve custom properties & var() usage in output.
+Allows you to preserve custom properties & var() usage in output.
 
 ```js
 var out = postcss()
@@ -66,11 +66,18 @@ var out = postcss()
   .css
 ```
 
+You can also set `preserve: "computed"` to get computed resolved custom properties in the final output.
+Handy to make them available to your JavaScript.
+
 #### `variables` (default: `{}`)
 
-Allow you to pass an object of variables for `:root`. These definitions will override any that exist in the CSS.
+Allows you to pass an object of variables for `:root`. These definitions will override any that exist in the CSS.
 The keys are automatically prefixed with the CSS `--` to make it easier to share
 variables in your codebase.
+
+### `appendVariables` (default: `false`)
+
+If `preserve` is set to `true` (or `"computed"`), allows you to append your variables at then of your CSS.
 
 ---
 
