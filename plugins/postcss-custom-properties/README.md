@@ -55,6 +55,12 @@ Checkout [tests](test) for more.
 
 ### Options
 
+#### `strict` (default: `true`)
+
+Per specifications, all fallbacks should be added since we can't verify if a
+computed value is valid or not.
+This option allows you to avoid adding too many fallback values in your CSS.
+
 #### `preserve` (default: `false`)
 
 Allows you to preserve custom properties & var() usage in output.

@@ -136,3 +136,11 @@ test("append variables", function(t) {
   })
   t.end()
 })
+
+test("strict option", function(t) {
+  compareFixtures(t, "substitution-strict", {
+    strict: false,
+  })
+
+  t.end()
+})

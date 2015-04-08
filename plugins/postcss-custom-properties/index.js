@@ -128,6 +128,7 @@ module.exports = function(options) {
         delete variables[name]
       }
     })
+    var strict = options.strict === undefined ? true : options.strict
     var appendVariables = options.appendVariables
     var preserve = options.preserve
     var map = {}
@@ -214,7 +215,11 @@ module.exports = function(options) {
       }
 
       helpers.try(function resolve() {
-        resolveValue(value, map, decl.source).forEach(function(resolvedValue) {
+        var resolved = resolveValue(value, map, decl.source)
+        if (!strict) {
+          resolved = [resolved.pop()]
+        }
+        resolved.forEach(function(resolvedValue) {
           var clone = decl.cloneBefore()
           clone.value = resolvedValue
         })

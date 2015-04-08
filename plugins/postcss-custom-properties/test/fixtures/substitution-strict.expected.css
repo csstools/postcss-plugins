@@ -1,0 +1,5 @@
+div {
+  aProp: "a";
+  bProp: bFallback;
+  bProp: cPropFallback;
+}
