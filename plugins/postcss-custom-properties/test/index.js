@@ -14,17 +14,20 @@ function fixture(name) {
 }
 
 function resolveFixture(name, options) {
-  return postcss(customProperties(options)).process(fixture(name), {from: fixturePath(name)}).css.trim()
+  return postcss(customProperties(options)).process(fixture(name), {from: fixturePath(name)})
 }
 
 function compareFixtures(t, name, options) {
-  var actual = resolveFixture(name, options)
+  var postcssResult = resolveFixture(name, options)
+  var actual = postcssResult.css.trim()
 
   // handy thing: checkout actual in the *.actual.css file
   fs.writeFile(fixturePath(name + ".actual"), actual)
 
   var expected = fixture(name + ".expected")
-  return t.equal(actual, expected, "processed fixture '" + name + "' should be equal to expected output")
+  t.equal(actual, expected, "processed fixture '" + name + "' should be equal to expected output")
+
+  return postcssResult
 }
 
 test("throw errors", function(t) {
@@ -40,12 +43,14 @@ test("throw errors", function(t) {
 })
 
 test("substitutes nothing when a variable function references an undefined variable", function(t) {
-  compareFixtures(t, "substitution-undefined")
+  var result = compareFixtures(t, "substitution-undefined")
+  t.equal(result.warnings()[0].text, "variable '--test' is undefined and used without a fallback", "should add a warning for undefined variable")
   t.end()
 })
 
 test("substitutes defined variables in `:root` only", function(t) {
-  compareFixtures(t, "substitution-defined")
+  var result = compareFixtures(t, "substitution-defined")
+  t.ok(result.warnings()[0].text.match(/^Custom property ignored/), "should add a warning for non root custom properties")
   t.end()
 })
 
@@ -114,7 +119,8 @@ test("preserves computed value when `preserve` is `\"computed\"`", function(t) {
 
 test("circular variable references", function(t) {
   compareFixtures(t, "self-reference")
-  compareFixtures(t, "circular-reference")
+  var result = compareFixtures(t, "circular-reference")
+  t.equal(result.warnings()[0].text, "Circular variable reference: --color", "should add a warning for circular reference")
   t.end()
 })
 

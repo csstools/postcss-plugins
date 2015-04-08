@@ -5,7 +5,6 @@
 var assign = require("object-assign")
 var postcss = require("postcss")
 var balanced = require("balanced-match")
-var helpers = require("postcss-message-helpers")
 
 /**
  * Constants.
@@ -30,7 +29,7 @@ var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/ // matches `name[, fallback]`, captures
  * @return {String} A property value with all CSS variables substituted.
  */
 
-function resolveValue(value, variables, source) {
+function resolveValue(value, variables, result, decl) {
   var results = []
 
   var start = value.indexOf(VAR_FUNC_IDENTIFIER + "(")
@@ -41,11 +40,11 @@ function resolveValue(value, variables, source) {
   var matches = balanced("(", ")", value.substring(start))
 
   if (!matches) {
-    throw new SyntaxError("missing closing ')' in the value '" + value + "'")
+    throw decl.error("missing closing ')' in the value '" + value + "'")
   }
 
   if (matches.body === "") {
-    throw new Error("var() must contain a non-whitespace string")
+    throw decl.error("var() must contain a non-whitespace string")
   }
 
   matches.body.replace(RE_VAR, function(_, name, fallback) {
@@ -53,8 +52,8 @@ function resolveValue(value, variables, source) {
     var post
     // undefined and without fallback, just keep original value
     if (!variable && !fallback) {
-      console.warn(helpers.message("variable '" + name + "' is undefined and used without a fallback", source))
-      post = matches.post ? resolveValue(matches.post, variables, source) : [""]
+      result.warn("variable '" + name + "' is undefined and used without a fallback", {node: decl})
+      post = matches.post ? resolveValue(matches.post, variables, result, decl) : [""]
       // resolve the end of the expression
       post.forEach(function(afterValue) {
         results.push(value.slice(0, start) + VAR_FUNC_IDENTIFIER + "(" + name + ")" + afterValue)
@@ -65,9 +64,9 @@ function resolveValue(value, variables, source) {
     // prepend with fallbacks
     if (fallback) {
       // resolve fallback values
-      fallback = resolveValue(fallback, variables, source)
+      fallback = resolveValue(fallback, variables, result, decl)
       // resolve the end of the expression before the rest
-      post = matches.post ? resolveValue(matches.post, variables, source) : [""]
+      post = matches.post ? resolveValue(matches.post, variables, result, decl) : [""]
       fallback.forEach(function(fbValue) {
         post.forEach(function(afterValue) {
           results.push(value.slice(0, start) + fbValue + afterValue)
@@ -84,7 +83,7 @@ function resolveValue(value, variables, source) {
       // circular reference encountered
       if (variable.deps.indexOf(name) !== -1) {
         if (!fallback) {
-          console.warn(helpers.message("circular variable reference: " + name, source))
+          result.warn("Circular variable reference: " + name, {node: decl})
           variable.value = [variable.value]
           variable.circular = true
         }
@@ -95,7 +94,7 @@ function resolveValue(value, variables, source) {
       }
       else {
         variable.deps.push(name)
-        variable.value = resolveValue(variable.value, variables, source)
+        variable.value = resolveValue(variable.value, variables, result, decl)
       }
       variable.resolved = true
     }
@@ -103,7 +102,7 @@ function resolveValue(value, variables, source) {
       return
     }
     // resolve the end of the expression
-    post = matches.post ? resolveValue(matches.post, variables, source) : [""]
+    post = matches.post ? resolveValue(matches.post, variables, result, decl) : [""]
     variable.value.forEach(function(replacementValue) {
       post.forEach(function(afterValue) {
         results.push(value.slice(0, start) + replacementValue + afterValue)
@@ -118,8 +117,8 @@ function resolveValue(value, variables, source) {
  * Module export.
  */
 
-module.exports = function(options) {
-  return function(style) {
+module.exports = postcss.plugin("postcss-custom-properties", function(options) {
+  return function(style, result) {
     options = options || {}
     var variables = assign({}, options.variables || {})
     Object.keys(variables).forEach(function(name) {
@@ -143,13 +142,12 @@ module.exports = function(options) {
         rule.each(function(decl) {
           var prop = decl.prop
           if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
-            console.warn(
-              helpers.message(
-                "Custom property ignored: not scoped to the top-level :root element (" +
-                rule.selectors +
-                " { ... " + prop + ": ... })" +
-                (rule.parent.type !== "root" ? ", in " + rule.parent.type : ""),
-              decl.source)
+            result.warn(
+              "Custom property ignored: not scoped to the top-level :root element (" +
+              rule.selectors +
+              " { ... " + prop + ": ... })" +
+              (rule.parent.type !== "root" ? ", in " + rule.parent.type : ""),
+              {node: decl}
             )
           }
         })
@@ -199,7 +197,7 @@ module.exports = function(options) {
       Object.keys(map).forEach(function(name) {
         var variable = map[name]
         if (!variable.resolved) {
-          variable.value = resolveValue(variable.value, map)
+          variable.value = resolveValue(variable.value, map, result)
           variable.resolved = true
         }
       })
@@ -214,16 +212,14 @@ module.exports = function(options) {
         return
       }
 
-      helpers.try(function resolve() {
-        var resolved = resolveValue(value, map, decl.source)
-        if (!strict) {
-          resolved = [resolved.pop()]
-        }
-        resolved.forEach(function(resolvedValue) {
-          var clone = decl.cloneBefore()
-          clone.value = resolvedValue
-        })
-      }, decl.source)
+      var resolved = resolveValue(value, map, result, decl)
+      if (!strict) {
+        resolved = [resolved.pop()]
+      }
+      resolved.forEach(function(resolvedValue) {
+        var clone = decl.cloneBefore()
+        clone.value = resolvedValue
+      })
 
       if (!preserve || preserve === "computed") {
         decl.removeSelf()
@@ -251,4 +247,4 @@ module.exports = function(options) {
       }
     }
   }
-}
+})
