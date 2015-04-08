@@ -127,7 +127,7 @@ module.exports = function(options) {
         delete variables[name]
       }
     })
-    var append = options.append
+    var appendVariables = options.appendVariables
     var preserve = options.preserve
     var map = {}
     var importantMap = {}
@@ -224,7 +224,7 @@ module.exports = function(options) {
       }
     })
 
-    if (preserve && append) {
+    if (preserve && appendVariables) {
       var names = Object.keys(map)
       if (names.length) {
         var container = postcss.rule({

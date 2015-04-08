@@ -131,8 +131,8 @@ test("append variables", function(t) {
       "test-two": "js-two",
       "test-three": "var(--test-one, one) var(--test-two, two)",
     },
-    append: true,
     preserve: "computed",
+    appendVariables: true,
   })
   t.end()
 })
