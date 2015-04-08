@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 
+var assign = require("object-assign")
 var postcss = require("postcss")
 var balanced = require("balanced-match")
 var helpers = require("postcss-message-helpers")
@@ -120,7 +121,7 @@ function resolveValue(value, variables, source) {
 module.exports = function(options) {
   return function(style) {
     options = options || {}
-    var variables = options.variables || {}
+    var variables = assign({}, options.variables || {})
     Object.keys(variables).forEach(function(name) {
       if (name.slice(0, 2) !== "--") {
         variables["--" + name] = variables[name]
