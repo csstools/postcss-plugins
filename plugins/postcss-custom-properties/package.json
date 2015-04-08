@@ -23,7 +23,6 @@
   ],
   "dependencies": {
     "balanced-match": "~0.1.0",
-    "object-assign": "^2.0.0",
     "postcss": "^4.1.4"
   },
   "devDependencies": {

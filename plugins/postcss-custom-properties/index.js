@@ -2,7 +2,6 @@
  * Module dependencies.
  */
 
-var assign = require("object-assign")
 var postcss = require("postcss")
 var balanced = require("balanced-match")
 
@@ -120,13 +119,16 @@ function resolveValue(value, variables, result, decl) {
 module.exports = postcss.plugin("postcss-custom-properties", function(options) {
   return function(style, result) {
     options = options || {}
-    var variables = assign({}, options.variables || {})
-    Object.keys(variables).forEach(function(name) {
-      if (name.slice(0, 2) !== "--") {
-        variables["--" + name] = variables[name]
-        delete variables[name]
-      }
-    })
+    var variables = {}
+    if (options.variables) {
+      Object.keys(options.variables).forEach(function(name) {
+        var val = options.variables[name]
+        if (name.slice(0, 2) !== "--") {
+          name = "--" + name
+        }
+        variables[name] = val
+      })
+    }
     var strict = options.strict === undefined ? true : options.strict
     var appendVariables = options.appendVariables
     var preserve = options.preserve
