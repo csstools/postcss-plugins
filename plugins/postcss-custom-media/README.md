@@ -53,7 +53,7 @@ Allows you to pass an object to define the `<media-query-list>` for each `<exten
 
 Allows you to preserve custom media query definitions in output.
 
-### `appendExtensions` (default: `false`)
+#### `appendExtensions` (default: `false`)
 
 If `preserve` is set to `true`, allows you to append your extensions at end of your CSS.
 
