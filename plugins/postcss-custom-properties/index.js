@@ -126,7 +126,7 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
         if (name.slice(0, 2) !== "--") {
           name = "--" + name
         }
-        variables[name] = val
+        variables[name] = String(val)
       })
     }
     var strict = options.strict === undefined ? true : options.strict

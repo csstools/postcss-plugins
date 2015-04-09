@@ -62,6 +62,7 @@ test("accepts variables defined from JavaScript, and overrides local definitions
       "--test-three": "js-three",
       "--test-varception": "var(--test-one)",
       "--test-jsception": "var(--test-varception)",
+      "--test-num": 1,
     },
   })
   t.end()

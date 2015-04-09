@@ -9,4 +9,5 @@ div {
   p: var(--test-three);
   p: var(--test-varception);
   p: var(--test-jsception);
+  p: var(--test-num);
 }
