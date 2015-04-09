@@ -12,10 +12,13 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
   postcssOpts = postcssOpts || {}
   postcssOpts.from = filename("fixtures/" + name)
   opts = opts || {}
-  var actual = postcss().use(plugin(opts)).process(read(postcssOpts.from), postcssOpts).css
+  var result = postcss().use(plugin(opts)).process(read(postcssOpts.from), postcssOpts)
+  var actual = result.css
   var expected = read(filename("fixtures/" + name + ".expected"))
   fs.writeFile(filename("fixtures/" + name + ".actual"), actual)
   t.equal(actual.trim(), expected.trim(), msg)
+
+  return result
 }
 
 test("@custom-media", function(t) {
@@ -23,7 +26,8 @@ test("@custom-media", function(t) {
 
   compareFixtures(t, "transform-all", "should replaces all extension names")
 
-  compareFixtures(t, "undefined", "should remove undefined @media")
+  var undefinedRes = compareFixtures(t, "undefined", "should remove undefined @media")
+  t.ok(undefinedRes.warnings()[0].text.match(/Missing @custom-media/), "should send warning to postcss")
 
   compareFixtures(t, "js-defined", "should transform custom media and override local extensions", {
     extensions: {

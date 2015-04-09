@@ -1,5 +1,6 @@
-# Unrelease
+# 4.0.0 - Unrelease
 
+- Changed: warning messages are not sent via postcss API (^4.1.0)
 - Added: `preserve` allows you to preserve custom media query defintions
 - Added: `appendExtensions` allows you (when `preserve` is truthy) to append your extensions as media queries
 

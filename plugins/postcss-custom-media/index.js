@@ -2,7 +2,6 @@
  * Module dependencies
  */
 var postcss = require("postcss")
-var helpers = require("postcss-message-helpers")
 
 /**
  * Constants.
@@ -12,13 +11,13 @@ var EXTENSION_RE = /\(\s*(--[\w-]+)\s*\)/g
 /**
  * Expose the plugin.
  */
-module.exports = customMedia
+module.exports = postcss.plugin("postcss-custom-media", customMedia)
 
 /*
  * read & replace custom media queries by standard media queries
  */
 function customMedia(options) {
-  return function(styles) {
+  return function(styles, result) {
     options = options || {}
     var extensions = {}
     if (options.extensions) {
@@ -67,7 +66,7 @@ function customMedia(options) {
           return map[name]
         }
 
-        console.warn(helpers.message("missing @custom-media definition for '" + name + "'. The entire rule has been removed from the output.", rule.source))
+        result.warn("Missing @custom-media definition for '" + name + "'. The entire rule has been removed from the output.", {node: rule})
         toRemove.push(rule)
       })
     })
