@@ -14,7 +14,7 @@ var EXTENSION_RE = /\(\s*(--[\w-]+)\s*\)/g
  */
 module.exports = customMedia
 
-/**
+/*
  * read & replace custom media queries by standard media queries
  */
 function customMedia(options) {

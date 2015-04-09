@@ -28,15 +28,15 @@ test("@custom-media", function(t) {
   compareFixtures(t, "js-defined", "should transform custom media and override local extensions", {
     extensions: {
       "--viewport-max-s": "(max-width: 30em)",
-      "--viewport-min-s": "(min-width: 30.01em)"
-    }
+      "--viewport-min-s": "(min-width: 30.01em)",
+    },
   })
 
   compareFixtures(t, "js-defined", "should transform custom media and override local unprefixed extensions", {
     extensions: {
       "viewport-max-s": "(max-width: 30em)",
-      "viewport-min-s": "(min-width: 30.01em)"
-    }
+      "viewport-min-s": "(min-width: 30.01em)",
+    },
   })
 
   compareFixtures(t, "preserve", "should preserve custom media", {preserve: true})
