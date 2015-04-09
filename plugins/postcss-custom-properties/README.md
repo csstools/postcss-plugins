@@ -83,7 +83,7 @@ variables in your codebase.
 
 ### `appendVariables` (default: `false`)
 
-If `preserve` is set to `true` (or `"computed"`), allows you to append your variables at then of your CSS.
+If `preserve` is set to `true` (or `"computed"`), allows you to append your variables at the end of your CSS.
 
 ---
 
