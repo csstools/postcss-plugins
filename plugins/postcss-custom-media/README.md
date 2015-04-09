@@ -49,6 +49,14 @@ Checkout [tests](test) for more examples.
 
 Allows you to pass an object to define the `<media-query-list>` for each `<extension-name>`. These definitions will override any that exist in the CSS.
 
+#### `preserve` (default: `false`)
+
+Allows you to preserve custom media query definitions in output.
+
+### `appendExtensions` (default: `false`)
+
+If `preserve` is set to `true`, allows you to append your extensions at end of your CSS.
+
 ---
 
 ## Contributing

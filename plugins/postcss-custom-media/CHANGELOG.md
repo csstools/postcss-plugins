@@ -1,3 +1,8 @@
+# Unrelease
+
+- Added: `preserve` allows you to preserve custom media query defintions
+- Added: `appendExtensions` allows you (when `preserve` is truthy) to append your extensions as media queries
+
 # 3.0.0 - 2015-01-29
 
 - Added: compatibility with postcss v4.x
