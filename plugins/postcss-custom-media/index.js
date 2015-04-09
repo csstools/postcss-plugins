@@ -20,15 +20,18 @@ module.exports = customMedia
 function customMedia(options) {
   return function(styles) {
     options = options || {}
-    var extensions = options.extensions || {}
-    Object.keys(extensions).forEach(function(name) {
-      if (name.slice(0, 2) !== "--") {
-        extensions["--" + name] = extensions[name]
-        delete extensions[name]
-      }
-    })
-    var append = options.append
-    var preserve = append || options.preserve
+    var extensions = {}
+    if (options.extensions) {
+      Object.keys(options.extensions).forEach(function(name) {
+        var val = options.extensions[name]
+        if (name.slice(0, 2) !== "--") {
+          name = "--" + name
+        }
+        extensions[name] = val
+      })
+    }
+    var appendExtensions = options.appendExtensions
+    var preserve = options.preserve
     var map = {}
     var toRemove = []
 
@@ -69,7 +72,7 @@ function customMedia(options) {
       })
     })
 
-    if (append) {
+    if (appendExtensions) {
       var names = Object.keys(map)
       if (names.length) {
         names.forEach(function(name) {

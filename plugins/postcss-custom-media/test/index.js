@@ -45,7 +45,7 @@ test("@custom-media", function(t) {
     extensions: {
       "--viewport-max-s": "(max-width: 30em)",
     },
-    append: true,
+    appendExtensions: true,
   })
 
   t.end()
