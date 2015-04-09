@@ -81,7 +81,7 @@ Allows you to pass an object of variables for `:root`. These definitions will ov
 The keys are automatically prefixed with the CSS `--` to make it easier to share
 variables in your codebase.
 
-### `appendVariables` (default: `false`)
+#### `appendVariables` (default: `false`)
 
 If `preserve` is set to `true` (or `"computed"`), allows you to append your variables at the end of your CSS.
 
