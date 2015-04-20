@@ -3,6 +3,33 @@ var postcss = require("postcss")
 var EXTENSION_RE = /\(\s*(--[\w-]+)\s*\)/g
 
 /*
+ * Resolve custom media values.
+ */
+function resolveValue(value, map, result) {
+  if (!EXTENSION_RE.test(value)) {
+    return value
+  }
+  return value.replace(EXTENSION_RE, function(orig, name) {
+    if (!map[name]) {
+      return orig
+    }
+
+    var mq = map[name]
+    if (mq.resolved) {
+      return mq.value
+    }
+
+    if (mq.deps.indexOf(name) !== -1) {
+      mq.circular = true
+      return orig
+    }
+    mq.deps.push(name)
+    mq.value = resolveValue(mq.value, map, result)
+    return mq.value
+  })
+}
+
+/*
  * read & replace custom media queries by standard media queries
  */
 function customMedia(options) {
@@ -32,7 +59,12 @@ function customMedia(options) {
       var params = rule.params.split(" ")
       // @custom-media <extension-name> <media-query-list>;
       // map[<extension-name>] = <media-query-list>
-      map[params.shift()] = params.join(" ")
+      map[params.shift()] = {
+        value: params.join(" "),
+        deps: [],
+        circular: false,
+        resolved: false,
+      }
 
       if (!preserve) {
         toRemove.push(rule)
@@ -41,7 +73,17 @@ function customMedia(options) {
 
     // apply js-defined media queries
     Object.keys(extensions).forEach(function(name) {
-      map[name] = extensions[name]
+      map[name] = {
+        value: extensions[name],
+        deps: [],
+        circular: false,
+        resolved: false,
+      }
+    })
+
+    Object.keys(map).forEach(function(name) {
+      map[name].value = resolveValue(map[name].value, map, result)
+      map[name].resolved = true
     })
 
     // transform custom media query aliases
@@ -52,7 +94,15 @@ function customMedia(options) {
 
       rule.params = rule.params.replace(EXTENSION_RE, function(_, name) {
         if (map[name]) {
-          return map[name]
+          if (map[name].circular) {
+            result.warn(
+              "Circular @custom-media definition for '" + name +
+                "'. The entire rule has been removed from the output.",
+              {node: rule}
+            )
+            toRemove.push(rule)
+          }
+          return map[name].value
         }
 
         result.warn(
@@ -68,10 +118,13 @@ function customMedia(options) {
       var names = Object.keys(map)
       if (names.length) {
         names.forEach(function(name) {
+          if (map[name].circular) {
+            return
+          }
           var atRule = postcss.atRule({
             name: "custom-media",
             afterName: " ",
-            params: name + " " + map[name],
+            params: name + " " + map[name].value,
           })
           styles.append(atRule)
         })

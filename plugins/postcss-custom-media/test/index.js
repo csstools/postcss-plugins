@@ -40,6 +40,24 @@ test("@custom-media", function(t) {
     "should replaces all extension names"
   )
 
+  compareFixtures(
+    t,
+    "transform-reference",
+    "should transform custom media referencing another custom media"
+  )
+
+  compareFixtures(
+    t,
+    "transform-self-reference",
+    "should transform custom media with self reference"
+  )
+
+  compareFixtures(
+    t,
+    "transform-circular-reference",
+    "should transform custom media with circular reference"
+  )
+
   var undefinedRes = compareFixtures(
     t,
     "undefined",
@@ -89,6 +107,7 @@ test("@custom-media", function(t) {
     {
       extensions: {
         "--viewport-max-s": "(max-width: 30em)",
+        "--a": "(--a)",
       },
       appendExtensions: true,
     }
