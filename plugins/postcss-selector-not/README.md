@@ -2,6 +2,8 @@
 
 > PostCSS plugin to transform `:not()` W3C CSS leve 4 pseudo class to :not() CSS level 3 selectors
 
+http://dev.w3.org/csswg/selectors-4/#negation
+
 ## Installation
 
 ```console
