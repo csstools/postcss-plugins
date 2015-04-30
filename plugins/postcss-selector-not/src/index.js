@@ -12,7 +12,7 @@ function explodeSelector(pseudoClass, selector) {
     const bodySelectors = matches.body ?
       list
         .comma(matches.body)
-        .reduce((acc, s) => [...acc, ...explodeSelector(pseudoClass, s)], {})
+        .reduce((acc, s) => [...acc, ...explodeSelector(pseudoClass, s)], [])
       : [""]
     const postSelectors = matches.post ? explodeSelector(pseudoClass, matches.post) : [""]
     postSelectors.forEach(postSelector => {
