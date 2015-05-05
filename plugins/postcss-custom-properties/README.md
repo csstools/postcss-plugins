@@ -2,10 +2,14 @@
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS Custom Properties for cascading variables](http://www.w3.org/TR/css-variables/) syntax to more compatible CSS.
 
-**N.B.** The transformation _is not complete_. It currently just aims to provide a future-proof way of using a **limited subset (to top-level `:root` selector)** of the features provided by native CSS custom properties.  
-Read [#1](https://github.com/postcss/postcss-custom-properties/issues/1) & [#9](https://github.com/postcss/postcss-custom-properties/issues/9) to know why this limitation exists.
+**N.B.** The transformation _is not complete and **cannot be** (dynamic variables based on custom properties relies on the DOM tree)_. It currently just aims to provide a future-proof way of using a **limited subset (to top-level `:root` selector)** of the features provided by native CSS custom properties.
+_Read [#1](https://github.com/postcss/postcss-custom-properties/issues/1) & [#9](https://github.com/postcss/postcss-custom-properties/issues/9) to know why this limitation exists._
 
-Works great with [postcss-calc](https://github.com/postcss/postcss-calc).
+_If you are looking for a full support of CSS custom properties, please follow [the opened issue for runtime support](https://github.com/postcss/postcss-custom-properties/issues/32)._
+
+**N.B.²** If you are wondering why there is a different plugin ([`postcss-css-variables`](https://github.com/MadLittleMods/postcss-css-variables)) that claims to do the more than this plugin  be sure to understand the explanation above about limitation. You should also check the [issues of this plugin](https://github.com/MadLittleMods/postcss-css-variables/issues?q=is%3Aissue).
+
+_This plugin works great with [postcss-calc](https://github.com/postcss/postcss-calc)._
 
 ## Installation
 
