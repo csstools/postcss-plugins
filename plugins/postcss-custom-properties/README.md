@@ -7,7 +7,7 @@ _Read [#1](https://github.com/postcss/postcss-custom-properties/issues/1) & [#9]
 
 _If you are looking for a full support of CSS custom properties, please follow [the opened issue for runtime support](https://github.com/postcss/postcss-custom-properties/issues/32)._
 
-**N.B.²** If you are wondering why there is a different plugin ([`postcss-css-variables`](https://github.com/MadLittleMods/postcss-css-variables)) that claims to do the more than this plugin  be sure to understand the explanation above about limitation. You should also check the [issues of this plugin](https://github.com/MadLittleMods/postcss-css-variables/issues?q=is%3Aissue).
+**N.B.²** If you are wondering why there is a different plugin ([`postcss-css-variables`](https://github.com/MadLittleMods/postcss-css-variables)) that claims to do more than this plugin, be sure to understand the explanation above about limitation. You should also check the [issues of this plugin](https://github.com/MadLittleMods/postcss-css-variables/issues?q=is%3Aissue).
 
 _This plugin works great with [postcss-calc](https://github.com/postcss/postcss-calc)._
 
