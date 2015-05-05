@@ -1,0 +1,7 @@
+@custom-selector :--multiline
+  .foo
+  ;
+
+:--multiline {
+  display: block;
+}

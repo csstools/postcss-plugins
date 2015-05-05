@@ -21,6 +21,7 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
 test("@custom-selector", function(t) {
   compareFixtures(t, "heading", "should transform custom selector")
   compareFixtures(t, "pseudo", "should transform custom selector")
+  compareFixtures(t, "multiline", "should transform custom selector")
 
   compareFixtures(t, "extension", "local extensions", {
     extensions: {

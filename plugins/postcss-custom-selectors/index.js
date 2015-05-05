@@ -28,7 +28,7 @@ function customSelector(options) {
         return
       }
 
-      var params = rule.params.split(" ")
+      var params = rule.params.split(/\s+/)
         // @custom-selector = @custom-selector <extension-name> <selector>
         // map[<extension-name>] = <selector>
 
