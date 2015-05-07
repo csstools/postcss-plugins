@@ -134,7 +134,7 @@ a:visited {
 var fs = require('fs')
 var chokidar = require('chokidar')
 var postcss = require('postcss')
-var selector = require('postcss-custom-selector')
+var selector = require('postcss-custom-selectors')
 
 var src = 'input.css'
 
@@ -186,7 +186,7 @@ module.exports = function(grunt) {
 var gulp = require('gulp');
 var rename = require('gulp-rename');
 var postcss = require('gulp-postcss');
-var selector = require('postcss-custom-selector')
+var selector = require('postcss-custom-selectors')
 var autoprefixer = require('autoprefixer-core')
 
 gulp.task('default', function () {

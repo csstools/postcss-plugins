@@ -1,3 +1,4 @@
-.foo {
+.foo,
+.bar > .baz {
   display: block;
 }

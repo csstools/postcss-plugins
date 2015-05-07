@@ -134,7 +134,7 @@ Dependence [chokidar](https://github.com/paulmillr/chokidar) module.
 var fs = require('fs')
 var chokidar = require('chokidar')
 var postcss = require('postcss')
-var selector = require('postcss-custom-selector')
+var selector = require('postcss-custom-selectors')
 
 var src = 'input.css'
 
