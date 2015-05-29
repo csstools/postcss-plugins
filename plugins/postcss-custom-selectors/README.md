@@ -1,4 +1,9 @@
-# PostCSS Custom Selectors [![Build Status](https://travis-ci.org/postcss/postcss-custom-selectors.svg)](https://travis-ci.org/postcss/postcss-custom-selectors)
+# PostCSS Custom Selectors 
+
+[![Build Status](https://travis-ci.org/postcss/postcss-custom-selectors.svg?branch=master)](https://travis-ci.org/postcss/postcss-custom-selectors) 
+[![NPM Downloads](https://img.shields.io/npm/dm/postcss-custom-selectors.svg?style=flat)](https://www.npmjs.com/package/postcss-custom-selectors) 
+[![NPM Version](http://img.shields.io/npm/v/postcss-custom-selectors.svg?style=flat)](https://www.npmjs.com/package/postcss-custom-selectors) 
+[![License](https://img.shields.io/npm/l/postcss-custom-selectors.svg?style=flat)](http://opensource.org/licenses/MIT) 
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform  [W3C CSS Extensions(Custom Selectors)](http://dev.w3.org/csswg/css-extensions/#custom-selectors)  to more compatible CSS.
 
