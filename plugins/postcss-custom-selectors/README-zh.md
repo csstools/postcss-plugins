@@ -43,9 +43,9 @@ var output = postcss(selector())
 input.css：
 
 ```css
-@custom-selector --heading h1, h2, h3, h4, h5, h6;
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
-article --heading + p { 
+article :--heading + p { 
   margin-top: 0;
 }
 ```
@@ -65,17 +65,13 @@ article h6 + p {
 
 ## CSS 语法
 
-    @custom-selector = @custom-selector <extension-name> <selector>;
+    @custom-selector = @custom-selector :<extension-name> <selector>;
 
 
 ## 如何使用
 
-### 伪元素/伪类
+自定义选择器是一个伪类，所以必须使用 `:--`来定义。
 
-你可以使用 
-
-* `:` 自定义一个伪类。
-* `::`自定义一个伪元素。
 
 例如，模拟一个 [:any-link](http://dev.w3.org/csswg/selectors/#the-any-link-pseudo) 选择器：
 
@@ -99,20 +95,22 @@ a:visited {
   color: blue;
 }
 ```
+
 ### 多个选择器
 
-`@custom-selector` 类似 CSS [`:matches()`](http://dev.w3.org/csswg/selectors-4/#matches) （[`-moz-any()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:any)/[`-webkit-any()`](http://css-tricks.com/almanac/selectors/m/matches/)）选择器，但是目前**不支持**在同一个选择器中调用多个自定义选择器，例如：
+`@custom-selector` 目前**不支持**在同一个选择器中调用多个自定义选择器，例如：
 
 示例3：
 
 ```css
-@custom-selector --heading h1, h2, h3, h4, h5, h6;
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
 @custom-selector :--any-link :link, :visited;
 
-.demo --heading, a:--any-link { 
+.demo :--heading, a:--any-link { 
   font-size: 32px;
 }
 ```
+
 将会输出错误的 CSS 代码。
 
 ```css
@@ -121,10 +119,12 @@ a:visited {
 .demo h3,
 .demo h4,
 .demo h5,
-.demo h6,undefined { 
+.demo h6,:link,
+:visited { 
   font-size: 32px;
 }
 ```
+
 
 ### Node Watch
 

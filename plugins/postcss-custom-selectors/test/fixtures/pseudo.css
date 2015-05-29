@@ -1,5 +1,5 @@
-@custom-selector ::--pseudo ::before, ::after;
+@custom-selector :--pseudo ::before, ::after;
 
-.foo > a::--pseudo img {
+.foo > a:--pseudo img {
   display: block;
 }

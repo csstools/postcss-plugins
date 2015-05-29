@@ -43,9 +43,9 @@ var output = postcss(selector())
 input.css：
 
 ```css
-@custom-selector --heading h1, h2, h3, h4, h5, h6;
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
-article --heading + p { 
+article :--heading + p { 
   margin-top: 0;
 }
 ```
@@ -65,17 +65,12 @@ article h6 + p {
 
 ## CSS syntax
 
-    @custom-selector = @custom-selector <extension-name> <selector>;
+    @custom-selector = @custom-selector :<extension-name> <selector>;
 
 
 ## How to use
 
-### Pseudo-element/Pseudo-class
-
-You can use 
-
-* `:` to customise a class.
-* `::`to customise a Pseudo-element.
+The custom selector is a pseudo-class, so we must use the `:--` to defined it.
 
 For example to simulate [:any-link](http://dev.w3.org/csswg/selectors/#the-any-link-pseudo) selector：
 
@@ -99,20 +94,22 @@ a:visited {
   color: blue;
 }
 ```
+
 ### Multiple selectors
 
-`@custom-selector` similar to CSS [`:matches()`](http://dev.w3.org/csswg/selectors-4/#matches)([`-moz-any()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:any)/[`-webkit-any()`](http://css-tricks.com/almanac/selectors/m/matches/))selector,but it **doesn’t support** call multiple custom selector in the same selector, e.g.
+`@custom-selector` it **doesn’t support** call multiple custom selector in the same selector, e.g.
 
 Example 3:
 
 ```css
-@custom-selector --heading h1, h2, h3, h4, h5, h6;
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
 @custom-selector :--any-link :link, :visited;
 
 .demo --heading, a:--any-link { 
   font-size: 32px;
 }
 ```
+
 This will throw an error CSS code.
 
 ```css
@@ -121,7 +118,8 @@ This will throw an error CSS code.
 .demo h3,
 .demo h4,
 .demo h5,
-.demo h6,undefined { 
+.demo h6,:link,
+:visited  { 
   font-size: 32px;
 }
 ```

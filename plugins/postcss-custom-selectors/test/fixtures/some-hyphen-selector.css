@@ -1,0 +1,10 @@
+@custom-selector :--foo h1, h2, h3;
+@custom-selector :--ba-----r h4, h5, h6;
+
+.fo--oo > :--foo {
+  margin: auto;
+}
+
+:--ba-----r:hover .ba--z {
+  display: block;
+}
