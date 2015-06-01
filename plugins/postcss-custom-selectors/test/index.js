@@ -4,7 +4,6 @@ var test = require("tape")
 
 var postcss = require("postcss")
 var plugin = require("..")
-var matches = require("postcss-selector-matches")
 
 function filename(name) { return "test/" + name + ".css" }
 function read(name) { return fs.readFileSync(name, "utf8") }
