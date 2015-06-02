@@ -1,0 +1,11 @@
+button:matches(:focus),
+.button:matches(:focus) {
+    border: red;
+    display: block;
+}
+
+button:matches(:focus, .is-focused),
+.button:matches(:focus, .is-focused) {
+    border: red;
+    display: block;
+}

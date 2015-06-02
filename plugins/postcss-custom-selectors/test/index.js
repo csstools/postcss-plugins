@@ -25,6 +25,7 @@ test("@custom-selector", function(t) {
   compareFixtures(t, "pseudo", "should transform pseudo")
   compareFixtures(t, "multiline", "should transform multiline")
   compareFixtures(t, "some-hyphen-selector", "should transform some-hyphen-selector")
+  compareFixtures(t, "matches", "should transform matches selector")
 
   compareFixtures(t, "extension", "should transform local extensions", {
     extensions: {
