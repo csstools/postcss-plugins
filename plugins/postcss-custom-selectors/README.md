@@ -110,7 +110,7 @@ Example 3:
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 @custom-selector :--any-link :link, :visited;
 
-.demo --heading, a:--any-link { 
+.demo :--heading, a:--any-link { 
   font-size: 32px;
 }
 ```
