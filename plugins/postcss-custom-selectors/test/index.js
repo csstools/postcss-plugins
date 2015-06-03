@@ -10,21 +10,25 @@ function read(name) { return fs.readFileSync(name, "utf8") }
 
 function compareFixtures(t, name, msg, opts, postcssOpts) {
   postcssOpts = postcssOpts || {}
-  postcssOpts.from = filename("fixtures/" + name)
+  //input
+  postcssOpts.from = filename("fixtures/" + name + "/input")
+  console.log('postcssOpts.from', postcssOpts.from)
   opts = opts || {}
   var actual = postcss()
   .use(plugin(opts))
   .process(read(postcssOpts.from), postcssOpts).css
-  var expected = read(filename("fixtures/" + name + ".expected"))
-  fs.writeFile(filename("fixtures/" + name + ".actual"), actual)
-  t.equal(actual.trim(), expected.trim(), msg)
+  //output
+  var output = read(filename("fixtures/" + name + "/output"))
+  //actual
+  fs.writeFile(filename("fixtures/" + name + "/actual"), actual)
+  t.equal(actual.trim(), output.trim(), msg)
 }
 
 test("@custom-selector", function(t) {
   compareFixtures(t, "heading", "should transform heading")
   compareFixtures(t, "pseudo", "should transform pseudo")
   compareFixtures(t, "multiline", "should transform multiline")
-  compareFixtures(t, "some-hyphen-selector", "should transform some-hyphen-selector")
+  compareFixtures(t, "some-hyphen", "should transform some hyphen")
   compareFixtures(t, "matches", "should transform matches selector")
 
   compareFixtures(t, "extension", "should transform local extensions", {
