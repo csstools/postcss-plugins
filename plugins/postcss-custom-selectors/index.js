@@ -49,8 +49,8 @@ function customSelector(options) {
     })
 
     //控制选择器是否换行
-    if (!options.lineBreak  && options.lineBreak == false) {
-       line_break = ' '
+    if (!options.lineBreak && options.lineBreak == false) {
+      line_break = ' '
     }
 
     // 转换自定义的选择器别名
@@ -58,14 +58,14 @@ function customSelector(options) {
       for (var prop in customSelectors) {
         if (rule.selector.indexOf(prop) >= 0) {
           customSelector = customSelectors[prop]
-          
+
           // $2 = <extension-name> （自定义的选择器名称）
           rule.selector = rule.selector.replace(re_CUSTOM_SELECTOR, function($0, $1, $2, $3) {
             if ($2 === prop) {
               return customSelector.split(",").map(function(selector) {
                 return $1 + selector.trim() + $3
               }).join("," + line_break)
-            } else if ($2 !== prop){
+            } else if ($2 !== prop) {
               console.log("Warning: The selector '" + $2 + "' is undefined in CSS!")
               return $2
             }
