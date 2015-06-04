@@ -8,7 +8,8 @@
     "postcss",
     "postcss-plugins",
     "selector",
-    "custom-selector"
+    "custom-selector",
+    "custom selector"
   ],
   "author": "yisi",
   "license": "MIT",
@@ -23,8 +24,8 @@
     "index.js"
   ],
   "devDependencies": {
-    "postcss": "^3.0.0",
-    "tape": "^3.0.0"
+    "postcss": "^4.1.11",
+    "tape": "^4.0.0"
   },
   "scripts": {
     "test": "tape test"

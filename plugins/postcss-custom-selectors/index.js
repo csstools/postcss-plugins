@@ -1,3 +1,4 @@
+var postcss = require("postcss")
 /**
  * 匹配自定义选择器
  * :--foo
@@ -8,20 +9,21 @@ var re_CUSTOM_SELECTOR = /([^,]*?)(:-{2,}[\w-]+)(.*)/g
 /**
  * 暴露插件
  */
-module.exports = customSelector
+module.exports = postcss.plugin("postcss-custom-selectors", function(options) {
+  /**
+   * 插件配置
+   */
+  options = options || {}
+  var extensions = options.extensions || {}
+  var line_break = '\n'
+  var map = {}
+  var toRemove = []
+  var customSelectors = {}
 
-/**
- * 读取和替换自定义选择器
- */
-function customSelector(options) {
+  /**
+   * 读取和替换自定义选择器
+   */
   return function(styles) {
-    options = options || {}
-    var extensions = options.extensions || {}
-    var line_break = '\n'
-    var map = {}
-    var toRemove = []
-    var customSelectors = {}
-
     // 读取自定义选择器
     styles.eachAtRule(function(rule) {
       if (rule.name !== "custom-selector") {
@@ -80,4 +82,4 @@ function customSelector(options) {
     })
 
   }
-}
+})

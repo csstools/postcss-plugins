@@ -12,11 +12,11 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
   postcssOpts = postcssOpts || {}
   //input
   postcssOpts.from = filename("fixtures/" + name + "/input")
-  console.log('postcssOpts.from', postcssOpts.from)
   opts = opts || {}
   var actual = postcss()
   .use(plugin(opts))
-  .process(read(postcssOpts.from), postcssOpts).css
+  .process(read(postcssOpts.from), postcssOpts)
+  .css
   //output
   var output = read(filename("fixtures/" + name + "/output"))
   //actual
