@@ -1,3 +1,7 @@
+# 2.1.0 - 2015-06-04
+
+* \- Fixed: Use PostCSS 4.1 plugin API.
+
 # 2.0.1 - 2015-06-03
 
 * \- Fixed: `(foo, bar)` conversion error exists in the selector(See also [:matches() test](test/fixtures/matches/input.css)).
