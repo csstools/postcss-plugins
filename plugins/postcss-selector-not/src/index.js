@@ -4,10 +4,10 @@ import list from "postcss/lib/list"
 import balancedMatch from "balanced-match"
 
 function explodeSelector(pseudoClass, selector) {
-  if (selector && selector.indexOf(pseudoClass) > -1) {
-    const start = `${pseudoClass}(`
-    const end = ")"
-    const matches = balancedMatch(start, end, selector)
+  const position = selector.indexOf(pseudoClass)
+  if (selector && position > -1) {
+    const pre = selector.slice(0, position)
+    const matches = balancedMatch("(", ")", selector.slice(position))
     const selectors = []
     const bodySelectors = matches.body ?
       list
@@ -17,7 +17,7 @@ function explodeSelector(pseudoClass, selector) {
     const postSelectors = matches.post ? explodeSelector(pseudoClass, matches.post) : [""]
     postSelectors.forEach(postSelector => {
       bodySelectors.forEach(bodySelector => {
-        selectors.push(`${matches.pre}${pseudoClass}(${bodySelector})${postSelector}`)
+        selectors.push(`${pre}${pseudoClass}(${bodySelector})${postSelector}`)
       })
     })
     return selectors

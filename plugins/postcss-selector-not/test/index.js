@@ -50,5 +50,11 @@ tape("postcss-selector-not", t => {
     "should transform :not() recursively"
   )
 
+  t.equal(
+    transform(".foo:not(:nth-child(-n+2), .bar) {}"),
+    ".foo:not(:nth-child(-n+2)), .foo:not(.bar) {}",
+    "should transform childs with parenthesis"
+  )
+
   t.end()
 })
