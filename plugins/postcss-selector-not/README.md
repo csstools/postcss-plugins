@@ -37,6 +37,14 @@ p:not(:first-child), p:not(.special) {
 }
 ```
 
+## Options
+
+### `lineBreak`
+
+(default: `false`)
+
+Allows you to introduce a line break between generated selectors.
+
 ---
 
 ## [Changelog](CHANGELOG.md)

@@ -3,8 +3,8 @@ import tape from "tape"
 import postcss from "postcss"
 import selectorNot from "../src/index.js"
 
-function transform(css) {
-  return postcss(selectorNot).process(css).css
+function transform(css, options = {}) {
+  return postcss(selectorNot(options)).process(css).css
 }
 
 tape("postcss-selector-not", t => {
@@ -54,6 +54,27 @@ tape("postcss-selector-not", t => {
     transform(".foo:not(:nth-child(-n+2), .bar) {}"),
     ".foo:not(:nth-child(-n+2)), .foo:not(.bar) {}",
     "should transform childs with parenthesis"
+  )
+
+  t.equal(
+    transform(`a:not(
+  .b,
+  .c
+) {}`),
+    "a:not(.b), a:not(.c) {}",
+    "should works with lots of whitespace"
+  )
+
+  t.equal(
+    transform(".foo:not(:nth-child(-n+2), .bar) {}", {lineBreak: true}),
+    ".foo:not(:nth-child(-n+2)),\n.foo:not(.bar) {}",
+    "should add line break if asked too"
+  )
+
+  t.equal(
+    transform("  .foo:not(:nth-child(-n+2), .bar) {}", {lineBreak: true}),
+    "  .foo:not(:nth-child(-n+2)),\n  .foo:not(.bar) {}",
+    "should add line break if asked too, and respect indentation"
   )
 
   t.end()
