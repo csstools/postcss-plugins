@@ -4,7 +4,7 @@
 
 [PostCSS Pseudo-Class Any-Link] is a [PostCSS] plugin that allows you to use the proposed [`:any-link`] pseudo-class in CSS.
 
-`:any-link` simplifies selectors targeting links, since the naming of `:link` is misleading; it specifically means unvisited links only, rather than all links.
+`:any-link` simplifies selectors targeting links, as the naming of `:link` is misleading; it specifically means unvisited links only, rather than all links.
 
 ```css
 /* before */
@@ -81,18 +81,20 @@ grunt.initConfig({
 
 ### Alternatives
 
+Here are a few other ways to simulate the effect of [PostCSS Pseudo-Class Any-Link].
+
 ```css
-/* Using @custom-selector; supported nowhere yet */
+/* Use @custom-selector; supported nowhere yet */
 
 @custom-selector :--any-link :link, :visited;
 
 :--any-link { /* ... */ }
 
-/* Using :matches; supported in Firefox 4+, Chrome 12+, Opera 15+, Safari 5.1+ */
+/* Use :matches; supported in Firefox 4+, Chrome 12+, Opera 15+, Safari 5.1+ */
 
 :matches(:link, :visited) { /* ... */ }
 
-/* Using :link and :visited; supported everywhere */
+/* Use :link and :visited; supported everywhere */
 
 :link, :visited { /* ... */ }
 ```
