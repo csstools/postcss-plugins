@@ -99,7 +99,7 @@ Here are a few other ways to simulate the effect of [PostCSS Pseudo-Class Any-Li
 :link, :visited { /* ... */ }
 ```
 
-[`:any-link`]: http://http://dev.w3.org/csswg/selectors/#any-link-pseudo
+[`:any-link`]: http://dev.w3.org/csswg/selectors/#any-link-pseudo
 [`:link`]: http://dev.w3.org/csswg/selectors/#link-pseudo
 [`:visited`]: http://dev.w3.org/csswg/selectors/#visited-pseudo
 [ci]: https://travis-ci.org/jonathantneal/postcss-pseudo-class-any-link
