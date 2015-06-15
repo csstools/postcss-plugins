@@ -1,6 +1,6 @@
 {
 	"name": "postcss-pseudo-class-any-link",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "Use the proposed :any-link pseudo-class in CSS",
 	"keywords": ["postcss", "css", "postcss-plugin", "link", "visited", "any-link", "a", "area", "hyperlink", "href"],
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
