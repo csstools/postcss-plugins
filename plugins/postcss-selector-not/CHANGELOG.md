@@ -1,4 +1,8 @@
-# 1.2.0 - 2015-06-13
+# 1.2.1 - 2015-06-16
+
+- Fixed: selector was updated as an array, which is wrong.
+
+# 1.2.0 - 2015-06-16
 
 - Fixed: spec has been previously misinterpreted and now transform correctly
 `:not()` level 4 to collapsed level 3
