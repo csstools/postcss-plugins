@@ -22,37 +22,37 @@ tape("postcss-selector-not", t => {
 
   t.equal(
     transform(":not(a, b) {}"),
-    ":not(a), :not(b) {}",
+    ":not(a):not(b) {}",
     "should transform simple :not()"
   )
 
   t.equal(
     transform("tag:not(.class, .class2) {}"),
-    "tag:not(.class), tag:not(.class2) {}",
+    "tag:not(.class):not(.class2) {}",
     "should transform directes :not()"
   )
 
   t.equal(
     transform("tag :not(tag2, tag3) {}"),
-    "tag :not(tag2), tag :not(tag3) {}",
+    "tag :not(tag2):not(tag3) {}",
     "should transform :not()"
   )
 
   t.equal(
     transform("tag :not(tag2, tag3) :not(tag4, tag5) {}"),
-    "tag :not(tag2) :not(tag4), tag :not(tag3) :not(tag4), tag :not(tag2) :not(tag5), tag :not(tag3) :not(tag5) {}",
+    "tag :not(tag2):not(tag3) :not(tag4):not(tag5) {}",
     "should transform mutltiples :not()"
   )
 
   t.equal(
     transform("tag :not(tag2 :not(tag4, tag5), tag3) {}"),
-    "tag :not(tag2 :not(tag4)), tag :not(tag2 :not(tag5)), tag :not(tag3) {}",
+    "tag :not(tag2 :not(tag4):not(tag5)):not(tag3) {}",
     "should transform :not() recursively"
   )
 
   t.equal(
     transform(".foo:not(:nth-child(-n+2), .bar) {}"),
-    ".foo:not(:nth-child(-n+2)), .foo:not(.bar) {}",
+    ".foo:not(:nth-child(-n+2)):not(.bar) {}",
     "should transform childs with parenthesis"
   )
 
@@ -61,20 +61,8 @@ tape("postcss-selector-not", t => {
   .b,
   .c
 ) {}`),
-    "a:not(.b), a:not(.c) {}",
+    "a:not(.b):not(.c) {}",
     "should works with lots of whitespace"
-  )
-
-  t.equal(
-    transform(".foo:not(:nth-child(-n+2), .bar) {}", {lineBreak: true}),
-    ".foo:not(:nth-child(-n+2)),\n.foo:not(.bar) {}",
-    "should add line break if asked too"
-  )
-
-  t.equal(
-    transform("  .foo:not(:nth-child(-n+2), .bar) {}", {lineBreak: true}),
-    "  .foo:not(:nth-child(-n+2)),\n  .foo:not(.bar) {}",
-    "should add line break if asked too, and respect indentation"
   )
 
   t.end()
