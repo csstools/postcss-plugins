@@ -94,5 +94,6 @@ grunt.initConfig({
 [ci]: https://travis-ci.org/jonathantneal/postcss-nesting
 [ci-img]: https://travis-ci.org/jonathantneal/postcss-nesting.svg
 [CSS Nesting Module Level 3]: http://tabatkins.github.io/specs/css-nesting/
+[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Nesting]: https://github.com/jonathantneal/postcss-nesting
