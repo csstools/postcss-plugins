@@ -2,7 +2,7 @@
 
 <img align="right" width="135" height="95" src="http://postcss.github.io/postcss/logo-leftp.png" title="Philosopher’s stone, logo of PostCSS">
 
-[PostCSS Nesting] is a [PostCSS] plugin that transform W3C [CSS Nesting Module Level 3] syntax (@tabatkins proposal) to more compatible CSS.
+[PostCSS Nesting] is a [PostCSS] plugin that transforms W3C [CSS Nesting Module Level 3] syntax (@tabatkins’ proposal) to more compatible CSS.
 
 ```css
 /* before */
