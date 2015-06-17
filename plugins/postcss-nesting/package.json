@@ -1,0 +1,26 @@
+{
+	"name": "postcss-nesting",
+	"version": "0.1.0",
+	"description": "PostCSS plugin ability to nest one style rule inside another",
+	"keywords": ["postcss", "css", "postcss-plugin", "nesting", "selector", "rule"],
+	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url":  "https://github.com/jonathantneal/postcss-nesting.git"
+	},
+	"dependencies": {
+		"postcss": "^4.1.9",
+		"postcss-selector-parser": "^1.0.0"
+	},
+	"devDependencies": {
+		"gulp-eslint": "^0.12.0",
+		"gulp-mocha":  "^2.0.1",
+		"chai":        "^2.3.0",
+		"gulp":        "^3.8.11",
+		"gulp-watch":  "^4.2.4"
+	},
+	"scripts": {
+		"test": "gulp"
+	}
+}
