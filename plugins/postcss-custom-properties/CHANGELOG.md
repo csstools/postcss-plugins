@@ -1,9 +1,8 @@
-# 4.0.0 - Unreleased
+# 4.0.0 - 2015-06-17
 
-- Changed: upgade to postcss ^4.1.x
-- Changed: messages and exceptions are now using postcss API.
-Messages are not outputted by default to console anymore.
-# 3.3.0 - 2015-04-0
+- Changed: messages and exceptions are now sent using postcss message API.
+
+# 3.3.0 - 2015-04-08
 
 - Added: `preserve` now support `"computed"` so only preserve resolved custom properties (see new option below)
 - Added: `appendVariables` allows you (when `preserve` is truthy) to append your variables as custom properties

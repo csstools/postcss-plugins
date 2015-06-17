@@ -11,7 +11,8 @@ var balanced = require("balanced-match")
 
 var VAR_PROP_IDENTIFIER = "--"
 var VAR_FUNC_IDENTIFIER = "var"
-var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/ // matches `name[, fallback]`, captures "name" and "fallback"
+// matches `name[, fallback]`, captures "name" and "fallback"
+var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/
 
 /**
  * Resolve CSS variables in a value
@@ -22,7 +23,8 @@ var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/ // matches `name[, fallback]`, captures
  *
  * var(name[, fallback])
  *
- * @param {String} value A property value known to contain CSS variable functions
+ * @param {String} value A property value known to contain CSS variable
+ *                       functions
  * @param {Object} variables A map of variable names and values
  * @param {Object} source source object of the declaration containing the rule
  * @return {String} A property value with all CSS variables substituted.
@@ -51,11 +53,19 @@ function resolveValue(value, variables, result, decl) {
     var post
     // undefined and without fallback, just keep original value
     if (!variable && !fallback) {
-      result.warn("variable '" + name + "' is undefined and used without a fallback", {node: decl})
-      post = matches.post ? resolveValue(matches.post, variables, result, decl) : [""]
+      result.warn(
+        "variable '" + name + "' is undefined and used without a fallback",
+        {node: decl}
+      )
+      post = matches.post
+        ? resolveValue(matches.post, variables, result, decl)
+        : [""]
       // resolve the end of the expression
       post.forEach(function(afterValue) {
-        results.push(value.slice(0, start) + VAR_FUNC_IDENTIFIER + "(" + name + ")" + afterValue)
+        results.push(
+          value.slice(0, start) +
+          VAR_FUNC_IDENTIFIER + "(" + name + ")" + afterValue
+        )
       })
       return
     }
@@ -65,7 +75,9 @@ function resolveValue(value, variables, result, decl) {
       // resolve fallback values
       fallback = resolveValue(fallback, variables, result, decl)
       // resolve the end of the expression before the rest
-      post = matches.post ? resolveValue(matches.post, variables, result, decl) : [""]
+      post = matches.post
+        ? resolveValue(matches.post, variables, result, decl)
+        : [""]
       fallback.forEach(function(fbValue) {
         post.forEach(function(afterValue) {
           results.push(value.slice(0, start) + fbValue + afterValue)
@@ -101,7 +113,9 @@ function resolveValue(value, variables, result, decl) {
       return
     }
     // resolve the end of the expression
-    post = matches.post ? resolveValue(matches.post, variables, result, decl) : [""]
+    post = matches.post
+      ? resolveValue(matches.post, variables, result, decl)
+      : [""]
     variable.value.forEach(function(replacementValue) {
       post.forEach(function(afterValue) {
         results.push(value.slice(0, start) + replacementValue + afterValue)
@@ -140,14 +154,17 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
       var toRemove = []
 
       // only variables declared for `:root` are supported for now
-      if (rule.selectors.length !== 1 || rule.selectors[0] !== ":root" || rule.parent.type !== "root") {
+      if (
+          rule.selectors.length !== 1 ||
+          rule.selectors[0] !== ":root" ||
+          rule.parent.type !== "root"
+      ) {
         rule.each(function(decl) {
           var prop = decl.prop
           if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
             result.warn(
-              "Custom property ignored: not scoped to the top-level :root element (" +
-              rule.selectors +
-              " { ... " + prop + ": ... })" +
+              "Custom property ignored: not scoped to the top-level :root " +
+              "element (" + rule.selectors + " { ... " + prop + ": ... })" +
               (rule.parent.type !== "root" ? ", in " + rule.parent.type : ""),
               {node: decl}
             )
@@ -238,7 +255,9 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
         names.forEach(function(name) {
           var variable = map[name]
           var val = variable.value
-          if (variable.resolved) { val = val[val.length - 1] }
+          if (variable.resolved) {
+            val = val[val.length - 1]
+          }
           var decl = postcss.decl({
             prop: name,
             value: val,

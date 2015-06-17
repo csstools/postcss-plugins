@@ -14,7 +14,8 @@ function fixture(name) {
 }
 
 function resolveFixture(name, options) {
-  return postcss(customProperties(options)).process(fixture(name), {from: fixturePath(name)})
+  return postcss(customProperties(options))
+    .process(fixture(name), {from: fixturePath(name)})
 }
 
 function compareFixtures(t, name, options) {
@@ -25,58 +26,89 @@ function compareFixtures(t, name, options) {
   fs.writeFile(fixturePath(name + ".actual"), actual)
 
   var expected = fixture(name + ".expected")
-  t.equal(actual, expected, "processed fixture '" + name + "' should be equal to expected output")
+  t.equal(
+    actual, expected,
+    "processed fixture '" + name + "' should be equal to expected output"
+  )
 
   return postcssResult
 }
 
 test("throw errors", function(t) {
-  t.throws(function() {
-    return postcss(customProperties()).process(fixture("substitution-empty")).css
-  }, /must contain a non-whitespace string/, "throws an error when a variable function is empty")
+  t.throws(
+    function() {
+      return postcss(customProperties())
+        .process(fixture("substitution-empty"))
+        .css
+    },
+    /must contain a non-whitespace string/,
+    "throws an error when a variable function is empty"
+  )
 
-  t.throws(function() {
-    return postcss(customProperties()).process(fixture("substitution-malformed")).css
-  }, /missing closing/, "throws an error when a variable function is malformed")
+  t.throws(
+    function() {
+      return postcss(customProperties())
+        .process(fixture("substitution-malformed"))
+        .css
+    },
+    /missing closing/,
+    "throws an error when a variable function is malformed"
+  )
 
   t.end()
 })
 
-test("substitutes nothing when a variable function references an undefined variable", function(t) {
-  var result = compareFixtures(t, "substitution-undefined")
-  t.equal(result.warnings()[0].text, "variable '--test' is undefined and used without a fallback", "should add a warning for undefined variable")
-  t.end()
-})
+test(
+  "substitutes nothing when a variable function references an undefined var",
+  function(t) {
+    var result = compareFixtures(t, "substitution-undefined")
+    t.equal(
+      result.warnings()[0].text,
+      "variable '--test' is undefined and used without a fallback",
+      "should add a warning for undefined variable"
+    )
+    t.end()
+  }
+)
 
 test("substitutes defined variables in `:root` only", function(t) {
   var result = compareFixtures(t, "substitution-defined")
-  t.ok(result.warnings()[0].text.match(/^Custom property ignored/), "should add a warning for non root custom properties")
+  t.ok(
+    result.warnings()[0].text.match(/^Custom property ignored/),
+    "should add a warning for non root custom properties"
+  )
   t.end()
 })
 
-test("accepts variables defined from JavaScript, and overrides local definitions", function(t) {
-  compareFixtures(t, "js-defined", {
-    variables: {
-      "--test-one": "js-one",
-      "--test-two": "js-two",
-      "--test-three": "js-three",
-      "--test-varception": "var(--test-one)",
-      "--test-jsception": "var(--test-varception)",
-      "--test-num": 1,
-    },
-  })
-  t.end()
-})
+test(
+  "accepts variables defined from JavaScript, and overrides local definitions",
+  function(t) {
+    compareFixtures(t, "js-defined", {
+      variables: {
+        "--test-one": "js-one",
+        "--test-two": "js-two",
+        "--test-three": "js-three",
+        "--test-varception": "var(--test-one)",
+        "--test-jsception": "var(--test-varception)",
+        "--test-num": 1,
+      },
+    })
+    t.end()
+  }
+)
 
-test("prefixes js defined variabled with a double dash automatically", function(t) {
-  compareFixtures(t, "automatic-variable-prefix", {
-    variables: {
-      unprefixed: "blue",
-      "--prefixed": "white",
-    },
-  })
-  t.end()
-})
+test(
+  "prefixes js defined variabled with a double dash automatically",
+  function(t) {
+    compareFixtures(t, "automatic-variable-prefix", {
+      variables: {
+        unprefixed: "blue",
+        "--prefixed": "white",
+      },
+    })
+    t.end()
+  }
+)
 
 test("removes variable properties from the output", function(t) {
   compareFixtures(t, "remove-properties")
@@ -121,7 +153,11 @@ test("preserves computed value when `preserve` is `\"computed\"`", function(t) {
 test("circular variable references", function(t) {
   compareFixtures(t, "self-reference")
   var result = compareFixtures(t, "circular-reference")
-  t.equal(result.warnings()[0].text, "Circular variable reference: --color", "should add a warning for circular reference")
+  t.equal(
+    result.warnings()[0].text,
+    "Circular variable reference: --color",
+    "should add a warning for circular reference"
+  )
   t.end()
 })
 
