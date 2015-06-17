@@ -1,17 +1,6 @@
-/**
- * Module dependencies
- */
 var postcss = require("postcss")
 
-/**
- * Constants.
- */
 var EXTENSION_RE = /\(\s*(--[\w-]+)\s*\)/g
-
-/**
- * Expose the plugin.
- */
-module.exports = postcss.plugin("postcss-custom-media", customMedia)
 
 /*
  * read & replace custom media queries by standard media queries
@@ -66,7 +55,11 @@ function customMedia(options) {
           return map[name]
         }
 
-        result.warn("Missing @custom-media definition for '" + name + "'. The entire rule has been removed from the output.", {node: rule})
+        result.warn(
+          "Missing @custom-media definition for '" + name +
+            "'. The entire rule has been removed from the output.",
+          {node: rule}
+        )
         toRemove.push(rule)
       })
     })
@@ -88,6 +81,10 @@ function customMedia(options) {
     }
 
     // remove @custom-media
-    toRemove.forEach(function(rule) { rule.removeSelf() })
+    toRemove.forEach(function(rule) {
+      rule.removeSelf()
+    })
   }
 }
+
+module.exports = postcss.plugin("postcss-custom-media", customMedia)

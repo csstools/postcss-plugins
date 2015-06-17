@@ -4,7 +4,9 @@
 
 ## Installation
 
-    $ npm install postcss-custom-media
+```console
+$ npm install postcss-custom-media
+```
 
 ## Usage
 
@@ -45,28 +47,27 @@ Checkout [tests](test) for more examples.
 
 ### Options
 
-#### `extensions` (default: `{}`)
+#### `extensions`
 
-Allows you to pass an object to define the `<media-query-list>` for each `<extension-name>`. These definitions will override any that exist in the CSS.
+(default: `{}`)
 
-#### `preserve` (default: `false`)
+Allows you to pass an object to define the `<media-query-list>` for each
+`<extension-name>`. These definitions will override any that exist in the CSS.
+
+#### `preserve`
+
+(default: `false`)
 
 Allows you to preserve custom media query definitions in output.
 
-#### `appendExtensions` (default: `false`)
+#### `appendExtensions`
 
-If `preserve` is set to `true`, allows you to append your extensions at end of your CSS.
+(default: `false`)
+
+**This option only works if `preserve` is truthy**.
+Allows you to append your extensions at end of your CSS.
 
 ---
-
-## Contributing
-
-Work on a branch, install dev-dependencies, respect coding style & run tests before submitting a bug fix or a feature.
-
-    $ git clone https://github.com/postcss/postcss-custom-media.git
-    $ git checkout -b patch-1
-    $ npm install
-    $ npm test
 
 ## [Changelog](CHANGELOG.md)
 
