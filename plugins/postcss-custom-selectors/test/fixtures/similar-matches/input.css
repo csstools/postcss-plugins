@@ -1,0 +1,20 @@
+@custom-selector :--foo .foo;
+@custom-selector :--foo-bar .foo .bar;
+@custom-selector :--foo-baz .foo .baz;
+@custom-selector :--foo-bar-baz .foo .bar .baz;
+
+:--foo {
+    color: red;
+}
+
+:--foo-bar {
+    color: green;
+}
+
+:--foo-baz {
+    color: black;
+}
+
+:--foo-bar-baz {
+    color: blue;
+}
