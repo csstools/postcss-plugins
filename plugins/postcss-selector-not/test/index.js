@@ -45,6 +45,12 @@ tape("postcss-selector-not", t => {
   )
 
   t.equal(
+    transform("tag :not(tag2, tag3) :not(tag4, tag5), test {}"),
+    "tag :not(tag2):not(tag3) :not(tag4):not(tag5), test {}",
+    "should transform mutltiples :not() with stuff after"
+  )
+
+  t.equal(
     transform("tag :not(tag2 :not(tag4, tag5), tag3) {}"),
     "tag :not(tag2 :not(tag4):not(tag5)):not(tag3) {}",
     "should transform :not() recursively"
@@ -63,6 +69,12 @@ tape("postcss-selector-not", t => {
 ) {}`),
     "a:not(.b):not(.c) {}",
     "should works with lots of whitespace"
+  )
+
+  t.equal(
+    transform(`.foo:not(:hover, :focus)::before {}`),
+    `.foo:not(:hover):not(:focus)::before {}`,
+    "should work with something after :not()"
   )
 
   t.end()
