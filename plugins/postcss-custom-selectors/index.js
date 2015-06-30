@@ -26,7 +26,7 @@ module.exports = postcss.plugin("postcss-custom-selectors", function(options) {
   /**
    * 读取和替换自定义选择器
    */
-  return function(styles, result) {
+  return function(styles) {
     // 读取自定义选择器
     styles.eachAtRule(function(rule) {
       if (rule.name !== "custom-selector") {
@@ -54,7 +54,7 @@ module.exports = postcss.plugin("postcss-custom-selectors", function(options) {
     })
 
     // 转换自定义的选择器别名
-    styles.eachRule(function(rule, result) {
+    styles.eachRule(function(rule) {
       var flag = 0
       for (var prop in customSelectors) {
         if (rule.selector.indexOf(prop) >= 0) {
