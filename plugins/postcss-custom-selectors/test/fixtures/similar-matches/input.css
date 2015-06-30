@@ -1,20 +1,14 @@
-@custom-selector :--foo .foo;
-@custom-selector :--foo-bar .foo .bar;
-@custom-selector :--foo-baz .foo .baz;
-@custom-selector :--foo-bar-baz .foo .bar .baz;
+@custom-selector :--foo h1;
+@custom-selector :--foo-bar-baz h4 h5 h6;
 
 :--foo {
-    color: red;
-}
-
-:--foo-bar {
-    color: green;
-}
-
-:--foo-baz {
-    color: black;
+  color: red;
 }
 
 :--foo-bar-baz {
-    color: blue;
+  color: blue;
+}
+
+:--test p {
+  display: block;
 }

@@ -1,15 +1,11 @@
-.foo {
-    color: red;
+h1 {
+  color: red;
 }
 
-.foo .bar {
-    color: green;
+h4 h5 h6 {
+  color: blue;
 }
 
-.foo .baz {
-    color: black;
-}
-
-.foo .bar .baz {
-    color: blue;
+:--test p {
+  display: block;
 }

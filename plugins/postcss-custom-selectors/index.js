@@ -26,7 +26,7 @@ module.exports = postcss.plugin("postcss-custom-selectors", function(options) {
   /**
    * 读取和替换自定义选择器
    */
-  return function(styles) {
+  return function(styles, result) {
     // 读取自定义选择器
     styles.eachAtRule(function(rule) {
       if (rule.name !== "custom-selector") {
@@ -54,13 +54,15 @@ module.exports = postcss.plugin("postcss-custom-selectors", function(options) {
     })
 
     // 转换自定义的选择器别名
-    styles.eachRule(function(rule) {
+    styles.eachRule(function(rule, result) {
+      var flag = 0
       for (var prop in customSelectors) {
         if (rule.selector.indexOf(prop) >= 0) {
           customSelector = customSelectors[prop]
 
           // $2 = <extension-name> （自定义的选择器名称）
           rule.selector = rule.selector.replace(re_CUSTOM_SELECTOR, function($0, $1, $2, $3) {
+
             if ($2 === prop) {
               var newSelector = customSelector.split(",").map(function(selector) {
                 return $1 + selector.trim() + $3
@@ -74,13 +76,17 @@ module.exports = postcss.plugin("postcss-custom-selectors", function(options) {
                 // 选择器换行，同时替换多个换行为一个
                 newSelector = newSelector.join("," + line_break + rule.before).replace(reBLANK_LINE, line_break)
               }
+              flag ++
               return newSelector
-            } else if ($2 !== prop) {
-              console.log("Warning: The selector '" + $2 + "' is undefined in CSS!")
+            }
+            else if ($2 !== prop) {
               return $2
             }
           })
         }
+      }
+      if(flag === 0){
+        console.log("Warning: The selector '" + rule.selector + "' is undefined in CSS!")
       }
     })
 

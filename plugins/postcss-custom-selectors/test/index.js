@@ -36,12 +36,12 @@ test("@custom-selector", function(t) {
       lineBreak: false
   })
 
-  // compareFixtures(t, "extension", "should transform local extensions", {
-  //   extensions: {
-  //     ':--any' : 'section, article, aside, nav',
-  //     ':--foo': 'input[type="text"] > section, #nav .bar'
-  //   }
-  // })
+  compareFixtures(t, "extension", "should transform local extensions", {
+    extensions: {
+      ':--any' : 'section, article, aside, nav',
+      ':--foo': 'input[type="text"] > section, #nav .bar'
+    }
+  })
 
   t.end()
 })
