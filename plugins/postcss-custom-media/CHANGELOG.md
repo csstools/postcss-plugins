@@ -1,3 +1,8 @@
+# 4.1.0 - 2015-06-30
+
+- Added: Allow custom media to reference each other
+([#10](https://github.com/postcss/postcss-custom-media/pull/10))
+
 # 4.0.0 - 2015-05-17
 
 - Changed: warning messages are now sent via postcss messages api (^4.1.0)
