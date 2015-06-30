@@ -1,7 +1,7 @@
 # 2.1.0 - 2015-06-30
 
-* \- Fixed: the lineBreak option keeping the selectors indent #18.
-* \- Fixed: the tip of an undefined selector #20.
+* \- Fixed: the lineBreak option keeping the selectors indent [#18](https://github.com/postcss/postcss-custom-selectors/issues/18).
+* \- Fixed: the tip of an undefined selector [#20](https://github.com/postcss/postcss-custom-selectors/issues/20).
 
 # 2.1.0 - 2015-06-04
 
