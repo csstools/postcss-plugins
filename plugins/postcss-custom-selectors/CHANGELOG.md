@@ -1,6 +1,11 @@
+# 2.1.0 - 2015-06-30
+
+* \- Fixed: the lineBreak option keeping the selectors indent #18.
+* \- Fixed: the tip of an undefined selector #20.
+
 # 2.1.0 - 2015-06-04
 
-* \- Fixed: Use PostCSS 4.1 plugin API.
+* \- Fixed: use PostCSS 4.1 plugin API.
 
 # 2.0.1 - 2015-06-03
 
