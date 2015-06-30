@@ -13,15 +13,18 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
   //input
   postcssOpts.from = filename("fixtures/" + name + "/input")
   opts = opts || {}
-  var actual = postcss()
+  var result = postcss()
   .use(plugin(opts))
   .process(read(postcssOpts.from), postcssOpts)
-  .css
+
+  var actual = result.css
   //output
   var output = read(filename("fixtures/" + name + "/output"))
   //actual
   fs.writeFile(filename("fixtures/" + name + "/actual"), actual)
   t.equal(actual.trim(), output.trim(), msg)
+
+  return result
 }
 
 test("@custom-selector", function(t) {
@@ -30,10 +33,15 @@ test("@custom-selector", function(t) {
   compareFixtures(t, "multiline", "should transform multiline")
   compareFixtures(t, "some-hyphen", "should transform some hyphen")
   compareFixtures(t, "matches", "should transform matches selector")
-  compareFixtures(t, "similar-matches", "should transform matches selector")
+  var similarMatchesResult = compareFixtures(t, "similar-matches", "should transform matches selector")
+  t.ok(
+    similarMatchesResult.messages && similarMatchesResult.messages.length === 1,
+    "should add a message when a custom selectors is undefined"
+  )
+
   compareFixtures(t, "comment", "should transform comment")
   compareFixtures(t, "line-break", "should transform line break", {
-      lineBreak: false
+    lineBreak: false
   })
 
   compareFixtures(t, "extension", "should transform local extensions", {

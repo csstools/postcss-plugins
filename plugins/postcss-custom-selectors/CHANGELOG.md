@@ -1,29 +1,42 @@
-# 2.1.0 - 2015-06-30
+# 2.2.0 - 2015-06-30
 
-* \- Fixed: the lineBreak option keeping the selectors indent [#18](https://github.com/postcss/postcss-custom-selectors/issues/18).
-* \- Fixed: the tip of an undefined selector [#20](https://github.com/postcss/postcss-custom-selectors/issues/20).
+* Fixed: No more useless warnings for undefined non custom selectors
+([#22](https://github.com/postcss/postcss-custom-selectors/issues/22))
+* Changed: warnings now use PostCSS message API
+
+# 2.1.1 - 2015-06-30
+
+* Fixed: the lineBreak option keeping the selectors indent
+([#18](https://github.com/postcss/postcss-custom-selectors/issues/18))
+* Fixed: the tip of an undefined selector
+([#20](https://github.com/postcss/postcss-custom-selectors/issues/20))
 
 # 2.1.0 - 2015-06-04
 
-* \- Fixed: use PostCSS 4.1 plugin API.
+* Changed: use PostCSS 4.1 plugin API
+([#13](https://github.com/postcss/postcss-custom-selectors/issues/13))
 
 # 2.0.1 - 2015-06-03
 
-* \- Fixed: `(foo, bar)` conversion error exists in the selector(See also [:matches() test](test/fixtures/matches/input.css)).
+* Fixed: `(foo, bar)` conversion error exists in the selector
+(See also [:matches() test](test/fixtures/matches/input.css))
 
 # 2.0.0 - 2015-05-29
 
-* \x Remove: no longer support `::` or `--` to defined a custom selectors, we must use the `:--` to defined it.
+* Removed: no longer support `::` or `--` to defined a custom selectors,
+you must use the syntax `:--` to define it.
+([#6](https://github.com/postcss/postcss-custom-selectors/issues/6))
+* Fixed: two or more consecutive hyphens in selector don't output `undefined`
+([#14](https://github.com/postcss/postcss-custom-selectors/issues/14))
 
-* \- Fixed: two or more consecutive hyphens in selector outputs is "undefined".
 
 # 1.1.1 - 2015-04-06
 
-* \- Fixed: add support for multilines definition
+* Fixed: add support for multilines definition
 
 # 1.1.0 - 2014-12-06
 
-* \- Added: "lineBreak" option
+* Added: "lineBreak" option
 
 # 1.0.0 - 2014-12-06
 
