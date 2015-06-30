@@ -1,0 +1,11 @@
+/* comment */
+@custom-selector :--foo
+  /* comment */
+  .foo,
+  .bar > .baz;
+
+
+/* comment */
+      :--foo + p {
+    display: block;
+  }

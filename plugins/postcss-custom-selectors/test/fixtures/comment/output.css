@@ -1,0 +1,8 @@
+/* comment */
+
+
+/* comment */
+      .foo + p,
+      .bar > .baz + p {
+    display: block;
+  }

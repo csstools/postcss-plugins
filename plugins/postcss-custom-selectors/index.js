@@ -6,6 +6,9 @@ var postcss = require("postcss")
  */
 var re_CUSTOM_SELECTOR = /([^,]*?)(:-{2,}[\w-]+)(.*)/g
 
+// 匹配换行符与空白
+var reBLANK_LINE       = /(\r\n|\n|\r)(\s*?\1)+/gi
+
 /**
  * 暴露插件
  */
@@ -50,11 +53,6 @@ module.exports = postcss.plugin("postcss-custom-selectors", function(options) {
       customSelectors[extension] = extensions[extension]
     })
 
-    //控制选择器是否换行
-    if (!options.lineBreak && options.lineBreak == false) {
-      line_break = ' '
-    }
-
     // 转换自定义的选择器别名
     styles.eachRule(function(rule) {
       for (var prop in customSelectors) {
@@ -64,9 +62,19 @@ module.exports = postcss.plugin("postcss-custom-selectors", function(options) {
           // $2 = <extension-name> （自定义的选择器名称）
           rule.selector = rule.selector.replace(re_CUSTOM_SELECTOR, function($0, $1, $2, $3) {
             if ($2 === prop) {
-              return customSelector.split(",").map(function(selector) {
+              var newSelector = customSelector.split(",").map(function(selector) {
                 return $1 + selector.trim() + $3
-              }).join("," + line_break)
+              })
+
+              // 选择器不换行
+              if (!options.lineBreak && options.lineBreak === false) {
+                line_break = " "
+                newSelector = newSelector.join("," + line_break)
+              } else {
+                // 选择器换行，同时替换多个换行为一个
+                newSelector = newSelector.join("," + line_break + rule.before).replace(reBLANK_LINE, line_break)
+              }
+              return newSelector
             } else if ($2 !== prop) {
               console.log("Warning: The selector '" + $2 + "' is undefined in CSS!")
               return $2

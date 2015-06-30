@@ -31,13 +31,17 @@ test("@custom-selector", function(t) {
   compareFixtures(t, "some-hyphen", "should transform some hyphen")
   compareFixtures(t, "matches", "should transform matches selector")
   compareFixtures(t, "similar-matches", "should transform matches selector")
-
-  compareFixtures(t, "extension", "should transform local extensions", {
-    extensions: {
-      ':--any' : 'section, article, aside, nav',
-      ':--foo': 'input[type="text"] > section, #nav .bar'
-    }
+  compareFixtures(t, "comment", "should transform comment")
+  compareFixtures(t, "line-break", "should transform line break", {
+      lineBreak: false
   })
+
+  // compareFixtures(t, "extension", "should transform local extensions", {
+  //   extensions: {
+  //     ':--any' : 'section, article, aside, nav',
+  //     ':--foo': 'input[type="text"] > section, #nav .bar'
+  //   }
+  // })
 
   t.end()
 })
