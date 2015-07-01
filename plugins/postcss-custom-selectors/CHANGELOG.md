@@ -1,4 +1,4 @@
-# 2.2.0 - 2015-06-30
+# 2.2.0 - 2015-06-30 (By @MoOx)
 
 * Fixed: No more useless warnings for undefined non custom selectors
 ([#22](https://github.com/postcss/postcss-custom-selectors/issues/22))
