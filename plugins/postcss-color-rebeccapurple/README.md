@@ -4,7 +4,7 @@
 
 ## Why this plugin ?
 
-If you did some CSS, I'm sure you know who [Eric Meyer](https://en.wikipedia.org/wiki/Eric_A._Meyer) is, & what he did for this language.  
+If you did some CSS, I'm sure you know who [Eric Meyer](https://en.wikipedia.org/wiki/Eric_A._Meyer) is, & what he did for this language.
 In memory of [Eric Meyer’s daughter](http://meyerweb.com/eric/thoughts/2014/06/09/in-memoriam-2/), [W3C added new color rebeccapurple to CSS 4 Color Module](http://lists.w3.org/Archives/Public/www-style/2014Jun/0312.html).
 
 ## Installation

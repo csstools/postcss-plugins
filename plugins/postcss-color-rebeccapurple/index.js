@@ -1,33 +1,20 @@
 /**
  * Module dependencies.
  */
-var color = require("color")
-var helpers = require("postcss-message-helpers")
+var postcss = require("postcss")
+var color = require("color")("rebeccapurple").rgbString()
 
 /**
  * PostCSS plugin to convert colors
  */
-module.exports = function plugin() {
+module.exports = postcss.plugin("postcss-color-rebeccapurple", function() {
   return function(style) {
-    style.eachDecl(function transformDecl(decl) {
-      if (!decl.value || decl.value.indexOf("rebeccapurple") === -1) {
-        return
-      }
+    style.eachDecl(function(decl) {
+      var value = decl.value;
 
-      decl.value = helpers.try(function transformRebeccapurpleValue() {
-        return transformRebeccapurple(decl.value)
-      }, decl.source)
+      if (value && value.indexOf("rebeccapurple") !== -1) {
+        decl.value = value.replace(/(rebeccapurple)\b/gi, color)
+      }
     })
   }
-}
-
-
-/**
- * Transform rebeccapurple color to rgb()
- *
- * @param  {String} string declaration value
- * @return {String}        converted declaration value to rgba()
- */
-function transformRebeccapurple(string) {
-  return string.replace(/(rebeccapurple)\b/gi, color("rebeccapurple").rgbString())
-}
+})
