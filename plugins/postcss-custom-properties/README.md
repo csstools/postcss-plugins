@@ -4,7 +4,7 @@
 
 _Per w3c specifications, the usage of `var()` is limited to property values. Do not expect the plugin to transform `var()` in media queries or in selectors._
 
-**N.B.** The transformation _is not complete and **cannot be** (dynamic *cascading* variables based on custom properties relies on the DOM tree)_.
+**N.B.** The transformation _is not complete_ and **cannot be** (dynamic *cascading* variables based on custom properties relies on the DOM tree).
 It currently just aims to provide a future-proof way of using a **limited subset (to `:root` selector)** of the features provided by native CSS custom properties.
 _Since we do not know the DOM in the context of this plugin, we cannot produce safe output_.
 Read [#1](https://github.com/postcss/postcss-custom-properties/issues/1) & [#9](https://github.com/postcss/postcss-custom-properties/issues/9) to know why this limitation exists.
