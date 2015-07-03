@@ -1,13 +1,17 @@
 # postcss-custom-properties [![Build Status](https://travis-ci.org/postcss/postcss-custom-properties.png)](https://travis-ci.org/postcss/postcss-custom-properties)
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS Custom Properties for cascading variables](http://www.w3.org/TR/css-variables/) syntax to more compatible CSS.
+> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS Custom Properties for ~~cascading~~ variables](http://www.w3.org/TR/css-variables/) syntax to more compatible CSS.
 
-**N.B.** The transformation _is not complete and **cannot be** (dynamic variables based on custom properties relies on the DOM tree)_. It currently just aims to provide a future-proof way of using a **limited subset (to top-level `:root` selector)** of the features provided by native CSS custom properties.
-_Read [#1](https://github.com/postcss/postcss-custom-properties/issues/1) & [#9](https://github.com/postcss/postcss-custom-properties/issues/9) to know why this limitation exists._
+_Per w3c specifications, the usage of `var()` is limited to property values. Do not expect the plugin to transform `var()` in media queries or in selectors._
+
+**N.B.** The transformation _is not complete and **cannot be** (dynamic _cascading_ variables based on custom properties relies on the DOM tree)_.
+It currently just aims to provide a future-proof way of using a **limited subset (to `:root` selector)** of the features provided by native CSS custom properties.
+_Since we do not know the DOM in the context of this plugin, we cannot produce safe output_.
+Read [#1](https://github.com/postcss/postcss-custom-properties/issues/1) & [#9](https://github.com/postcss/postcss-custom-properties/issues/9) to know why this limitation exists.
 
 _If you are looking for a full support of CSS custom properties, please follow [the opened issue for runtime support](https://github.com/postcss/postcss-custom-properties/issues/32)._
 
-**N.B.²** If you are wondering why there is a different plugin ([`postcss-css-variables`](https://github.com/MadLittleMods/postcss-css-variables)) that claims to do more than this plugin, be sure to understand the explanation above about limitation. This plugins have a behavior that is not reflecting the specifications. [You should check some (closed) issues of this plugin](https://github.com/MadLittleMods/postcss-css-variables/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aclosed+-label%3Ainvalid+author%3AMoOx+).
+**N.B.²** If you are wondering why there is a different plugin ([`postcss-css-variables`](https://github.com/MadLittleMods/postcss-css-variables)) that claims to do more than this plugin, be sure to understand the explanation above about limitation. This plugins have a behavior that is not [reflecting the specifications](https://github.com/MadLittleMods/postcss-css-variables/issues/4).
 
 _This plugin works great with [postcss-calc](https://github.com/postcss/postcss-calc)._
 
