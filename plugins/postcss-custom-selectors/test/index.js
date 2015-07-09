@@ -54,5 +54,7 @@ test("@custom-selector", function(t) {
     }
   })
 
+  compareFixtures(t, "multiple", "Should transform multiple selectors")
+
   t.end()
 })

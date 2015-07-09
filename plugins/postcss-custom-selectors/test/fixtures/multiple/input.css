@@ -1,0 +1,5 @@
+@custom-selector :--foo .foo;
+
+:--foo, :--foo.bar {
+  color: white;
+}

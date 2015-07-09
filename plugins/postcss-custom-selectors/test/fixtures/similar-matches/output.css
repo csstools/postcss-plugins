@@ -2,7 +2,7 @@ h1 {
   color: red;
 }
 
-h4 h5 h6 {
+h4 > span, h5 > span, h6 > span {
   color: blue;
 }
 
