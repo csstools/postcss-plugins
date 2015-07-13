@@ -126,23 +126,37 @@ function resolveValue(value, variables, result, decl) {
   return results
 }
 
+function prefixVariables(variables) {
+  var prefixedVariables = {}
+
+  if (!variables) {
+    return prefixVariables
+  }
+
+  Object.keys(variables).forEach(function(name) {
+    var val = variables[name]
+    if (name.slice(0, 2) !== "--") {
+      name = "--" + name
+    }
+    prefixedVariables[name] = String(val)
+  })
+
+  return prefixedVariables
+}
+
 /**
  * Module export.
  */
 
 module.exports = postcss.plugin("postcss-custom-properties", function(options) {
-  return function(style, result) {
-    options = options || {}
-    var variables = {}
-    if (options.variables) {
-      Object.keys(options.variables).forEach(function(name) {
-        var val = options.variables[name]
-        if (name.slice(0, 2) !== "--") {
-          name = "--" + name
-        }
-        variables[name] = String(val)
-      })
-    }
+  options = options || {}
+
+  function setVariables(variables) {
+    options.variables = prefixVariables(variables)
+  }
+
+  function plugin(style, result) {
+    var variables = prefixVariables(options.variables)
     var strict = options.strict === undefined ? true : options.strict
     var appendVariables = options.appendVariables
     var preserve = options.preserve
@@ -268,4 +282,8 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
       }
     }
   }
+
+  plugin.setVariables = setVariables
+
+  return plugin
 })

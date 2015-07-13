@@ -110,6 +110,33 @@ test(
   }
 )
 
+test("allows users to programatically change the variables", function(t) {
+  var variables = {
+    "--test-one": "js-one",
+    "--test-two": "js-two",
+    "--test-three": "js-three",
+    "--test-varception": "var(--test-one)",
+    "--test-jsception": "var(--test-varception)",
+    "--test-num": 1,
+  }
+  var plugin = customProperties()
+  var name = "js-override"
+  var expected = fs.readFileSync(fixturePath(name + ".expected"), "utf8").trim()
+  var actual
+
+  plugin.setVariables(variables)
+
+  actual = postcss(plugin)
+    .process(fixture(name), {from: fixturePath(name)}).css.trim()
+
+  t.equal(
+    actual, expected,
+    "processed fixture '" + name + "' should be equal to expected output"
+  )
+
+  t.end()
+})
+
 test("removes variable properties from the output", function(t) {
   compareFixtures(t, "remove-properties")
   t.end()
