@@ -1,0 +1,37 @@
+---
+# babel support more syntax stuff than eslint for now
+parser: babel-eslint
+
+ecmaFeatures:
+  modules: true
+
+env:
+  es6: true
+  browser: true
+  node: true
+
+rules:
+  indent: [2, 2] # 2 spaces indentation
+  max-len: [2, 80, 4]
+  quotes: [2, "double"]
+  semi: [2, "never"]
+  no-multiple-empty-lines: [2, {"max": 1}]
+
+  brace-style: [2, "stroustrup"]
+  comma-dangle: [2, "always-multiline"]
+  comma-style: [2, "last"]
+  computed-property-spacing: [2, "never"]
+  dot-location: [2, "property"]
+
+  one-var: [2, "never"]
+  #no-var: [2]
+  prefer-const: [2]
+  no-bitwise: [2]
+
+  object-shorthand: [2, "methods"]
+  space-after-keywords: [2, "always"]
+  space-before-blocks: [2, "always"]
+  space-before-function-paren: [2, "never"]
+  space-in-brackets: [2, "never"]
+  space-in-parens: [2, "never"]
+  spaced-line-comment: [2, "always"]

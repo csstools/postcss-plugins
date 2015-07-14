@@ -1,7 +1,0 @@
-@custom-selector :--multiline
-  .foo,
-  .bar > .baz;
-
-:--multiline {
-  display: block;
-}

@@ -1,33 +1,50 @@
 {
   "name": "postcss-custom-selectors",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "PostCSS plugin to transform W3C CSS Extensions(Custom Selectors) to more compatible CSS",
   "keywords": [
-    "css",
-    "css3",
     "postcss",
-    "postcss-plugins",
+    "postcss-plugin",
+    "css",
     "selector",
-    "custom-selector",
-    "custom selector"
+    "custom-selector"
   ],
-  "author": "yisi",
+  "authors": [
+    "yisi",
+    "Maxime Thirouin"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/postcss/postcss-custom-selectors.git"
   },
+  "homepage": "https://github.com/postcss/postcss-custom-selectors",
+  "bugs": {
+    "url": "https://github.com/postcss/postcss-custom-selectors/issues"
+  },
   "files": [
     "CHANGELOG.md",
-    "README-zh.md",
     "LICENSE",
-    "index.js"
+    "dist",
+    "README-zh.md"
   ],
+  "main": "dist/index.js",
+  "dependencies": {
+    "balanced-match": "^0.2.0",
+    "postcss": "^4.1.7",
+    "postcss-selector-matches": "^1.2.1"
+  },
   "devDependencies": {
-    "postcss": "^4.1.11",
+    "babel": "^5.5.8",
+    "babel-eslint": "^3.1.15",
+    "babel-tape-runner": "^1.1.0",
+    "eslint": "^0.23.0",
     "tape": "^4.0.0"
   },
   "scripts": {
-    "test": "tape test"
+    "prepublish": "babel src --out-dir dist",
+    "lint": "eslint .",
+    "tape": "babel-tape-runner 'test/*.js'",
+    "test": "npm run lint && npm run tape"
   }
 }

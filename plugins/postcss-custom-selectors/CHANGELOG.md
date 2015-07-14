@@ -1,4 +1,11 @@
-# 2.2.0 - 2015-06-30 (By @MoOx)
+# 2.3.0 - 2015-07-14
+
+* Fixed: Nested/mixed selectors now works correctly
+([#19](https://github.com/postcss/postcss-custom-selectors/issues/19))
+* Added: `transformMatches` option to limit transformation to :matches()
+replacements.
+
+# 2.2.0 - 2015-06-30
 
 * Fixed: No more useless warnings for undefined non custom selectors
 ([#22](https://github.com/postcss/postcss-custom-selectors/issues/22))

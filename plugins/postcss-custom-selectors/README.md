@@ -1,9 +1,9 @@
-# PostCSS Custom Selectors 
+# PostCSS Custom Selectors
 
-[![Build Status](https://travis-ci.org/postcss/postcss-custom-selectors.svg?branch=master)](https://travis-ci.org/postcss/postcss-custom-selectors) 
-[![NPM Downloads](https://img.shields.io/npm/dm/postcss-custom-selectors.svg?style=flat)](https://www.npmjs.com/package/postcss-custom-selectors) 
-[![NPM Version](http://img.shields.io/npm/v/postcss-custom-selectors.svg?style=flat)](https://www.npmjs.com/package/postcss-custom-selectors) 
-[![License](https://img.shields.io/npm/l/postcss-custom-selectors.svg?style=flat)](http://opensource.org/licenses/MIT) 
+[![Build Status](https://travis-ci.org/postcss/postcss-custom-selectors.svg?branch=master)](https://travis-ci.org/postcss/postcss-custom-selectors)
+[![NPM Downloads](https://img.shields.io/npm/dm/postcss-custom-selectors.svg?style=flat)](https://www.npmjs.com/package/postcss-custom-selectors)
+[![NPM Version](http://img.shields.io/npm/v/postcss-custom-selectors.svg?style=flat)](https://www.npmjs.com/package/postcss-custom-selectors)
+[![License](https://img.shields.io/npm/l/postcss-custom-selectors.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform  [W3C CSS Extensions(Custom Selectors)](http://dev.w3.org/csswg/css-extensions/#custom-selectors)  to more compatible CSS.
 
@@ -13,11 +13,11 @@
 
 ## Installation
 
-    $ npm install postcss-custom-selectors
+```console
+$ npm install postcss-custom-selectors
+```
 
 ## Quick Start
-
-Example 1:
 
 ```js
 // dependencies
@@ -33,7 +33,7 @@ var output = postcss()
   .use(selector())
   .process(css)
   .css
-  
+
 console.log('\n====>Output CSS:\n', output)  
 ```
 
@@ -50,7 +50,7 @@ input.css：
 ```css
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
-article :--heading + p { 
+article :--heading + p {
   margin-top: 0;
 }
 ```
@@ -63,25 +63,22 @@ article h2 + p,
 article h3 + p,
 article h4 + p,
 article h5 + p,
-article h6 + p { 
+article h6 + p {
   margin-top: 0;
 }
 ```
 
 ## CSS syntax
 
-    @custom-selector = @custom-selector :<extension-name> <selector>;
-
+```css
+@custom-selector = @custom-selector :<extension-name> <selector>;
+```
 
 ## How to use
 
-The custom selector is a pseudo-class, so we must use the `:--` to defined it.
+The custom selector is a pseudo-class, so you must use `:--` to define it.
 
-For example to simulate [:any-link](http://dev.w3.org/csswg/selectors/#the-any-link-pseudo) selector：
-
-Example 2:
-
-input.css:
+For example to simulate [:any-link](http://dev.w3.org/csswg/selectors/#the-any-link-pseudo) selector:
 
 ```css
 @custom-selector :--any-link :link, :visited;
@@ -100,34 +97,99 @@ a:visited {
 }
 ```
 
-### Multiple selectors
+## Options
 
-`@custom-selector` it **doesn’t support** call multiple custom selector in the same selector, e.g.
+### `lineBreak`
 
-Example 3:
+_(default: `true`)_
+
+Set whether  multiple selector wrap.The default is turning on to be a newline.
+
+Close the line breaks.
+
+```js
+var options = {
+  lineBreak: false
+}
+
+var output = postcss(selector(options))
+  .process(css)
+  .css
+```
+
+With the first example, the output will be:
 
 ```css
-@custom-selector :--heading h1, h2, h3, h4, h5, h6;
-@custom-selector :--any-link :link, :visited;
-
-.demo :--heading, a:--any-link { 
-  font-size: 32px;
+article h1 + p, article h2 + p, article h3 + p, article h4 + p, article h5 + p, article h6 + p {
+  margin-top: 0;
 }
 ```
 
-This will throw an error CSS code.
+### `extensions`
+
+_(default: `{}`)_
+
+This option allows you to customize an object to set the `<extension-name>` (selector alias) and `<selector>`, these definitions will cover the same alias of `@custom-selector` in CSS.
+
+```js
+var options = {
+  extensions: {
+    ':--any' : 'section, article, aside, nav'
+  }
+}
+
+var output = postcss(selector(options))
+  .process(css)
+  .css;
+```
+
+input.css
 
 ```css
-.demo h1,
-.demo h2,
-.demo h3,
-.demo h4,
-.demo h5,
-.demo h6,:link,
-:visited  { 
-  font-size: 32px;
+@custom-selector :--any .foo, .bar; /* No effect */
+:--any h1 {
+  margin-top: 16px;
 }
 ```
+
+output:
+
+```css
+/* No effect */
+section h1,
+article h1,
+aside h1,
+nav h1 {
+  margin-top: 16px;
+}
+```
+
+### `transformMatches`
+
+_(default: `true`)_
+
+Allows you to limit transformation to `:matches()` usage
+If set to false:
+
+input
+
+```css
+@custom-selector :--foo .bar, .baz;
+.foo:--foo {
+  margin-top: 16px;
+}
+```
+
+output
+
+```css
+.foo:matches(.bar, .baz) {
+  margin-top: 16px;
+}
+```
+
+
+## Usage
 
 ### Node Watch
 
@@ -204,72 +266,6 @@ gulp.task('default', function () {
 });
 gulp.watch('src/*.css', ['default']);
 ```
-
-
-
-### Options
-
-#### 1. **`lineBreak`**(default: `true`)
-
-Set whether  multiple selector wrap.The default is turning on to be a newline.
-
-Close the line breaks.
-
-```js
-var options = {
-  lineBreak: false
-}
-
-var output = postcss(selector(options))
-  .process(css)
-  .css
-```
-
-In the 'Example 1' `input.css` will output:
-
-```css
-article h1 + p, article h2 + p, article h3 + p, article h4 + p, article h5 + p, article h6 + p {
-  margin-top: 0;
-}
-```
-
-#### 2. **`extensions`** (default: `{}`)
-
-This option allows you to customize an object to set the `<extension-name>` (selector alias) and `<selector>`, these definitions will cover the same alias of `@custom-selector` in CSS.
-
-```js
-var options = {
-  extensions: {
-    ':--any' : 'section, article, aside, nav'
-  }
-}
-
-var output = postcss(selector(options))
-  .process(css)
-  .css;
-```
-
-input.css
-
-```css
-@custom-selector :--any .foo, .bar; /* No effect */
-:--any h1 {
-  margin-top: 16px;
-}
-```
-
-output:
-
-```css
-/* No effect */
-section h1,
-article h1,
-aside h1,
-nav h1 {
-  margin-top: 16px;
-}
-```
-
 
 ## Contributing
 
