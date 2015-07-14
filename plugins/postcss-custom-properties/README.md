@@ -59,6 +59,22 @@ div {
 }
 ```
 
+Note that plugin returns itself in order to expose a `setVariables` function
+that allow you to programmatically change the variables.
+
+```js
+var variables = {
+  "--a": "b",
+}
+var plugin = customProperties()
+plugin.setVariables(variables)
+var result = postcss()
+  .use(plugin)
+  .process(input)
+```
+
+This might help for dynamic live/hot reloading.
+
 Checkout [tests](test) for more.
 
 ### Options

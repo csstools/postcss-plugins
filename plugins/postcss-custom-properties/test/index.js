@@ -110,7 +110,7 @@ test(
   }
 )
 
-test("allows users to programatically change the variables", function(t) {
+test("allows users to programmatically change the variables", function(t) {
   var variables = {
     "--test-one": "js-one",
     "--test-two": "js-two",

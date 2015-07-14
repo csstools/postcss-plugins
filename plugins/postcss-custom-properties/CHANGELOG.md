@@ -1,3 +1,9 @@
+# 4.1.0 - 2015-07-14
+
+- Added: plugin now returns itself in order to expose a `setVariables` function
+that allow you to programmatically change the variables.
+([#35](https://github.com/postcss/postcss-custom-properties/pull/35))
+
 # 4.0.0 - 2015-06-17
 
 - Changed: messages and exceptions are now sent using postcss message API.
