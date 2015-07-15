@@ -221,6 +221,20 @@ h6:hover .ba--z {
 
   t.equal(
     transform(
+      `@custom-selector :--button button, .button;
+@custom-selector :--enter :hover, :focus;
+
+:--button:--enter {}`
+    ).css,
+    `button:hover,
+.button:hover,
+button:focus,
+.button:focus {}`,
+    "should works with collapsed custom selectors"
+  )
+
+  t.equal(
+    transform(
       `@custom-selector :--any .foo, .bar;
 @custom-selector :--foo .baz;
 

@@ -37,7 +37,7 @@ var output = postcss()
 console.log('\n====>Output CSS:\n', output)  
 ```
 
-Or just：
+Or just:
 
 ```js
 var output = postcss(selector())
@@ -45,7 +45,7 @@ var output = postcss(selector())
   .css
 ```
 
-input.css：
+input:
 
 ```css
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
@@ -94,6 +94,28 @@ output:
 a:link,
 a:visited {
   color: blue;
+}
+```
+
+You can even make some smart use like this:
+
+```css
+@custom-selector :--button button, .button;
+@custom-selector :--enter :hover, :focus;
+
+:--button:--enter {
+
+}
+```
+
+output
+
+```css
+button:hover,
+.button:hover,
+button:focus,
+.button:focus {
+
 }
 ```
 
