@@ -156,6 +156,7 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
   }
 
   function plugin(style, result) {
+    var warnings = options.warnings === undefined ? true : options.warnings
     var variables = prefixVariables(options.variables)
     var strict = options.strict === undefined ? true : options.strict
     var appendVariables = options.appendVariables
@@ -169,13 +170,17 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
 
       // only variables declared for `:root` are supported for now
       if (
-          rule.selectors.length !== 1 ||
-          rule.selectors[0] !== ":root" ||
-          rule.parent.type !== "root"
+        rule.selectors.length !== 1 ||
+        rule.selectors[0] !== ":root" ||
+        rule.parent.type !== "root"
       ) {
         rule.each(function(decl) {
           var prop = decl.prop
-          if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
+          if (
+            warnings &&
+            prop &&
+            prop.indexOf(VAR_PROP_IDENTIFIER) === 0
+          ) {
             result.warn(
               "Custom property ignored: not scoped to the top-level :root " +
               "element (" + rule.selectors + " { ... " + prop + ": ... })" +

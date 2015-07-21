@@ -63,7 +63,7 @@ test(
   function(t) {
     var result = compareFixtures(t, "substitution-undefined")
     t.equal(
-      result.warnings()[0].text,
+      result.messages[0].text,
       "variable '--test' is undefined and used without a fallback",
       "should add a warning for undefined variable"
     )
@@ -74,8 +74,22 @@ test(
 test("substitutes defined variables in `:root` only", function(t) {
   var result = compareFixtures(t, "substitution-defined")
   t.ok(
-    result.warnings()[0].text.match(/^Custom property ignored/),
+    result.messages[0].text.match(/^Custom property ignored/),
     "should add a warning for non root custom properties"
+  )
+  t.end()
+})
+
+test("allow to hide warnings", function(t) {
+  var result = compareFixtures(
+    t,
+    "substitution-defined",
+    {warnings: false}
+  )
+  t.equal(
+    result.messages.length,
+    0,
+    "should not add warnings if option set to false"
   )
   t.end()
 })
@@ -181,7 +195,7 @@ test("circular variable references", function(t) {
   compareFixtures(t, "self-reference")
   var result = compareFixtures(t, "circular-reference")
   t.equal(
-    result.warnings()[0].text,
+    result.messages[0].text,
     "Circular variable reference: --color",
     "should add a warning for circular reference"
   )

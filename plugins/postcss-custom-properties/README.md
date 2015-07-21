@@ -79,13 +79,17 @@ Checkout [tests](test) for more.
 
 ### Options
 
-#### `strict` (default: `true`)
+#### `strict`
+
+Default: `true`
 
 Per specifications, all fallbacks should be added since we can't verify if a
 computed value is valid or not.
 This option allows you to avoid adding too many fallback values in your CSS.
 
-#### `preserve` (default: `false`)
+#### `preserve`
+
+Default: `false`
 
 Allows you to preserve custom properties & var() usage in output.
 
@@ -96,27 +100,43 @@ var out = postcss()
   .css
 ```
 
-You can also set `preserve: "computed"` to get computed resolved custom properties in the final output.
+You can also set `preserve: "computed"` to get computed resolved custom
+properties in the final output.
 Handy to make them available to your JavaScript.
 
-#### `variables` (default: `{}`)
+#### `variables`
 
-Allows you to pass an object of variables for `:root`. These definitions will override any that exist in the CSS.
+Default: `{}`
+
+Allows you to pass an object of variables for `:root`. These definitions will
+override any that exist in the CSS.
 The keys are automatically prefixed with the CSS `--` to make it easier to share
 variables in your codebase.
 
-#### `appendVariables` (default: `false`)
+#### `appendVariables`
 
-If `preserve` is set to `true` (or `"computed"`), allows you to append your variables at the end of your CSS.
+Default: `false`
+
+If `preserve` is set to `true` (or `"computed"`), allows you to append your
+variables at the end of your CSS.
+
+#### `warnings`
+
+Default: `true`
+Type: `Boolean|Object`
+
+Allows you to enable/disable warnings. If true, will enable all warnings.
+For now, it only allow to disable messages about custom properties definition
+not scoped in a `:root` selector.
 
 ---
 
 ## Contributing
 
-Work on a branch, install dev-dependencies, respect coding style & run tests before submitting a bug fix or a feature.
+Fork, work on a branch, install dependencies & run tests before submitting a PR.
 
 ```console
-$ git clone https://github.com/postcss/postcss-custom-properties.git
+$ git clone https://github.com/YOU/postcss-custom-properties.git
 $ git checkout -b patch-1
 $ npm install
 $ npm test

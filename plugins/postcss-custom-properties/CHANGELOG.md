@@ -1,3 +1,8 @@
+# 4.2.0 - 2015-07-21
+
+- Added: `warnings` option allows you to disable warnings.
+([cssnext#186](https://github.com/cssnext/cssnext/issues/186))
+
 # 4.1.0 - 2015-07-14
 
 - Added: plugin now returns itself in order to expose a `setVariables` function
