@@ -5,7 +5,7 @@
   "keywords": [
     "css",
     "postcss",
-    "postcss-plugins",
+    "postcss-plugin",
     "color",
     "colour",
     "hexa",
@@ -23,14 +23,14 @@
     "index.js"
   ],
   "dependencies": {
-    "color": "^0.7.1",
-    "postcss-message-helpers": "^1.1.0"
+    "color": "^0.10.1",
+    "postcss": "^4.1.16",
+    "postcss-message-helpers": "^2.0.0"
   },
   "devDependencies": {
-    "jscs": "^1.6.2",
-    "jshint": "^2.5.6",
-    "postcss": "^4.0.2",
-    "tape": "^3.0.0"
+    "jscs": "^2.1.0",
+    "jshint": "^2.8.0",
+    "tape": "^4.0.3"
   },
   "scripts": {
     "lint": "jscs *.js **/*.js && jshint . --exclude-path .gitignore",

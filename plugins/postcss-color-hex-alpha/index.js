@@ -1,8 +1,9 @@
 /**
  * Module dependencies.
  */
-var color = require("color")
+var postcss = require("postcss")
 var helpers = require("postcss-message-helpers")
+var color = require("color")
 
 /**
  * Constantes
@@ -13,7 +14,7 @@ var DECIMAL_PRECISION = 100000 // 5 decimals
 /**
  * PostCSS plugin to transform hexa alpha colors
  */
-module.exports = function plugin() {
+module.exports = postcss.plugin("postcss-color-hex-alpha", function() {
   return function(style) {
     style.eachDecl(function transformDecl(decl) {
       if (!decl.value || decl.value.indexOf("#") === -1) {
@@ -25,7 +26,7 @@ module.exports = function plugin() {
       }, decl.source)
     })
   }
-}
+})
 
 /**
  * transform RGBA hexadecimal notations (#RRGGBBAA or #RGBA) to rgba().
