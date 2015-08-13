@@ -1,7 +1,7 @@
 # 1.3.0 - 2015-08-13
 
 - Added: compatibility with postcss v4.1.x
-([#3](https://github.com/postcss/postcss-calc/pull/3))
+([#3](https://github.com/postcss/postcss-color-hex-alpha/pull/3))
 
 # 1.2.0 - ?
 
