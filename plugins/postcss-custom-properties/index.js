@@ -165,7 +165,7 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
     var importantMap = {}
 
     // define variables
-    style.eachRule(function(rule) {
+    style.walkRules(function(rule) {
       var toRemove = []
 
       // only variables declared for `:root` are supported for now
@@ -216,7 +216,7 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
 
         // remove empty :root {}
         if (rule.nodes.length === 0) {
-          rule.removeSelf()
+          rule.remove()
         }
       }
     })
@@ -242,7 +242,7 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
     }
 
     // resolve variables
-    style.eachDecl(function(decl) {
+    style.walkDecls(function(decl) {
       var value = decl.value
 
       // skip values that don’t contain variable functions
@@ -260,7 +260,7 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
       })
 
       if (!preserve || preserve === "computed") {
-        decl.removeSelf()
+        decl.remove()
       }
     })
 
@@ -269,7 +269,7 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
       if (names.length) {
         var container = postcss.rule({
           selector: ":root",
-          semicolon: true,
+          raws: {semicolon: true},
         })
         names.forEach(function(name) {
           var variable = map[name]
