@@ -1,3 +1,8 @@
+# 3.0.0 - 2015-08-25
+
+- Removed: compatibility with postcss v4.x
+- Added: compatibility with postcss v5.x
+
 # 2.3.0 - 2015-07-14
 
 * Fixed: Nested/mixed selectors now works correctly

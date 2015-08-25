@@ -18,8 +18,8 @@ export default postcss.plugin("postcss-custom-selectors", function(options) {
 
   const transformMatchesOnRule = transformMatches
     ? (rule) => replaceRuleSelector(rule, {
-        lineBreak,
-      })
+      lineBreak,
+    })
     : (rule) => rule.selector
 
   return function(css, result) {
@@ -27,7 +27,7 @@ export default postcss.plugin("postcss-custom-selectors", function(options) {
     const customSelectors = {}
 
     // first, read custom selectors
-    css.eachAtRule(function(rule) {
+    css.walkAtRules(function(rule) {
       if (rule.name !== "custom-selector") {
         return
       }
@@ -47,7 +47,7 @@ export default postcss.plugin("postcss-custom-selectors", function(options) {
     })
 
     // Convert those selectors to :matches()
-    css.eachRule(function(rule) {
+    css.walkRules(function(rule) {
       if (rule.selector.indexOf(":--") > -1) {
         rule.selector = rule.selector.replace(
           CUSTOM_SELECTOR_RE,
@@ -71,7 +71,7 @@ export default postcss.plugin("postcss-custom-selectors", function(options) {
     })
 
     toRemove.forEach(function(rule) {
-      rule.removeSelf()
+      rule.remove()
     })
 
   }

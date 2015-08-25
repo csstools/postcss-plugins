@@ -1,6 +1,6 @@
-var test = require("tape")
-var postcss = require("postcss")
-var plugin = require("../src")
+import test from "tape"
+import postcss from "postcss"
+import plugin from "../src"
 
 function transform(input, opts = {}, postcssOpts = {}) {
   return postcss()
@@ -268,7 +268,7 @@ main #nav .bar + p {
     "should transform local extensions"
   )
 
-  var postcssPlugin = postcss().use(plugin())
+  const postcssPlugin = postcss().use(plugin())
   t.ok(
     postcssPlugin.process("@custom-selector :--foobar .foo;:--foobar{}").css,
     "should not create a memory"
