@@ -1,3 +1,8 @@
+# 5.0.0 - 2015-08-25
+
+- Removed: compatibility with postcss v4.x
+- Added: compatibility with postcss v5.x
+
 # 4.1.0 - 2015-06-30
 
 - Added: Allow custom media to reference each other

@@ -51,7 +51,7 @@ function customMedia(options) {
     var toRemove = []
 
     // read custom media queries
-    styles.eachAtRule(function(rule) {
+    styles.walkAtRules(function(rule) {
       if (rule.name !== "custom-media") {
         return
       }
@@ -87,7 +87,7 @@ function customMedia(options) {
     })
 
     // transform custom media query aliases
-    styles.eachAtRule(function(rule) {
+    styles.walkAtRules(function(rule) {
       if (rule.name !== "media") {
         return
       }
@@ -123,19 +123,21 @@ function customMedia(options) {
           }
           var atRule = postcss.atRule({
             name: "custom-media",
-            afterName: " ",
             params: name + " " + map[name].value,
+            raws: {
+              afterName: " ",
+            },
           })
           styles.append(atRule)
         })
-        styles.semicolon = true
-        styles.after = "\n"
+        styles.raws.semicolon = true
+        styles.raws.after = "\n"
       }
     }
 
     // remove @custom-media
     toRemove.forEach(function(rule) {
-      rule.removeSelf()
+      rule.remove()
     })
   }
 }

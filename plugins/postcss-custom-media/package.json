@@ -1,11 +1,11 @@
 {
   "name": "postcss-custom-media",
-  "version": "4.1.0",
-  "description": " PostCSS plugin to transform W3C CSS Custom Media Queries to more compatible CSS",
+  "version": "5.0.0",
+  "description": "PostCSS plugin to transform W3C CSS Custom Media Queries to more compatible CSS",
   "keywords": [
     "css",
     "postcss",
-    "postcss-plugins",
+    "postcss-plugin",
     "media queries",
     "custom-media"
   ],
@@ -16,15 +16,13 @@
     "url": "https://github.com/postcss/postcss-custom-media.git"
   },
   "files": [
-    "CHANGELOG.md",
-    "LICENSE",
     "index.js"
   ],
   "dependencies": {
-    "postcss": "^4.1.4"
+    "postcss": "^5.0.0"
   },
   "devDependencies": {
-    "eslint": "^0.23.0",
+    "eslint": "^1.0.0",
     "tape": "^4.0.0"
   },
   "scripts": {
