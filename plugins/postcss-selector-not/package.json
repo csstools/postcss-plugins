@@ -1,9 +1,10 @@
 {
   "name": "postcss-selector-not",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "description": "PostCSS plugin to transform :not() W3C CSS leve 4 pseudo class to :not() CSS level 3 selectors",
   "keywords": [
     "postcss",
+    "postcss-plugin",
     "selectors",
     "selector",
     "Not"
@@ -14,25 +15,19 @@
     "type": "git",
     "url": "https://github.com/postcss/postcss-selector-not.git"
   },
-  "homepage": "https://github.com/postcss/postcss-selector-not",
-  "bugs": {
-    "url": "https://github.com/postcss/postcss-selector-not/issues"
-  },
+  "main": "dist/index.js",
   "files": [
-    "CHANGELOG.md",
-    "LICENSE",
     "dist"
   ],
-  "main": "dist/index.js",
   "dependencies": {
     "balanced-match": "^0.2.0",
-    "postcss": "^4.1.7"
+    "postcss": "^5.0.0"
   },
   "devDependencies": {
     "babel": "^5.1.13",
     "babel-eslint": "^3.1.15",
     "babel-tape-runner": "^1.1.0",
-    "eslint": "^0.23.0",
+    "eslint": "^1.0.0",
     "tape": "^4.0.0"
   },
   "scripts": {

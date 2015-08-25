@@ -26,7 +26,7 @@ function explodeSelector(pseudoClass, selector) {
 function explodeSelectors(pseudoClass) {
   return () => {
     return (css) => {
-      css.eachRule(rule => {
+      css.walkRules(rule => {
         if (rule.selector && rule.selector.indexOf(pseudoClass) > -1) {
           rule.selector = explodeSelector(pseudoClass, rule.selector)
         }

@@ -1,3 +1,8 @@
+# 2.0.0 - 2015-08-25
+
+- Removed: compatibility with postcss v4.x
+- Added: compatibility with postcss v5.x
+
 # 1.2.1 - 2015-06-16
 
 - Fixed: selector was updated as an array, which is wrong.
