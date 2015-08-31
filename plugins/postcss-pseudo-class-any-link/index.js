@@ -7,7 +7,7 @@ module.exports = postcss.plugin('postcss-pseudo-class-any-link', function (opts)
 
 	return function (css) {
 		// for each rule
-		css.eachRule(function (rule) {
+		css.walkRules(function (rule) {
 			// update the selector
 			rule.selector = postcssSelectorParser(function (selectors) {
 				// cache variables
@@ -21,12 +21,12 @@ module.exports = postcss.plugin('postcss-pseudo-class-any-link', function (opts)
 				var selectorIndex = -1;
 
 				// for each selector
-				while ((selector = selectors.nodes[++selectorIndex])) {
+				while (selector = selectors.nodes[++selectorIndex]) {
 					// reset the node index
 					nodeIndex = -1;
 
 					// for each node
-					while ((node = selector.nodes[++nodeIndex])) {
+					while (node = selector.nodes[++nodeIndex]) {
 						// if the node value matches the any-link value
 						if (node.value === valueAnyLink) {
 							// clone the selector

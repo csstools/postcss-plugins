@@ -1,3 +1,9 @@
+## 1.0.0 (2015-09-01)
+
+- Updated: PostCSS 5
+- Updated: Develop dependencies
+- Updated: ESLint configuration
+
 ## 0.3.0 (2015-06-16)
 
 - Added: Support for complex uses
