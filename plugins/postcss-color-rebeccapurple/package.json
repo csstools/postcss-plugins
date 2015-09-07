@@ -32,7 +32,9 @@
     "tape": "^4.0.0"
   },
   "scripts": {
-    "lint": "jscs *.js **/*.js && jshint . --exclude-path .gitignore",
+    "lint": "npm run jscs && npm run jshint",
+    "jscs": "jscs index.js test/index.js",
+    "jshint": "jshint . --exclude-path .gitignore",
     "test": "npm run lint && tape test"
   }
 }
