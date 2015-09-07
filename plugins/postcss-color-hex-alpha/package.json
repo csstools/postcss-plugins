@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "color": "^0.10.1",
-    "postcss": "^4.1.16",
+    "postcss": "^5.0.4",
     "postcss-message-helpers": "^2.0.0"
   },
   "devDependencies": {
