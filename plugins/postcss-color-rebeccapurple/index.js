@@ -9,7 +9,7 @@ var color = require("color")("rebeccapurple").rgbString()
  */
 module.exports = postcss.plugin("postcss-color-rebeccapurple", function() {
   return function(style) {
-    style.eachDecl(function(decl) {
+    style.walkDecls(function(decl) {
       var value = decl.value;
 
       if (value && value.indexOf("rebeccapurple") !== -1) {

@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "color": "^0.9.0",
-    "postcss": "^4.1.13"
+    "postcss": "^5.0.4"
   },
   "devDependencies": {
     "jscs": "^1.6.2",
