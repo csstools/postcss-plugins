@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-hex-alpha",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "PostCSS plugin to transform W3C RGBA hexadecimal notations (#RRGGBBAA or #RGBA) to more compatible CSS (rgba())",
   "keywords": [
     "css",
@@ -18,8 +18,6 @@
     "url": "https://github.com/postcss/postcss-color-hex-alpha.git"
   },
   "files": [
-    "CHANGELOG.md",
-    "LICENSE",
     "index.js"
   ],
   "dependencies": {
