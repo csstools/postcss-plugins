@@ -1,3 +1,10 @@
+## 2.0.0 (2015-09-16)
+
+- Added: Requirement of `&` per the specification
+- Added: New prefix option
+- Added: `@document` and `@supports` as bubbles
+- Updated: Documentation
+
 ## 1.0.0 (2015-09-15)
 
 - Added: New `@nest` at-rule syntax
