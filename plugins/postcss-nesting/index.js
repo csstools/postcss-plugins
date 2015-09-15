@@ -1,5 +1,6 @@
-var bubble  = ['media'];
+var bubble  = ['document', 'media', 'supports'];
 var postcss = require('postcss');
+var prefix  = '';
 
 function transpileSelectors(fromRule, toRule) {
 	var selectors = [];
@@ -56,6 +57,7 @@ function transpileAtRule(fromRule, toRule, atRule) {
 function transpileRule(rule) {
 	var nodes = rule.nodes;
 	var index = -1;
+	var name  = prefix ? '-' + prefix + '-nest' : 'nest';
 	var child;
 
 	// for each node
@@ -65,7 +67,7 @@ function transpileRule(rule) {
 			var newRule = postcss.rule();
 
 			// if atrule is nest
-			if (child.name === 'nest') {
+			if (child.name === name) {
 				transpileNestRule(rule, newRule, child);
 
 				transpileRule(newRule);
@@ -82,6 +84,7 @@ function transpileRule(rule) {
 
 module.exports = postcss.plugin('postcss-nested', function (opts) {
 	if (opts && opts.bubble) bubble = bubble.concat(opts.bubble);
+	if (opts && opts.prefix) prefix = opts.prefix;
 
 	return function (css) {
 		var nodes = css.nodes;

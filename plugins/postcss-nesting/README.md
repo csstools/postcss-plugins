@@ -136,6 +136,23 @@ grunt.initConfig({
 });
 ```
 
+
+## Options
+
+#### `bubble`
+
+Type: `Array`  
+Default: `['document', 'media', 'supports']`
+
+Specifies additional at-rules whose contents should be transpiled so that the at-rule comes first. By default, `@media`, `@supports` and `@document` will do this.
+
+#### `prefix`
+
+Type: `String`  
+Default: `null`
+
+Specifies a prefix to be surrounded by dashes before the `@nest` at-rule (e.g. `@-x-nest`).
+
 [ci]: https://travis-ci.org/jonathantneal/postcss-nesting
 [ci-img]: https://travis-ci.org/jonathantneal/postcss-nesting.svg
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
