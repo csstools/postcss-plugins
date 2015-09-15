@@ -1,8 +1,10 @@
-# PostCSS Nesting [![Build Status][ci-img]][ci]
+# CSS Nesting [![Build Status][ci-img]][ci]
 
 <img align="right" width="135" height="95" src="http://postcss.github.io/postcss/logo-leftp.png" title="Philosopher’s stone, logo of PostCSS">
 
-[PostCSS Nesting] is a [PostCSS] plugin that transforms W3C [CSS Nesting Module Level 3] syntax (@tabatkins’ proposal) to more compatible CSS.
+[CSS Nesting] is a [PostCSS] plugin that allows you to nest one style rule inside another, similar to Sass, but following the [CSS Nesting Module Level 3] specification.
+
+This greatly increases the modularity and maintainability of CSS stylesheets.
 
 ```css
 /* before */
@@ -10,18 +12,19 @@
 a, b {
     color: red;
 
-    {
-        c, d {
-            color: white;
-        }
+    @nest c, d {
+        color: white;
 
-        & & {
-            color: blue;
-        }
+    @nest & & {
+        color: blue;
+    }
 
-        &:hover {
-            color: white;
-        }
+    @nest &:hover {
+        color: black;
+    }
+
+    @media (min-width: 30em) {
+        color: yellow;
     }
 }
 
@@ -40,39 +43,81 @@ a a, a b, b a, b b {
 }
 
 a:hover, b:hover {
-    color: white;
+    color: black;
+}
+
+@media (min-width: 30em) {
+    a, b {
+        color: yellow;
+    }
 }
 ```
 
-From [CSS Nesting Module Level 3]:
-> This module introduces the ability to nest one style rule inside another, with the selector of the child rule relative to the selector of the parent rule. This increase the modularity and maintainability of CSS stylesheets.
-
 ## Usage
 
-You just need to follow these two steps to use [PostCSS Nesting]:
+Follow these steps to use [CSS Nesting].
 
-1. Add [PostCSS] to your build tool.
-2. Add [PostCSS Nesting] as a PostCSS process.
+Add [CSS Nesting] to your build tool:
 
-```sh
+```bash
 npm install postcss-nesting --save-dev
 ```
 
-### Node
+#### Node
 
 ```js
-postcss([ require('postcss-nesting')({ /* options */ }) ])
+require('postcss-nesting')({ /* options */ }).process(YOUR_CSS);
 ```
 
-### Grunt
+#### PostCSS
 
-Install [Grunt PostCSS]:
+Add [PostCSS] to your build tool:
 
-```shell
-npm install postcss-nesting --save-dev
+```bash
+npm install postcss --save-dev
 ```
 
-Enable [PostCSS Nesting] within your Gruntfile:
+Load [CSS Nesting] as a PostCSS plugin:
+
+```js
+postcss([
+    require('postcss-nesting')({ /* options */ })
+]);
+```
+
+#### Gulp
+
+Add [Gulp PostCSS] to your build tool:
+
+```bash
+npm install gulp-postcss --save-dev
+```
+
+Enable [CSS Nesting] within your Gulpfile:
+
+```js
+var postcss = require('gulp-postcss');
+
+gulp.task('css', function () {
+    return gulp.src('./css/src/*.css').pipe(
+        postcss([
+            require('postcss-nesting')({ /* options */ })
+        ])
+    ).pipe(
+        gulp.dest('./css')
+    );
+});
+```
+
+#### Grunt
+
+Add [Grunt PostCSS] to your build tool:
+
+```bash
+npm install grunt-postcss --save-dev
+```
+
+Enable [CSS Nesting] within your Gruntfile:
 
 ```js
 grunt.loadNpmTasks('grunt-postcss');
@@ -93,7 +138,7 @@ grunt.initConfig({
 
 [ci]: https://travis-ci.org/jonathantneal/postcss-nesting
 [ci-img]: https://travis-ci.org/jonathantneal/postcss-nesting.svg
-[CSS Nesting Module Level 3]: http://tabatkins.github.io/specs/css-nesting/
+[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
+[CSS Nesting]: https://github.com/jonathantneal/postcss-nesting
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Nesting]: https://github.com/jonathantneal/postcss-nesting
