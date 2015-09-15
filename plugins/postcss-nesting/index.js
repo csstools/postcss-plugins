@@ -67,7 +67,7 @@ function transpileRule(rule) {
 			var newRule = postcss.rule();
 
 			// if atrule is nest
-			if (child.name === name) {
+			if (child.name === name && child.params.indexOf('&') !== -1) {
 				transpileNestRule(rule, newRule, child);
 
 				transpileRule(newRule);
