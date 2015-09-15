@@ -6,8 +6,8 @@
 		"no-multi-spaces":       [0],
 		"no-unused-vars":        [2],
 		"no-loop-func":          [0],
+		"no-cond-assign":        [0],
 		"key-spacing":           [0],
-		"max-len":               [2],
 		"strict":                [0],
 		"quotes":                [2, "single", "avoid-escape"],
 		"curly":                 [0]

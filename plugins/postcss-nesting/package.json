@@ -1,26 +1,39 @@
 {
-	"name": "postcss-nesting",
-	"version": "0.1.0",
-	"description": "PostCSS plugin ability to nest one style rule inside another",
-	"keywords": ["postcss", "css", "postcss-plugin", "nesting", "selector", "rule"],
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url":  "https://github.com/jonathantneal/postcss-nesting.git"
-	},
-	"dependencies": {
-		"postcss": "^4.1.9",
-		"postcss-selector-parser": "^1.0.0"
-	},
-	"devDependencies": {
-		"gulp-eslint": "^0.12.0",
-		"gulp-mocha":  "^2.0.1",
-		"chai":        "^2.3.0",
-		"gulp":        "^3.8.11",
-		"gulp-watch":  "^4.2.4"
-	},
-	"scripts": {
-		"test": "gulp"
-	}
+  "name": "postcss-nesting",
+  "version": "0.1.0",
+  "description": "Transpiles nested rules according to CSS Nesting Module Level 3",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "nestings",
+    "selectors",
+    "rules"
+  ],
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathantneal/postcss-nesting.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonathantneal/postcss-nesting/issues"
+  },
+  "homepage": "https://github.com/jonathantneal/postcss-nesting",
+  "dependencies": {
+    "postcss": "^5.0.5"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-mocha": "^2.1.3"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "engines": {
+    "iojs": ">=2.0.0",
+    "node": ">=0.12.0"
+  }
 }
