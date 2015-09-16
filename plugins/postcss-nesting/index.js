@@ -71,6 +71,8 @@ function transpileRule(rule) {
 				transpileNestRule(rule, newRule, child);
 
 				transpileRule(newRule);
+
+				--index;
 			} else if (bubble.indexOf(child.name) !== -1) {
 				transpileAtRule(rule, newRule, child);
 

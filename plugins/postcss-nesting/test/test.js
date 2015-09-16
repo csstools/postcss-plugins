@@ -29,8 +29,8 @@ describe('postcss-nested', function () {
 	});
 
 	it('unwraps mixed nesting', function () {
-		check('a { color: red; @media { color: white; @nest & b { color: blue } } }',
-			  'a { color: red } @media { a { color: white } a b { color: blue } }');
+		check('a { color: red; @nest & b { color: white; @media { color: blue; } } @media { color: black; @nest & c { color: yellow } } }',
+			  'a { color: red } a b { color: white } @media { a b { color: blue } } @media { a { color: black } a c { color: yellow } }');
 	});
 
 	it('unwraps specified at-rules', function () {
