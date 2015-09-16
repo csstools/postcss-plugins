@@ -1,6 +1,6 @@
 {
   "name": "postcss-nesting",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Transpiles nested rules according to CSS Nesting Module Level 3",
   "keywords": [
     "postcss",

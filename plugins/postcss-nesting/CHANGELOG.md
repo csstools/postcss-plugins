@@ -1,3 +1,7 @@
+## 2.0.2 (2015-09-16)
+
+- Fixed: Issue where the new rule’s children were not mapped to the parent internally
+
 ## 2.0.1 (2015-09-16)
 
 - Fixed: Issue where  a `@nest` rule followed by another bubbling at-rule would not bubble
