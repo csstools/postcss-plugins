@@ -2,6 +2,15 @@ var bubble  = ['document', 'media', 'supports'];
 var postcss = require('postcss');
 var prefix  = '';
 
+function normalizeNodes(node) {
+	var index = -1;
+	var child;
+
+	while (child = node.nodes[++index]) {
+		child.parent = node;
+	}
+}
+
 function transpileSelectors(fromRule, toRule) {
 	var selectors = [];
 
@@ -32,6 +41,8 @@ function transpileNestRule(fromRule, toRule, atRule) {
 	toRule.selector  = atRule.params;
 	toRule.selectors = transpileSelectors(fromRule, toRule);
 
+	normalizeNodes(toRule);
+
 	parent.nodes.splice(++parent.nestedIndex, 0, toRule);
 }
 
@@ -47,6 +58,8 @@ function transpileAtRule(fromRule, toRule, atRule) {
 	toRule.nodes     = atRule.nodes.splice(0);
 	toRule.parent    = atRule;
 	toRule.selector  = fromRule.selector;
+
+	normalizeNodes(toRule);
 
 	atRule.nodes  = [toRule];
 	atRule.parent = parent;
