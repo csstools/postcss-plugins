@@ -1,3 +1,8 @@
+## 2.0.1 (2015-09-16)
+
+- Fixed: Issue where  a `@nest` rule followed by another bubbling at-rule would not bubble
+- Added: CONTRIBUTING.md
+
 ## 2.0.0 (2015-09-16)
 
 - Added: Requirement of `&` per the specification
