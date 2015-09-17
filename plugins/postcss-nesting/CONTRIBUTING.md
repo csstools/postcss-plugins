@@ -7,7 +7,7 @@ Found a problem? Want a new feature?
 - See if your issue or idea has [already been reported].
 - Provide a [reduced test case] or a [live example].
 
-Remember, a bug is a _demonstrable problem_ caused by _our_ code.
+Remember, a bug is a _demonstrable problem_ caused by _our_ code. Please use this [demo] as a testing platform. You can share code entered here at any time by pressing the Meta and S keys (`⌘S`) to save the current code as a URL.
 
 ## Submitting Pull Requests
 
@@ -54,6 +54,7 @@ Pull requests are the greatest contributions, so be sure they are focused in sco
 5. Now [open a pull request] with a clear title and description.
 
 [already been reported]: issues
+[demo]:                  http://jonathantneal.github.io/postcss-nesting/
 [fork this project]:     fork
 [live example]:          http://codepen.io/pen
 [open a pull request]:   https://help.github.com/articles/using-pull-requests/
