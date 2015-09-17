@@ -2,9 +2,7 @@
 
 <img align="right" width="135" height="95" src="http://postcss.github.io/postcss/logo-leftp.png" title="Philosopher’s stone, logo of PostCSS">
 
-[CSS Nesting] is a [PostCSS] plugin that allows you to nest one style rule inside another, similar to Sass, but following the [CSS Nesting Module Level 3] specification.
-
-This greatly increases the modularity and maintainability of CSS stylesheets.
+[CSS Nesting] is a [PostCSS] plugin that allows you to nest one style rule inside another, following the [CSS Nesting Module Level 3] specification.
 
 ```css
 /* before */
@@ -65,6 +63,8 @@ npm install postcss-nesting --save-dev
 
 #### Node
 
+Use [CSS Nesting] directly:
+
 ```js
 require('postcss-nesting')({ /* options */ }).process(YOUR_CSS);
 ```
@@ -77,7 +77,7 @@ Add [PostCSS] to your build tool:
 npm install postcss --save-dev
 ```
 
-Load [CSS Nesting] as a PostCSS plugin:
+Use [CSS Nesting] as a PostCSS plugin:
 
 ```js
 postcss([
@@ -93,7 +93,7 @@ Add [Gulp PostCSS] to your build tool:
 npm install gulp-postcss --save-dev
 ```
 
-Enable [CSS Nesting] within your Gulpfile:
+Use [CSS Nesting] within your Gulpfile:
 
 ```js
 var postcss = require('gulp-postcss');
@@ -117,7 +117,7 @@ Add [Grunt PostCSS] to your build tool:
 npm install grunt-postcss --save-dev
 ```
 
-Enable [CSS Nesting] within your Gruntfile:
+Use [CSS Nesting] within your Gruntfile:
 
 ```js
 grunt.loadNpmTasks('grunt-postcss');
@@ -155,7 +155,8 @@ Specifies a prefix to be surrounded by dashes before the `@nest` at-rule (e.g. `
 
 [ci]: https://travis-ci.org/jonathantneal/postcss-nesting
 [ci-img]: https://travis-ci.org/jonathantneal/postcss-nesting.svg
+[CSS Nesting]: https://github.com/jonathantneal/postcss-nesting
+[CSS Nesting Module Level 3]: http://tabatkins.github.io/specs/css-nesting/
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
-[CSS Nesting]: https://github.com/jonathantneal/postcss-nesting
 [PostCSS]: https://github.com/postcss/postcss
