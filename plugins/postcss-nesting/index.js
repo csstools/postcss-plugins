@@ -1,115 +1,62 @@
-var bubble  = ['document', 'media', 'supports'];
 var postcss = require('postcss');
-var prefix  = '';
-
-function normalizeNodes(node) {
-	var index = -1;
-	var child;
-
-	while (child = node.nodes[++index]) {
-		child.parent = node;
-	}
-}
 
 function transpileSelectors(fromRule, toRule) {
 	var selectors = [];
 
 	fromRule.selectors.forEach(function (fromSelector) {
 		toRule.selectors.forEach(function (toSelector) {
-			if (toSelector.indexOf('&') === -1) {
-				selectors.push(fromSelector + ' ' + toSelector);
-			} else {
-				selectors.push(toSelector.replace(/&/g, fromSelector));
-			}
+			selectors.push(toSelector.replace(/&/g, fromSelector));
 		});
 	});
 
-	return selectors;
-}
-
-function transpileNestRule(fromRule, toRule, atRule) {
-	var parent = fromRule.parent;
-
-	if (!('nestedIndex' in parent)) {
-		parent.nestedIndex = parent.nodes.indexOf(fromRule);
-	}
-
-	fromRule.nodes.splice(fromRule.nodes.indexOf(atRule), 1);
-
-	toRule.nodes     = atRule.nodes.splice(0);
-	toRule.parent    = parent;
-	toRule.selector  = atRule.params;
-	toRule.selectors = transpileSelectors(fromRule, toRule);
-
-	normalizeNodes(toRule);
-
-	parent.nodes.splice(++parent.nestedIndex, 0, toRule);
-}
-
-function transpileAtRule(fromRule, toRule, atRule) {
-	var parent = fromRule.parent;
-
-	if (!('nestedIndex' in parent)) {
-		parent.nestedIndex = parent.nodes.indexOf(fromRule);
-	}
-
-	fromRule.nodes.splice(fromRule.nodes.indexOf(atRule), 1);
-
-	toRule.nodes     = atRule.nodes.splice(0);
-	toRule.parent    = atRule;
-	toRule.selector  = fromRule.selector;
-
-	normalizeNodes(toRule);
-
-	atRule.nodes  = [toRule];
-	atRule.parent = parent;
-
-	parent.nodes.splice(++parent.nestedIndex, 0, atRule);
-}
-
-function transpileRule(rule) {
-	var nodes = rule.nodes;
-	var index = -1;
-	var name  = prefix ? '-' + prefix + '-nest' : 'nest';
-	var child;
-
-	// for each node
-	while (child = nodes[++index]) {
-		// if node is atrule
-		if (child.type === 'atrule') {
-			var newRule = postcss.rule();
-
-			// if atrule is nest
-			if (child.name === name && child.params.indexOf('&') !== -1) {
-				transpileNestRule(rule, newRule, child);
-
-				transpileRule(newRule);
-
-				--index;
-			} else if (bubble.indexOf(child.name) !== -1) {
-				transpileAtRule(rule, newRule, child);
-
-				transpileRule(newRule);
-
-				--index;
-			}
-		}
-	}
+	toRule.selectors = selectors;
 }
 
 module.exports = postcss.plugin('postcss-nested', function (opts) {
+	var bubble = ['document', 'media', 'supports'];
+	var name   = 'nest';
+
 	if (opts && opts.bubble) bubble = bubble.concat(opts.bubble);
-	if (opts && opts.prefix) prefix = opts.prefix;
+	if (opts && opts.prefix) name   = '-' + opts.prefix + '-' + name;
 
 	return function (css) {
-		var nodes = css.nodes;
-		var index = -1;
-		var child;
+		css.walkAtRules(function (atrule) {
+			var rule = atrule.parent;
+			var root = rule && rule.parent;
 
-		while (child = nodes[++index]) {
-			if (child.type === 'rule') {
-				transpileRule(child);
+			if (root && rule.type === 'rule') {
+				var newrule = postcss.rule({
+					raws: atrule.raws
+				});
+
+				if (atrule.name === name && atrule.params.indexOf('&') !== -1) {
+					atrule.remove();
+
+					newrule.selector = atrule.params;
+
+					newrule.append(atrule.nodes);
+
+					transpileSelectors(rule, newrule);
+
+					root.insertAfter(rule.insertAfterNode || rule, newrule);
+
+					rule.insertAfterNode = newrule;
+				} else if (bubble.indexOf(atrule.name) !== -1) {
+					atrule.remove();
+
+					newrule.selector = rule.selector;
+
+					newrule.append(atrule.nodes);
+
+					atrule.removeAll();
+
+					atrule.append(newrule);
+
+					root.insertAfter(rule.insertAfterNode || rule, atrule);
+
+					rule.insertAfterNode = atrule;
+				}
 			}
-		}
+		});
 	};
 });

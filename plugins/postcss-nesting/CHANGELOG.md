@@ -1,3 +1,7 @@
+## 2.0.3 (2015-09-22)
+
+- Updated: Refactored plugin
+
 ## 2.0.2 (2015-09-16)
 
 - Fixed: Issue where the new rule’s children were not mapped to the parent internally
