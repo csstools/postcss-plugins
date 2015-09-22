@@ -2,6 +2,7 @@
 
 - Updated: Refactored plugin
 - Updated: Tests
+- Updated: PostCSS 5.0.6
 
 ## 2.0.2 (2015-09-16)
 
