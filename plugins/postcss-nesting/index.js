@@ -12,6 +12,11 @@ function transpileSelectors(fromRule, toRule) {
 	toRule.selectors = selectors;
 }
 
+function cleanNode(node) {
+	if (!('before' in node.raws)) node.raws.before = node.parent.raws.before || '';
+	if (!('after' in node.raws)) node.raws.after = node.parent.raws.after || '';
+}
+
 module.exports = postcss.plugin('postcss-nested', function (opts) {
 	var bubble = ['document', 'media', 'supports'];
 	var name   = 'nest';
@@ -26,7 +31,11 @@ module.exports = postcss.plugin('postcss-nested', function (opts) {
 
 			if (root && rule.type === 'rule') {
 				var newrule = postcss.rule({
-					raws: atrule.raws
+					raws: {
+						before:  atrule.raws.before,
+						between: atrule.raws.between,
+						after:   atrule.raws.after
+					}
 				});
 
 				if (atrule.name === name && atrule.params.indexOf('&') !== -1) {
@@ -35,6 +44,8 @@ module.exports = postcss.plugin('postcss-nested', function (opts) {
 					newrule.selector = atrule.params;
 
 					newrule.append(atrule.nodes);
+
+					newrule.nodes.forEach(cleanNode);
 
 					transpileSelectors(rule, newrule);
 
@@ -47,6 +58,8 @@ module.exports = postcss.plugin('postcss-nested', function (opts) {
 					newrule.selector = rule.selector;
 
 					newrule.append(atrule.nodes);
+
+					newrule.nodes.forEach(cleanNode);
 
 					atrule.removeAll();
 

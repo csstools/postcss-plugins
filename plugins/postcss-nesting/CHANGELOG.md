@@ -1,3 +1,7 @@
+## 2.0.4 (2015-09-23)
+
+- Updated: Map source raws
+
 ## 2.0.3 (2015-09-22)
 
 - Updated: Refactored plugin
