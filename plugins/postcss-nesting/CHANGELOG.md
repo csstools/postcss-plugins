@@ -1,6 +1,7 @@
 ## 2.0.3 (2015-09-22)
 
 - Updated: Refactored plugin
+- Updated: Tests
 
 ## 2.0.2 (2015-09-16)
 

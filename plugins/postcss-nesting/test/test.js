@@ -28,6 +28,11 @@ describe('postcss-nested', function () {
 			  'z { color: red } a, b { color: white } a c, a d, b c, b d { color: blue } a c e, a c f, a d e, a d f, b c e, b c f, b d e, b d f { color: black }');
 	});
 
+	it('unwraps bubble nesting', function () {
+		check('a { color: red; @media { color: white } }',
+			  'a { color: red } @media { a { color: white } }');
+	});
+
 	it('unwraps mixed nesting', function () {
 		check('a { color: red; @nest & b { color: white; @media { color: blue; } } @media { color: black; @nest & c { color: yellow } } }',
 			  'a { color: red } a b { color: white } @media { a b { color: blue } } @media { a { color: black } a c { color: yellow } }');
