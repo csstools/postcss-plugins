@@ -12,6 +12,7 @@ a, b {
 
     @nest c, d {
         color: white;
+    }
 
     @nest & & {
         color: blue;
