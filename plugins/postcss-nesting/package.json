@@ -1,6 +1,6 @@
 {
   "name": "postcss-nesting",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Transpiles nested rules according to CSS Nesting Module Level 3",
   "keywords": [
     "postcss",
@@ -21,16 +21,17 @@
   },
   "homepage": "https://github.com/jonathantneal/postcss-nesting",
   "dependencies": {
-    "postcss": "^5.0.6"
+    "postcss": "^5.0.9"
   },
   "devDependencies": {
-    "chai": "^3.3.0",
-    "gulp": "^3.9.0",
-    "gulp-eslint": "^1.0.0",
-    "gulp-mocha": "^2.1.3"
+    "eslint": "^1.6.0",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.1"
   },
   "scripts": {
-    "test": "gulp"
+    "lint": "eslint . --ignore-path .gitignore",
+    "test-fixtures": "tape test/*.js | tap-spec",
+    "test": "npm run lint && npm run test-fixtures"
   },
   "engines": {
     "iojs": ">=2.0.0",

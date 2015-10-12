@@ -2,7 +2,7 @@
 
 <img align="right" width="135" height="95" src="http://postcss.github.io/postcss/logo-leftp.png" title="Philosopher’s stone, logo of PostCSS">
 
-[CSS Nesting] is a [PostCSS] plugin that allows you to nest one style rule inside another, following the [CSS Nesting Module Level 3] specification.
+[CSS Nesting] allows you to nest one style rule inside another, following the [CSS Nesting Module Level 3] specification.
 
 ```css
 /* before */
