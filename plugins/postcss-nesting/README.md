@@ -8,23 +8,23 @@
 /* before */
 
 a, b {
-    color: red;
+	color: red;
 
-    @nest & c, & d {
-        color: white;
-    }
+	@nest & c, & d {
+		color: white;
+	}
 
-    @nest & & {
-        color: blue;
-    }
+	@nest & & {
+		color: blue;
+	}
 
-    @nest &:hover {
-        color: black;
-    }
+	@nest &:hover {
+		color: black;
+	}
 
-    @media (min-width: 30em) {
-        color: yellow;
-    }
+	@media (min-width: 30em) {
+		color: yellow;
+	}
 }
 
 /* after */
@@ -33,11 +33,11 @@ a, b {
     color: red;
 }
 
-a c, b c, a d, b d {
+a c, a d, b c, b d {
     color: white;
 }
 
-a a, a b, b a, b b {
+a a, b b {
     color: blue;
 }
 
@@ -82,7 +82,7 @@ Use [CSS Nesting] as a PostCSS plugin:
 
 ```js
 postcss([
-    require('postcss-nesting')({ /* options */ })
+	require('postcss-nesting')({ /* options */ })
 ]);
 ```
 
@@ -100,13 +100,13 @@ Use [CSS Nesting] within your Gulpfile:
 var postcss = require('gulp-postcss');
 
 gulp.task('css', function () {
-    return gulp.src('./css/src/*.css').pipe(
-        postcss([
-            require('postcss-nesting')({ /* options */ })
-        ])
-    ).pipe(
-        gulp.dest('./css')
-    );
+	return gulp.src('./css/src/*.css').pipe(
+		postcss([
+			require('postcss-nesting')({ /* options */ })
+		])
+	).pipe(
+		gulp.dest('./css')
+	);
 });
 ```
 
@@ -124,19 +124,18 @@ Use [CSS Nesting] within your Gruntfile:
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-    postcss: {
-        options: {
-            processors: [
-                require('postcss-nesting')({ /* options */ })
-            ]
-        },
-        dist: {
-            src: 'css/*.css'
-        }
-    }
+	postcss: {
+		options: {
+			processors: [
+				require('postcss-nesting')({ /* options */ })
+			]
+		},
+		dist: {
+			src: 'css/*.css'
+		}
+	}
 });
 ```
-
 
 ## Options
 
