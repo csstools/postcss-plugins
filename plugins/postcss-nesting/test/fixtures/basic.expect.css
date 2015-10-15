@@ -54,12 +54,12 @@ a b {
 
 @media {
 
-	a c {
-		color: yellow
-	}
-
 	a {
 		color: black
+	}
+
+	a c {
+		color: yellow
 	}
 	}
 

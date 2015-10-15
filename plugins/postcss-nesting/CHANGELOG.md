@@ -1,3 +1,7 @@
+## 2.0.6 (2015-10-15)
+
+- Fixed: Issue with new PostCSS rules
+
 ## 2.0.5 (2015-10-12)
 
 - Updated: Nested rules source map to the parent rule

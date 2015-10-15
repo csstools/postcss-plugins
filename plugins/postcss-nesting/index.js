@@ -25,11 +25,11 @@ module.exports = postcss.plugin('postcss-nested', function (opts) {
 			var root = rule && rule.parent;
 
 			if (root && rule.type === 'rule') {
-				var newrule = rule.clone().removeAll();
+				var newrule = postcss.rule({
+					source: atrule.source
+				});
 
-				newrule.source = atrule.source;
-
-				if (atrule.name === name && atrule.params.indexOf('&') !== -1) {
+				if (atrule.name === name && ~atrule.params.indexOf('&')) {
 					atrule.remove();
 
 					newrule.selector = atrule.params;
@@ -41,7 +41,7 @@ module.exports = postcss.plugin('postcss-nested', function (opts) {
 					root.insertAfter(rule.insertAfterNode || rule, newrule);
 
 					rule.insertAfterNode = newrule;
-				} else if (bubble.indexOf(atrule.name) !== -1) {
+				} else if (~bubble.indexOf(atrule.name)) {
 					atrule.remove();
 
 					newrule.selector = rule.selector;
