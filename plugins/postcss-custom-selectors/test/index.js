@@ -152,6 +152,22 @@ article h6 + p {}`,
 
   t.equal(
     transform(
+      `@custom-selector :--foo .foo;
+
+:--foo :--foo:hover {
+  color: white;
+}
+`
+    ).css,
+    `.foo .foo:hover {
+  color: white;
+}
+`,
+    "should works handle multiples combined selectors with pseudo classes"
+  )
+
+  t.equal(
+    transform(
       `@custom-selector :--foo h1, h2, h3;
 @custom-selector :--ba-----r h4, h5, h6;
 
