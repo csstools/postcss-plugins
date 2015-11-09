@@ -4,8 +4,9 @@
 
 [CSS Nesting] allows you to nest one style rule inside another, following the [CSS Nesting Module Level 3] specification.
 
+### At Rule Nesting
 ```css
-/* before */
+/* at rule nesting */
 
 a, b {
 	color: red;
@@ -19,6 +20,28 @@ a, b {
 	}
 
 	@nest &:hover {
+		color: black;
+	}
+
+	@media (min-width: 30em) {
+		color: yellow;
+	}
+}
+
+/* direct nesting */
+
+a, b {
+	color: red;
+
+	& c, & d {
+		color: white;
+	}
+
+	& & {
+		color: blue;
+	}
+
+	&:hover {
 		color: black;
 	}
 
