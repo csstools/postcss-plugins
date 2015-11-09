@@ -3,6 +3,9 @@ var tests = {
 		'basic': {
 			message: 'supports basic usage'
 		},
+		'direct': {
+			message: 'supports direct nesting'
+		},
 		'ignore': {
 			message: 'ignores invalid syntax'
 		}

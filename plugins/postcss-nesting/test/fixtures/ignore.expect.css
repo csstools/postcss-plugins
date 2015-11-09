@@ -1,7 +1,7 @@
 a, b {
 	color: white;
 
-	& c, & d {
+	c, d {
 		color: blue;
 	}
 }
@@ -12,4 +12,8 @@ a, b {
 	@nest c, d {
 		color: blue;
 	}
+}
+
+& a {
+	color: white;
 }

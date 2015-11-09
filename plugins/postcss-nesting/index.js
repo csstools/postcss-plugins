@@ -58,5 +58,17 @@ module.exports = postcss.plugin('postcss-nested', function (opts) {
 				}
 			}
 		});
+
+		css.walkRules(function (rule) {
+			if (rule.parent.type === 'root' || rule.selector.indexOf('&') === -1) return;
+
+			transpileSelectors(rule.parent, rule);
+
+			rule.moveAfter(rule.parent);
+
+			if (!rule.prev().nodes.length) {
+				rule.prev().remove();
+			}
+		});
 	};
 });
