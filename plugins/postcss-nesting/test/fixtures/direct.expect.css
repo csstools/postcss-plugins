@@ -19,11 +19,19 @@ a c e, a c f, a d e, a d f, b c e, b c f, b d e, b d f {
 }
 
 a, b {
-	color: red
-}
+	color: red;
 
-a a, b b {
-	color: white
+	& & {
+		color: white;
+	}
+
+	c & {
+		color: blue;
+	}
+
+	& c, c & {
+		color: black;
+	}
 }
 
 a {

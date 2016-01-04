@@ -22,7 +22,15 @@ a, b {
 	color: red;
 
 	& & {
-		color: white
+		color: white;
+	}
+
+	c & {
+		color: blue;
+	}
+
+	& c, c & {
+		color: black;
 	}
 }
 

@@ -60,7 +60,11 @@ module.exports = postcss.plugin('postcss-nested', function (opts) {
 		});
 
 		css.walkRules(function (rule) {
-			if (rule.parent.type === 'root' || rule.selector.indexOf('&') === -1) return;
+			if (rule.parent.type === 'root') return;
+
+			if (rule.selectors.filter(function (selector) {
+				return selector.lastIndexOf('&') !== 0;
+			}).length) return;
 
 			transpileSelectors(rule.parent, rule);
 

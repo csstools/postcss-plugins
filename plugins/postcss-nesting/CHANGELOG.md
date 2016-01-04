@@ -1,3 +1,7 @@
+## 2.1.0 (2016-01-03)
+
+- Added: Support for valid direct nesting
+
 ## 2.0.6 (2015-10-15)
 
 - Fixed: Issue with new PostCSS rules
