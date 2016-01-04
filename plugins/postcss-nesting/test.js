@@ -13,11 +13,11 @@ var tests = {
 };
 
 var debug = true;
-var dir   = './test/fixtures/';
+var dir   = './test/';
 
 var fs      = require('fs');
 var path    = require('path');
-var plugin  = require('../');
+var plugin  = require('./');
 var test    = require('tape');
 
 Object.keys(tests).forEach(function (name) {
@@ -41,8 +41,20 @@ Object.keys(tests).forEach(function (name) {
 			var expectPath = path.resolve(dir + testName + '.expect.css');
 			var actualPath = path.resolve(dir + testName + '.actual.css');
 
-			var inputCSS  = fs.readFileSync(inputPath,  'utf8');
-			var expectCSS = fs.readFileSync(expectPath, 'utf8');
+			var inputCSS = '';
+			var expectCSS = '';
+
+			try {
+				inputCSS = fs.readFileSync(inputPath,  'utf8');
+			} catch (error) {
+				fs.writeFileSync(inputPath, inputCSS);
+			}
+
+			try {
+				expectCSS = fs.readFileSync(expectPath,  'utf8');
+			} catch (error) {
+				fs.writeFileSync(expectPath, expectCSS);
+			}
 
 			plugin.process(inputCSS, options).then(function (result) {
 				var actualCSS = result.css;

@@ -1,17 +1,5 @@
 var postcss = require('postcss');
 
-function transpileSelectors(fromRule, toRule) {
-	var selectors = [];
-
-	fromRule.selectors.forEach(function (fromSelector) {
-		toRule.selectors.forEach(function (toSelector) {
-			selectors.push(toSelector.replace(/&/g, fromSelector));
-		});
-	});
-
-	toRule.selectors = selectors;
-}
-
 module.exports = postcss.plugin('postcss-nested', function (opts) {
 	var bubble = ['document', 'media', 'supports'];
 	var name   = 'nest';
@@ -76,3 +64,15 @@ module.exports = postcss.plugin('postcss-nested', function (opts) {
 		});
 	};
 });
+
+function transpileSelectors(fromRule, toRule) {
+	var selectors = [];
+
+	fromRule.selectors.forEach(function (fromSelector) {
+		toRule.selectors.forEach(function (toSelector) {
+			selectors.push(toSelector.replace(/&/g, fromSelector));
+		});
+	});
+
+	toRule.selectors = selectors;
+}

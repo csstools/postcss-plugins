@@ -1,3 +1,7 @@
+## 2.1.1 (2016-01-03)
+
+- Updated: Project conventions
+
 ## 2.1.0 (2016-01-03)
 
 - Added: Support for valid direct nesting
