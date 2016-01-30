@@ -3,6 +3,12 @@ body { color: #000  }
 @custom-media --a (--b);
 @custom-media --b (--a);
 
+@media (--a) {
+  selector {
+    property: value;
+  }
+}
+
 @media (--b) {
   selector {
     property: value;

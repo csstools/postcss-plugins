@@ -5,11 +5,11 @@ var EXTENSION_RE = /\(\s*(--[\w-]+)\s*\)/g
 /*
  * Resolve custom media values.
  */
-function resolveValue(value, map, result) {
-  if (!EXTENSION_RE.test(value)) {
-    return value
+function resolveValue(query, depChain, map, result) {
+  if (!EXTENSION_RE.test(query.value)) {
+    return query.value
   }
-  return value.replace(EXTENSION_RE, function(orig, name) {
+  var val = query.value.replace(EXTENSION_RE, function(orig, name) {
     if (!map[name]) {
       return orig
     }
@@ -19,14 +19,18 @@ function resolveValue(value, map, result) {
       return mq.value
     }
 
-    if (mq.deps.indexOf(name) !== -1) {
+    if (depChain.indexOf(name) !== -1) {
       mq.circular = true
       return orig
     }
-    mq.deps.push(name)
-    mq.value = resolveValue(mq.value, map, result)
+    depChain.push(name)
+    mq.value = resolveValue(mq, depChain, map, result)
     return mq.value
   })
+  if (val === query.value) {
+    query.circular = true
+  }
+  return val
 }
 
 /*
@@ -61,7 +65,6 @@ function customMedia(options) {
       // map[<extension-name>] = <media-query-list>
       map[params.shift()] = {
         value: params.join(" "),
-        deps: [],
         circular: false,
         resolved: false,
       }
@@ -75,14 +78,13 @@ function customMedia(options) {
     Object.keys(extensions).forEach(function(name) {
       map[name] = {
         value: extensions[name],
-        deps: [],
         circular: false,
         resolved: false,
       }
     })
 
     Object.keys(map).forEach(function(name) {
-      map[name].value = resolveValue(map[name].value, map, result)
+      map[name].value = resolveValue(map[name], [name], map, result)
       map[name].resolved = true
     })
 
