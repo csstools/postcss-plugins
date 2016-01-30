@@ -1,6 +1,6 @@
 {
   "name": "postcss-nesting",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Transpiles nested rules according to CSS Nesting Module Level 3",
   "keywords": [
     "postcss",
@@ -8,7 +8,10 @@
     "postcss-plugin",
     "nestings",
     "selectors",
-    "rules"
+    "rules",
+    "specs",
+    "specifications",
+    "cssnext"
   ],
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",

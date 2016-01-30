@@ -1,3 +1,9 @@
+## 2.2.0 (2016-01-30)
+
+- Added: Nesting of all at-rules
+- Updated: Direct nesting order maintains order
+- Updated: Tests and documentation
+
 ## 2.1.1 (2016-01-03)
 
 - Updated: Project conventions

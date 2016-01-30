@@ -8,58 +8,68 @@ module.exports = postcss.plugin('postcss-nested', function (opts) {
 	if (opts && opts.prefix) name   = '-' + opts.prefix + '-' + name;
 
 	return function (css) {
-		css.walkAtRules(function (atrule) {
-			var rule = atrule.parent;
+		css.walk(function (target) {
+			var rule = target.parent;
 			var root = rule && rule.parent;
+
+			var isAtRule = target.type === 'atrule';
+			var isRule   = target.type === 'rule';
 
 			if (root && rule.type === 'rule') {
 				var newrule = postcss.rule({
-					source: atrule.source
+					source: target.source
 				});
 
-				if (atrule.name === name && ~atrule.params.indexOf('&')) {
-					atrule.remove();
+				if (isRule && target.selectors.every(function (selector) {
+					return selector.lastIndexOf('&') === 0;
+				})) {
+					target.remove();
 
-					newrule.selector = atrule.params;
+					newrule.selector = target.selector;
 
-					newrule.append(atrule.nodes);
+					newrule.append(target.nodes);
 
 					transpileSelectors(rule, newrule);
 
 					root.insertAfter(rule.insertAfterNode || rule, newrule);
 
 					rule.insertAfterNode = newrule;
-				} else if (~bubble.indexOf(atrule.name)) {
-					atrule.remove();
+				} else if (isAtRule && target.name === name && ~target.params.indexOf('&')) {
+					target.remove();
 
-					newrule.selector = rule.selector;
+					newrule.selector = target.params;
 
-					newrule.append(atrule.nodes);
+					newrule.append(target.nodes);
 
-					atrule.removeAll();
+					transpileSelectors(rule, newrule);
 
-					atrule.append(newrule);
+					root.insertAfter(rule.insertAfterNode || rule, newrule);
 
-					root.insertAfter(rule.insertAfterNode || rule, atrule);
+					rule.insertAfterNode = newrule;
+				} else if (isAtRule && ~bubble.indexOf(target.name)) {
+					var selector = rule.selector;
 
-					rule.insertAfterNode = atrule;
+					if (root.type === 'atrule' && root.name === target.name && root.parent) {
+						target.params = root.params + ' and ' + target.params;
+
+						rule = root;
+						root = root.parent;
+					}
+
+					target.remove();
+
+					newrule.selector = selector;
+
+					newrule.append(target.nodes);
+
+					target.removeAll();
+
+					target.append(newrule);
+
+					root.insertAfter(rule.insertAfterNode || rule, target);
+
+					rule.insertAfterNode = target;
 				}
-			}
-		});
-
-		css.walkRules(function (rule) {
-			if (rule.parent.type === 'root') return;
-
-			if (rule.selectors.filter(function (selector) {
-				return selector.lastIndexOf('&') !== 0;
-			}).length) return;
-
-			transpileSelectors(rule.parent, rule);
-
-			rule.moveAfter(rule.parent);
-
-			if (!rule.prev().nodes.length) {
-				rule.prev().remove();
 			}
 		});
 	};

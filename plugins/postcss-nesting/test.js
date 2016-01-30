@@ -8,6 +8,9 @@ var tests = {
 		},
 		'ignore': {
 			message: 'ignores invalid syntax'
+		},
+		'media': {
+			message: 'supports nested media queries'
 		}
 	}
 };

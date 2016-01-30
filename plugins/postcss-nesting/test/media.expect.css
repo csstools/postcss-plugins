@@ -1,0 +1,26 @@
+.main {
+	color: blue
+}
+
+	@media (min-width: 100px) {
+
+	.main {
+		color: white
+	}
+
+	.main .child {}
+	}
+
+	@media (min-width: 100px) and (max-width: 200px) {
+
+	.main {
+		color: red
+	}
+}
+
+	@media (min-width: 100px) and (max-width: 200px) {
+
+	.main .child {
+		color: green
+	}
+}

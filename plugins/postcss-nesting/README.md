@@ -48,6 +48,10 @@ a, b {
 
 	@media (min-width: 30em) {
 		color: yellow;
+
+		@media (min-device-pixel-ratio: 1.5) {
+			color: green;
+		}
 	}
 }
 
@@ -73,6 +77,10 @@ a:hover, b:hover {
     a, b {
         color: yellow;
     }
+}
+
+@media (min-width: 30em) and (min-device-pixel-ratio: 1.5) {
+	color: green;
 }
 ```
 
