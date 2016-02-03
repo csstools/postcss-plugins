@@ -97,7 +97,7 @@ test("@custom-media", function(t) {
     t,
     "preserve",
     "should preserve custom media",
-    {preserve: true}
+    { preserve: true }
   )
 
   compareFixtures(

@@ -84,7 +84,7 @@ function customMedia(options) {
     })
 
     Object.keys(map).forEach(function(name) {
-      map[name].value = resolveValue(map[name], [name], map, result)
+      map[name].value = resolveValue(map[name], [ name ], map, result)
       map[name].resolved = true
     })
 
@@ -100,7 +100,7 @@ function customMedia(options) {
             result.warn(
               "Circular @custom-media definition for '" + name +
                 "'. The entire rule has been removed from the output.",
-              {node: rule}
+              { node: rule }
             )
             toRemove.push(rule)
           }
@@ -110,7 +110,7 @@ function customMedia(options) {
         result.warn(
           "Missing @custom-media definition for '" + name +
             "'. The entire rule has been removed from the output.",
-          {node: rule}
+          { node: rule }
         )
         toRemove.push(rule)
       })
