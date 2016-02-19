@@ -1,6 +1,6 @@
 var postcss = require('postcss');
 
-module.exports = postcss.plugin('postcss-nested', function (opts) {
+module.exports = postcss.plugin('postcss-nesting', function (opts) {
 	var bubble = ['document', 'media', 'supports'];
 	var name   = 'nest';
 
