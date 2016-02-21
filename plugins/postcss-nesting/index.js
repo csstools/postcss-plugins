@@ -1,4 +1,5 @@
 var postcss = require('postcss');
+var comma   = postcss.list.comma;
 
 module.exports = postcss.plugin('postcss-nesting', function (opts) {
 	var bubble = ['document', 'media', 'supports'];
@@ -50,7 +51,11 @@ module.exports = postcss.plugin('postcss-nesting', function (opts) {
 					var selector = rule.selector;
 
 					if (root.type === 'atrule' && root.name === target.name && root.parent) {
-						target.params = root.params + ' and ' + target.params;
+						target.params = comma(root.params).map(function (params1) {
+							return comma(target.params).map(function (params2) {
+								return params1 + ' and ' + params2;
+							}).join(', ');
+						}).join(', ');
 
 						rule = root;
 						root = root.parent;
