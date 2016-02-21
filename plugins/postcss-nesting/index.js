@@ -5,8 +5,13 @@ module.exports = postcss.plugin('postcss-nesting', function (opts) {
 	var bubble = ['document', 'media', 'supports'];
 	var name   = 'nest';
 
-	if (opts && opts.bubble) bubble = bubble.concat(opts.bubble);
-	if (opts && opts.prefix) name   = '-' + opts.prefix + '-' + name;
+	if (opts && opts.bubble) {
+		bubble = bubble.concat(opts.bubble);
+	}
+
+	if (opts && opts.prefix) {
+		name = '-' + opts.prefix + '-' + name;
+	}
 
 	return function (css) {
 		css.walk(function (target) {

@@ -62,7 +62,9 @@ Object.keys(tests).forEach(function (name) {
 			plugin.process(inputCSS, options).then(function (result) {
 				var actualCSS = result.css;
 
-				if (debug) fs.writeFileSync(actualPath, actualCSS);
+				if (debug) {
+					fs.writeFileSync(actualPath, actualCSS);
+				}
 
 				t.equal(actualCSS, expectCSS, message);
 
