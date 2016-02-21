@@ -1,17 +1,22 @@
 {
   "name": "postcss-nesting",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Transpiles nested rules according to CSS Nesting Module Level 3",
   "keywords": [
     "postcss",
     "css",
     "postcss-plugin",
+    "atrules",
+    "child",
+    "children",
+    "cssnext",
+    "nested",
     "nestings",
-    "selectors",
     "rules",
-    "specs",
+    "selectors",
     "specifications",
-    "cssnext"
+    "specs",
+    "w3c"
   ],
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -19,15 +24,16 @@
   "bugs": "https://github.com/jonathantneal/postcss-nesting/issues",
   "homepage": "https://github.com/jonathantneal/postcss-nesting",
   "dependencies": {
-    "postcss": "^5.0.14"
+    "postcss": "^5.0.16"
   },
   "devDependencies": {
     "eslint": "^1.10.3",
+    "jscs": "^2.10.1",
     "tap-spec": "^4.1.1",
     "tape": "^4.4.0"
   },
   "scripts": {
-    "lint": "eslint . --ignore-path .gitignore",
+    "lint": "eslint *.js --ignore-path .gitignore && jscs *.js",
     "tape": "tape test.js | tap-spec",
     "test": "npm run lint && npm run tape"
   },

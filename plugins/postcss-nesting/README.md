@@ -7,28 +7,6 @@
 [CSS Nesting] allows you to nest one style rule inside another, following the [CSS Nesting Module Level 3] specification.
 
 ```css
-/* at rule nesting */
-
-a, b {
-	color: red;
-
-	@nest & c, & d {
-		color: white;
-	}
-
-	@nest & & {
-		color: blue;
-	}
-
-	@nest &:hover {
-		color: black;
-	}
-
-	@media (min-width: 30em) {
-		color: yellow;
-	}
-}
-
 /* direct nesting */
 
 a, b {
@@ -52,6 +30,28 @@ a, b {
 		@media (min-device-pixel-ratio: 1.5) {
 			color: green;
 		}
+	}
+}
+
+/* or at-rule nesting */
+
+a, b {
+	color: red;
+
+	@nest & c, & d {
+		color: white;
+	}
+
+	@nest & & {
+		color: blue;
+	}
+
+	@nest &:hover {
+		color: black;
+	}
+
+	@media (min-width: 30em) {
+		color: yellow;
 	}
 }
 

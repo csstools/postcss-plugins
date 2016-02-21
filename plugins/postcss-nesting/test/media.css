@@ -15,3 +15,11 @@
 		}
 	}
 }
+
+.main {
+	@media screen, print and speech {
+		@media (max-width: 300px), (min-aspect-ratio: 16/9) {
+			color: black;
+		}
+	}
+}

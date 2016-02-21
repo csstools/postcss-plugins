@@ -1,3 +1,9 @@
+## 2.3.0 (2016-02-20)
+
+- Updated: JavaScript formatting, linting, tests, and documentation
+- Updated: Properly concatenate at-rules with or expressions
+- Updated: Update internal plugin name to postcss-nesting
+
 ## 2.2.0 (2016-01-30)
 
 - Added: Nesting of all at-rules
