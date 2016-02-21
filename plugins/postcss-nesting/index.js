@@ -34,7 +34,7 @@ module.exports = postcss.plugin('postcss-nesting', function (opts) {
 					root.insertAfter(rule.insertAfterNode || rule, newrule);
 
 					rule.insertAfterNode = newrule;
-				} else if (isAtRule && target.name === name && ~target.params.indexOf('&')) {
+				} else if (isAtRule && target.name === name && target.params.indexOf('&') !== -1) {
 					target.remove();
 
 					newrule.selector = target.params;
@@ -46,7 +46,7 @@ module.exports = postcss.plugin('postcss-nesting', function (opts) {
 					root.insertAfter(rule.insertAfterNode || rule, newrule);
 
 					rule.insertAfterNode = newrule;
-				} else if (isAtRule && ~bubble.indexOf(target.name)) {
+				} else if (isAtRule && bubble.indexOf(target.name) !== -1) {
 					var selector = rule.selector;
 
 					if (root.type === 'atrule' && root.name === target.name && root.parent) {
