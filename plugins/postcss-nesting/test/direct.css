@@ -1,87 +1,87 @@
 a, b {
-	color: white;
+	color: blue;
 
 	& c, & d {
-		color: blue
+		color: blue;
 	}
 }
 
 a, b {
-	color: white;
+	color: blue;
 
 	& c, & d {
 		color: blue;
 
 		& e, & f {
-			color: black
+			color: blue;
 		}
 	}
 }
 
 a, b {
-	color: red;
+	color: blue;
 
 	& & {
-		color: white;
-	}
-
-	c & {
 		color: blue;
 	}
 
+	c & {
+		color: red;
+	}
+
 	& c, c & {
-		color: black;
+		color: red;
 	}
 }
 
 a {
-	color: red;
+	color: blue;
 
 	@media {
-		color: white
+		color: blue;
 	}
 }
 
 a {
-	color: red;
+	color: blue;
 
 	& b {
-		color: white;
+		color: blue;
 
 		@media {
-			color: blue
+			color: blue;
 		}
 	}
 
 	@media {
-		color: black;
+		color: blue;
 
 		& c {
-			color: yellow
+			color: blue;
 		}
 	}
 }
 
 a {
-	color: red;
+	color: blue;
 
 	@unknown test {
-		color: white
+		color: red;
 	}
 }
 
 b {
-	color: white;
+	color: blue;
 
 	@phone {
-		color: blue
+		color: red;
 	}
 
 	@media {
-		color: black;
+		color: blue;
 
 		& c {
-			color: yellow
+			color: blue;
 		}
 	}
 }

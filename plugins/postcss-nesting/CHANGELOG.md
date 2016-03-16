@@ -1,3 +1,11 @@
+## 2.3.1 (2016-03-16)
+
+- Updated: Allow any direct nesting that follows the syntactic constraints
+- Updated: PostCSS 5.0.6
+- Updated: Tests
+- Updated: Dependencies
+- Updated: Project configuration
+
 ## 2.3.0 (2016-02-20)
 
 - Updated: JavaScript formatting, linting, tests, and documentation

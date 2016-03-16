@@ -27,7 +27,7 @@ module.exports = postcss.plugin('postcss-nesting', function (opts) {
 				});
 
 				if (isRule && target.selectors.every(function (selector) {
-					return selector.lastIndexOf('&') === 0;
+					return selector.indexOf('&') === 0;
 				})) {
 					target.remove();
 

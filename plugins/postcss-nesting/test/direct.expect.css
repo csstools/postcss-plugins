@@ -1,5 +1,5 @@
 a, b {
-	color: white
+	color: blue
 }
 
 a c, a d, b c, b d {
@@ -7,7 +7,7 @@ a c, a d, b c, b d {
 }
 
 a, b {
-	color: white
+	color: blue
 }
 
 a c, a d, b c, b d {
@@ -15,42 +15,42 @@ a c, a d, b c, b d {
 }
 
 a c e, a c f, a d e, a d f, b c e, b c f, b d e, b d f {
-	color: black
+	color: blue
 }
 
 a, b {
-	color: red;
-
-	& & {
-		color: white;
-	}
+	color: blue;
 
 	c & {
-		color: blue;
+		color: red;
 	}
 
 	& c, c & {
-		color: black;
+		color: red;
 	}
 }
 
+a a, b b {
+	color: blue
+}
+
 a {
-	color: red
+	color: blue
 }
 
 @media {
 
 	a {
-		color: white
+		color: blue
 	}
 	}
 
 a {
-	color: red
+	color: blue
 }
 
 a b {
-	color: white
+	color: blue
 }
 
 @media {
@@ -63,37 +63,37 @@ a b {
 @media {
 
 	a {
-		color: black
+		color: blue
 	}
 
 	a c {
-		color: yellow
+		color: blue
 	}
 	}
 
 a {
-	color: red;
+	color: blue;
 
 	@unknown test {
-		color: white
+		color: red;
 	}
 }
 
 b {
-	color: white;
+	color: blue;
 
 	@phone {
-		color: blue
+		color: red;
 	}
 }
 
 @media {
 
 	b {
-		color: black
+		color: blue
 	}
 
 	b c {
-		color: yellow
+		color: blue
 	}
 	}
