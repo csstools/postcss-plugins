@@ -1,3 +1,9 @@
+# 5.0.1 - 2016-04-22
+
+- Fixed: trailing space after custom property name causes duplicate empty
+  property
+  ([#43](https://github.com/postcss/postcss-custom-properties/pull/43))
+
 # 5.0.0 - 2015-08-25
 
 - Removed: compatibility with postcss v4.x

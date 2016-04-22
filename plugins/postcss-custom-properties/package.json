@@ -1,6 +1,6 @@
 {
   "name": "postcss-custom-properties",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "PostCSS plugin to polyfill W3C CSS Custom Properties for cascading variables",
   "keywords": [
     "css",
@@ -12,10 +12,7 @@
   ],
   "author": "Maxime Thirouin",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/postcss/postcss-custom-properties.git"
-  },
+  "repository": "https://github.com/postcss/postcss-custom-properties.git",
   "files": [
     "index.js"
   ],
@@ -25,9 +22,11 @@
   },
   "devDependencies": {
     "eslint": "^1.0.0",
+    "npmpub": "^3.1.0",
     "tape": "^4.0.0"
   },
   "scripts": {
-    "test": "eslint . && tape test"
+    "test": "eslint . && tape test",
+    "release": "npmpub"
   }
 }
