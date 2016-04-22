@@ -228,3 +228,8 @@ test("strict option", function(t) {
 
   t.end()
 })
+
+test("ignores trailing space after variable", function(t) {
+  compareFixtures(t, "substitution-trailing-space")
+  t.end()
+})

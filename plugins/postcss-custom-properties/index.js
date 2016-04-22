@@ -12,7 +12,7 @@ var balanced = require("balanced-match")
 var VAR_PROP_IDENTIFIER = "--"
 var VAR_FUNC_IDENTIFIER = "var"
 // matches `name[, fallback]`, captures "name" and "fallback"
-var RE_VAR = /([\w-]+)(?:\s*,\s*)?(.*)?/
+var RE_VAR = /([\w-]+)(?:\s*,\s*)?\s*(.*)?/
 
 /**
  * Resolve CSS variables in a value
