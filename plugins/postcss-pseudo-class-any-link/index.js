@@ -8,6 +8,11 @@ module.exports = postcss.plugin('postcss-pseudo-class-any-link', function (opts)
 	return function (css) {
 		// for each rule
 		css.walkRules(function (rule) {
+			var rawSelector = rule.raws.selector && rule.raws.selector.raw || rule.selector;
+			// workaround for https://github.com/postcss/postcss-selector-parser/issues/28#issuecomment-171910556
+			if (rawSelector[rawSelector.length - 1] === ':') {
+				return;
+			}
 			// update the selector
 			rule.selector = postcssSelectorParser(function (selectors) {
 				// cache variables
@@ -45,7 +50,7 @@ module.exports = postcss.plugin('postcss-pseudo-class-any-link', function (opts)
 						}
 					}
 				}
-			}).process(rule.selector).result;
+			}).process(rawSelector).result;
 		});
 	};
 });

@@ -57,4 +57,9 @@ describe('postcss-pseudo-class-any-link', function () {
 			prefix: 'foo'
 		}, done);
 	});
+
+	// regression tests
+	it('--any-link remains --any-link', function (done) {
+		test('--any-link: { background: blue; }', '--any-link: { background: blue; }', {}, done);
+	});
 });
