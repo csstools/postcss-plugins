@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb-base",
+  "env": {
+    "mocha": true
+  },
+  "rules": {
+    "indent": [2, "tab"],
+    "no-param-reassign": [2, { "props": false }],
+    "comma-dangle": 0
+  }
+}
