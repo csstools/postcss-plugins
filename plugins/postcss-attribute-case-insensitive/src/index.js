@@ -82,7 +82,7 @@ function transform(selectors) {
 	}
 }
 
-export default postcss.plugin('postcss-attribute-case-insensitive', () => (css) => {
+export default postcss.plugin('postcss-attribute-case-insensitive', () => css => {
 	css.walkRules(rule => {
 		rule.selector = parser(transform).process(rule.selector).result;
 	});
