@@ -1,0 +1,23 @@
+a {
+	place-content: first second;
+	place-items: first second;
+	place-self: first second;
+}
+
+b {
+	place-content: first;
+	place-items: first;
+	place-self: first;
+}
+
+c {
+	place-content: var(--first) second;
+	place-items: var(--first) second;
+	place-self: var(--first) second;
+}
+
+d {
+	place-content: first var(--second);
+	place-items: first var(--second);
+	place-self: first var(--second);
+}

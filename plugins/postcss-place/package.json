@@ -1,0 +1,53 @@
+{
+  "name": "postcss-place",
+  "version": "1.0.0",
+  "description": "`place-[alignment] shorthand for align-[alignment] and justify-[alignment]",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com> (http://jonathantneal.com)",
+  "license": "CC0-1.0",
+  "repository": "jonathantneal/postcss-place",
+  "homepage": "https://github.com/jonathantneal/postcss-place#readme",
+  "bugs": "https://github.com/jonathantneal/postcss-place/issues",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "lint": "eslint index.js && jscs index.js",
+    "tape": "node test",
+    "test": "npm run lint && node test"
+  },
+  "engines": {
+    "node": ">=6.9.1"
+  },
+  "dependencies": {
+    "postcss": "^5.2.5",
+    "postcss-value-parser": "^3.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.2",
+    "eslint-config-10up": "github:jonathantneal/eslint-config-10up",
+    "jscs": "^3.0.7",
+    "jscs-config-10up": "github:jonathantneal/jscs-config-10up"
+  },
+  "eslintConfig": {
+    "extends": "10up",
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  },
+  "jscsConfig": {
+    "preset": "10up"
+  },
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "shorthands",
+    "alignments",
+    "justifies",
+    "justify",
+    "aligns",
+    "contents",
+    "selfs"
+  ]
+}

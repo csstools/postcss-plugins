@@ -1,0 +1,35 @@
+a {
+	align-content: first;
+	justify-content: second;
+	align-items: first;
+	justify-items: second;
+	align-self: first;
+	justify-self: second;
+}
+
+b {
+	align-content: first;
+	justify-content: first;
+	align-items: first;
+	justify-items: first;
+	align-self: first;
+	justify-self: first;
+}
+
+c {
+	align-content: var(--first);
+	justify-content: second;
+	align-items: var(--first);
+	justify-items: second;
+	align-self: var(--first);
+	justify-self: second;
+}
+
+d {
+	align-content: first;
+	justify-content: var(--second);
+	align-items: first;
+	justify-items: var(--second);
+	align-self: first;
+	justify-self: var(--second);
+}
