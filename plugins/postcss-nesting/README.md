@@ -80,7 +80,9 @@ a:hover, b:hover {
 }
 
 @media (min-width: 30em) and (min-device-pixel-ratio: 1.5) {
+    a, b {
 	color: green;
+    }
 }
 ```
 
