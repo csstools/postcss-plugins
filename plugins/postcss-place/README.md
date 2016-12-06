@@ -26,6 +26,15 @@
 }
 ```
 
+## Options
+
+#### `prefix`
+
+Type: `String`  
+Default: `null`
+
+Specifies a prefix to be surrounded by dashes before the declaration (e.g. `prefix: 'x'` changes the detected property to `-x-place-content`).
+
 ## Usage
 
 Add [Place] to your build tool:
@@ -106,15 +115,6 @@ grunt.initConfig({
 	}
 });
 ```
-
-## Options
-
-#### `prefix`
-
-Type: `String`  
-Default: `null`
-
-Specifies a prefix to be surrounded by dashes before the declaration (e.g. `prefix: 'x'` changes the detected property to `-x-place-content`).
 
 [npm-url]: https://www.npmjs.com/package/postcss-place
 [npm-img]: https://img.shields.io/npm/v/postcss-place.svg

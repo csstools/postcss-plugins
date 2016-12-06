@@ -1,6 +1,6 @@
 {
   "name": "postcss-place",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "`place-[alignment] shorthand for align-[alignment] and justify-[alignment]",
   "author": "Jonathan Neal <jonathantneal@hotmail.com> (http://jonathantneal.com)",
   "license": "CC0-1.0",
@@ -12,31 +12,38 @@
     "index.js"
   ],
   "scripts": {
-    "lint": "eslint index.js && jscs index.js",
-    "tape": "node test",
-    "test": "npm run lint && node test"
+    "lint": "echint && eslint index.js && jscs index.js",
+    "prepublish": "npm test",
+    "tape": "postcss-tape",
+    "test": "npm run lint && postcss-tape"
   },
   "engines": {
     "node": ">=6.9.1"
   },
   "dependencies": {
-    "postcss": "^5.2.5",
+    "postcss": "^5.2.6",
     "postcss-value-parser": "^3.3.0"
   },
   "devDependencies": {
-    "eslint": "^3.10.2",
-    "eslint-config-10up": "github:jonathantneal/eslint-config-10up",
+    "echint": "^2.1.0",
+    "echint-config-dev": "1.0.0",
+    "eslint": "^3.11.1",
+    "eslint-config-dev": "1.0.0",
     "jscs": "^3.0.7",
-    "jscs-config-10up": "github:jonathantneal/jscs-config-10up"
+    "jscs-config-dev": "1.0.1",
+    "postcss-tape": "1.0.1"
+  },
+  "echint": {
+    "extends": "dev"
   },
   "eslintConfig": {
-    "extends": "10up",
+    "extends": "dev",
     "parserOptions": {
       "sourceType": "module"
     }
   },
   "jscsConfig": {
-    "preset": "10up"
+    "preset": "dev"
   },
   "keywords": [
     "postcss",
