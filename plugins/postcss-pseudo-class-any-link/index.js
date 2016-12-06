@@ -1,29 +1,41 @@
-var postcss = require('postcss');
-var postcssSelectorParser = require('postcss-selector-parser');
+// tooling
+const postcss = require('postcss');
+const parser = require('postcss-selector-parser');
 
-module.exports = postcss.plugin('postcss-pseudo-class-any-link', function (opts) {
-	// cache the any-link value
-	var valueAnyLink = ':' + (opts && opts.prefix ? '-' + opts.prefix + '-' : '') + 'any-link';
+// plugin
+module.exports = postcss.plugin('postcss-pseudo-class-any-link', ({
+	prefix = ''
+}) => {
+	// dashed prefix
+	const dashedPrefix = prefix ? '-' + prefix + '-' : '';
 
-	return function (css) {
+	// any-link value
+	const anyLinkValue = `:${ dashedPrefix }any-link`;
+
+	// selector pattern
+	const selectorMatch = new RegExp(`${ dashedPrefix }any-link`);
+
+	return (css) => {
 		// for each rule
-		css.walkRules(function (rule) {
-			var rawSelector = rule.raws.selector && rule.raws.selector.raw || rule.selector;
+		css.walkRules(selectorMatch, (rule) => {
+			const rawSelector = rule.raws.selector && rule.raws.selector.raw || rule.selector;
+
 			// workaround for https://github.com/postcss/postcss-selector-parser/issues/28#issuecomment-171910556
 			if (rawSelector[rawSelector.length - 1] === ':') {
 				return;
 			}
+
 			// update the selector
-			rule.selector = postcssSelectorParser(function (selectors) {
+			rule.selector = parser((selectors) => {
 				// cache variables
-				var node;
-				var nodeIndex;
-				var selector;
-				var selectorLink;
-				var selectorVisited;
+				let node;
+				let nodeIndex;
+				let selector;
+				let selectorLink;
+				let selectorVisited;
 
 				// cache the selector index
-				var selectorIndex = -1;
+				let selectorIndex = -1;
 
 				// for each selector
 				while (selector = selectors.nodes[++selectorIndex]) {
@@ -33,7 +45,7 @@ module.exports = postcss.plugin('postcss-pseudo-class-any-link', function (opts)
 					// for each node
 					while (node = selector.nodes[++nodeIndex]) {
 						// if the node value matches the any-link value
-						if (node.value === valueAnyLink) {
+						if (node.value === anyLinkValue) {
 							// clone the selector
 							selectorLink = selector.clone();
 							selectorVisited = selector.clone();

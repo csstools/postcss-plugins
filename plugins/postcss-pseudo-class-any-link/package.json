@@ -1,29 +1,60 @@
 {
-	"name": "postcss-pseudo-class-any-link",
-	"version": "1.0.0",
-	"description": "Use the proposed :any-link pseudo-class in CSS",
-	"keywords": ["postcss", "css", "postcss-plugin", "link", "visited", "any-link", "a", "area", "hyperlink", "href"],
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
-	"license": "CC0-1.0",
-	"bugs": {
-		"url": "https://github.com/jonathantneal/postcss-pseudo-class-any-link/issues"
-	},
-	"homepage": "https://github.com/jonathantneal/postcss-pseudo-class-any-link",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/jonathantneal/postcss-pseudo-class-any-link.git"
-	},
-	"dependencies": {
-		"postcss": "^5.0.3",
-		"postcss-selector-parser": "^1.1.4"
-	},
-	"devDependencies": {
-		"chai": "^3.2.0",
-		"gulp": "^3.9.0",
-		"gulp-eslint": "^1.0.0",
-		"gulp-mocha": "^2.1.3"
-	},
-	"scripts": {
-		"test": "gulp"
-	}
+  "name": "postcss-pseudo-class-any-link",
+  "version": "3.0.0",
+  "description": "Use the proposed :any-link pseudo-class in CSS",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": "jonathantneal/postcss-pseudo-class-any-link",
+  "homepage": "https://github.com/jonathantneal/postcss-pseudo-class-any-link#readme",
+  "bugs": "https://github.com/jonathantneal/postcss-pseudo-class-any-link/issues",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "lint": "echint && eslint index.js && jscs index.js",
+    "prepublish": "npm test",
+    "tape": "postcss-tape",
+    "test": "npm run lint && postcss-tape"
+  },
+  "engines": {
+    "node": ">=6.9.1"
+  },
+  "dependencies": {
+    "postcss": "^5.2.6",
+    "postcss-selector-parser": "^2.2.2"
+  },
+  "devDependencies": {
+    "echint": "^2.1.0",
+    "echint-config-dev": "1.0.0",
+    "eslint": "^3.11.1",
+    "eslint-config-dev": "1.0.0",
+    "jscs": "^3.0.7",
+    "jscs-config-dev": "1.0.1",
+    "postcss-tape": "1.0.1"
+  },
+  "echint": {
+    "extends": "dev"
+  },
+  "eslintConfig": {
+    "extends": "dev",
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  },
+  "jscsConfig": {
+    "preset": "dev"
+  },
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "link",
+    "visited",
+    "any-link",
+    "a",
+    "area",
+    "hyperlink",
+    "href"
+  ]
 }

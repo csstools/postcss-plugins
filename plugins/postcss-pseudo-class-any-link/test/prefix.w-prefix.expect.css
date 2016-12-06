@@ -1,0 +1,13 @@
+:link,:visited {
+	background: blue;
+}
+
+:link,:visited,
+ul a:link > span,
+ul a:visited > span {
+	background: blue;
+}
+
+:link :link,:link :visited,:visited :link,:visited :visited {
+	background: blue;
+}

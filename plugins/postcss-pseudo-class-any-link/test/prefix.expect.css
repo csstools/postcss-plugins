@@ -1,0 +1,12 @@
+:-x-any-link {
+	background: blue;
+}
+
+:-x-any-link,
+ul a:-x-any-link > span {
+	background: blue;
+}
+
+:-x-any-link :-x-any-link {
+	background: blue;
+}
