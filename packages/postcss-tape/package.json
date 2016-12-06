@@ -1,0 +1,53 @@
+{
+  "name": "postcss-tape",
+  "version": "1.0.1",
+  "description": "Quickly test a PostCSS Plugin",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": "jonathantneal/postcss-tape",
+  "homepage": "https://github.com/jonathantneal/postcss-tape#readme",
+  "bugs": "https://github.com/jonathantneal/postcss-tape/issues",
+  "main": "index.js",
+  "bin": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "lint": "echint && eslint *.js && jscs *.js",
+    "prepublish": "npm run test",
+    "tape": "node index --plugin=test.js",
+    "test": "npm run lint && npm run tape"
+  },
+  "engines": {
+    "node": ">=6.9.1"
+  },
+  "devDependencies": {
+    "echint": "^2.1.0",
+    "echint-config-dev": "1.0.0",
+    "eslint": "^3.11.1",
+    "eslint-config-dev": "1.0.0",
+    "jscs": "^3.0.7",
+    "jscs-config-dev": "1.0.1"
+  },
+  "echint": {
+    "extends": "dev"
+  },
+  "eslintConfig": {
+    "extends": "dev",
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  },
+  "jscsConfig": {
+    "preset": "dev"
+  },
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "testing",
+    "tests",
+    "tools",
+    "tape"
+  ]
+}
