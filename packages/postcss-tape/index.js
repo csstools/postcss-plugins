@@ -64,10 +64,26 @@ Promise.all(Object.keys(tests).map(
 					readFile(sourcePath, 'utf8'),
 					readFile(expectPath, 'utf8')
 				]).then(
-					([sourceCSS, expectCSS]) => plugin.process(sourceCSS, Object.assign({
-							from: sourcePath,
-							to:   resultPath
-						}, test.options)).then(
+					([sourceCSS, expectCSS]) => plugin.process.apply(
+						null,
+						plugin.process.length === 3 ? [
+							sourceCSS,
+							test.options,
+							{
+								from: sourcePath,
+								to:   resultPath
+							}
+						] : [
+							sourceCSS,
+							Object.assign(
+								{
+									from: sourcePath,
+									to:   resultPath
+								},
+								test.options
+							)
+						]
+					).then(
 						(result) => writeFile(resultPath, result.css).then(
 							() => {
 								if (result.css !== expectCSS) {

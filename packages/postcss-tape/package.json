@@ -1,6 +1,6 @@
 {
   "name": "postcss-tape",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Quickly test a PostCSS Plugin",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
