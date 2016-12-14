@@ -97,8 +97,27 @@ Promise.all(Object.keys(tests).map(
 									return `  ${ pass }  ${ test.message }`;
 								}
 							}
-						)
+						),
+						(error) => {
+							const expectedError = test.error && Object.keys(test.error).every(
+								(key) => test.error[key] === error[key]
+							);
+
+							if (expectedError) {
+								return `  ${ pass }  ${ test.message }`;
+							} else {
+								throw error;
+							}
+						}
 					)
+				).then(
+					(result) => {
+						if (test.after) {
+							test.after();
+						}
+
+						return result;
+					}
 				);
 			}
 		)
