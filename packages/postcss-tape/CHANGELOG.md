@@ -1,10 +1,13 @@
 # Changes to PostCSS Tape
 
-### 1.2.2 (December 14, 2016)
+### 1.3.0 (December 14, 2016)
+
+- Added: Check errors with `RegExp`
+
+### 1.2.1 (December 14, 2016)
 
 - Updated: Throw existing error
 - Updated: Run `after` even if test fails
-- Updated: Bump due to publishing before pushing
 
 ### 1.2.0 (December 14, 2016)
 

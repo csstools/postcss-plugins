@@ -100,7 +100,7 @@ Promise.all(Object.keys(tests).map(
 						),
 						(error) => {
 							const expectedError = test.error && Object.keys(test.error).every(
-								(key) => test.error[key] === error[key]
+								(key) => test.error[key] instanceof RegExp ? test.error[key].test(error[key]) : test.error[key] === error[key]
 							);
 
 							if (expectedError) {
@@ -126,17 +126,16 @@ Promise.all(Object.keys(tests).map(
 			}
 		)
 	).then(
-		(messages) => process.stdout.write(`${ pass } ${ section }\n${ messages.join('\n') }\n`)
-	).catch(
+		(messages) => console.log(`${ pass } ${ section }\n${ messages.join('\n') }\n`),
 		(error) => {
-			process.stdout.write(`${ fail } ${ section }\n${ error }\n`);
+			console.log(`${ fail } ${ section }\n${ error }\n`);
 
 			throw error;
 		}
 	)
 )).then(
-	() => process.stdout.write(`\n${ pass } Test passed\n`) && process.exit(0),
-	() => process.stdout.write(`\n${ fail } Test failed\n`) && process.exit(1)
+	() => console.log(`\n${ pass } Test passed\n`) && process.exit(0),
+	() => console.log(`\n${ fail } Test failed\n`) && process.exit(1)
 );
 
 // Promise fs.readFile
@@ -162,7 +161,7 @@ function requireOrThrow(name) {
 	try {
 		return require(name);
 	} catch (error) {
-		process.stdout.write(`${ fail } Failed to load "${ name }"\n`);
+		console.log(`${ fail } Failed to load "${ name }"\n`);
 
 		return process.exit(1);
 	}
