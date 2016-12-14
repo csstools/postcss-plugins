@@ -1,6 +1,6 @@
 {
   "name": "postcss-place",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "`place-[alignment] shorthand for align-[alignment] and justify-[alignment]",
   "author": "Jonathan Neal <jonathantneal@hotmail.com> (http://jonathantneal.com)",
   "license": "CC0-1.0",
@@ -27,11 +27,11 @@
   "devDependencies": {
     "echint": "^2.1.0",
     "echint-config-dev": "1.0.0",
-    "eslint": "^3.11.1",
+    "eslint": "^3.12.1",
     "eslint-config-dev": "1.0.0",
     "jscs": "^3.0.7",
     "jscs-config-dev": "1.0.1",
-    "postcss-tape": "1.0.1"
+    "postcss-tape": "1.3.0"
   },
   "echint": {
     "extends": "dev"
