@@ -106,6 +106,10 @@ Promise.all(Object.keys(tests).map(
 							if (expectedError) {
 								return `  ${ pass }  ${ test.message }`;
 							} else {
+								if (test.after) {
+									test.after();
+								}
+
 								throw error;
 							}
 						}
@@ -124,10 +128,10 @@ Promise.all(Object.keys(tests).map(
 	).then(
 		(messages) => process.stdout.write(`${ pass } ${ section }\n${ messages.join('\n') }\n`)
 	).catch(
-		(error)    => {
-			process.stdout.write(`${ fail } ${ section }\n${ error.message }\n`);
+		(error) => {
+			process.stdout.write(`${ fail } ${ section }\n${ error }\n`);
 
-			throw Error;
+			throw error;
 		}
 	)
 )).then(
