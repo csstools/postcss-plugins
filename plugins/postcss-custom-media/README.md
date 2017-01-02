@@ -54,6 +54,15 @@ Checkout [tests](test) for more examples.
 Allows you to pass an object to define the `<media-query-list>` for each
 `<extension-name>`. These definitions will override any that exist in the CSS.
 
+```javascript
+{
+  '--phone': '(min-width: 544px)',
+  '--tablet': '(min-width: 768px)',
+  '--desktop': '(min-width: 992px)',
+  '--large-desktop': '(min-width: 1200px)',
+}
+```
+
 #### `preserve`
 
 (default: `false`)
