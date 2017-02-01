@@ -17,7 +17,7 @@
     "index.js"
   ],
   "dependencies": {
-    "balanced-match": "~0.1.0",
+    "balanced-match": "^0.4.2",
     "postcss": "^5.0.0"
   },
   "devDependencies": {
