@@ -1,3 +1,8 @@
+# 5.0.2 - 2017-02-01
+
+- Minor dependency update
+  ([#57](https://github.com/postcss/postcss-custom-properties/pull/57))
+
 # 5.0.1 - 2016-04-22
 
 - Fixed: trailing space after custom property name causes duplicate empty
