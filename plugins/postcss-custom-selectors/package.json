@@ -24,21 +24,19 @@
     "README-zh.md"
   ],
   "dependencies": {
-    "balanced-match": "^0.2.0",
     "postcss": "^5.0.0",
     "postcss-selector-matches": "^2.0.0"
   },
   "devDependencies": {
     "babel": "^5.5.8",
-    "babel-eslint": "^3.1.15",
     "babel-tape-runner": "^1.1.0",
-    "eslint": "^1.0.0",
+    "eslint": "^3.15.0",
     "tape": "^4.0.0"
   },
   "scripts": {
     "prepublish": "babel src --out-dir dist",
     "lint": "eslint .",
-    "tape": "babel-tape-runner 'test/*.js'",
+    "tape": "babel-tape-runner test/*.js",
     "test": "npm run lint && npm run tape"
   }
 }

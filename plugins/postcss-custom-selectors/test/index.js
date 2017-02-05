@@ -11,9 +11,9 @@ function transform(input, opts = {}, postcssOpts = {}) {
 test("@custom-selector", function(t) {
   t.equal(
     transform(
-      ``
+      ""
     ).css,
-    ``,
+    "",
     "should works with nothing"
   )
 
