@@ -15,18 +15,15 @@ var VAR_FUNC_IDENTIFIER = "var"
 var RE_VAR = /([\w-]+)(?:\s*,\s*)?\s*(.*)?/
 
 /**
- * Resolve CSS variables in a value
+ * Resolve CSS variables.
  *
- * The second argument to a CSS variable function, if provided, is a fallback
- * value, which is used as the substitution value when the referenced variable
- * is invalid.
+ * The second argument to the CSS variable function, var(name[, fallback]), 
+ * is used in the event that first argument cannot be resolved.
  *
- * var(name[, fallback])
- *
- * @param {String} value A property value known to contain CSS variable
- *                       functions
+ * @param {String} value May contain the CSS variable function
  * @param {Object} variables A map of variable names and values
- * @param {Object} source source object of the declaration containing the rule
+ * @param {Object} result The PostCSS result object
+ * @param {Object} decl The declaration containing the rule
  * @return {String} A property value with all CSS variables substituted.
  */
 
