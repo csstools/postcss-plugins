@@ -7,6 +7,12 @@ const VAR_FUNC_IDENTIFIER = "var"
 const RE_VAR = /([\w-]+)(?:\s*,\s*)?\s*(.*)?/
 
 /**
+ * Module variables
+ */
+
+let globalWarnings
+
+/**
  * Resolve CSS variables.
  *
  * The second argument to the CSS variable function, var(name[, fallback]),
@@ -41,10 +47,12 @@ function resolveValue(value, variables, result, decl) {
     let post
     // undefined and without fallback, just keep original value
     if (!variable && !fallback) {
-      result.warn(
-        "variable '" + name + "' is undefined and used without a fallback",
-        {node: decl}
-      )
+      if (globalWarnings) {
+        result.warn(
+          "variable '" + name + "' is undefined and used without a fallback",
+          {node: decl}
+        )
+      }
       post = matches.post
         ? resolveValue(matches.post, variables, result, decl)
         : [""]
@@ -82,7 +90,9 @@ function resolveValue(value, variables, result, decl) {
       // circular reference encountered
       if (variable.deps.indexOf(name) !== -1) {
         if (!fallback) {
-          result.warn("Circular variable reference: " + name, {node: decl})
+          if (globalWarnings) {
+            result.warn("Circular variable reference: " + name, {node: decl})
+          }
           variable.value = [variable.value]
           variable.circular = true
         }
@@ -142,13 +152,14 @@ export default postcss.plugin("postcss-custom-properties", (options = {}) => {
   }
 
   function plugin(style, result) {
-    const warnings = options.warnings === undefined ? true : options.warnings
     const variables = prefixVariables(options.variables)
     const strict = options.strict === undefined ? true : options.strict
     const appendVariables = options.appendVariables
     const preserve = options.preserve
     const map = {}
     const importantMap = {}
+
+    globalWarnings = options.warnings === undefined ? true : options.warnings
 
     // define variables
     style.walkRules((rule) => {
@@ -163,7 +174,7 @@ export default postcss.plugin("postcss-custom-properties", (options = {}) => {
         rule.each((decl) => {
           const prop = decl.prop
           if (
-            warnings &&
+            globalWarnings &&
             prop &&
             prop.indexOf(VAR_PROP_IDENTIFIER) === 0
           ) {
