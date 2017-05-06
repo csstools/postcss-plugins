@@ -11,6 +11,9 @@ var tests = {
 		},
 		'media': {
 			message: 'supports nested media queries'
+		},
+		'empty': {
+			message: 'ensure empty rules are removed'
 		}
 	}
 };

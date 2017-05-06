@@ -7,9 +7,6 @@
 	.main {
 		color: white
 	}
-
-	.main .child {
-}
 	}
 
 	@media (min-width: 100px) and (max-width: 200px) {
@@ -25,15 +22,6 @@
 		color: green
 	}
 }
-
-.main {
-}
-
-@media screen, print and speech {
-
-	.main {
-}
-	}
 
 @media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and speech and (max-width: 300px), print and speech and (min-aspect-ratio: 16/9) {
 

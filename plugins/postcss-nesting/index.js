@@ -81,6 +81,20 @@ module.exports = postcss.plugin('postcss-nesting', function (opts) {
 					rule.insertAfterNode = target;
 				}
 			}
+
+			if (!rule.nodes.length) {
+				rule.remove();
+			} else {
+				rule.nodes.forEach(function (n) {
+					var isRuleOrAtRule = (/rule$/).test(n.type);
+
+					if (!isRuleOrAtRule || n.nodes.length) {
+						return;
+					}
+
+					n.remove();
+				});
+			}
 		});
 	};
 });

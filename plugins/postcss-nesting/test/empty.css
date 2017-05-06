@@ -1,0 +1,26 @@
+a {
+	& b {
+		prop: val;
+	}
+
+	& c {
+		prop: val;
+	}
+}
+
+d {
+	@nest & e {
+		prop: val;
+
+		@nest & f {
+			prop: val;
+		}
+	}
+}
+
+g {
+	prop: val;
+	& h {
+		prop: val
+	}
+}
