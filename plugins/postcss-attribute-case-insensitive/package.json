@@ -1,6 +1,6 @@
 {
   "name": "postcss-attribute-case-insensitive",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "PostCSS plugin to support case insensitive attributes",
   "main": "dist/index.js",
   "scripts": {
