@@ -1,25 +1,44 @@
-.main {
-	color: blue;
-
+a {
+	order: 1;
 	@media (min-width: 100px) {
-		color: white;
-
+		order: 2;
 		@media (max-width: 200px) {
-			color: red;
+			order: 3;
 		}
-
-		& .child {
+		& b {
 			@media (max-width: 200px) {
-				color: green;
+				order: 4;
+			}
+		}
+	}
+	@media screen, print and speech {
+		@media (max-width: 300px), (min-aspect-ratio: 16/9) {
+			order: 5;
+			& c {
+				order: 6;
 			}
 		}
 	}
 }
-
-.main {
+a {
+	order: 1;
+	@media (min-width: 100px) {
+		order: 2;
+		@media (max-width: 200px) {
+			order: 3;
+		}
+		@nest & b {
+			@media (max-width: 200px) {
+				order: 4;
+			}
+		}
+	}
 	@media screen, print and speech {
 		@media (max-width: 300px), (min-aspect-ratio: 16/9) {
-			color: black;
+			order: 5;
+			@nest & c {
+				order: 6;
+			}
 		}
 	}
 }

@@ -1,4 +1,7 @@
-You want to help? You rock! Now, take a moment to be sure your contributions make sense to everyone else.
+# Contributing to PostCSS Nesting
+
+You want to help? You rock! Now, take a moment to be sure your contributions
+make sense to everyone else.
 
 ## Reporting Issues
 
@@ -11,12 +14,13 @@ Remember, a bug is a _demonstrable problem_ caused by _our_ code.
 
 ## Submitting Pull Requests
 
-Pull requests are the greatest contributions, so be sure they are focused in scope, and do avoid unrelated commits.
+Pull requests are the greatest contributions, so be sure they are focused in 
+scope, and do avoid unrelated commits.
 
 1. To begin, [fork this project], clone your fork, and add our upstream.
 	```bash
 	# Clone your fork of the repo into the current directory
-	git clone https://github.com/<your-username>/postcss-nesting
+	git clone https://github.com/<your-user>/postcss-nesting
 	# Navigate to the newly cloned directory
 	cd postcss-nesting
 	# Assign the original repo to a remote called "upstream"

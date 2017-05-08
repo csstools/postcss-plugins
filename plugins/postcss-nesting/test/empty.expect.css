@@ -1,23 +1,30 @@
-a b {
-	prop: val
+a b c {
+	order: 1
 }
-
-a c {
-	prop: val
+d {
+	order: 2
 }
-
 d e {
-	prop: val
+	order: 3
 }
-
-d e f {
-	prop: val
+f g {
+	order: 4
 }
-
-g {
-	prop: val
+f {
+	order: 5
 }
-
-g h {
-	prop: val
+a b c {
+	order: 1
+}
+d {
+	order: 2
+}
+d e {
+	order: 3
+}
+f g {
+	order: 4
+}
+f {
+	order: 5
 }

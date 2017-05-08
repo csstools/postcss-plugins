@@ -1,26 +1,38 @@
 a {
 	& b {
-		prop: val;
-	}
-
-	& c {
-		prop: val;
-	}
-}
-
-d {
-	@nest & e {
-		prop: val;
-
-		@nest & f {
-			prop: val;
+		& c {
+			order: 1;
 		}
 	}
 }
-
-g {
-	prop: val;
-	& h {
-		prop: val
+d {
+	order: 2;
+	& e {
+		order: 3;
 	}
+}
+f {
+	& g {
+		order: 4;
+	}
+	order: 5;
+}
+a {
+	@nest & b {
+		@nest & c {
+			order: 1;
+		}
+	}
+}
+d {
+	order: 2;
+	@nest & e {
+		order: 3;
+	}
+}
+f {
+	@nest & g {
+		order: 4;
+	}
+	order: 5;
 }

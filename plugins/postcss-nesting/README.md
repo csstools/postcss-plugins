@@ -1,100 +1,45 @@
-# CSS Nesting
+# PostCSS Nesting [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-<a href="https://github.com/postcss/postcss"><img src="http://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="80" height="80" align="right"></a>
+[![NPM Version][npm-img]][npm-url]
+[![Build Status][cli-img]][cli-url]
+[![Licensing][lic-img]][lic-url]
+[![Changelog][log-img]][log-url]
+[![Gitter Chat][git-img]][git-url]
 
-[![NPM Version][npm-img]][npm] [![Build Status][ci-img]][ci]
-
-[CSS Nesting] allows you to nest one style rule inside another, following the [CSS Nesting Module Level 3] specification.
+[PostCSS Nesting] lets you nest style rules inside each other, following the
+[CSS Nesting Module Level 3] specification.
 
 ```css
-/* direct nesting */
-
 a, b {
-	color: red;
+  color: red;
 
-	& c, & d {
-		color: white;
-	}
-
-	& & {
-		color: blue;
-	}
-
-	&:hover {
-		color: black;
-	}
-
-	@media (min-width: 30em) {
-		color: yellow;
-
-		@media (min-device-pixel-ratio: 1.5) {
-			color: green;
-		}
-	}
+  & c, & d {
+    color: white;
+  }
 }
 
-/* or at-rule nesting */
+/* after postcss-nesting */
 
 a, b {
-	color: red;
-
-	@nest & c, & d {
-		color: white;
-	}
-
-	@nest & & {
-		color: blue;
-	}
-
-	@nest &:hover {
-		color: black;
-	}
-
-	@media (min-width: 30em) {
-		color: yellow;
-	}
-}
-
-/* after */
-
-a, b {
-    color: red;
+  color: red;
 }
 
 a c, a d, b c, b d {
-    color: white;
-}
-
-a a, b b {
-    color: blue;
-}
-
-a:hover, b:hover {
-    color: black;
-}
-
-@media (min-width: 30em) {
-    a, b {
-        color: yellow;
-    }
-}
-
-@media (min-width: 30em) and (min-device-pixel-ratio: 1.5) {
-    a, b {
-	color: green;
-    }
+  color: white;
 }
 ```
 
 ## Usage
 
-Add [CSS Nesting] to your build tool:
+Add [PostCSS Nesting] to your build tool:
 
 ```bash
 npm install postcss-nesting --save-dev
 ```
 
 #### Node
+
+Use [PostCSS Nesting] to process your CSS:
 
 ```js
 require('postcss-nesting').process(YOUR_CSS, { /* options */ });
@@ -108,7 +53,7 @@ Add [PostCSS] to your build tool:
 npm install postcss --save-dev
 ```
 
-Load [CSS Nesting] as a PostCSS plugin:
+Use [PostCSS Nesting] as a plugin:
 
 ```js
 postcss([
@@ -124,7 +69,7 @@ Add [Gulp PostCSS] to your build tool:
 npm install gulp-postcss --save-dev
 ```
 
-Enable [CSS Nesting] within your Gulpfile:
+Use [PostCSS Nesting] in your Gulpfile:
 
 ```js
 var postcss = require('gulp-postcss');
@@ -148,7 +93,7 @@ Add [Grunt PostCSS] to your build tool:
 npm install grunt-postcss --save-dev
 ```
 
-Enable [CSS Nesting] within your Gruntfile:
+Use [PostCSS Nesting] in your Gruntfile:
 
 ```js
 grunt.loadNpmTasks('grunt-postcss');
@@ -167,31 +112,20 @@ grunt.initConfig({
 });
 ```
 
-## Options
-
-#### `bubble`
-
-Type: `Array`  
-Default: `['document', 'media', 'supports']`
-
-Specifies additional at-rules whose contents should be transpiled so that the at-rule comes first. By default, `@media`, `@supports` and `@document` will do this.
-
-#### `prefix`
-
-Type: `String`  
-Default: `null`
-
-Specifies a prefix to be surrounded by dashes before the `@nest` at-rule (e.g. `@-x-nest`).
-
-[ci]:      https://travis-ci.org/jonathantneal/postcss-nesting
-[ci-img]:  https://img.shields.io/travis/jonathantneal/postcss-nesting.svg
-[npm]:     https://www.npmjs.com/package/postcss-nesting
+[npm-url]: https://www.npmjs.com/package/postcss-nesting
 [npm-img]: https://img.shields.io/npm/v/postcss-nesting.svg
+[cli-url]: https://travis-ci.org/jonathantneal/postcss-nesting
+[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-nesting.svg
+[lic-url]: LICENSE.md
+[lic-img]: https://img.shields.io/npm/l/postcss-nesting.svg
+[log-url]: CHANGELOG.md
+[log-img]: https://img.shields.io/badge/changelog-md-blue.svg
+[git-url]: https://gitter.im/postcss/postcss
+[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 
-[Gulp PostCSS]:  https://github.com/postcss/gulp-postcss
+[PostCSS Nesting]: https://github.com/jonathantneal/postcss-nesting
+[PostCSS]: https://github.com/postcss/postcss
+[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
-[PostCSS]:       https://github.com/postcss/postcss
 
 [CSS Nesting Module Level 3]: http://tabatkins.github.io/specs/css-nesting/
-
-[CSS Nesting]: https://github.com/jonathantneal/postcss-nesting

@@ -1,87 +1,30 @@
 a, b {
-	color: blue;
-
+	order: 1;
 	& c, & d {
-		color: blue;
-	}
-}
-
-a, b {
-	color: blue;
-
-	& c, & d {
-		color: blue;
-
+		order: 2;
 		& e, & f {
-			color: blue;
+			order: 3;
 		}
+		order: 4;
 	}
-}
-
-a, b {
-	color: blue;
-
+	order: 5;
 	& & {
-		color: blue;
+		order: 6;
 	}
-
-	c & {
-		color: red;
-	}
-
-	& c, c & {
-		color: red;
-	}
+	order: 7;
 }
-
-a {
-	color: blue;
-
-	@media {
-		color: blue;
-	}
-}
-
-a {
-	color: blue;
-
-	& b {
-		color: blue;
-
-		@media {
-			color: blue;
+a, b {
+	order: 1;
+	@nest & c, & d {
+		order: 2;
+		@nest & e, & f {
+			order: 3;
 		}
+		order: 4;
 	}
-
-	@media {
-		color: blue;
-
-		& c {
-			color: blue;
-		}
+	order: 5;
+	@nest & & {
+		order: 6;
 	}
-}
-
-a {
-	color: blue;
-
-	@unknown test {
-		color: red;
-	}
-}
-
-b {
-	color: blue;
-
-	@phone {
-		color: red;
-	}
-
-	@media {
-		color: blue;
-
-		& c {
-			color: blue;
-		}
-	}
+	order: 7;
 }

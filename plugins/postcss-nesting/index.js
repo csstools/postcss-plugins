@@ -1,112 +1,38 @@
-var postcss = require('postcss');
-var comma   = postcss.list.comma;
+'use strict';
 
-module.exports = postcss.plugin('postcss-nesting', function (opts) {
-	var bubble = ['document', 'media', 'supports'];
-	var name   = 'nest';
+// tooling
+const postcss                 = require('postcss');
+const transformBubblingAtrule = require('./lib/transform-bubbling-atrule');
+const transformNestingAtRule  = require('./lib/transform-nesting-atrule');
+const transformNestingRule    = require('./lib/transform-nesting-rule');
 
-	if (opts && opts.bubble) {
-		bubble = bubble.concat(opts.bubble);
-	}
-
-	if (opts && opts.prefix) {
-		name = '-' + opts.prefix + '-' + name;
-	}
-
-	return function (css) {
-		css.walk(function (target) {
-			var rule = target.parent;
-			var root = rule && rule.parent;
-
-			var isAtRule = target.type === 'atrule';
-			var isRule   = target.type === 'rule';
-
-			if (root && rule.type === 'rule') {
-				var newrule = postcss.rule({
-					source: target.source
-				});
-
-				if (isRule && target.selectors.every(function (selector) {
-					return selector.indexOf('&') === 0;
-				})) {
-					target.remove();
-
-					newrule.selector = target.selector;
-
-					newrule.append(target.nodes);
-
-					transpileSelectors(rule, newrule);
-
-					root.insertAfter(rule.insertAfterNode || rule, newrule);
-
-					rule.insertAfterNode = newrule;
-				} else if (isAtRule && target.name === name && target.params.indexOf('&') !== -1) {
-					target.remove();
-
-					newrule.selector = target.params;
-
-					newrule.append(target.nodes);
-
-					transpileSelectors(rule, newrule);
-
-					root.insertAfter(rule.insertAfterNode || rule, newrule);
-
-					rule.insertAfterNode = newrule;
-				} else if (isAtRule && bubble.indexOf(target.name) !== -1) {
-					var selector = rule.selector;
-
-					if (root.type === 'atrule' && root.name === target.name && root.parent) {
-						target.params = comma(root.params).map(function (params1) {
-							return comma(target.params).map(function (params2) {
-								return params1 + ' and ' + params2;
-							}).join(', ');
-						}).join(', ');
-
-						rule = root;
-						root = root.parent;
-					}
-
-					target.remove();
-
-					newrule.selector = selector;
-
-					newrule.append(target.nodes);
-
-					target.removeAll();
-
-					target.append(newrule);
-
-					root.insertAfter(rule.insertAfterNode || rule, target);
-
-					rule.insertAfterNode = target;
-				}
-			}
-
-			if (!rule.nodes.length) {
-				rule.remove();
-			} else {
-				rule.nodes.forEach(function (n) {
-					var isRuleOrAtRule = (/rule$/).test(n.type);
-
-					if (!isRuleOrAtRule || n.nodes.length) {
-						return;
-					}
-
-					n.remove();
-				});
-			}
-		});
-	};
+// plugin
+module.exports = postcss.plugin('postcss-nesting', () => {
+	return walk;
 });
 
-function transpileSelectors(fromRule, toRule) {
-	var selectors = [];
+function walk(node) {
+	// console.log('walk', [node.type], [node.name || node.selector || node.prop || 'root'], node.nodes ? `length: ${node.nodes.length}` : `value: "${node.value}"`);
 
-	fromRule.selectors.forEach(function (fromSelector) {
-		toRule.selectors.forEach(function (toSelector) {
-			selectors.push(toSelector.replace(/&/g, fromSelector));
-		});
-	});
+	if (transformBubblingAtrule.test(node)) {
+		// conditionally transform a bubbling atrule
+		transformBubblingAtrule(node);
+	} else if (transformNestingAtRule.test(node)) {
+		// conditionally transform a nesting atrule
+		node = transformNestingAtRule(node); // eslint-disable-line no-param-reassign
+	} else if (transformNestingRule.test(node)) {
+		// conditionally transform a nesting rule
+		transformNestingRule(node);
+	}
 
-	toRule.selectors = selectors;
+	if (node.nodes) {
+		// conditionally walk the children of the node
+		let childNode = node.nodes[0];
+
+		while (childNode) {
+			walk(childNode);
+
+			childNode = childNode.parent && childNode.parent.nodes[childNode.parent.nodes.indexOf(childNode) + 1];
+		}
+	}
 }

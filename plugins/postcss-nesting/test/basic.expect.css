@@ -1,91 +1,33 @@
-a, b {
-	color: white
+.rule-1 {
+	order: 1;
 }
-
-a c, a d, b c, b d {
-	color: blue
-}
-
-a, b {
-	color: white
-}
-
-a c, a d, b c, b d {
-	color: blue
-}
-
-a c e, a c f, a d e, a d f, b c e, b c f, b d e, b d f {
-	color: black
-}
-
-a, b {
-	color: red
-}
-
-a a, b b {
-	color: white
-}
-
-a {
-	color: red
-}
-
-@media {
-
-	a {
-		color: white
+@media screen, print {
+	.rule-1 {
+		order: 2;
 	}
-	}
-
-a {
-	color: red
-}
-
-a b {
-	color: white
-}
-
-@media {
-
-	a b {
-		color: blue
+	.rule-1.rule-2 {
+		order: 3;
 	}
 }
-
-@media {
-
-	a {
-		color: black
+@media screen and (max-width: 30em), print and (max-width: 30em) {
+	.rule-1.rule-2 {
+		order: 4;
 	}
-
-	a c {
-		color: yellow
+	.rule-prefix .rule-1.rule-2 {
+		order: 5;
 	}
-	}
-
-a {
-	color: red;
-
-	@unknown test {
-		color: white;
+	.rule-1.rule-2 {
+		order: 6;
 	}
 }
-
-b {
-	color: white;
-
-	@phone {
-		color: blue;
+@media screen, print {
+	.rule-1.rule-2 {
+		order: 7;
+	}
+	.rule-1 {
+		order: 8;
 	}
 }
-
-@media {
-
-	b {
-		color: black
-	}
-
-	b c {
-		color: yellow
-	}
-	}
+.rule-1 {
+	order: 9;
+}

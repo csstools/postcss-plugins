@@ -1,19 +1,18 @@
 a, b {
-	color: white;
-
+	order: 1;
 	c, d {
-		color: blue;
+		order: 2;
 	}
 }
-
+& e {
+	order: 3;
+}
 a, b {
-	color: white;
-
+	order: 1;
 	@nest c, d {
-		color: blue;
+		order: 2;
 	}
 }
-
-& a {
-	color: white;
+@nest & e {
+	order: 3;
 }

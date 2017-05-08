@@ -1,99 +1,42 @@
 a, b {
-	color: blue
+	order: 1;
 }
-
 a c, a d, b c, b d {
-	color: blue
+	order: 2;
 }
-
-a, b {
-	color: blue
-}
-
-a c, a d, b c, b d {
-	color: blue
-}
-
 a c e, a c f, a d e, a d f, b c e, b c f, b d e, b d f {
-	color: blue
+	order: 3;
 }
-
+a c, a d, b c, b d {
+	order: 4;
+}
 a, b {
-	color: blue;
-
-	c & {
-		color: red;
-	}
-
-	& c, c & {
-		color: red;
-	}
+	order: 5;
 }
-
 a a, b b {
-	color: blue
+	order: 6;
 }
-
-a {
-	color: blue
+a, b {
+	order: 7;
 }
-
-@media {
-
-	a {
-		color: blue
-	}
-	}
-
-a {
-	color: blue
+a, b {
+	order: 1;
 }
-
-a b {
-	color: blue
+a c, a d, b c, b d {
+	order: 2;
 }
-
-@media {
-
-	a b {
-		color: blue
-	}
+a c e, a c f, a d e, a d f, b c e, b c f, b d e, b d f {
+	order: 3;
 }
-
-@media {
-
-	a {
-		color: blue
-	}
-
-	a c {
-		color: blue
-	}
-	}
-
-a {
-	color: blue;
-
-	@unknown test {
-		color: red;
-	}
+a c, a d, b c, b d {
+	order: 4;
 }
-
-b {
-	color: blue;
-
-	@phone {
-		color: red;
-	}
+a, b {
+	order: 5;
 }
-
-@media {
-
-	b {
-		color: blue
-	}
-
-	b c {
-		color: blue
-	}
-	}
+a a, b b {
+	order: 6;
+}
+a, b {
+	order: 7;
+}
