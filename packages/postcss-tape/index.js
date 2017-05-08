@@ -1,38 +1,39 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --use_strict
 
 // tooling
+const log  = require('./lib/log');
 const fs   = require('fs');
 const path = require('path');
 
 // current directory
 const cwd = process.cwd();
 
-// error symbols
-const pass = '\x1b[32m\✔\x1b[0m';
-const fail = '\x1b[31m\✖\x1b[0m';
-
 // argument option matcher
 const optionMatch = /^--([\w-]+)=(["']?)(.+?)\2$/;
 
 // options
-const opts = Object.assign(
-	// default options
-	{
-		plugin:   cwd,
-		config:   path.join(cwd, '.tape.js'),
-		fixtures: path.join(cwd, 'test')
-	},
-	// package.json[postcssConfig] options
-	requireOrThrow(path.join(cwd, 'package.json')).postcssConfig,
-	// argument options
-	...process.argv.filter(
-		(arg) => optionMatch.test(arg)
-	).map(
-		(arg) => arg.match(optionMatch)
-	).map(
-		(arg) => ({
-			[arg[1]]: arg[3]
-		})
+const opts = Object.assign.apply(
+	null,
+	[
+		// default options
+		{
+			plugin:   cwd,
+			config:   path.join(cwd, '.tape.js'),
+			fixtures: path.join(cwd, 'test')
+		},
+		// package.json[postcssConfig] options
+		requireOrThrow(path.join(cwd, 'package.json')).postcssConfig
+	].concat(
+		// argument options
+		process.argv.filter(
+			(arg) => optionMatch.test(arg)
+		).map(
+			(arg) => arg.match(optionMatch)
+		).map(
+			(arg) => ({
+				[arg[1]]: arg[3]
+			})
+		)
 	)
 );
 
@@ -43,102 +44,115 @@ const plugin = requireOrThrow(path.resolve(cwd, opts.plugin));
 const tests = requireOrThrow(path.resolve(cwd, opts.config));
 
 // runner
-Promise.all(Object.keys(tests).map(
-	(section) => Promise.all(
-		Object.keys(tests[section]).map(
-			(name) => {
-				// test options
-				const test = tests[section][name];
+Object.keys(tests).reduce(
+	(testpromise, section) => testpromise.then(
+		() => Object.keys(tests[section]).reduce(
+			(sectionpromise, name) => sectionpromise.then(
+				() => {
+					const test = tests[section][name];
 
-				const baseName = name.split(':')[0];
-				const testName = name.split(':').join('.');
-				const warnings = test.warning || 0;
+					log.wait(section, test.message);
 
-				// test paths
-				const sourcePath = path.resolve(opts.fixtures, baseName + '.css');
-				const expectPath = path.resolve(opts.fixtures, testName + '.expect.css');
-				const resultPath = path.resolve(opts.fixtures, testName + '.result.css');
+					const testBase = name.split(':')[0];
+					const testFull = name.split(':').join('.');
+					const warnings = test.warning || 0;
 
-				// promise source css and expected css contents
-				return Promise.all([
-					readFile(sourcePath, 'utf8'),
-					readFile(expectPath, 'utf8')
-				]).then(
-					([sourceCSS, expectCSS]) => plugin.process.apply(
-						null,
-						plugin.process.length === 3 ? [
-							sourceCSS,
-							test.options,
+					// test paths
+					const sourcePath = path.resolve(opts.fixtures, test.source || `${testBase}.css`);
+					const expectPath = path.resolve(opts.fixtures, test.expect || `${testFull}.expect.css`);
+					const resultPath = path.resolve(opts.fixtures, test.result || `${testFull}.result.css`);
+
+					if (test.before) {
+						test.before();
+					}
+
+					return readFile(sourcePath, 'utf8').then(
+						(css) => plugin.process(
+							css,
 							{
 								from: sourcePath,
 								to:   resultPath
-							}
-						] : [
-							sourceCSS,
-							Object.assign(
-								{
-									from: sourcePath,
-									to:   resultPath
-								},
-								test.options
-							)
-						]
+							},
+							test.options
+						),
+						() => writeFile(sourcePath, '').then(
+							() => ''
+						)
 					).then(
 						(result) => writeFile(resultPath, result.css).then(
-							() => {
-								if (result.css !== expectCSS) {
-									throw new Error(`  ${ fail }  ${ test.message }\n${ JSON.stringify({
-										expect: expectCSS,
-										result: result.css
-									}, null, '  ') }`);
+							() => readFile(expectPath, 'utf8').catch(
+								() => writeFile(expectPath, '').then(
+									() => ''
+								)
+							)
+						).then(
+							(css) => {
+								if (result.css !== css) {
+									return Promise.reject([
+										`Expected: ${JSON.stringify(css).slice(1, -1)}`,
+										`Rendered: ${JSON.stringify(result.css).slice(1, -1)}`
+									])
 								} else if (result.warnings().length !== warnings) {
-									throw Error(`  ${ fail } ${ test.message } (${ result.warnings().length } warnings, expected ${ warnings })`);
-								} else {
-									return `  ${ pass }  ${ test.message }`;
+									return Promise.reject([
+										`Expected: ${result.warnings().length} warnings`,
+										`Rendered: ${warnings} warnings`
+									]);
 								}
+
+								return true;
 							}
-						),
+						)
+					).then(
+						() => {
+							if (test.after) {
+								test.after();
+							}
+
+							log.pass(section, test.message);
+						},
 						(error) => {
+							if (test.after) {
+								test.after();
+							}
+
 							const expectedError = test.error && Object.keys(test.error).every(
 								(key) => test.error[key] instanceof RegExp ? test.error[key].test(error[key]) : test.error[key] === error[key]
 							);
 
 							if (expectedError) {
-								return `  ${ pass }  ${ test.message }`;
-							} else {
-								if (test.after) {
-									test.after();
-								}
+								log.pass(section, test.message);
 
-								throw error;
+								return true;
 							}
-						}
-					)
-				).then(
-					(result) => {
-						if (test.after) {
-							test.after();
-						}
 
-						return result;
-					}
-				);
-			}
+							log.fail(section, test.message, error);
+
+							return Promise.reject();
+						}
+					);
+				}
+			),
+			Promise.resolve()
 		)
-	).then(
-		(messages) => console.log(`${ pass } ${ section }\n${ messages.join('\n') }\n`),
-		(error) => {
-			console.log(`${ fail } ${ section }\n${ error }\n`);
-
-			throw error;
-		}
-	)
-)).then(
-	() => console.log(`\n${ pass } Test passed\n`) && process.exit(0),
-	() => console.log(`\n${ fail } Test failed\n`) && process.exit(1)
+	),
+	Promise.resolve()
+).then(
+	() => process.exit(0),
+	() => process.exit(1)
 );
 
-// Promise fs.readFile
+// load modules or throw an error
+function requireOrThrow(name) {
+	try {
+		return require(name);
+	} catch (error) {
+		log.fail(name, 'failed to load');
+
+		return process.exit(1);
+	}
+}
+
+// fs.readFile then-ified
 function readFile(filename) {
 	return new Promise(
 		(resolve, reject) => fs.readFile(filename, 'utf8',
@@ -147,22 +161,11 @@ function readFile(filename) {
 	);
 }
 
-// Promise fs.writeFile
+// fs.writeFile then-ified
 function writeFile(filename, data) {
 	return new Promise(
 		(resolve, reject) => fs.writeFile(filename, data,
 			(error) => error ? reject(error) : resolve()
 		)
 	);
-}
-
-// load modules or throw an error
-function requireOrThrow(name) {
-	try {
-		return require(name);
-	} catch (error) {
-		console.log(`${ fail } Failed to load "${ name }"\n`);
-
-		return process.exit(1);
-	}
 }
