@@ -1,17 +1,9 @@
----
-# babel support more syntax stuff than eslint for now
-parser: babel-eslint
-
 root: true
 extends: eslint:recommended
 
-ecmaFeatures:
-  modules: true
-
-env:
-  es6: true
-  browser: true
-  node: true
+parserOptions:
+  ecmaVersion: 6
+  sourceType: "module"
 
 rules:
   indent: [2, 2] # 2 spaces indentation
@@ -35,7 +27,7 @@ rules:
   computed-property-spacing: [2, "never"]
 
   space-unary-ops: [2, {"words": true, "nonwords": false}]
-  space-after-keywords: [2, "always"]
+  keyword-spacing: [2, {"before": true, "after": true}]
   space-before-blocks: [2, "always"]
   space-before-function-paren: [2, "never"]
   space-in-parens: [2, "never"]

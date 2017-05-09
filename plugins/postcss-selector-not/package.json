@@ -20,20 +20,21 @@
     "dist"
   ],
   "dependencies": {
-    "balanced-match": "^0.2.0",
-    "postcss": "^5.0.0"
+    "balanced-match": "^0.4.2",
+    "postcss": "^6.0.1"
   },
   "devDependencies": {
-    "babel": "^5.1.13",
-    "babel-eslint": "^3.1.15",
-    "babel-tape-runner": "^1.1.0",
-    "eslint": "^1.0.0",
-    "tape": "^4.0.0"
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "babel-register": "^6.24.1",
+    "eslint": "^3.19.0",
+    "tape": "^4.6.3"
   },
   "scripts": {
-    "lint": "eslint .",
-    "tape": "babel-tape-runner 'test/*.js'",
-    "test": "npm run lint && npm run tape",
-    "prepublish": "babel src --out-dir dist"
+    "lint": "eslint *.js ./src/ ./test/",
+    "tape": "tape -r babel-register test/*.js",
+    "test": "npm run lint && npm run babelify && npm run tape",
+    "babelify": "babel src --out-dir dist",
+    "prepublish": "npm run babelify"
   }
 }

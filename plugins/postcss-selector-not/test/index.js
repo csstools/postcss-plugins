@@ -72,8 +72,8 @@ tape("postcss-selector-not", t => {
   )
 
   t.equal(
-    transform(`.foo:not(:hover, :focus)::before {}`),
-    `.foo:not(:hover):not(:focus)::before {}`,
+    transform(".foo:not(:hover, :focus)::before {}"),
+    ".foo:not(:hover):not(:focus)::before {}",
     "should work with something after :not()"
   )
 
