@@ -1,6 +1,6 @@
 {
   "name": "postcss-tape",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Quickly test PostCSS plugins",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -20,7 +20,7 @@
     "prepublish": "npm test",
     "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
     "test:js": "eslint *.js --cache --ignore-pattern .gitignore",
-    "test:tape": "node --use_strict index --plugin=test.js"
+    "test:tape": "node index --plugin=test.js"
   },
   "engines": {
     "node": ">=4.0.0"

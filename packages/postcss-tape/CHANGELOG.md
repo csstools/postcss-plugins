@@ -1,5 +1,16 @@
 # Changes to PostCSS Tape
 
+### 2.0.1 (May 9, 2017)
+
+- Updated: Travis compatibility
+
+### 2.0.0 (May 8, 2017)
+
+- Added: Node v4.x compatibility
+- Added: Sequential testing
+- Added: New `before` and `after` methods
+- Added: New `source`, `expect`, and `result` overrides
+
 ### 1.3.0 (December 14, 2016)
 
 - Added: Check errors with `RegExp`

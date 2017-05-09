@@ -1,4 +1,6 @@
-#!/usr/bin/env node --use_strict
+#!/usr/bin/env node
+
+'use strict';
 
 // tooling
 const log  = require('./lib/log');

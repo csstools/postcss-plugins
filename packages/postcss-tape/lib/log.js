@@ -1,3 +1,5 @@
+'use strict';
+
 // tooling
 const color    = require('./color');
 const readline = require('readline');
