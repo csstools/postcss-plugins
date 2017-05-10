@@ -1,5 +1,11 @@
 # Changes to :any-link
 
+### 4.0.0 (May 10, 2017)
+
+- Added: Support for PostCSS v6
+- Added: Support for Node v4
+- Removed: `prefix` option, as that would be non-spec
+
 ### 3.0.1 (December 8, 2016)
 
 - Updated: Use destructing assignment on plugin options

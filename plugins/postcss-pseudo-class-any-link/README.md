@@ -1,26 +1,23 @@
-# :any-link <a href="https://github.com/postcss/postcss"><img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right"></a>
+# :any-link [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
-[![Licensing][lic-image]][lic-url]
-[![Changelog][log-image]][log-url]
-[![Gitter Chat][git-image]][git-url]
+[![Licensing][lic-img]][lic-url]
+[![Changelog][log-img]][log-url]
+[![Gitter Chat][git-img]][git-url]
 
 [:any-link] lets you to use the proposed [`:any-link`] pseudo-class in CSS.
 
 `:any-link` simplifies selectors targeting links, as the naming of `:link` is misleading; it specifically means unvisited links only, rather than all links.
 
 ```css
-/* before */
-
 nav :any-link > span {
 	background-color: yellow;
 }
 
-/* after */
+/* becomes */
 
-nav :link > span,
-nav :visited > span {
+nav :link > span, nav :visited > span {
 	background-color: yellow;
 }
 ```
@@ -29,28 +26,20 @@ From the [proposal]:
 
 > The [`:any-link`] pseudo-class represents an element that acts as the source anchor of a hyperlink. It matches an element if the element would match [`:link`] or [`:visited`].
 
-## Options
-
-**prefix** (string): prepends a prefix (surrounded by dashes) to the pseudo-class, preventing any clash with native syntax.
-
-```js
-{
-	prefix: 'foo' // pseudo-class becomes :-foo-any-link
-}
-```
-
 ## Usage
 
 Add [:any-link] to your build tool:
 
 ```bash
-npm install :any-link --save-dev
+npm install postcss-pseudo-class-any-link --save-dev
 ```
 
 #### Node
 
+Use [:any-link] to process your CSS:
+
 ```js
-require(':any-link').process(YOUR_CSS, { /* options */ });
+require('postcss-pseudo-class-any-link').process(YOUR_CSS);
 ```
 
 #### PostCSS
@@ -61,12 +50,12 @@ Add [PostCSS] to your build tool:
 npm install postcss --save-dev
 ```
 
-Load [:any-link] as a PostCSS plugin:
+Use [:any-link] as a plugin:
 
 ```js
 postcss([
-	require(':any-link')({ /* options */ })
-]).process(YOUR_CSS, /* options */);
+	require('postcss-pseudo-class-any-link')()
+]).process(YOUR_CSS);
 ```
 
 #### Gulp
@@ -77,7 +66,7 @@ Add [Gulp PostCSS] to your build tool:
 npm install gulp-postcss --save-dev
 ```
 
-Enable [:any-link] within your Gulpfile:
+Use [:any-link] in your Gulpfile:
 
 ```js
 var postcss = require('gulp-postcss');
@@ -85,7 +74,7 @@ var postcss = require('gulp-postcss');
 gulp.task('css', function () {
 	return gulp.src('./src/*.css').pipe(
 		postcss([
-			require(':any-link')({ /* options */ })
+			require('postcss-pseudo-class-any-link')()
 		])
 	).pipe(
 		gulp.dest('.')
@@ -101,7 +90,7 @@ Add [Grunt PostCSS] to your build tool:
 npm install grunt-postcss --save-dev
 ```
 
-Enable [:any-link] within your Gruntfile:
+Use [:any-link] in your Gruntfile:
 
 ```js
 grunt.loadNpmTasks('grunt-postcss');
@@ -110,7 +99,7 @@ grunt.initConfig({
 	postcss: {
 		options: {
 			use: [
-				require(':any-link')({ /* options */ })
+				require('postcss-pseudo-class-any-link')()
 			]
 		},
 		dist: {
@@ -145,11 +134,11 @@ Here are a few other ways to simulate the effect of [PostCSS Pseudo-Class Any-Li
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-pseudo-class-any-link
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-pseudo-class-any-link.svg
 [lic-url]: LICENSE.md
-[lic-image]: https://img.shields.io/npm/l/postcss-pseudo-class-any-link.svg
+[lic-img]: https://img.shields.io/npm/l/postcss-pseudo-class-any-link.svg
 [log-url]: CHANGELOG.md
-[log-image]: https://img.shields.io/badge/changelog-md-blue.svg
+[log-img]: https://img.shields.io/badge/changelog-md-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
-[git-image]: https://img.shields.io/badge/chat-gitter-blue.svg
+[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 
 [:any-link]: https://github.com/jonathantneal/postcss-pseudo-class-any-link
 [`:any-link`]: http://dev.w3.org/csswg/selectors/#any-link-pseudo
