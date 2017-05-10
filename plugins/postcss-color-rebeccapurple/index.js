@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 var postcss = require("postcss")
+var valueParser = require("postcss-value-parser")
 var color = "#639"
 
 /**
@@ -13,7 +14,11 @@ module.exports = postcss.plugin("postcss-color-rebeccapurple", function() {
       var value = decl.value;
 
       if (value && value.indexOf("rebeccapurple") !== -1) {
-        decl.value = value.replace(/(rebeccapurple)\b/gi, color)
+        decl.value = valueParser(value).walk(function(node) {
+          if (node.type === "word" && node.value === "rebeccapurple") {
+            node.value = color
+          }
+        }).toString()
       }
     })
   }

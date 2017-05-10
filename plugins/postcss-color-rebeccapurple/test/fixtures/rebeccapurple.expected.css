@@ -2,3 +2,7 @@ body {
   color: #639;
   background: linear-gradient(#639, blue 50%, #639);
 }
+
+a {
+  color: oldrebeccapurple;
+}
