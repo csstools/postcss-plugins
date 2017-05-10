@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 var postcss = require("postcss")
-var color = require("color")("rebeccapurple").rgbString()
+var color = "#639"
 
 /**
  * PostCSS plugin to convert colors
