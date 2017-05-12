@@ -13,20 +13,28 @@
   "author": "Maxime Thirouin",
   "license": "MIT",
   "repository": "https://github.com/postcss/postcss-custom-properties.git",
+  "main": "dist/index.js",
   "files": [
-    "index.js"
+    "dist"
   ],
   "dependencies": {
     "balanced-match": "^0.4.2",
-    "postcss": "^5.0.0"
+    "postcss": "^6.0.1"
   },
   "devDependencies": {
-    "eslint": "^1.0.0",
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "babel-register": "^6.24.1",
+    "eslint": "^3.19.0",
     "npmpub": "^3.1.0",
-    "tape": "^4.0.0"
+    "tape": "^4.6.3"
   },
   "scripts": {
-    "test": "eslint . && tape test",
+    "lint": "eslint *.js index.js ./test/",
+    "tape": "tape -r babel-register test/*.js",
+    "test": "npm run lint && npm run babelify && npm run tape",
+    "babelify": "babel index.js --out-dir dist",
+    "prepublish": "npm run babelify",
     "release": "npmpub"
   }
 }

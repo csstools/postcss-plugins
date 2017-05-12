@@ -1,23 +1,15 @@
-/**
- * Module dependencies.
- */
+import postcss from "postcss"
+import balanced from "balanced-match"
 
-var postcss = require("postcss")
-var balanced = require("balanced-match")
-
-/**
- * Constants.
- */
-
-var VAR_PROP_IDENTIFIER = "--"
-var VAR_FUNC_IDENTIFIER = "var"
+const VAR_PROP_IDENTIFIER = "--"
+const VAR_FUNC_IDENTIFIER = "var"
 // matches `name[, fallback]`, captures "name" and "fallback"
-var RE_VAR = /([\w-]+)(?:\s*,\s*)?\s*(.*)?/
+const RE_VAR = /([\w-]+)(?:\s*,\s*)?\s*(.*)?/
 
 /**
  * Resolve CSS variables.
  *
- * The second argument to the CSS variable function, var(name[, fallback]), 
+ * The second argument to the CSS variable function, var(name[, fallback]),
  * is used in the event that first argument cannot be resolved.
  *
  * @param {String} value May contain the CSS variable function
@@ -26,19 +18,18 @@ var RE_VAR = /([\w-]+)(?:\s*,\s*)?\s*(.*)?/
  * @param {Object} decl The declaration containing the rule
  * @return {String} A property value with all CSS variables substituted.
  */
-
 function resolveValue(value, variables, result, decl) {
-  var results = []
+  const results = []
 
-  var start = value.indexOf(VAR_FUNC_IDENTIFIER + "(")
+  const start = value.indexOf(VAR_FUNC_IDENTIFIER + "(")
   if (start === -1) {
     return [value]
   }
 
-  var matches = balanced("(", ")", value.substring(start))
+  const matches = balanced("(", ")", value.substring(start))
 
   if (!matches) {
-    throw decl.error("missing closing ')' in the value '" + value + "'")
+    throw decl.error(`missing closing ')' in the value '${value}'`)
   }
 
   if (matches.body === "") {
@@ -46,8 +37,8 @@ function resolveValue(value, variables, result, decl) {
   }
 
   matches.body.replace(RE_VAR, function(_, name, fallback) {
-    var variable = variables[name]
-    var post
+    const variable = variables[name]
+    let post
     // undefined and without fallback, just keep original value
     if (!variable && !fallback) {
       result.warn(
@@ -75,8 +66,8 @@ function resolveValue(value, variables, result, decl) {
       post = matches.post
         ? resolveValue(matches.post, variables, result, decl)
         : [""]
-      fallback.forEach(function(fbValue) {
-        post.forEach(function(afterValue) {
+      fallback.forEach((fbValue) => {
+        post.forEach((afterValue) => {
           results.push(value.slice(0, start) + fbValue + afterValue)
         })
       })
@@ -113,8 +104,8 @@ function resolveValue(value, variables, result, decl) {
     post = matches.post
       ? resolveValue(matches.post, variables, result, decl)
       : [""]
-    variable.value.forEach(function(replacementValue) {
-      post.forEach(function(afterValue) {
+    variable.value.forEach((replacementValue) => {
+      post.forEach((afterValue) => {
         results.push(value.slice(0, start) + replacementValue + afterValue)
       })
     })
@@ -124,14 +115,14 @@ function resolveValue(value, variables, result, decl) {
 }
 
 function prefixVariables(variables) {
-  var prefixedVariables = {}
+  const prefixedVariables = {}
 
   if (!variables) {
     return prefixVariables
   }
 
-  Object.keys(variables).forEach(function(name) {
-    var val = variables[name]
+  Object.keys(variables).forEach((name) => {
+    const val = variables[name]
     if (name.slice(0, 2) !== "--") {
       name = "--" + name
     }
@@ -144,26 +135,24 @@ function prefixVariables(variables) {
 /**
  * Module export.
  */
-
-module.exports = postcss.plugin("postcss-custom-properties", function(options) {
-  options = options || {}
+export default postcss.plugin("postcss-custom-properties", (options = {}) => {
 
   function setVariables(variables) {
     options.variables = prefixVariables(variables)
   }
 
   function plugin(style, result) {
-    var warnings = options.warnings === undefined ? true : options.warnings
-    var variables = prefixVariables(options.variables)
-    var strict = options.strict === undefined ? true : options.strict
-    var appendVariables = options.appendVariables
-    var preserve = options.preserve
-    var map = {}
-    var importantMap = {}
+    const warnings = options.warnings === undefined ? true : options.warnings
+    const variables = prefixVariables(options.variables)
+    const strict = options.strict === undefined ? true : options.strict
+    const appendVariables = options.appendVariables
+    const preserve = options.preserve
+    const map = {}
+    const importantMap = {}
 
     // define variables
-    style.walkRules(function(rule) {
-      var toRemove = []
+    style.walkRules((rule) => {
+      const toRemove = []
 
       // only variables declared for `:root` are supported for now
       if (
@@ -171,8 +160,8 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
         rule.selectors[0] !== ":root" ||
         rule.parent.type !== "root"
       ) {
-        rule.each(function(decl) {
-          var prop = decl.prop
+        rule.each((decl) => {
+          const prop = decl.prop
           if (
             warnings &&
             prop &&
@@ -180,7 +169,7 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
           ) {
             result.warn(
               "Custom property ignored: not scoped to the top-level :root " +
-              "element (" + rule.selectors + " { ... " + prop + ": ... })" +
+              `element (${rule.selectors} { ... ${prop}: ... })` +
               (rule.parent.type !== "root" ? ", in " + rule.parent.type : ""),
               {node: decl}
             )
@@ -189,8 +178,8 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
         return
       }
 
-      rule.each(function(decl, index) {
-        var prop = decl.prop
+      rule.each((decl, index) => {
+        const prop = decl.prop
         if (prop && prop.indexOf(VAR_PROP_IDENTIFIER) === 0) {
           if (!map[prop] || !importantMap[prop] || decl.important) {
             map[prop] = {
@@ -207,7 +196,7 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
 
       // optionally remove `--*` properties from the rule
       if (!preserve) {
-        for (var i = toRemove.length - 1; i >= 0; i--) {
+        for (let i = toRemove.length - 1; i >= 0; i--) {
           rule.nodes.splice(toRemove[i], 1)
         }
 
@@ -219,7 +208,7 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
     })
 
     // apply js-defined custom properties
-    Object.keys(variables).forEach(function(variable) {
+    Object.keys(variables).forEach((variable) => {
       map[variable] = {
         value: variables[variable],
         deps: [],
@@ -229,8 +218,8 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
     })
 
     if (preserve) {
-      Object.keys(map).forEach(function(name) {
-        var variable = map[name]
+      Object.keys(map).forEach((name) => {
+        const variable = map[name]
         if (!variable.resolved) {
           variable.value = resolveValue(variable.value, map, result)
           variable.resolved = true
@@ -239,20 +228,20 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
     }
 
     // resolve variables
-    style.walkDecls(function(decl) {
-      var value = decl.value
+    style.walkDecls((decl) => {
+      const value = decl.value
 
       // skip values that don’t contain variable functions
       if (!value || value.indexOf(VAR_FUNC_IDENTIFIER + "(") === -1) {
         return
       }
 
-      var resolved = resolveValue(value, map, result, decl)
+      let resolved = resolveValue(value, map, result, decl)
       if (!strict) {
         resolved = [resolved.pop()]
       }
-      resolved.forEach(function(resolvedValue) {
-        var clone = decl.cloneBefore()
+      resolved.forEach((resolvedValue) => {
+        const clone = decl.cloneBefore()
         clone.value = resolvedValue
       })
 
@@ -262,19 +251,19 @@ module.exports = postcss.plugin("postcss-custom-properties", function(options) {
     })
 
     if (preserve && appendVariables) {
-      var names = Object.keys(map)
+      const names = Object.keys(map)
       if (names.length) {
-        var container = postcss.rule({
+        const container = postcss.rule({
           selector: ":root",
           raws: {semicolon: true},
         })
-        names.forEach(function(name) {
-          var variable = map[name]
-          var val = variable.value
+        names.forEach((name) => {
+          const variable = map[name]
+          let val = variable.value
           if (variable.resolved) {
             val = val[val.length - 1]
           }
-          var decl = postcss.decl({
+          const decl = postcss.decl({
             prop: name,
             value: val,
           })

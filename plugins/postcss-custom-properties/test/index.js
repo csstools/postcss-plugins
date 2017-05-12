@@ -1,9 +1,9 @@
-var fs = require("fs")
+import fs from "fs"
 
-var test = require("tape")
+import test from "tape"
 
-var postcss = require("postcss")
-var customProperties = require("..")
+import postcss from "postcss"
+import customProperties from ".."
 
 function fixturePath(name) {
   return "test/fixtures/" + name + ".css"
@@ -19,13 +19,13 @@ function resolveFixture(name, options) {
 }
 
 function compareFixtures(t, name, options) {
-  var postcssResult = resolveFixture(name, options)
-  var actual = postcssResult.css.trim()
+  const postcssResult = resolveFixture(name, options)
+  const actual = postcssResult.css.trim()
 
   // handy thing: checkout actual in the *.actual.css file
   fs.writeFile(fixturePath(name + ".actual"), actual)
 
-  var expected = fixture(name + ".expected")
+  const expected = fixture(name + ".expected")
   t.equal(
     actual, expected,
     "processed fixture '" + name + "' should be equal to expected output"
@@ -61,7 +61,7 @@ test("throw errors", function(t) {
 test(
   "substitutes nothing when a variable function references an undefined var",
   function(t) {
-    var result = compareFixtures(t, "substitution-undefined")
+    const result = compareFixtures(t, "substitution-undefined")
     t.equal(
       result.messages[0].text,
       "variable '--test' is undefined and used without a fallback",
@@ -72,7 +72,7 @@ test(
 )
 
 test("substitutes defined variables in `:root` only", function(t) {
-  var result = compareFixtures(t, "substitution-defined")
+  const result = compareFixtures(t, "substitution-defined")
   t.ok(
     result.messages[0].text.match(/^Custom property ignored/),
     "should add a warning for non root custom properties"
@@ -81,7 +81,7 @@ test("substitutes defined variables in `:root` only", function(t) {
 })
 
 test("allow to hide warnings", function(t) {
-  var result = compareFixtures(
+  const result = compareFixtures(
     t,
     "substitution-defined",
     {warnings: false}
@@ -125,7 +125,7 @@ test(
 )
 
 test("allows users to programmatically change the variables", function(t) {
-  var variables = {
+  const variables = {
     "--test-one": "js-one",
     "--test-two": "js-two",
     "--test-three": "js-three",
@@ -133,14 +133,15 @@ test("allows users to programmatically change the variables", function(t) {
     "--test-jsception": "var(--test-varception)",
     "--test-num": 1,
   }
-  var plugin = customProperties()
-  var name = "js-override"
-  var expected = fs.readFileSync(fixturePath(name + ".expected"), "utf8").trim()
-  var actual
+  const plugin = customProperties()
+  const name = "js-override"
+  const expected = fs.readFileSync(
+    fixturePath(name + ".expected"), "utf8"
+  ).trim()
 
   plugin.setVariables(variables)
 
-  actual = postcss(plugin)
+  const actual = postcss(plugin)
     .process(fixture(name), {from: fixturePath(name)}).css.trim()
 
   t.equal(
@@ -193,7 +194,7 @@ test("preserves computed value when `preserve` is `\"computed\"`", function(t) {
 
 test("circular variable references", function(t) {
   compareFixtures(t, "self-reference")
-  var result = compareFixtures(t, "circular-reference")
+  const result = compareFixtures(t, "circular-reference")
   t.equal(
     result.messages[0].text,
     "Circular variable reference: --color",
