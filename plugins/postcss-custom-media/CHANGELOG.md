@@ -1,3 +1,7 @@
+# 6.0.0 - 2017-05-12
+
+- Added: compatibility with postcss v6.x
+
 # 5.0.1 - 2016-02-03
 
 - Fixed: circular dependencies are properly detected
