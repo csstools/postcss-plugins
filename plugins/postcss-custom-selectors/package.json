@@ -24,19 +24,23 @@
     "README-zh.md"
   ],
   "dependencies": {
-    "postcss": "^5.0.0",
-    "postcss-selector-matches": "^2.0.0"
+    "postcss": "^6.0.1",
+    "postcss-selector-matches": "^3.0.0"
   },
   "devDependencies": {
-    "babel": "^5.5.8",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-register": "^6.24.1",
     "babel-tape-runner": "^1.1.0",
-    "eslint": "^3.15.0",
-    "tape": "^4.0.0"
+    "eslint": "^3.19.0",
+    "tape": "^4.6.3"
   },
   "scripts": {
-    "prepublish": "babel src --out-dir dist",
-    "lint": "eslint src test",
-    "tape": "babel-tape-runner test/*.js",
-    "test": "npm run lint && npm run tape"
+    "babelify": "babel src --out-dir dist",
+    "prepublish": "npm run babelify",
+    "lint": "eslint *.js ./src/ ./test/",
+    "tape": "tape -r babel-register test/*.js",
+    "test": "npm run lint && npm run babelify && npm run tape"
   }
 }

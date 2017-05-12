@@ -1,16 +1,11 @@
----
-
 root: true
 extends: eslint:recommended
 
 parserOptions:
-  sourceType: "module"
   ecmaVersion: 6
+  sourceType: "module"
   ecmaFeatures:
     experimentalObjectRestSpread: true
-
-env:
-  node: true
 
 rules:
   indent: [2, 2] # 2 spaces indentation
