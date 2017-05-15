@@ -1,3 +1,7 @@
+# 3.0.1 - 2017-05-15
+
+- Fixed: incorrect export ([#69](https://github.com/postcss/postcss-selector-not/issues/8))
+
 # 3.0.0 - 2017-05-11
 
 - Added: compatibility with postcss v6.x
