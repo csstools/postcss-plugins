@@ -1,6 +1,6 @@
 {
   "name": "postcss-custom-selectors",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "PostCSS plugin to transform W3C CSS Extensions(Custom Selectors) to more compatible CSS",
   "keywords": [
     "postcss",
