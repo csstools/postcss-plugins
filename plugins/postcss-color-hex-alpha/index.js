@@ -42,7 +42,11 @@ function transformHexAlpha(string) {
 
   var hex = m[1]
 
-  return string.slice(0, m.index) + hexaToRgba(hex) + transformHexAlpha(string.slice(m.index + 1 + hex.length))
+  return string.slice(0, m.index) +
+         hexaToRgba(hex) +
+         transformHexAlpha(
+           string.slice(m.index + 1 + hex.length)
+         )
 }
 
 /**
@@ -67,8 +71,10 @@ function hexaToRgba(hex) {
   // }
   var rgb = []
   for (var i = 0, l = hex.length; i < l; i += 2) {
-    rgb.push(Math.round(parseInt(hex.substr(i, 2), 16) / (i === 6 ? 255 : 1) * DECIMAL_PRECISION) / DECIMAL_PRECISION)
+    var isAlpha = i === 6
+    var value = parseInt(hex.substr(i, 2), 16) / (isAlpha ? 255 : 1)
+    rgb.push(Math.round(value * DECIMAL_PRECISION) / DECIMAL_PRECISION)
   }
 
-  return color({r: rgb[0], g: rgb[1], b: rgb[2], a: rgb[3]}).rgbaString()
+  return color.rgb(rgb).string()
 }
