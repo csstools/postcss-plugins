@@ -1,3 +1,7 @@
+# 6.0.1 - 2017-05-15
+
+- Fixed: incorrect export ([#69](https://github.com/postcss/postcss-custom-properties/issues/69))
+
 # 6.0.0 - 2017-05-12
 
 - Added: compatibility with postcss v6.x
