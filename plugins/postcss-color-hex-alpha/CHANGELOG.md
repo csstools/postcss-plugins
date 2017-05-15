@@ -1,3 +1,8 @@
+# 3.0.0 - 2017-05-15
+
+- Added: compatibility with postcss v6.x
+- Uodated dependencies
+
 # 2.0.0 - 2015-09-08
 
 - Added: compatibility with postcss v5.x
