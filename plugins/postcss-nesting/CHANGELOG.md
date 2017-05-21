@@ -1,5 +1,10 @@
 # Changes to PostCSS Nesting
 
+### 4.0.0 (May 20, 2017)
+
+- Transform only compliant nesting
+- Preserve more raws formatting
+
 ### 3.0.0 (May 8, 2017)
 
 - Added: Node 4.x support
