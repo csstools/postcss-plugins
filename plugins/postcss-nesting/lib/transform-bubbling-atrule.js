@@ -22,6 +22,12 @@ module.exports = (node) => {
 	// append the inner nodes to the empty parent clone
 	parentCloneForNodesWithinAtrule.append(innerNodes);
 
+	// swap semicolon raws
+	const semicolon = node.raws.semicolon;
+
+	node.raws.semicolon = node.parent.raws.semicolon;
+	node.parent.raws.semicolon = semicolon;
+
 	// move the node after the parent
 	const parent = node.parent.after(node);
 
