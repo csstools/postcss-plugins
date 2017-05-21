@@ -8,10 +8,6 @@ a, b {
 		order: 4;
 	}
 	order: 5;
-	& & {
-		order: 6;
-	}
-	order: 7;
 }
 a, b {
 	order: 1;
@@ -23,8 +19,4 @@ a, b {
 		order: 4;
 	}
 	order: 5;
-	@nest & & {
-		order: 6;
-	}
-	order: 7;
 }

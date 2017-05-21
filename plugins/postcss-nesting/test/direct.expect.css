@@ -13,12 +13,6 @@ a c, a d, b c, b d {
 a, b {
 	order: 5;
 }
-a a, b b {
-	order: 6;
-}
-a, b {
-	order: 7;
-}
 a, b {
 	order: 1;
 }
@@ -33,10 +27,4 @@ a c, a d, b c, b d {
 }
 a, b {
 	order: 5;
-}
-a a, b b {
-	order: 6;
-}
-a, b {
-	order: 7;
 }

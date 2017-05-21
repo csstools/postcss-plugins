@@ -9,11 +9,11 @@ module.exports = {
 		'empty': {
 			message: 'removes empty rules'
 		},
-		'ignore': {
-			message: 'ignores invalid entries'
-		},
 		'media': {
 			message: 'supports nested media'
+		},
+		'ignore': {
+			message: 'ignores invalid entries'
 		}
 	}
 };

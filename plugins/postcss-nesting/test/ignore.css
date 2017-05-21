@@ -7,6 +7,14 @@ a, b {
 & e {
 	order: 3;
 }
+f {
+	& g & {
+		order: 4;
+	}
+	&h {
+		order: 5;
+	}
+}
 a, b {
 	order: 1;
 	@nest c, d {
@@ -15,4 +23,12 @@ a, b {
 }
 @nest & e {
 	order: 3;
+}
+f {
+	@nest & g & {
+		order: 4;
+	}
+	@nest &h {
+		order: 5;
+	}
 }
