@@ -57,7 +57,7 @@ Use [PostCSS Nesting] as a plugin:
 
 ```js
 postcss([
-	require('postcss-nesting')({ /* options */ })
+  require('postcss-nesting')({ /* options */ })
 ]).process(YOUR_CSS, /* options */);
 ```
 
@@ -75,13 +75,13 @@ Use [PostCSS Nesting] in your Gulpfile:
 var postcss = require('gulp-postcss');
 
 gulp.task('css', function () {
-	return gulp.src('./src/*.css').pipe(
-		postcss([
-			require('postcss-nesting')({ /* options */ })
-		])
-	).pipe(
-		gulp.dest('.')
-	);
+  return gulp.src('./src/*.css').pipe(
+    postcss([
+      require('postcss-nesting')({ /* options */ })
+    ])
+  ).pipe(
+    gulp.dest('.')
+  );
 });
 ```
 
@@ -99,16 +99,16 @@ Use [PostCSS Nesting] in your Gruntfile:
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-	postcss: {
-		options: {
-			use: [
-				require('postcss-nesting')({ /* options */ })
-			]
-		},
-		dist: {
-			src: '*.css'
-		}
-	}
+  postcss: {
+    options: {
+      use: [
+        require('postcss-nesting')({ /* options */ })
+      ]
+    },
+    dist: {
+      src: '*.css'
+    }
+  }
 });
 ```
 
