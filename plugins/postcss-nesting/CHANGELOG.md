@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### 4.0.1 (May 22, 2017)
+
+- Improve selector validity testing
+
 ### 4.0.0 (May 20, 2017)
 
 - Transform only compliant nesting
