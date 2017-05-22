@@ -39,5 +39,5 @@ module.exports = (node) => {
 
 // whether the node is a nesting atrule (e.g. @nest .something &)
 module.exports.test = (node) => node.type === 'atrule' && node.name === 'nest' && node.parent && node.parent.type === 'rule' && comma(node.params).every(
-	(selector) => selector.split('&').length === 2 && /&([^A-z]|$)/.test(selector)
+	(selector) => selector.split('&').length === 2 && /&([^\w-]|$)/.test(selector)
 );
