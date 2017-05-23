@@ -1,0 +1,9 @@
+node_modules
+.*
+!.appveyor.yml
+!.gitignore
+!.tape.js
+!.travis.yml
+*.log*
+*.result.css
+basic.css.*
