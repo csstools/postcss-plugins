@@ -1,0 +1,27 @@
+[dir="ltr"] {
+	order: 0;
+}
+
+[dir="ltr"] test {
+	order: 1;
+}
+
+[dir="ltr"] test * {
+	order: 2;
+}
+
+[dir="ltr"] test * test {
+	order: 3;
+}
+
+[dir="ltr"] test {
+	order: 4;
+}
+
+[dir="ltr"] test test {
+	order: 5;
+}
+
+[dir="ltr"] test test {
+	order: 6;
+}

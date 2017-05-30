@@ -1,0 +1,27 @@
+:dir(ltr) {
+	order: 0;
+}
+
+:dir(ltr) test {
+	order: 1;
+}
+
+test :dir(ltr) {
+	order: 2;
+}
+
+test :dir(ltr) test {
+	order: 3;
+}
+
+test:dir(ltr) {
+	order: 4;
+}
+
+test:dir(ltr) test {
+	order: 5;
+}
+
+test test:dir(ltr) {
+	order: 6;
+}
