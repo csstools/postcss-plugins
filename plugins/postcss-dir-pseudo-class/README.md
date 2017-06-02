@@ -8,19 +8,24 @@
 [PostCSS :dir()] lets you use the `:dir` pseudo-class in CSS.
 
 ```css
-.example:dir(ltr) {
-  margin-left: 10px;
+.example:dir(rtl) {
+  margin-right: 10px;
 }
 
 /* becomes */
 
-[dir="ltr"] .example {
-  margin-left: 10px;
+[dir="rtl"] .example {
+  margin-right: 10px;
 }
 ```
 
-Selector weight remains the same, but this requires you to specify a direction
-(`dir`) attribute in your HTML.
+If your [browserslist] already supports the `:dir` pseudo-class, this plugin
+will not change your CSS. You can learn more this by reading about the
+[`browsers` option](#browsers-option).
+
+By default, this plugin requires you to specify a direction `[dir]` attribute
+in your HTML, preferably on the `html` element. If you prefer not to, you
+can presume a direction in your CSS using the [`dir` option](#dir-option).
 
 ## Usage
 
@@ -105,6 +110,84 @@ grunt.initConfig({
 });
 ```
 
+---
+
+## browsers option
+
+If your [browserslist] already supports the `:dir` pseudo-class, this plugin
+will not change your CSS. While only Firefox currently supports `:dir`, this
+will surely improve over time.
+
+Here’s an example of a `package.json` using a browserslist that would fully
+support the `:dir` pseudo-class:
+
+```json
+{
+  "browserslist": "firefox >= 49"
+}
+```
+
+And here’s an example of using the `browsers` option to accomplish the same
+thing:
+
+```js
+require('postcss-dir-pseudo-class')({
+  browsers: 'firefox >= 49'
+});
+```
+
+In both of these examples, the CSS would remain unchanged.
+
+```css
+.example:dir(rtl) {
+  margin-right: 10px;
+}
+
+/* becomes */
+
+.example:dir(rtl) {
+  margin-right: 10px;
+}
+```
+
+## dir option
+
+By default, this plugin requires you to specify a direction `[dir]` attribute
+in your HTML, preferably on the `html` element. If you prefer not to, you
+can presume a direction in your CSS using the `dir` option.
+
+Here’s an example of using the `dir` option to presume a left-to-right
+direction:
+
+```js
+require('postcss-dir-pseudo-class')({
+  dir: 'ltr'
+});
+```
+
+```css
+.example:dir(ltr) {
+  margin-left: 10px;
+}
+
+.example:dir(rtl) {
+  margin-right: 10px;
+}
+
+/* becomes */
+
+:root .example {
+  margin-left: 10px;
+}
+
+[dir="rtl"] .example {
+  margin-right: 10px;
+}
+```
+
+*Note: The `:root` pseudo-class is added here to preserve the weight of the
+original selector.*
+
 [npm-url]: https://www.npmjs.com/package/postcss-dir-pseudo-class
 [npm-img]: https://img.shields.io/npm/v/postcss-dir-pseudo-class.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-dir-pseudo-class
@@ -118,3 +201,4 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
+[browserslist]: https://github.com/ai/browserslist
