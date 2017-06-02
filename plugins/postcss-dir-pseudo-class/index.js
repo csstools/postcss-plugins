@@ -1,9 +1,26 @@
 // tooling
+const browserslist   = require('browserslist');
 const postcss        = require('postcss');
 const selectorParser = require('postcss-selector-parser');
 
 // plugin
 module.exports = postcss.plugin('postcss-dir-pseudo-class', (opts) => (root) => {
+	// client browser list
+	const clientBrowserList = browserslist(opts && opts.browsers, {
+		path: root.source && root.source.input && root.source.input.file
+	});
+
+	// whether this library is needed
+	const requiresPolyfill = clientBrowserList.some(
+		(clientBrowser) => browserslist('chrome > 0, edge > 0, firefox <= 48, ie > 0, safari > 0').some(
+			(polyfillBrowser) => polyfillBrowser === clientBrowser
+		)
+	);
+
+	if (!requiresPolyfill) {
+		return;
+	}
+
 	// walk rules using the :dir pseudo-class
 	root.walkRules(/:dir\([^\)]*\)/, (rule) => {
 		// update the rule selector
