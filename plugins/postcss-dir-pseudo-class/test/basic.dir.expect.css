@@ -1,0 +1,31 @@
+:root {
+	order: 0;
+}
+
+:root test {
+	order: 1;
+}
+
+:root test * {
+	order: 2;
+}
+
+:root test * test {
+	order: 3;
+}
+
+:root test {
+	order: 4;
+}
+
+:root test test {
+	order: 5;
+}
+
+:root test test {
+	order: 6;
+}
+
+:root:root * {
+	order: 7
+}

@@ -25,3 +25,7 @@
 [dir="ltr"] test test {
 	order: 6;
 }
+
+[dir="ltr"]:root * {
+	order: 7
+}
