@@ -33,8 +33,9 @@ module.exports = postcss.plugin('postcss-dir-pseudo-class', (opts) => (root) => 
 							// conditionally prepend a combinator before inserting the [dir] attribute
 							const first = selector.nodes[0];
 							const firstIsSpaceCombinator = first && 'combinator' === first.type && ' ' === first.value;
+							const firstIsRoot = first && 'pseudo' === first.type && ':root' === first.value;
 
-							if (first && !firstIsSpaceCombinator) {
+							if (first && !firstIsRoot && !firstIsSpaceCombinator) {
 								selector.prepend(
 									selectorParser.combinator({
 										value: ' '
@@ -45,9 +46,16 @@ module.exports = postcss.plugin('postcss-dir-pseudo-class', (opts) => (root) => 
 							// value of the :dir pseudo-class
 							const value = node.nodes.toString();
 
-							// prepend the dir attribute
+							// whether that value matches the presumed direction
+							const isdir = opts && Object(opts).dir === value;
+
 							selector.prepend(
-								selectorParser.attribute({
+								// prepend :root if the direction is presumed
+								isdir ? selectorParser.pseudo({
+									value: ':root'
+								})
+								// otherwise, prepend the dir attribute
+								: selectorParser.attribute({
 									attribute: 'dir',
 									operator: '=',
 									value: `"${ value }"`
