@@ -1,6 +1,6 @@
 {
   "name": "postcss-dir-pseudo-class",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Use the :dir pseudo-class in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -43,6 +43,12 @@
     "directions",
     "selector",
     "attribute",
-    "polyfill"
+    "polyfill",
+    "left",
+    "left-to-right",
+    "ltr",
+    "right",
+    "right-to-left",
+    "rtl"
   ]
 }
