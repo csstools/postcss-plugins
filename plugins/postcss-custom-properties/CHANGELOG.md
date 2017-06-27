@@ -1,3 +1,9 @@
+# 6.1.0 - 2017-06-28
+
+- Added: Let "warnings" option silence all warnings
+([#67](https://github.com/postcss/postcss-custom-properties/pull/67))
+- Dependencies update (postcss, balanced-match)
+
 # 6.0.1 - 2017-05-15
 
 - Fixed: incorrect export ([#69](https://github.com/postcss/postcss-custom-properties/issues/69))
