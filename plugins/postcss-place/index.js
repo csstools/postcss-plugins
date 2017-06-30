@@ -3,11 +3,9 @@ const postcss = require('postcss');
 const parser  = require('postcss-value-parser');
 
 // plugin
-module.exports = postcss.plugin('postcss-place', ({
-	prefix = ''
-} = {}) => {
+module.exports = postcss.plugin('postcss-place', (opts) => {
 	// dashed prefix
-	const dashedPrefix = prefix ? `-${ prefix }-` : '';
+	const dashedPrefix = opts && opts.prefix ? `-${ opts.prefix }-` : '';
 
 	// property matcher
 	const propertyMatch = new RegExp(`^${ dashedPrefix }place-(content|items|self)`);
