@@ -1,6 +1,6 @@
 {
   "name": "postcss-place",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "`place-[alignment] shorthand for align-[alignment] and justify-[alignment]",
   "author": "Jonathan Neal <jonathantneal@hotmail.com> (http://jonathantneal.com)",
   "license": "CC0-1.0",
