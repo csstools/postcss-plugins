@@ -10,7 +10,7 @@ const RE_VAR = /([\w-]+)(?:\s*,\s*)?\s*(.*)?/
  * Module variables
  */
 
-let globalWarnings
+let globalOpts
 
 /**
  * Resolve CSS variables.
@@ -47,11 +47,16 @@ function resolveValue(value, variables, result, decl) {
     let post
     // undefined and without fallback, just keep original value
     if (!variable && !fallback) {
-      if (globalWarnings) {
-        result.warn(
-          "variable '" + name + "' is undefined and used without a fallback",
-          {node: decl}
-        )
+      if (globalOpts.warnings) {
+        const errorStr =
+          `variable '${name}' is undefined and used without a fallback`
+
+        if (globalOpts.noValueNotifications === "error") {
+          throw decl.error(errorStr, {word: name})
+        }
+        else {
+          result.warn(errorStr, {node: decl})
+        }
       }
       post = matches.post
         ? resolveValue(matches.post, variables, result, decl)
@@ -90,7 +95,7 @@ function resolveValue(value, variables, result, decl) {
       // circular reference encountered
       if (variable.deps.indexOf(name) !== -1) {
         if (!fallback) {
-          if (globalWarnings) {
+          if (globalOpts.warnings) {
             result.warn("Circular variable reference: " + name, {node: decl})
           }
           variable.value = [variable.value]
@@ -159,7 +164,10 @@ export default postcss.plugin("postcss-custom-properties", (options = {}) => {
     const map = {}
     const importantMap = {}
 
-    globalWarnings = options.warnings === undefined ? true : options.warnings
+    globalOpts = {
+      warnings: options.warnings === undefined ? true : options.warnings,
+      noValueNotifications: options.noValueNotifications || "warning",
+    }
 
     // define variables
     style.walkRules((rule) => {
@@ -174,7 +182,7 @@ export default postcss.plugin("postcss-custom-properties", (options = {}) => {
         rule.each((decl) => {
           const prop = decl.prop
           if (
-            globalWarnings &&
+            globalOpts.warnings &&
             prop &&
             prop.indexOf(VAR_PROP_IDENTIFIER) === 0
           ) {

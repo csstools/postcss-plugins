@@ -71,6 +71,24 @@ test(
   }
 )
 
+test(
+  "generate error for undefined var when flag is set",
+  function(t) {
+    t.throws(
+      function() {
+        return postcss(customProperties({
+          noValueNotifications: "error",
+        }))
+          .process(fixture("substitution-undefined"))
+          .css
+      },
+      "variable '--test' is undefined and used without a fallback",
+      "should add a warning for undefined variable"
+    )
+    t.end()
+  }
+)
+
 test("substitutes defined variables in `:root` only", function(t) {
   const result = compareFixtures(t, "substitution-defined")
   t.ok(

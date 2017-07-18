@@ -129,6 +129,15 @@ Allows you to enable/disable warnings. If true, will enable all warnings.
 For now, it only allow to disable messages about custom properties definition
 not scoped in a `:root` selector.
 
+
+### `noValueNotifications`
+
+Default: `'warning'`
+Values: `'warning'|'error'`
+
+If it is set to `'error'`, using of undefined variable will throw an error.
+
+
 ---
 
 ## Contributing
