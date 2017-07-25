@@ -12,10 +12,18 @@
   margin-right: 10px;
 }
 
+.example:dir(ltr) {
+  margin-left: 10px;
+}
+
 /* becomes */
 
 [dir="rtl"] .example {
   margin-right: 10px;
+}
+
+[dir="ltr"] .example {
+  margin-left: 10px;
 }
 ```
 
@@ -176,7 +184,7 @@ require('postcss-dir-pseudo-class')({
 
 /* becomes */
 
-:root .example {
+:not([dir="rtl"]) .example {
   margin-left: 10px;
 }
 
