@@ -27,5 +27,45 @@ test test:dir(ltr) {
 }
 
 :root :dir(ltr) {
-	order: 7
+	order: 7;
+}
+
+html :dir(ltr) {
+	order: 8;
+}
+
+:dir(rtl) {
+	order: 9;
+}
+
+:dir(rtl) test {
+	order: 10;
+}
+
+test :dir(rtl) {
+	order: 11;
+}
+
+test :dir(rtl) test {
+	order: 12;
+}
+
+test:dir(rtl) {
+	order: 13;
+}
+
+test:dir(rtl) test {
+	order: 14;
+}
+
+test test:dir(rtl) {
+	order: 15;
+}
+
+:root :dir(rtl) {
+	order: 16;
+}
+
+html :dir(rtl) {
+	order: 17;
 }

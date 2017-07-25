@@ -1,31 +1,71 @@
-:root {
+:not([dir="rtl"]) {
 	order: 0;
 }
 
-:root test {
+:not([dir="rtl"]) test {
 	order: 1;
 }
 
-:root test * {
+:not([dir="rtl"]) test * {
 	order: 2;
 }
 
-:root test * test {
+:not([dir="rtl"]) test * test {
 	order: 3;
 }
 
-:root test {
+:not([dir="rtl"]) test {
 	order: 4;
 }
 
-:root test test {
+:not([dir="rtl"]) test test {
 	order: 5;
 }
 
-:root test test {
+:not([dir="rtl"]) test test {
 	order: 6;
 }
 
-:root:root * {
-	order: 7
+:not([dir="rtl"]):root * {
+	order: 7;
+}
+
+html:not([dir="rtl"]) * {
+	order: 8;
+}
+
+[dir="rtl"] {
+	order: 9;
+}
+
+[dir="rtl"] test {
+	order: 10;
+}
+
+[dir="rtl"] test * {
+	order: 11;
+}
+
+[dir="rtl"] test * test {
+	order: 12;
+}
+
+[dir="rtl"] test {
+	order: 13;
+}
+
+[dir="rtl"] test test {
+	order: 14;
+}
+
+[dir="rtl"] test test {
+	order: 15;
+}
+
+[dir="rtl"]:root * {
+	order: 16;
+}
+
+html[dir="rtl"] * {
+	order: 17;
 }
