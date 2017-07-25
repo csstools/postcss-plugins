@@ -49,9 +49,10 @@ module.exports = postcss.plugin('postcss-dir-pseudo-class', (opts) => (root) => 
 						// conditionally prepend a combinator before inserting the [dir] attribute
 						const first = selector.nodes[0];
 						const firstIsSpaceCombinator = first && 'combinator' === first.type && ' ' === first.value;
+						const firstIsHtml = first && 'tag' === first.type && 'html' === first.value;
 						const firstIsRoot = first && 'pseudo' === first.type && ':root' === first.value;
 
-						if (first && !firstIsRoot && !firstIsSpaceCombinator) {
+						if (first && !firstIsHtml && !firstIsRoot && !firstIsSpaceCombinator) {
 							selector.prepend(
 								selectorParser.combinator({
 									value: ' '
@@ -65,18 +66,42 @@ module.exports = postcss.plugin('postcss-dir-pseudo-class', (opts) => (root) => 
 						// whether that value matches the presumed direction
 						const isdir = opts && Object(opts).dir === value;
 
-						selector.prepend(
-							// prepend :root if the direction is presumed
-							isdir ? selectorParser.pseudo({
-								value: ':root'
-							})
-							// otherwise, prepend the dir attribute
-							: selectorParser.attribute({
+						// [dir] attribute
+						const dirAttr = selectorParser.attribute({
+							attribute: 'dir',
+							operator:  '=',
+							value:     `"${ value }"`
+						});
+
+						// not[dir] attribute
+						const notDirAttr = selectorParser.pseudo({
+							value: ':not'
+						});
+
+						notDirAttr.append(
+							selectorParser.attribute({
 								attribute: 'dir',
-								operator: '=',
-								value: `"${ value }"`
+								operator:  '=',
+								value:     `"${ 'ltr' === value ? 'rtl' : 'ltr' }"`
 							})
 						);
+
+						if (isdir) {
+							// if the direction is presumed
+							if (firstIsHtml) {
+								// insert :root after html tag
+								selector.insertAfter(first, notDirAttr);
+							} else {
+								// prepend :root
+								selector.prepend(notDirAttr);
+							}
+						} else if (firstIsHtml) {
+							// otherwise, insert dir attribute after html tag
+							selector.insertAfter(first, dirAttr);
+						} else {
+							// otherwise, prepend the dir attribute
+							selector.prepend(dirAttr);
+						}
 					}
 				});
 			});
