@@ -31,9 +31,19 @@ If your [browserslist] already supports the `:dir` pseudo-class, this plugin
 will not change your CSS. You can learn more this by reading about the
 [`browsers` option](#browsers-option).
 
-By default, this plugin requires you to specify a direction `[dir]` attribute
-in your HTML, preferably on the `html` element. If you prefer not to, you
-can presume a direction in your CSS using the [`dir` option](#dir-option).
+[PostCSS :dir()] does not change selector weight, but does require at least one
+`[dir]` attribute in your HTML. If you don’t have _any_ `[dir]` attributes,
+consider using the following JavaScript:
+
+```js
+// force at least one dir attribute (this can run at any time)
+document.documentElement.dir=document.documentElement.dir||'ltr';
+```
+
+If you absolutely cannot add a `[dir]` attribute in your HTML or force one via
+JavaScript, you can still get around this by presuming a direction in your CSS
+using the [`dir` option](#dir-option), but know that this will increase
+selector weight by one element (`html`).
 
 ## Usage
 
