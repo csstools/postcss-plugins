@@ -26,62 +26,60 @@ module.exports = postcss.plugin('postcss-dir-pseudo-class', (opts) => (root) => 
 		// update the rule selector
 		rule.selector = selectorParser((selectors) => {
 			// for each (comma separated) selector
-			selectors.nodes.forEach(
-				(selector) => {
-					// walk all selector nodes that are :dir pseudo-classes
-					selector.walk((node) => {
-						if ('pseudo' === node.type && ':dir' === node.value) {
-							// previous and next selector nodes
-							const prev = node.prev();
-							const next = node.next();
+			selectors.nodes.forEach((selector) => {
+				// walk all selector nodes that are :dir pseudo-classes
+				selector.walk((node) => {
+					if ('pseudo' === node.type && ':dir' === node.value) {
+						// previous and next selector nodes
+						const prev = node.prev();
+						const next = node.next();
 
-							const prevIsSpaceCombinator = prev && prev.type && 'combinator' === prev.type && ' ' === prev.value;
-							const nextIsSpaceCombinator = next && next.type && 'combinator' === next.type && ' ' === next.value;
+						const prevIsSpaceCombinator = prev && prev.type && 'combinator' === prev.type && ' ' === prev.value;
+						const nextIsSpaceCombinator = next && next.type && 'combinator' === next.type && ' ' === next.value;
 
-							// preserve the selector tree
-							if (prevIsSpaceCombinator && (nextIsSpaceCombinator || !next)) {
-								node.replaceWith(
-									selectorParser.universal()
-								);
-							} else {
-								node.remove();
-							}
+						// preserve the selector tree
+						if (prevIsSpaceCombinator && (nextIsSpaceCombinator || !next)) {
+							node.replaceWith(
+								selectorParser.universal()
+							);
+						} else {
+							node.remove();
+						}
 
-							// conditionally prepend a combinator before inserting the [dir] attribute
-							const first = selector.nodes[0];
-							const firstIsSpaceCombinator = first && 'combinator' === first.type && ' ' === first.value;
-							const firstIsRoot = first && 'pseudo' === first.type && ':root' === first.value;
+						// conditionally prepend a combinator before inserting the [dir] attribute
+						const first = selector.nodes[0];
+						const firstIsSpaceCombinator = first && 'combinator' === first.type && ' ' === first.value;
+						const firstIsRoot = first && 'pseudo' === first.type && ':root' === first.value;
 
-							if (first && !firstIsRoot && !firstIsSpaceCombinator) {
-								selector.prepend(
-									selectorParser.combinator({
-										value: ' '
-									})
-								);
-							}
-
-							// value of the :dir pseudo-class
-							const value = node.nodes.toString();
-
-							// whether that value matches the presumed direction
-							const isdir = opts && Object(opts).dir === value;
-
+						if (first && !firstIsRoot && !firstIsSpaceCombinator) {
 							selector.prepend(
-								// prepend :root if the direction is presumed
-								isdir ? selectorParser.pseudo({
-									value: ':root'
-								})
-								// otherwise, prepend the dir attribute
-								: selectorParser.attribute({
-									attribute: 'dir',
-									operator: '=',
-									value: `"${ value }"`
+								selectorParser.combinator({
+									value: ' '
 								})
 							);
 						}
-					});
-				}
-			);
+
+						// value of the :dir pseudo-class
+						const value = node.nodes.toString();
+
+						// whether that value matches the presumed direction
+						const isdir = opts && Object(opts).dir === value;
+
+						selector.prepend(
+							// prepend :root if the direction is presumed
+							isdir ? selectorParser.pseudo({
+								value: ':root'
+							})
+							// otherwise, prepend the dir attribute
+							: selectorParser.attribute({
+								attribute: 'dir',
+								operator: '=',
+								value: `"${ value }"`
+							})
+						);
+					}
+				});
+			});
 		}).process(rule.selector).result;
 	});
 });
