@@ -1,0 +1,86 @@
+test-padding {
+	padding: 1px;
+	padding: 2px 3px;
+	padding: 4px 5px 6px;
+	padding: 7px 8px 9px 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-left: 11px;
+	padding-right: 11px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-top: 13px;
+	padding-bottom: 14px;
+	padding-top: 15px;
+	padding-bottom: 16px;
+}
+
+test-flowing-padding {
+	padding: auto;
+	&:dir(ltr) {
+	padding: 1px 4px 3px 2px;
+	}
+	&:dir(rtl) {
+	padding: 1px 2px 3px 4px;
+	}
+	padding: auto;
+	&:dir(ltr) {
+	padding-left: 5px;
+	padding-right: 6px;
+	}
+	&:dir(rtl) {
+	padding-right: 5px;
+	padding-left: 6px;
+	}
+	padding: auto;
+	&:dir(ltr) {
+	padding-left: 7px;
+	}
+	&:dir(rtl) {
+	padding-right: 7px;
+	}
+	padding: auto;
+	&:dir(ltr) {
+	padding-right: 8px;
+	}
+	&:dir(rtl) {
+	padding-left: 8px;
+	}
+	padding: auto;
+	&:dir(ltr) {
+	padding-top: 9px;
+	padding-left: 9px;
+	}
+	&:dir(rtl) {
+	padding-top: 9px;
+	padding-right: 9px;
+	}
+	padding: auto;
+	&:dir(ltr) {
+	padding-top: 10px;
+	padding-left: 11px;
+	}
+	&:dir(rtl) {
+	padding-top: 10px;
+	padding-right: 11px;
+	}
+	padding: auto;
+	&:dir(ltr) {
+	padding-bottom: 12px;
+	padding-right: 12px;
+	}
+	&:dir(rtl) {
+	padding-bottom: 12px;
+	padding-left: 12px;
+	}
+	padding: auto;
+	&:dir(ltr) {
+	padding-bottom: 13px;
+	padding-right: 14px;
+	}
+	&:dir(rtl) {
+	padding-bottom: 13px;
+	padding-left: 14px;
+	}
+	padding: auto;
+}

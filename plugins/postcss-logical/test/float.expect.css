@@ -1,0 +1,16 @@
+test-float {
+	float: left;
+	&:dir(ltr) {
+	float: left;
+	}
+	&:dir(rtl) {
+	float: right;
+	}
+	&:dir(ltr) {
+	float: right;
+	}
+	&:dir(rtl) {
+	float: left;
+	}
+	float: right;
+}

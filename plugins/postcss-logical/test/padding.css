@@ -1,0 +1,32 @@
+test-padding {
+	padding: logical 1px;
+	padding: logical 2px 3px;
+	padding: logical 4px 5px 6px;
+	padding: logical 7px 8px 9px 8px;
+	padding-inline: 10px;
+	padding-inline: 11px 11px;
+	padding-block: 12px;
+	padding-block: 13px 14px;
+	padding-block-start: 15px;
+	padding-block-end: 16px;
+}
+
+test-flowing-padding {
+	padding: auto;
+	padding: logical 1px 2px 3px 4px;
+	padding: auto;
+	padding-inline: 5px 6px;
+	padding: auto;
+	padding-inline-start: 7px;
+	padding: auto;
+	padding-inline-end: 8px;
+	padding: auto;
+	padding-start: 9px;
+	padding: auto;
+	padding-start: 10px 11px;
+	padding: auto;
+	padding-end: 12px;
+	padding: auto;
+	padding-end: 13px 14px;
+	padding: auto;
+}

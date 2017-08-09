@@ -1,0 +1,32 @@
+test-margin {
+	margin: logical 1px;
+	margin: logical 2px 3px;
+	margin: logical 4px 5px 6px;
+	margin: logical 7px 8px 9px 8px;
+	margin-inline: 10px;
+	margin-inline: 11px 11px;
+	margin-block: 12px;
+	margin-block: 13px 14px;
+	margin-block-start: 15px;
+	margin-block-end: 16px;
+}
+
+test-flowing-margin {
+	margin: auto;
+	margin: logical 1px 2px 3px 4px;
+	margin: auto;
+	margin-inline: 5px 6px;
+	margin: auto;
+	margin-inline-start: 7px;
+	margin: auto;
+	margin-inline-end: 8px;
+	margin: auto;
+	margin-start: 9px;
+	margin: auto;
+	margin-start: 10px 11px;
+	margin: auto;
+	margin-end: 12px;
+	margin: auto;
+	margin-end: 13px 14px;
+	margin: auto;
+}
