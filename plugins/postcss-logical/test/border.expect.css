@@ -49,17 +49,17 @@ test-flowing-border {
 	}
 	border: inherit;
 	&:dir(ltr) {
-	border-left-start: 7px solid black;
+	border-left: 7px solid black;
 	}
 	&:dir(rtl) {
-	border-right-start: 7px solid black;
+	border-right: 7px solid black;
 	}
 	border: inherit;
 	&:dir(ltr) {
-	border-right-end: 8px solid black;
+	border-right: 8px solid black;
 	}
 	&:dir(rtl) {
-	border-left-end: 8px solid black;
+	border-left: 8px solid black;
 	}
 	border: inherit;
 	&:dir(ltr) {
@@ -125,17 +125,17 @@ test-flowing-border-color {
 	}
 	border-color: inherit;
 	&:dir(ltr) {
-	border-left-start-color: 7px solid black;
+	border-left-color: 7px solid black;
 	}
 	&:dir(rtl) {
-	border-right-start-color: 7px solid black;
+	border-right-color: 7px solid black;
 	}
 	border-color: inherit;
 	&:dir(ltr) {
-	border-right-end-color: 8px solid black;
+	border-right-color: 8px solid black;
 	}
 	&:dir(rtl) {
-	border-left-end-color: 8px solid black;
+	border-left-color: 8px solid black;
 	}
 	border-color: inherit;
 	&:dir(ltr) {

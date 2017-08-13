@@ -43,7 +43,7 @@ const transforms = {
 // plugin
 module.exports = postcss.plugin('postcss-logical-properties', () => (root) => {
 	root.walkDecls((decl) => {
-		const values = postcss.list.split(decl.value, /^border/i.test(decl.prop) ? '/' : ' ');
+		const values = postcss.list.split(decl.value, /^border(-block|-inline|-start|-end)?(-width|-style|-color)?$/i.test(decl.prop) ? '/' : ' ');
 		const prop = decl.prop.replace(matchSupportedProperties, '$2$5').toLowerCase();
 
 		if (prop in transforms) {
