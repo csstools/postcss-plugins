@@ -80,8 +80,8 @@ properties:
 
 #### Flow-Relative Values
 
-- `float: inline-start`, `float: inline-end`, `text-align: start`,
-  `text-align: end`
+- `clear: inline-start`, `clear: inline-end`, `float: inline-start`,
+  `float: inline-end`, `text-align: start`, `text-align: end`
 
 ---
 
