@@ -1,0 +1,7 @@
+test-clear {
+	clear: both;
+	clear: left;
+	clear: inline-start;
+	clear: inline-end;
+	clear: right;
+}

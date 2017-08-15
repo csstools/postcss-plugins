@@ -3,6 +3,9 @@ module.exports = {
 		'border': {
 			message: 'supports logical "border" property values'
 		},
+		'clear': {
+			message: 'supports logical "clear" property values'
+		},
 		'float': {
 			message: 'supports logical "float" property values'
 		},
