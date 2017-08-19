@@ -1,5 +1,11 @@
 # Changes to PostCSS Nesting
 
+### 4.1.0 (August 19, 2017)
+
+- Improve complex selector validity testing
+- Use mutation-safe walk method
+- A special thanks to @JLHwung for these improvements
+
 ### 4.0.1 (May 22, 2017)
 
 - Improve selector validity testing
