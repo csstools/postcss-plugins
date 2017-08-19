@@ -25,5 +25,5 @@ module.exports = (node) => {
 
 // whether the node is a nesting rule (e.g. &.something)
 module.exports.test = (node) => node.type === 'rule' && node.parent && node.parent.type === 'rule' && node.selectors.every(
-	(selector) => selector.trim().lastIndexOf('&') === 0 && /^&([^\w-]|$)/.test(selector)
+	(selector) => selector.trim().lastIndexOf('&') === 0 && /^&([^\w-|]|$)/.test(selector)
 );

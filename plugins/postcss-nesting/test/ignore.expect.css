@@ -31,4 +31,7 @@ f {
 	@nest &h {
 		order: 5;
 	}
+	@nest &|i {
+		order: 6;
+	}
 }
