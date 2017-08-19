@@ -8,10 +8,10 @@ const transformNestingRule    = require('./lib/transform-nesting-rule');
 
 // plugin
 module.exports = postcss.plugin('postcss-nesting', () => {
-	return walk;
+	return (root) => root.walk(transform);
 });
 
-function walk(node) {
+function transform(node) {
 	// console.log('walk', [node.type], [node.name || node.selector || node.prop || 'root'], node.nodes ? `length: ${node.nodes.length}` : `value: "${node.value}"`);
 
 	if (transformBubblingAtrule.test(node)) {
@@ -25,14 +25,4 @@ function walk(node) {
 		transformNestingRule(node);
 	}
 
-	if (node.nodes) {
-		// conditionally walk the children of the node
-		let childNode = node.nodes[0];
-
-		while (childNode) {
-			walk(childNode);
-
-			childNode = childNode.parent && childNode.parent.nodes[childNode.parent.nodes.indexOf(childNode) + 1];
-		}
-	}
 }

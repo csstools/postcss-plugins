@@ -20,6 +20,9 @@ module.exports = (node) => {
 		source: node.source
 	});
 
+	// clone atrule semicolon raws
+	rule.raws = node.raws.semicolon ? { semicolon: true } : {};
+
 	// move the clone after the parent
 	const parent = node.parent.after(rule);
 

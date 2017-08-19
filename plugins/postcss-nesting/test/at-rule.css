@@ -1,0 +1,30 @@
+a {
+	order: 1;
+	@nest b & {
+		order: 2;
+	}
+	@nest c & {
+		order: 3;
+	}
+	@nest d & {
+		order: 4;
+	}
+	@nest e & {
+		order: 5;
+	}
+}
+a {
+	order: 1;
+	@nest & b {
+		order: 2;
+	}
+	@nest & c {
+		order: 3;
+	}
+	@nest & d {
+		order: 4;
+	}
+	@nest & e {
+		order: 5;
+	}
+}

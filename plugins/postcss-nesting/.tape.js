@@ -3,6 +3,9 @@ module.exports = {
 		'basic': {
 			message: 'supports basic usage'
 		},
+		'at-rule': {
+			message: 'supports at-rule usage'
+		},
 		'direct': {
 			message: 'supports direct usage'
 		},
