@@ -21,62 +21,79 @@ module.exports['block-end'] = (decl) => {
 };
 
 // inset-inline, margin-inline, padding-inline
-module.exports['inline'] = (decl, values) => 1 === values.length || 2 === values.length && values[0] === values[1]
-? [
-	cloneDecl(decl, '-left', values[0]),
-	cloneDecl(decl, '-right', values[1] || values[0])
-]
-: [
-	cloneRule(decl, 'ltr').append([
+module.exports['inline'] = (decl, values, dir) => {
+	const ltrDecls = [
 		cloneDecl(decl, '-left', values[0]),
 		cloneDecl(decl, '-right', values[1] || values[0])
-	]),
-	cloneRule(decl, 'rtl').append([
+	];
+
+	const rtlDecls = [
 		cloneDecl(decl, '-right', values[0]),
 		cloneDecl(decl, '-left', values[1] || values[0])
-	]),
-];
+	];
+
+	const isLTR = 1 === values.length || 2 === values.length && values[0] === values[1];
+
+	return isLTR ? ltrDecls : 'ltr' === dir ? ltrDecls : 'rtl' === dir ? rtlDecls : [
+		cloneRule(decl, 'ltr').append(ltrDecls),
+		cloneRule(decl, 'rtl').append(rtlDecls),
+	];
+}
 
 // inset-inline-start, margin-inline-start, padding-inline-start
-module.exports['inline-start'] = (decl) => [
-	cloneRule(decl, 'ltr').append(
-		cloneDecl(decl, '-left', decl.value)
-	),
-	cloneRule(decl, 'rtl').append(
-		cloneDecl(decl, '-right', decl.value)
-	)
-];
+module.exports['inline-start'] = (decl, values, dir) => {
+	const ltrDecl = cloneDecl(decl, '-left', decl.value);
+	const rtlDecl = cloneDecl(decl, '-right', decl.value);
+
+	return 'ltr' === dir ? ltrDecl : 'rtl' === dir ? rtlDecl : [
+		cloneRule(decl, 'ltr').append(ltrDecl),
+		cloneRule(decl, 'rtl').append(rtlDecl)
+	];
+};
 
 // inset-inline-end, margin-inline-end, padding-inline-end
-module.exports['inline-end'] = (decl) => [
-	cloneRule(decl, 'ltr').append(
-		cloneDecl(decl, '-right', decl.value)
-	),
-	cloneRule(decl, 'rtl').append(
-		cloneDecl(decl, '-left', decl.value)
-	)
-];
+module.exports['inline-end'] = (decl, values, dir) => {
+	const ltrDecl = cloneDecl(decl, '-right', decl.value);
+	const rtlDecl = cloneDecl(decl, '-left', decl.value);
+
+	return 'ltr' === dir ? ltrDecl : 'rtl' === dir ? rtlDecl : [
+		cloneRule(decl, 'ltr').append(ltrDecl),
+		cloneRule(decl, 'rtl').append(rtlDecl)
+	];
+};
 
 // inset-start, margin-start, padding-start
-module.exports['start'] = (decl, values) => [
-	cloneRule(decl, 'ltr').append([
+module.exports['start'] = (decl, values, dir) => {
+	const ltrDecls = [
 		cloneDecl(decl, '-top', values[0]),
 		cloneDecl(decl, '-left', values[1] || values[0])
-	]),
-	cloneRule(decl, 'rtl').append([
+	];
+
+	const rtlDecls = [
 		cloneDecl(decl, '-top', values[0]),
 		cloneDecl(decl, '-right', values[1] || values[0])
-	])
-];
+	];
+
+	return 'ltr' === dir ? ltrDecls : 'rtl' === dir ? rtlDecls : [
+		cloneRule(decl, 'ltr').append(ltrDecls),
+		cloneRule(decl, 'rtl').append(rtlDecls)
+	];
+};
 
 // inset-end, margin-end, padding-end
-module.exports['end'] = (decl, values) => [
-	cloneRule(decl, 'ltr').append([
+module.exports['end'] = (decl, values, dir) => {
+	const ltrDecls = [
 		cloneDecl(decl, '-bottom', values[0]),
 		cloneDecl(decl, '-right', values[1] || values[0])
-	]),
-	cloneRule(decl, 'rtl').append([
+	];
+
+	const rtlDecls = [
 		cloneDecl(decl, '-bottom', values[0]),
 		cloneDecl(decl, '-left', values[1] || values[0])
-	])
-];
+	];
+
+	return 'ltr' === dir ? ltrDecls : 'rtl' === dir ? rtlDecls : [
+		cloneRule(decl, 'ltr').append(ltrDecls),
+		cloneRule(decl, 'rtl').append(rtlDecls)
+	];
+};

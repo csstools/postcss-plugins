@@ -5,12 +5,50 @@ const matchLogicalBorder = /^border(-width|-style|-color)?$/i;
 const matchLogicalBorderSide = /^border-(block|block-start|block-end|inline|inline-start|inline-end|start|end)(-(width|style|color))?$/i;
 
 // border
-module.exports['border'] = (decl, values) => {
+module.exports['border'] = (decl, values, dir) => {
 	const isLogical = matchLogical.test(values[0]);
 
 	if (isLogical) {
 		values[0] = values[0].replace(matchLogical, '');
 	}
+
+	const ltrDecls = [
+		decl.clone({
+			prop: `border-top${decl.prop.replace(matchLogicalBorder, '$1')}`,
+			value: values[0]
+		}),
+		decl.clone({
+			prop: `border-left${decl.prop.replace(matchLogicalBorder, '$1')}`,
+			value: values[1] || values[0]
+		}),
+		decl.clone({
+			prop: `border-bottom${decl.prop.replace(matchLogicalBorder, '$1')}`,
+			value: values[2] || values[0]
+		}),
+		decl.clone({
+			prop: `border-right${decl.prop.replace(matchLogicalBorder, '$1')}`,
+			value: values[3] || values[1] || values[0]
+		})
+	];
+
+	const rtlDecls = [
+		decl.clone({
+			prop: `border-top${decl.prop.replace(matchLogicalBorder, '$1')}`,
+			value: values[0]
+		}),
+		decl.clone({
+			prop: `border-right${decl.prop.replace(matchLogicalBorder, '$1')}`,
+			value: values[1] || values[0]
+		}),
+		decl.clone({
+			prop: `border-bottom${decl.prop.replace(matchLogicalBorder, '$1')}`,
+			value: values[2] || values[0]
+		}),
+		decl.clone({
+			prop: `border-left${decl.prop.replace(matchLogicalBorder, '$1')}`,
+			value: values[3] || values[1] || values[0]
+		})
+	];
 
 	return isLogical ? 1 === values.length
 		? decl.clone({
@@ -35,43 +73,9 @@ module.exports['border'] = (decl, values) => {
 					value: values[1] || values[0]
 				})
 			]
-			: [
-				cloneRule(decl, 'ltr').append([
-					decl.clone({
-						prop: `border-top${decl.prop.replace(matchLogicalBorder, '$1')}`,
-						value: values[0]
-					}),
-					decl.clone({
-						prop: `border-left${decl.prop.replace(matchLogicalBorder, '$1')}`,
-						value: values[1] || values[0]
-					}),
-					decl.clone({
-						prop: `border-bottom${decl.prop.replace(matchLogicalBorder, '$1')}`,
-						value: values[2] || values[0]
-					}),
-					decl.clone({
-						prop: `border-right${decl.prop.replace(matchLogicalBorder, '$1')}`,
-						value: values[3] || values[1] || values[0]
-					})
-				]),
-				cloneRule(decl, 'rtl').append([
-					decl.clone({
-						prop: `border-top${decl.prop.replace(matchLogicalBorder, '$1')}`,
-						value: values[0]
-					}),
-					decl.clone({
-						prop: `border-right${decl.prop.replace(matchLogicalBorder, '$1')}`,
-						value: values[1] || values[0]
-					}),
-					decl.clone({
-						prop: `border-bottom${decl.prop.replace(matchLogicalBorder, '$1')}`,
-						value: values[2] || values[0]
-					}),
-					decl.clone({
-						prop: `border-left${decl.prop.replace(matchLogicalBorder, '$1')}`,
-						value: values[3] || values[1] || values[0]
-					})
-				])
+			: 'ltr' === dir ? ltrDecls : 'rtl' === dir ? rtlDecls : [
+				cloneRule(decl, 'ltr').append(ltrDecls),
+				cloneRule(decl, 'rtl').append(rtlDecls)
 			]
 		: null;
 };
@@ -100,19 +104,8 @@ module.exports['border-block-end'] = (decl) => {
 };
 
 // border-inline
-module.exports['border-inline'] = (decl, values) => 1 === values.length || 2 === values.length && values[0] === values[1]
-? [
-	decl.clone({
-		prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
-		value: values[0]
-	}),
-	decl.clone({
-		prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
-		value: values[1] || values[0]
-	})
-]
-: [
-	cloneRule(decl, 'ltr').append([
+module.exports['border-inline'] = (decl, values, dir) => {
+	const ltrDecls = [
 		decl.clone({
 			prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			value: values[0]
@@ -121,8 +114,9 @@ module.exports['border-inline'] = (decl, values) => 1 === values.length || 2 ===
 			prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			value: values[1] || values[0]
 		})
-	]),
-	cloneRule(decl, 'rtl').append([
+	];
+
+	const rtlDecls = [
 		decl.clone({
 			prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			value: values[0]
@@ -131,40 +125,51 @@ module.exports['border-inline'] = (decl, values) => 1 === values.length || 2 ===
 			prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			value: values[1] || values[0]
 		})
-	])
-];
+	];
+
+	const isLTR = 1 === values.length || 2 === values.length && values[0] === values[1];
+
+	return isLTR ? ltrDecls : 'ltr' === dir ? ltrDecls : 'rtl' === dir ? rtlDecls : [
+		cloneRule(decl, 'ltr').append(ltrDecls),
+		cloneRule(decl, 'rtl').append(rtlDecls)
+	];
+};
 
 // border-inline-start
-module.exports['border-inline-start'] = (decl) => [
-	cloneRule(decl, 'ltr').append(
-		decl.clone({
-			prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`
-		})
-	),
-	cloneRule(decl, 'rtl').append(
-		decl.clone({
-			prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`
-		})
-	)
-];
+module.exports['border-inline-start'] = (decl, values, dir) => {
+	const ltrDecl = decl.clone({
+		prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`
+	});
+
+	const rtlDecl = decl.clone({
+		prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`
+	});
+
+	return 'ltr' === dir ? ltrDecl : 'rtl' === dir ? rtlDecl : [
+		cloneRule(decl, 'ltr').append(ltrDecl),
+		cloneRule(decl, 'rtl').append(rtlDecl)
+	];
+};
 
 // border-inline-end
-module.exports['border-inline-end'] = (decl) => [
-	cloneRule(decl, 'ltr').append(
-		decl.clone({
-			prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`
-		})
-	),
-	cloneRule(decl, 'rtl').append(
-		decl.clone({
-			prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`
-		})
-	)
-];
+module.exports['border-inline-end'] = (decl, values, dir) => {
+	const ltrDecl = decl.clone({
+		prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`
+	});
+
+	const rtlDecl = decl.clone({
+		prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`
+	});
+
+	return 'ltr' === dir ? ltrDecl : 'rtl' === dir ? rtlDecl : [
+		cloneRule(decl, 'ltr').append(ltrDecl),
+		cloneRule(decl, 'rtl').append(rtlDecl)
+	];
+};
 
 // border-start
-module.exports['border-start'] = (decl, values) => [
-	cloneRule(decl, 'ltr').append([
+module.exports['border-start'] = (decl, values, dir) => {
+	const ltrDecls = [
 		decl.clone({
 			prop: `border-top${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			value: values[0]
@@ -173,8 +178,9 @@ module.exports['border-start'] = (decl, values) => [
 			prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			value: values[1] || values[0]
 		})
-	]),
-	cloneRule(decl, 'rtl').append([
+	];
+
+	const rtlDecls = [
 		decl.clone({
 			prop: `border-top${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			value: values[0]
@@ -183,12 +189,17 @@ module.exports['border-start'] = (decl, values) => [
 			prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			value: values[1] || values[0]
 		})
-	])
-];
+	];
+
+	return 'ltr' === dir ? ltrDecls : 'rtl' === dir ? rtlDecls : [
+		cloneRule(decl, 'ltr').append(ltrDecls),
+		cloneRule(decl, 'rtl').append(rtlDecls)
+	];
+};
 
 // border-end
-module.exports['border-end'] = (decl, values) => [
-	cloneRule(decl, 'ltr').append([
+module.exports['border-end'] = (decl, values, dir) => {
+	const ltrDecls = [
 		decl.clone({
 			prop: `border-bottom${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			value: values[0]
@@ -197,8 +208,9 @@ module.exports['border-end'] = (decl, values) => [
 			prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			value: values[1] || values[0]
 		})
-	]),
-	cloneRule(decl, 'rtl').append([
+	];
+
+	const rtlDecls = [
 		decl.clone({
 			prop: `border-bottom${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			value: values[0]
@@ -207,5 +219,10 @@ module.exports['border-end'] = (decl, values) => [
 			prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			value: values[1] || values[0]
 		})
-	])
-];
+	];
+
+	return 'ltr' === dir ? ltrDecls : 'rtl' === dir ? rtlDecls : [
+		cloneRule(decl, 'ltr').append(ltrDecls),
+		cloneRule(decl, 'rtl').append(rtlDecls)
+	];
+};

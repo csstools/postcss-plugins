@@ -42,13 +42,15 @@ const transforms = {
 };
 
 // plugin
-module.exports = postcss.plugin('postcss-logical-properties', () => (root) => {
+module.exports = postcss.plugin('postcss-logical-properties', (opts) => (root) => {
+	const dir = Object(opts) === opts ? /^rtl$/i.test(opts.dir) ? 'rtl' : 'ltr' : false;
+
 	root.walkDecls((decl) => {
 		const values = postcss.list.split(decl.value, /^border(-block|-inline|-start|-end)?(-width|-style|-color)?$/i.test(decl.prop) ? '/' : ' ');
 		const prop = decl.prop.replace(matchSupportedProperties, '$2$5').toLowerCase();
 
 		if (prop in transforms) {
-			const replacer = transforms[prop](decl, values);
+			const replacer = transforms[prop](decl, values, dir);
 
 			if (replacer) {
 				decl.replaceWith(replacer);
