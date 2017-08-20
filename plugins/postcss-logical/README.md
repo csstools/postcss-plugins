@@ -5,8 +5,8 @@
 [![Windows Build Status][win-img]][win-url]
 [![Gitter Chat][git-img]][git-url]
 
-[PostCSS Logical Properties] lets you use nearly 60 new [logical properties]
-and a half dozen flow-relative values in CSS.
+[PostCSS Logical Properties] lets you use Logical Properties and Values in
+CSS, following the [CSS Logical Properties and Values Level 1] specification.
 
 ```css
 .banner {
@@ -32,6 +32,15 @@ and a half dozen flow-relative values in CSS.
 }
 
 .banner {
+  resize: vertical;
+}
+
+/* used with { dir: 'ltr' } option */
+
+.banner {
+  color: #222222;
+  top: 0; left: 5px; bottom: 10px; right: 5px;
+  padding-left: 20px; padding-right: 40px;
   resize: vertical;
 }
 ```
@@ -85,13 +94,23 @@ properties:
 
 ---
 
-[PostCSS Logical Properties] changes the selector weight of flow-relative
-declarations and requires at least one [dir] attribute in your HTML. If you
-don’t have any [dir] attributes, consider using the following JavaScript:
+By default, [PostCSS Logical Properties] changes the selector weight of
+flow-relative declarations and requires at least one [dir] attribute in your
+HTML. If you don’t have any [dir] attributes, consider using the following
+JavaScript:
 
 ```js
 // force at least one dir attribute (this can run at any time)
 document.documentElement.dir=document.documentElement.dir||'ltr';
+```
+
+Otherwise, consider using the `dir` option to transform all logical properties
+and values to a specific direction.
+
+```js
+require('postcss-logical')({
+  dir: 'ltr'
+});
 ```
 
 ## Usage
@@ -122,7 +141,7 @@ Use [PostCSS Logical Properties] as a plugin:
 
 ```js
 postcss([
-  require('postcss-logical')()
+  require('postcss-logical')(/* options */)
 ]).process(YOUR_CSS);
 ```
 
@@ -142,7 +161,7 @@ var postcss = require('gulp-postcss');
 gulp.task('css', function () {
   return gulp.src('./src/*.css').pipe(
     postcss([
-      require('postcss-logical')()
+      require('postcss-logical')(/* options */)
     ])
   ).pipe(
     gulp.dest('.')
@@ -167,7 +186,7 @@ grunt.initConfig({
   postcss: {
     options: {
       use: [
-        require('postcss-logical')()
+        require('postcss-logical')(/* options */)
       ]
     },
     dist: {
@@ -187,7 +206,7 @@ grunt.initConfig({
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 
 [PostCSS Logical Properties]: https://github.com/jonathantneal/postcss-logical-properties
-[logical properties]: https://drafts.csswg.org/css-logical/
+[CSS Logical Properties and Values Level 1]: https://drafts.csswg.org/css-logical/
 [PostCSS]: https://github.com/postcss/postcss
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
