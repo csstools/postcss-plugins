@@ -1,5 +1,6 @@
 # PostCSS Custom Selectors
 
+[![CSS Standard Status](https://jonathantneal.github.io/css-db/badge/css-extensions-custom-selectors.svg)](https://jonathantneal.github.io/css-db/#css-extensions-custom-selectors)
 [![Build Status](https://travis-ci.org/postcss/postcss-custom-selectors.svg?branch=master)](https://travis-ci.org/postcss/postcss-custom-selectors)
 [![NPM Downloads](https://img.shields.io/npm/dm/postcss-custom-selectors.svg?style=flat)](https://www.npmjs.com/package/postcss-custom-selectors)
 [![NPM Version](http://img.shields.io/npm/v/postcss-custom-selectors.svg?style=flat)](https://www.npmjs.com/package/postcss-custom-selectors)
