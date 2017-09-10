@@ -1,9 +1,9 @@
 # :any-link [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
+[![CSS Standard Status][css-img]][css-url]
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
 [![Licensing][lic-img]][lic-url]
-[![Changelog][log-img]][log-url]
 [![Gitter Chat][git-img]][git-url]
 
 [:any-link] lets you to use the proposed [`:any-link`] pseudo-class in CSS.
@@ -129,22 +129,22 @@ Here are a few other ways to simulate the effect of [PostCSS Pseudo-Class Any-Li
 :link, :visited { /* ... */ }
 ```
 
-[npm-url]: https://www.npmjs.com/package/postcss-pseudo-class-any-link
-[npm-img]: https://img.shields.io/npm/v/postcss-pseudo-class-any-link.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-pseudo-class-any-link
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-pseudo-class-any-link.svg
-[lic-url]: LICENSE.md
-[lic-img]: https://img.shields.io/npm/l/postcss-pseudo-class-any-link.svg
-[log-url]: CHANGELOG.md
-[log-img]: https://img.shields.io/badge/changelog-md-blue.svg
+[css-url]: https://jonathantneal.github.io/css-db/#selectors-any-link-pseudo
+[css-img]: https://jonathantneal.github.io/css-db/badge/selectors-any-link-pseudo.svg
 [git-url]: https://gitter.im/postcss/postcss
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
+[lic-url]: LICENSE.md
+[lic-img]: https://img.shields.io/npm/l/postcss-pseudo-class-any-link.svg
+[npm-url]: https://www.npmjs.com/package/postcss-pseudo-class-any-link
+[npm-img]: https://img.shields.io/npm/v/postcss-pseudo-class-any-link.svg
 
-[:any-link]: https://github.com/jonathantneal/postcss-pseudo-class-any-link
 [`:any-link`]: http://dev.w3.org/csswg/selectors/#any-link-pseudo
 [`:link`]: http://dev.w3.org/csswg/selectors/#link-pseudo
 [`:visited`]: http://dev.w3.org/csswg/selectors/#visited-pseudo
-[proposal]: http://dev.w3.org/csswg/selectors/
-[PostCSS]: https://github.com/postcss/postcss
+[:any-link]: https://github.com/jonathantneal/postcss-pseudo-class-any-link
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
+[PostCSS]: https://github.com/postcss/postcss
+[proposal]: http://dev.w3.org/csswg/selectors/
