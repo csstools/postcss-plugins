@@ -1,6 +1,7 @@
 # PostCSS Logical Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [![NPM Version][npm-img]][npm-url]
+[![CSS Standard Status][css-img]][css-url]
 [![Linux Build Status][cli-img]][cli-url]
 [![Windows Build Status][win-img]][win-url]
 [![Gitter Chat][git-img]][git-url]
@@ -200,6 +201,8 @@ grunt.initConfig({
 [npm-img]: https://img.shields.io/npm/v/postcss-logical.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-logical-properties
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-logical-properties.svg
+[css-img]: https://jonathantneal.github.io/css-db/badge/css-logical.svg
+[css-url]: https://jonathantneal.github.io/css-db/#css-logical
 [win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-logical-properties
 [win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-logical-properties.svg
 [git-url]: https://gitter.im/postcss/postcss
