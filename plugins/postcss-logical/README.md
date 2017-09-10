@@ -1,13 +1,13 @@
 # PostCSS Logical Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
-[![Linux Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
+[![NPM Version][npm-img]][npm-url]
+[![Build Status][cli-img]][cli-url]
+[![Licensing][lic-img]][lic-url]
 [![Gitter Chat][git-img]][git-url]
 
 [PostCSS Logical Properties] lets you use Logical Properties and Values in
-CSS, following the [CSS Logical Properties and Values Level 1] specification.
+CSS, following the [CSS Logical Properties and Values] specification.
 
 ```css
 .banner {
@@ -197,19 +197,19 @@ grunt.initConfig({
 });
 ```
 
-[npm-url]: https://www.npmjs.com/package/postcss-logical
-[npm-img]: https://img.shields.io/npm/v/postcss-logical.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-logical-properties
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-logical-properties.svg
 [css-img]: https://jonathantneal.github.io/css-db/badge/css-logical.svg
 [css-url]: https://jonathantneal.github.io/css-db/#css-logical
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-logical-properties
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-logical-properties.svg
 [git-url]: https://gitter.im/postcss/postcss
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
+[lic-url]: LICENSE.md
+[lic-img]: https://img.shields.io/npm/l/postcss-logical.svg
+[npm-url]: https://www.npmjs.com/package/postcss-logical
+[npm-img]: https://img.shields.io/npm/v/postcss-logical.svg
 
-[PostCSS Logical Properties]: https://github.com/jonathantneal/postcss-logical-properties
-[CSS Logical Properties and Values Level 1]: https://drafts.csswg.org/css-logical/
-[PostCSS]: https://github.com/postcss/postcss
+[CSS Logical Properties and Values]: https://drafts.csswg.org/css-logical/
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
+[PostCSS]: https://github.com/postcss/postcss
+[PostCSS Logical Properties]: https://github.com/jonathantneal/postcss-logical-properties
