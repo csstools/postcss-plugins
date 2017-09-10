@@ -1,8 +1,9 @@
 # PostCSS :dir() [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
+[![CSS Standard Status][css-img]][css-url]
 [![NPM Version][npm-img]][npm-url]
-[![Linux Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
+[![Build Status][cli-img]][cli-url]
+[![Licensing][lic-img]][lic-url]
 [![Gitter Chat][git-img]][git-url]
 
 [PostCSS :dir()] lets you use the `:dir` pseudo-class in CSS.
@@ -206,17 +207,19 @@ require('postcss-dir-pseudo-class')({
 *Note: The `:root` pseudo-class is added here to preserve the weight of the
 original selector.*
 
-[npm-url]: https://www.npmjs.com/package/postcss-dir-pseudo-class
-[npm-img]: https://img.shields.io/npm/v/postcss-dir-pseudo-class.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-dir-pseudo-class
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-dir-pseudo-class.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-dir-pseudo-class
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-dir-pseudo-class.svg
+[css-img]: https://jonathantneal.github.io/css-db/badge/selectors-the-dir-pseudo.svg
+[css-url]: https://jonathantneal.github.io/css-db/#selectors-the-dir-pseudo
 [git-url]: https://gitter.im/postcss/postcss
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
+[lic-url]: LICENSE.md
+[lic-img]: https://img.shields.io/npm/l/postcss-dir-pseudo-class.svg
+[npm-url]: https://www.npmjs.com/package/postcss-dir-pseudo-class
+[npm-img]: https://img.shields.io/npm/v/postcss-dir-pseudo-class.svg
 
-[PostCSS :dir()]: https://github.com/jonathantneal/postcss-dir-pseudo-class
-[PostCSS]: https://github.com/postcss/postcss
+[browserslist]: https://github.com/ai/browserslist
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
-[browserslist]: https://github.com/ai/browserslist
+[PostCSS]: https://github.com/postcss/postcss
+[PostCSS :dir()]: https://github.com/jonathantneal/postcss-dir-pseudo-class
