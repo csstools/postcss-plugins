@@ -1,4 +1,4 @@
-# postcss-selector-not [![Build Status](https://travis-ci.org/postcss/postcss-selector-not.svg?branch=master)](https://travis-ci.org/postcss/postcss-selector-not)
+# postcss-selector-not [![CSS Standard Status](https://jonathantneal.github.io/css-db/badge/selectors-negation.svg)](https://jonathantneal.github.io/css-db/#selectors-negation) [![Build Status](https://travis-ci.org/postcss/postcss-selector-not.svg?branch=master)](https://travis-ci.org/postcss/postcss-selector-not)
 
 > PostCSS plugin to transform `:not()` W3C CSS leve 4 pseudo class to :not() CSS level 3 selectors
 
