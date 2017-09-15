@@ -1,4 +1,4 @@
-# postcss-custom-properties [![Build Status](https://travis-ci.org/postcss/postcss-custom-properties.svg)](https://travis-ci.org/postcss/postcss-custom-properties)
+# postcss-custom-properties [![CSS Standard Status](https://jonathantneal.github.io/css-db/badge/css-variables.svg)](https://jonathantneal.github.io/css-db/#css-variables) [![Build Status](https://travis-ci.org/postcss/postcss-custom-properties.svg)](https://travis-ci.org/postcss/postcss-custom-properties)
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS Custom Properties for ~~cascading~~ variables](http://www.w3.org/TR/css-variables/) syntax to more compatible CSS.
 
