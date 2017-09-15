@@ -59,6 +59,24 @@ div {
 }
 ```
 
+You can also compile CSS custom properties with their fallback value.
+
+Using this `input.css`:
+
+```css
+div {
+  color: var(--color, #f00);
+}
+```
+
+you will get:
+
+```css
+div {
+  color: #f00;
+}
+```
+
 Note that plugin returns itself in order to expose a `setVariables` function
 that allow you to programmatically change the variables.
 
