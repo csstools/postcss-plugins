@@ -53,6 +53,8 @@ Object.keys(tests).reduce(
 				(passing) => {
 					const test = tests[section][name];
 
+					const testPlugin = typeof test.plugin === 'function' ? test.plugin() : plugin;
+
 					log.wait(section, test.message);
 
 					const testBase = name.split(':')[0];
@@ -69,7 +71,7 @@ Object.keys(tests).reduce(
 					}
 
 					return readFile(sourcePath, 'utf8').then(
-						(css) => plugin.process(
+						(css) => testPlugin.process(
 							css,
 							{
 								from: sourcePath,
