@@ -1,5 +1,10 @@
 # Changes to PostCSS Tape
 
+### 2.1.0 (September 16, 2017)
+
+- Added: New `plugin` methods for specifying alternative plugin(s)
+- Added: Support for running all tests even if some fail
+
 ### 2.0.1 (May 9, 2017)
 
 - Updated: Travis compatibility
