@@ -50,7 +50,7 @@ Object.keys(tests).reduce(
 	(testpromise, section) => testpromise.then(
 		() => Object.keys(tests[section]).reduce(
 			(sectionpromise, name) => sectionpromise.then(
-				() => {
+				(passing) => {
 					const test = tests[section][name];
 
 					log.wait(section, test.message);
@@ -101,7 +101,7 @@ Object.keys(tests).reduce(
 									]);
 								}
 
-								return true;
+								return passing;
 							}
 						)
 					).then(
@@ -111,6 +111,8 @@ Object.keys(tests).reduce(
 							}
 
 							log.pass(section, test.message);
+
+							return passing;
 						},
 						(error) => {
 							if (test.after) {
@@ -124,22 +126,22 @@ Object.keys(tests).reduce(
 							if (expectedError) {
 								log.pass(section, test.message);
 
-								return true;
+								return passing;
 							}
 
-							log.fail(section, test.message, error);
+							log.fail(section, test.message, error.reason || error.message || error);
 
-							return Promise.reject();
+							return false;
 						}
 					);
 				}
 			),
-			Promise.resolve()
+			Promise.resolve(true)
 		)
 	),
-	Promise.resolve()
+	Promise.resolve(true)
 ).then(
-	() => process.exit(0),
+	(passing) => passing === false ? process.exit(1) : process.exit(0),
 	() => process.exit(1)
 );
 
