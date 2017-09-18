@@ -2,18 +2,18 @@
 
 ### 4.1.0 (August 19, 2017)
 
-- Improve complex selector validity testing
-- Use mutation-safe walk method
-- A special thanks to @JLHwung for these improvements
+- Added: Mutation-safe walk method
+- Improved: Complex selector validity testing
+- Thanks: A special thanks to @JLHwung for these improvements
 
 ### 4.0.1 (May 22, 2017)
 
-- Improve selector validity testing
+- Improved: Selector validity testing
 
 ### 4.0.0 (May 20, 2017)
 
-- Transform only compliant nesting
-- Preserve more raws formatting
+- Changed: Transform only compliant nesting
+- Added: Preserve more raws formatting
 
 ### 3.0.0 (May 8, 2017)
 
