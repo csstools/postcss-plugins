@@ -1,6 +1,7 @@
 // tooling
 const cleanNode           = require('./clean-node');
 const comma               = require('postcss').list.comma;
+const getClosestRule      = require('./get-closest-rule');
 const mergeSelectors      = require('./merge-selectors');
 const postcss             = require('postcss');
 const transformAfterNodes = require('./transform-after-nodes');
@@ -11,12 +12,15 @@ module.exports = (node) => {
 	cleanNode(node).nodes.forEach(cleanNode);
 
 	// affected nodes after the current node moved into a cloned parent node
-	transformAfterNodes(node);
+	const afterParent = transformAfterNodes(node);
+
+	// get the closest rule
+	const selectorParent = getClosestRule(node);
 
 	// clone of the atrule as a rule
 	const rule = postcss.rule({
 		// merge selectors
-		selectors: mergeSelectors(node.parent.selectors, node.params),
+		selectors: mergeSelectors(selectorParent && selectorParent.selectors || '', node.params),
 		source: node.source
 	});
 
@@ -35,6 +39,22 @@ module.exports = (node) => {
 	if (!parent.nodes.length) {
 		// conditionally remove the original empty parent
 		parent.remove();
+	}
+
+	// if the next sibling shares the same selector
+	if (afterParent && afterParent.selector === rule.selector) {
+		rule.append(afterParent.nodes);
+
+		afterParent.remove();
+	}
+
+	// if the previous sibling shares the same selector
+	if (parent.parent && parent.next() === rule && parent.selector === rule.selector) {
+		parent.append(rule.nodes);
+
+		rule.remove();
+
+		return parent;
 	}
 
 	return rule;

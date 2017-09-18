@@ -8,11 +8,13 @@ module.exports = (node) => {
 
 	if (affectedNodes.length) {
 		// insert an empty parent clone after the parent
-		const emptyParentClone = cleanNode(node.parent.clone()).removeAll();
+		const afterParent = cleanNode(node.parent.clone()).removeAll();
 
-		node.parent.after(emptyParentClone);
+		node.parent.after(afterParent);
 
 		// append the affected nodes to the empty parent clone
-		emptyParentClone.append(affectedNodes);
+		afterParent.append(affectedNodes);
+
+		return afterParent;
 	}
 };
