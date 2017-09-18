@@ -6,7 +6,8 @@
 [![Licensing][lic-img]][lic-url]
 [![Gitter Chat][git-img]][git-url]
 
-[PostCSS :dir()] lets you use the `:dir` pseudo-class in CSS.
+[PostCSS :dir()] lets you use the `:dir` pseudo-class in CSS, following the
+[Selectors] specification.
 
 ```css
 .example:dir(rtl) {
@@ -223,3 +224,4 @@ original selector.*
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS :dir()]: https://github.com/jonathantneal/postcss-dir-pseudo-class
+[Selectors]: https://drafts.csswg.org/selectors-4/#the-dir-pseudo
