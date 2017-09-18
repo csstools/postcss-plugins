@@ -27,9 +27,9 @@
     "postcss-selector-parser": "^2.2.3"
   },
   "devDependencies": {
-    "eslint": "^4.6.1",
+    "eslint": "^4.7.1",
     "eslint-config-dev": "2.0.0",
-    "postcss-tape": "2.0.1",
+    "postcss-tape": "2.1.0",
     "pre-commit": "^1.2.2"
   },
   "eslintConfig": {
