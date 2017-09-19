@@ -1,6 +1,6 @@
 {
   "name": "postcss-nesting",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "Nest style and media rules inside each another, following the CSS Nesting Module Level 3 specification",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",

@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### 4.2.0 (September 18, 2017)
+
+- Added: Reduced splitting of rules
+
 ### 4.1.0 (August 19, 2017)
 
 - Added: Mutation-safe walk method
