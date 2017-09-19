@@ -75,7 +75,7 @@ module.exports = postcss.plugin('postcss-dir-pseudo-class', (opts) => (root) => 
 
 						// not[dir] attribute
 						const notDirAttr = selectorParser.pseudo({
-							value: ':not'
+							value: `${firstIsHtml || firstIsRoot ? '' : 'html'}:not`
 						});
 
 						notDirAttr.append(

@@ -1,28 +1,28 @@
-:not([dir="rtl"]) {
+html:not([dir="rtl"]) {
 	order: 0;
 }
 
-:not([dir="rtl"]) test {
+html:not([dir="rtl"]) test {
 	order: 1;
 }
 
-:not([dir="rtl"]) test * {
+html:not([dir="rtl"]) test * {
 	order: 2;
 }
 
-:not([dir="rtl"]) test * test {
+html:not([dir="rtl"]) test * test {
 	order: 3;
 }
 
-:not([dir="rtl"]) test {
+html:not([dir="rtl"]) test {
 	order: 4;
 }
 
-:not([dir="rtl"]) test test {
+html:not([dir="rtl"]) test test {
 	order: 5;
 }
 
-:not([dir="rtl"]) test test {
+html:not([dir="rtl"]) test test {
 	order: 6;
 }
 
