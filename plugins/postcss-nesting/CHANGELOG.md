@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### 4.2.1 (September 19, 2017)
+
+- Updated: Exposing the transform function as its own for postcss-extend
+
 ### 4.2.0 (September 18, 2017)
 
 - Added: Reduced splitting of rules
