@@ -6,7 +6,7 @@ const selectorParser = require('postcss-selector-parser');
 // plugin
 module.exports = postcss.plugin('postcss-dir-pseudo-class', (opts) => (root) => {
 	// client browser list
-	const clientBrowserList = browserslist(opts && opts.browsers, {
+	const clientBrowserList = browserslist(Object(opts).browsers, {
 		path: root.source && root.source.input && root.source.input.file
 	});
 
@@ -63,8 +63,8 @@ module.exports = postcss.plugin('postcss-dir-pseudo-class', (opts) => (root) => 
 						// value of the :dir pseudo-class
 						const value = node.nodes.toString();
 
-						// whether that value matches the presumed direction
-						const isdir = opts && Object(opts).dir === value;
+						// whether :dir matches the presumed direction
+						const isdir = Object(opts).dir === value;
 
 						// [dir] attribute
 						const dirAttr = selectorParser.attribute({
