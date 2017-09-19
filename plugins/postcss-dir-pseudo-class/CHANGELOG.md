@@ -1,5 +1,11 @@
 # Changes to PostCSS :dir()
 
+### 2.1.0 (September 19, 2017)
+
+- Fixed: Enforcement of presumed direction, e.g. `html:dir([dir="rtl"])`
+- Updated: Browserslist and PostCSS
+- Improved: How options are safely called, i.e. `Object(opts)`
+
 ### 2.0.0 (July 24, 2017)
 
 - Changed: Method of presumed direction from `:root` to `html:not([dir])`
