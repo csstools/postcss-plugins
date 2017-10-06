@@ -1,3 +1,8 @@
+# 6.2.0 - 2017-10-06
+
+- Added: `noValueNotifications` option (#71)
+- Fixed: Typo in `prefixedVariables` variable name (#77)
+
 # 6.1.0 - 2017-06-28
 
 - Added: Let "warnings" option silence all warnings
