@@ -133,7 +133,7 @@ function prefixVariables(variables) {
   const prefixedVariables = {}
 
   if (!variables) {
-    return prefixVariables
+    return prefixedVariables
   }
 
   Object.keys(variables).forEach((name) => {
