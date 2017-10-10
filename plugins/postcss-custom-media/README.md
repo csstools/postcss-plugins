@@ -1,4 +1,4 @@
-# postcss-custom-media [![CSS Standard Status](https://jonathantneal.github.io/css-db/badge/mediaqueries-5-custom-mq.svg)](https://jonathantneal.github.io/css-db/#mediaqueries-5-custom-mq) [![Build Status](https://travis-ci.org/postcss/postcss-custom-media.png)](https://travis-ci.org/postcss/postcss-custom-media)
+# postcss-custom-media [![CSS Standard Status](https://jonathantneal.github.io/css-db/badge/mediaqueries-custom-mq.svg)](https://jonathantneal.github.io/css-db/#mediaqueries-custom-mq) [![Build Status](https://travis-ci.org/postcss/postcss-custom-media.png)](https://travis-ci.org/postcss/postcss-custom-media)
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS Custom Media Queries](https://drafts.csswg.org/mediaqueries-5/#custom-mq) syntax to more compatible CSS.
 
