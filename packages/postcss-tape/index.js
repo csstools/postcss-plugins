@@ -73,10 +73,10 @@ Object.keys(tests).reduce(
 					return readFile(sourcePath, 'utf8').then(
 						(css) => testPlugin.process(
 							css,
-							{
+							Object.assign({
 								from: sourcePath,
 								to:   resultPath
-							},
+							}, test.processOptions),
 							test.options
 						),
 						() => writeFile(sourcePath, '').then(
