@@ -1,5 +1,9 @@
 # Changes to PostCSS Tape
 
+### 2.2.0 (November 2, 2017)
+
+- Added: New `processOptions` option for controlling the PostCSS process
+
 ### 2.1.0 (September 16, 2017)
 
 - Added: New `plugin` methods for specifying alternative plugin(s)
