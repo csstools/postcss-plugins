@@ -11,7 +11,7 @@ module.exports = {
 				assignTo: cache
 			},
 			after: () => {
-				const expectJSON = '[".focus-ring",".focus-ring test","test .focus-ring","test test.focus-ring","test .focus-ring test","test test.focus-ring test","test .focus-ring .focus-ring test","test :matches(.focus-ring) test","test :matches(.focus-ring test) test","test :matches(test .focus-ring) test","test :matches(test test.focus-ring) test","test :matches(test .focus-ring test) test","test :matches(test test.focus-ring test) test","test :matches(test .focus-ring .focus-ring test) test"]';
+				const expectJSON = '[".focus-visible",".focus-visible test","test .focus-visible","test test.focus-visible","test .focus-visible test","test test.focus-visible test","test .focus-visible .focus-visible test","test :matches(.focus-visible) test","test :matches(.focus-visible test) test","test :matches(test .focus-visible) test","test :matches(test test.focus-visible) test","test :matches(test .focus-visible test) test","test :matches(test test.focus-visible test) test","test :matches(test .focus-visible .focus-visible test) test"]';
 				const resultJSON = JSON.stringify(cache);
 
 				if (expectJSON !== resultJSON) {

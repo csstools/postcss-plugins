@@ -1,7 +1,7 @@
 {
   "name": "postcss-focus-ring",
   "version": "1.0.0",
-  "description": "Use the :focus-ring pseudo-selector in CSS",
+  "description": "Use the :focus-visible pseudo-selector in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
   "repository": "jonathantneal/postcss-focus-ring",

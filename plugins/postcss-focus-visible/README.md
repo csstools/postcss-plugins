@@ -5,20 +5,20 @@
 [![Windows Build Status][win-img]][win-url]
 [![Gitter Chat][git-img]][git-url]
 
-[PostCSS Focus Ring] lets you use the `:focus-ring` pseudo-selector in CSS,
+[PostCSS Focus Ring] lets you use the `:focus-visible` pseudo-selector in CSS,
 following the [Selectors Level 4] specification.
 
 ```css
-:focus:not(:focus-ring) {
+:focus:not(:focus-visible) {
   outline: none;
 }
 ```
 
-Use PostCSS Focus Ring alongside the [focus-ring polyfill] to swap the
+Use PostCSS Focus Ring alongside the [focus-visible polyfill] to swap the
 pseudo-selector for a class, which maintains the same selector weight.
 
 ```css
-:focus:not(.focus-ring) {
+:focus:not(.focus-visible) {
   outline: none;
 }
 ```
@@ -35,9 +35,9 @@ require('postcss-focus-ring')({
 
 ```json
 [
-  ".focus-ring",
-  ".x-component-outside .focus-ring",
-  ".focus-ring .x-component-inside",
+  ".focus-visible",
+  ".x-component-outside .focus-visible",
+  ".focus-visible .x-component-inside",
 ]
 ```
 
@@ -51,14 +51,14 @@ require('postcss-focus-ring')({
 
 ```js
 export default [
-  ".focus-ring",
-  ".x-component-outside .focus-ring",
-  ".focus-ring .x-component-inside",
+  ".focus-visible",
+  ".x-component-outside .focus-visible",
+  ".focus-visible .x-component-inside",
 ];
 ```
 
 With these variables synchronized to JavaScript, they can be used alongside the
-[focus-ring polyfill].
+[focus-visible polyfill].
 
 ## Usage
 
@@ -154,7 +154,7 @@ require('postcss-focus-ring')({ /* options */ });
 #### exportAs
 
 `exportAs` is used to export transformed selectors originally containing the
-`:focus-ring` pseudo-selector.
+`:focus-visible` pseudo-selector.
 
 - If a `js` string is passed, the selectors will be exported as JavaScript.
 - If a `json` string is passed, the selectors will be exported as JSON.
@@ -162,7 +162,7 @@ require('postcss-focus-ring')({ /* options */ });
 #### exportTo
 
 `exportTo` is the path to where your JSON or JavaScript will be saved. By
-default, it is the CSS source file with an additional `focus-ring-selectors`
+default, it is the CSS source file with an additional `focus-visible-selectors`
 and `.js` or `.json` extension.
 
 #### assignTo
@@ -183,5 +183,5 @@ be useful if running the plugin on the client side.
 [PostCSS]: https://github.com/postcss/postcss
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
-[Selectors Level 4]: https://drafts.csswg.org/selectors-4/#the-focusring-pseudo
-[focus-ring polyfill]: https://github.com/WICG/focus-ring
+[Selectors Level 4]: https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo
+[focus-visible polyfill]: https://github.com/WICG/focus-ring

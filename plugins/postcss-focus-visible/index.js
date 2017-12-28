@@ -4,12 +4,12 @@ const postcss = require('postcss');
 const parser  = require('postcss-selector-parser');
 
 // plugin
-module.exports = postcss.plugin('postcss-focus-ring', (opts) => (root) => { // eslint-disable-line consistent-return
+module.exports = postcss.plugin('postcss-focus-visible', (opts) => (root) => { // eslint-disable-line consistent-return
 	// transformed cache
 	const transformed = [];
 
 	// walk each matching rule
-	root.walkRules(/:focus-ring\b/, (rule) => {
+	root.walkRules(/:focus-visible\b/, (rule) => {
 		// original selector
 		const originalSelector = rule.selector;
 
@@ -17,10 +17,10 @@ module.exports = postcss.plugin('postcss-focus-ring', (opts) => (root) => { // e
 		const transformedSelector = parser((selectors) => {
 			// for each selector part
 			selectors.walk((selector) => {
-				// if the selector part is a :focus-ring pseudo
-				if (selector.type === 'pseudo' && selector.value === ':focus-ring') {
-					// change it to a .focus-ring class
-					selector.value = '.focus-ring';
+				// if the selector part is a :focus-visible pseudo
+				if (selector.type === 'pseudo' && selector.value === ':focus-visible') {
+					// change it to a .focus-visible class
+					selector.value = '.focus-visible';
 					selector.type = 'class';
 				}
 			});
@@ -50,7 +50,7 @@ module.exports = postcss.plugin('postcss-focus-ring', (opts) => (root) => { // e
 		// destination path
 		const destination = `${ opts.destination || `${
 			root.source && root.source.input && root.source.input.file && root.source.input.file || 'css'
-		}.focus-ring-selectors.${ opts.exportAs === 'js' ? 'js' : 'json' }` }`;
+		}.focus-visible-selectors.${ opts.exportAs === 'js' ? 'js' : 'json' }` }`;
 
 		// stringified contents
 		const json = JSON.stringify(transformedClean, null, '  ');
