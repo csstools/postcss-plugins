@@ -1,0 +1,96 @@
+test-color-mod {
+	color: color-mod(red);
+	color: color-mod(color-mod(red));
+	color: color-mod(color-mod(color-mod(red)));
+	color: color-mod(#f00);
+	color: color-mod(#f00f);
+	color: color-mod(#ff0000);
+	color: color-mod(#ff0000ff);
+	color: color-mod(rgb(100% 0% 0%));
+	color: color-mod(rgb(100% 0% 0% / 100%));
+	color: color-mod(rgb(255, 0, 0));
+	color: color-mod(rgb(255, 0, 0, 1));
+	color: color-mod(rgba(255, 0, 0, 1));
+	color: color-mod(hsl(0 100% 50%));
+	color: color-mod(hsl(0 100% 50% / 100%));
+	color: color-mod(hsl(0, 100%, 50%));
+	color: color-mod(hsl(0, 100%, 50%, 1));
+	color: color-mod(hsla(0, 100%, 50%, 1));
+	color: color-mod(hwb(0 0% 0%));
+	color: color-mod(hwb(0 0% 0% / 100%));
+	color: color-mod(0);
+	color: color-mod(0deg);
+}
+
+test-red-green-blue-alpha-adjuster {
+	color: color-mod(red blue(20));
+	color: color-mod(red blue(20%));
+	color: color-mod(red green(+ 20));
+	color: color-mod(red green(+ 20%));
+	color: color-mod(red red(- 20));
+	color: color-mod(red red(- 20%));
+	color: color-mod(red alpha(* 20%));
+}
+
+test-rgb-adjuster {
+	color: color-mod(red rgb(+ 0 255 0));
+	color: color-mod(red rgb(+ #0f0));
+	color: color-mod(red rgb(- 255 0 0));
+	color: color-mod(red rgb(- #f00));
+	color: color-mod(red rgb(* 50%));
+}
+
+test-hue-adjuster {
+	color: color-mod(red hue(20));
+	color: color-mod(red hue(20deg));
+	color: color-mod(red hue(+ 20));
+	color: color-mod(red hue(+ 20deg));
+	color: color-mod(red hue(- 20));
+	color: color-mod(red hue(- 20deg));
+	color: color-mod(red hue(* 20));
+	color: color-mod(red hue(* 20deg));
+}
+
+test-lightness-saturation-adjuster {
+	color: color-mod(red lightness(20%));
+	color: color-mod(red lightness(+ 20%));
+	color: color-mod(red lightness(- 20%));
+	color: color-mod(red lightness(* 20%));
+	color: color-mod(red saturation(20%));
+	color: color-mod(red saturation(+ 20%));
+	color: color-mod(red saturation(- 20%));
+	color: color-mod(red saturation(* 20%));
+}
+
+test-blackness-whiteness-adjuster {
+	color: color-mod(red blackness(20%));
+	color: color-mod(red blackness(+ 20%));
+	color: color-mod(red blackness(- 20%));
+	color: color-mod(red blackness(* 20%));
+	color: color-mod(red whiteness(20%));
+	color: color-mod(red whiteness(+ 20%));
+	color: color-mod(red whiteness(- 20%));
+	color: color-mod(red whiteness(* 20%));
+}
+
+test-tint-shade-adjuster {
+	color: color-mod(red tint(20%));
+	color: color-mod(red shade(20%));
+}
+
+test-blend-adjuster {
+	color: color-mod(yellow blend(red 50%));
+	color: color-mod(yellow blend(red 50% rgb));
+	color: color-mod(yellow blend(red 50% hsl));
+	color: color-mod(yellow blend(red 50% hwb));
+}
+
+test-contrast-adjuster {
+	color: color-mod(yellow contrast(25%));
+	color: color-mod(yellow contrast(50%));
+	color: color-mod(yellow contrast(75%));
+}
+
+test-combination-adjuster {
+	color: color-mod(color-mod(0deg blue(10%)) rgb(+ 0 10 0) hue(+ 10deg) tint(10%) lightness(+ 10%) saturation(+ 10%) blend(rebeccapurple 50%));
+}

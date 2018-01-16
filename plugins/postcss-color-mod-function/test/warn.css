@@ -1,0 +1,48 @@
+test-color-mod {
+	color: color-mod();
+}
+
+test-color-adjusters {
+	color: color-mod(red red(20deg));
+	color: color-mod(red blue(* 20));
+	color: color-mod(red green(* blue));
+	color: color-mod(red alpha(* 1));
+	color: color-mod(red alpha(0 1));
+	color: color-mod(red rgb(+ 0 255 0 0));
+	color: color-mod(red rgb(* 0 255 0));
+	color: color-mod(red rgb(100%));
+	color: color-mod(red hue(blue));
+	color: color-mod(red hue(20%));
+	color: color-mod(red hue(+ 20em));
+	color: color-mod(red hue(- 20em));
+	color: color-mod(red hue(* 20%));
+	color: color-mod(red lightness(20));
+	color: color-mod(red lightness(+ 20));
+	color: color-mod(red lightness(- 20));
+	color: color-mod(red lightness(* 20));
+	color: color-mod(red lightness(* 20 20));
+	color: color-mod(red saturation(20));
+	color: color-mod(red saturation(+ 20));
+	color: color-mod(red saturation(- 20));
+	color: color-mod(red saturation(* 20));
+	color: color-mod(red saturation(* 20 20));
+	color: color-mod(red blackness(20));
+	color: color-mod(red blackness(+ 20));
+	color: color-mod(red blackness(- 20));
+	color: color-mod(red blackness(* 20));
+	color: color-mod(red blackness(* 20 20));
+	color: color-mod(red whiteness(20));
+	color: color-mod(red whiteness(+ 20));
+	color: color-mod(red whiteness(- 20));
+	color: color-mod(red whiteness(* 20));
+	color: color-mod(red whiteness(* 20 20));
+	color: color-mod(red tint(20));
+	color: color-mod(red tint(+ 20%));
+	color: color-mod(red shade(20));
+	color: color-mod(red shade(+ 20%));
+	color: color-mod(yellow blend(20% 50%));
+	color: color-mod(yellow blend(red 50));
+	color: color-mod(yellow blend(red 50% blue));
+	color: color-mod(yellow contrast(50));
+	color: color-mod(yellow contrast(+ 50%));
+}

@@ -1,0 +1,96 @@
+test-color-mod {
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: hsl(0 100% 50%);
+	color: hsl(0 100% 50%);
+	color: hsl(0 100% 50%);
+	color: hsl(0 100% 50%);
+	color: hsl(0 100% 50%);
+	color: hwb(0 0% 0%);
+	color: hwb(0 0% 0%);
+	color: hsl(0 100% 50%);
+	color: hsl(0 100% 50%);
+}
+
+test-red-green-blue-alpha-adjuster {
+	color: rgb(100% 0% 7.8431372549019605%);
+	color: rgb(100% 0% 20%);
+	color: rgb(100% 7.8431372549019605% 0%);
+	color: rgb(100% 20% 0%);
+	color: rgb(92.15686274509804% 0% 0%);
+	color: rgb(80% 0% 0%);
+	color: rgb(100% 0% 0% / 20%);
+}
+
+test-rgb-adjuster {
+	color: rgb(100% 100% 0%);
+	color: rgb(100% 100% 0%);
+	color: rgb(0% 0% 0%);
+	color: rgb(0% 0% 0%);
+	color: rgb(50% 0% 0%);
+}
+
+test-hue-adjuster {
+	color: hsl(20 100% 50%);
+	color: hsl(20 100% 50%);
+	color: hsl(20 100% 50%);
+	color: hsl(20 100% 50%);
+	color: hsl(340 100% 50%);
+	color: hsl(340 100% 50%);
+	color: hsl(0 100% 50%);
+	color: hsl(0 100% 50%);
+}
+
+test-lightness-saturation-adjuster {
+	color: hsl(0 100% 20%);
+	color: hsl(0 100% 70%);
+	color: hsl(0 100% 30%);
+	color: hsl(0 100% 10%);
+	color: hsl(0 20% 50%);
+	color: hsl(0 100% 50%);
+	color: hsl(0 80% 50%);
+	color: hsl(0 20% 50%);
+}
+
+test-blackness-whiteness-adjuster {
+	color: hwb(0 0% 20%);
+	color: hwb(0 0% 20%);
+	color: hwb(0 0% 0%);
+	color: hwb(0 0% 0%);
+	color: hwb(0 20% 0%);
+	color: hwb(0 20% 0%);
+	color: hwb(0 0% 0%);
+	color: hwb(0 0% 0%);
+}
+
+test-tint-shade-adjuster {
+	color: hwb(0 0% 80%);
+	color: hwb(0 80% 0%);
+}
+
+test-blend-adjuster {
+	color: rgb(100% 50% 0%);
+	color: rgb(100% 50% 0%);
+	color: hsl(30 100% 50%);
+	color: hwb(30 0% 0%);
+}
+
+test-contrast-adjuster {
+	color: hwb(60 0% 25%);
+	color: hwb(60 0% 50%);
+	color: hwb(60 0% 75%);
+}
+
+test-combination-adjuster {
+	color: rgb(34.56764855961519% 17.846405228758172% 44.56764855961519%);
+}

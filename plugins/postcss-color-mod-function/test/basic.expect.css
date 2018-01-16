@@ -1,0 +1,96 @@
+test-color-mod {
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 255);
+	color: rgb(255, 0, 255);
+	color: rgb(255, 0, 255);
+	color: rgb(255, 0, 255);
+	color: rgb(255, 0, 255);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 255);
+	color: rgb(255, 0, 255);
+}
+
+test-red-green-blue-alpha-adjuster {
+	color: rgb(255, 0, 20);
+	color: rgb(255, 0, 51);
+	color: rgb(255, 20, 0);
+	color: rgb(255, 51, 0);
+	color: rgb(235.00000000000003, 0, 0);
+	color: rgb(204, 0, 0);
+	color: rgba(255, 0, 0, 0.2);
+}
+
+test-rgb-adjuster {
+	color: rgb(255, 255, 0);
+	color: rgb(255, 255, 0);
+	color: rgb(0, 0, 0);
+	color: rgb(0, 0, 0);
+	color: rgb(127.5, 0, 0);
+}
+
+test-hue-adjuster {
+	color: rgb(255, 85, 255);
+	color: rgb(255, 85, 255);
+	color: rgb(255, 85, 255);
+	color: rgb(255, 85, 255);
+	color: rgb(0, 0, 84.99999999999993);
+	color: rgb(0, 0, 84.99999999999993);
+	color: rgb(255, 0, 255);
+	color: rgb(255, 0, 255);
+}
+
+test-lightness-saturation-adjuster {
+	color: rgb(102, 0, 102);
+	color: rgb(255, 101.99999999999997, 255);
+	color: rgb(153, 0, 153);
+	color: rgb(51, 0, 51);
+	color: rgb(153, 102, 153);
+	color: rgb(255, 0, 255);
+	color: rgb(229.5, 25.499999999999993, 229.5);
+	color: rgb(153, 102, 153);
+}
+
+test-blackness-whiteness-adjuster {
+	color: rgb(204, 0, 0);
+	color: rgb(204, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 51, 51);
+	color: rgb(255, 51, 51);
+	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0);
+}
+
+test-tint-shade-adjuster {
+	color: rgb(50.999999999999986, 0, 0);
+	color: rgb(255, 204, 204);
+}
+
+test-blend-adjuster {
+	color: rgb(255, 127.5, 0);
+	color: rgb(255, 127.5, 0);
+	color: rgb(255, 127.5, 255);
+	color: rgb(255, 127.5, 0);
+}
+
+test-contrast-adjuster {
+	color: rgb(191.25, 191.25, 0);
+	color: rgb(127.5, 127.5, 0);
+	color: rgb(63.75, 63.75, 0);
+}
+
+test-combination-adjuster {
+	color: rgb(88.14750382701874, 45.50833333333334, 113.64750382701874);
+}
