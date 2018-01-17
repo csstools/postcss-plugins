@@ -1,3 +1,5 @@
+import number from 'big.js';
+
 export default class Color {
 	constructor(color) {
 		this.color = Object(Object(color).color || color);
@@ -97,8 +99,8 @@ export default class Color {
 
 	shade(percentage) {
 		const hwb = color2hwb(this.color);
-		const shade = { hue: 0, whiteness: 1, blackness: 0, colorspace: 'hwb' };
-		const colorspace = 'hwb';
+		const shade = { hue: 0, whiteness: 0, blackness: 100, colorspace: 'hwb' };
+		const colorspace = 'rgb';
 
 		return percentage === undefined
 			? hwb.blackness
@@ -107,8 +109,8 @@ export default class Color {
 
 	tint(percentage) {
 		const hwb = color2hwb(this.color);
-		const tint = { hue: 0, whiteness: 0, blackness: 1, colorspace: 'hwb' };
-		const colorspace = 'hwb';
+		const tint = { hue: 0, whiteness: 100, blackness: 0, colorspace: 'hwb' };
+		const colorspace = 'rgb';
 
 		return percentage === undefined
 			? hwb.blackness
@@ -124,68 +126,23 @@ export default class Color {
 	}
 
 	toHSL() {
-		const color      = color2hsl(this.color);
-		const isOpaque   = color.alpha === 1;
-		const hue        = color.hue;
-		const saturation = round(color.saturation * 100, 4);
-		const lightness  = round(color.lightness * 100, 4);
-		const alpha      = round(color.alpha * 100, 4);
-
-		return `hsl(${hue} ${saturation}% ${lightness}%${isOpaque
-			? ''
-		: ` / ${alpha}%`})`;
+		return color2hslString(this.color);
 	}
 
 	toHWB() {
-		const color     = color2hwb(this.color);
-		const isOpaque  = color.alpha === 1;
-		const hue       = color.hue;
-		const whiteness = round(color.whiteness * 100, 4);
-		const blackness = round(color.blackness * 100, 4);
-		const alpha     = round(color.alpha * 100, 4);
-
-		return `hwb(${hue} ${whiteness}% ${blackness}%${isOpaque
-			? ''
-		: ` / ${alpha}%`})`;
+		return color2hwbString(this.color);
 	}
 
 	toRGB() {
-		const color    = color2rgb(this.color);
-		const isOpaque = color.alpha === 1;
-		const red      = round(color.red * 100, 4);
-		const green    = round(color.green * 100, 4);
-		const blue     = round(color.blue * 100, 4);
-		const alpha    = round(color.alpha * 100, 4);
-
-		return `rgb(${red}% ${green}% ${blue}%${isOpaque
-			? ''
-		: ` / ${alpha}%`})`;
+		return color2rgbString(this.color);
 	}
 
 	toRGBLegacy() {
-		const color    = color2rgb(this.color);
-		const isOpaque = color.alpha === 1;
-		const name     = isOpaque ? 'rgb' : 'rgba';
-		const red      = round(color.red * 255, 0);
-		const green    = round(color.green * 255, 0);
-		const blue     = round(color.blue * 255, 0);
-		const alpha    = round(color.alpha, 4);
-
-		return `${name}(${red}, ${green}, ${blue}${isOpaque
-			? ''
-		: `, ${alpha}`})`;
+		return color2rgbLegacyString(this.color);
 	}
 
-	toString(rawcolorspace) {
-		const colorspace = rawcolorspace || this.color.colorspace;
-
-		const color = colorspace === 'hsl'
-			? this.toHSL()
-		: colorspace === 'hwb'
-			? this.toHWB()
-		: this.toRGB();
-
-		return color;
+	toString() {
+		return color2string(this.color);
 	}
 }
 
@@ -193,17 +150,20 @@ export default class Color {
 /* ========================================================================== */
 
 function blend(base, color, percentage, colorspace, isBlendingAlpha) { // eslint-disable-line max-params
-	const subtraction = 1 - percentage;
+	const addition    = number(percentage).div(100);
+	const subtraction = number(1).minus(addition);
 
 	if (colorspace === 'hsl') {
 		const { hue: h1, saturation: s1, lightness: l1, alpha: a1 } = color2hsl(base);
 		const { hue: h2, saturation: s2, lightness: l2, alpha: a2 } = color2hsl(color);
 
 		const [hue, saturation, lightness, alpha] = [
-			h1 * percentage + h2 * subtraction,
-			s1 * percentage + s2 * subtraction,
-			l1 * percentage + l2 * subtraction,
-			isBlendingAlpha ? a1 * percentage + a2 * subtraction : a1
+			Number(number(h1).times(subtraction).plus(number(h2).times(addition))),
+			Number(number(s1).times(subtraction).plus(number(s2).times(addition))),
+			Number(number(l1).times(subtraction).plus(number(l2).times(addition))),
+			isBlendingAlpha
+				? Number(number(a1).times(subtraction).plus(number(a2).times(addition)))
+			: a1
 		];
 
 		return { hue, saturation, lightness, alpha, colorspace: 'hsl' };
@@ -212,10 +172,10 @@ function blend(base, color, percentage, colorspace, isBlendingAlpha) { // eslint
 		const { hue: h2, whiteness: w2, blackness: b2, alpha: a2 } = color2hwb(color);
 
 		const [hue, whiteness, blackness, alpha] = [
-			h1 * percentage + h2 * subtraction,
-			w1 * percentage + w2 * subtraction,
-			b1 * percentage + b2 * subtraction,
-			isBlendingAlpha ? a1 * percentage + a2 * subtraction : a1
+			Number(number(h1).times(subtraction).plus(number(h2).times(addition))),
+			Number(number(w1).times(subtraction).plus(number(w2).times(addition))),
+			Number(number(b1).times(subtraction).plus(number(b2).times(addition))),
+			isBlendingAlpha ? Number(number(a1).times(subtraction).plus(number(a2).times(addition))) : a1
 		];
 
 		return { hue, whiteness, blackness, alpha, colorspace: 'hwb' };
@@ -224,10 +184,10 @@ function blend(base, color, percentage, colorspace, isBlendingAlpha) { // eslint
 		const { red: r2, green: g2, blue: b2, alpha: a2 } = color2rgb(color);
 
 		const [red, green, blue, alpha] = [
-			r1 * percentage + r2 * subtraction,
-			g1 * percentage + g2 * subtraction,
-			b1 * percentage + b2 * subtraction,
-			isBlendingAlpha ? a1 * percentage + a2 * subtraction : a1
+			Number(number(r1).times(subtraction).plus(number(r2).times(addition))),
+			Number(number(g1).times(subtraction).plus(number(g2).times(addition))),
+			Number(number(b1).times(subtraction).plus(number(b2).times(addition))),
+			isBlendingAlpha ? Number(number(a1).times(subtraction).plus(number(a2).times(addition))) : a1
 		];
 
 		return { red, green, blue, alpha, colorspace: 'rgb' };
@@ -246,30 +206,35 @@ function assign(base, channels) {
 			const isHue = channel === 'hue';
 			const isRGB = !isHue && blueGreenRedMatch.test(channel);
 
-			// value of the channel
-			const adjustment = channels[channel];
-
-			// value limitations
-			const min = 0;
-			const max = isHue ? 360 : 1;
-
-			// updated value
-			const value = Math.min(Math.max(parseFloat(adjustment), min), max);
+			// normalized value of the channel
+			const value = normalize(channels[channel], channel);
 
 			// assign channel to new object
-			if (isHue) {
-				color.hue = value;
-			} else {
-				color[channel] = value;
+			color[channel] = value;
 
-				color.hue = isRGB
-					? rgb2hue(color.red, color.green, color.blue, base.hue || 0)
-				: base.hue;
+			if (isRGB) {
+				// conditionally preserve the hue
+				color.hue = rgb2hue(color.red, color.green, color.blue, base.hue || 0);
 			}
 		}
 	);
 
 	return color;
+}
+
+function normalize(value, channel) {
+	// detect channel
+	const isHue = channel === 'hue';
+
+	// value limitations
+	const min = 0;
+	const max = isHue ? 360 : 100;
+
+	const modifiedValue = Math.min(Math.max(isHue
+		? number(value).mod(360)
+	: value, min), max);
+
+	return modifiedValue
 }
 
 /* Convert colors
@@ -302,16 +267,28 @@ function color2rgb(color) {
 /* Convert HSL to RGB
 /* ========================================================================== */
 
-function hsl2rgb({ hue, saturation, lightness, alpha = 1 }) {
-	const t2 = lightness <= 0.5
-		? lightness * (saturation + 1)
-	: lightness + saturation - lightness * saturation;
+function hsl2rgb({ hue, saturation, lightness, alpha = 100 }) {
+	const t2 = lightness <= 50
+		? Number(
+			number(lightness).div(100).times(
+				number(saturation).div(100).plus(1)
+			)
+		)
+	: Number(
+		number(lightness).div(100).plus(
+			number(saturation).div(100)
+		).minus(
+			number(lightness).div(100).times(
+				number(saturation).div(100)
+			)
+		)
+	);
 
-	const t1 = lightness * 2 - t2;
+	const t1 = Number(number(lightness).div(100).times(2).minus(t2));
 
-	const red   = hue2rgb(t1, t2, hue / 60 + 2);
-	const green = hue2rgb(t1, t2, hue / 60);
-	const blue  = hue2rgb(t1, t2, hue / 60 - 2);
+	const red   = hue2channel(t1, t2, Number(number(hue).div(60).plus(2)));
+	const green = hue2channel(t1, t2, Number(number(hue).div(60)));
+	const blue  = hue2channel(t1, t2, Number(number(hue).div(60).minus(2)));
 
 	return { hue, red, green, blue, alpha, colorspace: 'rgb' };
 }
@@ -319,16 +296,26 @@ function hsl2rgb({ hue, saturation, lightness, alpha = 1 }) {
 /* Convert HWB to RGB
 /* ========================================================================== */
 
-function hwb2rgb({ hue, whiteness, blackness, alpha = 1 }) {
-	const ratio = whiteness + blackness;
-	const rwhiteness = ratio > 1 ? whiteness / ratio : whiteness;
-	const rblackness = ratio > 1 ? blackness / ratio : blackness;
+function hwb2rgb({ hue, whiteness, blackness, alpha = 100 }) {
+	const ratio = Number(number(whiteness).plus(blackness));
+	const rwhiteness = ratio > 100 ? Number(number(whiteness).div(ratio)) : whiteness;
+	const rblackness = ratio > 100 ? Number(number(blackness).div(ratio)) : blackness;
+	const value = Number(number(100).minus(rblackness));
+	const hexagon = number(6).times(hue).div(360);
 
-	const value = 1 - rblackness;
-	const hexagon = 6 * hue / 360;
 	const hexagonFloor = Math.floor(hexagon);
-	const hexagonF = hexagonFloor % 6 ? 1 - (hexagon - hexagonFloor) : hexagon - hexagonFloor;
-	const interpolation = rwhiteness + hexagonF * (value - rwhiteness);
+
+	const hexagonF = hexagonFloor % 6
+		? number(1).minus(
+			hexagon.minus(hexagonFloor)
+		)
+	: hexagon.minus(hexagonFloor);
+
+	const interpolation = Number(number(rwhiteness).plus(
+		hexagonF.times(
+			number(value).minus(rwhiteness)
+		)
+	));
 
 	const [red, green, blue] = hexagonFloor % 6 === 5
 		? [value, rwhiteness, interpolation]
@@ -348,11 +335,11 @@ function hwb2rgb({ hue, whiteness, blackness, alpha = 1 }) {
 /* Convert RGB to HSL
 /* ========================================================================== */
 
-function rgb2hsl({ red, green, blue, alpha = 1 }, fallback = 0) { // eslint-disable-line max-params
+function rgb2hsl({ red, green, blue, alpha = 100 }, fallback = 0) { // eslint-disable-line max-params
 	const hue        = rgb2hue(red, green, blue, fallback);
 	const whiteness  = rgb2whiteness(red, green, blue);
 	const value      = rgb2value(red, green, blue);
-	const lightness   = wv2lightness(whiteness, value);
+	const lightness  = wv2lightness(whiteness, value);
 	const saturation = lvw2saturation(lightness, value, whiteness);
 
 	return { hue, saturation, lightness, alpha, colorspace: 'hsl' };
@@ -361,11 +348,11 @@ function rgb2hsl({ red, green, blue, alpha = 1 }, fallback = 0) { // eslint-disa
 /* Convert RGB to HWB
 /* ========================================================================== */
 
-function rgb2hwb({ red, green, blue, alpha = 1 }, fallback = 0) { // eslint-disable-line max-params
+function rgb2hwb({ red, green, blue, alpha = 100 }, fallback = 0) { // eslint-disable-line max-params
 	const hue       = rgb2hue(red, green, blue, fallback);
 	const whiteness = rgb2whiteness(red, green, blue);
 	const value     = rgb2value(red, green, blue);
-	const blackness = 1 - value;
+	const blackness = Number(number(100).minus(value));
 
 	return { hue, whiteness, blackness, alpha, colorspace: 'hwb' };
 }
@@ -373,18 +360,22 @@ function rgb2hwb({ red, green, blue, alpha = 1 }, fallback = 0) { // eslint-disa
 /* Convert Hue to RGB
 /* ========================================================================== */
 
-function hue2rgb(t1, t2, hue) {
-	const huerange = hue < 0 ? hue + 6 : hue >= 6 ? hue - 6 : hue;
+function hue2channel(t1, t2, hue) {
+	const huerange = hue < 0
+		? number(hue).plus(6)
+	: hue >= 6
+		? number(hue).minus(6)
+	: number(hue);
 
 	const rgb = huerange < 1
-		? (t2 - t1) * hue + t1
+		? Number(number(number(t2).minus(t1)).times(hue).plus(t1))
 	: hue < 3
 		? t2
 	: hue < 4
-		? (t2 - t1) * (4 - hue) + t1
+		? Number(number(number(t2).minus(t1)).times(number(4).minus(hue)).plus(t1))
 	: t1;
 
-	return rgb;
+	return Number(number(rgb).times(100));
 }
 
 /* Convert RGB to Hue
@@ -399,10 +390,10 @@ function rgb2hue(red, green, blue, fallback) { // eslint-disable-line max-params
 		return fallback;
 	} else {
 		const segment = value === red
-			? (green - blue) / chroma
+			? number(green).minus(blue).div(chroma)
 		: value === green
-			? (blue - red) / chroma
-		: (red - green) / chroma;
+			? number(blue).minus(red).div(chroma)
+		: number(red).minus(green).div(chroma);
 
 		const shift = value === red
 			? segment < 0
@@ -412,7 +403,7 @@ function rgb2hue(red, green, blue, fallback) { // eslint-disable-line max-params
 			? 120 / 60
 		: 240 / 60;
 
-		const hue = (segment + shift) * 60;
+		const hue = Number(number(segment).plus(shift).times(60));
 
 		return hue;
 	}
@@ -433,7 +424,7 @@ function contrast(color, percentage) {
 		// hwb(X, 100%, 0%), where X is the hue angle of the color
 		? { hue: hwb.hue, whiteness: 100, blackness: 0, alpha: hwb.alpha, colorspace: 'hwb' }
 	// otherwise, hwb(X, 0%, 100%), where X is the hue angle of the color
-	: { hue: hwb.hue, whiteness: 0, blackness: 1, alpha: hwb.alpha, colorspace: 'hwb' };
+	: { hue: hwb.hue, whiteness: 0, blackness: 100, alpha: hwb.alpha, colorspace: 'hwb' };
 
 	// contrast ratio
 	const contrastRatio = colors2contrast(color, maxContrastColor);
@@ -457,9 +448,9 @@ function colors2contrast(color1, color2) {
 
 	return l1 > l2
 		// if l1 is the relative luminance of the lighter of the colors
-		? (l1 + 0.05) / (l2 + 0.05)
+		? Number(number(l1).plus(0.05).div(number(l2).plus(0.05)))
 	// otherwise, if l2 is the relative luminance of the lighter of the colors
-	: (l2 + 0.05) / (l2 + 0.05);
+	: Number(number(l2).plus(0.05).div(number(l2).plus(0.05)));
 }
 
 function rgb2luminance(red, green, blue) {
@@ -470,12 +461,16 @@ function rgb2luminance(red, green, blue) {
 	];
 
 	// https://drafts.csswg.org/css-color/#luminance
-	return 0.2126 * redLuminance + 0.7152 * greenLuminance + 0.0722 * blueLuminance;
+	const luminance = Number(number(0.2126).times(redLuminance).plus(number(0.7152).times(greenLuminance)).plus(number(0.0722).times(blueLuminance)));
+
+	return luminance;
 }
 
 function channel2luminance(value) {
 	// https://drafts.csswg.org/css-color/#luminance
-	return value <= 0.03928 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4);
+	const luminance = value <= 0.03928 ? Number(number(value).div(12.92)) : Math.pow(number(value).plus(0.055).div(1.055), 2.4);
+
+	return luminance;
 }
 
 // return the smallest contrast ratio from a color and a maximum contrast (credit: @thetalecrafter)
@@ -483,18 +478,18 @@ function colors2contrastRatioColor(hwb, maxHWB) {
 	const modifiedHWB = Object.assign({}, hwb);
 
 	// values to be used for linear interpolations in HWB space
-	let minW = hwb.whiteness;
-	let minB = hwb.blackness;
-	let maxW = maxHWB.whiteness;
-	let maxB = maxHWB.blackness;
+	let minW = number(hwb.whiteness);
+	let minB = number(hwb.blackness);
+	let maxW = number(maxHWB.whiteness);
+	let maxB = number(maxHWB.blackness);
 
 	// find the color with the smallest contrast ratio with the base color that is greater than 4.5
-	while (Math.abs(minW - maxW) > 1 || Math.abs(minB - maxB) > 1) {
-		const midW = Math.round((maxW + minW) / 2);
-		const midB = Math.round((maxB + minB) / 2);
+	while (Number(minW.minus(maxW).abs()) > 100 || Number(minB.minus(maxB).abs()) > 100) {
+		const midW = maxW.plus(minW).div(2).round();
+		const midB = maxB.plus(minB).div(2).round();
 
-		modifiedHWB.whiteness = midW;
-		modifiedHWB.blackness = midB;
+		modifiedHWB.whiteness = Number(midW);
+		modifiedHWB.blackness = Number(midB);
 
 		if (colors2contrast(modifiedHWB, hwb) > 4.5) {
 			maxW = midW;
@@ -526,14 +521,14 @@ function rgb2value(red, green, blue) {
 /* ========================================================================== */
 
 function wv2lightness(whiteness, value) {
-	return (whiteness + value) / 2;
+	return Number(number(whiteness).plus(value).div(2));
 }
 
 /* Convert Value and Whiteness to Chroma
 /* ========================================================================== */
 
 function vw2chroma(value, whiteness) {
-	return value - whiteness;
+	return Number(number(value).minus(whiteness));
 }
 
 /* Convert Lightness, Value, and Whiteness to Saturation
@@ -542,19 +537,76 @@ function vw2chroma(value, whiteness) {
 function lvw2saturation(lightness, value, whiteness) {
 	return whiteness === value
 		? 0
-	: lightness < 0.5
-		? (value - whiteness) / (value + whiteness)
-	: (value - whiteness) / (2 - value - whiteness);
-}
-
-/* Round to decimal place
-/* ========================================================================== */
-
-function round(value, decimals) {
-	return Number(`${Math.round(`${value}e${decimals}`)}e-${decimals}`);
+	: lightness < 50
+		? Number(number(value).minus(whiteness).div(number(value).plus(whiteness)).times(100))
+	: Number(number(value).minus(whiteness).div(number(200).minus(value).minus(whiteness)).times(100));
 }
 
 /* Match
 /* ========================================================================== */
 
 const blueGreenRedMatch = /^(blue|green|red)$/i;
+
+/* Stringifiers
+/* ========================================================================== */
+
+function color2string(color) {
+	return color.colorspace === 'hsl'
+		? color2hslString(color)
+	: color.colorspace === 'hwb'
+		? color2hwbString(color)
+	: color2rgbString(color);
+}
+
+function color2hslString(color) {
+	const hsl        = color2hsl(color);
+	const isOpaque   = hsl.alpha === 100;
+	const hue        = hsl.hue;
+	const saturation = number(hsl.saturation).round(10);
+	const lightness  = number(hsl.lightness).round(10);
+	const alpha      = number(hsl.alpha).round(10);
+
+	return `hsl(${hue} ${saturation}% ${lightness}%${isOpaque
+		? ''
+	: ` / ${alpha}%`})`;
+}
+
+function color2hwbString(color) {
+	const hwb       = color2hwb(color);
+	const isOpaque  = hwb.alpha === 100;
+	const hue       = hwb.hue;
+	const whiteness = number(hwb.whiteness).round(10);
+	const blackness = number(hwb.blackness).round(10);
+	const alpha     = number(hwb.alpha).round(10);
+
+	return `hwb(${hue} ${whiteness}% ${blackness}%${isOpaque
+		? ''
+	: ` / ${alpha}%`})`;
+}
+
+function color2rgbString(color) {
+	const rgb      = color2rgb(color);
+	const isOpaque = rgb.alpha === 100;
+	const red      = number(rgb.red).round(10);
+	const green    = number(rgb.green).round(10);
+	const blue     = number(rgb.blue).round(10);
+	const alpha    = number(rgb.alpha).round(10);
+
+	return `rgb(${red}% ${green}% ${blue}%${isOpaque
+		? ''
+	: ` / ${alpha}%`})`;
+}
+
+function color2rgbLegacyString(color) {
+	const rgb      = color2rgb(color);
+	const isOpaque = rgb.alpha === 100;
+	const name     = isOpaque ? 'rgb' : 'rgba';
+	const red      = number(rgb.red).times(2.55).round(0);
+	const green    = number(rgb.green).times(2.55).round(0);
+	const blue     = number(rgb.blue).times(2.55).round(0);
+	const alpha    = number(rgb.alpha).div(100).round(10);
+
+	return `${name}(${red}, ${green}, ${blue}${isOpaque
+		? ''
+	: `, ${alpha}`})`;
+}

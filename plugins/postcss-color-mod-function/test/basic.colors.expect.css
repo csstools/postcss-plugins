@@ -18,26 +18,29 @@ test-color-mod {
 	color: hsl(0 100% 50%);
 	color: hwb(0 0% 0%);
 	color: hwb(0 0% 0%);
+	color: hwb(0 0% 0%);
 	color: hsl(0 100% 50%);
 	color: hsl(0 100% 50%);
 }
 
 test-red-green-blue-alpha-adjuster {
-	color: rgb(100% 0% 7.8431%);
+	color: rgb(100% 0% 7.8431372549%);
 	color: rgb(100% 0% 20%);
-	color: rgb(100% 7.8431% 0%);
+	color: rgb(100% 7.8431372549% 0%);
 	color: rgb(100% 20% 0%);
-	color: rgb(92.1569% 0% 0%);
+	color: rgb(92.1568627451% 0% 0%);
 	color: rgb(80% 0% 0%);
-	color: rgb(100% 0% 0% / 20%);
+	color: rgb(49.8039215686% 0% 0%);
+	color: rgb(100% 0% 0% / 50%);
+	color: rgb(100% 0% 0% / 25%);
 }
 
 test-rgb-adjuster {
 	color: rgb(100% 100% 0%);
 	color: rgb(100% 100% 0%);
-	color: rgb(0% 0% 0%);
-	color: rgb(0% 0% 0%);
-	color: rgb(50% 0% 0%);
+	color: rgb(40% 0% 0%);
+	color: rgb(40% 0% 0%);
+	color: rgb(40% 20% 60%);
 }
 
 test-hue-adjuster {
@@ -45,37 +48,43 @@ test-hue-adjuster {
 	color: hsl(20 100% 50%);
 	color: hsl(20 100% 50%);
 	color: hsl(20 100% 50%);
-	color: hsl(340 100% 50%);
-	color: hsl(340 100% 50%);
+	color: hsl(0 100% 50%);
+	color: hsl(0 100% 50%);
 	color: hsl(0 100% 50%);
 	color: hsl(0 100% 50%);
 }
 
 test-lightness-saturation-adjuster {
+	color: hsl(0 100% 50%);
 	color: hsl(0 100% 20%);
 	color: hsl(0 100% 70%);
 	color: hsl(0 100% 30%);
-	color: hsl(0 100% 10%);
-	color: hsl(0 20% 50%);
-	color: hsl(0 100% 50%);
-	color: hsl(0 80% 50%);
-	color: hsl(0 20% 50%);
+	color: hsl(0 100% 75%);
+	color: hsl(60 20% 91.1764705882%);
+	color: hsl(60 75.5555555556% 91.1764705882%);
+	color: hsl(60 35.5555555556% 91.1764705882%);
+	color: hsl(60 83.3333333333% 91.1764705882%);
 }
 
 test-blackness-whiteness-adjuster {
-	color: hwb(0 0% 20%);
-	color: hwb(0 0% 20%);
-	color: hwb(0 0% 0%);
-	color: hwb(0 0% 0%);
-	color: hwb(0 20% 0%);
-	color: hwb(0 20% 0%);
-	color: hwb(0 0% 0%);
-	color: hwb(0 0% 0%);
+	color: hwb(60 86.2745098039% 20%);
+	color: hwb(60 86.2745098039% 23.9215686275%);
+	color: hwb(60 86.2745098039% 2.9215686275%);
+	color: hwb(60 86.2745098039% 78.431372549%);
+	color: hwb(60 20% 3.9215686275%);
+	color: hwb(60 87.2745098039% 3.9215686275%);
+	color: hwb(60 66.2745098039% 3.9215686275%);
+	color: hwb(60 43.137254902% 3.9215686275%);
 }
 
 test-tint-shade-adjuster {
-	color: hwb(0 0% 80%);
-	color: hwb(0 80% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 0% 0%);
+	color: rgb(100% 100% 100%);
+	color: rgb(0% 0% 0%);
+	color: rgb(100% 20% 20%);
+	color: rgb(80% 0% 0%);
 }
 
 test-blend-adjuster {
@@ -86,11 +95,24 @@ test-blend-adjuster {
 }
 
 test-contrast-adjuster {
-	color: hwb(60 0% 25%);
-	color: hwb(60 0% 50%);
+	color: hwb(60 0% 100%);
 	color: hwb(60 0% 75%);
+	color: hwb(60 0% 50%);
+	color: hwb(60 0% 25%);
+	color: hwb(60 0% 0%);
 }
 
 test-combination-adjuster {
-	color: rgb(34.5676% 17.8464% 44.5676%);
+	color: rgb(41.2352941176% 31.2352941176% 80%);
+}
+
+test-sameness {
+	color: rgb(96.0784313725% 96.0784313725% 86.2745098039%);
+	color: hsl(60 55.5555555556% 91.1764705882%);
+	color: hsl(60 55.5555555556% 91.1764705882%);
+	color: hsl(60 55.5555555556% 91.1764705882%);
+	color: rgb(96.0784313725% 96.0784313725% 86.2745098039%);
+	color: rgb(96.0784313725% 96.0784313725% 86.2745098039%);
+	color: rgb(96.0784313725% 96.0784313725% 86.2745098039%);
+	color: hsl(60 55.5555555556% 91.1764705882%);
 }

@@ -16,6 +16,7 @@ test-color-mod {
 	color: color-mod(hsl(0, 100%, 50%));
 	color: color-mod(hsl(0, 100%, 50%, 1));
 	color: color-mod(hsla(0, 100%, 50%, 1));
+	color: color-mod(hwb(0 0 0));
 	color: color-mod(hwb(0 0% 0%));
 	color: color-mod(hwb(0 0% 0% / 100%));
 	color: color-mod(0);
@@ -29,15 +30,17 @@ test-red-green-blue-alpha-adjuster {
 	color: color-mod(red green(+ 20%));
 	color: color-mod(red red(- 20));
 	color: color-mod(red red(- 20%));
-	color: color-mod(red alpha(* 20%));
+	color: color-mod(red red(- 128));
+	color: color-mod(red alpha(- 50%));
+	color: color-mod(red alpha(- .75));
 }
 
 test-rgb-adjuster {
 	color: color-mod(red rgb(+ 0 255 0));
 	color: color-mod(red rgb(+ #0f0));
-	color: color-mod(red rgb(- 255 0 0));
-	color: color-mod(red rgb(- #f00));
-	color: color-mod(red rgb(* 50%));
+	color: color-mod(red rgb(- 60% 0 0));
+	color: color-mod(red rgb(- #900));
+	color: color-mod(rebeccapurple rgb(* 1%));
 }
 
 test-hue-adjuster {
@@ -52,28 +55,34 @@ test-hue-adjuster {
 }
 
 test-lightness-saturation-adjuster {
+	color: color-mod(red lightness(50%));
 	color: color-mod(red lightness(20%));
 	color: color-mod(red lightness(+ 20%));
 	color: color-mod(red lightness(- 20%));
-	color: color-mod(red lightness(* 20%));
-	color: color-mod(red saturation(20%));
-	color: color-mod(red saturation(+ 20%));
-	color: color-mod(red saturation(- 20%));
-	color: color-mod(red saturation(* 20%));
+	color: color-mod(red lightness(* 1.5%));
+	color: color-mod(beige saturation(20%));
+	color: color-mod(beige saturation(+ 20%));
+	color: color-mod(beige saturation(- 20%));
+	color: color-mod(beige saturation(* 1.5%));
 }
 
 test-blackness-whiteness-adjuster {
-	color: color-mod(red blackness(20%));
-	color: color-mod(red blackness(+ 20%));
-	color: color-mod(red blackness(- 20%));
-	color: color-mod(red blackness(* 20%));
-	color: color-mod(red whiteness(20%));
-	color: color-mod(red whiteness(+ 20%));
-	color: color-mod(red whiteness(- 20%));
-	color: color-mod(red whiteness(* 20%));
+	color: color-mod(beige blackness(20%));
+	color: color-mod(beige blackness(+ 20%));
+	color: color-mod(beige blackness(- 1%));
+	color: color-mod(beige blackness(* 20%));
+	color: color-mod(beige whiteness(20%));
+	color: color-mod(beige whiteness(+ 1%));
+	color: color-mod(beige whiteness(- 20%));
+	color: color-mod(beige whiteness(* .5%));
 }
 
 test-tint-shade-adjuster {
+	color: color-mod(red);
+	color: color-mod(red tint(0%));
+	color: color-mod(red shade(0%));
+	color: color-mod(red tint(100%));
+	color: color-mod(red shade(100%));
 	color: color-mod(red tint(20%));
 	color: color-mod(red shade(20%));
 }
@@ -86,11 +95,24 @@ test-blend-adjuster {
 }
 
 test-contrast-adjuster {
+	color: color-mod(yellow contrast(0%));
 	color: color-mod(yellow contrast(25%));
 	color: color-mod(yellow contrast(50%));
 	color: color-mod(yellow contrast(75%));
+	color: color-mod(yellow contrast(100%));
 }
 
 test-combination-adjuster {
 	color: color-mod(color-mod(0deg blue(10%)) rgb(+ 0 10 0) hue(+ 10deg) tint(10%) lightness(+ 10%) saturation(+ 10%) blend(rebeccapurple 50%));
+}
+
+test-sameness {
+	color: color-mod(beige);
+	color: color-mod(beige hue(+ 0deg));
+	color: color-mod(beige saturation(+ 0%));
+	color: color-mod(beige lightness(+ 0%));
+	color: color-mod(beige alpha(1));
+	color: color-mod(beige alpha(+ 0));
+	color: color-mod(beige alpha(+ 0%));
+	color: color-mod(beige blend(beige 0% hsl));
 }
