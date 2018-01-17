@@ -23,11 +23,11 @@ test-color-mod {
 }
 
 test-red-green-blue-alpha-adjuster {
-	color: rgb(100% 0% 7.8431372549019605%);
+	color: rgb(100% 0% 7.8431%);
 	color: rgb(100% 0% 20%);
-	color: rgb(100% 7.8431372549019605% 0%);
+	color: rgb(100% 7.8431% 0%);
 	color: rgb(100% 20% 0%);
-	color: rgb(92.15686274509804% 0% 0%);
+	color: rgb(92.1569% 0% 0%);
 	color: rgb(80% 0% 0%);
 	color: rgb(100% 0% 0% / 20%);
 }
@@ -92,5 +92,5 @@ test-contrast-adjuster {
 }
 
 test-combination-adjuster {
-	color: rgb(34.56764855961519% 17.846405228758172% 44.56764855961519%);
+	color: rgb(34.5676% 17.8464% 44.5676%);
 }

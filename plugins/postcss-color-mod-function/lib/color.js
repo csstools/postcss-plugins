@@ -127,9 +127,9 @@ export default class Color {
 		const color      = color2hsl(this.color);
 		const isOpaque   = color.alpha === 1;
 		const hue        = color.hue;
-		const saturation = color.saturation * 100;
-		const lightness  = color.lightness * 100;
-		const alpha      = color.alpha * 100;
+		const saturation = round(color.saturation * 100, 4);
+		const lightness  = round(color.lightness * 100, 4);
+		const alpha      = round(color.alpha * 100, 4);
 
 		return `hsl(${hue} ${saturation}% ${lightness}%${isOpaque
 			? ''
@@ -140,9 +140,9 @@ export default class Color {
 		const color     = color2hwb(this.color);
 		const isOpaque  = color.alpha === 1;
 		const hue       = color.hue;
-		const whiteness = color.whiteness * 100;
-		const blackness = color.blackness * 100;
-		const alpha     = color.alpha * 100;
+		const whiteness = round(color.whiteness * 100, 4);
+		const blackness = round(color.blackness * 100, 4);
+		const alpha     = round(color.alpha * 100, 4);
 
 		return `hwb(${hue} ${whiteness}% ${blackness}%${isOpaque
 			? ''
@@ -152,10 +152,10 @@ export default class Color {
 	toRGB() {
 		const color    = color2rgb(this.color);
 		const isOpaque = color.alpha === 1;
-		const red      = color.red * 100;
-		const green    = color.green * 100;
-		const blue     = color.blue * 100;
-		const alpha    = color.alpha * 100;
+		const red      = round(color.red * 100, 4);
+		const green    = round(color.green * 100, 4);
+		const blue     = round(color.blue * 100, 4);
+		const alpha    = round(color.alpha * 100, 4);
 
 		return `rgb(${red}% ${green}% ${blue}%${isOpaque
 			? ''
@@ -166,10 +166,10 @@ export default class Color {
 		const color    = color2rgb(this.color);
 		const isOpaque = color.alpha === 1;
 		const name     = isOpaque ? 'rgb' : 'rgba';
-		const red      = color.red * 255;
-		const green    = color.green * 255;
-		const blue     = color.blue * 255;
-		const alpha    = color.alpha;
+		const red      = round(color.red * 255, 0);
+		const green    = round(color.green * 255, 0);
+		const blue     = round(color.blue * 255, 0);
+		const alpha    = round(color.alpha, 4);
 
 		return `${name}(${red}, ${green}, ${blue}${isOpaque
 			? ''
@@ -545,6 +545,13 @@ function lvw2saturation(lightness, value, whiteness) {
 	: lightness < 0.5
 		? (value - whiteness) / (value + whiteness)
 	: (value - whiteness) / (2 - value - whiteness);
+}
+
+/* Round to decimal place
+/* ========================================================================== */
+
+function round(value, decimals) {
+	return Number(`${Math.round(`${value}e${decimals}`)}e-${decimals}`);
 }
 
 /* Match
