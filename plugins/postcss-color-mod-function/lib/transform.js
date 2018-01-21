@@ -1,8 +1,7 @@
 // tooling
+import { convertDtoD, convertGtoD, convertRtoD, convertTtoD, convertNtoRGB } from './conversions';
 import Color from './color';
 import manageUnresolved from './manage-unresolved';
-import names from 'color-name';
-import number from 'big.js';
 import parser from 'postcss-values-parser';
 
 /* Transform AST
@@ -52,10 +51,14 @@ function transformColor(node, opts) {
 // return a transformed rgb/rgba color function
 function transformRGBFunction(node, opts) {
 	const [red, green, blue, alpha = 100] = transformArgsByParams(node, [
-		// [ <percentage>{3} | <rgb-value>{3} ] [ / <alpha-value> ]?
-		[transformRGBValue, transformRGBValue, transformRGBValue, isSlash, transformAlpha],
-		// <number>#{3} [ , <alpha-value> ]? ]
-		[transformRGBValue, isComma, transformRGBValue, isComma, transformRGBValue, isComma, transformAlpha]
+		// <percentage> <percentage> <percentage> [ , <alpha-value> ]?
+		[transformPercentage, transformPercentage, transformPercentage, isSlash, transformAlpha],
+		// <number> <number> <number> [ , <alpha-value> ]?
+		[transformRGBNumber, transformRGBNumber, transformRGBNumber, isSlash, transformAlpha],
+		// <percentage> , <percentage> , <percentage> [ , <alpha-value> ]?
+		[transformPercentage, isComma, transformPercentage, isComma, transformPercentage, isComma, transformAlpha],
+		// <number> , <number> , <number> [ , <alpha-value> ]?
+		[transformRGBNumber, isComma, transformRGBNumber, isComma, transformRGBNumber, isComma, transformAlpha]
 	]);
 
 	if (red !== undefined) {
@@ -70,9 +73,9 @@ function transformRGBFunction(node, opts) {
 // return a transformed hsl/hsla color function
 function transformHSLFunction(node, opts) {
 	const [hue, saturation, lightness, alpha = 100] = transformArgsByParams(node, [
-		// <hue> <percentage>{2} [ / <alpha-value> ]?
+		// <hue> <percentage> <percentage> [ / <alpha-value> ]?
 		[transformHue, transformPercentage, transformPercentage, isSlash, transformAlpha],
-		// hue, <percentage>#{2} [ , <alpha-value> ]? ]
+		// <hue> , <percentage> , <percentage> [ , <alpha-value> ]?
 		[transformHue, isComma, transformPercentage, isComma, transformPercentage, isComma, transformAlpha]
 	]);
 
@@ -136,10 +139,10 @@ function transformHexColor(node, opts) {
 		const [r, g, b, a, rr, gg, bb, aa] = (node.value.match(hexColorMatch) || []).slice(1);
 
 		const color = new Color({
-			red:   rr !== undefined ? Number(number(parseInt(rr, 16)).div(2.55)) : r !== undefined ? Number(number(parseInt(r + r, 16)).div(2.55)) : 0,
-			green: gg !== undefined ? Number(number(parseInt(gg, 16)).div(2.55)) : g !== undefined ? Number(number(parseInt(g + g, 16)).div(2.55)) : 0,
-			blue:  bb !== undefined ? Number(number(parseInt(bb, 16)).div(2.55)) : b !== undefined ? Number(number(parseInt(b + b, 16)).div(2.55)) : 0,
-			alpha: aa !== undefined ? Number(number(parseInt(aa, 16)).div(2.55)) : a !== undefined ? Number(number(parseInt(a + a, 16)).div(2.55)) : 100
+			red:   rr !== undefined ? parseInt(rr, 16) / 2.55 : r !== undefined ? parseInt(r + r, 16) / 2.55 : 0,
+			green: gg !== undefined ? parseInt(gg, 16) / 2.55 : g !== undefined ? parseInt(g + g, 16) / 2.55 : 0,
+			blue:  bb !== undefined ? parseInt(bb, 16) / 2.55 : b !== undefined ? parseInt(b + b, 16) / 2.55 : 0,
+			alpha: aa !== undefined ? parseInt(aa, 16) / 2.55 : a !== undefined ? parseInt(a + a, 16) / 2.55 : 100
 		});
 
 		return color;
@@ -152,12 +155,12 @@ function transformHexColor(node, opts) {
 function transformNamedColor(node, opts) {
 	if (isNamedColor(node)) {
 		// <named-color>
-		const [red, green, blue] = names[node.value];
+		const [red, green, blue] = convertNtoRGB(node.value);
 
 		const color = new Color({
-			red: Number(number(red).div(2.55)),
-			green: Number(number(green).div(2.55)),
-			blue: Number(number(blue).div(2.55)),
+			red: red / 2.55,
+			green: green / 2.55,
+			blue: blue / 2.55,
 			alpha: 100,
 			colorspace: 'rgb'
 		});
@@ -201,21 +204,27 @@ function transformColorByAdjusters(color, adjusterNodes, opts) {
 // return a transformed color using a/alpha/blue/green/red adjustments
 function transformAlphaBlueGreenRedAdjuster(base, node, opts) {
 	const [operatorOrValue, adjustment] = transformArgsByParams(node, alphaMatch.test(node.value)
+			// a/alpha adjustments
 			? [
 				// [ + | - ] <alpha-value>
 				[transformMinusPlusOperator, transformAlpha],
-				// * <alpha-value>
+				// * <percentage>
 				[transformTimesOperator, transformPercentage],
 				// <alpha-value>
 				[transformAlpha]
 			]
+		// blue/green/red adjustments
 		: [
-			// [ + | - ] <rgb-value>
-			[transformMinusPlusOperator, transformRGBValue],
+			// [ + | - ] <percentage>
+			[transformMinusPlusOperator, transformPercentage],
+			// [ + | - ] <number>
+			[transformMinusPlusOperator, transformRGBNumber],
 			// * <percentage>
 			[transformTimesOperator, transformPercentage],
-			// <rgb-value>
-			[transformRGBValue]
+			// <percentage>
+			[transformPercentage],
+			// <number>
+			[transformRGBNumber]
 		]
 	);
 
@@ -223,19 +232,19 @@ function transformAlphaBlueGreenRedAdjuster(base, node, opts) {
 		// normalized channel name
 		const channel = node.value.toLowerCase().replace(alphaMatch, 'alpha');
 
-		const existingValue = number(base[channel]());
+		const existingValue = base[channel]();
 
 		const modifiedValue = adjustment !== undefined
 			? operatorOrValue === '+'
-				? existingValue.plus(adjustment)
+				? existingValue + Number(adjustment)
 			: operatorOrValue === '-'
-				? existingValue.minus(adjustment)
+				? existingValue - Number(adjustment)
 			: operatorOrValue === '*'
-				? existingValue.times(adjustment)
-			: adjustment
-		: operatorOrValue;
+				? existingValue * Number(adjustment)
+			: Number(adjustment)
+		: Number(operatorOrValue);
 
-		const modifiedColor = base[channel](Number(modifiedValue));
+		const modifiedColor = base[channel](modifiedValue);
 
 		return modifiedColor;
 	} else {
@@ -246,10 +255,10 @@ function transformAlphaBlueGreenRedAdjuster(base, node, opts) {
 // return a transformed color using an rgb adjustment
 function transformRGBAdjuster(base, node, opts) {
 	const [arg1, arg2, arg3, arg4] = transformArgsByParams(node, [
-			// [ + | - ] <number> <number> <number>
-			[transformMinusPlusOperator, transformRGBNumber, transformRGBNumber, transformRGBNumber],
 			// [ + | - ] <percentage> <percentage> <percentage>
 			[transformMinusPlusOperator, transformPercentage, transformPercentage, transformPercentage],
+			// [ + | - ] <number> <number> <number>
+			[transformMinusPlusOperator, transformRGBNumber, transformRGBNumber, transformRGBNumber],
 			// [ + | - ] <hash-token>
 			[transformMinusPlusOperator, transformHexColor],
 			// [ * ] <percentage>
@@ -260,36 +269,36 @@ function transformRGBAdjuster(base, node, opts) {
 	if (arg2 !== undefined && arg2.color) {
 		const modifiedColor = base.rgb(
 			arg1 === '+'
-				? Number(number(base.red()).plus(arg2.red()))
-			: Number(number(base.red()).minus(arg2.red())),
+				? base.red() + arg2.red()
+			: base.red() - arg2.red(),
 			arg1 === '+'
-				? Number(number(base.green()).plus(arg2.green()))
-			: Number(number(base.green()).minus(arg2.green())),
+				? base.green() + arg2.green()
+			: base.green() - arg2.green(),
 			arg1 === '+'
-				? Number(number(base.blue()).plus(arg2.blue()))
-			: Number(number(base.blue()).minus(arg2.blue()))
+				? base.blue() + arg2.blue()
+			: base.blue() - arg2.blue()
 		);
 
 		return modifiedColor;
 	} else if (arg1 !== undefined && minusPlusMatch.test(arg1)) {
 		const modifiedColor = base.rgb(
 			arg1 === '+'
-				? Number(number(base.red()).plus(arg2))
-			: Number(number(base.red()).minus(arg2)),
+				? base.red() + arg2
+			: base.red() - arg2,
 			arg1 === '+'
-				? Number(number(base.green()).plus(arg3))
-			: Number(number(base.green()).minus(arg3)),
+				? base.green() + arg3
+			: base.green() - arg3,
 			arg1 === '+'
-				? Number(number(base.blue()).plus(arg4))
-			: Number(number(base.blue()).minus(arg4))
+				? base.blue() + arg4
+			: base.blue() - arg4
 		);
 
 		return modifiedColor;
 	} else if (arg1 !== undefined && arg2 !== undefined) {
 		const modifiedColor = base.rgb(
-			Number(number(base.red()).times(arg2)),
-			Number(number(base.green()).times(arg2)),
-			Number(number(base.blue()).times(arg2))
+			base.red() * arg2,
+			base.green() * arg2,
+			base.blue() * arg2
 		);
 
 		return modifiedColor;
@@ -299,7 +308,7 @@ function transformRGBAdjuster(base, node, opts) {
 }
 
 // return a transformed color using a blend/blenda adjustment
-function transformBlendAdjuster(base, node, isAlphaBlend, opts) { // eslint-disable-line max-params
+function transformBlendAdjuster(base, node, isAlphaBlend, opts) {
 	const [color, percentage, colorspace = 'rgb'] = transformArgsByParams(node, [
 		[transformColor, transformPercentage, transformColorSpace]
 	]);
@@ -345,15 +354,15 @@ function transformHueAdjuster(base, node, opts) {
 
 		const modifiedValue = adjustment !== undefined
 			? operatorOrHue === '+'
-				? number(existingHue).plus(adjustment)
+				? existingHue + Number(adjustment)
 			: operatorOrHue === '-'
-				? number(existingHue).minus(adjustment)
+				? existingHue - Number(adjustment)
 			: operatorOrHue === '*'
-				? number(existingHue).times(adjustment)
-			: number(adjustment)
-		: number(operatorOrHue);
+				? existingHue * Number(adjustment)
+			: Number(adjustment)
+		: Number(operatorOrHue);
 
-		return base.hue(Number(modifiedValue));
+		return base.hue(modifiedValue);
 	} else {
 		return manageUnresolved(node, opts, node.value, `Expected a valid hue() function)`);
 	}
@@ -362,26 +371,23 @@ function transformHueAdjuster(base, node, opts) {
 // [ b | blackness | l | lightness | s | saturation | w | whiteness ]( [ + | - | * ]? <percentage> )
 function transformBlacknessLightnessSaturationWhitenessAdjuster(base, node, opts) {
 	const channel = node.value.toLowerCase().replace(/^b$/, 'blackness').replace(/^l$/, 'lightness').replace(/^s$/, 'saturation').replace(/^w$/, 'whiteness');
-	const [operatorOrValue, rawAdjustment] = transformArgsByParams(node, [
+	const [operatorOrValue, adjustment] = transformArgsByParams(node, [
 		[transformMinusPlusTimesOperator, transformPercentage],
 		[transformPercentage]
 	]);
 
 	if (operatorOrValue !== undefined) {
-		const existingValue = number(base[channel]());
-		const adjustment = parseFloat(rawAdjustment);
+		const existingValue = base[channel]();
 
-		const rawModifiedValue = !isNaN(adjustment)
+		const modifiedValue = adjustment !== undefined
 			? operatorOrValue === '+'
-				? existingValue.plus(adjustment)
+				? existingValue + Number(adjustment)
 			: operatorOrValue === '-'
-				? existingValue.minus(adjustment)
+				? existingValue - Number(adjustment)
 			: operatorOrValue === '*'
-				? existingValue.times(adjustment)
-			: number(adjustment)
-		: number(operatorOrValue);
-
-		const modifiedValue = Number(rawModifiedValue);
+				? existingValue * Number(adjustment)
+			: Number(adjustment)
+		: Number(operatorOrValue);
 
 		return base[channel](modifiedValue);
 	} else {
@@ -398,7 +404,7 @@ function transformShadeTintAdjuster(base, node, opts) {
 	]);
 
 	if (percentage !== undefined) {
-		const modifiedValue = parseFloat(percentage);
+		const modifiedValue = Number(percentage);
 
 		return base[channel](modifiedValue);
 	} else {
@@ -423,7 +429,7 @@ function transformColorSpace(node, opts) {
 function transformAlpha(node, opts) {
 	if (isNumber(node)) {
 		// <number>
-		return Number(number(node.value).times(100));
+		return node.value * 100;
 	} else if (isPercentage(node)) {
 		// <percentage>
 		return transformPercentage(node, opts);
@@ -432,24 +438,11 @@ function transformAlpha(node, opts) {
 	}
 }
 
-// return a transformed rgb value
-function transformRGBValue(node, opts) {
-	if (isNumber(node)) {
-		// <rgba-number>
-		return transformRGBNumber(node, opts);
-	} else if (isPercentage(node)) {
-		// <percentage>
-		return transformPercentage(node, opts);
-	} else {
-		return manageUnresolved(node, opts, node.value, `Expected a valid RGB value)`);
-	}
-}
-
 // return a transformed rgb number
 function transformRGBNumber(node, opts) {
 	if (isNumber(node)) {
-		// <rgba-number>
-		return Number(number(node.value).div(2.55));
+		// <number>
+		return node.value / 2.55;
 	} else {
 		return manageUnresolved(node, opts, node.value, `Expected a valid RGB value)`);
 	}
@@ -458,8 +451,22 @@ function transformRGBNumber(node, opts) {
 // return a transformed hue
 function transformHue(node, opts) {
 	if (isHue(node)) {
-		// <hue>
-		return parseFloat(node.value);
+		// <hue> = <number> | <angle>
+		const unit = node.unit.toLowerCase();
+
+		if (unit === 'grad') {
+			// if <angle> = <gradian> (400 per circle)
+			return convertGtoD(node.value);
+		} else if (unit === 'rad') {
+			// if <angle> = <radian> (2π per circle)
+			return convertRtoD(node.value);
+		} else if (unit === 'turn') {
+			// if <angle> = <turn> (1 per circle)
+			return convertTtoD(node.value);
+		} else {
+			// if <angle> = [ <degree> | <number> ] (360 per circle)
+			return convertDtoD(node.value);
+		}
 	} else {
 		return manageUnresolved(node, opts, node.value, `Expected a valid hue`);
 	}
@@ -469,7 +476,7 @@ function transformHue(node, opts) {
 function transformPercentage(node, opts) {
 	if (isPercentage(node)) {
 		// <percentage>
-		return Number(number(node.value));
+		return Number(node.value);
 	} else {
 		return manageUnresolved(node, opts, node.value, `Expected a valid hue`);
 	}
@@ -593,7 +600,7 @@ function isColorModFunction(node) {
 
 // return whether the node is a valid named-color
 function isNamedColor(node) {
-	return Object(node).type === 'word' && node.value in names;
+	return Object(node).type === 'word' && Boolean(convertNtoRGB(node.value));
 }
 
 // return whether the node is a valid hex color
@@ -613,7 +620,7 @@ function isColorSpace(node) {
 
 // return whether the hue value is valid
 function isHue(node) {
-	return Object(node).type === 'number' && /^(deg)?$/.test(node.unit);
+	return Object(node).type === 'number' && hueUnitMatch.test(node.unit);
 }
 
 // return whether the comma is valid
@@ -663,6 +670,7 @@ const colorSpaceMatch = /^(hsl|hwb|rgb)$/i;
 const contrastMatch = /^contrast$/i;
 const hexColorMatch = /^#(?:([a-f0-9])([a-f0-9])([a-f0-9])([a-f0-9])?|([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})?)$/i;
 const hslaMatch = /^hsla?$/i;
+const hueUnitMatch = /^(deg|grad|rad|turn)?$/i;
 const hueMatch = /^h(ue)?$/i;
 const hwbMatch = /^hwb$/i;
 const minusPlusMatch = /^[+-]$/;

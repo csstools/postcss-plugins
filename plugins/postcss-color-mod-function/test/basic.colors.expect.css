@@ -21,6 +21,9 @@ test-color-mod {
 	color: hwb(0 0% 0%);
 	color: hsl(0 100% 50%);
 	color: hsl(0 100% 50%);
+	color: hsl(0 100% 50%);
+	color: hsl(0 100% 50%);
+	color: hsl(0 100% 50%);
 }
 
 test-red-green-blue-alpha-adjuster {
@@ -103,7 +106,7 @@ test-contrast-adjuster {
 }
 
 test-combination-adjuster {
-	color: rgb(41.2352941176% 31.2352941176% 80%);
+	color: rgb(70% 30.2012805122% 46.7647058824%);
 }
 
 test-sameness {

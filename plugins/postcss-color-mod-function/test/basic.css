@@ -21,6 +21,9 @@ test-color-mod {
 	color: color-mod(hwb(0 0% 0% / 100%));
 	color: color-mod(0);
 	color: color-mod(0deg);
+	color: color-mod(0grad);
+	color: color-mod(0rad);
+	color: color-mod(0turn);
 }
 
 test-red-green-blue-alpha-adjuster {

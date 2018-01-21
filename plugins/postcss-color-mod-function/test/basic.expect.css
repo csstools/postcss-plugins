@@ -11,16 +11,19 @@ test-color-mod {
 	color: rgb(255, 0, 0);
 	color: rgb(255, 0, 0);
 	color: rgb(255, 0, 0);
-	color: rgb(255, 0, 255);
-	color: rgb(255, 0, 255);
-	color: rgb(255, 0, 255);
-	color: rgb(255, 0, 255);
-	color: rgb(255, 0, 255);
+	color: hsl(0, 100%, 50%);
+	color: hsl(0, 100%, 50%);
+	color: hsl(0, 100%, 50%);
+	color: hsl(0, 100%, 50%);
+	color: hsl(0, 100%, 50%);
 	color: rgb(255, 0, 0);
 	color: rgb(255, 0, 0);
 	color: rgb(255, 0, 0);
-	color: rgb(255, 0, 255);
-	color: rgb(255, 0, 255);
+	color: hsl(0, 100%, 50%);
+	color: hsl(0, 100%, 50%);
+	color: hsl(0, 100%, 50%);
+	color: hsl(0, 100%, 50%);
+	color: hsl(0, 100%, 50%);
 }
 
 test-red-green-blue-alpha-adjuster {
@@ -44,33 +47,33 @@ test-rgb-adjuster {
 }
 
 test-hue-adjuster {
-	color: rgb(255, 85, 255);
-	color: rgb(255, 85, 255);
-	color: rgb(255, 85, 255);
-	color: rgb(255, 85, 255);
-	color: rgb(255, 0, 255);
-	color: rgb(255, 0, 255);
-	color: rgb(255, 0, 255);
-	color: rgb(255, 0, 255);
+	color: hsl(20, 100%, 50%);
+	color: hsl(20, 100%, 50%);
+	color: hsl(20, 100%, 50%);
+	color: hsl(20, 100%, 50%);
+	color: hsl(0, 100%, 50%);
+	color: hsl(0, 100%, 50%);
+	color: hsl(0, 100%, 50%);
+	color: hsl(0, 100%, 50%);
 }
 
 test-lightness-saturation-adjuster {
-	color: rgb(255, 0, 255);
-	color: rgb(102, 0, 102);
-	color: rgb(255, 102, 255);
-	color: rgb(153, 0, 153);
-	color: rgb(255, 128, 255);
-	color: rgb(237, 237, 237);
-	color: rgb(249, 249, 249);
-	color: rgb(241, 241, 241);
-	color: rgb(251, 251, 251);
+	color: hsl(0, 100%, 50%);
+	color: hsl(0, 100%, 20%);
+	color: hsl(0, 100%, 70%);
+	color: hsl(0, 100%, 30%);
+	color: hsl(0, 100%, 75%);
+	color: hsl(60, 20%, 91.1764705882%);
+	color: hsl(60, 75.5555555556%, 91.1764705882%);
+	color: hsl(60, 35.5555555556%, 91.1764705882%);
+	color: hsl(60, 83.3333333333%, 91.1764705882%);
 }
 
 test-blackness-whiteness-adjuster {
-	color: rgb(255, 255, 2);
-	color: rgb(254, 254, 2);
+	color: rgb(207, 207, 207);
+	color: rgb(200, 200, 200);
 	color: rgb(248, 248, 220);
-	color: rgb(254, 254, 1);
+	color: rgb(134, 134, 134);
 	color: rgb(245, 245, 51);
 	color: rgb(245, 245, 223);
 	color: rgb(245, 245, 169);
@@ -90,7 +93,7 @@ test-tint-shade-adjuster {
 test-blend-adjuster {
 	color: rgb(255, 128, 0);
 	color: rgb(255, 128, 0);
-	color: rgb(255, 128, 255);
+	color: hsl(30, 100%, 50%);
 	color: rgb(255, 128, 0);
 }
 
@@ -103,16 +106,16 @@ test-contrast-adjuster {
 }
 
 test-combination-adjuster {
-	color: rgb(105, 80, 204);
+	color: rgb(178, 77, 119);
 }
 
 test-sameness {
 	color: rgb(245, 245, 220);
-	color: rgb(245, 245, 245);
-	color: rgb(245, 245, 245);
-	color: rgb(245, 245, 245);
+	color: hsl(60, 55.5555555556%, 91.1764705882%);
+	color: hsl(60, 55.5555555556%, 91.1764705882%);
+	color: hsl(60, 55.5555555556%, 91.1764705882%);
 	color: rgb(245, 245, 220);
 	color: rgb(245, 245, 220);
 	color: rgb(245, 245, 220);
-	color: rgb(245, 245, 245);
+	color: hsl(60, 55.5555555556%, 91.1764705882%);
 }

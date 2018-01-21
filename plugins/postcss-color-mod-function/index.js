@@ -6,7 +6,7 @@ import transformAST from './lib/transform';
 // plugin
 export default postcss.plugin('postcss-color-mod-function', opts => {
 	const unresolvedOpt = String(Object(opts).unresolved || 'throw').toLowerCase();
-	const stringifierOpt = Object(opts).stringifier || (color => color.toRGBLegacy());
+	const stringifierOpt = Object(opts).stringifier || (color => color.toLegacy());
 
 	return (root, result) => {
 		root.walkDecls(decl => {
