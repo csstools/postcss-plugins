@@ -1,151 +1,95 @@
+'use strict';
+
 // convert module
 const convert = require('.');
 
-// tests
-const tests = [
-	{
-		message: 'converts mango from rgb to hsl',
-		source: convert.rgb2hsl(100, 50, 25),
-		expect: [20, 100, 62.5]
-	},
-	{
-		message: 'converts mango from rgb to hwb',
-		source: convert.rgb2hwb(100, 50, 25),
-		expect: [20, 25, 0]
-	},
-	{
-		message: 'converts mango from hsl to rgb',
-		source: convert.hsl2rgb(100, 50, 25),
-		expect: [20.833333333333325, 37.5, 12.5]
-	},
-	{
-		message: 'converts mango from hsl to hwb',
-		source: convert.hsl2hwb(100, 50, 25),
-		expect: [100, 12.500000000000005, 62.5]
-	},
-	{
-		message: 'converts mango from hwb to rgb',
-		source: convert.hwb2rgb(100, 50, 25),
-		expect: [58.33333333333333, 75.00000000000001, 49.999999999999986]
-	},
-	{
-		message: 'converts mango from hwb to hsl',
-		source: convert.hwb2hsl(100, 50, 25),
-		expect: [100, 33.33333333333334, 62.5]
-	},
-	{
-		message: 'converts white from rgb to hsl',
-		source: convert.rgb2hsl(100, 100, 100),
-		expect: [ 0, 0, 100 ]
-	},
-	{
-		message: 'converts white from rgb to hwb',
-		source: convert.rgb2hwb(100, 100, 100),
-		expect: [ 0, 100, 0 ]
-	},
-	{
-		message: 'converts white from hsl to rgb',
-		source: convert.hsl2rgb(0, 0, 100),
-		expect: [ 100, 100, 100 ]
-	},
-	{
-		message: 'converts white from hsl to hwb',
-		source: convert.hsl2hwb(0, 0, 100),
-		expect: [ 0, 100, 0 ]
-	},
-	{
-		message: 'converts white from hwb to rgb',
-		source: convert.hwb2rgb(0, 100, 0),
-		expect: [ 100, 100, 100 ]
-	},
-	{
-		message: 'converts white from hwb to hsl',
-		source: convert.hwb2hsl(0, 100, 0),
-		expect: [ 0, 0, 100 ]
-	},
-	{
-		message: 'converts black from rgb to hsl',
-		source: convert.rgb2hsl(0, 0, 0),
-		expect: [ 0, 0, 0 ]
-	},
-	{
-		message: 'converts black from rgb to hwb',
-		source: convert.rgb2hwb(0, 0, 0),
-		expect: [ 0, 0, 100 ]
-	},
-	{
-		message: 'converts black from hsl to rgb',
-		source: convert.hsl2rgb(0, 0, 0),
-		expect: [ 0, 0, 0 ]
-	},
-	{
-		message: 'converts black from hsl to hwb',
-		source: convert.hsl2hwb(0, 0, 0),
-		expect: [ 0, 0, 100 ]
-	},
-	{
-		message: 'converts black from hwb to rgb',
-		source: convert.hwb2rgb(0, 0, 100),
-		expect: [ 0, 0, 0 ]
-	},
-	{
-		message: 'converts black from hwb to hsl',
-		source: convert.hwb2hsl(0, 0, 100),
-		expect: [ 0, 0, 0 ]
-	},
-	{
-		message: 'converts dark gray from rgb to hsl',
-		source: convert.rgb2hsl(25, 25, 25),
-		expect: [ 0, 0, 25 ]
-	},
-	{
-		message: 'converts dark gray from rgb to hwb',
-		source: convert.rgb2hwb(25, 25, 25),
-		expect: [ 0, 25, 75 ]
-	},
-	{
-		message: 'converts dark gray from hsl to rgb',
-		source: convert.hsl2rgb(0, 0, 25),
-		expect: [ 25, 25, 25 ]
-	},
-	{
-		message: 'converts dark gray from hsl to hwb',
-		source: convert.hsl2hwb(0, 0, 25),
-		expect: [ 0, 25, 75 ]
-	},
-	{
-		message: 'converts dark gray from hwb to rgb',
-		source: convert.hwb2rgb(0, 25, 75),
-		expect: [ 25, 25, 25 ]
-	},
-	{
-		message: 'converts dark gray from hwb to hsl',
-		source: convert.hwb2hsl(0, 25, 75),
-		expect: [ 0, 0, 25 ]
+// test a range of colors in a given color space
+function test(opts) {
+	const from = opts.from;
+	const to = opts.to;
+	const channel1 = opts.channel1;
+	const channel2 = opts.channel2;
+	const channel3 = opts.channel3;
+
+	for (let channel1value = channel1.start; channel1value <= channel1.stop; channel1value += channel1.increment) {
+		for (let channel2value = channel2.start; channel2value <= channel2.stop; channel2value += channel2.increment) {
+			for (let channel3value = channel3.start; channel3value <= channel3.stop; channel3value += channel3.increment) {
+				// the source color in the original color space
+				const source1 = [channel1value, channel2value, channel3value];
+
+				// the source color in the converted color space
+				const source2 = convert[`${from}2${to}`](source1[0], source1[1], source1[2]);
+
+				// the resulting color converted back to its original color space
+				const result1 = convert[`${to}2${from}`](source2[0], source2[1], source2[2], channel1value);
+
+				// the resulting color converted back to its converted color space
+				const result2 = convert[`${from}2${to}`](result1[0], result1[1], result1[2]);
+
+				if (
+					// if the source color has changed
+					source1.map(Math.round).join(',') !== result1.map(Math.round).join(',') &&
+					// and the converted color has also changed
+					source2.map(Math.round).join(',') !== result2.map(Math.round).join(',')
+				) {
+					// log the faulty color conversion
+					console.log({ [from]: source1, 'became': result1 });
+
+					// exit with failure
+					process.exit(1);
+				}
+			}
+		}
 	}
-];
-
-// symbols
-const isWin32 = process.platform === 'win32';
-const tick    = isWin32 ? '√' : '✔';
-const cross   = isWin32 ? '×' : '✖';
-
-tests.forEach(
-	test => {
-		const result = compare(test.source, test.expect);
-		const resultSymbol = result ? tick : cross;
-		const equalitySymbol = result ? '==' : '!=';
-
-		console.log(`${resultSymbol} ${test.message}: [${test.expect.map(round)}] ${equalitySymbol} [${test.source.map(round)}]`);
-	}
-);
-
-function compare(array1, array2) {
-	return array1.every(
-		(channel, index) => round(channel) === round(array2[index])
-	);
 }
 
-function round(number) {
-	return Math.round(number * 10000000000) / 10000000000
-}
+// test RGB to HSL conversion
+test({
+	from: 'rgb', to: 'hsl',
+	channel1: { start: 0, stop: 100, increment: 4 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
+
+// test RGB to HWB conversion
+test({
+	from: 'rgb', to: 'hwb',
+	channel1: { start: 0, stop: 100, increment: 4 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
+
+// test HSL to RGB conversion
+test({
+	from: 'hsl', to: 'rgb',
+	channel1: { start: 0, stop: 359, increment: 1 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
+
+// test HSL to HWB conversion
+test({
+	from: 'hsl', to: 'hwb',
+	channel1: { start: 0, stop: 359, increment: 1 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
+
+// test HWB to RGB conversion
+test({
+	from: 'hwb', to: 'rgb',
+	channel1: { start: 0, stop: 359, increment: 1 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+}, 10);
+
+// test HWB to HSL conversion
+test({
+	from: 'hwb', to: 'hsl',
+	channel1: { start: 0, stop: 359, increment: 1 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+}, 10);
+
+// exit with success
+process.exit(0);
