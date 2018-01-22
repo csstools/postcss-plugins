@@ -1,11 +1,11 @@
-import { convertRGBtoHSL, convertRGBtoHWB, convertHSLtoRGB, convertHSLtoHWB, convertHWBtoRGB, convertHWBtoHSL, convertRGBtoH } from './conversions';
+import { rgb2hsl, rgb2hwb, hsl2rgb, hsl2hwb, hwb2rgb, hwb2hsl, rgb2hue } from '@csstools/convert-colors';
 
 export default class Color {
 	constructor(color) {
 		this.color = Object(Object(color).color || color);
 
 		if (color.colorspace === 'rgb') {
-			this.color.hue = convertRGBtoH(color.red, color.green, color.blue, color.hue || 0);
+			this.color.hue = rgb2hue(color.red, color.green, color.blue, color.hue || 0);
 		}
 	}
 
@@ -222,7 +222,7 @@ function assign(base, channels) {
 
 			if (isRGB) {
 				// conditionally preserve the hue
-				color.hue = convertRGBtoH(color.red, color.green, color.blue, base.hue || 0);
+				color.hue = rgb2hue(color.red, color.green, color.blue, base.hue || 0);
 			}
 		}
 	);
@@ -250,9 +250,9 @@ function normalize(value, channel) {
 
 function color2rgb(color) {
 	const [ red, green, blue ] = color.colorspace === 'hsl'
-		? convertHSLtoRGB(color.hue, color.saturation, color.lightness)
+		? hsl2rgb(color.hue, color.saturation, color.lightness)
 	: color.colorspace === 'hwb'
-		? convertHWBtoRGB(color.hue, color.whiteness, color.blackness)
+		? hwb2rgb(color.hue, color.whiteness, color.blackness)
 	: [ color.red, color.green, color.blue ];
 
 	return { red, green, blue, hue: color.hue, alpha: color.alpha, colorspace: 'rgb' };
@@ -260,9 +260,9 @@ function color2rgb(color) {
 
 function color2hsl(color) {
 	const [ hue, saturation, lightness ] = color.colorspace === 'rgb'
-		? convertRGBtoHSL(color.red, color.green, color.blue, color.hue)
+		? rgb2hsl(color.red, color.green, color.blue, color.hue)
 	: color.colorspace === 'hwb'
-		? convertHWBtoHSL(color.hue, color.whiteness, color.blackness)
+		? hwb2hsl(color.hue, color.whiteness, color.blackness)
 	: [ color.hue, color.saturation, color.lightness ];
 
 	return { hue, saturation, lightness, alpha: color.alpha, colorspace: 'hsl' };
@@ -270,9 +270,9 @@ function color2hsl(color) {
 
 function color2hwb(color) {
 	const [ hue, whiteness, blackness ] = color.colorspace === 'rgb'
-		? convertRGBtoHWB(color.red, color.green, color.blue, color.hue)
+		? rgb2hwb(color.red, color.green, color.blue, color.hue)
 	: color.colorspace === 'hsl'
-		? convertHSLtoHWB(color.hue, color.saturation, color.lightness)
+		? hsl2hwb(color.hue, color.saturation, color.lightness)
 	: [ color.hue, color.whiteness, color.blackness ];
 
 	return { hue, whiteness, blackness, alpha: color.alpha, colorspace: 'hwb' };

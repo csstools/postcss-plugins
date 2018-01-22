@@ -26,201 +26,6 @@ export function convertTtoD(turn) {
 	return turn * 360 % 360;
 }
 
-/* Convert Red/Green/Blue to Red/Green/Blue (0 - 255)
-/* ========================================================================== */
-
-export function convertRGBtoRGB255(red, green, blue) {
-	const red255   = convertChannelToChannel255(red);
-	const green255 = convertChannelToChannel255(green);
-	const blue255  = convertChannelToChannel255(blue);
-
-	return [red255, green255, blue255];
-}
-
-/* Convert Red/Green/Blue to Hue/Saturation/Lightness
-/* ========================================================================== */
-
-export function convertRGBtoHSL(red, green, blue, fallbackHue = 0) {
-	const hue        = convertRGBtoH(red, green, blue, fallbackHue);
-	const whiteness  = convertRGBtoW(red, green, blue);
-	const value      = convertRGBtoV(red, green, blue);
-	const lightness  = convertWVtoL(whiteness, value);
-	const saturation = convertLVWtoS(lightness, value, whiteness);
-
-	return [ hue, saturation, lightness ];
-}
-
-/* Convert Red/Green/Blue to Hue/Whiteness/Blackness
-/* ========================================================================== */
-
-export function convertRGBtoHWB(red, green, blue, fallbackHue = 0) {
-	const hue       = convertRGBtoH(red, green, blue, fallbackHue);
-	const whiteness = convertRGBtoW(red, green, blue);
-	const value     = convertRGBtoV(red, green, blue);
-	const blackness = convertVtoB(value);
-
-	return [ hue, whiteness, blackness ];
-}
-
-/* Convert Hue/Saturation/Lightness to Red/Green/Blue (and fallback Hue)
-/* ========================================================================== */
-
-export function convertHSLtoRGB(hue, saturation, lightness) {
-	const hexagon = hue / 60;
-
-	const t2 = lightness <= 50
-		? lightness * (saturation + 100) / 10000
-	: (lightness + saturation) / 100 - lightness * saturation / 10000;
-
-	const t1 = lightness * 0.02 - t2;
-
-	const red   = convertTTHtoChannel(t1, t2, hexagon + 2) * 100;
-	const green = convertTTHtoChannel(t1, t2, hexagon) * 100;
-	const blue  = convertTTHtoChannel(t1, t2, hexagon - 2) * 100;
-
-	return [red, green, blue];
-}
-
-/* Convert Hue/Saturation/Lightness to Hue/Whiteness/Blackness
-/* ========================================================================== */
-
-export function convertHSLtoHWB(hue, saturation, lightness) {
-	const [ red, green, blue ] = convertHSLtoRGB(hue, saturation, lightness);
-	const [ , whiteness, blackness ] = convertRGBtoHWB(red, green, blue, hue);
-
-	return [ hue, whiteness, blackness ];
-}
-
-/* Convert Hue/Whiteness/Blackness to Hue/Saturation/Lightness
-/* ========================================================================== */
-
-export function convertHWBtoHSL(hue, whiteness, blackness) {
-	const [ red, green, blue ] = convertHWBtoRGB(hue, whiteness, blackness);
-	const [ , saturation, lightness ] = convertRGBtoHSL(red, green, blue, hue);
-
-	return [ hue, saturation, lightness ];
-}
-
-/* Convert Hue/Whiteness/Blackness to Red/Green/Blue (and fallback Hue)
-/* ========================================================================== */
-
-export function convertHWBtoRGB(hue, whiteness, blackness) {
-	const [ hslRed, hslGreen, hslBlue ] = convertHSLtoRGB(hue, 100, 50);
-
-	const tot = whiteness + blackness;
-	const w = tot > 100 ? whiteness / tot * 100 : whiteness;
-	const b = tot > 100 ? blackness / tot * 100 : blackness;
-
-	const red   = hslRed   * (100 - w - b) / 100 + w;
-	const green = hslGreen * (100 - w - b) / 100 + w;
-	const blue  = hslBlue  * (100 - w - b) / 100 + w;
-
-	return [red, green, blue];
-}
-
-/* Convert Channel to Channel (0 - 255)
-/* ========================================================================== */
-
-export function convertChannelToChannel255(channel) {
-	return Math.round(channel * 2.55);
-}
-
-/* Convert Red/Green/Blue to Hue
-/* ========================================================================== */
-
-export function convertRGBtoH(red, green, blue, fallbackHue = 0) {
-	const whiteness = convertRGBtoW(red, green, blue);
-	const value     = convertRGBtoV(red, green, blue);
-	const chroma    = convertVWtoC(value, whiteness);
-
-	if (chroma === 0) {
-		return fallbackHue;
-	} else {
-		const segment = value === red
-			? (green - blue) / chroma
-		: value === green
-			? (blue - red) / chroma
-		: (red - green) / chroma;
-
-		const shift = value === red
-			? segment < 0
-				? 360 / 60
-				: 0 / 60
-		: value === green
-			? 120 / 60
-		: 240 / 60;
-
-		const hue = (segment + shift) * 60;
-
-		return hue;
-	}
-}
-
-/* Convert Red/Green/Blue to Whiteness
-/* ========================================================================== */
-
-export function convertRGBtoW(red, green, blue) {
-	return Math.min(red, green, blue);
-}
-
-/* Convert Red/Green/Blue to Value
-/* ========================================================================== */
-
-export function convertRGBtoV(red, green, blue) {
-	return Math.max(red, green, blue);
-}
-
-/* Convert Value/Whiteness to Chroma
-/* ========================================================================== */
-
-export function convertVWtoC(value, whiteness) {
-	return value - whiteness;
-}
-
-/* Convert Whiteness/Value to Lightness
-/* ========================================================================== */
-
-export function convertWVtoL(whiteness, value) {
-	return (whiteness + value) / 2;
-}
-
-/* Convert Lightness/Value/Whiteness to Saturation
-/* ========================================================================== */
-
-export function convertLVWtoS(lightness, value, whiteness) {
-	return whiteness === value
-		? 0
-	: lightness < 50
-		? (value - whiteness) / (value + whiteness) * 100
-	: (value - whiteness) / (200 - value - whiteness) * 100;
-}
-
-/* Convert Value to Blackness
-/* ========================================================================== */
-
-export function convertVtoB(value) {
-	return 100 - value;
-}
-
-/* Convert Hue parts to Channel
-/* ========================================================================== */
-
-export function convertTTHtoChannel(t1, t2, hexagon) {
-	const althexagon = hexagon < 0
-		? hexagon + 6
-	: hexagon >= 6
-		? hexagon - 6
-	: hexagon;
-
-	return althexagon < 1
-		? (t2 - t1) * althexagon + t1
-	: althexagon < 3
-		? t2
-	: althexagon < 4
-		? (t2 - t1) * (4 - althexagon) + t1
-	: t1;
-}
-
 /* Convert a Name to Red/Green/Blue
 /* ========================================================================== */
 
@@ -376,5 +181,27 @@ export function convertNtoRGB(name) {
 		yellowgreen: [154, 205, 50]
 	};
 
-	return names[name];
+	return names[name] && names[name].map(c => c / 2.55);
 }
+
+
+/* Convert a Hex to Red/Green/Blue
+/* ========================================================================== */
+
+export function convertHtoRGB(hex) {
+	// #<hex-color>{3,4,6,8}
+	const [r, g, b, a, rr, gg, bb, aa] = (hex.match(hexColorMatch) || []).slice(1);
+
+	if (rr !== undefined || r !== undefined) {
+		const red   = rr !== undefined ? parseInt(rr, 16) : r !== undefined ? parseInt(r + r, 16) : 0;
+		const green = gg !== undefined ? parseInt(gg, 16) : g !== undefined ? parseInt(g + g, 16) : 0;
+		const blue  = bb !== undefined ? parseInt(bb, 16) : b !== undefined ? parseInt(b + b, 16) : 0;
+		const alpha = aa !== undefined ? parseInt(aa, 16) : a !== undefined ? parseInt(a + a, 16) : 255;
+
+		return [red, green, blue, alpha].map(c => c / 2.55);
+	}
+
+	return undefined;
+}
+
+const hexColorMatch = /^#(?:([a-f0-9])([a-f0-9])([a-f0-9])([a-f0-9])?|([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})?)$/i;

@@ -1,5 +1,5 @@
 // tooling
-import { convertDtoD, convertGtoD, convertRtoD, convertTtoD, convertNtoRGB } from './conversions';
+import { convertDtoD, convertGtoD, convertRtoD, convertTtoD, convertNtoRGB, convertHtoRGB } from './conversions';
 import Color from './color';
 import manageUnresolved from './manage-unresolved';
 import parser from 'postcss-values-parser';
@@ -136,14 +136,9 @@ function transformColorModFunction(node, opts) {
 function transformHexColor(node, opts) {
 	if (hexColorMatch.test(node.value)) {
 		// #<hex-color>{3,4,6,8}
-		const [r, g, b, a, rr, gg, bb, aa] = (node.value.match(hexColorMatch) || []).slice(1);
+		const [red, green, blue, alpha] = convertHtoRGB(node.value);
 
-		const color = new Color({
-			red:   rr !== undefined ? parseInt(rr, 16) / 2.55 : r !== undefined ? parseInt(r + r, 16) / 2.55 : 0,
-			green: gg !== undefined ? parseInt(gg, 16) / 2.55 : g !== undefined ? parseInt(g + g, 16) / 2.55 : 0,
-			blue:  bb !== undefined ? parseInt(bb, 16) / 2.55 : b !== undefined ? parseInt(b + b, 16) / 2.55 : 0,
-			alpha: aa !== undefined ? parseInt(aa, 16) / 2.55 : a !== undefined ? parseInt(a + a, 16) / 2.55 : 100
-		});
+		const color = new Color({ red, green, blue, alpha });
 
 		return color;
 	} else {
@@ -157,13 +152,7 @@ function transformNamedColor(node, opts) {
 		// <named-color>
 		const [red, green, blue] = convertNtoRGB(node.value);
 
-		const color = new Color({
-			red: red / 2.55,
-			green: green / 2.55,
-			blue: blue / 2.55,
-			alpha: 100,
-			colorspace: 'rgb'
-		});
+		const color = new Color({ red, green, blue, alpha: 100, colorspace: 'rgb' });
 
 		return color;
 	} else {

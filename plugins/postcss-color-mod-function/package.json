@@ -26,6 +26,7 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
+    "@csstools/convert-colors": "^1.1",
     "postcss": "^6.0",
     "postcss-values-parser": "^1.3"
   },
