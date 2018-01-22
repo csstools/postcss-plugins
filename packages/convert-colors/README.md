@@ -17,6 +17,8 @@ convert.hsl2hwb(0, 0, 100); // [ 0, 100, 0 ]
 
 convert.hwb2rgb(0, 100, 0); // [ 0, 0, 100 ]
 convert.hwb2hsl(0, 100, 0); // [ 0, 0, 100 ]
+
+convert.rgb2hue(0, 0, 100); // 240
 ```
 
 ## Usage
@@ -61,6 +63,10 @@ Converts **hue**, **whiteness**, and **blackness** to an array of **red**,
 
 Converts **hue**, **whiteness**, and **blackness** to an array of **hue**,
 **saturation**, and **lightness**.
+
+### rgb2hue
+
+Converts **red**, **green**, and **blue** to a **hue**.
 
 [npm-url]: https://www.npmjs.com/package/@csstools/convert-colors
 [npm-img]: https://img.shields.io/npm/v/@csstools/convert-colors.svg

@@ -294,5 +294,6 @@ export default {
 	hwb2hsl: convertHWBtoHSL,
 	hwb2hsv: convertHWBtoHSV,
 	hsv2hsl: convertHSVtoHSL,
-	hsv2hwb: convertHSVtoHWB
+	hsv2hwb: convertHSVtoHWB,
+	rgb2hue: convertRGBtoH
 };
