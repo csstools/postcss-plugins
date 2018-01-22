@@ -1,5 +1,9 @@
 # Changes to PostCSS color-mod() Function
 
+### 2.2.0 (January 22, 2018)
+
+- Added `@csstools/convert-colors` to convert between color spaces
+
 ### 2.1.0 (January 20, 2018)
 
 - Added support for legacy (comma-separated) `hsl()` colors
