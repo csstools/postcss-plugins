@@ -4,7 +4,7 @@
 [![Linux Build Status][cli-img]][cli-url]
 [![Windows Build Status][win-img]][win-url]
 
-[Convert Colors] converts colors between RGB, HSL, and HWB.
+[Convert Colors] converts colors between RGB, HSL, HWB, LAB, HSV, and XYZ.
 
 ```js
 import convert from '@csstools/convert-colors';
@@ -34,39 +34,36 @@ npm install @csstools/convert-colors --save-dev
 Conversions work by taking arguments that represents a color in one color space
 and returning an array of that same color in another color space.
 
-### rgb2hsl
-
-Converts **red**, **green**, and **blue** to an array of **hue**,
-**saturation**, and **lightness**.
-
-### rgb2hwb
-
-Converts **red**, **green**, and **blue** to an array of **hue**,
-**whiteness**, and **blackness**.
-
-### hsl2rgb
-
-Converts **hue**, **saturation**, and **lightness** to an array of **red**,
-**green**, and **blue**.
-
-### hsl2hwb
-
-Converts **hue**, **saturation**, and **lightness** to an array of **hue**,
-**whiteness**, and **blackness**.
-
-### hwb2rgb
-
-Converts **hue**, **whiteness**, and **blackness** to an array of **red**,
-**green**, and **blue**.
-
-### hwb2hsl
-
-Converts **hue**, **whiteness**, and **blackness** to an array of **hue**,
-**saturation**, and **lightness**.
-
-### rgb2hue
-
-Converts **red**, **green**, and **blue** to a **hue**.
+- rgb2hsl(r, g, b)
+- rgb2hwb(r, g, b)
+- rgb2lab(r, g, b)
+- rgb2hsv(r, g, b)
+- rgb2xyz(r, g, b)
+- hsl2rgb(h, s, l)
+- hsl2hwb(h, s, l)
+- hsl2lab(h, s, l)
+- hsl2hsv(h, s, l)
+- hsl2xyz(h, s, l)
+- hwb2rgb(h, w, b)
+- hwb2hsl(h, w, b)
+- hwb2lab(h, w, b)
+- hwb2hsv(h, w, b)
+- hwb2xyz(h, w, b)
+- lab2rgb(l, a, b)
+- lab2hsl(l, a, b)
+- lab2hwb(l, a, b)
+- lab2hsv(l, a, b)
+- lab2xyz(l, a, b)
+- hsv2rgb(h, s, b)
+- hsv2hsl(h, s, b)
+- hsv2hwb(h, s, b)
+- hsv2lab(h, s, b)
+- hsv2xyz(h, s, b)
+- xyz2rgb(x, y, z)
+- xyz2hsl(x, y, z)
+- xyz2hwb(x, y, z)
+- xyz2lab(x, y, z)
+- xyz2hsv(x, y, z)
 
 [npm-url]: https://www.npmjs.com/package/@csstools/convert-colors
 [npm-img]: https://img.shields.io/npm/v/@csstools/convert-colors.svg
