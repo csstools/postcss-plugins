@@ -1,5 +1,10 @@
 # Changes to PostCSS color-mod() Function
 
+### 2.3.0 (January 25, 2018)
+
+- Updated `@csstools/convert-colors` to 1.3 (minor update)
+- Updated tests to reflect more accurate color conversions
+
 ### 2.2.0 (January 22, 2018)
 
 - Added `@csstools/convert-colors` to convert between color spaces
