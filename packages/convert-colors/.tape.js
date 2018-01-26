@@ -33,7 +33,7 @@ function test(opts) {
 					source2.map(Math.round).join(',') !== result2.map(Math.round).join(',')
 				) {
 					// log the faulty color conversion
-					console.log({ [from]: source1, 'became': result1 });
+					console.log({ [from]: source1, [to]: source2, 'became': result1 });
 
 					// exit with failure
 					process.exit(1);
@@ -90,6 +90,46 @@ test({
 	channel2: { start: 0, stop: 100, increment: 4 },
 	channel3: { start: 0, stop: 100, increment: 4 }
 }, 10);
+
+// test RGB to XYZ conversion
+test({
+	from: 'rgb', to: 'xyz',
+	channel1: { start: 0, stop: 100, increment: 4 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
+
+// test RGB to LAB conversion
+test({
+	from: 'rgb', to: 'lab',
+	channel1: { start: 0, stop: 100, increment: 4 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
+
+// test HSL to XYZ conversion
+test({
+	from: 'hsl', to: 'xyz',
+	channel1: { start: 0, stop: 359, increment: 1 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
+
+// test HSL to LAB conversion
+test({
+	from: 'hsl', to: 'lab',
+	channel1: { start: 0, stop: 359, increment: 1 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
+
+// test HWB to XYZ conversion
+test({
+	from: 'hwb', to: 'xyz',
+	channel1: { start: 0, stop: 359, increment: 1 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
 
 // exit with success
 process.exit(0);
