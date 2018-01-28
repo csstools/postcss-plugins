@@ -1,8 +1,6 @@
 /* Convert between HWB and HSV
 /* ========================================================================== */
 
-// https://en.wikipedia.org/wiki/HWB_color_model#Converting_to_and_from_HSV
-
 export function hwb2hsv(hwbH, hwbW, hwbB) {
 	const [ hsvH, hsvS, hsvV ] = [
 		hwbH,
@@ -22,3 +20,12 @@ export function hsv2hwb(hsvH, hsvS, hsvV) {
 
 	return [ hwbH, hwbW, hwbB ];
 }
+
+/*
+
+References
+----------
+
+- https://en.wikipedia.org/wiki/HWB_color_model#Converting_to_and_from_HSV
+
+/* ========================================================================== */

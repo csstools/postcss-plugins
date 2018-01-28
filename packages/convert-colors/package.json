@@ -1,6 +1,6 @@
 {
   "name": "@csstools/convert-colors",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Convert colors between RGB, HSL, and HWB",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -47,10 +47,16 @@
   "keywords": [
     "colors",
     "converts",
+    "conversions",
+    "converting",
     "css",
     "rgb",
     "hsl",
     "hwb",
+    "lab",
+    "lch",
+    "hsv",
+    "xyz",
     "red",
     "green",
     "blue",
@@ -58,6 +64,7 @@
     "saturation",
     "lightness",
     "whiteness",
-    "blackness"
+    "blackness",
+    "cie"
   ]
 }

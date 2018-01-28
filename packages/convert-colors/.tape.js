@@ -28,9 +28,9 @@ function test(opts) {
 
 				if (
 					// if the source color has changed
-					source1.map(Math.round).join(',') !== result1.map(Math.round).join(',') &&
+					source1.map(Math.round).join() !== result1.map(Math.round).join() &&
 					// and the converted color has also changed
-					source2.map(Math.round).join(',') !== result2.map(Math.round).join(',')
+					source2.map(Math.round).join() !== result2.map(Math.round).join()
 				) {
 					// log the faulty color conversion
 					console.log({ [from]: source1, [to]: source2, 'became': result1 });
@@ -59,6 +59,22 @@ test({
 	channel3: { start: 0, stop: 100, increment: 4 }
 });
 
+// test RGB to Lab conversion
+test({
+	from: 'rgb', to: 'lab',
+	channel1: { start: 0, stop: 100, increment: 4 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
+
+// test RGB to LCH conversion
+test({
+	from: 'rgb', to: 'lch',
+	channel1: { start: 0, stop: 100, increment: 4 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
+
 // test HSL to RGB conversion
 test({
 	from: 'hsl', to: 'rgb',
@@ -70,6 +86,22 @@ test({
 // test HSL to HWB conversion
 test({
 	from: 'hsl', to: 'hwb',
+	channel1: { start: 0, stop: 359, increment: 1 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
+
+// test HSL to Lab conversion
+test({
+	from: 'hsl', to: 'lab',
+	channel1: { start: 0, stop: 359, increment: 1 },
+	channel2: { start: 0, stop: 100, increment: 4 },
+	channel3: { start: 0, stop: 100, increment: 4 }
+});
+
+// test HSL to LCH conversion
+test({
+	from: 'hsl', to: 'lch',
 	channel1: { start: 0, stop: 359, increment: 1 },
 	channel2: { start: 0, stop: 100, increment: 4 },
 	channel3: { start: 0, stop: 100, increment: 4 }
@@ -90,46 +122,6 @@ test({
 	channel2: { start: 0, stop: 100, increment: 4 },
 	channel3: { start: 0, stop: 100, increment: 4 }
 }, 10);
-
-// test RGB to XYZ conversion
-test({
-	from: 'rgb', to: 'xyz',
-	channel1: { start: 0, stop: 100, increment: 4 },
-	channel2: { start: 0, stop: 100, increment: 4 },
-	channel3: { start: 0, stop: 100, increment: 4 }
-});
-
-// test RGB to LAB conversion
-test({
-	from: 'rgb', to: 'lab',
-	channel1: { start: 0, stop: 100, increment: 4 },
-	channel2: { start: 0, stop: 100, increment: 4 },
-	channel3: { start: 0, stop: 100, increment: 4 }
-});
-
-// test HSL to XYZ conversion
-test({
-	from: 'hsl', to: 'xyz',
-	channel1: { start: 0, stop: 359, increment: 1 },
-	channel2: { start: 0, stop: 100, increment: 4 },
-	channel3: { start: 0, stop: 100, increment: 4 }
-});
-
-// test HSL to LAB conversion
-test({
-	from: 'hsl', to: 'lab',
-	channel1: { start: 0, stop: 359, increment: 1 },
-	channel2: { start: 0, stop: 100, increment: 4 },
-	channel3: { start: 0, stop: 100, increment: 4 }
-});
-
-// test HWB to XYZ conversion
-test({
-	from: 'hwb', to: 'xyz',
-	channel1: { start: 0, stop: 359, increment: 1 },
-	channel2: { start: 0, stop: 100, increment: 4 },
-	channel3: { start: 0, stop: 100, increment: 4 }
-});
 
 // exit with success
 process.exit(0);

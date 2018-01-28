@@ -30,3 +30,13 @@ export function xyz2rgb(xyzX, xyzY, xyzZ) {
 
 	return [ rgbR, rgbG, rgbB ];
 }
+
+/*
+
+References
+----------
+
+- https://www.w3.org/TR/css-color-4/#rgb-to-lab
+- https://www.w3.org/TR/css-color-4/#color-conversion-code
+
+/* ========================================================================== */

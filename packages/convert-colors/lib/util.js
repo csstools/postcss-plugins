@@ -1,50 +1,52 @@
 /* Convert between RGB and Hue
 /* ========================================================================== */
 
-export function rgb2hue(rgbR, rgbG, rgbB) {
+export function rgb2hue(rgbR, rgbG, rgbB, fallbackhue = 0) {
 	const value     = rgb2value(rgbR, rgbG, rgbB);
 	const whiteness = rgb2whiteness(rgbR, rgbG, rgbB);
-	const delta = value - whiteness;
+	const delta     = value - whiteness;
 
-	// calculate segment
-	const segment = value === rgbR
-		? (rgbG - rgbB) / delta
-	: value === rgbG
-		? (rgbB - rgbR) / delta
-	: (rgbR - rgbG) / delta;
+	if (delta) {
+		// calculate segment
+		const segment = value === rgbR
+			? (rgbG - rgbB) / delta
+		: value === rgbG
+			? (rgbB - rgbR) / delta
+		: (rgbR - rgbG) / delta;
 
-	// calculate shift
-	const shift = value === rgbR
-		? segment < 0
-			? 360 / 60
-			: 0 / 60
-	: value === rgbG
-		? 120 / 60
-	: 240 / 60;
+		// calculate shift
+		const shift = value === rgbR
+			? segment < 0
+				? 360 / 60
+				: 0 / 60
+		: value === rgbG
+			? 120 / 60
+		: 240 / 60;
 
-	// calculate hue
-	const hue = (segment + shift) * 60 || 0;
+		// calculate hue
+		const hue = (segment + shift) * 60;
 
-	return hue;
+		return hue;
+	} else {
+		// otherwise return the fallback hue
+		return fallbackhue;
+	}
 }
 
 export function hue2rgb(t1, t2, hue) {
-	// calculate ranged hue
+	// calculate the ranged hue
 	const rhue = hue < 0 ? hue + 360 : hue > 360 ? hue - 360 : hue;
 
-	if (rhue * 6 < 360) {
-		return t1 + (t2 - t1) * rhue / 60;
-	}
+	// calculate the rgb value
+	const rgb = rhue * 6 < 360
+		? t1 + (t2 - t1) * rhue / 60
+	: rhue * 2 < 360
+		? t2
+	: rhue * 3 < 720
+		? t1 + (t2 - t1) * (240 - rhue) / 60
+	: t1;
 
-	if (rhue * 2 < 360) {
-		return t2;
-	}
-
-	if (rhue * 3 < 720) {
-		return t1 + (t2 - t1) * (240 - rhue) / 60;
-	}
-
-	return t1;
+	return rgb;
 }
 
 /* RGB tooling

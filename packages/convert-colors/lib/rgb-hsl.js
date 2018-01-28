@@ -3,13 +3,8 @@ import { rgb2hue, rgb2value, rgb2whiteness, hue2rgb } from './util';
 /* Convert between RGB and HSL
 /* ========================================================================== */
 
-// https://www.w3.org/TR/css-color-3/#hsl-color
-// https://www.w3.org/TR/css-color-4/#hsl-to-rgb
-// https://www.rapidtables.com/convert/color/rgb-to-hsl.html
-// https://www.rapidtables.com/convert/color/hsl-to-rgb.html
-
-export function rgb2hsl(rgbR, rgbG, rgbB) {
-	const hslH = rgb2hue(rgbR, rgbG, rgbB);
+export function rgb2hsl(rgbR, rgbG, rgbB, fallbackhue) {
+	const hslH = rgb2hue(rgbR, rgbG, rgbB, fallbackhue);
 	const hslV = rgb2value(rgbR, rgbG, rgbB);
 	const hslW = rgb2whiteness(rgbR, rgbG, rgbB);
 
@@ -41,3 +36,15 @@ export function hsl2rgb(hslH, hslS, hslL) {
 
 	return [ rgbR, rgbG, rgbB ];
 }
+
+/*
+
+References
+----------
+
+- https://www.w3.org/TR/css-color-3/#hsl-color
+- https://www.w3.org/TR/css-color-4/#hsl-to-rgb
+- https://www.rapidtables.com/convert/color/rgb-to-hsl.html
+- https://www.rapidtables.com/convert/color/hsl-to-rgb.html
+
+/* ========================================================================== */

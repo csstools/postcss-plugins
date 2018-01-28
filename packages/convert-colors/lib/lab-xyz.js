@@ -1,11 +1,7 @@
 import { epsilon, kappa, wd50X, wd50Y, wd50Z, matrix } from './util';
 
-/* Convert between LAB and XYZ
+/* Convert between Lab and XYZ
 /* ========================================================================== */
-
-// https://www.w3.org/TR/css-color-4/#rgb-to-lab
-// https://www.w3.org/TR/css-color-4/#color-conversion-code
-// https://www.easyrgb.com/en/math.php
 
 export function lab2xyz(labL, labA, labB) {
 	// compute f, starting with the luminance-related term
@@ -59,3 +55,14 @@ export function xyz2lab(xyzX, xyzY, xyzZ) {
 
 	return [ labL, labA, labB ];
 }
+
+/*
+
+References
+----------
+
+- https://www.w3.org/TR/css-color-4/#rgb-to-lab
+- https://www.w3.org/TR/css-color-4/#color-conversion-code
+- https://www.easyrgb.com/en/math.php
+
+/* ========================================================================== */

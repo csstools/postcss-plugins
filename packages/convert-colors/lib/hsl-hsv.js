@@ -1,8 +1,6 @@
 /* Convert between HSL and HSV
 /* ========================================================================== */
 
-// https://gist.github.com/defims/0ca2ef8832833186ed396a2f8a204117
-
 export function hsl2hsv(hslH, hslS, hslL) {
 	const hsv1 = hslS * (hslL < 50 ? hslL : 100 - hslL) / 100;
 	const hsvS = hsv1 === 0 ? 0 : 2 * hsv1 / (hslL + hsv1) * 100;
@@ -21,3 +19,12 @@ export function hsv2hsl(hsvH, hsvS, hsvV) {
 
 	return [ hsvH, hslS, hslV ];
 }
+
+/*
+
+References
+----------
+
+- https://gist.github.com/defims/0ca2ef8832833186ed396a2f8a204117
+
+/* ========================================================================== */
