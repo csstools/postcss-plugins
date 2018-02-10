@@ -3,6 +3,7 @@ import balanced from "balanced-match"
 
 const VAR_PROP_IDENTIFIER = "--"
 const VAR_FUNC_IDENTIFIER = "var"
+const VAR_FUNC_REGEX = /(^|[^\w-])var\(/
 // matches `name[, fallback]`, captures "name" and "fallback"
 const RE_VAR = /([\w-]+)(?:\s*,\s*)?\s*(.*)?/
 
@@ -27,10 +28,14 @@ let globalOpts
 function resolveValue(value, variables, result, decl) {
   const results = []
 
-  const start = value.indexOf(VAR_FUNC_IDENTIFIER + "(")
-  if (start === -1) {
+  const hasVarFunction = VAR_FUNC_REGEX.test(value)
+
+  if (!hasVarFunction) {
     return [value]
   }
+
+  const match = value.match(VAR_FUNC_REGEX)
+  const start = match.index + match[1].length
 
   const matches = balanced("(", ")", value.substring(start))
 

@@ -35,4 +35,7 @@ div {
 
   /* multiple variables within a function */
   background: linear-gradient(to top, var(--test-one), var(--test-two));
+
+  /* untouched custom function */
+  color: myvar(--test-one);
 }
