@@ -13,6 +13,9 @@ div {
   /* single variable */
   color: green;
 
+  /* single variable with comments */
+  color: /*comment before*/green/*comment after*/;
+
   /* single variable with tail */
   color: green !important;
 

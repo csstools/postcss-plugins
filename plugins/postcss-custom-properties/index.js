@@ -248,7 +248,7 @@ export default postcss.plugin("postcss-custom-properties", (options = {}) => {
 
     // resolve variables
     style.walkDecls((decl) => {
-      const value = decl.value
+      const value = decl.raws.value ? decl.raws.value.raw : decl.value
 
       // skip values that don’t contain variable functions
       if (!value || value.indexOf(VAR_FUNC_IDENTIFIER + "(") === -1) {
