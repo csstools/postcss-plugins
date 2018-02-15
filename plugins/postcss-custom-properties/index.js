@@ -5,7 +5,7 @@ const VAR_PROP_IDENTIFIER = "--"
 const VAR_FUNC_IDENTIFIER = "var"
 const VAR_FUNC_REGEX = /(^|[^\w-])var\(/
 // matches `name[, fallback]`, captures "name" and "fallback"
-const RE_VAR = /([\w-]+)(?:\s*,\s*)?\s*(.*)?/
+const RE_VAR = /[\f\n\r\t ]*([\w-]+)(?:[\f\n\r\t ]*,[\f\n\r\t ]*([\W\w]+))?/
 
 /**
  * Module variables
