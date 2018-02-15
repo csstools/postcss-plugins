@@ -171,7 +171,7 @@ export default postcss.plugin("postcss-custom-properties", (options = {}) => {
     const importantMap = {}
 
     globalOpts = {
-      warnings: "warnings" in options ? Boolean(options.warnings) : true,
+      warnings: "warnings" in options ? Boolean(options.warnings) : false,
       noValueNotifications: "noValueNotifications" in options
         ? String(options.noValueNotifications) : "warning",
     }

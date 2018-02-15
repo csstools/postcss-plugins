@@ -61,7 +61,9 @@ test("throw errors", function(t) {
 test(
   "substitutes nothing when a variable function references an undefined var",
   function(t) {
-    const result = compareFixtures(t, "substitution-undefined")
+    const result = compareFixtures(t, "substitution-undefined", {
+      warnings: true,
+    })
     t.equal(
       result.messages[0].text,
       "variable '--test' is undefined and used without a fallback",
@@ -78,6 +80,7 @@ test(
       function() {
         return postcss(customProperties({
           noValueNotifications: "error",
+          warnings: true,
         }))
           .process(fixture("substitution-undefined"))
           .css
@@ -90,7 +93,9 @@ test(
 )
 
 test("substitutes defined variables in `:root` only", function(t) {
-  const result = compareFixtures(t, "substitution-defined")
+  const result = compareFixtures(t, "substitution-defined", {
+    warnings: true,
+  })
   t.ok(
     result.messages[0].text.match(/^Custom property ignored/),
     "should add a warning for non root custom properties"
@@ -212,7 +217,9 @@ test("preserves computed value when `preserve` is `\"computed\"`", function(t) {
 
 test("circular variable references", function(t) {
   compareFixtures(t, "self-reference")
-  const result = compareFixtures(t, "circular-reference")
+  const result = compareFixtures(t, "circular-reference", {
+    warnings: true,
+  })
   t.equal(
     result.messages[0].text,
     "Circular variable reference: --bg-color",
