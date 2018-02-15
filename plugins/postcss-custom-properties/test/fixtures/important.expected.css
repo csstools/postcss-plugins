@@ -1,5 +1,19 @@
+:root {
+ --one: not important;
+ --one: important !important;
+
+ --two: important !important;
+ --two: not important;
+
+ --three: important !important;
+ --three: more important !important;
+}
+
 selector {
  one: important;
+ one: var(--one);
  two: important;
+ two: var(--two);
  three: more important;
+ three: var(--three);
 }

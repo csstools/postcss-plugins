@@ -1,3 +1,8 @@
+:root {
+	--color: var(--color);
+	--color: var(--color);
+}
 body {
 	color: #aaa;
+	color: var(--color, #aaa);
 }

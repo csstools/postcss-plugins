@@ -166,7 +166,7 @@ export default postcss.plugin("postcss-custom-properties", (options = {}) => {
     const strict = "strict" in options ? Boolean(options.strict) : true
     const appendVariables = "appendVariables" in options
       ? Boolean(options.appendVariables) : false
-    const preserve = "preserve" in options ? options.preserve : null
+    const preserve = "preserve" in options ? options.preserve : true
     const map = {}
     const importantMap = {}
 

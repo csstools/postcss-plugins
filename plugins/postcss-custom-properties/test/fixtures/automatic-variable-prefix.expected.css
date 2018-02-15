@@ -1,4 +1,6 @@
 div {
   color: blue;
+  color: var(--unprefixed);
   background: white;
+  background: var(--prefixed);
 }

@@ -1,5 +1,14 @@
+:root {
+  --a: "a";
+  --b: bFallback;
+  --b: var(--bUndef, bFallback);
+}
+
 div {
   aProp: "a";
+  aProp: var(--a, aPropFallback);
   bProp: bFallback;
+  bProp: var(--b, bPropFallback);
   bProp: cPropFallback;
+  bProp: var(--cUndef, cPropFallback);
 }

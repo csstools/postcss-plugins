@@ -1,8 +1,18 @@
+:root {
+  --defined: true
+}
+
 div {
   color: var(--test);
+  color: var(--test);
   color: fallback;
+  color: var(--test, fallback);
+  background: linear-gradient(var(--a), var(--b));
   background: linear-gradient(var(--a), var(--b));
   background: linear-gradient(var(--a), var(--b), true);
+  background: linear-gradient(var(--a), var(--b), var(--defined));
   background: linear-gradient(var(--a), true , var(--b));
+  background: linear-gradient(var(--a), var(--defined) , var(--b));
   background: linear-gradient(var(--a), true , var(--b), true);
+  background: linear-gradient(var(--a), var(--defined) , var(--b), var(--defined));
 }

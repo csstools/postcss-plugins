@@ -215,7 +215,7 @@ test("circular variable references", function(t) {
   const result = compareFixtures(t, "circular-reference")
   t.equal(
     result.messages[0].text,
-    "Circular variable reference: --color",
+    "Circular variable reference: --bg-color",
     "should add a warning for circular reference"
   )
   t.end()
