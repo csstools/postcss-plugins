@@ -166,12 +166,12 @@ export default postcss.plugin("postcss-custom-properties", (options = {}) => {
     const strict = "strict" in options ? Boolean(options.strict) : true
     const appendVariables = "appendVariables" in options
       ? Boolean(options.appendVariables) : false
-    const preserve = "preserve" in options ? options.preserve : false
+    const preserve = "preserve" in options ? options.preserve : true
     const map = {}
     const importantMap = {}
 
     globalOpts = {
-      warnings: "warnings" in options ? Boolean(options.warnings) : true,
+      warnings: "warnings" in options ? Boolean(options.warnings) : false,
       noValueNotifications: "noValueNotifications" in options
         ? String(options.noValueNotifications) : "warning",
     }

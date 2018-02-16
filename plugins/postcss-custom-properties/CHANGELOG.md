@@ -1,3 +1,8 @@
+# 7.0.0 - 2018-02-16
+
+- Changed: `preserve` option defaults as `true` to reflect the browser climate
+- Changed: `warnings` option defaults to `false` to reflect the browser climate
+
 # 6.3.1 - 2018-02-16
 
 - Reverted: `preserve` and `warnings` option to be added in major release
