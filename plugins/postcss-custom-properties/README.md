@@ -1,45 +1,130 @@
-# postcss-custom-properties [![CSS Standard Status](https://jonathantneal.github.io/css-db/badge/css-variables.svg)](https://jonathantneal.github.io/css-db/#css-variables) [![Build Status](https://travis-ci.org/postcss/postcss-custom-properties.svg)](https://travis-ci.org/postcss/postcss-custom-properties)
+# PostCSS Custom Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS Custom Properties for ~~cascading~~ variables](http://www.w3.org/TR/css-variables/) syntax to more compatible CSS.
+[![NPM Version][npm-img]][npm-url]
+[![CSS Standard Status][css-img]][css-url]
+[![Build Status][cli-img]][cli-url]
+[![Gitter Chat][git-img]][git-url]
 
-_Per w3c specifications, the usage of `var()` is limited to property values. Do not expect the plugin to transform `var()` in media queries or in selectors._
+[PostCSS Custom Properties] lets you use CSS Custom Properties in CSS, following
+the [CSS Custom Properties for Cascading Variables] specification.
 
-**N.B.** The transformation _is not complete_ and **cannot be** (dynamic *cascading* variables based on custom properties relies on the DOM tree).
-It currently just aims to provide a future-proof way of using a **limited subset (to `:root` selector)** of the features provided by native CSS custom properties.
-_Since we do not know the DOM in the context of this plugin, we cannot produce safe output_.
-Read [#1](https://github.com/postcss/postcss-custom-properties/issues/1) & [#9](https://github.com/postcss/postcss-custom-properties/issues/9) to know why this limitation exists.
+```css
+:root {
+  --color: red;
+}
 
-_If you are looking for a full support of CSS custom properties, please follow [the opened issue for runtime support](https://github.com/postcss/postcss-custom-properties/issues/32)._
+h1 {
+  color: var(--color);
+}
 
-**N.B.²** If you are wondering why there is a different plugin ([`postcss-css-variables`](https://github.com/MadLittleMods/postcss-css-variables)) that claims to do more than this plugin, be sure to understand the explanation above about limitation. This plugins have a behavior that is not [reflecting the specifications](https://github.com/MadLittleMods/postcss-css-variables/issues/4).
+/* becomes */
 
-_This plugin works great with [postcss-calc](https://github.com/postcss/postcss-calc)._
+:root {
+  --color: red;
+}
 
-## Installation
-
-```console
-$ npm install postcss-custom-properties
+div {
+  color: red;
+  color: var(--color);
+}
 ```
 
 ## Usage
 
-```js
-// dependencies
-var fs = require("fs")
-var postcss = require("postcss")
-var customProperties = require("postcss-custom-properties")
+Add [PostCSS Custom Properties] to your build tool:
 
-// css to be processed
-var css = fs.readFileSync("input.css", "utf8")
-
-// process css using postcss-custom-properties
-var output = postcss()
-  .use(customProperties())
-  .process(css)
-  .css
+```bash
+npm install postcss-custom-properties --save-dev
 ```
 
-Using this `input.css`:
+#### Node
+
+Use [PostCSS Custom Properties] to process your CSS:
+
+```js
+import postCSSCustomProperties from 'postcss-custom-properties';
+
+postCSSCustomProperties.process(YOUR_CSS);
+```
+
+#### PostCSS
+
+Add [PostCSS] to your build tool:
+
+```bash
+npm install postcss --save-dev
+```
+
+Use [PostCSS Custom Properties] as a plugin:
+
+```js
+import postcss from 'gulp-postcss';
+import postCSSCustomProperties from 'postcss-custom-properties';
+
+postcss([
+  postCSSCustomProperties()
+]).process(YOUR_CSS);
+```
+
+#### Gulp
+
+Add [Gulp PostCSS] to your build tool:
+
+```bash
+npm install gulp-postcss --save-dev
+```
+
+Use [PostCSS Custom Properties] in your Gulpfile:
+
+```js
+import postcss from 'gulp-postcss';
+import postCSSCustomProperties from 'postcss-custom-properties';
+
+gulp.task('css', () => gulp.src('./src/*.css').pipe(
+  postcss([
+    postCSSCustomProperties()
+  ])
+).pipe(
+  gulp.dest('.')
+));
+```
+
+#### Grunt
+
+Add [Grunt PostCSS] to your build tool:
+
+```bash
+npm install grunt-postcss --save-dev
+```
+
+Use [PostCSS Custom Properties] in your Gruntfile:
+
+```js
+import postCSSCustomProperties from 'postcss-custom-properties';
+
+grunt.loadNpmTasks('grunt-postcss');
+
+grunt.initConfig({
+  postcss: {
+    options: {
+      use: [
+       postCSSCustomProperties()
+      ]
+    },
+    dist: {
+      src: '*.css'
+    }
+  }
+});
+```
+
+## Options
+
+### strict
+
+The `strict` option determines whether a `var()` function should transform into
+its specified fallback value. By default, the option is `true` because this
+plugin can not verify if the computed `:root` value is valid or not.
 
 ```css
 :root {
@@ -47,128 +132,247 @@ Using this `input.css`:
 }
 
 div {
+  color: var(--color, blue);
+}
+
+/* becomes */
+
+:root {
+  --color: red;
+}
+
+div {
+  color: blue;
+  color: var(--color, blue);
+}
+```
+
+### preserve
+
+The `preserve` option determines how Custom Properties should be preserved. By
+default, this option is truthy and preserves declarations containing `var()`.
+
+```css
+:root {
+  --color: red;
+}
+
+h1 {
+  color: var(--color);
+}
+
+/* becomes */
+
+:root {
+  --color: red;
+}
+
+h1 {
+  color: red;
   color: var(--color);
 }
 ```
 
-you will get:
+The option may also be set to `false`, where Custom Properties and declarations
+containing `var()` will be removed:
+
+```js
+postCSSCustomProperties({
+  variables: {
+    preserve: false
+  }
+})
+```
 
 ```css
-div {
+:root {
+  --color: red;
+}
+
+h1 {
+  color: var(--color);
+}
+
+/* becomes */
+
+h1 {
   color: red;
 }
 ```
 
-You can also compile CSS custom properties with their fallback value.
-
-Using this `input.css`:
-
-```css
-div {
-  color: var(--color, #f00);
-}
-```
-
-you will get:
-
-```css
-div {
-  color: #f00;
-}
-```
-
-Note that plugin returns itself in order to expose a `setVariables` function
-that allow you to programmatically change the variables.
+The option may also be set to `"preserve-computed"`, where Custom Properties
+will remain, but declarations containing `var()` will be removed:
 
 ```js
-var variables = {
-  "--a": "b",
-}
-var plugin = customProperties()
-plugin.setVariables(variables)
-var result = postcss()
-  .use(plugin)
-  .process(input)
+postCSSCustomProperties({
+  variables: {
+    preserve: 'preserve-computed'
+  }
+})
 ```
 
-This might help for dynamic live/hot reloading.
+```css
+:root {
+  --color: red;
+}
 
-Checkout [tests](test) for more.
+h1 {
+  color: var(--color);
+}
 
-### Options
+/* becomes */
 
-#### `strict`
+:root {
+  --color: red;
+}
 
-Default: `true`
+h1 {
+  color: red;
+}
+```
 
-Per specifications, all fallbacks should be added since we can't verify if a
-computed value is valid or not.
-This option allows you to avoid adding too many fallback values in your CSS.
+### variables
 
-#### `preserve`
-
-Default: `false`
-
-Allows you to preserve custom properties & var() usage in output.
+The `variables` option allows you to pass an object of variables into CSS, as if
+they had been specified on `:root`.
 
 ```js
-var out = postcss()
-  .use(customProperties({preserve: true}))
-  .process(css)
-  .css
+postCSSCustomProperties({
+  variables: {
+    color: 'red'
+  }
+})
 ```
 
-You can also set `preserve: "computed"` to get computed resolved custom
-properties in the final output.
-Handy to make them available to your JavaScript.
+```css
+h1 {
+  color: var(--color);
+}
 
-#### `variables`
+/* becomes */
 
-Default: `{}`
+h1 {
+  color: red;
+  color: var(--color);
+}
+```
 
-Allows you to pass an object of variables for `:root`. These definitions will
-override any that exist in the CSS.
-The keys are automatically prefixed with the CSS `--` to make it easier to share
+Note that these definitions will override any that exist in the CSS, and that
+the keys will be automatically prefixed (`--`) to make it easier to share
 variables in your codebase.
 
-#### `appendVariables`
+### appendVariables
 
-Default: `false`
+The `appendVariables` option determines whether Custom Properties will be
+appended to your CSS file. By default, this option is `false`.
 
-If `preserve` is set to `true` (or `"computed"`), allows you to append your
-variables at the end of your CSS.
+If enabled when `preserve` is set to `true` or `"computed"`, this option allows
+you to append your variables at the end of your CSS:
 
-#### `warnings`
+```js
+postCSSCustomProperties({
+  appendVariables: true,
+  variables: {
+    color: 'red'
+  }
+})
+```
 
-Default: `true`
-Type: `Boolean`
+```css
+h1 {
+  color: var(--color);
+}
 
-Allows you to enable/disable warnings. If true, will enable all warnings.
-For now, it only allow to disable messages about custom properties definition
-not scoped in a `:root` selector.
+/* becomes */
 
+h1 {
+  color: red;
+  color: var(--color);
+}
 
-### `noValueNotifications`
+:root {
+  --color: red;
+}
+```
 
-Default: `'warning'`
-Values: `'warning'|'error'`
+### warnings
 
-If it is set to `'error'`, using of undefined variable will throw an error.
+The `warnings` option determines whether Custom Property related warnings should
+be logged by the plugin or not. By default, warnings are set to `false` and are
+not logged.
 
+If enabled, the plugin will enable all warnings:
+
+```js
+postCSSCustomProperties({
+  warnings: true
+})
+```
+
+```css
+h1 {
+  color: var(--color);
+}
+```
+
+```
+variable '--color' is undefined and used without a fallback
+```
+
+### noValueNotifications
+
+When warnings are enabled, the `noValueNotifications` option determines whether
+undefined variables will throw a warning or an error. By default, it is set to
+`warning`.
 
 ---
+
+## Notes
+
+As written in the specification, usage of `var()` is limited to property values.
+Do not expect the plugin to transform `var()` in media queries or in selectors.
+
+The transformation of Custom Properties done by this plugin _is not complete_
+and **cannot be** because dynamic *cascading* variables based on custom
+properties relies on the DOM tree. Since we do not know the DOM in the context
+of this plugin, we cannot produce safe output. This plugin currently aims to
+provide a future-proof way of using a **limited subset** of the features
+provided by native CSS custom properties.
+
+There is a separate plugin, [PostCSS CSS Variables], that attempts to guess the
+context of Custom Properties without access to the DOM tree. This does not
+[reflecting the specifications](https://github.com/MadLittleMods/postcss-css-variables/issues/4),
+so be sure you understand the risks before you decide to use it.
 
 ## Contributing
 
 Fork, work on a branch, install dependencies & run tests before submitting a PR.
 
-```console
+```bash
 $ git clone https://github.com/YOU/postcss-custom-properties.git
 $ git checkout -b patch-1
 $ npm install
 $ npm test
 ```
 
+---
+
 ## [Changelog](CHANGELOG.md)
 
 ## [License](LICENSE)
+
+[npm-url]: https://www.npmjs.com/package/postcss-custom-properties
+[npm-img]: https://img.shields.io/npm/v/postcss-custom-properties.svg
+[css-url]: https://jonathantneal.github.io/css-db/#css-variables
+[css-img]: https://jonathantneal.github.io/css-db/badge/css-variables.svg
+[cli-url]: https://travis-ci.org/postcss/postcss-custom-properties
+[cli-img]: https://img.shields.io/travis/postcss/postcss-custom-properties.svg
+[git-url]: https://gitter.im/postcss/postcss
+[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
+
+[CSS Custom Properties for Cascading Variables]: https://www.w3.org/TR/css-variables-1/
+[PostCSS CSS Variables]: https://github.com/MadLittleMods/postcss-css-variables
+[PostCSS Custom Properties]: https://github.com/postcss/postcss-custom-properties
+[PostCSS]: https://github.com/postcss/postcss
+[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
+[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
