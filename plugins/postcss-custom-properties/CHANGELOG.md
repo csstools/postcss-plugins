@@ -1,3 +1,12 @@
+# 6.3.0 - 2018-02-15
+
+- Fixed: `var()` captures strictly `var()` functions and not `xvar()`, etc
+- Fixed: `var()` better captures whitespace within the function
+- Fixed: comments within declarations using `var()` are now preserved
+- Changed: `preserve` option defaults as `true` to reflect the browser climate
+- Changed: `warnings` option defaults to `false` to reflect the browser climate
+- Updated documentation
+
 # 6.2.0 - 2017-10-06
 
 - Added: `noValueNotifications` option (#71)
