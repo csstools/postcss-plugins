@@ -1,3 +1,7 @@
+# 6.3.1 - 2018-02-16
+
+- Reverted: `preserve` and `warnings` option to be added in major release
+
 # 6.3.0 - 2018-02-15
 
 - Fixed: `var()` captures strictly `var()` functions and not `xvar()`, etc
