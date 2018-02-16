@@ -119,3 +119,11 @@ test-sameness {
 	color: rgb(245, 245, 220);
 	color: hsl(60, 55.5555555556%, 91.1764705882%);
 }
+
+:root {
+	--color: blue;
+}
+
+test-var {
+	color: rgb(0, 0, 255);
+}

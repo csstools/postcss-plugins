@@ -10,6 +10,11 @@ import parser from 'postcss-values-parser';
 export default function transformAST(node, opts) {
 	node.nodes.slice(0).forEach(child => {
 		if (isColorModFunction(child)) {
+			// transform any variables within the color-mod() function
+			if (opts.transformVars) {
+				transformVariables(child, opts);
+			}
+
 			// transform any color-mod() functions
 			const color = transformColorModFunction(child, opts);
 
@@ -25,6 +30,50 @@ export default function transformAST(node, opts) {
 			transformAST(child, opts);
 		}
 	});
+}
+
+/* Transform <var> functions
+/* ========================================================================== */
+
+function transformVariables(node, opts) {
+	node.walk(
+		child => {
+			if (isVariable(child)) {
+				const [variableName, fallbackNode] = transformArgsByParams(child, [
+					// <value> , [ <fallback> ]?
+					[transformWord, isComma, transformNode]
+				]);
+
+				if (variableName) {
+					let variableNode;
+
+					opts.result.root.walkRules(':root', rule => {
+						rule.nodes.filter(
+							rootChild => rootChild.prop === variableName
+						).slice(-1).forEach(
+							rootChild => {
+								const rootChildValue = rootChild.value;
+
+								const rootChildAST = parser(rootChildValue, { loose: true }).parse();
+
+								transformVariables(rootChildAST, opts);
+
+								variableNode = rootChildAST.nodes[0];
+							}
+						);
+					});
+
+					if (variableNode) {
+						child.replaceWith(...variableNode.nodes);
+					}
+				} else if (fallbackNode) {
+					transformVariables(fallbackNode, opts);
+
+					child.replaceWith(...fallbackNode.nodes[0].nodes);
+				}
+			}
+		}
+	);
 }
 
 /* Transform <color> functions
@@ -501,6 +550,21 @@ function transformMinusPlusTimesOperator(node, opts) {
 	}
 }
 
+/* Additional transforms
+/* ========================================================================== */
+
+function transformWord(node, opts) {
+	if (isWord(node)) {
+		return node.value;
+	} else {
+		return manageUnresolved(node, opts, node.value, `Expected a valid word`);
+	}
+}
+
+function transformNode(node) {
+	return Object(node);
+}
+
 /* Transform helper
 /* ========================================================================== */
 
@@ -514,6 +578,15 @@ function transformArgsByParams(node, params) {
 	).filter(child => typeof child !== 'boolean')).filter(param => param.every(
 		result => result !== undefined
 	))[0] || [];
+}
+
+/* Variable validators
+/* ========================================================================== */
+
+// return whether the node is a var function
+function isVariable(node) {
+	// var()
+	return Object(node).type === 'func' && varMatch.test(node.value);
 }
 
 /* Adjustment validators
@@ -647,6 +720,12 @@ function isPercentage(node) {
 	return Object(node).type === 'number' && (node.unit === '%' || node.value === '0');
 }
 
+// return whether the node is a word
+function isWord(node) {
+	// <word>
+	return Object(node).type === 'word';
+}
+
 /* Matchers
 /* ========================================================================== */
 
@@ -667,4 +746,5 @@ const minusPlusTimesMatch = /^[*+-]$/;
 const rgbMatch = /^rgb$/i;
 const rgbaMatch = /^rgba?$/i;
 const shadeTintMatch = /^(shade|tint)$/i;
+const varMatch = /^var$/i;
 const timesMatch = /^[*]$/;

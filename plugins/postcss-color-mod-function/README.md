@@ -37,16 +37,13 @@ function in CSS, following the [CSS Color Module Level 4] specification.
 
 ## Supported Colors
 
-The `color-mod()` function accepts `rgb()`, legacy `rgb()`, `rgba()`, `hsl()`,
-legacy `hsl()`, `hsla()`, `hwb()`, and `color-mod()` colors, as well as 3, 4,
-6, and 8 digit hex colors, and named colors without the need for additional
-plugins.
+The `color-mod()` function accepts `rgb()`, legacy comma-separated `rgb()`,
+`rgba()`, `hsl()`, legacy comma-separated `hsl()`, `hsla()`, `hwb()`, and
+`color-mod()` colors, as well as 3, 4, 6, and 8 digit hex colors, and named
+colors without the need for additional plugins.
 
 Implemention details are available in
 [the specification](https://drafts.csswg.org/css-color/#funcdef-color-mod).
-
-*Because CSS variables (`var()`) cannot not be inferred at compilation, they
-will need to be compiled beforehand.*
 
 ## Supported Color Adjusters
 
@@ -57,6 +54,11 @@ The `color-mod()` function accepts `red()`, `green()`, `blue()`, `a()` /
 
 Implemention details are available in
 [the specification](https://drafts.csswg.org/css-color/#typedef-color-adjuster).
+
+## Supported Variables
+
+By default, `var()` variables will be used if their corresponding Custom
+Properties are found in a `:root` rule, or if a fallback value is specified.
 
 ---
 
@@ -182,6 +184,17 @@ postcssColorMod({
   unresolved: 'ignore' // ignore unresolved color-mod() functions
 });
 ```
+
+### transformVars
+
+The `transformVars` option defines whether `var()` variables used within
+`color-mod()` should be transformed into their corresponding Custom Properties
+available in `:root`, or their fallback value if it is specified. By default,
+`var()` variables will be transformed.
+
+However, because these transformations occur at build time, they cannot be
+considered accurate. Accurately resolving cascading variables relies on
+knowledge of the living DOM tree.
 
 [npm-url]: https://www.npmjs.com/package/postcss-color-mod-function
 [npm-img]: https://img.shields.io/npm/v/postcss-color-mod-function.svg

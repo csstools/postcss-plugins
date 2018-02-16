@@ -7,6 +7,7 @@ import transformAST from './lib/transform';
 export default postcss.plugin('postcss-color-mod-function', opts => {
 	const unresolvedOpt = String(Object(opts).unresolved || 'throw').toLowerCase();
 	const stringifierOpt = Object(opts).stringifier || (color => color.toLegacy());
+	const transformVarsOpt = 'transformVars' in Object(opts) ? opts.transformVars : true;
 
 	return (root, result) => {
 		root.walkDecls(decl => {
@@ -15,7 +16,13 @@ export default postcss.plugin('postcss-color-mod-function', opts => {
 			if (colorModFunctionMatch.test(originalValue)) {
 				const ast = parser(originalValue, { loose: true }).parse();
 
-				transformAST(ast, { unresolved: unresolvedOpt, stringifier: stringifierOpt, decl, result });
+				transformAST(ast, {
+					unresolved: unresolvedOpt,
+					stringifier: stringifierOpt,
+					transformVars: transformVarsOpt,
+					decl,
+					result
+				});
 
 				const modifiedValue = ast.toString();
 

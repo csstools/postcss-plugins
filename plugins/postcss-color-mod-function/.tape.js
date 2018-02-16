@@ -9,6 +9,15 @@ module.exports = {
 				stringifier: color => color.toString()
 			}
 		},
+		'basic:transformvars': {
+			message: 'supports { transformVars: false } usage',
+			options: {
+				transformVars: false
+			},
+			error: {
+				reason: 'Expected a color'
+			}
+		},
 		'warn': {
 			message: 'supports { unresolved } usage',
 			options: {

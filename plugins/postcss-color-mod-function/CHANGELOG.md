@@ -1,5 +1,11 @@
 # Changes to PostCSS color-mod() Function
 
+### 2.3.0 (February 16, 2018)
+
+- Added build-time support for Custom Properties and Variables
+- Updated `@csstools/convert-colors` to 1.4 (minor update)
+- Updated tests to reflect variable support
+
 ### 2.3.0 (January 25, 2018)
 
 - Updated `@csstools/convert-colors` to 1.3 (minor update)

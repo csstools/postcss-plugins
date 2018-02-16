@@ -119,3 +119,11 @@ test-sameness {
 	color: color-mod(beige alpha(+ 0%));
 	color: color-mod(beige blend(beige 0% hsl));
 }
+
+:root {
+	--color: blue;
+}
+
+test-var {
+	color: color-mod(var(--color));
+}
