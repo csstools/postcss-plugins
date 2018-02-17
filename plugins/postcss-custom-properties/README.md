@@ -23,7 +23,7 @@ h1 {
   --color: red;
 }
 
-div {
+h1 {
   color: red;
   color: var(--color);
 }
