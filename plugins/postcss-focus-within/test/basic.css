@@ -1,0 +1,27 @@
+:focus-within {
+	order: 1;
+}
+
+:focus-within,
+:focus-within test,
+test :focus-within,
+test test:focus-within,
+test :focus-within test,
+test test:focus-within test,
+test :focus-within :focus-within test,
+test :matches(:focus-within) test,
+test :matches(:focus-within test) test,
+test :matches(test :focus-within) test,
+test :matches(test test:focus-within) test,
+test :matches(test :focus-within test) test,
+test :matches(test test:focus-within test) test,
+test :matches(test :focus-within :focus-within test) test {
+	order: 2;
+}
+
+:ignore-focus-within,
+:focus-within-ignore,
+:ignorefocus-within,
+:focus-withinignore {
+	order: 3;
+}

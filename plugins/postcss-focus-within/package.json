@@ -1,0 +1,60 @@
+{
+  "name": "postcss-focus-within",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": "jonathantneal/postcss-focus-within",
+  "homepage": "https://github.com/jonathantneal/postcss-focus-within#readme",
+  "bugs": "https://github.com/jonathantneal/postcss-focus-within/issues",
+  "main": "index.bundle.js",
+  "module": "index.js",
+  "files": [
+    "index.js",
+    "index.bundle.js"
+  ],
+  "scripts": {
+    "prepublishOnly": "npm test",
+    "pretest": "rollup -c .rollup.js --silent",
+    "test": "echo 'Running tests...'; npm run test:ec && npm run test:js && npm run test:tape",
+    "test:ec": "echint --ignore index.bundle.js test",
+    "test:js": "eslint *.js --cache --ignore-path .gitignore --quiet",
+    "test:tape": "postcss-tape"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "postcss": "^6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26",
+    "babel-eslint": "^8.2",
+    "babel-preset-env": "^1.6",
+    "echint": "^4.0",
+    "eslint": "^4.18",
+    "eslint-config-dev": "2.0",
+    "postcss-tape": "2.2",
+    "pre-commit": "^1.2",
+    "rollup": "^0.56",
+    "rollup-plugin-babel": "^3.0"
+  },
+  "eslintConfig": {
+    "extends": "dev",
+    "parser": "babel-eslint"
+  },
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "focus",
+    "within",
+    "polyfill",
+    "pseudos",
+    "selectors",
+    "accessibility",
+    "a11y",
+    "descendants",
+    "ancestors"
+  ]
+}
