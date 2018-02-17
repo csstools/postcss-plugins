@@ -1,38 +1,47 @@
 {
-  "name": "postcss-focus-ring",
-  "version": "1.0.0",
+  "name": "postcss-focus-visible",
+  "version": "2.0.0",
   "description": "Use the :focus-visible pseudo-selector in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "jonathantneal/postcss-focus-ring",
-  "homepage": "https://github.com/jonathantneal/postcss-focus-ring#readme",
-  "bugs": "https://github.com/jonathantneal/postcss-focus-ring/issues",
-  "main": "index.js",
+  "repository": "jonathantneal/postcss-focus-visible",
+  "homepage": "https://github.com/jonathantneal/postcss-focus-visible#readme",
+  "bugs": "https://github.com/jonathantneal/postcss-focus-visible/issues",
+  "main": "index.bundle.js",
+  "module": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "index.bundle.js"
   ],
   "scripts": {
-    "clean": "git clean -X -d -f",
-    "prepublish": "npm test",
-    "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
-    "test:js": "eslint *.js --cache --ignore-pattern .gitignore",
+    "prepublishOnly": "npm test",
+    "pretest": "rollup -c .rollup.js --silent",
+    "test": "echo 'Running tests...'; npm run test:ec && npm run test:js && npm run test:tape",
+    "test:ec": "echint --ignore index.bundle.js test",
+    "test:js": "eslint *.js --cache --ignore-path .gitignore --quiet",
     "test:tape": "postcss-tape"
   },
   "engines": {
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "postcss": "^6.0.1",
-    "postcss-selector-parser": "^2.2.3"
+    "postcss": "^6.0"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-dev": "2.0.0",
-    "postcss-tape": "2.0.1",
-    "pre-commit": "^1.2.2"
+    "babel-core": "^6.26",
+    "babel-eslint": "^8.2",
+    "babel-preset-env": "^1.6",
+    "echint": "^4.0",
+    "eslint": "^4.18",
+    "eslint-config-dev": "2.0",
+    "postcss-tape": "2.2",
+    "pre-commit": "^1.2",
+    "rollup": "^0.56",
+    "rollup-plugin-babel": "^3.0"
   },
   "eslintConfig": {
-    "extends": "dev"
+    "extends": "dev",
+    "parser": "babel-eslint"
   },
   "keywords": [
     "postcss",
@@ -40,17 +49,25 @@
     "postcss-plugin",
     "focus",
     "ring",
-    "css4",
+    "css",
+    "pseudos",
     "selectors",
     "accessibility",
     "a11y",
-    "input",
-    "keyboard",
-    "mouse",
-    "pen",
+    "keyboards",
     "pointer",
     "cursor",
+    "mice",
+    "mouse",
+    "pen",
+    "touch",
     "trackpad",
-    "javascript"
+    "button",
+    "input",
+    "select",
+    "textarea",
+    "contenteditable",
+    "javascript",
+    "js"
   ]
 }

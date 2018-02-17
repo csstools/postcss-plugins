@@ -1,0 +1,27 @@
+[data-focus-visible-added] {
+	order: 1;
+}
+
+[data-focus-visible-added],
+[data-focus-visible-added] test,
+test [data-focus-visible-added],
+test test[data-focus-visible-added],
+test [data-focus-visible-added] test,
+test test[data-focus-visible-added] test,
+test [data-focus-visible-added] [data-focus-visible-added] test,
+test :matches([data-focus-visible-added]) test,
+test :matches([data-focus-visible-added] test) test,
+test :matches(test [data-focus-visible-added]) test,
+test :matches(test test[data-focus-visible-added]) test,
+test :matches(test [data-focus-visible-added] test) test,
+test :matches(test test[data-focus-visible-added] test) test,
+test :matches(test [data-focus-visible-added] [data-focus-visible-added] test) test {
+	order: 2;
+}
+
+:ignore-focus-visible,
+:focus-visible-ignore,
+:ignorefocus-visible,
+:focus-visibleignore {
+	order: 3;
+}

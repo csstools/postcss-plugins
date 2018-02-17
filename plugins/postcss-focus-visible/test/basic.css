@@ -18,3 +18,10 @@ test :matches(test test:focus-visible test) test,
 test :matches(test :focus-visible :focus-visible test) test {
 	order: 2;
 }
+
+:ignore-focus-visible,
+:focus-visible-ignore,
+:ignorefocus-visible,
+:focus-visibleignore {
+	order: 3;
+}

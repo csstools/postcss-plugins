@@ -1,63 +1,15 @@
-// tooling
-const fs      = require('fs');
-const postcss = require('postcss');
-const parser  = require('postcss-selector-parser');
+import postcss from 'postcss';
 
-// plugin
-module.exports = postcss.plugin('postcss-focus-visible', (opts) => (root) => { // eslint-disable-line consistent-return
-	// transformed cache
-	const transformed = [];
+const focusVisibleSelectorRegExp = /:focus-visible([^\w-]|$)/gi;
 
-	// walk each matching rule
-	root.walkRules(/:focus-visible\b/, (rule) => {
-		// original selector
-		const originalSelector = rule.selector;
+export default postcss.plugin('postcss-focus-visible', opts => {
+	const replaceWith = String(Object(opts).replaceWith || '.focus-visible');
 
-		// transformed selector
-		const transformedSelector = parser((selectors) => {
-			// for each selector part
-			selectors.walk((selector) => {
-				// if the selector part is a :focus-visible pseudo
-				if (selector.type === 'pseudo' && selector.value === ':focus-visible') {
-					// change it to a .focus-visible class
-					selector.value = '.focus-visible';
-					selector.type = 'class';
-				}
+	return root => {
+		root.walkRules(focusVisibleSelectorRegExp, rule => {
+			rule.selector = rule.selector.replace(focusVisibleSelectorRegExp, ($0, $1) => {
+				return `${replaceWith}${$1}`;
 			});
-		}).process(originalSelector).result;
-
-		// if the selector has changed
-		if (originalSelector !== transformedSelector) {
-			// update the rule’s selector
-			rule.selector = transformedSelector;
-
-			// push the transformed selector into the transformed cache
-			transformed.push.apply(transformed, rule.selectors);
-		}
-	});
-
-	// filter the transformed cache of repeats
-	const transformedClean = transformed.filter((selector, index) => transformed.indexOf(selector) === index);
-
-	// if the assignTo option is enabled
-	if (opts && opts.assignTo) {
-		// push the transformed cache into the assignTo option
-		opts.assignTo.push.apply(opts.assignTo, transformedClean);
-	}
-
-	// if the exportAs option is enabled
-	if (opts && opts.exportAs) {
-		// destination path
-		const destination = `${ opts.destination || `${
-			root.source && root.source.input && root.source.input.file && root.source.input.file || 'css'
-		}.focus-visible-selectors.${ opts.exportAs === 'js' ? 'js' : 'json' }` }`;
-
-		// stringified contents
-		const json = JSON.stringify(transformedClean, null, '  ');
-		const contents = opts.exportAs === 'js' ? `export default ${ json };` : json;
-
-		return new Promise((resolve, reject) => {
-			fs.writeFile(destination, contents, (error) => error ? reject(error) : resolve());
 		});
-	}
+	};
 });
