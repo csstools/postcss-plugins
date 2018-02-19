@@ -178,9 +178,7 @@ containing `var()` will be removed:
 
 ```js
 postCSSCustomProperties({
-  variables: {
-    preserve: false
-  }
+  preserve: false
 })
 ```
 
@@ -205,9 +203,7 @@ will remain, but declarations containing `var()` will be removed:
 
 ```js
 postCSSCustomProperties({
-  variables: {
-    preserve: 'preserve-computed'
-  }
+  preserve: 'preserve-computed'
 })
 ```
 
