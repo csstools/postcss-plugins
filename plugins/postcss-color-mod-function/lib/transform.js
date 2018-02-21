@@ -22,6 +22,7 @@ export default function transformAST(node, opts) {
 				// update the color-mod() function with the transformed value
 				child.replaceWith(
 					parser.word({
+						raws: child.raws,
 						value: opts.stringifier(color)
 					})
 				);

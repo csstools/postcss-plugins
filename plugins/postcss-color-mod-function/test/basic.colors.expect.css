@@ -127,3 +127,7 @@ test-sameness {
 test-var {
 	color: rgb(0% 0% 100%);
 }
+
+test-multiple-value-items {
+	border: 1px solid rgb(100% 0% 0%);
+}

@@ -127,3 +127,7 @@ test-sameness {
 test-var {
 	color: color-mod(var(--color));
 }
+
+test-multiple-value-items {
+	border: 1px solid color-mod(red);
+}
