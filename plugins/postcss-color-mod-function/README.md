@@ -205,7 +205,7 @@ knowledge of the living DOM tree.
 [git-url]: https://gitter.im/postcss/postcss
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 
-[CSS Color Module Level 4]: https://drafts.csswg.org/css-color/#modifying-colors
+[CSS Color Module Level 4]: https://www.w3.org/TR/css-color-4/#funcdef-color-mod
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
