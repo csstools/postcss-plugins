@@ -1,0 +1,23 @@
+test {
+	color: color-mod(#000000 b(50%));
+	color: color-mod(#000000 red(50%));
+	color: color-mod(#000000 green(50%));
+	color: color-mod(#000000 blue(50%));
+	color: color-mod(#000000 a(50%));
+	color: color-mod(#000000 alpha(50%));
+	color: color-mod(#000000 h(50deg));
+	color: color-mod(#000000 hue(50deg));
+	color: color-mod(#000000 s(50%));
+	color: color-mod(#000000 saturation(50%));
+	color: color-mod(#000000 l(50%));
+	color: color-mod(#000000 lightness(50%));
+	color: color-mod(#000000 w(50%));
+	color: color-mod(#000000 whiteness(50%));
+	color: color-mod(#000000 b(50%));
+	color: color-mod(#000000 blackness(50%));
+	color: color-mod(#000000 tint(50%));
+	color: color-mod(#000000 shade(50%));
+	color: color-mod(#000000 blend(#ffffff 50%));
+	color: color-mod(#000000 blenda(#ffffff 50%));
+	color: color-mod(#000000 contrast(50%));
+}

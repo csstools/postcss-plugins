@@ -1,0 +1,23 @@
+test {
+	color: rgb(128, 0, 0);
+	color: rgb(128, 0, 0);
+	color: rgb(0, 128, 0);
+	color: rgb(0, 0, 128);
+	color: rgba(0, 0, 0, 0.5);
+	color: rgba(0, 0, 0, 0.5);
+	color: hsl(50, 0%, 0%);
+	color: hsl(50, 0%, 0%);
+	color: hsl(0, 50%, 0%);
+	color: hsl(0, 50%, 0%);
+	color: hsl(0, 0%, 50%);
+	color: hsl(0, 0%, 50%);
+	color: rgb(0, 128, 128);
+	color: rgb(0, 128, 128);
+	color: rgb(128, 0, 0);
+	color: rgb(128, 0, 0);
+	color: rgb(128, 128, 128);
+	color: rgb(0, 0, 0);
+	color: rgb(128, 128, 128);
+	color: rgb(128, 128, 128);
+	color: rgb(128, 128, 128);
+}

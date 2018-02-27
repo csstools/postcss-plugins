@@ -25,6 +25,9 @@ module.exports = {
 			},
 			warning: 43,
 			expect: 'warn.css'
-		}
+		},
+		'hex': {
+			message: 'supports hex usage'
+		},
 	}
 };
