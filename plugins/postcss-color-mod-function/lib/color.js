@@ -4,6 +4,16 @@ export default class Color {
 	constructor(color) {
 		this.color = Object(Object(color).color || color);
 
+		this.color.colorspace = this.color.colorspace
+			? this.color.colorspace
+		: 'red' in color && 'green' in color && 'blue' in color
+			? 'rgb'
+		: 'hue' in color && 'saturation' in color && 'lightness' in color
+			? 'hsl'
+		: 'hue' in color && 'whiteness' in color && 'blackness' in color
+			? 'hwb'
+		: 'unknown';
+
 		if (color.colorspace === 'rgb') {
 			this.color.hue = rgb2hue(color.red, color.green, color.blue, color.hue || 0);
 		}
