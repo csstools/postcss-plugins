@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-mod-function",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Modify colors using the color-mod() function in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",

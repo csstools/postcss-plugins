@@ -1,5 +1,9 @@
 # Changes to PostCSS color-mod() Function
 
+### 2.4.2 (February 27, 2018)
+
+- Fixed issue with converting colorspaces
+
 ### 2.4.1 (February 21, 2018)
 
 - Fixed issue with spacing around `color-mod` (credit: [@leesdolphin])
