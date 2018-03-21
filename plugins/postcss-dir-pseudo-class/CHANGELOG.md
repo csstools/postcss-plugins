@@ -1,4 +1,11 @@
-# Changes to PostCSS :dir()
+# Changes to PostCSS Dir Pseudo Class
+
+### 3.0.0 (March 21, 2018)
+
+- Added: `preserve` option to preserve the original `:dir()` rule
+- Updated: `postcss-selector-parser` to v3 (major)
+- Removed: `browsers` option which is better covered by
+  [PostCSS Preset Env](https://github.com/jonathantneal/postcss-preset-env/)
 
 ### 2.1.0 (September 19, 2017)
 

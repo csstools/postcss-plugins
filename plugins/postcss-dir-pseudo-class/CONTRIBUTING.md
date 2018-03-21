@@ -1,4 +1,4 @@
-# Contributing to PostCSS :dir()
+# Contributing to PostCSS Dir Pseudo Class
 
 You want to help? You rock! Now, take a moment to be sure your contributions
 make sense to everyone else.

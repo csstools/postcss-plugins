@@ -1,0 +1,143 @@
+[dir="ltr"] {
+	order: 0;
+}
+
+:dir(ltr) {
+	order: 0;
+}
+
+[dir="ltr"] test {
+	order: 1;
+}
+
+:dir(ltr) test {
+	order: 1;
+}
+
+[dir="ltr"] test * {
+	order: 2;
+}
+
+test :dir(ltr) {
+	order: 2;
+}
+
+[dir="ltr"] test * test {
+	order: 3;
+}
+
+test :dir(ltr) test {
+	order: 3;
+}
+
+[dir="ltr"] test {
+	order: 4;
+}
+
+test:dir(ltr) {
+	order: 4;
+}
+
+[dir="ltr"] test test {
+	order: 5;
+}
+
+test:dir(ltr) test {
+	order: 5;
+}
+
+[dir="ltr"] test test {
+	order: 6;
+}
+
+test test:dir(ltr) {
+	order: 6;
+}
+
+[dir="ltr"]:root * {
+	order: 7;
+}
+
+:root :dir(ltr) {
+	order: 7;
+}
+
+html[dir="ltr"] * {
+	order: 8;
+}
+
+html :dir(ltr) {
+	order: 8;
+}
+
+[dir="rtl"] {
+	order: 9;
+}
+
+:dir(rtl) {
+	order: 9;
+}
+
+[dir="rtl"] test {
+	order: 10;
+}
+
+:dir(rtl) test {
+	order: 10;
+}
+
+[dir="rtl"] test * {
+	order: 11;
+}
+
+test :dir(rtl) {
+	order: 11;
+}
+
+[dir="rtl"] test * test {
+	order: 12;
+}
+
+test :dir(rtl) test {
+	order: 12;
+}
+
+[dir="rtl"] test {
+	order: 13;
+}
+
+test:dir(rtl) {
+	order: 13;
+}
+
+[dir="rtl"] test test {
+	order: 14;
+}
+
+test:dir(rtl) test {
+	order: 14;
+}
+
+[dir="rtl"] test test {
+	order: 15;
+}
+
+test test:dir(rtl) {
+	order: 15;
+}
+
+[dir="rtl"]:root * {
+	order: 16;
+}
+
+:root :dir(rtl) {
+	order: 16;
+}
+
+html[dir="rtl"] * {
+	order: 17;
+}
+
+html :dir(rtl) {
+	order: 17;
+}

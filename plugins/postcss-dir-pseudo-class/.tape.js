@@ -10,20 +10,11 @@ module.exports = {
 				dir: 'ltr'
 			}
 		},
-		'basic:browsers': {
-			message: 'supports { browsers: "last 2 versions" } usage',
-			source: 'basic.css',
-			expect: 'basic.expect.css',
-			result: 'basic.result.css',
-			options: {
-				browsers: 'last 2 versions'
-			}
-		},
-		'basic:supported': {
-			message: 'ignores supported { ff >= 49 } usage',
+		'basic:preserve': {
+			message: 'supports { preserve: true } usage',
 			source: 'basic.css',
 			options: {
-				browsers: 'ff >= 49'
+				preserve: true
 			}
 		}
 	}
