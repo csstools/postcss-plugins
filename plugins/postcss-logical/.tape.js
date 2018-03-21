@@ -9,6 +9,12 @@ module.exports = {
 				dir: 'ltr'
 			}
 		},
+		'border:preserve': {
+			message: 'supports logical "border" property values with { preserve: true }',
+			options: {
+				preserve: true
+			}
+		},
 		'clear': {
 			message: 'supports logical "clear" property values'
 		},
