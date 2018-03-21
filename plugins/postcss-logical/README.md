@@ -1,13 +1,14 @@
-# PostCSS Logical Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
+# PostCSS Logical Properties and Values [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [![CSS Standard Status][css-img]][css-url]
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
-[![Licensing][lic-img]][lic-url]
+[![Windows Build Status][win-img]][win-url]
 [![Gitter Chat][git-img]][git-url]
 
-[PostCSS Logical Properties] lets you use Logical Properties and Values in
-CSS, following the [CSS Logical Properties and Values] specification.
+[PostCSS Logical Properties and Values] lets you use logical, rather than
+physical, direction and dimension mappings in CSS, following the
+[CSS Logical Properties and Values] specification.
 
 ```pcss
 .banner {
@@ -117,10 +118,9 @@ properties:
 
 ---
 
-By default, [PostCSS Logical Properties] changes the selector weight of
-flow-relative declarations and requires at least one [dir] attribute in your
-HTML. If you don’t have any [dir] attributes, consider using the following
-JavaScript:
+By default, [PostCSS Logical Properties and Values] creates fallback selectors
+which require at least one `[dir]` attribute in your HTML. If you don’t have
+any `[dir]` attributes, consider using the following JavaScript:
 
 ```js
 // force at least one dir attribute (this can run at any time)
@@ -138,7 +138,7 @@ require('postcss-logical')({
 
 ## Usage
 
-Add [PostCSS Logical Properties] to your build tool:
+Add [PostCSS Logical Properties and Values] to your build tool:
 
 ```bash
 npm install postcss-logical --save-dev
@@ -146,10 +146,12 @@ npm install postcss-logical --save-dev
 
 #### Node
 
-Use [PostCSS Logical Properties] to process your CSS:
+Use [PostCSS Logical Properties and Values] to process your CSS:
 
 ```js
-require('postcss-logical').process(YOUR_CSS);
+import postcssLogical from 'postcss-logical';
+
+postcssLogical.process(YOUR_CSS);
 ```
 
 #### PostCSS
@@ -160,11 +162,14 @@ Add [PostCSS] to your build tool:
 npm install postcss --save-dev
 ```
 
-Use [PostCSS Logical Properties] as a plugin:
+Use [PostCSS Logical Properties and Values] as a plugin:
 
 ```js
+import postcss from 'gulp-postcss';
+import postcssLogical from 'postcss-logical';
+
 postcss([
-  require('postcss-logical')(/* options */)
+  postcssLogical(/* options */)
 ]).process(YOUR_CSS);
 ```
 
@@ -176,12 +181,12 @@ Add [PostCSS Loader] to your build tool:
 npm install postcss-loader --save-dev
 ```
 
-Use [PostCSS Logical Properties] in your Webpack.config.js:
+Use [PostCSS Logical Properties and Values] in your Webpack configuration:
 
 ```js
-import ${idCamelCase} from '${id}';
+import postcssLogical from 'postcss-logical';
 
-module.exports = {
+export default {
   module: {
     rules: [
       {
@@ -191,7 +196,9 @@ module.exports = {
           { loader: 'css-loader', options: { importLoaders: 1 } },
           { loader: 'postcss-loader', options: {
             ident: 'postcss',
-            plugins: () => [ ${idCamelCase}() ]
+            plugins: () => [
+              postcssLogical(/* options */)
+            ]
           } }
         ]
       }
@@ -208,20 +215,19 @@ Add [Gulp PostCSS] to your build tool:
 npm install gulp-postcss --save-dev
 ```
 
-Use [PostCSS Logical Properties] in your Gulpfile:
+Use [PostCSS Logical Properties and Values] in your Gulpfile:
 
 ```js
-var postcss = require('gulp-postcss');
+import postcss from 'gulp-postcss';
+import postcssLogical from 'postcss-logical';
 
-gulp.task('css', function () {
-  return gulp.src('./src/*.css').pipe(
-    postcss([
-      require('postcss-logical')(/* options */)
-    ])
-  ).pipe(
-    gulp.dest('.')
-  );
-});
+gulp.task('css', () => gulp.src('./src/*.css').pipe(
+  postcss([
+    postcssLogical(/* options */)
+  ])
+).pipe(
+  gulp.dest('.')
+));
 ```
 
 #### Grunt
@@ -232,16 +238,18 @@ Add [Grunt PostCSS] to your build tool:
 npm install grunt-postcss --save-dev
 ```
 
-Use [PostCSS Logical Properties] in your Gruntfile:
+Use [PostCSS Logical Properties and Values] in your Gruntfile:
 
 ```js
+import postcssLogical from 'postcss-logical';
+
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
   postcss: {
     options: {
       use: [
-        require('postcss-logical')(/* options */)
+       postcssLogical(/* options */)
       ]
     },
     dist: {
@@ -274,14 +282,14 @@ the `dir` option will be ignored.
 [css-url]: https://jonathantneal.github.io/css-db/#css-logical
 [git-url]: https://gitter.im/postcss/postcss
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
-[lic-url]: LICENSE.md
-[lic-img]: https://img.shields.io/npm/l/postcss-logical.svg
 [npm-url]: https://www.npmjs.com/package/postcss-logical
 [npm-img]: https://img.shields.io/npm/v/postcss-logical.svg
+[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-logical-properties
+[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-logical-properties.svg
 
 [CSS Logical Properties and Values]: https://drafts.csswg.org/css-logical/
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Logical Properties]: https://github.com/jonathantneal/postcss-logical-properties
+[PostCSS Logical Properties and Values]: https://github.com/jonathantneal/postcss-logical-properties
