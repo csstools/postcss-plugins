@@ -1,16 +1,16 @@
 // tooling
-const postcss = require('postcss');
+import postcss from 'postcss';
 
 // internal tooling
-const transformBorder = require('./dependent-js/transform-border');
-const transformFloat = require('./dependent-js/transform-float');
-const transformInset = require('./dependent-js/transform-inset');
-const transformResize = require('./dependent-js/transform-resize');
-const transformSide = require('./dependent-js/transform-side');
-const transformSize = require('./dependent-js/transform-size');
-const transformSpacing = require('./dependent-js/transform-spacing');
-const transformTextAlign = require('./dependent-js/transform-text-align');
-const matchSupportedProperties = require('./dependent-js/match-supported-properties');
+import transformBorder from './dependent-js/transform-border';
+import transformFloat from './dependent-js/transform-float';
+import transformInset from './dependent-js/transform-inset';
+import transformResize from './dependent-js/transform-resize';
+import transformSide from './dependent-js/transform-side';
+import transformSize from './dependent-js/transform-size';
+import transformSpacing from './dependent-js/transform-spacing';
+import transformTextAlign from './dependent-js/transform-text-align';
+import matchSupportedProperties from './dependent-js/match-supported-properties';
 
 // supported transforms
 const transforms = {
@@ -42,19 +42,21 @@ const transforms = {
 };
 
 // plugin
-module.exports = postcss.plugin('postcss-logical-properties', (opts) => (root) => {
-	const dir = Object(opts) === opts ? /^rtl$/i.test(opts.dir) ? 'rtl' : 'ltr' : false;
+export default postcss.plugin('postcss-logical-properties', opts => {
+	const dir = 'dir' in Object(opts) ? /^rtl$/i.test(Object(opts).dir) ? 'rtl' : 'ltr' : false;
 
-	root.walkDecls((decl) => {
-		const values = postcss.list.split(decl.value, /^border(-block|-inline|-start|-end)?(-width|-style|-color)?$/i.test(decl.prop) ? '/' : ' ');
-		const prop = decl.prop.replace(matchSupportedProperties, '$2$5').toLowerCase();
+	return root => {
+		root.walkDecls(decl => {
+			const values = postcss.list.split(decl.value, /^border(-block|-inline|-start|-end)?(-width|-style|-color)?$/i.test(decl.prop) ? '/' : ' ');
+			const prop = decl.prop.replace(matchSupportedProperties, '$2$5').toLowerCase();
 
-		if (prop in transforms) {
-			const replacer = transforms[prop](decl, values, dir);
+			if (prop in transforms) {
+				const replacer = transforms[prop](decl, values, dir);
 
-			if (replacer) {
-				decl.replaceWith(replacer);
+				if (replacer) {
+					decl.replaceWith(replacer);
+				}
 			}
-		}
-	});
+		});
+	};
 });

@@ -1,6 +1,6 @@
-const cloneRule = require('./clone-rule');
+import cloneRule from './clone-rule';
 
-module.exports = (decl, values, dir) => {
+export default (decl, values, dir) => {
 	const lDecl = decl.clone({ value: 'left' });
 	const rDecl = decl.clone({ value: 'right' });
 

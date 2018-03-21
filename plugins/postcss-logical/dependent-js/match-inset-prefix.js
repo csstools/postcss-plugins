@@ -1,1 +1,1 @@
-module.exports = /^inset-/i;
+export default /^inset-/i;

@@ -1,8 +1,8 @@
 'use strict';
 
-const postcss = require('postcss');
+import postcss from 'postcss';
 
-module.exports = (decl, dir) => {
+export default (decl, dir) => {
 	let node = decl.parent;
 
 	while (node && 'rule' !== node.type) {

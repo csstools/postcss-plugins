@@ -1,1 +1,1 @@
-module.exports = /^(min-|max-)?(block|inline)-(size)$/i;
+export default /^(min-|max-)?(block|inline)-(size)$/i;

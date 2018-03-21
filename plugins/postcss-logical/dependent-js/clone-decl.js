@@ -1,7 +1,7 @@
-const matchSide = require('./match-side');
-const matchInsetPrefix = require('./match-inset-prefix');
+import matchSide from './match-side';
+import matchInsetPrefix from './match-inset-prefix';
 
-module.exports = (decl, suffix, value) => decl.clone({
+export default (decl, suffix, value) => decl.clone({
 	prop: `${decl.prop.replace(matchSide, '$1')}${suffix}`.replace(matchInsetPrefix, ''),
 	value
 });

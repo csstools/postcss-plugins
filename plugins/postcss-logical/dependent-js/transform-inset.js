@@ -1,6 +1,6 @@
-const cloneRule = require('./clone-rule');
+import cloneRule from './clone-rule';
 
-module.exports = (decl, values, dir) => {
+export default (decl, values, dir) => {
 	if ('logical' !== values[0]) {
 		return [
 			decl.clone({ prop: 'top', value: values[0] }),
