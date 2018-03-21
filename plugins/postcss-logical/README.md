@@ -9,40 +9,62 @@
 [PostCSS Logical Properties] lets you use Logical Properties and Values in
 CSS, following the [CSS Logical Properties and Values] specification.
 
-```css
+```pcss
 .banner {
   color: #222222;
   inset: logical 0 5px 10px;
   padding-inline: 20px 40px;
   resize: block;
+  transition: color 200ms;
 }
 
-/* used alongside postcss-nesting, postcss-dir-pseudo-class */
+/* becomes */
 
 .banner {
   color: #222222;
   top: 0; left: 5px; bottom: 10px; right: 5px;
-}
 
-[dir="ltr"] .banner {
-  padding-left: 20px; padding-right: 40px;
-}
+  &:dir(ltr) {
+    padding-left: 20px; padding-right: 40px;
+  }
+  
+  &:dir(rtl) {
+    padding-right: 20px; padding-left: 40px;
+  }
 
-[dir="rtl"] .banner {
-  padding-right: 20px; padding-left: 40px;
-}
-
-.banner {
   resize: vertical;
+  transition: color 200ms;
 }
 
-/* used with { dir: 'ltr' } option */
+/* or, when used with { dir: 'ltr' } */
 
 .banner {
   color: #222222;
   top: 0; left: 5px; bottom: 10px; right: 5px;
   padding-left: 20px; padding-right: 40px;
   resize: vertical;
+  transition: color 200ms;
+}
+
+/* or, when used with { preserve: true } */
+
+.banner {
+  color: #222222;
+  top: 0; left: 5px; bottom: 10px; right: 5px;
+
+  &:dir(ltr) {
+    padding-left: 20px; padding-right: 40px;
+  }
+
+  &:dir(rtl) {
+    padding-right: 20px; padding-left: 40px;
+  }
+
+  inset: logical 0 5px 10px;
+  padding-inline: 20px 40px;
+  resize: block;
+  resize: vertical;
+  transition: color 200ms;
 }
 ```
 
@@ -146,6 +168,38 @@ postcss([
 ]).process(YOUR_CSS);
 ```
 
+#### Webpack
+
+Add [PostCSS Loader] to your build tool:
+
+```bash
+npm install postcss-loader --save-dev
+```
+
+Use [PostCSS Logical Properties] in your Webpack.config.js:
+
+```js
+import ${idCamelCase} from '${id}';
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          { loader: 'postcss-loader', options: {
+            ident: 'postcss',
+            plugins: () => [ ${idCamelCase}() ]
+          } }
+        ]
+      }
+    ]
+  }
+}
+```
+
 #### Gulp
 
 Add [Gulp PostCSS] to your build tool:
@@ -197,6 +251,23 @@ grunt.initConfig({
 });
 ```
 
+## Options
+
+### dir
+
+The `dir` option determines how directional fallbacks should be added to CSS.
+By default, fallbacks replace the logical declaration with nested `:dir`
+pseudo-classes. If `dir` is defined as `ltr` or `rtl` then only the left or
+right directional fallbacks will replace the logical declarations. If
+`preserve` is defined as `true`, then the `dir` option will be ignored.
+
+### preserve
+
+The `preserve` option determines whether directional fallbacks should be added
+before logical declarations without replacing them. By default, directional
+fallbacks replace logical declaration. If `preserve` is defined as `true`, then
+the `dir` option will be ignored.
+
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-logical-properties
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-logical-properties.svg
 [css-img]: https://jonathantneal.github.io/css-db/badge/css-logical.svg
@@ -212,4 +283,5 @@ grunt.initConfig({
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
+[PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Logical Properties]: https://github.com/jonathantneal/postcss-logical-properties
