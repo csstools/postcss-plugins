@@ -2,15 +2,15 @@
 import postcss from 'postcss';
 
 // internal tooling
-import transformBorder from './dependent-js/transform-border';
-import transformFloat from './dependent-js/transform-float';
-import transformInset from './dependent-js/transform-inset';
-import transformResize from './dependent-js/transform-resize';
-import transformSide from './dependent-js/transform-side';
-import transformSize from './dependent-js/transform-size';
-import transformSpacing from './dependent-js/transform-spacing';
-import transformTextAlign from './dependent-js/transform-text-align';
-import matchSupportedProperties from './dependent-js/match-supported-properties';
+import transformBorder from './lib/transform-border';
+import transformFloat from './lib/transform-float';
+import transformInset from './lib/transform-inset';
+import transformResize from './lib/transform-resize';
+import transformSide from './lib/transform-side';
+import transformSize from './lib/transform-size';
+import transformSpacing from './lib/transform-spacing';
+import transformTextAlign from './lib/transform-text-align';
+import matchSupportedProperties from './lib/match-supported-properties';
 
 // supported transforms
 const transforms = {
@@ -43,7 +43,7 @@ const transforms = {
 
 // plugin
 export default postcss.plugin('postcss-logical-properties', opts => {
-	const dir = 'dir' in Object(opts) ? /^rtl$/i.test(Object(opts).dir) ? 'rtl' : 'ltr' : false;
+	const dir = Object(opts) === opts ? /^rtl$/i.test(opts.dir) ? 'rtl' : 'ltr' : false;
 
 	return root => {
 		root.walkDecls(decl => {
