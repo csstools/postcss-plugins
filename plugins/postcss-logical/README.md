@@ -276,20 +276,20 @@ before logical declarations without replacing them. By default, directional
 fallbacks replace logical declaration. If `preserve` is defined as `true`, then
 the `dir` option will be ignored.
 
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-logical-properties
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-logical-properties.svg
+[cli-url]: https://travis-ci.org/jonathantneal/postcss-logical
+[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-logical.svg
 [css-img]: https://jonathantneal.github.io/css-db/badge/css-logical.svg
 [css-url]: https://jonathantneal.github.io/css-db/#css-logical
 [git-url]: https://gitter.im/postcss/postcss
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 [npm-url]: https://www.npmjs.com/package/postcss-logical
 [npm-img]: https://img.shields.io/npm/v/postcss-logical.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-logical-properties
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-logical-properties.svg
+[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-logical
+[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-logical.svg
 
 [CSS Logical Properties and Values]: https://drafts.csswg.org/css-logical/
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Logical Properties and Values]: https://github.com/jonathantneal/postcss-logical-properties
+[PostCSS Logical Properties and Values]: https://github.com/jonathantneal/postcss-logical
