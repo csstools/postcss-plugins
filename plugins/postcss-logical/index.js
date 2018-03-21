@@ -43,7 +43,12 @@ const transforms = {
 
 // plugin
 export default postcss.plugin('postcss-logical-properties', opts => {
-	const dir = Object(opts) === opts ? /^rtl$/i.test(opts.dir) ? 'rtl' : 'ltr' : false;
+	const preserve = Boolean(Object(opts).preserve);
+	const dir = !preserve && 'dir' in Object(opts)
+		? /^rtl$/i.test(Object(opts).dir)
+			? 'rtl'
+		: 'ltr'
+	: false;
 
 	return root => {
 		root.walkDecls(decl => {
@@ -54,7 +59,11 @@ export default postcss.plugin('postcss-logical-properties', opts => {
 				const replacer = transforms[prop](decl, values, dir);
 
 				if (replacer) {
-					decl.replaceWith(replacer);
+					if (preserve) {
+						decl.before(replacer);
+					} else {
+						decl.replaceWith(replacer);
+					}
 				}
 			}
 		});
