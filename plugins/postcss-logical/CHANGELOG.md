@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Properties
 
+### 1.1.1 (March 21, 2017)
+
+- Fix `dir` option to allow falsey value
+
 ### 1.1.0 (March 20, 2017)
 
 - Add `preserve` option to preserve logical properties and values
