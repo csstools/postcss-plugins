@@ -44,8 +44,8 @@ const transforms = {
 // plugin
 export default postcss.plugin('postcss-logical-properties', opts => {
 	const preserve = Boolean(Object(opts).preserve);
-	const dir = !preserve && 'dir' in Object(opts)
-		? /^rtl$/i.test(Object(opts).dir)
+	const dir = !preserve && typeof Object(opts).dir === 'string'
+		? /^rtl$/i.test(opts.dir)
 			? 'rtl'
 		: 'ltr'
 	: false;
