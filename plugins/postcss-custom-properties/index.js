@@ -52,17 +52,12 @@ function resolveValue(value, variables, result, decl) {
     let post
     // undefined and without fallback, just keep original value
     if (!variable && !fallback) {
-      if (globalOpts.warnings) {
-        const errorStr =
-          `variable '${name}' is undefined and used without a fallback`
+      assert(
+        "no-value-notifications", false,
+        `variable '${name}' is undefined and used without a fallback`,
+        {decl, result, word: name}
+      )
 
-        if (globalOpts.noValueNotifications === "error") {
-          throw decl.error(errorStr, {word: name})
-        }
-        else {
-          result.warn(errorStr, {node: decl})
-        }
-      }
       post = matches.post
         ? resolveValue(matches.post, variables, result, decl)
         : [""]
@@ -100,9 +95,12 @@ function resolveValue(value, variables, result, decl) {
       // circular reference encountered
       if (variable.deps.indexOf(name) !== -1) {
         if (!fallback) {
-          if (globalOpts.warnings) {
-            result.warn("Circular variable reference: " + name, {node: decl})
-          }
+          assert(
+            "circular-reference", false,
+            `Circular variable reference: ${name}`,
+            {decl, result, word: name}
+          )
+
           variable.value = [variable.value]
           variable.circular = true
         }
@@ -153,6 +151,32 @@ function prefixVariables(variables) {
 }
 
 /**
+ * Define an assertion that will print a warning or throw an exception
+ * if the condition is not met.
+ *
+ * @param {String} ruleName Name of the rule in `options.warnings`.
+ * @param {Boolean} condition Must be truthy for the assertion to pass.
+ * @param {String} message Text of the warning or error if the assertion fails.
+ * @param {Object} context PostCSS context objects: decl, result and
+ *                         warning (error) options.
+ */
+function assert(ruleName, condition, message, {
+  decl, result, word, index, plugin,
+}) {
+  if (condition || !globalOpts.warnings) {
+    return
+  }
+
+  if (globalOpts.warnings === true || globalOpts.warnings[ruleName] === true) {
+    result.warn(message, {node: decl, word, index, plugin})
+  }
+  else if (globalOpts.warnings[ruleName] === "error") {
+    decl = decl || result.root.first
+    throw decl.error(message, {word, index, plugin})
+  }
+}
+
+/**
  * Module export.
  */
 export default postcss.plugin("postcss-custom-properties", (options = {}) => {
@@ -171,9 +195,28 @@ export default postcss.plugin("postcss-custom-properties", (options = {}) => {
     const importantMap = {}
 
     globalOpts = {
-      warnings: "warnings" in options ? Boolean(options.warnings) : false,
-      noValueNotifications: "noValueNotifications" in options
-        ? String(options.noValueNotifications) : "warning",
+      warnings: options.warnings,
+    }
+
+    if ("noValueNotifications" in options) {
+      result.warn(
+        "'noValueNotifications' is deprecated. Use "
+          + "\"options.warnings['no-value-notifications']: true|false|'error'\""
+          + "instead."
+      )
+
+      if (typeof globalOpts.warnings === "object") {
+        globalOpts.warnings["no-value-notifications"] =
+          options.noValueNotifications === "error" ? "error" : true
+      }
+      else if (globalOpts.warnings === true
+               && options.noValueNotifications === "error") {
+        globalOpts.warnings = {
+          "no-value-notifications": "error",
+          "not-scoped-to-root": true,
+          "circular-reference": true,
+        }
+      }
     }
 
     // define variables
@@ -188,18 +231,14 @@ export default postcss.plugin("postcss-custom-properties", (options = {}) => {
       ) {
         rule.each((decl) => {
           const prop = decl.prop
-          if (
-            globalOpts.warnings &&
-            prop &&
-            prop.indexOf(VAR_PROP_IDENTIFIER) === 0
-          ) {
-            result.warn(
-              "Custom property ignored: not scoped to the top-level :root " +
+          assert(
+            "not-scoped-to-root",
+            !prop || prop.indexOf(VAR_PROP_IDENTIFIER) !== 0,
+            "Custom property ignored: not scoped to the top-level :root " +
               `element (${rule.selectors} { ... ${prop}: ... })` +
               (rule.parent.type !== "root" ? ", in " + rule.parent.type : ""),
-              {node: decl}
-            )
-          }
+            {decl, result}
+          )
         })
         return
       }

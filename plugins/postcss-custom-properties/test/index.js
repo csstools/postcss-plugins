@@ -61,7 +61,7 @@ test("throw errors", function(t) {
 test(
   "substitutes nothing when a variable function references an undefined var",
   function(t) {
-    const result = compareFixtures(t, "substitution-undefined", {
+    let result = compareFixtures(t, "substitution-undefined", {
       warnings: true,
     })
     t.equal(
@@ -69,6 +69,30 @@ test(
       "variable '--test' is undefined and used without a fallback",
       "should add a warning for undefined variable"
     )
+
+    result = compareFixtures(t, "substitution-undefined", {
+      warnings: {
+        "no-value-notifications": true,
+      },
+    })
+    t.equal(
+      result.messages[0].text,
+      "variable '--test' is undefined and used without a fallback",
+      "should add a warning for undefined variable"
+    )
+
+    t.throws(
+      function() {
+        compareFixtures(t, "substitution-undefined", {
+          warnings: {
+            "no-value-notifications": "error",
+          },
+        })
+      },
+      /variable '--test' is undefined and used without a fallback/,
+      "should throw an error for undefined variable"
+    )
+
     t.end()
   }
 )
@@ -93,18 +117,41 @@ test(
 )
 
 test("substitutes defined variables in `:root` only", function(t) {
-  const result = compareFixtures(t, "substitution-defined", {
+  let result = compareFixtures(t, "substitution-defined", {
     warnings: true,
   })
   t.ok(
     result.messages[0].text.match(/^Custom property ignored/),
     "should add a warning for non root custom properties"
   )
+
+  result = compareFixtures(t, "substitution-defined", {
+    warnings: {
+      "not-scoped-to-root": true,
+    },
+  })
+  t.ok(
+    result.messages[0].text.match(/^Custom property ignored/),
+    "should add a warning for non root custom properties"
+  )
+
+  t.throws(
+    function() {
+      compareFixtures(t, "substitution-defined", {
+        warnings: {
+          "not-scoped-to-root": "error",
+        },
+      })
+    },
+    /Custom property ignored/,
+    "should throw an error for non root custom properties"
+  )
+
   t.end()
 })
 
 test("allow to hide warnings", function(t) {
-  const result = compareFixtures(
+  let result = compareFixtures(
     t,
     "substitution-defined",
     {warnings: false}
@@ -114,6 +161,22 @@ test("allow to hide warnings", function(t) {
     0,
     "should not add warnings if option set to false"
   )
+
+  result = compareFixtures(
+    t,
+    "substitution-defined",
+    {
+      warnings: {
+        "not-scoped-to-root": false,
+      },
+    }
+  )
+  t.equal(
+    result.messages.length,
+    0,
+    "should not add warnings if option set to false"
+  )
+
   t.end()
 })
 
@@ -217,7 +280,7 @@ test("preserves computed value when `preserve` is `\"computed\"`", function(t) {
 
 test("circular variable references", function(t) {
   compareFixtures(t, "self-reference")
-  const result = compareFixtures(t, "circular-reference", {
+  let result = compareFixtures(t, "circular-reference", {
     warnings: true,
   })
   t.equal(
@@ -225,6 +288,30 @@ test("circular variable references", function(t) {
     "Circular variable reference: --bg-color",
     "should add a warning for circular reference"
   )
+
+  result = compareFixtures(t, "circular-reference", {
+    warnings: {
+      "circular-reference": true,
+    },
+  })
+  t.equal(
+    result.messages[0].text,
+    "Circular variable reference: --bg-color",
+    "should add a warning for circular reference"
+  )
+
+  t.throws(
+    function() {
+      compareFixtures(t, "circular-reference", {
+        warnings: {
+          "circular-reference": "error",
+        },
+      })
+    },
+    /Circular variable reference: --bg-color/,
+    "should throw an error for circular reference"
+  )
+
   t.end()
 })
 
