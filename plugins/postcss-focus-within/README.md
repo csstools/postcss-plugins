@@ -5,8 +5,10 @@
 [![Windows Build Status][win-img]][win-url]
 [![Gitter Chat][git-img]][git-url]
 
-[PostCSS Focus Within] lets you use the `:focus-within` pseudo-selector in
-CSS, following the [Selectors Level 4 specification].
+[PostCSS Focus Within] lets you use the `:focus-within` pseudo-class in CSS,
+following the [Selectors Level 4 specification].
+
+It is the companion to the [focus-within polyfill].
 
 ```css
 .my-form-field:focus-within label {
@@ -18,12 +20,17 @@ CSS, following the [Selectors Level 4 specification].
 .my-form-field[focus-within] label {
   background-color: yellow;
 }
+
+.my-form-field:focus-within label {
+  background-color: yellow;
+}
 ```
 
-[PostCSS Focus Within] replaces the `:focus-within` pseudo-selector with a
-`.focus-within` class selector, the same selector used by the
-[focus-within polyfill]. The replacement selector can be changed using the
-`replaceWith` option.
+[PostCSS Focus Within] duplicates rules using the `:focus-within` pseudo-class
+with a `[focus-within]` attribute selector, the same selector used by the
+[focus-within polyfill]. This replacement selector can be changed using the
+`replaceWith` option. Also, the preservation of the original `:focus-within`
+rule can be disabled using the `preserve` option. 
 
 ## Usage
 
@@ -148,6 +155,27 @@ grunt.initConfig({
 
 ## Options
 
+### preserve
+
+The `preserve` option defines whether the original selector should remain. By
+default, the original selector is preserved.
+
+```js
+focusWithin({ preserve: false });
+```
+
+```css
+.my-form-field:focus-within label {
+  background-color: yellow;
+}
+
+/* becomes */
+
+.my-form-field[focus-within] label {
+  background-color: yellow;
+}
+```
+
 ### replaceWith
 
 The `replaceWith` option defines the selector to replace `:focus-within`. By
@@ -167,6 +195,10 @@ focusWithin({ replaceWith: '.focus-within' });
 .my-form-field.focus-within label {
   background-color: yellow;
 }
+
+.my-form-field:focus-within label {
+  background-color: yellow;
+}
 ```
 
 [npm-url]: https://www.npmjs.com/package/postcss-focus-within
@@ -176,7 +208,7 @@ focusWithin({ replaceWith: '.focus-within' });
 [win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-focus-within
 [win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-focus-within.svg
 [git-url]: https://gitter.im/postcss/postcss
-[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
+[git-img]: https://img.shields.io/badge/support-chat-blue.svg
 
 [focus-within polyfill]: https://github.com/jonathantneal/focus-within
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss

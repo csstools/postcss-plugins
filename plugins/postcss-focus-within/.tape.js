@@ -8,6 +8,12 @@ module.exports = {
 			options: {
 				replaceWith: '.focus-within'
 			}
+		},
+		'basic:preserve': {
+			message: 'supports { preserve: false } usage',
+			options: {
+				preserve: false
+			}
 		}
 	}
 };
