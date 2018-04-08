@@ -5,8 +5,10 @@
 [![Windows Build Status][win-img]][win-url]
 [![Gitter Chat][git-img]][git-url]
 
-[PostCSS Focus Visible] lets you use the `:focus-visible` pseudo-selector in
+[PostCSS Focus Visible] lets you use the `:focus-visible` pseudo-class in
 CSS, following the [Selectors Level 4 specification].
+
+It is the companion to the [focus-visible polyfill].
 
 ```css
 :focus:not(:focus-visible) {
@@ -18,12 +20,17 @@ CSS, following the [Selectors Level 4 specification].
 :focus:not(.focus-visible) {
   outline: none;
 }
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
 ```
 
-[PostCSS Focus Visible] replaces the `:focus-visible` pseudo-selector with a
-`.focus-visible` class selector, the same selector used by the
-[focus-visible polyfill]. The replacement selector can be changed using the
-`replaceWith` option.
+[PostCSS Focus Visible] duplicates rules using the `:focus-visible` pseudo-class
+with a `.focus-visible` class selector, the same selector used by the
+[focus-visible polyfill]. This replacement selector can be changed using the
+`replaceWith` option. Also, the preservation of the original `:focus-visible`
+rule can be disabled using the `preserve` option.
 
 ## Usage
 
@@ -148,13 +155,13 @@ grunt.initConfig({
 
 ## Options
 
-### replaceWith
+### preserve
 
-The `replaceWith` option defines the selector to replace `:focus-visible`. By
-default, the replacement selector is `.focus-visible`.
+The `preserve` option defines whether the original selector should remain. By
+default, the original selector is preserved.
 
 ```js
-focusVisible({ replaceWith: '[data-focus-visible-added]' });
+focusVisible({ preserve: false });
 ```
 
 ```css
@@ -164,7 +171,32 @@ focusVisible({ replaceWith: '[data-focus-visible-added]' });
 
 /* becomes */
 
-:focus:not([data-focus-visible-added]) {
+:focus:not(.focus-visible) {
+  outline: none;
+}
+```
+
+### replaceWith
+
+The `replaceWith` option defines the selector to replace `:focus-visible`. By
+default, the replacement selector is `.focus-visible`.
+
+```js
+focusVisible({ replaceWith: '[focus-visible]' });
+```
+
+```css
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* becomes */
+
+:focus:not([focus-visible]) {
+  outline: none;
+}
+
+:focus:not(:focus-visible) {
   outline: none;
 }
 ```
@@ -176,7 +208,7 @@ focusVisible({ replaceWith: '[data-focus-visible-added]' });
 [win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-focus-visible
 [win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-focus-visible.svg
 [git-url]: https://gitter.im/postcss/postcss
-[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
+[git-img]: https://img.shields.io/badge/support-chat-blue.svg
 
 [focus-visible polyfill]: https://github.com/WICG/focus-visible
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss

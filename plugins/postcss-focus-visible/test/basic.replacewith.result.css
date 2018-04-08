@@ -1,21 +1,42 @@
-[data-focus-visible-added] {
+[focus-visible] {
 	order: 1;
 }
 
-[data-focus-visible-added],
-[data-focus-visible-added] test,
-test [data-focus-visible-added],
-test test[data-focus-visible-added],
-test [data-focus-visible-added] test,
-test test[data-focus-visible-added] test,
-test [data-focus-visible-added] [data-focus-visible-added] test,
-test :matches([data-focus-visible-added]) test,
-test :matches([data-focus-visible-added] test) test,
-test :matches(test [data-focus-visible-added]) test,
-test :matches(test test[data-focus-visible-added]) test,
-test :matches(test [data-focus-visible-added] test) test,
-test :matches(test test[data-focus-visible-added] test) test,
-test :matches(test [data-focus-visible-added] [data-focus-visible-added] test) test {
+:focus-visible {
+	order: 1;
+}
+
+[focus-visible],
+[focus-visible] test,
+test [focus-visible],
+test test[focus-visible],
+test [focus-visible] test,
+test test[focus-visible] test,
+test [focus-visible] [focus-visible] test,
+test :matches([focus-visible]) test,
+test :matches([focus-visible] test) test,
+test :matches(test [focus-visible]) test,
+test :matches(test test[focus-visible]) test,
+test :matches(test [focus-visible] test) test,
+test :matches(test test[focus-visible] test) test,
+test :matches(test [focus-visible] [focus-visible] test) test {
+	order: 2;
+}
+
+:focus-visible,
+:focus-visible test,
+test :focus-visible,
+test test:focus-visible,
+test :focus-visible test,
+test test:focus-visible test,
+test :focus-visible :focus-visible test,
+test :matches(:focus-visible) test,
+test :matches(:focus-visible test) test,
+test :matches(test :focus-visible) test,
+test :matches(test test:focus-visible) test,
+test :matches(test :focus-visible test) test,
+test :matches(test test:focus-visible test) test,
+test :matches(test :focus-visible :focus-visible test) test {
 	order: 2;
 }
 

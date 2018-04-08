@@ -4,9 +4,15 @@ module.exports = {
 			message: 'supports basic usage'
 		},
 		'basic:replacewith': {
-			message: 'supports { replaceWith: "[data-focus-visible-added]" } usage',
+			message: 'supports { replaceWith: "[focus-visible]" } usage',
 			options: {
-				replaceWith: '[data-focus-visible-added]'
+				replaceWith: '[focus-visible]'
+			}
+		},
+		'basic:preserve': {
+			message: 'supports { preserve: false } usage',
+			options: {
+				preserve: false
 			}
 		}
 	}

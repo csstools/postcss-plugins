@@ -1,15 +1,24 @@
 import postcss from 'postcss';
 
-const focusVisibleSelectorRegExp = /:focus-visible([^\w-]|$)/gi;
+const selectorRegExp = /:focus-visible([^\w-]|$)/gi;
 
 export default postcss.plugin('postcss-focus-visible', opts => {
 	const replaceWith = String(Object(opts).replaceWith || '.focus-visible');
+	const preserve = Boolean('preserve' in Object(opts) ? opts.preserve : true);
 
 	return root => {
-		root.walkRules(focusVisibleSelectorRegExp, rule => {
-			rule.selector = rule.selector.replace(focusVisibleSelectorRegExp, ($0, $1) => {
+		root.walkRules(selectorRegExp, rule => {
+			const selector = rule.selector.replace(selectorRegExp, ($0, $1) => {
 				return `${replaceWith}${$1}`;
 			});
+
+			const clone = rule.clone({ selector });
+
+			if (preserve) {
+				rule.before(clone);
+			} else {
+				rule.replaceWith(clone);
+			}
 		});
 	};
 });
