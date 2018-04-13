@@ -198,12 +198,12 @@ h1 {
 }
 ```
 
-The option may also be set to `"preserve-computed"`, where Custom Properties
+The option may also be set to `"computed"`, where Custom Properties
 will remain, but declarations containing `var()` will be removed:
 
 ```js
 postCSSCustomProperties({
-  preserve: 'preserve-computed'
+  preserve: 'computed'
 })
 ```
 
