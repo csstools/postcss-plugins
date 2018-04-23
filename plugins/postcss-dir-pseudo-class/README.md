@@ -1,10 +1,10 @@
 # PostCSS Dir Pseudo Class [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![CSS Standard Status][css-img]][css-url]
 [![NPM Version][npm-img]][npm-url]
+[![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
 [![Windows Build Status][win-img]][win-url]
-[![Gitter Chat][git-img]][git-url]
+[![Support Chat][git-img]][git-url]
 
 [PostCSS Dir Pseudo Class] lets you use the `:dir()` pseudo-class to style by
 directionality in CSS, following the [Selectors Level 4] specification.
@@ -210,16 +210,16 @@ html:not([dir="rtl"]) .example {
 The `preserve` option determines whether the original `:dir()` rule should
 remain in the CSS. By default, the rule is replaced by the fallback.
 
-[css-img]: https://jonathantneal.github.io/css-db/badge/selectors-dir-pseudo.svg
-[css-url]: https://jonathantneal.github.io/css-db/#selectors-dir-pseudo
-[npm-url]: https://www.npmjs.com/package/postcss-dir-pseudo-class
-[npm-img]: https://img.shields.io/npm/v/postcss-dir-pseudo-class.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-dir-pseudo-class
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-dir-pseudo-class.svg
+[css-img]: https://jonathantneal.github.io/cssdb/badge/dir-pseudo-class.svg
+[css-url]: https://jonathantneal.github.io/cssdb/#dir-pseudo-class
+[git-url]: https://gitter.im/postcss/postcss
+[git-img]: https://img.shields.io/badge/support-chat-blue.svg
+[npm-url]: https://www.npmjs.com/package/postcss-dir-pseudo-class
+[npm-img]: https://img.shields.io/npm/v/postcss-dir-pseudo-class.svg
 [win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-dir-pseudo-class
 [win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-dir-pseudo-class.svg
-[git-url]: https://gitter.im/postcss/postcss
-[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
