@@ -1,9 +1,10 @@
 # PostCSS color-mod() Function [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [![NPM Version][npm-img]][npm-url]
-[![Linux Build Status][cli-img]][cli-url]
+[![CSS Standard Status][css-img]][css-url]
+[![Build Status][cli-img]][cli-url]
 [![Windows Build Status][win-img]][win-url]
-[![Gitter Chat][git-img]][git-url]
+[![Support Chat][git-img]][git-url]
 
 [PostCSS color-mod() Function] lets you modify colors using the `color-mod()`
 function in CSS, following the [CSS Color Module Level 4] specification.
@@ -196,14 +197,16 @@ However, because these transformations occur at build time, they cannot be
 considered accurate. Accurately resolving cascading variables relies on
 knowledge of the living DOM tree.
 
-[npm-url]: https://www.npmjs.com/package/postcss-color-mod-function
-[npm-img]: https://img.shields.io/npm/v/postcss-color-mod-function.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-color-mod-function
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-color-mod-function.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-color-mod-function
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-color-mod-function.svg
+[cli-url]: https://travis-ci.org/jonathantneal/postcss-color-mod-function
+[css-img]: https://jonathantneal.github.io/cssdb/badge/color-mod-function.svg
+[css-url]: https://jonathantneal.github.io/css-db/#css-variables
+[git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
-[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
+[npm-img]: https://img.shields.io/npm/v/postcss-color-mod-function.svg
+[npm-url]: https://www.npmjs.com/package/postcss-color-mod-function
+[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-color-mod-function.svg
+[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-color-mod-function
 
 [CSS Color Module Level 4]: https://www.w3.org/TR/css-color-4/#funcdef-color-mod
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
