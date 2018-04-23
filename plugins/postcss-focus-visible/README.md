@@ -1,9 +1,10 @@
 # PostCSS Focus Visible [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [![NPM Version][npm-img]][npm-url]
+[![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
 [![Windows Build Status][win-img]][win-url]
-[![Gitter Chat][git-img]][git-url]
+[![Support Chat][git-img]][git-url]
 
 [PostCSS Focus Visible] lets you use the `:focus-visible` pseudo-class in
 CSS, following the [Selectors Level 4 specification].
@@ -201,14 +202,16 @@ focusVisible({ replaceWith: '[focus-visible]' });
 }
 ```
 
-[npm-url]: https://www.npmjs.com/package/postcss-focus-visible
-[npm-img]: https://img.shields.io/npm/v/postcss-focus-visible.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-focus-visible
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-focus-visible.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-focus-visible
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-focus-visible.svg
-[git-url]: https://gitter.im/postcss/postcss
+[cli-url]: https://travis-ci.org/jonathantneal/postcss-focus-visible
+[css-img]: https://jonathantneal.github.io/cssdb/badge/focus-within-pseudo-class.svg
+[css-url]: https://jonathantneal.github.io/css-db/#css-variables
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
+[git-url]: https://gitter.im/postcss/postcss
+[npm-img]: https://img.shields.io/npm/v/postcss-focus-visible.svg
+[npm-url]: https://www.npmjs.com/package/postcss-focus-visible
+[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-focus-visible.svg
+[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-focus-visible
 
 [focus-visible polyfill]: https://github.com/WICG/focus-visible
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
