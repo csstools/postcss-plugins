@@ -1,10 +1,10 @@
 # PostCSS Logical Properties and Values [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![CSS Standard Status][css-img]][css-url]
 [![NPM Version][npm-img]][npm-url]
+[![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
 [![Windows Build Status][win-img]][win-url]
-[![Gitter Chat][git-img]][git-url]
+[![Support Chat][git-img]][git-url]
 
 [PostCSS Logical Properties and Values] lets you use logical, rather than
 physical, direction and dimension mappings in CSS, following the
@@ -276,16 +276,16 @@ before logical declarations without replacing them. By default, directional
 fallbacks replace logical declaration. If `preserve` is defined as `true`, then
 the `dir` option will be ignored.
 
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-logical
+[css-img]: https://jonathantneal.github.io/cssdb/badge/logical-properties-and-values.svg
+[css-url]: https://jonathantneal.github.io/cssdb/#logical-properties-and-values
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-logical.svg
-[css-img]: https://jonathantneal.github.io/css-db/badge/css-logical.svg
-[css-url]: https://jonathantneal.github.io/css-db/#css-logical
+[cli-url]: https://travis-ci.org/jonathantneal/postcss-logical
+[git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
-[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
-[npm-url]: https://www.npmjs.com/package/postcss-logical
 [npm-img]: https://img.shields.io/npm/v/postcss-logical.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-logical
+[npm-url]: https://www.npmjs.com/package/postcss-logical
 [win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-logical.svg
+[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-logical
 
 [CSS Logical Properties and Values]: https://drafts.csswg.org/css-logical/
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
