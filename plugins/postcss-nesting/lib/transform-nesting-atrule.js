@@ -1,13 +1,13 @@
-// tooling
-const cleanNode           = require('./clean-node');
-const comma               = require('postcss').list.comma;
-const getClosestRule      = require('./get-closest-rule');
-const mergeSelectors      = require('./merge-selectors');
-const postcss             = require('postcss');
-const transformAfterNodes = require('./transform-after-nodes');
+import postcss, { list }   from 'postcss';
+import cleanNode           from './clean-node';
+import getClosestRule      from './get-closest-rule';
+import mergeSelectors      from './merge-selectors';
+import transformAfterNodes from './transform-after-nodes';
+
+const { comma } = list;
 
 // transform a nesting atrule (e.g. @nest .something &)
-module.exports = (node) => {
+export default node => {
 	// clean node and child nodes
 	cleanNode(node).nodes.forEach(cleanNode);
 
@@ -61,6 +61,6 @@ module.exports = (node) => {
 };
 
 // whether the node is a nesting atrule (e.g. @nest .something &)
-module.exports.test = (node) => node.type === 'atrule' && node.name === 'nest' && node.parent && node.parent.type === 'rule' && comma(node.params).every(
-	(selector) => selector.split('&').length === 2 && /&([^\w-|]|$)/.test(selector)
+export const test = node => node.type === 'atrule' && node.name === 'nest' && node.parent && node.parent.type === 'rule' && comma(node.params).every(
+	selector => selector.split('&').length === 2 && /&([^\w-|]|$)/.test(selector)
 );

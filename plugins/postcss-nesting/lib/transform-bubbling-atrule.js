@@ -1,10 +1,9 @@
-// tooling
-const cleanNode           = require('./clean-node');
-const mergeParams         = require('./merge-params');
-const transformAfterNodes = require('./transform-after-nodes');
+import cleanNode           from './clean-node';
+import mergeParams         from './merge-params';
+import transformAfterNodes from './transform-after-nodes';
 
 // transform a bubbling atrule (e.g. @document, @media, @supports)
-module.exports = (node) => {
+export default node => {
 	// clean node
 	cleanNode(node);
 
@@ -55,4 +54,4 @@ module.exports = (node) => {
 };
 
 // whether the node is a bubbling atrule (e.g. @document, @media, @supports)
-module.exports.test = (node, bubbles) => node.type === 'atrule' && ['document', 'media', 'supports'].indexOf(node.name) !== -1 && node.parent && node.parent.type === 'rule';
+export const test = node => node.type === 'atrule' && ['document', 'media', 'supports'].indexOf(node.name) !== -1 && node.parent && node.parent.type === 'rule';

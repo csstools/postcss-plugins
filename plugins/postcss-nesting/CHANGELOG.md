@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### 5.0.0 (March 24, 2018)
+
+- Refactored code to use Imports babel-transformed for Node v4 compatibility
+
 ### 4.2.1 (September 19, 2017)
 
 - Updated: Exposing the transform function as its own for postcss-extend

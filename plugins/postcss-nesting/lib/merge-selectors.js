@@ -1,11 +1,12 @@
 // tooling
-const comma = require('postcss').list.comma;
+import { list } from 'postcss';
+const { comma } = list;
 
 // merge selectors
-module.exports = (fromSelectors, toSelectors) => (typeof fromSelectors === 'string' ? comma(fromSelectors) : fromSelectors).reduce(
+export default (fromSelectors, toSelectors) => (typeof fromSelectors === 'string' ? comma(fromSelectors) : fromSelectors).reduce(
 	(selectors, fromSelector) => selectors.concat(
 		(typeof toSelectors === 'string' ? comma(toSelectors) : toSelectors).map(
-			(toSelector) => toSelector.replace(/&/g, fromSelector)
+			toSelector => toSelector.replace(/&/g, fromSelector)
 		)
 	),
 	[]

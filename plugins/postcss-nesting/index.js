@@ -1,10 +1,4 @@
-'use strict';
+import postcss   from 'postcss';
+import transform from './lib/transform';
 
-// tooling
-const postcss   = require('postcss');
-const transform = require('./lib/transform');
-
-// plugin
-module.exports = postcss.plugin('postcss-nesting', () => {
-	return (root) => root.walk(transform);
-});
+export default postcss.plugin('postcss-nesting', () => root => root.walk(transform));

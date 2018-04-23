@@ -1,7 +1,5 @@
-'use strict';
-
 // return the closest rule
-module.exports = (node) => {
+export default node => {
 	let selectorParent = node.parent;
 
 	while (selectorParent && selectorParent.type !== 'rule') {

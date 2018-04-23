@@ -1,10 +1,9 @@
-// tooling
-const cleanNode           = require('./clean-node');
-const mergeSelectors      = require('./merge-selectors');
-const transformAfterNodes = require('./transform-after-nodes');
+import cleanNode           from './clean-node';
+import mergeSelectors      from './merge-selectors';
+import transformAfterNodes from './transform-after-nodes';
 
 // transform a nesting rule (e.g. &.something)
-module.exports = (node) => {
+export default node => {
 	// clean node and child nodes
 	cleanNode(node).nodes.forEach(cleanNode);
 
@@ -24,6 +23,6 @@ module.exports = (node) => {
 };
 
 // whether the node is a nesting rule (e.g. &.something)
-module.exports.test = (node) => node.type === 'rule' && node.parent && node.parent.type === 'rule' && node.selectors.every(
-	(selector) => selector.trim().lastIndexOf('&') === 0 && /^&([^\w-|]|$)/.test(selector)
+export const test = node => node.type === 'rule' && node.parent && node.parent.type === 'rule' && node.selectors.every(
+	selector => selector.trim().lastIndexOf('&') === 0 && /^&([^\w-|]|$)/.test(selector)
 );

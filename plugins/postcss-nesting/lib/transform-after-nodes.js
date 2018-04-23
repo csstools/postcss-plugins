@@ -1,8 +1,7 @@
-// tooling
-const cleanNode = require('./clean-node');
+import cleanNode from './clean-node';
 
 // move nodes after the current node into a cloned parent node
-module.exports = (node) => {
+export default node => {
 	// affected nodes after the current node
 	const affectedNodes = node.parent.nodes.slice(node.parent.nodes.indexOf(node) + 1).map(cleanNode);
 
@@ -17,4 +16,6 @@ module.exports = (node) => {
 
 		return afterParent;
 	}
+
+	return undefined;
 };

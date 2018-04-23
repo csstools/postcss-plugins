@@ -1,5 +1,5 @@
 // clean the raws of the node
-module.exports = (node) => {
+export default node => {
 	node.raws = Object.assign(
 		node.raws.between ? { between: node.raws.between } : {},
 		node.raws.semicolon ? { semicolon: true } : {},
