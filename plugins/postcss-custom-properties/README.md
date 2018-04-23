@@ -360,7 +360,7 @@ $ npm test
 [npm-url]: https://www.npmjs.com/package/postcss-custom-properties
 [npm-img]: https://img.shields.io/npm/v/postcss-custom-properties.svg
 [css-url]: https://jonathantneal.github.io/css-db/#css-variables
-[css-img]: https://jonathantneal.github.io/css-db/badge/css-variables.svg
+[css-img]: https://jonathantneal.github.io/cssdb/badge/custom-properties.svg
 [cli-url]: https://travis-ci.org/postcss/postcss-custom-properties
 [cli-img]: https://img.shields.io/travis/postcss/postcss-custom-properties.svg
 [git-url]: https://gitter.im/postcss/postcss
