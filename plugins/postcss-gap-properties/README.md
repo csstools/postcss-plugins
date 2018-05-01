@@ -6,7 +6,7 @@
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Gap Properties] lets you use the `gap`, `column-gap`, and `row-gap`
-shorthand properties in CSS.
+shorthand properties in CSS, following the [CSS Grid Layout] specification.
 
 ```pcss
 .standard-grid {
@@ -172,6 +172,7 @@ remain in the CSS. By default, the original declaration is preserved.
 [win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-gap-properties.svg
 [win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-gap-properties
 
+[CSS Grid Layout]: https://www.w3.org/TR/css-grid-1/#gutters
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
