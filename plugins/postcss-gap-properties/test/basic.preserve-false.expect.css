@@ -1,0 +1,9 @@
+test {
+	order: 1;
+	grid-gap: 20px;
+	order: 2;
+	grid-column-gap: 20px;
+	order: 3;
+	grid-row-gap: 20px;
+	order: 4;
+}
