@@ -14,11 +14,10 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
   opts = opts || {}
   var actual = postcss().use(plugin(opts)).process(read(postcssOpts.from), postcssOpts).css
   var expected = read(filename("fixtures/" + name + ".expected"))
-  fs.writeFile(filename("fixtures/" + name + ".actual"), actual)
+  fs.writeFile(filename("fixtures/" + name + ".actual"), actual, t.end)
   t.equal(actual, expected, msg)
 }
 
 test("rebeccapurple", function(t) {
   compareFixtures(t, "rebeccapurple", "should transform rebeccapurple")
-  t.end()
 })

@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-rebeccapurple",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "PostCSS plugin to transform W3C CSS rebeccapurple color to more compatible CSS (rgb())",
   "keywords": [
     "css",
@@ -21,14 +21,14 @@
     "index.js"
   ],
   "dependencies": {
-    "postcss": "^6.0.1",
-    "postcss-value-parser": "^3.3.0"
+    "postcss": "^6.0.22",
+    "postcss-values-parser": "^1.5.0"
   },
   "devDependencies": {
     "jscs": "^3.0.7",
-    "jshint": "^2.9.4",
+    "jshint": "^2.9.5",
     "npmpub": "^3.1.0",
-    "tape": "^4.6.3"
+    "tape": "^4.9.0"
   },
   "scripts": {
     "lint": "npm run jscs && npm run jshint",

@@ -1,4 +1,10 @@
-# 3.0.0 - 2016-05-10
+# 3.1.0 - 2018-05-01
+
+- Improve `rebeccapurple` pre-parse word detection
+- Switched from `postcss-value-parser` to `postcss-values-parser`
+- Bump `postcss` from `^6.0.1` to `^6.0.22`
+
+# 3.0.0 - 2017-05-10
 
 - Added: compatibility with postcss v6.x
 
