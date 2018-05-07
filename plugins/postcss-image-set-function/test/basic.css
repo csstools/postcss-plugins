@@ -1,0 +1,105 @@
+.test-unchanged-properties {
+	order: 1;
+	background-image: url("img/test.png");
+	order: 2;
+	background: url(my-img-print.png) top left no-repeat red;
+	order: 3;
+}
+
+.test-changed-properties {
+	order: 1;
+	background-image: image-set(
+		url(img/test.png) 1x
+	);
+	order: 2;
+	background-image: image-set(
+		url(img/test.png) 2x
+	);
+	order: 3;
+	background-image: image-set(
+		url(img/test.png) 1x,
+		url(img/test-2x.png) 2x
+	);
+	order: 4;
+	background-image: image-set(
+		url(img/test.png) 1x,
+		url(img/test-2x.png) 2x,
+		url(my-img-print.png) 600dpi
+	);
+	order: 5;
+}
+
+.test-mixed-units {
+	order: 1;
+	background-image: image-set(
+		url(img/test.png) 1x,
+		url(img/test-2x.png) 2dppx
+	);
+	order: 2;
+	background-image: image-set(
+		url(img/test.png) 1x,
+		url(img/test-2x.png) 20dpcm
+	);
+	order: 3;
+}
+
+.test-mixed-order {
+	order: 1;
+	background: image-set(
+		url(../images/bck@3x.png) 3x,
+		url(../images/bck.png) 1x,
+		url(../images/bck@2x.png) 2x
+	);
+	order: 2;
+	background: image-set(
+		url(../images/bck@2x.png) 2x,
+		url(../images/bck@3x.png) 3x,
+		url(../images/bck.png) 1x
+	);
+	order: 3;
+}
+
+.test-no-url {
+	order: 1;
+	background-image: image-set(
+		"img/test.png" 1x,
+		"img/test-2x.png" 2x
+	);
+	order: 2;
+	background-image: image-set(
+		"img/test.png" 1x,
+		"img/test-2x.png" 2x,
+		"my-img-print.png" 600dpi
+	);
+	order: 3;
+}
+
+.test-webkit-prefix {
+	order: 1;
+	background-image: -webkit-image-set(
+		url(img/test.png) 1x,
+		url(img/test-2x.png) 2x,
+		url(my-img-print.png) 600dpi
+	);
+	order: 2;
+}
+
+@media (min-width: 1000px) {
+	.test-within-mq-1 {
+		background-image: image-set(
+			url(img/test.png) 1x,
+			url(img/test-2x.png) 2x,
+			url(my-img-print.png) 600dpi
+		);
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	.test-within-mq-2 {
+		background-image: image-set(
+			url(img/test.png) 1x,
+			url(img/test-2x.png) 2x,
+			url(my-img-print.png) 600dpi
+		);
+	}
+}

@@ -1,0 +1,52 @@
+.test-invalid-params {
+	order: 1;
+	background-image: image-set();
+	order: 2;
+	background-image: image-set(
+		url(img/test.png)
+	);
+	order: 3;
+	background-image: image-set(
+		1x
+	);
+	order: 4;
+}
+
+.test-invalid-commas {
+	order: 1;
+	background-image: image-set(
+		url(img/test.png) 1x,
+	);
+	order: 2;
+	background-image: image-set(
+		url(img/test.png) 1x,
+		url(img/test-2x.png) 2x,
+	);
+	order: 3;
+}
+
+.test-invalid-images {
+	order: 1;
+	background: image-set(
+		image-set(
+			url(img/test.png) 1x
+		) 1x
+	);
+	order: 2;
+	background: image-set(
+		calc(1rem + 1px) 1x
+	);
+	order: 3;
+}
+
+.test-invalid-resolutions {
+	order: 1;
+	background-image: image-set(
+		url(img/test.png) 1
+	);
+	order: 2;
+	background-image: image-set(
+		url(img/test.png) 1omg
+	);
+	order: 3;
+}
