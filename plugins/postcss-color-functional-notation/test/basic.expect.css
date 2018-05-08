@@ -1,0 +1,46 @@
+.test-rgb {
+	color: rgb(178, 34, 34);
+	color: rgba(178, 34, 34, 1);
+	color: rgba(178, 34, 34, .5);
+	color: rgba(178, 34, 34, 1);
+	color: rgba(178, 34, 34, 0.5);
+}
+
+.test-rgba {
+	color: rgb(178, 34, 34);
+	color: rgba(178, 34, 34, 1);
+	color: rgba(178, 34, 34, .5);
+}
+
+.test-rgb-percentages {
+	color: rgb(178, 34, 34);
+	color: rgba(178, 34, 34, 1);
+	color: rgba(178, 34, 34, 0.5);
+}
+
+.test-hsl {
+	color: hsl(120deg, 100%, 50%);
+	color: hsl(120, 100%, 50%);
+	color: hsla(120, 100%, 50%, 1);
+	color: hsla(120, 100%, 50%, .5);
+	color: hsla(120, 100%, 50%, 1);
+	color: hsla(120, 100%, 50%, 0.5);
+	color: hsl(120deg, 100%, 50%);
+}
+
+.test-hsla {
+	color: hsl(120, 100%, 50%);
+	color: hsla(120, 100%, 50%, 1);
+	color: hsla(120, 100%, 50%, .5);
+	color: hsla(120, 100%, 50%, 1);
+	color: hsla(120, 100%, 50%, 0.5);
+}
+
+.test-hwb {
+	color: hwb(0deg 0% 0%);
+	color: hwb(0 0% 0%);
+	color: hwb(0 0% 0% / 1);
+	color: hwb(0 0% 0% / .5);
+	color: hwb(0 0% 0% / 100%);
+	color: hwb(0 0% 0% / 50%);
+}
