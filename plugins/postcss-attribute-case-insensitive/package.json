@@ -4,7 +4,7 @@
   "description": "PostCSS plugin to support case insensitive attributes",
   "main": "dist/index.js",
   "scripts": {
-    "test": "eslint src && npm run prepublish && mocha --compilers js:babel-register",
+    "test": "eslint src && npm run prepublish && mocha --require babel-register",
     "prepublish": "babel src --out-dir dist"
   },
   "repository": {
@@ -28,15 +28,15 @@
   "homepage": "https://github.com/Semigradsky/postcss-attribute-case-insensitive#readme",
   "devDependencies": {
     "babel-cli": "^6.11.4",
-    "babel-eslint": "^7.0.0",
+    "babel-eslint": "^8.2.3",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.4.0",
     "babel-register": "^6.11.6",
-    "chai": "^3.5.0",
-    "eslint": "^3.2.2",
-    "eslint-config-airbnb-base": "^8.0.0",
-    "eslint-plugin-import": "^1.12.0",
-    "mocha": "^3.0.1"
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "mocha": "^5.1.1"
   },
   "dependencies": {
     "postcss": "^6.0.22",
