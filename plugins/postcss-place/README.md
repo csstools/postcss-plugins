@@ -1,52 +1,48 @@
-# Place <a href="https://github.com/postcss/postcss"><img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right"></a>
+# PostCSS Place Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [![NPM Version][npm-img]][npm-url]
+[![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Licensing][lic-image]][lic-url]
-[![Changelog][log-image]][log-url]
-[![Gitter Chat][git-image]][git-url]
+[![Windows Build Status][win-img]][win-url]
+[![Support Chat][git-img]][git-url]
 
-[Place] lets you use `place-*` properties as shorthands for `align-*` and `justify-*` per the [CSS Box Alignment Module Level 3].
+[PostCSS Place Properties] lets you use `place-*` properties as shorthands for `align-*`
+and `justify-*`, following the [CSS Box Alignment] specification.
 
-```css
-/* before */
-
+```pcss
 .example {
-	place-self: center;
-	place-content: space-between center;
+  place-self: center;
+  place-content: space-between center;
 }
 
-/* after */
+/* becomes */
 
 .example {
-	align-self: center;
-	justify-self: center;
-	align-content: space-between;
-	justify-content: center;
+  align-self: center;
+  justify-self: center;
+  place-self: center;
+  align-content: space-between;
+  justify-content: center;
+  place-content: space-between center;
 }
 ```
 
-## Options
-
-#### `prefix`
-
-Type: `String`  
-Default: `null`
-
-Specifies a prefix to be surrounded by dashes before the declaration (e.g. `prefix: 'x'` changes the detected property to `-x-place-content`).
-
 ## Usage
 
-Add [Place] to your build tool:
+Add [PostCSS Place Properties] to your build tool:
 
 ```bash
-npm install jonathantneal/postcss-place --save-dev
+npm install postcss-place --save-dev
 ```
 
 #### Node
 
+Use [PostCSS Place Properties] to process your CSS:
+
 ```js
-require('postcss-place').process(YOUR_CSS, { /* options */ });
+import postcssPlace from 'postcss-place';
+
+postcssPlace.process(YOUR_CSS, /* processOptions */, /* pluginOptions */);
 ```
 
 #### PostCSS
@@ -57,12 +53,49 @@ Add [PostCSS] to your build tool:
 npm install postcss --save-dev
 ```
 
-Load [Place] as a PostCSS plugin:
+Use [PostCSS Place Properties] as a plugin:
 
 ```js
+import postcss from 'gulp-postcss';
+import postcssPlace from 'postcss-place';
+
 postcss([
-	require('postcss-place')({ /* options */ })
-]).process(YOUR_CSS, /* options */);
+  postcssPlace(/* pluginOptions */)
+]).process(YOUR_CSS);
+```
+
+#### Webpack
+
+Add [PostCSS Loader] to your build tool:
+
+```bash
+npm install postcss-loader --save-dev
+```
+
+Use [PostCSS Place Properties] in your Webpack configuration:
+
+```js
+import postcssPlace from 'postcss-place';
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          { loader: 'postcss-loader', options: {
+            ident: 'postcss',
+            plugins: () => [
+              postcssPlace(/* pluginOptions */)
+            ]
+          } }
+        ]
+      }
+    ]
+  }
+}
 ```
 
 #### Gulp
@@ -73,20 +106,19 @@ Add [Gulp PostCSS] to your build tool:
 npm install gulp-postcss --save-dev
 ```
 
-Enable [Place] within your Gulpfile:
+Use [PostCSS Place Properties] in your Gulpfile:
 
 ```js
-var postcss = require('gulp-postcss');
+import postcss from 'gulp-postcss';
+import postcssPlace from 'postcss-place';
 
-gulp.task('css', function () {
-	return gulp.src('./src/*.css').pipe(
-		postcss([
-			require('postcss-place')({ /* options */ })
-		])
-	).pipe(
-		gulp.dest('.')
-	);
-});
+gulp.task('css', () => gulp.src('./src/*.css').pipe(
+  postcss([
+    postcssPlace(/* pluginOptions */)
+  ])
+).pipe(
+  gulp.dest('.')
+));
 ```
 
 #### Grunt
@@ -97,38 +129,68 @@ Add [Grunt PostCSS] to your build tool:
 npm install grunt-postcss --save-dev
 ```
 
-Enable [Place] within your Gruntfile:
+Use [PostCSS Place Properties] in your Gruntfile:
 
 ```js
+import postcssPlace from 'postcss-place';
+
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-	postcss: {
-		options: {
-			use: [
-				require('postcss-place')({ /* options */ })
-			]
-		},
-		dist: {
-			src: '*.css'
-		}
-	}
+  postcss: {
+    options: {
+      use: [
+       postcssPlace(/* pluginOptions */)
+      ]
+    },
+    dist: {
+      src: '*.css'
+    }
+  }
 });
 ```
 
-[npm-url]: https://www.npmjs.com/package/postcss-place
-[npm-img]: https://img.shields.io/npm/v/postcss-place.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-place
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-place.svg
-[lic-url]: LICENSE.md
-[lic-image]: https://img.shields.io/npm/l/postcss-place.svg
-[log-url]: CHANGELOG.md
-[log-image]: https://img.shields.io/badge/changelog-md-blue.svg
-[git-url]: https://gitter.im/postcss/postcss
-[git-image]: https://img.shields.io/badge/chat-gitter-blue.svg
+## Options
 
-[Place]: https://github.com/jonathantneal/postcss-place
-[CSS Box Alignment Module Level 3]: https://drafts.csswg.org/css-align/#propdef-place-content
-[PostCSS]: https://github.com/postcss/postcss
+### preserve
+
+The `preserve` option determines whether the original place declaration is
+preserved. By default, it is preserved.
+
+```js
+postcssPlace({ preserve: false })
+```
+
+```pcss
+.example {
+  place-self: center;
+  place-content: space-between center;
+}
+
+/* becomes */
+
+.example {
+  align-self: center;
+  justify-self: center;
+  align-content: space-between;
+  justify-content: center;
+}
+```
+
+[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-place.svg
+[cli-url]: https://travis-ci.org/jonathantneal/postcss-place
+[css-img]: https://cssdb.org/badge/place-properties.svg
+[css-url]: https://cssdb.org/#place-properties
+[git-img]: https://img.shields.io/badge/support-chat-blue.svg
+[git-url]: https://gitter.im/postcss/postcss
+[npm-img]: https://img.shields.io/npm/v/postcss-place.svg
+[npm-url]: https://www.npmjs.com/package/postcss-place
+[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-place.svg
+[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-place
+
+[CSS Box Alignment]: https://www.w3.org/TR/css-align-3/#place-content
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
+[PostCSS]: https://github.com/postcss/postcss
+[PostCSS Loader]: https://github.com/postcss/postcss-loader
+[PostCSS Place Properties]: https://github.com/jonathantneal/postcss-place

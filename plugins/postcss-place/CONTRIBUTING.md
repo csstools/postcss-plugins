@@ -1,4 +1,4 @@
-# Contributing to Place
+# Contributing to PostCSS Place Properties
 
 You want to help? You rock! Now, take a moment to be sure your contributions
 make sense to everyone else.
@@ -14,51 +14,52 @@ Remember, a bug is a _demonstrable problem_ caused by _our_ code.
 
 ## Submitting Pull Requests
 
-Pull requests are the greatest contributions, so be sure they are focused in 
-scope, and do avoid unrelated commits.
+Pull requests are the greatest contributions, so be sure they are focused in
+scope and avoid unrelated commits.
 
-1. To begin, [fork this project], clone your fork, and add our upstream.
-	```bash
-	# Clone your fork of the repo into the current directory
-	git clone https://github.com/<your-username>/postcss-place
-	# Navigate to the newly cloned directory
-	cd postcss-place
-	# Assign the original repo to a remote called "upstream"
-	git remote add upstream https://github.com/jonathantneal/postcss-place
-	# Install the tools necessary for development
-	npm install
-	```
+1. To begin; [fork this project], clone your fork, and add our upstream.
+   ```bash
+   # Clone your fork of the repo into the current directory
+   git clone git@github.com:YOUR_USER/postcss-place.git
+
+   # Navigate to the newly cloned directory
+   cd postcss-place
+
+   # Assign the original repo to a remote called "upstream"
+   git remote add upstream git@github.com:jonathantneal/postcss-place.git
+
+   # Install the tools necessary for testing
+   npm install
+   ```
 
 2. Create a branch for your feature or fix:
-	```bash
-	# Move into a new branch for a feature
-	git checkout -b feature/thing
-	```
-	```bash
-	# Move into a new branch for a fix
-	git checkout -b fix/something
-	```
+   ```bash
+   # Move into a new branch for your feature
+   git checkout -b feature/thing
+   ```
+   ```bash
+   # Move into a new branch for your fix
+   git checkout -b fix/something
+   ```
 
-3. Be sure your code follows our practices.
-	```bash
-	# Test current code
-	npm run test
-	```
+3. If your code follows our practices, then push your feature branch:
+   ```bash
+   # Test current code
+   npm test
+   ```
+   ```bash
+   # Push the branch for your new feature
+   git push origin feature/thing
+   ```
+   ```bash
+   # Or, push the branch for your update
+   git push origin update/something
+   ```
 
-4. Push your branch up to your fork:
-	```bash
-	# Push a feature branch
-	git push origin feature/thing
-	```
-	```bash
-	# Push a fix branch
-	git push origin fix/something
-	```
-
-5. Now [open a pull request] with a clear title and description.
+That’s it! Now [open a pull request] with a clear title and description.
 
 [already been reported]: issues
 [fork this project]:     fork
-[live example]:          http://codepen.io/pen
+[live example]:          https://codepen.io/pen
 [open a pull request]:   https://help.github.com/articles/using-pull-requests/
 [reduced test case]:     https://css-tricks.com/reduced-test-cases/

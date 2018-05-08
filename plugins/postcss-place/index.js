@@ -1,20 +1,17 @@
-// tooling
-const postcss = require('postcss');
-const parser  = require('postcss-value-parser');
+import postcss from 'postcss';
+import parser from 'postcss-value-parser';
 
-// plugin
-module.exports = postcss.plugin('postcss-place', (opts) => {
-	// dashed prefix
-	const dashedPrefix = opts && opts.prefix ? `-${ opts.prefix }-` : '';
+const placeMatch = /^place-(content|items|self)/;
 
-	// property matcher
-	const propertyMatch = new RegExp(`^${ dashedPrefix }place-(content|items|self)`);
+export default postcss.plugin('postcss-place', opts => {
+	// prepare options
+	const preserve = 'preserve' in Object(opts) ? Boolean(opts.prefix) : true;
 
-	return (root) => {
+	return root => {
 		// walk each matching declaration
-		root.walkDecls(propertyMatch, (decl) => {
+		root.walkDecls(placeMatch, decl => {
 			// alignment
-			const alignment = decl.prop.match(propertyMatch)[1];
+			const alignment = decl.prop.match(placeMatch)[1];
 
 			// value
 			const value = parser(decl.value);
@@ -25,28 +22,23 @@ module.exports = postcss.plugin('postcss-place', (opts) => {
 			).indexOf('space');
 
 			// new justify-[alignment] and align-[alignment] declarations
-			const alignValue   = index === -1 ? decl.value : parser.stringify(value.nodes.slice(0, index));
+			const alignValue = index === -1 ? decl.value : parser.stringify(value.nodes.slice(0, index));
 			const justifyValue = index === -1 ? decl.value : parser.stringify(value.nodes.slice(index + 1));
 
 			decl.cloneBefore({
-				prop: `align-${ alignment }`,
+				prop: `align-${alignment}`,
 				value: alignValue
 			});
 
 			decl.cloneBefore({
-				prop: `justify-${ alignment }`,
+				prop: `justify-${alignment}`,
 				value: justifyValue
 			});
 
-			// remove place-[alignment]
-			decl.remove();
+			// conditionally remove place-[alignment]
+			if (!preserve) {
+				decl.remove();
+			}
 		});
 	};
 });
-
-// override plugin#process
-module.exports.process = function (cssString, pluginOptions, processOptions) {
-	return postcss([
-		0 in arguments ? module.exports(pluginOptions) : module.exports()
-	]).process(cssString, processOptions);
-};
