@@ -29,12 +29,15 @@ function createSensitiveAtributes(attribute) {
 	const attributes = transformString([''], 0, attribute.value);
 	return attributes.map(x => {
 		const newAttribute = attribute.clone({
-			value: x,
-			insensitive: false,
-			raws: {
-				insensitive: ''
-			}
+			spaces: {
+				after: attribute.spaces.after,
+				before: attribute.spaces.before
+			},
+			insensitive: false
 		});
+
+		newAttribute.setValue(x);
+
 		return newAttribute;
 	});
 }
@@ -84,6 +87,6 @@ function transform(selectors) {
 
 export default postcss.plugin('postcss-attribute-case-insensitive', () => css => {
 	css.walkRules(rule => {
-		rule.selector = parser(transform).process(rule.selector).result;
+		rule.selector = parser(transform).processSync(rule.selector);
 	});
 });

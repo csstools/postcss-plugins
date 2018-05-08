@@ -39,7 +39,7 @@
     "mocha": "^3.0.1"
   },
   "dependencies": {
-    "postcss": "^6.0.0",
-    "postcss-selector-parser": "^2.2.3"
+    "postcss": "^6.0.22",
+    "postcss-selector-parser": "^4.0.0"
   }
 }
