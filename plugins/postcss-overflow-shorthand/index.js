@@ -15,8 +15,8 @@ export default postcss.plugin('postcss-overflow-shorthand', opts => {
 			// split the declaration values
 			const [overflowX, overflowY, ...invalidatingValues] = space(decl.value);
 
-			// if there are no invalidating values
-			if (!invalidatingValues.length) {
+			// if there are two values, but no invalidating values
+			if (overflowY && !invalidatingValues.length) {
 				// insert the overflow-* longhand declarations
 				decl.cloneBefore({
 					prop: `${decl.prop}-x`,

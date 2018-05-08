@@ -1,3 +1,7 @@
-test {
+html.single-overflow {
+	overflow: hidden;
+}
+
+html.double-overflow {
 	overflow: hidden auto;
 }

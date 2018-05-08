@@ -1,6 +1,7 @@
 # PostCSS Overflow Shorthand [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [![NPM Version][npm-img]][npm-url]
+[![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
 [![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
@@ -145,8 +146,34 @@ grunt.initConfig({
 });
 ```
 
+## Options
+
+### preserve
+
+The `preserve` option determines whether the original `overflow` declaration is
+preserved. By default, it is preserved.
+
+```js
+postcssOverflowShorthand({ preserve: false })
+```
+
+```pcss
+html {
+  overflow: hidden auto;
+}
+
+/* becomes */
+
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+```
+
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-overflow-shorthand.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-overflow-shorthand
+[css-img]: https://cssdb.org/badge/overflow-property.svg
+[css-url]: https://cssdb.org/#overflow-property
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-overflow-shorthand.svg
