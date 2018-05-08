@@ -1,8 +1,8 @@
 # Changes to PostCSS Place Properties
 
-### 3.0.0 (May 8, 2018)
+### 3.0.1 (May 8, 2018)
 
-- Updated: `postcss-selector-parser` to v4.0.0 (major)
+- Updated: `postcss-values-parser` to v1.5.0 (major)
 - Updated: `postcss` to v6.0.22 (patch)
 
 ### 2.0.0 (June 30, 2017)

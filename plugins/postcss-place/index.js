@@ -1,5 +1,5 @@
 import postcss from 'postcss';
-import parser from 'postcss-value-parser';
+import parser from 'postcss-values-parser';
 
 const placeMatch = /^place-(content|items|self)/;
 
@@ -13,17 +13,13 @@ export default postcss.plugin('postcss-place', opts => {
 			// alignment
 			const alignment = decl.prop.match(placeMatch)[1];
 
-			// value
-			const value = parser(decl.value);
-
-			// divider position
-			const index = value.nodes.map(
-				(node) => node.type
-			).indexOf('space');
+			// value ast and child nodes
+			const value = parser(decl.value).parse();
+			const children = value.nodes[0].nodes;
 
 			// new justify-[alignment] and align-[alignment] declarations
-			const alignValue = index === -1 ? decl.value : parser.stringify(value.nodes.slice(0, index));
-			const justifyValue = index === -1 ? decl.value : parser.stringify(value.nodes.slice(index + 1));
+			const alignValue = children.length === 1 ? decl.value : String(children.slice(0, 1)).trim();
+			const justifyValue = children.length === 1 ? decl.value : String(children.slice(1)).trim();
 
 			decl.cloneBefore({
 				prop: `align-${alignment}`,
