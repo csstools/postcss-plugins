@@ -62,6 +62,7 @@ export default postcss.plugin('postcss-dir-pseudo-class', opts => {
 							const dirAttr = selectorParser.attribute({
 								attribute: 'dir',
 								operator:  '=',
+								quoteMark: '"',
 								value:     `"${ value }"`
 							});
 
@@ -74,6 +75,7 @@ export default postcss.plugin('postcss-dir-pseudo-class', opts => {
 								selectorParser.attribute({
 									attribute: 'dir',
 									operator:  '=',
+									quoteMark: '"',
 									value:     `"${ 'ltr' === value ? 'rtl' : 'ltr' }"`
 								})
 							);

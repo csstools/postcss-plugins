@@ -1,5 +1,10 @@
 # Changes to PostCSS Dir Pseudo Class
 
+### 4.0.0 (May 8, 2018)
+
+- Updated: `postcss-selector-parser` to v4.0.0 (major)
+- Updated: `postcss` to v6.0.22 (patch)
+
 ### 3.0.0 (March 21, 2018)
 
 - Added: `preserve` option to preserve the original `:dir()` rule

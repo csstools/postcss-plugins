@@ -6,10 +6,10 @@
 [![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
-[PostCSS Dir Pseudo Class] lets you use the `:dir()` pseudo-class to style by
-directionality in CSS, following the [Selectors Level 4] specification.
+[PostCSS Dir Pseudo Class] lets you style by directionality using the `:dir()`
+pseudo-class in CSS, following the [Selectors] specification.
 
-```css
+```pcss
 article h3:dir(rtl) {
   margin-right: 10px;
 }
@@ -29,7 +29,7 @@ article h3:dir(ltr) {
 }
 ```
 
-### Maintain Specificity
+### Maintaining Specificity
 
 Using [PostCSS Dir Pseudo Class] will not impact selector weight, but it will
 require having at least one `[dir]` attribute in your HTML. If you don’t have
@@ -60,7 +60,7 @@ Use [PostCSS Dir Pseudo Class] to process your CSS:
 ```js
 import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
 
-postcssDirPseudoClass.process(YOUR_CSS);
+postcssDirPseudoClass.process(YOUR_CSS, /* processOptions */, /* pluginOptions */);
 ```
 
 #### PostCSS
@@ -78,7 +78,7 @@ import postcss from 'gulp-postcss';
 import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
 
 postcss([
-  postcssDirPseudoClass()
+  postcssDirPseudoClass(/* pluginOptions */)
 ]).process(YOUR_CSS);
 ```
 
@@ -106,7 +106,7 @@ module.exports = {
           { loader: 'postcss-loader', options: {
             ident: 'postcss',
             plugins: () => [
-              postcssDirPseudoClass(/* options */)
+              postcssDirPseudoClass(/* pluginOptions */)
             ]
           } }
         ]
@@ -132,7 +132,7 @@ import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
   postcss([
-    postcssDirPseudoClass(/* options */)
+    postcssDirPseudoClass(/* pluginOptions */)
   ])
 ).pipe(
   gulp.dest('.')
@@ -158,7 +158,7 @@ grunt.initConfig({
   postcss: {
     options: {
       use: [
-       postcssDirPseudoClass(/* options */)
+       postcssDirPseudoClass(/* pluginOptions */)
       ]
     },
     dist: {
@@ -180,12 +180,10 @@ Here’s an example of using the `dir` option to presume a left-to-right
 direction:
 
 ```js
-require('postcss-dir-pseudo-class')({
-  dir: 'ltr'
-});
+postcssDirPseudoClass({ dir: 'ltr' });
 ```
 
-```css
+```pcss
 .example:dir(ltr) {
   margin-left: 10px;
 }
@@ -208,22 +206,54 @@ html:not([dir="rtl"]) .example {
 ### preserve
 
 The `preserve` option determines whether the original `:dir()` rule should
-remain in the CSS. By default, the rule is replaced by the fallback.
+remain in the CSS. By default, the original rule is not preserved.
 
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-dir-pseudo-class
+```js
+postcssDirPseudoClass({ preserve: true });
+```
+
+```pcss
+article h3:dir(rtl) {
+  margin-right: 10px;
+}
+
+article h3:dir(ltr) {
+  margin-left: 10px;
+}
+
+/* becomes */
+
+[dir="rtl"] article h3 {
+  margin-right: 10px;
+}
+
+article h3:dir(rtl) {
+  margin-right: 10px;
+}
+
+[dir="ltr"] article h3 {
+  margin-left: 10px;
+}
+
+article h3:dir(ltr) {
+  margin-left: 10px;
+}
+```
+
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-dir-pseudo-class.svg
+[cli-url]: https://travis-ci.org/jonathantneal/postcss-dir-pseudo-class
 [css-img]: https://jonathantneal.github.io/cssdb/badge/dir-pseudo-class.svg
 [css-url]: https://jonathantneal.github.io/cssdb/#dir-pseudo-class
-[git-url]: https://gitter.im/postcss/postcss
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
-[npm-url]: https://www.npmjs.com/package/postcss-dir-pseudo-class
+[git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-dir-pseudo-class.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-dir-pseudo-class
+[npm-url]: https://www.npmjs.com/package/postcss-dir-pseudo-class
 [win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-dir-pseudo-class.svg
+[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-dir-pseudo-class
 
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Dir Pseudo Class]: https://github.com/jonathantneal/postcss-dir-pseudo-class
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[Selectors Level 4]: https://www.w3.org/TR/selectors-4/
+[PostCSS Dir Pseudo Class]: https://github.com/jonathantneal/postcss-dir-pseudo-class
+[Selectors]: https://www.w3.org/TR/selectors-4/#the-dir-pseudo
