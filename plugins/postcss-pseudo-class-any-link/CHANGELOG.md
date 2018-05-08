@@ -1,4 +1,10 @@
-# Changes to :any-link
+# Changes to PostCSS Pseudo Class Any Link
+
+### 5.0.0 (May 7, 2018)
+
+- Updated: `postcss-selector-parser` to v4.0.0 (major)
+- Updated: `postcss` to v6.0.22 (patch)
+- Changed: Preserves `:any-link` by default
 
 ### 4.0.0 (May 10, 2017)
 
