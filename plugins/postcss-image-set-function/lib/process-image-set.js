@@ -5,7 +5,7 @@ import handleInvalidation from './handle-invalidation';
 
 export default (imageSetOptionNodes, decl, opts) => {
 	const parent = decl.parent;
-	const mediasByDpi = {};
+	const mediasByDpr = {};
 
 	let length = imageSetOptionNodes.length;
 	let index = -1;
@@ -14,7 +14,7 @@ export default (imageSetOptionNodes, decl, opts) => {
 		const [comma, value, media] = [
 			index < 0 ? true : getComma(imageSetOptionNodes[index]),
 			getImage(imageSetOptionNodes[index + 1]),
-			getMedia(imageSetOptionNodes[index + 2], mediasByDpi)
+			getMedia(imageSetOptionNodes[index + 2], mediasByDpr)
 		];
 
 		// handle invalidations
@@ -36,29 +36,35 @@ export default (imageSetOptionNodes, decl, opts) => {
 		index += 3
 	}
 
-	const medias = Object.keys(mediasByDpi).map(params => mediasByDpi[params]);
+	const medias = Object.keys(mediasByDpr).sort((a, b) => a - b).map(params => mediasByDpr[params]);
 
 	// conditionally prepend previous siblings
 	if (medias.length) {
-		const siblings = parent.nodes;
-		const previousSiblings = siblings.slice(0, siblings.indexOf(decl));
+		const firstDecl = medias[0].nodes[0].nodes[0];
 
-		if (previousSiblings.length) {
-			const parentClone = parent.cloneBefore().removeAll();
+		if (medias.length === 1) {
+			decl.value = firstDecl.value
+		} else {
+			const siblings = parent.nodes;
+			const previousSiblings = siblings.slice(0, siblings.indexOf(decl)).concat(firstDecl);
 
-			parentClone.append(previousSiblings);
-		}
+			if (previousSiblings.length) {
+				const parentClone = parent.cloneBefore().removeAll();
 
-		// prepend any @media { decl: <image> } rules
-		parent.before(medias);
+				parentClone.append(previousSiblings);
+			}
 
-		// conditionally remove the current rule
-		if (!opts.preserve) {
-			decl.remove();
+			// prepend any @media { decl: <image> } rules
+			parent.before(medias.slice(1));
 
-			// and then conditionally remove its parent
-			if (!parent.nodes.length) {
-				parent.remove();
+			// conditionally remove the current rule
+			if (!opts.preserve) {
+				decl.remove();
+
+				// and then conditionally remove its parent
+				if (!parent.nodes.length) {
+					parent.remove();
+				}
 			}
 		}
 	}

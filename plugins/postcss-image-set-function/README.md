@@ -21,10 +21,8 @@ specification.
 
 /* becomes */
 
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
-  .example {
-    background-image: url(img.png);
-  }
+.example {
+  background-image: url(img.png);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -227,6 +225,23 @@ postcssImageSetFunction({ oninvalid: 'warning' }) // warn on invalid usages
 ```js
 postcssImageSetFunction({ oninvalid: 'throw' }) // throw on invalid usages
 ```
+
+## Image Resolution
+
+The `image-set()` function allows an author to provide multiple resolutions of
+an image and let the browser decide which is most appropriate in a given
+situation. The `image-set()` also never fails to choose an image; the
+`<resolution>` just helps determine which of the images is chosen.
+
+Since this plugin is not a browser, the image options are sorted by device
+pixel ratio and the lowest ratio is used as the default, while the remaining
+images are pushed behind media queries.
+
+Therefore, this plugin can only approximate native browser behavior. While
+images should typically match the resolution as the device they’re being viewed
+in, other factors can affect the chosen image. For example, if the user is on a
+slow mobile connection, the browser may prefer to select a lower-res image
+rather than wait for a larger, resolution-matching image to load.
 
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-image-set-function.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-image-set-function

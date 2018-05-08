@@ -8,38 +8,14 @@
 
 .test-changed-properties {
 	order: 1;
-}
-
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
-
-.test-changed-properties {
 	background-image: 
 		url(img/test.png);
-}
-}
-
-.test-changed-properties {
 	order: 2;
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-
-.test-changed-properties {
 	background-image: 
 		url(img/test.png);
-}
-}
-
-.test-changed-properties {
 	order: 3;
-}
-
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
-
-.test-changed-properties {
 	background-image: 
 		url(img/test.png);
-}
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -52,14 +28,8 @@
 
 .test-changed-properties {
 	order: 4;
-}
-
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
-
-.test-changed-properties {
 	background-image: 
 		url(img/test.png);
-}
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -84,14 +54,8 @@
 
 .test-mixed-units {
 	order: 1;
-}
-
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
-
-.test-mixed-units {
 	background-image: 
 		url(img/test.png);
-}
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -104,6 +68,8 @@
 
 .test-mixed-units {
 	order: 2;
+	background-image: 
+		url(img/test-2x.png);
 }
 
 @media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
@@ -114,28 +80,14 @@
 }
 }
 
-@media (-webkit-min-device-pixel-ratio: 0.52), (min-resolution: 50.8dpi) {
-
-.test-mixed-units {
-	background-image: 
-		url(img/test-2x.png);
-}
-}
-
 .test-mixed-units {
 	order: 3;
 }
 
 .test-mixed-order {
 	order: 1;
-}
-
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
-
-.test-mixed-order {
 	background: 
 		url(../images/bck.png);
-}
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -156,14 +108,8 @@
 
 .test-mixed-order {
 	order: 2;
-}
-
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
-
-.test-mixed-order {
 	background: 
 		url(../images/bck.png);
-}
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -188,13 +134,7 @@
 
 .test-no-url {
 	order: 1;
-}
-
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
-
-.test-no-url {
 	background-image: img/test.png;
-}
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -206,13 +146,7 @@
 
 .test-no-url {
 	order: 2;
-}
-
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
-
-.test-no-url {
 	background-image: img/test.png;
-}
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -235,14 +169,8 @@
 
 .test-webkit-prefix {
 	order: 1;
-}
-
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
-
-.test-webkit-prefix {
 	background-image: 
 		url(img/test.png);
-}
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -266,11 +194,9 @@
 }
 
 @media (min-width: 1000px) {
-	@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
 	.test-within-mq-1 {
 		background-image: 
 			url(img/test.png);
-	}
 	}
 	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	.test-within-mq-1 {
@@ -287,11 +213,9 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-	@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
 	.test-within-mq-2 {
 		background-image: 
 			url(img/test.png);
-	}
 	}
 	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	.test-within-mq-2 {
