@@ -1,0 +1,25 @@
+.test-lab {
+	color: rgb(178, 34, 34);
+	color: lab(40 56.6 39);
+	color: rgb(178, 34, 34);
+	color: lab(40 56.6 39 / 1);
+	color: rgba(178, 34, 34, .5);
+	color: lab(40 56.6 39 / .5);
+	color: rgb(178, 34, 34);
+	color: lab(40 56.6 39 / 100%);
+	color: rgba(178, 34, 34, 0.5);
+	color: lab(40 56.6 39 / 50%);
+}
+
+.test-lch {
+	color: rgb(178, 34, 34);
+	color: lch(40 68.8 34.5);
+	color: rgb(178, 34, 34);
+	color: lch(40 68.8 34.5 / 1);
+	color: rgba(178, 34, 34, .5);
+	color: lch(40 68.8 34.5 / .5);
+	color: rgb(178, 34, 34);
+	color: lch(40 68.8 34.5 / 100%);
+	color: rgba(178, 34, 34, 0.5);
+	color: lch(40 68.8 34.5 / 50%);
+}
