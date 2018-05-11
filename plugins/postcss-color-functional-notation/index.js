@@ -1,9 +1,6 @@
 import postcss from 'postcss';
 import parser from 'postcss-values-parser';
 
-const colorAnyRegExp = /(^|[^\w-])(hsla?|rgba?)\(/i;
-const colorRegExp = /^(hsla?|rgba?)$/i;
-
 export default postcss.plugin('postcss-color-functional-notation', opts => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
 
@@ -70,14 +67,16 @@ export default postcss.plugin('postcss-color-functional-notation', opts => {
 
 const alphaUnitMatch = /^%?$/i;
 const calcFuncMatch = /^calc$/i;
-const hueUnitMatch = /^(deg|grad|rad|turn)?$/i;
+const colorAnyRegExp = /(^|[^\w-])(hsla?|rgba?)\(/i;
+const colorRegExp = /^(hsla?|rgba?)$/i;
 const hslRgbFuncMatch = /^(hsl|rgb)$/i;
 const hslaRgbaFuncMatch = /^(hsla|rgba)$/i;
+const hueUnitMatch = /^(deg|grad|rad|turn)?$/i;
 const isAlphaValue = node => isCalc(node) || Object(node).type === 'number' && alphaUnitMatch.test(node.unit);
 const isCalc = node => Object(node).type === 'func' && calcFuncMatch.test(node.value);
 const isHue = node => isCalc(node) || Object(node).type === 'number' && hueUnitMatch.test(node.unit);
 const isNumber = node => isCalc(node) || Object(node).type === 'number' && node.unit === '';
-const isPercentage = node => isCalc(node) || Object(node).type === 'number' && node.unit === '%';
+const isPercentage = node => isCalc(node) || Object(node).type === 'number' && (node.unit === '%' || node.unit === '' && node.value === '0');
 const isHslRgb = node => Object(node).type === 'func' && hslRgbFuncMatch.test(node.value);
 const isHslaRgba = node => Object(node).type === 'func' && hslaRgbaFuncMatch.test(node.value);
 const isSlash = node => Object(node).type === 'operator' && node.value === '/';
