@@ -12,18 +12,18 @@ color notation in CSS, following the [CSS Color] specification.
 ```pcss
 :root {
   --firebrick: rgb(178 34 34);
-  --firebrick-a50: color: rgb(70% 13.5% 13.5% / 50%);
-  --firebrick-hsl: color: hsla(0 68% 42%);
-  --firebrick-hsl-a50: color: hsl(0 68% 42% / 50%);
+  --firebrick-a50: rgb(70% 13.5% 13.5% / 50%);
+  --firebrick-hsl: hsla(0 68% 42%);
+  --firebrick-hsl-a50: hsl(0 68% 42% / 50%);
 }
 
 /* becomes */
 
 :root {
   --firebrick: rgb(178, 34, 34);
-  --firebrick-a50: color: rgba(178, 34, 34, .5);
-  --firebrick-hsl: color: hsl(0, 68%, 42%);
-  --firebrick-hsl-a50: color: hsla(0, 68%, 42%, .5);
+  --firebrick-a50: rgba(178, 34, 34, .5);
+  --firebrick-hsl: hsl(0, 68%, 42%);
+  --firebrick-hsl-a50: hsla(0, 68%, 42%, .5);
 }
 ```
 
@@ -164,9 +164,9 @@ postcssImageSetFunction({ preserve: true })
 ```pcss
 :root {
   --firebrick: rgb(178 34 34);
-  --firebrick-a50: color: rgb(70% 13.5% 13.5% / 50%);
-  --firebrick-hsl: color: hsla(0 68% 42%);
-  --firebrick-hsl-a50: color: hsl(0 68% 42% / 50%);
+  --firebrick-a50: rgb(70% 13.5% 13.5% / 50%);
+  --firebrick-hsl: hsla(0 68% 42%);
+  --firebrick-hsl-a50: hsl(0 68% 42% / 50%);
 }
 
 /* becomes */
@@ -174,12 +174,12 @@ postcssImageSetFunction({ preserve: true })
 :root {
   --firebrick: rgb(178, 34, 34);
   --firebrick: rgb(178 34 34);
-  --firebrick-a50: color: rgba(178, 34, 34, .5);
-  --firebrick-a50: color: rgb(70% 13.5% 13.5% / 50%);
-  --firebrick-hsl: color: hsl(0, 68%, 42%);
-  --firebrick-hsl: color: hsla(0 68% 42%);
-  --firebrick-hsl-a50: color: hsla(0, 68%, 42%, .5);
-  --firebrick-hsl-a50: color: hsl(0 68% 42% / 50%);
+  --firebrick-a50: rgba(178, 34, 34, .5);
+  --firebrick-a50: rgb(70% 13.5% 13.5% / 50%);
+  --firebrick-hsl: hsl(0, 68%, 42%);
+  --firebrick-hsl: hsla(0 68% 42%);
+  --firebrick-hsl-a50: hsla(0, 68%, 42%, .5);
+  --firebrick-hsl-a50: hsl(0 68% 42% / 50%);
 }
 ```
 
