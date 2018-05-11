@@ -9,6 +9,8 @@
 	color: lab(40 56.6 39 / 100%);
 	color: rgba(178, 34, 34, 0.5);
 	color: lab(40 56.6 39 / 50%);
+	color: rgb(255, 216, 255);
+	color: lab(100 50 0);
 }
 
 .test-lch {
@@ -22,4 +24,6 @@
 	color: lch(40 68.8 34.5 / 100%);
 	color: rgba(178, 34, 34, 0.5);
 	color: lch(40 68.8 34.5 / 50%);
+	color: rgb(255, 216, 255);
+	color: lch(100 50 0);
 }

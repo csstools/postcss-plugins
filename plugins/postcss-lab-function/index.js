@@ -54,7 +54,7 @@ export default postcss.plugin('postcss-lab-function', opts => {
 									number => parseFloat(number)
 								)
 							).map(
-								sourceValue => parseInt(sourceValue * 2.55)
+								sourceValue => Math.max(Math.min(parseInt(sourceValue * 2.55), 255), 0)
 							)
 
 							children[0].value = String(rgbValues[0]);
