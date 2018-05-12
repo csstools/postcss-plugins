@@ -32,7 +32,7 @@ p:not(:first-child, .special) {
 you will get:
 
 ```css
-p:not(:first-child), p:not(.special) {
+p:not(:first-child):not(.special) {
   color: red;
 }
 ```
