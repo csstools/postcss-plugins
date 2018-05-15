@@ -204,8 +204,8 @@ focusVisible({ replaceWith: '[focus-visible]' });
 
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-focus-visible.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-focus-visible
-[css-img]: https://jonathantneal.github.io/cssdb/badge/focus-within-pseudo-class.svg
-[css-url]: https://jonathantneal.github.io/css-db/#css-variables
+[css-img]: https://cssdb.org/badge/focus-within-pseudo-class.svg
+[css-url]: https://cssdb.org/#focus-visible-pseudo-class
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-focus-visible.svg
