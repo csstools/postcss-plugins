@@ -1,6 +1,27 @@
-# postcss-custom-media [![CSS Standard Status](https://jonathantneal.github.io/css-db/badge/mediaqueries-custom-mq.svg)](https://jonathantneal.github.io/css-db/#mediaqueries-custom-mq) [![Build Status](https://travis-ci.org/postcss/postcss-custom-media.png)](https://travis-ci.org/postcss/postcss-custom-media)
+# PostCSS Custom Media [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS Custom Media Queries](https://drafts.csswg.org/mediaqueries-5/#custom-mq) syntax to more compatible CSS.
+[![NPM Version][npm-img]][npm-url]
+[![CSS Standard Status][css-img]][css-url]
+[![Build Status][cli-img]][cli-url]
+[![Support Chat][git-img]][git-url]
+
+> [PostCSS Custom Media] lets you use Custom Media Queries in CSS, following
+the [CSS Media Queries](https://drafts.csswg.org/mediaqueries-5/#custom-mq)
+specification.
+
+```pcss
+@custom-media --small-viewport (max-width: 30em);
+
+@media (--small-viewport) {
+  /* styles for small viewport */
+}
+
+/* becomes */
+
+@media (max-width: 30em) {
+  /* styles for small viewport */
+}
+```
 
 ## Installation
 
@@ -23,24 +44,6 @@ var out = postcss()
   .use(customMedia())
   .process(css)
   .css
-```
-
-Using this `input.css`:
-
-```css
-@custom-media --small-viewport (max-width: 30em);
-
-@media (--small-viewport) {
-  /* styles for small viewport */
-}
-```
-
-you will get:
-
-```css
-@media (max-width: 30em) {
-  /* styles for small viewport */
-}
 ```
 
 Checkout [tests](test) for more examples.
@@ -81,3 +84,15 @@ Allows you to append your extensions at end of your CSS.
 ## [Changelog](CHANGELOG.md)
 
 ## [License](LICENSE)
+
+[cli-img]: https://img.shields.io/travis/postcss/postcss-custom-media.svg
+[cli-url]: https://travis-ci.org/postcss/postcss-custom-media
+[css-img]: https://cssdb.org/badge/custom-media-queries.svg
+[css-url]: https://cssdb.org/#custom-media-queries
+[git-img]: https://img.shields.io/badge/support-chat-blue.svg
+[git-url]: https://gitter.im/postcss/postcss
+[npm-img]: https://img.shields.io/npm/v/postcss-custom-media.svg
+[npm-url]: https://www.npmjs.com/package/postcss-custom-media
+
+[PostCSS]: https://github.com/postcss/postcss
+[PostCSS Custom Media]: https://github.com/postcss/postcss-custom-media
