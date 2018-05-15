@@ -3,7 +3,7 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Gitter Chat][git-img]][git-url]
+[![Support Chat][git-img]][git-url]
 
 [PostCSS Custom Properties] lets you use CSS Custom Properties in CSS, following
 the [CSS Custom Properties for Cascading Variables] specification.
@@ -359,12 +359,12 @@ $ npm test
 
 [npm-url]: https://www.npmjs.com/package/postcss-custom-properties
 [npm-img]: https://img.shields.io/npm/v/postcss-custom-properties.svg
-[css-url]: https://jonathantneal.github.io/css-db/#css-variables
-[css-img]: https://jonathantneal.github.io/cssdb/badge/custom-properties.svg
+[css-url]: https://cssdb.org/#css-variables
+[css-img]: https://cssdb.org/badge/custom-properties.svg
 [cli-url]: https://travis-ci.org/postcss/postcss-custom-properties
 [cli-img]: https://img.shields.io/travis/postcss/postcss-custom-properties.svg
 [git-url]: https://gitter.im/postcss/postcss
-[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
+[git-img]: https://img.shields.io/badge/support-chat-blue.svg
 
 [CSS Custom Properties for Cascading Variables]: https://www.w3.org/TR/css-variables-1/
 [PostCSS CSS Variables]: https://github.com/MadLittleMods/postcss-css-variables
