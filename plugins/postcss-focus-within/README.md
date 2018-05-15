@@ -202,8 +202,8 @@ focusWithin({ replaceWith: '.focus-within' });
 }
 ```
 
-[css-img]: https://jonathantneal.github.io/cssdb/badge/focus-within-pseudo-class.svg
-[css-url]: https://jonathantneal.github.io/cssdb/#focus-within-pseudo-class
+[css-img]: https://cssdb.org/badge/focus-within-pseudo-class.svg
+[css-url]: https://cssdb.org/#focus-within-pseudo-class
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-focus-within.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-focus-within
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
