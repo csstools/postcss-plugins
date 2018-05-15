@@ -1,6 +1,7 @@
 # PostCSS Gap Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [![NPM Version][npm-img]][npm-url]
+[![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
 [![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
@@ -163,6 +164,8 @@ grunt.initConfig({
 The `preserve` option determines whether the original `gap` declaration should
 remain in the CSS. By default, the original declaration is preserved.
 
+[css-img]: https://cssdb.org/badge/gap-properties.svg
+[css-url]: https://cssdb.org/#gap-properties
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-gap-properties.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-gap-properties
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
