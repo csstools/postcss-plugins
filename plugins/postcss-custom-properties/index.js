@@ -276,25 +276,27 @@ export default postcss.plugin("postcss-custom-properties", (options = {}) => {
       }
     })
 
-    if (preserve && appendVariables) {
+    if (preserve && variables && appendVariables) {
       const names = Object.keys(map)
       if (names.length) {
         const container = postcss.rule({
           selector: ":root",
           raws: {semicolon: true},
         })
-        names.forEach((name) => {
-          const variable = map[name]
-          let val = variable.value
-          if (variable.resolved) {
-            val = val[val.length - 1]
-          }
-          const decl = postcss.decl({
-            prop: name,
-            value: val,
+        names
+          .filter((name) => variables.hasOwnProperty(name))
+          .forEach((name) => {
+            const variable = map[name]
+            let val = variable.value
+            if (variable.resolved) {
+              val = val[val.length - 1]
+            }
+            const decl = postcss.decl({
+              prop: name,
+              value: val,
+            })
+            container.append(decl)
           })
-          container.append(decl)
-        })
         style.append(container)
       }
     }

@@ -1,0 +1,14 @@
+:root {
+	--test-one: css-one;
+}
+
+div {
+	p: css-one;
+	a: js-one;
+}
+
+:root {
+	--test-two: js-one;
+	--test-three: js-two;
+	--test-four: css-one js-one js-two;
+}

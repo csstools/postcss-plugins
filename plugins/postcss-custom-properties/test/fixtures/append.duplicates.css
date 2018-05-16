@@ -1,0 +1,8 @@
+:root {
+	--test-one: css-one;
+}
+
+div {
+	p: var(--test-one);
+	a: var(--test-two);
+}

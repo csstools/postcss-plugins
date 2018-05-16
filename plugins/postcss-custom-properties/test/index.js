@@ -23,7 +23,7 @@ function compareFixtures(t, name, options) {
   const actual = postcssResult.css.trim()
 
   // handy thing: checkout actual in the *.actual.css file
-  fs.writeFile(fixturePath(name + ".actual"), actual)
+  fs.writeFile(fixturePath(name + ".actual"), actual, () => {})
 
   const expected = fixture(name + ".expected")
   t.equal(
@@ -240,6 +240,20 @@ test("append variables", function(t) {
       "--test-one": "js-one",
       "test-two": "js-two",
       "test-three": "var(--test-one, one) var(--test-two, two)",
+    },
+    preserve: "computed",
+    appendVariables: true,
+  })
+  t.end()
+})
+
+test("append variables without duplicates", function(t) {
+  compareFixtures(t, "append.duplicates", {
+    variables: {
+      "--test-two": "js-one",
+      "test-three": "js-two",
+      "test-four": "var(--test-one, one) var(--test-two, two) " +
+          "var(--test-three, three)",
     },
     preserve: "computed",
     appendVariables: true,
