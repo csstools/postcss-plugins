@@ -242,8 +242,8 @@ article h3:dir(ltr) {
 
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-dir-pseudo-class.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-dir-pseudo-class
-[css-img]: https://jonathantneal.github.io/cssdb/badge/dir-pseudo-class.svg
-[css-url]: https://jonathantneal.github.io/cssdb/#dir-pseudo-class
+[css-img]: https://cssdb.org/badge/dir-pseudo-class.svg
+[css-url]: https://cssdb.org/#dir-pseudo-class
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-dir-pseudo-class.svg
