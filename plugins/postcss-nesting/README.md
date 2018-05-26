@@ -154,8 +154,8 @@ grunt.initConfig({
 
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-nesting
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-nesting.svg
-[css-img]: https://jonathantneal.github.io/cssdb/badge/nesting-rules.svg
-[css-url]: https://jonathantneal.github.io/cssdb/#nesting-rules
+[css-img]: https://cssdb.org/badge/nesting-rules.svg
+[css-url]: https://cssdb.org/#nesting-rules
 [git-url]: https://gitter.im/postcss/postcss
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 [npm-url]: https://www.npmjs.com/package/postcss-nesting
