@@ -1,13 +1,12 @@
-// tooling
-import { list } from 'postcss';
-const { comma } = list;
+import { replaceable } from './valid-selector';
 
-// merge selectors
-export default (fromSelectors, toSelectors) => (typeof fromSelectors === 'string' ? comma(fromSelectors) : fromSelectors).reduce(
-	(selectors, fromSelector) => selectors.concat(
-		(typeof toSelectors === 'string' ? comma(toSelectors) : toSelectors).map(
-			toSelector => toSelector.replace(/&/g, fromSelector)
-		)
-	),
-	[]
-);
+export default function mergeSelectors(fromSelectors, toSelectors) {
+	return fromSelectors.reduce(
+		(selectors, fromSelector) => selectors.concat(
+			toSelectors.map(
+				toSelector => toSelector.replace(replaceable, fromSelector)
+			)
+		),
+		[]
+	);
+}

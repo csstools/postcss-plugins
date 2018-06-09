@@ -1,6 +1,6 @@
 {
   "name": "postcss-nesting",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "Nest style rules inside each other",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -21,20 +21,21 @@
     "test:tape": "postcss-tape"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0"
   },
   "dependencies": {
-    "postcss": "^6.0.21"
+    "postcss": "^6.0.22"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
-    "babel-preset-env": "^1.6.1",
+    "babel-plugin-array-includes": "^2.0.3",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^4.19.1",
     "eslint-config-dev": "^2.0.0",
     "postcss-tape": "^2.2.0",
     "pre-commit": "^1.2.2",
-    "rollup": "^0.58.2",
+    "rollup": "^0.60.1",
     "rollup-plugin-babel": "^3.0.4"
   },
   "eslintConfig": {

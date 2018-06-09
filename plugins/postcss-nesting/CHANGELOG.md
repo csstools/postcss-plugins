@@ -1,5 +1,10 @@
 # Changes to PostCSS Nesting
 
+### 6.0.0 (June 9, 2018)
+
+- Deprecated: Nested at-rules like `@media` will no longer work in 7.0.0
+- Refactored code to improve efficiency
+
 ### 5.0.0 (March 24, 2018)
 
 - Refactored code to use Imports babel-transformed for Node v4 compatibility

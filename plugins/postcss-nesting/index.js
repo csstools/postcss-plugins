@@ -1,4 +1,4 @@
-import postcss   from 'postcss';
-import transform from './lib/transform';
+import postcss from 'postcss';
+import walk from './lib/walk';
 
-export default postcss.plugin('postcss-nesting', () => root => root.walk(transform));
+export default postcss.plugin('postcss-nesting', () => walk);

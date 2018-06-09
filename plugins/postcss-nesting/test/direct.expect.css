@@ -2,14 +2,14 @@ a, b {
 	order: 1;
 }
 a c, a d, b c, b d {
-	order: 2;
-}
+		order: 2;
+	}
 a c e, a c f, a d e, a d f, b c e, b c f, b d e, b d f {
-	order: 3;
-}
+			order: 3;
+		}
 a c, a d, b c, b d {
-	order: 4;
-}
+		order: 4;
+	}
 a, b {
 	order: 5;
 }
@@ -17,13 +17,13 @@ a, b {
 	order: 1;
 }
 a c, a d, b c, b d {
-	order: 2;
+		order: 2;
 }
 a c e, a c f, a d e, a d f, b c e, b c f, b d e, b d f {
-	order: 3;
+			order: 3;
 }
 a c, a d, b c, b d {
-	order: 4;
+		order: 4;
 }
 a, b {
 	order: 5;

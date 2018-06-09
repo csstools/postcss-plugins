@@ -1,19 +1,48 @@
-.rule-1 {
+a {
 	order: 1;
+
 	@media screen, print {
 		order: 2;
-		&.rule-2 {
+
+		@media (min-width: 480px) {
 			order: 3;
-			@media (max-width: 30em) {
-				order: 4;
-				@nest .rule-prefix & {
-					order: 5;
-				}
-				order: 6;
-			}
-			order: 7;
 		}
-		order: 8;
+
+		order: 4;
 	}
-	order: 9;
+
+	order: 5;
+	order: 6;
+
+	& b {
+		order: 7;
+
+		& c {
+			order: 8;
+		}
+
+		order: 9;
+	}
+
+	order: 10;
+
+	@nest body & {
+		order: 11;
+
+		@nest html & {
+			order: 12;
+		}
+
+		order: 13;
+	}
+
+	order: 14;
+
+	@media screen {
+		order: 15;
+
+		@media (min-width: 480px) {
+			order: 16;
+		}
+	}
 }

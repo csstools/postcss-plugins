@@ -1,9 +1,8 @@
-# PostCSS Nesting [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
+# PostCSS Nesting [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
 
-[![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
+[![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Nesting] lets you nest style rules inside each other, following the
@@ -29,143 +28,50 @@ a c, a d, b c, b d {
 }
 ```
 
+**NOTICE**: In v7.0.0 nesting at-rules like `@media` will no longer work, as
+they are not part of the nesting proposal.
+
 ## Usage
 
-Add [PostCSS Nesting] to your build tool:
+Add [PostCSS Nesting] to your project:
 
 ```bash
 npm install postcss-nesting --save-dev
 ```
-
-#### Node
 
 Use [PostCSS Nesting] to process your CSS:
 
 ```js
 import postcssNesting from 'postcss-nesting';
 
-postcssNesting.process(YOUR_CSS);
+postcssNesting.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS Nesting] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
+import postcss from 'postcss';
 import postcssNesting from 'postcss-nesting';
 
 postcss([
-  postcssNesting(/* options */)
-]).process(YOUR_CSS);
+  postcssNesting(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS Nesting] runs in all Node environments, with special instructions for:
 
-Add [PostCSS Loader] to your build tool:
+| [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- |
 
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [PostCSS Nesting] in your Webpack configuration:
-
-```js
-import postcssNesting from 'postcss-nesting';
-
-export default {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssNesting(/* options */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS Nesting] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import postcssNesting from 'postcss-nesting';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssNesting(/* options */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS Nesting] in your Gruntfile:
-
-```js
-import postcssNesting from 'postcss-nesting';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssNesting(/* options */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
-
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-nesting
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-nesting.svg
+[cli-url]: https://travis-ci.org/jonathantneal/postcss-nesting
 [css-img]: https://cssdb.org/badge/nesting-rules.svg
 [css-url]: https://cssdb.org/#nesting-rules
+[git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
-[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
-[npm-url]: https://www.npmjs.com/package/postcss-nesting
 [npm-img]: https://img.shields.io/npm/v/postcss-nesting.svg
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-nesting.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-nesting
+[npm-url]: https://www.npmjs.com/package/postcss-nesting
 
 [CSS Nesting]: http://tabatkins.github.io/specs/css-nesting/
-[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
-[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Nesting]: https://github.com/jonathantneal/postcss-nesting

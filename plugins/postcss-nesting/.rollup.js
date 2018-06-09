@@ -8,8 +8,11 @@ export default {
 	],
 	plugins: [
 		babel({
+			plugins: [
+				'array-includes'
+			],
 			presets: [
-				['env', { modules: false, targets: { node: 4 } }]
+				['env', { modules: false, targets: { node: 6 } }]
 			]
 		})
 	]
