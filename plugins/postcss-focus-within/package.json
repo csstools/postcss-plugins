@@ -1,7 +1,7 @@
 {
   "name": "postcss-focus-within",
   "version": "2.0.0",
-  "description": "Ise the :focus-within pseudo-selector in CSS",
+  "description": "Use the :focus-within pseudo-selector in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
   "repository": "jonathantneal/postcss-focus-within",
@@ -24,18 +24,18 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "postcss": "^6.0.21"
+    "postcss": "^6.0.22"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^4.19.1",
     "eslint-config-dev": "2.0.0",
     "postcss-tape": "2.2.0",
     "pre-commit": "^1.2.2",
-    "rollup": "^0.57.1",
-    "rollup-plugin-babel": "^3.0.3"
+    "rollup": "^0.60.1",
+    "rollup-plugin-babel": "^3.0.4"
   },
   "eslintConfig": {
     "extends": "dev",
