@@ -27,19 +27,19 @@
   },
   "homepage": "https://github.com/Semigradsky/postcss-attribute-case-insensitive#readme",
   "devDependencies": {
-    "babel-cli": "^6.11.4",
-    "babel-eslint": "^8.2.3",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.5",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-env": "^1.4.0",
-    "babel-register": "^6.11.6",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
     "chai": "^4.1.2",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.11.0",
-    "mocha": "^5.1.1"
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "mocha": "^5.2.0"
   },
   "dependencies": {
-    "postcss": "^6.0.22",
+    "postcss": "^6.0.23",
     "postcss-selector-parser": "^4.0.0"
   }
 }
