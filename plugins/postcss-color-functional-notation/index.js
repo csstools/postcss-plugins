@@ -14,9 +14,9 @@ export default postcss.plugin('postcss-color-functional-notation', opts => {
 				ast.walkType('func', node => {
 					if (colorRegExp.test(node.value)) {
 						const children = node.nodes.slice(1, -1);
-						const isFunctionalHSL = matchFunctionalHSL(children);
-						const isFunctionalRGB1 = matchFunctionalRGB1(children);
-						const isFunctionalRGB2 = matchFunctionalRGB2(children);
+						const isFunctionalHSL = matchFunctionalHSL(node, children);
+						const isFunctionalRGB1 = matchFunctionalRGB1(node, children);
+						const isFunctionalRGB2 = matchFunctionalRGB2(node, children);
 
 						if (isFunctionalHSL || isFunctionalRGB1 || isFunctionalRGB2) {
 							const slashNode = children[3];
@@ -69,28 +69,32 @@ const alphaUnitMatch = /^%?$/i;
 const calcFuncMatch = /^calc$/i;
 const colorAnyRegExp = /(^|[^\w-])(hsla?|rgba?)\(/i;
 const colorRegExp = /^(hsla?|rgba?)$/i;
+const hslishRegExp = /^hsla?$/i;
 const hslRgbFuncMatch = /^(hsl|rgb)$/i;
 const hslaRgbaFuncMatch = /^(hsla|rgba)$/i;
 const hueUnitMatch = /^(deg|grad|rad|turn)?$/i;
+const rgbishRegExp = /^rgba?$/i;
 const isAlphaValue = node => isCalc(node) || Object(node).type === 'number' && alphaUnitMatch.test(node.unit);
 const isCalc = node => Object(node).type === 'func' && calcFuncMatch.test(node.value);
 const isHue = node => isCalc(node) || Object(node).type === 'number' && hueUnitMatch.test(node.unit);
 const isNumber = node => isCalc(node) || Object(node).type === 'number' && node.unit === '';
 const isPercentage = node => isCalc(node) || Object(node).type === 'number' && (node.unit === '%' || node.unit === '' && node.value === '0');
+const isHslish = node => Object(node).type === 'func' && hslishRegExp.test(node.value);
 const isHslRgb = node => Object(node).type === 'func' && hslRgbFuncMatch.test(node.value);
 const isHslaRgba = node => Object(node).type === 'func' && hslaRgbaFuncMatch.test(node.value);
+const isRgbish = node => Object(node).type === 'func' && rgbishRegExp.test(node.value);
 const isSlash = node => Object(node).type === 'operator' && node.value === '/';
 const functionalHSLMatch = [isHue, isPercentage, isPercentage, isSlash, isAlphaValue];
 const functionalRGB1Match = [isNumber, isNumber, isNumber, isSlash, isAlphaValue];
 const functionalRGB2Match = [isPercentage, isPercentage, isPercentage, isSlash, isAlphaValue];
 
-const matchFunctionalHSL = children => children.every(
+const matchFunctionalHSL = (node, children) => isHslish(node) && children.every(
 	(child, index) => typeof functionalHSLMatch[index] === 'function' && functionalHSLMatch[index](child)
 );
-const matchFunctionalRGB1 = children => children.every(
+const matchFunctionalRGB1 = (node, children) => isRgbish(node) && children.every(
 	(child, index) => typeof functionalRGB1Match[index] === 'function' && functionalRGB1Match[index](child)
 );
-const matchFunctionalRGB2 = children => children.every(
+const matchFunctionalRGB2 = (node, children) => isRgbish(node) && children.every(
 	(child, index) => typeof functionalRGB2Match[index] === 'function' && functionalRGB2Match[index](child)
 );
 

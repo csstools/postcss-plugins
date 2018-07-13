@@ -30,6 +30,8 @@
 }
 
 .test-hsl {
+	color: hsl(0, 0%, 100%);
+	color: hsl(0 0% 100%);
 	color: hsl(120deg, 100%, 50%);
 	color: hsl(120deg 100% 50%);
 	color: hsl(120, 100%, 50%);
