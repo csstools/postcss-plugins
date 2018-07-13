@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-functional-notation",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Use space and slash separated color notation in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
