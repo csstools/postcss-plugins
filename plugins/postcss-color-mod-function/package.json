@@ -1,17 +1,17 @@
 {
   "name": "postcss-color-mod-function",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "Modify colors using the color-mod() function in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
   "repository": "jonathantneal/postcss-color-mod-function",
   "homepage": "https://github.com/jonathantneal/postcss-color-mod-function#readme",
   "bugs": "https://github.com/jonathantneal/postcss-color-mod-function/issues",
-  "main": "index.bundle.js",
-  "module": "index.js",
+  "main": "index.cjs.js",
+  "module": "index.es.js",
   "files": [
-    "index.js",
-    "index.bundle.js",
+    "index.cjs.js",
+    "index.es.js",
     "lib"
   ],
   "scripts": {
@@ -27,20 +27,20 @@
   },
   "dependencies": {
     "@csstools/convert-colors": "^1.4.0",
-    "postcss": "^6.0.19",
-    "postcss-values-parser": "^1.3.2"
+    "postcss": "^6.0.23",
+    "postcss-values-parser": "^1.5.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-preset-env": "^1.7.0",
     "echint": "^4.0.1",
-    "eslint": "^4.18.1",
+    "eslint": "^5.2.0",
     "eslint-config-dev": "^2.0.0",
     "postcss-tape": "^2.2.0",
     "pre-commit": "^1.2.2",
-    "rollup": "^0.56.3",
-    "rollup-plugin-babel": "^3.0.3"
+    "rollup": "^0.63.4",
+    "rollup-plugin-babel": "^3.0.7"
   },
   "eslintConfig": {
     "extends": "dev",

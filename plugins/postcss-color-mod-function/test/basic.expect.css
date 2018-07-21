@@ -131,3 +131,7 @@ test-var {
 test-multiple-value-items {
 	border: 1px solid rgb(255, 0, 0);
 }
+
+test-linear-gradient {
+	background-image: linear-gradient(rgb(255, 0, 0), rgba(255, 0, 0, 0));
+}

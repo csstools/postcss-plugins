@@ -199,8 +199,8 @@ knowledge of the living DOM tree.
 
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-color-mod-function.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-color-mod-function
-[css-img]: https://jonathantneal.github.io/cssdb/badge/color-mod-function.svg
-[css-url]: https://jonathantneal.github.io/css-db/#css-variables
+[css-img]: https://cssdb.org/badge/color-mod-function.svg
+[css-url]: https://preset-env.cssdb.org/features#color-mod-function
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-color-mod-function.svg

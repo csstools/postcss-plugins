@@ -1,5 +1,9 @@
 # Changes to PostCSS color-mod() Function
 
+### 2.4.3 (July 21, 2018)
+
+- Fixed issue with color-mod not being converted within function
+
 ### 2.4.2 (February 27, 2018)
 
 - Fixed issue with converting colorspaces

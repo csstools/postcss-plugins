@@ -34,4 +34,4 @@ export default postcss.plugin('postcss-color-mod-function', opts => {
 	};
 });
 
-const colorModFunctionMatch = /(^|\s)color-mod\(/i;
+const colorModFunctionMatch = /(^|[^\w-])color-mod\(/i;

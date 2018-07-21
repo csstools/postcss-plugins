@@ -131,3 +131,7 @@ test-var {
 test-multiple-value-items {
 	border: 1px solid color-mod(red);
 }
+
+test-linear-gradient {
+	background-image: linear-gradient(color-mod(red alpha(100%)), color-mod(red alpha(0%)));
+}
