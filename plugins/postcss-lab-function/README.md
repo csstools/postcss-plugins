@@ -6,13 +6,15 @@
 [![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
-[PostCSS Lab Function] lets you use `lab` and `lch` color functions in CSS,
-following the [CSS Color] specification.
+[PostCSS Lab Function] lets you use `lab`, `lch`, and `gray` color functions in
+CSS, following the [CSS Color] specification.
 
 ```pcss
 :root {
   --firebrick: lab(40 56.6 39);
   --firebrick-a50: lch(40 68.8 34.5 / 50%);
+  --gray-40: gray(40);
+  --gray-40a50: gray(40 / .5);
 }
 
 /* becomes */
@@ -20,6 +22,8 @@ following the [CSS Color] specification.
 :root {
   --firebrick: rgb(178, 34, 34);
   --firebrick-a50: rgba(178, 34, 34, .5);
+  --gray-40: rgb(94,94,94);
+  --gray-40a50: rgba(94,94,94, .5);
 }
 ```
 
