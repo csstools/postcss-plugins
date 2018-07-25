@@ -27,3 +27,16 @@
 	color: rgb(255, 216, 255);
 	color: lch(100 50 0);
 }
+
+.test-gray {
+	color: rgb(94,94,94);
+	color: gray(40);
+	color: rgb(94,94,94);
+	color: gray(40 / 1);
+	color: rgba(94,94,94, .5);
+	color: gray(40 / .5);
+	color: rgb(94,94,94);
+	color: gray(40 / 100%);
+	color: rgba(94,94,94, 0.5);
+	color: gray(40 / 50%);
+}

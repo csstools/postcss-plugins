@@ -16,11 +16,13 @@ export default postcss.plugin('postcss-lab-function', opts => {
 					if (colorRegExp.test(node.value)) {
 						const children = node.nodes.slice(1, -1);
 						const isLab = labRegExp.test(node.value);
-						const isFunctionalLAB = matchFunctionalLAB(children);
-						const isFunctionalLCH = matchFunctionalLCH(children);
+						const isGray = grayRegExp.test(node.value);
+						const isFunctionalLAB = !isGray && matchFunctionalLAB(children);
+						const isFunctionalLCH = !isGray && matchFunctionalLCH(children);
+						const isFunctionalGray = isGray && matchFunctionalGray(children);
 
 						if (isFunctionalLAB || isFunctionalLCH) {
-							node.value = 'rgb'
+							node.value = 'rgb';
 
 							const slashNode = children[3];
 							const alphaNode = children[4];
@@ -63,6 +65,46 @@ export default postcss.plugin('postcss-lab-function', opts => {
 
 							node.nodes.splice(3, 0, [ newComma() ]);
 							node.nodes.splice(2, 0, [ newComma() ]);
+						} else if (isFunctionalGray) {
+							node.value = 'rgb';
+
+							const alphaNode = children[2];
+
+							const rgbValues = lab2rgb(
+								...[
+									children[0].value,
+									0,
+									0
+								].map(
+									number => parseFloat(number)
+								)
+							).map(
+								sourceValue => Math.max(Math.min(parseInt(sourceValue * 2.55), 255), 0)
+							);
+
+							node.removeAll()
+							.append(newParen('('))
+							.append(newNumber(rgbValues[0]))
+							.append(newComma())
+							.append(newNumber(rgbValues[1]))
+							.append(newComma())
+							.append(newNumber(rgbValues[2]))
+							.append(newParen(')'));
+
+							if (alphaNode) {
+								if (isPercentage(alphaNode) && !isCalc(alphaNode)) {
+									alphaNode.unit = '';
+									alphaNode.value = String(alphaNode.value / 100);
+								}
+
+								if (alphaNode.value !== '1') {
+									node.value += 'a';
+
+									node
+									.insertBefore(node.last, newComma())
+									.insertBefore(node.last, alphaNode)
+								}
+							}
 						}
 					}
 				});
@@ -79,9 +121,10 @@ export default postcss.plugin('postcss-lab-function', opts => {
 	};
 });
 
-const colorAnyRegExp = /(^|[^\w-])(lab?|lch?)\(/i;
-const colorRegExp = /^(lab?|lch?)$/i;
+const colorAnyRegExp = /(^|[^\w-])(lab|lch|gray)\(/i;
+const colorRegExp = /^(lab|lch|gray)$/i;
 const labRegExp = /^lab$/i;
+const grayRegExp = /^gray$/i;
 const alphaUnitMatch = /^%?$/i;
 const calcFuncMatch = /^calc$/i;
 const hueUnitMatch = /^(deg|grad|rad|turn)?$/i;
@@ -94,11 +137,17 @@ const isPercentage = node => isCalc(node) || Object(node).type === 'number' && n
 const isSlash = node => Object(node).type === 'operator' && node.value === '/';
 const functionalLABMatch = [isNumber, isNumber, isNumber, isSlash, isAlphaValue];
 const functionalLCHMatch = [isNumber, isNumber, isHue, isSlash, isAlphaValue];
+const functionalGrayMatch = [isNumber, isSlash, isAlphaValue];
 const matchFunctionalLAB = children => children.every(
 	(child, index) => typeof functionalLABMatch[index] === 'function' && functionalLABMatch[index](child)
 );
 const matchFunctionalLCH = children => children.every(
 	(child, index) => typeof functionalLCHMatch[index] === 'function' && functionalLCHMatch[index](child)
 );
+const matchFunctionalGray = children => children.every(
+	(child, index) => typeof functionalGrayMatch[index] === 'function' && functionalGrayMatch[index](child)
+);
 
-const newComma = () => parser.comma({ value: ',' })
+const newComma = () => parser.comma({ value: ',' });
+const newNumber = value => parser.number({ value });
+const newParen = value => parser.paren({ value });

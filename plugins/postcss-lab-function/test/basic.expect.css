@@ -15,3 +15,11 @@
 	color: rgba(178, 34, 34, 0.5);
 	color: rgb(255, 216, 255);
 }
+
+.test-gray {
+	color: rgb(94,94,94);
+	color: rgb(94,94,94);
+	color: rgba(94,94,94, .5);
+	color: rgb(94,94,94);
+	color: rgba(94,94,94, 0.5);
+}
