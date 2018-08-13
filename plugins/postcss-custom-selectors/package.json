@@ -23,8 +23,11 @@
     "dist",
     "README-zh.md"
   ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "dependencies": {
-    "postcss": "^6.0.1",
+    "postcss": "^7.0.2",
     "postcss-selector-matches": "^3.0.0"
   },
   "devDependencies": {
