@@ -20,8 +20,11 @@
   "files": [
     "index.js"
   ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "dependencies": {
-    "postcss": "^6.0.22",
+    "postcss": "^7.0.2",
     "postcss-values-parser": "^1.5.0"
   },
   "devDependencies": {
