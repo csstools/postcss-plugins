@@ -23,7 +23,7 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
   opts = opts || {}
   var actual = transform(read(postcssOpts.from), postcssOpts)
   var expected = read(filename("fixtures/" + name + ".expected"))
-  fs.writeFile(filename("fixtures/" + name + ".actual"), actual)
+  fs.writeFileSync(filename("fixtures/" + name + ".actual"), actual)
   t.equal(actual, expected, msg)
 }
 

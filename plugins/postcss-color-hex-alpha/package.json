@@ -20,9 +20,12 @@
   "files": [
     "index.js"
   ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "dependencies": {
     "color": "^1.0.3",
-    "postcss": "^6.0.1",
+    "postcss": "^7.0.2",
     "postcss-message-helpers": "^2.0.0"
   },
   "devDependencies": {
