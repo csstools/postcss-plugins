@@ -21,7 +21,7 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
     .process(read(postcssOpts.from), postcssOpts)
   var actual = result.css
   var expected = read(filename("fixtures/" + name + ".expected"))
-  fs.writeFile(filename("fixtures/" + name + ".actual"), actual)
+  fs.writeFileSync(filename("fixtures/" + name + ".actual"), actual)
   t.equal(actual.trim(), expected.trim(), msg)
 
   return result
