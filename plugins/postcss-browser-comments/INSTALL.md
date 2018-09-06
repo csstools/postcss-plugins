@@ -1,9 +1,10 @@
 # Installing PostCSS Browser Comments
 
-[PostCSS Browser Comments] runs in all Node environments, with special instructions for:
+[PostCSS Browser Comments] runs in all Node environments, with special
+instructions for:
 
-| [Node](#node) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
-| --- | --- | --- | --- | --- |
+| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Node
 
@@ -16,7 +17,7 @@ npm install postcss-browser-comments --save-dev
 Use [PostCSS Browser Comments] to process your CSS:
 
 ```js
-import postcssBrowserComments from 'postcss-browser-comments';
+const postcssBrowserComments = require('postcss-browser-comments');
 
 postcssBrowserComments.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
@@ -24,12 +25,32 @@ postcssBrowserComments.process(YOUR_CSS /*, processOptions, pluginOptions */);
 Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'postcss';
-import postcssBrowserComments from 'postcss-browser-comments';
+const postcss = require('postcss');
+const postcssBrowserComments = require('postcss-browser-comments');
 
 postcss([
   postcssBrowserComments(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
+```
+
+## PostCSS CLI
+
+Add [PostCSS CLI] to your project:
+
+```bash
+npm install postcss-cli --save-dev
+```
+
+Use [PostCSS Browser Comments] in your `postcss.config.js` configuration file:
+
+```js
+const postcssBrowserComments = require('postcss-browser-comments');
+
+module.exports = {
+  plugins: [
+    postcssBrowserComments(/* pluginOptions */)
+  ]
+}
 ```
 
 ## Webpack
@@ -43,7 +64,7 @@ npm install postcss-loader --save-dev
 Use [PostCSS Browser Comments] in your Webpack configuration:
 
 ```js
-import postcssBrowserComments from 'postcss-browser-comments';
+const postcssBrowserComments = require('postcss-browser-comments');
 
 module.exports = {
   module: {
@@ -78,8 +99,8 @@ Use [React App Rewire PostCSS] and [PostCSS Browser Comments] in your
 `config-overrides.js` file:
 
 ```js
-import reactAppRewirePostcss from 'react-app-rewire-postcss';
-import postcssBrowserComments from 'postcss-browser-comments';
+const reactAppRewirePostcss = require('react-app-rewire-postcss');
+const postcssBrowserComments = require('postcss-browser-comments');
 
 export default config => reactAppRewirePostcss(config, {
   plugins: () => [
@@ -99,8 +120,8 @@ npm install gulp-postcss --save-dev
 Use [PostCSS Browser Comments] in your Gulpfile:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssBrowserComments from 'postcss-browser-comments';
+const postcss = require('gulp-postcss');
+const postcssBrowserComments = require('postcss-browser-comments');
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
   postcss([
@@ -122,7 +143,7 @@ npm install grunt-postcss --save-dev
 Use [PostCSS Browser Comments] in your Gruntfile:
 
 ```js
-import postcssBrowserComments from 'postcss-browser-comments';
+const postcssBrowserComments = require('postcss-browser-comments');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -143,7 +164,8 @@ grunt.initConfig({
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Browser Comments]: https://github.com/csstools/postcss-browser-comments
+[PostCSS CLI]: https://github.com/postcss/postcss-cli
+[PostCSS Loader]: https://github.com/postcss/postcss-loader
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

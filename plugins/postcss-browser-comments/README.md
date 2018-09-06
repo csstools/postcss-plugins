@@ -69,7 +69,7 @@ npm install postcss-browser-comments --save-dev
 Use [PostCSS Browser Comments] to process your CSS:
 
 ```js
-import postcssBrowserComments from 'postcss-browser-comments';
+const postcssBrowserComments = require('postcss-browser-comments');
 
 postcssBrowserComments.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
@@ -77,8 +77,8 @@ postcssBrowserComments.process(YOUR_CSS /*, processOptions, pluginOptions */);
 Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'postcss';
-import postcssBrowserComments from 'postcss-browser-comments';
+const postcss = require('postcss');
+const postcssBrowserComments = require('postcss-browser-comments');
 
 postcss([
   postcssBrowserComments(/* pluginOptions */)
@@ -87,8 +87,8 @@ postcss([
 
 [PostCSS Browser Comments] runs in all Node environments, with special instructions for:
 
-| [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
-| --- | --- | --- | --- | --- |
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 
