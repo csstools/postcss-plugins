@@ -1,6 +1,11 @@
-.DS_Store
-*.sublime-workspace
-
 node_modules
-test/fixtures/*/actual.css
-dist
+index.*.*
+package-lock.json
+*.log*
+*.result.css
+.*
+!.editorconfig
+!.gitignore
+!.rollup.js
+!.tape.js
+!.travis.yml

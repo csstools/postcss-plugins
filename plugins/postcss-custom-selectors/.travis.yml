@@ -1,6 +1,9 @@
-sudo: false
+# https://docs.travis-ci.com/user/travis-lint
+
 language: node_js
+
 node_js:
-  - stable
-  - "8"
-  - "6"
+  - 6
+
+install:
+  - npm install --ignore-scripts

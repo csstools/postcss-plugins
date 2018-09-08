@@ -1,0 +1,94 @@
+@custom-selector :--foo .bar, .baz;
+
+.foo:--foo {
+	margin-top: 16px;
+}
+
+@custom-selector :--any-heading h1, h2, h3, h4, h5, h6;
+
+:--any-heading + p {}
+
+@custom-selector :--foobar .foo, .bar;
+@custom-selector :--baz .baz;
+@custom-selector :--fizzbuzz .fizz, .buzz;
+@custom-selector :--button-types
+	.btn-primary,
+	.btn-success,
+	.btn-info,
+	.btn-warning,
+	.btn-danger;
+
+:--foobar > :--baz {}
+:--fizzbuzz > :--foobar {}
+:--button-types, :--button-types:active {}
+
+@custom-selector :--commented-foo
+	/* comment */
+	.foo,
+	.bar > .baz;
+
+:--commented-foo + p {
+	display: block;
+}
+
+@custom-selector :--pseudo ::before, ::after;
+
+.foo > a:--pseudo img {
+	display: block;
+}
+
+@custom-selector :--foo .foo;
+
+:--foo, :--foo.bar {
+	color: white;
+}
+
+:--foo :--foo:hover {
+	color: white;
+}
+
+@custom-selector :--fo-----o h1, h2, h3;
+@custom-selector :--ba-----r h4, h5, h6;
+
+.fo--oo > :--fo-----o {
+	margin: auto;
+}
+
+:--ba-----r:hover .ba--z {
+	display: block;
+}
+
+/* comment */
+
+article :--heading + p {
+	margin-top: 0;
+}
+
+@custom-selector :--multiline
+	.foo,
+	.bar > .baz;
+
+:--multiline {
+	display: block;
+}
+
+/* should works with collapsed custom selectors */
+
+@custom-selector :--button button, .button;
+@custom-selector :--enter :hover, :focus;
+
+:--button:--enter {}
+
+@custom-selector :--any-foobar .foo, .bar;
+
+:--any-foobar h1 {
+	margin-top: 16px;
+}
+
+main :--foo + p {
+	margin-top: 16px;
+}
+
+@custom-selector :--foobar .foo;
+
+:--foobar {}

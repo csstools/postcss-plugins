@@ -1,0 +1,57 @@
+.foo.foo {
+	margin-top: 16px;
+}
+
+h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
+
+.foo > .baz {}
+.fizz > .foo,.buzz > .foo {}
+.btn-primary,.btn-success,.btn-info,.btn-warning,.btn-danger, .btn-primary:active, .btn-success:active, .btn-info:active, .btn-warning:active, .btn-danger:active {}
+
+.foo + p,.bar>.baz + p {
+	display: block;
+}
+
+.foo > a::before img,.foo > a::after img {
+	display: block;
+}
+
+.foo, .foo.bar {
+	color: white;
+}
+
+.foo .foo:hover {
+	color: white;
+}
+
+.fo--oo > h1,.fo--oo > h2,.fo--oo > h3 {
+	margin: auto;
+}
+
+h4:hover .ba--z,h5:hover .ba--z,h6:hover .ba--z {
+	display: block;
+}
+
+/* comment */
+
+article h1 + p,article h2 + p,article h3 + p {
+	margin-top: 0;
+}
+
+.foo,.bar>.baz {
+	display: block;
+}
+
+/* should works with collapsed custom selectors */
+
+button:hover,button:focus,.button:hover,.button:focus {}
+
+.foo h1,.bar h1 {
+	margin-top: 16px;
+}
+
+main .foo + p {
+	margin-top: 16px;
+}
+
+.foo {}
