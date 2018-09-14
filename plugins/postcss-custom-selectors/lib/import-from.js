@@ -60,20 +60,29 @@ async function importCustomSelectorsFromJSFile(from) {
 
 export default function importCustomSelectorsFromSources(sources) {
 	return sources.map(source => {
-		if (typeof source === 'string') {
-			if (isCSSPath(source)) {
-				return [ 'css', source ]
-			} else if (isJSPath(source)) {
-				return [ 'js', source ]
-			} else if (isJSONPath(source)) {
-				return [ 'json', source ]
-			}
+		if (source instanceof Promise) {
+			return source;
+		} else if (source instanceof Function) {
+			return source();
 		}
 
-		return Object(source);
+		// read the source as an object
+		const opts = source === Object(source) ? source : { from: String(source) };
+
+		// skip objects with custom selectors
+		if (Object(opts).customSelectors || Object(opts)['custom-selectors']) {
+			return opts
+		}
+
+		// source pathname
+		const from = String(opts.from || '');
+
+		// type of file being read from
+		const type = (opts.type || path.extname(opts.from).slice(1)).toLowerCase();
+
+		return { type, from };
 	}).reduce(async (customSelectors, source) => {
-		const type = source[0];
-		const from = source[1];
+		const { type, from } = await source;
 
 		if (type === 'ast') {
 			return Object.assign(customSelectors, importCustomSelectorsFromCSSAST(from));
@@ -91,20 +100,12 @@ export default function importCustomSelectorsFromSources(sources) {
 			return Object.assign(customSelectors, await importCustomSelectorsFromJSONFile(from));
 		}
 
-		return Object.assign(customSelectors, importCustomSelectorsFromObject(source));
+		return Object.assign(customSelectors, importCustomSelectorsFromObject(await source));
 	}, {});
 }
 
 /* Helper utilities
 /* ========================================================================== */
-
-const matchCSSPath = /\.\w*css/i;
-const matchJSPath = /\.\w*js/i;
-const matchJSONPath = /\.\w*json/i;
-
-const isCSSPath = from => matchCSSPath.test(from);
-const isJSPath = from => matchJSPath.test(from);
-const isJSONPath = from => matchJSONPath.test(from);
 
 const readFile = from => new Promise((resolve, reject) => {
 	fs.readFile(from, 'utf8', (error, result) => {

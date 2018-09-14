@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Selectors
 
+### 5.1.0 (September 12, 2018)
+
+- Added: New `exportTo` function to specify where to export custom selectors
+- Updated: `importFrom` option to support passing it a function
+
 ### 5.0.0 (September 7, 2018)
 
 - Added: New `preserve` option to preserve custom selectors and rules using them

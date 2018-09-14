@@ -164,7 +164,7 @@ grunt.initConfig({
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
-[PostCSS Custom Selectors]: https://github.com/jonathantneal/postcss-custom-selectors
+[PostCSS Custom Selectors]: https://github.com/postcss/postcss-custom-selectors
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

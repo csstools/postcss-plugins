@@ -1,0 +1,20 @@
+@custom-selector :--foo .foo;
+@custom-selector :--any-heading h1, h2, h3, h4, h5, h6;
+@custom-selector :--foobar .foo;
+@custom-selector :--baz .baz;
+@custom-selector :--fizzbuzz .fizz, .buzz;
+@custom-selector :--button-types .btn-primary,
+	.btn-success,
+	.btn-info,
+	.btn-warning,
+	.btn-danger;
+@custom-selector :--commented-foo .foo,
+	.bar > .baz;
+@custom-selector :--pseudo ::before, ::after;
+@custom-selector :--fo-----o h1, h2, h3;
+@custom-selector :--ba-----r h4, h5, h6;
+@custom-selector :--multiline .foo,
+	.bar > .baz;
+@custom-selector :--button button, .button;
+@custom-selector :--enter :hover, :focus;
+@custom-selector :--any-foobar .foo, .bar;

@@ -26,7 +26,7 @@ scope and avoid unrelated commits.
    cd postcss-custom-selectors
 
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream git@github.com:jonathantneal/postcss-custom-selectors.git
+   git remote add upstream git@github.com:postcss/postcss-custom-selectors.git
 
    # Install the tools necessary for testing
    npm install
