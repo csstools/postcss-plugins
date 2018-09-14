@@ -1,7 +1,19 @@
 @custom-media --mq-a (max-width: 30em), (max-height: 30em);
 @custom-media --not-mq-a not all and (--mq-a);
 
+@media (max-width: 30em),(max-height: 30em) {
+	body {
+		order: 1;
+	}
+}
+
 @media (--mq-a) {
+	body {
+		order: 1;
+	}
+}
+
+@media (max-width: 30em),(max-height: 30em), (max-width: 30em), (max-height: 30em) {
 	body {
 		order: 1;
 	}
@@ -13,15 +25,33 @@
 	}
 }
 
+@media not all and (max-width: 30em),not all and (max-height: 30em) {
+	body {
+		order: 2;
+	}
+}
+
 @media not all and (--mq-a) {
 	body {
 		order: 2;
 	}
 }
 
+@media not all and (max-width: 30em),not all and (max-height: 30em) {
+	body {
+		order: 1;
+	}
+}
+
 @media (--not-mq-a) {
 	body {
 		order: 1;
+	}
+}
+
+@media all and (max-width: 30em),all and (max-height: 30em) {
+	body {
+		order: 2;
 	}
 }
 
@@ -40,10 +70,26 @@
 	}
 }
 
+@media (--circular-mq-a) {
+	body {
+		order: 3;
+	}
+}
+
 @media (--circular-mq-b) {
 	body {
 		order: 4;
 	}
+}
+
+@media (--circular-mq-b) {
+	body {
+		order: 4;
+	}
+}
+
+@media (--unresolved-mq) {
+	body order: 5;
 }
 
 @media (--unresolved-mq) {

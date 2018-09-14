@@ -8,7 +8,7 @@ import getCustomMedia from './custom-media-from-root';
 /* ========================================================================== */
 
 function importCustomMediaFromCSSAST(root) {
-	return getCustomMedia(root);
+	return getCustomMedia(root, { preserve: true });
 }
 
 /* Import Custom Media from CSS File

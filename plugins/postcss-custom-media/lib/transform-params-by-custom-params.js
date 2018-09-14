@@ -25,10 +25,17 @@ function transformMedia(media, customMedias) {
 
 		if (key in customMedias) {
 			for (const replacementMedia of customMedias[key].nodes) {
+				// use the first available modifier unless they cancel each other out
+				const modifier = media.modifier !== replacementMedia.modifier
+					? media.modifier || replacementMedia.modifier
+				: '';
 				const mediaClone = media.clone({
-					modifier: replacementMedia.modifier === media.modifier && modifierRegExp.test(media.modifier)
-						? ''
-					: replacementMedia.modifier
+					modifier,
+					// conditionally use the raws from the first available modifier
+					raws: !modifier || media.modifier
+						? { ...media.raws }
+					: { ...replacementMedia.raws },
+					type: media.type || replacementMedia.type
 				});
 
 				mediaClone.nodes.splice(index, 1, ...replacementMedia.clone().nodes.map(node => {
@@ -38,9 +45,9 @@ function transformMedia(media, customMedias) {
 					return node;
 				}));
 
-				const retranspiledMedias = String(mediaClone) === String(customMedias[key])
-					? []
-				: transformMedia(mediaClone, customMedias);
+				// remove the currently transformed key to prevent recursion
+				const nextCustomMedia = getCustomMediasWithoutKey(customMedias, key);
+				const retranspiledMedias = transformMedia(mediaClone, nextCustomMedia);
 
 				if (retranspiledMedias.length) {
 					transpiledMedias.push(...retranspiledMedias);
@@ -58,5 +65,12 @@ function transformMedia(media, customMedias) {
 	return transpiledMedias;
 }
 
-const modifierRegExp = /^not$/i;
 const customPseudoRegExp = /\((--[A-z][\w-]*)\)/;
+
+const getCustomMediasWithoutKey = (customMedias, key) => {
+	const nextCustomMedias = Object.assign({}, customMedias);
+
+	delete nextCustomMedias[key];
+
+	return nextCustomMedias;
+};

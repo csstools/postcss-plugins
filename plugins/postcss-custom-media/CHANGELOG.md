@@ -1,6 +1,10 @@
 # Changes to PostCSS Custom Media
 
-### 7.0.0 (September 12, 2018)
+### 7.0.1 (September 14, 2018)
+
+- Fixed: An issue with how opposing queries are resolved.
+
+### 7.0.0 (September 14, 2018)
 
 - Added: New `preserve` option to preserve custom media and atrules using them
 - Added: New `exportTo` function to specify where to export custom media
