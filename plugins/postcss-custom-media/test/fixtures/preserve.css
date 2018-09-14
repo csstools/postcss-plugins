@@ -1,4 +1,0 @@
-@custom-media --viewport-max-s (max-width: 30em);
-@media (--viewport-max-s) {
-  body { font-size: 1rem; }
-}

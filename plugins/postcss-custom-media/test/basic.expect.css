@@ -1,0 +1,27 @@
+@media (max-width: 30em),(max-height: 30em) {
+	body {
+		order: 1;
+	}
+}
+
+@media (max-width: 30em),(max-height: 30em) {
+	body {
+		order: 2;
+	}
+}
+
+@media (--circular-mq-b) {
+	body {
+		order: 3;
+	}
+}
+
+@media (--circular-mq-a) {
+	body {
+		order: 4;
+	}
+}
+
+@media (--unresolved-mq) {
+	body order: 5;
+}

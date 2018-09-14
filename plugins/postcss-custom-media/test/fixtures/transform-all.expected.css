@@ -1,7 +1,0 @@
-
-
-@media (foo: bar), (bar: baz) {
-  selector {
-    property: value;
-  }
-}

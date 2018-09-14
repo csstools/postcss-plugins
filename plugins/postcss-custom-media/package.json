@@ -1,23 +1,28 @@
 {
   "name": "postcss-custom-media",
-  "version": "6.0.0",
-  "description": "PostCSS plugin to transform W3C CSS Custom Media Queries to more compatible CSS",
-  "keywords": [
-    "css",
-    "postcss",
-    "postcss-plugin",
-    "media queries",
-    "custom-media"
+  "version": "7.0.0",
+  "description": "Use Custom Media Queries in CSS",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "contributors": [
+    "Maxime Thirouin"
   ],
-  "author": "Maxime Thirouin",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/postcss/postcss-custom-media.git"
-  },
+  "repository": "postcss/postcss-custom-media",
+  "homepage": "https://github.com/postcss/postcss-custom-media#readme",
+  "bugs": "https://github.com/postcss/postcss-custom-media/issues",
+  "main": "index.cjs.js",
+  "module": "index.es.mjs",
   "files": [
-    "index.js"
+    "index.cjs.js",
+    "index.es.mjs"
   ],
+  "scripts": {
+    "prepublishOnly": "npm test",
+    "pretest": "rollup -c .rollup.js --silent",
+    "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
+    "test:js": "eslint *.js lib/*.js --cache --ignore-path .gitignore --quiet",
+    "test:tape": "postcss-tape"
+  },
   "engines": {
     "node": ">=6.0.0"
   },
@@ -25,19 +30,33 @@
     "postcss": "^7.0.2"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-i-am-meticulous": "^6.0.1",
-    "eslint-plugin-import": "^1.7.0",
-    "npmpub": "^3.1.0",
-    "tape": "^4.6.3"
-  },
-  "scripts": {
-    "lint": "eslint --fix .",
-    "tests": "tape test",
-    "test": "npm run lint && npm run tests",
-    "release": "npmpub"
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.5.0",
+    "eslint-config-dev": "^2.0.0",
+    "postcss-tape": "^2.2.0",
+    "pre-commit": "^1.2.2",
+    "rollup": "^0.65.2",
+    "rollup-plugin-babel": "^4.0.3"
   },
   "eslintConfig": {
-    "extends": "eslint-config-i-am-meticulous/es5"
-  }
+    "extends": "dev",
+    "parser": "babel-eslint"
+  },
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "custom",
+    "media",
+    "query",
+    "queries",
+    "w3c",
+    "csswg",
+    "atrule",
+    "at-rule",
+    "specification"
+  ]
 }

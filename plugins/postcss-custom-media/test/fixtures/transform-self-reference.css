@@ -1,9 +1,0 @@
-body { color: #000  }
-
-@custom-media --a (--a);
-
-@media (--a) {
-  selector {
-    property: value;
-  }
-}

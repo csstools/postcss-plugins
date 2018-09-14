@@ -1,23 +1,33 @@
-# 6.0.0 - 2017-05-12
+# Changes to PostCSS Custom Media
+
+### 7.0.0 (September 12, 2018)
+
+- Added: New `preserve` option to preserve custom media and atrules using them
+- Added: New `exportTo` function to specify where to export custom media
+- Added: New `importFrom` option to specify where to import custom media
+- Added: Support for PostCSS v7
+- Added: Support for Node v6+
+
+# 6.0.0 (May 12, 2017)
 
 - Added: compatibility with postcss v6.x
 
-# 5.0.1 - 2016-02-03
+# 5.0.1 (February 3, 2016)
 
 - Fixed: circular dependencies are properly detected
 ([#17](https://github.com/postcss/postcss-custom-media/pull/17))
 
-# 5.0.0 - 2015-08-25
+# 5.0.0 (August 25, 2015)
 
 - Removed: compatibility with postcss v4.x
 - Added: compatibility with postcss v5.x
 
-# 4.1.0 - 2015-06-30
+# 4.1.0 (06 30, 2015)
 
 - Added: Allow custom media to reference each other
 ([#10](https://github.com/postcss/postcss-custom-media/pull/10))
 
-# 4.0.0 - 2015-05-17
+# 4.0.0 (May 17, 2015)
 
 - Changed: warning messages are now sent via postcss messages api (^4.1.0)
 - Added: automatic custom media `--` prefixing
@@ -25,7 +35,7 @@
 - Added: `preserve` allows you to preserve custom media query defintions
 - Added: `appendExtensions` allows you (when `preserve` is truthy) to append your extensions as media queries
 
-# 3.0.0 - 2015-01-29
+# 3.0.0 (January 29, 2015)
 
 - Added: compatibility with postcss v4.x
 - Removed: compatibility with postcss v3.x
@@ -34,26 +44,26 @@
 
 _You never saw this version (this is a bad release that points to 1.0.0)._
 
-# 1.3.0 - 2014-11-25
+# 1.3.0 (November 25, 2014)
 
 - Changed: better gnu message
 
-# 1.2.1 - 2014-10-09
+# 1.2.1 (October 9, 2014)
 
 - Fixed: npm description
 
-# 1.2.0 - 2014-10-01
+# 1.2.0 (October 1, 2014)
 
 - Added: support for multiples media in query list (ref [#rework-custom-media/5](https://github.com/reworkcss/rework-custom-media/pull/5))
 
-# 1.1.0 - 2014-09-30
+# 1.1.0 (September 30, 2014)
 
 - Added: support for js-defined media queries (fix [#3](https://github.com/postcss/postcss-custom-media/issues/3))
 
-# 1.0.1 - 2014-09-16
+# 1.0.1 (September 16, 2014)
 
 - Added: Allow whitespace around custom media name (fix [#2](https://github.com/postcss/postcss-custom-media/issues/2))
 
-# 1.0.0 - 2014-08-12
+# 1.0.0 (August 12, 2014)
 
 ✨ First release based on [rework-custom-media](https://github.com/reworkcss/rework-custom-media) v0.1.1

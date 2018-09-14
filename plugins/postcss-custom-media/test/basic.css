@@ -1,0 +1,33 @@
+@custom-media --mq-a (max-width: 30em), (max-height: 30em);
+@custom-media --not-mq-a not all and (--mq-a);
+
+@media not (--mq-a) {
+	body {
+		order: 1;
+	}
+}
+
+@media not (--not-mq-a) {
+	body {
+		order: 2;
+	}
+}
+
+@custom-media --circular-mq-a (--circular-mq-b);
+@custom-media --circular-mq-b (--circular-mq-a);
+
+@media (--circular-mq-a) {
+	body {
+		order: 3;
+	}
+}
+
+@media (--circular-mq-b) {
+	body {
+		order: 4;
+	}
+}
+
+@media (--unresolved-mq) {
+	body order: 5;
+}
