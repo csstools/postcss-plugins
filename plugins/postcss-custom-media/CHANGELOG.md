@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### 7.0.2 (September 15, 2018)
+
+- Fixed: An issue with re-assigning params as a non-string
+
 ### 7.0.1 (September 14, 2018)
 
 - Fixed: An issue with how opposing queries are resolved.
