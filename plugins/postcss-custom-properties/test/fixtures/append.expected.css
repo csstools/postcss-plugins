@@ -1,8 +1,0 @@
-div {
-	p: js-one;
-}
-:root {
-	--test-one: js-one;
-	--test-two: js-two;
-	--test-three: js-one js-two;
-}

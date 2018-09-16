@@ -1,0 +1,30 @@
+html {
+	--ref-color: skip;
+}
+
+:root {
+	--color: red;
+	--ref-color: var(--color);
+	--circular: var(--circular-2);
+	--circular-2: var(--circular);
+}
+
+.test {
+	--skip: gray;
+	color: red;
+	color: var(--color);
+}
+
+.test--fallback {
+	color: blue;
+	color: var(--color-2, blue);
+}
+
+.test--color_w_var {
+	color: red;
+	color: var(--ref-color);
+}
+
+.test--circular_var {
+	color: var(--circular);
+}

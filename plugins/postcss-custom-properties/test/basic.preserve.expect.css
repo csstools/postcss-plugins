@@ -1,0 +1,16 @@
+.test {
+	--skip: gray;
+	color: red;
+}
+
+.test--fallback {
+	color: blue;
+}
+
+.test--color_w_var {
+	color: red;
+}
+
+.test--circular_var {
+	color: var(--circular);
+}

@@ -1,8 +1,0 @@
-:root {
-  --test-trailing-space: red;
-}
-
-div {
-  color: red;
-  color: var( --test-trailing-space );
-}

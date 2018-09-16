@@ -1,6 +1,0 @@
-:root {
-	--color: var(--color, #aaa);
-}
-body {
-	color: var(--color, #bbb);
-}
