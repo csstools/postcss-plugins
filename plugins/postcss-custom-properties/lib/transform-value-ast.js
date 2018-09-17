@@ -8,28 +8,14 @@ export default function transformValueAST(root, customProperties) {
 
 				if (name in customProperties) {
 					// conditionally replace a known custom property
-					child.replaceWith(
-						...asClonedArray(customProperties[name], null)
-					);
+					child.replaceWith(...asClonedArrayWithBeforeSpacing(customProperties[name], child.raws.before));
 
-					const nextCustomProperties = Object.assign({}, customProperties);
-
-					delete nextCustomProperties[name];
-
-					transformValueAST(root, nextCustomProperties);
+					retransformValueAST(root, customProperties, name);
 				} else if (fallbacks.length) {
 					// conditionally replace a custom property with a fallback
-					const clonedFallbacks = asClonedArray(fallbacks);
+					child.replaceWith(...asClonedArrayWithBeforeSpacing(fallbacks, child.raws.before));
 
-					Object.assign(clonedFallbacks[0].raws, { before: '' });
-
-					child.replaceWith(...clonedFallbacks);
-
-					const nextCustomProperties = Object.assign({}, customProperties);
-
-					delete nextCustomProperties[name];
-
-					transformValueAST(root, nextCustomProperties);
+					transformValueAST(root, customProperties);
 				}
 			} else {
 				transformValueAST(child, customProperties);
@@ -40,11 +26,31 @@ export default function transformValueAST(root, customProperties) {
 	return root;
 }
 
+// retransform the current ast without a custom property (to prevent recursion)
+function retransformValueAST(root, customProperties, withoutProperty) {
+	const nextCustomProperties = Object.assign({}, customProperties);
+
+	delete nextCustomProperties[withoutProperty];
+
+	return transformValueAST(root, nextCustomProperties);
+}
+
 // match var() functions
 const varRegExp = /^var$/i;
 
 // whether the node is a var() function
 const isVarFunction = node => node.type === 'func' && varRegExp.test(node.value) && Object(node.nodes).length > 0;
+
+// return an array with its nodes cloned, preserving the raw
+const asClonedArrayWithBeforeSpacing = (array, beforeSpacing) => {
+	const clonedArray = asClonedArray(array, null);
+
+	if (clonedArray[0]) {
+		clonedArray[0].raws.before = beforeSpacing;
+	}
+
+	return clonedArray;
+};
 
 // return an array with its nodes cloned
 const asClonedArray = (array, parent) => array.map(node => asClonedNode(node, parent));
@@ -64,4 +70,4 @@ const asClonedNode = (node, parent) => {
 	}
 
 	return cloneNode;
-}
+};

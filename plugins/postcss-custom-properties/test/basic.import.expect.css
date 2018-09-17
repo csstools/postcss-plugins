@@ -28,3 +28,8 @@ html {
 .test--circular_var {
 	color: var(--circular);
 }
+
+.test--color_spacing {
+	box-shadow: inset 0 -3px 0        rgb(255, 0, 0);
+	box-shadow: inset 0 -3px 0        var(--color);
+}

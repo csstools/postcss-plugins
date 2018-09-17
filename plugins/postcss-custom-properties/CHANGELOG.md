@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 8.0.2 (September 17, 2018)
+
+- Fixed: Spacing is preserved before replaced variables.
+
 ### 8.0.1 (September 17, 2018)
 
 - Fixed: Workaround issue in `postcss-values-parser` incorrectly cloning nodes.
