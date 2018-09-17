@@ -29,5 +29,57 @@ module.exports = {
 		'hex': {
 			message: 'supports hex usage'
 		},
+		'import': {
+			message: 'supports { importFrom: "test/import-root.css" } usage',
+			options: {
+				importFrom: 'test/import-root.css'
+			}
+		},
+		'import:array': {
+			message: 'supports { importFrom: ["test/import-root.css"] } usage',
+			options: {
+				importFrom: ['test/import-root.css']
+			},
+			expect: 'import.expect.css',
+			result: 'import.result.css'
+		},
+		'import:array-array': {
+			message: 'supports { importFrom: [["css", "test/import-root.css" ]] } usage',
+			options: {
+				importFrom: [['css', 'test/import-root.css' ]]
+			},
+			expect: 'import.expect.css',
+			result: 'import.result.css'
+		},
+		'import:js': {
+			message: 'supports { importFrom: "test/import-root.js" } usage',
+			options: {
+				importFrom: 'test/import-root.js'
+			},
+			expect: 'import.expect.css',
+			result: 'import.result.css'
+		},
+		'import:json': {
+			message: 'supports { importFrom: "test/import-root.json" } usage',
+			options: {
+				importFrom: 'test/import-root.json'
+			},
+			expect: 'import.expect.css',
+			result: 'import.result.css'
+		},
+		'import:object': {
+			message: 'supports { importFrom: { customProperties: {} } } usage',
+			options: {
+				importFrom: {
+					customProperties: {
+						'--color-blue': 'blue',
+						'--color-red': 'red',
+						'--color': 'var(--color-blue)'
+					}
+				}
+			},
+			expect: 'import.expect.css',
+			result: 'import.result.css'
+		}
 	}
 };

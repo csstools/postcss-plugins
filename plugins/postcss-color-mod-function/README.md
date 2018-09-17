@@ -9,7 +9,9 @@
 [PostCSS color-mod() Function] lets you modify colors using the `color-mod()`
 function in CSS, following the [CSS Color Module Level 4] specification.
 
-```css
+**`color-mod()` has been removed from the Color Module Level 4 specification.**
+
+```pcss
 :root {
   --brand-red:      color-mod(yellow blend(red 50%));
   --brand-red-hsl:  color-mod(yellow blend(red 50% hsl));
@@ -36,7 +38,7 @@ function in CSS, following the [CSS Color Module Level 4] specification.
 }
 ```
 
-## Supported Colors
+### Supported Colors
 
 The `color-mod()` function accepts `rgb()`, legacy comma-separated `rgb()`,
 `rgba()`, `hsl()`, legacy comma-separated `hsl()`, `hsla()`, `hwb()`, and
@@ -46,7 +48,7 @@ colors without the need for additional plugins.
 Implemention details are available in
 [the specification](https://drafts.csswg.org/css-color/#funcdef-color-mod).
 
-## Supported Color Adjusters
+### Supported Color Adjusters
 
 The `color-mod()` function accepts `red()`, `green()`, `blue()`, `a()` /
 `alpha()`, `rgb()`, `h()` / `hue()`, `s()` / `saturation()`, `l()` /
@@ -56,98 +58,42 @@ The `color-mod()` function accepts `red()`, `green()`, `blue()`, `a()` /
 Implemention details are available in
 [the specification](https://drafts.csswg.org/css-color/#typedef-color-adjuster).
 
-## Supported Variables
+### Supported Variables
 
 By default, `var()` variables will be used if their corresponding Custom
 Properties are found in a `:root` rule, or if a fallback value is specified.
 
----
-
 ## Usage
 
-Add [PostCSS color-mod() Function] to your build tool:
+Add [PostCSS color-mod() Function] to your project:
 
 ```bash
 npm install postcss-color-mod-function --save-dev
 ```
 
-#### Node
-
 Use [PostCSS color-mod() Function] to process your CSS:
 
 ```js
-import postcssColorMod from 'postcss-color-mod-function';
+const postcssColorMod = require('postcss-color-mod-function');
 
-postcssColorMod.process(YOUR_CSS);
+postcssColorMod.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS color-mod() Function] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'postcss';
-import postcssColorMod from 'postcss-color-mod-function';
+const postcss = require('postcss');
+const postcssColorMod = require('postcss-color-mod-function');
 
 postcss([
-  postcssColorMod(/* options */)
-]).process(YOUR_CSS);
+  postcssColorMod(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Gulp
+[PostCSS color-mod() Function] runs in all Node environments, with special instructions for:
 
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS color-mod() Function] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import postcssColorMod from 'postcss-color-mod-function';
-
-gulp.task('css',
-  () => gulp.src('./src/*.css')
-  .pipe( postcss([ postcssColorMod(/* options */) ]) )
-  .pipe( gulp.dest('.') );
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS color-mod() Function] in your Gruntfile:
-
-```js
-import postcssColorMod from 'postcss-color-mod-function';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [ postcssColorMod(/* options */) ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
-
----
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -196,6 +142,54 @@ available in `:root`, or their fallback value if it is specified. By default,
 However, because these transformations occur at build time, they cannot be
 considered accurate. Accurately resolving cascading variables relies on
 knowledge of the living DOM tree.
+
+### importFrom
+
+The `importFrom` option allows you to import variables from other sources,
+which might be CSS, JS, and JSON files, and directly passed objects.
+
+```js
+postcssColorMod({
+  importFrom: 'path/to/file.css' // :root { --brand-dark: blue; --brand-main: var(--brand-dark); }
+});
+```
+
+```pcss
+.brand-faded {
+  color: color-mod(var(--brand-main) a(50%));
+}
+
+/* becomes */
+
+.brand-faded {
+  color: rgba(0, 0, 255, .5);
+}
+```
+
+Multiple files can be passed into this option, and they will be parsed in the
+order they were received. JavaScript files, JSON files, and objects will need
+to namespace custom properties under a `customProperties` or
+`custom-properties` key.
+
+```js
+postcssColorMod({
+  importFrom: [
+    'path/to/file.css',   // :root { --brand-dark: blue; --brand-main: var(--brand-dark); }
+    'and/then/this.js',   // module.exports = { customProperties: { '--brand-dark': 'blue', '--brand-main': 'var(--brand-dark)' } }
+    'and/then/that.json', // { "custom-properties": { "--brand-dark": "blue", "--brand-main": "var(--brand-dark)" } }
+    {
+      customProperties: {
+        '--brand-dark': 'blue',
+        '--brand-main': 'var(--brand-dark)'
+      }
+    }
+  ]
+});
+```
+
+Variables may reference other variables, and this plugin will attempt to
+resolve them. If `transformVars` is set to `false` then `importFrom` will not
+be used.
 
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-color-mod-function.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-color-mod-function

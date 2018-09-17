@@ -20,12 +20,10 @@ export default function transformAST(node, opts) {
 
 			if (color) {
 				// update the color-mod() function with the transformed value
-				child.replaceWith(
-					parser.word({
-						raws: child.raws,
-						value: opts.stringifier(color)
-					})
-				);
+				child.replaceWith(parser.word({
+					raws: child.raws,
+					value: opts.stringifier(color)
+				}));
 			}
 		} else if (child.nodes && Object(child.nodes).length) {
 			transformAST(child, opts);
@@ -37,44 +35,35 @@ export default function transformAST(node, opts) {
 /* ========================================================================== */
 
 function transformVariables(node, opts) {
-	node.walk(
-		child => {
-			if (isVariable(child)) {
-				const [variableName, fallbackNode] = transformArgsByParams(child, [
-					// <value> , [ <fallback> ]?
-					[transformWord, isComma, transformNode]
-				]);
+	walk(node, child => {
+		if (isVariable(child)) {
+			const [variableName, fallbackNode] = transformArgsByParams(child, [
+				// <value> , [ <fallback> ]?
+				[transformWord, isComma, transformNode]
+			]);
 
-				if (variableName) {
-					let variableNode;
+			if (variableName in opts.customProperties) {
+				let customPropertyValue = String(opts.customProperties[variableName]);
 
-					opts.result.root.walkRules(':root', rule => {
-						rule.nodes.filter(
-							rootChild => rootChild.prop === variableName
-						).slice(-1).forEach(
-							rootChild => {
-								const rootChildValue = rootChild.value;
+				if (looseVarMatch.test(customPropertyValue)) {
+					const rootChildAST = parser(customPropertyValue, { loose: true }).parse();
 
-								const rootChildAST = parser(rootChildValue, { loose: true }).parse();
+					transformVariables(rootChildAST, opts);
 
-								transformVariables(rootChildAST, opts);
-
-								variableNode = rootChildAST.nodes[0];
-							}
-						);
-					});
-
-					if (variableNode) {
-						child.replaceWith(...variableNode.nodes);
-					}
-				} else if (fallbackNode) {
-					transformVariables(fallbackNode, opts);
-
-					child.replaceWith(...fallbackNode.nodes[0].nodes);
+					customPropertyValue = opts.customProperties[variableName] = String(rootChildAST);
 				}
+
+				child.replaceWith(parser.word({
+					raws: child.raws,
+					value: customPropertyValue
+				}));
+			} else if (fallbackNode) {
+				transformVariables(fallbackNode, opts);
+
+				child.replaceWith(...fallbackNode.nodes[0].nodes);
 			}
 		}
-	);
+	});
 }
 
 /* Transform <color> functions
@@ -581,6 +570,20 @@ function transformArgsByParams(node, params) {
 	))[0] || [];
 }
 
+/* Walk helper (required because the default walker is affected by mutations)
+/* ========================================================================== */
+
+// run a function over each node and hen walk each child node of that node
+function walk(node, fn) {
+	fn(node);
+
+	if (Object(node.nodes).length) {
+		node.nodes.slice().forEach(childNode => {
+			walk(childNode, fn);
+		});
+	}
+}
+
 /* Variable validators
 /* ========================================================================== */
 
@@ -748,4 +751,5 @@ const rgbMatch = /^rgb$/i;
 const rgbaMatch = /^rgba?$/i;
 const shadeTintMatch = /^(shade|tint)$/i;
 const varMatch = /^var$/i;
+const looseVarMatch = /(^|[^\w-])var\(/i;
 const timesMatch = /^[*]$/;

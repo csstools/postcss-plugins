@@ -1,0 +1,95 @@
+test-color-mod {
+	color: rgb(0, 0, 255);
+	color: rgb(0, 0, 255);
+	color: rgb(0, 0, 255);
+}
+
+test-red-green-blue-alpha-adjuster {
+	color: rgb(0, 0, 20);
+	color: rgb(0, 0, 51);
+	color: rgb(0, 20, 255);
+	color: rgb(0, 51, 255);
+	color: rgb(0, 0, 255);
+	color: rgb(0, 0, 255);
+	color: rgb(0, 0, 255);
+	color: rgba(0, 0, 255, 0.5);
+	color: rgba(0, 0, 255, 0.25);
+}
+
+test-rgb-adjuster {
+	color: rgb(0, 255, 255);
+	color: rgb(0, 255, 255);
+	color: rgb(0, 0, 255);
+	color: rgb(0, 0, 255);
+	color: rgb(0, 0, 255);
+}
+
+test-hue-adjuster {
+	color: hsl(20, 100%, 50%);
+	color: hsl(20, 100%, 50%);
+	color: hsl(260, 100%, 50%);
+	color: hsl(260, 100%, 50%);
+	color: hsl(220, 100%, 50%);
+	color: hsl(220, 100%, 50%);
+	color: hsl(120, 100%, 50%);
+	color: hsl(120, 100%, 50%);
+}
+
+test-lightness-saturation-adjuster {
+	color: hsl(240, 100%, 50%);
+	color: hsl(240, 100%, 20%);
+	color: hsl(240, 100%, 70%);
+	color: hsl(240, 100%, 30%);
+	color: hsl(240, 100%, 75%);
+	color: hsl(240, 20%, 50%);
+	color: hsl(240, 100%, 50%);
+	color: hsl(240, 80%, 50%);
+	color: hsl(240, 100%, 50%);
+}
+
+test-blackness-whiteness-adjuster {
+	color: rgb(0, 0, 204);
+	color: rgb(0, 0, 204);
+	color: rgb(0, 0, 255);
+	color: rgb(0, 0, 255);
+	color: rgb(51, 51, 255);
+	color: rgb(3, 3, 255);
+	color: rgb(0, 0, 255);
+	color: rgb(0, 0, 255);
+}
+
+test-tint-shade-adjuster {
+	color: rgb(0, 0, 255);
+	color: rgb(0, 0, 255);
+	color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+	color: rgb(51, 51, 255);
+	color: rgb(0, 0, 204);
+}
+
+test-blend-adjuster {
+	color: rgb(128, 0, 128);
+	color: rgb(128, 0, 128);
+	color: hsl(120, 100%, 50%);
+	color: rgb(0, 255, 0);
+}
+
+test-contrast-adjuster {
+	color: rgb(0, 0, 0);
+	color: rgb(0, 0, 64);
+	color: rgb(0, 0, 128);
+	color: rgb(0, 0, 191);
+	color: rgb(0, 0, 255);
+}
+
+test-combination-adjuster {
+	color: rgb(69, 50, 121);
+}
+
+test-multiple-value-items {
+	border: 1px solid rgb(0, 0, 255);
+}
+
+test-linear-gradient {
+	background-image: linear-gradient(rgb(0, 0, 255), rgba(0, 0, 255, 0));
+}

@@ -121,7 +121,9 @@ test-sameness {
 }
 
 :root {
-	--color: blue;
+	--color-blue: blue;
+	--color-red: red;
+	--color: var(--color-blue);
 }
 
 test-var {
@@ -134,4 +136,8 @@ test-multiple-value-items {
 
 test-linear-gradient {
 	background-image: linear-gradient(rgb(255, 0, 0), rgba(255, 0, 0, 0));
+}
+
+test-var-blend {
+	color: rgb(230, 0, 26);
 }

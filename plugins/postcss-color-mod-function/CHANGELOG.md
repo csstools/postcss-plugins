@@ -1,5 +1,12 @@
 # Changes to PostCSS color-mod() Function
 
+### 3.0.0 (August 30, 2018)
+
+- Added `importFrom` option which allows you to import Custom Properties from
+CSS, JS, and JSON files, and directly passed objects
+- Fixed an issue where multiple variables could not be used in `color-mod()`
+- Updated to support Node v6+
+
 ### 2.4.3 (July 21, 2018)
 
 - Fixed issue with color-mod not being converted within function

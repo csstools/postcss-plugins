@@ -323,8 +323,8 @@ function colors2contrast(color1, color2) {
 	// https://drafts.csswg.org/css-color/#contrast-ratio
 	const rgb1 = color2rgb(color1);
 	const rgb2 = color2rgb(color2);
-	var l1 = rgb2luminance(rgb1.red, rgb1.green, rgb1.blue);
-	var l2 = rgb2luminance(rgb2.red, rgb2.green, rgb2.blue);
+	const l1 = rgb2luminance(rgb1.red, rgb1.green, rgb1.blue);
+	const l2 = rgb2luminance(rgb2.red, rgb2.green, rgb2.blue);
 
 	return l1 > l2
 		// if l1 is the relative luminance of the lighter of the colors
