@@ -123,9 +123,9 @@ will need to namespace Custom Properties using the `customProperties` or
 ```js
 postcssCustomProperties({
   importFrom: [
-    'path/to/file.css',
-    'and/then/this.js',
-    'and/then/that.json',
+    'path/to/file.css',   // :root { --color: red; }
+    'and/then/this.js',   // module.exports = { customProperties: { '--color': 'red' } }
+    'and/then/that.json', // { "custom-properties": { "--color": "red" } }
     {
       customProperties: { '--color': 'red' }
     },
@@ -137,6 +137,9 @@ postcssCustomProperties({
   ]
 });
 ```
+
+See example imports written in [CSS](test/import-properties.css),
+[JS](test/import-properties.js), and [JSON](test/import-properties.json).
 
 ### exportTo
 
@@ -171,6 +174,10 @@ postcssCustomProperties({
   ]
 });
 ```
+
+See example exports written to [CSS](test/export-properties.css),
+[JS](test/export-properties.js), [MJS](test/export-properties.mjs), and
+[JSON](test/export-properties.json).
 
 [cli-img]: https://img.shields.io/travis/postcss/postcss-custom-properties.svg
 [cli-url]: https://travis-ci.org/postcss/postcss-custom-properties

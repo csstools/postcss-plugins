@@ -9,7 +9,7 @@ export default function transformValueAST(root, customProperties) {
 				if (name in customProperties) {
 					// conditionally replace a known custom property
 					child.replaceWith(
-						...asClonedArray(customProperties[name])
+						...asClonedArray(customProperties[name], null)
 					);
 
 					const nextCustomProperties = Object.assign({}, customProperties);
@@ -47,4 +47,21 @@ const varRegExp = /^var$/i;
 const isVarFunction = node => node.type === 'func' && varRegExp.test(node.value) && Object(node.nodes).length > 0;
 
 // return an array with its nodes cloned
-const asClonedArray = array => array.map(node => node.clone());
+const asClonedArray = (array, parent) => array.map(node => asClonedNode(node, parent));
+
+// return a cloned node
+const asClonedNode = (node, parent) => {
+	const cloneNode = new node.constructor(node);
+
+	for (const key in node) {
+		if (key === 'parent') {
+			cloneNode.parent = parent;
+		} else if (Object(node[key]).constructor === Array) {
+			cloneNode[key] = asClonedArray(node.nodes, cloneNode);
+		} else if (Object(node[key]).constructor === Object) {
+			cloneNode[key] = Object.assign({}, node[key]);
+		}
+	}
+
+	return cloneNode;
+}

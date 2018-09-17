@@ -1,6 +1,6 @@
 {
   "name": "postcss-custom-properties",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "Use Custom Properties Queries in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "contributors": [
@@ -14,7 +14,9 @@
   "module": "index.es.mjs",
   "files": [
     "index.cjs.js",
-    "index.es.mjs"
+    "index.cjs.js.map",
+    "index.es.mjs",
+    "index.es.mjs.map"
   ],
   "scripts": {
     "prepublishOnly": "npm test",

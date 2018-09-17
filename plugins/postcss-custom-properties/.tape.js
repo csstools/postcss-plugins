@@ -14,7 +14,7 @@ module.exports = {
 			options: {
 				importFrom: {
 					customProperties: {
-						'--color': 'red',
+						'--color': 'rgb(255, 0, 0)',
 						'--color-2': 'yellow',
 						'--ref-color': 'var(--color)'
 					}
@@ -27,7 +27,7 @@ module.exports = {
 				importFrom() {
 					return {
 						customProperties: {
-							'--color': 'red',
+							'--color': 'rgb(255, 0, 0)',
 							'--color-2': 'yellow',
 							'--ref-color': 'var(--color)'
 						}
@@ -44,7 +44,7 @@ module.exports = {
 					return new Promise(resolve => {
 						resolve({
 							customProperties: {
-								'--color': 'red',
+								'--color': 'rgb(255, 0, 0)',
 								'--color-2': 'yellow',
 								'--ref-color': 'var(--color)'
 							}
@@ -105,7 +105,7 @@ module.exports = {
 			expect: 'basic.expect.css',
 			result: 'basic.result.css',
 			after() {
-				if (__exportPropertiesObject.customProperties['--color'] !== 'red') {
+				if (__exportPropertiesObject.customProperties['--color'] !== 'rgb(255, 0, 0)') {
 					throw new Error('The exportTo function failed');
 				}
 			}
@@ -114,7 +114,7 @@ module.exports = {
 			message: 'supports { exportTo() } usage',
 			options: {
 				exportTo(customProperties) {
-					if (customProperties['--color'] !== 'red') {
+					if (customProperties['--color'] !== 'rgb(255, 0, 0)') {
 						throw new Error('The exportTo function failed');
 					}
 				}
@@ -127,7 +127,7 @@ module.exports = {
 			options: {
 				exportTo(customProperties) {
 					return new Promise((resolve, reject) => {
-						if (customProperties['--color'] !== 'red') {
+						if (customProperties['--color'] !== 'rgb(255, 0, 0)') {
 							reject('The exportTo function failed');
 						} else {
 							resolve();

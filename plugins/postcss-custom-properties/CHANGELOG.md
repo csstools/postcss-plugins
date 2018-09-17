@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 8.0.1 (September 17, 2018)
+
+- Fixed: Workaround issue in `postcss-values-parser` incorrectly cloning nodes.
+
 ### 8.0.0 (September 16, 2018)
 
 - Added: New `exportTo` function to specify where to export custom properties to.

@@ -3,7 +3,7 @@ html {
 }
 
 :root {
-	--color: red;
+	--color: rgb(255, 0, 0);
 	--ref-color: var(--color);
 	--circular: var(--circular-2);
 	--circular-2: var(--circular);
@@ -11,7 +11,7 @@ html {
 
 .test {
 	--skip: gray;
-	color: red;
+	color: rgb(255, 0, 0);
 	color: var(--color);
 }
 
@@ -21,7 +21,7 @@ html {
 }
 
 .test--color_w_var {
-	color: red;
+	color: rgb(255, 0, 0);
 	color: var(--ref-color);
 }
 
