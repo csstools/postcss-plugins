@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 8.0.3 (September 18, 2018)
+
+- Updated: PostCSS Values Parser 2
+
 ### 8.0.2 (September 17, 2018)
 
 - Fixed: Spacing is preserved before replaced variables.
