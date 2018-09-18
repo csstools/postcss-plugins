@@ -1,5 +1,11 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### 6.0.0 (September 17, 2018)
+
+- Updated: Support for PostCSS v7+
+- Updated: Support for Node v6+
+- Updated: PostCSS Selector Parser 5.0.0-rc.3 (major)
+
 ### 5.0.0 (May 7, 2018)
 
 - Updated: `postcss-selector-parser` to v4.0.0 (major)

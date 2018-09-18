@@ -3,7 +3,6 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Pseudo Class Any Link] lets you `:any-link` pseudo-class in CSS,
@@ -33,126 +32,36 @@ From the [proposal][Selectors]:
 
 ## Usage
 
-Add [PostCSS Pseudo Class Any Link] to your build tool:
+Add [PostCSS Pseudo Class Any Link] to your project:
 
 ```bash
 npm install postcss-pseudo-class-any-link --save-dev
 ```
 
-#### Node
-
 Use [PostCSS Pseudo Class Any Link] to process your CSS:
 
 ```js
-import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
+const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
 
-postcssPseudoClassAnyLink.process(YOUR_CSS, /* processOptions */, /* pluginOptions */);
+postcssPseudoClassAnyLink.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS Pseudo Class Any Link] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
+const postcss = require('postcss');
+const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
 
 postcss([
   postcssPseudoClassAnyLink(/* pluginOptions */)
-]).process(YOUR_CSS);
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS Pseudo Class Any Link] runs in all Node environments, with special
+instructions for:
 
-Add [PostCSS Loader] to your build tool:
-
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [PostCSS Pseudo Class Any Link] in your Webpack configuration:
-
-```js
-import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssPseudoClassAnyLink(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS Pseudo Class Any Link] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssPseudoClassAnyLink(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS Pseudo Class Any Link] in your Gruntfile:
-
-```js
-import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssPseudoClassAnyLink(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -185,8 +94,6 @@ nav :link > span, nav :visited > span {
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-pseudo-class-any-link.svg
 [npm-url]: https://www.npmjs.com/package/postcss-pseudo-class-any-link
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-pseudo-class-any-link.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-pseudo-class-any-link
 
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
