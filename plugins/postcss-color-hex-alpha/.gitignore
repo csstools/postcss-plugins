@@ -1,2 +1,11 @@
 node_modules
-test/fixtures/*.actual.css
+index.*.*
+package-lock.json
+*.log*
+*.result.css
+.*
+!.editorconfig
+!.gitignore
+!.rollup.js
+!.tape.js
+!.travis.yml

@@ -1,40 +1,67 @@
 {
   "name": "postcss-color-hex-alpha",
-  "version": "4.0.0",
-  "description": "PostCSS plugin to transform W3C RGBA hexadecimal notations (#RRGGBBAA or #RGBA) to more compatible CSS (rgba())",
-  "keywords": [
-    "css",
-    "postcss",
-    "postcss-plugin",
-    "color",
-    "colour",
-    "hexa",
-    "alpha"
+  "version": "5.0.0",
+  "description": "Use 4 & 8 character hex color notation in CSS",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "contributors": [
+    "Maxime Thirouin"
   ],
-  "author": "Maxime Thirouin",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/postcss/postcss-color-hex-alpha.git"
-  },
+  "repository": "postcss/postcss-color-hex-alpha",
+  "homepage": "https://github.com/postcss/postcss-color-hex-alpha#readme",
+  "bugs": "https://github.com/postcss/postcss-color-hex-alpha/issues",
+  "main": "index.cjs.js",
+  "module": "index.es.mjs",
   "files": [
-    "index.js"
+    "index.cjs.js",
+    "index.cjs.js.map",
+    "index.es.mjs",
+    "index.es.mjs.map"
   ],
+  "scripts": {
+    "prepublishOnly": "npm test",
+    "pretest": "rollup -c .rollup.js --silent",
+    "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
+    "test:js": "eslint *.js --cache --ignore-path .gitignore --quiet",
+    "test:tape": "postcss-tape"
+  },
   "engines": {
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "color": "^3.0.0",
     "postcss": "^7.0.2",
-    "postcss-message-helpers": "^2.0.0"
+    "postcss-values-parser": "^1.5.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-eslint": "^9.0.0",
     "eslint": "^5.6.0",
-    "tape": "^4.9.1"
+    "eslint-config-dev": "^2.0.0",
+    "postcss-tape": "^2.2.0",
+    "pre-commit": "^1.2.2",
+    "rollup": "^0.66.0",
+    "rollup-plugin-babel": "^4.0.3"
   },
-  "scripts": {
-    "lint": "eslint *.js index.js ./test/",
-    "test": "npm run lint && tape test",
-    "release": "npmpub"
-  }
+  "eslintConfig": {
+    "extends": "dev",
+    "parser": "babel-eslint"
+  },
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "color",
+    "hex",
+    "alpha",
+    "transparent",
+    "transparency",
+    "4-digit",
+    "8-digit",
+    "w3c",
+    "csswg",
+    "specification",
+    "spec"
+  ]
 }

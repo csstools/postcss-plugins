@@ -1,81 +1,83 @@
-/**
- * Module dependencies.
- */
-const postcss = require("postcss")
-const helpers = require("postcss-message-helpers")
-const color = require("color")
+import postcss from 'postcss';
+import valueParser from 'postcss-values-parser';
 
-/**
- * Constantes
- */
-const HEX_ALPHA_RE = /#([0-9a-f]{4}(?:[0-9a-f]{4})?)\b/i
-const DECIMAL_PRECISION = 100000 // 5 decimals
+export default postcss.plugin('postcss-color-hex-alpha', opts => {
+	// whether to preserve the original hexa
+	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
 
-/**
- * PostCSS plugin to transform hexa alpha colors
- */
-module.exports = postcss.plugin("postcss-color-hex-alpha", function() {
-  return function(style) {
-    style.walkDecls(function transformDecl(decl) {
-      if (!decl.value || decl.value.indexOf("#") === -1) {
-        return
-      }
+	return root => {
+		// for each declaration with a hexa
+		root.walkDecls(decl => {
+			if (hasAlphaHex(decl)) {
+				// replace instances of hexa with rgba()
+				const ast = valueParser(decl.value).parse();
 
-      decl.value = helpers.try(function transformHexAlphaValue() {
-        return transformHexAlpha(decl.value, decl.source)
-      }, decl.source)
-    })
-  }
-})
+				walk(ast, node => {
+					if (isAlphaHex(node)) {
+						node.replaceWith(hexa2rgba(node));
+					}
+				});
 
-/**
- * transform RGBA hexadecimal notations (#RRGGBBAA or #RGBA) to rgba().
- *
- * @param  {String} string declaration value
- * @return {String}        converted declaration value to rgba()
- */
-function transformHexAlpha(string) {
-  const m = HEX_ALPHA_RE.exec(string)
+				// conditionally update the declaration
+				const modifiedValue = String(ast);
 
-  if (!m) {
-    return string
-  }
+				if (decl.value !== modifiedValue) {
+					if (preserve) {
+						decl.cloneBefore({ value: modifiedValue });
+					} else {
+						decl.value = modifiedValue;
+					}
+				}
+			}
+		});
+	};
+});
 
-  const hex = m[1]
+// match any hexa
+const alphaHexRegExp = /#([0-9A-f]{4}(?:[0-9A-f]{4})?)\b/;
 
-  return string.slice(0, m.index) +
-         hexaToRgba(hex) +
-         transformHexAlpha(
-           string.slice(m.index + 1 + hex.length)
-         )
-}
+// whether a node has a hexa
+const hasAlphaHex = node => alphaHexRegExp.test(node.value);
 
-/**
- * transform RGBA or RRGGBBAA to rgba()
- *
- * @param  {String} hex RGBA or RRGGBBAA
- * @return {String}     converted value to rgba()
- */
-function hexaToRgba(hex) {
-  // if (hex.length === 3) {
-  //   hex += "f"
-  // }
-  if (hex.length === 4) {
-    const h0 = hex.charAt(0)
-    const h1 = hex.charAt(1)
-    const h2 = hex.charAt(2)
-    const h3 = hex.charAt(3)
-    hex = h0 + h0 + h1 + h1 + h2 + h2 + h3 + h3
-  }
-  // if (hex.length === 6) {
-  //   hex += "ff"
-  // }
-  const rgb = []
-  for (let i = 0, l = hex.length; i < l; i += 2) {
-    const isAlpha = i === 6
-    const value = parseInt(hex.substr(i, 2), 16) / (isAlpha ? 255 : 1)
-    rgb.push(Math.round(value * DECIMAL_PRECISION) / DECIMAL_PRECISION)
-  }
+// match an exact hexa
+const alphaHexValueRegExp = /^#([0-9A-f]{4}(?:[0-9A-f]{4})?)$/;
 
-  return color.rgb(rgb).string()
-}
+// walk all nodes in a value
+const walk = (node, fn) => {
+	if (Object(node.nodes).length) {
+		node.nodes.slice().forEach(child => {
+			fn(child);
+
+			walk(child, fn);
+		});
+	}
+};
+
+// match a hexa node
+const isAlphaHex = node => node.type === 'word' && alphaHexValueRegExp.test(node.value);
+
+const hexa2rgba = node => {
+	// hex is the node value
+	const hex = node.value;
+
+	// conditionally expand a hex
+	const hex8 = `0x${hex.length === 5 ? hex.slice(1).replace(/[0-9A-f]/g, '$&$&') : hex.slice(1)}`;
+
+	// extract the red, blue, green, and alpha values from the hex
+	const [r, g, b, a] = [ hex8 >> 32 & 255, hex8 >> 16 & 255, hex8 >> 8 & 255, hex8 & 255 ];
+
+	// return a new rgba function, preserving the whitespace of the original node
+	const rgbaFunc = valueParser.func({ value: 'rgba', raws: Object.assign({}, node.raws) });
+
+	rgbaFunc.append(valueParser.paren({ value: '(' }));
+	rgbaFunc.append(valueParser.number({ value: r }));
+	rgbaFunc.append(valueParser.comma({ value: ',' }));
+	rgbaFunc.append(valueParser.number({ value: g }));
+	rgbaFunc.append(valueParser.comma({ value: ',' }));
+	rgbaFunc.append(valueParser.number({ value: b }));
+	rgbaFunc.append(valueParser.comma({ value: ',' }));
+	rgbaFunc.append(valueParser.number({ value: a }));
+	rgbaFunc.append(valueParser.paren({ value: ')' }));
+
+	return rgbaFunc;
+};

@@ -1,0 +1,10 @@
+body {
+	background: #9d9 linear-gradient(rgba(169,35,248,169),        rgba(52,35,248,52));
+	color: red;
+	color: #f00;
+	color: rgba(255,0,0,255);
+	color: #0000ff;
+	color: rgba(0,0,255,0);
+	content: "#f00";
+	content: "#0000ff00";
+}
