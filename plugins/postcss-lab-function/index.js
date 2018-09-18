@@ -41,7 +41,7 @@ export default postcss.plugin('postcss-lab-function', opts => {
 								}
 							}
 
-							if (isSlash(slashNode)) {
+							if (slashNode && isSlash(slashNode)) {
 								slashNode.replaceWith( newComma() );
 							}
 
@@ -129,12 +129,12 @@ const alphaUnitMatch = /^%?$/i;
 const calcFuncMatch = /^calc$/i;
 const hueUnitMatch = /^(deg|grad|rad|turn)?$/i;
 
-const isAlphaValue = node => isCalc(node) || Object(node).type === 'number' && alphaUnitMatch.test(node.unit);
-const isCalc = node => Object(node).type === 'func' && calcFuncMatch.test(node.value);
-const isHue = node => isCalc(node) || Object(node).type === 'number' && hueUnitMatch.test(node.unit);
-const isNumber = node => isCalc(node) || Object(node).type === 'number' && node.unit === '';
-const isPercentage = node => isCalc(node) || Object(node).type === 'number' && node.unit === '%';
-const isSlash = node => Object(node).type === 'operator' && node.value === '/';
+const isAlphaValue = node => isCalc(node) || node.type === 'number' && alphaUnitMatch.test(node.unit);
+const isCalc = node => node.type === 'func' && calcFuncMatch.test(node.value);
+const isHue = node => isCalc(node) || node.type === 'number' && hueUnitMatch.test(node.unit);
+const isNumber = node => isCalc(node) || node.type === 'number' && node.unit === '';
+const isPercentage = node => isCalc(node) || node.type === 'number' && node.unit === '%';
+const isSlash = node => node.type === 'operator' && node.value === '/';
 const functionalLABMatch = [isNumber, isNumber, isNumber, isSlash, isAlphaValue];
 const functionalLCHMatch = [isNumber, isNumber, isHue, isSlash, isAlphaValue];
 const functionalGrayMatch = [isNumber, isSlash, isAlphaValue];

@@ -1,4 +1,4 @@
-# Installing PostCSS
+# Installing PostCSS Lab Function
 
 [PostCSS Lab Function] runs in all Node environments, with special
 instructions for:
