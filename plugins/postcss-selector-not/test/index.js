@@ -77,5 +77,17 @@ tape("postcss-selector-not", t => {
     "should work with something after :not()"
   )
 
+  t.equal(
+    transform(".foo\\:not-italic {}"),
+    ".foo\\:not-italic {}",
+    "should not replace selectors with escaped colons followed by not"
+  )
+
+  t.equal(
+    transform(".foo\\:not-italic:not(:hover, :focus) {}"),
+    ".foo\\:not-italic:not(:hover):not(:focus) {}",
+    "should replace pseudo selectors without touching escaped colons"
+  )
+
   t.end()
 })
