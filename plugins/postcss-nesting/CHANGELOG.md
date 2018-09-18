@@ -1,5 +1,14 @@
 # Changes to PostCSS Nesting
 
+### 7.0.0 (September 17, 2018)
+
+- Updated: Support for PostCSS v7+
+- Updated: Support for Node v6+
+
+In a comment, a CSSWG member expressed interest in handling nested `@media`
+while handling selector nesting. Since the specification has yet to be added
+to the official CSSWG repository, nested at-rule deprecation is further delayed.
+
 ### 6.0.0 (June 9, 2018)
 
 - Deprecated: Nested at-rules like `@media` will no longer work in 7.0.0

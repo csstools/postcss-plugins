@@ -2,8 +2,8 @@
 
 [PostCSS Nesting] runs in all Node environments, with special instructions for:
 
-| [Node](#node) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
-| --- | --- | --- | --- | --- |
+| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Node
 
@@ -30,6 +30,26 @@ import postcssNesting from 'postcss-nesting';
 postcss([
   postcssNesting(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
+```
+
+## PostCSS CLI
+
+Add [PostCSS CLI] to your project:
+
+```bash
+npm install postcss-cli --save-dev
+```
+
+Use [PostCSS Nesting] in your `postcss.config.js` configuration file:
+
+```js
+const postcssNesting = require('postcss-nesting');
+
+module.exports = {
+  plugins: [
+    postcssNesting(/* pluginOptions */)
+  ]
+}
 ```
 
 ## Webpack
@@ -143,6 +163,7 @@ grunt.initConfig({
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
+[PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Nesting]: https://github.com/jonathantneal/postcss-nesting
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
