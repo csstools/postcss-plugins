@@ -8,3 +8,8 @@ body {
 	content: "#f00";
 	content: "#0000ff00";
 }
+
+body {
+	background-color: #f3f3f3f3;
+	color: #0003;
+}

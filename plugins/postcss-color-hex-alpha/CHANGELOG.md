@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Hex Alpha
 
+### 5.0.1 (September 18, 2018)
+
+- Fixed: Issue correclty calculating each channel
+
 ### 5.0.0 (September 18, 2018)
 
 - Initial version

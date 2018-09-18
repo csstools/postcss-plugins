@@ -53,6 +53,9 @@ const walk = (node, fn) => {
 	}
 };
 
+// decimal precision
+const alphaDecimalPrecision = 100000;
+
 // match a hexa node
 const isAlphaHex = node => node.type === 'word' && alphaHexValueRegExp.test(node.value);
 
@@ -64,7 +67,12 @@ const hexa2rgba = node => {
 	const hex8 = `0x${hex.length === 5 ? hex.slice(1).replace(/[0-9A-f]/g, '$&$&') : hex.slice(1)}`;
 
 	// extract the red, blue, green, and alpha values from the hex
-	const [r, g, b, a] = [ hex8 >> 32 & 255, hex8 >> 16 & 255, hex8 >> 8 & 255, hex8 & 255 ];
+	const [r, g, b, a] = [
+		parseInt(hex8.slice(2, 4), 16),
+		parseInt(hex8.slice(4, 6), 16),
+		parseInt(hex8.slice(6, 8), 16),
+		Math.round(parseInt(hex8.slice(8, 10), 16) / 255 * alphaDecimalPrecision) / alphaDecimalPrecision
+	];
 
 	// return a new rgba function, preserving the whitespace of the original node
 	const rgbaFunc = valueParser.func({ value: 'rgba', raws: Object.assign({}, node.raws) });
