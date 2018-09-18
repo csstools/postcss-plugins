@@ -3,7 +3,6 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Dir Pseudo Class] lets you style by directionality using the `:dir()`
@@ -47,126 +46,35 @@ sometimes increase selector weight by one element (`html`).
 
 ## Usage
 
-Add [PostCSS Dir Pseudo Class] to your build tool:
+Add [PostCSS Dir Pseudo Class] to your project:
 
 ```bash
 npm install postcss-dir-pseudo-class --save-dev
 ```
 
-#### Node
-
 Use [PostCSS Dir Pseudo Class] to process your CSS:
 
 ```js
-import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
+const postcssDirPseudoClass = require('postcss-dir-pseudo-class');
 
-postcssDirPseudoClass.process(YOUR_CSS, /* processOptions */, /* pluginOptions */);
+postcssDirPseudoClass.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS Dir Pseudo Class] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
+const postcss = require('postcss');
+const postcssDirPseudoClass = require('postcss-dir-pseudo-class');
 
 postcss([
   postcssDirPseudoClass(/* pluginOptions */)
-]).process(YOUR_CSS);
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS Dir Pseudo Class] runs in all Node environments, with special instructions for:
 
-Add [PostCSS Loader] to your build tool:
-
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [PostCSS Dir Pseudo Class] in your Webpack configuration:
-
-```js
-import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssDirPseudoClass(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS Dir Pseudo Class] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssDirPseudoClass(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS Dir Pseudo Class] in your Gruntfile:
-
-```js
-import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssDirPseudoClass(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 

@@ -1,5 +1,11 @@
 # Changes to PostCSS Dir Pseudo Class
 
+### 5.0.0 (September 17, 2018)
+
+- Updated: Support for PostCSS v7+
+- Updated: Support for Node v6+
+- Updated: `postcss-selector-parser` to v5.0.0-rc.3+ (major)
+
 ### 4.0.0 (May 8, 2018)
 
 - Updated: `postcss-selector-parser` to v4.0.0 (major)
