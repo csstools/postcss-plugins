@@ -1,5 +1,9 @@
 # Changes to PostCSS image-set() Function
 
+### 3.0.1 (September 18, 2018)
+
+- Updated: PostCSS Values Parser 2
+
 ### 3.0.0 (September 17, 2018)
 
 - Updated: Support for PostCSS 7+

@@ -1,4 +1,4 @@
-# Installing PostCSS
+# Installing PostCSS image-set() Function
 
 [PostCSS image-set() Function] runs in all Node environments, with special instructions for:
 
