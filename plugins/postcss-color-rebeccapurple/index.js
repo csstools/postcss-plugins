@@ -14,15 +14,15 @@ module.exports = postcss.plugin("postcss-color-rebeccapurple", () => (style) => 
     const value = decl.value;
 
     if (value && regexp.test(value)) {
-      const ast = valueParser(value).parse()
+      const valueAST = valueParser(value).parse()
 
-      ast.walk(node => {
+      valueAST.walk(node => {
         if (node.type === "word" && node.value === "rebeccapurple") {
           node.value = color
         }
       })
 
-      decl.value = ast.toString()
+      decl.value = valueAST.toString()
     }
   })
 })

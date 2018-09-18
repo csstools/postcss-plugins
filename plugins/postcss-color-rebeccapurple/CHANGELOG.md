@@ -1,3 +1,7 @@
+# 4.0.1 - 2018-09-18
+
+- Updated: PostCSS Values Parser v2+
+
 # 4.0.0 - 2018-09-17
 
 - Updated: Support for PostCSS v7+
