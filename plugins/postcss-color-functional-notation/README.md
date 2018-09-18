@@ -3,7 +3,6 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Color Functional Notation] lets you use space and slash separated
@@ -29,126 +28,35 @@ color notation in CSS, following the [CSS Color] specification.
 
 ## Usage
 
-Add [PostCSS Color Functional Notation] to your build tool:
+Add [PostCSS Color Functional Notation] to your project:
 
 ```bash
 npm install postcss-color-functional-notation --save-dev
 ```
 
-#### Node
-
 Use [PostCSS Color Functional Notation] to process your CSS:
 
 ```js
-import postcssColorFunctionalNotation from 'postcss-color-functional-notation';
+const postcssColorFunctionalNotation = require('postcss-color-functional-notation');
 
-postcssColorFunctionalNotation.process(YOUR_CSS, /* processOptions */, /* pluginOptions */);
+postcssColorFunctionalNotation.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS Color Functional Notation] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssColorFunctionalNotation from 'postcss-color-functional-notation';
+const postcss = require('postcss');
+const postcssColorFunctionalNotation = require('postcss-color-functional-notation');
 
 postcss([
   postcssColorFunctionalNotation(/* pluginOptions */)
-]).process(YOUR_CSS);
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS Color Functional Notation] runs in all Node environments, with special instructions for:
 
-Add [PostCSS Loader] to your build tool:
-
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [PostCSS Color Functional Notation] in your Webpack configuration:
-
-```js
-import postcssColorFunctionalNotation from 'postcss-color-functional-notation';
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssColorFunctionalNotation(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS Color Functional Notation] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import postcssColorFunctionalNotation from 'postcss-color-functional-notation';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssColorFunctionalNotation(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS Color Functional Notation] in your Gruntfile:
-
-```js
-import postcssColorFunctionalNotation from 'postcss-color-functional-notation';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssColorFunctionalNotation(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -191,8 +99,6 @@ postcssImageSetFunction({ preserve: true })
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-color-functional-notation.svg
 [npm-url]: https://www.npmjs.com/package/postcss-color-functional-notation
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-color-functional-notation.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-color-functional-notation
 
 [CSS Color]: https://drafts.csswg.org/css-color/#ref-for-funcdef-rgb%E2%91%A1%E2%91%A0
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss

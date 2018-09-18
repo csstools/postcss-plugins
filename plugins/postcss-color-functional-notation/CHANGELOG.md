@@ -1,5 +1,10 @@
 # Changes to PostCSS Color Functional Notation
 
+### 2.0.0 (September 17, 2018)
+
+- Updated: Support for PostCSS v7+
+- Updated: Support for Node 6+
+
 ### 1.0.2 (July 13, 2018)
 
 - Fixed: Poorly detected hsl() and rgb() now resolve correctly
