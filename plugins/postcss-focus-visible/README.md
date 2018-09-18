@@ -3,7 +3,6 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Focus Visible] lets you use the `:focus-visible` pseudo-class in
@@ -35,124 +34,36 @@ rule can be disabled using the `preserve` option.
 
 ## Usage
 
-Add [PostCSS Focus Visible] to your build tool:
+Add [PostCSS Focus Visible] to your project:
 
 ```bash
 npm install postcss-focus-visible --save-dev
 ```
 
-#### Node
-
 Use [PostCSS Focus Visible] to process your CSS:
 
 ```js
-import focusVisible from 'postcss-focus-visible';
+const postcssFocusVisible = require('postcss-focus-visible');
 
-focusVisible.process(YOUR_CSS);
+postcssFocusVisible.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS Focus Visible] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
-import focusVisible from 'postcss-focus-visible';
+const postcss = require('postcss');
+const postcssFocusVisible = require('postcss-focus-visible');
 
 postcss([
-  focusVisible()
-]).process(YOUR_CSS);
+  postcssFocusVisible(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS Focus Visible] runs in all Node environments, with special
+instructions for:
 
-Add [PostCSS Loader] to your build tool:
-
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [PostCSS Focus Visible] in your Gulpfile:
-
-```js
-import focusVisible from 'postcss-focus-visible';
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [ focusVisible() ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS Focus Visible] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import focusVisible from 'postcss-focus-visible';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    focusVisible()
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS Focus Visible] in your Gruntfile:
-
-```js
-import focusVisible from 'postcss-focus-visible';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       focusVisible()
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -210,8 +121,6 @@ focusVisible({ replaceWith: '[focus-visible]' });
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-focus-visible.svg
 [npm-url]: https://www.npmjs.com/package/postcss-focus-visible
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-focus-visible.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-focus-visible
 
 [focus-visible polyfill]: https://github.com/WICG/focus-visible
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
