@@ -1,6 +1,6 @@
 {
   "name": "postcss-selector-not",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "PostCSS plugin to transform :not() W3C CSS level 4 pseudo class to :not() CSS level 3 selectors",
   "keywords": [
     "postcss",
@@ -20,19 +20,19 @@
     "dist"
   ],
   "dependencies": {
-    "balanced-match": "^0.4.2",
+    "balanced-match": "^1.0.0",
     "postcss": "^7.0.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-env": "^1.4.0",
-    "babel-register": "^6.24.1",
-    "eslint": "^3.19.0",
-    "tape": "^4.6.3"
+    "babel-cli": "^6.26.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "eslint": "^5.6.0",
+    "tape": "^4.9.1"
   },
   "scripts": {
-    "lint": "eslint *.js ./src/ ./test/",
+    "lint": "eslint ./src/*.js ./test/*.js",
     "tape": "tape -r babel-register test/*.js",
     "test": "npm run lint && npm run babelify && npm run tape",
     "babelify": "babel src --out-dir dist",
