@@ -1,0 +1,10 @@
+body {
+	order: 1;
+	padding: 20px;
+}
+
+@media (min-width: 600px) {
+	body {
+		order: 2;
+	}
+}

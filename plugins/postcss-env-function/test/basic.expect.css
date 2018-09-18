@@ -1,9 +1,9 @@
 body {
 	order: 1;
-	padding: 20px;
+	padding: env(--some-custom-padding);
 }
 
-@media (min-width: 600px) {
+@media (min-width: env(--another-custom-width)) {
 	body {
 		order: 2;
 	}
