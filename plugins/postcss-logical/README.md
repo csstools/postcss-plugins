@@ -3,7 +3,6 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Logical Properties and Values] lets you use logical, rather than
@@ -138,126 +137,36 @@ require('postcss-logical')({
 
 ## Usage
 
-Add [PostCSS Logical Properties and Values] to your build tool:
+Add [PostCSS Logical Properties and Values] to your project:
 
 ```bash
 npm install postcss-logical --save-dev
 ```
 
-#### Node
-
 Use [PostCSS Logical Properties and Values] to process your CSS:
 
 ```js
-import postcssLogical from 'postcss-logical';
+const postcssLogical = require('postcss-logical');
 
-postcssLogical.process(YOUR_CSS);
+postcssLogical.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS Logical Properties and Values] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssLogical from 'postcss-logical';
+const postcss = require('postcss');
+const postcssLogical = require('postcss-logical');
 
 postcss([
-  postcssLogical(/* options */)
-]).process(YOUR_CSS);
+  postcssLogical(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS Logical Properties and Values] runs in all Node environments, with
+special instructions for:
 
-Add [PostCSS Loader] to your build tool:
-
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [PostCSS Logical Properties and Values] in your Webpack configuration:
-
-```js
-import postcssLogical from 'postcss-logical';
-
-export default {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssLogical(/* options */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS Logical Properties and Values] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import postcssLogical from 'postcss-logical';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssLogical(/* options */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS Logical Properties and Values] in your Gruntfile:
-
-```js
-import postcssLogical from 'postcss-logical';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssLogical(/* options */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -276,16 +185,14 @@ before logical declarations without replacing them. By default, directional
 fallbacks replace logical declaration. If `preserve` is defined as `true`, then
 the `dir` option will be ignored.
 
-[css-img]: https://jonathantneal.github.io/cssdb/badge/logical-properties-and-values.svg
-[css-url]: https://jonathantneal.github.io/cssdb/#logical-properties-and-values
+[css-img]: https://cssdb.org/badge/logical-properties-and-values.svg
+[css-url]: https://cssdb.org/#logical-properties-and-values
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-logical.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-logical
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-logical.svg
 [npm-url]: https://www.npmjs.com/package/postcss-logical
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-logical.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-logical
 
 [CSS Logical Properties and Values]: https://drafts.csswg.org/css-logical/
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss

@@ -1,5 +1,10 @@
 # Changes to PostCSS Logical Properties
 
+### 2.0.0 (September 17, 2018)
+
+- Updated: Support for PostCSS v7+
+- Updated: Support for Node v6+
+
 ### 1.1.1 (March 21, 2017)
 
 - Fix `dir` option to allow falsey value
