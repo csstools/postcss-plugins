@@ -1,3 +1,8 @@
+# 4.0.0 - 2018-09-17
+
+- Updated: Support for PostCSS v7+
+- Updated: Support for Node v6+
+
 # 3.1.0 - 2018-05-01
 
 - Improve `rebeccapurple` pre-parse word detection

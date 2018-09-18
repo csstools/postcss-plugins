@@ -1,11 +1,11 @@
-# postcss-color-rebeccapurple [![Build Status](https://travis-ci.org/postcss/postcss-color-rebeccapurple.png)](https://travis-ci.org/postcss/postcss-color-rebeccapurple)
+# postcss-color-rebeccapurple [![CSS Standard Status](https://cssdb.org/badge/rebeccapurple-color.svg)](https://cssdb.org/#rebeccapurple-color) [![Build Status](https://api.travis-ci.org/postcss/postcss-color-rebeccapurple.svg)](https://travis-ci.org/postcss/postcss-color-rebeccapurple)
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS `rebeccapurple` color](http://dev.w3.org/csswg/css-color/#valdef-color-rebeccapurple) to more compatible CSS (rgb()).
+> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS `rebeccapurple` color](https://www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple) to more compatible CSS (rgb()).
 
 ## Why this plugin ?
 
 If you did some CSS, I'm sure you know who [Eric Meyer](https://en.wikipedia.org/wiki/Eric_A._Meyer) is, & what he did for this language.
-In memory of [Eric Meyer’s daughter](http://meyerweb.com/eric/thoughts/2014/06/09/in-memoriam-2/), [W3C added new color rebeccapurple to CSS 4 Color Module](http://lists.w3.org/Archives/Public/www-style/2014Jun/0312.html).
+In memory of [Eric Meyer’s daughter](https://meyerweb.com/eric/thoughts/2014/06/09/in-memoriam-2/), [W3C added new color rebeccapurple to CSS 4 Color Module](https://lists.w3.org/Archives/Public/www-style/2014Jun/0312.html).
 
 ## Installation
 
