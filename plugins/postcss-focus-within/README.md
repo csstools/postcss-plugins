@@ -3,7 +3,6 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Gitter Chat][git-img]][git-url]
 
 [PostCSS Focus Within] lets you use the `:focus-within` pseudo-class in CSS,
@@ -31,128 +30,40 @@ It is the companion to the [focus-within polyfill].
 with a `[focus-within]` attribute selector, the same selector used by the
 [focus-within polyfill]. This replacement selector can be changed using the
 `replaceWith` option. Also, the preservation of the original `:focus-within`
-rule can be disabled using the `preserve` option. 
+rule can be disabled using the `preserve` option.
 
 ## Usage
 
-Add [PostCSS Focus Within] to your build tool:
+Add [PostCSS Focus Within] to your project:
 
 ```bash
 npm install postcss-focus-within --save-dev
 ```
 
-#### Node
-
 Use [PostCSS Focus Within] to process your CSS:
 
 ```js
-import focusWithin from 'postcss-focus-within';
+const postcssFocusWithin = require('postcss-focus-within');
 
-focusWithin.process(YOUR_CSS);
+postcssFocusWithin.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS Focus Within] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
-import focusWithin from 'postcss-focus-within';
+const postcss = require('postcss');
+const postcssFocusWithin = require('postcss-focus-within');
 
 postcss([
-  focusWithin()
-]).process(YOUR_CSS);
+  postcssFocusWithin(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS Focus Within] runs in all Node environments, with special
+instructions for:
 
-Add [PostCSS Loader] to your build tool:
-
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [PostCSS Focus Within] in your Gulpfile:
-
-```js
-import focusWithin from 'postcss-focus-within';
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [ focusWithin() ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS Focus Within] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import focusWithin from 'postcss-focus-within';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    focusWithin()
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS Focus Within] in your Gruntfile:
-
-```js
-import focusWithin from 'postcss-focus-within';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       focusWithin()
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -210,8 +121,6 @@ focusWithin({ replaceWith: '.focus-within' });
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-focus-within.svg
 [npm-url]: https://www.npmjs.com/package/postcss-focus-within
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-focus-within.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-focus-within
 
 [focus-within polyfill]: https://github.com/jonathantneal/focus-within
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
