@@ -3,7 +3,6 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Overflow Shorthand] lets you use the `overflow` shorthand in CSS,
@@ -25,126 +24,36 @@ html {
 
 ## Usage
 
-Add [PostCSS Overflow Shorthand] to your build tool:
+Add [PostCSS Overflow Shorthand] to your project:
 
 ```bash
 npm install postcss-overflow-shorthand --save-dev
 ```
 
-#### Node
-
 Use [PostCSS Overflow Shorthand] to process your CSS:
 
 ```js
-import postcssOverflowShorthand from 'postcss-overflow-shorthand';
+const postcssOverflowShorthand = require('postcss-overflow-shorthand');
 
-postcssOverflowShorthand.process(YOUR_CSS, /* processOptions */, /* pluginOptions */);
+postcssOverflowShorthand.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS Overflow Shorthand] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssOverflowShorthand from 'postcss-overflow-shorthand';
+const postcss = require('postcss');
+const postcssOverflowShorthand = require('postcss-overflow-shorthand');
 
 postcss([
   postcssOverflowShorthand(/* pluginOptions */)
-]).process(YOUR_CSS);
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS Overflow Shorthand] runs in all Node environments, with special
+instructions for:
 
-Add [PostCSS Loader] to your build tool:
-
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [PostCSS Overflow Shorthand] in your Webpack configuration:
-
-```js
-import postcssOverflowShorthand from 'postcss-overflow-shorthand';
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssOverflowShorthand(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS Overflow Shorthand] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import postcssOverflowShorthand from 'postcss-overflow-shorthand';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssOverflowShorthand(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS Overflow Shorthand] in your Gruntfile:
-
-```js
-import postcssOverflowShorthand from 'postcss-overflow-shorthand';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssOverflowShorthand(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -178,8 +87,6 @@ html {
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-overflow-shorthand.svg
 [npm-url]: https://www.npmjs.com/package/postcss-overflow-shorthand
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-overflow-shorthand.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-overflow-shorthand
 
 [CSS Overflow]: https://drafts.csswg.org/css-overflow/#propdef-overflow
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
