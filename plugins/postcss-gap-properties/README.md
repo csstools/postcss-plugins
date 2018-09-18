@@ -3,7 +3,6 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Gap Properties] lets you use the `gap`, `column-gap`, and `row-gap`
@@ -36,126 +35,35 @@ shorthand properties in CSS, following the [CSS Grid Layout] specification.
 
 ## Usage
 
-Add [PostCSS Gap Properties] to your build tool:
+Add [PostCSS Gap Properties] to your project:
 
 ```bash
 npm install postcss-gap-properties --save-dev
 ```
-
-#### Node
 
 Use [PostCSS Gap Properties] to process your CSS:
 
 ```js
 import postcssGapProperties from 'postcss-gap-properties';
 
-postcssGapProperties.process(YOUR_CSS, /* processOptions */, /* pluginOptions */);
+postcssGapProperties.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS Gap Properties] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
+import postcss from 'postcss';
 import postcssGapProperties from 'postcss-gap-properties';
 
 postcss([
   postcssGapProperties(/* pluginOptions */)
-]).process(YOUR_CSS);
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS Gap Properties] runs in all Node environments, with special instructions for:
 
-Add [PostCSS Loader] to your build tool:
-
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [PostCSS Gap Properties] in your Webpack configuration:
-
-```js
-import postcssGapProperties from 'postcss-gap-properties';
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssGapProperties(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS Gap Properties] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import postcssGapProperties from 'postcss-gap-properties';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssGapProperties(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS Gap Properties] in your Gruntfile:
-
-```js
-import postcssGapProperties from 'postcss-gap-properties';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssGapProperties(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
+| [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -172,8 +80,6 @@ remain in the CSS. By default, the original declaration is preserved.
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-gap-properties.svg
 [npm-url]: https://www.npmjs.com/package/postcss-gap-properties
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-gap-properties.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-gap-properties
 
 [CSS Grid Layout]: https://www.w3.org/TR/css-grid-1/#gutters
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
