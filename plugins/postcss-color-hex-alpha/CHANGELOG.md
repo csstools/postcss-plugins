@@ -1,7 +1,13 @@
+# 4.0.0 - 2017-09-17
+
+- Updated: Support for PostCSS v7+
+- Updated: Support for Node v6+
+- Updated: color v3+
+
 # 3.0.0 - 2017-05-15
 
 - Added: compatibility with postcss v6.x
-- Uodated dependencies
+- Updated dependencies
 
 # 2.0.0 - 2015-09-08
 

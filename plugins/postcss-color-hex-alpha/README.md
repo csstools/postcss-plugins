@@ -1,6 +1,6 @@
-# postcss-color-hex-alpha [![CSS Standard Status](https://jonathantneal.github.io/css-db/badge/css-color-hex-notation.svg)](https://jonathantneal.github.io/css-db/#css-color-hex-notation) [![Build Status](https://travis-ci.org/postcss/postcss-color-hex-alpha.png)](https://travis-ci.org/postcss/postcss-color-hex-alpha)
+# postcss-color-hex-alpha [![CSS Standard Status](https://cssdb.org/badge/hexadecimal-alpha-notation.svg)](https://cssdb.org/#hexadecimal-alpha-notation) [![Build Status](https://api.travis-ci.org/postcss/postcss-color-hex-alpha.svg)](https://travis-ci.org/postcss/postcss-color-hex-alpha)
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C RGBA hexadecimal notations (#RRGGBBAA or #RGBA)](http://dev.w3.org/csswg/css-color/#hex-notation) to more compatible CSS (rgba()).
+> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C RGBA hexadecimal notations (#RRGGBBAA or #RGBA)](https://www.w3.org/TR/css-color-4/#hex-notation) to more compatible CSS (rgba()).
 
 ## Installation
 
