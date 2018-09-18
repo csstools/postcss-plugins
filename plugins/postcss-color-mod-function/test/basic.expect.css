@@ -141,3 +141,7 @@ test-linear-gradient {
 test-var-blend {
 	color: rgb(230, 0, 26);
 }
+
+test-transparent {
+	color: rgb(0, 0, 0);
+}

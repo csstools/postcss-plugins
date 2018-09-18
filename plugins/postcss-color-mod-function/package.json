@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-mod-function",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Modify colors using the color-mod() function in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -8,7 +8,7 @@
   "homepage": "https://github.com/jonathantneal/postcss-color-mod-function#readme",
   "bugs": "https://github.com/jonathantneal/postcss-color-mod-function/issues",
   "main": "index.cjs.js",
-  "module": "index.es.js",
+  "module": "index.es.mjs",
   "files": [
     "index.cjs.js",
     "index.cjs.js.map",
@@ -29,12 +29,12 @@
   "dependencies": {
     "@csstools/convert-colors": "^1.4.0",
     "postcss": "^7.0.2",
-    "postcss-values-parser": "^1.5.0"
+    "postcss-values-parser": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.1",
+    "@babel/core": "^7.1.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
     "babel-eslint": "^9.0.0",
     "echint": "^4.0.1",
     "eslint": "^5.6.0",

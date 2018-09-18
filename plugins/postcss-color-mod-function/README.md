@@ -3,7 +3,6 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS color-mod() Function] lets you modify colors using the `color-mod()`
@@ -199,8 +198,6 @@ be used.
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-color-mod-function.svg
 [npm-url]: https://www.npmjs.com/package/postcss-color-mod-function
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-color-mod-function.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-color-mod-function
 
 [CSS Color Module Level 4]: https://www.w3.org/TR/css-color-4/#funcdef-color-mod
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss

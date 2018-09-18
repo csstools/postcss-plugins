@@ -141,3 +141,7 @@ test-linear-gradient {
 test-var-blend {
 	color: color-mod(var(--color-red) blend(var(--color) 10%));
 }
+
+test-transparent {
+	color: color-mod(transparent shade(10%));
+}

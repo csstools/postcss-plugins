@@ -1,5 +1,10 @@
 # Changes to PostCSS color-mod() Function
 
+### 3.0.1 (September 18, 2018)
+
+- Fixed an issue with using the `transparent` color keyword
+- Updated to PostCSS Values Parser 2
+
 ### 3.0.0 (August 30, 2018)
 
 - Added `importFrom` option which allows you to import Custom Properties from
