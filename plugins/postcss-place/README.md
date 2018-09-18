@@ -3,7 +3,6 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Place Properties] lets you use `place-*` properties as shorthands for `align-*`
@@ -29,126 +28,35 @@ and `justify-*`, following the [CSS Box Alignment] specification.
 
 ## Usage
 
-Add [PostCSS Place Properties] to your build tool:
+Add [PostCSS Place Properties] to your project:
 
 ```bash
 npm install postcss-place --save-dev
 ```
-
-#### Node
 
 Use [PostCSS Place Properties] to process your CSS:
 
 ```js
 import postcssPlace from 'postcss-place';
 
-postcssPlace.process(YOUR_CSS, /* processOptions */, /* pluginOptions */);
+postcssPlace.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS Place Properties] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
+import postcss from 'postcss';
 import postcssPlace from 'postcss-place';
 
 postcss([
   postcssPlace(/* pluginOptions */)
-]).process(YOUR_CSS);
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS Place Properties] runs in all Node environments, with special instructions for:
 
-Add [PostCSS Loader] to your build tool:
-
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [PostCSS Place Properties] in your Webpack configuration:
-
-```js
-import postcssPlace from 'postcss-place';
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssPlace(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS Place Properties] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import postcssPlace from 'postcss-place';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssPlace(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS Place Properties] in your Gruntfile:
-
-```js
-import postcssPlace from 'postcss-place';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssPlace(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
+| [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -185,8 +93,6 @@ postcssPlace({ preserve: false })
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-place.svg
 [npm-url]: https://www.npmjs.com/package/postcss-place
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-place.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-place
 
 [CSS Box Alignment]: https://www.w3.org/TR/css-align-3/#place-content
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss

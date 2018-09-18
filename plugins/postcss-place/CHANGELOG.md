@@ -1,5 +1,10 @@
 # Changes to PostCSS Place Properties
 
+### 4.0.0 (September 17, 2018)
+
+- Updated: Support for PostCSS v7+
+- Updated: Support for Node v6+
+
 ### 3.0.1 (May 8, 2018)
 
 - Updated: `postcss-values-parser` to v1.5.0 (major)
