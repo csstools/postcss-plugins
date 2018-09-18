@@ -1,5 +1,5 @@
 import postcss from 'postcss';
-import parser from 'postcss-values-parser';
+import valueParser from 'postcss-values-parser';
 import processImageSet from './lib/process-image-set';
 
 const imageSetValueMatchRegExp = /(^|[^\w-])(-webkit-)?image-set\(/
@@ -17,10 +17,10 @@ export default postcss.plugin('postcss-image-set-function', opts => {
 
 			// if a declaration likely uses an image-set() function
 			if (imageSetValueMatchRegExp.test(value)) {
-				const ast = parser(value).parse();
+				const valueAST = valueParser(value).parse();
 
 				// process every image-set() function
-				ast.walkType('func', node => {
+				valueAST.walkType('func', node => {
 					if (imageSetFunctionMatchRegExp.test(node.value)) {
 						processImageSet(
 							node.nodes.slice(1, -1),

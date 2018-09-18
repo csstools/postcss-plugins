@@ -3,7 +3,6 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS image-set() Function] lets you display resolution-dependent images
@@ -49,126 +48,36 @@ specification.
 
 ## Usage
 
-Add [PostCSS image-set() Function] to your build tool:
+Add [PostCSS image-set() Function] to your project:
 
 ```bash
 npm install postcss-image-set-function --save-dev
 ```
 
-#### Node
-
 Use [PostCSS image-set() Function] to process your CSS:
 
 ```js
-import postcssImageSetFunction from 'postcss-image-set-function';
+const postcssImageSetFunction = require('postcss-image-set-function');
 
-postcssImageSetFunction.process(YOUR_CSS, /* processOptions */, /* pluginOptions */);
+postcssImageSetFunction.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS image-set() Function] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssImageSetFunction from 'postcss-image-set-function';
+const postcss = require('postcss');
+const postcssImageSetFunction = require('postcss-image-set-function');
 
 postcss([
   postcssImageSetFunction(/* pluginOptions */)
-]).process(YOUR_CSS);
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS image-set() Function] runs in all Node environments, with special
+instructions for:
 
-Add [PostCSS Loader] to your build tool:
-
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [PostCSS image-set() Function] in your Webpack configuration:
-
-```js
-import postcssImageSetFunction from 'postcss-image-set-function';
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssImageSetFunction(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS image-set() Function] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import postcssImageSetFunction from 'postcss-image-set-function';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssImageSetFunction(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS image-set() Function] in your Gruntfile:
-
-```js
-import postcssImageSetFunction from 'postcss-image-set-function';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssImageSetFunction(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -251,8 +160,6 @@ rather than wait for a larger, resolution-matching image to load.
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-image-set-function.svg
 [npm-url]: https://www.npmjs.com/package/postcss-image-set-function
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-image-set-function.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-image-set-function
 
 [CSS Images]: https://drafts.csswg.org/css-images-4/#image-set-notation
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
