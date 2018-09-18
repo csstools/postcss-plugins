@@ -1,5 +1,10 @@
 # Changes to PostCSS Lab Function
 
+### 2.0.0 (September 17, 2018)
+
+- Updated: Support for PostCSS v7+
+- Updated: Support for Node v6+
+
 ### 1.1.0 (July 24, 2018)
 
 - Added: Support for `gray(a / b)` as `lab(a 0 0 / b)`
