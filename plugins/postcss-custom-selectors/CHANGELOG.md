@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Selectors
 
+### 5.1.1 (September 18, 2018)
+
+- Fixed: Selectors like `.foo:--h1` become `h1.foo` instead of `.fooh1`
+
 ### 5.1.0 (September 12, 2018)
 
 - Added: New `exportTo` function to specify where to export custom selectors

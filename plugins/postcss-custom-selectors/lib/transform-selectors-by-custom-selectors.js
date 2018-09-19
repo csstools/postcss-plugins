@@ -35,6 +35,8 @@ function transformSelector(selector, customSelectors) {
 
 				const retranspiledSelectors = transformSelector(selectorClone, customSelectors);
 
+				adjustNodesBySelectorEnds(selectorClone.nodes, Number(index));
+
 				if (retranspiledSelectors.length) {
 					transpiledSelectors.push(...retranspiledSelectors);
 				} else {
@@ -50,3 +52,36 @@ function transformSelector(selector, customSelectors) {
 
 	return transpiledSelectors;
 }
+
+// match selectors by difficult-to-separate ends
+const withoutSelectorStartMatch = /^(tag|universal)$/;
+const withoutSelectorEndMatch = /^(class|id|pseudo|tag|universal)$/;
+
+const isWithoutSelectorStart = node => withoutSelectorStartMatch.test(Object(node).type);
+const isWithoutSelectorEnd = node => withoutSelectorEndMatch.test(Object(node).type);
+
+// adjust nodes by selector ends (so that .class:--h1 becomes h1.class rather than .classh1)
+const adjustNodesBySelectorEnds = (nodes, index) => {
+	if (index && isWithoutSelectorStart(nodes[index]) && isWithoutSelectorEnd(nodes[index - 1])) {
+		let safeIndex = index - 1;
+
+		while (safeIndex && isWithoutSelectorEnd(nodes[safeIndex])) {
+			--safeIndex;
+		}
+
+		if (safeIndex < index) {
+			const node = nodes.splice(index, 1)[0];
+
+			nodes.splice(safeIndex, 0, node);
+
+			nodes[safeIndex].spaces.before = nodes[safeIndex + 1].spaces.before;
+			nodes[safeIndex + 1].spaces.before = '';
+
+			if (nodes[index]) {
+				nodes[index].spaces.after = nodes[safeIndex].spaces.after;
+				nodes[safeIndex].spaces.after = '';
+			}
+		}
+	}
+};
+

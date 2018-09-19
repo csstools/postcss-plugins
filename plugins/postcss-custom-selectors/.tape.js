@@ -9,6 +9,9 @@ module.exports = {
 				preserve: true
 			}
 		},
+		'safety': {
+			message: 'supports safe tag ordering (.foo:--h1 becomes h1.foo instead of .fooh1)'
+		},
 		'basic:import': {
 			message: 'supports { importFrom: { customSelectors: { ... } } } usage',
 			options: {

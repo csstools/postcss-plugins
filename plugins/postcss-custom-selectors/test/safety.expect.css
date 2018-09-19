@@ -1,0 +1,11 @@
+h1.class,   h1#id,   h1::before,   h1* {
+	order: 1;
+}
+
+h1.foo.class   , h1.foo#id   , h1.foo::before   {
+	order: 2;
+}
+
+h1.foo.class   ,   h1.foo#id   ,   h1.foo::before   {
+	order: 3;
+}
