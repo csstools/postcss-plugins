@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Selectors
 
+### 5.1.2 (September 20, 2018)
+
+- Fixed: Do not break on an empty `importFrom` object
+
 ### 5.1.1 (September 18, 2018)
 
 - Fixed: Selectors like `.foo:--h1` become `h1.foo` instead of `.fooh1`
