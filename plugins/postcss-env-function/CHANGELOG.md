@@ -1,5 +1,9 @@
 # Changes to PostCSS Environment Variables
 
+### 2.0.2 (September 20, 2018)
+
+- Updated: Do not break on an empty importFrom object
+
 ### 2.0.1 (September 18, 2018)
 
 - Updated: Support for PostCSS Values Parser 2

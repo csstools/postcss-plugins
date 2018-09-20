@@ -77,6 +77,12 @@ module.exports = {
 			},
 			expect: 'basic.import.expect.css',
 			result: 'basic.import.result.css'
+		},
+		'basic:import-is-empty': {
+			message: 'supports { importFrom: {} } usage',
+			options: {
+				importFrom: {}
+			}
 		}
 	}
 };

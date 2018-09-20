@@ -1,0 +1,10 @@
+body {
+	order: 1;
+	padding: env(--some-custom-padding);
+}
+
+@media (min-width: env(--another-custom-width)) {
+	body {
+		order: 2;
+	}
+}
