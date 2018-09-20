@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### 7.0.3 (September 20, 2018)
+
+- Fixed: Do not break on an empty `importFrom` object
+
 ### 7.0.2 (September 15, 2018)
 
 - Fixed: An issue with re-assigning params as a non-string

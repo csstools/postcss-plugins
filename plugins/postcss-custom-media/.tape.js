@@ -92,6 +92,12 @@ module.exports = {
 			expect: 'import.expect.css',
 			result: 'import.result.css'
 		},
+		'import:empty': {
+			message: 'supports { importFrom: {} } usage',
+			options: {
+				importFrom: {}
+			}
+		},
 		'basic:export': {
 			message: 'supports { exportTo: { customMedia: { ... } } } usage',
 			options: {
