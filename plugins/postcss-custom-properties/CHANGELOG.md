@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 8.0.4 (September 18, 2018)
+
+- Fixed: Do not break on an empty `importFrom` object
+
 ### 8.0.3 (September 18, 2018)
 
 - Updated: PostCSS Values Parser 2

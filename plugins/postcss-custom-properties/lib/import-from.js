@@ -78,7 +78,7 @@ export default function importCustomPropertiesFromSources(sources) {
 		const from = String(opts.from || '');
 
 		// type of file being read from
-		const type = (opts.type || path.extname(opts.from).slice(1)).toLowerCase();
+		const type = (opts.type || path.extname(from).slice(1)).toLowerCase();
 
 		return { type, from };
 	}).reduce(async (customProperties, source) => {

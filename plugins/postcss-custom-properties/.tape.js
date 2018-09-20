@@ -233,6 +233,12 @@ module.exports = {
 					throw new Error('The original file did not match the freshly exported copy');
 				}
 			}
+		},
+		'basic:import-is-empty': {
+			message: 'supports { importFrom: {} } usage',
+			options: {
+				importFrom: {}
+			}
 		}
 	}
 };
