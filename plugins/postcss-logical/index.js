@@ -10,7 +10,9 @@ import transformSide from './lib/transform-side';
 import transformSize from './lib/transform-size';
 import transformSpacing from './lib/transform-spacing';
 import transformTextAlign from './lib/transform-text-align';
+import transformTransition from './lib/transform-transition';
 import matchSupportedProperties from './lib/match-supported-properties';
+import { splitBySlash, splitBySpace } from './lib/split';
 
 // supported transforms
 const transforms = {
@@ -38,8 +40,13 @@ const transforms = {
 	'float': transformFloat,
 	'resize': transformResize,
 	'size': transformSize,
-	'text-align': transformTextAlign
+	'text-align': transformTextAlign,
+	'transition': transformTransition,
+	'transition-property': transformTransition
 };
+
+// properties that will be split by slash
+const splitBySlashPropRegExp = /^border(-block|-inline|-start|-end)?(-width|-style|-color)?$/i;
 
 // plugin
 export default postcss.plugin('postcss-logical-properties', opts => {
@@ -52,17 +59,28 @@ export default postcss.plugin('postcss-logical-properties', opts => {
 
 	return root => {
 		root.walkDecls(decl => {
-			const values = postcss.list.split(decl.value, /^border(-block|-inline|-start|-end)?(-width|-style|-color)?$/i.test(decl.prop) ? '/' : ' ');
+			const parent = decl.parent;
+			const values = splitBySlashPropRegExp.test(decl.prop) ? splitBySlash(decl.value, true) : splitBySpace(decl.value, true);
 			const prop = decl.prop.replace(matchSupportedProperties, '$2$5').toLowerCase();
 
 			if (prop in transforms) {
 				const replacer = transforms[prop](decl, values, dir);
 
 				if (replacer) {
-					if (preserve) {
-						decl.before(replacer);
-					} else {
-						decl.replaceWith(replacer);
+					[].concat(replacer).forEach(replacement => {
+						if (replacement.type === 'rule') {
+							parent.before(replacement);
+						} else {
+							decl.before(replacement);
+						}
+					});
+
+					if (!preserve) {
+						decl.remove();
+
+						if (!parent.nodes.length) {
+							parent.remove();
+						}
 					}
 				}
 			}

@@ -24,154 +24,186 @@ test-border {
 	border-bottom: 16px solid black;
 }
 
-test-flowing-border {
-	border: inherit;
-	&:dir(ltr) {
+test-flowing-border:dir(ltr) {
 	border-top: 1px solid black;
 	border-left: 2px solid black;
 	border-bottom: 3px solid black;
 	border-right: 4px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border:dir(rtl) {
 	border-top: 1px solid black;
 	border-right: 2px solid black;
 	border-bottom: 3px solid black;
 	border-left: 4px solid black;
-	}
-	border: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border:dir(ltr) {
 	border-left: 5px solid black;
 	border-right: 6px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border:dir(rtl) {
 	border-right: 5px solid black;
 	border-left: 6px solid black;
-	}
-	border: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border:dir(ltr) {
 	border-left: 7px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border:dir(rtl) {
 	border-right: 7px solid black;
-	}
-	border: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border:dir(ltr) {
 	border-right: 8px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border:dir(rtl) {
 	border-left: 8px solid black;
-	}
-	border: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border:dir(ltr) {
 	border-top: 9px solid black;
 	border-left: 9px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border:dir(rtl) {
 	border-top: 9px solid black;
 	border-right: 9px solid black;
-	}
-	border: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border:dir(ltr) {
 	border-top: 10px solid black;
 	border-left: 11px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border:dir(rtl) {
 	border-top: 10px solid black;
 	border-right: 11px solid black;
-	}
-	border: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border:dir(ltr) {
 	border-bottom: 12px solid black;
 	border-right: 12px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border:dir(rtl) {
 	border-bottom: 12px solid black;
 	border-left: 12px solid black;
-	}
-	border: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border:dir(ltr) {
 	border-bottom: 13px solid black;
 	border-right: 14px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border:dir(rtl) {
 	border-bottom: 13px solid black;
 	border-left: 14px solid black;
-	}
+}
+
+test-flowing-border {
+	border: inherit;
+	border: inherit;
+	border: inherit;
+	border: inherit;
+	border: inherit;
+	border: inherit;
+	border: inherit;
+	border: inherit;
 	border: inherit;
 }
 
-test-flowing-border-color {
-	border-color: inherit;
-	&:dir(ltr) {
+test-flowing-border-color:dir(ltr) {
 	border-top-color: 1px solid black;
 	border-left-color: 2px solid black;
 	border-bottom-color: 3px solid black;
 	border-right-color: 4px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border-color:dir(rtl) {
 	border-top-color: 1px solid black;
 	border-right-color: 2px solid black;
 	border-bottom-color: 3px solid black;
 	border-left-color: 4px solid black;
-	}
-	border-color: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border-color:dir(ltr) {
 	border-left-color: 5px solid black;
 	border-right-color: 6px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border-color:dir(rtl) {
 	border-right-color: 5px solid black;
 	border-left-color: 6px solid black;
-	}
-	border-color: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border-color:dir(ltr) {
 	border-left-color: 7px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border-color:dir(rtl) {
 	border-right-color: 7px solid black;
-	}
-	border-color: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border-color:dir(ltr) {
 	border-right-color: 8px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border-color:dir(rtl) {
 	border-left-color: 8px solid black;
-	}
-	border-color: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border-color:dir(ltr) {
 	border-top-color: 9px solid black;
 	border-left-color: 9px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border-color:dir(rtl) {
 	border-top-color: 9px solid black;
 	border-right-color: 9px solid black;
-	}
-	border-color: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border-color:dir(ltr) {
 	border-top-color: 10px solid black;
 	border-left-color: 11px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border-color:dir(rtl) {
 	border-top-color: 10px solid black;
 	border-right-color: 11px solid black;
-	}
-	border-color: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border-color:dir(ltr) {
 	border-bottom-color: 12px solid black;
 	border-right-color: 12px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border-color:dir(rtl) {
 	border-bottom-color: 12px solid black;
 	border-left-color: 12px solid black;
-	}
-	border-color: inherit;
-	&:dir(ltr) {
+}
+
+test-flowing-border-color:dir(ltr) {
 	border-bottom-color: 13px solid black;
 	border-right-color: 14px solid black;
-	}
-	&:dir(rtl) {
+}
+
+test-flowing-border-color:dir(rtl) {
 	border-bottom-color: 13px solid black;
 	border-left-color: 14px solid black;
-	}
+}
+
+test-flowing-border-color {
+	border-color: inherit;
+	border-color: inherit;
+	border-color: inherit;
+	border-color: inherit;
+	border-color: inherit;
+	border-color: inherit;
+	border-color: inherit;
+	border-color: inherit;
 	border-color: inherit;
 }

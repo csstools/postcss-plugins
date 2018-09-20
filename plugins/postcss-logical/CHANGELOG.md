@@ -1,5 +1,12 @@
 # Changes to PostCSS Logical Properties
 
+### 3.0.0 (September 20, 2018)
+
+- Added: Support for logical properties within `transition` and
+  `transition-property`.
+- Changed: Physical rule fallbacks are written as full selectors rather than
+  as nesting selectors.
+
 ### 2.0.0 (September 17, 2018)
 
 - Updated: Support for PostCSS v7+

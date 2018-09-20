@@ -74,6 +74,15 @@ module.exports = {
 			options: {
 				dir: 'ltr'
 			}
+		},
+		'transition': {
+			message: 'supports logical "transition" properties'
+		},
+		'transition:ltr': {
+			message: 'supports logical "transition" properties with { dir: "ltr" }',
+			options: {
+				dir: 'ltr'
+			}
 		}
 	}
 };

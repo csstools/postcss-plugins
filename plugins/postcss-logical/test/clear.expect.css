@@ -1,17 +1,17 @@
+test-clear:dir(ltr) {
+	clear: left;
+}
+test-clear:dir(rtl) {
+	clear: right;
+}
+test-clear:dir(ltr) {
+	clear: right;
+}
+test-clear:dir(rtl) {
+	clear: left;
+}
 test-clear {
 	clear: both;
 	clear: left;
-	&:dir(ltr) {
-	clear: left;
-	}
-	&:dir(rtl) {
-	clear: right;
-	}
-	&:dir(ltr) {
-	clear: right;
-	}
-	&:dir(rtl) {
-	clear: left;
-	}
 	clear: right;
 }

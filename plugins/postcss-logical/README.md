@@ -20,18 +20,15 @@ physical, direction and dimension mappings in CSS, following the
 
 /* becomes */
 
+.banner:dir(ltr) {
+  padding-left: 20px; padding-right: 40px;
+}
+
+.banner:dir(rtl) {
+  padding-right: 20px; padding-left: 40px;
+}
+
 .banner {
-  color: #222222;
-  top: 0; left: 5px; bottom: 10px; right: 5px;
-
-  &:dir(ltr) {
-    padding-left: 20px; padding-right: 40px;
-  }
-  
-  &:dir(rtl) {
-    padding-right: 20px; padding-left: 40px;
-  }
-
   resize: vertical;
   transition: color 200ms;
 }
@@ -48,18 +45,17 @@ physical, direction and dimension mappings in CSS, following the
 
 /* or, when used with { preserve: true } */
 
+.banner:dir(ltr) {
+  padding-left: 20px; padding-right: 40px;
+}
+
+.banner:dir(rtl) {
+  padding-right: 20px; padding-left: 40px;
+}
+
 .banner {
   color: #222222;
   top: 0; left: 5px; bottom: 10px; right: 5px;
-
-  &:dir(ltr) {
-    padding-left: 20px; padding-right: 40px;
-  }
-
-  &:dir(rtl) {
-    padding-right: 20px; padding-left: 40px;
-  }
-
   inset: logical 0 5px 10px;
   padding-inline: 20px 40px;
   resize: block;

@@ -1,23 +1,11 @@
-'use strict';
-
 import postcss from 'postcss';
 
 export default (decl, dir) => {
-	let node = decl.parent;
+	const rule = Object(decl.parent).type === 'rule' ? decl.parent.clone({
+		raws: {}
+	}).removeAll() : postcss.rule({ selector: '&' });
 
-	while (node && 'rule' !== node.type) {
-		node = node.parent;
-	}
+	rule.selectors = rule.selectors.map(selector => `${selector}:dir(${dir})`);
 
-	if (node) {
-		node = node.clone({
-			raws: {}
-		}).removeAll()
-	} else {
-		node = postcss.rule();
-	}
-
-	node.selector = `&:dir(${dir})`;
-
-	return node;
+	return rule;
 };
