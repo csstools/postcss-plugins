@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 8.0.5 (September 21, 2018)
+
+- Fixed: Issue with multiple `importFrom` not getting combined
+
 ### 8.0.4 (September 18, 2018)
 
 - Fixed: Do not break on an empty `importFrom` object

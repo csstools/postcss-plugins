@@ -64,17 +64,34 @@ module.exports = {
 			result: 'basic.import.result.css'
 		},
 		'basic:import-js': {
-			message: 'supports { importFrom: "test/import-properties.js" } usage',
+			message: 'supports { importFrom: "test/import-properties{-2}?.js" } usage',
 			options: {
-				importFrom: 'test/import-properties.js'
+				importFrom: [
+					'test/import-properties.js',
+					'test/import-properties-2.js'
+				]
 			},
 			expect: 'basic.import.expect.css',
 			result: 'basic.import.result.css'
 		},
 		'basic:import-css': {
-			message: 'supports { importFrom: "test/import-properties.css" } usage',
+			message: 'supports { importFrom: "test/import-properties{-2}?.css" } usage',
 			options: {
-				importFrom: 'test/import-properties.css'
+				importFrom: [
+					'test/import-properties.css',
+					'test/import-properties-2.css'
+				]
+			},
+			expect: 'basic.import.expect.css',
+			result: 'basic.import.result.css'
+		},
+		'basic:import-css-js': {
+			message: 'supports { importFrom: "test/import-properties{-2}?.{css|js}" } usage',
+			options: {
+				importFrom: [
+					'test/import-properties.js',
+					'test/import-properties-2.css'
+				]
 			},
 			expect: 'basic.import.expect.css',
 			result: 'basic.import.result.css'
@@ -82,7 +99,10 @@ module.exports = {
 		'basic:import-css-from': {
 			message: 'supports { importFrom: { from: "test/import-properties.css" } } usage',
 			options: {
-				importFrom: { from: 'test/import-properties.css' }
+				importFrom: [
+					{ from: 'test/import-properties.css' },
+					{ from: 'test/import-properties-2.css' }
+				]
 			},
 			expect: 'basic.import.expect.css',
 			result: 'basic.import.result.css'
@@ -90,7 +110,10 @@ module.exports = {
 		'basic:import-css-from-type': {
 			message: 'supports { importFrom: [ { from: "test/import-properties.css", type: "css" } ] } usage',
 			options: {
-				importFrom: [ { from: 'test/import-properties.css', type: 'css' } ]
+				importFrom: [
+					{ from: 'test/import-properties.css', type: 'css' },
+					{ from: 'test/import-properties-2.css', type: 'css' }
+				]
 			},
 			expect: 'basic.import.expect.css',
 			result: 'basic.import.result.css'

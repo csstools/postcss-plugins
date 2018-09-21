@@ -85,22 +85,22 @@ export default function importCustomPropertiesFromSources(sources) {
 		const { type, from } = await source;
 
 		if (type === 'ast') {
-			return Object.assign(customProperties, importCustomPropertiesFromCSSAST(from));
+			return Object.assign(await customProperties, importCustomPropertiesFromCSSAST(from));
 		}
 
 		if (type === 'css') {
-			return Object.assign(customProperties, await importCustomPropertiesFromCSSFile(from));
+			return Object.assign(await customProperties, await importCustomPropertiesFromCSSFile(from));
 		}
 
 		if (type === 'js') {
-			return Object.assign(customProperties, await importCustomPropertiesFromJSFile(from));
+			return Object.assign(await customProperties, await importCustomPropertiesFromJSFile(from));
 		}
 
 		if (type === 'json') {
-			return Object.assign(customProperties, await importCustomPropertiesFromJSONFile(from));
+			return Object.assign(await customProperties, await importCustomPropertiesFromJSONFile(from));
 		}
 
-		return Object.assign(customProperties, importCustomPropertiesFromObject(await source));
+		return Object.assign(await customProperties, await importCustomPropertiesFromObject(await source));
 	}, {});
 }
 
