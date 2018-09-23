@@ -43,19 +43,23 @@ function transformVariables(node, opts) {
 			]);
 
 			if (variableName in opts.customProperties) {
-				let customPropertyValue = String(opts.customProperties[variableName]);
+				let customPropertyValue = opts.customProperties[variableName];
 
 				if (looseVarMatch.test(customPropertyValue)) {
-					const rootChildAST = parser(customPropertyValue, { loose: true }).parse();
+					if (typeof customPropertyValue === 'string') {
+						customPropertyValue = parser(customPropertyValue).parse();
+					}
+
+					const rootChildAST = customPropertyValue.clone();
 
 					transformVariables(rootChildAST, opts);
 
-					customPropertyValue = opts.customProperties[variableName] = String(rootChildAST);
+					customPropertyValue = opts.customProperties[variableName] = rootChildAST;
 				}
 
 				child.replaceWith(parser.word({
 					raws: child.raws,
-					value: customPropertyValue
+					value: String(customPropertyValue)
 				}));
 			} else if (fallbackNode) {
 				transformVariables(fallbackNode, opts);

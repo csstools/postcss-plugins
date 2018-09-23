@@ -46,7 +46,7 @@ module.exports = {
 		'import:array-array': {
 			message: 'supports { importFrom: [["css", "test/import-root.css" ]] } usage',
 			options: {
-				importFrom: [['css', 'test/import-root.css' ]]
+				importFrom: { from: 'test/import-root.css', type: 'css' }
 			},
 			expect: 'import.expect.css',
 			result: 'import.result.css'
@@ -70,13 +70,19 @@ module.exports = {
 		'import:object': {
 			message: 'supports { importFrom: { customProperties: {} } } usage',
 			options: {
-				importFrom: {
-					customProperties: {
-						'--color-blue': 'blue',
-						'--color-red': 'red',
-						'--color': 'var(--color-blue)'
+				importFrom: [
+					{
+						customProperties: {
+							'--color': 'var(--color-blue)'
+						}
+					},
+					{
+						customProperties: {
+							'--color-blue': 'blue',
+							'--color-red': 'red'
+						}
 					}
-				}
+				]
 			},
 			expect: 'import.expect.css',
 			result: 'import.result.css'

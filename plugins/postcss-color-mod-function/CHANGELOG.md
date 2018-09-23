@@ -1,5 +1,9 @@
 # Changes to PostCSS color-mod() Function
 
+### 3.0.2 (September 23, 2018)
+
+- Fixed an incompatibility with other `importFrom` plugins
+
 ### 3.0.1 (September 18, 2018)
 
 - Fixed an issue with using the `transparent` color keyword
