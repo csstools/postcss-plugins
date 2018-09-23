@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import postcss from 'postcss';
 import getCustomProperties from './get-custom-properties';
+import valueParser from 'postcss-values-parser';
 
 /* Import Custom Properties from CSS AST
 /* ========================================================================== */
@@ -14,8 +15,8 @@ function importCustomPropertiesFromCSSAST(root) {
 /* ========================================================================== */
 
 async function importCustomPropertiesFromCSSFile(from) {
-	const css = await readFile(path.resolve(from));
-	const root = postcss.parse(css, { from: path.resolve(from) });
+	const css = await readFile(from);
+	const root = postcss.parse(css, { from });
 
 	return importCustomPropertiesFromCSSAST(root);
 }
@@ -29,6 +30,10 @@ function importCustomPropertiesFromObject(object) {
 		Object(object).customProperties || Object(object)['custom-properties']
 	);
 
+	for (const prop in customProperties) {
+		customProperties[prop] = valueParser(customProperties[prop]).parse();
+	}
+
 	return customProperties;
 }
 
@@ -36,7 +41,7 @@ function importCustomPropertiesFromObject(object) {
 /* ========================================================================== */
 
 async function importCustomPropertiesFromJSONFile(from) {
-	const object = await readJSON(path.resolve(from));
+	const object = await readJSON(from);
 
 	return importCustomPropertiesFromObject(object);
 }
@@ -45,7 +50,7 @@ async function importCustomPropertiesFromJSONFile(from) {
 /* ========================================================================== */
 
 async function importCustomPropertiesFromJSFile(from) {
-	const object = await import(path.resolve(from));
+	const object = await import(from);
 
 	return importCustomPropertiesFromObject(object);
 }
@@ -70,7 +75,7 @@ export default function importCustomPropertiesFromSources(sources) {
 		}
 
 		// source pathname
-		const from = String(opts.from || '');
+		const from = path.resolve(String(opts.from || ''));
 
 		// type of file being read from
 		const type = (opts.type || path.extname(from).slice(1)).toLowerCase();

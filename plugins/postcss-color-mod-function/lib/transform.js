@@ -37,34 +37,38 @@ export default function transformAST(node, opts) {
 function transformVariables(node, opts) {
 	walk(node, child => {
 		if (isVariable(child)) {
-			const [variableName, fallbackNode] = transformArgsByParams(child, [
+			// get the custom property and fallback value from var()
+			const [prop, fallbackNode] = transformArgsByParams(child, [
 				// <value> , [ <fallback> ]?
 				[transformWord, isComma, transformNode]
 			]);
 
-			if (variableName in opts.customProperties) {
-				let customPropertyValue = opts.customProperties[variableName];
+			// if the custom property is known
+			if (prop in opts.customProperties) {
+				let customPropertyValue = opts.customProperties[prop];
 
+				// follow custom properties referencing custom properties
 				if (looseVarMatch.test(customPropertyValue)) {
-					if (typeof customPropertyValue === 'string') {
-						customPropertyValue = parser(customPropertyValue).parse();
-					}
-
 					const rootChildAST = customPropertyValue.clone();
 
 					transformVariables(rootChildAST, opts);
 
-					customPropertyValue = opts.customProperties[variableName] = rootChildAST;
+					customPropertyValue = rootChildAST;
 				}
 
-				child.replaceWith(parser.word({
-					raws: child.raws,
-					value: String(customPropertyValue)
-				}));
-			} else if (fallbackNode) {
+				// replace var() with the custom property value
+				if (customPropertyValue.nodes.length === 1 && customPropertyValue.nodes[0].nodes.length) {
+					customPropertyValue.nodes[0].nodes.forEach(customPropertyChild => {
+						child.parent.insertBefore(child, customPropertyChild);
+					});
+				}
+
+				child.remove();
+			} else if (fallbackNode && fallbackNode.nodes.length === 1 && fallbackNode.nodes[0].nodes.length) {
+				// otherwise, replace var() with the fallback value
 				transformVariables(fallbackNode, opts);
 
-				child.replaceWith(...fallbackNode.nodes[0].nodes);
+				child.replaceWith(...fallbackNode.nodes[0].nodes[0]);
 			}
 		}
 	});

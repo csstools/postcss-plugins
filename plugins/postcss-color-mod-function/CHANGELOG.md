@@ -1,5 +1,9 @@
 # Changes to PostCSS color-mod() Function
 
+### 3.0.3 (September 23, 2018)
+
+- Fixed an issue with certain colors not being tranformed from variables
+
 ### 3.0.2 (September 23, 2018)
 
 - Fixed an incompatibility with other `importFrom` plugins
