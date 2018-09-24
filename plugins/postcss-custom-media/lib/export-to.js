@@ -80,7 +80,7 @@ export default function exportCustomMediaToDestinations(customMedia, destination
 				const to = String(opts.to || '');
 
 				// type of file being written to
-				const type = (opts.type || path.extname(opts.to).slice(1)).toLowerCase();
+				const type = (opts.type || path.extname(to).slice(1)).toLowerCase();
 
 				// transformed custom media
 				const customMediaJSON = toJSON(customMedia);

@@ -65,7 +65,7 @@ class MediaQuery {
 	constructor(string) {
 		const [, before, media, after ] = string.match(spaceWrapRegExp);
 		const [, modifier = '', afterModifier = ' ', type = '', beforeAnd = '', and = '', beforeExpression = '', expression1 = '', expression2 = ''] = media.match(mediaRegExp) || [];
-		const raws = { before, after, afterModifier, originalModifier: modifier || 'not', beforeAnd, and, beforeExpression };
+		const raws = { before, after, afterModifier, originalModifier: modifier || '', beforeAnd, and, beforeExpression };
 		const nodes = parse(expression1 || expression2, true);
 
 		Object.assign(this, {

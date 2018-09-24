@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### 7.0.4 (September 23, 2018)
+
+- Added: `importFromPlugins` option to process imports
+
 ### 7.0.3 (September 20, 2018)
 
 - Fixed: Do not break on an empty `importFrom` object

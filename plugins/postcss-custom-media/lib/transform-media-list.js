@@ -35,8 +35,17 @@ function transformMedia(media, customMedias) {
 					raws: !modifier || media.modifier
 						? { ...media.raws }
 					: { ...replacementMedia.raws },
-					type: media.type || replacementMedia.type
+					type: media.type || replacementMedia.type,
 				});
+
+				// conditionally include more replacement raws when the type is present
+				if (mediaClone.type === replacementMedia.type) {
+					Object.assign(mediaClone.raws, {
+						and: replacementMedia.raws.and,
+						beforeAnd: replacementMedia.raws.beforeAnd,
+						beforeExpression: replacementMedia.raws.beforeExpression
+					});
+				}
 
 				mediaClone.nodes.splice(index, 1, ...replacementMedia.clone().nodes.map(node => {
 					// use spacing from the current usage
