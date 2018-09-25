@@ -1,0 +1,11 @@
+node_modules
+/client.*
+/postcss.*
+package-lock.json
+*.log*
+.*
+!.editorconfig
+!.gitignore
+!.rollup.*.js
+!.tape.js
+!.travis.yml
