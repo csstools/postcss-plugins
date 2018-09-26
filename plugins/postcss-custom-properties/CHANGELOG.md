@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Properties
 
+### 8.0.6 (September 21, 2018)
+
+- Fixed: Issue with regular `:root` and `html` properties not getting polyfilled
+- Updated: `postcss` to 7.0.3 (patch)
+
 ### 8.0.5 (September 21, 2018)
 
 - Fixed: Issue with multiple `importFrom` not getting combined

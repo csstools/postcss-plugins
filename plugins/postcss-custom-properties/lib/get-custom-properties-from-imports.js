@@ -2,32 +2,26 @@ import fs from 'fs';
 import path from 'path';
 import postcss from 'postcss';
 import valueParser from 'postcss-values-parser';
-import getCustomProperties from './get-custom-properties';
+import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
 
-/* Import Custom Properties from CSS AST
+/* Get Custom Properties from CSS File
 /* ========================================================================== */
 
-function importCustomPropertiesFromCSSAST(root) {
-	return getCustomProperties(root, { preserve: true });
+async function getCustomPropertiesFromCSSFile(from) {
+	const css = await readFile(from);
+	const root = postcss.parse(css, { from });
+
+	return getCustomPropertiesFromRoot(root, { preserve: true });
 }
 
-/* Import Custom Properties from CSS File
+/* Get Custom Properties from Object
 /* ========================================================================== */
 
-async function importCustomPropertiesFromCSSFile(from) {
-	const css = await readFile(path.resolve(from));
-	const root = postcss.parse(css, { from: path.resolve(from) });
-
-	return importCustomPropertiesFromCSSAST(root);
-}
-
-/* Import Custom Properties from Object
-/* ========================================================================== */
-
-function importCustomPropertiesFromObject(object) {
+function getCustomPropertiesFromObject(object) {
 	const customProperties = Object.assign(
 		{},
-		Object(object).customProperties || Object(object)['custom-properties']
+		Object(object).customProperties,
+		Object(object)['custom-properties']
 	);
 
 	for (const key in customProperties) {
@@ -37,28 +31,28 @@ function importCustomPropertiesFromObject(object) {
 	return customProperties;
 }
 
-/* Import Custom Properties from JSON file
+/* Get Custom Properties from JSON file
 /* ========================================================================== */
 
-async function importCustomPropertiesFromJSONFile(from) {
-	const object = await readJSON(path.resolve(from));
+async function getCustomPropertiesFromJSONFile(from) {
+	const object = await readJSON(from);
 
-	return importCustomPropertiesFromObject(object);
+	return getCustomPropertiesFromObject(object);
 }
 
-/* Import Custom Properties from JS file
+/* Get Custom Properties from JS file
 /* ========================================================================== */
 
-async function importCustomPropertiesFromJSFile(from) {
-	const object = await import(path.resolve(from));
+async function getCustomPropertiesFromJSFile(from) {
+	const object = await import(from);
 
-	return importCustomPropertiesFromObject(object);
+	return getCustomPropertiesFromObject(object);
 }
 
-/* Import Custom Properties from Sources
+/* Get Custom Properties from Imports
 /* ========================================================================== */
 
-export default function importCustomPropertiesFromSources(sources) {
+export default function getCustomPropertiesFromImports(sources) {
 	return sources.map(source => {
 		if (source instanceof Promise) {
 			return source;
@@ -75,7 +69,7 @@ export default function importCustomPropertiesFromSources(sources) {
 		}
 
 		// source pathname
-		const from = String(opts.from || '');
+		const from = path.resolve(String(opts.from || ''));
 
 		// type of file being read from
 		const type = (opts.type || path.extname(from).slice(1)).toLowerCase();
@@ -84,23 +78,19 @@ export default function importCustomPropertiesFromSources(sources) {
 	}).reduce(async (customProperties, source) => {
 		const { type, from } = await source;
 
-		if (type === 'ast') {
-			return Object.assign(await customProperties, importCustomPropertiesFromCSSAST(from));
-		}
-
 		if (type === 'css') {
-			return Object.assign(await customProperties, await importCustomPropertiesFromCSSFile(from));
+			return Object.assign(await customProperties, await getCustomPropertiesFromCSSFile(from));
 		}
 
 		if (type === 'js') {
-			return Object.assign(await customProperties, await importCustomPropertiesFromJSFile(from));
+			return Object.assign(await customProperties, await getCustomPropertiesFromJSFile(from));
 		}
 
 		if (type === 'json') {
-			return Object.assign(await customProperties, await importCustomPropertiesFromJSONFile(from));
+			return Object.assign(await customProperties, await getCustomPropertiesFromJSONFile(from));
 		}
 
-		return Object.assign(await customProperties, await importCustomPropertiesFromObject(await source));
+		return Object.assign(await customProperties, await getCustomPropertiesFromObject(await source));
 	}, {});
 }
 

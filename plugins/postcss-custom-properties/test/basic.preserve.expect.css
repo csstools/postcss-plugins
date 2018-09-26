@@ -1,3 +1,7 @@
+:root {
+	color: rgb(255, 0, 0);
+}
+
 .test {
 	--skip: gray;
 	color: rgb(255, 0, 0);

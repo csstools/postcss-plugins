@@ -7,6 +7,8 @@ html {
 	--ref-color: var(--color);
 	--circular: var(--circular-2);
 	--circular-2: var(--circular);
+	color: rgb(255, 0, 0);
+	color: var(--color);
 }
 
 .test {

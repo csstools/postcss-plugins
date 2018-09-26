@@ -1,10 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-/* Export Custom Properties to CSS File
+/* Write Custom Properties to CSS File
 /* ========================================================================== */
 
-async function exportCustomPropertiesToCssFile(to, customProperties) {
+async function writeCustomPropertiesToCssFile(to, customProperties) {
 	const cssContent = Object.keys(customProperties).reduce((cssLines, name) => {
 		cssLines.push(`\t${name}: ${customProperties[name]};`);
 
@@ -15,10 +15,10 @@ async function exportCustomPropertiesToCssFile(to, customProperties) {
 	await writeFile(to, css);
 }
 
-/* Export Custom Properties to JSON file
+/* Write Custom Properties to JSON file
 /* ========================================================================== */
 
-async function exportCustomPropertiesToJsonFile(to, customProperties) {
+async function writeCustomPropertiesToJsonFile(to, customProperties) {
 	const jsonContent = JSON.stringify({
 		'custom-properties': customProperties
 	}, null, '  ');
@@ -27,10 +27,10 @@ async function exportCustomPropertiesToJsonFile(to, customProperties) {
 	await writeFile(to, json);
 }
 
-/* Export Custom Properties to Common JS file
+/* Write Custom Properties to Common JS file
 /* ========================================================================== */
 
-async function exportCustomPropertiesToCjsFile(to, customProperties) {
+async function writeCustomPropertiesToCjsFile(to, customProperties) {
 	const jsContents = Object.keys(customProperties).reduce((jsLines, name) => {
 		jsLines.push(`\t\t'${escapeForJS(name)}': '${escapeForJS(customProperties[name])}'`);
 
@@ -41,10 +41,10 @@ async function exportCustomPropertiesToCjsFile(to, customProperties) {
 	await writeFile(to, js);
 }
 
-/* Export Custom Properties to Module JS file
+/* Write Custom Properties to Module JS file
 /* ========================================================================== */
 
-async function exportCustomPropertiesToMjsFile(to, customProperties) {
+async function writeCustomPropertiesToMjsFile(to, customProperties) {
 	const mjsContents = Object.keys(customProperties).reduce((mjsLines, name) => {
 		mjsLines.push(`\t'${escapeForJS(name)}': '${escapeForJS(customProperties[name])}'`);
 
@@ -55,10 +55,10 @@ async function exportCustomPropertiesToMjsFile(to, customProperties) {
 	await writeFile(to, mjs);
 }
 
-/* Export Custom Properties to Destinations
+/* Write Custom Properties to Exports
 /* ========================================================================== */
 
-export default function exportCustomPropertiesToDestinations(customProperties, destinations) {
+export default function writeCustomPropertiesToExports(customProperties, destinations) {
 	return Promise.all(destinations.map(async destination => {
 		if (destination instanceof Function) {
 			await destination(defaultCustomPropertiesToJSON(customProperties));
@@ -86,19 +86,19 @@ export default function exportCustomPropertiesToDestinations(customProperties, d
 				const customPropertiesJSON = toJSON(customProperties);
 
 				if (type === 'css') {
-					await exportCustomPropertiesToCssFile(to, customPropertiesJSON);
+					await writeCustomPropertiesToCssFile(to, customPropertiesJSON);
 				}
 
 				if (type === 'js') {
-					await exportCustomPropertiesToCjsFile(to, customPropertiesJSON);
+					await writeCustomPropertiesToCjsFile(to, customPropertiesJSON);
 				}
 
 				if (type === 'json') {
-					await exportCustomPropertiesToJsonFile(to, customPropertiesJSON);
+					await writeCustomPropertiesToJsonFile(to, customPropertiesJSON);
 				}
 
 				if (type === 'mjs') {
-					await exportCustomPropertiesToMjsFile(to, customPropertiesJSON);
+					await writeCustomPropertiesToMjsFile(to, customPropertiesJSON);
 				}
 			}
 		}

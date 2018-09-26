@@ -22,14 +22,11 @@ export default (root, customProperties, opts) => {
 	});
 };
 
-// match html and :root rules
-const htmlOrRootSelectorRegExp = /^(html|:root)$/i;
+// match custom properties
+const customPropertyRegExp = /^--[A-z][\w-]*$/;
 
 // match custom property inclusions
 const customPropertiesRegExp = /(^|[^\w-])var\([\W\w]+\)/;
 
-// whether the declaration has a parent rule that is either html or :root
-const isDeclChildOfHtmlOrRootRule = decl => Object(decl.parent).type === 'rule' && htmlOrRootSelectorRegExp.test(decl.parent.selector);
-
 // whether the declaration should be potentially transformed
-const isTransformableDecl = decl => customPropertiesRegExp.test(decl.value) && !isDeclChildOfHtmlOrRootRule(decl);
+const isTransformableDecl = decl => !customPropertyRegExp.test(decl.prop) && customPropertiesRegExp.test(decl.value);

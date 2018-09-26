@@ -1,8 +1,8 @@
 import postcss from 'postcss';
-import getCustomProperties from './lib/get-custom-properties';
+import getCustomPropertiesFromRoot from './lib/get-custom-properties-from-root';
+import getCustomPropertiesFromImports from './lib/get-custom-properties-from-imports';
 import transformProperties from './lib/transform-properties';
-import importCustomPropertiesFromSources from './lib/import-from';
-import exportCustomPropertiesToDestinations from './lib/export-to';
+import writeCustomPropertiesToExports from './lib/write-custom-properties-to-exports';
 
 export default postcss.plugin('postcss-custom-properties', opts => {
 	// whether to preserve custom selectors and rules using them
@@ -15,15 +15,15 @@ export default postcss.plugin('postcss-custom-properties', opts => {
 	const exportTo = [].concat(Object(opts).exportTo || []);
 
 	// promise any custom selectors are imported
-	const customPropertiesPromise = importCustomPropertiesFromSources(importFrom);
+	const customPropertiesPromise = getCustomPropertiesFromImports(importFrom);
 
 	return async root => {
 		const customProperties = Object.assign(
 			await customPropertiesPromise,
-			getCustomProperties(root, { preserve })
+			getCustomPropertiesFromRoot(root, { preserve })
 		);
 
-		await exportCustomPropertiesToDestinations(customProperties, exportTo);
+		await writeCustomPropertiesToExports(customProperties, exportTo);
 
 		transformProperties(root, customProperties, { preserve });
 	};

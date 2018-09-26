@@ -1,7 +1,7 @@
 import valueParser from 'postcss-values-parser';
 
 // return custom selectors from the css root, conditionally removing them
-export default function getCustomProperties(root, opts) {
+export default function getCustomPropertiesFromRoot(root, opts) {
 	// initialize custom selectors
 	const customPropertiesFromHtmlElement = {};
 	const customPropertiesFromRootPsuedo = {};
