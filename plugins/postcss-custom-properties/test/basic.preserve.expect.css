@@ -26,3 +26,7 @@
 .test--z-index {
 	z-index: var(--z-index);
 }
+
+.test--nested-fallback {
+	z-index: 1;
+}

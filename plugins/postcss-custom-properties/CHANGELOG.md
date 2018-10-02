@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 8.0.8 (October 2, 2018)
+
+- Fixed: Issue with nested fallbacks
+
 ### 8.0.7 (October 2, 2018)
 
 - Fixed: Issue with parsing custom properties that are not strings

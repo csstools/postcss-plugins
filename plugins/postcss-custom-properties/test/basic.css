@@ -34,3 +34,7 @@ html {
 .test--z-index {
 	z-index: var(--z-index);
 }
+
+.test--nested-fallback {
+	z-index: var(--xxx, var(--yyy, 1));
+}
