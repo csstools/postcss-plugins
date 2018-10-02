@@ -25,7 +25,7 @@ function getCustomPropertiesFromObject(object) {
 	);
 
 	for (const key in customProperties) {
-		customProperties[key] = valueParser(customProperties[key]).parse().nodes;
+		customProperties[key] = valueParser(String(customProperties[key])).parse().nodes;
 	}
 
 	return customProperties;

@@ -22,3 +22,7 @@
 .test--color_spacing {
 	box-shadow: inset 0 -3px 0        rgb(255, 0, 0);
 }
+
+.test--z-index {
+	z-index: var(--z-index);
+}

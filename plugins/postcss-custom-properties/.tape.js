@@ -16,7 +16,8 @@ module.exports = {
 					customProperties: {
 						'--color': 'rgb(255, 0, 0)',
 						'--color-2': 'yellow',
-						'--ref-color': 'var(--color)'
+						'--ref-color': 'var(--color)',
+						'--z-index': 10
 					}
 				}
 			}
@@ -29,7 +30,8 @@ module.exports = {
 						customProperties: {
 							'--color': 'rgb(255, 0, 0)',
 							'--color-2': 'yellow',
-							'--ref-color': 'var(--color)'
+							'--ref-color': 'var(--color)',
+							'--z-index': 10
 						}
 					};
 				}
@@ -46,7 +48,8 @@ module.exports = {
 							customProperties: {
 								'--color': 'rgb(255, 0, 0)',
 								'--color-2': 'yellow',
-								'--ref-color': 'var(--color)'
+								'--ref-color': 'var(--color)',
+								'--z-index': 10
 							}
 						})
 					});

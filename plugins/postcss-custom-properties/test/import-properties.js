@@ -1,5 +1,6 @@
 module.exports = {
 	customProperties: {
-		'--ref-color': 'var(--color)'
+		'--ref-color': 'var(--color)',
+		'--z-index': 10
 	}
 };
