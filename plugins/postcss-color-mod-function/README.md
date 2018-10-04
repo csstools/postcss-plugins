@@ -99,7 +99,7 @@ postcss([
 ### stringifier
 
 The `stringifier` option defines how transformed colors will be produced in CSS.
-By default, legacy `rbg()` and `rgba()` colors are produced, but this can be
+By default, legacy `rgb()` and `rgba()` colors are produced, but this can be
 easily updated to support [CSS Color Module Level 4 colors] colors.
 
 ```js
