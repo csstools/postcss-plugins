@@ -105,8 +105,8 @@ postcssCustomMedia({
 
 Multiple sources can be passed into this option, and they will be parsed in the
 order they are received. JavaScript files, JSON files, functions, and objects
-will need to namespace custom media using the `customProperties` or
-`custom-properties` key.
+will need to namespace custom media using the `customMedia` or
+`custom-media` key.
 
 ```js
 postcssCustomMedia({
@@ -118,9 +118,9 @@ postcssCustomMedia({
       customMedia: { '--small-viewport': '(max-width: 30em)' }
     },
     () => {
-      const customProperties = { '--small-viewport': '(max-width: 30em)' };
+      const customMedia = { '--small-viewport': '(max-width: 30em)' };
 
-      return { customProperties };
+      return { customMedia };
     }
   ]
 });
@@ -140,8 +140,8 @@ postcssCustomMedia({
 
 Multiple destinations can be passed into this option, and they will be parsed
 in the order they are received. JavaScript files, JSON files, and objects will
-need to namespace custom media using the `customProperties` or
-`custom-properties` key.
+need to namespace custom media using the `customMedia` or
+`custom-media` key.
 
 ```js
 const cachedObject = { customMedia: {} };
@@ -153,8 +153,8 @@ postcssCustomMedia({
     'and/then/this.mjs',  // export const customMedia = { '--small-viewport': '(max-width: 30em)' } }
     'and/then/that.json', // { "custom-media": { "--small-viewport": "(max-width: 30em)" } }
     cachedObject,
-    customProperties => {
-      customProperties    // { '--small-viewport': '(max-width: 30em)' }
+    customMedia => {
+      customMedia    // { '--small-viewport': '(max-width: 30em)' }
     }
   ]
 });
