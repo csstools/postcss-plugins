@@ -30,3 +30,7 @@
 .test--nested-fallback {
 	z-index: 1;
 }
+
+.text--calc {
+	width: calc((100% - 1px) + 10px);
+}

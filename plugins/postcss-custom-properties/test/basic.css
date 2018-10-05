@@ -38,3 +38,7 @@ html {
 .test--nested-fallback {
 	z-index: var(--xxx, var(--yyy, 1));
 }
+
+.text--calc {
+	width: calc((100% - var(--xxx, 1px)) + var(--yyy, 10px));
+}

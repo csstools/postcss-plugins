@@ -15,7 +15,9 @@ export default function transformValueAST(root, customProperties) {
 					// conditionally replace a custom property with a fallback
 					const index = root.nodes.indexOf(child);
 
-					root.nodes.splice(index, 1, ...asClonedArrayWithBeforeSpacing(fallbacks, child.raws.before));
+					if (index !== -1) {
+						root.nodes.splice(index, 1, ...asClonedArrayWithBeforeSpacing(fallbacks, child.raws.before));
+					}
 
 					transformValueAST(root, customProperties);
 				}
