@@ -4,30 +4,24 @@ import postcss from 'postcss';
 import getMediaAstFromMediaString from './media-ast-from-string';
 import getCustomMedia from './custom-media-from-root';
 
-/* Import Custom Media from CSS AST
+/* Get Custom Media from CSS File
 /* ========================================================================== */
 
-function importCustomMediaFromCSSAST(root) {
+async function getCustomMediaFromCSSFile(from) {
+	const css = await readFile(from);
+	const root = postcss.parse(css, { from });
+
 	return getCustomMedia(root, { preserve: true });
 }
 
-/* Import Custom Media from CSS File
+/* Get Custom Media from Object
 /* ========================================================================== */
 
-async function importCustomMediaFromCSSFile(from) {
-	const css = await readFile(path.resolve(from));
-	const root = postcss.parse(css, { from: path.resolve(from) });
-
-	return importCustomMediaFromCSSAST(root);
-}
-
-/* Import Custom Media from Object
-/* ========================================================================== */
-
-function importCustomMediaFromObject(object) {
+function getCustomMediaFromObject(object) {
 	const customMedia = Object.assign(
 		{},
-		Object(object).customMedia || Object(object)['custom-media']
+		Object(object).customMedia,
+		Object(object)['custom-media']
 	);
 
 	for (const key in customMedia) {
@@ -37,28 +31,28 @@ function importCustomMediaFromObject(object) {
 	return customMedia;
 }
 
-/* Import Custom Media from JSON file
+/* Get Custom Media from JSON file
 /* ========================================================================== */
 
-async function importCustomMediaFromJSONFile(from) {
-	const object = await readJSON(path.resolve(from));
+async function getCustomMediaFromJSONFile(from) {
+	const object = await readJSON(from);
 
-	return importCustomMediaFromObject(object);
+	return getCustomMediaFromObject(object);
 }
 
-/* Import Custom Media from JS file
+/* Get Custom Media from JS file
 /* ========================================================================== */
 
-async function importCustomMediaFromJSFile(from) {
-	const object = await import(path.resolve(from));
+async function getCustomMediaFromJSFile(from) {
+	const object = await import(from);
 
-	return importCustomMediaFromObject(object);
+	return getCustomMediaFromObject(object);
 }
 
-/* Import Custom Media from Sources
+/* Get Custom Media from Sources
 /* ========================================================================== */
 
-export default function importCustomMediaFromSources(sources) {
+export default function getCustomMediaFromSources(sources) {
 	return sources.map(source => {
 		if (source instanceof Promise) {
 			return source;
@@ -75,7 +69,7 @@ export default function importCustomMediaFromSources(sources) {
 		}
 
 		// source pathname
-		const from = String(opts.from || '');
+		const from = path.resolve(String(opts.from || ''));
 
 		// type of file being read from
 		const type = (opts.type || path.extname(from).slice(1)).toLowerCase();
@@ -84,23 +78,19 @@ export default function importCustomMediaFromSources(sources) {
 	}).reduce(async (customMedia, source) => {
 		const { type, from } = await source;
 
-		if (type === 'ast') {
-			return Object.assign(customMedia, importCustomMediaFromCSSAST(from));
-		}
-
 		if (type === 'css') {
-			return Object.assign(customMedia, await importCustomMediaFromCSSFile(from));
+			return Object.assign(await customMedia, await getCustomMediaFromCSSFile(from));
 		}
 
 		if (type === 'js') {
-			return Object.assign(customMedia, await importCustomMediaFromJSFile(from));
+			return Object.assign(await customMedia, await getCustomMediaFromJSFile(from));
 		}
 
 		if (type === 'json') {
-			return Object.assign(customMedia, await importCustomMediaFromJSONFile(from));
+			return Object.assign(await customMedia, await getCustomMediaFromJSONFile(from));
 		}
 
-		return Object.assign(customMedia, importCustomMediaFromObject(await source));
+		return Object.assign(await customMedia, getCustomMediaFromObject(await source));
 	}, {});
 }
 

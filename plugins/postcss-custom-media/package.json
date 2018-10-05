@@ -1,6 +1,6 @@
 {
   "name": "postcss-custom-media",
-  "version": "7.0.4",
+  "version": "7.0.5",
   "description": "Use Custom Media Queries in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "contributors": [
@@ -27,18 +27,18 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "postcss": "^7.0.2"
+    "postcss": "^7.0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.0",
+    "@babel/core": "^7.1.2",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
-    "babel-eslint": "^9.0.0",
-    "eslint": "^5.6.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.6.1",
     "eslint-config-dev": "^2.0.0",
     "postcss-tape": "^2.2.0",
     "pre-commit": "^1.2.2",
-    "rollup": "^0.66.2",
+    "rollup": "^0.66.4",
     "rollup-plugin-babel": "^4.0.3"
   },
   "eslintConfig": {

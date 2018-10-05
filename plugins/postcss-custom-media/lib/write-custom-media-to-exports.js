@@ -1,10 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-/* Import Custom Media from CSS File
+/* Write Custom Media from CSS File
 /* ========================================================================== */
 
-async function exportCustomMediaToCssFile(to, customMedia) {
+async function writeCustomMediaToCssFile(to, customMedia) {
 	const cssContent = Object.keys(customMedia).reduce((cssLines, name) => {
 		cssLines.push(`@custom-media ${name} ${customMedia[name]};`);
 
@@ -15,10 +15,10 @@ async function exportCustomMediaToCssFile(to, customMedia) {
 	await writeFile(to, css);
 }
 
-/* Import Custom Media from JSON file
+/* Write Custom Media from JSON file
 /* ========================================================================== */
 
-async function exportCustomMediaToJsonFile(to, customMedia) {
+async function writeCustomMediaToJsonFile(to, customMedia) {
 	const jsonContent = JSON.stringify({
 		'custom-media': customMedia
 	}, null, '  ');
@@ -27,10 +27,10 @@ async function exportCustomMediaToJsonFile(to, customMedia) {
 	await writeFile(to, json);
 }
 
-/* Import Custom Media from Common JS file
+/* Write Custom Media from Common JS file
 /* ========================================================================== */
 
-async function exportCustomMediaToCjsFile(to, customMedia) {
+async function writeCustomMediaToCjsFile(to, customMedia) {
 	const jsContents = Object.keys(customMedia).reduce((jsLines, name) => {
 		jsLines.push(`\t\t'${escapeForJS(name)}': '${escapeForJS(customMedia[name])}'`);
 
@@ -41,10 +41,10 @@ async function exportCustomMediaToCjsFile(to, customMedia) {
 	await writeFile(to, js);
 }
 
-/* Import Custom Media from Module JS file
+/* Write Custom Media from Module JS file
 /* ========================================================================== */
 
-async function exportCustomMediaToMjsFile(to, customMedia) {
+async function writeCustomMediaToMjsFile(to, customMedia) {
 	const mjsContents = Object.keys(customMedia).reduce((mjsLines, name) => {
 		mjsLines.push(`\t'${escapeForJS(name)}': '${escapeForJS(customMedia[name])}'`);
 
@@ -55,10 +55,10 @@ async function exportCustomMediaToMjsFile(to, customMedia) {
 	await writeFile(to, mjs);
 }
 
-/* Export Custom Media to Destinations
+/* Write Custom Media to Exports
 /* ========================================================================== */
 
-export default function exportCustomMediaToDestinations(customMedia, destinations) {
+export default function writeCustomMediaToExports(customMedia, destinations) {
 	return Promise.all(destinations.map(async destination => {
 		if (destination instanceof Function) {
 			await destination(defaultCustomMediaToJSON(customMedia));
@@ -86,19 +86,19 @@ export default function exportCustomMediaToDestinations(customMedia, destination
 				const customMediaJSON = toJSON(customMedia);
 
 				if (type === 'css') {
-					await exportCustomMediaToCssFile(to, customMediaJSON);
+					await writeCustomMediaToCssFile(to, customMediaJSON);
 				}
 
 				if (type === 'js') {
-					await exportCustomMediaToCjsFile(to, customMediaJSON);
+					await writeCustomMediaToCjsFile(to, customMediaJSON);
 				}
 
 				if (type === 'json') {
-					await exportCustomMediaToJsonFile(to, customMediaJSON);
+					await writeCustomMediaToJsonFile(to, customMediaJSON);
 				}
 
 				if (type === 'mjs') {
-					await exportCustomMediaToMjsFile(to, customMediaJSON);
+					await writeCustomMediaToMjsFile(to, customMediaJSON);
 				}
 			}
 		}
