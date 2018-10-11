@@ -164,7 +164,7 @@ See example exports written to [CSS](test/export-media.css),
 [JS](test/export-media.js), [MJS](test/export-media.mjs), and
 [JSON](test/export-media.json).
 
-[cli-img]: https://img.shields.io/travis/postcss/postcss-custom-media.svg
+[cli-img]: https://img.shields.io/travis/postcss/postcss-custom-media/master.svg
 [cli-url]: https://travis-ci.org/postcss/postcss-custom-media
 [css-img]: https://cssdb.org/badge/custom-media-queries.svg
 [css-url]: https://cssdb.org/#custom-media-queries
