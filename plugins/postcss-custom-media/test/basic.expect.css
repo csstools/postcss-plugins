@@ -47,5 +47,13 @@
 }
 
 @media (--unresolved-mq) {
-	body order: 5;
+	body {
+		order: 5;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 640px) {
+	body {
+		order: 6;
+	}
 }

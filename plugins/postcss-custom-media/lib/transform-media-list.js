@@ -48,7 +48,8 @@ function transformMedia(media, customMedias) {
 				}
 
 				mediaClone.nodes.splice(index, 1, ...replacementMedia.clone().nodes.map(node => {
-					// use spacing from the current usage
+					// use raws and spacing from the current usage
+					node.raws = { ...media.nodes[index].raws };
 					node.spaces = { ...media.nodes[index].spaces };
 
 					return node;

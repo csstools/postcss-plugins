@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### 7.0.6 (October 12, 2018)
+
+- Fixing: Issue combining multiple custom media
+
 ### 7.0.5 (October 5, 2018)
 
 - Fixed: Possible issues resolving paths to imports and exports

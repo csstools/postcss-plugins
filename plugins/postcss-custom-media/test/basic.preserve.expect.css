@@ -102,9 +102,28 @@
 }
 
 @media (--unresolved-mq) {
-	body order: 5;
+	body {
+		order: 5;
+	}
 }
 
 @media (--unresolved-mq) {
-	body order: 5;
+	body {
+		order: 5;
+	}
+}
+
+@custom-media --min (min-width: 320px);
+@custom-media --max (max-width: 640px);
+
+@media (min-width: 320px) and (max-width: 640px) {
+	body {
+		order: 6;
+	}
+}
+
+@media (--min) and (--max) {
+	body {
+		order: 6;
+	}
 }
