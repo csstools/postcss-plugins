@@ -67,3 +67,17 @@
 		order: 6;
 	}
 }
+
+@custom-media --concat (min-width: 320px) and (max-width: 640px);
+
+@media (--concat) {
+	body {
+		order: 7;
+	}
+}
+
+@media (--concat) and (min-aspect-ratio: 16/9) {
+	body {
+		order: 8;
+	}
+}

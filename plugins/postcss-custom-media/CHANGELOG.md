@@ -1,8 +1,12 @@
 # Changes to PostCSS Custom Media
 
+### 7.0.7 (October 19, 2018)
+
+- Fixed: Issue combining custom media media queries with `and`
+
 ### 7.0.6 (October 12, 2018)
 
-- Fixing: Issue combining multiple custom media
+- Fixed: Issue combining multiple custom media
 
 ### 7.0.5 (October 5, 2018)
 

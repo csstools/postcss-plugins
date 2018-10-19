@@ -57,3 +57,15 @@
 		order: 6;
 	}
 }
+
+@media (min-width: 320px) and (max-width: 640px) {
+	body {
+		order: 7;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 640px) and (min-aspect-ratio: 16/9) {
+	body {
+		order: 8;
+	}
+}

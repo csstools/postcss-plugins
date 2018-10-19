@@ -6,6 +6,7 @@ module.exports = {
 		'--circular-mq-a': '(--circular-mq-b)',
 		'--circular-mq-b': '(--circular-mq-a)',
 		'--min': '(min-width: 320px)',
-		'--max': '(max-width: 640px)'
+		'--max': '(max-width: 640px)',
+		'--concat': '(min-width: 320px) and (max-width: 640px)'
 	}
 };

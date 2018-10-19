@@ -5,3 +5,4 @@
 @custom-media --circular-mq-b (--circular-mq-a);
 @custom-media --min (min-width: 320px);
 @custom-media --max (max-width: 640px);
+@custom-media --concat (min-width: 320px) and (max-width: 640px);
