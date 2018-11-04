@@ -1,11 +1,12 @@
 node_modules
-/client.*
+/browser.*
+/index.*
 /postcss.*
 package-lock.json
 *.log*
 .*
 !.editorconfig
 !.gitignore
-!.rollup.*.js
+!.rollup.js
 !.tape.js
 !.travis.yml

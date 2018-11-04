@@ -11,7 +11,7 @@ instructions for:
 Add [Prefers Color Scheme] to your project:
 
 ```bash
-npm install css-prefers-color-scheme --save-dev
+npm install css-prefers-color-scheme
 ```
 
 Use [Prefers Color Scheme] to process your CSS:
