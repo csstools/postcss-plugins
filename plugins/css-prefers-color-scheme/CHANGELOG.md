@@ -1,5 +1,10 @@
 # Changes to Prefers Color Scheme
 
+### 3.0.0 (November 4, 2018)
+
+- Preserve `prefers-color-scheme` queries by default for non-JS environments
+- Remove `prefers-color-scheme` queries on the frontend for JS environments
+
 ### 2.0.0 (November 3, 2018)
 
 - The client library now returns an object with various features, including:

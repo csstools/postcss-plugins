@@ -44,6 +44,13 @@ body {
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --site-bgcolor: #1b1b1b;
+    --site-color: #fff;
+  }
+}
+
 body {
   background-color: var(--site-bgcolor, #f9f9f9);
   color: var(--site-color, #111);
@@ -90,6 +97,11 @@ initPrefersColorScheme()
 [Prefers Color Scheme] works in all major browsers, including Safari 6+ and
 Internet Explorer 9+ without any polyfills.
 [See it for yourself.](https://app.crossbrowsertesting.com/public/i76b092cd2b52b86/screenshots/z25c0ccdfcc9c9b8956f?size=medium&type=windowed)
+
+To maintain compatibility with browsers supporting `prefers-color-scheme`, the
+library will remove `prefers-color-scheme` media queries in favor of the
+cross-browser compatible `color-index` media queries. This ensures a seemless
+experience when JavaScript is unable to run.
 
 ---
 
@@ -172,6 +184,34 @@ instructions for:
 | [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
 | --- | --- | --- | --- | --- |
 
+### Options
+
+#### preserve
+
+The `preserve` option determines whether the original `prefers-color-scheme`
+query will be preserved or removed. By default, it is preserved.
+
+
+```js
+require('css-prefers-color-scheme/postcss')({ preserve: false });
+```
+
+```css
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+  }
+}
+
+/* becomes */
+
+@media (color-index: 48) {
+  body {
+    background-color: black;
+  }
+}
+```
+
 ---
 
 ## How does it work?
@@ -201,7 +241,7 @@ to activate “light mode” specific CSS.
 ```
 
 These valid queries are accessible to `document.styleSheet`, so no css parsing
-is required to use this library, which is how the script is only 482 bytes.
+is required to use this library, which is how the script is only 539 bytes.
 
 ## Why does the fallback work this way?
 

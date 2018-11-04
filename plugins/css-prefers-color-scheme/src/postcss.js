@@ -6,7 +6,7 @@ const colorIndexByStyle = { dark: 48, light: 70, 'no-preference': 22 };
 const prefersInterfaceReplacer = ($0, style) => `(color-index: ${colorIndexByStyle[style.toLowerCase()]})`;
 
 export default postcss.plugin('postcss-prefers-color-scheme', opts => {
-	const preserve = 'preserve' in Object(opts) ? opts.preserve : false;
+	const preserve = 'preserve' in Object(opts) ? opts.preserve : true;
 
 	return root => {
 		root.walkAtRules(mediaRegExp, atRule => {

@@ -5,6 +5,13 @@
 	}
 }
 
+@media (prefers-color-scheme: no-preference) {
+	:root {
+		--site-bgcolor: #f9f9f9;
+		--site-color: #111;
+	}
+}
+
 @media (color-index: 48) {
 	:root {
 		--site-bgcolor: #1b1b1b;
@@ -12,7 +19,21 @@
 	}
 }
 
+@media (prefers-color-scheme: dark) {
+	:root {
+		--site-bgcolor: #1b1b1b;
+		--site-color: #fff;
+	}
+}
+
 @media (color-index: 70) {
+	:root {
+		--site-bgcolor: #fff;
+		--site-color: #222;
+	}
+}
+
+@media (prefers-color-scheme: light) {
 	:root {
 		--site-bgcolor: #fff;
 		--site-color: #222;

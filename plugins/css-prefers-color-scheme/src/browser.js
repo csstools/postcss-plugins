@@ -1,4 +1,5 @@
-const colorIndexRegExp = /((?:not )?all and )?(\(color-index:\s*(22|48|70)\))/i;
+const colorIndexRegExp = /((?:not )?all and )?(\(color-index: *(22|48|70)\))/i;
+const prefersColorSchemeRegExp = /prefers-color-scheme:/i;
 
 const prefersColorSchemeInit = initialColorScheme => {
 	const mediaQueryString = '(prefers-color-scheme: dark)';
@@ -21,20 +22,28 @@ const prefersColorSchemeInit = initialColorScheme => {
 			}
 		}
 
-		[].forEach.call(document.styleSheets, styleSheet => {
-			[].forEach.call(styleSheet.cssRules, cssRule => {
-				const mediaMatch = (Object(cssRule.media).mediaText || '').match(colorIndexRegExp);
+		[].forEach.call(document.styleSheets || [], styleSheet => {
+			[].forEach.call(styleSheet.cssRules || [], cssRule => {
+				const colorSchemeMatch = prefersColorSchemeRegExp.test(Object(cssRule.media).mediaText);
 
-				if (mediaMatch) {
-					cssRule.media.mediaText = (
-						(/^dark$/i.test(colorScheme)
-							? mediaMatch[3] === '48'
-						: /^light$/i.test(colorScheme)
-							? mediaMatch[3] === '70'
-						: mediaMatch[3] === '22')
-							? 'not all and '
-						: ''
-					) + cssRule.media.mediaText.replace(colorIndexRegExp, '$2');
+				if (colorSchemeMatch) {
+					const index = [].indexOf.call(cssRule.parentStyleSheet.cssRules, cssRule);
+
+					cssRule.parentStyleSheet.deleteRule(index);
+				} else {
+					const colorIndexMatch = (Object(cssRule.media).mediaText || '').match(colorIndexRegExp);
+
+					if (colorIndexMatch) {
+						cssRule.media.mediaText = (
+							(/^dark$/i.test(colorScheme)
+								? colorIndexMatch[3] === '48'
+							: /^light$/i.test(colorScheme)
+								? colorIndexMatch[3] === '70'
+							: colorIndexMatch[3] === '22')
+								? 'not all and '
+							: ''
+						) + cssRule.media.mediaText.replace(colorIndexRegExp, '$2');
+					}
 				}
 			});
 		});
