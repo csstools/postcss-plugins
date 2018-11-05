@@ -34,3 +34,7 @@
 .text--calc {
 	width: calc((100% - 1px) + 10px);
 }
+
+.test--linear-gradient {
+	background-image: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(255, 0, 0) 100%);
+}

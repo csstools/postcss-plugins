@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 8.0.9 (November 5, 2018)
+
+- Fixed: Issue with duplicate custom property usage within a declaration
+
 ### 8.0.8 (October 2, 2018)
 
 - Fixed: Issue with nested fallbacks

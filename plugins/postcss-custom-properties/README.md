@@ -179,7 +179,7 @@ See example exports written to [CSS](test/export-properties.css),
 [JS](test/export-properties.js), [MJS](test/export-properties.mjs), and
 [JSON](test/export-properties.json).
 
-[cli-img]: https://img.shields.io/travis/postcss/postcss-custom-properties.svg
+[cli-img]: https://img.shields.io/travis/postcss/postcss-custom-properties/master.svg
 [cli-url]: https://travis-ci.org/postcss/postcss-custom-properties
 [css-img]: https://cssdb.org/badge/custom-properties.svg
 [css-url]: https://cssdb.org/#custom-properties
