@@ -1,6 +1,6 @@
 {
   "name": "css-prefers-color-scheme",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Use light and dark color schemes in all browsers",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -10,12 +10,13 @@
   "main": "index.js",
   "module": "index.mjs",
   "bin": {
-    "css-prefers-color-scheme": "src/postcss-cli.js"
+    "css-prefers-color-scheme": "cli.js"
   },
   "files": [
     "browser.js",
     "browser.js.map",
     "browser.min.js",
+    "cli.js",
     "index.mjs",
     "index.mjs.map",
     "index.js",

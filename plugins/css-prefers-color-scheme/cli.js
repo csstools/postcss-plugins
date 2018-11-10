@@ -1,7 +1,19 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const prefersColorScheme = require('../postcss');
+const prefersColorScheme = require('./postcss');
+
+if (process.argv.length < 3) {
+	console.log([
+		'Prefers Color Scheme\n',
+		'  Transforms CSS with @media (prefers-color-scheme) {}\n',
+		'Usage:\n',
+		'  css-prefers-color-scheme source.css transformed.css',
+		'  css-prefers-color-scheme --in=source.css --out=transformed.css --opts={}',
+		'  echo "@media (prefers-color-scheme: dark) {}" | css-prefers-color-scheme\n'
+	].join('\n'));
+	process.exit(0);
+}
 
 // get process and plugin options from the command line
 const fileRegExp = /^[\w\/.]+$/;
