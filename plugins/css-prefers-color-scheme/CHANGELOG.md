@@ -1,5 +1,10 @@
 # Changes to Prefers Color Scheme
 
+### 3.1.0 (November 10, 2018)
+
+- Include CLI tool for transforming CSS without any installation
+- Update documentation
+
 ### 3.0.0 (November 4, 2018)
 
 - Preserve `prefers-color-scheme` queries by default for non-JS environments

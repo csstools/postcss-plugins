@@ -1,6 +1,6 @@
 {
   "name": "css-prefers-color-scheme",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Use light and dark color schemes in all browsers",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -9,6 +9,9 @@
   "bugs": "https://github.com/csstools/css-prefers-color-scheme/issues",
   "main": "index.js",
   "module": "index.mjs",
+  "bin": {
+    "css-prefers-color-scheme": "src/postcss-cli.js"
+  },
   "files": [
     "browser.js",
     "browser.js.map",
@@ -40,15 +43,16 @@
     "postcss": "^7.0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
-    "eslint": "^5.8.0",
+    "eslint": "^5.9.0",
     "eslint-config-dev": "^2.0.0",
+    "get-stdin": "^6.0.0",
     "postcss-tape": "^2.2.0",
     "pre-commit": "^1.2.2",
-    "rollup": "^0.66.6",
+    "rollup": "^0.67.0",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-terser": "^3.0.0",
     "uglify-js": "^3.4.9"
