@@ -1,5 +1,9 @@
 # Changes to CSS Blank Pseudo
 
-### 1.0.0 (November 17, 2018)
+### 0.1.1 (November 17, 2018)
+
+- Update documentation
+
+### 0.1.0 (November 17, 2018)
 
 - Initial version
