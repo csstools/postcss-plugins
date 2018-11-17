@@ -18,15 +18,22 @@ export default function cssBlankPseudo(document, opts) {
 	observeValueOfHTMLElement(window.HTMLInputElement);
 	observeValueOfHTMLElement(window.HTMLSelectElement);
 	observeValueOfHTMLElement(window.HTMLTextAreaElement);
+	observeSelectedOfHTMLElement(window.HTMLOptionElement);
 
 	// form control elements selector
-	const selector = 'input,select,textarea';
+	const selector = 'INPUT,SELECT,TEXTAREA';
+	const selectorRegExp = /^(INPUT|SELECT|TEXTAREA)$/;
 
 	// conditionally update all form control elements
 	Array.prototype.forEach.call(
 		document.querySelectorAll(selector),
 		node => {
-			node.addEventListener('input', configureCssBlankAttribute);
+			if (node.nodeName === 'SELECT') {
+				node.addEventListener('change', configureCssBlankAttribute);
+			} else {
+				node.addEventListener('input', configureCssBlankAttribute);
+			}
+
 			configureCssBlankAttribute.call(node);
 		}
 	);
@@ -34,32 +41,39 @@ export default function cssBlankPseudo(document, opts) {
 	// conditionally observe added or unobserve removed form control elements
 	new MutationObserver(mutationsList => {
 		mutationsList.forEach(mutation => {
-			if (mutation.addedNodes) {
-				mutation.addedNodes.forEach(
-					node => {
-						if (node.nodeType === 1 && node.matches(selector)) {
+			Array.prototype.forEach.call(
+				mutation.addedNodes || [],
+				node => {
+					if (node.nodeType === 1 && selectorRegExp.test(node.nodeName)) {
+						if (node.nodeName === 'SELECT') {
+							node.addEventListener('change', configureCssBlankAttribute);
+						} else {
 							node.addEventListener('input', configureCssBlankAttribute);
-							configureCssBlankAttribute.call(node);
 						}
-					}
-				);
-			}
 
-			if (mutation.removedNodes) {
-				mutation.removedNodes.forEach(
-					node => {
-						if (node.nodeType === 1 && node.matches(selector)) {
+						configureCssBlankAttribute.call(node);
+					}
+				}
+			);
+
+			Array.prototype.forEach.call(
+				mutation.removedNodes || [],
+				node => {
+					if (node.nodeType === 1 && selectorRegExp.test(node.nodeName)) {
+						if (node.nodeName === 'SELECT') {
+							node.removeEventListener('change', configureCssBlankAttribute);
+						} else {
 							node.removeEventListener('input', configureCssBlankAttribute);
 						}
 					}
-				);
-			}
+				}
+			);
 		});
 	}).observe(document, { childList: true, subtree: true });
 
 	// update a form control element’s css-blank attribute
 	function configureCssBlankAttribute() {
-		if (this.value) {
+		if (this.value || this.nodeName === 'SELECT' && this.options[this.selectedIndex].value) {
 			if (attr) {
 				this.removeAttribute(attr);
 			}
@@ -91,5 +105,21 @@ export default function cssBlankPseudo(document, opts) {
 		}
 
 		Object.defineProperty(HTMLElement.prototype, 'value', descriptor);
+	}
+
+	// observe changes to the "selected" property on an HTML Element
+	function observeSelectedOfHTMLElement(HTMLElement) {
+		const descriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'selected');
+		const nativeSet = descriptor.set;
+
+		descriptor.set = function set(value) { // eslint-disable-line no-unused-vars
+			nativeSet.apply(this, arguments);
+
+			const event = document.createEvent('Event');
+			event.initEvent('change', true, true);
+			this.dispatchEvent(event);
+		}
+
+		Object.defineProperty(HTMLElement.prototype, 'selected', descriptor);
 	}
 }

@@ -1,5 +1,9 @@
 # Changes to CSS Blank Pseudo
 
+### 0.1.2 (November 17, 2018)
+
+- Provide a version specifically for Internet Explorer 11
+
 ### 0.1.1 (November 17, 2018)
 
 - Update documentation

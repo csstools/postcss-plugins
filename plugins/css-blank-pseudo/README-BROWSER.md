@@ -33,6 +33,14 @@ const cssBlankPseudo = require('css-blank-pseudo');
 cssBlankPseudo(document);
 ```
 
+To support Internet Explorer 11, include the *browser-legacy* script:
+
+```js
+const cssBlankPseudo = require('css-blank-pseudo/legacy');
+
+cssBlankPseudo(document);
+```
+
 ## Options
 
 [CSS Blank Pseudo] accepts a secondary paramater to configure the attribute or

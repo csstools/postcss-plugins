@@ -33,8 +33,18 @@ Next, use your transformed CSS with this script:
 <script>cssBlankPseudo(document)</script>
 ```
 
-That’s it. The script is 483 bytes and works in all browsers, as far back as
-Internet Explorer 11.
+That’s it. The script is 509 bytes and works in all browsers.
+
+---
+
+If you support Internet Explorer 11, use the **browser legacy** script, which
+is 671 bytes:
+
+```html
+<link rel="stylesheet" href="TRANSFORMED.css">
+<script src="https://unpkg.com/css-blank-pseudo/browser-legacy"></script>
+<script>cssBlankPseudo(document)</script>
+```
 
 ## How it works
 

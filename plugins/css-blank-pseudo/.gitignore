@@ -1,8 +1,11 @@
 node_modules
 /browser.js*
+/browser-legacy.js*
 /cli.js*
 /index.js*
 /index.mjs*
+/legacy.js*
+/legacy.mjs*
 /postcss.js*
 /postcss.mjs*
 package-lock.json

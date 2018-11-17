@@ -2,19 +2,26 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 
 const isBrowser = String(process.env.NODE_ENV).includes('browser');
+const isLegacy = String(process.env.NODE_ENV).includes('legacy');
 const isCLI = String(process.env.NODE_ENV).includes('cli');
 const isPostCSS = String(process.env.NODE_ENV).includes('postcss');
 const targets = isCLI || isPostCSS || !isBrowser ? { node: 6 } : 'last 2 versions, not dead';
 
-const input = `src/${isCLI ? 'cli' : isPostCSS ? 'postcss' : 'browser'}.js`;
+const input = `src/${isCLI ? 'cli' : isPostCSS ? 'postcss' : isLegacy ? 'browser-legacy' : 'browser'}.js`;
 const output = isCLI
 	? { file: 'cli.js', format: 'cjs' }
+: isBrowser && isLegacy
+	? { file: 'browser-legacy.js', format: 'cjs' }
 : isBrowser
 	? { file: 'browser.js', format: 'cjs' }
 : isPostCSS
 	? [
 	{ file: 'postcss.js', format: 'cjs', sourcemap: true },
 	{ file: 'postcss.mjs', format: 'esm', sourcemap: true }
+] : isLegacy
+	? [
+	{ file: 'legacy.js', format: 'cjs', sourcemap: true },
+	{ file: 'legacy.mjs', format: 'esm', sourcemap: true }
 ] : [
 	{ file: 'index.js', format: 'cjs', sourcemap: true },
 	{ file: 'index.mjs', format: 'esm', sourcemap: true }
