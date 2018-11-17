@@ -1,0 +1,48 @@
+.css-blank {
+	order: 1;
+}
+
+:blank {
+	order: 1;
+}
+
+.css-blank,
+.css-blank test,
+test .css-blank,
+test test.css-blank,
+test .css-blank test,
+test test.css-blank test,
+test .css-blank .css-blank test,
+test :matches(.css-blank) test,
+test :matches(.css-blank test) test,
+test :matches(test .css-blank) test,
+test :matches(test test.css-blank) test,
+test :matches(test .css-blank test) test,
+test :matches(test test.css-blank test) test,
+test :matches(test .css-blank .css-blank test) test {
+	order: 2;
+}
+
+:blank,
+:blank test,
+test :blank,
+test test:blank,
+test :blank test,
+test test:blank test,
+test :blank :blank test,
+test :matches(:blank) test,
+test :matches(:blank test) test,
+test :matches(test :blank) test,
+test :matches(test test:blank) test,
+test :matches(test :blank test) test,
+test :matches(test test:blank test) test,
+test :matches(test :blank :blank test) test {
+	order: 2;
+}
+
+:ignore-blank,
+:blank-ignore,
+:ignoreblank,
+:blankignore {
+	order: 3;
+}

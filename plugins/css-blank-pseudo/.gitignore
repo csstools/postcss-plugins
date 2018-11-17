@@ -1,0 +1,17 @@
+node_modules
+/browser.js*
+/cli.js*
+/index.js*
+/index.mjs*
+/postcss.js*
+/postcss.mjs*
+package-lock.json
+*.log*
+*.result.css
+.*
+!.appveyor.yml
+!.editorconfig
+!.gitignore
+!.rollup.js
+!.tape.js
+!.travis.yml
