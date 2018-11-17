@@ -8,7 +8,7 @@ if (process.argv.length < 3) {
 		'Usage:\n',
 		'  css-blank-pseudo source.css transformed.css',
 		'  css-blank-pseudo --in=source.css --out=transformed.css --opts={}',
-		'  echo "@media (prefers-color-scheme: dark) {}" | css-\n'
+		'  echo "@media (prefers-color-scheme: dark) {}" | css-blank-pseudo\n'
 	].join('\n'));
 	process.exit(0);
 }
@@ -17,7 +17,7 @@ if (process.argv.length < 3) {
 const fileRegExp = /^[\w\/.]+$/;
 const argRegExp = /^--(\w+)=("|')?(.+)\2$/;
 const relaxedJsonPropRegExp = /(['"])?([a-z0-9A-Z_]+)(['"])?:/g;
-const relaxedJsonValueRegExp = /("[a-z0-9A-Z_]+":\s*)'([^']*)'/g;
+const relaxedJsonValueRegExp = /("[a-z0-9A-Z_]+":\s*)'?([A-z0-9]+)'?([,}])/g;
 const argo = process.argv.slice(2).reduce(
 	(object, arg) => {
 		const argMatch = arg.match(argRegExp);
@@ -44,7 +44,7 @@ const argo = process.argv.slice(2).reduce(
 	const pluginOpts = JSON.parse(
 		argo.opts
 		.replace(relaxedJsonPropRegExp, '"$2": ')
-		.replace(relaxedJsonValueRegExp, '$1"$2"')
+		.replace(relaxedJsonValueRegExp, '$1"$2"$3')
 	);
 	const processOptions = Object.assign({ from: argo.from, to: argo.to || argo.from }, argo.map ? { map: JSON.parse(argo.map) } : {});
 

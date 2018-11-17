@@ -1,6 +1,6 @@
 {
   "name": "css-blank-pseudo",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Style form elements when they are empty",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -35,7 +35,7 @@
     "build:cli": "cross-env NODE_ENV=cli rollup -c .rollup.js --silent",
     "build:postcss": "cross-env NODE_ENV=postcss rollup -c .rollup.js --silent",
     "build:node": "rollup -c .rollup.js --silent && cross-env NODE_ENV=legacy rollup -c .rollup.js --silent",
-    "prepublishOnly": "npm build && npm test",
+    "prepublishOnly": "npm run build && npm test",
     "pretest": "npm run build:postcss",
     "pretest:postcss": "npm run build:postcss",
     "test": "npm run test:js && npm run test:postcss",

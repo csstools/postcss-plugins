@@ -71,14 +71,8 @@ Next, the [JavaScript library](README-BROWSER.md) adds a `blank` attribute to
 elements otherwise matching `:blank` natively.
 
 ```html
-<div class="field">
-  <label for="a">Field</label>
-  <input id="a" value="" blank>
-</div>
-<div class="field">
-  <label for="b">Field</label>
-  <input id="b" value="This element has a value">
-</div>
+<input value="" blank>
+<input value="This element has a value">
 ```
 
 [cli-img]: https://img.shields.io/travis/csstools/css-blank-pseudo/master.svg
