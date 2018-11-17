@@ -58,11 +58,11 @@ input:blank {
 
 /* becomes */
 
-.field[blank] label {
+input[blank] {
   background-color: yellow;
 }
 
-.field:blank label {
+input:blank {
   background-color: yellow;
 }
 ```
