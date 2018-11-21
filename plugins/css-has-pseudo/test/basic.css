@@ -1,0 +1,28 @@
+:has(:focus) {
+	order: 1;
+}
+
+a:has(> img) {
+	order: 2;
+}
+
+h1:has(+ p) {
+	order: 3;
+}
+
+section:not(:has(h1, h2, h3, h4, h5, h6)) {
+	order: 4;
+}
+
+body:has(:focus) {
+  order: 5;
+}
+
+body:not(:has(:focus)) {
+  order: 5;
+}
+
+:has-ignore(:focus),
+:ignore-has(:focus) {
+	order: 6;
+}

@@ -1,0 +1,57 @@
+[\:has\(\:focus\)] {
+	order: 1;
+}
+
+:has(:focus) {
+	order: 1;
+}
+
+a[\:has\(\%3E\%20img\)] {
+	order: 2;
+}
+
+a:has(> img) {
+	order: 2;
+}
+
+h1[\:has\(\%2B\%20p\)] {
+	order: 3;
+}
+
+h1:has(+ p) {
+	order: 3;
+}
+
+section[\:not-has\(h1\,\%20h2\,\%20h3\,\%20h4\,\%20h5\,\%20h6\)] {
+	order: 4;
+}
+
+section:not(:has(h1, h2, h3, h4, h5, h6)) {
+	order: 4;
+}
+
+body[\:has\(\:focus\)] {
+  order: 5;
+}
+
+body:has(:focus) {
+  order: 5;
+}
+
+body[\:not-has\(\:focus\)] {
+  order: 5;
+}
+
+body:not(:has(:focus)) {
+  order: 5;
+}
+
+:has-ignore(:focus),
+:ignore-has(:focus) {
+	order: 6;
+}
+
+:has-ignore(:focus),
+:ignore-has(:focus) {
+	order: 6;
+}
