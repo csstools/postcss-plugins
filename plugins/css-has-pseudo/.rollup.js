@@ -33,7 +33,7 @@ const plugins = [
 		terser({
 			mangle: {
 				properties: {
-					reserved: ['addEventListener', 'addedNodes', 'attributes', 'childList', 'children', 'cloneNode', 'contains', 'createElement', 'cssRules', 'documentElement', 'firstChild', 'innerHTML', 'nodeType', 'observe', 'ownerNode', 'parentNode', 'parentStyleSheet', 'querySelector', 'querySelectorAll', 'removeAttribute', 'selectorText', 'setNamedItem', 'sheet', 'style', 'styleSheets', 'subtree', 'zoom']
+					reserved: ['addEventListener', 'addedNodes', 'attributes', 'childList', 'children', 'cloneNode', 'contains', 'createElement', 'cssRules', 'documentElement', 'innerHTML', 'nodeType', 'observe', 'ownerNode', 'parentNode', 'parentStyleSheet', 'querySelector', 'querySelectorAll', 'removeAttribute', 'selectorText', 'setAttributeNode', 'setNamedItem', 'sheet', 'style', 'styleSheets', 'subtree', 'zoom']
 				}
 			}
 		})

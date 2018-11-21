@@ -1,6 +1,6 @@
 {
   "name": "css-has-pseudo",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Style elements relative to other elements in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
