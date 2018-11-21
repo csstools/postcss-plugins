@@ -30,7 +30,13 @@ const plugins = [
 ].concat(isBrowser
 	? [
 		trimContentForBrowser(),
-		terser()
+		terser({
+			mangle: {
+				properties: {
+					reserved: ['addEventListener', 'attributes', 'childList', 'children', 'cloneNode', 'contains', 'createElement', 'cssRules', 'documentElement', 'firstChild', 'innerHTML', 'nodeType', 'observe', 'ownerNode', 'parentNode', 'parentStyleSheet', 'querySelector', 'querySelectorAll', 'removeAttribute', 'selectorText', 'setNamedItem', 'sheet', 'style', 'styleSheets', 'subtree', 'zoom']
+				}
+			}
+		})
 	]
 : isCLI
 	? [
