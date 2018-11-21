@@ -33,7 +33,7 @@ const plugins = [
 		terser({
 			mangle: {
 				properties: {
-					reserved: ['addEventListener', 'attributes', 'childList', 'children', 'cloneNode', 'contains', 'createElement', 'cssRules', 'documentElement', 'firstChild', 'innerHTML', 'nodeType', 'observe', 'ownerNode', 'parentNode', 'parentStyleSheet', 'querySelector', 'querySelectorAll', 'removeAttribute', 'selectorText', 'setNamedItem', 'sheet', 'style', 'styleSheets', 'subtree', 'zoom']
+					reserved: ['addEventListener', 'addedNodes', 'attributes', 'childList', 'children', 'cloneNode', 'contains', 'createElement', 'cssRules', 'documentElement', 'firstChild', 'innerHTML', 'nodeType', 'observe', 'ownerNode', 'parentNode', 'parentStyleSheet', 'querySelector', 'querySelectorAll', 'removeAttribute', 'selectorText', 'setNamedItem', 'sheet', 'style', 'styleSheets', 'subtree', 'zoom']
 				}
 			}
 		})
@@ -64,7 +64,7 @@ function trimContentForBrowser() {
 		renderChunk(code) {
 			const updatedCode = code
 				.replace(/'use strict';\n*/, '')
-				.replace(/\n*module\.exports = cssHas;/, '');
+				.replace(/\n*module\.exports = cssHasPseudo;/, '');
 
 			return updatedCode;
 		}

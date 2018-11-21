@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### 0.4.0 (November 21, 2018)
+
+- Fixed an issue with the browser script not picking up added nodes
+
 ### 0.3.0 (November 21, 2018)
 
 - Fixed the misnamed function name for the browser-ready script
