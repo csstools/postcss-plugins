@@ -2,8 +2,6 @@
 
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
-[![Licensing][lic-img]][lic-url]
-[![Changelog][log-img]][log-url]
 [![Gitter Chat][git-img]][git-url]
 
 [PostCSS Tape] lets you quickly test [PostCSS] plugins.
@@ -33,10 +31,10 @@
    };
    ```
 
-That’s it! Empty tests will be auto-generated. Now you can use the `tape` task:
+That’s it! Empty tests will be auto-generated.
 
 ```sh
-npm run tape
+npm test
 ```
 
 ## Options
@@ -244,16 +242,12 @@ A plugin or array of plugins that will specifying alternative plugin
 }
 ```
 
-[npm-url]: https://www.npmjs.com/package/postcss-tape
 [npm-img]: https://img.shields.io/npm/v/postcss-tape.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-tape
+[npm-url]: https://www.npmjs.com/package/postcss-tape
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-tape.svg
-[lic-url]: LICENSE.md
-[lic-img]: https://img.shields.io/npm/l/postcss-tape.svg
-[log-url]: CHANGELOG.md
-[log-img]: https://img.shields.io/badge/changelog-md-blue.svg
-[git-url]: https://gitter.im/postcss/postcss
+[cli-url]: https://travis-ci.org/jonathantneal/postcss-tape
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
+[git-url]: https://gitter.im/postcss/postcss
 
-[PostCSS Tape]: https://github.com/jonathantneal/postcss-tape
 [PostCSS]: https://github.com/postcss/postcss
+[PostCSS Tape]: https://github.com/jonathantneal/postcss-tape

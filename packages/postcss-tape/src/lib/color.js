@@ -1,6 +1,3 @@
-'use strict';
-
-// colors
 const colors = {
 	reset: '\x1b[0m',
 	bold: '\x1b[1m',
@@ -27,14 +24,6 @@ const colors = {
 	bgWhite: '\x1b[47m'
 };
 
-// colors as wrapping methods
-Object.assign.apply(
-	null,
-	[exports].concat(
-		Object.keys(colors).map(
-			(color) => ({
-				[color]: (string) => colors[color] + string.replace(colors.reset, colors.reset + colors[color]) + colors.reset
-			})
-		)
-	)
-);
+export default function color(name, string) {
+	return colors[name] + string.replace(colors.reset, colors.reset + colors[name]) + colors.reset;
+}

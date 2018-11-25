@@ -5,4 +5,5 @@ node_modules
 !.travis.yml
 *.log*
 *.result.css
-basic.generate.expect.css
+/index.js
+/index.mjs
