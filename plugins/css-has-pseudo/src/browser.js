@@ -97,25 +97,29 @@ export default function cssHasPseudo(document) {
 	// walk a stylesheet to collect observed css rules
 	function walkStyleSheet(styleSheet) {
 		// walk a css rule to collect observed css rules
-		Array.prototype.forEach.call(styleSheet.cssRules, rule => {
-			// decode the selector text in all browsers to:
-			// [1] = :scope, [2] = :not(:has), [3] = :has relative, [4] = :scope relative
-			const selectors = decodeURIComponent(rule.selectorText.replace(/\\(.)/g, '$1')).match(/^(.*?)\[:(not-)?has\((.+?)\)\](.*?)$/);
+		Array.prototype.forEach.call(styleSheet.cssRules || [], rule => {
+			if (rule.selectorText) {
+				// decode the selector text in all browsers to:
+				// [1] = :scope, [2] = :not(:has), [3] = :has relative, [4] = :scope relative
+				const selectors = decodeURIComponent(rule.selectorText.replace(/\\(.)/g, '$1')).match(/^(.*?)\[:(not-)?has\((.+?)\)\](.*?)$/);
 
-			if (selectors) {
-				const attributeName = ':' + (selectors[2] ? 'not-' : '') + 'has(' +
-					// encode a :has() pseudo selector as an attribute name
-					selectors[3].replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ',') +
-				')';
+				if (selectors) {
+					const attributeName = ':' + (selectors[2] ? 'not-' : '') + 'has(' +
+						// encode a :has() pseudo selector as an attribute name
+						selectors[3].replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ',') +
+					')';
 
-				observedItems.push({
-					rule,
-					scopeSelector: selectors[1],
-					isNot: selectors[2],
-					relativeSelectors: selectors[3].split(/\s*,\s*/),
-					attributeName,
-					nodes: []
-				});
+					observedItems.push({
+						rule,
+						scopeSelector: selectors[1],
+						isNot: selectors[2],
+						relativeSelectors: selectors[3].split(/\s*,\s*/),
+						attributeName,
+						nodes: []
+					});
+				}
+			} else {
+				walkStyleSheet(rule);
 			}
 		});
 	}

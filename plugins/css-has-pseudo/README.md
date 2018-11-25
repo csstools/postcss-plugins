@@ -41,7 +41,7 @@ Next, use your transformed CSS with this script:
 <script>cssHasPseudo(document)</script>
 ```
 
-That’s it. The script is 757 bytes and works in all browsers, including
+That’s it. The script is 765 bytes and works in all browsers, including
 Internet Explorer 11. With a [Mutation Observer polyfill], the script will work
 down to Internet Explorer 9.
 

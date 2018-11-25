@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### 0.6.0 (November 25, 2018)
+
+- Fixed an issue where nested rules were not supported
+
 ### 0.5.0 (November 21, 2018)
 
 - Further optimize script; from 775 bytes to 757 bytes
