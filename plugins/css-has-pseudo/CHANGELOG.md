@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### 0.7.0 (November 25, 2018)
+
+- Replaced `setImmediate` with `requestAnimationFrame` for future compatibility
+
 ### 0.6.0 (November 25, 2018)
 
 - Fixed an issue where nested rules were not supported

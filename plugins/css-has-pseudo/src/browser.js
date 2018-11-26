@@ -27,59 +27,61 @@ export default function cssHasPseudo(document) {
 	mutationObserver.observe(document, { childList: true, subtree: true });
 
 	// observe DOM events that affect pseudo-selectors
-	document.addEventListener('focus', () => setImmediate(transformObservedItems), true);
-	document.addEventListener('blur', () => setImmediate(transformObservedItems), true);
-	document.addEventListener('input', () => setImmediate(transformObservedItems));
+	document.addEventListener('focus', transformObservedItems, true);
+	document.addEventListener('blur', transformObservedItems, true);
+	document.addEventListener('input', transformObservedItems);
 
 	// transform observed css rules
 	function transformObservedItems() {
-		observedItems.forEach(
-			item => {
-				const nodes = [];
+		requestAnimationFrame(() => {
+			observedItems.forEach(
+				item => {
+					const nodes = [];
 
-				Array.prototype.forEach.call(
-					document.querySelectorAll(item.scopeSelector),
-					element => {
-						const nthChild = Array.prototype.indexOf.call(element.parentNode.children, element) + 1;
-						const relativeSelectors = item.relativeSelectors.map(
-							relativeSelector => item.scopeSelector + ':nth-child(' + nthChild + ') ' + relativeSelector
-						).join();
+					Array.prototype.forEach.call(
+						document.querySelectorAll(item.scopeSelector),
+						element => {
+							const nthChild = Array.prototype.indexOf.call(element.parentNode.children, element) + 1;
+							const relativeSelectors = item.relativeSelectors.map(
+								relativeSelector => item.scopeSelector + ':nth-child(' + nthChild + ') ' + relativeSelector
+							).join();
 
-						// find any relative :has element from the :scope element
-						const relativeElement = element.parentNode.querySelector(relativeSelectors);
+							// find any relative :has element from the :scope element
+							const relativeElement = element.parentNode.querySelector(relativeSelectors);
 
-						const shouldElementMatch = item.isNot ? !relativeElement : relativeElement;
+							const shouldElementMatch = item.isNot ? !relativeElement : relativeElement;
 
-						if (shouldElementMatch) {
-							// memorize the node
-							nodes.push(element);
+							if (shouldElementMatch) {
+								// memorize the node
+								nodes.push(element);
 
-							// set an attribute with an irregular attribute name
-							// document.createAttribute() doesn't support special characters
-							attributeElement.innerHTML = '<x ' + item.attributeName + '>';
+								// set an attribute with an irregular attribute name
+								// document.createAttribute() doesn't support special characters
+								attributeElement.innerHTML = '<x ' + item.attributeName + '>';
 
-							element.setAttributeNode(attributeElement.children[0].attributes[0].cloneNode());
+								element.setAttributeNode(attributeElement.children[0].attributes[0].cloneNode());
+
+								// trigger a style refresh in IE and Edge
+								document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
+							}
+						}
+					);
+
+					// remove the encoded attribute from all nodes that no longer match them
+					item.nodes.forEach(node => {
+						if (nodes.indexOf(node) === -1) {
+							node.removeAttribute(item.attributeName);
 
 							// trigger a style refresh in IE and Edge
 							document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
 						}
-					}
-				);
+					});
 
-				// remove the encoded attribute from all nodes that no longer match them
-				item.nodes.forEach(node => {
-					if (nodes.indexOf(node) === -1) {
-						node.removeAttribute(item.attributeName);
-
-						// trigger a style refresh in IE and Edge
-						document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
-					}
-				});
-
-				// update the
-				item.nodes = nodes;
-			}
-		);
+					// update the
+					item.nodes = nodes;
+				}
+			);
+		});
 	}
 
 	// remove any observed cssrules that no longer apply
