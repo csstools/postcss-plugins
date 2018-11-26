@@ -108,7 +108,7 @@ export default function cssHasPseudo(document) {
 				if (selectors) {
 					const attributeName = ':' + (selectors[2] ? 'not-' : '') + 'has(' +
 						// encode a :has() pseudo selector as an attribute name
-						selectors[3].replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ',') +
+						encodeURIComponent(selectors[3]).replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ',') +
 					')';
 
 					observedItems.push({

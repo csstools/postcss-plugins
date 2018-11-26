@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### 0.8.0 (November 26, 2018)
+
+- Fixed an issue where attribute names were not being properly encoded
+
 ### 0.7.0 (November 25, 2018)
 
 - Replaced `setImmediate` with `requestAnimationFrame` for future compatibility
