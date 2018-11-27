@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### 0.9.0 (November 26, 2018)
+
+- Improved CLI usage
+
 ### 0.8.0 (November 26, 2018)
 
 - Fixed an issue where attribute names were not being properly encoded

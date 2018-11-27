@@ -1,18 +1,6 @@
 import fs from 'fs';
 import plugin from './postcss';
 
-if (process.argv.length < 3) {
-	console.log([
-		'CSS Has Pseudo\n',
-		'  Transforms CSS with :has {}\n',
-		'Usage:\n',
-		'  css-has-pseudo source.css transformed.css',
-		'  css-has-pseudo --in=source.css --out=transformed.css --opts={}',
-		'  echo "body:has(:focus) {}" | css-has-pseudo\n'
-	].join('\n'));
-	process.exit(0);
-}
-
 // get process and plugin options from the command line
 const fileRegExp = /^[\w\/.]+$/;
 const argRegExp = /^--(\w+)=("|')?(.+)\2$/;
@@ -41,6 +29,19 @@ const argo = process.argv.slice(2).reduce(
 // get css from command line arguments or stdin
 (argo.from === '<stdin>' ? getStdin() : readFile(argo.from))
 .then(css => {
+	if (argo.from === '<stdin>' && !css) {
+		console.log([
+			'CSS Has Pseudo\n',
+			'  Transforms CSS with :has {}\n',
+			'Usage:\n',
+			'  css-has-pseudo source.css transformed.css',
+			'  css-has-pseudo --from=source.css --to=transformed.css --opts={}',
+			'  echo "body:has(:focus) {}" | css-has-pseudo\n'
+		].join('\n'));
+
+		process.exit(0);
+	}
+
 	const pluginOpts = JSON.parse(
 		argo.opts
 		.replace(relaxedJsonPropRegExp, '"$2": ')
@@ -57,14 +58,26 @@ const argo = process.argv.slice(2).reduce(
 			() => `CSS was written to "${argo.to}"`
 		)
 	}
-}).then(
+}).catch(
+	error => {
+		if (Object(error).name === 'CssSyntaxError') {
+			throw new Error(`PostCSS had trouble reading the file (${error.reason} on line ${error.line}, column ${error.column}).`);
+		}
+
+		if (Object(error).errno === -2) {
+			throw new Error(`Sorry, "${error.path}" could not be read.`);
+		}
+
+		throw error;
+	}
+).then(
 	result => {
 		console.log(result);
 
 		process.exit(0);
 	},
 	error => {
-		console.error(error);
+		console.error(Object(error).message || 'Something bad happened and we don’t even know what it was.');
 
 		process.exit(1);
 	}
