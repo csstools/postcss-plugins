@@ -2,7 +2,7 @@ import postcss from 'postcss';
 import valueParser from 'postcss-values-parser';
 import processImageSet from './lib/process-image-set';
 
-const imageSetValueMatchRegExp = /(^|[^\w-])(-webkit-)?image-set\(/
+const imageSetValueMatchRegExp = /(^|[^\w-])(-webkit-)?image-set\(/i
 const imageSetFunctionMatchRegExp = /^(-webkit-)?image-set$/i
 
 export default postcss.plugin('postcss-image-set-function', opts => {
