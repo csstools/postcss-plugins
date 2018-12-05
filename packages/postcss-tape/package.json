@@ -1,6 +1,6 @@
 {
   "name": "postcss-tape",
-  "version": "3.0.0",
+  "version": "3.0.0-rc.2",
   "description": "Quickly test PostCSS plugins",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -17,23 +17,24 @@
   "scripts": {
     "build": "rollup -c --silent",
     "prepublish": "npm test",
-    "pretest": "npm run build",
+    "pretest:tape": "npm run build",
     "test": "npm run test:js && npm run test:tape",
     "test:js": "eslint src/*.js src/lib/*.js --cache --ignore-pattern .gitignore",
-    "test:tape": "node . --plugin=test/plugin.js --config=test"
+    "test:tape": "node . --plugin=test/plugin.js --config=test",
+    "test:tape:ci": "node . --ci=true --plugin=test/plugin.js --config=test"
   },
   "engines": {
     "node": ">=6.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.6",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/preset-env": "^7.1.6",
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.9.0",
     "eslint-config-dev": "2.0.0",
     "postcss": "^7.0.6",
-    "rollup": "^0.67.3",
+    "rollup": "^0.67.4",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-terser": "^3.0.0"
   },
@@ -41,7 +42,10 @@
     "extends": "dev",
     "parser": "babel-eslint",
     "rules": {
-      "complexity": [1, 23]
+      "complexity": [
+        1,
+        23
+      ]
     }
   },
   "keywords": [

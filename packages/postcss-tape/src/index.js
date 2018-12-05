@@ -1,7 +1,7 @@
 import getOptions from './lib/get-options';
 import path from 'path';
 import { readOrWriteFile, safelyReadFile, writeFile } from './lib/utils';
-import { fail, pass, wait } from './lib/log';
+import * as log from './lib/log';
 
 getOptions().then(
 	async options => {
@@ -26,7 +26,7 @@ getOptions().then(
 
 			const pluginName = Object(testPlugin.postcss).postcssPlugin;
 
-			wait(pluginName, test.message);
+			log.wait(pluginName, test.message, options.ci);
 
 			try {
 				if (Object(test.before) instanceof Function) {
@@ -48,7 +48,7 @@ getOptions().then(
 					if (expectCSS !== resultCSS) {
 						throw new Error([
 							`Expected: ${JSON.stringify(expectCSS).slice(1, -1)}`,
-							`Rendered: ${JSON.stringify(resultCSS).slice(1, -1)}`
+							`Received: ${JSON.stringify(resultCSS).slice(1, -1)}`
 						].join('\n'));
 					}
 				}
@@ -59,7 +59,7 @@ getOptions().then(
 					if (test.warnings !== warnings.length) {
 						const s = warnings.length !== 1 ? 's' : '';
 
-						throw new Error(`Expected: ${test.warnings} warning${s}\nRecieved: ${warnings.length} warnings`);
+						throw new Error(`Expected: ${test.warnings} warning${s}\nReceived: ${warnings.length} warnings`);
 					}
 				} else if (test.warnings) {
 					if (warnings.length) {
@@ -85,7 +85,7 @@ getOptions().then(
 					await test.after();
 				}
 
-				pass(pluginName, test.message);
+				log.pass(pluginName, test.message, options.ci);
 			} catch (error) {
 				const areExpectedErrors = test.errors === Object(test.errors) && Object.keys(test.errors).every(
 					key => test.errors[key] instanceof RegExp
@@ -94,10 +94,16 @@ getOptions().then(
 				);
 
 				if (!areExpectedErrors) {
-					fail(pluginName, test.message);
+					log.fail(pluginName, test.message, options.ci);
 					console.error(error.message);
 
 					hadErrors = true;
+
+					if (options.ci) {
+						break;
+					}
+				} else {
+					log.pass(pluginName, test.message, options.ci);
 				}
 			}
 		}
