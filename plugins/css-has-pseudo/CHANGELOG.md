@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### 0.10.0 (December 11, 2018)
+
+- Fixed an issue where inaccessible rules would crash the library
+
 ### 0.9.0 (November 26, 2018)
 
 - Improved CLI usage

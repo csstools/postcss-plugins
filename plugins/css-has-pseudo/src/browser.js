@@ -5,13 +5,13 @@ export default function cssHasPseudo(document) {
 	const attributeElement = document.createElement('x');
 
 	// walk all stylesheets to collect observed css rules
-	Array.prototype.forEach.call(document.styleSheets, walkStyleSheet);
+	[].forEach.call(document.styleSheets, walkStyleSheet);
 	transformObservedItems();
 
 	// observe DOM modifications that affect selectors
 	const mutationObserver = new MutationObserver(mutationsList => {
 		mutationsList.forEach(mutation => {
-			Array.prototype.forEach.call(mutation.addedNodes || [], node => {
+			[].forEach.call(mutation.addedNodes || [], node => {
 				// walk stylesheets to collect observed css rules
 				if (node.nodeType === 1 && node.sheet) {
 					walkStyleSheet(node.sheet);
@@ -38,10 +38,10 @@ export default function cssHasPseudo(document) {
 				item => {
 					const nodes = [];
 
-					Array.prototype.forEach.call(
+					[].forEach.call(
 						document.querySelectorAll(item.scopeSelector),
 						element => {
-							const nthChild = Array.prototype.indexOf.call(element.parentNode.children, element) + 1;
+							const nthChild = [].indexOf.call(element.parentNode.children, element) + 1;
 							const relativeSelectors = item.relativeSelectors.map(
 								relativeSelector => item.scopeSelector + ':nth-child(' + nthChild + ') ' + relativeSelector
 							).join();
@@ -86,7 +86,7 @@ export default function cssHasPseudo(document) {
 
 	// remove any observed cssrules that no longer apply
 	function cleanupObservedCssRules() {
-		Array.prototype.push.apply(
+		[].push.apply(
 			observedItems,
 			observedItems.splice(0).filter(
 				item => item.rule.parentStyleSheet &&
@@ -98,31 +98,35 @@ export default function cssHasPseudo(document) {
 
 	// walk a stylesheet to collect observed css rules
 	function walkStyleSheet(styleSheet) {
-		// walk a css rule to collect observed css rules
-		Array.prototype.forEach.call(styleSheet.cssRules || [], rule => {
-			if (rule.selectorText) {
-				// decode the selector text in all browsers to:
-				// [1] = :scope, [2] = :not(:has), [3] = :has relative, [4] = :scope relative
-				const selectors = decodeURIComponent(rule.selectorText.replace(/\\(.)/g, '$1')).match(/^(.*?)\[:(not-)?has\((.+?)\)\](.*?)$/);
+		try {
+			// walk a css rule to collect observed css rules
+			[].forEach.call(styleSheet.cssRules || [], rule => {
+				if (rule.selectorText) {
+					// decode the selector text in all browsers to:
+					// [1] = :scope, [2] = :not(:has), [3] = :has relative, [4] = :scope relative
+					const selectors = decodeURIComponent(rule.selectorText.replace(/\\(.)/g, '$1')).match(/^(.*?)\[:(not-)?has\((.+?)\)\](.*?)$/);
 
-				if (selectors) {
-					const attributeName = ':' + (selectors[2] ? 'not-' : '') + 'has(' +
-						// encode a :has() pseudo selector as an attribute name
-						encodeURIComponent(selectors[3]).replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ',') +
-					')';
+					if (selectors) {
+						const attributeName = ':' + (selectors[2] ? 'not-' : '') + 'has(' +
+							// encode a :has() pseudo selector as an attribute name
+							encodeURIComponent(selectors[3]).replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ',') +
+						')';
 
-					observedItems.push({
-						rule,
-						scopeSelector: selectors[1],
-						isNot: selectors[2],
-						relativeSelectors: selectors[3].split(/\s*,\s*/),
-						attributeName,
-						nodes: []
-					});
+						observedItems.push({
+							rule,
+							scopeSelector: selectors[1],
+							isNot: selectors[2],
+							relativeSelectors: selectors[3].split(/\s*,\s*/),
+							attributeName,
+							nodes: []
+						});
+					}
+				} else {
+					walkStyleSheet(rule);
 				}
-			} else {
-				walkStyleSheet(rule);
-			}
-		});
+			});
+		} catch (error) {
+			/* do nothing and continue */
+		}
 	}
 }
