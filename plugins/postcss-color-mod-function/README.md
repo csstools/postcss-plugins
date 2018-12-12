@@ -6,9 +6,9 @@
 [![Support Chat][git-img]][git-url]
 
 [PostCSS color-mod() Function] lets you modify colors using the `color-mod()`
-function in CSS, following the [CSS Color Module Level 4] specification.
+function in CSS, following the [CSS Color Module Level 4] specification (05 July 2016).
 
-**`color-mod()` has been removed from the Color Module Level 4 specification.**
+**⚠️ `color-mod()` has been removed from [the draft of Color Module Level 4 specification](https://drafts.csswg.org/css-color/).**
 
 ```pcss
 :root {
@@ -45,7 +45,7 @@ The `color-mod()` function accepts `rgb()`, legacy comma-separated `rgb()`,
 colors without the need for additional plugins.
 
 Implemention details are available in
-[the specification](https://drafts.csswg.org/css-color/#funcdef-color-mod).
+[the specification](https://www.w3.org/TR/css-color-4/#funcdef-color-mod).
 
 ### Supported Color Adjusters
 
@@ -55,7 +55,7 @@ The `color-mod()` function accepts `red()`, `green()`, `blue()`, `a()` /
 `shade()`, `blend()`, `blenda()`, and `contrast()` color adjusters.
 
 Implemention details are available in
-[the specification](https://drafts.csswg.org/css-color/#typedef-color-adjuster).
+[the specification](https://www.w3.org/TR/css-color-4/#typedef-color-adjuster).
 
 ### Supported Variables
 
