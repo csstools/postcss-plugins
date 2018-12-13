@@ -23,10 +23,8 @@
 3. Add tests to your `.tape.js` file:
    ```js
    module.exports = {
-     'postcss-my-plugin': {
-       'basic': {
-         message: 'supports basic usage'
-       }
+     'basic': {
+       message: 'supports basic usage'
      }
    };
    ```
@@ -125,7 +123,7 @@ An identifying feature of an error expected to be thrown by the test.
 ```js
 {
   'some-test': {
-    error: {
+    errors: {
       message: 'You should not have done that'
     }
   }
