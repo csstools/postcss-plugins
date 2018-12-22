@@ -24,7 +24,7 @@ getOptions().then(
 			const processOptions = Object.assign({ from: sourcePath, to: resultPath }, test.processOptions);
 			const pluginOptions = test.options;
 
-			const pluginName = Object(testPlugin.postcss).postcssPlugin;
+			const pluginName = Object(testPlugin.postcss).postcssPlugin || 'postcss';
 
 			log.wait(pluginName, test.message, options.ci);
 
@@ -116,8 +116,11 @@ getOptions().then(
 	() => {
 		process.exit(0);
 	},
-	(error) => {
-		console.error(error);
+	error => {
+		if (Object(error).message) {
+			console.error(error);
+		}
+
 		process.exit(1);
 	}
 )

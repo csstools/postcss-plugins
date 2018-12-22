@@ -24,7 +24,7 @@ scope, and do avoid unrelated commits.
 	# Navigate to the newly cloned directory
 	cd postcss-tape
 	# Assign the original repo to a remote called "upstream"
-	git remote add upstream https://github.com/jonathantneal/postcss-tape
+	git remote add upstream https://github.com/csstools/postcss-tape
 	# Install the tools necessary for development
 	npm install
 	```

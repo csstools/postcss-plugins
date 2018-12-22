@@ -1,5 +1,16 @@
 # Changes to PostCSS Tape
 
+### 4.0.0 (December 22, 2018)
+
+- Changes the nested `postcss-plugin: { "test-name": {} }` with
+`{ "test-name": {} }`.
+- Supports a `--ci true` mode for full logging
+
+I’ve rewritten the plugin in less lines of code and hopefully more clearly.
+I had a lot of trouble following the old version, so it’s very hard to know
+what changes there are. I also accidentally published an incompatible version,
+so version 3 is skipped for 4.
+
 ### 2.2.0 (November 2, 2017)
 
 - Added: New `processOptions` option for controlling the PostCSS process
