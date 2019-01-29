@@ -1,13 +1,18 @@
 import babel from 'rollup-plugin-babel';
+import { terser } from 'rollup-plugin-terser';
 
 export default {
-	input: 'index.js',
-	output: { file: 'index.bundle.js', format: 'cjs' },
+	input: 'src/index.js',
+	output: [
+		{ file: 'index.js', format: 'cjs', sourcemap: true },
+		{ file: 'index.mjs', format: 'esm', sourcemap: true }
+	],
 	plugins: [
 		babel({
 			presets: [
-				['env', { modules: false, targets: { node: 4 } }]
+				['@babel/env', { modules: false, targets: { node: 6 } }]
 			]
-		})
+		}),
+		terser()
 	]
 };

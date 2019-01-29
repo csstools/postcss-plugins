@@ -11,6 +11,8 @@ function test(opts) {
 	const channel2 = opts.channel2;
 	const channel3 = opts.channel3;
 
+	console.log('Test:', opts.from, '=>', opts.to);
+
 	for (let channel1value = channel1.start; channel1value <= channel1.stop; channel1value += channel1.increment) {
 		for (let channel2value = channel2.start; channel2value <= channel2.stop; channel2value += channel2.increment) {
 			for (let channel3value = channel3.start; channel3value <= channel3.stop; channel3value += channel3.increment) {
@@ -32,13 +34,37 @@ function test(opts) {
 					// and the converted color has also changed
 					source2.map(Math.round).join() !== result2.map(Math.round).join()
 				) {
-					// log the faulty color conversion
+					// log the failing color conversion
 					console.log({ [from]: source1, [to]: source2, 'became': result1 });
 
 					// exit with failure
 					process.exit(1);
 				}
 			}
+		}
+	}
+}
+
+function testExpression(text, result, expect, precession) {
+	if (typeof result === 'number') {
+		const multiplier = Math.pow(10, precession || 0);
+		const normalizedResult = Math.round(result * multiplier) / multiplier;
+		const normalizedExpect = Math.round(expect * multiplier) / multiplier;
+
+		console.log(`Test: ${text} is ${normalizedExpect}`);
+
+		if (normalizedResult !== normalizedExpect) {
+			console.log({ expect: normalizedExpect, result: normalizedResult });
+
+			process.exit(1);
+		}
+	} else {
+		console.log(`Test: ${text} is ${expect}`);
+
+		if (result !== expect) {
+			console.log({ expect, result });
+
+			process.exit(1);
 		}
 	}
 }
@@ -122,6 +148,37 @@ test({
 	channel2: { start: 0, stop: 100, increment: 4 },
 	channel3: { start: 0, stop: 100, increment: 4 }
 }, 10);
+
+testExpression(
+	'rgb(100% 100% 100%) / rgb(0% 0% 0%) contrast',
+	convert.rgb2contrast([100, 100, 100], [0, 0, 0]),
+	21
+);
+testExpression(
+	'rgb(100% 100% 100%) / rgb(50% 50% 50%) contrast',
+	convert.rgb2contrast([100, 100, 100], [50, 50, 50]),
+	3.98, 2
+);
+testExpression(
+	'rgb(100% 100% 100%) / rgb(100% 0% 0%) contrast',
+	convert.rgb2contrast([100, 100, 100], [100, 0, 0]),
+	4, 2
+);
+testExpression(
+	'contrast rgb(97.647% 97.647% 97.647%) / rgb(100% 0% 0%)',
+	convert.rgb2contrast([97.647, 97.647, 97.647], [100, 0, 0]),
+	3.8, 2
+);
+testExpression(
+	'rgb2ciede matches lab2ciede',
+	convert.rgb2ciede([100, 100, 100], [0, 0, 0]),
+	convert.lab2ciede(convert.rgb2lab(100, 100, 100), convert.rgb2lab(0, 0, 0))
+);
+testExpression(
+	'rgb2ciede rgb(50% 50% 50%) / rgb(0% 0% 0%)',
+	convert.rgb2ciede([50, 50, 50], [0, 0, 0]),
+	40
+);
 
 // exit with success
 process.exit(0);

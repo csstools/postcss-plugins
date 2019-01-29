@@ -1,5 +1,10 @@
 # Changes to Convert Colors
 
+### 2.0.0 (January 25, 2019)
+
+- Add hex, keyword, luminance, contrast, and CIEDE2000 conversions
+- Support Node 6+
+
 ### 1.4.0 (January 27, 2018)
 
 - Add LCH conversions
