@@ -43,18 +43,19 @@ export function hsv2rgb(hsvH, hsvS, hsvV) {
 	const rgbF = hsvH / 60 - rgbI & 1 ? hsvH / 60 - rgbI : 1 - hsvH / 60 - rgbI;
 	const rgbM = hsvV * (100 - hsvS) / 100;
 	const rgbN = hsvV * (100 - hsvS * rgbF) / 100;
+	const rgbT = hsvV * (100 - (100 - rgbF) * hsvS / 100) / 100;
 
 	const [ rgbR, rgbG, rgbB ] = rgbI === 5
 		? [ hsvV, rgbM, rgbN ]
 	: rgbI === 4
-		? [ rgbN, rgbM, hsvV ]
+		? [ rgbT, rgbM, hsvV ]
 	: rgbI === 3
 		? [ rgbM, rgbN, hsvV ]
 	: rgbI === 2
-		? [ rgbM, hsvV, rgbN ]
+		? [ rgbM, hsvV, rgbT ]
 	: rgbI === 1
 		? [ rgbN, hsvV, rgbM ]
-	: [ hsvV, rgbN, rgbM ];
+	: [ hsvV, rgbT, rgbM ];
 
 	return [ rgbR, rgbG, rgbB ];
 }
