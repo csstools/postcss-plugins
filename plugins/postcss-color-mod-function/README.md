@@ -6,9 +6,9 @@
 [![Support Chat][git-img]][git-url]
 
 [PostCSS color-mod() Function] lets you modify colors using the `color-mod()`
-function in CSS, following the [CSS Color Module Level 4] specification (05 July 2016).
+function in CSS, following the outdated version of [CSS Color Module Level 4] specification (05 July 2016).
 
-**⚠️ `color-mod()` has been removed from [the draft of Color Module Level 4 specification](https://drafts.csswg.org/css-color/).**
+**⚠️ `color-mod()` has been removed from [Color Module Level 4 specification](https://www.w3.org/TR/css-color-4/#changes-from-20160705).**
 
 ```pcss
 :root {
@@ -45,7 +45,7 @@ The `color-mod()` function accepts `rgb()`, legacy comma-separated `rgb()`,
 colors without the need for additional plugins.
 
 Implemention details are available in
-[the specification](https://www.w3.org/TR/css-color-4/#funcdef-color-mod).
+[the specification](https://www.w3.org/TR/2016/WD-css-color-4-20160705/#funcdef-color-mod).
 
 ### Supported Color Adjusters
 
@@ -199,7 +199,7 @@ be used.
 [npm-img]: https://img.shields.io/npm/v/postcss-color-mod-function.svg
 [npm-url]: https://www.npmjs.com/package/postcss-color-mod-function
 
-[CSS Color Module Level 4]: https://www.w3.org/TR/css-color-4/#funcdef-color-mod
+[CSS Color Module Level 4]: https://www.w3.org/TR/2016/WD-css-color-4-20160705/#funcdef-color-mod
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
