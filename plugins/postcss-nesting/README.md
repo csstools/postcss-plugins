@@ -28,8 +28,10 @@ a c, a d, b c, b d {
 }
 ```
 
-**NOTICE**: In v7.0.0 nesting at-rules like `@media` will no longer work, as
-they are not part of the nesting proposal.
+**NOTICE**: In a future version of this project, nesting at-rules like `@media`
+may be deprecated, as they are not part of the nesting proposal. In a comment,
+a CSSWG member expressed interest in handling nested `@media` while handling
+selector nesting. So deprecating nested at-rules has been temporarily delayed.
 
 ## Usage
 
@@ -72,6 +74,6 @@ postcss([
 [npm-img]: https://img.shields.io/npm/v/postcss-nesting.svg
 [npm-url]: https://www.npmjs.com/package/postcss-nesting
 
-[CSS Nesting]: http://tabatkins.github.io/specs/css-nesting/
+[CSS Nesting]: https://drafts.csswg.org/css-nesting-1/
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Nesting]: https://github.com/jonathantneal/postcss-nesting
