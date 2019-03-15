@@ -82,7 +82,8 @@ properties:
   `border-end-style`, `border-width`, `border-block-width`,
   `border-block-start-width`, `border-block-end-width`, `border-inline-width`,
   `border-inline-start-width`, `border-inline-end-width`, `border-start-width`,
-  `border-end-width`
+  `border-end-width`, `border-start-start-radius`, `border-start-end-radius`,
+  `border-end-start-radius`, `border-end-end-radius`
 
 #### Logical Offsets
 

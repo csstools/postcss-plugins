@@ -231,3 +231,42 @@ test-flowing-border-color {
 	border-end-color: 13px solid black / 14px solid black;
 	border-color: inherit;
 }
+
+test-flowing-border-radius:dir(ltr) {
+	border-top-left-radius: 7px;
+}
+
+test-flowing-border-radius:dir(rtl) {
+	border-top-right-radius: 7px;
+}
+
+test-flowing-border-radius:dir(ltr) {
+	border-bottom-left-radius: 8px;
+}
+
+test-flowing-border-radius:dir(rtl) {
+	border-bottom-right-radius: 8px;
+}
+
+test-flowing-border-radius:dir(ltr) {
+	border-top-right-radius: 9px;
+}
+
+test-flowing-border-radius:dir(rtl) {
+	border-top-left-radius: 9px;
+}
+
+test-flowing-border-radius:dir(ltr) {
+	border-bottom-right-radius: 10px;
+}
+
+test-flowing-border-radius:dir(rtl) {
+	border-bottom-left-radius: 10px;
+}
+
+test-flowing-border-radius {
+	border-start-start-radius: 7px;
+	border-start-end-radius: 8px;
+	border-end-start-radius: 9px;
+	border-end-end-radius: 10px;
+}

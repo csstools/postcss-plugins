@@ -207,3 +207,35 @@ test-flowing-border-color {
 	border-color: inherit;
 	border-color: inherit;
 }
+
+test-flowing-border-radius:dir(ltr) {
+	border-top-left-radius: 7px;
+}
+
+test-flowing-border-radius:dir(rtl) {
+	border-top-right-radius: 7px;
+}
+
+test-flowing-border-radius:dir(ltr) {
+	border-bottom-left-radius: 8px;
+}
+
+test-flowing-border-radius:dir(rtl) {
+	border-bottom-right-radius: 8px;
+}
+
+test-flowing-border-radius:dir(ltr) {
+	border-top-right-radius: 9px;
+}
+
+test-flowing-border-radius:dir(rtl) {
+	border-top-left-radius: 9px;
+}
+
+test-flowing-border-radius:dir(ltr) {
+	border-bottom-right-radius: 10px;
+}
+
+test-flowing-border-radius:dir(rtl) {
+	border-bottom-left-radius: 10px;
+}

@@ -225,5 +225,69 @@ export default {
 			cloneRule(decl, 'ltr').append(ltrDecls),
 			cloneRule(decl, 'rtl').append(rtlDecls)
 		];
+	},
+
+	// border-start-start-radius
+	'border-start-start-radius': (decl, values, dir) => {
+		const ltrDecl = decl.clone({
+			prop: `border-top-left-radius`
+		});
+
+		const rtlDecl = decl.clone({
+			prop: `border-top-right-radius`
+		});
+
+		return 'ltr' === dir ? ltrDecl : 'rtl' === dir ? rtlDecl : [
+			cloneRule(decl, 'ltr').append(ltrDecl),
+			cloneRule(decl, 'rtl').append(rtlDecl)
+		];
+	},
+
+	// border-start-end-radius
+	'border-start-end-radius': (decl, values, dir) => {
+		const ltrDecl = decl.clone({
+			prop: `border-bottom-left-radius`
+		});
+
+		const rtlDecl = decl.clone({
+			prop: `border-bottom-right-radius`
+		});
+
+		return 'ltr' === dir ? ltrDecl : 'rtl' === dir ? rtlDecl : [
+			cloneRule(decl, 'ltr').append(ltrDecl),
+			cloneRule(decl, 'rtl').append(rtlDecl)
+		];
+	},
+
+	// border-end-start-radius
+	'border-end-start-radius': (decl, values, dir) => {
+		const ltrDecl = decl.clone({
+			prop: `border-top-right-radius`
+		});
+
+		const rtlDecl = decl.clone({
+			prop: `border-top-left-radius`
+		});
+
+		return 'ltr' === dir ? ltrDecl : 'rtl' === dir ? rtlDecl : [
+			cloneRule(decl, 'ltr').append(ltrDecl),
+			cloneRule(decl, 'rtl').append(rtlDecl)
+		];
+	},
+
+	// border-end-end-radius
+	'border-end-end-radius': (decl, values, dir) => {
+		const ltrDecl = decl.clone({
+			prop: `border-bottom-right-radius`
+		});
+
+		const rtlDecl = decl.clone({
+			prop: `border-bottom-left-radius`
+		});
+
+		return 'ltr' === dir ? ltrDecl : 'rtl' === dir ? rtlDecl : [
+			cloneRule(decl, 'ltr').append(ltrDecl),
+			cloneRule(decl, 'rtl').append(rtlDecl)
+		];
 	}
 };

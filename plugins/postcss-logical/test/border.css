@@ -50,3 +50,10 @@ test-flowing-border-color {
 	border-end-color: 13px solid black / 14px solid black;
 	border-color: inherit;
 }
+
+test-flowing-border-radius {
+	border-start-start-radius: 7px;
+	border-start-end-radius: 8px;
+	border-end-start-radius: 9px;
+	border-end-end-radius: 10px;
+}
