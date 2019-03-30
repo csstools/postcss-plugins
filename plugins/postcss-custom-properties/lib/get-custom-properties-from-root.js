@@ -1,4 +1,5 @@
 import valueParser from 'postcss-values-parser';
+import { isBlockIgnored } from './is-ignored';
 
 // return custom selectors from the css root, conditionally removing them
 export default function getCustomPropertiesFromRoot(root, opts) {
@@ -17,7 +18,7 @@ export default function getCustomPropertiesFromRoot(root, opts) {
 		// for each custom property
 		if (customPropertiesObject) {
 			rule.nodes.slice().forEach(decl => {
-				if (isCustomDecl(decl)) {
+				if (isCustomDecl(decl) && !isBlockIgnored(decl)) {
 					const { prop } = decl;
 
 					// write the parsed value to the custom property
@@ -31,7 +32,7 @@ export default function getCustomPropertiesFromRoot(root, opts) {
 			});
 
 			// conditionally remove the empty html or :root rule
-			if (!opts.preserve && isEmptyParent(rule)) {
+			if (!opts.preserve && isEmptyParent(rule) && !isBlockIgnored(rule)) {
 				rule.remove();
 			}
 		}

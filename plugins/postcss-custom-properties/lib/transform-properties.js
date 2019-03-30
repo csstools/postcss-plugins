@@ -1,11 +1,12 @@
 import valueParser from 'postcss-values-parser';
 import transformValueAST from './transform-value-ast';
+import { isRuleIgnored } from './is-ignored';
 
 // transform custom pseudo selectors with custom selectors
 export default (root, customProperties, opts) => {
 	// walk decls that can be transformed
 	root.walkDecls(decl => {
-		if (isTransformableDecl(decl)) {
+		if (isTransformableDecl(decl) && !isRuleIgnored(decl)) {
 			const originalValue = decl.value;
 			const valueAST = valueParser(originalValue).parse();
 			const value = String(transformValueAST(valueAST, customProperties));
