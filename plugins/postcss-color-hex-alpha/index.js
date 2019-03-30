@@ -34,13 +34,13 @@ export default postcss.plugin('postcss-color-hex-alpha', opts => {
 });
 
 // match any hexa
-const alphaHexRegExp = /#([0-9A-f]{4}(?:[0-9A-f]{4})?)\b/;
+const alphaHexRegExp = /#([0-9A-Fa-f]{4}(?:[0-9A-Fa-f]{4})?)\b/;
 
 // whether a node has a hexa
 const hasAlphaHex = node => alphaHexRegExp.test(node.value);
 
 // match an exact hexa
-const alphaHexValueRegExp = /^#([0-9A-f]{4}(?:[0-9A-f]{4})?)$/;
+const alphaHexValueRegExp = /^#([0-9A-Fa-f]{4}(?:[0-9A-Fa-f]{4})?)$/;
 
 // walk all nodes in a value
 const walk = (node, fn) => {

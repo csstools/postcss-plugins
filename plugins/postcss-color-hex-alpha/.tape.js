@@ -8,6 +8,9 @@ module.exports = {
 			options: {
 				preserve: true
 			}
+		},
+		'clip-path': {
+			message: 'ignores clip-path with hash in url'
 		}
 	}
 };
