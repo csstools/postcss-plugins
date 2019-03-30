@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Media
 
+### 7.0.8 (March 30, 2019)
+
+- Fixed: Issue importing from `.pcss` files
+- Updated: `postcss` to 7.0.14 (patch)
+
 ### 7.0.7 (October 19, 2018)
 
 - Fixed: Issue combining custom media media queries with `and`

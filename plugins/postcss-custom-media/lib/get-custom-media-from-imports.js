@@ -78,7 +78,7 @@ export default function getCustomMediaFromSources(sources) {
 	}).reduce(async (customMedia, source) => {
 		const { type, from } = await source;
 
-		if (type === 'css') {
+		if (type === 'css' || type === 'pcss') {
 			return Object.assign(await customMedia, await getCustomMediaFromCSSFile(from));
 		}
 
