@@ -1,5 +1,11 @@
 # Changes to PostCSS Color Hex Alpha
 
+### 5.0.3 (March 30, 2019)
+
+- Fixed: Issue with SVG hashes being interpretted as hex colors
+- Updated: `postcss` to 7.0.14 (patch)
+- Updated: `postcss-values-parser` to 2.0.1 (patch)
+
 ### 5.0.2 (September 18, 2018)
 
 - Updated: PostCSS Values Parser 2 (patch for this project)
