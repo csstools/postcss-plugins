@@ -1,5 +1,12 @@
 # Changes to PostCSS Custom Properties
 
+### 8.0.10 (April 1, 2019)
+
+- Added: Support for ignoring lines and or blocks using
+  `postcss-custom-properties` comments.
+- Updated: `postcss` to 7.0.14 (patch)
+- Updated: `postcss-values-parser` to 2.0.1 (patch)
+
 ### 8.0.9 (November 5, 2018)
 
 - Fixed: Issue with duplicate custom property usage within a declaration

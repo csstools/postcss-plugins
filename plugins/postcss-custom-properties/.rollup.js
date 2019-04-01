@@ -1,10 +1,10 @@
 import babel from 'rollup-plugin-babel';
 
 export default {
-	input: 'index.js',
+	input: 'src/index.js',
 	output: [
-		{ file: 'index.cjs.js', format: 'cjs', sourcemap: true },
-		{ file: 'index.esm.mjs', format: 'esm', sourcemap: true }
+		{ file: 'index.js', format: 'cjs', sourcemap: true },
+		{ file: 'index.mjs', format: 'esm', sourcemap: true }
 	],
 	plugins: [
 		babel({
@@ -12,7 +12,13 @@ export default {
 				'@babel/plugin-syntax-dynamic-import'
 			],
 			presets: [
-				['@babel/env', { targets: { node: 6 } }]
+				['@babel/preset-env', {
+					corejs: 3,
+					loose: true,
+					modules: false,
+					targets: { node: 6 },
+					useBuiltIns: 'entry'
+				}]
 			]
 		})
 	]
