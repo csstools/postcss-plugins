@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import postcss from 'postcss';
-import valueParser from 'postcss-values-parser';
+import { parse } from 'postcss-values-parser';
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
 
 /* Get Custom Properties from CSS File
@@ -25,7 +25,7 @@ function getCustomPropertiesFromObject(object) {
 	);
 
 	for (const key in customProperties) {
-		customProperties[key] = valueParser(String(customProperties[key])).parse().nodes;
+		customProperties[key] = parse(String(customProperties[key])).nodes;
 	}
 
 	return customProperties;

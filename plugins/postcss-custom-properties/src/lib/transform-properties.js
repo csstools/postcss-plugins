@@ -1,4 +1,4 @@
-import valueParser from 'postcss-values-parser';
+import { parse } from 'postcss-values-parser';
 import transformValueAST from './transform-value-ast';
 import { isRuleIgnored } from './is-ignored';
 
@@ -8,7 +8,7 @@ export default (root, customProperties, opts) => {
 	root.walkDecls(decl => {
 		if (isTransformableDecl(decl) && !isRuleIgnored(decl)) {
 			const originalValue = decl.value;
-			const valueAST = valueParser(originalValue).parse();
+			const valueAST = parse(originalValue);
 			const value = String(transformValueAST(valueAST, customProperties));
 
 			// conditionally transform values that have changed
