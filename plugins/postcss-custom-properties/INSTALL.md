@@ -149,7 +149,7 @@ grunt.loadNpmTasks('grunt-postcss');
 grunt.initConfig({
   postcss: {
     options: {
-      use: [
+      processors: [
        postcssCustomProperties(/* pluginOptions */)
       ]
     },
