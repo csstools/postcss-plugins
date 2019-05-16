@@ -39,7 +39,7 @@ getOptions().then(
 				const result = await testPlugin.process(sourceCSS, processOptions, pluginOptions);
 				const resultCSS = result.css;
 
-				if ('fix' in options && options.fix !== false) {
+				if (options.fix) {
 					await writeFile(expectPath, resultCSS);
 					await writeFile(resultPath, resultCSS);
 				} else {
@@ -55,30 +55,30 @@ getOptions().then(
 
 				const warnings = result.warnings();
 
-				if (Object(test.warnings) instanceof Number) {
+				if (typeof test.warnings === 'number') {
 					if (test.warnings !== warnings.length) {
 						const s = warnings.length !== 1 ? 's' : '';
 
 						throw new Error(`Expected: ${test.warnings} warning${s}\nReceived: ${warnings.length} warnings`);
 					}
-				} else if (test.warnings) {
-					if (warnings.length) {
-						const areExpectedWarnings = warnings.every(
-							warning => Object.keys(test.warnings).every(
-								key => test.warnings[key] instanceof RegExp
-									? test.warnings[key].test(warning[key])
-								: test.warnings[key] === warning[key]
-							)
-						);
+				} else if (warnings.length) {
+					const areExpectedWarnings = warnings.every(
+						warning => test.warnings === Object(test.warnings) && Object.keys(test.warnings).every(
+							key => test.warnings[key] instanceof RegExp
+								? test.warnings[key].test(warning[key])
+							: test.warnings[key] === warning[key]
+						)
+					);
 
-						if (!areExpectedWarnings) {
-							const s = warnings.length !== 1 ? 's' : '';
+					if (!areExpectedWarnings) {
+						const s = warnings.length !== 1 ? 's' : '';
 
-							throw new Error(`Unexpected warning${s}:\n${warnings.join('\n')}`);
-						}
-					} else {
-						throw new Error(`Expected a warning`);
+						throw new Error(`Unexpected warning${s}:\n${warnings.join('\n')}`);
 					}
+				} else if (test.warnings) {
+					throw new Error(`Expected a warning`);
+				} else if (test.errors) {
+					throw new Error(`Expected an error`);
 				}
 
 				if (Object(test.after) instanceof Function) {
@@ -94,8 +94,7 @@ getOptions().then(
 				);
 
 				if (!areExpectedErrors) {
-					log.fail(pluginName, test.message, options.ci);
-					console.error(error.message);
+					log.fail(pluginName, test.message, error, options.ci);
 
 					hadErrors = true;
 
@@ -113,14 +112,6 @@ getOptions().then(
 		}
 	}
 ).then(
-	() => {
-		process.exit(0);
-	},
-	error => {
-		if (Object(error).message) {
-			console.error(error);
-		}
-
-		process.exit(1);
-	}
+	process.exit.bind(process, 0),
+	process.exit.bind(process, 1)
 )

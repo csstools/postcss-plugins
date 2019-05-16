@@ -8,10 +8,9 @@ os:
   - osx
 
 node_js:
-  - node
+  - 12
   - 10
   - 8
-  - 6
 
 install:
   - git config --global core.autocrlf false

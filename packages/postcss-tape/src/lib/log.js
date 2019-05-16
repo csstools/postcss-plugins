@@ -9,7 +9,7 @@ const stdout  = process.stdout;
 
 let interval;
 
-export function pass(name, message, ci) {
+export function pass (name, message, ci) {
 	clearInterval(interval);
 
 	if (ci) {
@@ -23,22 +23,22 @@ export function pass(name, message, ci) {
 	}
 }
 
-export function fail(name, message, ci) {
+export function fail (name, message, error, ci) {
 	clearInterval(interval);
 
 	if (ci) {
-		stdout.write(` ${color('red', cross)}\n`);
+		stdout.write(` ${color('red', cross)}\n${error}\n`);
 	} else {
 		// reset current stream line
 		readline.clearLine(stdout, 0);
 		readline.cursorTo(stdout, 0);
 
-		stdout.write(`${color('red', cross)} ${name} ${color('dim', message)}\n`);
+		stdout.write(`${color('red', cross)} ${name} ${color('dim', message)}\n${error}\n`);
 	}
 }
 
 // log with a waiting appearance
-export function wait(name, message, ci) {
+export function wait (name, message, ci) {
 	if (ci) {
 		stdout.write(`${name} ${color('dim', message)}`);
 	} else {

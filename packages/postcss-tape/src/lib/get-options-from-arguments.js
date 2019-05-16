@@ -3,7 +3,7 @@ const primativeRegExp = /^(false|null|true|undefined|(\d+\.)?\d+|\{.*\}|\[.*\])$
 const relaxedJsonPropRegExp = /(['"])?([a-z0-9A-Z_]+)\1:/g;
 const relaxedJsonValueRegExp = /("[a-z0-9A-Z_]+":\s*)(?!true|false|null|\d+)'?([A-z0-9]+)'?([,}])/g;
 
-export default function getOptionsFromArguments(defaultOptions) {
+export default function getOptionsFromArguments (defaultOptions) {
 	return process.argv.slice(2).reduce(
 		(args, arg, index, argv) => {
 			const nextIndex = index + 1;

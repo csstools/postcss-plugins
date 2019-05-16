@@ -24,6 +24,6 @@ const colors = {
 	bgWhite: '\x1b[47m'
 };
 
-export default function color(name, string) {
+export default function color (name, string) {
 	return colors[name] + string.replace(colors.reset, colors.reset + colors[name]) + colors.reset;
 }

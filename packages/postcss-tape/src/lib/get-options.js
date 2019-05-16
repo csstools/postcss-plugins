@@ -2,7 +2,7 @@ import getOptionsFromArguments from './get-options-from-arguments';
 import { readJSON } from './utils';
 import path from 'path';
 
-export default async function getOptions() {
+export default async function getOptions () {
 	const cwd = process.cwd();
 
 	// default options

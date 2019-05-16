@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-export function readFile(pathname) {
+export function readFile (pathname) {
 	return new Promise((resolve, reject) => {
 		fs.readFile(pathname, 'utf8', (error, data) => {
 			if (error) {
@@ -12,7 +12,7 @@ export function readFile(pathname) {
 	});
 }
 
-export function readJSON(pathname, ...keys) {
+export function readJSON (pathname, ...keys) {
 	return readFile(pathname).then(
 		data => JSON.parse(data)
 	).then(
@@ -26,7 +26,7 @@ export function readJSON(pathname, ...keys) {
 	);
 }
 
-export function readOrWriteFile(pathname, data) {
+export function readOrWriteFile (pathname, data) {
 	return readFile(pathname).catch(
 		() => writeFile(pathname, data || '').then(
 			() => ''
@@ -34,13 +34,13 @@ export function readOrWriteFile(pathname, data) {
 	);
 }
 
-export function safelyReadFile(pathname) {
+export function safelyReadFile (pathname) {
 	return readFile(pathname).catch(
 		() => ''
 	);
 }
 
-export function writeFile(pathname, data) {
+export function writeFile (pathname, data) {
 	return new Promise((resolve, reject) => {
 		fs.writeFile(pathname, data, (error) => {
 			if (error) {
