@@ -8,14 +8,16 @@
   "homepage": "https://github.com/csstools/postcss-browser-comments#readme",
   "bugs": "https://github.com/csstools/postcss-browser-comments/issues",
   "main": "index.cjs.js",
-  "module": "index.es.js",
+  "module": "index.esm.mjs",
   "files": [
     "index.cjs.js",
-    "index.es.js"
+    "index.cjs.js.map",
+    "index.esm.mjs",
+    "index.esm.mjs.map"
   ],
   "scripts": {
     "prepublishOnly": "npm test",
-    "pretest": "rollup -c .rollup.js --silent",
+    "pretest": "rollup --config .rollup.js --silent",
     "test": "npm run test:js && npm run test:tape",
     "test:ec": "echint --ignore index.*.js test",
     "test:js": "eslint *.js --cache --ignore-path .gitignore --quiet",
