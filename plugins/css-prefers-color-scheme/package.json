@@ -1,6 +1,6 @@
 {
   "name": "css-prefers-color-scheme",
-  "version": "3.1.1",
+  "version": "4.0.0",
   "description": "Use light and dark color schemes in all browsers",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -27,40 +27,50 @@
   "scripts": {
     "build": "npm run build:browser && npm run build:node && npm run build:postcss",
     "build:browser": "npm run build:browser:dist && npm run build:browser:min",
-    "build:browser:dist": "cross-env NODE_ENV=browser rollup -c .rollup.js --silent",
-    "build:browser:min": "cross-env NODE_ENV=browser:min rollup -c .rollup.js --silent",
-    "build:node": "rollup -c .rollup.js --silent",
-    "build:postcss": "cross-env NODE_ENV=postcss rollup -c .rollup.js --silent",
+    "build:browser:dist": "cross-env NODE_ENV=browser rollup --config .rollup.js --silent",
+    "build:browser:min": "cross-env NODE_ENV=browser:min rollup --config .rollup.js --silent",
+    "build:node": "rollup --config .rollup.js --silent",
+    "build:postcss": "cross-env NODE_ENV=postcss rollup --config .rollup.js --silent",
     "prepublishOnly": "npm test",
     "pretest": "npm run build",
     "test": "npm run test:js && npm run test:tape",
-    "test:js": "eslint src/*.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape --plugin=postcss.js"
+    "test:js": "eslint src/{*,**/*}.js --cache --ignore-path .gitignore --quiet",
+    "test:tape": "postcss-tape --plugin postcss.js"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "dependencies": {
-    "postcss": "^7.0.5"
+    "postcss": "^7.0.16"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.5",
-    "@babel/preset-env": "^7.1.5",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
-    "eslint": "^5.9.0",
-    "eslint-config-dev": "^2.0.0",
-    "get-stdin": "^6.0.0",
-    "postcss-tape": "^2.2.0",
+    "eslint": "^5.16.0",
+    "get-stdin": "^7.0.0",
+    "postcss-tape": "^5.0.0",
     "pre-commit": "^1.2.2",
-    "rollup": "^0.67.0",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-terser": "^3.0.0",
-    "uglify-js": "^3.4.9"
+    "rollup": "^1.12.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-terser": "^5.0.0",
+    "uglify-js": "^3.5.15"
   },
   "eslintConfig": {
-    "extends": "dev",
-    "parser": "babel-eslint"
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "impliedStrict": true,
+      "sourceType": "module"
+    },
+    "root": true
   },
   "keywords": [
     "postcss",

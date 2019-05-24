@@ -1,5 +1,14 @@
 # Changes to Prefers Color Scheme
 
+### 4.0.0 (May 24, 2019)
+
+- Updated: `postcss` to 7.0.16 (patch)
+- Updated: Node 8+ compatibility (major)
+
+### 3.1.1 (November 10, 2018)
+
+- Updated: Project organization. No functional changes.
+
 ### 3.1.0 (November 10, 2018)
 
 - Include CLI tool for transforming CSS without any installation

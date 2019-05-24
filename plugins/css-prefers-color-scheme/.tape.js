@@ -1,7 +1,5 @@
 module.exports = {
-	'postcss-prefers-color-scheme': {
-		'basic': {
-			message: 'supports basic usage'
-		}
-	}
+  'basic': {
+    message: 'supports basic usage'
+  }
 };

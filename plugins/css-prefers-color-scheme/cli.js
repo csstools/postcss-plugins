@@ -67,7 +67,7 @@ const argo = process.argv.slice(2).reduce(
 	}
 );
 
-function readFile(pathname) {
+function readFile (pathname) {
 	return new Promise((resolve, reject) => {
 		fs.readFile(pathname, 'utf8', (error, data) => {
 			if (error) {
@@ -79,7 +79,7 @@ function readFile(pathname) {
 	});
 }
 
-function writeFile(pathname, data) {
+function writeFile (pathname, data) {
 	return new Promise((resolve, reject) => {
 		fs.writeFile(pathname, data, (error, content) => {
 			if (error) {
@@ -91,7 +91,7 @@ function writeFile(pathname, data) {
 	});
 }
 
-function getStdin() {
+function getStdin () {
 	return new Promise(resolve => {
 		let data = '';
 
