@@ -102,7 +102,7 @@ postcssBrowserComments({
 });
 ```
 
-[cli-img]: https://img.shields.io/travis/csstools/postcss-browser-comments.svg
+[cli-img]: https://img.shields.io/travis/csstools/postcss-browser-comments/master.svg
 [cli-url]: https://travis-ci.org/csstools/postcss-browser-comments
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
