@@ -72,7 +72,7 @@ The value of `48` is chosen for dark mode because it is the keycode for `0`,
 the hexidecimal value of black. Likewise, `70` is chosen for light mode because
 it is the keycode for `f`, the hexidecimal value of white.
 
-[cli-img]: https://img.shields.io/travis/csstools/css-prefers-color-scheme.svg
+[cli-img]: https://img.shields.io/travis/csstools/css-prefers-color-scheme/master.svg
 [cli-url]: https://travis-ci.org/csstools/css-prefers-color-scheme
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss

@@ -104,7 +104,7 @@ require('css-prefers-color-scheme/postcss')({ preserve: false });
 }
 ```
 
-[cli-img]: https://img.shields.io/travis/csstools/css-prefers-color-scheme.svg
+[cli-img]: https://img.shields.io/travis/csstools/css-prefers-color-scheme/master.svg
 [cli-url]: https://travis-ci.org/csstools/css-prefers-color-scheme
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss

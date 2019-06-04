@@ -74,7 +74,7 @@ The `removeListener` function removes the native `prefers-color-scheme`
 listener, which may or may not be applied, depending on your browser support.
 This is provided to give you complete control over plugin cleanup.
 
-[cli-img]: https://img.shields.io/travis/csstools/css-prefers-color-scheme.svg
+[cli-img]: https://img.shields.io/travis/csstools/css-prefers-color-scheme/master.svg
 [cli-url]: https://travis-ci.org/csstools/css-prefers-color-scheme
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
