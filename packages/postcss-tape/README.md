@@ -312,7 +312,7 @@ postcss-tape --fixtures=path/to/tests
 
 [npm-img]: https://img.shields.io/npm/v/postcss-tape.svg
 [npm-url]: https://www.npmjs.com/package/postcss-tape
-[cli-img]: https://img.shields.io/travis/csstools/postcss-tape.svg
+[cli-img]: https://img.shields.io/travis/csstools/postcss-tape/master.svg
 [cli-url]: https://travis-ci.org/csstools/postcss-tape
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 [git-url]: https://gitter.im/postcss/postcss

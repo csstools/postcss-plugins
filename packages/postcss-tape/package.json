@@ -12,14 +12,15 @@
     "postcss-tape": "index.js"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "index.js.map"
   ],
   "scripts": {
     "build": "rollup --config --silent",
     "prepublish": "npm test",
     "pretest:tape": "npm run build",
     "test": "npm run test:js && npm run test:tape",
-    "test:js": "eslint src/*.js src/lib/*.js --cache --ignore-pattern .gitignore",
+    "test:js": "eslint src/{*,**/*}.js --cache --ignore-pattern .gitignore",
     "test:tape": "node . --plugin test/plugin.js --config test",
     "test:tape:ci": "node . --ci true --plugin test/plugin.js --config test"
   },
@@ -27,30 +28,30 @@
     "node": ">=8.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
+    "@babel/core": "^7.4.5",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
-    "eslint-config-dev": "2.0.0",
     "postcss": "^7.0.16",
-    "rollup": "^1.12.1",
+    "rollup": "^1.12.3",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-terser": "^4.0.4"
+    "rollup-plugin-terser": "^5.0.0"
   },
   "eslintConfig": {
-    "extends": "dev",
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
     "parser": "babel-eslint",
-    "rules": {
-      "complexity": [
-        1,
-        24
-      ],
-      "max-params": [
-        1,
-        4
-      ]
-    }
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "impliedStrict": true,
+      "sourceType": "module"
+    },
+    "root": true
   },
   "keywords": [
     "postcss",

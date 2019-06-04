@@ -3,7 +3,7 @@ import { terser } from 'rollup-plugin-terser';
 
 export default {
 	input: 'src/index.js',
-	output: { file: 'index.js', format: 'cjs', strict: false },
+	output: { file: 'index.js', format: 'cjs', sourcemap: true, strict: false },
 	plugins: [
 		babel({
 			plugins: [ '@babel/syntax-dynamic-import' ],
