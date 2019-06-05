@@ -16,22 +16,10 @@
 	transition-property: border-left,border-right, border-left-color, border-right-color, border-left-style, border-right-style, border-left-width, border-right-width;
 }
 
-.transition-start {
-	transition: 1s top ease,1s left ease;
-	transition: 1s margin-top ease,1s margin-left ease;
-	transition: 1s padding-top ease,1s padding-left ease;
-}
-
 .transition-block-start {
 	transition: 1s top ease;
 	transition: 1s margin-top ease;
 	transition: 1s padding-top ease;
-}
-
-.transition-end {
-	transition: 1s bottom ease,1s right ease;
-	transition: 1s margin-bottom ease,1s margin-right ease;
-	transition: 1s padding-bottom ease,1s padding-right ease;
 }
 
 .transition-inline-end {

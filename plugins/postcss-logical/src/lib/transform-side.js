@@ -35,7 +35,7 @@ export default {
 
 		const isLTR = 1 === values.length || 2 === values.length && values[0] === values[1];
 
-		return isLTR ? ltrDecls : 'ltr' === dir ? ltrDecls : 'rtl' === dir ? rtlDecls : [
+		return isLTR ? ltrDecls : dir === 'ltr' ? ltrDecls : dir === 'rtl' ? rtlDecls : [
 			cloneRule(decl, 'ltr').append(ltrDecls),
 			cloneRule(decl, 'rtl').append(rtlDecls),
 		];
@@ -46,7 +46,7 @@ export default {
 		const ltrDecl = cloneDecl(decl, '-left', decl.value);
 		const rtlDecl = cloneDecl(decl, '-right', decl.value);
 
-		return 'ltr' === dir ? ltrDecl : 'rtl' === dir ? rtlDecl : [
+		return dir === 'ltr' ? ltrDecl : dir === 'rtl' ? rtlDecl : [
 			cloneRule(decl, 'ltr').append(ltrDecl),
 			cloneRule(decl, 'rtl').append(rtlDecl)
 		];
@@ -57,45 +57,9 @@ export default {
 		const ltrDecl = cloneDecl(decl, '-right', decl.value);
 		const rtlDecl = cloneDecl(decl, '-left', decl.value);
 
-		return 'ltr' === dir ? ltrDecl : 'rtl' === dir ? rtlDecl : [
+		return dir === 'ltr' ? ltrDecl : dir === 'rtl' ? rtlDecl : [
 			cloneRule(decl, 'ltr').append(ltrDecl),
 			cloneRule(decl, 'rtl').append(rtlDecl)
-		];
-	},
-
-	// inset-start, margin-start, padding-start
-	'start': (decl, values, dir) => {
-		const ltrDecls = [
-			cloneDecl(decl, '-top', values[0]),
-			cloneDecl(decl, '-left', values[1] || values[0])
-		];
-
-		const rtlDecls = [
-			cloneDecl(decl, '-top', values[0]),
-			cloneDecl(decl, '-right', values[1] || values[0])
-		];
-
-		return 'ltr' === dir ? ltrDecls : 'rtl' === dir ? rtlDecls : [
-			cloneRule(decl, 'ltr').append(ltrDecls),
-			cloneRule(decl, 'rtl').append(rtlDecls)
-		];
-	},
-
-	// inset-end, margin-end, padding-end
-	'end': (decl, values, dir) => {
-		const ltrDecls = [
-			cloneDecl(decl, '-bottom', values[0]),
-			cloneDecl(decl, '-right', values[1] || values[0])
-		];
-
-		const rtlDecls = [
-			cloneDecl(decl, '-bottom', values[0]),
-			cloneDecl(decl, '-left', values[1] || values[0])
-		];
-
-		return 'ltr' === dir ? ltrDecls : 'rtl' === dir ? rtlDecls : [
-			cloneRule(decl, 'ltr').append(ltrDecls),
-			cloneRule(decl, 'rtl').append(rtlDecls)
 		];
 	}
 }

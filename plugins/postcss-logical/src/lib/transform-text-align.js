@@ -4,10 +4,10 @@ export default (decl, values, dir) => {
 	const lDecl = decl.clone({ value: 'left' });
 	const rDecl = decl.clone({ value: 'right' });
 
-	return /^start$/i.test(decl.value) ? 'ltr' === dir ? lDecl : 'rtl' === dir ? rDecl : [
+	return /^start$/i.test(decl.value) ? dir === 'ltr' ? lDecl : dir === 'rtl' ? rDecl : [
 		cloneRule(decl, 'ltr').append(lDecl),
 		cloneRule(decl, 'rtl').append(rDecl)
-	] : /^end$/i.test(decl.value) ? 'ltr' === dir ? rDecl : 'rtl' === dir ? lDecl : [
+	] : /^end$/i.test(decl.value) ? dir === 'ltr' ? rDecl : dir === 'rtl' ? lDecl : [
 		cloneRule(decl, 'ltr').append(rDecl),
 		cloneRule(decl, 'rtl').append(lDecl)
 	] : null;

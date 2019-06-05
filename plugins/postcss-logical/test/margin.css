@@ -21,12 +21,4 @@ test-flowing-margin {
 	margin: auto;
 	margin-inline-end: 8px;
 	margin: auto;
-	margin-start: 9px;
-	margin: auto;
-	margin-start: 10px 11px;
-	margin: auto;
-	margin-end: 12px;
-	margin: auto;
-	margin-end: 13px 14px;
-	margin: auto;
 }

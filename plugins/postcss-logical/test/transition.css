@@ -16,22 +16,10 @@
 	transition-property: border-inline, border-inline-color, border-inline-style, border-inline-width;
 }
 
-.transition-start {
-	transition: 1s inset-start ease;
-	transition: 1s margin-start ease;
-	transition: 1s padding-start ease;
-}
-
 .transition-block-start {
 	transition: 1s inset-block-start ease;
 	transition: 1s margin-block-start ease;
 	transition: 1s padding-block-start ease;
-}
-
-.transition-end {
-	transition: 1s inset-end ease;
-	transition: 1s margin-end ease;
-	transition: 1s padding-end ease;
 }
 
 .transition-inline-end {

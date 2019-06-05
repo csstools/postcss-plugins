@@ -1,272 +1,148 @@
 test-border {
-	border: 1px solid black;
-	border: logical 1px solid black;
+	border: inherit;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-block: 1px solid black;
+	border: inherit;
 	border-top: 2px solid black;
-	border-right: 3px solid black;
-	border-bottom: 2px solid black;
-	border-left: 3px solid black;
-	border: logical 2px solid black / 3px solid black;
-	border-top: 4px solid black;
-	border-right: 5px solid black;
-	border-bottom: 6px solid black;
-	border-left: 5px solid black;
-	border: logical 4px solid black / 5px solid black / 6px solid black;
-	border-top: 7px solid black;
-	border-right: 8px solid black;
-	border-bottom: 9px solid black;
-	border-left: 8px solid black;
-	border: logical 7px solid black / 8px solid black / 9px solid black / 8px solid black;
-	border-left: 10px solid black;
-	border-right: 10px solid black;
-	border-inline: 10px solid black;
-	border-left: 11px solid black;
-	border-right: 11px solid black;
-	border-inline: 11px solid black / 11px solid black;
-	border-top: 12px solid black;
-	border-bottom: 12px solid black;
-	border-block: 12px solid black;
-	border-top: 13px solid black;
-	border-bottom: 13px solid black;
-	border-block: 13px solid black / 14px solid black;
-	border-top: 15px solid black;
-	border-bottom: 16px solid black;
-}
-
-test-flowing-border:dir(ltr) {
-	border-top: 1px solid black;
-	border-left: 2px solid black;
+	border: inherit;
 	border-bottom: 3px solid black;
-	border-right: 4px solid black;
-}
-
-test-flowing-border:dir(rtl) {
-	border-top: 1px solid black;
-	border-right: 2px solid black;
-	border-bottom: 3px solid black;
+	border: inherit;
 	border-left: 4px solid black;
+	border-right: 4px solid black;
+	border-inline: 4px solid black;
+	border: inherit;
 }
 
 test-flowing-border:dir(ltr) {
-	border-left: 5px solid black;
-	border-right: 6px solid black;
+	border-left: 1px solid black;
 }
 
 test-flowing-border:dir(rtl) {
-	border-right: 5px solid black;
-	border-left: 6px solid black;
+	border-right: 1px solid black;
 }
 
 test-flowing-border:dir(ltr) {
-	border-left: 7px solid black;
+	border-right: 2px solid black;
 }
 
 test-flowing-border:dir(rtl) {
-	border-right: 7px solid black;
-}
-
-test-flowing-border:dir(ltr) {
-	border-right: 8px solid black;
-}
-
-test-flowing-border:dir(rtl) {
-	border-left: 8px solid black;
-}
-
-test-flowing-border:dir(ltr) {
-	border-top: 9px solid black;
-	border-left: 9px solid black;
-}
-
-test-flowing-border:dir(rtl) {
-	border-top: 9px solid black;
-	border-right: 9px solid black;
-}
-
-test-flowing-border:dir(ltr) {
-	border-top: 10px solid black;
-	border-left: 11px solid black;
-}
-
-test-flowing-border:dir(rtl) {
-	border-top: 10px solid black;
-	border-right: 11px solid black;
-}
-
-test-flowing-border:dir(ltr) {
-	border-bottom: 12px solid black;
-	border-right: 12px solid black;
-}
-
-test-flowing-border:dir(rtl) {
-	border-bottom: 12px solid black;
-	border-left: 12px solid black;
-}
-
-test-flowing-border:dir(ltr) {
-	border-bottom: 13px solid black;
-	border-right: 14px solid black;
-}
-
-test-flowing-border:dir(rtl) {
-	border-bottom: 13px solid black;
-	border-left: 14px solid black;
+	border-left: 2px solid black;
 }
 
 test-flowing-border {
 	border: inherit;
-	border: logical 1px solid black / 2px solid black / 3px solid black / 4px solid black;
+	border-inline-start: 1px solid black;
 	border: inherit;
-	border-inline: 5px solid black / 6px solid black;
-	border: inherit;
-	border-inline-start: 7px solid black;
-	border: inherit;
-	border-inline-end: 8px solid black;
-	border: inherit;
-	border-start: 9px solid black;
-	border: inherit;
-	border-start: 10px solid black / 11px solid black;
-	border: inherit;
-	border-end: 12px solid black;
-	border: inherit;
-	border-end: 13px solid black / 14px solid black;
+	border-inline-end: 2px solid black;
 	border: inherit;
 }
 
-test-flowing-border-color:dir(ltr) {
-	border-top-color: 1px solid black;
-	border-left-color: 2px solid black;
-	border-bottom-color: 3px solid black;
-	border-right-color: 4px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-top-color: 1px solid black;
-	border-right-color: 2px solid black;
-	border-bottom-color: 3px solid black;
-	border-left-color: 4px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-left-color: 5px solid black;
-	border-right-color: 6px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-right-color: 5px solid black;
-	border-left-color: 6px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-left-color: 7px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-right-color: 7px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-right-color: 8px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-left-color: 8px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-top-color: 9px solid black;
-	border-left-color: 9px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-top-color: 9px solid black;
-	border-right-color: 9px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-top-color: 10px solid black;
-	border-left-color: 11px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-top-color: 10px solid black;
-	border-right-color: 11px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-bottom-color: 12px solid black;
-	border-right-color: 12px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-bottom-color: 12px solid black;
-	border-left-color: 12px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-bottom-color: 13px solid black;
-	border-right-color: 14px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-bottom-color: 13px solid black;
-	border-left-color: 14px solid black;
-}
-
-test-flowing-border-color {
+test-border-color {
 	border-color: inherit;
-	border-color: logical 1px solid black / 2px solid black / 3px solid black / 4px solid black;
+	border-color: red;
+	border-color: logical red;
 	border-color: inherit;
-	border-inline-color: 5px solid black / 6px solid black;
+	border-color: orange yellow;
+	border-color: logical orange yellow;
 	border-color: inherit;
-	border-inline-start-color: 7px solid black;
+	border-color: green blue indigo;
+	border-color: logical green blue indigo;
 	border-color: inherit;
-	border-inline-end-color: 8px solid black;
+	border-top-color: violet;
+	border-bottom-color: violet;
+	border-block-color: violet;
 	border-color: inherit;
-	border-start-color: 9px solid black;
+	border-top-color: white;
 	border-color: inherit;
-	border-start-color: 10px solid black / 11px solid black;
+	border-bottom-color: black;
 	border-color: inherit;
-	border-end-color: 12px solid black;
+	border-left-color: grey;
+	border-right-color: grey;
+	border-inline-color: grey;
 	border-color: inherit;
-	border-end-color: 13px solid black / 14px solid black;
-	border-color: inherit;
+}
+
+test-flowing-border-width:dir(ltr) {
+	border-width: 1px 4px 3px 2px;
+}
+
+test-flowing-border-width:dir(rtl) {
+	border-width: 1px 2px 3px 4px;
+}
+
+test-flowing-border-width:dir(ltr) {
+	border-left-width: 2px;
+	border-right-width: 4px;
+}
+
+test-flowing-border-width:dir(rtl) {
+	border-right-width: 2px;
+	border-left-width: 4px;
+}
+
+test-flowing-border-width:dir(ltr) {
+	border-left-width: 2px;
+}
+
+test-flowing-border-width:dir(rtl) {
+	border-right-width: 2px;
+}
+
+test-flowing-border-width:dir(ltr) {
+	border-right-width: 4px;
+}
+
+test-flowing-border-width:dir(rtl) {
+	border-left-width: 4px;
+}
+
+test-flowing-border-width {
+	border-width: logical 1px 2px 3px 4px;
+	border-width: inherit;
+	border-inline-width: 2px 4px;
+	border-width: inherit;
+	border-inline-start-width: 2px;
+	border-width: inherit;
+	border-inline-end-width: 4px;
+	border-width: inherit;
 }
 
 test-flowing-border-radius:dir(ltr) {
-	border-top-left-radius: 7px;
+	border-top-left-radius: 1px;
 }
 
 test-flowing-border-radius:dir(rtl) {
-	border-top-right-radius: 7px;
+	border-top-right-radius: 1px;
 }
 
 test-flowing-border-radius:dir(ltr) {
-	border-bottom-left-radius: 8px;
+	border-top-right-radius: 2px;
 }
 
 test-flowing-border-radius:dir(rtl) {
-	border-bottom-right-radius: 8px;
+	border-top-left-radius: 2px;
 }
 
 test-flowing-border-radius:dir(ltr) {
-	border-top-right-radius: 9px;
+	border-bottom-left-radius: 3px;
 }
 
 test-flowing-border-radius:dir(rtl) {
-	border-top-left-radius: 9px;
+	border-bottom-right-radius: 3px;
 }
 
 test-flowing-border-radius:dir(ltr) {
-	border-bottom-right-radius: 10px;
+	border-bottom-right-radius: 4px;
 }
 
 test-flowing-border-radius:dir(rtl) {
-	border-bottom-left-radius: 10px;
+	border-bottom-left-radius: 4px;
 }
 
 test-flowing-border-radius {
-	border-start-start-radius: 7px;
-	border-start-end-radius: 8px;
-	border-end-start-radius: 9px;
-	border-end-end-radius: 10px;
+	border-start-start-radius: 1px;
+	border-start-end-radius: 2px;
+	border-end-start-radius: 3px;
+	border-end-end-radius: 4px;
 }

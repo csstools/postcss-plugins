@@ -2,7 +2,7 @@ test-margin {
 	margin: 1px;
 	margin: 2px 3px;
 	margin: 4px 5px 6px;
-	margin: 7px 8px 9px 8px;
+	margin: 7px 8px 9px;
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-left: 11px;
@@ -25,17 +25,5 @@ test-flowing-margin {
 	margin-left: 7px;
 	margin: auto;
 	margin-right: 8px;
-	margin: auto;
-	margin-top: 9px;
-	margin-left: 9px;
-	margin: auto;
-	margin-top: 10px;
-	margin-left: 11px;
-	margin: auto;
-	margin-bottom: 12px;
-	margin-right: 12px;
-	margin: auto;
-	margin-bottom: 13px;
-	margin-right: 14px;
 	margin: auto;
 }

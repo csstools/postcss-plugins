@@ -16,58 +16,10 @@
 	transition-property: border-inline, border-inline-color, border-inline-style, border-inline-width;
 }
 
-.transition-start:dir(ltr) {
-	transition: 1s top ease,1s left ease;
-}
-
-.transition-start:dir(rtl) {
-	transition: 1s top ease,1s right ease;
-}
-
-.transition-start:dir(ltr) {
-	transition: 1s margin-top ease,1s margin-left ease;
-}
-
-.transition-start:dir(rtl) {
-	transition: 1s margin-top ease,1s margin-right ease;
-}
-
-.transition-start:dir(ltr) {
-	transition: 1s padding-top ease,1s padding-left ease;
-}
-
-.transition-start:dir(rtl) {
-	transition: 1s padding-top ease,1s padding-right ease;
-}
-
 .transition-block-start {
 	transition: 1s inset-block-start ease;
 	transition: 1s margin-block-start ease;
 	transition: 1s padding-block-start ease;
-}
-
-.transition-end:dir(ltr) {
-	transition: 1s bottom ease,1s right ease;
-}
-
-.transition-end:dir(rtl) {
-	transition: 1s bottom ease,1s left ease;
-}
-
-.transition-end:dir(ltr) {
-	transition: 1s margin-bottom ease,1s margin-right ease;
-}
-
-.transition-end:dir(rtl) {
-	transition: 1s margin-bottom ease,1s margin-left ease;
-}
-
-.transition-end:dir(ltr) {
-	transition: 1s padding-bottom ease,1s padding-right ease;
-}
-
-.transition-end:dir(rtl) {
-	transition: 1s padding-bottom ease,1s padding-left ease;
 }
 
 .transition-inline-end:dir(ltr) {

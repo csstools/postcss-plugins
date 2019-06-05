@@ -1,5 +1,19 @@
 # Changes to PostCSS Logical Properties
 
+### 4.0.0 (June 5, 2019)
+
+- Added: Logical border-radius properties, which include
+  `border-end-end-radius`, `border-end-start-radius`, `border-start-end-radius`,
+  and `border-start-start-radius`.
+- Removed: All unknown logical properties, which include `border-end`,
+  `border-end-color`, `border-end-style`, `border-end-width`, `border-start`,
+  `border-start-color`, `border-start-style`, `border-start-width`, `inset-end`,
+  `inset-start`, `margin-end`, `margin-start`, `padding-end`, `padding-start`
+  and `border` with `logical`.
+- Updated: `transition` and `transition-property` to support the changes.
+- Updated: `postcss` to 7.0.16 (patch)
+- Updated: Node 8+ compatibility (major)
+
 ### 3.0.0 (September 20, 2018)
 
 - Added: Support for logical properties within `transition` and

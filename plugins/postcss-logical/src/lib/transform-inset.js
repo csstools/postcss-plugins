@@ -26,7 +26,7 @@ export default (decl, values, dir) => {
 		decl.clone({ prop: 'left', value: values[4] || values[2] || values[1] })
 	];
 
-	return isLTR || 'ltr' === dir ? ltrDecls : 'rtl' === dir ? rtlDecls : [
+	return isLTR || dir === 'ltr' ? ltrDecls : dir === 'rtl' ? rtlDecls : [
 		cloneRule(decl, 'ltr').append(ltrDecls),
 		cloneRule(decl, 'rtl').append(rtlDecls)
 	];

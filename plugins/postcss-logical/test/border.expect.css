@@ -1,241 +1,128 @@
 test-border {
-	border: 1px solid black;
+	border: inherit;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border: inherit;
 	border-top: 2px solid black;
-	border-right: 3px solid black;
-	border-bottom: 2px solid black;
-	border-left: 3px solid black;
-	border-top: 4px solid black;
-	border-right: 5px solid black;
-	border-bottom: 6px solid black;
-	border-left: 5px solid black;
-	border-top: 7px solid black;
-	border-right: 8px solid black;
-	border-bottom: 9px solid black;
-	border-left: 8px solid black;
-	border-left: 10px solid black;
-	border-right: 10px solid black;
-	border-left: 11px solid black;
-	border-right: 11px solid black;
-	border-top: 12px solid black;
-	border-bottom: 12px solid black;
-	border-top: 13px solid black;
-	border-bottom: 13px solid black;
-	border-top: 15px solid black;
-	border-bottom: 16px solid black;
-}
-
-test-flowing-border:dir(ltr) {
-	border-top: 1px solid black;
-	border-left: 2px solid black;
+	border: inherit;
 	border-bottom: 3px solid black;
-	border-right: 4px solid black;
-}
-
-test-flowing-border:dir(rtl) {
-	border-top: 1px solid black;
-	border-right: 2px solid black;
-	border-bottom: 3px solid black;
+	border: inherit;
 	border-left: 4px solid black;
+	border-right: 4px solid black;
+	border: inherit;
 }
 
 test-flowing-border:dir(ltr) {
-	border-left: 5px solid black;
-	border-right: 6px solid black;
+	border-left: 1px solid black;
 }
 
 test-flowing-border:dir(rtl) {
-	border-right: 5px solid black;
-	border-left: 6px solid black;
+	border-right: 1px solid black;
 }
 
 test-flowing-border:dir(ltr) {
-	border-left: 7px solid black;
+	border-right: 2px solid black;
 }
 
 test-flowing-border:dir(rtl) {
-	border-right: 7px solid black;
-}
-
-test-flowing-border:dir(ltr) {
-	border-right: 8px solid black;
-}
-
-test-flowing-border:dir(rtl) {
-	border-left: 8px solid black;
-}
-
-test-flowing-border:dir(ltr) {
-	border-top: 9px solid black;
-	border-left: 9px solid black;
-}
-
-test-flowing-border:dir(rtl) {
-	border-top: 9px solid black;
-	border-right: 9px solid black;
-}
-
-test-flowing-border:dir(ltr) {
-	border-top: 10px solid black;
-	border-left: 11px solid black;
-}
-
-test-flowing-border:dir(rtl) {
-	border-top: 10px solid black;
-	border-right: 11px solid black;
-}
-
-test-flowing-border:dir(ltr) {
-	border-bottom: 12px solid black;
-	border-right: 12px solid black;
-}
-
-test-flowing-border:dir(rtl) {
-	border-bottom: 12px solid black;
-	border-left: 12px solid black;
-}
-
-test-flowing-border:dir(ltr) {
-	border-bottom: 13px solid black;
-	border-right: 14px solid black;
-}
-
-test-flowing-border:dir(rtl) {
-	border-bottom: 13px solid black;
-	border-left: 14px solid black;
+	border-left: 2px solid black;
 }
 
 test-flowing-border {
 	border: inherit;
 	border: inherit;
 	border: inherit;
-	border: inherit;
-	border: inherit;
-	border: inherit;
-	border: inherit;
-	border: inherit;
-	border: inherit;
 }
 
-test-flowing-border-color:dir(ltr) {
-	border-top-color: 1px solid black;
-	border-left-color: 2px solid black;
-	border-bottom-color: 3px solid black;
-	border-right-color: 4px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-top-color: 1px solid black;
-	border-right-color: 2px solid black;
-	border-bottom-color: 3px solid black;
-	border-left-color: 4px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-left-color: 5px solid black;
-	border-right-color: 6px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-right-color: 5px solid black;
-	border-left-color: 6px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-left-color: 7px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-right-color: 7px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-right-color: 8px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-left-color: 8px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-top-color: 9px solid black;
-	border-left-color: 9px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-top-color: 9px solid black;
-	border-right-color: 9px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-top-color: 10px solid black;
-	border-left-color: 11px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-top-color: 10px solid black;
-	border-right-color: 11px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-bottom-color: 12px solid black;
-	border-right-color: 12px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-bottom-color: 12px solid black;
-	border-left-color: 12px solid black;
-}
-
-test-flowing-border-color:dir(ltr) {
-	border-bottom-color: 13px solid black;
-	border-right-color: 14px solid black;
-}
-
-test-flowing-border-color:dir(rtl) {
-	border-bottom-color: 13px solid black;
-	border-left-color: 14px solid black;
-}
-
-test-flowing-border-color {
+test-border-color {
 	border-color: inherit;
+	border-color: red;
 	border-color: inherit;
+	border-color: orange yellow;
 	border-color: inherit;
+	border-color: green blue indigo;
 	border-color: inherit;
+	border-top-color: violet;
+	border-bottom-color: violet;
 	border-color: inherit;
+	border-top-color: white;
 	border-color: inherit;
+	border-bottom-color: black;
 	border-color: inherit;
+	border-left-color: grey;
+	border-right-color: grey;
 	border-color: inherit;
-	border-color: inherit;
+}
+
+test-flowing-border-width:dir(ltr) {
+	border-width: 1px 4px 3px 2px;
+}
+
+test-flowing-border-width:dir(rtl) {
+	border-width: 1px 2px 3px 4px;
+}
+
+test-flowing-border-width:dir(ltr) {
+	border-left-width: 2px;
+	border-right-width: 4px;
+}
+
+test-flowing-border-width:dir(rtl) {
+	border-right-width: 2px;
+	border-left-width: 4px;
+}
+
+test-flowing-border-width:dir(ltr) {
+	border-left-width: 2px;
+}
+
+test-flowing-border-width:dir(rtl) {
+	border-right-width: 2px;
+}
+
+test-flowing-border-width:dir(ltr) {
+	border-right-width: 4px;
+}
+
+test-flowing-border-width:dir(rtl) {
+	border-left-width: 4px;
+}
+
+test-flowing-border-width {
+	border-width: inherit;
+	border-width: inherit;
+	border-width: inherit;
+	border-width: inherit;
 }
 
 test-flowing-border-radius:dir(ltr) {
-	border-top-left-radius: 7px;
+	border-top-left-radius: 1px;
 }
 
 test-flowing-border-radius:dir(rtl) {
-	border-top-right-radius: 7px;
+	border-top-right-radius: 1px;
 }
 
 test-flowing-border-radius:dir(ltr) {
-	border-bottom-left-radius: 8px;
+	border-top-right-radius: 2px;
 }
 
 test-flowing-border-radius:dir(rtl) {
-	border-bottom-right-radius: 8px;
+	border-top-left-radius: 2px;
 }
 
 test-flowing-border-radius:dir(ltr) {
-	border-top-right-radius: 9px;
+	border-bottom-left-radius: 3px;
 }
 
 test-flowing-border-radius:dir(rtl) {
-	border-top-left-radius: 9px;
+	border-bottom-right-radius: 3px;
 }
 
 test-flowing-border-radius:dir(ltr) {
-	border-bottom-right-radius: 10px;
+	border-bottom-right-radius: 4px;
 }
 
 test-flowing-border-radius:dir(rtl) {
-	border-bottom-left-radius: 10px;
+	border-bottom-left-radius: 4px;
 }

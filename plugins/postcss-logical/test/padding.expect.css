@@ -2,7 +2,7 @@ test-padding {
 	padding: 1px;
 	padding: 2px 3px;
 	padding: 4px 5px 6px;
-	padding: 7px 8px 9px 8px;
+	padding: 7px 8px 9px;
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-left: 11px;
@@ -49,54 +49,18 @@ test-flowing-padding:dir(rtl) {
 	padding-left: 8px;
 }
 
-test-flowing-padding:dir(ltr) {
-	padding-top: 9px;
-	padding-left: 9px;
-}
-
-test-flowing-padding:dir(rtl) {
-	padding-top: 9px;
-	padding-right: 9px;
-}
-
-test-flowing-padding:dir(ltr) {
-	padding-top: 10px;
-	padding-left: 11px;
-}
-
-test-flowing-padding:dir(rtl) {
-	padding-top: 10px;
-	padding-right: 11px;
-}
-
-test-flowing-padding:dir(ltr) {
-	padding-bottom: 12px;
-	padding-right: 12px;
-}
-
-test-flowing-padding:dir(rtl) {
-	padding-bottom: 12px;
-	padding-left: 12px;
-}
-
-test-flowing-padding:dir(ltr) {
-	padding-bottom: 13px;
-	padding-right: 14px;
-}
-
-test-flowing-padding:dir(rtl) {
-	padding-bottom: 13px;
-	padding-left: 14px;
-}
-
 test-flowing-padding {
 	padding: auto;
 	padding: auto;
 	padding: auto;
 	padding: auto;
 	padding: auto;
+	padding-start: 9px;
 	padding: auto;
+	padding-start: 10px 11px;
 	padding: auto;
+	padding-end: 12px;
 	padding: auto;
+	padding-end: 13px 14px;
 	padding: auto;
 }

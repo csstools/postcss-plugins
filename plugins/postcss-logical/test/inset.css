@@ -1,4 +1,5 @@
 test-inset {
+	inset: 0;
 	inset: logical 1px;
 	inset: logical 2px 3px;
 	inset: logical 4px 5px 6px;
@@ -14,13 +15,5 @@ test-flowing-inset {
 	inset-inline-start: 7px;
 	inset: auto;
 	inset-inline-end: 8px;
-	inset: auto;
-	inset-start: 9px;
-	inset: auto;
-	inset-start: 10px 11px;
-	inset: auto;
-	inset-end: 12px;
-	inset: auto;
-	inset-end: 13px 14px;
 	inset: auto;
 }

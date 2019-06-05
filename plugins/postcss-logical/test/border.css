@@ -1,59 +1,55 @@
 test-border {
-	border: logical 1px solid black;
-	border: logical 2px solid black / 3px solid black;
-	border: logical 4px solid black / 5px solid black / 6px solid black;
-	border: logical 7px solid black / 8px solid black / 9px solid black / 8px solid black;
-	border-inline: 10px solid black;
-	border-inline: 11px solid black / 11px solid black;
-	border-block: 12px solid black;
-	border-block: 13px solid black / 14px solid black;
-	border-block-start: 15px solid black;
-	border-block-end: 16px solid black;
+	border: inherit;
+	border-block: 1px solid black;
+	border: inherit;
+	border-block-start: 2px solid black;
+	border: inherit;
+	border-block-end: 3px solid black;
+	border: inherit;
+	border-inline: 4px solid black;
+	border: inherit;
 }
 
 test-flowing-border {
 	border: inherit;
-	border: logical 1px solid black / 2px solid black / 3px solid black / 4px solid black;
+	border-inline-start: 1px solid black;
 	border: inherit;
-	border-inline: 5px solid black / 6px solid black;
-	border: inherit;
-	border-inline-start: 7px solid black;
-	border: inherit;
-	border-inline-end: 8px solid black;
-	border: inherit;
-	border-start: 9px solid black;
-	border: inherit;
-	border-start: 10px solid black / 11px solid black;
-	border: inherit;
-	border-end: 12px solid black;
-	border: inherit;
-	border-end: 13px solid black / 14px solid black;
+	border-inline-end: 2px solid black;
 	border: inherit;
 }
 
-test-flowing-border-color {
+test-border-color {
 	border-color: inherit;
-	border-color: logical 1px solid black / 2px solid black / 3px solid black / 4px solid black;
+	border-color: logical red;
 	border-color: inherit;
-	border-inline-color: 5px solid black / 6px solid black;
+	border-color: logical orange yellow;
 	border-color: inherit;
-	border-inline-start-color: 7px solid black;
+	border-color: logical green blue indigo;
 	border-color: inherit;
-	border-inline-end-color: 8px solid black;
+	border-block-color: violet;
 	border-color: inherit;
-	border-start-color: 9px solid black;
+	border-block-start-color: white;
 	border-color: inherit;
-	border-start-color: 10px solid black / 11px solid black;
+	border-block-end-color: black;
 	border-color: inherit;
-	border-end-color: 12px solid black;
+	border-inline-color: grey;
 	border-color: inherit;
-	border-end-color: 13px solid black / 14px solid black;
-	border-color: inherit;
+}
+
+test-flowing-border-width {
+	border-width: logical 1px 2px 3px 4px;
+	border-width: inherit;
+	border-inline-width: 2px 4px;
+	border-width: inherit;
+	border-inline-start-width: 2px;
+	border-width: inherit;
+	border-inline-end-width: 4px;
+	border-width: inherit;
 }
 
 test-flowing-border-radius {
-	border-start-start-radius: 7px;
-	border-start-end-radius: 8px;
-	border-end-start-radius: 9px;
-	border-end-end-radius: 10px;
+	border-start-start-radius: 1px;
+	border-start-end-radius: 2px;
+	border-end-start-radius: 3px;
+	border-end-end-radius: 4px;
 }

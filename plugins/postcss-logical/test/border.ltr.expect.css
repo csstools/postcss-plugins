@@ -1,88 +1,60 @@
 test-border {
-	border: 1px solid black;
+	border: inherit;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border: inherit;
 	border-top: 2px solid black;
-	border-right: 3px solid black;
-	border-bottom: 2px solid black;
-	border-left: 3px solid black;
-	border-top: 4px solid black;
-	border-right: 5px solid black;
-	border-bottom: 6px solid black;
-	border-left: 5px solid black;
-	border-top: 7px solid black;
-	border-right: 8px solid black;
-	border-bottom: 9px solid black;
-	border-left: 8px solid black;
-	border-left: 10px solid black;
-	border-right: 10px solid black;
-	border-left: 11px solid black;
-	border-right: 11px solid black;
-	border-top: 12px solid black;
-	border-bottom: 12px solid black;
-	border-top: 13px solid black;
-	border-bottom: 13px solid black;
-	border-top: 15px solid black;
-	border-bottom: 16px solid black;
+	border: inherit;
+	border-bottom: 3px solid black;
+	border: inherit;
+	border-left: 4px solid black;
+	border-right: 4px solid black;
+	border: inherit;
 }
 
 test-flowing-border {
 	border: inherit;
-	border-top: 1px solid black;
-	border-left: 2px solid black;
-	border-bottom: 3px solid black;
-	border-right: 4px solid black;
+	border-left: 1px solid black;
 	border: inherit;
-	border-left: 5px solid black;
-	border-right: 6px solid black;
-	border: inherit;
-	border-left: 7px solid black;
-	border: inherit;
-	border-right: 8px solid black;
-	border: inherit;
-	border-top: 9px solid black;
-	border-left: 9px solid black;
-	border: inherit;
-	border-top: 10px solid black;
-	border-left: 11px solid black;
-	border: inherit;
-	border-bottom: 12px solid black;
-	border-right: 12px solid black;
-	border: inherit;
-	border-bottom: 13px solid black;
-	border-right: 14px solid black;
+	border-right: 2px solid black;
 	border: inherit;
 }
 
-test-flowing-border-color {
+test-border-color {
 	border-color: inherit;
-	border-top-color: 1px solid black;
-	border-left-color: 2px solid black;
-	border-bottom-color: 3px solid black;
-	border-right-color: 4px solid black;
+	border-color: red;
 	border-color: inherit;
-	border-left-color: 5px solid black;
-	border-right-color: 6px solid black;
+	border-color: orange yellow;
 	border-color: inherit;
-	border-left-color: 7px solid black;
+	border-color: green blue indigo;
 	border-color: inherit;
-	border-right-color: 8px solid black;
+	border-top-color: violet;
+	border-bottom-color: violet;
 	border-color: inherit;
-	border-top-color: 9px solid black;
-	border-left-color: 9px solid black;
+	border-top-color: white;
 	border-color: inherit;
-	border-top-color: 10px solid black;
-	border-left-color: 11px solid black;
+	border-bottom-color: black;
 	border-color: inherit;
-	border-bottom-color: 12px solid black;
-	border-right-color: 12px solid black;
+	border-left-color: grey;
+	border-right-color: grey;
 	border-color: inherit;
-	border-bottom-color: 13px solid black;
-	border-right-color: 14px solid black;
-	border-color: inherit;
+}
+
+test-flowing-border-width {
+	border-width: 1px 4px 3px 2px;
+	border-width: inherit;
+	border-left-width: 2px;
+	border-right-width: 4px;
+	border-width: inherit;
+	border-left-width: 2px;
+	border-width: inherit;
+	border-right-width: 4px;
+	border-width: inherit;
 }
 
 test-flowing-border-radius {
-	border-top-left-radius: 7px;
-	border-bottom-left-radius: 8px;
-	border-top-right-radius: 9px;
-	border-bottom-right-radius: 10px;
+	border-top-left-radius: 1px;
+	border-top-right-radius: 2px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 4px;
 }

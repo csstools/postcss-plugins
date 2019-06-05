@@ -2,7 +2,7 @@ test-margin {
 	margin: 1px;
 	margin: 2px 3px;
 	margin: 4px 5px 6px;
-	margin: 7px 8px 9px 8px;
+	margin: 7px 8px 9px;
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-left: 11px;
@@ -49,51 +49,7 @@ test-flowing-margin:dir(rtl) {
 	margin-left: 8px;
 }
 
-test-flowing-margin:dir(ltr) {
-	margin-top: 9px;
-	margin-left: 9px;
-}
-
-test-flowing-margin:dir(rtl) {
-	margin-top: 9px;
-	margin-right: 9px;
-}
-
-test-flowing-margin:dir(ltr) {
-	margin-top: 10px;
-	margin-left: 11px;
-}
-
-test-flowing-margin:dir(rtl) {
-	margin-top: 10px;
-	margin-right: 11px;
-}
-
-test-flowing-margin:dir(ltr) {
-	margin-bottom: 12px;
-	margin-right: 12px;
-}
-
-test-flowing-margin:dir(rtl) {
-	margin-bottom: 12px;
-	margin-left: 12px;
-}
-
-test-flowing-margin:dir(ltr) {
-	margin-bottom: 13px;
-	margin-right: 14px;
-}
-
-test-flowing-margin:dir(rtl) {
-	margin-bottom: 13px;
-	margin-left: 14px;
-}
-
 test-flowing-margin {
-	margin: auto;
-	margin: auto;
-	margin: auto;
-	margin: auto;
 	margin: auto;
 	margin: auto;
 	margin: auto;
