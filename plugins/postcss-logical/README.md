@@ -184,8 +184,8 @@ the `dir` option will be ignored.
 
 [css-img]: https://cssdb.org/badge/logical-properties-and-values.svg
 [css-url]: https://cssdb.org/#logical-properties-and-values
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-logical.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-logical
+[cli-img]: https://img.shields.io/travis/csstools/postcss-logical.svg
+[cli-url]: https://travis-ci.org/csstools/postcss-logical
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-logical.svg
@@ -196,4 +196,4 @@ the `dir` option will be ignored.
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Logical Properties and Values]: https://github.com/jonathantneal/postcss-logical
+[PostCSS Logical Properties and Values]: https://github.com/csstools/postcss-logical

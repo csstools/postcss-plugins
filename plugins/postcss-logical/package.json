@@ -4,9 +4,9 @@
   "description": "Use logical properties and values in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "jonathantneal/postcss-logical",
-  "homepage": "https://github.com/jonathantneal/postcss-logical#readme",
-  "bugs": "https://github.com/jonathantneal/postcss-logical/issues",
+  "repository": "csstools/postcss-logical",
+  "homepage": "https://github.com/csstools/postcss-logical#readme",
+  "bugs": "https://github.com/csstools/postcss-logical/issues",
   "main": "index.cjs.js",
   "module": "index.esm.mjs",
   "files": [
