@@ -1,10 +1,10 @@
 export default {
 	// block-size
 	'block-size': decl => {
-		decl.prop = 'width';
+		decl.prop = 'height';
 	},
 	// inline-size
 	'inline-size': decl => {
-		decl.prop = 'height';
+		decl.prop = 'width';
 	}
 }

@@ -184,7 +184,7 @@ the `dir` option will be ignored.
 
 [css-img]: https://cssdb.org/badge/logical-properties-and-values.svg
 [css-url]: https://cssdb.org/#logical-properties-and-values
-[cli-img]: https://img.shields.io/travis/csstools/postcss-logical.svg
+[cli-img]: https://img.shields.io/travis/csstools/postcss-logical/master.svg
 [cli-url]: https://travis-ci.org/csstools/postcss-logical
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss

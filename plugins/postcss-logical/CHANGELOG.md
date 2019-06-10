@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Properties
 
+### 4.0.1 (June 10, 2019)
+
+- Fixed: An issue with `block-size` and `inline-size` being miscalculated.
+
 ### 4.0.0 (June 5, 2019)
 
 - Added: Logical border-radius properties, which include
