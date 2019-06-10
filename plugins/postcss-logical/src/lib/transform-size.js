@@ -1,10 +1,8 @@
-export default {
-	// block-size
-	'block-size': decl => {
-		decl.prop = 'height';
-	},
-	// inline-size
-	'inline-size': decl => {
-		decl.prop = 'width';
-	}
+import matchSize from './match-size';
+
+export default decl => {
+	decl.prop = decl.prop.replace(
+		matchSize,
+		($0, minmax, flow) => `${minmax||''}${'block' === flow ? 'height' : 'width'}`
+	);
 }

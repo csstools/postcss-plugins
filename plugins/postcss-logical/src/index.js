@@ -23,8 +23,8 @@ const transforms = {
 	'text-align': transformTextAlign,
 
 	// Logical Height and Logical Width
-	'block-size': transformSize['block-size'],
-	'inline-size': transformSize['inline-size'],
+	'block-size': transformSize, 'max-block-size': transformSize, 'min-block-size': transformSize,
+	'inline-size': transformSize, 'max-inline-size': transformSize, 'min-inline-size': transformSize,
 
 	// Flow-relative Margins
 	'margin': transformDirectionalShorthands, 'margin-inline': transformSide['inline'], 'margin-inline-end': transformSide['inline-end'], 'margin-inline-start': transformSide['inline-start'], 'margin-block': transformSide['block'], 'margin-block-end': transformSide['block-end'], 'margin-block-start': transformSide['block-start'],

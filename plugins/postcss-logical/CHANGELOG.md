@@ -1,5 +1,10 @@
 # Changes to PostCSS Logical Properties
 
+### 4.0.2 (June 10, 2019)
+
+- Fixed: Restored transforms for `max-block-size`, `max-inline-size`,
+  `min-block-size`, and `min-inline-size`.
+
 ### 4.0.1 (June 10, 2019)
 
 - Fixed: An issue with `block-size` and `inline-size` being miscalculated.

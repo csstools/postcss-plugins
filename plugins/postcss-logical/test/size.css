@@ -1,4 +1,14 @@
 test-size {
-	block-size: auto;
-	inline-size: auto;
+	block-size: 320px;
+	inline-size: 180px;
+}
+
+text-max-size {
+	max-block-size: 320px;
+	max-inline-size: 180px;
+}
+
+text-min-size {
+	min-block-size: 320px;
+	min-inline-size: 180px;
 }
