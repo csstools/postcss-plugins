@@ -5,15 +5,15 @@ const isBrowser = String(process.env.NODE_ENV).includes('browser');
 const isLegacy = String(process.env.NODE_ENV).includes('legacy');
 const isCLI = String(process.env.NODE_ENV).includes('cli');
 const isPostCSS = String(process.env.NODE_ENV).includes('postcss');
-const targets = isCLI || isPostCSS || !isBrowser ? { node: 6 } : 'last 2 versions, not dead';
+const targets = isCLI || isPostCSS || !isBrowser ? { node: 8 } : 'last 2 versions, not dead';
 
 const input = `src/${isCLI ? 'cli' : isPostCSS ? 'postcss' : isLegacy ? 'browser-legacy' : 'browser'}.js`;
 const output = isCLI
-	? { file: 'cli.js', format: 'cjs' }
+	? { file: 'cli.js', format: 'cjs', sourcemap: true, strict: false }
 : isBrowser && isLegacy
-	? { file: 'browser-legacy.js', format: 'cjs' }
+	? { file: 'browser-legacy.js', format: 'cjs', sourcemap: true, strict: false }
 : isBrowser
-	? { file: 'browser.js', format: 'cjs' }
+	? { file: 'browser.js', format: 'cjs', sourcemap: true, strict: false }
 : isPostCSS
 	? [
 	{ file: 'postcss.js', format: 'cjs', sourcemap: true },
@@ -46,10 +46,10 @@ const plugins = [
 
 export default { input, output, plugins };
 
-function addHashBang() {
+function addHashBang () {
 	return {
 		name: 'add-hash-bang',
-		renderChunk(code) {
+		renderChunk (code) {
 			const updatedCode = `#!/usr/bin/env node\n\n${code}`;
 
 			return updatedCode;
@@ -57,10 +57,10 @@ function addHashBang() {
 	};
 }
 
-function trimContentForBrowser() {
+function trimContentForBrowser () {
 	return {
 		name: 'trim-content-for-browser',
-		renderChunk(code) {
+		renderChunk (code) {
 			const updatedCode = code
 				.replace(/'use strict';\n*/, '')
 				.replace(/\n*module\.exports = cssBlankPseudo;/, '');

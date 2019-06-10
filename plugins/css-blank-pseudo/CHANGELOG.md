@@ -1,5 +1,10 @@
 # Changes to CSS Blank Pseudo
 
+### 1.0.0 (June 10, 2019)
+
+- Updated: `postcss` to 7.0.16 (patch)
+- Updated: Node 8+ compatibility (major)
+
 ### 0.1.4 (November 17, 2018)
 
 - Update documentation

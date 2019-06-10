@@ -1,4 +1,4 @@
-export default function cssBlankPseudo(document, opts) {
+export default function cssBlankPseudo (document, opts) {
 	// configuration
 	const className = Object(opts).className;
 	const attr = Object(opts).attr || 'blank';
@@ -58,7 +58,7 @@ export default function cssBlankPseudo(document, opts) {
 	}).observe(document, { childList: true, subtree: true });
 
 	// update a form control element’s css-blank attribute
-	function configureCssBlankAttribute() {
+	function configureCssBlankAttribute () {
 		if (this.value) {
 			if (attr) {
 				this.removeAttribute(attr);
@@ -80,11 +80,11 @@ export default function cssBlankPseudo(document, opts) {
 	}
 
 	// observe changes to the "value" property on an HTML Element
-	function observeValueOfHTMLElement(HTMLElement) {
+	function observeValueOfHTMLElement (HTMLElement) {
 		const descriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'value');
 		const nativeSet = descriptor.set;
 
-		descriptor.set = function set(value) { // eslint-disable-line no-unused-vars
+		descriptor.set = function set (value) { // eslint-disable-line no-unused-vars
 			nativeSet.apply(this, arguments);
 
 			configureCssBlankAttribute.apply(this);
