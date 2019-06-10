@@ -41,7 +41,7 @@
     "node": ">=8.0.0"
   },
   "dependencies": {
-    "postcss": "^7.0.16"
+    "postcss": "^7.0.17"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -52,10 +52,9 @@
     "get-stdin": "^7.0.0",
     "postcss-tape": "^5.0.0",
     "pre-commit": "^1.2.2",
-    "rollup": "^1.12.3",
+    "rollup": "^1.14.6",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-terser": "^5.0.0",
-    "uglify-js": "^3.5.15"
+    "rollup-plugin-terser": "^5.0.0"
   },
   "eslintConfig": {
     "env": {
