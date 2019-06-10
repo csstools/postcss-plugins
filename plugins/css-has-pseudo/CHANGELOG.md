@@ -1,5 +1,11 @@
 # Changes to CSS Has Pseudo
 
+### 1.0.0 (June 10, 2019)
+
+- Updated: `postcss-selector-parser` to 6.0.2 (major)
+- Updated: `postcss` to 7.0.16 (patch)
+- Updated: Node 8+ compatibility (major)
+
 ### 0.10.0 (December 11, 2018)
 
 - Fixed an issue where inaccessible rules would crash the library

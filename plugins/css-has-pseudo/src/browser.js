@@ -1,4 +1,4 @@
-export default function cssHasPseudo(document) {
+export default function cssHasPseudo (document) {
 	const observedItems = [];
 
 	// document.createAttribute() doesn't support `:` in the name. innerHTML does
@@ -32,7 +32,7 @@ export default function cssHasPseudo(document) {
 	document.addEventListener('input', transformObservedItems);
 
 	// transform observed css rules
-	function transformObservedItems() {
+	function transformObservedItems () {
 		requestAnimationFrame(() => {
 			observedItems.forEach(
 				item => {
@@ -85,7 +85,7 @@ export default function cssHasPseudo(document) {
 	}
 
 	// remove any observed cssrules that no longer apply
-	function cleanupObservedCssRules() {
+	function cleanupObservedCssRules () {
 		[].push.apply(
 			observedItems,
 			observedItems.splice(0).filter(
@@ -97,7 +97,7 @@ export default function cssHasPseudo(document) {
 	}
 
 	// walk a stylesheet to collect observed css rules
-	function walkStyleSheet(styleSheet) {
+	function walkStyleSheet (styleSheet) {
 		try {
 			// walk a css rule to collect observed css rules
 			[].forEach.call(styleSheet.cssRules || [], rule => {

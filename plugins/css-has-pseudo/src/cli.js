@@ -1,8 +1,10 @@
+/* eslint no-console: 0 */
+
 import fs from 'fs';
 import plugin from './postcss';
 
 // get process and plugin options from the command line
-const fileRegExp = /^[\w\/.]+$/;
+const fileRegExp = /^[\w/.]+$/;
 const argRegExp = /^--(\w+)=("|')?(.+)\2$/;
 const relaxedJsonPropRegExp = /(['"])?([a-z0-9A-Z_]+)(['"])?:/g;
 const relaxedJsonValueRegExp = /("[a-z0-9A-Z_]+":\s*)(?!true|false|null|\d+)'?([A-z0-9]+)'?([,}])/g;
@@ -83,7 +85,7 @@ const argo = process.argv.slice(2).reduce(
 	}
 );
 
-function readFile(pathname) {
+function readFile (pathname) {
 	return new Promise((resolve, reject) => {
 		fs.readFile(pathname, 'utf8', (error, data) => {
 			if (error) {
@@ -95,7 +97,7 @@ function readFile(pathname) {
 	});
 }
 
-function writeFile(pathname, data) {
+function writeFile (pathname, data) {
 	return new Promise((resolve, reject) => {
 		fs.writeFile(pathname, data, (error, content) => {
 			if (error) {
@@ -107,7 +109,7 @@ function writeFile(pathname, data) {
 	});
 }
 
-function getStdin() {
+function getStdin () {
 	return new Promise(resolve => {
 		let data = '';
 
@@ -119,7 +121,7 @@ function getStdin() {
 			process.stdin.on('readable', () => {
 				let chunk;
 
-				while (chunk = process.stdin.read()) {
+				while ((chunk = process.stdin.read())) {
 					data += chunk;
 				}
 			});

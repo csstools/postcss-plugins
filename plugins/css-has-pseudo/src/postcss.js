@@ -20,7 +20,7 @@ export default postcss.plugin('css-has-pseudo', opts => {
 							.replace(/%5B/g, '[')
 							.replace(/%5D/g, ']')
 							.replace(/%2C/g, ',')
-							.replace(/[():%\[\],]/g, '\\$&')
+							.replace(/[():%[\],]/g, '\\$&')
 						});
 
 						if (isNotHas) {
@@ -43,6 +43,6 @@ export default postcss.plugin('css-has-pseudo', opts => {
 	};
 });
 
-function checkIfParentIsNot(selector) {
+function checkIfParentIsNot (selector) {
 	return Object(Object(selector.parent).parent).type === 'pseudo' && selector.parent.parent.value === ':not';
 }
