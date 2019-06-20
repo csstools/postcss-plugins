@@ -1,6 +1,6 @@
 {
   "name": "postcss-custom-properties",
-  "version": "8.0.11",
+  "version": "9.0.0",
   "description": "Use Custom Properties Queries in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "contributors": [
@@ -26,11 +26,11 @@
     "test:tape": "postcss-tape"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "dependencies": {
     "postcss": "^7.0.17",
-    "postcss-values-parser": "^2.0.1"
+    "postcss-values-parser": "^3.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -38,7 +38,7 @@
     "@babel/preset-env": "^7.4.5",
     "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0",
-    "postcss-tape": "^4.0.0",
+    "postcss-tape": "^5.0.0",
     "pre-commit": "^1.2.2",
     "rollup": "^1.15.6",
     "rollup-plugin-babel": "^4.3.2"

@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Properties
 
+### 9.0.0 (June 20, 2019)
+
+- Updated: `postcss-values-parser` to 3.0.4 (major)
+- Updated: Node 8+ compatibility (major)
+
 ### 8.0.11 (June 20, 2019)
 
 - Added: Synchronous transforms when async is unnecessary (thank @eteeselink)

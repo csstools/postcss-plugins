@@ -1,4 +1,4 @@
-import { parse } from './postcss-values-parser';
+import { parse } from 'postcss-values-parser';
 import { isBlockIgnored } from './is-ignored';
 
 // return custom selectors from the css root, conditionally removing them

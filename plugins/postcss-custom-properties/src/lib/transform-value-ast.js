@@ -3,7 +3,7 @@ export default function transformValueAST(root, customProperties) {
 		root.nodes.slice().forEach(child => {
 			if (isVarFunction(child)) {
 				// eslint-disable-next-line no-unused-vars
-				const [propertyNode, comma, ...fallbacks] = child.nodes.slice(1, -1);
+				const [propertyNode, comma, ...fallbacks] = child.nodes;
 				const { value: name } = propertyNode;
 
 				if (name in Object(customProperties)) {
@@ -45,7 +45,7 @@ function retransformValueAST(root, customProperties, withoutProperty) {
 const varRegExp = /^var$/i;
 
 // whether the node is a var() function
-const isVarFunction = node => node.type === 'func' && varRegExp.test(node.value) && Object(node.nodes).length > 0;
+const isVarFunction = node => node.type === 'func' && varRegExp.test(node.name) && Object(node.nodes).length > 0;
 
 // return an array with its nodes cloned, preserving the raw
 const asClonedArrayWithBeforeSpacing = (array, beforeSpacing) => {
