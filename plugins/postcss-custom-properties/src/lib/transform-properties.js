@@ -1,4 +1,4 @@
-import { parse } from 'postcss-values-parser';
+import { parse } from './postcss-values-parser';
 import transformValueAST from './transform-value-ast';
 import { isRuleIgnored } from './is-ignored';
 

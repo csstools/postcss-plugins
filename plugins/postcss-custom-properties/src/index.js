@@ -17,8 +17,17 @@ export default postcss.plugin('postcss-custom-properties', opts => {
 	// promise any custom selectors are imported
 	const customPropertiesPromise = getCustomPropertiesFromImports(importFrom);
 
-	return async root => {
+	// synchronous transform
+	const syncTransform = root => {
+		const customProperties = getCustomPropertiesFromRoot(root, { preserve });
+
+		transformProperties(root, customProperties, { preserve });
+	};
+
+	// asynchronous transform
+	const asyncTransform = async root => {
 		const customProperties = Object.assign(
+			{},
 			await customPropertiesPromise,
 			getCustomPropertiesFromRoot(root, { preserve })
 		);
@@ -27,4 +36,9 @@ export default postcss.plugin('postcss-custom-properties', opts => {
 
 		transformProperties(root, customProperties, { preserve });
 	};
+
+	// whether to return synchronous function if no asynchronous operations are requested
+	const canReturnSyncFunction = importFrom.length === 0 && exportTo.length === 0;
+
+	return canReturnSyncFunction ? syncTransform : asyncTransform;
 });

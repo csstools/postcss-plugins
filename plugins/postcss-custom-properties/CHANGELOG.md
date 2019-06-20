@@ -1,5 +1,11 @@
 # Changes to PostCSS Custom Properties
 
+### 8.0.11 (June 20, 2019)
+
+- Added: Synchronous transforms when async is unnecessary (thank @eteeselink)
+- Fixed: Unexpected mutations to imported Custom Properties (thank @EECOLOR)
+- Fixed: Transforms throwing over unknown Custom Properties
+
 ### 8.0.10 (April 1, 2019)
 
 - Added: Support for ignoring lines and or blocks using
