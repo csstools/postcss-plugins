@@ -1,9 +1,15 @@
 # Changes to PostCSS Custom Properties
 
-### 9.0.0 (June 20, 2019)
+### 9.0.1 (June 20, 2019)
 
 - Updated: `postcss-values-parser` to 3.0.4 (major)
 - Updated: Node 8+ compatibility (major)
+
+> This release is identical to v9.0.0, only `npm publish` failed to publish v9.0.0 and threw the following error:
+> ```
+> You cannot publish over the previously published versions: 9.0.0.
+> ```
+> I did not want this issue to distract me, and so I thoughtfully and impatiently published v9.0.0 as v9.0.1.
 
 ### 8.0.11 (June 20, 2019)
 
