@@ -26,7 +26,7 @@ scope and avoid unrelated commits.
    cd postcss-env-function
 
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream git@github.com:jonathantneal/postcss-env-function.git
+   git remote add upstream git@github.com:csstools/postcss-env-function.git
 
    # Install the tools necessary for testing
    npm install

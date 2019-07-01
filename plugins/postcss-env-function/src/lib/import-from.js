@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import valueParser from 'postcss-values-parser';
+import { parse } from 'postcss-values-parser';
 
 /* Import Custom Properties from Object
 /* ========================================================================== */
@@ -12,7 +12,7 @@ function importEnvironmentVariablesFromObject(object) {
 	);
 
 	for (const key in environmentVariables) {
-		environmentVariables[key] = valueParser(environmentVariables[key]).parse().nodes;
+		environmentVariables[key] = parse(environmentVariables[key]).nodes;
 	}
 
 	return environmentVariables;

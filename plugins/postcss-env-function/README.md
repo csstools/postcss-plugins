@@ -123,8 +123,8 @@ postcssCustomProperties({
 See example imports written in [JS](test/import-variables.js) and
 [JSON](test/import-variables.json).
 
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-env-function.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-env-function
+[cli-img]: https://img.shields.io/travis/csstools/postcss-env-function/master.svg
+[cli-url]: https://travis-ci.org/csstools/postcss-env-function
 [css-img]: https://cssdb.org/badge/environment-variables.svg
 [css-url]: https://cssdb.org/#environment-variables
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
@@ -134,4 +134,4 @@ See example imports written in [JS](test/import-variables.js) and
 
 [CSS Environment Variables]: https://drafts.csswg.org/css-env-1/
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Environment Variables]: https://github.com/jonathantneal/postcss-env-function
+[PostCSS Environment Variables]: https://github.com/csstools/postcss-env-function
