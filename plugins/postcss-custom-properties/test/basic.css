@@ -59,3 +59,10 @@ html {
 .test--linear-gradient {
 	background-image: linear-gradient(to right, var(--color, transparent) 0%, var(--color, transparent) 100%);
 }
+
+.test--loose-formatting {
+	color: var(
+		--color,
+		blue
+	);
+}

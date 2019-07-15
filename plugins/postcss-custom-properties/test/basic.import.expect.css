@@ -69,3 +69,11 @@ html {
 	background-image: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(255, 0, 0) 100%);
 	background-image: linear-gradient(to right, var(--color, transparent) 0%, var(--color, transparent) 100%);
 }
+
+.test--loose-formatting {
+	color: rgb(255, 0, 0);
+	color: var(
+		--color,
+		blue
+	);
+}

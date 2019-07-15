@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 9.0.2 (July 15, 2019)
+
+- Updated: `postcss-values-parser` to 3.0.5 (patch)
+
 ### 9.0.1 (June 20, 2019)
 
 - Updated: `postcss-values-parser` to 3.0.4 (major)
