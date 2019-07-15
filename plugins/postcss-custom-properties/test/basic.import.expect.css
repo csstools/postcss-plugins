@@ -71,9 +71,9 @@ html {
 }
 
 .test--loose-formatting {
-	color: rgb(255, 0, 0);
+	color: rgb(255, 0, 0)/*rtl:red*/;
 	color: var(
 		--color,
 		blue
-	);
+	)/*rtl:red*/;
 }

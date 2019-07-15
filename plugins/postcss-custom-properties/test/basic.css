@@ -64,5 +64,5 @@ html {
 	color: var(
 		--color,
 		blue
-	);
+	)/*rtl:red*/;
 }

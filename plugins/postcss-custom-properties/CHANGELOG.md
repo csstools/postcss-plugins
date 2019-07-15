@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 9.1.0 (July 15, 2019)
+
+- Added: Support for preserving trailing comments within a declaration.
+
 ### 9.0.2 (July 15, 2019)
 
 - Updated: `postcss-values-parser` to 3.0.5 (patch)
