@@ -52,7 +52,7 @@ Options may be passed through `package.json` using `postcssConfig`:
 Options may be passed through arguments:
 
 ```sh
-postcss-tape --plugin=path/to/plugin.js --config=path/to/.tape.js
+postcss-tape --plugin path/to/plugin.js --config path/to/.tape.js
 ```
 
 ## Test Options
@@ -261,7 +261,7 @@ Options can be passed into the `postcss-tape` function or defined in
 The path to the plugin being tested.
 
 ```bash
-postcss-tape --plugin=path/to/plugin.js
+postcss-tape --plugin path/to/plugin.js
 ```
 
 ```json
@@ -279,7 +279,7 @@ By default, `plugin` is the resolved file from the current working directory.
 The path to the configuration file used to run tests.
 
 ```bash
-postcss-tape --config=path/to/config.js
+postcss-tape --config path/to/config.js
 ```
 
 ```json
@@ -299,7 +299,7 @@ default, `config` is the current working directory.
 The path to the fixtures used by tests.
 
 ```bash
-postcss-tape --fixtures=path/to/tests
+postcss-tape --fixtures path/to/tests
 ```
 
 ```json
