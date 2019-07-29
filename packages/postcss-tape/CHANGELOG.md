@@ -1,5 +1,10 @@
 # Changes to PostCSS Tape
 
+### 5.0.1 (July 29, 2019)
+
+- Fixed: Tests for an error
+- Fixed: Documentation errors
+
 ### 5.0.0 (May 16, 2019)
 
 - Updated: Node 8+ compatibility (major)
