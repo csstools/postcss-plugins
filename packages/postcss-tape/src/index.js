@@ -13,7 +13,11 @@ getOptions().then(
 		for (const name in options.config) {
 			const test = options.config[name];
 
-			const testPlugin = test.plugin instanceof Function ? test.plugin : options.plugin;
+			const testPlugin = typeof Object(test.plugin).process === 'function'
+				? test.plugin
+			: typeof test.plugin === 'function'
+				? { process: test.plugin }
+			: options.plugin;
 
 			const testBase = name.split(':')[0];
 			const testFull = name.split(':').join('.');
