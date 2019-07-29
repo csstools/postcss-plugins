@@ -17,12 +17,12 @@ module.exports = {
 			require('fs').unlinkSync('test/basic.custom-result.css');
 		}
 	},
-	'basic:errors': {
+	'basic:error': {
 		message: 'supports failing',
 		options: {
 			shouldFail: true
 		},
-		errors: {
+		error: {
 			message: /should fail/
 		}
 	},

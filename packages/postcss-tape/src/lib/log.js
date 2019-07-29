@@ -23,17 +23,17 @@ export function pass (name, message, ci) {
 	}
 }
 
-export function fail (name, message, error, ci) {
+export function fail (name, message, details, ci) {
 	clearInterval(interval);
 
 	if (ci) {
-		stdout.write(` ${color('red', cross)}\n${error}\n`);
+		stdout.write(` ${color('red', cross)}\n${details}\n`);
 	} else {
 		// reset current stream line
 		readline.clearLine(stdout, 0);
 		readline.cursorTo(stdout, 0);
 
-		stdout.write(`${color('red', cross)} ${name} ${color('dim', message)}\n${error}\n`);
+		stdout.write(`${color('red', cross)} ${name} ${color('dim', message)}\n${details}\n`);
 	}
 }
 

@@ -1,11 +1,13 @@
-import getOptions from './lib/get-options';
-import path from 'path';
+import { exitFail, exitPass } from './lib/exit';
 import { readOrWriteFile, safelyReadFile, writeFile } from './lib/utils';
 import * as log from './lib/log';
+import getErrorMessage from './lib/get-error-message';
+import getOptions from './lib/get-options';
+import path from 'path';
 
 getOptions().then(
 	async options => {
-		let hadErrors = false;
+		let hadError = false;
 
 		// runner
 		for (const name in options.config) {
@@ -87,31 +89,55 @@ getOptions().then(
 
 				log.pass(pluginName, test.message, options.ci);
 			} catch (error) {
-				const areExpectedErrors = test.errors === Object(test.errors) && Object.keys(test.errors).every(
-					key => test.errors[key] instanceof RegExp
-						? test.errors[key].test(error[key])
-					: test.errors[key] === error[key]
-				);
+				if ('error' in test) {
+					const isObjectError = test.error === Object(test.error);
 
-				if (!areExpectedErrors) {
-					log.fail(pluginName, test.message, error, options.ci);
+					if (isObjectError) {
+						const isExpectedError = Object.keys(test.error).every(
+							key => test.error[key] instanceof RegExp
+								? test.error[key].test(Object(error)[key])
+							: test.error[key] === Object(error)[key]
+						);
 
-					hadErrors = true;
+						if (isExpectedError) {
+							log.pass(pluginName, test.message, options.ci);
+						} else {
+							const reportedError = Object.keys(test.error).reduce(
+								(reportedError, key) => Object.assign(reportedError, { [key]: Object(error)[key] }),
+								{}
+							);
 
-					if (options.ci) {
-						break;
+							hadError = error;
+
+							log.fail(pluginName, test.message, `  Expected Error: ${JSON.stringify(test.error)}\n  Received Error: ${JSON.stringify(reportedError)}`, options.ci);
+						}
+					} else {
+						const isExpectedError = typeof test.error === 'boolean' && test.error;
+
+						if (isExpectedError) {
+							log.pass(pluginName, test.message, options.ci);
+						} else {
+							hadError = error;
+
+							log.fail(pluginName, test.message, `  Expected Error`, options.ci);
+						}
+
+						if (options.ci) {
+							break;
+						}
 					}
 				} else {
-					log.pass(pluginName, test.message, options.ci);
+					hadError = error;
+
+					log.fail(pluginName, test.message, getErrorMessage(error), options.ci);
 				}
 			}
 		}
 
-		if (hadErrors) {
-			throw new Error();
+		if (hadError) {
+			throw hadError;
 		}
 	}
-).then(
-	process.exit.bind(process, 0),
-	process.exit.bind(process, 1)
-)
+).then(exitPass, exitFail);
+
+

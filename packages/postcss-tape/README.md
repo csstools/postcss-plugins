@@ -129,12 +129,12 @@ object used to match warnings given by the test.
 
 ### error
 
-An object used to match errors thrown by the test.
+An object used to match an error thrown by the test.
 
 ```js
 {
   'some-test': {
-    errors: {
+    error: {
       message: 'You should not have done that'
     }
   }
@@ -142,8 +142,8 @@ An object used to match errors thrown by the test.
 ```
 
 In that example, the error expects a field of `message` to be the string
-`You should not have done that`. In order that errors can be inspecific,
-regular expressions may also be used, so that something like
+`You should not have done that`. So that an error can be inspecific, regular
+expressions may also be used, so that something like
 `message: /^You should not have done/` would also match
 `You should not have done this`.
 
