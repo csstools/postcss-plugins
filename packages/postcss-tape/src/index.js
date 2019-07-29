@@ -90,7 +90,7 @@ getOptions().then(
 				const areExpectedErrors = test.errors === Object(test.errors) && Object.keys(test.errors).every(
 					key => test.errors[key] instanceof RegExp
 						? test.errors[key].test(error[key])
-					: test.error[key] === error[key]
+					: test.errors[key] === error[key]
 				);
 
 				if (!areExpectedErrors) {
