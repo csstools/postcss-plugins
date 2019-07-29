@@ -10,6 +10,17 @@ export default function transformRuleWithinRule(node) {
 	// update the selectors of the node to be merged with the parent
 	node.selectors = mergeSelectors(parent.selectors, node.selectors);
 
+	// merge similar rules back together
+	// eslint-disable-next-line no-extra-parens
+	const areSameRule = (
+		node.type === 'rule' && parent.type === 'rule' && node.selector === parent.selector ||
+		node.type === 'atrule' && parent.type === 'atrule' && node.params === parent.params
+	);
+
+	if (areSameRule) {
+		node.append(...parent.nodes);
+	}
+
 	// conditionally cleanup an empty parent rule
 	cleanupParent(parent);
 }

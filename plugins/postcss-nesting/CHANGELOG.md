@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### 7.0.1 (July 29, 2018)
+
+- Fixed: Non-breaking issue with rules being unnecessarily split
+
 ### 7.0.0 (September 17, 2018)
 
 - Updated: Support for PostCSS v7+
