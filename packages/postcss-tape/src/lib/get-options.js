@@ -18,30 +18,24 @@ export default async function getOptions () {
 		)
 	);
 
-	try {
-		options.plugin = await import(
-			path.resolve(options.plugin)
-		);
-	} catch (error1) {
-		throw error1;
-	}
+	const importedPluginFile = path.resolve(options.plugin);
+	const importedPlugin = await import(importedPluginFile);
+
+	options.plugin = importedPlugin;
 
 	try {
-		options.config = await import(
-			path.extname(options.config)
-				? path.resolve(options.config)
-			: path.resolve(options.config, 'postcss-tape.config.js')
-		);
-	} catch (error1) {
-		try {
-			options.config = await import(
-				path.extname(options.config)
-					? path.resolve(options.config)
-				: path.resolve(options.config, '.tape.js')
-			);
-		} catch (error2) {
-			throw error2;
-		}
+		const importedConfigFile = path.extname(options.config)
+			? path.resolve(options.config)
+		: path.resolve(options.config, 'postcss-tape.config.js');
+
+		const importedConfig = await import(importedConfigFile);
+
+		options.config = importedConfig.default || importedConfig;
+	} catch (ignoredError) {
+		const importedConfigFile = path.resolve(options.config, '.tape.js');
+		const importedConfig = await import(importedConfigFile);
+
+		options.config = importedConfig.default || importedConfig;
 	}
 
 	return options;
