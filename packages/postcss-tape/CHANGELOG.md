@@ -1,5 +1,9 @@
 # Changes to PostCSS Tape
 
+### 5.0.2 (July 29, 2019)
+
+- Fixed: Issue loading a test plugin
+
 ### 5.0.1 (July 29, 2019)
 
 - Fixed: Tests for an error
