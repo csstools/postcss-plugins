@@ -93,6 +93,8 @@ test-flowing-border-width {
 	border-width: inherit;
 	border-width: inherit;
 	border-width: inherit;
+	border-top-width: 2px;
+	border-bottom-width: 4px;
 }
 
 test-flowing-border-radius:dir(ltr) {

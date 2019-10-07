@@ -11,7 +11,7 @@ export default {
 		}),
 		decl.clone({
 			prop: `border-bottom${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
-			value: values[0]
+			value: values[1] || values[0]
 		})
 	],
 

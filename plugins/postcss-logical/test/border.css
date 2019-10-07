@@ -45,6 +45,7 @@ test-flowing-border-width {
 	border-width: inherit;
 	border-inline-end-width: 4px;
 	border-width: inherit;
+	border-block-width: 2px 4px;
 }
 
 test-flowing-border-radius {
