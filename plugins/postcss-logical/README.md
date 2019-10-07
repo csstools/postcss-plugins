@@ -105,7 +105,7 @@ properties:
 
 #### Logical Sizes
 
-- `block-size`, `inline-size`
+- `block-size`, `max-block-size`, `min-block-size`, `inline-size`, `max-inline-size`, `min-inline-size`
 
 #### Flow-Relative Values
 
