@@ -84,6 +84,14 @@ module.exports = {
 			expect: 'basic.import.expect.css',
 			result: 'basic.import.result.css'
 		},
+		'basic:import-css-from-multiple-files': {
+			message: 'supports { importFrom: ["test/empty.css", "test/import-selectors.css"] } usage',
+			options: {
+				importFrom: ["test/empty.css", "test/import-selectors.css"]
+			},
+			expect: 'basic.import.expect.css',
+			result: 'basic.import.result.css'
+		},
 		'basic:import-css-from-type': {
 			message: 'supports { importFrom: [ { from: "test/import-selectors.css", type: "css" } ] } usage',
 			options: {

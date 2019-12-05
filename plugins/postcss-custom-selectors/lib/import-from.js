@@ -81,7 +81,8 @@ export default function importCustomSelectorsFromSources(sources) {
 		const type = (opts.type || path.extname(from).slice(1)).toLowerCase();
 
 		return { type, from };
-	}).reduce(async (customSelectors, source) => {
+	}).reduce(async (customSelectorsPromise, source) => {
+		const customSelectors = await customSelectorsPromise
 		const { type, from } = await source;
 
 		if (type === 'ast') {
@@ -101,7 +102,7 @@ export default function importCustomSelectorsFromSources(sources) {
 		}
 
 		return Object.assign(customSelectors, importCustomSelectorsFromObject(await source));
-	}, {});
+	}, Promise.resolve({}));
 }
 
 /* Helper utilities
