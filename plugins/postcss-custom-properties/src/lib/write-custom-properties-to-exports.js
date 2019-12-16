@@ -110,7 +110,10 @@ export default function writeCustomPropertiesToExports(customProperties, destina
 
 const defaultCustomPropertiesToJSON = customProperties => {
 	return Object.keys(customProperties).reduce((customPropertiesJSON, key) => {
-		customPropertiesJSON[key] = String(customProperties[key]);
+		const valueNodes = customProperties[key];
+		customPropertiesJSON[key] = valueNodes.map((propertyObject) => {
+			return propertyObject.toString();
+		}).join(' ');
 
 		return customPropertiesJSON;
 	}, {});

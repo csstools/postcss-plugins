@@ -16,6 +16,7 @@ module.exports = {
 					'--color': 'rgb(255, 0, 0)',
 					'--color-2': 'yellow',
 					'--ref-color': 'var(--color)',
+					'--margin': '0 10px 20px 30px',
 					'--z-index': 10
 				}
 			}
@@ -30,6 +31,7 @@ module.exports = {
 						'--color': 'rgb(255, 0, 0)',
 						'--color-2': 'yellow',
 						'--ref-color': 'var(--color)',
+						'--margin': '0 10px 20px 30px',
 						'--z-index': 10
 					}
 				};
