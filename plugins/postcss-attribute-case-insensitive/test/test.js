@@ -1,7 +1,7 @@
 import postcss from 'postcss';
 import { expect } from 'chai';
 
-import plugin from '../';
+import plugin from '..';
 
 const test = (input, output, opts, done) => {
 	postcss([
