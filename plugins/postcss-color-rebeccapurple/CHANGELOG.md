@@ -1,3 +1,8 @@
+# 5.0.0 - 2020-01-29
+
+- Updated: Support for Node v10+
+- Updated: PostCSS Values Parser v3+
+
 # 4.0.1 - 2018-09-18
 
 - Updated: PostCSS Values Parser v2+

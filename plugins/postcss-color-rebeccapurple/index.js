@@ -11,10 +11,10 @@ const regexp = /(^|[^\w-])rebeccapurple([^\w-]|$)/
  */
 module.exports = postcss.plugin("postcss-color-rebeccapurple", () => (style) => {
   style.walkDecls((decl) => {
-    const value = decl.value;
+    const value = decl.value
 
     if (value && regexp.test(value)) {
-      const valueAST = valueParser(value).parse()
+      const valueAST = valueParser.parse(value)
 
       valueAST.walk(node => {
         if (node.type === "word" && node.value === "rebeccapurple") {
