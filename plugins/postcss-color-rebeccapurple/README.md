@@ -2,6 +2,8 @@
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS `rebeccapurple` color](https://www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple) to more compatible CSS (rgb()).
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-rebeccapurple.png)](https://caniuse.com/#feat=css-rebeccapurple)
+
 ## Why this plugin ?
 
 If you did some CSS, I'm sure you know who [Eric Meyer](https://en.wikipedia.org/wiki/Eric_A._Meyer) is, & what he did for this language.
