@@ -9,6 +9,8 @@
 using the `image-set()` function in CSS, following the [CSS Images]
 specification.
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-image-set.png)](https://caniuse.com/#feat=css-image-set)
+
 ```pcss
 .example {
   background-image: image-set(
