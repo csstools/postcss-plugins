@@ -10,6 +10,8 @@ CSS, following the [Selectors Level 4 specification].
 
 It is the companion to the [focus-visible polyfill].
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-focus-visible.png)](https://caniuse.com/#feat=css-focus-visible)
+
 ```css
 :focus:not(:focus-visible) {
   outline: none;
