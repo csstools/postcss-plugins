@@ -7,6 +7,8 @@
 [CSS Has Pseudo] lets you style elements relative to other elements in CSS,
 following the [Selectors Level 4] specification.
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-has.png)](https://caniuse.com/#feat=css-has)
+
 ```css
 a:has(> img) {
   /* style links that contain an image */
