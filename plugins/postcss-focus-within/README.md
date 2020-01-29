@@ -10,6 +10,8 @@ following the [Selectors Level 4 specification].
 
 It is the companion to the [focus-within polyfill].
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-focus-within.png)](https://caniuse.com/#feat=css-focus-within)
+
 ```css
 .my-form-field:focus-within label {
   background-color: yellow;
