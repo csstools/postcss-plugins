@@ -7,6 +7,8 @@
 [Prefers Color Scheme] lets you use light and dark color schemes in all
 browsers, following the [Media Queries] specification.
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/prefers-color-scheme.png)](https://caniuse.com/#feat=prefers-color-scheme)
+
 ## Usage
 
 From the command line, transform CSS files that use `prefers-color-scheme`
