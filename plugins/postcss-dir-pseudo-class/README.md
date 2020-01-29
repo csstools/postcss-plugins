@@ -8,6 +8,8 @@
 [PostCSS Dir Pseudo Class] lets you style by directionality using the `:dir()`
 pseudo-class in CSS, following the [Selectors] specification.
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-dir-pseudo.png)](https://caniuse.com/#feat=css-dir-pseudo)
+
 ```pcss
 article h3:dir(rtl) {
   margin-right: 10px;
