@@ -2,7 +2,7 @@
 
 [PostCSS] plugin to support [case insensitive attributes](https://www.w3.org/TR/selectors4/#attribute-case).
 
-!['Can I use' table](https://caniuse.bitsofco.de/image/css-case-insensitive.png)
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-case-insensitive.png)](https://caniuse.com/#feat=css-case-insensitive)
 
 [PostCSS]: https://github.com/postcss/postcss
 [ci-img]:  https://travis-ci.org/Semigradsky/postcss-attribute-case-insensitive.svg
