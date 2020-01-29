@@ -4,6 +4,8 @@
 
 http://dev.w3.org/csswg/selectors-4/#negation
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-not-sel-list.png)](https://caniuse.com/#feat=css-not-sel-list)
+
 ## Installation
 
 ```console
