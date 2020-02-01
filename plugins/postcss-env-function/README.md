@@ -121,7 +121,7 @@ postcssCustomProperties({
 ```
 
 See example imports written in [JS](test/import-variables.js) and
-[JSON](test/import-variables.json).
+[JSON](test/import-variables.json).  Currently only valid [custom property names] (beginning with `--`) are accepted.  Not all valid [declaration value names] are accepted.
 
 [cli-img]: https://img.shields.io/travis/csstools/postcss-env-function/master.svg
 [cli-url]: https://travis-ci.org/csstools/postcss-env-function
@@ -135,3 +135,6 @@ See example imports written in [JS](test/import-variables.js) and
 [CSS Environment Variables]: https://drafts.csswg.org/css-env-1/
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Environment Variables]: https://github.com/csstools/postcss-env-function
+
+[custom property names]: https://drafts.csswg.org/css-variables-1/#typedef-custom-property-name
+[declaration value names]: https://drafts.csswg.org/css-syntax-3/#typedef-declaration-value
