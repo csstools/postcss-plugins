@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 9.1.1 (February 20, 2020)
+
+- Fixed: Preserve spaces in multi-part values ([#203](https://github.com/postcss/postcss-custom-properties/pull/203))
+
 ### 9.1.0 (July 15, 2019)
 
 - Added: Support for preserving trailing comments within a declaration.
