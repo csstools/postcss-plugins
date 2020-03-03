@@ -46,3 +46,17 @@ test :matches(test :focus-within :focus-within test) test {
 :focus-withinignore {
 	order: 3;
 }
+
+.escaped\:focus-within,
+.escaped\:times\:two\:focus-within,
+.escaped\:focus-within[focus-within],
+.escaped\:times\:two[focus-within] {
+	order: 4;
+}
+
+.escaped\:focus-within,
+.escaped\:times\:two\:focus-within,
+.escaped\:focus-within:focus-within,
+.escaped\:times\:two:focus-within {
+	order: 4;
+}

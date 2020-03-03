@@ -1,6 +1,6 @@
 import postcss from 'postcss';
 
-const selectorRegExp = /:focus-within([^\w-]|$)/gi;
+const selectorRegExp = /(?<!\\):focus-within([^\w-]|$)/gi;
 
 export default postcss.plugin('postcss-focus-within', opts => {
 	const replaceWith = String(Object(opts).replaceWith || '[focus-within]');
