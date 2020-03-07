@@ -12,6 +12,11 @@ html {
 	color: var(--color);
 }
 
+:root,
+[data-theme=light] {
+	--theme-color: #053;
+}
+
 .ignore-line {
 	/* postcss-custom-properties: ignore next */
 	color: var(--color);
@@ -77,4 +82,9 @@ html {
 		--color,
 		blue
 	)/*rtl:red*/;
+}
+
+.test--combined-selector {
+	color: #053;
+	color: var(--theme-color);
 }

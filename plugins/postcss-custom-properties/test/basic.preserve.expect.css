@@ -55,3 +55,7 @@
 .test--loose-formatting {
 	color: rgb(255, 0, 0)/*rtl:red*/;
 }
+
+.test--combined-selector {
+	color: #053;
+}
