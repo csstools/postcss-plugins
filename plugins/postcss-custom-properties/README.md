@@ -8,6 +8,8 @@
 [PostCSS Custom Properties] lets you use Custom Properties in CSS, following
 the [CSS Custom Properties] specification.
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-variables.png)](https://caniuse.com/#feat=css-variables)
+
 ```pcss
 :root {
   --color: red;
