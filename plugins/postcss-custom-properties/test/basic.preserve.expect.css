@@ -28,6 +28,10 @@
 	color: rgb(255, 0, 0);
 }
 
+.test--color_w_vars {
+	color: hsl(0, 100%, 50%);
+}
+
 .test--circular_var {
 	color: var(--circular);
 }
