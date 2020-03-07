@@ -46,3 +46,17 @@ test :matches(test :focus-visible :focus-visible test) test {
 :focus-visibleignore {
 	order: 3;
 }
+
+.escaped\:focus-visible,
+.escaped\:times\:two\:focus-visible,
+.escaped\:focus-visible[focus-visible],
+.escaped\:times\:two[focus-visible] {
+	order: 4;
+}
+
+.escaped\:focus-visible,
+.escaped\:times\:two\:focus-visible,
+.escaped\:focus-visible:focus-visible,
+.escaped\:times\:two:focus-visible {
+	order: 4;
+}

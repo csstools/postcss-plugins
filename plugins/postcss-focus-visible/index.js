@@ -1,6 +1,6 @@
 import postcss from 'postcss';
 
-const selectorRegExp = /:focus-visible([^\w-]|$)/gi;
+const selectorRegExp = /(?<!\\):focus-visible([^\w-]|$)/gi;
 
 export default postcss.plugin('postcss-focus-visible', opts => {
 	const replaceWith = String(Object(opts).replaceWith || '.focus-visible');
