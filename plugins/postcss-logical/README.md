@@ -9,6 +9,8 @@
 physical, direction and dimension mappings in CSS, following the
 [CSS Logical Properties and Values] specification.
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-logical-props.png)](https://caniuse.com/#feat=css-logical-props)
+
 ```pcss
 .banner {
   color: #222222;
