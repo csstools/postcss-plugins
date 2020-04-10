@@ -1,19 +1,19 @@
 .test-lab {
-	color: lab(40 56.6 39);
-	color: lab(40 56.6 39 / 1);
-	color: lab(40 56.6 39 / .5);
-	color: lab(40 56.6 39 / 100%);
-	color: lab(40 56.6 39 / 50%);
-	color: lab(100 50 0);
+	color: lab(40% 56.6 39);
+	color: lab(40% 56.6 39 / 1);
+	color: lab(40% 56.6 39 / .5);
+	color: lab(40% 56.6 39 / 100%);
+	color: lab(40% 56.6 39 / 50%);
+	color: lab(100% 50 0);
 }
 
 .test-lch {
-	color: lch(40 68.8 34.5);
-	color: lch(40 68.8 34.5 / 1);
-	color: lch(40 68.8 34.5 / .5);
-	color: lch(40 68.8 34.5 / 100%);
-	color: lch(40 68.8 34.5 / 50%);
-	color: lch(100 50 0);
+	color: lch(40% 68.8 34.5);
+	color: lch(40% 68.8 34.5 / 1);
+	color: lch(40% 68.8 34.5 / .5);
+	color: lch(40% 68.8 34.5 / 100%);
+	color: lch(40% 68.8 34.5 / 50%);
+	color: lch(100% 50 0);
 }
 
 .test-gray {

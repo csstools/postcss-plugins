@@ -60,6 +60,7 @@ export default postcss.plugin('postcss-lab-function', opts => {
 							)
 
 							children[0].value = String(rgbValues[0]);
+							children[0].unit = '';
 							children[1].value = String(rgbValues[1]);
 							children[2].value = String(rgbValues[2]);
 
@@ -135,8 +136,8 @@ const isHue = node => isCalc(node) || node.type === 'number' && hueUnitMatch.tes
 const isNumber = node => isCalc(node) || node.type === 'number' && node.unit === '';
 const isPercentage = node => isCalc(node) || node.type === 'number' && node.unit === '%';
 const isSlash = node => node.type === 'operator' && node.value === '/';
-const functionalLABMatch = [isNumber, isNumber, isNumber, isSlash, isAlphaValue];
-const functionalLCHMatch = [isNumber, isNumber, isHue, isSlash, isAlphaValue];
+const functionalLABMatch = [isPercentage, isNumber, isNumber, isSlash, isAlphaValue];
+const functionalLCHMatch = [isPercentage, isNumber, isHue, isSlash, isAlphaValue];
 const functionalGrayMatch = [isNumber, isSlash, isAlphaValue];
 const matchFunctionalLAB = children => children.every(
 	(child, index) => typeof functionalLABMatch[index] === 'function' && functionalLABMatch[index](child)
