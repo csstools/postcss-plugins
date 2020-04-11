@@ -10,8 +10,8 @@ CSS, following the [CSS Color] specification.
 
 ```pcss
 :root {
-  --firebrick: lab(40 56.6 39);
-  --firebrick-a50: lch(40 68.8 34.5 / 50%);
+  --firebrick: lab(40% 56.6 39);
+  --firebrick-a50: lch(40% 68.8 34.5 / 50%);
   --gray-40: gray(40);
   --gray-40a50: gray(40 / .5);
 }
@@ -72,17 +72,17 @@ postcssLabFunction({ preserve: true })
 
 ```pcss
 :root {
-  --firebrick: lab(40 56.6 39);
-  --firebrick-a50: lch(40 68.8 34.5 / 50%);
+  --firebrick: lab(40% 56.6 39);
+  --firebrick-a50: lch(40% 68.8 34.5 / 50%);
 }
 
 /* becomes */
 
 :root {
   --firebrick: rgb(178, 34, 34);
-  --firebrick: lab(40 56.6 39);
+  --firebrick: lab(40% 56.6 39);
   --firebrick-a50: rgba(178, 34, 34, .5);
-  --firebrick-a50: lch(40 68.8 34.5 / 50%);
+  --firebrick-a50: lch(40% 68.8 34.5 / 50%);
 }
 ```
 
