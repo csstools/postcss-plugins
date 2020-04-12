@@ -15,11 +15,3 @@
 	color: lch(40% 68.8 34.5 / 50%);
 	color: lch(100% 50 0);
 }
-
-.test-gray {
-	color: gray(40);
-	color: gray(40 / 1);
-	color: gray(40 / .5);
-	color: gray(40 / 100%);
-	color: gray(40 / 50%);
-}

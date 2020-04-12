@@ -1,19 +1,18 @@
 # PostCSS Lab Function [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![NPM Version][npm-img]][npm-url]
-[![CSS Standard Status][css-img]][css-url]
-[![Build Status][cli-img]][cli-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-lab-function.svg" height="20">][npm-url]
+[<img alt="CSS Standard Status" src="https://cssdb.org/badge/lab-function.svg" height="20">][css-url]
+[<img alt="build status" src="https://img.shields.io/travis/jonathantneal/postcss-lab-function/master.svg" height="20">][cli-url]
+[<img alt="support chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
-[PostCSS Lab Function] lets you use `lab`, `lch`, and `gray` color functions in
-CSS, following the [CSS Color] specification.
+
+  [PostCSS Lab Function] lets you use `lab` and `lch` color functions in
+  CSS, following the [CSS Color] specification.
 
 ```pcss
 :root {
   --firebrick: lab(40% 56.6 39);
   --firebrick-a50: lch(40% 68.8 34.5 / 50%);
-  --gray-40: gray(40);
-  --gray-40a50: gray(40 / .5);
 }
 
 /* becomes */
@@ -21,8 +20,6 @@ CSS, following the [CSS Color] specification.
 :root {
   --firebrick: rgb(178, 34, 34);
   --firebrick-a50: rgba(178, 34, 34, .5);
-  --gray-40: rgb(94,94,94);
-  --gray-40a50: rgba(94,94,94, .5);
 }
 ```
 
@@ -86,13 +83,9 @@ postcssLabFunction({ preserve: true })
 }
 ```
 
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-lab-function.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-lab-function
-[css-img]: https://cssdb.org/badge/lab-function.svg
 [css-url]: https://cssdb.org/#lab-function
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
-[npm-img]: https://img.shields.io/npm/v/postcss-lab-function.svg
 [npm-url]: https://www.npmjs.com/package/postcss-lab-function
 
 [CSS Color]: https://drafts.csswg.org/css-color/#specifying-lab-lch
