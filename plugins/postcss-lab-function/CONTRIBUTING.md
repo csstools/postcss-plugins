@@ -26,7 +26,7 @@ scope and avoid unrelated commits.
    cd postcss-lab-function
 
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream git@github.com:jonathantneal/postcss-lab-function.git
+   git remote add upstream git@github.com:csstools/postcss-lab-function.git
 
    # Install the tools necessary for testing
    npm install

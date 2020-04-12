@@ -1,12 +1,12 @@
 {
   "name": "postcss-lab-function",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Use lab() and lch() color functions in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "jonathantneal/postcss-lab-function",
-  "homepage": "https://github.com/jonathantneal/postcss-lab-function#readme",
-  "bugs": "https://github.com/jonathantneal/postcss-lab-function/issues",
+  "repository": "csstools/postcss-lab-function",
+  "homepage": "https://github.com/csstools/postcss-lab-function#readme",
+  "bugs": "https://github.com/csstools/postcss-lab-function/issues",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.mjs",
   "files": [
@@ -17,6 +17,7 @@
     "build:watch": "npx rollup -c .rollup.js --watch",
     "lint": "npx eslint --cache src",
     "lint:fix": "npx eslint --cache --fix",
+    "pretest": "npm install && npm run build",
     "test": "npm run lint && npm run tape",
     "tape": "npx postcss-tape"
   },
@@ -37,17 +38,23 @@
     "rollup": "^2.6.0",
     "rollup-plugin-babel": "^4.4.0"
   },
-  "eslintConfig": {
-    "parser": "babel-eslint",
-    "ignorePatterns": [
-      "dist",
-      "node_modules"
-    ]
-  },
   "babel": {
     "presets": [
-      "@babel/env"
+      [
+        "@babel/env",
+        {
+          "targets": "maintained node versions"
+        }
+      ]
     ]
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "parser": "babel-eslint"
   },
   "rollup": {
     "input": "src/index.js",
