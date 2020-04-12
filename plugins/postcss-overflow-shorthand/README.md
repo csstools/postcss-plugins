@@ -8,6 +8,8 @@
 [PostCSS Overflow Shorthand] lets you use the `overflow` shorthand in CSS,
 following the [CSS Overflow] specification.
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-overflow.png)](https://caniuse.com/#feat=css-overflow)
+
 ```pcss
 html {
   overflow: hidden auto;
