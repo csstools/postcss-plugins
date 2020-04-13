@@ -26,7 +26,7 @@ scope and avoid unrelated commits.
    cd postcss-focus-within
 
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream git@github.com:jonathantneal/postcss-focus-within.git
+   git remote add upstream git@github.com:csstools/postcss-focus-within.git
 
    # Install the tools necessary for testing
    npm install
