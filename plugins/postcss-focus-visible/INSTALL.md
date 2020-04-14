@@ -165,6 +165,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Focus Visible]: https://github.com/jonathantneal/postcss-focus-visible
+[PostCSS Focus Visible]: https://github.com/csstools/postcss-focus-visible
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired
