@@ -9,7 +9,7 @@ const onCSSDeclaration = decl => {
 	if (hasAnyColorFunction(originalValue)) {
 		const valueAST = parse(originalValue)
 
-		valueAST.walkFuncs(onCSSFunction)
+		valueAST.walkType('func', onCSSFunction)
 
 		const modifiedValue = String(valueAST)
 
