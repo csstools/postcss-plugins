@@ -1,5 +1,11 @@
 # Changes to PostCSS Color Functional Notation
 
+### 3.0.0 (April 25, 2020)
+
+- Updated: Support for Node 10+
+- Updated: `postcss` to 7.0.27 (patch)
+- Updated: `postcss-values-parser` to 3.2.0 (minor)
+
 ### 2.0.1 (September 18, 2018)
 
 - Updated: PostCSS Values Parser 2 (patch for this project)

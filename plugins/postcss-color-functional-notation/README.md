@@ -1,9 +1,9 @@
 # PostCSS Color Functional Notation [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![NPM Version][npm-img]][npm-url]
-[![CSS Standard Status][css-img]][css-url]
-[![Build Status][cli-img]][cli-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="NPM Version" src="https://img.shields.io/npm/v/postcss-color-functional-notation.svg" height="20">][npm-url]
+[<img alt="CSS Standard Status" src="https://cssdb.org/badge/lab-function.svg" height="20">][css-url]
+[<img alt="Build Status" src="https://img.shields.io/travis/csstools/postcss-color-functional-notation/master.svg" height="20">][cli-url]
+[<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
 [PostCSS Color Functional Notation] lets you use space and slash separated
 color notation in CSS, following the [CSS Color] specification.
@@ -91,13 +91,9 @@ postcssImageSetFunction({ preserve: true })
 }
 ```
 
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-color-functional-notation.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-color-functional-notation
-[css-img]: https://cssdb.org/badge/color-functional-notation.svg
+[cli-url]: https://travis-ci.org/csstools/postcss-color-functional-notation
 [css-url]: https://cssdb.org/#color-functional-notation
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
-[npm-img]: https://img.shields.io/npm/v/postcss-color-functional-notation.svg
 [npm-url]: https://www.npmjs.com/package/postcss-color-functional-notation
 
 [CSS Color]: https://drafts.csswg.org/css-color/#ref-for-funcdef-rgb%E2%91%A1%E2%91%A0
@@ -105,4 +101,4 @@ postcssImageSetFunction({ preserve: true })
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Color Functional Notation]: https://github.com/jonathantneal/postcss-color-functional-notation
+[PostCSS Color Functional Notation]: https://github.com/csstools/postcss-color-functional-notation

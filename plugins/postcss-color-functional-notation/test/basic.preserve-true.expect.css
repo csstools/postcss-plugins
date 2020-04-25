@@ -1,11 +1,11 @@
 .test-rgb {
 	color: rgb(178, 34, 34);
 	color: rgb(178 34 34);
-	color: rgba(178, 34, 34, 1);
+	color: rgb(178, 34, 34);
 	color: rgb(178 34 34 / 1);
 	color: rgba(178, 34, 34, .5);
 	color: rgb(178 34 34 / .5);
-	color: rgba(178, 34, 34, 1);
+	color: rgb(178, 34, 34);
 	color: rgb(178 34 34 / 100%);
 	color: rgba(178, 34, 34, 0.5);
 	color: rgb(178 34 34 / 50%);
@@ -14,7 +14,7 @@
 .test-rgba {
 	color: rgb(178, 34, 34);
 	color: rgba(178 34 34);
-	color: rgba(178, 34, 34, 1);
+	color: rgb(178, 34, 34);
 	color: rgba(178 34 34 / 1);
 	color: rgba(178, 34, 34, .5);
 	color: rgba(178 34 34 / .5);
@@ -23,7 +23,7 @@
 .test-rgb-percentages {
 	color: rgb(178, 34, 34);
 	color: rgba(70% 13.5% 13.5%);
-	color: rgba(178, 34, 34, 1);
+	color: rgb(178, 34, 34);
 	color: rgba(70% 13.5% 13.5% / 100%);
 	color: rgba(178, 34, 34, 0.5);
 	color: rgba(70% 13.5% 13.5% / 50%);
@@ -36,11 +36,11 @@
 	color: hsl(120deg 100% 50%);
 	color: hsl(120, 100%, 50%);
 	color: hsl(120 100% 50%);
-	color: hsla(120, 100%, 50%, 1);
+	color: hsl(120, 100%, 50%);
 	color: hsl(120 100% 50% / 1);
 	color: hsla(120, 100%, 50%, .5);
 	color: hsl(120 100% 50% / .5);
-	color: hsla(120, 100%, 50%, 1);
+	color: hsl(120, 100%, 50%);
 	color: hsl(120 100% 50% / 100%);
 	color: hsla(120, 100%, 50%, 0.5);
 	color: hsl(120 100% 50% / 50%);
@@ -51,11 +51,11 @@
 .test-hsla {
 	color: hsl(120, 100%, 50%);
 	color: hsla(120 100% 50%);
-	color: hsla(120, 100%, 50%, 1);
+	color: hsl(120, 100%, 50%);
 	color: hsla(120 100% 50% / 1);
 	color: hsla(120, 100%, 50%, .5);
 	color: hsla(120 100% 50% / .5);
-	color: hsla(120, 100%, 50%, 1);
+	color: hsl(120, 100%, 50%);
 	color: hsla(120 100% 50% / 100%);
 	color: hsla(120, 100%, 50%, 0.5);
 	color: hsla(120 100% 50% / 50%);

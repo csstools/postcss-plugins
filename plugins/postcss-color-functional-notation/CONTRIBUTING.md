@@ -26,7 +26,7 @@ scope and avoid unrelated commits.
    cd postcss-color-functional-notation
 
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream git@github.com:jonathantneal/postcss-color-functional-notation.git
+   git remote add upstream git@github.com:csstools/postcss-color-functional-notation.git
 
    # Install the tools necessary for testing
    npm install
