@@ -1,5 +1,13 @@
 # Changes to PostCSS Color Hex Alpha
 
+### 6.0.0 (April 25, 2020)
+
+- Updated: `postcss` to 7.0.27 (patch).
+- Updated: `postcss-values-parser` to 3.2.0 (major).
+- Updated: Node support to 10.0.0 (major).
+- Updated: Feature to use new percentage syntax.
+- Removed: Support for the removed `gray()` function.
+
 ### 5.0.3 (March 30, 2019)
 
 - Fixed: Issue with SVG hashes being interpretted as hex colors
