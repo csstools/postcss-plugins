@@ -1,24 +1,26 @@
 import { parse } from 'postcss-values-parser'
-import onFunction from './onFunction'
+import onCSSFunction from './onCSSFunction'
 import options from './options'
 
 /** @type {(decl: CSSDeclaration) => void} Transform lab() and lch() functions in CSS Declarations. */
-const visitor = decl => {
-	const { value } = decl
+const onCSSDeclaration = decl => {
+	const { value: originalValue } = decl
 
-	if (hasAnyColorFunction(value)) {
-		const valueAST = parse(value)
+	if (hasAnyColorFunction(originalValue)) {
+		const valueAST = parse(originalValue)
 
-		valueAST.walkFuncs(onFunction)
+		valueAST.walkFuncs(onCSSFunction)
 
-		const newValue = String(valueAST)
+		const modifiedValue = String(valueAST)
 
-		if (options.preserve) decl.cloneBefore({ value: newValue })
-		else decl.value = newValue
+		if (modifiedValue !== originalValue) {
+			if (options.preserve) decl.cloneBefore({ value: modifiedValue })
+			else decl.value = modifiedValue
+		}
 	}
 }
 
-export default visitor
+export default onCSSDeclaration
 
 /** @type {(value: RegExp) => (value: string) => boolean} Return a function that checks whether the expression exists in a value. */
 const createRegExpTest = Function.bind.bind(RegExp.prototype.test)

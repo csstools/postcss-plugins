@@ -1,5 +1,9 @@
 # Changes to PostCSS Lab Function
 
+### 3.1.0 (April 25, 2020)
+
+- Updated: `postcss-values-parser` to 3.2.0 (minor).
+
 ### 3.0.1 (April 12, 2020)
 
 - Updated: Ownership moved to CSSTools.

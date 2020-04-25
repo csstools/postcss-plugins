@@ -1,6 +1,6 @@
 {
   "name": "postcss-lab-function",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "Use lab() and lch() color functions in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -27,7 +27,7 @@
   "dependencies": {
     "@csstools/convert-colors": "^2.0.0",
     "postcss": "^7.0.27",
-    "postcss-values-parser": "^3.1.1"
+    "postcss-values-parser": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -35,7 +35,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "postcss-tape": "^5.0.2",
-    "rollup": "^2.6.0",
+    "rollup": "^2.7.2",
     "rollup-plugin-babel": "^4.4.0"
   },
   "babel": {

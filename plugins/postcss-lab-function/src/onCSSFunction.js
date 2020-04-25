@@ -2,7 +2,7 @@ import { lab2rgb, lch2rgb } from '@csstools/convert-colors'
 import { parse } from 'postcss-values-parser'
 
 /** @type {(decl: CSSFunction) => void} Transform lab() and lch() functions. */
-const visitor = node => {
+const onCSSFunction = node => {
 	/** @type {{ name: string, nodes: CSSNode[] }} */
 	const { name, nodes } = node
 
@@ -75,7 +75,7 @@ const visitor = node => {
 	}
 }
 
-export default visitor
+export default onCSSFunction
 
 const commaNode = parse(',').first
 
