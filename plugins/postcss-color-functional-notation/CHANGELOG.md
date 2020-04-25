@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Functional Notation
 
+### 3.0.2 (April 25, 2020)
+
+- Updated: Publish
+
 ### 3.0.1 (April 25, 2020)
 
 - Updated: Using `walkType` to evade walker bug in `postcss-values-parser`

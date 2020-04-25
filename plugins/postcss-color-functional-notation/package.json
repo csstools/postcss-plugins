@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-functional-notation",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Use space and slash separated color notation in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -19,7 +19,8 @@
     "lint:fix": "npx eslint --cache --fix",
     "pretest": "npm install && npm run build",
     "test": "npm run lint && npm run tape",
-    "tape": "npx postcss-tape"
+    "tape": "npx postcss-tape",
+    "prepublishOnly": "npm test"
   },
   "engines": {
     "node": ">=10.0.0"
