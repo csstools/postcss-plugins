@@ -1,40 +1,95 @@
 {
   "name": "postcss-color-rebeccapurple",
-  "version": "5.0.0",
-  "description": "PostCSS plugin to transform W3C CSS rebeccapurple color to more compatible CSS (rgb())",
-  "keywords": [
-    "css",
-    "postcss",
-    "postcss-plugin",
-    "color",
-    "colour",
-    "rgb",
-    "rebeccapurple"
+  "version": "6.0.0",
+  "description": "Use the rebeccapurple color keyword in CSS",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "contributors": [
+    "Maxime Thirouin"
   ],
-  "author": "Maxime Thirouin",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/postcss/postcss-color-rebeccapurple.git"
-  },
+  "license": "CC0-1.0",
+  "repository": "postcss/postcss-color-rebeccapurple",
+  "homepage": "https://github.com/postcss/postcss-color-rebeccapurple#readme",
+  "bugs": "https://github.com/postcss/postcss-color-rebeccapurple/issues",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.mjs",
   "files": [
-    "index.js"
+    "dist"
   ],
+  "scripts": {
+    "build": "npx rollup -c .rollup.js",
+    "build:watch": "npx rollup -c .rollup.js --watch",
+    "lint": "npx eslint --cache src",
+    "lint:fix": "npx eslint --cache --fix",
+    "pretest": "npm install && npm run build",
+    "test": "npm run lint && npm run tape",
+    "tape": "npx postcss-tape",
+    "prepublishOnly": "npm test"
+  },
   "engines": {
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "postcss": "^7.0.26",
-    "postcss-values-parser": "^3.0.5"
+    "postcss": "^7.0.27",
+    "postcss-values-parser": "^3.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
-    "npmpub": "^5.0.0",
-    "tape": "^4.9.1"
+    "postcss-tape": "^5.0.2",
+    "pre-commit": "^1.2.2",
+    "rollup": "^2.7.2",
+    "rollup-plugin-babel": "^4.4.0"
   },
-  "scripts": {
-    "lint": "eslint index.js ./test/*.js",
-    "test": "npm run lint && tape test",
-    "release": "npmpub"
-  }
+  "babel": {
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "targets": "maintained node versions"
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "parser": "babel-eslint"
+  },
+  "rollup": {
+    "input": "src/index.js",
+    "plugins": [
+      "rollup-plugin-babel"
+    ],
+    "output": [
+      {
+        "file": "dist/index.cjs.js",
+        "format": "cjs"
+      },
+      {
+        "file": "dist/index.esm.js",
+        "format": "esm"
+      }
+    ]
+  },
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "becca",
+    "color",
+    "colors",
+    "csswg",
+    "eric",
+    "meyer",
+    "purple",
+    "rebecca",
+    "rgb",
+    "syntax",
+    "w3c"
+  ]
 }

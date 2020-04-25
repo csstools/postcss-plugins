@@ -1,70 +1,91 @@
-# postcss-color-rebeccapurple [![CSS Standard Status](https://cssdb.org/badge/rebeccapurple-color.svg)](https://cssdb.org/#rebeccapurple-color) [![Build Status](https://api.travis-ci.org/postcss/postcss-color-rebeccapurple.svg)](https://travis-ci.org/postcss/postcss-color-rebeccapurple)
+# PostCSS RebeccaPurple [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS `rebeccapurple` color](https://www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple) to more compatible CSS (rgb()).
+[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-lab-function.svg" height="20">][npm-url]
+[<img alt="CSS Standard Status" src="https://cssdb.org/badge/rebeccapurple-color.svg" height="20">][css-url]
+[<img alt="Build Status" src="https://img.shields.io/travis/csstools/postcss-lab-function/master.svg" height="20">][cli-url]
+[<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
+
+[PostCSS RebeccaPurple] lets you use the `rebeccapurple` color keyword in CSS.
+
+```pcss
+.heading {
+  color: rebeccapurple;
+}
+
+/* becomes */
+
+.heading {
+  color: #639;
+}
+```
 
 [!['Can I use' table](https://caniuse.bitsofco.de/image/css-rebeccapurple.png)](https://caniuse.com/#feat=css-rebeccapurple)
 
-## Why this plugin ?
+## About the `rebeccapurple` keyword
 
-If you did some CSS, I'm sure you know who [Eric Meyer](https://en.wikipedia.org/wiki/Eric_A._Meyer) is, & what he did for this language.
-In memory of [Eric Meyer’s daughter](https://meyerweb.com/eric/thoughts/2014/06/09/in-memoriam-2/), [W3C added new color rebeccapurple to CSS 4 Color Module](https://lists.w3.org/Archives/Public/www-style/2014Jun/0312.html).
+In 2014, Rebecca Alison Meyer, the daughter of [Eric A. Meyer](https://en.wikipedia.org/wiki/Eric_A._Meyer), an American web design consultant best known for his advocacy work on behalf of CSS, passed away of a brain tumor at six years of age.
 
-## Installation
-
-```console
-$ npm install postcss-color-rebeccapurple
-```
+In her memory, the hex color `#663399` is named `rebeccapurple` and [added to the CSS Colors list](https://lists.w3.org/Archives/Public/www-style/2014Jun/0312.html).
 
 ## Usage
 
+Add [PostCSS RebeccaPurple] to your project:
+
+```bash
+npm install postcss-color-rebeccapurple --save-dev
+```
+
+Use **PostCSS RebeccaPurple** to process your CSS:
+
 ```js
-// dependencies
-var fs = require("fs")
-var postcss = require("postcss")
-var colorRebeccapurple = require("postcss-color-rebeccapurple")
+const postcssRebeccaPurple = require('postcss-color-rebeccapurple');
 
-// css to be processed
-var css = fs.readFileSync("input.css", "utf8")
-
-// process css
-var output = postcss()
-  .use(colorRebeccapurple())
-  .process(css)
-  .css
+postcssRebeccaPurple.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-Using this `input.css`:
+Or use it as a [PostCSS] plugin:
 
-```css
-body {
-  color: rebeccapurple
+```js
+const postcss = require('postcss');
+const postcssRebeccaPurple = require('postcss-color-rebeccapurple');
+
+postcss([
+  postcssRebeccaPurple(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+**PostCSS RebeccaPurple** runs in all Node environments, with special instructions for:
+
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
+
+
+### preserve
+
+The `preserve` option determines whether the original `rebeccapurple` keyword
+is preserved. By default, it is not preserved.
+
+```js
+postcssRebeccaPurple({ preserve: true })
+```
+
+```pcss
+.heading {
+  color: rebeccapurple;
 }
 
-```
+/* becomes */
 
-you will get:
-
-```css
-body {
-  color: rgb(102, 51, 153);
+.heading {
+  color: #639;
+  color: rebeccapurple;
 }
 ```
 
-Checkout [tests](test) for more examples.
+[cli-url]: https://travis-ci.org/postcss/postcss-color-rebeccapurple
+[css-url]: https://cssdb.org/#rebeccapurple-color
+[git-url]: https://gitter.im/postcss/postcss
+[npm-url]: https://www.npmjs.com/package/postcss-color-rebeccapurple
 
----
-
-## Contributing
-
-Work on a branch, install dev-dependencies, respect coding style & run tests before submitting a bug fix or a feature.
-
-```console
-$ git clone https://github.com/postcss/postcss-color-rebeccapurple.git
-$ git checkout -b patch-1
-$ npm install
-$ npm test
-```
-
-## [Changelog](CHANGELOG.md)
-
-## [License](LICENSE)
+[PostCSS]: https://github.com/postcss/postcss
+[PostCSS RebeccaPurple]: https://github.com/postcss/postcss-color-rebeccapurple
