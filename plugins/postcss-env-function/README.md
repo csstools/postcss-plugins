@@ -1,9 +1,9 @@
 # PostCSS Environment Variables [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![NPM Version][npm-img]][npm-url]
-[![CSS Standard Status][css-img]][css-url]
-[![Build Status][cli-img]][cli-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="NPM Version" src="https://img.shields.io/npm/v/postcss-env-function.svg" height="20">][npm-url]
+[<img alt="CSS Standard Status" src="https://cssdb.org/badge/environment-variables.svg" height="20">][css-url]
+[<img alt="Build Status" src="https://img.shields.io/travis/csstools/postcss-env-function/master.svg" height="20">][cli-url]
+[<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
 [PostCSS Environment Variables] lets you use `env()` variables in CSS,
 following the [CSS Environment Variables] specification.
@@ -123,13 +123,9 @@ postcssCustomProperties({
 See example imports written in [JS](test/import-variables.js) and
 [JSON](test/import-variables.json).  Currently only valid [custom property names] (beginning with `--`) are accepted.  Not all valid [declaration value names] are accepted.
 
-[cli-img]: https://img.shields.io/travis/csstools/postcss-env-function/master.svg
 [cli-url]: https://travis-ci.org/csstools/postcss-env-function
-[css-img]: https://cssdb.org/badge/environment-variables.svg
 [css-url]: https://cssdb.org/#environment-variables
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
-[npm-img]: https://img.shields.io/npm/v/postcss-env-function.svg
 [npm-url]: https://www.npmjs.com/package/postcss-env-function
 
 [CSS Environment Variables]: https://drafts.csswg.org/css-env-1/

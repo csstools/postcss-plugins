@@ -7,53 +7,71 @@
   "repository": "csstools/postcss-env-function",
   "homepage": "https://github.com/csstools/postcss-env-function#readme",
   "bugs": "https://github.com/csstools/postcss-env-function/issues",
-  "main": "index.cjs.js",
-  "module": "index.esm.mjs",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "files": [
-    "index.cjs.js",
-    "index.cjs.js.map",
-    "index.esm.mjs",
-    "index.esm.mjs.map"
+    "dist"
   ],
   "scripts": {
-    "prepublishOnly": "npm test",
-    "pretest:tape": "rollup -c .rollup.js --silent",
-    "test": "npm run test:js && npm run test:tape",
-    "test:js": "eslint src/{*,**/*}.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape"
+    "build": "npx rollup -c .rollup.js",
+    "build:watch": "npx rollup -c .rollup.js --watch",
+    "lint": "npx eslint --cache src",
+    "lint:fix": "npx eslint --cache --fix",
+    "pretest": "npm install && npm run build",
+    "test": "npm run lint && npm run tape",
+    "tape": "npx postcss-tape",
+    "prepublishOnly": "npm test"
   },
   "engines": {
     "node": ">=8.0.0"
   },
   "dependencies": {
-    "postcss": "^7.0.17",
-    "postcss-values-parser": "^3.0.4"
+    "postcss": "^7.0.27",
+    "postcss-values-parser": "^3.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/preset-env": "^7.4.5",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "postcss-tape": "^5.0.0",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "postcss-tape": "^5.0.2",
     "pre-commit": "^1.2.2",
-    "rollup": "^1.15.3",
-    "rollup-plugin-babel": "^4.3.2"
+    "rollup": "^2.7.2",
+    "rollup-plugin-babel": "^4.4.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "targets": "maintained node versions"
+        }
+      ]
+    ]
   },
   "eslintConfig": {
     "env": {
-      "browser": true,
       "es6": true,
       "node": true
     },
     "extends": "eslint:recommended",
-    "parser": "babel-eslint",
-    "parserOptions": {
-      "ecmaVersion": 2018,
-      "impliedStrict": true,
-      "sourceType": "module"
-    },
-    "root": true
+    "parser": "babel-eslint"
+  },
+  "rollup": {
+    "input": "src/index.js",
+    "plugins": [
+      "rollup-plugin-babel"
+    ],
+    "output": [
+      {
+        "file": "dist/index.js",
+        "format": "cjs"
+      },
+      {
+        "file": "dist/index.mjs",
+        "format": "esm"
+      }
+    ]
   },
   "keywords": [
     "postcss",

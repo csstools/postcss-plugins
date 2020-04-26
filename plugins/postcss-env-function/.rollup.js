@@ -1,19 +1,9 @@
-import babel from 'rollup-plugin-babel';
+import pkg from './package.json'
 
 export default {
-	input: 'src/index.js',
-	output: [
-		{ file: 'index.cjs.js', format: 'cjs', sourcemap: true },
-		{ file: 'index.esm.mjs', format: 'es', sourcemap: true }
-	],
-	plugins: [
-		babel({
-			plugins: [
-				'@babel/plugin-syntax-dynamic-import'
-			],
-			presets: [
-				['@babel/env', { modules: false, targets: { node: 8 } }]
-			]
-		})
-	]
-};
+	...pkg.rollup,
+	plugins: pkg.rollup.plugins.map(plugin => require(plugin)()),
+	onwarn(warning, warn) {
+		if (warning.code !== 'UNRESOLVED_IMPORT') warn(warning)
+	}
+}
