@@ -26,7 +26,7 @@ scope and avoid unrelated commits.
    cd postcss-place
 
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream git@github.com:jonathantneal/postcss-place.git
+   git remote add upstream git@github.com:csstools/postcss-place.git
 
    # Install the tools necessary for testing
    npm install

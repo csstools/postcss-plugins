@@ -1,10 +1,10 @@
 # Changes to PostCSS Place Properties
 
-## [Unreleased]
+## 5.0.0 (April 26, 2020)
 
-- Updated: PostCSS Values Parser to version 3 (`^3.0.5`)
-- Updated: Minimal NodeJS version `>=6.14.4`
-- Updated: Production dependencies (`postcss ^7.0.18`)
+- Updated: PostCSS to 7.0.27 (patch)
+- Updated: PostCSS Values Parser to 3.2.1 (major)
+- Updated: Support for Node v10+
 
 ### 4.0.1 (September 18, 2018)
 

@@ -1,9 +1,9 @@
 # PostCSS Place Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![NPM Version][npm-img]][npm-url]
-[![CSS Standard Status][css-img]][css-url]
-[![Build Status][cli-img]][cli-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="NPM Version" src="https://img.shields.io/npm/v/postcss-place.svg" height="20">][npm-url]
+[<img alt="CSS Standard Status" src="https://cssdb.org/badge/double-position-gradients.svg" height="20">][css-url]
+[<img alt="Build Status" src="https://img.shields.io/travis/csstools/postcss-place/master.svg" height="20">][cli-url]
+[<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
 [PostCSS Place Properties] lets you use `place-*` properties as shorthands for `align-*`
 and `justify-*`, following the [CSS Box Alignment] specification.
@@ -85,13 +85,9 @@ postcssPlace({ preserve: false })
 }
 ```
 
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-place.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-place
-[css-img]: https://cssdb.org/badge/place-properties.svg
+[cli-url]: https://travis-ci.org/csstools/postcss-place
 [css-url]: https://cssdb.org/#place-properties
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
-[npm-img]: https://img.shields.io/npm/v/postcss-place.svg
 [npm-url]: https://www.npmjs.com/package/postcss-place
 
 [CSS Box Alignment]: https://www.w3.org/TR/css-align-3/#place-content
@@ -99,4 +95,4 @@ postcssPlace({ preserve: false })
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Place Properties]: https://github.com/jonathantneal/postcss-place
+[PostCSS Place Properties]: https://github.com/csstools/postcss-place
