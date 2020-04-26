@@ -26,7 +26,7 @@ scope and avoid unrelated commits.
    cd postcss-double-position-gradients
 
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream git@github.com:jonathantneal/postcss-double-position-gradients.git
+   git remote add upstream git@github.com:csstools/postcss-double-position-gradients.git
 
    # Install the tools necessary for testing
    npm install

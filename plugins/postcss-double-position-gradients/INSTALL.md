@@ -165,6 +165,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Double Position Gradients]: https://github.com/jonathantneal/postcss-double-position-gradients
+[PostCSS Double Position Gradients]: https://github.com/csstools/postcss-double-position-gradients
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired
