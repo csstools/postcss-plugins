@@ -1,5 +1,5 @@
 import postcss from 'postcss';
-import parser from 'postcss-values-parser';
+import { parse } from 'postcss-values-parser';
 
 const placeMatch = /^place-(content|items|self)/;
 
@@ -14,21 +14,22 @@ export default postcss.plugin('postcss-place', opts => {
 			const alignment = decl.prop.match(placeMatch)[1];
 
 			// value ast and child nodes
-			const value = parser(decl.value).parse();
-			const children = value.nodes[0].nodes;
-
-			// new justify-[alignment] and align-[alignment] declarations
-			const alignValue = children.length === 1 ? decl.value : String(children.slice(0, 1)).trim();
-			const justifyValue = children.length === 1 ? decl.value : String(children.slice(1)).trim();
+			const value = parse(decl.value);
+			let alignmentValues = [];
+			value.walkWords(walk => {
+				alignmentValues.push(
+					walk.parent.type === 'root' ? walk.toString() : walk.parent.toString()
+				);
+			});
 
 			decl.cloneBefore({
 				prop: `align-${alignment}`,
-				value: alignValue
+				value: alignmentValues[0]
 			});
 
 			decl.cloneBefore({
 				prop: `justify-${alignment}`,
-				value: justifyValue
+				value: alignmentValues[1] || alignmentValues[0]
 			});
 
 			// conditionally remove place-[alignment]
