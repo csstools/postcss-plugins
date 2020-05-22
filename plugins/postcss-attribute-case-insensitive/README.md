@@ -20,4 +20,4 @@
 ```
 
 ### Notes
-- As you see in example, it is not necessary to use this plugin with very long attributes.
+- As you see in example, it is not recommended to use this plugin with very long attributes.
