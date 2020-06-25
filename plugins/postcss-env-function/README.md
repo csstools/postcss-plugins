@@ -5,8 +5,7 @@
 [<img alt="Build Status" src="https://img.shields.io/travis/csstools/postcss-env-function/master.svg" height="20">][cli-url]
 [<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
-[PostCSS Environment Variables] lets you use `env()` variables in CSS,
-following the [CSS Environment Variables] specification.
+[PostCSS Environment Variables] lets you use `env()` variables in CSS, following the [CSS Environment Variables] specification.
 
 ```pcss
 @media (max-width: env(--branding-small)) {
@@ -42,20 +41,20 @@ npm install postcss-env-function --save-dev
 Use [PostCSS Environment Variables] to process your CSS:
 
 ```js
-const postcssEnvFunction = require('postcss-env-function');
+const postcssEnvFunction = require('postcss-env-function')
 
-postcssEnvFunction.process(YOUR_CSS /*, processOptions, pluginOptions */);
+postcssEnvFunction.process(YOUR_CSS /*, processOptions, pluginOptions */)
 ```
 
 Or use it as a [PostCSS] plugin:
 
 ```js
-const postcss = require('postcss');
-const postcssEnvFunction = require('postcss-env-function');
+const postcss = require('postcss')
+const postcssEnvFunction = require('postcss-env-function')
 
 postcss([
   postcssEnvFunction(/* pluginOptions */)
-]).process(YOUR_CSS /*, processOptions */);
+]).process(YOUR_CSS /*, processOptions */)
 ```
 
 [PostCSS Environment Variables] runs in all Node environments, with special instructions for:
@@ -67,19 +66,17 @@ postcss([
 
 ### importFrom
 
-The `importFrom` option specifies sources where Environment Variables can be
-imported from, which might be JS and JSON files, functions, and directly passed
-objects.
+The `importFrom` option specifies sources where Environment Variables can be imported from, which might be JS and JSON files, functions, and directly passed objects.
 
 ```js
-postcssCustomProperties({
+postcssEnvFunction({
   importFrom: 'path/to/file.js' /* module.exports = {
       environmentVariables: {
         '--branding-padding': '20px',
         '--branding-small': '600px'
       }
     } */
-});
+})
 ```
 
 ```pcss
@@ -98,30 +95,47 @@ postcssCustomProperties({
 }
 ```
 
-Multiple sources can be passed into this option, and they will be parsed in the
-order they are received. JavaScript files, JSON files, functions, and objects
-will need to namespace Custom Properties using the `environmentVariables` or
-`variables-variables` key.
+Multiple sources can be passed into this option, and they will be parsed in the order they are received. JavaScript files, JSON files, functions, and objects will need to namespace Custom Properties using the `environmentVariables` or `variables-variables` key.
 
 ```js
-postcssCustomProperties({
+postcssEnvFunction({
   importFrom: [
-    'path/to/file.js', // module.exports = { environmentVariables: { '--branding-padding': '20px' } }
-    'and/then/this.json', // { "environment-variables": { "--branding-padding": "20px" } }
+    /* Import from a CommonJS file:
+    
+    module.exports = {
+      environmentVariables: {
+        '--branding-padding': '20px'
+      }
+    } */
+    'path/to/file.js',
+
+    /* Import from a JSON file:
+
+    {
+      "environment-variables": {
+        "--branding-padding": "20px"
+      }
+    } */
+    'and/then/this.json',
+
+    /* Import from an JavaScript Object: */
     {
       environmentVariables: { '--branding-padding': '20px' }
     },
-    () => {
-      const environmentVariables = { '--branding-padding': '20px' };
 
-      return { environmentVariables };
+    /* Import from a JavaScript Function: */
+    () => {
+      const environmentVariables = { '--branding-padding': '20px' }
+
+      return { environmentVariables }
     }
   ]
-});
+})
 ```
 
-See example imports written in [JS](test/import-variables.js) and
-[JSON](test/import-variables.json).  Currently only valid [custom property names] (beginning with `--`) are accepted.  Not all valid [declaration value names] are accepted.
+See example imports written in [JS](test/import-variables.js) and [JSON](test/import-variables.json).
+Currently only valid [custom property names] (beginning with `--`) are accepted.
+Not all valid [declaration value names] are accepted.
 
 [cli-url]: https://travis-ci.org/csstools/postcss-env-function
 [css-url]: https://cssdb.org/#environment-variables
