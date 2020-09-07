@@ -26,7 +26,7 @@ scope and avoid unrelated commits.
    cd postcss-logical-properties
 
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream git@github.com:jonathantneal/postcss-logical-properties.git
+   git remote add upstream git@github.com:csstools/postcss-logical-properties.git
 
    # Install the tools necessary for testing
    npm install
