@@ -19,6 +19,7 @@ export default postcss.plugin('postcss-custom-selectors', opts => {
 
 	return async root => {
 		const customProperties = Object.assign(
+			{},
 			await customSelectorsPromise,
 			getCustomSelectors(root, { preserve })
 		);
