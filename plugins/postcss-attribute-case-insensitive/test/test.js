@@ -1,7 +1,7 @@
-import postcss from 'postcss';
-import { expect } from 'chai';
+const postcss = require('postcss')
+const { expect } = require('chai')
 
-import plugin from '..';
+const plugin = require('..')
 
 const test = (input, output, opts, done) => {
 	postcss([
@@ -9,13 +9,13 @@ const test = (input, output, opts, done) => {
 	])
 		.process(input, { from: '<inline>' })
 		.then(result => {
-			expect(result.css).to.eql(output);
-			expect(result.warnings()).to.be.empty; // eslint-disable-line no-unused-expressions
+			expect(result.css).to.eql(output)
+			expect(result.warnings()).to.be.empty // eslint-disable-line no-unused-expressions
 
-			done();
+			done()
 		})
-		.catch(done);
-};
+		.catch(done)
+}
 
 describe('postcss-attribute-case-insensitive', () => {
 	it('simple', done => {
@@ -24,8 +24,8 @@ describe('postcss-attribute-case-insensitive', () => {
 			'[data-foo=test],[data-foo=Test],[data-foo=tEst],[data-foo=TEst],[data-foo=teSt],[data-foo=TeSt],[data-foo=tESt],[data-foo=TESt],[data-foo=tesT],[data-foo=TesT],[data-foo=tEsT],[data-foo=TEsT],[data-foo=teST],[data-foo=TeST],[data-foo=tEST],[data-foo=TEST] { display: block; }',
 			{},
 			done
-		);
-	});
+		)
+	})
 
 	it('with spaces', done => {
 		test(
@@ -33,8 +33,8 @@ describe('postcss-attribute-case-insensitive', () => {
 			'[foo="a b"],[foo="A b"],[foo="a B"],[foo="A B"]{}',
 			{},
 			done
-		);
-	});
+		)
+	})
 
 	it('not insensitive', done => {
 		test(
@@ -42,8 +42,8 @@ describe('postcss-attribute-case-insensitive', () => {
 			'[foo=a]{}',
 			{},
 			done
-		);
-	});
+		)
+	})
 
 	it('several attributes', done => {
 		test(
@@ -51,6 +51,6 @@ describe('postcss-attribute-case-insensitive', () => {
 			'[foobar=b],[foo=a],[foo=A],[bar=c],[bar=C]{}',
 			{},
 			done
-		);
-	});
-});
+		)
+	})
+})

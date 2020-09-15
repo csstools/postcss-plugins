@@ -1,11 +1,10 @@
 {
   "name": "postcss-attribute-case-insensitive",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "description": "PostCSS plugin to support case insensitive attributes",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "eslint src && npm run prepublish && mocha --require @babel/register",
-    "prepublish": "babel src --out-dir dist"
+    "test": "eslint lib && mocha"
   },
   "repository": {
     "type": "git",
@@ -26,20 +25,29 @@
     "url": "https://github.com/Semigradsky/postcss-attribute-case-insensitive/issues"
   },
   "homepage": "https://github.com/Semigradsky/postcss-attribute-case-insensitive#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.8.3",
-    "@babel/core": "^7.8.3",
-    "@babel/node": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
-    "@babel/register": "^7.8.3",
-    "chai": "^4.2.0",
-    "eslint": "^5.6.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "mocha": "^5.2.0"
-  },
   "dependencies": {
-    "postcss": "^7.0.2",
     "postcss-selector-parser": "^6.0.2"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^7.9.0",
+    "mocha": "^8.1.3",
+    "postcss": "^8.0.2"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 12
+    },
+    "env": {
+      "mocha": true,
+      "commonjs": true
+    },
+    "rules": {
+      "semi": ["error", "never"]
+    }
   }
 }
