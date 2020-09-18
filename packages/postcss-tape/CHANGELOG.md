@@ -1,5 +1,13 @@
 # Changes to PostCSS Tape
 
+### 6.0.0 (September 18, 2020)
+
+- Supports PostCSS 7 _and_ 8 (_major_)
+- Supports Node 10+ (_major_)
+- Supports configurations from (in order) `postcss-tape.config.js`,
+  `postcss-tape.config.mjs`, `postcss-tape.config.cjs`, `.tape.js`, `.tape.mjs`,
+  and `.tape.cjs`.
+
 ### 5.0.2 (July 29, 2019)
 
 - Fixed: Issue loading a test plugin
