@@ -10,7 +10,19 @@ export default function transformValueAST(root, customProperties) {
 					// conditionally replace a known custom property
 					const nodes = asClonedArrayWithBeforeSpacing(customProperties[name], child.raws.before);
 
+					/**
+					 * https://github.com/postcss/postcss-custom-properties/issues/221
+					 * https://github.com/postcss/postcss-custom-properties/issues/218
+					 *
+					 * replaceWith loses node.raws values, so we need to save it and restore
+					 */
+					const raws = nodes.map(node => ({...node.raws}));
+
 					child.replaceWith(...nodes);
+
+					nodes.forEach((node, index) => {
+						node.raws = raws[index];
+					});
 
 					retransformValueAST({ nodes }, customProperties, name);
 				} else if (fallbacks.length) {

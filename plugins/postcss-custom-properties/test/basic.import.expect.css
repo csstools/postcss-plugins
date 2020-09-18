@@ -12,6 +12,9 @@ html {
 	--circular: var(--circular-2);
 	--circular-2: var(--circular);
 	--margin: 0 10px 20px 30px;
+	--shadow-color: rgb(255,0,0);
+	--shadow: 0 6px 14px 0 color(var(--shadow-color) a(.15));
+	--font-family: "Open Sans", sans-serif;
 	color: rgb(255, 0, 0);
 	color: var(--color);
 }
@@ -41,6 +44,26 @@ html {
 	color: var(--color);
 }
 
+.test--color_spacing {
+	box-shadow: inset 0 -3px 0        rgb(255, 0, 0);
+	box-shadow: inset 0 -3px 0        var(--color);
+}
+
+.test--preserve_whitespaces {
+	margin: 0 10px 20px 30px;
+	margin: var(--margin);
+}
+
+.test--complex_values {
+	box-shadow: 0 6px 14px 0 color(rgb(255,0,0) a(.15));
+	box-shadow: var(--shadow);
+}
+
+.test--comma_separated_values {
+	font-family: "Open Sans", sans-serif;
+	font-family: var(--font-family);
+}
+
 .test--fallback {
 	color: yellow;
 	color: var(--color-2, blue);
@@ -58,11 +81,6 @@ html {
 
 .test--circular_var {
 	color: var(--circular);
-}
-
-.test--color_spacing {
-	box-shadow: inset 0 -3px 0        rgb(255, 0, 0);
-	box-shadow: inset 0 -3px 0        var(--color);
 }
 
 .test--z-index {

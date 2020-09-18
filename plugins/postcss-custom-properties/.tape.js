@@ -133,6 +133,24 @@ module.exports = {
 		expect: 'basic.import.expect.css',
 		result: 'basic.import.result.css'
 	},
+	'basic:import-override': {
+		message: 'importFrom with { preserve: false } should override root properties',
+		options: {
+			preserve: false,
+			importFrom: {
+				customProperties: {
+					'--color': 'rgb(0, 0, 0)',
+					'--color-2': 'yellow',
+					'--ref-color': 'var(--color)',
+					'--margin': '0 10px 20px 30px',
+					'--shadow-color': 'rgb(0,0,0)',
+					'--z-index': 10
+				}
+			}
+		},
+		expect: 'basic.import-override.expect.css',
+		result: 'basic.import-override.result.css'
+	},
 	'basic:export': {
 		message: 'supports { exportTo: { customProperties: { ... } } } usage',
 		options: {

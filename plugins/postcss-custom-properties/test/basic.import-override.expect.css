@@ -1,11 +1,11 @@
 :root {
-	color: rgb(255, 0, 0);
+	color: rgb(0, 0, 0);
 }
 
 .ignore-line {
 	/* postcss-custom-properties: ignore next */
 	color: var(--color);
-	background-color: blue;
+	background-color: yellow;
 }
 
 .ignore-block {
@@ -17,11 +17,11 @@
 
 .test {
 	--skip: gray;
-	color: rgb(255, 0, 0);
+	color: rgb(0, 0, 0);
 }
 
 .test--color_spacing {
-	box-shadow: inset 0 -3px 0        rgb(255, 0, 0);
+	box-shadow: inset 0 -3px 0        rgb(0, 0, 0);
 }
 
 .test--preserve_whitespaces {
@@ -29,7 +29,7 @@
 }
 
 .test--complex_values {
-	box-shadow: 0 6px 14px 0 color(rgb(255,0,0) a(.15));
+	box-shadow: 0 6px 14px 0 color(rgb(0,0,0) a(.15));
 }
 
 .test--comma_separated_values {
@@ -37,11 +37,11 @@
 }
 
 .test--fallback {
-	color: blue;
+	color: yellow;
 }
 
 .test--color_w_var {
-	color: rgb(255, 0, 0);
+	color: rgb(0, 0, 0);
 }
 
 .test--color_w_vars {
@@ -53,7 +53,7 @@
 }
 
 .test--z-index {
-	z-index: var(--z-index);
+	z-index: 10;
 }
 
 .test--nested-fallback {
@@ -65,11 +65,11 @@
 }
 
 .test--linear-gradient {
-	background-image: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(255, 0, 0) 100%);
+	background-image: linear-gradient(to right, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 100%);
 }
 
 .test--loose-formatting {
-	color: rgb(255, 0, 0)/*rtl:red*/;
+	color: rgb(0, 0, 0)/*rtl:red*/;
 }
 
 .test--combined-selector {
