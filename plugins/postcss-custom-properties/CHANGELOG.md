@@ -1,5 +1,13 @@
 # Changes to PostCSS Custom Properties
 
+### 9.2.0 (September 18, 2020)
+
+- Added: Export variables to SCSS file ([#212](https://github.com/postcss/postcss-custom-properties/pull/212))
+- Added: Support for ".pcss" file resolution in `importFrom` ([#211](https://github.com/postcss/postcss-custom-properties/pull/211))
+- Fixed: Allow combined selectors ([#199](https://github.com/postcss/postcss-custom-properties/pull/199))
+- Fixed: Bug with spaces and commas in value ([#222](https://github.com/postcss/postcss-custom-properties/pull/222))
+- Fixed: `importFrom` priority ([#222](https://github.com/postcss/postcss-custom-properties/pull/222))
+
 ### 9.1.1 (February 20, 2020)
 
 - Fixed: Preserve spaces in multi-part values ([#203](https://github.com/postcss/postcss-custom-properties/pull/203))
