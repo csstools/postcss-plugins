@@ -5,6 +5,20 @@ import getErrorMessage from './lib/get-error-message';
 import getOptions from './lib/get-options';
 import path from 'path';
 
+async function postcss8(plugins) {
+	const pkg = await import('postcss/package.json');
+	if (pkg.version[0] === '8') {
+		const m = await import('postcss');
+		return m.default(plugins);
+	} else {
+		throw new Error(`postcss@8 must be installed, found ${pkg.version}`);
+	}
+}
+
+function isPostcss8Plugin(plugin) {
+	return typeof plugin === 'function' && Object(plugin).postcss === true;
+}
+
 getOptions().then(
 	async options => {
 		let hadError = false;
@@ -12,12 +26,6 @@ getOptions().then(
 		// runner
 		for (const name in options.config) {
 			const test = options.config[name];
-
-			const testPlugin = typeof Object(test.plugin).process === 'function'
-				? test.plugin
-			: typeof test.plugin === 'function'
-				? { process: test.plugin }
-			: options.plugin;
 
 			const testBase = name.split(':')[0];
 			const testFull = name.split(':').join('.');
@@ -30,7 +38,19 @@ getOptions().then(
 			const processOptions = Object.assign({ from: sourcePath, to: resultPath }, test.processOptions);
 			const pluginOptions = test.options;
 
-			const pluginName = Object(testPlugin.postcss).postcssPlugin || 'postcss';
+			let rawPlugin = test.plugin || options.plugin;
+			if (rawPlugin.default) {
+				rawPlugin = rawPlugin.default;
+			}
+			const plugin = isPostcss8Plugin(rawPlugin)
+				? rawPlugin(pluginOptions)
+			: typeof Object(rawPlugin).process === 'function'
+				? rawPlugin
+			: typeof rawPlugin === 'function'
+				? { process: rawPlugin }
+			: Object(rawPlugin).postcssPlugin;
+
+			const pluginName = plugin.postcssPlugin || Object(rawPlugin.postcss).postcssPlugin || 'postcss';
 
 			log.wait(pluginName, test.message, options.ci);
 
@@ -42,7 +62,13 @@ getOptions().then(
 				const expectCSS = await safelyReadFile(expectPath);
 				const sourceCSS = await readOrWriteFile(sourcePath, expectCSS);
 
-				const result = await testPlugin.process(sourceCSS, processOptions, pluginOptions);
+				let result;
+				if (isPostcss8Plugin(rawPlugin)) {
+					const postcss = await postcss8([ plugin ]);
+					result = await postcss.process(sourceCSS, processOptions);
+				} else {
+					result = await plugin.process(sourceCSS, processOptions, pluginOptions);
+				}
 				const resultCSS = result.css;
 
 				if (options.fix) {

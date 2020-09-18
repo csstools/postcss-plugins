@@ -21,11 +21,16 @@
     "pretest:tape": "npm run build",
     "test": "npm run test:js && npm run test:tape",
     "test:js": "eslint src/{*,**/*}.js --cache --ignore-pattern .gitignore",
-    "test:tape": "node . --plugin test/plugin.js --config test",
-    "test:tape:ci": "node . --ci true --plugin test/plugin.js --config test"
+    "test:tape:7": "node . --plugin test/postcss7-plugin.js --config test",
+    "test:tape:8": "node . --plugin test/postcss8-plugin.js --config test",
+    "test:tape": "npm run test:tape:7 && npm run test:tape:8",
+    "test:tape:ci": "npm run test:tape:7 -- --ci true && npm run test:tape:8 -- --ci true"
   },
   "engines": {
     "node": ">=8.0.0"
+  },
+  "peerDependencies": {
+    "postcss": "^7.0.0 || ^8.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
@@ -33,8 +38,8 @@
     "@babel/preset-env": "^7.7.1",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.6.0",
-    "postcss": "^7.0.21",
-    "rollup": "^1.26.3",
+    "postcss": "^8.0.5",
+    "rollup": "^2.27.1",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-terser": "^5.1.2"
   },
