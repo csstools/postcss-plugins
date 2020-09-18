@@ -100,6 +100,17 @@ module.exports = {
 		expect: 'basic.import.expect.css',
 		result: 'basic.import.result.css'
 	},
+	'basic:import-css-pcss': {
+		message: 'supports { importFrom: "test/import-properties.{p}?css" } usage',
+		options: {
+			importFrom: [
+				'test/import-properties.pcss',
+				'test/import-properties-2.css'
+			]
+		},
+		expect: 'basic.import.expect.css',
+		result: 'basic.import.result.css'
+	},
 	'basic:import-css-from': {
 		message: 'supports { importFrom: { from: "test/import-properties.css" } } usage',
 		options: {

@@ -78,7 +78,7 @@ export default function getCustomPropertiesFromImports(sources) {
 	}).reduce(async (customProperties, source) => {
 		const { type, from } = await source;
 
-		if (type === 'css') {
+		if (type === 'css' || type === 'pcss') {
 			return Object.assign(await customProperties, await getCustomPropertiesFromCSSFile(from));
 		}
 
