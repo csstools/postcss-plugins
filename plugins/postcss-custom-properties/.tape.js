@@ -176,6 +176,22 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css'
 	},
+	'basic:export-scss': {
+		message: 'supports { exportTo: "test/export-properties.scss" } usage',
+		options: {
+			exportTo: 'test/export-properties.scss'
+		},
+		expect: 'basic.expect.css',
+		result: 'basic.result.css',
+		before() {
+			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.scss', 'utf8');
+		},
+		after() {
+			if (global.__exportPropertiesString !== require('fs').readFileSync('test/export-properties.scss', 'utf8')) {
+				throw new Error('The original file did not match the freshly exported copy');
+			}
+		}
+	},
 	'basic:export-json': {
 		message: 'supports { exportTo: "test/export-properties.json" } usage',
 		options: {

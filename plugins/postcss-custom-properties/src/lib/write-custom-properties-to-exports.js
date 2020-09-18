@@ -15,6 +15,21 @@ async function writeCustomPropertiesToCssFile(to, customProperties) {
 	await writeFile(to, css);
 }
 
+/* Write Custom Properties to SCSS File
+/* ========================================================================== */
+
+async function writeCustomPropertiesToScssFile(to, customProperties) {
+	const scssContent = Object.keys(customProperties).reduce((scssLines, name) => {
+		const scssName = name.replace('--', '$');
+		scssLines.push(`${scssName}: ${customProperties[name]};`);
+
+		return scssLines;
+	}, []).join('\n');
+	const scss = `${scssContent}\n`;
+
+	await writeFile(to, scss);
+}
+
 /* Write Custom Properties to JSON file
 /* ========================================================================== */
 
@@ -87,6 +102,10 @@ export default function writeCustomPropertiesToExports(customProperties, destina
 
 				if (type === 'css') {
 					await writeCustomPropertiesToCssFile(to, customPropertiesJSON);
+				}
+
+				if (type === 'scss') {
+					await writeCustomPropertiesToScssFile(to, customPropertiesJSON);
 				}
 
 				if (type === 'js') {
