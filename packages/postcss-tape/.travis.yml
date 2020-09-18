@@ -8,21 +8,9 @@ os:
   - osx
 
 node_js:
-  - 14
-  - 12
   - 10
-
-jobs:
-  include:
-    - node_js: 8
-      os: windows
-      before_script: |
-        npm install postcss@7
-        nvs add 12
-        nvs use 12
-        npm run pretest:tape
-        nvs use 8
-      script: npm run test:tape:7 -- --ci true
+  - 12
+  - 14
 
 install:
   - git config --global core.autocrlf false

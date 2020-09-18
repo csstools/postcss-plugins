@@ -1,8 +1,8 @@
 # PostCSS Tape [<img src="http://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][PostCSS]
 
-[![NPM Version][npm-img]][npm-url]
-[![Build Status][cli-img]][cli-url]
-[![Gitter Chat][git-img]][git-url]
+[<img alt="NPM Version" src="https://img.shields.io/npm/v/postcss-tape.svg" height="20">][npm-url]
+[<img alt="Build Status" src="https://img.shields.io/travis/csstools/postcss-tape/master.svg" height="20">][cli-url]
+[<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
 [PostCSS Tape] lets you quickly test [PostCSS] plugins.
 
@@ -22,7 +22,7 @@
 
 3. Add tests to your `.tape.js` file:
    ```js
-   module.exports = {
+   export default {
      'basic': {
        message: 'supports basic usage'
      }
@@ -310,11 +310,8 @@ postcss-tape --fixtures path/to/tests
 }
 ```
 
-[npm-img]: https://img.shields.io/npm/v/postcss-tape.svg
 [npm-url]: https://www.npmjs.com/package/postcss-tape
-[cli-img]: https://img.shields.io/travis/csstools/postcss-tape/master.svg
 [cli-url]: https://travis-ci.org/csstools/postcss-tape
-[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 
 [PostCSS]: https://github.com/postcss/postcss

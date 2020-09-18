@@ -1,24 +1,32 @@
-import babel from 'rollup-plugin-babel';
-import { terser } from 'rollup-plugin-terser';
+import babel from 'rollup-plugin-babel'
+import MagicString from 'magic-string'
 
 export default {
 	input: 'src/index.js',
-	output: { file: 'index.js', format: 'cjs', sourcemap: true, strict: false },
+	output: {
+		file: 'dist/index.js',
+		format: 'cjs',
+		sourcemap: true,
+		strict: true,
+	},
 	plugins: [
 		babel({
-			plugins: [ '@babel/syntax-dynamic-import' ],
-			presets: [ ['@babel/env', { targets: { node: 8 } }] ]
+			presets: [['@babel/env', { targets: { node: 10 } }]],
 		}),
-		terser(),
-		addHashBang()
-	]
-};
+		addHashBang(),
+	],
+}
 
-function addHashBang () {
+function addHashBang() {
 	return {
 		name: 'add-hash-bang',
-		renderChunk (code) {
-			return `#!/usr/bin/env node\n${code}`;
-		}
-	};
+		renderChunk(code) {
+			const str = new MagicString(code)
+			str.prepend(`#!/usr/bin/env node\n`)
+			return {
+				code: str.toString(),
+				map: str.generateMap({ hires: true }),
+			}
+		},
+	}
 }

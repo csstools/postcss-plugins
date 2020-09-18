@@ -1,20 +1,20 @@
 {
   "name": "postcss-tape",
-  "version": "5.0.2",
   "description": "Quickly test PostCSS plugins",
+  "version": "5.0.2",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "bin": {
+    "postcss-tape": "./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-tape.git"
+  },
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
-  "license": "CC0-1.0",
-  "repository": "csstools/postcss-tape",
   "homepage": "https://github.com/csstools/postcss-tape#readme",
   "bugs": "https://github.com/csstools/postcss-tape/issues",
-  "main": "index.js",
-  "bin": {
-    "postcss-tape": "index.js"
-  },
-  "files": [
-    "index.js",
-    "index.js.map"
-  ],
+  "license": "CC0-1.0",
   "scripts": {
     "build": "rollup --config --silent",
     "prepublish": "npm test",
@@ -27,21 +27,19 @@
     "test:tape:ci": "npm run test:tape:7 -- --ci true && npm run test:tape:8 -- --ci true"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": "^10 || ^12 || ^14"
   },
   "peerDependencies": {
-    "postcss": "^7.0.0 || ^8.0.0"
+    "postcss": "^7 || ^8"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/preset-env": "^7.7.1",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.6.0",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "eslint": "^7.9.0",
+    "magic-string": "^0.25.7",
     "postcss": "^8.0.5",
     "rollup": "^2.27.1",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-terser": "^5.1.2"
+    "rollup-plugin-babel": "^4.4.0"
   },
   "eslintConfig": {
     "env": {
@@ -50,13 +48,29 @@
       "node": true
     },
     "extends": "eslint:recommended",
-    "parser": "babel-eslint",
     "parserOptions": {
-      "ecmaVersion": 2018,
+      "ecmaVersion": 12,
       "impliedStrict": true,
       "sourceType": "module"
     },
-    "root": true
+    "root": true,
+    "rules": {
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "endOfLine": "lf",
+    "printWidth": 360,
+    "quoteProps": "consistent",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "useTabs": true
   },
   "keywords": [
     "postcss",

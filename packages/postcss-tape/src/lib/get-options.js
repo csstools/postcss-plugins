@@ -1,42 +1,54 @@
-import getOptionsFromArguments from './get-options-from-arguments';
-import { readJSON } from './utils';
-import path from 'path';
+import getOptionsFromArguments from './get-options-from-arguments'
+import { readJSON } from './utils'
+import path from 'path'
 
-export default async function getOptions () {
-	const cwd = process.cwd();
+export default async function getOptions() {
+	const cwd = process.cwd()
 
 	// default options
 	const defaultOptions = {
-		plugin:   cwd,
-		config:   cwd,
-		fixtures: path.resolve(cwd, 'test')
+		plugin: cwd,
+		config: cwd,
+		fixtures: path.resolve(cwd, 'test'),
 	}
 
-	const options = await readJSON('package.json', 'postcss', 'postcssConfig').then(
-		packageOptions => getOptionsFromArguments(
-			Object.assign(defaultOptions, packageOptions)
-		)
-	);
+	const options = await readJSON('package.json', 'postcss', 'postcssConfig').then(packageOptions => getOptionsFromArguments(Object.assign(defaultOptions, packageOptions)))
 
-	const importedPluginFile = path.resolve(options.plugin);
-	const importedPlugin = await import(importedPluginFile);
+	const importedPluginFile = path.resolve(options.plugin)
+	const importedPlugin = await import(importedPluginFile)
 
-	options.plugin = importedPlugin;
+	options.plugin = importedPlugin
 
-	try {
-		const importedConfigFile = path.extname(options.config)
-			? path.resolve(options.config)
-		: path.resolve(options.config, 'postcss-tape.config.js');
+	if (path.extname(options.config)) {
+		const importedConfig = await import(path.resolve(options.config))
 
-		const importedConfig = await import(importedConfigFile);
+		options.config = importedConfig.default || importedConfig
 
-		options.config = importedConfig.default || importedConfig;
-	} catch (ignoredError) {
-		const importedConfigFile = path.resolve(options.config, '.tape.js');
-		const importedConfig = await import(importedConfigFile);
+		return options
+	} else {
+		const postcssTapeConfigFiles = [
+			'postcss-tape.config.js',
+			'postcss-tape.config.mjs',
+			'postcss-tape.config.cjs',
+			'.tape.js',
+			'.tape.mjs',
+			'.tape.cjs'
+		]
+		let returnError
 
-		options.config = importedConfig.default || importedConfig;
+		while (postcssTapeConfigFiles.length) {
+			const postcssTapeConfigFile = path.resolve(options.config, postcssTapeConfigFiles.shift())
+
+			try {
+				const importedConfig = await import(postcssTapeConfigFile)
+				options.config = importedConfig.default || importedConfig
+				return options
+			} catch (error) {
+				if (!returnError) returnError = error
+				continue
+			}
+		}
+
+		throw returnError
 	}
-
-	return options;
 }

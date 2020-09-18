@@ -22,8 +22,8 @@ const colors = {
 	bgMagenta: '\x1b[45m',
 	bgCyan: '\x1b[46m',
 	bgWhite: '\x1b[47m'
-};
+}
 
 export default function color (name, string) {
-	return colors[name] + string.replace(colors.reset, colors.reset + colors[name]) + colors.reset;
+	return colors[name] + string.replace(colors.reset, colors.reset + colors[name]) + colors.reset
 }
