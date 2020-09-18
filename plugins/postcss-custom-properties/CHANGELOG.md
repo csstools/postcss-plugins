@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Properties
 
+### 10.0.0 (September 18, 2020)
+
+- Fixed: `url-regex` vulnerability ([#228](https://github.com/postcss/postcss-custom-properties/pull/228))
+- Breaking Change: Node v10+ now required
+
 ### 9.2.0 (September 18, 2020)
 
 - Added: Export variables to SCSS file ([#212](https://github.com/postcss/postcss-custom-properties/pull/212))
