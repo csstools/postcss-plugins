@@ -31,6 +31,8 @@ h1 {
 }
 ```
 
+**Note:** This plugin only processes variables that are defined in the `:root` selector.
+
 ## Usage
 
 Add [PostCSS Custom Properties] to your project:
