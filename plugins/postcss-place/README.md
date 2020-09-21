@@ -31,18 +31,10 @@ and `justify-*`, following the [CSS Box Alignment] specification.
 Add [PostCSS Place Properties] to your project:
 
 ```bash
-npm install postcss-place --save-dev
+npm install postcss postcss-place --save-dev
 ```
 
-Use [PostCSS Place Properties] to process your CSS:
-
-```js
-import postcssPlace from 'postcss-place';
-
-postcssPlace.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 import postcss from 'postcss';

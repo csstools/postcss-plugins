@@ -1,13 +1,20 @@
-import postcss from 'postcss'
 import options from './options'
 import onCSSDeclaration, { placeMatch } from './onCSSDeclaration'
 
-export default postcss.plugin('postcss-place', opts => {
+const creator = opts => {
 	// prepare options
 	if ('preserve' in Object(opts)) options.preserve = Boolean(opts.preserve)
 
-	return root => {
-		// walk each matching declaration
-		root.walkDecls(placeMatch, onCSSDeclaration)
+	return {
+		postcssPlugin: 'postcss-place',
+		Declaration: (decl) => {
+			if (placeMatch.test(decl)) {
+				onCSSDeclaration(decl)
+			}
+		},
 	}
-})
+}
+
+creator.postcss = true
+
+export default creator

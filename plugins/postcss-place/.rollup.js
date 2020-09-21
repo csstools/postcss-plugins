@@ -1,8 +1,25 @@
-import pkg from './package.json'
+import babel from '@rollup/plugin-babel';
 
 export default {
-	...pkg.rollup,
-	plugins: pkg.rollup.plugins.map(plugin => require(plugin)()),
+	input: 'src/index.js',
+	output: [
+		{ file: 'dist/index.js', format: 'cjs', sourcemap: true, exports: 'default' },
+		{ file: 'dist/index.mjs', format: 'esm', sourcemap: true, exports: 'default' }
+	],
+	plugins: [
+		babel({
+			babelHelpers: 'bundled',
+			presets: [
+				['@babel/preset-env', {
+					corejs: 3,
+					loose: true,
+					modules: false,
+					targets: { node: 10 },
+					useBuiltIns: 'entry'
+				}]
+			]
+		}),
+	],
 	onwarn(warning, warn) {
 		if (warning.code !== 'UNRESOLVED_IMPORT') warn(warning)
 	}
