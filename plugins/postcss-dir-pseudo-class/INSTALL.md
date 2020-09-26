@@ -10,7 +10,7 @@
 Add [PostCSS Dir Pseudo Class] to your project:
 
 ```bash
-npm install postcss-dir-pseudo-class --save-dev
+npm install postcss postcss-dir-pseudo-class --save-dev
 ```
 
 Use [PostCSS Dir Pseudo Class] to process your CSS:

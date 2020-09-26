@@ -1,21 +1,19 @@
 module.exports = {
-	'postcss-dir-pseudo-class': {
-		'basic': {
-			message: 'supports basic usage'
+	basic: {
+		message: "supports basic usage",
+	},
+	"basic:dir": {
+		message: 'supports { dir: "ltr" } usage',
+		source: "basic.css",
+		options: {
+			dir: "ltr",
 		},
-		'basic:dir': {
-			message: 'supports { dir: "ltr" } usage',
-			source: 'basic.css',
-			options: {
-				dir: 'ltr'
-			}
+	},
+	"basic:preserve": {
+		message: "supports { preserve: true } usage",
+		source: "basic.css",
+		options: {
+			preserve: true,
 		},
-		'basic:preserve': {
-			message: 'supports { preserve: true } usage',
-			source: 'basic.css',
-			options: {
-				preserve: true
-			}
-		}
-	}
+	},
 };

@@ -1,13 +1,20 @@
-import postcss from 'postcss';
-import selectorParser from 'postcss-selector-parser';
+const selectorParser = require('postcss-selector-parser');
 
-export default postcss.plugin('postcss-dir-pseudo-class', opts => {
+const dirRegex = /:dir\([^\)]*\)/;
+
+module.exports = function creator(opts) {
 	const dir = Object(opts).dir;
 	const preserve = Boolean(Object(opts).preserve);
 
-	return root => {
-		// walk rules using the :dir pseudo-class
-		root.walkRules(/:dir\([^\)]*\)/, rule => {
+	return {
+		postcssPlugin: 'postcss-dir-pseudo-class',
+		Rule(rule) {
+
+			// walk rules using the :dir pseudo-class
+			if (!dirRegex.test(rule.selector)) {
+				return;
+			}
+
 			let currentRule = rule
 
 			// conditionally preserve the original rule
@@ -100,6 +107,8 @@ export default postcss.plugin('postcss-dir-pseudo-class', opts => {
 					});
 				});
 			}).processSync(currentRule.selector);
-		});
-	};
-});
+		}
+	}
+}
+
+module.exports.postcss = true;
