@@ -8,6 +8,8 @@
 [PostCSS Color Hex Alpha] lets you use 4 & 8 character hex color notation in
 CSS, following the [CSS Color Module] specification.
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-rrggbbaa.png)](https://caniuse.com/#feat=css-rrggbbaa)
+
 ```pcss
 body {
   background: #9d9c;
