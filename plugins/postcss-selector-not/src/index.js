@@ -8,6 +8,11 @@ function explodeSelector(pseudoClass, selector) {
   if (selector && position > -1) {
     const pre = selector.slice(0, position)
     const matches = balancedMatch("(", ")", selector.slice(position))
+
+    if (!matches) {
+      return selector
+    }
+
     const bodySelectors = matches.body
       ? list
         .comma(matches.body)

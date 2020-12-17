@@ -21,6 +21,30 @@ tape("postcss-selector-not", t => {
   )
 
   t.equal(
+    transform("em[attr=:not] {}"),
+    "em[attr=:not] {}",
+    "should do nothing if an attribute selector value contains :not"
+  )
+
+  t.equal(
+    transform("em[attr~=:not] {}"),
+    "em[attr~=:not] {}",
+    "should really do nothing if an attribute selector value contains :not"
+  )
+
+  t.equal(
+    transform("em[:not=abc] {}"),
+    "em[:not=abc] {}",
+    "should do nothing if a selector on an attribute named :not"
+  )
+
+  t.equal(
+    transform(":not {}"),
+    ":not {}",
+    "should do nothing if :not has missing parenthesis"
+  )
+
+  t.equal(
     transform(":not(a, b) {}"),
     ":not(a):not(b) {}",
     "should transform simple :not()"
@@ -29,7 +53,7 @@ tape("postcss-selector-not", t => {
   t.equal(
     transform("tag:not(.class, .class2) {}"),
     "tag:not(.class):not(.class2) {}",
-    "should transform directes :not()"
+    "should transform into multiple :not()"
   )
 
   t.equal(
