@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 11.0.0 (January 12, 2021)
+
+- Added: Support for PostCSS v8.
+
 ### 10.0.0 (September 18, 2020)
 
 - Fixed: `url-regex` vulnerability ([#228](https://github.com/postcss/postcss-custom-properties/pull/228))
