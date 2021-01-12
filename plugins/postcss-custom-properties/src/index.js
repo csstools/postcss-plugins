@@ -1,10 +1,9 @@
-import postcss from 'postcss';
 import getCustomPropertiesFromRoot from './lib/get-custom-properties-from-root';
 import getCustomPropertiesFromImports from './lib/get-custom-properties-from-imports';
 import transformProperties from './lib/transform-properties';
 import writeCustomPropertiesToExports from './lib/write-custom-properties-to-exports';
 
-export default postcss.plugin('postcss-custom-properties', opts => {
+const creator = opts => {
 	// whether to preserve custom selectors and rules using them
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
 
@@ -40,5 +39,12 @@ export default postcss.plugin('postcss-custom-properties', opts => {
 	// whether to return synchronous function if no asynchronous operations are requested
 	const canReturnSyncFunction = importFrom.length === 0 && exportTo.length === 0;
 
-	return canReturnSyncFunction ? syncTransform : asyncTransform;
-});
+	return {
+		postcssPlugin: 'postcss-custom-properties',
+		Once: canReturnSyncFunction ? syncTransform : asyncTransform,
+	}
+};
+
+creator.postcss = true
+
+export default creator
