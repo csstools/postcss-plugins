@@ -33,14 +33,6 @@ npm install postcss-color-hex-alpha --save-dev
 Use [PostCSS Color Hex Alpha] to process your CSS:
 
 ```js
-const postcssColorHexAlpha = require('postcss-color-hex-alpha');
-
-postcssColorHexAlpha.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
-
-```js
 const postcss = require('postcss');
 const postcssColorHexAlpha = require('postcss-color-hex-alpha');
 
