@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import postcss from 'postcss';
+import { parse } from 'postcss';
 import getMediaAstFromMediaString from './media-ast-from-string';
 import getCustomMedia from './custom-media-from-root';
 
@@ -9,7 +9,7 @@ import getCustomMedia from './custom-media-from-root';
 
 async function getCustomMediaFromCSSFile(from) {
 	const css = await readFile(from);
-	const root = postcss.parse(css, { from });
+	const root = parse(css, { from });
 
 	return getCustomMedia(root, { preserve: true });
 }
