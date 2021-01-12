@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### 8.0.0 (January 12, 2021)
+
+- Added: Support for PostCSS v8
+
 ### 7.0.8 (March 30, 2019)
 
 - Fixed: Issue importing from `.pcss` files
