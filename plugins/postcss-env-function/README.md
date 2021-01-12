@@ -95,7 +95,7 @@ postcssEnvFunction({
 }
 ```
 
-Multiple sources can be passed into this option, and they will be parsed in the order they are received. JavaScript files, JSON files, functions, and objects will need to namespace Custom Properties using the `environmentVariables` or `variables-variables` key.
+Multiple sources can be passed into this option, and they will be parsed in the order they are received. JavaScript files, JSON files, functions, and objects will need to namespace Custom Properties using the `environmentVariables` or `environment-variables` key.
 
 ```js
 postcssEnvFunction({
