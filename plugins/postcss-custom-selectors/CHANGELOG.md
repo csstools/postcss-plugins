@@ -1,5 +1,11 @@
 # Changes to PostCSS Custom Selectors
 
+### 6.0.0 (January 12, 2021)
+
+- Added: Support for PostCSS v8
+- Added: Support for Node v10+
+- Fixed: importing from multiple sources ([#42](https://github.com/postcss/postcss-custom-selectors/pull/42))
+
 ### 5.1.2 (September 20, 2018)
 
 - Fixed: Do not break on an empty `importFrom` object
