@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Hex Alpha
 
+### 7.0.0 (January 12, 2021)
+
+- Updated: Support for PostCSS v8+
+
 ### 6.0.0 (April 25, 2020)
 
 - Updated: `postcss` to 7.0.27 (patch).
