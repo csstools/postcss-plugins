@@ -1,3 +1,8 @@
+# 5.0.0 - 2021-01-31
+
+- Added: Support for PostCSS v8.
+
+
 # 4.0.1 - 2020-12-18
 
 - Fixed: error when attribute selector containing :not ([#17](https://github.com/postcss/postcss-selector-not/pull/17))
