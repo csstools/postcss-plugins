@@ -1,11 +1,11 @@
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 
 const isBrowser = String(process.env.NODE_ENV).includes('browser');
 const isLegacy = String(process.env.NODE_ENV).includes('legacy');
 const isCLI = String(process.env.NODE_ENV).includes('cli');
 const isPostCSS = String(process.env.NODE_ENV).includes('postcss');
-const targets = isCLI || isPostCSS || !isBrowser ? { node: 8 } : 'last 2 versions, not dead';
+const targets = isCLI || isPostCSS || !isBrowser ? { node: 10 } : 'last 2 versions, not dead';
 
 const input = `src/${isCLI ? 'cli' : isPostCSS ? 'postcss' : isLegacy ? 'browser-legacy' : 'browser'}.js`;
 const output = isCLI
@@ -28,6 +28,7 @@ const output = isCLI
 ];
 const plugins = [
 	babel({
+		babelHelpers: 'bundled',
 		presets: [
 			['@babel/env', { targets }]
 		]
