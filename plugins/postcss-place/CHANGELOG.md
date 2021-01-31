@@ -2,7 +2,7 @@
 
 ## 6.0.0 (January 12, 2021)
 
-- Updated: Support for PostCSS v7+
+- Updated: Support for PostCSS v8+
 - Updated: PostCSS Values Parser to 4.x
 
 ## 5.0.0 (April 26, 2020)
