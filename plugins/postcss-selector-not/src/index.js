@@ -1,4 +1,3 @@
-import postcss from "postcss"
 import list from "postcss/lib/list"
 
 import balancedMatch from "balanced-match"
@@ -52,14 +51,18 @@ function locatePseudoClass(selector, pseudoClass) {
 
 function explodeSelectors(pseudoClass) {
   return () => {
-    return (css) => {
-      css.walkRules(rule => {
+    return {
+      postcssPlugin: "postcss-selector-not",
+      Rule: (rule) => {
         if (rule.selector && rule.selector.indexOf(pseudoClass) > -1) {
           rule.selector = explodeSelector(pseudoClass, rule.selector)
         }
-      })
+      },
     }
   }
 }
 
-export default postcss.plugin("postcss-selector-not", explodeSelectors(":not"))
+const creator = explodeSelectors(":not")
+creator.postcss = true
+
+export default creator

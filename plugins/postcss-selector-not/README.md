@@ -9,19 +9,10 @@ http://dev.w3.org/csswg/selectors-4/#negation
 ## Installation
 
 ```console
-$ npm install postcss-selector-not
+$ npm install postcss postcss-selector-not
 ```
 
 ## Usage
-
-```js
-var postcss = require("postcss")
-
-var output = postcss()
-  .use(require("postcss-selector-not"))
-  .process(require("fs").readFileSync("input.css", "utf8"))
-  .css
-```
 
 Using this `input.css`:
 
