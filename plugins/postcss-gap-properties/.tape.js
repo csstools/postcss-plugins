@@ -8,6 +8,12 @@ module.exports = {
 			options: {
 				preserve: false
 			}
+		},
+		'ignore-flexbox': {
+			message: 'ignore flexbox declarations'
+		},
+		'ignore-multicolumn': {
+			message: 'ignore multi column declarations'
 		}
 	}
 };

@@ -1,4 +1,5 @@
 test {
+	display: grid;
 	order: 1;
 	gap: 20px;
 	order: 2;
