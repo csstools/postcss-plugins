@@ -35,7 +35,7 @@
 Add [PostCSS Environment Variables] to your project:
 
 ```bash
-npm install postcss-env-function --save-dev
+npm install postcss postcss-env-function --save-dev
 ```
 
 Use [PostCSS Environment Variables] to process your CSS:

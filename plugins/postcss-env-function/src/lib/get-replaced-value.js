@@ -2,7 +2,11 @@ import { parse } from 'postcss-values-parser';
 import updateEnvValue from './update-env-value';
 import walkEnvFuncs from './walk-env-funcs';
 
-// returns a value replaced with environment variables
+/**
+ * @param {string} originalValue
+ * @param variables
+ * @returns {string} returns a value replaced with environment variables
+ */
 export default (originalValue, variables) => {
 	// get the ast of the original value
 	const ast = parse(originalValue);
