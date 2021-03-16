@@ -1,8 +1,9 @@
-import getOptionsFromArguments from './get-options-from-arguments'
-import { readJSON } from './utils'
+import { getOptionsFromArguments } from './get-options-from-arguments.js'
+import { readJSON } from './utils.js'
 import path from 'path'
 
-export default async function getOptions() {
+/** Asynchronously return the options from the project. */
+export const getOptions = async () => {
 	const cwd = process.cwd()
 
 	// default options
@@ -34,6 +35,7 @@ export default async function getOptions() {
 			'.tape.mjs',
 			'.tape.cjs'
 		]
+
 		let returnError
 
 		while (postcssTapeConfigFiles.length) {

@@ -1,7 +1,7 @@
 # PostCSS Tape [<img src="http://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][PostCSS]
 
 [<img alt="NPM Version" src="https://img.shields.io/npm/v/postcss-tape.svg" height="20">][npm-url]
-[<img alt="Build Status" src="https://img.shields.io/travis/csstools/postcss-tape/master.svg" height="20">][cli-url]
+[<img alt="Build Status" src="https://img.shields.io/travis/csstools/postcss-tape/main.svg" height="20">][cli-url]
 [<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
 [PostCSS Tape] lets you quickly test [PostCSS] plugins.

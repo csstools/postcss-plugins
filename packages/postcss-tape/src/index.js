@@ -1,12 +1,13 @@
-import { exitFail, exitPass } from './lib/exit'
-import { readOrWriteFile, safelyReadFile, writeFile } from './lib/utils'
-import * as log from './lib/log'
-import getErrorMessage from './lib/get-error-message'
-import getOptions from './lib/get-options'
+import * as exit from './lib/exit.js'
+import { readOrWriteFile, safelyReadFile, writeFile } from './lib/utils.js'
+import { getErrorMessage } from './lib/get-error-message.js'
+import { getOptions } from './lib/get-options.js'
+import * as log from './lib/log.js'
 import path from 'path'
 
-async function postcss8(plugins) {
+const postcss8 = async (plugins) => {
 	const pkg = await import('postcss/package.json')
+
 	if (pkg.version[0] === '8') {
 		const m = await import('postcss')
 		return m.default(plugins)
@@ -15,9 +16,7 @@ async function postcss8(plugins) {
 	}
 }
 
-function isPostcss8Plugin(plugin) {
-	return typeof plugin === 'function' && Object(plugin).postcss === true
-}
+const isPostcss8Plugin = (plugin) => typeof plugin === 'function' && Object(plugin).postcss === true
 
 getOptions().then(
 	async options => {
@@ -39,9 +38,11 @@ getOptions().then(
 			const pluginOptions = test.options
 
 			let rawPlugin = test.plugin || options.plugin
+
 			if (rawPlugin.default) {
 				rawPlugin = rawPlugin.default
 			}
+
 			const plugin = isPostcss8Plugin(rawPlugin)
 				? rawPlugin(pluginOptions)
 			: typeof Object(rawPlugin).process === 'function'
@@ -63,12 +64,15 @@ getOptions().then(
 				const sourceCSS = await readOrWriteFile(sourcePath, expectCSS)
 
 				let result
+
 				if (isPostcss8Plugin(rawPlugin)) {
 					const postcss = await postcss8([ plugin ])
+
 					result = await postcss.process(sourceCSS, processOptions)
 				} else {
 					result = await plugin.process(sourceCSS, processOptions, pluginOptions)
 				}
+
 				const resultCSS = result.css
 
 				if (options.fix) {
@@ -168,6 +172,5 @@ getOptions().then(
 			throw hadError
 		}
 	}
-).then(exitPass, exitFail)
-
+).then(exit.pass, exit.fail)
 

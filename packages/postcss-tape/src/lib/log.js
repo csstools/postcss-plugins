@@ -1,4 +1,4 @@
-import color from './color'
+import { color } from './color.js'
 import readline from 'readline'
 
 // symbols
@@ -9,7 +9,8 @@ const stdout  = process.stdout
 
 let interval
 
-export function pass (name, message, ci) {
+/** Log as a passing state. */
+export const pass = (/** @type {string} */ name, /** @type {string} */ message, /** @type {boolean} */ ci) => {
 	clearInterval(interval)
 
 	if (ci) {
@@ -23,7 +24,8 @@ export function pass (name, message, ci) {
 	}
 }
 
-export function fail (name, message, details, ci) {
+/** Log as a failing state. */
+export const fail = (/** @type {string} */ name, /** @type {string} */ message, /** @type {string} */ details, /** @type {boolean} */ ci) => {
 	clearInterval(interval)
 
 	if (ci) {
@@ -37,8 +39,8 @@ export function fail (name, message, details, ci) {
 	}
 }
 
-// log with a waiting appearance
-export function wait (name, message, ci) {
+/** Log as a waiting state. */
+export const wait = (/** @type {string} */ name, /** @type {string} */ message, /** @type {boolean} */ ci) => {
 	if (ci) {
 		stdout.write(`${name} ${color('dim', message)}`)
 	} else {
