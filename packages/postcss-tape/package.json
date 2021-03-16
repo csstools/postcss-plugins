@@ -1,11 +1,11 @@
 {
   "name": "postcss-tape",
   "description": "Quickly test PostCSS plugins",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "type": "commonjs",
   "main": "./dist/index.js",
   "bin": {
-    "postcss-tape": "./dist/index.js"
+    "postcss-tape": "dist/index.js"
   },
   "repository": {
     "type": "git",
