@@ -63,7 +63,7 @@ then the entire rule and comment are also removed.
 Add [PostCSS Browser Comments] to your project:
 
 ```bash
-npm install postcss-browser-comments --save-dev
+npm install postcss postcss-browser-comments --save-dev
 ```
 
 Use [PostCSS Browser Comments] to process your CSS:

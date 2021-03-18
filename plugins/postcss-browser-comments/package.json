@@ -26,11 +26,9 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "dependencies": {
-    "postcss": "^7"
-  },
   "peerDependencies": {
-    "browserslist": "^4"
+    "browserslist": "^4",
+    "postcss": "^8.2.8"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -38,7 +36,8 @@
     "babel-eslint": "^10.0.1",
     "browserslist": "^4.1.1",
     "eslint": "^5.16.0",
-    "postcss-tape": "^5.0.0",
+    "postcss": "^8.2.8",
+    "postcss-tape": "^6.0.1",
     "pre-commit": "^1.2.2",
     "rollup": "^1.12.3",
     "rollup-plugin-babel": "^4.3.2"

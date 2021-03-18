@@ -1,69 +1,77 @@
 import browserslist from 'browserslist';
-import postcss from 'postcss';
 
-export default postcss.plugin('postcss-browser-comments', opts => root => {
-	// client browserslist
-	const clientBrowserList = browserslist(
-		Object(opts).browsers || null,
-		{ path: root.source && root.source.input && root.source.input.file }
-	);
+const plugin = opts => {
+	return {
+		postcssPlugin: 'postcss-browser-comments',
+		Once(root) {
+			// client browserslist
+			const clientBrowserList = browserslist(
+				Object(opts).browsers || null,
+				{ path: root.source && root.source.input && root.source.input.file }
+			);
 
-	// root children references
-	const references = root.nodes.slice(0);
+			// root children references
+			const references = root.nodes.slice(0);
 
-	// for each child node of the root children references
-	for (let node of references) {
-		// if the node is a comment browser comment node
-		if (isBrowserCommentNode(node)) {
-			// rule following the browser comment
-			const rule = node.next();
+			// for each child node of the root children references
+			for (let node of references) {
+				// if the node is a comment browser comment node
+				if (isBrowserCommentNode(node)) {
+					// rule following the browser comment
+					const rule = node.next();
 
-			// browser data
-			const browserdata = getBrowserData(node.text);
+					// browser data
+					const browserdata = getBrowserData(node.text);
 
-			if (browserdata.isNumbered) {
-				rule.nodes.filter(isBrowserReferenceCommentNode).map(
-					comment => {
-						const browserdataIndex = parseFloat(comment.text) - 1;
-						const browserslistPart = browserdata.browserslist[browserdataIndex];
+					if (browserdata.isNumbered) {
+						rule.nodes.filter(isBrowserReferenceCommentNode).map(
+							comment => {
+								const browserdataIndex = parseFloat(comment.text) - 1;
+								const browserslistPart = browserdata.browserslist[browserdataIndex];
 
+								// whether to remove the rule if the comment browserslist does not match the client browserslist
+								const removeRule = !clientBrowserList.some(
+									clientBrowser => browserslist(browserslistPart).some(
+										commentBrowser => commentBrowser === clientBrowser
+									)
+								);
+
+								// conditionally remove the declaration and reference comment
+								if (removeRule) {
+									comment.prev().remove();
+									comment.remove();
+								}
+							}
+						);
+
+						// conditionally remove the empty rule and comment
+						if (!rule.nodes.length) {
+							rule.remove();
+							node.remove();
+						}
+					} else {
 						// whether to remove the rule if the comment browserslist does not match the client browserslist
 						const removeRule = !clientBrowserList.some(
-							clientBrowser => browserslist(browserslistPart).some(
+							clientBrowser => browserslist(browserdata.browserslist).some(
 								commentBrowser => commentBrowser === clientBrowser
 							)
 						);
 
-						// conditionally remove the declaration and reference comment
+						// conditionally remove the rule and comment
 						if (removeRule) {
-							comment.prev().remove();
-							comment.remove();
+							rule.remove();
+							node.remove();
 						}
 					}
-				);
-
-				// conditionally remove the empty rule and comment
-				if (!rule.nodes.length) {
-					rule.remove();
-					node.remove();
-				}
-			} else {
-				// whether to remove the rule if the comment browserslist does not match the client browserslist
-				const removeRule = !clientBrowserList.some(
-					clientBrowser => browserslist(browserdata.browserslist).some(
-						commentBrowser => commentBrowser === clientBrowser
-					)
-				);
-
-				// conditionally remove the rule and comment
-				if (removeRule) {
-					rule.remove();
-					node.remove();
 				}
 			}
 		}
 	}
-});
+};
+
+plugin.postcss = true;
+
+export default plugin;
 
 // returns whether a node is a browser comment
 const isBrowserCommentNode = node => node.type === 'comment' && isBrowserCommentNodeRegExp.test(node.text) && node.next().type === 'rule';
