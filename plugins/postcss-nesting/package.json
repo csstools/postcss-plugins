@@ -1,52 +1,90 @@
 {
   "name": "postcss-nesting",
-  "version": "7.0.1",
-  "description": "Nest style rules inside each other",
-  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "description": "Nest rules inside each other in CSS",
   "license": "CC0-1.0",
-  "repository": "jonathantneal/postcss-nesting",
-  "homepage": "https://github.com/jonathantneal/postcss-nesting#readme",
-  "bugs": "https://github.com/jonathantneal/postcss-nesting/issues",
-  "main": "index.cjs.js",
-  "module": "index.es.js",
+  "version": "8.0.0",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "bugs": "https://github.com/csstools/postcss-nesting/issues",
+  "homepage": "https://github.com/csstools/postcss-nesting#readme",
+  "repository": "csstools/postcss-nesting",
   "files": [
-    "index.cjs.js",
-    "index.es.js"
+    "dist",
+    "postcss-7"
   ],
   "scripts": {
     "prepublishOnly": "npm test",
-    "pretest": "rollup -c .rollup.js --silent",
-    "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
-    "test:js": "eslint *.js lib/*.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape"
-  },
-  "engines": {
-    "node": ">=10.0.0"
+    "build": "node .bin/build.js",
+    "test": "node .bin/test.js",
+    "test:lint": "node .bin/test-lint.js",
+    "test:tape": "node .bin/test-tape.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "babel-eslint": "^9.0.0",
-    "babel-plugin-array-includes": "^2.0.3",
-    "eslint": "^5.6.0",
-    "eslint-config-dev": "^2.0.0",
-    "postcss": "^8.1.2",
-    "postcss-tape": "^6.0.0",
-    "pre-commit": "^1.2.2",
-    "rollup": "^0.66.0",
-    "rollup-plugin-babel": "^4.0.1"
+    "esbuild": "0.11.15",
+    "eslint": "7.25.0",
+    "eslint-config-dev": "2.0.0",
+    "postcss": "8.2.6",
+    "pre-commit": "1.2.2"
+  },
+  "browserslist": [
+    "node >= 12"
+  ],
+  "engines": {
+    "node": "12 - 16"
   },
   "eslintConfig": {
-    "extends": "dev",
-    "parser": "babel-eslint"
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "modules": true
+      }
+    },
+    "rules": {
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
   },
   "peerDependencies": {
-    "postcss": "^8.1.2"
+    "postcss": "^8"
   },
+  "prettier": {
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "printWidth": 240,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "useTabs": true,
+    "overrides": [
+      {
+        "files": [
+          "*.json",
+          "*.md",
+          ".prettierrc",
+          "*.yml"
+        ],
+        "options": {
+          "useTabs": false
+        }
+      }
+    ]
+  },
+  "sideEffects": false,
   "keywords": [
     "postcss",
-    "css",
     "postcss-plugin",
+    "css",
     "atrules",
     "child",
     "children",

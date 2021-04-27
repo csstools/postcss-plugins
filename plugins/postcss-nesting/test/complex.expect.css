@@ -1,0 +1,7 @@
+body > p, body > ul {
+	margin: 0;
+
+	& ~ & {
+		margin-top: 0;
+	}
+}

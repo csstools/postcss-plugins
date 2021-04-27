@@ -1,0 +1,13 @@
+.container {
+	contain: layout inline-size;
+}
+
+.contained {
+	background-color: blue;
+	height: 100px;
+	width: 100px;
+
+	@container (min-width: 640px) {
+		background-color: red;
+	}
+}

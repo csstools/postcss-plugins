@@ -1,9 +1,12 @@
+dist
 node_modules
 index.*.*
 package-lock.json
+yarn.lock
 *.log*
 *.result.css
 .*
+!.bin
 !.editorconfig
 !.gitignore
 !.rollup.js
