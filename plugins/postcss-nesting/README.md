@@ -65,8 +65,8 @@ postcss([
 | [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
 | --- | --- | --- | --- | --- |
 
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-nesting.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-nesting
+[cli-img]: https://img.shields.io/travis/csstools/postcss-nesting.svg
+[cli-url]: https://travis-ci.org/csstools/postcss-nesting
 [css-img]: https://cssdb.org/badge/nesting-rules.svg
 [css-url]: https://cssdb.org/#nesting-rules
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
