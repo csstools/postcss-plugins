@@ -3,8 +3,8 @@ import babel from 'rollup-plugin-babel';
 export default {
 	input: 'index.js',
 	output: [
-		{ file: 'index.cjs.js', format: 'cjs', sourcemap: true, strict: false },
-		{ file: 'index.esm.mjs', format: 'esm', sourcemap: true, strict: false }
+		{ file: 'index.cjs', format: 'cjs', exports: 'default', sourcemap: true, strict: false },
+		{ file: 'index.mjs', format: 'esm', sourcemap: true, strict: false }
 	],
 	plugins: [
 		babel({
