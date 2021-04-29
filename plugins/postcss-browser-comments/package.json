@@ -1,6 +1,6 @@
 {
   "name": "postcss-browser-comments",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Keep only the CSS you need based on comments and your browserslist",
   "author": "Jonathan Neal <csstools@hotmail.com>",
   "license": "CC0-1.0",

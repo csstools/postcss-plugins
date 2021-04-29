@@ -1,5 +1,9 @@
 # Changes to PostCSS Browser Comments
 
+### 4.0.0 (April 28, 2021)
+
+- Updated: PostCSS 8 compatibility (major)
+
 ### 3.0.0 (May 24, 2019)
 
 - Updated: Node 8+ compatibility (major)
