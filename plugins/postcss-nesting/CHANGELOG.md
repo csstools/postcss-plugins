@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### 8.0.1 (May 1, 2021)
+
+- Fixed: Compatibility issue with CommonJS.
+
 ### 8.0.0 (April 26, 2021)
 
 - Updated: Support for PostCSS 8+.
