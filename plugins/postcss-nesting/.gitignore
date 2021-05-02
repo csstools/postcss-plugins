@@ -1,6 +1,6 @@
-dist
 node_modules
-index.*.*
+postcss-7-nesting
+postcss-8-nesting
 package-lock.json
 yarn.lock
 *.log*

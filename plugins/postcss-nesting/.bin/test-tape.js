@@ -3,7 +3,7 @@ import { promises as fs } from 'node:fs'
 import postcss from 'postcss'
 import process from 'node:process'
 
-import plugin from '../src/index.js'
+import plugin from '../src/postcss-8-nesting.js'
 
 let workingUrl = new URL(`${process.cwd()}/`, `file:`)
 

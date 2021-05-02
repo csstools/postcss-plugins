@@ -4,9 +4,10 @@
   "license": "CC0-1.0",
   "version": "8.0.0",
   "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "typings": "dist/index.d.ts",
+  "main": "postcss-8-nesting/postcss-nesting.cjs",
+  "module": "postcss-8-nesting/postcss-nesting.mjs",
+  "jsdelivr": "postcss-8-nesting/postcss-nesting.mjs",
+  "unpkg": "postcss-8-nesting/postcss-nesting.mjs",
   "publishConfig": {
     "access": "public"
   },
@@ -14,9 +15,26 @@
   "bugs": "https://github.com/csstools/postcss-nesting/issues",
   "homepage": "https://github.com/csstools/postcss-nesting#readme",
   "repository": "csstools/postcss-nesting",
+  "exports": {
+    ".": {
+      "import": "./postcss-8-nesting/postcss-nesting.mjs",
+      "require": "./postcss-8-nesting/postcss-nesting.cjs",
+      "default": "./postcss-8-nesting/postcss-nesting.mjs"
+    },
+    "./postcss-7-nesting": {
+      "import": "./postcss-7-nesting/postcss-nesting.mjs",
+      "require": "./postcss-7-nesting/postcss-nesting.cjs",
+      "default": "./postcss-7-nesting/postcss-nesting.mjs"
+    },
+    "./postcss-8-nesting": {
+      "import": "./postcss-8-nesting/postcss-nesting.mjs",
+      "require": "./postcss-8-nesting/postcss-nesting.cjs",
+      "default": "./postcss-8-nesting/postcss-nesting.mjs"
+    }
+  },
   "files": [
-    "dist",
-    "postcss-7"
+    "postcss-7-nesting",
+    "postcss-8-nesting"
   ],
   "scripts": {
     "prepublishOnly": "npm test",
@@ -26,9 +44,10 @@
     "test:tape": "node .bin/test-tape.js"
   },
   "devDependencies": {
-    "esbuild": "0.11.15",
+    "esbuild": "0.11.17",
     "eslint": "7.25.0",
     "eslint-config-dev": "2.0.0",
+    "nodemon": "2.0.7",
     "postcss": "8.2.6",
     "pre-commit": "1.2.2"
   },

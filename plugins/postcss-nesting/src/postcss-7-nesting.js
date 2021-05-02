@@ -1,6 +1,6 @@
-const postcssNesting = require('../dist/index.cjs').default
+import postcssNesting from './postcss-8-nesting.js'
 
-module.exports = Object.defineProperties(postcssNesting, Object.getOwnPropertyDescriptors({
+export default Object.defineProperties(postcssNesting, Object.getOwnPropertyDescriptors({
 	get postcss() {
 		function postcssPlugin(cssRoot) {
 			const visitors = postcssNesting()
