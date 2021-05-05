@@ -74,10 +74,9 @@ module.exports = {
           'style-loader',
           { loader: 'css-loader', options: { importLoaders: 1 } },
           { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssCustomProperties(/* pluginOptions */)
-            ]
+            postcssOptions: {
+                plugins: [postcssCustomProperties(/* pluginOptions */)],
+              }
           } }
         ]
       }
