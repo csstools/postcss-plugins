@@ -73,7 +73,7 @@ export default function importEnvironmentVariablesFromSources(sources) {
 	}).reduce(async (environmentVariables, source) => {
 		const { type, from } = await source;
 
-		if (type === 'js') {
+		if (type === 'js' || type === 'cjs') {
 			return Object.assign(environmentVariables, await importEnvironmentVariablesFromJSFile(from));
 		}
 

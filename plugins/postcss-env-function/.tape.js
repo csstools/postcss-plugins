@@ -61,6 +61,14 @@ module.exports = {
 		expect: 'basic.import.expect.css',
 		result: 'basic.import.result.css'
 	},
+	'basic:import-cjs': {
+		message: 'supports { importFrom: "test/import-variables.cjs" } usage',
+		options: {
+			importFrom: 'test/import-variables.cjs'
+		},
+		expect: 'basic.import.expect.css',
+		result: 'basic.import.result.css'
+	},
 	'basic:import-js-from': {
 		message: 'supports { importFrom: { from: "test/import-variables.js" } } usage',
 		options: {
