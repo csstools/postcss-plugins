@@ -14,22 +14,27 @@ const creator = opts => {
 	const exportTo = [].concat(Object(opts).exportTo || []);
 
 	// promise any custom media are imported
-	const customMediaPromise = getCustomMediaFromImports(importFrom);
+	const customMediaImportsPromise = getCustomMediaFromImports(importFrom);
 
 	return {
 		postcssPlugin: 'postcss-custom-media',
-		Once: async root => {
-			const customMedia = Object.assign(
-				await customMediaPromise,
+		Once: async (root, helpers) => {
+
+			// combine rules from root and from imports
+			helpers.customMedia = Object.assign(
+				await customMediaImportsPromise,
 				getCustomMediaFromRoot(root, { preserve })
 			);
 
-			await writeCustomMediaToExports(customMedia, exportTo);
-
-			transformAtrules(root, customMedia, { preserve });
+			await writeCustomMediaToExports(helpers.customMedia, exportTo);
+		},
+		AtRule: {
+			media: (atrule, helpers) => {
+				transformAtrules(atrule, {preserve}, helpers)
+			}
 		}
 	}
-};
+}
 
 creator.postcss = true
 
