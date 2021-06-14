@@ -3,6 +3,7 @@ index.*.*
 package-lock.json
 *.log*
 *.result.css
+test/postcss-color-mod-function.css
 .*
 !.appveyor.yml
 !.editorconfig

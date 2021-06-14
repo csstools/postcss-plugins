@@ -67,7 +67,7 @@ Properties are found in a `:root` rule, or if a fallback value is specified.
 Add [PostCSS color-mod() Function] to your project:
 
 ```bash
-npm install postcss-color-mod-function --save-dev
+npm install postcss postcss-color-mod-function --save-dev
 ```
 
 Use [PostCSS color-mod() Function] to process your CSS:
