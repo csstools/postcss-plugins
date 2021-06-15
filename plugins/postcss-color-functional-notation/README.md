@@ -37,14 +37,6 @@ npm install postcss-color-functional-notation --save-dev
 Use [PostCSS Color Functional Notation] to process your CSS:
 
 ```js
-const postcssColorFunctionalNotation = require('postcss-color-functional-notation');
-
-postcssColorFunctionalNotation.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
-
-```js
 const postcss = require('postcss');
 const postcssColorFunctionalNotation = require('postcss-color-functional-notation');
 

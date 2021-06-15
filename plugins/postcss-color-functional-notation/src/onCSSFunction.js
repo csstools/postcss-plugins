@@ -10,10 +10,6 @@ const onCSSFunction = node => {
 		const isRgbWithNumbers = isRgbColorFunctionName(name) && isRgbNumberFunctionContents(nodes)
 		const isRgbWithPercents = isRgbColorFunctionName(name) && isRgbPercentFunctionContents(nodes)
 
-		if (name === 'hsl' && !isHsl) {
-			console.log([name, isHue(nodes[0])], nodes[0])
-		}
-
 		if (isHsl || isRgbWithNumbers || isRgbWithPercents) {
 			// rename the Color function to `hsl` or `rgb`
 			Object.assign(node, { name: isHsl ? 'hsl' : 'rgb' })
