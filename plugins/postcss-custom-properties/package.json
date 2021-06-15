@@ -29,7 +29,7 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "postcss-values-parser": "^4.0.0"
+    "postcss-values-parser": "^5.0.0"
   },
   "peerDependencies": {
     "postcss": "^8.1.0"
