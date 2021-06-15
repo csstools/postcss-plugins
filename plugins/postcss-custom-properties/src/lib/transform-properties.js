@@ -9,7 +9,16 @@ export default (root, customProperties, opts) => {
 		if (isTransformableDecl(decl) && !isRuleIgnored(decl)) {
 			const originalValue = decl.value;
 			const valueAST = parse(originalValue);
-			const value = String(transformValueAST(valueAST, customProperties));
+			let value = String(transformValueAST(valueAST, customProperties));
+
+			// protect against circular references
+			const valueSet = new Set();
+
+			while (customPropertiesRegExp.test(value) && !valueSet.has(value)) {
+				valueSet.add(value);
+				const parsedValueAST = parse(valueAST);
+				value = String(transformValueAST(parsedValueAST, customProperties));
+			}
 
 			// conditionally transform values that have changed
 			if (value !== originalValue) {

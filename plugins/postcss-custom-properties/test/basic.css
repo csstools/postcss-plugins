@@ -38,7 +38,7 @@ html {
 
 .test {
 	--skip: gray;
-	color: var(--color);
+	color: var(--override, var(--color));
 }
 
 .test--color_spacing {

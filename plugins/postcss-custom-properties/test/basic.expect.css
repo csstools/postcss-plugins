@@ -41,7 +41,7 @@ html {
 .test {
 	--skip: gray;
 	color: rgb(255, 0, 0);
-	color: var(--color);
+	color: var(--override, var(--color));
 }
 
 .test--color_spacing {
