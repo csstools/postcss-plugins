@@ -1,4 +1,4 @@
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 
 const isCLI = String(process.env.NODE_ENV).includes('cli');
@@ -20,9 +20,10 @@ const output = isCLI
 	{ file: 'index.mjs', format: 'esm', sourcemap: true }
 ];
 
-const targets = isCLI || isPostCSS || !isBrowser ? { node: 8 } : 'last 2 versions, not dead';
+const targets = isCLI || isPostCSS || !isBrowser ? { node: 10 } : 'last 2 versions, not dead';
 const plugins = [
 	babel({
+		babelHelpers: 'bundled',
 		presets: [
 			['@babel/env', { targets }]
 		]

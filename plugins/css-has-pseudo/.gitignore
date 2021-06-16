@@ -4,6 +4,7 @@ node_modules
 /index.*
 /postcss.*
 package-lock.json
+yarn.lock
 *.log*
 *.result.css
 .*

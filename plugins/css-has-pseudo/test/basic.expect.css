@@ -50,8 +50,3 @@ body:not(:has(:focus)) {
 :ignore-has(:focus) {
 	order: 6;
 }
-
-:has-ignore(:focus),
-:ignore-has(:focus) {
-	order: 6;
-}
