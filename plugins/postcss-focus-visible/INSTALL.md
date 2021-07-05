@@ -10,7 +10,7 @@
 Add [PostCSS Focus Visible] to your project:
 
 ```bash
-npm install postcss-focus-visible --save-dev
+npm install postcss postcss-focus-visible --save-dev
 ```
 
 Use [PostCSS Focus Visible] to process your CSS:

@@ -1,17 +1,24 @@
-import postcss from 'postcss'
+
 import options from './options'
 import onRule, { selectorRegExp } from './onRule'
 
-/** @type {CSSPlugin} */ 
-const plugin = postcss.plugin('postcss-focus-visible', opts => {
+/** @type {CSSPlugin} */
+const plugin = opts => {
 	opts = Object(opts)
 	options.replaceWith = String(opts.replaceWith || '.focus-visible')
 	options.preserve = Boolean('preserve' in opts ? opts.preserve : true)
 
-	return root => {
-		root.walkRules(selectorRegExp, onRule)
+	return {
+		postcssPlugin: 'postcss-focus-visible',
+		Rule (rule) {
+			if (selectorRegExp.test(rule.selector)) {
+				onRule(rule)
+			}
+		}
 	}
-})
+}
+
+plugin.postcss = true
 
 export default plugin
 
