@@ -39,7 +39,7 @@ rule can be disabled using the `preserve` option.
 Add [PostCSS Focus Within] to your project:
 
 ```bash
-npm install postcss-focus-within --save-dev
+npm install postcss postcss-focus-within --save-dev
 ```
 
 Use [PostCSS Focus Within] to process your CSS:
