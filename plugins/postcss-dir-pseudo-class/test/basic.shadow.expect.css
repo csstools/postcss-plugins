@@ -1,0 +1,71 @@
+:host-context([dir="ltr"]) {
+	order: 0;
+}
+
+:host-context([dir="ltr"]) test {
+	order: 1;
+}
+
+:host-context([dir="ltr"]) test * {
+	order: 2;
+}
+
+:host-context([dir="ltr"]) test * test {
+	order: 3;
+}
+
+:host-context([dir="ltr"]) test {
+	order: 4;
+}
+
+:host-context([dir="ltr"]) test test {
+	order: 5;
+}
+
+:host-context([dir="ltr"]) test test {
+	order: 6;
+}
+
+[dir="ltr"]:root * {
+	order: 7;
+}
+
+html[dir="ltr"] * {
+	order: 8;
+}
+
+:host-context([dir="rtl"]) {
+	order: 9;
+}
+
+:host-context([dir="rtl"]) test {
+	order: 10;
+}
+
+:host-context([dir="rtl"]) test * {
+	order: 11;
+}
+
+:host-context([dir="rtl"]) test * test {
+	order: 12;
+}
+
+:host-context([dir="rtl"]) test {
+	order: 13;
+}
+
+:host-context([dir="rtl"]) test test {
+	order: 14;
+}
+
+:host-context([dir="rtl"]) test test {
+	order: 15;
+}
+
+[dir="rtl"]:root * {
+	order: 16;
+}
+
+html[dir="rtl"] * {
+	order: 17;
+}

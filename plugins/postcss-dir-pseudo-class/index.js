@@ -5,6 +5,7 @@ const dirRegex = /:dir\([^\)]*\)/;
 module.exports = function creator(opts) {
 	const dir = Object(opts).dir;
 	const preserve = Boolean(Object(opts).preserve);
+	const shadow = Boolean(Object(opts).shadow);
 
 	return {
 		postcssPlugin: 'postcss-dir-pseudo-class',
@@ -73,6 +74,12 @@ module.exports = function creator(opts) {
 								value:     `"${ value }"`
 							});
 
+							// :host-context([dir]) for Shadow DOM CSS
+							const hostContextPseudo = selectorParser.pseudo({
+								value: ':host-context'
+							});
+							hostContextPseudo.append(dirAttr);
+
 							// not[dir] attribute
 							const notDirAttr = selectorParser.pseudo({
 								value: `${firstIsHtml || firstIsRoot ? '' : 'html'}:not`
@@ -97,8 +104,11 @@ module.exports = function creator(opts) {
 									selector.prepend(notDirAttr);
 								}
 							} else if (firstIsHtml) {
-								// otherwise, insert dir attribute after html tag
+								// insert dir attribute after html tag
 								selector.insertAfter(first, dirAttr);
+							} else if (shadow && !firstIsRoot) {
+								// prepend :host-context([dir])
+								selector.prepend(hostContextPseudo);
 							} else {
 								// otherwise, prepend the dir attribute
 								selector.prepend(dirAttr);
