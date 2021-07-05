@@ -7,71 +7,34 @@
   "repository": "csstools/postcss-double-position-gradients",
   "homepage": "https://github.com/csstools/postcss-double-position-gradients#readme",
   "bugs": "https://github.com/csstools/postcss-double-position-gradients/issues",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "files": [
-    "dist"
-  ],
+  "main": "index.js",
   "scripts": {
-    "build": "npx rollup -c .rollup.js",
-    "build:watch": "npx rollup -c .rollup.js --watch",
-    "lint": "npx eslint --cache src",
-    "lint:fix": "npx eslint --cache --fix",
-    "pretest": "npm install && npm run build",
+    "prepublishOnly": "npm test",
+    "lint": "eslint *.js --cache",
+    "lint:fix": "eslint *.js --cache --fix",
     "test": "npm run lint && npm run tape",
-    "tape": "npx postcss-tape",
-    "prepublishOnly": "npm test"
+    "tape": "postcss-tape"
   },
   "engines": {
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "postcss": "^7.0.27",
-    "postcss-values-parser": "^3.2.1"
+    "postcss-values-parser": "^5.0.0"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "postcss-tape": "^5.0.2",
-    "pre-commit": "^1.2.2",
-    "rollup": "^2.7.2",
-    "rollup-plugin-babel": "^4.4.0"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/env",
-        {
-          "targets": "maintained node versions"
-        }
-      ]
-    ]
+    "eslint": "^7.21.0",
+    "postcss-tape": "^6.0.0",
+    "postcss": "^8.2.8"
   },
   "eslintConfig": {
     "env": {
       "es6": true,
       "node": true
     },
-    "extends": "eslint:recommended",
-    "parser": "babel-eslint"
-  },
-  "rollup": {
-    "input": "src/index.js",
-    "plugins": [
-      "rollup-plugin-babel"
-    ],
-    "output": [
-      {
-        "file": "dist/index.js",
-        "format": "cjs"
-      },
-      {
-        "file": "dist/index.mjs",
-        "format": "esm"
-      }
-    ]
+    "extends": "eslint:recommended"
   },
   "keywords": [
     "postcss",

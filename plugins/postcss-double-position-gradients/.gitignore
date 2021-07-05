@@ -1,4 +1,3 @@
-dist
 node_modules
 package-lock.json
 *.log*
@@ -7,6 +6,5 @@ package-lock.json
 !.editorconfig
 !.gitattributes
 !.gitignore
-!.rollup.js
 !.tape.js
 !.travis.yml

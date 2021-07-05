@@ -5,3 +5,15 @@
 .test-conic-gradient {
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg , gold 75% , #f06 0deg);
 }
+
+.test-invalid-function {
+	background-image: some-func(yellowgreen 40%, gold 0deg 75% , #f06 0deg);
+}
+
+.test-linear-gradient-ignored {
+	background-image: linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%);
+}
+
+.test-conic-gradient-ignored {
+	background-image: conic-gradient(yellowgreen 40%, gold 0deg , gold 75% , #f06 0deg);
+}
