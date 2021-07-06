@@ -11,18 +11,10 @@ instructions for:
 Add [PostCSS Lab Function] to your project:
 
 ```bash
-npm install postcss-lab-function --save-dev
+npm install postcss postcss-lab-function --save-dev
 ```
 
-Use [PostCSS Lab Function] to process your CSS:
-
-```js
-const postcssLabFunction = require('postcss-lab-function');
-
-postcssLabFunction.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');

@@ -1,18 +1,19 @@
-import postcss from 'postcss'
 import onCSSDeclaration from './onCSSDeclaration'
 import options from './options'
 
 /** Transform lab() and lch() functions in CSS. */
-const postcssPlugin = postcss.plugin('postcss-lab-function', /** @type {PostCSSPluginInitializer} */ opts => {
+const postcssPlugin = /** @type {PostCSSPluginInitializer} */ opts => {
 	options.preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false
 
-	return root => {
-		root.walkDecls(onCSSDeclaration)
+	return {
+		postcssPlugin: 'postcss-lab-function',
+		Declaration: onCSSDeclaration,
 	}
-})
+}
+
+postcssPlugin.postcss = true
 
 export default postcssPlugin
 
-/** @typedef {import('postcss').Root} CSSRoot */ 
-/** @typedef {(root: CSSRoot) => void} PostCSSTransformCallback */ 
-/** @typedef {(opts: options) => PostCSSTransformCallback} PostCSSPluginInitializer */ 
+/** @typedef {import('postcss').Plugin} PostCSSPlugin */
+/** @typedef {(opts: options) => PostCSSPlugin} PostCSSPluginInitializer */
