@@ -38,7 +38,7 @@ shorthand properties in CSS, following the [CSS Grid Layout] specification.
 Add [PostCSS Gap Properties] to your project:
 
 ```bash
-npm install postcss-gap-properties --save-dev
+npm install postcss postcss-gap-properties --save-dev
 ```
 
 Use [PostCSS Gap Properties] to process your CSS:

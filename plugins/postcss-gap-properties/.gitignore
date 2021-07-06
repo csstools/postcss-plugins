@@ -6,6 +6,5 @@ package-lock.json
 .*
 !.editorconfig
 !.gitignore
-!.rollup.js
 !.tape.js
 !.travis.yml

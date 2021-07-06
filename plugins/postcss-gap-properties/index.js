@@ -1,18 +1,17 @@
-import postcss from 'postcss';
-
 // gap shorthand property matcher
 const gapPropertyRegExp = /^(column-gap|gap|row-gap)$/i;
 
 // filter `display: grid` declarations
 const isDisplayGrid = (node) => node.prop === 'display' && node.value === 'grid';
 
-export default postcss.plugin('postcss-gap-properties', opts => {
+module.exports = function creator(opts) {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
 
-	return root => {
-		// for each shorthand gap, column-gap, or row-gap declaration
-		root.walkDecls(gapPropertyRegExp, decl => {
-			if (decl.parent.some(isDisplayGrid)) {
+	return {
+		postcssPlugin: 'postcss-gap-properties',
+		// walk decl shorthand gap, column-gap, or row-gap declaration
+		Declaration(decl) {
+			if (gapPropertyRegExp.test(decl.prop) && decl.parent.some(isDisplayGrid)) {
 				// insert a grid-* fallback declaration
 				decl.cloneBefore({
 					prop: `grid-${decl.prop}`
@@ -23,6 +22,8 @@ export default postcss.plugin('postcss-gap-properties', opts => {
 					decl.remove();
 				}
 			}
-		})
-	};
-});
+		}
+	}
+}
+
+module.exports.postcss = true;
