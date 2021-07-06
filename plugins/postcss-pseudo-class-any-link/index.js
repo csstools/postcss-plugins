@@ -1,14 +1,21 @@
-import postcss from 'postcss';
-import parser from 'postcss-selector-parser';
+const parser = require('postcss-selector-parser');
 
 const anyAnyLinkMatch = /:any-link/;
 
-export default postcss.plugin('postcss-pseudo-class-any-link', opts => {
+/**
+ * @param {{preserve?: boolean}} opts
+ * @returns {import('postcss').Plugin}
+ */
+module.exports = function creator(opts) {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
 
-	return root => {
-		// walk each matching rule
-		root.walkRules(anyAnyLinkMatch, rule => {
+	return {
+		postcssPlugin: 'postcss-pseudo-class-any-link',
+		Rule(rule) {
+			if (!anyAnyLinkMatch.test(rule.selector)) {
+				return;
+			}
+
 			const rawSelector = rule.raws.selector && rule.raws.selector.raw || rule.selector;
 
 			// workaround for https://github.com/postcss/postcss-selector-parser/issues/28#issuecomment-171910556
@@ -62,6 +69,8 @@ export default postcss.plugin('postcss-pseudo-class-any-link', opts => {
 					}
 				}
 			}
-		})
-	};
-});
+		}
+	}
+}
+
+module.exports.postcss = true;

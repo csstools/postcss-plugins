@@ -35,7 +35,7 @@ From the [proposal][Selectors]:
 Add [PostCSS Pseudo Class Any Link] to your project:
 
 ```bash
-npm install postcss-pseudo-class-any-link --save-dev
+npm install postcss postcss-pseudo-class-any-link --save-dev
 ```
 
 Use [PostCSS Pseudo Class Any Link] to process your CSS:
