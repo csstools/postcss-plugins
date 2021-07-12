@@ -29,18 +29,10 @@ html {
 Add [PostCSS Overflow Shorthand] to your project:
 
 ```bash
-npm install postcss-overflow-shorthand --save-dev
+npm install postcss postcss-overflow-shorthand --save-dev
 ```
 
-Use [PostCSS Overflow Shorthand] to process your CSS:
-
-```js
-const postcssOverflowShorthand = require('postcss-overflow-shorthand');
-
-postcssOverflowShorthand.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
