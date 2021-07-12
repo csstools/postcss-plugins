@@ -5,8 +5,10 @@ test-border {
 	border-block: 1px solid black;
 	border: inherit;
 	border-top: 2px solid black;
+	border-block-start: 2px solid black;
 	border: inherit;
 	border-bottom: 3px solid black;
+	border-block-end: 3px solid black;
 	border: inherit;
 	border-left: 4px solid black;
 	border-right: 4px solid black;
@@ -54,8 +56,10 @@ test-border-color {
 	border-block-color: violet;
 	border-color: inherit;
 	border-top-color: white;
+	border-block-start-color: white;
 	border-color: inherit;
 	border-bottom-color: black;
+	border-block-end-color: black;
 	border-color: inherit;
 	border-left-color: grey;
 	border-right-color: grey;

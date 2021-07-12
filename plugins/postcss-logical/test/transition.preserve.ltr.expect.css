@@ -1,0 +1,65 @@
+.transition {
+	transition: 1s opacity ease;
+}
+
+.transition-block {
+	transition: 1s inset-block ease;
+	transition: 1s margin-block ease;
+	transition: 1s padding-block ease;
+	transition-property: border-block, border-block-color, border-block-style, border-block-width;
+}
+
+.transition-inline {
+	transition: 1s inset-inline ease;
+	transition: 1s margin-inline ease;
+	transition: 1s padding-inline ease;
+	transition-property: border-inline, border-inline-color, border-inline-style, border-inline-width;
+}
+
+.transition-block-start {
+	transition: 1s inset-block-start ease;
+	transition: 1s margin-block-start ease;
+	transition: 1s padding-block-start ease;
+}
+
+.transition-inline-end:dir(ltr) {
+	transition: 1s right ease;
+}
+
+.transition-inline-end:dir(rtl) {
+	transition: 1s left ease;
+}
+
+.transition-inline-end:dir(ltr) {
+	transition: 1s margin-right ease;
+}
+
+.transition-inline-end:dir(rtl) {
+	transition: 1s margin-left ease;
+}
+
+.transition-inline-end:dir(ltr) {
+	transition: 1s padding-right ease;
+}
+
+.transition-inline-end:dir(rtl) {
+	transition: 1s padding-left ease;
+}
+
+.transition-inline-end {
+	transition: 1s inset-inline-end ease;
+	transition: 1s margin-inline-end ease;
+	transition: 1s padding-inline-end ease;
+}
+
+.transition-mixed:dir(ltr) {
+	transition: 1s opacity ease, 1s left ease;
+}
+
+.transition-mixed:dir(rtl) {
+	transition: 1s opacity ease, 1s right ease;
+}
+
+.transition-mixed {
+	transition: 1s opacity ease, 1s inset-inline-start ease;
+}

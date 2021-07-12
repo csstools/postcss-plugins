@@ -65,6 +65,12 @@ module.exports = {
 	'size': {
 		message: 'supports logical "size" properties'
 	},
+	'size:preserve': {
+		message: 'supports logical "size" properties with { preserve: true }',
+		options: {
+			preserve: true
+		}
+	},
 	'text-align': {
 		message: 'supports logical "text-align" properties'
 	},
@@ -81,6 +87,13 @@ module.exports = {
 		message: 'supports logical "transition" properties with { dir: "ltr" }',
 		options: {
 			dir: 'ltr'
+		}
+	},
+	'transition:preserve:ltr': {
+		message: 'supports logical "transition" properties with { dir: "ltr", preserve: true }',
+		options: {
+			dir: 'ltr',
+			preserve: true
 		}
 	}
 };

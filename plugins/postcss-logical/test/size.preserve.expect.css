@@ -1,0 +1,20 @@
+test-size {
+	height: 320px;
+	block-size: 320px;
+	width: 180px;
+	inline-size: 180px;
+}
+
+text-max-size {
+	max-height: 320px;
+	max-block-size: 320px;
+	max-width: 180px;
+	max-inline-size: 180px;
+}
+
+text-min-size {
+	min-height: 320px;
+	min-block-size: 320px;
+	min-width: 180px;
+	min-inline-size: 180px;
+}

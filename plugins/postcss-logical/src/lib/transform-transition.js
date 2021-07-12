@@ -1,7 +1,7 @@
 import cloneRule from './clone-rule';
 import { splitByComma, splitBySpace } from './split';
 
-export default (decl, notValues, dir) => {
+export default (decl, notValues, dir, preserve) => {
 	const ltrValues = [];
 	const rtlValues = [];
 
@@ -44,20 +44,30 @@ export default (decl, notValues, dir) => {
 		}
 	});
 
-	const ltrDecl = decl.clone({ value: ltrValues.join('') });
-	const rtlDecl = decl.clone({ value: rtlValues.join('') });
+	if (ltrValues.length && dir === 'ltr') {
+		if (preserve) {
+			decl.cloneBefore({});
+		}
+		decl.assign({ value: ltrValues.join('') });
+		return;
+	} else if (rtlValues.length && dir === 'rtl') {
+		if (preserve) {
+			decl.cloneBefore({});
+		}
+		decl.assign({ value: rtlValues.join('') });
+		return;
+	} else if (ltrValues.join('') !== rtlValues.join('')) {
 
-	return ltrValues.length && dir === 'ltr'
-		? ltrDecl
-	: rtlValues.length && dir === 'rtl'
-		? rtlDecl
-	: ltrDecl.value !== rtlDecl.value
-		? [
-			cloneRule(decl, 'ltr').append(ltrDecl),
-			cloneRule(decl, 'rtl').append(rtlDecl)
-		]
-	: null;
+		cloneRule(decl, 'ltr').append(decl.cloneBefore({ value: ltrValues.join('') }));
+		cloneRule(decl, 'rtl').append(decl.cloneBefore({ value: rtlValues.join('') }));
+		clean(decl, preserve);
+		return;
+	}
 };
+
+function clean(decl, preserve) {
+	if (!preserve) decl.remove();
+}
 
 const valueMap = {
 	// Logical Height and Logical Width

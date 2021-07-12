@@ -1,7 +1,7 @@
 import cloneRule from './clone-rule';
 import reduceValues from './reduce-values';
 
-export default (decl, values, dir) => {
+export default (decl, values, dir, preserve) => {
 	if ('logical' !== values[0]) {
 		return null;
 	}
@@ -21,15 +21,19 @@ export default (decl, values, dir) => {
 		inline || all
 	]);
 
-	const ltrDecl = decl.clone({
-		value: ltrValues.join(' ')
-	});
+	const ltrDecl = () => {
+		return decl.cloneBefore({
+			value: ltrValues.join(' ')
+		});
+	};
 
 	// return the ltr values if the values are flow agnostic (where no second inline value was needed)
 	const isFlowAgnostic = ltrValues.length < 4;
 
 	if (isFlowAgnostic || dir === 'ltr') {
-		return ltrDecl;
+		ltrDecl();
+		clean(decl, preserve);
+		return;
 	}
 
 	// get right-to-left relative directions from logical directions as:
@@ -44,16 +48,23 @@ export default (decl, values, dir) => {
 		inlineEnd || inline || all
 	]);
 
-	const rtlDecl = decl.clone({
-		value: rtlValues.join(' ')
-	});
+	const rtlDecl = () => {
+		return decl.cloneBefore({
+			value: rtlValues.join(' ')
+		});
+	};
 
 	if (dir === 'rtl') {
-		return rtlDecl;
+		rtlDecl();
+		clean(decl, preserve);
+		return;
 	}
 
-	return [
-		cloneRule(decl, 'ltr').append(ltrDecl),
-		cloneRule(decl, 'rtl').append(rtlDecl)
-	];
+	cloneRule(decl, 'ltr').append(ltrDecl());
+	cloneRule(decl, 'rtl').append(rtlDecl());
+	clean(decl, preserve);
+}
+
+function clean(decl, preserve) {
+	if (!preserve) decl.remove();
 }

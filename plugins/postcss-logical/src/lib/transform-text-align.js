@@ -1,14 +1,47 @@
 import cloneRule from './clone-rule';
 
-export default (decl, values, dir) => {
-	const lDecl = decl.clone({ value: 'left' });
-	const rDecl = decl.clone({ value: 'right' });
-
-	return /^start$/i.test(decl.value) ? dir === 'ltr' ? lDecl : dir === 'rtl' ? rDecl : [
-		cloneRule(decl, 'ltr').append(lDecl),
-		cloneRule(decl, 'rtl').append(rDecl)
-	] : /^end$/i.test(decl.value) ? dir === 'ltr' ? rDecl : dir === 'rtl' ? lDecl : [
-		cloneRule(decl, 'ltr').append(rDecl),
-		cloneRule(decl, 'rtl').append(lDecl)
-	] : null;
+export default (decl, values, dir, preserve) => {
+	if (/^start$/i.test(decl.value)) {
+		if (dir === 'ltr') {
+			lDecl(decl);
+			clean(decl, preserve);
+			return;
+		} else if (dir === 'rtl') {
+			rDecl(decl);
+			clean(decl, preserve);
+			return;
+		} else {
+			cloneRule(decl, 'ltr').append(lDecl(decl));
+			cloneRule(decl, 'rtl').append(rDecl(decl));
+			clean(decl, preserve);
+			return;
+		}
+	} else if (/^end$/i.test(decl.value)) {
+		if (dir === 'ltr') {
+			rDecl(decl);
+			clean(decl, preserve);
+			return;
+		} else if (dir === 'rtl') {
+			lDecl(decl);
+			clean(decl, preserve);
+			return;
+		} else {
+			cloneRule(decl, 'ltr').append(rDecl(decl));
+			cloneRule(decl, 'rtl').append(lDecl(decl));
+			clean(decl, preserve);
+			return;
+		}
+	}
 };
+
+function lDecl(decl) {
+	return decl.cloneBefore({ value: 'left' });
+}
+
+function rDecl(decl) {
+	return decl.cloneBefore({ value: 'right' });
+}
+
+function clean(decl, preserve) {
+	if (!preserve) decl.remove();
+}
