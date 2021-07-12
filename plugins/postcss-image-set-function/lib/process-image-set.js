@@ -1,9 +1,15 @@
-import getComma from './get-comma';
-import getImage from './get-image';
-import getMedia from './get-media';
-import handleInvalidation from './handle-invalidation';
+const getComma = require('./get-comma');
+const getImage = require('./get-image');
+const getMedia = require('./get-media');
+const handleInvalidation = require('./handle-invalidation');
 
-export default (imageSetOptionNodes, decl, opts) => {
+/**
+ * @param {import('postcss-values-parser').ChildNode[]} imageSetOptionNodes
+ * @param {import('postcss').Declaration} decl
+ * @param {{ decl: import('postcss').Declaration, oninvalid: string, preserve: boolean, result: import('postcss').Result }} opts
+ * @returns {void}
+ */
+module.exports = (imageSetOptionNodes, decl, opts) => {
 	const parent = decl.parent;
 	const mediasByDpr = {};
 
@@ -19,11 +25,14 @@ export default (imageSetOptionNodes, decl, opts) => {
 
 		// handle invalidations
 		if (!comma) {
-			return handleInvalidation(opts, 'unexpected comma', imageSetOptionNodes[index]);
+			handleInvalidation(opts, 'unexpected comma', imageSetOptionNodes[index]);
+			return;
 		} else if (!value) {
-			return handleInvalidation(opts, 'unexpected image', imageSetOptionNodes[index + 1]);
+			handleInvalidation(opts, 'unexpected image', imageSetOptionNodes[index + 1]);
+			return;
 		} else if (!media) {
-			return handleInvalidation(opts, 'unexpected resolution', imageSetOptionNodes[index + 2]);
+			handleInvalidation(opts, 'unexpected resolution', imageSetOptionNodes[index + 2]);
+			return;
 		}
 
 		// prepare @media { decl: <image> }
@@ -36,7 +45,9 @@ export default (imageSetOptionNodes, decl, opts) => {
 		index += 3
 	}
 
-	const medias = Object.keys(mediasByDpr).sort((a, b) => a - b).map(params => mediasByDpr[params]);
+	const medias = Object.keys(mediasByDpr)
+		.sort((a, b) => a - b)
+		.map(params => mediasByDpr[params]);
 
 	// conditionally prepend previous siblings
 	if (medias.length) {

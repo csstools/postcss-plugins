@@ -134,32 +134,32 @@
 
 .test-no-url {
 	order: 1;
-	background-image: img/test.png;
+	background-image: "img/test.png";
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-no-url {
-	background-image: img/test-2x.png;
+	background-image: "img/test-2x.png";
 }
 }
 
 .test-no-url {
 	order: 2;
-	background-image: img/test.png;
+	background-image: "img/test.png";
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-no-url {
-	background-image: img/test-2x.png;
+	background-image: "img/test-2x.png";
 }
 }
 
 @media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
 
 .test-no-url {
-	background-image: my-img-print.png;
+	background-image: "my-img-print.png";
 }
 }
 

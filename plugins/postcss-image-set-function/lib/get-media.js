@@ -1,10 +1,10 @@
-import postcss from 'postcss';
+const postcss = require('postcss');
 
 const dpiRatios = { dpcm: 2.54, dpi: 1, dppx: 96, x: 96 };
 
 // return a valid @media rule
-export default (node, mediasByDpr) => {
-	if (Object(node).type === 'number' && node.unit in dpiRatios) {
+module.exports = (node, mediasByDpr) => {
+	if (Object(node).type === 'numeric' && node.unit in dpiRatios) {
 		// calculate min-device-pixel-ratio and min-resolution
 		const dpi = Number(node.value) * dpiRatios[node.unit.toLowerCase()];
 		const dpr = Math.floor(dpi / dpiRatios.x * 100) / 100;
