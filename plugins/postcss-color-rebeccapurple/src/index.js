@@ -1,14 +1,16 @@
-import postcss from 'postcss'
 import onCSSDeclaration from './onCSSDeclaration'
 import options from './options'
 
 /** Transform the rebeccapurple keyword in CSS. */
-const postcssPlugin = postcss.plugin('postcss-lab-function', /** @type {PostCSSPluginInitializer} */ opts => {
+function postcssColorRebeccaPurple(opts) {
 	options.preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false
 
-	return root => {
-		root.walkDecls(onCSSDeclaration)
+	return {
+		postcssPlugin: 'postcss-color-rebeccapurple',
+		Declaration: onCSSDeclaration
 	}
-})
+}
 
-export default postcssPlugin
+postcssColorRebeccaPurple.postcss = true
+
+export default postcssColorRebeccaPurple

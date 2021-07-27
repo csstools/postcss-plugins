@@ -26,7 +26,7 @@ scope and avoid unrelated commits.
    cd postcss-color-rebeccapurple
 
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream git@github.com:csstools/postcss-color-rebeccapurple.git
+   git remote add upstream git@github.com:postcss/postcss-color-rebeccapurple.git
 
    # Install the tools necessary for testing
    npm install

@@ -29,52 +29,30 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "postcss": "^7.0.27",
-    "postcss-values-parser": "^3.2.0"
+    "postcss-values-parser": "^5.0.0"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "postcss-tape": "^5.0.2",
+    "@rollup/plugin-babel": "^5.3.0",
+    "eslint": "^7.0.0",
+    "postcss": "^8.0.0",
+    "postcss-tape": "^6.0.0",
     "pre-commit": "^1.2.2",
-    "rollup": "^2.7.2",
-    "rollup-plugin-babel": "^4.4.0"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/env",
-        {
-          "targets": "maintained node versions"
-        }
-      ]
-    ]
+    "rollup": "^2.28.2"
   },
   "eslintConfig": {
     "env": {
       "es6": true,
       "node": true
     },
-    "extends": "eslint:recommended",
-    "parser": "babel-eslint"
-  },
-  "rollup": {
-    "input": "src/index.js",
-    "plugins": [
-      "rollup-plugin-babel"
-    ],
-    "output": [
-      {
-        "file": "dist/index.cjs.js",
-        "format": "cjs"
-      },
-      {
-        "file": "dist/index.esm.js",
-        "format": "esm"
-      }
-    ]
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "extends": "eslint:recommended"
   },
   "keywords": [
     "postcss",
