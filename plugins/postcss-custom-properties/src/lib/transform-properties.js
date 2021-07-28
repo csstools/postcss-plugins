@@ -3,43 +3,40 @@ import transformValueAST from './transform-value-ast';
 import { isRuleIgnored } from './is-ignored';
 
 // transform custom pseudo selectors with custom selectors
-export default (root, customProperties, opts) => {
-	// walk decls that can be transformed
-	root.walkDecls(decl => {
-		if (isTransformableDecl(decl) && !isRuleIgnored(decl)) {
-			const originalValue = decl.value;
-			const valueAST = parse(originalValue);
-			let value = String(transformValueAST(valueAST, customProperties));
+export default (decl, customProperties, opts) => {
+	if (isTransformableDecl(decl) && !isRuleIgnored(decl)) {
+		const originalValue = decl.value;
+		const valueAST = parse(originalValue);
+		let value = String(transformValueAST(valueAST, customProperties));
 
-			// protect against circular references
-			const valueSet = new Set();
+		// protect against circular references
+		const valueSet = new Set();
 
-			while (customPropertiesRegExp.test(value) && !valueSet.has(value)) {
-				valueSet.add(value);
-				const parsedValueAST = parse(valueAST);
-				value = String(transformValueAST(parsedValueAST, customProperties));
-			}
+		while (customPropertiesRegExp.test(value) && !valueSet.has(value)) {
+			valueSet.add(value);
+			const parsedValueAST = parse(valueAST);
+			value = String(transformValueAST(parsedValueAST, customProperties));
+		}
 
-			// conditionally transform values that have changed
-			if (value !== originalValue) {
-				if (opts.preserve) {
-					const beforeDecl = decl.cloneBefore({ value });
+		// conditionally transform values that have changed
+		if (value !== originalValue) {
+			if (opts.preserve) {
+				const beforeDecl = decl.cloneBefore({ value });
 
-					if (hasTrailingComment(beforeDecl)) {
-						beforeDecl.raws.value.value = beforeDecl.value.replace(trailingCommentRegExp, '$1');
-						beforeDecl.raws.value.raw = beforeDecl.raws.value.value + beforeDecl.raws.value.raw.replace(trailingCommentRegExp, '$2');
-					}
-				} else {
-					decl.value = value;
+				if (hasTrailingComment(beforeDecl)) {
+					beforeDecl.raws.value.value = beforeDecl.value.replace(trailingCommentRegExp, '$1');
+					beforeDecl.raws.value.raw = beforeDecl.raws.value.value + beforeDecl.raws.value.raw.replace(trailingCommentRegExp, '$2');
+				}
+			} else {
+				decl.value = value;
 
-					if (hasTrailingComment(decl)) {
-						decl.raws.value.value = decl.value.replace(trailingCommentRegExp, '$1');
-						decl.raws.value.raw = decl.raws.value.value + decl.raws.value.raw.replace(trailingCommentRegExp, '$2');
-					}
+				if (hasTrailingComment(decl)) {
+					decl.raws.value.value = decl.value.replace(trailingCommentRegExp, '$1');
+					decl.raws.value.raw = decl.raws.value.value + decl.raws.value.raw.replace(trailingCommentRegExp, '$2');
 				}
 			}
 		}
-	});
+	}
 };
 
 // match custom properties

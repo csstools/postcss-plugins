@@ -16,34 +16,37 @@ const creator = opts => {
 	// promise any custom selectors are imported
 	const customPropertiesPromise = getCustomPropertiesFromImports(importFrom);
 
-	// synchronous transform
-	const syncTransform = root => {
-		const customProperties = getCustomPropertiesFromRoot(root, { preserve });
-
-		transformProperties(root, customProperties, { preserve });
-	};
-
-	// asynchronous transform
-	const asyncTransform = async root => {
-		const customProperties = Object.assign(
-			{},
-			getCustomPropertiesFromRoot(root, { preserve }),
-			await customPropertiesPromise,
-		);
-
-		await writeCustomPropertiesToExports(customProperties, exportTo);
-
-		transformProperties(root, customProperties, { preserve });
-	};
+	let customProperties;
 
 	// whether to return synchronous function if no asynchronous operations are requested
 	const canReturnSyncFunction = importFrom.length === 0 && exportTo.length === 0;
 
 	return {
 		postcssPlugin: 'postcss-custom-properties',
-		Once: canReturnSyncFunction ? syncTransform : asyncTransform,
+		prepare ({ root }) {
+			if (canReturnSyncFunction) {
+				customProperties = getCustomPropertiesFromRoot(root, { preserve });
+
+				return {
+					Declaration: (decl) => transformProperties(decl, customProperties, { preserve })
+				}
+			} else {
+				return {
+					Once: async root => {
+						customProperties = Object.assign(
+							{},
+							getCustomPropertiesFromRoot(root, { preserve }),
+							await customPropertiesPromise,
+						);
+
+						await writeCustomPropertiesToExports(customProperties, exportTo);
+					},
+					Declaration: (decl) => transformProperties(decl, customProperties, { preserve })
+				}
+			}
+		}
 	}
-};
+}
 
 creator.postcss = true
 
