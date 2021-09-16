@@ -6,6 +6,7 @@ node_modules
 /legacy.*
 /postcss.*
 package-lock.json
+yarn.lock
 *.log*
 *.result.css
 .*
