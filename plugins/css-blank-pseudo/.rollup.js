@@ -9,21 +9,21 @@ const targets = isCLI || isPostCSS || !isBrowser ? { node: 10 } : 'last 2 versio
 
 const input = `src/${isCLI ? 'cli' : isPostCSS ? 'postcss' : isLegacy ? 'browser-legacy' : 'browser'}.js`;
 const output = isCLI
-	? { file: 'cli.js', format: 'cjs', sourcemap: true, strict: false }
+	? { file: 'cli.js', format: 'cjs', exports: 'default', sourcemap: true, strict: false }
 : isBrowser && isLegacy
-	? { file: 'browser-legacy.js', format: 'cjs', sourcemap: true, strict: false }
+	? { file: 'browser-legacy.js', format: 'cjs', exports: 'default', sourcemap: true, strict: false }
 : isBrowser
-	? { file: 'browser.js', format: 'cjs', sourcemap: true, strict: false }
+	? { file: 'browser.js', format: 'cjs', exports: 'default', sourcemap: true, strict: false }
 : isPostCSS
 	? [
-	{ file: 'postcss.js', format: 'cjs', sourcemap: true },
+	{ file: 'postcss.js', format: 'cjs', exports: 'default', sourcemap: true },
 	{ file: 'postcss.mjs', format: 'esm', sourcemap: true }
 ] : isLegacy
 	? [
-	{ file: 'legacy.js', format: 'cjs', sourcemap: true },
+	{ file: 'legacy.js', format: 'cjs', exports: 'default', sourcemap: true },
 	{ file: 'legacy.mjs', format: 'esm', sourcemap: true }
 ] : [
-	{ file: 'index.js', format: 'cjs', sourcemap: true },
+	{ file: 'index.js', format: 'cjs', exports: 'default', sourcemap: true },
 	{ file: 'index.mjs', format: 'esm', sourcemap: true }
 ];
 const plugins = [
