@@ -9,7 +9,7 @@ const targets = isCLI || isPostCSS || !isBrowser ? { node: 10 } : 'last 2 versio
 
 const input = `src/${isCLI ? 'cli' : isPostCSS ? 'postcss' : isLegacy ? 'browser-legacy' : 'browser'}.js`;
 const output = isCLI
-	? { file: 'cli.js', format: 'cjs', exports: 'default', sourcemap: true, strict: false }
+	? { file: 'cli.js', format: 'cjs', sourcemap: true, strict: false }
 : isBrowser && isLegacy
 	? { file: 'browser-legacy.js', format: 'cjs', exports: 'default', sourcemap: true, strict: false }
 : isBrowser
