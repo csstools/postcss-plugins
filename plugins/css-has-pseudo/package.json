@@ -37,25 +37,25 @@
     "test:postcss": "postcss-tape --plugin postcss.js"
   },
   "engines": {
-    "node": ">= 12"
+    "node": ">=12"
   },
   "peerDependencies": {
-    "postcss": ">= 8.1"
+    "postcss": ">=8.3"
   },
   "dependencies": {
     "postcss-selector-parser": "^6"
   },
   "devDependencies": {
-    "@babel/core": "7.14.6",
-    "@babel/preset-env": "7.14.5",
+    "@babel/core": "7.15.5",
+    "@babel/preset-env": "7.15.6",
     "@rollup/plugin-babel": "5.3.0",
     "babel-eslint": "10.0.1",
     "cross-env": "7.0.3",
-    "eslint": "7.28.0",
+    "eslint": "7.32.0",
     "postcss": "8.3.4",
     "postcss-tape": "6.0.1",
     "pre-commit": "1.2.2",
-    "rollup": "2.51.2",
+    "rollup": "2.56.3",
     "rollup-plugin-terser": "7.0.2"
   },
   "eslintConfig": {
