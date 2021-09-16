@@ -11,12 +11,12 @@ const output = isCLI
 	? { file: 'cli.js', format: 'cjs', sourcemap: true, strict: false }
 : isPostCSS
 	? [
-	{ file: 'postcss.js', format: 'cjs', sourcemap: true },
+	{ file: 'postcss.js', format: 'cjs', exports: 'default', sourcemap: true },
 	{ file: 'postcss.mjs', format: 'esm', sourcemap: true }
 ] : isBrowser
-	? { file: 'browser.js', format: 'cjs', sourcemap: true, strict: false }
+	? { file: 'browser.js', format: 'cjs', exports: 'default', sourcemap: true, strict: false }
 : [
-	{ file: 'index.js', format: 'cjs', sourcemap: true },
+	{ file: 'index.js', format: 'cjs', exports: 'default', sourcemap: true },
 	{ file: 'index.mjs', format: 'esm', sourcemap: true }
 ];
 
