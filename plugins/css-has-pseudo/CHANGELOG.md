@@ -1,5 +1,10 @@
 # Changes to CSS Has Pseudo
 
+### 2.0.0 (September 16, 2021)
+
+- Updated: Support for PostCS 8+ (major).
+- Updated: Support for Node 12+ (major).
+
 ### 1.0.0 (June 10, 2019)
 
 - Updated: `postcss-selector-parser` to 6.0.2 (major)
