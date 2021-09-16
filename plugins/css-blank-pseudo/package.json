@@ -51,7 +51,6 @@
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.6",
     "@rollup/plugin-babel": "^5.3.0",
-    "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "postcss": "^8.3.6",
@@ -66,19 +65,10 @@
       "es6": true,
       "node": true
     },
-    "extends": "eslint:recommended",
-    "parser": "babel-eslint",
     "parserOptions": {
-      "ecmaVersion": 2018,
-      "impliedStrict": true,
       "sourceType": "module"
     },
-    "root": true,
-    "rules": {
-      "no-console": [
-        0
-      ]
-    }
+    "root": true
   },
   "keywords": [
     "postcss",
