@@ -1,5 +1,10 @@
 # Changes to PostCSS Logical Properties
 
+### 5.0.0 (September 17, 2021)
+
+- Updated: Support for PostCS 8+ (major).
+- Updated: Support for Node 12+ (major).
+
 ### 4.0.2 (June 10, 2019)
 
 - Fixed: Restored transforms for `max-block-size`, `max-inline-size`,
