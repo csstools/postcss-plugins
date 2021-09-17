@@ -88,8 +88,8 @@ nav :link > span, nav :visited > span {
 }
 ```
 
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-pseudo-class-any-link.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-pseudo-class-any-link
+[cli-img]: https://github.com/csstools/postcss-pseudo-class-any-link/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-pseudo-class-any-link/actions/workflows/test.yml?query=workflow/test
 [css-img]: https://cssdb.org/badge/any-link-pseudo-class.svg
 [css-url]: https://cssdb.org/#any-link-pseudo-class
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg

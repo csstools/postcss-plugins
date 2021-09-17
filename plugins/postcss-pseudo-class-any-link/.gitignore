@@ -1,11 +1,12 @@
 node_modules
 index.*.*
 package-lock.json
+yarn.lock
 *.log*
 *.result.css
 .*
 !.editorconfig
+!.github
 !.gitignore
 !.rollup.js
 !.tape.js
-!.travis.yml

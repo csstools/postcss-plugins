@@ -1,5 +1,10 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### 7.0.0 (September 17, 2021)
+
+- Updated: Support for PostCSS 8+ (major).
+- Updated: Support for Node v12+ (major).
+
 ### 6.0.0 (September 17, 2018)
 
 - Updated: Support for PostCSS v7+
