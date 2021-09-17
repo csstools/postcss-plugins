@@ -1,6 +1,7 @@
 node_modules
 index.*.*
 package-lock.json
+yarn.lock
 *.log*
 *.result.css
 .*
