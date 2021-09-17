@@ -1,5 +1,10 @@
 # Changes to PostCSS Focus Within
 
+### 5.0.0 (September 17, 2021)
+
+- Updated: Support for PostCS 8+ (major).
+- Updated: Support for Node 12+ (major).
+
 ### 4.0.0 (April 20, 2020)
 
 - Fixed: Allow `:focus-within` to appear escaped in a selector
