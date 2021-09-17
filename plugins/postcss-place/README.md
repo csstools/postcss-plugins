@@ -2,7 +2,7 @@
 
 [<img alt="NPM Version" src="https://img.shields.io/npm/v/postcss-place.svg" height="20">][npm-url]
 [<img alt="CSS Standard Status" src="https://cssdb.org/badge/double-position-gradients.svg" height="20">][css-url]
-[<img alt="Build Status" src="https://img.shields.io/travis/csstools/postcss-place/master.svg" height="20">][cli-url]
+[<img alt="Build Status" src="https://github.com/csstools/postcss-place/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
 [PostCSS Place Properties] lets you use `place-*` properties as shorthands for `align-*`
@@ -77,7 +77,7 @@ postcssPlace({ preserve: false })
 }
 ```
 
-[cli-url]: https://travis-ci.org/csstools/postcss-place
+[cli-url]: https://github.com/csstools/postcss-place/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#place-properties
 [git-url]: https://gitter.im/postcss/postcss
 [npm-url]: https://www.npmjs.com/package/postcss-place
