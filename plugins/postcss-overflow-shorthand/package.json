@@ -1,6 +1,6 @@
 {
   "name": "postcss-overflow-shorthand",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Use the overflow shorthand in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -24,21 +24,20 @@
     "test:tape": "postcss-tape"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12"
   },
   "peerDependencies": {
-    "postcss": "^8.0.0"
+    "postcss": "^8.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "@rollup/plugin-babel": "^5.2.1",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.9.0",
-    "postcss": "^8.1.1",
-    "postcss-tape": "^6.0.0",
-    "pre-commit": "^1.2.2",
-    "rollup": "^2.27.1"
+    "@babel/core": "7.15.5",
+    "@babel/preset-env": "7.15.6",
+    "@rollup/plugin-babel": "5.3.0",
+    "eslint": "7.32.0",
+    "postcss": "8.3.6",
+    "postcss-tape": "6.0.1",
+    "pre-commit": "1.2.2",
+    "rollup": "2.56.3"
   },
   "eslintConfig": {
     "env": {
@@ -47,9 +46,8 @@
       "node": true
     },
     "extends": "eslint:recommended",
-    "parser": "babel-eslint",
     "parserOptions": {
-      "ecmaVersion": 2018,
+      "ecmaVersion": 2020,
       "impliedStrict": true,
       "sourceType": "module"
     },
