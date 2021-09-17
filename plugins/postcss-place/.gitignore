@@ -9,4 +9,4 @@ package-lock.json
 !.gitignore
 !.rollup.js
 !.tape.js
-!.travis.yml
+!.github

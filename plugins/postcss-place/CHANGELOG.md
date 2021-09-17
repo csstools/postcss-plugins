@@ -1,5 +1,10 @@
 # Changes to PostCSS Place Properties
 
+## 7.0.0 (September 17, 2021)
+
+- Updated: Support for PostCS 8+ (major).
+- Updated: Support for Node 12+ (major).
+
 ## 6.0.0 (January 12, 2021)
 
 - Updated: Support for PostCSS v8+
