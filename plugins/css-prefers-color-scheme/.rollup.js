@@ -14,12 +14,12 @@ const input = isPostCSS ? 'src/postcss.js' : 'src/browser.js';
 // write to browser.js/browser.min.js for browsers, index.js/index.mjs for node
 const output = isPostCSS
   ? [
-		{ file: 'postcss.js', format: 'cjs', sourcemap: true, strict: false },
+		{ file: 'postcss.js', format: 'cjs', exports: 'default', sourcemap: true, strict: false },
     { file: 'postcss.mjs', format: 'esm', sourcemap: true, strict: false }
 ] : isBrowser
 	? { file: `browser${isBrowserMin ? '.min' : ''}.js`, format: 'iife', name: 'initPrefersColorScheme', sourcemap: !isBrowserMin }
 : [
-	{ file: 'index.js', format: 'cjs', sourcemap: true },
+	{ file: 'index.js', format: 'cjs', exports: 'default', sourcemap: true },
 	{ file: 'index.mjs', format: 'esm', sourcemap: true }
 ];
 

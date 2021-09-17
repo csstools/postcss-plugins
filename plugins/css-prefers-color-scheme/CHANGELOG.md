@@ -1,5 +1,10 @@
 # Changes to Prefers Color Scheme
 
+### 5.0.0 (September 17, 2021)
+
+- Updated: Support for PostCS 8+ (major).
+- Updated: Support for Node 12+ (major).
+
 ### 4.0.0 (May 24, 2019)
 
 - Updated: `postcss` to 7.0.16 (patch)
