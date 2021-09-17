@@ -5,6 +5,7 @@ yarn.lock
 *.result.css
 .*
 !.editorconfig
+!.github
 !.gitignore
 !.rollup.js
 !.tape.js

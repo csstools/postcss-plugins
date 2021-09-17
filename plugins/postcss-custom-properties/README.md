@@ -186,8 +186,8 @@ See example exports written to [CSS](test/export-properties.css),
 
 [cli-img]: https://img.shields.io/travis/postcss/postcss-custom-properties/master.svg
 [cli-url]: https://travis-ci.org/postcss/postcss-custom-properties
-[css-img]: https://cssdb.org/badge/custom-properties.svg
-[css-url]: https://cssdb.org/#custom-properties
+[css-img]: https://github.com/postcss/postcss-custom-properties/workflows/test/badge.svg
+[css-url]: https://github.com/postcss/postcss-custom-properties/actions/workflows/test.yml?query=workflow/test
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-custom-properties.svg
