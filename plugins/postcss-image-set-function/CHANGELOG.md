@@ -1,5 +1,10 @@
 # Changes to PostCSS image-set() Function
 
+### 4.0.0 (September 17, 2021)
+
+- Updated: Support for PostCS 8+ (major).
+- Updated: Support for Node 12+ (major).
+
 ### 3.0.1 (September 18, 2018)
 
 - Updated: PostCSS Values Parser 2

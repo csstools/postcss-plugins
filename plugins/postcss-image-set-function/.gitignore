@@ -6,4 +6,4 @@ package-lock.json
 !.editorconfig
 !.gitignore
 !.tape.js
-!.travis.yml
+!.github
