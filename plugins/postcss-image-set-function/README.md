@@ -154,8 +154,8 @@ in, other factors can affect the chosen image. For example, if the user is on a
 slow mobile connection, the browser may prefer to select a lower-res image
 rather than wait for a larger, resolution-matching image to load.
 
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-image-set-function.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-image-set-function
+[cli-img]: https://github.com/csstools/postcss-image-set-function/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-image-set-function/actions/workflows/test.yml?query=workflow/test
 [css-img]: https://cssdb.org/badge/image-set-function.svg
 [css-url]: https://cssdb.org/#image-set-function
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
