@@ -150,8 +150,8 @@ article h3:dir(ltr) {
 }
 ```
 
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-dir-pseudo-class.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-dir-pseudo-class
+[cli-img]: https://github.com/csstools/postcss-dir-pseudo-class/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-dir-pseudo-class/actions/workflows/test.yml?query=workflow/test
 [css-img]: https://cssdb.org/badge/dir-pseudo-class.svg
 [css-url]: https://cssdb.org/#dir-pseudo-class
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
