@@ -1,5 +1,10 @@
 # Changes to PostCSS Dir Pseudo Class
 
+### 6.0.0 (September 17, 2021)
+
+- Updated: Support for PostCS 8+ (major).
+- Updated: Support for Node 12+ (major).
+
 ### 5.0.0 (September 17, 2018)
 
 - Updated: Support for PostCSS v7+

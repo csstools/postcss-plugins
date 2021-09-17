@@ -1,6 +1,6 @@
 {
   "name": "postcss-dir-pseudo-class",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "Use the :dir pseudo-class in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -18,20 +18,20 @@
     "test:tape": "postcss-tape"
   },
   "engines": {
-    "node": "^10 || ^12 || >=14"
+    "node": ">=12"
   },
   "dependencies": {
-    "postcss-selector-parser": "^6.0.4"
+    "postcss-selector-parser": "6.0.6"
   },
   "devDependencies": {
-    "eslint": "^7.9.0",
-    "eslint-config-dev": "^2.0.0",
-    "postcss": "^8.0.0",
-    "postcss-tape": "^6.0.0",
-    "pre-commit": "^1.2.2"
+    "eslint": "7.32.0",
+    "eslint-config-dev": "2.0.0",
+    "postcss": "8.3.6",
+    "postcss-tape": "6.0.1",
+    "pre-commit": "1.2.2"
   },
   "peerDependencies": {
-    "postcss": "^8.0.0"
+    "postcss": "^8.3"
   },
   "eslintConfig": {
     "extends": "dev",
