@@ -1,5 +1,10 @@
 # Changes to PostCSS Focus Visible
 
+### 6.0.0 (September 17, 2021)
+
+- Updated: Support for PostCS 8+ (major).
+- Updated: Support for Node 12+ (major).
+
 ### 5.0.0 (April 14, 2020)
 
 - Updated: `:focus-visible` can appear escaped in a selector
