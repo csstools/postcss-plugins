@@ -2,7 +2,7 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/postcss-lab-function.svg" height="20">][npm-url]
 [<img alt="CSS Standard Status" src="https://cssdb.org/badge/lab-function.svg" height="20">][css-url]
-[<img alt="build status" src="https://img.shields.io/travis/csstools/postcss-lab-function/master.svg" height="20">][cli-url]
+[<img alt="Build Status" src="https://github.com/csstools/postcss-lab-function/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="support chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
 
@@ -75,7 +75,7 @@ postcssLabFunction({ preserve: true })
 }
 ```
 
-[cli-url]: https://travis-ci.org/csstools/postcss-lab-function
+[cli-url]: https://github.com/csstools/postcss-lab-function/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#lab-function
 [git-url]: https://gitter.im/postcss/postcss
 [npm-url]: https://www.npmjs.com/package/postcss-lab-function
