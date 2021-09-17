@@ -73,8 +73,8 @@ html {
 }
 ```
 
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-overflow-shorthand.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-overflow-shorthand
+[cli-img]: https://github.com/csstools/postcss-overflow-shorthand/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-overflow-shorthand/actions/workflows/test.yml?query=workflow/test
 [css-img]: https://cssdb.org/badge/overflow-property.svg
 [css-url]: https://cssdb.org/#overflow-property
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
