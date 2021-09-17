@@ -7,4 +7,4 @@ package-lock.json
 !.gitattributes
 !.gitignore
 !.tape.js
-!.travis.yml
+!.github
