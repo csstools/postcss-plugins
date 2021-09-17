@@ -74,8 +74,8 @@ remain in the CSS. By default, the original declaration is preserved.
 
 [css-img]: https://cssdb.org/badge/gap-properties.svg
 [css-url]: https://cssdb.org/#gap-properties
-[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-gap-properties.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-gap-properties
+[cli-img]: https://github.com/csstools/postcss-gap-properties/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-gap-properties/actions/workflows/test.yml?query=workflow/test
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-gap-properties.svg
