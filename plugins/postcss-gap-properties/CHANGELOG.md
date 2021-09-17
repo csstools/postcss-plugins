@@ -1,5 +1,10 @@
 # Changes to PostCSS Gap Properties
 
+### 3.0.0 (September 17, 2021)
+
+- Updated: Support for PostCS 8+ (major).
+- Updated: Support for Node 12+ (major).
+
 ### 2.0.0 (September 17, 2018)
 
 - Updated: Support for PostCSS v7+
