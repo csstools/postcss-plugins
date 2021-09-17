@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-functional-notation",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "Use space and slash separated color notation in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -23,24 +23,23 @@
     "prepublishOnly": "npm test"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12"
   },
   "dependencies": {
-    "postcss-values-parser": "^5.0.0"
+    "postcss-values-parser": "6.0.0"
   },
   "peerDependencies": {
-    "postcss": "^8.0.0"
+    "postcss": "^8.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "postcss": "^8.0.5",
-    "postcss-tape": "^6.0.0",
-    "pre-commit": "^1.2.2",
-    "rollup": "^2.7.2",
-    "rollup-plugin-babel": "^4.4.0"
+    "@babel/core": "7.15.5",
+    "@babel/preset-env": "7.15.6",
+    "eslint": "7.32.0",
+    "postcss": "8.3.6",
+    "postcss-tape": "6.0.1",
+    "pre-commit": "1.2.2",
+    "rollup": "2.56.3",
+    "rollup-plugin-babel": "4.4.0"
   },
   "babel": {
     "presets": [
@@ -58,7 +57,9 @@
       "node": true
     },
     "extends": "eslint:recommended",
-    "parser": "babel-eslint"
+    "parserOptions": {
+      "sourceType": "module"
+    }
   },
   "rollup": {
     "input": "src/index.js",
@@ -67,6 +68,7 @@
     ],
     "output": [
       {
+        "exports": "default",
         "file": "dist/index.cjs.js",
         "format": "cjs"
       },
