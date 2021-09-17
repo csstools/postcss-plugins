@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-rebeccapurple",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Use the rebeccapurple color keyword in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "contributors": [
@@ -26,23 +26,23 @@
     "prepublishOnly": "npm test"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12"
   },
   "dependencies": {
-    "postcss-values-parser": "^5.0.0"
+    "postcss-values-parser": "^6"
   },
   "peerDependencies": {
-    "postcss": "^8.0.0"
+    "postcss": "^8.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "@rollup/plugin-babel": "^5.3.0",
-    "eslint": "^7.0.0",
-    "postcss": "^8.0.0",
-    "postcss-tape": "^6.0.0",
-    "pre-commit": "^1.2.2",
-    "rollup": "^2.28.2"
+    "@babel/core": "7.15.5",
+    "@babel/preset-env": "7.15.6",
+    "@rollup/plugin-babel": "5.3.0",
+    "eslint": "7.32.0",
+    "postcss": "8.3.6",
+    "postcss-tape": "6.0.1",
+    "pre-commit": "1.2.2",
+    "rollup": "2.56.3"
   },
   "eslintConfig": {
     "env": {

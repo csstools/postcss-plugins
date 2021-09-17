@@ -1,5 +1,10 @@
 # Changes to PostCSS RebeccaPurple
 
+### 7.0.0 (September 17, 2021)
+
+- Updated: Support for PostCSS 8+ (major).
+- Updated: Support for Node v12+ (major).
+
 ### 6.0.0 (April 25, 2020)
 
 - Updated: `postcss-values-parser` to 3.2.0 (major)
