@@ -30,6 +30,8 @@ From the [proposal][Selectors]:
   anchor of a hyperlink. It matches an element if the element would match
   `:link` or `:visited`.
 
+[!['Can I use' table](https://caniuse.bitsofco.de/image/css-any-link.png)](https://caniuse.com/#feat=css-any-link)
+
 ## Usage
 
 Add [PostCSS Pseudo Class Any Link] to your project:
