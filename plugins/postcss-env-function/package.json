@@ -1,6 +1,6 @@
 {
   "name": "postcss-env-function",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Use env() variables in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -23,24 +23,24 @@
     "prepublishOnly": "npm test"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12"
   },
   "dependencies": {
-    "postcss-values-parser": "^5.0.0"
+    "postcss-values-parser": "6.0.0"
   },
   "peerDependencies": {
-    "postcss": "^8.0.0"
+    "postcss": "^8.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.10",
-    "@babel/preset-env": "^7.13.10",
-    "@babel/eslint-parser": "^7.13.10",
-    "eslint": "^7.22.0",
-    "postcss": "^8.2.8",
-    "postcss-tape": "^6.0.0",
-    "pre-commit": "^1.2.2",
-    "rollup": "^2.41.2",
-    "@rollup/plugin-babel": "^5.3.0"
+    "@babel/core": "7.15.5",
+    "@babel/eslint-parser": "7.15.4",
+    "@babel/preset-env": "7.15.6",
+    "@rollup/plugin-babel": "5.3.0",
+    "eslint": "7.32.0",
+    "postcss": "8.3.6",
+    "postcss-tape": "6.0.1",
+    "pre-commit": "1.2.2",
+    "rollup": "2.56.3"
   },
   "babel": {
     "presets": [

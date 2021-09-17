@@ -1,5 +1,10 @@
 # Changes to PostCSS Environment Variables
 
+### 4.0.0 (September 17, 2021)
+
+- Updated: Support for PostCS 8+ (major).
+- Updated: Support for Node 12+ (major).
+
 ### 3.0.0 (June 13, 2019)
 
 - Updated: `postcss-values-parser` to 3.2.0 (major)
