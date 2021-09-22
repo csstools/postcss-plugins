@@ -1,5 +1,12 @@
 # Changes to PostCSS Focus Visible
 
+### 6.0.1 (September 22, 2021)
+
+- Added missing `dist` to bundle.
+- Added missing `exports` to `package.json`
+- Added missing `types` to `package.json`
+- Added bundling & testing as prepublish step.
+
 ### 6.0.0 (September 17, 2021)
 
 - Updated: Support for PostCS 8+ (major).

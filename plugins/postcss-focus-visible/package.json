@@ -1,14 +1,22 @@
 {
   "name": "postcss-focus-visible",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Use the :focus-visible pseudo-selector in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
   "repository": "csstools/postcss-focus-visible",
   "homepage": "https://github.com/csstools/postcss-focus-visible#readme",
   "bugs": "https://github.com/csstools/postcss-focus-visible/issues",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.mjs",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -18,6 +26,7 @@
     "lint": "npx eslint --cache src",
     "lint:fix": "npx eslint --cache --fix",
     "pretest": "npm install && npm run build",
+    "prepublishOnly": "npm test",
     "test": "npm run lint && npm run tape",
     "tape": "npx postcss-tape"
   },
@@ -31,12 +40,12 @@
     "@babel/core": "7.15.5",
     "@babel/preset-env": "7.15.6",
     "eslint": "7.32.0",
-    "eslint-config-dev": "2.0.0",
     "postcss": "8.3.6",
     "postcss-tape": "6.0.1",
     "pre-commit": "1.2.2",
     "rollup": "2.56.3",
-    "rollup-plugin-babel": "4.4.0"
+    "rollup-plugin-babel": "4.4.0",
+    "rollup-plugin-copy": "^3.4.0"
   },
   "babel": {
     "presets": [
@@ -62,16 +71,27 @@
   "rollup": {
     "input": "src/index.js",
     "plugins": [
-      "rollup-plugin-babel"
+      "rollup-plugin-babel",
+      [
+        "rollup-plugin-copy",
+        {
+          "targets": [
+            {
+              "src": "./src/index.d.ts",
+              "dest": "./dist"
+            }
+          ]
+        }
+      ]
     ],
     "output": [
       {
         "exports": "default",
-        "file": "dist/index.cjs.js",
+        "file": "dist/index.cjs",
         "format": "cjs"
       },
       {
-        "file": "dist/index.esm.js",
+        "file": "dist/index.mjs",
         "format": "esm"
       }
     ]
