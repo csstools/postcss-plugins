@@ -1,10 +1,11 @@
-import babel from '@rollup/plugin-babel';
+import babel from '@rollup/plugin-babel'
+import copy from 'rollup-plugin-copy'
 
 export default {
 	input: 'src/index.js',
 	output: [
-		{ file: 'dist/index.cjs.js', format: 'cjs', sourcemap: true, exports: 'default' },
-		{ file: 'dist/index.es.mjs', format: 'es', sourcemap: true, exports: 'default' }
+		{ file: 'dist/index.cjs', format: 'cjs', sourcemap: true, exports: 'default' },
+		{ file: 'dist/index.mjs', format: 'esm', sourcemap: true },
 	],
 	plugins: [
 		babel({
@@ -13,8 +14,24 @@ export default {
 				'@babel/plugin-syntax-dynamic-import'
 			],
 			presets: [
-				['@babel/env', { modules: false, targets: { node: 10 } }]
-			]
-		})
-	]
-};
+				[
+					'@babel/env',
+					{
+						modules: false,
+						targets: {
+							node: 10,
+						},
+					},
+				],
+			],
+		}),
+		copy({
+			targets: [
+				{
+					src: 'src/index.d.ts',
+					dest: 'dist'
+				},
+			],
+		}),
+	],
+}
