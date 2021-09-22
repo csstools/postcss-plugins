@@ -1,5 +1,13 @@
 # Changes to PostCSS Color Hex Alpha
 
+### 8.0.0 (September 22, 2021)
+
+- Updated: PostCSS Values Parser to v8 (major).
+- Added missing `dist` to bundle.
+- Added missing `exports` to `package.json`
+- Added missing `types` to `package.json`
+- Added bundling & testing as prepublish step.
+
 ### 7.0.0 (January 12, 2021)
 
 - Updated: Support for PostCSS v8+
