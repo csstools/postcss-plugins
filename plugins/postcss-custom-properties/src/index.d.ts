@@ -20,7 +20,7 @@ export interface PluginOptions {
 export interface Plugin {
 	(options?: PluginOptions): {
 		postcssPlugin: 'postcss-custom-properties',
-		prepare({ root: any }): (
+		prepare({ root }: { root: any }): (
 			| {
 				Declaration: (decl: any) => void;
 				Once?: undefined;
