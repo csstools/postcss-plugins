@@ -3,8 +3,8 @@ import walk from './lib/walk.js'
 export default function postcssNesting() {
 	return {
 		postcssPlugin: 'postcss-nesting',
-		Once(root) {
-			walk(root)
+		RuleExit(rule) {
+			walk(rule)
 		},
 	}
 }

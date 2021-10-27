@@ -19,17 +19,30 @@ export default async function tape() {
 	failures += await test('ignores invalid entries', { basename: 'ignore' })
 	failures += await test('supports complex entries', { basename: 'complex' })
 
+	let mixinPlugin = () => {
+		return {
+			postcssPlugin: 'mixin',
+			AtRule: {
+				mixin(node) {
+					node.replaceWith('& .in{ &.deep { color: blue; }}')
+				},
+			},
+		}
+	}
+	mixinPlugin.postcss = true
+	failures += await test('supports other visitors', { basename: 'mixin' }, mixinPlugin)
+
 	return failures === 0
 }
 
-async function test(name, init) {
+async function test(name, init, ...plugins) {
 	const { basename } = Object(init)
 
 	let sourceUrl = new URL(`test/${basename}.css`, workingUrl)
 	let expectUrl = new URL(`test/${basename}.expect.css`, workingUrl)
 	let resultUrl = new URL(`test/${basename}.result.css`, workingUrl)
 
-	let plugins = [plugin]
+	plugins.unshift(plugin)
 
 	let sourceCss = await fs.readFile(sourceUrl, 'utf8')
 	let expectCss = await fs.readFile(expectUrl, 'utf8')
@@ -49,10 +62,9 @@ async function test(name, init) {
 	}
 }
 
-
 if (new URL(process.argv[1], 'file:').href === import.meta.url) {
 	tape().then(
 		() => process.exit(0),
-		() => process.exit(1)
+		() => process.exit(1),
 	)
 }
