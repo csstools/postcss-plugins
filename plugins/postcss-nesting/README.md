@@ -65,6 +65,17 @@ postcss([
 | [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
 | --- | --- | --- | --- | --- |
 
+### Deno
+
+You can also use [PostCSS Nesting] on [Deno]:
+
+```js
+import postcss from "https://deno.land/x/postcss/mod.js";
+import postcssNesting from "https://deno.land/x/postcss_nesting/mod.js";
+
+await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
+```
+
 [cli-img]: https://img.shields.io/travis/csstools/postcss-nesting.svg
 [cli-url]: https://travis-ci.org/csstools/postcss-nesting
 [css-img]: https://cssdb.org/badge/nesting-rules.svg
@@ -77,3 +88,4 @@ postcss([
 [CSS Nesting]: https://drafts.csswg.org/css-nesting-1/
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Nesting]: https://github.com/jonathantneal/postcss-nesting
+[Deno]: https://deno.land/x/postcss_nesting
