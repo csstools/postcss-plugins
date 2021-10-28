@@ -8,3 +8,9 @@ body {
 		order: 2;
 	}
 }
+
+@media (width > env(--another-custom-width)) {
+	body {
+		order: 3;
+	}
+}

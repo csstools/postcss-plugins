@@ -8,3 +8,9 @@ body {
 		order: 2;
 	}
 }
+
+@media (width > 600px) {
+	body {
+		order: 3;
+	}
+}
