@@ -1,7 +1,6 @@
 import shiftNodesBeforeParent from './shift-nodes-before-parent.js'
 import cleanupParent from './cleanup-parent.js'
 import mergeSelectors from './merge-selectors.js'
-import validSelector from './valid-selector.js'
 
 export default function transformRuleWithinRule(node) {
 	// move previous siblings and the node to before the parent
@@ -21,4 +20,4 @@ export default function transformRuleWithinRule(node) {
 	cleanupParent(parent)
 }
 
-export const isRuleWithinRule = (node) => node.type === 'rule' && Object(node.parent).type === 'rule' && node.selectors.every((selector) => selector.trim().lastIndexOf('&') === 0 && validSelector.test(selector))
+export const isRuleWithinRule = (node) => node.type === 'rule' && Object(node.parent).type === 'rule' && node.selectors.every((selector) => selector.trim().indexOf('&') === 0 && selector.indexOf('|') === -1)

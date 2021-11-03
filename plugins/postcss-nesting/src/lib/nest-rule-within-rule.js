@@ -2,7 +2,6 @@ import { comma } from './list.js'
 import shiftNodesBeforeParent from './shift-nodes-before-parent.js'
 import cleanupParent from './cleanup-parent.js'
 import mergeSelectors from './merge-selectors.js'
-import validSelector from './valid-selector.js'
 import walk from './walk.js'
 
 export default function transformNestRuleWithinRule(node) {
@@ -25,4 +24,4 @@ export default function transformNestRuleWithinRule(node) {
 	walk(rule)
 }
 
-export const isNestRuleWithinRule = (node) => node.type === 'atrule' && node.name === 'nest' && Object(node.parent).type === 'rule' && comma(node.params).every((selector) => selector.split('&').length >= 2 && validSelector.test(selector))
+export const isNestRuleWithinRule = (node) => node.type === 'atrule' && node.name === 'nest' && Object(node.parent).type === 'rule' && comma(node.params).every((selector) => selector.split('&').length >= 2 && selector.indexOf('|') === -1)

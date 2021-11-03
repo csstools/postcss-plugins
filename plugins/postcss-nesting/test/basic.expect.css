@@ -1,62 +1,74 @@
 a {
 	order: 1
 }
+
 @media screen, print {
-	a {
+
+a {
 		order: 2
 }
 	}
+
 @media screen and (min-width: 480px), print and (min-width: 480px) {
-	a {
+
+a {
 			order: 3
 }
 		}
+
 @media screen, print {
-	a {
+
+a {
 
 		order: 4
 }
 	}
-a {
 
-	order: 5;
-	order: 6
-}
 a b {
 		order: 7;
 	}
+
 a b c {
 			order: 8;
 		}
+
 a b {
 
 		order: 9;
 	}
-a {
 
-	order: 10
-}
 body a {
 		order: 11
 }
+
 html body a {
 			order: 12
 }
+
 body a {
 
 		order: 13
 }
-a {
 
-	order: 14
-}
 @media screen {
-	a {
+
+a {
 		order: 15
 }
 	}
+
 @media screen and (min-width: 480px) {
-	a {
+
+a {
 			order: 16
 }
 		}
+
+.foo:is(h1),
+	.foo:is(h2) {
+		color: red;
+	}
+
+li+li {
+		background: red;
+	}

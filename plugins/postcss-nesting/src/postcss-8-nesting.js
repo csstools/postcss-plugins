@@ -1,9 +1,11 @@
+import ensureCorrectMixingOfNestingRulesAndDeclarations from './lib/mixing-nesting-rules-and-declarations.js'
 import walk from './lib/walk.js'
 
 export default function postcssNesting() {
 	return {
 		postcssPlugin: 'postcss-nesting',
-		RuleExit(rule) {
+		Rule(rule) {
+			ensureCorrectMixingOfNestingRulesAndDeclarations(rule)
 			walk(rule)
 		},
 	}

@@ -18,6 +18,7 @@ export default async function tape() {
 	failures += await test('supports nested @media', { basename: 'media' })
 	failures += await test('ignores invalid entries', { basename: 'ignore' })
 	failures += await test('supports complex entries', { basename: 'complex' })
+	failures += await test('supports all spec examples', { basename: 'spec-examples' })
 
 	let mixinPlugin = () => {
 		return {

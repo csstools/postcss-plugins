@@ -55,7 +55,7 @@
     "node >= 12"
   ],
   "engines": {
-    "node": "12 - 16"
+    "node": ">= 12"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",

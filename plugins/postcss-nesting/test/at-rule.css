@@ -28,3 +28,54 @@ a {
 		order: 5;
 	}
 }
+
+.foo {
+	@nest &h1 {
+		color: red;
+	}
+}
+
+.foo {
+	@nest &h1, &h2 {
+		color: red;
+	}
+}
+
+.foo {
+	@nest &.bar {
+		color: red;
+	}
+}
+
+
+.foo {
+	@nest &.bar, &.baz {
+		color: red;
+	}
+}
+
+h1 {
+	@nest .foo& {
+		color: blue;
+	}
+}
+
+h1 {
+	@nest .foo& .baz & {
+		color: blue;
+	}
+}
+
+h1 {
+	@nest .foo&, .bar& {
+		color: blue;
+	}
+}
+
+article {
+	color: blue;
+
+	@nest :where(&) {
+		color: red;
+	}
+}

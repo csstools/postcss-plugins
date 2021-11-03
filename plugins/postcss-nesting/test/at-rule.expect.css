@@ -28,3 +28,40 @@ a d {
 a e {
 		order: 5
 }
+
+.foo:is(h1) {
+		color: red
+}
+
+.foo:is(h1), .foo:is(h2) {
+		color: red
+}
+
+.foo.bar {
+		color: red
+}
+
+
+.foo.bar, .foo.baz {
+		color: red
+}
+
+.foo:is(h1) {
+		color: blue
+}
+
+.foo:is(h1) .baz h1 {
+		color: blue
+}
+
+.foo:is(h1), .bar:is(h1) {
+		color: blue
+}
+
+article {
+	color: blue
+}
+
+:where(article) {
+		color: red
+}

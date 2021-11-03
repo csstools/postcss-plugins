@@ -1,5 +1,7 @@
 a, b {
-	order: 1;
+	order: 1
+}
+a, b {
 	c, d {
 		order: 2;
 	}
@@ -7,13 +9,13 @@ a, b {
 & e {
 	order: 3;
 }
-f {
-	&g {
+f:is(g) {
 		order: 5;
 	}
+a, b {
+	order: 1
 }
 a, b {
-	order: 1;
 	@nest c, d {
 		order: 2;
 	}
@@ -21,10 +23,10 @@ a, b {
 @nest & e {
 	order: 3;
 }
+f:is(h) {
+		order: 5
+}
 f {
-	@nest &h {
-		order: 5;
-	}
 	@nest &|i {
 		order: 6;
 	}
