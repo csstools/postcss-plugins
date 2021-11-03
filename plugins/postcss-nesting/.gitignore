@@ -8,8 +8,9 @@ yarn.lock
 .*
 !.bin
 !.editorconfig
-!.gitignore
 !.github
+!.gitignore
+!.npmrc
 !.rollup.js
 !.tape.js
 !.travis.yml
