@@ -45,6 +45,34 @@ a {
 			order: 16;
 		}
 	}
+
+	@nest body& {
+		order: 17;
+	}
+
+	@nest html body& {
+		order: 18;
+	}
+}
+
+a {
+	@nest .foo& {
+		order: 19;
+	}
+
+	@nest .foo .bar& {
+		order: 20;
+	}
+}
+
+a b {
+	@nest .foo& {
+		order: 21;
+	}
+
+	@nest .foo .bar& {
+		order: 22;
+	}
 }
 
 .foo {
@@ -57,5 +85,17 @@ a {
 li {
 	&+& {
 		background: red;
+	}
+}
+
+.foo {
+	&:where(h1) {
+		background: red;
+	}
+}
+
+a {
+	& b[a="a&b"] {
+		order: 7;
 	}
 }

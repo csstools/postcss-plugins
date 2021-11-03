@@ -64,6 +64,30 @@ a {
 }
 		}
 
+body:is(a) {
+		order: 17
+}
+
+html body:is(a) {
+		order: 18
+}
+
+a.foo {
+		order: 19
+}
+
+.foo a.bar {
+		order: 20
+}
+
+.foo:is(a b) {
+		order: 21
+}
+
+.foo .bar:is(a b) {
+		order: 22
+}
+
 .foo:is(h1),
 	.foo:is(h2) {
 		color: red;
@@ -71,4 +95,12 @@ a {
 
 li+li {
 		background: red;
+	}
+
+.foo:where(h1) {
+		background: red;
+	}
+
+a b[a="a&b"] {
+		order: 7;
 	}

@@ -117,5 +117,8 @@
     "specs",
     "w3c",
     "csswg"
-  ]
+  ],
+  "dependencies": {
+    "postcss-selector-parser": "6.0.6"
+  }
 }
