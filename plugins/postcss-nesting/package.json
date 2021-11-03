@@ -44,7 +44,7 @@
     "test:tape": "node .bin/test-tape.js"
   },
   "devDependencies": {
-    "esbuild": "0.13.9",
+    "esbuild": "0.13.12",
     "eslint": "8.1.0",
     "eslint-config-dev": "2.0.0",
     "nodemon": "2.0.14",
