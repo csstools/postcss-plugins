@@ -28,11 +28,6 @@ a c, a d, b c, b d {
 }
 ```
 
-**NOTICE**: In a future version of this project, nesting at-rules like `@media`
-may be deprecated, as they are not part of the nesting proposal. In a comment,
-a CSSWG member expressed interest in handling nested `@media` while handling
-selector nesting. So deprecating nested at-rules has been temporarily delayed.
-
 ## Usage
 
 Add [PostCSS Nesting] to your project:
