@@ -1,0 +1,15 @@
+a {
+	order: 1;
+}
+
+a b {
+		order: 2;
+	}
+
+a {
+	order: 4;
+}
+
+b a {
+		order: 5;
+}

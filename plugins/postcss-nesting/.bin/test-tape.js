@@ -19,6 +19,8 @@ export default async function tape() {
 	failures += await test('ignores invalid entries', { basename: 'ignore' })
 	failures += await test('supports complex entries', { basename: 'complex' })
 	failures += await test('supports all spec examples', { basename: 'spec-examples' })
+	failures += await test('supports spec compliant mixing of nested rules and declarations', { basename: 'mixing-nested-rules-and-declarations-spec' })
+	failures += await test('supports legacy mixing of nested rules and declarations', { basename: 'mixing-nested-rules-and-declarations-legacy', pluginOptions: { allowDeclarationsAfterNestedRules: true } })
 
 	let mixinPlugin = () => {
 		return {
@@ -37,13 +39,13 @@ export default async function tape() {
 }
 
 async function test(name, init, ...plugins) {
-	const { basename } = Object(init)
+	const { basename, pluginOptions } = Object(init)
 
 	let sourceUrl = new URL(`test/${basename}.css`, workingUrl)
 	let expectUrl = new URL(`test/${basename}.expect.css`, workingUrl)
 	let resultUrl = new URL(`test/${basename}.result.css`, workingUrl)
 
-	plugins.unshift(plugin)
+	plugins.unshift(plugin(pluginOptions))
 
 	let sourceCss = await fs.readFile(sourceUrl, 'utf8')
 	let expectCss = await fs.readFile(expectUrl, 'utf8')

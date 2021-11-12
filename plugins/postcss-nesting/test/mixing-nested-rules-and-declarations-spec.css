@@ -1,0 +1,19 @@
+a {
+	order: 1;
+
+	& b {
+		order: 2;
+	}
+
+	order: 3;
+}
+
+a {
+	order: 4;
+
+	@nest b & {
+		order: 5;
+	}
+
+	order: 6;
+}
