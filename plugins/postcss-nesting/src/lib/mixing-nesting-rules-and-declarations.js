@@ -31,7 +31,6 @@ export default function ensureCorrectMixingOfNestingRulesAndDeclarations(node) {
 	}
 
 	// Remove all declarations and preserve nesting rules
-	encounteredNestedRule = false
 	node.each((child) => {
 		if (child.type === 'atrule' || child.type === 'rule') {
 			return
@@ -39,8 +38,4 @@ export default function ensureCorrectMixingOfNestingRulesAndDeclarations(node) {
 
 		child.remove()
 	})
-
-	if (node.nodes.length === 0) {
-		node.remove()
-	}
 }

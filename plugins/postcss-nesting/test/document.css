@@ -1,0 +1,7 @@
+a {
+	order: 1;
+
+	@document url("https://www.example.com/") {
+		order: 2;
+	}
+}

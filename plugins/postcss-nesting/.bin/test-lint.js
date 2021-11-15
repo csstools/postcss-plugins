@@ -28,8 +28,11 @@ export default async function lint() {
 }
 
 if (new URL(process.argv[1], 'file:').href === import.meta.url) {
-	lint().then(
-		process.exit.bind(process, 0),
-		process.exit.bind(process, 1)
-	)
+	lint().then((pass) => {
+		if (pass) {
+			process.exit(0)
+		}
+
+		process.exit(1)
+	})
 }

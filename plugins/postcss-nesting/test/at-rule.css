@@ -27,6 +27,18 @@ a {
 	@nest & e {
 		order: 5;
 	}
+
+	@nest &[foo="& ,\'"] {
+		order: 6;
+	}
+
+	@nest &[a="& ,\'"][b='& . \\a &'] {
+		order: 7;
+	}
+
+	@nest &\\foo {
+		order: 8;
+	}
 }
 
 .foo {

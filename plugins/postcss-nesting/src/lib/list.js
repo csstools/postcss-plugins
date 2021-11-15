@@ -1,4 +1,4 @@
-export const split = (string, separators, last) => {
+export const comma = (string) => {
 	let array = []
 	let current = ''
 	let split = false
@@ -23,7 +23,7 @@ export const split = (string, separators, last) => {
 		} else if (letter === ')') {
 			if (func > 0) func -= 1
 		} else if (func === 0) {
-			if (separators.includes(letter)) split = true
+			if (letter === ',') split = true
 		}
 
 		if (split) {
@@ -35,10 +35,6 @@ export const split = (string, separators, last) => {
 		}
 	}
 
-	if (last || current !== '') array.push(current.trim())
+	array.push(current.trim())
 	return array
 }
-
-export const comma = (string) => split(string, [','], true)
-
-export const space = (string) => split(string, [' ', '\n', '\t'])

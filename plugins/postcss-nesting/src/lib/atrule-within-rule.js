@@ -1,14 +1,8 @@
 import cleanupParent from './cleanup-parent.js'
 import shiftNodesBeforeParent from './shift-nodes-before-parent.js'
 import validAtrules from './valid-atrules.js'
-import walk from './walk.js'
 
-/*
- * DEPRECATED: In v7.0.0 these features will be removed as they are not part of
- * the nesting proposal.
- */
-
-export default function atruleWithinRule(node) {
+export default function atruleWithinRule(node, walk) {
 	// move previous siblings and the node to before the parent
 	const parent = shiftNodesBeforeParent(node)
 

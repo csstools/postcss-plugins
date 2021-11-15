@@ -3,7 +3,7 @@ import { promises as fs } from 'node:fs'
 import postcss from 'postcss'
 import process from 'node:process'
 
-import plugin from '../src/postcss-8-nesting.js'
+import plugin from '../dist/index.mjs'
 
 let workingUrl = new URL(`${process.cwd()}/`, `file:`)
 
@@ -15,7 +15,9 @@ export default async function tape() {
 	failures += await test('supports direct usage', { basename: 'direct' })
 	failures += await test('removes empty rules', { basename: 'empty' })
 	failures += await test('supports nested @container', { basename: 'container' })
+	failures += await test('supports nested @document', { basename: 'document' })
 	failures += await test('supports nested @media', { basename: 'media' })
+	failures += await test('supports nested @supports', { basename: 'supports' })
 	failures += await test('ignores invalid entries', { basename: 'ignore' })
 	failures += await test('supports complex entries', { basename: 'complex' })
 	failures += await test('supports all spec examples', { basename: 'spec-examples' })
@@ -66,8 +68,11 @@ async function test(name, init, ...plugins) {
 }
 
 if (new URL(process.argv[1], 'file:').href === import.meta.url) {
-	tape().then(
-		() => process.exit(0),
-		() => process.exit(1),
-	)
+	tape().then((pass) => {
+		if (pass) {
+			process.exit(0)
+		}
+
+		process.exit(1)
+	})
 }

@@ -28,6 +28,15 @@ a d {
 a e {
 		order: 5
 }
+a[foo="& ,\'"] {
+		order: 6
+}
+a[a="& ,\'"][b='& . \\a &'] {
+		order: 7
+}
+a:is(\\foo) {
+		order: 8
+}
 
 .foo:is(h1) {
 		color: red

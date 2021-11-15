@@ -2,9 +2,8 @@ import { comma } from './list.js'
 import shiftNodesBeforeParent from './shift-nodes-before-parent.js'
 import cleanupParent from './cleanup-parent.js'
 import mergeSelectors from './merge-selectors.js'
-import walk from './walk.js'
 
-export default function transformNestRuleWithinRule(node) {
+export default function transformNestRuleWithinRule(node, walk) {
 	// move previous siblings and the node to before the parent
 	const parent = shiftNodesBeforeParent(node)
 

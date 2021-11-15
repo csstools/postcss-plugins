@@ -4,10 +4,10 @@
   "license": "CC0-1.0",
   "version": "9.0.1",
   "type": "module",
-  "main": "postcss-8-nesting/postcss-nesting.cjs",
-  "module": "postcss-8-nesting/postcss-nesting.mjs",
-  "jsdelivr": "postcss-8-nesting/postcss-nesting.mjs",
-  "unpkg": "postcss-8-nesting/postcss-nesting.mjs",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "jsdelivr": "dist/index.mjs",
+  "unpkg": "dist/index.mjs",
   "publishConfig": {
     "access": "public"
   },
@@ -17,37 +17,31 @@
   "repository": "csstools/postcss-nesting",
   "exports": {
     ".": {
-      "import": "./postcss-8-nesting/postcss-nesting.mjs",
-      "require": "./postcss-8-nesting/postcss-nesting.cjs",
-      "default": "./postcss-8-nesting/postcss-nesting.mjs"
-    },
-    "./postcss-7-nesting": {
-      "import": "./postcss-7-nesting/postcss-nesting.mjs",
-      "require": "./postcss-7-nesting/postcss-nesting.cjs",
-      "default": "./postcss-7-nesting/postcss-nesting.mjs"
-    },
-    "./postcss-8-nesting": {
-      "import": "./postcss-8-nesting/postcss-nesting.mjs",
-      "require": "./postcss-8-nesting/postcss-nesting.cjs",
-      "default": "./postcss-8-nesting/postcss-nesting.mjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
     }
   },
   "files": [
-    "postcss-7-nesting",
-    "postcss-8-nesting"
+    "dist"
   ],
   "scripts": {
     "prepublishOnly": "npm test",
-    "build": "node .bin/build.js",
+    "build": "rollup -c .rollup.js",
     "test": "node .bin/test.js",
     "test:lint": "node .bin/test-lint.js",
-    "test:tape": "node .bin/test-tape.js"
+    "test:tape": "node .bin/test-tape.js",
+    "test:deno": "deno run --unstable --allow-env --allow-read .bin/test-deno.js"
   },
   "devDependencies": {
-    "esbuild": "0.13.12",
-    "eslint": "8.1.0",
-    "eslint-config-dev": "2.0.0",
-    "nodemon": "2.0.14",
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "eslint": "^8.1.0",
+    "rollup": "^2.58.3",
+    "rollup-plugin-terser": "^7.0.2",
     "postcss": "8.3.11",
     "pre-commit": "1.2.2"
   },

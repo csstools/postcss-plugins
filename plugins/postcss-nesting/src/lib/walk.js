@@ -8,9 +8,9 @@ export default function walk(node) {
 		if (isRuleWithinRule(child)) {
 			transformRuleWithinRule(child)
 		} else if (isNestRuleWithinRule(child)) {
-			transformNestRuleWithinRule(child)
+			transformNestRuleWithinRule(child, walk)
 		} else if (isAtruleWithinRule(child)) {
-			transformAtruleWithinRule(child)
+			transformAtruleWithinRule(child, walk)
 		} else if (isAtruleWithinAtrule(child)) {
 			transformAtruleWithinAtrule(child)
 		}
