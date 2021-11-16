@@ -1,0 +1,22 @@
+{
+  "name": "@csstools/generate-test-cases",
+  "private": true,
+  "version": "1.0.0",
+  "description": "PostCSS test case generator",
+  "main": "src/index.js",
+  "author": "",
+  "license": "CC0-1.0",
+  "scripts": {
+    "generate": "node ./src/index.js",
+    "lint": "eslint src/**/*.js",
+    "stryker": "stryker run --logLevel error"
+  },
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "<TODO>"
+  }
+}
