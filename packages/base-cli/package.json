@@ -1,0 +1,31 @@
+{
+  "name": "@csstools/base-cli",
+  "private": "true",
+  "version": "0.1.0",
+  "description": "A base for CLI versions of plugins",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "type": "module",
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "stryker": "stryker run --logLevel error",
+    "test": "node ./test/test.mjs"
+  },
+  "dependencies": {
+    "postcss": "^8.3.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "<TODO>"
+  }
+}
