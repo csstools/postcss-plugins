@@ -6,7 +6,7 @@ export default [
 	{
 		input: 'src/index.js',
 		output: [
-			{ file: 'dist/index.js', format: 'cjs', sourcemap: true, exports: 'default' },
+			{ file: 'dist/index.cjs', format: 'cjs', sourcemap: true, exports: 'default' },
 			{ file: 'dist/index.mjs', format: 'esm', sourcemap: true, exports: 'default' }
 		],
 		plugins: [
