@@ -1,0 +1,36 @@
+{
+  "name": "@csstools/postcss-preset-env-mono-repo",
+  "private": "true",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "workspaces": [
+    "packages/*",
+    "plugins/*",
+    "plugin-packs/*"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@stryker-mutator/core": "^5.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "eslint": "^8.1.0",
+    "rollup": "^2.58.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.4"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "volta": {
+    "node": "16.13.0",
+    "npm": "8.1.3"
+  }
+}
