@@ -72,6 +72,12 @@ import postcssNesting from "https://deno.land/x/postcss_nesting/mod.js";
 await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
 ```
 
+### ⚠️ Spec disclaimer
+
+The [CSS Nesting Module] spec states on nesting that "Declarations occuring after a nested rule are invalid and ignored.".
+While we think it makes sense on browsers, enforcing this at the plugin level introduces several constrains that would
+interfere with PostCSS' plugin nature such as with `@mixin`
+
 [cli-img]: https://img.shields.io/travis/csstools/postcss-nesting.svg
 [cli-url]: https://travis-ci.org/csstools/postcss-nesting
 [css-img]: https://cssdb.org/badge/nesting-rules.svg
@@ -87,3 +93,4 @@ await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
 [Deno]: https://deno.land/x/postcss_nesting
 [PostCSS Nested]: https://github.com/postcss/postcss-nested
 [Sass]: https://sass-lang.com/
+[CSS Nesting Module]: https://www.w3.org/TR/css-nesting-1/
