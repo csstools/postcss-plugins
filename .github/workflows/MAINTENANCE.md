@@ -6,7 +6,7 @@ At the moment not all current LTS node versions have workspaces support.
 We work around this by building in node 16 and switching to an older version to run tests.
 
 Once node 20 reaches LTS each version will have workspaces support.
-At that point the `test_without_workspaces_support` job can be removed.
+At that point the `test_without_workspaces_support` job and `.github/bin/install-and-test-all-packages.sh` can be removed.
 
 ## test_with_workspaces_support
 
