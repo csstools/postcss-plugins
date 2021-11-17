@@ -1,5 +1,29 @@
 # Changes to PostCSS Nesting
 
+### 10.0.1 (November 17, 2021)
+
+- Removed: Support for `allowDeclarationsAfterNestedRules`.
+
+We've realised that enforcing this rule from the spec was going to be problematic
+in the long run given how plugins work and the whole ecosystem around mixins and
+other features. Treating this as a patch given that this was introduced in the
+previous version and was starting to break projects that were using other features.
+
+### 10.0.0 (November 16, 2021)
+
+- Added: Support for `allowDeclarationsAfterNestedRules` to deviate from spec.
+- Added: `.npmrc` file.
+
+- Updated: Aligning completely with the [spec](https://www.w3.org/TR/css-nesting-1/) updates.
+- Updated: `esbuild` to 0.13.12 (minor)
+
+- Removed: Support for PostCSS 7
+
+### 9.0.0 (October 27, 2021)
+
+- Added: Support for Deno
+- Fixed: Issue with PostCSS 8 compatibility using the RuleExit listener
+
 ### 8.0.1 (May 1, 2021)
 
 - Fixed: Compatibility issue with CommonJS.
