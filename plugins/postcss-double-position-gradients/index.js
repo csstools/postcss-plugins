@@ -22,7 +22,21 @@ module.exports = function creator(opts) {
 				return;
 			}
 
-			const valueAST = parse(decl.value, { ignoreUnknownWords: true });
+			let valueAST;
+
+			try {
+				valueAST = parse(decl.value, { ignoreUnknownWords: true });
+			} catch (error) {
+				console.warn(
+					'[postcss-double-position-gradients] There was an error parsing "%s" and it has been ignored.',
+					decl.value
+				);
+			}
+
+			if (typeof valueAST === 'undefined') {
+				// Bail if there's an error
+				return;
+			}
 
 			valueAST.walkFuncs((func) => {
 				if (!gradientPartsRegExp.test(func.name)) {
