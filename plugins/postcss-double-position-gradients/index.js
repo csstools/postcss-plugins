@@ -1,5 +1,5 @@
-const {parse} = require("postcss-values-parser");
-const Punctuation = require("postcss-values-parser/lib/nodes/Punctuation");
+const { parse } = require('postcss-values-parser');
+const Punctuation = require('postcss-values-parser/lib/nodes/Punctuation');
 
 // whether the value has a lab() or lch() matcher
 const gradientRegExp = /(repeating-)?(conic|linear|radial)-gradient\([\W\w]*\)/i;
