@@ -1,10 +1,13 @@
 {
-  "name": "@csstools/postcss-preset-env-mono-repo",
+  "name": "@csstools/postcss-plugins",
   "private": "true",
   "version": "1.0.0",
   "description": "",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
   "workspaces": [
     "packages/*",
     "plugins/*",
