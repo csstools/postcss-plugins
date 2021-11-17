@@ -6,7 +6,8 @@
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Nesting] lets you nest style rules inside each other, following the
-[CSS Nesting] specification.
+[CSS Nesting] specification. If you want nested rules the same way [Sass] works
+you might want to use [PostCSS Nested] instead.
 
 ```pcss
 a, b {
@@ -84,3 +85,5 @@ await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Nesting]: https://github.com/jonathantneal/postcss-nesting
 [Deno]: https://deno.land/x/postcss_nesting
+[PostCSS Nested]: https://github.com/postcss/postcss-nested
+[Sass]: https://sass-lang.com/
