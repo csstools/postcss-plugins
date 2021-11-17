@@ -24,7 +24,7 @@ module.exports = function creator(opts) {
 
 			const valueAST = parse(decl.value, { ignoreUnknownWords: true });
 
-			valueAST.walkType('func', (func) => {
+			valueAST.walkFuncs((func) => {
 				if (!gradientPartsRegExp.test(func.name)) {
 					return;
 				}
@@ -52,7 +52,7 @@ module.exports = function creator(opts) {
 						func.insertBefore(node, [comma, color]);
 					}
 				})
-			});
+			})
 
 			const modifiedValue = String(valueAST);
 
