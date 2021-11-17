@@ -3,6 +3,7 @@ const Punctuation = require("postcss-values-parser/lib/nodes/Punctuation");
 
 // whether the value has a lab() or lch() matcher
 const gradientRegExp = /(repeating-)?(conic|linear|radial)-gradient\([\W\w]*\)/i;
+const gradientPartsRegExp = /^(repeating-)?(conic|linear|radial)-gradient$/i;
 
 const isPunctuationCommaNode = node => node.type === 'punctuation' && node.value === ','
 
@@ -24,6 +25,10 @@ module.exports = function creator(opts) {
 			const valueAST = parse(decl.value, { ignoreUnknownWords: true });
 
 			valueAST.walkType('func', (func) => {
+				if (!gradientPartsRegExp.test(func.name)) {
+					return;
+				}
+
 				const nodes = func.nodes;
 
 				nodes.slice(0).forEach((node, index, nodes) => {
@@ -37,7 +42,12 @@ module.exports = function creator(opts) {
 					if (isDoublePositionLength) {
 						// insert the fallback colors
 						const color = node2back.clone();
-						const comma = new Punctuation({ value: ',', raws: isPunctuationCommaNode(node1next) ? node1next.clone().raws : { before: '', after: '' } })
+						const comma = new Punctuation({
+							value: ',',
+							raws: isPunctuationCommaNode(node1next)
+								? Object.assign({}, node1next.clone().raws)
+								: { before: '', after: '' }
+						});
 
 						func.insertBefore(node, [comma, color]);
 					}
