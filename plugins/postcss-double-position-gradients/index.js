@@ -3,7 +3,8 @@ const Punctuation = require("postcss-values-parser/lib/nodes/Punctuation");
 
 // whether the value has a lab() or lch() matcher
 const gradientRegExp = /(repeating-)?(conic|linear|radial)-gradient\([\W\w]*\)/i;
-// const gradientPartsRegExp = /^(repeating-)?(conic|linear|radial)-gradient$/i;
+
+const isPunctuationCommaNode = node => node.type === 'punctuation' && node.value === ','
 
 /**
  * Transform double-position gradients in CSS.
@@ -54,5 +55,3 @@ module.exports = function creator(opts) {
 }
 
 module.exports.postcss = true;
-
-const isPunctuationCommaNode = node => node.type === 'punctuation' && node.value === ','
