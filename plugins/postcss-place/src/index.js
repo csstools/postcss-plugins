@@ -9,7 +9,7 @@ const creator = opts => {
 		postcssPlugin: 'postcss-place',
 		Declaration: (decl, { result }) => {
 			if (placeMatch.test(decl)) {
-				onCSSDeclaration(decl, { result: result })
+				onCSSDeclaration(decl, { result })
 			}
 		},
 	}
