@@ -17,7 +17,7 @@ module.exports = function creator(opts) {
 
 	return {
 		postcssPlugin: 'postcss-double-position-gradients',
-		Declaration(decl) {
+		Declaration(decl, { result }) {
 			if (!gradientRegExp.test(decl.value)) {
 				return;
 			}
@@ -27,9 +27,9 @@ module.exports = function creator(opts) {
 			try {
 				valueAST = parse(decl.value, { ignoreUnknownWords: true });
 			} catch (error) {
-				console.warn(
-					'[postcss-double-position-gradients] There was an error parsing "%s" and it has been ignored.',
-					decl.value
+				decl.warn(
+					result,
+					`Failed to parse value '${decl.value}' as a CSS gradient. Leaving the original value intact.`
 				);
 			}
 
