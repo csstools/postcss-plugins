@@ -26,20 +26,20 @@
     "node": ">=12"
   },
   "dependencies": {
-    "postcss-values-parser": "6.0.0"
+    "postcss-values-parser": "6.0.1"
   },
   "peerDependencies": {
     "postcss": "^8.3"
   },
   "devDependencies": {
-    "@babel/core": "7.15.5",
-    "@babel/preset-env": "7.15.6",
-    "eslint": "7.32.0",
-    "postcss": "8.3.6",
-    "postcss-tape": "6.0.1",
-    "pre-commit": "1.2.2",
-    "rollup": "2.56.3",
-    "rollup-plugin-babel": "4.4.0"
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "eslint": "^8.2.0",
+    "postcss": "^8.3.11",
+    "postcss-tape": "^6.0.1",
+    "pre-commit": "^1.2.2",
+    "rollup": "^2.60.0",
+    "rollup-plugin-babel": "^4.4.0"
   },
   "babel": {
     "presets": [
