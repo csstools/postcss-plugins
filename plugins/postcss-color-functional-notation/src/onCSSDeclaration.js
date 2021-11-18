@@ -3,11 +3,24 @@ import onCSSFunction from './onCSSFunction'
 import options from './options'
 
 /** @type {(decl: CSSDeclaration) => void} Transform space and slash separated color functions in CSS Declarations. */
-const onCSSDeclaration = decl => {
+const onCSSDeclaration = (decl, { result }) => {
 	const { value: originalValue } = decl
 
 	if (hasAnyColorFunction(originalValue)) {
-		const valueAST = parse(originalValue)
+		let valueAST
+
+		try {
+			valueAST = parse(originalValue, { ignoreUnknownWords: true })
+		} catch (error) {
+			decl.warn(
+				result,
+				`Failed to parse params '${originalValue}' as a color function. Leaving the original value intact.`
+			)
+		}
+
+		if (typeof valueAST === 'undefined') {
+			return
+		}
 
 		valueAST.walkType('func', onCSSFunction)
 
