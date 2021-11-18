@@ -14,7 +14,7 @@ const onCSSDeclaration = (decl, { result }) => {
 		} catch (error) {
 			decl.warn(
 				result,
-				`Failed to parse params '${originalValue}' as a color function. Leaving the original value intact.`
+				`Failed to parse value '${originalValue}' as a color function. Leaving the original value intact.`
 			)
 		}
 
