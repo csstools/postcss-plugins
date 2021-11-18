@@ -1,5 +1,9 @@
 # Changes to PostCSS image-set() Function
 
+### 4.0.1 (November 18, 2021)
+
+- Added: Safeguards against postcss-values-parser potentially throwing an error.
+
 ### 4.0.0 (September 17, 2021)
 
 - Updated: Support for PostCS 8+ (major).
