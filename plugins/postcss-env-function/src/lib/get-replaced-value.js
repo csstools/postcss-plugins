@@ -9,7 +9,7 @@ import walkEnvFuncs from './walk-env-funcs'
  */
 export default (originalValue, variables) => {
 	// get the ast of the original value
-	const ast = parse(originalValue)
+	const ast = parse(originalValue, { ignoreUnknownWords: true })
 
 	// walk all of the css env() functions
 	walkEnvFuncs(ast, node => {
