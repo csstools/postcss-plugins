@@ -33,3 +33,7 @@ d {
 	align-self: first;
 	justify-self: var(--second);
 }
+
+.test-unparseable-var-in-place-declaration {
+	place-content: var(; );
+}

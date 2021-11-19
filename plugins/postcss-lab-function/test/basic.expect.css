@@ -15,3 +15,7 @@
 	color: rgba(178, 34, 34, 0.5);
 	color: rgb(255, 216, 255);
 }
+
+.test-unparseable-lab-function {
+	background-image: lab(; );
+}
