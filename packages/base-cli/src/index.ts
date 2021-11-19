@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fsp from 'fs/promises';
 import path from 'path';
 import { parseArguments, SignalValue } from './args';
 import postcss from 'postcss';
@@ -8,170 +8,138 @@ export * from './help';
 
 type PluginCreatorOptions = Record<string, unknown> | null;
 
-export function cli(plugin: PluginCreator<PluginCreatorOptions>, allowedPluginOpts: Array<string>, helpLogger: () => void) {
+export async function cli(plugin: PluginCreator<PluginCreatorOptions>, allowedPluginOpts: Array<string>, helpLogger: () => void) {
 	// get process and plugin options from the command line
 	const argo = parseArguments(process.argv.slice(2), allowedPluginOpts, helpLogger);
 	if (argo === SignalValue.InvalidArguments) {
 		process.exit(1);
 	}
 
+	// Read from stdin and write to stdout
 	if (argo.stdin && argo.stdout) {
-		return getStdin().then((css) => {
+		try {
+			const css = await getStdin();
 			if (!css) {
 				helpLogger();
 				process.exit(1);
 			}
 
-			const result = postcss([plugin(argo.pluginOptions)]).process(css, {
+			const result = await postcss([plugin(argo.pluginOptions)]).process(css, {
 				from: 'stdin',
 				to: 'stdout',
 				map: argo.inlineMap ? { inline: true } : false,
 			});
 
-			return result.css;
-		}).then((result) => {
-			process.stdout.write(result + (argo.inlineMap ? '\n' : ''));
-
-			process.exit(0);
-		}).catch((error) => {
+			process.stdout.write(result.css + (argo.inlineMap ? '\n' : ''));
+		} catch (error) {
 			console.error(argo.debug ? error : error.message);
 
 			process.exit(1);
-		});
+		}
+
+		return;
 	}
 
+	// Read from stdin and write to a file
 	if (argo.stdin) {
 		let output = argo.output;
 		if (!output && argo.outputDir) {
 			output = path.join(argo.outputDir, 'output.css');
 		}
 
-		return getStdin().then((css) => {
+		try {
+			const css = await getStdin();
 			if (!css) {
 				helpLogger();
 				process.exit(1);
 			}
 
-			const result = postcss([plugin(argo.pluginOptions)]).process(css, {
+			const result = await postcss([plugin(argo.pluginOptions)]).process(css, {
 				from: 'stdin',
 				to: output,
 				map: (argo.inlineMap || argo.externalMap) ? { inline: argo.inlineMap } : false,
 			});
 
 			if (argo.externalMap && result.map) {
-				return Promise.all([
-					writeFile(output, result.css),
-					writeFile(`${output}.map`, result.map.toString()),
-				]).then(() => {
-					console.log(`CSS was written to "${path.normalize(output)}"`);
-					return;
-				});
+				await Promise.all([
+					await fsp.writeFile(output, result.css + (argo.inlineMap ? '\n' : '')),
+					await fsp.writeFile(`${output}.map`, result.map.toString()),
+				]);
+			} else {
+				await fsp.writeFile(output, result.css + (argo.inlineMap ? '\n' : ''));
 			}
 
-			return writeFile(output, result.css + (argo.inlineMap ? '\n' : ''));
-		}).then(() => {
 			console.log(`CSS was written to "${path.normalize(output)}"`);
-
-			process.exit(0);
-		}).catch((error) => {
+		} catch (error) {
 			console.error(argo.debug ? error : error.message);
 
 			process.exit(1);
-		});
+		}
+
+		return;
 	}
 
+	// Read from one or more files and write to stdout
 	if (argo.stdout) {
-		const outputs = argo.inputs.map((input) => {
-			return {
-				input: input,
-				result: null,
-			};
-		});
-
-		return Promise.all(argo.inputs.map((input) => {
-			return readFile(input).then((css) => {
-				const result = postcss([plugin(argo.pluginOptions)]).process(css, {
+		let allCss: Array<string> = [];
+		try {
+			allCss = await Promise.all(argo.inputs.map(async (input) => {
+				const css = await fsp.readFile(input);
+				const result = await postcss([plugin(argo.pluginOptions)]).process(css, {
 					from: input,
 					to: 'stdout',
 					map: false,
 				});
 
 				return result.css;
-			}).then((result) => {
-				outputs.find((output) => output.input === input).result = result;
-			});
-		})).then(() => {
-			outputs.forEach((output) => {
-				process.stdout.write(output.result);
-			});
-
-			process.exit(0);
-		}).catch((error) => {
+			}));
+		} catch (error) {
 			console.error(argo.debug ? error : error.message);
 
 			process.exit(1);
-		});
+		}
+
+		for (const css of allCss) {
+			process.stdout.write(css);
+		}
+
+		return;
 	}
 
-	return Promise.all(argo.inputs.map((input) => {
-		let output = argo.output;
-		if (argo.outputDir) {
-			output = path.join(argo.outputDir, path.basename(input));
-		}
-		if (argo.replace) {
-			output = input;
-		}
+	// Read from one or more files and write to as many files
+	try {
+		await Promise.all(argo.inputs.map(async (input) => {
+			let output = argo.output;
+			if (argo.outputDir) {
+				output = path.join(argo.outputDir, path.basename(input));
+			}
+			if (argo.replace) {
+				output = input;
+			}
 
-		return readFile(input).then((css) => {
-			return postcss([plugin(argo.pluginOptions)]).process(css, {
+			const css = await fsp.readFile(input);
+			const result = await postcss([plugin(argo.pluginOptions)]).process(css, {
 				from: input,
 				to: output,
 				map: (argo.inlineMap || argo.externalMap) ? { inline: argo.inlineMap } : false,
 			});
-		}).then((result) => {
+
 			if (argo.externalMap && result.map) {
-				return Promise.all([
-					writeFile(output, result.css),
-					writeFile(`${output}.map`, result.map.toString()),
-				]).then(() => {
-					console.log(`CSS was written to "${path.normalize(output)}"`);
-					return;
-				});
+				await Promise.all([
+					await fsp.writeFile(output, result.css + (argo.inlineMap ? '\n' : '')),
+					await fsp.writeFile(`${output}.map`, result.map.toString()),
+				]);
+			} else {
+				await fsp.writeFile(output, result.css + (argo.inlineMap ? '\n' : ''));
 			}
 
-			return writeFile(output, result.css + (argo.inlineMap ? '\n' : '')).then(() => {
-				console.log(`CSS was written to "${path.normalize(output)}"`);
-			});
-		});
-	})).catch((error) => {
+			console.log(`CSS was written to "${path.normalize(output)}"`);
+		}));
+	} catch (error) {
 		console.error(argo.debug ? error : error.message);
 
 		process.exit(1);
-	});
-}
-
-function readFile (pathname: string): Promise<string> {
-	return new Promise((resolve, reject) => {
-		fs.readFile(pathname, 'utf8', (error, data) => {
-			if (error) {
-				reject(error);
-			} else {
-				resolve(data);
-			}
-		});
-	});
-}
-
-function writeFile (pathname: string, data: string): Promise<void> {
-	return new Promise((resolve, reject) => {
-		fs.writeFile(pathname, data, (error) => {
-			if (error) {
-				reject(error);
-			} else {
-				resolve();
-			}
-		});
-	});
+	}
 }
 
 function getStdin(): Promise<string> {
