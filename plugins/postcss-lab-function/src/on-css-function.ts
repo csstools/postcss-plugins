@@ -241,7 +241,7 @@ function normalizeHueNode(node: Numeric) {
 			return;
 
 		case 'turn':
-			// grades -> degrees
+			// turns -> degrees
 			node.unit = '';
 			node.value = (parseFloat(node.value) * 360).toString();
 			return;
