@@ -23,7 +23,8 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "mod.js"
   ],
   "scripts": {
     "prepublishOnly": "npm test",

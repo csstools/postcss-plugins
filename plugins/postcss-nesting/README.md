@@ -67,7 +67,7 @@ You can also use [PostCSS Nesting] on [Deno]:
 
 ```js
 import postcss from "https://deno.land/x/postcss/mod.js";
-import postcssNesting from "https://deno.land/x/postcss_nesting/mod.js";
+import postcssNesting from "https://cdn.jsdelivr.net/npm/postcss-nesting@10/mod.js";
 
 await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
 ```
