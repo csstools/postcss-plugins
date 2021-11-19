@@ -3,10 +3,13 @@ import { cli, helpTextLogger } from '@csstools/base-cli';
 
 cli(
 	plugin,
-	['color', 'another_option'],
+	['preserve'],
 	helpTextLogger(
 		'postcss-lab-function-cli',
 		'PostCSS Lab function',
 		'Convert lab() to rgb()',
+		{
+			preserve: true,
+		},
 	),
 );
