@@ -46,3 +46,7 @@
 .test-high-luminance {
 	prop-1: rgb(0, 238, 255);
 }
+
+.test-unparseable-lab-function {
+	background-image: lab(; );
+}

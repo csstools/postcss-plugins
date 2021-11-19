@@ -46,3 +46,7 @@
 .test-high-luminance {
 	prop-1: lch(100% 210 285);
 }
+
+.test-unparseable-lab-function {
+	background-image: lab(; );
+}

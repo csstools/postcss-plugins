@@ -1,6 +1,6 @@
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-import { parse } from 'postcss-values-parser';
-import type { Declaration, Postcss } from 'postcss';
+import { parse, Root } from 'postcss-values-parser';
+import type { Declaration, Postcss, Result } from 'postcss';
 import onCSSFunction from './on-css-function';
 
 import type { PluginCreator } from 'postcss';
@@ -11,7 +11,7 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 
 	return {
 		postcssPlugin: 'postcss-lab-function',
-		Declaration: (decl: Declaration, { postcss }: { postcss: Postcss }) => {
+		Declaration: (decl: Declaration, { result, postcss }: { result: Result, postcss: Postcss }) => {
 			if (preserve && hasSupportsAtRuleAncestor(decl)) {
 				return;
 			}
@@ -21,7 +21,21 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 				return;
 			}
 
-			const valueAST = parse(originalValue);
+			let valueAST: Root|undefined;
+
+			try {
+				valueAST = parse(originalValue, { ignoreUnknownWords: true });
+			} catch (error) {
+				decl.warn(
+					result,
+					`Failed to parse value '${originalValue}' as a lab or hcl function. Leaving the original value intact.`,
+				);
+			}
+
+			if (typeof valueAST === 'undefined') {
+				return;
+			}
+
 			valueAST.walkType('func', onCSSFunction);
 			const modifiedValue = String(valueAST);
 
