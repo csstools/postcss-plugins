@@ -27,3 +27,7 @@
 	color: rgb(255, 216, 255);
 	color: lch(100% 50 0);
 }
+
+.test-unparseable-lab-function {
+	background-image: lab(; );
+}

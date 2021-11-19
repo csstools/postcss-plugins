@@ -15,3 +15,7 @@
 	color: lch(40% 68.8 34.5 / 50%);
 	color: lch(100% 50 0);
 }
+
+.test-unparseable-lab-function {
+	background-image: lab(; );
+}
