@@ -1,5 +1,9 @@
 # Changes to PostCSS image-set() Function
 
+### 4.0.2 (November 19, 2021)
+
+- Updated: `postcss-value-parser` to 6.0.1 (patch)
+
 ### 4.0.1 (November 18, 2021)
 
 - Added: Safeguards against postcss-values-parser potentially throwing an error.
