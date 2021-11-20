@@ -61,4 +61,5 @@ jobs:
             npm run build --workspace="@csstools/base-cli" --workspace="@csstools/postcss-base-plugin"
             # running install places the cli in node_modules/bin
             npm install
-            npm run test --workspace="@csstools/base-cli" --workspace="@csstools/postcss-base-plugin"
+            npm run test --workspace="@csstools/base-cli"
+            npm run test:cli --workspace="@csstools/postcss-base-plugin"

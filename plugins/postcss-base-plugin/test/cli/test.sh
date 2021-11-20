@@ -54,7 +54,13 @@ cat ./test/cli/basic.css | postcss-base-plugin --map  -o ./test/cli/basic.extern
 
 # Check result
 git --no-pager diff --no-index --word-diff ./test/cli/basic.external-map.expect.css ./test/cli/basic.external-map.result.css
-git --no-pager diff --no-index --word-diff ./test/cli/basic.external-map.expect.css.map ./test/cli/basic.external-map.result.css.map
+
+if [[ "$OSTYPE" == "win32" ]]; then
+	# CRLF makes it hard to test sourcemap contents on Windows
+	[ ! -f /tmp/foo.txt ] && echo "'basic.external-map.result.css.map' not found" && exit 1
+else
+	git --no-pager diff --no-index --word-diff ./test/cli/basic.external-map.expect.css.map ./test/cli/basic.external-map.result.css.map
+fi
 
 # Zero out result file
 echo '' > ./test/cli/out/a.css
@@ -67,9 +73,16 @@ postcss-base-plugin ./test/cli/src/a.css ./test/cli/src/b.css -m -d ./test/cli/o
 
 # Check result
 git --no-pager diff --no-index --word-diff ./test/cli/out/a.css ./test/cli/out/a.expect.css
-git --no-pager diff --no-index --word-diff ./test/cli/out/a.css.map ./test/cli/out/a.expect.css.map
 git --no-pager diff --no-index --word-diff ./test/cli/out/b.css ./test/cli/out/b.expect.css
-git --no-pager diff --no-index --word-diff ./test/cli/out/b.css.map ./test/cli/out/b.expect.css.map
+
+if [[ "$OSTYPE" == "win32" ]]; then
+	# CRLF makes it hard to test sourcemap contents on Windows
+	[ ! -f /tmp/foo.txt ] && echo "'a.expect.css.map' not found" && exit 1
+	[ ! -f /tmp/foo.txt ] && echo "'b.expect.css.map' not found" && exit 1
+else
+	git --no-pager diff --no-index --word-diff ./test/cli/out/a.css.map ./test/cli/out/a.expect.css.map
+	git --no-pager diff --no-index --word-diff ./test/cli/out/b.css.map ./test/cli/out/b.expect.css.map
+fi
 
 # Zero out result file
 echo '' > ./test/cli/out/concatenated.css
