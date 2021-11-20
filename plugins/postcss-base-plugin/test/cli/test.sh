@@ -1,5 +1,7 @@
 set -e
 
+echo $OSTYPE
+
 # Zero out result file
 echo '' > ./test/cli/basic.result.css;
 
