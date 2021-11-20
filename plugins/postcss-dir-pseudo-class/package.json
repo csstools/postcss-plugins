@@ -4,21 +4,21 @@
   "description": "Use the :dir pseudo-class in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "jonathantneal/postcss-dir-pseudo-class",
   "homepage": "https://github.com/jonathantneal/postcss-dir-pseudo-class#readme",
   "bugs": "https://github.com/jonathantneal/postcss-dir-pseudo-class/issues",
   "files": [
     "index.js"
   ],
   "scripts": {
-    "prepublishOnly": "npm test",
+    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
     "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
     "test:ec": "echint --ignore index.*.js test",
     "test:js": "eslint *.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape"
+    "test:tape": "postcss-tape",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
     "postcss-selector-parser": "6.0.6"
@@ -32,17 +32,6 @@
   },
   "peerDependencies": {
     "postcss": "^8.3"
-  },
-  "eslintConfig": {
-    "extends": "dev",
-    "rules": {
-      "complexity": [
-        "error",
-        {
-          "max": 30
-        }
-      ]
-    }
   },
   "keywords": [
     "postcss",
@@ -59,5 +48,10 @@
     "right",
     "right-to-left",
     "rtl"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "<TODO>"
+  }
 }
