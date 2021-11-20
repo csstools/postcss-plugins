@@ -1,8 +1,5 @@
-import fsp from 'fs/promises';
-import path from 'path';
 import { parseArguments, SignalValue } from './args';
-import postcss, { Plugin } from 'postcss';
-import type { PluginCreator } from 'postcss';
+import type { PluginCreator, Plugin } from 'postcss';
 import { stdinToStdout } from './io-stdin-to-stdout';
 import { stdinToFs } from './io-stdin-to-fs';
 import { fsToStdout } from './io-fs-to-stdout';
