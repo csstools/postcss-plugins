@@ -10,7 +10,7 @@ export * from './help';
 type PluginCreatorOptions = Record<string, unknown> | null;
 
 export async function cli(plugin: PluginCreator<PluginCreatorOptions>, allowedPluginOpts: Array<string>, helpLogger: () => void) {
-	// get process and plugin options from the command line
+	// Get process and plugin options from the command line
 	const argo = parseArguments(process.argv.slice(2), allowedPluginOpts, helpLogger);
 	if (argo === SignalValue.InvalidArguments) {
 		process.exit(1);
@@ -36,5 +36,6 @@ export async function cli(plugin: PluginCreator<PluginCreatorOptions>, allowedPl
 		return;
 	}
 
+	// Read from one or more files and write to as many files
 	await fsToFs(pluginInstance, argo);
 }
