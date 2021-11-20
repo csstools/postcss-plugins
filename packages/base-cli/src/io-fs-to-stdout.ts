@@ -1,4 +1,4 @@
-import fsp from 'fs/promises';
+import { promises as fsp } from 'fs';
 import { Arguments } from './args';
 import postcss, { Plugin } from 'postcss';
 
