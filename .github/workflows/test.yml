@@ -58,7 +58,5 @@ jobs:
       # - run: npm run build --workspaces --if-present
 
       - run: |
-            npm run build --workspace="@csstools/base-cli"
-            npm run test --workspace="@csstools/base-cli"
-      #     npm run build --workspace="@csstools/base-cli" --workspace="@csstools/postcss-base-plugin"
-      #     npm run test --workspace="@csstools/base-cli" --workspace="@csstools/postcss-base-plugin"
+            npm run build --workspace="@csstools/base-cli" --workspace="@csstools/postcss-base-plugin"
+            npm run test --workspace="@csstools/base-cli" --workspace="@csstools/postcss-base-plugin"
