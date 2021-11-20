@@ -1,4 +1,4 @@
-import plugin from '@csstools/postcss-base-plugin';
+import plugin from './index';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
 cli(
