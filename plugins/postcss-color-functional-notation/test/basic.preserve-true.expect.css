@@ -69,3 +69,7 @@
 	color: hwb(0 0% 0% / 100%);
 	color: hwb(0 0% 0% / 50%);
 }
+
+.test-unparseable-color-function {
+	color: rgb(; );
+}
