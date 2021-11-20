@@ -9,6 +9,7 @@ postcss-base-plugin ./test/cli/basic.css --output ./test/cli/basic.result.css
 # Check result
 if [[ "$OSTYPE" == "win32" ]]; then
 	# CRLF on Windows makes it hard to test with base64 encoded sourcemaps
+	echo 'did not compare actual output assuming exit 0 means everything is ok'
 else
 	git --no-pager diff --no-index --word-diff ./test/cli/basic.expect.css ./test/cli/basic.result.css
 fi
@@ -22,6 +23,7 @@ postcss-base-plugin ./test/cli/basic.replace.css -r
 # Check result
 if [[ "$OSTYPE" == "win32" ]]; then
 	# CRLF on Windows makes it hard to test with base64 encoded sourcemaps
+	echo 'did not compare actual output assuming exit 0 means everything is ok'
 else
 	git --no-pager diff --no-index --word-diff ./test/cli/basic.replace.css ./test/cli/basic.replace.expect.css
 fi
@@ -35,6 +37,7 @@ postcss-base-plugin ./test/cli/basic.css -o ./test/cli/basic.color.result.css -p
 # Check result
 if [[ "$OSTYPE" == "win32" ]]; then
 	# CRLF on Windows makes it hard to test with base64 encoded sourcemaps
+	echo 'did not compare actual output assuming exit 0 means everything is ok'
 else
 	git --no-pager diff --no-index --word-diff ./test/cli/basic.color.expect.css ./test/cli/basic.color.result.css
 fi
@@ -48,6 +51,7 @@ cat ./test/cli/basic.css | postcss-base-plugin > ./test/cli/basic.stdin.result.c
 # Check result
 if [[ "$OSTYPE" == "win32" ]]; then
 	# CRLF on Windows makes it hard to test with base64 encoded sourcemaps
+	echo 'did not compare actual output assuming exit 0 means everything is ok'
 else
 	git --no-pager diff --no-index --word-diff ./test/cli/basic.stdin.expect.css ./test/cli/basic.stdin.result.css
 fi
