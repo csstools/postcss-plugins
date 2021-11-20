@@ -4,18 +4,27 @@
   "description": "Use the :dir pseudo-class in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/jonathantneal/postcss-dir-pseudo-class#readme",
-  "bugs": "https://github.com/jonathantneal/postcss-dir-pseudo-class/issues",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
   "files": [
-    "index.js"
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
+    "dist"
   ],
+  "bin": {
+    "postcss-dir-pseudo-class": "dist/cli.mjs"
+  },
   "scripts": {
-    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
-    "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
-    "test:ec": "echint --ignore index.*.js test",
-    "test:js": "eslint *.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape",
-    "stryker": "stryker run --logLevel error"
+    "prepublishOnly": "npm run build && npm run test",
+    "lint": "eslint src/**/*.js",
+    "test": "postcss-tape",
+    "build": "rollup -c ../../rollup/default.js",
+    "stryker": "stryker run --logLevel error",
+    "cli": "postcss-dir-pseudo-class"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
@@ -24,11 +33,8 @@
     "postcss-selector-parser": "6.0.6"
   },
   "devDependencies": {
-    "eslint": "7.32.0",
-    "eslint-config-dev": "2.0.0",
     "postcss": "8.3.6",
-    "postcss-tape": "6.0.1",
-    "pre-commit": "1.2.2"
+    "postcss-tape": "6.0.1"
   },
   "peerDependencies": {
     "postcss": "^8.3"
@@ -52,6 +58,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "<TODO>"
+    "directory": "plugins/postcss-dir-pseudo-class"
   }
 }

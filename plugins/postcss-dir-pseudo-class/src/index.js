@@ -1,6 +1,6 @@
 const selectorParser = require('postcss-selector-parser');
 
-const dirRegex = /:dir\([^\)]*\)/;
+const dirRegex = /:dir\([^)]*\)/;
 
 module.exports = function creator(opts) {
 	const dir = Object(opts).dir;
@@ -16,7 +16,7 @@ module.exports = function creator(opts) {
 				return;
 			}
 
-			let currentRule = rule
+			let currentRule = rule;
 
 			// conditionally preserve the original rule
 			if (preserve) {
@@ -40,7 +40,7 @@ module.exports = function creator(opts) {
 							// preserve the selector tree
 							if (prevIsSpaceCombinator && (nextIsSpaceCombinator || !next)) {
 								node.replaceWith(
-									selectorParser.universal()
+									selectorParser.universal(),
 								);
 							} else {
 								node.remove();
@@ -55,8 +55,8 @@ module.exports = function creator(opts) {
 							if (first && !firstIsHtml && !firstIsRoot && !firstIsSpaceCombinator) {
 								selector.prepend(
 									selectorParser.combinator({
-										value: ' '
-									})
+										value: ' ',
+									}),
 								);
 							}
 
@@ -71,18 +71,18 @@ module.exports = function creator(opts) {
 								attribute: 'dir',
 								operator:  '=',
 								quoteMark: '"',
-								value:     `"${ value }"`
+								value:     `"${ value }"`,
 							});
 
 							// :host-context([dir]) for Shadow DOM CSS
 							const hostContextPseudo = selectorParser.pseudo({
-								value: ':host-context'
+								value: ':host-context',
 							});
 							hostContextPseudo.append(dirAttr);
 
 							// not[dir] attribute
 							const notDirAttr = selectorParser.pseudo({
-								value: `${firstIsHtml || firstIsRoot ? '' : 'html'}:not`
+								value: `${firstIsHtml || firstIsRoot ? '' : 'html'}:not`,
 							});
 
 							notDirAttr.append(
@@ -90,8 +90,8 @@ module.exports = function creator(opts) {
 									attribute: 'dir',
 									operator:  '=',
 									quoteMark: '"',
-									value:     `"${ 'ltr' === value ? 'rtl' : 'ltr' }"`
-								})
+									value:     `"${ 'ltr' === value ? 'rtl' : 'ltr' }"`,
+								}),
 							);
 
 							if (isdir) {
@@ -117,8 +117,8 @@ module.exports = function creator(opts) {
 					});
 				});
 			}).processSync(currentRule.selector);
-		}
-	}
-}
+		},
+	};
+};
 
 module.exports.postcss = true;
