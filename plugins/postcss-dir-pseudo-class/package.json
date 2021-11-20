@@ -23,8 +23,7 @@
     "lint": "eslint src/**/*.js",
     "test": "postcss-tape",
     "build": "rollup -c ../../rollup/default.js",
-    "stryker": "stryker run --logLevel error",
-    "cli": "postcss-dir-pseudo-class"
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
