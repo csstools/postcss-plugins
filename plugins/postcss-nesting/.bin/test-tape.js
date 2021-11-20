@@ -21,10 +21,8 @@ export default async function tape() {
 	failures += await test('ignores invalid entries', { basename: 'ignore' })
 	failures += await test('supports complex entries', { basename: 'complex' })
 	failures += await test('supports all spec examples', { basename: 'spec-examples' })
-	failures += await test('supports spec compliant mixing of nested rules and declarations', { basename: 'mixing-nested-rules-and-declarations-spec' })
-	failures += await test('supports legacy mixing of nested rules and declarations', { basename: 'mixing-nested-rules-and-declarations-legacy', pluginOptions: { allowDeclarationsAfterNestedRules: true } })
 
-	let mixinPlugin = () => {
+	let mixinPluginRule = () => {
 		return {
 			postcssPlugin: 'mixin',
 			AtRule: {
@@ -34,20 +32,35 @@ export default async function tape() {
 			},
 		}
 	}
-	mixinPlugin.postcss = true
-	failures += await test('supports other visitors', { basename: 'mixin' }, mixinPlugin)
+
+	mixinPluginRule.postcss = true
+	failures += await test('supports other visitors (mixin rule)', { basename: 'mixin-rule' }, mixinPluginRule)
+
+	let mixinPluginDeclaration = () => {
+		return {
+			postcssPlugin: 'mixin',
+			AtRule: {
+				mixin(node) {
+					node.replaceWith('color: blue;')
+				},
+			},
+		}
+	}
+
+	mixinPluginDeclaration.postcss = true
+	failures += await test('supports other visitors (mixin declaration)', { basename: 'mixin-declaration' }, mixinPluginDeclaration)
 
 	return failures === 0
 }
 
 async function test(name, init, ...plugins) {
-	const { basename, pluginOptions } = Object(init)
+	const { basename } = Object(init)
 
 	let sourceUrl = new URL(`test/${basename}.css`, workingUrl)
 	let expectUrl = new URL(`test/${basename}.expect.css`, workingUrl)
 	let resultUrl = new URL(`test/${basename}.result.css`, workingUrl)
 
-	plugins.unshift(plugin(pluginOptions))
+	plugins.unshift(plugin())
 
 	let sourceCss = await fs.readFile(sourceUrl, 'utf8')
 	let expectCss = await fs.readFile(expectUrl, 'utf8')
