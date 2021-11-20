@@ -4,7 +4,6 @@
   "description": "Style form elements when they are empty",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/css-blank-pseudo",
   "homepage": "https://github.com/csstools/css-blank-pseudo#readme",
   "bugs": "https://github.com/csstools/css-blank-pseudo/issues",
   "main": "index.js",
@@ -35,14 +34,15 @@
     "build:cli": "cross-env NODE_ENV=cli rollup --config .rollup.js --silent",
     "build:postcss": "cross-env NODE_ENV=postcss rollup --config .rollup.js --silent",
     "build:node": "rollup --config .rollup.js --silent && cross-env NODE_ENV=legacy rollup --config .rollup.js --silent",
-    "prepublishOnly": "npm test && npm run build",
+    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
     "pretest:postcss": "npm run build:postcss",
     "test": "npm run test:js && npm run test:postcss",
     "test:js": "eslint src/{*,**/*}.js --cache --ignore-path .gitignore --quiet",
-    "test:postcss": "postcss-tape --plugin postcss.js"
+    "test:postcss": "postcss-tape --plugin postcss.js",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": "^12 || ^14 || >=16"
   },
   "peerDependencies": {
     "postcss": "^8.3"
@@ -58,17 +58,6 @@
     "pre-commit": "^1.2.2",
     "rollup": "^2.56.3",
     "rollup-plugin-terser": "^7.0.2"
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "parserOptions": {
-      "sourceType": "module"
-    },
-    "root": true
   },
   "keywords": [
     "postcss",
@@ -86,5 +75,10 @@
     "input",
     "select",
     "textarea"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "<TODO>"
+  }
 }

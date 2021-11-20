@@ -1,7 +1,6 @@
 node_modules
 /browser.*
 /browser-legacy.*
-/cli.*
 /index.*
 /legacy.*
 /postcss.*
