@@ -4,7 +4,6 @@
   "description": "Use light and dark color schemes in all browsers",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/css-prefers-color-scheme",
   "homepage": "https://github.com/csstools/css-prefers-color-scheme#readme",
   "bugs": "https://github.com/csstools/css-prefers-color-scheme/issues",
   "main": "index.js",
@@ -31,14 +30,15 @@
     "build:browser:min": "cross-env NODE_ENV=browser:min rollup --config .rollup.js --silent",
     "build:node": "rollup --config .rollup.js --silent",
     "build:postcss": "cross-env NODE_ENV=postcss rollup --config .rollup.js --silent",
-    "prepublishOnly": "npm test",
+    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
     "pretest": "npm run build",
     "test": "npm run test:js && npm run test:tape",
     "test:js": "eslint src/{*,**/*}.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape --plugin postcss.js"
+    "test:tape": "postcss-tape --plugin postcss.js",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "peerDependencies": {
     "postcss": "^8.3"
@@ -55,19 +55,6 @@
     "rollup": "2.56.3",
     "rollup-plugin-terser": "7.0.2"
   },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
-    },
-    "root": true
-  },
   "keywords": [
     "postcss",
     "css",
@@ -83,5 +70,10 @@
     "mode",
     "queries",
     "interface"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "<TODO>"
+  }
 }
