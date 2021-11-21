@@ -32,6 +32,12 @@ const cssHasPseudo = require('css-has-pseudo/dist/browser');
 cssHasPseudo(document);
 ```
 
+```html
+<link rel="stylesheet" href="TRANSFORMED.css">
+<script src="https://unpkg.com/css-has-pseudo/dist/browser-global.js"></script>
+<script>cssHasPseudo(document)</script>
+```
+
 ## Dependencies
 
 Web API's:
