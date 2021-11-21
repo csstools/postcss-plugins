@@ -1,0 +1,12 @@
+node_modules
+package-lock.json
+yarn.lock
+*.log*
+*.result.css
+.*
+dist/*
+!.editorconfig
+!.gitignore
+!.gitkeep
+!.rollup.js
+!.tape.js

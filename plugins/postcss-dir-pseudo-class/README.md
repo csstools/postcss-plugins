@@ -150,20 +150,18 @@ article h3:dir(ltr) {
 }
 ```
 
-[cli-img]: https://github.com/csstools/postcss-dir-pseudo-class/workflows/test/badge.svg
-[cli-url]: https://github.com/csstools/postcss-dir-pseudo-class/actions/workflows/test.yml?query=workflow/test
+[cli-img]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-img]: https://cssdb.org/badge/dir-pseudo-class.svg
 [css-url]: https://cssdb.org/#dir-pseudo-class
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-dir-pseudo-class.svg
 [npm-url]: https://www.npmjs.com/package/postcss-dir-pseudo-class
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-dir-pseudo-class.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-dir-pseudo-class
 
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Dir Pseudo Class]: https://github.com/jonathantneal/postcss-dir-pseudo-class
+[PostCSS Dir Pseudo Class]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class
 [Selectors]: https://www.w3.org/TR/selectors-4/#the-dir-pseudo
