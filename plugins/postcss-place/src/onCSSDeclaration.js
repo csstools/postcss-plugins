@@ -1,12 +1,26 @@
 import { parse } from 'postcss-values-parser'
 import options from './options'
 
-export default decl => {
+export default (decl, { result }) => {
 	// alignment
 	const alignment = decl.prop.match(placeMatch)[1]
 
 	// value ast and child nodes
-	const value = parse(decl.value)
+	let value
+
+	try {
+		value = parse(decl.value)
+	} catch (error) {
+		decl.warn(
+			result,
+			`Failed to parse value '${decl.value}'. Leaving the original value intact.`
+		)
+	}
+
+	if (typeof value === 'undefined') {
+		return
+	}
+
 	let alignmentValues = []
 	value.walkWords(walk => {
 		alignmentValues.push(
