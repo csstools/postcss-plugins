@@ -22,12 +22,12 @@ const colors = {
 	bgBlue: '\x1b[44m',
 	bgMagenta: '\x1b[45m',
 	bgCyan: '\x1b[46m',
-	bgWhite: '\x1b[47m'
-}
+	bgWhite: '\x1b[47m',
+};
 
 /** Return a string wrapped in a CLI color. */
 export const color = (/** @type {keyof colors} */ name, /** @type {string} */ string) => (
 	colors[name] +
 	string.replace(colors.reset, colors.reset + colors[name]) +
 	colors.reset
-)
+);

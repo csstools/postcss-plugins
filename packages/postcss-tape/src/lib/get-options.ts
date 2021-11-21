@@ -1,5 +1,5 @@
-import { getOptionsFromArguments } from './get-options-from-arguments.js'
-import { readJSON } from './utils.js'
+import { getOptionsFromArguments } from './get-options-from-arguments'
+import { readJSON } from './utils'
 import path from 'path'
 
 /** Asynchronously return the options from the project. */

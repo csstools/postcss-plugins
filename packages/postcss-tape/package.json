@@ -1,76 +1,30 @@
 {
-  "name": "postcss-tape",
+  "name": "@csstools/plugins-postcss-tape",
+  "private": true,
   "description": "Quickly test PostCSS plugins",
-  "version": "6.0.1",
-  "type": "commonjs",
-  "main": "./dist/index.js",
-  "bin": {
-    "postcss-tape": "dist/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/csstools/postcss-tape.git"
-  },
+  "version": "0.1.0",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
-  "homepage": "https://github.com/csstools/postcss-tape#readme",
-  "bugs": "https://github.com/csstools/postcss-tape/issues",
   "license": "CC0-1.0",
-  "scripts": {
-    "build": "rollup --config --silent",
-    "prepublish": "npm test",
-    "pretest:tape": "npm run build",
-    "test": "npm run test:js && npm run test:tape",
-    "test:js": "eslint src/{*,**/*}.js --cache --ignore-pattern .gitignore",
-    "test:tape:7": "node . --plugin test/postcss7-plugin.js --config test",
-    "test:tape:8": "node . --plugin test/postcss8-plugin.js --config test",
-    "test:tape": "npm run test:tape:7 && npm run test:tape:8",
-    "test:tape:ci": "npm run test:tape:7 -- --ci true && npm run test:tape:8 -- --ci true"
-  },
+  "type": "module",
   "engines": {
-    "node": ">=10.0.0"
+    "node": "^12 || ^14 || >=16"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "stryker": "stryker run --logLevel error",
+    "test": "node ./test/test.mjs"
   },
   "peerDependencies": {
-    "postcss": "^7 || ^8"
+    "postcss": "^8.3.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "eslint": "^7.9.0",
-    "magic-string": "^0.25.7",
-    "postcss": "^8.0.5",
-    "rollup": "^2.27.1",
-    "rollup-plugin-babel": "^4.4.0"
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 12,
-      "impliedStrict": true,
-      "sourceType": "module"
-    },
-    "root": true,
-    "rules": {
-      "semi": [
-        "error",
-        "never"
-      ]
-    }
-  },
-  "prettier": {
-    "arrowParens": "avoid",
-    "bracketSpacing": true,
-    "endOfLine": "lf",
-    "printWidth": 360,
-    "quoteProps": "consistent",
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "all",
-    "useTabs": true
+    "postcss": "^8.3.6"
   },
   "keywords": [
     "postcss",
