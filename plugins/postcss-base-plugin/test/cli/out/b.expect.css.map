@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/b.css"],"names":[],"mappings":"AAAA;CACC,WAAU;AACX","file":"b.css","sourcesContent":[".baz {\n\tcolor: red;\n}\n"]}
+{"version":3,"sources":["../src/b.css"],"names":[],"mappings":"AAAA,OAAO,WAAU,EAAE","file":"b.css","sourcesContent":[".baz { color: red; }"]}
