@@ -4,7 +4,6 @@
   "description": "Use env() variables in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/postcss-env-function",
   "homepage": "https://github.com/csstools/postcss-env-function#readme",
   "bugs": "https://github.com/csstools/postcss-env-function/issues",
   "main": "dist/index.cjs",
@@ -20,10 +19,11 @@
     "pretest": "npm run build",
     "test": "npm run lint && npm run tape",
     "tape": "postcss-tape",
-    "prepublishOnly": "npm test"
+    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
     "postcss-values-parser": "6.0.1"
@@ -51,25 +51,6 @@
       ]
     ]
   },
-  "eslintConfig": {
-    "env": {
-      "es6": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 12,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "modules": true
-      }
-    },
-    "rules": {
-      "semi": [
-        "error",
-        "never"
-      ]
-    }
-  },
   "rollup": {
     "input": "src/index.js",
     "plugins": [
@@ -96,5 +77,10 @@
     "envs",
     "constants",
     "functions"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "<TODO>"
+  }
 }
