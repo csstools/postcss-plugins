@@ -1,6 +1,5 @@
 node_modules
 /browser.*
-/cli.*
 /index.*
 /postcss.*
 package-lock.json
