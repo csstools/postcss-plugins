@@ -14,11 +14,10 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - run: exit 0
-      # - run: npm ci --ignore-scripts
-      # - run: npm run build --workspaces --if-present
-      # - run: npm run lint --workspaces --if-present
-      # - run: npm run test --workspaces --if-present
+      - run: npm ci --ignore-scripts
+      - run: npm run build --workspaces --if-present
+      - run: npm run lint --workspaces --if-present
+      - run: npm run test --workspaces --if-present
 
   test_without_workspaces_support:
     runs-on: ubuntu-latest
@@ -31,16 +30,14 @@ jobs:
         with:
           node-version: 16
 
-      - run: exit 0
-      # - run: npm ci --ignore-scripts
-      # - run: npm run build --workspaces --if-present
+      - run: npm ci --ignore-scripts
+      - run: npm run build --workspaces --if-present
 
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
 
-      - run: exit 0
-      # - run: bash ./.github/bin/install-and-test-all-packages.sh
+      - run: bash ./.github/bin/install-and-test-all-packages.sh
 
   # Run cross platform test of the basic CLI.
   test_cli:
@@ -55,11 +52,11 @@ jobs:
           node-version: 16
 
       - run: npm ci --ignore-scripts
-      # - run: npm run build --workspaces --if-present
+      - run: npm run build --workspaces --if-present
+
+        # running "npm install" places the cli in node_modules/bin
+      - run: npm install
 
       - run: |
-            npm run build --workspace="@csstools/base-cli" --workspace="@csstools/postcss-base-plugin"
-            # running install places the cli in node_modules/bin
-            npm install
             npm run test --workspace="@csstools/base-cli"
             npm run test:cli --workspace="@csstools/postcss-base-plugin"
