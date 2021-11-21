@@ -14,7 +14,7 @@ function importEnvironmentVariablesFromObject(object) {
 	)
 
 	for (const key in environmentVariables) {
-		environmentVariables[key] = parse(environmentVariables[key]).nodes
+		environmentVariables[key] = parse(environmentVariables[key], { ignoreUnknownWords: true }).nodes
 	}
 
 	return environmentVariables

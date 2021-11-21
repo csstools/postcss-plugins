@@ -14,15 +14,41 @@ export default function creator(opts) {
 
 	return {
 		postcssPlugin: 'postcss-env-fn',
-		async AtRule(atRule) {
-			const replacedValue = getReplacedValue(atRule.params, await environmentVariablesPromise)
+		async AtRule(atRule, { result }) {
+			let replacedValue
+
+			try {
+				replacedValue = getReplacedValue(atRule.params, await environmentVariablesPromise)
+			} catch (error) {
+				atRule.warn(
+					result,
+					`Failed to parse params '${atRule.params}' as an environment value. Leaving the original value intact.`
+				)
+			}
+
+			if (typeof replacedValue === 'undefined') {
+				return
+			}
 
 			if (replacedValue !== atRule.params) {
 				atRule.params = replacedValue
 			}
 		},
-		async Declaration(decl) {
-			const replacedValue = getReplacedValue(decl.value, await environmentVariablesPromise)
+		async Declaration(decl, { result }) {
+			let replacedValue
+
+			try {
+				replacedValue = getReplacedValue(decl.value, await environmentVariablesPromise)
+			} catch (error) {
+				decl.warn(
+					result,
+					`Failed to parse value '${decl.value}' as an environment value. Leaving the original value intact.`
+				)
+			}
+
+			if (typeof replacedValue === 'undefined') {
+				return
+			}
 
 			if (replacedValue !== decl.value) {
 				decl.value = replacedValue
