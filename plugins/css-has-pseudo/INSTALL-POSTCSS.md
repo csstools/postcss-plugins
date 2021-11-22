@@ -13,19 +13,11 @@ Add [CSS Has Pseudo] to your project:
 npm install css-has-pseudo --save-dev
 ```
 
-Use [CSS Has Pseudo] to process your CSS:
-
-```js
-const postcssHasPseudo = require('css-has-pseudo/postcss');
-
-postcssHasPseudo.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssHasPseudo = require('css-has-pseudo/postcss');
+const postcssHasPseudo = require('css-has-pseudo');
 
 postcss([
   postcssHasPseudo(/* pluginOptions */)
@@ -43,7 +35,7 @@ npm install postcss-cli --save-dev
 Use [CSS Has Pseudo] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssHasPseudo = require('css-has-pseudo/postcss');
+const postcssHasPseudo = require('css-has-pseudo');
 
 module.exports = {
   plugins: [
@@ -63,7 +55,7 @@ npm install postcss-loader --save-dev
 Use [CSS Has Pseudo] in your Webpack configuration:
 
 ```js
-const postcssHasPseudo = require('css-has-pseudo/postcss');
+const postcssHasPseudo = require('css-has-pseudo');
 
 module.exports = {
   module: {
@@ -100,7 +92,7 @@ file:
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssHasPseudo = require('css-has-pseudo/postcss');
+const postcssHasPseudo = require('css-has-pseudo');
 
 module.exports = config => reactAppRewirePostcss(config, {
   plugins: () => [
@@ -121,7 +113,7 @@ Use [CSS Has Pseudo] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssHasPseudo = require('css-has-pseudo/postcss');
+const postcssHasPseudo = require('css-has-pseudo');
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
   postcss([
@@ -143,7 +135,7 @@ npm install grunt-postcss --save-dev
 Use [CSS Has Pseudo] in your Gruntfile:
 
 ```js
-const postcssHasPseudo = require('css-has-pseudo/postcss');
+const postcssHasPseudo = require('css-has-pseudo');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -161,7 +153,7 @@ grunt.initConfig({
 });
 ```
 
-[CSS Has Pseudo]: https://github.com/csstools/css-has-pseudo
+[CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
