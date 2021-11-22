@@ -1,44 +1,44 @@
-import { parse } from 'postcss-values-parser'
-import onCSSFunction from './onCSSFunction'
-import options from './options'
+import { parse } from 'postcss-values-parser';
+import onCSSFunction from './onCSSFunction';
+import options from './options';
 
 /** @type {(decl: CSSDeclaration) => void} Transform space and slash separated color functions in CSS Declarations. */
 const onCSSDeclaration = (decl, { result }) => {
-	const { value: originalValue } = decl
+	const { value: originalValue } = decl;
 
 	if (hasAnyColorFunction(originalValue)) {
-		let valueAST
+		let valueAST;
 
 		try {
-			valueAST = parse(originalValue, { ignoreUnknownWords: true })
+			valueAST = parse(originalValue, { ignoreUnknownWords: true });
 		} catch (error) {
 			decl.warn(
 				result,
-				`Failed to parse value '${originalValue}' as a color function. Leaving the original value intact.`
-			)
+				`Failed to parse value '${originalValue}' as a color function. Leaving the original value intact.`,
+			);
 		}
 
 		if (typeof valueAST === 'undefined') {
-			return
+			return;
 		}
 
-		valueAST.walkType('func', onCSSFunction)
+		valueAST.walkType('func', onCSSFunction);
 
-		const modifiedValue = String(valueAST)
+		const modifiedValue = String(valueAST);
 
 		if (modifiedValue !== originalValue) {
-			if (options.preserve) decl.cloneBefore({ value: modifiedValue })
-			else decl.value = modifiedValue
+			if (options.preserve) decl.cloneBefore({ value: modifiedValue });
+			else decl.value = modifiedValue;
 		}
 	}
-}
+};
 
-export default onCSSDeclaration
+export default onCSSDeclaration;
 
 /** @type {(value: RegExp) => (value: string) => boolean} Return a function that checks whether the expression exists in a value. */
-const createRegExpTest = Function.bind.bind(RegExp.prototype.test)
+const createRegExpTest = Function.bind.bind(RegExp.prototype.test);
 
 /** Return whether the value has an `hsl()`, `hsla()`, `rgb()`, or `rgba()` function. */
-const hasAnyColorFunction = createRegExpTest(/(^|[^\w-])(hsla?|rgba?)\(/i)
+const hasAnyColorFunction = createRegExpTest(/(^|[^\w-])(hsla?|rgba?)\(/i);
 
 /** @typedef {import('postcss').Declaration} CSSDeclaration */
