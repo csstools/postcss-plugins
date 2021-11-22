@@ -4,7 +4,7 @@
   "description": "Style form elements when they are empty",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-    "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo#readme",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo#readme",
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
