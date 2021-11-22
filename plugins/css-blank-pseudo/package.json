@@ -4,60 +4,47 @@
   "description": "Style form elements when they are empty",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/csstools/css-blank-pseudo#readme",
-  "bugs": "https://github.com/csstools/css-blank-pseudo/issues",
-  "main": "index.js",
-  "module": "index.mjs",
-  "bin": {
-    "css-blank-pseudo": "cli.js"
+    "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "exports": {
+    "./browser": {
+      "default": "./dist/browser.js"
+    },
+    "./browser-global": {
+      "default": "./dist/browser-global.js"
+    }
   },
   "files": [
-    "browser.js",
-    "browser-legacy.js",
-    "cli.js",
-    "index.js",
-    "index.js.map",
-    "index.mjs",
-    "index.mjs.map",
-    "legacy.js",
-    "legacy.js.map",
-    "legacy.mjs",
-    "legacy.mjs.map",
-    "postcss.js",
-    "postcss.js.map",
-    "postcss.mjs",
-    "postcss.mjs.map"
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
+    "dist"
   ],
+  "bin": {
+    "css-blank-pseudo": "dist/cli.mjs"
+  },
   "scripts": {
-    "build": "npm run build:browser && npm run build:cli && npm run build:node && npm run build:postcss",
-    "build:browser": "cross-env NODE_ENV=browser rollup --config .rollup.js --silent && cross-env NODE_ENV=browser:legacy rollup --config .rollup.js --silent",
-    "build:cli": "cross-env NODE_ENV=cli rollup --config .rollup.js --silent",
-    "build:postcss": "cross-env NODE_ENV=postcss rollup --config .rollup.js --silent",
-    "build:node": "rollup --config .rollup.js --silent && cross-env NODE_ENV=legacy rollup --config .rollup.js --silent",
-    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
-    "pretest:postcss": "npm run build:postcss",
-    "test": "npm run test:js && npm run test:postcss",
-    "test:js": "eslint src/{*,**/*}.js --cache --ignore-path .gitignore --quiet",
-    "test:postcss": "postcss-tape --plugin postcss.js",
+    "prepublishOnly": "npm run build && npm run test",
+    "lint": "eslint src/**/*.js",
+    "test": "postcss-tape",
+    "build": "rollup -c ../../rollup/default-with-browser.js",
     "stryker": "stryker run --logLevel error"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
-  "peerDependencies": {
-    "postcss": "^8.3"
+  "dependencies": {
+    "postcss-selector-parser": "6.0.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.6",
-    "@rollup/plugin-babel": "^5.3.0",
-    "cross-env": "^7.0.3",
-    "eslint": "^7.32.0",
-    "postcss": "^8.3.6",
-    "postcss-tape": "^6.0.1",
-    "pre-commit": "^1.2.2",
-    "rollup": "^2.56.3",
-    "rollup-plugin-terser": "^7.0.2"
+    "postcss": "8.3.6",
+    "postcss-tape": "6.0.1"
+  },
+  "peerDependencies": {
+    "postcss": "^8.3"
   },
   "keywords": [
     "postcss",
@@ -79,6 +66,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "<TODO>"
+    "directory": "plugins/css-blank-pseudo"
   }
 }
