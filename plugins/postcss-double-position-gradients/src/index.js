@@ -5,7 +5,7 @@ const Punctuation = require('postcss-values-parser/lib/nodes/Punctuation');
 const gradientRegExp = /(repeating-)?(conic|linear|radial)-gradient\([\W\w]*\)/i;
 const gradientPartsRegExp = /^(repeating-)?(conic|linear|radial)-gradient$/i;
 
-const isPunctuationCommaNode = node => node.type === 'punctuation' && node.value === ','
+const isPunctuationCommaNode = node => node.type === 'punctuation' && node.value === ',';
 
 /**
  * Transform double-position gradients in CSS.
@@ -29,7 +29,7 @@ module.exports = function creator(opts) {
 			} catch (error) {
 				decl.warn(
 					result,
-					`Failed to parse value '${decl.value}' as a CSS gradient. Leaving the original value intact.`
+					`Failed to parse value '${decl.value}' as a CSS gradient. Leaving the original value intact.`,
 				);
 			}
 
@@ -60,13 +60,13 @@ module.exports = function creator(opts) {
 							value: ',',
 							raws: isPunctuationCommaNode(node1next)
 								? Object.assign({}, node1next.clone().raws)
-								: { before: '', after: '' }
+								: { before: '', after: '' },
 						});
 
 						func.insertBefore(node, [comma, color]);
 					}
-				})
-			})
+				});
+			});
 
 			const modifiedValue = String(valueAST);
 
@@ -74,8 +74,8 @@ module.exports = function creator(opts) {
 				if (preserve) decl.cloneBefore({ value: modifiedValue });
 				else decl.value = modifiedValue;
 			}
-		}
-	}
-}
+		},
+	};
+};
 
 module.exports.postcss = true;
