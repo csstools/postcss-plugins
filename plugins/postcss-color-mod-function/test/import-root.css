@@ -1,9 +1,0 @@
-html {
-	--color-blue: blue;
-	--color-red: red;
-	--color: var(--color-red);
-}
-
-:root {
-	--color: var(--color-blue);
-}

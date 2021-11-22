@@ -67,9 +67,10 @@ postcss-base-plugin ./test/cli/src/a.css ./test/cli/src/b.css -m -d ./test/cli/o
 
 # Check result
 git --no-pager diff --no-index --word-diff ./test/cli/out/a.css ./test/cli/out/a.expect.css
-git --no-pager diff --no-index --word-diff ./test/cli/out/a.css.map ./test/cli/out/a.expect.css.map
 git --no-pager diff --no-index --word-diff ./test/cli/out/b.css ./test/cli/out/b.expect.css
+git --no-pager diff --no-index --word-diff ./test/cli/out/a.css.map ./test/cli/out/a.expect.css.map
 git --no-pager diff --no-index --word-diff ./test/cli/out/b.css.map ./test/cli/out/b.expect.css.map
+
 
 # Zero out result file
 echo '' > ./test/cli/out/concatenated.css
