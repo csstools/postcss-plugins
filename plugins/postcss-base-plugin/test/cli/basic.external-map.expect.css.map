@@ -1,1 +1,1 @@
-{"version":3,"sources":["../../stdin"],"names":[],"mappings":"AAAA,OAAO,WAAU,EAAE","file":"basic.external-map.result.css","sourcesContent":[".foo { color: red; }"]}
+{"version":3,"sources":["../../stdin"],"names":[],"mappings":"AAAA;CACC,WAAU;AACX","file":"basic.external-map.result.css","sourcesContent":[".foo {\n\tcolor: red;\n}\n"]}

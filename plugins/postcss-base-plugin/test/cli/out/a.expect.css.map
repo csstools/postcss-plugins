@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/a.css"],"names":[],"mappings":"AAAA,OAAO,WAAU,EAAE","file":"a.css","sourcesContent":[".foo { color: red; }"]}
+{"version":3,"sources":["../src/a.css"],"names":[],"mappings":"AAAA;CACC,WAAU;AACX","file":"a.css","sourcesContent":[".foo {\n\tcolor: red;\n}\n"]}
