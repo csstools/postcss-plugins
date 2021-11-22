@@ -27,7 +27,7 @@ npm install css-has-pseudo
 Then include and initialize it on your document:
 
 ```js
-const cssHasPseudo = require('css-has-pseudo/dist/browser');
+const cssHasPseudo = require('css-has-pseudo/browser');
 
 cssHasPseudo(document);
 ```

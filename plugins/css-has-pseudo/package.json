@@ -8,6 +8,14 @@
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
+  "exports": {
+    "./browser": {
+      "default": "./dist/browser.js"
+    },
+    "./browser-global": {
+      "default": "./dist/browser-global.js"
+    }
+  },
   "files": [
     "CHANGELOG.md",
     "INSTALL.md",
