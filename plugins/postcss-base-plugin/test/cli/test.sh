@@ -1,8 +1,5 @@
 set -e
 
-# Tests should not be single line without trailing newline.
-# Otherwise sourcemaps differ between Unix and Windows.
-
 # Zero out result file
 echo '' > ./test/cli/basic.result.css;
 

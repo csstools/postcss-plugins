@@ -1,5 +1,0 @@
-[*.css]
-insert_final_newline = false
-
-[*.css.map]
-insert_final_newline = false
