@@ -1,7 +1,5 @@
 set -e
 
-echo $OSTYPE
-
 # Zero out result file
 echo '' > ./test/cli/basic.result.css;
 
@@ -9,12 +7,7 @@ echo '' > ./test/cli/basic.result.css;
 postcss-base-plugin ./test/cli/basic.css --output ./test/cli/basic.result.css
 
 # Check result
-if [[ "$OSTYPE" == "msys" ]]; then
-	# CRLF on Windows makes it hard to test with base64 encoded sourcemaps
-	echo 'did not compare actual output assuming exit 0 means everything is ok'
-else
-	git --no-pager diff --no-index --word-diff ./test/cli/basic.expect.css ./test/cli/basic.result.css
-fi
+git --no-pager diff --no-index --word-diff ./test/cli/basic.expect.css ./test/cli/basic.result.css
 
 # Reset result file
 cat ./test/cli/basic.css > ./test/cli/basic.replace.css;
@@ -23,12 +16,7 @@ cat ./test/cli/basic.css > ./test/cli/basic.replace.css;
 postcss-base-plugin ./test/cli/basic.replace.css -r
 
 # Check result
-if [[ "$OSTYPE" == "msys" ]]; then
-	# CRLF on Windows makes it hard to test with base64 encoded sourcemaps
-	echo 'did not compare actual output assuming exit 0 means everything is ok'
-else
-	git --no-pager diff --no-index --word-diff ./test/cli/basic.replace.css ./test/cli/basic.replace.expect.css
-fi
+git --no-pager diff --no-index --word-diff ./test/cli/basic.replace.css ./test/cli/basic.replace.expect.css
 
 # Zero out result file
 echo '' > ./test/cli/basic.color.result.css;
@@ -37,12 +25,7 @@ echo '' > ./test/cli/basic.color.result.css;
 postcss-base-plugin ./test/cli/basic.css -o ./test/cli/basic.color.result.css -p '{ "color": "purple" }'
 
 # Check result
-if [[ "$OSTYPE" == "msys" ]]; then
-	# CRLF on Windows makes it hard to test with base64 encoded sourcemaps
-	echo 'did not compare actual output assuming exit 0 means everything is ok'
-else
-	git --no-pager diff --no-index --word-diff ./test/cli/basic.color.expect.css ./test/cli/basic.color.result.css
-fi
+git --no-pager diff --no-index --word-diff ./test/cli/basic.color.expect.css ./test/cli/basic.color.result.css
 
 # Zero out result file
 echo '' > ./test/cli/basic.stdin.result.css;
@@ -51,12 +34,7 @@ echo '' > ./test/cli/basic.stdin.result.css;
 cat ./test/cli/basic.css | postcss-base-plugin > ./test/cli/basic.stdin.result.css
 
 # Check result
-if [[ "$OSTYPE" == "msys" ]]; then
-	# CRLF on Windows makes it hard to test with base64 encoded sourcemaps
-	echo 'did not compare actual output assuming exit 0 means everything is ok'
-else
-	git --no-pager diff --no-index --word-diff ./test/cli/basic.stdin.expect.css ./test/cli/basic.stdin.result.css
-fi
+git --no-pager diff --no-index --word-diff ./test/cli/basic.stdin.expect.css ./test/cli/basic.stdin.result.css
 
 # Zero out result file
 echo '' > ./test/cli/basic.no-map.result.css;
@@ -76,12 +54,7 @@ cat ./test/cli/basic.css | postcss-base-plugin --map  -o ./test/cli/basic.extern
 
 # Check result
 git --no-pager diff --no-index --word-diff ./test/cli/basic.external-map.expect.css ./test/cli/basic.external-map.result.css
-if [[ "$OSTYPE" == "msys" ]]; then
-	# CRLF on Windows makes it hard to test with base64 encoded sourcemaps
-	echo 'did not compare actual output assuming exit 0 means everything is ok'
-else
-	git --no-pager diff --no-index --word-diff ./test/cli/basic.external-map.expect.css.map ./test/cli/basic.external-map.result.css.map
-fi
+git --no-pager diff --no-index --word-diff ./test/cli/basic.external-map.expect.css.map ./test/cli/basic.external-map.result.css.map
 
 # Zero out result file
 echo '' > ./test/cli/out/a.css
@@ -95,14 +68,9 @@ postcss-base-plugin ./test/cli/src/a.css ./test/cli/src/b.css -m -d ./test/cli/o
 # Check result
 git --no-pager diff --no-index --word-diff ./test/cli/out/a.css ./test/cli/out/a.expect.css
 git --no-pager diff --no-index --word-diff ./test/cli/out/b.css ./test/cli/out/b.expect.css
+git --no-pager diff --no-index --word-diff ./test/cli/out/a.css.map ./test/cli/out/a.expect.css.map
+git --no-pager diff --no-index --word-diff ./test/cli/out/b.css.map ./test/cli/out/b.expect.css.map
 
-if [[ "$OSTYPE" == "msys" ]]; then
-	# CRLF on Windows makes it hard to test with base64 encoded sourcemaps
-	echo 'did not compare actual output assuming exit 0 means everything is ok'
-else
-	git --no-pager diff --no-index --word-diff ./test/cli/out/a.css.map ./test/cli/out/a.expect.css.map
-	git --no-pager diff --no-index --word-diff ./test/cli/out/b.css.map ./test/cli/out/b.expect.css.map
-fi
 
 # Zero out result file
 echo '' > ./test/cli/out/concatenated.css

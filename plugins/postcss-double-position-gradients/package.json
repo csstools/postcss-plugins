@@ -4,37 +4,39 @@
   "description": "Use double-position gradients in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/postcss-double-position-gradients",
-  "homepage": "https://github.com/csstools/postcss-double-position-gradients#readme",
-  "bugs": "https://github.com/csstools/postcss-double-position-gradients/issues",
-  "main": "index.js",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "files": [
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
+    "dist"
+  ],
+  "bin": {
+    "postcss-double-position-gradients": "dist/cli.mjs"
+  },
   "scripts": {
-    "prepublishOnly": "npm test",
-    "lint": "eslint *.js --cache",
-    "lint:fix": "eslint *.js --cache --fix",
-    "test": "npm run lint && npm run tape",
-    "tape": "postcss-tape"
+    "prepublishOnly": "npm run build && npm run test",
+    "lint": "eslint src/**/*.js",
+    "test": "postcss-tape",
+    "build": "rollup -c ../../rollup/default.js",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-values-parser": "6.0.1"
+    "postcss-values-parser": "^6.0.1"
+  },
+  "devDependencies": {
+    "postcss": "8.3.6",
+    "postcss-tape": "6.0.1"
   },
   "peerDependencies": {
     "postcss": "^8.3"
-  },
-  "devDependencies": {
-    "eslint": "8.2.0",
-    "postcss": "8.3.11",
-    "postcss-tape": "6.0.1"
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended"
   },
   "keywords": [
     "postcss",
@@ -50,5 +52,10 @@
     "stop",
     "syntax",
     "repeating"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugins/postcss-double-position-gradients"
+  }
 }

@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - run: npm ci --ignore-scripts
+      - run: npm install --ignore-scripts
       - run: npm run build --workspaces --if-present
       - run: npm run lint --workspaces --if-present
       - run: npm run test --workspaces --if-present
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 16
 
-      - run: npm ci --ignore-scripts
+      - run: npm install --ignore-scripts
       - run: npm run build --workspaces --if-present
 
       - uses: actions/setup-node@v2
@@ -51,11 +51,11 @@ jobs:
         with:
           node-version: 16
 
-      - run: npm ci --ignore-scripts
+      - run: npm install --ignore-scripts
       - run: npm run build --workspaces --if-present
 
         # running "npm install" places the cli in node_modules/bin
-      - run: npm install
+      - run: npm install --ignore-scripts
 
       - run: |
             npm run test --workspace="@csstools/base-cli"

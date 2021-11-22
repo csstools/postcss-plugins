@@ -14,6 +14,7 @@ export default [
 		],
 		external: [
 			'postcss-values-parser',
+			'postcss-selector-parser',
 		],
 		plugins: [
 			typescript({ tsconfig: './tsconfig.json' }),
