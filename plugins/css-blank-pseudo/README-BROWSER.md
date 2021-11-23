@@ -1,7 +1,6 @@
 # CSS Blank Pseudo for Browsers [<img src="http://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][CSS Blank Pseudo]
 
 [![NPM Version][npm-img]][npm-url]
-[![Build Status][cli-img]][cli-url]
 [![Support Chat][git-img]][git-url]
 
 [CSS Blank Pseudo] lets you style form elements when they are empty, following
@@ -28,15 +27,7 @@ npm install css-blank-pseudo
 Then include and initialize it on your document:
 
 ```js
-const cssBlankPseudo = require('css-blank-pseudo');
-
-cssBlankPseudo(document);
-```
-
-To support Internet Explorer 11, include the *browser-legacy* script:
-
-```js
-const cssBlankPseudo = require('css-blank-pseudo/legacy');
+const cssBlankPseudo = require('css-blank-pseudo/browser');
 
 cssBlankPseudo(document);
 ```
@@ -67,12 +58,24 @@ cssBlankPseudo(document, {
 });
 ```
 
-[cli-img]: https://img.shields.io/travis/csstools/css-blank-pseudo/master.svg
-[cli-url]: https://travis-ci.org/csstools/css-blank-pseudo
+## Dependencies
+
+Web API's:
+
+- [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+
+ECMA Script:
+
+- `Object.prototype.toString`
+- `Object.getOwnPropertyDescriptor`
+- `Object.defineProperty`
+- `Array.prototype.forEach`
+
+
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/css-blank-pseudo.svg
 [npm-url]: https://www.npmjs.com/package/css-blank-pseudo
 
-[CSS Blank Pseudo]: https://github.com/csstools/css-blank-pseudo
+[CSS Blank Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo
 [Selectors Level 4]: https://drafts.csswg.org/selectors-4/#blank
