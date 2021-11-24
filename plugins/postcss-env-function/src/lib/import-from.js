@@ -1,6 +1,6 @@
-import fs from 'fs'
-import path from 'path'
-import { parse } from 'postcss-values-parser'
+import fs from 'fs';
+import path from 'path';
+import { parse } from 'postcss-values-parser';
 
 /**
  * Import Custom Properties from Object
@@ -10,14 +10,14 @@ import { parse } from 'postcss-values-parser'
 function importEnvironmentVariablesFromObject(object) {
 	const environmentVariables = Object.assign(
 		{},
-		Object(object).environmentVariables || Object(object)['environment-variables']
-	)
+		Object(object).environmentVariables || Object(object)['environment-variables'],
+	);
 
 	for (const key in environmentVariables) {
-		environmentVariables[key] = parse(environmentVariables[key], { ignoreUnknownWords: true }).nodes
+		environmentVariables[key] = parse(environmentVariables[key], { ignoreUnknownWords: true }).nodes;
 	}
 
-	return environmentVariables
+	return environmentVariables;
 }
 
 /**
@@ -26,9 +26,9 @@ function importEnvironmentVariablesFromObject(object) {
  * @returns {Promise<Record<string, import('postcss-values-parser').Root>>}
  */
 async function importEnvironmentVariablesFromJSONFile(from) {
-	const object = await readJSON(path.resolve(from))
+	const object = await readJSON(path.resolve(from));
 
-	return importEnvironmentVariablesFromObject(object)
+	return importEnvironmentVariablesFromObject(object);
 }
 
 /**
@@ -37,9 +37,9 @@ async function importEnvironmentVariablesFromJSONFile(from) {
  * @returns {Promise<Record<string, import('postcss-values-parser').Root>>}
  */
 async function importEnvironmentVariablesFromJSFile(from) {
-	const object = await import(path.resolve(from))
+	const object = await import(path.resolve(from));
 
-	return importEnvironmentVariablesFromObject(object)
+	return importEnvironmentVariablesFromObject(object);
 }
 
 /**
@@ -50,39 +50,39 @@ async function importEnvironmentVariablesFromJSFile(from) {
 export default function importEnvironmentVariablesFromSources(sources) {
 	return sources.map(source => {
 		if (source instanceof Promise) {
-			return source
+			return source;
 		} else if (source instanceof Function) {
-			return source()
+			return source();
 		}
 
 		// read the source as an object
-		const opts = source === Object(source) ? source : { from: String(source) }
+		const opts = source === Object(source) ? source : { from: String(source) };
 
 		// skip objects with Custom Properties
 		if (opts.environmentVariables || opts['environment-variables']) {
-			return opts
+			return opts;
 		}
 
 		// source pathname
-		const from = String(opts.from || '')
+		const from = String(opts.from || '');
 
 		// type of file being read from
-		const type = (opts.type || path.extname(from).slice(1)).toLowerCase()
+		const type = (opts.type || path.extname(from).slice(1)).toLowerCase();
 
-		return { type, from }
+		return { type, from };
 	}).reduce(async (environmentVariables, source) => {
-		const { type, from } = await source
+		const { type, from } = await source;
 
 		if (type === 'js' || type === 'cjs') {
-			return Object.assign(environmentVariables, await importEnvironmentVariablesFromJSFile(from))
+			return Object.assign(environmentVariables, await importEnvironmentVariablesFromJSFile(from));
 		}
 
 		if (type === 'json') {
-			return Object.assign(environmentVariables, await importEnvironmentVariablesFromJSONFile(from))
+			return Object.assign(environmentVariables, await importEnvironmentVariablesFromJSONFile(from));
 		}
 
-		return Object.assign(environmentVariables, importEnvironmentVariablesFromObject(await source))
-	}, {})
+		return Object.assign(environmentVariables, importEnvironmentVariablesFromObject(await source));
+	}, {});
 }
 
 /* Helper utilities
@@ -95,11 +95,11 @@ export default function importEnvironmentVariablesFromSources(sources) {
 const readFile = from => new Promise((resolve, reject) => {
 	fs.readFile(from, 'utf8', (error, result) => {
 		if (error) {
-			reject(error)
+			reject(error);
 		} else {
-			resolve(result)
+			resolve(result);
 		}
-	})
-})
+	});
+});
 
-const readJSON = async from => JSON.parse(await readFile(from))
+const readJSON = async from => JSON.parse(await readFile(from));

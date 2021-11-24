@@ -1,4 +1,5 @@
-export default function cssHasPseudo (document) {
+/* global MutationObserver,requestAnimationFrame */
+export default function cssHasPseudo(document) {
 	const observedItems = [];
 
 	// document.createAttribute() doesn't support `:` in the name. innerHTML does
@@ -43,7 +44,7 @@ export default function cssHasPseudo (document) {
 						element => {
 							const nthChild = [].indexOf.call(element.parentNode.children, element) + 1;
 							const relativeSelectors = item.relativeSelectors.map(
-								relativeSelector => item.scopeSelector + ':nth-child(' + nthChild + ') ' + relativeSelector
+								relativeSelector => item.scopeSelector + ':nth-child(' + nthChild + ') ' + relativeSelector,
 							).join();
 
 							// find any relative :has element from the :scope element
@@ -64,7 +65,7 @@ export default function cssHasPseudo (document) {
 								// trigger a style refresh in IE and Edge
 								document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
 							}
-						}
+						},
 					);
 
 					// remove the encoded attribute from all nodes that no longer match them
@@ -79,7 +80,7 @@ export default function cssHasPseudo (document) {
 
 					// update the
 					item.nodes = nodes;
-				}
+				},
 			);
 		});
 	}
@@ -91,8 +92,8 @@ export default function cssHasPseudo (document) {
 			observedItems.splice(0).filter(
 				item => item.rule.parentStyleSheet &&
 					item.rule.parentStyleSheet.ownerNode &&
-					document.documentElement.contains(item.rule.parentStyleSheet.ownerNode)
-			)
+					document.documentElement.contains(item.rule.parentStyleSheet.ownerNode),
+			),
 		);
 	}
 
@@ -118,7 +119,7 @@ export default function cssHasPseudo (document) {
 							isNot: selectors[2],
 							relativeSelectors: selectors[3].split(/\s*,\s*/),
 							attributeName,
-							nodes: []
+							nodes: [],
 						});
 					}
 				} else {

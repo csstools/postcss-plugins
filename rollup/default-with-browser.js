@@ -33,6 +33,64 @@ export default [
 		],
 	},
 	{
+		input: 'src/browser.js',
+		output: [
+			{ file: 'dist/browser.cjs', format: 'cjs', sourcemap: true, exports: 'auto', strict: false },
+		],
+		plugins: [
+			babel({
+				babelHelpers: 'bundled',
+				exclude: 'node_modules/**',
+				presets: [
+					['@babel/preset-env', {
+						loose: true,
+						modules: false,
+						targets: {
+							browsers: [
+								'IE >= 8',
+								'Opera >= 12',
+								'Safari >= 5.1',
+								'Chrome >= 15',
+								'Edge >= 12',
+								'Firefox >= 4',
+							],
+						},
+						useBuiltIns: false,
+					}],
+				],
+			}),
+		],
+	},
+	{
+		input: 'src/browser-global.js',
+		output: [
+			{ file: 'dist/browser-global.js', format: 'iife', sourcemap: true, exports: 'auto', strict: false },
+		],
+		plugins: [
+			babel({
+				babelHelpers: 'bundled',
+				exclude: 'node_modules/**',
+				presets: [
+					['@babel/preset-env', {
+						loose: true,
+						modules: false,
+						targets: {
+							browsers: [
+								'IE >= 8',
+								'Opera >= 12',
+								'Safari >= 5.1',
+								'Chrome >= 15',
+								'Edge >= 12',
+								'Firefox >= 4',
+							],
+						},
+						useBuiltIns: false,
+					}],
+				],
+			}),
+		],
+	},
+	{
 		input: 'src/cli.js',
 		output: [
 			{ file: 'dist/cli.mjs', format: 'esm', sourcemap: false },
