@@ -62,6 +62,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "<TODO>"
+    "directory": "plugins/css-prefers-color-scheme"
   }
 }
