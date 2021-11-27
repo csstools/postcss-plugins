@@ -2,7 +2,7 @@
 
 [<img alt="NPM Version" src="https://img.shields.io/npm/v/postcss-color-functional-notation.svg" height="20">][npm-url]
 [<img alt="CSS Standard Status" src="https://cssdb.org/badge/lab-function.svg" height="20">][css-url]
-[<img alt="Build Status" src="https://github.com/csstools/postcss-color-functional-notation/workflows/test/badge.svg" height="20">][cli-url]
+[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
 [PostCSS Color Functional Notation] lets you use space and slash separated
@@ -83,7 +83,7 @@ postcssImageSetFunction({ preserve: true })
 }
 ```
 
-[cli-url]: https://github.com/csstools/postcss-color-functional-notation/actions/workflows/test.yml?query=workflow/test
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#color-functional-notation
 [git-url]: https://gitter.im/postcss/postcss
 [npm-url]: https://www.npmjs.com/package/postcss-color-functional-notation
@@ -93,4 +93,4 @@ postcssImageSetFunction({ preserve: true })
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Color Functional Notation]: https://github.com/csstools/postcss-color-functional-notation
+[PostCSS Color Functional Notation]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation

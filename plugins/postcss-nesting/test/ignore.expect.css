@@ -1,7 +1,5 @@
 a, b {
-	order: 1
-}
-a, b {
+	order: 1;
 	c, d {
 		order: 2;
 	}
@@ -13,9 +11,7 @@ f:is(g) {
 		order: 5;
 	}
 a, b {
-	order: 1
-}
-a, b {
+	order: 1;
 	@nest c, d {
 		order: 2;
 	}
