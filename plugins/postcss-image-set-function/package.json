@@ -4,7 +4,6 @@
   "description": "Display resolution-dependent images using the image-set() function in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "jonathantneal/postcss-image-set-function",
   "homepage": "https://github.com/jonathantneal/postcss-image-set-function#readme",
   "bugs": "https://github.com/jonathantneal/postcss-image-set-function/issues",
   "main": "index.js",
@@ -12,13 +11,14 @@
     "lib/"
   ],
   "scripts": {
-    "prepublishOnly": "npm test",
+    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
     "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
     "test:js": "eslint *.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape"
+    "test:tape": "postcss-tape",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
     "postcss-values-parser": "6.0.0"
@@ -32,9 +32,6 @@
     "postcss": "8.3.6",
     "postcss-tape": "6.0.1"
   },
-  "eslintConfig": {
-    "extends": "dev"
-  },
   "keywords": [
     "postcss",
     "css",
@@ -46,5 +43,10 @@
     "resolution",
     "negotiation",
     "optimization"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "<TODO>"
+  }
 }
