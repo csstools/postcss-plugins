@@ -4,18 +4,18 @@
   "description": "Use the gap, column-gap, and row-gap shorthand properties in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "jonathantneal/postcss-gap-properties",
   "homepage": "https://github.com/jonathantneal/postcss-gap-properties#readme",
   "bugs": "https://github.com/jonathantneal/postcss-gap-properties/issues",
   "main": "index.js",
   "scripts": {
-    "prepublishOnly": "npm test",
+    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
     "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
     "test:js": "eslint *.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape"
+    "test:tape": "postcss-tape",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "devDependencies": {
     "eslint": "7.32.0",
@@ -26,9 +26,6 @@
   },
   "peerDependencies": {
     "postcss": "^8.3"
-  },
-  "eslintConfig": {
-    "extends": "dev"
   },
   "keywords": [
     "postcss",
@@ -41,5 +38,10 @@
     "gaps",
     "shorthands",
     "prefixes"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "<TODO>"
+  }
 }
