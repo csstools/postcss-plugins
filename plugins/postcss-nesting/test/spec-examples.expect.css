@@ -158,9 +158,7 @@ figure>figcaption>p {
 
 /* No & at all */
 .foo {
-	color: blue
-}
-.foo {
+	color: blue;
 
 	.bar {
 		color: red;
@@ -169,9 +167,7 @@ figure>figcaption>p {
 
 /* & isn’t the first simple selector */
 .foo {
-	color: blue
-}
-.foo {
+	color: blue;
 
 	.bar& {
 		color: red;
@@ -181,10 +177,7 @@ figure>figcaption>p {
 /* & isn’t the first selector of every one in the list */
 .foo,
 .bar {
-	color: blue
-}
-.foo,
-.bar {
+	color: blue;
 
 	&+.baz,
 	.qux {
@@ -232,10 +225,7 @@ figure>figcaption>p {
 */
 
 .foo {
-	color: red
-}
-
-.foo {
+	color: red;
 
 	@nest .bar {
 		color: blue;
@@ -245,10 +235,7 @@ figure>figcaption>p {
 /* Invalid because there’s no nesting selector */
 
 .foo {
-	color: red
-}
-
-.foo {
+	color: red;
 
 	@nest & .bar,
 	.baz {
@@ -357,10 +344,7 @@ figure>figcaption>p {
   contain a nesting selector */
 
 .foo {
-	color: red
-}
-
-.foo {
+	color: red;
 
 	@nest @media (min-width: 480px) {
 		& {
@@ -378,6 +362,12 @@ article {
 }
 article {
 		color: blue;
+
+	/*
+		NOTE : We are more forgiving than the spec
+		This declaration is preserved
+	*/
+	color: red;
 	}
 
 article {
@@ -386,8 +376,19 @@ article {
 
 article {
 		color: blue;
+
+	/*
+		NOTE : We are more forgiving than the spec
+		This declaration is preserved
+	*/
+	color: red;
 	}
 
 article.foo {
 		color: yellow;
+	}
+
+article {
+
+	/* valid! */
 	}
