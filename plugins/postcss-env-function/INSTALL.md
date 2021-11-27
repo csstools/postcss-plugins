@@ -13,15 +13,7 @@ Add [PostCSS Environment Variables] to your project:
 npm install postcss-env-function --save-dev
 ```
 
-Use [PostCSS Environment Variables] to process your CSS:
-
-```js
-const postcssEnvFunction = require('postcss-env-function');
-
-postcssEnvFunction.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');

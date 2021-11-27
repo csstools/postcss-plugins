@@ -1,6 +1,6 @@
 module.exports = {
 	'basic': {
-		message: 'supports basic usage'
+		message: 'supports basic usage',
 	},
 	'basic:replacewith': {
 		message: 'supports { replaceWith: ".css-blank" } usage',

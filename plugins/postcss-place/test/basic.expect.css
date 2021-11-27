@@ -45,3 +45,7 @@ d {
 	justify-self: var(--second);
 	place-self: first var(--second);
 }
+
+.test-unparseable-var-in-place-declaration {
+	place-content: var(; );
+}

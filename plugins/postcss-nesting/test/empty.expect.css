@@ -11,6 +11,9 @@ d e {
 f g {
 		order: 4;
 	}
+f {
+	order: 5;
+}
 a b c {
 			order: 1
 }
@@ -22,4 +25,7 @@ d e {
 }
 f g {
 		order: 4;
+}
+f {
+	order: 5;
 }

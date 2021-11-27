@@ -1,82 +1,42 @@
 {
   "name": "postcss-color-functional-notation",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Use space and slash separated color notation in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/postcss-color-functional-notation",
-  "homepage": "https://github.com/csstools/postcss-color-functional-notation#readme",
-  "bugs": "https://github.com/csstools/postcss-color-functional-notation/issues",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.mjs",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
   "files": [
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
     "dist"
   ],
+  "bin": {
+    "postcss-color-functional-notation": "dist/cli.mjs"
+  },
   "scripts": {
-    "build": "npx rollup -c .rollup.js",
-    "build:watch": "npx rollup -c .rollup.js --watch",
-    "lint": "npx eslint --cache src",
-    "lint:fix": "npx eslint --cache --fix",
-    "pretest": "npm install && npm run build",
-    "test": "npm run lint && npm run tape",
-    "tape": "npx postcss-tape",
-    "prepublishOnly": "npm test"
+    "prepublishOnly": "npm run build && npm run test",
+    "lint": "eslint src/**/*.js",
+    "test": "postcss-tape",
+    "build": "rollup -c ../../rollup/default.js",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-values-parser": "6.0.0"
+    "postcss-values-parser": "^6.0.1"
+  },
+  "devDependencies": {
+    "postcss": "^8.3.6",
+    "postcss-tape": "^6.0.1"
   },
   "peerDependencies": {
     "postcss": "^8.3"
-  },
-  "devDependencies": {
-    "@babel/core": "7.15.5",
-    "@babel/preset-env": "7.15.6",
-    "eslint": "7.32.0",
-    "postcss": "8.3.6",
-    "postcss-tape": "6.0.1",
-    "pre-commit": "1.2.2",
-    "rollup": "2.56.3",
-    "rollup-plugin-babel": "4.4.0"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/env",
-        {
-          "targets": "maintained node versions"
-        }
-      ]
-    ]
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "sourceType": "module"
-    }
-  },
-  "rollup": {
-    "input": "src/index.js",
-    "plugins": [
-      "rollup-plugin-babel"
-    ],
-    "output": [
-      {
-        "exports": "default",
-        "file": "dist/index.cjs.js",
-        "format": "cjs"
-      },
-      {
-        "file": "dist/index.esm.js",
-        "format": "esm"
-      }
-    ]
   },
   "keywords": [
     "postcss",
@@ -95,5 +55,10 @@
     "syntax",
     "space",
     "comma"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugins/postcss-color-functional-notation"
+  }
 }

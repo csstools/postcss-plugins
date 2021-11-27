@@ -1,5 +1,14 @@
 # Changes to PostCSS Environment Variables
 
+### 4.0.2 (November 18, 2021)
+
+- Added: Safeguards against postcss-values-parser potentially throwing an error.
+
+### 4.0.1 (October 28, 2021)
+
+- Updated: Enforcing styling consistency
+- Updated: `postcss-values-parser` to 6.0.1 (patch).
+
 ### 4.0.0 (September 17, 2021)
 
 - Updated: Support for PostCS 8+ (major).
