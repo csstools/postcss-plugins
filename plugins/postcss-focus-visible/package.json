@@ -4,7 +4,6 @@
   "description": "Use the :focus-visible pseudo-selector in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/postcss-focus-visible",
   "homepage": "https://github.com/csstools/postcss-focus-visible#readme",
   "bugs": "https://github.com/csstools/postcss-focus-visible/issues",
   "main": "dist/index.cjs",
@@ -26,12 +25,13 @@
     "lint": "npx eslint --cache src",
     "lint:fix": "npx eslint --cache --fix",
     "pretest": "npm install && npm run build",
-    "prepublishOnly": "npm test",
+    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
     "test": "npm run lint && npm run tape",
-    "tape": "npx postcss-tape"
+    "tape": "npx postcss-tape",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "peerDependencies": {
     "postcss": "^8.3"
@@ -56,17 +56,6 @@
         }
       ]
     ]
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
-    }
   },
   "rollup": {
     "input": "src/index.js",
@@ -122,5 +111,10 @@
     "contenteditable",
     "javascript",
     "js"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "<TODO>"
+  }
 }
