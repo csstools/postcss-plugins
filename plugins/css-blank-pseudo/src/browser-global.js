@@ -1,3 +1,3 @@
 /* global self */
-import * as cssBlankPseudo from './browser';
+import { default as cssBlankPseudo } from './browser';
 self.cssBlankPseudo = cssBlankPseudo;

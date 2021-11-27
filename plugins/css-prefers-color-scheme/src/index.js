@@ -8,19 +8,21 @@ const creator = opts => {
 
 	return {
 		postcssPlugin: 'postcss-prefers-color-scheme',
-		Once: root => {
-			root.walkAtRules(mediaRegExp, atRule => {
-				const { params } = atRule;
-				const altParams = params.replace(prefersInterfaceRegExp, prefersInterfaceReplacer);
+		AtRule: (atRule) => {
+			if (!mediaRegExp.test(atRule.name)) {
+				return;
+			}
 
-				if (params !== altParams) {
-					if (preserve) {
-						atRule.cloneBefore({ params: altParams });
-					} else {
-						atRule.params = altParams;
-					}
+			const { params } = atRule;
+			const altParams = params.replace(prefersInterfaceRegExp, prefersInterfaceReplacer);
+
+			if (params !== altParams) {
+				if (preserve) {
+					atRule.cloneBefore({ params: altParams });
+				} else {
+					atRule.params = altParams;
 				}
-			});
+			}
 		},
 	};
 };
