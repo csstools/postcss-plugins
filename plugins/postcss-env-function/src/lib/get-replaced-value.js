@@ -1,4 +1,4 @@
-import { parse } from 'postcss-values-parser';
+import { parse } from '@csstools/postcss-plugins-values-parser';
 import updateEnvValue from './update-env-value';
 import walkEnvFuncs from './walk-env-funcs';
 

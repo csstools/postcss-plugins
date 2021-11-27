@@ -1,0 +1,20 @@
+{
+  "name": "@csstools/postcss-plugins-values-parser",
+  "version": "0.1.0",
+  "description": "A CSS property value parser for use with PostCSS",
+  "license": "MPL-2.0",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "engines": {
+    "node": ">=10"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c ../../rollup/default.js"
+  },
+  "peerDependencies": {
+    "postcss": "^8.2.9"
+  }
+}

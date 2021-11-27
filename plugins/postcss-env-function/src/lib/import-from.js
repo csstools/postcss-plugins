@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { parse } from 'postcss-values-parser';
+import { parse } from '@csstools/postcss-plugins-values-parser';
 
 /**
  * Import Custom Properties from Object

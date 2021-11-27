@@ -12,8 +12,12 @@ export default [
 			{ file: 'dist/index.mjs', format: 'esm', sourcemap: true, exports: 'auto' },
 		],
 		external: [
-			'postcss-values-parser',
+			'@csstools/postcss-plugins-values-parser',
+			'fs',
+			'path',
+			'postcss',
 			'postcss-selector-parser',
+			'postcss-values-parser',
 		],
 		plugins: [
 			babel({
