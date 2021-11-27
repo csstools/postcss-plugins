@@ -11,17 +11,10 @@ export default [
 			{ file: 'dist/index.cjs', format: 'cjs', sourcemap: true, exports: 'auto' },
 			{ file: 'dist/index.mjs', format: 'esm', sourcemap: true, exports: 'auto' },
 		],
-		onwarn: (warning) => {
-			// Silence circular dependency warning for postcss-values-parsers package
-			if (
-				warning.code === 'CIRCULAR_DEPENDENCY' &&
-				warning.importer.indexOf('node_modules/postcss-values-parser/lib') > -1
-			) {
-				return;
-			}
-
-			console.warn(`(!) ${warning.message}`);
-		},
+		external: [
+			'postcss-values-parser',
+			'postcss-selector-parser',
+		],
 		plugins: [
 			babel({
 				babelHelpers: 'bundled',

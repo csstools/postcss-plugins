@@ -2,7 +2,7 @@
 
 [<img alt="NPM Version" src="https://img.shields.io/npm/v/postcss-env-function.svg" height="20">][npm-url]
 [<img alt="CSS Standard Status" src="https://cssdb.org/badge/environment-variables.svg" height="20">][css-url]
-[<img alt="Build Status" src="https://github.com/csstools/postcss-env-function/workflows/test/badge.svg" height="20">][cli-url]
+[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg" height="20">][cli-url]
 [<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
 [PostCSS Environment Variables] lets you use `env()` variables in CSS, following the [CSS Environment Variables] specification.
@@ -38,15 +38,7 @@ Add [PostCSS Environment Variables] to your project:
 npm install postcss postcss-env-function --save-dev
 ```
 
-Use [PostCSS Environment Variables] to process your CSS:
-
-```js
-const postcssEnvFunction = require('postcss-env-function')
-
-postcssEnvFunction.process(YOUR_CSS /*, processOptions, pluginOptions */)
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss')
@@ -137,14 +129,14 @@ See example imports written in [JS](test/import-variables.js) and [JSON](test/im
 Currently only valid [custom property names] (beginning with `--`) are accepted.
 Not all valid [declaration value names] are accepted.
 
-[cli-url]: https://github.com/csstools/postcss-env-function/actions/workflows/test.yml?query=workflow/test
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#environment-variables
 [git-url]: https://gitter.im/postcss/postcss
 [npm-url]: https://www.npmjs.com/package/postcss-env-function
 
 [CSS Environment Variables]: https://drafts.csswg.org/css-env-1/
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Environment Variables]: https://github.com/csstools/postcss-env-function
+[PostCSS Environment Variables]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-env-function
 
 [custom property names]: https://drafts.csswg.org/css-variables-1/#typedef-custom-property-name
 [declaration value names]: https://drafts.csswg.org/css-syntax-3/#typedef-declaration-value
