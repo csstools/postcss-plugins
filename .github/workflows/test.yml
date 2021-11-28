@@ -35,7 +35,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
-      - run: bash ./.github/bin/test-all-packages.sh
+      - run: bash ./.github/bin/install-and-test-all-packages.sh
 
   # Run cross platform test of the basic CLI.
   test_cli:
