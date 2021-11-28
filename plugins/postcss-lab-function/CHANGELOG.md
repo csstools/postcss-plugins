@@ -2,8 +2,8 @@
 
 ### 4.0.1 (November 18, 2021)
 
- - Added: Safeguards against postcss-values-parser potentially throwing an error.
- - Updated: postcss-value-parser to 6.0.1 (patch)
+- Added: Safeguards against postcss-values-parser potentially throwing an error.
+- Updated: postcss-value-parser to 6.0.1 (patch)
 
 ### 4.0.0 (September 17, 2021)
 
