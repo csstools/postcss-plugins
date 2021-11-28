@@ -21,7 +21,7 @@
   },
   "scripts": {
     "prepublishOnly": "npm run build && npm run test",
-    "lint": "eslint src/**/*.js",
+    "lint": "eslint src/**/*.ts",
     "test": "postcss-tape",
     "build": "rollup -c ../../rollup/default.ts.js",
     "stryker": "stryker run --logLevel error"
