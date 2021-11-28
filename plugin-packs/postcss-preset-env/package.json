@@ -4,29 +4,29 @@
   "description": "Convert modern CSS into something browsers understand",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/postcss-preset-env",
-  "homepage": "https://github.com/csstools/postcss-preset-env#readme",
-  "bugs": "https://github.com/csstools/postcss-preset-env/issues",
-  "main": "dist/index.js",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-preset-env#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "files": [
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
     "dist"
   ],
+  "bin": {
+    "postcss-preset-env": "dist/cli.mjs"
+  },
   "scripts": {
-    "build": "npx rollup -c .rollup.js",
-    "build:watch": "npx rollup -c .rollup.js --watch",
-    "lint": "npx eslint --cache src",
-    "lint:fix": "npx eslint --cache --fix",
-    "pretest": "npm install && npm run build",
-    "test": "npm run lint && npm run tape",
-    "tape": "npx postcss-tape",
-    "prepublishOnly": "npm test"
+    "prepublishOnly": "npm run build && npm run test",
+    "lint": "eslint src/**/*.js",
+    "test": "postcss-tape",
+    "build": "rollup -c ../../rollup/default.js",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
-  },
-  "peerDependencies": {
-    "postcss": "^8.3"
+    "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
     "autoprefixer": "^10.4.0",
@@ -36,7 +36,6 @@
     "css-has-pseudo": "^2.0.0",
     "css-prefers-color-scheme": "^5.0.0",
     "cssdb": "^5.0.0",
-    "postcss": "^8.3",
     "postcss-attribute-case-insensitive": "^5.0.0",
     "postcss-color-functional-notation": "^4.0.1",
     "postcss-color-hex-alpha": "^8.0.0",
@@ -65,54 +64,11 @@
     "postcss-selector-not": "^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
-    "eslint": "^8.1.0",
-    "postcss-simple-vars": "^6.0.3",
-    "postcss-tape": "^6.0.1",
-    "pre-commit": "^1.2.2",
-    "rollup": "^2.58.3",
-    "rollup-plugin-babel": "^4.4.0"
+    "postcss": "8.3.6",
+    "postcss-tape": "6.0.1"
   },
-  "babel": {
-    "presets": [
-      [
-        "@babel/env",
-        {
-          "targets": "maintained node versions"
-        }
-      ]
-    ]
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
-    },
-    "root": true
-  },
-  "rollup": {
-    "input": "src/postcss.js",
-    "plugins": [
-      "rollup-plugin-babel"
-    ],
-    "output": [
-      {
-        "exports": "default",
-        "file": "dist/index.js",
-        "format": "cjs"
-      },
-      {
-        "file": "dist/index.mjs",
-        "format": "esm"
-      }
-    ]
+  "peerDependencies": {
+    "postcss": "^8.3"
   },
   "keywords": [
     "postcss",
@@ -127,5 +83,10 @@
     "csswg",
     "future",
     "next"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugin-packs/postcss-preset-env"
+  }
 }

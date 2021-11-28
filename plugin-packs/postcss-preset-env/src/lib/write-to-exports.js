@@ -55,7 +55,7 @@ async function writeExportsToJsonFile(to, customMedia, customProperties, customS
 	const jsonContent = JSON.stringify({
 		'custom-media': customMedia,
 		'custom-properties': customProperties,
-		'custom-selectors': customSelectors
+		'custom-selectors': customSelectors,
 	}, null, '  ');
 	const json = `${jsonContent}\n`;
 
@@ -117,7 +117,7 @@ export default function writeToExports(customExports, destinations) {
 			await destination({
 				customMedia: getObjectWithStringifiedKeys(customExports.customMedia),
 				customProperties: getObjectWithStringifiedKeys(customExports.customProperties),
-				customSelectors: getObjectWithStringifiedKeys(customExports.customSelectors)
+				customSelectors: getObjectWithStringifiedKeys(customExports.customSelectors),
 			});
 		} else {
 			// read the destination as an object

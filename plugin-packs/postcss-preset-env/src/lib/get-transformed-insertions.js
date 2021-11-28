@@ -5,10 +5,10 @@ export default function getTransformedInsertions(insertions, placement) {
 			plugin => ({
 				[placement]: true,
 				plugin,
-				id
-			})
-		)
+				id,
+			}),
+		),
 	).reduce(
-		(array, feature) => array.concat(feature), []
+		(array, feature) => array.concat(feature), [],
 	);
 }
