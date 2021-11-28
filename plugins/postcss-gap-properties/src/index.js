@@ -14,7 +14,7 @@ module.exports = function creator(opts) {
 			if (gapPropertyRegExp.test(decl.prop) && decl.parent.some(isDisplayGrid)) {
 				// insert a grid-* fallback declaration
 				decl.cloneBefore({
-					prop: `grid-${decl.prop}`
+					prop: `grid-${decl.prop}`,
 				});
 
 				// conditionally remove the original declaration
@@ -22,8 +22,8 @@ module.exports = function creator(opts) {
 					decl.remove();
 				}
 			}
-		}
-	}
-}
+		},
+	};
+};
 
 module.exports.postcss = true;
