@@ -1,3 +1,3 @@
 /* global self */
-import * as cssHasPseudo from './browser';
+import { default as cssHasPseudo } from './browser';
 self.cssHasPseudo = cssHasPseudo;
