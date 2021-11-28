@@ -11,6 +11,9 @@ a, b {
 		order: 4;
 	}
 a, b {
+	order: 5;
+}
+a, b {
 	order: 1;
 }
 :is(a,b) c, :is(a,b) d {
@@ -21,4 +24,7 @@ a, b {
 }
 :is(a,b) c, :is(a,b) d {
 		order: 4;
+}
+a, b {
+	order: 5;
 }

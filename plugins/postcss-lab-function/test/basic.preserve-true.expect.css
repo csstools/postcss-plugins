@@ -78,3 +78,7 @@
 .test-unparseable-lab-function {
 	background-image: lab(; );
 }
+
+.test-unparseable-lab-function {
+	background-image: lab(; );
+}
