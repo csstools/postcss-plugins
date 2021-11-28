@@ -4,7 +4,6 @@
   "description": "Use the overflow shorthand in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "jonathantneal/postcss-overflow-shorthand",
   "homepage": "https://github.com/jonathantneal/postcss-overflow-shorthand#readme",
   "bugs": "https://github.com/jonathantneal/postcss-overflow-shorthand/issues",
   "main": "index.cjs.js",
@@ -16,15 +15,16 @@
     "index.esm.mjs.map"
   ],
   "scripts": {
-    "prepublishOnly": "npm test",
+    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
     "pretest": "rollup -c .rollup.js --silent",
     "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
     "test:ec": "echint --ignore index.*.js test",
     "test:js": "eslint *.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape"
+    "test:tape": "postcss-tape",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "peerDependencies": {
     "postcss": "^8.3"
@@ -39,20 +39,6 @@
     "pre-commit": "1.2.2",
     "rollup": "2.56.3"
   },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "impliedStrict": true,
-      "sourceType": "module"
-    },
-    "root": true
-  },
   "keywords": [
     "postcss",
     "css",
@@ -61,5 +47,10 @@
     "properties",
     "shorthands",
     "values"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "<TODO>"
+  }
 }
