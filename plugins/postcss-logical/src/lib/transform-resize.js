@@ -8,7 +8,7 @@ export default (decl, values, dir, preserve) => {
 		clean(decl, preserve);
 		return;
 	}
-}
+};
 
 function clean(decl, preserve) {
 	if (!preserve) decl.remove();

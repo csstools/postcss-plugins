@@ -2,8 +2,7 @@
 	order: 1;
 }
 
-[focus-within],
-[focus-within] test,
+[focus-within],[focus-within] test,
 test [focus-within],
 test test[focus-within],
 test [focus-within] test,

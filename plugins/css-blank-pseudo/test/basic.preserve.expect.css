@@ -2,8 +2,7 @@
 	order: 1;
 }
 
-[blank],
-[blank] test,
+[blank],[blank] test,
 test [blank],
 test test[blank],
 test [blank] test,
@@ -24,4 +23,8 @@ test :matches(test [blank] [blank] test) test {
 :ignoreblank,
 :blankignore {
 	order: 3;
+}
+
+test:not([blank]) {
+	order: 4;
 }

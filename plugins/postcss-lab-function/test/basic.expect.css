@@ -1,19 +1,50 @@
 .test-lab {
-	color: rgb(178, 34, 34);
-	color: rgb(178, 34, 34);
-	color: rgba(178, 34, 34, .5);
-	color: rgb(178, 34, 34);
-	color: rgba(178, 34, 34, 0.5);
+	color: rgb(179, 35, 35);
+	color: rgba(179, 35, 35, 1);
+	color: rgba(179, 35, 35, .5);
+	color: rgba(179, 35, 35, 1);
+	color: rgba(179, 35, 35, 0.5);
 	color: rgb(255, 216, 255);
+	color: lab(100% 50 0 foo);
 }
 
 .test-lch {
-	color: rgb(178, 34, 34);
-	color: rgb(178, 34, 34);
-	color: rgba(178, 34, 34, .5);
-	color: rgb(178, 34, 34);
-	color: rgba(178, 34, 34, 0.5);
+	color: rgb(179, 35, 35);
+	color: rgba(179, 35, 35, 1);
+	color: rgba(179, 35, 35, .5);
+	color: rgba(179, 35, 35, 1);
+	color: rgba(179, 35, 35, 0.5);
 	color: rgb(255, 216, 255);
+
+	color: rgb(118, 255, 253);
+	color: rgb(118, 255, 253);
+	color: rgb(118, 255, 253);
+	color: rgb(118, 255, 253);
+	color: rgb(118, 255, 253);
+
+	color: rgb(255, 228, 188);
+	color: rgb(255, 228, 188);
+	color: rgb(255, 228, 188);
+	color: rgb(255, 228, 188);
+	color: rgb(255, 228, 188);
+	color: lch(100% 50 0.785398unknown);
+}
+
+.test-alpha {
+	color: rgba(6, 3, 4, 1);
+	color: rgba(6, 3, 4, calc(33 / 22));
+	color: rgba(6, 3, 4, calc(20% * 5));
+	color: lch(1% 1 1 /);
+}
+
+.test-ignore {
+	prop-1: 'lch(1% 1 1 / 1)';
+	prop-2: url('lch(1% 1 1 / 1)');
+	prop-3: 'lab(40% 56.6 39)';
+}
+
+.test-high-luminance {
+	prop-1: rgb(0, 238, 255);
 }
 
 .test-unparseable-lab-function {

@@ -4,36 +4,40 @@
   "description": "Display resolution-dependent images using the image-set() function in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/postcss-image-set-function",
-  "homepage": "https://github.com/csstools/postcss-image-set-function#readme",
-  "bugs": "https://github.com/csstools/postcss-image-set-function/issues",
-  "main": "index.js",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "files": [
-    "lib/"
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
+    "dist"
   ],
+  "bin": {
+    "postcss-image-set-function": "dist/cli.mjs"
+  },
   "scripts": {
-    "prepublishOnly": "npm test",
-    "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
-    "test:js": "eslint *.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape"
+    "prepublishOnly": "npm run build && npm run test",
+    "lint": "eslint src/**/*.js",
+    "test": "postcss-tape",
+    "build": "rollup -c ../../rollup/default.ts.js",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
     "postcss-values-parser": "6.0.1"
   },
+  "devDependencies": {
+    "postcss": "8.3.6",
+    "postcss-tape": "6.0.1"
+  },
   "peerDependencies": {
     "postcss": "^8.3"
-  },
-  "devDependencies": {
-    "eslint": "^8.2.0",
-    "eslint-config-dev": "^2.0.0",
-    "postcss": "^8.3.11",
-    "postcss-tape": "^6.0.1"
-  },
-  "eslintConfig": {
-    "extends": "dev"
   },
   "keywords": [
     "postcss",
@@ -46,5 +50,10 @@
     "resolution",
     "negotiation",
     "optimization"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugins/postcss-image-set-function"
+  }
 }
