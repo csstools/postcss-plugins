@@ -2,7 +2,7 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/postcss-focus-within.svg" height="20">][npm-url]
 [<img alt="CSS Standard Status" src="https://cssdb.org/badge/focus-within-pseudo-class.svg" height="20">][css-url]
-[<img alt="Build Status" src="https://github.com/csstools/postcss-focus-within/workflows/test/badge.svg" height="20">][cli-url]
+[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/tree/main/postcss-focus-within/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="support chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
 [PostCSS Focus Within] lets you use the `:focus-within` pseudo-class in CSS,
@@ -116,7 +116,7 @@ focusWithin({ replaceWith: '.focus-within' });
 ```
 
 [css-url]: https://cssdb.org/#focus-within-pseudo-class
-[cli-url]: https://github.com/csstools/postcss-focus-within/actions/workflows/test.yml?query=workflow/test
+[cli-url]: https://github.com/csstools/postcss-plugins/tree/main/postcss-focus-within/actions/workflows/test.yml?query=workflow/test
 [git-url]: https://gitter.im/postcss/postcss
 [npm-url]: https://www.npmjs.com/package/postcss-focus-within
 
@@ -124,6 +124,6 @@ focusWithin({ replaceWith: '.focus-within' });
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Focus Within]: https://github.com/csstools/postcss-focus-within
+[PostCSS Focus Within]: https://github.com/csstools/postcss-plugins/tree/main/postcss-focus-within
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [Selectors Level 4 specification]: https://www.w3.org/TR/selectors-4/#the-focus-within-pseudo

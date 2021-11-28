@@ -44,7 +44,7 @@ function splitByRegExp(string, re, isTrimmed) {
 			buffer = '';
 			split = false;
 		} else {
-			buffer += char
+			buffer += char;
 		}
 	}
 

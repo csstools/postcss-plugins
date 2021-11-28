@@ -1,3 +1,4 @@
+/* global document,window,matchMedia */
 const colorIndexRegExp = /((?:not )?all and )?(\(color-index: *(22|48|70)\))/i;
 const prefersColorSchemeRegExp = /prefers-color-scheme:/i;
 
@@ -51,7 +52,7 @@ const prefersColorSchemeInit = initialColorScheme => {
 	const result = Object.defineProperty(
 		{ hasNativeSupport, removeListener },
 		'scheme',
-		{ get: () => currentColorScheme, set }
+		{ get: () => currentColorScheme, set },
 	);
 
 	// initialize the color scheme using the provided value, the system value, or light
@@ -61,7 +62,11 @@ const prefersColorSchemeInit = initialColorScheme => {
 
 	// listen for system changes
 	if (mediaQueryList) {
-		mediaQueryList.addListener(mediaQueryListener);
+		if ('addEventListener' in mediaQueryList) {
+			mediaQueryList.addEventListener(mediaQueryListener);
+		} else {
+			mediaQueryList.addListener(mediaQueryListener);
+		}
 	}
 
 	return result;

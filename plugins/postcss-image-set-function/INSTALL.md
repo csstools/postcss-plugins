@@ -13,15 +13,7 @@ Add [PostCSS image-set() Function] to your project:
 npm install postcss-image-set-function --save-dev
 ```
 
-Use [PostCSS image-set() Function] to process your CSS:
-
-```js
-const postcssImageSetFunction = require('postcss-image-set-function');
-
-postcssImageSetFunction.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS image-set() Function] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -166,6 +158,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS image-set() Function]: https://github.com/jonathantneal/postcss-image-set-function
+[PostCSS image-set() Function]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired
