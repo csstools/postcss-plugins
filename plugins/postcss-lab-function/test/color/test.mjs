@@ -3,7 +3,9 @@
 // ColorAid is a python package that follows the CSS specification.
 // Comparing our output to the python package gives a relatively good idea of how good we convert.
 import fs from 'fs';
-import { labToSRgb, lchToSRgb } from '../../dist/index.mjs';
+import plugin from '../../dist/index.mjs';
+const labToSRgb = plugin._labToSRgb;
+const lchToSRgb = plugin._lchToSRgb;
 
 // LAB to SRGB
 {

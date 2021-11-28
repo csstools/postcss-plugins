@@ -6,7 +6,7 @@ import onCSSFunction from './on-css-function';
 import type { PluginCreator } from 'postcss';
 
 // NOTE : Used in unit tests.
-export { labToSRgb, lchToSRgb } from './color';
+import { labToSRgb, lchToSRgb } from './color';
 
 /** Transform lab() and lch() functions in CSS. */
 const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
@@ -85,5 +85,11 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 };
 
 postcssPlugin.postcss = true;
+
+// Used by unit tests.
+// Mixing named and default export causes issues with CJS.
+// Attaching these to the default export is the best solution.
+postcssPlugin['_labToSRgb'] = labToSRgb;
+postcssPlugin['_lchToSRgb'] = lchToSRgb;
 
 export default postcssPlugin;
