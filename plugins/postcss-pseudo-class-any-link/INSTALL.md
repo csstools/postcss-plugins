@@ -14,15 +14,7 @@ Add [PostCSS Pseudo Class Any Link] to your project:
 npm install postcss-pseudo-class-any-link --save-dev
 ```
 
-Use [PostCSS Pseudo Class Any Link] to process your CSS:
-
-```js
-const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
-
-postcssPseudoClassAnyLink.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Pseudo Class Any Link] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -167,6 +159,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Pseudo Class Any Link]: https://github.com/jonathantneal/postcss-pseudo-class-any-link
+[PostCSS Pseudo Class Any Link]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

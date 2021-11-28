@@ -2,7 +2,6 @@
 
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
-[![Build Status][cli-img]][cli-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Nesting] lets you nest style rules inside each other, following the
@@ -78,8 +77,6 @@ The [CSS Nesting Module] spec states on nesting that "Declarations occuring afte
 While we think it makes sense on browsers, enforcing this at the plugin level introduces several constrains that would
 interfere with PostCSS' plugin nature such as with `@mixin`
 
-[cli-img]: https://img.shields.io/travis/csstools/postcss-nesting.svg
-[cli-url]: https://travis-ci.org/csstools/postcss-nesting
 [css-img]: https://cssdb.org/badge/nesting-rules.svg
 [css-url]: https://cssdb.org/#nesting-rules
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
@@ -89,7 +86,7 @@ interfere with PostCSS' plugin nature such as with `@mixin`
 
 [CSS Nesting]: https://drafts.csswg.org/css-nesting-1/
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Nesting]: https://github.com/jonathantneal/postcss-nesting
+[PostCSS Nesting]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting
 [Deno]: https://deno.land/x/postcss_nesting
 [PostCSS Nested]: https://github.com/postcss/postcss-nested
 [Sass]: https://sass-lang.com/
