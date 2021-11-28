@@ -60,3 +60,17 @@ jobs:
       - run: |
             npm run test --workspace="@csstools/base-cli"
             npm run test:cli --workspace="@csstools/postcss-base-plugin"
+
+  # Run Deno tests one by one
+  test_deno:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x.x
+      - run: |
+            cd plugins/postcss-nesting
+            npm install --ignore-scripts
+            npm run build
+            npm run test:deno
