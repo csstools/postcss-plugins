@@ -30,7 +30,6 @@
     "stryker": "stryker run --logLevel error"
   },
   "devDependencies": {
-    "@csstools/base-cli": "^0.1.0",
     "postcss": "^8.3.6",
     "postcss-tape": "^6.0.1"
   },
