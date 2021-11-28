@@ -15,7 +15,7 @@ import { ValuesStringifier } from './ValuesStringifier';
 
 export function parse(css, options) {
 	const input = new Input(css, options);
-	const parser = new ValuesParser(input, options);
+	const parser = new ValuesParser(input, parse, options);
 
 	parser.parse();
 

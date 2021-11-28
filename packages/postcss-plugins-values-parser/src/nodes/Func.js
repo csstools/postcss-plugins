@@ -171,11 +171,8 @@ export class Func extends Container {
 					opts = Object.assign({}, parser.options, { ignoreUnknownWords: true });
 				}
 				opts.parentNode = node;
-				// use a new parser to parse the params of the function. recursion here makes for easier maint
-				// we must require this here due to circular dependency resolution
-				// eslint-disable-next-line global-require
-				const { parse } = require('../');
-				const root = parse(params, opts);
+
+				const root = parser.parseFn(params, opts);
 				const { nodes: children } = root;
 
 				// TODO: correct line and character position (should we just pad the input? probably easiest)

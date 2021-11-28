@@ -61,10 +61,8 @@ export class Interpolation extends Container {
 		const params = brackets.slice(1, -1);
 
 		if (params.length) {
-			// use a new parser to parse the params of the function. recursion here makes for easier maint
-			// we must require this here due to circular dependency resolution
-			const { parse } = require('../'); // eslint-disable-line global-require
-			const { nodes: children } = parse(params, parser.options);
+
+			const { nodes: children } = parser.parseFn(params, parser.options);
 
 			// TODO: correct line and character position (should we just pad the input? probably easiest)
 			for (const child of children) {

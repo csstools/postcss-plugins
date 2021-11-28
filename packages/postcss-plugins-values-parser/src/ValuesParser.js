@@ -32,9 +32,10 @@ const defaults = {
 };
 
 export class ValuesParser extends Parser {
-	constructor(input, opts = {}) {
+	constructor(input, parseFn, opts = {}) {
 		super(input);
 
+		this.parseFn = parseFn;
 		this.lastNode = null;
 		this.options = Object.assign({}, defaults, opts);
 		this.parentNode = this.options.parentNode;
