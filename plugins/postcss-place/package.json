@@ -4,7 +4,6 @@
   "description": "Use a place-* shorthand for align-* and justify-* in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/postcss-place",
   "homepage": "https://github.com/csstools/postcss-place#readme",
   "bugs": "https://github.com/csstools/postcss-place/issues",
   "main": "dist/index.js",
@@ -20,10 +19,11 @@
     "pretest": "npm install && npm run build",
     "test": "npm run lint && npm run tape",
     "tape": "npx postcss-tape",
-    "prepublishOnly": "npm test"
+    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
     "postcss-values-parser": "6.0.0"
@@ -51,16 +51,6 @@
       ]
     ]
   },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "sourceType": "module"
-    }
-  },
   "keywords": [
     "postcss",
     "css",
@@ -72,5 +62,10 @@
     "aligns",
     "contents",
     "selfs"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "<TODO>"
+  }
 }

@@ -14,7 +14,7 @@ export default {
 					corejs: 3,
 					loose: true,
 					modules: false,
-					targets: { node: 10 },
+					targets: { node: 12 },
 					useBuiltIns: 'entry'
 				}]
 			]
