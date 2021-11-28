@@ -1,7 +1,6 @@
 # Prefers Color Scheme [<img src="https://jonathantneal.github.io/postcss-logo.svg" alt="" width="90" height="90" align="right">][Prefers Color Scheme]
 
 [![NPM Version][npm-img]][npm-url]
-[![Build Status][cli-img]][cli-url]
 [![Support Chat][git-img]][git-url]
 
 [Prefers Color Scheme] transforms `prefers-color-scheme` media queries into
@@ -49,22 +48,14 @@ body {
 Use [Prefers Color Scheme] to process your CSS:
 
 ```bash
-npx css-prefers-color-scheme INPUT.css OUTPUT.css
-```
-
-Or use it within Node:
-
-```js
-const postcssPrefersColorScheme = require('css-prefers-color-scheme/postcss');
-
-postcssPrefersColorScheme.process(YOUR_CSS /*, processOptions, pluginOptions */);
+npx css-prefers-color-scheme INPUT.css --output OUTPUT.css
 ```
 
 Or use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssPrefersColorScheme = require('css-prefers-color-scheme/postcss');
+const postcssPrefersColorScheme = require('css-prefers-color-scheme');
 
 postcss([
   postcssPrefersColorScheme(/* pluginOptions */)
@@ -85,7 +76,7 @@ The `preserve` option determines whether the original `prefers-color-scheme`
 query will be preserved or removed. By default, it is preserved.
 
 ```js
-require('css-prefers-color-scheme/postcss')({ preserve: false });
+require('css-prefers-color-scheme')({ preserve: false });
 ```
 
 ```css
@@ -104,12 +95,10 @@ require('css-prefers-color-scheme/postcss')({ preserve: false });
 }
 ```
 
-[cli-img]: https://img.shields.io/travis/csstools/css-prefers-color-scheme/master.svg
-[cli-url]: https://travis-ci.org/csstools/css-prefers-color-scheme
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/css-prefers-color-scheme.svg
 [npm-url]: https://www.npmjs.com/package/css-prefers-color-scheme
 
 [PostCSS]: https://github.com/postcss/postcss
-[Prefers Color Scheme]: https://github.com/csstools/css-prefers-color-scheme
+[Prefers Color Scheme]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme

@@ -129,5 +129,5 @@ const valueMap = {
 	'border-end-end-radius': { ltr: ['border-bottom-right-radius'], rtl: ['border-bottom-left-radius'] },
 	'border-end-start-radius': { ltr: ['border-bottom-left-radius'], rtl: ['border-bottom-right-radius'] },
 	'border-start-end-radius': { ltr: ['border-top-right-radius'], rtl: ['border-top-left-radius'] },
-	'border-start-start-radius': { ltr: ['border-top-left-radius'], rtl: ['border-top-right-radius'] }
+	'border-start-start-radius': { ltr: ['border-top-left-radius'], rtl: ['border-top-right-radius'] },
 };

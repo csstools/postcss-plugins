@@ -6,8 +6,7 @@
 	order: 1;
 }
 
-.css-blank,
-.css-blank test,
+.css-blank,.css-blank test,
 test .css-blank,
 test test.css-blank,
 test .css-blank test,
@@ -45,4 +44,12 @@ test :matches(test :blank :blank test) test {
 :ignoreblank,
 :blankignore {
 	order: 3;
+}
+
+test:not(.css-blank) {
+	order: 4;
+}
+
+test:not(:blank) {
+	order: 4;
 }
