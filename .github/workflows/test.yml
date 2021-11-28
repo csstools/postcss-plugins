@@ -15,7 +15,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - run: exit 0
-      # - run: npm ci --ignore-scripts
+      # - run: npm install --ignore-scripts
       # - run: npm run build --workspaces --if-present
       # - run: npm run lint --workspaces --if-present
       # - run: npm run test --workspaces --if-present
@@ -32,7 +32,7 @@ jobs:
           node-version: 16
 
       - run: exit 0
-      # - run: npm ci --ignore-scripts
+      # - run: npm install --ignore-scripts
       # - run: npm run build --workspaces --if-present
 
       - uses: actions/setup-node@v2
@@ -54,10 +54,12 @@ jobs:
         with:
           node-version: 16
 
-      - run: exit 0
-      # - run: npm ci --ignore-scripts
+      - run: npm install --ignore-scripts
       # - run: npm run build --workspaces --if-present
 
-      # - run: |
-      #     npm run build --workspace="@csstools/base-cli" --workspace="@csstools/postcss-base-plugin"
-      #     npm run test --workspace="@csstools/base-cli" --workspace="@csstools/postcss-base-plugin"
+      - run: |
+            npm run build --workspace="@csstools/base-cli" --workspace="@csstools/postcss-base-plugin"
+            # running install places the cli in node_modules/bin
+            npm install
+            npm run test --workspace="@csstools/base-cli"
+            npm run test:cli --workspace="@csstools/postcss-base-plugin"

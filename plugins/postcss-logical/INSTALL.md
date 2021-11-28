@@ -14,15 +14,7 @@ Add [PostCSS Logical Properties and Values] to your project:
 npm install postcss-logical --save-dev
 ```
 
-Use [PostCSS Logical Properties and Values] to process your CSS:
-
-```js
-const postcssLogical = require('postcss-logical');
-
-postcssLogical.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Logical Properties and Values] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -167,6 +159,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Logical Properties and Values]: https://github.com/csstools/postcss-logical
+[PostCSS Logical Properties and Values]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

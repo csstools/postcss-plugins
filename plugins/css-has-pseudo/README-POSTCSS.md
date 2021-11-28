@@ -1,7 +1,6 @@
 # CSS Has Pseudo for PostCSS [<img src="http://jonathantneal.github.io/postcss-logo.svg" alt="" width="90" height="90" align="right">][CSS Has Pseudo]
 
 [![NPM Version][npm-img]][npm-url]
-[![Build Status][cli-img]][cli-url]
 [![Support Chat][git-img]][git-url]
 
 [CSS Has Pseudo] lets you style elements relative to other elements in CSS,
@@ -38,7 +37,7 @@ npm install css-has-pseudo --save-dev
 Use [CSS Has Pseudo] to process your CSS:
 
 ```js
-const postcssHasPseudo = require('css-has-pseudo/postcss');
+const postcssHasPseudo = require('css-has-pseudo');
 
 postcssHasPseudo.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
@@ -47,7 +46,7 @@ Or use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssHasPseudo = require('css-has-pseudo/postcss');
+const postcssHasPseudo = require('css-has-pseudo');
 
 postcss([
   postcssHasPseudo(/* pluginOptions */)
@@ -83,12 +82,10 @@ body[\:has\(\:focus\)] {
 }
 ```
 
-[cli-img]: https://img.shields.io/travis/csstools/css-has-pseudo/master.svg
-[cli-url]: https://travis-ci.org/csstools/css-has-pseudo
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/css-has-pseudo.svg
 [npm-url]: https://www.npmjs.com/package/css-has-pseudo
 
-[CSS Has Pseudo]: https://github.com/csstools/css-has-pseudo
+[CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
 [Selectors Level 4]: https://drafts.csswg.org/selectors-4/#has-pseudo
