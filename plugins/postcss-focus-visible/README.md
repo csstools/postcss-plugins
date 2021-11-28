@@ -115,7 +115,7 @@ focusVisible({ replaceWith: '[focus-visible]' });
 }
 ```
 
-[cli-url]: https://github.com/csstools/postcss-focus-visible/actions/workflows/test.yml?query=workflow/test
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#focus-visible-pseudo-class
 [git-url]: https://gitter.im/postcss/postcss
 [npm-url]: https://www.npmjs.com/package/postcss-focus-visible
@@ -124,6 +124,6 @@ focusVisible({ replaceWith: '[focus-visible]' });
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Focus Visible]: https://github.com/csstools/postcss-focus-visible
+[PostCSS Focus Visible]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-visible
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [Selectors Level 4 specification]: https://www.w3.org/TR/selectors-4/#the-focus-visible-pseudo
