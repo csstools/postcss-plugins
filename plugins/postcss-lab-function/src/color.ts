@@ -40,7 +40,7 @@ function lab2xyz(lab: [number, number, number], clamp : boolean): [number, numbe
 		labA = Math.min(
 			Math.max(
 				labARaw,
-				-128,
+				-127,
 			),
 			128,
 		);
@@ -48,7 +48,7 @@ function lab2xyz(lab: [number, number, number], clamp : boolean): [number, numbe
 		labB = Math.min(
 			Math.max(
 				labBRaw,
-				-128,
+				-127,
 			),
 			128,
 		);

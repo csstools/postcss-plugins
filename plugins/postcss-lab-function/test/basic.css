@@ -32,8 +32,8 @@
 
 .test-alpha {
 	color: lch(1% 1 1 / 1);
-	color: lch(1% 1 1 / calc( 33 / 22 ));
-	color: lch(1% 1 1 / calc( 20% * 5 ));
+	color: lch(1% 1 1 / calc(33 / 22));
+	color: lch(1% 1 1 / calc(20% * 5));
 	color: lch(1% 1 1 /);
 }
 
@@ -45,10 +45,6 @@
 
 .test-high-luminance {
 	prop-1: lch(100% 210 285);
-}
-
-.test-unparseable-lab-function {
-	background-image: lab(; );
 }
 
 .test-unparseable-lab-function {

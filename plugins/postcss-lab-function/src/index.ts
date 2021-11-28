@@ -5,6 +5,9 @@ import onCSSFunction from './on-css-function';
 
 import type { PluginCreator } from 'postcss';
 
+// NOTE : Used in unit tests.
+export { labToSRgb, lchToSRgb } from './color';
+
 /** Transform lab() and lch() functions in CSS. */
 const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;

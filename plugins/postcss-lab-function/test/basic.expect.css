@@ -32,8 +32,8 @@
 
 .test-alpha {
 	color: rgba(6, 3, 4, 1);
-	color: rgba(6, 3, 4, calc( 33 / 22 ));
-	color: rgba(6, 3, 4, calc( 20% * 5 ));
+	color: rgba(6, 3, 4, calc(33 / 22));
+	color: rgba(6, 3, 4, calc(20% * 5));
 	color: lch(1% 1 1 /);
 }
 
@@ -45,10 +45,6 @@
 
 .test-high-luminance {
 	prop-1: rgb(0, 238, 255);
-}
-
-.test-unparseable-lab-function {
-	background-image: lab(; );
 }
 
 .test-unparseable-lab-function {

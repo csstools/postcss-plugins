@@ -4,8 +4,8 @@
   "description": "Use lab() and lch() color functions in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/csstools/postcss-lab-function#readme",
-  "bugs": "https://github.com/csstools/postcss-lab-function/issues",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -22,9 +22,10 @@
   "scripts": {
     "prepublishOnly": "npm run build --if-present && npm run test --if-present",
     "lint": "eslint src/**/*.ts",
-    "test": "postcss-tape",
+    "test": "node ./test/color/test.mjs && postcss-tape",
     "build": "rollup -c ../../rollup/default.ts.js",
-    "stryker": "stryker run --logLevel error"
+    "stryker": "stryker run --logLevel error",
+    "generate-color-corpus": "python3 ./test/color/generate.py"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
