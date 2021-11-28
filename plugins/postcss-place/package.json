@@ -4,62 +4,39 @@
   "description": "Use a place-* shorthand for align-* and justify-* in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/postcss-place",
-  "homepage": "https://github.com/csstools/postcss-place#readme",
-  "bugs": "https://github.com/csstools/postcss-place/issues",
-  "main": "dist/index.js",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "files": [
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
     "dist"
   ],
+  "bin": {
+    "postcss-place": "dist/cli.mjs"
+  },
   "scripts": {
-    "build": "npx rollup -c .rollup.js",
-    "build:watch": "npx rollup -c .rollup.js --watch",
-    "lint": "npx eslint --cache src",
-    "lint:fix": "npx eslint --cache --fix",
-    "pretest": "npm install && npm run build",
-    "test": "npm run lint && npm run tape",
-    "tape": "npx postcss-tape",
-    "prepublishOnly": "npm test"
+    "prepublishOnly": "npm run build && npm run test",
+    "lint": "eslint src/**/*.js",
+    "test": "postcss-tape",
+    "build": "rollup -c ../../rollup/default.js",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
     "postcss-values-parser": "6.0.1"
   },
+  "devDependencies": {
+    "postcss": "8.3.6",
+    "postcss-tape": "6.0.1"
+  },
   "peerDependencies": {
     "postcss": "^8.3"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
-    "@rollup/plugin-babel": "^5.3.0",
-    "eslint": "^8.2.0",
-    "postcss": "^8.3.11",
-    "postcss-tape": "^6.0.1",
-    "pre-commit": "^1.2.2",
-    "rollup": "^2.60.0"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/env",
-        {
-          "targets": "maintained node versions"
-        }
-      ]
-    ]
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "sourceType": "module"
-    }
   },
   "keywords": [
     "postcss",
@@ -72,5 +49,10 @@
     "aligns",
     "contents",
     "selfs"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugins/postcss-place"
+  }
 }
