@@ -22,7 +22,20 @@ module.exports = function creator(opts) {
 
 				// if a declaration likely uses an image-set() function
 				if (imageSetValueMatchRegExp.test(value)) {
-					const valueAST = parse(value);
+					let valueAST
+
+					try {
+						valueAST = parse(value, { ignoreUnknownWords: true })
+					} catch (error) {
+						decl.warn(
+							helpers.result,
+							`Failed to parse value '${value}' as an image-set function. Leaving the original value intact.`
+						)
+					}
+
+					if (typeof valueAST === 'undefined') {
+						return
+					}
 
 					// process every image-set() function
 					valueAST.walkFuncs(node => {
