@@ -22,7 +22,7 @@
   "scripts": {
     "prepublishOnly": "npm run build && npm run test",
     "lint": "eslint src/**/*.ts",
-    "test": "postcss-tape",
+    "test": "postcss-tape --ci",
     "build": "rollup -c ../../rollup/default.ts.js",
     "stryker": "stryker run --logLevel error"
   },

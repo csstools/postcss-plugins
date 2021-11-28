@@ -24,7 +24,7 @@
   "scripts": {
     "prepublishOnly": "npm run build --if-present && npm run test --if-present",
     "lint": "eslint src/**/*.ts",
-    "test": "postcss-tape",
+    "test": "postcss-tape --ci",
     "test:cli": "bash ./test/cli/test.sh",
     "build": "rollup -c ../../rollup/default.ts.js",
     "stryker": "stryker run --logLevel error"
