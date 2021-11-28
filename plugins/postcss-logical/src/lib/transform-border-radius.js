@@ -24,13 +24,13 @@ export default (decl, values, dir, preserve) => {
 
 function lDecl(decl) {
 	return decl.cloneBefore({
-		prop: decl.prop.replace(logicalRadii, ($, prefix, direction, suffix) => `${prefix}${ltrRadii[direction]}${suffix}`)
+		prop: decl.prop.replace(logicalRadii, ($, prefix, direction, suffix) => `${prefix}${ltrRadii[direction]}${suffix}`),
 	});
 }
 
 function rDecl(decl) {
 	return decl.cloneBefore({
-		prop: decl.prop.replace(logicalRadii, ($, prefix, direction, suffix) => `${prefix}${rtlRadii[direction]}${suffix}`)
+		prop: decl.prop.replace(logicalRadii, ($, prefix, direction, suffix) => `${prefix}${rtlRadii[direction]}${suffix}`),
 	});
 }
 
