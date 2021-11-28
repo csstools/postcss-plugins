@@ -7,11 +7,11 @@ export default {
 	'border-block': (decl, values, dir, preserve) => {
 		decl.cloneBefore({
 			prop: `border-top${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
-			value: values[0]
+			value: values[0],
 		});
 		decl.cloneBefore({
 			prop: `border-bottom${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
-			value: values[1] || values[0]
+			value: values[1] || values[0],
 		});
 		clean(decl, preserve);
 	},
@@ -38,12 +38,12 @@ export default {
 			return [
 				decl.cloneBefore({
 					prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
-					value: values[0]
+					value: values[0],
 				}),
 				decl.cloneBefore({
 					prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
-					value: values[1] || values[0]
-				})
+					value: values[1] || values[0],
+				}),
 			];
 		};
 
@@ -51,12 +51,12 @@ export default {
 			return [
 				decl.clone({
 					prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
-					value: values[0]
+					value: values[0],
 				}),
 				decl.clone({
 					prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
-					value: values[1] || values[0]
-				})
+					value: values[1] || values[0],
+				}),
 			];
 		};
 
@@ -81,13 +81,13 @@ export default {
 	'border-inline-start': (decl, values, dir, preserve) => {
 		const ltrDecl = () => {
 			return decl.cloneBefore({
-				prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`
+				prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			});
 		};
 
 		const rtlDecl = () => {
 			return decl.cloneBefore({
-				prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`
+				prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			});
 		};
 
@@ -111,13 +111,13 @@ export default {
 	'border-inline-end': (decl, values, dir, preserve) => {
 		const ltrDecl = () => {
 			return decl.cloneBefore({
-				prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`
+				prop: `border-right${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			});
 		};
 
 		const rtlDecl = () => {
 			return decl.cloneBefore({
-				prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`
+				prop: `border-left${decl.prop.replace(matchLogicalBorderSide, '$2')}`,
 			});
 		};
 
@@ -135,7 +135,7 @@ export default {
 			clean(decl, preserve);
 			return;
 		}
-	}
+	},
 };
 
 function clean(decl, preserve) {

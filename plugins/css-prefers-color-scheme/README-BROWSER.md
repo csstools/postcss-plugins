@@ -1,7 +1,6 @@
 # Prefers Color Scheme [<img src="https://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][Prefers Color Scheme]
 
 [![NPM Version][npm-img]][npm-url]
-[![Build Status][cli-img]][cli-url]
 [![Support Chat][git-img]][git-url]
 
 [Prefers Color Scheme] applies color schemes with fallbacks provided by the
@@ -9,7 +8,7 @@
 
 ```js
 // initialize prefersColorScheme (applies the current OS color scheme, if available)
-const prefersColorScheme = require('css-prefers-color-scheme')();
+const prefersColorScheme = require('css-prefers-color-scheme/browser')();
 
 // apply "dark" queries (you can also apply "light")
 prefersColorScheme.scheme = 'dark';
@@ -29,7 +28,7 @@ experience, even when JavaScript is unable to run.
 Use [Prefers Color Scheme] to activate your `prefers-color-scheme` queries:
 
 ```js
-const prefersColorScheme = require('css-prefers-color-scheme')();
+const prefersColorScheme = require('css-prefers-color-scheme/browser')();
 ```
 
 By default, the current OS color scheme is applied if your browser supports it.
@@ -37,7 +36,7 @@ Otherwise, the light color scheme is applied. You may override this by passing
 in a color scheme.
 
 ```js
-const prefersColorScheme = require('css-prefers-color-scheme')('dark');
+const prefersColorScheme = require('css-prefers-color-scheme/browser')('dark');
 ```
 
 The `prefersColorScheme` object returns the following properties — `value`,
@@ -49,7 +48,7 @@ The `value` property returns the currently preferred color scheme, and it can
 be changed.
 
 ```js
-const prefersColorScheme = require('css-prefers-color-scheme')();
+const prefersColorScheme = require('css-prefers-color-scheme/browser')();
 
 // log the preferred color scheme
 console.log(prefersColorScheme.scheme);
@@ -74,12 +73,25 @@ The `removeListener` function removes the native `prefers-color-scheme`
 listener, which may or may not be applied, depending on your browser support.
 This is provided to give you complete control over plugin cleanup.
 
-[cli-img]: https://img.shields.io/travis/csstools/css-prefers-color-scheme/master.svg
-[cli-url]: https://travis-ci.org/csstools/css-prefers-color-scheme
+## Dependencies
+
+Web API's:
+
+- [Window.matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
+
+ECMA Script:
+
+- `Object.defineProperty`
+- `Array.prototype.forEach`
+- `Array.prototype.indexOf`
+- `RegExp.prototype.exec`
+- `String.prototype.match`
+- `String.prototype.replace`
+
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/css-prefers-color-scheme.svg
 [npm-url]: https://www.npmjs.com/package/css-prefers-color-scheme
 
 [PostCSS]: https://github.com/postcss/postcss
-[Prefers Color Scheme]: https://github.com/csstools/css-prefers-color-scheme
+[Prefers Color Scheme]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme

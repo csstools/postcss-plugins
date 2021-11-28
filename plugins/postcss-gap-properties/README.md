@@ -41,15 +41,7 @@ Add [PostCSS Gap Properties] to your project:
 npm install postcss postcss-gap-properties --save-dev
 ```
 
-Use [PostCSS Gap Properties] to process your CSS:
-
-```js
-import postcssGapProperties from 'postcss-gap-properties';
-
-postcssGapProperties.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Gap Properties] as a [PostCSS] plugin:
 
 ```js
 import postcss from 'postcss';
@@ -74,8 +66,8 @@ remain in the CSS. By default, the original declaration is preserved.
 
 [css-img]: https://cssdb.org/badge/gap-properties.svg
 [css-url]: https://cssdb.org/#gap-properties
-[cli-img]: https://github.com/csstools/postcss-gap-properties/workflows/test/badge.svg
-[cli-url]: https://github.com/csstools/postcss-gap-properties/actions/workflows/test.yml?query=workflow/test
+[cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-gap-properties.svg
@@ -86,4 +78,4 @@ remain in the CSS. By default, the original declaration is preserved.
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Gap Properties]: https://github.com/jonathantneal/postcss-gap-properties
+[PostCSS Gap Properties]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gap-properties

@@ -29,8 +29,8 @@ function postcssLogicalProperties(opts) {
 			if (!parent.nodes.length) {
 				parent.remove();
 			}
-		}
-	}
+		};
+	};
 
 	const makeTransformWithoutSplittingValues = (transform) => {
 		return (decl) => {
@@ -40,8 +40,8 @@ function postcssLogicalProperties(opts) {
 			if (!parent.nodes.length) {
 				parent.remove();
 			}
-		}
-	}
+		};
+	};
 
 	return {
 		postcssPlugin: 'postcss-logical-properties',
@@ -126,8 +126,8 @@ function postcssLogicalProperties(opts) {
 
 			// Transition helpers
 			'transition': makeTransform(transformTransition),
-			'transition-property': makeTransform(transformTransition)
-		}
+			'transition-property': makeTransform(transformTransition),
+		},
 	};
 }
 postcssLogicalProperties.postcss = true;

@@ -1,5 +1,17 @@
 # Changes to PostCSS Double Position Gradients
 
+### 3.0.1 (November 18, 2021)
+
+- Added: Safeguards against postcss-values-parser potentially throwing an error.
+
+- Fixed: Issue with some gradients creating an infinite loop.
+
+- Updated: `postcss-value-parser` to 6.0.1 (patch)
+- Updated: `eslint` to 8.2.0 (major)
+- Updated: `postcss` to 8.3.11 (patch)
+
+- Removed: yarn.lock is no longer version controlled
+
 ### 3.0.0 (September 17, 2021)
 
 - Updated: Support for PostCS 8+ (major).

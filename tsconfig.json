@@ -2,8 +2,8 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "allowJs": false,
-    "target": "es6",
-    "lib": ["es6"],
+    "target": "es2020",
+    "lib": ["es2020"],
     "allowSyntheticDefaultImports": true,
     "module": "es6",
     "declaration": true
