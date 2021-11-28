@@ -1,5 +1,5 @@
 // !Important :
-// We can't unit this in a vacuum.
+// We can't unit test this in a vacuum.
 // ColorAid is a python package that follows the CSS specification.
 // Comparing our output to the python package gives a relatively good idea of how good we convert.
 import fs from 'fs';
