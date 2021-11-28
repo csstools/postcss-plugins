@@ -4,40 +4,36 @@
   "description": "Use the overflow shorthand in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/jonathantneal/postcss-overflow-shorthand#readme",
-  "bugs": "https://github.com/jonathantneal/postcss-overflow-shorthand/issues",
-  "main": "index.cjs.js",
-  "module": "index.es.mjs",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
   "files": [
-    "index.cjs.js",
-    "index.cjs.js.map",
-    "index.esm.mjs",
-    "index.esm.mjs.map"
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
+    "dist"
   ],
+  "bin": {
+    "postcss-overflow-shorthand": "dist/cli.mjs"
+  },
   "scripts": {
-    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
-    "pretest": "rollup -c .rollup.js --silent",
-    "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
-    "test:ec": "echint --ignore index.*.js test",
-    "test:js": "eslint *.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape",
+    "prepublishOnly": "npm run build && npm run test",
+    "lint": "eslint src/**/*.js",
+    "test": "postcss-tape",
+    "build": "rollup -c ../../rollup/default.js",
     "stryker": "stryker run --logLevel error"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
+  "devDependencies": {
+    "postcss": "8.3.6",
+    "postcss-tape": "6.0.1"
+  },
   "peerDependencies": {
     "postcss": "^8.3"
-  },
-  "devDependencies": {
-    "@babel/core": "7.15.5",
-    "@babel/preset-env": "7.15.6",
-    "@rollup/plugin-babel": "5.3.0",
-    "eslint": "7.32.0",
-    "postcss": "8.3.6",
-    "postcss-tape": "6.0.1",
-    "pre-commit": "1.2.2",
-    "rollup": "2.56.3"
   },
   "keywords": [
     "postcss",
@@ -51,6 +47,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "<TODO>"
+    "directory": "plugins/postcss-overflow-shorthand"
   }
 }
