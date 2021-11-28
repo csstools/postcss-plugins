@@ -1,11 +1,11 @@
 module.exports = {
 	'basic': {
 		message: 'supports basic usage',
-		warnings: 1,
+		warnings: 2,
 	},
 	'basic:preserve-true': {
 		message: 'supports { preserve: true } usage',
-		warnings: 1,
+		warnings: 2,
 		options: {
 			preserve: true
 		}

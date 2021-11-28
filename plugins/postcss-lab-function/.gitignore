@@ -1,6 +1,13 @@
 node_modules
+dist
 package-lock.json
 yarn.lock
+*.log*
 *.result.css
 *.result.css.map
-dist/*
+!.editorconfig
+!.gitignore
+!.rollup.js
+!.tape.js
+!.travis.yml
+!.github
