@@ -1,4 +1,4 @@
-import { comma } from './list.js'
+import { comma } from './list.js';
 
 export default function mergeParams(fromParams, toParams) {
 	return comma(fromParams)
@@ -7,5 +7,5 @@ export default function mergeParams(fromParams, toParams) {
 				.map((params2) => `${params1} and ${params2}`)
 				.join(', '),
 		)
-		.join(', ')
+		.join(', ');
 }
