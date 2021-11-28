@@ -10,12 +10,12 @@ function onCSSDeclaration(postcssList, decl, preserve) {
 		// insert the overflow-* longhand declarations
 		decl.cloneBefore({
 			prop: `${decl.prop}-x`,
-			value: overflowX
+			value: overflowX,
 		});
 
 		decl.cloneBefore({
 			prop: `${decl.prop}-y`,
-			value: overflowY
+			value: overflowY,
 		});
 
 		// conditionally remove the original declaration
@@ -35,9 +35,9 @@ const creator = opts => {
 				onCSSDeclaration(list, decl, preserve);
 			}
 		},
-	}
+	};
 };
 
-creator.postcss = true
+creator.postcss = true;
 
-export default creator
+export default creator;
