@@ -13,15 +13,7 @@ Add [PostCSS Nesting] to your project:
 npm install postcss-nesting --save-dev
 ```
 
-Use [PostCSS Nesting] to process your CSS:
-
-```js
-import postcssNesting from 'postcss-nesting';
-
-postcssNesting.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Nesting] as a [PostCSS] plugin:
 
 ```js
 import postcss from 'postcss';
@@ -166,7 +158,7 @@ You can also use [PostCSS Nesting] on [Deno]:
 
 ```js
 import postcss from "https://deno.land/x/postcss/mod.js";
-import postcssNesting from "https://deno.land/x/postcss_nesting/mod.js";
+import postcssNesting from "https://cdn.jsdelivr.net/npm/postcss-nesting@10/mod.js";
 
 await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
 ```
@@ -176,7 +168,7 @@ await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Nesting]: https://github.com/jonathantneal/postcss-nesting
+[PostCSS Nesting]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired
 [Deno]: https://deno.land/x/postcss_nesting
