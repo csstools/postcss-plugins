@@ -3,7 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import path from 'path';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { packageBabelPreset } from '../configs/babel-presets';
-import { externalsForPlugin } from '../configs/externals';
+import { externalsForDeno } from '../configs/externals';
 
 export function denoJavascript() {
 	return [
@@ -12,7 +12,7 @@ export function denoJavascript() {
 			output: [
 				{ file: 'dist/index.deno.mjs', format: 'esm', sourcemap: true, exports: 'default' },
 			],
-			external: externalsForPlugin,
+			external: externalsForDeno,
 			plugins: [
 				commonjs(),
 				nodeResolve({
