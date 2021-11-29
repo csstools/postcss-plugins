@@ -1,0 +1,129 @@
+name: '🐞 Unexpected CSS output report'
+description: CSS output isn't what you expected? This is your path!
+body:
+  - type: markdown
+    attributes:
+      value:  Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: descr
+    attributes:
+      label: Bug description
+      description: What's the bug?
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source CSS
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected CSS
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual CSS
+    validations:
+      required: true
+  - type: dropdown
+    id: npx
+    attributes:
+      label: Does it happen with `npx <plugin-name> minimal-example.css`?
+      multiple: false
+      options:
+        - Yes
+        - No
+        - N/A
+  - type: textarea
+    id: config
+    attributes:
+      label: Extra config
+      description: If you have external plugins and/or config that could be causing this issue to happen we would love to know!
+    validations:
+      required: false
+  - type: dropdown
+    id: plugin
+    attributes:
+      label: What plugin are you experiencing this issue on?
+      multiple: true
+      options:
+        - PostCSS Preset Env
+        - CSS All Property
+        - CSS Blank Pseudo
+        - CSS Has Pseudo
+        - CSS Prefers Color Scheme
+        - PostCSS Attribute Case Insensitive
+        - PostCSS Color Functional Notation
+        - PostCSS Color Hex Alpha
+        - PostCSS Color Mod Function
+        - PostCSS Custom Media Queries
+        - PostCSS Custom Properties
+        - PostCSS Custom Selectors
+        - PostCSS Dir Pseudo Class
+        - PostCSS Double Position Gradients
+        - PostCSS Env Function
+        - PostCSS Focus Visible
+        - PostCSS Focus Within
+        - PostCSS Font Variant
+        - PostCSS Gap Properties
+        - PostCSS Image Set Function
+        - PostCSS Lab Function
+        - PostCSS Logical
+        - PostCSS Media Query Ranges
+        - PostCSS Nesting
+        - PostCSS Overflow Shorthand
+        - PostCSS Page Break
+        - PostCSS Place
+        - PostCSS Pseudo Class Any Link
+        - PostCSS Rebeccapurple
+        - PostCSS Replace Overflow Wrap
+        - PostCSS Selector Not
+        - PostCSS System Ui Font Family
+        - PostCSS Plugins Values Parser
+  - type: input
+    id: version
+    attributes:
+      label: Plugin version
+      description: Exact release version or commit hash
+      placeholder: e.g 7.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: What OS are you experiencing this on?
+      multiple: true
+      options:
+        - Linux
+        - macOS
+        - Windows
+  - type: input
+    id: node
+    attributes:
+      label: Node Version
+      description: Version of Node where you're experiencing this issue on
+      placeholder: eg 12.0.0
+    validations:
+      required: true
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: Validations
+      description: Before submitting the issue, please make sure you do the following
+      options:
+        - label: Follow our [Code of Conduct](https://github.com/csstools/postcss-plugins/blob/master/CODE_OF_CONDUCT.md)
+          required: true
+        - label: Check that there isn't already an issue that request the same feature to avoid creating a duplicate.
+          required: true
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: Would you like to open a PR for this bug?
+      description: Before starting to work on PR it is recommended to get maintainers approval
+      options:
+        - label: I'm willing to open a PR
+          required: false
