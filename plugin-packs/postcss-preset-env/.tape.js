@@ -83,7 +83,7 @@ module.exports = {
 			},
 			insertBefore: {
 				'color-mod-function': [
-					require('postcss-simple-vars')
+					require('postcss-simple-vars')()
 				]
 			}
 		}
@@ -93,7 +93,7 @@ module.exports = {
 		options: {
 			stage: 1,
 			insertAfter: {
-				'color-mod-function': require('postcss-simple-vars')
+				'color-mod-function': require('postcss-simple-vars')()
 			}
 		},
 	},
@@ -113,7 +113,7 @@ module.exports = {
 			stage: 1,
 			insertAfter: {
 				'color-mod-function': [
-					require('postcss-simple-vars')
+					require('postcss-simple-vars')()
 				]
 			},
 			features: {

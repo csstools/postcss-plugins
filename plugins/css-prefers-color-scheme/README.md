@@ -22,7 +22,7 @@ Next, use that transformed CSS with this script:
 
 ```html
 <link rel="stylesheet" href="TRANSFORMED.css">
-<script src="https://unpkg.com/css-prefers-color-scheme/browser.min"></script>
+<script src="https://unpkg.com/css-prefers-color-scheme/dist/browser-global.js"></script>
 <script>
 colorScheme = initPrefersColorScheme('dark') // apply "dark" queries (you can change it afterward, too)
 </script>
@@ -74,13 +74,13 @@ The value of `48` is chosen for dark mode because it is the keycode for `0`,
 the hexidecimal value of black. Likewise, `70` is chosen for light mode because
 it is the keycode for `f`, the hexidecimal value of white.
 
-[cli-img]: https://github.com/csstools/css-prefers-color-scheme/workflows/test/badge.svg
-[cli-url]: https://github.com/csstools/css-prefers-color-scheme/actions/workflows/test.yml?query=workflow/test
+[cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/css-prefers-color-scheme.svg
 [npm-url]: https://www.npmjs.com/package/css-prefers-color-scheme
 
 [PostCSS]: https://github.com/postcss/postcss
-[Prefers Color Scheme]: https://github.com/csstools/css-prefers-color-scheme
+[Prefers Color Scheme]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme
 [Media Queries]: https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-scheme

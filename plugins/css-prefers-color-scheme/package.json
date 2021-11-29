@@ -4,69 +4,49 @@
   "description": "Use light and dark color schemes in all browsers",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/css-prefers-color-scheme",
-  "homepage": "https://github.com/csstools/css-prefers-color-scheme#readme",
-  "bugs": "https://github.com/csstools/css-prefers-color-scheme/issues",
-  "main": "index.js",
-  "module": "index.mjs",
-  "bin": {
-    "css-prefers-color-scheme": "cli.js"
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    },
+    "./browser": {
+      "default": "./dist/browser.js"
+    },
+    "./browser-global": {
+      "default": "./dist/browser-global.js"
+    }
   },
   "files": [
-    "browser.js",
-    "browser.js.map",
-    "browser.min.js",
-    "cli.js",
-    "index.mjs",
-    "index.mjs.map",
-    "index.js",
-    "index.js.map",
-    "postcss.js",
-    "postcss.mjs"
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
+    "dist"
   ],
+  "bin": {
+    "css-prefers-color-scheme": "dist/cli.mjs"
+  },
   "scripts": {
-    "build": "npm run build:browser && npm run build:node && npm run build:postcss",
-    "build:browser": "npm run build:browser:dist && npm run build:browser:min",
-    "build:browser:dist": "cross-env NODE_ENV=browser rollup --config .rollup.js --silent",
-    "build:browser:min": "cross-env NODE_ENV=browser:min rollup --config .rollup.js --silent",
-    "build:node": "rollup --config .rollup.js --silent",
-    "build:postcss": "cross-env NODE_ENV=postcss rollup --config .rollup.js --silent",
-    "prepublishOnly": "npm test",
-    "pretest": "npm run build",
-    "test": "npm run test:js && npm run test:tape",
-    "test:js": "eslint src/{*,**/*}.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape --plugin postcss.js"
+    "prepublishOnly": "npm run build && npm run test",
+    "lint": "eslint src/**/*.js",
+    "test": "postcss-tape --ci",
+    "build": "rollup -c ../../rollup/default-with-browser.js",
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
+  },
+  "devDependencies": {
+    "postcss": "^8.3.6",
+    "postcss-tape": "^6.0.1"
   },
   "peerDependencies": {
     "postcss": "^8.3"
-  },
-  "devDependencies": {
-    "@babel/core": "7.15.5",
-    "@babel/preset-env": "7.15.6",
-    "@rollup/plugin-babel": "5.3.0",
-    "cross-env": "7.0.3",
-    "eslint": "7.32.0",
-    "postcss": "8.3.6",
-    "postcss-tape": "6.0.1",
-    "pre-commit": "1.2.2",
-    "rollup": "2.56.3",
-    "rollup-plugin-terser": "7.0.2"
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
-    },
-    "root": true
   },
   "keywords": [
     "postcss",
@@ -83,5 +63,10 @@
     "mode",
     "queries",
     "interface"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugins/css-prefers-color-scheme"
+  }
 }

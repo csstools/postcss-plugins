@@ -1,5 +1,5 @@
 import postcssAttributeCaseInsensitive from 'postcss-attribute-case-insensitive';
-import postcssBlankPseudo from 'css-blank-pseudo/postcss';
+import postcssBlankPseudo from 'css-blank-pseudo';
 import postcssColorFunctionalNotation from 'postcss-color-functional-notation';
 import postcssColorHexAlpha from 'postcss-color-hex-alpha';
 import postcssColorRebeccapurple from 'postcss-color-rebeccapurple';
@@ -14,7 +14,7 @@ import postcssFocusWithin from 'postcss-focus-within';
 import postcssFontVariant from 'postcss-font-variant';
 import postcssFontFamilySystemUi from '../patch/postcss-system-ui-font-family';
 import postcssGapProperties from 'postcss-gap-properties';
-import postcssHasPseudo from 'css-has-pseudo/postcss';
+import postcssHasPseudo from 'css-has-pseudo';
 import postcssImageSetPolyfill from 'postcss-image-set-function';
 import postcssInitial from 'postcss-initial';
 import postcssLabFunction from 'postcss-lab-function';
@@ -24,7 +24,7 @@ import postcssNesting from 'postcss-nesting';
 import postcssOverflowShorthand from 'postcss-overflow-shorthand';
 import postcssPageBreak from 'postcss-page-break';
 import postcssPlace from 'postcss-place';
-import postcssPrefersColorScheme from 'css-prefers-color-scheme/postcss';
+import postcssPrefersColorScheme from 'css-prefers-color-scheme';
 import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
 import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
 import postcssSelectorNot from 'postcss-selector-not';
@@ -60,5 +60,5 @@ export default {
 	'place-properties': postcssPlace,
 	'prefers-color-scheme-query': postcssPrefersColorScheme,
 	'rebeccapurple-color': postcssColorRebeccapurple,
-	'system-ui-font-family': postcssFontFamilySystemUi
+	'system-ui-font-family': postcssFontFamilySystemUi,
 };

@@ -1,0 +1,12 @@
+name: Issue Auto Labeler
+on:
+  issues:
+    types: ['opened']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Renato66/auto-label@v2 # or v2.1.5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          labels-not-allowed: '["bug","common-tools","duplicate","good first issue","help wanted","invalid","wontfix"]'
