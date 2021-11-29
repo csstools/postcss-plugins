@@ -59,10 +59,10 @@ export const processImageSet = (imageSetOptionNodes, decl: Declaration, opts: { 
 		parent.after(mediasWithoutDPI96);
 	}
 
-	if (opts.preserve) {
-		const firstDecl = (medias[0].nodes[0] as Container).nodes[0] as Declaration;
-		decl.cloneBefore({ value: firstDecl.value.trim() });
-	} else {
+	const firstDecl = (medias[0].nodes[0] as Container).nodes[0] as Declaration;
+	decl.cloneBefore({ value: firstDecl.value.trim() });
+
+	if (!opts.preserve) {
 		decl.remove();
 
 		// and then conditionally remove its parent

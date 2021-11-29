@@ -8,9 +8,13 @@
 
 .test-changed-properties {
 	order: 1;
+	background-image: url(img/test.png);
 	order: 2;
+	background-image: url(img/test.png);
 	order: 3;
+	background-image: url(img/test.png);
 	order: 4;
+	background-image: url(img/test.png);
 	order: 5;
 }
 
@@ -44,7 +48,9 @@
 
 .test-mixed-units {
 	order: 1;
+	background-image: url(img/test.png);
 	order: 2;
+	background-image: url(img/test-2x.png);
 	order: 3;
 }
 
@@ -64,7 +70,9 @@
 
 .test-mixed-order {
 	order: 1;
+	background: url(../images/bck.png);
 	order: 2;
+	background: url(../images/bck.png);
 	order: 3;
 }
 
@@ -98,7 +106,9 @@
 
 .test-no-url {
 	order: 1;
+	background-image: "img/test.png";
 	order: 2;
+	background-image: "img/test.png";
 	order: 3;
 }
 
@@ -125,6 +135,7 @@
 
 .test-webkit-prefix {
 	order: 1;
+	background-image: url(img/test.png);
 	order: 2;
 }
 
@@ -143,6 +154,9 @@
 }
 
 @media (min-width: 1000px) {
+	.test-within-mq-1 {
+		background-image: url(img/test.png);
+	}
 	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	.test-within-mq-1 {
 		background-image: url(img/test-2x.png);
@@ -156,6 +170,9 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+	.test-within-mq-2 {
+		background-image: url(img/test.png);
+	}
 	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	.test-within-mq-2 {
 		background-image: url(img/test-2x.png);
