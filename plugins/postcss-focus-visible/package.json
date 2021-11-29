@@ -22,7 +22,7 @@
   "scripts": {
     "prepublishOnly": "npm run build && npm run test",
     "lint": "eslint src/**/*.ts",
-    "test": "postcss-tape",
+    "test": "postcss-tape --ci",
     "build": "rollup -c ../../rollup/default.ts.js",
     "stryker": "stryker run --logLevel error"
   },
@@ -30,11 +30,11 @@
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-selector-parser": "6.0.6"
+    "postcss-selector-parser": "^6.0.6"
   },
   "devDependencies": {
-    "postcss": "8.3.6",
-    "postcss-tape": "6.0.1"
+    "postcss": "^8.3.6",
+    "postcss-tape": "^6.0.1"
   },
   "peerDependencies": {
     "postcss": "^8.3"

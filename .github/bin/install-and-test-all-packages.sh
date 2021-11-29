@@ -4,27 +4,27 @@ set -e
 
 start_dir=$(pwd)
 
-for package in $(ls -d ./packages); do
+for package in $(ls -d ./packages/*); do
 	echo "Installing and testing $package"
 	cd $package
 	npm install --ignore-scripts
-	npm test
+	npm run test
 	cd $start_dir
 done
 
 
-for package in $(ls -d ./plugins); do
+for package in $(ls -d ./plugins/*); do
 	echo "Installing and testing $package"
 	cd $package
 	npm install --ignore-scripts
-	npm test
+	npm run test
 	cd $start_dir
 done
 
-for package in $(ls -d ./plugin-packs); do
+for package in $(ls -d ./plugin-packs/*); do
 	echo "Installing and testing $package"
 	cd $package
 	npm install --ignore-scripts
-	npm test
+	npm run test
 	cd $start_dir
 done

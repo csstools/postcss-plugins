@@ -21,8 +21,8 @@
   },
   "scripts": {
     "prepublishOnly": "npm run build && npm run test",
-    "lint": "eslint src/**/*.js",
-    "test": "postcss-tape",
+    "lint": "eslint src/**/*.ts",
+    "test": "postcss-tape --ci",
     "build": "rollup -c ../../rollup/default.ts.js",
     "stryker": "stryker run --logLevel error"
   },
@@ -30,11 +30,11 @@
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-values-parser": "6.0.1"
+    "postcss-values-parser": "^6.0.1"
   },
   "devDependencies": {
-    "postcss": "8.3.6",
-    "postcss-tape": "6.0.1"
+    "postcss": "^8.3.6",
+    "postcss-tape": "^6.0.1"
   },
   "peerDependencies": {
     "postcss": "^8.3"

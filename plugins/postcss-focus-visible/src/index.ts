@@ -2,7 +2,7 @@
 import parser from 'postcss-selector-parser';
 import type { PluginCreator } from 'postcss';
 
-export const selectorRegExp = /(?<!\\):focus-visible([^\w-]|$)/gi;
+const selectorRegExp = /(?<!\\):focus-visible([^\w-]|$)/gi;
 
 const creator: PluginCreator<{ preserve?: boolean, replaceWith?: string }> = (opts?: { preserve?: boolean, replaceWith?: string }) => {
 	opts = Object(opts);

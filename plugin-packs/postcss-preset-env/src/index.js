@@ -29,13 +29,13 @@ const plugin = opts => {
 		// additional features to be inserted before cssdb features
 		getTransformedInsertions(insertBefore, 'insertBefore'),
 		// additional features to be inserted after cssdb features
-		getTransformedInsertions(insertAfter, 'insertAfter')
+		getTransformedInsertions(insertAfter, 'insertAfter'),
 	).filter(
 		// inserted features or features with an available postcss plugin
-		feature => feature.insertBefore || feature.id in plugins
+		feature => feature.insertBefore || feature.id in plugins,
 	).sort(
 		// features sorted by execution order and then insertion order
-		(a, b) => idsByExecutionOrder.indexOf(a.id) - idsByExecutionOrder.indexOf(b.id) || (a.insertBefore ? -1 : b.insertBefore ? 1 : 0) || (a.insertAfter ? 1 : b.insertAfter ? -1 : 0)
+		(a, b) => idsByExecutionOrder.indexOf(a.id) - idsByExecutionOrder.indexOf(b.id) || (a.insertBefore ? -1 : b.insertBefore ? 1 : 0) || (a.insertAfter ? 1 : b.insertAfter ? -1 : 0),
 	).map(
 		// polyfillable features as an object
 		feature => {
@@ -46,21 +46,21 @@ const plugin = opts => {
 				browsers: unsupportedBrowsers,
 				plugin:   feature.plugin,
 				id:       `${feature.insertBefore ? 'before' : 'after'}-${feature.id}`,
-				stage:    6
+				stage:    6,
 			} : {
 				browsers: unsupportedBrowsers,
 				plugin:   plugins[feature.id],
 				id:       feature.id,
-				stage:    feature.stage
+				stage:    feature.stage,
 			};
-		}
+		},
 	);
 
 	// staged features (those at or above the selected stage)
 	const stagedFeatures = polyfillableFeatures.filter(
 		feature => feature.id in features
 			? features[feature.id]
-			: feature.stage >= stage
+			: feature.stage >= stage,
 	).map(
 		feature => {
 			let options;
@@ -86,9 +86,9 @@ const plugin = opts => {
 			return {
 				browsers: feature.browsers,
 				plugin,
-				id: feature.id
+				id: feature.id,
 			};
-		}
+		},
 	);
 
 	// browsers supported by the configuration
@@ -100,11 +100,11 @@ const plugin = opts => {
 			? features[feature.id]
 			: supportedBrowsers.some(
 				supportedBrowser => browserslist(feature.browsers, {
-					ignoreUnknownVersions: true
+					ignoreUnknownVersions: true,
 				}).some(
-					polyfillBrowser => polyfillBrowser === supportedBrowser
-				)
-			)
+					polyfillBrowser => polyfillBrowser === supportedBrowser,
+				),
+			),
 	);
 
 	const usedPlugins = supportedFeatures.map(feature => feature.plugin);
@@ -117,9 +117,9 @@ const plugin = opts => {
 			if ( Object( opts ).exportTo ) {
 				writeToExports( sharedOpts.exportTo, opts.exportTo );
 			}
-		}
+		},
 	};
-}
+};
 
 const initializeSharedOpts = opts => {
 	if ('importFrom' in opts || 'exportTo' in opts || 'preserve' in opts) {
