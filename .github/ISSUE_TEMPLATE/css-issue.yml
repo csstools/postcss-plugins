@@ -42,8 +42,7 @@ body:
     id: config
     attributes:
       label: Extra config
-      description: If you have external plugins and/or config that could be causing this issue to happen we would love
-      to know!
+      description: If you have external plugins and/or config that could be causing this issue to happen we would love to know!
     validations:
       required: false
   - type: dropdown
