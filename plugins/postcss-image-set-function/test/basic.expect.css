@@ -59,13 +59,13 @@
 	background-image: url(img/test.png);
 	background-image: image-set(
 		url(img/test.png) 1x,
-		url(img/test-2x.png) 2dppx
+		url(img/test-2dppx.png) 2dppx
 	);
 	order: 2;
-	background-image: url(img/test-2x.png);
+	background-image: url(img/test-2dpcm.png);
 	background-image: image-set(
 		url(img/test.png) 1x,
-		url(img/test-2x.png) 20dpcm
+		url(img/test-2dpcm.png) 20dpcm
 	);
 	order: 3;
 }
@@ -80,7 +80,7 @@
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-mixed-units {
-	background-image: url(img/test-2x.png);
+	background-image: url(img/test-2dppx.png);
 }
 }
 

@@ -43,7 +43,7 @@
 	order: 1;
 	background-image: url(img/test.png);
 	order: 2;
-	background-image: url(img/test-2x.png);
+	background-image: url(img/test-2dpcm.png);
 	order: 3;
 }
 
@@ -57,7 +57,7 @@
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-mixed-units {
-	background-image: url(img/test-2x.png);
+	background-image: url(img/test-2dppx.png);
 }
 }
 
