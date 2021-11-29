@@ -37,8 +37,8 @@ body:
       label: Can you reproduce it with `npx <plugin-name> minimal-example.css`?
       multiple: false
       options:
-        - Yes
-        - No
+        - "Yes"
+        - "No"
         - N/A
   - type: textarea
     id: npx-result
