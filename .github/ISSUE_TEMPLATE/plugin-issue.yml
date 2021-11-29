@@ -1,0 +1,111 @@
+name: '🐞 Bug report'
+description: Create a report for one of the plugins or PostCSS Preset Env with guided questions
+body:
+  - type: markdown
+    attributes:
+      value:  Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: reproduction
+    attributes:
+      label: Reproduction link
+      description: Please provide a link to a repo that can reproduce the problem you ran into or a minimum reproducible case for your issue. A reproduction is required unless you are absolutely sure that the issue is obvious and the provided information is enough to understand the problem.
+      placeholder: 'https://runkit.com/..'
+    validations:
+      required: true
+  - type: textarea
+    id: descr
+    attributes:
+      label: Bug description
+      description: A clear and concise description of what the bug is
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: Description of what you're experiencing
+    validations:
+      required: false
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: Description of what you expected to happen.
+    validations:
+      required: false
+  - type: dropdown
+    id: plugin
+    attributes:
+      label: What plugin are you experiencing this issue on?
+      multiple: true
+      options:
+        - PostCSS Preset Env
+        - CSS All Property
+        - CSS Blank Pseudo
+        - CSS Has Pseudo
+        - CSS Prefers Color Scheme
+        - PostCSS Attribute Case Insensitive
+        - PostCSS Color Functional Notation
+        - PostCSS Color Hex Alpha
+        - PostCSS Color Mod Function
+        - PostCSS Custom Media Queries
+        - PostCSS Custom Properties
+        - PostCSS Custom Selectors
+        - PostCSS Dir Pseudo Class
+        - PostCSS Double Position Gradients
+        - PostCSS Env Function
+        - PostCSS Focus Visible
+        - PostCSS Focus Within
+        - PostCSS Font Variant
+        - PostCSS Gap Properties
+        - PostCSS Image Set Function
+        - PostCSS Lab Function
+        - PostCSS Logical
+        - PostCSS Media Query Ranges
+        - PostCSS Nesting
+        - PostCSS Overflow Shorthand
+        - PostCSS Page Break
+        - PostCSS Place
+        - PostCSS Pseudo Class Any Link
+        - PostCSS Rebeccapurple
+        - PostCSS Replace Overflow Wrap
+        - PostCSS Selector Not
+        - PostCSS System Ui Font Family
+        - PostCSS Plugins Values Parser
+        - Unsure
+  - type: input
+    id: version
+    attributes:
+      label: Plugin version
+      description: Exact release version or commit hash
+      placeholder: e.g 7.0.0
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node Version
+      description: Version of Node where you're experiencing this issue on
+      placeholder: eg 12.0.0
+    validations:
+      required: true
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: Validations
+      description: Before submitting the issue, please make sure you do the following
+      options:
+        - label: Follow our [Code of Conduct](https://github.com/csstools/postcss-plugins/blob/master/CODE_OF_CONDUCT.md)
+          required: true
+        - label: Can you reproduce it with `npx <plugin-name> minimal-example.css`?
+          required: false
+        - label: Check that there isn't already an issue that request the same feature to avoid creating a duplicate.
+          required: true
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: Would you like to open a PR for this bug?
+      description: Before starting to work on PR it is recommended to get maintainers approval
+      options:
+        - label: I'm willing to open a PR
+          required: false

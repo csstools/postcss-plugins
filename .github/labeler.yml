@@ -1,0 +1,104 @@
+"common-tools":
+  - packages/base-cli/**
+  - plugins/postcss-base-plugin/**
+  - rollup/**
+
+"packages/postcss-plugins-values-parser":
+  - packages/postcss-plugins-values-parser/**
+
+"plugin-packs/postcss-preset-env":
+  - plugin-packs/postcss-preset-env/**
+
+"plugins/css-all-property":
+  - plugins/css-all-property/**
+
+"plugins/css-blank-pseudo":
+  - plugins/css-blank-pseudo/**
+
+"plugins/css-has-pseudo":
+  - plugins/css-has-pseudo/**
+
+"plugins/css-prefers-color-scheme":
+  - plugins/css-prefers-color-scheme/**
+
+"plugins/postcss-attribute-case-insensitive":
+  - plugins/postcss-attribute-case-insensitive/**
+
+"plugins/postcss-color-functional-notation":
+  - plugins/postcss-color-functional-notation/**
+
+"plugins/postcss-color-hex-alpha":
+  - plugins/postcss-color-hex-alpha/**
+
+"plugins/postcss-color-mod-function":
+  - plugins/postcss-color-mod-function/**
+
+"plugins/postcss-custom-media-queries":
+  - plugins/postcss-custom-media-queries/**
+
+"plugins/postcss-custom-properties":
+  - plugins/postcss-custom-properties/**
+
+"plugins/postcss-custom-selectors":
+  - plugins/postcss-custom-selectors/**
+
+"plugins/postcss-dir-pseudo-class":
+  - plugins/postcss-dir-pseudo-class/**
+
+"plugins/postcss-double-position-gradients":
+  - plugins/postcss-double-position-gradients/**
+
+"plugins/postcss-env-function":
+  - plugins/postcss-env-function/**
+
+"plugins/postcss-focus-visible":
+  - plugins/postcss-focus-visible/**
+
+"plugins/postcss-focus-within":
+  - plugins/postcss-focus-within/**
+
+"plugins/postcss-font-variant":
+  - plugins/postcss-font-variant/**
+
+"plugins/postcss-gap-properties":
+  - plugins/postcss-gap-properties/**
+
+"plugins/postcss-image-set-function":
+  - plugins/postcss-image-set-function/**
+
+"plugins/postcss-lab-function":
+  - plugins/postcss-lab-function/**
+
+"plugins/postcss-logical":
+  - plugins/postcss-logical/**
+
+"plugins/postcss-media-query-ranges":
+  - plugins/postcss-media-query-ranges/**
+
+"plugins/postcss-nesting":
+  - plugins/postcss-nesting/**
+
+"plugins/postcss-overflow-shorthand":
+  - plugins/postcss-overflow-shorthand/**
+
+"plugins/postcss-page-break":
+  - plugins/postcss-page-break/**
+
+"plugins/postcss-place":
+  - plugins/postcss-place/**
+
+"plugins/postcss-pseudo-class-any-link":
+  - plugins/postcss-pseudo-class-any-link/**
+
+"plugins/postcss-rebeccapurple":
+  - plugins/postcss-rebeccapurple/**
+
+"plugins/postcss-replace-overflow-wrap":
+  - plugins/postcss-replace-overflow-wrap/**
+
+"plugins/postcss-selector-not":
+  - plugins/postcss-selector-not/**
+
+"plugins/postcss-system-ui-font-family":
+  - plugins/postcss-system-ui-font-family/**
+
