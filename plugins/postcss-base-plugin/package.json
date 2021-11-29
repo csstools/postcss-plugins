@@ -26,7 +26,7 @@
     "lint": "eslint src/**/*.ts",
     "test": "postcss-tape --ci",
     "test:cli": "bash ./test/cli/test.sh",
-    "build": "rollup -c ../../rollup/default.ts.js",
+    "build": "rollup -c ../../rollup/default.js",
     "stryker": "stryker run --logLevel error"
   },
   "devDependencies": {
