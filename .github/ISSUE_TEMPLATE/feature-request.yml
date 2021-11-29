@@ -9,8 +9,8 @@ body:
   - type: textarea
     id: feature-description
     attributes:
-      label: Clear and concise description of the feature
-      description: As a developer using postcss-preset-env I want [goal / wish] so that [benefit]
+      label: What would you want to propose?
+      description: As a developer using postcss-preset-env I would like [goal / wish] so that we get [benefit]
     validations:
       required: true
   - type: textarea
