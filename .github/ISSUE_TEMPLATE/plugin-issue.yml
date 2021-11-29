@@ -43,7 +43,7 @@ body:
   - type: textarea
     id: npx-result
     attributes:
-      label: `npx` Output
+      label: "`npx` Output"
       description: If you could reproduce with `npx`, what's the output?
     validations:
       required: false
