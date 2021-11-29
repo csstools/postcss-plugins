@@ -1,4 +1,4 @@
-import { parse } from 'postcss-values-parser';
+import { parse } from '@csstools/postcss-plugins-values-parser';
 
 /** @type {(decl: CSSFunction) => void} Transform a space and slash separated color function. */
 const onCSSFunction = node => {
@@ -134,8 +134,3 @@ const isRgbPercentFunctionContents = nodes => nodes.every(
 /** Set of nodes in a rgb() function with percentages. */
 const rgbPercentFunctionContents = [isPercentage, isPercentage, isPercentage, isSlash, isAlphaValue];
 
-/** @typedef {import('postcss-values-parser').Func} CSSFunction */
-/** @typedef {import('postcss-values-parser').Node} CSSNode */
-/** @typedef {import('postcss-values-parser').Numeric} CSSNumber */
-/** @typedef {import('postcss-values-parser').Operator} CSSOperator */
-/** @typedef {import('postcss-values-parser').Punctuation} CSSPunctuation */

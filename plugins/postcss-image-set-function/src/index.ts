@@ -1,4 +1,4 @@
-import { parse } from 'postcss-values-parser';
+import { parse } from '@csstools/postcss-plugins-values-parser';
 import { processImageSet } from './lib/process-image-set';
 import type { PluginCreator } from 'postcss';
 
@@ -36,7 +36,11 @@ const creator: PluginCreator<{ preserve: boolean, oninvalid: string }> = (opts?:
 			}
 
 			// process every image-set() function
-			valueAST.walkFuncs((node) => {
+			valueAST.walk((node) => {
+				if (node.type !== 'func') {
+					return;
+				}
+
 				if (!imageSetFunctionMatchRegExp.test(node.name)) {
 					return;
 				}

@@ -1,5 +1,5 @@
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-import { parse, Root } from 'postcss-values-parser';
+import { parse, Root } from '@csstools/postcss-plugins-values-parser';
 import type { Declaration, Postcss, Result } from 'postcss';
 import onCSSFunction from './on-css-function';
 
@@ -39,7 +39,13 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 				return;
 			}
 
-			valueAST.walkType('func', onCSSFunction);
+			valueAST.walk((node) => {
+				if (node.type !== 'func') {
+					return;
+				}
+
+				onCSSFunction(node);
+			});
 			const modifiedValue = String(valueAST);
 
 			if (modifiedValue === originalValue) {

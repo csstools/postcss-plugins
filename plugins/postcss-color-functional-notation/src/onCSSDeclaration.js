@@ -1,4 +1,4 @@
-import { parse } from 'postcss-values-parser';
+import { parse } from '@csstools/postcss-plugins-values-parser';
 import onCSSFunction from './onCSSFunction';
 import options from './options';
 
@@ -22,7 +22,13 @@ const onCSSDeclaration = (decl, { result }) => {
 			return;
 		}
 
-		valueAST.walkType('func', onCSSFunction);
+		valueAST.walk((node) => {
+			if (node.type !== 'func') {
+				return;
+			}
+
+			onCSSFunction(node);
+		});
 
 		const modifiedValue = String(valueAST);
 

@@ -29,7 +29,7 @@
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-values-parser": "^6.0.1"
+    "@csstools/postcss-plugins-values-parser": "^0.1.0"
   },
   "devDependencies": {
     "postcss": "^8.3.6",

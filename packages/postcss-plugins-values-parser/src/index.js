@@ -13,6 +13,10 @@ import { Input } from 'postcss';
 import { ValuesParser } from './ValuesParser';
 import { ValuesStringifier } from './ValuesStringifier';
 
+// export { Node } from './nodes/Node';
+// export { Numeric } from './nodes/Numeric';
+export { Punctuation } from './nodes/Punctuation';
+
 export function parse(css, options) {
 	const input = new Input(css, options);
 	const parser = new ValuesParser(input, parse, options);

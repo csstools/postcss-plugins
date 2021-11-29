@@ -1,4 +1,4 @@
-import { parse } from 'postcss-values-parser';
+import { parse } from '@csstools/postcss-plugins-values-parser';
 import options from './options';
 
 export default (decl, { result }) => {
@@ -22,9 +22,13 @@ export default (decl, { result }) => {
 	}
 
 	let alignmentValues = [];
-	value.walkWords(walk => {
+	value.walk((node) => {
+		if (node.type !== 'word') {
+			return;
+		}
+
 		alignmentValues.push(
-			walk.parent.type === 'root' ? walk.toString() : walk.parent.toString(),
+			node.parent.type === 'root' ? node.toString() : node.parent.toString(),
 		);
 	});
 

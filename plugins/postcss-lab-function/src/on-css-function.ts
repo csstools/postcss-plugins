@@ -1,5 +1,5 @@
-import { parse } from 'postcss-values-parser';
-import type { Func, Numeric, Operator } from 'postcss-values-parser';
+import { parse } from '@csstools/postcss-plugins-values-parser';
+import type { Func, Numeric, Operator } from '@csstools/postcss-plugins-values-parser';
 import { labToSRgb, lchToSRgb } from './color';
 
 function onCSSFunction(node: Func) {

@@ -5,7 +5,7 @@ import { parse } from '@csstools/postcss-plugins-values-parser';
 /**
  * Import Custom Properties from Object
  * @param {{environmentVariables: Record<string, string>, 'environment-variables': Record<string, string>}} object
- * @returns {Record<string, import('postcss-values-parser').Root>}
+ * @returns {Record<string, import('@csstools/postcss-plugins-values-parser').Root>}
  */
 function importEnvironmentVariablesFromObject(object) {
 	const environmentVariables = Object.assign(
@@ -23,7 +23,7 @@ function importEnvironmentVariablesFromObject(object) {
 /**
  * Import Custom Properties from JSON file
  * @param {string} from
- * @returns {Promise<Record<string, import('postcss-values-parser').Root>>}
+ * @returns {Promise<Record<string, import('@csstools/postcss-plugins-values-parser').Root>>}
  */
 async function importEnvironmentVariablesFromJSONFile(from) {
 	const object = await readJSON(path.resolve(from));
@@ -34,7 +34,7 @@ async function importEnvironmentVariablesFromJSONFile(from) {
 /**
  * Import Custom Properties from JS file
  * @param {string} from
- * @returns {Promise<Record<string, import('postcss-values-parser').Root>>}
+ * @returns {Promise<Record<string, import('@csstools/postcss-plugins-values-parser').Root>>}
  */
 async function importEnvironmentVariablesFromJSFile(from) {
 	const object = await import(path.resolve(from));
@@ -45,7 +45,7 @@ async function importEnvironmentVariablesFromJSFile(from) {
 /**
  * Import Custom Properties from Sources
  * @param {(string|Function|Promise|{type:string,environmentVariables: Record<string, string>, 'environment-variables': Record<string, string>})[]} sources
- * @returns {Promise<Record<string, import('postcss-values-parser').Root>>}
+ * @returns {Promise<Record<string, import('@csstools/postcss-plugins-values-parser').Root>>}
  */
 export default function importEnvironmentVariablesFromSources(sources) {
 	return sources.map(source => {

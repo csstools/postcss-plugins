@@ -1,4 +1,4 @@
-import type { Node, Numeric } from 'postcss-values-parser';
+import type { Node, Numeric } from '@csstools/postcss-plugins-values-parser';
 
 const dpiRatios = { dpcm: 2.54, dpi: 1, dppx: 96, x: 96 };
 

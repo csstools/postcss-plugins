@@ -23,7 +23,7 @@
     "prepublishOnly": "npm run build --if-present && npm run test --if-present",
     "lint": "eslint src/**/*.ts",
     "test": "node ./test/color/test.mjs && postcss-tape --ci",
-    "build": "rollup -c ../../rollup/default.ts.js",
+    "build": "rollup -c ../../rollup/default.js",
     "stryker": "stryker run --logLevel error",
     "generate-color-corpus": "python3 ./test/color/generate.py"
   },
@@ -31,7 +31,7 @@
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-values-parser": "^6.0.1"
+    "@csstools/postcss-plugins-values-parser": "^0.1.0"
   },
   "devDependencies": {
     "postcss": "^8.3.6",

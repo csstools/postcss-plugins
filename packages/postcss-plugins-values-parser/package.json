@@ -5,11 +5,13 @@
   "license": "MPL-2.0",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
+  "types": "index.d.ts",
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",

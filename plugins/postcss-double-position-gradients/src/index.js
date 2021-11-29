@@ -1,5 +1,4 @@
-const { parse } = require('postcss-values-parser');
-const Punctuation = require('postcss-values-parser/lib/nodes/Punctuation');
+const { parse, Punctuation } = require('@csstools/postcss-plugins-values-parser');
 
 // whether the value has a lab() or lch() matcher
 const gradientRegExp = /(repeating-)?(conic|linear|radial)-gradient\([\W\w]*\)/i;
@@ -38,7 +37,11 @@ module.exports = function creator(opts) {
 				return;
 			}
 
-			valueAST.walkFuncs((func) => {
+			valueAST.walk((func) => {
+				if (func.type !== 'func') {
+					return;
+				}
+
 				if (!gradientPartsRegExp.test(func.name)) {
 					return;
 				}

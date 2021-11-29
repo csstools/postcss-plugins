@@ -32,7 +32,7 @@
     "lint": "eslint src/**/*.js",
     "test": "postcss-tape --ci",
     "test:deno": "deno run --unstable --allow-env --allow-read test/deno/test.js",
-    "build": "rollup -c ../../rollup/default-with-deno.js",
+    "build": "rollup -c ../../rollup/default.js",
     "stryker": "stryker run --logLevel error"
   },
   "engines": {
