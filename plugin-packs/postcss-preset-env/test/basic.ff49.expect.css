@@ -12,13 +12,6 @@
 	order: 2;
 }
 
-@media (min-resolution: 96dpi) {
-
-.test-image-set-function {
-	background-image: url(img/test.png);
-}
-}
-
 @media (min-resolution: 192dpi) {
 
 .test-image-set-function {
