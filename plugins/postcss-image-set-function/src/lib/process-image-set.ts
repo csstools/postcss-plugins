@@ -46,12 +46,18 @@ export const processImageSet = (imageSetOptionNodes, decl: Declaration, opts: { 
 		.sort((a, b) => a - b)
 		.map(params => mediasByDpr.get(params));
 
-	// conditionally prepend previous siblings
 	if (!medias.length) {
 		return;
 	}
 
-	parent.after(medias);
+	const mediasWithoutDPI96 = Array.from(mediasByDpr.keys())
+		.sort((a, b) => a - b)
+		.filter((a) => a !== 96)
+		.map(params => mediasByDpr.get(params));
+
+	if (mediasWithoutDPI96.length) {
+		parent.after(mediasWithoutDPI96);
+	}
 
 	if (opts.preserve) {
 		const firstDecl = (medias[0].nodes[0] as Container).nodes[0] as Declaration;
