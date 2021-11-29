@@ -54,13 +54,6 @@
 }
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-
-.test-changed-properties {
-	background-image: url(img/test.png);
-}
-}
-
 .test-mixed-units {
 	order: 1;
 	background-image: url(img/test.png);
@@ -77,10 +70,10 @@
 	order: 3;
 }
 
-@media (-webkit-min-device-pixel-ratio: 0.52), (min-resolution: 50.8dpi) {
+@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
 
 .test-mixed-units {
-	background-image: url(img/test-2x.png);
+	background-image: url(img/test.png);
 }
 }
 

@@ -50,16 +50,14 @@ export const processImageSet = (imageSetOptionNodes, decl: Declaration, opts: { 
 		return;
 	}
 
-	const mediasWithoutDPI96 = Array.from(mediasByDpr.keys())
-		.sort((a, b) => a - b)
-		.filter((a) => a !== 96)
-		.map(params => mediasByDpr.get(params));
+	const smallestMedia = medias[0];
+	const mediasWithoutSmallest = medias.slice(1);
 
-	if (mediasWithoutDPI96.length) {
-		parent.after(mediasWithoutDPI96);
+	if (mediasWithoutSmallest.length) {
+		parent.after(mediasWithoutSmallest);
 	}
 
-	const firstDecl = (medias[0].nodes[0] as Container).nodes[0] as Declaration;
+	const firstDecl = (smallestMedia.nodes[0] as Container).nodes[0] as Declaration;
 	decl.cloneBefore({ value: firstDecl.value.trim() });
 
 	if (!opts.preserve) {
