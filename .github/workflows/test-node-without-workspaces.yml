@@ -1,0 +1,22 @@
+name: test
+on:
+  push:
+
+jobs:
+  test_without_workspaces_support:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [12, 14]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - run: npm install --ignore-scripts
+      - run: npm run build --workspaces --if-present
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - run: bash ./.github/bin/install-and-test-all-packages.sh
