@@ -259,18 +259,18 @@
 	}
 }
 
-.test-unparseable-image-set-function-a {
+.test-valid-data-url {
 	background-image: url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==);
 	background-image: image-set(url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==) 1x, url(img/test-2x.png) 2x);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
-.test-unparseable-image-set-function-a {
+.test-valid-data-url {
 	background-image: url(img/test-2x.png);
 }
 }
 
-.test-unparseable-image-set-function-b {
+.test-invalid-data-url {
 	background-image: image-set(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==, url(img/test-2x.png) 2x);
 }
