@@ -61,12 +61,13 @@ module.exports = function creator(opts) {
 					return;
 				}
 
-				const nodes = func.nodes;
+				// Discarding commas and spaces
+				const nodes = func.nodes.filter(n => n.type === 'word');
 
-				nodes.slice(0).forEach((node, index, nodes) => {
-					const oneValueBack = Object(nodes[index - 2]); // Skip one for space
-					const twoValuesBack = Object(nodes[index - 4]);
-					const nextNode = Object(nodes[index + 2]);
+				nodes.forEach((node, index, nodes) => {
+					const oneValueBack = Object(nodes[index - 1]);
+					const twoValuesBack = Object(nodes[index - 2]);
+					const nextNode = Object(nodes[index + 1]);
 					const isDoublePositionLength = twoValuesBack.type && isNumericNode(oneValueBack) && isNumericNode(node);
 
 					// if the argument concludes a double-position gradient
