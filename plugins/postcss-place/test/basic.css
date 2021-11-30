@@ -22,6 +22,12 @@ d {
 	place-self: first var(--second);
 }
 
+e {
+	place-content: var(--first, --fallback) second;
+	place-items: var(--first, --fallback) second;
+	place-self: var(--first, --fallback) second;
+}
+
 .test-unparseable-var-in-place-declaration {
 	place-content: var(; );
 }
