@@ -1,3 +1,4 @@
+import valueParser from 'postcss-value-parser';
 import { getComma } from './get-comma';
 import { getImage } from './get-image';
 import { getMedia, getMediaDPI } from './get-media';
@@ -20,13 +21,13 @@ export const processImageSet = (imageSetOptionNodes, decl: Declaration, opts: { 
 
 		// handle invalidations
 		if (!comma) {
-			handleInvalidation(opts, 'unexpected comma', imageSetOptionNodes[index]);
+			handleInvalidation(opts, 'expected a comma', valueParser.stringify(imageSetOptionNodes));
 			return;
 		} else if (!value) {
-			handleInvalidation(opts, 'unexpected image', imageSetOptionNodes[index + 1]);
+			handleInvalidation(opts, 'unexpected image', valueParser.stringify(imageSetOptionNodes));
 			return;
 		} else if (!media || !mediaDPI || mediasByDpr.has(mediaDPI)) {
-			handleInvalidation(opts, 'unexpected resolution', imageSetOptionNodes[index + 2]);
+			handleInvalidation(opts, 'unexpected resolution', valueParser.stringify(imageSetOptionNodes));
 			return;
 		}
 
@@ -68,4 +69,6 @@ export const processImageSet = (imageSetOptionNodes, decl: Declaration, opts: { 
 			parent.remove();
 		}
 	}
+
+	return;
 };

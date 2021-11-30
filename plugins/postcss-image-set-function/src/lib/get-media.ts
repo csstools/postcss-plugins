@@ -1,4 +1,4 @@
-import type { Node, Numeric } from 'postcss-values-parser';
+import type { Node } from 'postcss-value-parser';
 
 const dpiRatios = { dpcm: 2.54, dpi: 1, dppx: 96, x: 96 };
 
@@ -20,15 +20,25 @@ export function getMedia(dpi: number | false, postcss) {
 }
 
 export function getMediaDPI(node: Node) {
-	if (Object(node).type !== 'numeric') {
+	if (!node) {
 		return false;
 	}
 
-	const numeric = node as Numeric;
+	if (node.type !== 'word') {
+		return false;
+	}
 
-	if (numeric.unit in dpiRatios) {
+	const unit = node.value.replace(/^(\d+)/, '');
+	if (unit === node.value) {
+		// No numeric value found.
+		return false;
+	}
+
+	const value = node.value.slice(0, -unit.length);
+
+	if (unit.toLowerCase() in dpiRatios) {
 		// calculate min-device-pixel-ratio and min-resolution
-		return Number(numeric.value) * dpiRatios[numeric.unit.toLowerCase()];
+		return Number(value) * dpiRatios[unit.toLowerCase()];
 	} else {
 		return false;
 	}

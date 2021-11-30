@@ -1,6 +1,6 @@
-const imageSetFunctionMatchRegExp = /^(-webkit-)?image-set$/i;
+import valueParser from 'postcss-value-parser';
 
-const imageFuncRegexp = /^(cross-fade|image|(repeating-)?(conic|linear|radial)-gradient|url)$/i;
+const imageFuncRegexp = /^(cross-fade|image|(repeating-)?(conic|linear|radial)-gradient|url|var)$/i;
 
 export function getImage(node) {
 	// <url> | <image()> | <cross-fade()> | <gradient>
@@ -9,19 +9,15 @@ export function getImage(node) {
 		return false;
 	}
 
-	if (node.type === 'func' &&
-		imageFuncRegexp.test(node.name) &&
-		!(
-			node.parent &&
-			node.parent.parent &&
-			node.parent.parent.type === 'func' &&
-			imageSetFunctionMatchRegExp.test(node.parent.parent.name)
-		)) {
-		return (node.raws.before || '') + String(node);
+	if (node.type === 'string') {
+		return valueParser.stringify(node);
 	}
 
-	if (node.type === 'quoted') {
-		return node.value;
+	if (
+		node.type === 'function' &&
+		imageFuncRegexp.test(node.value)
+	) {
+		return valueParser.stringify(node);
 	}
 
 	return false;

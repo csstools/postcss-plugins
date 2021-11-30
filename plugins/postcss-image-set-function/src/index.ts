@@ -1,6 +1,7 @@
-import { parse } from 'postcss-values-parser';
+import valueParser from 'postcss-value-parser';
 import { processImageSet } from './lib/process-image-set';
 import type { PluginCreator } from 'postcss';
+import { handleInvalidation } from './lib/handle-invalidation';
 
 const imageSetValueMatchRegExp = /(^|[^\w-])(-webkit-)?image-set\(/i;
 const imageSetFunctionMatchRegExp = /^(-webkit-)?image-set$/i;
@@ -23,7 +24,7 @@ const creator: PluginCreator<{ preserve: boolean, oninvalid: string }> = (opts?:
 			let valueAST;
 
 			try {
-				valueAST = parse(value, { ignoreUnknownWords: true });
+				valueAST = valueParser(value);
 			} catch (error) {
 				decl.warn(
 					result,
@@ -36,12 +37,38 @@ const creator: PluginCreator<{ preserve: boolean, oninvalid: string }> = (opts?:
 			}
 
 			// process every image-set() function
-			valueAST.walkFuncs((node) => {
-				if (!imageSetFunctionMatchRegExp.test(node.name)) {
+			valueAST.walk((node) => {
+				if (node.type !== 'function') {
 					return;
 				}
 
-				processImageSet(node.nodes, decl, {
+				if (!imageSetFunctionMatchRegExp.test(node.value)) {
+					return;
+				}
+
+				let foundNestedImageSet = false;
+				valueParser.walk(node.nodes, (child) => {
+					if (
+						child.type === 'function' &&
+						imageSetFunctionMatchRegExp.test(child.value)
+					) {
+						foundNestedImageSet = true;
+					}
+				});
+				if (foundNestedImageSet) {
+					handleInvalidation({
+						decl,
+						oninvalid,
+						result: result,
+					}, 'nested image-set functions are not allowed', valueParser.stringify(node));
+					return false;
+				}
+
+				const relevantNodes = node.nodes.filter((x) => {
+					return x.type !== 'comment' && x.type !== 'space';
+				});
+
+				processImageSet(relevantNodes, decl, {
 					decl,
 					oninvalid,
 					preserve,
