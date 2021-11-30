@@ -1,45 +1,46 @@
-import { parse } from 'postcss-values-parser';
-import type { Func, Numeric, Operator } from 'postcss-values-parser';
+import valueParser from 'postcss-value-parser';
+import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
 import { labToSRgb, lchToSRgb } from './color';
 
-function onCSSFunction(node: Func) {
-	const name = node.name;
+function onCSSFunction(node: FunctionNode) {
+	const value = node.value;
 	const rawNodes = node.nodes;
-	if (name !== 'lab' && name !== 'lch') {
-		return;
-	}
+	const relevantNodes = rawNodes.slice().filter((x) => {
+		return x.type !== 'comment' && x.type !== 'space';
+	});
 
 	let nodes: Lch | Lab | null = null;
-	if (name === 'lab') {
-		nodes = labFunctionContents(rawNodes);
-	} else if (name === 'lch') {
-		nodes = lchFunctionContents(rawNodes);
+	if (value === 'lab') {
+		nodes = labFunctionContents(relevantNodes);
+	} else if (value === 'lch') {
+		nodes = lchFunctionContents(relevantNodes);
 	}
 
 	if (!nodes) {
 		return;
 	}
 
-	if (rawNodes.length > 3 && (!nodes.slash || !nodes.alpha)) {
+	if (relevantNodes.length > 3 && (!nodes.slash || !nodes.alpha)) {
 		return;
 	}
 
 	// rename the Color function to `rgb`
-	node.name = 'rgb';
+	node.value = 'rgb';
 
 	transformAlpha(node, nodes.slash, nodes.alpha);
 
 	/** Extracted Color channels. */
 	const [channelNode1, channelNode2, channelNode3] = channelNodes(nodes);
+	const [channelDimension1, channelDimension2, channelDimension3] = channelDimensions(nodes);
 
 	/** Corresponding Color transformer. */
-	const toRGB = name === 'lab' ? labToSRgb : lchToSRgb;
+	const toRGB = value === 'lab' ? labToSRgb : lchToSRgb;
 
 	/** RGB channels from the source color. */
 	const channelNumbers: [number, number, number] = [
-		channelNode1.value,
-		channelNode2.value,
-		channelNode3.value,
+		channelDimension1.number,
+		channelDimension2.number,
+		channelDimension3.number,
 	].map(
 		channelNumber => parseFloat(channelNumber),
 	) as [number, number, number];
@@ -50,69 +51,151 @@ function onCSSFunction(node: Func) {
 		channelValue => Math.max(Math.min(Math.round(channelValue * 2.55), 255), 0),
 	);
 
-	channelNode3.replaceWith(
-		channelNode3.clone({ value: String(rgbValues[2]) }),
-	);
+	node.nodes.splice(node.nodes.indexOf(channelNode1) + 1, 0, commaNode());
+	node.nodes.splice(node.nodes.indexOf(channelNode2) + 1, 0, commaNode());
 
-	channelNode2.replaceWith(
-		channelNode2.clone({ value: String(rgbValues[1]) }),
-		commaNode.clone(),
-	);
+	replaceWith(node.nodes, channelNode1, {
+		...channelNode1,
+		value: String(rgbValues[0]),
+	});
 
-	channelNode1.replaceWith(
-		channelNode1.clone({ value: String(rgbValues[0]), unit: '' }),
-		commaNode.clone(),
-	);
+	replaceWith(node.nodes, channelNode2, {
+		...channelNode2,
+		value: String(rgbValues[1]),
+	});
+
+	replaceWith(node.nodes, channelNode3, {
+		...channelNode3,
+		value: String(rgbValues[2]),
+	});
+
 }
 
 export default onCSSFunction;
 
-const commaNode = parse(',').first;
-
-function isNumericNode(node): node is Numeric {
-	return node && node.type === 'numeric';
+function commaNode(): DivNode {
+	return {
+		sourceIndex: 0,
+		sourceEndIndex: 1,
+		value: ',',
+		type: 'div',
+		before: '',
+		after: '',
+	};
 }
 
-function isNumericNodeNumber(node): node is Numeric {
-	return node && node.type === 'numeric' && node.unit === '';
+function isNumericNode(node: Node): node is WordNode {
+	if (!node || node.type !== 'word') {
+		return false;
+	}
+
+	if (!canParseAsUnit(node)) {
+		return false;
+	}
+
+	const unitAndValue = valueParser.unit(node.value);
+	if (!unitAndValue) {
+		return false;
+	}
+
+	return !!unitAndValue.number;
 }
 
-function isNumericNodeHueLike(node): node is Numeric {
-	return node && node.type === 'numeric' && (
-		node.unit === 'deg' ||
-		node.unit === 'grad' ||
-		node.unit === 'rad' ||
-		node.unit === 'turn' ||
-		node.unit === ''
+function isNumericNodeNumber(node): node is WordNode {
+	if (!node || node.type !== 'word') {
+		return false;
+	}
+
+	if (!canParseAsUnit(node)) {
+		return false;
+	}
+
+	const unitAndValue = valueParser.unit(node.value);
+	if (!unitAndValue) {
+		return false;
+	}
+
+	return !!unitAndValue.number && unitAndValue.unit === '';
+}
+
+function isNumericNodeHueLike(node: Node): node is WordNode {
+	if (!node || node.type !== 'word') {
+		return false;
+	}
+
+	if (!canParseAsUnit(node)) {
+		return false;
+	}
+
+	const unitAndValue = valueParser.unit(node.value);
+	if (!unitAndValue) {
+		return false;
+	}
+
+	return !!unitAndValue.number && (
+		unitAndValue.unit === 'deg' ||
+		unitAndValue.unit === 'grad' ||
+		unitAndValue.unit === 'rad' ||
+		unitAndValue.unit === 'turn' ||
+		unitAndValue.unit === ''
 	);
 }
 
-function isNumericNodePercentage(node): node is Numeric {
-	return node && node.type === 'numeric' && node.unit === '%';
+function isNumericNodePercentage(node: Node): node is WordNode {
+	if (!node || node.type !== 'word') {
+		return false;
+	}
+
+	if (!canParseAsUnit(node)) {
+		return false;
+	}
+
+	const unitAndValue = valueParser.unit(node.value);
+	if (!unitAndValue) {
+		return false;
+	}
+
+	return unitAndValue.unit === '%';
 }
 
-function isNumericNodePercentageOrNumber(node): node is Numeric {
-	return node && node.type === 'numeric' && (node.unit === '' || node.unit === '%');
+function isNumericNodePercentageOrNumber(node: Node): node is WordNode {
+	if (!node || node.type !== 'word') {
+		return false;
+	}
+
+	if (!canParseAsUnit(node)) {
+		return false;
+	}
+
+	const unitAndValue = valueParser.unit(node.value);
+	if (!unitAndValue) {
+		return false;
+	}
+
+	return unitAndValue.unit === '%' || unitAndValue.unit === '';
 }
 
-function isCalcNode(node): node is Func {
-	return node && node.type === 'func' && node.name === 'calc';
+function isCalcNode(node: Node): node is FunctionNode {
+	return node && node.type === 'function' && node.value === 'calc';
 }
 
-function isVarNode(node): node is Func {
-	return node && node.type === 'func' && node.name === 'var';
+function isVarNode(node: Node): node is FunctionNode {
+	return node && node.type === 'function' && node.value === 'var';
 }
 
-function isSlashNode(node): node is Operator {
-	return node && node.type === 'operator' && node.value === '/';
+function isSlashNode(node: Node): node is DivNode {
+	return node && node.type === 'div' && node.value === '/';
 }
 
 type Lch = {
-	l: Numeric,
-	c: Numeric,
-	h: Numeric,
-	slash?: Operator,
-	alpha?: Numeric|Func,
+	l: Dimension,
+	lNode: Node,
+	c: Dimension,
+	cNode: Node,
+	h: Dimension,
+	hNode: Node,
+	slash?: DivNode,
+	alpha?: WordNode|FunctionNode,
 }
 
 function lchFunctionContents(nodes): Lch|null {
@@ -129,9 +212,12 @@ function lchFunctionContents(nodes): Lch|null {
 	}
 
 	const out: Lch = {
-		l: nodes[0],
-		c: nodes[1],
-		h: nodes[2],
+		l: valueParser.unit(nodes[0].value) as Dimension,
+		lNode: nodes[0],
+		c: valueParser.unit(nodes[1].value) as Dimension,
+		cNode: nodes[1],
+		h: valueParser.unit(nodes[2].value) as Dimension,
+		hNode: nodes[2],
 	};
 
 	normalizeHueNode(out.h);
@@ -151,11 +237,14 @@ function lchFunctionContents(nodes): Lch|null {
 }
 
 type Lab = {
-	l: Numeric,
-	a: Numeric,
-	b: Numeric,
-	slash?: Operator,
-	alpha?: Numeric | Func,
+	l: Dimension,
+	lNode: Node,
+	a: Dimension,
+	aNode: Node,
+	b: Dimension,
+	bNode: Node,
+	slash?: DivNode,
+	alpha?: WordNode | FunctionNode,
 }
 
 function labFunctionContents(nodes): Lab|null {
@@ -172,9 +261,12 @@ function labFunctionContents(nodes): Lab|null {
 	}
 
 	const out: Lab = {
-		l: nodes[0],
-		a: nodes[1],
-		b: nodes[2],
+		l: valueParser.unit(nodes[0].value) as Dimension,
+		lNode: nodes[0],
+		a: valueParser.unit(nodes[1].value) as Dimension,
+		aNode: nodes[1],
+		b: valueParser.unit(nodes[2].value) as Dimension,
+		bNode: nodes[2],
 	};
 
 	if (isSlashNode(nodes[3])) {
@@ -196,7 +288,15 @@ function isLab(x: Lch | Lab): x is Lab {
 	return false;
 }
 
-function channelNodes(x: Lch | Lab): [Numeric, Numeric, Numeric] {
+function channelNodes(x: Lch | Lab): [Node, Node, Node] {
+	if (isLab(x)) {
+		return [x.lNode, x.aNode, x.bNode];
+	}
+
+	return [x.lNode, x.cNode, x.hNode];
+}
+
+function channelDimensions(x: Lch | Lab): [Dimension, Dimension, Dimension] {
 	if (isLab(x)) {
 		return [x.l, x.a, x.b];
 	}
@@ -204,46 +304,69 @@ function channelNodes(x: Lch | Lab): [Numeric, Numeric, Numeric] {
 	return [x.l, x.c, x.h];
 }
 
-function transformAlpha(node: Func, slashNode: Operator | undefined, alphaNode: Numeric | Func | undefined) {
+function transformAlpha(node: FunctionNode, slashNode: DivNode | undefined, alphaNode: WordNode | FunctionNode | undefined) {
 	if (!slashNode || !alphaNode) {
 		return;
 	}
 
-	node.name = 'rgba';
-	slashNode.replaceWith(commaNode.clone());
+	node.value = 'rgba';
+	slashNode.value = ',';
+	slashNode.before = '';
 
 	if (!isNumericNode(alphaNode)) {
 		return;
 	}
 
-	if (alphaNode.unit === '%') {
+	const unitAndValue = valueParser.unit(alphaNode.value);
+	if (!unitAndValue) {
+		return;
+	}
+
+	if (unitAndValue.unit === '%') {
 		// transform the Alpha channel from a Percentage to (0-1) Number
-		alphaNode.value = String(parseFloat(alphaNode.value) / 100);
-		alphaNode.unit = '';
+		unitAndValue.number = String(parseFloat(unitAndValue.number) / 100);
+		alphaNode.value = String(unitAndValue.number);
 	}
 }
 
-function normalizeHueNode(node: Numeric) {
-	switch (node.unit) {
+function replaceWith(nodes: Array<Node>, oldNode: Node, newNode: Node) {
+	const index = nodes.indexOf(oldNode);
+	nodes[index] = newNode;
+}
+
+function normalizeHueNode(dimension: Dimension) {
+	switch (dimension.unit) {
 		case 'deg':
-			node.unit = '';
+			dimension.unit = '';
 			return;
 		case 'rad':
 			// radians -> degrees
-			node.unit = '';
-			node.value = (parseFloat(node.value) * 180 / Math.PI).toString();
+			dimension.unit = '';
+			dimension.number = (parseFloat(dimension.number) * 180 / Math.PI).toString();
 			return;
 
 		case 'grad':
 			// grades -> degrees
-			node.unit = '';
-			node.value = (parseFloat(node.value) * 0.9).toString();
+			dimension.unit = '';
+			dimension.number = (parseFloat(dimension.number) * 0.9).toString();
 			return;
 
 		case 'turn':
 			// turns -> degrees
-			node.unit = '';
-			node.value = (parseFloat(node.value) * 360).toString();
+			dimension.unit = '';
+			dimension.number = (parseFloat(dimension.number) * 360).toString();
 			return;
+	}
+}
+
+function canParseAsUnit(node : Node): boolean {
+	if (!node || !node.value) {
+		return false;
+	}
+
+	try {
+		return valueParser.unit(node.value) !== false;
+	} catch (e) {
+		return false;
 	}
 }

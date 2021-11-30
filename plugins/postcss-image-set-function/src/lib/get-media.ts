@@ -46,13 +46,13 @@ export function getMediaDPI(node: Node) {
 	}
 }
 
-function isNumericNode(node): Dimension | false {
+function isNumericNode(node): boolean {
 	if (!node || !node.value) {
 		return false;
 	}
 
 	try {
-		return valueParser.unit(node.value);
+		return valueParser.unit(node.value) !== false;
 	} catch (e) {
 		return false;
 	}

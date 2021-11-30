@@ -1,5 +1,6 @@
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-import { parse, Root } from 'postcss-values-parser';
+import valueParser from 'postcss-value-parser';
+import type { ParsedValue, FunctionNode } from 'postcss-value-parser';
 import type { Declaration, Postcss, Result } from 'postcss';
 import onCSSFunction from './on-css-function';
 
@@ -24,10 +25,10 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 				return;
 			}
 
-			let valueAST: Root|undefined;
+			let valueAST: ParsedValue|undefined;
 
 			try {
-				valueAST = parse(originalValue, { ignoreUnknownWords: true });
+				valueAST = valueParser(originalValue);
 			} catch (error) {
 				decl.warn(
 					result,
@@ -39,7 +40,17 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 				return;
 			}
 
-			valueAST.walkType('func', onCSSFunction);
+			valueAST.walk((node) => {
+				if (!node.type || node.type !== 'function') {
+					return;
+				}
+
+				if (node.value !== 'lab' && node.value !== 'lch') {
+					return;
+				}
+
+				onCSSFunction(node as FunctionNode);
+			});
 			const modifiedValue = String(valueAST);
 
 			if (modifiedValue === originalValue) {
