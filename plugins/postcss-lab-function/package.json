@@ -24,8 +24,7 @@
     "lint": "eslint src/**/*.ts",
     "test": "node ./test/color/test.mjs && postcss-tape --ci",
     "build": "rollup -c ../../rollup/default.js",
-    "stryker": "stryker run --logLevel error",
-    "generate-color-corpus": "python3 ./test/color/generate.py"
+    "stryker": "stryker run --logLevel error"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
