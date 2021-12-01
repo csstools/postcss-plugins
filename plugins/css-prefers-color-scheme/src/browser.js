@@ -63,7 +63,7 @@ const prefersColorSchemeInit = initialColorScheme => {
 	// listen for system changes
 	if (mediaQueryList) {
 		if ('addEventListener' in mediaQueryList) {
-			mediaQueryList.addEventListener(mediaQueryListener);
+			mediaQueryList.addEventListener('change', mediaQueryListener);
 		} else {
 			mediaQueryList.addListener(mediaQueryListener);
 		}
