@@ -22,14 +22,14 @@
     "prepublishOnly": "npm run build && npm run test",
     "lint": "eslint src/**/*.js",
     "test": "postcss-tape --ci",
-    "build": "rollup -c ../../rollup/default.js",
+    "build": "rollup -c ../../rollup/default.ts.js",
     "stryker": "stryker run --logLevel error"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-values-parser": "^6.0.1"
+    "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
     "postcss": "^8.3.6",
