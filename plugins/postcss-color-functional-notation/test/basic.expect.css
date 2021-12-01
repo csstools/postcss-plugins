@@ -13,9 +13,9 @@
 }
 
 .test-rgb-percentages {
-	color: rgb(179, 34, 34);
-	color: rgba(179, 34, 34, 1);
-	color: rgba(179, 34, 34, 0.5);
+	color: rgb(178, 34, 34);
+	color: rgba(178, 34, 34, 1);
+	color: rgba(178, 34, 34, 0.5);
 }
 
 .test-hsl {

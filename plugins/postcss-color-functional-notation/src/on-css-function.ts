@@ -199,17 +199,17 @@ function rgbFunctionContents(nodes): Rgb|null {
 	};
 
 	if (out.r.unit === '%') {
-		out.r.number = String(Math.round(Number(out.r.number) / 100 * 255));
+		out.r.number = String(Math.floor(Number(out.r.number) / 100 * 255));
 		out.rNode.value = out.r.number;
 	}
 
 	if (out.g.unit === '%') {
-		out.g.number = String(Math.round(Number(out.g.number) / 100 * 255));
+		out.g.number = String(Math.floor(Number(out.g.number) / 100 * 255));
 		out.gNode.value = out.g.number;
 	}
 
 	if (out.b.unit === '%') {
-		out.b.number = String(Math.round(Number(out.b.number) / 100 * 255));
+		out.b.number = String(Math.floor(Number(out.b.number) / 100 * 255));
 		out.bNode.value = out.b.number;
 	}
 
