@@ -20,12 +20,13 @@
     "postcss-lab-function": "dist/cli.mjs"
   },
   "scripts": {
-    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
-    "lint": "eslint src/**/*.ts",
-    "test": "node ./test/color/test.mjs && postcss-tape --ci",
     "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "generate-color-corpus": "python3 ./test/color/generate.py",
+    "lint": "eslint src/**/*.ts src/**/*.js --no-error-on-unmatched-pattern",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
-    "generate-color-corpus": "python3 ./test/color/generate.py"
+    "test": "node ./test/color/test.mjs && postcss-tape --ci"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
