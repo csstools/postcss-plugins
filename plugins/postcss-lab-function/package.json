@@ -31,7 +31,7 @@
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-values-parser": "^6.0.1"
+    "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
     "postcss": "^8.3.6",

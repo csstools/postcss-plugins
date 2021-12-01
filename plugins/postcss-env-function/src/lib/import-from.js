@@ -1,23 +1,16 @@
 import fs from 'fs';
 import path from 'path';
-import { parse } from 'postcss-values-parser';
 
 /**
  * Import Custom Properties from Object
  * @param {{environmentVariables: Record<string, string>, 'environment-variables': Record<string, string>}} object
- * @returns {Record<string, import('postcss-values-parser').Root>}
+ * @returns {Object}
  */
 function importEnvironmentVariablesFromObject(object) {
-	const environmentVariables = Object.assign(
+	return Object.assign(
 		{},
 		Object(object).environmentVariables || Object(object)['environment-variables'],
 	);
-
-	for (const key in environmentVariables) {
-		environmentVariables[key] = parse(environmentVariables[key], { ignoreUnknownWords: true }).nodes;
-	}
-
-	return environmentVariables;
 }
 
 /**
