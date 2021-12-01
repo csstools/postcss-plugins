@@ -1,4 +1,4 @@
-import type { Node, Dimension } from 'postcss-value-parser';
+import type { Node } from 'postcss-value-parser';
 import valueParser from 'postcss-value-parser';
 
 const dpiRatios = { dpcm: 2.54, dpi: 1, dppx: 96, x: 96 };
