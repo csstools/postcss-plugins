@@ -1,4 +1,4 @@
-import { parse } from 'postcss-values-parser';
+import valueParser from 'postcss-value-parser';
 import options from './options';
 
 export default (decl, { result }) => {
@@ -9,7 +9,7 @@ export default (decl, { result }) => {
 	let value;
 
 	try {
-		value = parse(decl.value);
+		value = valueParser(decl.value);
 	} catch (error) {
 		decl.warn(
 			result,
@@ -22,11 +22,16 @@ export default (decl, { result }) => {
 	}
 
 	let alignmentValues = [];
-	value.walkWords(walk => {
-		alignmentValues.push(
-			walk.parent.type === 'root' ? walk.toString() : walk.parent.toString(),
-		);
-	});
+
+	if (!value.nodes.length) {
+		alignmentValues = [valueParser.stringify(value)];
+	} else {
+		alignmentValues = value.nodes.filter((node) => {
+			return node.type === 'word' || node.type === 'function';
+		}).map((node) => {
+			return valueParser.stringify(node);
+		});
+	}
 
 	decl.cloneBefore({
 		prop: `align-${alignment}`,

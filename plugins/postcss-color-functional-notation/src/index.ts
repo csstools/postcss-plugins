@@ -1,27 +1,24 @@
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import valueParser from 'postcss-value-parser';
 import type { ParsedValue, FunctionNode } from 'postcss-value-parser';
 import type { Declaration, Postcss, Result } from 'postcss';
 import onCSSFunction from './on-css-function';
 
 import type { PluginCreator } from 'postcss';
-
-// NOTE : Used in unit tests.
-import { labToSRgb, lchToSRgb } from './color';
+import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 
 /** Transform lab() and lch() functions in CSS. */
 const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
 
 	return {
-		postcssPlugin: 'postcss-lab-function',
+		postcssPlugin: 'postcss-color-functional-notation',
 		Declaration: (decl: Declaration, { result, postcss }: { result: Result, postcss: Postcss }) => {
 			if (preserve && hasSupportsAtRuleAncestor(decl)) {
 				return;
 			}
 
 			const originalValue = decl.value;
-			if (!(/(^|[^\w-])(lab|lch)\(/i.test(originalValue))) {
+			if (!(/(^|[^\w-])(hsla?|rgba?)\(/i.test(originalValue))) {
 				return;
 			}
 
@@ -32,7 +29,7 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 			} catch (error) {
 				decl.warn(
 					result,
-					`Failed to parse value '${originalValue}' as a lab or hcl function. Leaving the original value intact.`,
+					`Failed to parse value '${originalValue}' as a hsl or rgb function. Leaving the original value intact.`,
 				);
 			}
 
@@ -45,7 +42,12 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 					return;
 				}
 
-				if (node.value !== 'lab' && node.value !== 'lch') {
+				if (
+					node.value !== 'hsl' &&
+					node.value !== 'hsla' &&
+					node.value !== 'rgb' &&
+					node.value !== 'rgba'
+				) {
 					return;
 				}
 
@@ -59,7 +61,7 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 
 			if (preserve && decl.variable) {
 				const parent = decl.parent;
-				const atSupportsParams = '(color: lab(0% 0 0)) and (color: lch(0% 0 0))';
+				const atSupportsParams = '(color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5))';
 				const atSupports = postcss.atRule({ name: 'supports', params: atSupportsParams, source: decl.source });
 
 				const parentClone = parent.clone();
@@ -96,11 +98,5 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 };
 
 postcssPlugin.postcss = true;
-
-// Used by unit tests.
-// Mixing named and default export causes issues with CJS.
-// Attaching these to the default export is the best solution.
-postcssPlugin['_labToSRgb'] = labToSRgb;
-postcssPlugin['_lchToSRgb'] = lchToSRgb;
 
 export default postcssPlugin;

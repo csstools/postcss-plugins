@@ -29,6 +29,15 @@
 	order: 5;
 }
 
+.test-variables {
+	order: 1;
+	background-image: image-set(
+		url(img/test.png) 1x,
+		var(--test-image-2x) 2x,
+		var(--test-image-3x, url(img/test-var-fallback-3x.png)) 3x
+	);
+}
+
 .test-mixed-units {
 	order: 1;
 	background-image: image-set(
@@ -104,7 +113,10 @@
 	}
 }
 
-.test-unparseable-image-set-function {
+.test-valid-data-url {
 	background-image: image-set(url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==) 1x, url(img/test-2x.png) 2x);
+}
+
+.test-invalid-data-url {
 	background-image: image-set(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==, url(img/test-2x.png) 2x);
 }
