@@ -1,11 +1,9 @@
 module.exports = {
 	'basic': {
 		message: 'supports basic usage',
-		warnings: 1
 	},
 	'basic:import': {
 		message: 'supports { importFrom: { environmentVariables: { ... } } } usage',
-		warnings: 1,
 		options: {
 			importFrom: {
 				environmentVariables: {
@@ -17,7 +15,6 @@ module.exports = {
 	},
 	'basic:import-fn': {
 		message: 'supports { importFrom() } usage',
-		warnings: 1,
 		options: {
 			importFrom() {
 				return {
@@ -33,7 +30,6 @@ module.exports = {
 	},
 	'basic:import-fn-promise': {
 		message: 'supports { async importFrom() } usage',
-		warnings: 1,
 		options: {
 			importFrom() {
 				return new Promise(resolve => {
@@ -51,7 +47,6 @@ module.exports = {
 	},
 	'basic:import-json': {
 		message: 'supports { importFrom: "test/import-variables.json" } usage',
-		warnings: 1,
 		options: {
 			importFrom: 'test/import-variables.json'
 		},
@@ -60,7 +55,6 @@ module.exports = {
 	},
 	'basic:import-js': {
 		message: 'supports { importFrom: "test/import-variables.js" } usage',
-		warnings: 1,
 		options: {
 			importFrom: 'test/import-variables.js'
 		},
@@ -69,7 +63,6 @@ module.exports = {
 	},
 	'basic:import-cjs': {
 		message: 'supports { importFrom: "test/import-variables.cjs" } usage',
-		warnings: 1,
 		options: {
 			importFrom: 'test/import-variables.cjs'
 		},
@@ -78,7 +71,6 @@ module.exports = {
 	},
 	'basic:import-js-from': {
 		message: 'supports { importFrom: { from: "test/import-variables.js" } } usage',
-		warnings: 1,
 		options: {
 			importFrom: { from: 'test/import-variables.js' }
 		},
@@ -87,7 +79,6 @@ module.exports = {
 	},
 	'basic:import-js-from-type': {
 		message: 'supports { importFrom: [ { from: "test/import-variables.js", type: "js" } ] } usage',
-		warnings: 1,
 		options: {
 			importFrom: [ { from: 'test/import-variables.js', type: 'js' } ]
 		},
@@ -96,7 +87,6 @@ module.exports = {
 	},
 	'basic:import-is-empty': {
 		message: 'supports { importFrom: {} } usage',
-		warnings: 1,
 		options: {
 			importFrom: {}
 		}
