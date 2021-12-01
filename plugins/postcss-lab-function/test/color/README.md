@@ -8,8 +8,8 @@ Reading :
 
 At the moment there is still unspecified behavior around color conversion from `lab`|`lch` to `rgb` or `color()`
 
-[coloraide](https://facelessuser.github.io/coloraide/) is used to mimick browser behavior.
-This allows us to quickly tweak the conversion and test the output against variants produced by coloaide.
+[coloraide](https://facelessuser.github.io/coloraide/) is used to mimic browser behavior.
+This allows us to quickly tweak the conversion and test the output against variants produced by coloraide.
 
 coloraide requires `python3`.
 
