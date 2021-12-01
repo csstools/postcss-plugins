@@ -37,6 +37,7 @@ export const externalsForCLI = [
 	'postcss-replace-overflow-wrap',
 	'postcss-selector-not',
 	'postcss-selector-parser',
+	'postcss-value-parser',
 	'postcss-values-parser',
 ];
 
@@ -82,6 +83,7 @@ export const externalsForPlugin = [
 	'postcss-replace-overflow-wrap',
 	'postcss-selector-not',
 	'postcss-selector-parser',
+	'postcss-value-parser',
 	'postcss-values-parser',
 ];
 
