@@ -37,6 +37,8 @@ const creator: PluginCreator<{ preserve: boolean, oninvalid: string }> = (opts?:
 			}
 
 			// process every image-set() function
+			const imageSetFunctions = [];
+
 			valueAST.walk((node) => {
 				if (node.type !== 'function') {
 					return;
@@ -68,13 +70,18 @@ const creator: PluginCreator<{ preserve: boolean, oninvalid: string }> = (opts?:
 					return x.type !== 'comment' && x.type !== 'space';
 				});
 
-				processImageSet(relevantNodes, decl, {
-					decl,
-					oninvalid,
-					preserve,
-					result: result,
-					postcss: postcss,
+				imageSetFunctions.push({
+					imageSetFunction: node,
+					imageSetOptionNodes: relevantNodes,
 				});
+			});
+
+			processImageSet(imageSetFunctions, decl, {
+				decl,
+				oninvalid,
+				preserve,
+				result: result,
+				postcss: postcss,
 			});
 		},
 	};

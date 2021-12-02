@@ -10,7 +10,7 @@ export function getImage(node) {
 	}
 
 	if (node.type === 'string') {
-		return valueParser.stringify(node);
+		return 'url('+valueParser.stringify(node)+')';
 	}
 
 	if (
