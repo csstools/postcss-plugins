@@ -20,7 +20,7 @@ Internet Explorer 9+ without any polyfills.
 
 To maintain compatibility with browsers supporting `prefers-color-scheme`, the
 library will remove `prefers-color-scheme` media queries in favor of
-cross-browser compatible `color-index` media queries. This ensures a seemless
+cross-browser compatible `color` media queries. This ensures a seemless
 experience, even when JavaScript is unable to run.
 
 ## Usage

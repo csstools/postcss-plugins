@@ -22,7 +22,7 @@ body {
 
 /* becomes */
 
-@media (color-index: 48) {
+@media (color: 48842621) {
   :root {
     --site-bgcolor: #1b1b1b;
     --site-color: #fff;
@@ -88,7 +88,7 @@ require('css-prefers-color-scheme')({ preserve: false });
 
 /* becomes */
 
-@media (color-index: 48) {
+@media (color: 48842621) {
   body {
     background-color: black;
   }
