@@ -26,14 +26,16 @@
     "INSTALL.md",
     "LICENSE.md",
     "README.md",
-    "dist"
+    "dist",
+    "browser.js"
   ],
   "bin": {
     "css-has-pseudo": "dist/cli.mjs"
   },
   "scripts": {
-    "build": "rollup -c ../../rollup/default.js",
+    "build": "rollup -c ../../rollup/default.js && npm run copy-browser-scripts-to-old-location",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "copy-browser-scripts-to-old-location": "node -e \"fs.copyFileSync('./dist/browser-global.js', './browser.js')\"",
     "lint": "eslint src/**/*.ts src/**/*.js --no-error-on-unmatched-pattern",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
