@@ -22,7 +22,6 @@
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "generate-color-corpus": "python3 ./test/color/generate.py",
     "lint": "eslint src/**/*.ts src/**/*.js --no-error-on-unmatched-pattern",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",

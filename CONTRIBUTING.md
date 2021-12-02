@@ -12,6 +12,8 @@ Found a problem? Want a new feature?
 
 Remember, a bug is a _demonstrable problem_ caused by _our_ code.
 
+_If this guide itself is not working or is not clear, please report it._
+
 ## Submitting Pull Requests
 
 Pull requests are the greatest contributions, so be sure they are focused in
@@ -29,7 +31,12 @@ scope and avoid unrelated commits.
    git remote add upstream https://github.com/csstools/postcss-plugins.git
 
    # Install the tools necessary for testing
+   # Node 16 or higher is required to build and run tests.
+   # There is config for nvm and volta to help you use the right version.
    npm install
+
+   # Do an initial build of everything to make sure local dependencies can be found.
+   npm run build --workspaces
    ```
 
 2. Create a branch for your feature or fix:
@@ -42,10 +49,22 @@ scope and avoid unrelated commits.
    git checkout -b fix/something
    ```
 
-3. If your code follows our practices, then push your feature branch:
+3. Navigate to the plugin you want to contribute to.
    ```bash
+   # Navigate to a plugin directory
+   cd plugins/<plugin-name>
+   ```
+   ```bash
+   # Navigate to the postcss-preset-env directory
+   cd plugin-packs/postcss-preset-env
+   ```
+
+4. If your code follows our practices, then push your feature branch:
+   ```bash
+   # Run the linter
+   npm run lint
    # Test current code
-   npm test
+   npm run build && npm run test
    ```
    ```bash
    # Push the branch for your new feature
