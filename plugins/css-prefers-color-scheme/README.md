@@ -28,8 +28,11 @@ colorScheme = initPrefersColorScheme('dark') // apply "dark" queries (you can ch
 </script>
 ```
 
-⚠️ Please use a versioned url, like this : `https://unpkg.com/css-prefers-color-scheme@5.0.0/dist/browser-global.js`
+⚠️ Please use a versioned url, like this : `https://unpkg.com/css-prefers-color-scheme@6.0.0/dist/browser-global.js`
 Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+
+⚠️ If you were using an older version via a CDN, please update the entire url.
+The old URL will no longer work in a future release.
 
 ## Usage
 
@@ -41,6 +44,10 @@ Without the version, you might unexpectedly get a new major version of the libra
 ---
 
 ## How does it work?
+
+_This plugin used to work with `color-index` as detailed here : [color-index](https://github.com/csstools/css-prefers-color-scheme#how-does-it-work)._
+_This is deprecated but will continue to work for now._
+_`color` has better browser support and enables complex media queries._
 
 [Prefers Color Scheme] uses a [PostCSS plugin](README-POSTCSS.md) to transform
 `prefers-color-scheme` queries into `color` queries. This changes

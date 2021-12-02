@@ -13,5 +13,11 @@ module.exports = {
 		options: {
 			mediaQuery: 'color-index'
 		}
+	},
+	'basic:preserve': {
+		message: 'supports { preserve: true } usage',
+		options: {
+			preserve: true
+		}
 	}
 };

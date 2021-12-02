@@ -42,6 +42,12 @@ Next, use your transformed CSS with this script:
 <script>cssHasPseudo(document)</script>
 ```
 
+⚠️ Please use a versioned url, like this : `https://unpkg.com/css-has-pseudo@3.0.0/dist/browser-global.js`
+Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+
+⚠️ If you were using an older version via a CDN, please update the entire url.
+The old URL will no longer work in a future release.
+
 That’s it. The script is 765 bytes and works in most browser versions, including
 Internet Explorer 11. With a [Mutation Observer polyfill], the script will work
 down to Internet Explorer 9.

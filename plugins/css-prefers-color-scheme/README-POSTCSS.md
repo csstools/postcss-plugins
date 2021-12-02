@@ -95,6 +95,35 @@ require('css-prefers-color-scheme')({ preserve: false });
 }
 ```
 
+#### mediaQuery
+
+The `mediaQuery` option defines if either `color` or `color-index` should be used.
+Without passing an option CSS for both will be provided.
+When omitted CSS is generated that is compatible with the both the new and old browser polyfill.
+This setting allows you to shrink your bundle size.
+
+In a future version this setting will be removed and only `color` queries will be generated.
+
+You have updated the browser polyfill :
+_version 6 or higher_
+
+```js
+postcssPrefersColorScheme({ mediaQuery: 'color' });
+```
+
+You have **not** updated the browser polyfill :
+_version 5 or lower_
+
+```js
+postcssPrefersColorScheme({ mediaQuery: 'color-index' });
+```
+
+You are unsure :
+
+```js
+postcssPrefersColorScheme();
+```
+
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/css-prefers-color-scheme.svg
