@@ -197,6 +197,28 @@
 	}
 }
 
+.list-1 {
+	background-image: linear-gradient(#4444, #8888), url(img.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.list-1 {
+	background-image: linear-gradient(#4444, #8888), url(img@2x.png);
+}
+}
+
+.list-2 {
+	background-image: url(img-a.png), url(img-b.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.list-2 {
+	background-image: url(img-a@2x.png), url(img-b@2x.png);
+}
+}
+
 .test-valid-data-url {
 	background-image: url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==);
 }
