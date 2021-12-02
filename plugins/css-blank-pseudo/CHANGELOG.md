@@ -1,5 +1,11 @@
 # Changes to CSS Blank Pseudo
 
+### 3.0.0
+
+- Changed: require/import/polyfill paths.
+- Changed: Supports Node 12+ (major).
+- Update documentation
+
 ### 2.0.0 (September 16, 2021)
 
 - Changed: Supports PostCSS 8.3+ (major).

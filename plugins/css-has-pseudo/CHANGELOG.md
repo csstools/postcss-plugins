@@ -1,5 +1,10 @@
 # Changes to CSS Has Pseudo
 
+### 3.0.0
+
+- Changed: require/import/polyfill paths.
+- Update documentation
+
 ### 2.0.0 (September 16, 2021)
 
 - Updated: Support for PostCS 8+ (major).
