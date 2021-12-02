@@ -26,7 +26,8 @@
     "INSTALL.md",
     "LICENSE.md",
     "README.md",
-    "dist"
+    "dist",
+    "browser.js"
   ],
   "bin": {
     "css-blank-pseudo": "dist/cli.mjs"
