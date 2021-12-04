@@ -8,41 +8,58 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 
 	return {
 		postcssPlugin: 'css-has-pseudo',
-		Rule: rule => {
-			if (rule.selector.includes(':has(')) {
-				const fallbackSelector = getFallbackSelector(rule.selector);
+		Rule: (rule, { result }) => {
+			if (!rule.selector.includes(':has(')) {
+				return;
+			}
 
-				if (shouldPreserve) {
-					rule.cloneBefore({ selector: fallbackSelector });
-				} else {
-					rule.assign({ selector: fallbackSelector });
-				}
+			let modifiedSelector;
+
+			try {
+				const modifiedSelectorAST = parser((selectors) => {
+					selectors.walkPseudos(selector => {
+						if (selector.value === ':has' && selector.nodes) {
+							const isNotHas = isParentInNotPseudo(selector);
+
+							selector.value = isNotHas ? ':not-has' : ':has';
+
+							const attribute = parser.attribute({
+								attribute: getEscapedCss(String(selector)),
+							});
+
+							if (isNotHas) {
+								selector.parent.parent.replaceWith(attribute);
+							} else {
+								selector.replaceWith(attribute);
+							}
+						}
+					});
+				}).processSync(rule.selector);
+
+				modifiedSelector = String(modifiedSelectorAST);
+			} catch (_) {
+				rule.warn(result, `Failed to parse selector : ${rule.selector}`);
+				return;
+			}
+
+			if (typeof modifiedSelector === 'undefined') {
+				return;
+			}
+
+			if (modifiedSelector === rule.selector) {
+				return;
+			}
+
+			if (shouldPreserve) {
+				rule.cloneBefore({ selector: modifiedSelector });
+			} else {
+				rule.assign({ selector: modifiedSelector });
 			}
 		},
 	};
 };
 
 creator.postcss = true;
-
-const getFallbackSelector = (/** @type {string} */ selectorText) => parser(selectors => {
-	selectors.walkPseudos(selector => {
-		if (selector.value === ':has' && selector.nodes) {
-			const isNotHas = isParentInNotPseudo(selector);
-
-			selector.value = isNotHas ? ':not-has' : ':has';
-
-			const attribute = parser.attribute({
-				attribute: getEscapedCss(String(selector)),
-			});
-
-			if (isNotHas) {
-				selector.parent.parent.replaceWith(attribute);
-			} else {
-				selector.replaceWith(attribute);
-			}
-		}
-	});
-}).processSync(selectorText);
 
 /** Default options. */
 const defaultOptions = { preserve: true };

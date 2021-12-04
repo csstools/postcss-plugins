@@ -15,6 +15,7 @@ const allowedPlugins = [
 	'postcss-logical',
 	'postcss-pseudo-class-any-link',
 	'css-blank-pseudo',
+	'css-has-pseudo',
 ];
 
 if (allowedPlugins.indexOf(pluginName) === -1) {

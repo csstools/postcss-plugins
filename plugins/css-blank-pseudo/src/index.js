@@ -26,7 +26,7 @@ const creator = opts => {
 				}).processSync(rule.selector);
 
 				modifiedSelector = String(modifiedSelectorAST);
-			} catch (e) {
+			} catch (_) {
 				rule.warn(result, `Failed to parse selector : ${rule.selector}`);
 				return;
 			}
