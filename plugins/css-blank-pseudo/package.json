@@ -39,7 +39,8 @@
     "lint": "eslint src/**/*.ts src/**/*.js --no-error-on-unmatched-pattern",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
-    "test": "postcss-tape --ci"
+    "test": "postcss-tape --ci",
+    "cli": "css-blank-pseudo"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"

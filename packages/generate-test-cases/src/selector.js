@@ -3,7 +3,7 @@ module.exports = generateSelectorTestCases;
 function generateSelectorTestCases(selector) {
 	let selectors = [];
 
-	for (const other of [selector, 'button', '.foo', '#foo', '--foo', '__foo', ':--foo', '[foo="baz"]', '*', ':hover', '::before']) {
+	for (const other of [selector, 'button', '.🧑🏾‍🎤', '.foo', '#foo', '__foo', ':--foo', '[foo="baz"]', '*', ':hover', '::before']) {
 		for (const combinator of ['', ' ' , '  ', '+', ' + ', '~', ' ~ ', '>', ' > ']) {
 			selectors.push(`${other}${combinator}${selector}`);
 			selectors.push(`${selector}${combinator}${other}`);
@@ -21,7 +21,6 @@ function generateSelectorTestCases(selector) {
 	selectors.push(`:${selector}`);
 	selectors.push(`:--${selector}`);
 	selectors.push(`__${selector}`);
-	selectors.push(`--${selector}`);
 
 	let result =  selectors.map((x, index) => {
 		return `${x} {

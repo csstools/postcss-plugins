@@ -22,7 +22,7 @@ if (allowedPlugins.indexOf(pluginName) === -1) {
 	process.exit(1);
 }
 
-const pluginDir = path.parse(require.resolve(path.join(pluginName, 'package.json'))).dir;
+const pluginDir = path.join('../../plugins', pluginName);
 
 main();
 function main() {
