@@ -17,3 +17,9 @@ npm run generate postcss-color-functional-notation value "rgba(178 34 34 / 1)" "
 
 # Double position gradients
 npm run generate postcss-double-position-gradients value "linear-gradient(90deg, black 25% 50%, blue 50% 75%)"  --workspace="@csstools/generate-test-cases"
+
+# :focus-visible pseudo
+npm run generate postcss-focus-visible selector ":focus-visible" --workspace="@csstools/generate-test-cases"
+
+# :focus-within pseudo
+npm run generate postcss-focus-within selector ":focus-within" --workspace="@csstools/generate-test-cases"

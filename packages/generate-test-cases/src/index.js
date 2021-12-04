@@ -17,6 +17,8 @@ const allowedPlugins = [
 	'postcss-dir-pseudo-class',
 	'postcss-double-position-gradients',
 	'postcss-env-function',
+	'postcss-focus-visible',
+	'postcss-focus-within',
 	'postcss-logical',
 	'postcss-nesting',
 	'postcss-pseudo-class-any-link',
