@@ -3,7 +3,7 @@
 ### 3.0.0
 
 - Changed: require/import/polyfill paths.
-- Update documentation
+- Updated: documentation
 
 ### 2.0.0 (September 16, 2021)
 

@@ -1,5 +1,12 @@
 # Changes to Prefers Color Scheme
 
+### 6.0.0
+
+- Changed: require/import/polyfill paths.
+- Updated: documentation
+- Fixed: `CSSRuleList` edits skipping rules as this is a live list.
+- Fixed: complex `@media` queries not working.
+
 ### 5.0.0 (September 17, 2021)
 
 - Updated: Support for PostCS 8+ (major).

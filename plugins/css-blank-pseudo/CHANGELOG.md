@@ -4,7 +4,7 @@
 
 - Changed: require/import/polyfill paths.
 - Changed: Supports Node 12+ (major).
-- Update documentation
+- Updated: documentation
 
 ### 2.0.0 (September 16, 2021)
 
