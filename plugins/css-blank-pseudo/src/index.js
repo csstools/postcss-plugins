@@ -21,6 +21,11 @@ const creator = opts => {
 							return;
 						}
 
+						if (selector.nodes && selector.nodes.length) {
+							// `:blank` is not a function
+							return;
+						}
+
 						selector.replaceWith(replacementAST.clone());
 					});
 				}).processSync(rule.selector);

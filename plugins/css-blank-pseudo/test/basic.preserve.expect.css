@@ -25,6 +25,10 @@ test :matches(test [blank] [blank] test) test {
 	order: 3;
 }
 
-test:not([blank]) {
+:blank(ignore) {
 	order: 4;
+}
+
+test:not([blank]) {
+	order: 5;
 }
