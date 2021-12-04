@@ -28,7 +28,7 @@ function generateSelectorTestCases(selector) {
 }`;
 	}).join('\n\n') + '\n\n';
 
-	result = result + `/* ${selector} */\n\n`;
+	result = result + `/* ${selector} */\n`;
 
 	return result;
 }

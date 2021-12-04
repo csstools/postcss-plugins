@@ -15,12 +15,19 @@ module.exports = {
 		options: {
 			preserve: true,
 		},
-  },
-  "basic:shadow": {
-    message: "support { shadow: true } usage",
-    source: "basic.css",
-    options: {
-      shadow: true
-    },
-  },
+	},
+	"basic:shadow": {
+		message: "support { shadow: true } usage",
+		source: "basic.css",
+		options: {
+			shadow: true
+		},
+	},
+	'generated-selector-cases': {
+		message: 'correctly handles generated cases',
+		warnings: 2,
+		options: {
+			preserve: false
+		}
+	},
 };

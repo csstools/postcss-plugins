@@ -9,7 +9,7 @@
   "scripts": {
     "generate": "node ./src/index.js",
     "lint": "eslint src/**/*.js",
-    "stryker": "stryker run --logLevel error"
+    "test": "exit 0;"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"

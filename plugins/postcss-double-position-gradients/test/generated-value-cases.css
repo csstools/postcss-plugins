@@ -1,0 +1,27 @@
+.order-0 {
+	order: var(1, linear-gradient(90deg, black 25% 50%, blue 50% 75%));
+}
+
+.order-1 {
+	order: var(linear-gradient(90deg, black 25% 50%, blue 50% 75%), 1);
+}
+
+.order-2 {
+	order: var(linear-gradient(90deg, black 25% 50%, blue 50% 75%), linear-gradient(90deg, black 25% 50%, blue 50% 75%));
+}
+
+/* linear-gradient(90deg, black 25% 50%, blue 50% 75%) */
+
+:root {
+	--some-var: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+
+.content {
+	content: 'linear-gradient(90deg, black 25% 50%, blue 50% 75%)';
+}
+
+@supports (order: linear-gradient(90deg, black 25% 50%, blue 50% 75%)) {
+	.support {
+		order: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+	}
+}
