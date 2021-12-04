@@ -16,7 +16,7 @@ npm install css-blank-pseudo --save-dev
 Use [CSS Blank Pseudo] to process your CSS:
 
 ```js
-const postcssBlankPseudo = require('css-blank-pseudo/postcss');
+const postcssBlankPseudo = require('css-blank-pseudo');
 
 postcssBlankPseudo.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
@@ -25,7 +25,7 @@ Or use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssBlankPseudo = require('css-blank-pseudo/postcss');
+const postcssBlankPseudo = require('css-blank-pseudo');
 
 postcss([
   postcssBlankPseudo(/* pluginOptions */)
@@ -43,7 +43,7 @@ npm install postcss-cli --save-dev
 Use [CSS Blank Pseudo] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssBlankPseudo = require('css-blank-pseudo/postcss');
+const postcssBlankPseudo = require('css-blank-pseudo');
 
 module.exports = {
   plugins: [
@@ -63,7 +63,7 @@ npm install postcss-loader --save-dev
 Use [CSS Blank Pseudo] in your Webpack configuration:
 
 ```js
-const postcssBlankPseudo = require('css-blank-pseudo/postcss');
+const postcssBlankPseudo = require('css-blank-pseudo');
 
 module.exports = {
   module: {
@@ -100,7 +100,7 @@ file:
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssBlankPseudo = require('css-blank-pseudo/postcss');
+const postcssBlankPseudo = require('css-blank-pseudo');
 
 module.exports = config => reactAppRewirePostcss(config, {
   plugins: () => [
@@ -121,7 +121,7 @@ Use [CSS Blank Pseudo] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssBlankPseudo = require('css-blank-pseudo/postcss');
+const postcssBlankPseudo = require('css-blank-pseudo');
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
   postcss([
@@ -143,7 +143,7 @@ npm install grunt-postcss --save-dev
 Use [CSS Blank Pseudo] in your Gruntfile:
 
 ```js
-const postcssBlankPseudo = require('css-blank-pseudo/postcss');
+const postcssBlankPseudo = require('css-blank-pseudo');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -161,7 +161,7 @@ grunt.initConfig({
 });
 ```
 
-[CSS Blank Pseudo]: https://github.com/csstools/css-blank-pseudo
+[CSS Blank Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss

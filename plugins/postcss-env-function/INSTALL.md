@@ -13,15 +13,7 @@ Add [PostCSS Environment Variables] to your project:
 npm install postcss-env-function --save-dev
 ```
 
-Use [PostCSS Environment Variables] to process your CSS:
-
-```js
-const postcssEnvFunction = require('postcss-env-function');
-
-postcssEnvFunction.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -165,6 +157,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Environment Variables]: https://github.com/csstools/postcss-env-function
+[PostCSS Environment Variables]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-env-function
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

@@ -1,6 +1,6 @@
 module.exports = {
 	'basic': {
-		message: 'supports basic usage'
+		message: 'supports basic usage',
 	},
 	'basic:import': {
 		message: 'supports { importFrom: { environmentVariables: { ... } } } usage',

@@ -6,8 +6,7 @@
 	order: 1;
 }
 
-[focus-visible],
-[focus-visible] test,
+[focus-visible],[focus-visible] test,
 test [focus-visible],
 test test[focus-visible],
 test [focus-visible] test,

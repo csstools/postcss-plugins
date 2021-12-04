@@ -26,14 +26,14 @@ export default (decl, values, dir, preserve) => {
 		clean(decl, preserve);
 		return;
 	}
-}
+};
 
 function lDecl(decl, values) {
 	return [
 		decl.cloneBefore({ prop: 'top', value: values[1] }),
 		decl.cloneBefore({ prop: 'left', value: values[2] || values[1] }),
 		decl.cloneBefore({ prop: 'bottom', value: values[3] || values[1] }),
-		decl.cloneBefore({ prop: 'right', value: values[4] || values[2] || values[1] })
+		decl.cloneBefore({ prop: 'right', value: values[4] || values[2] || values[1] }),
 	];
 }
 
@@ -42,7 +42,7 @@ function rDecl(decl, values) {
 		decl.cloneBefore({ prop: 'top', value: values[1] }),
 		decl.cloneBefore({ prop: 'right', value: values[2] || values[1] }),
 		decl.cloneBefore({ prop: 'bottom', value: values[3] || values[1] }),
-		decl.cloneBefore({ prop: 'left', value: values[4] || values[2] || values[1] })
+		decl.cloneBefore({ prop: 'left', value: values[4] || values[2] || values[1] }),
 	];
 }
 

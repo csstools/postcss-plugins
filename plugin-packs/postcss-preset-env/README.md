@@ -1,7 +1,7 @@
 # PostCSS Preset Env [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/postcss-preset-env.svg" height="20">][npm-url]
-[<img alt="build status" src="https://github.com/csstools/postcss-preset-env/workflows/test/badge.svg" height="20">][cli-url]
+[<img alt="build status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="support chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
 [PostCSS Preset Env] lets you convert modern CSS into something most browsers
@@ -95,15 +95,7 @@ Add [PostCSS Preset Env] to your project:
 npm install postcss-preset-env --save-dev
 ```
 
-Use [PostCSS Preset Env] to process your CSS:
-
-```js
-const postcssPresetEnv = require('postcss-preset-env');
-
-postcssPresetEnv.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Preset Env] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -141,7 +133,7 @@ features.
 
 The `features` option enables or disables specific polyfills by ID. Passing
 `true` to a specific feature ID will enable its polyfill, while passing `false`
-will disable it. [List of IDs](https://github.com/csstools/postcss-preset-env/blob/master/src/lib/plugins-by-id.js#L36)
+will disable it. [List of IDs](https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/src/lib/plugins-by-id.js#L36)
 
 ```js
 postcssPresetEnv({
@@ -362,8 +354,8 @@ postcssPresetEnv({
 });
 ```
 
-[cli-img]: https://github.com/postcss/postcss-preset-env/workflows/test/badge.svg
-[cli-url]: https://github.com/postcss/postcss-preset-env/actions/workflows/test.yml?query=workflow/test
+[cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-preset-env.svg
@@ -374,7 +366,7 @@ postcssPresetEnv({
 [caniuse]: https://caniuse.com/
 [cssdb]: https://cssdb.org/
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Preset Env]: https://github.com/csstools/postcss-preset-env
+[PostCSS Preset Env]: https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env
 [readme-style-with-preset-env-img]: https://csstools.github.io/postcss-preset-env/readme-style-with-preset-env.svg
 [readme-style-with-preset-env-url]: https://codepen.io/pen?template=OZRovK
 [readme-transform-with-preset-env-img]: https://csstools.github.io/postcss-preset-env/readme-transform-with-preset-env.svg

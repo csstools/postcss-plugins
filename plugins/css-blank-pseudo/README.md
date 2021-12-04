@@ -1,7 +1,6 @@
 # CSS Blank Pseudo [<img src="http://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][CSS Blank Pseudo]
 
 [![NPM Version][npm-img]][npm-url]
-[![Build Status][cli-img]][cli-url]
 [![Support Chat][git-img]][git-url]
 
 [CSS Blank Pseudo] lets you style form elements when they are empty, following
@@ -22,29 +21,24 @@ input:blank {
 From the command line, transform CSS files that use `:blank` selectors:
 
 ```bash
-npx css-blank-pseudo SOURCE.css TRANSFORMED.css
+npx css-blank-pseudo SOURCE.css --output TRANSFORMED.css
 ```
 
 Next, use your transformed CSS with this script:
 
 ```html
 <link rel="stylesheet" href="TRANSFORMED.css">
-<script src="https://unpkg.com/css-blank-pseudo/browser"></script>
+<script src="https://unpkg.com/css-blank-pseudo/dist/browser-global.js"></script>
 <script>cssBlankPseudo(document)</script>
 ```
 
-That’s it. The script is 509 bytes and works in all browsers.
+⚠️ Please use a versioned url, like this : `https://unpkg.com/css-blank-pseudo@3.0.0/dist/browser-global.js`
+Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
----
+⚠️ If you were using an older version via a CDN, please update the entire url.
+The old URL will no longer work in a future release.
 
-If you support Internet Explorer 11, use the **browser legacy** script, which
-is 671 bytes:
-
-```html
-<link rel="stylesheet" href="TRANSFORMED.css">
-<script src="https://unpkg.com/css-blank-pseudo/browser-legacy"></script>
-<script>cssBlankPseudo(document)</script>
-```
+That’s it. The script works in most browsers.
 
 ## How it works
 
@@ -75,13 +69,37 @@ elements otherwise matching `:blank` natively.
 <input value="This element has a value">
 ```
 
-[cli-img]: https://img.shields.io/travis/csstools/css-blank-pseudo/master.svg
-[cli-url]: https://travis-ci.org/csstools/css-blank-pseudo
+## ⚠️ `:not(:blank)`
+
+with option : `preserve` `true`
+
+```css
+input:not(:blank) {
+  background-color: yellow;
+}
+
+/* becomes */
+
+input:not([blank]) {
+  background-color: yellow;
+}
+
+input:not(:blank) {
+  background-color: yellow;
+}
+```
+
+When you do not include the JS polyfill one will always match in browsers that support `:blank` natively.
+In browsers that do not support `:blank` natively the rule will be invalid.
+
+_currently no browsers support `:blank`_
+
+
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/css-blank-pseudo.svg
 [npm-url]: https://www.npmjs.com/package/css-blank-pseudo
 
-[CSS Blank Pseudo]: https://github.com/csstools/css-blank-pseudo
+[CSS Blank Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo
 [PostCSS Preset Env]: https://preset-env.cssdb.org/
 [Selectors Level 4]: https://drafts.csswg.org/selectors-4/#blank

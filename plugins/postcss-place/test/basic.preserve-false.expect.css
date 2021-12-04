@@ -33,3 +33,17 @@ d {
 	align-self: first;
 	justify-self: var(--second);
 }
+
+e {
+	align-content: var(--first, --fallback);
+	justify-content: second;
+	align-items: var(--first, --fallback);
+	justify-items: second;
+	align-self: var(--first, --fallback);
+	justify-self: second;
+}
+
+.test-unparseable-var-in-place-declaration {
+	align-content: var(; );
+	justify-content: var(; );
+}

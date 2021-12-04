@@ -4,54 +4,37 @@
   "description": "Use logical properties and values in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/postcss-logical",
-  "homepage": "https://github.com/csstools/postcss-logical#readme",
-  "bugs": "https://github.com/csstools/postcss-logical/issues",
-  "main": "index.cjs.js",
-  "module": "index.esm.mjs",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
   "files": [
-    "index.cjs.js",
-    "index.cjs.js.map",
-    "index.esm.mjs",
-    "index.esm.mjs.map"
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
+    "dist"
   ],
+  "bin": {
+    "postcss-logical": "dist/cli.mjs"
+  },
   "scripts": {
-    "build": "rollup --config .rollup.js --silent",
-    "prepublishOnly": "npm test",
-    "pretest:tape": "npm run build",
-    "test": "npm run test:js && npm run test:tape",
-    "test:js": "eslint src/{*,**/*}.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "postcss-tape"
+    "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "eslint src/**/*.ts src/**/*.js --no-error-on-unmatched-pattern",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "stryker": "stryker run --logLevel error",
+    "test": "postcss-tape --ci"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
+  },
+  "devDependencies": {
+    "postcss": "^8.3.6",
+    "postcss-tape": "^6.0.1"
   },
   "peerDependencies": {
     "postcss": "^8.3"
-  },
-  "devDependencies": {
-    "@babel/core": "7.15.5",
-    "@babel/preset-env": "7.15.6",
-    "@rollup/plugin-babel": "5.3.0",
-    "eslint": "7.32.0",
-    "postcss": "8.3.6",
-    "postcss-tape": "6.0.1",
-    "pre-commit": "1.2.2",
-    "rollup": "2.56.3"
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "impliedStrict": true,
-      "sourceType": "module"
-    },
-    "root": true
   },
   "keywords": [
     "postcss",
@@ -80,5 +63,10 @@
     "padding",
     "size",
     "text"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugins/postcss-logical"
+  }
 }

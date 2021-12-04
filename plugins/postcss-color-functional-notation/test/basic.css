@@ -27,6 +27,10 @@
 	color: hsl(120 100% 50% / 100%);
 	color: hsl(120 100% 50% / 50%);
 	color: hsla(120deg 100% 50%);
+
+	color: hsl(0.5turn 100% 50%);
+	color: hsl(200grad 100% 50%);
+	color: hsl(3.14159rad 100% 50%);
 }
 
 .test-hsla {
@@ -44,4 +48,8 @@
 	color: hwb(0 0% 0% / .5);
 	color: hwb(0 0% 0% / 100%);
 	color: hwb(0 0% 0% / 50%);
+}
+
+.test-unparseable-color-function {
+	color: rgb(; );
 }

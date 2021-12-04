@@ -1,32 +1,33 @@
 {
   "name": "postcss-preset-env",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Convert modern CSS into something browsers understand",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/postcss-preset-env",
-  "homepage": "https://github.com/csstools/postcss-preset-env#readme",
-  "bugs": "https://github.com/csstools/postcss-preset-env/issues",
-  "main": "dist/index.js",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-preset-env#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "files": [
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
     "dist"
   ],
+  "bin": {
+    "postcss-preset-env": "dist/cli.mjs"
+  },
   "scripts": {
-    "build": "npx rollup -c .rollup.js",
-    "build:watch": "npx rollup -c .rollup.js --watch",
-    "lint": "npx eslint --cache src",
-    "lint:fix": "npx eslint --cache --fix",
-    "pretest": "npm install && npm run build",
-    "test": "npm run lint && npm run tape",
-    "tape": "npx postcss-tape",
-    "prepublishOnly": "npm test"
+    "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "eslint src/**/*.ts src/**/*.js --no-error-on-unmatched-pattern",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "stryker": "stryker run --logLevel error",
+    "test": "postcss-tape --ci"
   },
   "engines": {
-    "node": ">=12"
-  },
-  "peerDependencies": {
-    "postcss": "^8.3"
+    "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
     "autoprefixer": "^10.4.0",
@@ -36,83 +37,40 @@
     "css-has-pseudo": "^2.0.0",
     "css-prefers-color-scheme": "^5.0.0",
     "cssdb": "^5.0.0",
-    "postcss": "^8.3",
     "postcss-attribute-case-insensitive": "^5.0.0",
-    "postcss-color-functional-notation": "^4.0.0",
+    "postcss-color-functional-notation": "^4.0.1",
     "postcss-color-hex-alpha": "^8.0.0",
     "postcss-color-rebeccapurple": "^7.0.0",
     "postcss-custom-media": "^8.0.0",
     "postcss-custom-properties": "^12.0.0",
     "postcss-custom-selectors": "^6.0.0",
     "postcss-dir-pseudo-class": "^6.0.0",
-    "postcss-double-position-gradients": "^3.0.0",
-    "postcss-env-function": "^4.0.1",
+    "postcss-double-position-gradients": "^3.0.1",
+    "postcss-env-function": "^4.0.2",
     "postcss-focus-visible": "^6.0.1",
     "postcss-focus-within": "^5.0.1",
     "postcss-font-variant": "^5.0.0",
     "postcss-gap-properties": "^3.0.0",
-    "postcss-image-set-function": "^4.0.0",
-    "postcss-initial": "^3.0.4",
-    "postcss-lab-function": "^4.0.0",
+    "postcss-image-set-function": "^4.0.2",
+    "postcss-initial": "^4.0.1",
+    "postcss-lab-function": "^4.0.1",
     "postcss-logical": "^5.0.0",
     "postcss-media-minmax": "^5.0.0",
-    "postcss-nesting": "^10.0.0",
+    "postcss-nesting": "^10.0.2",
     "postcss-overflow-shorthand": "^3.0.0",
     "postcss-page-break": "^3.0.4",
-    "postcss-place": "^7.0.0",
+    "postcss-place": "^7.0.1",
     "postcss-pseudo-class-any-link": "^7.0.0",
     "postcss-replace-overflow-wrap": "^4.0.0",
     "postcss-selector-not": "^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
-    "eslint": "^8.1.0",
+    "postcss": "^8.3.6",
     "postcss-simple-vars": "^6.0.3",
-    "postcss-tape": "^6.0.1",
-    "pre-commit": "^1.2.2",
-    "rollup": "^2.58.3",
-    "rollup-plugin-babel": "^4.4.0"
+    "postcss-tape": "^6.0.1"
   },
-  "babel": {
-    "presets": [
-      [
-        "@babel/env",
-        {
-          "targets": "maintained node versions"
-        }
-      ]
-    ]
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
-    },
-    "root": true
-  },
-  "rollup": {
-    "input": "src/postcss.js",
-    "plugins": [
-      "rollup-plugin-babel"
-    ],
-    "output": [
-      {
-        "exports": "default",
-        "file": "dist/index.js",
-        "format": "cjs"
-      },
-      {
-        "file": "dist/index.mjs",
-        "format": "esm"
-      }
-    ]
+  "peerDependencies": {
+    "postcss": "^8.3"
   },
   "keywords": [
     "postcss",
@@ -127,5 +85,10 @@
     "csswg",
     "future",
     "next"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugin-packs/postcss-preset-env"
+  }
 }

@@ -7,8 +7,8 @@ export default function postcssSystemUiFont() {
 					node.value = node.value.replace(systemUiMatch, systemUiReplace);
 				}
 			}
-		}
-	}
+		},
+	};
 }
 
 postcssSystemUiFont.postcss = true;
@@ -23,7 +23,7 @@ const systemUiFamily = [
 	/* Ubuntu 10.10+ */ 'Ubuntu',
 	/* Gnome 3+ */ 'Cantarell',
 	/* KDE Plasma 5+ */ 'Noto Sans',
-	/* fallback */ 'sans-serif'
+	/* fallback */ 'sans-serif',
 ];
 const systemUiMatch = new RegExp(`(^|,|${whitespace}+)(?:system-ui${whitespace}*)(?:,${whitespace}*(?:${systemUiFamily.join('|')})${whitespace}*)?(,|$)`, 'i');
 const systemUiReplace = `$1${systemUiFamily.join(', ')}$2`;

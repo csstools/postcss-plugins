@@ -2,11 +2,11 @@
 
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
-[![Build Status][cli-img]][cli-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS Nesting] lets you nest style rules inside each other, following the
-[CSS Nesting] specification.
+[CSS Nesting] specification. If you want nested rules the same way [Sass] works
+you might want to use [PostCSS Nested] instead.
 
 ```pcss
 a, b {
@@ -66,72 +66,17 @@ You can also use [PostCSS Nesting] on [Deno]:
 
 ```js
 import postcss from "https://deno.land/x/postcss/mod.js";
-import postcssNesting from "https://deno.land/x/postcss_nesting/mod.js";
+import postcssNesting from "https://cdn.jsdelivr.net/npm/postcss-nesting@10/mod.js";
 
 await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
 ```
 
-## Options
+### ⚠️ Spec disclaimer
 
-### allowDeclarationsAfterNestedRules
+The [CSS Nesting Module] spec states on nesting that "Declarations occuring after a nested rule are invalid and ignored.".
+While we think it makes sense on browsers, enforcing this at the plugin level introduces several constrains that would
+interfere with PostCSS' plugin nature such as with `@mixin`
 
-The [specification](https://www.w3.org/TR/css-nesting-1/#mixing) does not allow declarations after nested rules.
-This was previously supported by this plugin and can be re-enabled with `allowDeclarationsAfterNestedRules`.
-
-Before :
-
-```css
-a {
-  color: red;
-
-  & b {
-    color: white;
-  }
-
-  padding: 20px;
-}
-```
-
-After **without** the option :
-
-```js
-postcssNesting()
-```
-
-```css
-a {
-  color: red;
-}
-
-a b {
-  color: white;
-}
-```
-
-After **with** the option :
-
-```js
-postcssNesting({
-  allowDeclarationsAfterNestedRules: true
-})
-```
-
-```css
-a {
-  color: red;
-}
-
-a b {
-  color: white;
-}
-
-a {
-  padding: 20px;
-}
-```
-
-[cli-img]: https://img.shields.io/travis/csstools/postcss-nesting.svg
-[cli-url]: https://travis-ci.org/csstools/postcss-nesting
 [css-img]: https://cssdb.org/badge/nesting-rules.svg
 [css-url]: https://cssdb.org/#nesting-rules
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
@@ -141,5 +86,8 @@ a {
 
 [CSS Nesting]: https://drafts.csswg.org/css-nesting-1/
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Nesting]: https://github.com/jonathantneal/postcss-nesting
+[PostCSS Nesting]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting
 [Deno]: https://deno.land/x/postcss_nesting
+[PostCSS Nested]: https://github.com/postcss/postcss-nested
+[Sass]: https://sass-lang.com/
+[CSS Nesting Module]: https://www.w3.org/TR/css-nesting-1/

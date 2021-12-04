@@ -22,13 +22,17 @@ Next, use that transformed CSS with this script:
 
 ```html
 <link rel="stylesheet" href="TRANSFORMED.css">
-<script src="https://unpkg.com/css-prefers-color-scheme/browser.min"></script>
+<script src="https://unpkg.com/css-prefers-color-scheme/dist/browser-global.js"></script>
 <script>
 colorScheme = initPrefersColorScheme('dark') // apply "dark" queries (you can change it afterward, too)
 </script>
 ```
 
-Dependencies got you down? Don’t worry, this script is only 537 bytes.
+⚠️ Please use a versioned url, like this : `https://unpkg.com/css-prefers-color-scheme@6.0.0/dist/browser-global.js`
+Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+
+⚠️ If you were using an older version via a CDN, please update the entire url.
+The old URL will no longer work in a future release.
 
 ## Usage
 
@@ -41,23 +45,28 @@ Dependencies got you down? Don’t worry, this script is only 537 bytes.
 
 ## How does it work?
 
-[Prefers Color Scheme] uses a [PostCSS plugin](README-POSTCSS.md) to transform
-`prefers-color-scheme` queries into `color-index` queries. This changes
-`prefers-color-scheme: dark` into `(color-index: 48)`,
-`prefers-color-scheme: light` into `(color-index: 70)`, and
-`prefers-color-scheme: no-preference` into `(color-index: 22)`.
+_This plugin used to work with `color-index` as detailed here : [color-index](https://github.com/csstools/css-prefers-color-scheme#how-does-it-work)._
+_This is deprecated but will continue to work for now._
+_`color` has better browser support and enables complex media queries._
 
-The frontend receives these `color-index` queries, which are understood in all
-major browsers going back to Internet Explorer 9. However, since browsers only
-apply `color-index` queries of `0`, our color scheme values are ignored.
+[Prefers Color Scheme] uses a [PostCSS plugin](README-POSTCSS.md) to transform
+`prefers-color-scheme` queries into `color` queries. This changes
+`prefers-color-scheme: dark` into `(color: 48842621)`,
+`prefers-color-scheme: light` into `(color: 70318723)`, and
+`prefers-color-scheme: no-preference` into `(color: 22511989)`.
+
+The frontend receives these `color` queries, which are understood in all
+major browsers going back to Internet Explorer 9.
+However, since browsers can only have a reasonably small number of bits per color,
+our color scheme values are ignored.
 
 [Prefers Color Scheme] uses a [browser script](README-BROWSER.md) to change
-`(color-index: 48)` queries into `not all and (color-index: 48)` in order to
-activate “dark mode” specific CSS, and it changes `(color-index: 70)` queries
-into `not all and (color-index: 48)` to activate “light mode” specific CSS.
+`(color: 48842621)` queries into `(max-color: 48842621)` in order to
+activate “dark mode” specific CSS, and it changes `(color: 70318723)` queries
+into `(max-color: 48842621)` to activate “light mode” specific CSS.
 
 ```css
-@media (color-index: 70) { /* prefers-color-scheme: light */
+@media (color: 70318723) { /* prefers-color-scheme: light */
   body {
     background-color: white;
     color: black;
@@ -73,14 +82,15 @@ parsing is required.
 The value of `48` is chosen for dark mode because it is the keycode for `0`,
 the hexidecimal value of black. Likewise, `70` is chosen for light mode because
 it is the keycode for `f`, the hexidecimal value of white.
+These are suffixed with a random large number.
 
-[cli-img]: https://github.com/csstools/css-prefers-color-scheme/workflows/test/badge.svg
-[cli-url]: https://github.com/csstools/css-prefers-color-scheme/actions/workflows/test.yml?query=workflow/test
+[cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/css-prefers-color-scheme.svg
 [npm-url]: https://www.npmjs.com/package/css-prefers-color-scheme
 
 [PostCSS]: https://github.com/postcss/postcss
-[Prefers Color Scheme]: https://github.com/csstools/css-prefers-color-scheme
+[Prefers Color Scheme]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme
 [Media Queries]: https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-scheme

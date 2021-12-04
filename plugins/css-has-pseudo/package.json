@@ -4,71 +4,55 @@
   "description": "Style elements relative to other elements in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/css-has-pseudo",
-  "homepage": "https://github.com/csstools/css-has-pseudo#readme",
-  "bugs": "https://github.com/csstools/css-has-pseudo/issues",
-  "main": "index.js",
-  "module": "index.mjs",
-  "bin": {
-    "css-has-pseudo": "cli.js"
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    },
+    "./browser": {
+      "default": "./dist/browser.js"
+    },
+    "./browser-global": {
+      "default": "./dist/browser-global.js"
+    }
   },
   "files": [
-    "browser.js",
-    "cli.js",
-    "index.js",
-    "index.js.map",
-    "index.mjs",
-    "index.mjs.map",
-    "postcss.js",
-    "postcss.js.map",
-    "postcss.mjs",
-    "postcss.mjs.map"
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
+    "dist",
+    "browser.js"
   ],
+  "bin": {
+    "css-has-pseudo": "dist/cli.mjs"
+  },
   "scripts": {
-    "build": "npm run build:browser && npm run build:cli && npm run build:node && npm run build:postcss",
-    "build:browser": "cross-env NODE_ENV=browser rollup --config .rollup.js --silent",
-    "build:cli": "cross-env NODE_ENV=cli rollup --config .rollup.js --silent",
-    "build:postcss": "cross-env NODE_ENV=postcss rollup --config .rollup.js --silent",
-    "build:node": "rollup --config .rollup.js --silent",
-    "prepublishOnly": "npm test && npm run build",
-    "pretest:postcss": "npm run build:postcss",
-    "test": "npm run test:js && npm run test:postcss",
-    "test:js": "eslint src/{*,**/*}.js --cache --ignore-path .gitignore --quiet",
-    "test:postcss": "postcss-tape --plugin postcss.js"
+    "build": "rollup -c ../../rollup/default.js && npm run copy-browser-scripts-to-old-location",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "copy-browser-scripts-to-old-location": "node -e \"fs.copyFileSync('./dist/browser-global.js', './browser.js')\"",
+    "lint": "eslint src/**/*.ts src/**/*.js --no-error-on-unmatched-pattern",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "stryker": "stryker run --logLevel error",
+    "test": "postcss-tape --ci"
   },
   "engines": {
-    "node": ">=12"
-  },
-  "peerDependencies": {
-    "postcss": ">=8.3"
+    "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-selector-parser": "^6"
+    "postcss-selector-parser": "^6.0.6"
   },
   "devDependencies": {
-    "@babel/core": "7.15.5",
-    "@babel/preset-env": "7.15.6",
-    "@rollup/plugin-babel": "5.3.0",
-    "cross-env": "7.0.3",
-    "eslint": "7.32.0",
-    "postcss": "8.3.4",
-    "postcss-tape": "6.0.1",
-    "pre-commit": "1.2.2",
-    "rollup": "2.56.3",
-    "rollup-plugin-terser": "7.0.2"
+    "postcss": "^8.3.6",
+    "postcss-tape": "^6.0.1"
   },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
-    },
-    "root": true
+  "peerDependencies": {
+    "postcss": "^8.3"
   },
   "keywords": [
     "postcss",
@@ -82,5 +66,10 @@
     "descendant",
     "pseudo",
     "selector"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugins/css-has-pseudo"
+  }
 }

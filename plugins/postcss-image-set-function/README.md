@@ -56,15 +56,7 @@ Add [PostCSS image-set() Function] to your project:
 npm install postcss-image-set-function --save-dev
 ```
 
-Use [PostCSS image-set() Function] to process your CSS:
-
-```js
-const postcssImageSetFunction = require('postcss-image-set-function');
-
-postcssImageSetFunction.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS image-set() Function] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -154,8 +146,8 @@ in, other factors can affect the chosen image. For example, if the user is on a
 slow mobile connection, the browser may prefer to select a lower-res image
 rather than wait for a larger, resolution-matching image to load.
 
-[cli-img]: https://github.com/csstools/postcss-image-set-function/workflows/test/badge.svg
-[cli-url]: https://github.com/csstools/postcss-image-set-function/actions/workflows/test.yml?query=workflow/test
+[cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-img]: https://cssdb.org/badge/image-set-function.svg
 [css-url]: https://cssdb.org/#image-set-function
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
@@ -168,4 +160,4 @@ rather than wait for a larger, resolution-matching image to load.
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS image-set() Function]: https://github.com/jonathantneal/postcss-image-set-function
+[PostCSS image-set() Function]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function

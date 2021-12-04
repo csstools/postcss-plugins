@@ -5,13 +5,48 @@
 	color: lab(40% 56.6 39 / 100%);
 	color: lab(40% 56.6 39 / 50%);
 	color: lab(100% 50 0);
+	color: lab(100% 50 0 foo);
 }
 
 .test-lch {
-	color: lch(40% 68.8 34.5);
-	color: lch(40% 68.8 34.5 / 1);
-	color: lch(40% 68.8 34.5 / .5);
-	color: lch(40% 68.8 34.5 / 100%);
-	color: lch(40% 68.8 34.5 / 50%);
+	color: lch(40% 68.735435 34.568626);
+	color: lch(40% 68.735435 34.568626 / 1);
+	color: lch(40% 68.735435 34.568626 / .5);
+	color: lch(40% 68.735435 34.568626 / 100%);
+	color: lch(40% 68.735435 34.568626 / 50%);
 	color: lch(100% 50 0);
+
+	color: lch(100% 50 180);
+	color: lch(100% 50 180deg);
+	color: lch(100% 50 0.5turn);
+	color: lch(100% 50 200grad);
+	color: lch(100% 50 3.14159rad);
+
+	color: lch(100% 50 45);
+	color: lch(100% 50 45deg);
+	color: lch(100% 50 0.125turn);
+	color: lch(100% 50 50grad);
+	color: lch(100% 50 0.785398rad);
+	color: lch(100% 50 0.785398unknown);
+}
+
+.test-alpha {
+	color: lch(1% 1 1 / 1);
+	color: lch(1% 1 1 / calc(33 / 22));
+	color: lch(1% 1 1 / calc(20% * 5));
+	color: lch(1% 1 1 /);
+}
+
+.test-ignore {
+	prop-1: 'lch(1% 1 1 / 1)';
+	prop-2: url('lch(1% 1 1 / 1)');
+	prop-3: 'lab(40% 56.6 39)';
+}
+
+.test-high-luminance {
+	prop-1: lch(100% 210 285);
+}
+
+.test-unparseable-lab-function {
+	background-image: lab(; );
 }

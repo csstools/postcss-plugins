@@ -1,7 +1,6 @@
 # CSS Has Pseudo [<img src="http://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][CSS Has Pseudo]
 
 [![NPM Version][npm-img]][npm-url]
-[![Build Status][cli-img]][cli-url]
 [![Support Chat][git-img]][git-url]
 
 [CSS Has Pseudo] lets you style elements relative to other elements in CSS,
@@ -32,20 +31,28 @@ body:has(:focus) {
 From the command line, transform CSS files that use `:has` selectors:
 
 ```bash
-npx css-has-pseudo SOURCE.css TRANSFORMED.css
+npx css-has-pseudo SOURCE.css --output TRANSFORMED.css
 ```
 
 Next, use your transformed CSS with this script:
 
 ```html
 <link rel="stylesheet" href="TRANSFORMED.css">
-<script src="https://unpkg.com/css-has-pseudo/browser"></script>
+<script src="https://unpkg.com/css-has-pseudo/dist/browser-global.js"></script>
 <script>cssHasPseudo(document)</script>
 ```
 
-That’s it. The script is 765 bytes and works in all browsers, including
+⚠️ Please use a versioned url, like this : `https://unpkg.com/css-has-pseudo@3.0.0/dist/browser-global.js`
+Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+
+⚠️ If you were using an older version via a CDN, please update the entire url.
+The old URL will no longer work in a future release.
+
+That’s it. The script is 765 bytes and works in most browser versions, including
 Internet Explorer 11. With a [Mutation Observer polyfill], the script will work
 down to Internet Explorer 9.
+
+See [README BROWSER](README-BROWSER.md) for more information.
 
 ## How it works
 
@@ -89,13 +96,11 @@ elements otherwise matching `:has` natively.
 </body>
 ```
 
-[cli-img]: https://img.shields.io/travis/csstools/css-has-pseudo/master.svg
-[cli-url]: https://travis-ci.org/csstools/css-has-pseudo
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/css-has-pseudo.svg
 [npm-url]: https://www.npmjs.com/package/css-has-pseudo
 
-[CSS Has Pseudo]: https://github.com/csstools/css-has-pseudo
+[CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
 [Mutation Observer polyfill]: https://github.com/webmodules/mutation-observer
 [Selectors Level 4]: https://drafts.csswg.org/selectors-4/#has-pseudo

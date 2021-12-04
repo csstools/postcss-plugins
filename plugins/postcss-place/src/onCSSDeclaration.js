@@ -1,33 +1,52 @@
-import { parse } from 'postcss-values-parser'
-import options from './options'
+import valueParser from 'postcss-value-parser';
+import options from './options';
 
-export default decl => {
+export default (decl, { result }) => {
 	// alignment
-	const alignment = decl.prop.match(placeMatch)[1]
+	const alignment = decl.prop.match(placeMatch)[1];
 
 	// value ast and child nodes
-	const value = parse(decl.value)
-	let alignmentValues = []
-	value.walkWords(walk => {
-		alignmentValues.push(
-			walk.parent.type === 'root' ? walk.toString() : walk.parent.toString()
-		)
-	})
+	let value;
+
+	try {
+		value = valueParser(decl.value);
+	} catch (error) {
+		decl.warn(
+			result,
+			`Failed to parse value '${decl.value}'. Leaving the original value intact.`,
+		);
+	}
+
+	if (typeof value === 'undefined') {
+		return;
+	}
+
+	let alignmentValues = [];
+
+	if (!value.nodes.length) {
+		alignmentValues = [valueParser.stringify(value)];
+	} else {
+		alignmentValues = value.nodes.filter((node) => {
+			return node.type === 'word' || node.type === 'function';
+		}).map((node) => {
+			return valueParser.stringify(node);
+		});
+	}
 
 	decl.cloneBefore({
 		prop: `align-${alignment}`,
-		value: alignmentValues[0]
-	})
+		value: alignmentValues[0],
+	});
 
 	decl.cloneBefore({
 		prop: `justify-${alignment}`,
-		value: alignmentValues[1] || alignmentValues[0]
-	})
+		value: alignmentValues[1] || alignmentValues[0],
+	});
 
 	// conditionally remove place-[alignment]
 	if (!options.preserve) {
-		decl.remove()
+		decl.remove();
 	}
-}
+};
 
-export const placeMatch = /^place-(content|items|self)/
+export const placeMatch = /^place-(content|items|self)/;

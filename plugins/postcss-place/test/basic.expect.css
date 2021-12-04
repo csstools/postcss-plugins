@@ -45,3 +45,21 @@ d {
 	justify-self: var(--second);
 	place-self: first var(--second);
 }
+
+e {
+	align-content: var(--first, --fallback);
+	justify-content: second;
+	place-content: var(--first, --fallback) second;
+	align-items: var(--first, --fallback);
+	justify-items: second;
+	place-items: var(--first, --fallback) second;
+	align-self: var(--first, --fallback);
+	justify-self: second;
+	place-self: var(--first, --fallback) second;
+}
+
+.test-unparseable-var-in-place-declaration {
+	align-content: var(; );
+	justify-content: var(; );
+	place-content: var(; );
+}

@@ -1,20 +1,20 @@
-import options from './options'
-import onCSSDeclaration, { placeMatch } from './onCSSDeclaration'
+import options from './options';
+import onCSSDeclaration, { placeMatch } from './onCSSDeclaration';
 
 const creator = opts => {
 	// prepare options
-	if ('preserve' in Object(opts)) options.preserve = Boolean(opts.preserve)
+	if ('preserve' in Object(opts)) options.preserve = Boolean(opts.preserve);
 
 	return {
 		postcssPlugin: 'postcss-place',
-		Declaration: (decl) => {
+		Declaration: (decl, { result }) => {
 			if (placeMatch.test(decl)) {
-				onCSSDeclaration(decl)
+				onCSSDeclaration(decl, { result });
 			}
 		},
-	}
-}
+	};
+};
 
-creator.postcss = true
+creator.postcss = true;
 
-export default creator
+export default creator;

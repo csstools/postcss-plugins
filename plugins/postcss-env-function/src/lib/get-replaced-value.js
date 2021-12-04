@@ -1,6 +1,5 @@
-import { parse } from 'postcss-values-parser'
-import updateEnvValue from './update-env-value'
-import walkEnvFuncs from './walk-env-funcs'
+import valuesParser from 'postcss-value-parser';
+import isEnvFunc from './is-env-func';
 
 /**
  * @param {string} originalValue
@@ -9,14 +8,20 @@ import walkEnvFuncs from './walk-env-funcs'
  */
 export default (originalValue, variables) => {
 	// get the ast of the original value
-	const ast = parse(originalValue)
+	const ast = valuesParser(originalValue);
 
-	// walk all of the css env() functions
-	walkEnvFuncs(ast, node => {
-		// update the environment value for the css env() function
-		updateEnvValue(node, variables)
-	})
+	ast.walk(node => {
+		if (isEnvFunc(node)) {
+			const [valueNode] = node.nodes;
+
+			if (valueNode.type === 'word' && typeof variables[valueNode.value] !== 'undefined') {
+				node.nodes = [];
+				node.type = 'word';
+				node.value = variables[valueNode.value];
+			}
+		}
+	});
 
 	// return the stringified ast
-	return String(ast)
-}
+	return ast.toString();
+};

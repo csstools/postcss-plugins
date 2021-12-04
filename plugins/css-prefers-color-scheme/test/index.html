@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Prefers Color Scheme Test</title>
+
+	<script src="../dist/browser-global.js"></script>
+	<style>
+		@media (prefers-color-scheme: dark) {
+			body {
+				background-color: #333;
+			}
+		}
+
+		@media (color: 48842621) and (max-width: 767px) {
+			* {
+				background-color: #141414;
+			}
+		}
+
+		@media (color: 48842621) and (min-width: 768px) {
+			* {
+				background-color: yellow;
+			}
+		}
+
+		@media (prefers-color-scheme: light) {
+			body {
+				background-color: red;
+			}
+		}
+
+		@media (color-index: 70) {
+			* {
+				background-color: blue;
+			}
+		}
+	</style>
+</head>
+<body>
+	<p>Use this test to manually very the polyfill in various browsers</p>
+
+	<button onclick="initPrefersColorScheme('light')">Light</button>
+	<button onclick="initPrefersColorScheme('dark')">Dark</button>
+</body>
+</html>

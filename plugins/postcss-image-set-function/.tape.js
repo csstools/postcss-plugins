@@ -1,6 +1,6 @@
 module.exports = {
 	'basic': {
-		message: 'supports basic usage'
+		message: 'supports basic usage',
 	},
 	'basic:no-preserve': {
 		message: 'supports { preserve: false } usage',
@@ -20,7 +20,7 @@ module.exports = {
 		},
 		expect: 'invalid.css',
 		result: 'invalid.css',
-		warnings: 10
+		warnings: 9
 	},
 	'invalid:throw': {
 		message: 'throws invalid usage when { onvalid: "throw" }',

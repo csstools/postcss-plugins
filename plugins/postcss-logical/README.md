@@ -142,15 +142,7 @@ Add [PostCSS Logical Properties and Values] to your project:
 npm install postcss-logical --save-dev
 ```
 
-Use [PostCSS Logical Properties and Values] to process your CSS:
-
-```js
-const postcssLogical = require('postcss-logical');
-
-postcssLogical.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Logical Properties and Values] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -186,8 +178,8 @@ the `dir` option will be ignored.
 
 [css-img]: https://cssdb.org/badge/logical-properties-and-values.svg
 [css-url]: https://cssdb.org/#logical-properties-and-values
-[cli-img]: https://github.com/csstools/postcss-logical/workflows/test/badge.svg
-[cli-url]: https://github.com/csstools/postcss-logical/actions/workflows/test.yml?query=workflow/test
+[cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-logical.svg
@@ -198,4 +190,4 @@ the `dir` option will be ignored.
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Logical Properties and Values]: https://github.com/csstools/postcss-logical
+[PostCSS Logical Properties and Values]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical

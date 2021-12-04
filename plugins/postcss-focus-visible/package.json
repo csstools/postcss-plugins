@@ -4,97 +4,41 @@
   "description": "Use the :focus-visible pseudo-selector in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "csstools/postcss-focus-visible",
-  "homepage": "https://github.com/csstools/postcss-focus-visible#readme",
-  "bugs": "https://github.com/csstools/postcss-focus-visible/issues",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-visible#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
+  "types": "dist/index.d.ts",
   "files": [
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
     "dist"
   ],
+  "bin": {
+    "postcss-focus-visible": "dist/cli.mjs"
+  },
   "scripts": {
-    "build": "npx rollup -c .rollup.js",
-    "build:watch": "npx rollup -c .rollup.js --watch",
-    "lint": "npx eslint --cache src",
-    "lint:fix": "npx eslint --cache --fix",
-    "pretest": "npm install && npm run build",
-    "prepublishOnly": "npm test",
-    "test": "npm run lint && npm run tape",
-    "tape": "npx postcss-tape"
+    "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "eslint src/**/*.ts src/**/*.js --no-error-on-unmatched-pattern",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "stryker": "stryker run --logLevel error",
+    "test": "postcss-tape --ci"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12 || ^14 || >=16"
+  },
+  "dependencies": {
+    "postcss-selector-parser": "^6.0.6"
+  },
+  "devDependencies": {
+    "postcss": "^8.3.6",
+    "postcss-tape": "^6.0.1"
   },
   "peerDependencies": {
     "postcss": "^8.3"
-  },
-  "devDependencies": {
-    "@babel/core": "7.15.5",
-    "@babel/preset-env": "7.15.6",
-    "eslint": "7.32.0",
-    "postcss": "8.3.6",
-    "postcss-tape": "6.0.1",
-    "pre-commit": "1.2.2",
-    "rollup": "2.56.3",
-    "rollup-plugin-babel": "4.4.0",
-    "rollup-plugin-copy": "^3.4.0"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/env",
-        {
-          "targets": "maintained node versions"
-        }
-      ]
-    ]
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
-    }
-  },
-  "rollup": {
-    "input": "src/index.js",
-    "plugins": [
-      "rollup-plugin-babel",
-      [
-        "rollup-plugin-copy",
-        {
-          "targets": [
-            {
-              "src": "./src/index.d.ts",
-              "dest": "./dist"
-            }
-          ]
-        }
-      ]
-    ],
-    "output": [
-      {
-        "exports": "default",
-        "file": "dist/index.cjs",
-        "format": "cjs"
-      },
-      {
-        "file": "dist/index.mjs",
-        "format": "esm"
-      }
-    ]
   },
   "keywords": [
     "postcss",
@@ -122,5 +66,10 @@
     "contenteditable",
     "javascript",
     "js"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugins/postcss-focus-visible"
+  }
 }
