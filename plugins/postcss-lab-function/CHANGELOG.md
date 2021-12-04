@@ -1,5 +1,13 @@
 # Changes to PostCSS Lab Function
 
+### 4.0.2
+
+- Changed: now uses `postcss-value-parser` for parsing.
+- Updated: documentation
+- Added: support for CSS variables with `preserve: true` option.
+- Fixed: Hue values with units in `lch` functions are now correctly handled.
+- Fixed: Rounding of values to match current browser behavior.
+
 ### 4.0.1 (November 18, 2021)
 
 - Added: Safeguards against postcss-values-parser potentially throwing an error.

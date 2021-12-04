@@ -1,5 +1,12 @@
 # Changes to PostCSS image-set() Function
 
+### 4.0.3
+
+- Changed: now uses `postcss-value-parser` for parsing.
+- Updated: documentation
+- Added: support for lists of `image-set` functions.
+- Fixed: `url` function is now always added around string values in `image-set` functions.
+
 ### 4.0.2 (November 19, 2021)
 
 - Updated: `postcss-value-parser` to 6.0.1 (patch)
