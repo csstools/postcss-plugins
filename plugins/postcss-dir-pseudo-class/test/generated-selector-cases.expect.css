@@ -22,51 +22,51 @@
 	order: 5;
 }
 
-[dir="ltr"] [dir="ltr"] + {
+[dir="ltr"] [dir="ltr"] *+* {
 	order: 6;
 }
 
-[dir="ltr"] [dir="ltr"] + {
+[dir="ltr"] [dir="ltr"] *+* {
 	order: 7;
 }
 
-[dir="ltr"] [dir="ltr"]  +  {
+[dir="ltr"] [dir="ltr"] * + * {
 	order: 8;
 }
 
-[dir="ltr"] [dir="ltr"]  +  {
+[dir="ltr"] [dir="ltr"] * + * {
 	order: 9;
 }
 
-[dir="ltr"] [dir="ltr"] ~ {
+[dir="ltr"] [dir="ltr"] *~* {
 	order: 10;
 }
 
-[dir="ltr"] [dir="ltr"] ~ {
+[dir="ltr"] [dir="ltr"] *~* {
 	order: 11;
 }
 
-[dir="ltr"] [dir="ltr"]  ~  {
+[dir="ltr"] [dir="ltr"] * ~ * {
 	order: 12;
 }
 
-[dir="ltr"] [dir="ltr"]  ~  {
+[dir="ltr"] [dir="ltr"] * ~ * {
 	order: 13;
 }
 
-[dir="ltr"] [dir="ltr"] > {
+[dir="ltr"] [dir="ltr"] *>* {
 	order: 14;
 }
 
-[dir="ltr"] [dir="ltr"] > {
+[dir="ltr"] [dir="ltr"] *>* {
 	order: 15;
 }
 
-[dir="ltr"] [dir="ltr"]  >  {
+[dir="ltr"] [dir="ltr"] * > * {
 	order: 16;
 }
 
-[dir="ltr"] [dir="ltr"]  >  {
+[dir="ltr"] [dir="ltr"] * > * {
 	order: 17;
 }
 
@@ -102,51 +102,51 @@
 	order: 25;
 }
 
-[dir="ltr"] button+ {
+[dir="ltr"] button+* {
 	order: 26;
 }
 
-[dir="ltr"] +button {
+[dir="ltr"] *+button {
 	order: 27;
 }
 
-[dir="ltr"] button +  {
+[dir="ltr"] button + * {
 	order: 28;
 }
 
-[dir="ltr"]  + button {
+[dir="ltr"] * + button {
 	order: 29;
 }
 
-[dir="ltr"] button~ {
+[dir="ltr"] button~* {
 	order: 30;
 }
 
-[dir="ltr"] ~button {
+[dir="ltr"] *~button {
 	order: 31;
 }
 
-[dir="ltr"] button ~  {
+[dir="ltr"] button ~ * {
 	order: 32;
 }
 
-[dir="ltr"]  ~ button {
+[dir="ltr"] * ~ button {
 	order: 33;
 }
 
-[dir="ltr"] button> {
+[dir="ltr"] button>* {
 	order: 34;
 }
 
-[dir="ltr"] >button {
+[dir="ltr"] *>button {
 	order: 35;
 }
 
-[dir="ltr"] button >  {
+[dir="ltr"] button > * {
 	order: 36;
 }
 
-[dir="ltr"]  > button {
+[dir="ltr"] * > button {
 	order: 37;
 }
 
@@ -182,51 +182,51 @@ button,[dir="ltr"] {
 	order: 45;
 }
 
-[dir="ltr"] .🧑🏾‍🎤+ {
+[dir="ltr"] .🧑🏾‍🎤+* {
 	order: 46;
 }
 
-[dir="ltr"] +.🧑🏾‍🎤 {
+[dir="ltr"] *+.🧑🏾‍🎤 {
 	order: 47;
 }
 
-[dir="ltr"] .🧑🏾‍🎤 +  {
+[dir="ltr"] .🧑🏾‍🎤 + * {
 	order: 48;
 }
 
-[dir="ltr"]  + .🧑🏾‍🎤 {
+[dir="ltr"] * + .🧑🏾‍🎤 {
 	order: 49;
 }
 
-[dir="ltr"] .🧑🏾‍🎤~ {
+[dir="ltr"] .🧑🏾‍🎤~* {
 	order: 50;
 }
 
-[dir="ltr"] ~.🧑🏾‍🎤 {
+[dir="ltr"] *~.🧑🏾‍🎤 {
 	order: 51;
 }
 
-[dir="ltr"] .🧑🏾‍🎤 ~  {
+[dir="ltr"] .🧑🏾‍🎤 ~ * {
 	order: 52;
 }
 
-[dir="ltr"]  ~ .🧑🏾‍🎤 {
+[dir="ltr"] * ~ .🧑🏾‍🎤 {
 	order: 53;
 }
 
-[dir="ltr"] .🧑🏾‍🎤> {
+[dir="ltr"] .🧑🏾‍🎤>* {
 	order: 54;
 }
 
-[dir="ltr"] >.🧑🏾‍🎤 {
+[dir="ltr"] *>.🧑🏾‍🎤 {
 	order: 55;
 }
 
-[dir="ltr"] .🧑🏾‍🎤 >  {
+[dir="ltr"] .🧑🏾‍🎤 > * {
 	order: 56;
 }
 
-[dir="ltr"]  > .🧑🏾‍🎤 {
+[dir="ltr"] * > .🧑🏾‍🎤 {
 	order: 57;
 }
 
@@ -262,51 +262,51 @@ button,[dir="ltr"] {
 	order: 65;
 }
 
-[dir="ltr"] .foo+ {
+[dir="ltr"] .foo+* {
 	order: 66;
 }
 
-[dir="ltr"] +.foo {
+[dir="ltr"] *+.foo {
 	order: 67;
 }
 
-[dir="ltr"] .foo +  {
+[dir="ltr"] .foo + * {
 	order: 68;
 }
 
-[dir="ltr"]  + .foo {
+[dir="ltr"] * + .foo {
 	order: 69;
 }
 
-[dir="ltr"] .foo~ {
+[dir="ltr"] .foo~* {
 	order: 70;
 }
 
-[dir="ltr"] ~.foo {
+[dir="ltr"] *~.foo {
 	order: 71;
 }
 
-[dir="ltr"] .foo ~  {
+[dir="ltr"] .foo ~ * {
 	order: 72;
 }
 
-[dir="ltr"]  ~ .foo {
+[dir="ltr"] * ~ .foo {
 	order: 73;
 }
 
-[dir="ltr"] .foo> {
+[dir="ltr"] .foo>* {
 	order: 74;
 }
 
-[dir="ltr"] >.foo {
+[dir="ltr"] *>.foo {
 	order: 75;
 }
 
-[dir="ltr"] .foo >  {
+[dir="ltr"] .foo > * {
 	order: 76;
 }
 
-[dir="ltr"]  > .foo {
+[dir="ltr"] * > .foo {
 	order: 77;
 }
 
@@ -342,51 +342,51 @@ button,[dir="ltr"] {
 	order: 85;
 }
 
-[dir="ltr"] #foo+ {
+[dir="ltr"] #foo+* {
 	order: 86;
 }
 
-[dir="ltr"] +#foo {
+[dir="ltr"] *+#foo {
 	order: 87;
 }
 
-[dir="ltr"] #foo +  {
+[dir="ltr"] #foo + * {
 	order: 88;
 }
 
-[dir="ltr"]  + #foo {
+[dir="ltr"] * + #foo {
 	order: 89;
 }
 
-[dir="ltr"] #foo~ {
+[dir="ltr"] #foo~* {
 	order: 90;
 }
 
-[dir="ltr"] ~#foo {
+[dir="ltr"] *~#foo {
 	order: 91;
 }
 
-[dir="ltr"] #foo ~  {
+[dir="ltr"] #foo ~ * {
 	order: 92;
 }
 
-[dir="ltr"]  ~ #foo {
+[dir="ltr"] * ~ #foo {
 	order: 93;
 }
 
-[dir="ltr"] #foo> {
+[dir="ltr"] #foo>* {
 	order: 94;
 }
 
-[dir="ltr"] >#foo {
+[dir="ltr"] *>#foo {
 	order: 95;
 }
 
-[dir="ltr"] #foo >  {
+[dir="ltr"] #foo > * {
 	order: 96;
 }
 
-[dir="ltr"]  > #foo {
+[dir="ltr"] * > #foo {
 	order: 97;
 }
 
@@ -422,51 +422,51 @@ button,[dir="ltr"] {
 	order: 105;
 }
 
-[dir="ltr"] __foo+ {
+[dir="ltr"] __foo+* {
 	order: 106;
 }
 
-[dir="ltr"] +__foo {
+[dir="ltr"] *+__foo {
 	order: 107;
 }
 
-[dir="ltr"] __foo +  {
+[dir="ltr"] __foo + * {
 	order: 108;
 }
 
-[dir="ltr"]  + __foo {
+[dir="ltr"] * + __foo {
 	order: 109;
 }
 
-[dir="ltr"] __foo~ {
+[dir="ltr"] __foo~* {
 	order: 110;
 }
 
-[dir="ltr"] ~__foo {
+[dir="ltr"] *~__foo {
 	order: 111;
 }
 
-[dir="ltr"] __foo ~  {
+[dir="ltr"] __foo ~ * {
 	order: 112;
 }
 
-[dir="ltr"]  ~ __foo {
+[dir="ltr"] * ~ __foo {
 	order: 113;
 }
 
-[dir="ltr"] __foo> {
+[dir="ltr"] __foo>* {
 	order: 114;
 }
 
-[dir="ltr"] >__foo {
+[dir="ltr"] *>__foo {
 	order: 115;
 }
 
-[dir="ltr"] __foo >  {
+[dir="ltr"] __foo > * {
 	order: 116;
 }
 
-[dir="ltr"]  > __foo {
+[dir="ltr"] * > __foo {
 	order: 117;
 }
 
@@ -502,51 +502,51 @@ __foo,[dir="ltr"] {
 	order: 125;
 }
 
-[dir="ltr"] :--foo+ {
+[dir="ltr"] :--foo+* {
 	order: 126;
 }
 
-[dir="ltr"] +:--foo {
+[dir="ltr"] *+:--foo {
 	order: 127;
 }
 
-[dir="ltr"] :--foo +  {
+[dir="ltr"] :--foo + * {
 	order: 128;
 }
 
-[dir="ltr"]  + :--foo {
+[dir="ltr"] * + :--foo {
 	order: 129;
 }
 
-[dir="ltr"] :--foo~ {
+[dir="ltr"] :--foo~* {
 	order: 130;
 }
 
-[dir="ltr"] ~:--foo {
+[dir="ltr"] *~:--foo {
 	order: 131;
 }
 
-[dir="ltr"] :--foo ~  {
+[dir="ltr"] :--foo ~ * {
 	order: 132;
 }
 
-[dir="ltr"]  ~ :--foo {
+[dir="ltr"] * ~ :--foo {
 	order: 133;
 }
 
-[dir="ltr"] :--foo> {
+[dir="ltr"] :--foo>* {
 	order: 134;
 }
 
-[dir="ltr"] >:--foo {
+[dir="ltr"] *>:--foo {
 	order: 135;
 }
 
-[dir="ltr"] :--foo >  {
+[dir="ltr"] :--foo > * {
 	order: 136;
 }
 
-[dir="ltr"]  > :--foo {
+[dir="ltr"] * > :--foo {
 	order: 137;
 }
 
@@ -582,51 +582,51 @@ __foo,[dir="ltr"] {
 	order: 145;
 }
 
-[dir="ltr"] [foo="baz"]+ {
+[dir="ltr"] [foo="baz"]+* {
 	order: 146;
 }
 
-[dir="ltr"] +[foo="baz"] {
+[dir="ltr"] *+[foo="baz"] {
 	order: 147;
 }
 
-[dir="ltr"] [foo="baz"] +  {
+[dir="ltr"] [foo="baz"] + * {
 	order: 148;
 }
 
-[dir="ltr"]  + [foo="baz"] {
+[dir="ltr"] * + [foo="baz"] {
 	order: 149;
 }
 
-[dir="ltr"] [foo="baz"]~ {
+[dir="ltr"] [foo="baz"]~* {
 	order: 150;
 }
 
-[dir="ltr"] ~[foo="baz"] {
+[dir="ltr"] *~[foo="baz"] {
 	order: 151;
 }
 
-[dir="ltr"] [foo="baz"] ~  {
+[dir="ltr"] [foo="baz"] ~ * {
 	order: 152;
 }
 
-[dir="ltr"]  ~ [foo="baz"] {
+[dir="ltr"] * ~ [foo="baz"] {
 	order: 153;
 }
 
-[dir="ltr"] [foo="baz"]> {
+[dir="ltr"] [foo="baz"]>* {
 	order: 154;
 }
 
-[dir="ltr"] >[foo="baz"] {
+[dir="ltr"] *>[foo="baz"] {
 	order: 155;
 }
 
-[dir="ltr"] [foo="baz"] >  {
+[dir="ltr"] [foo="baz"] > * {
 	order: 156;
 }
 
-[dir="ltr"]  > [foo="baz"] {
+[dir="ltr"] * > [foo="baz"] {
 	order: 157;
 }
 
@@ -662,51 +662,51 @@ __foo,[dir="ltr"] {
 	order: 165;
 }
 
-[dir="ltr"] *+ {
+[dir="ltr"] *+* {
 	order: 166;
 }
 
-[dir="ltr"] +* {
+[dir="ltr"] *+* {
 	order: 167;
 }
 
-[dir="ltr"] * +  {
+[dir="ltr"] * + * {
 	order: 168;
 }
 
-[dir="ltr"]  + * {
+[dir="ltr"] * + * {
 	order: 169;
 }
 
-[dir="ltr"] *~ {
+[dir="ltr"] *~* {
 	order: 170;
 }
 
-[dir="ltr"] ~* {
+[dir="ltr"] *~* {
 	order: 171;
 }
 
-[dir="ltr"] * ~  {
+[dir="ltr"] * ~ * {
 	order: 172;
 }
 
-[dir="ltr"]  ~ * {
+[dir="ltr"] * ~ * {
 	order: 173;
 }
 
-[dir="ltr"] *> {
+[dir="ltr"] *>* {
 	order: 174;
 }
 
-[dir="ltr"] >* {
+[dir="ltr"] *>* {
 	order: 175;
 }
 
-[dir="ltr"] * >  {
+[dir="ltr"] * > * {
 	order: 176;
 }
 
-[dir="ltr"]  > * {
+[dir="ltr"] * > * {
 	order: 177;
 }
 
@@ -742,51 +742,51 @@ __foo,[dir="ltr"] {
 	order: 185;
 }
 
-[dir="ltr"] :hover+ {
+[dir="ltr"] :hover+* {
 	order: 186;
 }
 
-[dir="ltr"] +:hover {
+[dir="ltr"] *+:hover {
 	order: 187;
 }
 
-[dir="ltr"] :hover +  {
+[dir="ltr"] :hover + * {
 	order: 188;
 }
 
-[dir="ltr"]  + :hover {
+[dir="ltr"] * + :hover {
 	order: 189;
 }
 
-[dir="ltr"] :hover~ {
+[dir="ltr"] :hover~* {
 	order: 190;
 }
 
-[dir="ltr"] ~:hover {
+[dir="ltr"] *~:hover {
 	order: 191;
 }
 
-[dir="ltr"] :hover ~  {
+[dir="ltr"] :hover ~ * {
 	order: 192;
 }
 
-[dir="ltr"]  ~ :hover {
+[dir="ltr"] * ~ :hover {
 	order: 193;
 }
 
-[dir="ltr"] :hover> {
+[dir="ltr"] :hover>* {
 	order: 194;
 }
 
-[dir="ltr"] >:hover {
+[dir="ltr"] *>:hover {
 	order: 195;
 }
 
-[dir="ltr"] :hover >  {
+[dir="ltr"] :hover > * {
 	order: 196;
 }
 
-[dir="ltr"]  > :hover {
+[dir="ltr"] * > :hover {
 	order: 197;
 }
 
@@ -822,51 +822,51 @@ __foo,[dir="ltr"] {
 	order: 205;
 }
 
-[dir="ltr"] ::before+ {
+[dir="ltr"] ::before+* {
 	order: 206;
 }
 
-[dir="ltr"] +::before {
+[dir="ltr"] *+::before {
 	order: 207;
 }
 
-[dir="ltr"] ::before +  {
+[dir="ltr"] ::before + * {
 	order: 208;
 }
 
-[dir="ltr"]  + ::before {
+[dir="ltr"] * + ::before {
 	order: 209;
 }
 
-[dir="ltr"] ::before~ {
+[dir="ltr"] ::before~* {
 	order: 210;
 }
 
-[dir="ltr"] ~::before {
+[dir="ltr"] *~::before {
 	order: 211;
 }
 
-[dir="ltr"] ::before ~  {
+[dir="ltr"] ::before ~ * {
 	order: 212;
 }
 
-[dir="ltr"]  ~ ::before {
+[dir="ltr"] * ~ ::before {
 	order: 213;
 }
 
-[dir="ltr"] ::before> {
+[dir="ltr"] ::before>* {
 	order: 214;
 }
 
-[dir="ltr"] >::before {
+[dir="ltr"] *>::before {
 	order: 215;
 }
 
-[dir="ltr"] ::before >  {
+[dir="ltr"] ::before > * {
 	order: 216;
 }
 
-[dir="ltr"]  > ::before {
+[dir="ltr"] * > ::before {
 	order: 217;
 }
 
@@ -886,7 +886,7 @@ foo[baz=":dir(ltr)"] {
 	order: 221;
 }
 
-[dir="ltr"] :not() {
+:not([dir="ltr"]) {
 	order: 222;
 }
 
@@ -928,51 +928,51 @@ foo[baz=":dir(ltr)"] {
 	order: 5;
 }
 
-[dir="rtl"] [dir="rtl"] + {
+[dir="rtl"] [dir="rtl"] *+* {
 	order: 6;
 }
 
-[dir="rtl"] [dir="rtl"] + {
+[dir="rtl"] [dir="rtl"] *+* {
 	order: 7;
 }
 
-[dir="rtl"] [dir="rtl"]  +  {
+[dir="rtl"] [dir="rtl"] * + * {
 	order: 8;
 }
 
-[dir="rtl"] [dir="rtl"]  +  {
+[dir="rtl"] [dir="rtl"] * + * {
 	order: 9;
 }
 
-[dir="rtl"] [dir="rtl"] ~ {
+[dir="rtl"] [dir="rtl"] *~* {
 	order: 10;
 }
 
-[dir="rtl"] [dir="rtl"] ~ {
+[dir="rtl"] [dir="rtl"] *~* {
 	order: 11;
 }
 
-[dir="rtl"] [dir="rtl"]  ~  {
+[dir="rtl"] [dir="rtl"] * ~ * {
 	order: 12;
 }
 
-[dir="rtl"] [dir="rtl"]  ~  {
+[dir="rtl"] [dir="rtl"] * ~ * {
 	order: 13;
 }
 
-[dir="rtl"] [dir="rtl"] > {
+[dir="rtl"] [dir="rtl"] *>* {
 	order: 14;
 }
 
-[dir="rtl"] [dir="rtl"] > {
+[dir="rtl"] [dir="rtl"] *>* {
 	order: 15;
 }
 
-[dir="rtl"] [dir="rtl"]  >  {
+[dir="rtl"] [dir="rtl"] * > * {
 	order: 16;
 }
 
-[dir="rtl"] [dir="rtl"]  >  {
+[dir="rtl"] [dir="rtl"] * > * {
 	order: 17;
 }
 
@@ -1008,51 +1008,51 @@ foo[baz=":dir(ltr)"] {
 	order: 25;
 }
 
-[dir="rtl"] button+ {
+[dir="rtl"] button+* {
 	order: 26;
 }
 
-[dir="rtl"] +button {
+[dir="rtl"] *+button {
 	order: 27;
 }
 
-[dir="rtl"] button +  {
+[dir="rtl"] button + * {
 	order: 28;
 }
 
-[dir="rtl"]  + button {
+[dir="rtl"] * + button {
 	order: 29;
 }
 
-[dir="rtl"] button~ {
+[dir="rtl"] button~* {
 	order: 30;
 }
 
-[dir="rtl"] ~button {
+[dir="rtl"] *~button {
 	order: 31;
 }
 
-[dir="rtl"] button ~  {
+[dir="rtl"] button ~ * {
 	order: 32;
 }
 
-[dir="rtl"]  ~ button {
+[dir="rtl"] * ~ button {
 	order: 33;
 }
 
-[dir="rtl"] button> {
+[dir="rtl"] button>* {
 	order: 34;
 }
 
-[dir="rtl"] >button {
+[dir="rtl"] *>button {
 	order: 35;
 }
 
-[dir="rtl"] button >  {
+[dir="rtl"] button > * {
 	order: 36;
 }
 
-[dir="rtl"]  > button {
+[dir="rtl"] * > button {
 	order: 37;
 }
 
@@ -1088,51 +1088,51 @@ button,[dir="rtl"] {
 	order: 45;
 }
 
-[dir="rtl"] .🧑🏾‍🎤+ {
+[dir="rtl"] .🧑🏾‍🎤+* {
 	order: 46;
 }
 
-[dir="rtl"] +.🧑🏾‍🎤 {
+[dir="rtl"] *+.🧑🏾‍🎤 {
 	order: 47;
 }
 
-[dir="rtl"] .🧑🏾‍🎤 +  {
+[dir="rtl"] .🧑🏾‍🎤 + * {
 	order: 48;
 }
 
-[dir="rtl"]  + .🧑🏾‍🎤 {
+[dir="rtl"] * + .🧑🏾‍🎤 {
 	order: 49;
 }
 
-[dir="rtl"] .🧑🏾‍🎤~ {
+[dir="rtl"] .🧑🏾‍🎤~* {
 	order: 50;
 }
 
-[dir="rtl"] ~.🧑🏾‍🎤 {
+[dir="rtl"] *~.🧑🏾‍🎤 {
 	order: 51;
 }
 
-[dir="rtl"] .🧑🏾‍🎤 ~  {
+[dir="rtl"] .🧑🏾‍🎤 ~ * {
 	order: 52;
 }
 
-[dir="rtl"]  ~ .🧑🏾‍🎤 {
+[dir="rtl"] * ~ .🧑🏾‍🎤 {
 	order: 53;
 }
 
-[dir="rtl"] .🧑🏾‍🎤> {
+[dir="rtl"] .🧑🏾‍🎤>* {
 	order: 54;
 }
 
-[dir="rtl"] >.🧑🏾‍🎤 {
+[dir="rtl"] *>.🧑🏾‍🎤 {
 	order: 55;
 }
 
-[dir="rtl"] .🧑🏾‍🎤 >  {
+[dir="rtl"] .🧑🏾‍🎤 > * {
 	order: 56;
 }
 
-[dir="rtl"]  > .🧑🏾‍🎤 {
+[dir="rtl"] * > .🧑🏾‍🎤 {
 	order: 57;
 }
 
@@ -1168,51 +1168,51 @@ button,[dir="rtl"] {
 	order: 65;
 }
 
-[dir="rtl"] .foo+ {
+[dir="rtl"] .foo+* {
 	order: 66;
 }
 
-[dir="rtl"] +.foo {
+[dir="rtl"] *+.foo {
 	order: 67;
 }
 
-[dir="rtl"] .foo +  {
+[dir="rtl"] .foo + * {
 	order: 68;
 }
 
-[dir="rtl"]  + .foo {
+[dir="rtl"] * + .foo {
 	order: 69;
 }
 
-[dir="rtl"] .foo~ {
+[dir="rtl"] .foo~* {
 	order: 70;
 }
 
-[dir="rtl"] ~.foo {
+[dir="rtl"] *~.foo {
 	order: 71;
 }
 
-[dir="rtl"] .foo ~  {
+[dir="rtl"] .foo ~ * {
 	order: 72;
 }
 
-[dir="rtl"]  ~ .foo {
+[dir="rtl"] * ~ .foo {
 	order: 73;
 }
 
-[dir="rtl"] .foo> {
+[dir="rtl"] .foo>* {
 	order: 74;
 }
 
-[dir="rtl"] >.foo {
+[dir="rtl"] *>.foo {
 	order: 75;
 }
 
-[dir="rtl"] .foo >  {
+[dir="rtl"] .foo > * {
 	order: 76;
 }
 
-[dir="rtl"]  > .foo {
+[dir="rtl"] * > .foo {
 	order: 77;
 }
 
@@ -1248,51 +1248,51 @@ button,[dir="rtl"] {
 	order: 85;
 }
 
-[dir="rtl"] #foo+ {
+[dir="rtl"] #foo+* {
 	order: 86;
 }
 
-[dir="rtl"] +#foo {
+[dir="rtl"] *+#foo {
 	order: 87;
 }
 
-[dir="rtl"] #foo +  {
+[dir="rtl"] #foo + * {
 	order: 88;
 }
 
-[dir="rtl"]  + #foo {
+[dir="rtl"] * + #foo {
 	order: 89;
 }
 
-[dir="rtl"] #foo~ {
+[dir="rtl"] #foo~* {
 	order: 90;
 }
 
-[dir="rtl"] ~#foo {
+[dir="rtl"] *~#foo {
 	order: 91;
 }
 
-[dir="rtl"] #foo ~  {
+[dir="rtl"] #foo ~ * {
 	order: 92;
 }
 
-[dir="rtl"]  ~ #foo {
+[dir="rtl"] * ~ #foo {
 	order: 93;
 }
 
-[dir="rtl"] #foo> {
+[dir="rtl"] #foo>* {
 	order: 94;
 }
 
-[dir="rtl"] >#foo {
+[dir="rtl"] *>#foo {
 	order: 95;
 }
 
-[dir="rtl"] #foo >  {
+[dir="rtl"] #foo > * {
 	order: 96;
 }
 
-[dir="rtl"]  > #foo {
+[dir="rtl"] * > #foo {
 	order: 97;
 }
 
@@ -1328,51 +1328,51 @@ button,[dir="rtl"] {
 	order: 105;
 }
 
-[dir="rtl"] __foo+ {
+[dir="rtl"] __foo+* {
 	order: 106;
 }
 
-[dir="rtl"] +__foo {
+[dir="rtl"] *+__foo {
 	order: 107;
 }
 
-[dir="rtl"] __foo +  {
+[dir="rtl"] __foo + * {
 	order: 108;
 }
 
-[dir="rtl"]  + __foo {
+[dir="rtl"] * + __foo {
 	order: 109;
 }
 
-[dir="rtl"] __foo~ {
+[dir="rtl"] __foo~* {
 	order: 110;
 }
 
-[dir="rtl"] ~__foo {
+[dir="rtl"] *~__foo {
 	order: 111;
 }
 
-[dir="rtl"] __foo ~  {
+[dir="rtl"] __foo ~ * {
 	order: 112;
 }
 
-[dir="rtl"]  ~ __foo {
+[dir="rtl"] * ~ __foo {
 	order: 113;
 }
 
-[dir="rtl"] __foo> {
+[dir="rtl"] __foo>* {
 	order: 114;
 }
 
-[dir="rtl"] >__foo {
+[dir="rtl"] *>__foo {
 	order: 115;
 }
 
-[dir="rtl"] __foo >  {
+[dir="rtl"] __foo > * {
 	order: 116;
 }
 
-[dir="rtl"]  > __foo {
+[dir="rtl"] * > __foo {
 	order: 117;
 }
 
@@ -1408,51 +1408,51 @@ __foo,[dir="rtl"] {
 	order: 125;
 }
 
-[dir="rtl"] :--foo+ {
+[dir="rtl"] :--foo+* {
 	order: 126;
 }
 
-[dir="rtl"] +:--foo {
+[dir="rtl"] *+:--foo {
 	order: 127;
 }
 
-[dir="rtl"] :--foo +  {
+[dir="rtl"] :--foo + * {
 	order: 128;
 }
 
-[dir="rtl"]  + :--foo {
+[dir="rtl"] * + :--foo {
 	order: 129;
 }
 
-[dir="rtl"] :--foo~ {
+[dir="rtl"] :--foo~* {
 	order: 130;
 }
 
-[dir="rtl"] ~:--foo {
+[dir="rtl"] *~:--foo {
 	order: 131;
 }
 
-[dir="rtl"] :--foo ~  {
+[dir="rtl"] :--foo ~ * {
 	order: 132;
 }
 
-[dir="rtl"]  ~ :--foo {
+[dir="rtl"] * ~ :--foo {
 	order: 133;
 }
 
-[dir="rtl"] :--foo> {
+[dir="rtl"] :--foo>* {
 	order: 134;
 }
 
-[dir="rtl"] >:--foo {
+[dir="rtl"] *>:--foo {
 	order: 135;
 }
 
-[dir="rtl"] :--foo >  {
+[dir="rtl"] :--foo > * {
 	order: 136;
 }
 
-[dir="rtl"]  > :--foo {
+[dir="rtl"] * > :--foo {
 	order: 137;
 }
 
@@ -1488,51 +1488,51 @@ __foo,[dir="rtl"] {
 	order: 145;
 }
 
-[dir="rtl"] [foo="baz"]+ {
+[dir="rtl"] [foo="baz"]+* {
 	order: 146;
 }
 
-[dir="rtl"] +[foo="baz"] {
+[dir="rtl"] *+[foo="baz"] {
 	order: 147;
 }
 
-[dir="rtl"] [foo="baz"] +  {
+[dir="rtl"] [foo="baz"] + * {
 	order: 148;
 }
 
-[dir="rtl"]  + [foo="baz"] {
+[dir="rtl"] * + [foo="baz"] {
 	order: 149;
 }
 
-[dir="rtl"] [foo="baz"]~ {
+[dir="rtl"] [foo="baz"]~* {
 	order: 150;
 }
 
-[dir="rtl"] ~[foo="baz"] {
+[dir="rtl"] *~[foo="baz"] {
 	order: 151;
 }
 
-[dir="rtl"] [foo="baz"] ~  {
+[dir="rtl"] [foo="baz"] ~ * {
 	order: 152;
 }
 
-[dir="rtl"]  ~ [foo="baz"] {
+[dir="rtl"] * ~ [foo="baz"] {
 	order: 153;
 }
 
-[dir="rtl"] [foo="baz"]> {
+[dir="rtl"] [foo="baz"]>* {
 	order: 154;
 }
 
-[dir="rtl"] >[foo="baz"] {
+[dir="rtl"] *>[foo="baz"] {
 	order: 155;
 }
 
-[dir="rtl"] [foo="baz"] >  {
+[dir="rtl"] [foo="baz"] > * {
 	order: 156;
 }
 
-[dir="rtl"]  > [foo="baz"] {
+[dir="rtl"] * > [foo="baz"] {
 	order: 157;
 }
 
@@ -1568,51 +1568,51 @@ __foo,[dir="rtl"] {
 	order: 165;
 }
 
-[dir="rtl"] *+ {
+[dir="rtl"] *+* {
 	order: 166;
 }
 
-[dir="rtl"] +* {
+[dir="rtl"] *+* {
 	order: 167;
 }
 
-[dir="rtl"] * +  {
+[dir="rtl"] * + * {
 	order: 168;
 }
 
-[dir="rtl"]  + * {
+[dir="rtl"] * + * {
 	order: 169;
 }
 
-[dir="rtl"] *~ {
+[dir="rtl"] *~* {
 	order: 170;
 }
 
-[dir="rtl"] ~* {
+[dir="rtl"] *~* {
 	order: 171;
 }
 
-[dir="rtl"] * ~  {
+[dir="rtl"] * ~ * {
 	order: 172;
 }
 
-[dir="rtl"]  ~ * {
+[dir="rtl"] * ~ * {
 	order: 173;
 }
 
-[dir="rtl"] *> {
+[dir="rtl"] *>* {
 	order: 174;
 }
 
-[dir="rtl"] >* {
+[dir="rtl"] *>* {
 	order: 175;
 }
 
-[dir="rtl"] * >  {
+[dir="rtl"] * > * {
 	order: 176;
 }
 
-[dir="rtl"]  > * {
+[dir="rtl"] * > * {
 	order: 177;
 }
 
@@ -1648,51 +1648,51 @@ __foo,[dir="rtl"] {
 	order: 185;
 }
 
-[dir="rtl"] :hover+ {
+[dir="rtl"] :hover+* {
 	order: 186;
 }
 
-[dir="rtl"] +:hover {
+[dir="rtl"] *+:hover {
 	order: 187;
 }
 
-[dir="rtl"] :hover +  {
+[dir="rtl"] :hover + * {
 	order: 188;
 }
 
-[dir="rtl"]  + :hover {
+[dir="rtl"] * + :hover {
 	order: 189;
 }
 
-[dir="rtl"] :hover~ {
+[dir="rtl"] :hover~* {
 	order: 190;
 }
 
-[dir="rtl"] ~:hover {
+[dir="rtl"] *~:hover {
 	order: 191;
 }
 
-[dir="rtl"] :hover ~  {
+[dir="rtl"] :hover ~ * {
 	order: 192;
 }
 
-[dir="rtl"]  ~ :hover {
+[dir="rtl"] * ~ :hover {
 	order: 193;
 }
 
-[dir="rtl"] :hover> {
+[dir="rtl"] :hover>* {
 	order: 194;
 }
 
-[dir="rtl"] >:hover {
+[dir="rtl"] *>:hover {
 	order: 195;
 }
 
-[dir="rtl"] :hover >  {
+[dir="rtl"] :hover > * {
 	order: 196;
 }
 
-[dir="rtl"]  > :hover {
+[dir="rtl"] * > :hover {
 	order: 197;
 }
 
@@ -1728,51 +1728,51 @@ __foo,[dir="rtl"] {
 	order: 205;
 }
 
-[dir="rtl"] ::before+ {
+[dir="rtl"] ::before+* {
 	order: 206;
 }
 
-[dir="rtl"] +::before {
+[dir="rtl"] *+::before {
 	order: 207;
 }
 
-[dir="rtl"] ::before +  {
+[dir="rtl"] ::before + * {
 	order: 208;
 }
 
-[dir="rtl"]  + ::before {
+[dir="rtl"] * + ::before {
 	order: 209;
 }
 
-[dir="rtl"] ::before~ {
+[dir="rtl"] ::before~* {
 	order: 210;
 }
 
-[dir="rtl"] ~::before {
+[dir="rtl"] *~::before {
 	order: 211;
 }
 
-[dir="rtl"] ::before ~  {
+[dir="rtl"] ::before ~ * {
 	order: 212;
 }
 
-[dir="rtl"]  ~ ::before {
+[dir="rtl"] * ~ ::before {
 	order: 213;
 }
 
-[dir="rtl"] ::before> {
+[dir="rtl"] ::before>* {
 	order: 214;
 }
 
-[dir="rtl"] >::before {
+[dir="rtl"] *>::before {
 	order: 215;
 }
 
-[dir="rtl"] ::before >  {
+[dir="rtl"] ::before > * {
 	order: 216;
 }
 
-[dir="rtl"]  > ::before {
+[dir="rtl"] * > ::before {
 	order: 217;
 }
 
@@ -1792,7 +1792,7 @@ foo[baz=":dir(rtl)"] {
 	order: 221;
 }
 
-[dir="rtl"] :not() {
+:not([dir="rtl"]) {
 	order: 222;
 }
 
