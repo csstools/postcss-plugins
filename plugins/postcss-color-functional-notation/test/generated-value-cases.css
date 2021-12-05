@@ -1,12 +1,16 @@
 .order-0 {
-	order: var(1, rgba(178 34 34 / 1));
+	order: rgba(178 34 34 / 1) !important;
 }
 
 .order-1 {
-	order: var(rgba(178 34 34 / 1), 1);
+	order: var(1, rgba(178 34 34 / 1));
 }
 
 .order-2 {
+	order: var(rgba(178 34 34 / 1), 1);
+}
+
+.order-3 {
 	order: var(rgba(178 34 34 / 1), rgba(178 34 34 / 1));
 }
 
@@ -27,14 +31,18 @@
 }
 
 .order-0 {
-	order: var(1, hsl(120 100% 50% / 1));
+	order: hsl(120 100% 50% / 1) !important;
 }
 
 .order-1 {
-	order: var(hsl(120 100% 50% / 1), 1);
+	order: var(1, hsl(120 100% 50% / 1));
 }
 
 .order-2 {
+	order: var(hsl(120 100% 50% / 1), 1);
+}
+
+.order-3 {
 	order: var(hsl(120 100% 50% / 1), hsl(120 100% 50% / 1));
 }
 

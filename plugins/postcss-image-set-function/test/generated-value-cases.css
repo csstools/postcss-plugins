@@ -1,0 +1,31 @@
+.order-0 {
+	order: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x) !important;
+}
+
+.order-1 {
+	order: var(1, image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x));
+}
+
+.order-2 {
+	order: var(image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x), 1);
+}
+
+.order-3 {
+	order: var(image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x), image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x));
+}
+
+/* image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x) */
+
+:root {
+	--some-var: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+}
+
+.content {
+	content: 'image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x)';
+}
+
+@supports (order: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x)) {
+	.support {
+		order: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+	}
+}

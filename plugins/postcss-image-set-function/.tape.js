@@ -32,5 +32,17 @@ module.exports = {
 		error: {
 			message: /unexpected image/
 		}
-	}
+	},
+	'generated-value-cases': {
+		message: 'correctly handles generated cases',
+		options: {
+			preserve: false
+		}
+	},
+	'generated-value-cases:preserve': {
+		message: 'correctly handles generated cases',
+		options: {
+			preserve: true
+		}
+	},
 };

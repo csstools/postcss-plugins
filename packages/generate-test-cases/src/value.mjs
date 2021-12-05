@@ -1,8 +1,7 @@
-module.exports = generateValueTestCases;
-
-function generateValueTestCases(value) {
+export function generateValueTestCases(value) {
 	let values = [];
 
+	values.push(`${value} !important`);
 	values.push(`var(1, ${value})`);
 	values.push(`var(${value}, 1)`);
 	values.push(`var(${value}, ${value})`);

@@ -1,6 +1,4 @@
-module.exports = generateSelectorTestCases;
-
-function generateSelectorTestCases(selector) {
+export function generateSelectorTestCases(selector) {
 	let selectors = [];
 
 	for (const other of [selector, 'button', '.🧑🏾‍🎤', '.foo', '#foo', '__foo', ':--foo', '[foo="baz"]', '*', ':hover', '::before']) {

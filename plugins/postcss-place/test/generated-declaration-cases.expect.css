@@ -1,0 +1,47 @@
+.order-0 {
+	-webkit-place-content: first second;
+}
+
+.order-1 {
+	-moz-place-content: first second;
+}
+
+.order-2 {
+	-ms-place-content: first second;
+}
+
+.order-3 {
+	-o-place-content: first second;
+}
+
+.order-4 {
+	--place-content: first second;
+}
+
+.order-5 {
+	foo-place-content: first second;
+}
+
+/* place-content: first second; */
+
+.content {
+	content: 'place-content: first second;';
+}
+
+.important {
+	align-content: first !important;
+	justify-content: second !important;
+}
+
+@supports (place-content: first second) {
+	.support {
+		align-content: first;
+		justify-content: second;
+	}
+}
+@keyframes KEYFRAMES {
+	50% {
+		align-content: first;
+		justify-content: second;
+	}
+}

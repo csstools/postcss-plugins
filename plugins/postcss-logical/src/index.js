@@ -9,6 +9,7 @@ import transformSize from './lib/transform-size';
 import transformTextAlign from './lib/transform-text-align';
 import transformTransition from './lib/transform-transition';
 import { splitBySpace } from './lib/split';
+import { hasKeyframesAtRuleAncestor } from './lib/has-keyframes-atrule-ancestor';
 
 // plugin
 function postcssLogicalProperties(opts) {
@@ -23,6 +24,9 @@ function postcssLogicalProperties(opts) {
 
 	const makeTransform = (transform) => {
 		return (decl) => {
+			if (hasKeyframesAtRuleAncestor(decl)) {
+				return;
+			}
 			const parent = decl.parent;
 			const values = splitBySpace(decl.value, true);
 			transform(decl, values, dir, preserve);
@@ -34,6 +38,9 @@ function postcssLogicalProperties(opts) {
 
 	const makeTransformWithoutSplittingValues = (transform) => {
 		return (decl) => {
+			if (hasKeyframesAtRuleAncestor(decl)) {
+				return;
+			}
 			const parent = decl.parent;
 			const values = [decl.value];
 			transform(decl, values, dir, preserve);
