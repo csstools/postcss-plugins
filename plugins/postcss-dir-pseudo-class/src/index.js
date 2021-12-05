@@ -10,6 +10,7 @@ module.exports = function creator(opts) {
 	return {
 		postcssPlugin: 'postcss-dir-pseudo-class',
 		Rule(rule, { result }) {
+			let emittedWarningForHierarchicalDir = false;
 
 			// walk rules using the :dir pseudo-class
 			if (!dirRegex.test(rule.selector)) {
@@ -42,7 +43,8 @@ module.exports = function creator(opts) {
 							const otherDirPseudos = parent.nodes.filter((other) => {
 								return 'pseudo' === other.type && ':dir' === other.value;
 							});
-							if (otherDirPseudos.length > 1 && otherDirPseudos[0] === node) {
+							if (otherDirPseudos.length > 1 && !emittedWarningForHierarchicalDir) {
+								emittedWarningForHierarchicalDir = true;
 								rule.warn(result, `Hierarchical :dir pseudo class usage can't be transformed correctly to [dir] attributes. This will lead to incorrect selectors for "${rule.selector}"`);
 							}
 
