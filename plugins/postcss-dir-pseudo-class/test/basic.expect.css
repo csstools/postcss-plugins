@@ -69,3 +69,23 @@ html[dir="ltr"] * {
 html[dir="rtl"] * {
 	order: 17;
 }
+
+[dir="rtl"] [dir="ltr"] * {
+	order: 18;
+}
+
+[dir="ltr"] :has([dir="rtl"] .foo *) {
+	order: 19;
+}
+
+[dir="ltr"] :is([dir="rtl"] [dir="ltr"] * + *) {
+	order: 19;
+}
+
+:root :dir(var(--dir)) {
+	order: 20;
+}
+
+:dir(ignore) {
+	order: 21;
+}
