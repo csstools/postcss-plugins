@@ -1,6 +1,6 @@
 {
   "name": "@csstools/base-cli",
-  "private": "true",
+  "private": true,
   "version": "0.1.0",
   "description": "A base for CLI versions of plugins",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
