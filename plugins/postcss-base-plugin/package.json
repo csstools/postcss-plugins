@@ -1,6 +1,6 @@
 {
   "name": "@csstools/postcss-base-plugin",
-  "private": "true",
+  "private": true,
   "version": "0.0.0",
   "description": "A base plugin",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
