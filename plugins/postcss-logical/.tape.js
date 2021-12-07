@@ -95,5 +95,17 @@ module.exports = {
 			dir: 'ltr',
 			preserve: true
 		}
-	}
+	},
+	'generated-declaration-cases': {
+		message: 'correctly handles generated cases',
+		options: {
+			preserve: false
+		}
+	},
+	'generated-declaration-cases:preserve': {
+		message: 'correctly handles generated cases',
+		options: {
+			preserve: true
+		}
+	},
 };

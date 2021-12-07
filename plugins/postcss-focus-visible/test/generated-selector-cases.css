@@ -1,0 +1,905 @@
+:focus-visible:focus-visible {
+	order: 0;
+}
+
+:focus-visible:focus-visible {
+	order: 1;
+}
+
+:focus-visible :focus-visible {
+	order: 2;
+}
+
+:focus-visible :focus-visible {
+	order: 3;
+}
+
+:focus-visible  :focus-visible {
+	order: 4;
+}
+
+:focus-visible  :focus-visible {
+	order: 5;
+}
+
+:focus-visible+:focus-visible {
+	order: 6;
+}
+
+:focus-visible+:focus-visible {
+	order: 7;
+}
+
+:focus-visible + :focus-visible {
+	order: 8;
+}
+
+:focus-visible + :focus-visible {
+	order: 9;
+}
+
+:focus-visible~:focus-visible {
+	order: 10;
+}
+
+:focus-visible~:focus-visible {
+	order: 11;
+}
+
+:focus-visible ~ :focus-visible {
+	order: 12;
+}
+
+:focus-visible ~ :focus-visible {
+	order: 13;
+}
+
+:focus-visible>:focus-visible {
+	order: 14;
+}
+
+:focus-visible>:focus-visible {
+	order: 15;
+}
+
+:focus-visible > :focus-visible {
+	order: 16;
+}
+
+:focus-visible > :focus-visible {
+	order: 17;
+}
+
+:focus-visible, :focus-visible {
+	order: 18;
+}
+
+:focus-visible, :focus-visible {
+	order: 19;
+}
+
+button:focus-visible {
+	order: 20;
+}
+
+:focus-visiblebutton {
+	order: 21;
+}
+
+button :focus-visible {
+	order: 22;
+}
+
+:focus-visible button {
+	order: 23;
+}
+
+button  :focus-visible {
+	order: 24;
+}
+
+:focus-visible  button {
+	order: 25;
+}
+
+button+:focus-visible {
+	order: 26;
+}
+
+:focus-visible+button {
+	order: 27;
+}
+
+button + :focus-visible {
+	order: 28;
+}
+
+:focus-visible + button {
+	order: 29;
+}
+
+button~:focus-visible {
+	order: 30;
+}
+
+:focus-visible~button {
+	order: 31;
+}
+
+button ~ :focus-visible {
+	order: 32;
+}
+
+:focus-visible ~ button {
+	order: 33;
+}
+
+button>:focus-visible {
+	order: 34;
+}
+
+:focus-visible>button {
+	order: 35;
+}
+
+button > :focus-visible {
+	order: 36;
+}
+
+:focus-visible > button {
+	order: 37;
+}
+
+button, :focus-visible {
+	order: 38;
+}
+
+:focus-visible, button {
+	order: 39;
+}
+
+.🧑🏾‍🎤:focus-visible {
+	order: 40;
+}
+
+:focus-visible.🧑🏾‍🎤 {
+	order: 41;
+}
+
+.🧑🏾‍🎤 :focus-visible {
+	order: 42;
+}
+
+:focus-visible .🧑🏾‍🎤 {
+	order: 43;
+}
+
+.🧑🏾‍🎤  :focus-visible {
+	order: 44;
+}
+
+:focus-visible  .🧑🏾‍🎤 {
+	order: 45;
+}
+
+.🧑🏾‍🎤+:focus-visible {
+	order: 46;
+}
+
+:focus-visible+.🧑🏾‍🎤 {
+	order: 47;
+}
+
+.🧑🏾‍🎤 + :focus-visible {
+	order: 48;
+}
+
+:focus-visible + .🧑🏾‍🎤 {
+	order: 49;
+}
+
+.🧑🏾‍🎤~:focus-visible {
+	order: 50;
+}
+
+:focus-visible~.🧑🏾‍🎤 {
+	order: 51;
+}
+
+.🧑🏾‍🎤 ~ :focus-visible {
+	order: 52;
+}
+
+:focus-visible ~ .🧑🏾‍🎤 {
+	order: 53;
+}
+
+.🧑🏾‍🎤>:focus-visible {
+	order: 54;
+}
+
+:focus-visible>.🧑🏾‍🎤 {
+	order: 55;
+}
+
+.🧑🏾‍🎤 > :focus-visible {
+	order: 56;
+}
+
+:focus-visible > .🧑🏾‍🎤 {
+	order: 57;
+}
+
+.🧑🏾‍🎤, :focus-visible {
+	order: 58;
+}
+
+:focus-visible, .🧑🏾‍🎤 {
+	order: 59;
+}
+
+.foo:focus-visible {
+	order: 60;
+}
+
+:focus-visible.foo {
+	order: 61;
+}
+
+.foo :focus-visible {
+	order: 62;
+}
+
+:focus-visible .foo {
+	order: 63;
+}
+
+.foo  :focus-visible {
+	order: 64;
+}
+
+:focus-visible  .foo {
+	order: 65;
+}
+
+.foo+:focus-visible {
+	order: 66;
+}
+
+:focus-visible+.foo {
+	order: 67;
+}
+
+.foo + :focus-visible {
+	order: 68;
+}
+
+:focus-visible + .foo {
+	order: 69;
+}
+
+.foo~:focus-visible {
+	order: 70;
+}
+
+:focus-visible~.foo {
+	order: 71;
+}
+
+.foo ~ :focus-visible {
+	order: 72;
+}
+
+:focus-visible ~ .foo {
+	order: 73;
+}
+
+.foo>:focus-visible {
+	order: 74;
+}
+
+:focus-visible>.foo {
+	order: 75;
+}
+
+.foo > :focus-visible {
+	order: 76;
+}
+
+:focus-visible > .foo {
+	order: 77;
+}
+
+.foo, :focus-visible {
+	order: 78;
+}
+
+:focus-visible, .foo {
+	order: 79;
+}
+
+#foo:focus-visible {
+	order: 80;
+}
+
+:focus-visible#foo {
+	order: 81;
+}
+
+#foo :focus-visible {
+	order: 82;
+}
+
+:focus-visible #foo {
+	order: 83;
+}
+
+#foo  :focus-visible {
+	order: 84;
+}
+
+:focus-visible  #foo {
+	order: 85;
+}
+
+#foo+:focus-visible {
+	order: 86;
+}
+
+:focus-visible+#foo {
+	order: 87;
+}
+
+#foo + :focus-visible {
+	order: 88;
+}
+
+:focus-visible + #foo {
+	order: 89;
+}
+
+#foo~:focus-visible {
+	order: 90;
+}
+
+:focus-visible~#foo {
+	order: 91;
+}
+
+#foo ~ :focus-visible {
+	order: 92;
+}
+
+:focus-visible ~ #foo {
+	order: 93;
+}
+
+#foo>:focus-visible {
+	order: 94;
+}
+
+:focus-visible>#foo {
+	order: 95;
+}
+
+#foo > :focus-visible {
+	order: 96;
+}
+
+:focus-visible > #foo {
+	order: 97;
+}
+
+#foo, :focus-visible {
+	order: 98;
+}
+
+:focus-visible, #foo {
+	order: 99;
+}
+
+__foo:focus-visible {
+	order: 100;
+}
+
+:focus-visible__foo {
+	order: 101;
+}
+
+__foo :focus-visible {
+	order: 102;
+}
+
+:focus-visible __foo {
+	order: 103;
+}
+
+__foo  :focus-visible {
+	order: 104;
+}
+
+:focus-visible  __foo {
+	order: 105;
+}
+
+__foo+:focus-visible {
+	order: 106;
+}
+
+:focus-visible+__foo {
+	order: 107;
+}
+
+__foo + :focus-visible {
+	order: 108;
+}
+
+:focus-visible + __foo {
+	order: 109;
+}
+
+__foo~:focus-visible {
+	order: 110;
+}
+
+:focus-visible~__foo {
+	order: 111;
+}
+
+__foo ~ :focus-visible {
+	order: 112;
+}
+
+:focus-visible ~ __foo {
+	order: 113;
+}
+
+__foo>:focus-visible {
+	order: 114;
+}
+
+:focus-visible>__foo {
+	order: 115;
+}
+
+__foo > :focus-visible {
+	order: 116;
+}
+
+:focus-visible > __foo {
+	order: 117;
+}
+
+__foo, :focus-visible {
+	order: 118;
+}
+
+:focus-visible, __foo {
+	order: 119;
+}
+
+:--foo:focus-visible {
+	order: 120;
+}
+
+:focus-visible:--foo {
+	order: 121;
+}
+
+:--foo :focus-visible {
+	order: 122;
+}
+
+:focus-visible :--foo {
+	order: 123;
+}
+
+:--foo  :focus-visible {
+	order: 124;
+}
+
+:focus-visible  :--foo {
+	order: 125;
+}
+
+:--foo+:focus-visible {
+	order: 126;
+}
+
+:focus-visible+:--foo {
+	order: 127;
+}
+
+:--foo + :focus-visible {
+	order: 128;
+}
+
+:focus-visible + :--foo {
+	order: 129;
+}
+
+:--foo~:focus-visible {
+	order: 130;
+}
+
+:focus-visible~:--foo {
+	order: 131;
+}
+
+:--foo ~ :focus-visible {
+	order: 132;
+}
+
+:focus-visible ~ :--foo {
+	order: 133;
+}
+
+:--foo>:focus-visible {
+	order: 134;
+}
+
+:focus-visible>:--foo {
+	order: 135;
+}
+
+:--foo > :focus-visible {
+	order: 136;
+}
+
+:focus-visible > :--foo {
+	order: 137;
+}
+
+:--foo, :focus-visible {
+	order: 138;
+}
+
+:focus-visible, :--foo {
+	order: 139;
+}
+
+[foo="baz"]:focus-visible {
+	order: 140;
+}
+
+:focus-visible[foo="baz"] {
+	order: 141;
+}
+
+[foo="baz"] :focus-visible {
+	order: 142;
+}
+
+:focus-visible [foo="baz"] {
+	order: 143;
+}
+
+[foo="baz"]  :focus-visible {
+	order: 144;
+}
+
+:focus-visible  [foo="baz"] {
+	order: 145;
+}
+
+[foo="baz"]+:focus-visible {
+	order: 146;
+}
+
+:focus-visible+[foo="baz"] {
+	order: 147;
+}
+
+[foo="baz"] + :focus-visible {
+	order: 148;
+}
+
+:focus-visible + [foo="baz"] {
+	order: 149;
+}
+
+[foo="baz"]~:focus-visible {
+	order: 150;
+}
+
+:focus-visible~[foo="baz"] {
+	order: 151;
+}
+
+[foo="baz"] ~ :focus-visible {
+	order: 152;
+}
+
+:focus-visible ~ [foo="baz"] {
+	order: 153;
+}
+
+[foo="baz"]>:focus-visible {
+	order: 154;
+}
+
+:focus-visible>[foo="baz"] {
+	order: 155;
+}
+
+[foo="baz"] > :focus-visible {
+	order: 156;
+}
+
+:focus-visible > [foo="baz"] {
+	order: 157;
+}
+
+[foo="baz"], :focus-visible {
+	order: 158;
+}
+
+:focus-visible, [foo="baz"] {
+	order: 159;
+}
+
+*:focus-visible {
+	order: 160;
+}
+
+:focus-visible* {
+	order: 161;
+}
+
+* :focus-visible {
+	order: 162;
+}
+
+:focus-visible * {
+	order: 163;
+}
+
+*  :focus-visible {
+	order: 164;
+}
+
+:focus-visible  * {
+	order: 165;
+}
+
+*+:focus-visible {
+	order: 166;
+}
+
+:focus-visible+* {
+	order: 167;
+}
+
+* + :focus-visible {
+	order: 168;
+}
+
+:focus-visible + * {
+	order: 169;
+}
+
+*~:focus-visible {
+	order: 170;
+}
+
+:focus-visible~* {
+	order: 171;
+}
+
+* ~ :focus-visible {
+	order: 172;
+}
+
+:focus-visible ~ * {
+	order: 173;
+}
+
+*>:focus-visible {
+	order: 174;
+}
+
+:focus-visible>* {
+	order: 175;
+}
+
+* > :focus-visible {
+	order: 176;
+}
+
+:focus-visible > * {
+	order: 177;
+}
+
+*, :focus-visible {
+	order: 178;
+}
+
+:focus-visible, * {
+	order: 179;
+}
+
+:hover:focus-visible {
+	order: 180;
+}
+
+:focus-visible:hover {
+	order: 181;
+}
+
+:hover :focus-visible {
+	order: 182;
+}
+
+:focus-visible :hover {
+	order: 183;
+}
+
+:hover  :focus-visible {
+	order: 184;
+}
+
+:focus-visible  :hover {
+	order: 185;
+}
+
+:hover+:focus-visible {
+	order: 186;
+}
+
+:focus-visible+:hover {
+	order: 187;
+}
+
+:hover + :focus-visible {
+	order: 188;
+}
+
+:focus-visible + :hover {
+	order: 189;
+}
+
+:hover~:focus-visible {
+	order: 190;
+}
+
+:focus-visible~:hover {
+	order: 191;
+}
+
+:hover ~ :focus-visible {
+	order: 192;
+}
+
+:focus-visible ~ :hover {
+	order: 193;
+}
+
+:hover>:focus-visible {
+	order: 194;
+}
+
+:focus-visible>:hover {
+	order: 195;
+}
+
+:hover > :focus-visible {
+	order: 196;
+}
+
+:focus-visible > :hover {
+	order: 197;
+}
+
+:hover, :focus-visible {
+	order: 198;
+}
+
+:focus-visible, :hover {
+	order: 199;
+}
+
+::before:focus-visible {
+	order: 200;
+}
+
+:focus-visible::before {
+	order: 201;
+}
+
+::before :focus-visible {
+	order: 202;
+}
+
+:focus-visible ::before {
+	order: 203;
+}
+
+::before  :focus-visible {
+	order: 204;
+}
+
+:focus-visible  ::before {
+	order: 205;
+}
+
+::before+:focus-visible {
+	order: 206;
+}
+
+:focus-visible+::before {
+	order: 207;
+}
+
+::before + :focus-visible {
+	order: 208;
+}
+
+:focus-visible + ::before {
+	order: 209;
+}
+
+::before~:focus-visible {
+	order: 210;
+}
+
+:focus-visible~::before {
+	order: 211;
+}
+
+::before ~ :focus-visible {
+	order: 212;
+}
+
+:focus-visible ~ ::before {
+	order: 213;
+}
+
+::before>:focus-visible {
+	order: 214;
+}
+
+:focus-visible>::before {
+	order: 215;
+}
+
+::before > :focus-visible {
+	order: 216;
+}
+
+:focus-visible > ::before {
+	order: 217;
+}
+
+::before, :focus-visible {
+	order: 218;
+}
+
+:focus-visible, ::before {
+	order: 219;
+}
+
+foo[:focus-visible] {
+	order: 220;
+}
+
+foo[baz=":focus-visible"] {
+	order: 221;
+}
+
+:not(:focus-visible) {
+	order: 222;
+}
+
+::focus-visible {
+	order: 223;
+}
+
+:--:focus-visible {
+	order: 224;
+}
+
+__:focus-visible {
+	order: 225;
+}
+
+/* :focus-visible */

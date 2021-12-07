@@ -11,3 +11,8 @@ ul a:visited > span {
 :link :link,:link :visited,:visited :link,:visited :visited {
 	background: blue;
 }
+
+
+:any-link(.ignore) {
+	background: red;
+}

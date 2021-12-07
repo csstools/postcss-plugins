@@ -1,0 +1,59 @@
+.order-0 {
+	-webkit-inset-inline-start: 0;
+}
+
+.order-1 {
+	-moz-inset-inline-start: 0;
+}
+
+.order-2 {
+	-ms-inset-inline-start: 0;
+}
+
+.order-3 {
+	-o-inset-inline-start: 0;
+}
+
+.order-4 {
+	--inset-inline-start: 0;
+}
+
+.order-5 {
+	foo-inset-inline-start: 0;
+}
+
+/* inset-inline-start: 0; */
+
+.content {
+	content: 'inset-inline-start: 0;';
+}
+
+.transition:dir(ltr) {
+	transition: 1s left ease;
+}
+
+.transition:dir(rtl) {
+	transition: 1s right ease;
+}
+
+.important:dir(ltr) {
+	left: 0 !important;
+}
+
+.important:dir(rtl) {
+	right: 0 !important;
+}
+
+@supports (inset-inline-start: 0) {
+	.support:dir(ltr) {
+		left: 0;
+	}
+	.support:dir(rtl) {
+		right: 0;
+	}
+}
+@keyframes KEYFRAMES {
+	50% {
+		inset-inline-start: 0;
+	}
+}

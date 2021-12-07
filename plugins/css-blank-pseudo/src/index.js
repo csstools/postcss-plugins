@@ -1,7 +1,5 @@
 import parser from 'postcss-selector-parser';
 
-const selectorRegExp = /:blank([^\w-]|$)/gi;
-
 const creator = opts => {
 	const replaceWith = String(Object(opts).replaceWith || '[blank]');
 	const replacementAST = parser().astSync(replaceWith);
@@ -10,22 +8,43 @@ const creator = opts => {
 
 	return {
 		postcssPlugin: 'css-blank-pseudo',
-		Rule: (rule) => {
-			if (!selectorRegExp.test(rule.selector)) {
+		Rule: (rule, { result }) => {
+			if (rule.selector.indexOf(':blank') === -1) {
 				return;
 			}
 
-			const modifiedSelectorAST = parser((selectors) => {
-				selectors.walkPseudos((pseudo) => {
-					if (pseudo.value !== ':blank') {
-						return;
-					}
+			let modifiedSelector;
+			try {
+				const modifiedSelectorAST = parser((selectors) => {
+					selectors.walkPseudos((selector) => {
+						if (selector.value !== ':blank') {
+							return;
+						}
 
-					pseudo.replaceWith(replacementAST.clone());
-				});
-			}).processSync(rule.selector);
+						if (selector.nodes && selector.nodes.length) {
+							// `:blank` is not a function
+							return;
+						}
 
-			const clone = rule.clone({ selector: String(modifiedSelectorAST) });
+						selector.replaceWith(replacementAST.clone());
+					});
+				}).processSync(rule.selector);
+
+				modifiedSelector = String(modifiedSelectorAST);
+			} catch (_) {
+				rule.warn(result, `Failed to parse selector : ${rule.selector}`);
+				return;
+			}
+
+			if (typeof modifiedSelector === 'undefined') {
+				return;
+			}
+
+			if (modifiedSelector === rule.selector) {
+				return;
+			}
+
+			const clone = rule.clone({ selector: modifiedSelector });
 
 			if (preserve) {
 				rule.before(clone);
