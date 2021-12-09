@@ -1,5 +1,9 @@
 # Changes to PostCSS Gap Properties
 
+### 3.0.1
+
+- Updated: documentation
+
 ### 3.0.0 (September 17, 2021)
 
 - Updated: Support for PostCS 8+ (major).

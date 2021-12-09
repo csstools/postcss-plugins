@@ -1,5 +1,11 @@
 # Changes to PostCSS Color Functional Notation
 
+### 4.0.2
+
+- Changed: now uses `postcss-value-parser` for parsing.
+- Updated: documentation
+- Added: support for CSS variables with `preserve: true` option.
+
 ### 4.0.1 (November 18, 2021)
 
 - Added: Safeguards against postcss-values-parser potentially throwing an error.

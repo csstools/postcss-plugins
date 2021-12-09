@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### 10.0.3
+
+- Updated: documentation
+
 ### 10.0.2 (November 18, 2021)
 
 - Fixed: Support for Deno. Ensuring we pack `mod.js` so it can be accessible by CDNs.

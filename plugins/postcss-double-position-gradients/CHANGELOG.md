@@ -1,5 +1,10 @@
 # Changes to PostCSS Double Position Gradients
 
+### 3.0.2
+
+- Changed: now uses `postcss-value-parser` for parsing.
+- Updated: documentation
+
 ### 3.0.1 (November 18, 2021)
 
 - Added: Safeguards against postcss-values-parser potentially throwing an error.

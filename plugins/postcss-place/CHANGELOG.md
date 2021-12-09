@@ -1,5 +1,10 @@
 # Changes to PostCSS Place Properties
 
+### 7.0.2
+
+- Changed: now uses `postcss-value-parser` for parsing.
+- Updated: documentation
+
 ## 7.0.1 (November 18, 2021)
 
 - Added: Safeguards against postcss-values-parser potentially throwing an error.
