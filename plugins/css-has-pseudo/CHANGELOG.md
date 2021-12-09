@@ -2,8 +2,33 @@
 
 ### 3.0.0
 
-- Changed: require/import/polyfill paths.
+- Breaking: require/import paths have changed
+- Changed: new polyfill CDN urls.
 - Updated: documentation
+
+**Migrating to 3.0.0**
+
+PostCSS plugin :
+
+```diff
+- const postcssHasPseudo = require('css-has-pseudo/postcss');
++ const postcssHasPseudo = require('css-has-pseudo');
+```
+
+Browser Polyfill :
+
+```diff
+- const cssHasPseudo = require('css-has-pseudo');
++ const cssHasPseudo = require('css-has-pseudo/browser');
+```
+
+_The old CND url is now deprecated and will be removed in a next major release._
+_It will continue to work for now._
+
+```diff
+- <script src="https://unpkg.com/css-has-pseudo/browser"></script>
++ <script src="https://unpkg.com/css-has-pseudo/dist/browser-global.js"></script>
+```
 
 ### 2.0.0 (September 16, 2021)
 

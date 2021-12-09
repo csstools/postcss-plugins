@@ -2,10 +2,35 @@
 
 ### 6.0.0
 
-- Changed: require/import/polyfill paths.
+- Breaking: require/import paths have changed
+- Changed: new polyfill CDN urls.
 - Updated: documentation
 - Fixed: `CSSRuleList` edits skipping rules as this is a live list.
 - Fixed: complex `@media` queries not working.
+
+**Migrating to 6.0.0**
+
+PostCSS plugin :
+
+```diff
+- const postcssPrefersColorScheme = require('css-prefers-color-scheme/postcss');
++ const postcssPrefersColorScheme = require('css-prefers-color-scheme');
+```
+
+Browser Polyfill :
+
+```diff
+- const prefersColorScheme = require('css-prefers-color-scheme')();
++ const prefersColorScheme = require('css-prefers-color-scheme/browser')();
+```
+
+_The old CND url is now deprecated and will be removed in a next major release._
+_It will continue to work for now._
+
+```diff
+- <script src="https://unpkg.com/css-prefers-color-scheme/browser.min"></script>
++ <script src="https://unpkg.com/css-prefers-color-scheme/dist/browser-global.js"></script>
+```
 
 ### 5.0.0 (September 17, 2021)
 
