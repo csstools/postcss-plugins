@@ -69,3 +69,23 @@ html[dir="ltr"] * {
 html[dir="rtl"] * {
 	order: 17;
 }
+
+:host-context([dir="rtl"]) :host-context([dir="ltr"]) * {
+	order: 18;
+}
+
+:host-context([dir="ltr"]) :has(:host-context([dir="rtl"]) .foo *) {
+	order: 19;
+}
+
+:host-context([dir="ltr"]) :is(:host-context([dir="rtl"]) :host-context([dir="ltr"]) * + *) {
+	order: 19;
+}
+
+:root :dir(var(--dir)) {
+	order: 20;
+}
+
+:dir(ignore) {
+	order: 21;
+}

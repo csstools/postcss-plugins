@@ -1,0 +1,1811 @@
+:dir(ltr):dir(ltr) {
+	order: 0;
+}
+
+:dir(ltr):dir(ltr) {
+	order: 1;
+}
+
+:dir(ltr) :dir(ltr) {
+	order: 2;
+}
+
+:dir(ltr) :dir(ltr) {
+	order: 3;
+}
+
+:dir(ltr)  :dir(ltr) {
+	order: 4;
+}
+
+:dir(ltr)  :dir(ltr) {
+	order: 5;
+}
+
+:dir(ltr)+:dir(ltr) {
+	order: 6;
+}
+
+:dir(ltr)+:dir(ltr) {
+	order: 7;
+}
+
+:dir(ltr) + :dir(ltr) {
+	order: 8;
+}
+
+:dir(ltr) + :dir(ltr) {
+	order: 9;
+}
+
+:dir(ltr)~:dir(ltr) {
+	order: 10;
+}
+
+:dir(ltr)~:dir(ltr) {
+	order: 11;
+}
+
+:dir(ltr) ~ :dir(ltr) {
+	order: 12;
+}
+
+:dir(ltr) ~ :dir(ltr) {
+	order: 13;
+}
+
+:dir(ltr)>:dir(ltr) {
+	order: 14;
+}
+
+:dir(ltr)>:dir(ltr) {
+	order: 15;
+}
+
+:dir(ltr) > :dir(ltr) {
+	order: 16;
+}
+
+:dir(ltr) > :dir(ltr) {
+	order: 17;
+}
+
+:dir(ltr), :dir(ltr) {
+	order: 18;
+}
+
+:dir(ltr), :dir(ltr) {
+	order: 19;
+}
+
+button:dir(ltr) {
+	order: 20;
+}
+
+:dir(ltr)button {
+	order: 21;
+}
+
+button :dir(ltr) {
+	order: 22;
+}
+
+:dir(ltr) button {
+	order: 23;
+}
+
+button  :dir(ltr) {
+	order: 24;
+}
+
+:dir(ltr)  button {
+	order: 25;
+}
+
+button+:dir(ltr) {
+	order: 26;
+}
+
+:dir(ltr)+button {
+	order: 27;
+}
+
+button + :dir(ltr) {
+	order: 28;
+}
+
+:dir(ltr) + button {
+	order: 29;
+}
+
+button~:dir(ltr) {
+	order: 30;
+}
+
+:dir(ltr)~button {
+	order: 31;
+}
+
+button ~ :dir(ltr) {
+	order: 32;
+}
+
+:dir(ltr) ~ button {
+	order: 33;
+}
+
+button>:dir(ltr) {
+	order: 34;
+}
+
+:dir(ltr)>button {
+	order: 35;
+}
+
+button > :dir(ltr) {
+	order: 36;
+}
+
+:dir(ltr) > button {
+	order: 37;
+}
+
+button, :dir(ltr) {
+	order: 38;
+}
+
+:dir(ltr), button {
+	order: 39;
+}
+
+.🧑🏾‍🎤:dir(ltr) {
+	order: 40;
+}
+
+:dir(ltr).🧑🏾‍🎤 {
+	order: 41;
+}
+
+.🧑🏾‍🎤 :dir(ltr) {
+	order: 42;
+}
+
+:dir(ltr) .🧑🏾‍🎤 {
+	order: 43;
+}
+
+.🧑🏾‍🎤  :dir(ltr) {
+	order: 44;
+}
+
+:dir(ltr)  .🧑🏾‍🎤 {
+	order: 45;
+}
+
+.🧑🏾‍🎤+:dir(ltr) {
+	order: 46;
+}
+
+:dir(ltr)+.🧑🏾‍🎤 {
+	order: 47;
+}
+
+.🧑🏾‍🎤 + :dir(ltr) {
+	order: 48;
+}
+
+:dir(ltr) + .🧑🏾‍🎤 {
+	order: 49;
+}
+
+.🧑🏾‍🎤~:dir(ltr) {
+	order: 50;
+}
+
+:dir(ltr)~.🧑🏾‍🎤 {
+	order: 51;
+}
+
+.🧑🏾‍🎤 ~ :dir(ltr) {
+	order: 52;
+}
+
+:dir(ltr) ~ .🧑🏾‍🎤 {
+	order: 53;
+}
+
+.🧑🏾‍🎤>:dir(ltr) {
+	order: 54;
+}
+
+:dir(ltr)>.🧑🏾‍🎤 {
+	order: 55;
+}
+
+.🧑🏾‍🎤 > :dir(ltr) {
+	order: 56;
+}
+
+:dir(ltr) > .🧑🏾‍🎤 {
+	order: 57;
+}
+
+.🧑🏾‍🎤, :dir(ltr) {
+	order: 58;
+}
+
+:dir(ltr), .🧑🏾‍🎤 {
+	order: 59;
+}
+
+.foo:dir(ltr) {
+	order: 60;
+}
+
+:dir(ltr).foo {
+	order: 61;
+}
+
+.foo :dir(ltr) {
+	order: 62;
+}
+
+:dir(ltr) .foo {
+	order: 63;
+}
+
+.foo  :dir(ltr) {
+	order: 64;
+}
+
+:dir(ltr)  .foo {
+	order: 65;
+}
+
+.foo+:dir(ltr) {
+	order: 66;
+}
+
+:dir(ltr)+.foo {
+	order: 67;
+}
+
+.foo + :dir(ltr) {
+	order: 68;
+}
+
+:dir(ltr) + .foo {
+	order: 69;
+}
+
+.foo~:dir(ltr) {
+	order: 70;
+}
+
+:dir(ltr)~.foo {
+	order: 71;
+}
+
+.foo ~ :dir(ltr) {
+	order: 72;
+}
+
+:dir(ltr) ~ .foo {
+	order: 73;
+}
+
+.foo>:dir(ltr) {
+	order: 74;
+}
+
+:dir(ltr)>.foo {
+	order: 75;
+}
+
+.foo > :dir(ltr) {
+	order: 76;
+}
+
+:dir(ltr) > .foo {
+	order: 77;
+}
+
+.foo, :dir(ltr) {
+	order: 78;
+}
+
+:dir(ltr), .foo {
+	order: 79;
+}
+
+#foo:dir(ltr) {
+	order: 80;
+}
+
+:dir(ltr)#foo {
+	order: 81;
+}
+
+#foo :dir(ltr) {
+	order: 82;
+}
+
+:dir(ltr) #foo {
+	order: 83;
+}
+
+#foo  :dir(ltr) {
+	order: 84;
+}
+
+:dir(ltr)  #foo {
+	order: 85;
+}
+
+#foo+:dir(ltr) {
+	order: 86;
+}
+
+:dir(ltr)+#foo {
+	order: 87;
+}
+
+#foo + :dir(ltr) {
+	order: 88;
+}
+
+:dir(ltr) + #foo {
+	order: 89;
+}
+
+#foo~:dir(ltr) {
+	order: 90;
+}
+
+:dir(ltr)~#foo {
+	order: 91;
+}
+
+#foo ~ :dir(ltr) {
+	order: 92;
+}
+
+:dir(ltr) ~ #foo {
+	order: 93;
+}
+
+#foo>:dir(ltr) {
+	order: 94;
+}
+
+:dir(ltr)>#foo {
+	order: 95;
+}
+
+#foo > :dir(ltr) {
+	order: 96;
+}
+
+:dir(ltr) > #foo {
+	order: 97;
+}
+
+#foo, :dir(ltr) {
+	order: 98;
+}
+
+:dir(ltr), #foo {
+	order: 99;
+}
+
+__foo:dir(ltr) {
+	order: 100;
+}
+
+:dir(ltr)__foo {
+	order: 101;
+}
+
+__foo :dir(ltr) {
+	order: 102;
+}
+
+:dir(ltr) __foo {
+	order: 103;
+}
+
+__foo  :dir(ltr) {
+	order: 104;
+}
+
+:dir(ltr)  __foo {
+	order: 105;
+}
+
+__foo+:dir(ltr) {
+	order: 106;
+}
+
+:dir(ltr)+__foo {
+	order: 107;
+}
+
+__foo + :dir(ltr) {
+	order: 108;
+}
+
+:dir(ltr) + __foo {
+	order: 109;
+}
+
+__foo~:dir(ltr) {
+	order: 110;
+}
+
+:dir(ltr)~__foo {
+	order: 111;
+}
+
+__foo ~ :dir(ltr) {
+	order: 112;
+}
+
+:dir(ltr) ~ __foo {
+	order: 113;
+}
+
+__foo>:dir(ltr) {
+	order: 114;
+}
+
+:dir(ltr)>__foo {
+	order: 115;
+}
+
+__foo > :dir(ltr) {
+	order: 116;
+}
+
+:dir(ltr) > __foo {
+	order: 117;
+}
+
+__foo, :dir(ltr) {
+	order: 118;
+}
+
+:dir(ltr), __foo {
+	order: 119;
+}
+
+:--foo:dir(ltr) {
+	order: 120;
+}
+
+:dir(ltr):--foo {
+	order: 121;
+}
+
+:--foo :dir(ltr) {
+	order: 122;
+}
+
+:dir(ltr) :--foo {
+	order: 123;
+}
+
+:--foo  :dir(ltr) {
+	order: 124;
+}
+
+:dir(ltr)  :--foo {
+	order: 125;
+}
+
+:--foo+:dir(ltr) {
+	order: 126;
+}
+
+:dir(ltr)+:--foo {
+	order: 127;
+}
+
+:--foo + :dir(ltr) {
+	order: 128;
+}
+
+:dir(ltr) + :--foo {
+	order: 129;
+}
+
+:--foo~:dir(ltr) {
+	order: 130;
+}
+
+:dir(ltr)~:--foo {
+	order: 131;
+}
+
+:--foo ~ :dir(ltr) {
+	order: 132;
+}
+
+:dir(ltr) ~ :--foo {
+	order: 133;
+}
+
+:--foo>:dir(ltr) {
+	order: 134;
+}
+
+:dir(ltr)>:--foo {
+	order: 135;
+}
+
+:--foo > :dir(ltr) {
+	order: 136;
+}
+
+:dir(ltr) > :--foo {
+	order: 137;
+}
+
+:--foo, :dir(ltr) {
+	order: 138;
+}
+
+:dir(ltr), :--foo {
+	order: 139;
+}
+
+[foo="baz"]:dir(ltr) {
+	order: 140;
+}
+
+:dir(ltr)[foo="baz"] {
+	order: 141;
+}
+
+[foo="baz"] :dir(ltr) {
+	order: 142;
+}
+
+:dir(ltr) [foo="baz"] {
+	order: 143;
+}
+
+[foo="baz"]  :dir(ltr) {
+	order: 144;
+}
+
+:dir(ltr)  [foo="baz"] {
+	order: 145;
+}
+
+[foo="baz"]+:dir(ltr) {
+	order: 146;
+}
+
+:dir(ltr)+[foo="baz"] {
+	order: 147;
+}
+
+[foo="baz"] + :dir(ltr) {
+	order: 148;
+}
+
+:dir(ltr) + [foo="baz"] {
+	order: 149;
+}
+
+[foo="baz"]~:dir(ltr) {
+	order: 150;
+}
+
+:dir(ltr)~[foo="baz"] {
+	order: 151;
+}
+
+[foo="baz"] ~ :dir(ltr) {
+	order: 152;
+}
+
+:dir(ltr) ~ [foo="baz"] {
+	order: 153;
+}
+
+[foo="baz"]>:dir(ltr) {
+	order: 154;
+}
+
+:dir(ltr)>[foo="baz"] {
+	order: 155;
+}
+
+[foo="baz"] > :dir(ltr) {
+	order: 156;
+}
+
+:dir(ltr) > [foo="baz"] {
+	order: 157;
+}
+
+[foo="baz"], :dir(ltr) {
+	order: 158;
+}
+
+:dir(ltr), [foo="baz"] {
+	order: 159;
+}
+
+*:dir(ltr) {
+	order: 160;
+}
+
+:dir(ltr)* {
+	order: 161;
+}
+
+* :dir(ltr) {
+	order: 162;
+}
+
+:dir(ltr) * {
+	order: 163;
+}
+
+*  :dir(ltr) {
+	order: 164;
+}
+
+:dir(ltr)  * {
+	order: 165;
+}
+
+*+:dir(ltr) {
+	order: 166;
+}
+
+:dir(ltr)+* {
+	order: 167;
+}
+
+* + :dir(ltr) {
+	order: 168;
+}
+
+:dir(ltr) + * {
+	order: 169;
+}
+
+*~:dir(ltr) {
+	order: 170;
+}
+
+:dir(ltr)~* {
+	order: 171;
+}
+
+* ~ :dir(ltr) {
+	order: 172;
+}
+
+:dir(ltr) ~ * {
+	order: 173;
+}
+
+*>:dir(ltr) {
+	order: 174;
+}
+
+:dir(ltr)>* {
+	order: 175;
+}
+
+* > :dir(ltr) {
+	order: 176;
+}
+
+:dir(ltr) > * {
+	order: 177;
+}
+
+*, :dir(ltr) {
+	order: 178;
+}
+
+:dir(ltr), * {
+	order: 179;
+}
+
+:hover:dir(ltr) {
+	order: 180;
+}
+
+:dir(ltr):hover {
+	order: 181;
+}
+
+:hover :dir(ltr) {
+	order: 182;
+}
+
+:dir(ltr) :hover {
+	order: 183;
+}
+
+:hover  :dir(ltr) {
+	order: 184;
+}
+
+:dir(ltr)  :hover {
+	order: 185;
+}
+
+:hover+:dir(ltr) {
+	order: 186;
+}
+
+:dir(ltr)+:hover {
+	order: 187;
+}
+
+:hover + :dir(ltr) {
+	order: 188;
+}
+
+:dir(ltr) + :hover {
+	order: 189;
+}
+
+:hover~:dir(ltr) {
+	order: 190;
+}
+
+:dir(ltr)~:hover {
+	order: 191;
+}
+
+:hover ~ :dir(ltr) {
+	order: 192;
+}
+
+:dir(ltr) ~ :hover {
+	order: 193;
+}
+
+:hover>:dir(ltr) {
+	order: 194;
+}
+
+:dir(ltr)>:hover {
+	order: 195;
+}
+
+:hover > :dir(ltr) {
+	order: 196;
+}
+
+:dir(ltr) > :hover {
+	order: 197;
+}
+
+:hover, :dir(ltr) {
+	order: 198;
+}
+
+:dir(ltr), :hover {
+	order: 199;
+}
+
+::before:dir(ltr) {
+	order: 200;
+}
+
+:dir(ltr)::before {
+	order: 201;
+}
+
+::before :dir(ltr) {
+	order: 202;
+}
+
+:dir(ltr) ::before {
+	order: 203;
+}
+
+::before  :dir(ltr) {
+	order: 204;
+}
+
+:dir(ltr)  ::before {
+	order: 205;
+}
+
+::before+:dir(ltr) {
+	order: 206;
+}
+
+:dir(ltr)+::before {
+	order: 207;
+}
+
+::before + :dir(ltr) {
+	order: 208;
+}
+
+:dir(ltr) + ::before {
+	order: 209;
+}
+
+::before~:dir(ltr) {
+	order: 210;
+}
+
+:dir(ltr)~::before {
+	order: 211;
+}
+
+::before ~ :dir(ltr) {
+	order: 212;
+}
+
+:dir(ltr) ~ ::before {
+	order: 213;
+}
+
+::before>:dir(ltr) {
+	order: 214;
+}
+
+:dir(ltr)>::before {
+	order: 215;
+}
+
+::before > :dir(ltr) {
+	order: 216;
+}
+
+:dir(ltr) > ::before {
+	order: 217;
+}
+
+::before, :dir(ltr) {
+	order: 218;
+}
+
+:dir(ltr), ::before {
+	order: 219;
+}
+
+foo[:dir(ltr)] {
+	order: 220;
+}
+
+foo[baz=":dir(ltr)"] {
+	order: 221;
+}
+
+:not(:dir(ltr)) {
+	order: 222;
+}
+
+::dir(ltr) {
+	order: 223;
+}
+
+:--:dir(ltr) {
+	order: 224;
+}
+
+__:dir(ltr) {
+	order: 225;
+}
+
+/* :dir(ltr) */
+
+:dir(rtl):dir(rtl) {
+	order: 0;
+}
+
+:dir(rtl):dir(rtl) {
+	order: 1;
+}
+
+:dir(rtl) :dir(rtl) {
+	order: 2;
+}
+
+:dir(rtl) :dir(rtl) {
+	order: 3;
+}
+
+:dir(rtl)  :dir(rtl) {
+	order: 4;
+}
+
+:dir(rtl)  :dir(rtl) {
+	order: 5;
+}
+
+:dir(rtl)+:dir(rtl) {
+	order: 6;
+}
+
+:dir(rtl)+:dir(rtl) {
+	order: 7;
+}
+
+:dir(rtl) + :dir(rtl) {
+	order: 8;
+}
+
+:dir(rtl) + :dir(rtl) {
+	order: 9;
+}
+
+:dir(rtl)~:dir(rtl) {
+	order: 10;
+}
+
+:dir(rtl)~:dir(rtl) {
+	order: 11;
+}
+
+:dir(rtl) ~ :dir(rtl) {
+	order: 12;
+}
+
+:dir(rtl) ~ :dir(rtl) {
+	order: 13;
+}
+
+:dir(rtl)>:dir(rtl) {
+	order: 14;
+}
+
+:dir(rtl)>:dir(rtl) {
+	order: 15;
+}
+
+:dir(rtl) > :dir(rtl) {
+	order: 16;
+}
+
+:dir(rtl) > :dir(rtl) {
+	order: 17;
+}
+
+:dir(rtl), :dir(rtl) {
+	order: 18;
+}
+
+:dir(rtl), :dir(rtl) {
+	order: 19;
+}
+
+button:dir(rtl) {
+	order: 20;
+}
+
+:dir(rtl)button {
+	order: 21;
+}
+
+button :dir(rtl) {
+	order: 22;
+}
+
+:dir(rtl) button {
+	order: 23;
+}
+
+button  :dir(rtl) {
+	order: 24;
+}
+
+:dir(rtl)  button {
+	order: 25;
+}
+
+button+:dir(rtl) {
+	order: 26;
+}
+
+:dir(rtl)+button {
+	order: 27;
+}
+
+button + :dir(rtl) {
+	order: 28;
+}
+
+:dir(rtl) + button {
+	order: 29;
+}
+
+button~:dir(rtl) {
+	order: 30;
+}
+
+:dir(rtl)~button {
+	order: 31;
+}
+
+button ~ :dir(rtl) {
+	order: 32;
+}
+
+:dir(rtl) ~ button {
+	order: 33;
+}
+
+button>:dir(rtl) {
+	order: 34;
+}
+
+:dir(rtl)>button {
+	order: 35;
+}
+
+button > :dir(rtl) {
+	order: 36;
+}
+
+:dir(rtl) > button {
+	order: 37;
+}
+
+button, :dir(rtl) {
+	order: 38;
+}
+
+:dir(rtl), button {
+	order: 39;
+}
+
+.🧑🏾‍🎤:dir(rtl) {
+	order: 40;
+}
+
+:dir(rtl).🧑🏾‍🎤 {
+	order: 41;
+}
+
+.🧑🏾‍🎤 :dir(rtl) {
+	order: 42;
+}
+
+:dir(rtl) .🧑🏾‍🎤 {
+	order: 43;
+}
+
+.🧑🏾‍🎤  :dir(rtl) {
+	order: 44;
+}
+
+:dir(rtl)  .🧑🏾‍🎤 {
+	order: 45;
+}
+
+.🧑🏾‍🎤+:dir(rtl) {
+	order: 46;
+}
+
+:dir(rtl)+.🧑🏾‍🎤 {
+	order: 47;
+}
+
+.🧑🏾‍🎤 + :dir(rtl) {
+	order: 48;
+}
+
+:dir(rtl) + .🧑🏾‍🎤 {
+	order: 49;
+}
+
+.🧑🏾‍🎤~:dir(rtl) {
+	order: 50;
+}
+
+:dir(rtl)~.🧑🏾‍🎤 {
+	order: 51;
+}
+
+.🧑🏾‍🎤 ~ :dir(rtl) {
+	order: 52;
+}
+
+:dir(rtl) ~ .🧑🏾‍🎤 {
+	order: 53;
+}
+
+.🧑🏾‍🎤>:dir(rtl) {
+	order: 54;
+}
+
+:dir(rtl)>.🧑🏾‍🎤 {
+	order: 55;
+}
+
+.🧑🏾‍🎤 > :dir(rtl) {
+	order: 56;
+}
+
+:dir(rtl) > .🧑🏾‍🎤 {
+	order: 57;
+}
+
+.🧑🏾‍🎤, :dir(rtl) {
+	order: 58;
+}
+
+:dir(rtl), .🧑🏾‍🎤 {
+	order: 59;
+}
+
+.foo:dir(rtl) {
+	order: 60;
+}
+
+:dir(rtl).foo {
+	order: 61;
+}
+
+.foo :dir(rtl) {
+	order: 62;
+}
+
+:dir(rtl) .foo {
+	order: 63;
+}
+
+.foo  :dir(rtl) {
+	order: 64;
+}
+
+:dir(rtl)  .foo {
+	order: 65;
+}
+
+.foo+:dir(rtl) {
+	order: 66;
+}
+
+:dir(rtl)+.foo {
+	order: 67;
+}
+
+.foo + :dir(rtl) {
+	order: 68;
+}
+
+:dir(rtl) + .foo {
+	order: 69;
+}
+
+.foo~:dir(rtl) {
+	order: 70;
+}
+
+:dir(rtl)~.foo {
+	order: 71;
+}
+
+.foo ~ :dir(rtl) {
+	order: 72;
+}
+
+:dir(rtl) ~ .foo {
+	order: 73;
+}
+
+.foo>:dir(rtl) {
+	order: 74;
+}
+
+:dir(rtl)>.foo {
+	order: 75;
+}
+
+.foo > :dir(rtl) {
+	order: 76;
+}
+
+:dir(rtl) > .foo {
+	order: 77;
+}
+
+.foo, :dir(rtl) {
+	order: 78;
+}
+
+:dir(rtl), .foo {
+	order: 79;
+}
+
+#foo:dir(rtl) {
+	order: 80;
+}
+
+:dir(rtl)#foo {
+	order: 81;
+}
+
+#foo :dir(rtl) {
+	order: 82;
+}
+
+:dir(rtl) #foo {
+	order: 83;
+}
+
+#foo  :dir(rtl) {
+	order: 84;
+}
+
+:dir(rtl)  #foo {
+	order: 85;
+}
+
+#foo+:dir(rtl) {
+	order: 86;
+}
+
+:dir(rtl)+#foo {
+	order: 87;
+}
+
+#foo + :dir(rtl) {
+	order: 88;
+}
+
+:dir(rtl) + #foo {
+	order: 89;
+}
+
+#foo~:dir(rtl) {
+	order: 90;
+}
+
+:dir(rtl)~#foo {
+	order: 91;
+}
+
+#foo ~ :dir(rtl) {
+	order: 92;
+}
+
+:dir(rtl) ~ #foo {
+	order: 93;
+}
+
+#foo>:dir(rtl) {
+	order: 94;
+}
+
+:dir(rtl)>#foo {
+	order: 95;
+}
+
+#foo > :dir(rtl) {
+	order: 96;
+}
+
+:dir(rtl) > #foo {
+	order: 97;
+}
+
+#foo, :dir(rtl) {
+	order: 98;
+}
+
+:dir(rtl), #foo {
+	order: 99;
+}
+
+__foo:dir(rtl) {
+	order: 100;
+}
+
+:dir(rtl)__foo {
+	order: 101;
+}
+
+__foo :dir(rtl) {
+	order: 102;
+}
+
+:dir(rtl) __foo {
+	order: 103;
+}
+
+__foo  :dir(rtl) {
+	order: 104;
+}
+
+:dir(rtl)  __foo {
+	order: 105;
+}
+
+__foo+:dir(rtl) {
+	order: 106;
+}
+
+:dir(rtl)+__foo {
+	order: 107;
+}
+
+__foo + :dir(rtl) {
+	order: 108;
+}
+
+:dir(rtl) + __foo {
+	order: 109;
+}
+
+__foo~:dir(rtl) {
+	order: 110;
+}
+
+:dir(rtl)~__foo {
+	order: 111;
+}
+
+__foo ~ :dir(rtl) {
+	order: 112;
+}
+
+:dir(rtl) ~ __foo {
+	order: 113;
+}
+
+__foo>:dir(rtl) {
+	order: 114;
+}
+
+:dir(rtl)>__foo {
+	order: 115;
+}
+
+__foo > :dir(rtl) {
+	order: 116;
+}
+
+:dir(rtl) > __foo {
+	order: 117;
+}
+
+__foo, :dir(rtl) {
+	order: 118;
+}
+
+:dir(rtl), __foo {
+	order: 119;
+}
+
+:--foo:dir(rtl) {
+	order: 120;
+}
+
+:dir(rtl):--foo {
+	order: 121;
+}
+
+:--foo :dir(rtl) {
+	order: 122;
+}
+
+:dir(rtl) :--foo {
+	order: 123;
+}
+
+:--foo  :dir(rtl) {
+	order: 124;
+}
+
+:dir(rtl)  :--foo {
+	order: 125;
+}
+
+:--foo+:dir(rtl) {
+	order: 126;
+}
+
+:dir(rtl)+:--foo {
+	order: 127;
+}
+
+:--foo + :dir(rtl) {
+	order: 128;
+}
+
+:dir(rtl) + :--foo {
+	order: 129;
+}
+
+:--foo~:dir(rtl) {
+	order: 130;
+}
+
+:dir(rtl)~:--foo {
+	order: 131;
+}
+
+:--foo ~ :dir(rtl) {
+	order: 132;
+}
+
+:dir(rtl) ~ :--foo {
+	order: 133;
+}
+
+:--foo>:dir(rtl) {
+	order: 134;
+}
+
+:dir(rtl)>:--foo {
+	order: 135;
+}
+
+:--foo > :dir(rtl) {
+	order: 136;
+}
+
+:dir(rtl) > :--foo {
+	order: 137;
+}
+
+:--foo, :dir(rtl) {
+	order: 138;
+}
+
+:dir(rtl), :--foo {
+	order: 139;
+}
+
+[foo="baz"]:dir(rtl) {
+	order: 140;
+}
+
+:dir(rtl)[foo="baz"] {
+	order: 141;
+}
+
+[foo="baz"] :dir(rtl) {
+	order: 142;
+}
+
+:dir(rtl) [foo="baz"] {
+	order: 143;
+}
+
+[foo="baz"]  :dir(rtl) {
+	order: 144;
+}
+
+:dir(rtl)  [foo="baz"] {
+	order: 145;
+}
+
+[foo="baz"]+:dir(rtl) {
+	order: 146;
+}
+
+:dir(rtl)+[foo="baz"] {
+	order: 147;
+}
+
+[foo="baz"] + :dir(rtl) {
+	order: 148;
+}
+
+:dir(rtl) + [foo="baz"] {
+	order: 149;
+}
+
+[foo="baz"]~:dir(rtl) {
+	order: 150;
+}
+
+:dir(rtl)~[foo="baz"] {
+	order: 151;
+}
+
+[foo="baz"] ~ :dir(rtl) {
+	order: 152;
+}
+
+:dir(rtl) ~ [foo="baz"] {
+	order: 153;
+}
+
+[foo="baz"]>:dir(rtl) {
+	order: 154;
+}
+
+:dir(rtl)>[foo="baz"] {
+	order: 155;
+}
+
+[foo="baz"] > :dir(rtl) {
+	order: 156;
+}
+
+:dir(rtl) > [foo="baz"] {
+	order: 157;
+}
+
+[foo="baz"], :dir(rtl) {
+	order: 158;
+}
+
+:dir(rtl), [foo="baz"] {
+	order: 159;
+}
+
+*:dir(rtl) {
+	order: 160;
+}
+
+:dir(rtl)* {
+	order: 161;
+}
+
+* :dir(rtl) {
+	order: 162;
+}
+
+:dir(rtl) * {
+	order: 163;
+}
+
+*  :dir(rtl) {
+	order: 164;
+}
+
+:dir(rtl)  * {
+	order: 165;
+}
+
+*+:dir(rtl) {
+	order: 166;
+}
+
+:dir(rtl)+* {
+	order: 167;
+}
+
+* + :dir(rtl) {
+	order: 168;
+}
+
+:dir(rtl) + * {
+	order: 169;
+}
+
+*~:dir(rtl) {
+	order: 170;
+}
+
+:dir(rtl)~* {
+	order: 171;
+}
+
+* ~ :dir(rtl) {
+	order: 172;
+}
+
+:dir(rtl) ~ * {
+	order: 173;
+}
+
+*>:dir(rtl) {
+	order: 174;
+}
+
+:dir(rtl)>* {
+	order: 175;
+}
+
+* > :dir(rtl) {
+	order: 176;
+}
+
+:dir(rtl) > * {
+	order: 177;
+}
+
+*, :dir(rtl) {
+	order: 178;
+}
+
+:dir(rtl), * {
+	order: 179;
+}
+
+:hover:dir(rtl) {
+	order: 180;
+}
+
+:dir(rtl):hover {
+	order: 181;
+}
+
+:hover :dir(rtl) {
+	order: 182;
+}
+
+:dir(rtl) :hover {
+	order: 183;
+}
+
+:hover  :dir(rtl) {
+	order: 184;
+}
+
+:dir(rtl)  :hover {
+	order: 185;
+}
+
+:hover+:dir(rtl) {
+	order: 186;
+}
+
+:dir(rtl)+:hover {
+	order: 187;
+}
+
+:hover + :dir(rtl) {
+	order: 188;
+}
+
+:dir(rtl) + :hover {
+	order: 189;
+}
+
+:hover~:dir(rtl) {
+	order: 190;
+}
+
+:dir(rtl)~:hover {
+	order: 191;
+}
+
+:hover ~ :dir(rtl) {
+	order: 192;
+}
+
+:dir(rtl) ~ :hover {
+	order: 193;
+}
+
+:hover>:dir(rtl) {
+	order: 194;
+}
+
+:dir(rtl)>:hover {
+	order: 195;
+}
+
+:hover > :dir(rtl) {
+	order: 196;
+}
+
+:dir(rtl) > :hover {
+	order: 197;
+}
+
+:hover, :dir(rtl) {
+	order: 198;
+}
+
+:dir(rtl), :hover {
+	order: 199;
+}
+
+::before:dir(rtl) {
+	order: 200;
+}
+
+:dir(rtl)::before {
+	order: 201;
+}
+
+::before :dir(rtl) {
+	order: 202;
+}
+
+:dir(rtl) ::before {
+	order: 203;
+}
+
+::before  :dir(rtl) {
+	order: 204;
+}
+
+:dir(rtl)  ::before {
+	order: 205;
+}
+
+::before+:dir(rtl) {
+	order: 206;
+}
+
+:dir(rtl)+::before {
+	order: 207;
+}
+
+::before + :dir(rtl) {
+	order: 208;
+}
+
+:dir(rtl) + ::before {
+	order: 209;
+}
+
+::before~:dir(rtl) {
+	order: 210;
+}
+
+:dir(rtl)~::before {
+	order: 211;
+}
+
+::before ~ :dir(rtl) {
+	order: 212;
+}
+
+:dir(rtl) ~ ::before {
+	order: 213;
+}
+
+::before>:dir(rtl) {
+	order: 214;
+}
+
+:dir(rtl)>::before {
+	order: 215;
+}
+
+::before > :dir(rtl) {
+	order: 216;
+}
+
+:dir(rtl) > ::before {
+	order: 217;
+}
+
+::before, :dir(rtl) {
+	order: 218;
+}
+
+:dir(rtl), ::before {
+	order: 219;
+}
+
+foo[:dir(rtl)] {
+	order: 220;
+}
+
+foo[baz=":dir(rtl)"] {
+	order: 221;
+}
+
+:not(:dir(rtl)) {
+	order: 222;
+}
+
+::dir(rtl) {
+	order: 223;
+}
+
+:--:dir(rtl) {
+	order: 224;
+}
+
+__:dir(rtl) {
+	order: 225;
+}
+
+/* :dir(rtl) */

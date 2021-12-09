@@ -7,5 +7,12 @@ module.exports = {
 		options: {
 			preserve: false
 		}
-	}
+	},
+	'generated-selector-cases': {
+		message: 'correctly handles generated cases',
+		warnings: 1,
+		options: {
+			preserve: false
+		}
+	},
 }

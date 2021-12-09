@@ -1,0 +1,905 @@
+:has(.foo):has(.foo) {
+	order: 0;
+}
+
+:has(.foo):has(.foo) {
+	order: 1;
+}
+
+:has(.foo) :has(.foo) {
+	order: 2;
+}
+
+:has(.foo) :has(.foo) {
+	order: 3;
+}
+
+:has(.foo)  :has(.foo) {
+	order: 4;
+}
+
+:has(.foo)  :has(.foo) {
+	order: 5;
+}
+
+:has(.foo)+:has(.foo) {
+	order: 6;
+}
+
+:has(.foo)+:has(.foo) {
+	order: 7;
+}
+
+:has(.foo) + :has(.foo) {
+	order: 8;
+}
+
+:has(.foo) + :has(.foo) {
+	order: 9;
+}
+
+:has(.foo)~:has(.foo) {
+	order: 10;
+}
+
+:has(.foo)~:has(.foo) {
+	order: 11;
+}
+
+:has(.foo) ~ :has(.foo) {
+	order: 12;
+}
+
+:has(.foo) ~ :has(.foo) {
+	order: 13;
+}
+
+:has(.foo)>:has(.foo) {
+	order: 14;
+}
+
+:has(.foo)>:has(.foo) {
+	order: 15;
+}
+
+:has(.foo) > :has(.foo) {
+	order: 16;
+}
+
+:has(.foo) > :has(.foo) {
+	order: 17;
+}
+
+:has(.foo), :has(.foo) {
+	order: 18;
+}
+
+:has(.foo), :has(.foo) {
+	order: 19;
+}
+
+button:has(.foo) {
+	order: 20;
+}
+
+:has(.foo)button {
+	order: 21;
+}
+
+button :has(.foo) {
+	order: 22;
+}
+
+:has(.foo) button {
+	order: 23;
+}
+
+button  :has(.foo) {
+	order: 24;
+}
+
+:has(.foo)  button {
+	order: 25;
+}
+
+button+:has(.foo) {
+	order: 26;
+}
+
+:has(.foo)+button {
+	order: 27;
+}
+
+button + :has(.foo) {
+	order: 28;
+}
+
+:has(.foo) + button {
+	order: 29;
+}
+
+button~:has(.foo) {
+	order: 30;
+}
+
+:has(.foo)~button {
+	order: 31;
+}
+
+button ~ :has(.foo) {
+	order: 32;
+}
+
+:has(.foo) ~ button {
+	order: 33;
+}
+
+button>:has(.foo) {
+	order: 34;
+}
+
+:has(.foo)>button {
+	order: 35;
+}
+
+button > :has(.foo) {
+	order: 36;
+}
+
+:has(.foo) > button {
+	order: 37;
+}
+
+button, :has(.foo) {
+	order: 38;
+}
+
+:has(.foo), button {
+	order: 39;
+}
+
+.🧑🏾‍🎤:has(.foo) {
+	order: 40;
+}
+
+:has(.foo).🧑🏾‍🎤 {
+	order: 41;
+}
+
+.🧑🏾‍🎤 :has(.foo) {
+	order: 42;
+}
+
+:has(.foo) .🧑🏾‍🎤 {
+	order: 43;
+}
+
+.🧑🏾‍🎤  :has(.foo) {
+	order: 44;
+}
+
+:has(.foo)  .🧑🏾‍🎤 {
+	order: 45;
+}
+
+.🧑🏾‍🎤+:has(.foo) {
+	order: 46;
+}
+
+:has(.foo)+.🧑🏾‍🎤 {
+	order: 47;
+}
+
+.🧑🏾‍🎤 + :has(.foo) {
+	order: 48;
+}
+
+:has(.foo) + .🧑🏾‍🎤 {
+	order: 49;
+}
+
+.🧑🏾‍🎤~:has(.foo) {
+	order: 50;
+}
+
+:has(.foo)~.🧑🏾‍🎤 {
+	order: 51;
+}
+
+.🧑🏾‍🎤 ~ :has(.foo) {
+	order: 52;
+}
+
+:has(.foo) ~ .🧑🏾‍🎤 {
+	order: 53;
+}
+
+.🧑🏾‍🎤>:has(.foo) {
+	order: 54;
+}
+
+:has(.foo)>.🧑🏾‍🎤 {
+	order: 55;
+}
+
+.🧑🏾‍🎤 > :has(.foo) {
+	order: 56;
+}
+
+:has(.foo) > .🧑🏾‍🎤 {
+	order: 57;
+}
+
+.🧑🏾‍🎤, :has(.foo) {
+	order: 58;
+}
+
+:has(.foo), .🧑🏾‍🎤 {
+	order: 59;
+}
+
+.foo:has(.foo) {
+	order: 60;
+}
+
+:has(.foo).foo {
+	order: 61;
+}
+
+.foo :has(.foo) {
+	order: 62;
+}
+
+:has(.foo) .foo {
+	order: 63;
+}
+
+.foo  :has(.foo) {
+	order: 64;
+}
+
+:has(.foo)  .foo {
+	order: 65;
+}
+
+.foo+:has(.foo) {
+	order: 66;
+}
+
+:has(.foo)+.foo {
+	order: 67;
+}
+
+.foo + :has(.foo) {
+	order: 68;
+}
+
+:has(.foo) + .foo {
+	order: 69;
+}
+
+.foo~:has(.foo) {
+	order: 70;
+}
+
+:has(.foo)~.foo {
+	order: 71;
+}
+
+.foo ~ :has(.foo) {
+	order: 72;
+}
+
+:has(.foo) ~ .foo {
+	order: 73;
+}
+
+.foo>:has(.foo) {
+	order: 74;
+}
+
+:has(.foo)>.foo {
+	order: 75;
+}
+
+.foo > :has(.foo) {
+	order: 76;
+}
+
+:has(.foo) > .foo {
+	order: 77;
+}
+
+.foo, :has(.foo) {
+	order: 78;
+}
+
+:has(.foo), .foo {
+	order: 79;
+}
+
+#foo:has(.foo) {
+	order: 80;
+}
+
+:has(.foo)#foo {
+	order: 81;
+}
+
+#foo :has(.foo) {
+	order: 82;
+}
+
+:has(.foo) #foo {
+	order: 83;
+}
+
+#foo  :has(.foo) {
+	order: 84;
+}
+
+:has(.foo)  #foo {
+	order: 85;
+}
+
+#foo+:has(.foo) {
+	order: 86;
+}
+
+:has(.foo)+#foo {
+	order: 87;
+}
+
+#foo + :has(.foo) {
+	order: 88;
+}
+
+:has(.foo) + #foo {
+	order: 89;
+}
+
+#foo~:has(.foo) {
+	order: 90;
+}
+
+:has(.foo)~#foo {
+	order: 91;
+}
+
+#foo ~ :has(.foo) {
+	order: 92;
+}
+
+:has(.foo) ~ #foo {
+	order: 93;
+}
+
+#foo>:has(.foo) {
+	order: 94;
+}
+
+:has(.foo)>#foo {
+	order: 95;
+}
+
+#foo > :has(.foo) {
+	order: 96;
+}
+
+:has(.foo) > #foo {
+	order: 97;
+}
+
+#foo, :has(.foo) {
+	order: 98;
+}
+
+:has(.foo), #foo {
+	order: 99;
+}
+
+__foo:has(.foo) {
+	order: 100;
+}
+
+:has(.foo)__foo {
+	order: 101;
+}
+
+__foo :has(.foo) {
+	order: 102;
+}
+
+:has(.foo) __foo {
+	order: 103;
+}
+
+__foo  :has(.foo) {
+	order: 104;
+}
+
+:has(.foo)  __foo {
+	order: 105;
+}
+
+__foo+:has(.foo) {
+	order: 106;
+}
+
+:has(.foo)+__foo {
+	order: 107;
+}
+
+__foo + :has(.foo) {
+	order: 108;
+}
+
+:has(.foo) + __foo {
+	order: 109;
+}
+
+__foo~:has(.foo) {
+	order: 110;
+}
+
+:has(.foo)~__foo {
+	order: 111;
+}
+
+__foo ~ :has(.foo) {
+	order: 112;
+}
+
+:has(.foo) ~ __foo {
+	order: 113;
+}
+
+__foo>:has(.foo) {
+	order: 114;
+}
+
+:has(.foo)>__foo {
+	order: 115;
+}
+
+__foo > :has(.foo) {
+	order: 116;
+}
+
+:has(.foo) > __foo {
+	order: 117;
+}
+
+__foo, :has(.foo) {
+	order: 118;
+}
+
+:has(.foo), __foo {
+	order: 119;
+}
+
+:--foo:has(.foo) {
+	order: 120;
+}
+
+:has(.foo):--foo {
+	order: 121;
+}
+
+:--foo :has(.foo) {
+	order: 122;
+}
+
+:has(.foo) :--foo {
+	order: 123;
+}
+
+:--foo  :has(.foo) {
+	order: 124;
+}
+
+:has(.foo)  :--foo {
+	order: 125;
+}
+
+:--foo+:has(.foo) {
+	order: 126;
+}
+
+:has(.foo)+:--foo {
+	order: 127;
+}
+
+:--foo + :has(.foo) {
+	order: 128;
+}
+
+:has(.foo) + :--foo {
+	order: 129;
+}
+
+:--foo~:has(.foo) {
+	order: 130;
+}
+
+:has(.foo)~:--foo {
+	order: 131;
+}
+
+:--foo ~ :has(.foo) {
+	order: 132;
+}
+
+:has(.foo) ~ :--foo {
+	order: 133;
+}
+
+:--foo>:has(.foo) {
+	order: 134;
+}
+
+:has(.foo)>:--foo {
+	order: 135;
+}
+
+:--foo > :has(.foo) {
+	order: 136;
+}
+
+:has(.foo) > :--foo {
+	order: 137;
+}
+
+:--foo, :has(.foo) {
+	order: 138;
+}
+
+:has(.foo), :--foo {
+	order: 139;
+}
+
+[foo="baz"]:has(.foo) {
+	order: 140;
+}
+
+:has(.foo)[foo="baz"] {
+	order: 141;
+}
+
+[foo="baz"] :has(.foo) {
+	order: 142;
+}
+
+:has(.foo) [foo="baz"] {
+	order: 143;
+}
+
+[foo="baz"]  :has(.foo) {
+	order: 144;
+}
+
+:has(.foo)  [foo="baz"] {
+	order: 145;
+}
+
+[foo="baz"]+:has(.foo) {
+	order: 146;
+}
+
+:has(.foo)+[foo="baz"] {
+	order: 147;
+}
+
+[foo="baz"] + :has(.foo) {
+	order: 148;
+}
+
+:has(.foo) + [foo="baz"] {
+	order: 149;
+}
+
+[foo="baz"]~:has(.foo) {
+	order: 150;
+}
+
+:has(.foo)~[foo="baz"] {
+	order: 151;
+}
+
+[foo="baz"] ~ :has(.foo) {
+	order: 152;
+}
+
+:has(.foo) ~ [foo="baz"] {
+	order: 153;
+}
+
+[foo="baz"]>:has(.foo) {
+	order: 154;
+}
+
+:has(.foo)>[foo="baz"] {
+	order: 155;
+}
+
+[foo="baz"] > :has(.foo) {
+	order: 156;
+}
+
+:has(.foo) > [foo="baz"] {
+	order: 157;
+}
+
+[foo="baz"], :has(.foo) {
+	order: 158;
+}
+
+:has(.foo), [foo="baz"] {
+	order: 159;
+}
+
+*:has(.foo) {
+	order: 160;
+}
+
+:has(.foo)* {
+	order: 161;
+}
+
+* :has(.foo) {
+	order: 162;
+}
+
+:has(.foo) * {
+	order: 163;
+}
+
+*  :has(.foo) {
+	order: 164;
+}
+
+:has(.foo)  * {
+	order: 165;
+}
+
+*+:has(.foo) {
+	order: 166;
+}
+
+:has(.foo)+* {
+	order: 167;
+}
+
+* + :has(.foo) {
+	order: 168;
+}
+
+:has(.foo) + * {
+	order: 169;
+}
+
+*~:has(.foo) {
+	order: 170;
+}
+
+:has(.foo)~* {
+	order: 171;
+}
+
+* ~ :has(.foo) {
+	order: 172;
+}
+
+:has(.foo) ~ * {
+	order: 173;
+}
+
+*>:has(.foo) {
+	order: 174;
+}
+
+:has(.foo)>* {
+	order: 175;
+}
+
+* > :has(.foo) {
+	order: 176;
+}
+
+:has(.foo) > * {
+	order: 177;
+}
+
+*, :has(.foo) {
+	order: 178;
+}
+
+:has(.foo), * {
+	order: 179;
+}
+
+:hover:has(.foo) {
+	order: 180;
+}
+
+:has(.foo):hover {
+	order: 181;
+}
+
+:hover :has(.foo) {
+	order: 182;
+}
+
+:has(.foo) :hover {
+	order: 183;
+}
+
+:hover  :has(.foo) {
+	order: 184;
+}
+
+:has(.foo)  :hover {
+	order: 185;
+}
+
+:hover+:has(.foo) {
+	order: 186;
+}
+
+:has(.foo)+:hover {
+	order: 187;
+}
+
+:hover + :has(.foo) {
+	order: 188;
+}
+
+:has(.foo) + :hover {
+	order: 189;
+}
+
+:hover~:has(.foo) {
+	order: 190;
+}
+
+:has(.foo)~:hover {
+	order: 191;
+}
+
+:hover ~ :has(.foo) {
+	order: 192;
+}
+
+:has(.foo) ~ :hover {
+	order: 193;
+}
+
+:hover>:has(.foo) {
+	order: 194;
+}
+
+:has(.foo)>:hover {
+	order: 195;
+}
+
+:hover > :has(.foo) {
+	order: 196;
+}
+
+:has(.foo) > :hover {
+	order: 197;
+}
+
+:hover, :has(.foo) {
+	order: 198;
+}
+
+:has(.foo), :hover {
+	order: 199;
+}
+
+::before:has(.foo) {
+	order: 200;
+}
+
+:has(.foo)::before {
+	order: 201;
+}
+
+::before :has(.foo) {
+	order: 202;
+}
+
+:has(.foo) ::before {
+	order: 203;
+}
+
+::before  :has(.foo) {
+	order: 204;
+}
+
+:has(.foo)  ::before {
+	order: 205;
+}
+
+::before+:has(.foo) {
+	order: 206;
+}
+
+:has(.foo)+::before {
+	order: 207;
+}
+
+::before + :has(.foo) {
+	order: 208;
+}
+
+:has(.foo) + ::before {
+	order: 209;
+}
+
+::before~:has(.foo) {
+	order: 210;
+}
+
+:has(.foo)~::before {
+	order: 211;
+}
+
+::before ~ :has(.foo) {
+	order: 212;
+}
+
+:has(.foo) ~ ::before {
+	order: 213;
+}
+
+::before>:has(.foo) {
+	order: 214;
+}
+
+:has(.foo)>::before {
+	order: 215;
+}
+
+::before > :has(.foo) {
+	order: 216;
+}
+
+:has(.foo) > ::before {
+	order: 217;
+}
+
+::before, :has(.foo) {
+	order: 218;
+}
+
+:has(.foo), ::before {
+	order: 219;
+}
+
+foo[:has(.foo)] {
+	order: 220;
+}
+
+foo[baz=":has(.foo)"] {
+	order: 221;
+}
+
+:not(:has(.foo)) {
+	order: 222;
+}
+
+::has(.foo) {
+	order: 223;
+}
+
+:--:has(.foo) {
+	order: 224;
+}
+
+__:has(.foo) {
+	order: 225;
+}
+
+/* :has(.foo) */

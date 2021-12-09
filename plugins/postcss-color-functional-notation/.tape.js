@@ -16,5 +16,17 @@ module.exports = {
 		options: {
 			preserve: true
 		}
-	}
+	},
+	'generated-value-cases': {
+		message: 'correctly handles generated cases',
+		options: {
+			preserve: false
+		}
+	},
+	'generated-value-cases:preserve': {
+		message: 'correctly handles generated cases',
+		options: {
+			preserve: true
+		}
+	},
 }

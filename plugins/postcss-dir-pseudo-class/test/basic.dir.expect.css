@@ -69,3 +69,23 @@ html:not([dir="rtl"]) * {
 html[dir="rtl"] * {
 	order: 17;
 }
+
+[dir="rtl"] html:not([dir="rtl"]) * {
+	order: 18;
+}
+
+html:not([dir="rtl"]) :has([dir="rtl"] .foo *) {
+	order: 19;
+}
+
+html:not([dir="rtl"]) :is([dir="rtl"] html:not([dir="rtl"]) * + *) {
+	order: 19;
+}
+
+:root :dir(var(--dir)) {
+	order: 20;
+}
+
+:dir(ignore) {
+	order: 21;
+}
