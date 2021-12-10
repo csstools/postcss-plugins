@@ -31,7 +31,7 @@
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-selector-parser": "^6.0.6"
+    "postcss-selector-parser": "^6.0.7"
   },
   "devDependencies": {
     "postcss": "^8.3.6",
