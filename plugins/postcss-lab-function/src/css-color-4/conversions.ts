@@ -3,6 +3,8 @@
 
 import { multiplyMatrices } from './multiply-matrices';
 
+type color = [number, number, number];
+
 // Sample code for color conversions
 // Conversion can also be done using ICC profiles and a Color Management System
 // For clarity, a library is used for matrix multiplication (multiply-matrices.js)
@@ -13,7 +15,7 @@ export const D65 = [0.3127 / 0.3290, 1.00000, (1.0 - 0.3127 - 0.3290) / 0.3290];
 
 // sRGB-related functions
 
-export function lin_sRGB(RGB: [number, number, number]): [number, number, number] {
+export function lin_sRGB(RGB: color): color {
 	// convert an array of sRGB values
 	// where in-gamut values are in the range [0 - 1]
 	// to linear light (un-companded) form.
@@ -30,10 +32,10 @@ export function lin_sRGB(RGB: [number, number, number]): [number, number, number
 		}
 
 		return sign * (Math.pow((abs + 0.055) / 1.055, 2.4));
-	}) as [number, number, number];
+	}) as color;
 }
 
-export function gam_sRGB(RGB: [number, number, number]): [number, number, number] {
+export function gam_sRGB(RGB: color): color {
 	// convert an array of linear-light sRGB values in the range 0.0-1.0
 	// to gamma corrected form
 	// https://en.wikipedia.org/wiki/SRGB
@@ -49,10 +51,10 @@ export function gam_sRGB(RGB: [number, number, number]): [number, number, number
 		}
 
 		return 12.92 * val;
-	}) as [number, number, number];
+	}) as color;
 }
 
-export function lin_sRGB_to_XYZ(rgb: [number, number, number]): [number, number, number] {
+export function lin_sRGB_to_XYZ(rgb: color): color {
 	// convert an array of linear-light sRGB values to CIE XYZ
 	// using sRGB's own white, D65 (no chromatic adaptation)
 
@@ -61,10 +63,10 @@ export function lin_sRGB_to_XYZ(rgb: [number, number, number]): [number, number,
 		[0.21263900587151027, 0.715168678767756, 0.07219231536073371],
 		[0.01933081871559182, 0.11919477979462598, 0.9505321522496607],
 	];
-	return multiplyMatrices(M, rgb) as [number, number, number];
+	return multiplyMatrices(M, rgb) as color;
 }
 
-export function XYZ_to_lin_sRGB(XYZ: [number, number, number]): [number, number, number] {
+export function XYZ_to_lin_sRGB(XYZ: color): color {
 	// convert XYZ to linear-light sRGB
 
 	const M = [
@@ -73,27 +75,27 @@ export function XYZ_to_lin_sRGB(XYZ: [number, number, number]): [number, number,
 		[0.05563007969699366, -0.20397695888897652, 1.0569715142428786],
 	];
 
-	return multiplyMatrices(M, XYZ) as [number, number, number];
+	return multiplyMatrices(M, XYZ) as color;
 }
 
 //  display-p3-related functions
 
 
-export function lin_P3(RGB: [number, number, number]): [number, number, number] {
+export function lin_P3(RGB: color): color {
 	// convert an array of display-p3 RGB values in the range 0.0 - 1.0
 	// to linear light (un-companded) form.
 
 	return lin_sRGB(RGB);	// same as sRGB
 }
 
-export function gam_P3(RGB: [number, number, number]): [number, number, number] {
+export function gam_P3(RGB: color): color {
 	// convert an array of linear-light display-p3 RGB  in the range 0.0-1.0
 	// to gamma corrected form
 
 	return gam_sRGB(RGB);	// same as sRGB
 }
 
-export function lin_P3_to_XYZ(rgb: [number, number, number]): [number, number, number] {
+export function lin_P3_to_XYZ(rgb: color): color {
 	// convert an array of linear-light display-p3 values to CIE XYZ
 	// using  D65 (no chromatic adaptation)
 	// http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
@@ -104,10 +106,10 @@ export function lin_P3_to_XYZ(rgb: [number, number, number]): [number, number, n
 	];
 	// 0 was computed as -3.972075516933488e-17
 
-	return multiplyMatrices(M, rgb) as [number, number, number];
+	return multiplyMatrices(M, rgb) as color;
 }
 
-export function XYZ_to_lin_P3(XYZ: [number, number, number]): [number, number, number] {
+export function XYZ_to_lin_P3(XYZ: color): color {
 	// convert XYZ to linear-light P3
 	const M = [
 		[2.493496911941425, -0.9313836179191239, -0.40271078445071684],
@@ -115,12 +117,12 @@ export function XYZ_to_lin_P3(XYZ: [number, number, number]): [number, number, n
 		[0.03584583024378447, -0.07617238926804182, 0.9568845240076872],
 	];
 
-	return multiplyMatrices(M, XYZ) as [number, number, number];
+	return multiplyMatrices(M, XYZ) as color;
 }
 
 // prophoto-rgb functions
 
-export function lin_ProPhoto(RGB: [number, number, number]): [number, number, number] {
+export function lin_ProPhoto(RGB: color): color {
 	// convert an array of prophoto-rgb values
 	// where in-gamut colors are in the range [0.0 - 1.0]
 	// to linear light (un-companded) form.
@@ -136,10 +138,10 @@ export function lin_ProPhoto(RGB: [number, number, number]): [number, number, nu
 		}
 
 		return sign * Math.pow(val, 1.8);
-	}) as [number, number, number];
+	}) as color;
 }
 
-export function gam_ProPhoto(RGB: [number, number, number]): [number, number, number] {
+export function gam_ProPhoto(RGB: color): color {
 	// convert an array of linear-light prophoto-rgb  in the range 0.0-1.0
 	// to gamma corrected form
 	// Transfer curve is gamma 1.8 with a small linear portion
@@ -154,10 +156,10 @@ export function gam_ProPhoto(RGB: [number, number, number]): [number, number, nu
 		}
 
 		return 16 * val;
-	}) as [number, number, number];
+	}) as color;
 }
 
-export function lin_ProPhoto_to_XYZ(rgb: [number, number, number]): [number, number, number] {
+export function lin_ProPhoto_to_XYZ(rgb: color): color {
 	// convert an array of linear-light prophoto-rgb values to CIE XYZ
 	// using  D50 (so no chromatic adaptation needed afterwards)
 	// http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
@@ -167,10 +169,10 @@ export function lin_ProPhoto_to_XYZ(rgb: [number, number, number]): [number, num
 		[0.0, 0.0, 0.8251046025104601],
 	];
 
-	return multiplyMatrices(M, rgb) as [number, number, number];
+	return multiplyMatrices(M, rgb) as color;
 }
 
-export function XYZ_to_lin_ProPhoto(XYZ: [number, number, number]): [number, number, number] {
+export function XYZ_to_lin_ProPhoto(XYZ: color): color {
 	// convert XYZ to linear-light prophoto-rgb
 	const M = [
 		[1.3457989731028281, -0.25558010007997534, -0.05110628506753401],
@@ -178,12 +180,12 @@ export function XYZ_to_lin_ProPhoto(XYZ: [number, number, number]): [number, num
 		[0.0, 0.0, 1.2119675456389454],
 	];
 
-	return multiplyMatrices(M, XYZ) as [number, number, number];
+	return multiplyMatrices(M, XYZ) as color;
 }
 
 // a98-rgb functions
 
-export function lin_a98rgb(RGB: [number, number, number]): [number, number, number] {
+export function lin_a98rgb(RGB: color): color {
 	// convert an array of a98-rgb values in the range 0.0 - 1.0
 	// to linear light (un-companded) form.
 	// negative values are also now accepted
@@ -192,10 +194,10 @@ export function lin_a98rgb(RGB: [number, number, number]): [number, number, numb
 		const abs = Math.abs(val);
 
 		return sign * Math.pow(abs, 563 / 256);
-	}) as [number, number, number];
+	}) as color;
 }
 
-export function gam_a98rgb(RGB: [number, number, number]): [number, number, number] {
+export function gam_a98rgb(RGB: color): color {
 	// convert an array of linear-light a98-rgb  in the range 0.0-1.0
 	// to gamma corrected form
 	// negative values are also now accepted
@@ -204,10 +206,10 @@ export function gam_a98rgb(RGB: [number, number, number]): [number, number, numb
 		const abs = Math.abs(val);
 
 		return sign * Math.pow(abs, 256 / 563);
-	}) as [number, number, number];
+	}) as color;
 }
 
-export function lin_a98rgb_to_XYZ(rgb: [number, number, number]): [number, number, number] {
+export function lin_a98rgb_to_XYZ(rgb: color): color {
 	// convert an array of linear-light a98-rgb values to CIE XYZ
 	// http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
 	// has greater numerical precision than section 4.3.5.3 of
@@ -221,10 +223,10 @@ export function lin_a98rgb_to_XYZ(rgb: [number, number, number]): [number, numbe
 		[0.02703136138641234, 0.07068885253582723, 0.9913375368376388],
 	];
 
-	return multiplyMatrices(M, rgb) as [number, number, number];
+	return multiplyMatrices(M, rgb) as color;
 }
 
-export function XYZ_to_lin_a98rgb(XYZ: [number, number, number]): [number, number, number] {
+export function XYZ_to_lin_a98rgb(XYZ: color): color {
 	// convert XYZ to linear-light a98-rgb
 	const M = [
 		[2.0415879038107465, -0.5650069742788596, -0.34473135077832956],
@@ -232,12 +234,12 @@ export function XYZ_to_lin_a98rgb(XYZ: [number, number, number]): [number, numbe
 		[0.013444280632031142, -0.11836239223101838, 1.0151749943912054],
 	];
 
-	return multiplyMatrices(M, XYZ) as [number, number, number];
+	return multiplyMatrices(M, XYZ) as color;
 }
 
 //Rec. 2020-related functions
 
-export function lin_2020(RGB: [number, number, number]): [number, number, number] {
+export function lin_2020(RGB: color): color {
 	// convert an array of rec2020 RGB values in the range 0.0 - 1.0
 	// to linear light (un-companded) form.
 	// ITU-R BT.2020-2 p.4
@@ -254,10 +256,10 @@ export function lin_2020(RGB: [number, number, number]): [number, number, number
 		}
 
 		return sign * (Math.pow((abs + α - 1) / α, 1 / 0.45));
-	}) as [number, number, number];
+	}) as color;
 }
 
-export function gam_2020(RGB: [number, number, number]): [number, number, number] {
+export function gam_2020(RGB: color): color {
 	// convert an array of linear-light rec2020 RGB  in the range 0.0-1.0
 	// to gamma corrected form
 	// ITU-R BT.2020-2 p.4
@@ -275,10 +277,10 @@ export function gam_2020(RGB: [number, number, number]): [number, number, number
 		}
 
 		return 4.5 * val;
-	}) as [number, number, number];
+	}) as color;
 }
 
-export function lin_2020_to_XYZ(rgb: [number, number, number]): [number, number, number] {
+export function lin_2020_to_XYZ(rgb: color): color {
 	// convert an array of linear-light rec2020 values to CIE XYZ
 	// using  D65 (no chromatic adaptation)
 	// http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
@@ -289,10 +291,10 @@ export function lin_2020_to_XYZ(rgb: [number, number, number]): [number, number,
 	];
 	// 0 is actually calculated as  4.994106574466076e-17
 
-	return multiplyMatrices(M, rgb) as [number, number, number];
+	return multiplyMatrices(M, rgb) as color;
 }
 
-export function XYZ_to_lin_2020(XYZ: [number, number, number]): [number, number, number] {
+export function XYZ_to_lin_2020(XYZ: color): color {
 	// convert XYZ to linear-light rec2020
 	const M = [
 		[1.7166511879712674, -0.35567078377639233, -0.25336628137365974],
@@ -300,12 +302,12 @@ export function XYZ_to_lin_2020(XYZ: [number, number, number]): [number, number,
 		[0.017639857445310783, -0.042770613257808524, 0.9421031212354738],
 	];
 
-	return multiplyMatrices(M, XYZ) as [number, number, number];
+	return multiplyMatrices(M, XYZ) as color;
 }
 
 // Chromatic adaptation
 
-export function D65_to_D50(XYZ: [number, number, number]): [number, number, number] {
+export function D65_to_D50(XYZ: color): color {
 	// Bradford chromatic adaptation from D65 to D50
 	// The matrix below is the result of three operations:
 	// - convert from XYZ to retinal cone domain
@@ -318,10 +320,10 @@ export function D65_to_D50(XYZ: [number, number, number]): [number, number, numb
 		[-0.009243058152591178, 0.015055144896577895, 0.7518742899580008],
 	];
 
-	return multiplyMatrices(M, XYZ) as [number, number, number];
+	return multiplyMatrices(M, XYZ) as color;
 }
 
-export function D50_to_D65(XYZ: [number, number, number]): [number, number, number] {
+export function D50_to_D65(XYZ: color): color {
 	// Bradford chromatic adaptation from D50 to D65
 	const M = [
 		[0.9554734527042182, -0.023098536874261423, 0.0632593086610217],
@@ -329,12 +331,12 @@ export function D50_to_D65(XYZ: [number, number, number]): [number, number, numb
 		[0.012314001688319899, -0.020507696433477912, 1.3303659366080753],
 	];
 
-	return multiplyMatrices(M, XYZ) as [number, number, number];
+	return multiplyMatrices(M, XYZ) as color;
 }
 
 // CIE Lab and LCH
 
-export function XYZ_to_Lab(XYZ: [number, number, number]): [number, number, number] {
+export function XYZ_to_Lab(XYZ: color): color {
 	// Assuming XYZ is relative to D50, convert to CIE Lab
 	// from CIE standard, which now defines these as a rational fraction
 	const ε = 216 / 24389;  // 6^3/29^3
@@ -354,7 +356,7 @@ export function XYZ_to_Lab(XYZ: [number, number, number]): [number, number, numb
 	// L in range [0,100]. For use in CSS, add a percent
 }
 
-export function Lab_to_XYZ(Lab: [number, number, number]): [number, number, number] {
+export function Lab_to_XYZ(Lab: color): color {
 	// Convert Lab to D50-adapted XYZ
 	// http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
 	const κ = 24389 / 27;   // 29^3/3^3
@@ -374,10 +376,10 @@ export function Lab_to_XYZ(Lab: [number, number, number]): [number, number, numb
 	];
 
 	// Compute XYZ by scaling xyz by reference white
-	return xyz.map((value, i) => value * D50[i]) as [number, number, number];
+	return xyz.map((value, i) => value * D50[i]) as color;
 }
 
-export function Lab_to_LCH(Lab: [number, number, number]): [number, number, number] {
+export function Lab_to_LCH(Lab: color): color {
 	// Convert to polar form
 	const hue = Math.atan2(Lab[2], Lab[1]) * 180 / Math.PI;
 	return [
@@ -387,7 +389,7 @@ export function Lab_to_LCH(Lab: [number, number, number]): [number, number, numb
 	];
 }
 
-export function LCH_to_Lab(LCH: [number, number, number]): [number, number, number] {
+export function LCH_to_Lab(LCH: color): color {
 	// Convert from polar form
 	return [
 		LCH[0], // L is still L
@@ -402,7 +404,7 @@ export function LCH_to_Lab(LCH: [number, number, number]): [number, number, numb
 // XYZ <-> LMS matrices recalculated for consistent reference white
 // see https://github.com/w3c/csswg-drafts/issues/6642#issuecomment-943521484
 
-export function XYZ_to_OKLab(XYZ: [number, number, number]): [number, number, number] {
+export function XYZ_to_OKLab(XYZ: color): color {
 	// Given XYZ relative to D65, convert to OKLab
 	const XYZtoLMS = [
 		[0.8190224432164319, 0.3619062562801221, -0.12887378261216414],
@@ -415,12 +417,12 @@ export function XYZ_to_OKLab(XYZ: [number, number, number]): [number, number, nu
 		[0.0259040371, 0.7827717662, -0.8086757660],
 	];
 
-	const LMS = multiplyMatrices(XYZtoLMS, XYZ) as [number, number, number];
-	return multiplyMatrices(LMStoOKLab, LMS.map(c => Math.cbrt(c))) as [number, number, number];
+	const LMS = multiplyMatrices(XYZtoLMS, XYZ) as color;
+	return multiplyMatrices(LMStoOKLab, LMS.map(c => Math.cbrt(c))) as color;
 	// L in range [0,1]. For use in CSS, multiply by 100 and add a percent
 }
 
-export function OKLab_to_XYZ(OKLab: [number, number, number]): [number, number, number] {
+export function OKLab_to_XYZ(OKLab: color): color {
 	// Given OKLab, convert to XYZ relative to D65
 	const LMStoXYZ = [
 		[1.2268798733741557, -0.5578149965554813, 0.28139105017721583],
@@ -433,11 +435,11 @@ export function OKLab_to_XYZ(OKLab: [number, number, number]): [number, number, 
 		[1.0000000546724109177, -0.089484182094965759684, -1.2914855378640917399],
 	];
 
-	const LMSnl = multiplyMatrices(OKLabtoLMS, OKLab) as [number, number, number];
-	return multiplyMatrices(LMStoXYZ, LMSnl.map(c => c ** 3)) as [number, number, number];
+	const LMSnl = multiplyMatrices(OKLabtoLMS, OKLab) as color;
+	return multiplyMatrices(LMStoXYZ, LMSnl.map(c => c ** 3)) as color;
 }
 
-export function OKLab_to_OKLCH(OKLab: [number, number, number]): [number, number, number] {
+export function OKLab_to_OKLCH(OKLab: color): color {
 	const hue = Math.atan2(OKLab[2], OKLab[1]) * 180 / Math.PI;
 	return [
 		OKLab[0], // L is still L
@@ -446,7 +448,7 @@ export function OKLab_to_OKLCH(OKLab: [number, number, number]): [number, number
 	];
 }
 
-export function OKLCH_to_OKLab(OKLCH: [number, number, number]): [number, number, number] {
+export function OKLCH_to_OKLab(OKLCH: color): color {
 	return [
 		OKLCH[0], // L is still L
 		OKLCH[1] * Math.cos(OKLCH[2] * Math.PI / 180), // a
@@ -456,34 +458,34 @@ export function OKLCH_to_OKLab(OKLCH: [number, number, number]): [number, number
 
 // Premultiplied alpha conversions
 
-export function rectangular_premultiply(color: [number, number, number], alpha: number): [number, number, number] {
+export function rectangular_premultiply(color: color, alpha: number): color {
 	// given a color in a rectangular orthogonal colorspace
 	// and an alpha value
 	// return the premultiplied form
-	return color.map((c) => c * alpha) as [number, number, number];
+	return color.map((c) => c * alpha) as color;
 }
 
-export function rectangular_un_premultiply(color: [number, number, number], alpha: number): [number, number, number] {
+export function rectangular_un_premultiply(color: color, alpha: number): color {
 	// given a premultiplied color in a rectangular orthogonal colorspace
 	// and an alpha value
 	// return the actual color
 	if (alpha === 0) {
 		return color; // avoid divide by zero
 	}
-	return color.map((c) => c / alpha) as [number, number, number];
+	return color.map((c) => c / alpha) as color;
 }
 
-export function polar_premultiply(color: [number, number, number], alpha: number, hueIndex: number): [number, number, number] {
+export function polar_premultiply(color: color, alpha: number, hueIndex: number): color {
 	// given a color in a cylindicalpolar colorspace
 	// and an alpha value
 	// return the premultiplied form.
 	// the index says which entry in the color array corresponds to hue angle
 	// for example, in OKLCH it would be 2
 	// while in HSL it would be 0
-	return color.map((c, i) => c * (hueIndex === i ? 1 : alpha)) as [number, number, number];
+	return color.map((c, i) => c * (hueIndex === i ? 1 : alpha)) as color;
 }
 
-export function polar_un_premultiply(color: [number, number, number], alpha: number, hueIndex: number): [number, number, number] {
+export function polar_un_premultiply(color: color, alpha: number, hueIndex: number): color {
 	// given a color in a cylindicalpolar colorspace
 	// and an alpha value
 	// return the actual color.
@@ -493,10 +495,10 @@ export function polar_un_premultiply(color: [number, number, number], alpha: num
 	if (alpha === 0) {
 		return color; // avoid divide by zero
 	}
-	return color.map((c, i) => c / (hueIndex === i ? 1 : alpha)) as [number, number, number];
+	return color.map((c, i) => c / (hueIndex === i ? 1 : alpha)) as color;
 }
 
 // Convenience functions can easily be defined, such as
-export function hsl_premultiply(color: [number, number, number], alpha: number): [number, number, number] {
+export function hsl_premultiply(color: color, alpha: number): color {
 	return polar_premultiply(color, alpha, 0);
 }

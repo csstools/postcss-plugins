@@ -2,7 +2,8 @@
 
 // Calculate deltaE OK
 // simple root sum of squares
-export function deltaEOK(reference: [number, number, number], sample: [number, number, number]): number {
+type color = [number, number, number];
+export function deltaEOK(reference: color, sample: color): number {
 	// Given reference and sample are both in OKLab
 	const [L1, a1, b1] = reference;
 	const [L2, a2, b2] = sample;
