@@ -1,6 +1,6 @@
 # Changes to PostCSS Pseudo Class Any Link
 
-### 7.0.1
+### 7.0.1 (December 13, 2021)
 
 - Updated: documentation
 
