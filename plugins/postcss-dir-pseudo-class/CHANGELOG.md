@@ -1,6 +1,6 @@
 # Changes to PostCSS Dir Pseudo Class
 
-### 6.0.1
+### 6.0.1 (December 13, 2021)
 
 - Updated: documentation
 
