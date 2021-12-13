@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-      - run: npm install --ignore-scripts
+      - run: npm ci --ignore-scripts
       - run: npm run build --workspaces --if-present
 
       - uses: actions/setup-node@v2
