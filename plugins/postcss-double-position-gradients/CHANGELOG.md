@@ -1,5 +1,9 @@
 # Changes to PostCSS Double Position Gradients
 
+### 3.0.3 (December 14, 2021)
+
+- Fixed: infinite loop in complex gradients.
+
 ### 3.0.2 (December 13, 2021)
 
 - Changed: now uses `postcss-value-parser` for parsing.

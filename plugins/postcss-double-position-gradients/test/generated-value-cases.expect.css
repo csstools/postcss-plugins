@@ -1,23 +1,23 @@
 .order-0 {
-	order: linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%) !important;
+	order: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%) !important;
 }
 
 .order-1 {
-	order: var(1, linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%));
+	order: var(1, linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%));
 }
 
 .order-2 {
-	order: var(linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%), 1);
+	order: var(linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%), 1);
 }
 
 .order-3 {
-	order: var(linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%), linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%));
+	order: var(linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%), linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%));
 }
 
 /* linear-gradient(90deg, black 25% 50%, blue 50% 75%) */
 
 :root {
-	--some-var: linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%);
+	--some-var: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
 }
 
 .content {
@@ -26,6 +26,6 @@
 
 @supports (order: linear-gradient(90deg, black 25% 50%, blue 50% 75%)) {
 	.support {
-		order: linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%);
+		order: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
 	}
 }
