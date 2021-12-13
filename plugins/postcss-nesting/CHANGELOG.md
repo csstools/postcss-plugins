@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### 10.0.3
+### 10.0.3 (December 13, 2021)
 
 - Updated: documentation
 
