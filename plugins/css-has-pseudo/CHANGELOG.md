@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### 3.0.0
+### 3.0.0 (December 13, 2021)
 
 - Breaking: require/import paths have changed
 - Changed: new polyfill CDN urls.
