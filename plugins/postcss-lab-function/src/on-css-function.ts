@@ -1,6 +1,7 @@
 import valueParser from 'postcss-value-parser';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
-import { labToSRgb, lchToSRgb } from './color';
+import { labToSRgb } from './css-color-4/convert-lab-to-srgb';
+import { lchToSRgb } from './css-color-4/convert-lch-to-srgb';
 
 function onCSSFunction(node: FunctionNode) {
 	const value = node.value;
@@ -48,7 +49,7 @@ function onCSSFunction(node: FunctionNode) {
 	const rgbValues = toRGB(
 		channelNumbers,
 	).map(
-		channelValue => Math.max(Math.min(Math.round(channelValue * 2.55), 255), 0),
+		channelValue => Math.round(channelValue * 255),
 	);
 
 	node.nodes.splice(node.nodes.indexOf(channelNode1) + 1, 0, commaNode());

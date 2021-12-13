@@ -4,8 +4,8 @@
 	color: rgba(179, 35, 35, .5);
 	color: rgba(179, 35, 35, 1);
 	color: rgba(179, 35, 35, 0.5);
-	color: rgb(255, 216, 255);
-	color: lab(100% 50 0 foo);
+	color: rgb(222, 105, 147);
+	color: lab(60% 50 0 foo);
 }
 
 .test-lch {
@@ -14,20 +14,20 @@
 	color: rgba(179, 35, 35, .5);
 	color: rgba(179, 35, 35, 1);
 	color: rgba(179, 35, 35, 0.5);
-	color: rgb(255, 216, 255);
+	color: rgb(222, 105, 147);
 
-	color: rgb(118, 255, 253);
-	color: rgb(118, 255, 253);
-	color: rgb(118, 255, 253);
-	color: rgb(118, 255, 253);
-	color: rgb(118, 255, 253);
+	color: rgb(0, 163, 142);
+	color: rgb(0, 163, 142);
+	color: rgb(0, 163, 142);
+	color: rgb(0, 163, 142);
+	color: rgb(0, 163, 142);
 
-	color: rgb(255, 228, 188);
-	color: rgb(255, 228, 188);
-	color: rgb(255, 228, 188);
-	color: rgb(255, 228, 188);
-	color: rgb(255, 228, 188);
-	color: lch(100% 50 0.785398unknown);
+	color: rgb(212, 118, 84);
+	color: rgb(212, 118, 84);
+	color: rgb(212, 118, 84);
+	color: rgb(212, 118, 84);
+	color: rgb(212, 118, 84);
+	color: lch(60% 50 0.785398unknown);
 }
 
 .test-alpha {
@@ -44,8 +44,15 @@
 }
 
 .test-high-luminance {
-	prop-1: rgb(0, 238, 255);
+	prop-1: rgb(255, 255, 255);
+	prop-2: rgb(255, 255, 255);
 }
+
+.test-low-luminance {
+	prop-1: rgb(0, 38, 38);
+	prop-2: rgb(0, 42, 43);
+}
+
 
 .test-unparseable-lab-function {
 	background-image: lab(; );
