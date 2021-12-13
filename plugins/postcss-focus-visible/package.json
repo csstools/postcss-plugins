@@ -1,6 +1,6 @@
 {
   "name": "postcss-focus-visible",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "description": "Use the :focus-visible pseudo-selector in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",

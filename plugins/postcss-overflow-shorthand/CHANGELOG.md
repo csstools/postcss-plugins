@@ -1,6 +1,6 @@
 # Changes to PostCSS Overflow Shorthand
 
-### 3.0.1
+### 3.0.1 (December 13, 2021)
 
 - Updated: documentation
 

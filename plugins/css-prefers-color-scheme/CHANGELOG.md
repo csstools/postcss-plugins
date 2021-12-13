@@ -1,6 +1,6 @@
 # Changes to Prefers Color Scheme
 
-### 6.0.0
+### 6.0.0 (December 13, 2021)
 
 - Breaking: require/import paths have changed
 - Changed: new polyfill CDN urls.

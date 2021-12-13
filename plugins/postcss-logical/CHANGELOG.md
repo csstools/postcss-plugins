@@ -1,6 +1,6 @@
 # Changes to PostCSS Logical Properties
 
-### 5.0.1
+### 5.0.1 (December 13, 2021)
 
 - Updated: documentation
 
