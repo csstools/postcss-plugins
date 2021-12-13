@@ -53,5 +53,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-env-function"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

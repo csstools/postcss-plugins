@@ -49,5 +49,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-overflow-shorthand"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

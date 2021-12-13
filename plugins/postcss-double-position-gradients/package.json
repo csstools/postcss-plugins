@@ -58,5 +58,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-double-position-gradients"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

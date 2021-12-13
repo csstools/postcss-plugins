@@ -71,5 +71,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-nesting"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

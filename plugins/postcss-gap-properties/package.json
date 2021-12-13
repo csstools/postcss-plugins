@@ -52,5 +52,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-gap-properties"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

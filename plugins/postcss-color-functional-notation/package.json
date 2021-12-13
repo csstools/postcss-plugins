@@ -62,5 +62,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-color-functional-notation"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

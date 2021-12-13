@@ -72,5 +72,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/css-prefers-color-scheme"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

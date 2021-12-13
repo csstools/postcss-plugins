@@ -55,5 +55,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-pseudo-class-any-link"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }
