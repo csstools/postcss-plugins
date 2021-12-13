@@ -1,6 +1,6 @@
 # Changes to PostCSS Lab Function
 
-### 4.0.2
+### 4.0.2 (December 13, 2021)
 
 - Changed: now uses `postcss-value-parser` for parsing.
 - Updated: documentation
