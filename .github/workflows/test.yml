@@ -2,6 +2,10 @@ name: test
 on:
   push:
 
+concurrency:
+  group: branch-node-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test_with_workspaces_support:
     runs-on: ubuntu-latest
