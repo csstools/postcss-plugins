@@ -1,6 +1,6 @@
 # Changes to PostCSS Focus Visible
 
-### 6.0.2
+### 6.0.2 (December 13, 2021)
 
 - Changed: now uses `postcss-selector-parser` for parsing.
 - Updated: documentation
