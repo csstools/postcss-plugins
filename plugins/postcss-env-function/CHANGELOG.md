@@ -1,6 +1,6 @@
 # Changes to PostCSS Environment Variables
 
-### 4.0.3
+### 4.0.3 (December 13, 2021)
 
 - Changed: now uses `postcss-value-parser` for parsing.
 - Updated: documentation
