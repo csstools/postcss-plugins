@@ -7,7 +7,7 @@
 
 [PostCSS Preset Env] lets you convert modern CSS into something most browsers
 can understand, determining the polyfills you need based on your targeted
-browsers or runtime environments..
+browsers or runtime environments.
 
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
