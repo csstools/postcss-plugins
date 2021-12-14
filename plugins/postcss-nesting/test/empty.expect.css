@@ -1,5 +1,5 @@
 
-		a b c {
+		:is(a b) c {
 			order: 1;
 		}
 d {
@@ -14,7 +14,7 @@ f g {
 f {
 	order: 5;
 }
-a b c {
+:is(a b) c {
 			order: 1
 }
 d {

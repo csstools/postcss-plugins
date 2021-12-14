@@ -1,13 +1,13 @@
 a, b {
 	order: 1;
 }
-:is(a,b) c, :is(a,b) d {
+a c, a d, b c, b d {
 		order: 2;
 	}
-:is(:is(a,b) c,:is(a,b) d) e, :is(:is(a,b) c,:is(a,b) d) f {
+:is(a c) e, :is(a c) f, :is(a d) e, :is(a d) f, :is(b c) e, :is(b c) f, :is(b d) e, :is(b d) f {
 			order: 3;
 		}
-:is(a,b) c, :is(a,b) d {
+a c, a d, b c, b d {
 		order: 4;
 	}
 a, b {
@@ -16,13 +16,13 @@ a, b {
 a, b {
 	order: 1;
 }
-:is(a,b) c, :is(a,b) d {
+a c, a d, b c, b d {
 		order: 2;
 }
-:is(:is(a,b) c,:is(a,b) d) e,:is(:is(a,b) c,:is(a,b) d) f {
+:is(a c) e, :is(a c) f, :is(a d) e, :is(a d) f, :is(b c) e, :is(b c) f, :is(b d) e, :is(b d) f {
 			order: 3;
 }
-:is(a,b) c, :is(a,b) d {
+a c, a d, b c, b d {
 		order: 4;
 }
 a, b {

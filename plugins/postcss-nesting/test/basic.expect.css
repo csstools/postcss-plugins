@@ -34,7 +34,7 @@ a b {
 		order: 7;
 	}
 
-a b c {
+:is(a b) c {
 			order: 8;
 		}
 
@@ -52,7 +52,7 @@ body a {
 		order: 11
 }
 
-html body a {
+html :is(body a) {
 			order: 12
 }
 
@@ -104,8 +104,8 @@ a.foo {
 		order: 22
 }
 
-.foo:is(h1),
-	.foo:is(h2) {
+h1.foo,
+	h2.foo {
 		color: red;
 	}
 

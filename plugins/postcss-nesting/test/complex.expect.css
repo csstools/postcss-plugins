@@ -1,6 +1,6 @@
 body > p, body > ul {
 	margin: 0
 }
-:is(body > p,body > ul) ~ :is(body > p,body > ul) {
+:is(body > p) ~ :is(body > p), :is(body > ul) ~ :is(body > ul) {
 		margin-top: 0;
 	}

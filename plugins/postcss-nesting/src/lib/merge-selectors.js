@@ -19,23 +19,21 @@ const selectorTypeOrder = {
 export default function mergeSelectors(fromSelectors, toSelectors) {
 	return fromSelectors.flatMap((fromSelector) => {
 		let fromSelectorAST = parser().astSync(fromSelector);
+		const fromSelectorWithIsAST = parser().astSync(`:is(${fromSelector})`);
 
 		// If the from selector is simple we extract the first non root, non selector node
 		if (fromSelectorAST.type === 'root' && fromSelectorAST.nodes.length === 1) {
 			fromSelectorAST = fromSelectorAST.nodes[0];
 		}
 
-		if (fromSelectorAST.type === 'selector' && fromSelectorAST.nodes.length === 1) {
-			fromSelectorAST = fromSelectorAST.nodes[0];
-		}
+		const firstPartOfFromSelector = fromSelectorAST.nodes[0];
+		const fromIsSimple = isSimpleSelector(firstPartOfFromSelector);
+		const fromIsCompound = isCompoundSelector(firstPartOfFromSelector);
 
 		return toSelectors.map((toSelector) => {
 			return parser((selectors) => {
 				selectors.walkNesting((toSelectorAST) => {
-					const fromIsSimple = isSimpleSelector(fromSelectorAST);
 					const toIsSimple = isSimpleSelector(toSelectorAST);
-
-					const fromIsCompound = isCompoundSelector(fromSelectorAST);
 					const toIsCompound = isCompoundSelector(toSelectorAST);
 
 					// Parent and child are simple
@@ -47,7 +45,12 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 					// Parent and child are simple or compound
 					if ((fromIsSimple || fromIsCompound) && (toIsSimple || toIsCompound)) {
 						const parent = toSelectorAST.parent;
-						toSelectorAST.replaceWith(fromSelectorAST.clone());
+
+						if (fromIsSimple) {
+							toSelectorAST.replaceWith(fromSelectorAST.clone().nodes[0]);
+						} else {
+							toSelectorAST.replaceWith(...(fromSelectorAST.clone().nodes));
+						}
 
 						if (parent && parent.nodes.length > 1) {
 							sortCompoundSelector(parent);
@@ -59,100 +62,25 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 
 					// Parent is simple, but child is complex
 					if (fromIsSimple) {
+						const parent = toSelectorAST.parent;
 						const fromClone = fromSelectorAST.clone();
-						toSelectorAST.replaceWith(fromClone);
+						toSelectorAST.replaceWith(fromClone.nodes[0]);
+
+						if (parent) {
+							sortCompoundSelectorsInsideComplexSelector(parent);
+						}
+
 						return;
 					}
+
+					// TODO : detect and handle complex selectors with only space combinators
+
+					toSelectorAST.replaceWith(fromSelectorWithIsAST.clone());
+					return;
 				});
 			}).processSync(toSelector);
 		});
 	});
-
-	// let complexFromSelector = false;
-	// let fromSelectorIsList = fromSelectors.length > 1;
-	// const fromSelectorAST = parser().astSync(fromSelectors.join(','));
-	// const fromSelectorWithIsAST = parser().astSync(`:is(${fromSelectors.join(',')})`);
-
-	// let fromSelectorCounterAST = 0;
-	// fromSelectorAST.walk((x) => {
-	// 	if (x.type === 'root') {
-	// 		return;
-	// 	}
-
-	// 	fromSelectorCounterAST++;
-	// });
-
-	// if (fromSelectorCounterAST > 2) {
-	// 	complexFromSelector = true;
-	// }
-
-	// return toSelectors.map((toSelector) => {
-	// 	return parser((selectors) => {
-	// 		selectors.walkNesting((selector) => {
-	// 			if (fromSelectorIsList) {
-	// 				selector.replaceWith(fromSelectorWithIsAST.clone());
-	// 				return;
-	// 			}
-
-	// 			// foo &foo foo & baz -> foo &:is(foo) foo & baz
-	// 			if (
-	// 				selector.next() &&
-	// 				selector.next().type === 'tag'
-	// 			) {
-	// 				const isPseudo = parser.pseudo({ value: ':is' });
-	// 				isPseudo.append(selector.next().clone());
-	// 				selector.next().replaceWith(isPseudo);
-
-	// 				if (complexFromSelector) {
-	// 					selector.replaceWith(fromSelectorWithIsAST.clone());
-	// 					return;
-	// 				}
-
-	// 				selector.replaceWith(fromSelectorAST.clone());
-	// 				return;
-	// 			}
-
-	// 			// h1 and foo can combine to fooh1|h1foo which would be a different selector.
-	// 			// h1 and .foo can combine to .fooh1 which would be a different selector.
-	// 			// h1 { .foo& {} } -> h1.foo: {}
-	// 			// h1 { foo& {} } -> foo:is(h1) {}
-	// 			if (
-	// 				selector.prev() &&
-	// 				selector.prev().type !== 'combinator' &&
-	// 				fromSelectorAST.first &&
-	// 				fromSelectorAST.first.first &&
-	// 				fromSelectorAST.first.first.type === 'tag'
-	// 			) {
-	// 				if (complexFromSelector) {
-	// 					selector.replaceWith(fromSelectorWithIsAST.clone());
-	// 					return;
-	// 				}
-
-	// 				let firstPrecedingNonCombinatorNode = selector.prev();
-	// 				while (firstPrecedingNonCombinatorNode.prev() && firstPrecedingNonCombinatorNode.prev().type !== 'combinator') {
-	// 					firstPrecedingNonCombinatorNode = firstPrecedingNonCombinatorNode.prev();
-	// 				}
-
-	// 				if (firstPrecedingNonCombinatorNode.type !== 'tag') {
-	// 					// Safe to just prepend the parent selector.
-	// 					// h1 { .foo& {} } -> h1.foo: {}
-	// 					selector.parent.insertBefore(firstPrecedingNonCombinatorNode, fromSelectorAST.clone());
-	// 					selector.remove();
-	// 					return;
-	// 				}
-
-	// 				// Unsafe -> wrapping the parent selector in :is().
-	// 				// h1 { foo& {} } -> foo:is(h1) {}
-	// 				const isPseudo = parser.pseudo({ value: ':is' });
-	// 				isPseudo.append(fromSelectorAST.clone());
-	// 				selector.replaceWith(isPseudo);
-	// 				return;
-	// 			}
-
-	// 			selector.replaceWith(fromSelectorAST.clone());
-	// 		});
-	// 	}).processSync(toSelector);
-	// });
 }
 
 function isSimpleSelector(selector) {
@@ -201,12 +129,44 @@ function sortCompoundSelector(node) {
 	});
 }
 
+function sortCompoundSelectorsInsideComplexSelector(node) {
+	let compound = [];
+
+	const nodes = [...node.nodes];
+
+	for (let i = 0; i < (nodes.length+1); i++) {
+		const child = nodes[i];
+		if (!child || child.type === 'combinator') {
+			if (compound.length > 1) {
+				const compoundSelector = parser.selector();
+				compound[0].replaceWith(compoundSelector);
+
+				compound.slice(1).forEach((compoundPart) => {
+					compoundPart.remove();
+				});
+
+				compound.forEach((compoundPart) => {
+					compoundSelector.append(compoundPart);
+				});
+
+				sortCompoundSelector(compoundSelector);
+				wrapMultipleTagSelectorsWithIsPseudo(compoundSelector);
+			}
+
+			compound = [];
+			continue;
+		}
+
+		compound.push(child);
+	}
+}
+
 function wrapMultipleTagSelectorsWithIsPseudo(node) {
 	const tagNodes = node.nodes.filter((x) => {
 		return x.type === 'tag';
 	});
 
-	if (tagNodes > 1) {
+	if (tagNodes.length > 1) {
 		tagNodes.slice(1).forEach((child) => {
 			const isPseudoClone = isPseudo.clone();
 			child.replaceWith(isPseudoClone);

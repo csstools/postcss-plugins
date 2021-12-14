@@ -2,20 +2,20 @@
 
 /* Example 2 */
 
-table.colortable td {
+:is(table.colortable) td {
 		text-align: center
 	}
 
-table.colortable td.c {
+:is(:is(table.colortable) td).c {
 			text-transform: uppercase
 		}
 
-table.colortable td:first-child,
-		table.colortable td:first-child+td {
+:is(:is(table.colortable) td):first-child,
+		:is(:is(table.colortable) td):first-child+td {
 			border: 1px solid black
 		}
 
-table.colortable th {
+:is(table.colortable) th {
 		text-align: center;
 		background: black;
 		color: white;
@@ -56,8 +56,10 @@ table.colortable th {
 .bar {
 	color: blue
 }
-:is(.foo,.bar)+.baz,
-	:is(.foo,.bar).qux {
+.foo+.baz,
+	.foo.qux,
+	.bar+.baz,
+	.bar.qux {
 		color: red;
 	}
 
@@ -114,7 +116,7 @@ table.colortable th {
 */
 
 /* The parent selector can be arbitrarily complicated */
-:is(.error,#404):hover>.baz {
+.error:hover>.baz, #404:hover>.baz {
 		color: red;
 	}
 
@@ -138,7 +140,7 @@ figure {
 figure>figcaption {
 		background: hsl(0 0% 0% / 50%)
 	}
-figure>figcaption>p {
+:is(figure>figcaption)>p {
 			font-size: .9rem;
 		}
 
@@ -152,7 +154,7 @@ figure>figcaption>p {
 .foo {
 	color: blue
 }
-.foo:is(__bar) {
+__bar.foo {
 		color: red;
 	}
 
@@ -253,7 +255,7 @@ figure>figcaption>p {
 .bar .foo {
 		color: red
 }
-.bar .foo.baz {
+:is(.bar .foo).baz {
 			color: green;
 		}
 
