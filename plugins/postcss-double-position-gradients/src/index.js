@@ -14,15 +14,11 @@ function insertBefore(nodes, node, ...values) {
 }
 
 function isNumericNode(node) {
-	let result = false;
-
 	try {
-		result = valueParser.unit(node?.value) !== false;
+		return valueParser.unit(node?.value) !== false;
 	} catch (e) {
-		// Error silently
+		return false;
 	}
-
-	return result;
 }
 
 /**
@@ -61,8 +57,10 @@ module.exports = function creator(opts) {
 					return;
 				}
 
-				// Discarding commas and spaces
-				const nodes = func.nodes.filter(n => n.type === 'word');
+				// Discarding comments and spaces
+				const nodes = func.nodes.filter((x) => {
+					return x.type !== 'comment' && x.type !== 'space';
+				});
 
 				nodes.forEach((node, index, nodes) => {
 					const oneValueBack = Object(nodes[index - 1]);
@@ -91,8 +89,12 @@ module.exports = function creator(opts) {
 			const modifiedValue = valueAST.toString();
 
 			if (modifiedValue !== decl.value) {
-				if (preserve) decl.cloneBefore({ value: modifiedValue });
-				else decl.value = modifiedValue;
+				if (preserve) {
+					decl.cloneBefore({ value: modifiedValue });
+					return;
+				}
+
+				decl.value = modifiedValue;
 			}
 		},
 	};
