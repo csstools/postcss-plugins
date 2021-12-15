@@ -7,61 +7,42 @@
     "Maxime Thirouin"
   ],
   "license": "MIT",
-  "repository": "postcss/postcss-color-hex-alpha",
-  "homepage": "https://github.com/postcss/postcss-color-hex-alpha#readme",
-  "bugs": "https://github.com/postcss/postcss-color-hex-alpha/issues",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-hex-alpha#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
-    }
+  "types": "index.d.ts",
+  "files": [
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
+    "dist",
+    "index.d.ts"
+  ],
+  "bin": {
+    "postcss-color-hex-alpha": "dist/cli.mjs"
   },
   "scripts": {
-    "build": "npx rollup -c .rollup.js",
-    "build:watch": "npx rollup -c .rollup.js --watch",
-    "lint": "npx eslint --cache src",
-    "lint:fix": "npx eslint --cache --fix",
-    "pretest": "npm install && npm run build",
-    "test": "npm run lint && npm run tape",
-    "tape": "npx postcss-tape",
-    "prepublishOnly": "npm test"
+    "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "stryker": "stryker run --logLevel error",
+    "test": "postcss-tape --ci"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
     "postcss-value-parser": "^4.2.0"
   },
-  "peerDependencies": {
-    "postcss": "^8.3.7"
-  },
   "devDependencies": {
-    "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.6",
-    "@rollup/plugin-babel": "^5.3.0",
-    "eslint": "^7.32.0",
-    "postcss": "^8.3.7",
-    "postcss-tape": "^6.0.1",
-    "pre-commit": "^1.2.2",
-    "rollup": "^2.57.0",
-    "rollup-plugin-copy": "^3.4.0"
+    "postcss": "^8.3.6",
+    "postcss-tape": "^6.0.1"
   },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
-    },
-    "root": true
+  "peerDependencies": {
+    "postcss": "^8.3"
   },
   "keywords": [
     "postcss",
@@ -78,5 +59,13 @@
     "csswg",
     "specification",
     "spec"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugins/postcss-color-hex-alpha"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
 }

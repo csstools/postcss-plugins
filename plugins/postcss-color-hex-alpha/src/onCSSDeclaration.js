@@ -55,7 +55,7 @@ const hexa2rgba = (node) => {
 		parseInt(hex8.slice(4, 6), 16),
 		parseInt(hex8.slice(6, 8), 16),
 		Math.round(
-			(parseInt(hex8.slice(8, 10), 16) / 255) * alphaDecimalPrecision
+			(parseInt(hex8.slice(8, 10), 16) / 255) * alphaDecimalPrecision,
 		) / alphaDecimalPrecision,
 	];
 

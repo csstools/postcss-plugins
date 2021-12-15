@@ -13,7 +13,7 @@ Add [PostCSS Color Hex Alpha] to your project:
 npm install postcss-color-hex-alpha --save-dev
 ```
 
-Use [PostCSS Color Hex Alpha] to process your CSS:
+Use [PostCSS Color Hex Alpha] as a [PostCSS] plugin:
 
 ```js
 const postcssColorHexAlpha = require('postcss-color-hex-alpha');
@@ -165,6 +165,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Color Hex Alpha]: https://github.com/postcss/postcss-color-hex-alpha
+[PostCSS Color Hex Alpha]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-hex-alpha
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

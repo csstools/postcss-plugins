@@ -30,7 +30,7 @@ Add [PostCSS Color Hex Alpha] to your project:
 npm install postcss-color-hex-alpha --save-dev
 ```
 
-Use [PostCSS Color Hex Alpha] to process your CSS:
+Use [PostCSS Color Hex Alpha] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -72,8 +72,8 @@ body {
 }
 ```
 
-[cli-img]: https://github.com/postcss/postcss-color-hex-alpha/workflows/test/badge.svg
-[cli-url]: https://github.com/postcss/postcss-color-hex-alpha/actions/workflows/test.yml?query=workflow/test
+[cli-img]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-img]: https://cssdb.org/badge/hexadecimal-alpha-notation.svg
 [css-url]: https://cssdb.org/#hexadecimal-alpha-notation
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
@@ -82,5 +82,5 @@ body {
 [npm-url]: https://www.npmjs.com/package/postcss-color-hex-alpha
 
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Color Hex Alpha]: https://github.com/postcss/postcss-color-hex-alpha
+[PostCSS Color Hex Alpha]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-hex-alpha
 [CSS Color Module]: https://www.w3.org/TR/css-color-4/#hex-notation
