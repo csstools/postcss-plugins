@@ -1,6 +1,4 @@
-import { parse } from 'postcss-values-parser';
-import Func from 'postcss-values-parser/lib/nodes/Func';
-import Punctuation from 'postcss-values-parser/lib/nodes/Punctuation';
+import valuesParser from 'postcss-value-parser';
 import options from './options';
 
 /** @type {(decl: CSSDeclaration) => void} Transform 4 & 8 character hex color notation in CSS Declarations. */
@@ -9,15 +7,15 @@ const onCSSDeclaration = (decl) => {
 		const { value: originalValue } = decl;
 
 		// replace instances of hexa with rgba()
-		const valueAST = parse(originalValue);
+		const valueAST = valuesParser(originalValue);
 
-		walk(valueAST, (node) => {
+		valueAST.walk((node) => {
 			if (isAlphaHex(node)) {
-				node.replaceWith(hexa2rgba(node));
+				hexa2rgba(node);
 			}
 		});
 
-		const modifiedValue = String(valueAST);
+		const modifiedValue = valueAST.toString();
 
 		if (modifiedValue !== originalValue) {
 			if (options.preserve) decl.cloneBefore({ value: modifiedValue });
@@ -38,17 +36,6 @@ const hasAlphaHex = (node) => alphaHexRegExp.test(node.value);
 /** Returns whether a node matches a hexa node. */
 const isAlphaHex = (node) =>
 	node.type === 'word' && alphaHexValueRegExp.test(node.value);
-
-/** Walks all nodes in a value. */
-const walk = (node, fn) => {
-	if (Object(node.nodes).length) {
-		node.nodes.slice().forEach((child) => {
-			fn(child);
-
-			walk(child, fn);
-		});
-	}
-};
 
 /** Decimal precision. */
 const alphaDecimalPrecision = 100000;
@@ -72,29 +59,8 @@ const hexa2rgba = (node) => {
 		) / alphaDecimalPrecision,
 	];
 
-	// return a new rgba function, preserving the whitespace of the original node
-	const rgbaFunc = Object.assign(
-		new Func({
-			name: 'rgba',
-			raws: {},
-		}),
-		{
-			raws: node.raws,
-		}
-	);
-
-	rgbaFunc.append(createNumberNode(r));
-	rgbaFunc.append(new Punctuation({ value: ',' }));
-	rgbaFunc.append(createNumberNode(g));
-	rgbaFunc.append(new Punctuation({ value: ',' }));
-	rgbaFunc.append(createNumberNode(b));
-	rgbaFunc.append(new Punctuation({ value: ',' }));
-	rgbaFunc.append(createNumberNode(a));
-
-	return rgbaFunc;
+	node.value = `rgba(${r},${g},${b},${a})`;
 };
-
-const createNumberNode = (number) => parse(number).first;
 
 export default onCSSDeclaration;
 
