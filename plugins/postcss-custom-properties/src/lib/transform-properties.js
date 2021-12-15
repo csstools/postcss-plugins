@@ -1,4 +1,4 @@
-import { parse } from 'postcss-values-parser';
+import valuesParser from 'postcss-value-parser';
 import transformValueAST from './transform-value-ast';
 import { isRuleIgnored } from './is-ignored';
 
@@ -6,16 +6,16 @@ import { isRuleIgnored } from './is-ignored';
 export default (decl, customProperties, opts) => {
 	if (isTransformableDecl(decl) && !isRuleIgnored(decl)) {
 		const originalValue = decl.value;
-		const valueAST = parse(originalValue);
-		let value = String(transformValueAST(valueAST, customProperties));
+		const valueAST = valuesParser(originalValue);
+		let value = transformValueAST(valueAST, customProperties);
 
 		// protect against circular references
 		const valueSet = new Set();
 
 		while (customPropertiesRegExp.test(value) && !valueSet.has(value)) {
 			valueSet.add(value);
-			const parsedValueAST = parse(valueAST);
-			value = String(transformValueAST(parsedValueAST, customProperties));
+			const parsedValueAST = valuesParser(value);
+			value = transformValueAST(parsedValueAST, customProperties);
 		}
 
 		// conditionally transform values that have changed

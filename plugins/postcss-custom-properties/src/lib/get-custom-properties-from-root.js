@@ -1,4 +1,4 @@
-import { parse } from 'postcss-values-parser';
+import valuesParser from 'postcss-value-parser';
 import { isBlockIgnored } from './is-ignored';
 
 // return custom selectors from the css root, conditionally removing them
@@ -22,7 +22,7 @@ export default function getCustomPropertiesFromRoot(root, opts) {
 					const { prop } = decl;
 
 					// write the parsed value to the custom property
-					customPropertiesObject[prop] = parse(decl.value).nodes;
+					customPropertiesObject[prop] = valuesParser(decl.value);
 
 					// conditionally remove the custom property declaration
 					if (!opts.preserve) {

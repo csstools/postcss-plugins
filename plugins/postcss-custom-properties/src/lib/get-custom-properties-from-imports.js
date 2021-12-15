@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { parse as postcssParse } from 'postcss';
-import { parse } from 'postcss-values-parser';
+import { parse } from 'postcss';
+import valuesParser from 'postcss-value-parser';
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
 
 /* Get Custom Properties from CSS File
@@ -9,7 +9,7 @@ import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
 
 async function getCustomPropertiesFromCSSFile(from) {
 	const css = await readFile(from);
-	const root = postcssParse(css, { from });
+	const root = parse(css, { from });
 
 	return getCustomPropertiesFromRoot(root, { preserve: true });
 }
@@ -25,7 +25,7 @@ function getCustomPropertiesFromObject(object) {
 	);
 
 	for (const key in customProperties) {
-		customProperties[key] = parse(String(customProperties[key])).nodes;
+		customProperties[key] = valuesParser(String(customProperties[key]));
 	}
 
 	return customProperties;

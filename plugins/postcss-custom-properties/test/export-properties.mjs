@@ -10,6 +10,6 @@ export const customProperties = {
 	'--margin': '0 10px 20px 30px',
 	'--shadow-color': 'rgb(255,0,0)',
 	'--shadow': '0 6px 14px 0 color(var(--shadow-color) a(.15))',
-	'--font-family': '"Open Sans" , sans-serif',
+	'--font-family': '"Open Sans", sans-serif',
 	'--theme-color': '#053'
 };
