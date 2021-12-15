@@ -8,7 +8,10 @@ body > p, body > ul {
 		:focus:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)) {
 			order: 3;
 		}
-:is(body > p,body > ul) ~ :is(body > p,body > ul) *:hover,
-		:is(body > p,body > ul) ~ :is(body > p,body > ul) *:focus {
+:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)) *:hover,
+		:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)) *:focus {
 			order: 4;
+		}
+:is(body > p,body > ul) > *:hover {
+			order: 5;
 		}

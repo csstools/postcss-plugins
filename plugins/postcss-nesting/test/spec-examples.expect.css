@@ -2,20 +2,20 @@
 
 /* Example 2 */
 
-table.colortable td {
+:is(table.colortable) td {
 		text-align: center
 	}
 
-.c:is(table.colortable td) {
+.c:is(:is(table.colortable) td) {
 			text-transform: uppercase
 		}
 
-:first-child:is(table.colortable td),
-		table.colortable td:first-child+td {
+:first-child:is(:is(table.colortable) td),
+		:first-child:is(:is(table.colortable) td)+td {
 			border: 1px solid black
 		}
 
-table.colortable th {
+:is(table.colortable) th {
 		text-align: center;
 		background: black;
 		color: white;
@@ -138,7 +138,7 @@ figure {
 figure>figcaption {
 		background: hsl(0 0% 0% / 50%)
 	}
-figure>figcaption>p {
+:is(figure>figcaption)>p {
 			font-size: .9rem;
 		}
 

@@ -14,4 +14,10 @@ body > p, body > ul {
 			order: 4;
 		}
 	}
+
+	& {
+		& > *:hover {
+			order: 5;
+		}
+	}
 }

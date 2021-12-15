@@ -63,7 +63,18 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 					return;
 				}
 
-				if (!toIsCompound) {
+				if (fromIsSimple) {
+					const parent = toSelectorAST.parent;
+					toSelectorAST.replaceWith(fromSelectorAST.clone().nodes[0]);
+
+					if (parent) {
+						sortCompoundSelectorsInsideComplexSelector(parent);
+					}
+
+					return;
+				}
+
+				if (nestingIsNotInsideCompoundSelector(toSelectorAST)) {
 					const parent = toSelectorAST.parent;
 					if (fromIsSimple && fromSelectorAST.type === 'selector') {
 						// fromSelectorAST has type selector with a single child
@@ -76,6 +87,8 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 					if (parent) {
 						sortCompoundSelectorsInsideComplexSelector(parent);
 					}
+
+					return;
 				}
 
 				const parent = toSelectorAST.parent;
@@ -118,6 +131,36 @@ function isCompoundSelector(selector) {
 
 	if (hasCombinators) {
 		return false;
+	}
+
+	return true;
+}
+
+function nestingIsNotInsideCompoundSelector(selector) {
+	if (isSimpleSelector(selector)) {
+		return true;
+	}
+
+	if (!selector.parent) {
+		return false;
+	}
+
+	for (let i = 0; i < selector.parent.nodes.length; i++) {
+		if (!selector.parent.nodes[i].type === 'nesting') {
+			continue;
+		}
+
+		if (!selector.parent.nodes[i].prev() && !selector.parent.nodes[i].next()) {
+			continue;
+		}
+
+		if (selector.parent.nodes[i].prev() && selector.parent.nodes[i].prev().type !== 'combinator') {
+			return false;
+		}
+
+		if (selector.parent.nodes[i].next() && selector.parent.nodes[i].next().type !== 'combinator') {
+			return false;
+		}
 	}
 
 	return true;
