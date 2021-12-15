@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Functional Notation
 
+### 4.0.3
+
+- Added: support for Alpha value as a CSS variable in `rgb()` and `rgba()`.
+
 ### 4.0.2 (December 13, 2021)
 
 - Changed: now uses `postcss-value-parser` for parsing.
