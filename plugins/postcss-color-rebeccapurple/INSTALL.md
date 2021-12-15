@@ -13,15 +13,7 @@ Add [PostCSS RebeccaPurple] to your project:
 npm install postcss-color-rebeccapurple --save-dev
 ```
 
-Use **PostCSS RebeccaPurple** to process your CSS:
-
-```js
-const postcssRebeccapurple = require('postcss-color-rebeccapurple');
-
-postcssRebeccapurple.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use **PostCSS RebeccaPurple** as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -165,6 +157,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS RebeccaPurple]: https://github.com/postcss/postcss-color-rebeccapurple
+[PostCSS RebeccaPurple]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired
