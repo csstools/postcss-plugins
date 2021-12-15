@@ -28,8 +28,8 @@ const creator = opts => {
 				customProperties = getCustomPropertiesFromRoot(root, { preserve });
 
 				return {
-					Declaration: (decl) => transformProperties(decl, customProperties, { preserve })
-				}
+					Declaration: (decl) => transformProperties(decl, customProperties, { preserve }),
+				};
 			} else {
 				return {
 					Once: async root => {
@@ -41,13 +41,13 @@ const creator = opts => {
 
 						await writeCustomPropertiesToExports(customProperties, exportTo);
 					},
-					Declaration: (decl) => transformProperties(decl, customProperties, { preserve })
-				}
+					Declaration: (decl) => transformProperties(decl, customProperties, { preserve }),
+				};
 			}
-		}
-	}
-}
+		},
+	};
+};
 
-creator.postcss = true
+creator.postcss = true;
 
-export default creator
+export default creator;

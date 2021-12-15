@@ -21,7 +21,7 @@ function getCustomPropertiesFromObject(object) {
 	const customProperties = Object.assign(
 		{},
 		Object(object).customProperties,
-		Object(object)['custom-properties']
+		Object(object)['custom-properties'],
 	);
 
 	for (const key in customProperties) {
@@ -65,7 +65,7 @@ export default function getCustomPropertiesFromImports(sources) {
 
 		// skip objects with Custom Properties
 		if (opts.customProperties || opts['custom-properties']) {
-			return opts
+			return opts;
 		}
 
 		// source pathname

@@ -41,15 +41,7 @@ Add [PostCSS Custom Properties] to your project:
 npm install postcss-custom-properties --save-dev
 ```
 
-Use [PostCSS Custom Properties] to process your CSS:
-
-```js
-const postcssCustomProperties = require('postcss-custom-properties');
-
-postcssCustomProperties.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Custom Properties] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -184,10 +176,10 @@ See example exports written to [CSS](test/export-properties.css),
 [JS](test/export-properties.js), [MJS](test/export-properties.mjs),
 [JSON](test/export-properties.json) and [SCSS](test/export-properties.scss).
 
-[cli-img]: https://img.shields.io/travis/postcss/postcss-custom-properties/master.svg
-[cli-url]: https://travis-ci.org/postcss/postcss-custom-properties
-[css-img]: https://github.com/postcss/postcss-custom-properties/workflows/test/badge.svg
-[css-url]: https://github.com/postcss/postcss-custom-properties/actions/workflows/test.yml?query=workflow/test
+[cli-img]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+[css-img]: https://cssdb.org/badge/custom-properties.svg
+[css-url]: https://cssdb.org/#custom-properties
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-custom-properties.svg
@@ -195,4 +187,4 @@ See example exports written to [CSS](test/export-properties.css),
 
 [CSS Custom Properties]: https://www.w3.org/TR/css-variables-1/
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Custom Properties]: https://github.com/postcss/postcss-custom-properties
+[PostCSS Custom Properties]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties

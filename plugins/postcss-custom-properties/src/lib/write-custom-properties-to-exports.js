@@ -35,7 +35,7 @@ async function writeCustomPropertiesToScssFile(to, customProperties) {
 
 async function writeCustomPropertiesToJsonFile(to, customProperties) {
 	const jsonContent = JSON.stringify({
-		'custom-properties': customProperties
+		'custom-properties': customProperties,
 	}, null, '  ');
 	const json = `${jsonContent}\n`;
 

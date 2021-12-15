@@ -2,7 +2,7 @@ function isBlockIgnored(ruleOrDeclaration) {
 	var rule = ruleOrDeclaration.selector ?
 		ruleOrDeclaration : ruleOrDeclaration.parent;
 
-	return /(!\s*)?postcss-custom-properties:\s*off\b/i.test(rule.toString())
+	return /(!\s*)?postcss-custom-properties:\s*off\b/i.test(rule.toString());
 }
 
 function isRuleIgnored(rule) {
@@ -16,5 +16,5 @@ function isRuleIgnored(rule) {
 
 export {
 	isBlockIgnored,
-	isRuleIgnored
-}
+	isRuleIgnored,
+};

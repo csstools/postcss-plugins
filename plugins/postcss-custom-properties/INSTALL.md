@@ -13,15 +13,7 @@ Add [PostCSS Custom Properties] to your project:
 npm install postcss-custom-properties --save-dev
 ```
 
-Use [PostCSS Custom Properties] to process your CSS:
-
-```js
-const postcssCustomProperties = require('postcss-custom-properties');
-
-postcssCustomProperties.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Custom Properties] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -164,6 +156,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Custom Properties]: https://github.com/postcss/postcss-custom-properties
+[PostCSS Custom Properties]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired
