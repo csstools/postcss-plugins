@@ -2,4 +2,4 @@
 	a b {
 		color: red;
 	}
-:is(a .in).deep { color: blue; }
+.deep:is(a .in) { color: blue; }

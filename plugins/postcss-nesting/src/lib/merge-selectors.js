@@ -17,69 +17,77 @@ const selectorTypeOrder = {
 };
 
 export default function mergeSelectors(fromSelectors, toSelectors) {
-	return fromSelectors.flatMap((fromSelector) => {
-		let fromSelectorAST = parser().astSync(fromSelector);
-		const fromSelectorWithIsAST = parser().astSync(`:is(${fromSelector})`);
+	let fromSelectorAST = parser().astSync(fromSelectors.join(','));
+	const fromSelectorWithIsAST = parser().astSync(`:is(${fromSelectors.join(',')})`);
+	if (fromSelectors.length > 1) {
+		fromSelectorAST = fromSelectorWithIsAST;
+	}
 
-		// If the from selector is simple we extract the first non root, non selector node
-		if (fromSelectorAST.type === 'root' && fromSelectorAST.nodes.length === 1) {
-			fromSelectorAST = fromSelectorAST.nodes[0];
-		}
+	// If the from selector is simple we extract the first non root, non selector node
+	if (fromSelectorAST.type === 'root' && fromSelectorAST.nodes.length === 1) {
+		fromSelectorAST = fromSelectorAST.nodes[0];
+	}
 
-		const firstPartOfFromSelector = fromSelectorAST.nodes[0];
-		const fromIsSimple = isSimpleSelector(firstPartOfFromSelector);
-		const fromIsCompound = isCompoundSelector(firstPartOfFromSelector);
+	const fromIsSimple = isSimpleSelector(fromSelectorAST.nodes[0]); // this function looks at the parent of the node passed as an argument
+	const fromIsCompound = isCompoundSelector(fromSelectorAST.nodes[0]); // this function looks at the parent of the node passed as an argument
 
-		return toSelectors.map((toSelector) => {
-			return parser((selectors) => {
-				selectors.walkNesting((toSelectorAST) => {
-					const toIsSimple = isSimpleSelector(toSelectorAST);
-					const toIsCompound = isCompoundSelector(toSelectorAST);
+	return toSelectors.map((toSelector) => {
+		return parser((selectors) => {
+			selectors.walkNesting((toSelectorAST) => {
+				const toIsSimple = isSimpleSelector(toSelectorAST);
+				const toIsCompound = isCompoundSelector(toSelectorAST);
 
-					// Parent and child are simple
-					if (fromIsSimple && toIsSimple) {
-						toSelectorAST.replaceWith(fromSelectorAST.clone());
-						return;
-					}
-
-					// Parent and child are simple or compound
-					if ((fromIsSimple || fromIsCompound) && (toIsSimple || toIsCompound)) {
-						const parent = toSelectorAST.parent;
-
-						if (fromIsSimple) {
-							toSelectorAST.replaceWith(fromSelectorAST.clone().nodes[0]);
-						} else {
-							toSelectorAST.replaceWith(...(fromSelectorAST.clone().nodes));
-						}
-
-						if (parent && parent.nodes.length > 1) {
-							sortCompoundSelector(parent);
-							wrapMultipleTagSelectorsWithIsPseudo(parent);
-						}
-
-						return;
-					}
-
-					// Parent is simple, but child is complex
-					if (fromIsSimple) {
-						const parent = toSelectorAST.parent;
-						const fromClone = fromSelectorAST.clone();
-						toSelectorAST.replaceWith(fromClone.nodes[0]);
-
-						if (parent) {
-							sortCompoundSelectorsInsideComplexSelector(parent);
-						}
-
-						return;
-					}
-
-					// TODO : detect and handle complex selectors with only space combinators
-
-					toSelectorAST.replaceWith(fromSelectorWithIsAST.clone());
+				// Parent and child are simple
+				if (fromIsSimple && toIsSimple) {
+					toSelectorAST.replaceWith(fromSelectorAST.clone());
 					return;
-				});
-			}).processSync(toSelector);
-		});
+				}
+
+				// Parent and child are simple or compound
+				if ((fromIsSimple || fromIsCompound) && (toIsSimple || toIsCompound)) {
+					const parent = toSelectorAST.parent;
+
+					if (fromIsSimple && fromSelectorAST.type === 'selector') {
+						// fromSelectorAST has type selector with a single child
+						toSelectorAST.replaceWith(fromSelectorAST.clone().nodes[0]);
+					} else {
+						// fromSelectorAST has type selector containing a compound selector
+						toSelectorAST.replaceWith(...(fromSelectorAST.clone().nodes));
+					}
+
+					if (parent && parent.nodes.length > 1) {
+						sortCompoundSelector(parent);
+						wrapMultipleTagSelectorsWithIsPseudo(parent);
+					}
+
+					return;
+				}
+
+				if (!toIsCompound) {
+					const parent = toSelectorAST.parent;
+					if (fromIsSimple && fromSelectorAST.type === 'selector') {
+						// fromSelectorAST has type selector with a single child
+						toSelectorAST.replaceWith(fromSelectorAST.clone().nodes[0]);
+					} else {
+						// fromSelectorAST has type selector containing a compound selector
+						toSelectorAST.replaceWith(...(fromSelectorAST.clone().nodes));
+					}
+
+					if (parent) {
+						sortCompoundSelectorsInsideComplexSelector(parent);
+					}
+				}
+
+				const parent = toSelectorAST.parent;
+				toSelectorAST.replaceWith(...(fromSelectorWithIsAST.clone().nodes));
+
+				if (parent) {
+					sortCompoundSelectorsInsideComplexSelector(parent);
+				}
+
+				return;
+			});
+		}).processSync(toSelector);
 	});
 }
 

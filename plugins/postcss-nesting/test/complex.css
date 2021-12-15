@@ -1,7 +1,17 @@
 body > p, body > ul {
-	margin: 0;
+	order: 1;
 
 	& ~ & {
-		margin-top: 0;
+		order: 2;
+
+		&:hover,
+		&:focus {
+			order: 3;
+		}
+
+		& *:hover,
+		& *:focus {
+			order: 4;
+		}
 	}
 }

@@ -1,6 +1,14 @@
 body > p, body > ul {
-	margin: 0
+	order: 1
 }
-:is(body > p) ~ :is(body > p), :is(body > ul) ~ :is(body > ul) {
-		margin-top: 0;
+:is(body > p,body > ul) ~ :is(body > p,body > ul) {
+		order: 2
 	}
+:hover:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)),
+		:focus:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)) {
+			order: 3;
+		}
+:is(body > p,body > ul) ~ :is(body > p,body > ul) *:hover,
+		:is(body > p,body > ul) ~ :is(body > p,body > ul) *:focus {
+			order: 4;
+		}
