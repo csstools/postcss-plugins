@@ -1,4 +1,4 @@
-import { parse } from 'postcss-values-parser'
+import valuesParser from 'postcss-value-parser'
 import onCSSIdentifier from './onCSSIdentifier'
 import options from './options'
 
@@ -7,9 +7,13 @@ const onCSSDeclaration = decl => {
 	const { value: originalValue } = decl
 
 	if (hasAnyRebeccapurple(originalValue)) {
-		const valueAST = parse(originalValue)
+		const valueAST = valuesParser(originalValue)
 
-		valueAST.walkType('word', onCSSIdentifier)
+		valueAST.walk(node => {
+			if (node.type === 'word') {
+				onCSSIdentifier(node);
+			}
+		});
 
 		const modifiedValue = String(valueAST)
 
