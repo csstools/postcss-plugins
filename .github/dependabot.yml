@@ -16,5 +16,4 @@ updates:
     time: "01:00"
     timezone: Europe/Brussels
   open-pull-requests-limit: 10
-  versioning-strategy: increase
   rebase-strategy: auto
