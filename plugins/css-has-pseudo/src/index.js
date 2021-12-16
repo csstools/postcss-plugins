@@ -66,14 +66,88 @@ const defaultOptions = { preserve: true };
 
 /** Returns the string as an escaped CSS identifier. */
 const getEscapedCss = (/** @type {string} */ value) => {
-	let x = encodeURIComponent(value);
-	x = x.replace(/%3A/g, ':');
-	x = x.replace(/%5B/g, '[');
-	x = x.replace(/%5D/g, ']');
-	x = x.replace(/%2C/g, ',');
-	x = x.replace(/[():%[\],]/g, '\\$&');
+	let out = '';
+	let current = '';
 
-	return x;
+	const flushCurrent = () => {
+		if (current) {
+			const encoded = encodeURIComponent(current);
+			let encodedCurrent = '';
+			let encodedOut = '';
+
+			const flushEncoded = () => {
+				if (encodedCurrent) {
+					encodedOut += encodedCurrent;
+					encodedCurrent = '';
+				}
+			};
+
+			let encodedEscaped = false;
+			for (let i = 0; i < encoded.length; i++) {
+				const char = encoded[i];
+
+				if (encodedEscaped) {
+					encodedCurrent += char;
+					encodedEscaped = false;
+					continue;
+				}
+
+				switch (char) {
+					case '%':
+						flushEncoded();
+						encodedOut += ( '\\' + char );
+						continue;
+					case '\\':
+						encodedCurrent += char;
+						encodedEscaped = true;
+						continue;
+
+					default:
+						encodedCurrent += char;
+						continue;
+				}
+			}
+
+			flushEncoded();
+			out += encodedOut;
+			current = '';
+		}
+	};
+
+	let escaped = false;
+	for (let i = 0; i < value.length; i++) {
+		const char = value[i];
+
+		if (escaped) {
+			current += char;
+			escaped = false;
+			continue;
+		}
+
+		switch (char) {
+			case ':':
+			case '[':
+			case ']':
+			case ',':
+			case '(':
+			case ')':
+				flushCurrent();
+				out += ( '\\' + char );
+				continue;
+			case '\\':
+				current += char;
+				escaped = true;
+				continue;
+
+			default:
+				current += char;
+				continue;
+		}
+	}
+
+	flushCurrent();
+
+	return out;
 };
 
 /** Returns whether the selector is within a `:not` pseudo-class. */
