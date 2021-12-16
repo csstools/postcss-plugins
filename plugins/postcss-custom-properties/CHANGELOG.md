@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Properties
 
+### 12.0.1 (December 16, 2021)
+
+- Changed: now uses `postcss-value-parser` for parsing.
+- Updated: documentation
+
 ### 12.0.0 (September 17, 2021)
 
 - Updated: Support for PostCS 8+ (major).
