@@ -1,5 +1,10 @@
 # Changes to PostCSS Color Hex Alpha
 
+### 8.0.1 (December 16, 2021)
+
+- Changed: now uses `postcss-value-parser` for parsing.
+- Updated: documentation
+
 ### 8.0.0 (September 22, 2021)
 
 - Updated: PostCSS Values Parser to v8 (major).
