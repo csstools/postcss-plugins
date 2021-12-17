@@ -26,3 +26,7 @@ body:not(:has(:focus)) {
 :ignore-has(:focus) {
 	order: 6;
 }
+
+:has(.esc\:aped) {
+	order: 7;
+}
