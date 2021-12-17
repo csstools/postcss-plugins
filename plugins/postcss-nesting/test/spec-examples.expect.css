@@ -2,20 +2,20 @@
 
 /* Example 2 */
 
-:is(table.colortable) td {
+table td {
 		text-align: center
 	}
 
-.c:is(:is(table.colortable) td) {
+table td.c {
 			text-transform: uppercase
 		}
 
-:first-child:is(:is(table.colortable) td),
-		:first-child:is(:is(table.colortable) td)+td {
+table td:first-child,
+		:first-child:is(table td)+td {
 			border: 1px solid black
 		}
 
-:is(table.colortable) th {
+table th {
 		text-align: center;
 		background: black;
 		color: white;
@@ -56,8 +56,10 @@
 .bar {
 	color: blue
 }
-:is(.foo,.bar)+.baz,
-	.qux:is(.foo,.bar) {
+.foo+.baz,
+	.bar+.baz,
+	.foo.qux,
+	.bar.qux {
 		color: red;
 	}
 
@@ -138,7 +140,7 @@ figure {
 figure>figcaption {
 		background: hsl(0 0% 0% / 50%)
 	}
-:is(figure>figcaption)>p {
+figure>figcaption>p {
 			font-size: .9rem;
 		}
 
@@ -253,7 +255,7 @@ __bar.foo {
 .bar .foo {
 		color: red
 }
-.baz:is(.bar .foo) {
+.bar .foo.baz {
 			color: green;
 		}
 

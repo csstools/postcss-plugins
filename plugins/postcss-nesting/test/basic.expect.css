@@ -34,7 +34,7 @@ a b {
 		order: 7;
 	}
 
-:is(a b) c {
+a b c {
 			order: 8;
 		}
 
