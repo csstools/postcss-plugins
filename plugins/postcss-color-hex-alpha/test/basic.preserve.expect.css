@@ -1,0 +1,20 @@
+body {
+	background: #9d9 linear-gradient(rgba(152,35,248,0.66275),        rgba(152,35,248,0.20392));
+	background: #9d9 linear-gradient(#9823f8a9,        #9823f834);
+	color: red;
+	color: #f00;
+	color: rgba(255,0,0,1);
+	color: #f00f;
+	color: #0000ff;
+	color: rgba(0,0,255,0);
+	color: #0000ff00;
+	content: "#f00";
+	content: "#0000ff00";
+}
+
+body {
+	background-color: rgba(243,243,243,0.95294);
+	background-color: #f3f3f3f3;
+	color: rgba(0,0,0,0.2);
+	color: #0003;
+}

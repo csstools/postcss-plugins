@@ -217,7 +217,7 @@ function rgbFunctionContents(nodes): Rgb|null {
 		out.slash = nodes[3];
 	}
 
-	if ((isNumericNodePercentageOrNumber(nodes[4]) || isCalcNode(nodes[4]))) {
+	if ((isNumericNodePercentageOrNumber(nodes[4]) || isCalcNode(nodes[4]) || isVarNode(nodes[4]))) {
 		out.alpha = nodes[4];
 	}
 
