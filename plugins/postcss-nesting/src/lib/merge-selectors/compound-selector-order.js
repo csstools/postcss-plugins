@@ -2,7 +2,7 @@ import parser from 'postcss-selector-parser';
 
 import { wrapMultipleTagSelectorsWithIsPseudo } from './wrap-multiple-tag-selectors-with-is-pseudo';
 
-export function sortCompoundSelectorsInsideComplexSelector(node) {
+export function sortCompoundSelectorsInsideComplexSelector(node, wrapWithIsPseudo) {
 	let compound = [];
 	let foundOtherNesting = false;
 
@@ -31,7 +31,9 @@ export function sortCompoundSelectorsInsideComplexSelector(node) {
 				});
 
 				sortCompoundSelector(compoundSelector);
-				wrapMultipleTagSelectorsWithIsPseudo(compoundSelector);
+				if (wrapWithIsPseudo) {
+					wrapMultipleTagSelectorsWithIsPseudo(compoundSelector);
+				}
 				compoundSelector.replaceWith(...(compoundSelector.nodes));
 			}
 

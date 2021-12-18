@@ -4,12 +4,12 @@ import { sortCompoundSelector, sortCompoundSelectorsInsideComplexSelector } from
 import { nodesAreEquallySpecific } from './merge-selectors/specificity';
 import { wrapMultipleTagSelectorsWithIsPseudo } from './merge-selectors/wrap-multiple-tag-selectors-with-is-pseudo';
 
-export default function mergeSelectors(fromSelectors, toSelectors) {
+export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 	const fromListHasUniformSpecificity = nodesAreEquallySpecific(fromSelectors);
 
 	let fromSelectorsAST = [];
 
-	if (fromListHasUniformSpecificity) {
+	if (fromListHasUniformSpecificity || opts.noIsPseudoSelector) {
 		fromSelectorsAST = fromSelectors.map((selector) => {
 			return parser().astSync(selector);
 		});
@@ -89,7 +89,10 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 
 					if (parent && parent.nodes.length > 1) {
 						sortCompoundSelector(parent);
-						wrapMultipleTagSelectorsWithIsPseudo(parent);
+
+						if (!opts.noIsPseudoSelector) {
+							wrapMultipleTagSelectorsWithIsPseudo(parent);
+						}
 					}
 
 					return;
@@ -100,7 +103,7 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 					nesting.replaceWith(fromSelectorAST.clone().nodes[0]);
 
 					if (parent) {
-						sortCompoundSelectorsInsideComplexSelector(parent);
+						sortCompoundSelectorsInsideComplexSelector(parent, !opts.noIsPseudoSelector);
 					}
 
 					return;
@@ -111,7 +114,7 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 					nesting.replaceWith(...(fromSelectorAST.clone().nodes));
 
 					if (parent) {
-						sortCompoundSelectorsInsideComplexSelector(parent);
+						sortCompoundSelectorsInsideComplexSelector(parent, !opts.noIsPseudoSelector);
 					}
 
 					return;
@@ -122,7 +125,7 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 					nesting.replaceWith(...(fromSelectorAST.clone().nodes));
 
 					if (parent) {
-						sortCompoundSelectorsInsideComplexSelector(parent);
+						sortCompoundSelectorsInsideComplexSelector(parent, !opts.noIsPseudoSelector);
 					}
 
 					return;
@@ -133,17 +136,21 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 					nesting.replaceWith(...(fromSelectorAST.clone().nodes));
 
 					if (parent) {
-						sortCompoundSelectorsInsideComplexSelector(parent);
+						sortCompoundSelectorsInsideComplexSelector(parent, !opts.noIsPseudoSelector);
 					}
 
 					return;
 				}
 
 				const parent = nesting.parent;
-				nesting.replaceWith(...(fromSelectorWithIsAST.clone().nodes));
+				if (opts.noIsPseudoSelector) {
+					nesting.replaceWith(...(fromSelectorAST.clone().nodes));
+				} else {
+					nesting.replaceWith(...(fromSelectorWithIsAST.clone().nodes));
+				}
 
 				if (parent) {
-					sortCompoundSelectorsInsideComplexSelector(parent);
+					sortCompoundSelectorsInsideComplexSelector(parent, !opts.noIsPseudoSelector);
 				}
 			});
 

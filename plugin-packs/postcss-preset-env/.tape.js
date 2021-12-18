@@ -14,6 +14,20 @@ module.exports = {
 			browsers: 'chrome >= 38'
 		}
 	},
+	'basic:ch88-ff78': {
+		message: 'supports { browsers: "chrome >= 88, firefox >= 78", stage: 0 } usage',
+		options: {
+			browsers: 'chrome >= 88, firefox >= 78',
+			stage: 0
+		}
+	},
+	'basic:ch88-ff78-saf10': {
+		message: 'supports { browsers: "chrome >= 88, firefox >= 78, safari >= 10", stage: 0 } usage',
+		options: {
+			browsers: 'chrome >= 88, firefox >= 78, safari >= 10',
+			stage: 0
+		}
+	},
 	'basic:stage0': {
 		message: 'supports { stage: 0 } usage',
 		options: {

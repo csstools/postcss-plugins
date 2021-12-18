@@ -2,12 +2,12 @@ import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
 import cleanupParent from './cleanup-parent.js';
 import mergeSelectors from './merge-selectors.js';
 
-export default function transformRuleWithinRule(node) {
+export default function transformRuleWithinRule(node, opts) {
 	// move previous siblings and the node to before the parent
 	const parent = shiftNodesBeforeParent(node);
 
 	// update the selectors of the node to be merged with the parent
-	node.selectors = mergeSelectors(parent.selectors, node.selectors);
+	node.selectors = mergeSelectors(parent.selectors, node.selectors, opts);
 
 	// merge similar rules back together
 	const areSameRule = (node.type === 'rule' && parent.type === 'rule' && node.selector === parent.selector) || (node.type === 'atrule' && parent.type === 'atrule' && node.params === parent.params);

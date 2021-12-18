@@ -8,6 +8,7 @@
 
 .test-image-set-function {
 	background-image: url(img/test.png);
+	background-image: -webkit-image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 	background-image: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 	order: 2;
 }
@@ -19,18 +20,29 @@
 }
 }
 
+[dir="ltr"] .test-logical-properties-and-values {
+	margin: 1px 4px 3px 2px;
+}
+
+[dir="rtl"] .test-logical-properties-and-values {
+	margin: 1px 2px 3px 4px;
+}
+
 .test-logical-properties-and-values {
-	margin: logical 1px 2px 3px 4px;
 	order: 3;
-	padding-block: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .test-nesting-rules {
 	order: 4;
+}
 
-	& p {
+.test-nesting-rules p {
 		order: 5;
 	}
+
+.test-nesting-rules {
 
 	order: 6;
 }
@@ -38,17 +50,19 @@
 .test-nesting-rules,
 #test-is-pseudo {
 	order: 7;
+}
 
-	& + p {
+:is(.test-nesting-rules,#test-is-pseudo) + p {
 		order: 8;
 	}
+
+.test-nesting-rules,
+#test-is-pseudo {
 
 	order: 9;
 }
 
-@custom-media --narrow-window (max-width: 30em);
-
-@media (--narrow-window) {
+@media (max-width: 30em) {
 	.test-custom-media-queries {
 		order: 10;
 	}
@@ -60,18 +74,14 @@
 	}
 }
 
-@custom-media --dark-mode (prefers-color-scheme: dark);
-
-@media (--dark-mode) {
+@media (prefers-color-scheme: dark) {
 	body {
 		background-color: black;
 		color: white;
 	}
 }
 
-@custom-selector :--heading h1, h2, h3, h4, h5, h6;
-
-.test-custom-selectors:--heading {
+h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.test-custom-selectors,h5.test-custom-selectors,h6.test-custom-selectors {
 	order:12;
 }
 
@@ -91,7 +101,7 @@
 }
 
 .test-color-functional-notation {
-	color: rgb(70% 13.5% 13.5% / 50%);
+	color: rgba(178, 34, 34, 0.5);
 	order: 16;
 }
 
@@ -107,6 +117,7 @@
 }
 
 .test-font-variant-property {
+	font-feature-settings: "smcp";
 	font-variant-caps: small-caps;
 	order: 19;
 }
@@ -124,15 +135,11 @@
 	order: 22;
 }
 
-.test-any-link-pseudo-class:-moz-any-link {
-	order: 23;
-}
-
 .test-any-link-pseudo-class:any-link {
 	order: 23;
 }
 
-.test-dir-pseudo-class:dir(rtl) {
+[dir="rtl"] .test-dir-pseudo-class {
 	order: 24;
 }
 
@@ -148,6 +155,10 @@
 .test-double-position-gradients {
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg,gold 75%, #f06 0deg);
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
+}
+
+.test-blank-pseudo-class[blank] {
+	background-color: yellow;
 }
 
 .test-blank-pseudo-class:blank {

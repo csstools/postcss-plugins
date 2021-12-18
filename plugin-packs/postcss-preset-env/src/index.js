@@ -6,6 +6,7 @@ import getTransformedInsertions from './lib/get-transformed-insertions';
 import getUnsupportedBrowsersByFeature from './lib/get-unsupported-browsers-by-feature';
 import idsByExecutionOrder from './lib/ids-by-execution-order';
 import writeToExports from './lib/write-to-exports';
+import getOptionsForBrowsersByFeature from './lib/get-options-for-browsers-by-feature';
 
 const plugin = opts => {
 	// initialize options
@@ -66,15 +67,17 @@ const plugin = opts => {
 			let options;
 			let plugin;
 
+			options = getOptionsForBrowsersByFeature(browsers, feature);
+
 			if (features[feature.id] === true) {
 				// if the plugin is enabled
-				options = sharedOpts ? Object.assign({}, sharedOpts) : undefined;
+				options = sharedOpts ? Object.assign({}, options, sharedOpts) : undefined;
 			} else {
 				options = sharedOpts
 					// if the plugin has shared options and individual options
-					? Object.assign({}, sharedOpts, features[feature.id])
+					? Object.assign({}, options, sharedOpts, features[feature.id])
 					// if the plugin has individual options
-					: Object.assign({}, features[feature.id]);
+					: Object.assign({}, options, features[feature.id]);
 			}
 
 			if (feature.plugin.postcss) {
