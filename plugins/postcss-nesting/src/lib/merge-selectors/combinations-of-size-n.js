@@ -1,4 +1,25 @@
 export function combinationsWithSizeN(set, n) {
+	// set is the list of parent selectors
+	// n is the amount of `&` selectors in the current selector.
+	// all combinations of values in the set with an array size of n must be generated to match the nesting selector behavior.
+	//
+	// for example :
+	// a current selector like: `& + & {}`
+	// with parent : `.foo, .bar {}`
+	//
+	// the set is `['.foo', '.bar']` and n is 2, the resulting combinations are:
+	// ['.foo', '.bar']
+	// ['.foo', '.foo']
+	// ['.bar', '.foo']
+	// ['.bar', '.bar']
+	//
+	// outputted like :
+	// .foo + .bar,
+	// .foo + .foo,
+	// .bar + .foo,
+	// .bar + .bar {}
+
+
 	if (n < 2) {
 		// should never happen and is checked by caller
 		throw new Error('n must be greater than 1');
@@ -10,7 +31,10 @@ export function combinationsWithSizeN(set, n) {
 	}
 
 	if (Math.pow(set.length, n) > 10000) {
-		throw new Error(`too many combinations for ${set} with size ${n}, reduce the complexity of your nesting selector`);
+		// Throwing is best here as a warning would be impossible to handle gracefully on our end.
+		// This will error mid transform and there is no possible fallback at this point.
+		// The user should reduce complexity.
+		throw new Error('Too many combinations when trying to resolve a nested selector with lists, reduce the complexity of your selectors');
 	}
 
 	const counters = [];

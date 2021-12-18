@@ -1,8 +1,8 @@
 import parser from 'postcss-selector-parser';
-import { combinationsWithSizeN } from './merge-selectors/combinations-of-size-n';
-import { sortCompoundSelector, sortCompoundSelectorsInsideComplexSelector } from './merge-selectors/compound-selector-order';
-import { nodesAreEquallySpecific } from './merge-selectors/specificity';
-import { wrapMultipleTagSelectorsWithIsPseudo } from './merge-selectors/wrap-multiple-tag-selectors-with-is-pseudo';
+import { combinationsWithSizeN } from './combinations-of-size-n';
+import { sortCompoundSelector, sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
+import { nodesAreEquallySpecific } from './specificity';
+import { wrapMultipleTagSelectorsWithIsPseudo } from './wrap-multiple-tag-selectors-with-is-pseudo';
 
 export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 	const fromListHasUniformSpecificity = nodesAreEquallySpecific(fromSelectors);

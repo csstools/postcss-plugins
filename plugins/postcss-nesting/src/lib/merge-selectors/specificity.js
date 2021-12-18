@@ -1,6 +1,11 @@
 import parser from 'postcss-selector-parser';
 
 export function nodesAreEquallySpecific(nodes) {
+	// Selector specificity is important when the parent selector is a list.
+	// These cases should be resolved with `:is()` pseudo.
+	// Since browser support for `:is()` is not great, we try to avoid it.
+	// If the selector specificity is equal for all items in the selector list, we don't need `:is`.
+
 	const specificities = nodes.map((node) => {
 		return parser().astSync(node);
 	}).map((ast) => {

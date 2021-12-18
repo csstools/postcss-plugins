@@ -1,6 +1,6 @@
 import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
 import cleanupParent from './cleanup-parent.js';
-import mergeSelectors from './merge-selectors.js';
+import mergeSelectors from './merge-selectors/merge-selectors.js';
 
 export default function transformRuleWithinRule(node, opts) {
 	// move previous siblings and the node to before the parent
