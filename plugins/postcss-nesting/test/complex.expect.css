@@ -42,12 +42,12 @@ body > p :is(body > p), body > p :is(body > ul), body > ul :is(body > p), body >
 	}
 
 
-body > p&, body > p&, body > ul&, body > ul& {
+body > p:is(body > p), body > p:is(body > ul), body > ul:is(body > p), body > ul:is(body > ul) {
 		order: 7;
 	}
 
 
-body > p&&, body > p&&, body > p&&, body > p&&, body > ul&&, body > ul&&, body > ul&&, body > ul&& {
+body > p:is(body > p):is(body > p), body > p:is(body > p):is(body > ul), body > p:is(body > ul):is(body > p), body > p:is(body > ul):is(body > ul), body > ul:is(body > p):is(body > p), body > ul:is(body > p):is(body > ul), body > ul:is(body > ul):is(body > p), body > ul:is(body > ul):is(body > ul) {
 		order: 8;
 	}
 
