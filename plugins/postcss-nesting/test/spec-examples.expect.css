@@ -125,7 +125,7 @@ table.colortable th {
 */
 
 /* As can the nested selector */
-.foo:is(.bar, &.baz) {
+.foo:is(.bar,.foo.baz) {
 		color: red;
 	}
 

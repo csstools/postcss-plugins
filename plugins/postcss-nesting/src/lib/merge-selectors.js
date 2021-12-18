@@ -75,6 +75,26 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 					return;
 				}
 
+				// Parent and child are simple or compound
+				if ((fromIsSimple || fromIsCompound) && (toIsSimple || toIsCompound)) {
+					const parent = nesting.parent;
+
+					if (fromIsSimple && fromSelectorAST.type === 'selector') {
+						// fromSelectorAST has type selector with a single child
+						nesting.replaceWith(fromSelectorAST.clone().nodes[0]);
+					} else {
+						// fromSelectorAST has type selector containing a compound selector
+						nesting.replaceWith(...(fromSelectorAST.clone().nodes));
+					}
+
+					if (parent && parent.nodes.length > 1) {
+						sortCompoundSelector(parent);
+						wrapMultipleTagSelectorsWithIsPseudo(parent);
+					}
+
+					return;
+				}
+
 				if (fromIsSimple) {
 					const parent = nesting.parent;
 					nesting.replaceWith(fromSelectorAST.clone().nodes[0]);
@@ -92,26 +112,6 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 
 					if (parent) {
 						sortCompoundSelectorsInsideComplexSelector(parent);
-					}
-
-					return;
-				}
-
-				// Parent and child are simple or compound
-				if ((fromIsSimple || fromIsCompound) && (toIsSimple || toIsCompound)) {
-					const parent = nesting.parent;
-
-					if (fromIsSimple && fromSelectorAST.type === 'selector') {
-						// fromSelectorAST has type selector with a single child
-						nesting.replaceWith(fromSelectorAST.clone().nodes[0]);
-					} else {
-						// fromSelectorAST has type selector containing a compound selector
-						nesting.replaceWith(...(fromSelectorAST.clone().nodes));
-					}
-
-					if (parent && parent.nodes.length > 1) {
-						sortCompoundSelector(parent);
-						wrapMultipleTagSelectorsWithIsPseudo(parent);
 					}
 
 					return;
