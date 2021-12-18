@@ -2,20 +2,20 @@
 
 /* Example 2 */
 
-table td {
+table.colortable td {
 		text-align: center
 	}
 
-table td.c {
+table.colortable td.c {
 			text-transform: uppercase
 		}
 
-table td:first-child,
-		:first-child:is(table td)+td {
+table.colortable td:first-child,
+		:first-child:is(table.colortable td)+td {
 			border: 1px solid black
 		}
 
-table th {
+table.colortable th {
 		text-align: center;
 		background: black;
 		color: white;
@@ -125,7 +125,7 @@ table th {
 */
 
 /* As can the nested selector */
-.foo:is(.bar,.foo.baz) {
+.foo:is(.bar, &.baz) {
 		color: red;
 	}
 

@@ -88,6 +88,6 @@ body > p, body > .foo {
 		order: 107;
 	}
 
-body + body, body + html, html + body, html + html {
+body.foo + body.foo, body.foo + html.baz, html.baz + body.foo, html.baz + html.baz {
 		order: 201;
 	}

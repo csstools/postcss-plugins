@@ -75,6 +75,28 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 					return;
 				}
 
+				if (fromIsSimple) {
+					const parent = nesting.parent;
+					nesting.replaceWith(fromSelectorAST.clone().nodes[0]);
+
+					if (parent) {
+						sortCompoundSelectorsInsideComplexSelector(parent);
+					}
+
+					return;
+				}
+
+				if (fromIsCompound) {
+					const parent = nesting.parent;
+					nesting.replaceWith(...(fromSelectorAST.clone().nodes));
+
+					if (parent) {
+						sortCompoundSelectorsInsideComplexSelector(parent);
+					}
+
+					return;
+				}
+
 				// Parent and child are simple or compound
 				if ((fromIsSimple || fromIsCompound) && (toIsSimple || toIsCompound)) {
 					const parent = nesting.parent;
@@ -90,17 +112,6 @@ export default function mergeSelectors(fromSelectors, toSelectors) {
 					if (parent && parent.nodes.length > 1) {
 						sortCompoundSelector(parent);
 						wrapMultipleTagSelectorsWithIsPseudo(parent);
-					}
-
-					return;
-				}
-
-				if (fromIsSimple || fromIsCompound) {
-					const parent = nesting.parent;
-					nesting.replaceWith(fromSelectorAST.clone().nodes[0]);
-
-					if (parent) {
-						sortCompoundSelectorsInsideComplexSelector(parent);
 					}
 
 					return;
