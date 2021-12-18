@@ -71,6 +71,73 @@ import postcssNesting from "https://cdn.jsdelivr.net/npm/postcss-nesting@10/mod.
 await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
 ```
 
+## Options
+
+### noIsPseudoSelector
+
+Before :
+
+```css
+#alpha,
+.beta {
+	&:hover {
+		order: 1;
+	}
+}
+
+.alpha > .beta {
+	& + & {
+		order: 2;
+	}
+}
+```
+
+After **without** the option :
+
+```js
+postcssNesting()
+```
+
+```css
+:is(#alpha,.beta):hover {
+	order: 1;
+}
+```
+
+_`.beta:hover` has specificity as if `.beta` where an id selector, matching the specification._
+
+```css
+:is(.alpha > .beta) + :is(.alpha > .beta) {
+	order: 2;
+}
+```
+
+After **with** the option :
+
+```js
+postcssNesting({
+	noIsPseudoSelector: true
+})
+```
+
+```css
+#alpha:hover, .beta:hover {
+	order: 1;
+}
+```
+
+_`.beta:hover` has specificity as if `.beta` where an class selector, conflicting with the specification._
+
+```css
+.alpha > .beta + .alpha > .beta {
+	order: 2;
+}
+```
+
+_this is a different selector than expected_
+_avoid these cases when you disable `:is()`_
+_writing the selector without nesting is advised here_
+
 ### ⚠️ Spec disclaimer
 
 The [CSS Nesting Module] spec states on nesting that "Declarations occuring after a nested rule are invalid and ignored.".
