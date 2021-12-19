@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-loss-of-precision */
 // https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js
+// https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
 
 import { multiplyMatrices } from './multiply-matrices';
 

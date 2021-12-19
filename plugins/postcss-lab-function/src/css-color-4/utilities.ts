@@ -1,4 +1,5 @@
 // https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js
+// https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
 
 import { D50_to_D65, D65_to_D50, gam_2020, gam_P3, gam_sRGB, Lab_to_LCH, Lab_to_XYZ, LCH_to_Lab, lin_2020, lin_2020_to_XYZ, lin_P3, lin_P3_to_XYZ, lin_sRGB, lin_sRGB_to_XYZ, XYZ_to_Lab, XYZ_to_lin_2020, XYZ_to_lin_P3, XYZ_to_lin_sRGB } from './conversions';
 

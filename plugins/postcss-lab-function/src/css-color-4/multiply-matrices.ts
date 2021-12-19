@@ -1,4 +1,5 @@
 // https://github.com/w3c/csswg-drafts/blob/main/css-color-4/multiply-matrices.js
+// https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
 
 /**
  * Simple matrix (and vector) multiplication
