@@ -1,5 +1,33 @@
 # Changes to PostCSS Preset Env
 
+### 7.0.2 (December 16, 2021)
+
+- Fixed unexpected behaviours when using different versions of `postcss-values-parser` across the plugins [228](https://github.com/csstools/postcss-preset-env/issues/228)
+- Updated `browserlist` to 4.19.1 (minor)
+- Updated `caniuse-lite` to `1.0.30001287` (minor)
+- Updated `css-blank-pseudo` to `3.0.0` (major)
+- Updated `css-has-pseudo` to `3.0.0` (major)
+- Updated `css-prefers-color-scheme` to `6.0.0` (major)
+- Updated `postcss-color-functional-notation` to `4.1.0` (minor)
+- Updated `postcss-color-hex-alpha` to `8.0.1` (patch)
+- Updated `postcss-color-rebeccapurple` to `7.0.1` (patch)
+- Updated `postcss-custom-properties` to `12.0.1` (patch)
+- Updated `postcss-dir-pseudo-class` to `6.0.1` (patch)
+- Updated `postcss-double-position-gradients` to `3.0.3` (patch)
+- Updated `postcss-env-function` to `4.0.3` (patch)
+- Updated `postcss-focus-visible` to `6.0.2` (patch)
+- Updated `postcss-focus-within` to `5.0.2` (patch)
+- Updated `postcss-gap-properties` to `3.0.1` (patch)
+- Updated `postcss-image-set-function` to `4.0.3` (patch)
+- Updated `postcss-lab-function` to `4.0.2` (patch)
+- Updated `postcss-logical` to `5.0.1` (patch)
+- Updated `postcss-nesting` to `10.0.3` (patch)
+- Updated `postcss-overflow-shorthand` to `3.0.1` (patch)
+- Updated `postcss-place` to `7.0.2` (patch)
+- Updated `postcss-pseudo-class-any-link` to `7.0.1` (patch)
+- Updated documentation
+- Updated `postcss` to be a peer dependency.
+
 ### 7.0.1 (November 19, 2021)
 
 - Fixed infinite loop in double-position-gradients [223](https://github.com/csstools/postcss-preset-env/issues/223)

@@ -56,5 +56,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-image-set-function"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

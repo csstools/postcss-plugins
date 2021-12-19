@@ -1,0 +1,37 @@
+name: "codeql"
+
+on:
+  schedule:
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript' ]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2.4.0
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+
+    - name: setup node
+      uses: actions/setup-node@v2.5.0
+      with:
+        node-version: 16
+        cache: 'npm'
+
+    - run: npm ci --ignore-scripts
+    - run: npm run build --workspaces --if-present
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1

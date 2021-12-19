@@ -1,6 +1,6 @@
 {
   "name": "postcss-preset-env",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "Convert modern CSS into something browsers understand",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -31,21 +31,21 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.0",
-    "browserslist": "^4.18.1",
-    "caniuse-lite": "^1.0.30001286",
+    "browserslist": "^4.19.1",
+    "caniuse-lite": "^1.0.30001287",
     "css-blank-pseudo": "^3.0.0",
     "css-has-pseudo": "^3.0.0",
     "css-prefers-color-scheme": "^6.0.0",
     "cssdb": "^5.0.0",
     "postcss-attribute-case-insensitive": "^5.0.0",
-    "postcss-color-functional-notation": "^4.0.2",
-    "postcss-color-hex-alpha": "^8.0.0",
-    "postcss-color-rebeccapurple": "^7.0.0",
+    "postcss-color-functional-notation": "^4.1.0",
+    "postcss-color-hex-alpha": "^8.0.1",
+    "postcss-color-rebeccapurple": "^7.0.1",
     "postcss-custom-media": "^8.0.0",
-    "postcss-custom-properties": "^12.0.0",
+    "postcss-custom-properties": "^12.0.1",
     "postcss-custom-selectors": "^6.0.0",
     "postcss-dir-pseudo-class": "^6.0.1",
-    "postcss-double-position-gradients": "^3.0.2",
+    "postcss-double-position-gradients": "^3.0.3",
     "postcss-env-function": "^4.0.3",
     "postcss-focus-visible": "^6.0.2",
     "postcss-focus-within": "^5.0.2",
@@ -90,5 +90,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugin-packs/postcss-preset-env"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

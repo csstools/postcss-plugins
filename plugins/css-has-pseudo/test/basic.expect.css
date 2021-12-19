@@ -50,3 +50,11 @@ body:not(:has(:focus)) {
 :ignore-has(:focus) {
 	order: 6;
 }
+
+[\:has\(.esc\%5C\%3Aaped\)] {
+	order: 7;
+}
+
+:has(.esc\:aped) {
+	order: 7;
+}

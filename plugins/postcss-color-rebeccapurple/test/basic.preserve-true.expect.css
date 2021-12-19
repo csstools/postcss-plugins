@@ -1,0 +1,10 @@
+body {
+	color: #639;
+	color: rebeccapurple;
+	background: linear-gradient(#639, blue 50%, #639);
+	background: linear-gradient(rebeccapurple, blue 50%, rebeccapurple);
+}
+
+a {
+	color: oldrebeccapurple;
+}

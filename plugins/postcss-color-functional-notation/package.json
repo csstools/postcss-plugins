@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-functional-notation",
-  "version": "4.0.2",
+  "version": "4.1.0",
   "description": "Use space and slash separated color notation in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -62,5 +62,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-color-functional-notation"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }
