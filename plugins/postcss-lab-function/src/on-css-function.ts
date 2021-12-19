@@ -1,9 +1,11 @@
-import valueParser from 'postcss-value-parser';
+import valueParser, { SpaceNode } from 'postcss-value-parser';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
 import { labToSRgb } from './css-color-4/convert-lab-to-srgb';
 import { lchToSRgb } from './css-color-4/convert-lch-to-srgb';
+import { labToDisplayP3 } from './css-color-4/convert-lab-to-display-p3p3';
+import { lchToDisplayP3 } from './css-color-4/convert-lch-to-display-p3p3';
 
-function onCSSFunction(node: FunctionNode) {
+export function onCSSFunctionSRgb(node: FunctionNode) {
 	const value = node.value;
 	const rawNodes = node.nodes;
 	const relevantNodes = rawNodes.slice().filter((x) => {
@@ -48,8 +50,6 @@ function onCSSFunction(node: FunctionNode) {
 
 	const rgbValues = toRGB(
 		channelNumbers,
-	).map(
-		channelValue => Math.round(channelValue * 255),
 	);
 
 	node.nodes.splice(node.nodes.indexOf(channelNode1) + 1, 0, commaNode());
@@ -69,10 +69,71 @@ function onCSSFunction(node: FunctionNode) {
 		...channelNode3,
 		value: String(rgbValues[2]),
 	});
-
 }
 
-export default onCSSFunction;
+export function onCSSFunctionDisplayP3(node: FunctionNode) {
+	const value = node.value;
+	const rawNodes = node.nodes;
+	const relevantNodes = rawNodes.slice().filter((x) => {
+		return x.type !== 'comment' && x.type !== 'space';
+	});
+
+	let nodes: Lch | Lab | null = null;
+	if (value === 'lab') {
+		nodes = labFunctionContents(relevantNodes);
+	} else if (value === 'lch') {
+		nodes = lchFunctionContents(relevantNodes);
+	}
+
+	if (!nodes) {
+		return;
+	}
+
+	if (relevantNodes.length > 3 && (!nodes.slash || !nodes.alpha)) {
+		return;
+	}
+
+	// rename the Color function to `color`
+	node.value = 'color';
+
+	/** Extracted Color channels. */
+	const [channelNode1, channelNode2, channelNode3] = channelNodes(nodes);
+	const [channelDimension1, channelDimension2, channelDimension3] = channelDimensions(nodes);
+
+	/** Corresponding Color transformer. */
+	const toRGB = value === 'lab' ? labToDisplayP3 : lchToDisplayP3;
+
+	/** RGB channels from the source color. */
+	const channelNumbers: [number, number, number] = [
+		channelDimension1.number,
+		channelDimension2.number,
+		channelDimension3.number,
+	].map(
+		channelNumber => parseFloat(channelNumber),
+	) as [number, number, number];
+
+	const rgbValues = toRGB(
+		channelNumbers,
+	);
+
+	node.nodes.splice(0, 0, displayP3Node());
+	node.nodes.splice(1, 0, spaceNode());
+
+	replaceWith(node.nodes, channelNode1, {
+		...channelNode1,
+		value: rgbValues[0].toFixed(5),
+	});
+
+	replaceWith(node.nodes, channelNode2, {
+		...channelNode2,
+		value: rgbValues[1].toFixed(5),
+	});
+
+	replaceWith(node.nodes, channelNode3, {
+		...channelNode3,
+		value: rgbValues[2].toFixed(5),
+	});
+}
 
 function commaNode(): DivNode {
 	return {
@@ -82,6 +143,24 @@ function commaNode(): DivNode {
 		type: 'div',
 		before: '',
 		after: '',
+	};
+}
+
+function spaceNode(): SpaceNode {
+	return {
+		sourceIndex: 0,
+		sourceEndIndex: 1,
+		value: ' ',
+		type: 'space',
+	};
+}
+
+function displayP3Node(): WordNode {
+	return {
+		sourceIndex: 0,
+		sourceEndIndex: 10,
+		value: 'display-p3',
+		type: 'word',
 	};
 }
 

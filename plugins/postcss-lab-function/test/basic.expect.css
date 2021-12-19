@@ -57,3 +57,53 @@
 .test-unparseable-lab-function {
 	background-image: lab(; );
 }
+
+.test-gamut {
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B48%2C-53%2C12%5D%2C%5B58%2C-54%2C69%5D%5D */
+	/* out */
+	prop-1: rgb(0, 129, 96);
+	/* out */
+	prop-2: rgb(57, 159, 0);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B45%2C-13%2C29%5D%2C%5B77%2C33%2C97%5D%5D */
+	/* in */
+	prop-3: rgb(97, 112, 56);
+	/* out */
+	prop-4: rgb(255, 171, 58);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B76%2C-29%2C-23%5D%2C%5B16%2C-32%2C24%5D%5D */
+	/* in */
+	prop-5: rgb(85, 204, 229);
+	/* out */
+	prop-6: rgb(0, 47, 9);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B85%2C16%2C29%5D%2C%5B55%2C-42%2C58%5D%5D */
+	/* out */
+	prop-7: rgb(255, 201, 158);
+	/* out */
+	prop-8: rgb(71, 149, 0);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B87%2C-94%2C103%5D%2C%5B88%2C-9%2C62%5D%5D */
+	/* out */
+	prop-9: rgb(0, 250, 29);
+	/* in */
+	prop-10: rgb(231, 224, 96);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B69%2C-35%2C-39%5D%2C%5B68%2C61%2C39%5D%5D */
+	/* out */
+	prop-11: rgb(0, 185, 225);
+	/* out */
+	prop-12: rgb(255, 126, 114);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B60%2C-28%2C74%5D%2C%5B65%2C81%2C-13%5D%5D */
+	/* out */
+	prop-13: rgb(122, 156, 0);
+	/* out */
+	prop-14: rgb(255, 104, 181);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B60%2C-28%2C15%5D%2C%5B65%2C81%2C-11%5D%5D */
+	/* in */
+	prop-15: rgb(96, 158, 117);
+	/* out */
+	prop-16: rgb(255, 105, 178);
+}

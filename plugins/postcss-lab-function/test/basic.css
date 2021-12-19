@@ -57,3 +57,53 @@
 .test-unparseable-lab-function {
 	background-image: lab(; );
 }
+
+.test-gamut {
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B48%2C-53%2C12%5D%2C%5B58%2C-54%2C69%5D%5D */
+	/* out */
+	prop-1: lab(48% -53 12);
+	/* out */
+	prop-2: lab(58% -54 69);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B45%2C-13%2C29%5D%2C%5B77%2C33%2C97%5D%5D */
+	/* in */
+	prop-3: lab(45% -13 29);
+	/* out */
+	prop-4: lab(77% 33 97);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B76%2C-29%2C-23%5D%2C%5B16%2C-32%2C24%5D%5D */
+	/* in */
+	prop-5: lab(76% -29 -23);
+	/* out */
+	prop-6: lab(16% -32 24);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B85%2C16%2C29%5D%2C%5B55%2C-42%2C58%5D%5D */
+	/* out */
+	prop-7: lab(85% 16 29);
+	/* out */
+	prop-8: lab(55% -42 58);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B87%2C-94%2C103%5D%2C%5B88%2C-9%2C62%5D%5D */
+	/* out */
+	prop-9: lab(87% -94 103);
+	/* in */
+	prop-10: lab(88% -9 62);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B69%2C-35%2C-39%5D%2C%5B68%2C61%2C39%5D%5D */
+	/* out */
+	prop-11: lab(69% -35 -39);
+	/* out */
+	prop-12: lab(68% 61 39);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B60%2C-28%2C74%5D%2C%5B65%2C81%2C-13%5D%5D */
+	/* out */
+	prop-13: lab(60% -28 74);
+	/* out */
+	prop-14: lab(65% 81 -13);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B60%2C-28%2C15%5D%2C%5B65%2C81%2C-11%5D%5D */
+	/* in */
+	prop-15: lab(60% -28 15);
+	/* out */
+	prop-16: lab(65% 81 -11);
+}
