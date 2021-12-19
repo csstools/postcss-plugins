@@ -200,4 +200,14 @@
 	prop-16: rgb(255, 105, 178);
 	prop-16: color(display-p3 0.99937 0.35096 0.69833);
 	prop-16: lab(65% 81 -11);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B60%2C-28%2C15%5D%2C%5B65%2C81%2C-11%5D%5D */
+	/* out */
+	prop-17: rgb(0, 212, 236);
+	prop-17: color(display-p3 0.00000 0.83784 0.97033);
+	prop-17: lab(78% -64 -44);
+	/* out */
+	prop-18: rgb(255, 165, 203);
+	prop-18: color(display-p3 1.00000 0.62326 0.79886);
+	prop-18: lab(76% 81 -11);
 }

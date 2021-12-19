@@ -106,4 +106,10 @@
 	prop-15: lab(60% -28 15);
 	/* out */
 	prop-16: lab(65% 81 -11);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B60%2C-28%2C15%5D%2C%5B65%2C81%2C-11%5D%5D */
+	/* out */
+	prop-17: lab(78% -64 -44);
+	/* out */
+	prop-18: lab(76% 81 -11);
 }

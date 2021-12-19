@@ -2,8 +2,8 @@ import valueParser, { SpaceNode } from 'postcss-value-parser';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
 import { labToSRgb } from './css-color-4/convert-lab-to-srgb';
 import { lchToSRgb } from './css-color-4/convert-lch-to-srgb';
-import { labToDisplayP3 } from './css-color-4/convert-lab-to-display-p3p3';
-import { lchToDisplayP3 } from './css-color-4/convert-lch-to-display-p3p3';
+import { labToDisplayP3 } from './css-color-4/convert-lab-to-display-p3';
+import { lchToDisplayP3 } from './css-color-4/convert-lch-to-display-p3';
 
 export function onCSSFunctionSRgb(node: FunctionNode) {
 	const value = node.value;
