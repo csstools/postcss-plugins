@@ -11,12 +11,12 @@ a [foo="&"] {
 	}
 }
 `, { from: 'raw', to: 'raw' }).then(result => {
-	assertStrictEquals(result.css, `
+	assertStrictEquals(`
 a [foo="&"] {
 	color : red
 }
-a [foo="&"].baz {
+a .baz[foo="&"] {
 		color : blue;
 	}
-`);
+`, result.css);
 });
