@@ -7,7 +7,7 @@ updates:
     time: "01:00"
     timezone: "Europe/Brussels"
   open-pull-requests-limit: 10
-  versioning-strategy: increase-if-necessary
+  versioning-strategy: increase
   rebase-strategy: auto
 - package-ecosystem: "github-actions"
   directory: "/"
