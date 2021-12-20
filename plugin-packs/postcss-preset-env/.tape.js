@@ -8,6 +8,12 @@ module.exports = {
 			browsers: 'ff >= 49'
 		}
 	},
+	'basic:ff66': {
+		message: 'supports { browsers: "ff >= 66" } usage',
+		options: {
+			browsers: 'ff >= 66'
+		}
+	},
 	'basic:ch38': {
 		message: 'supports { browsers: "chrome >= 38" } usage',
 		options: {
@@ -38,6 +44,13 @@ module.exports = {
 		message: 'supports { browsers: "ff >= 49", stage: 0 } usage',
 		options: {
 			browsers: 'ff >= 49',
+			stage: 0
+		}
+	},
+	'basic:stage0-ff66': {
+		message: 'supports { browsers: "ff >= 66", stage: 0 } usage',
+		options: {
+			browsers: 'ff >= 66',
 			stage: 0
 		}
 	},
