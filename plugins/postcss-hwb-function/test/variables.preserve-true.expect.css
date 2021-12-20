@@ -1,0 +1,19 @@
+:root {
+	--firebrick: rgb(0, 195, 255);
+	--firebrick-a50: rgb(0, 195, 255);
+
+	--opacity-50: 0.5;
+	--firebrick-a50-var: rgba(0, 195, 255, var(--opacity-50));
+
+	--fifty: 50;
+	--firebrick-var: hwb(40% var(--fifty) 34.5 / var(--opacity-50));
+}@supports (color: hwb(0% 0 0)) {:root {
+	--firebrick: hwb(194 0% 0%);
+}
+}@supports (color: hwb(0% 0 0)) {:root {
+	--firebrick-a50: hwb(194 0% 0%);
+}
+}@supports (color: hwb(0% 0 0)) {:root {
+	--firebrick-a50-var: hwb(194 0% 0% / var(--opacity-50));
+}
+}

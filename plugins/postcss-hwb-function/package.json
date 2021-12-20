@@ -1,10 +1,10 @@
 {
-  "name": "postcss-lab-function",
+  "name": "postcss-hwb-function",
   "version": "4.0.2",
-  "description": "Use lab() and lch() color functions in CSS",
+  "description": "Use hwb() color functions in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function#readme",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function#readme",
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -17,7 +17,7 @@
     "dist"
   ],
   "bin": {
-    "postcss-lab-function": "dist/cli.mjs"
+    "postcss-hwb-function": "dist/cli.mjs"
   },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
@@ -48,8 +48,9 @@
     "colors",
     "rgb",
     "rgba",
-    "lab",
-    "lch",
+    "hsl",
+    "hsla",
+    "hwb",
     "functional",
     "notation",
     "design",
@@ -60,7 +61,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "plugins/postcss-lab-function"
+    "directory": "plugins/postcss-hwb-function"
   },
   "volta": {
     "extends": "../../package.json"

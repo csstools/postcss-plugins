@@ -1,5 +1,5 @@
-import valueParser, { SpaceNode } from 'postcss-value-parser';
-import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
+import type { FunctionNode, Dimension, Node, DivNode, WordNode, SpaceNode } from 'postcss-value-parser';
 import { labToSRgb } from './css-color-4/convert-lab-to-srgb';
 import { lchToSRgb } from './css-color-4/convert-lch-to-srgb';
 import { labToDisplayP3 } from './css-color-4/convert-lab-to-display-p3';
