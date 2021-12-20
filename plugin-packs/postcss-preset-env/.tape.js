@@ -27,6 +27,18 @@ module.exports = {
 			stage: 0
 		}
 	},
+		'basic:ch88-ff78:no-is-pseudo': {
+		message: 'supports { browsers: "chrome >= 88, firefox >= 78", stage: 0, features: { nesting-rules: { noIsPseudoSelector: true } } } usage',
+		options: {
+			browsers: 'chrome >= 88, firefox >= 78',
+			stage: 0,
+			features: {
+				'nesting-rules': {
+					noIsPseudoSelector: true
+				}
+			}
+		}
+	},
 	'basic:ch88-ff78-saf10': {
 		message: 'supports { browsers: "chrome >= 88, firefox >= 78, safari >= 10", stage: 0 } usage',
 		options: {
