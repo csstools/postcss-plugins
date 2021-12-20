@@ -19,10 +19,18 @@
 }
 }
 
+.test-logical-properties-and-values:dir(ltr) {
+	margin: 1px 4px 3px 2px;
+}
+
+.test-logical-properties-and-values:dir(rtl) {
+	margin: 1px 2px 3px 4px;
+}
+
 .test-logical-properties-and-values {
-	margin: logical 1px 2px 3px 4px;
 	order: 3;
-	padding-block: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .test-nesting-rules {
