@@ -1,6 +1,6 @@
 name: test node without workspaces
 on:
-  push:
+  workflow_dispatch:
 
 concurrency:
   group: branch-no-workspaces-${{ github.ref }}
