@@ -4,7 +4,7 @@
   "description": "Convert modern CSS into something browsers understand",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-preset-env#readme",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#readme",
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -32,7 +32,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.0",
     "browserslist": "^4.19.1",
-    "caniuse-lite": "^1.0.30001287",
+    "caniuse-lite": "^1.0.30001291",
     "css-blank-pseudo": "^3.0.0",
     "css-has-pseudo": "^3.0.0",
     "css-prefers-color-scheme": "^6.0.0",

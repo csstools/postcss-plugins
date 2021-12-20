@@ -19,34 +19,25 @@
 }
 }
 
-.test-logical-properties-and-values:dir(ltr) {
-	margin: 1px 4px 3px 2px;
-}
-
-.test-logical-properties-and-values:dir(rtl) {
-	margin: 1px 2px 3px 4px;
-}
-
 .test-logical-properties-and-values {
+	margin: logical 1px 2px 3px 4px;
 	order: 3;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-block: 5px;
 }
 
 .test-nesting-rules {
 	order: 4;
-}
 
-.test-nesting-rules p {
+	& p {
 		order: 5;
 	}
-
-.test-nesting-rules {
 
 	order: 6;
 }
 
-@media (max-width: 30em) {
+@custom-media --narrow-window (max-width: 30em);
+
+@media (--narrow-window) {
 	.test-custom-media-queries {
 		order: 7;
 	}
@@ -58,28 +49,18 @@
 	}
 }
 
-@media (color-index: 48) {
+@custom-media --dark-mode (prefers-color-scheme: dark);
+
+@media (--dark-mode) {
 	body {
 		background-color: black;
 		color: white;
 	}
 }
 
-@media (color: 48842621) {
-	body {
-		background-color: black;
-		color: white;
-	}
-}
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
-@media (prefers-color-scheme: dark) {
-	body {
-		background-color: black;
-		color: white;
-	}
-}
-
-h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.test-custom-selectors,h5.test-custom-selectors,h6.test-custom-selectors {
+.test-custom-selectors:--heading {
 	order: 9;
 }
 
@@ -99,7 +80,7 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 }
 
 .test-color-functional-notation {
-	color: rgba(178, 34, 34, 0.5);
+	color: rgb(70% 13.5% 13.5% / 50%);
 	order: 13;
 }
 
@@ -132,10 +113,6 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	order: 19;
 }
 
-.test-any-link-pseudo-class:-moz-any-link {
-	order: 20;
-}
-
 .test-any-link-pseudo-class:any-link {
 	order: 20;
 }
@@ -156,10 +133,6 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 .test-double-position-gradients {
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg,gold 75%, #f06 0deg);
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
-}
-
-.test-blank-pseudo-class[blank] {
-	background-color: yellow;
 }
 
 .test-blank-pseudo-class:blank {
