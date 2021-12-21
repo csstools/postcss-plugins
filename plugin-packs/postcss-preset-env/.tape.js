@@ -20,6 +20,32 @@ module.exports = {
 			browsers: 'chrome >= 38'
 		}
 	},
+	'basic:ch88-ff78': {
+		message: 'uses :is pseudo for nesting with modern browsers { browsers: "chrome >= 88, firefox >= 78", stage: 0 }',
+		options: {
+			browsers: 'chrome >= 88, firefox >= 78',
+			stage: 0
+		}
+	},
+	'basic:ch88-ff78:no-is-pseudo': {
+		message: ':is pseudo for nesting can be disable with modern browsers  { browsers: "chrome >= 88, firefox >= 78", stage: 0, features: { nesting-rules: { noIsPseudoSelector: true } } } usage',
+		options: {
+			browsers: 'chrome >= 88, firefox >= 78',
+			stage: 0,
+			features: {
+				'nesting-rules': {
+					noIsPseudoSelector: true
+				}
+			}
+		}
+	},
+	'basic:ch88-ff78-saf10': {
+		message: 'does not use :is pseudo for nesting with an older browser { browsers: "chrome >= 88, firefox >= 78, safari >= 10", stage: 0 } usage',
+		options: {
+			browsers: 'chrome >= 88, firefox >= 78, safari >= 10',
+			stage: 0
+		}
+	},
 	'basic:stage0': {
 		message: 'supports { stage: 0 } usage',
 		options: {

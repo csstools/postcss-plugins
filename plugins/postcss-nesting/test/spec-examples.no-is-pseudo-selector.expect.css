@@ -11,7 +11,7 @@ table.colortable td.c {
 		}
 
 table.colortable td:first-child,
-		:first-child:is(table.colortable td)+td {
+		table.colortable td:first-child+td {
 			border: 1px solid black
 		}
 
@@ -116,7 +116,7 @@ table.colortable th {
 */
 
 /* The parent selector can be arbitrarily complicated */
-:is(.error,#404):hover>.baz {
+.error:hover>.baz, #404:hover>.baz {
 		color: red;
 	}
 

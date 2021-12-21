@@ -8,21 +8,30 @@
 
 .test-image-set-function {
 	background-image: url(img/test.png);
+	background-image: -webkit-image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 	background-image: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 	order: 2;
 }
 
-@media (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-image-set-function {
 	background-image: url(img/test-2x.png);
 }
 }
 
+[dir="ltr"] .test-logical-properties-and-values {
+	margin: 1px 4px 3px 2px;
+}
+
+[dir="rtl"] .test-logical-properties-and-values {
+	margin: 1px 2px 3px 4px;
+}
+
 .test-logical-properties-and-values {
-	margin: logical 1px 2px 3px 4px;
 	order: 3;
-	padding-block: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .test-nesting-rules {
@@ -122,6 +131,7 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 }
 
 .test-font-variant-property {
+	font-feature-settings: "smcp";
 	font-variant-caps: small-caps;
 	order: 19;
 }
@@ -143,13 +153,17 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	order: 23;
 }
 
-.test-dir-pseudo-class:dir(rtl) {
+[dir="rtl"] .test-dir-pseudo-class {
 	order: 24;
 }
 
 .test-overflow-wrap-property {
 	order: 25;
 	overflow-wrap: break-word;
+}
+
+.test-focus-visible-pseudo-class.focus-visible {
+	order: 26;
 }
 
 .test-focus-visible-pseudo-class:focus-visible {

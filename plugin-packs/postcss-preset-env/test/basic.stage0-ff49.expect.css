@@ -46,15 +46,30 @@
 	order: 6;
 }
 
+.test-nesting-rules,
+#test-is-pseudo {
+	order: 7;
+}
+
+.test-nesting-rules + p, #test-is-pseudo + p {
+		order: 8;
+	}
+
+.test-nesting-rules,
+#test-is-pseudo {
+
+	order: 9;
+}
+
 @media (max-width: 30em) {
 	.test-custom-media-queries {
-		order: 7;
+		order: 10;
 	}
 }
 
 @media (min-width: 480px) and (max-width: 767px) {
 	.test-media-query-ranges {
-		order: 8;
+		order: 11;
 	}
 }
 
@@ -80,77 +95,77 @@
 }
 
 h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.test-custom-selectors,h5.test-custom-selectors,h6.test-custom-selectors {
-	order: 9;
+	order:12;
 }
 
 .test-case-insensitive-attributes[frame=hsides i] {
-	order: 10;
+	order: 13;
 }
 
 .test-rebeccapurple-color {
 	color: rebeccapurple;
-	order: 11;
+	order: 14;
 }
 
 .test-hexadecimal-alpha-notation {
 	background-color: #f3f3f3f3;
 	color: #0003;
-	order: 12;
+	order: 15;
 }
 
 .test-color-functional-notation {
 	color: rgba(178, 34, 34, 0.5);
-	order: 13;
+	order: 16;
 }
 
 .test-lab-function {
 	background-color: rgb(179, 35, 35);
 	color: rgba(179, 34, 35, 0.5);
-	order: 14;
+	order: 17;
 }
 
 .test-system-ui-font-family {
 	font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-	order: 15;
+	order: 18;
 }
 
 .test-font-variant-property {
 	font-variant-caps: small-caps;
-	order: 16;
+	order: 19;
 }
 
 .test-all-property {
 	all: initial;
-	order: 17;
+	order: 20;
 }
 
 .test-matches-pseudo-class:matches(:first-child, .special) {
-	order: 18;
-}
-
-.test-not-pseudo-class:not(:first-child):not(.special) {
-	order: 19;
-}
-
-.test-any-link-pseudo-class:-moz-any-link {
-	order: 20;
-}
-
-.test-any-link-pseudo-class:any-link {
-	order: 20;
-}
-
-.test-dir-pseudo-class:dir(rtl) {
 	order: 21;
 }
 
-.test-overflow-wrap-property {
+.test-not-pseudo-class:not(:first-child):not(.special) {
 	order: 22;
+}
+
+.test-any-link-pseudo-class:-moz-any-link {
+	order: 23;
+}
+
+.test-any-link-pseudo-class:any-link {
+	order: 23;
+}
+
+.test-dir-pseudo-class:dir(rtl) {
+	order: 24;
+}
+
+.test-overflow-wrap-property {
+	order: 25;
 	overflow-wrap: break-word;
 }
 
 .test-focus-visible-pseudo-class:focus-visible {
-	order: 23;
+	order: 26;
 }
 
 .test-double-position-gradients {

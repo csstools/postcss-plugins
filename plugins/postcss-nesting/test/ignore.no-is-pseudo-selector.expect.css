@@ -1,0 +1,29 @@
+a, b {
+	order: 1;
+	c, d {
+		order: 2;
+	}
+}
+& e {
+	order: 3;
+}
+fg {
+		order: 5;
+	}
+a, b {
+	order: 1;
+	@nest c, d {
+		order: 2;
+	}
+}
+@nest & e {
+	order: 3;
+}
+fh {
+		order: 5
+}
+f {
+	@nest &|i {
+		order: 6;
+	}
+}

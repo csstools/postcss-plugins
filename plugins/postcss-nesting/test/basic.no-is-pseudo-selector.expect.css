@@ -52,7 +52,7 @@ body a {
 		order: 11
 }
 
-html :is(body a) {
+html body a {
 			order: 12
 }
 
@@ -80,11 +80,11 @@ a {
 }
 		}
 
-body:is(a) {
+bodya {
 		order: 17
 }
 
-html body:is(a) {
+html bodya {
 		order: 18
 }
 
@@ -96,11 +96,11 @@ a.foo {
 		order: 20
 }
 
-.foo:is(a b) {
+a.foo b {
 		order: 21
 }
 
-.foo .bar:is(a b) {
+.foo a.bar b {
 		order: 22
 }
 
