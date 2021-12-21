@@ -118,7 +118,7 @@ postcssNesting({
 }
 ```
 
-_`.beta:hover` has specificity as if `.beta` where an class selector, conflicting with the specification._
+_`.beta:hover` has specificity as if `.beta` where a class selector, conflicting with the specification._
 
 [specificity: 0, 2, 0](https://polypane.app/css-specificity-calculator/#selector=.beta%3Ahover)
 
