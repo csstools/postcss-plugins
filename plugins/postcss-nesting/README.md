@@ -75,6 +75,8 @@ await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
 
 ### noIsPseudoSelector
 
+#### Specificity
+
 Before :
 
 ```css
@@ -82,12 +84,6 @@ Before :
 .beta {
 	&:hover {
 		order: 1;
-	}
-}
-
-.alpha > .beta {
-	& + & {
-		order: 2;
 	}
 }
 ```
@@ -106,11 +102,7 @@ postcssNesting()
 
 _`.beta:hover` has specificity as if `.beta` where an id selector, matching the specification._
 
-```css
-:is(.alpha > .beta) + :is(.alpha > .beta) {
-	order: 2;
-}
-```
+[specificity: 1, 1, 0](https://polypane.app/css-specificity-calculator/#selector=%3Ais(%23alpha%2C.beta)%3Ahover)
 
 After **with** the option :
 
@@ -128,15 +120,57 @@ postcssNesting({
 
 _`.beta:hover` has specificity as if `.beta` where an class selector, conflicting with the specification._
 
+[specificity: 0, 2, 0](https://polypane.app/css-specificity-calculator/#selector=.beta%3Ahover)
+
+
+#### Complex selectors
+
+Before :
+
+```css
+.alpha > .beta {
+	& + & {
+		order: 2;
+	}
+}
+```
+
+After **without** the option :
+
+```js
+postcssNesting()
+```
+
+```css
+:is(.alpha > .beta) + :is(.alpha > .beta) {
+	order: 2;
+}
+```
+
+After **with** the option :
+
+```js
+postcssNesting({
+	noIsPseudoSelector: true
+})
+```
+
 ```css
 .alpha > .beta + .alpha > .beta {
 	order: 2;
 }
 ```
 
-_this is a different selector than expected_
+_this is a different selector than expected as `.beta + .alpha` matches `.beta` followed by `.alpha`._
 _avoid these cases when you disable `:is()`_
 _writing the selector without nesting is advised here_
+
+```css
+/* without nesting */
+.alpha > .beta + .beta {
+	order: 2;
+}
+```
 
 ### ⚠️ Spec disclaimer
 
