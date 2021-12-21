@@ -2,7 +2,7 @@
 
 ### 7.0.3
 
-- Updated `postcss-nesting` to `10.1.0` (minor)
+- Updated [`postcss-nesting` to `10.1.0` (minor)](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-nesting/CHANGELOG.md#changes-to-postcss-nesting)
 
 ### 7.0.2 (December 16, 2021)
 
