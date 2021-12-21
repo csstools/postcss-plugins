@@ -21,14 +21,14 @@ module.exports = {
 		}
 	},
 	'basic:ch88-ff78': {
-		message: 'supports { browsers: "chrome >= 88, firefox >= 78", stage: 0 } usage',
+		message: 'uses :is pseudo for nesting with modern browsers { browsers: "chrome >= 88, firefox >= 78", stage: 0 }',
 		options: {
 			browsers: 'chrome >= 88, firefox >= 78',
 			stage: 0
 		}
 	},
-		'basic:ch88-ff78:no-is-pseudo': {
-		message: 'supports { browsers: "chrome >= 88, firefox >= 78", stage: 0, features: { nesting-rules: { noIsPseudoSelector: true } } } usage',
+	'basic:ch88-ff78:no-is-pseudo': {
+		message: ':is pseudo for nesting can be disable with modern browsers  { browsers: "chrome >= 88, firefox >= 78", stage: 0, features: { nesting-rules: { noIsPseudoSelector: true } } } usage',
 		options: {
 			browsers: 'chrome >= 88, firefox >= 78',
 			stage: 0,
@@ -40,7 +40,7 @@ module.exports = {
 		}
 	},
 	'basic:ch88-ff78-saf10': {
-		message: 'supports { browsers: "chrome >= 88, firefox >= 78, safari >= 10", stage: 0 } usage',
+		message: 'does not use :is pseudo for nesting with an older browser { browsers: "chrome >= 88, firefox >= 78, safari >= 10", stage: 0 } usage',
 		options: {
 			browsers: 'chrome >= 88, firefox >= 78, safari >= 10',
 			stage: 0
