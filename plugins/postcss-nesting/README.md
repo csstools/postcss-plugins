@@ -161,8 +161,8 @@ postcssNesting({
 }
 ```
 
-_this is a different selector than expected as `.beta + .alpha` matches `.beta` followed by `.alpha`._
-_avoid these cases when you disable `:is()`_
+_this is a different selector than expected as `.beta + .alpha` matches `.beta` followed by `.alpha`._<br>
+_avoid these cases when you disable `:is()`_<br>
 _writing the selector without nesting is advised here_
 
 ```css
