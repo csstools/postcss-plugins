@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### 7.0.3
+
+- Updated `postcss-nesting` to `10.1.0` (minor)
+
 ### 7.0.2 (December 16, 2021)
 
 - Fixed unexpected behaviours when using different versions of `postcss-values-parser` across the plugins [228](https://github.com/csstools/postcss-preset-env/issues/228)
