@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### 10.1.0
+### 10.1.0 (December 22, 2021)
 
 - Added: `noIsPseudoSelector` plugin option.
 - Changed: `:is()` pseudo is now avoided as much as possible by default.
