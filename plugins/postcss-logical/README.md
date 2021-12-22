@@ -71,6 +71,13 @@ Specifying the `logical` keyboard at the beginning of the property value will
 transform the flow-relative values afterward into both physical LTR and RTL
 properties:
 
+#### :dir() pseudo class
+
+This plugin transforms using the `:dir(ltr)` pseudo class.
+Use [postcss-dir-pseudo-class](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class#readme) to further transform to `[dir="ltr"]`.
+
+Currently `:dir(ltr)` doesn't have great browser support but this will improve over time.
+
 #### Logical Borders
 
 - `border`, `border-block`, `border-block-start`, `border-block-end`,
