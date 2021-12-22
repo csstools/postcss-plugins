@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### 7.0.3
+### 7.1.0 (December 22, 2021)
 
 - Updated [`postcss-nesting` to `10.1.0` (minor)](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-nesting/CHANGELOG.md#changes-to-postcss-nesting)
 
