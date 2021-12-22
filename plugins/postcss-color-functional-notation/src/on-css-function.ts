@@ -1,5 +1,5 @@
-import valueParser, { SpaceNode } from 'postcss-value-parser';
-import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
+import type { FunctionNode, Dimension, Node, DivNode, WordNode, SpaceNode } from 'postcss-value-parser';
 
 function onCSSFunction(node: FunctionNode) {
 	const value = node.value;
