@@ -3,7 +3,11 @@ import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-v
 
 function onCSSFunction(node: FunctionNode) {
 	const value = node.value;
-	const rawNodes = convertOldSyntaxToNewSyntaxBeforeTransform(node.nodes);
+	let rawNodes = node.nodes;
+	if (value === 'rgb' || value === 'hsl') {
+		rawNodes = convertOldSyntaxToNewSyntaxBeforeTransform(rawNodes);
+	}
+
 	const relevantNodes = rawNodes.slice().filter((x) => {
 		return x.type !== 'comment' && x.type !== 'space';
 	});
