@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Functional Notation
 
+### 4.2.0
+
+- Added: support for Alpha value as the fourth argument in comma separated values notation.
+
 ### 4.1.0 (December 15, 2021)
 
 - Added: support for Alpha value as a CSS variable in `rgb()` and `rgba()`.

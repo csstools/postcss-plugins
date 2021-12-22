@@ -1,9 +1,9 @@
-import valueParser from 'postcss-value-parser';
+import valueParser, { SpaceNode } from 'postcss-value-parser';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
 
 function onCSSFunction(node: FunctionNode) {
 	const value = node.value;
-	const rawNodes = node.nodes;
+	const rawNodes = convertOldSyntaxToNewSyntaxBeforeTransform(node.nodes);
 	const relevantNodes = rawNodes.slice().filter((x) => {
 		return x.type !== 'comment' && x.type !== 'space';
 	});
@@ -311,4 +311,37 @@ function canParseAsUnit(node : Node): boolean {
 	} catch (e) {
 		return false;
 	}
+}
+
+function convertOldSyntaxToNewSyntaxBeforeTransform(nodes: Array<Node>): Array<Node> {
+	// https://www.w3.org/TR/css-color-4/#rgb-functions
+	// For legacy reasons, rgb() also supports an alternate syntax that separates all of its arguments with commas:
+	// This also allows alpha values in comma separated `rgb` / `hsl` functions.
+	//
+	// This function replaces the first two comma's with spaces and the third with a slash.
+	// Subsequent comma's are ignored as they are invalid in this syntax.
+
+	let commaCounter = 0;
+	for (let i = 0; i < nodes.length; i++) {
+		const node = nodes[i];
+		if (node.type === 'div' && node.value === ',') {
+			if (commaCounter < 2) {
+				node.value = ' ';
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				((node as any) as SpaceNode).type = 'space';
+			}
+
+			if (commaCounter === 2) {
+				node.value = '/';
+			}
+
+			if (commaCounter > 2) {
+				return;
+			}
+
+			commaCounter++;
+		}
+	}
+
+	return nodes;
 }

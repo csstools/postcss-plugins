@@ -61,3 +61,13 @@
 .test-unparseable-color-function {
 	color: rgb(; );
 }
+
+.rgb-with-alpha {
+	color: rgb(70% 13.5% 13.5% / 50%);
+	color: rgb(0, 0, 0, 0);
+}
+
+.hsl-with-alpha {
+	color: hsl(120 100% 50% / 50%);
+	color: hsl(120, 100%, 50%, 0);
+}
