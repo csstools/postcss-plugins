@@ -32,7 +32,7 @@ body:
   - type: dropdown
     id: npx
     attributes:
-      label: Does it happen with `npx <plugin-name> minimal-example.css`?
+      label: Does it happen with `npx @csstools/csstools-cli <plugin-name> minimal-example.css`?
       multiple: false
       options:
         - "Yes"

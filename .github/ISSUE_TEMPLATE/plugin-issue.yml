@@ -34,7 +34,7 @@ body:
   - type: dropdown
     id: npx
     attributes:
-      label: Can you reproduce it with `npx <plugin-name> minimal-example.css`?
+      label: Can you reproduce it with `npx @csstools/csstools-cli <plugin-name> minimal-example.css`?
       multiple: false
       options:
         - "Yes"

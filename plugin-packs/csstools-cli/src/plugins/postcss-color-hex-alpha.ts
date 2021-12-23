@@ -6,7 +6,7 @@ export default function postcssColorHexAlpha() {
 		plugin,
 		['preserve'],
 		helpTextLogger(
-			'postcss-color-hex-alpha',
+			'@csstools/cli postcss-color-hex-alpha',
 			'PostCSS Color Hex Alpha',
 			'Lets you use 4 & 8 character hex color notation in CSS, following the CSS Color Module specification.',
 			{

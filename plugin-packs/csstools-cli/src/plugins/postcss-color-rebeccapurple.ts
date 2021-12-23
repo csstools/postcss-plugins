@@ -6,7 +6,7 @@ export default function postcssColorRebeccaPurple() {
 		plugin,
 		['preserve'],
 		helpTextLogger(
-			'postcss-color-rebeccapurple',
+			'@csstools/cli postcss-color-rebeccapurple',
 			'PostCSS RebeccaPurple',
 			'Lets you use the rebeccapurple color keyword in CSS.',
 			{

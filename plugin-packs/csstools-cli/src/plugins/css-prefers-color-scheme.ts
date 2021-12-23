@@ -6,7 +6,7 @@ export default function cssPrefersColorScheme() {
 		plugin,
 		['preserve', 'mediaQuery'],
 		helpTextLogger(
-			'css-prefers-color-scheme',
+			'@csstools/cli css-prefers-color-scheme',
 			'Prefers Color Scheme',
 			'Lets you use light and dark color schemes in all browsers, following the [Media Queries] specification.',
 			{

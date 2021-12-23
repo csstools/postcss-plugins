@@ -6,7 +6,7 @@ export default function postcssPseudoClassAnyLink() {
 		plugin,
 		['preserve'],
 		helpTextLogger(
-			'postcss-pseudo-class-any-link',
+			'@csstools/cli postcss-pseudo-class-any-link',
 			'PostCSS Pseudo Class Any Link',
 			'Lets you :any-link pseudo-class in CSS, following the Selectors specification.',
 			{

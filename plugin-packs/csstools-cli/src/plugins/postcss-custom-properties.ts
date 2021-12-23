@@ -6,7 +6,7 @@ export default function postcssCustomProperties() {
 		plugin,
 		['importFrom', 'exportTo', 'preserve'],
 		helpTextLogger(
-			'postcss-custom-properties',
+			'@csstools/cli postcss-custom-properties',
 			'PostCSS Custom Properties',
 			'Lets you use Custom Properties in CSS, following the CSS Custom Properties specification.',
 			{

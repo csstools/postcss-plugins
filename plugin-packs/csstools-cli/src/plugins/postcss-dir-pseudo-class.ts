@@ -6,7 +6,7 @@ export default function postcssDirPseudoClass() {
 		plugin,
 		['dir', 'preserve', 'shadow'],
 		helpTextLogger(
-			'postcss-dir-pseudo-class',
+			'@csstools/cli postcss-dir-pseudo-class',
 			'PostCSS Dir Pseudo Class',
 			'Lets you style by directionality using the `:dir()` pseudo-class in CSS',
 			{

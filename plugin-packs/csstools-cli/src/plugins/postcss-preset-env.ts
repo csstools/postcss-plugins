@@ -13,7 +13,7 @@ export default function postcssPresetEnv() {
 			'exportTo',
 		],
 		helpTextLogger(
-			'postcss-preset-env',
+			'@csstools/cli postcss-preset-env',
 			'PostCSS Preset Env',
 			'Lets you convert modern CSS into something most browsers can understand, determining the polyfills you need based on your targeted browsers or runtime environments.',
 			{
