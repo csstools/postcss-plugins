@@ -1,5 +1,13 @@
 import cssBlankPseudo from './plugins/css-blank-pseudo';
 import cssHasPseudo from './plugins/css-has-pseudo';
+import cssPrefersColorScheme from './plugins/css-prefers-color-scheme';
+import postcssColorFunctionalNotation from './plugins/postcss-color-functional-notation';
+import postcssColorHexAlpha from './plugins/postcss-color-hex-alpha';
+import postcssColorRebeccaPurple from './plugins/postcss-color-rebeccapurple';
+import postcssCustomProperties from './plugins/postcss-custom-properties';
+import postcssDirPseudoClass from './plugins/postcss-dir-pseudo-class';
+import postcssPresetEnv from './plugins/postcss-preset-env';
+import postcssPseudoClassAnyLink from './plugins/postcss-pseudo-class-any-link';
 
 main();
 function main() {
@@ -11,12 +19,23 @@ function main() {
 			cssHasPseudo();
 			return;
 		case 'css-prefers-color-scheme':
-		case 'postcss-base-plugin':
+			cssPrefersColorScheme();
+			return;
 		case 'postcss-color-functional-notation':
+			postcssColorFunctionalNotation();
+			return;
 		case 'postcss-color-hex-alpha':
+			postcssColorHexAlpha();
+			return;
 		case 'postcss-color-rebeccapurple':
+			postcssColorRebeccaPurple();
+			return;
 		case 'postcss-custom-properties':
+			postcssCustomProperties();
+			return;
 		case 'postcss-dir-pseudo-class':
+			postcssDirPseudoClass();
+			return;
 		case 'postcss-double-position-gradients':
 		case 'postcss-env-function':
 		case 'postcss-focus-visible':
@@ -28,9 +47,12 @@ function main() {
 		case 'postcss-nesting':
 		case 'postcss-overflow-shorthand':
 		case 'postcss-place':
+		case 'postcss-preset-env':
+			postcssPresetEnv();
+			return;
 		case 'postcss-pseudo-class-any-link':
-			break;
-
+			postcssPseudoClassAnyLink();
+			return;
 		default:
 			{
 				const allHelp = [
@@ -46,7 +68,6 @@ function main() {
 					'  css-blank-pseudo',
 					'  css-has-pseudo',
 					'  css-prefers-color-scheme',
-					'  postcss-base-plugin',
 					'  postcss-color-functional-notation',
 					'  postcss-color-hex-alpha',
 					'  postcss-color-rebeccapurple',
