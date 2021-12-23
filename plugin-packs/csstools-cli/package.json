@@ -1,0 +1,62 @@
+{
+  "name": "@csstools/csstools-cli",
+  "version": "1.0.0",
+  "description": "Transform CSS with any plugin from csstools/postcss-plugins",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
+  "types": "dist/cli.d.ts",
+  "files": [
+    "CHANGELOG.md",
+    "INSTALL.md",
+    "LICENSE.md",
+    "README.md",
+    "dist"
+  ],
+  "bin": {
+    "csstools-cli": "dist/cli.mjs"
+  },
+  "scripts": {
+    "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "stryker": "stryker run --logLevel error",
+    "test": "npm run test:cli",
+    "test:cli": "bash ./test/cli/test.sh",
+    "csstools-cli": "csstools-cli"
+  },
+  "devDependencies": {
+    "postcss": "^8.3",
+    "css-blank-pseudo": "^3.0.0",
+    "css-has-pseudo": "^3.0.0",
+    "css-prefers-color-scheme": "^6.0.0",
+    "postcss-color-functional-notation": "^4.1.0",
+    "postcss-color-hex-alpha": "^8.0.1",
+    "postcss-color-rebeccapurple": "^7.0.1",
+    "postcss-custom-properties": "^12.0.1",
+    "postcss-dir-pseudo-class": "^6.0.1",
+    "postcss-double-position-gradients": "^3.0.3",
+    "postcss-env-function": "^4.0.3",
+    "postcss-focus-visible": "^6.0.2",
+    "postcss-focus-within": "^5.0.2",
+    "postcss-gap-properties": "^3.0.1",
+    "postcss-image-set-function": "^4.0.3",
+    "postcss-lab-function": "^4.0.2",
+    "postcss-logical": "^5.0.1",
+    "postcss-nesting": "^10.0.3",
+    "postcss-overflow-shorthand": "^3.0.1",
+    "postcss-place": "^7.0.2",
+    "postcss-pseudo-class-any-link": "^7.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugin-packs/cli"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
