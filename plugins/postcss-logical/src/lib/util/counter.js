@@ -2,6 +2,10 @@ import crypto from 'crypto';
 
 let counter = 0;
 
+export function resetCounter() {
+	counter = 0;
+}
+
 export function getCounter() {
 	counter++;
 	return counter;

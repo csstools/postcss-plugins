@@ -3,29 +3,29 @@ test-float-1 {
 }
 
 :dir(ltr) {
-	--logical-d7934d-3: left;
+	--logical-d7934d-1: left;
 }
 
 :dir(rtl) {
-	--logical-d7934d-3: right;
+	--logical-d7934d-1: right;
 }
 
 test-float-2 {
 	float: left;
-	float: var(--logical-d7934d-3);
+	float: var(--logical-d7934d-1);
 }
 
 :dir(ltr) {
-	--logical-6948ab-4: right;
+	--logical-222045-2: right;
 }
 
 :dir(rtl) {
-	--logical-6948ab-4: left;
+	--logical-222045-2: left;
 }
 
 test-float-3 {
 	float: right;
-	float: var(--logical-6948ab-4);
+	float: var(--logical-222045-2);
 }
 
 test-float-4 {

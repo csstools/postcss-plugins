@@ -10,6 +10,7 @@ import transformTextAlign from './lib/transform-text-align';
 import transformTransition from './lib/transform-transition';
 import { splitBySpace } from './lib/split';
 import { hasKeyframesAtRuleAncestor } from './lib/has-keyframes-atrule-ancestor';
+import { resetCounter } from './lib/util/counter';
 
 // plugin
 function postcssLogicalProperties(opts) {
@@ -52,6 +53,9 @@ function postcssLogicalProperties(opts) {
 
 	return {
 		postcssPlugin: 'postcss-logical-properties',
+		Once: () => {
+			resetCounter();
+		},
 		Declaration: {
 			// Flow-Relative Values
 			'clear': makeTransform(transformFloat),
