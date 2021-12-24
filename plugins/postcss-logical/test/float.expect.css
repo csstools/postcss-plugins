@@ -1,16 +1,33 @@
-test-float:dir(ltr) {
+test-float-1 {
 	float: left;
 }
-test-float:dir(rtl) {
+
+:dir(ltr) {
+	--logical-d7934d-3: left;
+}
+
+:dir(rtl) {
+	--logical-d7934d-3: right;
+}
+
+test-float-2 {
+	float: left;
+	float: var(--logical-d7934d-3);
+}
+
+:dir(ltr) {
+	--logical-6948ab-4: right;
+}
+
+:dir(rtl) {
+	--logical-6948ab-4: left;
+}
+
+test-float-3 {
 	float: right;
+	float: var(--logical-6948ab-4);
 }
-test-float:dir(ltr) {
-	float: right;
-}
-test-float:dir(rtl) {
-	float: left;
-}
-test-float {
-	float: left;
+
+test-float-4 {
 	float: right;
 }

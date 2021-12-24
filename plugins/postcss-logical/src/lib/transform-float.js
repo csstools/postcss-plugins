@@ -1,4 +1,5 @@
-import cloneRule from './clone-rule';
+import { cloneRuleAsDir } from './clone-rule-for-variables';
+import { varId } from './util/counter';
 
 export default (decl, values, dir, preserve) => {
 	if (/^inline-start$/i.test(decl.value)) {
@@ -11,12 +12,30 @@ export default (decl, values, dir, preserve) => {
 			clean(decl, preserve);
 			return;
 		} else {
-			cloneRule(decl, 'ltr').append(lDecl(decl));
-			cloneRule(decl, 'rtl').append(rDecl(decl));
+			const id = varId(decl);
+			const dirLtr = cloneRuleAsDir(decl, 'ltr');
+			const dirRtl = cloneRuleAsDir(decl, 'rtl');
+
+			const ltrClone = decl.clone();
+			ltrClone.prop = `--logical-${id}`;
+			ltrClone.value = 'left';
+
+			dirLtr.append(ltrClone);
+
+			const rtlClone = decl.clone();
+			rtlClone.prop = `--logical-${id}`;
+			rtlClone.value = 'right';
+
+			dirRtl.append(rtlClone);
+
+			decl.cloneBefore({ value: 'left' });
+			decl.cloneBefore({ value: `var(--logical-${id})` });
 			clean(decl, preserve);
 			return;
 		}
-	} if (/^inline-end$/i.test(decl.value)) {
+	}
+
+	if (/^inline-end$/i.test(decl.value)) {
 		if (dir === 'ltr') {
 			rDecl(decl);
 			clean(decl, preserve);
@@ -26,8 +45,24 @@ export default (decl, values, dir, preserve) => {
 			clean(decl, preserve);
 			return;
 		} else {
-			cloneRule(decl, 'ltr').append(rDecl(decl));
-			cloneRule(decl, 'rtl').append(lDecl(decl));
+			const id = varId(decl);
+			const dirLtr = cloneRuleAsDir(decl, 'ltr');
+			const dirRtl = cloneRuleAsDir(decl, 'rtl');
+
+			const ltrClone = decl.clone();
+			ltrClone.prop = `--logical-${id}`;
+			ltrClone.value = 'right';
+
+			dirLtr.append(ltrClone);
+
+			const rtlClone = decl.clone();
+			rtlClone.prop = `--logical-${id}`;
+			rtlClone.value = 'left';
+
+			dirRtl.append(rtlClone);
+
+			decl.cloneBefore({ value: 'right' });
+			decl.cloneBefore({ value: `var(--logical-${id})` });
 			clean(decl, preserve);
 			return;
 		}

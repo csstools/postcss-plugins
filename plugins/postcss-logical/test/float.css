@@ -1,6 +1,15 @@
-test-float {
+test-float-1 {
 	float: left;
+}
+
+test-float-2 {
 	float: inline-start;
+}
+
+test-float-3 {
 	float: inline-end;
+}
+
+test-float-4 {
 	float: right;
 }

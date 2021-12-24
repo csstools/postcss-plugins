@@ -1,17 +1,21 @@
-test-clear:dir(ltr) {
-	clear: left;
+:dir(ltr) {
+	--logical-55da70-1: left;
 }
-test-clear:dir(rtl) {
-	clear: right;
+:dir(rtl) {
+	--logical-55da70-1: right;
 }
-test-clear:dir(ltr) {
-	clear: right;
+:dir(ltr) {
+	--logical-63f1d9-2: right;
 }
-test-clear:dir(rtl) {
-	clear: left;
+:dir(rtl) {
+	--logical-63f1d9-2: left;
 }
 test-clear {
 	clear: both;
 	clear: left;
+	clear: left;
+	clear: var(--logical-55da70-1);
+	clear: right;
+	clear: var(--logical-63f1d9-2);
 	clear: right;
 }
