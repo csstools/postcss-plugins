@@ -10,6 +10,12 @@ test-float-3 {
 	float: right;
 }
 
+@media screen and (min-width: 640px) {
+	test-float-3 {
+		float: center;
+	}
+}
+
 test-float-4 {
 	float: right;
 }
