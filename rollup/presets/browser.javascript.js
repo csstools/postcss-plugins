@@ -29,6 +29,7 @@ export function browserJavascript() {
 			input: 'src/browser.js',
 			output: [
 				{ file: 'dist/browser.cjs', format: 'cjs', sourcemap: true, exports: 'auto', strict: false },
+				{ file: 'dist/browser.mjs', format: 'esm', sourcemap: true, exports: 'auto', strict: false },
 			],
 			external: externalsForBrowser,
 			plugins: [

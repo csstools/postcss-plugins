@@ -15,7 +15,9 @@
       "default": "./dist/index.mjs"
     },
     "./browser": {
-      "default": "./dist/browser.js"
+      "import": "./dist/browser.mjs",
+      "require": "./dist/browser.cjs",
+      "default": "./dist/browser.mjs"
     },
     "./browser-global": {
       "default": "./dist/browser-global.js"
