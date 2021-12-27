@@ -1,6 +1,6 @@
 {
   "name": "css-prefers-color-scheme",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Use light and dark color schemes in all browsers",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",

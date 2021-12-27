@@ -1,6 +1,6 @@
 # Changes to Prefers Color Scheme
 
-### 6.0.1
+### 6.0.1 (December 27, 2021)
 
 - Fixed: require/import paths for browser script
 
