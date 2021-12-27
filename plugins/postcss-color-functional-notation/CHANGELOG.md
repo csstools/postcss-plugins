@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Functional Notation
 
-### 4.2.0
+### 4.2.0 (December 27, 2021)
 
 - Added: support for Alpha value as the fourth argument in comma separated values notation.
 
