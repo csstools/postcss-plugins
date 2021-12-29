@@ -1,6 +1,6 @@
 {
   "name": "css-blank-pseudo",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Style form elements when they are empty",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -15,7 +15,9 @@
       "default": "./dist/index.mjs"
     },
     "./browser": {
-      "default": "./dist/browser.js"
+      "import": "./dist/browser.mjs",
+      "require": "./dist/browser.cjs",
+      "default": "./dist/browser.mjs"
     },
     "./browser-global": {
       "default": "./dist/browser-global.js"
@@ -46,7 +48,7 @@
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-selector-parser": "^6.0.7"
+    "postcss-selector-parser": "^6.0.8"
   },
   "devDependencies": {
     "postcss": "^8.3.6",

@@ -1,5 +1,5 @@
 name: '🐞 Unexpected CSS output report'
-description: CSS output isn't what you expected? This is your path!
+description: CSS output is unexpected or breaks in certain cases? This is your path!
 body:
   - type: markdown
     attributes:

@@ -16,7 +16,7 @@
     "node": "^12 || ^14 || >=16"
   },
   "devDependencies": {
-    "mdn-data": "^2.0.23"
+    "mdn-data": "^2.0.25"
   },
   "repository": {
     "type": "git",

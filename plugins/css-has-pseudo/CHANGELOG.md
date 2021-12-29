@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### 3.0.1(December 27, 2021)
+
+- Fixed: require/import paths for browser script
+
 ### 3.0.0 (December 13, 2021)
 
 - Breaking: require/import paths have changed
