@@ -4,6 +4,7 @@
   "description": "Transform CSS with any plugin from csstools/postcss-plugins",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
+  "type": "module",
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
@@ -57,7 +58,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "plugin-packs/cli"
+    "directory": "plugin-packs/csstools-cli"
   },
   "volta": {
     "extends": "../../package.json"

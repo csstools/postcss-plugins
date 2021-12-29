@@ -27,8 +27,9 @@
     "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
-    "test": "postcss-tape --ci",
-    "test:cli": "bash ./test/cli/test.sh"
+    "test": "postcss-tape --ci && npm run test:exports",
+    "test:cli": "bash ./test/cli/test.sh",
+    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
   "devDependencies": {
     "postcss": "^8.3.6",
