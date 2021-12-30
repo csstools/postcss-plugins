@@ -293,7 +293,7 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	background-color: yellow;
 }
 
-.test-has-pseudo-class[\:has\(.inner-class\)] {
+.test-has-pseudo-class[\:has\(\.inner-class\)] {
 	background-color: yellow;
 }
 

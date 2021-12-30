@@ -38,6 +38,17 @@ cssHasPseudo(document);
 <script>cssHasPseudo(document)</script>
 ```
 
+## Options
+
+### hover
+
+The `hover` option determines if `:hover` pseudo-class should be tracked.
+This is disabled by default because it is an expensive operation.
+
+```js
+cssHasPseudo(document, { hover: true });
+```
+
 ## Dependencies
 
 Web API's:

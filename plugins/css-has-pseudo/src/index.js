@@ -131,12 +131,16 @@ const getEscapedCss = (/** @type {string} */ value) => {
 			case ',':
 			case '(':
 			case ')':
+			case '.':
+			case '~':
 				flushCurrent();
 				out += ( '\\' + char );
 				continue;
 			case '\\':
 				current += char;
-				escaped = true;
+				if (![':', '[', ']', ',', '(', ')', '.', '~'].includes(value[i + 1] || '')) {
+					escaped = true;
+				}
 				continue;
 
 			default:

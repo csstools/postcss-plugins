@@ -48,7 +48,7 @@ Without the version, you might unexpectedly get a new major version of the libra
 ⚠️ If you were using an older version via a CDN, please update the entire url.
 The old URL will no longer work in a future release.
 
-That’s it. The script is 765 bytes and works in most browser versions, including
+That’s it. The script works in most browser versions, including
 Internet Explorer 11. With a [Mutation Observer polyfill], the script will work
 down to Internet Explorer 9.
 
