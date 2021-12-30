@@ -18,10 +18,10 @@ export function cliTypescript() {
 			external: externalsForCLI,
 			plugins: [
 				typescript({ tsconfig: './tsconfig.json' }),
-				commonjs(),
 				nodeResolve({
 					rootDir: path.join(process.cwd(), '..', '..'),
 				}),
+				commonjs(),
 				babel({
 					babelHelpers: 'bundled',
 					exclude: 'node_modules/**',

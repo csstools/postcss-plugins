@@ -19,19 +19,11 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 				const modifiedSelectorAST = parser((selectors) => {
 					selectors.walkPseudos(selector => {
 						if (selector.value === ':has' && selector.nodes) {
-							const isNotHas = isParentInNotPseudo(selector);
-
-							selector.value = isNotHas ? ':not-has' : ':has';
-
 							const attribute = parser.attribute({
 								attribute: getEscapedCss(String(selector)),
 							});
 
-							if (isNotHas) {
-								selector.parent.parent.replaceWith(attribute);
-							} else {
-								selector.replaceWith(attribute);
-							}
+							selector.replaceWith(attribute);
 						}
 					});
 				}).processSync(rule.selector);
@@ -153,8 +145,5 @@ const getEscapedCss = (/** @type {string} */ value) => {
 
 	return out;
 };
-
-/** Returns whether the selector is within a `:not` pseudo-class. */
-const isParentInNotPseudo = (selector) => selector.parent?.parent?.type === 'pseudo' && selector.parent.parent.value === ':not';
 
 export default creator;

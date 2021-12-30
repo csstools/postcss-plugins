@@ -1,10 +1,13 @@
 import babel from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
+import path from 'path';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
 import { externalsForBrowser } from '../configs/externals';
 
 export function browserJavascript() {
 	const babelConfig = {
 		babelHelpers: 'bundled',
-		exclude: 'node_modules/**',
 		presets: [
 			['@babel/preset-env', {
 				loose: true,
@@ -33,7 +36,14 @@ export function browserJavascript() {
 			],
 			external: externalsForBrowser,
 			plugins: [
+				nodeResolve({
+					rootDir: path.join(process.cwd(), '..', '..'),
+				}),
+				commonjs({
+					include: [ 'src/browser.js', 'node_modules/**' ],
+				}),
 				babel(babelConfig),
+				terser(),
 			],
 		},
 		{
@@ -43,7 +53,14 @@ export function browserJavascript() {
 			],
 			external: externalsForBrowser,
 			plugins: [
+				nodeResolve({
+					rootDir: path.join(process.cwd(), '..', '..'),
+				}),
+				commonjs({
+					include: [ 'src/browser.js', 'node_modules/**' ],
+				}),
 				babel(babelConfig),
+				terser(),
 			],
 		},
 	];
