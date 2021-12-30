@@ -14,7 +14,7 @@ h1[\:has\(\~\%20p\)] {
 	order: 4;
 }
 
-section[\:not-has\(h1\,\%20h2\,\%20h3\,\%20h4\,\%20h5\,\%20h6\)] {
+section:not([\:has\(h1\,\%20h2\,\%20h3\,\%20h4\,\%20h5\,\%20h6\)]) {
 	order: 5;
 }
 
@@ -22,7 +22,7 @@ body[\:has\(\:focus\)] {
   order: 6;
 }
 
-body[\:not-has\(\:focus\)] {
+body:not([\:has\(\:focus\)]) {
   order: 7;
 }
 
@@ -79,7 +79,7 @@ body[\:not-has\(\:focus\)] {
 	order: 20;
 }
 
-.a[\:not-has\(\%3E\%20\.b\)] {
+.a:not([\:has\(\%3E\%20\.b\)]) {
 	order: 21;
 }
 

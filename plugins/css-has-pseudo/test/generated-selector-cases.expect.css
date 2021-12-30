@@ -886,7 +886,7 @@ foo[baz=":has(.foo)"] {
 	order: 221;
 }
 
-[\:not-has\(\.foo\)] {
+:not([\:has\(\.foo\)]) {
 	order: 222;
 }
 
