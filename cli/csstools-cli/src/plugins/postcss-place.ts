@@ -6,7 +6,7 @@ export default function postcssPlace() {
 		plugin,
 		['preserve'],
 		helpTextLogger(
-			'postcss-place',
+			'@csstools/cli postcss-place',
 			'PostCSS Place',
 			'Lets you use place-* properties as shorthands for align-* and justify-*, following the CSS Box Alignment specification.',
 			{

@@ -24,9 +24,6 @@
     "dist",
     "mod.js"
   ],
-  "bin": {
-    "postcss-nesting": "dist/cli.mjs"
-  },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",

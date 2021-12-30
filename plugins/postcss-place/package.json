@@ -10,14 +10,10 @@
   "module": "dist/index.mjs",
   "files": [
     "CHANGELOG.md",
-    "INSTALL.md",
     "LICENSE.md",
     "README.md",
     "dist"
   ],
-  "bin": {
-    "postcss-place": "dist/cli.mjs"
-  },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",

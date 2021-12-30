@@ -13,13 +13,12 @@
   "types": "dist/index.d.ts",
   "files": [
     "CHANGELOG.md",
-    "INSTALL.md",
     "LICENSE.md",
     "README.md",
     "dist"
   ],
   "bin": {
-    "postcss-base-plugin": "dist/cli.mjs"
+    "postcss-base-plugin": "dist/cli.cjs"
   },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",

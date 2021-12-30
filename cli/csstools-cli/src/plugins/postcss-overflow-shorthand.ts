@@ -6,7 +6,7 @@ export default function postcssOverflowShorthand() {
 		plugin,
 		['preserve'],
 		helpTextLogger(
-			'postcss-overflow-shorthand',
+			'@csstools/cli postcss-overflow-shorthand',
 			'PostCSS Overflow Shorthand',
 			'Lets you use the `overflow` shorthand in CSS, following the CSS Overflow specification.',
 			{

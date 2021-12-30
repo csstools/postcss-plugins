@@ -25,7 +25,6 @@
   },
   "files": [
     "CHANGELOG.md",
-    "INSTALL.md",
     "LICENSE.md",
     "README.md",
     "dist",
@@ -33,7 +32,7 @@
     "browser.min.js"
   ],
   "bin": {
-    "css-prefers-color-scheme": "dist/cli.mjs"
+    "css-prefers-color-scheme": "dist/cli.cjs"
   },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js && npm run copy-browser-scripts-to-old-location",

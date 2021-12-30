@@ -6,7 +6,7 @@ export default function postcssNesting() {
 		plugin,
 		['noIsPseudoSelector'],
 		helpTextLogger(
-			'postcss-nesting',
+			'@csstools/cli postcss-nesting',
 			'PostCSS Nesting',
 			'Lets you nest style rules inside each other, following the CSS Nesting specification.',
 			{

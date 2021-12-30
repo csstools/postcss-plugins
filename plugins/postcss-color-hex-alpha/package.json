@@ -14,15 +14,11 @@
   "types": "index.d.ts",
   "files": [
     "CHANGELOG.md",
-    "INSTALL.md",
     "LICENSE.md",
     "README.md",
     "dist",
     "index.d.ts"
   ],
-  "bin": {
-    "postcss-color-hex-alpha": "dist/cli.mjs"
-  },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",

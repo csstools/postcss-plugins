@@ -6,7 +6,7 @@ export default function postcssLogical() {
 		plugin,
 		['dir', 'preserve'],
 		helpTextLogger(
-			'postcss-logical',
+			'@csstools/cli postcss-logical',
 			'PostCSS Logical',
 			'Lets you use logical, rather than physical, direction and dimension mappings in CSS, following the CSS Logical Properties and Values specification.',
 			{
