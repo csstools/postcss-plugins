@@ -14,6 +14,7 @@ export function denoJavascript() {
 			],
 			external: externalsForDeno,
 			plugins: [
+				commonjs(),
 				nodeResolve({
 					rootDir: path.join(process.cwd(), '..', '..'),
 					browser: true,
@@ -23,7 +24,6 @@ export function denoJavascript() {
 						'util-deprecate',
 					],
 				}),
-				commonjs(),
 				babel({
 					babelHelpers: 'bundled',
 					exclude: 'node_modules/**',

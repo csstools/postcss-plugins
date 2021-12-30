@@ -16,10 +16,10 @@ export function cliJavascript() {
 			],
 			external: externalsForCLI,
 			plugins: [
+				commonjs(),
 				nodeResolve({
 					rootDir: path.join(process.cwd(), '..', '..'),
 				}),
-				commonjs(),
 				babel({
 					babelHelpers: 'bundled',
 					exclude: 'node_modules/**',

@@ -36,11 +36,11 @@ export function browserJavascript() {
 			],
 			external: externalsForBrowser,
 			plugins: [
-				nodeResolve({
-					rootDir: path.join(process.cwd(), '..', '..'),
-				}),
 				commonjs({
 					include: [ 'src/browser.js', 'node_modules/**' ],
+				}),
+				nodeResolve({
+					rootDir: path.join(process.cwd(), '..', '..'),
 				}),
 				babel(babelConfig),
 				terser(),
@@ -53,11 +53,11 @@ export function browserJavascript() {
 			],
 			external: externalsForBrowser,
 			plugins: [
-				nodeResolve({
-					rootDir: path.join(process.cwd(), '..', '..'),
-				}),
 				commonjs({
 					include: [ 'src/browser.js', 'node_modules/**' ],
+				}),
+				nodeResolve({
+					rootDir: path.join(process.cwd(), '..', '..'),
 				}),
 				babel(babelConfig),
 				terser(),
