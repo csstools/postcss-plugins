@@ -45,7 +45,11 @@ export default function cssHasPseudo(document, options) {
 	document.addEventListener('input', transformObservedItems);
 
 	if (options.hover) {
-		document.addEventListener('mouseover', transformObservedItems);
+		if ('onpointerenter' in document) {
+			document.addEventListener('pointerenter', transformObservedItems, true);
+		} else {
+			document.addEventListener('mouseover', transformObservedItems, true);
+		}
 	}
 
 	// transform observed css rules
