@@ -2,6 +2,21 @@ import { strict as assert } from 'assert';
 import encodeCSS from './encode.mjs';
 
 assert.strictEqual(
+	encodeCSS(':has()'),
+	'\\:has\\(\\)',
+);
+
+assert.strictEqual(
+	encodeCSS(':has( )'),
+	'\\:has\\(\\%20\\)',
+);
+
+assert.strictEqual(
+	encodeCSS(':has(*)'),
+	'\\:has\\(\\*\\)',
+);
+
+assert.strictEqual(
 	encodeCSS(':has(:focus)'),
 	'\\:has\\(\\:focus\\)',
 );

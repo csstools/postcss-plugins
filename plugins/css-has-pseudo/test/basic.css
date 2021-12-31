@@ -79,18 +79,26 @@ body:not(:has(:focus)) {
 	order: 20;
 }
 
-.a:not(:has(> .b)) {
+.x:has(> .y *) {
 	order: 21;
 }
 
-.x:has(~ .y:has(.g .h) .i) {
+.a:not(:has(> .b)) {
 	order: 22;
 }
 
-.x:has(> .a) ~ .x:has(> .b) {
+.x:has(~ .y:has(.g .h) .i) {
 	order: 23;
+}
+
+.x:has(> .a) ~ .x:has(> .b) {
+	order: 24;
 }
 
 .x:has(> .a) .b {
 	order: 24;
+}
+
+.x:has(> .🧑🏾‍🎤) {
+	order: 25;
 }

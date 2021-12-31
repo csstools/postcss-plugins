@@ -45,6 +45,7 @@ export default function encodeCSS(value) {
 			case '(':
 			case ')':
 			case '.':
+			case '*':
 			case '~':
 				flushCurrent();
 				out += ( '\\' + char );

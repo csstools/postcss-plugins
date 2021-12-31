@@ -147,7 +147,7 @@ body:not(:has(:focus)) {
 	order: 19;
 }
 
-.x[\:has\(\%3E\%20*\)] {
+.x[\:has\(\%3E\%20\*\)] {
 	order: 20;
 }
 
@@ -155,28 +155,36 @@ body:not(:has(:focus)) {
 	order: 20;
 }
 
-.a:not([\:has\(\%3E\%20\.b\)]) {
+.x[\:has\(\%3E\%20\.y\%20\*\)] {
 	order: 21;
+}
+
+.x:has(> .y *) {
+	order: 21;
+}
+
+.a:not([\:has\(\%3E\%20\.b\)]) {
+	order: 22;
 }
 
 .a:not(:has(> .b)) {
-	order: 21;
+	order: 22;
 }
 
 .x[\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)] {
-	order: 22;
+	order: 23;
 }
 
 .x:has(~ .y:has(.g .h) .i) {
-	order: 22;
+	order: 23;
 }
 
 .x[\:has\(\%3E\%20\.a\)] ~ .x[\:has\(\%3E\%20\.b\)] {
-	order: 23;
+	order: 24;
 }
 
 .x:has(> .a) ~ .x:has(> .b) {
-	order: 23;
+	order: 24;
 }
 
 .x[\:has\(\%3E\%20\.a\)] .b {
@@ -185,4 +193,12 @@ body:not(:has(:focus)) {
 
 .x:has(> .a) .b {
 	order: 24;
+}
+
+.x[\:has\(\%3E\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\)] {
+	order: 25;
+}
+
+.x:has(> .🧑🏾‍🎤) {
+	order: 25;
 }
