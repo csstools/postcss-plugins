@@ -1,6 +1,7 @@
 /* global MutationObserver,requestAnimationFrame */
 
 import '@mrhenry/core-web/modules/~element-qsa-has.js';
+import extractEncodedSelectors from './encode/extract.mjs';
 
 export default function cssHasPseudo(document, options) {
 	if (!options) {
@@ -55,7 +56,7 @@ export default function cssHasPseudo(document, options) {
 					const nodes = [];
 
 					[].forEach.call(
-						document.querySelectorAll(item.originalSelector),
+						document.querySelectorAll(item.selector),
 						element => {
 							// memorize the node
 							nodes.push(element);
@@ -107,27 +108,17 @@ export default function cssHasPseudo(document, options) {
 			[].forEach.call(styleSheet.cssRules || [], rule => {
 				if (rule.selectorText) {
 					// decode the selector text in all browsers to:
-					// [1] = :scope, [2] = :not(:has), [3] = :has relative, [4] = :scope relative
-					const selectors = decodeURIComponent(rule.selectorText.replace(/\\(.)/g, '$1')).match(/^(.*?)\[:(not-)?has\((.+?)\)\](.*?)$/);
+					const hasSelectors = extractEncodedSelectors(rule.selectorText);
+					if (hasSelectors.length === 0) {
+						return;
+					}
 
-					if (selectors) {
-						const attributeName = ':' + (selectors[2] ? 'not-' : '') + 'has(' +
-							// encode a :has() pseudo selector as an attribute name
-							encodeURIComponent(selectors[3]).replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ',') +
-							')';
-
-						let hasQuery = ':has(' + selectors[3] + ')';
-						if (selectors[2]) {
-							hasQuery = ':not(' + hasQuery + ')';
-						}
-
+					for (let i = 0; i < hasSelectors.length; i++) {
+						const hasSelector = hasSelectors[i];
 						observedItems.push({
-							rule,
-							originalSelector: selectors[1] + hasQuery,
-							scopeSelector: selectors[1],
-							isNot: selectors[2],
-							relativeSelectors: selectors[3].split(/\s*,\s*/),
-							attributeName,
+							rule: rule,
+							selector: hasSelector,
+							attributeName: encodeURIComponent(hasSelector).replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ','), // TODO : needs unit tests.
 							nodes: [],
 						});
 					}

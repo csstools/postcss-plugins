@@ -1,156 +1,156 @@
-[\:has\(\.foo\)][\:has\(\.foo\)] {
+[\:has\(\.foo\)\:has\(\.foo\)][\:has\(\.foo\)\:has\(\.foo\)] {
 	order: 0;
 }
 
-[\:has\(\.foo\)][\:has\(\.foo\)] {
+[\:has\(\.foo\)\:has\(\.foo\)][\:has\(\.foo\)\:has\(\.foo\)] {
 	order: 1;
 }
 
-[\:has\(\.foo\)] [\:has\(\.foo\)] {
+[\:has\(\.foo\)\%20\:has\(\.foo\)][\:has\(\.foo\)\%20\:has\(\.foo\)] {
 	order: 2;
 }
 
-[\:has\(\.foo\)] [\:has\(\.foo\)] {
+[\:has\(\.foo\)\%20\:has\(\.foo\)][\:has\(\.foo\)\%20\:has\(\.foo\)] {
 	order: 3;
 }
 
-[\:has\(\.foo\)]  [\:has\(\.foo\)] {
+[\:has\(\.foo\)\%20\%20\:has\(\.foo\)][\:has\(\.foo\)\%20\%20\:has\(\.foo\)] {
 	order: 4;
 }
 
-[\:has\(\.foo\)]  [\:has\(\.foo\)] {
+[\:has\(\.foo\)\%20\%20\:has\(\.foo\)][\:has\(\.foo\)\%20\%20\:has\(\.foo\)] {
 	order: 5;
 }
 
-[\:has\(\.foo\)]+[\:has\(\.foo\)] {
+[\:has\(\.foo\)\%2B\:has\(\.foo\)][\:has\(\.foo\)\%2B\:has\(\.foo\)] {
 	order: 6;
 }
 
-[\:has\(\.foo\)]+[\:has\(\.foo\)] {
+[\:has\(\.foo\)\%2B\:has\(\.foo\)][\:has\(\.foo\)\%2B\:has\(\.foo\)] {
 	order: 7;
 }
 
-[\:has\(\.foo\)] + [\:has\(\.foo\)] {
+[\:has\(\.foo\)\%20\%2B\%20\:has\(\.foo\)][\:has\(\.foo\)\%20\%2B\%20\:has\(\.foo\)] {
 	order: 8;
 }
 
-[\:has\(\.foo\)] + [\:has\(\.foo\)] {
+[\:has\(\.foo\)\%20\%2B\%20\:has\(\.foo\)][\:has\(\.foo\)\%20\%2B\%20\:has\(\.foo\)] {
 	order: 9;
 }
 
-[\:has\(\.foo\)]~[\:has\(\.foo\)] {
+[\:has\(\.foo\)\~\:has\(\.foo\)][\:has\(\.foo\)\~\:has\(\.foo\)] {
 	order: 10;
 }
 
-[\:has\(\.foo\)]~[\:has\(\.foo\)] {
+[\:has\(\.foo\)\~\:has\(\.foo\)][\:has\(\.foo\)\~\:has\(\.foo\)] {
 	order: 11;
 }
 
-[\:has\(\.foo\)] ~ [\:has\(\.foo\)] {
+[\:has\(\.foo\)\%20\~\%20\:has\(\.foo\)][\:has\(\.foo\)\%20\~\%20\:has\(\.foo\)] {
 	order: 12;
 }
 
-[\:has\(\.foo\)] ~ [\:has\(\.foo\)] {
+[\:has\(\.foo\)\%20\~\%20\:has\(\.foo\)][\:has\(\.foo\)\%20\~\%20\:has\(\.foo\)] {
 	order: 13;
 }
 
-[\:has\(\.foo\)]>[\:has\(\.foo\)] {
+[\:has\(\.foo\)\%3E\:has\(\.foo\)][\:has\(\.foo\)\%3E\:has\(\.foo\)] {
 	order: 14;
 }
 
-[\:has\(\.foo\)]>[\:has\(\.foo\)] {
+[\:has\(\.foo\)\%3E\:has\(\.foo\)][\:has\(\.foo\)\%3E\:has\(\.foo\)] {
 	order: 15;
 }
 
-[\:has\(\.foo\)] > [\:has\(\.foo\)] {
+[\:has\(\.foo\)\%20\%3E\%20\:has\(\.foo\)][\:has\(\.foo\)\%20\%3E\%20\:has\(\.foo\)] {
 	order: 16;
 }
 
-[\:has\(\.foo\)] > [\:has\(\.foo\)] {
+[\:has\(\.foo\)\%20\%3E\%20\:has\(\.foo\)][\:has\(\.foo\)\%20\%3E\%20\:has\(\.foo\)] {
 	order: 17;
 }
 
-[\:has\(\.foo\)],[\%20\:has\(\.foo\)] {
+[\:has\(\.foo\)], [\:has\(\.foo\)] {
 	order: 18;
 }
 
-[\:has\(\.foo\)],[\%20\:has\(\.foo\)] {
+[\:has\(\.foo\)], [\:has\(\.foo\)] {
 	order: 19;
 }
 
-button[\:has\(\.foo\)] {
+[button\:has\(\.foo\)] {
 	order: 20;
 }
 
-[\:has\(\.foo\)]button {
+[\:has\(\.foo\)button] {
 	order: 21;
 }
 
-button [\:has\(\.foo\)] {
+[button\%20\:has\(\.foo\)] {
 	order: 22;
 }
 
-[\:has\(\.foo\)] button {
+[\:has\(\.foo\)\%20button] {
 	order: 23;
 }
 
-button  [\:has\(\.foo\)] {
+[button\%20\%20\:has\(\.foo\)] {
 	order: 24;
 }
 
-[\:has\(\.foo\)]  button {
+[\:has\(\.foo\)\%20\%20button] {
 	order: 25;
 }
 
-button+[\:has\(\.foo\)] {
+[button\%2B\:has\(\.foo\)] {
 	order: 26;
 }
 
-[\:has\(\.foo\)]+button {
+[\:has\(\.foo\)\%2Bbutton] {
 	order: 27;
 }
 
-button + [\:has\(\.foo\)] {
+[button\%20\%2B\%20\:has\(\.foo\)] {
 	order: 28;
 }
 
-[\:has\(\.foo\)] + button {
+[\:has\(\.foo\)\%20\%2B\%20button] {
 	order: 29;
 }
 
-button~[\:has\(\.foo\)] {
+[button\~\:has\(\.foo\)] {
 	order: 30;
 }
 
-[\:has\(\.foo\)]~button {
+[\:has\(\.foo\)\~button] {
 	order: 31;
 }
 
-button ~ [\:has\(\.foo\)] {
+[button\%20\~\%20\:has\(\.foo\)] {
 	order: 32;
 }
 
-[\:has\(\.foo\)] ~ button {
+[\:has\(\.foo\)\%20\~\%20button] {
 	order: 33;
 }
 
-button>[\:has\(\.foo\)] {
+[button\%3E\:has\(\.foo\)] {
 	order: 34;
 }
 
-[\:has\(\.foo\)]>button {
+[\:has\(\.foo\)\%3Ebutton] {
 	order: 35;
 }
 
-button > [\:has\(\.foo\)] {
+[button\%20\%3E\%20\:has\(\.foo\)] {
 	order: 36;
 }
 
-[\:has\(\.foo\)] > button {
+[\:has\(\.foo\)\%20\%3E\%20button] {
 	order: 37;
 }
 
-button,[\%20\:has\(\.foo\)] {
+button, [\:has\(\.foo\)] {
 	order: 38;
 }
 
@@ -158,79 +158,79 @@ button,[\%20\:has\(\.foo\)] {
 	order: 39;
 }
 
-.🧑🏾‍🎤[\:has\(\.foo\)] {
+[\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\:has\(\.foo\)][\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\:has\(\.foo\)] {
 	order: 40;
 }
 
-[\:has\(\.foo\)].🧑🏾‍🎤 {
+[\:has\(\.foo\)\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4][\:has\(\.foo\)\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4] {
 	order: 41;
 }
 
-.🧑🏾‍🎤 [\:has\(\.foo\)] {
+[\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%20\:has\(\.foo\)][\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%20\:has\(\.foo\)] {
 	order: 42;
 }
 
-[\:has\(\.foo\)] .🧑🏾‍🎤 {
+[\:has\(\.foo\)\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4][\:has\(\.foo\)\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4] {
 	order: 43;
 }
 
-.🧑🏾‍🎤  [\:has\(\.foo\)] {
+[\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%20\%20\:has\(\.foo\)][\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%20\%20\:has\(\.foo\)] {
 	order: 44;
 }
 
-[\:has\(\.foo\)]  .🧑🏾‍🎤 {
+[\:has\(\.foo\)\%20\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4][\:has\(\.foo\)\%20\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4] {
 	order: 45;
 }
 
-.🧑🏾‍🎤+[\:has\(\.foo\)] {
+[\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%2B\:has\(\.foo\)][\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%2B\:has\(\.foo\)] {
 	order: 46;
 }
 
-[\:has\(\.foo\)]+.🧑🏾‍🎤 {
+[\:has\(\.foo\)\%2B\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4][\:has\(\.foo\)\%2B\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4] {
 	order: 47;
 }
 
-.🧑🏾‍🎤 + [\:has\(\.foo\)] {
+[\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%20\%2B\%20\:has\(\.foo\)][\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%20\%2B\%20\:has\(\.foo\)] {
 	order: 48;
 }
 
-[\:has\(\.foo\)] + .🧑🏾‍🎤 {
+[\:has\(\.foo\)\%20\%2B\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4][\:has\(\.foo\)\%20\%2B\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4] {
 	order: 49;
 }
 
-.🧑🏾‍🎤~[\:has\(\.foo\)] {
+[\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\~\:has\(\.foo\)][\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\~\:has\(\.foo\)] {
 	order: 50;
 }
 
-[\:has\(\.foo\)]~.🧑🏾‍🎤 {
+[\:has\(\.foo\)\~\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4][\:has\(\.foo\)\~\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4] {
 	order: 51;
 }
 
-.🧑🏾‍🎤 ~ [\:has\(\.foo\)] {
+[\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%20\~\%20\:has\(\.foo\)][\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%20\~\%20\:has\(\.foo\)] {
 	order: 52;
 }
 
-[\:has\(\.foo\)] ~ .🧑🏾‍🎤 {
+[\:has\(\.foo\)\%20\~\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4][\:has\(\.foo\)\%20\~\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4] {
 	order: 53;
 }
 
-.🧑🏾‍🎤>[\:has\(\.foo\)] {
+[\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%3E\:has\(\.foo\)][\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%3E\:has\(\.foo\)] {
 	order: 54;
 }
 
-[\:has\(\.foo\)]>.🧑🏾‍🎤 {
+[\:has\(\.foo\)\%3E\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4][\:has\(\.foo\)\%3E\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4] {
 	order: 55;
 }
 
-.🧑🏾‍🎤 > [\:has\(\.foo\)] {
+[\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%20\%3E\%20\:has\(\.foo\)][\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\%20\%3E\%20\:has\(\.foo\)] {
 	order: 56;
 }
 
-[\:has\(\.foo\)] > .🧑🏾‍🎤 {
+[\:has\(\.foo\)\%20\%3E\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4][\:has\(\.foo\)\%20\%3E\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4] {
 	order: 57;
 }
 
-.🧑🏾‍🎤,[\%20\:has\(\.foo\)] {
+.🧑🏾‍🎤, [\:has\(\.foo\)] {
 	order: 58;
 }
 
@@ -238,79 +238,79 @@ button,[\%20\:has\(\.foo\)] {
 	order: 59;
 }
 
-.foo[\:has\(\.foo\)] {
+[\.foo\:has\(\.foo\)][\.foo\:has\(\.foo\)] {
 	order: 60;
 }
 
-[\:has\(\.foo\)].foo {
+[\:has\(\.foo\)\.foo][\:has\(\.foo\)\.foo] {
 	order: 61;
 }
 
-.foo [\:has\(\.foo\)] {
+[\.foo\%20\:has\(\.foo\)][\.foo\%20\:has\(\.foo\)] {
 	order: 62;
 }
 
-[\:has\(\.foo\)] .foo {
+[\:has\(\.foo\)\%20\.foo][\:has\(\.foo\)\%20\.foo] {
 	order: 63;
 }
 
-.foo  [\:has\(\.foo\)] {
+[\.foo\%20\%20\:has\(\.foo\)][\.foo\%20\%20\:has\(\.foo\)] {
 	order: 64;
 }
 
-[\:has\(\.foo\)]  .foo {
+[\:has\(\.foo\)\%20\%20\.foo][\:has\(\.foo\)\%20\%20\.foo] {
 	order: 65;
 }
 
-.foo+[\:has\(\.foo\)] {
+[\.foo\%2B\:has\(\.foo\)][\.foo\%2B\:has\(\.foo\)] {
 	order: 66;
 }
 
-[\:has\(\.foo\)]+.foo {
+[\:has\(\.foo\)\%2B\.foo][\:has\(\.foo\)\%2B\.foo] {
 	order: 67;
 }
 
-.foo + [\:has\(\.foo\)] {
+[\.foo\%20\%2B\%20\:has\(\.foo\)][\.foo\%20\%2B\%20\:has\(\.foo\)] {
 	order: 68;
 }
 
-[\:has\(\.foo\)] + .foo {
+[\:has\(\.foo\)\%20\%2B\%20\.foo][\:has\(\.foo\)\%20\%2B\%20\.foo] {
 	order: 69;
 }
 
-.foo~[\:has\(\.foo\)] {
+[\.foo\~\:has\(\.foo\)][\.foo\~\:has\(\.foo\)] {
 	order: 70;
 }
 
-[\:has\(\.foo\)]~.foo {
+[\:has\(\.foo\)\~\.foo][\:has\(\.foo\)\~\.foo] {
 	order: 71;
 }
 
-.foo ~ [\:has\(\.foo\)] {
+[\.foo\%20\~\%20\:has\(\.foo\)][\.foo\%20\~\%20\:has\(\.foo\)] {
 	order: 72;
 }
 
-[\:has\(\.foo\)] ~ .foo {
+[\:has\(\.foo\)\%20\~\%20\.foo][\:has\(\.foo\)\%20\~\%20\.foo] {
 	order: 73;
 }
 
-.foo>[\:has\(\.foo\)] {
+[\.foo\%3E\:has\(\.foo\)][\.foo\%3E\:has\(\.foo\)] {
 	order: 74;
 }
 
-[\:has\(\.foo\)]>.foo {
+[\:has\(\.foo\)\%3E\.foo][\:has\(\.foo\)\%3E\.foo] {
 	order: 75;
 }
 
-.foo > [\:has\(\.foo\)] {
+[\.foo\%20\%3E\%20\:has\(\.foo\)][\.foo\%20\%3E\%20\:has\(\.foo\)] {
 	order: 76;
 }
 
-[\:has\(\.foo\)] > .foo {
+[\:has\(\.foo\)\%20\%3E\%20\.foo][\:has\(\.foo\)\%20\%3E\%20\.foo] {
 	order: 77;
 }
 
-.foo,[\%20\:has\(\.foo\)] {
+.foo, [\:has\(\.foo\)] {
 	order: 78;
 }
 
@@ -318,79 +318,79 @@ button,[\%20\:has\(\.foo\)] {
 	order: 79;
 }
 
-#foo[\:has\(\.foo\)] {
+[\%23foo\:has\(\.foo\)] {
 	order: 80;
 }
 
-[\:has\(\.foo\)]#foo {
+[\:has\(\.foo\)\%23foo] {
 	order: 81;
 }
 
-#foo [\:has\(\.foo\)] {
+[\%23foo\%20\:has\(\.foo\)] {
 	order: 82;
 }
 
-[\:has\(\.foo\)] #foo {
+[\:has\(\.foo\)\%20\%23foo] {
 	order: 83;
 }
 
-#foo  [\:has\(\.foo\)] {
+[\%23foo\%20\%20\:has\(\.foo\)] {
 	order: 84;
 }
 
-[\:has\(\.foo\)]  #foo {
+[\:has\(\.foo\)\%20\%20\%23foo] {
 	order: 85;
 }
 
-#foo+[\:has\(\.foo\)] {
+[\%23foo\%2B\:has\(\.foo\)] {
 	order: 86;
 }
 
-[\:has\(\.foo\)]+#foo {
+[\:has\(\.foo\)\%2B\%23foo] {
 	order: 87;
 }
 
-#foo + [\:has\(\.foo\)] {
+[\%23foo\%20\%2B\%20\:has\(\.foo\)] {
 	order: 88;
 }
 
-[\:has\(\.foo\)] + #foo {
+[\:has\(\.foo\)\%20\%2B\%20\%23foo] {
 	order: 89;
 }
 
-#foo~[\:has\(\.foo\)] {
+[\%23foo\~\:has\(\.foo\)] {
 	order: 90;
 }
 
-[\:has\(\.foo\)]~#foo {
+[\:has\(\.foo\)\~\%23foo] {
 	order: 91;
 }
 
-#foo ~ [\:has\(\.foo\)] {
+[\%23foo\%20\~\%20\:has\(\.foo\)] {
 	order: 92;
 }
 
-[\:has\(\.foo\)] ~ #foo {
+[\:has\(\.foo\)\%20\~\%20\%23foo] {
 	order: 93;
 }
 
-#foo>[\:has\(\.foo\)] {
+[\%23foo\%3E\:has\(\.foo\)] {
 	order: 94;
 }
 
-[\:has\(\.foo\)]>#foo {
+[\:has\(\.foo\)\%3E\%23foo] {
 	order: 95;
 }
 
-#foo > [\:has\(\.foo\)] {
+[\%23foo\%20\%3E\%20\:has\(\.foo\)] {
 	order: 96;
 }
 
-[\:has\(\.foo\)] > #foo {
+[\:has\(\.foo\)\%20\%3E\%20\%23foo] {
 	order: 97;
 }
 
-#foo,[\%20\:has\(\.foo\)] {
+#foo, [\:has\(\.foo\)] {
 	order: 98;
 }
 
@@ -398,79 +398,79 @@ button,[\%20\:has\(\.foo\)] {
 	order: 99;
 }
 
-__foo[\:has\(\.foo\)] {
+[__foo\:has\(\.foo\)] {
 	order: 100;
 }
 
-[\:has\(\.foo\)]__foo {
+[\:has\(\.foo\)__foo] {
 	order: 101;
 }
 
-__foo [\:has\(\.foo\)] {
+[__foo\%20\:has\(\.foo\)] {
 	order: 102;
 }
 
-[\:has\(\.foo\)] __foo {
+[\:has\(\.foo\)\%20__foo] {
 	order: 103;
 }
 
-__foo  [\:has\(\.foo\)] {
+[__foo\%20\%20\:has\(\.foo\)] {
 	order: 104;
 }
 
-[\:has\(\.foo\)]  __foo {
+[\:has\(\.foo\)\%20\%20__foo] {
 	order: 105;
 }
 
-__foo+[\:has\(\.foo\)] {
+[__foo\%2B\:has\(\.foo\)] {
 	order: 106;
 }
 
-[\:has\(\.foo\)]+__foo {
+[\:has\(\.foo\)\%2B__foo] {
 	order: 107;
 }
 
-__foo + [\:has\(\.foo\)] {
+[__foo\%20\%2B\%20\:has\(\.foo\)] {
 	order: 108;
 }
 
-[\:has\(\.foo\)] + __foo {
+[\:has\(\.foo\)\%20\%2B\%20__foo] {
 	order: 109;
 }
 
-__foo~[\:has\(\.foo\)] {
+[__foo\~\:has\(\.foo\)] {
 	order: 110;
 }
 
-[\:has\(\.foo\)]~__foo {
+[\:has\(\.foo\)\~__foo] {
 	order: 111;
 }
 
-__foo ~ [\:has\(\.foo\)] {
+[__foo\%20\~\%20\:has\(\.foo\)] {
 	order: 112;
 }
 
-[\:has\(\.foo\)] ~ __foo {
+[\:has\(\.foo\)\%20\~\%20__foo] {
 	order: 113;
 }
 
-__foo>[\:has\(\.foo\)] {
+[__foo\%3E\:has\(\.foo\)] {
 	order: 114;
 }
 
-[\:has\(\.foo\)]>__foo {
+[\:has\(\.foo\)\%3E__foo] {
 	order: 115;
 }
 
-__foo > [\:has\(\.foo\)] {
+[__foo\%20\%3E\%20\:has\(\.foo\)] {
 	order: 116;
 }
 
-[\:has\(\.foo\)] > __foo {
+[\:has\(\.foo\)\%20\%3E\%20__foo] {
 	order: 117;
 }
 
-__foo,[\%20\:has\(\.foo\)] {
+__foo, [\:has\(\.foo\)] {
 	order: 118;
 }
 
@@ -478,79 +478,79 @@ __foo,[\%20\:has\(\.foo\)] {
 	order: 119;
 }
 
-:--foo[\:has\(\.foo\)] {
+[\:--foo\:has\(\.foo\)][\:--foo\:has\(\.foo\)] {
 	order: 120;
 }
 
-[\:has\(\.foo\)]:--foo {
+[\:has\(\.foo\)\:--foo][\:has\(\.foo\)\:--foo] {
 	order: 121;
 }
 
-:--foo [\:has\(\.foo\)] {
+[\:--foo\%20\:has\(\.foo\)][\:--foo\%20\:has\(\.foo\)] {
 	order: 122;
 }
 
-[\:has\(\.foo\)] :--foo {
+[\:has\(\.foo\)\%20\:--foo][\:has\(\.foo\)\%20\:--foo] {
 	order: 123;
 }
 
-:--foo  [\:has\(\.foo\)] {
+[\:--foo\%20\%20\:has\(\.foo\)][\:--foo\%20\%20\:has\(\.foo\)] {
 	order: 124;
 }
 
-[\:has\(\.foo\)]  :--foo {
+[\:has\(\.foo\)\%20\%20\:--foo][\:has\(\.foo\)\%20\%20\:--foo] {
 	order: 125;
 }
 
-:--foo+[\:has\(\.foo\)] {
+[\:--foo\%2B\:has\(\.foo\)][\:--foo\%2B\:has\(\.foo\)] {
 	order: 126;
 }
 
-[\:has\(\.foo\)]+:--foo {
+[\:has\(\.foo\)\%2B\:--foo][\:has\(\.foo\)\%2B\:--foo] {
 	order: 127;
 }
 
-:--foo + [\:has\(\.foo\)] {
+[\:--foo\%20\%2B\%20\:has\(\.foo\)][\:--foo\%20\%2B\%20\:has\(\.foo\)] {
 	order: 128;
 }
 
-[\:has\(\.foo\)] + :--foo {
+[\:has\(\.foo\)\%20\%2B\%20\:--foo][\:has\(\.foo\)\%20\%2B\%20\:--foo] {
 	order: 129;
 }
 
-:--foo~[\:has\(\.foo\)] {
+[\:--foo\~\:has\(\.foo\)][\:--foo\~\:has\(\.foo\)] {
 	order: 130;
 }
 
-[\:has\(\.foo\)]~:--foo {
+[\:has\(\.foo\)\~\:--foo][\:has\(\.foo\)\~\:--foo] {
 	order: 131;
 }
 
-:--foo ~ [\:has\(\.foo\)] {
+[\:--foo\%20\~\%20\:has\(\.foo\)][\:--foo\%20\~\%20\:has\(\.foo\)] {
 	order: 132;
 }
 
-[\:has\(\.foo\)] ~ :--foo {
+[\:has\(\.foo\)\%20\~\%20\:--foo][\:has\(\.foo\)\%20\~\%20\:--foo] {
 	order: 133;
 }
 
-:--foo>[\:has\(\.foo\)] {
+[\:--foo\%3E\:has\(\.foo\)][\:--foo\%3E\:has\(\.foo\)] {
 	order: 134;
 }
 
-[\:has\(\.foo\)]>:--foo {
+[\:has\(\.foo\)\%3E\:--foo][\:has\(\.foo\)\%3E\:--foo] {
 	order: 135;
 }
 
-:--foo > [\:has\(\.foo\)] {
+[\:--foo\%20\%3E\%20\:has\(\.foo\)][\:--foo\%20\%3E\%20\:has\(\.foo\)] {
 	order: 136;
 }
 
-[\:has\(\.foo\)] > :--foo {
+[\:has\(\.foo\)\%20\%3E\%20\:--foo][\:has\(\.foo\)\%20\%3E\%20\:--foo] {
 	order: 137;
 }
 
-:--foo,[\%20\:has\(\.foo\)] {
+:--foo, [\:has\(\.foo\)] {
 	order: 138;
 }
 
@@ -558,79 +558,79 @@ __foo,[\%20\:has\(\.foo\)] {
 	order: 139;
 }
 
-[foo="baz"][\:has\(\.foo\)] {
+[\[foo\%3D\%22baz\%22\]\:has\(\.foo\)][\[foo\%3D\%22baz\%22\]\:has\(\.foo\)] {
 	order: 140;
 }
 
-[\:has\(\.foo\)][foo="baz"] {
+[\:has\(\.foo\)\[foo\%3D\%22baz\%22\]][\:has\(\.foo\)\[foo\%3D\%22baz\%22\]] {
 	order: 141;
 }
 
-[foo="baz"] [\:has\(\.foo\)] {
+[\[foo\%3D\%22baz\%22\]\%20\:has\(\.foo\)][\[foo\%3D\%22baz\%22\]\%20\:has\(\.foo\)] {
 	order: 142;
 }
 
-[\:has\(\.foo\)] [foo="baz"] {
+[\:has\(\.foo\)\%20\[foo\%3D\%22baz\%22\]][\:has\(\.foo\)\%20\[foo\%3D\%22baz\%22\]] {
 	order: 143;
 }
 
-[foo="baz"]  [\:has\(\.foo\)] {
+[\[foo\%3D\%22baz\%22\]\%20\%20\:has\(\.foo\)][\[foo\%3D\%22baz\%22\]\%20\%20\:has\(\.foo\)] {
 	order: 144;
 }
 
-[\:has\(\.foo\)]  [foo="baz"] {
+[\:has\(\.foo\)\%20\%20\[foo\%3D\%22baz\%22\]][\:has\(\.foo\)\%20\%20\[foo\%3D\%22baz\%22\]] {
 	order: 145;
 }
 
-[foo="baz"]+[\:has\(\.foo\)] {
+[\[foo\%3D\%22baz\%22\]\%2B\:has\(\.foo\)][\[foo\%3D\%22baz\%22\]\%2B\:has\(\.foo\)] {
 	order: 146;
 }
 
-[\:has\(\.foo\)]+[foo="baz"] {
+[\:has\(\.foo\)\%2B\[foo\%3D\%22baz\%22\]][\:has\(\.foo\)\%2B\[foo\%3D\%22baz\%22\]] {
 	order: 147;
 }
 
-[foo="baz"] + [\:has\(\.foo\)] {
+[\[foo\%3D\%22baz\%22\]\%20\%2B\%20\:has\(\.foo\)][\[foo\%3D\%22baz\%22\]\%20\%2B\%20\:has\(\.foo\)] {
 	order: 148;
 }
 
-[\:has\(\.foo\)] + [foo="baz"] {
+[\:has\(\.foo\)\%20\%2B\%20\[foo\%3D\%22baz\%22\]][\:has\(\.foo\)\%20\%2B\%20\[foo\%3D\%22baz\%22\]] {
 	order: 149;
 }
 
-[foo="baz"]~[\:has\(\.foo\)] {
+[\[foo\%3D\%22baz\%22\]\~\:has\(\.foo\)][\[foo\%3D\%22baz\%22\]\~\:has\(\.foo\)] {
 	order: 150;
 }
 
-[\:has\(\.foo\)]~[foo="baz"] {
+[\:has\(\.foo\)\~\[foo\%3D\%22baz\%22\]][\:has\(\.foo\)\~\[foo\%3D\%22baz\%22\]] {
 	order: 151;
 }
 
-[foo="baz"] ~ [\:has\(\.foo\)] {
+[\[foo\%3D\%22baz\%22\]\%20\~\%20\:has\(\.foo\)][\[foo\%3D\%22baz\%22\]\%20\~\%20\:has\(\.foo\)] {
 	order: 152;
 }
 
-[\:has\(\.foo\)] ~ [foo="baz"] {
+[\:has\(\.foo\)\%20\~\%20\[foo\%3D\%22baz\%22\]][\:has\(\.foo\)\%20\~\%20\[foo\%3D\%22baz\%22\]] {
 	order: 153;
 }
 
-[foo="baz"]>[\:has\(\.foo\)] {
+[\[foo\%3D\%22baz\%22\]\%3E\:has\(\.foo\)][\[foo\%3D\%22baz\%22\]\%3E\:has\(\.foo\)] {
 	order: 154;
 }
 
-[\:has\(\.foo\)]>[foo="baz"] {
+[\:has\(\.foo\)\%3E\[foo\%3D\%22baz\%22\]][\:has\(\.foo\)\%3E\[foo\%3D\%22baz\%22\]] {
 	order: 155;
 }
 
-[foo="baz"] > [\:has\(\.foo\)] {
+[\[foo\%3D\%22baz\%22\]\%20\%3E\%20\:has\(\.foo\)][\[foo\%3D\%22baz\%22\]\%20\%3E\%20\:has\(\.foo\)] {
 	order: 156;
 }
 
-[\:has\(\.foo\)] > [foo="baz"] {
+[\:has\(\.foo\)\%20\%3E\%20\[foo\%3D\%22baz\%22\]][\:has\(\.foo\)\%20\%3E\%20\[foo\%3D\%22baz\%22\]] {
 	order: 157;
 }
 
-[foo="baz"],[\%20\:has\(\.foo\)] {
+[foo="baz"], [\:has\(\.foo\)] {
 	order: 158;
 }
 
@@ -638,79 +638,79 @@ __foo,[\%20\:has\(\.foo\)] {
 	order: 159;
 }
 
-*[\:has\(\.foo\)] {
+[\*\:has\(\.foo\)] {
 	order: 160;
 }
 
-[\:has\(\.foo\)]* {
+[\:has\(\.foo\)\*] {
 	order: 161;
 }
 
-* [\:has\(\.foo\)] {
+[\*\%20\:has\(\.foo\)] {
 	order: 162;
 }
 
-[\:has\(\.foo\)] * {
+[\:has\(\.foo\)\%20\*] {
 	order: 163;
 }
 
-*  [\:has\(\.foo\)] {
+[\*\%20\%20\:has\(\.foo\)] {
 	order: 164;
 }
 
-[\:has\(\.foo\)]  * {
+[\:has\(\.foo\)\%20\%20\*] {
 	order: 165;
 }
 
-*+[\:has\(\.foo\)] {
+[\*\%2B\:has\(\.foo\)] {
 	order: 166;
 }
 
-[\:has\(\.foo\)]+* {
+[\:has\(\.foo\)\%2B\*] {
 	order: 167;
 }
 
-* + [\:has\(\.foo\)] {
+[\*\%20\%2B\%20\:has\(\.foo\)] {
 	order: 168;
 }
 
-[\:has\(\.foo\)] + * {
+[\:has\(\.foo\)\%20\%2B\%20\*] {
 	order: 169;
 }
 
-*~[\:has\(\.foo\)] {
+[\*\~\:has\(\.foo\)] {
 	order: 170;
 }
 
-[\:has\(\.foo\)]~* {
+[\:has\(\.foo\)\~\*] {
 	order: 171;
 }
 
-* ~ [\:has\(\.foo\)] {
+[\*\%20\~\%20\:has\(\.foo\)] {
 	order: 172;
 }
 
-[\:has\(\.foo\)] ~ * {
+[\:has\(\.foo\)\%20\~\%20\*] {
 	order: 173;
 }
 
-*>[\:has\(\.foo\)] {
+[\*\%3E\:has\(\.foo\)] {
 	order: 174;
 }
 
-[\:has\(\.foo\)]>* {
+[\:has\(\.foo\)\%3E\*] {
 	order: 175;
 }
 
-* > [\:has\(\.foo\)] {
+[\*\%20\%3E\%20\:has\(\.foo\)] {
 	order: 176;
 }
 
-[\:has\(\.foo\)] > * {
+[\:has\(\.foo\)\%20\%3E\%20\*] {
 	order: 177;
 }
 
-*,[\%20\:has\(\.foo\)] {
+*, [\:has\(\.foo\)] {
 	order: 178;
 }
 
@@ -718,79 +718,79 @@ __foo,[\%20\:has\(\.foo\)] {
 	order: 179;
 }
 
-:hover[\:has\(\.foo\)] {
+[\:hover\:has\(\.foo\)][\:hover\:has\(\.foo\)] {
 	order: 180;
 }
 
-[\:has\(\.foo\)]:hover {
+[\:has\(\.foo\)\:hover][\:has\(\.foo\)\:hover] {
 	order: 181;
 }
 
-:hover [\:has\(\.foo\)] {
+[\:hover\%20\:has\(\.foo\)][\:hover\%20\:has\(\.foo\)] {
 	order: 182;
 }
 
-[\:has\(\.foo\)] :hover {
+[\:has\(\.foo\)\%20\:hover][\:has\(\.foo\)\%20\:hover] {
 	order: 183;
 }
 
-:hover  [\:has\(\.foo\)] {
+[\:hover\%20\%20\:has\(\.foo\)][\:hover\%20\%20\:has\(\.foo\)] {
 	order: 184;
 }
 
-[\:has\(\.foo\)]  :hover {
+[\:has\(\.foo\)\%20\%20\:hover][\:has\(\.foo\)\%20\%20\:hover] {
 	order: 185;
 }
 
-:hover+[\:has\(\.foo\)] {
+[\:hover\%2B\:has\(\.foo\)][\:hover\%2B\:has\(\.foo\)] {
 	order: 186;
 }
 
-[\:has\(\.foo\)]+:hover {
+[\:has\(\.foo\)\%2B\:hover][\:has\(\.foo\)\%2B\:hover] {
 	order: 187;
 }
 
-:hover + [\:has\(\.foo\)] {
+[\:hover\%20\%2B\%20\:has\(\.foo\)][\:hover\%20\%2B\%20\:has\(\.foo\)] {
 	order: 188;
 }
 
-[\:has\(\.foo\)] + :hover {
+[\:has\(\.foo\)\%20\%2B\%20\:hover][\:has\(\.foo\)\%20\%2B\%20\:hover] {
 	order: 189;
 }
 
-:hover~[\:has\(\.foo\)] {
+[\:hover\~\:has\(\.foo\)][\:hover\~\:has\(\.foo\)] {
 	order: 190;
 }
 
-[\:has\(\.foo\)]~:hover {
+[\:has\(\.foo\)\~\:hover][\:has\(\.foo\)\~\:hover] {
 	order: 191;
 }
 
-:hover ~ [\:has\(\.foo\)] {
+[\:hover\%20\~\%20\:has\(\.foo\)][\:hover\%20\~\%20\:has\(\.foo\)] {
 	order: 192;
 }
 
-[\:has\(\.foo\)] ~ :hover {
+[\:has\(\.foo\)\%20\~\%20\:hover][\:has\(\.foo\)\%20\~\%20\:hover] {
 	order: 193;
 }
 
-:hover>[\:has\(\.foo\)] {
+[\:hover\%3E\:has\(\.foo\)][\:hover\%3E\:has\(\.foo\)] {
 	order: 194;
 }
 
-[\:has\(\.foo\)]>:hover {
+[\:has\(\.foo\)\%3E\:hover][\:has\(\.foo\)\%3E\:hover] {
 	order: 195;
 }
 
-:hover > [\:has\(\.foo\)] {
+[\:hover\%20\%3E\%20\:has\(\.foo\)][\:hover\%20\%3E\%20\:has\(\.foo\)] {
 	order: 196;
 }
 
-[\:has\(\.foo\)] > :hover {
+[\:has\(\.foo\)\%20\%3E\%20\:hover][\:has\(\.foo\)\%20\%3E\%20\:hover] {
 	order: 197;
 }
 
-:hover,[\%20\:has\(\.foo\)] {
+:hover, [\:has\(\.foo\)] {
 	order: 198;
 }
 
@@ -798,79 +798,79 @@ __foo,[\%20\:has\(\.foo\)] {
 	order: 199;
 }
 
-::before[\:has\(\.foo\)] {
+[\:\:before\:has\(\.foo\)] {
 	order: 200;
 }
 
-[\:has\(\.foo\)]::before {
+[\:has\(\.foo\)\:\:before] {
 	order: 201;
 }
 
-::before [\:has\(\.foo\)] {
+[\:\:before\%20\:has\(\.foo\)] {
 	order: 202;
 }
 
-[\:has\(\.foo\)] ::before {
+[\:has\(\.foo\)\%20\:\:before] {
 	order: 203;
 }
 
-::before  [\:has\(\.foo\)] {
+[\:\:before\%20\%20\:has\(\.foo\)] {
 	order: 204;
 }
 
-[\:has\(\.foo\)]  ::before {
+[\:has\(\.foo\)\%20\%20\:\:before] {
 	order: 205;
 }
 
-::before+[\:has\(\.foo\)] {
+[\:\:before\%2B\:has\(\.foo\)] {
 	order: 206;
 }
 
-[\:has\(\.foo\)]+::before {
+[\:has\(\.foo\)\%2B\:\:before] {
 	order: 207;
 }
 
-::before + [\:has\(\.foo\)] {
+[\:\:before\%20\%2B\%20\:has\(\.foo\)] {
 	order: 208;
 }
 
-[\:has\(\.foo\)] + ::before {
+[\:has\(\.foo\)\%20\%2B\%20\:\:before] {
 	order: 209;
 }
 
-::before~[\:has\(\.foo\)] {
+[\:\:before\~\:has\(\.foo\)] {
 	order: 210;
 }
 
-[\:has\(\.foo\)]~::before {
+[\:has\(\.foo\)\~\:\:before] {
 	order: 211;
 }
 
-::before ~ [\:has\(\.foo\)] {
+[\:\:before\%20\~\%20\:has\(\.foo\)] {
 	order: 212;
 }
 
-[\:has\(\.foo\)] ~ ::before {
+[\:has\(\.foo\)\%20\~\%20\:\:before] {
 	order: 213;
 }
 
-::before>[\:has\(\.foo\)] {
+[\:\:before\%3E\:has\(\.foo\)] {
 	order: 214;
 }
 
-[\:has\(\.foo\)]>::before {
+[\:has\(\.foo\)\%3E\:\:before] {
 	order: 215;
 }
 
-::before > [\:has\(\.foo\)] {
+[\:\:before\%20\%3E\%20\:has\(\.foo\)] {
 	order: 216;
 }
 
-[\:has\(\.foo\)] > ::before {
+[\:has\(\.foo\)\%20\%3E\%20\:\:before] {
 	order: 217;
 }
 
-::before,[\%20\:has\(\.foo\)] {
+::before, [\:has\(\.foo\)] {
 	order: 218;
 }
 
@@ -886,7 +886,7 @@ foo[baz=":has(.foo)"] {
 	order: 221;
 }
 
-:not([\:has\(\.foo\)]) {
+[\:not\(\:has\(\.foo\)\)] {
 	order: 222;
 }
 
@@ -894,11 +894,11 @@ foo[baz=":has(.foo)"] {
 	order: 223;
 }
 
-:--[\:has\(\.foo\)] {
+[\:--\:has\(\.foo\)][\:--\:has\(\.foo\)] {
 	order: 224;
 }
 
-__[\:has\(\.foo\)] {
+[__\:has\(\.foo\)] {
 	order: 225;
 }
 

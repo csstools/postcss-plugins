@@ -1,7 +1,9 @@
 {
   "$schema": "../../node_modules/@stryker-mutator/core/schema/stryker-schema.json",
   "mutate": [
-    "src/encode/encode.mjs"
+    "src/encode/decode.mjs",
+    "src/encode/encode.mjs",
+    "src/encode/extract.mjs"
   ],
   "testRunner": "command",
   "coverageAnalysis": "perTest",

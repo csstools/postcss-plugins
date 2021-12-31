@@ -102,3 +102,19 @@ body:not(:has(:focus)) {
 .x:has(> .🧑🏾‍🎤) {
 	order: 25;
 }
+
+.x:has(> .a), .x:has(> .b) {
+	order: 26;
+}
+
+.x:has(> .a) ~ .x:has(> .b) {
+	order: 27;
+}
+
+.x:has(> .a), .b {
+	order: 28;
+}
+
+.a, .x:has(> .b) {
+	order: 29;
+}

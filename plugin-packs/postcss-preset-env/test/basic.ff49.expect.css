@@ -162,7 +162,7 @@
 	background-color: yellow;
 }
 
-.test-has-pseudo-class[\:has\(\.inner-class\)] {
+[\.test-has-pseudo-class\:has\(\.inner-class\)][\.test-has-pseudo-class\:has\(\.inner-class\)] {
 	background-color: yellow;
 }
 
