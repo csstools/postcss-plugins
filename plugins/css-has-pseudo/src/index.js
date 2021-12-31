@@ -1,4 +1,5 @@
 import parser from 'postcss-selector-parser';
+import encodeCSS from './encode/encode.mjs';
 
 const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 	opts = typeof opts === 'object' && opts || defaultOptions;
@@ -8,7 +9,7 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 
 	return {
 		postcssPlugin: 'css-has-pseudo',
-		Rule: (rule, { result }) => {
+		RuleExit: (rule, { result }) => {
 			if (!rule.selector.includes(':has(')) {
 				return;
 			}
@@ -20,7 +21,7 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 					selectors.walkPseudos(selector => {
 						if (selector.value === ':has' && selector.nodes) {
 							const attribute = parser.attribute({
-								attribute: getEscapedCss(String(selector)),
+								attribute: encodeCSS(String(selector)),
 							});
 
 							selector.replaceWith(attribute);
@@ -55,95 +56,5 @@ creator.postcss = true;
 
 /** Default options. */
 const defaultOptions = { preserve: true };
-
-/** Returns the string as an escaped CSS identifier. */
-const getEscapedCss = (/** @type {string} */ value) => {
-	let out = '';
-	let current = '';
-
-	const flushCurrent = () => {
-		if (current) {
-			const encoded = encodeURIComponent(current);
-			let encodedCurrent = '';
-			let encodedOut = '';
-
-			const flushEncoded = () => {
-				if (encodedCurrent) {
-					encodedOut += encodedCurrent;
-					encodedCurrent = '';
-				}
-			};
-
-			let encodedEscaped = false;
-			for (let i = 0; i < encoded.length; i++) {
-				const char = encoded[i];
-
-				if (encodedEscaped) {
-					encodedCurrent += char;
-					encodedEscaped = false;
-					continue;
-				}
-
-				switch (char) {
-					case '%':
-						flushEncoded();
-						encodedOut += ( '\\' + char );
-						continue;
-					case '\\':
-						encodedCurrent += char;
-						encodedEscaped = true;
-						continue;
-
-					default:
-						encodedCurrent += char;
-						continue;
-				}
-			}
-
-			flushEncoded();
-			out += encodedOut;
-			current = '';
-		}
-	};
-
-	let escaped = false;
-	for (let i = 0; i < value.length; i++) {
-		const char = value[i];
-
-		if (escaped) {
-			current += char;
-			escaped = false;
-			continue;
-		}
-
-		switch (char) {
-			case ':':
-			case '[':
-			case ']':
-			case ',':
-			case '(':
-			case ')':
-			case '.':
-			case '~':
-				flushCurrent();
-				out += ( '\\' + char );
-				continue;
-			case '\\':
-				current += char;
-				if (![':', '[', ']', ',', '(', ')', '.', '~'].includes(value[i + 1] || '')) {
-					escaped = true;
-				}
-				continue;
-
-			default:
-				current += char;
-				continue;
-		}
-	}
-
-	flushCurrent();
-
-	return out;
-};
 
 export default creator;

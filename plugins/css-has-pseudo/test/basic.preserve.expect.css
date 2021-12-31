@@ -84,5 +84,13 @@ body:not([\:has\(\:focus\)]) {
 }
 
 .x[\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)] {
-	outline: 2px dashed yellow;
+	order: 22;
+}
+
+.x[\:has\(\%3E\%20\.a\)] ~ .x[\:has\(\%3E\%20\.b\)] {
+	order: 23;
+}
+
+.x[\:has\(\%3E\%20\.a\)] .b {
+	order: 24;
 }

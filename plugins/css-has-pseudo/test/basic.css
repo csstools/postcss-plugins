@@ -84,5 +84,13 @@ body:not(:has(:focus)) {
 }
 
 .x:has(~ .y:has(.g .h) .i) {
-	outline: 2px dashed yellow;
+	order: 22;
+}
+
+.x:has(> .a) ~ .x:has(> .b) {
+	order: 23;
+}
+
+.x:has(> .a) .b {
+	order: 24;
 }
