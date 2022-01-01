@@ -1,5 +1,3 @@
-$font: system-ui;
-
 .test-variable {
-	font-family: $font;
+	font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
 }
