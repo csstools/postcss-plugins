@@ -3,11 +3,12 @@
   - plugins/postcss-base-plugin/**
   - rollup/**
 
-"packages/postcss-plugins-values-parser":
-  - packages/postcss-plugins-values-parser/**
-
 "plugin-packs/postcss-preset-env":
   - plugin-packs/postcss-preset-env/**
+
+"cli":
+  - cli/csstools-cli/**
+  - packages/base-cli/**
 
 "plugins/css-all-property":
   - plugins/css-all-property/**
