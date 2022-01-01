@@ -218,5 +218,15 @@ module.exports = {
 				}
 			});
 		}
+	},
+	"unknown-feature": {
+		message: 'warns on unknown features',
+		warnings: 2,
+		options: {
+			features: {
+				"custom-media": true,
+				"postcss-logica": true,
+			}
+		},
 	}
 };
