@@ -11,7 +11,8 @@
   "workspaces": [
     "packages/*",
     "plugins/*",
-    "plugin-packs/*"
+    "plugin-packs/*",
+    "cli/*"
   ],
   "devDependencies": {
     "@babel/core": "^7.15.8",
