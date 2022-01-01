@@ -29,8 +29,50 @@ import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
 import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
 import postcssSelectorNot from 'postcss-selector-not';
 
+export const packageNamesToIds = {
+	'css-blank-pseudo': 'blank-pseudo-class',
+	'css-has-pseudo': 'has-pseudo-class',
+	'css-prefers-color-scheme': 'prefers-color-scheme-query',
+	'postcss-attribute-case-insensitive': 'case-insensitive-attributes',
+	'postcss-color-functional-notation': 'color-functional-notation',
+	'postcss-color-hex-alpha': 'hexadecimal-alpha-notation',
+	'postcss-color-rebeccapurple': 'rebeccapurple-color',
+	'postcss-custom-media': 'custom-media-queries',
+	'postcss-custom-properties': 'custom-properties',
+	'postcss-custom-selectors': 'custom-selectors',
+	'postcss-dir-pseudo-class': 'dir-pseudo-class',
+	'postcss-double-position-gradients': 'double-position-gradients',
+	'postcss-env-function': 'environment-variables',
+	'postcss-focus-visible': 'focus-visible-pseudo-class',
+	'postcss-focus-within': 'focus-within-pseudo-class',
+	'postcss-font-variant': 'font-variant-property',
+	'postcss-gap-properties': 'gap-properties',
+	'postcss-image-set-function': 'image-set-function',
+	'postcss-initial': 'all-property',
+	'postcss-lab-function': 'lab-function',
+	'postcss-logical': 'logical-properties-and-values',
+	'postcss-media-minmax': 'media-query-ranges',
+	'postcss-nesting': 'nesting-rules',
+	'postcss-overflow-shorthand': 'overflow-property',
+	'postcss-page-break': 'break-properties',
+	'postcss-place': 'place-properties',
+	'postcss-pseudo-class-any-link': 'any-link-pseudo-class',
+	'postcss-replace-overflow-wrap': 'overflow-wrap-property',
+	'postcss-selector-not': 'not-pseudo-class',
+	'postcss-system-ui-font-family': 'system-ui-font-family',
+};
+
+export const idsToPackageNames = (() => {
+	const out = {};
+	for (const [packageName, id] of Object.entries(packageNamesToIds)) {
+		out[id] = packageName;
+	}
+
+	return out;
+})();
+
 // postcss plugins ordered by id
-export default {
+export const pluginsById = {
 	'all-property': postcssInitial,
 	'any-link-pseudo-class': postcssPseudoClassAnyLink,
 	'blank-pseudo-class': postcssBlankPseudo,
