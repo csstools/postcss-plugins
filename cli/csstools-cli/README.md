@@ -117,7 +117,7 @@ Plugin Options:
 
 Copy this bit of CSS to have it in your clipboard.
 
-```css
+```pcss
 a, b {
   color: red;
 
@@ -138,13 +138,52 @@ pbpaste | npx -y @csstools/csstools-cli postcss-nesting --no-map
 
 Output :
 
-```css
+```pcss
 a, b {
   color: red
 }
 a c, b c, a d, b d {
     color: white;
   }
+
+```
+
+
+Copy this bit of CSS to have it in your clipboard.
+
+```pcss
+.banner {
+  color: #222222;
+  inset: logical 0 5px 10px;
+  padding-inline: 20px 40px;
+  resize: block;
+  transition: color 200ms;
+}
+
+```
+
+Run :
+
+```bash
+pbpaste | npx -y postcss-logical --no-map --plugin-options '{ "dir": "rtl" }'
+```
+
+_note the single quotes around the JSON object with plugin options._
+
+Output :
+
+```pcss
+.banner {
+  color: #222222;
+  top: 0;
+  left: 5px;
+  bottom: 10px;
+  right: 5px;
+  padding-right: 20px;
+  padding-left: 40px;
+  resize: vertical;
+  transition: color 200ms;
+}
 
 ```
 
