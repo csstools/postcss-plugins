@@ -1,5 +1,10 @@
 # Changes to PostCSS Nesting
 
+### 10.1.1 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
 ### 10.1.0 (December 22, 2021)
 
 - Added: `noIsPseudoSelector` plugin option.
