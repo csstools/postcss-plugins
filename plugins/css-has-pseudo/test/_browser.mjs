@@ -1,6 +1,6 @@
-const puppeteer = require('puppeteer');
-const http = require('http');
-const fsp = require('fs').promises;
+import puppeteer from 'puppeteer';
+import http from 'http';
+import { promises as fsp } from 'fs';
 
 (async () => {
 	const requestListener = async function (req, res) {

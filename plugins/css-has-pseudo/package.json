@@ -41,7 +41,7 @@
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
     "test": "postcss-tape --ci && npm run test:unit && npm run test:exports",
-    "test:browser": "node ./test/_browser.cjs",
+    "test:browser": "node ./test/_browser.mjs",
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
     "test:unit": "node ./src/encode/test.mjs"
   },

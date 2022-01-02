@@ -1,39 +1,206 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title>CSS Selectors Invalidation: :has() invalidation basic</title>
+<title></title>
 <link rel="help" href="https://drafts.csswg.org/selectors/#relational">
 <link rel="stylesheet" href="/test/browser.expect.css">
 <script src="/dist/browser-global.js"></script>
 <script>cssHasPseudo(document, { observedAttributes: ['attrname'] });</script>
-<style>
 
-</style>
-<main id=main>
-	<div id=div_subject class="subject">
-		<div id=div_child>
-			<div id=div_grandchild></div>
-		</div>
-	</div>
-</main>
+<div id="fixture"></div>
 <script type="module">
+	function rafP(callback) {
+		return new Promise((resolve) => {
+			requestAnimationFrame(() => {
+				requestAnimationFrame(() => {
+					callback();
+					resolve();
+				});
+			});
+		});
+	}
+
 	self.runTest = async function runTest() {
+		const invalidationResult = await testInvalidation();
+		const adjacentPositionResult = await testAdjacentPosition();
+
+		return invalidationResult && adjacentPositionResult;
+	}
+
+	async function testAdjacentPosition() {
+		// https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html
+
+		fixture.innerHTML = `
+			<main id=main>
+				<div id=previous_sibling>
+					<div id=previous_sibling_child>
+						<div id=previous_sibling_descendant></div>
+					</div>
+				</div>
+				<div id=subject></div>
+				<div id=next_sibling>
+					<div id=next_sibling_child>
+						<div id=next_sibling_descendant></div>
+					</div>
+				</div>
+			</main>
+		`;
+
+		const grey = 'rgb(128, 128, 128)';
+		const red = 'rgb(255, 0, 0)';
+		const green = 'rgb(0, 128, 0)';
+		const blue = 'rgb(0, 0, 255)';
+		const yellow = 'rgb(255, 255, 0)';
+		const purple = 'rgb(128, 0, 128)';
+		const pink = 'rgb(255, 192, 203)';
+
+		function testColor(test_name, color) {
+			var actual = getComputedStyle(subject).backgroundColor;
+			if (actual !== color) {
+				throw new Error(test_name + ': expected ' + color + ' but got ' + actual);
+			}
+		}
+
+		async function testClassChange(element, expectedColor) {
+			element.classList.add('test');
+			await rafP(() => {
+				testColor(`add .test to ${element.id}`, expectedColor);
+			});
+			element.classList.remove('test');
+			await rafP(() => {
+				testColor(`remove .test from ${element.id}`, grey);
+			});
+		}
+
+		async function testElementInsertionBefore(beforeElement, expectedColor) {
+			const newElement = document.createElement('div');
+			newElement.classList.add('test')
+
+			beforeElement.before(newElement);
+			await rafP(() => {
+				testColor(`insert element div.test before ${beforeElement.id}`, expectedColor);
+			});
+
+			newElement.remove();
+			await rafP(() => {
+				testColor(`remove element div.test before ${beforeElement.id}`, grey);
+			});
+		}
+
+		async function testElementInsertionAfter(afterElement, expectedColor) {
+			const newElement = document.createElement('div');
+			newElement.classList.add('test')
+
+			afterElement.after(newElement);
+			await rafP(() => {
+				testColor(`insert element div.test after ${afterElement.id}`, expectedColor);
+			});
+
+			newElement.remove();
+			await rafP(() => {
+				testColor(`remove element div.test after ${afterElement.id}`, grey);
+			});
+		}
+
+		async function testTreeInsertionBefore(beforeElement, expectedColor) {
+			const newElement = document.createElement('div');
+			const newChild = document.createElement('div');
+			newChild.classList.add('test');
+			newElement.appendChild(newChild);
+
+			beforeElement.before(newElement);
+			await rafP(() => {
+				testColor(`insert tree div>div.test before ${beforeElement.id}`, expectedColor);
+			});
+
+			newElement.remove();
+			await rafP(() => {
+				testColor(`remove tree div>div.test before ${beforeElement.id}`, grey);
+			});
+		}
+
+		async function testTreeInsertionAfter(afterElement, expectedColor) {
+			const newElement = document.createElement('div');
+			const newChild = document.createElement('div');
+			newChild.classList.add('test');
+			newElement.appendChild(newChild);
+
+			afterElement.after(newElement);
+			await rafP(() => {
+				testColor(`insert tree div>div.test after ${afterElement.id}`, expectedColor);
+			});
+
+			newElement.remove();
+			await rafP(() => {
+				testColor(`remove tree div>div.test after ${afterElement.id}`, grey);
+			});
+		}
+
+		await rafP(() => {
+			testColor('Initial color', grey);
+		});
+
+		await testClassChange(previous_sibling, grey);
+		await testClassChange(previous_sibling_child, green);
+		await testClassChange(previous_sibling_descendant, red);
+		await testClassChange(subject, blue);
+		await testClassChange(next_sibling, yellow);
+		await testClassChange(next_sibling_child, purple);
+		await testClassChange(next_sibling_descendant, purple);
+
+		await testElementInsertionBefore(previous_sibling, grey);
+		await testElementInsertionBefore(previous_sibling_child, green);
+		await testElementInsertionBefore(previous_sibling_descendant, red);
+		await testElementInsertionBefore(subject, grey);
+		await testElementInsertionBefore(next_sibling, yellow);
+		await testElementInsertionBefore(next_sibling_child, purple);
+		await testElementInsertionBefore(next_sibling_descendant, purple);
+
+		await testElementInsertionAfter(previous_sibling, grey);
+		await testElementInsertionAfter(previous_sibling_child, green);
+		await testElementInsertionAfter(previous_sibling_descendant, red);
+		await testElementInsertionAfter(subject, yellow);
+		await testElementInsertionAfter(next_sibling, yellow);
+		await testElementInsertionAfter(next_sibling_child, purple);
+		await testElementInsertionAfter(next_sibling_descendant, purple);
+
+		await testTreeInsertionBefore(previous_sibling, grey);
+		await testTreeInsertionBefore(previous_sibling_child, red);
+		await testTreeInsertionBefore(previous_sibling_descendant, red);
+		await testTreeInsertionBefore(subject, green);
+		await testTreeInsertionBefore(next_sibling, purple);
+		await testTreeInsertionBefore(next_sibling_child, purple);
+		await testTreeInsertionBefore(next_sibling_descendant, purple);
+
+		await testTreeInsertionAfter(previous_sibling, green);
+		await testTreeInsertionAfter(previous_sibling_child, red);
+		await testTreeInsertionAfter(previous_sibling_descendant, red);
+		await testTreeInsertionAfter(subject, purple);
+		await testTreeInsertionAfter(next_sibling, purple);
+		await testTreeInsertionAfter(next_sibling_child, purple);
+		await testTreeInsertionAfter(next_sibling_descendant, purple);
+
+		return true;
+	}
+
+	async function testInvalidation() {
+		// https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/attribute-or-elemental-selectors-in-has.html
+
+		fixture.innerHTML = `
+			<main id=main>
+				<div id=div_subject class="subject">
+					<div id=div_child>
+						<div id=div_grandchild></div>
+					</div>
+				</div>
+			</main>
+		`;
+
 		var grey = 'rgb(128, 128, 128)';
 		var red = 'rgb(255, 0, 0)';
 		var green = 'rgb(0, 128, 0)';
 		var blue = 'rgb(0, 0, 255)';
 		var yellow = 'rgb(255, 255, 0)';
 		var yellowgreen = 'rgb(154, 205, 50)';
-
-		function rafP(callback) {
-			return new Promise((resolve) => {
-				requestAnimationFrame(() => {
-					requestAnimationFrame(() => {
-						callback();
-						resolve();
-					});
-				});
-			})
-		}
 
 		function test_div(test_name, el, color) {
 			var actual = getComputedStyle(el).backgroundColor;

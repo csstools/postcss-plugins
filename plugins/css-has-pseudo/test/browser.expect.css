@@ -27,3 +27,28 @@ main {
 [\.subject\:has\(descendant\)] {
 	background-color: yellowgreen;
 }
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
+[div\:has\(\.test\)\%2B\%23subject] {
+	background-color: red;
+}
+
+[div\:has\(\%3E\%20\.test\)\%2B\%23subject] {
+	background-color: green;
+}
+
+[div\:has\(\~\%20\.test\)\%2B\%23subject] {
+	background-color: yellow;
+}
+
+[div\:has\(\%2B\%20\.test\)\%2B\%23subject] {
+	background-color: blue;
+}
+
+[div\:has\(\~\%20div\%20\.test\)\%2B\%23subject][div\:has\(\~\%20div\%20\.test\)\%2B\%23subject] {
+	background-color: purple;
+}
+
+[div\:has\(\%2B\%20div\%20\.test\)\%2B\%23subject][div\:has\(\%2B\%20div\%20\.test\)\%2B\%23subject] {
+	background-color: pink;
+}
