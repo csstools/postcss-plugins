@@ -165,7 +165,7 @@ Copy this bit of CSS to have it in your clipboard.
 Run :
 
 ```bash
-pbpaste | npx -y postcss-logical --no-map --plugin-options '{ "dir": "rtl" }'
+pbpaste | npx -y @csstools/csstools-cli postcss-logical --no-map --plugin-options '{ "dir": "rtl" }'
 ```
 
 _note the single quotes around the JSON object with plugin options._
