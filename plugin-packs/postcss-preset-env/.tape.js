@@ -200,10 +200,13 @@ module.exports = {
 			}
 		}
 	},
-	'insert:after:match-result': {
-		message: 'supports { stage: 2, features: { "lab-function": { unresolved: "ignore" } }, insertAfter: { "lab-function": require("postcss-simple-vars")() } } usage',
+	'insert:after:match-result:exec': {
+		message: 'supports { insertAfter with a single plugin, not an array } usage when looking for a result',
 		options: {
-			stage: 2,
+			stage: 0,
+			features: {
+				'lab-function': true
+			},
 			insertAfter: {
 				'lab-function': orderDetectionPlugin('after', (decl) => {
 					return decl.value.indexOf('rgba(') === 0;
