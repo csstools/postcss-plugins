@@ -3,7 +3,7 @@ on:
   push:
 
 concurrency:
-  group: branch-node-${{ github.ref }}
+  group: branch-node-test-in-browser-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
