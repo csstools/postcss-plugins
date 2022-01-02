@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 16
 
-      - run: npm ci --ignore-scripts
+      - run: npm ci
       - run: npm run build --workspaces --if-present
       - run: npm run test:browser --workspaces --if-present
 

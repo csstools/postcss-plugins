@@ -17,5 +17,8 @@ module.exports = {
 	},
 	'browser': {
 		message: 'prepare CSS for chrome test',
+		options: {
+			preserve: false
+		}
 	},
 }

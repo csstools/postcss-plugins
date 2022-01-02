@@ -12,15 +12,7 @@ main {
 	background-color: red;
 }
 
-.subject:has(> .child) {
-	background-color: red;
-}
-
 [\.subject\:has\(\.descendant\)][\.subject\:has\(\.descendant\)] {
-	background-color: green;
-}
-
-.subject:has(.descendant) {
 	background-color: green;
 }
 
@@ -28,22 +20,10 @@ main {
 	background-color: blue;
 }
 
-.subject:has([attrname=descendant]) {
-	background-color: blue;
-}
-
 [\.subject\:has\(\%23div_descendant\)] {
 	background-color: yellow;
 }
 
-.subject:has(#div_descendant) {
-	background-color: yellow;
-}
-
 [\.subject\:has\(descendant\)] {
-	background-color: yellowgreen;
-}
-
-.subject:has(descendant) {
 	background-color: yellowgreen;
 }
