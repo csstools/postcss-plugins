@@ -1,16 +1,30 @@
-/* global MutationObserver,requestAnimationFrame */
+/* global MutationObserver,requestAnimationFrame,cancelAnimationFrame */
 
 import '@mrhenry/core-web/modules/~element-qsa-has.js';
 import extractEncodedSelectors from './encode/extract.mjs';
 
 export default function cssHasPseudo(document, options) {
-	if (!options) {
-		options = {};
-	}
+	// OPTIONS
+	{
+		if (!options) {
+			options = {};
+		}
 
-	options = {
-		hover: (!!options.hover) || false,
-	};
+		options = {
+			hover: (!!options.hover) || false,
+			observedAttributes: options.observedAttributes || [],
+		};
+
+		if (!Array.isArray(options.observedAttributes)) {
+			options.observedAttributes = [];
+		}
+
+		options.observedAttributes = options.observedAttributes.filter((x) => {
+			return (typeof x === 'string');
+		});
+
+		options.observedAttributes = options.observedAttributes.concat(['accept', 'accept-charset', 'accesskey', 'action', 'align', 'allow', 'alt', 'async', 'autocapitalize', 'autocomplete', 'autofocus', 'autoplay', 'buffered', 'capture', 'challenge', 'charset', 'checked', 'cite', 'class', 'code', 'codebase', 'cols', 'colspan', 'content', 'contenteditable', 'contextmenu', 'controls', 'coords', 'crossorigin', 'csp', 'data', 'datetime', 'decoding', 'default', 'defer', 'dir', 'dirname', 'disabled', 'download', 'draggable', 'enctype', 'enterkeyhint', 'for', 'form', 'formaction', 'formenctype', 'formmethod', 'formnovalidate', 'formtarget', 'headers', 'hidden', 'high', 'href', 'hreflang', 'http-equiv', 'icon', 'id', 'importance', 'integrity', 'intrinsicsize', 'inputmode', 'ismap', 'itemprop', 'keytype', 'kind', 'label', 'lang', 'language', 'list', 'loop', 'low', 'manifest', 'max', 'maxlength', 'minlength', 'media', 'method', 'min', 'multiple', 'muted', 'name', 'novalidate', 'open', 'optimum', 'pattern', 'ping', 'placeholder', 'poster', 'preload', 'radiogroup', 'readonly', 'referrerpolicy', 'rel', 'required', 'reversed', 'rows', 'rowspan', 'sandbox', 'scope', 'scoped', 'selected', 'shape', 'size', 'sizes', 'slot', 'span', 'spellcheck', 'src', 'srcdoc', 'srclang', 'srcset', 'start', 'step', 'style', 'summary', 'tabindex', 'target', 'title', 'translate', 'type', 'usemap', 'value', 'width', 'wrap']);
+	}
 
 	const observedItems = [];
 
@@ -19,10 +33,10 @@ export default function cssHasPseudo(document, options) {
 
 	// walk all stylesheets to collect observed css rules
 	[].forEach.call(document.styleSheets, walkStyleSheet);
-	transformObservedItems();
+	transformObservedItemsThrottled();
 
 	// observe DOM modifications that affect selectors
-	const mutationObserver = new MutationObserver(mutationsList => {
+	const mutationObserver = new MutationObserver((mutationsList) => {
 		mutationsList.forEach(mutation => {
 			[].forEach.call(mutation.addedNodes || [], node => {
 				// walk stylesheets to collect observed css rules
@@ -33,68 +47,77 @@ export default function cssHasPseudo(document, options) {
 
 			// transform observed css rules
 			cleanupObservedCssRules();
-			transformObservedItems();
+			transformObservedItemsThrottled();
 		});
 	});
 
-	mutationObserver.observe(document, { childList: true, subtree: true });
+	mutationObserver.observe(document, { childList: true, subtree: true, attributes: true, attributeFilter: options.observedAttributes });
 
 	// observe DOM events that affect pseudo-selectors
-	document.addEventListener('focus', transformObservedItems, true);
-	document.addEventListener('blur', transformObservedItems, true);
-	document.addEventListener('input', transformObservedItems);
+	document.addEventListener('focus', transformObservedItemsThrottled, true);
+	document.addEventListener('blur', transformObservedItemsThrottled, true);
+	document.addEventListener('input', transformObservedItemsThrottled);
 
 	if (options.hover) {
 		if ('onpointerenter' in document) {
-			document.addEventListener('pointerenter', transformObservedItems, true);
+			document.addEventListener('pointerenter', transformObservedItemsThrottled, true);
 		} else {
-			document.addEventListener('mouseover', transformObservedItems, true);
+			document.addEventListener('mouseover', transformObservedItemsThrottled, true);
 		}
 	}
 
-	// transform observed css rules
-	function transformObservedItems () {
-		requestAnimationFrame(() => {
-			observedItems.forEach(
-				item => {
-					const nodes = [];
+	let transformObservedItemsThrottledBusy = false;
+	function transformObservedItemsThrottled() {
+		if (transformObservedItemsThrottledBusy) {
+			cancelAnimationFrame(transformObservedItemsThrottledBusy);
+		}
 
-					[].forEach.call(
-						document.querySelectorAll(item.selector),
-						element => {
-							// memorize the node
-							nodes.push(element);
-
-							// set an attribute with an irregular attribute name
-							// document.createAttribute() doesn't support special characters
-							attributeElement.innerHTML = '<x ' + item.attributeName + '>';
-
-							element.setAttributeNode(attributeElement.children[0].attributes[0].cloneNode());
-
-							// trigger a style refresh in IE and Edge
-							document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
-						},
-					);
-
-					// remove the encoded attribute from all nodes that no longer match them
-					item.nodes.forEach(node => {
-						if (nodes.indexOf(node) === -1) {
-							node.removeAttribute(item.attributeName);
-
-							// trigger a style refresh in IE and Edge
-							document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
-						}
-					});
-
-					// update the
-					item.nodes = nodes;
-				},
-			);
+		transformObservedItemsThrottledBusy = requestAnimationFrame(() => {
+			transformObservedItems();
 		});
 	}
 
+	// transform observed css rules
+	function transformObservedItems() {
+		observedItems.forEach(
+			item => {
+				const nodes = [];
+
+				[].forEach.call(
+					document.querySelectorAll(item.selector),
+					element => {
+						// memorize the node
+						nodes.push(element);
+
+						// set an attribute with an irregular attribute name
+						// document.createAttribute() doesn't support special characters
+						attributeElement.innerHTML = '<x ' + item.attributeName + '>';
+
+						element.setAttributeNode(attributeElement.children[0].attributes[0].cloneNode());
+
+						// trigger a style refresh in IE and Edge
+						document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
+					},
+				);
+
+				// remove the encoded attribute from all nodes that no longer match them
+				item.nodes.forEach(node => {
+					if (nodes.indexOf(node) === -1) {
+						node.removeAttribute(item.attributeName);
+
+						// trigger a style refresh in IE and Edge
+						document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
+					}
+				});
+
+				// update the
+				item.nodes = nodes;
+			},
+		);
+	}
+
 	// remove any observed cssrules that no longer apply
-	function cleanupObservedCssRules () {
+	function cleanupObservedCssRules() {
 		[].push.apply(
 			observedItems,
 			observedItems.splice(0).filter(
@@ -106,7 +129,7 @@ export default function cssHasPseudo(document, options) {
 	}
 
 	// walk a stylesheet to collect observed css rules
-	function walkStyleSheet (styleSheet) {
+	function walkStyleSheet(styleSheet) {
 		try {
 			// walk a css rule to collect observed css rules
 			[].forEach.call(styleSheet.cssRules || [], rule => {
@@ -130,7 +153,7 @@ export default function cssHasPseudo(document, options) {
 					walkStyleSheet(rule);
 				}
 			});
-		} catch (error) {
+		} catch (_) {
 			/* do nothing and continue */
 		}
 	}

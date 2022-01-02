@@ -1,0 +1,29 @@
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/attribute-or-elemental-selectors-in-has.html */
+div,
+main {
+	background-color: grey;
+	margin: 5px;
+	min-height: 20px;
+	min-width: 20px;
+	padding: 5px;
+}
+
+.subject:has(> .child) {
+	background-color: red;
+}
+
+.subject:has(.descendant) {
+	background-color: green;
+}
+
+.subject:has([attrname=descendant]) {
+	background-color: blue;
+}
+
+.subject:has(#div_descendant) {
+	background-color: yellow;
+}
+
+.subject:has(descendant) {
+	background-color: yellowgreen;
+}

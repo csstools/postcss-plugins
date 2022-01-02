@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CSS Selectors Invalidation: :has() invalidation basic</title>
+<link rel="help" href="https://drafts.csswg.org/selectors/#relational">
+<link rel="stylesheet" href="/test/browser.expect.css">
+<script src="/dist/browser-global.js"></script>
+<script>cssHasPseudo(document, { observedAttributes: ['attrname'] });</script>
+<style>
+
+</style>
+<main id=main>
+	<div id=div_subject class="subject">
+		<div id=div_child>
+			<div id=div_grandchild></div>
+		</div>
+	</div>
+</main>
+<script type="module">
+	self.runTest = async function runTest() {
+		var grey = 'rgb(128, 128, 128)';
+		var red = 'rgb(255, 0, 0)';
+		var green = 'rgb(0, 128, 0)';
+		var blue = 'rgb(0, 0, 255)';
+		var yellow = 'rgb(255, 255, 0)';
+		var yellowgreen = 'rgb(154, 205, 50)';
+
+		function rafP(callback) {
+			return new Promise((resolve) => {
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						callback();
+						resolve();
+					});
+				});
+			})
+		}
+
+		function test_div(test_name, el, color) {
+			var actual = getComputedStyle(el).backgroundColor;
+			if (actual !== color) {
+				throw new Error(test_name + ': div#' + el.id + '.color; expected ' + color + ' but got ' + actual);
+			}
+		}
+
+		test_div('initial_color', div_subject, grey);
+		test_div('initial_color', div_child, grey);
+		test_div('initial_color', div_grandchild, grey);
+
+		div_child.classList.add('child');
+		await rafP(() => {
+			test_div('add .child to #div_child', div_subject, red);
+		});
+
+		div_child.classList.remove('child');
+		await rafP(() => {
+			test_div('remove .child from #div_child', div_subject, grey);
+		});
+
+		div_grandchild.classList.add('child');
+		await rafP(() => {
+			test_div('add .child to #div_grandchild', div_subject, grey);
+		});
+		div_grandchild.classList.remove('child');
+		await rafP(() => {
+			test_div('remove .child from #div_grandchild', div_subject, grey);
+		});
+
+		div_child.classList.add('descendant');
+		await rafP(() => {
+			test_div('add .descendant to #div_child', div_subject, green);
+		});
+		div_child.classList.remove('descendant');
+		await rafP(() => {
+			test_div('remove .descendant from #div_child', div_subject, grey);
+		});
+
+		div_grandchild.classList.add('descendant');
+		await rafP(() => {
+			test_div('add .descendant to #div_grandchild', div_subject, green);
+		});
+		div_grandchild.classList.remove('descendant');
+		await rafP(() => {
+			test_div('remove .descendant from #div_grandchild', div_subject, grey);
+		});
+
+		div_grandchild.setAttribute('attrname', 'descendant');
+		await rafP(() => {
+			test_div('set descendant to #div_grandchild[attrname]', div_subject, blue);
+		});
+		div_grandchild.setAttribute('attrname', '');
+		await rafP(() => {
+			test_div('clear #div_grandchild[attrname]', div_subject, grey);
+		});
+
+		div_grandchild.id = 'div_descendant';
+		await rafP(() => {
+			test_div('change #div_grandchild to #div_descendant', div_subject, yellow);
+		});
+		div_descendant.id = 'div_grandchild';
+		await rafP(() => {
+			test_div('change #div_descendant to #div_grandchild', div_subject, grey);
+		});
+
+		{
+			var descendant = document.createElement('descendant');
+			div_subject.appendChild(descendant);
+			await rafP(() => {
+				test_div('add descendant to #div_subject', div_subject, yellowgreen);
+			});
+			div_subject.removeChild(descendant);
+			await rafP(() => {
+				test_div('remove descendant from #div_subject', div_subject, grey);
+			});
+		}
+
+		{
+			var div = document.createElement('div');
+			var descendant = document.createElement('descendant');
+			div.appendChild(descendant);
+			div_subject.appendChild(div);
+			await rafP(() => {
+				test_div('add "div > descendant" to #div_subject', div_subject, yellowgreen);
+			});
+			div_subject.removeChild(div);
+			await rafP(() => {
+				test_div('remove "div > descendant" from #div_subject', div_subject, grey);
+			});
+		}
+
+		{
+			var child = document.createElement('div');
+			child.classList.add('child');
+			div_subject.appendChild(child);
+			await rafP(() => {
+				test_div('add div.child to #div_subject', div_subject, red);
+			});
+			div_subject.removeChild(child);
+			await rafP(() => {
+				test_div('remove div.child from #div_subject', div_subject, grey);
+			});
+		}
+
+		{
+			var descendant = document.createElement('div');
+			descendant.classList.add('descendant');
+			var div = document.createElement('div');
+			div.appendChild(descendant);
+			div_subject.appendChild(div);
+			await rafP(() => {
+				test_div('add "div > div.descendant" to #div_subject', div_subject, green);
+			});
+			div_subject.removeChild(div);
+			await rafP(() => {
+				test_div('remove "div > div.descendant" from #div_subject', div_subject, grey);
+			});
+		}
+
+		{
+			var child = document.createElement('div');
+			child.id = 'div_descendant';
+			div_subject.appendChild(child);
+			await rafP(() => {
+				test_div('add div#div_descendant to #div_subject', div_subject, yellow);
+			});
+			div_subject.removeChild(child);
+			await rafP(() => {
+				test_div('remove div#div_descendant from #div_subject', div_subject, grey);
+			});
+		}
+
+		{
+			var descendant = document.createElement('div');
+			descendant.id = 'div_descendant';
+			var div = document.createElement('div');
+			div.appendChild(descendant);
+			div_subject.appendChild(div);
+			await rafP(() => {
+				test_div('add "div#div_descendant" to #div_subject', div_subject, yellow);
+			});
+			div_subject.removeChild(div);
+			await rafP(() => {
+				test_div('remove "div#div_descendant" from #div_subject', div_subject, grey);
+			});
+		}
+
+		{
+			var child = document.createElement('div');
+			child.setAttribute('attrname', 'descendant');
+			div_subject.appendChild(child);
+			await rafP(() => {
+				test_div('add div[attrname] to #div_subject', div_subject, blue);
+			});
+			div_subject.removeChild(child);
+			await rafP(() => {
+				test_div('remove div[attrname] from #div_subject', div_subject, grey);
+			});
+		}
+
+		{
+			var descendant = document.createElement('div');
+			descendant.setAttribute('attrname', 'descendant');
+			var div = document.createElement('div');
+			div.appendChild(descendant);
+			div_subject.appendChild(div);
+			await rafP(() => {
+				test_div('add "div > div[attrname]" to #div_subject', div_subject, blue);
+			});
+			div_subject.removeChild(div);
+			await rafP(() => {
+				test_div('remove "div > div[attrname]" from #div_subject', div_subject, grey);
+			});
+		}
+
+		return true;
+	}
+</script>

@@ -49,6 +49,15 @@ This is disabled by default because it is an expensive operation.
 cssHasPseudo(document, { hover: true });
 ```
 
+### observedAttributes
+
+The `observedAttributes` option determines which html attributes are observed.
+If you do any client side modification of non-standard attributes and use these in combination with `:has()` you want to add these here.
+
+```js
+cssHasPseudo(document, { observedAttributes: ['something-not-standard'] });
+```
+
 ## Dependencies
 
 Web API's:
