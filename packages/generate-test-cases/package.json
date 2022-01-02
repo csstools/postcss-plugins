@@ -8,6 +8,7 @@
   "author": "",
   "license": "CC0-1.0",
   "scripts": {
+    "build": "exit 0;",
     "generate": "node ./src/index.mjs",
     "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "test": "exit 0;"

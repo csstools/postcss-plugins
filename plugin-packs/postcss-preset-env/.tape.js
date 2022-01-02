@@ -114,49 +114,49 @@ module.exports = {
 		}
 	},
 	'insert:before': {
-		message: 'supports { stage: 1, features: { "color-mod-function": true }, insertBefore: { "color-mod-function": [ require("postcss-simple-vars") ] } } usage',
+		message: 'supports { stage: 1, features: { "lab-function": true }, insertBefore: { "lab-function": [ require("postcss-simple-vars") ] } } usage',
 		options: {
 			stage: 1,
 			features: {
-				'color-mod-function': true
+				'lab-function': true
 			},
 			insertBefore: {
-				'color-mod-function': [
+				'lab-function': [
 					require('postcss-simple-vars')()
 				]
 			}
 		}
 	},
 	'insert:after': {
-		message: 'supports { stage: 1, insertAfter: { "color-mod-function": [ require("postcss-simple-vars")() ] } } usage',
+		message: 'supports { stage: 1, insertAfter: { "lab-function": [ require("postcss-simple-vars")() ] } } usage',
 		options: {
 			stage: 1,
 			insertAfter: {
-				'color-mod-function': require('postcss-simple-vars')()
+				'lab-function': require('postcss-simple-vars')()
 			}
 		},
 	},
 	'insert:after:exec': {
-		message: 'supports { stage: 2, features: { "color-mod-function": { unresolved: "ignore" } }, insertAfter: { "color-mod-function": require("postcss-simple-vars")() } } usage',
+		message: 'supports { stage: 2, features: { "lab-function": { unresolved: "ignore" } }, insertAfter: { "lab-function": require("postcss-simple-vars")() } } usage',
 		options: {
 			stage: 2,
 			insertAfter: {
-				'color-mod-function': require('postcss-simple-vars')()
+				'lab-function': require('postcss-simple-vars')()
 			}
 		},
 		expect: 'insert.after.expect.css'
 	},
 	'insert:after:array': {
-		message: 'supports { stage: 1, after: { "color-mod-function": [ require("postcss-simple-vars") ] } } usage',
+		message: 'supports { stage: 1, after: { "lab-function": [ require("postcss-simple-vars") ] } } usage',
 		options: {
 			stage: 1,
 			insertAfter: {
-				'color-mod-function': [
+				'lab-function': [
 					require('postcss-simple-vars')()
 				]
 			},
 			features: {
-				'color-mod-function': {
+				'lab-function': {
 					unresolved: 'ignore'
 				}
 			}
@@ -218,5 +218,16 @@ module.exports = {
 				}
 			});
 		}
+	},
+	"unknown-feature": {
+		message: 'warns on unknown features',
+		warnings: 3,
+		options: {
+			features: {
+				"custom-media": true,
+				"postcss-logical": true,
+				"postcss-logica": true,
+			}
+		},
 	}
 };

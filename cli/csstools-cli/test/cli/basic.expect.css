@@ -1,0 +1,8 @@
+.foo[\:has\(.baz\)] {
+	color: red;
+}
+.foo:has(.baz) {
+	color: red;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJhc2ljLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtDQUNDLFVBQVU7QUFDWDtBQUZBO0NBQ0MsVUFBVTtBQUNYIiwiZmlsZSI6ImJhc2ljLnJlc3VsdC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vOmhhcyguYmF6KSB7XG5cdGNvbG9yOiByZWQ7XG59XG4iXX0= */
