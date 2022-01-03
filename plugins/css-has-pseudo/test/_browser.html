@@ -16,10 +16,8 @@
 			return new Promise((resolve) => {
 				requestAnimationFrame(() => {
 					requestAnimationFrame(() => {
-						setTimeout(() => {
-							callback();
-							resolve();
-						}, 0);
+						callback();
+						resolve();
 					});
 				});
 			});
