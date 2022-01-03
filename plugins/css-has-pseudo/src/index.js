@@ -1,5 +1,4 @@
 import parser from 'postcss-selector-parser';
-import encodeCSS from './encode/encode.mjs';
 
 const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 	opts = typeof opts === 'object' && opts || defaultOptions;
@@ -9,59 +8,52 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 
 	return {
 		postcssPlugin: 'css-has-pseudo',
-		RuleExit: (rule, { result }) => {
+		Rule: (rule, { result }) => {
 			if (!rule.selector.includes(':has(')) {
 				return;
 			}
 
-			const selectors = rule.selectors.map((selector) => {
-				if (!selector.includes(':has(')) {
-					return selector;
-				}
+			let modifiedSelector;
 
-				let specificity = 1;
+			try {
+				const modifiedSelectorAST = parser((selectors) => {
+					selectors.walkPseudos(selector => {
+						if (selector.value === ':has' && selector.nodes) {
+							const isNotHas = isParentInNotPseudo(selector);
 
-				let selectorAST;
-				try {
-					selectorAST = parser().astSync(selector);
-				} catch (_) {
-					rule.warn(result, `Failed to parse selector : ${selector}`);
-					return selector;
-				}
+							selector.value = isNotHas ? ':not-has' : ':has';
 
-				if (typeof selectorAST === 'undefined') {
-					return selector;
-				}
+							const attribute = parser.attribute({
+								attribute: getEscapedCss(String(selector)),
+							});
 
-				let containsHasPseudo = false;
-				selectorAST.walkPseudos((node) => {
-					containsHasPseudo = containsHasPseudo || node.value === ':has' && node.nodes;
-				});
+							if (isNotHas) {
+								selector.parent.parent.replaceWith(attribute);
+							} else {
+								selector.replaceWith(attribute);
+							}
+						}
+					});
+				}).processSync(rule.selector);
 
-				if (!containsHasPseudo) {
-					return selector;
-				}
+				modifiedSelector = String(modifiedSelectorAST);
+			} catch (_) {
+				rule.warn(result, `Failed to parse selector : ${rule.selector}`);
+				return;
+			}
 
-				const abcSpecificity = selectorSpecificity(selectorAST);
-				specificity = Math.max(1, abcSpecificity.b);
+			if (typeof modifiedSelector === 'undefined') {
+				return;
+			}
 
-				let encodedSelectorWithBSpecificty = '';
-				const encodedSelector = '[' + encodeCSS(selector) + ']';
-				for (let i = 0; i < specificity; i++) {
-					encodedSelectorWithBSpecificty += encodedSelector;
-				}
-
-				return encodedSelectorWithBSpecificty;
-			});
-
-			if (selectors.join(',') === rule.selectors.join(',')) {
+			if (modifiedSelector === rule.selector) {
 				return;
 			}
 
 			if (shouldPreserve) {
-				rule.cloneBefore({ selectors: selectors });
+				rule.cloneBefore({ selector: modifiedSelector });
 			} else {
-				rule.assign({ selectors: selectors });
+				rule.assign({ selector: modifiedSelector });
 			}
 		},
 	};
@@ -72,96 +64,93 @@ creator.postcss = true;
 /** Default options. */
 const defaultOptions = { preserve: true };
 
-export default creator;
+/** Returns the string as an escaped CSS identifier. */
+const getEscapedCss = (/** @type {string} */ value) => {
+	let out = '';
+	let current = '';
 
-function selectorSpecificity(node) {
-	let a = 0;
-	let b = 0;
-	let c = 0;
+	const flushCurrent = () => {
+		if (current) {
+			const encoded = encodeURIComponent(current);
+			let encodedCurrent = '';
+			let encodedOut = '';
 
-	if (node.type === 'id') {
-		a += 1;
-	} else if (node.type === 'tag') {
-		c += 1;
-	} else if (node.type === 'class') {
-		b += 1;
-	} else if (node.type === 'attribute') {
-		b += 1;
-	} else if (node.type === 'pseudo') {
-		switch (node.value) {
-			case '::after':
-			case ':after':
-			case '::backdrop':
-			case '::before':
-			case ':before':
-			case '::cue':
-			case '::cue-region':
-			case '::first-letter':
-			case ':first-letter':
-			case '::first-line':
-			case ':first-line':
-			case '::file-selector-button':
-			case '::grammar-error':
-			case '::marker':
-			case '::part':
-			case '::placeholder':
-			case '::selection':
-			case '::slotted':
-			case '::spelling-error':
-			case '::target-text':
-				c += 1;
-				break;
+			const flushEncoded = () => {
+				if (encodedCurrent) {
+					encodedOut += encodedCurrent;
+					encodedCurrent = '';
+				}
+			};
 
-			case ':is':
-			case ':has':
-			case ':not':
-				{
-					const pseudoSpecificity = selectorSpecificity(node.nodes[0]);
-					a += pseudoSpecificity.a;
-					b += pseudoSpecificity.b;
-					c += pseudoSpecificity.c;
-					break;
+			let encodedEscaped = false;
+			for (let i = 0; i < encoded.length; i++) {
+				const char = encoded[i];
+
+				if (encodedEscaped) {
+					encodedCurrent += char;
+					encodedEscaped = false;
+					continue;
 				}
 
-			case 'where':
-				break;
+				switch (char) {
+					case '%':
+						flushEncoded();
+						encodedOut += ( '\\' + char );
+						continue;
+					case '\\':
+						encodedCurrent += char;
+						encodedEscaped = true;
+						continue;
 
-			case ':nth-child':
-			case ':nth-last-child':
-				{
-					const ofSeparatorIndex = node.nodes.findIndex((x) => {
-						x.value === 'of';
-					});
-
-					if (ofSeparatorIndex > -1) {
-						const ofSpecificity = selectorSpecificity(parser.selector({ nodes: node.nodes.slice(ofSeparatorIndex + 1) }));
-						a += ofSpecificity.a;
-						b += ofSpecificity.b;
-						c += ofSpecificity.c;
-					} else {
-						a += a;
-						b += b;
-						c += c;
-					}
+					default:
+						encodedCurrent += char;
+						continue;
 				}
-				break;
+			}
+
+			flushEncoded();
+			out += encodedOut;
+			current = '';
+		}
+	};
+
+	let escaped = false;
+	for (let i = 0; i < value.length; i++) {
+		const char = value[i];
+
+		if (escaped) {
+			current += char;
+			escaped = false;
+			continue;
+		}
+
+		switch (char) {
+			case ':':
+			case '[':
+			case ']':
+			case ',':
+			case '(':
+			case ')':
+				flushCurrent();
+				out += ( '\\' + char );
+				continue;
+			case '\\':
+				current += char;
+				escaped = true;
+				continue;
 
 			default:
-				b += 1;
+				current += char;
+				continue;
 		}
-	} else if (node.nodes && node.nodes.length > 0) {
-		node.nodes.forEach((child) => {
-			const specificity = selectorSpecificity(child);
-			a += specificity.a;
-			b += specificity.b;
-			c += specificity.c;
-		});
 	}
 
-	return {
-		a,
-		b,
-		c,
-	};
-}
+	flushCurrent();
 
+	return out;
+};
+
+/** Returns whether the selector is within a `:not` pseudo-class. */
+const isParentInNotPseudo = (selector) => selector.parent?.parent?.type === 'pseudo' && selector.parent.parent.value === ':not';
+
+export default creator;

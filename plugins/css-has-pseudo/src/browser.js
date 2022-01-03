@@ -1,34 +1,5 @@
-/* global MutationObserver,requestAnimationFrame,cancelAnimationFrame,self */
-
-import '@mrhenry/core-web/modules/~element-qsa-has.js';
-import extractEncodedSelectors from './encode/extract.mjs';
-
-export default function cssHasPseudo(document, options) {
-	// OPTIONS
-	{
-		if (!options) {
-			options = {};
-		}
-
-		options = {
-			hover: (!!options.hover) || false,
-			debug: (!!options.debug) || false,
-			observedAttributes: options.observedAttributes || [],
-		};
-
-		if (!Array.isArray(options.observedAttributes)) {
-			options.observedAttributes = [];
-		}
-
-		options.observedAttributes = options.observedAttributes.filter((x) => {
-			return (typeof x === 'string');
-		});
-
-		// https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes
-		// `data-*` and `style` were omitted
-		options.observedAttributes = options.observedAttributes.concat(['accept', 'accept-charset', 'accesskey', 'action', 'align', 'allow', 'alt', 'async', 'autocapitalize', 'autocomplete', 'autofocus', 'autoplay', 'buffered', 'capture', 'challenge', 'charset', 'checked', 'cite', 'class', 'code', 'codebase', 'cols', 'colspan', 'content', 'contenteditable', 'contextmenu', 'controls', 'coords', 'crossorigin', 'csp', 'data', 'datetime', 'decoding', 'default', 'defer', 'dir', 'dirname', 'disabled', 'download', 'draggable', 'enctype', 'enterkeyhint', 'for', 'form', 'formaction', 'formenctype', 'formmethod', 'formnovalidate', 'formtarget', 'headers', 'hidden', 'high', 'href', 'hreflang', 'http-equiv', 'icon', 'id', 'importance', 'integrity', 'intrinsicsize', 'inputmode', 'ismap', 'itemprop', 'keytype', 'kind', 'label', 'lang', 'language', 'list', 'loop', 'low', 'manifest', 'max', 'maxlength', 'minlength', 'media', 'method', 'min', 'multiple', 'muted', 'name', 'novalidate', 'open', 'optimum', 'pattern', 'ping', 'placeholder', 'poster', 'preload', 'radiogroup', 'readonly', 'referrerpolicy', 'rel', 'required', 'reversed', 'rows', 'rowspan', 'sandbox', 'scope', 'scoped', 'selected', 'shape', 'size', 'sizes', 'slot', 'span', 'spellcheck', 'src', 'srcdoc', 'srclang', 'srcset', 'start', 'step', 'summary', 'tabindex', 'target', 'title', 'translate', 'type', 'usemap', 'value', 'width', 'wrap']);
-	}
-
+/* global MutationObserver,requestAnimationFrame */
+export default function cssHasPseudo(document) {
 	const observedItems = [];
 
 	// document.createAttribute() doesn't support `:` in the name. innerHTML does
@@ -36,143 +7,127 @@ export default function cssHasPseudo(document, options) {
 
 	// walk all stylesheets to collect observed css rules
 	[].forEach.call(document.styleSheets, walkStyleSheet);
-	transformObservedItemsThrottled();
+	transformObservedItems();
 
 	// observe DOM modifications that affect selectors
-	if ('MutationObserver' in self) {
-		const mutationObserver = new MutationObserver((mutationsList) => {
-			mutationsList.forEach(mutation => {
-				[].forEach.call(mutation.addedNodes || [], node => {
-					// walk stylesheets to collect observed css rules
-					if (node.nodeType === 1 && node.sheet) {
-						walkStyleSheet(node.sheet);
-					}
-				});
-
-				// transform observed css rules
-				cleanupObservedCssRules();
-				transformObservedItemsThrottled();
+	const mutationObserver = new MutationObserver(mutationsList => {
+		mutationsList.forEach(mutation => {
+			[].forEach.call(mutation.addedNodes || [], node => {
+				// walk stylesheets to collect observed css rules
+				if (node.nodeType === 1 && node.sheet) {
+					walkStyleSheet(node.sheet);
+				}
 			});
-		});
 
-		mutationObserver.observe(document, { childList: true, subtree: true, attributes: true, attributeFilter: options.observedAttributes });
-	}
-
-	// observe DOM events that affect pseudo-selectors
-	document.addEventListener('focus', transformObservedItemsThrottled, true);
-	document.addEventListener('blur', transformObservedItemsThrottled, true);
-	document.addEventListener('input', transformObservedItemsThrottled);
-
-	if (options.hover) {
-		if ('onpointerenter' in document) {
-			document.addEventListener('pointerenter', transformObservedItemsThrottled, true);
-		} else {
-			document.addEventListener('mouseover', transformObservedItemsThrottled, true);
-		}
-	}
-
-	let transformObservedItemsThrottledBusy = false;
-	function transformObservedItemsThrottled() {
-		if (transformObservedItemsThrottledBusy) {
-			cancelAnimationFrame(transformObservedItemsThrottledBusy);
-		}
-
-		transformObservedItemsThrottledBusy = requestAnimationFrame(() => {
+			// transform observed css rules
+			cleanupObservedCssRules();
 			transformObservedItems();
 		});
-	}
+	});
+
+	mutationObserver.observe(document, { childList: true, subtree: true });
+
+	// observe DOM events that affect pseudo-selectors
+	document.addEventListener('focus', transformObservedItems, true);
+	document.addEventListener('blur', transformObservedItems, true);
+	document.addEventListener('input', transformObservedItems);
 
 	// transform observed css rules
-	function transformObservedItems() {
-		observedItems.forEach((item) => {
-			const nodes = [];
+	function transformObservedItems () {
+		requestAnimationFrame(() => {
+			observedItems.forEach(
+				item => {
+					const nodes = [];
 
-			let matches = [];
-			try {
-				matches = document.querySelectorAll(item.selector);
-			} catch (e) {
-				if (options.debug) {
-					console.error(e);
-				}
-				return;
-			}
+					[].forEach.call(
+						document.querySelectorAll(item.scopeSelector),
+						element => {
+							const nthChild = [].indexOf.call(element.parentNode.children, element) + 1;
+							const relativeSelectors = item.relativeSelectors.map(
+								relativeSelector => item.scopeSelector + ':nth-child(' + nthChild + ') ' + relativeSelector,
+							).join();
 
-			[].forEach.call(matches, (element) => {
-				// memorize the node
-				nodes.push(element);
+							// find any relative :has element from the :scope element
+							const relativeElement = element.parentNode.querySelector(relativeSelectors);
 
-				// set an attribute with an irregular attribute name
-				// document.createAttribute() doesn't support special characters
-				attributeElement.innerHTML = '<x ' + item.attributeName + '>';
+							const shouldElementMatch = item.isNot ? !relativeElement : relativeElement;
 
-				element.setAttributeNode(attributeElement.children[0].attributes[0].cloneNode());
+							if (shouldElementMatch) {
+								// memorize the node
+								nodes.push(element);
 
-				// trigger a style refresh in IE and Edge
-				document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
-			});
+								// set an attribute with an irregular attribute name
+								// document.createAttribute() doesn't support special characters
+								attributeElement.innerHTML = '<x ' + item.attributeName + '>';
 
-			// remove the encoded attribute from all nodes that no longer match them
-			item.nodes.forEach(node => {
-				if (nodes.indexOf(node) === -1) {
-					node.removeAttribute(item.attributeName);
+								element.setAttributeNode(attributeElement.children[0].attributes[0].cloneNode());
 
-					// trigger a style refresh in IE and Edge
-					document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
-				}
-			});
+								// trigger a style refresh in IE and Edge
+								document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
+							}
+						},
+					);
 
-			// update the
-			item.nodes = nodes;
+					// remove the encoded attribute from all nodes that no longer match them
+					item.nodes.forEach(node => {
+						if (nodes.indexOf(node) === -1) {
+							node.removeAttribute(item.attributeName);
+
+							// trigger a style refresh in IE and Edge
+							document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
+						}
+					});
+
+					// update the
+					item.nodes = nodes;
+				},
+			);
 		});
 	}
 
 	// remove any observed cssrules that no longer apply
-	function cleanupObservedCssRules() {
+	function cleanupObservedCssRules () {
 		[].push.apply(
 			observedItems,
-			observedItems.splice(0).filter((item) => {
-				return item.rule.parentStyleSheet &&
+			observedItems.splice(0).filter(
+				item => item.rule.parentStyleSheet &&
 					item.rule.parentStyleSheet.ownerNode &&
-					document.documentElement.contains(item.rule.parentStyleSheet.ownerNode);
-			}),
+					document.documentElement.contains(item.rule.parentStyleSheet.ownerNode),
+			),
 		);
 	}
 
 	// walk a stylesheet to collect observed css rules
-	function walkStyleSheet(styleSheet) {
+	function walkStyleSheet (styleSheet) {
 		try {
 			// walk a css rule to collect observed css rules
-			[].forEach.call(styleSheet.cssRules || [], (rule) => {
+			[].forEach.call(styleSheet.cssRules || [], rule => {
 				if (rule.selectorText) {
-					try {
-						// decode the selector text in all browsers to:
-						const hasSelectors = extractEncodedSelectors(rule.selectorText.toString());
-						if (hasSelectors.length === 0) {
-							return;
-						}
+					// decode the selector text in all browsers to:
+					// [1] = :scope, [2] = :not(:has), [3] = :has relative, [4] = :scope relative
+					const selectors = decodeURIComponent(rule.selectorText.replace(/\\(.)/g, '$1')).match(/^(.*?)\[:(not-)?has\((.+?)\)\](.*?)$/);
 
-						for (let i = 0; i < hasSelectors.length; i++) {
-							const hasSelector = hasSelectors[i];
-							observedItems.push({
-								rule: rule,
-								selector: hasSelector,
-								attributeName: encodeURIComponent(hasSelector).replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ','), // TODO : needs unit tests.
-								nodes: [],
-							});
-						}
-					} catch (e) {
-						if (options.debug) {
-							console.error(e);
-						}
+					if (selectors) {
+						const attributeName = ':' + (selectors[2] ? 'not-' : '') + 'has(' +
+							// encode a :has() pseudo selector as an attribute name
+							encodeURIComponent(selectors[3]).replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ',') +
+						')';
+
+						observedItems.push({
+							rule,
+							scopeSelector: selectors[1],
+							isNot: selectors[2],
+							relativeSelectors: selectors[3].split(/\s*,\s*/),
+							attributeName,
+							nodes: [],
+						});
 					}
 				} else {
 					walkStyleSheet(rule);
 				}
 			});
-		} catch (e) {
-			if (options.debug) {
-				console.error(e);
-			}
+		} catch (error) {
+			/* do nothing and continue */
 		}
 	}
 }
