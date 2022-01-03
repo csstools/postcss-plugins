@@ -1,3 +1,28 @@
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-ancestor-position.html */
+[div\:has\(\.c_test\)\%20\%23c_subject] {
+	background-color: red
+}
+
+[div\:has\(\%3E\%20\.c_test\)\%20\%23c_subject] {
+	background-color: green
+}
+
+[div\:has\(\~\%20\.c_test\)\%20\%23c_subject] {
+	background-color: yellow
+}
+
+[div\:has\(\%2B\%20\.c_test\)\%20\%23c_subject] {
+	background-color: blue
+}
+
+[div\:has\(\~\%20div\%20\.c_test\)\%20\%23c_subject][div\:has\(\~\%20div\%20\.c_test\)\%20\%23c_subject] {
+	background-color: purple
+}
+
+[div\:has\(\%2B\%20div\%20\.c_test\)\%20\%23c_subject][div\:has\(\%2B\%20div\%20\.c_test\)\%20\%23c_subject] {
+	background-color: pink
+}
+
 /* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
 [div\:has\(\.a_test\)\%2B\%23a_subject] {
 	background-color: red;

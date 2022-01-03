@@ -4,9 +4,10 @@
 <link rel="help" href="https://drafts.csswg.org/selectors/#relational">
 <link rel="stylesheet" href="/test/browser.expect.css">
 <script src="/dist/browser-global.js"></script>
-<script>cssHasPseudo(document, { observedAttributes: ['attrname'] });</script>
+<script>cssHasPseudo(document, { observedAttributes: ['attrname'], debug: true });</script>
 
-<div id="fixture"></div>
+<fixture id="fixture"></fixture>
+
 <script type="module">
 	function rafP(callback) {
 		return new Promise((resolve) => {
@@ -22,8 +23,171 @@
 	self.runTest = async function runTest() {
 		const invalidationResult = await testInvalidation();
 		const adjacentPositionResult = await testAdjacentPosition();
+		const parentPositionResult = await testParentPosition();
 
-		return invalidationResult && adjacentPositionResult;
+		return invalidationResult && adjacentPositionResult && parentPositionResult;
+	}
+
+	async function testParentPosition() {
+		// https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-ancestor-position.html
+
+		fixture.innerHTML = `
+		<main id="c_main">
+			<div id="c_subject_ancestor">
+				<div id="c_subject_parent">
+					<div id="c_subject">
+						<div id="c_subject_child">
+							<div id="c_subject_descendant"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="c_next_sibling">
+				<div id="c_next_sibling_child">
+					<div id="c_next_sibling_descendant"></div>
+				</div>
+			</div>
+		</main>
+	`;
+
+		const grey = 'rgb(128, 128, 128)';
+		const red = 'rgb(255, 0, 0)';
+		const green = 'rgb(0, 128, 0)';
+		const blue = 'rgb(0, 0, 255)';
+		const yellow = 'rgb(255, 255, 0)';
+		const purple = 'rgb(128, 0, 128)';
+		const pink = 'rgb(255, 192, 203)';
+
+		function testColor(test_name, color) {
+			var actual = getComputedStyle(c_subject).backgroundColor;
+			if (actual !== color) {
+				throw new Error(test_name + ': expected ' + color + ' but got ' + actual);
+			}
+		}
+
+		async function testClassChange(element, expectedColor) {
+			element.classList.add('c_test');
+			await rafP(() => {
+				testColor(`add .c_test to ${element.id}`, expectedColor);
+			});
+			element.classList.remove('c_test');
+			await rafP(() => {
+				testColor(`remove .c_test from ${element.id}`, grey);
+			});
+		}
+
+		async function testElementInsertionBefore(beforeElement, expectedColor) {
+			const newElement = document.createElement('div');
+			newElement.classList.add('c_test')
+
+			beforeElement.before(newElement);
+			await rafP(() => {
+				testColor(`insert element div.c_test before ${beforeElement.id}`, expectedColor);
+			});
+
+			newElement.remove();
+			await rafP(() => {
+				testColor(`remove element div.c_test before ${beforeElement.id}`, grey);
+			});
+		}
+
+		async function testElementInsertionAfter(afterElement, expectedColor) {
+			const newElement = document.createElement('div');
+			newElement.classList.add('c_test')
+
+			afterElement.after(newElement);
+			await rafP(() => {
+				testColor(`insert element div.c_test after ${afterElement.id}`, expectedColor);
+			});
+
+			newElement.remove();
+			await rafP(() => {
+				testColor(`remove element div.c_test after ${afterElement.id}`, grey);
+			});
+		}
+
+		async function testTreeInsertionBefore(beforeElement, expectedColor) {
+			const newElement = document.createElement('div');
+			const newChild = document.createElement('div');
+			newChild.classList.add('c_test');
+			newElement.appendChild(newChild);
+
+			beforeElement.before(newElement);
+			await rafP(() => {
+				testColor(`insert tree div>div.c_test before ${beforeElement.id}`, expectedColor);
+			});
+
+			newElement.remove();
+			await rafP(() => {
+				testColor(`remove tree div>div.c_test before ${beforeElement.id}`, grey);
+			});
+		}
+
+		async function testTreeInsertionAfter(afterElement, expectedColor) {
+			const newElement = document.createElement('div');
+			const newChild = document.createElement('div');
+			newChild.classList.add('c_test');
+			newElement.appendChild(newChild);
+
+			afterElement.after(newElement);
+			await rafP(() => {
+				testColor(`insert tree div>div.c_test after ${afterElement.id}`, expectedColor);
+			});
+
+			newElement.remove();
+			await rafP(() => {
+				testColor(`remove tree div>div.c_test after ${afterElement.id}`, grey);
+			});
+		}
+
+		await testColor('Initial color', grey);
+
+		await testClassChange(c_subject_ancestor, grey);
+		await testClassChange(c_subject_parent, green);
+		await testClassChange(c_subject, green);
+		await testClassChange(c_subject_child, red);
+		await testClassChange(c_subject_descendant, red);
+		await testClassChange(c_next_sibling, blue);
+		await testClassChange(c_next_sibling_child, pink);
+		await testClassChange(c_next_sibling_descendant, pink);
+
+		await testElementInsertionBefore(c_subject_ancestor, grey);
+		await testElementInsertionBefore(c_subject_parent, green);
+		await testElementInsertionBefore(c_subject, green);
+		await testElementInsertionBefore(c_subject_child, red);
+		await testElementInsertionBefore(c_subject_descendant, red);
+		await testElementInsertionBefore(c_next_sibling, blue);
+		await testElementInsertionBefore(c_next_sibling_child, pink);
+		await testElementInsertionBefore(c_next_sibling_descendant, pink);
+
+		await testElementInsertionAfter(c_subject_ancestor, blue);
+		await testElementInsertionAfter(c_subject_parent, blue);
+		await testElementInsertionAfter(c_subject, green);
+		await testElementInsertionAfter(c_subject_child, red);
+		await testElementInsertionAfter(c_subject_descendant, red);
+		await testElementInsertionAfter(c_next_sibling, yellow);
+		await testElementInsertionAfter(c_next_sibling_child, pink);
+		await testElementInsertionAfter(c_next_sibling_descendant, pink);
+
+		await testTreeInsertionBefore(c_subject_ancestor, grey);
+		await testTreeInsertionBefore(c_subject_parent, red);
+		await testTreeInsertionBefore(c_subject, red);
+		await testTreeInsertionBefore(c_subject_child, red);
+		await testTreeInsertionBefore(c_subject_descendant, red);
+		await testTreeInsertionBefore(c_next_sibling, pink);
+		await testTreeInsertionBefore(c_next_sibling_child, pink);
+		await testTreeInsertionBefore(c_next_sibling_descendant, pink);
+
+		await testTreeInsertionAfter(c_subject_ancestor, pink);
+		await testTreeInsertionAfter(c_subject_parent, pink);
+		await testTreeInsertionAfter(c_subject, red);
+		await testTreeInsertionAfter(c_subject_child, red);
+		await testTreeInsertionAfter(c_subject_descendant, red);
+		await testTreeInsertionAfter(c_next_sibling, purple);
+		await testTreeInsertionAfter(c_next_sibling_child, pink);
+		await testTreeInsertionAfter(c_next_sibling_descendant, pink);
+
+		return true;
 	}
 
 	async function testAdjacentPosition() {
