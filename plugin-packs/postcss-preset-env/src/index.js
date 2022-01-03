@@ -132,7 +132,6 @@ const plugin = opts => {
 	return {
 		postcssPlugin: 'postcss-preset-env',
 		plugins: [...usedPlugins, internalPlugin()],
-
 	};
 };
 

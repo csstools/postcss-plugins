@@ -1,5 +1,10 @@
 # Changes to PostCSS Color Functional Notation
 
+### 4.2.1 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
 ### 4.2.0 (December 27, 2021)
 
 - Added: support for Alpha value as the fourth argument in comma separated values notation.

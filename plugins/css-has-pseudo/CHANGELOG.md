@@ -1,6 +1,11 @@
 # Changes to CSS Has Pseudo
 
-### 3.0.1(December 27, 2021)
+### 3.0.2 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
+### 3.0.1 (December 27, 2021)
 
 - Fixed: require/import paths for browser script
 
