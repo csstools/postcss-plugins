@@ -1,3 +1,28 @@
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
+div:has(.a_test)+#a_subject {
+	background-color: red;
+}
+
+div:has(> .a_test)+#a_subject {
+	background-color: green;
+}
+
+div:has(~ .a_test)+#a_subject {
+	background-color: yellow;
+}
+
+div:has(+ .a_test)+#a_subject {
+	background-color: blue;
+}
+
+div:has(~ div .a_test)+#a_subject {
+	background-color: purple;
+}
+
+div:has(+ div .a_test)+#a_subject {
+	background-color: pink;
+}
+
 /* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/attribute-or-elemental-selectors-in-has.html */
 div,
 main {
@@ -8,47 +33,22 @@ main {
 	padding: 5px;
 }
 
-.subject:has(> .child) {
+.b_subject:has(> .b_child) {
 	background-color: red;
 }
 
-.subject:has(.descendant) {
+.b_subject:has(.b_descendant) {
 	background-color: green;
 }
 
-.subject:has([attrname=descendant]) {
+.b_subject:has([attrname=b_descendant]) {
 	background-color: blue;
 }
 
-.subject:has(#div_descendant) {
+.b_subject:has(#b_div_descendant) {
 	background-color: yellow;
 }
 
-.subject:has(descendant) {
+.b_subject:has(b_descendant) {
 	background-color: yellowgreen;
-}
-
-/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
-div:has(.test)+#subject {
-	background-color: red;
-}
-
-div:has(> .test)+#subject {
-	background-color: green;
-}
-
-div:has(~ .test)+#subject {
-	background-color: yellow;
-}
-
-div:has(+ .test)+#subject {
-	background-color: blue;
-}
-
-div:has(~ div .test)+#subject {
-	background-color: purple;
-}
-
-div:has(+ div .test)+#subject {
-	background-color: pink;
 }

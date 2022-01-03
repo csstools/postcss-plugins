@@ -1,4 +1,4 @@
-/* global MutationObserver,requestAnimationFrame,cancelAnimationFrame */
+/* global MutationObserver,requestAnimationFrame,cancelAnimationFrame,self */
 
 import '@mrhenry/core-web/modules/~element-qsa-has.js';
 import extractEncodedSelectors from './encode/extract.mjs';
@@ -12,6 +12,7 @@ export default function cssHasPseudo(document, options) {
 
 		options = {
 			hover: (!!options.hover) || false,
+			debug: (!!options.debug) || false,
 			observedAttributes: options.observedAttributes || [],
 		};
 
@@ -36,22 +37,24 @@ export default function cssHasPseudo(document, options) {
 	transformObservedItemsThrottled();
 
 	// observe DOM modifications that affect selectors
-	const mutationObserver = new MutationObserver((mutationsList) => {
-		mutationsList.forEach(mutation => {
-			[].forEach.call(mutation.addedNodes || [], node => {
-				// walk stylesheets to collect observed css rules
-				if (node.nodeType === 1 && node.sheet) {
-					walkStyleSheet(node.sheet);
-				}
+	if ('MutationObserver' in self) {
+		const mutationObserver = new MutationObserver((mutationsList) => {
+			mutationsList.forEach(mutation => {
+				[].forEach.call(mutation.addedNodes || [], node => {
+					// walk stylesheets to collect observed css rules
+					if (node.nodeType === 1 && node.sheet) {
+						walkStyleSheet(node.sheet);
+					}
+				});
+
+				// transform observed css rules
+				cleanupObservedCssRules();
+				transformObservedItemsThrottled();
 			});
-
-			// transform observed css rules
-			cleanupObservedCssRules();
-			transformObservedItemsThrottled();
 		});
-	});
 
-	mutationObserver.observe(document, { childList: true, subtree: true, attributes: true, attributeFilter: options.observedAttributes });
+		mutationObserver.observe(document, { childList: true, subtree: true, attributes: true, attributeFilter: options.observedAttributes });
+	}
 
 	// observe DOM events that affect pseudo-selectors
 	document.addEventListener('focus', transformObservedItemsThrottled, true);
@@ -79,52 +82,57 @@ export default function cssHasPseudo(document, options) {
 
 	// transform observed css rules
 	function transformObservedItems() {
-		observedItems.forEach(
-			item => {
-				const nodes = [];
+		observedItems.forEach((item) => {
+			const nodes = [];
 
-				[].forEach.call(
-					document.querySelectorAll(item.selector),
-					element => {
-						// memorize the node
-						nodes.push(element);
+			let matches = [];
+			try {
+				matches = document.querySelectorAll(item.selector);
+			} catch (e) {
+				if (options.debug) {
+					console.error(e);
+				}
+				return;
+			}
 
-						// set an attribute with an irregular attribute name
-						// document.createAttribute() doesn't support special characters
-						attributeElement.innerHTML = '<x ' + item.attributeName + '>';
+			[].forEach.call(matches, (element) => {
+				// memorize the node
+				nodes.push(element);
 
-						element.setAttributeNode(attributeElement.children[0].attributes[0].cloneNode());
+				// set an attribute with an irregular attribute name
+				// document.createAttribute() doesn't support special characters
+				attributeElement.innerHTML = '<x ' + item.attributeName + '>';
 
-						// trigger a style refresh in IE and Edge
-						document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
-					},
-				);
+				element.setAttributeNode(attributeElement.children[0].attributes[0].cloneNode());
 
-				// remove the encoded attribute from all nodes that no longer match them
-				item.nodes.forEach(node => {
-					if (nodes.indexOf(node) === -1) {
-						node.removeAttribute(item.attributeName);
+				// trigger a style refresh in IE and Edge
+				document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
+			});
 
-						// trigger a style refresh in IE and Edge
-						document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
-					}
-				});
+			// remove the encoded attribute from all nodes that no longer match them
+			item.nodes.forEach(node => {
+				if (nodes.indexOf(node) === -1) {
+					node.removeAttribute(item.attributeName);
 
-				// update the
-				item.nodes = nodes;
-			},
-		);
+					// trigger a style refresh in IE and Edge
+					document.documentElement.style.zoom = 1; document.documentElement.style.zoom = null;
+				}
+			});
+
+			// update the
+			item.nodes = nodes;
+		});
 	}
 
 	// remove any observed cssrules that no longer apply
 	function cleanupObservedCssRules() {
 		[].push.apply(
 			observedItems,
-			observedItems.splice(0).filter(
-				item => item.rule.parentStyleSheet &&
+			observedItems.splice(0).filter((item) => {
+				return item.rule.parentStyleSheet &&
 					item.rule.parentStyleSheet.ownerNode &&
-					document.documentElement.contains(item.rule.parentStyleSheet.ownerNode),
-			),
+					document.documentElement.contains(item.rule.parentStyleSheet.ownerNode);
+			}),
 		);
 	}
 
@@ -132,29 +140,37 @@ export default function cssHasPseudo(document, options) {
 	function walkStyleSheet(styleSheet) {
 		try {
 			// walk a css rule to collect observed css rules
-			[].forEach.call(styleSheet.cssRules || [], rule => {
+			[].forEach.call(styleSheet.cssRules || [], (rule) => {
 				if (rule.selectorText) {
-					// decode the selector text in all browsers to:
-					const hasSelectors = extractEncodedSelectors(rule.selectorText);
-					if (hasSelectors.length === 0) {
-						return;
-					}
+					try {
+						// decode the selector text in all browsers to:
+						const hasSelectors = extractEncodedSelectors(rule.selectorText);
+						if (hasSelectors.length === 0) {
+							return;
+						}
 
-					for (let i = 0; i < hasSelectors.length; i++) {
-						const hasSelector = hasSelectors[i];
-						observedItems.push({
-							rule: rule,
-							selector: hasSelector,
-							attributeName: encodeURIComponent(hasSelector).replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ','), // TODO : needs unit tests.
-							nodes: [],
-						});
+						for (let i = 0; i < hasSelectors.length; i++) {
+							const hasSelector = hasSelectors[i];
+							observedItems.push({
+								rule: rule,
+								selector: hasSelector,
+								attributeName: encodeURIComponent(hasSelector).replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ','), // TODO : needs unit tests.
+								nodes: [],
+							});
+						}
+					} catch (e) {
+						if (options.debug) {
+							console.error(e);
+						}
 					}
 				} else {
 					walkStyleSheet(rule);
 				}
 			});
-		} catch (_) {
-			/* do nothing and continue */
+		} catch (e) {
+			if (options.debug) {
+				console.error(e);
+			}
 		}
 	}
 }

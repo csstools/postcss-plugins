@@ -30,16 +30,16 @@
 		// https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html
 
 		fixture.innerHTML = `
-			<main id=main>
-				<div id=previous_sibling>
-					<div id=previous_sibling_child>
-						<div id=previous_sibling_descendant></div>
+			<main id="a_main">
+				<div id="a_previous_sibling">
+					<div id="a_previous_sibling_child">
+						<div id="a_previous_sibling_descendant"></div>
 					</div>
 				</div>
-				<div id=subject></div>
-				<div id=next_sibling>
-					<div id=next_sibling_child>
-						<div id=next_sibling_descendant></div>
+				<div id="a_subject"></div>
+				<div id="a_next_sibling">
+					<div id="a_next_sibling_child">
+						<div id="a_next_sibling_descendant"></div>
 					</div>
 				</div>
 			</main>
@@ -54,18 +54,18 @@
 		const pink = 'rgb(255, 192, 203)';
 
 		function testColor(test_name, color) {
-			var actual = getComputedStyle(subject).backgroundColor;
+			var actual = getComputedStyle(a_subject).backgroundColor;
 			if (actual !== color) {
 				throw new Error(test_name + ': expected ' + color + ' but got ' + actual);
 			}
 		}
 
 		async function testClassChange(element, expectedColor) {
-			element.classList.add('test');
+			element.classList.add('a_test');
 			await rafP(() => {
 				testColor(`add .test to ${element.id}`, expectedColor);
 			});
-			element.classList.remove('test');
+			element.classList.remove('a_test');
 			await rafP(() => {
 				testColor(`remove .test from ${element.id}`, grey);
 			});
@@ -73,7 +73,7 @@
 
 		async function testElementInsertionBefore(beforeElement, expectedColor) {
 			const newElement = document.createElement('div');
-			newElement.classList.add('test')
+			newElement.classList.add('a_test')
 
 			beforeElement.before(newElement);
 			await rafP(() => {
@@ -88,7 +88,7 @@
 
 		async function testElementInsertionAfter(afterElement, expectedColor) {
 			const newElement = document.createElement('div');
-			newElement.classList.add('test')
+			newElement.classList.add('a_test')
 
 			afterElement.after(newElement);
 			await rafP(() => {
@@ -104,7 +104,7 @@
 		async function testTreeInsertionBefore(beforeElement, expectedColor) {
 			const newElement = document.createElement('div');
 			const newChild = document.createElement('div');
-			newChild.classList.add('test');
+			newChild.classList.add('a_test');
 			newElement.appendChild(newChild);
 
 			beforeElement.before(newElement);
@@ -121,7 +121,7 @@
 		async function testTreeInsertionAfter(afterElement, expectedColor) {
 			const newElement = document.createElement('div');
 			const newChild = document.createElement('div');
-			newChild.classList.add('test');
+			newChild.classList.add('a_test');
 			newElement.appendChild(newChild);
 
 			afterElement.after(newElement);
@@ -139,45 +139,45 @@
 			testColor('Initial color', grey);
 		});
 
-		await testClassChange(previous_sibling, grey);
-		await testClassChange(previous_sibling_child, green);
-		await testClassChange(previous_sibling_descendant, red);
-		await testClassChange(subject, blue);
-		await testClassChange(next_sibling, yellow);
-		await testClassChange(next_sibling_child, purple);
-		await testClassChange(next_sibling_descendant, purple);
+		await testClassChange(a_previous_sibling, grey);
+		await testClassChange(a_previous_sibling_child, green);
+		await testClassChange(a_previous_sibling_descendant, red);
+		await testClassChange(a_subject, blue);
+		await testClassChange(a_next_sibling, yellow);
+		await testClassChange(a_next_sibling_child, purple);
+		await testClassChange(a_next_sibling_descendant, purple);
 
-		await testElementInsertionBefore(previous_sibling, grey);
-		await testElementInsertionBefore(previous_sibling_child, green);
-		await testElementInsertionBefore(previous_sibling_descendant, red);
-		await testElementInsertionBefore(subject, grey);
-		await testElementInsertionBefore(next_sibling, yellow);
-		await testElementInsertionBefore(next_sibling_child, purple);
-		await testElementInsertionBefore(next_sibling_descendant, purple);
+		await testElementInsertionBefore(a_previous_sibling, grey);
+		await testElementInsertionBefore(a_previous_sibling_child, green);
+		await testElementInsertionBefore(a_previous_sibling_descendant, red);
+		await testElementInsertionBefore(a_subject, grey);
+		await testElementInsertionBefore(a_next_sibling, yellow);
+		await testElementInsertionBefore(a_next_sibling_child, purple);
+		await testElementInsertionBefore(a_next_sibling_descendant, purple);
 
-		await testElementInsertionAfter(previous_sibling, grey);
-		await testElementInsertionAfter(previous_sibling_child, green);
-		await testElementInsertionAfter(previous_sibling_descendant, red);
-		await testElementInsertionAfter(subject, yellow);
-		await testElementInsertionAfter(next_sibling, yellow);
-		await testElementInsertionAfter(next_sibling_child, purple);
-		await testElementInsertionAfter(next_sibling_descendant, purple);
+		await testElementInsertionAfter(a_previous_sibling, grey);
+		await testElementInsertionAfter(a_previous_sibling_child, green);
+		await testElementInsertionAfter(a_previous_sibling_descendant, red);
+		await testElementInsertionAfter(a_subject, yellow);
+		await testElementInsertionAfter(a_next_sibling, yellow);
+		await testElementInsertionAfter(a_next_sibling_child, purple);
+		await testElementInsertionAfter(a_next_sibling_descendant, purple);
 
-		await testTreeInsertionBefore(previous_sibling, grey);
-		await testTreeInsertionBefore(previous_sibling_child, red);
-		await testTreeInsertionBefore(previous_sibling_descendant, red);
-		await testTreeInsertionBefore(subject, green);
-		await testTreeInsertionBefore(next_sibling, purple);
-		await testTreeInsertionBefore(next_sibling_child, purple);
-		await testTreeInsertionBefore(next_sibling_descendant, purple);
+		await testTreeInsertionBefore(a_previous_sibling, grey);
+		await testTreeInsertionBefore(a_previous_sibling_child, red);
+		await testTreeInsertionBefore(a_previous_sibling_descendant, red);
+		await testTreeInsertionBefore(a_subject, green);
+		await testTreeInsertionBefore(a_next_sibling, purple);
+		await testTreeInsertionBefore(a_next_sibling_child, purple);
+		await testTreeInsertionBefore(a_next_sibling_descendant, purple);
 
-		await testTreeInsertionAfter(previous_sibling, green);
-		await testTreeInsertionAfter(previous_sibling_child, red);
-		await testTreeInsertionAfter(previous_sibling_descendant, red);
-		await testTreeInsertionAfter(subject, purple);
-		await testTreeInsertionAfter(next_sibling, purple);
-		await testTreeInsertionAfter(next_sibling_child, purple);
-		await testTreeInsertionAfter(next_sibling_descendant, purple);
+		await testTreeInsertionAfter(a_previous_sibling, green);
+		await testTreeInsertionAfter(a_previous_sibling_child, red);
+		await testTreeInsertionAfter(a_previous_sibling_descendant, red);
+		await testTreeInsertionAfter(a_subject, purple);
+		await testTreeInsertionAfter(a_next_sibling, purple);
+		await testTreeInsertionAfter(a_next_sibling_child, purple);
+		await testTreeInsertionAfter(a_next_sibling_descendant, purple);
 
 		return true;
 	}
@@ -186,10 +186,10 @@
 		// https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/attribute-or-elemental-selectors-in-has.html
 
 		fixture.innerHTML = `
-			<main id=main>
-				<div id=div_subject class="subject">
-					<div id=div_child>
-						<div id=div_grandchild></div>
+			<main id="b_main">
+				<div id="b_div_subject" class="b_subject">
+					<div id="b_div_child">
+						<div id="b_div_grandchild"></div>
 					</div>
 				</div>
 			</main>
@@ -209,172 +209,172 @@
 			}
 		}
 
-		test_div('initial_color', div_subject, grey);
-		test_div('initial_color', div_child, grey);
-		test_div('initial_color', div_grandchild, grey);
+		test_div('initial_color', b_div_subject, grey);
+		test_div('initial_color', b_div_child, grey);
+		test_div('initial_color', b_div_grandchild, grey);
 
-		div_child.classList.add('child');
+		b_div_child.classList.add('b_child');
 		await rafP(() => {
-			test_div('add .child to #div_child', div_subject, red);
-		});
-
-		div_child.classList.remove('child');
-		await rafP(() => {
-			test_div('remove .child from #div_child', div_subject, grey);
+			test_div('add .child to #b_div_child', b_div_subject, red);
 		});
 
-		div_grandchild.classList.add('child');
+		b_div_child.classList.remove('b_child');
 		await rafP(() => {
-			test_div('add .child to #div_grandchild', div_subject, grey);
-		});
-		div_grandchild.classList.remove('child');
-		await rafP(() => {
-			test_div('remove .child from #div_grandchild', div_subject, grey);
+			test_div('remove .child from #b_div_child', b_div_subject, grey);
 		});
 
-		div_child.classList.add('descendant');
+		b_div_grandchild.classList.add('b_child');
 		await rafP(() => {
-			test_div('add .descendant to #div_child', div_subject, green);
+			test_div('add .child to #b_div_grandchild', b_div_subject, grey);
 		});
-		div_child.classList.remove('descendant');
+		b_div_grandchild.classList.remove('b_child');
 		await rafP(() => {
-			test_div('remove .descendant from #div_child', div_subject, grey);
-		});
-
-		div_grandchild.classList.add('descendant');
-		await rafP(() => {
-			test_div('add .descendant to #div_grandchild', div_subject, green);
-		});
-		div_grandchild.classList.remove('descendant');
-		await rafP(() => {
-			test_div('remove .descendant from #div_grandchild', div_subject, grey);
+			test_div('remove .child from #b_div_grandchild', b_div_subject, grey);
 		});
 
-		div_grandchild.setAttribute('attrname', 'descendant');
+		b_div_child.classList.add('b_descendant');
 		await rafP(() => {
-			test_div('set descendant to #div_grandchild[attrname]', div_subject, blue);
+			test_div('add .b_descendant to #b_div_child', b_div_subject, green);
 		});
-		div_grandchild.setAttribute('attrname', '');
+		b_div_child.classList.remove('b_descendant');
 		await rafP(() => {
-			test_div('clear #div_grandchild[attrname]', div_subject, grey);
+			test_div('remove .b_descendant from #b_div_child', b_div_subject, grey);
 		});
 
-		div_grandchild.id = 'div_descendant';
+		b_div_grandchild.classList.add('b_descendant');
 		await rafP(() => {
-			test_div('change #div_grandchild to #div_descendant', div_subject, yellow);
+			test_div('add .b_descendant to #b_div_grandchild', b_div_subject, green);
 		});
-		div_descendant.id = 'div_grandchild';
+		b_div_grandchild.classList.remove('b_descendant');
 		await rafP(() => {
-			test_div('change #div_descendant to #div_grandchild', div_subject, grey);
+			test_div('remove .b_descendant from #b_div_grandchild', b_div_subject, grey);
+		});
+
+		b_div_grandchild.setAttribute('attrname', 'b_descendant');
+		await rafP(() => {
+			test_div('set b_descendant to #b_div_grandchild[attrname]', b_div_subject, blue);
+		});
+		b_div_grandchild.setAttribute('attrname', '');
+		await rafP(() => {
+			test_div('clear #b_div_grandchild[attrname]', b_div_subject, grey);
+		});
+
+		b_div_grandchild.id = 'b_div_descendant';
+		await rafP(() => {
+			test_div('change #b_div_grandchild to #b_div_descendant', b_div_subject, yellow);
+		});
+		b_div_descendant.id = 'b_div_grandchild';
+		await rafP(() => {
+			test_div('change #b_div_descendant to #b_div_grandchild', b_div_subject, grey);
 		});
 
 		{
-			var descendant = document.createElement('descendant');
-			div_subject.appendChild(descendant);
+			var b_descendant = document.createElement('b_descendant');
+			b_div_subject.appendChild(b_descendant);
 			await rafP(() => {
-				test_div('add descendant to #div_subject', div_subject, yellowgreen);
+				test_div('add b_descendant to #b_div_subject', b_div_subject, yellowgreen);
 			});
-			div_subject.removeChild(descendant);
+			b_div_subject.removeChild(b_descendant);
 			await rafP(() => {
-				test_div('remove descendant from #div_subject', div_subject, grey);
+				test_div('remove b_descendant from #b_div_subject', b_div_subject, grey);
 			});
 		}
 
 		{
 			var div = document.createElement('div');
-			var descendant = document.createElement('descendant');
-			div.appendChild(descendant);
-			div_subject.appendChild(div);
+			var b_descendant = document.createElement('b_descendant');
+			div.appendChild(b_descendant);
+			b_div_subject.appendChild(div);
 			await rafP(() => {
-				test_div('add "div > descendant" to #div_subject', div_subject, yellowgreen);
+				test_div('add "div > b_descendant" to #b_div_subject', b_div_subject, yellowgreen);
 			});
-			div_subject.removeChild(div);
+			b_div_subject.removeChild(div);
 			await rafP(() => {
-				test_div('remove "div > descendant" from #div_subject', div_subject, grey);
+				test_div('remove "div > b_descendant" from #b_div_subject', b_div_subject, grey);
 			});
 		}
 
 		{
 			var child = document.createElement('div');
-			child.classList.add('child');
-			div_subject.appendChild(child);
+			child.classList.add('b_child');
+			b_div_subject.appendChild(child);
 			await rafP(() => {
-				test_div('add div.child to #div_subject', div_subject, red);
+				test_div('add div.b_child to #b_div_subject', b_div_subject, red);
 			});
-			div_subject.removeChild(child);
+			b_div_subject.removeChild(child);
 			await rafP(() => {
-				test_div('remove div.child from #div_subject', div_subject, grey);
+				test_div('remove div.b_child from #b_div_subject', b_div_subject, grey);
 			});
 		}
 
 		{
-			var descendant = document.createElement('div');
-			descendant.classList.add('descendant');
+			var b_descendant = document.createElement('div');
+			b_descendant.classList.add('b_descendant');
 			var div = document.createElement('div');
-			div.appendChild(descendant);
-			div_subject.appendChild(div);
+			div.appendChild(b_descendant);
+			b_div_subject.appendChild(div);
 			await rafP(() => {
-				test_div('add "div > div.descendant" to #div_subject', div_subject, green);
+				test_div('add "div > div.b_descendant" to #b_div_subject', b_div_subject, green);
 			});
-			div_subject.removeChild(div);
+			b_div_subject.removeChild(div);
 			await rafP(() => {
-				test_div('remove "div > div.descendant" from #div_subject', div_subject, grey);
+				test_div('remove "div > div.b_descendant" from #b_div_subject', b_div_subject, grey);
 			});
 		}
 
 		{
 			var child = document.createElement('div');
-			child.id = 'div_descendant';
-			div_subject.appendChild(child);
+			child.id = 'b_div_descendant';
+			b_div_subject.appendChild(child);
 			await rafP(() => {
-				test_div('add div#div_descendant to #div_subject', div_subject, yellow);
+				test_div('add div#b_div_descendant to #b_div_subject', b_div_subject, yellow);
 			});
-			div_subject.removeChild(child);
+			b_div_subject.removeChild(child);
 			await rafP(() => {
-				test_div('remove div#div_descendant from #div_subject', div_subject, grey);
+				test_div('remove div#b_div_descendant from #b_div_subject', b_div_subject, grey);
 			});
 		}
 
 		{
 			var descendant = document.createElement('div');
-			descendant.id = 'div_descendant';
+			descendant.id = 'b_div_descendant';
 			var div = document.createElement('div');
 			div.appendChild(descendant);
-			div_subject.appendChild(div);
+			b_div_subject.appendChild(div);
 			await rafP(() => {
-				test_div('add "div#div_descendant" to #div_subject', div_subject, yellow);
+				test_div('add "div#b_div_descendant" to #b_div_subject', b_div_subject, yellow);
 			});
-			div_subject.removeChild(div);
+			b_div_subject.removeChild(div);
 			await rafP(() => {
-				test_div('remove "div#div_descendant" from #div_subject', div_subject, grey);
+				test_div('remove "div#b_div_descendant" from #b_div_subject', b_div_subject, grey);
 			});
 		}
 
 		{
 			var child = document.createElement('div');
-			child.setAttribute('attrname', 'descendant');
-			div_subject.appendChild(child);
+			child.setAttribute('attrname', 'b_descendant');
+			b_div_subject.appendChild(child);
 			await rafP(() => {
-				test_div('add div[attrname] to #div_subject', div_subject, blue);
+				test_div('add div[attrname] to #b_div_subject', b_div_subject, blue);
 			});
-			div_subject.removeChild(child);
+			b_div_subject.removeChild(child);
 			await rafP(() => {
-				test_div('remove div[attrname] from #div_subject', div_subject, grey);
+				test_div('remove div[attrname] from #b_div_subject', b_div_subject, grey);
 			});
 		}
 
 		{
 			var descendant = document.createElement('div');
-			descendant.setAttribute('attrname', 'descendant');
+			descendant.setAttribute('attrname', 'b_descendant');
 			var div = document.createElement('div');
 			div.appendChild(descendant);
-			div_subject.appendChild(div);
+			b_div_subject.appendChild(div);
 			await rafP(() => {
-				test_div('add "div > div[attrname]" to #div_subject', div_subject, blue);
+				test_div('add "div > div[attrname]" to #b_div_subject', b_div_subject, blue);
 			});
-			div_subject.removeChild(div);
+			b_div_subject.removeChild(div);
 			await rafP(() => {
-				test_div('remove "div > div[attrname]" from #div_subject', div_subject, grey);
+				test_div('remove "div > div[attrname]" from #b_div_subject', b_div_subject, grey);
 			});
 		}
 

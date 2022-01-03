@@ -1,3 +1,28 @@
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
+[div\:has\(\.a_test\)\%2B\%23a_subject] {
+	background-color: red;
+}
+
+[div\:has\(\%3E\%20\.a_test\)\%2B\%23a_subject] {
+	background-color: green;
+}
+
+[div\:has\(\~\%20\.a_test\)\%2B\%23a_subject] {
+	background-color: yellow;
+}
+
+[div\:has\(\%2B\%20\.a_test\)\%2B\%23a_subject] {
+	background-color: blue;
+}
+
+[div\:has\(\~\%20div\%20\.a_test\)\%2B\%23a_subject][div\:has\(\~\%20div\%20\.a_test\)\%2B\%23a_subject] {
+	background-color: purple;
+}
+
+[div\:has\(\%2B\%20div\%20\.a_test\)\%2B\%23a_subject][div\:has\(\%2B\%20div\%20\.a_test\)\%2B\%23a_subject] {
+	background-color: pink;
+}
+
 /* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/attribute-or-elemental-selectors-in-has.html */
 div,
 main {
@@ -8,47 +33,22 @@ main {
 	padding: 5px;
 }
 
-[\.subject\:has\(\%3E\%20\.child\)][\.subject\:has\(\%3E\%20\.child\)] {
+[\.b_subject\:has\(\%3E\%20\.b_child\)][\.b_subject\:has\(\%3E\%20\.b_child\)] {
 	background-color: red;
 }
 
-[\.subject\:has\(\.descendant\)][\.subject\:has\(\.descendant\)] {
+[\.b_subject\:has\(\.b_descendant\)][\.b_subject\:has\(\.b_descendant\)] {
 	background-color: green;
 }
 
-[\.subject\:has\(\[attrname\%3Ddescendant\]\)][\.subject\:has\(\[attrname\%3Ddescendant\]\)] {
+[\.b_subject\:has\(\[attrname\%3Db_descendant\]\)][\.b_subject\:has\(\[attrname\%3Db_descendant\]\)] {
 	background-color: blue;
 }
 
-[\.subject\:has\(\%23div_descendant\)] {
+[\.b_subject\:has\(\%23b_div_descendant\)] {
 	background-color: yellow;
 }
 
-[\.subject\:has\(descendant\)] {
+[\.b_subject\:has\(b_descendant\)] {
 	background-color: yellowgreen;
-}
-
-/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
-[div\:has\(\.test\)\%2B\%23subject] {
-	background-color: red;
-}
-
-[div\:has\(\%3E\%20\.test\)\%2B\%23subject] {
-	background-color: green;
-}
-
-[div\:has\(\~\%20\.test\)\%2B\%23subject] {
-	background-color: yellow;
-}
-
-[div\:has\(\%2B\%20\.test\)\%2B\%23subject] {
-	background-color: blue;
-}
-
-[div\:has\(\~\%20div\%20\.test\)\%2B\%23subject][div\:has\(\~\%20div\%20\.test\)\%2B\%23subject] {
-	background-color: purple;
-}
-
-[div\:has\(\%2B\%20div\%20\.test\)\%2B\%23subject][div\:has\(\%2B\%20div\%20\.test\)\%2B\%23subject] {
-	background-color: pink;
 }
