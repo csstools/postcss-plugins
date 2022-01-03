@@ -1,9 +1,11 @@
-# CSS Has Pseudo for Browsers [<img src="http://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][CSS Has Pseudo]
+# EXPERIMENTAL : CSS Has Pseudo for Browsers [<img src="http://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][EXPERIMENTAL CSS Has Pseudo]
 
 [![NPM Version][npm-img]][npm-url]
 [![Support Chat][git-img]][git-url]
 
-[CSS Has Pseudo] lets you style elements relative to other elements in CSS,
+⚠️ Experimental version of [CSS Has Pseudo](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo)
+
+[EXPERIMENTAL CSS Has Pseudo] lets you style elements relative to other elements in CSS,
 following the [Selectors Level 4] specification.
 
 ```css
@@ -18,23 +20,23 @@ body[\:has\(\:focus\)] {
 
 ## Usage
 
-Add [CSS Has Pseudo] to your build tool:
+Add [EXPERIMENTAL CSS Has Pseudo] to your build tool:
 
 ```bash
-npm install css-has-pseudo
+npm install @csstools/css-has-pseudo-experimental
 ```
 
 Then include and initialize it on your document:
 
 ```js
-const cssHasPseudo = require('css-has-pseudo/browser');
+const cssHasPseudo = require('@csstools/css-has-pseudo-experimental/browser');
 
 cssHasPseudo(document);
 ```
 
 ```html
 <link rel="stylesheet" href="TRANSFORMED.css">
-<script src="https://unpkg.com/css-has-pseudo/dist/browser-global.js"></script>
+<script src="https://unpkg.com/@csstools/css-has-pseudo-experimental/dist/browser-global.js"></script>
 <script>cssHasPseudo(document)</script>
 ```
 
@@ -84,5 +86,5 @@ ECMA Script:
 [npm-img]: https://img.shields.io/npm/v/css-has-pseudo.svg
 [npm-url]: https://www.npmjs.com/package/css-has-pseudo
 
-[CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
+[EXPERIMENTAL CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/experimental/css-has-pseudo
 [Selectors Level 4]: https://drafts.csswg.org/selectors-4/#has

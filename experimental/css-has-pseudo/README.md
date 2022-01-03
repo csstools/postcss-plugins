@@ -1,9 +1,11 @@
-# CSS Has Pseudo [<img src="http://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][CSS Has Pseudo]
+# EXPERIMENTAL : CSS Has Pseudo [<img src="http://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][EXPERIMENTAL CSS Has Pseudo]
 
 [![NPM Version][npm-img]][npm-url]
 [![Support Chat][git-img]][git-url]
 
-[CSS Has Pseudo] lets you style elements relative to other elements in CSS,
+⚠️ Experimental version of [CSS Has Pseudo](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo)
+
+[EXPERIMENTAL CSS Has Pseudo] lets you style elements relative to other elements in CSS,
 following the [Selectors Level 4] specification.
 
 [!['Can I use' table](https://caniuse.bitsofco.de/image/css-has.png)](https://caniuse.com/#feat=css-has)
@@ -26,23 +28,15 @@ body:has(:focus) {
 }
 ```
 
-## Usage
-
-From the command line, transform CSS files that use `:has` selectors:
-
-```bash
-npx css-has-pseudo SOURCE.css --output TRANSFORMED.css
-```
-
 Next, use your transformed CSS with this script:
 
 ```html
 <link rel="stylesheet" href="TRANSFORMED.css">
-<script src="https://unpkg.com/css-has-pseudo/dist/browser-global.js"></script>
+<script src="https://unpkg.com/@csstools/css-has-pseudo-experimental/dist/browser-global.js"></script>
 <script>cssHasPseudo(document)</script>
 ```
 
-⚠️ Please use a versioned url, like this : `https://unpkg.com/css-has-pseudo@3.0.0/dist/browser-global.js`
+⚠️ Please use a versioned url, like this : `https://unpkg.com/@csstools/css-has-pseudo-experimental@0.1.0/dist/browser-global.js`
 Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
 ⚠️ If you were using an older version via a CDN, please update the entire url.
@@ -70,20 +64,20 @@ section:not(:has(h1, h2, h3, h4, h5, h6)) {
 
 /* becomes */
 
-body[\:has\(\:focus\)] {
-  background-color: yellow;
+[body\:has\(\:focus\)] {
+	background-color: yellow;
 }
 
 body:has(:focus) {
-  background-color: yellow;
+	background-color: yellow;
 }
 
-section[\:not-has\(h1\,\%20h2\,\%20h3\,\%20h4\,\%20h5\,\%20h6\)] {
-  background-color: gray;
+[section\:not\(\:has\(h1\,\%20h2\,\%20h3\,\%20h4\,\%20h5\,\%20h6\)\)] {
+	background-color: gray;
 }
 
 section:not(:has(h1, h2, h3, h4, h5, h6)) {
-  background-color: gray;
+	background-color: gray;
 }
 ```
 
@@ -91,7 +85,7 @@ Next, the [JavaScript library](README-BROWSER.md) adds a `[:has]` attribute to
 elements otherwise matching `:has` natively.
 
 ```html
-<body :has(:focus)>
+<body body:has(:focus)>
   <input value="This element is focused">
 </body>
 ```
@@ -101,6 +95,6 @@ elements otherwise matching `:has` natively.
 [npm-img]: https://img.shields.io/npm/v/css-has-pseudo.svg
 [npm-url]: https://www.npmjs.com/package/css-has-pseudo
 
-[CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
+[EXPERIMENTAL CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/experimental/css-has-pseudo
 [Mutation Observer polyfill]: https://github.com/webmodules/mutation-observer
 [Selectors Level 4]: https://drafts.csswg.org/selectors-4/#has-pseudo

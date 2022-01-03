@@ -1,9 +1,11 @@
-# CSS Has Pseudo for PostCSS [<img src="http://jonathantneal.github.io/postcss-logo.svg" alt="" width="90" height="90" align="right">][CSS Has Pseudo]
+# EXPERIMENTAL : CSS Has Pseudo for PostCSS [<img src="http://jonathantneal.github.io/postcss-logo.svg" alt="" width="90" height="90" align="right">][EXPERIMENTAL CSS Has Pseudo]
 
 [![NPM Version][npm-img]][npm-url]
 [![Support Chat][git-img]][git-url]
 
-[CSS Has Pseudo] lets you style elements relative to other elements in CSS,
+⚠️ Experimental version of [CSS Has Pseudo](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo)
+
+[EXPERIMENTAL CSS Has Pseudo] lets you style elements relative to other elements in CSS,
 following the [Selectors Level 4] specification.
 
 ```css
@@ -13,47 +15,39 @@ body:has(:focus) {
 
 /* becomes */
 
-body[\:has\(\:focus\)] {
-  background-color: yellow;
+[body\:has\(\:focus\)] {
+	background-color: yellow;
 }
 
 body:has(:focus) {
-  background-color: yellow;
+	background-color: yellow;
 }
 ```
 
-[CSS Has Pseudo] duplicates rules using the `:has` pseudo-class with a `[has]`
+[EXPERIMENTAL CSS Has Pseudo] duplicates rules using the `:has` pseudo-class with a `[has]`
 attribute selector. The preservation of the original `:has` rule can be
 disabled using the `preserve` option.
 
 ## Usage
 
-Add [CSS Has Pseudo] to your project:
+Add [EXPERIMENTAL CSS Has Pseudo] to your project:
 
 ```bash
-npm install css-has-pseudo --save-dev
+npm install @csstools/css-has-pseudo-experimental --save-dev
 ```
 
-Use [CSS Has Pseudo] to process your CSS:
-
-```js
-const postcssHasPseudo = require('css-has-pseudo');
-
-postcssHasPseudo.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [EXPERIMENTAL CSS Has Pseudo] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssHasPseudo = require('css-has-pseudo');
+const postcssHasPseudo = require('@csstools/css-has-pseudo-experimental');
 
 postcss([
   postcssHasPseudo(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-[CSS Has Pseudo] runs in all Node environments, with special
+[EXPERIMENTAL CSS Has Pseudo] runs in all Node environments, with special
 instructions for:
 
 | [Node](INSTALL-POSTCSS.md#node) | [PostCSS CLI](INSTALL-POSTCSS.md#postcss-cli) | [Webpack](INSTALL-POSTCSS.md#webpack) | [Create React App](INSTALL-POSTCSS.md#create-react-app) | [Gulp](INSTALL-POSTCSS.md#gulp) | [Grunt](INSTALL-POSTCSS.md#grunt) |
@@ -88,5 +82,5 @@ body[\:has\(\:focus\)] {
 [npm-url]: https://www.npmjs.com/package/css-has-pseudo
 
 [PostCSS]: https://github.com/postcss/postcss
-[CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
+[EXPERIMENTAL CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/experimental/css-has-pseudo
 [Selectors Level 4]: https://drafts.csswg.org/selectors-4/#has-pseudo

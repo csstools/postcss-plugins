@@ -1,5 +1,5 @@
 import assert from 'assert';
-import plugin from 'css-has-pseudo';
+import plugin from '@csstools/css-has-pseudo-experimental';
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

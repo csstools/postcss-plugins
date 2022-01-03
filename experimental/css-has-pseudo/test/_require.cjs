@@ -1,5 +1,5 @@
 const assert = require('assert');
-const plugin = require('css-has-pseudo');
+const plugin = require('@csstools/css-has-pseudo-experimental');
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

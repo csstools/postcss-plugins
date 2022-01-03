@@ -8,7 +8,7 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 	const shouldPreserve = Boolean('preserve' in opts ? opts.preserve : true);
 
 	return {
-		postcssPlugin: 'css-has-pseudo',
+		postcssPlugin: 'css-has-pseudo-experimental',
 		RuleExit: (rule, { result }) => {
 			if (!rule.selector.includes(':has(')) {
 				return;

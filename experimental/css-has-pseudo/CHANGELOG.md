@@ -2,4 +2,5 @@
 
 ### 0.1.0
 
-TODO
+Tracking initial implementation of `:has()` pseudo-class in Safari Technology Preview.
+This is a breaking change and affects both the generated CSS and the client side polyfill.
