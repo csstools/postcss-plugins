@@ -43,7 +43,7 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 				}
 
 				const abcSpecificity = selectorSpecificity(selectorAST);
-				specificity = Math.max(1, abcSpecificity.a, abcSpecificity.b, abcSpecificity.c);
+				specificity = Math.max(1, abcSpecificity.b);
 
 				let encodedSelectorWithBSpecificty = '';
 				const encodedSelector = '[' + encodeCSS(selector) + ']';

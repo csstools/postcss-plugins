@@ -7,12 +7,19 @@ export default function extractEncodedSelectors(value) {
 	let depth = 0;
 	let candidate;
 
+	let quoted = false;
+	let quotedMark = false;
+
 	// Stryker disable next-line EqualityOperator
 	for (let i = 0; i < value.length; i++) {
 		const char = value[i];
 
 		switch (char) {
 			case '[':
+				if (quoted) {
+					continue;
+				}
+
 				if (depth === 0) {
 					candidate = '';
 				} else {
@@ -21,11 +28,15 @@ export default function extractEncodedSelectors(value) {
 				depth++;
 				continue;
 			case ']':
+				if (quoted) {
+					continue;
+				}
+
 				{
 					depth--;
 					if (depth === 0) {
 						const decoded = decodeCSS(candidate);
-						if (decoded !== candidate && decoded.indexOf(':has(') > -1) {
+						if (decoded.indexOf(':has(') > -1) {
 							out.push(decoded);
 						}
 					} else {
@@ -34,10 +45,27 @@ export default function extractEncodedSelectors(value) {
 				}
 				continue;
 			case '\\':
+				if (quoted) {
+					i++;
+					continue;
+				}
+
 				candidate += value[i];
 				candidate += value[i+1];
 				i++;
 				continue;
+
+			case '"':
+			case '\'':
+				if (quoted && char === quotedMark) {
+					quoted = false;
+					continue;
+				}
+
+				quoted = true;
+				quotedMark = char;
+				continue;
+
 			default:
 				candidate += char;
 				continue;

@@ -15,11 +15,11 @@
 	background-color: blue
 }
 
-[div\:has\(\~\%20div\%20\.c_test\)\%20\%23c_subject][div\:has\(\~\%20div\%20\.c_test\)\%20\%23c_subject] {
+[div\:has\(\~\%20div\%20\.c_test\)\%20\%23c_subject] {
 	background-color: purple
 }
 
-[div\:has\(\%2B\%20div\%20\.c_test\)\%20\%23c_subject][div\:has\(\%2B\%20div\%20\.c_test\)\%20\%23c_subject] {
+[div\:has\(\%2B\%20div\%20\.c_test\)\%20\%23c_subject] {
 	background-color: pink
 }
 
@@ -40,11 +40,11 @@
 	background-color: blue;
 }
 
-[div\:has\(\~\%20div\%20\.a_test\)\%2B\%23a_subject][div\:has\(\~\%20div\%20\.a_test\)\%2B\%23a_subject] {
+[div\:has\(\~\%20div\%20\.a_test\)\%2B\%23a_subject] {
 	background-color: purple;
 }
 
-[div\:has\(\%2B\%20div\%20\.a_test\)\%2B\%23a_subject][div\:has\(\%2B\%20div\%20\.a_test\)\%2B\%23a_subject] {
+[div\:has\(\%2B\%20div\%20\.a_test\)\%2B\%23a_subject] {
 	background-color: pink;
 }
 

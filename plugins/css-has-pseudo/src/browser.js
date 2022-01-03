@@ -146,7 +146,7 @@ export default function cssHasPseudo(document, options) {
 				if (rule.selectorText) {
 					try {
 						// decode the selector text in all browsers to:
-						const hasSelectors = extractEncodedSelectors(rule.selectorText);
+						const hasSelectors = extractEncodedSelectors(rule.selectorText.toString());
 						if (hasSelectors.length === 0) {
 							return;
 						}

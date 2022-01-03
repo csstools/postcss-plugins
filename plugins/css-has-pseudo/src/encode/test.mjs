@@ -168,3 +168,26 @@ testExtract(
 	'[\\.x\\:has\\(\\%3E\\%20\\.a\\)][\\.x\\:has\\(\\%3E\\%20\\.a\\)], [\\.x\\:has\\(\\%3E\\%20\\.b\\)][\\.x\\:has\\(\\%3E\\%20\\.b\\)]',
 	['.x:has(> .a)', '.x:has(> .b)'],
 );
+
+testExtract(
+	'[\\.b_subject\\:has\\(\\.b_descendant\\)][\\.b_subject\\:has\\(\\.b_descendant\\)]',
+	['.b_subject:has(.b_descendant)'],
+);
+
+testExtract(
+	'[foo="\\[\\.b_subject\\:has\\(\\.b_descendant\\)\\]\\[\\.b_subject\\:has\\(\\.b_descendant\\)\\]"]',
+	[],
+);
+
+testExtract(
+	'"\\"[\\.b_subject\\:has\\(\\.b_descendant\\)][\\.b_subject\\:has\\(\\.b_descendant\\)]"',
+	[],
+);
+
+// Safari already removes escape sequences in CSS selectors.
+// This is most likely a bug in Safari.
+testExtract(
+	'[.b_subject:has(.b_descendant)][.b_subject:has(.b_descendant)]',
+	['.b_subject:has(.b_descendant)'],
+);
+
