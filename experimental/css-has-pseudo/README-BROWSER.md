@@ -66,7 +66,7 @@ Web API's:
 
 - [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
 - [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
-- [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) with support for post CSS 2.1 selectors
+- [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) with support for post CSS 2.1 selectors and `:scope` selectors.
 
 ECMA Script:
 
