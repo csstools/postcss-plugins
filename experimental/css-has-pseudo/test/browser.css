@@ -1,0 +1,79 @@
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-ancestor-position.html */
+div:has(.c_test) #c_subject {
+	background-color: red
+}
+
+div:has(> .c_test) #c_subject {
+	background-color: green
+}
+
+div:has(~ .c_test) #c_subject {
+	background-color: yellow
+}
+
+div:has(+ .c_test) #c_subject {
+	background-color: blue
+}
+
+div:has(~ div .c_test) #c_subject {
+	background-color: purple
+}
+
+div:has(+ div .c_test) #c_subject {
+	background-color: pink
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
+div:has(.a_test)+#a_subject {
+	background-color: red;
+}
+
+div:has(> .a_test)+#a_subject {
+	background-color: green;
+}
+
+div:has(~ .a_test)+#a_subject {
+	background-color: yellow;
+}
+
+div:has(+ .a_test)+#a_subject {
+	background-color: blue;
+}
+
+div:has(~ div .a_test)+#a_subject {
+	background-color: purple;
+}
+
+div:has(+ div .a_test)+#a_subject {
+	background-color: pink;
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/attribute-or-elemental-selectors-in-has.html */
+div,
+main {
+	background-color: grey;
+	margin: 5px;
+	min-height: 20px;
+	min-width: 20px;
+	padding: 5px;
+}
+
+.b_subject:has(> .b_child) {
+	background-color: red;
+}
+
+.b_subject:has(.b_descendant) {
+	background-color: green;
+}
+
+.b_subject:has([attrname=b_descendant]) {
+	background-color: blue;
+}
+
+.b_subject:has(#b_div_descendant) {
+	background-color: yellow;
+}
+
+.b_subject:has(b_descendant) {
+	background-color: yellowgreen;
+}

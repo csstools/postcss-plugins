@@ -12,7 +12,8 @@
     "packages/*",
     "plugins/*",
     "plugin-packs/*",
-    "cli/*"
+    "cli/*",
+    "experimental/*"
   ],
   "devDependencies": {
     "@babel/core": "^7.16.7",
