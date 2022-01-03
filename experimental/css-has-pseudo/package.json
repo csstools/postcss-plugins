@@ -30,9 +30,6 @@
     "dist",
     "browser.js"
   ],
-  "bin": {
-    "css-has-pseudo": "dist/cli.cjs"
-  },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js && npm run copy-browser-scripts-to-old-location",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
