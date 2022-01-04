@@ -105,6 +105,11 @@ testEncoderDecoder(
 	'foo',
 );
 
+testEncoderDecoder(
+	'#d_main:has(#d_checkbox:checked)>#d_subject',
+	'\\%23d_main\\:has\\(\\%23d_checkbox\\:checked\\)\\%3E\\%23d_subject',
+);
+
 function testExtract(encoded, rules) {
 	assert.deepStrictEqual(extractEncodedSelectors(encoded), rules);
 }

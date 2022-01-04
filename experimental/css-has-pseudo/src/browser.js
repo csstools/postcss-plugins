@@ -1,4 +1,4 @@
-/* global MutationObserver,requestAnimationFrame,cancelAnimationFrame,self */
+/* global MutationObserver,requestAnimationFrame,cancelAnimationFrame,self,HTMLElement */
 
 import '@mrhenry/core-web/modules/~element-qsa-has.js';
 import extractEncodedSelectors from './encode/extract.mjs';
@@ -81,6 +81,62 @@ export default function cssHasPseudo(document, options) {
 	document.addEventListener('focus', transformObservedItemsThrottled, true);
 	document.addEventListener('blur', transformObservedItemsThrottled, true);
 	document.addEventListener('input', transformObservedItemsThrottled);
+	document.addEventListener('change', transformObservedItemsThrottled, true);
+
+	// observe Javascript setters that effect pseudo-selectors
+	if ('defineProperty' in Object && 'getOwnPropertyDescriptor' in Object && 'hasOwnProperty' in Object) {
+		try {
+			// eslint-disable-next-line no-inner-declarations
+			function observeProperty(proto, property) {
+				// eslint-disable-next-line no-prototype-builtins
+				if (proto.hasOwnProperty(property)) {
+					const descriptor = Object.getOwnPropertyDescriptor(proto, property);
+					if (descriptor && descriptor.configurable && 'set' in descriptor) {
+						Object.defineProperty(proto, property, {
+							configurable: descriptor.configurable,
+							enumerable: descriptor.enumerable,
+							get: function () {
+								return descriptor.get.apply(this, arguments);
+							},
+							set: function () {
+								transformObservedItemsThrottled();
+								descriptor.set.apply(this, arguments);
+							},
+						});
+					}
+				}
+			}
+
+			if ('HTMLElement' in self && HTMLElement.prototype) {
+				observeProperty(HTMLElement.prototype, 'disabled');
+			}
+
+			// Not all of these elements have all of these properties.
+			// But the code above checks if they exist first.
+			['checked', 'selected', 'readOnly', 'required'].forEach((property) => {
+				[
+					'HTMLButtonElement',
+					'HTMLFieldSetElement',
+					'HTMLInputElement',
+					'HTMLMeterElement',
+					'HTMLOptGroupElement',
+					'HTMLOptionElement',
+					'HTMLOutputElement',
+					'HTMLProgressElement',
+					'HTMLSelectElement',
+					'HTMLTextAreaElement',
+				].forEach((elementName) => {
+					if (elementName in self && self[elementName].prototype) {
+						observeProperty(self[elementName].prototype, property);
+					}
+				});
+			});
+		} catch (e) {
+			if (options.debug) {
+				console.error(e);
+			}
+		}
+	}
 
 	if (options.hover) {
 		if ('onpointerenter' in document) {

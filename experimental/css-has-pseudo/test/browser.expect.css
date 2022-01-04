@@ -1,3 +1,40 @@
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-pseudo-class.html */
+[\%23d_main\:has\(input\)\%20div] {
+	color: grey
+}
+
+[\%23d_main\:has\(\%23d_checkbox\:checked\)\%3E\%23d_subject] {
+	color: red
+}
+
+[\%23d_main\:has\(\%23d_option\:checked\)\%3E\%23d_subject] {
+	color: red
+}
+
+[\%23d_main\:has\(\%23d_checkbox\:disabled\)\%3E\%23d_subject] {
+	color: green
+}
+
+[\%23d_main\:has\(\%23d_option\:disabled\)\%3E\%20\:is\(\%23d_subject\,\%20\%23d_subject2\)] {
+	color: green
+}
+
+[\%23d_main\:has\(\%23d_optgroup\:disabled\)\%3E\%23d_subject] {
+	color: blue
+}
+
+[\%23d_main\:not\(\:has\(\%23d_checkbox\:enabled\)\)\%3E\%23d_subject3] {
+	color: green
+}
+
+[\%23d_main\:not\(\:has\(\%23d_option\:enabled\)\)\%20\:is\(\%23d_subject3\,\%20\%23d_subject4\)] {
+	color: green
+}
+
+[\%23d_main\:not\(\:has\(\%23d_optgroup\:enabled\)\)\%3E\%23d_subject3] {
+	color: blue
+}
+
 /* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-ancestor-position.html */
 [div\:has\(\.c_test\)\%20\%23c_subject] {
 	background-color: red

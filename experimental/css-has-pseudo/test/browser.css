@@ -1,3 +1,40 @@
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-pseudo-class.html */
+#d_main:has(input) div {
+	color: grey
+}
+
+#d_main:has(#d_checkbox:checked)>#d_subject {
+	color: red
+}
+
+#d_main:has(#d_option:checked)>#d_subject {
+	color: red
+}
+
+#d_main:has(#d_checkbox:disabled)>#d_subject {
+	color: green
+}
+
+#d_main:has(#d_option:disabled)> :is(#d_subject, #d_subject2) {
+	color: green
+}
+
+#d_main:has(#d_optgroup:disabled)>#d_subject {
+	color: blue
+}
+
+#d_main:not(:has(#d_checkbox:enabled))>#d_subject3 {
+	color: green
+}
+
+#d_main:not(:has(#d_option:enabled)) :is(#d_subject3, #d_subject4) {
+	color: green
+}
+
+#d_main:not(:has(#d_optgroup:enabled))>#d_subject3 {
+	color: blue
+}
+
 /* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-ancestor-position.html */
 div:has(.c_test) #c_subject {
 	background-color: red

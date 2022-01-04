@@ -24,3 +24,7 @@ a:has(.b) {
 
 This can have different results if `postcss-logical` runs before or after `css-has-pseudo`.
 We need to investigate if there are ways to always run as the final plugin.
+
+## Element prototype changes :
+
+- now that we touch element prototypes we also need to test that these are not changed in bad ways.
