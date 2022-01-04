@@ -95,15 +95,15 @@ main {
 	padding: 5px;
 }
 
-[\.b_subject\:has\(\%3E\%20\.b_child\)][\.b_subject\:has\(\%3E\%20\.b_child\)] {
+[\.b_subject\:has\(\%3E\%20\.b_child\)]:not(.does-not-exist) {
 	background-color: red;
 }
 
-[\.b_subject\:has\(\.b_descendant\)][\.b_subject\:has\(\.b_descendant\)] {
+[\.b_subject\:has\(\.b_descendant\)]:not(.does-not-exist) {
 	background-color: green;
 }
 
-[\.b_subject\:has\(\[attrname\%3Db_descendant\]\)][\.b_subject\:has\(\[attrname\%3Db_descendant\]\)] {
+[\.b_subject\:has\(\[attrname\%3Db_descendant\]\)]:not(.does-not-exist) {
 	background-color: blue;
 }
 

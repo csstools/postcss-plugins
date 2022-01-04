@@ -9,6 +9,7 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 	const doesNotExistName = opts.doesNotExistName ?? 'does-not-exist';
 
 	const doesNotExistId = ':not(#' + doesNotExistName + ')';
+	const doesNotExistClass = ':not(.' + doesNotExistName + ')';
 	const doesNotExistTag = ':not(' + doesNotExistName + ')';
 
 	return {
@@ -44,17 +45,16 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 					return selector;
 				}
 
-				let encodedSelectorWithSpecificity = '';
 				const encodedSelector = '[' + encodeCSS(selector) + ']';
 				const abcSpecificity = selectorSpecificity(selectorAST);
 
-				const bSpecificity = Math.max(1, abcSpecificity.b);
-				for (let i = 0; i < bSpecificity; i++) {
-					encodedSelectorWithSpecificity += encodedSelector;
-				}
-
+				let encodedSelectorWithSpecificity = encodedSelector;
 				for (let i = 0; i < abcSpecificity.a; i++) {
 					encodedSelectorWithSpecificity += doesNotExistId;
+				}
+				const bSpecificity = Math.max(1, abcSpecificity.b) - 1;
+				for (let i = 0; i < bSpecificity; i++) {
+					encodedSelectorWithSpecificity += doesNotExistClass;
 				}
 				for (let i = 0; i < abcSpecificity.c; i++) {
 					encodedSelectorWithSpecificity += doesNotExistTag;
