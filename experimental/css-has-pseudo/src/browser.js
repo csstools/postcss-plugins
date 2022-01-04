@@ -14,7 +14,26 @@ export default function cssHasPseudo(document, options) {
 			hover: (!!options.hover) || false,
 			debug: (!!options.debug) || false,
 			observedAttributes: options.observedAttributes || [],
+			forcePolyfill: (!!options.forcePolyfill) || false,
 		};
+
+		if (!options.forcePolyfill) {
+			try {
+				// Chrome does not support forgiving selector lists in :has()
+				global.document.querySelector(':has(*, :does-not-exist, > *)');
+
+				// Safari incorrectly returns the html element with this query
+				if (!document.querySelector(':has(:scope *)')) {
+					// Native support detected.
+					// Doing early return.
+					return;
+				}
+
+				// fallthrough to polyfill
+			} catch (_) {
+				// fallthrough to polyfill
+			}
+		}
 
 		if (!Array.isArray(options.observedAttributes)) {
 			options.observedAttributes = [];

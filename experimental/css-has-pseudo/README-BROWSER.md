@@ -60,6 +60,15 @@ If you do any client side modification of non-standard attributes and use these 
 cssHasPseudo(document, { observedAttributes: ['something-not-standard'] });
 ```
 
+### forcePolyfill
+
+The `forcePolyfill` option determines if the polyfill is used even when the browser has native support.
+This is needed when you set `preserve: false` in the PostCSS plugin config.
+
+```js
+cssHasPseudo(document, { forcePolyfill: true });
+```
+
 ## Dependencies
 
 Web API's:

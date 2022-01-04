@@ -90,6 +90,25 @@ elements otherwise matching `:has` natively.
 </body>
 ```
 
+## PostCSS Preset Env
+
+When you use `postcss-preset-env` you must disable the regular plugin.
+
+The experimental plugin must be added after any other plugin that modifies selectors.
+
+```js
+plugins: [
+  // other plugins
+  postcssPresetEnv({
+    features: {
+      'css-has-pseudo': false
+    }
+  }),
+  // other plugins
+  cssHasPseudoExperimental(), // last
+]
+```
+
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/css-has-pseudo.svg

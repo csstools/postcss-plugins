@@ -24,3 +24,20 @@ We might need another experimental track for a different issue in the same plugi
 This means the logic of the experimental plugin will change.
 
 It's best to think of these as debugging tools and not as production ready plugin.
+
+## PostCSS Preset Env
+
+When you use `postcss-preset-env` and want to combine with an experimental plugin you should disable the regular plugin.
+
+The order can be important but this will be detailed in the experimental plugin docs.
+
+```js
+plugins: [
+  postcssPresetEnv({
+    features: {
+      'css-has-pseudo': false
+    }
+  }),
+  cssHasPseudoExperimental(),
+]
+```

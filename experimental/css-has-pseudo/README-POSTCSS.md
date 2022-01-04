@@ -40,10 +40,10 @@ Use [EXPERIMENTAL CSS Has Pseudo] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssHasPseudo = require('@csstools/css-has-pseudo-experimental');
+const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 postcss([
-  postcssHasPseudo(/* pluginOptions */)
+  cssHasPseudoExperimental(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -61,7 +61,7 @@ The `preserve` option defines whether the original selector should remain. By
 default, the original selector is preserved.
 
 ```js
-hasPseudo({ preserve: false });
+cssHasPseudoExperimental({ preserve: false });
 ```
 
 ```css
@@ -74,6 +74,25 @@ body:has(:focus) {
 body[\:has\(\:focus\)] {
   background-color: yellow;
 }
+```
+
+## PostCSS Preset Env
+
+When you use `postcss-preset-env` you must disable the regular plugin.
+
+The experimental plugin must be added after any other plugin that modifies selectors.
+
+```js
+plugins: [
+  // other plugins
+  postcssPresetEnv({
+    features: {
+      'css-has-pseudo': false
+    }
+  }),
+  // other plugins
+  cssHasPseudoExperimental(), // last
+]
 ```
 
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
