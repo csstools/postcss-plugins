@@ -99,8 +99,14 @@ export default function cssHasPseudo(document, options) {
 								return descriptor.get.apply(this, arguments);
 							},
 							set: function () {
-								transformObservedItemsThrottled();
 								descriptor.set.apply(this, arguments);
+
+								try {
+									transformObservedItemsThrottled();
+								} catch (_) {
+									// should never happen as there is an inner try/catch
+									// but just in case
+								}
 							},
 						});
 					}
