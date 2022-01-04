@@ -44,11 +44,11 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 					return selector;
 				}
 
-				const abcSpecificity = selectorSpecificity(selectorAST);
-				const bSpecificity = Math.max(1, abcSpecificity.b);
-
 				let encodedSelectorWithSpecificity = '';
 				const encodedSelector = '[' + encodeCSS(selector) + ']';
+				const abcSpecificity = selectorSpecificity(selectorAST);
+
+				const bSpecificity = Math.max(1, abcSpecificity.b);
 				for (let i = 0; i < bSpecificity; i++) {
 					encodedSelectorWithSpecificity += encodedSelector;
 				}
