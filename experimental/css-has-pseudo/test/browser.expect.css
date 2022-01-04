@@ -1,0 +1,116 @@
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-pseudo-class.html */
+[\%23d_main\:has\(input\)\%20div] {
+	color: grey
+}
+
+[\%23d_main\:has\(\%23d_checkbox\:checked\)\%3E\%23d_subject] {
+	color: red
+}
+
+[\%23d_main\:has\(\%23d_option\:checked\)\%3E\%23d_subject] {
+	color: red
+}
+
+[\%23d_main\:has\(\%23d_checkbox\:disabled\)\%3E\%23d_subject] {
+	color: green
+}
+
+[\%23d_main\:has\(\%23d_option\:disabled\)\%3E\%20\:is\(\%23d_subject\,\%20\%23d_subject2\)] {
+	color: green
+}
+
+[\%23d_main\:has\(\%23d_optgroup\:disabled\)\%3E\%23d_subject] {
+	color: blue
+}
+
+[\%23d_main\:not\(\:has\(\%23d_checkbox\:enabled\)\)\%3E\%23d_subject3] {
+	color: green
+}
+
+[\%23d_main\:not\(\:has\(\%23d_option\:enabled\)\)\%20\:is\(\%23d_subject3\,\%20\%23d_subject4\)] {
+	color: green
+}
+
+[\%23d_main\:not\(\:has\(\%23d_optgroup\:enabled\)\)\%3E\%23d_subject3] {
+	color: blue
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-ancestor-position.html */
+[div\:has\(\.c_test\)\%20\%23c_subject] {
+	background-color: red
+}
+
+[div\:has\(\%3E\%20\.c_test\)\%20\%23c_subject] {
+	background-color: green
+}
+
+[div\:has\(\~\%20\.c_test\)\%20\%23c_subject] {
+	background-color: yellow
+}
+
+[div\:has\(\%2B\%20\.c_test\)\%20\%23c_subject] {
+	background-color: blue
+}
+
+[div\:has\(\~\%20div\%20\.c_test\)\%20\%23c_subject] {
+	background-color: purple
+}
+
+[div\:has\(\%2B\%20div\%20\.c_test\)\%20\%23c_subject] {
+	background-color: pink
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
+[div\:has\(\.a_test\)\%2B\%23a_subject] {
+	background-color: red;
+}
+
+[div\:has\(\%3E\%20\.a_test\)\%2B\%23a_subject] {
+	background-color: green;
+}
+
+[div\:has\(\~\%20\.a_test\)\%2B\%23a_subject] {
+	background-color: yellow;
+}
+
+[div\:has\(\%2B\%20\.a_test\)\%2B\%23a_subject] {
+	background-color: blue;
+}
+
+[div\:has\(\~\%20div\%20\.a_test\)\%2B\%23a_subject] {
+	background-color: purple;
+}
+
+[div\:has\(\%2B\%20div\%20\.a_test\)\%2B\%23a_subject] {
+	background-color: pink;
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/attribute-or-elemental-selectors-in-has.html */
+div,
+main {
+	background-color: grey;
+	margin: 5px;
+	min-height: 20px;
+	min-width: 20px;
+	padding: 5px;
+}
+
+[\.b_subject\:has\(\%3E\%20\.b_child\)][\.b_subject\:has\(\%3E\%20\.b_child\)] {
+	background-color: red;
+}
+
+[\.b_subject\:has\(\.b_descendant\)][\.b_subject\:has\(\.b_descendant\)] {
+	background-color: green;
+}
+
+[\.b_subject\:has\(\[attrname\%3Db_descendant\]\)][\.b_subject\:has\(\[attrname\%3Db_descendant\]\)] {
+	background-color: blue;
+}
+
+[\.b_subject\:has\(\%23b_div_descendant\)] {
+	background-color: yellow;
+}
+
+[\.b_subject\:has\(b_descendant\)] {
+	background-color: yellowgreen;
+}

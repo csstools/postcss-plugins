@@ -1,0 +1,236 @@
+[\:has\(\:focus\)] {
+	order: 1;
+}
+
+:has(:focus) {
+	order: 1;
+}
+
+[a\:has\(\%3E\%20img\)] {
+	order: 2;
+}
+
+a:has(> img) {
+	order: 2;
+}
+
+[h1\:has\(\%2B\%20p\)] {
+	order: 3;
+}
+
+h1:has(+ p) {
+	order: 3;
+}
+
+[h1\:has\(\~\%20p\)] {
+	order: 4;
+}
+
+h1:has(~ p) {
+	order: 4;
+}
+
+[section\:not\(\:has\(h1\,\%20h2\,\%20h3\,\%20h4\,\%20h5\,\%20h6\)\)] {
+	order: 5;
+}
+
+section:not(:has(h1, h2, h3, h4, h5, h6)) {
+	order: 5;
+}
+
+[body\:has\(\:focus\)] {
+  order: 6;
+}
+
+body:has(:focus) {
+  order: 6;
+}
+
+[body\:not\(\:has\(\:focus\)\)] {
+  order: 7;
+}
+
+body:not(:has(:focus)) {
+  order: 7;
+}
+
+:has-ignore(:focus),
+:ignore-has(:focus) {
+	order: 8;
+}
+
+[\:has\(\.esc\%5C\%5C\%5C\:aped\)] {
+	order: 9;
+}
+
+:has(.esc\\\:aped) {
+	order: 9;
+}
+
+[\.x\:has\(\%3E\%20\.a\:hover\)][\.x\:has\(\%3E\%20\.a\:hover\)][\.x\:has\(\%3E\%20\.a\:hover\)] {
+	order: 10;
+}
+
+.x:has(> .a:hover) {
+	order: 10;
+}
+
+[\.x\:has\(\%3E\%20\%23a\:hover\)][\.x\:has\(\%3E\%20\%23a\:hover\)] {
+	order: 11;
+}
+
+.x:has(> #a:hover) {
+	order: 11;
+}
+
+[\.x\:has\(\%3E\%20\[a\]\:hover\)][\.x\:has\(\%3E\%20\[a\]\:hover\)][\.x\:has\(\%3E\%20\[a\]\:hover\)] {
+	order: 12;
+}
+
+.x:has(> [a]:hover) {
+	order: 12;
+}
+
+[\.x\:has\(\%3E\%20\[a\%3D\%22b\%22\]\:hover\)][\.x\:has\(\%3E\%20\[a\%3D\%22b\%22\]\:hover\)][\.x\:has\(\%3E\%20\[a\%3D\%22b\%22\]\:hover\)] {
+	order: 13;
+}
+
+.x:has(> [a="b"]:hover) {
+	order: 13;
+}
+
+[\.x\:has\(\%3E\%20\[a\%3D\%22\:has\(\.x\)\%22\]\:hover\)][\.x\:has\(\%3E\%20\[a\%3D\%22\:has\(\.x\)\%22\]\:hover\)][\.x\:has\(\%3E\%20\[a\%3D\%22\:has\(\.x\)\%22\]\:hover\)] {
+	order: 14;
+}
+
+.x:has(> [a=":has(.x)"]:hover) {
+	order: 14;
+}
+
+[\.x\:has\(\%3E\%20\[\%5C\:has\%5C\(\%5C\%253E\%5C\%2520\%5C\.a\%5C\:hover\%5C\)\]\:hover\)][\.x\:has\(\%3E\%20\[\%5C\:has\%5C\(\%5C\%253E\%5C\%2520\%5C\.a\%5C\:hover\%5C\)\]\:hover\)][\.x\:has\(\%3E\%20\[\%5C\:has\%5C\(\%5C\%253E\%5C\%2520\%5C\.a\%5C\:hover\%5C\)\]\:hover\)] {
+	order: 15;
+}
+
+.x:has(> [\:has\(\%3E\%20\.a\:hover\)]:hover) {
+	order: 15;
+}
+
+[\.x\:has\(\%3E\%20\:\:before\:hover\)][\.x\:has\(\%3E\%20\:\:before\:hover\)] {
+	order: 16; /* not allowed by spec but encoding should work */
+}
+
+.x:has(> ::before:hover) {
+	order: 16; /* not allowed by spec but encoding should work */
+}
+
+[\.x\:has\(\%3E\%20\.a\:has\(\%20\%2B\%20\.b\)\)][\.x\:has\(\%3E\%20\.a\:has\(\%20\%2B\%20\.b\)\)][\.x\:has\(\%3E\%20\.a\:has\(\%20\%2B\%20\.b\)\)] {
+	order: 17;
+}
+
+.x:has(> .a:has( + .b)) {
+	order: 17;
+}
+
+[\.x\:has\(\%3E\%20__foo\)] {
+	order: 18;
+}
+
+.x:has(> __foo) {
+	order: 18;
+}
+
+[\.x\:has\(\%3E\%20\:--foo\)][\.x\:has\(\%3E\%20\:--foo\)] {
+	order: 19;
+}
+
+.x:has(> :--foo) {
+	order: 19;
+}
+
+[\.x\:has\(\%3E\%20\*\)] {
+	order: 20;
+}
+
+.x:has(> *) {
+	order: 20;
+}
+
+[\.x\:has\(\%3E\%20\.y\%20\*\)][\.x\:has\(\%3E\%20\.y\%20\*\)] {
+	order: 21;
+}
+
+.x:has(> .y *) {
+	order: 21;
+}
+
+[\.a\:not\(\:has\(\%3E\%20\.b\)\)][\.a\:not\(\:has\(\%3E\%20\.b\)\)] {
+	order: 22;
+}
+
+.a:not(:has(> .b)) {
+	order: 22;
+}
+
+[\.x\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)][\.x\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)][\.x\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)][\.x\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)][\.x\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)] {
+	order: 23;
+}
+
+.x:has(~ .y:has(.g .h) .i) {
+	order: 23;
+}
+
+[\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)] {
+	order: 24;
+}
+
+.x:has(> .a) ~ .x:has(> .b) {
+	order: 24;
+}
+
+[\.x\:has\(\%3E\%20\.a\)\%20\.b][\.x\:has\(\%3E\%20\.a\)\%20\.b][\.x\:has\(\%3E\%20\.a\)\%20\.b] {
+	order: 24;
+}
+
+.x:has(> .a) .b {
+	order: 24;
+}
+
+[\.x\:has\(\%3E\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\)][\.x\:has\(\%3E\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\)] {
+	order: 25;
+}
+
+.x:has(> .🧑🏾‍🎤) {
+	order: 25;
+}
+
+[\.x\:has\(\%3E\%20\.a\)][\.x\:has\(\%3E\%20\.a\)], [\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.b\)] {
+	order: 26;
+}
+
+.x:has(> .a), .x:has(> .b) {
+	order: 26;
+}
+
+[\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)] {
+	order: 27;
+}
+
+.x:has(> .a) ~ .x:has(> .b) {
+	order: 27;
+}
+
+[\.x\:has\(\%3E\%20\.a\)][\.x\:has\(\%3E\%20\.a\)], .b {
+	order: 28;
+}
+
+.x:has(> .a), .b {
+	order: 28;
+}
+
+.a, [\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.b\)] {
+	order: 29;
+}
+
+.a, .x:has(> .b) {
+	order: 29;
+}
