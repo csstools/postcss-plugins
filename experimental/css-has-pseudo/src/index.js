@@ -88,7 +88,13 @@ function selectorSpecificity(node) {
 	let b = 0;
 	let c = 0;
 
-	if (node.type === 'id') {
+	if (node.type == 'universal') {
+		return {
+			a: 0,
+			b: 0,
+			c: 0,
+		};
+	} else if (node.type === 'id') {
 		a += 1;
 	} else if (node.type === 'tag') {
 		c += 1;

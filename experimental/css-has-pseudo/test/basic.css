@@ -118,3 +118,7 @@ body:not(:has(:focus)) {
 .a, .x:has(> .b) {
 	order: 29;
 }
+
+.x:has(> .b *) {
+	order: 30;
+}
