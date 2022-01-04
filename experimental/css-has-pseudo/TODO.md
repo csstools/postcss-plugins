@@ -8,6 +8,10 @@ Can we safely use `:not(#does-not-exist)`/`:not(does-not-exist)` as prefixes for
 
 see : https://drafts.csswg.org/selectors-4/#specificity-rules
 
+### Update 1 :
+
+This has been implemented.
+Still needs to be documented.
 
 ## Plugin order :
 

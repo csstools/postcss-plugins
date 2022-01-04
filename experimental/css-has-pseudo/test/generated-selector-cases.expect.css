@@ -78,75 +78,75 @@
 	order: 19;
 }
 
-[button\:has\(\.foo\)] {
+[button\:has\(\.foo\)]:not(does-not-exist) {
 	order: 20;
 }
 
-[\:has\(\.foo\)button] {
+[\:has\(\.foo\)button]:not(does-not-exist) {
 	order: 21;
 }
 
-[button\%20\:has\(\.foo\)] {
+[button\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 22;
 }
 
-[\:has\(\.foo\)\%20button] {
+[\:has\(\.foo\)\%20button]:not(does-not-exist) {
 	order: 23;
 }
 
-[button\%20\%20\:has\(\.foo\)] {
+[button\%20\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 24;
 }
 
-[\:has\(\.foo\)\%20\%20button] {
+[\:has\(\.foo\)\%20\%20button]:not(does-not-exist) {
 	order: 25;
 }
 
-[button\%2B\:has\(\.foo\)] {
+[button\%2B\:has\(\.foo\)]:not(does-not-exist) {
 	order: 26;
 }
 
-[\:has\(\.foo\)\%2Bbutton] {
+[\:has\(\.foo\)\%2Bbutton]:not(does-not-exist) {
 	order: 27;
 }
 
-[button\%20\%2B\%20\:has\(\.foo\)] {
+[button\%20\%2B\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 28;
 }
 
-[\:has\(\.foo\)\%20\%2B\%20button] {
+[\:has\(\.foo\)\%20\%2B\%20button]:not(does-not-exist) {
 	order: 29;
 }
 
-[button\~\:has\(\.foo\)] {
+[button\~\:has\(\.foo\)]:not(does-not-exist) {
 	order: 30;
 }
 
-[\:has\(\.foo\)\~button] {
+[\:has\(\.foo\)\~button]:not(does-not-exist) {
 	order: 31;
 }
 
-[button\%20\~\%20\:has\(\.foo\)] {
+[button\%20\~\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 32;
 }
 
-[\:has\(\.foo\)\%20\~\%20button] {
+[\:has\(\.foo\)\%20\~\%20button]:not(does-not-exist) {
 	order: 33;
 }
 
-[button\%3E\:has\(\.foo\)] {
+[button\%3E\:has\(\.foo\)]:not(does-not-exist) {
 	order: 34;
 }
 
-[\:has\(\.foo\)\%3Ebutton] {
+[\:has\(\.foo\)\%3Ebutton]:not(does-not-exist) {
 	order: 35;
 }
 
-[button\%20\%3E\%20\:has\(\.foo\)] {
+[button\%20\%3E\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 36;
 }
 
-[\:has\(\.foo\)\%20\%3E\%20button] {
+[\:has\(\.foo\)\%20\%3E\%20button]:not(does-not-exist) {
 	order: 37;
 }
 
@@ -318,75 +318,75 @@ button, [\:has\(\.foo\)] {
 	order: 79;
 }
 
-[\%23foo\:has\(\.foo\)] {
+[\%23foo\:has\(\.foo\)]:not(#does-not-exist) {
 	order: 80;
 }
 
-[\:has\(\.foo\)\%23foo] {
+[\:has\(\.foo\)\%23foo]:not(#does-not-exist) {
 	order: 81;
 }
 
-[\%23foo\%20\:has\(\.foo\)] {
+[\%23foo\%20\:has\(\.foo\)]:not(#does-not-exist) {
 	order: 82;
 }
 
-[\:has\(\.foo\)\%20\%23foo] {
+[\:has\(\.foo\)\%20\%23foo]:not(#does-not-exist) {
 	order: 83;
 }
 
-[\%23foo\%20\%20\:has\(\.foo\)] {
+[\%23foo\%20\%20\:has\(\.foo\)]:not(#does-not-exist) {
 	order: 84;
 }
 
-[\:has\(\.foo\)\%20\%20\%23foo] {
+[\:has\(\.foo\)\%20\%20\%23foo]:not(#does-not-exist) {
 	order: 85;
 }
 
-[\%23foo\%2B\:has\(\.foo\)] {
+[\%23foo\%2B\:has\(\.foo\)]:not(#does-not-exist) {
 	order: 86;
 }
 
-[\:has\(\.foo\)\%2B\%23foo] {
+[\:has\(\.foo\)\%2B\%23foo]:not(#does-not-exist) {
 	order: 87;
 }
 
-[\%23foo\%20\%2B\%20\:has\(\.foo\)] {
+[\%23foo\%20\%2B\%20\:has\(\.foo\)]:not(#does-not-exist) {
 	order: 88;
 }
 
-[\:has\(\.foo\)\%20\%2B\%20\%23foo] {
+[\:has\(\.foo\)\%20\%2B\%20\%23foo]:not(#does-not-exist) {
 	order: 89;
 }
 
-[\%23foo\~\:has\(\.foo\)] {
+[\%23foo\~\:has\(\.foo\)]:not(#does-not-exist) {
 	order: 90;
 }
 
-[\:has\(\.foo\)\~\%23foo] {
+[\:has\(\.foo\)\~\%23foo]:not(#does-not-exist) {
 	order: 91;
 }
 
-[\%23foo\%20\~\%20\:has\(\.foo\)] {
+[\%23foo\%20\~\%20\:has\(\.foo\)]:not(#does-not-exist) {
 	order: 92;
 }
 
-[\:has\(\.foo\)\%20\~\%20\%23foo] {
+[\:has\(\.foo\)\%20\~\%20\%23foo]:not(#does-not-exist) {
 	order: 93;
 }
 
-[\%23foo\%3E\:has\(\.foo\)] {
+[\%23foo\%3E\:has\(\.foo\)]:not(#does-not-exist) {
 	order: 94;
 }
 
-[\:has\(\.foo\)\%3E\%23foo] {
+[\:has\(\.foo\)\%3E\%23foo]:not(#does-not-exist) {
 	order: 95;
 }
 
-[\%23foo\%20\%3E\%20\:has\(\.foo\)] {
+[\%23foo\%20\%3E\%20\:has\(\.foo\)]:not(#does-not-exist) {
 	order: 96;
 }
 
-[\:has\(\.foo\)\%20\%3E\%20\%23foo] {
+[\:has\(\.foo\)\%20\%3E\%20\%23foo]:not(#does-not-exist) {
 	order: 97;
 }
 
@@ -398,75 +398,75 @@ button, [\:has\(\.foo\)] {
 	order: 99;
 }
 
-[__foo\:has\(\.foo\)] {
+[__foo\:has\(\.foo\)]:not(does-not-exist) {
 	order: 100;
 }
 
-[\:has\(\.foo\)__foo] {
+[\:has\(\.foo\)__foo]:not(does-not-exist) {
 	order: 101;
 }
 
-[__foo\%20\:has\(\.foo\)] {
+[__foo\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 102;
 }
 
-[\:has\(\.foo\)\%20__foo] {
+[\:has\(\.foo\)\%20__foo]:not(does-not-exist) {
 	order: 103;
 }
 
-[__foo\%20\%20\:has\(\.foo\)] {
+[__foo\%20\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 104;
 }
 
-[\:has\(\.foo\)\%20\%20__foo] {
+[\:has\(\.foo\)\%20\%20__foo]:not(does-not-exist) {
 	order: 105;
 }
 
-[__foo\%2B\:has\(\.foo\)] {
+[__foo\%2B\:has\(\.foo\)]:not(does-not-exist) {
 	order: 106;
 }
 
-[\:has\(\.foo\)\%2B__foo] {
+[\:has\(\.foo\)\%2B__foo]:not(does-not-exist) {
 	order: 107;
 }
 
-[__foo\%20\%2B\%20\:has\(\.foo\)] {
+[__foo\%20\%2B\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 108;
 }
 
-[\:has\(\.foo\)\%20\%2B\%20__foo] {
+[\:has\(\.foo\)\%20\%2B\%20__foo]:not(does-not-exist) {
 	order: 109;
 }
 
-[__foo\~\:has\(\.foo\)] {
+[__foo\~\:has\(\.foo\)]:not(does-not-exist) {
 	order: 110;
 }
 
-[\:has\(\.foo\)\~__foo] {
+[\:has\(\.foo\)\~__foo]:not(does-not-exist) {
 	order: 111;
 }
 
-[__foo\%20\~\%20\:has\(\.foo\)] {
+[__foo\%20\~\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 112;
 }
 
-[\:has\(\.foo\)\%20\~\%20__foo] {
+[\:has\(\.foo\)\%20\~\%20__foo]:not(does-not-exist) {
 	order: 113;
 }
 
-[__foo\%3E\:has\(\.foo\)] {
+[__foo\%3E\:has\(\.foo\)]:not(does-not-exist) {
 	order: 114;
 }
 
-[\:has\(\.foo\)\%3E__foo] {
+[\:has\(\.foo\)\%3E__foo]:not(does-not-exist) {
 	order: 115;
 }
 
-[__foo\%20\%3E\%20\:has\(\.foo\)] {
+[__foo\%20\%3E\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 116;
 }
 
-[\:has\(\.foo\)\%20\%3E\%20__foo] {
+[\:has\(\.foo\)\%20\%3E\%20__foo]:not(does-not-exist) {
 	order: 117;
 }
 
@@ -798,75 +798,75 @@ __foo, [\:has\(\.foo\)] {
 	order: 199;
 }
 
-[\:\:before\:has\(\.foo\)] {
+[\:\:before\:has\(\.foo\)]:not(does-not-exist) {
 	order: 200;
 }
 
-[\:has\(\.foo\)\:\:before] {
+[\:has\(\.foo\)\:\:before]:not(does-not-exist) {
 	order: 201;
 }
 
-[\:\:before\%20\:has\(\.foo\)] {
+[\:\:before\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 202;
 }
 
-[\:has\(\.foo\)\%20\:\:before] {
+[\:has\(\.foo\)\%20\:\:before]:not(does-not-exist) {
 	order: 203;
 }
 
-[\:\:before\%20\%20\:has\(\.foo\)] {
+[\:\:before\%20\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 204;
 }
 
-[\:has\(\.foo\)\%20\%20\:\:before] {
+[\:has\(\.foo\)\%20\%20\:\:before]:not(does-not-exist) {
 	order: 205;
 }
 
-[\:\:before\%2B\:has\(\.foo\)] {
+[\:\:before\%2B\:has\(\.foo\)]:not(does-not-exist) {
 	order: 206;
 }
 
-[\:has\(\.foo\)\%2B\:\:before] {
+[\:has\(\.foo\)\%2B\:\:before]:not(does-not-exist) {
 	order: 207;
 }
 
-[\:\:before\%20\%2B\%20\:has\(\.foo\)] {
+[\:\:before\%20\%2B\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 208;
 }
 
-[\:has\(\.foo\)\%20\%2B\%20\:\:before] {
+[\:has\(\.foo\)\%20\%2B\%20\:\:before]:not(does-not-exist) {
 	order: 209;
 }
 
-[\:\:before\~\:has\(\.foo\)] {
+[\:\:before\~\:has\(\.foo\)]:not(does-not-exist) {
 	order: 210;
 }
 
-[\:has\(\.foo\)\~\:\:before] {
+[\:has\(\.foo\)\~\:\:before]:not(does-not-exist) {
 	order: 211;
 }
 
-[\:\:before\%20\~\%20\:has\(\.foo\)] {
+[\:\:before\%20\~\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 212;
 }
 
-[\:has\(\.foo\)\%20\~\%20\:\:before] {
+[\:has\(\.foo\)\%20\~\%20\:\:before]:not(does-not-exist) {
 	order: 213;
 }
 
-[\:\:before\%3E\:has\(\.foo\)] {
+[\:\:before\%3E\:has\(\.foo\)]:not(does-not-exist) {
 	order: 214;
 }
 
-[\:has\(\.foo\)\%3E\:\:before] {
+[\:has\(\.foo\)\%3E\:\:before]:not(does-not-exist) {
 	order: 215;
 }
 
-[\:\:before\%20\%3E\%20\:has\(\.foo\)] {
+[\:\:before\%20\%3E\%20\:has\(\.foo\)]:not(does-not-exist) {
 	order: 216;
 }
 
-[\:has\(\.foo\)\%20\%3E\%20\:\:before] {
+[\:has\(\.foo\)\%20\%3E\%20\:\:before]:not(does-not-exist) {
 	order: 217;
 }
 
@@ -898,7 +898,7 @@ foo[baz=":has(.foo)"] {
 	order: 224;
 }
 
-[__\:has\(\.foo\)] {
+[__\:has\(\.foo\)]:not(does-not-exist) {
 	order: 225;
 }
 

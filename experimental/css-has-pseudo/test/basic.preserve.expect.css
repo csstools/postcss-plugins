@@ -2,27 +2,27 @@
 	order: 1;
 }
 
-[a\:has\(\%3E\%20img\)] {
+[a\:has\(\%3E\%20img\)]:not(does-not-exist):not(does-not-exist) {
 	order: 2;
 }
 
-[h1\:has\(\%2B\%20p\)] {
+[h1\:has\(\%2B\%20p\)]:not(does-not-exist):not(does-not-exist) {
 	order: 3;
 }
 
-[h1\:has\(\~\%20p\)] {
+[h1\:has\(\~\%20p\)]:not(does-not-exist):not(does-not-exist) {
 	order: 4;
 }
 
-[section\:not\(\:has\(h1\,\%20h2\,\%20h3\,\%20h4\,\%20h5\,\%20h6\)\)] {
+[section\:not\(\:has\(h1\,\%20h2\,\%20h3\,\%20h4\,\%20h5\,\%20h6\)\)]:not(does-not-exist):not(does-not-exist) {
 	order: 5;
 }
 
-[body\:has\(\:focus\)] {
+[body\:has\(\:focus\)]:not(does-not-exist) {
   order: 6;
 }
 
-[body\:not\(\:has\(\:focus\)\)] {
+[body\:not\(\:has\(\:focus\)\)]:not(does-not-exist) {
   order: 7;
 }
 
@@ -39,7 +39,7 @@
 	order: 10;
 }
 
-[\.x\:has\(\%3E\%20\%23a\:hover\)][\.x\:has\(\%3E\%20\%23a\:hover\)] {
+[\.x\:has\(\%3E\%20\%23a\:hover\)][\.x\:has\(\%3E\%20\%23a\:hover\)]:not(#does-not-exist) {
 	order: 11;
 }
 
@@ -59,7 +59,7 @@
 	order: 15;
 }
 
-[\.x\:has\(\%3E\%20\:\:before\:hover\)][\.x\:has\(\%3E\%20\:\:before\:hover\)] {
+[\.x\:has\(\%3E\%20\:\:before\:hover\)][\.x\:has\(\%3E\%20\:\:before\:hover\)]:not(does-not-exist) {
 	order: 16; /* not allowed by spec but encoding should work */
 }
 
@@ -67,7 +67,7 @@
 	order: 17;
 }
 
-[\.x\:has\(\%3E\%20__foo\)] {
+[\.x\:has\(\%3E\%20__foo\)]:not(does-not-exist) {
 	order: 18;
 }
 

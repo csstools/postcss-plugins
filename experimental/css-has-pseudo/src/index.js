@@ -6,6 +6,10 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 
 	/** Whether the original rule should be preserved. */
 	const shouldPreserve = Boolean('preserve' in opts ? opts.preserve : true);
+	const doesNotExistName = opts.doesNotExistName ?? 'does-not-exist';
+
+	const doesNotExistId = ':not(#' + doesNotExistName + ')';
+	const doesNotExistTag = ':not(' + doesNotExistName + ')';
 
 	return {
 		postcssPlugin: 'css-has-pseudo-experimental',
@@ -18,8 +22,6 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 				if (!selector.includes(':has(')) {
 					return selector;
 				}
-
-				let specificity = 1;
 
 				let selectorAST;
 				try {
@@ -43,15 +45,22 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 				}
 
 				const abcSpecificity = selectorSpecificity(selectorAST);
-				specificity = Math.max(1, abcSpecificity.b);
+				const bSpecificity = Math.max(1, abcSpecificity.b);
 
-				let encodedSelectorWithBSpecificty = '';
+				let encodedSelectorWithSpecificity = '';
 				const encodedSelector = '[' + encodeCSS(selector) + ']';
-				for (let i = 0; i < specificity; i++) {
-					encodedSelectorWithBSpecificty += encodedSelector;
+				for (let i = 0; i < bSpecificity; i++) {
+					encodedSelectorWithSpecificity += encodedSelector;
 				}
 
-				return encodedSelectorWithBSpecificty;
+				for (let i = 0; i < abcSpecificity.a; i++) {
+					encodedSelectorWithSpecificity += doesNotExistId;
+				}
+				for (let i = 0; i < abcSpecificity.c; i++) {
+					encodedSelectorWithSpecificity += doesNotExistTag;
+				}
+
+				return encodedSelectorWithSpecificity;
 			});
 
 			if (selectors.join(',') === rule.selectors.join(',')) {
