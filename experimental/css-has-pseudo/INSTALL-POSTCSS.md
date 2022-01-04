@@ -1,6 +1,8 @@
 # Installing PostCSS
 
-[CSS Has Pseudo] runs in all Node environments, with special instructions for:
+[EXPERIMENTAL CSS Has Pseudo] runs in all Node environments, with special instructions for:
+
+⚠️ Experimental version of [CSS Has Pseudo](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo)
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
 | --- | --- | --- | --- | --- | --- |
@@ -17,10 +19,10 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssHasPseudo = require('css-has-pseudo');
+const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 postcss([
-  postcssHasPseudo(/* pluginOptions */)
+  cssHasPseudoExperimental(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -35,11 +37,11 @@ npm install postcss-cli --save-dev
 Use [CSS Has Pseudo] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssHasPseudo = require('css-has-pseudo');
+const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 module.exports = {
   plugins: [
-    postcssHasPseudo(/* pluginOptions */)
+    cssHasPseudoExperimental(/* pluginOptions */)
   ]
 }
 ```
@@ -55,7 +57,7 @@ npm install postcss-loader --save-dev
 Use [CSS Has Pseudo] in your Webpack configuration:
 
 ```js
-const postcssHasPseudo = require('css-has-pseudo');
+const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 module.exports = {
   module: {
@@ -68,7 +70,7 @@ module.exports = {
           { loader: 'postcss-loader', options: {
             ident: 'postcss',
             plugins: () => [
-              postcssHasPseudo(/* pluginOptions */)
+              cssHasPseudoExperimental(/* pluginOptions */)
             ]
           } }
         ]
@@ -92,11 +94,11 @@ file:
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssHasPseudo = require('css-has-pseudo');
+const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 module.exports = config => reactAppRewirePostcss(config, {
   plugins: () => [
-    postcssHasPseudo(/* pluginOptions */)
+    cssHasPseudoExperimental(/* pluginOptions */)
   ]
 });
 ```
@@ -113,11 +115,11 @@ Use [CSS Has Pseudo] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssHasPseudo = require('css-has-pseudo');
+const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
   postcss([
-    postcssHasPseudo(/* pluginOptions */)
+    cssHasPseudoExperimental(/* pluginOptions */)
   ])
 ).pipe(
   gulp.dest('.')
@@ -135,7 +137,7 @@ npm install grunt-postcss --save-dev
 Use [CSS Has Pseudo] in your Gruntfile:
 
 ```js
-const postcssHasPseudo = require('css-has-pseudo');
+const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -143,7 +145,7 @@ grunt.initConfig({
   postcss: {
     options: {
       use: [
-       postcssHasPseudo(/* pluginOptions */)
+       cssHasPseudoExperimental(/* pluginOptions */)
       ]
     },
     dist: {
@@ -153,7 +155,7 @@ grunt.initConfig({
 });
 ```
 
-[CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
+[EXPERIMENTAL CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/experimental/css-has-pseudo
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
