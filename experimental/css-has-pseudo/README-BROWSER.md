@@ -92,8 +92,8 @@ ECMA Script:
 
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
-[npm-img]: https://img.shields.io/npm/v/css-has-pseudo.svg
-[npm-url]: https://www.npmjs.com/package/css-has-pseudo
+[npm-img]: https://img.shields.io/npm/v/@csstools/css-has-pseudo-experimental.svg
+[npm-url]: https://www.npmjs.com/package/@csstools/css-has-pseudo-experimental
 
 [EXPERIMENTAL CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/experimental/css-has-pseudo
 [Selectors Level 4]: https://drafts.csswg.org/selectors-4/#has
