@@ -1,87 +1,87 @@
 /* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-pseudo-class.html */
-[\%23d_main\:has\(input\)\%20div] {
+[\%23d_main\:has\(input\)\%20div]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
 	color: grey
 }
 
-[\%23d_main\:has\(\%23d_checkbox\:checked\)\%3E\%23d_subject] {
+[\%23d_main\:has\(\%23d_checkbox\:checked\)\%3E\%23d_subject]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
 	color: red
 }
 
-[\%23d_main\:has\(\%23d_option\:checked\)\%3E\%23d_subject] {
+[\%23d_main\:has\(\%23d_option\:checked\)\%3E\%23d_subject]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
 	color: red
 }
 
-[\%23d_main\:has\(\%23d_checkbox\:disabled\)\%3E\%23d_subject] {
+[\%23d_main\:has\(\%23d_checkbox\:disabled\)\%3E\%23d_subject]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
 	color: green
 }
 
-[\%23d_main\:has\(\%23d_option\:disabled\)\%3E\%20\:is\(\%23d_subject\,\%20\%23d_subject2\)] {
+[\%23d_main\:has\(\%23d_option\:disabled\)\%3E\%20\:is\(\%23d_subject\,\%20\%23d_subject2\)]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
 	color: green
 }
 
-[\%23d_main\:has\(\%23d_optgroup\:disabled\)\%3E\%23d_subject] {
+[\%23d_main\:has\(\%23d_optgroup\:disabled\)\%3E\%23d_subject]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
 	color: blue
 }
 
-[\%23d_main\:not\(\:has\(\%23d_checkbox\:enabled\)\)\%3E\%23d_subject3] {
+[\%23d_main\:not\(\:has\(\%23d_checkbox\:enabled\)\)\%3E\%23d_subject3]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
 	color: green
 }
 
-[\%23d_main\:not\(\:has\(\%23d_option\:enabled\)\)\%20\:is\(\%23d_subject3\,\%20\%23d_subject4\)] {
+[\%23d_main\:not\(\:has\(\%23d_option\:enabled\)\)\%20\:is\(\%23d_subject3\,\%20\%23d_subject4\)]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
 	color: green
 }
 
-[\%23d_main\:not\(\:has\(\%23d_optgroup\:enabled\)\)\%3E\%23d_subject3] {
+[\%23d_main\:not\(\:has\(\%23d_optgroup\:enabled\)\)\%3E\%23d_subject3]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
 	color: blue
 }
 
 /* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-ancestor-position.html */
-[div\:has\(\.c_test\)\%20\%23c_subject] {
+[div\:has\(\.c_test\)\%20\%23c_subject]:not(#does-not-exist):not(does-not-exist) {
 	background-color: red
 }
 
-[div\:has\(\%3E\%20\.c_test\)\%20\%23c_subject] {
+[div\:has\(\%3E\%20\.c_test\)\%20\%23c_subject]:not(#does-not-exist):not(does-not-exist) {
 	background-color: green
 }
 
-[div\:has\(\~\%20\.c_test\)\%20\%23c_subject] {
+[div\:has\(\~\%20\.c_test\)\%20\%23c_subject]:not(#does-not-exist):not(does-not-exist) {
 	background-color: yellow
 }
 
-[div\:has\(\%2B\%20\.c_test\)\%20\%23c_subject] {
+[div\:has\(\%2B\%20\.c_test\)\%20\%23c_subject]:not(#does-not-exist):not(does-not-exist) {
 	background-color: blue
 }
 
-[div\:has\(\~\%20div\%20\.c_test\)\%20\%23c_subject] {
+[div\:has\(\~\%20div\%20\.c_test\)\%20\%23c_subject]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
 	background-color: purple
 }
 
-[div\:has\(\%2B\%20div\%20\.c_test\)\%20\%23c_subject] {
+[div\:has\(\%2B\%20div\%20\.c_test\)\%20\%23c_subject]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
 	background-color: pink
 }
 
 /* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
-[div\:has\(\.a_test\)\%2B\%23a_subject] {
+[div\:has\(\.a_test\)\%2B\%23a_subject]:not(#does-not-exist):not(does-not-exist) {
 	background-color: red;
 }
 
-[div\:has\(\%3E\%20\.a_test\)\%2B\%23a_subject] {
+[div\:has\(\%3E\%20\.a_test\)\%2B\%23a_subject]:not(#does-not-exist):not(does-not-exist) {
 	background-color: green;
 }
 
-[div\:has\(\~\%20\.a_test\)\%2B\%23a_subject] {
+[div\:has\(\~\%20\.a_test\)\%2B\%23a_subject]:not(#does-not-exist):not(does-not-exist) {
 	background-color: yellow;
 }
 
-[div\:has\(\%2B\%20\.a_test\)\%2B\%23a_subject] {
+[div\:has\(\%2B\%20\.a_test\)\%2B\%23a_subject]:not(#does-not-exist):not(does-not-exist) {
 	background-color: blue;
 }
 
-[div\:has\(\~\%20div\%20\.a_test\)\%2B\%23a_subject] {
+[div\:has\(\~\%20div\%20\.a_test\)\%2B\%23a_subject]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
 	background-color: purple;
 }
 
-[div\:has\(\%2B\%20div\%20\.a_test\)\%2B\%23a_subject] {
+[div\:has\(\%2B\%20div\%20\.a_test\)\%2B\%23a_subject]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
 	background-color: pink;
 }
 
@@ -95,22 +95,22 @@ main {
 	padding: 5px;
 }
 
-[\.b_subject\:has\(\%3E\%20\.b_child\)][\.b_subject\:has\(\%3E\%20\.b_child\)] {
+[\.b_subject\:has\(\%3E\%20\.b_child\)]:not(.does-not-exist) {
 	background-color: red;
 }
 
-[\.b_subject\:has\(\.b_descendant\)][\.b_subject\:has\(\.b_descendant\)] {
+[\.b_subject\:has\(\.b_descendant\)]:not(.does-not-exist) {
 	background-color: green;
 }
 
-[\.b_subject\:has\(\[attrname\%3Db_descendant\]\)][\.b_subject\:has\(\[attrname\%3Db_descendant\]\)] {
+[\.b_subject\:has\(\[attrname\%3Db_descendant\]\)]:not(.does-not-exist) {
 	background-color: blue;
 }
 
-[\.b_subject\:has\(\%23b_div_descendant\)] {
+[\.b_subject\:has\(\%23b_div_descendant\)]:not(#does-not-exist) {
 	background-color: yellow;
 }
 
-[\.b_subject\:has\(b_descendant\)] {
+[\.b_subject\:has\(b_descendant\)]:not(does-not-exist) {
 	background-color: yellowgreen;
 }

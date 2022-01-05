@@ -1,6 +1,11 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased
+### 0.1.1 (January 5, 2022)
+
+- Added : support for id and tag selector specificity.
+- Changed : hover tracking now also uses `leave` events for correct style re-calcs.
+
+### 0.1.0 (January 4, 2022)
 
 Tracking initial implementation of `:has()` pseudo-class in Safari Technology Preview.
 This is a breaking change and affects both the generated CSS and the client side polyfill.

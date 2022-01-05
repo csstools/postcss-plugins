@@ -6,7 +6,7 @@
 	order: 1;
 }
 
-[a\:has\(\%3E\%20img\)] {
+[a\:has\(\%3E\%20img\)]:not(does-not-exist):not(does-not-exist) {
 	order: 2;
 }
 
@@ -14,7 +14,7 @@ a:has(> img) {
 	order: 2;
 }
 
-[h1\:has\(\%2B\%20p\)] {
+[h1\:has\(\%2B\%20p\)]:not(does-not-exist):not(does-not-exist) {
 	order: 3;
 }
 
@@ -22,7 +22,7 @@ h1:has(+ p) {
 	order: 3;
 }
 
-[h1\:has\(\~\%20p\)] {
+[h1\:has\(\~\%20p\)]:not(does-not-exist):not(does-not-exist) {
 	order: 4;
 }
 
@@ -30,7 +30,7 @@ h1:has(~ p) {
 	order: 4;
 }
 
-[section\:not\(\:has\(h1\,\%20h2\,\%20h3\,\%20h4\,\%20h5\,\%20h6\)\)] {
+[section\:not\(\:has\(h1\,\%20h2\,\%20h3\,\%20h4\,\%20h5\,\%20h6\)\)]:not(does-not-exist):not(does-not-exist) {
 	order: 5;
 }
 
@@ -38,7 +38,7 @@ section:not(:has(h1, h2, h3, h4, h5, h6)) {
 	order: 5;
 }
 
-[body\:has\(\:focus\)] {
+[body\:has\(\:focus\)]:not(does-not-exist) {
   order: 6;
 }
 
@@ -46,7 +46,7 @@ body:has(:focus) {
   order: 6;
 }
 
-[body\:not\(\:has\(\:focus\)\)] {
+[body\:not\(\:has\(\:focus\)\)]:not(does-not-exist) {
   order: 7;
 }
 
@@ -67,7 +67,7 @@ body:not(:has(:focus)) {
 	order: 9;
 }
 
-[\.x\:has\(\%3E\%20\.a\:hover\)][\.x\:has\(\%3E\%20\.a\:hover\)][\.x\:has\(\%3E\%20\.a\:hover\)] {
+[\.x\:has\(\%3E\%20\.a\:hover\)]:not(.does-not-exist):not(.does-not-exist) {
 	order: 10;
 }
 
@@ -75,7 +75,7 @@ body:not(:has(:focus)) {
 	order: 10;
 }
 
-[\.x\:has\(\%3E\%20\%23a\:hover\)][\.x\:has\(\%3E\%20\%23a\:hover\)] {
+[\.x\:has\(\%3E\%20\%23a\:hover\)]:not(#does-not-exist):not(.does-not-exist) {
 	order: 11;
 }
 
@@ -83,7 +83,7 @@ body:not(:has(:focus)) {
 	order: 11;
 }
 
-[\.x\:has\(\%3E\%20\[a\]\:hover\)][\.x\:has\(\%3E\%20\[a\]\:hover\)][\.x\:has\(\%3E\%20\[a\]\:hover\)] {
+[\.x\:has\(\%3E\%20\[a\]\:hover\)]:not(.does-not-exist):not(.does-not-exist) {
 	order: 12;
 }
 
@@ -91,7 +91,7 @@ body:not(:has(:focus)) {
 	order: 12;
 }
 
-[\.x\:has\(\%3E\%20\[a\%3D\%22b\%22\]\:hover\)][\.x\:has\(\%3E\%20\[a\%3D\%22b\%22\]\:hover\)][\.x\:has\(\%3E\%20\[a\%3D\%22b\%22\]\:hover\)] {
+[\.x\:has\(\%3E\%20\[a\%3D\%22b\%22\]\:hover\)]:not(.does-not-exist):not(.does-not-exist) {
 	order: 13;
 }
 
@@ -99,7 +99,7 @@ body:not(:has(:focus)) {
 	order: 13;
 }
 
-[\.x\:has\(\%3E\%20\[a\%3D\%22\:has\(\.x\)\%22\]\:hover\)][\.x\:has\(\%3E\%20\[a\%3D\%22\:has\(\.x\)\%22\]\:hover\)][\.x\:has\(\%3E\%20\[a\%3D\%22\:has\(\.x\)\%22\]\:hover\)] {
+[\.x\:has\(\%3E\%20\[a\%3D\%22\:has\(\.x\)\%22\]\:hover\)]:not(.does-not-exist):not(.does-not-exist) {
 	order: 14;
 }
 
@@ -107,7 +107,7 @@ body:not(:has(:focus)) {
 	order: 14;
 }
 
-[\.x\:has\(\%3E\%20\[\%5C\:has\%5C\(\%5C\%253E\%5C\%2520\%5C\.a\%5C\:hover\%5C\)\]\:hover\)][\.x\:has\(\%3E\%20\[\%5C\:has\%5C\(\%5C\%253E\%5C\%2520\%5C\.a\%5C\:hover\%5C\)\]\:hover\)][\.x\:has\(\%3E\%20\[\%5C\:has\%5C\(\%5C\%253E\%5C\%2520\%5C\.a\%5C\:hover\%5C\)\]\:hover\)] {
+[\.x\:has\(\%3E\%20\[\%5C\:has\%5C\(\%5C\%253E\%5C\%2520\%5C\.a\%5C\:hover\%5C\)\]\:hover\)]:not(.does-not-exist):not(.does-not-exist) {
 	order: 15;
 }
 
@@ -115,7 +115,7 @@ body:not(:has(:focus)) {
 	order: 15;
 }
 
-[\.x\:has\(\%3E\%20\:\:before\:hover\)][\.x\:has\(\%3E\%20\:\:before\:hover\)] {
+[\.x\:has\(\%3E\%20\:\:before\:hover\)]:not(.does-not-exist):not(does-not-exist) {
 	order: 16; /* not allowed by spec but encoding should work */
 }
 
@@ -123,7 +123,7 @@ body:not(:has(:focus)) {
 	order: 16; /* not allowed by spec but encoding should work */
 }
 
-[\.x\:has\(\%3E\%20\.a\:has\(\%20\%2B\%20\.b\)\)][\.x\:has\(\%3E\%20\.a\:has\(\%20\%2B\%20\.b\)\)][\.x\:has\(\%3E\%20\.a\:has\(\%20\%2B\%20\.b\)\)] {
+[\.x\:has\(\%3E\%20\.a\:has\(\%20\%2B\%20\.b\)\)]:not(.does-not-exist):not(.does-not-exist) {
 	order: 17;
 }
 
@@ -131,7 +131,7 @@ body:not(:has(:focus)) {
 	order: 17;
 }
 
-[\.x\:has\(\%3E\%20__foo\)] {
+[\.x\:has\(\%3E\%20__foo\)]:not(does-not-exist) {
 	order: 18;
 }
 
@@ -139,7 +139,7 @@ body:not(:has(:focus)) {
 	order: 18;
 }
 
-[\.x\:has\(\%3E\%20\:--foo\)][\.x\:has\(\%3E\%20\:--foo\)] {
+[\.x\:has\(\%3E\%20\:--foo\)]:not(.does-not-exist) {
 	order: 19;
 }
 
@@ -155,7 +155,7 @@ body:not(:has(:focus)) {
 	order: 20;
 }
 
-[\.x\:has\(\%3E\%20\.y\%20\*\)][\.x\:has\(\%3E\%20\.y\%20\*\)] {
+[\.x\:has\(\%3E\%20\.y\%20\*\)]:not(.does-not-exist) {
 	order: 21;
 }
 
@@ -163,7 +163,7 @@ body:not(:has(:focus)) {
 	order: 21;
 }
 
-[\.a\:not\(\:has\(\%3E\%20\.b\)\)][\.a\:not\(\:has\(\%3E\%20\.b\)\)] {
+[\.a\:not\(\:has\(\%3E\%20\.b\)\)]:not(.does-not-exist) {
 	order: 22;
 }
 
@@ -171,7 +171,7 @@ body:not(:has(:focus)) {
 	order: 22;
 }
 
-[\.x\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)][\.x\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)][\.x\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)][\.x\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)][\.x\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)] {
+[\.x\:has\(\~\%20\.y\:has\(\.g\%20\.h\)\%20\.i\)]:not(.does-not-exist):not(.does-not-exist):not(.does-not-exist):not(.does-not-exist) {
 	order: 23;
 }
 
@@ -179,7 +179,7 @@ body:not(:has(:focus)) {
 	order: 23;
 }
 
-[\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)] {
+[\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)]:not(.does-not-exist):not(.does-not-exist):not(.does-not-exist) {
 	order: 24;
 }
 
@@ -187,7 +187,7 @@ body:not(:has(:focus)) {
 	order: 24;
 }
 
-[\.x\:has\(\%3E\%20\.a\)\%20\.b][\.x\:has\(\%3E\%20\.a\)\%20\.b][\.x\:has\(\%3E\%20\.a\)\%20\.b] {
+[\.x\:has\(\%3E\%20\.a\)\%20\.b]:not(.does-not-exist):not(.does-not-exist) {
 	order: 24;
 }
 
@@ -195,7 +195,7 @@ body:not(:has(:focus)) {
 	order: 24;
 }
 
-[\.x\:has\(\%3E\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\)][\.x\:has\(\%3E\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\)] {
+[\.x\:has\(\%3E\%20\.\%F0\%9F\%A7\%91\%F0\%9F\%8F\%BE\%E2\%80\%8D\%F0\%9F\%8E\%A4\)]:not(.does-not-exist) {
 	order: 25;
 }
 
@@ -203,7 +203,7 @@ body:not(:has(:focus)) {
 	order: 25;
 }
 
-[\.x\:has\(\%3E\%20\.a\)][\.x\:has\(\%3E\%20\.a\)], [\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.b\)] {
+[\.x\:has\(\%3E\%20\.a\)]:not(.does-not-exist), [\.x\:has\(\%3E\%20\.b\)]:not(.does-not-exist) {
 	order: 26;
 }
 
@@ -211,7 +211,7 @@ body:not(:has(:focus)) {
 	order: 26;
 }
 
-[\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)] {
+[\.x\:has\(\%3E\%20\.a\)\%20\~\%20\.x\:has\(\%3E\%20\.b\)]:not(.does-not-exist):not(.does-not-exist):not(.does-not-exist) {
 	order: 27;
 }
 
@@ -219,7 +219,7 @@ body:not(:has(:focus)) {
 	order: 27;
 }
 
-[\.x\:has\(\%3E\%20\.a\)][\.x\:has\(\%3E\%20\.a\)], .b {
+[\.x\:has\(\%3E\%20\.a\)]:not(.does-not-exist), .b {
 	order: 28;
 }
 
@@ -227,10 +227,18 @@ body:not(:has(:focus)) {
 	order: 28;
 }
 
-.a, [\.x\:has\(\%3E\%20\.b\)][\.x\:has\(\%3E\%20\.b\)] {
+.a, [\.x\:has\(\%3E\%20\.b\)]:not(.does-not-exist) {
 	order: 29;
 }
 
 .a, .x:has(> .b) {
 	order: 29;
+}
+
+[\.x\:has\(\%3E\%20\.b\%20\*\)]:not(.does-not-exist) {
+	order: 30;
+}
+
+.x:has(> .b *) {
+	order: 30;
 }
