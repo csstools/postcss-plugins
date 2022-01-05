@@ -83,6 +83,16 @@ export default function cssHasPseudo(document, options) {
 	document.addEventListener('input', transformObservedItemsThrottled);
 	document.addEventListener('change', transformObservedItemsThrottled, true);
 
+	if (options.hover) {
+		if ('onpointerenter' in document) {
+			document.addEventListener('pointerenter', transformObservedItemsThrottled, true);
+			document.addEventListener('pointerleave', transformObservedItemsThrottled, true);
+		} else {
+			document.addEventListener('mouseover', transformObservedItemsThrottled, true);
+			document.addEventListener('mouseout', transformObservedItemsThrottled, true);
+		}
+	}
+
 	// observe Javascript setters that effect pseudo-selectors
 	if ('defineProperty' in Object && 'getOwnPropertyDescriptor' in Object && 'hasOwnProperty' in Object) {
 		try {
@@ -141,14 +151,6 @@ export default function cssHasPseudo(document, options) {
 			if (options.debug) {
 				console.error(e);
 			}
-		}
-	}
-
-	if (options.hover) {
-		if ('onpointerenter' in document) {
-			document.addEventListener('pointerenter', transformObservedItemsThrottled, true);
-		} else {
-			document.addEventListener('mouseover', transformObservedItemsThrottled, true);
 		}
 	}
 
