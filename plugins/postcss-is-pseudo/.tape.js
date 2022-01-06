@@ -11,6 +11,12 @@ module.exports = {
 			preserve: true
 		}
 	},
+	'basic:does-not-exist': {
+		message: "supports basic usage with { doesNotExistName: 'something-random' }",
+		options: {
+			doesNotExistName: 'something-random'
+		}
+	},
 	'basic:oncomplex:warning': {
 		message: "supports basic usage with { oncomplex: 'warning' }",
 		warnings: 3,

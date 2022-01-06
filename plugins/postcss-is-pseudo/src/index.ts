@@ -1,8 +1,15 @@
 import type { PluginCreator } from 'postcss';
 import splitSelectors from './split-selectors/split-selectors';
 
-const creator: PluginCreator<{ preserve?: boolean, oncomplex?: 'warning' | 'skip' }> = (opts?: { preserve?: boolean, oncomplex?: 'warning' | 'skip' }) => {
+const creator: PluginCreator<
+	{
+		preserve?: boolean,
+		oncomplex?: 'warning' | 'skip',
+		doesNotExistName?: string,
+	}
+> = (opts?: { preserve?: boolean, oncomplex?: 'warning' | 'skip', doesNotExistName?: string }) => {
 	const options = {
+		doesNotExistName: 'does-not-exist',
 		...(opts || {}),
 	};
 

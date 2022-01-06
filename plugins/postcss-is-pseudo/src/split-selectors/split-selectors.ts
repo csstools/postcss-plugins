@@ -3,11 +3,10 @@ import { selectorSpecificity } from './specificity';
 import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
 import { childAdjacentChild } from './complex';
 
-export default function splitSelectors(selectors: string[], pluginOptions: { preserve?: boolean, oncomplex?: 'warning' | 'skip' }, warnFn: () => void) {
-	const doesNotExistName = 'does-not-exist';
-	const doesNotExistId = ':not(#' + doesNotExistName + ')';
-	const doesNotExistClass = ':not(.' + doesNotExistName + ')';
-	const doesNotExistTag = ':not(' + doesNotExistName + ')';
+export default function splitSelectors(selectors: string[], pluginOptions: { preserve?: boolean, oncomplex?: 'warning' | 'skip', doesNotExistName: string }, warnFn: () => void) {
+	const doesNotExistId = ':not(#' + pluginOptions.doesNotExistName + ')';
+	const doesNotExistClass = ':not(.' + pluginOptions.doesNotExistName + ')';
+	const doesNotExistTag = ':not(' + pluginOptions.doesNotExistName + ')';
 
 	return selectors.flatMap((selector) => {
 		if (selector.indexOf(':is') === -1) {

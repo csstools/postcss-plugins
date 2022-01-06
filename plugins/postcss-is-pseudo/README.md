@@ -56,6 +56,75 @@ postcss([
 
 ## Options
 
+### preserve
+
+The `preserve` option determines whether the original notation
+is preserved. By default, it is not preserved.
+
+```js
+postcss([
+  postcssIsPseudo({ preserve: true })
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```css
+:is(input, button):is(:hover, :focus) {
+	order: 1;
+}
+```
+
+Becomes :
+
+```css
+input:hover {
+	order: 1;
+}
+input:focus {
+	order: 1;
+}
+button:hover {
+	order: 1;
+}
+button:focus {
+	order: 1;
+}
+:is(input, button):is(:hover, :focus) {
+	order: 1;
+}
+```
+
+### doesNotExistName
+
+The `doesNotExistName` option allows you to change to selector used for `:not()` selectors.
+The default value is `does-not-exist`.
+If this is an actual class, id or tag name in your code, you will need to set a different option here.
+
+See how `:not` is used to modify specificity.
+
+```js
+postcss([
+  postcssIsPseudo({ doesNotExistName: 'something-random' })
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```css
+:is(.button, button):hover {
+	order: 7;
+}
+```
+
+Becomes :
+
+```css
+.button:hover {
+	order: 7;
+}
+
+button:not(.something-random):hover {
+	order: 7;
+}
+```
+
 ### oncomplex
 
 Do not transform complex selectors in `:is` pseudo classes.
