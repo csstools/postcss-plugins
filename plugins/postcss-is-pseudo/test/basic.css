@@ -1,0 +1,19 @@
+[active]:is(input, button):is(:hover, :focus) > b {
+	order: 1;
+}
+
+[active]:is(input, button):is(:hover, :focus, :focus-within):is(.a, .b, .c, .d) > b {
+	order: 2;
+}
+
+:is(a, button):is(:hover, :focus) {
+	order: 3;
+}
+
+:is(:hover, :focus):is(a, button) {
+	order: 4;
+}
+
+button:is(:hover, :is(:focus, :focus-within)) {
+	order: 5;
+}
