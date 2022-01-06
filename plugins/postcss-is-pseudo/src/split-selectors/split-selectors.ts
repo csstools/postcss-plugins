@@ -1,8 +1,9 @@
 import parser from 'postcss-selector-parser';
 import { selectorSpecificity } from './specificity';
 import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
+import { childAdjacentChild } from './complex';
 
-export default function splitSelectors(selectors) {
+export default function splitSelectors(selectors: string[], pluginOptions: { preserve?: boolean, oncomplex?: 'warning' | 'skip' }, warnFn: () => void) {
 	const doesNotExistName = 'does-not-exist';
 	const doesNotExistId = ':not(#' + doesNotExistName + ')';
 	const doesNotExistClass = ':not(.' + doesNotExistName + ')';
@@ -17,6 +18,26 @@ export default function splitSelectors(selectors) {
 		const replacements = [];
 
 		const selectorAST = parser().astSync(selector);
+
+		if (pluginOptions.oncomplex === 'skip') {
+			let hasComplexSelectors = false;
+			selectorAST.walkPseudos((pseudo) => {
+				if (pseudo.value !== ':is' || !pseudo.nodes || !pseudo.nodes.length) {
+					return;
+				}
+				pseudo.nodes.forEach((child) => {
+					child.nodes.forEach((grandChild) => {
+						if (grandChild.type === 'combinator') {
+							hasComplexSelectors = true;
+						}
+					});
+				});
+			});
+			if (hasComplexSelectors) {
+				return [selector];
+			}
+		}
+
 		selectorAST.walkPseudos((pseudo) => {
 			if (pseudo.value !== ':is' || !pseudo.nodes || !pseudo.nodes.length) {
 				return;
@@ -93,10 +114,24 @@ export default function splitSelectors(selectors) {
 
 		let formattedResults = results.map((x) => {
 			const modifiedSelectorAST = parser().astSync(x);
+
+			// Handle complex selector cases
+			modifiedSelectorAST.walk((node) => {
+				childAdjacentChild(node);
+			});
+
+			// Remove `:is` with single elements
 			modifiedSelectorAST.walkPseudos((pseudo) => {
 				if (pseudo.value !== ':is' || !pseudo.nodes || pseudo.nodes.length !== 1) {
 					return;
 				}
+
+				// Warn when `:is` contains a complex selector.
+				pseudo.nodes.forEach((child) => {
+					if (child.some((node) => node.type === 'combinator')) {
+						warnFn();
+					}
+				});
 
 				pseudo.replaceWith(pseudo.nodes[0]);
 			});
@@ -114,7 +149,7 @@ export default function splitSelectors(selectors) {
 		});
 
 		if (foundNestedIs) {
-			formattedResults = splitSelectors(formattedResults);
+			formattedResults = splitSelectors(formattedResults, pluginOptions, warnFn);
 		}
 
 		return formattedResults;

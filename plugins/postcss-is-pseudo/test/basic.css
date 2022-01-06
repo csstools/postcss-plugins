@@ -34,6 +34,14 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 9;
 }
 
-:is(.alpha > .beta) + :is(.alpha > .beta) {
+:is(.alpha > .beta) + :is(:focus > .beta) {
 	order: 10;
+}
+
+:is(.alpha > .beta, .one > .two) + :is(:focus > .beta, :focus > .two) {
+	order: 11;
+}
+
+:is(.alpha > .beta) ~ :is(:focus > .beta) {
+	order: 12;
 }

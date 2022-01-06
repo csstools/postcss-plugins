@@ -38,15 +38,7 @@ Add [PostCSS Is Pseudo] to your project:
 npm install @csstools/postcss-is-pseudo --save-dev
 ```
 
-Use [PostCSS Is Pseudo] to process your CSS:
-
-```js
-import postcssIsPseudo from '@csstools/postcss-is-pseudo';
-
-postcssIsPseudo.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Is Pseudo] as a [PostCSS] plugin:
 
 ```js
 import postcss from 'postcss';
@@ -63,6 +55,24 @@ postcss([
 | --- | --- | --- | --- | --- |
 
 ## Options
+
+### oncomplex
+
+Do not transform complex selectors in `:is` pseudo classes.
+
+```js
+postcss([
+  postcssIsPseudo({ oncomplex: 'skip' })
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+Warn on complex selectors in `:is` pseudo classes.
+
+```js
+postcss([
+  postcssIsPseudo({ oncomplex: 'warning' })
+]).process(YOUR_CSS /*, processOptions */);
+```
 
 ## ⚠️ Known shortcomings
 
@@ -116,7 +126,7 @@ Before :
 
 
 ```css
-:is(.alpha > .beta) + :is(:focus > .beta) {
+:is(.alpha > .beta) ~ :is(:focus > .beta) {
 	order: 2;
 }
 ```
@@ -124,31 +134,24 @@ Before :
 After :
 
 ```css
-.alpha > .beta + :focus > .beta {
+.alpha > .beta ~ :focus > .beta {
 	order: 2;
 }
 ```
 
-_this is a different selector than expected as `.beta + :focus` matches `.beta` followed by `:focus`._<br>
-_avoid these cases._
+_this is a different selector than expected as `.beta ~ :focus` matches `.beta` followed by `:focus`._<br>
+_avoid these cases._<br>
 _writing the selector without `:is()` is advised here_
 
 ```css
 /* without is */
-.alpha:focus > .beta + .beta {
-	order: 2;
-}
-
-/* or */
-.alpha :focus > .beta + .beta {
-	order: 2;
-}
-
-/* or */
-:focus .alpha > .beta + .beta {
+.alpha:focus > .beta ~ .beta {
 	order: 2;
 }
 ```
+
+If you have a specific pattern you can open an issue to discuss it.
+We can detect and transform some case but can't generalize into a single solution. 
 
 [css-img]: https://cssdb.org/badge/nesting-rules.svg
 [css-url]: https://cssdb.org/#nesting-rules
