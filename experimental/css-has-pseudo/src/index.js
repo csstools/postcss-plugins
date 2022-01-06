@@ -131,10 +131,39 @@ function selectorSpecificity(node) {
 			case ':has':
 			case ':not':
 				{
-					const pseudoSpecificity = selectorSpecificity(node.nodes[0]);
-					a += pseudoSpecificity.a;
-					b += pseudoSpecificity.b;
-					c += pseudoSpecificity.c;
+					if (node.nodes && node.nodes.length > 0) {
+						let mostSpecificListItem = {
+							a: 0,
+							b: 0,
+							c: 0,
+						};
+
+						node.nodes.forEach((child) => {
+							const itemSpecificity = selectorSpecificity(child);
+							if (itemSpecificity.a > mostSpecificListItem.a) {
+								mostSpecificListItem = itemSpecificity;
+								return;
+							} else if (itemSpecificity.a < mostSpecificListItem.a) {
+								return;
+							}
+
+							if (itemSpecificity.b > mostSpecificListItem.b) {
+								mostSpecificListItem = itemSpecificity;
+								return;
+							} else if (itemSpecificity.b < mostSpecificListItem.b) {
+								return;
+							}
+
+							if (itemSpecificity.c > mostSpecificListItem.c) {
+								mostSpecificListItem = itemSpecificity;
+								return;
+							}
+						});
+
+						a += mostSpecificListItem.a;
+						b += mostSpecificListItem.b;
+						c += mostSpecificListItem.c;
+					}
 					break;
 				}
 

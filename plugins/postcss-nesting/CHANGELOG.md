@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased
+
+- Improved : selector specificity calculation
+
 ### 10.1.1 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.
