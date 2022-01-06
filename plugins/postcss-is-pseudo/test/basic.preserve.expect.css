@@ -205,3 +205,23 @@ button:not(.does-not-exist):focus {
 :is(:hover, :focus):is(.button, button) {
 	order: 7;
 }
+
+button:hover {
+	order: 8;
+}
+
+button:focus {
+	order: 8;
+}
+
+input {
+	order: 8;
+}
+
+button:is(:hover, :focus), input {
+	order: 8;
+}
+
+foo[baz=":is(.some, .other)"], .ok {
+	order: 9;
+}

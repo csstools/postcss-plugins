@@ -15,20 +15,24 @@ const creator: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolea
 
 			try {
 				let didClone = false;
-				splitSelectors(rule.selectors).forEach((selector) => {
-					if (!selector) {
-						return;
-					}
-
+				const untouched = [];
+				splitSelectors(rule.selectors).forEach((modifiedSelector) => {
 					// `::is()` is incorrect but can't be detected without parsing.
 					// It will be left as is and will eventually trigger this condition.
-					if (rule.selectors.indexOf(selector) > -1) {
+					// This prevents an infinite loop.
+					// didClone is the signal to prevent the infinite loop.
+					if (rule.selectors.indexOf(modifiedSelector) > -1) {
+						untouched.push(modifiedSelector);
 						return;
 					}
 
+					rule.cloneBefore({ selector: modifiedSelector });
 					didClone = true;
-					rule.cloneBefore({ selector: selector });
 				});
+
+				if (untouched.length && didClone) {
+					rule.cloneBefore({ selectors: untouched });
+				}
 
 				if (!opts?.preserve) {
 					if (!didClone) {

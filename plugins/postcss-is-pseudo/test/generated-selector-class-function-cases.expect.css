@@ -878,15 +878,15 @@ button > button {
 	order: 56;
 }
 
-button {
-	order: 57;
-}
-
 .some {
 	order: 57;
 }
 
 .other {
+	order: 57;
+}
+
+button {
 	order: 57;
 }
 
@@ -1206,15 +1206,15 @@ button {
 	order: 86;
 }
 
-.🧑🏾‍🎤 {
-	order: 87;
-}
-
 .some {
 	order: 87;
 }
 
 .other {
+	order: 87;
+}
+
+.🧑🏾‍🎤 {
 	order: 87;
 }
 
@@ -1534,15 +1534,15 @@ button {
 	order: 116;
 }
 
-.foo {
-	order: 117;
-}
-
 .some {
 	order: 117;
 }
 
 .other {
+	order: 117;
+}
+
+.foo {
 	order: 117;
 }
 
@@ -1862,15 +1862,15 @@ button {
 	order: 146;
 }
 
-#foo {
-	order: 147;
-}
-
 .some {
 	order: 147;
 }
 
 .other {
+	order: 147;
+}
+
+#foo {
 	order: 147;
 }
 
@@ -2190,15 +2190,15 @@ __foo > __foo {
 	order: 176;
 }
 
-__foo {
-	order: 177;
-}
-
 .some {
 	order: 177;
 }
 
 .other {
+	order: 177;
+}
+
+__foo {
 	order: 177;
 }
 
@@ -2518,15 +2518,15 @@ __foo {
 	order: 206;
 }
 
-:--foo {
-	order: 207;
-}
-
 .some {
 	order: 207;
 }
 
 .other {
+	order: 207;
+}
+
+:--foo {
 	order: 207;
 }
 
@@ -2846,15 +2846,15 @@ __foo {
 	order: 236;
 }
 
-[foo="baz"] {
-	order: 237;
-}
-
 .some {
 	order: 237;
 }
 
 .other {
+	order: 237;
+}
+
+[foo="baz"] {
 	order: 237;
 }
 
@@ -3174,15 +3174,15 @@ __foo {
 	order: 266;
 }
 
-* {
-	order: 267;
-}
-
 .some {
 	order: 267;
 }
 
 .other {
+	order: 267;
+}
+
+* {
 	order: 267;
 }
 
@@ -3502,15 +3502,15 @@ __foo {
 	order: 296;
 }
 
-:hover {
-	order: 297;
-}
-
 .some {
 	order: 297;
 }
 
 .other {
+	order: 297;
+}
+
+:hover {
 	order: 297;
 }
 
@@ -3830,15 +3830,15 @@ __foo {
 	order: 326;
 }
 
-::before {
-	order: 327;
-}
-
 .some {
 	order: 327;
 }
 
 .other {
+	order: 327;
+}
+
+::before {
 	order: 327;
 }
 

@@ -74,7 +74,7 @@ export default function splitSelectors(selectors) {
 		}
 
 		const results = [];
-		cartesian(...replacements).forEach((replacement) => {
+		cartesianProduct(...replacements).forEach((replacement) => {
 			let result = '';
 
 			for (let i = 0; i < replacement.length; i++) {
@@ -118,10 +118,13 @@ export default function splitSelectors(selectors) {
 		}
 
 		return formattedResults;
+	}).filter((x) => {
+		return !!x;
 	});
 }
 
-function cartesian(...args) {
+// https://en.wikipedia.org/wiki/Cartesian_product
+function cartesianProduct(...args) {
 	const r = [], max = args.length - 1;
 	function helper(arr, i) {
 		for (let j = 0, l = args[i].length; j < l; j++) {

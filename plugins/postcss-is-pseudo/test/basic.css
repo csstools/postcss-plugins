@@ -25,3 +25,11 @@ button:is(:hover, :is(:focus, :focus-within)) {
 :is(:hover, :focus):is(.button, button) {
 	order: 7;
 }
+
+button:is(:hover, :focus), input {
+	order: 8;
+}
+
+foo[baz=":is(.some, .other)"], .ok {
+	order: 9;
+}
