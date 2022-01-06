@@ -33,3 +33,7 @@ button:is(:hover, :focus), input {
 foo[baz=":is(.some, .other)"], .ok {
 	order: 9;
 }
+
+:is(.alpha > .beta) + :is(.alpha > .beta) {
+	order: 10;
+}

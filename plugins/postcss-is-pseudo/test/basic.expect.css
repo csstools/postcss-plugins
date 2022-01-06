@@ -193,3 +193,7 @@ input {
 foo[baz=":is(.some, .other)"], .ok {
 	order: 9;
 }
+
+.alpha > .beta + .alpha > .beta {
+	order: 10;
+}
