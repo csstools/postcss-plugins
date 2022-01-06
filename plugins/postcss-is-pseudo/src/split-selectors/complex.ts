@@ -1,5 +1,6 @@
 // Some patterns can be detected and converted.
 // This is very difficult to abstract, so best to handle this case by case on request.
+// Added one pattern as an example.
 
 export function childAdjacentChild(selector) {
 	if (!selector || !selector.nodes) {
