@@ -150,7 +150,7 @@ postcss([
 `:is` takes the specificity of the most specific list item.
 We can increase specificity with `:not` selectors, but we can't decrease it.
 
-Converted selectors are ensure to have the same specificity as `:is` for the most important bit.
+Converted selectors are ensured to have the same specificity as `:is` for the most important bit.
 Less important bits can have higher specificity that `:is`.
 
 Before :
