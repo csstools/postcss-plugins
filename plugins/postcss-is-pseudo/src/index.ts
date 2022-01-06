@@ -20,7 +20,9 @@ const creator: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolea
 						return;
 					}
 
-					if (rule.selector.indexOf(selector) > -1) {
+					// `::is()` is incorrect but can't be detected without parsing.
+					// It will be left as is and will eventually trigger this condition.
+					if (rule.selectors.indexOf(selector) > -1) {
 						return;
 					}
 
