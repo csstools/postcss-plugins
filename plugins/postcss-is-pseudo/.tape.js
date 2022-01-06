@@ -2,10 +2,17 @@ module.exports = {
 	basic: {
 		message: "supports basic usage",
 	},
-	'basic:color': {
-		message: "supports { color: '<a color>' }",
+	'basic:preserve': {
+		message: "supports basic usage with { preserve: true }",
 		options: {
-			color: 'purple'
+			preserve: true
+		}
+	},
+	'generated-selector-class-function-cases': {
+		message: "supports generated selector class function cases",
+		warnings: 1,
+		options: {
+			preserve: true
 		}
 	},
 	example: {

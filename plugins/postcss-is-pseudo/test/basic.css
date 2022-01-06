@@ -17,3 +17,11 @@
 button:is(:hover, :is(:focus, :focus-within)) {
 	order: 5;
 }
+
+:not(:is(.some, .other)) {
+	order: 6;
+}
+
+:is(:hover, :focus):is(.button, button) {
+	order: 7;
+}

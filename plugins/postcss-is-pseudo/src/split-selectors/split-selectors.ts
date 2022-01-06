@@ -9,7 +9,6 @@ export default function splitSelectors(selectors) {
 	const doesNotExistTag = ':not(' + doesNotExistName + ')';
 
 	return selectors.flatMap((selector) => {
-		process.stdout.write(JSON.stringify(selector, null, 2) + '\n');
 		if (selector.indexOf(':is') === -1) {
 			return selector;
 		}
@@ -43,7 +42,7 @@ export default function splitSelectors(selectors) {
 				const replacement = {
 					start: start,
 					end: end,
-					option: ':unreplaced',
+					option: '',
 				};
 
 				const childSpecificity = selectorSpecificity(child);
@@ -70,6 +69,10 @@ export default function splitSelectors(selectors) {
 			replacements.push(replacementsParts);
 		});
 
+		if (!replacements.length) {
+			return [selector];
+		}
+
 		const results = [];
 		cartesian(...replacements).forEach((replacement) => {
 			let result = '';
@@ -77,13 +80,7 @@ export default function splitSelectors(selectors) {
 			for (let i = 0; i < replacement.length; i++) {
 				const options = replacement[i];
 
-				if (i === 0) {
-					result += selector.substring(0, replacement[i].start);
-					result += ':is(' + options.option + ')';
-					continue;
-				}
-
-				result += selector.substring(replacement[i - 1].end, replacement[i].start);
+				result += selector.substring(replacement[i - 1]?.end || 0, replacement[i].start);
 				result += ':is(' + options.option + ')';
 
 				if (i === replacement.length - 1) {

@@ -14,6 +14,10 @@
 	order: 1;
 }
 
+[active]:is(input, button):is(:hover, :focus) > b {
+	order: 1;
+}
+
 [active]input.a:hover > b {
 	order: 2;
 }
@@ -110,6 +114,10 @@
 	order: 2;
 }
 
+[active]:is(input, button):is(:hover, :focus, :focus-within):is(.a, .b, .c, .d) > b {
+	order: 2;
+}
+
 a:hover {
 	order: 3;
 }
@@ -126,6 +134,10 @@ button:focus {
 	order: 3;
 }
 
+:is(a, button):is(:hover, :focus) {
+	order: 3;
+}
+
 a:hover {
 	order: 4;
 }
@@ -139,6 +151,10 @@ a:focus {
 }
 
 button:focus {
+	order: 4;
+}
+
+:is(:hover, :focus):is(a, button) {
 	order: 4;
 }
 
@@ -154,11 +170,19 @@ button:focus-within {
 	order: 5;
 }
 
+button:is(:hover, :is(:focus, :focus-within)) {
+	order: 5;
+}
+
 :not(.some) {
 	order: 6;
 }
 
 :not(.other) {
+	order: 6;
+}
+
+:not(:is(.some, .other)) {
 	order: 6;
 }
 
@@ -175,5 +199,9 @@ button:not(.does-not-exist):hover {
 }
 
 button:not(.does-not-exist):focus {
+	order: 7;
+}
+
+:is(:hover, :focus):is(.button, button) {
 	order: 7;
 }
