@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased
+### 0.1.2 (January 7, 2022)
 
 - Improved : selector specificity calculation
 
