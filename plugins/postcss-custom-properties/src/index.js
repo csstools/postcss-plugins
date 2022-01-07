@@ -23,11 +23,12 @@ const creator = opts => {
 
 	return {
 		postcssPlugin: 'postcss-custom-properties',
-		prepare ({ root }) {
+		prepare () {
 			if (canReturnSyncFunction) {
-				customProperties = getCustomPropertiesFromRoot(root, { preserve });
-
 				return {
+					Once: (root) => {
+						customProperties = getCustomPropertiesFromRoot(root, { preserve });
+					},
 					Declaration: (decl) => transformProperties(decl, customProperties, { preserve }),
 				};
 			} else {
