@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### Unreleased
+
+- Improved : selector specificity calculation
+
 ### 0.1.1 (January 5, 2022)
 
 - Added : support for id and tag selector specificity.
