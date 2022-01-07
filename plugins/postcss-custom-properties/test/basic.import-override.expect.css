@@ -75,3 +75,7 @@
 .test--combined-selector {
 	color: #053;
 }
+
+.test--variable-with-url {
+	background: url("/my/path");
+}
