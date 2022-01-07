@@ -18,32 +18,21 @@ const creator = opts => {
 
 	let customProperties;
 
-	// whether to return synchronous function if no asynchronous operations are requested
-	const canReturnSyncFunction = importFrom.length === 0 && exportTo.length === 0;
-
 	return {
 		postcssPlugin: 'postcss-custom-properties',
-		prepare ({ root }) {
-			if (canReturnSyncFunction) {
-				customProperties = getCustomPropertiesFromRoot(root, { preserve });
+		prepare () {
+			return {
+				Once: async root => {
+					customProperties = Object.assign(
+						{},
+						getCustomPropertiesFromRoot(root, { preserve }),
+						await customPropertiesPromise,
+					);
 
-				return {
-					Declaration: (decl) => transformProperties(decl, customProperties, { preserve }),
-				};
-			} else {
-				return {
-					Once: async root => {
-						customProperties = Object.assign(
-							{},
-							getCustomPropertiesFromRoot(root, { preserve }),
-							await customPropertiesPromise,
-						);
-
-						await writeCustomPropertiesToExports(customProperties, exportTo);
-					},
-					Declaration: (decl) => transformProperties(decl, customProperties, { preserve }),
-				};
-			}
+					await writeCustomPropertiesToExports(customProperties, exportTo);
+				},
+				Declaration: (decl) => transformProperties(decl, customProperties, { preserve }),
+			};
 		},
 	};
 };

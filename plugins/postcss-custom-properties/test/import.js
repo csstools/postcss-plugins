@@ -2,7 +2,7 @@ const postcssImport = require('postcss-import');
 
 const importWithProps = () => {
 	return {
-		postcssPlugin: 'import-with-props',
+		postcssPlugin: 'postcss-custom-properties (with postcss-import)',
 		plugins: [postcssImport(), require('../dist/index.cjs')()],
 	};
 };
