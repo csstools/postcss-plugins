@@ -1,0 +1,5 @@
+@import "./imported-file.css";
+
+a {
+	color: var(--color);
+}
