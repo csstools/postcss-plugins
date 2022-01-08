@@ -106,8 +106,18 @@ testEncoderDecoder(
 );
 
 testEncoderDecoder(
+	':has(> [foo="some"])',
+	'\\:has\\(\\%3E\\%20\\[foo\\%3D\\%22some\\%22\\]\\)',
+);
+
+testEncoderDecoder(
 	'#d_main:has(#d_checkbox:checked)>#d_subject',
 	'\\%23d_main\\:has\\(\\%23d_checkbox\\:checked\\)\\%3E\\%23d_subject',
+);
+
+testEncoderDecoder(
+	'#something-complex:has(> #d_checkbox:checked [foo="some"] * + [bar^="[baz]"] ~ a[class~="logo"] :has(~ .foo:is(button, input)))',
+	'\\%23something-complex\\:has\\(\\%3E\\%20\\%23d_checkbox\\:checked\\%20\\[foo\\%3D\\%22some\\%22\\]\\%20\\*\\%20\\%2B\\%20\\[bar\\%5E\\%3D\\%22\\[baz\\]\\%22\\]\\%20\\~\\%20a\\[class\\~\\%3D\\%22logo\\%22\\]\\%20\\:has\\(\\~\\%20\\.foo\\:is\\(button\\,\\%20input\\)\\)\\)',
 );
 
 function testExtract(encoded, rules) {
@@ -156,7 +166,7 @@ testExtract(
 
 testExtract(
 	'[[\\:has\\(\\:focus\\)]]',
-	['[:has(:focus)]'],
+	[],
 );
 
 testExtract(
@@ -175,6 +185,11 @@ testExtract(
 );
 
 testExtract(
+	'[\\.x\\:has\\(\\%3E\\%20\\.a\\)][\\.x\\:has\\(\\%3E\\%20\\.a\\)][\\.x\\:has\\(\\%3E\\%20\\.b\\)][\\.x\\:has\\(\\%3E\\%20\\.b\\)]',
+	['.x:has(> .a)', '.x:has(> .b)'],
+);
+
+testExtract(
 	'[\\.b_subject\\:has\\(\\.b_descendant\\)][\\.b_subject\\:has\\(\\.b_descendant\\)]',
 	['.b_subject:has(.b_descendant)'],
 );
@@ -185,9 +200,126 @@ testExtract(
 );
 
 testExtract(
+	'[foo="[\\.b_subject\\:has\\(\\.b_descendant\\)\\]\\[\\.b_subject\\:has\\(\\.b_descendant\\)]"]',
+	[],
+);
+
+testExtract(
 	'"\\"[\\.b_subject\\:has\\(\\.b_descendant\\)][\\.b_subject\\:has\\(\\.b_descendant\\)]"',
 	[],
 );
+
+testExtract(
+	'"\\""[\\.b_subject\\:has\\(\\.b_descendant\\)][\\.b_subject\\:has\\(\\.b_descendant\\)]',
+	['.b_subject:has(.b_descendant)'],
+);
+
+testExtract(
+	'["[[\\.b_subject\\:has\\(\\.b_descendant\\)][\\.b_subject\\:has\\(\\.b_descendant\\)]]"]',
+	[],
+);
+
+testExtract(
+	'[\\:has\\(\\%3E\\%20\\[foo\\%3D\\%22some\\%22\\]\\)]',
+	[':has(> [foo="some"])'],
+);
+
+testExtract(
+	'"\'\\[\\:has\\(\\:focus\\)\\]',
+	[],
+);
+
+testExtract(
+	'\\["\'\\:has\\(\\:focus\\)\\]',
+	[],
+);
+
+testExtract(
+	'\\:has\\(\\:focus\\)',
+	[],
+);
+
+testExtract(
+	'[:has(:focus)]',
+	[':has(:focus)'],
+);
+
+testExtract(
+	'[:has(:focus)\']\']',
+	[':has(:focus)]'],
+);
+
+testExtract(
+	'[:has(:focus)\'"]\']',
+	[':has(:focus)"]'],
+);
+
+testExtract(
+	'[\'"[\':has(:focus)]',
+	['"[:has(:focus)'],
+);
+
+testExtract(
+	'[:has(:focus)[foo=%22some%22]]',
+	[':has(:focus)[foo="some"]'],
+);
+
+testExtract(
+	'[[:has(:focus)]]',
+	[],
+);
+
+testExtract(
+	'":has(:focus)"',
+	[],
+);
+
+testExtract(
+	'\':has(:focus)\'',
+	[],
+);
+
+testExtract(
+	'[":has(:focus)"]',
+	[],
+);
+
+testExtract(
+	'[\':has(:focus)\']',
+	[],
+);
+
+testExtract(
+	'"\':has(:focus)"\'"',
+	[],
+);
+
+testExtract(
+	'\'":has(:focus)\'"',
+	[],
+);
+
+
+testExtract(
+	':is(:focus)',
+	[],
+);
+
+testExtract(
+	'[:is(:focus)]',
+	[],
+);
+
+testExtract(
+	'[":is(:focus)"]',
+	[],
+);
+
+testExtract(
+	'[\\%23something-complex\\:has\\(\\%3E\\%20\\%23d_checkbox\\:checked\\%20\\[foo\\%3D\\%22some\\%22\\]\\%20\\*\\%20\\%2B\\%20\\[bar\\%5E\\%3D\\%22\\[baz\\]\\%22\\]\\%20\\~\\%20a\\[class\\~\\%3D\\%22logo\\%22\\]\\%20\\:has\\(\\~\\%20\\.foo\\:is\\(button\\,\\%20input\\)\\)\\)]',
+	['#something-complex:has(> #d_checkbox:checked [foo="some"] * + [bar^="[baz]"] ~ a[class~="logo"] :has(~ .foo:is(button, input)))'],
+);
+
 
 // Safari already removes escape sequences in CSS selectors.
 // This is most likely a bug in Safari.

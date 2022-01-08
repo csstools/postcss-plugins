@@ -103,7 +103,7 @@ main {
 	background-color: green;
 }
 
-[\.b_subject\:has\(\[attrname\%3Db_descendant\]\)]:not(.does-not-exist) {
+[\.b_subject\:has\(\[attrname\%3D\%22b_descendant\%22\]\)]:not(.does-not-exist) {
 	background-color: blue;
 }
 
