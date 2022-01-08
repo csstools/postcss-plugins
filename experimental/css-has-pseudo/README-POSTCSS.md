@@ -141,6 +141,9 @@ For `postcss-preset-env` we take care to handle this for you.
 
 If other plugins are used you need to place these in your config before `postcss-preset-env` or `css-has-pseudo`.
 
+Please let us know if you have issues with plugins that transform selectors.
+Then we can investigate and maybe fix these.
+
 ## PostCSS Preset Env
 
 When you use `postcss-preset-env` you must disable the regular plugin.
