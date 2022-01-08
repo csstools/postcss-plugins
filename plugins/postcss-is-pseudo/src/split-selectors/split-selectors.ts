@@ -3,10 +3,10 @@ import { selectorSpecificity } from './specificity';
 import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
 import { childAdjacentChild } from './complex';
 
-export default function splitSelectors(selectors: string[], pluginOptions: { preserve?: boolean, oncomplex?: 'warning' | 'skip', doesNotExistName: string }, warnFn: () => void) {
-	const doesNotExistId = ':not(#' + pluginOptions.doesNotExistName + ')';
-	const doesNotExistClass = ':not(.' + pluginOptions.doesNotExistName + ')';
-	const doesNotExistTag = ':not(' + pluginOptions.doesNotExistName + ')';
+export default function splitSelectors(selectors: string[], pluginOptions: { preserve?: boolean, onComplexSelector?: 'warning' | 'skip', specificityMatchingName: string }, warnFn: () => void) {
+	const specificityMatchingNameId = ':not(#' + pluginOptions.specificityMatchingName + ')';
+	const specificityMatchingNameClass = ':not(.' + pluginOptions.specificityMatchingName + ')';
+	const specificityMatchingNameTag = ':not(' + pluginOptions.specificityMatchingName + ')';
 
 	return selectors.flatMap((selector) => {
 		if (selector.indexOf(':is') === -1) {
@@ -18,7 +18,7 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 
 		const selectorAST = parser().astSync(selector);
 
-		if (pluginOptions.oncomplex === 'skip') {
+		if (pluginOptions.onComplexSelector === 'skip') {
 			let hasComplexSelectors = false;
 			selectorAST.walkPseudos((pseudo) => {
 				if (pseudo.value !== ':is' || !pseudo.nodes || !pseudo.nodes.length) {
@@ -73,13 +73,13 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 				const cSpecificityCorrection = Math.max(0, specificity.c - childSpecificity.c);
 
 				for (let i = 0; i < aSpecificityCorrection; i++) {
-					childCSS += doesNotExistId;
+					childCSS += specificityMatchingNameId;
 				}
 				for (let i = 0; i < bSpecificityCorrection; i++) {
-					childCSS += doesNotExistClass;
+					childCSS += specificityMatchingNameClass;
 				}
 				for (let i = 0; i < cSpecificityCorrection; i++) {
-					childCSS += doesNotExistTag;
+					childCSS += specificityMatchingNameTag;
 				}
 
 				replacement.option = childCSS;
@@ -159,15 +159,18 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 
 // https://en.wikipedia.org/wiki/Cartesian_product
 function cartesianProduct(...args) {
-	const r = [], max = args.length - 1;
+	const r = [];
+	const max = args.length - 1;
+
 	function helper(arr, i) {
 		for (let j = 0, l = args[i].length; j < l; j++) {
-			const a = arr.slice(0); // clone arr
+			const a = arr.slice(0);
 			a.push(args[i][j]);
-			if (i == max)
+			if (i == max) {
 				r.push(a);
-			else
+			} else {
 				helper(a, i + 1);
+			}
 		}
 	}
 	helper([], 0);

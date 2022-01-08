@@ -1,15 +1,9 @@
 import type { PluginCreator } from 'postcss';
 import splitSelectors from './split-selectors/split-selectors';
 
-const creator: PluginCreator<
-	{
-		preserve?: boolean,
-		oncomplex?: 'warning' | 'skip',
-		doesNotExistName?: string,
-	}
-> = (opts?: { preserve?: boolean, oncomplex?: 'warning' | 'skip', doesNotExistName?: string }) => {
+const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning' | 'skip', specificityMatchingName?: string }> = (opts?: { preserve?: boolean, onComplexSelector?: 'warning' | 'skip', specificityMatchingName?: string }) => {
 	const options = {
-		doesNotExistName: 'does-not-exist',
+		specificityMatchingName: 'does-not-exist',
 		...(opts || {}),
 	};
 
@@ -27,7 +21,7 @@ const creator: PluginCreator<
 			// Because of loops and recursion we try to only warn once per selector.
 			let didWarn = false;
 			const warnOnComplexSelector = () => {
-				if (options.oncomplex !== 'warning') {
+				if (options.onComplexSelector !== 'warning') {
 					return;
 				}
 				if (didWarn) {

@@ -12,16 +12,16 @@ module.exports = {
 		}
 	},
 	'basic:does-not-exist': {
-		message: "supports basic usage with { doesNotExistName: 'something-random' }",
+		message: "supports basic usage with { specificityMatchingName: 'something-random' }",
 		options: {
-			doesNotExistName: 'something-random'
+			specificityMatchingName: 'something-random'
 		}
 	},
 	'basic:oncomplex:warning': {
-		message: "supports basic usage with { oncomplex: 'warning' }",
+		message: "supports basic usage with { onComplexSelector: 'warning' }",
 		warnings: 3,
 		options: {
-			oncomplex: 'warning'
+			onComplexSelector: 'warning'
 		}
 	},
 	'basic:oncomplex:skip': {

@@ -93,17 +93,17 @@ button:focus {
 }
 ```
 
-### doesNotExistName
+### specificityMatchingName
 
-The `doesNotExistName` option allows you to change to selector used for `:not()` selectors.
+The `specificityMatchingName` option allows you to change to selector used to adjust specificity.
 The default value is `does-not-exist`.
 If this is an actual class, id or tag name in your code, you will need to set a different option here.
 
-See how `:not` is used to modify specificity.
+See how `:not` is used to modify [specificity](#specificity).
 
 ```js
 postcss([
-  postcssIsPseudo({ doesNotExistName: 'something-random' })
+  postcssIsPseudo({ specificityMatchingName: 'something-random' })
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -125,13 +125,13 @@ button:not(.something-random):hover {
 }
 ```
 
-### oncomplex
+### onComplexSelector
 
 Do not transform complex selectors in `:is` pseudo classes.
 
 ```js
 postcss([
-  postcssIsPseudo({ oncomplex: 'skip' })
+  postcssIsPseudo({ onComplexSelector: 'skip' })
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -139,7 +139,7 @@ Warn on complex selectors in `:is` pseudo classes.
 
 ```js
 postcss([
-  postcssIsPseudo({ oncomplex: 'warning' })
+  postcssIsPseudo({ onComplexSelector: 'warning' })
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
