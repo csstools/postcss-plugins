@@ -1,0 +1,57 @@
+[\[dir\%3D\%22ltr\%22\]\%20a\:has\(\.b\)]:not(.does-not-exist):not(does-not-exist) {
+	margin-left: 2px;
+}
+[dir="ltr"] a:has(.b) {
+	margin-left: 2px;
+}
+[a\:has\(\.b\)\:dir\(ltr\)]:not(.does-not-exist):not(does-not-exist) {
+	margin-left: 2px;
+}
+a:has(.b):dir(ltr) {
+	margin-left: 2px;
+}
+[\[dir\%3D\%22rtl\%22\]\%20a\:has\(\.b\)]:not(.does-not-exist):not(does-not-exist) {
+	margin-right: 2px;
+}
+[dir="rtl"] a:has(.b) {
+	margin-right: 2px;
+}
+[a\:has\(\.b\)\:dir\(rtl\)]:not(.does-not-exist):not(does-not-exist) {
+	margin-right: 2px;
+}
+a:has(.b):dir(rtl) {
+	margin-right: 2px;
+}
+[dir="ltr"] [a\:has\(\.b\)]:not(does-not-exist) {
+	margin-left: 2px;
+}
+[a\:has\(\.b\)]:not(does-not-exist):dir(ltr) {
+	margin-left: 2px;
+}
+[dir="rtl"] [a\:has\(\.b\)]:not(does-not-exist) {
+	margin-right: 2px;
+}
+[a\:has\(\.b\)]:not(does-not-exist):dir(rtl) {
+	margin-right: 2px;
+}
+[a\:has\(\.b\)]:not(does-not-exist) {
+	margin-inline-start: 2px;
+}
+[dir="ltr"] [a\:has\(\.b\)]:not(does-not-exist) {
+	margin-left: 2px;
+}
+[a\:has\(\.b\)]:not(does-not-exist):dir(ltr) {
+	margin-left: 2px;
+}
+[dir="rtl"] [a\:has\(\.b\)]:not(does-not-exist) {
+	margin-right: 2px;
+}
+[a\:has\(\.b\)]:not(does-not-exist):dir(rtl) {
+	margin-right: 2px;
+}
+[a\:has\(\.b\)]:not(does-not-exist) {
+	margin-inline-start: 2px;
+}
+a:has(.b) {
+	margin-inline-start: 2px;
+}
