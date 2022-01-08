@@ -13,6 +13,10 @@ see : https://drafts.csswg.org/selectors-4/#specificity-rules
 This has been implemented.
 Still needs to be documented.
 
+### Update 2 :
+
+This has been documented.
+
 ## Plugin order :
 
 _old problem, but larger now that we encode the entire selector_

@@ -122,3 +122,7 @@ body:not(:has(:focus)) {
 .x:has(> .b *) {
 	order: 30;
 }
+
+figure:has(> img) {
+	order: 31;
+}

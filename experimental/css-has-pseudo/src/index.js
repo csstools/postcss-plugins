@@ -6,11 +6,11 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 
 	/** Whether the original rule should be preserved. */
 	const shouldPreserve = Boolean('preserve' in opts ? opts.preserve : true);
-	const doesNotExistName = opts.doesNotExistName ?? 'does-not-exist';
+	const specificityMatchingName = opts.specificityMatchingName ?? 'does-not-exist';
 
-	const doesNotExistId = ':not(#' + doesNotExistName + ')';
-	const doesNotExistClass = ':not(.' + doesNotExistName + ')';
-	const doesNotExistTag = ':not(' + doesNotExistName + ')';
+	const specificityMatchingNameId = ':not(#' + specificityMatchingName + ')';
+	const specificityMatchingNameClass = ':not(.' + specificityMatchingName + ')';
+	const specificityMatchingNameTag = ':not(' + specificityMatchingName + ')';
 
 	return {
 		postcssPlugin: 'css-has-pseudo-experimental',
@@ -50,14 +50,14 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 
 				let encodedSelectorWithSpecificity = encodedSelector;
 				for (let i = 0; i < abcSpecificity.a; i++) {
-					encodedSelectorWithSpecificity += doesNotExistId;
+					encodedSelectorWithSpecificity += specificityMatchingNameId;
 				}
 				const bSpecificity = Math.max(1, abcSpecificity.b) - 1;
 				for (let i = 0; i < bSpecificity; i++) {
-					encodedSelectorWithSpecificity += doesNotExistClass;
+					encodedSelectorWithSpecificity += specificityMatchingNameClass;
 				}
 				for (let i = 0; i < abcSpecificity.c; i++) {
-					encodedSelectorWithSpecificity += doesNotExistTag;
+					encodedSelectorWithSpecificity += specificityMatchingNameTag;
 				}
 
 				return encodedSelectorWithSpecificity;
