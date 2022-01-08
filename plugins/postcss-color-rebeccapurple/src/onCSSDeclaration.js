@@ -18,8 +18,11 @@ const onCSSDeclaration = decl => {
 		const modifiedValue = String(valueAST);
 
 		if (modifiedValue !== originalValue) {
-			if (options.preserve) decl.cloneBefore({ value: modifiedValue });
-			else decl.value = modifiedValue;
+			if (options.preserve) {
+				decl.cloneBefore({ value: modifiedValue });
+			} else {
+				decl.value = modifiedValue;
+			}
 		}
 	}
 };
