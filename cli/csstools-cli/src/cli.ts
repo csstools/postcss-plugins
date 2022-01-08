@@ -87,44 +87,44 @@ function main() {
 			postcssPseudoClassAnyLink();
 			return;
 		default:
-			{
-				const allHelp = [
-					'CSSTools CLI\n',
-					'  Transform CSS with any plugin from https://github.com/csstools/postcss-plugins\n',
+		{
+			const allHelp = [
+				'CSSTools CLI\n',
+				'  Transform CSS with any plugin from https://github.com/csstools/postcss-plugins\n',
 
-					'Usage:',
-					'  @csstools/csstools-cli postcss-preset-env [input.css] [OPTIONS] [-o|--output output.css]',
-					'  @csstools/csstools-cli postcss-preset-env <input.css>... [OPTIONS] --dir <output-directory>',
-					'  @csstools/csstools-cli postcss-preset-env <input.css>... [OPTIONS] --replace',
+				'Usage:',
+				'  @csstools/csstools-cli postcss-preset-env [input.css] [OPTIONS] [-o|--output output.css]',
+				'  @csstools/csstools-cli postcss-preset-env <input.css>... [OPTIONS] --dir <output-directory>',
+				'  @csstools/csstools-cli postcss-preset-env <input.css>... [OPTIONS] --replace',
 
-					'\nAvailable Plugins:',
-					'  css-blank-pseudo',
-					'  css-has-pseudo',
-					'  css-prefers-color-scheme',
-					'  postcss-color-functional-notation',
-					'  postcss-color-hex-alpha',
-					'  postcss-color-rebeccapurple',
-					'  postcss-custom-properties',
-					'  postcss-dir-pseudo-class',
-					'  postcss-double-position-gradients',
-					'  postcss-env-function',
-					'  postcss-focus-visible',
-					'  postcss-focus-within',
-					'  postcss-gap-properties',
-					'  postcss-image-set-function',
-					'  postcss-lab-function',
-					'  postcss-logical',
-					'  postcss-nesting',
-					'  postcss-overflow-shorthand',
-					'  postcss-place',
-					'  postcss-pseudo-class-any-link',
+				'\nAvailable Plugins:',
+				'  css-blank-pseudo',
+				'  css-has-pseudo',
+				'  css-prefers-color-scheme',
+				'  postcss-color-functional-notation',
+				'  postcss-color-hex-alpha',
+				'  postcss-color-rebeccapurple',
+				'  postcss-custom-properties',
+				'  postcss-dir-pseudo-class',
+				'  postcss-double-position-gradients',
+				'  postcss-env-function',
+				'  postcss-focus-visible',
+				'  postcss-focus-within',
+				'  postcss-gap-properties',
+				'  postcss-image-set-function',
+				'  postcss-lab-function',
+				'  postcss-logical',
+				'  postcss-nesting',
+				'  postcss-overflow-shorthand',
+				'  postcss-place',
+				'  postcss-pseudo-class-any-link',
 
-					'\nPlugin Help:',
-					'  @csstools/csstools-cli <plugin-name>',
-					'  @csstools/csstools-cli postcss-preset-env',
-				];
+				'\nPlugin Help:',
+				'  @csstools/csstools-cli <plugin-name>',
+				'  @csstools/csstools-cli postcss-preset-env',
+			];
 
-				console.warn(allHelp.join('\n'));
-			}
+			console.warn(allHelp.join('\n'));
+		}
 	}
 }

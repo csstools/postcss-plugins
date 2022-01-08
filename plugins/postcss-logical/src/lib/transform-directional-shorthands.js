@@ -66,5 +66,7 @@ export default (decl, values, dir, preserve) => {
 };
 
 function clean(decl, preserve) {
-	if (!preserve) decl.remove();
+	if (!preserve) {
+		decl.remove();
+	}
 }

@@ -66,7 +66,9 @@ export default (decl, notValues, dir, preserve) => {
 };
 
 function clean(decl, preserve) {
-	if (!preserve) decl.remove();
+	if (!preserve) {
+		decl.remove();
+	}
 }
 
 const valueMap = {
