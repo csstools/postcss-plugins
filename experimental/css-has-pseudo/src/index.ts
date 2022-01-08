@@ -1,16 +1,17 @@
 import parser from 'postcss-selector-parser';
 import encodeCSS from './encode/encode.mjs';
+import type { PluginCreator } from 'postcss';
 
-const creator = (/** @type {{ preserve: true | false }} */ opts) => {
-	opts = typeof opts === 'object' && opts || defaultOptions;
+const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: string }> = (opts?: { preserve?: boolean, specificityMatchingName?: string }) => {
+	const options = {
+		preserve: true,
+		specificityMatchingName: 'does-not-exist',
+		...(opts || {}),
+	};
 
-	/** Whether the original rule should be preserved. */
-	const shouldPreserve = Boolean('preserve' in opts ? opts.preserve : true);
-	const specificityMatchingName = opts.specificityMatchingName ?? 'does-not-exist';
-
-	const specificityMatchingNameId = ':not(#' + specificityMatchingName + ')';
-	const specificityMatchingNameClass = ':not(.' + specificityMatchingName + ')';
-	const specificityMatchingNameTag = ':not(' + specificityMatchingName + ')';
+	const specificityMatchingNameId = ':not(#' + options.specificityMatchingName + ')';
+	const specificityMatchingNameClass = ':not(.' + options.specificityMatchingName + ')';
+	const specificityMatchingNameTag = ':not(' + options.specificityMatchingName + ')';
 
 	return {
 		postcssPlugin: 'css-has-pseudo-experimental',
@@ -67,7 +68,7 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 				return;
 			}
 
-			if (shouldPreserve) {
+			if (options.preserve) {
 				rule.cloneBefore({ selectors: selectors });
 			} else {
 				rule.assign({ selectors: selectors });
@@ -77,9 +78,6 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 };
 
 creator.postcss = true;
-
-/** Default options. */
-const defaultOptions = { preserve: true };
 
 export default creator;
 
@@ -178,7 +176,7 @@ function selectorSpecificity(node) {
 					});
 
 					if (ofSeparatorIndex > -1) {
-						const ofSpecificity = selectorSpecificity(parser.selector({ nodes: node.nodes.slice(ofSeparatorIndex + 1) }));
+						const ofSpecificity = selectorSpecificity(parser.selector({ nodes: node.nodes.slice(ofSeparatorIndex + 1), value: '' }));
 						a += ofSpecificity.a;
 						b += ofSpecificity.b;
 						c += ofSpecificity.c;
