@@ -8,9 +8,11 @@ export function labToSRgb(lab: [number, number, number]): [number, number, numbe
 
 export function lchToSRgb(lch: [number, number, number]): [number, number, number] {
 	return xyz2rgb(
-		lab2xyz(lch2lab(lch),
-		false, /* do not clamp "a" and "b" when processing lch */
-	));
+		lab2xyz(
+			lch2lab(lch),
+			false, /* do not clamp "a" and "b" when processing lch */
+		),
+	);
 }
 
 function lch2lab(lch: [number, number, number]): [number, number, number] {

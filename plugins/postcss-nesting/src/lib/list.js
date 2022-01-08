@@ -21,13 +21,19 @@ export const comma = (string) => {
 		} else if (letter === '(') {
 			func += 1;
 		} else if (letter === ')') {
-			if (func > 0) func -= 1;
+			if (func > 0) {
+				func -= 1;
+			}
 		} else if (func === 0) {
-			if (letter === ',') split = true;
+			if (letter === ',') {
+				split = true;
+			}
 		}
 
 		if (split) {
-			if (current !== '') array.push(current.trim());
+			if (current !== '') {
+				array.push(current.trim());
+			}
 			current = '';
 			split = false;
 		} else {

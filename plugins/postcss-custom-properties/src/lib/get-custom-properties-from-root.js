@@ -11,9 +11,9 @@ export default function getCustomPropertiesFromRoot(root, opts) {
 	root.nodes.slice().forEach(rule => {
 		const customPropertiesObject = isHtmlRule(rule)
 			? customPropertiesFromHtmlElement
-		: isRootRule(rule)
-			? customPropertiesFromRootPseudo
-		: null;
+			: isRootRule(rule)
+				? customPropertiesFromRootPseudo
+				: null;
 
 		// for each custom property
 		if (customPropertiesObject) {
