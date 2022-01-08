@@ -1,6 +1,6 @@
 {
   "name": "postcss-custom-properties",
-  "version": "12.0.2",
+  "version": "12.0.4",
   "description": "Use Custom Properties Queries in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "contributors": [
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "postcss": "^8.3.6",
+    "postcss-import": "^14.0.2",
     "postcss-tape": "^6.0.1"
   },
   "peerDependencies": {

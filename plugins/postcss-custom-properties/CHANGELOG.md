@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 12.0.4 (January 7, 2022)
+
+- Fixed an issue that was causing synchronous mode to not being able to pick and transform properties that were added as part of the PostCSS flow. ([#132](https://github.com/csstools/postcss-plugins/issues/132))
+
 ### 12.0.2 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.
