@@ -16,6 +16,7 @@ html {
 	--shadow: 0 6px 14px 0 color(var(--shadow-color) a(.15));
 	--font-family: "Open Sans", sans-serif;
 	color: var(--color);
+	--url: url("/my/path");
 }
 
 :root,
@@ -98,4 +99,8 @@ html {
 
 .test--combined-selector {
 	color: var(--theme-color);
+}
+
+.test--variable-with-url {
+	background: var(--url);
 }
