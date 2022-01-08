@@ -133,6 +133,14 @@ After :
 [figure\:has\(\%3E\%20img\)]:not(does-not-exist):not(does-not-exist)
 ```
 
+### Plugin order
+
+As selectors are encoded this plugin (or `postcss-preset-env`) must be run after any other plugin that transforms selectors.
+
+For `postcss-preset-env` we take care to handle this for you.
+
+If other plugins are used you need to place these in your config before `postcss-preset-env` or `css-has-pseudo`.
+
 ## PostCSS Preset Env
 
 When you use `postcss-preset-env` you must disable the regular plugin.
