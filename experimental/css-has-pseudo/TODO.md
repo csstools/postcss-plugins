@@ -1,22 +1,5 @@
 # TODO :
 
-_known short comings of the current iteration_
-
-## Specificity :
-
-Can we safely use `:not(#does-not-exist)`/`:not(does-not-exist)` as prefixes for selectors to get correct A/C specificity.
-
-see : https://drafts.csswg.org/selectors-4/#specificity-rules
-
-### Update 1 :
-
-This has been implemented.
-Still needs to be documented.
-
-### Update 2 :
-
-This has been documented.
-
 ## Plugin order :
 
 _old problem, but larger now that we encode the entire selector_
