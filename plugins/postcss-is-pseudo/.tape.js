@@ -25,9 +25,9 @@ module.exports = {
 		}
 	},
 	'basic:oncomplex:skip': {
-		message: "supports basic usage with { oncomplex: 'skip' }",
+		message: "supports basic usage with { onComplexSelector: 'skip' }",
 		options: {
-			oncomplex: 'skip'
+			onComplexSelector: 'skip'
 		}
 	},
 	'generated-selector-class-function-cases': {
