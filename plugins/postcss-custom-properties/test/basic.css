@@ -19,6 +19,7 @@ html {
 	--url-2: url('/my/path');
 	--url-3: url(/my/path);
 	--url-4: url(data:image/png;bm90LWFuZC1pbWFnZQ==);
+	--✅-size: 2em;
 	color: var(--color);
 }
 
@@ -128,4 +129,8 @@ html {
 
 .no-prototype-collisions {
 	color: var(toString);
+}
+
+.test-unicode {
+	color: var(--✅-size);
 }

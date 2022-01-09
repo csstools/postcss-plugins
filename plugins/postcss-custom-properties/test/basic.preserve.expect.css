@@ -101,3 +101,7 @@
 .no-prototype-collisions {
 	color: var(toString);
 }
+
+.test-unicode {
+	color: 2em;
+}

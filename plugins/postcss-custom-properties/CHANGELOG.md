@@ -5,6 +5,7 @@
 - Converted to typescript
 - Correct typings for plugin options
 - Allow `.mjs` in `importFrom`
+- Fix unicode support in custom property names
 
 ### 12.0.4 (January 7, 2022)
 

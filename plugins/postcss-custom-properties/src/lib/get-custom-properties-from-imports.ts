@@ -109,7 +109,7 @@ export default async function getCustomPropertiesFromImports(sources: Array<Impo
 
 	const data: Array<Map<string, valuesParser.ParsedValue>> = await Promise.all(sourceData.map(async (partialData) => {
 		if (('type' in partialData) && ('from' in partialData)) {
-			if (partialData.type === 'css' || partialData.type === 'pcss' || partialData.type === 'postcss') {
+			if (partialData.type === 'css' || partialData.type === 'pcss') {
 				return await getCustomPropertiesFromCSSFile(partialData.from);
 			}
 
