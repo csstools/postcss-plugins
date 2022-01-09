@@ -1,4 +1,5 @@
 const importWithProps = require('./test/import');
+const assert = require('assert').strict;
 
 module.exports = {
 	'basic': {
@@ -207,9 +208,7 @@ module.exports = {
 			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.scss', 'utf8');
 		},
 		after() {
-			if (global.__exportPropertiesString !== require('fs').readFileSync('test/export-properties.scss', 'utf8')) {
-				throw new Error('The original file did not match the freshly exported copy');
-			}
+			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.scss', 'utf8'));
 		}
 	},
 	'basic:export-json': {
@@ -223,9 +222,7 @@ module.exports = {
 			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.json', 'utf8');
 		},
 		after() {
-			if (global.__exportPropertiesString !== require('fs').readFileSync('test/export-properties.json', 'utf8')) {
-				throw new Error('The original file did not match the freshly exported copy');
-			}
+			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.json', 'utf8'));
 		}
 	},
 	'basic:export-js': {
@@ -239,9 +236,7 @@ module.exports = {
 			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.js', 'utf8');
 		},
 		after() {
-			if (global.__exportPropertiesString !== require('fs').readFileSync('test/export-properties.js', 'utf8')) {
-				throw new Error('The original file did not match the freshly exported copy');
-			}
+			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.js', 'utf8'));
 		}
 	},
 	'basic:export-mjs': {
@@ -255,9 +250,7 @@ module.exports = {
 			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.mjs', 'utf8');
 		},
 		after() {
-			if (global.__exportPropertiesString !== require('fs').readFileSync('test/export-properties.mjs', 'utf8')) {
-				throw new Error('The original file did not match the freshly exported copy');
-			}
+			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.mjs', 'utf8'));
 		}
 	},
 	'basic:export-css': {
@@ -271,9 +264,7 @@ module.exports = {
 			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.css', 'utf8');
 		},
 		after() {
-			if (global.__exportPropertiesString !== require('fs').readFileSync('test/export-properties.css', 'utf8')) {
-				throw new Error('The original file did not match the freshly exported copy');
-			}
+			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.css', 'utf8'));
 		}
 	},
 	'basic:export-css-to': {
@@ -287,9 +278,7 @@ module.exports = {
 			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.css', 'utf8');
 		},
 		after() {
-			if (global.__exportPropertiesString !== require('fs').readFileSync('test/export-properties.css', 'utf8')) {
-				throw new Error('The original file did not match the freshly exported copy');
-			}
+			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.css', 'utf8'));
 		}
 	},
 	'basic:export-css-to-type': {
@@ -303,9 +292,7 @@ module.exports = {
 			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.css', 'utf8');
 		},
 		after() {
-			if (global.__exportPropertiesString !== require('fs').readFileSync('test/export-properties.css', 'utf8')) {
-				throw new Error('The original file did not match the freshly exported copy');
-			}
+			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.css', 'utf8'));
 		}
 	},
 	'basic:import-is-empty': {

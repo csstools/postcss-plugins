@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased
+
+- Converted to typescript
+- Correct typings for plugin options
+
 ### 12.0.4 (January 7, 2022)
 
 - Fixed an issue that was causing synchronous mode to not being able to pick and transform properties that were added as part of the PostCSS flow. ([#132](https://github.com/csstools/postcss-plugins/issues/132))

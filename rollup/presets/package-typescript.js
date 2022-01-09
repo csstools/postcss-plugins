@@ -20,7 +20,7 @@ export function packageTypescript() {
 					exclude: 'node_modules/**',
 					presets: packageBabelPreset,
 				}),
-				terser(),
+				// terser(),
 			],
 		},
 	];

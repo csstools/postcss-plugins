@@ -144,3 +144,7 @@ html {
 	background: url(data:image/png;bm90LWFuZC1pbWFnZQ==);
 	background: var(--url-4);
 }
+
+.no-prototype-collisions {
+	color: var(toString);
+}

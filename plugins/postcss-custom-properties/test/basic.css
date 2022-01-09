@@ -125,3 +125,7 @@ html {
 	order: 4;
 	background: var(--url-4);
 }
+
+.no-prototype-collisions {
+	color: var(toString);
+}

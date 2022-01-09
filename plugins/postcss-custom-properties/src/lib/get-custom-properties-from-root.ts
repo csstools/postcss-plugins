@@ -2,10 +2,11 @@ import valuesParser from 'postcss-value-parser';
 import { isBlockIgnored } from './is-ignored';
 
 // return custom selectors from the css root, conditionally removing them
-export default function getCustomPropertiesFromRoot(root, opts) {
+export default function getCustomPropertiesFromRoot(root, opts): Map<string, valuesParser.ParsedValue> {
 	// initialize custom selectors
-	const customPropertiesFromHtmlElement = {};
-	const customPropertiesFromRootPseudo = {};
+	const customPropertiesFromHtmlElement: Map<string, valuesParser.ParsedValue> = new Map();
+	const customPropertiesFromRootPseudo: Map<string, valuesParser.ParsedValue> = new Map();
+	const out: Map<string, valuesParser.ParsedValue> = new Map();
 
 	// for each html or :root rule
 	root.nodes.slice().forEach(rule => {
@@ -22,7 +23,7 @@ export default function getCustomPropertiesFromRoot(root, opts) {
 					const { prop } = decl;
 
 					// write the parsed value to the custom property
-					customPropertiesObject[prop] = valuesParser(decl.value);
+					customPropertiesObject.set(prop, valuesParser(decl.value));
 
 					// conditionally remove the custom property declaration
 					if (!opts.preserve) {
@@ -38,8 +39,16 @@ export default function getCustomPropertiesFromRoot(root, opts) {
 		}
 	});
 
+	for (const [name, value] of customPropertiesFromHtmlElement.entries()) {
+		out.set(name, value);
+	}
+
+	for (const [name, value] of customPropertiesFromRootPseudo.entries()) {
+		out.set(name, value);
+	}
+
 	// return all custom properties, preferring :root properties over html properties
-	return { ...customPropertiesFromHtmlElement, ...customPropertiesFromRootPseudo };
+	return out;
 }
 
 // match html and :root rules
