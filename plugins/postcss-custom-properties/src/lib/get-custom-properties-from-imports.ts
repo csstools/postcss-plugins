@@ -1,9 +1,11 @@
-import { promises as fsp } from 'fs';
-import path from 'path';
-import { parse } from 'postcss';
-import valuesParser from 'postcss-value-parser';
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
+import path from 'path';
 import type { ImportCustomProperties, ImportOptions } from './options';
+import valuesParser from 'postcss-value-parser';
+import vm from 'vm';
+import { parse } from 'postcss';
+import { promises as fsp } from 'fs';
+import { createRequire } from 'module';
 
 /* Get Custom Properties from CSS File
 /* ========================================================================== */
@@ -111,7 +113,12 @@ export default async function getCustomPropertiesFromImports(sources: Array<Impo
 				return await getCustomPropertiesFromCSSFile(partialData.from);
 			}
 
-			if (partialData.type === 'js') {
+			if (partialData.type === 'js' || partialData.type === 'cjs') {
+				return await getCustomPropertiesFromJSFile(partialData.from);
+			}
+
+			if (partialData.type === 'mjs') {
+				// Only works when running as a module.
 				return await getCustomPropertiesFromJSFile(partialData.from);
 			}
 

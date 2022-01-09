@@ -81,6 +81,17 @@ module.exports = {
 		expect: 'basic.import.expect.css',
 		result: 'basic.import.result.css'
 	},
+	'basic:import-cjs': {
+		message: 'supports { importFrom: "test/import-properties{-2}?.cjs" } usage',
+		options: {
+			importFrom: [
+				'test/import-properties.cjs',
+				'test/import-properties-2.cjs'
+			]
+		},
+		expect: 'basic.import.expect.css',
+		result: 'basic.import.result.css'
+	},
 	'basic:import-css': {
 		message: 'supports { importFrom: "test/import-properties{-2}?.css" } usage',
 		options: {
