@@ -2,10 +2,8 @@ import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
 import path from 'path';
 import type { ImportCustomProperties, ImportOptions } from './options';
 import valuesParser from 'postcss-value-parser';
-import vm from 'vm';
 import { parse } from 'postcss';
 import { promises as fsp } from 'fs';
-import { createRequire } from 'module';
 
 /* Get Custom Properties from CSS File
 /* ========================================================================== */
