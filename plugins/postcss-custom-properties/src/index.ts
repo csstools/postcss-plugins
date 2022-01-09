@@ -16,11 +16,16 @@ export interface PluginOptions {
 
 	/** Specifies destinations where Custom Properties can be exported to, which might be CSS, JS, and JSON files, functions, and directly passed objects. */
 	exportTo?: ExportOptions | Array<ExportOptions>
+
+	/** Specifies if `importFrom` properties or `:root` properties have priority. */
+	overrideImportFromWithRoot?: boolean
+
 }
 
 const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 	// whether to preserve custom selectors and rules using them
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
+	const overrideImportFromWithRoot = 'overrideImportFromWithRoot' in Object(opts) ? Boolean(opts.overrideImportFromWithRoot) : false;
 
 	// sources to import custom selectors from
 	let importFrom: Array<ImportOptions> = [];
@@ -61,14 +66,17 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 			} else {
 				return {
 					Once: async root => {
-						const rootCustomProperties = getCustomPropertiesFromRoot(root, { preserve: preserve });
-						for (const [name, value] of rootCustomProperties.entries()) {
-							customProperties.set(name, value);
-						}
+						const importedCustomerProperties = (await customPropertiesPromise).entries();
+						const rootCustomProperties = getCustomPropertiesFromRoot(root, { preserve: preserve }).entries();
 
-						const importedCustomerProperties = await customPropertiesPromise;
-						for (const [name, value] of importedCustomerProperties.entries()) {
-							customProperties.set(name, value);
+						if (overrideImportFromWithRoot) {
+							for (const [name, value] of [...importedCustomerProperties, ...rootCustomProperties]) {
+								customProperties.set(name, value);
+							}
+						} else {
+							for (const [name, value] of [...rootCustomProperties, ...importedCustomerProperties]) {
+								customProperties.set(name, value);
+							}
 						}
 
 						await writeCustomPropertiesToExports(customProperties, exportTo);
