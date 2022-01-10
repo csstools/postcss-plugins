@@ -29,7 +29,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.1",
     "browserslist": "^4.19.1",
-    "caniuse-lite": "^1.0.30001295",
+    "caniuse-lite": "^1.0.30001298",
     "css-blank-pseudo": "^3.0.1",
     "css-has-pseudo": "^3.0.2",
     "css-prefers-color-scheme": "^6.0.2",
