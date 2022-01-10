@@ -70,7 +70,7 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 			if (shouldPreserve) {
 				rule.cloneBefore({ selectors: selectors });
 			} else {
-				rule.assign({ selectors: selectors });
+				rule.selectors = selectors;
 			}
 		},
 	};
