@@ -71,7 +71,7 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 			if (options.preserve) {
 				rule.cloneBefore({ selectors: selectors });
 			} else {
-				rule.assign({ selectors: selectors });
+				rule.selectors = selectors;
 			}
 		},
 	};
