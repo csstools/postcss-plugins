@@ -1,0 +1,6 @@
+[\[dir\%3D\%22ltr\%22\]\%20a\:has\(\.b\)]:not(.does-not-exist):not(does-not-exist) {
+	margin-left: 2px
+}
+[\[dir\%3D\%22rtl\%22\]\%20a\:has\(\.b\)]:not(.does-not-exist):not(does-not-exist) {
+	margin-right: 2px
+}

@@ -1,16 +1,17 @@
 import parser from 'postcss-selector-parser';
 import encodeCSS from './encode/encode.mjs';
+import type { PluginCreator } from 'postcss';
 
-const creator = (/** @type {{ preserve: true | false }} */ opts) => {
-	opts = typeof opts === 'object' && opts || defaultOptions;
+const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: string }> = (opts?: { preserve?: boolean, specificityMatchingName?: string }) => {
+	const options = {
+		preserve: true,
+		specificityMatchingName: 'does-not-exist',
+		...(opts || {}),
+	};
 
-	/** Whether the original rule should be preserved. */
-	const shouldPreserve = Boolean('preserve' in opts ? opts.preserve : true);
-	const doesNotExistName = opts.doesNotExistName ?? 'does-not-exist';
-
-	const doesNotExistId = ':not(#' + doesNotExistName + ')';
-	const doesNotExistClass = ':not(.' + doesNotExistName + ')';
-	const doesNotExistTag = ':not(' + doesNotExistName + ')';
+	const specificityMatchingNameId = ':not(#' + options.specificityMatchingName + ')';
+	const specificityMatchingNameClass = ':not(.' + options.specificityMatchingName + ')';
+	const specificityMatchingNameTag = ':not(' + options.specificityMatchingName + ')';
 
 	return {
 		postcssPlugin: 'css-has-pseudo-experimental',
@@ -50,14 +51,14 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 
 				let encodedSelectorWithSpecificity = encodedSelector;
 				for (let i = 0; i < abcSpecificity.a; i++) {
-					encodedSelectorWithSpecificity += doesNotExistId;
+					encodedSelectorWithSpecificity += specificityMatchingNameId;
 				}
 				const bSpecificity = Math.max(1, abcSpecificity.b) - 1;
 				for (let i = 0; i < bSpecificity; i++) {
-					encodedSelectorWithSpecificity += doesNotExistClass;
+					encodedSelectorWithSpecificity += specificityMatchingNameClass;
 				}
 				for (let i = 0; i < abcSpecificity.c; i++) {
-					encodedSelectorWithSpecificity += doesNotExistTag;
+					encodedSelectorWithSpecificity += specificityMatchingNameTag;
 				}
 
 				return encodedSelectorWithSpecificity;
@@ -67,7 +68,7 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 				return;
 			}
 
-			if (shouldPreserve) {
+			if (options.preserve) {
 				rule.cloneBefore({ selectors: selectors });
 			} else {
 				rule.assign({ selectors: selectors });
@@ -77,9 +78,6 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 };
 
 creator.postcss = true;
-
-/** Default options. */
-const defaultOptions = { preserve: true };
 
 export default creator;
 
@@ -178,7 +176,7 @@ function selectorSpecificity(node) {
 					});
 
 					if (ofSeparatorIndex > -1) {
-						const ofSpecificity = selectorSpecificity(parser.selector({ nodes: node.nodes.slice(ofSeparatorIndex + 1) }));
+						const ofSpecificity = selectorSpecificity(parser.selector({ nodes: node.nodes.slice(ofSeparatorIndex + 1), value: '' }));
 						a += ofSpecificity.a;
 						b += ofSpecificity.b;
 						c += ofSpecificity.c;

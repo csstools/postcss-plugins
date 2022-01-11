@@ -103,7 +103,7 @@ main {
 	background-color: green;
 }
 
-.b_subject:has([attrname=b_descendant]) {
+.b_subject:has([attrname="b_descendant"]) {
 	background-color: blue;
 }
 

@@ -4,8 +4,12 @@
 	<meta charset="utf-8">
 	<title></title>
 	<link rel="help" href="https://drafts.csswg.org/selectors/#relational">
-	<link rel="stylesheet" href="/test/browser.expect.css">
-	<script src="/dist/browser-global.js"></script>
+	<!-- Included only to trigger CORS errors -->
+	<!-- This stylesheet is not accessible in JS and must not cause cascading failures -->
+	<link rel="stylesheet" href="http://localhost:8081/test/basic.expect.css">
+	<!-- This is the real test stylesheet and has correct CORS attributes and http headers -->
+	<link rel="stylesheet" href="http://localhost:8081/test/browser.expect.css" crossorigin="anonymous">
+	<script src="http://localhost:8082/dist/browser-global.js"></script>
 	<script>cssHasPseudo(document, { observedAttributes: ['attrname'], debug: true, hover: true, forcePolyfill: true });</script>
 </head>
 <body>

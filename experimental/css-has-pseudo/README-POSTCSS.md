@@ -76,6 +76,74 @@ body[\:has\(\:focus\)] {
 }
 ```
 
+### specificityMatchingName
+
+The `specificityMatchingName` option allows you to change to selector that is used to adjust specificity.
+The default value is `does-not-exist`.
+If this is an actual class, id or tag name in your code, you will need to set a different option here.
+
+See how `:not` is used to modify [specificity](#specificity).
+
+```js
+postcss([
+  cssHasPseudoExperimental({ specificityMatchingName: 'something-random' })
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+[specificity 1, 2, 0](https://polypane.app/css-specificity-calculator/#selector=.x%3Ahas(%3E%20%23a%3Ahover))
+
+Before :
+
+```css
+.x:has(> #a:hover) {
+	order: 11;
+}
+```
+
+After :
+
+[specificity 1, 2, 0](https://polypane.app/css-specificity-calculator/#selector=%5B%5C.x%5C%3Ahas%5C(%5C%253E%5C%2520%5C%2523a%5C%3Ahover%5C)%5D%3Anot(%23does-not-exist)%3Anot(.does-not-exist))
+
+```css
+[\.x\:has\(\%3E\%20\%23a\:hover\)]:not(#does-not-exist):not(.does-not-exist) {
+	order: 11;
+}
+```
+
+## ⚠️ Known shortcomings
+
+### Specificity
+
+`:has` transforms will result in at least one tag selector with specificity `0, 1, 0`.
+If your selector has only tags we won't be able to match the original specificity.
+
+Before :
+
+[specificity 0, 0, 2](https://polypane.app/css-specificity-calculator/#selector=figure%3Ahas(%3E%20img))
+
+```css
+figure:has(> img)
+```
+
+After :
+
+[specificity 0, 1, 2](https://polypane.app/css-specificity-calculator/#selector=%5Bfigure%5C%3Ahas%5C(%5C%253E%5C%2520img%5C)%5D%3Anot(does-not-exist)%3Anot(does-not-exist))
+
+```css
+[figure\:has\(\%3E\%20img\)]:not(does-not-exist):not(does-not-exist)
+```
+
+### Plugin order
+
+As selectors are encoded this plugin (or `postcss-preset-env`) must be run after any other plugin that transforms selectors.
+
+For `postcss-preset-env` we take care to handle this for you.
+
+If other plugins are used you need to place these in your config before `postcss-preset-env` or `css-has-pseudo`.
+
+Please let us know if you have issues with plugins that transform selectors.
+Then we can investigate and maybe fix these.
+
 ## PostCSS Preset Env
 
 When you use `postcss-preset-env` you must disable the regular plugin.
