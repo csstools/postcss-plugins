@@ -38,6 +38,14 @@ import { generate } from './generate.mjs';
 			),
 
 			generate(
+				'selector-class-function',
+				path.join('../../plugins', 'postcss-is-pseudo'),
+				[
+					':is',
+				],
+			),
+
+			generate(
 				'value',
 				path.join('../../plugins', 'postcss-color-functional-notation'),
 				[
