@@ -1,5 +1,58 @@
 # Changes to PostCSS Preset Env
 
+### 7.2.0 (January 2, 2022)
+
+- Added warnings and useful messages when a feature that doesn't exist is configured. [156](https://github.com/csstools/postcss-preset-env/issues/156).
+
+When configured with these options for example: 
+
+```js
+options: {
+	features: {
+		"custom-media": true,
+		"postcss-logical": true,
+		"postcss-logica": true,
+	}
+}
+```
+
+It will yield the following warnings:
+
+```bash
+Unknown feature: "custom-media" did you mean: "custom-media-queries"
+Unknown feature: "postcss-logical" did you mean: "logical-properties-and-values"
+Unknown feature: "postcss-logica" did you mean: "logical-properties-and-values"
+```
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+- Updated `postcss` to 8.4 (minor)
+- Updated `autoprefixer` to 10.4.1 (patch)
+- Updated `caniuse-lite` to 1.0.30001295 (patch)
+- Updated `css-blank-pseudo` to 3.0.1 (patch)
+- Updated `css-has-pseudo` to 3.0.2 (patch)
+- Updated `css-prefers-color-scheme` to 6.0.2 (patch)
+- Updated `postcss-color-functional-notation` to 4.2.1 (minor)
+- Updated `postcss-color-hex-alpha` to 8.0.2 (patch)
+- Updated `postcss-custom-properties` to 12.0.2 (patch)
+- Updated `postcss-dir-pseudo-class` to 6.0.2 (patch)
+- Updated `postcss-double-position-gradients` to 3.0.4 (patch)
+- Updated `postcss-env-function` to 4.0.4 (patch)
+- Updated `postcss-focus-visible` to 6.0.3 (patch)
+- Updated `postcss-focus-within` to 5.0.3 (patch)
+- Updated `postcss-gap-properties` to 3.0.2 (patch)
+- Updated `postcss-image-set-function` to 4.0.4 (patch)
+- Updated `postcss-lab-function` to 4.0.3 (patch)
+- Updated `postcss-logical` to 5.0.2 (patch)
+- Updated `postcss-nesting` to 10.1.1 (minor)
+- Updated `postcss-overflow-shorthand` to 3.0.2 (patch)
+- Updated `postcss-place` to 7.0.3 (patch)
+- Updated `postcss-pseudo-class-any-link` to 7.0.2 (patch)
+
+### 7.1.0 (December 22, 2021)
+
+- Updated [`postcss-nesting` to `10.1.0` (minor)](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-nesting/CHANGELOG.md#changes-to-postcss-nesting)
+
 ### 7.0.2 (December 16, 2021)
 
 - Fixed unexpected behaviours when using different versions of `postcss-values-parser` across the plugins [228](https://github.com/csstools/postcss-preset-env/issues/228)

@@ -1,15 +1,18 @@
 import autoprefixer from 'autoprefixer';
 import browserslist from 'browserslist';
 import cssdb from 'cssdb';
-import plugins from './lib/plugins-by-id';
+import { pluginsById as plugins } from './lib/plugins-by-id';
 import getTransformedInsertions from './lib/get-transformed-insertions';
 import getUnsupportedBrowsersByFeature from './lib/get-unsupported-browsers-by-feature';
 import idsByExecutionOrder from './lib/ids-by-execution-order';
 import writeToExports from './lib/write-to-exports';
+import getOptionsForBrowsersByFeature from './lib/get-options-for-browsers-by-feature';
+import { pluginIdHelp } from './lib/plugin-id-help';
 
 const plugin = opts => {
 	// initialize options
 	const features = Object(Object(opts).features);
+	const featureNamesInOptions = Object.keys(features);
 	const insertBefore = Object(Object(opts).insertBefore);
 	const insertAfter = Object(Object(opts).insertAfter);
 	const browsers = Object(opts).browsers;
@@ -66,15 +69,17 @@ const plugin = opts => {
 			let options;
 			let plugin;
 
+			options = getOptionsForBrowsersByFeature(browsers, feature);
+
 			if (features[feature.id] === true) {
 				// if the plugin is enabled
-				options = sharedOpts ? Object.assign({}, sharedOpts) : undefined;
+				options = sharedOpts ? Object.assign({}, options, sharedOpts) : undefined;
 			} else {
 				options = sharedOpts
 					// if the plugin has shared options and individual options
-					? Object.assign({}, sharedOpts, features[feature.id])
+					? Object.assign({}, options, sharedOpts, features[feature.id])
 					// if the plugin has individual options
-					: Object.assign({}, features[feature.id]);
+					: Object.assign({}, options, features[feature.id]);
 			}
 
 			if (feature.plugin.postcss) {
@@ -110,14 +115,23 @@ const plugin = opts => {
 	const usedPlugins = supportedFeatures.map(feature => feature.plugin);
 	usedPlugins.push(stagedAutoprefixer);
 
+	const internalPlugin = () => {
+		return {
+			postcssPlugin: 'postcss-preset-env',
+			OnceExit: function (root, { result }) {
+				pluginIdHelp(featureNamesInOptions, root, result);
+				if (Object(opts).exportTo) {
+					writeToExports(sharedOpts.exportTo, opts.exportTo);
+				}
+			},
+		};
+	};
+
+	internalPlugin.postcss = true;
+
 	return {
 		postcssPlugin: 'postcss-preset-env',
-		plugins: usedPlugins,
-		OnceExit: function() {
-			if ( Object( opts ).exportTo ) {
-				writeToExports( sharedOpts.exportTo, opts.exportTo );
-			}
-		},
+		plugins: [...usedPlugins, internalPlugin()],
 	};
 };
 

@@ -2,7 +2,7 @@ import cleanupParent from './cleanup-parent.js';
 import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
 import validAtrules from './valid-atrules.js';
 
-export default function atruleWithinRule(node, walk) {
+export default function atruleWithinRule(node, walk, opts) {
 	// move previous siblings and the node to before the parent
 	const parent = shiftNodesBeforeParent(node);
 
@@ -16,7 +16,7 @@ export default function atruleWithinRule(node, walk) {
 	cleanupParent(parent);
 
 	// walk the children of the new rule
-	walk(rule);
+	walk(rule, opts);
 }
 
 export const isAtruleWithinRule = (node) => node.type === 'atrule' && validAtrules.includes(node.name) && Object(node.parent).type === 'rule';

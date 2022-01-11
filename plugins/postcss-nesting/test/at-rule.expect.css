@@ -38,11 +38,11 @@ a:is(\\foo) {
 		order: 8
 }
 
-.foo:is(h1) {
+h1.foo {
 		color: red
 }
 
-.foo:is(h1), .foo:is(h2) {
+h1.foo, h2.foo {
 		color: red
 }
 

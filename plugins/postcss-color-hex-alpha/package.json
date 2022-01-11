@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-hex-alpha",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Use 4 & 8 character hex color notation in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "contributors": [
@@ -14,22 +14,19 @@
   "types": "index.d.ts",
   "files": [
     "CHANGELOG.md",
-    "INSTALL.md",
     "LICENSE.md",
     "README.md",
     "dist",
     "index.d.ts"
   ],
-  "bin": {
-    "postcss-color-hex-alpha": "dist/cli.mjs"
-  },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
     "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
-    "test": "postcss-tape --ci"
+    "test": "postcss-tape --ci && npm run test:exports",
+    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"

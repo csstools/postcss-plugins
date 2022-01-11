@@ -1,3 +1,17 @@
+const orderDetectionPlugin = (prop, changeWhenMatches) => {
+	return {
+		postcssPlugin: 'order-detection',
+		Declaration(decl) {
+			if (changeWhenMatches(decl)) {
+				decl.prop = prop;
+				decl.value = 'changed-this-declaration';
+			}
+		},
+	}
+}
+
+orderDetectionPlugin.postcss = true
+
 module.exports = {
 	'basic': {
 		message: 'supports basic usage'
@@ -18,6 +32,32 @@ module.exports = {
 		message: 'supports { browsers: "chrome >= 38" } usage',
 		options: {
 			browsers: 'chrome >= 38'
+		}
+	},
+	'basic:ch88-ff78': {
+		message: 'uses :is pseudo for nesting with modern browsers { browsers: "chrome >= 88, firefox >= 78", stage: 0 }',
+		options: {
+			browsers: 'chrome >= 88, firefox >= 78',
+			stage: 0
+		}
+	},
+	'basic:ch88-ff78:no-is-pseudo': {
+		message: ':is pseudo for nesting can be disable with modern browsers  { browsers: "chrome >= 88, firefox >= 78", stage: 0, features: { nesting-rules: { noIsPseudoSelector: true } } } usage',
+		options: {
+			browsers: 'chrome >= 88, firefox >= 78',
+			stage: 0,
+			features: {
+				'nesting-rules': {
+					noIsPseudoSelector: true
+				}
+			}
+		}
+	},
+	'basic:ch88-ff78-saf10': {
+		message: 'does not use :is pseudo for nesting with an older browser { browsers: "chrome >= 88, firefox >= 78, safari >= 10", stage: 0 } usage',
+		options: {
+			browsers: 'chrome >= 88, firefox >= 78, safari >= 10',
+			stage: 0
 		}
 	},
 	'basic:stage0': {
@@ -87,55 +127,93 @@ module.exports = {
 			}
 		}
 	},
-	'insert:before': {
-		message: 'supports { stage: 1, features: { "color-mod-function": true }, insertBefore: { "color-mod-function": [ require("postcss-simple-vars") ] } } usage',
+	'insert:baseline': {
+		message: 'supports { insertBefore/insertAfter } usage baseline',
 		options: {
-			stage: 1,
+			stage: 0,
 			features: {
-				'color-mod-function': true
+				'lab-function': true
+			}
+		}
+	},
+	'insert:before:match-source': {
+		message: 'supports { insertBefore } usage when looking for source',
+		options: {
+			stage: 0,
+			features: {
+				'lab-function': true
 			},
 			insertBefore: {
-				'color-mod-function': [
-					require('postcss-simple-vars')()
+				'lab-function': [
+					orderDetectionPlugin('before', (decl) => {
+						return decl.value.indexOf('lab(') === 0;
+					})
 				]
 			}
 		}
 	},
-	'insert:after': {
-		message: 'supports { stage: 1, insertAfter: { "color-mod-function": [ require("postcss-simple-vars")() ] } } usage',
+	'insert:before:match-result': {
+		message: 'supports { insertBefore } usage when looking for a result',
 		options: {
-			stage: 1,
-			insertAfter: {
-				'color-mod-function': require('postcss-simple-vars')()
-			}
-		},
-	},
-	'insert:after:exec': {
-		message: 'supports { stage: 2, features: { "color-mod-function": { unresolved: "ignore" } }, insertAfter: { "color-mod-function": require("postcss-simple-vars")() } } usage',
-		options: {
-			stage: 2,
-			insertAfter: {
-				'color-mod-function': require('postcss-simple-vars')()
-			}
-		},
-		expect: 'insert.after.expect.css'
-	},
-	'insert:after:array': {
-		message: 'supports { stage: 1, after: { "color-mod-function": [ require("postcss-simple-vars") ] } } usage',
-		options: {
-			stage: 1,
-			insertAfter: {
-				'color-mod-function': [
-					require('postcss-simple-vars')()
-				]
-			},
+			stage: 0,
 			features: {
-				'color-mod-function': {
-					unresolved: 'ignore'
-				}
+				'lab-function': true
+			},
+			insertBefore: {
+				'lab-function': [
+					orderDetectionPlugin('before', (decl) => {
+						return decl.value.indexOf('rgba(') === 0;
+					})
+				]
+			}
+		}
+	},
+	'insert:after:match-source': {
+		message: 'supports { insertAfter } usage when looking for source',
+		options: {
+			stage: 0,
+			features: {
+				'lab-function': true
+			},
+			insertAfter: {
+				'lab-function': [
+					orderDetectionPlugin('after', (decl) => {
+						return decl.value.indexOf('lab(') === 0;
+					})
+				]
+			}
+		}
+	},
+	'insert:after:match-result': {
+		message: 'supports { insertAfter } usage when looking for a result',
+		options: {
+			stage: 0,
+			features: {
+				'lab-function': true
+			},
+			insertAfter: {
+				'lab-function': [
+					orderDetectionPlugin('after', (decl) => {
+						return decl.value.indexOf('rgba(') === 0;
+					})
+				]
+			}
+		}
+	},
+	'insert:after:match-result:exec': {
+		message: 'supports { insertAfter with a single plugin, not an array } usage when looking for a result',
+		options: {
+			stage: 0,
+			features: {
+				'lab-function': true
+			},
+			insertAfter: {
+				'lab-function': orderDetectionPlugin('after', (decl) => {
+					return decl.value.indexOf('rgba(') === 0;
+				})
 			}
 		},
-		expect: 'insert.after.expect.css'
+		expect: 'insert.after.match-result.expect.css'
 	},
 	'import': {
 		message: 'supports { importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',
@@ -171,12 +249,24 @@ module.exports = {
 		expect: 'basic.stage0.expect.css',
 		result: 'basic.stage0.result.css',
 		before() {
-			global.__exportTo = {
-				css: require('fs').readFileSync('test/generated-custom-exports.css', 'utf8'),
-				js: require('fs').readFileSync('test/generated-custom-exports.js', 'utf8'),
-				json: require('fs').readFileSync('test/generated-custom-exports.json', 'utf8'),
-				mjs: require('fs').readFileSync('test/generated-custom-exports.mjs', 'utf8')
-			};
+			try {
+				global.__exportTo = {
+					css: require('fs').readFileSync('test/generated-custom-exports.css', 'utf8'),
+					js: require('fs').readFileSync('test/generated-custom-exports.js', 'utf8'),
+					json: require('fs').readFileSync('test/generated-custom-exports.json', 'utf8'),
+					mjs: require('fs').readFileSync('test/generated-custom-exports.mjs', 'utf8')
+				};
+
+				require('fs').rmSync('test/generated-custom-exports.css');
+				require('fs').rmSync('test/generated-custom-exports.js');
+				require('fs').rmSync('test/generated-custom-exports.json');
+				require('fs').rmSync('test/generated-custom-exports.mjs');
+			} catch (_) {
+				// ignore errors here.
+				// If the files are removed manually test run will regenerate these.
+				// The after step will still fail.
+				// The real test is in the after step.
+			}
 		},
 		after() {
 			global.__exportAs = {
@@ -192,5 +282,16 @@ module.exports = {
 				}
 			});
 		}
+	},
+	"unknown-feature": {
+		message: 'warns on unknown features',
+		warnings: 3,
+		options: {
+			features: {
+				"custom-media": true,
+				"postcss-logical": true,
+				"postcss-logica": true,
+			}
+		},
 	}
 };

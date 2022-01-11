@@ -1,6 +1,6 @@
 {
   "name": "css-has-pseudo",
-  "version": "3.0.0",
+  "version": "3.0.2",
   "description": "Style elements relative to other elements in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -15,7 +15,9 @@
       "default": "./dist/index.mjs"
     },
     "./browser": {
-      "default": "./dist/browser.js"
+      "import": "./dist/browser.mjs",
+      "require": "./dist/browser.cjs",
+      "default": "./dist/browser.mjs"
     },
     "./browser-global": {
       "default": "./dist/browser-global.js"
@@ -23,14 +25,13 @@
   },
   "files": [
     "CHANGELOG.md",
-    "INSTALL.md",
     "LICENSE.md",
     "README.md",
     "dist",
     "browser.js"
   ],
   "bin": {
-    "css-has-pseudo": "dist/cli.mjs"
+    "css-has-pseudo": "dist/cli.cjs"
   },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js && npm run copy-browser-scripts-to-old-location",
@@ -39,13 +40,14 @@
     "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
-    "test": "postcss-tape --ci"
+    "test": "postcss-tape --ci && npm run test:exports",
+    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-selector-parser": "^6.0.7"
+    "postcss-selector-parser": "^6.0.8"
   },
   "devDependencies": {
     "postcss": "^8.3.6",

@@ -75,3 +75,25 @@
 .test--combined-selector {
 	color: #053;
 }
+
+.test--variable-with-url {
+	order: 1;
+	background: url("/my/path");
+}
+
+.test--variable-with-url {
+	order: 2;
+	background: url('/my/path');
+}
+
+
+.test--variable-with-url {
+	order: 3;
+	background: url(/my/path);
+}
+
+
+.test--variable-with-url {
+	order: 4;
+	background: url(data:image/png;bm90LWFuZC1pbWFnZQ==);
+}

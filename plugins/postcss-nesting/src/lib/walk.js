@@ -3,20 +3,20 @@ import transformNestRuleWithinRule, { isNestRuleWithinRule } from './nest-rule-w
 import transformAtruleWithinRule, { isAtruleWithinRule } from './atrule-within-rule.js';
 import transformAtruleWithinAtrule, { isAtruleWithinAtrule } from './atrule-within-atrule.js';
 
-export default function walk(node) {
+export default function walk(node, opts) {
 	node.each((child) => {
 		if (isRuleWithinRule(child)) {
-			transformRuleWithinRule(child);
+			transformRuleWithinRule(child, opts);
 		} else if (isNestRuleWithinRule(child)) {
-			transformNestRuleWithinRule(child, walk);
+			transformNestRuleWithinRule(child, walk, opts);
 		} else if (isAtruleWithinRule(child)) {
-			transformAtruleWithinRule(child, walk);
+			transformAtruleWithinRule(child, walk, opts);
 		} else if (isAtruleWithinAtrule(child)) {
 			transformAtruleWithinAtrule(child);
 		}
 
 		if (Object(child.nodes).length) {
-			walk(child);
+			walk(child, opts);
 		}
 	});
 }

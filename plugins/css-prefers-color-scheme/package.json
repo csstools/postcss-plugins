@@ -1,6 +1,6 @@
 {
   "name": "css-prefers-color-scheme",
-  "version": "6.0.0",
+  "version": "6.0.2",
   "description": "Use light and dark color schemes in all browsers",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -15,7 +15,9 @@
       "default": "./dist/index.mjs"
     },
     "./browser": {
-      "default": "./dist/browser.js"
+      "import": "./dist/browser.mjs",
+      "require": "./dist/browser.cjs",
+      "default": "./dist/browser.mjs"
     },
     "./browser-global": {
       "default": "./dist/browser-global.js"
@@ -23,7 +25,6 @@
   },
   "files": [
     "CHANGELOG.md",
-    "INSTALL.md",
     "LICENSE.md",
     "README.md",
     "dist",
@@ -31,7 +32,7 @@
     "browser.min.js"
   ],
   "bin": {
-    "css-prefers-color-scheme": "dist/cli.mjs"
+    "css-prefers-color-scheme": "dist/cli.cjs"
   },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js && npm run copy-browser-scripts-to-old-location",
@@ -40,7 +41,8 @@
     "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
-    "test": "postcss-tape --ci"
+    "test": "postcss-tape --ci && npm run test:exports",
+    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"

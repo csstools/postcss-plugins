@@ -32,13 +32,17 @@ const hasDenoOutput = (() => {
 const presets = [];
 
 if (isTypescript) {
-	presets.push(...packageTypescript());
+	if (packageInfo.main || packageInfo.module) {
+		presets.push(...packageTypescript());
+	}
 
 	if (packageInfo.bin) {
 		presets.push(...cliTypescript());
 	}
 } else {
-	presets.push(...packageJavascript());
+	if (packageInfo.main || packageInfo.module) {
+		presets.push(...packageJavascript());
+	}
 
 	if (packageInfo.bin) {
 		presets.push(...cliJavascript());

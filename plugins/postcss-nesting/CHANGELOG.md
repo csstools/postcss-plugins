@@ -1,5 +1,28 @@
 # Changes to PostCSS Nesting
 
+### Unreleased
+
+- Improved : selector specificity calculation
+
+### 10.1.1 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
+### 10.1.0 (December 22, 2021)
+
+- Added: `noIsPseudoSelector` plugin option.
+- Changed: `:is()` pseudo is now avoided as much as possible by default.
+- Updated: documentation
+
+[more info on noIsPseudoSelector](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting#noispseudoselector)
+
+```js
+postcssNesting({
+	noIsPseudoSelector: true
+})
+```
+
 ### 10.0.3 (December 13, 2021)
 
 - Updated: documentation

@@ -1,3 +1,5 @@
+const importWithProps = require('./test/import');
+
 module.exports = {
 	'basic': {
 		message: 'supports basic usage'
@@ -311,5 +313,13 @@ module.exports = {
 		options: {
 			importFrom: {}
 		}
+	},
+	'import': {
+		message: 'supports "postcss-import"',
+		options: {
+			expect: 'import.expect.css',
+			result: 'import.result.css'
+		},
+		plugin: importWithProps
 	}
 };

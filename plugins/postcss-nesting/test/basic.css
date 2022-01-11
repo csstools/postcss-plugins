@@ -96,6 +96,16 @@ li {
 
 a {
 	& b[a="a&b"] {
-		order: 7;
+		order: 31;
+	}
+}
+
+.a,
+.b {
+	&.c,
+	&.d {
+		&:before {
+			order: 41;
+		}
 	}
 }

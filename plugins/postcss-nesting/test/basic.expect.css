@@ -52,7 +52,7 @@ body a {
 		order: 11
 }
 
-html body a {
+html :is(body a) {
 			order: 12
 }
 
@@ -104,8 +104,8 @@ a.foo {
 		order: 22
 }
 
-.foo:is(h1),
-	.foo:is(h2) {
+h1.foo,
+	h2.foo {
 		color: red;
 	}
 
@@ -118,5 +118,9 @@ li+li {
 	}
 
 a b[a="a&b"] {
-		order: 7;
+		order: 31;
 	}
+
+.a.c:before, .b.c:before, .a.d:before, .b.d:before {
+			order: 41;
+		}

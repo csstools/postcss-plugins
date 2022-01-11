@@ -1,5 +1,10 @@
 # Changes to PostCSS RebeccaPurple
 
+### 7.0.2 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
 ### 7.0.1 (December 16, 2021)
 
 - Changed: now uses `postcss-value-parser` for parsing.

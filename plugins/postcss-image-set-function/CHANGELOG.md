@@ -1,5 +1,10 @@
 # Changes to PostCSS image-set() Function
 
+### 4.0.4 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
 ### 4.0.3 (December 13, 2021)
 
 - Changed: now uses `postcss-value-parser` for parsing.

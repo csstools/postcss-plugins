@@ -13,7 +13,7 @@ export function cliTypescript() {
 		{
 			input: 'src/cli.ts',
 			output: [
-				{ file: 'dist/cli.mjs', format: 'esm', sourcemap: false },
+				{ file: 'dist/cli.cjs', format: 'cjs', sourcemap: false },
 			],
 			external: externalsForCLI,
 			plugins: [
