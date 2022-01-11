@@ -16,6 +16,7 @@ module.exports = {
 		'--url-2': 'url(\'/my/path\')',
 		'--url-3': 'url(/my/path)',
 		'--url-4': 'url(data:image/png;bm90LWFuZC1pbWFnZQ==)',
+		'--✅-size': '2em',
 		'--theme-color': '#053'
 	}
 };

@@ -235,6 +235,27 @@ module.exports = {
 			stage: 0
 		}
 	},
+	'import:ch88': {
+		message: 'supports { browsers: "chrome >= 88", importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',
+		options: {
+			browsers: 'chrome >= 88',
+			importFrom: {
+				customMedia: {
+					'--narrow-window': '(max-width: env(--sm))'
+				},
+				customProperties: {
+					'--order': '1'
+				},
+				customSelectors: {
+					':--heading': 'h1, h2, h3, h4, h5, h6'
+				},
+				environmentVariables: {
+					'--sm': '40rem'
+				}
+			},
+			stage: 0
+		}
+	},
 	'basic:export': {
 		message: 'supports { stage: 0 } usage',
 		options: {

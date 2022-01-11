@@ -5,7 +5,7 @@
 .ignore-line {
 	/* postcss-custom-properties: ignore next */
 	color: var(--color);
-	background-color: blue;
+	background-color: yellow;
 }
 
 .ignore-block {
@@ -37,7 +37,7 @@
 }
 
 .test--fallback {
-	color: blue;
+	color: yellow;
 }
 
 .test--color_w_var {
@@ -53,7 +53,7 @@
 }
 
 .test--z-index {
-	z-index: var(--z-index);
+	z-index: 10;
 }
 
 .test--nested-fallback {

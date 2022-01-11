@@ -137,6 +137,17 @@ postcssCustomProperties({
 See example imports written in [CSS](test/import-properties.css),
 [JS](test/import-properties.js), and [JSON](test/import-properties.json).
 
+### overrideImportFromWithRoot
+
+The `overrideImportFromWithRoot` option determines if properties added via `importFrom` are overridden by properties that exist in `:root`.
+Defaults to `false`.
+
+```js
+postcssCustomProperties({
+  overrideImportFromWithRoot: true
+});
+```
+
 ### exportTo
 
 The `exportTo` option specifies destinations where Custom Properties can be exported

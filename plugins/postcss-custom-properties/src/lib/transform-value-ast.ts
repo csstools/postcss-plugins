@@ -6,12 +6,12 @@ export default function transformValueAST(root, customProperties) {
 				const { value: name } = propertyNode;
 				const index = root.nodes.indexOf(child);
 
-				if (name in Object(customProperties)) {
+				if (customProperties.has(name)) {
 					// Direct match of a custom property to a parsed value
-					const nodes = customProperties[name].nodes;
+					const nodes = customProperties.get(name).nodes;
 
 					// Re-transform nested properties without given one to avoid circular from keeping this forever
-					retransformValueAST({ nodes }, customProperties, name);
+					reTransformValueAST({ nodes }, customProperties, name);
 
 					if (index > -1) {
 						root.nodes.splice(index, 1, ...nodes);
@@ -34,11 +34,11 @@ export default function transformValueAST(root, customProperties) {
 	return root.toString();
 }
 
-// retransform the current ast without a custom property (to prevent recursion)
-function retransformValueAST(root, customProperties, withoutProperty) {
-	const nextCustomProperties = Object.assign({}, customProperties);
+// reTransform the current ast without a custom property (to prevent recursion)
+function reTransformValueAST(root, customProperties, withoutProperty) {
+	const nextCustomProperties = new Map(customProperties);
 
-	delete nextCustomProperties[withoutProperty];
+	nextCustomProperties.delete(withoutProperty);
 
 	return transformValueAST(root, nextCustomProperties);
 }
