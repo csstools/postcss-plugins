@@ -2,7 +2,7 @@
 
 ### Unreleased
 
-- Fix compatibility with PostCSS `v8.2.x`
+- Fix compatibility with PostCSS `v8.2.x` [#147](https://github.com/csstools/postcss-plugins/issues/147)
 
 This version is not officially supported but some tool providers pinned PostCSS to `v8.2.x`,
 making it impossible for end users to have a working setup.
