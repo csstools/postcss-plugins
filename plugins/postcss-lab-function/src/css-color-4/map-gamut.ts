@@ -17,8 +17,7 @@ function binarySearchGamut(startOKLCH: color, toDestination: (x: color) => color
 		// are we inside the gamut (or very close to the boundary, outside)
 		if (deltaE - 0.02 < 0.0001) {
 			min = current[1];
-		}
-		else {
+		} else {
 			max = current[1];
 		}
 		// binary search

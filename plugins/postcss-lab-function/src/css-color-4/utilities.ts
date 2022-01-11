@@ -133,13 +133,22 @@ export function hslToRgb(hsl: color): color {
 }
 
 export function hueToRgb(t1: number, t2: number, hue: number): number {
-	if (hue < 0) hue += 6;
-	if (hue >= 6) hue -= 6;
+	if (hue < 0) {
+		hue += 6;
+	}
+	if (hue >= 6) {
+		hue -= 6;
+	}
 
-	if (hue < 1) return (t2 - t1) * hue + t1;
-	else if (hue < 3) return t2;
-	else if (hue < 4) return (t2 - t1) * (4 - hue) + t1;
-	else return t1;
+	if (hue < 1) {
+		return (t2 - t1) * hue + t1;
+	} else if (hue < 3) {
+		return t2;
+	} else if (hue < 4) {
+		return (t2 - t1) * (4 - hue) + t1;
+	} else {
+		return t1;
+	}
 }
 
 // These are the naive algorithms from CS Color 4
