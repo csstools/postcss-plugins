@@ -2,7 +2,7 @@
 	order: var(--order);
 }
 
-@media (max-width: 40rem) {
+@media (max-width: env(--sm)) {
 	.test-custom-media-queries {
 		order: 2;
 	}
