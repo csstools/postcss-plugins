@@ -40,7 +40,7 @@ cssHasPseudo(document);
 <script>cssHasPseudo(document)</script>
 ```
 
-⚠️ Please use a versioned url, like this : `https://unpkg.com/@csstools/css-has-pseudo-experimental@0.1.0/dist/browser-global.js`
+⚠️ Please use a versioned url, like this : `https://unpkg.com/@csstools/css-has-pseudo-experimental@0.1.2/dist/browser-global.js`
 Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
 ## CORS
