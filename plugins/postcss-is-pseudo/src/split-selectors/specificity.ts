@@ -1,89 +1,6 @@
 import parser from 'postcss-selector-parser';
-import encodeCSS from './encode/encode.mjs';
 
-const creator = (/** @type {{ preserve: true | false }} */ opts) => {
-	opts = typeof opts === 'object' && opts || defaultOptions;
-
-	/** Whether the original rule should be preserved. */
-	const shouldPreserve = Boolean('preserve' in opts ? opts.preserve : true);
-	const doesNotExistName = opts.doesNotExistName ?? 'does-not-exist';
-
-	const doesNotExistId = ':not(#' + doesNotExistName + ')';
-	const doesNotExistClass = ':not(.' + doesNotExistName + ')';
-	const doesNotExistTag = ':not(' + doesNotExistName + ')';
-
-	return {
-		postcssPlugin: 'css-has-pseudo-experimental',
-		RuleExit: (rule, { result }) => {
-			if (!rule.selector.includes(':has(')) {
-				return;
-			}
-
-			const selectors = rule.selectors.map((selector) => {
-				if (!selector.includes(':has(')) {
-					return selector;
-				}
-
-				let selectorAST;
-				try {
-					selectorAST = parser().astSync(selector);
-				} catch (_) {
-					rule.warn(result, `Failed to parse selector : ${selector}`);
-					return selector;
-				}
-
-				if (typeof selectorAST === 'undefined') {
-					return selector;
-				}
-
-				let containsHasPseudo = false;
-				selectorAST.walkPseudos((node) => {
-					containsHasPseudo = containsHasPseudo || node.value === ':has' && node.nodes;
-				});
-
-				if (!containsHasPseudo) {
-					return selector;
-				}
-
-				const encodedSelector = '[' + encodeCSS(selector) + ']';
-				const abcSpecificity = selectorSpecificity(selectorAST);
-
-				let encodedSelectorWithSpecificity = encodedSelector;
-				for (let i = 0; i < abcSpecificity.a; i++) {
-					encodedSelectorWithSpecificity += doesNotExistId;
-				}
-				const bSpecificity = Math.max(1, abcSpecificity.b) - 1;
-				for (let i = 0; i < bSpecificity; i++) {
-					encodedSelectorWithSpecificity += doesNotExistClass;
-				}
-				for (let i = 0; i < abcSpecificity.c; i++) {
-					encodedSelectorWithSpecificity += doesNotExistTag;
-				}
-
-				return encodedSelectorWithSpecificity;
-			});
-
-			if (selectors.join(',') === rule.selectors.join(',')) {
-				return;
-			}
-
-			if (shouldPreserve) {
-				rule.cloneBefore({ selectors: selectors });
-			} else {
-				rule.selectors = selectors;
-			}
-		},
-	};
-};
-
-creator.postcss = true;
-
-/** Default options. */
-const defaultOptions = { preserve: true };
-
-export default creator;
-
-function selectorSpecificity(node) {
+export function selectorSpecificity(node) {
 	let a = 0;
 	let b = 0;
 	let c = 0;
@@ -178,7 +95,7 @@ function selectorSpecificity(node) {
 					});
 
 					if (ofSeparatorIndex > -1) {
-						const ofSpecificity = selectorSpecificity(parser.selector({ nodes: node.nodes.slice(ofSeparatorIndex + 1) }));
+						const ofSpecificity = selectorSpecificity(parser.selector({ nodes: node.nodes.slice(ofSeparatorIndex + 1), value: '' }));
 						a += ofSpecificity.a;
 						b += ofSpecificity.b;
 						c += ofSpecificity.c;

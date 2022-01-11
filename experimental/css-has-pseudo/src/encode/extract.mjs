@@ -8,7 +8,9 @@ export default function extractEncodedSelectors(value) {
 	let candidate;
 
 	let quoted = false;
-	let quotedMark = false;
+	let quotedMark;
+
+	let containsUnescapedUnquotedHasAtDepth1 = false;
 
 	// Stryker disable next-line EqualityOperator
 	for (let i = 0; i < value.length; i++) {
@@ -17,6 +19,7 @@ export default function extractEncodedSelectors(value) {
 		switch (char) {
 			case '[':
 				if (quoted) {
+					candidate += char;
 					continue;
 				}
 
@@ -25,10 +28,12 @@ export default function extractEncodedSelectors(value) {
 				} else {
 					candidate += char;
 				}
+
 				depth++;
 				continue;
 			case ']':
 				if (quoted) {
+					candidate += char;
 					continue;
 				}
 
@@ -36,18 +41,29 @@ export default function extractEncodedSelectors(value) {
 					depth--;
 					if (depth === 0) {
 						const decoded = decodeCSS(candidate);
-						if (decoded.indexOf(':has(') > -1) {
+						if (containsUnescapedUnquotedHasAtDepth1) {
 							out.push(decoded);
 						}
 					} else {
 						candidate += char;
 					}
 				}
+
+				continue;
+			case ':':
+				if (quoted) {
+					continue;
+				}
+
+				if (depth === 1 && (value.slice(i, i + 4) === ':has')) {
+					containsUnescapedUnquotedHasAtDepth1 = true;
+				}
+
+				candidate += value[i];
 				continue;
 			case '\\':
-				if (quoted) {
-					i++;
-					continue;
+				if (depth === 1 && quoted === false && (value.slice(i+1, i + 7) === ':has\\(')) {
+					containsUnescapedUnquotedHasAtDepth1 = true;
 				}
 
 				candidate += value[i];
@@ -59,6 +75,9 @@ export default function extractEncodedSelectors(value) {
 			case '\'':
 				if (quoted && char === quotedMark) {
 					quoted = false;
+					continue;
+				} else if (quoted) {
+					candidate += char;
 					continue;
 				}
 

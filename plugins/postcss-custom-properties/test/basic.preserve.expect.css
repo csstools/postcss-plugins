@@ -97,3 +97,11 @@
 	order: 4;
 	background: url(data:image/png;bm90LWFuZC1pbWFnZQ==);
 }
+
+.no-prototype-collisions {
+	color: var(toString);
+}
+
+.test-unicode {
+	color: 2em;
+}

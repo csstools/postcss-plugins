@@ -11,7 +11,14 @@
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    }
+  },
   "files": [
     "CHANGELOG.md",
     "LICENSE.md",
