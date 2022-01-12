@@ -1,5 +1,16 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased
+
+- Always run plugins with side effects if certain options are set. [#140](https://github.com/csstools/postcss-plugins/issues/140)
+  - `custom-media-queries`
+  - `custom-properties`
+  - `environment-variables`
+  - `custom-selectors`
+
+This will ensure that CSS transforms that are not a browser polyfill are still applied.
+⚠️ A future major version `postcss-preset-env` will remove this behavior completely.
+
 ### 7.2.0 (January 2, 2022)
 
 - Added warnings and useful messages when a feature that doesn't exist is configured. [156](https://github.com/csstools/postcss-preset-env/issues/156).
