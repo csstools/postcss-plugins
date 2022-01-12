@@ -1,6 +1,6 @@
 # Changes to PostCSS Dir Pseudo Class
 
-### Unreleased
+### 6.0.3 (January 12, 2022)
 
 - Fix compatibility with PostCSS `v8.2.x` [#147](https://github.com/csstools/postcss-plugins/issues/147)
 
