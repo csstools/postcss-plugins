@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased
+### 12.1.0 (January 12, 2022)
 
 - Add `overrideImportFromWithRoot` option
 - Allow `.mjs` in `importFrom`
