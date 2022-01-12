@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Properties
 
+### 12.1.2 (January 12, 2022)
+
+- Fix TypeScript transpilation.
+- Avoid throwing errors on unexpected option objects.
+
 ### 12.1.1 (January 12, 2022)
 
 - Fix Node 12/14 compatibility
