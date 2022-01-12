@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "declarationDir": ".",
-    "module": "es2020"
+    "module": "es6"
   },
   "include": ["./src/**/*"],
   "exclude": ["dist"],
