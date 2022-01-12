@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### 7.2.3 (January 12, 2022)
+
+- Enhanced `importFrom` / `exportTo` so it's harder to cause unexpected issues by different shapes of data.
+
 ### 7.2.2 (January 12, 2022)
 
 - Updated `postcss-logical` to `5.0.3` (patch)
