@@ -2,7 +2,7 @@
   "name": "postcss-nesting",
   "description": "Nest rules inside each other in CSS",
   "license": "CC0-1.0",
-  "version": "10.1.1",
+  "version": "10.1.2",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting#readme",
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
