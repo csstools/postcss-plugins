@@ -100,7 +100,7 @@ export default async function getCustomPropertiesFromImports(sources: Array<Impo
 			return null;
 		}
 
-		throw new Error(`Invalid source object: ${source}`);
+		return null;
 	}))).filter((x) => {
 		return !!x;
 	});
