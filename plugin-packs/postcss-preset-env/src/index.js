@@ -101,12 +101,13 @@ const plugin = opts => {
 	// browsers supported by the configuration
 	const supportedBrowsers = browserslist(browsers, { ignoreUnknownVersions: true });
 
-	// features supported by the stage
-	// or required for the browsers
-	// or having "importFrom" or "exportTo" options
+	// - features supported by the stage
+	// - features with `true` or with options
+	// - required for the browsers
+	// - having "importFrom" or "exportTo" options
 	const supportedFeatures = stagedFeatures.filter((feature) => {
 		if (feature.id in features) {
-			return true;
+			return features[feature.id];
 		}
 
 		if (pluginHasSideEffects(feature)) {

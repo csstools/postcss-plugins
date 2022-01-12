@@ -80,12 +80,21 @@ module.exports = {
 			stage: 0
 		}
 	},
-	'basic:nesting': {
+	'basic:nesting:true': {
 		message: 'supports { stage: false, features: { "nesting-rules": true } } usage',
 		options: {
 			stage: false,
 			features: {
 				'nesting-rules': true
+			}
+		}
+	},
+	'basic:nesting:false': {
+		message: 'supports { stage: 0, features: { "nesting-rules": false } } usage',
+		options: {
+			stage: 0,
+			features: {
+				'nesting-rules': false
 			}
 		}
 	},
