@@ -189,7 +189,7 @@ See example exports written to [CSS](test/export-properties.css),
 
 [cli-img]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[css-img]: https://cssdb.org/badge/custom-properties.svg
+[css-img]: https://cssdb.org/images/badges/custom-properties.svg
 [css-url]: https://cssdb.org/#custom-properties
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss

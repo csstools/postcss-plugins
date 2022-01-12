@@ -64,7 +64,7 @@ postcss([
 The `preserve` option determines whether the original `gap` declaration should
 remain in the CSS. By default, the original declaration is preserved.
 
-[css-img]: https://cssdb.org/badge/gap-properties.svg
+[css-img]: https://cssdb.org/images/badges/gap-properties.svg
 [css-url]: https://cssdb.org/#gap-properties
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test

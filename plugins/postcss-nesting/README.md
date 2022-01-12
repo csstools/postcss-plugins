@@ -178,7 +178,7 @@ The [CSS Nesting Module] spec states on nesting that "Declarations occuring afte
 While we think it makes sense on browsers, enforcing this at the plugin level introduces several constrains that would
 interfere with PostCSS' plugin nature such as with `@mixin`
 
-[css-img]: https://cssdb.org/badge/nesting-rules.svg
+[css-img]: https://cssdb.org/images/badges/nesting-rules.svg
 [css-url]: https://cssdb.org/#nesting-rules
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss

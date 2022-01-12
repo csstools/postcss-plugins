@@ -75,7 +75,7 @@ html {
 
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[css-img]: https://cssdb.org/badge/overflow-property.svg
+[css-img]: https://cssdb.org/images/badges/overflow-property.svg
 [css-url]: https://cssdb.org/#overflow-property
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss

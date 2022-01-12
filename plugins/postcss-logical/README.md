@@ -195,7 +195,7 @@ Use [postcss-dir-pseudo-class](https://github.com/csstools/postcss-plugins/tree/
 
 Currently `:dir(ltr)` doesn't have great browser support but this will improve over time.
 
-[css-img]: https://cssdb.org/badge/logical-properties-and-values.svg
+[css-img]: https://cssdb.org/images/badges/logical-properties-and-values.svg
 [css-url]: https://cssdb.org/#logical-properties-and-values
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
