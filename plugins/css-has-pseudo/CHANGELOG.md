@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased
+### 3.0.3 (January 12, 2022P)
 
 - Fix compatibility with PostCSS `v8.2.x` [#147](https://github.com/csstools/postcss-plugins/issues/147)
 
