@@ -1,8 +1,9 @@
 .test-custom-properties {
+	order: 1;
 	order: var(--order);
 }
 
-@media (max-width: env(--sm)) {
+@media (max-width: 40rem) {
 	.test-custom-media-queries {
 		order: 2;
 	}
