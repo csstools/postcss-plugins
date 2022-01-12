@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased (0.2.0)
+### 0.2.0 (January 12, 2022)
 
 - Added : documentation and tests for CORS.
 - Added : documentation for selector specificity.
