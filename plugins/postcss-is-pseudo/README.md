@@ -222,7 +222,7 @@ _writing the selector without `:is()` is advised here_
 If you have a specific pattern you can open an issue to discuss it.
 We can detect and transform some cases but can't generalize them into a single solution that tackles all of them. 
 
-[css-img]: https://cssdb.org/badge/nesting-rules.svg
+[css-img]: https://cssdb.org/images/badges/nesting-rules.svg
 [css-url]: https://cssdb.org/#nesting-rules
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
