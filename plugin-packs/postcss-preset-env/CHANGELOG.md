@@ -1,5 +1,10 @@
 # Changes to PostCSS Preset Env
 
+### 7.2.2 (January 12, 2022)
+
+- Updated `postcss-logical` to `5.0.3` (patch)
+- Updated `postcss-custom-properties` to `12.1.2` (patch)
+
 ### 7.2.1 (January 12, 2022)
 
 - Always run plugins with side effects if certain options are set. [#140](https://github.com/csstools/postcss-plugins/issues/140)
