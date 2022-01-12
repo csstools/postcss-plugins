@@ -2,25 +2,25 @@
 // These plugins always need to run.
 // IMPORTANT: this should be removed and cleanup in a next major version.
 export function pluginHasSideEffects(feature) {
-	if ('importFrom' in feature.pluginOptions) {
+	if ('importFrom' in Object(feature.pluginOptions)) {
 		switch (feature.id) {
 			case 'custom-media-queries':
-				if (Object.keys(Object(feature.pluginOptions.importFrom.customMedia)).length) {
+				if (anyOptionFor(feature.pluginOptions.importFrom, 'customMedia')) {
 					return true;
 				}
 				break;
 			case 'custom-properties':
-				if (Object.keys(Object(feature.pluginOptions.importFrom.customProperties)).length) {
+				if (anyOptionFor(feature.pluginOptions.importFrom, 'customProperties')) {
 					return true;
 				}
 				break;
 			case 'environment-variables':
-				if (Object.keys(Object(feature.pluginOptions.importFrom.environmentVariables)).length) {
+				if (anyOptionFor(feature.pluginOptions.importFrom, 'environmentVariables')) {
 					return true;
 				}
 				break;
 			case 'custom-selectors':
-				if (Object.keys(Object(feature.pluginOptions.importFrom.customSelectors)).length) {
+				if (anyOptionFor(feature.pluginOptions.importFrom, 'customSelectors')) {
 					return true;
 				}
 				break;
@@ -30,25 +30,25 @@ export function pluginHasSideEffects(feature) {
 		}
 	}
 
-	if ('exportTo' in feature.pluginOptions) {
+	if ('exportTo' in Object(feature.pluginOptions)) {
 		switch (feature.id) {
 			case 'custom-media-queries':
-				if (Object.keys(Object(feature.pluginOptions.exportTo.customMedia)).length) {
+				if (anyOptionFor(feature.pluginOptions.exportTo, 'customMedia')) {
 					return true;
 				}
 				break;
 			case 'custom-properties':
-				if (Object.keys(Object(feature.pluginOptions.exportTo.customProperties)).length) {
+				if (anyOptionFor(feature.pluginOptions.exportTo, 'customProperties')) {
 					return true;
 				}
 				break;
 			case 'environment-variables':
-				if (Object.keys(Object(feature.pluginOptions.exportTo.environmentVariables)).length) {
+				if (anyOptionFor(feature.pluginOptions.exportTo, 'environmentVariables')) {
 					return true;
 				}
 				break;
 			case 'custom-selectors':
-				if (Object.keys(Object(feature.pluginOptions.exportTo.customSelectors)).length) {
+				if (anyOptionFor(feature.pluginOptions.exportTo, 'customSelectors')) {
 					return true;
 				}
 				break;
@@ -56,6 +56,36 @@ export function pluginHasSideEffects(feature) {
 			default:
 				break;
 		}
+	}
+
+	return false;
+}
+
+function anyOptionFor(opts, feature) {
+	if (!opts) {
+		return false;
+	}
+
+	if (typeof opts === 'string') {
+		return true;
+	}
+
+	if (Array.isArray(opts)) {
+		for (let i = 0; i < opts.length; i++) {
+			if (typeof opts[i] === 'string') {
+				return true;
+			}
+
+			if (opts[i] && (feature in Object(opts[i]))) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	if (feature in Object(opts)) {
+		return true;
 	}
 
 	return false;
