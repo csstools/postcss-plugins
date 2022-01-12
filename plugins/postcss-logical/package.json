@@ -1,6 +1,6 @@
 {
   "name": "postcss-logical",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "Use logical properties and values in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
