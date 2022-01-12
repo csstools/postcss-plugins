@@ -18,6 +18,7 @@ export function packageTypescript() {
 				babel({
 					babelHelpers: 'bundled',
 					exclude: 'node_modules/**',
+					extensions: ['.js', '.ts'],
 					presets: packageBabelPreset,
 				}),
 				terser(),
