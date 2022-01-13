@@ -2,6 +2,7 @@ export const externalsForCLI = [
 	'fs',
 	'path',
 
+	'@csstools/postcss-is-pseudo-class',
 	'autoprefixer',
 	'browserslist',
 	'caniuse-lite',
@@ -47,6 +48,7 @@ export const externalsForPlugin = [
 	'postcss',
 	/^postcss\/lib\/*/,
 
+	'@csstools/postcss-is-pseudo-class',
 	'autoprefixer',
 	'browserslist',
 	'caniuse-lite',

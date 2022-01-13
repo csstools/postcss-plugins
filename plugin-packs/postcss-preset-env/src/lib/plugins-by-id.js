@@ -28,6 +28,7 @@ import postcssPrefersColorScheme from 'css-prefers-color-scheme';
 import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
 import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
 import postcssSelectorNot from 'postcss-selector-not';
+import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 
 export const packageNamesToIds = {
 	'css-blank-pseudo': 'blank-pseudo-class',
@@ -49,6 +50,7 @@ export const packageNamesToIds = {
 	'postcss-gap-properties': 'gap-properties',
 	'postcss-image-set-function': 'image-set-function',
 	'postcss-initial': 'all-property',
+	'postcss-is-pseudo-class': 'is-pseudo-class',
 	'postcss-lab-function': 'lab-function',
 	'postcss-logical': 'logical-properties-and-values',
 	'postcss-media-minmax': 'media-query-ranges',
@@ -92,6 +94,7 @@ export const pluginsById = {
 	'has-pseudo-class': postcssHasPseudo,
 	'hexadecimal-alpha-notation': postcssColorHexAlpha,
 	'image-set-function': postcssImageSetPolyfill,
+	'is-pseudo-class': postcssIsPseudoClass,
 	'lab-function': postcssLabFunction,
 	'logical-properties-and-values': postcssLogical,
 	'media-query-ranges': postcssMediaMinmax,

@@ -28,6 +28,7 @@
     "csstools-cli": "csstools-cli"
   },
   "dependencies": {
+    "@csstools/postcss-is-pseudo-class": "^1.0.0",
     "css-blank-pseudo": "^3.0.0",
     "css-has-pseudo": "^3.0.0",
     "css-prefers-color-scheme": "^6.0.0",
