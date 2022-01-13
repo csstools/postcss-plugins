@@ -1,7 +1,10 @@
 // Some patterns can be detected and converted.
 // This is very difficult to abstract, so best to handle this case by case on request.
-// Added one pattern as an example.
 
+// :is(.a > .b) + :is(.c > .d)
+// equivalent to
+// .a.c > .b + .d
+// because a adjacent elements have the same parent element.
 export function childAdjacentChild(selector) {
 	if (!selector || !selector.nodes) {
 		return;
@@ -18,6 +21,7 @@ export function childAdjacentChild(selector) {
 		return;
 	}
 
+	// adjacent combinator
 	if (!selector.nodes[1] || selector.nodes[1].type !== 'combinator' || selector.nodes[1].value !== '+') {
 		return;
 	}
@@ -40,6 +44,7 @@ export function childAdjacentChild(selector) {
 			return;
 		}
 
+		// child combinator
 		if (!selector.nodes[0].nodes[0].nodes || selector.nodes[0].nodes[0].nodes[1].type !== 'combinator' || selector.nodes[0].nodes[0].nodes[1].value !== '>') {
 			return;
 		}
@@ -59,6 +64,7 @@ export function childAdjacentChild(selector) {
 			return;
 		}
 
+		// child combinator
 		if (!selector.nodes[2].nodes[0].nodes || selector.nodes[2].nodes[0].nodes[1].type !== 'combinator' || selector.nodes[2].nodes[0].nodes[1].value !== '>') {
 			return;
 		}
