@@ -172,3 +172,7 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 .test-has-pseudo-class:has(.inner-class) {
 	background-color: yellow;
 }
+
+:is(.a, .b):is(:focus, :hover) {
+	order: 27;
+}

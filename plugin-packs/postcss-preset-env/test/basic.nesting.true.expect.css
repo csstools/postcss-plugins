@@ -160,3 +160,7 @@
 .test-has-pseudo-class:has(.inner-class) {
 	background-color: yellow;
 }
+
+:is(.a, .b):is(:focus, :hover) {
+	order: 27;
+}
