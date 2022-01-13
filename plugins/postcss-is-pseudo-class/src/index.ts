@@ -8,7 +8,7 @@ const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning'
 	};
 
 	return {
-		postcssPlugin: 'postcss-is-pseudo',
+		postcssPlugin: 'postcss-is-pseudo-class',
 		Rule(rule, { result }) {
 			if (!rule.selector) {
 				return;

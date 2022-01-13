@@ -1,5 +1,5 @@
 {
-  "name": "@csstools/postcss-is-pseudo",
+  "name": "@csstools/postcss-is-pseudo-class",
   "version": "1.0.0",
   "description": "A pseudo-class for matching elements in a selector list",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
@@ -47,7 +47,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "plugins/postcss-is-pseudo"
+    "directory": "plugins/postcss-is-pseudo-class"
   },
   "volta": {
     "extends": "../../package.json"

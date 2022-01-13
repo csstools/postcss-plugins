@@ -2,12 +2,13 @@
 
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
+[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 [![Support Chat][git-img]][git-url]
 
-[PostCSS Is Pseudo] lets you use the `:is` pseudo class function, following the
+[PostCSS Is Pseudo Class] lets you use the `:is` pseudo class function, following the
 [CSS Selector] specification.
 
-```css
+```pcss
 :is(input, button):is(:hover, :focus) {
 	order: 1;
 }
@@ -15,7 +16,7 @@
 
 Becomes :
 
-```css
+```pcss
 input:hover {
 	order: 1;
 }
@@ -32,24 +33,24 @@ button:focus {
 
 ## Usage
 
-Add [PostCSS Is Pseudo] to your project:
+Add [PostCSS Is Pseudo Class] to your project:
 
 ```bash
-npm install @csstools/postcss-is-pseudo --save-dev
+npm install @csstools/postcss-is-pseudo-class --save-dev
 ```
 
-Use [PostCSS Is Pseudo] as a [PostCSS] plugin:
+Use [PostCSS Is Pseudo Class] as a [PostCSS] plugin:
 
 ```js
 import postcss from 'postcss';
-import postcssIsPseudo from '@csstools/postcss-is-pseudo';
+import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 
 postcss([
-  postcssIsPseudo(/* pluginOptions */)
+  postcssIsPseudoClass(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-[PostCSS Is Pseudo] runs in all Node environments, with special instructions for:
+[PostCSS Is Pseudo Class] runs in all Node environments, with special instructions for:
 
 | [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
 | --- | --- | --- | --- | --- |
@@ -63,11 +64,11 @@ is preserved. By default, it is not preserved.
 
 ```js
 postcss([
-  postcssIsPseudo({ preserve: true })
+  postcssIsPseudoClass({ preserve: true })
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-```css
+```pcss
 :is(input, button):is(:hover, :focus) {
 	order: 1;
 }
@@ -75,7 +76,7 @@ postcss([
 
 Becomes :
 
-```css
+```pcss
 input:hover {
 	order: 1;
 }
@@ -103,11 +104,11 @@ See how `:not` is used to modify [specificity](#specificity).
 
 ```js
 postcss([
-  postcssIsPseudo({ specificityMatchingName: 'something-random' })
+  postcssIsPseudoClass({ specificityMatchingName: 'something-random' })
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-```css
+```pcss
 :is(.button, button):hover {
 	order: 7;
 }
@@ -115,7 +116,7 @@ postcss([
 
 Becomes :
 
-```css
+```pcss
 .button:hover {
 	order: 7;
 }
@@ -131,7 +132,7 @@ Do not transform complex selectors in `:is` pseudo classes.
 
 ```js
 postcss([
-  postcssIsPseudo({ onComplexSelector: 'skip' })
+  postcssIsPseudoClass({ onComplexSelector: 'skip' })
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -139,7 +140,7 @@ Warn on complex selectors in `:is` pseudo classes.
 
 ```js
 postcss([
-  postcssIsPseudo({ onComplexSelector: 'warning' })
+  postcssIsPseudoClass({ onComplexSelector: 'warning' })
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -155,9 +156,9 @@ Less important bits can have higher specificity that `:is`.
 
 Before :
 
-specificity: `[0, 2, 0]`
+[specificity: 0, 2, 0](https://polypane.app/css-specificity-calculator/#selector=%3Ais(%3Ahover%2C%20%3Afocus)%3Ais(.button%2C%20button))
 
-```css
+```pcss
 :is(:hover, :focus):is(.button, button) {
 	order: 7;
 }
@@ -165,7 +166,7 @@ specificity: `[0, 2, 0]`
 
 After :
 
-```css
+```pcss
 /* specificity: [0, 2, 0] */
 .button:hover {
 	order: 7;
@@ -194,7 +195,7 @@ button:not(.does-not-exist):focus {
 Before :
 
 
-```css
+```pcss
 :is(.alpha > .beta) ~ :is(:focus > .beta) {
 	order: 2;
 }
@@ -202,7 +203,7 @@ Before :
 
 After :
 
-```css
+```pcss
 .alpha > .beta ~ :focus > .beta {
 	order: 2;
 }
@@ -212,7 +213,7 @@ _this is a different selector than expected as `.beta ~ :focus` matches `.beta` 
 _avoid these cases._<br>
 _writing the selector without `:is()` is advised here_
 
-```css
+```pcss
 /* without is */
 .alpha:focus > .beta ~ .beta {
 	order: 2;
@@ -222,13 +223,14 @@ _writing the selector without `:is()` is advised here_
 If you have a specific pattern you can open an issue to discuss it.
 We can detect and transform some cases but can't generalize them into a single solution that tackles all of them. 
 
-[css-img]: https://cssdb.org/images/badges/nesting-rules.svg
-[css-url]: https://cssdb.org/#nesting-rules
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+[css-img]: https://cssdb.org/images/badges/is-pseudo-class.svg
+[css-url]: https://cssdb.org/#is-pseudo-class
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
-[npm-img]: https://img.shields.io/npm/v/@csstools/postcss-is-pseudo.svg
-[npm-url]: https://www.npmjs.com/package/@csstools/postcss-is-pseudo
+[npm-img]: https://img.shields.io/npm/v/@csstools/postcss-is-pseudo-class.svg
+[npm-url]: https://www.npmjs.com/package/@csstools/postcss-is-pseudo-class
 
 [CSS Selector]: https://www.w3.org/TR/selectors-4/#matches
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Is Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo
+[PostCSS Is Pseudo Class]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class

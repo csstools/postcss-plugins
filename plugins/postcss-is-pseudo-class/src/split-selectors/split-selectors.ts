@@ -148,6 +148,7 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 		});
 
 		if (foundNestedIs) {
+			// recursion to transform `:is(a :is(b,c))`
 			formattedResults = splitSelectors(formattedResults, pluginOptions, warnFn);
 		}
 
