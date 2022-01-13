@@ -4,7 +4,7 @@
   "description": "A pseudo-class for matching elements in a selector list",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo#readme",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#readme",
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "engines": {
     "node": "^12 || ^14 || >=16"
