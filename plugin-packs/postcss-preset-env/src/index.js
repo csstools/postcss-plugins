@@ -10,6 +10,8 @@ import getOptionsForBrowsersByFeature from './lib/get-options-for-browsers-by-fe
 import { pluginIdHelp } from './lib/plugin-id-help';
 import { pluginHasSideEffects } from './lib/plugins-with-side-effects';
 
+const DEFAULT_STAGE = 2;
+const OUT_OF_RANGE_STAGE = 5;
 const plugin = opts => {
 	// initialize options
 	const options = Object(opts);
@@ -18,11 +20,15 @@ const plugin = opts => {
 	const insertBefore = Object(options.insertBefore);
 	const insertAfter = Object(options.insertAfter);
 	const browsers = options.browsers;
-	const stage = 'stage' in options
-		? opts.stage === false
-			? 5
-			: parseInt(opts.stage) || 0
-		: 2;
+	let stage = DEFAULT_STAGE;
+
+	if (typeof options.stage !== 'undefined') {
+		if (options.stage === false) {
+			stage = OUT_OF_RANGE_STAGE;
+		} else {
+			stage = parseInt(options.stage, 10) || 0;
+		}
+	}
 	const autoprefixerOptions = options.autoprefixer;
 	const sharedOpts = initializeSharedOpts(options);
 	const stagedAutoprefixer = autoprefixerOptions === false
@@ -51,7 +57,7 @@ const plugin = opts => {
 				browsers: unsupportedBrowsers,
 				plugin:   feature.plugin,
 				id:       `${feature.insertBefore ? 'before' : 'after'}-${feature.id}`,
-				stage:    6,
+				stage:    OUT_OF_RANGE_STAGE + 1, // So they always match
 			} : {
 				browsers: unsupportedBrowsers,
 				plugin:   plugins[feature.id],
