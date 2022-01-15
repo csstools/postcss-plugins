@@ -12,18 +12,19 @@ import { pluginHasSideEffects } from './lib/plugins-with-side-effects';
 
 const plugin = opts => {
 	// initialize options
-	const features = Object(Object(opts).features);
+	const options = Object(opts);
+	const features = Object(options.features);
 	const featureNamesInOptions = Object.keys(features);
-	const insertBefore = Object(Object(opts).insertBefore);
-	const insertAfter = Object(Object(opts).insertAfter);
-	const browsers = Object(opts).browsers;
-	const stage = 'stage' in Object(opts)
+	const insertBefore = Object(options.insertBefore);
+	const insertAfter = Object(options.insertAfter);
+	const browsers = options.browsers;
+	const stage = 'stage' in options
 		? opts.stage === false
 			? 5
 			: parseInt(opts.stage) || 0
 		: 2;
-	const autoprefixerOptions = Object(opts).autoprefixer;
-	const sharedOpts = initializeSharedOpts(Object(opts));
+	const autoprefixerOptions = options.autoprefixer;
+	const sharedOpts = initializeSharedOpts(options);
 	const stagedAutoprefixer = autoprefixerOptions === false
 		? () => {}
 		: autoprefixer(Object.assign({ overrideBrowserslist: browsers }, autoprefixerOptions));
@@ -131,7 +132,7 @@ const plugin = opts => {
 			postcssPlugin: 'postcss-preset-env',
 			OnceExit: function (root, { result }) {
 				pluginIdHelp(featureNamesInOptions, root, result);
-				if (Object(opts).exportTo) {
+				if (options.exportTo) {
 					writeToExports(sharedOpts.exportTo, opts.exportTo);
 				}
 			},
