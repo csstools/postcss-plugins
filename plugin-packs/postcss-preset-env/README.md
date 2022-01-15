@@ -354,6 +354,10 @@ postcssPresetEnv({
 });
 ```
 
+### debug
+
+The `debug` option enables debugging messages to stdout which should be useful to help you debug which features have been enabled/disabled and why.
+
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
