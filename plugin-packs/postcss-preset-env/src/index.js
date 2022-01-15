@@ -12,10 +12,14 @@ import { pluginHasSideEffects } from './lib/plugins-with-side-effects';
 
 const DEFAULT_STAGE = 2;
 const OUT_OF_RANGE_STAGE = 5;
+
+const logDebug = msg => console.log('[postcss-preset-env] -> %s', msg);
+
 const plugin = opts => {
 	// initialize options
 	const options = Object(opts);
 	const features = Object(options.features);
+	const debug = options.debug ? logDebug : () => {};
 	const featureNamesInOptions = Object.keys(features);
 	const insertBefore = Object(options.insertBefore);
 	const insertAfter = Object(options.insertAfter);
@@ -29,6 +33,13 @@ const plugin = opts => {
 			stage = parseInt(options.stage, 10) || 0;
 		}
 	}
+
+	if (stage === OUT_OF_RANGE_STAGE) {
+		debug('Stage has been disabled, features will be handled via the features option.');
+	} else {
+		debug(`Using features from Stage ${stage}`);
+	}
+
 	const autoprefixerOptions = options.autoprefixer;
 	const sharedOpts = initializeSharedOpts(options);
 	const stagedAutoprefixer = autoprefixerOptions === false
@@ -68,11 +79,23 @@ const plugin = opts => {
 	);
 
 	// staged features (those at or above the selected stage)
-	const stagedFeatures = polyfillableFeatures.filter(
-		feature => feature.id in features
-			? features[feature.id]
-			: feature.stage >= stage,
-	).map(
+	const stagedFeatures = polyfillableFeatures.filter(feature => {
+		const isAllowedStage = feature.stage >= stage;
+		const isDisabled = features[feature.id] === false;
+		const isAllowedFeature = features[feature.id] ? features[feature.id] : isAllowedStage;
+
+		if (isDisabled) {
+			debug(`  ${feature.id} has been disabled by options`);
+		} else if (!isAllowedStage) {
+			if (isAllowedFeature) {
+				debug(`  ${feature.id} has been enabled by options`);
+			} else {
+				debug(`  ${feature.id} has been disabled (Stage ${feature.stage})`);
+			}
+		}
+
+		return isAllowedFeature;
+	}).map(
 		feature => {
 			let options;
 			let plugin;
@@ -132,6 +155,17 @@ const plugin = opts => {
 
 	const usedPlugins = supportedFeatures.map(feature => feature.plugin);
 	usedPlugins.push(stagedAutoprefixer);
+
+	if (options.debug) {
+		debug('Enabling the following features:');
+		supportedFeatures.forEach(feature => {
+			if (feature.id.startsWith('before') || feature.id.startsWith('after')) {
+				debug(`  ${feature.id} (injected via options)`);
+			} else {
+				debug(`  ${feature.id}`);
+			}
+		});
+	}
 
 	const internalPlugin = () => {
 		return {
