@@ -3,6 +3,7 @@
 ### Unreleased (minor)
 
 - Added `@csstools/postcss-is-pseudo-class`
+- Added `debug` [option](/tree/main/plugin-packs/postcss-preset-env#debug) that enables extra debugging information while processing the CSS.
 
 [check the plugin readme](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#readme) for usage details.
 
