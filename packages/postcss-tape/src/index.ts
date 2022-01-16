@@ -1,176 +1,125 @@
-import * as exit from './lib/exit.js';
-import { readOrWriteFile, safelyReadFile, writeFile } from './lib/utils.js';
-import { getErrorMessage } from './lib/get-error-message.js';
-import { getOptions } from './lib/get-options.js';
-import * as log from './lib/log.js';
+/* eslint-disable @typescript-eslint/no-var-requires */
+
+import postcss from 'postcss';
+import postcssOldestSupported from 'postcss-oldest-supported';
 import path from 'path';
+import { promises as fsp } from 'fs';
+import { strict as assert } from 'assert';
 
-const postcss8 = async (plugins) => {
-	const pkg = await import('postcss/package.json');
+import type { PluginCreator, Plugin } from 'postcss';
+import { formatGitHubActionAnnotation } from './github-annotations.js';
 
-	if (pkg.version[0] === '8') {
-		const m = await import('postcss');
-		return m.default(plugins);
-	} else {
-		throw new Error(`postcss@8 must be installed, found ${pkg.version}`);
-	}
-};
+const dashesSeparator = '----------------------------------------';
 
-const isPostcss8Plugin = (plugin) => typeof plugin === 'function' && Object(plugin).postcss === true;
+type TestCaseOptions = {
+	message?: string,
+	options?: unknown,
+	plugins?: Array<Plugin>,
+}
 
-getOptions().then(
-	async options => {
-		let hadError = false;
+export default function runner(currentPlugin: PluginCreator<unknown>) {
+	let hasErrors = false;
 
-		// runner
-		for (const name in options.config) {
-			const test = options.config[name];
+	return async (options: Record<string, TestCaseOptions>) => {
+		for (const testCaseLabel in options) {
+			const testCaseOptions = options[testCaseLabel];
+			const testSourceFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.split(':')[0]);
+			const testFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.replace(/:/g, '.'));
 
-			const testBase = name.split(':')[0];
-			const testFull = name.split(':').join('.');
+			const testFilePath = `${testSourceFilePathWithoutExtension}.css`;
+			const expectFilePath = `${testFilePathWithoutExtension}.expect.css`;
+			const resultFilePath = `${testFilePathWithoutExtension}.result.css`;
 
-			// test paths
-			const sourcePath = path.resolve(options.fixtures, test.source || `${testBase}.css`);
-			const expectPath = path.resolve(options.fixtures, test.expect || `${testFull}.expect.css`);
-			const resultPath = path.resolve(options.fixtures, test.result || `${testFull}.result.css`);
+			const plugins = testCaseOptions.plugins ?? [currentPlugin(testCaseOptions.options)];
 
-			const processOptions = Object.assign({ from: sourcePath, to: resultPath }, test.processOptions);
-			const pluginOptions = test.options;
-
-			let rawPlugin = test.plugin || options.plugin;
-
-			if (rawPlugin.default) {
-				rawPlugin = rawPlugin.default;
-			}
-
-			const plugin = isPostcss8Plugin(rawPlugin)
-				? rawPlugin(pluginOptions)
-			: typeof Object(rawPlugin).process === 'function'
-				? rawPlugin
-			: typeof rawPlugin === 'function'
-				? { process: rawPlugin }
-			: Object(rawPlugin).postcssPlugin;
-
-			const pluginName = plugin.postcssPlugin || Object(rawPlugin.postcss).postcssPlugin || 'postcss';
-
-			log.wait(pluginName, test.message, options.ci);
+			const input = await fsp.readFile(testFilePath, 'utf8');
+			const expected = await fsp.readFile(expectFilePath, 'utf8');
+			const result = await postcss(plugins).process(input, {
+				from: testFilePath,
+				to: resultFilePath,
+			});
+			const resultString = result.css.toString();
+			await fsp.writeFile(resultFilePath, resultString, 'utf8');
 
 			try {
-				if (Object(test.before) instanceof Function) {
-					await test.before();
+				assert.strictEqual(resultString, expected);
+			} catch (err) {
+				if (!hasErrors) {
+					console.error(`\n[ERROR] test output changed!\n\n${dashesSeparator}`);
 				}
+				hasErrors = true;
+				console.error(formatError(testCaseLabel, testCaseOptions, err));
 
-				const expectCSS = await safelyReadFile(expectPath);
-				const sourceCSS = await readOrWriteFile(sourcePath, expectCSS);
-
-				let result;
-
-				if (isPostcss8Plugin(rawPlugin)) {
-					const postcss = await postcss8([ plugin ]);
-
-					result = await postcss.process(sourceCSS, processOptions);
-				} else {
-					result = await plugin.process(sourceCSS, processOptions, pluginOptions);
-				}
-
-				const resultCSS = result.css;
-
-				if (options.fix) {
-					await writeFile(expectPath, resultCSS);
-					await writeFile(resultPath, resultCSS);
-				} else {
-					await writeFile(resultPath, resultCSS);
-
-					if (expectCSS !== resultCSS) {
-						throw new Error([
-							`Expected: ${JSON.stringify(expectCSS).slice(1, -1)}`,
-							`Received: ${JSON.stringify(resultCSS).slice(1, -1)}`,
-						].join('\n'));
-					}
-				}
-
-				const warnings = result.warnings();
-
-				if (typeof test.warnings === 'number') {
-					if (test.warnings !== warnings.length) {
-						const s = warnings.length !== 1 ? 's' : '';
-
-						throw new Error(`Expected: ${test.warnings} warning${s}\nReceived: ${warnings.length} warnings`);
-					}
-				} else if (warnings.length) {
-					const areExpectedWarnings = warnings.every(
-						warning => test.warnings === Object(test.warnings) && Object.keys(test.warnings).every(
-							key => test.warnings[key] instanceof RegExp
-								? test.warnings[key].test(warning[key])
-							: test.warnings[key] === warning[key],
-						),
-					);
-
-					if (!areExpectedWarnings) {
-						const s = warnings.length !== 1 ? 's' : '';
-
-						throw new Error(`Unexpected warning${s}:\n${warnings.join('\n')}`);
-					}
-				} else if (test.warnings) {
-					throw new Error('Expected a warning');
-				} else if (test.errors) {
-					throw new Error('Expected an error');
-				}
-
-				if (Object(test.after) instanceof Function) {
-					await test.after();
-				}
-
-				log.pass(pluginName, test.message, options.ci);
-			} catch (error) {
-				if ('error' in test) {
-					const isObjectError = test.error === Object(test.error);
-
-					if (isObjectError) {
-						const isExpectedError = Object.keys(test.error).every(
-							key => test.error[key] instanceof RegExp
-								? test.error[key].test(Object(error)[key])
-							: test.error[key] === Object(error)[key],
-						);
-
-						if (isExpectedError) {
-							log.pass(pluginName, test.message, options.ci);
-						} else {
-							const reportedError = Object.keys(test.error).reduce(
-								(reportedError, key) => Object.assign(reportedError, { [key]: Object(error)[key] }),
-								{},
-							);
-
-							hadError = error;
-
-							log.fail(pluginName, test.message, `  Expected Error: ${JSON.stringify(test.error)}\n  Received Error: ${JSON.stringify(reportedError)}`, options.ci);
-						}
-					} else {
-						const isExpectedError = typeof test.error === 'boolean' && test.error;
-
-						if (isExpectedError) {
-							log.pass(pluginName, test.message, options.ci);
-						} else {
-							hadError = error;
-
-							log.fail(pluginName, test.message, '  Expected Error', options.ci);
-						}
-
-						if (options.ci) {
-							break;
-						}
-					}
-				} else {
-					hadError = error;
-
-					log.fail(pluginName, test.message, getErrorMessage(error), options.ci);
+				if (process.env.GITHUB_ACTIONS) {
+					console.log(formatGitHubActionAnnotation(
+						formatError(testCaseLabel, testCaseOptions, err, true),
+						'error',
+						{
+							file: normalizeFilePathForGithubAnnotation(expectFilePath),
+							line: 1,
+							col: 1,
+						},
+					));
 				}
 			}
 		}
 
-		if (hadError) {
-			throw hadError;
+		if (hasErrors) {
+			process.exit(1);
 		}
-	},
-).then(exit.pass, exit.fail);
+	};
+}
 
+function normalizeFilePathForGithubAnnotation(filePath: string) {
+	// Any plugin or packages is located in `<workspace>/<package>`;
+	const parts = process.cwd().split('/').slice(-2);
+
+	const workspaces = [
+		'packages',
+		'plugins',
+		'plugin-packs',
+		'cli',
+		'experimental',
+	];
+
+	if (!workspaces.includes(parts[0])) {
+		throw new Error('PostCSS Tape was intended to be run from <workspace>/package');
+	}
+
+	return path.join(parts.join('/'), filePath);
+}
+
+function formatError(testCaseLabel, testCaseOptions, err, forGithubAnnotation = false) {
+	let formatted = '';
+	formatted += `\n${testCaseLabel}\n\n`;
+
+	if (testCaseOptions.message) {
+		formatted += `message :\n  ${testCaseOptions.message}\n\n`;
+	}
+
+	if (testCaseOptions.options) {
+		try {
+			formatted += `options :\n${JSON.stringify(testCaseOptions.options, null, 2)}\n\n`;
+		} catch (_) {
+			// ignore
+		}
+	}
+
+	formatted += `diff :\n${prettyDiff(err.message)}\n`;
+
+	if (!forGithubAnnotation) {
+		formatted += '\n' + dashesSeparator;
+	}
+
+	return formatted;
+}
+
+function prettyDiff(assertMessage: string) {
+	const newLineRegex = /[^\\](\\n)/gm;
+	const tabRegex = /(\\t)/gm;
+	return assertMessage.replace(newLineRegex, (match, p1) => { // decode new lines in CSS
+		return match.replace(p1, ' ');
+	}).replace(tabRegex, (match, p1) => { // decode tabs in CSS
+		return match.replace(p1, ' ');
+	}).replace(/\+$/gm, '').replace(/^Expected values to be strictly equal:\n/, ''); // remove trailing + outputted by `assert`
+}

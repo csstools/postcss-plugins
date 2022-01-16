@@ -1,8 +1,8 @@
 {
-  "name": "@csstools/plugins-postcss-tape",
+  "name": "@csstools/postcss-tape",
   "private": true,
   "description": "Quickly test PostCSS plugins",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
   "type": "module",
@@ -20,11 +20,9 @@
     "stryker": "stryker run --logLevel error",
     "test": "node ./test/test.mjs"
   },
-  "peerDependencies": {
-    "postcss": "^8.3.6"
-  },
-  "devDependencies": {
-    "postcss": "^8.3.6"
+  "dependencies": {
+    "postcss-oldest-supported": "npm:postcss@^8.2",
+    "postcss": "^8.4.5"
   },
   "keywords": [
     "postcss",
