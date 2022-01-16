@@ -1,5 +1,11 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (minor)
+
+- Added `@csstools/postcss-is-pseudo-class`
+
+[check the plugin readme](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#readme) for usage details.
+
 ### 7.2.3 (January 12, 2022)
 
 - Enhanced `importFrom` / `exportTo` so it's harder to cause unexpected issues by different shapes of data.

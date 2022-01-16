@@ -12,6 +12,7 @@ import postcssFocusVisible from './plugins/postcss-focus-visible';
 import postcssFocusWithin from './plugins/postcss-focus-within';
 import postcssGapProperties from './plugins/postcss-gap-properties';
 import postcssImageSetFunction from './plugins/postcss-image-set-function';
+import postcssIsPseudoClass from './plugins/postcss-is-pseudo-class';
 import postcssLabFunction from './plugins/postcss-lab-function';
 import postcssLogical from './plugins/postcss-logical';
 import postcssNesting from './plugins/postcss-nesting';
@@ -65,6 +66,9 @@ function main() {
 		case 'postcss-image-set-function':
 			postcssImageSetFunction();
 			return;
+		case 'postcss-is-pseudo-class':
+			postcssIsPseudoClass();
+			return;
 		case 'postcss-lab-function':
 			postcssLabFunction();
 			return;
@@ -112,6 +116,7 @@ function main() {
 				'  postcss-focus-within',
 				'  postcss-gap-properties',
 				'  postcss-image-set-function',
+				'  postcss-is-pseudo-class',
 				'  postcss-lab-function',
 				'  postcss-logical',
 				'  postcss-nesting',

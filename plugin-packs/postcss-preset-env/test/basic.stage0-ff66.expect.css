@@ -176,3 +176,19 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 .test-has-pseudo-class:has(.inner-class) {
 	background-color: yellow;
 }
+
+.a:focus {
+	order: 27;
+}
+
+.a:hover {
+	order: 27;
+}
+
+.b:focus {
+	order: 27;
+}
+
+.b:hover {
+	order: 27;
+}
