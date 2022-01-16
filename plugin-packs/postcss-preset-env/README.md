@@ -87,6 +87,20 @@ features and supports **all** browsers.
 [![Transform with Preset Env][readme-transform-with-preset-env-img]][readme-transform-with-preset-env-url]
 [![Style with Preset Env][readme-style-with-preset-env-img]][readme-style-with-preset-env-url]
 
+⚠️ Please note that some of the features need a companion library that makes 
+the feature work. While we try to avoid this requirement, there are instances
+in which this isn't possible to polyfill a new behaviour with _just_ CSS.
+
+This is the current list of features that need a client library with a link
+to the polyfill's library.
+
+* `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md)
+* `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md)
+* `prefers-color-scheme-query`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme/README-BROWSER.md)
+* `focus-within-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within) / [Library](https://github.com/jsxtools/focus-within) / [Polyfill](https://github.com/jsxtools/focus-within/blob/master/README-BROWSER.md)
+
+If you want to disable these types of features, please check the [`disableClientSidePolyfills` option](#disableclientsidepolyfills).
+
 ## Usage
 
 Add [PostCSS Preset Env] to your project:
@@ -357,6 +371,12 @@ postcssPresetEnv({
 ### debug
 
 The `debug` option enables debugging messages to stdout which should be useful to help you debug which features have been enabled/disabled and why.
+
+### disableClientSidePolyfills
+
+The `disableClientSidePolyfills` disables any feature that would need an extra browser library to be loaded into the page for it to work. 
+
+Note that you can still manually enable one of these features if you set them on the [`features` option](#features).
 
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
