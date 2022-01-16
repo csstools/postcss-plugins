@@ -10,6 +10,7 @@ import getOptionsForBrowsersByFeature from './lib/get-options-for-browsers-by-fe
 import { pluginIdHelp } from './lib/plugin-id-help';
 import { pluginHasSideEffects } from './lib/plugins-with-side-effects';
 import { log, dumpLogs, resetLogger } from './lib/log-helper';
+import logFeaturesList from './lib/log-features-list';
 
 const DEFAULT_STAGE = 2;
 const OUT_OF_RANGE_STAGE = 5;
@@ -156,16 +157,7 @@ const plugin = opts => {
 	const usedPlugins = supportedFeatures.map(feature => feature.plugin);
 	usedPlugins.push(stagedAutoprefixer);
 
-	if (options.debug) {
-		log('Enabling the following features:');
-		supportedFeatures.forEach(feature => {
-			if (feature.id.startsWith('before') || feature.id.startsWith('after')) {
-				log(`  ${feature.id} (injected via options)`);
-			} else {
-				log(`  ${feature.id}`);
-			}
-		});
-	}
+	logFeaturesList(supportedFeatures, options);
 
 	const internalPlugin = () => {
 		return {
