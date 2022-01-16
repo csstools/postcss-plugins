@@ -31,7 +31,7 @@ const plugin = opts => {
 		if (options.stage === false) {
 			stage = OUT_OF_RANGE_STAGE;
 		} else {
-			stage = parseInt(options.stage, 10) || 0;
+			stage = Math.min(parseInt(options.stage, 10), OUT_OF_RANGE_STAGE) || 0;
 		}
 	}
 
