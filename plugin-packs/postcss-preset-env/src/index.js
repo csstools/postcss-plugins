@@ -9,22 +9,23 @@ import writeToExports from './lib/write-to-exports';
 import getOptionsForBrowsersByFeature from './lib/get-options-for-browsers-by-feature';
 import { pluginIdHelp } from './lib/plugin-id-help';
 import { pluginHasSideEffects } from './lib/plugins-with-side-effects';
+import { log, dumpLogs } from './lib/log-helper';
 
 const DEFAULT_STAGE = 2;
 const OUT_OF_RANGE_STAGE = 5;
-
-const logDebug = msg => console.log('[postcss-preset-env] -> %s', msg);
 
 const plugin = opts => {
 	// initialize options
 	const options = Object(opts);
 	const features = Object(options.features);
-	const debug = options.debug ? logDebug : () => {};
 	const featureNamesInOptions = Object.keys(features);
 	const insertBefore = Object(options.insertBefore);
 	const insertAfter = Object(options.insertAfter);
 	const browsers = options.browsers;
 	let stage = DEFAULT_STAGE;
+
+	// Forcing logs to be emptied between runs
+	dumpLogs();
 
 	if (typeof options.stage !== 'undefined') {
 		if (options.stage === false) {
@@ -35,9 +36,9 @@ const plugin = opts => {
 	}
 
 	if (stage === OUT_OF_RANGE_STAGE) {
-		debug('Stage has been disabled, features will be handled via the features option.');
+		log('Stage has been disabled, features will be handled via the features option.');
 	} else {
-		debug(`Using features from Stage ${stage}`);
+		log(`Using features from Stage ${stage}`);
 	}
 
 	const autoprefixerOptions = options.autoprefixer;
@@ -85,12 +86,12 @@ const plugin = opts => {
 		const isAllowedFeature = features[feature.id] ? features[feature.id] : isAllowedStage;
 
 		if (isDisabled) {
-			debug(`  ${feature.id} has been disabled by options`);
+			log(`  ${feature.id} has been disabled by options`);
 		} else if (!isAllowedStage) {
 			if (isAllowedFeature) {
-				debug(`  ${feature.id} has been enabled by options`);
+				log(`  ${feature.id} has been enabled by options`);
 			} else {
-				debug(`  ${feature.id} has been disabled (Stage ${feature.stage})`);
+				log(`  ${feature.id} has been disabled (Stage ${feature.stage})`);
 			}
 		}
 
@@ -157,12 +158,12 @@ const plugin = opts => {
 	usedPlugins.push(stagedAutoprefixer);
 
 	if (options.debug) {
-		debug('Enabling the following features:');
+		log('Enabling the following features:');
 		supportedFeatures.forEach(feature => {
 			if (feature.id.startsWith('before') || feature.id.startsWith('after')) {
-				debug(`  ${feature.id} (injected via options)`);
+				log(`  ${feature.id} (injected via options)`);
 			} else {
-				debug(`  ${feature.id}`);
+				log(`  ${feature.id}`);
 			}
 		});
 	}
@@ -172,6 +173,11 @@ const plugin = opts => {
 			postcssPlugin: 'postcss-preset-env',
 			OnceExit: function (root, { result }) {
 				pluginIdHelp(featureNamesInOptions, root, result);
+
+				if (options.debug) {
+					dumpLogs(result);
+				}
+
 				if (options.exportTo) {
 					writeToExports(sharedOpts.exportTo, opts.exportTo);
 				}
