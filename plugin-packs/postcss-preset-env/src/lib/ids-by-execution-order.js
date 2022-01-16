@@ -12,7 +12,6 @@ export default [
 	'case-insensitive-attributes',
 	'focus-visible-pseudo-class',
 	'focus-within-pseudo-class',
-	'matches-pseudo-class', // run matches-pseudo-class and
 	'not-pseudo-class', // run not-pseudo-class after other selectors have been transpiled
 	'logical-properties-and-values', // run logical-properties-and-values before dir-pseudo-class
 	'dir-pseudo-class',
@@ -22,10 +21,10 @@ export default [
 	'hexadecimal-alpha-notation',
 	'lab-function',
 	'rebeccapurple-color',
-	'color-mod-function', // run color-mod after other color modifications have finished
 	'blank-pseudo-class',
 	'break-properties',
 	'font-variant-property',
+	'is-pseudo-class', // after other selector transforms, before :has()
 	'has-pseudo-class',
 	'gap-properties',
 	'overflow-property',
