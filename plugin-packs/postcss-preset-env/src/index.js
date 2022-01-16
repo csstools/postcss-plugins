@@ -9,7 +9,7 @@ import writeToExports from './lib/write-to-exports';
 import getOptionsForBrowsersByFeature from './lib/get-options-for-browsers-by-feature';
 import { pluginIdHelp } from './lib/plugin-id-help';
 import { pluginHasSideEffects } from './lib/plugins-with-side-effects';
-import { log, dumpLogs } from './lib/log-helper';
+import { log, dumpLogs, resetLogger } from './lib/log-helper';
 
 const DEFAULT_STAGE = 2;
 const OUT_OF_RANGE_STAGE = 5;
@@ -24,8 +24,7 @@ const plugin = opts => {
 	const browsers = options.browsers;
 	let stage = DEFAULT_STAGE;
 
-	// Forcing logs to be emptied between runs
-	dumpLogs();
+	resetLogger();
 
 	if (typeof options.stage !== 'undefined') {
 		if (options.stage === false) {
