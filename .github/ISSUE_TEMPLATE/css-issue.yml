@@ -39,6 +39,13 @@ body:
         - "No"
         - N/A
   - type: textarea
+    id: debug
+    attributes:
+      label: Debug output
+      description: If this issue is about `postcss-preset-env`, can you provide the output of using the [debug](https://github.com/csstools/postcss-preset-env#debug) option?
+    validations:
+      required: false
+  - type: textarea
     id: config
     attributes:
       label: Extra config

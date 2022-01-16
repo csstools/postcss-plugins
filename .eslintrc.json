@@ -14,7 +14,8 @@
     "semi": ["error", "always"],
     "curly": "error",
     "brace-style": "error",
-    "indent": ["error", "tab", { "SwitchCase": 1 }]
+    "indent": ["error", "tab", { "SwitchCase": 1 }],
+    "radix": "error"
   },
   "overrides": [
     {

@@ -9,21 +9,39 @@ import writeToExports from './lib/write-to-exports';
 import getOptionsForBrowsersByFeature from './lib/get-options-for-browsers-by-feature';
 import { pluginIdHelp } from './lib/plugin-id-help';
 import { pluginHasSideEffects } from './lib/plugins-with-side-effects';
+import { log, dumpLogs, resetLogger } from './lib/log-helper';
+
+const DEFAULT_STAGE = 2;
+const OUT_OF_RANGE_STAGE = 5;
 
 const plugin = opts => {
 	// initialize options
-	const features = Object(Object(opts).features);
+	const options = Object(opts);
+	const features = Object(options.features);
 	const featureNamesInOptions = Object.keys(features);
-	const insertBefore = Object(Object(opts).insertBefore);
-	const insertAfter = Object(Object(opts).insertAfter);
-	const browsers = Object(opts).browsers;
-	const stage = 'stage' in Object(opts)
-		? opts.stage === false
-			? 5
-			: parseInt(opts.stage) || 0
-		: 2;
-	const autoprefixerOptions = Object(opts).autoprefixer;
-	const sharedOpts = initializeSharedOpts(Object(opts));
+	const insertBefore = Object(options.insertBefore);
+	const insertAfter = Object(options.insertAfter);
+	const browsers = options.browsers;
+	let stage = DEFAULT_STAGE;
+
+	resetLogger();
+
+	if (typeof options.stage !== 'undefined') {
+		if (options.stage === false) {
+			stage = OUT_OF_RANGE_STAGE;
+		} else {
+			stage = Math.min(parseInt(options.stage, 10), OUT_OF_RANGE_STAGE) || 0;
+		}
+	}
+
+	if (stage === OUT_OF_RANGE_STAGE) {
+		log('Stage has been disabled, features will be handled via the "features" option.');
+	} else {
+		log(`Using features from Stage ${stage}`);
+	}
+
+	const autoprefixerOptions = options.autoprefixer;
+	const sharedOpts = initializeSharedOpts(options);
 	const stagedAutoprefixer = autoprefixerOptions === false
 		? () => {}
 		: autoprefixer(Object.assign({ overrideBrowserslist: browsers }, autoprefixerOptions));
@@ -50,7 +68,7 @@ const plugin = opts => {
 				browsers: unsupportedBrowsers,
 				plugin:   feature.plugin,
 				id:       `${feature.insertBefore ? 'before' : 'after'}-${feature.id}`,
-				stage:    6,
+				stage:    OUT_OF_RANGE_STAGE + 1, // So they always match
 			} : {
 				browsers: unsupportedBrowsers,
 				plugin:   plugins[feature.id],
@@ -61,11 +79,23 @@ const plugin = opts => {
 	);
 
 	// staged features (those at or above the selected stage)
-	const stagedFeatures = polyfillableFeatures.filter(
-		feature => feature.id in features
-			? features[feature.id]
-			: feature.stage >= stage,
-	).map(
+	const stagedFeatures = polyfillableFeatures.filter(feature => {
+		const isAllowedStage = feature.stage >= stage;
+		const isDisabled = features[feature.id] === false;
+		const isAllowedFeature = features[feature.id] ? features[feature.id] : isAllowedStage;
+
+		if (isDisabled) {
+			log(`  ${feature.id} has been disabled by options`);
+		} else if (!isAllowedStage) {
+			if (isAllowedFeature) {
+				log(`  ${feature.id} has been enabled by options`);
+			} else {
+				log(`  ${feature.id} with stage ${feature.stage} has been disabled`);
+			}
+		}
+
+		return isAllowedFeature;
+	}).map(
 		feature => {
 			let options;
 			let plugin;
@@ -126,12 +156,28 @@ const plugin = opts => {
 	const usedPlugins = supportedFeatures.map(feature => feature.plugin);
 	usedPlugins.push(stagedAutoprefixer);
 
+	if (options.debug) {
+		log('Enabling the following features:');
+		supportedFeatures.forEach(feature => {
+			if (feature.id.startsWith('before') || feature.id.startsWith('after')) {
+				log(`  ${feature.id} (injected via options)`);
+			} else {
+				log(`  ${feature.id}`);
+			}
+		});
+	}
+
 	const internalPlugin = () => {
 		return {
 			postcssPlugin: 'postcss-preset-env',
 			OnceExit: function (root, { result }) {
 				pluginIdHelp(featureNamesInOptions, root, result);
-				if (Object(opts).exportTo) {
+
+				if (options.debug) {
+					dumpLogs(result);
+				}
+
+				if (options.exportTo) {
 					writeToExports(sharedOpts.exportTo, opts.exportTo);
 				}
 			},

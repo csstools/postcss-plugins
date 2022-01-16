@@ -1,6 +1,5 @@
 # Changes to CSSTools CLI
 
-
 ### Unreleased (minor)
 
 - Emit warnings from plugins
