@@ -57,6 +57,7 @@ postcssTape(plugin)({
 		options: {
 			noIsPseudoSelector: true,
 		},
+		warnings: 1,
 	},
 	'complex': {
 		message: 'supports complex entries',

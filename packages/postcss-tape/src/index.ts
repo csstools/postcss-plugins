@@ -8,13 +8,13 @@ import { strict as assert } from 'assert';
 
 import type { PluginCreator, Plugin } from 'postcss';
 import { formatGitHubActionAnnotation } from './github-annotations.js';
-
-const dashesSeparator = '----------------------------------------';
+import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts.js';
 
 type TestCaseOptions = {
 	message?: string,
 	options?: unknown,
 	plugins?: Array<Plugin>,
+	warnings?: number,
 }
 
 export default function runner(currentPlugin: PluginCreator<unknown>) {
@@ -33,33 +33,138 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			const plugins = testCaseOptions.plugins ?? [currentPlugin(testCaseOptions.options)];
 
 			const input = await fsp.readFile(testFilePath, 'utf8');
-			const expected = await fsp.readFile(expectFilePath, 'utf8');
-			const result = await postcss(plugins).process(input, {
-				from: testFilePath,
-				to: resultFilePath,
-			});
-			const resultString = result.css.toString();
-			await fsp.writeFile(resultFilePath, resultString, 'utf8');
 
+			// Check errors on expect file being missing
+			let expected = '';
 			try {
-				assert.strictEqual(resultString, expected);
-			} catch (err) {
-				if (!hasErrors) {
-					console.error(`\n[ERROR] test output changed!\n\n${dashesSeparator}`);
-				}
+				expected = await fsp.readFile(expectFilePath, 'utf8');
+			} catch (_) {
 				hasErrors = true;
-				console.error(formatError(testCaseLabel, testCaseOptions, err));
+				console.error(`\nmissing expect file: "${expectFilePath}" for "${testCaseLabel}"\n\n${dashesSeparator}`);
 
 				if (process.env.GITHUB_ACTIONS) {
 					console.log(formatGitHubActionAnnotation(
-						formatError(testCaseLabel, testCaseOptions, err, true),
+						`missing expect file: "${expectFilePath}" for "${testCaseLabel}"`,
 						'error',
 						{
-							file: normalizeFilePathForGithubAnnotation(expectFilePath),
+							file: testFilePath,
 							line: 1,
 							col: 1,
 						},
 					));
+				}
+			}
+
+			const result = await postcss(plugins).process(input, {
+				from: testFilePath,
+				to: resultFilePath,
+			});
+
+			const resultString = result.css.toString();
+			await fsp.writeFile(resultFilePath, resultString, 'utf8');
+
+			// Assert result with recent PostCSS.
+			{
+				try {
+					assert.strictEqual(resultString, expected);
+				} catch (err) {
+					hasErrors = true;
+					console.error(formatCSSAssertError(testCaseLabel, testCaseOptions, err));
+
+					if (process.env.GITHUB_ACTIONS) {
+						console.log(formatGitHubActionAnnotation(
+							formatCSSAssertError(testCaseLabel, testCaseOptions, err, true),
+							'error',
+							{
+								file: normalizeFilePathForGithubAnnotation(expectFilePath),
+								line: 1,
+								col: 1,
+							},
+						));
+					}
+				}
+			}
+
+			// Assert that the result can be passed back to PostCSS and still parses.
+			{
+				try {
+					const secondPassResult = await postcss().process(result, {
+						from: resultFilePath,
+						to: resultFilePath,
+					});
+
+					if (secondPassResult.warnings().length) {
+						throw new Error('Unexpected warnings on second pass');
+					}
+				} catch (_) {
+					hasErrors = true;
+					console.error(`\nresult was not parse-able with PostCSS.\n\n${dashesSeparator}`);
+
+					if (process.env.GITHUB_ACTIONS) {
+						console.log(formatGitHubActionAnnotation(
+							'result was not parse-able with PostCSS.',
+							'error',
+							{
+								file: expectFilePath,
+								line: 1,
+								col: 1,
+							},
+						));
+					}
+				}
+			}
+
+			// Assert result with oldest supported PostCSS.
+			// Check against the actual result to avoid duplicate warnings.
+			{
+				const resultFromOldestPostCSS = await postcssOldestSupported(plugins).process(input, {
+					from: testFilePath,
+					to: resultFilePath,
+				});
+
+				try {
+					assert.strictEqual(resultFromOldestPostCSS.css.toString(), resultString);
+				} catch (err) {
+					hasErrors = true;
+					console.error('\nwith older PostCSS:\n\n' + formatCSSAssertError(testCaseLabel, testCaseOptions, err));
+
+					if (process.env.GITHUB_ACTIONS) {
+						console.log(formatGitHubActionAnnotation(
+							formatCSSAssertError(testCaseLabel, testCaseOptions, err, true),
+							'error',
+							{
+								file: normalizeFilePathForGithubAnnotation(expectFilePath),
+								line: 1,
+								col: 1,
+							},
+						));
+					}
+
+					continue;
+				}
+			}
+
+			// Assert that warnings have the expected amount.
+			{
+				try {
+					if (result.warnings().length || testCaseOptions.warnings) {
+						assert.strictEqual(result.warnings().length, testCaseOptions.warnings);
+					}
+				} catch (err) {
+					hasErrors = true;
+					console.error(formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings));
+
+					if (process.env.GITHUB_ACTIONS) {
+						console.log(formatGitHubActionAnnotation(
+							formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings, true),
+							'error',
+							{
+								file: normalizeFilePathForGithubAnnotation(expectFilePath),
+								line: 1,
+								col: 1,
+							},
+						));
+					}
 				}
 			}
 		}
@@ -87,39 +192,4 @@ function normalizeFilePathForGithubAnnotation(filePath: string) {
 	}
 
 	return path.join(parts.join('/'), filePath);
-}
-
-function formatError(testCaseLabel, testCaseOptions, err, forGithubAnnotation = false) {
-	let formatted = '';
-	formatted += `\n${testCaseLabel}\n\n`;
-
-	if (testCaseOptions.message) {
-		formatted += `message :\n  ${testCaseOptions.message}\n\n`;
-	}
-
-	if (testCaseOptions.options) {
-		try {
-			formatted += `options :\n${JSON.stringify(testCaseOptions.options, null, 2)}\n\n`;
-		} catch (_) {
-			// ignore
-		}
-	}
-
-	formatted += `diff :\n${prettyDiff(err.message)}\n`;
-
-	if (!forGithubAnnotation) {
-		formatted += '\n' + dashesSeparator;
-	}
-
-	return formatted;
-}
-
-function prettyDiff(assertMessage: string) {
-	const newLineRegex = /[^\\](\\n)/gm;
-	const tabRegex = /(\\t)/gm;
-	return assertMessage.replace(newLineRegex, (match, p1) => { // decode new lines in CSS
-		return match.replace(p1, ' ');
-	}).replace(tabRegex, (match, p1) => { // decode tabs in CSS
-		return match.replace(p1, ' ');
-	}).replace(/\+$/gm, '').replace(/^Expected values to be strictly equal:\n/, ''); // remove trailing + outputted by `assert`
 }
