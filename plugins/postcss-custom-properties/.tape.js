@@ -333,10 +333,6 @@ module.exports = {
 	},
 	'import': {
 		message: 'supports "postcss-import"',
-		options: {
-			expect: 'import.expect.css',
-			result: 'import.result.css'
-		},
 		plugin: importWithProps
 	}
 };

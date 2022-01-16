@@ -5,8 +5,8 @@ const mixinPluginRule = () => {
 	return {
 		postcssPlugin: 'mixin',
 		AtRule: {
-			mixin(node) {
-				node.replaceWith('& .in{ &.deep { color: blue; }}')
+			mixin(node, { postcss }) {
+				node.replaceWith(postcss().process('& .in{ &.deep { color: blue; }}', {from : 'mixin.css'}).root);
 			},
 		},
 	}
@@ -27,8 +27,8 @@ const mixinPluginDeclaration = () => {
 	return {
 		postcssPlugin: 'mixin',
 		AtRule: {
-			mixin(node) {
-				node.replaceWith('color: blue;')
+			mixin(node, { postcss }) {
+				node.replaceWith(postcss().process('color: blue;', {from : 'mixin.css'}).root);
 			},
 		},
 	}

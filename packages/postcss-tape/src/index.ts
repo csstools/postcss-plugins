@@ -15,6 +15,9 @@ type TestCaseOptions = {
 	options?: unknown,
 	plugins?: Array<Plugin>,
 	warnings?: number,
+
+	before?: () => void,
+	after?: () => void,
 }
 
 export default function runner(currentPlugin: PluginCreator<unknown>) {
@@ -23,6 +26,12 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 	return async (options: Record<string, TestCaseOptions>) => {
 		for (const testCaseLabel in options) {
 			const testCaseOptions = options[testCaseLabel];
+
+			// Run "before" immediately.
+			if (testCaseOptions.before) {
+				testCaseOptions.before();
+			}
+
 			const testSourceFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.split(':')[0]);
 			const testFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.replace(/:/g, '.'));
 
@@ -43,12 +52,12 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 				if (process.env.GITHUB_ACTIONS) {
 					console.log(formatGitHubActionAnnotation(
-						`missing or broken "expect" file: "${expectFilePath}" for "${testCaseLabel}"`,
+						`${testCaseLabel}\n\nmissing or broken "expect" file: "${expectFilePath}"`,
 						'error',
 						{ file: testFilePath, line: 1, col: 1 },
 					));
 				} else {
-					console.error(`\nmissing or broken "expect" file: "${expectFilePath}" for "${testCaseLabel}"\n\n${dashesSeparator}`);
+					console.error(`\n${testCaseLabel}\n\nmissing or broken "expect" file: "${expectFilePath}"\n\n${dashesSeparator}`);
 				}
 
 				// Can't do further checks if "expect" is missing.
@@ -58,6 +67,10 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			const result = await postcss(plugins).process(input, {
 				from: testFilePath,
 				to: resultFilePath,
+				map: {
+					inline: false,
+					annotation: false,
+				},
 			});
 
 			const resultString = result.css.toString();
@@ -82,12 +95,42 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				}
 			}
 
+			// Assert result sourcemaps with recent PostCSS.
+			{
+				try {
+					if (result.map.toJSON().sources.includes('<no source>')) {
+						throw new Error('Sourcemap is broken');
+					}
+				} catch (err) {
+					hasErrors = true;
+
+					if (process.env.GITHUB_ACTIONS) {
+						console.log(formatGitHubActionAnnotation(
+							`${testCaseLabel}\n\nbroken source map: ${JSON.stringify(result.map.toJSON().sources)}`,
+							'error',
+							{ file: testFilePath, line: 1, col: 1 },
+						));
+					} else {
+						console.error(`\n${testCaseLabel}\n\nbroken source map: ${JSON.stringify(result.map.toJSON().sources)}\n\n${dashesSeparator}`);
+					}
+				}
+			}
+
+			// Run "after" when initial postcss run has completely.
+			if (testCaseOptions.after) {
+				testCaseOptions.after();
+			}
+
 			// Assert that the result can be passed back to PostCSS and still parses.
 			{
 				try {
 					const secondPassResult = await postcss().process(result, {
 						from: resultFilePath,
 						to: resultFilePath,
+						map: {
+							inline: false,
+							annotation: false,
+						},
 					});
 
 					if (secondPassResult.warnings().length) {
@@ -98,12 +141,12 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 					if (process.env.GITHUB_ACTIONS) {
 						console.log(formatGitHubActionAnnotation(
-							'result was not parse-able with PostCSS.',
+							`${testCaseLabel}\n\nresult was not parse-able with PostCSS.`,
 							'error',
 							{ file: expectFilePath, line: 1, col: 1 },
 						));
 					} else {
-						console.error(`\nresult was not parse-able with PostCSS.\n\n${dashesSeparator}`);
+						console.error(`\n${testCaseLabel}\n\nresult was not parse-able with PostCSS.\n\n${dashesSeparator}`);
 					}
 				}
 			}
@@ -114,6 +157,10 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				const resultFromOldestPostCSS = await postcssOldestSupported(plugins).process(input, {
 					from: testFilePath,
 					to: resultFilePath,
+					map: {
+						inline: false,
+						annotation: false,
+					},
 				});
 
 				try {
@@ -123,12 +170,12 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 					if (process.env.GITHUB_ACTIONS) {
 						console.log(formatGitHubActionAnnotation(
-							formatCSSAssertError(testCaseLabel, testCaseOptions, err, true),
+							`${testCaseLabel}\n\nwith older PostCSS:\n\n` + formatCSSAssertError(testCaseLabel, testCaseOptions, err, true),
 							'error',
 							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
 						));
 					} else {
-						console.error('\nwith older PostCSS:\n\n' + formatCSSAssertError(testCaseLabel, testCaseOptions, err));
+						console.error(`\n${testCaseLabel}\n\nwith older PostCSS:\n\n` + formatCSSAssertError(testCaseLabel, testCaseOptions, err));
 					}
 				}
 			}
