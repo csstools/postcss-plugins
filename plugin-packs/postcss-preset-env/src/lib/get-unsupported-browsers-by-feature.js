@@ -12,12 +12,12 @@ export default function getUnsupportedBrowsersByFeature(feature) {
 		const results = Object.keys(stats).reduce(
 			(browsers, browser) => browsers.concat(
 				Object.keys(stats[browser]).filter(
-					version => stats[browser][version].indexOf('y') !== 0
+					version => stats[browser][version].indexOf('y') !== 0,
 				).map(
-					version => `${browser} ${version}`
-				)
+					version => `${browser} ${version}`,
+				),
 			),
-			[]
+			[],
 		);
 
 		return results;

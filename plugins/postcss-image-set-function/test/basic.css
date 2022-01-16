@@ -29,16 +29,25 @@
 	order: 5;
 }
 
+.test-variables {
+	order: 1;
+	background-image: image-set(
+		url(img/test.png) 1x,
+		var(--test-image-2x) 2x,
+		var(--test-image-3x, url(img/test-var-fallback-3x.png)) 3x
+	);
+}
+
 .test-mixed-units {
 	order: 1;
 	background-image: image-set(
 		url(img/test.png) 1x,
-		url(img/test-2x.png) 2dppx
+		url(img/test-2dppx.png) 2dppx
 	);
 	order: 2;
 	background-image: image-set(
 		url(img/test.png) 1x,
-		url(img/test-2x.png) 20dpcm
+		url(img/test-2dpcm.png) 20dpcm
 	);
 	order: 3;
 }
@@ -104,7 +113,18 @@
 	}
 }
 
-.test-unparseable-image-set-function {
+.list-1 {
+	background-image: linear-gradient(#4444, #8888), image-set(url(img.png) 1x, url(img@2x.png) 2x);
+}
+
+.list-2 {
+	background-image: image-set(url(img-a.png) 1x, url(img-a@2x.png) 2x), image-set(url(img-b.png) 1x, url(img-b@2x.png) 2x);
+}
+
+.test-valid-data-url {
 	background-image: image-set(url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==) 1x, url(img/test-2x.png) 2x);
+}
+
+.test-invalid-data-url {
 	background-image: image-set(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==, url(img/test-2x.png) 2x);
 }

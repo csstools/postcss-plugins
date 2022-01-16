@@ -1,0 +1,105 @@
+body > p, body > ul {
+	order: 1
+}
+
+
+body > p ~ body > p, body > p ~ body > ul, body > ul ~ body > p, body > ul ~ body > ul {
+		order: 2
+	}
+
+
+body > p ~ body > p:hover,
+		body > p ~ body > ul:hover,
+		body > ul ~ body > p:hover,
+		body > ul ~ body > ul:hover,
+		body > p ~ body > p:focus,
+		body > p ~ body > ul:focus,
+		body > ul ~ body > p:focus,
+		body > ul ~ body > ul:focus {
+			order: 3;
+		}
+
+
+body > p ~ body > p *:hover,
+		body > p ~ body > ul *:hover,
+		body > ul ~ body > p *:hover,
+		body > ul ~ body > ul *:hover,
+		body > p ~ body > p *:focus,
+		body > p ~ body > ul *:focus,
+		body > ul ~ body > p *:focus,
+		body > ul ~ body > ul *:focus {
+			order: 4;
+		}
+
+
+body > p > *:hover, body > ul > *:hover {
+			order: 5;
+		}
+
+
+body > p body > p, body > p body > ul, body > ul body > p, body > ul body > ul {
+		order: 6;
+	}
+
+
+body > pbody > p, body > pbody > ul, body > ulbody > p, body > ulbody > ul {
+		order: 7;
+	}
+
+
+body > pbody > pbody > p, body > pbody > pbody > ul, body > pbody > ulbody > p, body > pbody > ulbody > ul, body > ulbody > pbody > p, body > ulbody > pbody > ul, body > ulbody > ulbody > p, body > ulbody > ulbody > ul {
+		order: 8;
+	}
+
+
+body > p, body > .foo {
+	order: 101
+}
+
+
+body > p~body > p, body > p~body > .foo, body > .foo~body > p, body > .foo~body > .foo {
+		order: 102
+	}
+
+
+body > p~body > p:hover,
+		body > p~body > .foo:hover,
+		body > .foo~body > p:hover,
+		body > .foo~body > .foo:hover,
+		body > p~body > p:focus,
+		body > p~body > .foo:focus,
+		body > .foo~body > p:focus,
+		body > .foo~body > .foo:focus {
+			order: 103;
+		}
+
+
+body > p~body > p *:hover,
+		body > p~body > .foo *:hover,
+		body > .foo~body > p *:hover,
+		body > .foo~body > .foo *:hover,
+		body > p~body > p *:focus,
+		body > p~body > .foo *:focus,
+		body > .foo~body > p *:focus,
+		body > .foo~body > .foo *:focus {
+			order: 104;
+		}
+
+
+body > p>*:hover, body > .foo>*:hover {
+			order: 105;
+		}
+
+
+body > pbody > p, body > pbody > .foo, body > body.foo > p, body > body.foo > .foo {
+		order: 106;
+	}
+
+
+body > pbody > pbody > p, body > pbody > pbody > .foo, body > pbody > body.foo > p, body > pbody > body.foo > .foo, body > body.foo > pbody > p, body > body.foo > pbody > .foo, body > body.foo > body.foo > p, body > body.foo > body.foo > .foo {
+		order: 107;
+	}
+
+body.foo + body.foo, body.foo + html.baz, html.baz + body.foo, html.baz + html.baz {
+		order: 201;
+	}

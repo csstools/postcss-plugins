@@ -1,6 +1,6 @@
 {
   "name": "@csstools/base-cli",
-  "private": "true",
+  "private": true,
   "version": "0.1.0",
   "description": "A base for CLI versions of plugins",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
@@ -16,7 +16,9 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "lint": "eslint src/**/*.ts",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
     "test": "node ./test/test.mjs"
   },
@@ -27,5 +29,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "packages/base-cli"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

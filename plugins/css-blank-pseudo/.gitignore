@@ -2,6 +2,9 @@ node_modules
 dist
 package-lock.json
 yarn.lock
+browser.js
+!src/browser.js
+browser-legacy.js
 *.log*
 *.result.css
 *.result.css.map

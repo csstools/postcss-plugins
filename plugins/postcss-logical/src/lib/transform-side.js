@@ -29,14 +29,14 @@ export default {
 		const ltrDecls = () => {
 			return [
 				cloneDeclBefore(decl, '-left', values[0]),
-				cloneDeclBefore(decl, '-right', values[1] || values[0])
+				cloneDeclBefore(decl, '-right', values[1] || values[0]),
 			];
 		};
 
 		const rtlDecls = () => {
 			return [
 				cloneDeclBefore(decl, '-right', values[0]),
-				cloneDeclBefore(decl, '-left', values[1] || values[0])
+				cloneDeclBefore(decl, '-left', values[1] || values[0]),
 			];
 		};
 
@@ -105,9 +105,11 @@ export default {
 			clean(decl, preserve);
 			return;
 		}
-	}
-}
+	},
+};
 
 function clean(decl, preserve) {
-	if (!preserve) decl.remove();
+	if (!preserve) {
+		decl.remove();
+	}
 }

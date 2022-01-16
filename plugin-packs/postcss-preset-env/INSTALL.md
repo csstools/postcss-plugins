@@ -13,15 +13,7 @@ Add [PostCSS Preset Env] to your project:
 npm install postcss-preset-env --save-dev
 ```
 
-Use [PostCSS Preset Env] to process your CSS:
-
-```js
-const postcssPresetEnv = require('postcss-preset-env');
-
-postcssPresetEnv.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Preset Env] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -194,7 +186,7 @@ module.exports = {
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Preset Env]: https://github.com/csstools/postcss-preset-env
+[PostCSS Preset Env]: https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired
 [Rollup Plugin PostCSS]: https://github.com/egoist/rollup-plugin-postcss

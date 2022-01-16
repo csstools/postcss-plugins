@@ -1,84 +1,65 @@
-import babel from '@rollup/plugin-babel';
-import commonjs from '@rollup/plugin-commonjs';
-import path from 'path';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
+import fs from 'fs';
+import { browserJavascript } from './presets/browser.javascript';
+import { cliJavascript } from './presets/cli-javascript';
+import { cliTypescript } from './presets/cli-typescript';
+import { denoJavascript } from './presets/deno-javascript';
+import { packageJavascript } from './presets/package-javascript';
+import { packageTypescript } from './presets/package-typescript';
 
-export default [
-	{
-		input: 'src/index.js',
-		output: [
-			{ file: 'dist/index.cjs', format: 'cjs', sourcemap: true, exports: 'auto' },
-			{ file: 'dist/index.mjs', format: 'esm', sourcemap: true, exports: 'auto' },
-		],
-		external: [
-			'postcss-values-parser',
-			'postcss-selector-parser',
-		],
-		plugins: [
-			babel({
-				babelHelpers: 'bundled',
-				exclude: 'node_modules/**',
-				presets: [
-					['@babel/preset-env', {
-						corejs: 3,
-						loose: true,
-						modules: false,
-						targets: { node: 12 },
-						useBuiltIns: 'usage',
-					}],
-				],
-			}),
-			terser(),
-		],
-	},
-	{
-		input: 'src/cli.js',
-		output: [
-			{ file: 'dist/cli.mjs', format: 'esm', sourcemap: false },
-		],
-		onwarn: (warning) => {
-			// Silence circular dependency warning for postcss-values-parsers package
-			if (
-				warning.code === 'CIRCULAR_DEPENDENCY' &&
-				warning.importer.indexOf('node_modules/postcss-values-parser/lib') > -1
-			) {
-				return;
-			}
+const packageInfo = JSON.parse(fs.readFileSync('./package.json'));
 
-			console.warn(`(!) ${warning.message}`);
-		},
-		plugins: [
-			commonjs(),
-			nodeResolve({
-				rootDir: path.join(process.cwd(), '..', '..'),
-			}),
-			babel({
-				babelHelpers: 'bundled',
-				exclude: 'node_modules/**',
-				presets: [
-					['@babel/preset-env', {
-						corejs: 3,
-						loose: true,
-						modules: false,
-						targets: { node: 12 },
-						useBuiltIns: 'usage',
-					}],
-				],
-			}),
-			terser(),
-			addHashBang(),
-		],
-	},
-];
+const isTypescript = (() => {
+	if (packageInfo.types) {
+		try {
+			fs.statSync('./tsconfig.json').isFile();
+			return true;
+		} catch (_) {
+			return false;
+		}
+	}
+	return false;
+})();
 
-function addHashBang () {
-	return {
-		name: 'add-hash-bang',
-		renderChunk (code) {
-			const updatedCode = `#!/usr/bin/env node\n\n${code}`;
+const hasDenoOutput = (() => {
+	try {
+		fs.statSync('./mod.js').isFile();
+		return true;
+	} catch (_) {
+		return false;
+	}
+})();
 
-			return updatedCode;
-		},
-	};
+const presets = [];
+
+if (isTypescript) {
+	if (packageInfo.main || packageInfo.module) {
+		presets.push(...packageTypescript());
+	}
+
+	if (packageInfo.bin) {
+		presets.push(...cliTypescript());
+	}
+
+	if (packageInfo.exports && ('./browser' in packageInfo.exports)) {
+		// Browser script remain javascript as it's simpler to go old school JS in regular JS.
+		presets.push(...browserJavascript());
+	}
+} else {
+	if (packageInfo.main || packageInfo.module) {
+		presets.push(...packageJavascript());
+	}
+
+	if (packageInfo.bin) {
+		presets.push(...cliJavascript());
+	}
+
+	if (hasDenoOutput) {
+		presets.push(...denoJavascript());
+	}
+
+	if (packageInfo.exports && ('./browser' in packageInfo.exports)) {
+		presets.push(...browserJavascript());
+	}
 }
+
+export default presets;

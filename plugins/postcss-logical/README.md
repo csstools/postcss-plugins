@@ -23,14 +23,19 @@ physical, direction and dimension mappings in CSS, following the
 /* becomes */
 
 .banner:dir(ltr) {
-  padding-left: 20px; padding-right: 40px;
+  padding-left: 20px;
+  padding-right: 40px;
 }
-
 .banner:dir(rtl) {
-  padding-right: 20px; padding-left: 40px;
+  padding-right: 20px;
+  padding-left: 40px;
 }
-
 .banner {
+  color: #222222;
+  top: 0;
+  left: 5px;
+  bottom: 10px;
+  right: 5px;
   resize: vertical;
   transition: color 200ms;
 }
@@ -39,8 +44,12 @@ physical, direction and dimension mappings in CSS, following the
 
 .banner {
   color: #222222;
-  top: 0; left: 5px; bottom: 10px; right: 5px;
-  padding-left: 20px; padding-right: 40px;
+  top: 0;
+  left: 5px;
+  bottom: 10px;
+  right: 5px;
+  padding-left: 20px;
+  padding-right: 40px;
   resize: vertical;
   transition: color 200ms;
 }
@@ -48,20 +57,23 @@ physical, direction and dimension mappings in CSS, following the
 /* or, when used with { preserve: true } */
 
 .banner:dir(ltr) {
-  padding-left: 20px; padding-right: 40px;
+  padding-left: 20px;
+  padding-right: 40px;
 }
-
 .banner:dir(rtl) {
-  padding-right: 20px; padding-left: 40px;
+  padding-right: 20px;
+  padding-left: 40px;
 }
-
 .banner {
   color: #222222;
-  top: 0; left: 5px; bottom: 10px; right: 5px;
+  top: 0;
+  left: 5px;
+  bottom: 10px;
+  right: 5px;
   inset: logical 0 5px 10px;
   padding-inline: 20px 40px;
-  resize: block;
   resize: vertical;
+  resize: block;
   transition: color 200ms;
 }
 ```
@@ -122,7 +134,7 @@ any `[dir]` attributes, consider using the following JavaScript:
 
 ```js
 // force at least one dir attribute (this can run at any time)
-document.documentElement.dir=document.documentElement.dir||'ltr';
+document.documentElement.dir = document.documentElement.dir || 'ltr';
 ```
 
 Otherwise, consider using the `dir` option to transform all logical properties
@@ -142,15 +154,7 @@ Add [PostCSS Logical Properties and Values] to your project:
 npm install postcss-logical --save-dev
 ```
 
-Use [PostCSS Logical Properties and Values] to process your CSS:
-
-```js
-const postcssLogical = require('postcss-logical');
-
-postcssLogical.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Logical Properties and Values] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -184,10 +188,17 @@ before logical declarations without replacing them. By default, directional
 fallbacks replace logical declaration. If `preserve` is defined as `true`, then
 the `dir` option will be ignored.
 
-[css-img]: https://cssdb.org/badge/logical-properties-and-values.svg
+## :dir() pseudo class
+
+This plugin transforms using the `:dir(ltr)` pseudo class.
+Use [postcss-dir-pseudo-class](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class#readme) to further transform to `[dir="ltr"]`.
+
+Currently `:dir(ltr)` doesn't have great browser support but this will improve over time.
+
+[css-img]: https://cssdb.org/images/badges/logical-properties-and-values.svg
 [css-url]: https://cssdb.org/#logical-properties-and-values
-[cli-img]: https://github.com/csstools/postcss-logical/workflows/test/badge.svg
-[cli-url]: https://github.com/csstools/postcss-logical/actions/workflows/test.yml?query=workflow/test
+[cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-logical.svg
@@ -198,4 +209,4 @@ the `dir` option will be ignored.
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Logical Properties and Values]: https://github.com/csstools/postcss-logical
+[PostCSS Logical Properties and Values]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical

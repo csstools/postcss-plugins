@@ -1,6 +1,6 @@
 {
   "name": "@csstools/postcss-base-plugin",
-  "private": "true",
+  "private": true,
   "version": "0.0.0",
   "description": "A base plugin",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
@@ -13,24 +13,24 @@
   "types": "dist/index.d.ts",
   "files": [
     "CHANGELOG.md",
-    "INSTALL.md",
     "LICENSE.md",
     "README.md",
     "dist"
   ],
   "bin": {
-    "postcss-base-plugin": "dist/cli.mjs"
+    "postcss-base-plugin": "dist/cli.cjs"
   },
   "scripts": {
-    "prepublishOnly": "npm run build --if-present && npm run test --if-present",
-    "lint": "eslint src/**/*.ts",
-    "test": "postcss-tape",
+    "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "stryker": "stryker run --logLevel error",
+    "test": "postcss-tape --ci && npm run test:exports",
     "test:cli": "bash ./test/cli/test.sh",
-    "build": "rollup -c ../../rollup/default.ts.js",
-    "stryker": "stryker run --logLevel error"
+    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
   "devDependencies": {
-    "@csstools/base-cli": "^0.1.0",
     "postcss": "^8.3.6",
     "postcss-tape": "^6.0.1"
   },
@@ -41,5 +41,8 @@
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-base-plugin"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

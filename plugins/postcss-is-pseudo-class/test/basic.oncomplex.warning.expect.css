@@ -1,0 +1,219 @@
+[active]input:hover > b {
+	order: 1;
+}
+
+[active]input:focus > b {
+	order: 1;
+}
+
+[active]button:hover > b {
+	order: 1;
+}
+
+[active]button:focus > b {
+	order: 1;
+}
+
+[active]input.a:hover > b {
+	order: 2;
+}
+
+[active]input.b:hover > b {
+	order: 2;
+}
+
+[active]input.c:hover > b {
+	order: 2;
+}
+
+[active]input.d:hover > b {
+	order: 2;
+}
+
+[active]input.a:focus > b {
+	order: 2;
+}
+
+[active]input.b:focus > b {
+	order: 2;
+}
+
+[active]input.c:focus > b {
+	order: 2;
+}
+
+[active]input.d:focus > b {
+	order: 2;
+}
+
+[active]input.a:focus-within > b {
+	order: 2;
+}
+
+[active]input.b:focus-within > b {
+	order: 2;
+}
+
+[active]input.c:focus-within > b {
+	order: 2;
+}
+
+[active]input.d:focus-within > b {
+	order: 2;
+}
+
+[active]button.a:hover > b {
+	order: 2;
+}
+
+[active]button.b:hover > b {
+	order: 2;
+}
+
+[active]button.c:hover > b {
+	order: 2;
+}
+
+[active]button.d:hover > b {
+	order: 2;
+}
+
+[active]button.a:focus > b {
+	order: 2;
+}
+
+[active]button.b:focus > b {
+	order: 2;
+}
+
+[active]button.c:focus > b {
+	order: 2;
+}
+
+[active]button.d:focus > b {
+	order: 2;
+}
+
+[active]button.a:focus-within > b {
+	order: 2;
+}
+
+[active]button.b:focus-within > b {
+	order: 2;
+}
+
+[active]button.c:focus-within > b {
+	order: 2;
+}
+
+[active]button.d:focus-within > b {
+	order: 2;
+}
+
+a:hover {
+	order: 3;
+}
+
+a:focus {
+	order: 3;
+}
+
+button:hover {
+	order: 3;
+}
+
+button:focus {
+	order: 3;
+}
+
+a:hover {
+	order: 4;
+}
+
+button:hover {
+	order: 4;
+}
+
+a:focus {
+	order: 4;
+}
+
+button:focus {
+	order: 4;
+}
+
+button:hover {
+	order: 5;
+}
+
+button:focus {
+	order: 5;
+}
+
+button:focus-within {
+	order: 5;
+}
+
+:not(.some) {
+	order: 6;
+}
+
+:not(.other) {
+	order: 6;
+}
+
+.button:hover {
+	order: 7;
+}
+
+button:not(.does-not-exist):hover {
+	order: 7;
+}
+
+.button:focus {
+	order: 7;
+}
+
+button:not(.does-not-exist):focus {
+	order: 7;
+}
+
+button:hover {
+	order: 8;
+}
+
+button:focus {
+	order: 8;
+}
+
+input {
+	order: 8;
+}
+
+foo[baz=":is(.some, .other)"], .ok {
+	order: 9;
+}
+
+.alpha:focus > .beta + .beta {
+	order: 10;
+}
+
+.alpha:focus > .beta + .beta {
+	order: 11;
+}
+
+.alpha:focus > .beta + .two {
+	order: 11;
+}
+
+.one:focus > .two + .beta {
+	order: 11;
+}
+
+.one:focus > .two + .two {
+	order: 11;
+}
+
+.alpha > .beta ~ :focus > .beta {
+	order: 12;
+}

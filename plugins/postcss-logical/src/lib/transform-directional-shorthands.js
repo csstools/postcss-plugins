@@ -18,12 +18,12 @@ export default (decl, values, dir, preserve) => {
 		all,
 		inlineEnd || inline || all,
 		blockEnd || all,
-		inline || all
+		inline || all,
 	]);
 
 	const ltrDecl = () => {
 		return decl.cloneBefore({
-			value: ltrValues.join(' ')
+			value: ltrValues.join(' '),
 		});
 	};
 
@@ -45,12 +45,12 @@ export default (decl, values, dir, preserve) => {
 		all,
 		inline || all,
 		blockEnd || all,
-		inlineEnd || inline || all
+		inlineEnd || inline || all,
 	]);
 
 	const rtlDecl = () => {
 		return decl.cloneBefore({
-			value: rtlValues.join(' ')
+			value: rtlValues.join(' '),
 		});
 	};
 
@@ -63,8 +63,10 @@ export default (decl, values, dir, preserve) => {
 	cloneRule(decl, 'ltr').append(ltrDecl());
 	cloneRule(decl, 'rtl').append(rtlDecl());
 	clean(decl, preserve);
-}
+};
 
 function clean(decl, preserve) {
-	if (!preserve) decl.remove();
+	if (!preserve) {
+		decl.remove();
+	}
 }

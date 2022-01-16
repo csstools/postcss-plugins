@@ -1,5 +1,24 @@
 # Changes to PostCSS Color Functional Notation
 
+### 4.2.1 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
+### 4.2.0 (December 27, 2021)
+
+- Added: support for Alpha value as the fourth argument in comma separated values notation.
+
+### 4.1.0 (December 15, 2021)
+
+- Added: support for Alpha value as a CSS variable in `rgb()` and `rgba()`.
+
+### 4.0.2 (December 13, 2021)
+
+- Changed: now uses `postcss-value-parser` for parsing.
+- Updated: documentation
+- Added: support for CSS variables with `preserve: true` option.
+
 ### 4.0.1 (November 18, 2021)
 
 - Added: Safeguards against postcss-values-parser potentially throwing an error.

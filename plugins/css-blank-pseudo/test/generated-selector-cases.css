@@ -1,0 +1,905 @@
+:blank:blank {
+	order: 0;
+}
+
+:blank:blank {
+	order: 1;
+}
+
+:blank :blank {
+	order: 2;
+}
+
+:blank :blank {
+	order: 3;
+}
+
+:blank  :blank {
+	order: 4;
+}
+
+:blank  :blank {
+	order: 5;
+}
+
+:blank+:blank {
+	order: 6;
+}
+
+:blank+:blank {
+	order: 7;
+}
+
+:blank + :blank {
+	order: 8;
+}
+
+:blank + :blank {
+	order: 9;
+}
+
+:blank~:blank {
+	order: 10;
+}
+
+:blank~:blank {
+	order: 11;
+}
+
+:blank ~ :blank {
+	order: 12;
+}
+
+:blank ~ :blank {
+	order: 13;
+}
+
+:blank>:blank {
+	order: 14;
+}
+
+:blank>:blank {
+	order: 15;
+}
+
+:blank > :blank {
+	order: 16;
+}
+
+:blank > :blank {
+	order: 17;
+}
+
+:blank, :blank {
+	order: 18;
+}
+
+:blank, :blank {
+	order: 19;
+}
+
+button:blank {
+	order: 20;
+}
+
+:blankbutton {
+	order: 21;
+}
+
+button :blank {
+	order: 22;
+}
+
+:blank button {
+	order: 23;
+}
+
+button  :blank {
+	order: 24;
+}
+
+:blank  button {
+	order: 25;
+}
+
+button+:blank {
+	order: 26;
+}
+
+:blank+button {
+	order: 27;
+}
+
+button + :blank {
+	order: 28;
+}
+
+:blank + button {
+	order: 29;
+}
+
+button~:blank {
+	order: 30;
+}
+
+:blank~button {
+	order: 31;
+}
+
+button ~ :blank {
+	order: 32;
+}
+
+:blank ~ button {
+	order: 33;
+}
+
+button>:blank {
+	order: 34;
+}
+
+:blank>button {
+	order: 35;
+}
+
+button > :blank {
+	order: 36;
+}
+
+:blank > button {
+	order: 37;
+}
+
+button, :blank {
+	order: 38;
+}
+
+:blank, button {
+	order: 39;
+}
+
+.🧑🏾‍🎤:blank {
+	order: 40;
+}
+
+:blank.🧑🏾‍🎤 {
+	order: 41;
+}
+
+.🧑🏾‍🎤 :blank {
+	order: 42;
+}
+
+:blank .🧑🏾‍🎤 {
+	order: 43;
+}
+
+.🧑🏾‍🎤  :blank {
+	order: 44;
+}
+
+:blank  .🧑🏾‍🎤 {
+	order: 45;
+}
+
+.🧑🏾‍🎤+:blank {
+	order: 46;
+}
+
+:blank+.🧑🏾‍🎤 {
+	order: 47;
+}
+
+.🧑🏾‍🎤 + :blank {
+	order: 48;
+}
+
+:blank + .🧑🏾‍🎤 {
+	order: 49;
+}
+
+.🧑🏾‍🎤~:blank {
+	order: 50;
+}
+
+:blank~.🧑🏾‍🎤 {
+	order: 51;
+}
+
+.🧑🏾‍🎤 ~ :blank {
+	order: 52;
+}
+
+:blank ~ .🧑🏾‍🎤 {
+	order: 53;
+}
+
+.🧑🏾‍🎤>:blank {
+	order: 54;
+}
+
+:blank>.🧑🏾‍🎤 {
+	order: 55;
+}
+
+.🧑🏾‍🎤 > :blank {
+	order: 56;
+}
+
+:blank > .🧑🏾‍🎤 {
+	order: 57;
+}
+
+.🧑🏾‍🎤, :blank {
+	order: 58;
+}
+
+:blank, .🧑🏾‍🎤 {
+	order: 59;
+}
+
+.foo:blank {
+	order: 60;
+}
+
+:blank.foo {
+	order: 61;
+}
+
+.foo :blank {
+	order: 62;
+}
+
+:blank .foo {
+	order: 63;
+}
+
+.foo  :blank {
+	order: 64;
+}
+
+:blank  .foo {
+	order: 65;
+}
+
+.foo+:blank {
+	order: 66;
+}
+
+:blank+.foo {
+	order: 67;
+}
+
+.foo + :blank {
+	order: 68;
+}
+
+:blank + .foo {
+	order: 69;
+}
+
+.foo~:blank {
+	order: 70;
+}
+
+:blank~.foo {
+	order: 71;
+}
+
+.foo ~ :blank {
+	order: 72;
+}
+
+:blank ~ .foo {
+	order: 73;
+}
+
+.foo>:blank {
+	order: 74;
+}
+
+:blank>.foo {
+	order: 75;
+}
+
+.foo > :blank {
+	order: 76;
+}
+
+:blank > .foo {
+	order: 77;
+}
+
+.foo, :blank {
+	order: 78;
+}
+
+:blank, .foo {
+	order: 79;
+}
+
+#foo:blank {
+	order: 80;
+}
+
+:blank#foo {
+	order: 81;
+}
+
+#foo :blank {
+	order: 82;
+}
+
+:blank #foo {
+	order: 83;
+}
+
+#foo  :blank {
+	order: 84;
+}
+
+:blank  #foo {
+	order: 85;
+}
+
+#foo+:blank {
+	order: 86;
+}
+
+:blank+#foo {
+	order: 87;
+}
+
+#foo + :blank {
+	order: 88;
+}
+
+:blank + #foo {
+	order: 89;
+}
+
+#foo~:blank {
+	order: 90;
+}
+
+:blank~#foo {
+	order: 91;
+}
+
+#foo ~ :blank {
+	order: 92;
+}
+
+:blank ~ #foo {
+	order: 93;
+}
+
+#foo>:blank {
+	order: 94;
+}
+
+:blank>#foo {
+	order: 95;
+}
+
+#foo > :blank {
+	order: 96;
+}
+
+:blank > #foo {
+	order: 97;
+}
+
+#foo, :blank {
+	order: 98;
+}
+
+:blank, #foo {
+	order: 99;
+}
+
+__foo:blank {
+	order: 100;
+}
+
+:blank__foo {
+	order: 101;
+}
+
+__foo :blank {
+	order: 102;
+}
+
+:blank __foo {
+	order: 103;
+}
+
+__foo  :blank {
+	order: 104;
+}
+
+:blank  __foo {
+	order: 105;
+}
+
+__foo+:blank {
+	order: 106;
+}
+
+:blank+__foo {
+	order: 107;
+}
+
+__foo + :blank {
+	order: 108;
+}
+
+:blank + __foo {
+	order: 109;
+}
+
+__foo~:blank {
+	order: 110;
+}
+
+:blank~__foo {
+	order: 111;
+}
+
+__foo ~ :blank {
+	order: 112;
+}
+
+:blank ~ __foo {
+	order: 113;
+}
+
+__foo>:blank {
+	order: 114;
+}
+
+:blank>__foo {
+	order: 115;
+}
+
+__foo > :blank {
+	order: 116;
+}
+
+:blank > __foo {
+	order: 117;
+}
+
+__foo, :blank {
+	order: 118;
+}
+
+:blank, __foo {
+	order: 119;
+}
+
+:--foo:blank {
+	order: 120;
+}
+
+:blank:--foo {
+	order: 121;
+}
+
+:--foo :blank {
+	order: 122;
+}
+
+:blank :--foo {
+	order: 123;
+}
+
+:--foo  :blank {
+	order: 124;
+}
+
+:blank  :--foo {
+	order: 125;
+}
+
+:--foo+:blank {
+	order: 126;
+}
+
+:blank+:--foo {
+	order: 127;
+}
+
+:--foo + :blank {
+	order: 128;
+}
+
+:blank + :--foo {
+	order: 129;
+}
+
+:--foo~:blank {
+	order: 130;
+}
+
+:blank~:--foo {
+	order: 131;
+}
+
+:--foo ~ :blank {
+	order: 132;
+}
+
+:blank ~ :--foo {
+	order: 133;
+}
+
+:--foo>:blank {
+	order: 134;
+}
+
+:blank>:--foo {
+	order: 135;
+}
+
+:--foo > :blank {
+	order: 136;
+}
+
+:blank > :--foo {
+	order: 137;
+}
+
+:--foo, :blank {
+	order: 138;
+}
+
+:blank, :--foo {
+	order: 139;
+}
+
+[foo="baz"]:blank {
+	order: 140;
+}
+
+:blank[foo="baz"] {
+	order: 141;
+}
+
+[foo="baz"] :blank {
+	order: 142;
+}
+
+:blank [foo="baz"] {
+	order: 143;
+}
+
+[foo="baz"]  :blank {
+	order: 144;
+}
+
+:blank  [foo="baz"] {
+	order: 145;
+}
+
+[foo="baz"]+:blank {
+	order: 146;
+}
+
+:blank+[foo="baz"] {
+	order: 147;
+}
+
+[foo="baz"] + :blank {
+	order: 148;
+}
+
+:blank + [foo="baz"] {
+	order: 149;
+}
+
+[foo="baz"]~:blank {
+	order: 150;
+}
+
+:blank~[foo="baz"] {
+	order: 151;
+}
+
+[foo="baz"] ~ :blank {
+	order: 152;
+}
+
+:blank ~ [foo="baz"] {
+	order: 153;
+}
+
+[foo="baz"]>:blank {
+	order: 154;
+}
+
+:blank>[foo="baz"] {
+	order: 155;
+}
+
+[foo="baz"] > :blank {
+	order: 156;
+}
+
+:blank > [foo="baz"] {
+	order: 157;
+}
+
+[foo="baz"], :blank {
+	order: 158;
+}
+
+:blank, [foo="baz"] {
+	order: 159;
+}
+
+*:blank {
+	order: 160;
+}
+
+:blank* {
+	order: 161;
+}
+
+* :blank {
+	order: 162;
+}
+
+:blank * {
+	order: 163;
+}
+
+*  :blank {
+	order: 164;
+}
+
+:blank  * {
+	order: 165;
+}
+
+*+:blank {
+	order: 166;
+}
+
+:blank+* {
+	order: 167;
+}
+
+* + :blank {
+	order: 168;
+}
+
+:blank + * {
+	order: 169;
+}
+
+*~:blank {
+	order: 170;
+}
+
+:blank~* {
+	order: 171;
+}
+
+* ~ :blank {
+	order: 172;
+}
+
+:blank ~ * {
+	order: 173;
+}
+
+*>:blank {
+	order: 174;
+}
+
+:blank>* {
+	order: 175;
+}
+
+* > :blank {
+	order: 176;
+}
+
+:blank > * {
+	order: 177;
+}
+
+*, :blank {
+	order: 178;
+}
+
+:blank, * {
+	order: 179;
+}
+
+:hover:blank {
+	order: 180;
+}
+
+:blank:hover {
+	order: 181;
+}
+
+:hover :blank {
+	order: 182;
+}
+
+:blank :hover {
+	order: 183;
+}
+
+:hover  :blank {
+	order: 184;
+}
+
+:blank  :hover {
+	order: 185;
+}
+
+:hover+:blank {
+	order: 186;
+}
+
+:blank+:hover {
+	order: 187;
+}
+
+:hover + :blank {
+	order: 188;
+}
+
+:blank + :hover {
+	order: 189;
+}
+
+:hover~:blank {
+	order: 190;
+}
+
+:blank~:hover {
+	order: 191;
+}
+
+:hover ~ :blank {
+	order: 192;
+}
+
+:blank ~ :hover {
+	order: 193;
+}
+
+:hover>:blank {
+	order: 194;
+}
+
+:blank>:hover {
+	order: 195;
+}
+
+:hover > :blank {
+	order: 196;
+}
+
+:blank > :hover {
+	order: 197;
+}
+
+:hover, :blank {
+	order: 198;
+}
+
+:blank, :hover {
+	order: 199;
+}
+
+::before:blank {
+	order: 200;
+}
+
+:blank::before {
+	order: 201;
+}
+
+::before :blank {
+	order: 202;
+}
+
+:blank ::before {
+	order: 203;
+}
+
+::before  :blank {
+	order: 204;
+}
+
+:blank  ::before {
+	order: 205;
+}
+
+::before+:blank {
+	order: 206;
+}
+
+:blank+::before {
+	order: 207;
+}
+
+::before + :blank {
+	order: 208;
+}
+
+:blank + ::before {
+	order: 209;
+}
+
+::before~:blank {
+	order: 210;
+}
+
+:blank~::before {
+	order: 211;
+}
+
+::before ~ :blank {
+	order: 212;
+}
+
+:blank ~ ::before {
+	order: 213;
+}
+
+::before>:blank {
+	order: 214;
+}
+
+:blank>::before {
+	order: 215;
+}
+
+::before > :blank {
+	order: 216;
+}
+
+:blank > ::before {
+	order: 217;
+}
+
+::before, :blank {
+	order: 218;
+}
+
+:blank, ::before {
+	order: 219;
+}
+
+foo[:blank] {
+	order: 220;
+}
+
+foo[baz=":blank"] {
+	order: 221;
+}
+
+:not(:blank) {
+	order: 222;
+}
+
+::blank {
+	order: 223;
+}
+
+:--:blank {
+	order: 224;
+}
+
+__:blank {
+	order: 225;
+}
+
+/* :blank */

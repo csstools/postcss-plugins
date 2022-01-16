@@ -1,5 +1,19 @@
 # Changes to PostCSS Double Position Gradients
 
+### 3.0.4 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
+### 3.0.3 (December 14, 2021)
+
+- Fixed: infinite loop in complex gradients.
+
+### 3.0.2 (December 13, 2021)
+
+- Changed: now uses `postcss-value-parser` for parsing.
+- Updated: documentation
+
 ### 3.0.1 (November 18, 2021)
 
 - Added: Safeguards against postcss-values-parser potentially throwing an error.

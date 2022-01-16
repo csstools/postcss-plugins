@@ -8,51 +8,23 @@
 
 .test-changed-properties {
 	order: 1;
-	background-image: 
-		url(img/test.png);
+	background-image: url(img/test.png);
+	background-image: image-set(
+		url(img/test.png) 1x
+	);
 	order: 2;
-	background-image: 
-		url(img/test.png);
+	background-image: url(img/test.png);
+	background-image: image-set(
+		url(img/test.png) 2x
+	);
 	order: 3;
-	background-image: 
-		url(img/test.png);
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-
-.test-changed-properties {
-	background-image: 
-		url(img/test-2x.png);
-}
-}
-
-.test-changed-properties {
+	background-image: url(img/test.png);
 	background-image: image-set(
 		url(img/test.png) 1x,
 		url(img/test-2x.png) 2x
 	);
 	order: 4;
-	background-image: 
-		url(img/test.png);
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-
-.test-changed-properties {
-	background-image: 
-		url(img/test-2x.png);
-}
-}
-
-@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
-
-.test-changed-properties {
-	background-image: 
-		url(my-img-print.png);
-}
-}
-
-.test-changed-properties {
+	background-image: url(img/test.png);
 	background-image: image-set(
 		url(img/test.png) 1x,
 		url(img/test-2x.png) 2x,
@@ -61,96 +33,91 @@
 	order: 5;
 }
 
-.test-mixed-units {
-	order: 1;
-	background-image: 
-		url(img/test.png);
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.test-changed-properties {
+	background-image: url(img/test-2x.png);
+}
+}
+
+@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
+
+.test-changed-properties {
+	background-image: url(my-img-print.png);
+}
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
-.test-mixed-units {
-	background-image: 
-		url(img/test-2x.png);
+.test-changed-properties {
+	background-image: url(img/test-2x.png);
 }
 }
 
-.test-mixed-units {
-	background-image: image-set(
-		url(img/test.png) 1x,
-		url(img/test-2x.png) 2dppx
-	);
-	order: 2;
-	background-image: 
-		url(img/test-2x.png);
-}
-
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
-
-.test-mixed-units {
-	background-image: 
-		url(img/test.png);
-}
-}
-
-.test-mixed-units {
-	background-image: image-set(
-		url(img/test.png) 1x,
-		url(img/test-2x.png) 20dpcm
-	);
-	order: 3;
-}
-
-.test-mixed-order {
+.test-variables {
 	order: 1;
-	background: 
-		url(../images/bck.png);
+	background-image: url(img/test.png);
+	background-image: image-set(
+		url(img/test.png) 1x,
+		var(--test-image-2x) 2x,
+		var(--test-image-3x, url(img/test-var-fallback-3x.png)) 3x
+	);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
-.test-mixed-order {
-	background: 
-		url(../images/bck@2x.png);
+.test-variables {
+	background-image: var(--test-image-2x);
 }
 }
 
 @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
 
-.test-mixed-order {
-	background: 
-		url(../images/bck@3x.png);
+.test-variables {
+	background-image: var(--test-image-3x, url(img/test-var-fallback-3x.png));
+}
+}
+
+.test-mixed-units {
+	order: 1;
+	background-image: url(img/test.png);
+	background-image: image-set(
+		url(img/test.png) 1x,
+		url(img/test-2dppx.png) 2dppx
+	);
+	order: 2;
+	background-image: url(img/test-2dpcm.png);
+	background-image: image-set(
+		url(img/test.png) 1x,
+		url(img/test-2dpcm.png) 20dpcm
+	);
+	order: 3;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
+
+.test-mixed-units {
+	background-image: url(img/test.png);
+}
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.test-mixed-units {
+	background-image: url(img/test-2dppx.png);
 }
 }
 
 .test-mixed-order {
+	order: 1;
+	background: url(../images/bck.png);
 	background: image-set(
 		url(../images/bck@3x.png) 3x,
 		url(../images/bck.png) 1x,
 		url(../images/bck@2x.png) 2x
 	);
 	order: 2;
-	background: 
-		url(../images/bck.png);
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-
-.test-mixed-order {
-	background: 
-		url(../images/bck@2x.png);
-}
-}
-
-@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
-
-.test-mixed-order {
-	background: 
-		url(../images/bck@3x.png);
-}
-}
-
-.test-mixed-order {
+	background: url(../images/bck.png);
 	background: image-set(
 		url(../images/bck@2x.png) 2x,
 		url(../images/bck@3x.png) 3x,
@@ -159,42 +126,43 @@
 	order: 3;
 }
 
-.test-no-url {
-	order: 1;
-	background-image: "img/test.png";
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.test-mixed-order {
+	background: url(../images/bck@2x.png);
+}
+}
+
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+
+.test-mixed-order {
+	background: url(../images/bck@3x.png);
+}
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
-.test-no-url {
-	background-image: "img/test-2x.png";
+.test-mixed-order {
+	background: url(../images/bck@2x.png);
+}
+}
+
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+
+.test-mixed-order {
+	background: url(../images/bck@3x.png);
 }
 }
 
 .test-no-url {
+	order: 1;
+	background-image: url("img/test.png");
 	background-image: image-set(
 		"img/test.png" 1x,
 		"img/test-2x.png" 2x
 	);
 	order: 2;
-	background-image: "img/test.png";
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-
-.test-no-url {
-	background-image: "img/test-2x.png";
-}
-}
-
-@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
-
-.test-no-url {
-	background-image: "my-img-print.png";
-}
-}
-
-.test-no-url {
+	background-image: url("img/test.png");
 	background-image: image-set(
 		"img/test.png" 1x,
 		"img/test-2x.png" 2x,
@@ -203,29 +171,30 @@
 	order: 3;
 }
 
-.test-webkit-prefix {
-	order: 1;
-	background-image: 
-		url(img/test.png);
-}
-
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
-.test-webkit-prefix {
-	background-image: 
-		url(img/test-2x.png);
+.test-no-url {
+	background-image: url("img/test-2x.png");
 }
 }
 
 @media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
 
-.test-webkit-prefix {
-	background-image: 
-		url(my-img-print.png);
+.test-no-url {
+	background-image: url("my-img-print.png");
+}
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.test-no-url {
+	background-image: url("img/test-2x.png");
 }
 }
 
 .test-webkit-prefix {
+	order: 1;
+	background-image: url(img/test.png);
 	background-image: -webkit-image-set(
 		url(img/test.png) 1x,
 		url(img/test-2x.png) 2x,
@@ -234,59 +203,98 @@
 	order: 2;
 }
 
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.test-webkit-prefix {
+	background-image: url(img/test-2x.png);
+}
+}
+
+@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
+
+.test-webkit-prefix {
+	background-image: url(my-img-print.png);
+}
+}
+
 @media (min-width: 1000px) {
 	.test-within-mq-1 {
-		background-image: 
-			url(img/test.png);
-	}
-	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-	.test-within-mq-1 {
-		background-image: 
-			url(img/test-2x.png);
-	}
-	}
-	@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
-	.test-within-mq-1 {
-		background-image: 
-			url(my-img-print.png);
-	}
-	}
-	.test-within-mq-1 {
+		background-image: url(img/test.png);
 		background-image: image-set(
 			url(img/test.png) 1x,
 			url(img/test-2x.png) 2x,
 			url(my-img-print.png) 600dpi
 		);
+	}
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	.test-within-mq-1 {
+		background-image: url(img/test-2x.png);
+	}
+	}
+	@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
+	.test-within-mq-1 {
+		background-image: url(my-img-print.png);
+	}
 	}
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
 	.test-within-mq-2 {
-		background-image: 
-			url(img/test.png);
-	}
-	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-	.test-within-mq-2 {
-		background-image: 
-			url(img/test-2x.png);
-	}
-	}
-	@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
-	.test-within-mq-2 {
-		background-image: 
-			url(my-img-print.png);
-	}
-	}
-	.test-within-mq-2 {
+		background-image: url(img/test.png);
 		background-image: image-set(
 			url(img/test.png) 1x,
 			url(img/test-2x.png) 2x,
 			url(my-img-print.png) 600dpi
 		);
 	}
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	.test-within-mq-2 {
+		background-image: url(img/test-2x.png);
+	}
+	}
+	@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
+	.test-within-mq-2 {
+		background-image: url(my-img-print.png);
+	}
+	}
 }
 
-.test-unparseable-image-set-function {
+.list-1 {
+	background-image: linear-gradient(#4444, #8888), url(img.png);
+	background-image: linear-gradient(#4444, #8888), image-set(url(img.png) 1x, url(img@2x.png) 2x);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.list-1 {
+	background-image: linear-gradient(#4444, #8888), url(img@2x.png);
+}
+}
+
+.list-2 {
+	background-image: url(img-a.png), url(img-b.png);
+	background-image: image-set(url(img-a.png) 1x, url(img-a@2x.png) 2x), image-set(url(img-b.png) 1x, url(img-b@2x.png) 2x);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.list-2 {
+	background-image: url(img-a@2x.png), url(img-b@2x.png);
+}
+}
+
+.test-valid-data-url {
+	background-image: url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==);
 	background-image: image-set(url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==) 1x, url(img/test-2x.png) 2x);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.test-valid-data-url {
+	background-image: url(img/test-2x.png);
+}
+}
+
+.test-invalid-data-url {
 	background-image: image-set(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==, url(img/test-2x.png) 2x);
 }

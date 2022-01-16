@@ -1,5 +1,46 @@
 # Changes to Prefers Color Scheme
 
+### 6.0.2 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
+### 6.0.1 (December 27, 2021)
+
+- Fixed: require/import paths for browser script
+
+### 6.0.0 (December 13, 2021)
+
+- Breaking: require/import paths have changed
+- Changed: new polyfill CDN urls.
+- Updated: documentation
+- Fixed: `CSSRuleList` edits skipping rules as this is a live list.
+- Fixed: complex `@media` queries not working.
+
+**Migrating to 6.0.0**
+
+PostCSS plugin :
+
+```diff
+- const postcssPrefersColorScheme = require('css-prefers-color-scheme/postcss');
++ const postcssPrefersColorScheme = require('css-prefers-color-scheme');
+```
+
+Browser Polyfill :
+
+```diff
+- const prefersColorScheme = require('css-prefers-color-scheme')();
++ const prefersColorScheme = require('css-prefers-color-scheme/browser')();
+```
+
+_The old CND url is now deprecated and will be removed in a next major release._
+_It will continue to work for now._
+
+```diff
+- <script src="https://unpkg.com/css-prefers-color-scheme/browser.min"></script>
++ <script src="https://unpkg.com/css-prefers-color-scheme/dist/browser-global.js"></script>
+```
+
 ### 5.0.0 (September 17, 2021)
 
 - Updated: Support for PostCS 8+ (major).

@@ -13,15 +13,7 @@ Add [PostCSS Gap Properties] to your project:
 npm install postcss-gap-properties --save-dev
 ```
 
-Use [PostCSS Gap Properties] to process your CSS:
-
-```js
-import postcssGapProperties from 'postcss-gap-properties';
-
-postcssGapProperties.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Gap Properties] as a [PostCSS] plugin:
 
 ```js
 import postcss from 'postcss';
@@ -165,6 +157,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Gap Properties]: https://github.com/jonathantneal/postcss-gap-properties
+[PostCSS Gap Properties]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gap-properties
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

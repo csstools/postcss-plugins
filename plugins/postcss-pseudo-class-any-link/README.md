@@ -40,15 +40,7 @@ Add [PostCSS Pseudo Class Any Link] to your project:
 npm install postcss postcss-pseudo-class-any-link --save-dev
 ```
 
-Use [PostCSS Pseudo Class Any Link] to process your CSS:
-
-```js
-const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
-
-postcssPseudoClassAnyLink.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Pseudo Class Any Link] as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -88,9 +80,9 @@ nav :link > span, nav :visited > span {
 }
 ```
 
-[cli-img]: https://github.com/csstools/postcss-pseudo-class-any-link/workflows/test/badge.svg
-[cli-url]: https://github.com/csstools/postcss-pseudo-class-any-link/actions/workflows/test.yml?query=workflow/test
-[css-img]: https://cssdb.org/badge/any-link-pseudo-class.svg
+[cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+[css-img]: https://cssdb.org/images/badges/any-link-pseudo-class.svg
 [css-url]: https://cssdb.org/#any-link-pseudo-class
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
@@ -101,5 +93,5 @@ nav :link > span, nav :visited > span {
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Pseudo Class Any Link]: https://github.com/jonathantneal/postcss-pseudo-class-any-link
+[PostCSS Pseudo Class Any Link]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link
 [Selectors]: https://www.w3.org/TR/selectors-4/#the-any-link-pseudo

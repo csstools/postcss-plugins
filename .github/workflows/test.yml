@@ -2,6 +2,10 @@ name: test
 on:
   push:
 
+concurrency:
+  group: branch-node-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test_with_workspaces_support:
     runs-on: ubuntu-latest
@@ -10,37 +14,14 @@ jobs:
         node: [16, 17]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2.5.1
         with:
           node-version: ${{ matrix.node }}
 
-      - run: exit 0
-      # - run: npm install --ignore-scripts
-      # - run: npm run build --workspaces --if-present
-      # - run: npm run lint --workspaces --if-present
-      # - run: npm run test --workspaces --if-present
-
-  test_without_workspaces_support:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [12, 14]
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16
-
-      - run: exit 0
-      # - run: npm install --ignore-scripts
-      # - run: npm run build --workspaces --if-present
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node }}
-
-      - run: exit 0
-      # - run: bash ./.github/bin/install-and-test-all-packages.sh
+      - run: npm ci --ignore-scripts
+      - run: npm run build --workspaces --if-present
+      - run: npm run lint --workspaces --if-present
+      - run: npm run test --workspaces --if-present
 
   # Run cross platform test of the basic CLI.
   test_cli:
@@ -50,16 +31,37 @@ jobs:
         os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2.5.1
         with:
           node-version: 16
 
+      - run: npm ci --ignore-scripts
+      - run: npm run build --workspaces --if-present
+
+        # running "npm install" places the cli in node_modules/bin
       - run: npm install --ignore-scripts
-      # - run: npm run build --workspaces --if-present
 
       - run: |
-            npm run build --workspace="@csstools/base-cli" --workspace="@csstools/postcss-base-plugin"
-            # running install places the cli in node_modules/bin
-            npm install
             npm run test --workspace="@csstools/base-cli"
             npm run test:cli --workspace="@csstools/postcss-base-plugin"
+
+  # Run Deno tests one by one
+  test_deno:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2.5.1
+        with:
+          node-version: 16
+
+      - run: npm ci --ignore-scripts
+      - run: npm run build --workspaces --if-present
+
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x.x
+
+      # Per plugin from here
+      - run: |
+            cd plugins/postcss-nesting
+            npm run test:deno

@@ -1,11 +1,25 @@
-const { parse } = require('postcss-values-parser');
-const Punctuation = require('postcss-values-parser/lib/nodes/Punctuation');
+const valueParser = require('postcss-value-parser');
 
 // whether the value has a lab() or lch() matcher
 const gradientRegExp = /(repeating-)?(conic|linear|radial)-gradient\([\W\w]*\)/i;
 const gradientPartsRegExp = /^(repeating-)?(conic|linear|radial)-gradient$/i;
 
-const isPunctuationCommaNode = node => node.type === 'punctuation' && node.value === ',';
+const isPunctuationCommaNode = node => node.type === 'div' && node.value === ',';
+
+function insertBefore(nodes, node, ...values) {
+	const index = nodes.findIndex(n => n === node);
+	nodes.splice.apply(nodes, [index - 1, 0].concat(
+		Array.prototype.slice.call(...values, 0)),
+	);
+}
+
+function isNumericNode(node) {
+	try {
+		return valueParser.unit(node?.value) !== false;
+	} catch (e) {
+		return false;
+	}
+}
 
 /**
  * Transform double-position gradients in CSS.
@@ -25,7 +39,7 @@ module.exports = function creator(opts) {
 			let valueAST;
 
 			try {
-				valueAST = parse(decl.value, { ignoreUnknownWords: true });
+				valueAST = valueParser(decl.value);
 			} catch (error) {
 				decl.warn(
 					result,
@@ -38,41 +52,49 @@ module.exports = function creator(opts) {
 				return;
 			}
 
-			valueAST.walkFuncs((func) => {
-				if (!gradientPartsRegExp.test(func.name)) {
+			valueAST.walk(func => {
+				if (func.type !== 'function' || !gradientPartsRegExp.test(func.value)) {
 					return;
 				}
 
-				const nodes = func.nodes;
+				// Discarding comments and spaces
+				const nodes = func.nodes.filter((x) => {
+					return x.type !== 'comment' && x.type !== 'space';
+				});
 
-				nodes.slice(0).forEach((node, index, nodes) => {
-					const node1back = Object(nodes[index - 1]);
-					const node2back = Object(nodes[index - 2]);
-					const node1next = Object(nodes[index + 1]);
-
-					const isDoublePositionLength = node2back.type && node1back.type === 'numeric' && node.type === 'numeric';
+				nodes.forEach((node, index, nodes) => {
+					const oneValueBack = Object(nodes[index - 1]);
+					const twoValuesBack = Object(nodes[index - 2]);
+					const nextNode = Object(nodes[index + 1]);
+					const isDoublePositionLength = twoValuesBack.type && isNumericNode(oneValueBack) && isNumericNode(node);
 
 					// if the argument concludes a double-position gradient
 					if (isDoublePositionLength) {
 						// insert the fallback colors
-						const color = node2back.clone();
-						const comma = new Punctuation({
+						const color = { type: twoValuesBack.type, value: twoValuesBack.value };
+						const comma = {
+							type: 'div',
 							value: ',',
-							raws: isPunctuationCommaNode(node1next)
-								? Object.assign({}, node1next.clone().raws)
-								: { before: '', after: '' },
-						});
+							before: isPunctuationCommaNode(nextNode) ? nextNode.before : '',
+							after: isPunctuationCommaNode(nextNode) ? '' : ' ',
+						};
 
-						func.insertBefore(node, [comma, color]);
+						insertBefore(func.nodes, node, [comma, color]);
 					}
 				});
+
+				return false;
 			});
 
-			const modifiedValue = String(valueAST);
+			const modifiedValue = valueAST.toString();
 
 			if (modifiedValue !== decl.value) {
-				if (preserve) decl.cloneBefore({ value: modifiedValue });
-				else decl.value = modifiedValue;
+				if (preserve) {
+					decl.cloneBefore({ value: modifiedValue });
+					return;
+				}
+
+				decl.value = modifiedValue;
 			}
 		},
 	};

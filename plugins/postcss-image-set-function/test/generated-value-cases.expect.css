@@ -1,0 +1,67 @@
+.order-0 {
+	order: url(img/test.png) !important;
+}@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {.order-0 {
+	order: url(img/test-2x.png) !important;
+}
+}
+
+.order-1 {
+	order: var(1, url(img/test.png));
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.order-1 {
+	order: var(1, url(img/test-2x.png));
+}
+}
+
+.order-2 {
+	order: var(url(img/test.png), 1);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.order-2 {
+	order: var(url(img/test-2x.png), 1);
+}
+}
+
+.order-3 {
+	order: var(url(img/test.png), url(img/test.png));
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.order-3 {
+	order: var(url(img/test-2x.png), url(img/test-2x.png));
+}
+}
+
+/* image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x) */
+
+:root {
+	--some-var: url(img/test.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+:root {
+	--some-var: url(img/test-2x.png);
+}
+}
+
+.content {
+	content: 'image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x)';
+}
+
+@supports (order: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x)) {
+	.support {
+		order: url(img/test.png);
+	}
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	.support {
+		order: url(img/test-2x.png);
+	}
+	}
+}

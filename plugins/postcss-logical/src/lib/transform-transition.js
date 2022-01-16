@@ -48,13 +48,13 @@ export default (decl, notValues, dir, preserve) => {
 		if (preserve) {
 			decl.cloneBefore({});
 		}
-		decl.assign({ value: ltrValues.join('') });
+		decl.value = ltrValues.join('');
 		return;
 	} else if (rtlValues.length && dir === 'rtl') {
 		if (preserve) {
 			decl.cloneBefore({});
 		}
-		decl.assign({ value: rtlValues.join('') });
+		decl.value = rtlValues.join('');
 		return;
 	} else if (ltrValues.join('') !== rtlValues.join('')) {
 
@@ -66,7 +66,9 @@ export default (decl, notValues, dir, preserve) => {
 };
 
 function clean(decl, preserve) {
-	if (!preserve) decl.remove();
+	if (!preserve) {
+		decl.remove();
+	}
 }
 
 const valueMap = {
@@ -129,5 +131,5 @@ const valueMap = {
 	'border-end-end-radius': { ltr: ['border-bottom-right-radius'], rtl: ['border-bottom-left-radius'] },
 	'border-end-start-radius': { ltr: ['border-bottom-left-radius'], rtl: ['border-bottom-right-radius'] },
 	'border-start-end-radius': { ltr: ['border-top-right-radius'], rtl: ['border-top-left-radius'] },
-	'border-start-start-radius': { ltr: ['border-top-left-radius'], rtl: ['border-top-right-radius'] }
+	'border-start-start-radius': { ltr: ['border-top-left-radius'], rtl: ['border-top-right-radius'] },
 };

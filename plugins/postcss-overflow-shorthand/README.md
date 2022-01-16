@@ -73,9 +73,9 @@ html {
 }
 ```
 
-[cli-img]: https://github.com/csstools/postcss-overflow-shorthand/workflows/test/badge.svg
-[cli-url]: https://github.com/csstools/postcss-overflow-shorthand/actions/workflows/test.yml?query=workflow/test
-[css-img]: https://cssdb.org/badge/overflow-property.svg
+[cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+[css-img]: https://cssdb.org/images/badges/overflow-property.svg
 [css-url]: https://cssdb.org/#overflow-property
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
@@ -87,4 +87,4 @@ html {
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Overflow Shorthand]: https://github.com/jonathantneal/postcss-overflow-shorthand
+[PostCSS Overflow Shorthand]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand

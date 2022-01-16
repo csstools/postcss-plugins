@@ -11,7 +11,7 @@ table.colortable td.c {
 		}
 
 table.colortable td:first-child,
-		table.colortable td:first-child+td {
+		:first-child:is(table.colortable td)+td {
 			border: 1px solid black
 		}
 
@@ -56,8 +56,10 @@ table.colortable th {
 .bar {
 	color: blue
 }
-:is(.foo,.bar)+.baz,
-	:is(.foo,.bar).qux {
+.foo+.baz,
+	.bar+.baz,
+	.foo.qux,
+	.bar.qux {
 		color: red;
 	}
 
@@ -152,7 +154,7 @@ figure>figcaption>p {
 .foo {
 	color: blue
 }
-.foo:is(__bar) {
+__bar.foo {
 		color: red;
 	}
 

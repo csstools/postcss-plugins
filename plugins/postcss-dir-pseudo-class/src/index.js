@@ -9,59 +9,80 @@ module.exports = function creator(opts) {
 
 	return {
 		postcssPlugin: 'postcss-dir-pseudo-class',
-		Rule(rule) {
+		Rule(rule, { result }) {
+			let emittedWarningForHierarchicalDir = false;
 
 			// walk rules using the :dir pseudo-class
 			if (!dirRegex.test(rule.selector)) {
 				return;
 			}
 
-			let currentRule = rule;
+			let modifiedSelector;
 
-			// conditionally preserve the original rule
-			if (preserve) {
-				currentRule = rule.cloneBefore();
-			}
+			try {
+				modifiedSelector = selectorParser(selectors => {
+					// for each (comma separated) selector
+					selectors.nodes.forEach(selector => {
+						// walk all selector nodes that are :dir pseudo-classes
+						selector.walk(node => {
+							if ('pseudo' !== node.type) {
+								return;
+							}
 
-			// update the rule selector
-			currentRule.selector = selectorParser(selectors => {
-				// for each (comma separated) selector
-				selectors.nodes.forEach(selector => {
-					// walk all selector nodes that are :dir pseudo-classes
-					selector.walk(node => {
-						if ('pseudo' === node.type && ':dir' === node.value) {
+							if (':dir' !== node.value) {
+								return;
+							}
+
+							// value of the :dir pseudo-class
+							const value = node.nodes.toString();
+							if (value !== 'rtl' && value !== 'ltr') {
+								return;
+							}
+
+							const parent = node.parent;
+							const otherDirPseudos = parent.nodes.filter((other) => {
+								return 'pseudo' === other.type && ':dir' === other.value;
+							});
+							if (otherDirPseudos.length > 1 && !emittedWarningForHierarchicalDir) {
+								emittedWarningForHierarchicalDir = true;
+								rule.warn(result, `Hierarchical :dir pseudo class usage can't be transformed correctly to [dir] attributes. This will lead to incorrect selectors for "${rule.selector}"`);
+							}
+
 							// previous and next selector nodes
 							const prev = node.prev();
 							const next = node.next();
 
-							const prevIsSpaceCombinator = prev && prev.type && 'combinator' === prev.type && ' ' === prev.value;
-							const nextIsSpaceCombinator = next && next.type && 'combinator' === next.type && ' ' === next.value;
+							const prevIsNonCombinator = prev && prev.type && 'combinator' !== prev.type;
+							const nextIsNonCombinator = next && next.type && 'combinator' !== next.type;
+							const nextIsNonCombinatorOrSpace = next && next.type && ('combinator' !== next.type || ('combinator' === next.type && ' ' === next.value));
 
-							// preserve the selector tree
-							if (prevIsSpaceCombinator && (nextIsSpaceCombinator || !next)) {
+							if (prevIsNonCombinator) {
+								node.remove();
+							} else if (nextIsNonCombinator) {
+								node.remove();
+							} else if (parent.nodes.indexOf(node) === 0 && nextIsNonCombinatorOrSpace) {
+								node.remove();
+							} else if (parent.nodes.length === 1) {
+								node.remove();
+							} else {
 								node.replaceWith(
 									selectorParser.universal(),
 								);
-							} else {
-								node.remove();
 							}
 
 							// conditionally prepend a combinator before inserting the [dir] attribute
-							const first = selector.nodes[0];
+							const first = parent.nodes[0];
 							const firstIsSpaceCombinator = first && 'combinator' === first.type && ' ' === first.value;
 							const firstIsHtml = first && 'tag' === first.type && 'html' === first.value;
 							const firstIsRoot = first && 'pseudo' === first.type && ':root' === first.value;
 
 							if (first && !firstIsHtml && !firstIsRoot && !firstIsSpaceCombinator) {
-								selector.prepend(
+								parent.prepend(
 									selectorParser.combinator({
 										value: ' ',
 									}),
 								);
 							}
-
-							// value of the :dir pseudo-class
-							const value = node.nodes.toString();
 
 							// whether :dir matches the presumed direction
 							const isdir = dir === value;
@@ -69,9 +90,9 @@ module.exports = function creator(opts) {
 							// [dir] attribute
 							const dirAttr = selectorParser.attribute({
 								attribute: 'dir',
-								operator:  '=',
+								operator: '=',
 								quoteMark: '"',
-								value:     `"${ value }"`,
+								value: `"${value}"`,
 							});
 
 							// :host-context([dir]) for Shadow DOM CSS
@@ -88,9 +109,9 @@ module.exports = function creator(opts) {
 							notDirAttr.append(
 								selectorParser.attribute({
 									attribute: 'dir',
-									operator:  '=',
+									operator: '=',
 									quoteMark: '"',
-									value:     `"${ 'ltr' === value ? 'rtl' : 'ltr' }"`,
+									value: `"${'ltr' === value ? 'rtl' : 'ltr'}"`,
 								}),
 							);
 
@@ -98,25 +119,42 @@ module.exports = function creator(opts) {
 								// if the direction is presumed
 								if (firstIsHtml) {
 									// insert :root after html tag
-									selector.insertAfter(first, notDirAttr);
+									parent.insertAfter(first, notDirAttr);
 								} else {
 									// prepend :root
-									selector.prepend(notDirAttr);
+									parent.prepend(notDirAttr);
 								}
 							} else if (firstIsHtml) {
 								// insert dir attribute after html tag
-								selector.insertAfter(first, dirAttr);
+								parent.insertAfter(first, dirAttr);
 							} else if (shadow && !firstIsRoot) {
 								// prepend :host-context([dir])
-								selector.prepend(hostContextPseudo);
+								parent.prepend(hostContextPseudo);
 							} else {
 								// otherwise, prepend the dir attribute
-								selector.prepend(dirAttr);
+								parent.prepend(dirAttr);
 							}
-						}
+						});
 					});
-				});
-			}).processSync(currentRule.selector);
+				}).processSync(rule.selector);
+			} catch (_) {
+				rule.warn(result, `Failed to parse selector : ${rule.selector}`);
+				return;
+			}
+
+			if (typeof modifiedSelector === 'undefined') {
+				return;
+			}
+
+			if (modifiedSelector === rule.selector) {
+				return;
+			}
+
+			if (preserve) {
+				rule.cloneBefore({ selector: modifiedSelector });
+			} else {
+				rule.selector = modifiedSelector;
+			}
 		},
 	};
 };

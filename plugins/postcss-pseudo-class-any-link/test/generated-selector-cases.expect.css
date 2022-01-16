@@ -1,0 +1,905 @@
+:link:link,:link:visited,:visited:link,:visited:visited {
+	order: 0;
+}
+
+:link:link,:link:visited,:visited:link,:visited:visited {
+	order: 1;
+}
+
+:link :link,:link :visited,:visited :link,:visited :visited {
+	order: 2;
+}
+
+:link :link,:link :visited,:visited :link,:visited :visited {
+	order: 3;
+}
+
+:link  :link,:link  :visited,:visited  :link,:visited  :visited {
+	order: 4;
+}
+
+:link  :link,:link  :visited,:visited  :link,:visited  :visited {
+	order: 5;
+}
+
+:link+:link,:link+:visited,:visited+:link,:visited+:visited {
+	order: 6;
+}
+
+:link+:link,:link+:visited,:visited+:link,:visited+:visited {
+	order: 7;
+}
+
+:link + :link,:link + :visited,:visited + :link,:visited + :visited {
+	order: 8;
+}
+
+:link + :link,:link + :visited,:visited + :link,:visited + :visited {
+	order: 9;
+}
+
+:link~:link,:link~:visited,:visited~:link,:visited~:visited {
+	order: 10;
+}
+
+:link~:link,:link~:visited,:visited~:link,:visited~:visited {
+	order: 11;
+}
+
+:link ~ :link,:link ~ :visited,:visited ~ :link,:visited ~ :visited {
+	order: 12;
+}
+
+:link ~ :link,:link ~ :visited,:visited ~ :link,:visited ~ :visited {
+	order: 13;
+}
+
+:link>:link,:link>:visited,:visited>:link,:visited>:visited {
+	order: 14;
+}
+
+:link>:link,:link>:visited,:visited>:link,:visited>:visited {
+	order: 15;
+}
+
+:link > :link,:link > :visited,:visited > :link,:visited > :visited {
+	order: 16;
+}
+
+:link > :link,:link > :visited,:visited > :link,:visited > :visited {
+	order: 17;
+}
+
+:link,:visited, :link, :visited {
+	order: 18;
+}
+
+:link,:visited, :link, :visited {
+	order: 19;
+}
+
+button:link,button:visited {
+	order: 20;
+}
+
+:any-linkbutton {
+	order: 21;
+}
+
+button :link,button :visited {
+	order: 22;
+}
+
+:link button,:visited button {
+	order: 23;
+}
+
+button  :link,button  :visited {
+	order: 24;
+}
+
+:link  button,:visited  button {
+	order: 25;
+}
+
+button+:link,button+:visited {
+	order: 26;
+}
+
+:link+button,:visited+button {
+	order: 27;
+}
+
+button + :link,button + :visited {
+	order: 28;
+}
+
+:link + button,:visited + button {
+	order: 29;
+}
+
+button~:link,button~:visited {
+	order: 30;
+}
+
+:link~button,:visited~button {
+	order: 31;
+}
+
+button ~ :link,button ~ :visited {
+	order: 32;
+}
+
+:link ~ button,:visited ~ button {
+	order: 33;
+}
+
+button>:link,button>:visited {
+	order: 34;
+}
+
+:link>button,:visited>button {
+	order: 35;
+}
+
+button > :link,button > :visited {
+	order: 36;
+}
+
+:link > button,:visited > button {
+	order: 37;
+}
+
+button, :link, :visited {
+	order: 38;
+}
+
+:link,:visited, button {
+	order: 39;
+}
+
+.🧑🏾‍🎤:link,.🧑🏾‍🎤:visited {
+	order: 40;
+}
+
+:link.🧑🏾‍🎤,:visited.🧑🏾‍🎤 {
+	order: 41;
+}
+
+.🧑🏾‍🎤 :link,.🧑🏾‍🎤 :visited {
+	order: 42;
+}
+
+:link .🧑🏾‍🎤,:visited .🧑🏾‍🎤 {
+	order: 43;
+}
+
+.🧑🏾‍🎤  :link,.🧑🏾‍🎤  :visited {
+	order: 44;
+}
+
+:link  .🧑🏾‍🎤,:visited  .🧑🏾‍🎤 {
+	order: 45;
+}
+
+.🧑🏾‍🎤+:link,.🧑🏾‍🎤+:visited {
+	order: 46;
+}
+
+:link+.🧑🏾‍🎤,:visited+.🧑🏾‍🎤 {
+	order: 47;
+}
+
+.🧑🏾‍🎤 + :link,.🧑🏾‍🎤 + :visited {
+	order: 48;
+}
+
+:link + .🧑🏾‍🎤,:visited + .🧑🏾‍🎤 {
+	order: 49;
+}
+
+.🧑🏾‍🎤~:link,.🧑🏾‍🎤~:visited {
+	order: 50;
+}
+
+:link~.🧑🏾‍🎤,:visited~.🧑🏾‍🎤 {
+	order: 51;
+}
+
+.🧑🏾‍🎤 ~ :link,.🧑🏾‍🎤 ~ :visited {
+	order: 52;
+}
+
+:link ~ .🧑🏾‍🎤,:visited ~ .🧑🏾‍🎤 {
+	order: 53;
+}
+
+.🧑🏾‍🎤>:link,.🧑🏾‍🎤>:visited {
+	order: 54;
+}
+
+:link>.🧑🏾‍🎤,:visited>.🧑🏾‍🎤 {
+	order: 55;
+}
+
+.🧑🏾‍🎤 > :link,.🧑🏾‍🎤 > :visited {
+	order: 56;
+}
+
+:link > .🧑🏾‍🎤,:visited > .🧑🏾‍🎤 {
+	order: 57;
+}
+
+.🧑🏾‍🎤, :link, :visited {
+	order: 58;
+}
+
+:link,:visited, .🧑🏾‍🎤 {
+	order: 59;
+}
+
+.foo:link,.foo:visited {
+	order: 60;
+}
+
+:link.foo,:visited.foo {
+	order: 61;
+}
+
+.foo :link,.foo :visited {
+	order: 62;
+}
+
+:link .foo,:visited .foo {
+	order: 63;
+}
+
+.foo  :link,.foo  :visited {
+	order: 64;
+}
+
+:link  .foo,:visited  .foo {
+	order: 65;
+}
+
+.foo+:link,.foo+:visited {
+	order: 66;
+}
+
+:link+.foo,:visited+.foo {
+	order: 67;
+}
+
+.foo + :link,.foo + :visited {
+	order: 68;
+}
+
+:link + .foo,:visited + .foo {
+	order: 69;
+}
+
+.foo~:link,.foo~:visited {
+	order: 70;
+}
+
+:link~.foo,:visited~.foo {
+	order: 71;
+}
+
+.foo ~ :link,.foo ~ :visited {
+	order: 72;
+}
+
+:link ~ .foo,:visited ~ .foo {
+	order: 73;
+}
+
+.foo>:link,.foo>:visited {
+	order: 74;
+}
+
+:link>.foo,:visited>.foo {
+	order: 75;
+}
+
+.foo > :link,.foo > :visited {
+	order: 76;
+}
+
+:link > .foo,:visited > .foo {
+	order: 77;
+}
+
+.foo, :link, :visited {
+	order: 78;
+}
+
+:link,:visited, .foo {
+	order: 79;
+}
+
+#foo:link,#foo:visited {
+	order: 80;
+}
+
+:link#foo,:visited#foo {
+	order: 81;
+}
+
+#foo :link,#foo :visited {
+	order: 82;
+}
+
+:link #foo,:visited #foo {
+	order: 83;
+}
+
+#foo  :link,#foo  :visited {
+	order: 84;
+}
+
+:link  #foo,:visited  #foo {
+	order: 85;
+}
+
+#foo+:link,#foo+:visited {
+	order: 86;
+}
+
+:link+#foo,:visited+#foo {
+	order: 87;
+}
+
+#foo + :link,#foo + :visited {
+	order: 88;
+}
+
+:link + #foo,:visited + #foo {
+	order: 89;
+}
+
+#foo~:link,#foo~:visited {
+	order: 90;
+}
+
+:link~#foo,:visited~#foo {
+	order: 91;
+}
+
+#foo ~ :link,#foo ~ :visited {
+	order: 92;
+}
+
+:link ~ #foo,:visited ~ #foo {
+	order: 93;
+}
+
+#foo>:link,#foo>:visited {
+	order: 94;
+}
+
+:link>#foo,:visited>#foo {
+	order: 95;
+}
+
+#foo > :link,#foo > :visited {
+	order: 96;
+}
+
+:link > #foo,:visited > #foo {
+	order: 97;
+}
+
+#foo, :link, :visited {
+	order: 98;
+}
+
+:link,:visited, #foo {
+	order: 99;
+}
+
+__foo:link,__foo:visited {
+	order: 100;
+}
+
+:any-link__foo {
+	order: 101;
+}
+
+__foo :link,__foo :visited {
+	order: 102;
+}
+
+:link __foo,:visited __foo {
+	order: 103;
+}
+
+__foo  :link,__foo  :visited {
+	order: 104;
+}
+
+:link  __foo,:visited  __foo {
+	order: 105;
+}
+
+__foo+:link,__foo+:visited {
+	order: 106;
+}
+
+:link+__foo,:visited+__foo {
+	order: 107;
+}
+
+__foo + :link,__foo + :visited {
+	order: 108;
+}
+
+:link + __foo,:visited + __foo {
+	order: 109;
+}
+
+__foo~:link,__foo~:visited {
+	order: 110;
+}
+
+:link~__foo,:visited~__foo {
+	order: 111;
+}
+
+__foo ~ :link,__foo ~ :visited {
+	order: 112;
+}
+
+:link ~ __foo,:visited ~ __foo {
+	order: 113;
+}
+
+__foo>:link,__foo>:visited {
+	order: 114;
+}
+
+:link>__foo,:visited>__foo {
+	order: 115;
+}
+
+__foo > :link,__foo > :visited {
+	order: 116;
+}
+
+:link > __foo,:visited > __foo {
+	order: 117;
+}
+
+__foo, :link, :visited {
+	order: 118;
+}
+
+:link,:visited, __foo {
+	order: 119;
+}
+
+:--foo:link,:--foo:visited {
+	order: 120;
+}
+
+:link:--foo,:visited:--foo {
+	order: 121;
+}
+
+:--foo :link,:--foo :visited {
+	order: 122;
+}
+
+:link :--foo,:visited :--foo {
+	order: 123;
+}
+
+:--foo  :link,:--foo  :visited {
+	order: 124;
+}
+
+:link  :--foo,:visited  :--foo {
+	order: 125;
+}
+
+:--foo+:link,:--foo+:visited {
+	order: 126;
+}
+
+:link+:--foo,:visited+:--foo {
+	order: 127;
+}
+
+:--foo + :link,:--foo + :visited {
+	order: 128;
+}
+
+:link + :--foo,:visited + :--foo {
+	order: 129;
+}
+
+:--foo~:link,:--foo~:visited {
+	order: 130;
+}
+
+:link~:--foo,:visited~:--foo {
+	order: 131;
+}
+
+:--foo ~ :link,:--foo ~ :visited {
+	order: 132;
+}
+
+:link ~ :--foo,:visited ~ :--foo {
+	order: 133;
+}
+
+:--foo>:link,:--foo>:visited {
+	order: 134;
+}
+
+:link>:--foo,:visited>:--foo {
+	order: 135;
+}
+
+:--foo > :link,:--foo > :visited {
+	order: 136;
+}
+
+:link > :--foo,:visited > :--foo {
+	order: 137;
+}
+
+:--foo, :link, :visited {
+	order: 138;
+}
+
+:link,:visited, :--foo {
+	order: 139;
+}
+
+[foo="baz"]:link,[foo="baz"]:visited {
+	order: 140;
+}
+
+:link[foo="baz"],:visited[foo="baz"] {
+	order: 141;
+}
+
+[foo="baz"] :link,[foo="baz"] :visited {
+	order: 142;
+}
+
+:link [foo="baz"],:visited [foo="baz"] {
+	order: 143;
+}
+
+[foo="baz"]  :link,[foo="baz"]  :visited {
+	order: 144;
+}
+
+:link  [foo="baz"],:visited  [foo="baz"] {
+	order: 145;
+}
+
+[foo="baz"]+:link,[foo="baz"]+:visited {
+	order: 146;
+}
+
+:link+[foo="baz"],:visited+[foo="baz"] {
+	order: 147;
+}
+
+[foo="baz"] + :link,[foo="baz"] + :visited {
+	order: 148;
+}
+
+:link + [foo="baz"],:visited + [foo="baz"] {
+	order: 149;
+}
+
+[foo="baz"]~:link,[foo="baz"]~:visited {
+	order: 150;
+}
+
+:link~[foo="baz"],:visited~[foo="baz"] {
+	order: 151;
+}
+
+[foo="baz"] ~ :link,[foo="baz"] ~ :visited {
+	order: 152;
+}
+
+:link ~ [foo="baz"],:visited ~ [foo="baz"] {
+	order: 153;
+}
+
+[foo="baz"]>:link,[foo="baz"]>:visited {
+	order: 154;
+}
+
+:link>[foo="baz"],:visited>[foo="baz"] {
+	order: 155;
+}
+
+[foo="baz"] > :link,[foo="baz"] > :visited {
+	order: 156;
+}
+
+:link > [foo="baz"],:visited > [foo="baz"] {
+	order: 157;
+}
+
+[foo="baz"], :link, :visited {
+	order: 158;
+}
+
+:link,:visited, [foo="baz"] {
+	order: 159;
+}
+
+*:link,*:visited {
+	order: 160;
+}
+
+:link*,:visited* {
+	order: 161;
+}
+
+* :link,* :visited {
+	order: 162;
+}
+
+:link *,:visited * {
+	order: 163;
+}
+
+*  :link,*  :visited {
+	order: 164;
+}
+
+:link  *,:visited  * {
+	order: 165;
+}
+
+*+:link,*+:visited {
+	order: 166;
+}
+
+:link+*,:visited+* {
+	order: 167;
+}
+
+* + :link,* + :visited {
+	order: 168;
+}
+
+:link + *,:visited + * {
+	order: 169;
+}
+
+*~:link,*~:visited {
+	order: 170;
+}
+
+:link~*,:visited~* {
+	order: 171;
+}
+
+* ~ :link,* ~ :visited {
+	order: 172;
+}
+
+:link ~ *,:visited ~ * {
+	order: 173;
+}
+
+*>:link,*>:visited {
+	order: 174;
+}
+
+:link>*,:visited>* {
+	order: 175;
+}
+
+* > :link,* > :visited {
+	order: 176;
+}
+
+:link > *,:visited > * {
+	order: 177;
+}
+
+*, :link, :visited {
+	order: 178;
+}
+
+:link,:visited, * {
+	order: 179;
+}
+
+:hover:link,:hover:visited {
+	order: 180;
+}
+
+:link:hover,:visited:hover {
+	order: 181;
+}
+
+:hover :link,:hover :visited {
+	order: 182;
+}
+
+:link :hover,:visited :hover {
+	order: 183;
+}
+
+:hover  :link,:hover  :visited {
+	order: 184;
+}
+
+:link  :hover,:visited  :hover {
+	order: 185;
+}
+
+:hover+:link,:hover+:visited {
+	order: 186;
+}
+
+:link+:hover,:visited+:hover {
+	order: 187;
+}
+
+:hover + :link,:hover + :visited {
+	order: 188;
+}
+
+:link + :hover,:visited + :hover {
+	order: 189;
+}
+
+:hover~:link,:hover~:visited {
+	order: 190;
+}
+
+:link~:hover,:visited~:hover {
+	order: 191;
+}
+
+:hover ~ :link,:hover ~ :visited {
+	order: 192;
+}
+
+:link ~ :hover,:visited ~ :hover {
+	order: 193;
+}
+
+:hover>:link,:hover>:visited {
+	order: 194;
+}
+
+:link>:hover,:visited>:hover {
+	order: 195;
+}
+
+:hover > :link,:hover > :visited {
+	order: 196;
+}
+
+:link > :hover,:visited > :hover {
+	order: 197;
+}
+
+:hover, :link, :visited {
+	order: 198;
+}
+
+:link,:visited, :hover {
+	order: 199;
+}
+
+::before:link,::before:visited {
+	order: 200;
+}
+
+:link::before,:visited::before {
+	order: 201;
+}
+
+::before :link,::before :visited {
+	order: 202;
+}
+
+:link ::before,:visited ::before {
+	order: 203;
+}
+
+::before  :link,::before  :visited {
+	order: 204;
+}
+
+:link  ::before,:visited  ::before {
+	order: 205;
+}
+
+::before+:link,::before+:visited {
+	order: 206;
+}
+
+:link+::before,:visited+::before {
+	order: 207;
+}
+
+::before + :link,::before + :visited {
+	order: 208;
+}
+
+:link + ::before,:visited + ::before {
+	order: 209;
+}
+
+::before~:link,::before~:visited {
+	order: 210;
+}
+
+:link~::before,:visited~::before {
+	order: 211;
+}
+
+::before ~ :link,::before ~ :visited {
+	order: 212;
+}
+
+:link ~ ::before,:visited ~ ::before {
+	order: 213;
+}
+
+::before>:link,::before>:visited {
+	order: 214;
+}
+
+:link>::before,:visited>::before {
+	order: 215;
+}
+
+::before > :link,::before > :visited {
+	order: 216;
+}
+
+:link > ::before,:visited > ::before {
+	order: 217;
+}
+
+::before, :link, :visited {
+	order: 218;
+}
+
+:link,:visited, ::before {
+	order: 219;
+}
+
+foo[:any-link] {
+	order: 220;
+}
+
+foo[baz=":any-link"] {
+	order: 221;
+}
+
+:not(:any-link) {
+	order: 222;
+}
+
+::any-link {
+	order: 223;
+}
+
+:--:link,:--:visited {
+	order: 224;
+}
+
+__:link,__:visited {
+	order: 225;
+}
+
+/* :any-link */

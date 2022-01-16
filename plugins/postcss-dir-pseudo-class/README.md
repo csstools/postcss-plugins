@@ -152,7 +152,7 @@ article h3:dir(ltr) {
 
 [cli-img]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[css-img]: https://cssdb.org/badge/dir-pseudo-class.svg
+[css-img]: https://cssdb.org/images/badges/dir-pseudo-class.svg
 [css-url]: https://cssdb.org/#dir-pseudo-class
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss

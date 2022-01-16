@@ -2,8 +2,7 @@
 	order: 1;
 }
 
-.focus-visible,
-.focus-visible test,
+.focus-visible,.focus-visible test,
 test .focus-visible,
 test test.focus-visible,
 test .focus-visible test,
@@ -26,9 +25,13 @@ test :matches(test .focus-visible .focus-visible test) test {
 	order: 3;
 }
 
+:focus-visible(.ignore) {
+	order: 4;
+}
+
 .escaped\:focus-visible,
 .escaped\:times\:two\:focus-visible,
 .escaped\:focus-visible.focus-visible,
 .escaped\:times\:two.focus-visible {
-	order: 4;
+	order: 5;
 }

@@ -1,0 +1,116 @@
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-pseudo-class.html */
+#d_main:has(input) div {
+	color: grey
+}
+
+#d_main:has(#d_checkbox:checked)>#d_subject {
+	color: red
+}
+
+#d_main:has(#d_option:checked)>#d_subject {
+	color: red
+}
+
+#d_main:has(#d_checkbox:disabled)>#d_subject {
+	color: green
+}
+
+#d_main:has(#d_option:disabled)> :is(#d_subject, #d_subject2) {
+	color: green
+}
+
+#d_main:has(#d_optgroup:disabled)>#d_subject {
+	color: blue
+}
+
+#d_main:not(:has(#d_checkbox:enabled))>#d_subject3 {
+	color: green
+}
+
+#d_main:not(:has(#d_option:enabled)) :is(#d_subject3, #d_subject4) {
+	color: green
+}
+
+#d_main:not(:has(#d_optgroup:enabled))>#d_subject3 {
+	color: blue
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-ancestor-position.html */
+div:has(.c_test) #c_subject {
+	background-color: red
+}
+
+div:has(> .c_test) #c_subject {
+	background-color: green
+}
+
+div:has(~ .c_test) #c_subject {
+	background-color: yellow
+}
+
+div:has(+ .c_test) #c_subject {
+	background-color: blue
+}
+
+div:has(~ div .c_test) #c_subject {
+	background-color: purple
+}
+
+div:has(+ div .c_test) #c_subject {
+	background-color: pink
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
+div:has(.a_test)+#a_subject {
+	background-color: red;
+}
+
+div:has(> .a_test)+#a_subject {
+	background-color: green;
+}
+
+div:has(~ .a_test)+#a_subject {
+	background-color: yellow;
+}
+
+div:has(+ .a_test)+#a_subject {
+	background-color: blue;
+}
+
+div:has(~ div .a_test)+#a_subject {
+	background-color: purple;
+}
+
+div:has(+ div .a_test)+#a_subject {
+	background-color: pink;
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/attribute-or-elemental-selectors-in-has.html */
+div,
+main {
+	background-color: grey;
+	margin: 5px;
+	min-height: 20px;
+	min-width: 20px;
+	padding: 5px;
+}
+
+.b_subject:has(> .b_child) {
+	background-color: red;
+}
+
+.b_subject:has(.b_descendant) {
+	background-color: green;
+}
+
+.b_subject:has([attrname="b_descendant"]) {
+	background-color: blue;
+}
+
+.b_subject:has(#b_div_descendant) {
+	background-color: yellow;
+}
+
+.b_subject:has(b_descendant) {
+	background-color: yellowgreen;
+}

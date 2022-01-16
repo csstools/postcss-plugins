@@ -1,0 +1,905 @@
+[focus-within][focus-within] {
+	order: 0;
+}
+
+[focus-within][focus-within] {
+	order: 1;
+}
+
+[focus-within] [focus-within] {
+	order: 2;
+}
+
+[focus-within] [focus-within] {
+	order: 3;
+}
+
+[focus-within]  [focus-within] {
+	order: 4;
+}
+
+[focus-within]  [focus-within] {
+	order: 5;
+}
+
+[focus-within]+[focus-within] {
+	order: 6;
+}
+
+[focus-within]+[focus-within] {
+	order: 7;
+}
+
+[focus-within] + [focus-within] {
+	order: 8;
+}
+
+[focus-within] + [focus-within] {
+	order: 9;
+}
+
+[focus-within]~[focus-within] {
+	order: 10;
+}
+
+[focus-within]~[focus-within] {
+	order: 11;
+}
+
+[focus-within] ~ [focus-within] {
+	order: 12;
+}
+
+[focus-within] ~ [focus-within] {
+	order: 13;
+}
+
+[focus-within]>[focus-within] {
+	order: 14;
+}
+
+[focus-within]>[focus-within] {
+	order: 15;
+}
+
+[focus-within] > [focus-within] {
+	order: 16;
+}
+
+[focus-within] > [focus-within] {
+	order: 17;
+}
+
+[focus-within],[focus-within] {
+	order: 18;
+}
+
+[focus-within],[focus-within] {
+	order: 19;
+}
+
+button[focus-within] {
+	order: 20;
+}
+
+:focus-withinbutton {
+	order: 21;
+}
+
+button [focus-within] {
+	order: 22;
+}
+
+[focus-within] button {
+	order: 23;
+}
+
+button  [focus-within] {
+	order: 24;
+}
+
+[focus-within]  button {
+	order: 25;
+}
+
+button+[focus-within] {
+	order: 26;
+}
+
+[focus-within]+button {
+	order: 27;
+}
+
+button + [focus-within] {
+	order: 28;
+}
+
+[focus-within] + button {
+	order: 29;
+}
+
+button~[focus-within] {
+	order: 30;
+}
+
+[focus-within]~button {
+	order: 31;
+}
+
+button ~ [focus-within] {
+	order: 32;
+}
+
+[focus-within] ~ button {
+	order: 33;
+}
+
+button>[focus-within] {
+	order: 34;
+}
+
+[focus-within]>button {
+	order: 35;
+}
+
+button > [focus-within] {
+	order: 36;
+}
+
+[focus-within] > button {
+	order: 37;
+}
+
+button,[focus-within] {
+	order: 38;
+}
+
+[focus-within], button {
+	order: 39;
+}
+
+.🧑🏾‍🎤[focus-within] {
+	order: 40;
+}
+
+[focus-within].🧑🏾‍🎤 {
+	order: 41;
+}
+
+.🧑🏾‍🎤 [focus-within] {
+	order: 42;
+}
+
+[focus-within] .🧑🏾‍🎤 {
+	order: 43;
+}
+
+.🧑🏾‍🎤  [focus-within] {
+	order: 44;
+}
+
+[focus-within]  .🧑🏾‍🎤 {
+	order: 45;
+}
+
+.🧑🏾‍🎤+[focus-within] {
+	order: 46;
+}
+
+[focus-within]+.🧑🏾‍🎤 {
+	order: 47;
+}
+
+.🧑🏾‍🎤 + [focus-within] {
+	order: 48;
+}
+
+[focus-within] + .🧑🏾‍🎤 {
+	order: 49;
+}
+
+.🧑🏾‍🎤~[focus-within] {
+	order: 50;
+}
+
+[focus-within]~.🧑🏾‍🎤 {
+	order: 51;
+}
+
+.🧑🏾‍🎤 ~ [focus-within] {
+	order: 52;
+}
+
+[focus-within] ~ .🧑🏾‍🎤 {
+	order: 53;
+}
+
+.🧑🏾‍🎤>[focus-within] {
+	order: 54;
+}
+
+[focus-within]>.🧑🏾‍🎤 {
+	order: 55;
+}
+
+.🧑🏾‍🎤 > [focus-within] {
+	order: 56;
+}
+
+[focus-within] > .🧑🏾‍🎤 {
+	order: 57;
+}
+
+.🧑🏾‍🎤,[focus-within] {
+	order: 58;
+}
+
+[focus-within], .🧑🏾‍🎤 {
+	order: 59;
+}
+
+.foo[focus-within] {
+	order: 60;
+}
+
+[focus-within].foo {
+	order: 61;
+}
+
+.foo [focus-within] {
+	order: 62;
+}
+
+[focus-within] .foo {
+	order: 63;
+}
+
+.foo  [focus-within] {
+	order: 64;
+}
+
+[focus-within]  .foo {
+	order: 65;
+}
+
+.foo+[focus-within] {
+	order: 66;
+}
+
+[focus-within]+.foo {
+	order: 67;
+}
+
+.foo + [focus-within] {
+	order: 68;
+}
+
+[focus-within] + .foo {
+	order: 69;
+}
+
+.foo~[focus-within] {
+	order: 70;
+}
+
+[focus-within]~.foo {
+	order: 71;
+}
+
+.foo ~ [focus-within] {
+	order: 72;
+}
+
+[focus-within] ~ .foo {
+	order: 73;
+}
+
+.foo>[focus-within] {
+	order: 74;
+}
+
+[focus-within]>.foo {
+	order: 75;
+}
+
+.foo > [focus-within] {
+	order: 76;
+}
+
+[focus-within] > .foo {
+	order: 77;
+}
+
+.foo,[focus-within] {
+	order: 78;
+}
+
+[focus-within], .foo {
+	order: 79;
+}
+
+#foo[focus-within] {
+	order: 80;
+}
+
+[focus-within]#foo {
+	order: 81;
+}
+
+#foo [focus-within] {
+	order: 82;
+}
+
+[focus-within] #foo {
+	order: 83;
+}
+
+#foo  [focus-within] {
+	order: 84;
+}
+
+[focus-within]  #foo {
+	order: 85;
+}
+
+#foo+[focus-within] {
+	order: 86;
+}
+
+[focus-within]+#foo {
+	order: 87;
+}
+
+#foo + [focus-within] {
+	order: 88;
+}
+
+[focus-within] + #foo {
+	order: 89;
+}
+
+#foo~[focus-within] {
+	order: 90;
+}
+
+[focus-within]~#foo {
+	order: 91;
+}
+
+#foo ~ [focus-within] {
+	order: 92;
+}
+
+[focus-within] ~ #foo {
+	order: 93;
+}
+
+#foo>[focus-within] {
+	order: 94;
+}
+
+[focus-within]>#foo {
+	order: 95;
+}
+
+#foo > [focus-within] {
+	order: 96;
+}
+
+[focus-within] > #foo {
+	order: 97;
+}
+
+#foo,[focus-within] {
+	order: 98;
+}
+
+[focus-within], #foo {
+	order: 99;
+}
+
+__foo[focus-within] {
+	order: 100;
+}
+
+:focus-within__foo {
+	order: 101;
+}
+
+__foo [focus-within] {
+	order: 102;
+}
+
+[focus-within] __foo {
+	order: 103;
+}
+
+__foo  [focus-within] {
+	order: 104;
+}
+
+[focus-within]  __foo {
+	order: 105;
+}
+
+__foo+[focus-within] {
+	order: 106;
+}
+
+[focus-within]+__foo {
+	order: 107;
+}
+
+__foo + [focus-within] {
+	order: 108;
+}
+
+[focus-within] + __foo {
+	order: 109;
+}
+
+__foo~[focus-within] {
+	order: 110;
+}
+
+[focus-within]~__foo {
+	order: 111;
+}
+
+__foo ~ [focus-within] {
+	order: 112;
+}
+
+[focus-within] ~ __foo {
+	order: 113;
+}
+
+__foo>[focus-within] {
+	order: 114;
+}
+
+[focus-within]>__foo {
+	order: 115;
+}
+
+__foo > [focus-within] {
+	order: 116;
+}
+
+[focus-within] > __foo {
+	order: 117;
+}
+
+__foo,[focus-within] {
+	order: 118;
+}
+
+[focus-within], __foo {
+	order: 119;
+}
+
+:--foo[focus-within] {
+	order: 120;
+}
+
+[focus-within]:--foo {
+	order: 121;
+}
+
+:--foo [focus-within] {
+	order: 122;
+}
+
+[focus-within] :--foo {
+	order: 123;
+}
+
+:--foo  [focus-within] {
+	order: 124;
+}
+
+[focus-within]  :--foo {
+	order: 125;
+}
+
+:--foo+[focus-within] {
+	order: 126;
+}
+
+[focus-within]+:--foo {
+	order: 127;
+}
+
+:--foo + [focus-within] {
+	order: 128;
+}
+
+[focus-within] + :--foo {
+	order: 129;
+}
+
+:--foo~[focus-within] {
+	order: 130;
+}
+
+[focus-within]~:--foo {
+	order: 131;
+}
+
+:--foo ~ [focus-within] {
+	order: 132;
+}
+
+[focus-within] ~ :--foo {
+	order: 133;
+}
+
+:--foo>[focus-within] {
+	order: 134;
+}
+
+[focus-within]>:--foo {
+	order: 135;
+}
+
+:--foo > [focus-within] {
+	order: 136;
+}
+
+[focus-within] > :--foo {
+	order: 137;
+}
+
+:--foo,[focus-within] {
+	order: 138;
+}
+
+[focus-within], :--foo {
+	order: 139;
+}
+
+[foo="baz"][focus-within] {
+	order: 140;
+}
+
+[focus-within][foo="baz"] {
+	order: 141;
+}
+
+[foo="baz"] [focus-within] {
+	order: 142;
+}
+
+[focus-within] [foo="baz"] {
+	order: 143;
+}
+
+[foo="baz"]  [focus-within] {
+	order: 144;
+}
+
+[focus-within]  [foo="baz"] {
+	order: 145;
+}
+
+[foo="baz"]+[focus-within] {
+	order: 146;
+}
+
+[focus-within]+[foo="baz"] {
+	order: 147;
+}
+
+[foo="baz"] + [focus-within] {
+	order: 148;
+}
+
+[focus-within] + [foo="baz"] {
+	order: 149;
+}
+
+[foo="baz"]~[focus-within] {
+	order: 150;
+}
+
+[focus-within]~[foo="baz"] {
+	order: 151;
+}
+
+[foo="baz"] ~ [focus-within] {
+	order: 152;
+}
+
+[focus-within] ~ [foo="baz"] {
+	order: 153;
+}
+
+[foo="baz"]>[focus-within] {
+	order: 154;
+}
+
+[focus-within]>[foo="baz"] {
+	order: 155;
+}
+
+[foo="baz"] > [focus-within] {
+	order: 156;
+}
+
+[focus-within] > [foo="baz"] {
+	order: 157;
+}
+
+[foo="baz"],[focus-within] {
+	order: 158;
+}
+
+[focus-within], [foo="baz"] {
+	order: 159;
+}
+
+*[focus-within] {
+	order: 160;
+}
+
+[focus-within]* {
+	order: 161;
+}
+
+* [focus-within] {
+	order: 162;
+}
+
+[focus-within] * {
+	order: 163;
+}
+
+*  [focus-within] {
+	order: 164;
+}
+
+[focus-within]  * {
+	order: 165;
+}
+
+*+[focus-within] {
+	order: 166;
+}
+
+[focus-within]+* {
+	order: 167;
+}
+
+* + [focus-within] {
+	order: 168;
+}
+
+[focus-within] + * {
+	order: 169;
+}
+
+*~[focus-within] {
+	order: 170;
+}
+
+[focus-within]~* {
+	order: 171;
+}
+
+* ~ [focus-within] {
+	order: 172;
+}
+
+[focus-within] ~ * {
+	order: 173;
+}
+
+*>[focus-within] {
+	order: 174;
+}
+
+[focus-within]>* {
+	order: 175;
+}
+
+* > [focus-within] {
+	order: 176;
+}
+
+[focus-within] > * {
+	order: 177;
+}
+
+*,[focus-within] {
+	order: 178;
+}
+
+[focus-within], * {
+	order: 179;
+}
+
+:hover[focus-within] {
+	order: 180;
+}
+
+[focus-within]:hover {
+	order: 181;
+}
+
+:hover [focus-within] {
+	order: 182;
+}
+
+[focus-within] :hover {
+	order: 183;
+}
+
+:hover  [focus-within] {
+	order: 184;
+}
+
+[focus-within]  :hover {
+	order: 185;
+}
+
+:hover+[focus-within] {
+	order: 186;
+}
+
+[focus-within]+:hover {
+	order: 187;
+}
+
+:hover + [focus-within] {
+	order: 188;
+}
+
+[focus-within] + :hover {
+	order: 189;
+}
+
+:hover~[focus-within] {
+	order: 190;
+}
+
+[focus-within]~:hover {
+	order: 191;
+}
+
+:hover ~ [focus-within] {
+	order: 192;
+}
+
+[focus-within] ~ :hover {
+	order: 193;
+}
+
+:hover>[focus-within] {
+	order: 194;
+}
+
+[focus-within]>:hover {
+	order: 195;
+}
+
+:hover > [focus-within] {
+	order: 196;
+}
+
+[focus-within] > :hover {
+	order: 197;
+}
+
+:hover,[focus-within] {
+	order: 198;
+}
+
+[focus-within], :hover {
+	order: 199;
+}
+
+::before[focus-within] {
+	order: 200;
+}
+
+[focus-within]::before {
+	order: 201;
+}
+
+::before [focus-within] {
+	order: 202;
+}
+
+[focus-within] ::before {
+	order: 203;
+}
+
+::before  [focus-within] {
+	order: 204;
+}
+
+[focus-within]  ::before {
+	order: 205;
+}
+
+::before+[focus-within] {
+	order: 206;
+}
+
+[focus-within]+::before {
+	order: 207;
+}
+
+::before + [focus-within] {
+	order: 208;
+}
+
+[focus-within] + ::before {
+	order: 209;
+}
+
+::before~[focus-within] {
+	order: 210;
+}
+
+[focus-within]~::before {
+	order: 211;
+}
+
+::before ~ [focus-within] {
+	order: 212;
+}
+
+[focus-within] ~ ::before {
+	order: 213;
+}
+
+::before>[focus-within] {
+	order: 214;
+}
+
+[focus-within]>::before {
+	order: 215;
+}
+
+::before > [focus-within] {
+	order: 216;
+}
+
+[focus-within] > ::before {
+	order: 217;
+}
+
+::before,[focus-within] {
+	order: 218;
+}
+
+[focus-within], ::before {
+	order: 219;
+}
+
+foo[:focus-within] {
+	order: 220;
+}
+
+foo[baz=":focus-within"] {
+	order: 221;
+}
+
+:not([focus-within]) {
+	order: 222;
+}
+
+::focus-within {
+	order: 223;
+}
+
+:--[focus-within] {
+	order: 224;
+}
+
+__[focus-within] {
+	order: 225;
+}
+
+/* :focus-within */

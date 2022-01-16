@@ -1,5 +1,15 @@
 # Changes to PostCSS Place Properties
 
+### 7.0.3 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
+### 7.0.2 (December 13, 2021)
+
+- Changed: now uses `postcss-value-parser` for parsing.
+- Updated: documentation
+
 ## 7.0.1 (November 18, 2021)
 
 - Added: Safeguards against postcss-values-parser potentially throwing an error.

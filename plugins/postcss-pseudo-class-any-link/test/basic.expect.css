@@ -24,3 +24,8 @@ ul a:any-link > span {
 :any-link :any-link {
 	background: blue;
 }
+
+
+:any-link(.ignore) {
+	background: red;
+}

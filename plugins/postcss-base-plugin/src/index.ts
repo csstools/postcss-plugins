@@ -5,7 +5,7 @@ const creator: PluginCreator<{ color: string }> = (opts?: { color: string }) => 
 		postcssPlugin: 'postcss-base-plugin',
 		Declaration(decl) {
 			if (decl.value === 'red') {
-				if (opts?.color) {
+				if (opts && opts.color) {
 					decl.value = opts.color;
 				} else {
 					decl.value = 'blue';

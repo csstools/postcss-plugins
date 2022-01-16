@@ -46,10 +46,14 @@ test :matches(test :blank :blank test) test {
 	order: 3;
 }
 
-test:not(.css-blank) {
+:blank(ignore) {
 	order: 4;
 }
 
+test:not(.css-blank) {
+	order: 5;
+}
+
 test:not(:blank) {
-	order: 4;
+	order: 5;
 }

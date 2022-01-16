@@ -1,6 +1,6 @@
 {
   "name": "@csstools/postcss-plugins",
-  "private": "true",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
@@ -11,29 +11,32 @@
   "workspaces": [
     "packages/*",
     "plugins/*",
-    "plugin-packs/*"
+    "plugin-packs/*",
+    "cli/*",
+    "experimental/*"
   ],
   "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-typescript": "^8.3.0",
-    "@stryker-mutator/core": "^5.4.1",
-    "@typescript-eslint/eslint-plugin": "^5.3.0",
-    "eslint": "^8.1.0",
-    "rollup": "^2.58.3",
+    "@stryker-mutator/core": "^5.6.0",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "eslint": "^8.6.0",
+    "rollup": "^2.63.0",
     "rollup-plugin-terser": "^7.0.2",
-    "tslib": "^2.3.1",
-    "typescript": "^4.4.4"
+    "typescript": "^4.5.4"
   },
   "scripts": {
     "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present && npm run lint:rollup-config",
+    "lint:rollup-config": "eslint ./rollup --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "test": "npm run test --workspaces --if-present"
   },
   "volta": {
-    "node": "16.13.0",
-    "npm": "8.1.3"
+    "node": "16.13.1",
+    "npm": "8.3.0"
   }
 }

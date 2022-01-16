@@ -2,19 +2,17 @@
   "name": "postcss-nesting",
   "description": "Nest rules inside each other in CSS",
   "license": "CC0-1.0",
-  "version": "10.0.2",
-  "type": "module",
+  "version": "10.1.2",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "jsdelivr": "dist/index.mjs",
   "unpkg": "dist/index.mjs",
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
-  "bugs": "https://github.com/csstools/postcss-nesting/issues",
-  "homepage": "https://github.com/csstools/postcss-nesting#readme",
-  "repository": "csstools/postcss-nesting",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -27,74 +25,28 @@
     "mod.js"
   ],
   "scripts": {
-    "prepublishOnly": "npm test",
-    "build": "rollup -c .rollup.js",
-    "test": "node .bin/test.js",
-    "test:lint": "node .bin/test-lint.js",
-    "test:tape": "node .bin/test-tape.js",
-    "test:deno": "deno run --unstable --allow-env --allow-read .bin/test-deno.js"
+    "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "stryker": "stryker run --logLevel error",
+    "test": "postcss-tape --ci && npm run test:exports",
+    "test:deno": "deno run --unstable --allow-env --allow-read test/deno/test.js",
+    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
+  },
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
+  "dependencies": {
+    "postcss-selector-parser": "^6.0.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "eslint": "^8.1.0",
-    "rollup": "^2.58.3",
-    "rollup-plugin-terser": "^7.0.2",
-    "postcss": "8.3.11",
-    "pre-commit": "1.2.2"
-  },
-  "browserslist": [
-    "node >= 12"
-  ],
-  "engines": {
-    "node": ">= 12"
-  },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 12,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "modules": true
-      }
-    },
-    "rules": {
-      "semi": [
-        "error",
-        "never"
-      ]
-    }
+    "postcss": "^8.3.6",
+    "postcss-tape": "^6.0.1"
   },
   "peerDependencies": {
-    "postcss": "^8.2"
+    "postcss": "^8.3"
   },
-  "prettier": {
-    "arrowParens": "always",
-    "bracketSpacing": true,
-    "printWidth": 240,
-    "semi": false,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "all",
-    "useTabs": true,
-    "overrides": [
-      {
-        "files": [
-          "*.json",
-          "*.md",
-          ".prettierrc",
-          "*.yml"
-        ],
-        "options": {
-          "useTabs": false
-        }
-      }
-    ]
-  },
-  "sideEffects": false,
   "keywords": [
     "postcss",
     "postcss-plugin",
@@ -113,7 +65,12 @@
     "w3c",
     "csswg"
   ],
-  "dependencies": {
-    "postcss-selector-parser": "6.0.6"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugins/postcss-nesting"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

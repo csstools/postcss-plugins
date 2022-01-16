@@ -31,5 +31,5 @@ export default [
 	'overflow-property',
 	'overflow-wrap-property',
 	'place-properties',
-	'system-ui-font-family'
+	'system-ui-font-family',
 ];
