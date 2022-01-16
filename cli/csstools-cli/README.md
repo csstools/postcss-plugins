@@ -45,6 +45,7 @@ Available Plugins:
   postcss-gap-properties
   postcss-image-set-function
   postcss-lab-function
+  postcss-is-pseudo-class
   postcss-logical
   postcss-nesting
   postcss-overflow-shorthand
