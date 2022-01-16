@@ -40,11 +40,10 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				expected = await fsp.readFile(expectFilePath, 'utf8');
 			} catch (_) {
 				hasErrors = true;
-				console.error(`\nmissing expect file: "${expectFilePath}" for "${testCaseLabel}"\n\n${dashesSeparator}`);
 
 				if (process.env.GITHUB_ACTIONS) {
 					console.log(formatGitHubActionAnnotation(
-						`missing expect file: "${expectFilePath}" for "${testCaseLabel}"`,
+						`missing or broken "expect" file: "${expectFilePath}" for "${testCaseLabel}"`,
 						'error',
 						{
 							file: testFilePath,
@@ -52,7 +51,12 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 							col: 1,
 						},
 					));
+				} else {
+					console.error(`\nmissing or broken "expect" file: "${expectFilePath}" for "${testCaseLabel}"\n\n${dashesSeparator}`);
 				}
+
+				// Can't do further checks if "expect" is missing.
+				continue;
 			}
 
 			const result = await postcss(plugins).process(input, {
@@ -69,7 +73,6 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 					assert.strictEqual(resultString, expected);
 				} catch (err) {
 					hasErrors = true;
-					console.error(formatCSSAssertError(testCaseLabel, testCaseOptions, err));
 
 					if (process.env.GITHUB_ACTIONS) {
 						console.log(formatGitHubActionAnnotation(
@@ -81,6 +84,8 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 								col: 1,
 							},
 						));
+					} else {
+						console.error(formatCSSAssertError(testCaseLabel, testCaseOptions, err));
 					}
 				}
 			}
@@ -98,7 +103,6 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 					}
 				} catch (_) {
 					hasErrors = true;
-					console.error(`\nresult was not parse-able with PostCSS.\n\n${dashesSeparator}`);
 
 					if (process.env.GITHUB_ACTIONS) {
 						console.log(formatGitHubActionAnnotation(
@@ -110,6 +114,8 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 								col: 1,
 							},
 						));
+					} else {
+						console.error(`\nresult was not parse-able with PostCSS.\n\n${dashesSeparator}`);
 					}
 				}
 			}
@@ -126,7 +132,6 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 					assert.strictEqual(resultFromOldestPostCSS.css.toString(), resultString);
 				} catch (err) {
 					hasErrors = true;
-					console.error('\nwith older PostCSS:\n\n' + formatCSSAssertError(testCaseLabel, testCaseOptions, err));
 
 					if (process.env.GITHUB_ACTIONS) {
 						console.log(formatGitHubActionAnnotation(
@@ -138,9 +143,9 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 								col: 1,
 							},
 						));
+					} else {
+						console.error('\nwith older PostCSS:\n\n' + formatCSSAssertError(testCaseLabel, testCaseOptions, err));
 					}
-
-					continue;
 				}
 			}
 
@@ -152,7 +157,6 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 					}
 				} catch (err) {
 					hasErrors = true;
-					console.error(formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings));
 
 					if (process.env.GITHUB_ACTIONS) {
 						console.log(formatGitHubActionAnnotation(
@@ -164,6 +168,8 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 								col: 1,
 							},
 						));
+					} else {
+						console.error(formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings));
 					}
 				}
 			}
