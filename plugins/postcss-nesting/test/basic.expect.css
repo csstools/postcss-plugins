@@ -12,7 +12,7 @@ a {
 @media screen and (min-width: 480px), print and (min-width: 480px) {
 
 a {
-			order: 5
+			order: 3
 }
 		}
 
@@ -40,7 +40,7 @@ a b c {
 
 a b {
 
-		order: 17;
+		order: 9;
 	}
 
 a {
@@ -48,7 +48,7 @@ a {
 	order: 10
 }
 
-body a .sdf {
+body a {
 		order: 11
 }
 

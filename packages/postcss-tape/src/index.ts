@@ -45,11 +45,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 					console.log(formatGitHubActionAnnotation(
 						`missing or broken "expect" file: "${expectFilePath}" for "${testCaseLabel}"`,
 						'error',
-						{
-							file: testFilePath,
-							line: 1,
-							col: 1,
-						},
+						{ file: testFilePath, line: 1, col: 1 },
 					));
 				} else {
 					console.error(`\nmissing or broken "expect" file: "${expectFilePath}" for "${testCaseLabel}"\n\n${dashesSeparator}`);
@@ -78,11 +74,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 						console.log(formatGitHubActionAnnotation(
 							formatCSSAssertError(testCaseLabel, testCaseOptions, err, true),
 							'error',
-							{
-								file: normalizeFilePathForGithubAnnotation(expectFilePath),
-								line: 1,
-								col: 1,
-							},
+							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
 						));
 					} else {
 						console.error(formatCSSAssertError(testCaseLabel, testCaseOptions, err));
@@ -108,11 +100,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 						console.log(formatGitHubActionAnnotation(
 							'result was not parse-able with PostCSS.',
 							'error',
-							{
-								file: expectFilePath,
-								line: 1,
-								col: 1,
-							},
+							{ file: expectFilePath, line: 1, col: 1 },
 						));
 					} else {
 						console.error(`\nresult was not parse-able with PostCSS.\n\n${dashesSeparator}`);
@@ -137,11 +125,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 						console.log(formatGitHubActionAnnotation(
 							formatCSSAssertError(testCaseLabel, testCaseOptions, err, true),
 							'error',
-							{
-								file: normalizeFilePathForGithubAnnotation(expectFilePath),
-								line: 1,
-								col: 1,
-							},
+							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
 						));
 					} else {
 						console.error('\nwith older PostCSS:\n\n' + formatCSSAssertError(testCaseLabel, testCaseOptions, err));
@@ -162,11 +146,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 						console.log(formatGitHubActionAnnotation(
 							formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings, true),
 							'error',
-							{
-								file: normalizeFilePathForGithubAnnotation(expectFilePath),
-								line: 1,
-								col: 1,
-							},
+							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
 						));
 					} else {
 						console.error(formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings));

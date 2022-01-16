@@ -17,8 +17,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint src/**/*.ts",
-    "stryker": "stryker run --logLevel error",
-    "test": "node ./test/test.mjs"
+    "stryker": "stryker run --logLevel error"
   },
   "dependencies": {
     "postcss-oldest-supported": "npm:postcss@^8.2",
