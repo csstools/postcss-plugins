@@ -240,10 +240,10 @@ Becomes :
 }
 ```
 
-The prefixed `-ms-grid-columns` still has a custom property: `1fr var(--grid-gap) 1fr;` which won't work.
+The prefixed `-ms-grid-columns` still has a custom property: `1fr var(--grid-gap) 1fr;` which won't work.<br />
 This example shows issues with custom properties but other transforms might have similar issues.
 
-If you target IE or older Edge it is best to avoid using other modern features in grid property values.
+If you target IE or older Edge it is best to avoid using other modern features in grid property values.<br />
 As a last resort you can set [`preserve: false`](#preserve), we do not advice this as doing so purely to fix issues with CSS grid.
 
 _older Edge is any version before chromium (<79)_
