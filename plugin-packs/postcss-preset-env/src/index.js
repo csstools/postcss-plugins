@@ -35,7 +35,7 @@ const plugin = opts => {
 	}
 
 	if (stage === OUT_OF_RANGE_STAGE) {
-		log('Stage has been disabled, features will be handled via the features option.');
+		log('Stage has been disabled, features will be handled via the "features" option.');
 	} else {
 		log(`Using features from Stage ${stage}`);
 	}
