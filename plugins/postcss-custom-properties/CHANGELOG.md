@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased (patch)
+
+- Reset plugin state after each process. It is now safe to use the plugin multiple times for different processes or when watching.
+
 ### 12.1.2 (January 12, 2022)
 
 - Fix TypeScript transpilation.
