@@ -90,7 +90,7 @@ const plugin = opts => {
 			if (isAllowedFeature) {
 				log(`  ${feature.id} has been enabled by options`);
 			} else {
-				log(`  ${feature.id} has been disabled (Stage ${feature.stage})`);
+				log(`  ${feature.id} with stage ${feature.stage} has been disabled`);
 			}
 		}
 
