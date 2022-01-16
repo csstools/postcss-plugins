@@ -1,7 +1,9 @@
 # Changes to CSSTools CLI
 
+
 ### Unreleased (minor)
 
+- Emit warnings from plugins
 - Added `@csstools/postcss-is-pseudo-class`
 
 ```sh
