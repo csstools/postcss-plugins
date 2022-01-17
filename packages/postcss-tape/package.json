@@ -25,6 +25,7 @@
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
     "lint": "eslint src/**/*.ts",
+    "test": "bash ./test-self/test.sh",
     "stryker": "stryker run --logLevel error"
   },
   "dependencies": {

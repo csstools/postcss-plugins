@@ -1,8 +1,9 @@
 node_modules
 package-lock.json
 yarn.lock
-*.log*
 *.result.css
+*.result.code
+*.result.log
 .*
 dist/*
 !.editorconfig

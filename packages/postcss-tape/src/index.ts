@@ -54,11 +54,12 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			const input = await fsp.readFile(testFilePath, 'utf8');
 
 			// Check errors on expect file being missing
-			let expected = '';
+			let expected: string|false = '';
 			try {
 				expected = await fsp.readFile(expectFilePath, 'utf8');
 			} catch (_) {
 				hasErrors = true;
+				expected = false;
 
 				if (process.env.GITHUB_ACTIONS) {
 					console.log(formatGitHubActionAnnotation(
@@ -69,9 +70,6 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				} else {
 					console.error(`\n${testCaseLabel}\n\nmissing or broken "expect" file: "${expectFilePath}"\n\n${dashesSeparator}`);
 				}
-
-				// Can't do further checks if "expect" is missing.
-				continue;
 			}
 
 			const result = await postcss(plugins).process(input, {
@@ -85,6 +83,11 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 			const resultString = result.css.toString();
 			await fsp.writeFile(resultFilePath, resultString, 'utf8');
+
+			// Can't do further checks if "expect" is missing.
+			if (expected === false) {
+				continue;
+			}
 
 			// Assert result with recent PostCSS.
 			{
