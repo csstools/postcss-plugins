@@ -29,8 +29,8 @@
     "stryker": "stryker run --logLevel error"
   },
   "dependencies": {
-    "postcss-oldest-supported": "npm:postcss@^8.2",
-    "postcss": "^8.3"
+    "postcss-oldest-supported": "npm:postcss@~8.2",
+    "postcss": "~8.3"
   },
   "keywords": [
     "postcss",
