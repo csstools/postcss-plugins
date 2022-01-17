@@ -930,11 +930,11 @@ button {
 	order: 60;
 }
 
-.🧑🏾‍🎤.some {
+.some.🧑🏾‍🎤 {
 	order: 61;
 }
 
-.🧑🏾‍🎤.other {
+.other.🧑🏾‍🎤 {
 	order: 61;
 }
 
@@ -1258,11 +1258,11 @@ button {
 	order: 90;
 }
 
-.foo.some {
+.some.foo {
 	order: 91;
 }
 
-.foo.other {
+.other.foo {
 	order: 91;
 }
 
@@ -2230,11 +2230,11 @@ __foo {
 	order: 179;
 }
 
-:--foo.some {
+.some:--foo {
 	order: 180;
 }
 
-:--foo.other {
+.other:--foo {
 	order: 180;
 }
 
@@ -2242,11 +2242,11 @@ __foo {
 	order: 180;
 }
 
-:--foo.some {
+.some:--foo {
 	order: 181;
 }
 
-:--foo.other {
+.other:--foo {
 	order: 181;
 }
 
@@ -2558,11 +2558,11 @@ __foo {
 	order: 209;
 }
 
-[foo="baz"].some {
+.some[foo="baz"] {
 	order: 210;
 }
 
-[foo="baz"].other {
+.other[foo="baz"] {
 	order: 210;
 }
 
@@ -2570,11 +2570,11 @@ __foo {
 	order: 210;
 }
 
-[foo="baz"].some {
+.some[foo="baz"] {
 	order: 211;
 }
 
-[foo="baz"].other {
+.other[foo="baz"] {
 	order: 211;
 }
 
@@ -3214,11 +3214,11 @@ __foo {
 	order: 269;
 }
 
-:hover.some {
+.some:hover {
 	order: 270;
 }
 
-:hover.other {
+.other:hover {
 	order: 270;
 }
 
@@ -3226,11 +3226,11 @@ __foo {
 	order: 270;
 }
 
-:hover.some {
+.some:hover {
 	order: 271;
 }
 
-:hover.other {
+.other:hover {
 	order: 271;
 }
 
@@ -3542,11 +3542,11 @@ __foo {
 	order: 299;
 }
 
-::before.some {
+.some::before {
 	order: 300;
 }
 
-::before.other {
+.other::before {
 	order: 300;
 }
 
@@ -3554,11 +3554,11 @@ __foo {
 	order: 300;
 }
 
-::before.some {
+.some::before {
 	order: 301;
 }
 
-::before.other {
+.other::before {
 	order: 301;
 }
 
@@ -3898,11 +3898,11 @@ foo[baz=":is(.some, .other)"] {
 	order: 334;
 }
 
-:--.some {
+.some:-- {
 	order: 335;
 }
 
-:--.other {
+.other:-- {
 	order: 335;
 }
 

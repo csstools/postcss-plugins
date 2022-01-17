@@ -57,6 +57,38 @@ export function sortCompoundSelector(node) {
 			if (selectorTypeOrder[a.nodes[0].type] < selectorTypeOrder[b.nodes[0].type]) {
 				return -1;
 			}
+
+			if (selectorTypeOrder[a.nodes[0].type] > selectorTypeOrder[b.nodes[0].type]) {
+				return 1;
+			}
+		}
+
+		if (a.type === 'selector' && a.nodes.length) {
+			if (a.nodes[0].type === b.type) {
+				return 0;
+			}
+
+			if (selectorTypeOrder[a.nodes[0].type] < selectorTypeOrder[b.type]) {
+				return -1;
+			}
+
+			if (selectorTypeOrder[a.nodes[0].type] > selectorTypeOrder[b.type]) {
+				return 1;
+			}
+		}
+
+		if (b.type === 'selector' && b.nodes.length) {
+			if (a.type === b.nodes[0].type) {
+				return 0;
+			}
+
+			if (selectorTypeOrder[a.type] < selectorTypeOrder[b.nodes[0].type]) {
+				return -1;
+			}
+
+			if (selectorTypeOrder[a.type] > selectorTypeOrder[b.nodes[0].type]) {
+				return 1;
+			}
 		}
 
 		if (a.type === b.type) {
