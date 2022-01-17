@@ -1,0 +1,17 @@
+input:blank {
+	order: 1;
+}
+
+a:has(> img) {
+	order: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	p {
+		order: 3;
+	}
+}
+
+.my-form-field:focus-within label {
+	order: 4;
+}

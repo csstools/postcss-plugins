@@ -136,6 +136,20 @@ module.exports = {
 			}
 		}
 	},
+	'disable-client-side-polyfills': {
+		message: 'supports { disableClientSidePolyfills: true } usage',
+		options: {
+			disableClientSidePolyfills: true,
+			stage: 0,
+		}
+	},
+	'disable-client-side-polyfills:disabled': {
+		message: 'supports { disableClientSidePolyfills: false } usage (default)',
+		options: {
+			disableClientSidePolyfills: false,
+			stage: 0,
+		}
+	},
 	'insert:baseline': {
 		message: 'supports { insertBefore/insertAfter } usage baseline',
 		options: {
@@ -342,15 +356,15 @@ module.exports = {
 			});
 		}
 	},
-	"unknown-feature": {
+	'unknown-feature': {
 		message: 'warns on unknown features',
 		warnings: 3,
 		options: {
 			features: {
-				"custom-media": true,
-				"postcss-logical": true,
-				"postcss-logica": true,
+				'custom-media': true,
+				'postcss-logical': true,
+				'postcss-logica': true,
 			}
 		},
-	}
+	},
 };

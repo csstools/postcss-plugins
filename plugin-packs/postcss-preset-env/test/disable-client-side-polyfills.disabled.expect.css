@@ -1,0 +1,41 @@
+input[blank] {
+	order: 1;
+}
+
+input:blank {
+	order: 1;
+}
+
+a[\:has\(\%3E\%20img\)] {
+	order: 2;
+}
+
+a:has(> img) {
+	order: 2;
+}
+
+@media (color-index: 48) {
+	p {
+		order: 3;
+	}
+}
+
+@media (color: 48842621) {
+	p {
+		order: 3;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	p {
+		order: 3;
+	}
+}
+
+.my-form-field[focus-within] label {
+	order: 4;
+}
+
+.my-form-field:focus-within label {
+	order: 4;
+}
