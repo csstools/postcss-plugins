@@ -95,9 +95,10 @@ This is the current list of features that need a client library with a link
 to the polyfill's library.
 
 * `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md)
+* `focus-visible-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-visible) / [Polyfill](https://github.com/WICG/focus-visible)
+* `focus-within-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within) / [Library](https://github.com/jsxtools/focus-within) / [Polyfill](https://github.com/jsxtools/focus-within/blob/master/README-BROWSER.md)
 * `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md)
 * `prefers-color-scheme-query`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme/README-BROWSER.md)
-* `focus-within-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within) / [Library](https://github.com/jsxtools/focus-within) / [Polyfill](https://github.com/jsxtools/focus-within/blob/master/README-BROWSER.md)
 
 If you want to disable these types of features, please check the [`disableClientSidePolyfills` option](#disableclientsidepolyfills).
 
