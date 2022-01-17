@@ -98,6 +98,9 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			}
 
 			// Assert result with recent PostCSS.
+			//
+			// NOTE:
+			// The version we declare as a peer dependency in plugins.
 			{
 				try {
 					assert.strictEqual(resultString, expected);
@@ -174,6 +177,12 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 			// Assert result with oldest supported PostCSS.
 			// Check against the actual result to avoid duplicate warnings.
+			//
+			// NOTE:
+			// The oldest version of PostCSS we support at this time.
+			// This does not need to be a different version than the latest version of PostCSS.
+			// There is no system behind setting this.
+			// It is here to allow testing a specific older version, if parts of the community can't update yet.
 			{
 				const resultFromOldestPostCSS = await postcssOldestSupported(plugins).process(input, {
 					from: testFilePath,
