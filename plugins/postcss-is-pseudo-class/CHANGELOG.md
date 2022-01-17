@@ -1,6 +1,6 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased
+### 1.0.1 (January 17, 2022)
 
 - Fix selector order
 
