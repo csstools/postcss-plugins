@@ -376,7 +376,7 @@ The `debug` option enables debugging messages to stdout which should be useful t
 
 The `disableClientSidePolyfills` disables any feature that would need an extra browser library to be loaded into the page for it to work. 
 
-Note that you can still manually enable one of these features if you set them on the [`features` option](#features).
+Note that manually enabling/disabling features via the "feature" option overrides this flag.
 
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
