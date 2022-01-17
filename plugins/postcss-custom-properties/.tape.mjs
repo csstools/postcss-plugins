@@ -4,15 +4,6 @@ import { strict as assert } from 'assert';
 import postcssImport from 'postcss-import';
 import fs from 'fs';
 
-const importWithProps = () => {
-	return {
-		postcssPlugin: 'postcss-custom-properties (with postcss-import)',
-		plugins: [postcssImport(), plugin()],
-	};
-};
-
-importWithProps.postcss = true;
-
 postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage'
@@ -369,6 +360,6 @@ postcssTape(plugin)({
 	},
 	'import': {
 		message: 'supports "postcss-import"',
-		plugins: [importWithProps()]
+		plugins: [postcssImport(), plugin()]
 	}
 });

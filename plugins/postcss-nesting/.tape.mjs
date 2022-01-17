@@ -14,15 +14,6 @@ const mixinPluginRule = () => {
 
 mixinPluginRule.postcss = true
 
-const mixinPluginRuleWithNesting = () => {
-	return {
-		postcssPlugin: 'mixin-with-nesting',
-		plugins: [mixinPluginRule(), plugin()]
-	}
-}
-
-mixinPluginRuleWithNesting.postcss = true
-
 const mixinPluginDeclaration = () => {
 	return {
 		postcssPlugin: 'mixin',
@@ -35,18 +26,6 @@ const mixinPluginDeclaration = () => {
 }
 
 mixinPluginDeclaration.postcss = true
-
-const mixinPluginDeclarationWithNesting = () => {
-	return {
-		postcssPlugin: 'mixin-with-nesting',
-		Once: () => {
-			throw new Error('bork');
-		},
-		plugins: [mixinPluginDeclaration(), plugin()]
-	}
-}
-
-mixinPluginDeclarationWithNesting.postcss = true
 
 postcssTape(plugin)({
 	'basic': {
@@ -141,22 +120,22 @@ postcssTape(plugin)({
 	},
 	'mixin-declaration': {
 		message: 'supports other visitors (mixin declaration)',
-		plugins: [mixinPluginDeclarationWithNesting()]
+		plugins: [mixinPluginDeclaration(), plugin()]
 	},
 	'mixin-declaration:no-is-pseudo-selector': {
 		message: 'supports other visitors (mixin declaration) { noIsPseudoSelector: true }',
-		plugins: [mixinPluginDeclarationWithNesting()],
+		plugins: [mixinPluginDeclaration(), plugin()],
 		options: {
 			noIsPseudoSelector: true,
 		},
 	},
 	'mixin-rule': {
 		message: 'supports other visitors (mixin rule)',
-		plugins: [mixinPluginRuleWithNesting()]
+		plugins: [mixinPluginRule(), plugin()]
 	},
 	'mixin-rule:no-is-pseudo-selector': {
 		message: 'supports other visitors (mixin rule) { noIsPseudoSelector: true }',
-		plugins: [mixinPluginRuleWithNesting()],
+		plugins: [mixinPluginRule(), plugin()],
 		options: {
 			noIsPseudoSelector: true,
 		},
