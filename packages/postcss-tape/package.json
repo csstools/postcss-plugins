@@ -1,7 +1,7 @@
 {
   "name": "@csstools/postcss-tape",
   "private": true,
-  "description": "Quickly test PostCSS plugins",
+  "description": "Quickly test PostCSS plugins in csstools/postcss-plugins",
   "version": "1.0.0",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",

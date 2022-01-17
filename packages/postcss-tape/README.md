@@ -1,1 +1,27 @@
 # PostCSS Tape for csstools/postcss-plugins
+
+_Internal package._
+
+See [.tape.mjs](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-base-plugin/.tape.mjs) in the base plugin for a minimal example.
+
+```js
+import postcssTape from '@csstools/postcss-tape';
+import plugin from '@csstools/postcss-base-plugin';
+
+postcssTape(plugin)({
+	basic: {
+		message: "supports basic usage",
+	},
+	'basic:color': {
+		message: "supports { color: '<a color>' }",
+		options: {
+			color: 'purple'
+		}
+	},
+	example: {
+		message: "minimal example",
+	},
+});
+```
+
+Browse the source code here or other tests in plugins for more usage details.
