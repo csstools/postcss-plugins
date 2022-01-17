@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased
+
+- Fix `.mjs` in `importFrom` when using `export default`
+
 ### 12.1.2 (January 12, 2022)
 
 - Fix TypeScript transpilation.
