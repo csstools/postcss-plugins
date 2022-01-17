@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased (patch)
+### 12.1.3 (January 17, 2022)
 
 - Reset plugin state after each process. It is now safe to use the plugin multiple times for different processes or when watching.
 
