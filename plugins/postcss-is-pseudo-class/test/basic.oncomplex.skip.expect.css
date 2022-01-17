@@ -1,112 +1,112 @@
-[active]input:hover > b {
+input[active]:hover > b {
 	order: 1;
 }
 
-[active]input:focus > b {
+input[active]:focus > b {
 	order: 1;
 }
 
-[active]button:hover > b {
+button[active]:hover > b {
 	order: 1;
 }
 
-[active]button:focus > b {
+button[active]:focus > b {
 	order: 1;
 }
 
-[active]input.a:hover > b {
+input.a[active]:hover > b {
 	order: 2;
 }
 
-[active]input.b:hover > b {
+input.b[active]:hover > b {
 	order: 2;
 }
 
-[active]input.c:hover > b {
+input.c[active]:hover > b {
 	order: 2;
 }
 
-[active]input.d:hover > b {
+input.d[active]:hover > b {
 	order: 2;
 }
 
-[active]input.a:focus > b {
+input.a[active]:focus > b {
 	order: 2;
 }
 
-[active]input.b:focus > b {
+input.b[active]:focus > b {
 	order: 2;
 }
 
-[active]input.c:focus > b {
+input.c[active]:focus > b {
 	order: 2;
 }
 
-[active]input.d:focus > b {
+input.d[active]:focus > b {
 	order: 2;
 }
 
-[active]input.a:focus-within > b {
+input.a[active]:focus-within > b {
 	order: 2;
 }
 
-[active]input.b:focus-within > b {
+input.b[active]:focus-within > b {
 	order: 2;
 }
 
-[active]input.c:focus-within > b {
+input.c[active]:focus-within > b {
 	order: 2;
 }
 
-[active]input.d:focus-within > b {
+input.d[active]:focus-within > b {
 	order: 2;
 }
 
-[active]button.a:hover > b {
+button.a[active]:hover > b {
 	order: 2;
 }
 
-[active]button.b:hover > b {
+button.b[active]:hover > b {
 	order: 2;
 }
 
-[active]button.c:hover > b {
+button.c[active]:hover > b {
 	order: 2;
 }
 
-[active]button.d:hover > b {
+button.d[active]:hover > b {
 	order: 2;
 }
 
-[active]button.a:focus > b {
+button.a[active]:focus > b {
 	order: 2;
 }
 
-[active]button.b:focus > b {
+button.b[active]:focus > b {
 	order: 2;
 }
 
-[active]button.c:focus > b {
+button.c[active]:focus > b {
 	order: 2;
 }
 
-[active]button.d:focus > b {
+button.d[active]:focus > b {
 	order: 2;
 }
 
-[active]button.a:focus-within > b {
+button.a[active]:focus-within > b {
 	order: 2;
 }
 
-[active]button.b:focus-within > b {
+button.b[active]:focus-within > b {
 	order: 2;
 }
 
-[active]button.c:focus-within > b {
+button.c[active]:focus-within > b {
 	order: 2;
 }
 
-[active]button.d:focus-within > b {
+button.d[active]:focus-within > b {
 	order: 2;
 }
 
@@ -204,4 +204,28 @@ foo[baz=":is(.some, .other)"], .ok {
 
 :is(.alpha > .beta) ~ :is(:focus > .beta) {
 	order: 12;
+}
+
+.alpha .beta > h1:not([attr*="foo-"]) {
+	order: 13;
+}
+
+.alpha .beta > h2:not([attr*="foo-"]) {
+	order: 13;
+}
+
+.alpha .beta > h3:not([attr*="foo-"]) {
+	order: 13;
+}
+
+.alpha .beta > h4:not([attr*="foo-"]) {
+	order: 13;
+}
+
+.alpha .beta > h5:not([attr*="foo-"]) {
+	order: 13;
+}
+
+.alpha .beta > h6:not([attr*="foo-"]) {
+	order: 13;
 }
