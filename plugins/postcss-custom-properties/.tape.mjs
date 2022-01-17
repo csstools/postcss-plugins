@@ -1,7 +1,19 @@
-const importWithProps = require('./test/import');
-const assert = require('assert').strict;
+import postcssTape from '@csstools/postcss-tape';
+import plugin from 'postcss-custom-properties';
+import { strict as assert } from 'assert';
+import postcssImport from 'postcss-import';
+import fs from 'fs';
 
-module.exports = {
+const importWithProps = () => {
+	return {
+		postcssPlugin: 'postcss-custom-properties (with postcss-import)',
+		plugins: [postcssImport(), plugin()],
+	};
+};
+
+importWithProps.postcss = true;
+
+postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage'
 	},
@@ -70,23 +82,12 @@ module.exports = {
 		expect: 'basic.import.expect.css',
 		result: 'basic.import.result.css'
 	},
-	'basic:import-js': {
-		message: 'supports { importFrom: "test/import-properties{-2}?.js" } usage',
+	'basic:import-mjs': {
+		message: 'supports { importFrom: "test/import-properties{-2}?.mjs" } usage',
 		options: {
 			importFrom: [
-				'test/import-properties.js',
-				'test/import-properties-2.js'
-			]
-		},
-		expect: 'basic.import.expect.css',
-		result: 'basic.import.result.css'
-	},
-	'basic:import-cjs': {
-		message: 'supports { importFrom: "test/import-properties{-2}?.cjs" } usage',
-		options: {
-			importFrom: [
-				'test/import-properties.cjs',
-				'test/import-properties-2.cjs'
+				'test/import-properties.mjs',
+				'test/import-properties-2.mjs'
 			]
 		},
 		expect: 'basic.import.expect.css',
@@ -235,10 +236,15 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.scss', 'utf8');
+			try {
+				global.__exportPropertiesString = fs.readFileSync('test/export-properties.scss', 'utf8');
+				fs.rmSync('test/export-properties.scss');
+			} catch (_) {
+				// ignore
+			}
 		},
 		after() {
-			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.scss', 'utf8'));
+			assert.strictEqual(global.__exportPropertiesString, fs.readFileSync('test/export-properties.scss', 'utf8'));
 		}
 	},
 	'basic:export-json': {
@@ -249,10 +255,15 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.json', 'utf8');
+			try {
+				global.__exportPropertiesString = fs.readFileSync('test/export-properties.json', 'utf8');
+				fs.rmSync('test/export-properties.json');
+			} catch (_) {
+				// ignore
+			}
 		},
 		after() {
-			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.json', 'utf8'));
+			assert.strictEqual(global.__exportPropertiesString, fs.readFileSync('test/export-properties.json', 'utf8'));
 		}
 	},
 	'basic:export-js': {
@@ -263,10 +274,15 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.js', 'utf8');
+			try {
+				global.__exportPropertiesString = fs.readFileSync('test/export-properties.js', 'utf8');
+				fs.rmSync('test/export-properties.js');
+			} catch (_) {
+				// ignore
+			}
 		},
 		after() {
-			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.js', 'utf8'));
+			assert.strictEqual(global.__exportPropertiesString, fs.readFileSync('test/export-properties.js', 'utf8'));
 		}
 	},
 	'basic:export-mjs': {
@@ -277,10 +293,15 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.mjs', 'utf8');
+			try {
+				global.__exportPropertiesString = fs.readFileSync('test/export-properties.mjs', 'utf8');
+				fs.rmSync('test/export-properties.mjs');
+			} catch (_) {
+				// ignore
+			}
 		},
 		after() {
-			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.mjs', 'utf8'));
+			assert.strictEqual(global.__exportPropertiesString, fs.readFileSync('test/export-properties.mjs', 'utf8'));
 		}
 	},
 	'basic:export-css': {
@@ -291,10 +312,15 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.css', 'utf8');
+			try {
+				global.__exportPropertiesString = fs.readFileSync('test/export-properties.css', 'utf8');
+				fs.rmSync('test/export-properties.css');
+			} catch (_) {
+				// ignore
+			}
 		},
 		after() {
-			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.css', 'utf8'));
+			assert.strictEqual(global.__exportPropertiesString, fs.readFileSync('test/export-properties.css', 'utf8'));
 		}
 	},
 	'basic:export-css-to': {
@@ -305,10 +331,15 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.css', 'utf8');
+			try {
+				global.__exportPropertiesString = fs.readFileSync('test/export-properties.css', 'utf8');
+				fs.rmSync('test/export-properties.css');
+			} catch (_) {
+				// ignore
+			}
 		},
 		after() {
-			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.css', 'utf8'));
+			assert.strictEqual(global.__exportPropertiesString, fs.readFileSync('test/export-properties.css', 'utf8'));
 		}
 	},
 	'basic:export-css-to-type': {
@@ -319,10 +350,15 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportPropertiesString = require('fs').readFileSync('test/export-properties.css', 'utf8');
+			try {
+				global.__exportPropertiesString = fs.readFileSync('test/export-properties.css', 'utf8');
+				fs.rmSync('test/export-properties.css');
+			} catch (_) {
+				// ignore
+			}
 		},
 		after() {
-			assert.strictEqual(global.__exportPropertiesString, require('fs').readFileSync('test/export-properties.css', 'utf8'));
+			assert.strictEqual(global.__exportPropertiesString, fs.readFileSync('test/export-properties.css', 'utf8'));
 		}
 	},
 	'basic:import-is-empty': {
@@ -333,6 +369,6 @@ module.exports = {
 	},
 	'import': {
 		message: 'supports "postcss-import"',
-		plugin: importWithProps
+		plugins: [importWithProps()]
 	}
-};
+});

@@ -41,8 +41,6 @@
     "postcss-selector-parser": "^6.0.8"
   },
   "devDependencies": {
-    "postcss": "^8.3.6",
-    "postcss-tape": "^6.0.1",
     "@csstools/postcss-tape": "^1.0.0"
   },
   "peerDependencies": {

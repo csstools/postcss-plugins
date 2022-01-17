@@ -41,10 +41,12 @@ export const externalsForCLI = [
 ];
 
 export const externalsForPlugin = [
+	'assert',
 	'fs',
 	'path',
 
 	'postcss',
+	'postcss-oldest-supported',
 	/^postcss\/lib\/*/,
 
 	'autoprefixer',

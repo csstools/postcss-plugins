@@ -7,8 +7,8 @@ import { promises as fsp } from 'fs';
 import { strict as assert } from 'assert';
 
 import type { PluginCreator, Plugin } from 'postcss';
-import { formatGitHubActionAnnotation } from './github-annotations.js';
-import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts.js';
+import { formatGitHubActionAnnotation } from './github-annotations';
+import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts';
 
 type TestCaseOptions = {
 	message?: string,
@@ -16,8 +16,11 @@ type TestCaseOptions = {
 	plugins?: Array<Plugin>,
 	warnings?: number,
 
+	expect?: string,
+	result?: string,
+
 	before?: () => void,
-	after?: () => void,
+	after?: () => void|Promise<void>,
 }
 
 export default function runner(currentPlugin: PluginCreator<unknown>) {
@@ -29,15 +32,22 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 			// Run "before" immediately.
 			if (testCaseOptions.before) {
-				testCaseOptions.before();
+				await testCaseOptions.before();
 			}
 
 			const testSourceFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.split(':')[0]);
 			const testFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.replace(/:/g, '.'));
 
 			const testFilePath = `${testSourceFilePathWithoutExtension}.css`;
-			const expectFilePath = `${testFilePathWithoutExtension}.expect.css`;
-			const resultFilePath = `${testFilePathWithoutExtension}.result.css`;
+			let expectFilePath = `${testFilePathWithoutExtension}.expect.css`;
+			let resultFilePath = `${testFilePathWithoutExtension}.result.css`;
+
+			if (testCaseOptions.expect) {
+				expectFilePath = expectFilePath.replace(testCaseLabel.replace(/:/g, '.') + '.expect.css', testCaseOptions.expect);
+			}
+			if (testCaseOptions.result) {
+				resultFilePath = resultFilePath.replace(testCaseLabel.replace(/:/g, '.') + '.result.css', testCaseOptions.result);
+			}
 
 			const plugins = testCaseOptions.plugins ?? [currentPlugin(testCaseOptions.options)];
 
@@ -118,7 +128,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 			// Run "after" when initial postcss run has completely.
 			if (testCaseOptions.after) {
-				testCaseOptions.after();
+				await testCaseOptions.after();
 			}
 
 			// Assert that the result can be passed back to PostCSS and still parses.
