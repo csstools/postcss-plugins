@@ -1,3 +1,6 @@
+# Run tests as if local.
+unset GITHUB_ACTIONS
+
 # region:Basic
 set +e
 
