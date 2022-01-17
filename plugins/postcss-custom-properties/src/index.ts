@@ -19,7 +19,6 @@ export interface PluginOptions {
 
 	/** Specifies if `importFrom` properties or `:root` properties have priority. */
 	overrideImportFromWithRoot?: boolean
-
 }
 
 const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
@@ -62,6 +61,9 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 					Declaration: (decl) => {
 						transformProperties(decl, customProperties, { preserve });
 					},
+					OnceExit: () => {
+						customProperties.clear();
+					},
 				};
 			} else {
 				return {
@@ -83,6 +85,9 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 					},
 					Declaration: (decl) => {
 						transformProperties(decl, customProperties, { preserve });
+					},
+					OnceExit: () => {
+						customProperties.clear();
 					},
 				};
 			}
