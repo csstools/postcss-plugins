@@ -1,0 +1,240 @@
+.ppe-features {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+@media (max-width: 859px) {
+	.ppe-features {
+		flex-direction: column;
+	}
+}
+
+.ppe-404 {
+	padding: var(--heading-size) 40px;
+}
+
+.ppe-navigation {
+	background-color: #f7f7f7;
+	bottom: 0;
+	left: 0;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	overflow-y: hidden;
+	overflow-y: overlay;
+	padding: calc(25px + var(--heading-size)) 35px 25px;
+	position: fixed;
+	top: 0;
+	width: 300px;
+}
+
+@media (max-width: 1023px) {
+	.ppe-navigation {
+		padding: calc(25px + var(--heading-size)) 20px 25px;
+		width: 200px;
+	}
+}
+
+@media (max-width: 859px) {
+	.ppe-navigation {
+		padding: 25px;
+		position: static;
+		width: auto;
+	}
+}
+
+.ppe-navigation:hover {
+  overflow-y: auto;
+  overflow-y: overlay;
+}
+
+@media (hover: none) {
+  .ppe-navigation {
+    overflow-y: auto;
+    overflow-y: overlay;
+  }
+}
+
+.ppe-navigation-select {
+	display: block;
+	margin: 0 0 20px;
+	width: 100%;
+}
+
+.ppe-menu-link {
+	color: #727272;
+	display: block;
+	font-style: normal;
+	font-size: 14px;
+	line-height: 1.285;
+	padding: 7px 0;
+}
+
+.ppe-menu-link:hover, .ppe-menu-link:focus, .ppe-menu-link[aria-current] {
+	color: #000000;
+}
+
+.ppe-features-list {
+	flex-grow: 1;
+	margin-left: 300px;
+	padding: 0 75px calc(var(--heading-size) * 1.25 + 50px);
+}
+
+@media (max-width: 1023px) {
+	.ppe-features-list {
+		margin-left: 200px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
+@media (max-width: 859px) {
+	.ppe-features-list {
+		margin-left: 0;
+	}
+}
+
+.ppe-sidebar-menu {
+	box-shadow: 0 -1px 0 0 #dddddd;
+	margin-top: 15px;
+	padding-top: 15px;
+}
+
+.ppe-feature {
+	margin: 0 0 calc(var(--heading-size) * -1);
+}
+
+.ppe-feature-heading {
+	align-items: center;
+	display: flex;
+	padding: calc(var(--heading-size) + 50px) 0 0;
+}
+
+@media (max-width: 959px) {
+	.ppe-feature-heading {
+		flex-wrap: wrap;
+	}
+}
+
+.ppe-feature-title {
+	color: #3c3c3c;
+	font-size: 32px;
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	line-height: 1.25;
+	margin: 0 auto 0 0;
+}
+
+@media (max-width: 959px) {
+	.ppe-feature-title {
+		flex-basis: 100%;
+		margin-bottom: 10px;
+	}
+}
+
+.ppe-feature-heading-stage, .ppe-feature-heading-specLink, .ppe-feature-heading-pluginLink {
+	border-radius: 2px;
+	font-size: 10px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	margin-left: 10px;
+	padding: 5px 10px;
+	text-transform: uppercase;
+}
+
+@media (max-width: 959px) {
+	.ppe-feature-heading-stage {
+		margin-left: 0;
+	}
+}
+
+.ppe-feature-heading-stage {
+	color: #ffffff;
+}
+
+.ppe-feature-heading-stage[data-stage="0"] {
+	background-color: #414141;
+}
+
+.ppe-feature-heading-stage[data-stage="1"] {
+	background-color: #ed782a;
+}
+
+.ppe-feature-heading-stage[data-stage="2"] {
+	background-color: #899c1f;
+}
+
+.ppe-feature-heading-stage[data-stage="3"] {
+	background-color: #3e7817;
+}
+
+.ppe-feature-heading-stage[data-stage="4"] {
+	background-color: #005a9c;
+}
+
+.ppe-feature-heading-specLink, .ppe-feature-heading-pluginLink {
+	background-color: #eeeeee;
+	color: #6c6c6c;
+}
+
+.ppe-feature-heading:target, .ppe-feature-heading a:not(.ppe-feature-heading-stage):hover, .ppe-feature-heading a:not(.ppe-feature-heading-stage):focus {
+	color: #3095ff;
+}
+
+.ppe-feature-description {
+	font-weight: 300;
+}
+
+.ppe-feature-example {
+	background-color: #282c34;
+	border-radius: 3px;
+	color: #cdd3de;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	overflow-x: hidden;
+	overflow-x: overlay;
+	padding: 15px 30px;
+}
+
+.ppe-feature-example:hover {
+  overflow-x: auto;
+  overflow-x: overlay;
+}
+
+@media (hover: none) {
+  .ppe-feature-example {
+    overflow-x: auto;
+    overflow-x: overlay;
+  }
+}
+
+.css-atrule-name {
+	color: #f99157;
+}
+
+.css-atrule-params, .css-selector {
+	color: #c594c5;
+}
+
+.css-comment {
+	color: #65737e;
+}
+
+.css-property {
+	color: #99c794;
+}
+
+.css-value {
+	color: #c594c5;
+}
+
+.css-var {
+	color: #e16f78;
+}
+
+.css-function {
+	color: #6699cc;
+}
+
+.css-string {
+	color: #fac863;
+}

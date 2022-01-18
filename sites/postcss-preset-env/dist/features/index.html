@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+	<title>postcss-preset-env</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@jon_neal">
+	<meta property="og:title" content="PostCSS Preset Env">
+	<meta property="og:description" content="Convert modern CSS into something browsers understand.">
+	<meta property="og:image" content="https://cssdb.org/cssdb.jpg">
+	<meta property="og:site_name" content="cssdb">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://preset-env.cssdb.org/">
+	<link href="/favicon.ico" rel="shortcut icon">
+	<link href="/style.css" rel="stylesheet prefetch">
+	<script src="/script.js"></script>
+	<body>
+		<heading class="ppe-heading">
+	<h1 class="ppe-heading-title">
+		<a class="ppe-heading-title-link" href="/">postcss-preset-env</a>
+	</h1>
+	<nav class="ppe-heading-menu">
+		<ul class="ppe-heading-menu-list">
+			<li class="ppe-heading-menu-item">
+				<a class="ppe-heading-menu-link" href="/features" aria-current="page">
+					<svg viewBox="0 0 60 38" xmlns="http://www.w3.org/2000/svg">
+	<path d="M 56.9318 16.0769L 42.6989 1.71946C 41.5909 0.601811 40.142 6.55921e-07 38.5227 6.55921e-07C 36.9034 6.55921e-07 35.4545 0.601811 34.3466 1.71946C 33.8352 2.23529 33.8352 3.00905 34.3466 3.52489C 34.858 4.04072 35.625 4.04072 36.1364 3.52489C 36.8182 2.8371 37.5852 2.49321 38.5227 2.49321C 39.4602 2.49321 40.3125 2.8371 40.9091 3.52489L 50.9659 13.6697C 50.8807 13.6697 50.7955 13.6697 50.7102 13.6697L 46.4489 13.6697L 41.0795 13.6697L 19.0909 13.6697L 13.2102 13.6697L 9.375 13.6697C 9.28977 13.6697 9.20454 13.6697 9.11932 13.6697L 19.0909 3.52489C 19.7727 2.8371 20.5398 2.49321 21.4773 2.49321C 22.4148 2.49321 23.267 2.8371 23.8636 3.52489C 24.375 4.04072 25.142 4.04072 25.6534 3.52489C 26.1648 3.00905 26.1648 2.23529 25.6534 1.71946C 24.5455 0.601811 23.0966 6.55921e-07 21.4773 6.55921e-07C 19.858 6.55921e-07 18.4091 0.601811 17.3011 1.71946L 2.8125 16.3348C 2.72727 16.4208 2.72727 16.4208 2.64205 16.5068L 2.47159 16.6787C 2.38636 16.7647 2.38636 16.7647 2.30114 16.8507C 0.852273 18.4842 3.25116e-07 20.6335 3.25116e-07 23.0407L 3.25116e-07 28.629C 3.25116e-07 33.7873 4.17614 38 9.28977 38L 13.4659 38C 21.6477 38 28.2955 31.2941 28.2955 23.0407C 28.2955 22.267 28.2102 21.5792 28.0398 20.8054C 28.5511 20.3756 29.233 20.1176 30 20.1176C 30.6818 20.1176 31.3636 20.3756 31.9602 20.8054C 31.7898 21.4932 31.7045 22.267 31.7045 23.0407C 31.7045 31.2941 38.3523 38 46.5341 38L 50.7102 38C 55.8239 38 60 33.7873 60 28.629L 60 23.0407C 60 20.2896 58.8068 17.7964 56.9318 16.0769ZM 13.5511 35.4208L 9.71591 35.4208C 9.20454 35.4208 8.86364 34.733 9.28977 34.3032L 20.5398 22.9548C 21.0511 22.4389 21.0511 21.5792 20.4545 21.0633C 19.9432 20.6335 19.1761 20.7195 18.75 21.2353L 6.5625 33.5294C 6.05114 34.0452 5.19886 34.0452 4.6875 33.6154C 4.17614 33.0995 4.17614 32.2398 4.6875 31.724C 6.5625 29.8326 10.9943 25.362 12.4432 23.9005C 12.8693 23.4706 12.9545 22.6968 12.6136 22.181C 12.1023 21.5792 11.25 21.5792 10.7386 22.095L 3.66477 29.0588C 3.23864 29.4887 2.55682 29.1448 2.55682 28.629L 2.55682 23.0407C 2.55682 21.2353 3.32386 19.5158 4.43182 18.3122L 4.60227 18.1403C 5.79545 16.9367 7.5 16.2489 9.28977 16.2489L 13.125 16.2489L 19.0909 16.2489C 22.8409 16.2489 25.8239 19.2579 25.9091 23.0407C 25.9091 29.8326 20.3693 35.4208 13.5511 35.4208ZM 30 17.6244C 28.9773 17.6244 27.9545 17.8824 27.1023 18.4842C 26.6761 17.6244 26.0795 16.9366 25.3977 16.2489L 34.6023 16.2489C 33.9205 16.8507 33.3239 17.6244 32.8977 18.4842C 32.0455 17.8824 31.0227 17.6244 30 17.6244ZM 57.4432 28.629C 57.4432 32.4118 54.375 35.5068 50.625 35.5068L 46.4489 35.5068C 45.5966 35.5068 44.8295 35.4208 44.0625 35.2489C 43.4659 35.1629 43.2955 34.4751 43.7216 34.0452L 54.7159 22.9548C 55.2273 22.4389 55.2273 21.5792 54.6307 21.0633C 54.1193 20.6335 53.3523 20.7195 52.9261 21.2353L 41.1648 33.0136C 40.7386 33.4434 39.9716 33.5294 39.4602 33.1855C 38.7784 32.6697 38.6932 31.724 39.2898 31.1222L 46.6193 23.7285C 47.0455 23.2986 47.2159 22.5249 46.7898 22.009C 46.2784 21.4072 45.4261 21.4072 44.9148 21.9231L 37.7557 29.1448C 37.1591 29.7466 36.0511 29.5747 35.625 28.8009C 34.6875 27.0814 34.1761 25.1041 34.2614 22.9548C 34.2614 19.1719 37.3295 16.1629 41.0795 16.1629L 46.3636 16.1629L 50.625 16.1629C 52.3295 16.1629 53.8636 16.7647 55.0568 17.8824L 55.6534 18.4842C 56.7614 19.6878 57.358 21.3213 57.358 23.0407L 57.358 28.629L 57.4432 28.629Z" />
+	<linearGradient id="linear" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(62 78 -78 62 39 -26)">
+		<stop stop-color="#F527E0"/>
+		<stop offset="1" stop-color="#FF8E26"/>
+	</linearGradient>
+</svg>
+
+					<span>Features</span>
+				</a>
+			</li><li class="ppe-heading-menu-item">
+				<a class="ppe-heading-menu-link" href="/playground">
+					<svg viewBox="-5 -10 82 82" xmlns="http://www.w3.org/2000/svg">
+	<path d="M 62 4.87823C 62 2.27651 59.8912 0.170351 57.2243 0.0464593C 56.0458 -0.0154864 54.8674 -0.0154864 53.5649 0.0464593C 51.022 0.170351 48.9752 2.02872 48.8512 4.44461C 48.7892 5.55963 48.7892 6.7366 48.7892 7.85162C 48.7892 8.34719 48.7892 8.9047 48.7892 9.40026L 48.7892 9.95778L 41.5325 9.95778L 41.5325 7.97551C 41.5325 6.92243 41.5325 5.86936 41.5325 4.81628C 41.4705 2.27651 39.3617 0.232296 36.8188 0.108405C 36.1986 0.108405 35.6404 0.0464593 34.9581 0.0464593C 34.3999 0.0464593 33.7797 0.0464593 33.1595 0.108405C 30.5545 0.232296 28.4457 2.21456 28.3217 4.75433C 28.2597 5.9313 28.1977 7.47995 28.3217 9.02859C 28.3837 10.3914 28.0736 11.6303 27.2673 12.9931C 23.8561 18.878 20.4448 24.7628 16.9715 30.6476C 11.5136 40.0015 6.05556 49.3553 0.597568 58.7091C -0.0226583 59.7621 -0.146704 60.6294 0.16341 61.1869C 0.473523 61.7444 1.34184 62.0541 2.52027 61.9922C 8.84658 61.8063 15.1729 61.8683 20.4448 61.9922C 22.0574 61.9922 22.9877 61.4966 23.794 60.0719C 27.0192 54.3729 30.3684 48.6739 33.5936 43.0987L 36.7568 37.7095C 36.8808 37.4617 37.0669 37.2758 37.253 36.9661L 38.5554 35.0458L 38.5554 59.948C 38.5554 61.5586 39.3617 61.8063 39.982 61.8063C 40.4161 61.8063 40.7882 61.7444 41.0363 61.4966C 41.3465 61.1869 41.5325 60.6913 41.5325 59.886C 41.5325 59.0807 41.5325 58.2754 41.5325 57.4701L 41.5325 55.7976L 58.9609 55.7976L 58.9609 56.4171C 58.9609 56.8507 58.9609 57.2843 58.9609 57.656C 58.9609 58.5232 58.9609 59.3905 58.9609 60.1958C 59.0849 61.8063 59.9533 61.9302 60.5735 61.8683C 61.7519 61.8063 61.938 60.6913 61.938 60.0719L 61.938 56.4171C 62 39.2581 62 22.0991 62 4.87823ZM 50.8979 13.4887C 51.146 13.117 51.7042 12.9931 51.9523 12.9931C 53.5029 12.9931 55.1155 12.9931 56.7281 12.9931L 58.7748 12.9931L 58.7748 20.6124L 46.6804 20.6124L 47.8588 18.5682C 48.9132 16.8338 49.9056 15.1612 50.8979 13.4887ZM 31.2988 5.18795C 31.2988 5.06406 31.2988 4.94017 31.3608 4.81628C 31.795 2.95791 33.4696 2.77207 36.3226 3.01985C 37.8112 3.14375 38.6175 3.94904 38.6175 5.43574C 38.6175 6.05519 38.6175 6.7366 38.6175 7.35605L 38.6175 8.84275C 38.6175 8.96664 38.6175 9.15248 38.5554 9.27637L 38.3694 9.95778L 31.2988 9.95778L 31.2988 5.18795ZM 39.9199 26.2495C 33.8417 36.6564 27.8255 47.1252 21.7473 57.5321C 21.1271 58.5852 20.4448 59.0188 19.2664 59.0188L 19.2044 59.0188C 15.7931 58.9568 12.3819 58.9568 8.9086 59.0188L 4.00881 59.0188L 15.8551 38.7006C 20.5068 30.5238 25.2206 22.4708 29.9343 14.294C 30.4925 13.3028 31.1747 12.9312 32.2911 12.9312C 35.8264 12.9931 39.2997 12.9931 42.897 12.9312L 47.4867 12.9312L 46.8665 14.1701C 46.7424 14.4798 46.5564 14.7895 46.4323 15.0373L 39.9199 26.2495ZM 58.8368 52.7623L 41.6566 52.7623L 41.6566 45.3288L 58.8368 45.3288L 58.8368 52.7623ZM 41.6566 42.0457L 41.6566 34.4883L 58.7748 34.4883L 58.7748 41.9837L 41.6566 41.9837L 41.6566 42.0457ZM 58.8368 31.391L 41.3465 31.391L 41.9667 28.7893L 42.0907 28.6034C 42.3388 28.1698 42.5869 27.6743 42.835 27.1787C 43.3932 25.9398 44.0134 24.7009 45.1298 24.0814C 46.1842 23.4619 47.6107 23.5858 48.9752 23.6478C 49.5334 23.7097 50.0916 23.7097 50.5258 23.7097C 52.3245 23.7097 54.0611 23.7097 55.9218 23.7097L 58.8989 23.7097L 58.8989 31.391L 58.8368 31.391ZM 58.8989 9.46221L 58.8989 9.95778L 51.7663 9.95778L 51.7663 9.46221C 51.7663 9.02859 51.7663 8.53302 51.7663 8.0994C 51.7663 7.04633 51.7042 5.99325 51.8283 5.00212C 51.9523 3.0818 53.5029 3.01985 56.2319 3.01985C 56.9762 3.01985 58.8989 3.01985 58.9609 5.06406C 59.0229 6.05519 58.9609 7.04633 58.9609 8.0994C 58.8989 8.53302 58.8989 8.96664 58.8989 9.46221Z"/>
+</svg>
+
+					<span>Try It Now</span>
+				</a>
+			</li><li class="ppe-heading-menu-item">
+				<a class="ppe-heading-menu-link" href="https://gitter.im/postcss" rel="noopener noreferrer" target="_blank">
+					<svg viewBox="-20 -20 73 77" xmlns="http://www.w3.org/2000/svg">
+	<path d="M0 0h5v26.25H0zM28 0h5v26.25h-5zM9 6.125h5V42H9zM18 6.125h5V42h-5z"></path>
+</svg>
+
+					<span>Support</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</heading>
+
+<main class="ppe-features">
+	<section class="ppe-features-list">
+	<h2 class="ppe-features-list-heading" hidden>Features</h2>
+	<section class="ppe-feature" data-stage="3">
+		<header class="ppe-feature-heading" id="all-property">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#all-property">
+					all property
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="3" href="/features#all-property">Stage 3</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-cascade-3/#all-shorthand" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/maximkoretskiy/postcss-initial" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A property for defining the reset of all properties of an element</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>a</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>all</span>: <span class=css-value>initial</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="any-link-pseudo-class">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#any-link-pseudo-class">
+					:any-link pseudo-class
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#any-link-pseudo-class">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/selectors-4/#any-link-pseudo" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-pseudo-class-any-link" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A pseudo-class for matching anchor elements independent of whether they have been visited</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>nav :any-link > span</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>background-color</span>: <span class=css-value>yellow</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="1">
+		<header class="ppe-feature-heading" id="blank-pseudo-class">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#blank-pseudo-class">
+					:blank empty-value pseudo-class
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="1" href="/features#blank-pseudo-class">Stage 1</a>
+			<a class="ppe-feature-heading-specLink" href="https://drafts.csswg.org/selectors-4/#blank" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/csstools/css-blank-pseudo" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A pseudo-class for matching form elements when they are empty</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>input:blank</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>background-color</span>: <span class=css-value>yellow</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="3">
+		<header class="ppe-feature-heading" id="break-properties">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#break-properties">
+					break properties
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="3" href="/features#break-properties">Stage 3</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-break-3/#breaking-controls" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/shrpne/postcss-page-break" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">Properties for defining the break behavior between and within boxes</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>a</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>break-inside</span>: <span class=css-value>avoid</span>;</span>
+  <span class=css-declaration><span class=css-property>break-before</span>: <span class=css-value>avoid-column</span>;</span>
+  <span class=css-declaration><span class=css-property>break-after</span>: <span class=css-value>always</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="case-insensitive-attributes">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#case-insensitive-attributes">
+					case-insensitive attributes
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#case-insensitive-attributes">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/selectors-4/#attribute-case" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/Semigradsky/postcss-attribute-case-insensitive" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">An attribute selector matching attribute values case-insensitively</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>[frame=hsides i]</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>border-style</span>: <span class=css-value>solid none</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="1">
+		<header class="ppe-feature-heading" id="color-functional-notation">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#color-functional-notation">
+					functional color notation
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="1" href="/features#color-functional-notation">Stage 1</a>
+			<a class="ppe-feature-heading-specLink" href="https://drafts.csswg.org/css-color/#ref-for-funcdef-rgb%E2%91%A1%E2%91%A0" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-color-functional-notation" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A space and slash separated notation for specifying colors</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>em</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>background-color</span>: <span class=css-value><span class=css-function>hsl</span>(120deg 100% 25%)</span>;</span>
+  <span class=css-declaration><span class=css-property>box-shadow</span>: <span class=css-value>0 0 0 10px <span class=css-function>hwb</span>(120deg 100% 25% / 80%)</span>;</span>
+  <span class=css-declaration><span class=css-property>color</span>: <span class=css-value><span class=css-function>rgb</span>(0 255 0)</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="1">
+		<header class="ppe-feature-heading" id="custom-media-queries">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#custom-media-queries">
+					custom media queries
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="1" href="/features#custom-media-queries">Stage 1</a>
+			<a class="ppe-feature-heading-specLink" href="https://drafts.csswg.org/mediaqueries-5/#at-ruledef-custom-media" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/postcss/postcss-custom-media" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">An at-rule for defining aliases that represent media queries</p>
+		<pre class="ppe-feature-example"><span class=css-atrule><span class=css-atrule-name>@custom-media</span> <span class=css-atrule-params><span class=css-var>--narrow-window</span> (max-width: 30em)</span>;</span>
+
+<span class=css-atrule><span class=css-atrule-name>@media</span> <span class=css-atrule-params>(<span class=css-var>--narrow-window</span>)</span> <span class=css-block>{}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="3">
+		<header class="ppe-feature-heading" id="custom-properties">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#custom-properties">
+					custom properties
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="3" href="/features#custom-properties">Stage 3</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-variables-1/" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/postcss/postcss-custom-properties" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A syntax for defining custom values accepted by all CSS properties</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>img</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>--some-length</span>: <span class=css-value>32px</span>;</span>
+
+  <span class=css-declaration><span class=css-property>height</span>: <span class=css-value><span class=css-function>var</span>(<span class=css-var>--some-length</span>)</span>;</span>
+  <span class=css-declaration><span class=css-property>width</span>: <span class=css-value><span class=css-function>var</span>(<span class=css-var>--some-length</span>)</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="1">
+		<header class="ppe-feature-heading" id="custom-selectors">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#custom-selectors">
+					custom selectors
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="1" href="/features#custom-selectors">Stage 1</a>
+			<a class="ppe-feature-heading-specLink" href="https://drafts.csswg.org/css-extensions/#custom-selectors" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/postcss/postcss-custom-selectors" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">An at-rule for defining aliases that represent selectors</p>
+		<pre class="ppe-feature-example"><span class=css-atrule><span class=css-atrule-name>@custom-selector</span> <span class=css-atrule-params><span class=css-var>:--heading</span> h1, h2, h3, h4, h5, h6</span>;</span>
+
+<span class=css-rule><span class=css-selector>article <span class=css-var>:--heading</span> + p</span> <span class=css-block>{}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="dir-pseudo-class">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#dir-pseudo-class">
+					:dir pseudo-class
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#dir-pseudo-class">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/selectors-4/#dir-pseudo" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-dir-pseudo-class" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A pseudo-class for matching elements based on their directionality</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>blockquote:dir(rtl)</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>margin-right</span>: <span class=css-value>10px</span>;</span>
+}</span></span>
+
+<span class=css-rule><span class=css-selector>blockquote:dir(ltr)</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>margin-left</span>: <span class=css-value>10px</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="double-position-gradients">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#double-position-gradients">
+					double position gradients
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#double-position-gradients">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-images-4/#color-stop-syntax" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-double-position-gradients" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A syntax for using two positions in a gradient.</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>.pie_chart</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>background-image</span>: <span class=css-value><span class=css-function>conic-gradient</span>(yellowgreen 40%, gold 0deg 75%, #f06 0deg)</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="0">
+		<header class="ppe-feature-heading" id="environment-variables">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#environment-variables">
+					custom environment variables
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="0" href="/features#environment-variables">Stage 0</a>
+			<a class="ppe-feature-heading-specLink" href="https://drafts.csswg.org/css-env-1/" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-env-function" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A syntax for using custom values accepted by CSS globally</p>
+		<pre class="ppe-feature-example"><span class=css-atrule><span class=css-atrule-name>@media</span> <span class=css-atrule-params>(max-width: <span class=css-function>env</span>(<span class=css-var>--brand-small</span>))</span> <span class=css-block>{
+  <span class=css-rule><span class=css-selector>body</span> <span class=css-block>{
+    <span class=css-declaration><span class=css-property>padding</span>: <span class=css-value><span class=css-function>env</span>(<span class=css-var>--brand-spacing</span>)</span>;</span>
+  }</span></span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="focus-visible-pseudo-class">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#focus-visible-pseudo-class">
+					:focus-visible pseudo-class
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#focus-visible-pseudo-class">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/selectors-4/#focus-visible-pseudo" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-focus-visible" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A pseudo-class for matching focused elements that indicate that focus to a user</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>:focus:not(:focus-visible)</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>outline</span>: <span class=css-value>0</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="focus-within-pseudo-class">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#focus-within-pseudo-class">
+					:focus-within pseudo-class
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#focus-within-pseudo-class">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/selectors-4/#focus-within-pseudo" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-focus-within" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A pseudo-class for matching elements that are either focused or that have focused descendants</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>form:focus-within</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>background</span>: <span class=css-value><span class=css-function>rgba</span>(0, 0, 0, 0.3)</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="3">
+		<header class="ppe-feature-heading" id="font-variant-property">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#font-variant-property">
+					font-variant property
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="3" href="/features#font-variant-property">Stage 3</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-fonts-3/#propdef-font-variant" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/postcss/postcss-font-variant" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A property for defining the usage of alternate glyphs in a font</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>h2</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>font-variant</span>: <span class=css-value>small-caps</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="3">
+		<header class="ppe-feature-heading" id="gap-properties">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#gap-properties">
+					gap properties
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="3" href="/features#gap-properties">Stage 3</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-grid-1/#gutters" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-gap-properties" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">Properties for defining gutters within a layout</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>.grid-1</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>gap</span>: <span class=css-value>20px</span>;</span>
+}</span></span>
+
+<span class=css-rule><span class=css-selector>.grid-2</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>column-gap</span>: <span class=css-value>40px</span>;</span>
+  <span class=css-declaration><span class=css-property>row-gap</span>: <span class=css-value>20px</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="gray-function">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#gray-function">
+					gray() function
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#gray-function">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-color-4/#funcdef-gray" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/postcss/postcss-color-gray" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A function for specifying fully desaturated colors</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>p</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>color</span>: <span class=css-value><span class=css-function>gray</span>(50)</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="hexadecimal-alpha-notation">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#hexadecimal-alpha-notation">
+					alpha hex colors
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#hexadecimal-alpha-notation">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-color-4/#hex-notation" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/postcss/postcss-color-hex-alpha" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A 4 & 8 character hex color notation for specifying the opacity level</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>section</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>background-color</span>: <span class=css-value>#f3f3f3f3</span>;</span>
+  <span class=css-declaration><span class=css-property>color</span>: <span class=css-value>#0003</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="hwb-function">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#hwb-function">
+					hwb() function
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#hwb-function">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-color-4/#funcdef-hwb" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/postcss/postcss-color-hwb" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A function for specifying colors by hue and then a degree of whiteness and blackness to mix into it</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>p</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>color</span>: <span class=css-value><span class=css-function>hwb</span>(120 44% 50%)</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="image-set-function">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#image-set-function">
+					image-set() function
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#image-set-function">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-images-4/#image-set-notation" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-image-set-function" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A function for specifying image sources based on the user’s resolution</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>p</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>background-image</span>: <span class=css-value><span class=css-function>image-set</span>(
+    <span class=css-string>"foo.png"</span> 1x,
+    <span class=css-string>"foo-2x.png"</span> 2x,
+    <span class=css-string>"foo-print.png"</span> 600dpi
+  )</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="lab-function">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#lab-function">
+					lab() function
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#lab-function">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-color-4/#funcdef-lab" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-lab-function" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A function for specifying colors expressed in the CIE Lab color space</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>body</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>color</span>: <span class=css-value><span class=css-function>lab</span>(240 50 20)</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="lch-function">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#lch-function">
+					lch() function
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#lch-function">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-color-4/#funcdef-lch" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-lab-function" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A function for specifying colors expressed in the CIE Lab color space with chroma and hue</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>body</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>color</span>: <span class=css-value><span class=css-function>lch</span>(53 105 40)</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="logical-properties-and-values">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#logical-properties-and-values">
+					logical properties and values
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#logical-properties-and-values">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-logical-1/" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-logical-properties" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">Flow-relative (left-to-right or right-to-left) properties and values</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>span:first-child</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>float</span>: <span class=css-value>inline-start</span>;</span>
+  <span class=css-declaration><span class=css-property>margin-inline-start</span>: <span class=css-value>10px</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="matches-pseudo-class">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#matches-pseudo-class">
+					:matches pseudo-class
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#matches-pseudo-class">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/selectors-4/#matches-pseudo" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/postcss/postcss-selector-matches" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A pseudo-class for matching elements in a selector list</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>p:matches(:first-child, .special)</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>margin-top</span>: <span class=css-value>1em</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="3">
+		<header class="ppe-feature-heading" id="media-query-ranges">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#media-query-ranges">
+					media query ranges
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="3" href="/features#media-query-ranges">Stage 3</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/mediaqueries-4/#range-context" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/postcss/postcss-media-minmax" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A syntax for defining media query ranges using ordinary comparison operators</p>
+		<pre class="ppe-feature-example"><span class=css-atrule><span class=css-atrule-name>@media</span> <span class=css-atrule-params>(width < 480px)</span> <span class=css-block>{}</span></span>
+
+<span class=css-atrule><span class=css-atrule-name>@media</span> <span class=css-atrule-params>(480px <= width < 768px)</span> <span class=css-block>{}</span></span>
+
+<span class=css-atrule><span class=css-atrule-name>@media</span> <span class=css-atrule-params>(width >= 768px)</span> <span class=css-block>{}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="1">
+		<header class="ppe-feature-heading" id="nesting-rules">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#nesting-rules">
+					nesting rules
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="1" href="/features#nesting-rules">Stage 1</a>
+			<a class="ppe-feature-heading-specLink" href="https://drafts.csswg.org/css-nesting-1/" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-nesting" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A syntax for nesting relative rules within rules</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>article</span> <span class=css-block>{
+  <span class=css-rule><span class=css-selector>& p</span> <span class=css-block>{
+    <span class=css-declaration><span class=css-property>color</span>: <span class=css-value>#333</span>;</span>
+  }</span></span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="not-pseudo-class">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#not-pseudo-class">
+					:not pseudo-class
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#not-pseudo-class">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/selectors-4/#negation-pseudo" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/postcss/postcss-selector-not" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A pseudo-class for ignoring elements in a selector list</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>p:not(:first-child, .special)</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>margin-top</span>: <span class=css-value>1em</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="overflow-property">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#overflow-property">
+					overflow shorthand property
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#overflow-property">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-overflow-3/#propdef-overflow" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-overflow-shorthand" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A property for defining `overflow-x` and `overflow-y`</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>html</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>overflow</span>: <span class=css-value>hidden auto</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="overflow-wrap-property">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#overflow-wrap-property">
+					overflow-wrap property
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#overflow-wrap-property">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-text-3/#overflow-wrap-property" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/mattdimu/postcss-replace-overflow-wrap" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A property for defining whether to insert line breaks within words to prevent overflowing</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>p</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>overflow-wrap</span>: <span class=css-value>break-word</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="place-properties">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#place-properties">
+					place properties
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#place-properties">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-align-3/#place-items-property" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/jonathantneal/postcss-place" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">Properties for defining alignment within a layout</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>.example</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>place-content</span>: <span class=css-value>flex-end</span>;</span>
+  <span class=css-declaration><span class=css-property>place-items</span>: <span class=css-value>center / space-between</span>;</span>
+  <span class=css-declaration><span class=css-property>place-self</span>: <span class=css-value>flex-start / center</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="1">
+		<header class="ppe-feature-heading" id="prefers-color-scheme-query">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#prefers-color-scheme-query">
+					prefers-color-scheme media query
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="1" href="/features#prefers-color-scheme-query">Stage 1</a>
+			<a class="ppe-feature-heading-specLink" href="https://drafts.csswg.org/mediaqueries-5/#prefers-color-scheme" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/csstools/css-prefers-color-scheme" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A media query to detect if the user has requested the system use a light or dark color theme</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>body</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>background-color</span>: <span class=css-value>white</span>;</span>
+  <span class=css-declaration><span class=css-property>color</span>: <span class=css-value>black</span>;</span>
+}</span></span>
+
+<span class=css-atrule><span class=css-atrule-name>@media</span> <span class=css-atrule-params>(prefers-color-scheme: dark)</span> <span class=css-block>{
+  <span class=css-rule><span class=css-selector>body</span> <span class=css-block>{
+    <span class=css-declaration><span class=css-property>background-color</span>: <span class=css-value>black</span>;</span>
+    <span class=css-declaration><span class=css-property>color</span>: <span class=css-value>white</span>;</span>
+  }</span></span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="rebeccapurple-color">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#rebeccapurple-color">
+					rebeccapurple color
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#rebeccapurple-color">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/postcss/postcss-color-rebeccapurple" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A particularly lovely shade of purple in memory of Rebecca Alison Meyer</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>html</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>color</span>: <span class=css-value>rebeccapurple</span>;</span>
+}</span></span></pre>
+	</section><section class="ppe-feature" data-stage="2">
+		<header class="ppe-feature-heading" id="system-ui-font-family">
+			<h3 class="ppe-feature-title">
+				<a class="ppe-feature-title-link" href="/features#system-ui-font-family">
+					system-ui font family
+				</a>
+			</h3>
+			<a class="ppe-feature-heading-stage" data-stage="2" href="/features#system-ui-font-family">Stage 2</a>
+			<a class="ppe-feature-heading-specLink" href="https://www.w3.org/TR/css-fonts-4/#system-ui-def" rel="noopener noreferrer" target="_blank">Specification</a>
+			<a class="ppe-feature-heading-pluginLink" href="https://github.com/JLHwung/postcss-font-family-system-ui" rel="noopener noreferrer" target="_blank">Plugin</a>
+		</header>
+		<p class="ppe-feature-description">A generic font used to match the user’s interface</p>
+		<pre class="ppe-feature-example"><span class=css-rule><span class=css-selector>body</span> <span class=css-block>{
+  <span class=css-declaration><span class=css-property>font-family</span>: <span class=css-value>system-ui</span>;</span>
+}</span></span></pre>
+	</section>
+</section>
+
+	<nav class="ppe-navigation">
+	<nav class="ppe-feature-menu" aria-label="Feature Navigation">
+		<ul class="ppe-feature-menu-list">
+			<li class="ppe-menu-item" data-stage="3">
+				<a class="ppe-menu-link" href="/features#all-property">all property</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#any-link-pseudo-class">:any-link pseudo-class</a>
+			</li><li class="ppe-menu-item" data-stage="1">
+				<a class="ppe-menu-link" href="/features#blank-pseudo-class">:blank empty-value pseudo-class</a>
+			</li><li class="ppe-menu-item" data-stage="3">
+				<a class="ppe-menu-link" href="/features#break-properties">break properties</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#case-insensitive-attributes">case-insensitive attributes</a>
+			</li><li class="ppe-menu-item" data-stage="1">
+				<a class="ppe-menu-link" href="/features#color-functional-notation">functional color notation</a>
+			</li><li class="ppe-menu-item" data-stage="1">
+				<a class="ppe-menu-link" href="/features#custom-media-queries">custom media queries</a>
+			</li><li class="ppe-menu-item" data-stage="3">
+				<a class="ppe-menu-link" href="/features#custom-properties">custom properties</a>
+			</li><li class="ppe-menu-item" data-stage="1">
+				<a class="ppe-menu-link" href="/features#custom-selectors">custom selectors</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#dir-pseudo-class">:dir pseudo-class</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#double-position-gradients">double position gradients</a>
+			</li><li class="ppe-menu-item" data-stage="0">
+				<a class="ppe-menu-link" href="/features#environment-variables">custom environment variables</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#focus-visible-pseudo-class">:focus-visible pseudo-class</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#focus-within-pseudo-class">:focus-within pseudo-class</a>
+			</li><li class="ppe-menu-item" data-stage="3">
+				<a class="ppe-menu-link" href="/features#font-variant-property">font-variant property</a>
+			</li><li class="ppe-menu-item" data-stage="3">
+				<a class="ppe-menu-link" href="/features#gap-properties">gap properties</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#gray-function">gray() function</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#hexadecimal-alpha-notation">alpha hex colors</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#hwb-function">hwb() function</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#image-set-function">image-set() function</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#lab-function">lab() function</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#lch-function">lch() function</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#logical-properties-and-values">logical properties and values</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#matches-pseudo-class">:matches pseudo-class</a>
+			</li><li class="ppe-menu-item" data-stage="3">
+				<a class="ppe-menu-link" href="/features#media-query-ranges">media query ranges</a>
+			</li><li class="ppe-menu-item" data-stage="1">
+				<a class="ppe-menu-link" href="/features#nesting-rules">nesting rules</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#not-pseudo-class">:not pseudo-class</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#overflow-property">overflow shorthand property</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#overflow-wrap-property">overflow-wrap property</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#place-properties">place properties</a>
+			</li><li class="ppe-menu-item" data-stage="1">
+				<a class="ppe-menu-link" href="/features#prefers-color-scheme-query">prefers-color-scheme media query</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#rebeccapurple-color">rebeccapurple color</a>
+			</li><li class="ppe-menu-item" data-stage="2">
+				<a class="ppe-menu-link" href="/features#system-ui-font-family">system-ui font family</a>
+			</li>
+		</ul>
+	</nav>
+	<nav class="ppe-sidebar-menu" aria-label="Additional Navigation">
+		<ul class="ppe-sidebar-menu-list">
+			<li class="ppe-menu-item">
+				<a class="ppe-menu-link" href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#usage" rel="noreferrer" target="_blank">Installation and Usage</a>
+			</li><li class="ppe-menu-item">
+				<a class="ppe-menu-link" href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#options" rel="noreferrer" target="_blank">Options</a>
+			</li><li class="ppe-menu-item">
+				<a class="ppe-menu-link" href="https://cssdb.org/#the-staging-process" rel="noreferrer" target="_blank">Stages</a>
+			</li>
+		</ul>
+	</nav>
+</nav>
+
+</main>
+
+	</body>
+</html>

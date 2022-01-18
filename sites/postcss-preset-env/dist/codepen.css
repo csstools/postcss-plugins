@@ -1,0 +1,11 @@
+.ppe-codepen {
+	background-color: #1b2b34;
+	bottom: 0;
+	height: calc(100% - var(--heading-size));
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: var(--heading-size);
+	width: 100%;
+}
+

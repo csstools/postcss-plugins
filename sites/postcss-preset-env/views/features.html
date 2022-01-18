@@ -1,0 +1,54 @@
+<extends src='layout.html'>
+  <block name='content'>
+    <nav>
+      <a href="/">postcss-preset-env</a>
+      <a href="/features" active>features</a>
+      <a href="/playground">playground</a>
+      <a href="/support">support</a>
+      <a href="/npm">npm</a>
+      <a href="/github">github</a>
+    </nav>
+    <nav>
+      <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <div>
+        <a href="#1">1</a>
+        <a href="#2">2</a>
+        <a href="#3">3</a>
+        <a href="#4">4</a>
+      </div>
+      <div>
+        <a href="#1">:1</a>
+        <a href="#2">:2</a>
+        <a href="#3">:3</a>
+        <a href="#4">:4</a>
+      </div>
+      <div>
+        <a href="#1">1()</a>
+        <a href="#2">2()</a>
+        <a href="#3">3()</a>
+        <a href="#4">4()</a>
+      </div>
+      <div>
+        <a href="#install">install</a>
+        <a href="#options">options</a>
+        <a href="#stages">stages</a>
+      </div>
+    </nav>
+    <content>
+      <div>
+        <a href="#title1">title1</a>
+        <a href>stage</a>
+        <a href>spec</a>
+        <a href>plugin</a>
+        <span>subtitle</span>
+        <code>p { color: gray(50); }</code>
+      </div>
+    </content>
+  </block>
+</extends>
