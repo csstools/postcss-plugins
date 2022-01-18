@@ -44,7 +44,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				console.log(formatGitHubActionAnnotation(
 					'postcss flag not set to "true" on exported plugin object',
 					'error',
-					{ file: './package.json', line: 1, col: 1 },
+					{ file: './package.json', line: 1, col: 1 }, /* attributed to package.json because we don't know the source file of "currentPlugin" */
 				));
 			} else {
 				console.error(`\npostcss flag not set to "true"\n\n${dashesSeparator}`);
@@ -61,7 +61,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				console.log(formatGitHubActionAnnotation(
 					'plugin name not set via "postcssPlugin"',
 					'error',
-					{ file: './package.json', line: 1, col: 1 },
+					{ file: './package.json', line: 1, col: 1 }, /* attributed to package.json because we don't know the source file of "currentPlugin" */
 				));
 			} else {
 				console.error(`\nplugin name not set via "postcssPlugin"\n\n${dashesSeparator}`);
@@ -78,7 +78,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				console.log(formatGitHubActionAnnotation(
 					'package.json does not include "postcss-plugin" keyword',
 					'error',
-					{ file: './package.json', line: 1, col: 1 },
+					{ file: './package.json', line: 1, col: 1 }, /* attributed to package.json because we don't know the source file of "currentPlugin" */
 				));
 			} else {
 				console.error(`\npackage.json does not include "postcss-plugin" keyword\n\n${dashesSeparator}`);
