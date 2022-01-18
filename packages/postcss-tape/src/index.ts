@@ -149,7 +149,8 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			// Assert that the result can be passed back to PostCSS and still parses.
 			{
 				try {
-					const secondPassResult = await postcss([noopPlugin()]).process(result, {
+					const resultContents = await fsp.readFile(resultFilePath, 'utf8');
+					const secondPassResult = await postcss([noopPlugin()]).process(resultContents, {
 						from: resultFilePath,
 						to: resultFilePath,
 						map: {
@@ -166,12 +167,12 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 					if (process.env.GITHUB_ACTIONS) {
 						console.log(formatGitHubActionAnnotation(
-							`${testCaseLabel}\n\nresult was not parse-able with PostCSS.`,
+							`${testCaseLabel}\n\nresult was not parsable with PostCSS.`,
 							'error',
 							{ file: expectFilePath, line: 1, col: 1 },
 						));
 					} else {
-						console.error(`\n${testCaseLabel}\n\nresult was not parse-able with PostCSS.\n\n${dashesSeparator}`);
+						console.error(`\n${testCaseLabel}\n\nresult was not parsable with PostCSS.\n\n${dashesSeparator}`);
 					}
 				}
 			}
@@ -201,12 +202,12 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 					if (process.env.GITHUB_ACTIONS) {
 						console.log(formatGitHubActionAnnotation(
-							`${testCaseLabel}\n\nwith older PostCSS:\n\n` + formatCSSAssertError(testCaseLabel, testCaseOptions, err, true),
+							'testing older PostCSS:\n' + formatCSSAssertError(testCaseLabel, testCaseOptions, err, true),
 							'error',
 							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
 						));
 					} else {
-						console.error(`\n${testCaseLabel}\n\nwith older PostCSS:\n\n` + formatCSSAssertError(testCaseLabel, testCaseOptions, err));
+						console.error('testing older PostCSS:\n' + formatCSSAssertError(testCaseLabel, testCaseOptions, err));
 					}
 				}
 			}

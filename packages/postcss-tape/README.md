@@ -1,6 +1,6 @@
 # PostCSS Tape for csstools/postcss-plugins
 
-_Internal package._
+_Internal package_
 
 See [.tape.mjs](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-base-plugin/.tape.mjs) in the base plugin for a minimal example.
 
@@ -24,4 +24,4 @@ postcssTape(plugin)({
 });
 ```
 
-Browse the source code here or other tests in plugins for more usage details.
+Browse the source code and tests here or see tests in plugins for more usage details.
