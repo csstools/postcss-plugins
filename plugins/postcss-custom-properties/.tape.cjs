@@ -1,4 +1,4 @@
-const postcssTape = require('@csstools/postcss-tape');
+const postcssTape = require('../../packages/postcss-tape/dist/index.cjs');
 const plugin = require('postcss-custom-properties');
 
 postcssTape(plugin)({

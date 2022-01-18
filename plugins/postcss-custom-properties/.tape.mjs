@@ -1,4 +1,4 @@
-import postcssTape from '@csstools/postcss-tape';
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';;
 import plugin from 'postcss-custom-properties';
 import { strict as assert } from 'assert';
 import postcssImport from 'postcss-import';
