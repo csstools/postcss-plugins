@@ -174,6 +174,9 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				},
 			});
 
+			// Try to write the result file, even if further checks fails.
+			// This helps writing new tests for plugins.
+			// Taking the result file as a starting point for the expect file.
 			const resultString = result.css.toString();
 			await fsp.writeFile(resultFilePath, resultString, 'utf8');
 
