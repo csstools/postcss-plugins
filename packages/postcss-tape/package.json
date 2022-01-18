@@ -28,7 +28,7 @@
     "test": "bash ./test-self/test.sh"
   },
   "dependencies": {
-    "postcss-oldest-supported": "npm:postcss@~8.2",
+    "postcss-8.2": "npm:postcss@~8.2",
     "postcss": "~8.3"
   },
   "keywords": [
@@ -39,5 +39,8 @@
     "tests",
     "tools",
     "tape"
-  ]
+  ],
+  "volta": {
+    "extends": "../../package.json"
+  }
 }
