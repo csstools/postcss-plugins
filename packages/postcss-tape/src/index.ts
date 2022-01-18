@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 import postcss from 'postcss';
-import postcssOldestSupported from 'postcss-oldest-supported';
+import postcssOldestSupported, { AcceptedPlugin } from 'postcss-oldest-supported';
 import path from 'path';
 import { promises as fsp } from 'fs';
 import { strict as assert } from 'assert';
@@ -9,6 +9,7 @@ import { strict as assert } from 'assert';
 import type { PluginCreator, Plugin } from 'postcss';
 import { formatGitHubActionAnnotation } from './github-annotations';
 import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts';
+import noopPlugin from './noop-plugin';
 
 type TestCaseOptions = {
 	// Debug message
@@ -148,7 +149,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			// Assert that the result can be passed back to PostCSS and still parses.
 			{
 				try {
-					const secondPassResult = await postcss().process(result, {
+					const secondPassResult = await postcss([noopPlugin()]).process(result, {
 						from: resultFilePath,
 						to: resultFilePath,
 						map: {
@@ -184,7 +185,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			// There is no system behind setting this.
 			// It is here to allow testing a specific older version, if parts of the community can't update yet.
 			{
-				const resultFromOldestPostCSS = await postcssOldestSupported(plugins).process(input, {
+				const resultFromOldestPostCSS = await postcssOldestSupported(plugins as Array<AcceptedPlugin>).process(input, {
 					from: testFilePath,
 					to: resultFilePath,
 					map: {
