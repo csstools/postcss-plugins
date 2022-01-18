@@ -5,7 +5,7 @@ _Internal package_
 See [.tape.mjs](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-base-plugin/.tape.mjs) in the base plugin for a minimal example.
 
 ```js
-import postcssTape from '@csstools/postcss-tape';
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from '@csstools/postcss-base-plugin';
 
 postcssTape(plugin)({

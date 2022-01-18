@@ -269,7 +269,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			// This does not need to be a different version than the latest version of PostCSS.
 			// There is no system behind setting this.
 			// It is here to allow testing a specific older version, if parts of the community can't update yet.
-			{
+			if (postcss([noopPlugin()]).version !== postcssOldestSupported([noopPlugin()]).version) { // https://postcss.org/api/#processor-version
 				const resultFromOldestPostCSS = await postcssOldestSupported(plugins as Array<AcceptedPlugin>).process(input, {
 					from: testFilePath,
 					to: resultFilePath,
@@ -337,7 +337,7 @@ function normalizeFilePathForGithubAnnotation(filePath: string) {
 	];
 
 	if (!workspaces.includes(parts[0])) {
-		throw new Error('PostCSS Tape was intended to be run from <workspace>/package');
+		throw new Error('PostCSS Tape was intended to be run from <workspace>/<package>');
 	}
 
 	return path.join(parts.join('/'), filePath);

@@ -46,7 +46,7 @@ export const externalsForPlugin = [
 	'path',
 
 	'postcss',
-	'postcss-oldest-supported',
+	/^postcss-\d\.\d$/,
 	/^postcss\/lib\/*/,
 
 	'autoprefixer',
