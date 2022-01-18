@@ -30,9 +30,6 @@
     "test:cli": "bash ./test/cli/test.sh",
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
-  "devDependencies": {
-    "@csstools/postcss-tape": "^1.0.0"
-  },
   "peerDependencies": {
     "postcss": "^8.3"
   },
