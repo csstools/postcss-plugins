@@ -3,7 +3,7 @@
 import postcss from 'postcss';
 import postcssOldestSupported, { AcceptedPlugin } from 'postcss-oldest-supported';
 import path from 'path';
-import { promises as fsp } from 'fs';
+import fs, { promises as fsp } from 'fs';
 import { strict as assert } from 'assert';
 
 import type { PluginCreator, Plugin } from 'postcss';
@@ -35,6 +35,90 @@ type TestCaseOptions = {
 export default function runner(currentPlugin: PluginCreator<unknown>) {
 	let hasErrors = false;
 
+	// Plugin conforms to https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md
+	{
+		if (currentPlugin.postcss !== true) {
+			hasErrors = true;
+
+			if (process.env.GITHUB_ACTIONS) {
+				console.log(formatGitHubActionAnnotation(
+					'postcss flag not set to "true" on exported plugin object',
+					'error',
+					{ file: './package.json', line: 1, col: 1 },
+				));
+			} else {
+				console.error(`\npostcss flag not set to "true"\n\n${dashesSeparator}`);
+			}
+		}
+
+		// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#15-set-pluginpostcssplugin-with-plugin-name
+		// Set plugin.postcssPlugin with plugin name
+		const plugin = currentPlugin() as Plugin;
+		if (!plugin.postcssPlugin || typeof plugin.postcssPlugin !== 'string') {
+			hasErrors = true;
+
+			if (process.env.GITHUB_ACTIONS) {
+				console.log(formatGitHubActionAnnotation(
+					'plugin name not set via "postcssPlugin"',
+					'error',
+					{ file: './package.json', line: 1, col: 1 },
+				));
+			} else {
+				console.error(`\nplugin name not set via "postcssPlugin"\n\n${dashesSeparator}`);
+			}
+		}
+
+		// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#54-include-postcss-plugin-keyword-in-packagejson
+		// Include postcss-plugin keyword in package.json
+		const packageInfo = JSON.parse(fs.readFileSync('./package.json').toString());
+		if (!packageInfo.keywords.includes('postcss-plugin')) {
+			hasErrors = true;
+
+			if (process.env.GITHUB_ACTIONS) {
+				console.log(formatGitHubActionAnnotation(
+					'package.json does not include "postcss-plugin" keyword',
+					'error',
+					{ file: './package.json', line: 1, col: 1 },
+				));
+			} else {
+				console.error(`\npackage.json does not include "postcss-plugin" keyword\n\n${dashesSeparator}`);
+			}
+		}
+
+		// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#11-clear-name-with-postcss--prefix
+		// Clear name with postcss- prefix
+		if (!packageInfo.name.startsWith('postcss-') && !packageInfo.name.startsWith('@csstools/postcss-')) {
+			hasErrors = true;
+
+			if (process.env.GITHUB_ACTIONS) {
+				console.log(formatGitHubActionAnnotation(
+					'plugin name in package.json does not start with "postcss-"',
+					'error',
+					{ file: './package.json', line: 1, col: 1 },
+				));
+			} else {
+				console.error(`\nplugin name in package.json does not start with "postcss-"\n\n${dashesSeparator}`);
+			}
+		}
+
+		// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#14-keep-postcss-to-peerdependencies
+		// Keep postcss to peerDependencies
+		if (Object.keys(Object(packageInfo.dependencies)).includes('postcss') && !('postcssTapeSelfTest' in currentPlugin)) {
+			hasErrors = true;
+
+			if (process.env.GITHUB_ACTIONS) {
+				console.log(formatGitHubActionAnnotation(
+					'postcss should only be a peer and/or dev dependency',
+					'error',
+					{ file: './package.json', line: 1, col: 1 },
+				));
+			} else {
+				console.error(`\npostcss should only be a peer and/or dev dependency\n\n${dashesSeparator}`);
+			}
+		}
+	}
+
+	// Test cases
 	return async (options: Record<string, TestCaseOptions>) => {
 		for (const testCaseLabel in options) {
 			const testCaseOptions = options[testCaseLabel];

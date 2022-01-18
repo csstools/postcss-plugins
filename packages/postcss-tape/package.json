@@ -24,9 +24,8 @@
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "lint": "eslint src/**/*.ts",
-    "test": "bash ./test-self/test.sh",
-    "stryker": "stryker run --logLevel error"
+    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "test": "bash ./test-self/test.sh"
   },
   "dependencies": {
     "postcss-oldest-supported": "npm:postcss@~8.2",

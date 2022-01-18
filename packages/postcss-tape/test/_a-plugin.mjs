@@ -40,5 +40,6 @@ const aPlugin = (options) => {
 };
 
 aPlugin.postcss = true;
+aPlugin.postcssTapeSelfTest = true;
 
 export default aPlugin;
