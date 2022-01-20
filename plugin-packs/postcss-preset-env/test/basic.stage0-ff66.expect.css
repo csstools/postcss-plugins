@@ -106,7 +106,7 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 }
 
 .test-color-functional-notation {
-	color: rgba(178, 34, 34, 0.5);
+	color: rgb(70% 13.5% 13.5% / 50%);
 	order: 16;
 }
 
@@ -150,6 +150,10 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 .test-overflow-wrap-property {
 	order: 25;
 	overflow-wrap: break-word;
+}
+
+.test-focus-visible-pseudo-class.focus-visible {
+	order: 26;
 }
 
 .test-focus-visible-pseudo-class:focus-visible {
