@@ -1,4 +1,4 @@
-# Changes to PostCSS Hwb Function
+# Changes to PostCSS HWB Function
 
 ### 1.0.0
 

@@ -1,4 +1,4 @@
-# PostCSS Hwb Function [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
+# PostCSS HWB Function [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-hwb-function.svg" height="20">][npm-url]
 [<img alt="CSS Standard Status" src="https://cssdb.org/badge/hwb-function.svg" height="20">][css-url]
@@ -6,7 +6,7 @@
 [<img alt="support chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
 
-[PostCSS Hwb Function] lets you use `hwb` color functions in
+[PostCSS HWB Function] lets you use `hwb` color functions in
 CSS, following the [CSS Color] specification.
 
 ```pcss
@@ -25,7 +25,7 @@ a {
 
 ## Usage
 
-Add [PostCSS Hwb Function] to your project:
+Add [PostCSS HWB Function] to your project:
 
 ```bash
 npm install postcss @csstools/postcss-hwb-function --save-dev
@@ -35,14 +35,14 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssHwbFunction = require('@csstools/postcss-hwb-function');
+const postcssHWBFunction = require('@csstools/postcss-hwb-function');
 
 postcss([
-  postcssHwbFunction(/* pluginOptions */)
+  postcssHWBFunction(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-[PostCSS Hwb Function] runs in all Node environments, with special
+[PostCSS HWB Function] runs in all Node environments, with special
 instructions for:
 
 | [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
@@ -56,7 +56,7 @@ The `preserve` option determines whether the original functional color notation
 is preserved. By default, it is not preserved.
 
 ```js
-postcssHwbFunction({ preserve: true })
+postcssHWBFunction({ preserve: true })
 ```
 
 ```pcss
@@ -85,4 +85,4 @@ a {
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Hwb Function]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function
+[PostCSS HWB Function]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function

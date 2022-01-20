@@ -70,6 +70,7 @@ body:
         - PostCSS Focus Within
         - PostCSS Font Variant
         - PostCSS Gap Properties
+        - PostCSS HWB Function
         - PostCSS Image Set Function
         - PostCSS Lab Function
         - PostCSS Logical
