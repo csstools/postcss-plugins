@@ -71,6 +71,7 @@ body:
         - PostCSS Font Variant
         - PostCSS Gap Properties
         - PostCSS Image Set Function
+        - PostCSS Is Pseudo Class
         - PostCSS Lab Function
         - PostCSS Logical
         - PostCSS Media Query Ranges
