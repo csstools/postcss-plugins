@@ -4,7 +4,7 @@ import valueParser from 'postcss-value-parser';
 const dpiRatios = { dpcm: 2.54, dpi: 1, dppx: 96, x: 96 };
 
 // return a valid @media rule
-export function getMedia(dpi: number | false, postcss) {
+export function getMedia(dpi: number | false, postcss, decl) {
 	if (typeof dpi === 'boolean') {
 		return false;
 	}
@@ -15,6 +15,7 @@ export function getMedia(dpi: number | false, postcss) {
 	const media = postcss.atRule({
 		name: 'media',
 		params: `(-webkit-min-device-pixel-ratio: ${dpr}), (min-resolution: ${dpi}dpi)`,
+		source: decl.source,
 	});
 
 	return media;

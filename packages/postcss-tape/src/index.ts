@@ -6,7 +6,7 @@ import path from 'path';
 import fs, { promises as fsp } from 'fs';
 import { strict as assert } from 'assert';
 
-import type { PluginCreator, Plugin } from 'postcss';
+import type { PluginCreator, Plugin, Result } from 'postcss';
 import { formatGitHubActionAnnotation } from './github-annotations';
 import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts';
 import noopPlugin from './noop-plugin';
@@ -20,6 +20,9 @@ type TestCaseOptions = {
 	plugins?: Array<Plugin>,
 	// The expected number of warnings.
 	warnings?: number,
+	// Expected exception
+	// NOTE: plugins should not throw exceptions, this goes against best practices. Use `errors` instead.
+	exception?: RegExp,
 
 	// Override the file name of the "expect" file.
 	expect?: string,
@@ -87,7 +90,13 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 		// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#11-clear-name-with-postcss--prefix
 		// Clear name with postcss- prefix
-		if (!packageInfo.name.startsWith('postcss-') && !packageInfo.name.startsWith('@csstools/postcss-')) {
+		const isOlderPackageName = [
+			'css-has-pseudo',
+			'css-blank-pseudo',
+			'css-prefers-color-scheme',
+		].includes(packageInfo.name);
+
+		if (!packageInfo.name.startsWith('postcss-') && !packageInfo.name.startsWith('@csstools/postcss-') && !isOlderPackageName) {
 			hasErrors = true;
 
 			if (process.env.GITHUB_ACTIONS) {
@@ -165,14 +174,26 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				}
 			}
 
-			const result = await postcss(plugins).process(input, {
-				from: testFilePath,
-				to: resultFilePath,
-				map: {
-					inline: false,
-					annotation: false,
-				},
-			});
+			let result: Result;
+
+			try {
+				result = await postcss(plugins).process(input, {
+					from: testFilePath,
+					to: resultFilePath,
+					map: {
+						inline: false,
+						annotation: false,
+					},
+				});
+			} catch (err) {
+				if (testCaseOptions.exception && testCaseOptions.exception.test(err.message)) {
+					// expected an exception and got one.
+					continue;
+				}
+
+				// rethrow
+				throw err;
+			}
 
 			// Try to write the result file, even if further checks fails.
 			// This helps writing new tests for plugins.
