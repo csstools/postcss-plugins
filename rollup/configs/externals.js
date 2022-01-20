@@ -42,10 +42,12 @@ export const externalsForCLI = [
 ];
 
 export const externalsForPlugin = [
+	'assert',
 	'fs',
 	'path',
 
 	'postcss',
+	/^postcss-\d\.\d$/,
 	/^postcss\/lib\/*/,
 
 	'@csstools/postcss-is-pseudo-class',
