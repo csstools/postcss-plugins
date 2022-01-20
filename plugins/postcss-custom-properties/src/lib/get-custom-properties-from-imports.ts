@@ -50,6 +50,9 @@ async function getCustomPropertiesFromJSONFile(from): Promise<Map<string, values
 
 async function getCustomPropertiesFromJSFile(from): Promise<Map<string, valuesParser.ParsedValue>> {
 	const object = await import(from);
+	if ('default' in object) {
+		return getCustomPropertiesFromObject(object.default);
+	}
 
 	return getCustomPropertiesFromObject(object);
 }
