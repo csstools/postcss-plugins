@@ -1,9 +1,12 @@
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import plugin from 'postcss-nesting';
+
 const mixinPluginRule = () => {
 	return {
 		postcssPlugin: 'mixin',
 		AtRule: {
-			mixin(node) {
-				node.replaceWith('& .in{ &.deep { color: blue; }}')
+			mixin(node, { postcss }) {
+				node.replaceWith(postcss().process('& .in{ &.deep { color: blue; }}', {from : 'mixin.css'}).root);
 			},
 		},
 	}
@@ -11,21 +14,12 @@ const mixinPluginRule = () => {
 
 mixinPluginRule.postcss = true
 
-const mixinPluginRuleWithNesting = () => {
-	return {
-		postcssPlugin: 'mixin-with-nesting',
-		plugins: [mixinPluginRule(), require('./dist/index.cjs')()]
-	}
-}
-
-mixinPluginRuleWithNesting.postcss = true
-
 const mixinPluginDeclaration = () => {
 	return {
 		postcssPlugin: 'mixin',
 		AtRule: {
-			mixin(node) {
-				node.replaceWith('color: blue;')
+			mixin(node, { postcss }) {
+				node.replaceWith(postcss().process('color: blue;', {from : 'mixin.css'}).root);
 			},
 		},
 	}
@@ -33,19 +27,7 @@ const mixinPluginDeclaration = () => {
 
 mixinPluginDeclaration.postcss = true
 
-const mixinPluginDeclarationWithNesting = () => {
-	return {
-		postcssPlugin: 'mixin-with-nesting',
-		Once: () => {
-			throw new Error('bork');
-		},
-		plugins: [mixinPluginDeclaration(), require('./dist/index.cjs')()]
-	}
-}
-
-mixinPluginDeclarationWithNesting.postcss = true
-
-module.exports = {
+postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage',
 	},
@@ -138,22 +120,22 @@ module.exports = {
 	},
 	'mixin-declaration': {
 		message: 'supports other visitors (mixin declaration)',
-		plugin: mixinPluginDeclarationWithNesting
+		plugins: [mixinPluginDeclaration(), plugin()]
 	},
 	'mixin-declaration:no-is-pseudo-selector': {
 		message: 'supports other visitors (mixin declaration) { noIsPseudoSelector: true }',
-		plugin: mixinPluginDeclarationWithNesting,
+		plugins: [mixinPluginDeclaration(), plugin()],
 		options: {
 			noIsPseudoSelector: true,
 		},
 	},
 	'mixin-rule': {
 		message: 'supports other visitors (mixin rule)',
-		plugin: mixinPluginRuleWithNesting
+		plugins: [mixinPluginRule(), plugin()]
 	},
 	'mixin-rule:no-is-pseudo-selector': {
 		message: 'supports other visitors (mixin rule) { noIsPseudoSelector: true }',
-		plugin: mixinPluginRuleWithNesting,
+		plugins: [mixinPluginRule(), plugin()],
 		options: {
 			noIsPseudoSelector: true,
 		},
@@ -176,4 +158,4 @@ module.exports = {
 			noIsPseudoSelector: true,
 		},
 	},
-};
+});
