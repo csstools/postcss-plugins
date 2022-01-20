@@ -229,6 +229,40 @@ postcssPresetEnv({
 
 Passing `autoprefixer: false` disables autoprefixer.
 
+⚠️ [autoprefixer] has [complex logic to fix CSS Grid in IE en older Edge](https://github.com/postcss/autoprefixer#grid-autoplacement-support-in-ie).
+
+This can have unexpected results with certain features and when [`preserve: true`](#preserve) is used. (defaults to `true`)
+
+```pcss
+:root {
+  --grid-gap: 15px;
+}
+
+.test-grid {
+	grid-gap: var(--grid-gap);
+	grid-template-columns: repeat(2, 1fr);
+}
+```
+
+Becomes :
+
+```
+.test-grid {
+	grid-gap: 15px;
+	grid-gap: var(--grid-gap);
+	-ms-grid-columns: 1fr var(--grid-gap) 1fr;
+	grid-template-columns: repeat(2, 1fr);
+}
+```
+
+The prefixed `-ms-grid-columns` still has a custom property: `1fr var(--grid-gap) 1fr;` which won't work.<br />
+This example shows issues with custom properties but other transforms might have similar issues.
+
+If you target IE or older Edge it is best to avoid using other modern features in grid property values.<br />
+As a last resort you can set [`preserve: false`](#preserve), we do not advice this as doing so purely to fix issues with CSS grid.
+
+_older Edge is any version before chromium (<79)_
+
 ### preserve
 
 The `preserve` option determines whether all plugins should receive a
