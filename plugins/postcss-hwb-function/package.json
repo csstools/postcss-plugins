@@ -1,6 +1,6 @@
 {
-  "name": "postcss-hwb-function",
-  "version": "4.0.2",
+  "name": "@csstools/postcss-hwb-function",
+  "version": "1.0.0",
   "description": "Use hwb() color functions in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -9,6 +9,13 @@
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    }
+  },
   "files": [
     "CHANGELOG.md",
     "INSTALL.md",
@@ -16,26 +23,20 @@
     "README.md",
     "dist"
   ],
-  "bin": {
-    "postcss-hwb-function": "dist/cli.mjs"
-  },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
     "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
-    "test": "postcss-tape --ci"
+    "test": "node .tape.mjs && npm run test:exports",
+    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
     "postcss-value-parser": "^4.2.0"
-  },
-  "devDependencies": {
-    "postcss": "^8.3.6",
-    "postcss-tape": "^6.0.1"
   },
   "peerDependencies": {
     "postcss": "^8.3"

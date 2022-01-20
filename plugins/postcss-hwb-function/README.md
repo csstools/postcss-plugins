@@ -1,6 +1,6 @@
 # PostCSS Hwb Function [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-hwb-function.svg" height="20">][npm-url]
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-hwb-function.svg" height="20">][npm-url]
 [<img alt="CSS Standard Status" src="https://cssdb.org/badge/hwb-function.svg" height="20">][css-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="support chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
@@ -10,16 +10,16 @@
 CSS, following the [CSS Color] specification.
 
 ```pcss
-:root {
-  --firebrick: hwb(40% 56.6 39);
-  --firebrick-a50: lch(40% 68.8 34.5 / 50%);
+a {
+	color: hwb(194 0% 0%);
+	color: hwb(194 0% 0% / .5);
 }
 
 /* becomes */
 
-:root {
-  --firebrick: rgb(178, 34, 34);
-  --firebrick-a50: rgba(178, 34, 34, .5);
+a {
+	color: rgb(0, 195, 255);
+	color: rgba(0, 195, 255, .5);
 }
 ```
 
@@ -28,14 +28,14 @@ CSS, following the [CSS Color] specification.
 Add [PostCSS Hwb Function] to your project:
 
 ```bash
-npm install postcss postcss-hwb-function --save-dev
+npm install postcss @csstools/postcss-hwb-function --save-dev
 ```
 
 Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssHwbFunction = require('postcss-hwb-function');
+const postcssHwbFunction = require('@csstools/postcss-hwb-function');
 
 postcss([
   postcssHwbFunction(/* pluginOptions */)
@@ -60,25 +60,25 @@ postcssHwbFunction({ preserve: true })
 ```
 
 ```pcss
-:root {
-  --firebrick: hwb(40% 56.6 39);
-  --firebrick-a50: lch(40% 68.8 34.5 / 50%);
+a {
+	color: hwb(194 0% 0%);
+	color: hwb(194 0% 0% / .5);
 }
 
 /* becomes */
 
-:root {
-  --firebrick: rgb(178, 34, 34);
-  --firebrick: hwb(40% 56.6 39);
-  --firebrick-a50: rgba(178, 34, 34, .5);
-  --firebrick-a50: lch(40% 68.8 34.5 / 50%);
+a {
+	color: rgb(0, 195, 255);
+	color: hwb(194 0% 0%);
+	color: rgba(0, 195, 255, .5);
+	color: hwb(194 0% 0% / .5);
 }
 ```
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#hwb-function
 [git-url]: https://gitter.im/postcss/postcss
-[npm-url]: https://www.npmjs.com/package/postcss-hwb-function
+[npm-url]: https://www.npmjs.com/package/@csstools/postcss-hwb-function
 
 [CSS Color]: https://drafts.csswg.org/css-color/#the-hwb-notation
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
