@@ -1,9 +1,17 @@
+area[href] {
+	order: 1;
+}
+
 :is(:link, :visited) {
 	order: 1;
 }
 
 :any-link {
 	order: 1;
+}
+
+area[href] {
+	order: 2;
 }
 
 :is(:link, :visited),
@@ -16,6 +24,10 @@ ul a:any-link > span {
 	order: 2;
 }
 
+area[href] area[href] {
+	order: 3;
+}
+
 :is(:link, :visited) :is(:link, :visited) {
 	order: 3;
 }
@@ -26,6 +38,10 @@ ul a:any-link > span {
 
 :any-link(.ignore) {
 	order: 4;
+}
+
+div area[href] {
+	order: 5;
 }
 
 div :is(:link, :visited) {
@@ -42,6 +58,10 @@ div:is(:link, :visited) {
 
 div:any-link {
 	order: 6;
+}
+
+div:is(area[href]) {
+	order: 7;
 }
 
 div:is(:is(:link, :visited)) {
