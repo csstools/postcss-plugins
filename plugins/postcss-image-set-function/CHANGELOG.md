@@ -1,9 +1,5 @@
 # Changes to PostCSS image-set() Function
 
-### Unreleased
-
-- Fix sourcemaps for `image-set()` function
-
 ### 4.0.4 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.

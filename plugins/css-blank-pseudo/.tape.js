@@ -1,7 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
-import plugin from 'css-blank-pseudo';
-
-postcssTape(plugin)({
+module.exports = {
 	'basic': {
 		message: 'supports basic usage',
 	},
@@ -24,4 +21,4 @@ postcssTape(plugin)({
 			preserve: false
 		}
 	},
-});
+};

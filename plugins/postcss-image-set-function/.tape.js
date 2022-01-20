@@ -1,7 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
-import plugin from 'postcss-image-set-function';
-
-postcssTape(plugin)({
+module.exports = {
 	'basic': {
 		message: 'supports basic usage',
 	},
@@ -32,7 +29,9 @@ postcssTape(plugin)({
 		},
 		expect: 'invalid.css',
 		result: 'invalid.css',
-		exception: /unexpected image/
+		error: {
+			message: /unexpected image/
+		}
 	},
 	'generated-value-cases': {
 		message: 'correctly handles generated cases',
@@ -46,4 +45,4 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
-});
+};

@@ -4,7 +4,6 @@
 
 - Added `@csstools/postcss-is-pseudo-class` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#readme) for usage details.
 - Added `debug` [option](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#debug) that enables extra debugging information while processing the CSS.
-- Fix sourcemaps for `image-set()` function
 
 ### 7.2.3 (January 12, 2022)
 
