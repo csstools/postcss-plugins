@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### Unreleased
+### 10.1.2 (January 12, 2022)
 
 - Improved : selector specificity calculation
 

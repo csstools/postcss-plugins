@@ -89,6 +89,10 @@
   - plugins/postcss-image-set-function/**
   - experimental/postcss-image-set-function/**
 
+"plugins/postcss-is-pseudo-class":
+  - plugins/postcss-is-pseudo-class/**
+  - experimental/postcss-is-pseudo-class/**
+
 "plugins/postcss-lab-function":
   - plugins/postcss-lab-function/**
   - experimental/postcss-lab-function/**

@@ -39,6 +39,11 @@ if (isTypescript) {
 	if (packageInfo.bin) {
 		presets.push(...cliTypescript());
 	}
+
+	if (packageInfo.exports && ('./browser' in packageInfo.exports)) {
+		// Browser script remain javascript as it's simpler to go old school JS in regular JS.
+		presets.push(...browserJavascript());
+	}
 } else {
 	if (packageInfo.main || packageInfo.module) {
 		presets.push(...packageJavascript());

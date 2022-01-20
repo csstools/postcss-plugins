@@ -1,0 +1,24 @@
+
+	[a\:has\(\.b\)]:not(does-not-exist) {
+		order: 1;
+	}
+
+a:has(.b) {
+		order: 1;
+	}
+
+[a\:has\(\%3E\%20img\)\:focus]:not(does-not-exist):not(does-not-exist) {
+		order: 2;
+	}
+
+a:has(> img):focus {
+		order: 2;
+	}
+
+[a\:has\(\%3E\%20img\)\%20\:has\(\%3E\%20\.some\)]:not(does-not-exist):not(does-not-exist) {
+		order: 3;
+	}
+
+a:has(> img) :has(> .some) {
+		order: 3;
+	}

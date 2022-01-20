@@ -1,5 +1,21 @@
 # Changes to CSS Has Pseudo
 
+### 0.2.0 (January 12, 2022)
+
+- Added : documentation and tests for CORS.
+- Added : documentation for selector specificity.
+- Added : typescript support.
+- Changed : `doesNotExistName` plugin option has been renamed to `specificityMatchingName`.
+- Updated : documentation for plugin and polyfill options.
+- Removed : old locations of the browser polyfill in the published package.
+
+```diff
+postcss([
+-   cssHasPseudoExperimental({ doesNotExistName: 'something-random' })
++   cssHasPseudoExperimental({ specificityMatchingName: 'something-random' })
+]).process(YOUR_CSS /*, processOptions */);
+```
+
 ### 0.1.2 (January 7, 2022)
 
 - Improved : selector specificity calculation

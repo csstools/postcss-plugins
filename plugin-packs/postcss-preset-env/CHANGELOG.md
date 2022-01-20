@@ -1,5 +1,32 @@
 # Changes to PostCSS Preset Env
 
+### 7.2.3 (January 12, 2022)
+
+- Enhanced `importFrom` / `exportTo` so it's harder to cause unexpected issues by different shapes of data.
+
+### 7.2.2 (January 12, 2022)
+
+- Updated `postcss-logical` to `5.0.3` (patch)
+- Updated `postcss-custom-properties` to `12.1.2` (patch)
+
+### 7.2.1 (January 12, 2022)
+
+- Always run plugins with side effects if certain options are set. [#140](https://github.com/csstools/postcss-plugins/issues/140)
+  - `custom-media-queries`
+  - `custom-properties`
+  - `environment-variables`
+  - `custom-selectors`
+- Updated `caniuse-lite` to `1.0.30001299` (minor)
+- Updated `css-blank-pseudo` to `3.0.2` (minor)
+- Updated `css-has-pseudo` to `3.0.3` (minor)
+- Updated `postcss-color-rebeccapurple` to `7.0.2` (minor)
+- Updated `postcss-custom-properties` to `12.1.0` (minor)
+- Updated `postcss-dir-pseudo-class` to `6.0.3` (minor)
+- Updated `postcss-nesting` to `10.1.2` (minor)
+
+This will ensure that CSS transforms that are not a browser polyfill are still applied.
+⚠️ A future major version `postcss-preset-env` will remove this behavior completely.
+
 ### 7.2.0 (January 2, 2022)
 
 - Added warnings and useful messages when a feature that doesn't exist is configured. [156](https://github.com/csstools/postcss-preset-env/issues/156).

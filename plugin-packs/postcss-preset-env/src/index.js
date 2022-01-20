@@ -8,6 +8,7 @@ import idsByExecutionOrder from './lib/ids-by-execution-order';
 import writeToExports from './lib/write-to-exports';
 import getOptionsForBrowsersByFeature from './lib/get-options-for-browsers-by-feature';
 import { pluginIdHelp } from './lib/plugin-id-help';
+import { pluginHasSideEffects } from './lib/plugins-with-side-effects';
 
 const plugin = opts => {
 	// initialize options
@@ -90,7 +91,8 @@ const plugin = opts => {
 
 			return {
 				browsers: feature.browsers,
-				plugin,
+				plugin: plugin,
+				pluginOptions: options,
 				id: feature.id,
 			};
 		},
@@ -99,18 +101,27 @@ const plugin = opts => {
 	// browsers supported by the configuration
 	const supportedBrowsers = browserslist(browsers, { ignoreUnknownVersions: true });
 
-	// features supported by the stage and browsers
-	const supportedFeatures = stagedFeatures.filter(
-		feature => feature.id in features
-			? features[feature.id]
-			: supportedBrowsers.some(
-				supportedBrowser => browserslist(feature.browsers, {
-					ignoreUnknownVersions: true,
-				}).some(
-					polyfillBrowser => polyfillBrowser === supportedBrowser,
-				),
-			),
-	);
+	// - features supported by the stage
+	// - features with `true` or with options
+	// - required for the browsers
+	// - having "importFrom" or "exportTo" options
+	const supportedFeatures = stagedFeatures.filter((feature) => {
+		if (feature.id in features) {
+			return features[feature.id];
+		}
+
+		if (pluginHasSideEffects(feature)) {
+			return true;
+		}
+
+		return supportedBrowsers.some((supportedBrowser) => {
+			return browserslist(feature.browsers, {
+				ignoreUnknownVersions: true,
+			}).some((polyfillBrowser) => {
+				return polyfillBrowser === supportedBrowser;
+			});
+		});
+	});
 
 	const usedPlugins = supportedFeatures.map(feature => feature.plugin);
 	usedPlugins.push(stagedAutoprefixer);

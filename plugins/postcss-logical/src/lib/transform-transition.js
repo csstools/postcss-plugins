@@ -48,13 +48,13 @@ export default (decl, notValues, dir, preserve) => {
 		if (preserve) {
 			decl.cloneBefore({});
 		}
-		decl.assign({ value: ltrValues.join('') });
+		decl.value = ltrValues.join('');
 		return;
 	} else if (rtlValues.length && dir === 'rtl') {
 		if (preserve) {
 			decl.cloneBefore({});
 		}
-		decl.assign({ value: rtlValues.join('') });
+		decl.value = rtlValues.join('');
 		return;
 	} else if (ltrValues.join('') !== rtlValues.join('')) {
 

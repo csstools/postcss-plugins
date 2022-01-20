@@ -15,8 +15,16 @@ import { promises as fsp } from 'fs';
 				res.writeHead(200);
 				res.end(await fsp.readFile('test/_browser.html', 'utf8'));
 				break;
-			case '/test/browser.expect.css':
+			case '/test/basic.expect.css':
+				// Stylesheet WITHOUT CORS headers
 				res.setHeader('Content-type', 'text/css');
+				res.writeHead(200);
+				res.end(await fsp.readFile('test/basic.expect.css', 'utf8'));
+				break;
+			case '/test/browser.expect.css':
+				// Stylesheet WITH CORS headers
+				res.setHeader('Content-type', 'text/css');
+				res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
 				res.writeHead(200);
 				res.end(await fsp.readFile('test/browser.expect.css', 'utf8'));
 				break;
@@ -34,8 +42,17 @@ import { promises as fsp } from 'fs';
 		}
 	};
 
-	const server = http.createServer(requestListener);
-	server.listen(8080);
+	// Use different servers for HTML/CSS/JS to trigger CORS
+	//
+	// HTML:
+	const serverA = http.createServer(requestListener);
+	serverA.listen(8080);
+	// CSS:
+	const serverB = http.createServer(requestListener);
+	serverB.listen(8081);
+	// JS:
+	const serverC = http.createServer(requestListener);
+	serverC.listen(8082);
 
 	if (!process.env.DEBUG) {
 		const browser = await puppeteer.launch({
@@ -57,7 +74,9 @@ import { promises as fsp } from 'fs';
 
 		await browser.close();
 
-		await server.close();
+		await serverA.close();
+		await serverB.close();
+		await serverC.close();
 	} else {
 		console.log('visit : http://localhost:8080');
 	}

@@ -153,7 +153,7 @@ module.exports = function creator(opts) {
 			if (preserve) {
 				rule.cloneBefore({ selector: modifiedSelector });
 			} else {
-				rule.assign({ selector: modifiedSelector });
+				rule.selector = modifiedSelector;
 			}
 		},
 	};

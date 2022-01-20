@@ -1,5 +1,12 @@
 # Changes to PostCSS Dir Pseudo Class
 
+### 6.0.3 (January 12, 2022)
+
+- Fix compatibility with PostCSS `v8.2.x` [#147](https://github.com/csstools/postcss-plugins/issues/147)
+
+This version is not officially supported but some tool providers pinned PostCSS to `v8.2.x`,
+making it impossible for end users to have a working setup.
+
 ### 6.0.2 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.

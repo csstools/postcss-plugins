@@ -80,12 +80,21 @@ module.exports = {
 			stage: 0
 		}
 	},
-	'basic:nesting': {
+	'basic:nesting:true': {
 		message: 'supports { stage: false, features: { "nesting-rules": true } } usage',
 		options: {
 			stage: false,
 			features: {
 				'nesting-rules': true
+			}
+		}
+	},
+	'basic:nesting:false': {
+		message: 'supports { stage: 0, features: { "nesting-rules": false } } usage',
+		options: {
+			stage: 0,
+			features: {
+				'nesting-rules': false
 			}
 		}
 	},
@@ -232,6 +241,56 @@ module.exports = {
 					'--sm': '40rem'
 				}
 			},
+			stage: 0
+		}
+	},
+	'import:ch87': {
+		message: 'supports { browsers: "chrome >= 87", importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',
+		options: {
+			browsers: 'chrome >= 87',
+			importFrom: {
+				customMedia: {
+					'--narrow-window': '(max-width: env(--sm))'
+				},
+				customProperties: {
+					'--order': '1'
+				},
+				customSelectors: {
+					':--heading': 'h1, h2, h3, h4, h5, h6'
+				},
+				environmentVariables: {
+					'--sm': '40rem'
+				}
+			},
+			stage: 0
+		}
+	},
+	'import:ch87:array': {
+		message: 'supports { browsers: "chrome >= 87", importFrom: [{ customMedia, customProperties, customSelectors, environmentVariables }] } usage',
+		options: {
+			browsers: 'chrome >= 87',
+			importFrom: [{
+				customMedia: {
+					'--narrow-window': '(max-width: env(--sm))'
+				},
+				customProperties: {
+					'--order': '1'
+				},
+				customSelectors: {
+					':--heading': 'h1, h2, h3, h4, h5, h6'
+				},
+				environmentVariables: {
+					'--sm': '40rem'
+				}
+			}],
+			stage: 0
+		}
+	},
+	'import:ch87:incorrect-options': {
+		message: 'supports { browsers: "chrome >= 87", importFrom: false } usage',
+		options: {
+			browsers: 'chrome >= 87',
+			importFrom: false,
 			stage: 0
 		}
 	},

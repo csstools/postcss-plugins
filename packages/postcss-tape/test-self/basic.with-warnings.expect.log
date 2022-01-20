@@ -1,0 +1,33 @@
+
+basic:with-one-missing-warning
+
+message :
+  supports basic usage
+
+unexpected or missing warnings :
++ actual 0
+- expected 1
+
+----------------------------------------
+
+basic:with-one-unexpected-warning
+
+message :
+  supports basic usage
+
+unexpected or missing warnings :
++ actual 1
+- expected 0
+
+----------------------------------------
+
+basic:with-multiple-warnings
+
+message :
+  supports basic usage
+
+unexpected or missing warnings :
++ actual 3
+- expected 7
+
+----------------------------------------

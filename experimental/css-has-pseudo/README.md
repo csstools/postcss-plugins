@@ -40,7 +40,7 @@ Next, use your transformed CSS with this script:
 Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
 ⚠️ If you were using an older version via a CDN, please update the entire url.
-The old URL will no longer work in a future release.
+The old URL will no longer work.
 
 That’s it. The script works in most browser versions, including
 Internet Explorer 11. With a [Mutation Observer polyfill], the script will work

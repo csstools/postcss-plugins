@@ -53,7 +53,7 @@ const creator = (/** @type {{ preserve: true | false }} */ opts) => {
 			if (shouldPreserve) {
 				rule.cloneBefore({ selector: modifiedSelector });
 			} else {
-				rule.assign({ selector: modifiedSelector });
+				rule.selector = modifiedSelector;
 			}
 		},
 	};

@@ -40,7 +40,71 @@ cssHasPseudo(document);
 <script>cssHasPseudo(document)</script>
 ```
 
+⚠️ Please use a versioned url, like this : `https://unpkg.com/@csstools/css-has-pseudo-experimental@0.2.0/dist/browser-global.js`
+Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+
+## CORS
+
+⚠️ Applies to you if you load CSS from a different domain than the page.
+In this case the CSS is treated as untrusted and will not be made available to the Javascript polyfill.
+
+Example :
+
+| page | css | CORS applies |
+| --- | --- | --- |
+| https://example.com/ | https://example.com/style.css | no |
+| https://example.com/ | https://other.com/style.css | yes |
+
+**You might see one of these error messages :**
+
+```html
+<!-- Use the `debug` option to make the polyfill emit errors. -->
+<script>cssHasPseudo(document, { debug: true })</script>
+```
+
+Chrome :
+
+> DOMException: Failed to read the 'cssRules' property from 'CSSStyleSheet': Cannot access rules
+
+Safari :
+
+> SecurityError: Not allowed to access cross-origin stylesheet
+
+Firefox :
+
+> DOMException: CSSStyleSheet.cssRules getter: Not allowed to access cross-origin stylesheet
+
+To resolve CORS errors you need to take two steps :
+
+- add HTTP header `Access-Control-Allow-Origin: <your-value>` to your CSS file.
+- add `crossorigin="anonymous"` to the `<link rel="stylesheet">` tage for your CSS file.
+
+In a node server setting the HTTP header might look like this :
+
+```js
+// http://localhost:8080 is the domain of your page!
+res.setHeader('Access-Control-Allow-Origin', 'https://example.com');
+```
+
+You can also configure a wildcard but please be aware that this might be a security risk.
+It is better to only set the header for the domain you want to allow and only on the responses you want to allow.
+
+HTML might look like this :
+
+```html
+<link rel="stylesheet" href="https://example.com/styles.css" crossorigin="anonymous">
+```
+
 ## Options
+
+### debug
+
+The `debug` option determines if errors are emitted to the console in browser.
+By default the polyfill will not emit errors or warnings.
+
+```js
+cssHasPseudo(document, { debug: true });
+```
 
 ### hover
 
