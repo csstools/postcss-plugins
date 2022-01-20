@@ -1,8 +1,9 @@
 import browserslist from 'browserslist';
 import getUnsupportedBrowsersByFeature from './get-unsupported-browsers-by-feature';
+import { log } from './log-helper';
 
 // add extra options for certain browsers by feature
-export default function getOptionsForBrowsersByFeature(browsers, feature) {
+export default function getOptionsForBrowsersByFeature(browsers, feature, cssdb) {
 	const supportedBrowsers = browserslist(browsers, { ignoreUnknownVersions: true });
 
 	switch (feature.id) {
@@ -11,7 +12,10 @@ export default function getOptionsForBrowsersByFeature(browsers, feature) {
 				// Nesting rules can transform selectors to use :is pseudo.
 				// This is more spec compliant but it's not supported by all browsers.
 				// If we can't use :is pseudo according to preset-env options, we add an extra option to avoid :is pseudo.
-				if (needsOptionFor('css-matches-pseudo', supportedBrowsers)) {
+				const feature = cssdb.find(feature => feature.id === 'is-pseudo-class');
+
+				if (needsOptionFor(feature, supportedBrowsers)) {
+					log('Disabling :is on "nesting-rules" due to lack of browser support.');
 					return {
 						noIsPseudoSelector: true,
 					};
@@ -27,6 +31,7 @@ export default function getOptionsForBrowsersByFeature(browsers, feature) {
 
 function needsOptionFor(feature, supportedBrowsers) {
 	const unsupportedIn = getUnsupportedBrowsersByFeature(feature);
+
 	if (supportedBrowsers.some(
 		supportedBrowser => browserslist(unsupportedIn, {
 			ignoreUnknownVersions: true,
