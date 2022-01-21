@@ -1,54 +1,42 @@
 {
-  "name": "css-blank-pseudo",
-  "version": "3.0.2",
-  "description": "Style form elements when they are empty",
+  "name": "@csstools/postcss-hwb-function",
+  "version": "1.0.0",
+  "description": "Use hwb() color functions in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo#readme",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function#readme",
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
       "default": "./dist/index.mjs"
-    },
-    "./browser": {
-      "import": "./dist/browser.mjs",
-      "require": "./dist/browser.cjs",
-      "default": "./dist/browser.mjs"
-    },
-    "./browser-global": {
-      "default": "./dist/browser-global.js"
     }
   },
   "files": [
     "CHANGELOG.md",
+    "INSTALL.md",
     "LICENSE.md",
     "README.md",
-    "dist",
-    "browser.js"
+    "dist"
   ],
-  "bin": {
-    "css-blank-pseudo": "dist/cli.cjs"
-  },
   "scripts": {
-    "build": "rollup -c ../../rollup/default.js && npm run copy-browser-scripts-to-old-location",
+    "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "copy-browser-scripts-to-old-location": "node -e \"fs.copyFileSync('./dist/browser-global.js', './browser.js'); fs.copyFileSync('./dist/browser-global.js', './browser-legacy.js')\"",
     "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
     "test": "node .tape.mjs && npm run test:exports",
-    "cli": "css-blank-pseudo",
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "postcss-selector-parser": "^6.0.8"
+    "postcss-value-parser": "^4.2.0"
   },
   "peerDependencies": {
     "postcss": "^8.3"
@@ -57,23 +45,24 @@
     "postcss",
     "css",
     "postcss-plugin",
-    "javascript",
-    "js",
-    "polyfill",
-    "blank",
-    "empty",
-    "pseudo",
-    "selectors",
-    "accessibility",
-    "a11y",
-    "input",
-    "select",
-    "textarea"
+    "color",
+    "colors",
+    "rgb",
+    "rgba",
+    "hsl",
+    "hsla",
+    "hwb",
+    "functional",
+    "notation",
+    "design",
+    "syntax",
+    "space",
+    "comma"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "plugins/css-blank-pseudo"
+    "directory": "plugins/postcss-hwb-function"
   },
   "volta": {
     "extends": "../../package.json"

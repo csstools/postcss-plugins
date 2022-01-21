@@ -3,6 +3,7 @@
 ### Unreleased
 
 - Fix `.mjs` in `importFrom` when using `export default`
+- Fix `.mjs` in `importFrom` on Windows
 
 ### 12.1.3 (January 17, 2022)
 

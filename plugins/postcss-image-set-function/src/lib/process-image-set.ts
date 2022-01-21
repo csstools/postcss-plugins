@@ -33,7 +33,7 @@ export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl
 			const value = getImage(imageSetOptionNodes[index + 1]);
 			const mediaDPI = getMediaDPI(imageSetOptionNodes[index + 2]);
 
-			const media = getMedia(mediaDPI, opts.postcss);
+			const media = getMedia(mediaDPI, opts.postcss, decl);
 
 			// handle invalidations
 			if (!comma) {
