@@ -26,7 +26,7 @@ export default function getUnsupportedBrowsersByFeature(feature) {
 		browsers.forEach(browser => {
 			const browserSupport = feature.browser_support[browser];
 			// If the version is something like TP we can't do < TP
-			const isValid = typeof browserSupport === 'string' && browserSupport.match(/^[0-9]+$/) !== null;
+			const isValid = typeof browserSupport === 'string' && browserSupport.match(/^[0-9|.]+$/) !== null;
 
 			if (isValid) {
 				query.push(`${browser} < ${feature.browser_support[browser]}`);
