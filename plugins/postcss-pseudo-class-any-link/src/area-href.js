@@ -46,7 +46,7 @@ export function handleAreaHref(rule, result) {
 					}
 
 					containsAnyLink = true;
-					pseudo.value = 'area[href]';
+					pseudo.value = ':is(area[href])';
 				});
 
 				if (!containsAnyLink) {

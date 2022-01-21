@@ -1,4 +1,4 @@
-area[href] {
+:is(area[href]) {
 	order: 1;
 }
 
@@ -10,7 +10,7 @@ area[href] {
 	order: 1;
 }
 
-area[href] {
+:is(area[href]) {
 	order: 2;
 }
 
@@ -24,7 +24,7 @@ ul a:any-link > span {
 	order: 2;
 }
 
-area[href] area[href] {
+:is(area[href]) :is(area[href]) {
 	order: 3;
 }
 
@@ -40,7 +40,7 @@ area[href] area[href] {
 	order: 4;
 }
 
-div area[href] {
+div :is(area[href]) {
 	order: 5;
 }
 
@@ -60,7 +60,7 @@ div:any-link {
 	order: 6;
 }
 
-div:is(area[href]) {
+div:is(:is(area[href])) {
 	order: 7;
 }
 
