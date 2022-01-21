@@ -1,0 +1,9 @@
+.test-hwb {
+	color: hwb(194 0% 0%); /* #00c3ff */
+	color: hwb(194 0% 0% / .5); /* #00c3ff with 50% opacity */
+
+}
+
+.test-ignore {
+	color: hwb(194, 0%, 0%, .5); /* with comma-separated values */
+}
