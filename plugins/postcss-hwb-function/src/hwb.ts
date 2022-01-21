@@ -1,5 +1,6 @@
 type color = [number, number, number];
 
+// source: https://github.com/w3c/csswg-drafts/blob/main/css-color-4/hwbToRgb.js
 export function hwbToRgb(hwb: color): color {
 	const hue = hwb[0];
 	let white = hwb[1];
@@ -19,6 +20,7 @@ export function hwbToRgb(hwb: color): color {
 	return rgb.map((x) => Math.round(x * 255)) as color;
 }
 
+// source: https://github.com/w3c/csswg-drafts/blob/main/css-color-4/hslToRgb.js
 function hslToRgb(hwb: color): color {
 	let hue = hwb[0];
 	let sat = hwb[1];
