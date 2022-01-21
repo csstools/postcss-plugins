@@ -1,3 +1,7 @@
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import plugin from 'postcss-preset-env';
+import fs from 'fs';
+
 const orderDetectionPlugin = (prop, changeWhenMatches) => {
 	return {
 		postcssPlugin: 'order-detection',
@@ -12,7 +16,7 @@ const orderDetectionPlugin = (prop, changeWhenMatches) => {
 
 orderDetectionPlugin.postcss = true
 
-module.exports = {
+postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage'
 	},
@@ -324,16 +328,16 @@ module.exports = {
 		before() {
 			try {
 				global.__exportTo = {
-					css: require('fs').readFileSync('test/generated-custom-exports.css', 'utf8'),
-					js: require('fs').readFileSync('test/generated-custom-exports.js', 'utf8'),
-					json: require('fs').readFileSync('test/generated-custom-exports.json', 'utf8'),
-					mjs: require('fs').readFileSync('test/generated-custom-exports.mjs', 'utf8')
+					css: fs.readFileSync('test/generated-custom-exports.css', 'utf8'),
+					js: fs.readFileSync('test/generated-custom-exports.js', 'utf8'),
+					json: fs.readFileSync('test/generated-custom-exports.json', 'utf8'),
+					mjs: fs.readFileSync('test/generated-custom-exports.mjs', 'utf8')
 				};
 
-				require('fs').rmSync('test/generated-custom-exports.css');
-				require('fs').rmSync('test/generated-custom-exports.js');
-				require('fs').rmSync('test/generated-custom-exports.json');
-				require('fs').rmSync('test/generated-custom-exports.mjs');
+				fs.rmSync('test/generated-custom-exports.css');
+				fs.rmSync('test/generated-custom-exports.js');
+				fs.rmSync('test/generated-custom-exports.json');
+				fs.rmSync('test/generated-custom-exports.mjs');
 			} catch (_) {
 				// ignore errors here.
 				// If the files are removed manually test run will regenerate these.
@@ -343,10 +347,10 @@ module.exports = {
 		},
 		after() {
 			global.__exportAs = {
-				css: require('fs').readFileSync('test/generated-custom-exports.css', 'utf8'),
-				js: require('fs').readFileSync('test/generated-custom-exports.js', 'utf8'),
-				json: require('fs').readFileSync('test/generated-custom-exports.json', 'utf8'),
-				mjs: require('fs').readFileSync('test/generated-custom-exports.mjs', 'utf8')
+				css: fs.readFileSync('test/generated-custom-exports.css', 'utf8'),
+				js: fs.readFileSync('test/generated-custom-exports.js', 'utf8'),
+				json: fs.readFileSync('test/generated-custom-exports.json', 'utf8'),
+				mjs: fs.readFileSync('test/generated-custom-exports.mjs', 'utf8')
 			};
 
 			Object.keys(global.__exportTo).forEach(key => {
@@ -367,4 +371,4 @@ module.exports = {
 			}
 		},
 	},
-};
+});
