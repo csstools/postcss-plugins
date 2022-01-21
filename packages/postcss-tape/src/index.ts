@@ -11,7 +11,7 @@ import { formatGitHubActionAnnotation } from './github-annotations';
 import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts';
 import noopPlugin from './noop-plugin';
 
-console.log(process.env.ENABLE_ANNOTATIONS_FOR_NODE, process.env.ENABLE_ANNOTATIONS_FOR_OS);
+const emitGitHubAnnotations = process.env.GITHUB_ACTIONS && process.env.ENABLE_ANNOTATIONS_FOR_NODE === 'true' && process.env.ENABLE_ANNOTATIONS_FOR_OS === 'true';
 
 type TestCaseOptions = {
 	// Debug message
@@ -42,7 +42,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 		if (currentPlugin.postcss !== true) {
 			hasErrors = true;
 
-			if (process.env.GITHUB_ACTIONS) {
+			if (emitGitHubAnnotations) {
 				console.log(formatGitHubActionAnnotation(
 					'postcss flag not set to "true" on exported plugin object',
 					'error',
@@ -59,7 +59,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 		if (!plugin.postcssPlugin || typeof plugin.postcssPlugin !== 'string') {
 			hasErrors = true;
 
-			if (process.env.GITHUB_ACTIONS) {
+			if (emitGitHubAnnotations) {
 				console.log(formatGitHubActionAnnotation(
 					'plugin name not set via "postcssPlugin"',
 					'error',
@@ -76,7 +76,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 		if (!packageInfo.keywords.includes('postcss-plugin')) {
 			hasErrors = true;
 
-			if (process.env.GITHUB_ACTIONS) {
+			if (emitGitHubAnnotations) {
 				console.log(formatGitHubActionAnnotation(
 					'package.json does not include "postcss-plugin" keyword',
 					'error',
@@ -92,7 +92,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 		if (!packageInfo.name.startsWith('postcss-') && !packageInfo.name.startsWith('@csstools/postcss-')) {
 			hasErrors = true;
 
-			if (process.env.GITHUB_ACTIONS) {
+			if (emitGitHubAnnotations) {
 				console.log(formatGitHubActionAnnotation(
 					'plugin name in package.json does not start with "postcss-"',
 					'error',
@@ -108,7 +108,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 		if (Object.keys(Object(packageInfo.dependencies)).includes('postcss') && !('postcssTapeSelfTest' in currentPlugin)) {
 			hasErrors = true;
 
-			if (process.env.GITHUB_ACTIONS) {
+			if (emitGitHubAnnotations) {
 				console.log(formatGitHubActionAnnotation(
 					'postcss should only be a peer and/or dev dependency',
 					'error',
@@ -156,7 +156,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				hasErrors = true;
 				expected = false;
 
-				if (process.env.GITHUB_ACTIONS) {
+				if (emitGitHubAnnotations) {
 					console.log(formatGitHubActionAnnotation(
 						`${testCaseLabel}\n\nmissing or broken "expect" file: "${expectFilePath}"`,
 						'error',
@@ -197,7 +197,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				} catch (err) {
 					hasErrors = true;
 
-					if (process.env.GITHUB_ACTIONS) {
+					if (emitGitHubAnnotations) {
 						console.log(formatGitHubActionAnnotation(
 							formatCSSAssertError(testCaseLabel, testCaseOptions, err, true),
 							'error',
@@ -218,7 +218,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				} catch (err) {
 					hasErrors = true;
 
-					if (process.env.GITHUB_ACTIONS) {
+					if (emitGitHubAnnotations) {
 						console.log(formatGitHubActionAnnotation(
 							`${testCaseLabel}\n\nbroken source map: ${JSON.stringify(result.map.toJSON().sources)}`,
 							'error',
@@ -254,7 +254,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				} catch (_) {
 					hasErrors = true;
 
-					if (process.env.GITHUB_ACTIONS) {
+					if (emitGitHubAnnotations) {
 						console.log(formatGitHubActionAnnotation(
 							`${testCaseLabel}\n\nresult was not parsable with PostCSS.`,
 							'error',
@@ -289,7 +289,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				} catch (err) {
 					hasErrors = true;
 
-					if (process.env.GITHUB_ACTIONS) {
+					if (emitGitHubAnnotations) {
 						console.log(formatGitHubActionAnnotation(
 							'testing older PostCSS:\n' + formatCSSAssertError(testCaseLabel, testCaseOptions, err, true),
 							'error',
@@ -310,7 +310,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				} catch (err) {
 					hasErrors = true;
 
-					if (process.env.GITHUB_ACTIONS) {
+					if (emitGitHubAnnotations) {
 						console.log(formatGitHubActionAnnotation(
 							formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings, true),
 							'error',
