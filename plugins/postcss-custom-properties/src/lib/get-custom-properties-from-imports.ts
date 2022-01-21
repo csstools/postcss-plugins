@@ -1,5 +1,6 @@
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
 import path from 'path';
+import { pathToFileURL } from 'url';
 import type { ImportCustomProperties, ImportOptions } from './options';
 import valuesParser from 'postcss-value-parser';
 import { parse } from 'postcss';
@@ -49,7 +50,15 @@ async function getCustomPropertiesFromJSONFile(from): Promise<Map<string, values
 /* ========================================================================== */
 
 async function getCustomPropertiesFromJSFile(from): Promise<Map<string, valuesParser.ParsedValue>> {
-	const object = await import(from);
+	let object;
+
+	try {
+		object = await import(from);
+	} catch (_) {
+		// windows support
+		object = await import(pathToFileURL(from).href);
+	}
+
 	if ('default' in object) {
 		return getCustomPropertiesFromObject(object.default);
 	}
