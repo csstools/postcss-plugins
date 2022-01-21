@@ -51,17 +51,12 @@ async function getCustomPropertiesFromJSONFile(from): Promise<Map<string, values
 
 async function getCustomPropertiesFromJSFile(from): Promise<Map<string, valuesParser.ParsedValue>> {
 	let object;
-	console.log(from);
-	console.log(pathToFileURL(from).href);
 
-	switch (path.extname(from)) {
-		case '.mjs':
-			object = await import(pathToFileURL(from).href);
-			break;
-		case '.cjs':
-		default:
-			object = await import(from);
-			break;
+	try {
+		object = await import(from);
+	} catch (_) {
+		// windows support
+		object = await import(pathToFileURL(from).href);
 	}
 
 	if ('default' in object) {
