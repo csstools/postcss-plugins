@@ -1,5 +1,5 @@
 const postcssTape = require('../../packages/postcss-tape/dist/index.cjs');
-const plugin = require('./dist/index.cjs');
+const plugin = require('postcss-custom-properties');
 
 postcssTape(plugin)({
 	'basic:import-cjs': {

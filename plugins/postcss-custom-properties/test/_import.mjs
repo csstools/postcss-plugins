@@ -1,5 +1,5 @@
 import assert from 'assert';
-import plugin from '../dist/index.mjs';
+import plugin from 'postcss-custom-properties';
 import postcss from 'postcss';
 import fs from 'fs';
 

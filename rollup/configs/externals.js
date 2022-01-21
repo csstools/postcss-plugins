@@ -1,6 +1,7 @@
 export const externalsForCLI = [
 	'fs',
 	'path',
+	'url',
 
 	'autoprefixer',
 	'browserslist',
@@ -44,6 +45,7 @@ export const externalsForPlugin = [
 	'assert',
 	'fs',
 	'path',
+	'url',
 
 	'postcss',
 	/^postcss-\d\.\d$/,
