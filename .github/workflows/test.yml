@@ -31,6 +31,9 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+        # Build, lint and PostCSS Tape tests must all work and pass :
+        # - with exact dependencies from package-lock.json
+        # - without requiring postinstall scripts from dependencies to run
       - run: npm ci --ignore-scripts
       - run: npm run build --workspaces --if-present
       - run: npm run lint --workspaces --if-present
@@ -45,12 +48,6 @@ jobs:
         # running "npm install" places the cli in node_modules/bin
       - run: npm install --ignore-scripts
       - run: npm run test:cli --workspace="@csstools/postcss-base-plugin"
-
-        # Browser tests
-        # running npm install without "--ignore-scripts" because puppeteer has a postinstall script
-      - run: npm install
-      - run: npm run test:browser --workspaces --if-present
-        if: matrix.os == 'ubuntu-latest' && matrix.node == 16
 
   # Run Deno tests one by one
   test_deno:
