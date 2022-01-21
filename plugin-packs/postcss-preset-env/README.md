@@ -100,7 +100,7 @@ to the polyfill's library.
 * `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md)
 * `prefers-color-scheme-query`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme/README-BROWSER.md)
 
-If you want to disable these types of features, please check the [`disableClientSidePolyfills` option](#disableclientsidepolyfills).
+If you want to disable these types of features, please check the [`enableClientSidePolyfills` option](#enableclientsidepolyfills).
 
 ## Usage
 
@@ -407,9 +407,9 @@ postcssPresetEnv({
 
 The `debug` option enables debugging messages to stdout which should be useful to help you debug which features have been enabled/disabled and why.
 
-### disableClientSidePolyfills
+### enableClientSidePolyfills
 
-The `disableClientSidePolyfills` disables any feature that would need an extra browser library to be loaded into the page for it to work. 
+The `enableClientSidePolyfills` enables any feature that would need an extra browser library to be loaded into the page for it to work. Defaults to `true`.
 
 Note that manually enabling/disabling features via the "feature" option overrides this flag.
 

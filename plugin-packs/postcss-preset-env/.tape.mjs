@@ -141,16 +141,16 @@ postcssTape(plugin)({
 		}
 	},
 	'disable-client-side-polyfills': {
-		message: 'supports { disableClientSidePolyfills: true } usage',
+		message: 'supports { enableClientSidePolyfills: false } usage',
 		options: {
-			disableClientSidePolyfills: true,
+			enableClientSidePolyfills: false,
 			stage: 0,
 		}
 	},
 	'disable-client-side-polyfills:disabled': {
-		message: 'supports { disableClientSidePolyfills: false } usage (default)',
+		message: 'supports { enableClientSidePolyfills: true } usage (default)',
 		options: {
-			disableClientSidePolyfills: false,
+			enableClientSidePolyfills: true,
 			stage: 0,
 		}
 	},
