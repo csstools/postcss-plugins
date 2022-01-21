@@ -1,6 +1,7 @@
 export const externalsForCLI = [
 	'fs',
 	'path',
+	'url',
 
 	'@csstools/postcss-is-pseudo-class',
 	'autoprefixer',
@@ -45,6 +46,7 @@ export const externalsForPlugin = [
 	'assert',
 	'fs',
 	'path',
+	'url',
 
 	'postcss',
 	/^postcss-\d\.\d$/,

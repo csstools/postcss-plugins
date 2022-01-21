@@ -85,6 +85,10 @@
   - plugins/postcss-gap-properties/**
   - experimental/postcss-gap-properties/**
 
+"plugins/postcss-hwb-function":
+  - plugins/postcss-hwb-function/**
+  - experimental/postcss-hwb-function/**
+
 "plugins/postcss-image-set-function":
   - plugins/postcss-image-set-function/**
   - experimental/postcss-image-set-function/**
