@@ -158,12 +158,12 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 				if (emitGitHubAnnotations) {
 					console.log(formatGitHubActionAnnotation(
-						`${testCaseLabel}\n\nmissing or broken "expect" file: "${expectFilePath}"`,
+						`${testCaseLabel}\n\nmissing or broken "expect" file: "${path.parse(expectFilePath).base}"`,
 						'error',
 						{ file: testFilePath, line: 1, col: 1 },
 					));
 				} else {
-					console.error(`\n${testCaseLabel}\n\nmissing or broken "expect" file: "${expectFilePath}"\n\n${dashesSeparator}`);
+					console.error(`\n${testCaseLabel}\n\nmissing or broken "expect" file: "${path.parse(expectFilePath).base}"\n\n${dashesSeparator}`);
 				}
 			}
 

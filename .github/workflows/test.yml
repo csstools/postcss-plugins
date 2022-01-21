@@ -34,12 +34,19 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm run build --workspaces --if-present
       - run: npm run lint --workspaces --if-present
+
+        # PostCSS Tape tests
       - run: npm run test --workspaces --if-present
         env:
           ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.enable_annotations_for_node }}
           ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.enable_annotations_for_os }}
 
-      # running "npm install" places the cli in node_modules/bin
+        # Browser tests
+      - run: npm run test:browser --workspaces --if-present
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 16
+
+        # CLI Tests
+        # running "npm install" places the cli in node_modules/bin
       - run: npm install --ignore-scripts
       - run: npm run test:cli --workspace="@csstools/postcss-base-plugin"
 
