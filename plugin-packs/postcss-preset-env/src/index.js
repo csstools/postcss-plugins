@@ -65,7 +65,7 @@ const plugin = opts => {
 		// polyfillable features as an object
 		feature => {
 			// target browsers for the polyfill
-			const unsupportedBrowsers = getUnsupportedBrowsersByFeature(feature.caniuse);
+			const unsupportedBrowsers = getUnsupportedBrowsersByFeature(feature);
 
 			return feature.insertBefore || feature.insertAfter ? {
 				browsers: unsupportedBrowsers,
@@ -106,7 +106,7 @@ const plugin = opts => {
 			let options;
 			let plugin;
 
-			options = getOptionsForBrowsersByFeature(browsers, feature);
+			options = getOptionsForBrowsersByFeature(browsers, feature, cssdb);
 
 			if (features[feature.id] === true) {
 				// if the plugin is enabled
@@ -150,13 +150,19 @@ const plugin = opts => {
 			return true;
 		}
 
-		return supportedBrowsers.some((supportedBrowser) => {
-			return browserslist(feature.browsers, {
-				ignoreUnknownVersions: true,
-			}).some((polyfillBrowser) => {
-				return polyfillBrowser === supportedBrowser;
-			});
+		const unsupportedBrowsers = browserslist(feature.browsers, {
+			ignoreUnknownVersions: true,
 		});
+
+		const needsPolyfill = supportedBrowsers.some(supportedBrowser => {
+			return unsupportedBrowsers.some(unsupportedBrowser => unsupportedBrowser === supportedBrowser);
+		});
+
+		if (!needsPolyfill) {
+			log(`${feature.id} disabled due to browser support`);
+		}
+
+		return needsPolyfill;
 	});
 
 	const usedPlugins = supportedFeatures.map(feature => feature.plugin);
