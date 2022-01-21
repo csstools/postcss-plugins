@@ -1,5 +1,5 @@
 import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
-import plugin from 'postcss-custom-properties';
+import plugin from './dist/index.mjs';
 import { strict as assert } from 'assert';
 import postcssImport from 'postcss-import';
 import fs from 'fs';

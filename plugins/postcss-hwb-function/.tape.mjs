@@ -1,5 +1,5 @@
 import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
-import plugin from '@csstools/postcss-hwb-function';
+import plugin from './dist/index.mjs';
 
 postcssTape(plugin)({
 	'basic': {

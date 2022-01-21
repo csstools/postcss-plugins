@@ -1,5 +1,5 @@
 import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
-import plugin from 'postcss-nesting';
+import plugin from './dist/index.mjs';
 
 const mixinPluginRule = () => {
 	return {
