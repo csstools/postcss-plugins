@@ -10,6 +10,7 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       # Test node 16/17 on ubuntu
       # Test node 16 on macos/windows
       # Enable annotations only for node 16 + ubuntu
