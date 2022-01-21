@@ -1,5 +1,5 @@
 import babel from '@rollup/plugin-babel';
-import { terser } from 'rollup-plugin-terser';
+// import { terser } from 'rollup-plugin-terser';
 import { packageBabelPreset } from '../configs/babel-presets';
 import { externalsForPlugin } from '../configs/externals';
 
@@ -18,7 +18,7 @@ export function packageJavascript() {
 					exclude: 'node_modules/**',
 					presets: packageBabelPreset,
 				}),
-				terser(),
+				// terser(),
 			],
 		},
 	];
