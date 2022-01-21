@@ -20,7 +20,7 @@ const plugin = opts => {
 	// initialize options
 	const options = Object(opts);
 	const features = Object(options.features);
-	const disableClientSidePolyfills = options.disableClientSidePolyfills;
+	const enableClientSidePolyfills = 'enableClientSidePolyfills' in options ? options.enableClientSidePolyfills : true;
 	const featureNamesInOptions = Object.keys(features);
 	const insertBefore = Object(options.insertBefore);
 	const insertAfter = Object(options.insertAfter);
@@ -84,7 +84,7 @@ const plugin = opts => {
 	// staged features (those at or above the selected stage)
 	const stagedFeatures = polyfillableFeatures.filter(feature => {
 		const isAllowedStage = feature.stage >= stage;
-		const isAllowedByType = !disableClientSidePolyfills || !featuresWithClientSide.includes(feature.id);
+		const isAllowedByType = enableClientSidePolyfills || !featuresWithClientSide.includes(feature.id);
 		const isDisabled = features[feature.id] === false;
 		const isAllowedFeature = features[feature.id] ? features[feature.id] : isAllowedStage && isAllowedByType;
 
@@ -97,7 +97,7 @@ const plugin = opts => {
 				log(`  ${feature.id} with stage ${feature.stage} has been disabled`);
 			}
 		} else if (!isAllowedByType) {
-			log(`  ${feature.id} has been disabled by "disableClientSidePolyfills".`);
+			log(`  ${feature.id} has been disabled by "enableClientSidePolyfills: false".`);
 		}
 
 		return isAllowedFeature;
