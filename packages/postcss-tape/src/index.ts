@@ -11,6 +11,8 @@ import { formatGitHubActionAnnotation } from './github-annotations';
 import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts';
 import noopPlugin from './noop-plugin';
 
+console.log(process.env.ENABLE_ANNOTATIONS_FOR_NODE, process.env.ENABLE_ANNOTATIONS_FOR_OS);
+
 type TestCaseOptions = {
 	// Debug message
 	message?: string,
