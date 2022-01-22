@@ -2,7 +2,7 @@
 
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [Prefers Color Scheme] lets you use light and dark color schemes in all
 browsers, following the [Media Queries] specification.
@@ -86,8 +86,7 @@ These are suffixed with a random large number.
 
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-img]: https://img.shields.io/npm/v/css-prefers-color-scheme.svg
 [npm-url]: https://www.npmjs.com/package/css-prefers-color-scheme
 
