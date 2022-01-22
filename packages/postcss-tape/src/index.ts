@@ -223,6 +223,11 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			const resultString = result.css.toString();
 			await fsp.writeFile(resultFilePath, resultString, 'utf8');
 
+			// Allow contributors to rewrite `.expect.css` files through postcss-tape.
+			if (process.env.REWRITE_EXPECTS) {
+				fsp.writeFile(expectFilePath, resultString, 'utf8');
+			}
+
 			// Can't do further checks if "expect" is missing.
 			if (expected === false) {
 				continue;

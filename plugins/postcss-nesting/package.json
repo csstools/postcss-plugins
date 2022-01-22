@@ -31,6 +31,7 @@
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
     "test": "node .tape.mjs && npm run test:exports",
+    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs",
     "test:deno": "deno run --unstable --allow-env --allow-read test/deno/test.js",
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
