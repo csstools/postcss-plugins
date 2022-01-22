@@ -309,3 +309,8 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 .b:hover {
 	order: 27;
 }
+
+.test-hwb-function {
+	background-color: rgba(0, 195, 255, .5);
+	order: 28;
+}
