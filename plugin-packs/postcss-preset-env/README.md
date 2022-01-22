@@ -2,6 +2,7 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/postcss-preset-env.svg" height="20">][npm-url]
 [<img alt="build status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
+[![install size][package-phobia-badge]][package-phobia]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Preset Env] lets you convert modern CSS into something most browsers
@@ -418,6 +419,8 @@ Note that manually enabling/disabling features via the "feature" option override
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-img]: https://img.shields.io/npm/v/postcss-preset-env.svg
 [npm-url]: https://www.npmjs.com/package/postcss-preset-env
+[package-phobia-badge]: https://packagephobia.com/badge?p=postcss-preset-env
+[package-phobia]: https://packagephobia.com/result?p=postcss-preset-env
 
 [autoprefixer]: https://github.com/postcss/autoprefixer
 [browserslist]: https://github.com/browserslist/browserslist#readme
