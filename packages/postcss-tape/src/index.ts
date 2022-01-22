@@ -223,6 +223,11 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			const resultString = result.css.toString();
 			await fsp.writeFile(resultFilePath, resultString, 'utf8');
 
+			// Allow contributors to rewrite `.expect.css` files through postcss-tape.
+			if (process.env.REWRITE_EXPECTS) {
+				fsp.writeFile(expectFilePath, resultString, 'utf8');
+			}
+
 			// Can't do further checks if "expect" is missing.
 			if (expected === false) {
 				continue;
@@ -352,18 +357,18 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 					if (result.warnings().length || testCaseOptions.warnings) {
 						assert.strictEqual(result.warnings().length, testCaseOptions.warnings);
 					}
-				} catch (err) {
+				} catch (_) {
 					hasErrors = true;
 
 					if (emitGitHubAnnotations) {
 						console.log(formatGitHubActionAnnotation(
-							formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings, true),
+							formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings(), testCaseOptions.warnings, true),
 							'error',
 							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
 						));
 					} else {
 						failureSummary.add(testCaseLabel);
-						console.error(formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings));
+						console.error(formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings(), testCaseOptions.warnings));
 					}
 				}
 			}
