@@ -164,3 +164,8 @@
 :is(.a, .b):is(:focus, :hover) {
 	order: 27;
 }
+
+.test-hwb-function {
+	background-color: hwb(194 0% 0% / .5);
+	order: 28;
+}

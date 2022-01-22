@@ -3,6 +3,7 @@
 ### Unreleased (minor)
 
 - Added `@csstools/postcss-is-pseudo-class` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#readme) for usage details.
+- Added `@csstools/postcss-hwb-function` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function#readme) for usage details.
 - Added `debug` [option](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#debug) that enables extra debugging information while processing the CSS.
 - Fix sourcemaps for `image-set()` function.
 - Removed `caniuse-lite` dependency. This results not only in lower package size but also in better feature detection lead by changes on CSSDB.

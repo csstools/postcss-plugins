@@ -27,6 +27,7 @@
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
+    "@csstools/postcss-hwb-function": "^1.0.0",
     "@csstools/postcss-is-pseudo-class": "^1.0.1",
     "autoprefixer": "^10.4.2",
     "browserslist": "^4.19.1",
