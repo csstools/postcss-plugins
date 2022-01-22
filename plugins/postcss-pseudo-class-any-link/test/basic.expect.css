@@ -1,31 +1,55 @@
-:link,:visited {
-	background: blue;
+:link, :visited {
+	order: 1;
 }
 
 :any-link {
-	background: blue;
+	order: 1;
 }
 
-:link,:visited,
+:link,
+:visited,
 ul a:link > span,
 ul a:visited > span {
-	background: blue;
+	order: 2;
 }
 
 :any-link,
 ul a:any-link > span {
-	background: blue;
+	order: 2;
 }
 
-:link :link,:link :visited,:visited :link,:visited :visited {
-	background: blue;
+:link :link, :link :visited, :visited :link, :visited :visited {
+	order: 3;
 }
 
 :any-link :any-link {
-	background: blue;
+	order: 3;
 }
 
-
 :any-link(.ignore) {
-	background: red;
+	order: 4;
+}
+
+div :link, div :visited {
+	order: 5;
+}
+
+div :any-link {
+	order: 5;
+}
+
+div:link, div:visited {
+	order: 6;
+}
+
+div:any-link {
+	order: 6;
+}
+
+div:is(:link), div:is(:visited) {
+	order: 7;
+}
+
+div:is(:any-link) {
+	order: 7;
 }

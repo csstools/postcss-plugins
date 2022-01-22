@@ -80,6 +80,35 @@ nav :link > span, nav :visited > span {
 }
 ```
 
+### subFeatures
+
+#### areaHrefNeedsFixing
+
+The `subFeatures.areaHrefNeedsFixing` option determines if `<area href>` elements should match `:any-link` pseudo-class.<br>
+In IE and Edge these do not match `:link` or `:visited`.
+
+_This increased CSS bundle size and is disabled by default._
+
+```js
+postcssPseudoClassAnyLink({
+  subFeatures: {
+    areaHrefNeedsFixing: true
+  }
+})
+```
+
+```pcss
+nav :any-link > span {
+  background-color: yellow;
+}
+
+/* becomes */
+
+nav :link > span, nav :visited > span, area[href] > span {
+  background-color: yellow;
+}
+```
+
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-img]: https://cssdb.org/images/badges/any-link-pseudo-class.svg

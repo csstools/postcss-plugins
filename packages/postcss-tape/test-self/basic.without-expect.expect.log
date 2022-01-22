@@ -4,3 +4,6 @@ basic:without-expect
 missing or broken "expect" file: "basic.without-expect.expect.css"
 
 ----------------------------------------
+
+unexpected failures:
+  - basic:without-expect
