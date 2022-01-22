@@ -1,4 +1,4 @@
-:is(:link, :visited) {
+:link, :visited {
 	order: 1;
 }
 
@@ -6,8 +6,10 @@
 	order: 1;
 }
 
-:is(:link, :visited),
-ul a:is(:link, :visited) > span {
+:link,
+:visited,
+ul a:link > span,
+ul a:visited > span {
 	order: 2;
 }
 
@@ -16,7 +18,7 @@ ul a:any-link > span {
 	order: 2;
 }
 
-:is(:link, :visited) :is(:link, :visited) {
+:link :link, :link :visited, :visited :link, :visited :visited {
 	order: 3;
 }
 
@@ -28,7 +30,7 @@ ul a:any-link > span {
 	order: 4;
 }
 
-div :is(:link, :visited) {
+div :link, div :visited {
 	order: 5;
 }
 
@@ -36,7 +38,7 @@ div :any-link {
 	order: 5;
 }
 
-div:is(:link, :visited) {
+div:link, div:visited {
 	order: 6;
 }
 
@@ -44,7 +46,7 @@ div:any-link {
 	order: 6;
 }
 
-div:is(:is(:link, :visited)) {
+div:is(:link), div:is(:visited) {
 	order: 7;
 }
 

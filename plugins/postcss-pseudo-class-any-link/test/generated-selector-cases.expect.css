@@ -1,84 +1,84 @@
-:is(:link, :visited):is(:link, :visited) {
+:link:link, :link:visited, :visited:link, :visited:visited {
 	order: 0;
 }
 
-:is(:link, :visited):is(:link, :visited) {
+:link:link, :link:visited, :visited:link, :visited:visited {
 	order: 1;
 }
 
-:is(:link, :visited) :is(:link, :visited) {
+:link :link, :link :visited, :visited :link, :visited :visited {
 	order: 2;
 }
 
-:is(:link, :visited) :is(:link, :visited) {
+:link :link, :link :visited, :visited :link, :visited :visited {
 	order: 3;
 }
 
-:is(:link, :visited)  :is(:link, :visited) {
+:link  :link, :link  :visited, :visited  :link, :visited  :visited {
 	order: 4;
 }
 
-:is(:link, :visited)  :is(:link, :visited) {
+:link  :link, :link  :visited, :visited  :link, :visited  :visited {
 	order: 5;
 }
 
-:is(:link, :visited)+:is(:link, :visited) {
+:link+:link, :link+:visited, :visited+:link, :visited+:visited {
 	order: 6;
 }
 
-:is(:link, :visited)+:is(:link, :visited) {
+:link+:link, :link+:visited, :visited+:link, :visited+:visited {
 	order: 7;
 }
 
-:is(:link, :visited) + :is(:link, :visited) {
+:link + :link, :link + :visited, :visited + :link, :visited + :visited {
 	order: 8;
 }
 
-:is(:link, :visited) + :is(:link, :visited) {
+:link + :link, :link + :visited, :visited + :link, :visited + :visited {
 	order: 9;
 }
 
-:is(:link, :visited)~:is(:link, :visited) {
+:link~:link, :link~:visited, :visited~:link, :visited~:visited {
 	order: 10;
 }
 
-:is(:link, :visited)~:is(:link, :visited) {
+:link~:link, :link~:visited, :visited~:link, :visited~:visited {
 	order: 11;
 }
 
-:is(:link, :visited) ~ :is(:link, :visited) {
+:link ~ :link, :link ~ :visited, :visited ~ :link, :visited ~ :visited {
 	order: 12;
 }
 
-:is(:link, :visited) ~ :is(:link, :visited) {
+:link ~ :link, :link ~ :visited, :visited ~ :link, :visited ~ :visited {
 	order: 13;
 }
 
-:is(:link, :visited)>:is(:link, :visited) {
+:link>:link, :link>:visited, :visited>:link, :visited>:visited {
 	order: 14;
 }
 
-:is(:link, :visited)>:is(:link, :visited) {
+:link>:link, :link>:visited, :visited>:link, :visited>:visited {
 	order: 15;
 }
 
-:is(:link, :visited) > :is(:link, :visited) {
+:link > :link, :link > :visited, :visited > :link, :visited > :visited {
 	order: 16;
 }
 
-:is(:link, :visited) > :is(:link, :visited) {
+:link > :link, :link > :visited, :visited > :link, :visited > :visited {
 	order: 17;
 }
 
-:is(:link, :visited), :is(:link, :visited) {
+:link, :visited, :link, :visited {
 	order: 18;
 }
 
-:is(:link, :visited), :is(:link, :visited) {
+:link, :visited, :link, :visited {
 	order: 19;
 }
 
-button:is(:link, :visited) {
+button:link, button:visited {
 	order: 20;
 }
 
@@ -86,319 +86,351 @@ button:is(:link, :visited) {
 	order: 21;
 }
 
-button :is(:link, :visited) {
+button :link, button :visited {
 	order: 22;
 }
 
-:is(:link, :visited) button {
+:link button, :visited button {
 	order: 23;
 }
 
-button  :is(:link, :visited) {
+button  :link, button  :visited {
 	order: 24;
 }
 
-:is(:link, :visited)  button {
+:link  button, :visited  button {
 	order: 25;
 }
 
-button+:is(:link, :visited) {
+button+:link, button+:visited {
 	order: 26;
 }
 
-:is(:link, :visited)+button {
+:link+button, :visited+button {
 	order: 27;
 }
 
-button + :is(:link, :visited) {
+button + :link, button + :visited {
 	order: 28;
 }
 
-:is(:link, :visited) + button {
+:link + button, :visited + button {
 	order: 29;
 }
 
-button~:is(:link, :visited) {
+button~:link, button~:visited {
 	order: 30;
 }
 
-:is(:link, :visited)~button {
+:link~button, :visited~button {
 	order: 31;
 }
 
-button ~ :is(:link, :visited) {
+button ~ :link, button ~ :visited {
 	order: 32;
 }
 
-:is(:link, :visited) ~ button {
+:link ~ button, :visited ~ button {
 	order: 33;
 }
 
-button>:is(:link, :visited) {
+button>:link, button>:visited {
 	order: 34;
 }
 
-:is(:link, :visited)>button {
+:link>button, :visited>button {
 	order: 35;
 }
 
-button > :is(:link, :visited) {
+button > :link, button > :visited {
 	order: 36;
 }
 
-:is(:link, :visited) > button {
+:link > button, :visited > button {
 	order: 37;
 }
 
-button, :is(:link, :visited) {
+:link, :visited {
 	order: 38;
 }
 
-:is(:link, :visited), button {
+button {
+	order: 38;
+}
+
+:link, :visited {
 	order: 39;
 }
 
-.🧑🏾‍🎤:is(:link, :visited) {
+button {
+	order: 39;
+}
+
+.🧑🏾‍🎤:link, .🧑🏾‍🎤:visited {
 	order: 40;
 }
 
-:is(:link, :visited).🧑🏾‍🎤 {
+.🧑🏾‍🎤:link, .🧑🏾‍🎤:visited {
 	order: 41;
 }
 
-.🧑🏾‍🎤 :is(:link, :visited) {
+.🧑🏾‍🎤 :link, .🧑🏾‍🎤 :visited {
 	order: 42;
 }
 
-:is(:link, :visited) .🧑🏾‍🎤 {
+:link .🧑🏾‍🎤, :visited .🧑🏾‍🎤 {
 	order: 43;
 }
 
-.🧑🏾‍🎤  :is(:link, :visited) {
+.🧑🏾‍🎤  :link, .🧑🏾‍🎤  :visited {
 	order: 44;
 }
 
-:is(:link, :visited)  .🧑🏾‍🎤 {
+:link  .🧑🏾‍🎤, :visited  .🧑🏾‍🎤 {
 	order: 45;
 }
 
-.🧑🏾‍🎤+:is(:link, :visited) {
+.🧑🏾‍🎤+:link, .🧑🏾‍🎤+:visited {
 	order: 46;
 }
 
-:is(:link, :visited)+.🧑🏾‍🎤 {
+:link+.🧑🏾‍🎤, :visited+.🧑🏾‍🎤 {
 	order: 47;
 }
 
-.🧑🏾‍🎤 + :is(:link, :visited) {
+.🧑🏾‍🎤 + :link, .🧑🏾‍🎤 + :visited {
 	order: 48;
 }
 
-:is(:link, :visited) + .🧑🏾‍🎤 {
+:link + .🧑🏾‍🎤, :visited + .🧑🏾‍🎤 {
 	order: 49;
 }
 
-.🧑🏾‍🎤~:is(:link, :visited) {
+.🧑🏾‍🎤~:link, .🧑🏾‍🎤~:visited {
 	order: 50;
 }
 
-:is(:link, :visited)~.🧑🏾‍🎤 {
+:link~.🧑🏾‍🎤, :visited~.🧑🏾‍🎤 {
 	order: 51;
 }
 
-.🧑🏾‍🎤 ~ :is(:link, :visited) {
+.🧑🏾‍🎤 ~ :link, .🧑🏾‍🎤 ~ :visited {
 	order: 52;
 }
 
-:is(:link, :visited) ~ .🧑🏾‍🎤 {
+:link ~ .🧑🏾‍🎤, :visited ~ .🧑🏾‍🎤 {
 	order: 53;
 }
 
-.🧑🏾‍🎤>:is(:link, :visited) {
+.🧑🏾‍🎤>:link, .🧑🏾‍🎤>:visited {
 	order: 54;
 }
 
-:is(:link, :visited)>.🧑🏾‍🎤 {
+:link>.🧑🏾‍🎤, :visited>.🧑🏾‍🎤 {
 	order: 55;
 }
 
-.🧑🏾‍🎤 > :is(:link, :visited) {
+.🧑🏾‍🎤 > :link, .🧑🏾‍🎤 > :visited {
 	order: 56;
 }
 
-:is(:link, :visited) > .🧑🏾‍🎤 {
+:link > .🧑🏾‍🎤, :visited > .🧑🏾‍🎤 {
 	order: 57;
 }
 
-.🧑🏾‍🎤, :is(:link, :visited) {
+:link, :visited {
 	order: 58;
 }
 
-:is(:link, :visited), .🧑🏾‍🎤 {
+.🧑🏾‍🎤 {
+	order: 58;
+}
+
+:link, :visited {
 	order: 59;
 }
 
-.foo:is(:link, :visited) {
+.🧑🏾‍🎤 {
+	order: 59;
+}
+
+.foo:link, .foo:visited {
 	order: 60;
 }
 
-:is(:link, :visited).foo {
+.foo:link, .foo:visited {
 	order: 61;
 }
 
-.foo :is(:link, :visited) {
+.foo :link, .foo :visited {
 	order: 62;
 }
 
-:is(:link, :visited) .foo {
+:link .foo, :visited .foo {
 	order: 63;
 }
 
-.foo  :is(:link, :visited) {
+.foo  :link, .foo  :visited {
 	order: 64;
 }
 
-:is(:link, :visited)  .foo {
+:link  .foo, :visited  .foo {
 	order: 65;
 }
 
-.foo+:is(:link, :visited) {
+.foo+:link, .foo+:visited {
 	order: 66;
 }
 
-:is(:link, :visited)+.foo {
+:link+.foo, :visited+.foo {
 	order: 67;
 }
 
-.foo + :is(:link, :visited) {
+.foo + :link, .foo + :visited {
 	order: 68;
 }
 
-:is(:link, :visited) + .foo {
+:link + .foo, :visited + .foo {
 	order: 69;
 }
 
-.foo~:is(:link, :visited) {
+.foo~:link, .foo~:visited {
 	order: 70;
 }
 
-:is(:link, :visited)~.foo {
+:link~.foo, :visited~.foo {
 	order: 71;
 }
 
-.foo ~ :is(:link, :visited) {
+.foo ~ :link, .foo ~ :visited {
 	order: 72;
 }
 
-:is(:link, :visited) ~ .foo {
+:link ~ .foo, :visited ~ .foo {
 	order: 73;
 }
 
-.foo>:is(:link, :visited) {
+.foo>:link, .foo>:visited {
 	order: 74;
 }
 
-:is(:link, :visited)>.foo {
+:link>.foo, :visited>.foo {
 	order: 75;
 }
 
-.foo > :is(:link, :visited) {
+.foo > :link, .foo > :visited {
 	order: 76;
 }
 
-:is(:link, :visited) > .foo {
+:link > .foo, :visited > .foo {
 	order: 77;
 }
 
-.foo, :is(:link, :visited) {
+:link, :visited {
 	order: 78;
 }
 
-:is(:link, :visited), .foo {
+.foo {
+	order: 78;
+}
+
+:link, :visited {
 	order: 79;
 }
 
-#foo:is(:link, :visited) {
+.foo {
+	order: 79;
+}
+
+#foo:link, #foo:visited {
 	order: 80;
 }
 
-:is(:link, :visited)#foo {
+#foo:link, #foo:visited {
 	order: 81;
 }
 
-#foo :is(:link, :visited) {
+#foo :link, #foo :visited {
 	order: 82;
 }
 
-:is(:link, :visited) #foo {
+:link #foo, :visited #foo {
 	order: 83;
 }
 
-#foo  :is(:link, :visited) {
+#foo  :link, #foo  :visited {
 	order: 84;
 }
 
-:is(:link, :visited)  #foo {
+:link  #foo, :visited  #foo {
 	order: 85;
 }
 
-#foo+:is(:link, :visited) {
+#foo+:link, #foo+:visited {
 	order: 86;
 }
 
-:is(:link, :visited)+#foo {
+:link+#foo, :visited+#foo {
 	order: 87;
 }
 
-#foo + :is(:link, :visited) {
+#foo + :link, #foo + :visited {
 	order: 88;
 }
 
-:is(:link, :visited) + #foo {
+:link + #foo, :visited + #foo {
 	order: 89;
 }
 
-#foo~:is(:link, :visited) {
+#foo~:link, #foo~:visited {
 	order: 90;
 }
 
-:is(:link, :visited)~#foo {
+:link~#foo, :visited~#foo {
 	order: 91;
 }
 
-#foo ~ :is(:link, :visited) {
+#foo ~ :link, #foo ~ :visited {
 	order: 92;
 }
 
-:is(:link, :visited) ~ #foo {
+:link ~ #foo, :visited ~ #foo {
 	order: 93;
 }
 
-#foo>:is(:link, :visited) {
+#foo>:link, #foo>:visited {
 	order: 94;
 }
 
-:is(:link, :visited)>#foo {
+:link>#foo, :visited>#foo {
 	order: 95;
 }
 
-#foo > :is(:link, :visited) {
+#foo > :link, #foo > :visited {
 	order: 96;
 }
 
-:is(:link, :visited) > #foo {
+:link > #foo, :visited > #foo {
 	order: 97;
 }
 
-#foo, :is(:link, :visited) {
+:link, :visited {
 	order: 98;
 }
 
-:is(:link, :visited), #foo {
+#foo {
+	order: 98;
+}
+
+:link, :visited {
 	order: 99;
 }
 
-__foo:is(:link, :visited) {
+#foo {
+	order: 99;
+}
+
+__foo:link, __foo:visited {
 	order: 100;
 }
 
@@ -406,475 +438,523 @@ __foo:is(:link, :visited) {
 	order: 101;
 }
 
-__foo :is(:link, :visited) {
+__foo :link, __foo :visited {
 	order: 102;
 }
 
-:is(:link, :visited) __foo {
+:link __foo, :visited __foo {
 	order: 103;
 }
 
-__foo  :is(:link, :visited) {
+__foo  :link, __foo  :visited {
 	order: 104;
 }
 
-:is(:link, :visited)  __foo {
+:link  __foo, :visited  __foo {
 	order: 105;
 }
 
-__foo+:is(:link, :visited) {
+__foo+:link, __foo+:visited {
 	order: 106;
 }
 
-:is(:link, :visited)+__foo {
+:link+__foo, :visited+__foo {
 	order: 107;
 }
 
-__foo + :is(:link, :visited) {
+__foo + :link, __foo + :visited {
 	order: 108;
 }
 
-:is(:link, :visited) + __foo {
+:link + __foo, :visited + __foo {
 	order: 109;
 }
 
-__foo~:is(:link, :visited) {
+__foo~:link, __foo~:visited {
 	order: 110;
 }
 
-:is(:link, :visited)~__foo {
+:link~__foo, :visited~__foo {
 	order: 111;
 }
 
-__foo ~ :is(:link, :visited) {
+__foo ~ :link, __foo ~ :visited {
 	order: 112;
 }
 
-:is(:link, :visited) ~ __foo {
+:link ~ __foo, :visited ~ __foo {
 	order: 113;
 }
 
-__foo>:is(:link, :visited) {
+__foo>:link, __foo>:visited {
 	order: 114;
 }
 
-:is(:link, :visited)>__foo {
+:link>__foo, :visited>__foo {
 	order: 115;
 }
 
-__foo > :is(:link, :visited) {
+__foo > :link, __foo > :visited {
 	order: 116;
 }
 
-:is(:link, :visited) > __foo {
+:link > __foo, :visited > __foo {
 	order: 117;
 }
 
-__foo, :is(:link, :visited) {
+:link, :visited {
 	order: 118;
 }
 
-:is(:link, :visited), __foo {
+__foo {
+	order: 118;
+}
+
+:link, :visited {
 	order: 119;
 }
 
-:--foo:is(:link, :visited) {
+__foo {
+	order: 119;
+}
+
+:--foo:link, :--foo:visited {
 	order: 120;
 }
 
-:is(:link, :visited):--foo {
+:link:--foo, :visited:--foo {
 	order: 121;
 }
 
-:--foo :is(:link, :visited) {
+:--foo :link, :--foo :visited {
 	order: 122;
 }
 
-:is(:link, :visited) :--foo {
+:link :--foo, :visited :--foo {
 	order: 123;
 }
 
-:--foo  :is(:link, :visited) {
+:--foo  :link, :--foo  :visited {
 	order: 124;
 }
 
-:is(:link, :visited)  :--foo {
+:link  :--foo, :visited  :--foo {
 	order: 125;
 }
 
-:--foo+:is(:link, :visited) {
+:--foo+:link, :--foo+:visited {
 	order: 126;
 }
 
-:is(:link, :visited)+:--foo {
+:link+:--foo, :visited+:--foo {
 	order: 127;
 }
 
-:--foo + :is(:link, :visited) {
+:--foo + :link, :--foo + :visited {
 	order: 128;
 }
 
-:is(:link, :visited) + :--foo {
+:link + :--foo, :visited + :--foo {
 	order: 129;
 }
 
-:--foo~:is(:link, :visited) {
+:--foo~:link, :--foo~:visited {
 	order: 130;
 }
 
-:is(:link, :visited)~:--foo {
+:link~:--foo, :visited~:--foo {
 	order: 131;
 }
 
-:--foo ~ :is(:link, :visited) {
+:--foo ~ :link, :--foo ~ :visited {
 	order: 132;
 }
 
-:is(:link, :visited) ~ :--foo {
+:link ~ :--foo, :visited ~ :--foo {
 	order: 133;
 }
 
-:--foo>:is(:link, :visited) {
+:--foo>:link, :--foo>:visited {
 	order: 134;
 }
 
-:is(:link, :visited)>:--foo {
+:link>:--foo, :visited>:--foo {
 	order: 135;
 }
 
-:--foo > :is(:link, :visited) {
+:--foo > :link, :--foo > :visited {
 	order: 136;
 }
 
-:is(:link, :visited) > :--foo {
+:link > :--foo, :visited > :--foo {
 	order: 137;
 }
 
-:--foo, :is(:link, :visited) {
+:link, :visited {
 	order: 138;
 }
 
-:is(:link, :visited), :--foo {
+:--foo {
+	order: 138;
+}
+
+:link, :visited {
 	order: 139;
 }
 
-[foo="baz"]:is(:link, :visited) {
+:--foo {
+	order: 139;
+}
+
+[foo="baz"]:link, [foo="baz"]:visited {
 	order: 140;
 }
 
-:is(:link, :visited)[foo="baz"] {
+[foo="baz"]:link, [foo="baz"]:visited {
 	order: 141;
 }
 
-[foo="baz"] :is(:link, :visited) {
+[foo="baz"] :link, [foo="baz"] :visited {
 	order: 142;
 }
 
-:is(:link, :visited) [foo="baz"] {
+:link [foo="baz"], :visited [foo="baz"] {
 	order: 143;
 }
 
-[foo="baz"]  :is(:link, :visited) {
+[foo="baz"]  :link, [foo="baz"]  :visited {
 	order: 144;
 }
 
-:is(:link, :visited)  [foo="baz"] {
+:link  [foo="baz"], :visited  [foo="baz"] {
 	order: 145;
 }
 
-[foo="baz"]+:is(:link, :visited) {
+[foo="baz"]+:link, [foo="baz"]+:visited {
 	order: 146;
 }
 
-:is(:link, :visited)+[foo="baz"] {
+:link+[foo="baz"], :visited+[foo="baz"] {
 	order: 147;
 }
 
-[foo="baz"] + :is(:link, :visited) {
+[foo="baz"] + :link, [foo="baz"] + :visited {
 	order: 148;
 }
 
-:is(:link, :visited) + [foo="baz"] {
+:link + [foo="baz"], :visited + [foo="baz"] {
 	order: 149;
 }
 
-[foo="baz"]~:is(:link, :visited) {
+[foo="baz"]~:link, [foo="baz"]~:visited {
 	order: 150;
 }
 
-:is(:link, :visited)~[foo="baz"] {
+:link~[foo="baz"], :visited~[foo="baz"] {
 	order: 151;
 }
 
-[foo="baz"] ~ :is(:link, :visited) {
+[foo="baz"] ~ :link, [foo="baz"] ~ :visited {
 	order: 152;
 }
 
-:is(:link, :visited) ~ [foo="baz"] {
+:link ~ [foo="baz"], :visited ~ [foo="baz"] {
 	order: 153;
 }
 
-[foo="baz"]>:is(:link, :visited) {
+[foo="baz"]>:link, [foo="baz"]>:visited {
 	order: 154;
 }
 
-:is(:link, :visited)>[foo="baz"] {
+:link>[foo="baz"], :visited>[foo="baz"] {
 	order: 155;
 }
 
-[foo="baz"] > :is(:link, :visited) {
+[foo="baz"] > :link, [foo="baz"] > :visited {
 	order: 156;
 }
 
-:is(:link, :visited) > [foo="baz"] {
+:link > [foo="baz"], :visited > [foo="baz"] {
 	order: 157;
 }
 
-[foo="baz"], :is(:link, :visited) {
+:link, :visited {
 	order: 158;
 }
 
-:is(:link, :visited), [foo="baz"] {
+[foo="baz"] {
+	order: 158;
+}
+
+:link, :visited {
 	order: 159;
 }
 
-*:is(:link, :visited) {
+[foo="baz"] {
+	order: 159;
+}
+
+*:link, *:visited {
 	order: 160;
 }
 
-:is(:link, :visited)* {
+*:link, *:visited {
 	order: 161;
 }
 
-* :is(:link, :visited) {
+* :link, * :visited {
 	order: 162;
 }
 
-:is(:link, :visited) * {
+:link *, :visited * {
 	order: 163;
 }
 
-*  :is(:link, :visited) {
+*  :link, *  :visited {
 	order: 164;
 }
 
-:is(:link, :visited)  * {
+:link  *, :visited  * {
 	order: 165;
 }
 
-*+:is(:link, :visited) {
+*+:link, *+:visited {
 	order: 166;
 }
 
-:is(:link, :visited)+* {
+:link+*, :visited+* {
 	order: 167;
 }
 
-* + :is(:link, :visited) {
+* + :link, * + :visited {
 	order: 168;
 }
 
-:is(:link, :visited) + * {
+:link + *, :visited + * {
 	order: 169;
 }
 
-*~:is(:link, :visited) {
+*~:link, *~:visited {
 	order: 170;
 }
 
-:is(:link, :visited)~* {
+:link~*, :visited~* {
 	order: 171;
 }
 
-* ~ :is(:link, :visited) {
+* ~ :link, * ~ :visited {
 	order: 172;
 }
 
-:is(:link, :visited) ~ * {
+:link ~ *, :visited ~ * {
 	order: 173;
 }
 
-*>:is(:link, :visited) {
+*>:link, *>:visited {
 	order: 174;
 }
 
-:is(:link, :visited)>* {
+:link>*, :visited>* {
 	order: 175;
 }
 
-* > :is(:link, :visited) {
+* > :link, * > :visited {
 	order: 176;
 }
 
-:is(:link, :visited) > * {
+:link > *, :visited > * {
 	order: 177;
 }
 
-*, :is(:link, :visited) {
+:link, :visited {
 	order: 178;
 }
 
-:is(:link, :visited), * {
+* {
+	order: 178;
+}
+
+:link, :visited {
 	order: 179;
 }
 
-:hover:is(:link, :visited) {
+* {
+	order: 179;
+}
+
+:hover:link, :hover:visited {
 	order: 180;
 }
 
-:is(:link, :visited):hover {
+:link:hover, :visited:hover {
 	order: 181;
 }
 
-:hover :is(:link, :visited) {
+:hover :link, :hover :visited {
 	order: 182;
 }
 
-:is(:link, :visited) :hover {
+:link :hover, :visited :hover {
 	order: 183;
 }
 
-:hover  :is(:link, :visited) {
+:hover  :link, :hover  :visited {
 	order: 184;
 }
 
-:is(:link, :visited)  :hover {
+:link  :hover, :visited  :hover {
 	order: 185;
 }
 
-:hover+:is(:link, :visited) {
+:hover+:link, :hover+:visited {
 	order: 186;
 }
 
-:is(:link, :visited)+:hover {
+:link+:hover, :visited+:hover {
 	order: 187;
 }
 
-:hover + :is(:link, :visited) {
+:hover + :link, :hover + :visited {
 	order: 188;
 }
 
-:is(:link, :visited) + :hover {
+:link + :hover, :visited + :hover {
 	order: 189;
 }
 
-:hover~:is(:link, :visited) {
+:hover~:link, :hover~:visited {
 	order: 190;
 }
 
-:is(:link, :visited)~:hover {
+:link~:hover, :visited~:hover {
 	order: 191;
 }
 
-:hover ~ :is(:link, :visited) {
+:hover ~ :link, :hover ~ :visited {
 	order: 192;
 }
 
-:is(:link, :visited) ~ :hover {
+:link ~ :hover, :visited ~ :hover {
 	order: 193;
 }
 
-:hover>:is(:link, :visited) {
+:hover>:link, :hover>:visited {
 	order: 194;
 }
 
-:is(:link, :visited)>:hover {
+:link>:hover, :visited>:hover {
 	order: 195;
 }
 
-:hover > :is(:link, :visited) {
+:hover > :link, :hover > :visited {
 	order: 196;
 }
 
-:is(:link, :visited) > :hover {
+:link > :hover, :visited > :hover {
 	order: 197;
 }
 
-:hover, :is(:link, :visited) {
+:link, :visited {
 	order: 198;
 }
 
-:is(:link, :visited), :hover {
+:hover {
+	order: 198;
+}
+
+:link, :visited {
 	order: 199;
 }
 
-::before:is(:link, :visited) {
+:hover {
+	order: 199;
+}
+
+::before:link, ::before:visited {
 	order: 200;
 }
 
-:is(:link, :visited)::before {
+:link::before, :visited::before {
 	order: 201;
 }
 
-::before :is(:link, :visited) {
+::before :link, ::before :visited {
 	order: 202;
 }
 
-:is(:link, :visited) ::before {
+:link ::before, :visited ::before {
 	order: 203;
 }
 
-::before  :is(:link, :visited) {
+::before  :link, ::before  :visited {
 	order: 204;
 }
 
-:is(:link, :visited)  ::before {
+:link  ::before, :visited  ::before {
 	order: 205;
 }
 
-::before+:is(:link, :visited) {
+::before+:link, ::before+:visited {
 	order: 206;
 }
 
-:is(:link, :visited)+::before {
+:link+::before, :visited+::before {
 	order: 207;
 }
 
-::before + :is(:link, :visited) {
+::before + :link, ::before + :visited {
 	order: 208;
 }
 
-:is(:link, :visited) + ::before {
+:link + ::before, :visited + ::before {
 	order: 209;
 }
 
-::before~:is(:link, :visited) {
+::before~:link, ::before~:visited {
 	order: 210;
 }
 
-:is(:link, :visited)~::before {
+:link~::before, :visited~::before {
 	order: 211;
 }
 
-::before ~ :is(:link, :visited) {
+::before ~ :link, ::before ~ :visited {
 	order: 212;
 }
 
-:is(:link, :visited) ~ ::before {
+:link ~ ::before, :visited ~ ::before {
 	order: 213;
 }
 
-::before>:is(:link, :visited) {
+::before>:link, ::before>:visited {
 	order: 214;
 }
 
-:is(:link, :visited)>::before {
+:link>::before, :visited>::before {
 	order: 215;
 }
 
-::before > :is(:link, :visited) {
+::before > :link, ::before > :visited {
 	order: 216;
 }
 
-:is(:link, :visited) > ::before {
+:link > ::before, :visited > ::before {
 	order: 217;
 }
 
-::before, :is(:link, :visited) {
+:link, :visited {
 	order: 218;
 }
 
-:is(:link, :visited), ::before {
+::before {
+	order: 218;
+}
+
+:link, :visited {
+	order: 219;
+}
+
+::before {
 	order: 219;
 }
 
@@ -886,7 +966,7 @@ foo[baz=":any-link"] {
 	order: 221;
 }
 
-:not(:is(:link, :visited)) {
+:not(:link), :not(:visited) {
 	order: 222;
 }
 
@@ -894,11 +974,11 @@ foo[baz=":any-link"] {
 	order: 223;
 }
 
-:--:is(:link, :visited) {
+:--:link, :--:visited {
 	order: 224;
 }
 
-__:is(:link, :visited) {
+__:link, __:visited {
 	order: 225;
 }
 

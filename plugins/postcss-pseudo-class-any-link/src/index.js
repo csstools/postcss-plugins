@@ -1,5 +1,4 @@
-import { handleAreaHref } from './area-href';
-import { handleLinkAndVisited } from './link-visited';
+import { replaceAnyLink } from './replace-any-link';
 
 const anyAnyLinkMatch = /:any-link/;
 
@@ -32,11 +31,7 @@ function creator(opts) {
 				return;
 			}
 
-			if (subFeatures.areaHrefNeedsFixing) {
-				handleAreaHref(rule, result);
-			}
-
-			handleLinkAndVisited(rule, result, options.preserve);
+			replaceAnyLink(rule, result, options.preserve, subFeatures.areaHrefNeedsFixing);
 		},
 	};
 }

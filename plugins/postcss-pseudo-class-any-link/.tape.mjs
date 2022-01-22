@@ -26,4 +26,14 @@ postcssTape(plugin)({
 			preserve: false
 		}
 	},
+	'generated-selector-cases:sub-features-area-href': {
+		message: 'correctly handles generated cases with areaHrefNeedsFixing: true',
+		warnings: 1,
+		options: {
+			preserve: false,
+			subFeatures: {
+				areaHrefNeedsFixing: true
+			}
+		}
+	},
 });

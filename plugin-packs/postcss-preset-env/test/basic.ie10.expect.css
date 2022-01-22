@@ -242,17 +242,7 @@
 	    order: 22;
 }
 
-area[href].test-any-link-pseudo-class {
-	-ms-flex-order: 23;
-	    order: 23;
-}
-
-.test-any-link-pseudo-class:link {
-	-ms-flex-order: 23;
-	    order: 23;
-}
-
-.test-any-link-pseudo-class:visited {
+.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area.test-any-link-pseudo-class[href] {
 	-ms-flex-order: 23;
 	    order: 23;
 }

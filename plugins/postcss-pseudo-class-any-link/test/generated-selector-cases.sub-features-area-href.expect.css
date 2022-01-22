@@ -1,0 +1,985 @@
+:link:link, :link:visited, area[href]:link, :visited:link, :visited:visited, area[href]:visited, area[href]:link, area[href]:visited, areaarea[href][href] {
+	order: 0;
+}
+
+:link:link, :link:visited, area[href]:link, :visited:link, :visited:visited, area[href]:visited, area[href]:link, area[href]:visited, areaarea[href][href] {
+	order: 1;
+}
+
+:link :link, :link :visited, :link area[href], :visited :link, :visited :visited, :visited area[href], area[href] :link, area[href] :visited, area[href] area[href] {
+	order: 2;
+}
+
+:link :link, :link :visited, :link area[href], :visited :link, :visited :visited, :visited area[href], area[href] :link, area[href] :visited, area[href] area[href] {
+	order: 3;
+}
+
+:link  :link, :link  :visited, :link  area[href], :visited  :link, :visited  :visited, :visited  area[href], area[href]  :link, area[href]  :visited, area[href]  area[href] {
+	order: 4;
+}
+
+:link  :link, :link  :visited, :link  area[href], :visited  :link, :visited  :visited, :visited  area[href], area[href]  :link, area[href]  :visited, area[href]  area[href] {
+	order: 5;
+}
+
+:link+:link, :link+:visited, :link+area[href], :visited+:link, :visited+:visited, :visited+area[href], area[href]+:link, area[href]+:visited, area[href]+area[href] {
+	order: 6;
+}
+
+:link+:link, :link+:visited, :link+area[href], :visited+:link, :visited+:visited, :visited+area[href], area[href]+:link, area[href]+:visited, area[href]+area[href] {
+	order: 7;
+}
+
+:link + :link, :link + :visited, :link + area[href], :visited + :link, :visited + :visited, :visited + area[href], area[href] + :link, area[href] + :visited, area[href] + area[href] {
+	order: 8;
+}
+
+:link + :link, :link + :visited, :link + area[href], :visited + :link, :visited + :visited, :visited + area[href], area[href] + :link, area[href] + :visited, area[href] + area[href] {
+	order: 9;
+}
+
+:link~:link, :link~:visited, :link~area[href], :visited~:link, :visited~:visited, :visited~area[href], area[href]~:link, area[href]~:visited, area[href]~area[href] {
+	order: 10;
+}
+
+:link~:link, :link~:visited, :link~area[href], :visited~:link, :visited~:visited, :visited~area[href], area[href]~:link, area[href]~:visited, area[href]~area[href] {
+	order: 11;
+}
+
+:link ~ :link, :link ~ :visited, :link ~ area[href], :visited ~ :link, :visited ~ :visited, :visited ~ area[href], area[href] ~ :link, area[href] ~ :visited, area[href] ~ area[href] {
+	order: 12;
+}
+
+:link ~ :link, :link ~ :visited, :link ~ area[href], :visited ~ :link, :visited ~ :visited, :visited ~ area[href], area[href] ~ :link, area[href] ~ :visited, area[href] ~ area[href] {
+	order: 13;
+}
+
+:link>:link, :link>:visited, :link>area[href], :visited>:link, :visited>:visited, :visited>area[href], area[href]>:link, area[href]>:visited, area[href]>area[href] {
+	order: 14;
+}
+
+:link>:link, :link>:visited, :link>area[href], :visited>:link, :visited>:visited, :visited>area[href], area[href]>:link, area[href]>:visited, area[href]>area[href] {
+	order: 15;
+}
+
+:link > :link, :link > :visited, :link > area[href], :visited > :link, :visited > :visited, :visited > area[href], area[href] > :link, area[href] > :visited, area[href] > area[href] {
+	order: 16;
+}
+
+:link > :link, :link > :visited, :link > area[href], :visited > :link, :visited > :visited, :visited > area[href], area[href] > :link, area[href] > :visited, area[href] > area[href] {
+	order: 17;
+}
+
+:link, :visited, area[href], :link, :visited, area[href] {
+	order: 18;
+}
+
+:link, :visited, area[href], :link, :visited, area[href] {
+	order: 19;
+}
+
+button:link, button:visited, buttonarea[href] {
+	order: 20;
+}
+
+:any-linkbutton {
+	order: 21;
+}
+
+button :link, button :visited, button area[href] {
+	order: 22;
+}
+
+:link button, :visited button, area[href] button {
+	order: 23;
+}
+
+button  :link, button  :visited, button  area[href] {
+	order: 24;
+}
+
+:link  button, :visited  button, area[href]  button {
+	order: 25;
+}
+
+button+:link, button+:visited, button+area[href] {
+	order: 26;
+}
+
+:link+button, :visited+button, area[href]+button {
+	order: 27;
+}
+
+button + :link, button + :visited, button + area[href] {
+	order: 28;
+}
+
+:link + button, :visited + button, area[href] + button {
+	order: 29;
+}
+
+button~:link, button~:visited, button~area[href] {
+	order: 30;
+}
+
+:link~button, :visited~button, area[href]~button {
+	order: 31;
+}
+
+button ~ :link, button ~ :visited, button ~ area[href] {
+	order: 32;
+}
+
+:link ~ button, :visited ~ button, area[href] ~ button {
+	order: 33;
+}
+
+button>:link, button>:visited, button>area[href] {
+	order: 34;
+}
+
+:link>button, :visited>button, area[href]>button {
+	order: 35;
+}
+
+button > :link, button > :visited, button > area[href] {
+	order: 36;
+}
+
+:link > button, :visited > button, area[href] > button {
+	order: 37;
+}
+
+:link, :visited, area[href] {
+	order: 38;
+}
+
+button {
+	order: 38;
+}
+
+:link, :visited, area[href] {
+	order: 39;
+}
+
+button {
+	order: 39;
+}
+
+.🧑🏾‍🎤:link, .🧑🏾‍🎤:visited, area.🧑🏾‍🎤[href] {
+	order: 40;
+}
+
+.🧑🏾‍🎤:link, .🧑🏾‍🎤:visited, area.🧑🏾‍🎤[href] {
+	order: 41;
+}
+
+.🧑🏾‍🎤 :link, .🧑🏾‍🎤 :visited, .🧑🏾‍🎤 area[href] {
+	order: 42;
+}
+
+:link .🧑🏾‍🎤, :visited .🧑🏾‍🎤, area[href] .🧑🏾‍🎤 {
+	order: 43;
+}
+
+.🧑🏾‍🎤  :link, .🧑🏾‍🎤  :visited, .🧑🏾‍🎤  area[href] {
+	order: 44;
+}
+
+:link  .🧑🏾‍🎤, :visited  .🧑🏾‍🎤, area[href]  .🧑🏾‍🎤 {
+	order: 45;
+}
+
+.🧑🏾‍🎤+:link, .🧑🏾‍🎤+:visited, .🧑🏾‍🎤+area[href] {
+	order: 46;
+}
+
+:link+.🧑🏾‍🎤, :visited+.🧑🏾‍🎤, area[href]+.🧑🏾‍🎤 {
+	order: 47;
+}
+
+.🧑🏾‍🎤 + :link, .🧑🏾‍🎤 + :visited, .🧑🏾‍🎤 + area[href] {
+	order: 48;
+}
+
+:link + .🧑🏾‍🎤, :visited + .🧑🏾‍🎤, area[href] + .🧑🏾‍🎤 {
+	order: 49;
+}
+
+.🧑🏾‍🎤~:link, .🧑🏾‍🎤~:visited, .🧑🏾‍🎤~area[href] {
+	order: 50;
+}
+
+:link~.🧑🏾‍🎤, :visited~.🧑🏾‍🎤, area[href]~.🧑🏾‍🎤 {
+	order: 51;
+}
+
+.🧑🏾‍🎤 ~ :link, .🧑🏾‍🎤 ~ :visited, .🧑🏾‍🎤 ~ area[href] {
+	order: 52;
+}
+
+:link ~ .🧑🏾‍🎤, :visited ~ .🧑🏾‍🎤, area[href] ~ .🧑🏾‍🎤 {
+	order: 53;
+}
+
+.🧑🏾‍🎤>:link, .🧑🏾‍🎤>:visited, .🧑🏾‍🎤>area[href] {
+	order: 54;
+}
+
+:link>.🧑🏾‍🎤, :visited>.🧑🏾‍🎤, area[href]>.🧑🏾‍🎤 {
+	order: 55;
+}
+
+.🧑🏾‍🎤 > :link, .🧑🏾‍🎤 > :visited, .🧑🏾‍🎤 > area[href] {
+	order: 56;
+}
+
+:link > .🧑🏾‍🎤, :visited > .🧑🏾‍🎤, area[href] > .🧑🏾‍🎤 {
+	order: 57;
+}
+
+:link, :visited, area[href] {
+	order: 58;
+}
+
+.🧑🏾‍🎤 {
+	order: 58;
+}
+
+:link, :visited, area[href] {
+	order: 59;
+}
+
+.🧑🏾‍🎤 {
+	order: 59;
+}
+
+.foo:link, .foo:visited, area.foo[href] {
+	order: 60;
+}
+
+.foo:link, .foo:visited, area.foo[href] {
+	order: 61;
+}
+
+.foo :link, .foo :visited, .foo area[href] {
+	order: 62;
+}
+
+:link .foo, :visited .foo, area[href] .foo {
+	order: 63;
+}
+
+.foo  :link, .foo  :visited, .foo  area[href] {
+	order: 64;
+}
+
+:link  .foo, :visited  .foo, area[href]  .foo {
+	order: 65;
+}
+
+.foo+:link, .foo+:visited, .foo+area[href] {
+	order: 66;
+}
+
+:link+.foo, :visited+.foo, area[href]+.foo {
+	order: 67;
+}
+
+.foo + :link, .foo + :visited, .foo + area[href] {
+	order: 68;
+}
+
+:link + .foo, :visited + .foo, area[href] + .foo {
+	order: 69;
+}
+
+.foo~:link, .foo~:visited, .foo~area[href] {
+	order: 70;
+}
+
+:link~.foo, :visited~.foo, area[href]~.foo {
+	order: 71;
+}
+
+.foo ~ :link, .foo ~ :visited, .foo ~ area[href] {
+	order: 72;
+}
+
+:link ~ .foo, :visited ~ .foo, area[href] ~ .foo {
+	order: 73;
+}
+
+.foo>:link, .foo>:visited, .foo>area[href] {
+	order: 74;
+}
+
+:link>.foo, :visited>.foo, area[href]>.foo {
+	order: 75;
+}
+
+.foo > :link, .foo > :visited, .foo > area[href] {
+	order: 76;
+}
+
+:link > .foo, :visited > .foo, area[href] > .foo {
+	order: 77;
+}
+
+:link, :visited, area[href] {
+	order: 78;
+}
+
+.foo {
+	order: 78;
+}
+
+:link, :visited, area[href] {
+	order: 79;
+}
+
+.foo {
+	order: 79;
+}
+
+#foo:link, #foo:visited, area#foo[href] {
+	order: 80;
+}
+
+#foo:link, #foo:visited, area#foo[href] {
+	order: 81;
+}
+
+#foo :link, #foo :visited, #foo area[href] {
+	order: 82;
+}
+
+:link #foo, :visited #foo, area[href] #foo {
+	order: 83;
+}
+
+#foo  :link, #foo  :visited, #foo  area[href] {
+	order: 84;
+}
+
+:link  #foo, :visited  #foo, area[href]  #foo {
+	order: 85;
+}
+
+#foo+:link, #foo+:visited, #foo+area[href] {
+	order: 86;
+}
+
+:link+#foo, :visited+#foo, area[href]+#foo {
+	order: 87;
+}
+
+#foo + :link, #foo + :visited, #foo + area[href] {
+	order: 88;
+}
+
+:link + #foo, :visited + #foo, area[href] + #foo {
+	order: 89;
+}
+
+#foo~:link, #foo~:visited, #foo~area[href] {
+	order: 90;
+}
+
+:link~#foo, :visited~#foo, area[href]~#foo {
+	order: 91;
+}
+
+#foo ~ :link, #foo ~ :visited, #foo ~ area[href] {
+	order: 92;
+}
+
+:link ~ #foo, :visited ~ #foo, area[href] ~ #foo {
+	order: 93;
+}
+
+#foo>:link, #foo>:visited, #foo>area[href] {
+	order: 94;
+}
+
+:link>#foo, :visited>#foo, area[href]>#foo {
+	order: 95;
+}
+
+#foo > :link, #foo > :visited, #foo > area[href] {
+	order: 96;
+}
+
+:link > #foo, :visited > #foo, area[href] > #foo {
+	order: 97;
+}
+
+:link, :visited, area[href] {
+	order: 98;
+}
+
+#foo {
+	order: 98;
+}
+
+:link, :visited, area[href] {
+	order: 99;
+}
+
+#foo {
+	order: 99;
+}
+
+__foo:link, __foo:visited, __fooarea[href] {
+	order: 100;
+}
+
+:any-link__foo {
+	order: 101;
+}
+
+__foo :link, __foo :visited, __foo area[href] {
+	order: 102;
+}
+
+:link __foo, :visited __foo, area[href] __foo {
+	order: 103;
+}
+
+__foo  :link, __foo  :visited, __foo  area[href] {
+	order: 104;
+}
+
+:link  __foo, :visited  __foo, area[href]  __foo {
+	order: 105;
+}
+
+__foo+:link, __foo+:visited, __foo+area[href] {
+	order: 106;
+}
+
+:link+__foo, :visited+__foo, area[href]+__foo {
+	order: 107;
+}
+
+__foo + :link, __foo + :visited, __foo + area[href] {
+	order: 108;
+}
+
+:link + __foo, :visited + __foo, area[href] + __foo {
+	order: 109;
+}
+
+__foo~:link, __foo~:visited, __foo~area[href] {
+	order: 110;
+}
+
+:link~__foo, :visited~__foo, area[href]~__foo {
+	order: 111;
+}
+
+__foo ~ :link, __foo ~ :visited, __foo ~ area[href] {
+	order: 112;
+}
+
+:link ~ __foo, :visited ~ __foo, area[href] ~ __foo {
+	order: 113;
+}
+
+__foo>:link, __foo>:visited, __foo>area[href] {
+	order: 114;
+}
+
+:link>__foo, :visited>__foo, area[href]>__foo {
+	order: 115;
+}
+
+__foo > :link, __foo > :visited, __foo > area[href] {
+	order: 116;
+}
+
+:link > __foo, :visited > __foo, area[href] > __foo {
+	order: 117;
+}
+
+:link, :visited, area[href] {
+	order: 118;
+}
+
+__foo {
+	order: 118;
+}
+
+:link, :visited, area[href] {
+	order: 119;
+}
+
+__foo {
+	order: 119;
+}
+
+:--foo:link, :--foo:visited, area[href]:--foo {
+	order: 120;
+}
+
+:link:--foo, :visited:--foo, area[href]:--foo {
+	order: 121;
+}
+
+:--foo :link, :--foo :visited, :--foo area[href] {
+	order: 122;
+}
+
+:link :--foo, :visited :--foo, area[href] :--foo {
+	order: 123;
+}
+
+:--foo  :link, :--foo  :visited, :--foo  area[href] {
+	order: 124;
+}
+
+:link  :--foo, :visited  :--foo, area[href]  :--foo {
+	order: 125;
+}
+
+:--foo+:link, :--foo+:visited, :--foo+area[href] {
+	order: 126;
+}
+
+:link+:--foo, :visited+:--foo, area[href]+:--foo {
+	order: 127;
+}
+
+:--foo + :link, :--foo + :visited, :--foo + area[href] {
+	order: 128;
+}
+
+:link + :--foo, :visited + :--foo, area[href] + :--foo {
+	order: 129;
+}
+
+:--foo~:link, :--foo~:visited, :--foo~area[href] {
+	order: 130;
+}
+
+:link~:--foo, :visited~:--foo, area[href]~:--foo {
+	order: 131;
+}
+
+:--foo ~ :link, :--foo ~ :visited, :--foo ~ area[href] {
+	order: 132;
+}
+
+:link ~ :--foo, :visited ~ :--foo, area[href] ~ :--foo {
+	order: 133;
+}
+
+:--foo>:link, :--foo>:visited, :--foo>area[href] {
+	order: 134;
+}
+
+:link>:--foo, :visited>:--foo, area[href]>:--foo {
+	order: 135;
+}
+
+:--foo > :link, :--foo > :visited, :--foo > area[href] {
+	order: 136;
+}
+
+:link > :--foo, :visited > :--foo, area[href] > :--foo {
+	order: 137;
+}
+
+:link, :visited, area[href] {
+	order: 138;
+}
+
+:--foo {
+	order: 138;
+}
+
+:link, :visited, area[href] {
+	order: 139;
+}
+
+:--foo {
+	order: 139;
+}
+
+[foo="baz"]:link, [foo="baz"]:visited, area[foo="baz"][href] {
+	order: 140;
+}
+
+[foo="baz"]:link, [foo="baz"]:visited, area[href][foo="baz"] {
+	order: 141;
+}
+
+[foo="baz"] :link, [foo="baz"] :visited, [foo="baz"] area[href] {
+	order: 142;
+}
+
+:link [foo="baz"], :visited [foo="baz"], area[href] [foo="baz"] {
+	order: 143;
+}
+
+[foo="baz"]  :link, [foo="baz"]  :visited, [foo="baz"]  area[href] {
+	order: 144;
+}
+
+:link  [foo="baz"], :visited  [foo="baz"], area[href]  [foo="baz"] {
+	order: 145;
+}
+
+[foo="baz"]+:link, [foo="baz"]+:visited, [foo="baz"]+area[href] {
+	order: 146;
+}
+
+:link+[foo="baz"], :visited+[foo="baz"], area[href]+[foo="baz"] {
+	order: 147;
+}
+
+[foo="baz"] + :link, [foo="baz"] + :visited, [foo="baz"] + area[href] {
+	order: 148;
+}
+
+:link + [foo="baz"], :visited + [foo="baz"], area[href] + [foo="baz"] {
+	order: 149;
+}
+
+[foo="baz"]~:link, [foo="baz"]~:visited, [foo="baz"]~area[href] {
+	order: 150;
+}
+
+:link~[foo="baz"], :visited~[foo="baz"], area[href]~[foo="baz"] {
+	order: 151;
+}
+
+[foo="baz"] ~ :link, [foo="baz"] ~ :visited, [foo="baz"] ~ area[href] {
+	order: 152;
+}
+
+:link ~ [foo="baz"], :visited ~ [foo="baz"], area[href] ~ [foo="baz"] {
+	order: 153;
+}
+
+[foo="baz"]>:link, [foo="baz"]>:visited, [foo="baz"]>area[href] {
+	order: 154;
+}
+
+:link>[foo="baz"], :visited>[foo="baz"], area[href]>[foo="baz"] {
+	order: 155;
+}
+
+[foo="baz"] > :link, [foo="baz"] > :visited, [foo="baz"] > area[href] {
+	order: 156;
+}
+
+:link > [foo="baz"], :visited > [foo="baz"], area[href] > [foo="baz"] {
+	order: 157;
+}
+
+:link, :visited, area[href] {
+	order: 158;
+}
+
+[foo="baz"] {
+	order: 158;
+}
+
+:link, :visited, area[href] {
+	order: 159;
+}
+
+[foo="baz"] {
+	order: 159;
+}
+
+*:link, *:visited, *area[href] {
+	order: 160;
+}
+
+*:link, *:visited, *area[href] {
+	order: 161;
+}
+
+* :link, * :visited, * area[href] {
+	order: 162;
+}
+
+:link *, :visited *, area[href] * {
+	order: 163;
+}
+
+*  :link, *  :visited, *  area[href] {
+	order: 164;
+}
+
+:link  *, :visited  *, area[href]  * {
+	order: 165;
+}
+
+*+:link, *+:visited, *+area[href] {
+	order: 166;
+}
+
+:link+*, :visited+*, area[href]+* {
+	order: 167;
+}
+
+* + :link, * + :visited, * + area[href] {
+	order: 168;
+}
+
+:link + *, :visited + *, area[href] + * {
+	order: 169;
+}
+
+*~:link, *~:visited, *~area[href] {
+	order: 170;
+}
+
+:link~*, :visited~*, area[href]~* {
+	order: 171;
+}
+
+* ~ :link, * ~ :visited, * ~ area[href] {
+	order: 172;
+}
+
+:link ~ *, :visited ~ *, area[href] ~ * {
+	order: 173;
+}
+
+*>:link, *>:visited, *>area[href] {
+	order: 174;
+}
+
+:link>*, :visited>*, area[href]>* {
+	order: 175;
+}
+
+* > :link, * > :visited, * > area[href] {
+	order: 176;
+}
+
+:link > *, :visited > *, area[href] > * {
+	order: 177;
+}
+
+:link, :visited, area[href] {
+	order: 178;
+}
+
+* {
+	order: 178;
+}
+
+:link, :visited, area[href] {
+	order: 179;
+}
+
+* {
+	order: 179;
+}
+
+:hover:link, :hover:visited, area[href]:hover {
+	order: 180;
+}
+
+:link:hover, :visited:hover, area[href]:hover {
+	order: 181;
+}
+
+:hover :link, :hover :visited, :hover area[href] {
+	order: 182;
+}
+
+:link :hover, :visited :hover, area[href] :hover {
+	order: 183;
+}
+
+:hover  :link, :hover  :visited, :hover  area[href] {
+	order: 184;
+}
+
+:link  :hover, :visited  :hover, area[href]  :hover {
+	order: 185;
+}
+
+:hover+:link, :hover+:visited, :hover+area[href] {
+	order: 186;
+}
+
+:link+:hover, :visited+:hover, area[href]+:hover {
+	order: 187;
+}
+
+:hover + :link, :hover + :visited, :hover + area[href] {
+	order: 188;
+}
+
+:link + :hover, :visited + :hover, area[href] + :hover {
+	order: 189;
+}
+
+:hover~:link, :hover~:visited, :hover~area[href] {
+	order: 190;
+}
+
+:link~:hover, :visited~:hover, area[href]~:hover {
+	order: 191;
+}
+
+:hover ~ :link, :hover ~ :visited, :hover ~ area[href] {
+	order: 192;
+}
+
+:link ~ :hover, :visited ~ :hover, area[href] ~ :hover {
+	order: 193;
+}
+
+:hover>:link, :hover>:visited, :hover>area[href] {
+	order: 194;
+}
+
+:link>:hover, :visited>:hover, area[href]>:hover {
+	order: 195;
+}
+
+:hover > :link, :hover > :visited, :hover > area[href] {
+	order: 196;
+}
+
+:link > :hover, :visited > :hover, area[href] > :hover {
+	order: 197;
+}
+
+:link, :visited, area[href] {
+	order: 198;
+}
+
+:hover {
+	order: 198;
+}
+
+:link, :visited, area[href] {
+	order: 199;
+}
+
+:hover {
+	order: 199;
+}
+
+::before:link, ::before:visited, area[href]::before {
+	order: 200;
+}
+
+:link::before, :visited::before, area[href]::before {
+	order: 201;
+}
+
+::before :link, ::before :visited, ::before area[href] {
+	order: 202;
+}
+
+:link ::before, :visited ::before, area[href] ::before {
+	order: 203;
+}
+
+::before  :link, ::before  :visited, ::before  area[href] {
+	order: 204;
+}
+
+:link  ::before, :visited  ::before, area[href]  ::before {
+	order: 205;
+}
+
+::before+:link, ::before+:visited, ::before+area[href] {
+	order: 206;
+}
+
+:link+::before, :visited+::before, area[href]+::before {
+	order: 207;
+}
+
+::before + :link, ::before + :visited, ::before + area[href] {
+	order: 208;
+}
+
+:link + ::before, :visited + ::before, area[href] + ::before {
+	order: 209;
+}
+
+::before~:link, ::before~:visited, ::before~area[href] {
+	order: 210;
+}
+
+:link~::before, :visited~::before, area[href]~::before {
+	order: 211;
+}
+
+::before ~ :link, ::before ~ :visited, ::before ~ area[href] {
+	order: 212;
+}
+
+:link ~ ::before, :visited ~ ::before, area[href] ~ ::before {
+	order: 213;
+}
+
+::before>:link, ::before>:visited, ::before>area[href] {
+	order: 214;
+}
+
+:link>::before, :visited>::before, area[href]>::before {
+	order: 215;
+}
+
+::before > :link, ::before > :visited, ::before > area[href] {
+	order: 216;
+}
+
+:link > ::before, :visited > ::before, area[href] > ::before {
+	order: 217;
+}
+
+:link, :visited, area[href] {
+	order: 218;
+}
+
+::before {
+	order: 218;
+}
+
+:link, :visited, area[href] {
+	order: 219;
+}
+
+::before {
+	order: 219;
+}
+
+foo[:any-link] {
+	order: 220;
+}
+
+foo[baz=":any-link"] {
+	order: 221;
+}
+
+:not(:link), :not(:visited), :not(area[href]) {
+	order: 222;
+}
+
+::any-link {
+	order: 223;
+}
+
+:--:link, :--:visited, area[href]:-- {
+	order: 224;
+}
+
+__:link, __:visited, __area[href] {
+	order: 225;
+}
+
+/* :any-link */

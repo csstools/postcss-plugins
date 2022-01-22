@@ -1,8 +1,4 @@
-:is(area[href]) {
-	order: 1;
-}
-
-:is(:link, :visited) {
+:link, :visited, area[href] {
 	order: 1;
 }
 
@@ -10,12 +6,12 @@
 	order: 1;
 }
 
-:is(area[href]) {
-	order: 2;
-}
-
-:is(:link, :visited),
-ul a:is(:link, :visited) > span {
+:link,
+:visited,
+area[href],
+ul a:link > span,
+ul a:visited > span,
+ul aarea[href] > span {
 	order: 2;
 }
 
@@ -24,11 +20,7 @@ ul a:any-link > span {
 	order: 2;
 }
 
-:is(area[href]) :is(area[href]) {
-	order: 3;
-}
-
-:is(:link, :visited) :is(:link, :visited) {
+:link :link, :link :visited, :link area[href], :visited :link, :visited :visited, :visited area[href], area[href] :link, area[href] :visited, area[href] area[href] {
 	order: 3;
 }
 
@@ -40,11 +32,7 @@ ul a:any-link > span {
 	order: 4;
 }
 
-div :is(area[href]) {
-	order: 5;
-}
-
-div :is(:link, :visited) {
+div :link, div :visited, div area[href] {
 	order: 5;
 }
 
@@ -52,7 +40,7 @@ div :any-link {
 	order: 5;
 }
 
-div:is(:link, :visited) {
+div:link, div:visited, divarea[href] {
 	order: 6;
 }
 
@@ -60,11 +48,7 @@ div:any-link {
 	order: 6;
 }
 
-div:is(:is(area[href])) {
-	order: 7;
-}
-
-div:is(:is(:link, :visited)) {
+div:is(:link), div:is(:visited), div:is(area[href]) {
 	order: 7;
 }
 

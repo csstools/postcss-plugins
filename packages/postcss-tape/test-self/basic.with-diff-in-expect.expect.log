@@ -12,3 +12,6 @@ output changed :
       ^
 
 ----------------------------------------
+
+unexpected failures:
+  - basic:with-diff-in-expect
