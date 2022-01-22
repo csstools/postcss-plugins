@@ -19,6 +19,7 @@ export default [
 	'color-functional-notation',
 	'double-position-gradients',
 	'hexadecimal-alpha-notation',
+	'hwb-function',
 	'lab-function',
 	'rebeccapurple-color',
 	'blank-pseudo-class',

@@ -29,6 +29,7 @@ import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
 import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
 import postcssSelectorNot from 'postcss-selector-not';
 import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
+import postcssHWBFunction from '@csstools/postcss-hwb-function';
 
 export const packageNamesToIds = {
 	'css-blank-pseudo': 'blank-pseudo-class',
@@ -48,6 +49,7 @@ export const packageNamesToIds = {
 	'postcss-focus-within': 'focus-within-pseudo-class',
 	'postcss-font-variant': 'font-variant-property',
 	'postcss-gap-properties': 'gap-properties',
+	'postcss-hwb-function': 'hwb-function',
 	'postcss-image-set-function': 'image-set-function',
 	'postcss-initial': 'all-property',
 	'postcss-is-pseudo-class': 'is-pseudo-class',
@@ -91,6 +93,7 @@ export const pluginsById = {
 	'focus-within-pseudo-class': postcssFocusWithin,
 	'font-variant-property': postcssFontVariant,
 	'gap-properties': postcssGapProperties,
+	'hwb-function': postcssHWBFunction,
 	'has-pseudo-class': postcssHasPseudo,
 	'hexadecimal-alpha-notation': postcssColorHexAlpha,
 	'image-set-function': postcssImageSetPolyfill,

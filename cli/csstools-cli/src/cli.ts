@@ -11,6 +11,7 @@ import postcssEnvFunction from './plugins/postcss-env-function';
 import postcssFocusVisible from './plugins/postcss-focus-visible';
 import postcssFocusWithin from './plugins/postcss-focus-within';
 import postcssGapProperties from './plugins/postcss-gap-properties';
+import postcssHWBFunction from './plugins/postcss-hwb-function';
 import postcssImageSetFunction from './plugins/postcss-image-set-function';
 import postcssIsPseudoClass from './plugins/postcss-is-pseudo-class';
 import postcssLabFunction from './plugins/postcss-lab-function';
@@ -62,6 +63,9 @@ function main() {
 			return;
 		case 'postcss-gap-properties':
 			postcssGapProperties();
+			return;
+		case 'postcss-hwb-function':
+			postcssHWBFunction();
 			return;
 		case 'postcss-image-set-function':
 			postcssImageSetFunction();
@@ -115,6 +119,7 @@ function main() {
 				'  postcss-focus-visible',
 				'  postcss-focus-within',
 				'  postcss-gap-properties',
+				'  postcss-hwb-function',
 				'  postcss-image-set-function',
 				'  postcss-is-pseudo-class',
 				'  postcss-lab-function',

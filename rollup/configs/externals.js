@@ -3,6 +3,7 @@ export const externalsForCLI = [
 	'path',
 	'url',
 
+	'@csstools/postcss-hwb-function',
 	'@csstools/postcss-is-pseudo-class',
 	'autoprefixer',
 	'browserslist',
@@ -52,6 +53,7 @@ export const externalsForPlugin = [
 	/^postcss-\d\.\d$/,
 	/^postcss\/lib\/*/,
 
+	'@csstools/postcss-hwb-function',
 	'@csstools/postcss-is-pseudo-class',
 	'autoprefixer',
 	'browserslist',
