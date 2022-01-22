@@ -312,6 +312,8 @@
 
 .test-hwb-function {
 	background-color: rgba(0, 195, 255, .5);
-	-ms-flex-order: 28;
-	    order: 28;
+}
+
+.test-opacity-percent {
+	opacity: 42%;
 }

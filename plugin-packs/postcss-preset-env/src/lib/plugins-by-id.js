@@ -30,6 +30,7 @@ import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
 import postcssSelectorNot from 'postcss-selector-not';
 import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 import postcssHWBFunction from '@csstools/postcss-hwb-function';
+import postcssOpacityPercentage from 'postcss-opacity-percentage';
 
 export const packageNamesToIds = {
 	'css-blank-pseudo': 'blank-pseudo-class',
@@ -57,6 +58,7 @@ export const packageNamesToIds = {
 	'postcss-logical': 'logical-properties-and-values',
 	'postcss-media-minmax': 'media-query-ranges',
 	'postcss-nesting': 'nesting-rules',
+	'postcss-opacity-percentage': 'opacity-percentage',
 	'postcss-overflow-shorthand': 'overflow-property',
 	'postcss-page-break': 'break-properties',
 	'postcss-place': 'place-properties',
@@ -103,6 +105,7 @@ export const pluginsById = {
 	'media-query-ranges': postcssMediaMinmax,
 	'nesting-rules': postcssNesting,
 	'not-pseudo-class': postcssSelectorNot,
+	'opacity-percentage': postcssOpacityPercentage,
 	'overflow-property': postcssOverflowShorthand,
 	'overflow-wrap-property': postcssReplaceOverflowWrap,
 	'place-properties': postcssPlace,
