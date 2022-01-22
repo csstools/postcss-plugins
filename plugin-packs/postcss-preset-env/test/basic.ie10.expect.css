@@ -309,3 +309,9 @@
 	-ms-flex-order: 27;
 	    order: 27;
 }
+
+.test-hwb-function {
+	background-color: rgba(0, 195, 255, .5);
+	-ms-flex-order: 28;
+	    order: 28;
+}
