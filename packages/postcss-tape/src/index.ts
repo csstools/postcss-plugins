@@ -357,18 +357,18 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 					if (result.warnings().length || testCaseOptions.warnings) {
 						assert.strictEqual(result.warnings().length, testCaseOptions.warnings);
 					}
-				} catch (err) {
+				} catch (_) {
 					hasErrors = true;
 
 					if (emitGitHubAnnotations) {
 						console.log(formatGitHubActionAnnotation(
-							formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings, true),
+							formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings(), testCaseOptions.warnings, true),
 							'error',
 							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
 						));
 					} else {
 						failureSummary.add(testCaseLabel);
-						console.error(formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings));
+						console.error(formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings(), testCaseOptions.warnings));
 					}
 				}
 			}
