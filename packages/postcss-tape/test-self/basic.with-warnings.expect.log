@@ -31,3 +31,8 @@ unexpected or missing warnings :
 - expected 7
 
 ----------------------------------------
+
+unexpected failures:
+  - basic:with-one-missing-warning
+  - basic:with-one-unexpected-warning
+  - basic:with-multiple-warnings

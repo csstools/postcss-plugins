@@ -216,7 +216,7 @@
 	order: 22;
 }
 
-.test-any-link-pseudo-class:link,.test-any-link-pseudo-class:visited {
+.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area.test-any-link-pseudo-class[href] {
 	order: 23;
 }
 

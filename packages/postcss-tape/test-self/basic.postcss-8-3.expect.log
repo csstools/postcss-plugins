@@ -19,3 +19,6 @@ output changed :
                   ^
 
 ----------------------------------------
+
+unexpected failures:
+  - basic:postcss-8-3

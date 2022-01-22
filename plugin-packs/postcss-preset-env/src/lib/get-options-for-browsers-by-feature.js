@@ -24,6 +24,24 @@ export default function getOptionsForBrowsersByFeature(browsers, feature, cssdb)
 
 			return {};
 
+		case 'any-link-pseudo-class':
+			{
+				const hasIEOrEdge = supportedBrowsers.find((browserslistEntry) => {
+					return browserslistEntry.startsWith('ie ') || browserslistEntry.startsWith('edge ');
+				});
+
+				if (hasIEOrEdge) {
+					log('Adding area[href] fallbacks for ":any-link" support in Edge and IE.');
+					return {
+						subFeatures: {
+							areaHrefNeedsFixing: true,
+						},
+					};
+				}
+			}
+
+			return {};
+
 		default:
 			return {};
 	}

@@ -38,6 +38,12 @@ postcssTape(plugin)({
 			browsers: 'chrome >= 38'
 		}
 	},
+	'basic:ie10': {
+		message: 'supports { browsers: "ie >= 10" } usage',
+		options: {
+			browsers: 'ie >= 10'
+		}
+	},
 	'basic:ch88-ff78': {
 		message: 'uses :is pseudo for nesting with modern browsers { browsers: "chrome >= 88, firefox >= 78", stage: 0 }',
 		options: {
