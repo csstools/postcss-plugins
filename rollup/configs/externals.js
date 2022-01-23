@@ -32,7 +32,6 @@ export const externalsForCLI = [
 	'postcss-logical',
 	'postcss-media-minmax',
 	'postcss-nesting',
-	'postcss-opacity-percentage',
 	'postcss-overflow-shorthand',
 	'postcss-page-break',
 	'postcss-place',
