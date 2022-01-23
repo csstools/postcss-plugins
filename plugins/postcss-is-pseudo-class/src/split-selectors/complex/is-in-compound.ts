@@ -17,22 +17,33 @@ export function isInCompoundWithOneOtherElement(selector): boolean {
 		return false;
 	}
 
-	let isPseudo;
-	let simpleSelector;
+	let isPseudoIndex;
+	let simpleSelectorIndex;
 	if (selector.nodes[0] && selector.nodes[0].type === 'pseudo' && selector.nodes[0].value === ':is') {
-		isPseudo = selector.nodes[0];
-		simpleSelector = selector.nodes[1];
+		isPseudoIndex = 0;
+		simpleSelectorIndex = 1;
 	} else if (selector.nodes[1] && selector.nodes[1].type === 'pseudo' && selector.nodes[1].value === ':is') {
-		isPseudo = selector.nodes[1];
-		simpleSelector = selector.nodes[0];
+		isPseudoIndex = 1;
+		simpleSelectorIndex = 0;
 	}
 
-	if (!isPseudo) {
+	if (!isPseudoIndex) {
 		return false;
 	}
 
-	isPseudo.append(simpleSelector.clone());
-	selector.replaceWith(isPseudo.nodes);
+	if (!selector.nodes[simpleSelectorIndex]) {
+		return false;
+	}
+
+	if (selector.nodes[simpleSelectorIndex].type === 'selector') {
+		if (selector.nodes[simpleSelectorIndex].some((x) => x.type === 'combinator')) {
+			return false;
+		}
+	}
+
+	selector.nodes[isPseudoIndex].append(selector.nodes[simpleSelectorIndex].clone());
+	selector.nodes[isPseudoIndex].replaceWith(...selector.nodes[isPseudoIndex].nodes);
+	selector.nodes[simpleSelectorIndex].remove();
 
 	return true;
 }

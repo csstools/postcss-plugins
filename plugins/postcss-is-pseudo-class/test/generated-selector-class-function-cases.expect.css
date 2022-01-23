@@ -758,11 +758,11 @@ button {
 	order: 59;
 }
 
-.🧑🏾‍🎤.some {
+.some.🧑🏾‍🎤 {
 	order: 60;
 }
 
-.🧑🏾‍🎤.other {
+.other.🧑🏾‍🎤 {
 	order: 60;
 }
 
@@ -1054,11 +1054,11 @@ button {
 	order: 89;
 }
 
-.foo.some {
+.some.foo {
 	order: 90;
 }
 
-.foo.other {
+.other.foo {
 	order: 90;
 }
 

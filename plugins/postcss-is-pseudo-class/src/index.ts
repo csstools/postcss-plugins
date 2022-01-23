@@ -61,6 +61,11 @@ const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning'
 					rule.remove();
 				}
 			} catch (e) {
+				// Do not ignore infinite recursion errors.
+				if (e.message.indexOf('call stack size exceeded') > -1) {
+					throw e;
+				}
+
 				rule.warn(result, `Failed to parse selector "${rule.selector}"`);
 			}
 		},

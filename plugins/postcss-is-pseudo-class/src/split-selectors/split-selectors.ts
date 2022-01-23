@@ -4,7 +4,7 @@ import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-
 import { childAdjacentChild } from './complex/child-adjacent-child';
 import { isInCompoundWithOneOtherElement } from './complex/is-in-compound';
 
-export default function splitSelectors(selectors: string[], pluginOptions: { preserve?: boolean, onComplexSelector?: 'warning' | 'skip', specificityMatchingName: string }, warnFn: () => void) {
+export default function splitSelectors(selectors: string[], pluginOptions: { preserve?: boolean, onComplexSelector?: 'warning' | 'skip', specificityMatchingName: string }, warnFn: () => void, recursionDepth = 0) {
 	const specificityMatchingNameId = ':not(#' + pluginOptions.specificityMatchingName + ')';
 	const specificityMatchingNameClass = ':not(.' + pluginOptions.specificityMatchingName + ')';
 	const specificityMatchingNameTag = ':not(' + pluginOptions.specificityMatchingName + ')';
@@ -100,7 +100,8 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 			modifiedSelectorAST.walk((node) => {
 				// "childAdjacentChild" returns true|false
 				// future transforms can be chained with "||" operators.
-				childAdjacentChild(node);
+				childAdjacentChild(node) ||
+					isInCompoundWithOneOtherElement(node);
 			});
 
 			// Remove `:is` with single elements
@@ -140,9 +141,9 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 			return [selector];
 		}
 
-		if (foundNestedIs) {
+		if (foundNestedIs && recursionDepth < 10) {
 			// recursion to transform `:is(a :is(b,c))`
-			formattedResults = splitSelectors(formattedResults, pluginOptions, warnFn);
+			formattedResults = splitSelectors(formattedResults, pluginOptions, warnFn, recursionDepth + 1);
 		}
 
 		return formattedResults;
