@@ -37,6 +37,7 @@
     "css-prefers-color-scheme": "^6.0.2",
     "cssdb": "^6.0.2",
     "postcss-attribute-case-insensitive": "^5.0.0",
+    "postcss-clamp": "^3.0.0",
     "postcss-color-functional-notation": "^4.2.1",
     "postcss-color-hex-alpha": "^8.0.2",
     "postcss-color-rebeccapurple": "^7.0.2",

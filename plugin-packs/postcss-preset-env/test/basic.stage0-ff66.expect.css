@@ -204,3 +204,15 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 .test-opacity-percent {
 	opacity: 0.42;
 }
+
+.clamp-same-unit {
+	width: max(10px, min(64px, 80px));
+}
+
+.complex-clamp {
+	width: max(calc(100% - 10px), min(min(10px, 100%), max(40px, 4em)));
+}
+
+.clamp-different-units {
+	width: max(10%, min(2px, 4rem));
+}
