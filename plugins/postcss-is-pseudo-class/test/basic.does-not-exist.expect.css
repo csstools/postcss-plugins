@@ -198,46 +198,78 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 10;
 }
 
-.alpha:focus > .beta + .beta {
+.pre:is(.alpha > .beta) + :is(:focus > .beta) {
 	order: 11;
 }
 
-.alpha:focus > .beta + .two {
-	order: 11;
-}
-
-.one:focus > .two + .beta {
-	order: 11;
-}
-
-.one:focus > .two + .two {
-	order: 11;
-}
-
-.alpha > .beta ~ :focus > .beta {
+.pre :is(.alpha > .beta)+ :is(:focus > .beta) {
 	order: 12;
 }
 
-.alpha .beta > h1:not([attr*="foo-"]) {
+:is(.alpha > .beta).post + :is(:focus > .beta) {
 	order: 13;
+}
+
+:is(.alpha > .beta) .post + :is(:focus > .beta) {
+	order: 14;
+}
+
+:is(:is(.alpha ~ .delta) > .beta) + :is(:focus > .beta) {
+	order: 15;
+}
+
+.alpha:focus > .beta + .beta {
+	order: 16;
+}
+
+.alpha:focus > .beta + .two {
+	order: 16;
+}
+
+.one:focus > .two + .beta {
+	order: 16;
+}
+
+.one:focus > .two + .two {
+	order: 16;
+}
+
+:is(.alpha > .beta) ~ :is(:focus > .beta) {
+	order: 17;
+}
+
+.alpha .beta > h1:not([attr*="foo-"]) {
+	order: 18;
 }
 
 .alpha .beta > h2:not([attr*="foo-"]) {
-	order: 13;
+	order: 18;
 }
 
 .alpha .beta > h3:not([attr*="foo-"]) {
-	order: 13;
+	order: 18;
 }
 
 .alpha .beta > h4:not([attr*="foo-"]) {
-	order: 13;
+	order: 18;
 }
 
 .alpha .beta > h5:not([attr*="foo-"]) {
-	order: 13;
+	order: 18;
 }
 
 .alpha .beta > h6:not([attr*="foo-"]) {
-	order: 13;
+	order: 18;
+}
+
+.one > .two.alpha {
+	order: 19;
+}
+
+.pre.alpha:is(.one > .two) {
+	order: 20;
+}
+
+.pre .alpha:is(.one > .two) {
+	order: 21;
 }

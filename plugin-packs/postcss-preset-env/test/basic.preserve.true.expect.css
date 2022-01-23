@@ -561,6 +561,22 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	        order: 27;
 }
 
+.a.c > .b + .d {
+	-webkit-box-ordinal-group: 29;
+	-webkit-order: 28;
+	   -moz-box-ordinal-group: 29;
+	    -ms-flex-order: 28;
+	        order: 28;
+}
+
+:is(.a > .b) + :is(.c > .d) {
+	-webkit-box-ordinal-group: 29;
+	-webkit-order: 28;
+	   -moz-box-ordinal-group: 29;
+	    -ms-flex-order: 28;
+	        order: 28;
+}
+
 .test-hwb-function {
 	background-color: rgba(0, 195, 255, .5);
 	background-color: hwb(194 0% 0% / .5);

@@ -7,6 +7,12 @@ export default function getOptionsForBrowsersByFeature(browsers, feature, cssdb)
 	const supportedBrowsers = browserslist(browsers, { ignoreUnknownVersions: true });
 
 	switch (feature.id) {
+		case 'is-pseudo-class':
+			// Emit a warning to avoid making unresolved removal of `:is()` a feature.
+			// see : https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#%EF%B8%8F-known-shortcomings
+			return {
+				onComplexSelector: 'warning',
+			};
 		case 'nesting-rules':
 			{
 				// Nesting rules can transform selectors to use :is pseudo.
