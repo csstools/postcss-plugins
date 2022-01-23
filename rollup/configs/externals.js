@@ -64,6 +64,7 @@ export const externalsForPlugin = [
 	'css-prefers-color-scheme',
 	'cssdb',
 	'postcss-attribute-case-insensitive',
+	'postcss-clamp',
 	'postcss-color-functional-notation',
 	'postcss-color-hex-alpha',
 	'postcss-color-rebeccapurple',

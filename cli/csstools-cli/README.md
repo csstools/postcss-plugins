@@ -2,7 +2,8 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/csstools-cli.svg" height="20">][npm-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg" height="20">][cli-url]
-[<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+
 
 [CSSTools CLI] lets you run any plugin from [@csstools/postcss-plugins](https://github.com/csstools/postcss-plugins) from the command line.
 
@@ -190,7 +191,7 @@ Output :
 
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/@csstools/csstools-cli
 
 [postcss]: https://github.com/postcss/postcss

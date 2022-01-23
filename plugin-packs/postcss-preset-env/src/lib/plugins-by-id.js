@@ -31,12 +31,14 @@ import postcssSelectorNot from 'postcss-selector-not';
 import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 import postcssHWBFunction from '@csstools/postcss-hwb-function';
 import postcssOpacityPercentage from 'postcss-opacity-percentage';
+import postcssClamp from 'postcss-clamp';
 
 export const packageNamesToIds = {
 	'css-blank-pseudo': 'blank-pseudo-class',
 	'css-has-pseudo': 'has-pseudo-class',
 	'css-prefers-color-scheme': 'prefers-color-scheme-query',
 	'postcss-attribute-case-insensitive': 'case-insensitive-attributes',
+	'postcss-clamp': 'clamp',
 	'postcss-color-functional-notation': 'color-functional-notation',
 	'postcss-color-hex-alpha': 'hexadecimal-alpha-notation',
 	'postcss-color-rebeccapurple': 'rebeccapurple-color',
@@ -84,6 +86,7 @@ export const pluginsById = {
 	'blank-pseudo-class': postcssBlankPseudo,
 	'break-properties': postcssPageBreak,
 	'case-insensitive-attributes': postcssAttributeCaseInsensitive,
+	'clamp': postcssClamp,
 	'color-functional-notation': postcssColorFunctionalNotation,
 	'custom-media-queries': postcssCustomMedia,
 	'custom-properties': postcssCustomProperties,

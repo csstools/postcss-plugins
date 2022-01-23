@@ -285,3 +285,15 @@
 .test-opacity-percent {
 	opacity: 42%;
 }
+
+.clamp-same-unit {
+	width: clamp(10px, 64px, 80px);
+}
+
+.complex-clamp {
+	width: clamp(calc(100% - 10px), min(10px, 100%), max(40px, 4em));
+}
+
+.clamp-different-units {
+	width: clamp(10%, 2px, 4rem);
+}
