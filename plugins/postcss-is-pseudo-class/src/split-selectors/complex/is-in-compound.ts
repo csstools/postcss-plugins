@@ -1,10 +1,12 @@
 // .a:is(.b > .c)
 // equivalent to
-// .b > .a.c
+// .b > .c.a
+//
 // :is(.b > .c).a
 // equivalent to
-// .b > .a.c
-// because `:is`
+// .b > .c.a
+//
+// because `:is()` matches the final element of the selector,
 export function isInCompoundWithOneOtherElement(selector): boolean {
 	if (!selector || !selector.nodes) {
 		return false;

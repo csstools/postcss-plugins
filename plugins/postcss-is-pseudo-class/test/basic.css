@@ -73,3 +73,11 @@ foo[baz=":is(.some, .other)"], .ok {
 .alpha:is(.one > .two) {
 	order: 19;
 }
+
+.pre.alpha:is(.one > .two) {
+	order: 20;
+}
+
+.pre .alpha:is(.one > .two) {
+	order: 21;
+}
