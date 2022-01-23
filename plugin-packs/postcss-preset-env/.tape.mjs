@@ -128,6 +128,14 @@ postcssTape(plugin)({
 			autoprefixer: false
 		}
 	},
+	'basic:preserve:true': {
+		message: 'supports { preserve: true, stage: 0, browsers: "> 0%" } usage',
+		options: {
+			preserve: true,
+			stage: 0,
+			browsers: '> 0%'
+		}
+	},
 	'custom-properties': {
 		message: 'supports { browsers: "ie >= 10" } usage',
 		options: {
