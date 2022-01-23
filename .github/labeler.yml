@@ -81,6 +81,10 @@
   - plugins/postcss-font-variant/**
   - experimental/postcss-font-variant/**
 
+"plugins/postcss-font-format-keywords":
+  - plugins/postcss-font-format-keywords/**
+  - experimental/postcss-font-format-keywords/**
+
 "plugins/postcss-gap-properties":
   - plugins/postcss-gap-properties/**
   - experimental/postcss-gap-properties/**
