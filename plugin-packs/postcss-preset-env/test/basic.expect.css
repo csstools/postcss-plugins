@@ -298,6 +298,10 @@
 	order: 27;
 }
 
+.a.c > .b + .d {
+	order: 28;
+}
+
 .test-hwb-function {
 	background-color: rgba(0, 195, 255, .5);
 }

@@ -76,7 +76,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 		// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#54-include-postcss-plugin-keyword-in-packagejson
 		// Include postcss-plugin keyword in package.json
 		const packageInfo = JSON.parse(fs.readFileSync('./package.json').toString());
-		if (!packageInfo.keywords.includes('postcss-plugin')) {
+		if (!packageInfo.keywords || !packageInfo.keywords.includes('postcss-plugin')) {
 			hasErrors = true;
 
 			if (emitGitHubAnnotations) {

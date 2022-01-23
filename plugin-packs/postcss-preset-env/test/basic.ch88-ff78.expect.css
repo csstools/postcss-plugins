@@ -181,6 +181,10 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	order: 27;
 }
 
+:is(.a > .b) + :is(.c > .d) {
+	order: 28;
+}
+
 .test-hwb-function {
 	background-color: rgba(0, 195, 255, .5);
 }

@@ -149,6 +149,10 @@
 	order: 27;
 }
 
+:is(.a > .b) + :is(.c > .d) {
+	order: 28;
+}
+
 .test-hwb-function {
 	background-color: hwb(194 0% 0% / .5);
 }
