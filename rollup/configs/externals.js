@@ -77,6 +77,7 @@ export const externalsForPlugin = [
 	'postcss-focus-within',
 	'postcss-font-variant',
 	'postcss-gap-properties',
+	'postcss-ic-unit',
 	'postcss-image-set-function',
 	'postcss-initial',
 	'postcss-lab-function',

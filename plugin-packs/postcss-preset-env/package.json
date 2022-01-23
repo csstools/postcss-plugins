@@ -51,6 +51,7 @@
     "postcss-focus-within": "^5.0.3",
     "postcss-font-variant": "^5.0.0",
     "postcss-gap-properties": "^3.0.2",
+    "postcss-ic-unit": "^2.0.0",
     "postcss-image-set-function": "^4.0.4",
     "postcss-initial": "^4.0.1",
     "postcss-lab-function": "^4.0.3",

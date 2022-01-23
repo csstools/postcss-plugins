@@ -32,6 +32,7 @@ import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 import postcssHWBFunction from '@csstools/postcss-hwb-function';
 import postcssOpacityPercentage from 'postcss-opacity-percentage';
 import postcssClamp from 'postcss-clamp';
+import postcssICUnit from 'postcss-ic-unit';
 
 export const packageNamesToIds = {
 	'css-blank-pseudo': 'blank-pseudo-class',
@@ -53,6 +54,7 @@ export const packageNamesToIds = {
 	'postcss-font-variant': 'font-variant-property',
 	'postcss-gap-properties': 'gap-properties',
 	'postcss-hwb-function': 'hwb-function',
+	'postcssICUnit': 'ic-unit',
 	'postcss-image-set-function': 'image-set-function',
 	'postcss-initial': 'all-property',
 	'postcss-is-pseudo-class': 'is-pseudo-class',
@@ -101,6 +103,7 @@ export const pluginsById = {
 	'hwb-function': postcssHWBFunction,
 	'has-pseudo-class': postcssHasPseudo,
 	'hexadecimal-alpha-notation': postcssColorHexAlpha,
+	'ic-unit': postcssICUnit,
 	'image-set-function': postcssImageSetPolyfill,
 	'is-pseudo-class': postcssIsPseudoClass,
 	'lab-function': postcssLabFunction,
