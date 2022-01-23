@@ -4,7 +4,7 @@ import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-
 import { childAdjacentChild } from './complex/child-adjacent-child';
 import { isInCompoundWithOneOtherElement } from './complex/is-in-compound';
 
-export default function splitSelectors(selectors: string[], pluginOptions: { preserve?: boolean, onComplexSelector?: 'warning' | 'skip', specificityMatchingName: string }, warnFn: () => void, recursionDepth = 0) {
+export default function splitSelectors(selectors: string[], pluginOptions: { preserve?: boolean, onComplexSelector?: 'warning', specificityMatchingName: string }, warnFn: () => void, recursionDepth = 0) {
 	const specificityMatchingNameId = ':not(#' + pluginOptions.specificityMatchingName + ')';
 	const specificityMatchingNameClass = ':not(.' + pluginOptions.specificityMatchingName + ')';
 	const specificityMatchingNameTag = ':not(' + pluginOptions.specificityMatchingName + ')';
@@ -98,8 +98,6 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 
 			// Handle complex selector cases
 			modifiedSelectorAST.walk((node) => {
-				// "childAdjacentChild" returns true|false
-				// future transforms can be chained with "||" operators.
 				childAdjacentChild(node) ||
 					isInCompoundWithOneOtherElement(node);
 			});
@@ -110,17 +108,19 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 					return;
 				}
 
-				if (pseudo.nodes[0].type === 'selector' && pseudo.nodes[0].nodes.length !== 1 && pseudo.nodes[0].some((y) => y.type === 'combinator')) {
-					return;
-				}
-
 				// Warn when `:is` contains a complex selector.
 				pseudo.nodes.forEach((child) => {
-					if (child.some((grandChild) => grandChild.type === 'combinator')) {
+					if (child.type === 'selector' && child.some((grandChild) => grandChild.type === 'combinator')) {
 						warnFn();
 						hasComplexSelectors = true;
 					}
 				});
+
+				if (pseudo.nodes[0].type === 'selector' && pseudo.nodes[0].nodes) {
+					if (pseudo.nodes[0].nodes.length !== 1 && pseudo.nodes[0].some((y) => y.type === 'combinator')) {
+						return;
+					}
+				}
 
 				pseudo.replaceWith(pseudo.nodes[0]);
 			});
@@ -137,7 +137,7 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 			return modifiedSelectorAST.toString();
 		});
 
-		if (pluginOptions.onComplexSelector === 'skip' && hasComplexSelectors) {
+		if (hasComplexSelectors) {
 			return [selector];
 		}
 

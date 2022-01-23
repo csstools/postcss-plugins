@@ -19,15 +19,9 @@ postcssTape(plugin)({
 	},
 	'basic:oncomplex:warning': {
 		message: "supports basic usage with { onComplexSelector: 'warning' }",
-		warnings: -1,
+		warnings: 6,
 		options: {
 			onComplexSelector: 'warning'
-		}
-	},
-	'basic:oncomplex:skip': {
-		message: "supports basic usage with { onComplexSelector: 'skip' }",
-		options: {
-			onComplexSelector: 'skip'
 		}
 	},
 	'generated-selector-class-function-cases': {

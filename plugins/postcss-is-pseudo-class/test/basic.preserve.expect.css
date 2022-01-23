@@ -242,20 +242,12 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 12;
 }
 
-.post:is(.alpha > .beta) + :is(:focus > .beta) {
-	order: 13;
-}
-
 :is(.alpha > .beta).post + :is(:focus > .beta) {
 	order: 13;
 }
 
 :is(.alpha > .beta) .post + :is(:focus > .beta) {
 	order: 14;
-}
-
-:is(.alpha ~ .delta):focus > .beta + .beta {
-	order: 15;
 }
 
 :is(:is(.alpha ~ .delta) > .beta) + :is(:focus > .beta) {

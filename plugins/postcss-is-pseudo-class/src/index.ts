@@ -1,7 +1,7 @@
 import type { PluginCreator } from 'postcss';
 import splitSelectors from './split-selectors/split-selectors';
 
-const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning' | 'skip', specificityMatchingName?: string }> = (opts?: { preserve?: boolean, onComplexSelector?: 'warning' | 'skip', specificityMatchingName?: string }) => {
+const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning', specificityMatchingName?: string }> = (opts?: { preserve?: boolean, onComplexSelector?: 'warning', specificityMatchingName?: string }) => {
 	const options = {
 		specificityMatchingName: 'does-not-exist',
 		...(opts || {}),
@@ -29,7 +29,7 @@ const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning'
 				}
 
 				didWarn = true;
-				rule.warn(result, `Complex selectors in '${rule.selector}' will have different matching after transforming.`);
+				rule.warn(result, `Complex selectors in '${rule.selector}' can not be transformed to an equivalent selector without ':is()'.`);
 			};
 
 			try {

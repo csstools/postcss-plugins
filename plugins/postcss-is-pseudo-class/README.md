@@ -128,14 +128,6 @@ button:not(.something-random):hover {
 
 ### onComplexSelector
 
-Do not transform complex selectors in `:is` pseudo classes.
-
-```js
-postcss([
-  postcssIsPseudoClass({ onComplexSelector: 'skip' })
-]).process(YOUR_CSS /*, processOptions */);
-```
-
 Warn on complex selectors in `:is` pseudo classes.
 
 ```js
