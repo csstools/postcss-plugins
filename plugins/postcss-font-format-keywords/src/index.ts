@@ -29,7 +29,7 @@ const creator: PluginCreator<{
 
 				atRule.walkDecls('src', decl => {
 					if (!decl.value.includes('format(')) {
-						// No point on doing parsing if no format is specified
+						// No point in doing parsing if no format is specified
 						return;
 					}
 
