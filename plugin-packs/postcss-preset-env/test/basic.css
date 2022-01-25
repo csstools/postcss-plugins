@@ -179,4 +179,8 @@
 	height: 10px;
 	margin: 0.5ic 1ic .2ic;
 	padding: 2    ic;
+	content: "5 iconic";
+	content: "0.5ic";
+	color: var(--foo-5ic);
+	margin: calc(8ic+20px);
 }
