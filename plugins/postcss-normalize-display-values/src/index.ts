@@ -10,15 +10,14 @@ function transform(value) {
 	}
 
 	const values = nodes
-		.filter((list, index) => index % 2 === 0)
-		.filter((node) => node.type === 'word')
-		.map((n) => n.value.toLowerCase());
+		.filter((node) => node.type === 'word') // only display values
+		.map((node) => node.value.toLowerCase()); // to lower case
 
-	if (values.length === 0) {
+	if (values.length <= 1) {
 		return value;
 	}
 
-	const match = mappings.get(values.toString());
+	const match = mappings.get(values.join(','));
 
 	if (!match) {
 		return value;
@@ -28,7 +27,7 @@ function transform(value) {
 }
 
 const creator: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
+	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
 
 	return {
 		postcssPlugin: 'postcss-normalize-display-values',

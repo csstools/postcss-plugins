@@ -16,6 +16,7 @@
 
 .element {
   display: inline-block;
+  display: inline flow-root;
 }
 ```
 
@@ -52,10 +53,10 @@ instructions for:
 ### preserve
 
 The `preserve` option determines whether the original source
-is preserved. By default, it is not preserved.
+is preserved. By default, it is preserved.
 
 ```js
-postcssNormalizeDisplayValues({ preserve: true })
+postcssNormalizeDisplayValues({ preserve: false })
 ```
 
 ```pcss
@@ -66,8 +67,7 @@ postcssNormalizeDisplayValues({ preserve: true })
 /* becomes */
 
 .element {
-  display: inline-block;
-  display: inline flow-root;
+  display: inline-block; 
 }
 ```
 

@@ -5,10 +5,10 @@ postcssTape(plugin)({
 	basic: {
 		message: 'supports basic usage',
 	},
-	'basic:preserve-true': {
+	'basic:preserve-false': {
 		message: 'supports variables with { preserve: true } usage',
 		options: {
-			preserve: true
+			preserve: false
 		}
 	},
 });
