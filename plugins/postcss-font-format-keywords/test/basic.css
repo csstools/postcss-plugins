@@ -1,0 +1,50 @@
+@font-face {
+	font-family: 'A';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url(a) format(woff2);
+}
+
+@font-face {
+	font-family: 'B';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url(a) format(woff2), url(b) format(svg);
+}
+
+@font-face {
+	font-family: 'C';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: format(woff), format(truetype), format(opentype),
+	format(woff2), format(embedded-opentype), format(collection),
+	format(svg);
+}
+
+@Font-face {
+	font-family: 'D';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: format(woff)
+}
+
+@no-font-face {
+	font-family: 'E';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: format(woff)
+}
+
+@font-face {
+	font-family: 'F';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: format(foo)
+}
+
