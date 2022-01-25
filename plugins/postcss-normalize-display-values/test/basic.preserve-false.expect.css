@@ -1,0 +1,71 @@
+.block-flow {
+	display: block;
+}
+
+.block-flow-root {
+	display: flow-root;
+}
+
+.inline-flow {
+	display: inline;
+}
+
+.inline-flow-root {
+	display: inline-block;
+}
+
+.run-in-flow {
+	display: run-in;
+}
+
+.list-item-block-flow {
+	display: list-item;
+}
+
+.inline-flow-list-item {
+	display: inline list-item;
+}
+
+.block-flex {
+	display: flex;
+}
+
+.inline-flex {
+	display: inline-flex;
+}
+
+.block-grid {
+	display: grid;
+}
+
+.inline-grid {
+	display: inline-grid;
+}
+
+.inline-ruby {
+	display: ruby;
+}
+
+.block-table {
+	display: table;
+}
+
+.inline-table {
+	display: inline-table;
+}
+
+.table-cell-flow {
+	display: table-cell;
+}
+
+.table-caption-flow {
+	display: table-caption;
+}
+
+.ruby-base-flow {
+	display: ruby-base;
+}
+
+.ruby-text-flow {
+	display: ruby-text;
+}
