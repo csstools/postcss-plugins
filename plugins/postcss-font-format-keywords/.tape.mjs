@@ -11,10 +11,4 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
-	'basic:single-quotes': {
-		message: 'supports { singleQuotes: true } usage',
-		options: {
-			singleQuotes: true
-		}
-	},
 });

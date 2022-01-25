@@ -11,12 +11,8 @@ const keywords = [
 	'svg',
 ];
 
-const creator: PluginCreator<{
-	preserve: boolean,
-	singleQuotes: boolean
-}> = (opts?: { preserve: boolean, singleQuotes: boolean }) => {
+const creator: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
-	const singleQuotes = 'singleQuotes' in Object(opts) ? Boolean(opts.singleQuotes) : false;
 
 	return {
 		postcssPlugin: 'postcss-font-format-keywords',
@@ -48,7 +44,7 @@ const creator: PluginCreator<{
 							child.value = valueParser.stringify({
 								type: 'string',
 								value: child.value,
-								quote: singleQuotes ? '\'' : '"',
+								quote: '"',
 							} as StringNode);
 						});
 					});
