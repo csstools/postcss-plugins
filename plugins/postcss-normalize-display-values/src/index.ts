@@ -44,10 +44,12 @@ const creator: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolea
 						}
 
 						if (cache.has(value)) {
-							if (preserve) {
-								decl.cloneBefore({ value: cache.get(value) });
-							} else {
-								decl.value = cache.get(value);
+							if (decl.value !== cache.get(value)) {
+								if (preserve) {
+									decl.cloneBefore({ value: cache.get(value) });
+								} else {
+									decl.value = cache.get(value);
+								}
 							}
 
 							return;
@@ -55,10 +57,12 @@ const creator: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolea
 
 						const result = transform(value);
 
-						if (preserve) {
-							decl.cloneBefore({ value: result });
-						} else {
-							decl.value = result;
+						if (decl.value !== result) {
+							if (preserve) {
+								decl.cloneBefore( { value: result } );
+							} else {
+								decl.value = result;
+							}
 						}
 
 						cache.set(value, result);
