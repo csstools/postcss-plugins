@@ -310,6 +310,11 @@
 	    order: 27;
 }
 
+.a.c > .b + .d {
+	-ms-flex-order: 28;
+	    order: 28;
+}
+
 .test-hwb-function {
 	background-color: rgba(0, 195, 255, .5);
 }

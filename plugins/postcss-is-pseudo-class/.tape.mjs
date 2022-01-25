@@ -1,9 +1,9 @@
-module.exports = {
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import plugin from '@csstools/postcss-is-pseudo-class';
+
+postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
-		options: {
-			oncomplex: 'ignore'
-		}
 	},
 	'basic:preserve': {
 		message: "supports basic usage with { preserve: true }",
@@ -19,15 +19,9 @@ module.exports = {
 	},
 	'basic:oncomplex:warning': {
 		message: "supports basic usage with { onComplexSelector: 'warning' }",
-		warnings: 3,
+		warnings: 8,
 		options: {
 			onComplexSelector: 'warning'
-		}
-	},
-	'basic:oncomplex:skip': {
-		message: "supports basic usage with { onComplexSelector: 'skip' }",
-		options: {
-			onComplexSelector: 'skip'
 		}
 	},
 	'generated-selector-class-function-cases': {
@@ -40,4 +34,4 @@ module.exports = {
 	example: {
 		message: "minimal example",
 	},
-};
+});

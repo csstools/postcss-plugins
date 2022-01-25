@@ -1,9 +1,10 @@
 import parser from 'postcss-selector-parser';
 import { selectorSpecificity } from './specificity';
 import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
-import { childAdjacentChild } from './complex';
+import { childAdjacentChild } from './complex/child-adjacent-child';
+import { isInCompoundWithOneOtherElement } from './complex/is-in-compound';
 
-export default function splitSelectors(selectors: string[], pluginOptions: { preserve?: boolean, onComplexSelector?: 'warning' | 'skip', specificityMatchingName: string }, warnFn: () => void) {
+export default function splitSelectors(selectors: string[], pluginOptions: { preserve?: boolean, onComplexSelector?: 'warning', specificityMatchingName: string }, warnFn: () => void, recursionDepth = 0) {
 	const specificityMatchingNameId = ':not(#' + pluginOptions.specificityMatchingName + ')';
 	const specificityMatchingNameClass = ':not(.' + pluginOptions.specificityMatchingName + ')';
 	const specificityMatchingNameTag = ':not(' + pluginOptions.specificityMatchingName + ')';
@@ -17,26 +18,6 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 		const replacements = [];
 
 		const selectorAST = parser().astSync(selector);
-
-		if (pluginOptions.onComplexSelector === 'skip') {
-			let hasComplexSelectors = false;
-			selectorAST.walkPseudos((pseudo) => {
-				if (pseudo.value !== ':is' || !pseudo.nodes || !pseudo.nodes.length) {
-					return;
-				}
-				pseudo.nodes.forEach((child) => {
-					child.nodes.forEach((grandChild) => {
-						if (grandChild.type === 'combinator') {
-							hasComplexSelectors = true;
-						}
-					});
-				});
-			});
-			if (hasComplexSelectors) {
-				return [selector];
-			}
-		}
-
 		selectorAST.walkPseudos((pseudo) => {
 			if (pseudo.value !== ':is' || !pseudo.nodes || !pseudo.nodes.length) {
 				return;
@@ -111,12 +92,14 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 			results.push(result);
 		});
 
+		let hasComplexSelectors = false;
 		let formattedResults = results.map((x) => {
 			const modifiedSelectorAST = parser().astSync(x);
 
 			// Handle complex selector cases
 			modifiedSelectorAST.walk((node) => {
-				childAdjacentChild(node);
+				childAdjacentChild(node) ||
+					isInCompoundWithOneOtherElement(node);
 			});
 
 			// Remove `:is` with single elements
@@ -127,10 +110,17 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 
 				// Warn when `:is` contains a complex selector.
 				pseudo.nodes.forEach((child) => {
-					if (child.some((node) => node.type === 'combinator')) {
+					if (child.type === 'selector' && child.some((grandChild) => grandChild.type === 'combinator')) {
 						warnFn();
+						hasComplexSelectors = true;
 					}
 				});
+
+				if (pseudo.nodes[0].type === 'selector' && pseudo.nodes[0].nodes) {
+					if (pseudo.nodes[0].nodes.length !== 1 && pseudo.nodes[0].some((y) => y.type === 'combinator')) {
+						return;
+					}
+				}
 
 				pseudo.replaceWith(pseudo.nodes[0]);
 			});
@@ -147,9 +137,13 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 			return modifiedSelectorAST.toString();
 		});
 
-		if (foundNestedIs) {
+		if (hasComplexSelectors) {
+			return [selector];
+		}
+
+		if (foundNestedIs && recursionDepth < 10) {
 			// recursion to transform `:is(a :is(b,c))`
-			formattedResults = splitSelectors(formattedResults, pluginOptions, warnFn);
+			formattedResults = splitSelectors(formattedResults, pluginOptions, warnFn, recursionDepth + 1);
 		}
 
 		return formattedResults;
