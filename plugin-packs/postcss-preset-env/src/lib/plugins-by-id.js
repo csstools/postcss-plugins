@@ -32,6 +32,8 @@ import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 import postcssHWBFunction from '@csstools/postcss-hwb-function';
 import postcssOpacityPercentage from 'postcss-opacity-percentage';
 import postcssClamp from 'postcss-clamp';
+import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
+import postcssNormalizeDisplayValues from '@csstools/postcss-normalize-display-values';
 
 export const packageNamesToIds = {
 	'css-blank-pseudo': 'blank-pseudo-class',
@@ -50,6 +52,7 @@ export const packageNamesToIds = {
 	'postcss-env-function': 'environment-variables',
 	'postcss-focus-visible': 'focus-visible-pseudo-class',
 	'postcss-focus-within': 'focus-within-pseudo-class',
+	'postcss-font-format-keywords': 'font-format-keywords',
 	'postcss-font-variant': 'font-variant-property',
 	'postcss-gap-properties': 'gap-properties',
 	'postcss-hwb-function': 'hwb-function',
@@ -60,6 +63,7 @@ export const packageNamesToIds = {
 	'postcss-logical': 'logical-properties-and-values',
 	'postcss-media-minmax': 'media-query-ranges',
 	'postcss-nesting': 'nesting-rules',
+	'postcss-normalize-display-values': 'display-two-values',
 	'postcss-opacity-percentage': 'opacity-percentage',
 	'postcss-overflow-shorthand': 'overflow-property',
 	'postcss-page-break': 'break-properties',
@@ -92,10 +96,12 @@ export const pluginsById = {
 	'custom-properties': postcssCustomProperties,
 	'custom-selectors': postcssCustomSelectors,
 	'dir-pseudo-class': postcssDirPseudoClass,
+	'display-two-values': postcssNormalizeDisplayValues,
 	'double-position-gradients': postcssDoublePositionGradients,
 	'environment-variables': postcssEnvFunction,
 	'focus-visible-pseudo-class': postcssFocusVisible,
 	'focus-within-pseudo-class': postcssFocusWithin,
+	'font-format-keywords': postcssFontFormatKeywords,
 	'font-variant-property': postcssFontVariant,
 	'gap-properties': postcssGapProperties,
 	'hwb-function': postcssHWBFunction,

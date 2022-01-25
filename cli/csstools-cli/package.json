@@ -29,8 +29,10 @@
     "csstools-cli": "csstools-cli"
   },
   "dependencies": {
+    "@csstools/postcss-font-format-keywords": "^1.0.0",
     "@csstools/postcss-hwb-function": "^1.0.0",
     "@csstools/postcss-is-pseudo-class": "^1.0.0",
+    "@csstools/postcss-normalize-display-values": "^1.0.0",
     "css-blank-pseudo": "^3.0.0",
     "css-has-pseudo": "^3.0.0",
     "css-prefers-color-scheme": "^6.0.0",
