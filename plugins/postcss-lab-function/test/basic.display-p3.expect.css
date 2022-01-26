@@ -163,7 +163,7 @@
 	prop-18: color(display-p3 1.00000 0.62326 0.79886);
 }
 
-.test-wpt {
+.test-wpt-lab {
 	lab-001: rgb(0, 128, 0);
 	lab-001: color(display-p3 0.21595 0.49419 0.13153);
 	lab-002: rgb(0, 0, 0);
@@ -180,9 +180,10 @@
 	lab-007: color(display-p3 0.26152 0.52336 0.89912);
 	lab-008: rgb(0, 247, 78);
 	lab-008: color(display-p3 0.00000 1.00000 0.00000);
+}
 
+.test-wpt-lch {
 	lch-001: rgb(0, 128, 0);
-
 	lch-001: color(display-p3 0.21595 0.49419 0.13153);
 	lch-002: rgb(0, 0, 0);
 	lch-002: color(display-p3 0.00000 0.00000 0.00000);
