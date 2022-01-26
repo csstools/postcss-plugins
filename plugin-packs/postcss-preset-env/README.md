@@ -9,9 +9,17 @@
 can understand, determining the polyfills you need based on your targeted
 browsers or runtime environments.
 
-```bash
-npm install postcss-preset-env
-```
+## How does it work?
+
+[PostCSS Preset Env] is a Plugin Pack for [PostCSS]. It leverages the list of the features we keep an eye from [CSSDB][cssdb] and applies plugins, so you can use those new features without having to worry about browser support.
+
+CSSDB exposes the browser support that each feature has which can come from [Can I Use](https://caniuse.com/css-all) or from [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/all) (through [mdn/browser-compat-data](https://github.com/mdn/browser-compat-data)).
+
+However, if your site doesn't need to support older browsers you wouldn't want for certain features to be expanded, effectively increasing your CSS bundle without any real benefit. 
+
+What [PostCSS Preset Env] does is to take that support that comes from those sites and guess from a [browserlist](https://github.com/browserslist/browserslist) whether that transformation needs to happen or not. It does also pack [Autoprefixer](https://github.com/postcss/autoprefixer) within and shares the list with it so certain prefixes aren't applied unless you're going to need them given your browser support list.
+
+Here's a quick example of the syntax you can leverage by using [PostCSS Preset Env].
 
 ```pcss
 @custom-media --viewport-medium (width <= 50rem);
@@ -88,20 +96,11 @@ features and supports **all** browsers.
 [![Transform with Preset Env][readme-transform-with-preset-env-img]][readme-transform-with-preset-env-url]
 [![Style with Preset Env][readme-style-with-preset-env-img]][readme-style-with-preset-env-url]
 
-⚠️ Please note that some of the features need a companion library that makes 
+⚠️ Please note that some features need a companion library that makes 
 the feature work. While we try to avoid this requirement, there are instances
 in which this isn't possible to polyfill a new behaviour with _just_ CSS.
 
-This is the current list of features that need a client library with a link
-to the polyfill's library.
-
-* `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md)
-* `focus-visible-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-visible) / [Polyfill](https://github.com/WICG/focus-visible)
-* `focus-within-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within) / [Library](https://github.com/jsxtools/focus-within) / [Polyfill](https://github.com/jsxtools/focus-within/blob/master/README-BROWSER.md)
-* `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md)
-* `prefers-color-scheme-query`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme/README-BROWSER.md)
-
-If you want to disable these types of features, please check the [`enableClientSidePolyfills` option](#enableclientsidepolyfills).
+[See the list below](#plugins-that-need-client-library).
 
 ## Usage
 
@@ -413,6 +412,32 @@ The `debug` option enables debugging messages to stdout which should be useful t
 The `enableClientSidePolyfills` enables any feature that would need an extra browser library to be loaded into the page for it to work. Defaults to `true`.
 
 Note that manually enabling/disabling features via the "feature" option overrides this flag.
+
+## Plugins list
+
+### Plugins that need client library
+
+This is the current list of features that need a client library with a link
+to the polyfill's library.
+
+* `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md)
+* `focus-visible-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-visible) / [Polyfill](https://github.com/WICG/focus-visible)
+* `focus-within-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within) / [Library](https://github.com/jsxtools/focus-within) / [Polyfill](https://github.com/jsxtools/focus-within/blob/master/README-BROWSER.md)
+* `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md)
+* `prefers-color-scheme-query`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme/README-BROWSER.md)
+
+If you want to disable these types of features, please check the [`enableClientSidePolyfills` option](#enableclientsidepolyfills).
+
+### Plugins not affected by Browser Support
+
+Given they have no support they will always be enabled if they match by Stage:
+
+* `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md)
+* `custom-media-queries`: [Plugin](https://github.com/postcss/postcss-custom-media)
+* `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md)
+* `image-set-function`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function) 
+* `media-query-ranges`: [Plugin](https://github.com/postcss/postcss-media-minmax)
+* `nesting-rules`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting)
 
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
