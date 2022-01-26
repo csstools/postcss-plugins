@@ -7,43 +7,48 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test_with_workspaces_support:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
+      # Test node 16/17 on ubuntu
+      # Test node 16 on macos/windows
+      # Enable annotations only for node 16 + ubuntu
       matrix:
+        os: [ubuntu-latest]
         node: [16, 17]
+        include:
+        - os: macos-latest
+          node: 16
+        - os: windows-latest
+          node: 16
+        - node: 16
+          enable_annotations_for_node: true
+        - os: ubuntu-latest
+          enable_annotations_for_os: true
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2.5.1
         with:
           node-version: ${{ matrix.node }}
 
+        # Build, lint and PostCSS Tape tests must all work and pass :
+        # - with exact dependencies from package-lock.json
+        # - without requiring postinstall scripts from dependencies to run
       - run: npm ci --ignore-scripts
       - run: npm run build --workspaces --if-present
       - run: npm run lint --workspaces --if-present
+
+        # PostCSS Tape tests
       - run: npm run test --workspaces --if-present
+        env:
+          ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.enable_annotations_for_node }}
+          ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.enable_annotations_for_os }}
 
-  # Run cross platform test of the basic CLI.
-  test_cli:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2.5.1
-        with:
-          node-version: 16
-
-      - run: npm ci --ignore-scripts
-      - run: npm run build --workspaces --if-present
-
+        # CLI Tests
         # running "npm install" places the cli in node_modules/bin
       - run: npm install --ignore-scripts
-
-      - run: |
-            npm run test --workspace="@csstools/base-cli"
-            npm run test:cli --workspace="@csstools/postcss-base-plugin"
+      - run: npm run test:cli --workspace="@csstools/postcss-base-plugin"
 
   # Run Deno tests one by one
   test_deno:
