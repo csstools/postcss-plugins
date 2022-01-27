@@ -115,6 +115,11 @@
 	prop-2: lch(5% 210 285);
 }
 
+.test-multiple-colors {
+	background: linear-gradient(rgb(97, 112, 56), rgb(212, 118, 84));
+	background: linear-gradient(color(display-p3 0.39215 0.43776 0.24705), color(display-p3 0.78108 0.48084 0.35822));
+	background: linear-gradient(lab(45% -13 29), lch(60% 50 45deg));
+}
 
 .test-unparseable-lab-function {
 	background-image: lab(; );

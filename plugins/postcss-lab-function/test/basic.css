@@ -53,6 +53,9 @@
 	prop-2: lch(5% 210 285);
 }
 
+.test-multiple-colors {
+	background: linear-gradient(lab(45% -13 29), lch(60% 50 45deg));
+}
 
 .test-unparseable-lab-function {
 	background-image: lab(; );

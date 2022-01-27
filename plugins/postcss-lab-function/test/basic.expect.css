@@ -53,6 +53,9 @@
 	prop-2: rgb(0, 42, 43);
 }
 
+.test-multiple-colors {
+	background: linear-gradient(rgb(97, 112, 56), rgb(212, 118, 84));
+}
 
 .test-unparseable-lab-function {
 	background-image: lab(; );
