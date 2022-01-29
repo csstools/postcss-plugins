@@ -200,7 +200,7 @@ postcssTape(plugin)({
 			insertBefore: {
 				'lab-function': [
 					orderDetectionPlugin('before', (decl) => {
-						return decl.value.indexOf('lab(') === 0;
+						return decl.prop === 'color' && decl.value.indexOf('lab(') === 0;
 					})
 				]
 			}
@@ -216,7 +216,39 @@ postcssTape(plugin)({
 			insertBefore: {
 				'lab-function': [
 					orderDetectionPlugin('before', (decl) => {
-						return decl.value.indexOf('rgba(') === 0;
+						return decl.prop === 'color' && decl.value.indexOf('rgba(') === 0;
+					})
+				]
+			}
+		}
+	},
+	'insert:after:match-result:feature-is-run': {
+		message: 'supports { insertBefore } usage when looking for a result and the attached feature is skipped',
+		options: {
+			stage: 0,
+			browsers: [
+				'safari >= 15',
+			],
+			insertAfter: {
+				'lab-function': [
+					orderDetectionPlugin('after', (decl) => {
+						return decl.prop === 'color' && decl.value !== 'changed-this-declaration';
+					})
+				]
+			}
+		}
+	},
+	'insert:after:match-result:feature-is-skipped': {
+		message: 'supports { insertBefore } usage when looking for a result and the attached feature is skipped',
+		options: {
+			stage: 0,
+			browsers: [
+				'safari >= 15',
+			],
+			insertAfter: {
+				'lab-function': [
+					orderDetectionPlugin('after', (decl) => {
+						return decl.prop === 'color' && decl.value !== 'changed-this-declaration';
 					})
 				]
 			}
@@ -232,7 +264,7 @@ postcssTape(plugin)({
 			insertAfter: {
 				'lab-function': [
 					orderDetectionPlugin('after', (decl) => {
-						return decl.value.indexOf('lab(') === 0;
+						return decl.prop === 'color' && decl.value.indexOf('lab(') === 0;
 					})
 				]
 			}
@@ -248,7 +280,7 @@ postcssTape(plugin)({
 			insertAfter: {
 				'lab-function': [
 					orderDetectionPlugin('after', (decl) => {
-						return decl.value.indexOf('rgba(') === 0;
+						return decl.prop === 'color' && decl.value.indexOf('rgba(') === 0;
 					})
 				]
 			}
@@ -263,7 +295,7 @@ postcssTape(plugin)({
 			},
 			insertAfter: {
 				'lab-function': orderDetectionPlugin('after', (decl) => {
-					return decl.value.indexOf('rgba(') === 0;
+					return decl.prop === 'color' && decl.value.indexOf('rgba(') === 0;
 				})
 			}
 		},
