@@ -286,7 +286,7 @@ postcssTape(plugin)({
 			}
 		}
 	},
-	'insert:after:match-result:exec': {
+	'insert:after:match-result:no-array': {
 		message: 'supports { insertAfter with a single plugin, not an array } usage when looking for a result',
 		options: {
 			stage: 0,
@@ -299,7 +299,6 @@ postcssTape(plugin)({
 				})
 			}
 		},
-		expect: 'insert.after.match-result.expect.css'
 	},
 	'import': {
 		message: 'supports { importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',
