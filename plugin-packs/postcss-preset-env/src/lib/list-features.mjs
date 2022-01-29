@@ -16,6 +16,7 @@ export function listFeatures(cssdbList, options, sharedOptions) {
 	const insertAfter = Object(options.insertAfter);
 	const browsers = options.browsers;
 
+	// defaults to 0
 	const minimumVendorImplementations = clamp(
 		0, // 0 equals not setting this options
 		intOrZero(options.minimumVendorImplementations),

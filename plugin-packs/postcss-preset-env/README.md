@@ -142,8 +142,7 @@ The `stage` can be `0` (experimental) through `4` (stable), or `false`. Setting
 `stage` to `false` will disable every polyfill. Doing this would only be useful
 if you intended to exclusively use the [`features`](#features) option.
 
-Without any configuration options, [PostCSS Preset Env] enables **Stage 2**
-features.
+Default: `2`
 
 ### minimumVendorImplementations
 
@@ -154,8 +153,10 @@ This can be used to enable plugins that are available in browsers regardless of 
 postcssPresetEnv({ minimumVendorImplementations: 2 })
 ```
 
-`minimumVendorImplementations` can be `0` (no vendor has implemented it) through `3` (all major vendors).
+`minimumVendorImplementations` can be `0` (no vendor has implemented it) through `3` (all major vendors).<br>
 A value of `2` is recommended when you want to use only those features that are stable.
+
+Default: `0`
 
 ### features
 
@@ -204,7 +205,7 @@ configuration is not available.
 postcssPresetEnv({ browsers: 'last 2 versions' })
 ```
 
-If not valid browserslist configuration is specified, the
+If no valid browserslist configuration is specified, the
 [default browserslist query](https://github.com/browserslist/browserslist#queries)
 will be used.
 
