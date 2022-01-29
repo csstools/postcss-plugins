@@ -145,6 +145,18 @@ if you intended to exclusively use the [`features`](#features) option.
 Without any configuration options, [PostCSS Preset Env] enables **Stage 2**
 features.
 
+### minimumVendorImplementations
+
+The `minimumVendorImplementations` option determines which CSS features to polyfill, based their implementation status.
+This can be used to enable plugins that are available in browsers regardless of the [spec status](#stage).
+
+```js
+postcssPresetEnv({ minimumVendorImplementations: 2 })
+```
+
+`minimumVendorImplementations` can be `0` (no vendor has implemented it) through `3` (all major vendors).
+A value of `2` is recommended when you want to use only those features that are stable.
+
 ### features
 
 The `features` option enables or disables specific polyfills by ID. Passing

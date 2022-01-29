@@ -96,6 +96,13 @@ postcssTape(plugin)({
 			stage: 0
 		}
 	},
+	'basic:vendors-2': {
+		message: 'supports { minimumVendorImplementations: 2, enableClientSidePolyfills: false } usage',
+		options: {
+			minimumVendorImplementations: 2,
+			enableClientSidePolyfills: false
+		}
+	},
 	'basic:nesting:true': {
 		message: 'supports { stage: false, features: { "nesting-rules": true } } usage',
 		options: {

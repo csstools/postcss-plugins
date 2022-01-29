@@ -1,5 +1,5 @@
-import { log } from './log-helper';
-import { clientSideDocumentation } from './plugins-with-client-side';
+import { log } from './helper.mjs';
+import { clientSideDocumentation } from '../client-side-polyfills/plugins.mjs';
 
 export default function logFeaturesList(supportedFeatures, options) {
 	if (options.debug) {
