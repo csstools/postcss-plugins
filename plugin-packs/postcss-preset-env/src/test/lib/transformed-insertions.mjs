@@ -4,12 +4,12 @@ import { insertAfterKey, insertBeforeKey, insertOrderKey, pluginKey } from '../.
 
 const labFunctionFixture = {
 	'id': 'lab-function',
-	'should-exist-in-result': true,
+	'should-not-exist-in-result': true,
 };
 
 const hasPseudoFixture = {
 	'id': 'has-pseudo-class',
-	'should-exist-in-result': true,
+	'should-not-exist-in-result': true,
 };
 
 assert.deepEqual(
@@ -101,7 +101,6 @@ assert.deepEqual(
 	[
 		{
 			id: 'lab-function',
-			'should-exist-in-result': true,
 			[insertOrderKey]: 0,
 			[insertAfterKey]: true,
 		},
@@ -119,7 +118,6 @@ assert.deepEqual(
 	[
 		{
 			id: 'lab-function',
-			'should-exist-in-result': true,
 			[insertOrderKey]: 0,
 			[insertBeforeKey]: true,
 		},
@@ -139,7 +137,6 @@ assert.deepEqual(
 	[
 		{
 			id: 'lab-function',
-			'should-exist-in-result': true,
 			[insertOrderKey]: 0,
 			[insertAfterKey]: true,
 		},
@@ -159,7 +156,6 @@ assert.deepEqual(
 	[
 		{
 			id: 'lab-function',
-			'should-exist-in-result': true,
 			[insertOrderKey]: 0,
 			[insertBeforeKey]: true,
 		},
@@ -180,13 +176,11 @@ assert.deepEqual(
 	[
 		{
 			id: 'lab-function',
-			'should-exist-in-result': true,
 			[insertOrderKey]: 0,
 			[insertAfterKey]: true,
 		},
 		{
 			id: 'lab-function',
-			'should-exist-in-result': true,
 			[insertOrderKey]: 1,
 			[insertAfterKey]: true,
 		},
@@ -207,13 +201,11 @@ assert.deepEqual(
 	[
 		{
 			id: 'lab-function',
-			'should-exist-in-result': true,
 			[insertOrderKey]: 0,
 			[insertBeforeKey]: true,
 		},
 		{
 			id: 'lab-function',
-			'should-exist-in-result': true,
 			[insertOrderKey]: 1,
 			[insertBeforeKey]: true,
 		},
@@ -241,7 +233,6 @@ assert.deepEqual(
 	[
 		{
 			id: 'has-pseudo-class',
-			'should-exist-in-result': true,
 			[insertAfterKey]: true,
 			[insertOrderKey]: 0,
 		},

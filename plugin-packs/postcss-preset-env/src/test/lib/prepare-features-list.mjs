@@ -5,15 +5,15 @@ import { insertAfterKey, insertBeforeKey, insertOrderKey, pluginKey } from '../.
 const fixedList = [
 	{
 		id: 'unknown',
-		'should-exist-in-result': true,
+		'should-not-exist-in-result': true,
 	},
 	{
 		id: 'overflow-wrap-property',
-		'should-exist-in-result': true,
+		'should-not-exist-in-result': true,
 	},
 	{
 		id: 'place-properties',
-		'should-exist-in-result': true,
+		'should-not-exist-in-result': true,
 	},
 ];
 
@@ -36,7 +36,6 @@ assert.deepStrictEqual(
 		fixedList[1],
 		{
 			id: 'place-properties',
-			'should-exist-in-result': true,
 			[insertBeforeKey]: true,
 			[insertOrderKey]: 0,
 			[pluginKey]: true,
@@ -58,7 +57,6 @@ assert.deepStrictEqual(
 		fixedList[2],
 		{
 			id: 'place-properties',
-			'should-exist-in-result': true,
 			[insertAfterKey]: true,
 			[insertOrderKey]: 0,
 			[pluginKey]: true,
@@ -76,7 +74,6 @@ assert.deepStrictEqual(
 	[
 		{
 			id: 'unknown',
-			'should-exist-in-result': true,
 			[insertBeforeKey]: true,
 			[insertOrderKey]: 0,
 			[pluginKey]: true,
@@ -97,7 +94,6 @@ assert.deepStrictEqual(
 	[
 		{
 			id: 'unknown',
-			'should-exist-in-result': true,
 			[insertAfterKey]: true,
 			[insertOrderKey]: 0,
 			[pluginKey]: true,
@@ -121,7 +117,6 @@ assert.deepStrictEqual(
 		fixedList[1],
 		{
 			id: 'place-properties',
-			'should-exist-in-result': true,
 			[insertBeforeKey]: true,
 			[insertOrderKey]: 0,
 			[pluginKey]: 1,
@@ -129,7 +124,6 @@ assert.deepStrictEqual(
 		fixedList[2],
 		{
 			id: 'place-properties',
-			'should-exist-in-result': true,
 			[insertAfterKey]: true,
 			[insertOrderKey]: 0,
 			[pluginKey]: 2,

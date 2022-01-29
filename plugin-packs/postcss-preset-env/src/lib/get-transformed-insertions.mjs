@@ -31,10 +31,6 @@ export default function getTransformedInsertions(cssdbList, insertions, placemen
 		for (let i = 0; i < pluginsToInsert.length; i++) {
 			out.push({
 				id: featureId,
-				// TODO : verify current behavior.
-				// At the moment it is unclear if inserted plugins have logic around browser lists.
-				// Adding this ensures they do, which might be a breaking change.
-				...JSON.parse(JSON.stringify(cssdbFeature)), // deep copy
 				[pluginKey]: pluginsToInsert[i],
 				[insertOrderKey]: i,
 				[insertPlacementKey]: true,

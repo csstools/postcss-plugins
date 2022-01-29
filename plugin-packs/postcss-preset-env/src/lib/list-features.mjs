@@ -7,6 +7,7 @@ import { prepareFeaturesList } from './prepare-features-list.mjs';
 import { formatPolyfillableFeature, formatStagedFeature } from './format-feature.mjs';
 import { clamp } from '../util/clamp.mjs';
 import { intOrZero } from '../util/int-or-zero.mjs';
+import { insertAfterKey, insertBeforeKey } from '../own-keys/keys.mjs';
 
 export function listFeatures(cssdbList, options, sharedOptions) {
 	// initialize options
@@ -39,6 +40,10 @@ export function listFeatures(cssdbList, options, sharedOptions) {
 	// vendor implemented features (those implemented by at least N vendors)
 	const vendorImplementedFeatures = polyfillableFeatures.filter((feature) => {
 		if (minimumVendorImplementations === 0) {
+			return true;
+		}
+
+		if (feature[insertBeforeKey] || feature[insertAfterKey]) {
 			return true;
 		}
 
