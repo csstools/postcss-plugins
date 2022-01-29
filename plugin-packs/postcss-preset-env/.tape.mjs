@@ -96,9 +96,26 @@ postcssTape(plugin)({
 			stage: 0
 		}
 	},
+	'basic:vendors-1': {
+		message: 'supports { minimumVendorImplementations: 1, enableClientSidePolyfills: false } usage',
+		options: {
+			stage: 1,
+			minimumVendorImplementations: 1,
+			enableClientSidePolyfills: false
+		}
+	},
 	'basic:vendors-2': {
 		message: 'supports { minimumVendorImplementations: 2, enableClientSidePolyfills: false } usage',
 		options: {
+			stage: 1,
+			minimumVendorImplementations: 2,
+			enableClientSidePolyfills: false
+		}
+	},
+	'basic:vendors-3': {
+		message: 'supports { minimumVendorImplementations: 3, enableClientSidePolyfills: false } usage',
+		options: {
+			stage: 1,
 			minimumVendorImplementations: 2,
 			enableClientSidePolyfills: false
 		}
