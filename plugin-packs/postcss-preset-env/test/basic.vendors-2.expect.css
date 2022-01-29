@@ -109,6 +109,7 @@
 }
 
 .test-font-variant-property {
+	font-feature-settings: "smcp";
 	font-variant-caps: small-caps;
 	order: 19;
 }
@@ -286,11 +287,11 @@
 }
 
 .test-hwb-function {
-	background-color: hwb(194 0% 0% / .5);
+	background-color: rgba(0, 195, 255, .5);
 }
 
 .test-opacity-percent {
-	opacity: 42%;
+	opacity: 0.42;
 }
 
 .clamp-same-unit {

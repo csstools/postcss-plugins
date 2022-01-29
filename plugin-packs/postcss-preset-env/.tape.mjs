@@ -116,7 +116,7 @@ postcssTape(plugin)({
 		message: 'supports { minimumVendorImplementations: 3, enableClientSidePolyfills: false } usage',
 		options: {
 			stage: 1,
-			minimumVendorImplementations: 2,
+			minimumVendorImplementations: 3,
 			enableClientSidePolyfills: false
 		}
 	},
