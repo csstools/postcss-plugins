@@ -190,7 +190,7 @@ button:is(:hover, :is(:focus, :focus-within)) {
 	order: 7;
 }
 
-button:not(.does-not-exist):hover {
+button:hover:not(.does-not-exist) {
 	order: 7;
 }
 
@@ -198,7 +198,7 @@ button:not(.does-not-exist):hover {
 	order: 7;
 }
 
-button:not(.does-not-exist):focus {
+button:focus:not(.does-not-exist) {
 	order: 7;
 }
 
@@ -242,12 +242,20 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 12;
 }
 
+.post:is(.alpha > .beta) + :is(:focus > .beta) {
+	order: 13;
+}
+
 :is(.alpha > .beta).post + :is(:focus > .beta) {
 	order: 13;
 }
 
 :is(.alpha > .beta) .post + :is(:focus > .beta) {
 	order: 14;
+}
+
+:focus:is(.alpha ~ .delta) > .beta + .beta {
+	order: 15;
 }
 
 :is(:is(.alpha ~ .delta) > .beta) + :is(:focus > .beta) {
@@ -314,10 +322,42 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 19;
 }
 
+.alpha.pre:is(.one > .two) {
+	order: 20;
+}
+
 .pre.alpha:is(.one > .two) {
 	order: 20;
 }
 
 .pre .alpha:is(.one > .two) {
 	order: 21;
+}
+
+a:not(.does-not-exist) {
+	order: 22;
+}
+
+.e a {
+	order: 22;
+}
+
+.e b {
+	order: 22;
+}
+
+:is(a, .e :is(a, b)) {
+	order: 22;
+}
+
+.empty-is:not(*) {
+	order: 23;
+}
+
+.empty-is:is() {
+	order: 23;
+}
+
+.invalid-is:is {
+	order: 24;
 }

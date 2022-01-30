@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="help" href="https://drafts.csswg.org/selectors-4/#matches">
+	<link rel="stylesheet" href="/test/browser.expect.css">
+</head>
+<body>
+	<the-fixture id="fixture"></the-fixture>
+
+	<script type="module">
+		function test(cb, message) {
+			try {
+				cb();
+			} catch (e) {
+				console.warn(e);
+				throw new Error(message + ' : ' + e.message);
+			}
+		}
+
+		function assert_equals(a, b, message) {
+			if (a !== b) {
+				if (message) {
+					throw new Error(`Expected ${a} to equal ${b}, for ${message}`);
+				} else {
+					throw new Error(`Expected ${a} to equal ${b}`);
+				}
+			}
+		}
+
+		self.runTest = function runTest() {
+			return testNested() && testSpecificity() && testInvalidation();
+		}
+
+		function testNested() {
+			// https://github.com/web-platform-tests/wpt/blob/master/css/selectors/is-nested.html
+
+			fixture.innerHTML = `
+				<div id="main_a">
+					<div class="a">
+					</div>
+					<div class="b" id="b2">
+					</div>
+					<div class="c" id="c2">
+						<div class="e">
+						</div>
+						<div class="d" id="d1">
+							Yellow
+						</div>
+					</div>
+					<div class="a">
+					</div>
+					<div class="c" id="c2">
+						<div class="e" id="e1">
+							Red
+						</div>
+					</div>
+				</div>
+			`;
+
+			const red = "rgb(255, 0, 0)";
+			const yellow = "rgb(255, 255, 0)";
+
+			test(() => {
+				assert_equals(getComputedStyle(d1).color, yellow, "color");
+				assert_equals(getComputedStyle(d1).fontSize, "20px", "fontSize");
+				assert_equals(getComputedStyle(d1).width, "10px", "width");
+			}, "Test nested :is() chooses highest specificity for class outside :is().");
+
+			test(() => {
+				assert_equals(getComputedStyle(e1).color, red);
+			}, "Test nested :is() specificity for class within arguments.");
+
+			return true;
+		}
+
+		function testSpecificity() {
+			// https://github.com/web-platform-tests/wpt/blob/master/css/selectors/is-specificity.html
+
+			fixture.innerHTML = `
+				<div id="main_b">
+					<div class="b c"></div>
+					<div class="a d e"></div>
+					<div class="q r"></div>
+					<div class="p s t"></div>
+					<div id="target"></div>
+				</div>
+			`;
+
+			test(() => {
+				assert_equals(getComputedStyle(target).width, "30px", "width");
+				assert_equals(getComputedStyle(target).height, "20px", "height");
+				assert_equals(getComputedStyle(target).fontSize, "10px", "fontSize");
+			}, "Test :is() uses highest possible specificity");
+
+			return true;
+		}
+
+		function testInvalidation() {
+			// https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/is.html
+
+			fixture.innerHTML = `
+				<div id="main_c">
+					<div id="a1">
+						<div class="b" id="b1">
+							Red
+						</div>
+						<div class="c" id="c1">
+							Red
+						</div>
+						<div class="c" id="d">
+							Green
+						</div>
+						<div class="e" id="e1">
+							Green
+						</div>
+						<div class="f" id="f1">
+							Blue
+						</div>
+						<div class="g">
+							<div class="b" id="b2">
+								Blue
+								<div class="b" id="b3">
+									Red
+								</div>
+							</div>
+						</div>
+						<div class="h" id="h1">
+							Blue
+						</div>
+					</div>
+					<div class="c" id="c2">
+						<div id="a2"></div>
+						<div class="e" id="e2">
+							Red
+						</div>
+					</div>
+				</div>
+			`;
+
+			document.body.offsetTop;
+
+			var black = "rgb(0, 0, 0)";
+			var blue = "rgb(0, 0, 255)";
+			var green = "rgb(0, 128, 0)";
+			var red = "rgb(255, 0, 0)";
+			var yellow = "rgb(255, 255, 0)";
+
+			test(() => {
+				assert_equals(getComputedStyle(b1).color, yellow);
+				assert_equals(getComputedStyle(b2).color, black);
+				assert_equals(getComputedStyle(b3).color, yellow);
+				assert_equals(getComputedStyle(c1).color, black);
+				assert_equals(getComputedStyle(d).color, black);
+				assert_equals(getComputedStyle(e1).color, black);
+				assert_equals(getComputedStyle(e2).color, black);
+				assert_equals(getComputedStyle(f1).color, black);
+				assert_equals(getComputedStyle(h1).color, black);
+			}, "Preconditions.");
+
+			test(() => {
+				a1.className = "a";
+				assert_equals(getComputedStyle(b1).color, red);
+				assert_equals(getComputedStyle(b3).color, red);
+				assert_equals(getComputedStyle(c1).color, red);
+			}, "Invalidate :is() for simple selector arguments.");
+
+			test(() => {
+				a1.className = "a";
+				assert_equals(getComputedStyle(d).color, green);
+			}, "Invalidate :is() for compound selector arguments.");
+
+			test(() => {
+				a1.className = "a";
+				assert_equals(getComputedStyle(b2).color, blue);
+				assert_equals(getComputedStyle(b3).color, red);
+				assert_equals(getComputedStyle(f1).color, blue);
+			}, "Invalidate :is() for complex selector arguments.");
+
+			test(() => {
+				a1.className = "a";
+				assert_equals(getComputedStyle(e2).color, black);
+				a2.className = "a";
+				assert_equals(getComputedStyle(e2).color, red);
+			}, "Invalidate nested :is().");
+
+			test(() => {
+				a1.className = "a";
+				assert_equals(getComputedStyle(b2).color, blue);
+				assert_equals(getComputedStyle(h1).color, blue);
+			}, "Test specificity of :is().");
+
+			return true;
+		}
+	</script>
+</body>
+</html>

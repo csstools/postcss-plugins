@@ -2,10 +2,6 @@
 	order: 0;
 }
 
-.some.other {
-	order: 0;
-}
-
 .other.some {
 	order: 0;
 }
@@ -22,10 +18,6 @@
 	order: 1;
 }
 
-.some.other {
-	order: 1;
-}
-
 .other.some {
 	order: 1;
 }
@@ -39,10 +31,6 @@
 }
 
 .some.some {
-	order: 2;
-}
-
-.some.other {
 	order: 2;
 }
 
@@ -98,6 +86,22 @@
 	order: 4;
 }
 
+.some .some {
+	order: 5;
+}
+
+.some .other {
+	order: 5;
+}
+
+.other .some {
+	order: 5;
+}
+
+.other .other {
+	order: 5;
+}
+
 :is(:is(.some, .other) :is(.some, .other)) {
 	order: 5;
 }
@@ -140,6 +144,22 @@
 
 :is(.some, .other)  :is(.some, .other) {
 	order: 7;
+}
+
+.some  .some {
+	order: 8;
+}
+
+.some  .other {
+	order: 8;
+}
+
+.other  .some {
+	order: 8;
+}
+
+.other  .other {
+	order: 8;
 }
 
 :is(:is(.some, .other)  :is(.some, .other)) {
@@ -186,6 +206,22 @@
 	order: 10;
 }
 
+.some+.some {
+	order: 11;
+}
+
+.some+.other {
+	order: 11;
+}
+
+.other+.some {
+	order: 11;
+}
+
+.other+.other {
+	order: 11;
+}
+
 :is(:is(.some, .other)+:is(.some, .other)) {
 	order: 11;
 }
@@ -228,6 +264,22 @@
 
 :is(.some, .other) + :is(.some, .other) {
 	order: 13;
+}
+
+.some + .some {
+	order: 14;
+}
+
+.some + .other {
+	order: 14;
+}
+
+.other + .some {
+	order: 14;
+}
+
+.other + .other {
+	order: 14;
 }
 
 :is(:is(.some, .other) + :is(.some, .other)) {
@@ -274,6 +326,22 @@
 	order: 16;
 }
 
+.some~.some {
+	order: 17;
+}
+
+.some~.other {
+	order: 17;
+}
+
+.other~.some {
+	order: 17;
+}
+
+.other~.other {
+	order: 17;
+}
+
 :is(:is(.some, .other)~:is(.some, .other)) {
 	order: 17;
 }
@@ -316,6 +384,22 @@
 
 :is(.some, .other) ~ :is(.some, .other) {
 	order: 19;
+}
+
+.some ~ .some {
+	order: 20;
+}
+
+.some ~ .other {
+	order: 20;
+}
+
+.other ~ .some {
+	order: 20;
+}
+
+.other ~ .other {
+	order: 20;
 }
 
 :is(:is(.some, .other) ~ :is(.some, .other)) {
@@ -362,6 +446,22 @@
 	order: 22;
 }
 
+.some>.some {
+	order: 23;
+}
+
+.some>.other {
+	order: 23;
+}
+
+.other>.some {
+	order: 23;
+}
+
+.other>.other {
+	order: 23;
+}
+
 :is(:is(.some, .other)>:is(.some, .other)) {
 	order: 23;
 }
@@ -406,6 +506,22 @@
 	order: 25;
 }
 
+.some > .some {
+	order: 26;
+}
+
+.some > .other {
+	order: 26;
+}
+
+.other > .some {
+	order: 26;
+}
+
+.other > .other {
+	order: 26;
+}
+
 :is(:is(.some, .other) > :is(.some, .other)) {
 	order: 26;
 }
@@ -418,24 +534,8 @@
 	order: 27;
 }
 
-.some {
-	order: 27;
-}
-
-.other {
-	order: 27;
-}
-
 :is(.some, .other), :is(.some, .other) {
 	order: 27;
-}
-
-.some {
-	order: 28;
-}
-
-.other {
-	order: 28;
 }
 
 .some {
@@ -518,6 +618,10 @@ button :is(.some, .other) {
 	order: 34;
 }
 
+button button {
+	order: 35;
+}
+
 :is(button button) {
 	order: 35;
 }
@@ -544,6 +648,10 @@ button  :is(.some, .other) {
 
 :is(.some, .other)  button {
 	order: 37;
+}
+
+button  button {
+	order: 38;
 }
 
 :is(button  button) {
@@ -574,6 +682,10 @@ button+:is(.some, .other) {
 	order: 40;
 }
 
+button+button {
+	order: 41;
+}
+
 :is(button+button) {
 	order: 41;
 }
@@ -600,6 +712,10 @@ button + :is(.some, .other) {
 
 :is(.some, .other) + button {
 	order: 43;
+}
+
+button + button {
+	order: 44;
 }
 
 :is(button + button) {
@@ -630,6 +746,10 @@ button~:is(.some, .other) {
 	order: 46;
 }
 
+button~button {
+	order: 47;
+}
+
 :is(button~button) {
 	order: 47;
 }
@@ -656,6 +776,10 @@ button ~ :is(.some, .other) {
 
 :is(.some, .other) ~ button {
 	order: 49;
+}
+
+button ~ button {
+	order: 50;
 }
 
 :is(button ~ button) {
@@ -686,6 +810,10 @@ button>:is(.some, .other) {
 	order: 52;
 }
 
+button>button {
+	order: 53;
+}
+
 :is(button>button) {
 	order: 53;
 }
@@ -712,6 +840,10 @@ button > :is(.some, .other) {
 
 :is(.some, .other) > button {
 	order: 55;
+}
+
+button > button {
+	order: 56;
 }
 
 :is(button > button) {
@@ -814,6 +946,10 @@ button {
 	order: 64;
 }
 
+.🧑🏾‍🎤 .🧑🏾‍🎤 {
+	order: 65;
+}
+
 :is(.🧑🏾‍🎤 .🧑🏾‍🎤) {
 	order: 65;
 }
@@ -840,6 +976,10 @@ button {
 
 :is(.some, .other)  .🧑🏾‍🎤 {
 	order: 67;
+}
+
+.🧑🏾‍🎤  .🧑🏾‍🎤 {
+	order: 68;
 }
 
 :is(.🧑🏾‍🎤  .🧑🏾‍🎤) {
@@ -870,6 +1010,10 @@ button {
 	order: 70;
 }
 
+.🧑🏾‍🎤+.🧑🏾‍🎤 {
+	order: 71;
+}
+
 :is(.🧑🏾‍🎤+.🧑🏾‍🎤) {
 	order: 71;
 }
@@ -896,6 +1040,10 @@ button {
 
 :is(.some, .other) + .🧑🏾‍🎤 {
 	order: 73;
+}
+
+.🧑🏾‍🎤 + .🧑🏾‍🎤 {
+	order: 74;
 }
 
 :is(.🧑🏾‍🎤 + .🧑🏾‍🎤) {
@@ -926,6 +1074,10 @@ button {
 	order: 76;
 }
 
+.🧑🏾‍🎤~.🧑🏾‍🎤 {
+	order: 77;
+}
+
 :is(.🧑🏾‍🎤~.🧑🏾‍🎤) {
 	order: 77;
 }
@@ -952,6 +1104,10 @@ button {
 
 :is(.some, .other) ~ .🧑🏾‍🎤 {
 	order: 79;
+}
+
+.🧑🏾‍🎤 ~ .🧑🏾‍🎤 {
+	order: 80;
 }
 
 :is(.🧑🏾‍🎤 ~ .🧑🏾‍🎤) {
@@ -982,6 +1138,10 @@ button {
 	order: 82;
 }
 
+.🧑🏾‍🎤>.🧑🏾‍🎤 {
+	order: 83;
+}
+
 :is(.🧑🏾‍🎤>.🧑🏾‍🎤) {
 	order: 83;
 }
@@ -1008,6 +1168,10 @@ button {
 
 :is(.some, .other) > .🧑🏾‍🎤 {
 	order: 85;
+}
+
+.🧑🏾‍🎤 > .🧑🏾‍🎤 {
+	order: 86;
 }
 
 :is(.🧑🏾‍🎤 > .🧑🏾‍🎤) {
@@ -1054,11 +1218,11 @@ button {
 	order: 89;
 }
 
-.some.foo {
+.foo.some {
 	order: 90;
 }
 
-.other.foo {
+.foo.other {
 	order: 90;
 }
 
@@ -1066,11 +1230,11 @@ button {
 	order: 90;
 }
 
-.some.foo {
+.foo.some {
 	order: 91;
 }
 
-.other.foo {
+.foo.other {
 	order: 91;
 }
 
@@ -1110,6 +1274,10 @@ button {
 	order: 94;
 }
 
+.foo .foo {
+	order: 95;
+}
+
 :is(.foo .foo) {
 	order: 95;
 }
@@ -1136,6 +1304,10 @@ button {
 
 :is(.some, .other)  .foo {
 	order: 97;
+}
+
+.foo  .foo {
+	order: 98;
 }
 
 :is(.foo  .foo) {
@@ -1166,6 +1338,10 @@ button {
 	order: 100;
 }
 
+.foo+.foo {
+	order: 101;
+}
+
 :is(.foo+.foo) {
 	order: 101;
 }
@@ -1192,6 +1368,10 @@ button {
 
 :is(.some, .other) + .foo {
 	order: 103;
+}
+
+.foo + .foo {
+	order: 104;
 }
 
 :is(.foo + .foo) {
@@ -1222,6 +1402,10 @@ button {
 	order: 106;
 }
 
+.foo~.foo {
+	order: 107;
+}
+
 :is(.foo~.foo) {
 	order: 107;
 }
@@ -1248,6 +1432,10 @@ button {
 
 :is(.some, .other) ~ .foo {
 	order: 109;
+}
+
+.foo ~ .foo {
+	order: 110;
 }
 
 :is(.foo ~ .foo) {
@@ -1278,6 +1466,10 @@ button {
 	order: 112;
 }
 
+.foo>.foo {
+	order: 113;
+}
+
 :is(.foo>.foo) {
 	order: 113;
 }
@@ -1304,6 +1496,10 @@ button {
 
 :is(.some, .other) > .foo {
 	order: 115;
+}
+
+.foo > .foo {
+	order: 116;
 }
 
 :is(.foo > .foo) {
@@ -1406,6 +1602,10 @@ button {
 	order: 124;
 }
 
+#foo #foo {
+	order: 125;
+}
+
 :is(#foo #foo) {
 	order: 125;
 }
@@ -1432,6 +1632,10 @@ button {
 
 :is(.some, .other)  #foo {
 	order: 127;
+}
+
+#foo  #foo {
+	order: 128;
 }
 
 :is(#foo  #foo) {
@@ -1462,6 +1666,10 @@ button {
 	order: 130;
 }
 
+#foo+#foo {
+	order: 131;
+}
+
 :is(#foo+#foo) {
 	order: 131;
 }
@@ -1488,6 +1696,10 @@ button {
 
 :is(.some, .other) + #foo {
 	order: 133;
+}
+
+#foo + #foo {
+	order: 134;
 }
 
 :is(#foo + #foo) {
@@ -1518,6 +1730,10 @@ button {
 	order: 136;
 }
 
+#foo~#foo {
+	order: 137;
+}
+
 :is(#foo~#foo) {
 	order: 137;
 }
@@ -1544,6 +1760,10 @@ button {
 
 :is(.some, .other) ~ #foo {
 	order: 139;
+}
+
+#foo ~ #foo {
+	order: 140;
 }
 
 :is(#foo ~ #foo) {
@@ -1574,6 +1794,10 @@ button {
 	order: 142;
 }
 
+#foo>#foo {
+	order: 143;
+}
+
 :is(#foo>#foo) {
 	order: 143;
 }
@@ -1600,6 +1824,10 @@ button {
 
 :is(.some, .other) > #foo {
 	order: 145;
+}
+
+#foo > #foo {
+	order: 146;
 }
 
 :is(#foo > #foo) {
@@ -1702,6 +1930,10 @@ __foo :is(.some, .other) {
 	order: 154;
 }
 
+__foo __foo {
+	order: 155;
+}
+
 :is(__foo __foo) {
 	order: 155;
 }
@@ -1728,6 +1960,10 @@ __foo  :is(.some, .other) {
 
 :is(.some, .other)  __foo {
 	order: 157;
+}
+
+__foo  __foo {
+	order: 158;
 }
 
 :is(__foo  __foo) {
@@ -1758,6 +1994,10 @@ __foo+:is(.some, .other) {
 	order: 160;
 }
 
+__foo+__foo {
+	order: 161;
+}
+
 :is(__foo+__foo) {
 	order: 161;
 }
@@ -1784,6 +2024,10 @@ __foo + :is(.some, .other) {
 
 :is(.some, .other) + __foo {
 	order: 163;
+}
+
+__foo + __foo {
+	order: 164;
 }
 
 :is(__foo + __foo) {
@@ -1814,6 +2058,10 @@ __foo~:is(.some, .other) {
 	order: 166;
 }
 
+__foo~__foo {
+	order: 167;
+}
+
 :is(__foo~__foo) {
 	order: 167;
 }
@@ -1840,6 +2088,10 @@ __foo ~ :is(.some, .other) {
 
 :is(.some, .other) ~ __foo {
 	order: 169;
+}
+
+__foo ~ __foo {
+	order: 170;
 }
 
 :is(__foo ~ __foo) {
@@ -1870,6 +2122,10 @@ __foo>:is(.some, .other) {
 	order: 172;
 }
 
+__foo>__foo {
+	order: 173;
+}
+
 :is(__foo>__foo) {
 	order: 173;
 }
@@ -1896,6 +2152,10 @@ __foo > :is(.some, .other) {
 
 :is(.some, .other) > __foo {
 	order: 175;
+}
+
+__foo > __foo {
+	order: 176;
 }
 
 :is(__foo > __foo) {
@@ -1998,6 +2258,10 @@ __foo {
 	order: 184;
 }
 
+:--foo :--foo {
+	order: 185;
+}
+
 :is(:--foo :--foo) {
 	order: 185;
 }
@@ -2024,6 +2288,10 @@ __foo {
 
 :is(.some, .other)  :--foo {
 	order: 187;
+}
+
+:--foo  :--foo {
+	order: 188;
 }
 
 :is(:--foo  :--foo) {
@@ -2054,6 +2322,10 @@ __foo {
 	order: 190;
 }
 
+:--foo+:--foo {
+	order: 191;
+}
+
 :is(:--foo+:--foo) {
 	order: 191;
 }
@@ -2080,6 +2352,10 @@ __foo {
 
 :is(.some, .other) + :--foo {
 	order: 193;
+}
+
+:--foo + :--foo {
+	order: 194;
 }
 
 :is(:--foo + :--foo) {
@@ -2110,6 +2386,10 @@ __foo {
 	order: 196;
 }
 
+:--foo~:--foo {
+	order: 197;
+}
+
 :is(:--foo~:--foo) {
 	order: 197;
 }
@@ -2136,6 +2416,10 @@ __foo {
 
 :is(.some, .other) ~ :--foo {
 	order: 199;
+}
+
+:--foo ~ :--foo {
+	order: 200;
 }
 
 :is(:--foo ~ :--foo) {
@@ -2166,6 +2450,10 @@ __foo {
 	order: 202;
 }
 
+:--foo>:--foo {
+	order: 203;
+}
+
 :is(:--foo>:--foo) {
 	order: 203;
 }
@@ -2192,6 +2480,10 @@ __foo {
 
 :is(.some, .other) > :--foo {
 	order: 205;
+}
+
+:--foo > :--foo {
+	order: 206;
 }
 
 :is(:--foo > :--foo) {
@@ -2294,6 +2586,10 @@ __foo {
 	order: 214;
 }
 
+[foo="baz"] [foo="baz"] {
+	order: 215;
+}
+
 :is([foo="baz"] [foo="baz"]) {
 	order: 215;
 }
@@ -2320,6 +2616,10 @@ __foo {
 
 :is(.some, .other)  [foo="baz"] {
 	order: 217;
+}
+
+[foo="baz"]  [foo="baz"] {
+	order: 218;
 }
 
 :is([foo="baz"]  [foo="baz"]) {
@@ -2350,6 +2650,10 @@ __foo {
 	order: 220;
 }
 
+[foo="baz"]+[foo="baz"] {
+	order: 221;
+}
+
 :is([foo="baz"]+[foo="baz"]) {
 	order: 221;
 }
@@ -2376,6 +2680,10 @@ __foo {
 
 :is(.some, .other) + [foo="baz"] {
 	order: 223;
+}
+
+[foo="baz"] + [foo="baz"] {
+	order: 224;
 }
 
 :is([foo="baz"] + [foo="baz"]) {
@@ -2406,6 +2714,10 @@ __foo {
 	order: 226;
 }
 
+[foo="baz"]~[foo="baz"] {
+	order: 227;
+}
+
 :is([foo="baz"]~[foo="baz"]) {
 	order: 227;
 }
@@ -2432,6 +2744,10 @@ __foo {
 
 :is(.some, .other) ~ [foo="baz"] {
 	order: 229;
+}
+
+[foo="baz"] ~ [foo="baz"] {
+	order: 230;
 }
 
 :is([foo="baz"] ~ [foo="baz"]) {
@@ -2462,6 +2778,10 @@ __foo {
 	order: 232;
 }
 
+[foo="baz"]>[foo="baz"] {
+	order: 233;
+}
+
 :is([foo="baz"]>[foo="baz"]) {
 	order: 233;
 }
@@ -2488,6 +2808,10 @@ __foo {
 
 :is(.some, .other) > [foo="baz"] {
 	order: 235;
+}
+
+[foo="baz"] > [foo="baz"] {
+	order: 236;
 }
 
 :is([foo="baz"] > [foo="baz"]) {
@@ -2590,6 +2914,10 @@ __foo {
 	order: 244;
 }
 
+* * {
+	order: 245;
+}
+
 :is(* *) {
 	order: 245;
 }
@@ -2616,6 +2944,10 @@ __foo {
 
 :is(.some, .other)  * {
 	order: 247;
+}
+
+*  * {
+	order: 248;
 }
 
 :is(*  *) {
@@ -2646,6 +2978,10 @@ __foo {
 	order: 250;
 }
 
+*+* {
+	order: 251;
+}
+
 :is(*+*) {
 	order: 251;
 }
@@ -2672,6 +3008,10 @@ __foo {
 
 :is(.some, .other) + * {
 	order: 253;
+}
+
+* + * {
+	order: 254;
 }
 
 :is(* + *) {
@@ -2702,6 +3042,10 @@ __foo {
 	order: 256;
 }
 
+*~* {
+	order: 257;
+}
+
 :is(*~*) {
 	order: 257;
 }
@@ -2728,6 +3072,10 @@ __foo {
 
 :is(.some, .other) ~ * {
 	order: 259;
+}
+
+* ~ * {
+	order: 260;
 }
 
 :is(* ~ *) {
@@ -2758,6 +3106,10 @@ __foo {
 	order: 262;
 }
 
+*>* {
+	order: 263;
+}
+
 :is(*>*) {
 	order: 263;
 }
@@ -2784,6 +3136,10 @@ __foo {
 
 :is(.some, .other) > * {
 	order: 265;
+}
+
+* > * {
+	order: 266;
 }
 
 :is(* > *) {
@@ -2886,6 +3242,10 @@ __foo {
 	order: 274;
 }
 
+:hover :hover {
+	order: 275;
+}
+
 :is(:hover :hover) {
 	order: 275;
 }
@@ -2912,6 +3272,10 @@ __foo {
 
 :is(.some, .other)  :hover {
 	order: 277;
+}
+
+:hover  :hover {
+	order: 278;
 }
 
 :is(:hover  :hover) {
@@ -2942,6 +3306,10 @@ __foo {
 	order: 280;
 }
 
+:hover+:hover {
+	order: 281;
+}
+
 :is(:hover+:hover) {
 	order: 281;
 }
@@ -2968,6 +3336,10 @@ __foo {
 
 :is(.some, .other) + :hover {
 	order: 283;
+}
+
+:hover + :hover {
+	order: 284;
 }
 
 :is(:hover + :hover) {
@@ -2998,6 +3370,10 @@ __foo {
 	order: 286;
 }
 
+:hover~:hover {
+	order: 287;
+}
+
 :is(:hover~:hover) {
 	order: 287;
 }
@@ -3024,6 +3400,10 @@ __foo {
 
 :is(.some, .other) ~ :hover {
 	order: 289;
+}
+
+:hover ~ :hover {
+	order: 290;
 }
 
 :is(:hover ~ :hover) {
@@ -3054,6 +3434,10 @@ __foo {
 	order: 292;
 }
 
+:hover>:hover {
+	order: 293;
+}
+
 :is(:hover>:hover) {
 	order: 293;
 }
@@ -3080,6 +3464,10 @@ __foo {
 
 :is(.some, .other) > :hover {
 	order: 295;
+}
+
+:hover > :hover {
+	order: 296;
 }
 
 :is(:hover > :hover) {
@@ -3182,6 +3570,10 @@ __foo {
 	order: 304;
 }
 
+::before ::before {
+	order: 305;
+}
+
 :is(::before ::before) {
 	order: 305;
 }
@@ -3208,6 +3600,10 @@ __foo {
 
 :is(.some, .other)  ::before {
 	order: 307;
+}
+
+::before  ::before {
+	order: 308;
 }
 
 :is(::before  ::before) {
@@ -3238,6 +3634,10 @@ __foo {
 	order: 310;
 }
 
+::before+::before {
+	order: 311;
+}
+
 :is(::before+::before) {
 	order: 311;
 }
@@ -3264,6 +3664,10 @@ __foo {
 
 :is(.some, .other) + ::before {
 	order: 313;
+}
+
+::before + ::before {
+	order: 314;
 }
 
 :is(::before + ::before) {
@@ -3294,6 +3698,10 @@ __foo {
 	order: 316;
 }
 
+::before~::before {
+	order: 317;
+}
+
 :is(::before~::before) {
 	order: 317;
 }
@@ -3320,6 +3728,10 @@ __foo {
 
 :is(.some, .other) ~ ::before {
 	order: 319;
+}
+
+::before ~ ::before {
+	order: 320;
 }
 
 :is(::before ~ ::before) {
@@ -3350,6 +3762,10 @@ __foo {
 	order: 322;
 }
 
+::before>::before {
+	order: 323;
+}
+
 :is(::before>::before) {
 	order: 323;
 }
@@ -3376,6 +3792,10 @@ __foo {
 
 :is(.some, .other) > ::before {
 	order: 325;
+}
+
+::before > ::before {
+	order: 326;
 }
 
 :is(::before > ::before) {
@@ -3420,6 +3840,10 @@ __foo {
 
 :is(::before) {
 	order: 329;
+}
+
+:not(*) {
+	order: 330;
 }
 
 :is() {
