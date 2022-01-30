@@ -24,6 +24,12 @@ postcssTape(plugin)({
 			onComplexSelector: 'warning'
 		}
 	},
+	'browser': {
+		message: "prepare CSS for chrome test",
+		options: {
+			preserve: false
+		}
+	},
 	'generated-selector-class-function-cases': {
 		message: "supports generated selector class function cases",
 		warnings: 1,
