@@ -1,0 +1,21 @@
+:blank {
+	order: 1;
+}
+
+.focus-visible {
+	order: 2;
+}
+
+[focus-within] {
+	order: 3;
+}
+
+[\:has\(.a\)] {
+	order: 4;
+}
+
+@media (prefers-color-scheme: light) {
+	.b {
+		order: 5;
+	}
+}

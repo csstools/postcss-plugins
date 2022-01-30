@@ -158,6 +158,38 @@ postcssTape(plugin)({
 			preserve: true,
 			stage: 0,
 			browsers: '> 0%'
+		},
+	},
+	'client-side-polyfills:stage-1': {
+		message: 'stable client side polyfill behavior',
+		options: {
+			preserve: false,
+			stage: 1,
+			enableClientSidePolyfills: true,
+		}
+	},
+	'client-side-polyfills:stage-2': {
+		message: 'stable client side polyfill behavior',
+		options: {
+			preserve: false,
+			stage: 2,
+			enableClientSidePolyfills: true,
+		}
+	},
+	'client-side-polyfills:stage-3': {
+		message: 'stable client side polyfill behavior',
+		options: {
+			preserve: false,
+			stage: 3,
+			enableClientSidePolyfills: true,
+		}
+	},
+	'client-side-polyfills:stage-4': {
+		message: 'stable client side polyfill behavior',
+		options: {
+			preserve: false,
+			stage: 4,
+			enableClientSidePolyfills: true,
 		}
 	},
 	'custom-properties': {
