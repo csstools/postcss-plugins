@@ -31,15 +31,18 @@ const creator = opts => {
 			const altParamsColorIndex = params.replace(prefersInterfaceRegExp, prefersInterfaceColorIndexReplacer);
 			const altParamsColorDepth = params.replace(prefersInterfaceRegExp, prefersInterfaceColorDepthReplacer);
 
+			let didReplace = false;
 			if (params !== altParamsColorIndex && mediaQueries['color-index']) {
 				atRule.cloneBefore({ params: altParamsColorIndex });
+				didReplace = true;
 			}
 
 			if (params !== altParamsColorDepth && mediaQueries['color']) {
 				atRule.cloneBefore({ params: altParamsColorDepth });
+				didReplace = true;
 			}
 
-			if (!preserve) {
+			if (!preserve && didReplace) {
 				atRule.remove();
 			}
 		},
