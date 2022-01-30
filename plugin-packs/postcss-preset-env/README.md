@@ -15,9 +15,18 @@ browsers or runtime environments.
 
 CSSDB exposes the browser support that each feature has which can come from [Can I Use](https://caniuse.com/css-all) or from [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/all) (through [mdn/browser-compat-data](https://github.com/mdn/browser-compat-data)).
 
-However, if your site doesn't need to support older browsers you wouldn't want for certain features to be expanded, effectively increasing your CSS bundle without any real benefit. 
+By providing a list of browser targets for your project, plugins that aren't needed will be skipped. Over time your targets will change and by updating the settings your CSS bundle will only ever contain the needed fallbacks.
 
-What [PostCSS Preset Env] does is to take that support that comes from those sites and guess from a [browserlist](https://github.com/browserslist/browserslist) whether that transformation needs to happen or not. It does also pack [Autoprefixer](https://github.com/postcss/autoprefixer) within and shares the list with it so certain prefixes aren't applied unless you're going to need them given your browser support list.
+What [PostCSS Preset Env] does is to take that support that comes from MDN and Can I Use and guess from a [browserlist](https://github.com/browserslist/browserslist) whether those transformations are needed. It does also pack [Autoprefixer](https://github.com/postcss/autoprefixer) within and shares the list with it so certain prefixes aren't applied unless you're going to need them given your browser support list.
+
+There are some terms that might be confusing here, let's go over them:
+
+* **Browser list option**: [Browserlist](https://github.com/browserslist/browserslist) is a package that lets you create a query. For example, `chrome < 42` will give you a list of every Chrome version that has been released up to, but not including, 42.
+* **Browser support stats**: Features get introduced on browsers at certain versions. They're often visible on [MDN](https://developer.mozilla.org/en-US/) and [Can I Use](https://caniuse.com/) and let you know if can safely use a given feature or not, given the _support_ you need on your project / page.
+* **CSS Feature**: A CSS feature is often part of some spec that enables a specific feature. For example, `hwb` functional notation lets you express a given color according to its hue, whiteness, and blackness. This is part of the CSS Color 4 Spec.
+* **CSS Spec**: A Spec is a document that collects new features, what problems are they trying to solve and how it's intended to be solved (generally). This is usually an evolving document that goes over lengthy discussions between several people from different companies.
+* **Plugin**: A plugin is package that's intended (usually) to enable a new CSS Feature by leveraging PostCSS. This doesn't need to be part of any spec. An example of the latter is [PostCSS Mixins](https://github.com/postcss/postcss-mixins), a concept that existed on Less or Sass, but it's not part of any spec. This plugin plack **only** packs plugins that enable features acknowledged by the World Wide Web Consortium (W3C) which will then be implemented by browsers later.
+* **Polyfill**: A polyfill is a piece of code (usually JavaScript on the Web) used to provide modern functionality on older browsers that do not natively support it. A polyfill _should_ be indistinguishable from the native behaviour.
 
 Here's a quick example of the syntax you can leverage by using [PostCSS Preset Env].
 
