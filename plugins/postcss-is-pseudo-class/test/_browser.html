@@ -10,17 +10,6 @@
 	<the-fixture id="fixture"></the-fixture>
 
 	<script type="module">
-		function rafP(callback) {
-			return new Promise((resolve) => {
-				requestAnimationFrame(() => {
-					requestAnimationFrame(() => {
-						callback();
-						resolve();
-					});
-				});
-			});
-		}
-
 		function test(cb, message) {
 			try {
 				cb();
