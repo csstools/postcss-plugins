@@ -30,9 +30,13 @@
 			}
 		}
 
-		function assert_equals(a, b) {
+		function assert_equals(a, b, message) {
 			if (a !== b) {
-				throw new Error(`Expected ${a} to equal ${b}`);
+				if (message) {
+					throw new Error(`Expected ${a} to equal ${b}, for ${message}`);
+				} else {
+					throw new Error(`Expected ${a} to equal ${b}`);
+				}
 			}
 		}
 
@@ -70,9 +74,9 @@
 			const yellow = "rgb(255, 255, 0)";
 
 			test(() => {
-				assert_equals(getComputedStyle(d1).color, yellow);
-				assert_equals(getComputedStyle(d1).fontSize, "20px");
-				assert_equals(getComputedStyle(d1).width, "10px");
+				assert_equals(getComputedStyle(d1).color, yellow, "color");
+				assert_equals(getComputedStyle(d1).fontSize, "20px", "fontSize");
+				assert_equals(getComputedStyle(d1).width, "10px", "width");
 			}, "Test nested :is() chooses highest specificity for class outside :is().");
 
 			test(() => {
@@ -96,9 +100,9 @@
 			`;
 
 			test(() => {
-				assert_equals(getComputedStyle(target).width, "30px");
-				assert_equals(getComputedStyle(target).height, "20px");
-				assert_equals(getComputedStyle(target).fontSize, "10px");
+				assert_equals(getComputedStyle(target).width, "30px", "width");
+				assert_equals(getComputedStyle(target).height, "20px", "height");
+				assert_equals(getComputedStyle(target).fontSize, "10px", "fontSize");
 			}, "Test :is() uses highest possible specificity");
 
 			return true;

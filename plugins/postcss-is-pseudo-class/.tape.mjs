@@ -19,13 +19,19 @@ postcssTape(plugin)({
 	},
 	'basic:oncomplex:warning': {
 		message: "supports basic usage with { onComplexSelector: 'warning' }",
-		warnings: 8,
+		warnings: 11,
 		options: {
 			onComplexSelector: 'warning'
 		}
 	},
 	'browser': {
 		message: "prepare CSS for chrome test",
+		options: {
+			preserve: false
+		}
+	},
+	'complex': {
+		message: "supports complex selectors",
 		options: {
 			preserve: false
 		}

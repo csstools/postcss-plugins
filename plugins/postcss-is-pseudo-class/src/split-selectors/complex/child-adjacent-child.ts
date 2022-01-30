@@ -1,4 +1,4 @@
-// :is(.a > .b) + :is(.c > .d)
+// :-csstools-matches(.a > .b) + :-csstools-matches(.c > .d)
 // equivalent to
 // .a.c > .b + .d
 // because a adjacent elements have the same parent element.
@@ -14,7 +14,7 @@ export function childAdjacentChild(selector): boolean {
 		return false;
 	}
 
-	if (!selector.nodes[0] || selector.nodes[0].type !== 'pseudo' || selector.nodes[0].value !== ':is') {
+	if (!selector.nodes[0] || selector.nodes[0].type !== 'pseudo' || selector.nodes[0].value !== ':-csstools-matches') {
 		return false;
 	}
 
@@ -23,11 +23,11 @@ export function childAdjacentChild(selector): boolean {
 		return false;
 	}
 
-	if (!selector.nodes[2] || selector.nodes[2].type !== 'pseudo' || selector.nodes[2].value !== ':is') {
+	if (!selector.nodes[2] || selector.nodes[2].type !== 'pseudo' || selector.nodes[2].value !== ':-csstools-matches') {
 		return false;
 	}
 
-	// first `:is`
+	// first `:-csstools-matches`
 	{
 		if (!selector.nodes[0].nodes || selector.nodes[0].nodes.length !== 1) {
 			return false;
@@ -47,7 +47,7 @@ export function childAdjacentChild(selector): boolean {
 		}
 	}
 
-	// second `:is`
+	// second `:-csstools-matches`
 	{
 		if (!selector.nodes[2].nodes || selector.nodes[2].nodes.length !== 1) {
 			return false;

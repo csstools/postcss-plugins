@@ -5,7 +5,22 @@
 	width: 10px;
 }
 
-#main_a .e:is(.b+.f, .e:is(*, .c>.e, .g, *))+.d {
+#main_a .e:is(.b+.f:not(.does-not-exist))+.d {
+	color: red;
+	font-size: 20px;
+}
+
+#main_a *.e.e:not(.does-not-exist):not(.does-not-exist)+.d {
+	color: red;
+	font-size: 20px;
+}
+
+#main_a .e.e:is(.c>.e)+.d {
+	color: red;
+	font-size: 20px;
+}
+
+#main_a .e.e.g:not(.does-not-exist)+.d {
 	color: red;
 	font-size: 20px;
 }
@@ -19,7 +34,15 @@
 	color: black;
 }
 
-#main_a .e:is(.b+.f, :is(.c>.e, .g)) {
+#main_a .e:is(.b+.f) {
+	color: red;
+}
+
+#main_a .e:is(.c>.e) {
+	color: red;
+}
+
+#main_a .e.g:not(.does-not-exist) {
 	color: red;
 }
 
@@ -34,7 +57,47 @@
 	width: 10px;
 }
 
-#main_b :is(.a, .b.c + .d, .q)+ :is(* + .p, .q.r + .s, * + .t)+#target {
+#main_b .a:not(.does-not-exist):not(.does-not-exist)+ :is(* + .p:not(.does-not-exist):not(.does-not-exist))+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b .a:not(.does-not-exist):not(.does-not-exist)+ :is(.q.r + .s)+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b .a:not(.does-not-exist):not(.does-not-exist)+ :is(* + .t:not(.does-not-exist):not(.does-not-exist))+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b :is(.b.c + .d)+ :is(* + .p:not(.does-not-exist):not(.does-not-exist))+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b :is(.b.c + .d)+ :is(.q.r + .s)+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b :is(.b.c + .d)+ :is(* + .t:not(.does-not-exist):not(.does-not-exist))+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b .q:not(.does-not-exist):not(.does-not-exist)+ :is(* + .p:not(.does-not-exist):not(.does-not-exist))+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b .q:not(.does-not-exist):not(.does-not-exist)+ :is(.q.r + .s)+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b .q:not(.does-not-exist):not(.does-not-exist)+ :is(* + .t:not(.does-not-exist):not(.does-not-exist))+#target {
 	height: 20px;
 	width: 20px;
 }
@@ -69,7 +132,15 @@
 	color: black;
 }
 
-#main_c .a :is(.e+.f, .g>.b, .h) {
+#main_c .a :is(.e+.f) {
+	color: blue;
+}
+
+#main_c .a :is(.g>.b) {
+	color: blue;
+}
+
+#main_c .a .h:not(.does-not-exist) {
 	color: blue;
 }
 
@@ -90,7 +161,15 @@
 	color: black;
 }
 
-#main_c .a+:is(.b+.f, :is(.c>.e, .g)) {
+#main_c .a+:is(.b+.f) {
+	color: red;
+}
+
+#main_c .a+:is(.c>.e) {
+	color: red;
+}
+
+#main_c .a+.g:not(.does-not-exist) {
 	color: red;
 }
 

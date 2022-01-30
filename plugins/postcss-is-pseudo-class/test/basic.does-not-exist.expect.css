@@ -166,7 +166,7 @@ button:focus-within {
 	order: 7;
 }
 
-button:not(.something-random):hover {
+button:hover:not(.something-random) {
 	order: 7;
 }
 
@@ -174,7 +174,7 @@ button:not(.something-random):hover {
 	order: 7;
 }
 
-button:not(.something-random):focus {
+button:focus:not(.something-random) {
 	order: 7;
 }
 
@@ -206,7 +206,7 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 12;
 }
 
-:is(.alpha > .beta).post + :is(:focus > .beta) {
+.post:is(.alpha > .beta) + :is(:focus > .beta) {
 	order: 13;
 }
 
@@ -214,7 +214,7 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 14;
 }
 
-:is(:is(.alpha ~ .delta) > .beta) + :is(:focus > .beta) {
+:focus:is(.alpha ~ .delta) > .beta + .beta {
 	order: 15;
 }
 
@@ -266,10 +266,30 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 19;
 }
 
-.pre.alpha:is(.one > .two) {
+.alpha.pre:is(.one > .two) {
 	order: 20;
 }
 
 .pre .alpha:is(.one > .two) {
 	order: 21;
+}
+
+a:not(.something-random) {
+	order: 22;
+}
+
+.e a {
+	order: 22;
+}
+
+.e b {
+	order: 22;
+}
+
+.empty-is:not(*) {
+	order: 23;
+}
+
+.invalid-is:is {
+	order: 24;
 }

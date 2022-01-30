@@ -1,4 +1,5 @@
 import type { PluginCreator } from 'postcss';
+import complexSelectors from './split-selectors/complex';
 import splitSelectors from './split-selectors/split-selectors';
 
 const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning', specificityMatchingName?: string }> = (opts?: { preserve?: boolean, onComplexSelector?: 'warning', specificityMatchingName?: string }) => {
@@ -35,7 +36,29 @@ const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning'
 			try {
 				let didClone = false;
 				const untouched = [];
-				splitSelectors(rule.selectors, options, warnOnComplexSelector).forEach((modifiedSelector) => {
+
+				// 1. List behavior.
+				const split = splitSelectors(
+					rule.selectors,
+					{
+						specificityMatchingName: options.specificityMatchingName,
+					},
+				);
+
+				// 2. Complex selectors.
+				const resolvedComplexSelectors = complexSelectors(
+					split,
+					{
+						onComplexSelector: options.onComplexSelector,
+					},
+					warnOnComplexSelector,
+				);
+
+				// 3. Remove duplicates.
+				const uniqueResolvedComplexSelectors = Array.from(new Set(resolvedComplexSelectors));
+
+				// 4. Replace.
+				uniqueResolvedComplexSelectors.forEach((modifiedSelector) => {
 					// `::is()` is incorrect but can't be detected without parsing.
 					// It will be left as is and will eventually trigger this condition.
 					// This prevents an infinite loop.
