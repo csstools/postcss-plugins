@@ -12,7 +12,7 @@ import postcssEnvFunction from 'postcss-env-function';
 import postcssFocusVisible from 'postcss-focus-visible';
 import postcssFocusWithin from 'postcss-focus-within';
 import postcssFontVariant from 'postcss-font-variant';
-import postcssFontFamilySystemUi from '../patch/postcss-system-ui-font-family';
+import postcssFontFamilySystemUi from '../patch/postcss-system-ui-font-family.mjs';
 import postcssGapProperties from 'postcss-gap-properties';
 import postcssHasPseudo from 'css-has-pseudo';
 import postcssImageSetPolyfill from 'postcss-image-set-function';
@@ -84,41 +84,43 @@ export const idsToPackageNames = (() => {
 })();
 
 // postcss plugins ordered by id
-export const pluginsById = {
-	'all-property': postcssInitial,
-	'any-link-pseudo-class': postcssPseudoClassAnyLink,
-	'blank-pseudo-class': postcssBlankPseudo,
-	'break-properties': postcssPageBreak,
-	'case-insensitive-attributes': postcssAttributeCaseInsensitive,
-	'clamp': postcssClamp,
-	'color-functional-notation': postcssColorFunctionalNotation,
-	'custom-media-queries': postcssCustomMedia,
-	'custom-properties': postcssCustomProperties,
-	'custom-selectors': postcssCustomSelectors,
-	'dir-pseudo-class': postcssDirPseudoClass,
-	'display-two-values': postcssNormalizeDisplayValues,
-	'double-position-gradients': postcssDoublePositionGradients,
-	'environment-variables': postcssEnvFunction,
-	'focus-visible-pseudo-class': postcssFocusVisible,
-	'focus-within-pseudo-class': postcssFocusWithin,
-	'font-format-keywords': postcssFontFormatKeywords,
-	'font-variant-property': postcssFontVariant,
-	'gap-properties': postcssGapProperties,
-	'hwb-function': postcssHWBFunction,
-	'has-pseudo-class': postcssHasPseudo,
-	'hexadecimal-alpha-notation': postcssColorHexAlpha,
-	'image-set-function': postcssImageSetPolyfill,
-	'is-pseudo-class': postcssIsPseudoClass,
-	'lab-function': postcssLabFunction,
-	'logical-properties-and-values': postcssLogical,
-	'media-query-ranges': postcssMediaMinmax,
-	'nesting-rules': postcssNesting,
-	'not-pseudo-class': postcssSelectorNot,
-	'opacity-percentage': postcssOpacityPercentage,
-	'overflow-property': postcssOverflowShorthand,
-	'overflow-wrap-property': postcssReplaceOverflowWrap,
-	'place-properties': postcssPlace,
-	'prefers-color-scheme-query': postcssPrefersColorScheme,
-	'rebeccapurple-color': postcssColorRebeccapurple,
-	'system-ui-font-family': postcssFontFamilySystemUi,
-};
+export const pluginsById = new Map(
+	[
+		['all-property', postcssInitial],
+		['any-link-pseudo-class', postcssPseudoClassAnyLink],
+		['blank-pseudo-class', postcssBlankPseudo],
+		['break-properties', postcssPageBreak],
+		['case-insensitive-attributes', postcssAttributeCaseInsensitive],
+		['clamp', postcssClamp],
+		['color-functional-notation', postcssColorFunctionalNotation],
+		['custom-media-queries', postcssCustomMedia],
+		['custom-properties', postcssCustomProperties],
+		['custom-selectors', postcssCustomSelectors],
+		['dir-pseudo-class', postcssDirPseudoClass],
+		['display-two-values', postcssNormalizeDisplayValues],
+		['double-position-gradients', postcssDoublePositionGradients],
+		['environment-variables', postcssEnvFunction],
+		['focus-visible-pseudo-class', postcssFocusVisible],
+		['focus-within-pseudo-class', postcssFocusWithin],
+		['font-format-keywords', postcssFontFormatKeywords],
+		['font-variant-property', postcssFontVariant],
+		['gap-properties', postcssGapProperties],
+		['hwb-function', postcssHWBFunction],
+		['has-pseudo-class', postcssHasPseudo],
+		['hexadecimal-alpha-notation', postcssColorHexAlpha],
+		['image-set-function', postcssImageSetPolyfill],
+		['is-pseudo-class', postcssIsPseudoClass],
+		['lab-function', postcssLabFunction],
+		['logical-properties-and-values', postcssLogical],
+		['media-query-ranges', postcssMediaMinmax],
+		['nesting-rules', postcssNesting],
+		['not-pseudo-class', postcssSelectorNot],
+		['opacity-percentage', postcssOpacityPercentage],
+		['overflow-property', postcssOverflowShorthand],
+		['overflow-wrap-property', postcssReplaceOverflowWrap],
+		['place-properties', postcssPlace],
+		['prefers-color-scheme-query', postcssPrefersColorScheme],
+		['rebeccapurple-color', postcssColorRebeccapurple],
+		['system-ui-font-family', postcssFontFamilySystemUi],
+	],
+);

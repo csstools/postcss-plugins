@@ -96,6 +96,30 @@ postcssTape(plugin)({
 			stage: 0
 		}
 	},
+	'basic:vendors-1': {
+		message: 'supports { minimumVendorImplementations: 1, enableClientSidePolyfills: false } usage',
+		options: {
+			stage: 1,
+			minimumVendorImplementations: 1,
+			enableClientSidePolyfills: false
+		}
+	},
+	'basic:vendors-2': {
+		message: 'supports { minimumVendorImplementations: 2, enableClientSidePolyfills: false } usage',
+		options: {
+			stage: 1,
+			minimumVendorImplementations: 2,
+			enableClientSidePolyfills: false
+		}
+	},
+	'basic:vendors-3': {
+		message: 'supports { minimumVendorImplementations: 3, enableClientSidePolyfills: false } usage',
+		options: {
+			stage: 1,
+			minimumVendorImplementations: 3,
+			enableClientSidePolyfills: false
+		}
+	},
 	'basic:nesting:true': {
 		message: 'supports { stage: false, features: { "nesting-rules": true } } usage',
 		options: {
@@ -279,7 +303,7 @@ postcssTape(plugin)({
 			}
 		}
 	},
-	'insert:after:match-result:exec': {
+	'insert:after:match-result:no-array': {
 		message: 'supports { insertAfter with a single plugin, not an array } usage when looking for a result',
 		options: {
 			stage: 0,
@@ -292,7 +316,6 @@ postcssTape(plugin)({
 				})
 			}
 		},
-		expect: 'insert.after.match-result.expect.css'
 	},
 	'import': {
 		message: 'supports { importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',

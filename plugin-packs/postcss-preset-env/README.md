@@ -142,8 +142,30 @@ The `stage` can be `0` (experimental) through `4` (stable), or `false`. Setting
 `stage` to `false` will disable every polyfill. Doing this would only be useful
 if you intended to exclusively use the [`features`](#features) option.
 
-Without any configuration options, [PostCSS Preset Env] enables **Stage 2**
-features.
+Default: `2`
+
+### minimumVendorImplementations
+
+The `minimumVendorImplementations` option determines which CSS features to polyfill, based their implementation status.
+This can be used to enable plugins that are available in browsers regardless of the [spec status](#stage).
+
+```js
+postcssPresetEnv({ minimumVendorImplementations: 2 })
+```
+
+`minimumVendorImplementations` can be `0` (no vendor has implemented it) through `3` (all major vendors).<br>
+
+Default: `0`
+
+**Note:**
+
+When a feature has not yet been implemented by any vendor it can be considered experimental.<br>
+Even with a single implementation it might still change in the future.<br>
+Sometimes issues with a feature/specification are only discovered after it becomes available.
+
+A value of `2` is recommended when you want to use only those features that should be [stable](#stability-and-portability).
+
+Having 2 independent implementations is [a critical step in proposals becoming standards](https://www.w3.org/2021/Process-20211102/#implementation-experience) and a good indicator of a feature's stability.
 
 ### features
 
@@ -192,7 +214,7 @@ configuration is not available.
 postcssPresetEnv({ browsers: 'last 2 versions' })
 ```
 
-If not valid browserslist configuration is specified, the
+If no valid browserslist configuration is specified, the
 [default browserslist query](https://github.com/browserslist/browserslist#queries)
 will be used.
 
@@ -413,6 +435,19 @@ The `debug` option enables debugging messages to stdout which should be useful t
 The `enableClientSidePolyfills` enables any feature that would need an extra browser library to be loaded into the page for it to work. Defaults to `true`.
 
 Note that manually enabling/disabling features via the "feature" option overrides this flag.
+
+## Stability and Portability
+
+[PostCSS Preset Env] will often include very modern CSS features that are not fully ready yet.
+This gives users the chance to play around with these features and provide feedback.
+
+If the specification changes or is abandoned a new major version of the plugin will be released.
+This will require you to update your source code so that everything works as expected.
+
+To have more stability between updates of [PostCSS Preset Env] you may set `stage: 3` and/or `minimumVendorImplementations: 2`.
+
+A side effect of staying close to the standard is that you can more easily migrate your project to other tooling all together.
+
 
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test

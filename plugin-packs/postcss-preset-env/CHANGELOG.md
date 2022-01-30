@@ -10,6 +10,7 @@
 - Added `@csstools/postcss-font-format-keywords` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-font-format-keywords#readme) for usage details.
 - Added `debug` [option](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#debug) that enables extra debugging information while processing the CSS.
 - Added `enableClientSidePolyfills` [option](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#enableclientsidepolyfills) that allows you to control every single plugin that requires a browser library to fully work. Defaults to `true` so they're enabled by default.
+- Added `minimumVendorImplementations` [option](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#minimumvendorimplementations) that allows you to enable/disable plugins based on their implementation status in browsers.
 - Fix sourcemaps for `image-set()` function.
 - Updated `cssdb` to `6.0.2` (major).
 - Updated `postcss-custom-properties` to `12.1.3` (patch).
