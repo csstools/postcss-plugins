@@ -33,11 +33,11 @@ export function formatPolyfillableFeature(feature) {
 	};
 }
 
-export function formatStagedFeature(cssdbList, browsers, features, feature, sharedOptions) {
+export function formatStagedFeature(cssdbList, browsers, features, feature, sharedOptions, logger) {
 	let options;
 	let plugin;
 
-	options = getOptionsForBrowsersByFeature(browsers, feature, cssdbList);
+	options = getOptionsForBrowsersByFeature(browsers, feature, cssdbList, logger);
 
 	if (features[feature.id] === true) {
 		if (sharedOptions) {

@@ -1,18 +1,26 @@
-const logs = [];
-
-export function log(str) {
-	logs.push(str);
-}
-
-export function resetLogger() {
-	logs.length = 0;
-}
-
-export function dumpLogs(result) {
-	if (result) {
-		logs.forEach(line => result.warn(line));
+class Logger {
+	constructor() {
+		this.logs = [];
 	}
 
-	resetLogger();
+	log(str) {
+		this.logs.push(str);
+	}
+
+	resetLogger() {
+		this.logs.length = 0;
+	}
+
+	dumpLogs(result) {
+		if (result) {
+			this.logs.forEach(line => result.warn(line));
+		}
+
+		this.resetLogger();
+	}
+}
+
+export function newLogger() {
+	return new Logger();
 }
 

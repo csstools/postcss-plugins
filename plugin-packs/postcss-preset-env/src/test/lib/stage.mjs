@@ -1,90 +1,89 @@
-import { testLogger } from '../log/test-logger.mjs';
+import { newTestLogger } from '../log/test-logger.mjs';
 import { strict as assert } from 'assert';
 import { OUT_OF_RANGE_STAGE, stageFromOptions } from '../../lib/stage.mjs';
-import { dumpLogs, resetLogger } from '../../log/helper.mjs';
 
-const logger = testLogger();
+const testLogger = newTestLogger();
 
-resetLogger();
+testLogger.logger.resetLogger();
 assert.deepStrictEqual(
-	stageFromOptions({stage: 4}),
+	stageFromOptions({stage: 4}, testLogger.logger),
 	4,
 );
 
-dumpLogs(logger);
+testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
-	logger.getLogs(),
+	testLogger.getLogs(),
 	['Using features from Stage 4'],
 );
 
-resetLogger();
+testLogger.logger.resetLogger();
 assert.deepStrictEqual(
-	stageFromOptions({stage: '4'}),
+	stageFromOptions({stage: '4'}, testLogger.logger),
 	4,
 );
 
-dumpLogs(logger);
+testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
-	logger.getLogs(),
+	testLogger.getLogs(),
 	['Using features from Stage 4'],
 );
 
-resetLogger();
+testLogger.logger.resetLogger();
 assert.deepStrictEqual(
-	stageFromOptions({stage: -1}),
+	stageFromOptions({stage: -1}, testLogger.logger),
 	0,
 );
 
-dumpLogs(logger);
+testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
-	logger.getLogs(),
+	testLogger.getLogs(),
 	['Using features from Stage 0'],
 );
 
-resetLogger();
+testLogger.logger.resetLogger();
 assert.deepStrictEqual(
-	stageFromOptions({stage: false}),
+	stageFromOptions({stage: false}, testLogger.logger),
 	OUT_OF_RANGE_STAGE,
 );
 
-dumpLogs(logger);
+testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
-	logger.getLogs(),
+	testLogger.getLogs(),
 	['Stage has been disabled, features will be handled via the "features" option.'],
 );
 
-resetLogger();
+testLogger.logger.resetLogger();
 assert.deepStrictEqual(
-	stageFromOptions({stage: 'esfgdfg'}),
+	stageFromOptions({stage: 'esfgdfg'}, testLogger.logger),
 	0,
 );
 
-dumpLogs(logger);
+testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
-	logger.getLogs(),
+	testLogger.getLogs(),
 	['Using features from Stage 0'],
 );
 
-resetLogger();
+testLogger.logger.resetLogger();
 assert.deepStrictEqual(
-	stageFromOptions({}),
+	stageFromOptions({}, testLogger.logger),
 	2,
 );
 
-dumpLogs(logger);
+testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
-	logger.getLogs(),
+	testLogger.getLogs(),
 	['Using features from Stage 2 (default)'],
 );
 
-resetLogger();
+testLogger.logger.resetLogger();
 assert.deepStrictEqual(
-	stageFromOptions({stage: OUT_OF_RANGE_STAGE+2}),
+	stageFromOptions({stage: OUT_OF_RANGE_STAGE+2}, testLogger.logger),
 	OUT_OF_RANGE_STAGE,
 );
 
-dumpLogs(logger);
+testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
-	logger.getLogs(),
+	testLogger.getLogs(),
 	['Stage has been disabled, features will be handled via the "features" option.'],
 );

@@ -1,6 +1,5 @@
 import browserslist from 'browserslist';
 import { pluginHasSideEffects } from '../side-effects/plugins.mjs';
-import { log, resetLogger } from '../log/helper.mjs';
 import { featuresWithClientSide } from '../client-side-polyfills/plugins.mjs';
 import { stageFromOptions } from './stage.mjs';
 import { prepareFeaturesList } from './prepare-features-list.mjs';
@@ -9,7 +8,7 @@ import { clamp } from '../util/clamp.mjs';
 import { intOrZero } from '../util/int-or-zero.mjs';
 import { insertAfterKey, insertBeforeKey } from '../own-keys/keys.mjs';
 
-export function listFeatures(cssdbList, options, sharedOptions) {
+export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	// initialize options
 	const features = Object(options.features);
 	const enableClientSidePolyfills = 'enableClientSidePolyfills' in options ? options.enableClientSidePolyfills : true;
@@ -24,13 +23,11 @@ export function listFeatures(cssdbList, options, sharedOptions) {
 		3, // There are currently only 3 vendors that are tracked (Blink, Webkit, Gecko)
 	);
 
-	resetLogger();
-
 	if (minimumVendorImplementations > 0) {
-		log(`Using features with ${minimumVendorImplementations} or more vendor implementations`);
+		logger.log(`Using features with ${minimumVendorImplementations} or more vendor implementations`);
 	}
 
-	const stage = stageFromOptions(options);
+	const stage = stageFromOptions(options, logger);
 
 	// TODO : remove this hack in the next major
 	// see : https://github.com/csstools/cssdb/pull/78
@@ -65,7 +62,7 @@ export function listFeatures(cssdbList, options, sharedOptions) {
 			return true;
 		}
 
-		log(`  ${feature.id} with ${feature.vendors_implementations} vendor implementations has been disabled`);
+		logger.log(`  ${feature.id} with ${feature.vendors_implementations} vendor implementations has been disabled`);
 		return false;
 	});
 
@@ -78,20 +75,20 @@ export function listFeatures(cssdbList, options, sharedOptions) {
 		const isAllowedFeature = features[feature.id] ? features[feature.id] : isAllowedStage && isAllowedByType;
 
 		if (isDisabled) {
-			log(`  ${feature.id} has been disabled by options`);
+			logger.log(`  ${feature.id} has been disabled by options`);
 		} else if (!isAllowedStage) {
 			if (isAllowedFeature) {
-				log(`  ${feature.id} has been enabled by options`);
+				logger.log(`  ${feature.id} has been enabled by options`);
 			} else {
-				log(`  ${feature.id} with stage ${feature.stage} has been disabled`);
+				logger.log(`  ${feature.id} with stage ${feature.stage} has been disabled`);
 			}
 		} else if (!isAllowedByType) {
-			log(`  ${feature.id} has been disabled by "enableClientSidePolyfills: false".`);
+			logger.log(`  ${feature.id} has been disabled by "enableClientSidePolyfills: false".`);
 		}
 
 		return isAllowedFeature;
 	}).map((feature) => {
-		return formatStagedFeature(cssdbList, browsers, features, feature, sharedOptions);
+		return formatStagedFeature(cssdbList, browsers, features, feature, sharedOptions, logger);
 	});
 
 	// browsers supported by the configuration
@@ -119,7 +116,7 @@ export function listFeatures(cssdbList, options, sharedOptions) {
 		});
 
 		if (!needsPolyfill) {
-			log(`${feature.id} disabled due to browser support`);
+			logger.log(`${feature.id} disabled due to browser support`);
 		}
 
 		return needsPolyfill;
