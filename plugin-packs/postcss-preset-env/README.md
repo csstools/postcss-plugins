@@ -19,7 +19,7 @@ By providing a list of browser targets for your project, plugins that aren't nee
 
 What [PostCSS Preset Env] does is to take the support data that comes from MDN and Can I Use and determine from a [browserlist](https://github.com/browserslist/browserslist) whether those transformations are needed. It also packs [Autoprefixer](https://github.com/postcss/autoprefixer) within and shares the list with it, so prefixes are only applied when you're going to need them given your browser support list.
 
-There are some terms that might be confusing here, let's go over them:
+Glossary:
 
 * **Browser list option**: [Browserlist](https://github.com/browserslist/browserslist) is a package that lets you create a query. For example, `chrome < 42` will give you a list of every Chrome version that has been released up to, but not including, 42.
 * **Browser support stats**: Features get introduced on browsers at certain versions. They're often visible on [MDN](https://developer.mozilla.org/en-US/) and [Can I Use](https://caniuse.com/) and let you know if can safely use a given feature or not, given the _support_ you need on your project / page.
