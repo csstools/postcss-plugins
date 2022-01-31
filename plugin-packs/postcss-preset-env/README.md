@@ -17,7 +17,7 @@ CSSDB exposes the browser support that each feature has which can come from [Can
 
 By providing a list of browser targets for your project, plugins that aren't needed will be skipped. Over time your targets might change and by updating the settings your CSS bundle will only ever contain the needed fallbacks.
 
-What [PostCSS Preset Env] does is to take that support that comes from MDN and Can I Use and guess from a [browserlist](https://github.com/browserslist/browserslist) whether those transformations are needed. It does also pack [Autoprefixer](https://github.com/postcss/autoprefixer) within and shares the list with it so certain prefixes aren't applied unless you're going to need them given your browser support list.
+What [PostCSS Preset Env] does is to take the support data that comes from MDN and Can I Use and determine from a [browserlist](https://github.com/browserslist/browserslist) whether those transformations are needed. It also packs [Autoprefixer](https://github.com/postcss/autoprefixer) within and shares the list with it, so prefixes are only applied when you're going to need them given your browser support list.
 
 There are some terms that might be confusing here, let's go over them:
 
