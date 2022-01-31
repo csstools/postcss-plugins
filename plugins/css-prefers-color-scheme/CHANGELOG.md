@@ -1,6 +1,6 @@
 # Changes to Prefers Color Scheme
 
-### Unreleased (patch)
+### 6.0.3 (January 31, 2022)
 
 - Fix `preserve: false` option.
 
