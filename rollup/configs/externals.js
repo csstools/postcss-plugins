@@ -3,8 +3,10 @@ export const externalsForCLI = [
 	'path',
 	'url',
 
+	'@csstools/postcss-font-format-keywords',
 	'@csstools/postcss-hwb-function',
 	'@csstools/postcss-is-pseudo-class',
+	'@csstools/postcss-normalize-display-values',
 	'autoprefixer',
 	'browserslist',
 	'caniuse-lite',
@@ -53,8 +55,10 @@ export const externalsForPlugin = [
 	/^postcss-\d\.\d$/,
 	/^postcss\/lib\/*/,
 
+	'@csstools/postcss-font-format-keywords',
 	'@csstools/postcss-hwb-function',
 	'@csstools/postcss-is-pseudo-class',
+	'@csstools/postcss-normalize-display-values',
 	'autoprefixer',
 	'browserslist',
 	'caniuse-lite',

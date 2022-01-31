@@ -96,6 +96,30 @@ postcssTape(plugin)({
 			stage: 0
 		}
 	},
+	'basic:vendors-1': {
+		message: 'supports { minimumVendorImplementations: 1, enableClientSidePolyfills: false } usage',
+		options: {
+			stage: 1,
+			minimumVendorImplementations: 1,
+			enableClientSidePolyfills: false
+		}
+	},
+	'basic:vendors-2': {
+		message: 'supports { minimumVendorImplementations: 2, enableClientSidePolyfills: false } usage',
+		options: {
+			stage: 1,
+			minimumVendorImplementations: 2,
+			enableClientSidePolyfills: false
+		}
+	},
+	'basic:vendors-3': {
+		message: 'supports { minimumVendorImplementations: 3, enableClientSidePolyfills: false } usage',
+		options: {
+			stage: 1,
+			minimumVendorImplementations: 3,
+			enableClientSidePolyfills: false
+		}
+	},
 	'basic:nesting:true': {
 		message: 'supports { stage: false, features: { "nesting-rules": true } } usage',
 		options: {
@@ -134,6 +158,38 @@ postcssTape(plugin)({
 			preserve: true,
 			stage: 0,
 			browsers: '> 0%'
+		},
+	},
+	'client-side-polyfills:stage-1': {
+		message: 'stable client side polyfill behavior',
+		options: {
+			preserve: false,
+			stage: 1,
+			enableClientSidePolyfills: true,
+		}
+	},
+	'client-side-polyfills:stage-2': {
+		message: 'stable client side polyfill behavior',
+		options: {
+			preserve: false,
+			stage: 2,
+			enableClientSidePolyfills: true,
+		}
+	},
+	'client-side-polyfills:stage-3': {
+		message: 'stable client side polyfill behavior',
+		options: {
+			preserve: false,
+			stage: 3,
+			enableClientSidePolyfills: true,
+		}
+	},
+	'client-side-polyfills:stage-4': {
+		message: 'stable client side polyfill behavior',
+		options: {
+			preserve: false,
+			stage: 4,
+			enableClientSidePolyfills: true,
 		}
 	},
 	'custom-properties': {
@@ -193,7 +249,7 @@ postcssTape(plugin)({
 			insertBefore: {
 				'lab-function': [
 					orderDetectionPlugin('before', (decl) => {
-						return decl.value.indexOf('lab(') === 0;
+						return decl.prop === 'color' && decl.value.indexOf('lab(') === 0;
 					})
 				]
 			}
@@ -209,7 +265,39 @@ postcssTape(plugin)({
 			insertBefore: {
 				'lab-function': [
 					orderDetectionPlugin('before', (decl) => {
-						return decl.value.indexOf('rgba(') === 0;
+						return decl.prop === 'color' && decl.value.indexOf('rgba(') === 0;
+					})
+				]
+			}
+		}
+	},
+	'insert:after:match-result:feature-is-run': {
+		message: 'supports { insertBefore } usage when looking for a result and the attached feature is skipped',
+		options: {
+			stage: 0,
+			browsers: [
+				'safari >= 15',
+			],
+			insertAfter: {
+				'lab-function': [
+					orderDetectionPlugin('after', (decl) => {
+						return decl.prop === 'color' && decl.value !== 'changed-this-declaration';
+					})
+				]
+			}
+		}
+	},
+	'insert:after:match-result:feature-is-skipped': {
+		message: 'supports { insertBefore } usage when looking for a result and the attached feature is skipped',
+		options: {
+			stage: 0,
+			browsers: [
+				'safari >= 15',
+			],
+			insertAfter: {
+				'lab-function': [
+					orderDetectionPlugin('after', (decl) => {
+						return decl.prop === 'color' && decl.value !== 'changed-this-declaration';
 					})
 				]
 			}
@@ -225,7 +313,7 @@ postcssTape(plugin)({
 			insertAfter: {
 				'lab-function': [
 					orderDetectionPlugin('after', (decl) => {
-						return decl.value.indexOf('lab(') === 0;
+						return decl.prop === 'color' && decl.value.indexOf('lab(') === 0;
 					})
 				]
 			}
@@ -241,13 +329,13 @@ postcssTape(plugin)({
 			insertAfter: {
 				'lab-function': [
 					orderDetectionPlugin('after', (decl) => {
-						return decl.value.indexOf('rgba(') === 0;
+						return decl.prop === 'color' && decl.value.indexOf('rgba(') === 0;
 					})
 				]
 			}
 		}
 	},
-	'insert:after:match-result:exec': {
+	'insert:after:match-result:no-array': {
 		message: 'supports { insertAfter with a single plugin, not an array } usage when looking for a result',
 		options: {
 			stage: 0,
@@ -256,11 +344,10 @@ postcssTape(plugin)({
 			},
 			insertAfter: {
 				'lab-function': orderDetectionPlugin('after', (decl) => {
-					return decl.value.indexOf('rgba(') === 0;
+					return decl.prop === 'color' && decl.value.indexOf('rgba(') === 0;
 				})
 			}
 		},
-		expect: 'insert.after.match-result.expect.css'
 	},
 	'import': {
 		message: 'supports { importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',

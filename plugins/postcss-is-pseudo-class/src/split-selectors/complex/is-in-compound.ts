@@ -1,12 +1,12 @@
-// .a:is(.b > .c)
+// .a:-csstools-matches(.b > .c)
 // equivalent to
 // .b > .c.a
 //
-// :is(.b > .c).a
+// :-csstools-matches(.b > .c).a
 // equivalent to
 // .b > .c.a
 //
-// because `:is()` matches the final element of the selector,
+// because `:-csstools-matches()` matches the final element of the selector,
 export function isInCompoundWithOneOtherElement(selector): boolean {
 	if (!selector || !selector.nodes) {
 		return false;
@@ -21,10 +21,10 @@ export function isInCompoundWithOneOtherElement(selector): boolean {
 
 	let isPseudoIndex;
 	let simpleSelectorIndex;
-	if (selector.nodes[0] && selector.nodes[0].type === 'pseudo' && selector.nodes[0].value === ':is') {
+	if (selector.nodes[0] && selector.nodes[0].type === 'pseudo' && selector.nodes[0].value === ':-csstools-matches') {
 		isPseudoIndex = 0;
 		simpleSelectorIndex = 1;
-	} else if (selector.nodes[1] && selector.nodes[1].type === 'pseudo' && selector.nodes[1].value === ':is') {
+	} else if (selector.nodes[1] && selector.nodes[1].type === 'pseudo' && selector.nodes[1].value === ':-csstools-matches') {
 		isPseudoIndex = 1;
 		simpleSelectorIndex = 0;
 	}

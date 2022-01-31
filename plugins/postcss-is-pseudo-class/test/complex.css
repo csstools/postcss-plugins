@@ -1,0 +1,281 @@
+/*
+const out = [];
+cartesianProduct([' ', '+', '>', '~'], [' ', '+', '>', '~'], [' ', '+', '>', '~']).forEach((x, index) => {
+	out.push(`
+.a` + x[0] + '.b:is(.c' + x[1] + '.d)' + x[2] + `.e {
+	order: ${index + 1};
+}
+`);
+});
+
+console.log(out.join(''));
+*/
+
+.a .b:is(.c .d) .e {
+	order: 1;
+}
+
+.a .b:is(.c .d)+.e {
+	order: 2;
+}
+
+.a .b:is(.c .d)>.e {
+	order: 3;
+}
+
+.a .b:is(.c .d)~.e {
+	order: 4;
+}
+
+.a .b:is(.c+.d) .e {
+	order: 5;
+}
+
+.a .b:is(.c+.d)+.e {
+	order: 6;
+}
+
+.a .b:is(.c+.d)>.e {
+	order: 7;
+}
+
+.a .b:is(.c+.d)~.e {
+	order: 8;
+}
+
+.a .b:is(.c>.d) .e {
+	order: 9;
+}
+
+.a .b:is(.c>.d)+.e {
+	order: 10;
+}
+
+.a .b:is(.c>.d)>.e {
+	order: 11;
+}
+
+.a .b:is(.c>.d)~.e {
+	order: 12;
+}
+
+.a .b:is(.c~.d) .e {
+	order: 13;
+}
+
+.a .b:is(.c~.d)+.e {
+	order: 14;
+}
+
+.a .b:is(.c~.d)>.e {
+	order: 15;
+}
+
+.a .b:is(.c~.d)~.e {
+	order: 16;
+}
+
+.a+.b:is(.c .d) .e {
+	order: 17;
+}
+
+.a+.b:is(.c .d)+.e {
+	order: 18;
+}
+
+.a+.b:is(.c .d)>.e {
+	order: 19;
+}
+
+.a+.b:is(.c .d)~.e {
+	order: 20;
+}
+
+.a+.b:is(.c+.d) .e {
+	order: 21;
+}
+
+.a+.b:is(.c+.d)+.e {
+	order: 22;
+}
+
+.a+.b:is(.c+.d)>.e {
+	order: 23;
+}
+
+.a+.b:is(.c+.d)~.e {
+	order: 24;
+}
+
+.a+.b:is(.c>.d) .e {
+	order: 25;
+}
+
+.a+.b:is(.c>.d)+.e {
+	order: 26;
+}
+
+.a+.b:is(.c>.d)>.e {
+	order: 27;
+}
+
+.a+.b:is(.c>.d)~.e {
+	order: 28;
+}
+
+.a+.b:is(.c~.d) .e {
+	order: 29;
+}
+
+.a+.b:is(.c~.d)+.e {
+	order: 30;
+}
+
+.a+.b:is(.c~.d)>.e {
+	order: 31;
+}
+
+.a+.b:is(.c~.d)~.e {
+	order: 32;
+}
+
+.a>.b:is(.c .d) .e {
+	order: 33;
+}
+
+.a>.b:is(.c .d)+.e {
+	order: 34;
+}
+
+.a>.b:is(.c .d)>.e {
+	order: 35;
+}
+
+.a>.b:is(.c .d)~.e {
+	order: 36;
+}
+
+.a>.b:is(.c+.d) .e {
+	order: 37;
+}
+
+.a>.b:is(.c+.d)+.e {
+	order: 38;
+}
+
+.a>.b:is(.c+.d)>.e {
+	order: 39;
+}
+
+.a>.b:is(.c+.d)~.e {
+	order: 40;
+}
+
+.a>.b:is(.c>.d) .e {
+	order: 41;
+}
+
+.a>.b:is(.c>.d)+.e {
+	order: 42;
+}
+
+.a>.b:is(.c>.d)>.e {
+	order: 43;
+}
+
+.a>.b:is(.c>.d)~.e {
+	order: 44;
+}
+
+.a>.b:is(.c~.d) .e {
+	order: 45;
+}
+
+.a>.b:is(.c~.d)+.e {
+	order: 46;
+}
+
+.a>.b:is(.c~.d)>.e {
+	order: 47;
+}
+
+.a>.b:is(.c~.d)~.e {
+	order: 48;
+}
+
+.a~.b:is(.c .d) .e {
+	order: 49;
+}
+
+.a~.b:is(.c .d)+.e {
+	order: 50;
+}
+
+.a~.b:is(.c .d)>.e {
+	order: 51;
+}
+
+.a~.b:is(.c .d)~.e {
+	order: 52;
+}
+
+.a~.b:is(.c+.d) .e {
+	order: 53;
+}
+
+.a~.b:is(.c+.d)+.e {
+	order: 54;
+}
+
+.a~.b:is(.c+.d)>.e {
+	order: 55;
+}
+
+.a~.b:is(.c+.d)~.e {
+	order: 56;
+}
+
+.a~.b:is(.c>.d) .e {
+	order: 57;
+}
+
+.a~.b:is(.c>.d)+.e {
+	order: 58;
+}
+
+.a~.b:is(.c>.d)>.e {
+	order: 59;
+}
+
+.a~.b:is(.c>.d)~.e {
+	order: 60;
+}
+
+.a~.b:is(.c~.d) .e {
+	order: 61;
+}
+
+.a~.b:is(.c~.d)+.e {
+	order: 62;
+}
+
+.a~.b:is(.c~.d)>.e {
+	order: 63;
+}
+
+.a~.b:is(.c~.d)~.e {
+	order: 64;
+}
+
+/*
+const out = [];
+cartesianProduct([' ', '+', '>', '~'], [' ', '+', '>', '~'], [' ', '+', '>', '~']).forEach((x, index) => {
+	out.push(`
+.a` + x[0] + '.b:is(.c' + x[1] + '.d)' + x[2] + `.e {
+	order: ${index + 1};
+}
+`);
+});
+
+console.log(out.join(''));
+*/

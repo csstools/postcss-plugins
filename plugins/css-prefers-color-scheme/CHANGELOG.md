@@ -1,5 +1,9 @@
 # Changes to Prefers Color Scheme
 
+### Unreleased (patch)
+
+- Fix `preserve: false` option.
+
 ### 6.0.2 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.

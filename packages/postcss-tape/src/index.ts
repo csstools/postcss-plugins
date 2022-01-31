@@ -149,10 +149,10 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			let resultFilePath = `${testFilePathWithoutExtension}.result.css`;
 
 			if (testCaseOptions.expect) {
-				expectFilePath = expectFilePath.replace(testCaseLabel.replace(/:/g, '.') + '.expect.css', testCaseOptions.expect);
+				expectFilePath = path.join('.', 'test', testCaseOptions.expect);
 			}
 			if (testCaseOptions.result) {
-				resultFilePath = resultFilePath.replace(testCaseLabel.replace(/:/g, '.') + '.result.css', testCaseOptions.result);
+				resultFilePath = path.join('.', 'test', testCaseOptions.result);
 			}
 
 			const plugins = testCaseOptions.plugins ?? [currentPlugin(testCaseOptions.options)];

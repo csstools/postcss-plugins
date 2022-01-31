@@ -15,3 +15,4 @@ export function dumpLogs(result) {
 
 	resetLogger();
 }
+
