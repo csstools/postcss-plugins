@@ -1,5 +1,6 @@
 "common-tools":
   - packages/base-cli/**
+  - packages/postcss-tape/**
   - plugins/postcss-base-plugin/**
   - rollup/**
 
@@ -81,6 +82,10 @@
   - plugins/postcss-font-variant/**
   - experimental/postcss-font-variant/**
 
+"plugins/postcss-font-format-keywords":
+  - plugins/postcss-font-format-keywords/**
+  - experimental/postcss-font-format-keywords/**
+
 "plugins/postcss-gap-properties":
   - plugins/postcss-gap-properties/**
   - experimental/postcss-gap-properties/**
@@ -112,6 +117,10 @@
 "plugins/postcss-nesting":
   - plugins/postcss-nesting/**
   - experimental/postcss-nesting/**
+
+"plugins/postcss-normalize-display-values":
+  - plugins/postcss-normalize-display-values/**
+  - experimental/postcss-normalize-display-values/**
 
 "plugins/postcss-overflow-shorthand":
   - plugins/postcss-overflow-shorthand/**

@@ -1,76 +1,101 @@
-// Some patterns can be detected and converted.
-// This is very difficult to abstract, so best to handle this case by case on request.
+import parser from 'postcss-selector-parser';
+import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
+import { childAdjacentChild } from './complex/child-adjacent-child';
+import { isInCompoundWithOneOtherElement } from './complex/is-in-compound';
+import type { Container } from 'postcss-selector-parser';
 
-// :is(.a > .b) + :is(.c > .d)
-// equivalent to
-// .a.c > .b + .d
-// because a adjacent elements have the same parent element.
-export function childAdjacentChild(selector) {
-	if (!selector || !selector.nodes) {
-		return;
-	}
-	if (selector.type !== 'selector') {
-		return;
-	}
-
-	if (selector.nodes.length !== 3) {
-		return;
-	}
-
-	if (!selector.nodes[0] || selector.nodes[0].type !== 'pseudo' || selector.nodes[0].value !== ':is') {
-		return;
-	}
-
-	// adjacent combinator
-	if (!selector.nodes[1] || selector.nodes[1].type !== 'combinator' || selector.nodes[1].value !== '+') {
-		return;
-	}
-
-	if (!selector.nodes[2] || selector.nodes[2].type !== 'pseudo' || selector.nodes[2].value !== ':is') {
-		return;
-	}
-
-	// first `:is`
-	{
-		if (!selector.nodes[0].nodes || selector.nodes[0].nodes.length !== 1) {
-			return;
+export default function complexSelectors(selectors: string[], pluginOptions: { onComplexSelector?: 'warning' }, warnFn: () => void) {
+	return selectors.flatMap((selector) => {
+		if (selector.indexOf(':-csstools-matches') === -1 && selector.indexOf(':is') === -1) {
+			return selector;
 		}
 
-		if (selector.nodes[0].nodes[0].type !== 'selector') {
-			return;
-		}
+		const selectorAST = parser().astSync(selector);
+		selectorAST.walkPseudos((pseudo) => {
+			// `:is()` -> `:not(*)`
+			if (
+				pseudo.value === ':is' &&
+				pseudo.nodes &&
+				pseudo.nodes.length &&
+				pseudo.nodes[0].type === 'selector' &&
+				pseudo.nodes[0].nodes.length === 0
+			) {
+				pseudo.value = ':not';
+				pseudo.nodes[0].append(parser.universal());
+				return;
+			}
 
-		if (!selector.nodes[0].nodes[0].nodes || selector.nodes[0].nodes[0].nodes.length !== 3) {
-			return;
-		}
+			if (pseudo.value !== ':-csstools-matches') {
+				return;
+			}
 
-		// child combinator
-		if (!selector.nodes[0].nodes[0].nodes || selector.nodes[0].nodes[0].nodes[1].type !== 'combinator' || selector.nodes[0].nodes[0].nodes[1].value !== '>') {
-			return;
-		}
-	}
+			if (pseudo.nodes && !pseudo.nodes.length) {
+				pseudo.remove();
+				return;
+			}
 
-	// second `:is`
-	{
-		if (!selector.nodes[2].nodes || selector.nodes[2].nodes.length !== 1) {
-			return;
-		}
+			if (
+				pseudo.nodes.length === 1 &&
+				pseudo.nodes[0].type === 'selector'
+			) {
+				if (pseudo.nodes[0].nodes.length === 1) {
+					pseudo.replaceWith(pseudo.nodes[0].nodes[0]);
+					return;
+				}
 
-		if (selector.nodes[2].nodes[0].type !== 'selector') {
-			return;
-		}
+				if (!pseudo.nodes[0].some((x) => {
+					return x.type === 'combinator';
+				})) {
+					pseudo.replaceWith(...pseudo.nodes[0].nodes);
+					return;
+				}
+			}
 
-		if (!selector.nodes[2].nodes[0].nodes || selector.nodes[2].nodes[0].nodes.length !== 3) {
-			return;
-		}
+			if (
+				selectorAST.nodes.length === 1 &&
+				selectorAST.nodes[0].type === 'selector' &&
+				selectorAST.nodes[0].nodes.length === 1 &&
+				selectorAST.nodes[0].nodes[0] === pseudo
+			) {
+				pseudo.replaceWith(...pseudo.nodes[0].nodes);
+				return;
+			}
 
-		// child combinator
-		if (!selector.nodes[2].nodes[0].nodes || selector.nodes[2].nodes[0].nodes[1].type !== 'combinator' || selector.nodes[2].nodes[0].nodes[1].value !== '>') {
-			return;
-		}
-	}
+			if (
+				childAdjacentChild(pseudo.parent) ||
+				isInCompoundWithOneOtherElement(pseudo.parent)
+			) {
+				return;
+			}
 
-	selector.nodes[0].nodes[0].insertAfter(selector.nodes[0].nodes[0].nodes[0], selector.nodes[2].nodes[0].nodes[0].clone());
-	selector.nodes[2].nodes[0].nodes[1].remove();
-	selector.nodes[2].nodes[0].nodes[0].remove();
+			if (pluginOptions.onComplexSelector === 'warning') {
+				warnFn();
+			}
+
+			pseudo.value = ':is';
+		});
+
+		selectorAST.walk((node) => {
+			if (node.type !== 'selector' || !('nodes' in node)) {
+				return;
+			}
+
+			if (
+				node.nodes.length === 1 &&
+				(node.nodes[0] as Container).type === 'selector'
+			) {
+				node.replaceWith(node.nodes[0]);
+			}
+		});
+
+		selectorAST.walk((node) => {
+			if ('nodes' in node) {
+				sortCompoundSelectorsInsideComplexSelector(node);
+			}
+		});
+
+		return selectorAST.toString();
+	}).filter((x) => {
+		return !!x;
+	});
 }

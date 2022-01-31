@@ -3,7 +3,7 @@
 [<img alt="npm version" src="https://img.shields.io/npm/v/postcss-color-rebeccapurple.svg" height="20">][npm-url]
 [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/rebeccapurple-color.svg" height="20">][css-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg" height="20">][cli-url]
-[<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS RebeccaPurple] lets you use the `rebeccapurple` color keyword in CSS.
 
@@ -76,7 +76,7 @@ postcssRebeccaPurple({ preserve: true })
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#rebeccapurple-color
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/postcss-color-rebeccapurple
 
 [PostCSS]: https://github.com/postcss/postcss

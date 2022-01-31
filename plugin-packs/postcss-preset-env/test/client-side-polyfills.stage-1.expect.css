@@ -1,0 +1,27 @@
+[blank] {
+	order: 1;
+}
+
+.focus-visible {
+	order: 2;
+}
+
+[focus-within] {
+	order: 3;
+}
+
+[\:has\(.a\)] {
+	order: 4;
+}
+
+@media (color-index: 70) {
+	.b {
+		order: 5;
+	}
+}
+
+@media (color: 70318723) {
+	.b {
+		order: 5;
+	}
+}

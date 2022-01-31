@@ -2,10 +2,6 @@
 	order: 0;
 }
 
-.some.other {
-	order: 0;
-}
-
 .other.some {
 	order: 0;
 }
@@ -22,10 +18,6 @@
 	order: 1;
 }
 
-.some.other {
-	order: 1;
-}
-
 .other.some {
 	order: 1;
 }
@@ -39,10 +31,6 @@
 }
 
 .some.some {
-	order: 2;
-}
-
-.some.other {
 	order: 2;
 }
 
@@ -546,24 +534,8 @@
 	order: 27;
 }
 
-.some {
-	order: 27;
-}
-
-.other {
-	order: 27;
-}
-
 :is(.some, .other), :is(.some, .other) {
 	order: 27;
-}
-
-.some {
-	order: 28;
-}
-
-.other {
-	order: 28;
 }
 
 .some {
@@ -918,11 +890,11 @@ button {
 	order: 59;
 }
 
-.🧑🏾‍🎤.some {
+.some.🧑🏾‍🎤 {
 	order: 60;
 }
 
-.🧑🏾‍🎤.other {
+.other.🧑🏾‍🎤 {
 	order: 60;
 }
 
@@ -1258,11 +1230,11 @@ button {
 	order: 90;
 }
 
-.some.foo {
+.foo.some {
 	order: 91;
 }
 
-.other.foo {
+.foo.other {
 	order: 91;
 }
 
@@ -3868,6 +3840,10 @@ __foo {
 
 :is(::before) {
 	order: 329;
+}
+
+:not(*) {
+	order: 330;
 }
 
 :is() {

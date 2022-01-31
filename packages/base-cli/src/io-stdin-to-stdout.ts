@@ -20,6 +20,10 @@ export async function stdinToStdout(plugin: Plugin, argo : Arguments, helpLogger
 			map: argo.inlineMap ? { inline: true } : false,
 		});
 
+		result.warnings().forEach(warn => {
+			console.warn(warn.toString());
+		});
+
 		resultCSS = result.css;
 	} catch (error) {
 		console.error(argo.debug ? error : error.message);

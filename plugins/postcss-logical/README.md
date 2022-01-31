@@ -3,7 +3,7 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Logical Properties and Values] lets you use logical, rather than
 physical, direction and dimension mappings in CSS, following the
@@ -199,8 +199,7 @@ Currently `:dir(ltr)` doesn't have great browser support but this will improve o
 [css-url]: https://cssdb.org/#logical-properties-and-values
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-img]: https://img.shields.io/npm/v/postcss-logical.svg
 [npm-url]: https://www.npmjs.com/package/postcss-logical
 

@@ -1,0 +1,57 @@
+:link, :visited, area[href] {
+	order: 1;
+}
+
+:any-link {
+	order: 1;
+}
+
+:link,
+:visited,
+area[href],
+ul a:link > span,
+ul a:visited > span,
+ul aarea[href] > span {
+	order: 2;
+}
+
+:any-link,
+ul a:any-link > span {
+	order: 2;
+}
+
+:link :link, :link :visited, :link area[href], :visited :link, :visited :visited, :visited area[href], area[href] :link, area[href] :visited, area[href] area[href] {
+	order: 3;
+}
+
+:any-link :any-link {
+	order: 3;
+}
+
+:any-link(.ignore) {
+	order: 4;
+}
+
+div :link, div :visited, div area[href] {
+	order: 5;
+}
+
+div :any-link {
+	order: 5;
+}
+
+div:link, div:visited, divarea[href] {
+	order: 6;
+}
+
+div:any-link {
+	order: 6;
+}
+
+div:is(:link), div:is(:visited), div:is(area[href]) {
+	order: 7;
+}
+
+div:is(:any-link) {
+	order: 7;
+}

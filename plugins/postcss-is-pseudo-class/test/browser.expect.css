@@ -1,0 +1,178 @@
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/is-nested.html */
+#main_a .a+.b+.c>.e+.d {
+	color: black;
+	font-size: 10px;
+	width: 10px;
+}
+
+#main_a .e:is(.b+.f:not(.does-not-exist))+.d {
+	color: red;
+	font-size: 20px;
+}
+
+#main_a *.e.e:not(.does-not-exist):not(.does-not-exist)+.d {
+	color: red;
+	font-size: 20px;
+}
+
+#main_a .e.e:is(.c>.e)+.d {
+	color: red;
+	font-size: 20px;
+}
+
+#main_a .e.e.g:not(.does-not-exist)+.d {
+	color: red;
+	font-size: 20px;
+}
+
+#main_a .a+.b+.c>.e+.d {
+	color: yellow;
+}
+
+/* Testing specificty of a class within :is() */
+#main_a .a+.c>.e {
+	color: black;
+}
+
+#main_a .e:is(.b+.f) {
+	color: red;
+}
+
+#main_a .e:is(.c>.e) {
+	color: red;
+}
+
+#main_a .e.g:not(.does-not-exist) {
+	color: red;
+}
+
+#main_a .c>.e {
+	color: black;
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/is-specificity.html */
+#main_b .b.c+.d+.q.r+.s+#target {
+	font-size: 10px;
+	height: 10px;
+	width: 10px;
+}
+
+#main_b .a:not(.does-not-exist):not(.does-not-exist)+ :is(* + .p:not(.does-not-exist):not(.does-not-exist))+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b .a:not(.does-not-exist):not(.does-not-exist)+ :is(.q.r + .s)+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b .a:not(.does-not-exist):not(.does-not-exist)+ :is(* + .t:not(.does-not-exist):not(.does-not-exist))+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b :is(.b.c + .d)+ :is(* + .p:not(.does-not-exist):not(.does-not-exist))+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b :is(.b.c + .d)+ :is(.q.r + .s)+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b :is(.b.c + .d)+ :is(* + .t:not(.does-not-exist):not(.does-not-exist))+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b .q:not(.does-not-exist):not(.does-not-exist)+ :is(* + .p:not(.does-not-exist):not(.does-not-exist))+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b .q:not(.does-not-exist):not(.does-not-exist)+ :is(.q.r + .s)+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b .q:not(.does-not-exist):not(.does-not-exist)+ :is(* + .t:not(.does-not-exist):not(.does-not-exist))+#target {
+	height: 20px;
+	width: 20px;
+}
+
+#main_b .b.c+.d+.q.r+.s+#target {
+	width: 30px;
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/is.html */
+#main_c .b {
+	color: yellow;
+}
+
+/*Simple selector arguments */
+#main_c .a .b {
+	color: red;
+}
+#main_c .a .c {
+	color: red;
+}
+
+/*Compound selector arguments */
+#main_c .a #d.c {
+	color: green;
+}
+#main_c .a .e:not(#does-not-exist) {
+	color: green;
+}
+
+/* Complex selector arguments */
+#main_c .a .g>.b {
+	color: black;
+}
+
+#main_c .a :is(.e+.f) {
+	color: blue;
+}
+
+#main_c .a :is(.g>.b) {
+	color: blue;
+}
+
+#main_c .a .h:not(.does-not-exist) {
+	color: blue;
+}
+
+#main_c .g>.b {
+	color: black;
+}
+
+#main_c .a .h {
+	color: black;
+}
+
+/* Nested */
+#main_c .a+.c>.e {
+	color: black;
+}
+
+#main_c .c>.a+.e {
+	color: black;
+}
+
+#main_c .a+:is(.b+.f) {
+	color: red;
+}
+
+#main_c .a+:is(.c>.e) {
+	color: red;
+}
+
+#main_c .a+.g:not(.does-not-exist) {
+	color: red;
+}
+
+#main_c .c>.e {
+	color: black;
+}
