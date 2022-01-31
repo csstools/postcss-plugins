@@ -50,7 +50,7 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 					// So if a ':has()' argument selector requires a matching ':visited', the
 					// style rule are not applied.
 					if (node.value === ':visited') {
-						// We can't live `:has` untouched as that might cause broken selector lists.
+						// We can't leave `:has` untouched as that might cause broken selector lists.
 						// Replacing with the specificity matching name as this should never match anything without `:not()`.
 						node.replaceWith(parser.className({
 							value: '.' + options.specificityMatchingName,
@@ -58,7 +58,7 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 					}
 
 					if (node.value === ':any-link') {
-						// `:link` is ok, so we can transform `:any-link` to `:link`
+						// we can transform `:any-link` to `:link` as this is allowed
 						node.value = ':link';
 					}
 				});
