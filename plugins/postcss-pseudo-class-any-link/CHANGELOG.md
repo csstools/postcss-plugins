@@ -1,6 +1,6 @@
 # Changes to PostCSS Pseudo Class Any Link
 
-### Unreleased
+### 7.1.0 (January 31, 2022)
 
 - Add support in IE and Edge for the `<area>` element
 - Add support for `:any-link` in pseudo class functions (`:not(:any-link)`)
