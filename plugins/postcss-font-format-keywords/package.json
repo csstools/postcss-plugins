@@ -34,7 +34,7 @@
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
   "peerDependencies": {
-    "postcss": "^8.3"
+    "postcss": "^8.4"
   },
   "keywords": [
     "postcss-plugin",

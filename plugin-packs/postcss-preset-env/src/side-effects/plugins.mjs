@@ -1,6 +1,6 @@
 // Some plugins have side effects that go beyond the scope of preset-env.
 // These plugins always need to run.
-// IMPORTANT: this should be removed and cleanup in a next major version.
+// IMPORTANT: this should be removed and cleaned up in a next major version.
 export function pluginHasSideEffects(feature) {
 	if ('importFrom' in Object(feature.pluginOptions)) {
 		switch (feature.id) {

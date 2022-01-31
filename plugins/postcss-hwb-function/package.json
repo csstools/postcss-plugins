@@ -30,6 +30,7 @@
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
     "test": "node .tape.mjs && npm run test:exports",
+    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs",
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
   "engines": {
@@ -39,7 +40,7 @@
     "postcss-value-parser": "^4.2.0"
   },
   "peerDependencies": {
-    "postcss": "^8.3"
+    "postcss": "^8.4"
   },
   "keywords": [
     "postcss",

@@ -6,7 +6,7 @@ import path from 'path';
 import fs, { promises as fsp } from 'fs';
 import { strict as assert } from 'assert';
 
-import type { PluginCreator, Plugin } from 'postcss';
+import type { PluginCreator, Plugin, Result } from 'postcss';
 import { formatGitHubActionAnnotation } from './github-annotations';
 import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts';
 import noopPlugin from './noop-plugin';
@@ -22,6 +22,9 @@ type TestCaseOptions = {
 	plugins?: Array<Plugin>,
 	// The expected number of warnings.
 	warnings?: number,
+	// Expected exception
+	// NOTE: plugins should not throw exceptions, this goes against best practices. Use `errors` instead.
+	exception?: RegExp,
 
 	// Override the file name of the "expect" file.
 	expect?: string,
@@ -73,7 +76,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 		// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#54-include-postcss-plugin-keyword-in-packagejson
 		// Include postcss-plugin keyword in package.json
 		const packageInfo = JSON.parse(fs.readFileSync('./package.json').toString());
-		if (!packageInfo.keywords.includes('postcss-plugin')) {
+		if (!packageInfo.keywords || !packageInfo.keywords.includes('postcss-plugin')) {
 			hasErrors = true;
 
 			if (emitGitHubAnnotations) {
@@ -89,7 +92,13 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 		// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#11-clear-name-with-postcss--prefix
 		// Clear name with postcss- prefix
-		if (!packageInfo.name.startsWith('postcss-') && !packageInfo.name.startsWith('@csstools/postcss-')) {
+		const isOlderPackageName = [
+			'css-has-pseudo',
+			'css-blank-pseudo',
+			'css-prefers-color-scheme',
+		].includes(packageInfo.name);
+
+		if (!packageInfo.name.startsWith('postcss-') && !packageInfo.name.startsWith('@csstools/postcss-') && !isOlderPackageName) {
 			hasErrors = true;
 
 			if (emitGitHubAnnotations) {
@@ -122,6 +131,8 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 	// Test cases
 	return async (options: Record<string, TestCaseOptions>) => {
+		const failureSummary = new Set();
+
 		for (const testCaseLabel in options) {
 			const testCaseOptions = options[testCaseLabel];
 
@@ -138,10 +149,10 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			let resultFilePath = `${testFilePathWithoutExtension}.result.css`;
 
 			if (testCaseOptions.expect) {
-				expectFilePath = expectFilePath.replace(testCaseLabel.replace(/:/g, '.') + '.expect.css', testCaseOptions.expect);
+				expectFilePath = path.join('.', 'test', testCaseOptions.expect);
 			}
 			if (testCaseOptions.result) {
-				resultFilePath = resultFilePath.replace(testCaseLabel.replace(/:/g, '.') + '.result.css', testCaseOptions.result);
+				resultFilePath = path.join('.', 'test', testCaseOptions.result);
 			}
 
 			const plugins = testCaseOptions.plugins ?? [currentPlugin(testCaseOptions.options)];
@@ -163,24 +174,59 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 						{ file: testFilePath, line: 1, col: 1 },
 					));
 				} else {
+					failureSummary.add(testCaseLabel);
 					console.error(`\n${testCaseLabel}\n\nmissing or broken "expect" file: "${path.parse(expectFilePath).base}"\n\n${dashesSeparator}`);
 				}
 			}
 
-			const result = await postcss(plugins).process(input, {
-				from: testFilePath,
-				to: resultFilePath,
-				map: {
-					inline: false,
-					annotation: false,
-				},
-			});
+			let result: Result;
+
+			let sawException = false;
+			try {
+				result = await postcss(plugins).process(input, {
+					from: testFilePath,
+					to: resultFilePath,
+					map: {
+						inline: false,
+						annotation: false,
+					},
+				});
+			} catch (err) {
+				sawException = true;
+				if (testCaseOptions.exception && testCaseOptions.exception.test(err.message)) {
+					// expected an exception and got one.
+					continue;
+				}
+
+				// rethrow
+				throw err;
+			}
+
+			if (!sawException && testCaseOptions.exception) {
+				hasErrors = true;
+
+				if (emitGitHubAnnotations) {
+					console.log(formatGitHubActionAnnotation(
+						`${testCaseLabel}\n\nexpected an exception but got none`,
+						'error',
+						{ file: testFilePath, line: 1, col: 1 },
+					));
+				} else {
+					failureSummary.add(testCaseLabel);
+					console.error(`\n${testCaseLabel}\n\nexpected an exception but got none\n\n${dashesSeparator}`);
+				}
+			}
 
 			// Try to write the result file, even if further checks fails.
 			// This helps writing new tests for plugins.
 			// Taking the result file as a starting point for the expect file.
 			const resultString = result.css.toString();
 			await fsp.writeFile(resultFilePath, resultString, 'utf8');
+
+			// Allow contributors to rewrite `.expect.css` files through postcss-tape.
+			if (process.env.REWRITE_EXPECTS) {
+				fsp.writeFile(expectFilePath, resultString, 'utf8');
+			}
 
 			// Can't do further checks if "expect" is missing.
 			if (expected === false) {
@@ -204,6 +250,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
 						));
 					} else {
+						failureSummary.add(testCaseLabel);
 						console.error(formatCSSAssertError(testCaseLabel, testCaseOptions, err));
 					}
 				}
@@ -225,6 +272,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 							{ file: testFilePath, line: 1, col: 1 },
 						));
 					} else {
+						failureSummary.add(testCaseLabel);
 						console.error(`\n${testCaseLabel}\n\nbroken source map: ${JSON.stringify(result.map.toJSON().sources)}\n\n${dashesSeparator}`);
 					}
 				}
@@ -261,6 +309,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 							{ file: expectFilePath, line: 1, col: 1 },
 						));
 					} else {
+						failureSummary.add(testCaseLabel);
 						console.error(`\n${testCaseLabel}\n\nresult was not parsable with PostCSS.\n\n${dashesSeparator}`);
 					}
 				}
@@ -296,6 +345,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
 						));
 					} else {
+						failureSummary.add(testCaseLabel);
 						console.error('testing older PostCSS:\n' + formatCSSAssertError(testCaseLabel, testCaseOptions, err));
 					}
 				}
@@ -307,19 +357,27 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 					if (result.warnings().length || testCaseOptions.warnings) {
 						assert.strictEqual(result.warnings().length, testCaseOptions.warnings);
 					}
-				} catch (err) {
+				} catch (_) {
 					hasErrors = true;
 
 					if (emitGitHubAnnotations) {
 						console.log(formatGitHubActionAnnotation(
-							formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings, true),
+							formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings(), testCaseOptions.warnings, true),
 							'error',
 							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
 						));
 					} else {
-						console.error(formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings().length, testCaseOptions.warnings));
+						failureSummary.add(testCaseLabel);
+						console.error(formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings(), testCaseOptions.warnings));
 					}
 				}
+			}
+		}
+
+		if (failureSummary.size) {
+			console.error('\nunexpected failures:');
+			for (const label of failureSummary.values()) {
+				console.error('  - ' + label);
 			}
 		}
 

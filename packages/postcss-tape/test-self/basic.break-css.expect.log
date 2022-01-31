@@ -4,3 +4,6 @@ basic:break-css
 result was not parsable with PostCSS.
 
 ----------------------------------------
+
+unexpected failures:
+  - basic:break-css

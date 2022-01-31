@@ -19,6 +19,8 @@ unexpected or missing warnings :
 + actual 1
 - expected 0
 
+[a-plugin]: a warning
+
 ----------------------------------------
 
 basic:with-multiple-warnings
@@ -30,4 +32,13 @@ unexpected or missing warnings :
 + actual 3
 - expected 7
 
+[a-plugin]: a warning
+[a-plugin]: a warning
+[a-plugin]: a warning
+
 ----------------------------------------
+
+unexpected failures:
+  - basic:with-one-missing-warning
+  - basic:with-one-unexpected-warning
+  - basic:with-multiple-warnings

@@ -14,6 +14,10 @@ export async function fsToStdout(plugin: Plugin, argo: Arguments): Promise<never
 				map: false,
 			});
 
+			result.warnings().forEach(warn => {
+				console.warn(warn.toString());
+			});
+
 			return result.css;
 		}));
 	} catch (error) {

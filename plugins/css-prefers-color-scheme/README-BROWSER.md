@@ -1,7 +1,7 @@
 # Prefers Color Scheme [<img src="https://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][Prefers Color Scheme]
 
 [![NPM Version][npm-img]][npm-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [Prefers Color Scheme] applies color schemes with fallbacks provided by the
 [Prefers Color Scheme PostCSS plugin](README-POSTCSS.md).
@@ -88,8 +88,7 @@ ECMA Script:
 - `String.prototype.match`
 - `String.prototype.replace`
 
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-img]: https://img.shields.io/npm/v/css-prefers-color-scheme.svg
 [npm-url]: https://www.npmjs.com/package/css-prefers-color-scheme
 

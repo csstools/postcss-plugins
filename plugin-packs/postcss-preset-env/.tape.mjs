@@ -1,3 +1,7 @@
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import plugin from 'postcss-preset-env';
+import fs from 'fs';
+
 const orderDetectionPlugin = (prop, changeWhenMatches) => {
 	return {
 		postcssPlugin: 'order-detection',
@@ -12,7 +16,7 @@ const orderDetectionPlugin = (prop, changeWhenMatches) => {
 
 orderDetectionPlugin.postcss = true
 
-module.exports = {
+postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage'
 	},
@@ -34,11 +38,23 @@ module.exports = {
 			browsers: 'chrome >= 38'
 		}
 	},
+	'basic:ie10': {
+		message: 'supports { browsers: "ie >= 10" } usage',
+		options: {
+			browsers: 'ie >= 10'
+		}
+	},
 	'basic:ch88-ff78': {
 		message: 'uses :is pseudo for nesting with modern browsers { browsers: "chrome >= 88, firefox >= 78", stage: 0 }',
 		options: {
 			browsers: 'chrome >= 88, firefox >= 78',
 			stage: 0
+		}
+	},
+	'basic:safari15': {
+		message: 'supports { browsers: "safari >= 15" } usage',
+		options: {
+			browsers: 'safari >= 15'
 		}
 	},
 	'basic:ch88-ff78:no-is-pseudo': {
@@ -80,6 +96,30 @@ module.exports = {
 			stage: 0
 		}
 	},
+	'basic:vendors-1': {
+		message: 'supports { minimumVendorImplementations: 1, enableClientSidePolyfills: false } usage',
+		options: {
+			stage: 1,
+			minimumVendorImplementations: 1,
+			enableClientSidePolyfills: false
+		}
+	},
+	'basic:vendors-2': {
+		message: 'supports { minimumVendorImplementations: 2, enableClientSidePolyfills: false } usage',
+		options: {
+			stage: 1,
+			minimumVendorImplementations: 2,
+			enableClientSidePolyfills: false
+		}
+	},
+	'basic:vendors-3': {
+		message: 'supports { minimumVendorImplementations: 3, enableClientSidePolyfills: false } usage',
+		options: {
+			stage: 1,
+			minimumVendorImplementations: 3,
+			enableClientSidePolyfills: false
+		}
+	},
 	'basic:nesting:true': {
 		message: 'supports { stage: false, features: { "nesting-rules": true } } usage',
 		options: {
@@ -111,6 +151,14 @@ module.exports = {
 		options: {
 			autoprefixer: false
 		}
+	},
+	'basic:preserve:true': {
+		message: 'supports { preserve: true, stage: 0, browsers: "> 0%" } usage',
+		options: {
+			preserve: true,
+			stage: 0,
+			browsers: '> 0%'
+		},
 	},
 	'client-side-polyfills:stage-1': {
 		message: 'stable client side polyfill behavior',
@@ -166,6 +214,20 @@ module.exports = {
 			features: {
 				'custom-properties': true
 			}
+		}
+	},
+	'disable-client-side-polyfills': {
+		message: 'supports { enableClientSidePolyfills: false } usage',
+		options: {
+			enableClientSidePolyfills: false,
+			stage: 0,
+		}
+	},
+	'disable-client-side-polyfills:disabled': {
+		message: 'supports { enableClientSidePolyfills: true } usage (default)',
+		options: {
+			enableClientSidePolyfills: true,
+			stage: 0,
 		}
 	},
 	'insert:baseline': {
@@ -273,7 +335,7 @@ module.exports = {
 			}
 		}
 	},
-	'insert:after:match-result:exec': {
+	'insert:after:match-result:no-array': {
 		message: 'supports { insertAfter with a single plugin, not an array } usage when looking for a result',
 		options: {
 			stage: 0,
@@ -286,7 +348,6 @@ module.exports = {
 				})
 			}
 		},
-		expect: 'insert.after.match-result.expect.css'
 	},
 	'import': {
 		message: 'supports { importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',
@@ -374,16 +435,16 @@ module.exports = {
 		before() {
 			try {
 				global.__exportTo = {
-					css: require('fs').readFileSync('test/generated-custom-exports.css', 'utf8'),
-					js: require('fs').readFileSync('test/generated-custom-exports.js', 'utf8'),
-					json: require('fs').readFileSync('test/generated-custom-exports.json', 'utf8'),
-					mjs: require('fs').readFileSync('test/generated-custom-exports.mjs', 'utf8')
+					css: fs.readFileSync('test/generated-custom-exports.css', 'utf8'),
+					js: fs.readFileSync('test/generated-custom-exports.js', 'utf8'),
+					json: fs.readFileSync('test/generated-custom-exports.json', 'utf8'),
+					mjs: fs.readFileSync('test/generated-custom-exports.mjs', 'utf8')
 				};
 
-				require('fs').rmSync('test/generated-custom-exports.css');
-				require('fs').rmSync('test/generated-custom-exports.js');
-				require('fs').rmSync('test/generated-custom-exports.json');
-				require('fs').rmSync('test/generated-custom-exports.mjs');
+				fs.rmSync('test/generated-custom-exports.css');
+				fs.rmSync('test/generated-custom-exports.js');
+				fs.rmSync('test/generated-custom-exports.json');
+				fs.rmSync('test/generated-custom-exports.mjs');
 			} catch (_) {
 				// ignore errors here.
 				// If the files are removed manually test run will regenerate these.
@@ -393,10 +454,10 @@ module.exports = {
 		},
 		after() {
 			global.__exportAs = {
-				css: require('fs').readFileSync('test/generated-custom-exports.css', 'utf8'),
-				js: require('fs').readFileSync('test/generated-custom-exports.js', 'utf8'),
-				json: require('fs').readFileSync('test/generated-custom-exports.json', 'utf8'),
-				mjs: require('fs').readFileSync('test/generated-custom-exports.mjs', 'utf8')
+				css: fs.readFileSync('test/generated-custom-exports.css', 'utf8'),
+				js: fs.readFileSync('test/generated-custom-exports.js', 'utf8'),
+				json: fs.readFileSync('test/generated-custom-exports.json', 'utf8'),
+				mjs: fs.readFileSync('test/generated-custom-exports.mjs', 'utf8')
 			};
 
 			Object.keys(global.__exportTo).forEach(key => {
@@ -406,15 +467,15 @@ module.exports = {
 			});
 		}
 	},
-	"unknown-feature": {
+	'unknown-feature': {
 		message: 'warns on unknown features',
 		warnings: 3,
 		options: {
 			features: {
-				"custom-media": true,
-				"postcss-logical": true,
-				"postcss-logica": true,
+				'custom-media': true,
+				'postcss-logical': true,
+				'postcss-logica': true,
 			}
 		},
-	}
-};
+	},
+});
