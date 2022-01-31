@@ -1,14 +1,13 @@
-import { log } from '../log/helper.mjs';
 import { clamp } from '../util/clamp.mjs';
 
 export const DEFAULT_STAGE = 2;
 export const OUT_OF_RANGE_STAGE = 5;
 
-export function stageFromOptions(options) {
+export function stageFromOptions(options, logger) {
 	let stage = DEFAULT_STAGE;
 
 	if (typeof options.stage === 'undefined') {
-		log(`Using features from Stage ${stage} (default)`);
+		logger.log(`Using features from Stage ${stage} (default)`);
 		return stage;
 	}
 
@@ -24,9 +23,9 @@ export function stageFromOptions(options) {
 	}
 
 	if (stage === OUT_OF_RANGE_STAGE) {
-		log('Stage has been disabled, features will be handled via the "features" option.');
+		logger.log('Stage has been disabled, features will be handled via the "features" option.');
 	} else {
-		log(`Using features from Stage ${stage}`);
+		logger.log(`Using features from Stage ${stage}`);
 	}
 
 	return stage;

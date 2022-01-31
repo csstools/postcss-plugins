@@ -2,19 +2,21 @@ import autoprefixer from 'autoprefixer';
 import cssdb from 'cssdb';
 import writeToExports from './side-effects/write-to-exports.mjs';
 import { pluginIdHelp } from './plugins/plugin-id-help.mjs';
-import { dumpLogs, resetLogger } from './log/helper.mjs';
+import { newLogger } from './log/helper.mjs';
 import logFeaturesList from './log/features-list.mjs';
 import { listFeatures } from './lib/list-features.mjs';
 import { initializeSharedOptions } from './lib/shared-options.mjs';
 
 const plugin = (opts) => {
+	const logger = newLogger();
+
 	// initialize options
 	const options = Object(opts);
 	const featureNamesInOptions = Object.keys(Object(options.features));
 	const browsers = options.browsers;
 	const sharedOptions = initializeSharedOptions(options);
 
-	const features = listFeatures(cssdb, options, sharedOptions);
+	const features = listFeatures(cssdb, options, sharedOptions, logger);
 	const plugins = features.map((feature) => {
 		return feature.plugin;
 	});
@@ -25,7 +27,7 @@ const plugin = (opts) => {
 		);
 	}
 
-	logFeaturesList(features, options);
+	logFeaturesList(features, options, logger);
 
 	const internalPlugin = () => {
 		return {
@@ -34,11 +36,11 @@ const plugin = (opts) => {
 				pluginIdHelp(featureNamesInOptions, root, result);
 
 				if (options.debug) {
-					dumpLogs(result);
+					logger.dumpLogs(result);
 				}
 
 				// Always reset the logger, if when debug is false
-				resetLogger();
+				logger.resetLogger();
 
 				if (options.exportTo) {
 					writeToExports(sharedOptions.exportTo, opts.exportTo);

@@ -1,9 +1,8 @@
 import browserslist from 'browserslist';
 import getUnsupportedBrowsersByFeature from './get-unsupported-browsers-by-feature.mjs';
-import { log } from '../log/helper.mjs';
 
 // add extra options for certain browsers by feature
-export default function getOptionsForBrowsersByFeature(browsers, feature, cssdbList) {
+export default function getOptionsForBrowsersByFeature(browsers, feature, cssdbList, logger) {
 	const supportedBrowsers = browserslist(browsers, { ignoreUnknownVersions: true });
 
 	switch (feature.id) {
@@ -21,7 +20,7 @@ export default function getOptionsForBrowsersByFeature(browsers, feature, cssdbL
 				const feature = cssdbList.find(feature => feature.id === 'is-pseudo-class');
 
 				if (needsOptionFor(feature, supportedBrowsers)) {
-					log('Disabling :is on "nesting-rules" due to lack of browser support.');
+					logger.log('Disabling :is on "nesting-rules" due to lack of browser support.');
 					return {
 						noIsPseudoSelector: true,
 					};
@@ -37,7 +36,7 @@ export default function getOptionsForBrowsersByFeature(browsers, feature, cssdbL
 				});
 
 				if (hasIEOrEdge) {
-					log('Adding area[href] fallbacks for ":any-link" support in Edge and IE.');
+					logger.log('Adding area[href] fallbacks for ":any-link" support in Edge and IE.');
 					return {
 						subFeatures: {
 							areaHrefNeedsFixing: true,

@@ -1,14 +1,13 @@
-import { testLogger } from '../../log/test-logger.mjs';
+import { newTestLogger } from '../../log/test-logger.mjs';
 import { strict as assert } from 'assert';
-import { dumpLogs, resetLogger } from '../../../log/helper.mjs';
 import { listFeatures } from '../../../lib/list-features.mjs';
 import { cssdb } from './cssdb-fixture.mjs';
 
-const logger = testLogger();
+const testLogger = newTestLogger();
 
-resetLogger();
+testLogger.logger.resetLogger();
 assert.deepStrictEqual(
-	cleanResult(listFeatures(cssdb, {stage: 0, enableClientSidePolyfills: false})),
+	cleanResult(listFeatures(cssdb, {stage: 0, enableClientSidePolyfills: false}, undefined, testLogger.logger)),
 	[
 		{
 			browsers: [
@@ -28,9 +27,9 @@ assert.deepStrictEqual(
 	],
 );
 
-dumpLogs(logger);
+testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
-	logger.getLogs(),
+	testLogger.getLogs(),
 	[
 		'Using features from Stage 0',
 		'  blank-pseudo-class has been disabled by "enableClientSidePolyfills: false".',
@@ -38,9 +37,9 @@ assert.deepStrictEqual(
 	],
 );
 
-resetLogger();
+testLogger.logger.resetLogger();
 assert.deepStrictEqual(
-	cleanResult(listFeatures(cssdb, {stage: 0, enableClientSidePolyfills: true})),
+	cleanResult(listFeatures(cssdb, {stage: 0, enableClientSidePolyfills: true}, undefined, testLogger.logger)),
 	[
 		{
 			browsers: [
@@ -75,9 +74,9 @@ assert.deepStrictEqual(
 	],
 );
 
-dumpLogs(logger);
+testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
-	logger.getLogs(),
+	testLogger.getLogs(),
 	[
 		'Using features from Stage 0',
 		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
