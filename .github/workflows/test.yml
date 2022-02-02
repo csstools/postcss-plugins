@@ -66,6 +66,7 @@ jobs:
       - run: |
             cd e2e/webpack/bundle-through
             npm install
+            npm run build
             npm run test
 
       # Deno compatibility
