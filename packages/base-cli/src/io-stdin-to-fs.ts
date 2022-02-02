@@ -25,6 +25,10 @@ export async function stdinToFs(plugin: Plugin, argo: Arguments, helpLogger: () 
 			map: (argo.inlineMap || argo.externalMap) ? { inline: argo.inlineMap } : false,
 		});
 
+		result.warnings().forEach(warn => {
+			console.warn(warn.toString());
+		});
+
 		if (argo.externalMap && result.map) {
 			await Promise.all([
 				await fsp.writeFile(output, result.css + (argo.inlineMap ? '\n' : '')),

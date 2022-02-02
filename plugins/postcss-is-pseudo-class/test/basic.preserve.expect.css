@@ -190,7 +190,7 @@ button:is(:hover, :is(:focus, :focus-within)) {
 	order: 7;
 }
 
-button:not(.does-not-exist):hover {
+button:hover:not(.does-not-exist) {
 	order: 7;
 }
 
@@ -198,7 +198,7 @@ button:not(.does-not-exist):hover {
 	order: 7;
 }
 
-button:not(.does-not-exist):focus {
+button:focus:not(.does-not-exist) {
 	order: 7;
 }
 
@@ -234,58 +234,130 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 10;
 }
 
-.alpha:focus > .beta + .beta {
+.pre:is(.alpha > .beta) + :is(:focus > .beta) {
 	order: 11;
+}
+
+.pre :is(.alpha > .beta)+ :is(:focus > .beta) {
+	order: 12;
+}
+
+.post:is(.alpha > .beta) + :is(:focus > .beta) {
+	order: 13;
+}
+
+:is(.alpha > .beta).post + :is(:focus > .beta) {
+	order: 13;
+}
+
+:is(.alpha > .beta) .post + :is(:focus > .beta) {
+	order: 14;
+}
+
+:focus:is(.alpha ~ .delta) > .beta + .beta {
+	order: 15;
+}
+
+:is(:is(.alpha ~ .delta) > .beta) + :is(:focus > .beta) {
+	order: 15;
+}
+
+.alpha:focus > .beta + .beta {
+	order: 16;
 }
 
 .alpha:focus > .beta + .two {
-	order: 11;
+	order: 16;
 }
 
 .one:focus > .two + .beta {
-	order: 11;
+	order: 16;
 }
 
 .one:focus > .two + .two {
-	order: 11;
+	order: 16;
 }
 
 :is(.alpha > .beta, .one > .two) + :is(:focus > .beta, :focus > .two) {
-	order: 11;
-}
-
-.alpha > .beta ~ :focus > .beta {
-	order: 12;
+	order: 16;
 }
 
 :is(.alpha > .beta) ~ :is(:focus > .beta) {
-	order: 12;
+	order: 17;
 }
 
 .alpha .beta > h1:not([attr*="foo-"]) {
-	order: 13;
+	order: 18;
 }
 
 .alpha .beta > h2:not([attr*="foo-"]) {
-	order: 13;
+	order: 18;
 }
 
 .alpha .beta > h3:not([attr*="foo-"]) {
-	order: 13;
+	order: 18;
 }
 
 .alpha .beta > h4:not([attr*="foo-"]) {
-	order: 13;
+	order: 18;
 }
 
 .alpha .beta > h5:not([attr*="foo-"]) {
-	order: 13;
+	order: 18;
 }
 
 .alpha .beta > h6:not([attr*="foo-"]) {
-	order: 13;
+	order: 18;
 }
 
 .alpha .beta > :is(h1, h2, h3, h4, h5, h6):not([attr*="foo-"]) {
-	order: 13;
+	order: 18;
+}
+
+.one > .two.alpha {
+	order: 19;
+}
+
+.alpha:is(.one > .two) {
+	order: 19;
+}
+
+.alpha.pre:is(.one > .two) {
+	order: 20;
+}
+
+.pre.alpha:is(.one > .two) {
+	order: 20;
+}
+
+.pre .alpha:is(.one > .two) {
+	order: 21;
+}
+
+a:not(.does-not-exist) {
+	order: 22;
+}
+
+.e a {
+	order: 22;
+}
+
+.e b {
+	order: 22;
+}
+
+:is(a, .e :is(a, b)) {
+	order: 22;
+}
+
+.empty-is:not(*) {
+	order: 23;
+}
+
+.empty-is:is() {
+	order: 23;
+}
+
+.invalid-is:is {
+	order: 24;
 }

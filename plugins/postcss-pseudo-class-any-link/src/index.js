@@ -1,13 +1,21 @@
-import parser from 'postcss-selector-parser';
+import { replaceAnyLink } from './replace-any-link';
 
 const anyAnyLinkMatch = /:any-link/;
 
 /**
- * @param {{preserve?: boolean}} opts
+ * @param {{preserve?: boolean, subFeatures?: { areaHrefNeedsFixing?: boolean }}} opts
  * @returns {import('postcss').Plugin}
  */
 function creator(opts) {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
+	const options = {
+		preserve: true,
+		...opts,
+	};
+
+	const subFeatures = {
+		areaHrefNeedsFixing: false,
+		...Object(options.subFeatures),
+	};
 
 	return {
 		postcssPlugin: 'postcss-pseudo-class-any-link',
@@ -23,73 +31,7 @@ function creator(opts) {
 				return;
 			}
 
-			let updatedSelector;
-
-			try {
-				// update the selector
-				updatedSelector = parser(selectors => {
-					// cache variables
-					let node;
-					let nodeIndex;
-					let selector;
-					let selectorLink;
-					let selectorVisited;
-
-					// cache the selector index
-					let selectorIndex = -1;
-
-					// for each selector
-					selector = selectors.nodes[++selectorIndex];
-					while (selector) {
-						// reset the node index
-						nodeIndex = -1;
-
-						// for each node
-						node = selector.nodes[++nodeIndex];
-						while (node) {
-							// if the node value matches the any-link value
-							if (node.value !== ':any-link' || node.type !== 'pseudo' || (node.nodes && node.nodes.length)) {
-								node = selector.nodes[++nodeIndex];
-								continue;
-							}
-
-							// clone the selector
-							selectorLink = selector.clone();
-							selectorVisited = selector.clone();
-
-							// update the matching clone values
-							selectorLink.nodes[nodeIndex].value = ':link';
-							selectorVisited.nodes[nodeIndex].value = ':visited';
-
-							// replace the selector with the clones and roll back the selector index
-							selectors.nodes.splice(selectorIndex--, 1, selectorLink, selectorVisited);
-
-							break;
-						}
-
-						selector = selectors.nodes[++selectorIndex];
-					}
-				}).processSync(rawSelector);
-			} catch (_) {
-				rule.warn(result, `Failed to parse selector : ${rule.selector}`);
-				return;
-			}
-
-			if (typeof updatedSelector === 'undefined') {
-				return;
-			}
-
-			if (updatedSelector === rawSelector) {
-				return;
-			}
-
-			if (preserve) {
-				rule.cloneBefore({
-					selector: updatedSelector,
-				});
-			} else {
-				rule.selector = updatedSelector;
-			}
+			replaceAnyLink(rule, result, options.preserve, subFeatures.areaHrefNeedsFixing);
 		},
 	};
 }

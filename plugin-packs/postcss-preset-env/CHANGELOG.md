@@ -1,5 +1,24 @@
 # Changes to PostCSS Preset Env
 
+### 7.3.0 (January 31, 2022)
+
+- Added `@csstools/postcss-is-pseudo-class` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#readme) for usage details.
+- Added `@csstools/postcss-hwb-function` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function#readme) for usage details.
+- Added `postcss-opacity-percentage` <br/> [Check the plugin README](https://github.com/mrcgrtz/postcss-opacity-percentage#readme) for usage details.
+- Added `postcss-clamp` <br/> [Check the plugin README](https://github.com/polemius/postcss-clamp#readme) for usage details.
+- Added `@csstools/postcss-normalize-display-values` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-normalize-display-values#readme) for usage details.
+- Added `@csstools/postcss-font-format-keywords` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-font-format-keywords#readme) for usage details.
+- Added `debug` [option](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#debug) that enables extra debugging information while processing the CSS.
+- Added `enableClientSidePolyfills` [option](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#enableclientsidepolyfills) that allows you to control every single plugin that requires a browser library to fully work. Defaults to `true` so they're enabled by default.
+- Added `minimumVendorImplementations` [option](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#minimumvendorimplementations) that allows you to enable/disable plugins based on their implementation status in browsers.
+- Fix sourcemaps for `image-set()` function.
+- Removed `caniuse-lite` dependency. This results not only in lower package size but also in better feature detection lead by changes on CSSDB.
+- Updated `cssdb` to `6.1.0` (major).
+- Updated `css-prefers-color-scheme` to `6.0.3` (patch)
+- Updated `postcss-custom-properties` to `12.1.4` (patch)
+- Updated `postcss-image-set-function` to `4.0.5` (patch)
+- Updated `postcss-pseudo-class-any-link` to `7.1.0` (minor)
+
 ### 7.2.3 (January 12, 2022)
 
 - Enhanced `importFrom` / `exportTo` so it's harder to cause unexpected issues by different shapes of data.

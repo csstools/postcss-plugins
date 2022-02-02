@@ -1,3 +1,5 @@
+import type { Warning } from 'postcss';
+
 export const dashesSeparator = '----------------------------------------';
 
 export function formatCSSAssertError(testCaseLabel, testCaseOptions, err, forGithubAnnotation = false) {
@@ -25,7 +27,7 @@ export function formatCSSAssertError(testCaseLabel, testCaseOptions, err, forGit
 	return formatted;
 }
 
-export function formatWarningsAssertError(testCaseLabel, testCaseOptions, actual, expected, forGithubAnnotation = false) {
+export function formatWarningsAssertError(testCaseLabel, testCaseOptions, actual: Array<Warning>, expected: number, forGithubAnnotation = false) {
 	let formatted = '';
 	formatted += `\n${testCaseLabel}\n\n`;
 
@@ -41,9 +43,17 @@ export function formatWarningsAssertError(testCaseLabel, testCaseOptions, actual
 		}
 	}
 
-	formatted += `unexpected or missing warnings :\n+ actual ${actual}\n- expected ${expected}\n`;
+	formatted += `unexpected or missing warnings :\n+ actual ${actual.length}\n- expected ${expected}\n`;
 
 	if (!forGithubAnnotation) {
+		actual.forEach((warning) => {
+			formatted += `\n[${warning.plugin}]: ${warning.text}`;
+		});
+
+		if (actual.length) {
+			formatted += '\n';
+		}
+
 		formatted += '\n' + dashesSeparator;
 	}
 

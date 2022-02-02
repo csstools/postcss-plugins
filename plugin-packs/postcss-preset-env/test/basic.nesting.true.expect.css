@@ -36,7 +36,7 @@
 	order: 7;
 }
 
-:is(.test-nesting-rules,#test-is-pseudo) + p {
+.test-nesting-rules + p, #test-is-pseudo + p {
 		order: 8;
 	}
 
@@ -159,4 +159,112 @@
 
 .test-has-pseudo-class:has(.inner-class) {
 	background-color: yellow;
+}
+
+:is(.a, .b):is(:focus, :hover) {
+	order: 27;
+}
+
+:is(.a > .b) + :is(.c > .d) {
+	order: 28;
+}
+
+.test-hwb-function {
+	background-color: hwb(194 0% 0% / .5);
+}
+
+.test-opacity-percent {
+	opacity: 42%;
+}
+
+.clamp-same-unit {
+	width: clamp(10px, 64px, 80px);
+}
+
+.complex-clamp {
+	width: clamp(calc(100% - 10px), min(10px, 100%), max(40px, 4em));
+}
+
+.clamp-different-units {
+	width: clamp(10%, 2px, 4rem);
+}
+
+@font-face {
+	font-family: 'A';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url(a) format(woff2);
+}
+
+.block-flow {
+	display: block flow;
+}
+
+.block-flow-root {
+	display: block flow-root;
+}
+
+.inline-flow {
+	display: inline flow;
+}
+
+.inline-flow-root {
+	display: inline flow-root;
+}
+
+.run-in-flow {
+	display: run-in flow;
+}
+
+.list-item-block-flow {
+	display: list-item block flow;
+}
+
+.inline-flow-list-item {
+	display: inline flow list-item;
+}
+
+.block-flex {
+	display: block flex;
+}
+
+.inline-flex {
+	display: inline flex;
+}
+
+.block-grid {
+	display: block grid;
+}
+
+.inline-grid {
+	display: inline grid;
+}
+
+.inline-ruby {
+	display: inline ruby;
+}
+
+.block-table {
+	display: block table;
+}
+
+.inline-table {
+	display: inline table;
+}
+
+.table-cell-flow {
+	display: table-cell flow;
+}
+
+.table-caption-flow {
+	display: table-caption flow;
+}
+
+.ruby-base-flow {
+	display: ruby-base flow;
+}
+
+.ruby-text-flow {
+	display: ruby-text flow;
 }

@@ -1,7 +1,7 @@
 # EXPERIMENTAL : CSS Has Pseudo [<img src="http://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][EXPERIMENTAL CSS Has Pseudo]
 
 [![NPM Version][npm-img]][npm-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 ⚠️ Experimental version of [CSS Has Pseudo](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo)
 
@@ -109,8 +109,7 @@ plugins: [
 ]
 ```
 
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-img]: https://img.shields.io/npm/v/@csstools/css-has-pseudo-experimental.svg
 [npm-url]: https://www.npmjs.com/package/@csstools/css-has-pseudo-experimental
 

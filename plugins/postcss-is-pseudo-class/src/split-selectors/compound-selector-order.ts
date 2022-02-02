@@ -92,6 +92,14 @@ export function sortCompoundSelector(node) {
 		}
 
 		if (a.type === b.type) {
+			if (a.value < b.value) {
+				return -1;
+			}
+
+			if (a.value > b.value) {
+				return 1;
+			}
+
 			return 0;
 		}
 

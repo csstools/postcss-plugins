@@ -1,0 +1,288 @@
+:root {
+	--order: 1;
+}
+
+.test-custom-properties {
+	order: var(--order);
+}
+
+.test-image-set-function {
+	background-image: url(img/test.png);
+	background-image: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+	order: 2;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.test-image-set-function {
+	background-image: url(img/test-2x.png);
+}
+}
+
+.test-logical-properties-and-values {
+	margin: logical 1px 2px 3px 4px;
+	order: 3;
+	padding-block: 5px;
+}
+
+.test-nesting-rules {
+	order: 4;
+
+	& p {
+		order: 5;
+	}
+
+	order: 6;
+}
+
+.test-nesting-rules,
+#test-is-pseudo {
+	order: 7;
+
+	& + p {
+		order: 8;
+	}
+
+	order: 9;
+}
+
+@media (max-width: 30em) {
+	.test-custom-media-queries {
+		order: 10;
+	}
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+	.test-media-query-ranges {
+		order: 11;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: black;
+		color: white;
+	}
+}
+
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+.test-custom-selectors:--heading {
+	order:12;
+}
+
+.test-case-insensitive-attributes[frame=hsides i] {
+	order: 13;
+}
+
+.test-rebeccapurple-color {
+	color: rebeccapurple;
+	order: 14;
+}
+
+.test-hexadecimal-alpha-notation {
+	background-color: #f3f3f3f3;
+	color: #0003;
+	order: 15;
+}
+
+.test-color-functional-notation {
+	color: rgb(70% 13.5% 13.5% / 50%);
+	order: 16;
+}
+
+.test-lab-function {
+	background-color: lab(40% 56.6 39);
+	color: lch(40% 68.8 34.5 / 50%);
+	order: 17;
+}
+
+.test-system-ui-font-family {
+	font-family: system-ui;
+	order: 18;
+}
+
+.test-font-variant-property {
+	font-variant-caps: small-caps;
+	order: 19;
+}
+
+.test-all-property {
+	all: initial;
+	order: 20;
+}
+
+.test-matches-pseudo-class:matches(:first-child, .special) {
+	order: 21;
+}
+
+.test-not-pseudo-class:not(:first-child, .special) {
+	order: 22;
+}
+
+.test-any-link-pseudo-class:any-link {
+	order: 23;
+}
+
+[dir="rtl"] .test-dir-pseudo-class {
+	order: 24;
+}
+
+.test-overflow-wrap-property {
+	order: 25;
+	overflow-wrap: break-word;
+}
+
+.test-focus-visible-pseudo-class.focus-visible {
+	order: 26;
+}
+
+.test-focus-visible-pseudo-class:focus-visible {
+	order: 26;
+}
+
+.test-double-position-gradients {
+	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
+}
+
+.test-blank-pseudo-class[blank] {
+	background-color: yellow;
+}
+
+.test-blank-pseudo-class:blank {
+	background-color: yellow;
+}
+
+.test-has-pseudo-class[\:has\(.inner-class\)] {
+	background-color: yellow;
+}
+
+.test-has-pseudo-class:has(.inner-class) {
+	background-color: yellow;
+}
+
+:is(.a, .b):is(:focus, :hover) {
+	order: 27;
+}
+
+:is(.a > .b) + :is(.c > .d) {
+	order: 28;
+}
+
+.test-hwb-function {
+	background-color: hwb(194 0% 0% / .5);
+}
+
+.test-opacity-percent {
+	opacity: 0.42;
+}
+
+.clamp-same-unit {
+	width: clamp(10px, 64px, 80px);
+}
+
+.complex-clamp {
+	width: clamp(calc(100% - 10px), min(10px, 100%), max(40px, 4em));
+}
+
+.clamp-different-units {
+	width: clamp(10%, 2px, 4rem);
+}
+
+@font-face {
+	font-family: 'A';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url(a) format(woff2);
+}
+
+.block-flow {
+	display: block;
+	display: block flow;
+}
+
+.block-flow-root {
+	display: flow-root;
+	display: block flow-root;
+}
+
+.inline-flow {
+	display: inline;
+	display: inline flow;
+}
+
+.inline-flow-root {
+	display: inline-block;
+	display: inline flow-root;
+}
+
+.run-in-flow {
+	display: run-in;
+	display: run-in flow;
+}
+
+.list-item-block-flow {
+	display: list-item;
+	display: list-item block flow;
+}
+
+.inline-flow-list-item {
+	display: inline list-item;
+	display: inline flow list-item;
+}
+
+.block-flex {
+	display: flex;
+	display: block flex;
+}
+
+.inline-flex {
+	display: inline-flex;
+	display: inline flex;
+}
+
+.block-grid {
+	display: grid;
+	display: block grid;
+}
+
+.inline-grid {
+	display: inline-grid;
+	display: inline grid;
+}
+
+.inline-ruby {
+	display: ruby;
+	display: inline ruby;
+}
+
+.block-table {
+	display: table;
+	display: block table;
+}
+
+.inline-table {
+	display: inline-table;
+	display: inline table;
+}
+
+.table-cell-flow {
+	display: table-cell;
+	display: table-cell flow;
+}
+
+.table-caption-flow {
+	display: table-caption;
+	display: table-caption flow;
+}
+
+.ruby-base-flow {
+	display: ruby-base;
+	display: ruby-base flow;
+}
+
+.ruby-text-flow {
+	display: ruby-text;
+	display: ruby-text flow;
+}

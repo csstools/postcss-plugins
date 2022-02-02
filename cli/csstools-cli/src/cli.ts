@@ -10,11 +10,15 @@ import postcssDoublePositionGradients from './plugins/postcss-double-position-gr
 import postcssEnvFunction from './plugins/postcss-env-function';
 import postcssFocusVisible from './plugins/postcss-focus-visible';
 import postcssFocusWithin from './plugins/postcss-focus-within';
+import postcssFontFormatKeywords from './plugins/postcss-font-format-keywords';
 import postcssGapProperties from './plugins/postcss-gap-properties';
+import postcssHWBFunction from './plugins/postcss-hwb-function';
 import postcssImageSetFunction from './plugins/postcss-image-set-function';
+import postcssIsPseudoClass from './plugins/postcss-is-pseudo-class';
 import postcssLabFunction from './plugins/postcss-lab-function';
 import postcssLogical from './plugins/postcss-logical';
 import postcssNesting from './plugins/postcss-nesting';
+import postcssNormalizeDisplayValues from './plugins/postcss-normalize-display-values';
 import postcssOverflowShorthand from './plugins/postcss-overflow-shorthand';
 import postcssPlace from './plugins/postcss-place';
 import postcssPresetEnv from './plugins/postcss-preset-env';
@@ -59,11 +63,20 @@ function main() {
 		case 'postcss-focus-within':
 			postcssFocusWithin();
 			return;
+		case 'postcss-font-format-keywords':
+			postcssFontFormatKeywords();
+			return;
 		case 'postcss-gap-properties':
 			postcssGapProperties();
 			return;
+		case 'postcss-hwb-function':
+			postcssHWBFunction();
+			return;
 		case 'postcss-image-set-function':
 			postcssImageSetFunction();
+			return;
+		case 'postcss-is-pseudo-class':
+			postcssIsPseudoClass();
 			return;
 		case 'postcss-lab-function':
 			postcssLabFunction();
@@ -73,6 +86,9 @@ function main() {
 			return;
 		case 'postcss-nesting':
 			postcssNesting();
+			return;
+		case 'postcss-normalize-display-values':
+			postcssNormalizeDisplayValues();
 			return;
 		case 'postcss-overflow-shorthand':
 			postcssOverflowShorthand();
@@ -110,11 +126,15 @@ function main() {
 				'  postcss-env-function',
 				'  postcss-focus-visible',
 				'  postcss-focus-within',
+				'  postcss-font-format-keywords',
 				'  postcss-gap-properties',
+				'  postcss-hwb-function',
 				'  postcss-image-set-function',
+				'  postcss-is-pseudo-class',
 				'  postcss-lab-function',
 				'  postcss-logical',
 				'  postcss-nesting',
+				'  postcss-normalize-display-values',
 				'  postcss-overflow-shorthand',
 				'  postcss-place',
 				'  postcss-pseudo-class-any-link',
