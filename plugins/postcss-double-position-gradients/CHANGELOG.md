@@ -1,5 +1,9 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased (patch)
+
+- Improved `es module` and `commonjs` compatibility
+
 ### 3.0.4 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.

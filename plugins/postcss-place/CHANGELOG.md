@@ -1,5 +1,9 @@
 # Changes to PostCSS Place Properties
 
+### Unreleased (patch)
+
+- Improved `es module` and `commonjs` compatibility
+
 ### 7.0.3 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.
