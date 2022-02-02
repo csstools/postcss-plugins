@@ -28,8 +28,8 @@
     "test": "bash ./test-self/test.sh"
   },
   "dependencies": {
-    "postcss-8.2": "npm:postcss@~8.2",
-    "postcss": "~8.4"
+    "postcss": "~8.4",
+    "postcss-8.2": "npm:postcss@~8.2"
   },
   "keywords": [
     "postcss",
