@@ -3,3 +3,4 @@ yarn.lock
 reports
 .stryker-tmp
 */**/package-lock.json
+!e2e/webpack/bundle-through/package-lock.json

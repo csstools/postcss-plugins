@@ -1,5 +1,9 @@
 # Changes to PostCSS Focus Visible
 
+### Unreleased (patch)
+
+- Improved `es module` and `commonjs` compatibility
+
 ### 6.0.3 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.

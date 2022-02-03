@@ -1,5 +1,10 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Improved `es module` and `commonjs` compatibility
+- Updated `postcss-opacity-percentage` to `1.1.2`
+
 ### 7.3.0 (January 31, 2022)
 
 - Added `@csstools/postcss-is-pseudo-class` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#readme) for usage details.

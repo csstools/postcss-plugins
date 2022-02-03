@@ -51,8 +51,10 @@ export function formatStagedFeature(cssdbList, browsers, features, feature, shar
 		}
 	}
 
-	if (feature.plugin.postcss) {
+	if (feature.plugin.postcss && typeof feature.plugin === 'function') {
 		plugin = feature.plugin(options);
+	} else if (feature.plugin && feature.plugin.default && typeof feature.plugin.default === 'function' && feature.plugin.default.postcss) {
+		plugin = feature.plugin.default(options);
 	} else {
 		plugin = feature.plugin;
 	}

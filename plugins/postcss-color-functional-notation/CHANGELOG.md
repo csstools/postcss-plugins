@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Functional Notation
 
+### Unreleased (patch)
+
+- Improved `es module` and `commonjs` compatibility
+
 ### 4.2.1 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.

@@ -4,7 +4,7 @@ const gapPropertyRegExp = /^(column-gap|gap|row-gap)$/i;
 // filter `display: grid` declarations
 const isDisplayGrid = (node) => node.prop === 'display' && node.value === 'grid';
 
-module.exports = function creator(opts) {
+function creator(opts) {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
 
 	return {
@@ -24,6 +24,8 @@ module.exports = function creator(opts) {
 			}
 		},
 	};
-};
+}
 
-module.exports.postcss = true;
+creator.postcss = true;
+
+export default creator;

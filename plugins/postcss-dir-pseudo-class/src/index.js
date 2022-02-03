@@ -1,8 +1,8 @@
-const selectorParser = require('postcss-selector-parser');
+import selectorParser from 'postcss-selector-parser';
 
 const dirRegex = /:dir\([^)]*\)/;
 
-module.exports = function creator(opts) {
+function creator(opts) {
 	const dir = Object(opts).dir;
 	const preserve = Boolean(Object(opts).preserve);
 	const shadow = Boolean(Object(opts).shadow);
@@ -157,6 +157,8 @@ module.exports = function creator(opts) {
 			}
 		},
 	};
-};
+}
 
-module.exports.postcss = true;
+creator.postcss = true;
+
+export default creator;

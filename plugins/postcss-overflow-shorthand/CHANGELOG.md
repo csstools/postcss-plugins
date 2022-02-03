@@ -1,5 +1,9 @@
 # Changes to PostCSS Overflow Shorthand
 
+### Unreleased (patch)
+
+- Improved `es module` and `commonjs` compatibility
+
 ### 3.0.2 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.
