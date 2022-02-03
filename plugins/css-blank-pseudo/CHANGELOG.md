@@ -1,5 +1,9 @@
 # Changes to CSS Blank Pseudo
 
+### Unreleased (patch)
+
+- Rebuild of browser polyfills
+
 ### 3.0.2 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.

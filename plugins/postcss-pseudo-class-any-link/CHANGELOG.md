@@ -1,5 +1,9 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### Unreleased (patch)
+
+- Improved `es module` and `commonjs` compatibility
+
 ### 7.1.0 (January 31, 2022)
 
 - Add support in IE and Edge for the `<area>` element

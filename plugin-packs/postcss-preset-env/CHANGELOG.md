@@ -1,5 +1,11 @@
 # Changes to PostCSS Preset Env
 
+### 7.3.1 (February 3, 2022) 
+
+- Ensured that `debug` option uses a single instance per run, this allows for `debug` to work on parallel runs within CI environments.
+- Normalized exports to support both Common JS and ESM within our modules. This allows for the package to be processable via Webpack [#221](https://github.com/csstools/postcss-plugins/issues/221) 
+- Updated `postcss-opacity-percentage` to `1.1.2` (patch).
+
 ### 7.3.0 (January 31, 2022)
 
 - Added `@csstools/postcss-is-pseudo-class` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#readme) for usage details.

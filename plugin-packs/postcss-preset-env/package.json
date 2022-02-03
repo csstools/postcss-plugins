@@ -1,6 +1,6 @@
 {
   "name": "postcss-preset-env",
-  "version": "7.3.0",
+  "version": "7.3.1",
   "description": "Convert modern CSS into something browsers understand",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -8,6 +8,13 @@
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    }
+  },
   "files": [
     "CHANGELOG.md",
     "LICENSE.md",
@@ -59,7 +66,7 @@
     "postcss-logical": "^5.0.3",
     "postcss-media-minmax": "^5.0.0",
     "postcss-nesting": "^10.1.2",
-    "postcss-opacity-percentage": "^1.1.1",
+    "postcss-opacity-percentage": "^1.1.2",
     "postcss-overflow-shorthand": "^3.0.2",
     "postcss-page-break": "^3.0.4",
     "postcss-place": "^7.0.3",
