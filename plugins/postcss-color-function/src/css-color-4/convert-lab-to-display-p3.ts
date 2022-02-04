@@ -1,4 +1,4 @@
-import { D50_to_D65, gam_P3, Lab_to_XYZ, lin_P3, lin_P3_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_P3, XYZ_to_OKLab } from './conversions.js';
+import { D50_to_D65, gam_P3, gam_sRGB, Lab_to_XYZ, lin_P3, lin_P3_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_P3, XYZ_to_OKLab } from './conversions.js';
 import { clip, inGamut, mapGamut } from './map-gamut';
 
 type color = [number, number, number];

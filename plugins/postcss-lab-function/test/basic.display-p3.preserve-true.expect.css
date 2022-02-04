@@ -1,94 +1,126 @@
 .test-lab {
-	color: rgb(179, 35, 35);
-	color: color(display-p3 0.64331 0.19245 0.16771);
-	color: lab(40% 56.6 39);
-	color: rgba(179, 35, 35, 1);
-	color: color(display-p3 0.64331 0.19245 0.16771 / 1);
-	color: lab(40% 56.6 39 / 1);
-	color: rgba(179, 35, 35, .5);
-	color: color(display-p3 0.64331 0.19245 0.16771 / .5);
-	color: lab(40% 56.6 39 / .5);
-	color: rgba(179, 35, 35, 1);
-	color: color(display-p3 0.64331 0.19245 0.16771 / 100%);
-	color: lab(40% 56.6 39 / 100%);
-	color: rgba(179, 35, 35, 0.5);
-	color: color(display-p3 0.64331 0.19245 0.16771 / 50%);
-	color: lab(40% 56.6 39 / 50%);
-	color: rgb(222, 105, 147);
-	color: color(display-p3 0.81388 0.43646 0.57322);
-	color: lab(60% 50 0);
-	color: lab(60% 50 0 foo);
+	color-1: rgb(179, 35, 35);
+	color-1: color(display-p3 0.64331 0.19245 0.16771);
+	color-1: lab(40% 56.6 39);
+	color-2: rgba(179, 35, 35, 1);
+	color-2: color(display-p3 0.64331 0.19245 0.16771 / 1);
+	color-2: lab(40% 56.6 39 / 1);
+	color-3: rgba(179, 35, 35, .5);
+	color-3: color(display-p3 0.64331 0.19245 0.16771 / .5);
+	color-3: lab(40% 56.6 39 / .5);
+	color-4: rgba(179, 35, 35, 1);
+	color-4: color(display-p3 0.64331 0.19245 0.16771 / 100%);
+	color-4: lab(40% 56.6 39 / 100%);
+	color-5: rgba(179, 35, 35, 0.5);
+	color-5: color(display-p3 0.64331 0.19245 0.16771 / 50%);
+	color-5: lab(40% 56.6 39 / 50%);
+	color-6: rgb(222, 105, 147);
+	color-6: color(display-p3 0.81388 0.43646 0.57322);
+	color-6: lab(60% 50 0);
+	color-7: lab(60% 50 0 foo);
 }
 
 .test-lch {
-	color: rgb(179, 35, 35);
-	color: color(display-p3 0.64331 0.19245 0.16771);
-	color: lch(40% 68.735435 34.568626);
-	color: rgba(179, 35, 35, 1);
-	color: color(display-p3 0.64331 0.19245 0.16771 / 1);
-	color: lch(40% 68.735435 34.568626 / 1);
-	color: rgba(179, 35, 35, .5);
-	color: color(display-p3 0.64331 0.19245 0.16771 / .5);
-	color: lch(40% 68.735435 34.568626 / .5);
-	color: rgba(179, 35, 35, 1);
-	color: color(display-p3 0.64331 0.19245 0.16771 / 100%);
-	color: lch(40% 68.735435 34.568626 / 100%);
-	color: rgba(179, 35, 35, 0.5);
-	color: color(display-p3 0.64331 0.19245 0.16771 / 50%);
-	color: lch(40% 68.735435 34.568626 / 50%);
-	color: rgb(222, 105, 147);
-	color: color(display-p3 0.81388 0.43646 0.57322);
-	color: lch(60% 50 0);
+	color-1: rgb(179, 35, 35);
+	color-1: color(display-p3 0.64331 0.19245 0.16771);
+	color-1: lch(40% 68.735435 34.568626);
+	color-2: rgba(179, 35, 35, 1);
+	color-2: color(display-p3 0.64331 0.19245 0.16771 / 1);
+	color-2: lch(40% 68.735435 34.568626 / 1);
+	color-3: rgba(179, 35, 35, .5);
+	color-3: color(display-p3 0.64331 0.19245 0.16771 / .5);
+	color-3: lch(40% 68.735435 34.568626 / .5);
+	color-4: rgba(179, 35, 35, 1);
+	color-4: color(display-p3 0.64331 0.19245 0.16771 / 100%);
+	color-4: lch(40% 68.735435 34.568626 / 100%);
+	color-5: rgba(179, 35, 35, 0.5);
+	color-5: color(display-p3 0.64331 0.19245 0.16771 / 50%);
+	color-5: lch(40% 68.735435 34.568626 / 50%);
+	color-6: rgb(222, 105, 147);
+	color-6: color(display-p3 0.81388 0.43646 0.57322);
+	color-6: lch(60% 50 0);
 
-	color: rgb(0, 163, 142);
+	color-7: rgb(0, 163, 142);
 
-	color: color(display-p3 0.17545 0.64269 0.56213);
+	color-7: color(display-p3 0.17545 0.64269 0.56213);
 
-	color: lch(60% 50 180);
-	color: rgb(0, 163, 142);
-	color: color(display-p3 0.17545 0.64269 0.56213);
-	color: lch(60% 50 180deg);
-	color: rgb(0, 163, 142);
-	color: color(display-p3 0.17545 0.64269 0.56213);
-	color: lch(60% 50 0.5turn);
-	color: rgb(0, 163, 142);
-	color: color(display-p3 0.17545 0.64269 0.56213);
-	color: lch(60% 50 200grad);
-	color: rgb(0, 163, 142);
-	color: color(display-p3 0.17545 0.64269 0.56213);
-	color: lch(60% 50 3.14159rad);
+	color-7: lch(60% 50 180);
+	color-8: rgb(0, 163, 142);
+	color-8: color(display-p3 0.17545 0.64269 0.56213);
+	color-8: lch(60% 50 180deg);
+	color-9: rgb(0, 163, 142);
+	color-9: color(display-p3 0.17545 0.64269 0.56213);
+	color-9: lch(60% 50 0.5turn);
+	color-10: rgb(0, 163, 142);
+	color-10: color(display-p3 0.17545 0.64269 0.56213);
+	color-10: lch(60% 50 200grad);
+	color-11: rgb(0, 163, 142);
+	color-11: color(display-p3 0.17545 0.64269 0.56213);
+	color-11: lch(60% 50 3.14159rad);
 
-	color: rgb(212, 118, 84);
+	color-12: rgb(212, 118, 84);
 
-	color: color(display-p3 0.78108 0.48084 0.35822);
+	color-12: color(display-p3 0.78108 0.48084 0.35822);
 
-	color: lch(60% 50 45);
-	color: rgb(212, 118, 84);
-	color: color(display-p3 0.78108 0.48084 0.35822);
-	color: lch(60% 50 45deg);
-	color: rgb(212, 118, 84);
-	color: color(display-p3 0.78108 0.48084 0.35822);
-	color: lch(60% 50 0.125turn);
-	color: rgb(212, 118, 84);
-	color: color(display-p3 0.78108 0.48084 0.35822);
-	color: lch(60% 50 50grad);
-	color: rgb(212, 118, 84);
-	color: color(display-p3 0.78108 0.48084 0.35822);
-	color: lch(60% 50 0.785398rad);
-	color: lch(60% 50 0.785398unknown);
+	color-12: lch(60% 50 45);
+	color-13: rgb(212, 118, 84);
+	color-13: color(display-p3 0.78108 0.48084 0.35822);
+	color-13: lch(60% 50 45deg);
+	color-14: rgb(212, 118, 84);
+	color-14: color(display-p3 0.78108 0.48084 0.35822);
+	color-14: lch(60% 50 0.125turn);
+	color-15: rgb(212, 118, 84);
+	color-15: color(display-p3 0.78108 0.48084 0.35822);
+	color-15: lch(60% 50 50grad);
+	color-16: rgb(212, 118, 84);
+	color-16: color(display-p3 0.78108 0.48084 0.35822);
+	color-16: lch(60% 50 0.785398rad);
+	color-17: lch(60% 50 0.785398unknown);
 }
 
-.test-alpha {
-	color: rgba(6, 3, 4, 1);
-	color: color(display-p3 0.02204 0.01161 0.01431 / 1);
-	color: lch(1% 1 1 / 1);
-	color: rgba(6, 3, 4, calc(33 / 22));
-	color: color(display-p3 0.02204 0.01161 0.01431 / calc(33 / 22));
-	color: lch(1% 1 1 / calc(33 / 22));
-	color: rgba(6, 3, 4, calc(20% * 5));
-	color: color(display-p3 0.02204 0.01161 0.01431 / calc(20% * 5));
-	color: lch(1% 1 1 / calc(20% * 5));
-	color: lch(1% 1 1 /);
+.test-author-provided-fallback {
+	color: rgb(0, 0, 0);
+	color: lch(100% 0 0);
+}
+
+/* this will most likely be a mistake by the author */
+.test-author-provided-override {
+	color: rgb(255, 255, 255);
+	color: color(display-p3 1.00000 1.00000 1.00000);
+	color: lch(100% 0 0);
+	color: rgb(0, 0, 0);
+}
+
+.test-alpha-lab {
+	color-1: rgba(7, 3, 1, 1);
+	color-1: color(display-p3 0.02472 0.01150 0.00574 / 1);
+	color-1: lab(1% 1 1 / 1);
+	color-2: rgba(7, 3, 1, calc(33 / 22));
+	color-2: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
+	color-2: lab(1% 1 1 / calc(33 / 22));
+	color-3: rgba(7, 3, 1, calc(20% * 5));
+	color-3: color(display-p3 0.02472 0.01150 0.00574 / calc(20% * 5));
+	color-3: lab(1% 1 1 / calc(20% * 5));
+	color-4: rgba(7, 3, 1, var(--foo));
+	color-4: color(display-p3 0.02472 0.01150 0.00574 / var(--foo));
+	color-4: lab(1% 1 1 / var(--foo));
+	color-5: lab(1% 1 1 /);
+}
+
+.test-alpha-lch {
+	color-1: rgba(6, 3, 4, 1);
+	color-1: color(display-p3 0.02204 0.01161 0.01431 / 1);
+	color-1: lch(1% 1 1 / 1);
+	color-2: rgba(6, 3, 4, calc(33 / 22));
+	color-2: color(display-p3 0.02204 0.01161 0.01431 / calc(33 / 22));
+	color-2: lch(1% 1 1 / calc(33 / 22));
+	color-3: rgba(6, 3, 4, calc(20% * 5));
+	color-3: color(display-p3 0.02204 0.01161 0.01431 / calc(20% * 5));
+	color-3: lch(1% 1 1 / calc(20% * 5));
+	color-4: rgba(6, 3, 4, var(--foo));
+	color-4: color(display-p3 0.02204 0.01161 0.01431 / var(--foo));
+	color-4: lch(1% 1 1 / var(--foo));
+	color-5: lch(1% 1 1 /);
 }
 
 .test-ignore {
@@ -107,12 +139,18 @@
 }
 
 .test-low-luminance {
-	prop-1: rgb(0, 38, 38);
-	prop-1: color(display-p3 0.00000 0.15066 0.15759);
-	prop-1: lch(0% 210 285);
-	prop-2: rgb(0, 42, 43);
-	prop-2: color(display-p3 0.00000 0.16933 0.17648);
-	prop-2: lch(5% 210 285);
+	/* not teal */
+	prop-1: rgb(0, 0, 0);
+	prop-1: color(display-p3 0.00000 0.00000 0.00000);
+	prop-1: lch(0% 210 90);
+	/* teal */
+	prop-2: rgb(0, 38, 38);
+	prop-2: color(display-p3 0.00000 0.15066 0.15759);
+	prop-2: lch(0% 210 285);
+	/* teal */
+	prop-3: rgb(0, 42, 43);
+	prop-3: color(display-p3 0.00000 0.16933 0.17648);
+	prop-3: lch(5% 210 285);
 }
 
 .test-multiple-colors {

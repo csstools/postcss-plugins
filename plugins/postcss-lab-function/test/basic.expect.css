@@ -1,40 +1,60 @@
 .test-lab {
-	color: rgb(179, 35, 35);
-	color: rgba(179, 35, 35, 1);
-	color: rgba(179, 35, 35, .5);
-	color: rgba(179, 35, 35, 1);
-	color: rgba(179, 35, 35, 0.5);
-	color: rgb(222, 105, 147);
-	color: lab(60% 50 0 foo);
+	color-1: rgb(179, 35, 35);
+	color-2: rgba(179, 35, 35, 1);
+	color-3: rgba(179, 35, 35, .5);
+	color-4: rgba(179, 35, 35, 1);
+	color-5: rgba(179, 35, 35, 0.5);
+	color-6: rgb(222, 105, 147);
+	color-7: lab(60% 50 0 foo);
 }
 
 .test-lch {
-	color: rgb(179, 35, 35);
-	color: rgba(179, 35, 35, 1);
-	color: rgba(179, 35, 35, .5);
-	color: rgba(179, 35, 35, 1);
-	color: rgba(179, 35, 35, 0.5);
-	color: rgb(222, 105, 147);
+	color-1: rgb(179, 35, 35);
+	color-2: rgba(179, 35, 35, 1);
+	color-3: rgba(179, 35, 35, .5);
+	color-4: rgba(179, 35, 35, 1);
+	color-5: rgba(179, 35, 35, 0.5);
+	color-6: rgb(222, 105, 147);
 
-	color: rgb(0, 163, 142);
-	color: rgb(0, 163, 142);
-	color: rgb(0, 163, 142);
-	color: rgb(0, 163, 142);
-	color: rgb(0, 163, 142);
+	color-7: rgb(0, 163, 142);
+	color-8: rgb(0, 163, 142);
+	color-9: rgb(0, 163, 142);
+	color-10: rgb(0, 163, 142);
+	color-11: rgb(0, 163, 142);
 
-	color: rgb(212, 118, 84);
-	color: rgb(212, 118, 84);
-	color: rgb(212, 118, 84);
-	color: rgb(212, 118, 84);
-	color: rgb(212, 118, 84);
-	color: lch(60% 50 0.785398unknown);
+	color-12: rgb(212, 118, 84);
+	color-13: rgb(212, 118, 84);
+	color-14: rgb(212, 118, 84);
+	color-15: rgb(212, 118, 84);
+	color-16: rgb(212, 118, 84);
+	color-17: lch(60% 50 0.785398unknown);
 }
 
-.test-alpha {
-	color: rgba(6, 3, 4, 1);
-	color: rgba(6, 3, 4, calc(33 / 22));
-	color: rgba(6, 3, 4, calc(20% * 5));
-	color: lch(1% 1 1 /);
+.test-author-provided-fallback {
+	color: rgb(0, 0, 0);
+	color: lch(100% 0 0);
+}
+
+/* this will most likely be a mistake by the author */
+.test-author-provided-override {
+	color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+}
+
+.test-alpha-lab {
+	color-1: rgba(7, 3, 1, 1);
+	color-2: rgba(7, 3, 1, calc(33 / 22));
+	color-3: rgba(7, 3, 1, calc(20% * 5));
+	color-4: rgba(7, 3, 1, var(--foo));
+	color-5: lab(1% 1 1 /);
+}
+
+.test-alpha-lch {
+	color-1: rgba(6, 3, 4, 1);
+	color-2: rgba(6, 3, 4, calc(33 / 22));
+	color-3: rgba(6, 3, 4, calc(20% * 5));
+	color-4: rgba(6, 3, 4, var(--foo));
+	color-5: lch(1% 1 1 /);
 }
 
 .test-ignore {
@@ -49,8 +69,12 @@
 }
 
 .test-low-luminance {
-	prop-1: rgb(0, 38, 38);
-	prop-2: rgb(0, 42, 43);
+	/* not teal */
+	prop-1: rgb(0, 0, 0);
+	/* teal */
+	prop-2: rgb(0, 38, 38);
+	/* teal */
+	prop-3: rgb(0, 42, 43);
 }
 
 .test-multiple-colors {

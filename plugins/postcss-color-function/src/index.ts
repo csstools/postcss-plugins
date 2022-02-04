@@ -1,25 +1,17 @@
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { atSupportsParams, hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import valueParser from 'postcss-value-parser';
 import type { ParsedValue, FunctionNode } from 'postcss-value-parser';
 import type { AtRule, Container, Declaration, Node, Postcss, Result } from 'postcss';
-import { onCSSFunctionDisplayP3, onCSSFunctionSRgb } from './on-css-function';
+import { onCSSFunctionSRgb } from './on-css-function';
 import { hasFallback } from './has-fallback-decl';
 import type { PluginCreator } from 'postcss';
 
-// NOTE : Used in unit tests.
-import { labToSRgb } from './css-color-4/convert-lab-to-srgb';
-import { lchToSRgb } from './css-color-4/convert-lch-to-srgb';
-
-const atSupportsLabParams = '(color: lab(0% 0 0)) and (color: lch(0% 0 0))';
-const atSupportsDisplayP3Params = '(color: color(display-p3 1 1 1))';
-
 /** Transform lab() and lch() functions in CSS. */
-const postcssPlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = (opts?: { preserve: boolean, displayP3: boolean }) => {
+const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
-	const displayP3Enabled = 'displayP3' in Object(opts) ? Boolean(opts.displayP3) : false;
 
 	return {
-		postcssPlugin: 'postcss-lab-function',
+		postcssPlugin: 'postcss-color-function',
 		Declaration: (decl: Declaration, { result, postcss }: { result: Result, postcss: Postcss }) => {
 			if (hasFallback(decl)) {
 				return;
@@ -30,7 +22,7 @@ const postcssPlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = 
 			}
 
 			const originalValue = decl.value;
-			if (!(/(^|[^\w-])(lab|lch)\(/i.test(originalValue))) {
+			if (originalValue.indexOf('color(') === -1) {
 				return;
 			}
 
@@ -44,7 +36,7 @@ const postcssPlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = 
 
 				if (preserve) {
 					// Only wrap original in @supports if preserve is true.
-					const atSupports = postcss.atRule({ name: 'supports', params: atSupportsLabParams, source: decl.source });
+					const atSupports = postcss.atRule({ name: 'supports', params: atSupportsParams, source: decl.source });
 
 					const parentClone = parent.clone();
 					parentClone.removeAll();
@@ -52,37 +44,15 @@ const postcssPlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = 
 					parentClone.append(decl.clone());
 					atSupports.append(parentClone);
 
-					insertAtSupportsAfterCorrectRule(atSupports, parent, atSupportsLabParams);
-				}
-
-				if (displayP3Enabled) {
-					// Always wrap display-p3 in @supports.
-					const atSupports = postcss.atRule({ name: 'supports', params: atSupportsDisplayP3Params, source: decl.source });
-
-					const parentClone = parent.clone();
-					parentClone.removeAll();
-
-					parentClone.append(decl.clone({ value: modified.displayP3 }));
-					atSupports.append(parentClone);
-
-					insertAtSupportsAfterCorrectRule(atSupports, parent, atSupportsDisplayP3Params);
+					insertAtSupportsAfterCorrectRule(atSupports, parent, atSupportsParams);
 				}
 
 				decl.value = modified.rgb;
 			} else if (preserve) {
 				decl.cloneBefore({ value: modified.rgb });
 
-				if (displayP3Enabled) {
-					decl.cloneBefore({ value: modified.displayP3 });
-				}
 			} else {
-				decl.cloneBefore({ value: modified.rgb });
-
-				if (displayP3Enabled) {
-					decl.cloneBefore({ value: modified.displayP3 });
-				}
-
-				decl.remove();
+				decl.value = modified.rgb;
 			}
 		},
 	};
@@ -90,15 +60,9 @@ const postcssPlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = 
 
 postcssPlugin.postcss = true;
 
-// Used by unit tests.
-// Mixing named and default export causes issues with CJS.
-// Attaching these to the default export is the best solution.
-postcssPlugin['_labToSRgb'] = labToSRgb;
-postcssPlugin['_lchToSRgb'] = lchToSRgb;
-
 export default postcssPlugin;
 
-function modifiedValues(originalValue: string, decl: Declaration, result: Result): {rgb: string, displayP3: string} | undefined {
+function modifiedValues(originalValue: string, decl: Declaration, result: Result): {rgb: string} | undefined {
 	let valueASTSRgb: ParsedValue | undefined;
 
 	try {
@@ -119,7 +83,7 @@ function modifiedValues(originalValue: string, decl: Declaration, result: Result
 			return;
 		}
 
-		if (node.value !== 'lab' && node.value !== 'lch') {
+		if (node.value !== 'color') {
 			return;
 		}
 
@@ -131,25 +95,8 @@ function modifiedValues(originalValue: string, decl: Declaration, result: Result
 		return;
 	}
 
-	// If sRGB parses correctly, display-p3 will as well.
-	const valueASTSDisplayP3 = valueParser(originalValue);
-	valueASTSDisplayP3.walk((node) => {
-		if (!node.type || node.type !== 'function') {
-			return;
-		}
-
-		if (node.value !== 'lab' && node.value !== 'lch') {
-			return;
-		}
-
-		onCSSFunctionDisplayP3(node as FunctionNode);
-	});
-
-	const modifiedValueDisplayP3 = String(valueASTSDisplayP3);
-
 	return {
 		rgb: modifiedValueSRgb,
-		displayP3: modifiedValueDisplayP3,
 	};
 }
 

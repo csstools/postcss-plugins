@@ -1,38 +1,11 @@
-import { D50_to_D65, gam_P3, Lab_to_XYZ, lin_P3, lin_P3_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_P3, XYZ_to_OKLab } from './conversions.js';
+import { D50_to_D65, gam_P3, gam_sRGB, Lab_to_XYZ, LCH_to_Lab, lin_P3, lin_P3_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_P3, XYZ_to_OKLab } from './conversions.js';
 import { clip, inGamut, mapGamut } from './map-gamut';
 
 type color = [number, number, number];
 
-export function labToDisplayP3(labRaw: color): color {
-	const [labLRaw, labARaw, labBRaw] = labRaw;
-
-	const labL = Math.min(
-		Math.max(
-			labLRaw,
-			0,
-		),
-		100,
-	);
-
-	const labA = Math.min(
-		Math.max(
-			labARaw,
-			-127,
-		),
-		128,
-	);
-
-	const labB = Math.min(
-		Math.max(
-			labBRaw,
-			-127,
-		),
-		128,
-	);
-
-	const lab = [labL, labA, labB];
-
-	let conversion = lab.slice() as color;
+export function lchToDisplayP3(lch: color): color {
+	let conversion = lch.slice() as color;
+	conversion = LCH_to_Lab(conversion);
 
 	// https://drafts.csswg.org/css-color-4/#oklab-lab-to-predefined
 	// 1. Convert Lab to(D50 - adapted) XYZ
@@ -58,7 +31,7 @@ export function labToDisplayP3(labRaw: color): color {
 		x = OKLCH_to_OKLab(x);
 		x = OKLab_to_XYZ(x);
 		x = XYZ_to_lin_P3(x);
-		return gam_P3(x);
+		return gam_sRGB(x);
 	}, (x: color) => {
 		x = lin_P3(x);
 		x = lin_P3_to_XYZ(x);

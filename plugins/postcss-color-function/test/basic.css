@@ -1,0 +1,110 @@
+.test-color-multi-channel {
+	color-1: color(display-p3 1);
+	color-2: color(display-p3 1 / 0.5);
+	color-3: color(display-p3 1 1);
+	color-4: color(display-p3 1 1 / 0.5);
+	color-5: color(display-p3 1 1 1 1);
+	color-6: color(display-p3 1 1 1 1 / 0.5);
+}
+
+.test-srgb {
+	color-1: color(srgb 0.64331 0.19245 0.16771);
+	color-2: color(srgb 0.64331 0.19245 0.16771 / 1);
+	color-3: color(srgb 0.64331 0.19245 0.16771 / .5);
+	color-4: color(srgb 0.64331 0.19245 0.16771 / 100%);
+	color-5: color(srgb 0.64331 0.19245 0.16771 / 50%);
+	color-6: color(srgb 0.81388 0.43646 0.57322);
+	color-7: color(srgb 0.81388 0.43646 foo);
+}
+
+.test-display-p3 {
+	color-1: color(display-p3 0.64331 0.19245 0.16771);
+	color-2: color(display-p3 0.64331 0.19245 0.16771 / 1);
+	color-3: color(display-p3 0.64331 0.19245 0.16771 / .5);
+	color-4: color(display-p3 0.64331 0.19245 0.16771 / 100%);
+	color-5: color(display-p3 0.64331 0.19245 0.16771 / 50%);
+	color-6: color(display-p3 0.81388 0.43646 0.57322);
+	color-7: color(display-p3 0.81388 0.43646 foo);
+}
+
+.test-author-provided-fallback {
+	color: color(display-p3 1 1 1);
+}
+
+/* this will most likely be a mistake by the author */
+.test-author-provided-override {
+	color: color(display-p3 1 1 1);
+}
+
+.test-alpha {
+	color-1: color(display-p3 0.02472 0.01150 0.00574 / 1);
+	color-2: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
+	color-3: color(display-p3 0.02472 0.01150 0.00574 / calc(20% * 5));
+	color-4: color(display-p3 0.02472 0.01150 0.00574 / var(--foo));
+	color-5: color(display-p3 0.02472 0.01150 0.00574 /);
+}
+
+
+.test-ignore {
+	prop-1: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
+	prop-2: url('color(display-p3 0.02472 0.01150 0.00574 / 1)');
+}
+
+.test-unparseable-lab-function {
+	background-image: color(; );
+}
+.test-gamut {
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B48%2C-53%2C12%5D%2C%5B58%2C-54%2C69%5D%5D */
+	/* out */
+	prop-1: color(display-p3 0.00000 0.51872 0.36985);
+	/* out */
+	prop-2: color(display-p3 0.31275 0.62335 0.08647);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B45%2C-13%2C29%5D%2C%5B77%2C33%2C97%5D%5D */
+	/* in */
+	prop-3: color(display-p3 0.39215 0.43776 0.24705);
+	/* out */
+	prop-4: color(display-p3 0.99733 0.66278 0.12085);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B76%2C-29%2C-23%5D%2C%5B16%2C-32%2C24%5D%5D */
+	/* in */
+	prop-5: color(display-p3 0.46284 0.78863 0.88439);
+	/* out */
+	prop-6: color(display-p3 0.00652 0.18999 0.01056);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B85%2C16%2C29%5D%2C%5B55%2C-42%2C58%5D%5D */
+	/* out */
+	prop-7: color(display-p3 0.96684 0.79482 0.64336);
+	/* out */
+	prop-8: color(display-p3 0.35483 0.57788 0.15007);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B87%2C-94%2C103%5D%2C%5B88%2C-9%2C62%5D%5D */
+	/* out */
+	prop-9: color(display-p3 0.32231 0.99185 0.02928);
+	/* in */
+	prop-10: color(display-p3 0.90245 0.87996 0.45339);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B69%2C-35%2C-39%5D%2C%5B68%2C61%2C39%5D%5D */
+	/* out */
+	prop-11: color(display-p3 0.16541 0.72332 0.91352);
+	/* out */
+	prop-12: color(display-p3 0.99104 0.47662 0.41939);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B60%2C-28%2C74%5D%2C%5B65%2C81%2C-13%5D%5D */
+	/* out */
+	prop-13: color(display-p3 0.49844 0.61099 0.07831);
+	/* out */
+	prop-14: color(display-p3 0.99687 0.35134 0.71095);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B60%2C-28%2C15%5D%2C%5B65%2C81%2C-11%5D%5D */
+	/* in */
+	prop-15: color(display-p3 0.43165 0.61289 0.47061);
+	/* out */
+	prop-16: color(display-p3 0.99937 0.35096 0.69833);
+
+	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B78%2C-64%2C-44%5D%2C%5B76%2C81%2C-11%5D%5D */
+	/* out */
+	prop-17: color(display-p3 0.00000 0.83784 0.97033);
+	/* out */
+	prop-18: color(display-p3 1.00000 0.62326 0.79886);
+}
