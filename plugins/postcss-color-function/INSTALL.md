@@ -1,6 +1,6 @@
-# Installing PostCSS Lab Function
+# Installing PostCSS Color Function
 
-[PostCSS Lab Function] runs in all Node environments, with special
+[PostCSS Color Function] runs in all Node environments, with special
 instructions for:
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
@@ -8,20 +8,20 @@ instructions for:
 
 ## Node
 
-Add [PostCSS Lab Function] to your project:
+Add [PostCSS Color Function] to your project:
 
 ```bash
-npm install postcss postcss-lab-function --save-dev
+npm install postcss @csstools/postcss-color-function --save-dev
 ```
 
 Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssLabFunction = require('postcss-lab-function');
+const postcssColorFunction = require('@csstools/postcss-color-function');
 
 postcss([
-  postcssLabFunction(/* pluginOptions */)
+  postcssColorFunction(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -33,15 +33,15 @@ Add [PostCSS CLI] to your project:
 npm install postcss-cli --save-dev
 ```
 
-Use [PostCSS Lab Function] in your `postcss.config.js` configuration
+Use [PostCSS Color Function] in your `postcss.config.js` configuration
 file:
 
 ```js
-const postcssLabFunction = require('postcss-lab-function');
+const postcssColorFunction = require('@csstools/postcss-color-function');
 
 module.exports = {
   plugins: [
-    postcssLabFunction(/* pluginOptions */)
+    postcssColorFunction(/* pluginOptions */)
   ]
 }
 ```
@@ -54,10 +54,10 @@ Add [PostCSS Loader] to your project:
 npm install postcss-loader --save-dev
 ```
 
-Use [PostCSS Lab Function] in your Webpack configuration:
+Use [PostCSS Color Function] in your Webpack configuration:
 
 ```js
-const postcssLabFunction = require('postcss-lab-function');
+const postcssColorFunction = require('@csstools/postcss-color-function');
 
 module.exports = {
   module: {
@@ -70,7 +70,7 @@ module.exports = {
           { loader: 'postcss-loader', options: {
             ident: 'postcss',
             plugins: () => [
-              postcssLabFunction(/* pluginOptions */)
+              postcssColorFunction(/* pluginOptions */)
             ]
           } }
         ]
@@ -88,16 +88,16 @@ Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 npm install react-app-rewired react-app-rewire-postcss --save-dev
 ```
 
-Use [React App Rewire PostCSS] and [PostCSS Lab Function] in your
+Use [React App Rewire PostCSS] and [PostCSS Color Function] in your
 `config-overrides.js` file:
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssLabFunction = require('postcss-lab-function');
+const postcssColorFunction = require('@csstools/postcss-color-function');
 
 module.exports = config => reactAppRewirePostcss(config, {
   plugins: () => [
-    postcssLabFunction(/* pluginOptions */)
+    postcssColorFunction(/* pluginOptions */)
   ]
 });
 ```
@@ -110,15 +110,15 @@ Add [Gulp PostCSS] to your project:
 npm install gulp-postcss --save-dev
 ```
 
-Use [PostCSS Lab Function] in your Gulpfile:
+Use [PostCSS Color Function] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssLabFunction = require('postcss-lab-function');
+const postcssColorFunction = require('@csstools/postcss-color-function');
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
   postcss([
-    postcssLabFunction(/* pluginOptions */)
+    postcssColorFunction(/* pluginOptions */)
   ])
 ).pipe(
   gulp.dest('.')
@@ -133,10 +133,10 @@ Add [Grunt PostCSS] to your project:
 npm install grunt-postcss --save-dev
 ```
 
-Use [PostCSS Lab Function] in your Gruntfile:
+Use [PostCSS Color Function] in your Gruntfile:
 
 ```js
-const postcssLabFunction = require('postcss-lab-function');
+const postcssColorFunction = require('@csstools/postcss-color-function');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -144,7 +144,7 @@ grunt.initConfig({
   postcss: {
     options: {
       use: [
-       postcssLabFunction(/* pluginOptions */)
+       postcssColorFunction(/* pluginOptions */)
       ]
     },
     dist: {
@@ -159,6 +159,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Lab Function]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function
+[PostCSS Color Function]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

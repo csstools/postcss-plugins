@@ -1,10 +1,10 @@
 {
   "name": "@csstools/postcss-color-function",
   "version": "1.0.0",
-  "description": "Use lab() and lch() color functions in CSS",
+  "description": "Use the color() function in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function#readme",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function#readme",
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -52,19 +52,19 @@
     "colors",
     "rgb",
     "rgba",
-    "lab",
-    "lch",
-    "functional",
-    "notation",
+    "color",
+    "display-p3",
+    "prophoto-rgb",
+    "xyz",
+    "rec2020",
+    "srgb-linear",
     "design",
-    "syntax",
-    "space",
-    "comma"
+    "syntax"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "plugins/postcss-lab-function"
+    "directory": "plugins/postcss-color-function"
   },
   "volta": {
     "extends": "../../package.json"
