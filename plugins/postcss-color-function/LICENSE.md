@@ -106,3 +106,11 @@ effect of CC0 on those rights.
 
 For more information, please see
 http://creativecommons.org/publicdomain/zero/1.0/.
+
+# W3C Software and Document License
+
+All documents in plugins/postcss-lab-function/src/css-color-4 are licensed by contributors
+under the 
+[W3C Software and Document License](https://www.w3.org/Consortium/Legal/copyright-software).
+
+See [w3c/csswg-drafts](https://github.com/w3c/csswg-drafts) for the original work.
