@@ -27,13 +27,26 @@
 	color-7: color(display-p3 0.81388 0.43646 foo);
 }
 
+.test-linear-srgb {
+	color-1: rgb(176,35,66);
+	color-2: rgb(176,35,66);
+}
+
+.test-xyz {
+	color-1: rgb(118,84,205);
+	color-2: rgb(118,84,205);
+	color: rgb(118,84,205);
+}
+
 .test-author-provided-fallback {
-	color: rgb(255,255,255);
+	color: rgb(0, 0, 0);
+	color: color(display-p3 1 1 1);
 }
 
 /* this will most likely be a mistake by the author */
 .test-author-provided-override {
 	color: rgb(255,255,255);
+	color: rgb(0, 0, 0);
 }
 
 .test-alpha {

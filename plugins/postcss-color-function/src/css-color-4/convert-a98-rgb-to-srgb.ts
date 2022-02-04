@@ -1,15 +1,15 @@
-import { gam_sRGB, lin_P3, lin_P3_to_XYZ, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './conversions.js';
+import { gam_sRGB, lin_a98rgb, lin_a98rgb_to_XYZ, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './conversions.js';
 import { clip, inGamut, mapGamut } from './map-gamut';
 
 type color = [number, number, number];
 
-export function displayP3ToSRgb(displayP3: color): color {
-	let conversion = displayP3.slice() as color;
+export function a98RgbToSRgb(a98: color): color {
+	let conversion = a98.slice() as color;
 
 	// https://www.w3.org/TR/css-color-4/#predefined-to-predefined
 	// https://www.w3.org/TR/css-color-4/#predefined-to-lab-oklab
-	conversion = lin_P3(conversion);
-	conversion = lin_P3_to_XYZ(conversion);
+	conversion = lin_a98rgb(conversion);
+	conversion = lin_a98rgb_to_XYZ(conversion);
 
 	let oklch = conversion.slice() as color;
 	oklch = XYZ_to_OKLab(oklch);

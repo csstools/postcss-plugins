@@ -1,6 +1,12 @@
 import valueParser from 'postcss-value-parser';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
 import { displayP3ToSRgb } from './css-color-4/convert-display-p3-to-srgb';
+import { sRgbLinearToSRgb } from './css-color-4/convert-srgb-linear-to-srgb';
+import { a98RgbToSRgb } from './css-color-4/convert-a98-rgb-to-srgb';
+import { prophotoRgbToSRgb } from './css-color-4/convert-prophoto-rgb-to-srgb';
+import { rec2020ToSRgb } from './css-color-4/convert-rec2020-to-srgb';
+import { cieXyz50ToSRgb } from './css-color-4/convert-cie-xyz-50-to-srgb';
+import { cieXyz65ToSRgb } from './css-color-4/convert-cie-xyz-65-to-srgb';
 
 export function onCSSFunctionSRgb(node: FunctionNode) {
 	const value = node.value;
@@ -30,6 +36,27 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 			toRGB = (x) => {
 				return x;
 			};
+			break;
+		case 'srgb-linear':
+			toRGB = sRgbLinearToSRgb;
+			break;
+		case 'a98-rgb':
+			toRGB = a98RgbToSRgb;
+			break;
+		case 'prophoto-rgb':
+			toRGB = prophotoRgbToSRgb;
+			break;
+		case 'rec2020':
+			toRGB = rec2020ToSRgb;
+			break;
+		case 'xyz-d50':
+			toRGB = cieXyz50ToSRgb;
+			break;
+		case 'xyz-d65':
+			toRGB = cieXyz65ToSRgb;
+			break;
+		case 'xyz':
+			toRGB = cieXyz65ToSRgb;
 			break;
 		case 'display-p3':
 		default:
@@ -108,6 +135,7 @@ function isColorSpaceNode(node: Node): node is WordNode {
 		case 'rec2020':
 		case 'xyz-d50':
 		case 'xyz-d65':
+		case 'xyz':
 			return true;
 		default:
 			return false;
@@ -247,12 +275,6 @@ function colorFunctionContents(nodes): Color|null {
 	}
 
 	return out;
-}
-
-function channelNodes(x: Color): [Node, Node, Node] {
-	return x.parameters.map((parameter) => {
-		return parameter.node;
-	}) as [Node, Node, Node];
 }
 
 function channelDimensions(x: Color): [Dimension, Dimension, Dimension] {
