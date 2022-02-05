@@ -70,7 +70,7 @@ function modifiedValues(originalValue: string, decl: Declaration, result: Result
 	} catch (error) {
 		decl.warn(
 			result,
-			`Failed to parse value '${originalValue}' as a lab or hcl function. Leaving the original value intact.`,
+			`Failed to parse value '${originalValue}' as a color function. Leaving the original value intact.`,
 		);
 	}
 
