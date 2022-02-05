@@ -1,6 +1,6 @@
 # Changes to PostCSS Focus Within
 
-### Unreleased (patch)
+### 5.0.4 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility
 
