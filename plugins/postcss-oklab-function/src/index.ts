@@ -119,22 +119,3 @@ function modifiedValues(originalValue: string, decl: Declaration, result: Result
 
 	return String(valueASTSDisplayP3);
 }
-
-function insertAtSupportsAfterCorrectRule(atSupports: AtRule, parent: Container<Node>, params: string) {
-	// Ensure correct order of @supports rules
-	// Find the last one created by us or the current parent and insert after.
-	let insertAfter = parent;
-	let nextInsertAfter = parent.next();
-	while (
-		insertAfter &&
-		nextInsertAfter &&
-		nextInsertAfter.type === 'atrule' &&
-		nextInsertAfter.name === 'supports' &&
-		nextInsertAfter.params === params
-	) {
-		insertAfter = nextInsertAfter;
-		nextInsertAfter = nextInsertAfter.next();
-	}
-
-	insertAfter.after(atSupports);
-}
