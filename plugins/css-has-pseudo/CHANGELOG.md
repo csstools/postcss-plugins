@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased (patch)
+### 3.0.4 (February 5, 2022)
 
 - Rebuild of browser polyfills
 
