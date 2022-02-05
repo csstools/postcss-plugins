@@ -1,6 +1,6 @@
 # Changes to PostCSS image-set() Function
 
-### Unreleased (patch)
+### 4.0.6 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility
 
