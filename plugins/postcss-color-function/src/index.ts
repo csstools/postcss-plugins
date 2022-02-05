@@ -17,7 +17,7 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 				return;
 			}
 
-			if (hasSupportsAtRuleAncestor(decl)) {
+			if (preserve && hasSupportsAtRuleAncestor(decl)) {
 				return;
 			}
 
