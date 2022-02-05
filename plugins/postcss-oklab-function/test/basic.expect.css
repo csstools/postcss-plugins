@@ -96,3 +96,22 @@
 		--firebrick-a50-var: oklch(40% 0.234 0.39 / var(--opacity-50));
 	}
 }
+
+/* see: https://colorjs.io/apps/convert/?color=lime&precision=4 */
+.test-lime {
+	/* PR 0.45840159019103005, 0.9852645833250543, 0.29829470783345835 */
+	color-1: color(display-p3 0.45840 0.98526 0.29829);
+	color-2: color(display-p3 0.45840 0.98526 0.29829);
+}
+
+.test-blue-teal {
+	/* PR 0.18049383596973165, 0.5091259470889729, 0.5339002129941043 */
+	color-1: color(display-p3 0.18049 0.50913 0.53390);
+	color-2: color(display-p3 0.18049 0.50913 0.53390);
+}
+
+.test-bright-purple {
+	/* P3 0.843565234, 0.509345345, 0.9342344435 */
+	color-1: color(display-p3 0.84357 0.50935 0.93423);
+	color-2: color(display-p3 0.84357 0.50935 0.93423);
+}
