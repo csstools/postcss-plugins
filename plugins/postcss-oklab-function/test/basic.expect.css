@@ -1,0 +1,91 @@
+.test-oklab {
+	color-1: color(display-p3 0.28515 0.27983 0.27246);
+	color-2: color(display-p3 0.43697 0.16047 0.26648 / 1);
+	color-3: color(display-p3 0.43697 0.16047 0.26648 / .5);
+	color-4: color(display-p3 0.43697 0.16047 0.26648 / 100%);
+	color-5: color(display-p3 0.43697 0.16047 0.26648 / 50%);
+	color-6: color(display-p3 0.65225 0.41303 0.49110);
+	color-7: oklab(60% 0.1 0 foo);
+	color-8: color(display-p3 0.45163 0.16556 0.17021);
+	color-9: color(display-p3 0.72414 0.38678 0.14879);
+	color-10: color(display-p3 0.60930 0.57658 0.20615);
+	color-11: color(display-p3 0.46287 0.64491 0.28775);
+	color-12: color(display-p3 0.45207 0.66555 0.91656);
+}
+
+.test-oklch {
+	color-1: color(display-p3 0.49163 0.11178 0.00000);
+	color-2: color(display-p3 0.49163 0.11178 0.00000 / 1);
+	color-3: color(display-p3 0.49163 0.11178 0.00000 / .5);
+	color-4: color(display-p3 0.49163 0.11178 0.00000 / 100%);
+	color-5: color(display-p3 0.49163 0.11178 0.00000 / 50%);
+	color-6: color(display-p3 0.86365 0.00000 0.47136);
+
+	color-7: color(display-p3 0.00000 0.59747 0.51804);
+	color-8: color(display-p3 0.00000 0.59747 0.51804);
+	color-9: color(display-p3 0.00000 0.59747 0.51804);
+	color-10: color(display-p3 0.00000 0.59747 0.51804);
+	color-11: color(display-p3 0.00000 0.59747 0.51803);
+
+	color-12: color(display-p3 0.78456 0.33386 0.00000);
+	color-13: color(display-p3 0.78456 0.33386 0.00000);
+	color-14: color(display-p3 0.78456 0.33386 0.00000);
+	color-15: color(display-p3 0.78456 0.33386 0.00000);
+	color-16: color(display-p3 0.78456 0.33386 0.00000);
+	color-17: oklch(60% 0.250 0.785398unknown);
+}
+
+.test-author-provided-fallback {
+	color: rgb(0, 0, 0);
+	color: oklch(100% 0 0);
+}
+
+/* this will most likely be a mistake by the author */
+.test-author-provided-override {
+	color: color(display-p3 1.00000 1.00000 1.00000);
+	color: rgb(0, 0, 0);
+}
+
+.test-alpha-oklab {
+	color-1: color(display-p3 0.00004 0.00000 0.00001 / 1);
+	color-2: color(display-p3 0.00004 0.00000 0.00001 / calc(33 / 22));
+	color-3: color(display-p3 0.00004 0.00000 0.00001 / calc(20% * 5));
+	color-4: color(display-p3 0.00004 0.00000 0.00001 / var(--foo));
+	color-5: oklab(1% 0.1 0.1 /);
+}
+
+.test-alpha-oklch {
+	color-1: color(display-p3 0.00004 0.00000 0.00001 / 1);
+	color-2: color(display-p3 0.00004 0.00000 0.00001 / calc(33 / 22));
+	color-3: color(display-p3 0.00004 0.00000 0.00001 / calc(20% * 5));
+	color-4: color(display-p3 0.00004 0.00000 0.00001 / var(--foo));
+	color-5: oklch(1% 0.1 0.1 /);
+}
+
+.test-ignore {
+	prop-1: 'oklch(1% 1 1 / 1)';
+	prop-2: url('oklch(1% 1 1 / 1)');
+	prop-3: 'oklab(40% 0.2566 0.39)';
+}
+
+.test-high-luminance {
+	prop-1: color(display-p3 0.92509 0.92632 1.00000);
+	prop-2: color(display-p3 0.99998 0.99999 1.00000);
+}
+
+.test-low-luminance {
+	/* not teal */
+	prop-1: color(display-p3 0.00000 0.00000 0.00000);
+	/* teal */
+	prop-2: color(display-p3 0.00000 0.00000 0.00000);
+	/* teal */
+	prop-3: color(display-p3 0.00136 0.00000 0.01193);
+}
+
+.test-multiple-colors {
+	background: linear-gradient(color(display-p3 0.58085 0.03338 0.31084), color(display-p3 0.78452 0.33390 0.00000));
+}
+
+.test-unparseable-lab-function {
+	background-image: oklab(; );
+}

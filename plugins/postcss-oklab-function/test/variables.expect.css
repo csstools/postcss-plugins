@@ -1,0 +1,10 @@
+:root {
+	--firebrick: color(display-p3 0.49890 0.00000 0.25954);
+	--firebrick-a50: color(display-p3 0.49890 0.00000 0.25954 / 50%);
+
+	--opacity-50: 0.5;
+	--firebrick-a50-var: color(display-p3 0.49890 0.00000 0.25954 / var(--opacity-50));
+
+	--point-five: 0.5;
+	--firebrick-var: oklch(40% var(--point-five) 0.1324 / var(--opacity-50));
+}
