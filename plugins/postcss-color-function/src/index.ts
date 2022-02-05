@@ -6,7 +6,7 @@ import { onCSSFunctionSRgb } from './on-css-function';
 import { hasFallback } from './has-fallback-decl';
 import type { PluginCreator } from 'postcss';
 
-/** Transform lab() and lch() functions in CSS. */
+/** Transform color() function in CSS. */
 const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
 
