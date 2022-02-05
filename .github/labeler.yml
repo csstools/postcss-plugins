@@ -34,6 +34,10 @@
   - plugins/postcss-attribute-case-insensitive/**
   - experimental/postcss-attribute-case-insensitive/**
 
+"plugins/postcss-color-function":
+  - plugins/postcss-color-function/**
+  - experimental/postcss-color-function/**
+
 "plugins/postcss-color-functional-notation":
   - plugins/postcss-color-functional-notation/**
   - experimental/postcss-color-functional-notation/**
