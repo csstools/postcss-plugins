@@ -3,7 +3,7 @@
 	color-1: lab(40% 56.6 39);
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (--one-a50-var: color(display-p3 0.1 0.1 0.1)) {
 	:root {
 		--one-a50-var: color(display-p3 0.1 0.1 0.1);
 	}
