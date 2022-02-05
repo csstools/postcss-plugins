@@ -1,6 +1,6 @@
 # Changes to PostCSS Gap Properties
 
-### Unreleased (patch)
+### 3.0.3 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility
 
