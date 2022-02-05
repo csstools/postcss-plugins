@@ -1,38 +1,11 @@
-import { D50_to_D65, gam_sRGB, Lab_to_XYZ, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './conversions';
-import { clip, inGamut, mapGamut } from './map-gamut';
+import { D50_to_D65, gam_sRGB, Lab_to_XYZ, LCH_to_Lab, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './css-color-4/conversions';
+import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
 
 type color = [number, number, number];
 
-export function labToSRgb(labRaw: color): color {
-	const [labLRaw, labARaw, labBRaw] = labRaw;
-
-	const labL = Math.min(
-		Math.max(
-			labLRaw,
-			0,
-		),
-		100,
-	);
-
-	const labA = Math.min(
-		Math.max(
-			labARaw,
-			-127,
-		),
-		128,
-	);
-
-	const labB = Math.min(
-		Math.max(
-			labBRaw,
-			-127,
-		),
-		128,
-	);
-
-	const lab = [labL, labA, labB];
-
-	let conversion = lab.slice() as color;
+export function lchToSRgb(lch: color): color {
+	let conversion = lch.slice() as color;
+	conversion = LCH_to_Lab(conversion);
 
 	// https://drafts.csswg.org/css-color-4/#oklab-lab-to-predefined
 	// 1. Convert Lab to(D50 - adapted) XYZ

@@ -70,6 +70,26 @@ postcssColorFunction({ preserve: true })
 }
 ```
 
+## Supported Color Spaces
+
+```css
+.color-spaces {
+	color: color(a98-rgb 0.803 0.484 0.944);
+	color: color(display-p3 0.8434 0.509 0.934);
+	color: color(prophoto-rgb 0.759 0.493 0.898);
+	color: color(rec2020 0.772 0.491 0.920);
+	color: color(srgb 0.897 0.488 0.959);
+	color: color(srgb-linear 0.783 0.203 0.910);
+	color: color(xyz 0.560 0.377 0.904);
+	color: color(xyz-d50 0.550 0.375 0.680);
+	color: color(xyz-d65 0.560 0.377 0.904);
+}
+```
+
+## Copyright : color conversions
+
+This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/tree/main/css-color-4. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
+
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#color-function
 [discord]: https://discord.gg/bUadyRwkJS

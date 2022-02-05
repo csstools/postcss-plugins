@@ -6,10 +6,6 @@ import { onCSSFunctionDisplayP3, onCSSFunctionSRgb } from './on-css-function';
 import { hasFallback } from './has-fallback-decl';
 import type { PluginCreator } from 'postcss';
 
-// NOTE : Used in unit tests.
-import { labToSRgb } from './css-color-4/convert-lab-to-srgb';
-import { lchToSRgb } from './css-color-4/convert-lch-to-srgb';
-
 const atSupportsLabParams = '(color: lab(0% 0 0)) and (color: lch(0% 0 0))';
 const atSupportsDisplayP3Params = '(color: color(display-p3 1 1 1))';
 
@@ -89,12 +85,6 @@ const postcssPlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = 
 };
 
 postcssPlugin.postcss = true;
-
-// Used by unit tests.
-// Mixing named and default export causes issues with CJS.
-// Attaching these to the default export is the best solution.
-postcssPlugin['_labToSRgb'] = labToSRgb;
-postcssPlugin['_lchToSRgb'] = lchToSRgb;
 
 export default postcssPlugin;
 

@@ -1,5 +1,5 @@
-import { D50_to_D65, gam_sRGB, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './conversions.js';
-import { clip, inGamut, mapGamut } from './map-gamut';
+import { D50_to_D65, gam_sRGB, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './css-color-4/conversions.js';
+import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
 
 type color = [number, number, number];
 

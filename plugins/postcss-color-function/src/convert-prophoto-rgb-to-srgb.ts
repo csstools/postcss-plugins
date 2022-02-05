@@ -1,15 +1,16 @@
-import { gam_sRGB, lin_a98rgb, lin_a98rgb_to_XYZ, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './conversions.js';
-import { clip, inGamut, mapGamut } from './map-gamut';
+import { D50_to_D65, gam_sRGB, lin_ProPhoto, lin_ProPhoto_to_XYZ, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './css-color-4/conversions.js';
+import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
 
 type color = [number, number, number];
 
-export function a98RgbToSRgb(a98: color): color {
-	let conversion = a98.slice() as color;
+export function prophotoRgbToSRgb(prophoto: color): color {
+	let conversion = prophoto.slice() as color;
 
 	// https://www.w3.org/TR/css-color-4/#predefined-to-predefined
 	// https://www.w3.org/TR/css-color-4/#predefined-to-lab-oklab
-	conversion = lin_a98rgb(conversion);
-	conversion = lin_a98rgb_to_XYZ(conversion);
+	conversion = lin_ProPhoto(conversion);
+	conversion = lin_ProPhoto_to_XYZ(conversion);
+	conversion = D50_to_D65(conversion);
 
 	let oklch = conversion.slice() as color;
 	oklch = XYZ_to_OKLab(oklch);

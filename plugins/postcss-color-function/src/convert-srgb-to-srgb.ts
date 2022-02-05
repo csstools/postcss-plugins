@@ -1,22 +1,20 @@
-import { gam_sRGB, lin_2020, lin_2020_to_XYZ, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './conversions.js';
-import { clip, inGamut, mapGamut } from './map-gamut';
+import { gam_sRGB, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './css-color-4/conversions.js';
+import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
 
 type color = [number, number, number];
 
-export function rec2020ToSRgb(rec: color): color {
-	let conversion = rec.slice() as color;
+export function sRgbToSRgb(sRgb: color): color {
+	let conversion = sRgb.slice() as color;
 
 	// https://www.w3.org/TR/css-color-4/#predefined-to-predefined
 	// https://www.w3.org/TR/css-color-4/#predefined-to-lab-oklab
-	conversion = lin_2020(conversion);
-	conversion = lin_2020_to_XYZ(conversion);
+	conversion = lin_sRGB(conversion);
+	conversion = lin_sRGB_to_XYZ(conversion);
 
 	let oklch = conversion.slice() as color;
 	oklch = XYZ_to_OKLab(oklch);
 	oklch = OKLab_to_OKLCH(oklch);
 
-	// 3. Convert from(D65 - adapted) CIE XYZ to linear RGB
-	conversion = XYZ_to_lin_sRGB(conversion);
 	// 4. Convert from linear - light RGB to RGB(do gamma encoding)
 	conversion = gam_sRGB(conversion);
 

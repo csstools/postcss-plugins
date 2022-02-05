@@ -1,22 +1,19 @@
-import { gam_sRGB, lin_P3, lin_P3_to_XYZ, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './conversions.js';
-import { clip, inGamut, mapGamut } from './map-gamut';
+import { gam_sRGB, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './css-color-4/conversions.js';
+import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
 
 type color = [number, number, number];
 
-export function displayP3ToSRgb(displayP3: color): color {
-	let conversion = displayP3.slice() as color;
+export function sRgbLinearToSRgb(linearSRgb: color): color {
+	let conversion = linearSRgb.slice() as color;
 
 	// https://www.w3.org/TR/css-color-4/#predefined-to-predefined
 	// https://www.w3.org/TR/css-color-4/#predefined-to-lab-oklab
-	conversion = lin_P3(conversion);
-	conversion = lin_P3_to_XYZ(conversion);
+	conversion = lin_sRGB_to_XYZ(conversion);
 
 	let oklch = conversion.slice() as color;
 	oklch = XYZ_to_OKLab(oklch);
 	oklch = OKLab_to_OKLCH(oklch);
 
-	// 3. Convert from(D65 - adapted) CIE XYZ to linear RGB
-	conversion = XYZ_to_lin_sRGB(conversion);
 	// 4. Convert from linear - light RGB to RGB(do gamma encoding)
 	conversion = gam_sRGB(conversion);
 

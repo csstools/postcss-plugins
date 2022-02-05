@@ -1,12 +1,13 @@
 import valueParser from 'postcss-value-parser';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
-import { displayP3ToSRgb } from './css-color-4/convert-display-p3-to-srgb';
-import { sRgbLinearToSRgb } from './css-color-4/convert-srgb-linear-to-srgb';
-import { a98RgbToSRgb } from './css-color-4/convert-a98-rgb-to-srgb';
-import { prophotoRgbToSRgb } from './css-color-4/convert-prophoto-rgb-to-srgb';
-import { rec2020ToSRgb } from './css-color-4/convert-rec2020-to-srgb';
-import { cieXyz50ToSRgb } from './css-color-4/convert-cie-xyz-50-to-srgb';
-import { cieXyz65ToSRgb } from './css-color-4/convert-cie-xyz-65-to-srgb';
+import { displayP3ToSRgb } from './convert-display-p3-to-srgb';
+import { sRgbLinearToSRgb } from './convert-srgb-linear-to-srgb';
+import { a98RgbToSRgb } from './convert-a98-rgb-to-srgb';
+import { prophotoRgbToSRgb } from './convert-prophoto-rgb-to-srgb';
+import { rec2020ToSRgb } from './convert-rec2020-to-srgb';
+import { cieXyz50ToSRgb } from './convert-cie-xyz-50-to-srgb';
+import { cieXyz65ToSRgb } from './convert-cie-xyz-65-to-srgb';
+import { sRgbToSRgb } from './convert-srgb-to-srgb';
 
 export function onCSSFunctionSRgb(node: FunctionNode) {
 	const value = node.value;
@@ -33,9 +34,7 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 	let toRGB;
 	switch (nodes.colorSpace) {
 		case 'srgb':
-			toRGB = (x) => {
-				return x;
-			};
+			toRGB = sRgbToSRgb;
 			break;
 		case 'srgb-linear':
 			toRGB = sRgbLinearToSRgb;
@@ -45,6 +44,9 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 			break;
 		case 'prophoto-rgb':
 			toRGB = prophotoRgbToSRgb;
+			break;
+		case 'display-p3':
+			toRGB = displayP3ToSRgb;
 			break;
 		case 'rec2020':
 			toRGB = rec2020ToSRgb;
@@ -58,9 +60,8 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 		case 'xyz':
 			toRGB = cieXyz65ToSRgb;
 			break;
-		case 'display-p3':
 		default:
-			toRGB = displayP3ToSRgb;
+			return;
 	}
 
 	/** RGB channels from the source color. */

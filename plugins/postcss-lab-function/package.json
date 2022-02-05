@@ -3,7 +3,7 @@
   "version": "4.0.3",
   "description": "Use lab() and lch() color functions in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
-  "license": "(CC0-1.0 OR W3C)",
+  "license": "CC0-1.0",
   "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function#readme",
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",

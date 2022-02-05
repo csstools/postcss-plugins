@@ -75,6 +75,10 @@ postcssLabFunction({ preserve: true })
 }
 ```
 
+## Copyright : color conversions
+
+This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/tree/main/css-color-4. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
+
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#lab-function
 [discord]: https://discord.gg/bUadyRwkJS
