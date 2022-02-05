@@ -22,6 +22,7 @@ export default [
 	'hwb-function',
 	'lab-function',
 	'rebeccapurple-color',
+	'ic-unit',
 	'blank-pseudo-class',
 	'break-properties',
 	'font-variant-property',

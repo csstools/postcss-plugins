@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased
+### 12.1.4 (January 31, 2022)
 
 - Fix `.mjs` in `importFrom` when using `export default`
 - Fix `.mjs` in `importFrom` on Windows

@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Hex Alpha
 
+### Unreleased (patch)
+
+- Improved `es module` and `commonjs` compatibility
+
 ### 8.0.2 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.

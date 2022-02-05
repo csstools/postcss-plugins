@@ -1,10 +1,10 @@
 import parser from 'postcss-selector-parser';
 import { selectorSpecificity } from './specificity';
-import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
-import { childAdjacentChild } from './complex/child-adjacent-child';
-import { isInCompoundWithOneOtherElement } from './complex/is-in-compound';
 
-export default function splitSelectors(selectors: string[], pluginOptions: { preserve?: boolean, onComplexSelector?: 'warning', specificityMatchingName: string }, warnFn: () => void, recursionDepth = 0) {
+// splitSelectors handles the forgiving list behavior of ":is".
+// After created all combinations it wraps the individual selectors in ":-csstools-matches".
+// This makes it easy to recursively resolve all ":is" selectors without infinite loops.
+export default function splitSelectors(selectors: string[], pluginOptions: { specificityMatchingName: string }, recursionDepth = 0) {
 	const specificityMatchingNameId = ':not(#' + pluginOptions.specificityMatchingName + ')';
 	const specificityMatchingNameClass = ':not(.' + pluginOptions.specificityMatchingName + ')';
 	const specificityMatchingNameTag = ':not(' + pluginOptions.specificityMatchingName + ')';
@@ -20,6 +20,10 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 		const selectorAST = parser().astSync(selector);
 		selectorAST.walkPseudos((pseudo) => {
 			if (pseudo.value !== ':is' || !pseudo.nodes || !pseudo.nodes.length) {
+				return;
+			}
+
+			if (pseudo.nodes[0].type === 'selector' && pseudo.nodes[0].nodes.length === 0) {
 				return;
 			}
 
@@ -74,7 +78,7 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 			return [selector];
 		}
 
-		const results = [];
+		let results = [];
 		cartesianProduct(...replacements).forEach((replacement) => {
 			let result = '';
 
@@ -82,7 +86,7 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 				const options = replacement[i];
 
 				result += selector.substring(replacement[i - 1]?.end || 0, replacement[i].start);
-				result += ':is(' + options.option + ')';
+				result += ':-csstools-matches(' + options.option + ')';
 
 				if (i === replacement.length - 1) {
 					result += selector.substring(replacement[i].end);
@@ -92,61 +96,12 @@ export default function splitSelectors(selectors: string[], pluginOptions: { pre
 			results.push(result);
 		});
 
-		let hasComplexSelectors = false;
-		let formattedResults = results.map((x) => {
-			const modifiedSelectorAST = parser().astSync(x);
-
-			// Handle complex selector cases
-			modifiedSelectorAST.walk((node) => {
-				childAdjacentChild(node) ||
-					isInCompoundWithOneOtherElement(node);
-			});
-
-			// Remove `:is` with single elements
-			modifiedSelectorAST.walkPseudos((pseudo) => {
-				if (pseudo.value !== ':is' || !pseudo.nodes || pseudo.nodes.length !== 1) {
-					return;
-				}
-
-				// Warn when `:is` contains a complex selector.
-				pseudo.nodes.forEach((child) => {
-					if (child.type === 'selector' && child.some((grandChild) => grandChild.type === 'combinator')) {
-						warnFn();
-						hasComplexSelectors = true;
-					}
-				});
-
-				if (pseudo.nodes[0].type === 'selector' && pseudo.nodes[0].nodes) {
-					if (pseudo.nodes[0].nodes.length !== 1 && pseudo.nodes[0].some((y) => y.type === 'combinator')) {
-						return;
-					}
-				}
-
-				pseudo.replaceWith(pseudo.nodes[0]);
-			});
-
-			modifiedSelectorAST.walk((node) => {
-				if ('nodes' in node) {
-					node.nodes.forEach((child) => {
-						sortCompoundSelectorsInsideComplexSelector(child);
-					});
-					sortCompoundSelectorsInsideComplexSelector(node);
-				}
-			});
-
-			return modifiedSelectorAST.toString();
-		});
-
-		if (hasComplexSelectors) {
-			return [selector];
-		}
-
 		if (foundNestedIs && recursionDepth < 10) {
 			// recursion to transform `:is(a :is(b,c))`
-			formattedResults = splitSelectors(formattedResults, pluginOptions, warnFn, recursionDepth + 1);
+			results = splitSelectors(results, pluginOptions, recursionDepth + 1);
 		}
 
-		return formattedResults;
+		return results;
 	}).filter((x) => {
 		return !!x;
 	});

@@ -1,3 +1,4 @@
-.test-variable {
+.test-lab {
+	background-color: lab(100% 0 0 / 0%);
 	color: lab(0% 0 0 / 0%);
 }

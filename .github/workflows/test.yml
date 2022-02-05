@@ -50,8 +50,8 @@ jobs:
       - run: npm install --ignore-scripts
       - run: npm run test:cli --workspace="@csstools/postcss-base-plugin"
 
-  # Run Deno tests one by one
-  test_deno:
+  # Run e2e tests
+  test_e2e:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -62,11 +62,15 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm run build --workspaces --if-present
 
+      # Webpack compatibility
+      - run: |
+            cd e2e/webpack/bundle-through
+            npm install
+            npm run build
+            npm run test
+
+      # Deno compatibility
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x.x
-
-      # Per plugin from here
-      - run: |
-            cd plugins/postcss-nesting
-            npm run test:deno
+      - run: npm run test:deno --workspaces --if-present

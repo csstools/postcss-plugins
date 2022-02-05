@@ -1,8 +1,9 @@
-import { idsToPackageNames, packageNamesToIds } from './plugins-by-id';
+import { idsToPackageNames, packageNamesToIds } from './plugins-by-id.mjs';
 
 export function pluginIdHelp(featureNamesInOptions, root, result) {
 	const featureNames = Object.keys(idsToPackageNames);
 	const packageNames = Object.keys(packageNamesToIds);
+
 	featureNamesInOptions.forEach((featureName) => {
 		if (featureNames.includes(featureName)) {
 			return;

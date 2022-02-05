@@ -1,6 +1,6 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased (major)
+### 2.0.0 (January 31, 2022)
 
 - Remove `skip` flag in `onComplexSelectors` option.
 

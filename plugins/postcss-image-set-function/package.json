@@ -1,6 +1,6 @@
 {
   "name": "postcss-image-set-function",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "Display resolution-dependent images using the image-set() function in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -9,6 +9,13 @@
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    }
+  },
   "files": [
     "CHANGELOG.md",
     "LICENSE.md",
@@ -32,7 +39,7 @@
     "postcss-value-parser": "^4.2.0"
   },
   "peerDependencies": {
-    "postcss": "^8.3"
+    "postcss": "^8.4"
   },
   "keywords": [
     "postcss",
