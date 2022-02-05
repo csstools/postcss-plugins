@@ -7,13 +7,13 @@
 
 	--point-five: 0.5;
 	--firebrick-var: oklch(40% var(--point-five) 0.1324 / var(--opacity-50));
-}@supports (color: oklab(0% 0 0)) and (color: oklch(0% 0 0)) {:root {
+}@supports (--firebrick: oklab(40% 0.234 0.39)) {:root {
 	--firebrick: oklab(40% 0.234 0.39);
 }
-}@supports (color: oklab(0% 0 0)) and (color: oklch(0% 0 0)) {:root {
+}@supports (--firebrick-a50: oklch(40% 0.234 0.39 / 50%)) {:root {
 	--firebrick-a50: oklch(40% 0.234 0.39 / 50%);
 }
-}@supports (color: oklab(0% 0 0)) and (color: oklch(0% 0 0)) {:root {
+}@supports (--firebrick-a50-var: oklch(40% 0.234 0.39 / var(--opacity-50))) {:root {
 	--firebrick-a50-var: oklch(40% 0.234 0.39 / var(--opacity-50));
 }
 }

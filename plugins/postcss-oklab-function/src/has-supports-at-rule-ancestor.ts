@@ -1,7 +1,5 @@
 import type { Node, AtRule } from 'postcss';
 
-export const atSupportsParams = '(color: oklab(0% 0 0)) and (color: oklch(0% 0 0))';
-
 export function hasSupportsAtRuleAncestor(node: Node): boolean {
 	let parent = node.parent;
 	while (parent) {
@@ -10,8 +8,14 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 			continue;
 		}
 
-		if ((parent as AtRule).name === 'supports' && (parent as AtRule).params.indexOf(atSupportsParams) !== -1) {
-			return true;
+		if ((parent as AtRule).name === 'supports') {
+			if ((parent as AtRule).params.indexOf('oklab(') !== -1) {
+				return true;
+			}
+
+			if ((parent as AtRule).params.indexOf('oklch(') !== -1) {
+				return true;
+			}
 		}
 
 		parent = parent.parent;

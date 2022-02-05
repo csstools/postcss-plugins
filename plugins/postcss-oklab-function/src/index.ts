@@ -1,7 +1,7 @@
-import { atSupportsParams, hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import valueParser from 'postcss-value-parser';
 import type { ParsedValue, FunctionNode } from 'postcss-value-parser';
-import type { AtRule, Container, Declaration, Node, Postcss, Result } from 'postcss';
+import type { AtRule, Container, Declaration, Node, Result } from 'postcss';
 import { onCSSFunctionDisplayP3 } from './on-css-function';
 import { hasFallback } from './has-fallback-decl';
 import type { PluginCreator } from 'postcss';
@@ -12,7 +12,7 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 
 	return {
 		postcssPlugin: 'postcss-oklab-function',
-		Declaration: (decl: Declaration, { result, postcss }: { result: Result, postcss: Postcss }) => {
+		Declaration: (decl: Declaration, { result }: { result: Result }) => {
 			if (hasFallback(decl)) {
 				return;
 			}
@@ -35,28 +35,52 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 				return;
 			}
 
-			if (decl.variable) {
-				const parent = decl.parent;
-
-				if (preserve) {
-					// Only wrap original in @supports if preserve is true.
-					const atSupports = postcss.atRule({ name: 'supports', params: atSupportsParams, source: decl.source });
-
-					const parentClone = parent.clone();
-					parentClone.removeAll();
-
-					parentClone.append(decl.clone());
-					atSupports.append(parentClone);
-
-					insertAtSupportsAfterCorrectRule(atSupports, parent, atSupportsParams);
-				}
-
-				decl.value = modified;
-			} else if (preserve) {
+			if (preserve) {
 				decl.cloneBefore({ value: modified });
 			} else {
 				decl.value = modified;
 			}
+		},
+		RuleExit: (rule, { postcss }) => {
+			if (!preserve) {
+				return;
+			}
+
+			const atSupportsRules = [];
+			const variableNames = new Set<string>();
+
+			rule.each((decl) => {
+				if (decl.type !== 'decl') {
+					return;
+				}
+
+				if (!decl.variable) {
+					return;
+				}
+
+				if (!variableNames.has(decl.prop.toString())) {
+					variableNames.add(decl.prop.toString());
+					return;
+				}
+
+				const atSupports = postcss.atRule({ name: 'supports', params: `(${decl.prop}: ${decl.value})`, source: rule.source });
+				const parentClone = rule.clone();
+				parentClone.removeAll();
+
+				parentClone.append(decl.clone());
+				decl.remove();
+
+				atSupports.append(parentClone);
+				atSupportsRules.push(atSupports);
+			});
+
+			if (atSupportsRules.length === 0) {
+				return;
+			}
+
+			atSupportsRules.reverse().forEach((atSupports) => {
+				rule.after(atSupports);
+			});
 		},
 	};
 };
