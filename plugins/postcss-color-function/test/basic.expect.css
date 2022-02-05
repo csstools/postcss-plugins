@@ -169,3 +169,10 @@
 	color-8: rgb(229,125,245);
 	color-9: rgb(229,125,245);
 }
+
+/* manual @supports */
+@supports (color: color(display-p3 0 0 0)) and (contain: content) {
+	:root {
+		--one-a50-var: color(display-p3 0.1 0.1 0.1);
+	}
+}

@@ -1,13 +1,10 @@
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import valueParser from 'postcss-value-parser';
 import type { ParsedValue, FunctionNode } from 'postcss-value-parser';
-import type { AtRule, Container, Declaration, Node, Postcss, Result } from 'postcss';
+import type { Declaration, Result } from 'postcss';
 import { onCSSFunctionDisplayP3, onCSSFunctionSRgb } from './on-css-function';
 import { hasFallback } from './has-fallback-decl';
 import type { PluginCreator } from 'postcss';
-
-const atSupportsLabParams = '(color: lab(0% 0 0)) and (color: lch(0% 0 0))';
-const atSupportsDisplayP3Params = '(color: color(display-p3 1 1 1))';
 
 /** Transform lab() and lch() functions in CSS. */
 const postcssPlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = (opts?: { preserve: boolean, displayP3: boolean }) => {
@@ -16,12 +13,12 @@ const postcssPlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = 
 
 	return {
 		postcssPlugin: 'postcss-lab-function',
-		Declaration: (decl: Declaration, { result, postcss }: { result: Result, postcss: Postcss }) => {
+		Declaration: (decl: Declaration, { result }: { result: Result }) => {
 			if (hasFallback(decl)) {
 				return;
 			}
 
-			if (preserve && hasSupportsAtRuleAncestor(decl)) {
+			if (hasSupportsAtRuleAncestor(decl)) {
 				return;
 			}
 
@@ -35,37 +32,7 @@ const postcssPlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = 
 				return;
 			}
 
-			if (decl.variable) {
-				const parent = decl.parent;
-
-				if (preserve) {
-					// Only wrap original in @supports if preserve is true.
-					const atSupports = postcss.atRule({ name: 'supports', params: atSupportsLabParams, source: decl.source });
-
-					const parentClone = parent.clone();
-					parentClone.removeAll();
-
-					parentClone.append(decl.clone());
-					atSupports.append(parentClone);
-
-					insertAtSupportsAfterCorrectRule(atSupports, parent, atSupportsLabParams);
-				}
-
-				if (displayP3Enabled) {
-					// Always wrap display-p3 in @supports.
-					const atSupports = postcss.atRule({ name: 'supports', params: atSupportsDisplayP3Params, source: decl.source });
-
-					const parentClone = parent.clone();
-					parentClone.removeAll();
-
-					parentClone.append(decl.clone({ value: modified.displayP3 }));
-					atSupports.append(parentClone);
-
-					insertAtSupportsAfterCorrectRule(atSupports, parent, atSupportsDisplayP3Params);
-				}
-
-				decl.value = modified.rgb;
-			} else if (preserve) {
+			if (preserve) {
 				decl.cloneBefore({ value: modified.rgb });
 
 				if (displayP3Enabled) {
@@ -80,6 +47,43 @@ const postcssPlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = 
 
 				decl.remove();
 			}
+		},
+		RuleExit: (rule, { postcss }) => {
+			const atSupportsRules = [];
+			const variableNames = new Set<string>();
+
+			rule.each((decl) => {
+				if (decl.type !== 'decl') {
+					return;
+				}
+
+				if (!decl.variable) {
+					return;
+				}
+
+				if (!variableNames.has(decl.prop.toString())) {
+					variableNames.add(decl.prop.toString());
+					return;
+				}
+
+				const atSupports = postcss.atRule({ name: 'supports', params: `(${decl.prop}: ${decl.value})`, source: rule.source });
+				const parentClone = rule.clone();
+				parentClone.removeAll();
+
+				parentClone.append(decl.clone());
+				decl.remove();
+
+				atSupports.append(parentClone);
+				atSupportsRules.push(atSupports);
+			});
+
+			if (atSupportsRules.length === 0) {
+				return;
+			}
+
+			atSupportsRules.reverse().forEach((atSupports) => {
+				rule.after(atSupports);
+			});
 		},
 	};
 };
@@ -141,23 +145,4 @@ function modifiedValues(originalValue: string, decl: Declaration, result: Result
 		rgb: modifiedValueSRgb,
 		displayP3: modifiedValueDisplayP3,
 	};
-}
-
-function insertAtSupportsAfterCorrectRule(atSupports: AtRule, parent: Container<Node>, params: string) {
-	// Ensure correct order of @supports rules
-	// Find the last one created by us or the current parent and insert after.
-	let insertAfter = parent;
-	let nextInsertAfter = parent.next();
-	while (
-		insertAfter &&
-		nextInsertAfter &&
-		nextInsertAfter.type === 'atrule' &&
-		nextInsertAfter.name === 'supports' &&
-		nextInsertAfter.params === params
-	) {
-		insertAfter = nextInsertAfter;
-		nextInsertAfter = nextInsertAfter.next();
-	}
-
-	insertAfter.after(atSupports);
 }

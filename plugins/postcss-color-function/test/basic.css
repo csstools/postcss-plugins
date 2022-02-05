@@ -169,3 +169,10 @@
 	color-8: color(xyz-d65 0.5600582450343325 0.37782875858447507 0.904570025128693);
 	color-9: color(xyz 0.5600582450343325 0.37782875858447507 0.904570025128693);
 }
+
+/* manual @supports */
+@supports (color: color(display-p3 0 0 0)) and (contain: content) {
+	:root {
+		--one-a50-var: color(display-p3 0.1 0.1 0.1);
+	}
+}

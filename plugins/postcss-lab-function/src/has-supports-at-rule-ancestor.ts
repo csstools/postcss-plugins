@@ -8,8 +8,14 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 			continue;
 		}
 
-		if ((parent as AtRule).name === 'supports' && (parent as AtRule).params.indexOf('(color: lab(0% 0 0)) and (color: lch(0% 0 0))') !== -1) {
-			return true;
+		if ((parent as AtRule).name === 'supports') {
+			if ((parent as AtRule).params.indexOf('lab(') !== -1) {
+				return true;
+			}
+
+			if ((parent as AtRule).params.indexOf('lch(') !== -1) {
+				return true;
+			}
 		}
 
 		parent = parent.parent;
