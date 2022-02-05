@@ -1,6 +1,6 @@
 # Changes to PostCSS Double Position Gradients
 
-### Unreleased (patch)
+### 3.0.5 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility
 
