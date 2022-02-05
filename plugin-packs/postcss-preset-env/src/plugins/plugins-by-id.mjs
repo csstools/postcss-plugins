@@ -57,7 +57,7 @@ export const packageNamesToIds = {
 	'postcss-font-variant': 'font-variant-property',
 	'postcss-gap-properties': 'gap-properties',
 	'postcss-hwb-function': 'hwb-function',
-	'postcssICUnit': 'ic-unit',
+	'postcss-ic-unit': 'ic-unit',
 	'postcss-image-set-function': 'image-set-function',
 	'postcss-initial': 'all-property',
 	'postcss-is-pseudo-class': 'is-pseudo-class',
