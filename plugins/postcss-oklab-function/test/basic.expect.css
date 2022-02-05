@@ -93,6 +93,6 @@
 /* manual @supports */
 @supports (--firebrick-a50-var: oklch(40% 0.234 0.39 / var(--opacity-50)) and (contain: content)) {
 	:root {
-		--firebrick-a50-var: color(display-p3 0.49890 0.00000 0.25954 / var(--opacity-50));
+		--firebrick-a50-var: oklch(40% 0.234 0.39 / var(--opacity-50));
 	}
 }
