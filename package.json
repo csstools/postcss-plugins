@@ -13,7 +13,8 @@
     "plugins/*",
     "plugin-packs/*",
     "cli/*",
-    "experimental/*"
+    "experimental/*",
+    "sites/*"
   ],
   "devDependencies": {
     "@babel/core": "^7.16.12",
