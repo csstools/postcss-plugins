@@ -114,3 +114,67 @@ main {
 [\.b_subject\:has\(b_descendant\)]:not(does-not-exist) {
 	background-color: yellowgreen;
 }
+
+[\%23visited-1\:has\(\:link\)]:not(#does-not-exist) {
+	color: green;
+}
+
+[\%23visited-2\:has\(\.\.does-not-exist\)]:not(#does-not-exist) {
+	color: yellow;
+}
+
+[\%23visited-3\:has\(\:link\)]:not(#does-not-exist) {
+	color: yellowgreen;
+}
+
+[\%23visited-4\:has\(\.\.does-not-exist\)]:not(#does-not-exist) {
+	color: red;
+}
+
+[\%23main_specificity\%20\:has\(\%23foo\)]:not(#does-not-exist):not(#does-not-exist) {
+	--t0:PASS;
+}
+
+[\%23main_specificity\%20\:has\(\.foo\)]:not(#does-not-exist) {
+	--t0:FAIL;
+}
+
+[\%23main_specificity\%20\:has\(span\%23foo\)]:not(#does-not-exist):not(#does-not-exist):not(does-not-exist) {
+	--t1:PASS;
+}
+
+[\%23main_specificity\%20\:has\(\%23foo\)]:not(#does-not-exist):not(#does-not-exist) {
+	--t1:FAIL;
+}
+
+[\%23main_specificity\%20\:has\(\.bar\,\%20\%23foo\)]:not(#does-not-exist):not(#does-not-exist) {
+	--t2:FAIL;
+}
+
+[\%23main_specificity\%20\:has\(\%23foo\,\%20\.bar\)]:not(#does-not-exist):not(#does-not-exist) {
+	--t2:PASS;
+}
+
+[\%23main_specificity\%20\:has\(\.bar\,\%20\%23foo\)]:not(#does-not-exist):not(#does-not-exist) {
+	--t3:PASS;
+}
+
+[\%23main_specificity\%20\:has\(\.foo\,\%20\.bar\)]:not(#does-not-exist) {
+	--t3:FAIL;
+}
+
+[\%23main_specificity\%20\:has\(span\%20\%2B\%20span\)]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	--t4:PASS;
+}
+
+[\%23main_specificity\%20\:has\(span\)]:not(#does-not-exist):not(does-not-exist) {
+	--t4:FAIL;
+}
+
+[\%23main_specificity\%20\:has\(span\,\%20li\,\%20\%23foo\)]:not(#does-not-exist):not(#does-not-exist) {
+	--t5:PASS;
+}
+
+[\%23main_specificity\%20\:has\(span\,\%20li\,\%20p\)]:not(#does-not-exist):not(does-not-exist) {
+	--t5:FAIL;
+}

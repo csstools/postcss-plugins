@@ -39,14 +39,35 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 
 				let containsHasPseudo = false;
 				selectorAST.walkPseudos((node) => {
-					containsHasPseudo = containsHasPseudo || node.value === ':has' && node.nodes;
+					containsHasPseudo = containsHasPseudo || (node.value === ':has' && node.nodes);
+
+					// see : https://bugs.chromium.org/p/chromium/issues/detail?id=669058#c34
+					// When we have ':has(:visited) {...}', the subject elements of the rule
+					// are the ancestors of the visited link element.
+
+					// To prevent leaking visitedness to the link's ancestors, the ':visited'
+					// selector does not match if it is inside the ':has()' argument selector.
+					// So if a ':has()' argument selector requires a matching ':visited', the
+					// style rule are not applied.
+					if (node.value === ':visited') {
+						// We can't leave `:has` untouched as that might cause broken selector lists.
+						// Replacing with the specificity matching name as this should never match anything without `:not()`.
+						node.replaceWith(parser.className({
+							value: '.' + options.specificityMatchingName,
+						}));
+					}
+
+					if (node.value === ':any-link') {
+						// we can transform `:any-link` to `:link` as this is allowed
+						node.value = ':link';
+					}
 				});
 
 				if (!containsHasPseudo) {
 					return selector;
 				}
 
-				const encodedSelector = '[' + encodeCSS(selector) + ']';
+				const encodedSelector = '[' + encodeCSS(selectorAST.toString()) + ']';
 				const abcSpecificity = selectorSpecificity(selectorAST);
 
 				let encodedSelectorWithSpecificity = encodedSelector;

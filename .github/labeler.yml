@@ -134,6 +134,10 @@
   - plugins/postcss-place/**
   - experimental/postcss-place/**
 
+"plugins/postcss-progressive-custom-properties":
+  - plugins/postcss-progressive-custom-properties/**
+  - experimental/postcss-progressive-custom-properties/**
+
 "plugins/postcss-pseudo-class-any-link":
   - plugins/postcss-pseudo-class-any-link/**
   - experimental/postcss-pseudo-class-any-link/**

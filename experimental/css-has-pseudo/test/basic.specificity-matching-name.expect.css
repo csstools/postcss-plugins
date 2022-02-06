@@ -242,3 +242,19 @@ body:not(:has(:focus)) {
 .x:has(> .b *) {
 	order: 30;
 }
+
+[\.x\:has\(\%3E\%20\.\.other-thing-that-does-not-exist\)]:not(.other-thing-that-does-not-exist) {
+	order: 31;
+}
+
+.x:has(> :visited) {
+	order: 31;
+}
+
+[\.x\:has\(\%3E\%20\:link\)]:not(.other-thing-that-does-not-exist) {
+	order: 31;
+}
+
+.x:has(> :any-link) {
+	order: 31;
+}
