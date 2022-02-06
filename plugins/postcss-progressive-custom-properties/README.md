@@ -9,7 +9,7 @@
 ⚠️ It is not intended to be used directly by stylesheet authors.
 Meant to be included in other PostCSS plugins that provide CSS value transforms as fallbacks.
 
-[Custom Properties are not discarded like regular declarations when invalid.](https://drafts.csswg.org/css-variables/#invalid-variables)
+[Custom Properties are not discarded like regular declarations when invalid.](https://www.w3.org/TR/css-variables-1/#invalid-variables)
 This makes it tricky to provide fallback values for older browsers.
 
 The solution is to wrap Custom Property declarations in an `@supports` rule.
