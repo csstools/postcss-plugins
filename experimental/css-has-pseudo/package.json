@@ -39,6 +39,7 @@
     "test": "node .tape.mjs && npm run test:unit && npm run test:exports",
     "test:browser": "node ./test/_browser.mjs",
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
+    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs",
     "test:unit": "node ./src/encode/test.mjs"
   },
   "engines": {

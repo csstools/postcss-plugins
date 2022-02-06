@@ -114,3 +114,67 @@ main {
 .b_subject:has(b_descendant) {
 	background-color: yellowgreen;
 }
+
+#visited-1:has(:link) {
+	color: green;
+}
+
+#visited-2:has(:visited) {
+	color: yellow;
+}
+
+#visited-3:has(:any-link) {
+	color: yellowgreen;
+}
+
+#visited-4:has(:visited) {
+	color: red;
+}
+
+#main_specificity :has(#foo) {
+	--t0:PASS;
+}
+
+#main_specificity :has(.foo) {
+	--t0:FAIL;
+}
+
+#main_specificity :has(span#foo) {
+	--t1:PASS;
+}
+
+#main_specificity :has(#foo) {
+	--t1:FAIL;
+}
+
+#main_specificity :has(.bar, #foo) {
+	--t2:FAIL;
+}
+
+#main_specificity :has(#foo, .bar) {
+	--t2:PASS;
+}
+
+#main_specificity :has(.bar, #foo) {
+	--t3:PASS;
+}
+
+#main_specificity :has(.foo, .bar) {
+	--t3:FAIL;
+}
+
+#main_specificity :has(span + span) {
+	--t4:PASS;
+}
+
+#main_specificity :has(span) {
+	--t4:FAIL;
+}
+
+#main_specificity :has(span, li, #foo) {
+	--t5:PASS;
+}
+
+#main_specificity :has(span, li, p) {
+	--t5:FAIL;
+}
