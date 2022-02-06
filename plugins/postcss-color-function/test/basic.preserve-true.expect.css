@@ -175,7 +175,7 @@
 }
 
 .test-out-of-range-values-srgb {
-	color-1: rgb(127,0,255);
+	color-1: rgb(128,0,255);
 	color-1: color(srgb 0.5 0 1);
 	color-2: rgb(122,0,234);
 	color-2: color(srgb 0.5 -0.2 1);

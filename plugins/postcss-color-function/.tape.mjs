@@ -35,4 +35,11 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
+	'variables:preserve-true:progressive-false': {
+		message: 'supports variables with { preserve: true, enableProgressiveCustomProperties: false } usage',
+		options: {
+			preserve: true,
+			enableProgressiveCustomProperties: false,
+		}
+	},
 });

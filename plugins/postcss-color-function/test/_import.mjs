@@ -1,5 +1,5 @@
 import assert from 'assert';
-import plugin from 'postcss-lab-function';
+import plugin from '@csstools/postcss-color-function';
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');
