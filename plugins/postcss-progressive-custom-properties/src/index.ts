@@ -22,7 +22,7 @@ const creator: PluginCreator<null> = () => {
 				}
 
 				if (decl.value.trim() === '') { // empty string value
-					// https://drafts.csswg.org/css-variables/#guaranteed-invalid
+					// https://www.w3.org/TR/css-variables-1/#guaranteed-invalid
 					return;
 				}
 
