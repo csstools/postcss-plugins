@@ -122,3 +122,11 @@ body:not(:has(:focus)) {
 .x:has(> .b *) {
 	order: 30;
 }
+
+.x:has(> :visited) {
+	order: 31;
+}
+
+.x:has(> :any-link) {
+	order: 31;
+}

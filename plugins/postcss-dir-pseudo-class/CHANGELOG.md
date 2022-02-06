@@ -1,6 +1,6 @@
 # Changes to PostCSS Dir Pseudo Class
 
-### Unreleased (patch)
+### 6.0.4 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility
 

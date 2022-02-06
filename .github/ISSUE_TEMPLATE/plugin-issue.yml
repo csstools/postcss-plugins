@@ -90,6 +90,7 @@ body:
         - PostCSS Overflow Shorthand
         - PostCSS Page Break
         - PostCSS Place
+        - PostCSS Progressive Custom Properties
         - PostCSS Pseudo Class Any Link
         - PostCSS Rebeccapurple
         - PostCSS Replace Overflow Wrap

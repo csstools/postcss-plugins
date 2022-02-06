@@ -96,6 +96,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			'css-has-pseudo',
 			'css-blank-pseudo',
 			'css-prefers-color-scheme',
+			'@csstools/css-has-pseudo-experimental',
 		].includes(packageInfo.name);
 
 		if (!packageInfo.name.startsWith('postcss-') && !packageInfo.name.startsWith('@csstools/postcss-') && !isOlderPackageName) {
