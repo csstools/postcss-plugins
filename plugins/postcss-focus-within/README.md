@@ -1,9 +1,9 @@
 # PostCSS Focus Within [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/postcss-focus-within.svg" height="20">][npm-url]
-[<img alt="CSS Standard Status" src="https://cssdb.org/badge/focus-within-pseudo-class.svg" height="20">][css-url]
+[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/focus-within-pseudo-class.svg" height="20">][css-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/tree/main/postcss-focus-within/workflows/test/badge.svg" height="20">][cli-url]
-[<img alt="support chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Focus Within] lets you use the `:focus-within` pseudo-class in CSS,
 following the [Selectors Level 4 specification].
@@ -117,7 +117,7 @@ focusWithin({ replaceWith: '.focus-within' });
 
 [css-url]: https://cssdb.org/#focus-within-pseudo-class
 [cli-url]: https://github.com/csstools/postcss-plugins/tree/main/postcss-focus-within/actions/workflows/test.yml?query=workflow/test
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/postcss-focus-within
 
 [focus-within polyfill]: https://github.com/jsxtools/focus-within

@@ -11,7 +11,11 @@
   "rules": {
     "quotes": ["error", "single"],
     "comma-dangle": ["error", "always-multiline"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "curly": "error",
+    "brace-style": "error",
+    "indent": ["error", "tab", { "SwitchCase": 1 }],
+    "radix": "error"
   },
   "overrides": [
     {

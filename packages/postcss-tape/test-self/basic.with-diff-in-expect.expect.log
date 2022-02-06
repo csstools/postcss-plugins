@@ -1,0 +1,17 @@
+
+basic:with-diff-in-expect
+
+message :
+  supports basic usage
+
+output changed :
++ actual - expected
+
++ '.baz {  order: 1; } '
+- '.bar {  order: 1; } '
+      ^
+
+----------------------------------------
+
+unexpected failures:
+  - basic:with-diff-in-expect

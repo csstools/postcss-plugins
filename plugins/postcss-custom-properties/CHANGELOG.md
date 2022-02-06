@@ -1,5 +1,40 @@
 # Changes to PostCSS Custom Properties
 
+### 12.1.4 (January 31, 2022)
+
+- Fix `.mjs` in `importFrom` when using `export default`
+- Fix `.mjs` in `importFrom` on Windows
+
+### 12.1.3 (January 17, 2022)
+
+- Reset plugin state after each process. It is now safe to use the plugin multiple times for different processes or when watching.
+
+### 12.1.2 (January 12, 2022)
+
+- Fix TypeScript transpilation.
+- Avoid throwing errors on unexpected option objects.
+
+### 12.1.1 (January 12, 2022)
+
+- Fix Node 12/14 compatibility
+
+### 12.1.0 (January 12, 2022)
+
+- Add `overrideImportFromWithRoot` option
+- Allow `.mjs` in `importFrom`
+- Converted to typescript
+- Correct typings for plugin options
+- Fix unicode support in custom property names
+
+### 12.0.4 (January 7, 2022)
+
+- Fixed an issue that was causing synchronous mode to not being able to pick and transform properties that were added as part of the PostCSS flow. ([#132](https://github.com/csstools/postcss-plugins/issues/132))
+
+### 12.0.2 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
 ### 12.0.1 (December 16, 2021)
 
 - Changed: now uses `postcss-value-parser` for parsing.

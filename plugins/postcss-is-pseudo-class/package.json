@@ -1,0 +1,66 @@
+{
+  "name": "@csstools/postcss-is-pseudo-class",
+  "version": "2.0.0",
+  "description": "A pseudo-class for matching elements in a selector list",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md",
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "stryker": "stryker run --logLevel error",
+    "test": "node .tape.mjs && npm run test:exports",
+    "test:browser": "node ./test/_browser.mjs",
+    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs",
+    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
+  },
+  "dependencies": {
+    "postcss-selector-parser": "^6.0.9"
+  },
+  "peerDependencies": {
+    "postcss": "^8.4"
+  },
+  "devDependencies": {
+    "puppeteer": "^13.1.2"
+  },
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "matches",
+    "is",
+    "selector",
+    "polyfill",
+    "pseudo"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugins/postcss-is-pseudo-class"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

@@ -1,4 +1,4 @@
-const valueParser = require('postcss-value-parser');
+import valueParser from 'postcss-value-parser';
 
 // whether the value has a lab() or lch() matcher
 const gradientRegExp = /(repeating-)?(conic|linear|radial)-gradient\([\W\w]*\)/i;
@@ -26,7 +26,7 @@ function isNumericNode(node) {
  * @param {{preserve?: boolean}} opts
  * @returns {import('postcss').Plugin}
  */
-module.exports = function creator(opts) {
+function creator(opts) {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
 
 	return {
@@ -98,6 +98,8 @@ module.exports = function creator(opts) {
 			}
 		},
 	};
-};
+}
 
-module.exports.postcss = true;
+creator.postcss = true;
+
+export default creator;

@@ -139,5 +139,7 @@ export default {
 };
 
 function clean(decl, preserve) {
-	if (!preserve) decl.remove();
+	if (!preserve) {
+		decl.remove();
+	}
 }

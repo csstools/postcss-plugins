@@ -1,0 +1,180 @@
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-pseudo-class.html */
+[\%23d_main\:has\(input\)\%20div]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	color: grey
+}
+
+[\%23d_main\:has\(\%23d_checkbox\:checked\)\%3E\%23d_subject]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: red
+}
+
+[\%23d_main\:has\(\%23d_option\:checked\)\%3E\%23d_subject]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: red
+}
+
+[\%23d_main\:has\(\%23d_checkbox\:disabled\)\%3E\%23d_subject]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: green
+}
+
+[\%23d_main\:has\(\%23d_option\:disabled\)\%3E\%20\:is\(\%23d_subject\,\%20\%23d_subject2\)]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: green
+}
+
+[\%23d_main\:has\(\%23d_optgroup\:disabled\)\%3E\%23d_subject]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: blue
+}
+
+[\%23d_main\:not\(\:has\(\%23d_checkbox\:enabled\)\)\%3E\%23d_subject3]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: green
+}
+
+[\%23d_main\:not\(\:has\(\%23d_option\:enabled\)\)\%20\:is\(\%23d_subject3\,\%20\%23d_subject4\)]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: green
+}
+
+[\%23d_main\:not\(\:has\(\%23d_optgroup\:enabled\)\)\%3E\%23d_subject3]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: blue
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-ancestor-position.html */
+[div\:has\(\.c_test\)\%20\%23c_subject]:not(#does-not-exist):not(does-not-exist) {
+	background-color: red
+}
+
+[div\:has\(\%3E\%20\.c_test\)\%20\%23c_subject]:not(#does-not-exist):not(does-not-exist) {
+	background-color: green
+}
+
+[div\:has\(\~\%20\.c_test\)\%20\%23c_subject]:not(#does-not-exist):not(does-not-exist) {
+	background-color: yellow
+}
+
+[div\:has\(\%2B\%20\.c_test\)\%20\%23c_subject]:not(#does-not-exist):not(does-not-exist) {
+	background-color: blue
+}
+
+[div\:has\(\~\%20div\%20\.c_test\)\%20\%23c_subject]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	background-color: purple
+}
+
+[div\:has\(\%2B\%20div\%20\.c_test\)\%20\%23c_subject]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	background-color: pink
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
+[div\:has\(\.a_test\)\%2B\%23a_subject]:not(#does-not-exist):not(does-not-exist) {
+	background-color: red;
+}
+
+[div\:has\(\%3E\%20\.a_test\)\%2B\%23a_subject]:not(#does-not-exist):not(does-not-exist) {
+	background-color: green;
+}
+
+[div\:has\(\~\%20\.a_test\)\%2B\%23a_subject]:not(#does-not-exist):not(does-not-exist) {
+	background-color: yellow;
+}
+
+[div\:has\(\%2B\%20\.a_test\)\%2B\%23a_subject]:not(#does-not-exist):not(does-not-exist) {
+	background-color: blue;
+}
+
+[div\:has\(\~\%20div\%20\.a_test\)\%2B\%23a_subject]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	background-color: purple;
+}
+
+[div\:has\(\%2B\%20div\%20\.a_test\)\%2B\%23a_subject]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	background-color: pink;
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/attribute-or-elemental-selectors-in-has.html */
+div,
+main {
+	background-color: grey;
+	margin: 5px;
+	min-height: 20px;
+	min-width: 20px;
+	padding: 5px;
+}
+
+[\.b_subject\:has\(\%3E\%20\.b_child\)]:not(.does-not-exist) {
+	background-color: red;
+}
+
+[\.b_subject\:has\(\.b_descendant\)]:not(.does-not-exist) {
+	background-color: green;
+}
+
+[\.b_subject\:has\(\[attrname\%3D\%22b_descendant\%22\]\)]:not(.does-not-exist) {
+	background-color: blue;
+}
+
+[\.b_subject\:has\(\%23b_div_descendant\)]:not(#does-not-exist) {
+	background-color: yellow;
+}
+
+[\.b_subject\:has\(b_descendant\)]:not(does-not-exist) {
+	background-color: yellowgreen;
+}
+
+[\%23visited-1\:has\(\:link\)]:not(#does-not-exist) {
+	color: green;
+}
+
+[\%23visited-2\:has\(\.\.does-not-exist\)]:not(#does-not-exist) {
+	color: yellow;
+}
+
+[\%23visited-3\:has\(\:link\)]:not(#does-not-exist) {
+	color: yellowgreen;
+}
+
+[\%23visited-4\:has\(\.\.does-not-exist\)]:not(#does-not-exist) {
+	color: red;
+}
+
+[\%23main_specificity\%20\:has\(\%23foo\)]:not(#does-not-exist):not(#does-not-exist) {
+	--t0:PASS;
+}
+
+[\%23main_specificity\%20\:has\(\.foo\)]:not(#does-not-exist) {
+	--t0:FAIL;
+}
+
+[\%23main_specificity\%20\:has\(span\%23foo\)]:not(#does-not-exist):not(#does-not-exist):not(does-not-exist) {
+	--t1:PASS;
+}
+
+[\%23main_specificity\%20\:has\(\%23foo\)]:not(#does-not-exist):not(#does-not-exist) {
+	--t1:FAIL;
+}
+
+[\%23main_specificity\%20\:has\(\.bar\,\%20\%23foo\)]:not(#does-not-exist):not(#does-not-exist) {
+	--t2:FAIL;
+}
+
+[\%23main_specificity\%20\:has\(\%23foo\,\%20\.bar\)]:not(#does-not-exist):not(#does-not-exist) {
+	--t2:PASS;
+}
+
+[\%23main_specificity\%20\:has\(\.bar\,\%20\%23foo\)]:not(#does-not-exist):not(#does-not-exist) {
+	--t3:PASS;
+}
+
+[\%23main_specificity\%20\:has\(\.foo\,\%20\.bar\)]:not(#does-not-exist) {
+	--t3:FAIL;
+}
+
+[\%23main_specificity\%20\:has\(span\%20\%2B\%20span\)]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	--t4:PASS;
+}
+
+[\%23main_specificity\%20\:has\(span\)]:not(#does-not-exist):not(does-not-exist) {
+	--t4:FAIL;
+}
+
+[\%23main_specificity\%20\:has\(span\,\%20li\,\%20\%23foo\)]:not(#does-not-exist):not(#does-not-exist) {
+	--t5:PASS;
+}
+
+[\%23main_specificity\%20\:has\(span\,\%20li\,\%20p\)]:not(#does-not-exist):not(does-not-exist) {
+	--t5:FAIL;
+}

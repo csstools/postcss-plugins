@@ -3,7 +3,7 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Gap Properties] lets you use the `gap`, `column-gap`, and `row-gap`
 shorthand properties in CSS, following the [CSS Grid Layout] specification.
@@ -64,12 +64,11 @@ postcss([
 The `preserve` option determines whether the original `gap` declaration should
 remain in the CSS. By default, the original declaration is preserved.
 
-[css-img]: https://cssdb.org/badge/gap-properties.svg
+[css-img]: https://cssdb.org/images/badges/gap-properties.svg
 [css-url]: https://cssdb.org/#gap-properties
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-img]: https://img.shields.io/npm/v/postcss-gap-properties.svg
 [npm-url]: https://www.npmjs.com/package/postcss-gap-properties
 

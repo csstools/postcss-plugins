@@ -1,0 +1,267 @@
+input[active]:hover > b {
+	order: 1;
+}
+
+input[active]:focus > b {
+	order: 1;
+}
+
+button[active]:hover > b {
+	order: 1;
+}
+
+button[active]:focus > b {
+	order: 1;
+}
+
+input.a[active]:hover > b {
+	order: 2;
+}
+
+input.b[active]:hover > b {
+	order: 2;
+}
+
+input.c[active]:hover > b {
+	order: 2;
+}
+
+input.d[active]:hover > b {
+	order: 2;
+}
+
+input.a[active]:focus > b {
+	order: 2;
+}
+
+input.b[active]:focus > b {
+	order: 2;
+}
+
+input.c[active]:focus > b {
+	order: 2;
+}
+
+input.d[active]:focus > b {
+	order: 2;
+}
+
+input.a[active]:focus-within > b {
+	order: 2;
+}
+
+input.b[active]:focus-within > b {
+	order: 2;
+}
+
+input.c[active]:focus-within > b {
+	order: 2;
+}
+
+input.d[active]:focus-within > b {
+	order: 2;
+}
+
+button.a[active]:hover > b {
+	order: 2;
+}
+
+button.b[active]:hover > b {
+	order: 2;
+}
+
+button.c[active]:hover > b {
+	order: 2;
+}
+
+button.d[active]:hover > b {
+	order: 2;
+}
+
+button.a[active]:focus > b {
+	order: 2;
+}
+
+button.b[active]:focus > b {
+	order: 2;
+}
+
+button.c[active]:focus > b {
+	order: 2;
+}
+
+button.d[active]:focus > b {
+	order: 2;
+}
+
+button.a[active]:focus-within > b {
+	order: 2;
+}
+
+button.b[active]:focus-within > b {
+	order: 2;
+}
+
+button.c[active]:focus-within > b {
+	order: 2;
+}
+
+button.d[active]:focus-within > b {
+	order: 2;
+}
+
+a:hover {
+	order: 3;
+}
+
+a:focus {
+	order: 3;
+}
+
+button:hover {
+	order: 3;
+}
+
+button:focus {
+	order: 3;
+}
+
+a:hover {
+	order: 4;
+}
+
+button:hover {
+	order: 4;
+}
+
+a:focus {
+	order: 4;
+}
+
+button:focus {
+	order: 4;
+}
+
+button:hover {
+	order: 5;
+}
+
+button:focus {
+	order: 5;
+}
+
+button:focus-within {
+	order: 5;
+}
+
+:not(.some) {
+	order: 6;
+}
+
+:not(.other) {
+	order: 6;
+}
+
+.button:hover {
+	order: 7;
+}
+
+button:not(.does-not-exist):hover {
+	order: 7;
+}
+
+.button:focus {
+	order: 7;
+}
+
+button:not(.does-not-exist):focus {
+	order: 7;
+}
+
+button:hover {
+	order: 8;
+}
+
+button:focus {
+	order: 8;
+}
+
+input {
+	order: 8;
+}
+
+foo[baz=":is(.some, .other)"], .ok {
+	order: 9;
+}
+
+.alpha:focus > .beta + .beta {
+	order: 10;
+}
+
+.pre:is(.alpha > .beta) + :is(:focus > .beta) {
+	order: 11;
+}
+
+.pre :is(.alpha > .beta)+ :is(:focus > .beta) {
+	order: 12;
+}
+
+:is(.alpha > .beta).post + :is(:focus > .beta) {
+	order: 13;
+}
+
+:is(.alpha > .beta) .post + :is(:focus > .beta) {
+	order: 14;
+}
+
+:is(:is(.alpha ~ .delta) > .beta) + :is(:focus > .beta) {
+	order: 15;
+}
+
+.alpha:focus > .beta + .beta {
+	order: 16;
+}
+
+.alpha:focus > .beta + .two {
+	order: 16;
+}
+
+.one:focus > .two + .beta {
+	order: 16;
+}
+
+.one:focus > .two + .two {
+	order: 16;
+}
+
+:is(.alpha > .beta) ~ :is(:focus > .beta) {
+	order: 17;
+}
+
+.alpha .beta > h1:not([attr*="foo-"]) {
+	order: 18;
+}
+
+.alpha .beta > h2:not([attr*="foo-"]) {
+	order: 18;
+}
+
+.alpha .beta > h3:not([attr*="foo-"]) {
+	order: 18;
+}
+
+.alpha .beta > h4:not([attr*="foo-"]) {
+	order: 18;
+}
+
+.alpha .beta > h5:not([attr*="foo-"]) {
+	order: 18;
+}
+
+.alpha .beta > h6:not([attr*="foo-"]) {
+	order: 18;
+}
+
+.one > .two.alpha {
+	order: 19;
+}

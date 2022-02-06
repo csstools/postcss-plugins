@@ -12,7 +12,7 @@ export function cliJavascript() {
 		{
 			input: 'src/cli.js',
 			output: [
-				{ file: 'dist/cli.mjs', format: 'esm', sourcemap: false },
+				{ file: 'dist/cli.cjs', format: 'cjs', sourcemap: false },
 			],
 			external: externalsForCLI,
 			plugins: [

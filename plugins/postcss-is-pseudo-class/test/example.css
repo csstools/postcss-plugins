@@ -1,0 +1,3 @@
+:is(input, button):is(:hover, :focus) {
+	order: 1;
+}

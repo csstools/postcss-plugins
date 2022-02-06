@@ -1,5 +1,0 @@
-$font: system-ui;
-
-.test-variable {
-	font-family: $font;
-}

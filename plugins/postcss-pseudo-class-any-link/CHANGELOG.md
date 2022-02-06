@@ -1,5 +1,29 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### 7.1.1 (February 5, 2022)
+
+- Improved `es module` and `commonjs` compatibility
+
+### 7.1.0 (January 31, 2022)
+
+- Add support in IE and Edge for the `<area>` element
+- Add support for `:any-link` in pseudo class functions (`:not(:any-link)`)
+
+To support matching `:any-link` in IE and Edge on `<area href>` you need to set the `subFeatures.areaHrefNeedsFixing` option to `true`:
+
+```js
+postcssPseudoClassAnyLink({
+  subFeatures: {
+    areaHrefNeedsFixing: true
+  }
+})
+```
+
+### 7.0.2 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
 ### 7.0.1 (December 13, 2021)
 
 - Updated: documentation

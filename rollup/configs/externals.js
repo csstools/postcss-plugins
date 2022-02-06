@@ -1,7 +1,12 @@
 export const externalsForCLI = [
 	'fs',
 	'path',
+	'url',
 
+	'@csstools/postcss-font-format-keywords',
+	'@csstools/postcss-hwb-function',
+	'@csstools/postcss-is-pseudo-class',
+	'@csstools/postcss-normalize-display-values',
 	'autoprefixer',
 	'browserslist',
 	'caniuse-lite',
@@ -41,12 +46,19 @@ export const externalsForCLI = [
 ];
 
 export const externalsForPlugin = [
+	'assert',
 	'fs',
 	'path',
+	'url',
 
 	'postcss',
+	/^postcss-\d\.\d$/,
 	/^postcss\/lib\/*/,
 
+	'@csstools/postcss-font-format-keywords',
+	'@csstools/postcss-hwb-function',
+	'@csstools/postcss-is-pseudo-class',
+	'@csstools/postcss-normalize-display-values',
 	'autoprefixer',
 	'browserslist',
 	'caniuse-lite',
@@ -55,6 +67,7 @@ export const externalsForPlugin = [
 	'css-prefers-color-scheme',
 	'cssdb',
 	'postcss-attribute-case-insensitive',
+	'postcss-clamp',
 	'postcss-color-functional-notation',
 	'postcss-color-hex-alpha',
 	'postcss-color-rebeccapurple',
@@ -74,6 +87,7 @@ export const externalsForPlugin = [
 	'postcss-logical',
 	'postcss-media-minmax',
 	'postcss-nesting',
+	'postcss-opacity-percentage',
 	'postcss-overflow-shorthand',
 	'postcss-page-break',
 	'postcss-place',

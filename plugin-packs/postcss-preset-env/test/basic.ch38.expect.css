@@ -56,9 +56,7 @@
 	order: 9;
 }
 
-@custom-media --narrow-window (max-width: 30em);
-
-@media (--narrow-window) {
+@media (max-width: 30em) {
 	.test-custom-media-queries {
 		order: 10;
 	}
@@ -70,9 +68,21 @@
 	}
 }
 
-@custom-media --dark-mode (prefers-color-scheme: dark);
+@media (color-index: 48) {
+	body {
+		background-color: black;
+		color: white;
+	}
+}
 
-@media (--dark-mode) {
+@media (color: 48842621) {
+	body {
+		background-color: black;
+		color: white;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
 	body {
 		background-color: black;
 		color: white;
@@ -101,7 +111,7 @@
 }
 
 .test-color-functional-notation {
-	color: rgb(70% 13.5% 13.5% / 50%);
+	color: rgba(178, 34, 34, 0.5);
 	order: 16;
 }
 
@@ -166,6 +176,10 @@
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
 }
 
+.test-blank-pseudo-class[blank] {
+	background-color: yellow;
+}
+
 .test-blank-pseudo-class:blank {
 	background-color: yellow;
 }
@@ -176,4 +190,142 @@
 
 .test-has-pseudo-class:has(.inner-class) {
 	background-color: yellow;
+}
+
+.a:focus {
+	order: 27;
+}
+
+.a:hover {
+	order: 27;
+}
+
+.b:focus {
+	order: 27;
+}
+
+.b:hover {
+	order: 27;
+}
+
+.a.c > .b + .d {
+	order: 28;
+}
+
+.test-hwb-function {
+	background-color: rgba(0, 195, 255, .5);
+}
+
+.test-opacity-percent {
+	opacity: 0.42;
+}
+
+.clamp-same-unit {
+	width: max(10px, min(64px, 80px));
+}
+
+.complex-clamp {
+	width: max(calc(100% - 10px), min(min(10px, 100%), max(40px, 4em)));
+}
+
+.clamp-different-units {
+	width: max(10%, min(2px, 4rem));
+}
+
+@font-face {
+	font-family: 'A';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url(a) format(woff2);
+}
+
+.block-flow {
+	display: block;
+	display: block flow;
+}
+
+.block-flow-root {
+	display: flow-root;
+	display: block flow-root;
+}
+
+.inline-flow {
+	display: inline;
+	display: inline flow;
+}
+
+.inline-flow-root {
+	display: inline-block;
+	display: inline flow-root;
+}
+
+.run-in-flow {
+	display: run-in;
+	display: run-in flow;
+}
+
+.list-item-block-flow {
+	display: list-item;
+	display: list-item block flow;
+}
+
+.inline-flow-list-item {
+	display: inline list-item;
+	display: inline flow list-item;
+}
+
+.block-flex {
+	display: flex;
+	display: block flex;
+}
+
+.inline-flex {
+	display: inline-flex;
+	display: inline flex;
+}
+
+.block-grid {
+	display: grid;
+	display: block grid;
+}
+
+.inline-grid {
+	display: inline-grid;
+	display: inline grid;
+}
+
+.inline-ruby {
+	display: ruby;
+	display: inline ruby;
+}
+
+.block-table {
+	display: table;
+	display: block table;
+}
+
+.inline-table {
+	display: inline-table;
+	display: inline table;
+}
+
+.table-cell-flow {
+	display: table-cell;
+	display: table-cell flow;
+}
+
+.table-caption-flow {
+	display: table-caption;
+	display: table-caption flow;
+}
+
+.ruby-base-flow {
+	display: ruby-base;
+	display: ruby-base flow;
+}
+
+.ruby-text-flow {
+	display: ruby-text;
+	display: ruby-text flow;
 }

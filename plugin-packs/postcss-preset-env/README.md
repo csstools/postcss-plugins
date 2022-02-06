@@ -2,15 +2,33 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/postcss-preset-env.svg" height="20">][npm-url]
 [<img alt="build status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
-[<img alt="support chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
+[![install size][package-phobia-badge]][package-phobia]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Preset Env] lets you convert modern CSS into something most browsers
 can understand, determining the polyfills you need based on your targeted
 browsers or runtime environments.
 
-```bash
-npm install postcss-preset-env
-```
+## How does it work?
+
+[PostCSS Preset Env] is a Plugin Pack for [PostCSS]. It leverages the list of the features we keep an eye from [CSSDB][cssdb] and applies plugins, so you can use those new features without having to worry about browser support.
+
+CSSDB exposes the browser support that each feature has which can come from [Can I Use](https://caniuse.com/css-all) or from [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/all) (through [mdn/browser-compat-data](https://github.com/mdn/browser-compat-data)).
+
+By providing a list of browser targets for your project, plugins that aren't needed will be skipped. Over time your targets might change and by updating the settings your CSS bundle will only ever contain the needed fallbacks.
+
+What [PostCSS Preset Env] does is to take the support data that comes from MDN and Can I Use and determine from a [browserlist](https://github.com/browserslist/browserslist) whether those transformations are needed. It also packs [Autoprefixer](https://github.com/postcss/autoprefixer) within and shares the list with it, so prefixes are only applied when you're going to need them given your browser support list.
+
+Glossary:
+
+* **Browser list option**: [Browserlist](https://github.com/browserslist/browserslist) is a package that gives you a list of browsers for a given query. For example, `chrome < 42` will give you a list of every Chrome version that has been released up to, but not including, 42.
+* **Browser support stats**: Features get introduced on browsers at certain versions. They're often visible on [MDN](https://developer.mozilla.org/en-US/) and [Can I Use](https://caniuse.com/). Comparing these stats with the needed _support_ for your project tells you if it's safe to use a feature or not.
+* **CSS Feature**: A CSS feature is often part of some spec that enables a specific feature. For example, `hwb` functional notation lets you express a given color according to its hue, whiteness, and blackness. This is part of the CSS Color 4 Spec.
+* **CSS Spec**: A Spec is a document that collects new features, what problems are they trying to solve and how it's intended to be solved (generally). This is usually an evolving document that goes over lengthy discussions between several people from different companies.
+* **Plugin**: A plugin is package that's intended (usually) to enable a new CSS Feature by leveraging PostCSS. This doesn't need to be part of any spec. An example of the latter is [PostCSS Mixins](https://github.com/postcss/postcss-mixins), a concept that existed on Less or Sass, but it's not part of any spec. This plugin plack **only** packs plugins that enable features acknowledged by the World Wide Web Consortium (W3C) which will then be implemented by browsers later.
+* **Polyfill**: A polyfill is a piece of code (usually JavaScript on the Web) used to provide modern functionality on older browsers that do not natively support it. A polyfill _should_ be indistinguishable from the native behaviour.
+
+Here's a quick example of the syntax you can leverage by using [PostCSS Preset Env].
 
 ```pcss
 @custom-media --viewport-medium (width <= 50rem);
@@ -87,6 +105,12 @@ features and supports **all** browsers.
 [![Transform with Preset Env][readme-transform-with-preset-env-img]][readme-transform-with-preset-env-url]
 [![Style with Preset Env][readme-style-with-preset-env-img]][readme-style-with-preset-env-url]
 
+⚠️ Please note that some features need a companion library that makes 
+the feature work. While we try to avoid this requirement, there are instances
+in which this isn't possible to polyfill a new behaviour with _just_ CSS.
+
+[See the list below](#plugins-that-need-client-library).
+
 ## Usage
 
 Add [PostCSS Preset Env] to your project:
@@ -126,14 +150,36 @@ The `stage` can be `0` (experimental) through `4` (stable), or `false`. Setting
 `stage` to `false` will disable every polyfill. Doing this would only be useful
 if you intended to exclusively use the [`features`](#features) option.
 
-Without any configuration options, [PostCSS Preset Env] enables **Stage 2**
-features.
+Default: `2`
+
+### minimumVendorImplementations
+
+The `minimumVendorImplementations` option determines which CSS features to polyfill, based their implementation status.
+This can be used to enable plugins that are available in browsers regardless of the [spec status](#stage).
+
+```js
+postcssPresetEnv({ minimumVendorImplementations: 2 })
+```
+
+`minimumVendorImplementations` can be `0` (no vendor has implemented it) through `3` (all major vendors).<br>
+
+Default: `0`
+
+**Note:**
+
+When a feature has not yet been implemented by any vendor it can be considered experimental.<br>
+Even with a single implementation it might still change in the future.<br>
+Sometimes issues with a feature/specification are only discovered after it becomes available.
+
+A value of `2` is recommended when you want to use only those features that should be [stable](#stability-and-portability).
+
+Having 2 independent implementations is [a critical step in proposals becoming standards](https://www.w3.org/2021/Process-20211102/#implementation-experience) and a good indicator of a feature's stability.
 
 ### features
 
 The `features` option enables or disables specific polyfills by ID. Passing
 `true` to a specific feature ID will enable its polyfill, while passing `false`
-will disable it. [List of IDs](https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/src/lib/plugins-by-id.js#L36)
+will disable it. [List of IDs](https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/src/lib/plugins-by-id.js#L74)
 
 ```js
 postcssPresetEnv({
@@ -176,7 +222,7 @@ configuration is not available.
 postcssPresetEnv({ browsers: 'last 2 versions' })
 ```
 
-If not valid browserslist configuration is specified, the
+If no valid browserslist configuration is specified, the
 [default browserslist query](https://github.com/browserslist/browserslist#queries)
 will be used.
 
@@ -213,6 +259,40 @@ postcssPresetEnv({
 ```
 
 Passing `autoprefixer: false` disables autoprefixer.
+
+⚠️ [autoprefixer] has [complex logic to fix CSS Grid in IE en older Edge](https://github.com/postcss/autoprefixer#grid-autoplacement-support-in-ie).
+
+This can have unexpected results with certain features and when [`preserve: true`](#preserve) is used. (defaults to `true`)
+
+```pcss
+:root {
+  --grid-gap: 15px;
+}
+
+.test-grid {
+	grid-gap: var(--grid-gap);
+	grid-template-columns: repeat(2, 1fr);
+}
+```
+
+Becomes :
+
+```
+.test-grid {
+	grid-gap: 15px;
+	grid-gap: var(--grid-gap);
+	-ms-grid-columns: 1fr var(--grid-gap) 1fr;
+	grid-template-columns: repeat(2, 1fr);
+}
+```
+
+The prefixed `-ms-grid-columns` still has a custom property: `1fr var(--grid-gap) 1fr;` which won't work.<br />
+This example shows issues with custom properties but other transforms might have similar issues.
+
+If you target IE or older Edge it is best to avoid using other modern features in grid property values.<br />
+As a last resort you can set [`preserve: false`](#preserve), we do not advice this as doing so purely to fix issues with CSS grid.
+
+_older Edge is any version before chromium (<79)_
 
 ### preserve
 
@@ -354,12 +434,61 @@ postcssPresetEnv({
 });
 ```
 
+### debug
+
+The `debug` option enables debugging messages to stdout which should be useful to help you debug which features have been enabled/disabled and why.
+
+### enableClientSidePolyfills
+
+The `enableClientSidePolyfills` enables any feature that would need an extra browser library to be loaded into the page for it to work. Defaults to `true`.
+
+Note that manually enabling/disabling features via the "feature" option overrides this flag.
+
+## Stability and Portability
+
+[PostCSS Preset Env] will often include very modern CSS features that are not fully ready yet.
+This gives users the chance to play around with these features and provide feedback.
+
+If the specification changes or is abandoned a new major version of the plugin will be released.
+This will require you to update your source code so that everything works as expected.
+
+To have more stability between updates of [PostCSS Preset Env] you may set `stage: 3` and/or `minimumVendorImplementations: 2`.
+
+A side effect of staying close to the standard is that you can more easily migrate your project to other tooling all together.
+
+## Plugins list
+
+### Plugins that need client library
+
+This is the current list of features that need a client library with a link
+to the polyfill's library.
+
+* `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md)
+* `focus-visible-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-visible) / [Polyfill](https://github.com/WICG/focus-visible)
+* `focus-within-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within) / [Library](https://github.com/jsxtools/focus-within) / [Polyfill](https://github.com/jsxtools/focus-within/blob/master/README-BROWSER.md)
+* `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md)
+* `prefers-color-scheme-query`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme/README-BROWSER.md)
+
+If you want to disable these types of features, please check the [`enableClientSidePolyfills` option](#enableclientsidepolyfills).
+
+### Plugins not affected by Browser Support
+
+Given they have no support they will always be enabled if they match by Stage:
+
+* `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md)
+* `custom-media-queries`: [Plugin](https://github.com/postcss/postcss-custom-media)
+* `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md)
+* `image-set-function`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function)
+* `media-query-ranges`: [Plugin](https://github.com/postcss/postcss-media-minmax)
+* `nesting-rules`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting)
+
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-img]: https://img.shields.io/npm/v/postcss-preset-env.svg
 [npm-url]: https://www.npmjs.com/package/postcss-preset-env
+[package-phobia-badge]: https://packagephobia.com/badge?p=postcss-preset-env
+[package-phobia]: https://packagephobia.com/result?p=postcss-preset-env
 
 [autoprefixer]: https://github.com/postcss/autoprefixer
 [browserslist]: https://github.com/browserslist/browserslist#readme

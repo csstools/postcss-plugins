@@ -1,0 +1,24 @@
+[TAPE DEBUG] decl.assign is not a function
+testing older PostCSS:
+
+basic:postcss-8-3
+
+message :
+  supports basic usage
+
+options :
+{
+  "postcss8_3_api_call": true
+}
+
+output changed :
++ actual - expected
+
++ '.baz {  order: 1; } '
+- '.baz {  order-b: 2; } '
+                  ^
+
+----------------------------------------
+
+unexpected failures:
+  - basic:postcss-8-3

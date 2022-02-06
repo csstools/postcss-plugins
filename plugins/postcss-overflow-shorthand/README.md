@@ -3,7 +3,7 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Overflow Shorthand] lets you use the `overflow` shorthand in CSS,
 following the [CSS Overflow] specification.
@@ -75,10 +75,9 @@ html {
 
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[css-img]: https://cssdb.org/badge/overflow-property.svg
+[css-img]: https://cssdb.org/images/badges/overflow-property.svg
 [css-url]: https://cssdb.org/#overflow-property
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-img]: https://img.shields.io/npm/v/postcss-overflow-shorthand.svg
 [npm-url]: https://www.npmjs.com/package/postcss-overflow-shorthand
 

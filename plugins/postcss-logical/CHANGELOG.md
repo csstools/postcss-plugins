@@ -1,5 +1,22 @@
 # Changes to PostCSS Logical Properties
 
+### 5.0.4 (February 5, 2022)
+
+- Improved `es module` and `commonjs` compatibility
+
+### 5.0.3 (January 12, 2022)
+
+- Fix compatibility with PostCSS `v8.2.x` [#147](https://github.com/csstools/postcss-plugins/issues/147)
+
+This version is not officially supported but some tool providers pinned PostCSS to `v8.2.x`,
+making it impossible for end users to have a working setup.
+
+### 5.0.2 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+- Updated examples in README.
+
 ### 5.0.1 (December 13, 2021)
 
 - Updated: documentation

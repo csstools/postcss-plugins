@@ -8,8 +8,8 @@ export function packageJavascript() {
 		{
 			input: 'src/index.js',
 			output: [
-				{ file: 'dist/index.cjs', format: 'cjs', sourcemap: true, exports: 'auto' },
-				{ file: 'dist/index.mjs', format: 'esm', sourcemap: true, exports: 'auto' },
+				{ file: 'dist/index.cjs', format: 'cjs', sourcemap: false, exports: 'auto' },
+				{ file: 'dist/index.mjs', format: 'esm', sourcemap: false, exports: 'auto' },
 			],
 			external: externalsForPlugin,
 			plugins: [

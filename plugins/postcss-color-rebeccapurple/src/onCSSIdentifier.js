@@ -1,6 +1,8 @@
 /** @type {(decl: CSSIdentifier) => void} Transform the rebeccapurple keyword. */
 const onCSSIdentifier = node => {
-	if (isRebeccaPurple(node.value)) node.value = '#639';
+	if (isRebeccaPurple(node.value)) {
+		node.value = '#639';
+	}
 };
 
 export default onCSSIdentifier;

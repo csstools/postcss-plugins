@@ -32,13 +32,22 @@ const hasDenoOutput = (() => {
 const presets = [];
 
 if (isTypescript) {
-	presets.push(...packageTypescript());
+	if (packageInfo.main || packageInfo.module) {
+		presets.push(...packageTypescript());
+	}
 
 	if (packageInfo.bin) {
 		presets.push(...cliTypescript());
 	}
+
+	if (packageInfo.exports && ('./browser' in packageInfo.exports)) {
+		// Browser script remain javascript as it's simpler to go old school JS in regular JS.
+		presets.push(...browserJavascript());
+	}
 } else {
-	presets.push(...packageJavascript());
+	if (packageInfo.main || packageInfo.module) {
+		presets.push(...packageJavascript());
+	}
 
 	if (packageInfo.bin) {
 		presets.push(...cliJavascript());

@@ -34,7 +34,7 @@ body:
   - type: dropdown
     id: npx
     attributes:
-      label: Can you reproduce it with `npx <plugin-name> minimal-example.css`?
+      label: Can you reproduce it with `npx @csstools/csstools-cli <plugin-name> minimal-example.css`?
       multiple: false
       options:
         - "Yes"
@@ -79,7 +79,9 @@ body:
         - PostCSS Focus Within
         - PostCSS Font Variant
         - PostCSS Gap Properties
+        - PostCSS HWB Function
         - PostCSS Image Set Function
+        - PostCSS Is Pseudo Class
         - PostCSS Lab Function
         - PostCSS Logical
         - PostCSS Media Query Ranges
@@ -87,6 +89,7 @@ body:
         - PostCSS Overflow Shorthand
         - PostCSS Page Break
         - PostCSS Place
+        - PostCSS Progressive Custom Properties
         - PostCSS Pseudo Class Any Link
         - PostCSS Rebeccapurple
         - PostCSS Replace Overflow Wrap

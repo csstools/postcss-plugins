@@ -1,5 +1,4 @@
-$font: system-ui;
-
-.test-variable {
-	font-family: $font;
+.test-lab {
+	background-color: lab(100% 0 0 / 0%);
+	color: lab(0% 0 0 / 0%);
 }

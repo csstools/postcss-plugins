@@ -1,8 +1,8 @@
 # PostCSS Double Position Gradients [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
 
 [<img alt="NPM Version" src="https://img.shields.io/npm/v/postcss-double-position-gradients.svg" height="20">][npm-url]
-[<img alt="CSS Standard Status" src="https://cssdb.org/badge/double-position-gradients.svg" height="20">][css-url]
-[<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
+[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/double-position-gradients.svg" height="20">][css-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Double Position Gradients] lets you use double-position gradients in
 CSS, following the [CSS Image Values and Replaced Content] specification.
@@ -93,7 +93,7 @@ postcssDoublePositionGradients({ preserve: false })
 ```
 
 [css-url]: https://cssdb.org/#double-position-gradients
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/postcss-double-position-gradients
 
 [CSS Image Values and Replaced Content]: https://www.w3.org/TR/css-images-4/#color-stop-syntax

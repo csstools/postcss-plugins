@@ -12,6 +12,11 @@ module.exports = {
 		'--shadow-color': 'rgb(255,0,0)',
 		'--shadow': '0 6px 14px 0 color(var(--shadow-color) a(.15))',
 		'--font-family': '"Open Sans", sans-serif',
+		'--url-1': 'url("/my/path")',
+		'--url-2': 'url(\'/my/path\')',
+		'--url-3': 'url(/my/path)',
+		'--url-4': 'url(data:image/png;bm90LWFuZC1pbWFnZQ==)',
+		'--✅-size': '2em',
 		'--theme-color': '#053'
 	}
 };

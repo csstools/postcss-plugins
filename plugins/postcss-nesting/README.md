@@ -2,7 +2,7 @@
 
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Nesting] lets you nest style rules inside each other, following the
 [CSS Nesting] specification. If you want nested rules the same way [Sass] works
@@ -178,10 +178,9 @@ The [CSS Nesting Module] spec states on nesting that "Declarations occuring afte
 While we think it makes sense on browsers, enforcing this at the plugin level introduces several constrains that would
 interfere with PostCSS' plugin nature such as with `@mixin`
 
-[css-img]: https://cssdb.org/badge/nesting-rules.svg
+[css-img]: https://cssdb.org/images/badges/nesting-rules.svg
 [css-url]: https://cssdb.org/#nesting-rules
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-img]: https://img.shields.io/npm/v/postcss-nesting.svg
 [npm-url]: https://www.npmjs.com/package/postcss-nesting
 

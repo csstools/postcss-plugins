@@ -3,7 +3,7 @@
 [![NPM Version][npm-img]][npm-url]
 [![CSS Standard Status][css-img]][css-url]
 [![Build Status][cli-img]][cli-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Logical Properties and Values] lets you use logical, rather than
 physical, direction and dimension mappings in CSS, following the
@@ -23,14 +23,19 @@ physical, direction and dimension mappings in CSS, following the
 /* becomes */
 
 .banner:dir(ltr) {
-  padding-left: 20px; padding-right: 40px;
+  padding-left: 20px;
+  padding-right: 40px;
 }
-
 .banner:dir(rtl) {
-  padding-right: 20px; padding-left: 40px;
+  padding-right: 20px;
+  padding-left: 40px;
 }
-
 .banner {
+  color: #222222;
+  top: 0;
+  left: 5px;
+  bottom: 10px;
+  right: 5px;
   resize: vertical;
   transition: color 200ms;
 }
@@ -39,8 +44,12 @@ physical, direction and dimension mappings in CSS, following the
 
 .banner {
   color: #222222;
-  top: 0; left: 5px; bottom: 10px; right: 5px;
-  padding-left: 20px; padding-right: 40px;
+  top: 0;
+  left: 5px;
+  bottom: 10px;
+  right: 5px;
+  padding-left: 20px;
+  padding-right: 40px;
   resize: vertical;
   transition: color 200ms;
 }
@@ -48,20 +57,23 @@ physical, direction and dimension mappings in CSS, following the
 /* or, when used with { preserve: true } */
 
 .banner:dir(ltr) {
-  padding-left: 20px; padding-right: 40px;
+  padding-left: 20px;
+  padding-right: 40px;
 }
-
 .banner:dir(rtl) {
-  padding-right: 20px; padding-left: 40px;
+  padding-right: 20px;
+  padding-left: 40px;
 }
-
 .banner {
   color: #222222;
-  top: 0; left: 5px; bottom: 10px; right: 5px;
+  top: 0;
+  left: 5px;
+  bottom: 10px;
+  right: 5px;
   inset: logical 0 5px 10px;
   padding-inline: 20px 40px;
-  resize: block;
   resize: vertical;
+  resize: block;
   transition: color 200ms;
 }
 ```
@@ -122,7 +134,7 @@ any `[dir]` attributes, consider using the following JavaScript:
 
 ```js
 // force at least one dir attribute (this can run at any time)
-document.documentElement.dir=document.documentElement.dir||'ltr';
+document.documentElement.dir = document.documentElement.dir || 'ltr';
 ```
 
 Otherwise, consider using the `dir` option to transform all logical properties
@@ -183,12 +195,11 @@ Use [postcss-dir-pseudo-class](https://github.com/csstools/postcss-plugins/tree/
 
 Currently `:dir(ltr)` doesn't have great browser support but this will improve over time.
 
-[css-img]: https://cssdb.org/badge/logical-properties-and-values.svg
+[css-img]: https://cssdb.org/images/badges/logical-properties-and-values.svg
 [css-url]: https://cssdb.org/#logical-properties-and-values
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[git-img]: https://img.shields.io/badge/support-chat-blue.svg
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-img]: https://img.shields.io/npm/v/postcss-logical.svg
 [npm-url]: https://www.npmjs.com/package/postcss-logical
 

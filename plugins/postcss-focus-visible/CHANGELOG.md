@@ -1,5 +1,14 @@
 # Changes to PostCSS Focus Visible
 
+### 6.0.4 (February 5, 2022)
+
+- Improved `es module` and `commonjs` compatibility
+
+### 6.0.3 (January 2, 2022)
+
+- Removed Sourcemaps from package tarball.
+- Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
+
 ### 6.0.2 (December 13, 2021)
 
 - Changed: now uses `postcss-selector-parser` for parsing.

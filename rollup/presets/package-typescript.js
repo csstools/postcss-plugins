@@ -9,8 +9,8 @@ export function packageTypescript() {
 		{
 			input: 'src/index.ts',
 			output: [
-				{ file: 'dist/index.cjs', format: 'cjs', sourcemap: true, exports: 'auto' },
-				{ file: 'dist/index.mjs', format: 'esm', sourcemap: true, exports: 'auto' },
+				{ file: 'dist/index.cjs', format: 'cjs', sourcemap: false, exports: 'auto' },
+				{ file: 'dist/index.mjs', format: 'esm', sourcemap: false, exports: 'auto' },
 			],
 			external: externalsForPlugin,
 			plugins: [
@@ -18,6 +18,7 @@ export function packageTypescript() {
 				babel({
 					babelHelpers: 'bundled',
 					exclude: 'node_modules/**',
+					extensions: ['.js', '.ts'],
 					presets: packageBabelPreset,
 				}),
 				terser(),

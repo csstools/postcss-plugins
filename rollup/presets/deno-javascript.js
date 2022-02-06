@@ -10,7 +10,7 @@ export function denoJavascript() {
 		{
 			input: 'src/index.js',
 			output: [
-				{ file: 'dist/index.deno.mjs', format: 'esm', sourcemap: true, exports: 'default' },
+				{ file: 'dist/index.deno.mjs', format: 'esm', sourcemap: false, exports: 'default' },
 			],
 			external: externalsForDeno,
 			plugins: [

@@ -1,5 +1,5 @@
 name: '🐞 Unexpected CSS output report'
-description: CSS output isn't what you expected? This is your path!
+description: CSS output is unexpected or breaks in certain cases? This is your path!
 body:
   - type: markdown
     attributes:
@@ -32,12 +32,19 @@ body:
   - type: dropdown
     id: npx
     attributes:
-      label: Does it happen with `npx <plugin-name> minimal-example.css`?
+      label: Does it happen with `npx @csstools/csstools-cli <plugin-name> minimal-example.css`?
       multiple: false
       options:
         - "Yes"
         - "No"
         - N/A
+  - type: textarea
+    id: debug
+    attributes:
+      label: Debug output
+      description: If this issue is about `postcss-preset-env`, can you provide the output of using the [debug](https://github.com/csstools/postcss-preset-env#debug) option?
+    validations:
+      required: false
   - type: textarea
     id: config
     attributes:
@@ -70,7 +77,9 @@ body:
         - PostCSS Focus Within
         - PostCSS Font Variant
         - PostCSS Gap Properties
+        - PostCSS HWB Function
         - PostCSS Image Set Function
+        - PostCSS Is Pseudo Class
         - PostCSS Lab Function
         - PostCSS Logical
         - PostCSS Media Query Ranges
@@ -78,6 +87,7 @@ body:
         - PostCSS Overflow Shorthand
         - PostCSS Page Break
         - PostCSS Place
+        - PostCSS Progressive Custom Properties
         - PostCSS Pseudo Class Any Link
         - PostCSS Rebeccapurple
         - PostCSS Replace Overflow Wrap

@@ -1,0 +1,1349 @@
+:is(.some, .other):is(.some, .other) {
+	order: 0;
+}
+
+:is(.some, .other):is(.some, .other) {
+	order: 1;
+}
+
+:is(:is(.some, .other):is(.some, .other)) {
+	order: 2;
+}
+
+:is(.some, .other) :is(.some, .other) {
+	order: 3;
+}
+
+:is(.some, .other) :is(.some, .other) {
+	order: 4;
+}
+
+:is(:is(.some, .other) :is(.some, .other)) {
+	order: 5;
+}
+
+:is(.some, .other)  :is(.some, .other) {
+	order: 6;
+}
+
+:is(.some, .other)  :is(.some, .other) {
+	order: 7;
+}
+
+:is(:is(.some, .other)  :is(.some, .other)) {
+	order: 8;
+}
+
+:is(.some, .other)+:is(.some, .other) {
+	order: 9;
+}
+
+:is(.some, .other)+:is(.some, .other) {
+	order: 10;
+}
+
+:is(:is(.some, .other)+:is(.some, .other)) {
+	order: 11;
+}
+
+:is(.some, .other) + :is(.some, .other) {
+	order: 12;
+}
+
+:is(.some, .other) + :is(.some, .other) {
+	order: 13;
+}
+
+:is(:is(.some, .other) + :is(.some, .other)) {
+	order: 14;
+}
+
+:is(.some, .other)~:is(.some, .other) {
+	order: 15;
+}
+
+:is(.some, .other)~:is(.some, .other) {
+	order: 16;
+}
+
+:is(:is(.some, .other)~:is(.some, .other)) {
+	order: 17;
+}
+
+:is(.some, .other) ~ :is(.some, .other) {
+	order: 18;
+}
+
+:is(.some, .other) ~ :is(.some, .other) {
+	order: 19;
+}
+
+:is(:is(.some, .other) ~ :is(.some, .other)) {
+	order: 20;
+}
+
+:is(.some, .other)>:is(.some, .other) {
+	order: 21;
+}
+
+:is(.some, .other)>:is(.some, .other) {
+	order: 22;
+}
+
+:is(:is(.some, .other)>:is(.some, .other)) {
+	order: 23;
+}
+
+:is(.some, .other) > :is(.some, .other) {
+	order: 24;
+}
+
+:is(.some, .other) > :is(.some, .other) {
+	order: 25;
+}
+
+:is(:is(.some, .other) > :is(.some, .other)) {
+	order: 26;
+}
+
+:is(.some, .other), :is(.some, .other) {
+	order: 27;
+}
+
+:is(.some, .other), :is(.some, .other) {
+	order: 28;
+}
+
+:is(:is(.some, .other)) {
+	order: 29;
+}
+
+button:is(.some, .other) {
+	order: 30;
+}
+
+:is(.some, .other)button {
+	order: 31;
+}
+
+:is(buttonbutton) {
+	order: 32;
+}
+
+button :is(.some, .other) {
+	order: 33;
+}
+
+:is(.some, .other) button {
+	order: 34;
+}
+
+:is(button button) {
+	order: 35;
+}
+
+button  :is(.some, .other) {
+	order: 36;
+}
+
+:is(.some, .other)  button {
+	order: 37;
+}
+
+:is(button  button) {
+	order: 38;
+}
+
+button+:is(.some, .other) {
+	order: 39;
+}
+
+:is(.some, .other)+button {
+	order: 40;
+}
+
+:is(button+button) {
+	order: 41;
+}
+
+button + :is(.some, .other) {
+	order: 42;
+}
+
+:is(.some, .other) + button {
+	order: 43;
+}
+
+:is(button + button) {
+	order: 44;
+}
+
+button~:is(.some, .other) {
+	order: 45;
+}
+
+:is(.some, .other)~button {
+	order: 46;
+}
+
+:is(button~button) {
+	order: 47;
+}
+
+button ~ :is(.some, .other) {
+	order: 48;
+}
+
+:is(.some, .other) ~ button {
+	order: 49;
+}
+
+:is(button ~ button) {
+	order: 50;
+}
+
+button>:is(.some, .other) {
+	order: 51;
+}
+
+:is(.some, .other)>button {
+	order: 52;
+}
+
+:is(button>button) {
+	order: 53;
+}
+
+button > :is(.some, .other) {
+	order: 54;
+}
+
+:is(.some, .other) > button {
+	order: 55;
+}
+
+:is(button > button) {
+	order: 56;
+}
+
+button, :is(.some, .other) {
+	order: 57;
+}
+
+:is(.some, .other), button {
+	order: 58;
+}
+
+:is(button) {
+	order: 59;
+}
+
+.🧑🏾‍🎤:is(.some, .other) {
+	order: 60;
+}
+
+:is(.some, .other).🧑🏾‍🎤 {
+	order: 61;
+}
+
+:is(.🧑🏾‍🎤.🧑🏾‍🎤) {
+	order: 62;
+}
+
+.🧑🏾‍🎤 :is(.some, .other) {
+	order: 63;
+}
+
+:is(.some, .other) .🧑🏾‍🎤 {
+	order: 64;
+}
+
+:is(.🧑🏾‍🎤 .🧑🏾‍🎤) {
+	order: 65;
+}
+
+.🧑🏾‍🎤  :is(.some, .other) {
+	order: 66;
+}
+
+:is(.some, .other)  .🧑🏾‍🎤 {
+	order: 67;
+}
+
+:is(.🧑🏾‍🎤  .🧑🏾‍🎤) {
+	order: 68;
+}
+
+.🧑🏾‍🎤+:is(.some, .other) {
+	order: 69;
+}
+
+:is(.some, .other)+.🧑🏾‍🎤 {
+	order: 70;
+}
+
+:is(.🧑🏾‍🎤+.🧑🏾‍🎤) {
+	order: 71;
+}
+
+.🧑🏾‍🎤 + :is(.some, .other) {
+	order: 72;
+}
+
+:is(.some, .other) + .🧑🏾‍🎤 {
+	order: 73;
+}
+
+:is(.🧑🏾‍🎤 + .🧑🏾‍🎤) {
+	order: 74;
+}
+
+.🧑🏾‍🎤~:is(.some, .other) {
+	order: 75;
+}
+
+:is(.some, .other)~.🧑🏾‍🎤 {
+	order: 76;
+}
+
+:is(.🧑🏾‍🎤~.🧑🏾‍🎤) {
+	order: 77;
+}
+
+.🧑🏾‍🎤 ~ :is(.some, .other) {
+	order: 78;
+}
+
+:is(.some, .other) ~ .🧑🏾‍🎤 {
+	order: 79;
+}
+
+:is(.🧑🏾‍🎤 ~ .🧑🏾‍🎤) {
+	order: 80;
+}
+
+.🧑🏾‍🎤>:is(.some, .other) {
+	order: 81;
+}
+
+:is(.some, .other)>.🧑🏾‍🎤 {
+	order: 82;
+}
+
+:is(.🧑🏾‍🎤>.🧑🏾‍🎤) {
+	order: 83;
+}
+
+.🧑🏾‍🎤 > :is(.some, .other) {
+	order: 84;
+}
+
+:is(.some, .other) > .🧑🏾‍🎤 {
+	order: 85;
+}
+
+:is(.🧑🏾‍🎤 > .🧑🏾‍🎤) {
+	order: 86;
+}
+
+.🧑🏾‍🎤, :is(.some, .other) {
+	order: 87;
+}
+
+:is(.some, .other), .🧑🏾‍🎤 {
+	order: 88;
+}
+
+:is(.🧑🏾‍🎤) {
+	order: 89;
+}
+
+.foo:is(.some, .other) {
+	order: 90;
+}
+
+:is(.some, .other).foo {
+	order: 91;
+}
+
+:is(.foo.foo) {
+	order: 92;
+}
+
+.foo :is(.some, .other) {
+	order: 93;
+}
+
+:is(.some, .other) .foo {
+	order: 94;
+}
+
+:is(.foo .foo) {
+	order: 95;
+}
+
+.foo  :is(.some, .other) {
+	order: 96;
+}
+
+:is(.some, .other)  .foo {
+	order: 97;
+}
+
+:is(.foo  .foo) {
+	order: 98;
+}
+
+.foo+:is(.some, .other) {
+	order: 99;
+}
+
+:is(.some, .other)+.foo {
+	order: 100;
+}
+
+:is(.foo+.foo) {
+	order: 101;
+}
+
+.foo + :is(.some, .other) {
+	order: 102;
+}
+
+:is(.some, .other) + .foo {
+	order: 103;
+}
+
+:is(.foo + .foo) {
+	order: 104;
+}
+
+.foo~:is(.some, .other) {
+	order: 105;
+}
+
+:is(.some, .other)~.foo {
+	order: 106;
+}
+
+:is(.foo~.foo) {
+	order: 107;
+}
+
+.foo ~ :is(.some, .other) {
+	order: 108;
+}
+
+:is(.some, .other) ~ .foo {
+	order: 109;
+}
+
+:is(.foo ~ .foo) {
+	order: 110;
+}
+
+.foo>:is(.some, .other) {
+	order: 111;
+}
+
+:is(.some, .other)>.foo {
+	order: 112;
+}
+
+:is(.foo>.foo) {
+	order: 113;
+}
+
+.foo > :is(.some, .other) {
+	order: 114;
+}
+
+:is(.some, .other) > .foo {
+	order: 115;
+}
+
+:is(.foo > .foo) {
+	order: 116;
+}
+
+.foo, :is(.some, .other) {
+	order: 117;
+}
+
+:is(.some, .other), .foo {
+	order: 118;
+}
+
+:is(.foo) {
+	order: 119;
+}
+
+#foo:is(.some, .other) {
+	order: 120;
+}
+
+:is(.some, .other)#foo {
+	order: 121;
+}
+
+:is(#foo#foo) {
+	order: 122;
+}
+
+#foo :is(.some, .other) {
+	order: 123;
+}
+
+:is(.some, .other) #foo {
+	order: 124;
+}
+
+:is(#foo #foo) {
+	order: 125;
+}
+
+#foo  :is(.some, .other) {
+	order: 126;
+}
+
+:is(.some, .other)  #foo {
+	order: 127;
+}
+
+:is(#foo  #foo) {
+	order: 128;
+}
+
+#foo+:is(.some, .other) {
+	order: 129;
+}
+
+:is(.some, .other)+#foo {
+	order: 130;
+}
+
+:is(#foo+#foo) {
+	order: 131;
+}
+
+#foo + :is(.some, .other) {
+	order: 132;
+}
+
+:is(.some, .other) + #foo {
+	order: 133;
+}
+
+:is(#foo + #foo) {
+	order: 134;
+}
+
+#foo~:is(.some, .other) {
+	order: 135;
+}
+
+:is(.some, .other)~#foo {
+	order: 136;
+}
+
+:is(#foo~#foo) {
+	order: 137;
+}
+
+#foo ~ :is(.some, .other) {
+	order: 138;
+}
+
+:is(.some, .other) ~ #foo {
+	order: 139;
+}
+
+:is(#foo ~ #foo) {
+	order: 140;
+}
+
+#foo>:is(.some, .other) {
+	order: 141;
+}
+
+:is(.some, .other)>#foo {
+	order: 142;
+}
+
+:is(#foo>#foo) {
+	order: 143;
+}
+
+#foo > :is(.some, .other) {
+	order: 144;
+}
+
+:is(.some, .other) > #foo {
+	order: 145;
+}
+
+:is(#foo > #foo) {
+	order: 146;
+}
+
+#foo, :is(.some, .other) {
+	order: 147;
+}
+
+:is(.some, .other), #foo {
+	order: 148;
+}
+
+:is(#foo) {
+	order: 149;
+}
+
+__foo:is(.some, .other) {
+	order: 150;
+}
+
+:is(.some, .other)__foo {
+	order: 151;
+}
+
+:is(__foo__foo) {
+	order: 152;
+}
+
+__foo :is(.some, .other) {
+	order: 153;
+}
+
+:is(.some, .other) __foo {
+	order: 154;
+}
+
+:is(__foo __foo) {
+	order: 155;
+}
+
+__foo  :is(.some, .other) {
+	order: 156;
+}
+
+:is(.some, .other)  __foo {
+	order: 157;
+}
+
+:is(__foo  __foo) {
+	order: 158;
+}
+
+__foo+:is(.some, .other) {
+	order: 159;
+}
+
+:is(.some, .other)+__foo {
+	order: 160;
+}
+
+:is(__foo+__foo) {
+	order: 161;
+}
+
+__foo + :is(.some, .other) {
+	order: 162;
+}
+
+:is(.some, .other) + __foo {
+	order: 163;
+}
+
+:is(__foo + __foo) {
+	order: 164;
+}
+
+__foo~:is(.some, .other) {
+	order: 165;
+}
+
+:is(.some, .other)~__foo {
+	order: 166;
+}
+
+:is(__foo~__foo) {
+	order: 167;
+}
+
+__foo ~ :is(.some, .other) {
+	order: 168;
+}
+
+:is(.some, .other) ~ __foo {
+	order: 169;
+}
+
+:is(__foo ~ __foo) {
+	order: 170;
+}
+
+__foo>:is(.some, .other) {
+	order: 171;
+}
+
+:is(.some, .other)>__foo {
+	order: 172;
+}
+
+:is(__foo>__foo) {
+	order: 173;
+}
+
+__foo > :is(.some, .other) {
+	order: 174;
+}
+
+:is(.some, .other) > __foo {
+	order: 175;
+}
+
+:is(__foo > __foo) {
+	order: 176;
+}
+
+__foo, :is(.some, .other) {
+	order: 177;
+}
+
+:is(.some, .other), __foo {
+	order: 178;
+}
+
+:is(__foo) {
+	order: 179;
+}
+
+:--foo:is(.some, .other) {
+	order: 180;
+}
+
+:is(.some, .other):--foo {
+	order: 181;
+}
+
+:is(:--foo:--foo) {
+	order: 182;
+}
+
+:--foo :is(.some, .other) {
+	order: 183;
+}
+
+:is(.some, .other) :--foo {
+	order: 184;
+}
+
+:is(:--foo :--foo) {
+	order: 185;
+}
+
+:--foo  :is(.some, .other) {
+	order: 186;
+}
+
+:is(.some, .other)  :--foo {
+	order: 187;
+}
+
+:is(:--foo  :--foo) {
+	order: 188;
+}
+
+:--foo+:is(.some, .other) {
+	order: 189;
+}
+
+:is(.some, .other)+:--foo {
+	order: 190;
+}
+
+:is(:--foo+:--foo) {
+	order: 191;
+}
+
+:--foo + :is(.some, .other) {
+	order: 192;
+}
+
+:is(.some, .other) + :--foo {
+	order: 193;
+}
+
+:is(:--foo + :--foo) {
+	order: 194;
+}
+
+:--foo~:is(.some, .other) {
+	order: 195;
+}
+
+:is(.some, .other)~:--foo {
+	order: 196;
+}
+
+:is(:--foo~:--foo) {
+	order: 197;
+}
+
+:--foo ~ :is(.some, .other) {
+	order: 198;
+}
+
+:is(.some, .other) ~ :--foo {
+	order: 199;
+}
+
+:is(:--foo ~ :--foo) {
+	order: 200;
+}
+
+:--foo>:is(.some, .other) {
+	order: 201;
+}
+
+:is(.some, .other)>:--foo {
+	order: 202;
+}
+
+:is(:--foo>:--foo) {
+	order: 203;
+}
+
+:--foo > :is(.some, .other) {
+	order: 204;
+}
+
+:is(.some, .other) > :--foo {
+	order: 205;
+}
+
+:is(:--foo > :--foo) {
+	order: 206;
+}
+
+:--foo, :is(.some, .other) {
+	order: 207;
+}
+
+:is(.some, .other), :--foo {
+	order: 208;
+}
+
+:is(:--foo) {
+	order: 209;
+}
+
+[foo="baz"]:is(.some, .other) {
+	order: 210;
+}
+
+:is(.some, .other)[foo="baz"] {
+	order: 211;
+}
+
+:is([foo="baz"][foo="baz"]) {
+	order: 212;
+}
+
+[foo="baz"] :is(.some, .other) {
+	order: 213;
+}
+
+:is(.some, .other) [foo="baz"] {
+	order: 214;
+}
+
+:is([foo="baz"] [foo="baz"]) {
+	order: 215;
+}
+
+[foo="baz"]  :is(.some, .other) {
+	order: 216;
+}
+
+:is(.some, .other)  [foo="baz"] {
+	order: 217;
+}
+
+:is([foo="baz"]  [foo="baz"]) {
+	order: 218;
+}
+
+[foo="baz"]+:is(.some, .other) {
+	order: 219;
+}
+
+:is(.some, .other)+[foo="baz"] {
+	order: 220;
+}
+
+:is([foo="baz"]+[foo="baz"]) {
+	order: 221;
+}
+
+[foo="baz"] + :is(.some, .other) {
+	order: 222;
+}
+
+:is(.some, .other) + [foo="baz"] {
+	order: 223;
+}
+
+:is([foo="baz"] + [foo="baz"]) {
+	order: 224;
+}
+
+[foo="baz"]~:is(.some, .other) {
+	order: 225;
+}
+
+:is(.some, .other)~[foo="baz"] {
+	order: 226;
+}
+
+:is([foo="baz"]~[foo="baz"]) {
+	order: 227;
+}
+
+[foo="baz"] ~ :is(.some, .other) {
+	order: 228;
+}
+
+:is(.some, .other) ~ [foo="baz"] {
+	order: 229;
+}
+
+:is([foo="baz"] ~ [foo="baz"]) {
+	order: 230;
+}
+
+[foo="baz"]>:is(.some, .other) {
+	order: 231;
+}
+
+:is(.some, .other)>[foo="baz"] {
+	order: 232;
+}
+
+:is([foo="baz"]>[foo="baz"]) {
+	order: 233;
+}
+
+[foo="baz"] > :is(.some, .other) {
+	order: 234;
+}
+
+:is(.some, .other) > [foo="baz"] {
+	order: 235;
+}
+
+:is([foo="baz"] > [foo="baz"]) {
+	order: 236;
+}
+
+[foo="baz"], :is(.some, .other) {
+	order: 237;
+}
+
+:is(.some, .other), [foo="baz"] {
+	order: 238;
+}
+
+:is([foo="baz"]) {
+	order: 239;
+}
+
+*:is(.some, .other) {
+	order: 240;
+}
+
+:is(.some, .other)* {
+	order: 241;
+}
+
+:is(**) {
+	order: 242;
+}
+
+* :is(.some, .other) {
+	order: 243;
+}
+
+:is(.some, .other) * {
+	order: 244;
+}
+
+:is(* *) {
+	order: 245;
+}
+
+*  :is(.some, .other) {
+	order: 246;
+}
+
+:is(.some, .other)  * {
+	order: 247;
+}
+
+:is(*  *) {
+	order: 248;
+}
+
+*+:is(.some, .other) {
+	order: 249;
+}
+
+:is(.some, .other)+* {
+	order: 250;
+}
+
+:is(*+*) {
+	order: 251;
+}
+
+* + :is(.some, .other) {
+	order: 252;
+}
+
+:is(.some, .other) + * {
+	order: 253;
+}
+
+:is(* + *) {
+	order: 254;
+}
+
+*~:is(.some, .other) {
+	order: 255;
+}
+
+:is(.some, .other)~* {
+	order: 256;
+}
+
+:is(*~*) {
+	order: 257;
+}
+
+* ~ :is(.some, .other) {
+	order: 258;
+}
+
+:is(.some, .other) ~ * {
+	order: 259;
+}
+
+:is(* ~ *) {
+	order: 260;
+}
+
+*>:is(.some, .other) {
+	order: 261;
+}
+
+:is(.some, .other)>* {
+	order: 262;
+}
+
+:is(*>*) {
+	order: 263;
+}
+
+* > :is(.some, .other) {
+	order: 264;
+}
+
+:is(.some, .other) > * {
+	order: 265;
+}
+
+:is(* > *) {
+	order: 266;
+}
+
+*, :is(.some, .other) {
+	order: 267;
+}
+
+:is(.some, .other), * {
+	order: 268;
+}
+
+:is(*) {
+	order: 269;
+}
+
+:hover:is(.some, .other) {
+	order: 270;
+}
+
+:is(.some, .other):hover {
+	order: 271;
+}
+
+:is(:hover:hover) {
+	order: 272;
+}
+
+:hover :is(.some, .other) {
+	order: 273;
+}
+
+:is(.some, .other) :hover {
+	order: 274;
+}
+
+:is(:hover :hover) {
+	order: 275;
+}
+
+:hover  :is(.some, .other) {
+	order: 276;
+}
+
+:is(.some, .other)  :hover {
+	order: 277;
+}
+
+:is(:hover  :hover) {
+	order: 278;
+}
+
+:hover+:is(.some, .other) {
+	order: 279;
+}
+
+:is(.some, .other)+:hover {
+	order: 280;
+}
+
+:is(:hover+:hover) {
+	order: 281;
+}
+
+:hover + :is(.some, .other) {
+	order: 282;
+}
+
+:is(.some, .other) + :hover {
+	order: 283;
+}
+
+:is(:hover + :hover) {
+	order: 284;
+}
+
+:hover~:is(.some, .other) {
+	order: 285;
+}
+
+:is(.some, .other)~:hover {
+	order: 286;
+}
+
+:is(:hover~:hover) {
+	order: 287;
+}
+
+:hover ~ :is(.some, .other) {
+	order: 288;
+}
+
+:is(.some, .other) ~ :hover {
+	order: 289;
+}
+
+:is(:hover ~ :hover) {
+	order: 290;
+}
+
+:hover>:is(.some, .other) {
+	order: 291;
+}
+
+:is(.some, .other)>:hover {
+	order: 292;
+}
+
+:is(:hover>:hover) {
+	order: 293;
+}
+
+:hover > :is(.some, .other) {
+	order: 294;
+}
+
+:is(.some, .other) > :hover {
+	order: 295;
+}
+
+:is(:hover > :hover) {
+	order: 296;
+}
+
+:hover, :is(.some, .other) {
+	order: 297;
+}
+
+:is(.some, .other), :hover {
+	order: 298;
+}
+
+:is(:hover) {
+	order: 299;
+}
+
+::before:is(.some, .other) {
+	order: 300;
+}
+
+:is(.some, .other)::before {
+	order: 301;
+}
+
+:is(::before::before) {
+	order: 302;
+}
+
+::before :is(.some, .other) {
+	order: 303;
+}
+
+:is(.some, .other) ::before {
+	order: 304;
+}
+
+:is(::before ::before) {
+	order: 305;
+}
+
+::before  :is(.some, .other) {
+	order: 306;
+}
+
+:is(.some, .other)  ::before {
+	order: 307;
+}
+
+:is(::before  ::before) {
+	order: 308;
+}
+
+::before+:is(.some, .other) {
+	order: 309;
+}
+
+:is(.some, .other)+::before {
+	order: 310;
+}
+
+:is(::before+::before) {
+	order: 311;
+}
+
+::before + :is(.some, .other) {
+	order: 312;
+}
+
+:is(.some, .other) + ::before {
+	order: 313;
+}
+
+:is(::before + ::before) {
+	order: 314;
+}
+
+::before~:is(.some, .other) {
+	order: 315;
+}
+
+:is(.some, .other)~::before {
+	order: 316;
+}
+
+:is(::before~::before) {
+	order: 317;
+}
+
+::before ~ :is(.some, .other) {
+	order: 318;
+}
+
+:is(.some, .other) ~ ::before {
+	order: 319;
+}
+
+:is(::before ~ ::before) {
+	order: 320;
+}
+
+::before>:is(.some, .other) {
+	order: 321;
+}
+
+:is(.some, .other)>::before {
+	order: 322;
+}
+
+:is(::before>::before) {
+	order: 323;
+}
+
+::before > :is(.some, .other) {
+	order: 324;
+}
+
+:is(.some, .other) > ::before {
+	order: 325;
+}
+
+:is(::before > ::before) {
+	order: 326;
+}
+
+::before, :is(.some, .other) {
+	order: 327;
+}
+
+:is(.some, .other), ::before {
+	order: 328;
+}
+
+:is(::before) {
+	order: 329;
+}
+
+:is() {
+	order: 330;
+}
+
+foo[:is(.some, .other)] {
+	order: 331;
+}
+
+foo[baz=":is(.some, .other)"] {
+	order: 332;
+}
+
+:not(:is(.some, .other)) {
+	order: 333;
+}
+
+::is(.some, .other) {
+	order: 334;
+}
+
+:--:is(.some, .other) {
+	order: 335;
+}
+
+__:is(.some, .other) {
+	order: 336;
+}
+
+/* :is */

@@ -1,9 +1,9 @@
 # PostCSS Place Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [<img alt="NPM Version" src="https://img.shields.io/npm/v/postcss-place.svg" height="20">][npm-url]
-[<img alt="CSS Standard Status" src="https://cssdb.org/badge/double-position-gradients.svg" height="20">][css-url]
+[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/double-position-gradients.svg" height="20">][css-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
-[<img alt="Support Chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Place Properties] lets you use `place-*` properties as shorthands for `align-*`
 and `justify-*`, following the [CSS Box Alignment] specification.
@@ -79,7 +79,7 @@ postcssPlace({ preserve: false })
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#place-properties
-[git-url]: https://gitter.im/postcss/postcss
+[discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/postcss-place
 
 [CSS Box Alignment]: https://www.w3.org/TR/css-align-3/#place-content
