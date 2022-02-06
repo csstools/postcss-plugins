@@ -3,7 +3,7 @@ import type { ParsedValue, FunctionNode } from 'postcss-value-parser';
 import type { Declaration, Result } from 'postcss';
 import { onCSSFunctionSRgb } from './on-css-function';
 
-export function modifiedValues(originalValue: string, decl: Declaration, result: Result): string | undefined {
+export function modifiedValues(originalValue: string, decl: Declaration, result: Result, preserve: boolean): string | undefined {
 	let valueASTSRgb: ParsedValue | undefined;
 
 	try {
@@ -28,7 +28,7 @@ export function modifiedValues(originalValue: string, decl: Declaration, result:
 			return;
 		}
 
-		onCSSFunctionSRgb(node as FunctionNode);
+		onCSSFunctionSRgb(node as FunctionNode, decl, result, preserve);
 	});
 	const modifiedValueSRgb = String(valueASTSRgb);
 

@@ -24,7 +24,7 @@ const basePlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boo
 				return;
 			}
 
-			const modified = modifiedValues(originalValue, decl, result);
+			const modified = modifiedValues(originalValue, decl, result, preserve);
 			if (typeof modified === 'undefined') {
 				return;
 			}

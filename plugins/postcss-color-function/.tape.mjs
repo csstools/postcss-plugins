@@ -8,6 +8,7 @@ postcssTape(plugin)({
 	},
 	'basic:preserve-true': {
 		message: 'supports { preserve: true } usage',
+		warnings: 6,
 		options: {
 			preserve: true
 		}

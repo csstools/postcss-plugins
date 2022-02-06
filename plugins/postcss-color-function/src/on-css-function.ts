@@ -1,15 +1,19 @@
-import valueParser from 'postcss-value-parser';
+import type { Declaration, Result } from 'postcss';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
-import { displayP3ToSRgb } from './convert-display-p3-to-srgb';
-import { sRgbLinearToSRgb } from './convert-srgb-linear-to-srgb';
+import valueParser from 'postcss-value-parser';
 import { a98RgbToSRgb } from './convert-a98-rgb-to-srgb';
-import { prophotoRgbToSRgb } from './convert-prophoto-rgb-to-srgb';
-import { rec2020ToSRgb } from './convert-rec2020-to-srgb';
 import { cieXyz50ToSRgb } from './convert-cie-xyz-50-to-srgb';
 import { cieXyz65ToSRgb } from './convert-cie-xyz-65-to-srgb';
+import { displayP3ToSRgb } from './convert-display-p3-to-srgb';
+import { prophotoRgbToSRgb } from './convert-prophoto-rgb-to-srgb';
+import { rec2020ToSRgb } from './convert-rec2020-to-srgb';
+import { sRgbLinearToSRgb } from './convert-srgb-linear-to-srgb';
 import { sRgbToSRgb } from './convert-srgb-to-srgb';
+import { inGamut } from './css-color-4/map-gamut';
 
-export function onCSSFunctionSRgb(node: FunctionNode) {
+export function onCSSFunctionSRgb(node: FunctionNode, decl: Declaration, result: Result, preserve: boolean) {
+	const originalForWarnings = valueParser.stringify(node);
+
 	const value = node.value;
 	const rawNodes = node.nodes;
 	const relevantNodes = rawNodes.slice().filter((x) => {
@@ -31,7 +35,7 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 	transformAlpha(node, nodes.slash, nodes.alpha);
 
 	/** Corresponding Color transformer. */
-	let toRGB;
+	let toRGB: (x: [number, number, number]) => [number, number, number];
 	switch (nodes.colorSpace) {
 		case 'srgb':
 			toRGB = sRgbToSRgb;
@@ -72,6 +76,13 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 	const rgbValues = toRGB(
 		channelNumbers,
 	);
+
+	if (!inGamut(channelNumbers) && preserve) {
+		decl.warn(
+			result,
+			`"${originalForWarnings}" is out of gamut for "${nodes.colorSpace}". When "preserve: true" is set this will lead to unexpected results in some browsers.`,
+		);
+	}
 
 	node.nodes = [
 		{
