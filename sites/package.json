@@ -1,0 +1,27 @@
+{
+  "name": "@csstools/www",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "engines": {
+    "node": "16"
+  },
+  "workspaces": [
+    "postcss-preset-env"
+  ],
+  "devDependencies": {
+    "stylelint": "^14.3.0",
+    "stylelint-config-standard": "^24.0.0"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "start": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "volta": {
+    "extends": "../package.json"
+  }
+}
