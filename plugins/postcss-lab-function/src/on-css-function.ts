@@ -1,9 +1,10 @@
-import valueParser from 'postcss-value-parser';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode, SpaceNode } from 'postcss-value-parser';
-import { labToSRgb } from './convert-lab-to-srgb';
-import { lchToSRgb } from './convert-lch-to-srgb';
+import valueParser from 'postcss-value-parser';
+import { Declaration, Result } from 'postcss';
 import { labToDisplayP3 } from './convert-lab-to-display-p3';
+import { labToSRgb } from './convert-lab-to-srgb';
 import { lchToDisplayP3 } from './convert-lch-to-display-p3';
+import { lchToSRgb } from './convert-lch-to-srgb';
 
 export function onCSSFunctionSRgb(node: FunctionNode) {
 	const value = node.value;
@@ -71,7 +72,9 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 	});
 }
 
-export function onCSSFunctionDisplayP3(node: FunctionNode) {
+export function onCSSFunctionDisplayP3(node: FunctionNode, decl: Declaration, result: Result, preserve: boolean) {
+	const originalForWarnings = valueParser.stringify(node);
+
 	const value = node.value;
 	const rawNodes = node.nodes;
 	const relevantNodes = rawNodes.slice().filter((x) => {
@@ -101,7 +104,7 @@ export function onCSSFunctionDisplayP3(node: FunctionNode) {
 	const [channelDimension1, channelDimension2, channelDimension3] = channelDimensions(nodes);
 
 	/** Corresponding Color transformer. */
-	const toRGB = value === 'lab' ? labToDisplayP3 : lchToDisplayP3;
+	const toDisplayP3 = value === 'lab' ? labToDisplayP3 : lchToDisplayP3;
 
 	/** RGB channels from the source color. */
 	const channelNumbers: [number, number, number] = [
@@ -112,9 +115,16 @@ export function onCSSFunctionDisplayP3(node: FunctionNode) {
 		channelNumber => parseFloat(channelNumber),
 	) as [number, number, number];
 
-	const rgbValues = toRGB(
+	const [rgbValues, inGamut] = toDisplayP3(
 		channelNumbers,
 	);
+
+	if (!inGamut && preserve) {
+		decl.warn(
+			result,
+			`"${originalForWarnings}" is out of gamut for "display-p3". When "preserve: true" is set this will lead to unexpected results in some browsers.`,
+		);
+	}
 
 	node.nodes.splice(0, 0, displayP3Node());
 	node.nodes.splice(1, 0, spaceNode());

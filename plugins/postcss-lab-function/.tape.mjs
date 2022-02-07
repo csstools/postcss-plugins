@@ -7,20 +7,22 @@ postcssTape(plugin)({
 	},
 	'basic:preserve-true': {
 		message: 'supports { preserve: true } usage',
+		warnings: 9,
 		options: {
 			preserve: true
 		}
 	},
-	'basic:display-p3': {
-		message: 'supports { displayP3: true } usage',
+	'basic:display-p3-false': {
+		message: 'supports { displayP3: false } usage',
 		options: {
-			displayP3: true
+			displayP3: false
 		}
 	},
-	'basic:display-p3:preserve-true': {
-		message: 'supports { displayP3: true, preserve: true } usage',
+	'basic:display-p3-false:preserve-true': {
+		message: 'supports { displayP3: false, preserve: true } usage',
+		warnings: 9,
 		options: {
-			displayP3: true,
+			displayP3: false,
 			preserve: true
 		}
 	},
@@ -33,16 +35,16 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
-	'variables:display-p3': {
-		message: 'supports variables with { displayP3: true } usage',
+	'variables:display-p3-false': {
+		message: 'supports variables with { displayP3: false } usage',
 		options: {
-			displayP3: true
+			displayP3: false
 		}
 	},
-	'variables:display-p3:preserve-true': {
-		message: 'supports variables with { displayP3: true, preserve: true } usage',
+	'variables:display-p3-false:preserve-true': {
+		message: 'supports variables with { displayP3: false, preserve: true } usage',
 		options: {
-			displayP3: true,
+			displayP3: false,
 			preserve: true
 		}
 	}
