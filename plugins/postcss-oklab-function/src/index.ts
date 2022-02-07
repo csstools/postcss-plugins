@@ -11,7 +11,7 @@ const basePlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = (op
 	const displayP3Enabled = 'displayP3' in Object(opts) ? Boolean(opts.displayP3) : false;
 
 	return {
-		postcssPlugin: 'postcss-lab-function',
+		postcssPlugin: 'postcss-oklab-function',
 		Declaration: (decl: Declaration, { result }: { result: Result }) => {
 			if (hasFallback(decl)) {
 				return;
@@ -60,7 +60,7 @@ const postcssPlugin: PluginCreator<{ preserve?: boolean, displayP3?: boolean, en
 
 	if (enableProgressiveCustomProperties && (preserve || displayP3Enabled)) {
 		return {
-			postcssPlugin: 'postcss-color-function',
+			postcssPlugin: 'postcss-oklab-function',
 			plugins: [
 				postcssProgressiveCustomProperties(),
 				basePlugin({ preserve: preserve, displayP3: displayP3Enabled }),

@@ -1,6 +1,6 @@
 # PostCSS OKLab Function [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-oklab-function.svg" height="20">][npm-url]
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-oklab-function.svg" height="20">][npm-url]
 <!-- [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/oklab-function.svg" height="20">][css-url] -->
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
@@ -43,7 +43,7 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssLabFunction = require('@csstools/postcss-oklab-function');
+const postcssOKLabFunction = require('@csstools/postcss-oklab-function');
 
 postcss([
   postcssOKLabFunction(/* pluginOptions */)
@@ -91,6 +91,35 @@ postcssOKLabFunction({ preserve: true })
 }
 ```
 
+### displayP3
+
+The `displayP3` option determines if `color(display-p3 ...)` is used as a fallback.
+By default, it is enabled.
+
+```js
+postcssOKLabFunction({ displayP3: false })
+```
+
+```pcss
+.test-oklab {
+	color: oklab(40% 0.001236 0.0039);
+}
+
+.test-oklch {
+	color: oklch(40% 0.268735435 34.568626);
+}
+
+/* becomes */
+
+.test-oklab {
+	color: rgb(73, 71, 69);
+}
+
+.test-oklch {
+	color: rgb(131, 28, 0);
+}
+```
+
 ### enableProgressiveCustomProperties
 
 The `enableProgressiveCustomProperties` option determines whether the original notation
@@ -99,7 +128,7 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 ⚠️ Only disabled this when you set `preserve` to `false` or if you bring your own fix for Custom Properties.
 
 ```js
-postcssLabFunction({ enableProgressiveCustomProperties: false })
+postcssOKLabFunction({ enableProgressiveCustomProperties: false })
 ```
 
 ```pcss
