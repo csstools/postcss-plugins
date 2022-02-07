@@ -39,6 +39,7 @@
     "@csstools/postcss-hwb-function": "^1.0.0",
     "@csstools/postcss-is-pseudo-class": "^2.0.0",
     "@csstools/postcss-normalize-display-values": "^1.0.0",
+    "@csstools/postcss-progressive-custom-properties": "^1.0.0",
     "autoprefixer": "^10.4.2",
     "browserslist": "^4.19.1",
     "css-blank-pseudo": "^3.0.2",
