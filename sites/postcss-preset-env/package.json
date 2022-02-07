@@ -22,7 +22,6 @@
     "lodash.get": "^4.4.2",
     "postcss": "^8.4.6",
     "postcss-preset-env": "^7.3.1",
-    "pre-commit": "^1.2.2",
     "stylelint": "^14.3.0",
     "stylelint-config-standard": "^24.0.0"
   },

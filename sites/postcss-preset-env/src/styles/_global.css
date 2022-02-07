@@ -1,0 +1,52 @@
+@custom-media --viewport-medium (width >= 53.75rem);
+
+:root {
+	--heading-size: 2.5rem;
+	--font-body: "Avenir Next", sans-serif;
+	--font-code: "Source Code Pro", monospace;
+	--transition: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+	--t-slow: .3s;
+	font: 400 100%/1.5 sans-serif;
+	font-family: var(--font-body);
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	-webkit-text-size-adjust: 100%;
+
+	@media (--viewport-medium) {
+		--heading-size: 5rem;
+	}
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	margin: 0;
+}
+
+pre {
+	font: 400 100%/1.5 var(--font-code);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+[aria-current] {
+	font-weight: 500;
+}
