@@ -1,5 +1,5 @@
 # Changes to PostCSS Color Function
 
-### Unreleased (initial)
+### 1.0.0 (February 7, 2022)
 
 - Initial version

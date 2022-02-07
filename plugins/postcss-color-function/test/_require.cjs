@@ -1,5 +1,5 @@
 const assert = require('assert');
-const plugin = require('postcss-lab-function');
+const plugin = require('@csstools/postcss-color-function');
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

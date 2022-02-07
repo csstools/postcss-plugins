@@ -20,7 +20,7 @@ export function cieXyz50ToSRgb(xyz: color): color {
 	conversion = gam_sRGB(conversion);
 
 	if (inGamut(conversion)) {
-		clip(conversion);
+		return clip(conversion);
 	}
 
 	return mapGamut(oklch, (x: color) => {

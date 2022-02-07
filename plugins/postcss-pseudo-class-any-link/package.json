@@ -1,6 +1,6 @@
 {
   "name": "postcss-pseudo-class-any-link",
-  "version": "7.1.0",
+  "version": "7.1.1",
   "description": "Use the :any-link pseudo-class in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",

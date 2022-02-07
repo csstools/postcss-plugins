@@ -122,3 +122,11 @@
 [\.x\:has\(\%3E\%20\.b\%20\*\)]:not(.does-not-exist) {
 	order: 30;
 }
+
+[\.x\:has\(\%3E\%20\.\.does-not-exist\)]:not(.does-not-exist) {
+	order: 31;
+}
+
+[\.x\:has\(\%3E\%20\:link\)]:not(.does-not-exist) {
+	order: 31;
+}

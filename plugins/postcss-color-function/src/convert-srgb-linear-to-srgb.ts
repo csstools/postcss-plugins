@@ -14,11 +14,13 @@ export function sRgbLinearToSRgb(linearSRgb: color): color {
 	oklch = XYZ_to_OKLab(oklch);
 	oklch = OKLab_to_OKLCH(oklch);
 
+	// 3. Convert from(D65 - adapted) CIE XYZ to linear RGB
+	conversion = XYZ_to_lin_sRGB(conversion);
 	// 4. Convert from linear - light RGB to RGB(do gamma encoding)
 	conversion = gam_sRGB(conversion);
 
 	if (inGamut(conversion)) {
-		clip(conversion);
+		return clip(conversion);
 	}
 
 	return mapGamut(oklch, (x: color) => {

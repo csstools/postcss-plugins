@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### 0.2.1 (February 6, 2022)
+
+- Do not leak visitedness via `:has` pseudo-class.
+
 ### 0.2.0 (January 12, 2022)
 
 - Added : documentation and tests for CORS.

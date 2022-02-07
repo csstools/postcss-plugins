@@ -8,6 +8,7 @@ postcssTape(plugin)({
 	},
 	'basic:preserve-true': {
 		message: 'supports { preserve: true } usage',
+		warnings: 6,
 		options: {
 			preserve: true
 		}
@@ -33,6 +34,13 @@ postcssTape(plugin)({
 		message: 'supports variables with { preserve: true } usage',
 		options: {
 			preserve: true
+		}
+	},
+	'variables:preserve-true:progressive-false': {
+		message: 'supports variables with { preserve: true, enableProgressiveCustomProperties: false } usage',
+		options: {
+			preserve: true,
+			enableProgressiveCustomProperties: false,
 		}
 	},
 });

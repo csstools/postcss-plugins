@@ -1,0 +1,6 @@
+:root {
+	/* fallback */
+	--a-color: red;
+	/* progressive enhancement */
+	--a-color: oklch(40% 0.234 0.39 / var(--opacity-50));
+}

@@ -21,7 +21,7 @@ export function a98RgbToSRgb(a98: color): color {
 	conversion = gam_sRGB(conversion);
 
 	if (inGamut(conversion)) {
-		clip(conversion);
+		return clip(conversion);
 	}
 
 	return mapGamut(oklch, (x: color) => {

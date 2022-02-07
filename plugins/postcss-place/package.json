@@ -1,6 +1,6 @@
 {
   "name": "postcss-place",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "description": "Use a place-* shorthand for align-* and justify-* in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",

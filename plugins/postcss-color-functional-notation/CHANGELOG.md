@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Functional Notation
 
-### Unreleased (patch)
+### 4.2.2 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility
 

@@ -1,0 +1,106 @@
+:root {
+	/* nested var */
+	--prop-1: red;
+
+	/* multi-line */
+	--prop-2: red;
+
+	/* 2 enhancements */
+	--prop-3: 1px;
+
+	/* interleaved */
+	--prop-4: fallback;
+	--prop-5: fallback;
+}
+
+@supports (--prop-1: oklch(40% 0.234 0.39 / var(--opacity-50))) {
+:root {
+	--prop-1: oklch(40% 0.234 0.39 / var(--opacity-50));
+}
+}
+
+@supports (--prop-2: linear-gradient(
+		45deg,
+		rgba(255, 255, 255, 0.15) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, 0.15) 50%,
+		rgba(255, 255, 255, 0.15) 75%,
+		transparent 75%,
+		transparent
+	)) {
+:root {
+	--prop-2: linear-gradient(
+		45deg,
+		rgba(255, 255, 255, 0.15) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, 0.15) 50%,
+		rgba(255, 255, 255, 0.15) 75%,
+		transparent 75%,
+		transparent
+	);
+}
+}
+
+@supports (--prop-3: 1vw) {
+:root {
+	--prop-3: 1vw;
+}
+}
+
+@supports (--prop-3: 1ic) {
+:root {
+	--prop-3: 1ic;
+}
+}
+
+@supports (--prop-4: enhancement-1) {
+:root {
+	--prop-4: enhancement-1;
+}
+}
+
+@supports (--prop-5: enhancement-1) {
+:root {
+	--prop-5: enhancement-1;
+}
+}
+
+@supports (--prop-4: enhancement-2) {
+:root {
+	--prop-4: enhancement-2;
+}
+}
+
+@supports (--prop-5: enhancement-2) {
+:root {
+	--prop-5: enhancement-2;
+}
+}
+
+.initial {
+	--prop-1: red;
+	--prop-1: initial;
+}
+
+.white-space {
+	--prop-1: red;
+	--prop-1:;
+
+	--prop-2: red;
+	--prop-2: ;
+
+	--prop-3: red;
+	--prop-3:    ;
+}
+
+.not-root {
+	--prop-1: fallback;
+}
+
+@supports (--prop-1: enhancement-1) {
+.not-root {
+	--prop-1: enhancement-1;
+}
+}
