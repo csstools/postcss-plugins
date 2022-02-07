@@ -1,6 +1,6 @@
 # Changes to CSS Blank Pseudo
 
-### Unreleased (patch)
+### 3.0.3 (February 5, 2022)
 
 - Rebuild of browser polyfills
 

@@ -34,6 +34,10 @@
   - plugins/postcss-attribute-case-insensitive/**
   - experimental/postcss-attribute-case-insensitive/**
 
+"plugins/postcss-color-function":
+  - plugins/postcss-color-function/**
+  - experimental/postcss-color-function/**
+
 "plugins/postcss-color-functional-notation":
   - plugins/postcss-color-functional-notation/**
   - experimental/postcss-color-functional-notation/**
@@ -137,6 +141,10 @@
 "plugins/postcss-place":
   - plugins/postcss-place/**
   - experimental/postcss-place/**
+
+"plugins/postcss-progressive-custom-properties":
+  - plugins/postcss-progressive-custom-properties/**
+  - experimental/postcss-progressive-custom-properties/**
 
 "plugins/postcss-pseudo-class-any-link":
   - plugins/postcss-pseudo-class-any-link/**

@@ -1,6 +1,6 @@
 {
   "name": "@csstools/css-has-pseudo-experimental",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "EXPERIMENTAL : Style elements relative to other elements in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -36,9 +36,10 @@
     "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
-    "test": "postcss-tape --ci && npm run test:unit && npm run test:exports",
+    "test": "node .tape.mjs && npm run test:unit && npm run test:exports",
     "test:browser": "node ./test/_browser.mjs",
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
+    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs",
     "test:unit": "node ./src/encode/test.mjs"
   },
   "engines": {
@@ -48,9 +49,7 @@
     "postcss-selector-parser": "^6.0.8"
   },
   "devDependencies": {
-    "@mrhenry/core-web": "^0.6.9",
-    "postcss": "^8.3.6",
-    "postcss-tape": "^6.0.1",
+    "@mrhenry/core-web": "^0.6.10",
     "puppeteer": "^13.0.1"
   },
   "peerDependencies": {

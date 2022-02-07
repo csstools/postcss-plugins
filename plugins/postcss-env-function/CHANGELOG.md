@@ -1,6 +1,6 @@
 # Changes to PostCSS Environment Variables
 
-### Unreleased (patch)
+### 4.0.5 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility
 

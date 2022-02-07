@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Hex Alpha
 
-### Unreleased (patch)
+### 8.0.3 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility
 

@@ -1,6 +1,6 @@
 # Changes to PostCSS Lab Function
 
-### Unreleased (patch)
+### 4.0.4 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility
 

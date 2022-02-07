@@ -64,6 +64,7 @@ body:
         - CSS Has Pseudo
         - CSS Prefers Color Scheme
         - PostCSS Attribute Case Insensitive
+        - PostCSS Color Function
         - PostCSS Color Functional Notation
         - PostCSS Color Hex Alpha
         - PostCSS Color Mod Function
@@ -88,6 +89,7 @@ body:
         - PostCSS Overflow Shorthand
         - PostCSS Page Break
         - PostCSS Place
+        - PostCSS Progressive Custom Properties
         - PostCSS Pseudo Class Any Link
         - PostCSS Rebeccapurple
         - PostCSS Replace Overflow Wrap

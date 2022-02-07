@@ -1,6 +1,6 @@
 # Changes to PostCSS Pseudo Class Any Link
 
-### Unreleased (patch)
+### 7.1.1 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility
 
