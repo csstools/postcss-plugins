@@ -49,7 +49,7 @@
     "postcss-selector-parser": "^6.0.8"
   },
   "devDependencies": {
-    "@mrhenry/core-web": "^0.6.9",
+    "@mrhenry/core-web": "^0.6.10",
     "puppeteer": "^13.0.1"
   },
   "peerDependencies": {
