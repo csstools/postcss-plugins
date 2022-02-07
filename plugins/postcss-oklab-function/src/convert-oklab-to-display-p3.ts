@@ -3,7 +3,7 @@ import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
 
 type color = [number, number, number];
 
-export function oklabToDisplayP3(oklabRaw: color): color {
+export function oklabToDisplayP3(oklabRaw: color): [color, boolean] {
 	const [labLRaw, labARaw, labBRaw] = oklabRaw;
 
 	const labL = Math.min(
@@ -23,10 +23,10 @@ export function oklabToDisplayP3(oklabRaw: color): color {
 	conversion = gam_P3(conversion);
 
 	if (inGamut(conversion)) {
-		return clip(conversion);
+		return [clip(conversion), true];
 	}
 
-	return mapGamut(oklab, (x: color) => {
+	return [mapGamut(oklab, (x: color) => {
 		x = OKLCH_to_OKLab(x);
 		x = OKLab_to_XYZ(x);
 		x = XYZ_to_lin_P3(x);
@@ -36,5 +36,5 @@ export function oklabToDisplayP3(oklabRaw: color): color {
 		x = lin_P3_to_XYZ(x);
 		x = XYZ_to_OKLab(x);
 		return OKLab_to_OKLCH(x);
-	});
+	}), false];
 }

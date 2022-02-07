@@ -1,17 +1,17 @@
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-import valueParser from 'postcss-value-parser';
-import type { ParsedValue, FunctionNode } from 'postcss-value-parser';
-import type { AtRule, Container, Declaration, Node, Result } from 'postcss';
-import { onCSSFunctionDisplayP3 } from './on-css-function';
-import { hasFallback } from './has-fallback-decl';
+import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
+import type { Declaration, Result } from 'postcss';
 import type { PluginCreator } from 'postcss';
+import { hasFallback } from './has-fallback-decl';
+import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { modifiedValues } from './modified-values';
 
 /** Transform oklab() and oklch() functions in CSS. */
-const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
+const basePlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = (opts?: { preserve: boolean, displayP3: boolean }) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
+	const displayP3Enabled = 'displayP3' in Object(opts) ? Boolean(opts.displayP3) : false;
 
 	return {
-		postcssPlugin: 'postcss-oklab-function',
+		postcssPlugin: 'postcss-lab-function',
 		Declaration: (decl: Declaration, { result }: { result: Result }) => {
 			if (hasFallback(decl)) {
 				return;
@@ -26,96 +26,51 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 				return;
 			}
 
-			const modified = modifiedValues(originalValue, decl, result);
+			const modified = modifiedValues(originalValue, decl, result, preserve);
 			if (typeof modified === 'undefined') {
 				return;
 			}
 
-			if (originalValue === modified) {
-				return;
-			}
-
 			if (preserve) {
-				decl.cloneBefore({ value: modified });
+				decl.cloneBefore({ value: modified.rgb });
+
+				if (displayP3Enabled) {
+					decl.cloneBefore({ value: modified.displayP3 });
+				}
 			} else {
-				decl.value = modified;
-			}
-		},
-		RuleExit: (rule, { postcss }) => {
-			if (!preserve) {
-				return;
-			}
+				decl.cloneBefore({ value: modified.rgb });
 
-			const atSupportsRules = [];
-			const variableNames = new Set<string>();
-
-			rule.each((decl) => {
-				if (decl.type !== 'decl') {
-					return;
+				if (displayP3Enabled) {
+					decl.cloneBefore({ value: modified.displayP3 });
 				}
 
-				if (!decl.variable) {
-					return;
-				}
-
-				if (!variableNames.has(decl.prop.toString())) {
-					variableNames.add(decl.prop.toString());
-					return;
-				}
-
-				const atSupports = postcss.atRule({ name: 'supports', params: `(${decl.prop}: ${decl.value})`, source: rule.source });
-				const parentClone = rule.clone();
-				parentClone.removeAll();
-
-				parentClone.append(decl.clone());
 				decl.remove();
-
-				atSupports.append(parentClone);
-				atSupportsRules.push(atSupports);
-			});
-
-			if (atSupportsRules.length === 0) {
-				return;
 			}
-
-			atSupportsRules.reverse().forEach((atSupports) => {
-				rule.after(atSupports);
-			});
 		},
 	};
+};
+
+basePlugin.postcss = true;
+
+/** Transform oklab() and oklch() functions in CSS. */
+const postcssPlugin: PluginCreator<{ preserve?: boolean, displayP3?: boolean, enableProgressiveCustomProperties?: boolean }> = (opts?: { preserve?: boolean, displayP3?: boolean, enableProgressiveCustomProperties?: boolean }) => {
+	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
+	const displayP3Enabled = 'displayP3' in Object(opts) ? Boolean(opts.displayP3) : true;
+	const enableProgressiveCustomProperties = 'enableProgressiveCustomProperties' in Object(opts) ? Boolean(opts.enableProgressiveCustomProperties) : true;
+
+	if (enableProgressiveCustomProperties && (preserve || displayP3Enabled)) {
+		return {
+			postcssPlugin: 'postcss-color-function',
+			plugins: [
+				postcssProgressiveCustomProperties(),
+				basePlugin({ preserve: preserve, displayP3: displayP3Enabled }),
+			],
+		};
+	}
+
+	return basePlugin({ preserve: preserve, displayP3: displayP3Enabled });
 };
 
 postcssPlugin.postcss = true;
 
 export default postcssPlugin;
-
-function modifiedValues(originalValue: string, decl: Declaration, result: Result): string | undefined {
-	let valueASTSDisplayP3: ParsedValue | undefined;
-
-	try {
-		valueASTSDisplayP3 = valueParser(originalValue);
-	} catch (error) {
-		decl.warn(
-			result,
-			`Failed to parse value '${originalValue}' as a oklab or oklch function. Leaving the original value intact.`,
-		);
-	}
-
-	if (typeof valueASTSDisplayP3 === 'undefined') {
-		return;
-	}
-
-	valueASTSDisplayP3.walk((node) => {
-		if (!node.type || node.type !== 'function') {
-			return;
-		}
-
-		if (node.value !== 'oklab' && node.value !== 'oklch') {
-			return;
-		}
-
-		onCSSFunctionDisplayP3(node as FunctionNode);
-	});
-
-	return String(valueASTSDisplayP3);
-}

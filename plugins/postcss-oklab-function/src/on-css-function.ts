@@ -2,8 +2,79 @@ import valueParser from 'postcss-value-parser';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode, SpaceNode } from 'postcss-value-parser';
 import { oklabToDisplayP3 } from './convert-oklab-to-display-p3';
 import { oklchToDisplayP3 } from './convert-oklch-to-display-p3';
+import { Declaration, Result } from 'postcss';
+import { oklabToSRgb } from './convert-oklab-to-srgb';
+import { oklchToSRgb } from './convert-oklch-to-srgb';
 
-export function onCSSFunctionDisplayP3(node: FunctionNode) {
+export function onCSSFunctionSRgb(node: FunctionNode) {
+	const value = node.value;
+	const rawNodes = node.nodes;
+	const relevantNodes = rawNodes.slice().filter((x) => {
+		return x.type !== 'comment' && x.type !== 'space';
+	});
+
+	let nodes: Lch | Lab | null = null;
+	if (value === 'oklab') {
+		nodes = labFunctionContents(relevantNodes);
+	} else if (value === 'oklch') {
+		nodes = lchFunctionContents(relevantNodes);
+	}
+
+	if (!nodes) {
+		return;
+	}
+
+	if (relevantNodes.length > 3 && (!nodes.slash || !nodes.alpha)) {
+		return;
+	}
+
+	// rename the Color function to `rgb`
+	node.value = 'rgb';
+
+	transformAlpha(node, nodes.slash, nodes.alpha);
+
+	/** Extracted Color channels. */
+	const [channelNode1, channelNode2, channelNode3] = channelNodes(nodes);
+	const [channelDimension1, channelDimension2, channelDimension3] = channelDimensions(nodes);
+
+	/** Corresponding Color transformer. */
+	const toRGB = value === 'oklab' ? oklabToSRgb : oklchToSRgb;
+
+	/** RGB channels from the source color. */
+	const channelNumbers: [number, number, number] = [
+		channelDimension1.number,
+		channelDimension2.number,
+		channelDimension3.number,
+	].map(
+		channelNumber => parseFloat(channelNumber),
+	) as [number, number, number];
+
+	const rgbValues = toRGB(
+		channelNumbers,
+	);
+
+	node.nodes.splice(node.nodes.indexOf(channelNode1) + 1, 0, commaNode());
+	node.nodes.splice(node.nodes.indexOf(channelNode2) + 1, 0, commaNode());
+
+	replaceWith(node.nodes, channelNode1, {
+		...channelNode1,
+		value: String(rgbValues[0]),
+	});
+
+	replaceWith(node.nodes, channelNode2, {
+		...channelNode2,
+		value: String(rgbValues[1]),
+	});
+
+	replaceWith(node.nodes, channelNode3, {
+		...channelNode3,
+		value: String(rgbValues[2]),
+	});
+}
+
+export function onCSSFunctionDisplayP3(node: FunctionNode, decl: Declaration, result: Result, preserve: boolean) {
+	const originalForWarnings = valueParser.stringify(node);
+
 	const value = node.value;
 	const rawNodes = node.nodes;
 	const relevantNodes = rawNodes.slice().filter((x) => {
@@ -33,7 +104,7 @@ export function onCSSFunctionDisplayP3(node: FunctionNode) {
 	const [channelDimension1, channelDimension2, channelDimension3] = channelDimensions(nodes);
 
 	/** Corresponding Color transformer. */
-	const toRGB = value === 'oklab' ? oklabToDisplayP3 : oklchToDisplayP3;
+	const toDisplayP3 = value === 'oklab' ? oklabToDisplayP3 : oklchToDisplayP3;
 
 	/** RGB channels from the source color. */
 	const channelNumbers: [number, number, number] = [
@@ -44,9 +115,16 @@ export function onCSSFunctionDisplayP3(node: FunctionNode) {
 		channelNumber => parseFloat(channelNumber),
 	) as [number, number, number];
 
-	const rgbValues = toRGB(
+	const [rgbValues, inGamut] = toDisplayP3(
 		channelNumbers,
 	);
+
+	if (!inGamut && preserve) {
+		decl.warn(
+			result,
+			`"${originalForWarnings}" is out of gamut for "display-p3". When "preserve: true" is set this will lead to unexpected results in some browsers.`,
+		);
+	}
 
 	node.nodes.splice(0, 0, displayP3Node());
 	node.nodes.splice(1, 0, spaceNode());
@@ -67,6 +145,17 @@ export function onCSSFunctionDisplayP3(node: FunctionNode) {
 	});
 }
 
+function commaNode(): DivNode {
+	return {
+		sourceIndex: 0,
+		sourceEndIndex: 1,
+		value: ',',
+		type: 'div',
+		before: '',
+		after: '',
+	};
+}
+
 function spaceNode(): SpaceNode {
 	return {
 		sourceIndex: 0,
@@ -85,6 +174,22 @@ function displayP3Node(): WordNode {
 	};
 }
 
+function isNumericNode(node: Node): node is WordNode {
+	if (!node || node.type !== 'word') {
+		return false;
+	}
+
+	if (!canParseAsUnit(node)) {
+		return false;
+	}
+
+	const unitAndValue = valueParser.unit(node.value);
+	if (!unitAndValue) {
+		return false;
+	}
+
+	return !!unitAndValue.number;
+}
 
 function isNumericNodeNumber(node): node is WordNode {
 	if (!node || node.type !== 'word') {
@@ -287,6 +392,31 @@ function channelDimensions(x: Lch | Lab): [Dimension, Dimension, Dimension] {
 	}
 
 	return [x.l, x.c, x.h];
+}
+
+function transformAlpha(node: FunctionNode, slashNode: DivNode | undefined, alphaNode: WordNode | FunctionNode | undefined) {
+	if (!slashNode || !alphaNode) {
+		return;
+	}
+
+	node.value = 'rgba';
+	slashNode.value = ',';
+	slashNode.before = '';
+
+	if (!isNumericNode(alphaNode)) {
+		return;
+	}
+
+	const unitAndValue = valueParser.unit(alphaNode.value);
+	if (!unitAndValue) {
+		return;
+	}
+
+	if (unitAndValue.unit === '%') {
+		// transform the Alpha channel from a Percentage to (0-1) Number
+		unitAndValue.number = String(parseFloat(unitAndValue.number) / 100);
+		alphaNode.value = String(unitAndValue.number);
+	}
 }
 
 function replaceWith(nodes: Array<Node>, oldNode: Node, newNode: Node) {
