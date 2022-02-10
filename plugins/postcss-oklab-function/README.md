@@ -60,7 +60,7 @@ instructions for:
 
 ### preserve
 
-The `preserve` option determines whether the original functional color notation
+The `preserve` option determines whether the original notation
 is preserved. By default, it is not preserved.
 
 ```js
@@ -91,35 +91,6 @@ postcssOKLabFunction({ preserve: true })
 }
 ```
 
-### displayP3
-
-The `displayP3` option determines if `color(display-p3 ...)` is used as a fallback.
-By default, it is enabled.
-
-```js
-postcssOKLabFunction({ displayP3: false })
-```
-
-```pcss
-.test-oklab {
-	color: oklab(40% 0.001236 0.0039);
-}
-
-.test-oklch {
-	color: oklch(40% 0.268735435 34.568626);
-}
-
-/* becomes */
-
-.test-oklab {
-	color: rgb(73, 71, 69);
-}
-
-.test-oklch {
-	color: rgb(131, 28, 0);
-}
-```
-
 ### enableProgressiveCustomProperties
 
 The `enableProgressiveCustomProperties` option determines whether the original notation
@@ -142,6 +113,41 @@ postcssOKLabFunction({ enableProgressiveCustomProperties: false })
 	--firebrick: rgb(133, 0, 67); /* will never be used, not even in older browser */
   --firebrick: color(display-p3 0.49890 0.00000 0.25954); /* will never be used, not even in older browser */
 	--firebrick: oklab(40% 0.234 0.39);
+}
+```
+
+### subFeatures
+
+#### displayP3
+
+The `subFeatures.displayP3` option determines if `color(display-p3 ...)` is used as a fallback.
+By default, it is enabled.
+
+```js
+postcssOKLabFunction({
+	subFeatures: {
+		displayP3: false
+	}
+})
+```
+
+```pcss
+.test-oklab {
+	color: oklab(40% 0.001236 0.0039);
+}
+
+.test-oklch {
+	color: oklch(40% 0.268735435 34.568626);
+}
+
+/* becomes */
+
+.test-oklab {
+	color: rgb(73, 71, 69);
+}
+
+.test-oklch {
+	color: rgb(131, 28, 0);
 }
 ```
 
