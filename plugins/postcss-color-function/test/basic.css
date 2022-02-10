@@ -7,8 +7,24 @@
 	color-6: color(display-p3 1 1 1 1 / 0.5);
 }
 
+.test-color-none {
+	color-1: color(display-p3 none);
+	color-3: color(display-p3 none none);
+	color-4: color(display-p3 none none none);
+	color-5: color(display-p3 1 none 1);
+	color-6: color(display-p3 1 none none);
+	color-7: color(display-p3 none 1 none);
+	color-8: color(display-p3 none none 1);
+}
+
 .test-unknown-space {
 	color-1: color(unknown 0.64331 0.19245 0.16771);
+}
+
+.test-percentage-rgb {
+	color-1: color(srgb 64.331% 0.19245 0.16771);
+	color-2: color(srgb 0.64331 19.245% 0.16771);
+	color-3: color(srgb 0.64331 0.19245 16.771%);
 }
 
 .test-srgb {
@@ -40,6 +56,12 @@
 	color-1: color(xyz-d50 0.2005 0.14089 0.4472);
 	color-2: color(xyz-d65 0.21661 0.14602 0.59452);
 	color-3: color(xyz 0.21661 0.14602 0.59452);
+}
+
+.test-percentage-xyz {
+	color-1: color(xyz-d50 64.331% 0.19245 0.16771);
+	color-2: color(xyz-d65 0.64331 19.245% 0.16771);
+	color-3: color(xyz 0.64331 0.19245 16.771%);
 }
 
 .test-author-provided-fallback {
