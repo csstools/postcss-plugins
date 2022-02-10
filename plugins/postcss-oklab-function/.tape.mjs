@@ -12,6 +12,16 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
+	'basic:preserve-true:display-p3-false': {
+		message: 'supports { preserve: true } usage',
+		warnings: 2,
+		options: {
+			preserve: true,
+			subFeatures: {
+				displayP3: false
+			}
+		}
+	},
 	'variables': {
 		message: 'supports variables',
 	},
@@ -19,6 +29,15 @@ postcssTape(plugin)({
 		message: 'supports variables with { preserve: true } usage',
 		options: {
 			preserve: true
+		}
+	},
+	'variables:preserve-true:display-p3-false': {
+		message: 'supports variables with { preserve: true } usage',
+		options: {
+			preserve: true,
+			subFeatures: {
+				displayP3: false
+			}
 		}
 	}
 });
