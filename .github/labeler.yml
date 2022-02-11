@@ -126,6 +126,10 @@
   - plugins/postcss-normalize-display-values/**
   - experimental/postcss-normalize-display-values/**
 
+"plugins/postcss-oklab-function":
+  - plugins/postcss-oklab-function/**
+  - experimental/postcss-oklab-function/**
+
 "plugins/postcss-overflow-shorthand":
   - plugins/postcss-overflow-shorthand/**
   - experimental/postcss-overflow-shorthand/**
