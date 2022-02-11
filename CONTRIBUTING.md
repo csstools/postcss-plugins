@@ -77,6 +77,40 @@ scope and avoid unrelated commits.
 
 That’s it! Now [open a pull request] with a clear title and description.
 
+## Creating a new plugin here
+
+- follow the guide for submitting a pull request
+- run `npm run new-plugin` to create a new plugin.
+
+```bash
+npm run new-plugin
+
+A plugin name must be provided:
+  new-plugin <human readable name>
+  new-plugin Cascade Layers
+```
+
+```bash
+npm run new-plugin Cascade Layers
+
+- Creating new plugin Cascade Layers
+- Copied base plugin to ./plugins/postcss-cascade-layers
+- Cleaned up files and directories not required in a new plugin
+- Relabeled references to base plugin
+- Updated "package.json"
+
+Done! 🎉
+
+Your next steps:
+- Run : "npm install" from the root directory
+- Run : "cd plugins/postcss-cascade-layers"
+- Run : "npm run build" to build your plugin
+- Run : "npm run test" to test your plugin
+- Run : "npm run test:rewrite-expects" to update test expects
+
+Change "blue" to "purple" in "src/index.ts" and see how it affects the test outcome
+```
+
 [already been reported]: issues
 [fork this project]:     fork
 [live example]:          https://codepen.io/pen

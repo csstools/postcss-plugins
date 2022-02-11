@@ -33,6 +33,7 @@
     "build": "npm run build --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present && npm run lint:rollup-config",
     "lint:rollup-config": "eslint ./rollup --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "new-plugin": "node ./.github/bin/new-plugin.mjs",
     "test": "npm run test --workspaces --if-present"
   },
   "volta": {
