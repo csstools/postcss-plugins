@@ -7,7 +7,7 @@ export function lchToSRgb(lch: color): color {
 	let conversion = lch.slice() as color;
 	conversion = LCH_to_Lab(conversion);
 
-	// https://drafts.csswg.org/css-color-4/#oklab-lab-to-predefined
+	// https://www.w3.org/TR/css-color-4/#oklab-lab-to-predefined
 	// 1. Convert Lab to(D50 - adapted) XYZ
 	conversion = Lab_to_XYZ(conversion);
 
