@@ -30,13 +30,10 @@ scope and avoid unrelated commits.
    # Assign the original repo to a remote called "upstream"
    git remote add upstream https://github.com/csstools/postcss-plugins.git
 
-   # Install the tools necessary for testing
-   # Node 16 or higher is required to build and run tests.
-   # There is config for nvm and volta to help you use the right version.
-   npm install
-
-   # Do an initial build of everything to make sure local dependencies can be found.
-   npm run build --workspaces
+   # Install and build the needed things to start local development
+   # This also does an initial test of everything.
+   # If this gives errors please open an issue so that we can look into it.
+   npm run get-me-going
    ```
 
 2. Create a branch for your feature or fix:
@@ -80,6 +77,7 @@ That’s it! Now [open a pull request] with a clear title and description.
 ## Creating a new plugin here
 
 - follow the guide for submitting a pull request
+- run `npm run get-me-going` if you want to start local development.
 - run `npm run new-plugin` to create a new plugin.
 
 ```bash
