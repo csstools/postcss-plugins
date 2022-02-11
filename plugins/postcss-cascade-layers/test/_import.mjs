@@ -1,5 +1,5 @@
 import assert from 'assert';
-import plugin from '@csstools/postcss-base-plugin';
+import plugin from '@csstools/postcss-cascade-layers';
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

@@ -24,9 +24,6 @@
     "README.md",
     "dist"
   ],
-  "bin": {
-    "postcss-base-plugin": "dist/cli.cjs"
-  },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
@@ -35,7 +32,6 @@
     "stryker": "stryker run --logLevel error",
     "test": "node .tape.mjs && npm run test:exports",
     "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs",
-    "test:cli": "bash ./test/cli/test.sh",
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
   "peerDependencies": {

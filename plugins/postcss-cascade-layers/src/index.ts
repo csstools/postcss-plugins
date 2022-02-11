@@ -2,7 +2,7 @@ import type { PluginCreator } from 'postcss';
 
 const creator: PluginCreator<{ color: string }> = (opts?: { color: string }) => {
 	return {
-		postcssPlugin: 'postcss-base-plugin',
+		postcssPlugin: 'postcss-cascade-layers',
 		Declaration(decl) {
 			if (decl.value === 'red') {
 				if (opts && opts.color) {
@@ -18,4 +18,3 @@ const creator: PluginCreator<{ color: string }> = (opts?: { color: string }) => 
 creator.postcss = true;
 
 export default creator;
-

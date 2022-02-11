@@ -1,5 +1,5 @@
 const assert = require('assert');
-const plugin = require('@csstools/postcss-base-plugin');
+const plugin = require('@csstools/postcss-cascade-layers');
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');
