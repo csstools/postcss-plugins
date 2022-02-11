@@ -14,19 +14,12 @@
 }
 
 .test-color-none {
-	color-1: rgb(0,0,0);
 	color-1: color(display-p3 none);
-	color-3: rgb(0,0,0);
 	color-3: color(display-p3 none none);
-	color-4: rgb(0,0,0);
 	color-4: color(display-p3 none none none);
-	color-5: rgb(255,76,241);
 	color-5: color(display-p3 1 none 1);
-	color-6: rgb(255,30,24);
 	color-6: color(display-p3 1 none none);
-	color-7: rgb(0,247,78);
 	color-7: color(display-p3 none 1 none);
-	color-8: rgb(0,0,255);
 	color-8: color(display-p3 none none 1);
 }
 

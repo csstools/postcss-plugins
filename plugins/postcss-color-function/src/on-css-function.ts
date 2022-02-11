@@ -189,10 +189,6 @@ function isNumericNodePercentageOrNumber(node: Node): node is WordNode {
 	return unitAndValue.unit === '%' || unitAndValue.unit === '';
 }
 
-function isNoneNode(node: Node): node is FunctionNode {
-	return node && node.type === 'word' && node.value === 'none';
-}
-
 function isCalcNode(node: Node): node is FunctionNode {
 	return node && node.type === 'function' && node.value === 'calc';
 }
@@ -240,17 +236,8 @@ function colorFunctionContents(nodes): Color|null {
 			}
 		}
 
-		if (isNoneNode(nodes[i])) {
-			// https://drafts.csswg.org/css-color/#missing
-			out.parameters.push({
-				value: {
-					number: '0',
-					unit: '',
-				},
-				node: nodes[i],
-			});
-
-		} else if (!out.colorSpace.startsWith('xyz') && isNumericNodePercentageOrNumber(nodes[i])) {
+		if (!out.colorSpace.startsWith('xyz') && isNumericNodePercentageOrNumber(nodes[i])) {
+			// non-xyz DOES support percentages
 			const unitAndValue = valueParser.unit(nodes[i].value) as Dimension;
 			if (unitAndValue.unit === '%') {
 				// transform the channel from a Percentage to (0-1) Number
@@ -265,7 +252,7 @@ function colorFunctionContents(nodes): Color|null {
 			});
 
 		} else if (out.colorSpace.startsWith('xyz') && isNumericNodePercentageOrNumber(nodes[i])) {
-			// xyz does not support percentages
+			// xyz DOES NOT support percentages
 			const unitAndValue = valueParser.unit(nodes[i].value) as Dimension;
 			if (unitAndValue.unit !== '') {
 				return null;
