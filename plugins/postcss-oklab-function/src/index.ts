@@ -76,6 +76,11 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		}, opts,
 	);
 
+	// deep merge
+	options.subFeatures = Object.assign({
+		displayP3: true,
+	}, options.subFeatures);
+
 	if (options.enableProgressiveCustomProperties && (options.preserve || options.subFeatures.displayP3)) {
 		return {
 			postcssPlugin: 'postcss-oklab-function',

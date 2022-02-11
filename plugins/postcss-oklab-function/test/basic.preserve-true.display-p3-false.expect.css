@@ -100,6 +100,56 @@
 	color-5: oklch(1% 0.01 0.01 /);
 }
 
+.test-powerless-hue-0 {
+	color-0: rgb(0, 0, 0);
+	color-0: oklch(0% 0 0);
+	color-1: rgb(3, 3, 3);
+	color-1: oklch(10% 0 0);
+	color-2: rgb(22, 22, 22);
+	color-2: oklch(20% 0 0);
+	color-3: rgb(46, 46, 46);
+	color-3: oklch(30% 0 0);
+	color-4: rgb(72, 72, 72);
+	color-4: oklch(40% 0 0);
+	color-5: rgb(99, 99, 99);
+	color-5: oklch(50% 0 0);
+	color-6: rgb(128, 128, 128);
+	color-6: oklch(60% 0 0);
+	color-7: rgb(158, 158, 158);
+	color-7: oklch(70% 0 0);
+	color-8: rgb(190, 190, 190);
+	color-8: oklch(80% 0 0);
+	color-9: rgb(222, 222, 222);
+	color-9: oklch(90% 0 0);
+	color-10: rgb(255, 255, 255);
+	color-10: oklch(100% 0 0);
+}
+
+.test-powerless-hue-90 {
+	color-0: rgb(0, 0, 0);
+	color-0: oklch(0% 0 90);
+	color-1: rgb(3, 3, 3);
+	color-1: oklch(10% 0 90);
+	color-2: rgb(22, 22, 22);
+	color-2: oklch(20% 0 90);
+	color-3: rgb(46, 46, 46);
+	color-3: oklch(30% 0 90);
+	color-4: rgb(72, 72, 72);
+	color-4: oklch(40% 0 90);
+	color-5: rgb(99, 99, 99);
+	color-5: oklch(50% 0 90);
+	color-6: rgb(128, 128, 128);
+	color-6: oklch(60% 0 90);
+	color-7: rgb(158, 158, 158);
+	color-7: oklch(70% 0 90);
+	color-8: rgb(190, 190, 190);
+	color-8: oklch(80% 0 90);
+	color-9: rgb(222, 222, 222);
+	color-9: oklch(90% 0 90);
+	color-10: rgb(255, 255, 255);
+	color-10: oklch(100% 0 90);
+}
+
 .test-ignore {
 	prop-1: 'oklch(1% 1 1 / 1)';
 	prop-2: url('oklch(1% 1 1 / 1)');
