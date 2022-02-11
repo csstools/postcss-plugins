@@ -111,6 +111,16 @@ Your next steps:
 Change "blue" to "purple" in "src/index.ts" and see how it affects the test outcome
 ```
 
+## Trouble shooting
+
+This is a mono repo that contains unpublished packages.
+If you get warning about missing files, modules, packages you should do :
+
+- `npm install` -> get public dependencies
+- `npm run build` -> build private dependencies
+
+_if your issues is not mentioned here please open an issue so that we can extend the guides_
+
 [already been reported]: issues
 [fork this project]:     fork
 [live example]:          https://codepen.io/pen
