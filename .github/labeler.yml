@@ -1,4 +1,5 @@
 "common-tools":
+  - .github/**
   - packages/base-cli/**
   - packages/postcss-tape/**
   - plugins/postcss-base-plugin/**
@@ -125,6 +126,10 @@
 "plugins/postcss-normalize-display-values":
   - plugins/postcss-normalize-display-values/**
   - experimental/postcss-normalize-display-values/**
+
+"plugins/postcss-oklab-function":
+  - plugins/postcss-oklab-function/**
+  - experimental/postcss-oklab-function/**
 
 "plugins/postcss-overflow-shorthand":
   - plugins/postcss-overflow-shorthand/**

@@ -1,10 +1,10 @@
 {
-  "name": "@csstools/postcss-color-function",
-  "version": "1.0.1",
-  "description": "Use the color() function in CSS",
+  "name": "@csstools/postcss-oklab-function",
+  "version": "1.0.0",
+  "description": "Use oklab() and oklch() color functions in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function#readme",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function#readme",
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -39,9 +39,6 @@
     "@csstools/postcss-progressive-custom-properties": "^1.0.0",
     "postcss-value-parser": "^4.2.0"
   },
-  "devDependencies": {
-    "postcss-lab-function": "^4.0.3"
-  },
   "peerDependencies": {
     "postcss": "^8.4"
   },
@@ -51,21 +48,16 @@
     "postcss-plugin",
     "color",
     "colors",
-    "rgb",
-    "rgba",
-    "color",
     "display-p3",
-    "prophoto-rgb",
-    "xyz",
-    "rec2020",
-    "srgb-linear",
+    "oklab",
+    "oklch",
     "design",
     "syntax"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "plugins/postcss-color-function"
+    "directory": "plugins/postcss-oklab-function"
   },
   "volta": {
     "extends": "../../package.json"
