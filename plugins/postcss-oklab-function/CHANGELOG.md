@@ -1,5 +1,5 @@
 # Changes to PostCSS OKLab Function
 
-### Unreleased (initial)
+### 1.0.0 (February 11, 2022)
 
 - Initial version
