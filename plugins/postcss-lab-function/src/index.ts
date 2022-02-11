@@ -5,11 +5,15 @@ import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { modifiedValues } from './modified-values';
 
-/** Transform lab() and lch() functions in CSS. */
-const basePlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = (opts?: { preserve: boolean, displayP3: boolean }) => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
-	const displayP3Enabled = 'displayP3' in Object(opts) ? Boolean(opts.displayP3) : false;
+type basePluginOptions = {
+	preserve: boolean,
+	subFeatures: {
+		displayP3: boolean
+	}
+};
 
+/* Transform lab() and lch() functions in CSS. */
+const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-lab-function',
 		Declaration: (decl: Declaration, { result }: { result: Result }) => {
@@ -26,21 +30,21 @@ const basePlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = (op
 				return;
 			}
 
-			const modified = modifiedValues(originalValue, decl, result, preserve);
+			const modified = modifiedValues(originalValue, decl, result, opts.preserve);
 			if (typeof modified === 'undefined') {
 				return;
 			}
 
-			if (preserve) {
+			if (opts.preserve) {
 				decl.cloneBefore({ value: modified.rgb });
 
-				if (displayP3Enabled) {
+				if (opts.subFeatures.displayP3) {
 					decl.cloneBefore({ value: modified.displayP3 });
 				}
 			} else {
 				decl.cloneBefore({ value: modified.rgb });
 
-				if (displayP3Enabled) {
+				if (opts.subFeatures.displayP3) {
 					decl.cloneBefore({ value: modified.displayP3 });
 				}
 
@@ -52,23 +56,40 @@ const basePlugin: PluginCreator<{ preserve: boolean, displayP3: boolean }> = (op
 
 basePlugin.postcss = true;
 
-/** Transform lab() and lch() functions in CSS. */
-const postcssPlugin: PluginCreator<{ preserve?: boolean, displayP3?: boolean, enableProgressiveCustomProperties?: boolean }> = (opts?: { preserve?: boolean, displayP3?: boolean, enableProgressiveCustomProperties?: boolean }) => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
-	const displayP3Enabled = 'displayP3' in Object(opts) ? Boolean(opts.displayP3) : true;
-	const enableProgressiveCustomProperties = 'enableProgressiveCustomProperties' in Object(opts) ? Boolean(opts.enableProgressiveCustomProperties) : true;
+type pluginOptions = {
+	enableProgressiveCustomProperties?: boolean
+	preserve?: boolean,
+	subFeatures?: {
+		displayP3?: boolean
+	}
+};
 
-	if (enableProgressiveCustomProperties && (preserve || displayP3Enabled)) {
+/* Transform lab() and lch() functions in CSS. */
+const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign({
+		enableProgressiveCustomProperties: true,
+		preserve: false,
+		subFeatures: {
+			displayP3: true,
+		},
+	}, opts);
+
+	// deep merge
+	options.subFeatures = Object.assign({
+		displayP3: true,
+	}, options.subFeatures);
+
+	if (options.enableProgressiveCustomProperties && (options.preserve || options.subFeatures.displayP3)) {
 		return {
 			postcssPlugin: 'postcss-color-function',
 			plugins: [
 				postcssProgressiveCustomProperties(),
-				basePlugin({ preserve: preserve, displayP3: displayP3Enabled }),
+				basePlugin(options),
 			],
 		};
 	}
 
-	return basePlugin({ preserve: preserve, displayP3: displayP3Enabled });
+	return basePlugin(options);
 };
 
 postcssPlugin.postcss = true;

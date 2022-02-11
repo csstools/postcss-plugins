@@ -13,16 +13,20 @@ postcssTape(plugin)({
 		}
 	},
 	'basic:display-p3-false': {
-		message: 'supports { displayP3: false } usage',
+		message: 'supports { subFeatures: { displayP3: false } } usage',
 		options: {
-			displayP3: false
+			subFeatures: {
+				displayP3: false
+			}
 		}
 	},
 	'basic:display-p3-false:preserve-true': {
-		message: 'supports { displayP3: false, preserve: true } usage',
+		message: 'supports { subFeatures: { displayP3: false }, preserve: true } usage',
 		warnings: 9,
 		options: {
-			displayP3: false,
+			subFeatures: {
+				displayP3: false
+			},
 			preserve: true
 		}
 	},
@@ -38,13 +42,17 @@ postcssTape(plugin)({
 	'variables:display-p3-false': {
 		message: 'supports variables with { displayP3: false } usage',
 		options: {
-			displayP3: false
+			subFeatures: {
+				displayP3: false
+			}
 		}
 	},
 	'variables:display-p3-false:preserve-true': {
-		message: 'supports variables with { displayP3: false, preserve: true } usage',
+		message: 'supports variables with { subFeatures: { displayP3: false }, preserve: true } usage',
 		options: {
-			displayP3: false,
+			subFeatures: {
+				displayP3: false
+			},
 			preserve: true
 		}
 	}
