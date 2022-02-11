@@ -5,8 +5,12 @@ import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { modifiedValues } from './modified-value';
 
+type basePluginOptions = {
+	preserve: boolean,
+}
+
 /** Transform color() function in CSS. */
-const basePlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
+const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
 	return {
 		postcssPlugin: 'postcss-color-function',
@@ -40,22 +44,29 @@ const basePlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boo
 
 basePlugin.postcss = true;
 
-/** Dynamically include "postcssProgressiveCustomProperties" only when needed. */
-const postcssPlugin: PluginCreator<{ preserve?: boolean, enableProgressiveCustomProperties?: boolean }> = (opts?: { preserve?: boolean, enableProgressiveCustomProperties?: boolean }) => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
-	const enableProgressiveCustomProperties = 'enableProgressiveCustomProperties' in Object(opts) ? Boolean(opts.enableProgressiveCustomProperties) : true;
+type pluginOptions = {
+	preserve?: boolean,
+	enableProgressiveCustomProperties?: boolean,
+}
 
-	if (enableProgressiveCustomProperties && preserve) {
+/* Transform color() function in CSS. */
+const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign({
+		preserve: false,
+		enableProgressiveCustomProperties: true,
+	}, opts);
+
+	if (options.enableProgressiveCustomProperties && options.preserve) {
 		return {
 			postcssPlugin: 'postcss-color-function',
 			plugins: [
 				postcssProgressiveCustomProperties(),
-				basePlugin({ preserve: preserve }),
+				basePlugin(options),
 			],
 		};
 	}
 
-	return basePlugin({ preserve: preserve });
+	return basePlugin(options);
 };
 
 postcssPlugin.postcss = true;
