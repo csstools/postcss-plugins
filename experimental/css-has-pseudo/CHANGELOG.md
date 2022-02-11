@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased (patch)
+### 0.2.1 (February 6, 2022)
 
 - Do not leak visitedness via `:has` pseudo-class.
 

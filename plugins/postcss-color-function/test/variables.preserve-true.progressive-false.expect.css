@@ -1,0 +1,13 @@
+:root {
+	--one: rgb(164,49,43);
+	--one: color(srgb 0.64331 0.19245 0.16771);
+	--one-a50: rgba(164,49,43,50);
+	--one-a50: color(srgb 0.64331 0.19245 0.16771 / 50);
+
+	--opacity-50: 0.5;
+	--one-a50-var: rgba(164,49,43,var(--opacity-50));
+	--one-a50-var: color(srgb 0.64331 0.19245 0.16771 / var(--opacity-50));
+
+	--point-5: 0.5;
+	--one-var: color(srgb 0.64331 var(--point-5) 0.16771 / var(--opacity-50));
+}

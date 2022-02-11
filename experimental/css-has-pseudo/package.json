@@ -1,6 +1,6 @@
 {
   "name": "@csstools/css-has-pseudo-experimental",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "EXPERIMENTAL : Style elements relative to other elements in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -49,7 +49,7 @@
     "postcss-selector-parser": "^6.0.8"
   },
   "devDependencies": {
-    "@mrhenry/core-web": "^0.6.9",
+    "@mrhenry/core-web": "^0.6.10",
     "puppeteer": "^13.0.1"
   },
   "peerDependencies": {

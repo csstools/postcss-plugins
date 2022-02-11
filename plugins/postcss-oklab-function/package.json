@@ -1,15 +1,14 @@
 {
-  "name": "@csstools/postcss-progressive-custom-properties",
+  "name": "@csstools/postcss-oklab-function",
   "version": "1.0.0",
-  "description": "Correctly declare progressive enhancements for CSS Custom Properties.",
+  "description": "Use oklab() and oklch() color functions in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "engines": {
-    "node": "^12 || ^14 || >=16"
-  },
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -31,28 +30,34 @@
     "stryker": "stryker run --logLevel error",
     "test": "node .tape.mjs && npm run test:exports",
     "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs",
-    "test:cli": "bash ./test/cli/test.sh",
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
   },
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
+  "dependencies": {
+    "@csstools/postcss-progressive-custom-properties": "^1.0.0",
+    "postcss-value-parser": "^4.2.0"
+  },
   "peerDependencies": {
-    "postcss": "^8.3"
+    "postcss": "^8.4"
   },
   "keywords": [
     "postcss",
     "css",
     "postcss-plugin",
-    "utility",
-    "custom",
-    "properties",
-    "declarations",
-    "variables",
-    "vars",
-    "progressive"
+    "color",
+    "colors",
+    "display-p3",
+    "oklab",
+    "oklch",
+    "design",
+    "syntax"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "plugins/postcss-progressive-custom-properties"
+    "directory": "plugins/postcss-oklab-function"
   },
   "volta": {
     "extends": "../../package.json"
