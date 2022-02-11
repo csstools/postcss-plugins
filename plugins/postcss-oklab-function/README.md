@@ -111,7 +111,7 @@ postcssOKLabFunction({ enableProgressiveCustomProperties: false })
 
 :root {
 	--firebrick: rgb(133, 0, 67); /* will never be used, not even in older browser */
-  --firebrick: color(display-p3 0.49890 0.00000 0.25954); /* will never be used, not even in older browser */
+	--firebrick: color(display-p3 0.49890 0.00000 0.25954); /* will never be used, not even in older browser */
 	--firebrick: oklab(40% 0.234 0.39);
 }
 ```
