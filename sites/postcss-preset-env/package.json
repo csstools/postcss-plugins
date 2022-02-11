@@ -14,9 +14,11 @@
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
+  "dependencies": {
+    "cssdb": "^6.2.1"
+  },
   "devDependencies": {
     "@astropub/webapi": "^0.10.11",
-    "@mdn/browser-compat-data": "^4.1.6",
     "astro": "^0.22.20",
     "fse": "^4.0.1",
     "lodash.get": "^4.4.2",
