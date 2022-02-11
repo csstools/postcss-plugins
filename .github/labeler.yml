@@ -1,4 +1,5 @@
 "common-tools":
+  - .github/**
   - packages/base-cli/**
   - packages/postcss-tape/**
   - plugins/postcss-base-plugin/**
