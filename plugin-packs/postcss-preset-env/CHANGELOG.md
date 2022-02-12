@@ -1,5 +1,12 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated `postcss-lab-function` to `4.1.0`.
+- Updated `@csstools/postcss-progressive-custom-properties` to `1.1.0`.
+
+`postcss-lab-function` now supports [wide gamut colors](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function#displayp3) and [out of gamut color mapping](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function#displayp3).
+
 ### 7.3.1 (February 3, 2022) 
 
 - Ensured that `debug` option uses a single instance per run, this allows for `debug` to work on parallel runs within CI environments.

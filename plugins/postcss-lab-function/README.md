@@ -110,8 +110,10 @@ postcssLabFunction({ enableProgressiveCustomProperties: false })
 
 #### displayP3
 
-The `subFeatures.displayP3` option determines if `color(display-p3 ...)` is used as a fallback.
+The `subFeatures.displayP3` option determines if `color(display-p3 ...)` is used as a fallback.<br>
 By default, it is enabled.
+
+`display-p3` can display wider gamut colors than `rgb` on some devices.
 
 ```js
 postcssOKLabFunction({
