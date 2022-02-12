@@ -7,27 +7,34 @@
 	--prop-2: red;
 	--prop-2: linear-gradient(
 		45deg,
-		rgba(255, 255, 255, 0.15) 25%,
+		rgba(255 255 255 / 0.15) 25%,
 		transparent 25%,
 		transparent 50%,
-		rgba(255, 255, 255, 0.15) 50%,
-		rgba(255, 255, 255, 0.15) 75%,
+		rgba(255, 255, 255, 0.15) 45% 50%,
+		color(rec2020 0.64331 0.19245 0.16771) 75%,
 		transparent 75%,
 		transparent
 	);
 
-	/* 2 enhancements */
 	--prop-3: 1px;
-	--prop-3: 1vw;
-	--prop-3: 1ic;
+	--prop-3: 2ic;
+	--prop-4: 1px;
+	--prop-4: 2ica;
+	--prop-5: 1px;
+	--prop-5: 2ic(1);
 
 	/* interleaved */
-	--prop-4: fallback;
-	--prop-5: fallback;
-	--prop-4: enhancement-1;
-	--prop-5: enhancement-1;
-	--prop-4: enhancement-2;
-	--prop-5: enhancement-2;
+	--prop-6: linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%);
+	--prop-7: conic-gradient(yellowgreen 40%, gold 0deg, gold 75%, #f06 0deg);
+	--prop-6: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+	--prop-7: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
+
+	/* multiple values space separated */
+	--prop-8: 1px solid red;
+	--prop-8: 1px solid oklch(40% 0.234 0.39 / var(--opacity-50));
+
+	--prop-9: red;
+	--prop-9: rgb(1,1,1,1);
 }
 
 .initial {
@@ -47,6 +54,28 @@
 }
 
 .not-root {
-	--prop-1: fallback;
-	--prop-1: enhancement-1;
+	--color-1: red;
+	--color-1: color(srgb 0.64331 0.19245 0.16771);
+}
+
+:root {
+	--color-1: red;
+	--color-1: color(srgb 0.64331 0.19245 0.16771);
+
+	--color-2: blue;
+	--color-2: color(srgb 0.64331 0.19245 0.16771 / 50);
+
+	--opacity-50: 0.5;
+	--color-3: purple;
+	--color-3: color(srgb 0.64331 0.19245 0.16771 / var(--opacity-50));
+
+	--point-5: 0.5;
+	--color-4: green;
+	--color-4: color(srgb 0.64331 var(--point-5) 0.16771 / var(--opacity-50));
+
+	--color-5: yellow;
+	--color-5: color(srgb 0.64331   0.19245 0.16771 / calc(1 / 2));
+
+	--color-6: orange;
+	--color-6: color(rec2020 0.64331 0.19245 0.16771);
 }

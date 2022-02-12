@@ -24,7 +24,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c ../../rollup/default.js",
+    "build": "node ./generate/matchers.mjs && eslint --fix ./src/matchers.ts && rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
     "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
@@ -33,6 +33,9 @@
     "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs",
     "test:cli": "bash ./test/cli/test.sh",
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
+  },
+  "dependencies": {
+    "postcss-value-parser": "^4.2.0"
   },
   "peerDependencies": {
     "postcss": "^8.3"
