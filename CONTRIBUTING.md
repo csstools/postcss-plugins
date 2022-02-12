@@ -30,13 +30,10 @@ scope and avoid unrelated commits.
    # Assign the original repo to a remote called "upstream"
    git remote add upstream https://github.com/csstools/postcss-plugins.git
 
-   # Install the tools necessary for testing
-   # Node 16 or higher is required to build and run tests.
-   # There is config for nvm and volta to help you use the right version.
-   npm install
-
-   # Do an initial build of everything to make sure local dependencies can be found.
-   npm run build --workspaces
+   # Install and build the needed things to start local development
+   # This also does an initial test of everything.
+   # If this gives errors please open an issue so that we can look into it.
+   npm run get-me-going
    ```
 
 2. Create a branch for your feature or fix:
@@ -76,6 +73,51 @@ scope and avoid unrelated commits.
    ```
 
 That’s it! Now [open a pull request] with a clear title and description.
+
+## Creating a new plugin here
+
+- follow the guide for submitting a pull request
+- run `npm run get-me-going` if you want to start local development.
+- run `npm run new-plugin` to create a new plugin.
+
+```bash
+npm run new-plugin
+
+A plugin name must be provided:
+  new-plugin <human readable name>
+  new-plugin Cascade Layers
+```
+
+```bash
+npm run new-plugin Cascade Layers
+
+- Creating new plugin Cascade Layers
+- Copied base plugin to ./plugins/postcss-cascade-layers
+- Cleaned up files and directories not required in a new plugin
+- Relabeled references to base plugin
+- Updated "package.json"
+
+Done! 🎉
+
+Your next steps:
+- Run : "npm install" from the root directory
+- Run : "cd plugins/postcss-cascade-layers"
+- Run : "npm run build" to build your plugin
+- Run : "npm run test" to test your plugin
+- Run : "npm run test:rewrite-expects" to update test expects
+
+Change "blue" to "purple" in "src/index.ts" and see how it affects the test outcome
+```
+
+## Trouble shooting
+
+This is a mono repo that contains unpublished packages.
+If you get warning about missing files, modules, packages you should do :
+
+- `npm install` -> get public dependencies
+- `npm run build` -> build private dependencies
+
+_if your issues is not mentioned here please open an issue so that we can extend the guides_
 
 [already been reported]: issues
 [fork this project]:     fork
