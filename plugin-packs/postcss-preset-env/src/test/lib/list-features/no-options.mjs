@@ -21,7 +21,12 @@ assert.deepStrictEqual(
 				'baidu >= 1',    'kaios >= 1',
 			],
 			vendors_implementations: 3,
-			pluginOptions: { subFeatures: { areaHrefNeedsFixing: true } },
+			pluginOptions: {
+				subFeatures: {
+					areaHrefNeedsFixing: true,
+				},
+				enableProgressiveCustomProperties: false,
+			},
 			id: 'any-link-pseudo-class',
 		},
 	],

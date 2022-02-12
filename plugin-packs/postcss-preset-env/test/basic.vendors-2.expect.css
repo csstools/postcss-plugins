@@ -2,6 +2,10 @@
 	--order: 1;
 }
 
+.test-custom-property-fallbacks {
+	--firebrick: lab(40% 56.6 39);
+}
+
 .test-custom-properties {
 	order: 1;
 	order: var(--order);
