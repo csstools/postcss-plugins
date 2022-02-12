@@ -9,10 +9,6 @@
 	}
 }
 
-.ppe-404 {
-	padding: var(--heading-size) 40px;
-}
-
 .ppe-navigation {
 	background-color: #f7f7f7;
 	bottom: 0;
@@ -69,8 +65,10 @@
 	padding: 7px 0;
 }
 
-.ppe-menu-link:hover, .ppe-menu-link:focus, .ppe-menu-link[aria-current] {
-	color: #000000;
+.ppe-menu-link:hover,
+.ppe-menu-link:focus,
+.ppe-menu-link[aria-current] {
+	color: #000;
 }
 
 .ppe-features-list {
@@ -94,7 +92,7 @@
 }
 
 .ppe-sidebar-menu {
-	box-shadow: 0 -1px 0 0 #dddddd;
+	box-shadow: 0 -1px 0 0 #ddd;
 	margin-top: 15px;
 	padding-top: 15px;
 }
@@ -119,7 +117,7 @@
 	color: #3c3c3c;
 	font-size: 32px;
 	font-weight: 500;
-	letter-spacing: -0.02em;
+	letter-spacing: -.02em;
 	line-height: 1.25;
 	margin: 0 auto 0 0;
 }
@@ -138,7 +136,7 @@
 	flex-shrink: 0;
 	font-size: 10px;
 	font-weight: 600;
-	letter-spacing: 0.08em;
+	letter-spacing: .08em;
 	margin-left: 10px;
 	padding: 5px 10px;
 	text-transform: uppercase;
@@ -151,7 +149,7 @@
 }
 
 .ppe-feature-heading-stage {
-	color: #ffffff;
+	color: #fff;
 }
 
 .ppe-feature-heading-stage[data-stage="0"] {
@@ -176,7 +174,7 @@
 
 .ppe-feature-heading-specLink,
 .ppe-feature-heading-pluginLink {
-	background-color: #eeeeee;
+	background-color: #eee;
 	color: #6c6c6c;
 }
 
@@ -239,7 +237,7 @@
 }
 
 .css-function {
-	color: #6699cc;
+	color: #69c;
 }
 
 .css-string {

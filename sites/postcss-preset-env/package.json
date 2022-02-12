@@ -10,6 +10,7 @@
   "scripts": {
     "start": "astro dev",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "stylelint src/styles/**/*.css",
     "build": "npm run clean && astro build"
   },
   "engines": {
