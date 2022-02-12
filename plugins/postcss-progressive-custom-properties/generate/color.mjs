@@ -1,26 +1,27 @@
 import { matcherForValue } from './matcher-for-value.mjs';
 
 export const colorMatchers = [
-	{
-		'supports': 'color(display-p3 0 0 0)',
-		'property': 'color',
-		'sniff': 'color',
-		'matchers': [
-			matcherForValue('color(srgb $1 $2 $3)'),
-			matcherForValue('color(srgb $1 $2 $3 / $4)'),
-			matcherForValue('color(display-p3 $1 $2 $3)'),
-			matcherForValue('color(display-p3 $1 $2 $3 / $4)'),
-		],
-	},
-	{
-		'supports': 'color(xyz 0 0 0)',
-		'property': 'color',
-		'sniff': 'color',
-		'matchers': [
-			matcherForValue('color($1 $2 $3 $4)'),
-			matcherForValue('color($1 $2 $3 $4 / $5)'),
-		],
-	},
+	...([
+		'srgb',
+		'srgb-linear',
+		'a98-rgb',
+		'prophoto-rgb',
+		'display-p3',
+		'rec2020',
+		'xyz-d50',
+		'xyz-d65',
+		'xyz',
+	].map((colorSpace) => {
+		return {
+			'supports': `color(${colorSpace} 0 0 0)`,
+			'property': 'color',
+			'sniff': 'color',
+			'matchers': [
+				matcherForValue(`color(${colorSpace} $1 $2 $3)`),
+				matcherForValue(`color(${colorSpace} $1 $2 $3 / $4)`),
+			],
+		};
+	})),
 ];
 
 export const hslMatchers = [
@@ -29,6 +30,7 @@ export const hslMatchers = [
 		'property': 'color',
 		'sniff': 'hsl',
 		'matchers': [
+			matcherForValue('hsl($1,$2,$3,$4)'),
 			matcherForValue('hsl($1, $2, $3, $4)'),
 		],
 	},
@@ -113,11 +115,12 @@ export const oklchMatchers = [
 
 export const rgbMatchers = [
 	{
-		'supports': 'rgb(0, 0, 0)',
+		'supports': 'rgb(0, 0, 0, 0)',
 		'property': 'color',
 		'sniff': 'rgb',
 		'matchers': [
 			matcherForValue('rgb($1, $2, $3, $4)'),
+			matcherForValue('rgb($1,$2,$3,$4)'),
 		],
 	},
 	{

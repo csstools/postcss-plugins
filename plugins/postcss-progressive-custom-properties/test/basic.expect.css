@@ -17,6 +17,9 @@
 
 	/* multiple values space separated */
 	--prop-8: 1px solid red;
+
+	--prop-9: red;
+	--prop-9: rgba(1,1,1,1);
 }
 
 @supports (color: oklch(0% 0 0)) {
@@ -25,7 +28,7 @@
 }
 }
 
-@supports (background: linear-gradient(0deg, red 0% 1%, red 2%)) and (color: rgba(0 0 0 / 0)) and (color: color(xyz 0 0 0)) {
+@supports (background: linear-gradient(0deg, red 0% 1%, red 2%)) and (color: rgba(0 0 0 / 0)) and (color: color(rec2020 0 0 0)) {
 :root {
 	--prop-2: linear-gradient(
 		45deg,
@@ -84,7 +87,7 @@
 	--color-1: red;
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(srgb 0 0 0)) {
 .not-root {
 	--color-1: color(srgb 0.64331 0.19245 0.16771);
 }
@@ -106,37 +109,37 @@
 	--color-6: orange;
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(srgb 0 0 0)) {
 :root {
 	--color-1: color(srgb 0.64331 0.19245 0.16771);
 }
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(srgb 0 0 0)) {
 :root {
 	--color-2: color(srgb 0.64331 0.19245 0.16771 / 50);
 }
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(srgb 0 0 0)) {
 :root {
 	--color-3: color(srgb 0.64331 0.19245 0.16771 / var(--opacity-50));
 }
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(srgb 0 0 0)) {
 :root {
 	--color-4: color(srgb 0.64331 var(--point-5) 0.16771 / var(--opacity-50));
 }
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(srgb 0 0 0)) {
 :root {
 	--color-5: color(srgb 0.64331   0.19245 0.16771 / calc(1 / 2));
 }
 }
 
-@supports (color: color(xyz 0 0 0)) {
+@supports (color: color(rec2020 0 0 0)) {
 :root {
 	--color-6: color(rec2020 0.64331 0.19245 0.16771);
 }

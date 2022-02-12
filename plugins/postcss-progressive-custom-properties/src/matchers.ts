@@ -1,6 +1,6 @@
 export const matchers = [
 	{
-		'supports': 'color(display-p3 0 0 0)',
+		'supports': 'color(srgb 0 0 0)',
 		'property': 'color',
 		'sniff': 'color',
 		'matchers': [
@@ -80,6 +80,262 @@ export const matchers = [
 					},
 				],
 			},
+		],
+	},
+	{
+		'supports': 'color(srgb-linear 0 0 0)',
+		'property': 'color',
+		'sniff': 'color',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'srgb-linear',
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'srgb-linear',
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+		],
+	},
+	{
+		'supports': 'color(a98-rgb 0 0 0)',
+		'property': 'color',
+		'sniff': 'color',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'a98-rgb',
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'a98-rgb',
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+		],
+	},
+	{
+		'supports': 'color(prophoto-rgb 0 0 0)',
+		'property': 'color',
+		'sniff': 'color',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'prophoto-rgb',
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'prophoto-rgb',
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+		],
+	},
+	{
+		'supports': 'color(display-p3 0 0 0)',
+		'property': 'color',
+		'sniff': 'color',
+		'matchers': [
 			{
 				'type': 'function',
 				'value': 'color',
@@ -121,6 +377,255 @@ export const matchers = [
 					{
 						'type': 'word',
 						'value': 'display-p3',
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+		],
+	},
+	{
+		'supports': 'color(rec2020 0 0 0)',
+		'property': 'color',
+		'sniff': 'color',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'rec2020',
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'rec2020',
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+		],
+	},
+	{
+		'supports': 'color(xyz-d50 0 0 0)',
+		'property': 'color',
+		'sniff': 'color',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'xyz-d50',
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'xyz-d50',
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+		],
+	},
+	{
+		'supports': 'color(xyz-d65 0 0 0)',
+		'property': 'color',
+		'sniff': 'color',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'xyz-d65',
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+						'value': ' ',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'xyz-d65',
 					},
 					{
 						'type': 'space',
@@ -169,7 +674,7 @@ export const matchers = [
 				'nodes': [
 					{
 						'type': 'word',
-						'isVariable': true,
+						'value': 'xyz',
 					},
 					{
 						'type': 'space',
@@ -203,7 +708,7 @@ export const matchers = [
 				'nodes': [
 					{
 						'type': 'word',
-						'isVariable': true,
+						'value': 'xyz',
 					},
 					{
 						'type': 'space',
@@ -246,6 +751,40 @@ export const matchers = [
 		'property': 'color',
 		'sniff': 'hsl',
 		'matchers': [
+			{
+				'type': 'function',
+				'value': 'hsl',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
 			{
 				'type': 'function',
 				'value': 'hsl',
@@ -726,10 +1265,44 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'rgb(0, 0, 0)',
+		'supports': 'rgb(0, 0, 0, 0)',
 		'property': 'color',
 		'sniff': 'rgb',
 		'matchers': [
+			{
+				'type': 'function',
+				'value': 'rgb',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
 			{
 				'type': 'function',
 				'value': 'rgb',
