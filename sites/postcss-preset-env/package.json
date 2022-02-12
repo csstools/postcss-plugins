@@ -15,14 +15,14 @@
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "cssdb": "^6.2.1"
+    "cssdb": "^6.2.1",
+    "postcss": "^8.4.6"
   },
   "devDependencies": {
     "@astropub/webapi": "^0.10.13",
     "astro": "^0.22.20",
     "fse": "^4.0.1",
     "lodash.get": "^4.4.2",
-    "postcss": "^8.4.6",
     "postcss-preset-env": "^7.3.1",
     "stylelint": "^14.5.0",
     "stylelint-config-standard": "^25.0.0"

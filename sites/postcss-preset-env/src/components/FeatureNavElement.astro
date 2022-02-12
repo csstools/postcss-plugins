@@ -1,6 +1,6 @@
 ---
 const { feature } = Astro.props;
-const [title, description] = await Promise.all([
+const [title] = await Promise.all([
 	Astro.privateRenderMarkdownDoNotUse(feature.title),
 ]);
 

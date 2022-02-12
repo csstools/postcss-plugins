@@ -1,7 +1,11 @@
 ---
+import FeatureListElement from './FeatureListElement.astro';
 const { features } = Astro.props;
 ---
 
 <div class="ppe-features-list">
-	<h2 class="ppe-features-list-heading">Features</h2>
+	<h2 class="ppe-features-list-heading" hidden>Features</h2>
+	{ features.map(feature => (
+	<FeatureListElement feature={ feature } />
+	)) }
 </div>

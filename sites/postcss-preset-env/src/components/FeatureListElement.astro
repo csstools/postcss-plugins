@@ -1,0 +1,53 @@
+---
+import { parseExample }  from '../utils/feature-example.js';
+const { feature } = Astro.props;
+const [title, description] = await Promise.all([
+	Astro.privateRenderMarkdownDoNotUse(feature.title),
+	Astro.privateRenderMarkdownDoNotUse(feature.description),
+]);
+
+const simpleTitle = title.replace('<p>', '').replace('</p>', '');
+const simpleDescription = description.replace('<p>', '').replace('</p>', '');
+const cleanTitle = simpleTitle.replace(/<\/?[^>]+(>|$)/g, '');
+const link = `/features#${feature.id}`;
+---
+
+<section class="ppe-feature" data-stage={ feature.stage }>
+	<header class="ppe-feature-heading" id={ feature.id }>
+		<h3 class="ppe-feature-title">
+			<a class="ppe-feature-title-link" href={ link }>
+				{ simpleTitle }
+			</a>
+		</h3>
+		<a
+				class="ppe-feature-heading-stage"
+				data-stage={ feature.stage }
+				href={ link }
+				aria-label={`Stage for ${cleanTitle}`}
+		>
+			Stage { feature.stage }
+		</a>
+		<a
+				class="ppe-feature-heading-specLink"
+				href={ feature.specification }
+				rel="noreferrer"
+				target="_blank"
+				aria-label={`Specification for ${cleanTitle}`}
+		>
+			Specification
+		</a>
+		{ Array.isArray(feature.polyfills) && feature.polyfills.map((polyfill) => (
+		<a
+				class="ppe-feature-heading-pluginLink"
+				href="https://github.com/jonathantneal/postcss-pseudo-class-any-link"
+				rel="noreferrer"
+				aria-label={`${polyfill.type.replace('JavaScript ', '').replace('PostCSS ', '')} for ${cleanTitle}`}
+				target="_blank"
+		>
+			{ polyfill.type.replace('JavaScript ', '').replace('PostCSS ', '') }
+		</a>
+		)) }
+	</header>
+	<p class="ppe-feature-description">{ simpleDescription }</p>
+	<pre class="ppe-feature-example" dir="ltr">{ parseExample(feature.example) }</pre>
+</section>
