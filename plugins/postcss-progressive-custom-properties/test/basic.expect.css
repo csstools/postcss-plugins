@@ -4,32 +4,6 @@
 
 	/* multi-line */
 	--prop-2: red;
-
-	/* 2 enhancements */
-	--prop-3: 1px;
-
-	/* interleaved */
-	--prop-4: fallback;
-	--prop-5: fallback;
-}
-
-@supports (--prop-1: oklch(40% 0.234 0.39 / var(--opacity-50))) {
-:root {
-	--prop-1: oklch(40% 0.234 0.39 / var(--opacity-50));
-}
-}
-
-@supports (--prop-2: linear-gradient(
-		45deg,
-		rgba(255, 255, 255, 0.15) 25%,
-		transparent 25%,
-		transparent 50%,
-		rgba(255, 255, 255, 0.15) 50%,
-		rgba(255, 255, 255, 0.15) 75%,
-		transparent 75%,
-		transparent
-	)) {
-:root {
 	--prop-2: linear-gradient(
 		45deg,
 		rgba(255, 255, 255, 0.15) 25%,
@@ -40,42 +14,24 @@
 		transparent 75%,
 		transparent
 	);
-}
-}
 
-@supports (--prop-3: 1vw) {
-:root {
+	/* 2 enhancements */
+	--prop-3: 1px;
 	--prop-3: 1vw;
-}
-}
-
-@supports (--prop-3: 1ic) {
-:root {
 	--prop-3: 1ic;
-}
-}
 
-@supports (--prop-4: enhancement-1) {
-:root {
+	/* interleaved */
+	--prop-4: fallback;
+	--prop-5: fallback;
 	--prop-4: enhancement-1;
-}
-}
-
-@supports (--prop-5: enhancement-1) {
-:root {
 	--prop-5: enhancement-1;
-}
-}
-
-@supports (--prop-4: enhancement-2) {
-:root {
 	--prop-4: enhancement-2;
-}
+	--prop-5: enhancement-2;
 }
 
-@supports (--prop-5: enhancement-2) {
+@supports (color: oklch(0% 0 0)) {
 :root {
-	--prop-5: enhancement-2;
+	--prop-1: oklch(40% 0.234 0.39 / var(--opacity-50));
 }
 }
 
@@ -97,10 +53,57 @@
 
 .not-root {
 	--prop-1: fallback;
+	--prop-1: enhancement-1;
 }
 
-@supports (--prop-1: enhancement-1) {
-.not-root {
-	--prop-1: enhancement-1;
+:root {
+	--color-1: red;
+
+	--color-2: blue;
+
+	--opacity-50: 0.5;
+	--color-3: purple;
+
+	--point-5: 0.5;
+	--color-4: green;
+
+	--color-5: yellow;
+
+	--color-6: orange;
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+:root {
+	--color-1: color(srgb 0.64331 0.19245 0.16771);
+}
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+:root {
+	--color-2: color(srgb 0.64331 0.19245 0.16771 / 50);
+}
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+:root {
+	--color-3: color(srgb 0.64331 0.19245 0.16771 / var(--opacity-50));
+}
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+:root {
+	--color-4: color(srgb 0.64331 var(--point-5) 0.16771 / var(--opacity-50));
+}
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+:root {
+	--color-5: color(srgb 0.64331   0.19245 0.16771 / calc(1 / 2));
+}
+}
+
+@supports (color: color(xyz 0 0 0)) {
+:root {
+	--color-6: color(rec2020 0.64331 0.19245 0.16771);
 }
 }

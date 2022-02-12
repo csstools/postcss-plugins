@@ -50,3 +50,25 @@
 	--prop-1: fallback;
 	--prop-1: enhancement-1;
 }
+
+:root {
+	--color-1: red;
+	--color-1: color(srgb 0.64331 0.19245 0.16771);
+
+	--color-2: blue;
+	--color-2: color(srgb 0.64331 0.19245 0.16771 / 50);
+
+	--opacity-50: 0.5;
+	--color-3: purple;
+	--color-3: color(srgb 0.64331 0.19245 0.16771 / var(--opacity-50));
+
+	--point-5: 0.5;
+	--color-4: green;
+	--color-4: color(srgb 0.64331 var(--point-5) 0.16771 / var(--opacity-50));
+
+	--color-5: yellow;
+	--color-5: color(srgb 0.64331   0.19245 0.16771 / calc(1 / 2));
+
+	--color-6: orange;
+	--color-6: color(rec2020 0.64331 0.19245 0.16771);
+}
