@@ -1,0 +1,16 @@
+name: Deploy PostCSS Preset Env
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+    paths:
+      -  'sites/postcss-preset-env/**'
+
+jobs:
+  build:
+    name: Request Netlify Webhook
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl request
+        run: curl -X POST -d {} ${{ secrets.PRESET_ENV_DEPLOY_HOOK }}
