@@ -4,6 +4,10 @@ import FeaturesLink from '../components/FeaturesLink.astro';
 import PlaygroundLink from '../components/PlaygroundLink.astro';
 import SupportLink from '../components/SupportLink.astro';
 import CopyToClipboard from '../components/CopyToClipboard.astro';
+
+const response = await fetch('https://api.npms.io/v2/package/postcss-preset-env');
+const packageInfo = await response.json();
+const { collected: { metadata: { version, date } } } = packageInfo;
 ---
 
 <!doctype html>
@@ -19,7 +23,7 @@ import CopyToClipboard from '../components/CopyToClipboard.astro';
 <body>
 <header class="ppe-landing-header">
 	<h1 class="ppe-landing-title">postcss-preset-env</h1>
-	<p class="ppe-landing-tag">Use tomorrow’s CSS today.</p>
+	<p class="ppe-landing-tag">Use tomorrow’s CSS today</p>
 	<nav class="ppe-landing-menu">
 		<FeaturesLink className="ppe-landing-menu-link" />
 		<PlaygroundLink className="ppe-landing-menu-link" />
@@ -33,6 +37,10 @@ import CopyToClipboard from '../components/CopyToClipboard.astro';
 <main>
 	<p class="ppe-landing-content">PostCSS Preset Env lets you convert modern CSS into something most browsers can understand, determining the polyfills you need based on your targeted browsers or runtime environments, using <a href="https://cssdb.org/">cssdb</a>.</p>
 	<CopyToClipboard />
+	<p class="ppe-latest-version">
+		Latest version: <strong>{version}</strong> <br/>
+		See <a href="https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/CHANGELOG.md">CHANGELOG</a>
+	</p>
 
 	<p class="ppe-deploys">
 		<a href="https://www.netlify.com" target="_blank" rel="noreferrer" class="ppe-deploys__logo">

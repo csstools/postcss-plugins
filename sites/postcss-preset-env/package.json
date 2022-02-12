@@ -15,7 +15,7 @@
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "cssdb": "^6.2.1",
+    "cssdb": "^6.3.0",
     "postcss": "^8.4.6"
   },
   "devDependencies": {
