@@ -1,5 +1,6 @@
 ---
-import { packageNamesToIds } from '../../../../plugin-packs/postcss-preset-env/src/plugins/plugins-map.mjs';
+import FeatureNavElement from './FeatureNavElement.astro';
+const { features } = Astro.props;
 ---
 <aside class="ppe-navigation">
 	<select class="ppe-navigation-select">
@@ -8,6 +9,14 @@ import { packageNamesToIds } from '../../../../plugin-packs/postcss-preset-env/s
 		<option value="2">Stage 2+</option>
 		<option value="3">Stage 3+</option>
 	</select>
+
+	<nav class="ppe-feature-menu" aria-label="Feature Navigation">
+		<ul class="ppe-feature-menu-list">
+			{ features.map(feature => (
+				<FeatureNavElement feature={ feature } />
+			)) }
+		</ul>
+	</nav>
 
 	<nav class="ppe-sidebar-menu" aria-label="Additional Navigation">
 		<ul class="ppe-sidebar-menu-list">

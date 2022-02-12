@@ -1,0 +1,13 @@
+---
+const { feature } = Astro.props;
+const [title, description] = await Promise.all([
+	Astro.privateRenderMarkdownDoNotUse(feature.title),
+]);
+
+const simpleTitle = title.replace('<p>', '').replace('</p>', '');
+const link = `/features#${feature.id}`;
+---
+
+<li class="ppe-menu-item" data-stage={ feature.stage }>
+	<a class="ppe-menu-link" href={ link }>{ simpleTitle }</a>
+</li>
