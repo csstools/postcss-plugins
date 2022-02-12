@@ -19,7 +19,6 @@
 	--prop-8: 1px solid red;
 
 	--prop-9: red;
-	--prop-9: rgba(1,1,1,1);
 }
 
 @supports (color: oklch(0% 0 0)) {
@@ -64,6 +63,12 @@
 @supports (color: oklch(0% 0 0)) {
 :root {
 	--prop-8: 1px solid oklch(40% 0.234 0.39 / var(--opacity-50));
+}
+}
+
+@supports (color: rgb(0, 0, 0, 0)) {
+:root {
+	--prop-9: rgb(1,1,1,1);
 }
 }
 
