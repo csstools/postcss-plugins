@@ -7,12 +7,7 @@ export function matches(a, b) {
 		return false;
 	}
 
-	if (
-		a.type === 'space' && b.type === 'space' &&
-		a.value.trim() === b.value.trim()
-	) {
-		// do nothing. values are equal, different amounts of spaces are equal
-	} else if (a.value !== b.value) {
+	if (doesNotMatchValue(a, b)) {
 		return false;
 	}
 
@@ -31,4 +26,23 @@ export function matches(a, b) {
 	}
 
 	return true;
+}
+
+function doesNotMatchValue(a, b) {
+	if (
+		a.type === 'space' && b.type === 'space' &&
+		a.value.trim() === b.value.trim()
+	) {
+		return false;
+	}
+
+	if (a.dimension && b.dimension) {
+		return a.dimension.unit !== b.dimension.unit;
+	}
+
+	if (a.value !== b.value) {
+		return true;
+	}
+
+	return false;
 }

@@ -874,4 +874,19 @@ export const matchers = [
 			},
 		],
 	},
+	{
+		'supports': '1ic',
+		'property': 'font-size',
+		'sniff': 'ic',
+		'matchers': [
+			{
+				'type': 'word',
+				'value': '1ic',
+				'dimension': {
+					'number': '1',
+					'unit': 'ic',
+				},
+			},
+		],
+	},
 ];
