@@ -16,10 +16,11 @@
     "stylelint-config-standard": "^24.0.0"
   },
   "scripts": {
+    "clean": "git clean -dfx",
+    "get-me-going": "npm run clean && npm i",
     "build": "npm run build --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "start": "npm run build --workspaces --if-present",
-    "test": "npm run test --workspaces --if-present"
   },
   "volta": {
     "extends": "../package.json"

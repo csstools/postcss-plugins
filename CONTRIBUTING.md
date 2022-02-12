@@ -14,6 +14,15 @@ Remember, a bug is a _demonstrable problem_ caused by _our_ code.
 
 _If this guide itself is not working or is not clear, please report it._
 
+## Project setup
+
+If you do need to set the project up locally yourself, feel free to follow these
+instructions:
+
+### System Requirements
+
+- [Node.js](https://nodejs.org/) >= 16.0.0
+
 ## Submitting Pull Requests
 
 Pull requests are the greatest contributions, so be sure they are focused in
@@ -29,14 +38,29 @@ scope and avoid unrelated commits.
 
    # Assign the original repo to a remote called "upstream"
    git remote add upstream https://github.com/csstools/postcss-plugins.git
-
-   # Install and build the needed things to start local development
-   # This also does an initial test of everything.
-   # If this gives errors please open an issue so that we can look into it.
-   npm run get-me-going
    ```
 
-2. Create a branch for your feature or fix:
+2. Where are you contributing?
+
+* If you want to contribute to plugins, plugin-packs or the CLI, run the following command:
+
+   ```bash
+    # Install and build the needed things to start local development
+    # This also does an initial test of everything.
+    # If this gives errors please open an issue so that we can look into it.
+    npm run get-me-going
+   ```
+
+* If you want to contribute to sites, you need to run the following command: 
+
+   ```bash
+    cd sites
+    # Install the needed things to start local development
+    # If this gives errors please open an issue so that we can look into it.
+    npm run get-me-going
+   ```
+
+3. Create a branch for your feature or fix:
    ```bash
    # Move into a new branch for your feature
    git checkout -b feature/thing
@@ -76,9 +100,9 @@ That’s it! Now [open a pull request] with a clear title and description.
 
 ## Creating a new plugin here
 
-- follow the guide for submitting a pull request
-- run `npm run get-me-going` if you want to start local development.
-- run `npm run new-plugin` to create a new plugin.
+- Follow the guide for submitting a pull request
+- Run `npm run get-me-going` if you want to start local development.
+- Run `npm run new-plugin` to create a new plugin.
 
 ```bash
 npm run new-plugin
@@ -119,8 +143,8 @@ If you get warning about missing files, modules, packages you should do :
 
 _if your issues is not mentioned here please open an issue so that we can extend the guides_
 
-[already been reported]: issues
-[fork this project]:     fork
+[already been reported]: https://github.com/csstools/postcss-plugins/issues
+[fork this project]:     https://github.com/csstools/postcss-plugins/fork
 [live example]:          https://codepen.io/pen
 [open a pull request]:   https://help.github.com/articles/using-pull-requests/
 [reduced test case]:     https://css-tricks.com/reduced-test-cases/
