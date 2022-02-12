@@ -29,11 +29,9 @@ const plugin = (opts) => {
 		);
 	}
 
-	if (options.preserve === true) {
-		plugins.push(
-			postcssProgressiveCustomProperties(),
-		);
-	}
+	plugins.push(
+		postcssProgressiveCustomProperties(),
+	);
 
 	logFeaturesList(features, options, logger);
 
