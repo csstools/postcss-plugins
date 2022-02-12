@@ -9,19 +9,19 @@
 	--firebrick-var: lch(40% var(--fifty) 34.5 / var(--opacity-50));
 }
 
-@supports (--firebrick: lab(40% 56.6 39)) {
+@supports (color: lab(0% 0 0)) {
 :root {
 	--firebrick: lab(40% 56.6 39);
 }
 }
 
-@supports (--firebrick-a50: lch(40% 68.8 34.5 / 50%)) {
+@supports (color: lch(0% 0 0)) {
 :root {
 	--firebrick-a50: lch(40% 68.8 34.5 / 50%);
 }
 }
 
-@supports (--firebrick-a50-var: lch(40% 68.8 34.5 / var(--opacity-50))) {
+@supports (color: lch(0% 0 0)) {
 :root {
 	--firebrick-a50-var: lch(40% 68.8 34.5 / var(--opacity-50));
 }
