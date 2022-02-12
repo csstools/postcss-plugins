@@ -51,6 +51,9 @@ export function formatStagedFeature(cssdbList, browsers, features, feature, shar
 		}
 	}
 
+	// postcss-preset-env : option overrides
+	options.enableProgressiveCustomProperties = false;
+
 	if (feature.plugin.postcss && typeof feature.plugin === 'function') {
 		plugin = feature.plugin(options);
 	} else if (feature.plugin && feature.plugin.default && typeof feature.plugin.default === 'function' && feature.plugin.default.postcss) {

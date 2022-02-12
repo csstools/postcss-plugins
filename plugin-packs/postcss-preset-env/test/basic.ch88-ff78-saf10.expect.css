@@ -2,6 +2,16 @@
 	--order: 1;
 }
 
+.test-custom-property-fallbacks {
+	--firebrick: rgb(179, 35, 35);
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+.test-custom-property-fallbacks {
+	--firebrick: color(display-p3 0.64331 0.19245 0.16771);
+}
+}
+
 .test-custom-properties {
 	order: var(--order);
 }
@@ -121,7 +131,9 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 
 .test-lab-function {
 	background-color: rgb(179, 35, 35);
+	background-color: color(display-p3 0.64331 0.19245 0.16771);
 	color: rgba(179, 34, 35, 0.5);
+	color: color(display-p3 0.64368 0.19188 0.16791 / 50%);
 	order: 17;
 }
 

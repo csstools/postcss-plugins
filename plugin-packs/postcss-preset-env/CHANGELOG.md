@@ -1,5 +1,29 @@
 # Changes to PostCSS Preset Env
 
+### 7.3.2 (February 12, 2022)
+
+- Updated `postcss-lab-function` to `4.1.0` (minor)
+
+`postcss-lab-function` now supports [wide gamut colors](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function#displayp3) and [out of gamut color mapping](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function#displayp3).
+
+- Updated `css-blank-pseudo` to `3.0.3` (patch)
+- Updated `css-has-pseudo` to `3.0.4` (patch)
+- Updated `cssdb` to `6.2.1` (patch)
+- Updated `postcss-color-functional-notation` to `4.2.2` (patch)
+- Updated `postcss-color-hex-alpha` to `8.0.3` (patch)
+- Updated `postcss-dir-pseudo-class` to `6.0.4` (patch)
+- Updated `postcss-double-position-gradients` to `3.0.5` (patch)
+- Updated `postcss-env-function` to `4.0.5` (patch)
+- Updated `postcss-focus-visible` to `6.0.4` (patch)
+- Updated `postcss-focus-within` to `5.0.4` (patch)
+- Updated `postcss-gap-properties` to `3.0.3` (patch)
+- Updated `postcss-image-set-function` to `4.0.6` (patch)
+- Updated `postcss-logical` to `5.0.4` (patch)
+- Updated `postcss-overflow-shorthand` to `3.0.3` (patch)
+- Updated `postcss-place` to `7.0.4` (patch)
+- Updated `postcss-pseudo-class-any-link` to `7.1.1` (patch)
+- Updated `@csstools/postcss-progressive-custom-properties` to `1.1.0`.
+
 ### 7.3.1 (February 3, 2022) 
 
 - Ensured that `debug` option uses a single instance per run, this allows for `debug` to work on parallel runs within CI environments.

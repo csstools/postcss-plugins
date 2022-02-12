@@ -122,7 +122,7 @@ export function onCSSFunctionDisplayP3(node: FunctionNode, decl: Declaration, re
 	if (!inGamut && preserve) {
 		decl.warn(
 			result,
-			`"${originalForWarnings}" is out of gamut for "display-p3". When "preserve: true" is set this will lead to unexpected results in some browsers.`,
+			`"${originalForWarnings}" is out of gamut for "display-p3". Given "preserve: true" is set, this will lead to unexpected results in some browsers.`,
 		);
 	}
 

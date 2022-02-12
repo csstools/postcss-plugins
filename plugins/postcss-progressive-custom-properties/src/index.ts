@@ -1,4 +1,5 @@
 import type { PluginCreator } from 'postcss';
+import { supportConditionsFromValue } from './support-conditions-from-values';
 
 const creator: PluginCreator<null> = () => {
 	return {
@@ -32,10 +33,15 @@ const creator: PluginCreator<null> = () => {
 					return;
 				}
 
+				const supportConditions = supportConditionsFromValue(decl.value);
+				if (!supportConditions.length) {
+					return;
+				}
+
 				// Any subsequent properties are progressive enhancements.
 				const atSupports = postcss.atRule({
 					name: 'supports',
-					params: `(${decl.prop}: ${decl.value})`,
+					params: supportConditions.join(' and '),
 					source: rule.source,
 					raws: {
 						before: '\n\n',

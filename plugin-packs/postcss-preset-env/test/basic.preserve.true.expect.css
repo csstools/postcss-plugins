@@ -2,6 +2,22 @@
 	--order: 1;
 }
 
+.test-custom-property-fallbacks {
+	--firebrick: rgb(179, 35, 35);
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+.test-custom-property-fallbacks {
+	--firebrick: color(display-p3 0.64331 0.19245 0.16771);
+}
+}
+
+@supports (color: lab(0% 0 0)) {
+.test-custom-property-fallbacks {
+	--firebrick: lab(40% 56.6 39);
+}
+}
+
 .test-custom-properties {
 	-webkit-box-ordinal-group: 2;
 	-webkit-order: 1;
@@ -243,8 +259,10 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 
 .test-lab-function {
 	background-color: rgb(179, 35, 35);
+	background-color: color(display-p3 0.64331 0.19245 0.16771);
 	background-color: lab(40% 56.6 39);
 	color: rgba(179, 34, 35, 0.5);
+	color: color(display-p3 0.64368 0.19188 0.16791 / 50%);
 	color: lch(40% 68.8 34.5 / 50%);
 	-webkit-box-ordinal-group: 18;
 	-webkit-order: 17;
