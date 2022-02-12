@@ -9,7 +9,8 @@
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "scripts": {
     "start": "astro dev",
-    "build": "astro build"
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "build": "npm run clean && astro build"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
