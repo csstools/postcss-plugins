@@ -1,6 +1,6 @@
 # Changes to PostCSS Lab Function
 
-### Unreleased (minor)
+### 4.1.0 (February 12, 2022)
 
 - Add gamut mapping for out of gamut colors.
 - Add conversion to `display-p3` as a wider gamut fallback.
