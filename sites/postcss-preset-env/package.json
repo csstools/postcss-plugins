@@ -1,0 +1,72 @@
+{
+  "name": "@csstools/postcss-preset-env-www",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site for PostCSS Preset Env",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/sites/postcss-preset-env#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "scripts": {
+    "start": "astro dev",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "stylelint src/styles/**/*.css",
+    "build": "npm run clean && astro build"
+  },
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
+  "dependencies": {
+    "cssdb": "^6.3.0",
+    "postcss": "^8.4.6"
+  },
+  "devDependencies": {
+    "@astropub/webapi": "^0.10.13",
+    "astro": "^0.22.20",
+    "fse": "^4.0.1",
+    "lodash.get": "^4.4.2",
+    "postcss-preset-env": "^7.3.2",
+    "stylelint": "^14.5.0",
+    "stylelint-config-standard": "^25.0.0"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "indentation": "tab",
+      "property-no-unknown": [
+        true,
+        {
+          "ignoreProperties": [
+            "font-smoothing"
+          ]
+        }
+      ],
+      "selector-class-pattern": null,
+      "no-descending-specificity": null,
+      "value-keyword-case": null,
+      "number-leading-zero": "never"
+    }
+  },
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "specifications",
+    "specs",
+    "features",
+    "lists",
+    "stages",
+    "w3c",
+    "csswg",
+    "future",
+    "next"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "sites/postcss-preset-env"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

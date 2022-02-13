@@ -1,4 +1,4 @@
-import { idsToPackageNames, packageNamesToIds } from './plugins-by-id.mjs';
+import { idsToPackageNames, packageNamesToIds } from './plugins-map.mjs';
 
 export function pluginIdHelp(featureNamesInOptions, root, result) {
 	const featureNames = Object.keys(idsToPackageNames);
