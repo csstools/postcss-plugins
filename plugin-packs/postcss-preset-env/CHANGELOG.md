@@ -1,5 +1,13 @@
 # Changes to PostCSS Preset Env
 
+### 7.3.3 (February 13, 2022)
+
+- Updated `cssdb` to `6.3.0` (minor)
+
+### 6.7.1 (February 13, 2022)
+
+- Added notice when using preset-env with PostCSS > 7 to prompt to upgrade.
+
 ### 7.3.2 (February 12, 2022)
 
 - Updated `postcss-lab-function` to `4.1.0` (minor)
