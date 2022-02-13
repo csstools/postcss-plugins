@@ -19,34 +19,38 @@ const link = `/features#${feature.id}`;
 				{ simpleTitle }
 			</a>
 		</h2>
-		<a
-				class="ppe-feature-heading-stage"
-				data-stage={ feature.stage }
-				href={ link }
-				aria-label={`Stage for ${cleanTitle}`}
-		>
-			Stage { feature.stage }
-		</a>
-		<a
-				class="ppe-feature-heading-specLink"
-				href={ feature.specification }
-				rel="noreferrer"
-				target="_blank"
-				aria-label={`Specification for ${cleanTitle}`}
-		>
-			Specification
-		</a>
-		{ Array.isArray(feature.polyfills) && feature.polyfills.map((polyfill) => (
-		<a
-				class="ppe-feature-heading-pluginLink"
-				href="https://github.com/jonathantneal/postcss-pseudo-class-any-link"
-				rel="noreferrer"
-				aria-label={`${polyfill.type.replace('JavaScript ', '').replace('PostCSS ', '')} for ${cleanTitle}`}
-				target="_blank"
-		>
-			{ polyfill.type.replace('JavaScript ', '').replace('PostCSS ', '') }
-		</a>
-		)) }
+
+		<!-- TODO : should be a region that is skippable for a11y -->
+		<div class="ppe-feature-heading-link-list">
+			<a
+					class="ppe-feature-heading-link ppe-feature-heading-stage"
+					data-stage={ feature.stage }
+					href={ link }
+					aria-label={`Stage for ${cleanTitle}`}
+			>
+				Stage { feature.stage }
+			</a>
+			<a
+					class="ppe-feature-heading-link ppe-feature-heading-specLink"
+					href={ feature.specification }
+					rel="noreferrer"
+					target="_blank"
+					aria-label={`Specification for ${cleanTitle}`}
+			>
+				Specification
+			</a>
+			{ Array.isArray(feature.polyfills) && feature.polyfills.map((polyfill) => (
+			<a
+					class="ppe-feature-heading-link ppe-feature-heading-pluginLink"
+					href="https://github.com/jonathantneal/postcss-pseudo-class-any-link"
+					rel="noreferrer"
+					aria-label={`${polyfill.type.replace('JavaScript ', '').replace('PostCSS ', '')} for ${cleanTitle}`}
+					target="_blank"
+			>
+				{ polyfill.type.replace('JavaScript ', '').replace('PostCSS ', '') }
+			</a>
+			)) }
+		</div>
 	</header>
 	<p class="ppe-feature-description">{ simpleDescription }</p>
 	<pre class="ppe-feature-example" dir="ltr">{ parseExample(feature.example) }</pre>

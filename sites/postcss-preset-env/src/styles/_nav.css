@@ -4,6 +4,7 @@
 	background-image: linear-gradient(90deg, #9952c8, #1874d5);
 	color: #ffffff;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 }
 

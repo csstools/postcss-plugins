@@ -3,54 +3,58 @@ import FeatureNavElement from './FeatureNavElement.astro';
 const { features } = Astro.props;
 ---
 <aside class="ppe-navigation">
-	<label for="feature-navigation-select">Filter features by Stage:</label>
-	<select id="feature-navigation-select" class="ppe-navigation-select">
-		<option value="0" selected>Stage 0+</option>
-		<option value="1">Stage 1+</option>
-		<option value="2">Stage 2+</option>
-		<option value="3">Stage 3+</option>
-	</select>
+	<div class="ppe-navigation-sticky">
+		<div class="ppe-navigation-sticky-overflow">
+			<label for="feature-navigation-select">Filter features by Stage:</label>
+			<select id="feature-navigation-select" class="ppe-navigation-select">
+				<option value="0" selected>Stage 0+</option>
+				<option value="1">Stage 1+</option>
+				<option value="2">Stage 2+</option>
+				<option value="3">Stage 3+</option>
+			</select>
 
-	<nav class="ppe-feature-menu" aria-label="Feature Navigation">
-		<ul class="ppe-feature-menu-list">
-			{ features.map(feature => (
-				<FeatureNavElement feature={ feature } />
-			)) }
-		</ul>
-	</nav>
+			<nav class="ppe-feature-menu" aria-label="Feature Navigation">
+				<ul class="ppe-feature-menu-list">
+					{ features.map(feature => (
+						<FeatureNavElement feature={ feature } />
+					)) }
+				</ul>
+			</nav>
 
-	<nav class="ppe-sidebar-menu" aria-label="Additional Navigation">
-		<ul class="ppe-sidebar-menu-list">
-			<li class="ppe-menu-item">
-				<a
-						class="ppe-menu-link"
-						href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#usage"
-						rel="noreferrer"
-						target="_blank"
-				>
-					Installation and Usage
-				</a>
-			</li>
-			<li class="ppe-menu-item">
-				<a
-						class="ppe-menu-link"
-						href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#options"
-						rel="noreferrer"
-						target="_blank"
-				>
-					Options
-				</a>
-			</li>
-			<li class="ppe-menu-item">
-				<a
-						class="ppe-menu-link"
-						href="https://cssdb.org/#the-staging-process"
-						rel="noreferrer"
-						target="_blank"
-				>
-					Stages
-				</a>
-		</li>
-		</ul>
-	</nav>
+			<nav class="ppe-sidebar-menu" aria-label="Additional Navigation">
+				<ul class="ppe-sidebar-menu-list">
+					<li class="ppe-menu-item">
+						<a
+								class="ppe-menu-link"
+								href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#usage"
+								rel="noreferrer"
+								target="_blank"
+						>
+							Installation and Usage
+						</a>
+					</li>
+					<li class="ppe-menu-item">
+						<a
+								class="ppe-menu-link"
+								href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#options"
+								rel="noreferrer"
+								target="_blank"
+						>
+							Options
+						</a>
+					</li>
+					<li class="ppe-menu-item">
+						<a
+								class="ppe-menu-link"
+								href="https://cssdb.org/#the-staging-process"
+								rel="noreferrer"
+								target="_blank"
+						>
+							Stages
+						</a>
+				</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
 </aside>
