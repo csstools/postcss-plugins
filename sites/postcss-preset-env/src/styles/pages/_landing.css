@@ -144,7 +144,7 @@
 	align-items: center;
 	color: #fff;
 	display: flex;
-	font: 400 100%/1.5 var(--font-code);
+	font: 400 100% var(--font-code);
 	margin: 12px 0 30px;
 	padding: 10px 20px;
 	text-align: center;
