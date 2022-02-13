@@ -167,5 +167,5 @@
   - plugins/postcss-system-ui-font-family/**
   - experimental/postcss-system-ui-font-family/**
 
-"sites/postcss-preset-env"
+"sites/postcss-preset-env":
   - sites/postcss-preset-env/**

@@ -20,7 +20,7 @@
     "get-me-going": "npm run clean && npm i",
     "build": "npm run build --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
-    "start": "npm run build --workspaces --if-present",
+    "start": "npm run build --workspaces --if-present"
   },
   "volta": {
     "extends": "../package.json"
