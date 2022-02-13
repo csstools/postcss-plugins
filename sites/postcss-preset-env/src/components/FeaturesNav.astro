@@ -3,7 +3,8 @@ import FeatureNavElement from './FeatureNavElement.astro';
 const { features } = Astro.props;
 ---
 <aside class="ppe-navigation">
-	<select class="ppe-navigation-select">
+	<label for="feature-navigation-select">Filter features by Stage:</label>
+	<select id="feature-navigation-select" class="ppe-navigation-select">
 		<option value="0" selected>Stage 0+</option>
 		<option value="1">Stage 1+</option>
 		<option value="2">Stage 2+</option>

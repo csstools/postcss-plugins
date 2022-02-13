@@ -17,7 +17,7 @@
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 	overflow-y: hidden;
 	overflow-y: overlay;
-	padding: calc(25px + var(--heading-size)) 35px 25px;
+	padding: 25px 35px 25px;
 	position: fixed;
 	top: 0;
 	width: 300px;
@@ -25,7 +25,7 @@
 
 @media (max-width: 1023px) {
 	.ppe-navigation {
-		padding: calc(25px + var(--heading-size)) 20px 25px;
+		padding: 25px 20px 25px;
 		width: 200px;
 	}
 }
@@ -57,11 +57,12 @@
 }
 
 .ppe-menu-link {
-	color: #727272;
+	color: #2b2b2b;
 	display: block;
-	font-style: normal;
 	font-size: 14px;
+	font-style: normal;
 	line-height: 1.285;
+	margin: 2px 0;
 	padding: 7px 0;
 }
 
@@ -69,12 +70,13 @@
 .ppe-menu-link:focus,
 .ppe-menu-link[aria-current] {
 	color: #000;
+	text-decoration: underline;
 }
 
 .ppe-features-list {
 	flex-grow: 1;
 	margin-left: 300px;
-	padding: 0 75px calc(var(--heading-size) * 1.25 + 50px);
+	padding: 0 75px 50px;
 }
 
 @media (max-width: 1023px) {
@@ -98,13 +100,13 @@
 }
 
 .ppe-feature {
-	margin: 0 0 calc(var(--heading-size) * -1);
+	margin: 0;
 }
 
 .ppe-feature-heading {
 	align-items: center;
 	display: flex;
-	padding: calc(var(--heading-size) + 50px) 0 0;
+	padding: 50px 0 0;
 }
 
 @media (max-width: 959px) {
@@ -158,10 +160,12 @@
 
 .ppe-feature-heading-stage[data-stage="1"] {
 	background-color: #ed782a;
+	color: #000;
 }
 
 .ppe-feature-heading-stage[data-stage="2"] {
 	background-color: #899c1f;
+	color: #000;
 }
 
 .ppe-feature-heading-stage[data-stage="3"] {
@@ -175,7 +179,7 @@
 .ppe-feature-heading-specLink,
 .ppe-feature-heading-pluginLink {
 	background-color: #eee;
-	color: #6c6c6c;
+	color: #000;
 }
 
 .ppe-feature-heading:target,
@@ -233,7 +237,7 @@
 }
 
 .css-var {
-	color: #e16f78;
+	color: #da8188;
 }
 
 .css-function {
