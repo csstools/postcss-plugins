@@ -6,7 +6,8 @@
 	--font-code: monospace;
 	--transition: cubic-bezier(0.250, 0.460, 0.450, 0.940);
 	--t-slow: .3s;
-	font: 400 16px sans-serif;
+	font: 400 100%/1.5 sans-serif;
+	font-size: 16rem;
 	font-family: var(--font-body);
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
@@ -39,16 +40,12 @@ body {
 }
 
 pre {
-	font: 400 100% var(--font-code);
+	font: 400 100%/1.5 var(--font-code);
 }
 
 a {
 	color: inherit;
 	text-decoration: none;
-}
-
-p {
-	line-height: 1.5em;
 }
 
 nav ul {
