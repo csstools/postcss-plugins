@@ -2,11 +2,12 @@
 
 :root {
 	--heading-size: 2.5rem;
-	--font-body: "Avenir Next", sans-serif;
-	--font-code: "Source Code Pro", monospace;
+	--font-body: system-ui;
+	--font-code: monospace;
 	--transition: cubic-bezier(0.250, 0.460, 0.450, 0.940);
 	--t-slow: .3s;
 	font: 400 100%/1.5 sans-serif;
+	font-size: 1rem;
 	font-family: var(--font-body);
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
