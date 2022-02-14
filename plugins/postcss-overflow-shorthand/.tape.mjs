@@ -1,6 +1,9 @@
-module.exports = {
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import plugin from 'postcss-overflow-shorthand';
+
+postcssTape(plugin)({
 	'basic': {
-		message: 'supports basic usage',
+		message: 'supports basic usage'
 	},
 	'basic:preserve-false': {
 		message: 'supports { preserve: false } usage',
@@ -20,4 +23,4 @@ module.exports = {
 			preserve: true
 		}
 	},
-};
+});

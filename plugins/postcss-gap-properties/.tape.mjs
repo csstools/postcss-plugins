@@ -1,4 +1,7 @@
-module.exports = {
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import plugin from 'postcss-gap-properties';
+
+postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage'
 	},
@@ -14,4 +17,4 @@ module.exports = {
 	'ignore-multicolumn': {
 		message: 'ignore multi column declarations'
 	}
-};
+});

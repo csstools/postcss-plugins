@@ -1,6 +1,15 @@
-module.exports = {
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import plugin from 'postcss-focus-visible';
+
+postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage'
+	},
+	'basic:replacewith': {
+		message: 'supports { replaceWith: "[focus-visible]" } usage',
+		options: {
+			replaceWith: '[focus-visible]'
+		}
 	},
 	'basic:preserve': {
 		message: 'supports { preserve: false } usage',
@@ -15,4 +24,4 @@ module.exports = {
 			preserve: false
 		}
 	},
-}
+});
