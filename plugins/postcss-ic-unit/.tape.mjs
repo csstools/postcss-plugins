@@ -5,7 +5,7 @@ postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
 	},
-	/*'basic:preserve-true': {
+	'basic:preserve-true': {
 		message: 'supports { preserve: true } usage',
 		options: {
 			preserve: true
@@ -14,17 +14,17 @@ postcssTape(plugin)({
 	'variables': {
 		message: 'supports variables',
 	},
-	'variables:preserve-true': {
-		message: 'supports variables with { preserve: true } usage',
-		options: {
-			preserve: true
-		}
-	},
-	'variables:preserve-true:progressive-false': {
-		message: 'supports variables with { preserve: true, enableProgressiveCustomProperties: false } usage',
-		options: {
-			preserve: true,
-			enableProgressiveCustomProperties: false,
-		}
-	},*/
+	// 'variables:preserve-true': {
+	// 	message: 'supports variables with { preserve: true } usage',
+	// 	options: {
+	// 		preserve: true
+	// 	}
+	// },
+	// 'variables:preserve-true:progressive-false': {
+	// 	message: 'supports variables with { preserve: true, enableProgressiveCustomProperties: false } usage',
+	// 	options: {
+	// 		preserve: true,
+	// 		enableProgressiveCustomProperties: false,
+	// 	}
+	// },
 });
