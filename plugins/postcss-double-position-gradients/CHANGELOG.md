@@ -1,6 +1,6 @@
 # Changes to PostCSS Double Position Gradients
 
-### Unreleased (minor)
+### 3.1.0 (February 15, 2022)
 
 - Ignore values in relevant `@supports` rules.
 - Support double position gradients in Custom Properties.
