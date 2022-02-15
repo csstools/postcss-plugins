@@ -26,11 +26,10 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 					return;
 				}
 
-				const { unit } = valueParser.unit(node.value) || {};
+				const dimension = valueParser.unit(node.value);
 
-				if (unit === 'ic') {
-					// Removing ic from the string and replacing with em
-					node.value = `${node.value.substring(0, node.value.length - 2)}em`;
+				if (dimension && dimension.unit === 'ic') {
+					node.value = `${dimension.number}em`;
 				}
 			});
 
