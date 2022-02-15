@@ -99,6 +99,10 @@
   - plugins/postcss-hwb-function/**
   - experimental/postcss-hwb-function/**
 
+"plugins/postcss-ic-unit":
+  - plugins/postcss-ic-unit/**
+  - experimental/postcss-ic-unit/**
+
 "plugins/postcss-image-set-function":
   - plugins/postcss-image-set-function/**
   - experimental/postcss-image-set-function/**
