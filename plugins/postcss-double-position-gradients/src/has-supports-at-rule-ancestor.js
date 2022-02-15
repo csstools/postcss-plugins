@@ -7,27 +7,14 @@ export function hasSupportsAtRuleAncestor(node) {
 		}
 
 		if (parent.name === 'supports') {
-			if (parent.params.indexOf('conic-gradient(') !== -1) {
-				return true;
-			}
-
-			if (parent.params.indexOf('linear-gradient(') !== -1) {
-				return true;
-			}
-
-			if (parent.params.indexOf('radial-gradient(') !== -1) {
-				return true;
-			}
-
-			if (parent.params.indexOf('repeating-conic-gradient(') !== -1) {
-				return true;
-			}
-
-			if (parent.params.indexOf('repeating-linear-gradient(') !== -1) {
-				return true;
-			}
-
-			if (parent.params.indexOf('repeating-radial-gradient(') !== -1) {
+			if (
+				parent.params.includes('conic-gradient(') ||
+				parent.params.includes('linear-gradient(') ||
+				parent.params.includes('radial-gradient(') ||
+				parent.params.includes('repeating-conic-gradient(') ||
+				parent.params.includes('repeating-linear-gradient(') ||
+				parent.params.includes('repeating-radial-gradient(')
+			) {
 				return true;
 			}
 		}
