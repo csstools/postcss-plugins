@@ -29,10 +29,13 @@
     "csstools-cli": "csstools-cli"
   },
   "dependencies": {
+    "@csstools/postcss-color-function": "^1.0.2",
     "@csstools/postcss-font-format-keywords": "^1.0.0",
     "@csstools/postcss-hwb-function": "^1.0.0",
+    "@csstools/postcss-ic-unit": "^1.0.0",
     "@csstools/postcss-is-pseudo-class": "^2.0.0",
     "@csstools/postcss-normalize-display-values": "^1.0.0",
+    "@csstools/postcss-oklab-function": "^1.0.1",
     "css-blank-pseudo": "^3.0.2",
     "css-has-pseudo": "^3.0.3",
     "css-prefers-color-scheme": "^6.0.3",

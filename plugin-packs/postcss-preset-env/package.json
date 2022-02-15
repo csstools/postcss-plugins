@@ -35,10 +35,13 @@
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
+    "@csstools/postcss-color-function": "^1.0.2",
     "@csstools/postcss-font-format-keywords": "^1.0.0",
     "@csstools/postcss-hwb-function": "^1.0.0",
+    "@csstools/postcss-ic-unit": "^1.0.0",
     "@csstools/postcss-is-pseudo-class": "^2.0.0",
     "@csstools/postcss-normalize-display-values": "^1.0.0",
+    "@csstools/postcss-oklab-function": "^1.0.1",
     "@csstools/postcss-progressive-custom-properties": "^1.1.0",
     "autoprefixer": "^10.4.2",
     "browserslist": "^4.19.1",
