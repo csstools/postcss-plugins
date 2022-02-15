@@ -4,7 +4,7 @@ import { cli, helpTextLogger } from '@csstools/base-cli';
 export default function postcssOKLabFunction() {
 	cli(
 		plugin,
-		['preserve', 'enableProgressiveCustomProperties'],
+		['preserve', 'enableProgressiveCustomProperties', 'subFeatures'],
 		helpTextLogger(
 			'@csstools/cli postcss-oklab-function',
 			'PostCSS OKLab Function',
@@ -12,6 +12,9 @@ export default function postcssOKLabFunction() {
 			{
 				preserve: true,
 				enableProgressiveCustomProperties: false,
+				subFeatures: {
+					displayP3: false,
+				},
 			},
 		),
 		false,

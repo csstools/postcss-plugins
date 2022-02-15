@@ -1,6 +1,16 @@
 # Changes to CSSTools CLI
 
-### 1.1.0  (January 31, 2022)
+### 1.2.0 (Unreleased)
+
+- Added `@csstools/color-function`.
+- Added `@csstools/ic-unit`.
+- Added `@csstools/oklab-function`.
+- Fixing minor formatting.
+- Added support for new options for:
+  - `postcss-double-position-gradients`
+  - `postcss-lab-function`
+
+### 1.1.0 (January 31, 2022)
 
 - Emit warnings from plugins
 - Added `@csstools/postcss-font-format-keywords`
