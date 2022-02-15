@@ -1,6 +1,7 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
+import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 
 type basePluginOptions = {
 	preserve: boolean,
@@ -13,6 +14,10 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 		postcssPlugin: 'postcss-ic-unit',
 		Declaration(decl) {
 			if (!decl.value.includes('ic')) {
+				return;
+			}
+
+			if (hasSupportsAtRuleAncestor(decl)) {
 				return;
 			}
 
