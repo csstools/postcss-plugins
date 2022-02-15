@@ -43,7 +43,7 @@
     "postcss": "^8.4"
   },
   "devDependencies": {
-    "puppeteer": "^13.1.2"
+    "puppeteer": "^13.3.1"
   },
   "keywords": [
     "postcss",

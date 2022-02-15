@@ -17,5 +17,5 @@ jobs:
 
       - run: npm ci
       - run: npm run build --workspaces --if-present
-      - run: npm run test:browser --workspaces --if-present
+      - run: npm run --silent test:browser --workspaces --if-present
 

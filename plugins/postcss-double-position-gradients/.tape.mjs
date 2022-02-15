@@ -1,23 +1,24 @@
-module.exports = {
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import plugin from 'postcss-double-position-gradients';
+
+postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage'
 	},
-	'basic:preserve-false': {
+	'basic:preserve': {
 		message: 'supports { preserve: false } usage',
-		options: {
-			preserve: false
-		}
+		options: { preserve: false }
 	},
-	'generated-declaration-cases': {
+	'generated-value-cases': {
 		message: 'correctly handles generated cases',
 		options: {
 			preserve: false
 		}
 	},
-	'generated-declaration-cases:preserve': {
+	'generated-value-cases:preserve': {
 		message: 'correctly handles generated cases',
 		options: {
 			preserve: true
 		}
 	},
-};
+});

@@ -1,4 +1,7 @@
-module.exports = {
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import plugin from 'postcss-color-hex-alpha';
+
+postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage'
 	},
@@ -11,4 +14,4 @@ module.exports = {
 	'clip-path': {
 		message: 'ignores clip-path with hash in url'
 	}
-};
+});

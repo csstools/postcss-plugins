@@ -1,4 +1,7 @@
-module.exports = {
+const postcssTape = require('../../packages/postcss-tape/dist/index.cjs');
+const plugin = require('postcss-env-function');
+
+postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage',
 	},
@@ -91,4 +94,4 @@ module.exports = {
 			importFrom: {}
 		}
 	}
-};
+});

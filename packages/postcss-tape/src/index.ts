@@ -385,6 +385,8 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 		if (hasErrors) {
 			process.exit(1);
 		}
+
+		console.warn('pass ' + (currentPlugin() as Plugin).postcssPlugin);
 	};
 }
 
