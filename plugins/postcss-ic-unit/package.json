@@ -1,8 +1,7 @@
 {
   "name": "@csstools/postcss-ic-unit",
-  "private": true,
   "version": "1.0.0",
-  "description": "TODO: Add description for IC Unit",
+  "description": "Use the ic length unit",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
   "engines": {
@@ -38,7 +37,13 @@
     "postcss": "^8.3"
   },
   "keywords": [
-    "postcss-plugin"
+    "postcss-plugin",
+    "ic",
+    "css",
+    "values",
+    "length",
+    "glyph",
+    "CJK water ideograph"
   ],
   "repository": {
     "type": "git",
