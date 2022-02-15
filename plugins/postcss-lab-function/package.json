@@ -1,6 +1,6 @@
 {
   "name": "postcss-lab-function",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Use lab() and lch() color functions in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",

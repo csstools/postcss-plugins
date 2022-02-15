@@ -1,6 +1,6 @@
 # Changes to PostCSS Lab Function
 
-### Unreleased (patch)
+### 4.1.1 (February 15, 2022)
 
 - Fix plugin name
 
