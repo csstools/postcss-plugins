@@ -2,5 +2,5 @@
 	background-color: rgba(255, 255, 255, 0);
 	background-color: color(display-p3 1.00000 1.00000 1.00000 / 0%);
 	after: changed-this-declaration;
-	color: color(display-p3 0.00000 0.00000 0.00000 / 0%);
+	after: changed-this-declaration;
 }
