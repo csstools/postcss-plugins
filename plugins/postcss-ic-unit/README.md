@@ -42,10 +42,10 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssNormalizeDisplayValues = require('@csstools/postcss-ic-unit');
+const postcssIcUnit = require('@csstools/postcss-ic-unit');
 
 postcss([
-  postcssNormalizeDisplayValues(/* pluginOptions */)
+  postcssIcUnit(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -63,7 +63,7 @@ The `preserve` option determines whether the original source
 is preserved. By default, it is not preserved.
 
 ```js
-postcssNormalizeDisplayValues({ preserve: true })
+postcssIcUnit({ preserve: true })
 ```
 
 ```pcss

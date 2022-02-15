@@ -18,10 +18,10 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssNormalizeDisplayValues = require('@csstools/postcss-ic-unit');
+const postcssIcUnit = require('@csstools/postcss-ic-unit');
 
 postcss([
-  postcssNormalizeDisplayValues(/* pluginOptions */)
+  postcssIcUnit(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -37,11 +37,11 @@ Use [PostCSS IC Unit] in your `postcss.config.js` configuration
 file:
 
 ```js
-const postcssNormalizeDisplayValues = require('@csstools/postcss-ic-unit');
+const postcssIcUnit = require('@csstools/postcss-ic-unit');
 
 module.exports = {
   plugins: [
-    postcssNormalizeDisplayValues(/* pluginOptions */)
+    postcssIcUnit(/* pluginOptions */)
   ]
 }
 ```
@@ -57,7 +57,7 @@ npm install postcss-loader --save-dev
 Use [PostCSS IC Unit] in your Webpack configuration:
 
 ```js
-const postcssNormalizeDisplayValues = require('@csstools/postcss-ic-unit');
+const postcssIcUnit = require('@csstools/postcss-ic-unit');
 
 module.exports = {
   module: {
@@ -70,7 +70,7 @@ module.exports = {
           { loader: 'postcss-loader', options: {
             ident: 'postcss',
             plugins: () => [
-              postcssNormalizeDisplayValues(/* pluginOptions */)
+              postcssIcUnit(/* pluginOptions */)
             ]
           } }
         ]
@@ -93,11 +93,11 @@ Use [React App Rewire PostCSS] and [PostCSS IC Unit] in your
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssNormalizeDisplayValues = require('@csstools/postcss-ic-unit');
+const postcssIcUnit = require('@csstools/postcss-ic-unit');
 
 module.exports = config => reactAppRewirePostcss(config, {
   plugins: () => [
-    postcssNormalizeDisplayValues(/* pluginOptions */)
+    postcssIcUnit(/* pluginOptions */)
   ]
 });
 ```
@@ -114,11 +114,11 @@ Use [PostCSS IC Unit] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssNormalizeDisplayValues = require('@csstools/postcss-ic-unit');
+const postcssIcUnit = require('@csstools/postcss-ic-unit');
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
   postcss([
-    postcssNormalizeDisplayValues(/* pluginOptions */)
+    postcssIcUnit(/* pluginOptions */)
   ])
 ).pipe(
   gulp.dest('.')
@@ -136,7 +136,7 @@ npm install grunt-postcss --save-dev
 Use [PostCSS IC Unit] in your Gruntfile:
 
 ```js
-const postcssNormalizeDisplayValues = require('@csstools/postcss-ic-unit');
+const postcssIcUnit = require('@csstools/postcss-ic-unit');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -144,7 +144,7 @@ grunt.initConfig({
   postcss: {
     options: {
       use: [
-       postcssNormalizeDisplayValues(/* pluginOptions */)
+       postcssIcUnit(/* pluginOptions */)
       ]
     },
     dist: {
