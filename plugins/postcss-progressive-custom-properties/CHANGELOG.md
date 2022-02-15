@@ -1,6 +1,6 @@
 # Changes to PostCSS Progressive Custom Properties
 
-## Unreleased (minor?)
+## 1.2.0 (February 15, 2022)
 
 - More matching rules for [double position gradients](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients#readme).
 
