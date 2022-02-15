@@ -8,8 +8,6 @@ type basePluginOptions = {
 }
 
 const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) => {
-	const icMatch = new RegExp(/^(\d+|\d+\.*\d*|\.*\d+)ic$/);
-
 	return {
 		postcssPlugin: 'postcss-ic-unit',
 		Declaration(decl) {
@@ -28,7 +26,12 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 					return;
 				}
 
-				node.value = node.value.replace(icMatch, '$1em');
+				const { unit } = valueParser.unit(node.value) || {};
+
+				if (unit === 'ic') {
+					// Removing ic from the string and replacing with em
+					node.value = `${node.value.substring(0, node.value.length - 2)}em`;
+				}
 			});
 
 			const modifiedValue = String(parsedValue);
