@@ -1,10 +1,7 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import valueParser from 'postcss-value-parser';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-
-// whether the value has a lab() or lch() matcher
-const gradientRegExp = /(repeating-)?(conic|linear|radial)-gradient\([\W\w]*\)/i;
-const gradientPartsRegExp = /^(repeating-)?(conic|linear|radial)-gradient$/i;
+import { includesGradientsFunction, isGradientsFunctions } from './is-gradient';
 
 const isPunctuationCommaNode = node => node.type === 'div' && node.value === ',';
 
@@ -32,7 +29,7 @@ const basePlugin = (opts) => {
 	return {
 		postcssPlugin: 'postcss-double-position-gradients',
 		Declaration(decl, { result }) {
-			if (!gradientRegExp.test(decl.value)) {
+			if (!includesGradientsFunction(decl.value)) {
 				return;
 			}
 
@@ -57,7 +54,7 @@ const basePlugin = (opts) => {
 			}
 
 			valueAST.walk(func => {
-				if (func.type !== 'function' || !gradientPartsRegExp.test(func.value)) {
+				if (func.type !== 'function' || !isGradientsFunctions(func.value)) {
 					return;
 				}
 
