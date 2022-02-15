@@ -1,4 +1,7 @@
-module.exports = {
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import plugin from 'postcss-logical';
+
+postcssTape(plugin)({
 	'border': {
 		message: 'supports logical "border" property values'
 	},
@@ -108,4 +111,4 @@ module.exports = {
 			preserve: true
 		}
 	},
-};
+});

@@ -48,7 +48,7 @@ jobs:
         # CLI Tests
         # running "npm install" places the cli in node_modules/bin
       - run: npm install --ignore-scripts
-      - run: npm run test:cli --workspace="@csstools/postcss-base-plugin"
+      - run: npm run --silent test:cli --workspace="@csstools/postcss-base-plugin"
 
   # Run e2e tests
   test_e2e:
@@ -67,10 +67,10 @@ jobs:
             cd e2e/webpack/bundle-through
             npm install
             npm run build
-            npm run test
+            npm run --silent test
 
       # Deno compatibility
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x.x
-      - run: npm run test:deno --workspaces --if-present
+      - run: npm run --silent test:deno --workspaces --if-present

@@ -1,4 +1,7 @@
-module.exports = {
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import plugin from 'postcss-dir-pseudo-class';
+
+postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
 		warnings: 2,
@@ -34,4 +37,4 @@ module.exports = {
 			preserve: false
 		}
 	},
-};
+});
