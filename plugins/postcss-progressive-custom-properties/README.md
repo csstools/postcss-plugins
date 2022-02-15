@@ -94,6 +94,14 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
+## @supports
+
+This plugin wraps Custom Property override declarations in an `@supports` rule.
+With PostCSS 8 this trigger declaration visitors to run again.
+
+Make sure your plugin detects and ignores values inside relevant `@supports` rules.
+
+
 [PostCSS Progressive Custom Properties] runs in all Node environments, with special instructions for:
 
 | [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |

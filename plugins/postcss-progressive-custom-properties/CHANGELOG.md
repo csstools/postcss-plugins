@@ -1,5 +1,9 @@
 # Changes to PostCSS Progressive Custom Properties
 
+## Unreleased (minor?)
+
+- More matching rules for [double position gradients](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients#readme).
+
 ## 1.1.0 (February 12, 2022)
 
 - No longer uses custom properties in `@supports` rules.

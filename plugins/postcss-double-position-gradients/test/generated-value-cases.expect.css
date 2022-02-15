@@ -26,6 +26,6 @@
 
 @supports (order: linear-gradient(90deg, black 25% 50%, blue 50% 75%)) {
 	.support {
-		order: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+		order: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 	}
 }

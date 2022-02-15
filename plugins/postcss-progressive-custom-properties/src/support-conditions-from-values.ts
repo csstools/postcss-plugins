@@ -1,6 +1,7 @@
 import valueParser from 'postcss-value-parser';
 import { matchers } from './matchers';
 import { matches } from './match';
+import { doublePositionGradients } from './custom/double-position-gradients';
 
 export function supportConditionsFromValue(value: string): Array<string> {
 	const supportConditions: Array<string> = [];
@@ -38,39 +39,12 @@ export function supportConditionsFromValue(value: string): Array<string> {
 				}
 			}
 
-			// custom matchers :
-			if (node.type === 'function' && (node.value === 'conic-gradient' || node.value === 'linear-gradient')) {
-				let components = 0;
-				let seenPrefix = false;
-
-				for (let i = 0; i < node.nodes.length; i++) {
-					const childNode = node.nodes[i];
-					if (childNode.type === 'div' && childNode.value.trim() === ',') {
-						components = 0;
-						seenPrefix = true;
-						continue;
-					}
-
-					if (childNode.type === 'word' || childNode.type === 'function') {
-						components++;
-					}
-
-					if (seenPrefix && components === 3) {
-						if (node.value === 'conic-gradient') {
-							supportConditions.push('(background: conic-gradient(red 0%, red 0deg 1%, red 2deg))');
-							return;
-						}
-
-						supportConditions.push('(background: linear-gradient(0deg, red 0% 1%, red 2%))');
-						return;
-					}
-				}
-			}
+			supportConditions.push(...doublePositionGradients(node));
 		});
 
 	} catch (_) {
 		/* ignore */
 	}
 
-	return supportConditions;
+	return Array.from(new Set(supportConditions)); // list with unique items.
 }
