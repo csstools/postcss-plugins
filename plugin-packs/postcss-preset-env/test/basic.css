@@ -256,3 +256,11 @@
 .ruby-text-flow {
 	display: ruby-text flow;
 }
+
+.color-function {
+	prop-1: color(display-p3 0.00000 0.51872 0.36985);
+	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
+	prop-3: color(display-p3 0.02472 0.01150 0.00574 / 1);
+	prop-4: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
+	prop-5: color(display-p3 1 1 1 1);
+}

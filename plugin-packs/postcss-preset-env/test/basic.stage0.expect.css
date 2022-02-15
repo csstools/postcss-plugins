@@ -450,3 +450,11 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	display: ruby-text;
 	display: ruby-text flow;
 }
+
+.color-function {
+	prop-1: rgb(0, 129, 96);
+	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
+	prop-3: rgba(7,3,1,1);
+	prop-4: rgba(7,3,1,calc(33 / 22));
+	prop-5: rgb(255, 255, 255);
+}
