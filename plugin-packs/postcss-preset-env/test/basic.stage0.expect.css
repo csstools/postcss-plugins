@@ -524,3 +524,16 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	color-16: color(display-p3 0.69260 0.41373 0.26821);
 	color-17: oklch(60% 0.1250 0.785398unknown);
 }
+
+.ic-unit {
+	--value-2ic: 'something';
+	text-indent: 2em;
+	content: var(--value-2ic);
+	left: 2em;
+	left: 2em;
+	left: var(--non-existing, 2em);
+	width: calc(8em + 20px);
+	height: 10px;
+	margin: 0.5em 1em .2em;
+	padding: 2    ic;
+}

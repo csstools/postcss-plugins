@@ -317,3 +317,14 @@
 	color-16: oklch(60% 0.1250 0.785398rad);
 	color-17: oklch(60% 0.1250 0.785398unknown);
 }
+
+.ic-unit {
+	--value-2ic: 'something';
+	text-indent: 2ic;
+	content: var(--value-2ic);
+	left: var(--non-existing, 2ic);
+	width: calc(8ic + 20px);
+	height: 10px;
+	margin: 0.5ic 1ic .2ic;
+	padding: 2    ic;
+}
