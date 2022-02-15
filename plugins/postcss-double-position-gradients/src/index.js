@@ -1,8 +1,7 @@
+import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import valueParser from 'postcss-value-parser';
-
-// whether the value has a lab() or lch() matcher
-const gradientRegExp = /(repeating-)?(conic|linear|radial)-gradient\([\W\w]*\)/i;
-const gradientPartsRegExp = /^(repeating-)?(conic|linear|radial)-gradient$/i;
+import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { includesGradientsFunction, isGradientsFunctions } from './is-gradient';
 
 const isPunctuationCommaNode = node => node.type === 'div' && node.value === ',';
 
@@ -26,13 +25,15 @@ function isNumericNode(node) {
  * @param {{preserve?: boolean}} opts
  * @returns {import('postcss').Plugin}
  */
-function creator(opts) {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
-
+const basePlugin = (opts) => {
 	return {
 		postcssPlugin: 'postcss-double-position-gradients',
 		Declaration(decl, { result }) {
-			if (!gradientRegExp.test(decl.value)) {
+			if (!includesGradientsFunction(decl.value)) {
+				return;
+			}
+
+			if (hasSupportsAtRuleAncestor(decl)) {
 				return;
 			}
 
@@ -53,7 +54,7 @@ function creator(opts) {
 			}
 
 			valueAST.walk(func => {
-				if (func.type !== 'function' || !gradientPartsRegExp.test(func.value)) {
+				if (func.type !== 'function' || !isGradientsFunctions(func.value)) {
 					return;
 				}
 
@@ -89,7 +90,7 @@ function creator(opts) {
 			const modifiedValue = valueAST.toString();
 
 			if (modifiedValue !== decl.value) {
-				if (preserve) {
+				if (opts.preserve) {
 					decl.cloneBefore({ value: modifiedValue });
 					return;
 				}
@@ -98,8 +99,34 @@ function creator(opts) {
 			}
 		},
 	};
-}
+};
 
-creator.postcss = true;
+basePlugin.postcss = true;
 
-export default creator;
+/**
+ * Transform double-position gradients in CSS.
+ * @param {{preserve?: boolean}} opts
+ * @returns {import('postcss').Plugin}
+ */
+const postcssPlugin = (opts) => {
+	const options = Object.assign({
+		enableProgressiveCustomProperties: true,
+		preserve: true,
+	}, opts);
+
+	if (options.enableProgressiveCustomProperties && options.preserve) {
+		return {
+			postcssPlugin: 'postcss-double-position-gradients',
+			plugins: [
+				postcssProgressiveCustomProperties(),
+				basePlugin(options),
+			],
+		};
+	}
+
+	return basePlugin(options);
+};
+
+postcssPlugin.postcss = true;
+
+export default postcssPlugin;

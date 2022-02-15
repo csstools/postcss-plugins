@@ -1,5 +1,10 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch?)
+
+- Updated `@csstools/postcss-progressive-custom-properties` to ???.
+- Updated `postcss-double-position-gradients` to ???.
+
 ### 7.3.3 (February 13, 2022)
 
 - Updated `cssdb` to `6.3.0` (minor)

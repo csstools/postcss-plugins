@@ -81,7 +81,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	if (options.enableProgressiveCustomProperties && (options.preserve || options.subFeatures.displayP3)) {
 		return {
-			postcssPlugin: 'postcss-color-function',
+			postcssPlugin: 'postcss-lab-function',
 			plugins: [
 				postcssProgressiveCustomProperties(),
 				basePlugin(options),

@@ -1,5 +1,19 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased (minor)
+
+- Ignore values in relevant `@supports` rules.
+- Support double position gradients in Custom Properties.
+
+```css
+@supports (order: linear-gradient(90deg, black 25% 50%, blue 50% 75%)) {
+	.support {
+		/* is not processed */
+		order: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+	}
+}
+```
+
 ### 3.0.5 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

@@ -467,6 +467,14 @@ postcssTape(plugin)({
 			});
 		}
 	},
+	'progressive-custom-properties': {
+		message: 'supports progressive custom properties plugin',
+		options: {
+			preserve: true,
+			stage: 0,
+			browsers: '> 0%'
+		},
+	},
 	'unknown-feature': {
 		message: 'warns on unknown features',
 		warnings: 3,
