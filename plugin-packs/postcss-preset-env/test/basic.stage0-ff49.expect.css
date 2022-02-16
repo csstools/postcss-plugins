@@ -342,3 +342,88 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	display: ruby-text;
 	display: ruby-text flow;
 }
+
+.color-function {
+	prop-1: rgb(0, 129, 96);
+	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
+	prop-3: rgba(7,3,1,1);
+	prop-4: rgba(7,3,1,calc(33 / 22));
+	prop-5: rgb(255, 255, 255);
+}
+
+.oklab {
+	color-1: rgb(73, 71, 69);
+	color-1: color(display-p3 0.28515 0.27983 0.27246);
+	color-2: rgba(121, 34, 67, 1);
+	color-2: color(display-p3 0.43853 0.16014 0.26019 / 1);
+	color-3: rgba(121, 34, 67, .5);
+	color-3: color(display-p3 0.43853 0.16014 0.26019 / .5);
+	color-4: rgba(121, 34, 67, 1);
+	color-4: color(display-p3 0.43853 0.16014 0.26019 / 100%);
+	color-5: rgba(121, 34, 67, 0.5);
+	color-5: color(display-p3 0.43853 0.16014 0.26019 / 50%);
+	color-6: rgb(177, 102, 126);
+	color-6: color(display-p3 0.65225 0.41303 0.49110);
+	color-7: oklab(60% 0.1 0 foo);
+	color-8: rgb(125, 35, 41);
+	color-8: color(display-p3 0.45163 0.16556 0.17021);
+	color-9: rgb(198, 93, 7);
+	color-9: color(display-p3 0.72414 0.38678 0.14879);
+	color-10: rgb(157, 147, 24);
+	color-10: color(display-p3 0.60930 0.57658 0.20615);
+	color-11: rgb(104, 166, 57);
+	color-11: color(display-p3 0.46287 0.64491 0.28775);
+	color-12: rgb(98, 172, 239);
+	color-12: color(display-p3 0.45207 0.66555 0.91656);
+}
+
+.oklch {
+	color-1: rgb(126, 37, 15);
+	color-1: color(display-p3 0.45368 0.16978 0.09411);
+	color-2: rgba(126, 37, 15, 1);
+	color-2: color(display-p3 0.45368 0.16978 0.09411 / 1);
+	color-3: rgba(126, 37, 15, .5);
+	color-3: color(display-p3 0.45368 0.16978 0.09411 / .5);
+	color-4: rgba(126, 37, 15, 1);
+	color-4: color(display-p3 0.45368 0.16978 0.09411 / 100%);
+	color-5: rgba(126, 37, 15, 0.5);
+	color-5: color(display-p3 0.45368 0.16978 0.09411 / 50%);
+	color-6: rgb(197, 84, 124);
+	color-6: color(display-p3 0.71738 0.35446 0.48551);
+
+	color-7: rgb(0, 149, 131);
+
+	color-7: color(display-p3 0.19244 0.58461 0.51559);
+	color-8: rgb(0, 149, 131);
+	color-8: color(display-p3 0.19244 0.58461 0.51559);
+	color-9: rgb(0, 149, 131);
+	color-9: color(display-p3 0.19244 0.58461 0.51559);
+	color-10: rgb(0, 149, 131);
+	color-10: color(display-p3 0.19244 0.58461 0.51559);
+	color-11: rgb(0, 149, 131);
+	color-11: color(display-p3 0.19244 0.58461 0.51559);
+
+	color-12: rgb(188, 101, 59);
+
+	color-12: color(display-p3 0.69260 0.41373 0.26821);
+	color-13: rgb(188, 101, 59);
+	color-13: color(display-p3 0.69260 0.41373 0.26821);
+	color-14: rgb(188, 101, 59);
+	color-14: color(display-p3 0.69260 0.41373 0.26821);
+	color-15: rgb(188, 101, 59);
+	color-15: color(display-p3 0.69260 0.41373 0.26821);
+	color-16: rgb(188, 101, 59);
+	color-16: color(display-p3 0.69260 0.41373 0.26821);
+	color-17: oklch(60% 0.1250 0.785398unknown);
+}
+
+.ic-unit {
+	--value-2ic: 'something';
+	text-indent: 2em;
+	content: var(--value-2ic);
+	left: var(--non-existing, 2em);
+	width: calc(8em + 20px);
+	height: 10px;
+	margin: 0.5em 1em .2em;
+	padding: 2    ic;
+}

@@ -1,9 +1,14 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch?)
+### 7.4.0 (February 15, 2022)
 
-- Updated `@csstools/postcss-progressive-custom-properties` to ???.
-- Updated `postcss-double-position-gradients` to ???.
+- Added `@csstools/color-function` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function#readme) for usage details.
+- Added `@csstools/oklab-function` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function#readme) for usage details.
+- Added `@csstools/ic-unit` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit#readme) for usage details.
+- Updated `@csstools/postcss-progressive-custom-properties` to `1.2.0` (minor)
+- Updated `cssdb` to `6.3.1` (patch)
+- Updated `postcss-double-position-gradients` to `3.1.0` (minor)
+- Updated `postcss-lab-function` to `4.1.1` (patch)
 
 ### 7.3.3 (February 13, 2022)
 

@@ -34,6 +34,9 @@ import postcssOpacityPercentage from 'postcss-opacity-percentage';
 import postcssClamp from 'postcss-clamp';
 import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
 import postcssNormalizeDisplayValues from '@csstools/postcss-normalize-display-values';
+import postcssColorFunction from '@csstools/postcss-color-function';
+import postcssOKLabFunction from '@csstools/postcss-oklab-function';
+import postcssICUnit from '@csstools/postcss-ic-unit';
 
 // postcss plugins ordered by id
 export const pluginsById = new Map(
@@ -44,6 +47,7 @@ export const pluginsById = new Map(
 		['break-properties', postcssPageBreak],
 		['case-insensitive-attributes', postcssAttributeCaseInsensitive],
 		['clamp', postcssClamp],
+		['color-function', postcssColorFunction],
 		['color-functional-notation', postcssColorFunctionalNotation],
 		['custom-media-queries', postcssCustomMedia],
 		['custom-properties', postcssCustomProperties],
@@ -60,6 +64,7 @@ export const pluginsById = new Map(
 		['hwb-function', postcssHWBFunction],
 		['has-pseudo-class', postcssHasPseudo],
 		['hexadecimal-alpha-notation', postcssColorHexAlpha],
+		['ic-unit', postcssICUnit],
 		['image-set-function', postcssImageSetPolyfill],
 		['is-pseudo-class', postcssIsPseudoClass],
 		['lab-function', postcssLabFunction],
@@ -67,6 +72,7 @@ export const pluginsById = new Map(
 		['media-query-ranges', postcssMediaMinmax],
 		['nesting-rules', postcssNesting],
 		['not-pseudo-class', postcssSelectorNot],
+		['oklab-function', postcssOKLabFunction],
 		['opacity-percentage', postcssOpacityPercentage],
 		['overflow-property', postcssOverflowShorthand],
 		['overflow-wrap-property', postcssReplaceOverflowWrap],

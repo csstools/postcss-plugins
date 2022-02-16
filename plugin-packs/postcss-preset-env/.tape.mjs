@@ -235,7 +235,8 @@ postcssTape(plugin)({
 		options: {
 			stage: 0,
 			features: {
-				'lab-function': true
+				'lab-function': true,
+				'color-function': false,
 			}
 		}
 	},
@@ -245,6 +246,10 @@ postcssTape(plugin)({
 			stage: 0,
 			features: {
 				'lab-function': true
+			},
+			features: {
+				'lab-function': true,
+				'color-function': false,
 			},
 			insertBefore: {
 				'lab-function': [
@@ -262,42 +267,14 @@ postcssTape(plugin)({
 			features: {
 				'lab-function': true
 			},
+			features: {
+				'lab-function': true,
+				'color-function': false,
+			},
 			insertBefore: {
 				'lab-function': [
 					orderDetectionPlugin('before', (decl) => {
 						return decl.prop === 'color' && decl.value.indexOf('rgba(') === 0;
-					})
-				]
-			}
-		}
-	},
-	'insert:after:match-result:feature-is-run': {
-		message: 'supports { insertBefore } usage when looking for a result and the attached feature is skipped',
-		options: {
-			stage: 0,
-			browsers: [
-				'safari >= 15',
-			],
-			insertAfter: {
-				'lab-function': [
-					orderDetectionPlugin('after', (decl) => {
-						return decl.prop === 'color' && decl.value !== 'changed-this-declaration';
-					})
-				]
-			}
-		}
-	},
-	'insert:after:match-result:feature-is-skipped': {
-		message: 'supports { insertBefore } usage when looking for a result and the attached feature is skipped',
-		options: {
-			stage: 0,
-			browsers: [
-				'safari >= 15',
-			],
-			insertAfter: {
-				'lab-function': [
-					orderDetectionPlugin('after', (decl) => {
-						return decl.prop === 'color' && decl.value !== 'changed-this-declaration';
 					})
 				]
 			}
@@ -308,7 +285,8 @@ postcssTape(plugin)({
 		options: {
 			stage: 0,
 			features: {
-				'lab-function': true
+				'lab-function': true,
+				'color-function': false,
 			},
 			insertAfter: {
 				'lab-function': [
@@ -324,7 +302,8 @@ postcssTape(plugin)({
 		options: {
 			stage: 0,
 			features: {
-				'lab-function': true
+				'lab-function': true,
+				'color-function': false,
 			},
 			insertAfter: {
 				'lab-function': [
@@ -340,7 +319,8 @@ postcssTape(plugin)({
 		options: {
 			stage: 0,
 			features: {
-				'lab-function': true
+				'lab-function': true,
+				'color-function': false,
 			},
 			insertAfter: {
 				'lab-function': orderDetectionPlugin('after', (decl) => {
@@ -348,6 +328,38 @@ postcssTape(plugin)({
 				})
 			}
 		},
+	},
+	'insert:before:match-result:feature-is-skipped': {
+		message: 'supports { insertBefore } usage when looking for a result and the attached feature is skipped',
+		options: {
+			stage: 0,
+			browsers: [
+				'safari >= 15',
+			],
+			insertBefore: {
+				'lab-function': [
+					orderDetectionPlugin('before', (decl) => {
+						return decl.prop === 'color' && decl.value !== 'changed-this-declaration';
+					})
+				]
+			}
+		}
+	},
+	'insert:after:match-result:feature-is-skipped': {
+		message: 'supports { insertAfter } usage when looking for a result and the attached feature is skipped',
+		options: {
+			stage: 0,
+			browsers: [
+				'safari >= 15',
+			],
+			insertAfter: {
+				'lab-function': [
+					orderDetectionPlugin('after', (decl) => {
+						return decl.prop === 'color' && decl.value !== 'changed-this-declaration';
+					})
+				]
+			}
+		}
 	},
 	'import': {
 		message: 'supports { importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',

@@ -34,6 +34,7 @@ Available Plugins:
   css-blank-pseudo
   css-has-pseudo
   css-prefers-color-scheme
+  postcss-color-function
   postcss-color-functional-notation
   postcss-color-hex-alpha
   postcss-color-rebeccapurple
@@ -43,12 +44,17 @@ Available Plugins:
   postcss-env-function
   postcss-focus-visible
   postcss-focus-within
+  postcss-font-format-keywords
   postcss-gap-properties
+  postcss-hwb-function
+  postcss-ic-unit
   postcss-image-set-function
-  postcss-lab-function
   postcss-is-pseudo-class
+  postcss-lab-function
   postcss-logical
   postcss-nesting
+  postcss-normalize-display-values
+  postcss-oklab-function
   postcss-overflow-shorthand
   postcss-place
   postcss-pseudo-class-any-link
@@ -186,7 +192,6 @@ Output :
   resize: vertical;
   transition: color 200ms;
 }
-
 ```
 
 

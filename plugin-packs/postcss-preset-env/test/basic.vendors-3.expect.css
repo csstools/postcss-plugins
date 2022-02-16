@@ -388,3 +388,60 @@
 .ruby-text-flow {
 	display: ruby-text flow;
 }
+
+.color-function {
+	prop-1: color(display-p3 0.00000 0.51872 0.36985);
+	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
+	prop-3: color(display-p3 0.02472 0.01150 0.00574 / 1);
+	prop-4: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
+	prop-5: color(display-p3 1 1 1 1);
+}
+
+.oklab {
+	color-1: oklab(40% 0.001236 0.0039);
+	color-2: oklab(40% 0.1236 0.0039 / 1);
+	color-3: oklab(40% 0.1236 0.0039 / .5);
+	color-4: oklab(40% 0.1236 0.0039 / 100%);
+	color-5: oklab(40% 0.1236 0.0039 / 50%);
+	color-6: oklab(60% 0.1 0);
+	color-7: oklab(60% 0.1 0 foo);
+	color-8: oklab(40.101% 0.1147 0.0453);
+	color-9: oklab(59.686% 0.1009 0.1192);
+	color-10: oklab(65.125% -0.0320 0.1274);
+	color-11: oklab(66.016% -0.1084 0.1114);
+	color-12: oklab(72.322% -0.0465 -0.1150);
+}
+
+.oklch {
+	color-1: oklch(40% 0.1268735435 34.568626);
+	color-2: oklch(40% 0.1268735435 34.568626 / 1);
+	color-3: oklch(40% 0.1268735435 34.568626 / .5);
+	color-4: oklch(40% 0.1268735435 34.568626 / 100%);
+	color-5: oklch(40% 0.1268735435 34.568626 / 50%);
+	color-6: oklch(60% 0.150 0);
+
+	color-7: oklch(60% 0.1250 180);
+	color-8: oklch(60% 0.1250 180deg);
+	color-9: oklch(60% 0.1250 0.5turn);
+	color-10: oklch(60% 0.1250 200grad);
+	color-11: oklch(60% 0.1250 3.14159rad);
+
+	color-12: oklch(60% 0.1250 45);
+	color-13: oklch(60% 0.1250 45deg);
+	color-14: oklch(60% 0.1250 0.125turn);
+	color-15: oklch(60% 0.1250 50grad);
+	color-16: oklch(60% 0.1250 0.785398rad);
+	color-17: oklch(60% 0.1250 0.785398unknown);
+}
+
+.ic-unit {
+	--value-2ic: 'something';
+	text-indent: 2ic;
+	content: var(--value-2ic);
+	left: 2ic;
+	left: var(--non-existing, 2ic);
+	width: calc(8ic + 20px);
+	height: 10px;
+	margin: 0.5ic 1ic .2ic;
+	padding: 2    ic;
+}

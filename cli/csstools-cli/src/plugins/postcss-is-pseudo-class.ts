@@ -6,7 +6,7 @@ export default function postcssIsPseudoClass() {
 		plugin,
 		['onComplexSelector', 'preserve', 'specificityMatchingName'],
 		helpTextLogger(
-			'@csstools/cli postcss-dir-pseudo-class',
+			'@csstools/cli postcss-is-pseudo-class',
 			'PostCSS Is Pseudo Class',
 			'Lets you use the :is pseudo class function, following the CSS Selector specification.',
 			{
