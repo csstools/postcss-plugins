@@ -1,6 +1,6 @@
 {
   "name": "@csstools/csstools-cli",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Transform CSS with any plugin from csstools/postcss-plugins",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "homepage": "https://github.com/csstools/postcss-plugins/tree/main/cli/csstools-cli#readme",
@@ -29,13 +29,10 @@
     "csstools-cli": "csstools-cli"
   },
   "dependencies": {
-    "@csstools/postcss-color-function": "^1.0.2",
     "@csstools/postcss-font-format-keywords": "^1.0.0",
     "@csstools/postcss-hwb-function": "^1.0.0",
-    "@csstools/postcss-ic-unit": "^1.0.0",
     "@csstools/postcss-is-pseudo-class": "^2.0.0",
     "@csstools/postcss-normalize-display-values": "^1.0.0",
-    "@csstools/postcss-oklab-function": "^1.0.1",
     "css-blank-pseudo": "^3.0.3",
     "css-has-pseudo": "^3.0.4",
     "css-prefers-color-scheme": "^6.0.3",
@@ -55,7 +52,7 @@
     "postcss-nesting": "^10.1.2",
     "postcss-overflow-shorthand": "^3.0.3",
     "postcss-place": "^7.0.4",
-    "postcss-preset-env": "^7.3.3",
+    "postcss-preset-env": "^7.4.0",
     "postcss-pseudo-class-any-link": "^7.1.1"
   },
   "devDependencies": {
