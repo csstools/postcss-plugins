@@ -8,10 +8,11 @@
   "homepage": "https://github.com/csstools/postcss-plugins/tree/main/sites/postcss-preset-env#readme",
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "scripts": {
-    "start": "astro dev",
+    "start": "npm run generatecssdb && astro dev",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "generatecssdb": "node scripts/cssdb-version-generator.mjs",
     "lint": "stylelint src/styles/**/*.css",
-    "build": "npm run clean && astro build"
+    "build": "npm run clean && npm run generatecssdb && astro build"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
