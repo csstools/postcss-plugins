@@ -1,6 +1,10 @@
 # Changes to PostCSS Preset Env
 
-### 7.4.0 (February 15, 2022)
+### 7.4.1 (February 17, 2022) 
+
+- Updated `postcss-clamp` to `4.0.0` (major)
+
+### 7.4.0 (February 16, 2022)
 
 - Added `@csstools/color-function` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function#readme) for usage details.
 - Added `@csstools/oklab-function` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function#readme) for usage details.
