@@ -309,6 +309,11 @@
 	width: max(10%, min(2px, 4rem));
 }
 
+.mixed-clamp {
+	grid-template-columns: max(22rem, min(40%, 32rem)) minmax(0, 1fr);
+	margin: max(1rem, min(2%, 3rem)) 4vh;
+}
+
 @font-face {
 	font-family: 'A';
 	font-style: normal;
