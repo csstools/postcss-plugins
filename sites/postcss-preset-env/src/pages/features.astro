@@ -9,10 +9,6 @@ import cssdbUNPKGURL from '../utils/cssdb_url.mjs';
 const response = await fetch(cssdbUNPKGURL);
 const cssdb = await response.json();
 const features = getPostCSSPresetEnvFeatures(cssdb);
-
-const response = await fetch(`https://unpkg.com/cssdb@6.3.0/cssdb.json`);
-const cssdb = await response.json();
-const features = getPostCSSPresetEnvFeatures(cssdb);
 ---
 
 <!doctype html>
