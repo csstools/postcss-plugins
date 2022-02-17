@@ -21,18 +21,26 @@ async function generate() {
 				continue;
 			}
 
+			if (property.newValues) {
+				continue;
+			}
+
+			if ((property.inherited ?? '').toLowerCase() === 'see individual properties' || (property.initial ?? '').toLowerCase() === 'see individual properties') {
+				continue;
+			}
+
 			if (property.inherited === 'yes') {
 				inherited.add(property.name);
 				if (nonInherited.has(property.name)) {
-					console.log(`${property.name} is already defined as non-inherited`);
+					console.error(`${property.name} is already defined as non-inherited`);
+					process.exit(1);
 				}
 			} else {
 				nonInherited.add(property.name);
 				if (inherited.has(property.name)) {
-					console.log(`${property.name} is already defined as inherited`);
+					console.error(`${property.name} is already defined as inherited`);
+					process.exit(1);
 				}
-
-				console.log(property);
 			}
 		}
 	}
