@@ -1,0 +1,9 @@
+.foo {
+	color: inherit;
+	color: unset;
+}
+
+.baz {
+	border-color: initial;
+	border-color: unset;
+}

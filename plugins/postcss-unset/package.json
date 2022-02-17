@@ -1,0 +1,56 @@
+{
+  "name": "@csstools/postcss-unset",
+  "private": true,
+  "version": "1.0.0",
+  "description": "The unset CSS keyword resets a property to its inherited value if the property naturally inherits from its parent, and to its initial value if not.",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md",
+    "dist"
+  ],
+  "scripts": {
+    "build": "node ./generate/property-def.mjs && eslint --fix ./src/property-def.ts && rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "stryker": "stryker run --logLevel error",
+    "test": "node .tape.mjs && npm run test:exports",
+    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
+    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+  },
+  "devDependencies": {
+    "@webref/css": "^3.0.6"
+  },
+  "peerDependencies": {
+    "postcss": "^8.3"
+  },
+  "keywords": [
+    "postcss-plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "plugins/postcss-unset"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues"
+}
