@@ -1,5 +1,118 @@
 # PostCSS Unset [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-<!-- TODO -->
+
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-unset.svg" height="20">][npm-url]
+[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/ic-unit.svg" height="20">][css-url]
+[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+
+[PostCSS Unset] lets you use the unset keyword, following the [CSS Cascading and Inheritance] specification.
+
+```pcss
+.color {
+	color: unset;
+}
+
+.border-color {
+	border-color: unset;
+}
+
+.margin {
+	margin: unset;
+}
+
+
+/* becomes */
+.color {
+	color: inherit;
+}
+
+.border-color {
+	border-color: initial;
+}
+
+.margin {
+	margin: initial;
+}
+```
+
+## Usage
+
+Add [PostCSS Unset] to your project:
+
+```bash
+npm install postcss @csstools/postcss-unset --save-dev
+```
+
+Use it as a [PostCSS] plugin:
+
+```js
+const postcss = require('postcss');
+const postcssUnset = require('@csstools/postcss-unset');
+
+postcss([
+  postcssUnset(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+[PostCSS Unset] runs in all Node environments, with special
+instructions for:
+
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
+
+## Options
+
+### preserve
+
+The `preserve` option determines whether the original source
+is preserved. By default, it is not preserved.
+
+```js
+postcssUnset({ preserve: true })
+```
+
+```pcss
+.color {
+	color: unset;
+}
+
+.border-color {
+	border-color: unset;
+}
+
+.margin {
+	margin: unset;
+}
+
+/* becomes */
+
+.color {
+	color: inherit;
+	color: unset;
+}
+
+.border-color {
+	border-color: initial;
+	border-color: unset;
+}
+
+.margin {
+	margin: initial;
+	margin: unset;
+}
+```
 
 [postcss]: https://github.com/postcss/postcss
+
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+[css-url]: https://cssdb.org/#unset
+[discord]: https://discord.gg/bUadyRwkJS
+[npm-url]: https://www.npmjs.com/package/@csstools/postcss-unset
+
+[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
+[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
+[PostCSS]: https://github.com/postcss/postcss
+[PostCSS Loader]: https://github.com/postcss/postcss-loader
+[CSS Cascading and Inheritance]: https://www.w3.org/TR/css-cascade-4/#inherit-initial
+[PostCSS Unset]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset

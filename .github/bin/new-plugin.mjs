@@ -78,6 +78,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 	packageInfo.version = '1.0.0';
 	packageInfo.homepage = `https://github.com/csstools/postcss-plugins/tree/main/plugins/${pluginSlug}#readme`;
 	packageInfo.bugs = `https://github.com/csstools/postcss-plugins/issues`;
+	delete packageInfo.private;
 	delete packageInfo.bin;
 	delete packageInfo.scripts['test:cli'];
 

@@ -11,6 +11,12 @@ postcssTape(plugin)({
 			preserve: true,
 		}
 	},
+	'generated-value-cases': {
+		message: "supports generated value cases",
+		options: {
+			preserve: true
+		}
+	},
 	example: {
 		message: "minimal example",
 	},

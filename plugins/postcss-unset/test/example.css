@@ -1,7 +1,11 @@
-.foo {
+.color {
 	color: unset;
 }
 
-.baz {
+.border-color {
 	border-color: unset;
+}
+
+.margin {
+	margin: unset;
 }

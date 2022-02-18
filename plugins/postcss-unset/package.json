@@ -1,10 +1,11 @@
 {
   "name": "@csstools/postcss-unset",
-  "private": true,
   "version": "1.0.0",
-  "description": "The unset CSS keyword resets a property to its inherited value if the property naturally inherits from its parent, and to its initial value if not.",
+  "description": "Use the unset keyword in CSS.",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
@@ -38,7 +39,10 @@
     "postcss": "^8.3"
   },
   "keywords": [
-    "postcss-plugin"
+    "postcss-plugin",
+    "unset",
+    "inherit",
+    "initial"
   ],
   "repository": {
     "type": "git",
@@ -47,7 +51,5 @@
   },
   "volta": {
     "extends": "../../package.json"
-  },
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset#readme",
-  "bugs": "https://github.com/csstools/postcss-plugins/issues"
+  }
 }

@@ -7,7 +7,7 @@ type pluginOptions = {
 	preserve: boolean;
 }
 
-// Convert "unset" to "inherit" or "initial" based on the property.
+// Convert "unset" to "inherit" or "initial" based on the property definition.
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({ preserve: false }, opts);
 

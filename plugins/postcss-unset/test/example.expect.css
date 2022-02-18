@@ -1,7 +1,11 @@
-.foo {
+.color {
 	color: inherit;
 }
 
-.baz {
+.border-color {
 	border-color: initial;
+}
+
+.margin {
+	margin: initial;
 }
