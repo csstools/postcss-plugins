@@ -64,7 +64,7 @@ import { generate } from './generate.mjs';
 
 			generate(
 				'value',
-				path.join('../../plugins', 'postcss-unset'),
+				path.join('../../plugins', 'postcss-unset-value'),
 				[
 					'unset',
 				],

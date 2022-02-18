@@ -1,6 +1,6 @@
-# Installing PostCSS Unset
+# Installing PostCSS Unset Value
 
-[PostCSS Unset] runs in all Node environments, with special
+[PostCSS Unset Value] runs in all Node environments, with special
 instructions for:
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
@@ -8,20 +8,20 @@ instructions for:
 
 ## Node
 
-Add [PostCSS Unset] to your project:
+Add [PostCSS Unset Value] to your project:
 
 ```bash
-npm install postcss @csstools/postcss-unset --save-dev
+npm install postcss @csstools/postcss-unset-value --save-dev
 ```
 
 Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssUnset = require('@csstools/postcss-unset');
+const postcssUnsetValue = require('@csstools/postcss-unset-value');
 
 postcss([
-  postcssUnset(/* pluginOptions */)
+  postcssUnsetValue(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -33,15 +33,15 @@ Add [PostCSS CLI] to your project:
 npm install postcss-cli --save-dev
 ```
 
-Use [PostCSS Unset] in your `postcss.config.js` configuration
+Use [PostCSS Unset Value] in your `postcss.config.js` configuration
 file:
 
 ```js
-const postcssUnset = require('@csstools/postcss-unset');
+const postcssUnsetValue = require('@csstools/postcss-unset-value');
 
 module.exports = {
   plugins: [
-    postcssUnset(/* pluginOptions */)
+    postcssUnsetValue(/* pluginOptions */)
   ]
 }
 ```
@@ -54,10 +54,10 @@ Add [PostCSS Loader] to your project:
 npm install postcss-loader --save-dev
 ```
 
-Use [PostCSS Unset] in your Webpack configuration:
+Use [PostCSS Unset Value] in your Webpack configuration:
 
 ```js
-const postcssUnset = require('@csstools/postcss-unset');
+const postcssUnsetValue = require('@csstools/postcss-unset-value');
 
 module.exports = {
   module: {
@@ -70,7 +70,7 @@ module.exports = {
           { loader: 'postcss-loader', options: {
             ident: 'postcss',
             plugins: () => [
-              postcssUnset(/* pluginOptions */)
+              postcssUnsetValue(/* pluginOptions */)
             ]
           } }
         ]
@@ -88,16 +88,16 @@ Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 npm install react-app-rewired react-app-rewire-postcss --save-dev
 ```
 
-Use [React App Rewire PostCSS] and [PostCSS Unset] in your
+Use [React App Rewire PostCSS] and [PostCSS Unset Value] in your
 `config-overrides.js` file:
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssUnset = require('@csstools/postcss-unset');
+const postcssUnsetValue = require('@csstools/postcss-unset-value');
 
 module.exports = config => reactAppRewirePostcss(config, {
   plugins: () => [
-    postcssUnset(/* pluginOptions */)
+    postcssUnsetValue(/* pluginOptions */)
   ]
 });
 ```
@@ -110,15 +110,15 @@ Add [Gulp PostCSS] to your project:
 npm install gulp-postcss --save-dev
 ```
 
-Use [PostCSS Unset] in your Gulpfile:
+Use [PostCSS Unset Value] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssUnset = require('@csstools/postcss-unset');
+const postcssUnsetValue = require('@csstools/postcss-unset-value');
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
   postcss([
-    postcssUnset(/* pluginOptions */)
+    postcssUnsetValue(/* pluginOptions */)
   ])
 ).pipe(
   gulp.dest('.')
@@ -133,10 +133,10 @@ Add [Grunt PostCSS] to your project:
 npm install grunt-postcss --save-dev
 ```
 
-Use [PostCSS Unset] in your Gruntfile:
+Use [PostCSS Unset Value] in your Gruntfile:
 
 ```js
-const postcssUnset = require('@csstools/postcss-unset');
+const postcssUnsetValue = require('@csstools/postcss-unset-value');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -144,7 +144,7 @@ grunt.initConfig({
   postcss: {
     options: {
       use: [
-       postcssUnset(/* pluginOptions */)
+       postcssUnsetValue(/* pluginOptions */)
       ]
     },
     dist: {
@@ -159,6 +159,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Unset]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset
+[PostCSS Unset Value]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset-value
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

@@ -1,5 +1,5 @@
 import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
-import plugin from '@csstools/postcss-unset';
+import plugin from '@csstools/postcss-unset-value';
 
 postcssTape(plugin)({
 	basic: {

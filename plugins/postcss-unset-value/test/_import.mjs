@@ -1,5 +1,5 @@
 import assert from 'assert';
-import plugin from '@csstools/postcss-unset';
+import plugin from '@csstools/postcss-unset-value';
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

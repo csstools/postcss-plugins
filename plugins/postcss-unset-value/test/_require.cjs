@@ -1,5 +1,5 @@
 const assert = require('assert');
-const plugin = require('@csstools/postcss-unset');
+const plugin = require('@csstools/postcss-unset-value');
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

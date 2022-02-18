@@ -12,7 +12,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({ preserve: false }, opts);
 
 	return {
-		postcssPlugin: 'postcss-unset',
+		postcssPlugin: 'postcss-unset-value',
 		Declaration(decl) {
 			if (decl.value !== 'unset') {
 				return;
