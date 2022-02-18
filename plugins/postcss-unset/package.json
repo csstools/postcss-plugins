@@ -25,7 +25,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "node ./generate/property-def.mjs && eslint --fix ./src/property-def.ts && rollup -c ../../rollup/default.js",
+    "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
     "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
@@ -33,9 +33,6 @@
     "test": "node .tape.mjs && npm run test:exports",
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
     "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
-  },
-  "devDependencies": {
-    "@webref/css": "^3.0.6"
   },
   "peerDependencies": {
     "postcss": "^8.3"
