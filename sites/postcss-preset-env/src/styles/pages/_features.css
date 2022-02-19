@@ -3,7 +3,7 @@
 	grid-template-areas: "aside" "list";
 }
 
-@media (min-width: 860px) {
+@media (--from-medium) {
 	.ppe-features {
 		grid-template-areas: "aside list";
 	}
@@ -22,14 +22,14 @@
 	}
 }
 
-@media (max-width: 859px) {
+@media (max-width: 869px) {
 	.ppe-navigation {
 		padding: 25px 0;
 		width: auto;
 	}
 }
 
-@media (min-width: 860px) {
+@media (--from-medium) {
 	.ppe-navigation-sticky {
 		position: sticky;
 		top: 25px;
@@ -38,15 +38,21 @@
 
 .ppe-navigation-sticky-overflow {
 	height: auto;
-	padding: 0 25px;
+	padding: 0 var(--space-10);
 	overflow-y: auto;
 }
 
-@media (min-width: 860px) {
+@media (--from-medium) {
 	.ppe-navigation-sticky-overflow {
-		height: calc(100vh - var(--heading-size));
+		height: calc(100vh - var(--heading-size-from-medium));
 		overflow-y: auto;
-		padding: 25px;
+		padding: var(--space-25) var(--space-20);
+	}
+}
+
+@media (--from-wide) {
+	.ppe-navigation-sticky-overflow {
+		padding: var(--space-25);
 	}
 }
 
@@ -56,7 +62,7 @@
 	width: 100px;
 }
 
-@media (min-width: 860px) {
+@media (--from-medium) {
 	.ppe-navigation-select {
 		width: 100%;
 	}
@@ -188,7 +194,7 @@
 	padding: 10px 10px;
 }
 
-@media (min-width: 860px) {
+@media (--from-medium) {
 	.ppe-feature-example {
 		padding: 15px 30px;
 	}
