@@ -1,9 +1,10 @@
 .ppe-landing-header {
 	align-items: center;
 	animation: rolling 30s ease infinite;
-	background-image: linear-gradient(238deg, #9952c8, #1874d5);
+	background-color: var(--color-blue);
+	background-image: linear-gradient(238deg, var(--color-purple), var(--color-blue));
 	background-size: 300% 300%;
-	color: #fff;
+	color: var(--color-white);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -73,10 +74,9 @@
 
 .ppe-landing-menu-link:hover,
 .ppe-landing-menu-link:focus {
-	background-color: black;
 	background-color: rgb(255 255 255 / 100%);
 	box-shadow: 0 20px 40px rgb(0 0 0 / 30%), 0 15px 12px rgb(0 0 0 / 22%);
-	color: #f527e0;
+	color: var(--color-magenta);
 	transform: scale(1.1);
 }
 
@@ -132,9 +132,8 @@
 }
 
 .ppe-landing-action {
-	display: flex;
-	justify-content: center;
 	margin: 0 15px 20px;
+	text-align: center;
 }
 
 .ppe-landing-clipboard {
@@ -142,8 +141,8 @@
 	border-radius: 5px;
 	border-width: 0;
 	align-items: center;
-	color: #fff;
-	display: flex;
+	color: var(--color-white);
+	display: inline-flex;
 	font: 400 100%/1.5 var(--font-code);
 	margin: 12px 0 30px;
 	padding: 10px 20px;
@@ -159,7 +158,7 @@
 	background-color: transparent;
 	border-width: 0;
 	color: inherit;
-	display: block;
+	display: inline-block;
 	font: inherit;
 	height: 20px;
 	line-height: inherit;

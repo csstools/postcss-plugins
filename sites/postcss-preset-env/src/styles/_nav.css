@@ -1,38 +1,38 @@
 .ppe-heading {
 	align-items: center;
-	background-color: #1874d5;
-	background-image: linear-gradient(90deg, #9952c8, #1874d5);
-	color: #ffffff;
+	background-color: var(--color-blue);
+	background-image: linear-gradient(90deg, var(--color-purple), var(--color-blue));
+	color: var(--color-white);
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
 
 .ppe-heading-title-link {
-	font-size: 18px;
+	font-size: var(--font-size-18);
 	font-weight: 400;
 	letter-spacing: -0.02em;
 	margin: 0;
-	padding-left: 10px;
+	padding-left: var(--space-10);
 	white-space: nowrap;
 }
 
-@media (min-width: 370px) {
+@media (--from-small) {
 	.ppe-heading-title-link {
-		font-size: 20px;
+		font-size: var(--font-size-20);
 	}
 }
 
-@media (min-width: 870px) {
+@media (--from-medium) {
 	.ppe-heading-title-link {
-		padding-left: 20px;
+		padding-left: var(--space-20);
 	}
 }
 
-@media (min-width: 1024px) {
+@media (--from-wide) {
 	.ppe-heading-title-link {
-		font-size: 26px;
-		padding: 0 40px;
+		font-size: var(--font-size-26);
+		padding: 0 var(--space-25);
 	}
 }
 
@@ -42,24 +42,35 @@
 	padding: 0;
 }
 
+.ppe-heading-menu-item {
+	display: inline-block;
+}
+
 .ppe-heading-menu-link {
 	align-items: center;
 	display: flex;
 	overflow: hidden;
-	padding: 8px 10px;
-	transition: background-color var(--t-slow) var(--transition), color var(--t-slow) var(--transition);
+	padding: var(--space-8) var(--space-10);
+	transition:
+		background-color var(--t-slow) var(--transition),
+		color var(--t-slow) var(--transition);
 }
 
-@media (min-width: 350px) {
+@media (--from-small) {
 	.ppe-heading-menu-link {
-		padding: 8px 15px;
+		padding: var(--space-8) var(--space-15);
 	}
 }
 
-@media (min-width: 860px) {
+@media (--from-medium) {
 	.ppe-heading-menu-link {
-		padding: 20px 25px;
+		padding: var(--space-20) var(--space-25);
 	}
+}
+
+.ppe-heading-menu-link:hover {
+	background-color: #fff;
+	color: var(--color-magenta);
 }
 
 @media (max-width: 639px) {
@@ -69,35 +80,30 @@
 }
 
 .ppe-heading-menu-link[aria-current="page"] {
-	background-color: rgba(0,0,0,0.4);
+	background-color: var(--color-black-alpha-40);
 }
 
 .ppe-heading-menu-link svg {
 	display: block;
 	fill: currentColor;
-	height: 40px;
-	margin-right: 20px;
-	width: 40px;
+	height: 24px;
+	margin-right: 0;
+	width: 24px;
 }
 
-.ppe-heading-menu-link:hover {
-	background-color: #fff;
-	color: #f527e0;
-
-	& svg {
-		fill: url(#a);
-	}
-}
-
-@media (max-width: 859px) {
+@media (min-width: 640px) {
 	.ppe-heading-menu-link svg {
-		height: 24px;
-		width: 24px;
+		margin-right: var(--space-20);
 	}
 }
 
-@media (max-width: 639px) {
+@media (--from-medium) {
 	.ppe-heading-menu-link svg {
-		margin-right: 0;
+		height: 40px;
+		width: 40px;
 	}
+}
+
+.ppe-heading-menu-link:hover svg {
+	fill: url(#a);
 }
