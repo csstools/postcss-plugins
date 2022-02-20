@@ -10,18 +10,10 @@
 Add [PostCSS Color Hex Alpha] to your project:
 
 ```bash
-npm install postcss-color-hex-alpha --save-dev
+npm install postcss postcss-color-hex-alpha --save-dev
 ```
 
-Use [PostCSS Color Hex Alpha] as a [PostCSS] plugin:
-
-```js
-const postcssColorHexAlpha = require('postcss-color-hex-alpha');
-
-postcssColorHexAlpha.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -37,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-color-hex-alpha  --save-dev
 ```
 
 Use [PostCSS Color Hex Alpha] in your `postcss.config.js` configuration file:
@@ -54,36 +46,48 @@ module.exports = {
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-color-hex-alpha --save-dev
 ```
 
 Use [PostCSS Color Hex Alpha] in your Webpack configuration:
 
 ```js
-const postcssColorHexAlpha = require('postcss-color-hex-alpha');
-
 module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssColorHexAlpha(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: { importLoaders: 1 },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "postcss-color-hex-alpha",
+                    {
+                      // Options
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
 ```
 
 ## Create React App
@@ -91,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-color-hex-alpha --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Color Hex Alpha] in your
@@ -113,7 +117,7 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-color-hex-alpha --save-dev
 ```
 
 Use [PostCSS Color Hex Alpha] in your Gulpfile:
@@ -122,13 +126,15 @@ Use [PostCSS Color Hex Alpha] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssColorHexAlpha = require('postcss-color-hex-alpha');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
+gulp.task('css', function () {
+  var plugins = [
     postcssColorHexAlpha(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+  ];
+
+  return gulp.src('./src/*.css')
+    .pipe(postcss(plugins))
+    .pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -136,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-color-hex-alpha --save-dev
 ```
 
 Use [PostCSS Color Hex Alpha] in your Gruntfile:
@@ -149,7 +155,7 @@ grunt.loadNpmTasks('grunt-postcss');
 grunt.initConfig({
   postcss: {
     options: {
-      use: [
+      processors: [
        postcssColorHexAlpha(/* pluginOptions */)
       ]
     },

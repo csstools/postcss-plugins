@@ -1,11 +1,12 @@
 {
   "name": "postcss-dir-pseudo-class",
-  "version": "6.0.4",
   "description": "Use the :dir pseudo-class in CSS",
+  "version": "6.0.4",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class#readme",
-  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "exports": {
@@ -21,45 +22,50 @@
     "README.md",
     "dist"
   ],
-  "scripts": {
-    "build": "rollup -c ../../rollup/default.js",
-    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
-    "prepublishOnly": "npm run clean && npm run build && npm run test",
-    "stryker": "stryker run --logLevel error",
-    "test": "node .tape.mjs && npm run test:exports",
-    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
-    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
-  },
-  "engines": {
-    "node": "^12 || ^14 || >=16"
-  },
   "dependencies": {
     "postcss-selector-parser": "^6.0.9"
   },
   "peerDependencies": {
     "postcss": "^8.4"
   },
-  "keywords": [
-    "postcss",
-    "css",
-    "postcss-plugin",
-    "directionality",
-    "directions",
-    "selector",
-    "attribute",
-    "polyfill",
-    "left",
-    "left-to-right",
-    "ltr",
-    "right",
-    "right-to-left",
-    "rtl"
-  ],
+  "scripts": {
+    "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "docs": "node ../../.github/bin/generate-docs/install.mjs",
+    "lint": "npm run lint:eslint && npm run lint:package-json",
+    "lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "lint:package-json": "node ../../.github/bin/format-package-json.mjs",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "test": "node .tape.mjs && npm run test:exports",
+    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
+    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+  },
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-dir-pseudo-class"
+  },
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "keywords": [
+    "attribute",
+    "css",
+    "directionality",
+    "directions",
+    "left",
+    "left-to-right",
+    "ltr",
+    "polyfill",
+    "postcss",
+    "postcss-plugin",
+    "right",
+    "right-to-left",
+    "rtl",
+    "selector"
+  ],
+  "csstools": {
+    "exportName": "postcssDirPseudoClass",
+    "humanReadableName": "PostCSS Dir Pseudo Class"
   },
   "volta": {
     "extends": "../../package.json"
