@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-image-set-function  --save-dev
 ```
 
 Use [PostCSS image-set() Function] in your `postcss.config.js` configuration file:
@@ -46,36 +46,48 @@ module.exports = {
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-image-set-function --save-dev
 ```
 
 Use [PostCSS image-set() Function] in your Webpack configuration:
 
 ```js
-const postcssImageSetFunction = require('postcss-image-set-function');
-
 module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssImageSetFunction(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: { importLoaders: 1 },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "postcss-image-set-function",
+                    {
+                      // Options
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
 ```
 
 ## Create React App
@@ -83,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-image-set-function --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS image-set() Function] in your
@@ -105,7 +117,7 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-image-set-function --save-dev
 ```
 
 Use [PostCSS image-set() Function] in your Gulpfile:
@@ -114,13 +126,15 @@ Use [PostCSS image-set() Function] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssImageSetFunction = require('postcss-image-set-function');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
+gulp.task('css', function () {
+  var plugins = [
     postcssImageSetFunction(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+  ];
+
+  return gulp.src('./src/*.css')
+    .pipe(postcss(plugins))
+    .pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -128,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-image-set-function --save-dev
 ```
 
 Use [PostCSS image-set() Function] in your Gruntfile:
@@ -141,7 +155,7 @@ grunt.loadNpmTasks('grunt-postcss');
 grunt.initConfig({
   postcss: {
     options: {
-      use: [
+      processors: [
        postcssImageSetFunction(/* pluginOptions */)
       ]
     },
