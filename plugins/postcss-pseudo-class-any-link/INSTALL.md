@@ -1,7 +1,6 @@
-# Installing PostCSS
+# Installing PostCSS Pseudo Class Any Link
 
-[PostCSS Pseudo Class Any Link] runs in all Node environments, with special
-instructions for:
+[PostCSS Pseudo Class Any Link] runs in all Node environments, with special instructions for:
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
 | --- | --- | --- | --- | --- | --- |
@@ -11,10 +10,10 @@ instructions for:
 Add [PostCSS Pseudo Class Any Link] to your project:
 
 ```bash
-npm install postcss-pseudo-class-any-link --save-dev
+npm install postcss postcss-pseudo-class-any-link --save-dev
 ```
 
-Use [PostCSS Pseudo Class Any Link] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -30,11 +29,10 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-pseudo-class-any-link  --save-dev
 ```
 
-Use [PostCSS Pseudo Class Any Link] in your `postcss.config.js` configuration
-file:
+Use [PostCSS Pseudo Class Any Link] in your `postcss.config.js` configuration file:
 
 ```js
 const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
@@ -48,36 +46,48 @@ module.exports = {
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-pseudo-class-any-link --save-dev
 ```
 
 Use [PostCSS Pseudo Class Any Link] in your Webpack configuration:
 
 ```js
-const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
-
 module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssPseudoClassAnyLink(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: { importLoaders: 1 },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "postcss-pseudo-class-any-link",
+                    {
+                      // Options
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
 ```
 
 ## Create React App
@@ -85,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-pseudo-class-any-link --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Pseudo Class Any Link] in your
@@ -107,7 +117,7 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-pseudo-class-any-link --save-dev
 ```
 
 Use [PostCSS Pseudo Class Any Link] in your Gulpfile:
@@ -116,13 +126,15 @@ Use [PostCSS Pseudo Class Any Link] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
+gulp.task('css', function () {
+  var plugins = [
     postcssPseudoClassAnyLink(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+  ];
+
+  return gulp.src('./src/*.css')
+    .pipe(postcss(plugins))
+    .pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -130,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-pseudo-class-any-link --save-dev
 ```
 
 Use [PostCSS Pseudo Class Any Link] in your Gruntfile:
@@ -143,7 +155,7 @@ grunt.loadNpmTasks('grunt-postcss');
 grunt.initConfig({
   postcss: {
     options: {
-      use: [
+      processors: [
        postcssPseudoClassAnyLink(/* pluginOptions */)
       ]
     },

@@ -13,15 +13,7 @@ Add [PostCSS Dir Pseudo Class] to your project:
 npm install postcss postcss-dir-pseudo-class --save-dev
 ```
 
-Use [PostCSS Dir Pseudo Class] to process your CSS:
-
-```js
-const postcssDirPseudoClass = require('postcss-dir-pseudo-class');
-
-postcssDirPseudoClass.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -37,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-dir-pseudo-class  --save-dev
 ```
 
 Use [PostCSS Dir Pseudo Class] in your `postcss.config.js` configuration file:
@@ -54,36 +46,48 @@ module.exports = {
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-dir-pseudo-class --save-dev
 ```
 
 Use [PostCSS Dir Pseudo Class] in your Webpack configuration:
 
 ```js
-const postcssDirPseudoClass = require('postcss-dir-pseudo-class');
-
 module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssDirPseudoClass(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: { importLoaders: 1 },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "postcss-dir-pseudo-class",
+                    {
+                      // Options
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
 ```
 
 ## Create React App
@@ -91,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-dir-pseudo-class --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Dir Pseudo Class] in your
@@ -113,7 +117,7 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-dir-pseudo-class --save-dev
 ```
 
 Use [PostCSS Dir Pseudo Class] in your Gulpfile:
@@ -122,13 +126,15 @@ Use [PostCSS Dir Pseudo Class] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssDirPseudoClass = require('postcss-dir-pseudo-class');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
+gulp.task('css', function () {
+  var plugins = [
     postcssDirPseudoClass(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+  ];
+
+  return gulp.src('./src/*.css')
+    .pipe(postcss(plugins))
+    .pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -136,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-dir-pseudo-class --save-dev
 ```
 
 Use [PostCSS Dir Pseudo Class] in your Gruntfile:
@@ -149,7 +155,7 @@ grunt.loadNpmTasks('grunt-postcss');
 grunt.initConfig({
   postcss: {
     options: {
-      use: [
+      processors: [
        postcssDirPseudoClass(/* pluginOptions */)
       ]
     },
@@ -165,6 +171,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Dir Pseudo Class]: https://github.com/jonathantneal/postcss-dir-pseudo-class
+[PostCSS Dir Pseudo Class]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired
