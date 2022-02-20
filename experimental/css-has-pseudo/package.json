@@ -1,11 +1,12 @@
 {
   "name": "@csstools/css-has-pseudo-experimental",
-  "version": "0.2.1",
   "description": "EXPERIMENTAL : Style elements relative to other elements in CSS",
+  "version": "0.2.1",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/experimental/css-has-pseudo#readme",
-  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -30,10 +31,22 @@
     "README.md",
     "dist"
   ],
+  "dependencies": {
+    "postcss-selector-parser": "^6.0.8"
+  },
+  "peerDependencies": {
+    "postcss": "^8.3"
+  },
+  "devDependencies": {
+    "@mrhenry/core-web": "^0.6.10",
+    "puppeteer": "^13.3.1"
+  },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "lint": "npm run lint:eslint && npm run lint:package-json",
+    "lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "lint:package-json": "node ../../.github/bin/format-package-json.mjs",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
     "test": "node .tape.mjs && npm run test:unit && npm run test:exports",
@@ -42,37 +55,26 @@
     "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs",
     "test:unit": "node ./src/encode/test.mjs"
   },
-  "engines": {
-    "node": "^12 || ^14 || >=16"
-  },
-  "dependencies": {
-    "postcss-selector-parser": "^6.0.8"
-  },
-  "devDependencies": {
-    "@mrhenry/core-web": "^0.6.10",
-    "puppeteer": "^13.3.1"
-  },
-  "peerDependencies": {
-    "postcss": "^8.3"
-  },
-  "keywords": [
-    "postcss",
-    "css",
-    "postcss-plugin",
-    "javascript",
-    "js",
-    "polyfill",
-    "has",
-    "contains",
-    "descendant",
-    "pseudo",
-    "selector"
-  ],
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/experimental/css-has-pseudo#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "experimental/css-has-pseudo"
   },
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "keywords": [
+    "contains",
+    "css",
+    "descendant",
+    "has",
+    "javascript",
+    "js",
+    "polyfill",
+    "postcss",
+    "postcss-plugin",
+    "pseudo",
+    "selector"
+  ],
   "volta": {
     "extends": "../../package.json"
   }

@@ -1,15 +1,18 @@
 {
   "name": "@csstools/postcss-base-plugin",
-  "private": true,
-  "version": "0.0.0",
   "description": "A base plugin",
+  "version": "0.0.0",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
+  "private": true,
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
+  "bin": {
+    "postcss-base-plugin": "dist/cli.cjs"
+  },
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
@@ -24,13 +27,15 @@
     "README.md",
     "dist"
   ],
-  "bin": {
-    "postcss-base-plugin": "dist/cli.cjs"
+  "peerDependencies": {
+    "postcss": "^8.3"
   },
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "lint": "npm run lint:eslint && npm run lint:package-json",
+    "lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "lint:package-json": "node ../../.github/bin/format-package-json.mjs",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "stryker": "stryker run --logLevel error",
     "test": "node .tape.mjs && npm run test:exports",
@@ -38,16 +43,17 @@
     "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
     "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
   },
-  "peerDependencies": {
-    "postcss": "^8.3"
-  },
-  "keywords": [
-    "postcss-plugin"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-base-plugin"
+  },
+  "keywords": [
+    "postcss-plugin"
+  ],
+  "csstools": {
+    "cssdb": "TODO",
+    "spec": "TODO"
   },
   "volta": {
     "extends": "../../package.json"

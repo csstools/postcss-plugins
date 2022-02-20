@@ -1,13 +1,11 @@
 {
   "name": "postcss-nesting",
   "description": "Nest rules inside each other in CSS",
-  "license": "CC0-1.0",
   "version": "10.1.2",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting#readme",
-  "bugs": "https://github.com/csstools/postcss-plugins/issues",
-  "publishConfig": {
-    "access": "public"
+  "license": "CC0-1.0",
+  "engines": {
+    "node": "^12 || ^14 || >=16"
   },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -24,50 +22,54 @@
     "dist",
     "mod.js"
   ],
-  "scripts": {
-    "build": "rollup -c ../../rollup/default.js",
-    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
-    "prepublishOnly": "npm run clean && npm run build && npm run test",
-    "stryker": "stryker run --logLevel error",
-    "test": "node .tape.mjs && npm run test:exports",
-    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs",
-    "test:deno": "deno run --unstable --allow-env --allow-read test/deno/test.js",
-    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
-  },
-  "engines": {
-    "node": "^12 || ^14 || >=16"
-  },
   "dependencies": {
     "postcss-selector-parser": "^6.0.9"
   },
   "peerDependencies": {
     "postcss": "^8.4"
   },
-  "keywords": [
-    "postcss",
-    "postcss-plugin",
-    "css",
-    "atrules",
-    "child",
-    "children",
-    "cssnext",
-    "nested",
-    "nestings",
-    "rules",
-    "selectors",
-    "syntax",
-    "specifications",
-    "specs",
-    "w3c",
-    "csswg"
-  ],
+  "scripts": {
+    "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "npm run lint:eslint && npm run lint:package-json",
+    "lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "lint:package-json": "node ../../.github/bin/format-package-json.mjs",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "stryker": "stryker run --logLevel error",
+    "test": "node .tape.mjs && npm run test:exports",
+    "test:deno": "deno run --unstable --allow-env --allow-read test/deno/test.js",
+    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
+    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+  },
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-nesting"
   },
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "keywords": [
+    "atrules",
+    "child",
+    "children",
+    "css",
+    "cssnext",
+    "csswg",
+    "nested",
+    "nestings",
+    "postcss",
+    "postcss-plugin",
+    "rules",
+    "selectors",
+    "specifications",
+    "specs",
+    "syntax",
+    "w3c"
+  ],
   "volta": {
     "extends": "../../package.json"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

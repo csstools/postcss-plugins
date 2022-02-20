@@ -1,10 +1,10 @@
 {
   "name": "@csstools/postcss-tape",
-  "private": true,
   "description": "Quickly test PostCSS plugins in csstools/postcss-plugins",
   "version": "1.0.0",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
+  "private": true,
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
@@ -21,24 +21,26 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build": "rollup -c ../../rollup/default.js",
-    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
-    "test": "bash ./test-self/test.sh"
-  },
   "dependencies": {
     "postcss": "~8.4",
     "postcss-8.2": "npm:postcss@~8.2"
   },
+  "scripts": {
+    "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "lint": "npm run lint:eslint && npm run lint:package-json",
+    "lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "lint:package-json": "node ../../.github/bin/format-package-json.mjs",
+    "test": "bash ./test-self/test.sh"
+  },
   "keywords": [
-    "postcss",
     "css",
+    "postcss",
     "postcss-plugin",
+    "tape",
     "testing",
     "tests",
-    "tools",
-    "tape"
+    "tools"
   ],
   "volta": {
     "extends": "../../package.json"
