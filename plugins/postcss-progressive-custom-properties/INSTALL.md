@@ -10,17 +10,17 @@
 Add [PostCSS Progressive Custom Properties] to your project:
 
 ```bash
-npm install @csstools/postcss-progressive-custom-properties --save-dev
+npm install postcss @csstools/postcss-progressive-custom-properties --save-dev
 ```
 
-Use [PostCSS Progressive Custom Properties] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
 const postcssProgressiveCustomProperties = require('@csstools/postcss-progressive-custom-properties');
 
 postcss([
-  postcssProgressiveCustomProperties()
+  postcssProgressiveCustomProperties(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -39,7 +39,7 @@ const postcssProgressiveCustomProperties = require('@csstools/postcss-progressiv
 
 module.exports = {
   plugins: [
-    postcssProgressiveCustomProperties()
+    postcssProgressiveCustomProperties(/* pluginOptions */)
   ]
 }
 ```
@@ -66,9 +66,10 @@ module.exports = {
           'style-loader',
           { loader: 'css-loader', options: { importLoaders: 1 } },
           { loader: 'postcss-loader', options: {
-            postcssOptions: {
-                plugins: [postcssProgressiveCustomProperties()],
-              }
+            ident: 'postcss',
+            plugins: () => [
+              postcssProgressiveCustomProperties(/* pluginOptions */)
+            ]
           } }
         ]
       }
@@ -94,7 +95,7 @@ const postcssProgressiveCustomProperties = require('@csstools/postcss-progressiv
 
 module.exports = config => reactAppRewirePostcss(config, {
   plugins: () => [
-    postcssProgressiveCustomProperties()
+    postcssProgressiveCustomProperties(/* pluginOptions */)
   ]
 });
 ```
@@ -115,7 +116,7 @@ const postcssProgressiveCustomProperties = require('@csstools/postcss-progressiv
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
   postcss([
-    postcssProgressiveCustomProperties()
+    postcssProgressiveCustomProperties(/* pluginOptions */)
   ])
 ).pipe(
   gulp.dest('.')
@@ -140,8 +141,8 @@ grunt.loadNpmTasks('grunt-postcss');
 grunt.initConfig({
   postcss: {
     options: {
-      processors: [
-       postcssProgressiveCustomProperties()
+      use: [
+       postcssProgressiveCustomProperties(/* pluginOptions */)
       ]
     },
     dist: {

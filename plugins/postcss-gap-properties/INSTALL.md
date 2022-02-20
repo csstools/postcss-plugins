@@ -10,14 +10,14 @@
 Add [PostCSS Gap Properties] to your project:
 
 ```bash
-npm install postcss-gap-properties --save-dev
+npm install postcss postcss-gap-properties --save-dev
 ```
 
-Use [PostCSS Gap Properties] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'postcss';
-import postcssGapProperties from 'postcss-gap-properties';
+const postcss = require('postcss');
+const postcssGapProperties = require('postcss-gap-properties');
 
 postcss([
   postcssGapProperties(/* pluginOptions */)
@@ -55,7 +55,7 @@ npm install postcss-loader --save-dev
 Use [PostCSS Gap Properties] in your Webpack configuration:
 
 ```js
-import postcssGapProperties from 'postcss-gap-properties';
+const postcssGapProperties = require('postcss-gap-properties');
 
 module.exports = {
   module: {
@@ -90,10 +90,10 @@ Use [React App Rewire PostCSS] and [PostCSS Gap Properties] in your
 `config-overrides.js` file:
 
 ```js
-import reactAppRewirePostcss from 'react-app-rewire-postcss';
-import postcssGapProperties from 'postcss-gap-properties';
+const reactAppRewirePostcss = require('react-app-rewire-postcss');
+const postcssGapProperties = require('postcss-gap-properties');
 
-export default config => reactAppRewirePostcss(config, {
+module.exports = config => reactAppRewirePostcss(config, {
   plugins: () => [
     postcssGapProperties(/* pluginOptions */)
   ]
@@ -111,8 +111,8 @@ npm install gulp-postcss --save-dev
 Use [PostCSS Gap Properties] in your Gulpfile:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssGapProperties from 'postcss-gap-properties';
+const postcss = require('gulp-postcss');
+const postcssGapProperties = require('postcss-gap-properties');
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
   postcss([
@@ -134,7 +134,7 @@ npm install grunt-postcss --save-dev
 Use [PostCSS Gap Properties] in your Gruntfile:
 
 ```js
-import postcssGapProperties from 'postcss-gap-properties';
+const postcssGapProperties = require('postcss-gap-properties');
 
 grunt.loadNpmTasks('grunt-postcss');
 

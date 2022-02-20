@@ -1,7 +1,6 @@
-# Installing PostCSS
+# Installing PostCSS Logical Properties and Values
 
-[PostCSS Logical Properties and Values] runs in all Node environments, with
-special instructions for:
+[PostCSS Logical Properties and Values] runs in all Node environments, with special instructions for:
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
 | --- | --- | --- | --- | --- | --- |
@@ -11,10 +10,10 @@ special instructions for:
 Add [PostCSS Logical Properties and Values] to your project:
 
 ```bash
-npm install postcss-logical --save-dev
+npm install postcss postcss-logical --save-dev
 ```
 
-Use [PostCSS Logical Properties and Values] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -33,8 +32,7 @@ Add [PostCSS CLI] to your project:
 npm install postcss-cli --save-dev
 ```
 
-Use [PostCSS Logical Properties and Values] in your `postcss.config.js`
-configuration file:
+Use [PostCSS Logical Properties and Values] in your `postcss.config.js` configuration file:
 
 ```js
 const postcssLogical = require('postcss-logical');
@@ -88,8 +86,8 @@ Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 npm install react-app-rewired react-app-rewire-postcss --save-dev
 ```
 
-Use [React App Rewire PostCSS] and [PostCSS Logical Properties and Values] in
-your `config-overrides.js` file:
+Use [React App Rewire PostCSS] and [PostCSS Logical Properties and Values] in your
+`config-overrides.js` file:
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');

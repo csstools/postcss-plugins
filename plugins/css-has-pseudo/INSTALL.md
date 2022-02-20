@@ -1,4 +1,4 @@
-# Installing PostCSS
+# Installing CSS Has Pseudo
 
 [CSS Has Pseudo] runs in all Node environments, with special instructions for:
 
@@ -10,7 +10,7 @@
 Add [CSS Has Pseudo] to your project:
 
 ```bash
-npm install css-has-pseudo --save-dev
+npm install postcss css-has-pseudo --save-dev
 ```
 
 Use it as a [PostCSS] plugin:
@@ -87,8 +87,7 @@ npm install react-app-rewired react-app-rewire-postcss --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [CSS Has Pseudo] in your
-`config-overrides.js`
-file:
+`config-overrides.js` file:
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
@@ -153,11 +152,11 @@ grunt.initConfig({
 });
 ```
 
-[CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
+[CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

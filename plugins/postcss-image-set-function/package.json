@@ -32,6 +32,7 @@
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "docs": "node ../../.github/bin/generate-docs/install.mjs",
     "lint": "npm run lint:eslint && npm run lint:package-json",
     "lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "lint:package-json": "node ../../.github/bin/format-package-json.mjs",
@@ -59,6 +60,10 @@
     "resolution",
     "responsive"
   ],
+  "csstools": {
+    "exportName": "postcssImageSetFunction",
+    "humanReadableName": "PostCSS image-set() Function"
+  },
   "volta": {
     "extends": "../../package.json"
   }

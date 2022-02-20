@@ -1,4 +1,4 @@
-# Installing PostCSS
+# Installing CSS Blank Pseudo
 
 [CSS Blank Pseudo] runs in all Node environments, with special instructions for:
 
@@ -10,18 +10,10 @@
 Add [CSS Blank Pseudo] to your project:
 
 ```bash
-npm install css-blank-pseudo --save-dev
+npm install postcss css-blank-pseudo --save-dev
 ```
 
-Use [CSS Blank Pseudo] to process your CSS:
-
-```js
-const postcssBlankPseudo = require('css-blank-pseudo');
-
-postcssBlankPseudo.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -95,8 +87,7 @@ npm install react-app-rewired react-app-rewire-postcss --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [CSS Blank Pseudo] in your
-`config-overrides.js`
-file:
+`config-overrides.js` file:
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
@@ -161,11 +152,11 @@ grunt.initConfig({
 });
 ```
 
-[CSS Blank Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
+[CSS Blank Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

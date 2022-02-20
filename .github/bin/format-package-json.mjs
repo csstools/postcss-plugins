@@ -175,8 +175,16 @@ const formatted = {};
 		formatted.keywords.sort();
 	}
 
-	formatted.csstools = packageJSONInfo.csstools;
-	delete packageJSONInfo.csstools;
+	if (Object.keys(packageJSONInfo.csstools ?? {}).length) {
+		let csstoolsKeys = Object.keys(packageJSONInfo.csstools);
+		csstoolsKeys.sort((a, b) => a.localeCompare(b));
+
+		formatted.csstools = {};
+		for (let i = 0; i < csstoolsKeys.length; i++) {
+			formatted.csstools[csstoolsKeys[i]] = packageJSONInfo.csstools[csstoolsKeys[i]];
+		}
+		delete packageJSONInfo.csstools;
+	}
 }
 
 // Config

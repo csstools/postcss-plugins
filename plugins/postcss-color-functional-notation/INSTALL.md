@@ -10,18 +10,10 @@
 Add [PostCSS Color Functional Notation] to your project:
 
 ```bash
-npm install postcss-color-functional-notation --save-dev
+npm install postcss postcss-color-functional-notation --save-dev
 ```
 
-Use [PostCSS Color Functional Notation] to process your CSS:
-
-```js
-const postcssColorFunctionalNotation = require('postcss-color-functional-notation');
-
-postcssColorFunctionalNotation.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -165,6 +157,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Color Functional Notation]: https://github.com/csstools/postcss-plugins/postcss-color-functional-notation
+[PostCSS Color Functional Notation]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

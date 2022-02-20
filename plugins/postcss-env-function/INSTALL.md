@@ -10,7 +10,7 @@
 Add [PostCSS Environment Variables] to your project:
 
 ```bash
-npm install postcss-env-function --save-dev
+npm install postcss postcss-env-function --save-dev
 ```
 
 Use it as a [PostCSS] plugin:

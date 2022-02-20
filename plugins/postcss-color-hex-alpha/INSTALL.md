@@ -10,18 +10,10 @@
 Add [PostCSS Color Hex Alpha] to your project:
 
 ```bash
-npm install postcss-color-hex-alpha --save-dev
+npm install postcss postcss-color-hex-alpha --save-dev
 ```
 
-Use [PostCSS Color Hex Alpha] as a [PostCSS] plugin:
-
-```js
-const postcssColorHexAlpha = require('postcss-color-hex-alpha');
-
-postcssColorHexAlpha.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');

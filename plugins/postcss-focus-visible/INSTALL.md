@@ -13,7 +13,7 @@ Add [PostCSS Focus Visible] to your project:
 npm install postcss postcss-focus-visible --save-dev
 ```
 
-Use [PostCSS Focus Visible] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');

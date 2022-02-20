@@ -1,7 +1,6 @@
-# Installing PostCSS
+# Installing PostCSS Pseudo Class Any Link
 
-[PostCSS Pseudo Class Any Link] runs in all Node environments, with special
-instructions for:
+[PostCSS Pseudo Class Any Link] runs in all Node environments, with special instructions for:
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
 | --- | --- | --- | --- | --- | --- |
@@ -11,10 +10,10 @@ instructions for:
 Add [PostCSS Pseudo Class Any Link] to your project:
 
 ```bash
-npm install postcss-pseudo-class-any-link --save-dev
+npm install postcss postcss-pseudo-class-any-link --save-dev
 ```
 
-Use [PostCSS Pseudo Class Any Link] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -33,8 +32,7 @@ Add [PostCSS CLI] to your project:
 npm install postcss-cli --save-dev
 ```
 
-Use [PostCSS Pseudo Class Any Link] in your `postcss.config.js` configuration
-file:
+Use [PostCSS Pseudo Class Any Link] in your `postcss.config.js` configuration file:
 
 ```js
 const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');

@@ -10,10 +10,10 @@
 Add [PostCSS Custom Properties] to your project:
 
 ```bash
-npm install postcss-custom-properties --save-dev
+npm install postcss postcss-custom-properties --save-dev
 ```
 
-Use [PostCSS Custom Properties] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -66,9 +66,10 @@ module.exports = {
           'style-loader',
           { loader: 'css-loader', options: { importLoaders: 1 } },
           { loader: 'postcss-loader', options: {
-            postcssOptions: {
-                plugins: [postcssCustomProperties(/* pluginOptions */)],
-              }
+            ident: 'postcss',
+            plugins: () => [
+              postcssCustomProperties(/* pluginOptions */)
+            ]
           } }
         ]
       }
@@ -140,7 +141,7 @@ grunt.loadNpmTasks('grunt-postcss');
 grunt.initConfig({
   postcss: {
     options: {
-      processors: [
+      use: [
        postcssCustomProperties(/* pluginOptions */)
       ]
     },

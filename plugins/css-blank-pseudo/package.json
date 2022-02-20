@@ -45,6 +45,7 @@
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
     "cli": "css-blank-pseudo",
     "copy-browser-scripts-to-old-location": "node -e \"fs.copyFileSync('./dist/browser-global.js', './browser.js'); fs.copyFileSync('./dist/browser-global.js', './browser-legacy.js')\"",
+    "docs": "node ../../.github/bin/generate-docs/install.mjs",
     "lint": "npm run lint:eslint && npm run lint:package-json",
     "lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "lint:package-json": "node ../../.github/bin/format-package-json.mjs",
@@ -77,6 +78,10 @@
     "selectors",
     "textarea"
   ],
+  "csstools": {
+    "exportName": "postcssBlankPseudo",
+    "humanReadableName": "CSS Blank Pseudo"
+  },
   "volta": {
     "extends": "../../package.json"
   }

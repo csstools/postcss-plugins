@@ -10,10 +10,10 @@
 Add [PostCSS image-set() Function] to your project:
 
 ```bash
-npm install postcss-image-set-function --save-dev
+npm install postcss postcss-image-set-function --save-dev
 ```
 
-Use [PostCSS image-set() Function] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -32,8 +32,7 @@ Add [PostCSS CLI] to your project:
 npm install postcss-cli --save-dev
 ```
 
-Use [PostCSS image-set() Function] in your `postcss.config.js` configuration
-file:
+Use [PostCSS image-set() Function] in your `postcss.config.js` configuration file:
 
 ```js
 const postcssImageSetFunction = require('postcss-image-set-function');

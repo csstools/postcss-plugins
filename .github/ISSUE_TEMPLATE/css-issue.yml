@@ -95,7 +95,6 @@ body:
         - PostCSS Replace Overflow Wrap
         - PostCSS Selector Not
         - PostCSS System Ui Font Family
-        - PostCSS Plugins Values Parser
   - type: input
     id: version
     attributes:

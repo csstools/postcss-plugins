@@ -1,34 +1,26 @@
-# Installing PostCSS
+# Installing <humanReadableName>
 
-[CSS Blank Pseudo] runs in all Node environments, with special instructions for:
+[<humanReadableName>] runs in all Node environments, with special instructions for:
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
 | --- | --- | --- | --- | --- | --- |
 
 ## Node
 
-Add [CSS Blank Pseudo] to your project:
+Add [<humanReadableName>] to your project:
 
 ```bash
-npm install css-blank-pseudo --save-dev
+npm install postcss <packageName> --save-dev
 ```
 
-Use [CSS Blank Pseudo] to process your CSS:
-
-```js
-const postcssBlankPseudo = require('css-blank-pseudo');
-
-postcssBlankPseudo.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssBlankPseudo = require('css-blank-pseudo');
+const <exportName> = require('<packageName>');
 
 postcss([
-  postcssBlankPseudo(/* pluginOptions */)
+  <exportName>(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -40,14 +32,14 @@ Add [PostCSS CLI] to your project:
 npm install postcss-cli --save-dev
 ```
 
-Use [CSS Blank Pseudo] in your `postcss.config.js` configuration file:
+Use [<humanReadableName>] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssBlankPseudo = require('css-blank-pseudo');
+const <exportName> = require('<packageName>');
 
 module.exports = {
   plugins: [
-    postcssBlankPseudo(/* pluginOptions */)
+    <exportName>(/* pluginOptions */)
   ]
 }
 ```
@@ -60,10 +52,10 @@ Add [PostCSS Loader] to your project:
 npm install postcss-loader --save-dev
 ```
 
-Use [CSS Blank Pseudo] in your Webpack configuration:
+Use [<humanReadableName>] in your Webpack configuration:
 
 ```js
-const postcssBlankPseudo = require('css-blank-pseudo');
+const <exportName> = require('<packageName>');
 
 module.exports = {
   module: {
@@ -76,7 +68,7 @@ module.exports = {
           { loader: 'postcss-loader', options: {
             ident: 'postcss',
             plugins: () => [
-              postcssBlankPseudo(/* pluginOptions */)
+              <exportName>(/* pluginOptions */)
             ]
           } }
         ]
@@ -94,17 +86,16 @@ Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 npm install react-app-rewired react-app-rewire-postcss --save-dev
 ```
 
-Use [React App Rewire PostCSS] and [CSS Blank Pseudo] in your
-`config-overrides.js`
-file:
+Use [React App Rewire PostCSS] and [<humanReadableName>] in your
+`config-overrides.js` file:
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssBlankPseudo = require('css-blank-pseudo');
+const <exportName> = require('<packageName>');
 
 module.exports = config => reactAppRewirePostcss(config, {
   plugins: () => [
-    postcssBlankPseudo(/* pluginOptions */)
+    <exportName>(/* pluginOptions */)
   ]
 });
 ```
@@ -117,15 +108,15 @@ Add [Gulp PostCSS] to your project:
 npm install gulp-postcss --save-dev
 ```
 
-Use [CSS Blank Pseudo] in your Gulpfile:
+Use [<humanReadableName>] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssBlankPseudo = require('css-blank-pseudo');
+const <exportName> = require('<packageName>');
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
   postcss([
-    postcssBlankPseudo(/* pluginOptions */)
+    <exportName>(/* pluginOptions */)
   ])
 ).pipe(
   gulp.dest('.')
@@ -140,10 +131,10 @@ Add [Grunt PostCSS] to your project:
 npm install grunt-postcss --save-dev
 ```
 
-Use [CSS Blank Pseudo] in your Gruntfile:
+Use [<humanReadableName>] in your Gruntfile:
 
 ```js
-const postcssBlankPseudo = require('css-blank-pseudo');
+const <exportName> = require('<packageName>');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -151,7 +142,7 @@ grunt.initConfig({
   postcss: {
     options: {
       use: [
-       postcssBlankPseudo(/* pluginOptions */)
+       <exportName>(/* pluginOptions */)
       ]
     },
     dist: {
@@ -161,11 +152,11 @@ grunt.initConfig({
 });
 ```
 
-[CSS Blank Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
+[<humanReadableName>]: https://github.com/csstools/postcss-plugins/tree/main/<packagePath>
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

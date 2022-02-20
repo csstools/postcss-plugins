@@ -1,27 +1,19 @@
-# Installing PostCSS
+# Installing PostCSS Focus Within
 
-[PostCSS] runs in all Node environments, with special instructions for:
+[PostCSS Focus Within] runs in all Node environments, with special instructions for:
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
 | --- | --- | --- | --- | --- | --- |
 
 ## Node
 
-Add [PostCSS] to your project:
+Add [PostCSS Focus Within] to your project:
 
 ```bash
-npm install postcss-focus-within --save-dev
+npm install postcss postcss-focus-within --save-dev
 ```
 
-Use [PostCSS] to process your CSS:
-
-```js
-const postcssFocusWithin = require('postcss-focus-within');
-
-postcssFocusWithin.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -40,7 +32,7 @@ Add [PostCSS CLI] to your project:
 npm install postcss-cli --save-dev
 ```
 
-Use [PostCSS] in your `postcss.config.js` configuration file:
+Use [PostCSS Focus Within] in your `postcss.config.js` configuration file:
 
 ```js
 const postcssFocusWithin = require('postcss-focus-within');
@@ -60,7 +52,7 @@ Add [PostCSS Loader] to your project:
 npm install postcss-loader --save-dev
 ```
 
-Use [PostCSS] in your Webpack configuration:
+Use [PostCSS Focus Within] in your Webpack configuration:
 
 ```js
 const postcssFocusWithin = require('postcss-focus-within');
@@ -94,7 +86,7 @@ Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 npm install react-app-rewired react-app-rewire-postcss --save-dev
 ```
 
-Use [React App Rewire PostCSS] and [PostCSS] in your
+Use [React App Rewire PostCSS] and [PostCSS Focus Within] in your
 `config-overrides.js` file:
 
 ```js
@@ -116,7 +108,7 @@ Add [Gulp PostCSS] to your project:
 npm install gulp-postcss --save-dev
 ```
 
-Use [PostCSS] in your Gulpfile:
+Use [PostCSS Focus Within] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
@@ -139,7 +131,7 @@ Add [Grunt PostCSS] to your project:
 npm install grunt-postcss --save-dev
 ```
 
-Use [PostCSS] in your Gruntfile:
+Use [PostCSS Focus Within] in your Gruntfile:
 
 ```js
 const postcssFocusWithin = require('postcss-focus-within');
@@ -165,6 +157,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within
+[PostCSS Focus Within]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

@@ -16,8 +16,8 @@ npm install postcss postcss-place --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'postcss';
-import postcssPlace from 'postcss-place';
+const postcss = require('postcss');
+const postcssPlace = require('postcss-place');
 
 postcss([
   postcssPlace(/* pluginOptions */)
@@ -55,7 +55,7 @@ npm install postcss-loader --save-dev
 Use [PostCSS Place Properties] in your Webpack configuration:
 
 ```js
-import postcssPlace from 'postcss-place';
+const postcssPlace = require('postcss-place');
 
 module.exports = {
   module: {
@@ -90,10 +90,10 @@ Use [React App Rewire PostCSS] and [PostCSS Place Properties] in your
 `config-overrides.js` file:
 
 ```js
-import reactAppRewirePostcss from 'react-app-rewire-postcss';
-import postcssPlace from 'postcss-place';
+const reactAppRewirePostcss = require('react-app-rewire-postcss');
+const postcssPlace = require('postcss-place');
 
-export default config => reactAppRewirePostcss(config, {
+module.exports = config => reactAppRewirePostcss(config, {
   plugins: () => [
     postcssPlace(/* pluginOptions */)
   ]
@@ -111,8 +111,8 @@ npm install gulp-postcss --save-dev
 Use [PostCSS Place Properties] in your Gulpfile:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssPlace from 'postcss-place';
+const postcss = require('gulp-postcss');
+const postcssPlace = require('postcss-place');
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
   postcss([
@@ -134,7 +134,7 @@ npm install grunt-postcss --save-dev
 Use [PostCSS Place Properties] in your Gruntfile:
 
 ```js
-import postcssPlace from 'postcss-place';
+const postcssPlace = require('postcss-place');
 
 grunt.loadNpmTasks('grunt-postcss');
 

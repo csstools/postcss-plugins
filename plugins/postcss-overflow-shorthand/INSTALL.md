@@ -1,7 +1,6 @@
-# Installing PostCSS
+# Installing PostCSS Overflow Shorthand
 
-[PostCSS Overflow Shorthand] runs in all Node environments, with special
-instructions for:
+[PostCSS Overflow Shorthand] runs in all Node environments, with special instructions for:
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
 | --- | --- | --- | --- | --- | --- |
@@ -33,8 +32,7 @@ Add [PostCSS CLI] to your project:
 npm install postcss-cli --save-dev
 ```
 
-Use [PostCSS Overflow Shorthand] in your `postcss.config.js` configuration
-file:
+Use [PostCSS Overflow Shorthand] in your `postcss.config.js` configuration file:
 
 ```js
 const postcssOverflowShorthand = require('postcss-overflow-shorthand');

@@ -10,18 +10,10 @@
 Add [PostCSS Double Position Gradients] to your project:
 
 ```bash
-npm install postcss-double-position-gradients --save-dev
+npm install postcss postcss-double-position-gradients --save-dev
 ```
 
-Use [PostCSS Double Position Gradients] to process your CSS:
-
-```js
-const postcssDoublePositionGradients = require('postcss-double-position-gradients');
-
-postcssDoublePositionGradients.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');

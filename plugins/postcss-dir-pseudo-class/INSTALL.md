@@ -13,15 +13,7 @@ Add [PostCSS Dir Pseudo Class] to your project:
 npm install postcss postcss-dir-pseudo-class --save-dev
 ```
 
-Use [PostCSS Dir Pseudo Class] to process your CSS:
-
-```js
-const postcssDirPseudoClass = require('postcss-dir-pseudo-class');
-
-postcssDirPseudoClass.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -165,6 +157,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Dir Pseudo Class]: https://github.com/jonathantneal/postcss-dir-pseudo-class
+[PostCSS Dir Pseudo Class]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired
