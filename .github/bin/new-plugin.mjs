@@ -24,6 +24,8 @@ const pluginName = process.argv.slice(2).join(' ');
 // Derived values
 const pluginSlug = 'postcss-' + pluginName.replace(/\s+/g, '-').toLowerCase();
 const packageName = '@csstools/' + pluginSlug;
+const humanReadableName = 'PostCSS ' + pluginName;
+const exportName = 'postcss' + pluginName.replace(/\s+/g, '');
 const basePluginDir = './plugins/postcss-base-plugin';
 const pluginDir = './plugins/' + pluginSlug;
 
@@ -78,6 +80,8 @@ console.log(`- Creating new plugin ${pluginName}`);
 	packageInfo.version = '1.0.0';
 	packageInfo.homepage = `https://github.com/csstools/postcss-plugins/tree/main/plugins/${pluginSlug}#readme`;
 	packageInfo.bugs = `https://github.com/csstools/postcss-plugins/issues`;
+	packageInfo.csstools.exportName = exportName;
+	packageInfo.csstools.humanReadableName = humanReadableName;
 	delete packageInfo.bin;
 	delete packageInfo.scripts['test:cli'];
 
