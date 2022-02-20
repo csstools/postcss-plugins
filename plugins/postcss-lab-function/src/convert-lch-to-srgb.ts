@@ -5,6 +5,12 @@ type color = [number, number, number];
 
 export function lchToSRgb(lch: color): color {
 	let conversion = lch.slice() as color;
+
+	conversion[0] = Math.max(
+		conversion[0],
+		0,
+	);
+
 	conversion = LCH_to_Lab(conversion);
 
 	// https://www.w3.org/TR/css-color-4/#oklab-lab-to-predefined

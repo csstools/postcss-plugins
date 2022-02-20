@@ -6,28 +6,25 @@ type color = [number, number, number];
 export function labToSRgb(labRaw: color): color {
 	const [labLRaw, labARaw, labBRaw] = labRaw;
 
-	const labL = Math.min(
-		Math.max(
-			labLRaw,
-			0,
-		),
-		100,
+	const labL = Math.max(
+		labLRaw,
+		0,
 	);
 
 	const labA = Math.min(
 		Math.max(
 			labARaw,
-			-127,
+			-160,
 		),
-		128,
+		160,
 	);
 
 	const labB = Math.min(
 		Math.max(
 			labBRaw,
-			-127,
+			-160,
 		),
-		128,
+		160,
 	);
 
 	const lab = [labL, labA, labB];

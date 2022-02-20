@@ -30,6 +30,11 @@
 	color-17: lch(60% 50 0.785398unknown);
 }
 
+.test-percentages {
+	color-1: rgb(163, 57, 35);
+	color-2: rgb(181, 30, 19);
+}
+
 .test-author-provided-fallback {
 	color: rgb(0, 0, 0);
 	color: lch(100% 0 0);

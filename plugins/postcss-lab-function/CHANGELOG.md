@@ -1,5 +1,23 @@
 # Changes to PostCSS Lab Function
 
+### Unreleased (minor)
+
+- Allow percentage units in more color components.
+
+```css
+.percentages {
+	color-1: lab(40% 35% 30%);
+	color-2: lch(40% 50% 39);
+
+	/* becomes */
+
+	color-1: rgb(163, 57, 35);
+	color-1: color(display-p3 0.59266 0.25309 0.17075);
+	color-2: rgb(181, 30, 19);
+	color-2: color(display-p3 0.65205 0.18193 0.12753);
+}
+```
+
 ### 4.1.1 (February 15, 2022)
 
 - Fix plugin name

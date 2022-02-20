@@ -293,7 +293,7 @@ function lchFunctionContents(nodes): Lch|null {
 		return null;
 	}
 
-	if (!isNumericNodeNumber(nodes[1])) {
+	if (!isNumericNodePercentageOrNumber(nodes[1])) {
 		return null;
 	}
 
@@ -313,6 +313,12 @@ function lchFunctionContents(nodes): Lch|null {
 	normalizeHueNode(out.h);
 	if (out.h.unit !== '') {
 		return null;
+	}
+
+	if (out.c.unit === '%') {
+		out.c.unit = '';
+		out.c.number = ((parseFloat(out.c.number) / 100) * 150).toFixed(5);
+		out.cNode.value = out.c.number;
 	}
 
 	if (isSlashNode(nodes[3])) {
@@ -342,11 +348,11 @@ function labFunctionContents(nodes): Lab|null {
 		return null;
 	}
 
-	if (!isNumericNodeNumber(nodes[1])) {
+	if (!isNumericNodePercentageOrNumber(nodes[1])) {
 		return null;
 	}
 
-	if (!isNumericNodeNumber(nodes[2])) {
+	if (!isNumericNodePercentageOrNumber(nodes[2])) {
 		return null;
 	}
 
@@ -358,6 +364,18 @@ function labFunctionContents(nodes): Lab|null {
 		b: valueParser.unit(nodes[2].value) as Dimension,
 		bNode: nodes[2],
 	};
+
+	if (out.a.unit === '%') {
+		out.a.unit = '';
+		out.a.number = ((parseFloat(out.a.number) / 100) * 125).toFixed(5);
+		out.aNode.value = out.a.number;
+	}
+
+	if (out.b.unit === '%') {
+		out.b.unit = '';
+		out.b.number = ((parseFloat(out.b.number) / 100) * 125).toFixed(5);
+		out.bNode.value = out.b.number;
+	}
 
 	if (isSlashNode(nodes[3])) {
 		out.slash = nodes[3];
