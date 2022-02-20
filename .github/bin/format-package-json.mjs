@@ -18,6 +18,13 @@ const formatted = {};
 	formatted.author = packageJSONInfo.author;
 	delete packageJSONInfo.author;
 
+	formatted.contributors = packageJSONInfo.contributors;
+	delete packageJSONInfo.contributors;
+
+	if (formatted.contributors && formatted.contributors.length) {
+		formatted.contributors.sort();
+	}
+
 	formatted.license = packageJSONInfo.license;
 	delete packageJSONInfo.license;
 }
@@ -29,6 +36,9 @@ const formatted = {};
 
 	formatted.engines = packageJSONInfo.engines;
 	delete packageJSONInfo.engines;
+
+	formatted.type = packageJSONInfo.type;
+	delete packageJSONInfo.type;
 }
 
 // Exports and packaged
@@ -182,4 +192,4 @@ if (process.env.GITHUB_ACTIONS && JSON.stringify(formatted, null, 2) !== package
 	process.exit(1);
 }
 
-await fsp.writeFile('./package.json', JSON.stringify(formatted, null, 2));
+await fsp.writeFile('./package.json', JSON.stringify(formatted, null, 2) + '\n');

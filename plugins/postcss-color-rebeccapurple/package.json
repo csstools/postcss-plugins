@@ -3,6 +3,9 @@
   "description": "Use the rebeccapurple color keyword in CSS",
   "version": "7.0.2",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "contributors": [
+    "Maxime Thirouin"
+  ],
   "license": "CC0-1.0",
   "engines": {
     "node": "^12 || ^14 || >=16"
@@ -64,8 +67,5 @@
   ],
   "volta": {
     "extends": "../../package.json"
-  },
-  "contributors": [
-    "Maxime Thirouin"
-  ]
+  }
 }
