@@ -8,22 +8,21 @@
   "homepage": "https://github.com/csstools/postcss-plugins/tree/main/sites/postcss-preset-env#readme",
   "bugs": "https://github.com/csstools/postcss-plugins/issues",
   "scripts": {
-    "start": "npm run generatecssdb && astro dev",
+    "start": "astro dev",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "generatecssdb": "node scripts/cssdb-version-generator.mjs",
     "lint": "stylelint src/styles/**/*.css",
-    "build": "npm run clean && npm run generatecssdb && astro build"
+    "build": "npm run clean && astro build"
   },
   "engines": {
     "node": "^12 || ^14 || >=16"
   },
   "dependencies": {
-    "cssdb": "^6.3.1",
+    "cssdb": "^6.4.0",
     "postcss": "^8.4.6"
   },
   "devDependencies": {
     "@astropub/webapi": "^0.10.14",
-    "astro": "^0.22.20",
+    "astro": "^0.23.0",
     "fse": "^4.0.1",
     "lodash.get": "^4.4.2",
     "postcss-preset-env": "^7.4.1",
