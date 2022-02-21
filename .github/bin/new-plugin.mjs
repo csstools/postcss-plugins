@@ -82,6 +82,8 @@ console.log(`- Creating new plugin ${pluginName}`);
 	packageInfo.bugs = `https://github.com/csstools/postcss-plugins/issues`;
 	packageInfo.csstools.exportName = exportName;
 	packageInfo.csstools.humanReadableName = humanReadableName;
+
+	delete packageInfo.private;
 	delete packageInfo.bin;
 	delete packageInfo.scripts['test:cli'];
 
