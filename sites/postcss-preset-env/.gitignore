@@ -10,4 +10,3 @@ yarn.lock
 !.tape.js
 !.travis.yml
 !.github
-src/utils/cssdb_url.mjs
