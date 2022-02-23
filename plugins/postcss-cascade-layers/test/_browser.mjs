@@ -13,6 +13,27 @@ import postcss from 'postcss';
 		const pathname = parsedUrl.pathname;
 
 		switch (pathname) {
+			case '':
+			case '/':
+				res.setHeader('Content-type', 'text/html');
+				res.writeHead(200);
+
+				// write html string with list of links to cases.
+				res.end(`<!DOCTYPE html>
+					<html>
+						<head>
+							<title>Cascade Layers Test</title>
+						</head>
+						<body>
+							<h1>Cascade Layers Test</h1>
+							<ul>
+								<li><a href="/wpt/layer-basic.html">basic</a></li>
+								<li><a href="/wpt/layer-counter-style-override.html">counter style override</a></li>
+								</ul>
+						</body>
+					</html>
+				`);
+				break;
 			case '/wpt/layer-basic.html':
 				res.setHeader('Content-type', 'text/html');
 				res.writeHead(200);
