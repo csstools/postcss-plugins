@@ -1,7 +1,11 @@
-.foo {
-	color: blue;
+target {
+	color: red;
 }
 
-.baz {
+target:not(#something) {
 	color: green;
+}
+
+target:not(#something#something) {
+	color: purple;
 }
