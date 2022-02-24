@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased (minor)
+### 0.3.0 (February 24, 2022)
 
 - Use base36 encoding to fix support for upper case characters in selectors.
 
