@@ -53,7 +53,7 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 						// We can't leave `:has` untouched as that might cause broken selector lists.
 						// Replacing with the specificity matching name as this should never match anything without `:not()`.
 						node.replaceWith(parser.className({
-							value: '.' + options.specificityMatchingName,
+							value: options.specificityMatchingName,
 						}));
 					}
 
