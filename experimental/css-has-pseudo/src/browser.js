@@ -237,10 +237,6 @@ export default function cssHasPseudo(document, options) {
 
 						for (let i = 0; i < hasSelectors.length; i++) {
 							const hasSelector = hasSelectors[i];
-
-							console.log(hasSelector);
-							console.log(encodeCSS(hasSelector));
-
 							observedItems.push({
 								rule: rule,
 								selector: hasSelector,
