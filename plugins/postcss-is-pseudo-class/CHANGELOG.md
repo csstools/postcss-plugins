@@ -1,5 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased (patch)
+
+- Preserve selector order as much as possible. Fixes issues where pseudo elements `::before` were moved.
+
 ### 2.0.0 (January 31, 2022)
 
 - Remove `skip` flag in `onComplexSelectors` option.
