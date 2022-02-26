@@ -65,7 +65,6 @@ installDoc = installDoc.replace('<link-list>', `[cli-url]: https://github.com/cs
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/<packageName>
 
-[CSS Color]: <specUrl>
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
