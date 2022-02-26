@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const <exportName> = require('<packageName>');
 
 postcss([
-  <exportName>(/* pluginOptions */)
+	<exportName>(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -38,9 +38,9 @@ Use [<humanReadableName>] in your `postcss.config.js` configuration file:
 const <exportName> = require('<packageName>');
 
 module.exports = {
-  plugins: [
-    <exportName>(/* pluginOptions */)
-  ]
+	plugins: [
+		<exportName>(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [<humanReadableName>] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "<packageName>",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"<packageName>",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const <exportName> = require('<packageName>');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    <exportName>(/* pluginOptions */)
-  ]
+	plugins: () => [
+		<exportName>(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const <exportName> = require('<packageName>');
 
 gulp.task('css', function () {
-  var plugins = [
-    <exportName>(/* pluginOptions */)
-  ];
+	var plugins = [
+		<exportName>(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const <exportName> = require('<packageName>');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       <exportName>(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			<exportName>(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 
