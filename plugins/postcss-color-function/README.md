@@ -165,9 +165,9 @@ This software or document includes material copied from or derived from https://
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/@csstools/postcss-color-function
 
-[CSS Color]: https://www.w3.org/TR/css-color-4/#funcdef-color
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Color Function]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function
+[CSS Color]: https://www.w3.org/TR/css-color-4/#funcdef-color
