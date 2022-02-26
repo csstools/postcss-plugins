@@ -50,10 +50,7 @@ export function sortCompoundSelectorsInsideComplexSelector(node, wrapWithIsPseud
 }
 
 export function sortCompoundSelector(node) {
-	// compound selectors with nesting can be written with tag selectors as later parts.
-	// for example : `&h1`
-	//
-	// simply concating with parent selectors can lead to :
+	// simply concatenating with selectors can lead to :
 	// `.fooh1`
 	//
 	// applying a sort where tag selectors are first will result in :

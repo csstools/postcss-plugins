@@ -109,3 +109,9 @@ a {
 		}
 	}
 }
+
+.a:hover, .b:focus {
+	&::before, &::after {
+		order: 51;
+	}
+}
