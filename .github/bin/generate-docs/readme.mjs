@@ -80,7 +80,6 @@ installDoc = installDoc.replaceAll('<packagePath>', path.join(path.basename(path
 installDoc = installDoc.replaceAll('<specUrl>', packageJSONInfo.csstools.specUrl);
 
 for (const exampleFilePath of exampleFilePaths) {
-	console.log(exampleFilePath);
 	installDoc = installDoc.replaceAll(
 		`<${exampleFilePath}>`,
 		(await fsp.readFile(path.join('test', 'examples', exampleFilePath), 'utf8')).toString().slice(0, -1) // trim final newline

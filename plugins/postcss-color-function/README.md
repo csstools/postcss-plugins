@@ -124,6 +124,8 @@ postcssColorFunction({ enableProgressiveCustomProperties: false })
 }
 ```
 
+_Custom properties do not fallback to the previous declaration_
+
 ## Supported Color Spaces
 
 ```css

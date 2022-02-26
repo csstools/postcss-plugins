@@ -66,6 +66,8 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 <example.preserve-true.progressive-false.expect.css>
 ```
 
+_Custom properties do not fallback to the previous declaration_
+
 ## Supported Color Spaces
 
 ```css
