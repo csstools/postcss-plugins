@@ -15,9 +15,7 @@ const link = `/features#${feature.id}`;
 <section class="ppe-feature" data-stage={ feature.stage }>
 	<header class="ppe-feature-heading" id={ feature.id }>
 		<h2 class="ppe-feature-title">
-			<a class="ppe-feature-title-link" href={ link }>
-				{ simpleTitle }
-			</a>
+			<a class="ppe-feature-title-link" href={ link } set:html={ simpleTitle } />
 		</h2>
 
 		<!-- TODO : should be a region that is skippable for a11y -->
@@ -52,6 +50,6 @@ const link = `/features#${feature.id}`;
 			)) }
 		</div>
 	</header>
-	<p class="ppe-feature-description">{ simpleDescription }</p>
-	<pre class="ppe-feature-example" dir="ltr">{ parseExample(feature.example) }</pre>
+	<p class="ppe-feature-description" set:html={ simpleDescription } />
+	<pre class="ppe-feature-example" dir="ltr" set:html={ parseExample(feature.example) } />
 </section>

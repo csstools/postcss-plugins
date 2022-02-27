@@ -39,7 +39,7 @@ import { generate } from './generate.mjs';
 
 			generate(
 				'selector-class-function',
-				path.join('../../plugins', 'postcss-is-pseudo'),
+				path.join('../../plugins', 'postcss-is-pseudo-class'),
 				[
 					':is',
 				],
@@ -59,6 +59,14 @@ import { generate } from './generate.mjs';
 				path.join('../../plugins', 'postcss-double-position-gradients'),
 				[
 					'linear-gradient(90deg, black 25% 50%, blue 50% 75%)',
+				],
+			),
+
+			generate(
+				'value',
+				path.join('../../plugins', 'postcss-unset-value'),
+				[
+					'unset',
 				],
 			),
 

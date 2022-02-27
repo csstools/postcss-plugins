@@ -10,10 +10,10 @@
 Add [PostCSS Custom Properties] to your project:
 
 ```bash
-npm install postcss-custom-properties --save-dev
+npm install postcss postcss-custom-properties --save-dev
 ```
 
-Use [PostCSS Custom Properties] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-custom-properties  --save-dev
 ```
 
 Use [PostCSS Custom Properties] in your `postcss.config.js` configuration file:
@@ -46,35 +46,48 @@ module.exports = {
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-custom-properties --save-dev
 ```
 
 Use [PostCSS Custom Properties] in your Webpack configuration:
 
 ```js
-const postcssCustomProperties = require('postcss-custom-properties');
-
 module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            postcssOptions: {
-                plugins: [postcssCustomProperties(/* pluginOptions */)],
-              }
-          } }
-        ]
-      }
-    ]
-  }
-}
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: { importLoaders: 1 },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "postcss-custom-properties",
+                    {
+                      // Options
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
 ```
 
 ## Create React App
@@ -82,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-custom-properties --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Custom Properties] in your
@@ -104,7 +117,7 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-custom-properties --save-dev
 ```
 
 Use [PostCSS Custom Properties] in your Gulpfile:
@@ -113,13 +126,15 @@ Use [PostCSS Custom Properties] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssCustomProperties = require('postcss-custom-properties');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
+gulp.task('css', function () {
+  var plugins = [
     postcssCustomProperties(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+  ];
+
+  return gulp.src('./src/*.css')
+    .pipe(postcss(plugins))
+    .pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -127,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-custom-properties --save-dev
 ```
 
 Use [PostCSS Custom Properties] in your Gruntfile:

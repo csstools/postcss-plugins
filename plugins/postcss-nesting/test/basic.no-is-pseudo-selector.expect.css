@@ -124,3 +124,7 @@ a b[a="a&b"] {
 .a.c:before, .b.c:before, .a.d:before, .b.d:before {
 			order: 41;
 		}
+
+.a:hover::before, .b:focus::before, .a:hover::after, .b:focus::after {
+		order: 51;
+	}

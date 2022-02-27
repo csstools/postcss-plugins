@@ -1,14 +1,15 @@
 {
   "name": "postcss-custom-properties",
-  "version": "12.1.4",
   "description": "Use Custom Properties Queries in CSS",
+  "version": "12.1.4",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "contributors": [
     "Maxime Thirouin"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties#readme",
-  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -26,45 +27,50 @@
     "dist",
     "index.d.ts"
   ],
-  "scripts": {
-    "build": "rollup -c ../../rollup/default.js",
-    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
-    "prepublishOnly": "npm run clean && npm run build && npm run test",
-    "stryker": "stryker run --logLevel error",
-    "test": "node .tape.mjs && node .tape.cjs && npm run test:exports",
-    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs",
-    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
-  },
-  "engines": {
-    "node": "^12 || ^14 || >=16"
-  },
   "dependencies": {
     "postcss-value-parser": "^4.2.0"
-  },
-  "devDependencies": {
-    "postcss-import": "^14.0.2"
   },
   "peerDependencies": {
     "postcss": "^8.4"
   },
-  "keywords": [
-    "postcss",
-    "css",
-    "postcss-plugin",
-    "custom",
-    "properties",
-    "declarations",
-    "variables",
-    "vars",
-    "w3c",
-    "csswg",
-    "specification"
-  ],
+  "devDependencies": {
+    "postcss-import": "^14.0.2"
+  },
+  "scripts": {
+    "build": "rollup -c ../../rollup/default.js",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "docs": "node ../../.github/bin/generate-docs/install.mjs",
+    "lint": "npm run lint:eslint && npm run lint:package-json",
+    "lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+    "lint:package-json": "node ../../.github/bin/format-package-json.mjs",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "test": "node .tape.mjs && node .tape.cjs && npm run test:exports",
+    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
+    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+  },
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/csstools/postcss-plugins.git",
     "directory": "plugins/postcss-custom-properties"
+  },
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "keywords": [
+    "css",
+    "csswg",
+    "custom",
+    "declarations",
+    "postcss",
+    "postcss-plugin",
+    "properties",
+    "specification",
+    "variables",
+    "vars",
+    "w3c"
+  ],
+  "csstools": {
+    "exportName": "postcssCustomProperties",
+    "humanReadableName": "PostCSS Custom Properties"
   },
   "volta": {
     "extends": "../../package.json"

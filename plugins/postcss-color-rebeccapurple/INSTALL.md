@@ -10,10 +10,10 @@
 Add [PostCSS RebeccaPurple] to your project:
 
 ```bash
-npm install postcss-color-rebeccapurple --save-dev
+npm install postcss postcss-color-rebeccapurple --save-dev
 ```
 
-Use **PostCSS RebeccaPurple** as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -29,10 +29,10 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-color-rebeccapurple  --save-dev
 ```
 
-Use **PostCSS RebeccaPurple** in your `postcss.config.js` configuration file:
+Use [PostCSS RebeccaPurple] in your `postcss.config.js` configuration file:
 
 ```js
 const postcssRebeccapurple = require('postcss-color-rebeccapurple');
@@ -46,36 +46,48 @@ module.exports = {
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-color-rebeccapurple --save-dev
 ```
 
-Use **PostCSS RebeccaPurple** in your Webpack configuration:
+Use [PostCSS RebeccaPurple] in your Webpack configuration:
 
 ```js
-const postcssRebeccapurple = require('postcss-color-rebeccapurple');
-
 module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssRebeccapurple(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: { importLoaders: 1 },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "postcss-color-rebeccapurple",
+                    {
+                      // Options
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
 ```
 
 ## Create React App
@@ -83,10 +95,10 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-color-rebeccapurple --save-dev
 ```
 
-Use **React App Rewire PostCSS** and **PostCSS RebeccaPurple** in your
+Use [React App Rewire PostCSS] and [PostCSS RebeccaPurple] in your
 `config-overrides.js` file:
 
 ```js
@@ -105,22 +117,24 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-color-rebeccapurple --save-dev
 ```
 
-Use **PostCSS RebeccaPurple** in your Gulpfile:
+Use [PostCSS RebeccaPurple] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
 const postcssRebeccapurple = require('postcss-color-rebeccapurple');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
+gulp.task('css', function () {
+  var plugins = [
     postcssRebeccapurple(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+  ];
+
+  return gulp.src('./src/*.css')
+    .pipe(postcss(plugins))
+    .pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -128,10 +142,10 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-color-rebeccapurple --save-dev
 ```
 
-Use **PostCSS RebeccaPurple** in your Gruntfile:
+Use [PostCSS RebeccaPurple] in your Gruntfile:
 
 ```js
 const postcssRebeccapurple = require('postcss-color-rebeccapurple');
@@ -141,7 +155,7 @@ grunt.loadNpmTasks('grunt-postcss');
 grunt.initConfig({
   postcss: {
     options: {
-      use: [
+      processors: [
        postcssRebeccapurple(/* pluginOptions */)
       ]
     },

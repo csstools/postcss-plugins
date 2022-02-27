@@ -39,10 +39,7 @@ export function sortCompoundSelector(node) {
 	if (!node || !node.nodes) {
 		return;
 	}
-	// compound selectors with nesting can be written with tag selectors as later parts.
-	// for example : `&h1`
-	//
-	// simply concating with parent selectors can lead to :
+	// simply concatenating with selectors can lead to :
 	// `.fooh1`
 	//
 	// applying a sort where tag selectors are first will result in :
@@ -92,14 +89,6 @@ export function sortCompoundSelector(node) {
 		}
 
 		if (a.type === b.type) {
-			if (a.value < b.value) {
-				return -1;
-			}
-
-			if (a.value > b.value) {
-				return 1;
-			}
-
 			return 0;
 		}
 

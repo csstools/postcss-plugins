@@ -171,5 +171,9 @@
   - plugins/postcss-system-ui-font-family/**
   - experimental/postcss-system-ui-font-family/**
 
+"plugins/postcss-unset-value":
+  - plugins/postcss-unset-value/**
+  - experimental/postcss-unset-value/**
+
 "sites/postcss-preset-env":
   - sites/postcss-preset-env/**

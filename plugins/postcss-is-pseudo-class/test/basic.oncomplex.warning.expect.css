@@ -214,7 +214,7 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 14;
 }
 
-:focus:is(.alpha ~ .delta) > .beta + .beta {
+:is(.alpha ~ .delta):focus > .beta + .beta {
 	order: 15;
 }
 
@@ -266,7 +266,7 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 19;
 }
 
-.alpha.pre:is(.one > .two) {
+.pre.alpha:is(.one > .two) {
 	order: 20;
 }
 
@@ -292,4 +292,36 @@ a:not(.does-not-exist) {
 
 .invalid-is:is {
 	order: 24;
+}
+
+a:hover::before {
+	order: 25;
+}
+
+a:focus:not(does-not-exist) {
+	order: 25;
+}
+
+button:hover::before {
+	order: 25;
+}
+
+button:focus:not(does-not-exist) {
+	order: 25;
+}
+
+a:hover::before {
+	order: 26;
+}
+
+a:focus::before {
+	order: 26;
+}
+
+button:hover::before {
+	order: 26;
+}
+
+button:focus::before {
+	order: 26;
 }
