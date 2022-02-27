@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssOverflowShorthand = require('postcss-overflow-shorthand');
 
 postcss([
-  postcssOverflowShorthand(/* pluginOptions */)
+	postcssOverflowShorthand(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -38,9 +38,9 @@ Use [PostCSS Overflow Shorthand] in your `postcss.config.js` configuration file:
 const postcssOverflowShorthand = require('postcss-overflow-shorthand');
 
 module.exports = {
-  plugins: [
-    postcssOverflowShorthand(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssOverflowShorthand(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Overflow Shorthand] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "postcss-overflow-shorthand",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-overflow-shorthand",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssOverflowShorthand = require('postcss-overflow-shorthand');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssOverflowShorthand(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssOverflowShorthand(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssOverflowShorthand = require('postcss-overflow-shorthand');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssOverflowShorthand(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssOverflowShorthand(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssOverflowShorthand = require('postcss-overflow-shorthand');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssOverflowShorthand(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssOverflowShorthand(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

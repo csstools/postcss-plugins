@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssIcUnit = require('@csstools/postcss-ic-unit');
 
 postcss([
-  postcssIcUnit(/* pluginOptions */)
+	postcssIcUnit(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -38,9 +38,9 @@ Use [PostCSS IC Unit] in your `postcss.config.js` configuration file:
 const postcssIcUnit = require('@csstools/postcss-ic-unit');
 
 module.exports = {
-  plugins: [
-    postcssIcUnit(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssIcUnit(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS IC Unit] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "@csstools/postcss-ic-unit",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"@csstools/postcss-ic-unit",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssIcUnit = require('@csstools/postcss-ic-unit');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssIcUnit(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssIcUnit(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssIcUnit = require('@csstools/postcss-ic-unit');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssIcUnit(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssIcUnit(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssIcUnit = require('@csstools/postcss-ic-unit');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssIcUnit(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssIcUnit(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

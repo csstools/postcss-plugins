@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssLabFunction = require('postcss-lab-function');
 
 postcss([
-  postcssLabFunction(/* pluginOptions */)
+	postcssLabFunction(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -38,9 +38,9 @@ Use [PostCSS Lab Function] in your `postcss.config.js` configuration file:
 const postcssLabFunction = require('postcss-lab-function');
 
 module.exports = {
-  plugins: [
-    postcssLabFunction(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssLabFunction(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Lab Function] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "postcss-lab-function",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-lab-function",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssLabFunction = require('postcss-lab-function');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssLabFunction(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssLabFunction(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssLabFunction = require('postcss-lab-function');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssLabFunction(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssLabFunction(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssLabFunction = require('postcss-lab-function');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssLabFunction(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssLabFunction(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

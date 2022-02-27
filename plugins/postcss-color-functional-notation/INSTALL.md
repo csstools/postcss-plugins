@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssColorFunctionalNotation = require('postcss-color-functional-notation');
 
 postcss([
-  postcssColorFunctionalNotation(/* pluginOptions */)
+	postcssColorFunctionalNotation(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -38,9 +38,9 @@ Use [PostCSS Color Functional Notation] in your `postcss.config.js` configuratio
 const postcssColorFunctionalNotation = require('postcss-color-functional-notation');
 
 module.exports = {
-  plugins: [
-    postcssColorFunctionalNotation(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssColorFunctionalNotation(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Color Functional Notation] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "postcss-color-functional-notation",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-color-functional-notation",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssColorFunctionalNotation = require('postcss-color-functional-notation');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssColorFunctionalNotation(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssColorFunctionalNotation(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssColorFunctionalNotation = require('postcss-color-functional-notation');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssColorFunctionalNotation(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssColorFunctionalNotation(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssColorFunctionalNotation = require('postcss-color-functional-notatio
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssColorFunctionalNotation(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssColorFunctionalNotation(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

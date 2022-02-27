@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssFontFormatKeywords = require('@csstools/postcss-font-format-keywords');
 
 postcss([
-  postcssFontFormatKeywords(/* pluginOptions */)
+	postcssFontFormatKeywords(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -38,9 +38,9 @@ Use [PostCSS Font Format Keywords] in your `postcss.config.js` configuration fil
 const postcssFontFormatKeywords = require('@csstools/postcss-font-format-keywords');
 
 module.exports = {
-  plugins: [
-    postcssFontFormatKeywords(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssFontFormatKeywords(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Font Format Keywords] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "@csstools/postcss-font-format-keywords",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"@csstools/postcss-font-format-keywords",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssFontFormatKeywords = require('@csstools/postcss-font-format-keywords');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssFontFormatKeywords(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssFontFormatKeywords(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssFontFormatKeywords = require('@csstools/postcss-font-format-keywords');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssFontFormatKeywords(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssFontFormatKeywords(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssFontFormatKeywords = require('@csstools/postcss-font-format-keyword
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssFontFormatKeywords(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssFontFormatKeywords(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

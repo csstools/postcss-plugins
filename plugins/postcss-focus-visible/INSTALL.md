@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssFocusVisible = require('postcss-focus-visible');
 
 postcss([
-  postcssFocusVisible(/* pluginOptions */)
+	postcssFocusVisible(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -38,9 +38,9 @@ Use [PostCSS Focus Visible] in your `postcss.config.js` configuration file:
 const postcssFocusVisible = require('postcss-focus-visible');
 
 module.exports = {
-  plugins: [
-    postcssFocusVisible(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssFocusVisible(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Focus Visible] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "postcss-focus-visible",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-focus-visible",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssFocusVisible = require('postcss-focus-visible');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssFocusVisible(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssFocusVisible(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssFocusVisible = require('postcss-focus-visible');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssFocusVisible(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssFocusVisible(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssFocusVisible = require('postcss-focus-visible');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssFocusVisible(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssFocusVisible(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 
