@@ -21,6 +21,7 @@ installDoc = installDoc.replace(`<!-- Available Variables: -->
 <!-- <usage> usage instructions -->
 <!-- <env-support> -->
 <!-- <link-list> -->
+<!-- to generate : npm run docs -->
 
 `, '');
 

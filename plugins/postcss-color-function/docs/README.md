@@ -10,6 +10,7 @@
 <!-- <usage> usage instructions -->
 <!-- <env-support> -->
 <!-- <link-list> -->
+<!-- to generate : npm run docs -->
 
 <header>
 
