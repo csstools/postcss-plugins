@@ -61,6 +61,13 @@
 	color-2: lch(40% 50% 39);
 }
 
+.test-numbers {
+	color-1: rgb(152, 68, 47);
+	color-1: lab(40 35 30);
+	color-2: rgb(157, 63, 45);
+	color-2: lch(40 50 39);
+}
+
 .test-author-provided-fallback {
 	color: rgb(0, 0, 0);
 	color: lch(100% 0 0);
