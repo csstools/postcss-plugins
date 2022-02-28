@@ -187,23 +187,6 @@ function isNumericNode(node: Node): node is WordNode {
 	return !!unitAndValue.number;
 }
 
-function isNumericNodeNumber(node): node is WordNode {
-	if (!node || node.type !== 'word') {
-		return false;
-	}
-
-	if (!canParseAsUnit(node)) {
-		return false;
-	}
-
-	const unitAndValue = valueParser.unit(node.value);
-	if (!unitAndValue) {
-		return false;
-	}
-
-	return !!unitAndValue.number && unitAndValue.unit === '';
-}
-
 function isNumericNodeHueLike(node: Node): node is WordNode {
 	if (!node || node.type !== 'word') {
 		return false;
@@ -225,23 +208,6 @@ function isNumericNodeHueLike(node: Node): node is WordNode {
 		unitAndValue.unit === 'turn' ||
 		unitAndValue.unit === ''
 	);
-}
-
-function isNumericNodePercentage(node: Node): node is WordNode {
-	if (!node || node.type !== 'word') {
-		return false;
-	}
-
-	if (!canParseAsUnit(node)) {
-		return false;
-	}
-
-	const unitAndValue = valueParser.unit(node.value);
-	if (!unitAndValue) {
-		return false;
-	}
-
-	return unitAndValue.unit === '%';
 }
 
 function isNumericNodePercentageOrNumber(node: Node): node is WordNode {
