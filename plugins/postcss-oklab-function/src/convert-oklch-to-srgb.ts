@@ -6,15 +6,12 @@ type color = [number, number, number];
 export function oklchToSRgb(oklchRaw: color): color {
 	const [lchLRaw, lchARaw, lchBRaw] = oklchRaw;
 
-	const lchL = Math.min(
-		Math.max(
-			lchLRaw,
-			0,
-		),
-		100,
+	const lchL = Math.max(
+		lchLRaw,
+		0,
 	);
 
-	const oklch = [lchL / 100, lchARaw, lchBRaw] as color;
+	const oklch = [lchL, lchARaw, lchBRaw] as color;
 
 	let conversion = oklch.slice() as color;
 

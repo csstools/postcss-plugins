@@ -297,7 +297,7 @@ function lchFunctionContents(nodes): Lch|null {
 	// 0% = 0, 100% = 150
 	if (out.c.unit === '%') {
 		out.c.unit = '';
-		out.c.number = ((parseFloat(out.c.number) / 100) * 150).toFixed(5);
+		out.c.number = ((parseFloat(out.c.number) / 100) * 150).toFixed(10);
 	}
 
 	return out;
@@ -356,13 +356,13 @@ function labFunctionContents(nodes): Lab|null {
 	// -100% = -125, 100% = 125
 	if (out.a.unit === '%') {
 		out.a.unit = '';
-		out.a.number = ((parseFloat(out.a.number) / 100) * 125).toFixed(5);
+		out.a.number = ((parseFloat(out.a.number) / 100) * 125).toFixed(10);
 	}
 
 	// -100% = -125, 100% = 125
 	if (out.b.unit === '%') {
 		out.b.unit = '';
-		out.b.number = ((parseFloat(out.b.number) / 100) * 125).toFixed(5);
+		out.b.number = ((parseFloat(out.b.number) / 100) * 125).toFixed(10);
 	}
 
 	return out;

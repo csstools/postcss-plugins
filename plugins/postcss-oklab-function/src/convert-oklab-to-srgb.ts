@@ -6,15 +6,12 @@ type color = [number, number, number];
 export function oklabToSRgb(oklabRaw: color): color {
 	const [labLRaw, labARaw, labBRaw] = oklabRaw;
 
-	const labL = Math.min(
-		Math.max(
-			labLRaw,
-			0,
-		),
-		100,
+	const labL = Math.max(
+		labLRaw,
+		0,
 	);
 
-	const oklab = [labL/100, labARaw, labBRaw] as color;
+	const oklab = [labL, labARaw, labBRaw] as color;
 
 	let conversion = oklab.slice() as color;
 
