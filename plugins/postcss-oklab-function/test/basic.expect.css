@@ -64,6 +64,20 @@
 	color-17: oklch(60% 0.1250 0.785398unknown);
 }
 
+.test-percentages {
+	color-1: rgb(73, 71, 69);
+	color-1: color(display-p3 0.28515 0.27983 0.27246);
+	color-2: rgb(126, 37, 15);
+	color-2: color(display-p3 0.45368 0.16978 0.09411);
+}
+
+.test-numbers {
+	color-1: rgb(73, 71, 69);
+	color-1: color(display-p3 0.28515 0.27983 0.27246);
+	color-2: rgb(126, 37, 15);
+	color-2: color(display-p3 0.45368 0.16978 0.09411);
+}
+
 .test-author-provided-fallback {
 	color: rgb(0, 0, 0);
 	color: oklch(100% 0 0);
