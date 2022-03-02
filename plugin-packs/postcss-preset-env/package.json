@@ -64,7 +64,8 @@
 		"postcss-place": "^7.0.4",
 		"postcss-pseudo-class-any-link": "^7.1.1",
 		"postcss-replace-overflow-wrap": "^4.0.0",
-		"postcss-selector-not": "^5.0.0"
+		"postcss-selector-not": "^5.0.0",
+		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
