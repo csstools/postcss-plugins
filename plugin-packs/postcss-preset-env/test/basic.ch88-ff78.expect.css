@@ -222,6 +222,18 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	margin: clamp(1rem, 2%, 3rem) 4vh;
 }
 
+.calc-clamp {
+	margin: 0 40px 0 calc(-1 * clamp(32px, 16vw, 64px));
+}
+
+.multiple-calc-clamp {
+	margin: calc(-1 * clamp(1px, 2vw, 3px)) calc(-1 * clamp(4px, 5vw, 6px));
+}
+
+.nested-clamp {
+	font-size: clamp(clamp(1rem, 2vw, 3rem), 4vw, 5rem);
+}
+
 @font-face {
 	font-family: 'A';
 	font-style: normal;

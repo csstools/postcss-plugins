@@ -631,6 +631,40 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	margin: clamp(1rem, 2%, 3rem) 4vh;
 }
 
+.calc-clamp {
+	margin: 0 40px 0 -webkit-calc(-1 * max(32px, min(16vw, 64px)));
+	margin: 0 40px 0 -moz-calc(-1 * max(32px, min(16vw, 64px)));
+	margin: 0 40px 0 calc(-1 * max(32px, min(16vw, 64px)));
+	margin: 0 40px 0 -webkit-calc(-1 * clamp(32px, 16vw, 64px));
+	margin: 0 40px 0 -moz-calc(-1 * clamp(32px, 16vw, 64px));
+	margin: 0 40px 0 calc(-1 * clamp(32px, 16vw, 64px));
+}
+
+.multiple-calc-clamp {
+	margin: -webkit-calc(-1 * max(1px, min(2vw, 3px))) -webkit-calc(-1 * max(4px, min(5vw, 6px)));
+	margin: -moz-calc(-1 * max(1px, min(2vw, 3px))) -moz-calc(-1 * max(4px, min(5vw, 6px)));
+	margin: calc(-1 * max(1px, min(2vw, 3px))) calc(-1 * max(4px, min(5vw, 6px)));
+	margin: -webkit-calc(-1 * max(1px, min(2vw, 3px))) -webkit-calc(-1 * clamp(4px, 5vw, 6px));
+	margin: -moz-calc(-1 * max(1px, min(2vw, 3px))) -moz-calc(-1 * clamp(4px, 5vw, 6px));
+	margin: calc(-1 * max(1px, min(2vw, 3px))) calc(-1 * clamp(4px, 5vw, 6px));
+	margin: -webkit-calc(-1 * max(4px, min(5vw, 6px))) -webkit-calc(-1 * max(4px, min(5vw, 6px)));
+	margin: -moz-calc(-1 * max(4px, min(5vw, 6px))) -moz-calc(-1 * max(4px, min(5vw, 6px)));
+	margin: calc(-1 * max(4px, min(5vw, 6px))) calc(-1 * max(4px, min(5vw, 6px)));
+	margin: -webkit-calc(-1 * max(4px, min(5vw, 6px))) -webkit-calc(-1 * clamp(4px, 5vw, 6px));
+	margin: -moz-calc(-1 * max(4px, min(5vw, 6px))) -moz-calc(-1 * clamp(4px, 5vw, 6px));
+	margin: calc(-1 * max(4px, min(5vw, 6px))) calc(-1 * clamp(4px, 5vw, 6px));
+	margin: -webkit-calc(-1 * clamp(1px, 2vw, 3px)) -webkit-calc(-1 * clamp(4px, 5vw, 6px));
+	margin: -moz-calc(-1 * clamp(1px, 2vw, 3px)) -moz-calc(-1 * clamp(4px, 5vw, 6px));
+	margin: calc(-1 * clamp(1px, 2vw, 3px)) calc(-1 * clamp(4px, 5vw, 6px));
+}
+
+.nested-clamp {
+	font-size: max(max(1rem, min(2vw, 3rem)), min(4vw, 5rem));
+	font-size: max(clamp(1rem, 2vw, 3rem), min(4vw, 5rem));
+	font-size: max(1rem, min(2vw, 3rem));
+	font-size: clamp(clamp(1rem, 2vw, 3rem), 4vw, 5rem);
+}
+
 @font-face {
 	font-family: 'A';
 	font-style: normal;
