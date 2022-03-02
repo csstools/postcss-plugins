@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const prefersColorScheme = require('css-prefers-color-scheme');
 
 postcss([
-  prefersColorScheme(/* pluginOptions */)
+	prefersColorScheme(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -38,9 +38,9 @@ Use [Prefers Color Scheme] in your `postcss.config.js` configuration file:
 const prefersColorScheme = require('css-prefers-color-scheme');
 
 module.exports = {
-  plugins: [
-    prefersColorScheme(/* pluginOptions */)
-  ]
+	plugins: [
+		prefersColorScheme(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [Prefers Color Scheme] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "css-prefers-color-scheme",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"css-prefers-color-scheme",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const prefersColorScheme = require('css-prefers-color-scheme');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    prefersColorScheme(/* pluginOptions */)
-  ]
+	plugins: () => [
+		prefersColorScheme(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const prefersColorScheme = require('css-prefers-color-scheme');
 
 gulp.task('css', function () {
-  var plugins = [
-    prefersColorScheme(/* pluginOptions */)
-  ];
+	var plugins = [
+		prefersColorScheme(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const prefersColorScheme = require('css-prefers-color-scheme');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       prefersColorScheme(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			prefersColorScheme(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

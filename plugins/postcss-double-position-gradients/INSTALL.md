@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssDoublePositionGradients = require('postcss-double-position-gradients');
 
 postcss([
-  postcssDoublePositionGradients(/* pluginOptions */)
+	postcssDoublePositionGradients(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -38,9 +38,9 @@ Use [PostCSS Double Position Gradients] in your `postcss.config.js` configuratio
 const postcssDoublePositionGradients = require('postcss-double-position-gradients');
 
 module.exports = {
-  plugins: [
-    postcssDoublePositionGradients(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssDoublePositionGradients(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Double Position Gradients] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "postcss-double-position-gradients",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-double-position-gradients",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssDoublePositionGradients = require('postcss-double-position-gradients');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssDoublePositionGradients(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssDoublePositionGradients(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssDoublePositionGradients = require('postcss-double-position-gradients');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssDoublePositionGradients(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssDoublePositionGradients(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssDoublePositionGradients = require('postcss-double-position-gradient
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssDoublePositionGradients(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssDoublePositionGradients(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

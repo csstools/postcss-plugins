@@ -36,7 +36,7 @@
   "scripts": {
     "build": "rollup -c ../../rollup/default.js",
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "docs": "node ../../.github/bin/generate-docs/install.mjs",
+    "docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
     "lint": "npm run lint:eslint && npm run lint:package-json",
     "lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
     "lint:package-json": "node ../../.github/bin/format-package-json.mjs",
@@ -70,8 +70,10 @@
     "xyz"
   ],
   "csstools": {
+    "cssdbId": "color-function",
     "exportName": "postcssColorFunction",
-    "humanReadableName": "PostCSS Color Function"
+    "humanReadableName": "PostCSS Color Function",
+    "specUrl": "https://www.w3.org/TR/css-color-4/#funcdef-color"
   },
   "volta": {
     "extends": "../../package.json"

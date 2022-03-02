@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssNormalizeDisplayValues = require('@csstools/postcss-normalize-display-values');
 
 postcss([
-  postcssNormalizeDisplayValues(/* pluginOptions */)
+	postcssNormalizeDisplayValues(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -38,9 +38,9 @@ Use [PostCSS Normalize Display Values] in your `postcss.config.js` configuration
 const postcssNormalizeDisplayValues = require('@csstools/postcss-normalize-display-values');
 
 module.exports = {
-  plugins: [
-    postcssNormalizeDisplayValues(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssNormalizeDisplayValues(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Normalize Display Values] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "@csstools/postcss-normalize-display-values",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"@csstools/postcss-normalize-display-values",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssNormalizeDisplayValues = require('@csstools/postcss-normalize-display-values');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssNormalizeDisplayValues(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssNormalizeDisplayValues(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssNormalizeDisplayValues = require('@csstools/postcss-normalize-display-values');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssNormalizeDisplayValues(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssNormalizeDisplayValues(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssNormalizeDisplayValues = require('@csstools/postcss-normalize-displ
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssNormalizeDisplayValues(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssNormalizeDisplayValues(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

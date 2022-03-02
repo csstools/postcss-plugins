@@ -3,7 +3,7 @@ import { cli, helpTextLogger } from '@csstools/base-cli';
 
 cli(
 	plugin,
-	['color', 'another_option'],
+	['color', 'another_option', 'preserve'],
 	helpTextLogger(
 		'postcss-base-plugin-cli',
 		'Base Plugin',
@@ -11,6 +11,7 @@ cli(
 		{
 			color: 'A CSS color',
 			another_option: true,
+			preserve: true,
 		},
 	),
 );

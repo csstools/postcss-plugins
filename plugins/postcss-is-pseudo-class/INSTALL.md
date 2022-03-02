@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssIsPseudoClass = require('@csstools/postcss-is-pseudo-class');
 
 postcss([
-  postcssIsPseudoClass(/* pluginOptions */)
+	postcssIsPseudoClass(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -38,9 +38,9 @@ Use [PostCSS Is Pseudo] in your `postcss.config.js` configuration file:
 const postcssIsPseudoClass = require('@csstools/postcss-is-pseudo-class');
 
 module.exports = {
-  plugins: [
-    postcssIsPseudoClass(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssIsPseudoClass(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Is Pseudo] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "@csstools/postcss-is-pseudo-class",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"@csstools/postcss-is-pseudo-class",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssIsPseudoClass = require('@csstools/postcss-is-pseudo-class');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssIsPseudoClass(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssIsPseudoClass(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssIsPseudoClass = require('@csstools/postcss-is-pseudo-class');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssIsPseudoClass(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssIsPseudoClass(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssIsPseudoClass = require('@csstools/postcss-is-pseudo-class');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssIsPseudoClass(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssIsPseudoClass(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 
