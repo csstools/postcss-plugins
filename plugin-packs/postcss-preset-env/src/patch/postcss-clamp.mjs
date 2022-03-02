@@ -1,4 +1,4 @@
-const valueParser = require('postcss-value-parser');
+import valueParser from 'postcss-value-parser';
 
 function parseValue (value) {
 	let parsed = value.match(/([\d.-]+)(.*)/);
