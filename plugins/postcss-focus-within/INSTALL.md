@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-focus-within  --save-dev
+npm install postcss-cli postcss-focus-within --save-dev
 ```
 
 Use [PostCSS Focus Within] in your `postcss.config.js` configuration file:

@@ -42,7 +42,7 @@ const postcss = require('postcss');
 const postcssBasePlugin = require('@csstools/postcss-base-plugin');
 
 postcss([
-  postcssBasePlugin(/* pluginOptions */)
+	postcssBasePlugin(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 

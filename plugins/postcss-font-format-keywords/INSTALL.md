@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-font-format-keywords  --save-dev
+npm install postcss-cli @csstools/postcss-font-format-keywords --save-dev
 ```
 
 Use [PostCSS Font Format Keywords] in your `postcss.config.js` configuration file:

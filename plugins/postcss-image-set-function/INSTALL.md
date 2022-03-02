@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-image-set-function  --save-dev
+npm install postcss-cli postcss-image-set-function --save-dev
 ```
 
 Use [PostCSS image-set() Function] in your `postcss.config.js` configuration file:

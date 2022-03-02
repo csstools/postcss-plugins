@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-nesting  --save-dev
+npm install postcss-cli postcss-nesting --save-dev
 ```
 
 Use [PostCSS Nesting] in your `postcss.config.js` configuration file:

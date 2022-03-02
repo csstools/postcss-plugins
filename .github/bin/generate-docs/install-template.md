@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli <packageName>  --save-dev
+npm install postcss-cli <packageName> --save-dev
 ```
 
 Use [<humanReadableName>] in your `postcss.config.js` configuration file:

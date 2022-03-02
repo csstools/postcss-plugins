@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-color-hex-alpha  --save-dev
+npm install postcss-cli postcss-color-hex-alpha --save-dev
 ```
 
 Use [PostCSS Color Hex Alpha] in your `postcss.config.js` configuration file:

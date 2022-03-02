@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-normalize-display-values  --save-dev
+npm install postcss-cli @csstools/postcss-normalize-display-values --save-dev
 ```
 
 Use [PostCSS Normalize Display Values] in your `postcss.config.js` configuration file:

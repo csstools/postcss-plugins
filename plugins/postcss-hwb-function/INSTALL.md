@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-hwb-function  --save-dev
+npm install postcss-cli @csstools/postcss-hwb-function --save-dev
 ```
 
 Use [PostCSS HWB Function] in your `postcss.config.js` configuration file:

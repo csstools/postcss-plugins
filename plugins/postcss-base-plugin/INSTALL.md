@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-base-plugin  --save-dev
+npm install postcss-cli @csstools/postcss-base-plugin --save-dev
 ```
 
 Use [PostCSS Base Plugin] in your `postcss.config.js` configuration file:

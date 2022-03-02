@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-gap-properties  --save-dev
+npm install postcss-cli postcss-gap-properties --save-dev
 ```
 
 Use [PostCSS Gap Properties] in your `postcss.config.js` configuration file:

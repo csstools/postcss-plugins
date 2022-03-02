@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-double-position-gradients  --save-dev
+npm install postcss-cli postcss-double-position-gradients --save-dev
 ```
 
 Use [PostCSS Double Position Gradients] in your `postcss.config.js` configuration file:

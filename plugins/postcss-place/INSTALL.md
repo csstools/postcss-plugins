@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-place  --save-dev
+npm install postcss-cli postcss-place --save-dev
 ```
 
 Use [PostCSS Place Properties] in your `postcss.config.js` configuration file:

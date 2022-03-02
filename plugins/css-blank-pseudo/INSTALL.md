@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli css-blank-pseudo  --save-dev
+npm install postcss-cli css-blank-pseudo --save-dev
 ```
 
 Use [CSS Blank Pseudo] in your `postcss.config.js` configuration file:
