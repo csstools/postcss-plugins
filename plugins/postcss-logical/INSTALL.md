@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-logical  --save-dev
+npm install postcss-cli postcss-logical --save-dev
 ```
 
 Use [PostCSS Logical Properties and Values] in your `postcss.config.js` configuration file:

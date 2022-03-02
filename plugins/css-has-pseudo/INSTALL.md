@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli css-has-pseudo  --save-dev
+npm install postcss-cli css-has-pseudo --save-dev
 ```
 
 Use [CSS Has Pseudo] in your `postcss.config.js` configuration file:

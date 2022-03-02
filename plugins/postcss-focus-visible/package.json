@@ -1,85 +1,85 @@
 {
-  "name": "postcss-focus-visible",
-  "description": "Use the :focus-visible pseudo-selector in CSS",
-  "version": "6.0.4",
-  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
-  "license": "CC0-1.0",
-  "engines": {
-    "node": "^12 || ^14 || >=16"
-  },
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
-      "default": "./dist/index.mjs"
-    }
-  },
-  "files": [
-    "CHANGELOG.md",
-    "LICENSE.md",
-    "README.md",
-    "dist"
-  ],
-  "dependencies": {
-    "postcss-selector-parser": "^6.0.9"
-  },
-  "peerDependencies": {
-    "postcss": "^8.4"
-  },
-  "scripts": {
-    "build": "rollup -c ../../rollup/default.js",
-    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "docs": "node ../../.github/bin/generate-docs/install.mjs",
-    "lint": "npm run lint:eslint && npm run lint:package-json",
-    "lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
-    "lint:package-json": "node ../../.github/bin/format-package-json.mjs",
-    "prepublishOnly": "npm run clean && npm run build && npm run test",
-    "test": "node .tape.mjs && npm run test:exports",
-    "test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
-    "test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
-  },
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-visible#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "plugins/postcss-focus-visible"
-  },
-  "bugs": "https://github.com/csstools/postcss-plugins/issues",
-  "keywords": [
-    "a11y",
-    "accessibility",
-    "button",
-    "contenteditable",
-    "css",
-    "css",
-    "cursor",
-    "focus",
-    "input",
-    "javascript",
-    "js",
-    "keyboards",
-    "mice",
-    "mouse",
-    "pen",
-    "pointer",
-    "postcss",
-    "postcss-plugin",
-    "pseudos",
-    "ring",
-    "select",
-    "selectors",
-    "textarea",
-    "touch",
-    "trackpad"
-  ],
-  "csstools": {
-    "exportName": "postcssFocusVisible",
-    "humanReadableName": "PostCSS Focus Visible"
-  },
-  "volta": {
-    "extends": "../../package.json"
-  }
+	"name": "postcss-focus-visible",
+	"description": "Use the :focus-visible pseudo-selector in CSS",
+	"version": "6.0.4",
+	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"license": "CC0-1.0",
+	"engines": {
+		"node": "^12 || ^14 || >=16"
+	},
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs",
+			"default": "./dist/index.mjs"
+		}
+	},
+	"files": [
+		"CHANGELOG.md",
+		"LICENSE.md",
+		"README.md",
+		"dist"
+	],
+	"dependencies": {
+		"postcss-selector-parser": "^6.0.9"
+	},
+	"peerDependencies": {
+		"postcss": "^8.4"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup/default.js",
+		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"lint": "npm run lint:eslint && npm run lint:package-json",
+		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
+		"prepublishOnly": "npm run clean && npm run build && npm run test",
+		"test": "node .tape.mjs && npm run test:exports",
+		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-visible#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/csstools/postcss-plugins.git",
+		"directory": "plugins/postcss-focus-visible"
+	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
+	"keywords": [
+		"a11y",
+		"accessibility",
+		"button",
+		"contenteditable",
+		"css",
+		"css",
+		"cursor",
+		"focus",
+		"input",
+		"javascript",
+		"js",
+		"keyboards",
+		"mice",
+		"mouse",
+		"pen",
+		"pointer",
+		"postcss",
+		"postcss-plugin",
+		"pseudos",
+		"ring",
+		"select",
+		"selectors",
+		"textarea",
+		"touch",
+		"trackpad"
+	],
+	"csstools": {
+		"exportName": "postcssFocusVisible",
+		"humanReadableName": "PostCSS Focus Visible"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
 }

@@ -1,7 +1,7 @@
 import { promises as fsp, constants } from 'fs';
 
 const packageJSONInfo = JSON.parse(await fsp.readFile('./package.json', 'utf8'));
-const packageJSONInfoCopy = JSON.stringify(packageJSONInfo, null, 2);
+const packageJSONInfoCopy = JSON.stringify(packageJSONInfo, null, '\t');
 const formatted = {};
 
 // Main info
@@ -195,9 +195,9 @@ const formatted = {};
 
 Object.assign(formatted, packageJSONInfo);
 
-if (process.env.GITHUB_ACTIONS && JSON.stringify(formatted, null, 2) !== packageJSONInfoCopy) {
+if (process.env.GITHUB_ACTIONS && JSON.stringify(formatted, null, '\t') !== packageJSONInfoCopy) {
 	console.error('package.json has an incorrect field order. Run "npm run lint" to resolve.')
 	process.exit(1);
 }
 
-await fsp.writeFile('./package.json', JSON.stringify(formatted, null, 2) + '\n');
+await fsp.writeFile('./package.json', JSON.stringify(formatted, null, '\t') + '\n');

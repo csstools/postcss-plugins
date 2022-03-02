@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-color-functional-notation  --save-dev
+npm install postcss-cli postcss-color-functional-notation --save-dev
 ```
 
 Use [PostCSS Color Functional Notation] in your `postcss.config.js` configuration file:

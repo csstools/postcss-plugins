@@ -1,48 +1,48 @@
 {
-  "name": "@csstools/postcss-tape",
-  "description": "Quickly test PostCSS plugins in csstools/postcss-plugins",
-  "version": "1.0.0",
-  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
-  "license": "CC0-1.0",
-  "private": true,
-  "engines": {
-    "node": "^12 || ^14 || >=16"
-  },
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
-      "default": "./dist/index.mjs"
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "dependencies": {
-    "postcss": "~8.4",
-    "postcss-8.2": "npm:postcss@~8.2"
-  },
-  "scripts": {
-    "build": "rollup -c ../../rollup/default.js",
-    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "lint": "npm run lint:eslint && npm run lint:package-json",
-    "lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
-    "lint:package-json": "node ../../.github/bin/format-package-json.mjs",
-    "test": "bash ./test-self/test.sh"
-  },
-  "keywords": [
-    "css",
-    "postcss",
-    "postcss-plugin",
-    "tape",
-    "testing",
-    "tests",
-    "tools"
-  ],
-  "volta": {
-    "extends": "../../package.json"
-  }
+	"name": "@csstools/postcss-tape",
+	"description": "Quickly test PostCSS plugins in csstools/postcss-plugins",
+	"version": "1.0.0",
+	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"license": "CC0-1.0",
+	"private": true,
+	"engines": {
+		"node": "^12 || ^14 || >=16"
+	},
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs",
+			"default": "./dist/index.mjs"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"dependencies": {
+		"postcss": "~8.4",
+		"postcss-8.2": "npm:postcss@~8.2"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup/default.js",
+		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+		"lint": "npm run lint:eslint && npm run lint:package-json",
+		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
+		"test": "bash ./test-self/test.sh"
+	},
+	"keywords": [
+		"css",
+		"postcss",
+		"postcss-plugin",
+		"tape",
+		"testing",
+		"tests",
+		"tools"
+	],
+	"volta": {
+		"extends": "../../package.json"
+	}
 }

@@ -49,7 +49,7 @@ const postcss = require('postcss');
 const <exportName> = require('<packageName>');
 
 postcss([
-  <exportName>(/* pluginOptions */)
+	<exportName>(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 \`\`\``);
 

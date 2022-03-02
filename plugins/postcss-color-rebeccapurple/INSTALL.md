@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-color-rebeccapurple  --save-dev
+npm install postcss-cli postcss-color-rebeccapurple --save-dev
 ```
 
 Use [PostCSS RebeccaPurple] in your `postcss.config.js` configuration file:

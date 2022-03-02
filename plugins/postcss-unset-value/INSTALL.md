@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-unset-value  --save-dev
+npm install postcss-cli @csstools/postcss-unset-value --save-dev
 ```
 
 Use [PostCSS Unset Value] in your `postcss.config.js` configuration file:

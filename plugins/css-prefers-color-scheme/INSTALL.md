@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli css-prefers-color-scheme  --save-dev
+npm install postcss-cli css-prefers-color-scheme --save-dev
 ```
 
 Use [Prefers Color Scheme] in your `postcss.config.js` configuration file:

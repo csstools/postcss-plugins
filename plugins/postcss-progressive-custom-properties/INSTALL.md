@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-progressive-custom-properties  --save-dev
+npm install postcss-cli @csstools/postcss-progressive-custom-properties --save-dev
 ```
 
 Use [PostCSS Progressive Custom Properties] in your `postcss.config.js` configuration file:

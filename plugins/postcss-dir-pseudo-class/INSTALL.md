@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-dir-pseudo-class  --save-dev
+npm install postcss-cli postcss-dir-pseudo-class --save-dev
 ```
 
 Use [PostCSS Dir Pseudo Class] in your `postcss.config.js` configuration file:

@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-focus-visible  --save-dev
+npm install postcss-cli postcss-focus-visible --save-dev
 ```
 
 Use [PostCSS Focus Visible] in your `postcss.config.js` configuration file:

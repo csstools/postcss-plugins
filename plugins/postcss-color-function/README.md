@@ -43,7 +43,7 @@ const postcss = require('postcss');
 const postcssColorFunction = require('@csstools/postcss-color-function');
 
 postcss([
-  postcssColorFunction(/* pluginOptions */)
+	postcssColorFunction(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 

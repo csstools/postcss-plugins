@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-overflow-shorthand  --save-dev
+npm install postcss-cli postcss-overflow-shorthand --save-dev
 ```
 
 Use [PostCSS Overflow Shorthand] in your `postcss.config.js` configuration file:
