@@ -31,7 +31,7 @@ import postcssSelectorNot from 'postcss-selector-not';
 import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 import postcssHWBFunction from '@csstools/postcss-hwb-function';
 import postcssOpacityPercentage from 'postcss-opacity-percentage';
-import postcssClamp from '../patch/postcss-clamp';
+import postcssClamp from '../patch/postcss-clamp.mjs';
 import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
 import postcssNormalizeDisplayValues from '@csstools/postcss-normalize-display-values';
 import postcssColorFunction from '@csstools/postcss-color-function';

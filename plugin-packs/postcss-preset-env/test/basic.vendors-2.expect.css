@@ -315,6 +315,18 @@
 	margin: max(1rem, min(2%, 3rem)) 4vh;
 }
 
+.calc-clamp {
+	margin: 0 40px 0 calc(-1 * max(32px, min(16vw, 64px)));
+}
+
+.multiple-calc-clamp {
+	margin: calc(-1 * max(1px, min(2vw, 3px))) calc(-1 * max(4px, min(5vw, 6px)));
+}
+
+.nested-clamp {
+	font-size: max(max(1rem, min(2vw, 3rem)), min(4vw, 5rem));
+}
+
 @font-face {
 	font-family: 'A';
 	font-style: normal;
