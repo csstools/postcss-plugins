@@ -1,5 +1,9 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased (patch)
+
+- Add typescript support
+
 ### 3.1.0 (February 15, 2022)
 
 - Ignore values in relevant `@supports` rules.
