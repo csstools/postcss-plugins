@@ -91,6 +91,9 @@
 	color-16: color(display-p3 0.69260 0.41373 0.26821);
 	color-16: oklch(60% 0.1250 0.785398rad);
 	color-17: oklch(60% 0.1250 0.785398unknown);
+	color-18: rgb(188, 101, 59);
+	color-18: color(display-p3 0.69260 0.41373 0.26821);
+	color-18: oklch(60% 0.1250 405);
 }
 
 .test-percentages {

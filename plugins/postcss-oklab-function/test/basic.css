@@ -33,6 +33,7 @@
 	color-15: oklch(60% 0.1250 50grad);
 	color-16: oklch(60% 0.1250 0.785398rad);
 	color-17: oklch(60% 0.1250 0.785398unknown);
+	color-18: oklch(60% 0.1250 405);
 }
 
 .test-percentages {

@@ -11,6 +11,8 @@ export function lchToDisplayP3(lch: color): [color, boolean] {
 		0,
 	);
 
+	conversion[2] = conversion[2] % 360;
+
 	conversion = LCH_to_Lab(conversion);
 
 	// https://www.w3.org/TR/css-color-4/#oklab-lab-to-predefined

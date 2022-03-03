@@ -1,5 +1,23 @@
 # Changes to PostCSS Color Function
 
+### Unreleased (minor)
+
+- Allow percentage units in XYZ color spaces.
+
+```css
+.percentages {
+	color-1: color(xyz-d50 64.331% 19.245% 16.771%);
+	color-2: color(xyz-d65 64.331% 19.245% 16.771%);
+	color-3: color(xyz 64.331% 19.245% 16.771%);
+
+	/* becomes */
+
+  color-1: rgb(245,0,135);
+	color-2: rgb(253,0,127);
+	color-3: rgb(253,0,127);
+}
+```
+
 ### 1.0.2 (February 12, 2022)
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `1.1.0`.
