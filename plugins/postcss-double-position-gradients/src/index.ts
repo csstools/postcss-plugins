@@ -1,16 +1,28 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
+import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { includesGradientsFunction, isGradientsFunctions } from './is-gradient';
 
-const isPunctuationCommaNode = node => node.type === 'div' && node.value === ',';
+const keywords = [
+	'at',
+	'bottom',
+	'center',
+	'circle',
+	'closest-corner',
+	'closest-side',
+	'ellipse',
+	'farthest-corner',
+	'farthest-side',
+	'from',
+	'in',
+	'left',
+	'right',
+	'to',
+	'top',
+];
 
-function insertBefore(nodes, node, ...values) {
-	const index = nodes.findIndex(n => n === node);
-	nodes.splice.apply(nodes, [index - 1, 0].concat(
-		Array.prototype.slice.call(...values, 0)),
-	);
-}
+const isPunctuationCommaNode = node => node.type === 'div' && node.value === ',';
 
 function isNumericNode(node) {
 	try {
@@ -63,10 +75,24 @@ const basePlugin = (opts) => {
 					return x.type !== 'comment' && x.type !== 'space';
 				});
 
-				nodes.forEach((node, index, nodes) => {
-					const oneValueBack = Object(nodes[index - 1]);
-					const twoValuesBack = Object(nodes[index - 2]);
-					const nextNode = Object(nodes[index + 1]);
+				let inPrefix = false;
+
+				nodes.forEach((node, index, currentNodes) => {
+					if (node.type === 'word' && keywords.includes(node.value)) {
+						inPrefix = true;
+					}
+
+					if (node.type === 'div' && node.value === ',') {
+						inPrefix = false;
+					}
+
+					if (inPrefix) {
+						return;
+					}
+
+					const oneValueBack = Object(currentNodes[index - 1]);
+					const twoValuesBack = Object(currentNodes[index - 2]);
+					const nextNode = Object(currentNodes[index + 1]);
 					const isDoublePositionLength = twoValuesBack.type && isNumericNode(oneValueBack) && isNumericNode(node);
 
 					// if the argument concludes a double-position gradient
@@ -80,11 +106,18 @@ const basePlugin = (opts) => {
 							after: isPunctuationCommaNode(nextNode) ? '' : ' ',
 						};
 
-						insertBefore(func.nodes, node, [comma, color]);
+						func.nodes.splice(
+							// 1 before the current node
+							func.nodes.indexOf(node) - 1,
+							// remove none
+							0,
+							// insert these :
+							comma, color,
+						);
 					}
 				});
 
-				return false;
+				return;
 			});
 
 			const modifiedValue = valueAST.toString();
@@ -103,12 +136,13 @@ const basePlugin = (opts) => {
 
 basePlugin.postcss = true;
 
-/**
- * Transform double-position gradients in CSS.
- * @param {{preserve?: boolean}} opts
- * @returns {import('postcss').Plugin}
- */
-const postcssPlugin = (opts) => {
+type pluginOptions = {
+	preserve?: boolean;
+	enableProgressiveCustomProperties?: boolean;
+};
+
+// Transform double-position gradients in CSS.
+const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		enableProgressiveCustomProperties: true,
 		preserve: true,

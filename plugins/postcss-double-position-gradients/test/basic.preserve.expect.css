@@ -1,9 +1,18 @@
 .test-linear-gradient {
 	background-image: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: linear-gradient(black 25%,black 50%, blue 50%, blue 75%);
+}
+
+.test-linear-gradient-no-spaces {
+	background-image: linear-gradient(90deg,black 25%,black 50%,blue 50%, blue 75%);
 }
 
 .test-conic-gradient {
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg ,gold 75% , #f06 0deg);
+}
+
+.test-radial-gradient {
+	background-image: radial-gradient(5em circle at 50px 50%, yellow, blue);
 }
 
 .test-invalid-function {
@@ -42,4 +51,8 @@
 	--gradient-prop-4: repeating-conic-gradient(from 0deg, yellowgreen 40deg, gold 60deg,gold 75deg, #f06 0deg);
 	--gradient-prop-5: repeating-linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
 	--gradient-prop-6: repeating-radial-gradient(red 0,red 8%, yellow 8%,yellow 16%, blue 16%, blue 24%);
+}
+
+.test-color-space-interop {
+	background: linear-gradient(in lab to right, #44C 0%,#44C 10%, #795)
 }

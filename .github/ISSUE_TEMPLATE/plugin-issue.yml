@@ -80,6 +80,7 @@ body:
         - PostCSS Focus Within
         - PostCSS Font Variant
         - PostCSS Gap Properties
+        - PostCSS Gradients Interpolation Method
         - PostCSS HWB Function
         - PostCSS Image Set Function
         - PostCSS Is Pseudo Class

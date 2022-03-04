@@ -1,4 +1,4 @@
-export function includesGradientsFunction(str) {
+export function includesGradientsFunction(str: string): boolean {
 	return (
 		str.includes('conic-gradient(') ||
 		str.includes('linear-gradient(') ||
@@ -9,7 +9,7 @@ export function includesGradientsFunction(str) {
 	);
 }
 
-export function isGradientsFunctions(str) {
+export function isGradientsFunctions(str: string): boolean {
 	return (
 		str ==='conic-gradient' ||
 		str ==='linear-gradient' ||

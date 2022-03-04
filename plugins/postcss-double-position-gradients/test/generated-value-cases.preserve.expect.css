@@ -24,7 +24,7 @@
 	--some-var: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
 }
 
-@supports (background: linear-gradient(0deg, red 0% 1%, red 2%)) {
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) {
 :root {
 	--some-var: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 }

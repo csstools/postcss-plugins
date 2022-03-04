@@ -1,0 +1,7 @@
+.oklch {
+	background: linear-gradient(in oklch 90deg, black 25% , blue 75%);
+}
+
+:root {
+	--background: linear-gradient(in oklch 90deg, black 25%, blue 75%);
+}
