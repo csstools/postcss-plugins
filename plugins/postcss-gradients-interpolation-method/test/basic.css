@@ -1,5 +1,6 @@
 .test-linear-gradient {
-	background-image: linear-gradient(in oklch 90deg, black 25% 50%,blue 70% 75%);
+	--perc-50: 50%;
+	background-image: linear-gradient(in oklch 90deg, black 20% var(--perc-50),blue 70% 75%);
 
 	background-image: linear-gradient(in oklch shorter 90deg, black 25% 50%, blue 70% 75%);
 

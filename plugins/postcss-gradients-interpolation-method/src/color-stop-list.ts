@@ -1,4 +1,5 @@
 import type { Node } from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
 
 export type ColorStop = {
 	color: string;
@@ -46,14 +47,14 @@ export function colorStopList(nodes: Array<Node>, interpolationArguments: string
 			case 1:
 				return false;
 			case 2:
-				stop.color = stop.nodes[0].value;
-				stop.colorStopLength = stop.nodes[1].value;
+				stop.color = valueParser.stringify(stop.nodes[0]);
+				stop.colorStopLength = valueParser.stringify(stop.nodes[1]);
 				formattedStops.push(stop);
 				break;
 			case 3:
 				formattedStops.push({
-					color: stop.nodes[0].value,
-					colorStopLength: stop.nodes[1].value,
+					color: valueParser.stringify(stop.nodes[0]),
+					colorStopLength: valueParser.stringify(stop.nodes[1]),
 					colorHintBetween: [],
 					nodes: [
 						stop.nodes[0],
@@ -62,8 +63,8 @@ export function colorStopList(nodes: Array<Node>, interpolationArguments: string
 				});
 
 				formattedStops.push({
-					color: stop.nodes[0].value,
-					colorStopLength: stop.nodes[2].value,
+					color: valueParser.stringify(stop.nodes[0]),
+					colorStopLength: valueParser.stringify(stop.nodes[2]),
 					colorHintBetween: [],
 					nodes: [
 						stop.nodes[0],
