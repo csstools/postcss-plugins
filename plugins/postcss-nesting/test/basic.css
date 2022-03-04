@@ -115,3 +115,31 @@ a {
 		order: 51;
 	}
 }
+
+/* leading : root */
+.comments {
+	/* leading : 1 */
+	order: 1;
+	/* trailing: 2 */
+
+	& .comment {
+		order: 2;
+	}
+
+	/* loose comment */
+	& .comment {
+		order: 3;
+	}
+
+	/* leading : 4 */
+	order: 4;
+	/* trailing: 5 */
+
+	& .comment {
+		/* nested deeper */
+
+		& .comment {
+			order: 5;
+		}
+	}
+}

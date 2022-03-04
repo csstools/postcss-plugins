@@ -390,7 +390,4 @@ article.foo {
 		color: yellow;
 	}
 
-article {
-
-	/* valid! */
-	}
+/* valid! */
