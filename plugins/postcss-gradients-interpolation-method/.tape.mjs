@@ -6,6 +6,21 @@ postcssTape(plugin)({
 		message: "supports basic usage",
 		warnings: 2,
 	},
+	'basic:preserve-false': {
+		message: 'supports { preserve: false } usage',
+		warnings: 2,
+		options: {
+			preserve: false
+		}
+	},
+	'basic:preserve-true:progressive-false': {
+		message: 'supports { preserve: true, enableProgressiveCustomProperties: false } usage',
+		warnings: 2,
+		options: {
+			preserve: true,
+			enableProgressiveCustomProperties: false,
+		}
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},
