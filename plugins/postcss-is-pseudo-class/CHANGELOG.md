@@ -1,6 +1,6 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased (patch)
+### 2.0.1 (March 4, 2022)
 
 - Preserve selector order as much as possible. Fixes issues where pseudo elements `::before` were moved.
 
