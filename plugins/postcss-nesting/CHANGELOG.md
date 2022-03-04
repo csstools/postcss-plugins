@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### Unreleased (patch)
+### 10.1.3 (March 4, 2022)
 
 - Avoid creating duplicate selectors containing only comments.
 
