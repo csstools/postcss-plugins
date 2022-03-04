@@ -6,7 +6,7 @@
 
 ```diff
 .alpha {
-	/* lose comment */
+	/* loose comment */
 	& .beta {
 		order: 1;
 	}
@@ -15,9 +15,9 @@
 /* becomes */
 
 - .alpha {
--   /* lose comment */
+-   /* loose comment */
 - }
-+ /* lose comment */
++ /* loose comment */
 .alpha .beta {
 	order: 1;
 }
