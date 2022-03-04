@@ -16,14 +16,31 @@
 
 [<humanReadableName>] lets you use different interpolation methods in CSS gradient functions following [CSS Specification].
 
-⚠️ This plugin assumes you have a separate plugin to transform `color-mix()` to something older browsers can understand.
-
 ```pcss
 <example.css>
 
 /* becomes */
 
 <example.expect.css>
+```
+
+## Warnings
+
+⚠️ This plugin assumes you have a separate plugin to transform `color-mix()` to something older browsers can understand.
+
+⚠️ Color stops with only a color and Interpolation hints are not supported.
+We can not statically check if a certain value is a single color or an interpolation hint.
+
+These are equivalent in PostCSS :
+
+```pcss
+	--red: red;
+	/* Color stop variable */
+	background-image: linear-gradient(90deg, black, var(--red), blue);
+
+	--perc-10: 10%;
+	/* Interpolation hint */
+	background-image: linear-gradient(90deg, black, var(--perc-10), blue);
 ```
 
 <usage>
