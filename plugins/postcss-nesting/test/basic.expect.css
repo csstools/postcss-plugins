@@ -128,3 +128,27 @@ a b[a="a&b"] {
 .a:hover::before, .b:focus::before, .a:hover::after, .b:focus::after {
 		order: 51;
 	}
+
+/* leading : root */
+.comments {
+	/* leading : 1 */
+	order: 1
+	/* trailing: 2 */
+}
+.comments .comment {
+		order: 2;
+	}
+/* lose comment */
+.comments .comment {
+		order: 3;
+	}
+.comments {
+
+	/* leading : 4 */
+	order: 4
+	/* trailing: 5 */
+}
+/* nested deeper */
+.comments .comment .comment {
+			order: 5;
+		}
