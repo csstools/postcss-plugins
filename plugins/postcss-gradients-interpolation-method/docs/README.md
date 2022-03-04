@@ -16,6 +16,8 @@
 
 [<humanReadableName>] lets you use different interpolation methods in CSS gradient functions following [CSS Specification].
 
+⚠️ This plugin assumes you have a separate plugin to transform `color-mix()` to something older browsers can understand.
+
 ```pcss
 <example.css>
 
