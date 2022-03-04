@@ -4,6 +4,24 @@ import valueParser from 'postcss-value-parser';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { includesGradientsFunction, isGradientsFunctions } from './is-gradient';
 
+const keywords = [
+	'at',
+	'bottom',
+	'center',
+	'circle',
+	'closest-corner',
+	'closest-side',
+	'ellipse',
+	'farthest-corner',
+	'farthest-side',
+	'from',
+	'in',
+	'left',
+	'right',
+	'to',
+	'top',
+];
+
 const isPunctuationCommaNode = node => node.type === 'div' && node.value === ',';
 
 function isNumericNode(node) {
@@ -57,7 +75,21 @@ const basePlugin = (opts) => {
 					return x.type !== 'comment' && x.type !== 'space';
 				});
 
+				let inPrefix = false;
+
 				nodes.forEach((node, index, currentNodes) => {
+					if (node.type === 'word' && keywords.includes(node.value)) {
+						inPrefix = true;
+					}
+
+					if (node.type === 'div' && node.value === ',') {
+						inPrefix = false;
+					}
+
+					if (inPrefix) {
+						return;
+					}
+
 					const oneValueBack = Object(currentNodes[index - 1]);
 					const twoValuesBack = Object(currentNodes[index - 2]);
 					const nextNode = Object(currentNodes[index + 1]);
@@ -85,7 +117,7 @@ const basePlugin = (opts) => {
 					}
 				});
 
-				return false;
+				return;
 			});
 
 			const modifiedValue = valueAST.toString();

@@ -85,3 +85,17 @@
 	--color-6: orange;
 	--color-6: color(rec2020 0.64331 0.19245 0.16771);
 }
+
+:root {
+		/* interleaved with color interpolation */
+		--gradient-prop-6: linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%);
+		--gradient-prop-7: conic-gradient(yellowgreen 40%, gold 0deg, gold 75%, #f06 0deg);
+		--gradient-prop-6: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+		--gradient-prop-7: conic-gradient(in oklch, yellowgreen 40%, gold 0deg 75%, #f06 0deg);
+		--gradient-prop-8: repeating-linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%);
+		--gradient-prop-9: repeating-conic-gradient(yellowgreen 40%, gold 0deg, gold 75%, #f06 0deg);
+		--gradient-prop-8: repeating-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+		--gradient-prop-9: repeating-conic-gradient(in oklch from 0deg, yellowgreen 40deg, gold 60deg 75deg, #f06 0deg);
+		--gradient-prop-10: repeating-radial-gradient(red 0, red 8%, yellow 8%, yellow 16%, blue 16%, blue 24%);
+		--gradient-prop-10: repeating-radial-gradient(in oklch, red 0 8%, yellow 8% 16%, blue 16% 24%);
+}

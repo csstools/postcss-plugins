@@ -89,7 +89,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 
 	packageInfo.repository.directory = `plugins/${pluginSlug}`;
 
-	await fsp.writeFile(path.join(pluginDir, 'package.json'), JSON.stringify(packageInfo, null, 2));
+	await fsp.writeFile(path.join(pluginDir, 'package.json'), JSON.stringify(packageInfo, null, '\t'));
 
 	console.log('- Updated "package.json"');
 }
