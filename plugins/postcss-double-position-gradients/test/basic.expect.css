@@ -91,3 +91,16 @@
 	background: linear-gradient(in lab to right, #44C 0%,#44C 10%, #795);
 	background: linear-gradient(in lab to right, #44C 0% 10%, #795)
 }
+
+.repeating-conic {
+	background: repeating-conic-gradient(
+		from 3deg,
+		hsl(200, 100%, 50%) 0deg,hsl(200, 100%, 50%) 15deg,
+		hsl(200, 100%, 60%) 10deg, hsl(200, 100%, 60%) 30deg
+	);
+	background: repeating-conic-gradient(
+		from 3deg,
+		hsl(200, 100%, 50%) 0deg 15deg,
+		hsl(200, 100%, 60%) 10deg 30deg
+	);
+}

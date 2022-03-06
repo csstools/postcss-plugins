@@ -56,3 +56,11 @@
 .test-color-space-interop {
 	background: linear-gradient(in lab to right, #44C 0% 10%, #795)
 }
+
+.repeating-conic {
+	background: repeating-conic-gradient(
+		from 3deg,
+		hsl(200, 100%, 50%) 0deg 15deg,
+		hsl(200, 100%, 60%) 10deg 30deg
+	);
+}

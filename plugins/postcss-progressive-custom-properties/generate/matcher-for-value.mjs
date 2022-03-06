@@ -10,7 +10,9 @@ export function matcherForValue(value) {
 			delete node.after;
 			delete node.sourceEndIndex;
 
-			if (node.value.startsWith('$')) {
+			if (node.type === 'space') {
+				delete node.value;
+			} else if (node.value.startsWith('$')) {
 				delete node.value;
 				node.isVariable = true;
 			} else {
@@ -19,6 +21,8 @@ export function matcherForValue(value) {
 				} finally {
 					if (node.dimension === false) {
 						delete node.dimension;
+					} else {
+						delete node.dimension.number;
 					}
 				}
 			}
