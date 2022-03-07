@@ -4,17 +4,14 @@ import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
 type color = [number, number, number];
 
 export function oklchToSRgb(oklchRaw: color): color {
-	const [lchLRaw, lchARaw, lchBRaw] = oklchRaw;
+	const [lchLRaw, lchCRaw, lchHRaw] = oklchRaw;
 
-	const lchL = Math.min(
-		Math.max(
-			lchLRaw,
-			0,
-		),
-		100,
+	const lchL = Math.max(
+		lchLRaw,
+		0,
 	);
 
-	const oklch = [lchL / 100, lchARaw, lchBRaw] as color;
+	const oklch = [lchL / 100, lchCRaw, lchHRaw % 360] as color;
 
 	let conversion = oklch.slice() as color;
 

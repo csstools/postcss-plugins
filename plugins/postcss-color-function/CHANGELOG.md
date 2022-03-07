@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Function
 
+### Unreleased (patch)
+
+- Fix gamut mapping giving overly unsaturated colors.
+
 ### 1.0.2 (February 12, 2022)
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `1.1.0`.
