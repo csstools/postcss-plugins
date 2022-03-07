@@ -1,6 +1,6 @@
 # Changes to PostCSS Gradients Interpolation Method
 
-### Unreleased (patch)
+### 1.0.1 (March 7, 2022)
 
 - fix dependencies
 
