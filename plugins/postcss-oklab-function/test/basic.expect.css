@@ -166,10 +166,10 @@
 .test-low-luminance {
 	/* not teal */
 	prop-1: rgb(0, 0, 0);
-	prop-1: color(display-p3 0.00000 0.00005 0.00000);
+	prop-1: color(display-p3 0.00000 0.00000 0.00000);
 	/* teal */
 	prop-2: rgb(0, 0, 0);
-	prop-2: color(display-p3 0.00002 0.00000 0.00029);
+	prop-2: color(display-p3 0.00000 0.00000 0.00000);
 	/* teal */
 	prop-3: rgb(0, 0, 2);
 	prop-3: color(display-p3 0.00133 0.00079 0.00730);

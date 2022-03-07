@@ -7,14 +7,14 @@ postcssTape(plugin)({
 	},
 	'basic:preserve-true': {
 		message: 'supports { preserve: true } usage',
-		warnings: 2,
+		warnings: 1,
 		options: {
 			preserve: true
 		}
 	},
 	'basic:preserve-true:display-p3-false': {
 		message: 'supports { subFeatures: { displayP3: false }, preserve: true } usage',
-		warnings: 2,
+		warnings: 1,
 		options: {
 			preserve: true,
 			subFeatures: {

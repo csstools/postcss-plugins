@@ -30,6 +30,11 @@ export function labToSRgb(labRaw: color): color {
 	const lab = [labL, labA, labB];
 
 	let conversion = lab.slice() as color;
+	if (conversion[0] < 0.00001) { // very close to 0
+		// A and B components are powerless when L is 0 or very close to 0
+		conversion[1] = 0;
+		conversion[2] = 0;
+	}
 
 	// https://drafts.csswg.org/css-color-4/#oklab-lab-to-predefined
 	// 1. Convert Lab to(D50 - adapted) XYZ

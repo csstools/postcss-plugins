@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Fix gamut mapping giving overly unsaturated colors.
+- Implement powerless color components.
 
 ### 4.1.1 (February 15, 2022)
 

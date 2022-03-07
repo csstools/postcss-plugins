@@ -3,8 +3,23 @@ import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
 
 type color = [number, number, number];
 
-export function lchToDisplayP3(lch: color): [color, boolean] {
-	let conversion = lch.slice() as color;
+export function lchToDisplayP3(lchRaw: color): [color, boolean] {
+	const [lchLRaw, lchCRaw, lchHRaw] = lchRaw;
+
+	const lchL = Math.max(
+		lchLRaw,
+		0,
+	);
+
+	const lch = [lchL, lchCRaw, lchHRaw % 360] as color;
+
+	let conversion = lch;
+	if (conversion[0] < 0.00001) { // very close to 0
+		// C and H components are powerless when L is 0 or very close to 0
+		conversion[1] = 0;
+		conversion[2] = 0;
+	}
+
 	conversion = LCH_to_Lab(conversion);
 
 	// https://www.w3.org/TR/css-color-4/#oklab-lab-to-predefined
@@ -12,6 +27,12 @@ export function lchToDisplayP3(lch: color): [color, boolean] {
 	conversion = Lab_to_XYZ(conversion);
 
 	let oklch = conversion.slice() as color;
+	if (conversion[0] < 0.00001) { // very close to 0
+		// A and B components are powerless when L is 0 or very close to 0
+		conversion[1] = 0;
+		conversion[2] = 0;
+	}
+
 	oklch = D50_to_D65(oklch);
 	oklch = XYZ_to_OKLab(oklch);
 	oklch = OKLab_to_OKLCH(oklch);

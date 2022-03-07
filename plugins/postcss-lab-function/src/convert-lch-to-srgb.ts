@@ -3,9 +3,24 @@ import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
 
 type color = [number, number, number];
 
-export function lchToSRgb(lch: color): color {
-	let conversion = lch.slice() as color;
-	conversion = LCH_to_Lab([conversion[0], conversion[1], conversion[2] % 360]);
+export function lchToSRgb(lchRaw: color): color {
+	const [lchLRaw, lchCRaw, lchHRaw] = lchRaw;
+
+	const lchL = Math.max(
+		lchLRaw,
+		0,
+	);
+
+	const lch = [lchL, lchCRaw, lchHRaw % 360] as color;
+
+	let conversion = lch;
+	if (conversion[0] < 0.00001) { // very close to 0
+		// C and H components are powerless when L is 0 or very close to 0
+		conversion[1] = 0;
+		conversion[2] = 0;
+	}
+
+	conversion = LCH_to_Lab(conversion);
 
 	// https://www.w3.org/TR/css-color-4/#oklab-lab-to-predefined
 	// 1. Convert Lab to(D50 - adapted) XYZ

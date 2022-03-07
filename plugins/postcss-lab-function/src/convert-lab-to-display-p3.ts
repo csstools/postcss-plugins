@@ -6,12 +6,9 @@ type color = [number, number, number];
 export function labToDisplayP3(labRaw: color): [color, boolean] {
 	const [labLRaw, labARaw, labBRaw] = labRaw;
 
-	const labL = Math.min(
-		Math.max(
-			labLRaw,
-			0,
-		),
-		100,
+	const labL = Math.max(
+		labLRaw,
+		0,
 	);
 
 	const labA = Math.min(
@@ -33,6 +30,11 @@ export function labToDisplayP3(labRaw: color): [color, boolean] {
 	const lab = [labL, labA, labB];
 
 	let conversion = lab.slice() as color;
+	if (conversion[0] < 0.00001) { // very close to 0
+		// A and B components are powerless when L is 0 or very close to 0
+		conversion[1] = 0;
+		conversion[2] = 0;
+	}
 
 	// https://drafts.csswg.org/css-color-4/#oklab-lab-to-predefined
 	// 1. Convert Lab to(D50 - adapted) XYZ
