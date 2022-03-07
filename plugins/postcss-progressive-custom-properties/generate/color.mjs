@@ -31,7 +31,6 @@ export const hslMatchers = [
 		'sniff': 'hsl',
 		'matchers': [
 			matcherForValue('hsl($1,$2,$3,$4)'),
-			matcherForValue('hsl($1, $2, $3, $4)'),
 		],
 	},
 	{
@@ -119,7 +118,6 @@ export const rgbMatchers = [
 		'property': 'color',
 		'sniff': 'rgb',
 		'matchers': [
-			matcherForValue('rgb($1, $2, $3, $4)'),
 			matcherForValue('rgb($1,$2,$3,$4)'),
 		],
 	},

@@ -98,7 +98,7 @@ const basePlugin = (opts) => {
 					// if the argument concludes a double-position gradient
 					if (isDoublePositionLength) {
 						// insert the fallback colors
-						const color = { type: twoValuesBack.type, value: twoValuesBack.value };
+						const color = twoValuesBack;
 						const comma = {
 							type: 'div',
 							value: ',',

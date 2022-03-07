@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Add typescript support
+- Fix color functions.
 - Fix `at` keyword with `at 20px 20px` being interpreted as a double position color stop.
 
 ### 3.1.0 (February 15, 2022)
