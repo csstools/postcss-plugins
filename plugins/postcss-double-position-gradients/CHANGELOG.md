@@ -1,6 +1,6 @@
 # Changes to PostCSS Double Position Gradients
 
-### Unreleased (patch)
+### 3.1.1 (March 7, 2022)
 
 - Add typescript support
 - Fix color functions.
