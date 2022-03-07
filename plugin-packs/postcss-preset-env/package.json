@@ -32,7 +32,7 @@
 		"@csstools/postcss-oklab-function": "^1.0.1",
 		"@csstools/postcss-progressive-custom-properties": "^1.2.0",
 		"autoprefixer": "^10.4.2",
-		"browserslist": "^4.19.3",
+		"browserslist": "^4.20.0",
 		"css-blank-pseudo": "^3.0.3",
 		"css-has-pseudo": "^3.0.4",
 		"css-prefers-color-scheme": "^6.0.3",
