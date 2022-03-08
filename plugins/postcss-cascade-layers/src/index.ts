@@ -9,12 +9,19 @@ function postcssCascadeLayers(opts) {
 					return;
 				}
 
+				// if layer anon, name
+				if(atRule.params === '') {
+					atRule.params = ` anon${(Math.random()).toString()}`;
+				}
+
 				if (atRule.nodes && atRule.nodes.length) {
-					console.log(atRule.name, 'layer name', atRule.params);
-					// parse .params as layer name
-					// replace layer.name with :is()
-					// add layer.param after
-					// duplicate node contents
+					const atRuleClone = atRule.clone();
+					atRuleClone.nodes.forEach((node) => {
+						const modifiedSelectors = node.selectors.map((selector) => {
+							return `${selector}:not(<N times #foo>)`;
+						});
+						atRule.parent.insertBefore(atRule, node.clone({ selectors: modifiedSelectors }));
+					});
 
 					console.log('nodes', atRule.nodes);
 				} else {
