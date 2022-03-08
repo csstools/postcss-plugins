@@ -1,6 +1,6 @@
 # Changes to PostCSS Lab Function
 
-### Unreleased (patch)
+### 4.1.2 (March 8, 2022)
 
 - Fix gamut mapping giving overly unsaturated colors.
 - Implement powerless color components in gamut mapping.
