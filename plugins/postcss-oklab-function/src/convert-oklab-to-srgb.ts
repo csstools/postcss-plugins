@@ -4,19 +4,24 @@ import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
 type color = [number, number, number];
 
 export function oklabToSRgb(oklabRaw: color): color {
-	const [labLRaw, labARaw, labBRaw] = oklabRaw;
+	const [oklabLRaw, oklabARaw, oklabBRaw] = oklabRaw;
 
-	const labL = Math.min(
-		Math.max(
-			labLRaw,
-			0,
-		),
-		100,
+	const oklabL = Math.max(
+		oklabLRaw,
+		0,
 	);
 
-	const oklab = [labL/100, labARaw, labBRaw] as color;
+	const oklab = [oklabL / 100, oklabARaw, oklabBRaw] as color;
 
-	let conversion = oklab.slice() as color;
+	let conversion = oklab as color;
+	let oklch = OKLab_to_OKLCH(conversion);
+	if (oklch[0] < 0.000001) {
+		oklch = [0, 0, 0] as color;
+	}
+
+	if (oklch[0] > 0.999999) {
+		oklch = [1, 0, 0] as color;
+	}
 
 	conversion = OKLab_to_XYZ(conversion);
 	conversion = XYZ_to_lin_sRGB(conversion);
@@ -28,7 +33,7 @@ export function oklabToSRgb(oklabRaw: color): color {
 		}) as color;
 	}
 
-	return mapGamut(oklab, (x: color) => {
+	return mapGamut(oklch, (x: color) => {
 		x = OKLCH_to_OKLab(x);
 		x = OKLab_to_XYZ(x);
 		x = XYZ_to_lin_sRGB(x);

@@ -1,5 +1,10 @@
 # Changes to PostCSS Lab Function
 
+### Unreleased (patch)
+
+- Fix gamut mapping giving overly unsaturated colors.
+- Implement powerless color components in gamut mapping.
+
 ### 4.1.1 (February 15, 2022)
 
 - Fix plugin name

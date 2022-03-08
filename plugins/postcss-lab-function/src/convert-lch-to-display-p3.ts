@@ -3,8 +3,17 @@ import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
 
 type color = [number, number, number];
 
-export function lchToDisplayP3(lch: color): [color, boolean] {
-	let conversion = lch.slice() as color;
+export function lchToDisplayP3(lchRaw: color): [color, boolean] {
+	const [lchLRaw, lchCRaw, lchHRaw] = lchRaw;
+
+	const lchL = Math.max(
+		lchLRaw,
+		0,
+	);
+
+	const lch = [lchL, lchCRaw, lchHRaw % 360] as color;
+
+	let conversion = lch;
 	conversion = LCH_to_Lab(conversion);
 
 	// https://www.w3.org/TR/css-color-4/#oklab-lab-to-predefined
@@ -15,6 +24,13 @@ export function lchToDisplayP3(lch: color): [color, boolean] {
 	oklch = D50_to_D65(oklch);
 	oklch = XYZ_to_OKLab(oklch);
 	oklch = OKLab_to_OKLCH(oklch);
+	if (oklch[0] < 0.000001) {
+		oklch = [0, 0, 0] as color;
+	}
+
+	if (oklch[0] > 0.999999) {
+		oklch = [1, 0, 0] as color;
+	}
 
 	// 2. If needed, convert from a D50 whitepoint(used by Lab) to the D65 whitepoint used in sRGB and most other RGB spaces, with the Bradford transform.prophoto - rgb' does not require this step.
 	conversion = D50_to_D65(conversion);
