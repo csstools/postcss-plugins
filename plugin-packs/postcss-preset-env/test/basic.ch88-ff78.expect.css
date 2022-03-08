@@ -222,6 +222,18 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	margin: clamp(1rem, 2%, 3rem) 4vh;
 }
 
+.calc-clamp {
+	margin: 0 40px 0 calc(-1 * clamp(32px, 16vw, 64px));
+}
+
+.multiple-calc-clamp {
+	margin: calc(-1 * clamp(1px, 2vw, 3px)) calc(-1 * clamp(4px, 5vw, 6px));
+}
+
+.nested-clamp {
+	font-size: clamp(clamp(1rem, 2vw, 3rem), 4vw, 5rem);
+}
+
 @font-face {
 	font-family: 'A';
 	font-style: normal;
@@ -321,7 +333,7 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 }
 
 .color-function {
-	prop-1: rgb(0,129,96);
+	prop-1: rgb(0,132,94);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
 	prop-3: rgba(7,3,1,1);
 	prop-4: rgba(7,3,1,calc(33 / 22));
@@ -368,16 +380,16 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	color-6: rgb(197, 84, 124);
 	color-6: color(display-p3 0.71738 0.35446 0.48551);
 
-	color-7: rgb(0, 149, 131);
+	color-7: rgb(0, 152, 131);
 
 	color-7: color(display-p3 0.19244 0.58461 0.51559);
-	color-8: rgb(0, 149, 131);
+	color-8: rgb(0, 152, 131);
 	color-8: color(display-p3 0.19244 0.58461 0.51559);
-	color-9: rgb(0, 149, 131);
+	color-9: rgb(0, 152, 131);
 	color-9: color(display-p3 0.19244 0.58461 0.51559);
-	color-10: rgb(0, 149, 131);
+	color-10: rgb(0, 152, 131);
 	color-10: color(display-p3 0.19244 0.58461 0.51559);
-	color-11: rgb(0, 149, 131);
+	color-11: rgb(0, 152, 131);
 	color-11: color(display-p3 0.19244 0.58461 0.51559);
 
 	color-12: rgb(188, 101, 59);

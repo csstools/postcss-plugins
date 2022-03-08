@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssBasePlugin = require('@csstools/postcss-base-plugin');
 
 postcss([
-  postcssBasePlugin(/* pluginOptions */)
+	postcssBasePlugin(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-base-plugin  --save-dev
+npm install postcss-cli @csstools/postcss-base-plugin --save-dev
 ```
 
 Use [PostCSS Base Plugin] in your `postcss.config.js` configuration file:
@@ -38,9 +38,9 @@ Use [PostCSS Base Plugin] in your `postcss.config.js` configuration file:
 const postcssBasePlugin = require('@csstools/postcss-base-plugin');
 
 module.exports = {
-  plugins: [
-    postcssBasePlugin(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssBasePlugin(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Base Plugin] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "@csstools/postcss-base-plugin",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"@csstools/postcss-base-plugin",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssBasePlugin = require('@csstools/postcss-base-plugin');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssBasePlugin(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssBasePlugin(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssBasePlugin = require('@csstools/postcss-base-plugin');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssBasePlugin(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssBasePlugin(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssBasePlugin = require('@csstools/postcss-base-plugin');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssBasePlugin(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssBasePlugin(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

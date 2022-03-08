@@ -29,7 +29,7 @@ export function labToSRgb(labRaw: color): color {
 
 	const lab = [labL, labA, labB];
 
-	let conversion = lab.slice() as color;
+	let conversion = lab as color;
 
 	// https://drafts.csswg.org/css-color-4/#oklab-lab-to-predefined
 	// 1. Convert Lab to(D50 - adapted) XYZ
@@ -39,6 +39,13 @@ export function labToSRgb(labRaw: color): color {
 	oklch = D50_to_D65(oklch);
 	oklch = XYZ_to_OKLab(oklch);
 	oklch = OKLab_to_OKLCH(oklch);
+	if (oklch[0] < 0.000001) {
+		oklch = [0, 0, 0] as color;
+	}
+
+	if (oklch[0] > 0.999999) {
+		oklch = [1, 0, 0] as color;
+	}
 
 	// 2. If needed, convert from a D50 whitepoint(used by Lab) to the D65 whitepoint used in sRGB and most other RGB spaces, with the Bradford transform.prophoto - rgb' does not require this step.
 	conversion = D50_to_D65(conversion);

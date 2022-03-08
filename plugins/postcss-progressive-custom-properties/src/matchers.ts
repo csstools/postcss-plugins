@@ -14,7 +14,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -22,7 +21,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -30,7 +28,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -48,7 +45,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -56,7 +52,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -64,7 +59,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -97,7 +91,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -105,7 +98,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -113,7 +105,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -131,7 +122,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -139,7 +129,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -147,7 +136,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -180,7 +168,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -188,7 +175,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -196,7 +182,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -214,7 +199,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -222,7 +206,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -230,7 +213,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -263,7 +245,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -271,7 +252,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -279,7 +259,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -297,7 +276,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -305,7 +283,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -313,7 +290,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -346,7 +322,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -354,7 +329,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -362,7 +336,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -380,7 +353,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -388,7 +360,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -396,7 +367,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -429,7 +399,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -437,7 +406,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -445,7 +413,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -463,7 +430,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -471,7 +437,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -479,7 +444,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -512,7 +476,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -520,7 +483,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -528,7 +490,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -546,7 +507,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -554,7 +514,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -562,7 +521,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -595,7 +553,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -603,7 +560,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -611,7 +567,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -629,7 +584,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -637,7 +591,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -645,7 +598,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -678,7 +630,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -686,7 +637,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -694,7 +644,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -712,7 +661,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -720,7 +668,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -728,7 +675,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -785,40 +731,6 @@ export const matchers = [
 					},
 				],
 			},
-			{
-				'type': 'function',
-				'value': 'hsl',
-				'nodes': [
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-				],
-			},
 		],
 	},
 	{
@@ -836,7 +748,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -844,7 +755,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -862,7 +772,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -870,7 +779,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -903,7 +811,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -911,7 +818,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -944,7 +850,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -952,7 +857,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -970,7 +874,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -978,7 +881,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1011,7 +913,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1019,7 +920,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1037,7 +937,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1045,7 +944,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1078,7 +976,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1086,7 +983,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1104,7 +1000,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1112,7 +1007,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1145,7 +1039,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1153,7 +1046,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1171,7 +1063,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1179,7 +1070,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1212,7 +1102,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1220,7 +1109,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1238,7 +1126,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1246,7 +1133,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1303,40 +1189,6 @@ export const matchers = [
 					},
 				],
 			},
-			{
-				'type': 'function',
-				'value': 'rgb',
-				'nodes': [
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-				],
-			},
 		],
 	},
 	{
@@ -1354,7 +1206,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1362,7 +1213,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1380,7 +1230,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1388,7 +1237,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1421,7 +1269,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1429,7 +1276,6 @@ export const matchers = [
 					},
 					{
 						'type': 'space',
-						'value': ' ',
 					},
 					{
 						'type': 'word',
@@ -1448,6 +1294,361 @@ export const matchers = [
 		],
 	},
 	{
+		'supports': 'color-mix(in oklch, #000, #fff)',
+		'property': 'color',
+		'sniff': 'color-mix',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+		],
+	},
+	{
 		'supports': '1ic',
 		'property': 'font-size',
 		'sniff': 'ic',
@@ -1456,7 +1657,6 @@ export const matchers = [
 				'type': 'word',
 				'value': '1ic',
 				'dimension': {
-					'number': '1',
 					'unit': 'ic',
 				},
 			},

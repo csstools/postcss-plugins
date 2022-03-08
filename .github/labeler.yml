@@ -95,6 +95,10 @@
   - plugins/postcss-gap-properties/**
   - experimental/postcss-gap-properties/**
 
+"plugins/postcss-gradients-interpolation-method":
+  - plugins/postcss-gradients-interpolation-method/**
+  - experimental/postcss-gradients-interpolation-method/**
+
 "plugins/postcss-hwb-function":
   - plugins/postcss-hwb-function/**
   - experimental/postcss-hwb-function/**

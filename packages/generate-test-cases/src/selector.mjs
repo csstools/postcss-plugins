@@ -20,7 +20,7 @@ export function generateSelectorTestCases(selector) {
 	selectors.push(`:--${selector}`);
 	selectors.push(`__${selector}`);
 
-	let result =  selectors.map((x, index) => {
+	let result = selectors.map((x, index) => {
 		return `${x} {
 	order: ${index};
 }`;

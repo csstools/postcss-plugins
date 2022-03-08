@@ -1,71 +1,71 @@
 {
-  "name": "@csstools/csstools-cli",
-  "description": "Transform CSS with any plugin from csstools/postcss-plugins",
-  "version": "1.2.0",
-  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
-  "license": "CC0-1.0",
-  "engines": {
-    "node": "^12 || ^14 || >=16"
-  },
-  "bin": {
-    "csstools-cli": "dist/cli.cjs"
-  },
-  "types": "dist/cli.d.ts",
-  "files": [
-    "CHANGELOG.md",
-    "LICENSE.md",
-    "README.md",
-    "dist"
-  ],
-  "dependencies": {
-    "@csstools/postcss-font-format-keywords": "^1.0.0",
-    "@csstools/postcss-hwb-function": "^1.0.0",
-    "@csstools/postcss-is-pseudo-class": "^2.0.0",
-    "@csstools/postcss-normalize-display-values": "^1.0.0",
-    "css-blank-pseudo": "^3.0.3",
-    "css-has-pseudo": "^3.0.4",
-    "css-prefers-color-scheme": "^6.0.3",
-    "postcss-color-functional-notation": "^4.2.2",
-    "postcss-color-hex-alpha": "^8.0.3",
-    "postcss-color-rebeccapurple": "^7.0.2",
-    "postcss-custom-properties": "^12.1.4",
-    "postcss-dir-pseudo-class": "^6.0.4",
-    "postcss-double-position-gradients": "^3.1.0",
-    "postcss-env-function": "^4.0.5",
-    "postcss-focus-visible": "^6.0.4",
-    "postcss-focus-within": "^5.0.4",
-    "postcss-gap-properties": "^3.0.3",
-    "postcss-image-set-function": "^4.0.6",
-    "postcss-lab-function": "^4.1.1",
-    "postcss-logical": "^5.0.4",
-    "postcss-nesting": "^10.1.2",
-    "postcss-overflow-shorthand": "^3.0.3",
-    "postcss-place": "^7.0.4",
-    "postcss-preset-env": "^7.4.0",
-    "postcss-pseudo-class-any-link": "^7.1.1"
-  },
-  "devDependencies": {
-    "postcss": "^8.4.6"
-  },
-  "scripts": {
-    "build": "rollup -c ../../rollup/default.js",
-    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "csstools-cli": "csstools-cli",
-    "lint": "npm run lint:eslint && npm run lint:package-json",
-    "lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
-    "lint:package-json": "node ../../.github/bin/format-package-json.mjs",
-    "prepublishOnly": "npm run clean && npm run build && npm run test",
-    "stryker": "stryker run --logLevel error",
-    "test": "exit 0",
-    "test:cli": "bash ./test/cli/test.sh"
-  },
-  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/cli/csstools-cli#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "cli/csstools-cli"
-  },
-  "volta": {
-    "extends": "../../package.json"
-  }
+	"name": "@csstools/csstools-cli",
+	"description": "Transform CSS with any plugin from csstools/postcss-plugins",
+	"version": "1.2.0",
+	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"license": "CC0-1.0",
+	"engines": {
+		"node": "^12 || ^14 || >=16"
+	},
+	"bin": {
+		"csstools-cli": "dist/cli.cjs"
+	},
+	"types": "dist/cli.d.ts",
+	"files": [
+		"CHANGELOG.md",
+		"LICENSE.md",
+		"README.md",
+		"dist"
+	],
+	"dependencies": {
+		"@csstools/postcss-font-format-keywords": "^1.0.0",
+		"@csstools/postcss-hwb-function": "^1.0.0",
+		"@csstools/postcss-is-pseudo-class": "^2.0.0",
+		"@csstools/postcss-normalize-display-values": "^1.0.0",
+		"css-blank-pseudo": "^3.0.3",
+		"css-has-pseudo": "^3.0.4",
+		"css-prefers-color-scheme": "^6.0.3",
+		"postcss-color-functional-notation": "^4.2.2",
+		"postcss-color-hex-alpha": "^8.0.3",
+		"postcss-color-rebeccapurple": "^7.0.2",
+		"postcss-custom-properties": "^12.1.4",
+		"postcss-dir-pseudo-class": "^6.0.4",
+		"postcss-double-position-gradients": "^3.1.0",
+		"postcss-env-function": "^4.0.5",
+		"postcss-focus-visible": "^6.0.4",
+		"postcss-focus-within": "^5.0.4",
+		"postcss-gap-properties": "^3.0.3",
+		"postcss-image-set-function": "^4.0.6",
+		"postcss-lab-function": "^4.1.1",
+		"postcss-logical": "^5.0.4",
+		"postcss-nesting": "^10.1.2",
+		"postcss-overflow-shorthand": "^3.0.3",
+		"postcss-place": "^7.0.4",
+		"postcss-preset-env": "^7.4.0",
+		"postcss-pseudo-class-any-link": "^7.1.1"
+	},
+	"devDependencies": {
+		"postcss": "^8.4.6"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup/default.js",
+		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+		"csstools-cli": "csstools-cli",
+		"lint": "npm run lint:eslint && npm run lint:package-json",
+		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
+		"prepublishOnly": "npm run clean && npm run build && npm run test",
+		"stryker": "stryker run --logLevel error",
+		"test": "exit 0",
+		"test:cli": "bash ./test/cli/test.sh"
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/cli/csstools-cli#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/csstools/postcss-plugins.git",
+		"directory": "cli/csstools-cli"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
 }

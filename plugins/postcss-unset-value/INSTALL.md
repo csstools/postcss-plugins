@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssUnsetValue = require('@csstools/postcss-unset-value');
 
 postcss([
-  postcssUnsetValue(/* pluginOptions */)
+	postcssUnsetValue(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-unset-value  --save-dev
+npm install postcss-cli @csstools/postcss-unset-value --save-dev
 ```
 
 Use [PostCSS Unset Value] in your `postcss.config.js` configuration file:
@@ -38,9 +38,9 @@ Use [PostCSS Unset Value] in your `postcss.config.js` configuration file:
 const postcssUnsetValue = require('@csstools/postcss-unset-value');
 
 module.exports = {
-  plugins: [
-    postcssUnsetValue(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssUnsetValue(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Unset Value] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "@csstools/postcss-unset-value",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"@csstools/postcss-unset-value",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssUnsetValue = require('@csstools/postcss-unset-value');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssUnsetValue(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssUnsetValue(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssUnsetValue = require('@csstools/postcss-unset-value');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssUnsetValue(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssUnsetValue(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssUnsetValue = require('@csstools/postcss-unset-value');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssUnsetValue(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssUnsetValue(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

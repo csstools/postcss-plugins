@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssHWBFunction = require('@csstools/postcss-hwb-function');
 
 postcss([
-  postcssHWBFunction(/* pluginOptions */)
+	postcssHWBFunction(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-hwb-function  --save-dev
+npm install postcss-cli @csstools/postcss-hwb-function --save-dev
 ```
 
 Use [PostCSS HWB Function] in your `postcss.config.js` configuration file:
@@ -38,9 +38,9 @@ Use [PostCSS HWB Function] in your `postcss.config.js` configuration file:
 const postcssHWBFunction = require('@csstools/postcss-hwb-function');
 
 module.exports = {
-  plugins: [
-    postcssHWBFunction(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssHWBFunction(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS HWB Function] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "@csstools/postcss-hwb-function",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"@csstools/postcss-hwb-function",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssHWBFunction = require('@csstools/postcss-hwb-function');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssHWBFunction(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssHWBFunction(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssHWBFunction = require('@csstools/postcss-hwb-function');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssHWBFunction(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssHWBFunction(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssHWBFunction = require('@csstools/postcss-hwb-function');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssHWBFunction(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssHWBFunction(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

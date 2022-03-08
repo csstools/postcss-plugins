@@ -5,19 +5,26 @@
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-
 [PostCSS Color Function] lets you use the `color` function in
 CSS, following the [CSS Color] specification.
 
 ```pcss
 .color {
-  color: color(display-p3 0.64331 0.19245 0.16771);
+	color: color(display-p3 0.64331 0.19245 0.16771);
+}
+
+:root {
+	--a-color: color(srgb 0.64331 0.19245 0.16771);
 }
 
 /* becomes */
 
 .color {
-  color: rgb(179,35,35);
+	color: rgb(179,35,35);
+}
+
+:root {
+	--a-color: rgb(164,49,43);
 }
 ```
 
@@ -36,7 +43,7 @@ const postcss = require('postcss');
 const postcssColorFunction = require('@csstools/postcss-color-function');
 
 postcss([
-  postcssColorFunction(/* pluginOptions */)
+	postcssColorFunction(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -59,14 +66,28 @@ postcssColorFunction({ preserve: true })
 
 ```pcss
 .color {
-  color: color(display-p3 0.64331 0.19245 0.16771);
+	color: color(display-p3 0.64331 0.19245 0.16771);
+}
+
+:root {
+	--a-color: color(srgb 0.64331 0.19245 0.16771);
 }
 
 /* becomes */
 
 .color {
-  color: rgb(179,35,35);
-  color: color(display-p3 0.64331 0.19245 0.16771);
+	color: rgb(179,35,35);
+	color: color(display-p3 0.64331 0.19245 0.16771);
+}
+
+:root {
+	--a-color: rgb(164,49,43);
+}
+
+@supports (color: color(srgb 0 0 0)) {
+:root {
+	--a-color: color(srgb 0.64331 0.19245 0.16771);
+}
 }
 ```
 
@@ -82,17 +103,28 @@ postcssColorFunction({ enableProgressiveCustomProperties: false })
 ```
 
 ```pcss
+.color {
+	color: color(display-p3 0.64331 0.19245 0.16771);
+}
+
 :root {
-	--one: color(srgb 0.64331 0.19245 0.16771);
+	--a-color: color(srgb 0.64331 0.19245 0.16771);
 }
 
 /* becomes */
 
+.color {
+	color: rgb(179,35,35);
+	color: color(display-p3 0.64331 0.19245 0.16771);
+}
+
 :root {
-	--one: rgb(164,49,43); /* will never be used, not even in older browser */
-	--one: color(srgb 0.64331 0.19245 0.16771);
+	--a-color: rgb(164,49,43);
+	--a-color: color(srgb 0.64331 0.19245 0.16771);
 }
 ```
+
+_Custom properties do not fallback to the previous declaration_
 
 ## Supported Color Spaces
 
@@ -133,9 +165,9 @@ This software or document includes material copied from or derived from https://
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/@csstools/postcss-color-function
 
-[CSS Color]: https://www.w3.org/TR/css-color-4/#funcdef-color
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Color Function]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function
+[CSS Color]: https://www.w3.org/TR/css-color-4/#funcdef-color

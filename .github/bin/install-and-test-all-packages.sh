@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # REMOVE this file after node 20 is released and update the test.yml workflow
 
 set -e

@@ -19,11 +19,11 @@ section:not(:has(h1, h2, h3, h4, h5, h6)) {
 }
 
 body:has(:focus) {
-  order: 6;
+	order: 6;
 }
 
 body:not(:has(:focus)) {
-  order: 7;
+	order: 7;
 }
 
 :has-ignore(:focus),

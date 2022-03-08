@@ -4,16 +4,23 @@ import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
 type color = [number, number, number];
 
 export function oklchToDisplayP3(oklchRaw: color): [color, boolean] {
-	const [lchLRaw, lchCRaw, lchHRaw] = oklchRaw;
+	const [oklchLRaw, oklchCRaw, oklchHRaw] = oklchRaw;
 
-	const lchL = Math.max(
-		lchLRaw,
+	const oklchL = Math.max(
+		oklchLRaw,
 		0,
 	);
 
-	const oklch = [lchL, lchCRaw, lchHRaw%360] as color;
+	const oklch = [oklchL, oklchCRaw, oklchHRaw % 360] as color;
 
-	let conversion = oklch.slice() as color;
+	let conversion = oklch as color;
+	if (conversion[0] < 0.000001) {
+		conversion = [0, 0, 0] as color;
+	}
+
+	if (conversion[0] > 0.999999) {
+		conversion = [1, 0, 0] as color;
+	}
 
 	conversion = OKLCH_to_OKLab(conversion);
 	conversion = OKLab_to_XYZ(conversion);

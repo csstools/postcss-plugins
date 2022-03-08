@@ -1,5 +1,11 @@
 # Changes to PostCSS Progressive Custom Properties
 
+## 1.3.0 (March 7, 2022)
+
+- Add matching rules for `color-mix`
+- Fix matching rules for gradient functions
+- Reduce matchers size
+
 ## 1.2.0 (February 15, 2022)
 
 - More matching rules for [double position gradients](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients#readme).

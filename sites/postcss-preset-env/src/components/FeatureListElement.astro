@@ -40,7 +40,7 @@ const link = `/features#${feature.id}`;
 			{ Array.isArray(feature.polyfills) && feature.polyfills.map((polyfill) => (
 			<a
 					class="ppe-feature-heading-link ppe-feature-heading-pluginLink"
-					href="https://github.com/jonathantneal/postcss-pseudo-class-any-link"
+					href={ polyfill.link }
 					rel="noreferrer"
 					aria-label={`${polyfill.type.replace('JavaScript ', '').replace('PostCSS ', '')} for ${cleanTitle}`}
 					target="_blank"

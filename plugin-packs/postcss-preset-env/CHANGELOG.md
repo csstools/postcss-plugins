@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### 7.4.2 (March 2, 2022)
+
+- Adding internal patch for `postcss-clamp` to fix issue when `clamp` was being used with any other values along. [#274](https://github.com/csstools/postcss-plugins/issues/274)
+
 ### 7.4.1 (February 17, 2022) 
 
 - Updated `postcss-clamp` to `4.0.0` (major)

@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssCustomProperties = require('postcss-custom-properties');
 
 postcss([
-  postcssCustomProperties(/* pluginOptions */)
+	postcssCustomProperties(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-custom-properties  --save-dev
+npm install postcss-cli postcss-custom-properties --save-dev
 ```
 
 Use [PostCSS Custom Properties] in your `postcss.config.js` configuration file:
@@ -38,9 +38,9 @@ Use [PostCSS Custom Properties] in your `postcss.config.js` configuration file:
 const postcssCustomProperties = require('postcss-custom-properties');
 
 module.exports = {
-  plugins: [
-    postcssCustomProperties(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssCustomProperties(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Custom Properties] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "postcss-custom-properties",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-custom-properties",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssCustomProperties = require('postcss-custom-properties');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssCustomProperties(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssCustomProperties(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssCustomProperties = require('postcss-custom-properties');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssCustomProperties(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssCustomProperties(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssCustomProperties = require('postcss-custom-properties');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssCustomProperties(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssCustomProperties(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

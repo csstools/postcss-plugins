@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
 
 postcss([
-  postcssPseudoClassAnyLink(/* pluginOptions */)
+	postcssPseudoClassAnyLink(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-pseudo-class-any-link  --save-dev
+npm install postcss-cli postcss-pseudo-class-any-link --save-dev
 ```
 
 Use [PostCSS Pseudo Class Any Link] in your `postcss.config.js` configuration file:
@@ -38,9 +38,9 @@ Use [PostCSS Pseudo Class Any Link] in your `postcss.config.js` configuration fi
 const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
 
 module.exports = {
-  plugins: [
-    postcssPseudoClassAnyLink(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssPseudoClassAnyLink(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Pseudo Class Any Link] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "postcss-pseudo-class-any-link",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-pseudo-class-any-link",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssPseudoClassAnyLink(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssPseudoClassAnyLink(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssPseudoClassAnyLink(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssPseudoClassAnyLink(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssPseudoClassAnyLink(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssPseudoClassAnyLink(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

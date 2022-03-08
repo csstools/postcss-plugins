@@ -39,19 +39,19 @@ section:not(:has(h1, h2, h3, h4, h5, h6)) {
 }
 
 [csstools-has-2q-33-2s-3d-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15]:not(does-not-exist) {
-  order: 6;
+	order: 6;
 }
 
 body:has(:focus) {
-  order: 6;
+	order: 6;
 }
 
 [csstools-has-2q-33-2s-3d-1m-32-33-38-14-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15-15]:not(does-not-exist) {
-  order: 7;
+	order: 7;
 }
 
 body:not(:has(:focus)) {
-  order: 7;
+	order: 7;
 }
 
 :has-ignore(:focus),

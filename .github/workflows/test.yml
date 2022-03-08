@@ -27,7 +27,7 @@ jobs:
         - os: ubuntu-latest
           enable_annotations_for_os: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
@@ -54,7 +54,7 @@ jobs:
   test_e2e:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16

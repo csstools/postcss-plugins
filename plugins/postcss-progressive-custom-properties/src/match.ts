@@ -12,12 +12,23 @@ export function matches(a, b) {
 	}
 
 	if (a.nodes && b.nodes) {
-		if (a.nodes.length !== b.nodes.length) {
-			return false;
-		}
-
 		for (let i = 0; i < a.nodes.length; i++) {
-			if (!matches(a.nodes[i], b.nodes[i])) {
+			let ia = i;
+			let ib = i;
+
+			while (a.nodes[ia] && a.nodes[ia].type === 'space') {
+				ia++;
+			}
+
+			while (b.nodes[ib] && b.nodes[ib].type === 'space') {
+				ib++;
+			}
+
+			if (!!a.nodes[ia] !== !!b.nodes[ib]) {
+				return false;
+			}
+
+			if (!matches(a.nodes[ia], b.nodes[ib])) {
 				return false;
 			}
 		}

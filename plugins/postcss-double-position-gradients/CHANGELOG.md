@@ -1,5 +1,11 @@
 # Changes to PostCSS Double Position Gradients
 
+### 3.1.1 (March 7, 2022)
+
+- Add typescript support
+- Fix color functions.
+- Fix `at` keyword with `at 20px 20px` being interpreted as a double position color stop.
+
 ### 3.1.0 (February 15, 2022)
 
 - Ignore values in relevant `@supports` rules.

@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssProgressiveCustomProperties = require('@csstools/postcss-progressive-custom-properties');
 
 postcss([
-  postcssProgressiveCustomProperties(/* pluginOptions */)
+	postcssProgressiveCustomProperties(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-progressive-custom-properties  --save-dev
+npm install postcss-cli @csstools/postcss-progressive-custom-properties --save-dev
 ```
 
 Use [PostCSS Progressive Custom Properties] in your `postcss.config.js` configuration file:
@@ -38,9 +38,9 @@ Use [PostCSS Progressive Custom Properties] in your `postcss.config.js` configur
 const postcssProgressiveCustomProperties = require('@csstools/postcss-progressive-custom-properties');
 
 module.exports = {
-  plugins: [
-    postcssProgressiveCustomProperties(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssProgressiveCustomProperties(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Progressive Custom Properties] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "@csstools/postcss-progressive-custom-properties",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"@csstools/postcss-progressive-custom-properties",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssProgressiveCustomProperties = require('@csstools/postcss-progressive-custom-properties');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssProgressiveCustomProperties(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssProgressiveCustomProperties(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssProgressiveCustomProperties = require('@csstools/postcss-progressive-custom-properties');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssProgressiveCustomProperties(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssProgressiveCustomProperties(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssProgressiveCustomProperties = require('@csstools/postcss-progressiv
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssProgressiveCustomProperties(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssProgressiveCustomProperties(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

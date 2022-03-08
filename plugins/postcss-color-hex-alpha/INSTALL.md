@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssColorHexAlpha = require('postcss-color-hex-alpha');
 
 postcss([
-  postcssColorHexAlpha(/* pluginOptions */)
+	postcssColorHexAlpha(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-color-hex-alpha  --save-dev
+npm install postcss-cli postcss-color-hex-alpha --save-dev
 ```
 
 Use [PostCSS Color Hex Alpha] in your `postcss.config.js` configuration file:
@@ -38,9 +38,9 @@ Use [PostCSS Color Hex Alpha] in your `postcss.config.js` configuration file:
 const postcssColorHexAlpha = require('postcss-color-hex-alpha');
 
 module.exports = {
-  plugins: [
-    postcssColorHexAlpha(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssColorHexAlpha(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Color Hex Alpha] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "postcss-color-hex-alpha",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-color-hex-alpha",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssColorHexAlpha = require('postcss-color-hex-alpha');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssColorHexAlpha(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssColorHexAlpha(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssColorHexAlpha = require('postcss-color-hex-alpha');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssColorHexAlpha(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssColorHexAlpha(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssColorHexAlpha = require('postcss-color-hex-alpha');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssColorHexAlpha(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssColorHexAlpha(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

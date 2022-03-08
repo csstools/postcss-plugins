@@ -30,7 +30,7 @@
 }
 }
 
-@supports (background: linear-gradient(0deg, red 0% 1%, red 2%)) and (color: rgba(0 0 0 / 0)) and (color: color(rec2020 0 0 0)) {
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) and (color: rgba(0 0 0 / 0)) and (color: color(rec2020 0 0 0)) {
 :root {
 	--prop-2: linear-gradient(
 		45deg,
@@ -51,19 +51,19 @@
 }
 }
 
-@supports (background: linear-gradient(0deg, red 0% 1%, red 2%)) {
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) {
 :root {
 	--gradient-prop-6: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 }
 }
 
-@supports (background: conic-gradient(red 0%, red 0deg 1%, red 2deg)) {
+@supports (background: conic-gradient(red 0deg, red 0deg 1deg, red 2deg)) {
 :root {
 	--gradient-prop-7: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
 }
 }
 
-@supports (background: repeating-linear-gradient(0deg, red 0% 1%, red 2%)) {
+@supports (background: repeating-linear-gradient(red 0%, red 0% 1%, red 2%)) {
 :root {
 	--gradient-prop-8: repeating-linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 }
@@ -168,5 +168,104 @@
 @supports (color: color(rec2020 0 0 0)) {
 :root {
 	--color-6: color(rec2020 0.64331 0.19245 0.16771);
+}
+}
+
+:root {
+		/* interleaved with color interpolation */
+		--gradient-prop-6: linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%);
+		--gradient-prop-7: conic-gradient(yellowgreen 40%, gold 0deg, gold 75%, #f06 0deg);
+		--gradient-prop-8: repeating-linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%);
+		--gradient-prop-9: repeating-conic-gradient(yellowgreen 40%, gold 0deg, gold 75%, #f06 0deg);
+		--gradient-prop-10: repeating-radial-gradient(red 0, red 8%, yellow 8%, yellow 16%, blue 16%, blue 24%);
+}
+
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) {
+:root {
+		--gradient-prop-6: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+}
+}
+
+@supports (background: conic-gradient(in oklch, red 0deg, red 0deg 1deg, red 2deg)) {
+:root {
+		--gradient-prop-7: conic-gradient(in oklch, yellowgreen 40%, gold 0deg 75%, #f06 0deg);
+}
+}
+
+@supports (background: repeating-linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) {
+:root {
+		--gradient-prop-8: repeating-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+}
+}
+
+@supports (background: repeating-conic-gradient(in oklch from 0deg, red 0deg, red 0deg 1deg, red 2deg)) {
+:root {
+		--gradient-prop-9: repeating-conic-gradient(in oklch from 0deg, yellowgreen 40deg, gold 60deg 75deg, #f06 0deg);
+}
+}
+
+@supports (background: repeating-radial-gradient(in oklch, red, red 1px 2px, red 3px)) {
+:root {
+		--gradient-prop-10: repeating-radial-gradient(in oklch, red 0 8%, yellow 8% 16%, blue 16% 24%);
+}
+}
+
+:root {
+	/* color-mix() */
+	--color-mix-1: plum;
+	--color-mix-2: plum;
+	--color-mix-3: plum;
+	--color-mix-4: plum;
+	--color-mix-5: plum;
+	--color-mix-6: plum;
+	--color-mix-7: plum;
+}
+
+@supports (color: color-mix(in oklch, #000, #fff)) {
+:root {
+	--color-mix-1: color-mix(in lch, purple 50%, plum 50%);
+}
+}
+
+@supports (color: color-mix(in oklch, #000, #fff)) {
+:root {
+	--color-mix-2: color-mix(in lch longer, purple 50%, plum 50%);
+}
+}
+
+@supports (color: color-mix(in oklch, #000, #fff)) {
+:root {
+	--color-mix-3: color-mix(in lab, purple 50%, plum 50%);
+}
+}
+
+@supports (color: color-mix(in oklch, #000, #fff)) {
+:root {
+	--color-mix-4: color-mix(in srgb, purple, plum 50%);
+}
+}
+
+@supports (color: color-mix(in oklch, #000, #fff)) {
+:root {
+	--color-mix-5: color-mix(in srgb-linear, purple 50%, plum);
+}
+}
+
+@supports (color: color-mix(in oklch, #000, #fff)) {
+:root {
+	--color-mix-6: color-mix(in xyz, purple, plum);
+}
+}
+
+@supports (color: color-mix(in oklch, #000, #fff)) {
+:root {
+	--color-mix-7: color-mix(
+		/* color space */
+		in xyz,
+		/* first color */
+		purple,
+		/* second color */
+		plum
+	);
 }
 }

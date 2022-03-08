@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssLogical = require('postcss-logical');
 
 postcss([
-  postcssLogical(/* pluginOptions */)
+	postcssLogical(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-logical  --save-dev
+npm install postcss-cli postcss-logical --save-dev
 ```
 
 Use [PostCSS Logical Properties and Values] in your `postcss.config.js` configuration file:
@@ -38,9 +38,9 @@ Use [PostCSS Logical Properties and Values] in your `postcss.config.js` configur
 const postcssLogical = require('postcss-logical');
 
 module.exports = {
-  plugins: [
-    postcssLogical(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssLogical(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Logical Properties and Values] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "postcss-logical",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-logical",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssLogical = require('postcss-logical');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssLogical(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssLogical(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssLogical = require('postcss-logical');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssLogical(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssLogical(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssLogical = require('postcss-logical');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssLogical(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssLogical(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

@@ -89,7 +89,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 
 	packageInfo.repository.directory = `plugins/${pluginSlug}`;
 
-	await fsp.writeFile(path.join(pluginDir, 'package.json'), JSON.stringify(packageInfo, null, 2));
+	await fsp.writeFile(path.join(pluginDir, 'package.json'), JSON.stringify(packageInfo, null, '\t'));
 
 	console.log('- Updated "package.json"');
 }
@@ -101,6 +101,7 @@ console.log('\nDone! 🎉');
 	console.log('\nYour next steps:');
 	console.log('- Run : "npm install" from the root directory');
 	console.log(`- Run : "cd plugins/${pluginSlug}"`);
+	console.log('- Run : "npm run docs" to generate documentation');
 	console.log('- Run : "npm run build" to build your plugin');
 	console.log('- Run : "npm run test" to test your plugin');
 	console.log('- Run : "npm run test:rewrite-expects" to update test expects');

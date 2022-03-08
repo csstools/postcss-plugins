@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssColorFunction = require('@csstools/postcss-color-function');
 
 postcss([
-  postcssColorFunction(/* pluginOptions */)
+	postcssColorFunction(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-color-function  --save-dev
+npm install postcss-cli @csstools/postcss-color-function --save-dev
 ```
 
 Use [PostCSS Color Function] in your `postcss.config.js` configuration file:
@@ -38,9 +38,9 @@ Use [PostCSS Color Function] in your `postcss.config.js` configuration file:
 const postcssColorFunction = require('@csstools/postcss-color-function');
 
 module.exports = {
-  plugins: [
-    postcssColorFunction(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssColorFunction(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS Color Function] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "@csstools/postcss-color-function",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"@csstools/postcss-color-function",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssColorFunction = require('@csstools/postcss-color-function');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssColorFunction(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssColorFunction(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssColorFunction = require('@csstools/postcss-color-function');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssColorFunction(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssColorFunction(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssColorFunction = require('@csstools/postcss-color-function');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssColorFunction(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssColorFunction(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

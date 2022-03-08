@@ -25,7 +25,7 @@ export function generateSelectorClassFunctionTestCases(selector) {
 	selectors.push(`:--${selectorWithContents}`);
 	selectors.push(`__${selectorWithContents}`);
 
-	let result =  selectors.map((x, index) => {
+	let result = selectors.map((x, index) => {
 		return `${x} {
 	order: ${index};
 }`;

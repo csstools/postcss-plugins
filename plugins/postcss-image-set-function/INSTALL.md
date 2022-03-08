@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssImageSetFunction = require('postcss-image-set-function');
 
 postcss([
-  postcssImageSetFunction(/* pluginOptions */)
+	postcssImageSetFunction(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli postcss-image-set-function  --save-dev
+npm install postcss-cli postcss-image-set-function --save-dev
 ```
 
 Use [PostCSS image-set() Function] in your `postcss.config.js` configuration file:
@@ -38,9 +38,9 @@ Use [PostCSS image-set() Function] in your `postcss.config.js` configuration fil
 const postcssImageSetFunction = require('postcss-image-set-function');
 
 module.exports = {
-  plugins: [
-    postcssImageSetFunction(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssImageSetFunction(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,35 +58,35 @@ Use [PostCSS image-set() Function] in your Webpack configuration:
 
 ```js
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "postcss-image-set-function",
-                    {
-                      // Options
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-image-set-function",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -106,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssImageSetFunction = require('postcss-image-set-function');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssImageSetFunction(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssImageSetFunction(/* pluginOptions */)
+	]
 });
 ```
 
@@ -127,13 +127,13 @@ const postcss = require('gulp-postcss');
 const postcssImageSetFunction = require('postcss-image-set-function');
 
 gulp.task('css', function () {
-  var plugins = [
-    postcssImageSetFunction(/* pluginOptions */)
-  ];
+	var plugins = [
+		postcssImageSetFunction(/* pluginOptions */)
+	];
 
-  return gulp.src('./src/*.css')
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest('.'));
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
 });
 ```
 
@@ -153,16 +153,16 @@ const postcssImageSetFunction = require('postcss-image-set-function');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssImageSetFunction(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssImageSetFunction(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

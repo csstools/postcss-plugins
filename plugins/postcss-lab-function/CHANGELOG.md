@@ -28,8 +28,12 @@
 	color-2: rgb(157, 63, 45);
 	color-2: color(display-p3 0.57072 0.27138 0.20109);
 }
-
 ```
+
+### 4.1.2 (March 8, 2022)
+
+- Fix gamut mapping giving overly unsaturated colors.
+- Implement powerless color components in gamut mapping.
 
 ### 4.1.1 (February 15, 2022)
 
