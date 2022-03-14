@@ -1,0 +1,27 @@
+@layer A {
+	target {
+		color: red;
+	}
+}
+
+@layer B {
+	target {
+		color: orange;
+	}
+}
+
+@layer C {
+	target {
+		color: yellow;
+	}
+}
+
+@layer {
+	target {
+		color: green;
+	}
+}
+
+target {
+	color: purple;
+}
