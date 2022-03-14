@@ -1,0 +1,20 @@
+.foo {
+	color: #f00;
+}
+
+@media (min-width: 768px) {
+	.baz {
+		color: green;
+	}
+}
+
+@supports (object-fit: cover) {
+	.baz {
+		color: green;
+		object-fit: cover;
+	}
+}
+
+:is(.button, button[type="submit"]) {
+	color: green;
+}

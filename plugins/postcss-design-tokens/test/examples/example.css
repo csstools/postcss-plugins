@@ -1,0 +1,20 @@
+.foo {
+	color: design-token(color);
+}
+
+@media (design-token: medium) {
+	.baz {
+		color: green;
+	}
+}
+
+@supports design-token(cover) {
+	.baz {
+		color: green;
+		object-fit: cover;
+	}
+}
+
+:design-token(button) {
+	color: green;
+}
