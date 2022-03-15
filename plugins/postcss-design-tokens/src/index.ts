@@ -1,47 +1,72 @@
 import type { PluginCreator } from 'postcss';
+import { AtMediaOptions, AtSupportsOptions, SelectorOptions, validateOptions, ValueOptions } from './options';
+import { onCSSValue, onCSSValueRequiredDesignToken, onCSSValueUnknownDesignToken } from './values';
 
-type pluginOptions = { color?: string, preserve?: boolean };
+type pluginOptions = {
+	requiresDesignTokens?: {
+		properties: Array<string>,
+	},
+	designTokens?: {
+		atMedia?: Array<AtMediaOptions>,
+		atSupports?: Array<AtSupportsOptions>,
+		selectors?: Array<SelectorOptions>,
+		values?: Array<ValueOptions>
+	}
+};
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const options = Object.assign(
-		// Default options
-		{
-			color: null,
-			preserve: false,
-		},
-		// Provided options
-		opts,
-	);
+	const config = validateOptions(opts);
 
 	return {
 		postcssPlugin: 'postcss-design-tokens',
-		Declaration(decl) {
-			if (decl.value === 'red') {
-				// Determine the new value.
-				let newValue = 'blue';
-				if (options.color) {
-					newValue = options.color;
-				}
+		prepare() {
+			return {
+				Once(root, { result }) {
 
-				// Check if it is different from the current value.
-				if (newValue === decl.value) {
-					return;
-				}
+					if (config.requiresDesignTokens.properties.size > 0) {
+						// Emit warnings for properties that use custom values when not allowed.
 
-				// Insert the new value before the current value.
-				decl.cloneBefore({
-					prop: 'color',
-					value: newValue,
-				});
+						root.walkDecls(decl => {
+							if (config.requiresDesignTokens.properties.has(decl.prop)) {
+								if (decl.value.indexOf('design-token') === -1) {
+									decl.warn(result, `"${decl.prop}" must always use design tokens.`);
+									return;
+								}
 
-				// If the current value is preserved we are done and return here.
-				if (options.preserve) {
-					return;
-				}
+								const modifiedValue = onCSSValueRequiredDesignToken(config, result, decl);
+								if (modifiedValue === false || modifiedValue === decl.value) {
+									decl.warn(result, `"${decl.prop}" must always use design tokens.`);
+									return;
+								}
 
-				// If the current value is not preserved we remove it.
-				decl.remove();
-			}
+								decl.value = modifiedValue;
+							}
+						});
+					}
+				},
+				OnceExit(root, { result }) {
+					// Emit warnings if design tokens remain after processing.
+					root.walkDecls(decl => {
+						if (decl.value.indexOf('design-token') === -1) {
+							return;
+						}
+
+						onCSSValueUnknownDesignToken(config, result, decl);
+					});
+				},
+				Declaration(decl, { result }) {
+					if (decl.value.indexOf('design-token') === -1) {
+						return;
+					}
+
+					const modifiedValue = onCSSValue(config, result, decl);
+					if (modifiedValue === decl.value) {
+						return;
+					}
+
+					decl.value = modifiedValue;
+				},
+			};
 		},
 	};
 };

@@ -2,19 +2,20 @@
 	color: #f00;
 }
 
-@media (min-width: 768px) {
+@media (design-token: medium) {
 	.baz {
-		color: green;
+		color: #f00;
+		background-color: rgb(255, 0, 0);
 	}
 }
 
-@supports (object-fit: cover) {
+@supports (design-token: cover) {
 	.baz {
-		color: green;
+		color: #f00;
 		object-fit: cover;
 	}
 }
 
-:is(.button, button[type="submit"]) {
-	color: green;
+:design-token(button) {
+	color: #f00;
 }

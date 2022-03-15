@@ -1,7 +1,21 @@
 .foo {
-	color: blue;
+	color: #f00;
 }
 
-.baz {
-	color: green;
+@media (design-token: medium) {
+	.baz {
+		color: #f00;
+		background-color: rgb(255, 0, 0);
+	}
+}
+
+@supports (design-token: cover) {
+	.baz {
+		color: #f00;
+		object-fit: cover;
+	}
+}
+
+:design-token(button) {
+	color: #f00;
 }

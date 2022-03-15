@@ -4,17 +4,18 @@
 
 @media (design-token: medium) {
 	.baz {
-		color: green;
+		color: design-token(color);
+		background-color: rgb(design-token(red-components));
 	}
 }
 
-@supports design-token(cover) {
+@supports (design-token: cover) {
 	.baz {
-		color: green;
+		color: design-token(color);
 		object-fit: cover;
 	}
 }
 
 :design-token(button) {
-	color: green;
+	color: design-token(color);
 }
