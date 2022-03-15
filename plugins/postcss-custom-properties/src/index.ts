@@ -8,6 +8,8 @@ import writeCustomPropertiesToExports from './lib/write-custom-properties-to-exp
 import type { ImportOptions, ExportOptions } from './lib/options';
 
 export interface PluginOptions {
+	/** Do not emit warnings about "importFrom" and "exportTo" deprecations */
+	disableDeprecationNotice?: boolean;
 	/** Determines whether Custom Properties and properties using custom properties should be preserved in their original form. */
 	preserve?: boolean
 
@@ -25,6 +27,7 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 	// whether to preserve custom selectors and rules using them
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
 	const overrideImportFromWithRoot = 'overrideImportFromWithRoot' in Object(opts) ? Boolean(opts.overrideImportFromWithRoot) : false;
+	const disableDeprecationNotice = 'disableDeprecationNotice' in Object(opts) ? Boolean(opts.disableDeprecationNotice) : false;
 
 	// sources to import custom selectors from
 	let importFrom: Array<ImportOptions> = [];
@@ -86,7 +89,11 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 					Declaration: (decl) => {
 						transformProperties(decl, customProperties, { preserve });
 					},
-					OnceExit: () => {
+					OnceExit: (root, { result }) => {
+						if (!disableDeprecationNotice && (importFrom.length > 0 || exportTo.length > 0)) {
+							root.warn(result, '"importFrom" and "exportTo" will be removed in a future version of postcss-custom-properties.\nCheck the discussion on github for more details. https://github.com/csstools/postcss-plugins/discussions/192');
+						}
+
 						customProperties.clear();
 					},
 				};

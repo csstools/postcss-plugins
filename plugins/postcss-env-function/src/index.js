@@ -11,6 +11,8 @@ export default function creator(opts) {
 
 	// promise any environment variables are imported
 	const environmentVariablesPromise = importEnvironmentVariablesFromSources(importFrom);
+	const disableDeprecationNotice = 'disableDeprecationNotice' in Object(opts) ? Boolean(opts.disableDeprecationNotice) : false;
+	let didWarn = false;
 
 	return {
 		postcssPlugin: 'postcss-env-fn',
@@ -32,6 +34,11 @@ export default function creator(opts) {
 
 			if (replacedValue !== atRule.params) {
 				atRule.params = replacedValue;
+
+				if (!disableDeprecationNotice && !didWarn) {
+					didWarn= true;
+					atRule.warn(result, 'postcss-env-function is deprecated and will be removed.\nCheck the discussion on github for more details. https://github.com/csstools/postcss-plugins/discussions/192');
+				}
 			}
 		},
 		async Declaration(decl, { result }) {
@@ -52,6 +59,11 @@ export default function creator(opts) {
 
 			if (replacedValue !== decl.value) {
 				decl.value = replacedValue;
+
+				if (!disableDeprecationNotice && !didWarn) {
+					didWarn = true;
+					decl.warn(result, 'postcss-env-function is deprecated and will be removed.\nCheck the discussion on github for more details. https://github.com/csstools/postcss-plugins/discussions/192');
+				}
 			}
 		},
 	};
