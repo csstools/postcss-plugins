@@ -133,7 +133,7 @@ Not all valid [declaration value names] are accepted.
 
 Silence the deprecation notice that is printed to the console when using `importFrom``.
 
-> "importFrom" will be removed in a future version of postcss-env-function.
+> postcss-env-function is deprecated and will be removed.
 > Check the discussion on github for more details. https://github.com/csstools/postcss-plugins/discussions/192
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
