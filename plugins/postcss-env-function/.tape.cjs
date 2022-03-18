@@ -8,6 +8,7 @@ postcssTape(plugin)({
 	'basic:import': {
 		message: 'supports { importFrom: { environmentVariables: { ... } } } usage',
 		options: {
+			disableDeprecationNotice: true,
 			importFrom: {
 				environmentVariables: {
 					'--some-custom-padding': '20px',
@@ -18,6 +19,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-fn': {
 		message: 'supports { importFrom() } usage',
+		warnings: 1,
 		options: {
 			importFrom() {
 				return {
@@ -33,6 +35,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-fn-promise': {
 		message: 'supports { async importFrom() } usage',
+		warnings: 1,
 		options: {
 			importFrom() {
 				return new Promise(resolve => {
@@ -50,6 +53,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-json': {
 		message: 'supports { importFrom: "test/import-variables.json" } usage',
+		warnings: 1,
 		options: {
 			importFrom: 'test/import-variables.json'
 		},
@@ -58,6 +62,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-js': {
 		message: 'supports { importFrom: "test/import-variables.js" } usage',
+		warnings: 1,
 		options: {
 			importFrom: 'test/import-variables.js'
 		},
@@ -66,6 +71,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-cjs': {
 		message: 'supports { importFrom: "test/import-variables.cjs" } usage',
+		warnings: 1,
 		options: {
 			importFrom: 'test/import-variables.cjs'
 		},
@@ -74,6 +80,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-js-from': {
 		message: 'supports { importFrom: { from: "test/import-variables.js" } } usage',
+		warnings: 1,
 		options: {
 			importFrom: { from: 'test/import-variables.js' }
 		},
@@ -82,6 +89,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-js-from-type': {
 		message: 'supports { importFrom: [ { from: "test/import-variables.js", type: "js" } ] } usage',
+		warnings: 1,
 		options: {
 			importFrom: [ { from: 'test/import-variables.js', type: 'js' } ]
 		},
