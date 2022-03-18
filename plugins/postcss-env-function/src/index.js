@@ -62,7 +62,7 @@ export default function creator(opts) {
 
 				if (!disableDeprecationNotice && !didWarn) {
 					didWarn = true;
-					decl.warn(result, 'postcss-env-function is deprecated and will be removed.\nCheck the discussion on github for more details. https://github.com/csstools/postcss-plugins/discussions/192');
+					decl.warn(result, 'postcss-env-function is deprecated and will be removed.\nWe are looking for insights and anecdotes on how these features are used so that we can design the best alternative.\nPlease let us know if our proposal will work for you.\nVisit the discussion on github for more details. https://github.com/csstools/postcss-plugins/discussions/192');
 				}
 			}
 		},
