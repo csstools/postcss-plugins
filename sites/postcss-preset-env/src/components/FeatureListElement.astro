@@ -51,5 +51,5 @@ const link = `/features#${feature.id}`;
 		</div>
 	</header>
 	<p class="ppe-feature-description" set:html={ simpleDescription } />
-	<pre class="ppe-feature-example" dir="ltr" set:html={ parseExample(feature.example) } />
+	<pre class="ppe-feature-example" dir="ltr" set:html={ parseExample(`/* ${feature.id} */\n` + feature.example) } />
 </section>
