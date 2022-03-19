@@ -4,7 +4,7 @@ import { promises as fsp } from 'fs';
 
 let featuresTable = '';
 
-featuresTable = featuresTable + '| ID | Name | example | docs |\n';
+featuresTable = featuresTable + '| ID | Feature | example | docs |\n';
 featuresTable = featuresTable + '| --- | --- | --- | --- |\n';
 
 const ids = Array.from(Object.values(packageNamesToIds));

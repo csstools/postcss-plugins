@@ -2,7 +2,7 @@
 
 The `ID` listed is the key for PostCSS Preset Env configuration in your project.
 
-| ID | Name | example | docs |
+| ID | Feature | example | docs |
 | --- | --- | --- | --- |
 | `all-property` | `all` Property | [example](https://preset-env.cssdb.org/features/#all-property) | [docs](https://github.com/maximkoretskiy/postcss-initial#readme) |
 | `any-link-pseudo-class` | `:any-link` Hyperlink Pseudo-Class | [example](https://preset-env.cssdb.org/features/#any-link-pseudo-class) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link#readme) |
