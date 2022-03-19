@@ -179,7 +179,7 @@ Having 2 independent implementations is [a critical step in proposals becoming s
 
 The `features` option enables or disables specific polyfills by ID. Passing
 `true` to a specific feature ID will enable its polyfill, while passing `false`
-will disable it. [List of IDs](https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/src/plugins/plugins-by-id.mjs)
+will disable it. [List of Features](https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md)
 
 ```js
 postcssPresetEnv({
