@@ -12,14 +12,15 @@ export function pluginIdHelp(featureNamesInOptions, root, result) {
 		const byId = mostSimilar(featureName, featureNames);
 		const byPackage = mostSimilar(featureName, packageNames);
 
-		// TODO :
-		// 1. create markdown docs with the plugin id's
-		// 2. set a distance limit (>10) and if above output link to docs.
+		if (Math.min(byId.distance, byPackage.distance) > 10) {
+			root.warn(result`Unknown feature: "${featureName}", see the list of features https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md`);
+			return;
+		}
 
 		if (byId.distance < byPackage.distance) {
-			root.warn(result, `Unknown feature: "${featureName}" did you mean: "${byId.mostSimilar}"`);
+			root.warn(result, `Unknown feature: "${featureName}", did you mean: "${byId.mostSimilar}"`);
 		} else {
-			root.warn(result, `Unknown feature: "${featureName}" did you mean: "${packageNamesToIds[byPackage.mostSimilar]}"`);
+			root.warn(result, `Unknown feature: "${featureName}", did you mean: "${packageNamesToIds[byPackage.mostSimilar]}"`);
 		}
 	});
 }

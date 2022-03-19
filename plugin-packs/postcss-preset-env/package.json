@@ -38,6 +38,7 @@
 		"css-prefers-color-scheme": "^6.0.3",
 		"cssdb": "^6.4.0",
 		"postcss-attribute-case-insensitive": "^5.0.0",
+		"postcss-clamp": "^4.1.0",
 		"postcss-color-functional-notation": "^4.2.2",
 		"postcss-color-hex-alpha": "^8.0.3",
 		"postcss-color-rebeccapurple": "^7.0.2",
@@ -75,6 +76,7 @@
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+		"docs": "node ./docs/generate.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
