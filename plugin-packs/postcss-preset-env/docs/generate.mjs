@@ -4,9 +4,13 @@ import { promises as fsp } from 'fs';
 
 let featuresTable = '';
 
-featuresTable = featuresTable + '| Name | ID | example | docs |\n';
+featuresTable = featuresTable + '| ID | Name | example | docs |\n';
 featuresTable = featuresTable + '| --- | --- | --- | --- |\n';
-for (const id of Object.values(packageNamesToIds)) {
+
+const ids = Array.from(Object.values(packageNamesToIds));
+ids.sort();
+
+for (const id of ids) {
 	const cssdbFeature = cssdb.find(feature => feature.id === id);
 	const cssdbPlugins = cssdbFeature.polyfills.filter(polyfill => polyfill.type === 'PostCSS Plugin');
 	cssdbPlugins.sort((a) => {
@@ -21,8 +25,8 @@ for (const id of Object.values(packageNamesToIds)) {
 		return 1;
 	});
 
-	featuresTable = featuresTable + `| ${cssdbFeature.title} `;
 	featuresTable = featuresTable + `| \`${id}\` `;
+	featuresTable = featuresTable + `| ${cssdbFeature.title} `;
 	featuresTable = featuresTable + `| [example](https://preset-env.cssdb.org/features/#${id}) `;
 	featuresTable = featuresTable + `| [docs](${cssdbPlugins[0].link}#readme) |\n`;
 }
