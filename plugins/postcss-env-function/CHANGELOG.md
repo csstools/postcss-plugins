@@ -1,6 +1,6 @@
 # Changes to PostCSS Environment Variables
 
-### Unreleased (patch)
+### 4.0.6 (March 19, 2022)
 
 - Add deprecation notice for `postcss-env-function`
 
