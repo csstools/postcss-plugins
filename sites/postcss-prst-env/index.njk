@@ -1,0 +1,21 @@
+{% extends "layouts/base.njk" %}
+
+{% block header %}
+	<div class="ppe-landing-showcase">
+		<h1>Start using modern CSS today</h1>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<p class="ppe-landing-content">PostCSS Preset Env lets you convert modern CSS into something most browsers can understand, determining the polyfills you need based on your targeted browsers or runtime environments, using <a href="https://cssdb.org/">cssdb</a>.</p>
+	<p class="ppe-latest-version">
+		Latest version: <strong>{{ presetVersion }}</strong> <br/>
+		See <a href="https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/CHANGELOG.md">CHANGELOG</a>
+	</p>
+
+	<p class="ppe-deploys">
+		<a href="https://www.netlify.com" target="_blank" rel="noreferrer" class="ppe-deploys__logo">
+			<img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" loading="lazy" decoding="async" width="114" height="51" />
+		</a>
+	</p>
+{% endblock %}
