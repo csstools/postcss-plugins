@@ -187,6 +187,13 @@ See example exports written to [CSS](test/export-properties.css),
 [JS](test/export-properties.js), [MJS](test/export-properties.mjs),
 [JSON](test/export-properties.json) and [SCSS](test/export-properties.scss).
 
+### disableDeprecationNotice
+
+Silence the deprecation notice that is printed to the console when using `importFrom` or `exportTo`.
+
+> "importFrom" and "exportTo" will be removed in a future version of postcss-custom-properties.
+> Check the discussion on github for more details. https://github.com/csstools/postcss-plugins/discussions/192
+
 [cli-img]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-img]: https://cssdb.org/images/badges/custom-properties.svg
