@@ -113,7 +113,9 @@ description: List of features included in PostCSS Preset Env
 				<p class="ppe-feature-description">
 					{{ feature.description | inlineMarkdown | safe }}
 				</p>
-				<pre class="ppe-feature-example" dir="ltr">{{- feature.example | featureExample | safe -}}</pre>
+				{%- set description %}/* {{ feature.id }} */
+{{ feature.example | safe }}{% endset -%}
+				<pre class="ppe-feature-example" dir="ltr">{{- description | featureExample | safe -}}</pre>
 			</section>
 		{% endfor %}
 	</div>
