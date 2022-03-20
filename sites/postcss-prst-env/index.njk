@@ -1,21 +1,188 @@
+---
+baseClass: 'ppe-landing'
+---
 {% extends "layouts/base.njk" %}
 
-{% block header %}
-	<div class="ppe-landing-showcase">
-		<h1>Start using modern CSS today</h1>
-	</div>
-{% endblock %}
-
 {% block content %}
-	<p class="ppe-landing-content">PostCSS Preset Env lets you convert modern CSS into something most browsers can understand, determining the polyfills you need based on your targeted browsers or runtime environments, using <a href="https://cssdb.org/">cssdb</a>.</p>
-	<p class="ppe-latest-version">
-		Latest version: <strong>{{ presetVersion }}</strong> <br/>
-		See <a href="https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/CHANGELOG.md">CHANGELOG</a>
-	</p>
+	<main>
+		<div class="ppe-landing-hero">
+			<div class="ppe-landing-container">
+				<h1 class="ppe-landing-title">Start using modern CSS today</h1>
+				<div class="ppe-hero-cards">
+					<div class="ppe-hero-card">
+						<p class="ppe-hero-card-title">Modern CSS</p>
+						{% highlight "css" %}
+@custom-media --viewport-medium (width <= 50rem);
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
-	<p class="ppe-deploys">
-		<a href="https://www.netlify.com" target="_blank" rel="noreferrer" class="ppe-deploys__logo">
-			<img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" loading="lazy" decoding="async" width="114" height="51" />
-		</a>
-	</p>
+:root {
+  --mainColor: #12345678;
+}
+
+body {
+  color: var(--mainColor);
+  font-family: system-ui;
+  overflow-wrap: break-word;
+}
+
+:--heading {
+  background-image: image-set(url(img/heading.png) 1x,
+										url(img/heading@2x.png) 2x);
+
+  @media (--viewport-medium) {
+    margin-block: 0;
+  }
+}
+
+a {
+  color: rgb(0 0 100% / 90%);
+
+  &:hover {
+    color: rebeccapurple;
+  }
+}{% endhighlight %}
+					</div>
+					<div class="ppe-hero-card">
+						<p class="ppe-hero-card-title">Becomes...</p>
+						{% highlight "css" %}
+:root {
+  --mainColor: rgba(18, 52, 86, 0.47059);
+}
+
+body {
+  color: rgba(18, 52, 86, 0.47059);
+  color: var(--mainColor);
+  font-family: system-ui,
+							-apple-system,
+							BlinkMacSystemFont,
+							Segoe UI,
+							Roboto,
+							Oxygen,
+							Ubuntu,
+							Cantarell,
+							Droid Sans,
+							Helvetica Neue;
+  word-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  background-image: url(img/heading.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),
+			 (min-resolution: 192dpi) {
+  h1, h2, h3, h4, h5, h6 {
+    background-image: url(img/heading@2x.png);
+  }
+}
+
+@media (max-width: 50rem) {
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: rgba(0, 0, 255, 0.9)
+}
+
+a:hover {
+  color: #639;
+}{% endhighlight %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<section class="ppe-landing-getting-started">
+			<div class="ppe-landing-container">
+				<h2 class="ppe-getting-started-title">Getting Started</h2>
+				<ol>
+					<li>Install <code>postcss-preset-env</code> from npm.</li>
+					<li>Add postcss-preset-env to your configuration.</li>
+				</ol>
+				<p>Here's an example with a <code>postcss.config.js</code> file:</p>
+				{% highlight "js" %}
+module.exports = {
+  plugins: [
+    [
+      'postcss-preset-env',
+      {
+        // Options
+      },
+    ],
+  ]
+}{% endhighlight %}
+				<p>You can <a href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#usage">read more on how to use and install PostCSS Preset Env</a>.</p>
+			</div>
+		</section>
+
+		<section class="ppe-landing-section">
+			<div class="ppe-landing-container">
+				<div class="ppe-section-text">
+					<h2>Tomorrow's CSS features are already available. Start using them today</h2>
+					<p>With <code>postcss-preset-env</code> you can use last features such as alpha hex color, break properties and other modern CSS functions. Check out the full <a href="https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md">features list</a>.</p>
+				</div>
+				<div class="ppe-section-decoration">
+					<ul class="ppe-word-rotate">
+						<li>custom properties</li>
+						<li><code>:is</code> pseudo class</li>
+						<li>media query ranges</li>
+						<li>nesting rules</li>
+						<li><code>lab()</code> function</li>
+						<li><code>system-ui</code> font family</li>
+						<li>custom selectors</li>
+						<li><code>color()</code> function</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="ppe-landing-section">
+			<div class="ppe-landing-container">
+				<div class="ppe-section-text">
+					<h2>Select stage of CSS Specs</h2>
+					<p>You can select which <a href="https://cssdb.org/#the-staging-process">stage</a> of CSS Specification you want to use. Or if you won't configure, PostCSS Preset Env will enable Stage 2 features and supports all browsers.</p>
+					<p>There are also lots of <a href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#options">options</a> you can tweak!</p>
+				</div>
+				<div class="ppe-section-decoration">
+					<img src="{{ "/static/images/options.svg" | addHash }}" loading="lazy" alt="Person staring at some sliders" width="744.79921" height="449.14098" />
+				</div>
+			</div>
+		</section>
+		<section class="ppe-landing-section">
+			<div class="ppe-landing-container">
+				<div class="ppe-section-text">
+					<h2>Works with PostCSS</h2>
+					<p><a href="https://postcss.org/">PostCSS</a> is <em>the</em> tool for transforming CSS with JavaScript with over 60 million downloads every week. If PostCSS is enabled, integrating PostCSS Preset Env is just a breeze!</p>
+				</div>
+				<div class="ppe-section-decoration">
+					<img class="ppe-postcss-logo" src="{{ "/static/images/postcss.svg" | addHash }}" loading="lazy" alt="PostCSS Logo" width="79" height="78" />
+				</div>
+			</div>
+		</section>
+		<section class="ppe-landing-section">
+			<div class="ppe-landing-container">
+				<div class="ppe-section-text">
+					<h2>Trusted by millions</h2>
+					<p>PostCSS Preset Env is downloaded more than 6 million times a week from NPM. Found a bug? <a href="https://github.com/csstools/postcss-plugins/issues/new/choose">Let us know in GitHub</a>!</p>
+				</div>
+				<div class="ppe-section-decoration">
+					<img class="ppe-postcss-logo" src="{{ "/static/images/websites.svg" | addHash }}" loading="lazy" alt="People building a website" width="876.27165" height="661.47277" />
+				</div>
+			</div>
+		</section>
+
+		<div class="ppe-landing-container">
+			<p class="ppe-latest-version">
+				Latest version: <strong>{{ presetVersion }}</strong> <br/>
+				See <a href="https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/CHANGELOG.md">CHANGELOG</a>
+			</p>
+		</div>
+
+		<p class="ppe-deploys">
+			<a href="https://www.netlify.com" target="_blank" rel="noreferrer" class="ppe-deploys__logo">
+				<img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" loading="lazy" decoding="async" width="114" height="51" />
+			</a>
+		</p>
+	</main>
 {% endblock %}

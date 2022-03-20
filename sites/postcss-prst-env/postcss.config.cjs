@@ -4,6 +4,10 @@ module.exports = ctx => {
 		'postcss-import': {},
 		'postcss-preset-env': {
 			stage: 0,
+			preserve: true,
+			features: {
+				'custom-properties': false
+			}
 		},
 		'postcss-csso': isProd ? {} : false,
 	}

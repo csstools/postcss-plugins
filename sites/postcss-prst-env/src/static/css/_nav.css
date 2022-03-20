@@ -1,6 +1,5 @@
 .ppe-heading {
 	align-items: center;
-	background-color: var(--color-blue);
 	background-image: linear-gradient(90deg, var(--color-purple), var(--color-blue));
 	color: var(--color-white);
 	display: flex;

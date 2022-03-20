@@ -1,3 +1,4 @@
+const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const addHash = require('./eleventy/filters/add-hash');
 const inlineMarkdown = require('./eleventy/filters/inline-markdown');
 const cleanMarkdown = require('./eleventy/filters/clean-markdown');
@@ -6,11 +7,14 @@ const featureExample = require('./eleventy/filters/feature-example');
 module.exports = function (eleventyConfig) {
 	// Copy favicon to route of /_site
 	eleventyConfig.addPassthroughCopy({ 'src/static/favicon.ico': 'favicon.ico' });
+	eleventyConfig.addPassthroughCopy({ 'src/static/images': 'static/images' });
 
 	eleventyConfig.addNunjucksAsyncFilter('addHash', addHash);
 	eleventyConfig.addFilter('inlineMarkdown', inlineMarkdown);
 	eleventyConfig.addFilter('cleanMarkdown', cleanMarkdown);
 	eleventyConfig.addFilter('featureExample', featureExample);
+
+	eleventyConfig.addPlugin(syntaxHighlight);
 
 	// Override BrowserSync defaults (used only with --serve)
 	eleventyConfig.setBrowserSyncConfig({

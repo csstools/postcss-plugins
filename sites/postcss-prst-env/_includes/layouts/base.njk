@@ -22,9 +22,8 @@
 	<meta name="referrer" content="no-referrer-when-downgrade">
 	<link href="{{ "/favicon.ico" | addHash }}" rel="shortcut icon">
 	<link type="text/css" rel="stylesheet" href="{{ '/static/css/styles.css' | addHash }}">
-	<script async defer src="{{ "/static/js/scripts.js" | addHash }}"></script>
 </head>
-<body>
+<body{% if baseClass %} class="{{ baseClass }}"{% endif %}>
 <header class="ppe-heading">
 	<a class="ppe-heading-title-link" href="/" rel="home">postcss-preset-env</a>
 
@@ -59,8 +58,6 @@
 			</li>
 		</ul>
 	</nav>
-
-	{% block header %}{% endblock %}
 </header>
 
 {% block content %}
@@ -71,5 +68,7 @@
 </footer>
 
 <!-- Current page: {{ page.url | url }} -->
+<script async defer src="{{ "/static/js/scripts.js" | addHash }}"></script>
+{% block scripts %}{% endblock %}
 </body>
 </html>
