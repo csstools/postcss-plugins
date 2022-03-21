@@ -27,6 +27,9 @@ const formatted = {};
 
 	formatted.license = packageJSONInfo.license;
 	delete packageJSONInfo.license;
+
+	formatted.funding = packageJSONInfo.funding;
+	delete packageJSONInfo.funding;
 }
 
 // Status and runtime info
