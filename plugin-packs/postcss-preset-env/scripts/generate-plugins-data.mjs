@@ -1,9 +1,5 @@
 import { readFile, writeFile } from 'fs/promises';
-import { URL } from 'url';
-import path from 'path';
-const __dirname = new URL('.', import.meta.url).pathname;
-const pluginsPath = path.resolve(__dirname, './plugins-data.json');
-const pluginsData = await readFile(pluginsPath, 'utf8').then(JSON.parse);
+const pluginsData = await readFile('./scripts/plugins-data.json', 'utf8').then(JSON.parse);
 
 const esmPlugins = `export default ${JSON.stringify(pluginsData, null, 2)}\n`;
 
@@ -32,6 +28,6 @@ export const pluginsById = new Map(
 }
 
 await Promise.all([
-	writeFile(path.resolve(__dirname, '../src/plugins/plugins-data.mjs'), esmPlugins),
-	writeFile(path.resolve(__dirname, '../src/plugins/plugins-by-id.mjs'), generatePluginsByID(pluginsData)),
+	writeFile('./src/plugins/plugins-data.mjs', esmPlugins),
+	writeFile('./src/plugins/plugins-by-id.mjs', generatePluginsByID(pluginsData)),
 ]);
