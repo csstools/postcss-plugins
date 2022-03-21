@@ -266,7 +266,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				} catch (err) {
 					hasErrors = true;
 
-					const helpText = '\nThis is most likely a newly created PostCSS AST Node without setting a value for "source".\nsee : https://postcss.org/api/#node-source';
+					const helpText = '\nThis is most likely a newly created PostCSS AST Node without a value for "source".\nsee : https://postcss.org/api/#node-source';
 					if (emitGitHubAnnotations) {
 						console.log(formatGitHubActionAnnotation(
 							`${testCaseLabel}\n\nbroken source map: ${JSON.stringify(result.map.toJSON().sources)}\n${helpText}`,

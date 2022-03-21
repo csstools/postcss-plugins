@@ -3,7 +3,7 @@ basic:broken-sourcemap
 
 broken source map: ["basic.css","<no source>"]
 
-This is most likely a newly created PostCSS AST Node without setting a value for "source".
+This is most likely a newly created PostCSS AST Node without a value for "source".
 see : https://postcss.org/api/#node-source
 
 ----------------------------------------
