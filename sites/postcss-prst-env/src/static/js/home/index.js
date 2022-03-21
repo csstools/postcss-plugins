@@ -1,9 +1,10 @@
-(() => {
+let initWordRotate = () => {
 	const wordList = document.querySelector('.ppe-word-rotate');
-
 	if (!wordList) {
 		return;
 	}
+
+	initWordRotate = () => { }; /* noop */
 
 	const mq = '(prefers-reduced-motion: no-preference)';
 	const canRun = window.matchMedia(mq) === true || window.matchMedia(mq).matches === true;
@@ -32,4 +33,12 @@
 			words[i].style.opacity = `${op}`;
 		}
 	}
-})();
+};
+
+initWordRotate();
+requestAnimationFrame(() => {
+	initWordRotate();
+});
+document.addEventListener('readystatechange', () => {
+	initWordRotate();
+});
