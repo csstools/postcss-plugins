@@ -54,9 +54,9 @@ function postcssCascadeLayers(opts) {
 			});
 
 			// 2nd walkthrough to transform unlayered styles - need highest specificity (layerCount + 1)
-			// root.walkRules((rule) => {
-			// 	console.log("second walkthrough");
-			// });
+			root.walkRules((rule) => {
+				layerOrder['unlayered ' + rule.selector] = layerCount + 1;
+			});
 
 			// 3rd walkthrough to transform layered styles:
 			//  - move out styles from atRule, insert before: https://postcss.org/api/#container-insertbefore
