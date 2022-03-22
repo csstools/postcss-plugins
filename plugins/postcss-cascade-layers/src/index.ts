@@ -11,6 +11,7 @@ function postcssCascadeLayers(opts) {
 			root.walkAtRules('layer', (atRule) => {
 				// give anonymous layers a name
 				if (!atRule.params) {
+					atRule.raws.afterName = ' ';
 					atRule.params = `anon${layerCount}`;
 				}
 
