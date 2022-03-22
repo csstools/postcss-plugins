@@ -12,5 +12,48 @@
 	p {
 		color: blue;
 	}
+
+	i {
+		color: red;
+	}
+}
+}
+
+@layer B {
+
+	@layer Z {
+		target {
+			color: yellow;
+		}
+	}
+
+@layer B-implicit {
+	@keyframes slide-left {
+		from {
+			margin-left: 0;
+		}
+
+		to {
+			margin-left: -100%;
+		}
+	}
+}
+}
+
+@layer C {
+
+	@layer Z {
+		target {
+			color: yellow;
+		}
+	}
+
+@layer C-implicit {
+	@media (prefers-color-scheme: dark) {
+		h1 {
+			color: red;
+			background: black;
+		}
+	}
 }
 }

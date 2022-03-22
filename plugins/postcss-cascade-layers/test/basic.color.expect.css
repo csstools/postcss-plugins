@@ -1,7 +1,15 @@
-.foo {
-	color: purple;
+@layer A {
+	target {
+		color: red;
+	}
 }
 
-.baz {
-	color: green;
+@layeranon0 {
+	target {
+		color: green;
+	}
+}
+
+target {
+	color: purple;
 }

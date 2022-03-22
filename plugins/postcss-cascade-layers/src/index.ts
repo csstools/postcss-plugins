@@ -1,14 +1,14 @@
-import { Container } from "postcss";
+import { Container } from 'postcss';
 
 function postcssCascadeLayers(opts) {
 	return {
-		postcssPlugin: "postcss-cascade-layers",
+		postcssPlugin: 'postcss-cascade-layers',
 		Once(root: Container) {
 			let layerCount = 0;
-			let layerOrder = {};
+			const layerOrder = {};
 
 			// 1st walkthrough to rename anon layers and store state (no modification of layer styles)
-			root.walkAtRules("layer", (atRule) => {
+			root.walkAtRules('layer', (atRule) => {
 				// give anonymous layers a name
 				if (!atRule.params) {
 					atRule.params = `anon${layerCount}`;
@@ -19,10 +19,14 @@ function postcssCascadeLayers(opts) {
 
 				// check for where a layer has nested layers AND styles outside of those layers
 				atRule.each((node) => {
-					if (node.type == "atrule") {
+					if (node.type == 'atrule' && node.name === 'layer') {
 						hasNestedLayers = true;
-					} else if (node.type == "rule") {
+					} else {
 						hasUnlayeredStyles = true;
+					}
+
+					if (hasNestedLayers && hasUnlayeredStyles) {
+						return false;
 					}
 				});
 
@@ -40,15 +44,17 @@ function postcssCascadeLayers(opts) {
 
 					// go through the unlayered rules, clone, and delete from top level atRule
 					atRule.each((node) => {
-						if (node.type == "rule") {
-							implicitLayer.append(node.clone());
-							node.remove();
+						if (node.type == 'atrule' && node.name === 'layer') {
+							return;
 						}
+
+						implicitLayer.append(node.clone());
+						node.remove();
 					});
 				}
 			});
 
-			root.walkAtRules("layer", (layer) => {
+			root.walkAtRules('layer', (layer) => {
 				layerCount += 1;
 				layerOrder[layer.params] = layerCount;
 			});

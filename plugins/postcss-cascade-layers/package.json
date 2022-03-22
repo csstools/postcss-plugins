@@ -48,8 +48,5 @@
   },
   "volta": {
     "extends": "../../package.json"
-  },
-  "devDependencies": {
-    "postcss-tape": "^6.0.1"
   }
 }

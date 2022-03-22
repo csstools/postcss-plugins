@@ -1,11 +1,15 @@
+@layer A {
+	target {
+		color: red;
+	}
+}
+
+@layeranon0 {
+	target {
+		color: green;
+	}
+}
+
 target {
-	color: red;
-}
-
-target:not(#something) {
-	color: green;
-}
-
-target:not(#something#something) {
 	color: purple;
 }

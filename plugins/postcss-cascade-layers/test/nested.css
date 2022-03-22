@@ -12,4 +12,41 @@
 			color: yellow;
 		}
 	}
+
+	i {
+		color: red;
+	}
+}
+
+@layer B {
+	@keyframes slide-left {
+		from {
+			margin-left: 0;
+		}
+
+		to {
+			margin-left: -100%;
+		}
+	}
+
+	@layer Z {
+		target {
+			color: yellow;
+		}
+	}
+}
+
+@layer C {
+	@media (prefers-color-scheme: dark) {
+		h1 {
+			color: red;
+			background: black;
+		}
+	}
+
+	@layer Z {
+		target {
+			color: yellow;
+		}
+	}
 }
