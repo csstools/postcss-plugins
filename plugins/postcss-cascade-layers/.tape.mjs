@@ -14,4 +14,7 @@ postcssTape(plugin)({
 	example: {
 		message: "minimal example",
 	},
+	nested: {
+		message: "supporting nested layer usage",
+	},
 });

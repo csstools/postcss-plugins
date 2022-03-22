@@ -1,0 +1,15 @@
+@layer A {
+	target {
+		color: red;
+	}
+
+	p {
+		color: blue;
+	}
+
+	@layer Z {
+		target {
+			color: yellow;
+		}
+	}
+}

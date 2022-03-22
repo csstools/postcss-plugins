@@ -5,4 +5,3 @@ yarn.lock
 *.log*
 *.result.css
 *.result.css.map
-dist/*
