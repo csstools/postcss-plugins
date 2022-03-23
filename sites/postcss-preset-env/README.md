@@ -1,7 +1,5 @@
 # PostCSS Preset Env Site [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3271603f-d6df-4efc-8d96-4cde07d13262/deploy-status)](https://app.netlify.com/sites/preset-env/deploys)
-
 The official website for [PostCSS Preset Env].
 
 ## Setup
@@ -23,7 +21,7 @@ Before you can contribute to the codebase, you will need to fork the repo.
 
 This site is built using the following awesome packages:
 
-* [Astro]
+* [11ty]
 * [PostCSS Preset Env] (_we eat our own dog food 🐶!_)
 * [CSSDB]
 * [Stylelint]
@@ -31,6 +29,6 @@ This site is built using the following awesome packages:
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Preset Env]: https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env
 [Fork]: https://github.com/csstools/postcss-plugins/fork
-[Astro]: https://astro.build/
+[11ty]: https://www.11ty.dev/
 [CSSDB]: https://github.com/csstools/cssdb
 [Stylelint]: https://stylelint.io/
