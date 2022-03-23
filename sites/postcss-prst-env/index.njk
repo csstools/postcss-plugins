@@ -12,9 +12,6 @@ baseClass: 'ppe-landing'
 					<div class="ppe-hero-card">
 						<p class="ppe-hero-card-title">Modern CSS</p>
 						{% highlight "css" %}
-@custom-media --viewport-medium (width <= 50rem);
-@custom-selector :--heading h1, h2, h3, h4, h5, h6;
-
 :root {
   --mainColor: #12345678;
 }
@@ -22,16 +19,6 @@ baseClass: 'ppe-landing'
 body {
   color: var(--mainColor);
   font-family: system-ui;
-  overflow-wrap: break-word;
-}
-
-:--heading {
-  background-image: image-set(url(img/heading.png) 1x,
-										url(img/heading@2x.png) 2x);
-
-  @media (--viewport-medium) {
-    margin-block: 0;
-  }
 }
 
 a {
@@ -40,55 +27,66 @@ a {
   &:hover {
     color: rebeccapurple;
   }
+
+	& span {
+		font-weight: bold;
+	}
+}
+
+:is(input, button):is(:hover, :focus) {
+	color: oklch(40% 0.268735435 34.568626);
 }{% endhighlight %}
 					</div>
 					<div class="ppe-hero-card">
 						<p class="ppe-hero-card-title">Becomes...</p>
 						{% highlight "css" %}
 :root {
-  --mainColor: rgba(18, 52, 86, 0.47059);
+	--mainColor: rgba(18,52,86,0.47059);
 }
 
 body {
-  color: rgba(18, 52, 86, 0.47059);
-  color: var(--mainColor);
-  font-family: system-ui,
+	color: rgba(18,52,86,0.47059);
+	color: var(--mainColor);
+	font-family: system-ui,
 							-apple-system,
-							BlinkMacSystemFont,
 							Segoe UI,
 							Roboto,
-							Oxygen,
 							Ubuntu,
 							Cantarell,
-							Droid Sans,
-							Helvetica Neue;
-  word-wrap: break-word;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  background-image: url(img/heading.png);
-}
-
-@media (-webkit-min-device-pixel-ratio: 2),
-			 (min-resolution: 192dpi) {
-  h1, h2, h3, h4, h5, h6 {
-    background-image: url(img/heading@2x.png);
-  }
-}
-
-@media (max-width: 50rem) {
-  h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
+							Noto Sans,
+							sans-serif;
 }
 
 a {
-  color: rgba(0, 0, 255, 0.9)
+	color: rgba(0, 0, 255, 0.9)
 }
 
 a:hover {
-  color: #639;
+		color: #639;
+	}
+
+a span {
+		font-weight: bold;
+	}
+
+input:hover {
+	color: rgb(143, 0, 0);
+	color: color(display-p3 0.52929 0.00000 0.00000);
+}
+
+input:focus {
+	color: rgb(143, 0, 0);
+	color: color(display-p3 0.52929 0.00000 0.00000);
+}
+
+button:hover {
+	color: rgb(143, 0, 0);
+	color: color(display-p3 0.52929 0.00000 0.00000);
+}
+
+button:focus {
+	color: rgb(143, 0, 0);
+	color: color(display-p3 0.52929 0.00000 0.00000);
 }{% endhighlight %}
 					</div>
 				</div>
