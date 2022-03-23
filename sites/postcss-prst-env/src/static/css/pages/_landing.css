@@ -25,6 +25,7 @@
 .ppe-hero-card {
 	display: flex;
 	flex-direction: column;
+	max-height: 41.5rem;
 	text-align: left;
 
 	& .ppe-feature-example {
