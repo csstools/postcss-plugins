@@ -2,7 +2,6 @@ const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const addHash = require('./eleventy/filters/add-hash');
 const inlineMarkdown = require('./eleventy/filters/inline-markdown');
 const cleanMarkdown = require('./eleventy/filters/clean-markdown');
-const featureExample = require('./eleventy/filters/feature-example');
 
 module.exports = function (eleventyConfig) {
 	// Copy favicon to route of /_site
@@ -12,7 +11,6 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addNunjucksAsyncFilter('addHash', addHash);
 	eleventyConfig.addFilter('inlineMarkdown', inlineMarkdown);
 	eleventyConfig.addFilter('cleanMarkdown', cleanMarkdown);
-	eleventyConfig.addFilter('featureExample', featureExample);
 
 	eleventyConfig.addPlugin(syntaxHighlight);
 

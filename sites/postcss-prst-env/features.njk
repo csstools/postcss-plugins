@@ -116,7 +116,7 @@ baseClass: 'ppe-features-page'
 				</p>
 				{%- set description %}/* {{ feature.id }} */
 {{ feature.example | safe }}{% endset -%}
-				<pre class="ppe-feature-example" dir="ltr">{{- description | featureExample | safe -}}</pre>
+				{% highlight "css" %}{{ description | safe }}{% endhighlight %}
 			</section>
 		{% endfor %}
 	</div>
