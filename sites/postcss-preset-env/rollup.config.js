@@ -10,7 +10,6 @@ const production = !process.env.ROLLUP_WATCH;
 
 export default [
 	'scripts',
-	'playground',
 ].map(name => ({
 	input: `src/static/js/${name}.js`,
 	output: [
