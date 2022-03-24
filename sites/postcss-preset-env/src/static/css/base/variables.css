@@ -1,0 +1,34 @@
+:root {
+	/* #region:Colors */
+	--color-black-alpha-40: rgba(0, 0, 0, 0.4);
+	--color-blue: color(display-p3 0.268 0.544 0.975);
+	--color-magenta: color(display-p3 0.96 0.264 0.926);
+	--color-purple: color(display-p3 0.723 0.419 0.985);
+	--color-gray: #f8f8f8;
+	--color-white: #fff;
+	/* #endregion:Colors */
+
+	/* #region:Spaces */
+	--space-8: 8px;
+	--space-10: 10px;
+	--space-15: 15px;
+	--space-20: 20px;
+	--space-25: 25px;
+	--space-40: 40px;
+	/* #endregion:Spaces */
+
+	/* #region:Typography */
+	--font-baseline: 400 100%/1.5;
+	--font-body: system-ui;
+	--font-code: monospace;
+	--font-size-18: 1.125rem;
+	--font-size-20: 1.25rem;
+	--font-size-26: 1.625rem;
+	/* #endregion:Typography */
+
+	--heading-size-from-medium: 5rem;
+	--heading-size: 2.5rem;
+
+	--t-slow: .3s;
+	--transition: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+}

@@ -1,4 +1,4 @@
-import { packageNamesToIds } from '../src/plugins/plugins-map.mjs';
+import { getFeaturesIds } from '../src/plugins/plugins-map.mjs';
 import cssdb from 'cssdb';
 import { promises as fsp } from 'fs';
 
@@ -7,7 +7,7 @@ let featuresTable = '';
 featuresTable = featuresTable + '| ID | Feature | example | docs |\n';
 featuresTable = featuresTable + '|:--- |:--- |:--- |:--- |\n';
 
-const ids = Array.from(Object.values(packageNamesToIds));
+const ids = getFeaturesIds();
 ids.sort();
 
 for (const id of ids) {
