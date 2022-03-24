@@ -1,4 +1,4 @@
-import { Container } from "postcss";
+import { Container, AtRule, Node} from "postcss";
 
 function postcssCascadeLayers(opts) {
 	return {
@@ -53,10 +53,38 @@ function postcssCascadeLayers(opts) {
 				layerOrder[layer.params] = layerCount;
 			});
 
-			// 2nd walkthrough to transform unlayered styles - need highest specificity (layerCount + 1)
-			root.walkRules((rule) => {
-				layerOrder['unlayered ' + rule.selector] = layerCount + 1;
-			});
+			// functions for 2nd walkthrough
+			function generateNot(specificity: number) {
+				let list = ''; for (let i = 0; i < specificity; i++) {
+					list += '#\\#'; // something short but still very uncommon
+				} return `:not(${list})`;
+			}
+			function hasLayerAtRuleAncestor(node: Node): boolean {
+				let parent = node.parent;
+				while (parent) {
+					if (parent.type !== 'atrule') {
+						parent = parent.parent; continue;
+					}
+					if ((parent as AtRule).name === 'layer') {
+						 return true;
+						}
+						parent = parent.parent;
+					}
+					return false; }
+
+					if (!layerCount) {
+						// no layers, so nothing to transform.
+						return;
+						} // 2nd walkthrough to transform unlayered styles - need highest specificity (layerCount)
+						root.walkRules((rule) => {
+							if (hasLayerAtRuleAncestor(rule)) {
+							  return;
+								} rule.selectors = rule.selectors.map((selector) => {
+									// Needs `postcss-selector-parser` to insert `:not()` before any pseudo elements like `::after`
+									// This is a side track and can be fixed later.
+									return `${generateNot(layerCount)} ${selector}`;
+								});
+							});
 
 			// 3rd walkthrough to transform layered styles:
 			//  - move out styles from atRule, insert before: https://postcss.org/api/#container-insertbefore
