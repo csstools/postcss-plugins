@@ -14,11 +14,11 @@ for (const id of ids) {
 	const cssdbFeature = cssdb.find(feature => feature.id === id);
 	const cssdbPlugins = cssdbFeature.polyfills.filter(polyfill => polyfill.type === 'PostCSS Plugin');
 	cssdbPlugins.sort((a) => {
-		if (a.link.includes('https://github.com/csstools')) {
+		if (a.link.indexOf('https://github.com/csstools') === 0) {
 			return -1;
 		}
 
-		if (a.link.includes('https://github.com/postcss')) {
+		if (a.link.indexOf('https://github.com/postcss') === 0) {
 			return -1;
 		}
 
