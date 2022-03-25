@@ -870,7 +870,7 @@ __foo {
 	order: 199;
 }
 
-::before:link, ::before:visited {
+:link::before, :visited::before {
 	order: 200;
 }
 

@@ -101,3 +101,7 @@ foo[baz=":is(.some, .other)"], .ok {
 :is(a, button):is(:hover, :focus)::before {
 	order: 26;
 }
+
+:is(::after, .foo):is(:hover, :focus) {
+	order: 27;
+}
