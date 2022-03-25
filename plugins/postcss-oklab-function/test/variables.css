@@ -1,0 +1,10 @@
+:root {
+	--firebrick: oklab(40% 0.0234 0.039);
+	--firebrick-a50: oklch(40% 0.0234 0.039 / 50%);
+
+	--opacity-50: 0.5;
+	--firebrick-a50-var: oklch(40% 0.0234 0.039 / var(--opacity-50));
+
+	--point-five: 0.5;
+	--firebrick-var: oklch(40% var(--point-five) 0.1324 / var(--opacity-50));
+}

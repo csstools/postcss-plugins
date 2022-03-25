@@ -4,7 +4,7 @@
 	/* progressive enhancement */
 }
 
-@supports (--a-color: oklch(40% 0.234 0.39 / var(--opacity-50))) {
+@supports (color: oklch(0% 0 0)) {
 :root {
 	--a-color: oklch(40% 0.234 0.39 / var(--opacity-50));
 }

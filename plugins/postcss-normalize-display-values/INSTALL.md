@@ -1,7 +1,6 @@
 # Installing PostCSS Normalize Display Values
 
-[PostCSS Normalize Display Values] runs in all Node environments, with special
-instructions for:
+[PostCSS Normalize Display Values] runs in all Node environments, with special instructions for:
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
 | --- | --- | --- | --- | --- | --- |
@@ -21,7 +20,7 @@ const postcss = require('postcss');
 const postcssNormalizeDisplayValues = require('@csstools/postcss-normalize-display-values');
 
 postcss([
-  postcssNormalizeDisplayValues(/* pluginOptions */)
+	postcssNormalizeDisplayValues(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -30,54 +29,65 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli @csstools/postcss-normalize-display-values --save-dev
 ```
 
-Use [PostCSS Normalize Display Values] in your `postcss.config.js` configuration
-file:
+Use [PostCSS Normalize Display Values] in your `postcss.config.js` configuration file:
 
 ```js
 const postcssNormalizeDisplayValues = require('@csstools/postcss-normalize-display-values');
 
 module.exports = {
-  plugins: [
-    postcssNormalizeDisplayValues(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssNormalizeDisplayValues(/* pluginOptions */)
+	]
 }
 ```
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader @csstools/postcss-normalize-display-values --save-dev
 ```
 
 Use [PostCSS Normalize Display Values] in your Webpack configuration:
 
 ```js
-const postcssNormalizeDisplayValues = require('@csstools/postcss-normalize-display-values');
-
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssNormalizeDisplayValues(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"@csstools/postcss-normalize-display-values",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
+};
 ```
 
 ## Create React App
@@ -85,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss @csstools/postcss-normalize-display-values --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Normalize Display Values] in your
@@ -96,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssNormalizeDisplayValues = require('@csstools/postcss-normalize-display-values');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssNormalizeDisplayValues(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssNormalizeDisplayValues(/* pluginOptions */)
+	]
 });
 ```
 
@@ -107,7 +117,7 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss @csstools/postcss-normalize-display-values --save-dev
 ```
 
 Use [PostCSS Normalize Display Values] in your Gulpfile:
@@ -116,13 +126,15 @@ Use [PostCSS Normalize Display Values] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssNormalizeDisplayValues = require('@csstools/postcss-normalize-display-values');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssNormalizeDisplayValues(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+gulp.task('css', function () {
+	var plugins = [
+		postcssNormalizeDisplayValues(/* pluginOptions */)
+	];
+
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -130,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss @csstools/postcss-normalize-display-values --save-dev
 ```
 
 Use [PostCSS Normalize Display Values] in your Gruntfile:
@@ -141,16 +153,16 @@ const postcssNormalizeDisplayValues = require('@csstools/postcss-normalize-displ
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssNormalizeDisplayValues(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssNormalizeDisplayValues(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

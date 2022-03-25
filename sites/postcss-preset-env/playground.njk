@@ -1,0 +1,23 @@
+---
+title: Interactive Playground - PostCSS Preset Env - CSSTools
+description: Play with PostCSS Preset Env in your browser
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<main class="ppe-playground">
+	<h1 class="u-visually-hidden">Interactive playground for PostCSS Preset Env</h1>
+
+	<iframe
+			class="ppe-codepen"
+			src="https://codepen.io/jonneal/embed/WZdygy?height=265&amp;theme-id=30254&amp;slug-hash=WZdygy&amp;default-tab=css,result&amp;embed-version=2&amp;editable=true"
+			scrolling="no"
+			frameborder="0"
+			allowtransparency="true"
+			allowfullscreen
+			title="PostCSS Preset Env demo">
+	</iframe>
+</main>
+{% endblock %}
+
+{% block scripts %}<script async defer src="{{ "/static/js/playground.js" | addHash }}"></script>{% endblock %}

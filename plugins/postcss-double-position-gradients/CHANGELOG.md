@@ -1,5 +1,25 @@
 # Changes to PostCSS Double Position Gradients
 
+### 3.1.1 (March 7, 2022)
+
+- Add typescript support
+- Fix color functions.
+- Fix `at` keyword with `at 20px 20px` being interpreted as a double position color stop.
+
+### 3.1.0 (February 15, 2022)
+
+- Ignore values in relevant `@supports` rules.
+- Support double position gradients in Custom Properties.
+
+```css
+@supports (order: linear-gradient(90deg, black 25% 50%, blue 50% 75%)) {
+	.support {
+		/* is not processed */
+		order: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+	}
+}
+```
+
 ### 3.0.5 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

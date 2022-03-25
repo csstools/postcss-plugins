@@ -20,8 +20,11 @@ assert.deepStrictEqual(
 				'samsung < 1.0', 'and_qq >= 1',
 				'baidu >= 1',    'kaios >= 1',
 			],
-			pluginOptions: { subFeatures: { areaHrefNeedsFixing: true } },
 			vendors_implementations: 3,
+			pluginOptions: {
+				subFeatures: { areaHrefNeedsFixing: true },
+				enableProgressiveCustomProperties: false,
+			},
 			id: 'any-link-pseudo-class',
 		},
 		{
@@ -35,8 +38,8 @@ assert.deepStrictEqual(
 				'samsung >= 1', 'and_qq >= 1',
 				'baidu >= 1',   'kaios >= 1',
 			],
-			pluginOptions: {},
 			vendors_implementations: 0,
+			pluginOptions: { enableProgressiveCustomProperties: false },
 			id: 'blank-pseudo-class',
 		},
 	],

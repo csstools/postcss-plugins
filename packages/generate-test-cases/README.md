@@ -6,7 +6,7 @@ as it is easy to forget a plugin when testing for a new known issue.
 ## Usage :
 
 ```bash
-npm run generate --workspace="@csstools/generate-test-cases"   
+npm run generate --workspace="@csstools/generate-test-cases"
 ```
 
 ## Incorrect CSS in result.css and expect.css

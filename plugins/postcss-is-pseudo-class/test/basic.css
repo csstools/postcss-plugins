@@ -93,3 +93,11 @@ foo[baz=":is(.some, .other)"], .ok {
 .invalid-is:is {
 	order: 24;
 }
+
+:is(a, button):is(:hover::before, :focus) {
+	order: 25;
+}
+
+:is(a, button):is(:hover, :focus)::before {
+	order: 26;
+}

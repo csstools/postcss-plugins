@@ -1,36 +1,42 @@
 {
-  "name": "@csstools/base-cli",
-  "private": true,
-  "version": "0.1.0",
-  "description": "A base for CLI versions of plugins",
-  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
-  "license": "CC0-1.0",
-  "type": "module",
-  "engines": {
-    "node": "^12 || ^14 || >=16"
-  },
-  "main": "./dist/index.js",
-  "files": [
-    "dist"
-  ],
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
-    "prepublishOnly": "npm run clean && npm run build && npm run test",
-    "stryker": "stryker run --logLevel error",
-    "test": "node ./test/test.mjs"
-  },
-  "dependencies": {
-    "postcss": "^8.3.6"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "packages/base-cli"
-  },
-  "volta": {
-    "extends": "../../package.json"
-  }
+	"name": "@csstools/base-cli",
+	"description": "A base for CLI versions of plugins",
+	"version": "0.1.0",
+	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"license": "CC0-1.0",
+	"funding": {
+		"type": "opencollective",
+		"url": "https://opencollective.com/csstools"
+	},
+	"private": true,
+	"engines": {
+		"node": "^12 || ^14 || >=16"
+	},
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"dependencies": {
+		"postcss": "^8.3.6"
+	},
+	"scripts": {
+		"build": "tsc",
+		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+		"lint": "npm run lint:eslint && npm run lint:package-json",
+		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
+		"prepublishOnly": "npm run clean && npm run build && npm run test",
+		"stryker": "stryker run --logLevel error",
+		"test": "node ./test/test.mjs"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/csstools/postcss-plugins.git",
+		"directory": "packages/base-cli"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
 }

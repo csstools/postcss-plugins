@@ -4,6 +4,7 @@ const plugin = require('postcss-custom-properties');
 postcssTape(plugin)({
 	'basic:import-cjs': {
 		message: 'supports { importFrom: "test/import-properties{-2}?.cjs" } usage',
+		warnings: 1,
 		options: {
 			importFrom: [
 				'test/import-properties.cjs',
@@ -15,6 +16,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-css-js': {
 		message: 'supports { importFrom: "test/import-properties{-2}?.{css|js}" } usage',
+		warnings: 1,
 		options: {
 			importFrom: [
 				'test/import-properties.js',

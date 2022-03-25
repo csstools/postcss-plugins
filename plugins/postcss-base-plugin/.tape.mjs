@@ -11,7 +11,13 @@ postcssTape(plugin)({
 			color: 'purple'
 		}
 	},
-	example: {
-		message: "minimal example",
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-true': {
+		message: 'minimal example',
+		options: {
+			preserve: true
+		}
 	},
 });

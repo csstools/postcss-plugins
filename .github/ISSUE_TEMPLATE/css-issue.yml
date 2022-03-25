@@ -78,6 +78,7 @@ body:
         - PostCSS Focus Within
         - PostCSS Font Variant
         - PostCSS Gap Properties
+        - PostCSS Gradients Interpolation Method
         - PostCSS HWB Function
         - PostCSS Image Set Function
         - PostCSS Is Pseudo Class
@@ -85,6 +86,7 @@ body:
         - PostCSS Logical
         - PostCSS Media Query Ranges
         - PostCSS Nesting
+        - PostCSS OKLab Function
         - PostCSS Overflow Shorthand
         - PostCSS Page Break
         - PostCSS Place
@@ -94,7 +96,7 @@ body:
         - PostCSS Replace Overflow Wrap
         - PostCSS Selector Not
         - PostCSS System Ui Font Family
-        - PostCSS Plugins Values Parser
+        - PostCSS Unset Value
   - type: input
     id: version
     attributes:

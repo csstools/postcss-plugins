@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssPresetEnv = require('postcss-preset-env');
 
 postcss([
-  postcssPresetEnv(/* pluginOptions */)
+	postcssPresetEnv(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -38,9 +38,9 @@ Use [PostCSS Preset Env] in your `postcss.config.js` configuration file:
 const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = {
-  plugins: [
-    postcssPresetEnv(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssPresetEnv(/* pluginOptions */)
+	]
 }
 ```
 
@@ -58,25 +58,25 @@ Use [PostCSS Preset Env] in your Webpack configuration:
 const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [postcssPresetEnv(/* pluginOptions */)],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				use: [
+					'style-loader',
+					{ loader: 'css-loader', options: { importLoaders: 1 } },
+					{
+						loader: 'postcss-loader',
+						options: {
+							postcssOptions: {
+								plugins: [postcssPresetEnv(/* pluginOptions */)],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 ```
 
@@ -99,9 +99,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssPresetEnv(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssPresetEnv(/* pluginOptions */)
+	]
 });
 ```
 
@@ -120,11 +120,11 @@ const postcss = require('gulp-postcss');
 const postcssPresetEnv = require('postcss-preset-env');
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssPresetEnv(/* pluginOptions */)
-  ])
+	postcss([
+		postcssPresetEnv(/* pluginOptions */)
+	])
 ).pipe(
-  gulp.dest('.')
+	gulp.dest('.')
 ));
 ```
 
@@ -144,16 +144,16 @@ const postcssPresetEnv = require('postcss-preset-env');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssPresetEnv(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssPresetEnv(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 
@@ -173,11 +173,11 @@ Use [Rollup Plugin PostCSS] in your rollup.config.js:
 import postcss from 'rollup-plugin-postcss';
 
 module.exports = {
-  input: '...',
-  output: {...},
-  plugins: [
-    postcss({/* options */ })
-  ]
+	input: '...',
+	output: {...},
+	plugins: [
+		postcss({/* options */ })
+	]
 };
 ```
 

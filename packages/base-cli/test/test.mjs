@@ -413,3 +413,5 @@ argumentParsingCases.forEach((testCase) => {
 	const result = parseArguments(testCase.args, testCase.allowedPluginOpts, () => { });
 	assert.strict.deepEqual(result, testCase.expected, testCase.message);
 });
+
+console.log('pass base-cli');

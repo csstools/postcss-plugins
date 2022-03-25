@@ -10,17 +10,17 @@
 Add [PostCSS Progressive Custom Properties] to your project:
 
 ```bash
-npm install @csstools/postcss-progressive-custom-properties --save-dev
+npm install postcss @csstools/postcss-progressive-custom-properties --save-dev
 ```
 
-Use [PostCSS Progressive Custom Properties] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
 const postcssProgressiveCustomProperties = require('@csstools/postcss-progressive-custom-properties');
 
 postcss([
-  postcssProgressiveCustomProperties()
+	postcssProgressiveCustomProperties(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli @csstools/postcss-progressive-custom-properties --save-dev
 ```
 
 Use [PostCSS Progressive Custom Properties] in your `postcss.config.js` configuration file:
@@ -38,43 +38,56 @@ Use [PostCSS Progressive Custom Properties] in your `postcss.config.js` configur
 const postcssProgressiveCustomProperties = require('@csstools/postcss-progressive-custom-properties');
 
 module.exports = {
-  plugins: [
-    postcssProgressiveCustomProperties()
-  ]
+	plugins: [
+		postcssProgressiveCustomProperties(/* pluginOptions */)
+	]
 }
 ```
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader @csstools/postcss-progressive-custom-properties --save-dev
 ```
 
 Use [PostCSS Progressive Custom Properties] in your Webpack configuration:
 
 ```js
-const postcssProgressiveCustomProperties = require('@csstools/postcss-progressive-custom-properties');
-
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            postcssOptions: {
-                plugins: [postcssProgressiveCustomProperties()],
-              }
-          } }
-        ]
-      }
-    ]
-  }
-}
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"@csstools/postcss-progressive-custom-properties",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
+};
 ```
 
 ## Create React App
@@ -82,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss @csstools/postcss-progressive-custom-properties --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Progressive Custom Properties] in your
@@ -93,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssProgressiveCustomProperties = require('@csstools/postcss-progressive-custom-properties');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssProgressiveCustomProperties()
-  ]
+	plugins: () => [
+		postcssProgressiveCustomProperties(/* pluginOptions */)
+	]
 });
 ```
 
@@ -104,7 +117,7 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss @csstools/postcss-progressive-custom-properties --save-dev
 ```
 
 Use [PostCSS Progressive Custom Properties] in your Gulpfile:
@@ -113,13 +126,15 @@ Use [PostCSS Progressive Custom Properties] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssProgressiveCustomProperties = require('@csstools/postcss-progressive-custom-properties');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssProgressiveCustomProperties()
-  ])
-).pipe(
-  gulp.dest('.')
-));
+gulp.task('css', function () {
+	var plugins = [
+		postcssProgressiveCustomProperties(/* pluginOptions */)
+	];
+
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -127,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss @csstools/postcss-progressive-custom-properties --save-dev
 ```
 
 Use [PostCSS Progressive Custom Properties] in your Gruntfile:
@@ -138,16 +153,16 @@ const postcssProgressiveCustomProperties = require('@csstools/postcss-progressiv
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      processors: [
-       postcssProgressiveCustomProperties()
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssProgressiveCustomProperties(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

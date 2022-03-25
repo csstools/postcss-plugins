@@ -1,4 +1,5 @@
 "common-tools":
+  - .github/**
   - packages/base-cli/**
   - packages/postcss-tape/**
   - plugins/postcss-base-plugin/**
@@ -94,9 +95,17 @@
   - plugins/postcss-gap-properties/**
   - experimental/postcss-gap-properties/**
 
+"plugins/postcss-gradients-interpolation-method":
+  - plugins/postcss-gradients-interpolation-method/**
+  - experimental/postcss-gradients-interpolation-method/**
+
 "plugins/postcss-hwb-function":
   - plugins/postcss-hwb-function/**
   - experimental/postcss-hwb-function/**
+
+"plugins/postcss-ic-unit":
+  - plugins/postcss-ic-unit/**
+  - experimental/postcss-ic-unit/**
 
 "plugins/postcss-image-set-function":
   - plugins/postcss-image-set-function/**
@@ -125,6 +134,10 @@
 "plugins/postcss-normalize-display-values":
   - plugins/postcss-normalize-display-values/**
   - experimental/postcss-normalize-display-values/**
+
+"plugins/postcss-oklab-function":
+  - plugins/postcss-oklab-function/**
+  - experimental/postcss-oklab-function/**
 
 "plugins/postcss-overflow-shorthand":
   - plugins/postcss-overflow-shorthand/**
@@ -162,3 +175,9 @@
   - plugins/postcss-system-ui-font-family/**
   - experimental/postcss-system-ui-font-family/**
 
+"plugins/postcss-unset-value":
+  - plugins/postcss-unset-value/**
+  - experimental/postcss-unset-value/**
+
+"sites/postcss-preset-env":
+  - sites/postcss-preset-env/**

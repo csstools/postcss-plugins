@@ -2,6 +2,7 @@
 
 import '@mrhenry/core-web/modules/~element-qsa-has.js';
 import extractEncodedSelectors from './encode/extract.mjs';
+import encodeCSS from './encode/encode.mjs';
 
 export default function cssHasPseudo(document, options) {
 	// OPTIONS
@@ -239,7 +240,7 @@ export default function cssHasPseudo(document, options) {
 							observedItems.push({
 								rule: rule,
 								selector: hasSelector,
-								attributeName: encodeURIComponent(hasSelector).replace(/%3A/g, ':').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%2C/g, ','), // TODO : needs unit tests.
+								attributeName: encodeCSS(hasSelector),
 								nodes: [],
 							});
 						}

@@ -1,11 +1,13 @@
 import autoprefixer from 'autoprefixer';
 import cssdb from 'cssdb';
-import writeToExports from './side-effects/write-to-exports.mjs';
-import { pluginIdHelp } from './plugins/plugin-id-help.mjs';
-import { newLogger } from './log/helper.mjs';
 import logFeaturesList from './log/features-list.mjs';
-import { listFeatures } from './lib/list-features.mjs';
+import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
+import writeToExports from './side-effects/write-to-exports.mjs';
 import { initializeSharedOptions } from './lib/shared-options.mjs';
+import { listFeatures } from './lib/list-features.mjs';
+import { newLogger } from './log/helper.mjs';
+import { pluginIdHelp } from './plugins/plugin-id-help.mjs';
+
 
 const plugin = (opts) => {
 	const logger = newLogger();
@@ -26,6 +28,10 @@ const plugin = (opts) => {
 			autoprefixer(Object.assign({ overrideBrowserslist: browsers }, options.autoprefixer)),
 		);
 	}
+
+	plugins.push(
+		postcssProgressiveCustomProperties(),
+	);
 
 	logFeaturesList(features, options, logger);
 

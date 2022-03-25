@@ -13,6 +13,13 @@ export function sRgbLinearToSRgb(linearSRgb: color): color {
 	let oklch = conversion.slice() as color;
 	oklch = XYZ_to_OKLab(oklch);
 	oklch = OKLab_to_OKLCH(oklch);
+	if (oklch[0] < 0.000001) {
+		oklch = [0, 0, 0] as color;
+	}
+
+	if (oklch[0] > 0.999999) {
+		oklch = [1, 0, 0] as color;
+	}
 
 	// 3. Convert from(D65 - adapted) CIE XYZ to linear RGB
 	conversion = XYZ_to_lin_sRGB(conversion);

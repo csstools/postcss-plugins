@@ -1,42 +1,48 @@
 {
-  "name": "@csstools/postcss-plugins",
-  "private": true,
-  "version": "1.0.0",
-  "description": "",
-  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
-  "license": "CC0-1.0",
-  "engines": {
-    "node": "^12 || ^14 || >=16"
-  },
-  "workspaces": [
-    "packages/*",
-    "plugins/*",
-    "plugin-packs/*",
-    "cli/*",
-    "experimental/*"
-  ],
-  "devDependencies": {
-    "@babel/core": "^7.17.0",
-    "@babel/preset-env": "^7.16.11",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@rollup/plugin-typescript": "^8.3.0",
-    "@stryker-mutator/core": "^5.6.1",
-    "@typescript-eslint/eslint-plugin": "^5.10.1",
-    "eslint": "^8.8.0",
-    "rollup": "^2.66.1",
-    "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^4.5.5"
-  },
-  "scripts": {
-    "build": "npm run build --workspaces --if-present",
-    "lint": "npm run lint --workspaces --if-present && npm run lint:rollup-config",
-    "lint:rollup-config": "eslint ./rollup --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
-    "test": "npm run test --workspaces --if-present"
-  },
-  "volta": {
-    "node": "16.13.1",
-    "npm": "8.3.0"
-  }
+	"name": "@csstools/postcss-plugins",
+	"private": true,
+	"version": "1.0.0",
+	"description": "",
+	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"license": "CC0-1.0",
+	"engines": {
+		"node": "^12 || ^14 || >=16"
+	},
+	"workspaces": [
+		"packages/*",
+		"plugins/postcss-progressive-custom-properties",
+		"plugins/*",
+		"plugin-packs/*",
+		"cli/*",
+		"experimental/*"
+	],
+	"devDependencies": {
+		"@babel/core": "^7.17.5",
+		"@babel/preset-env": "^7.16.11",
+		"@rollup/plugin-babel": "^5.3.0",
+		"@rollup/plugin-commonjs": "^21.0.1",
+		"@rollup/plugin-node-resolve": "^13.1.3",
+		"@rollup/plugin-typescript": "^8.3.0",
+		"@stryker-mutator/core": "^5.6.1",
+		"@typescript-eslint/eslint-plugin": "^5.14.0",
+		"eslint": "^8.11.0",
+		"rollup": "^2.70.0",
+		"rollup-plugin-terser": "^7.0.2",
+		"typescript": "^4.6.2"
+	},
+	"scripts": {
+		"build": "npm run build --workspaces --if-present",
+		"clean": "bash ./.github/bin/clean.sh",
+		"get-me-going": "npm run clean && npm ci && npm run build && npm run test",
+		"docs": "npm run docs --workspaces --if-present",
+		"lint": "npm run lint --workspaces --if-present && npm run lint:rollup-config",
+		"lint:rollup-config": "eslint ./rollup --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+		"new-plugin": "node ./.github/bin/new-plugin.mjs",
+		"prepare-repo-for-releases": "npm run clean && npm ci && npm run docs && npm run lint && npm run build && npm run test && bash ./.github/bin/fail-on-changes.sh",
+		"test": "npm run test --workspaces --if-present"
+	},
+	"volta": {
+		"node": "16.13.1",
+		"npm": "8.3.0"
+	}
 }

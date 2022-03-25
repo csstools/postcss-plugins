@@ -10,25 +10,17 @@
 Add [PostCSS Double Position Gradients] to your project:
 
 ```bash
-npm install postcss-double-position-gradients --save-dev
+npm install postcss postcss-double-position-gradients --save-dev
 ```
 
-Use [PostCSS Double Position Gradients] to process your CSS:
-
-```js
-const postcssDoublePositionGradients = require('postcss-double-position-gradients');
-
-postcssDoublePositionGradients.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
 const postcssDoublePositionGradients = require('postcss-double-position-gradients');
 
 postcss([
-  postcssDoublePositionGradients(/* pluginOptions */)
+	postcssDoublePositionGradients(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -37,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-double-position-gradients --save-dev
 ```
 
 Use [PostCSS Double Position Gradients] in your `postcss.config.js` configuration file:
@@ -46,44 +38,56 @@ Use [PostCSS Double Position Gradients] in your `postcss.config.js` configuratio
 const postcssDoublePositionGradients = require('postcss-double-position-gradients');
 
 module.exports = {
-  plugins: [
-    postcssDoublePositionGradients(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssDoublePositionGradients(/* pluginOptions */)
+	]
 }
 ```
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-double-position-gradients --save-dev
 ```
 
 Use [PostCSS Double Position Gradients] in your Webpack configuration:
 
 ```js
-const postcssDoublePositionGradients = require('postcss-double-position-gradients');
-
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssDoublePositionGradients(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-double-position-gradients",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
+};
 ```
 
 ## Create React App
@@ -91,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-double-position-gradients --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Double Position Gradients] in your
@@ -102,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssDoublePositionGradients = require('postcss-double-position-gradients');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssDoublePositionGradients(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssDoublePositionGradients(/* pluginOptions */)
+	]
 });
 ```
 
@@ -113,7 +117,7 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-double-position-gradients --save-dev
 ```
 
 Use [PostCSS Double Position Gradients] in your Gulpfile:
@@ -122,13 +126,15 @@ Use [PostCSS Double Position Gradients] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssDoublePositionGradients = require('postcss-double-position-gradients');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssDoublePositionGradients(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+gulp.task('css', function () {
+	var plugins = [
+		postcssDoublePositionGradients(/* pluginOptions */)
+	];
+
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -136,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-double-position-gradients --save-dev
 ```
 
 Use [PostCSS Double Position Gradients] in your Gruntfile:
@@ -147,16 +153,16 @@ const postcssDoublePositionGradients = require('postcss-double-position-gradient
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssDoublePositionGradients(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssDoublePositionGradients(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

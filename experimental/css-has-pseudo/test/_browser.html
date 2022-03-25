@@ -393,11 +393,11 @@
 			}
 
 			async function testClassChange(element, expectedColor) {
-				element.classList.add('a_test');
+				element.classList.add('a_Test');
 				await rafP(() => {
 					testColor(`add .test to ${element.id}`, expectedColor);
 				});
-				element.classList.remove('a_test');
+				element.classList.remove('a_Test');
 				await rafP(() => {
 					testColor(`remove .test from ${element.id}`, grey);
 				});
@@ -405,7 +405,7 @@
 
 			async function testElementInsertionBefore(beforeElement, expectedColor) {
 				const newElement = document.createElement('div');
-				newElement.classList.add('a_test')
+				newElement.classList.add('a_Test')
 
 				beforeElement.before(newElement);
 				await rafP(() => {
@@ -420,7 +420,7 @@
 
 			async function testElementInsertionAfter(afterElement, expectedColor) {
 				const newElement = document.createElement('div');
-				newElement.classList.add('a_test')
+				newElement.classList.add('a_Test')
 
 				afterElement.after(newElement);
 				await rafP(() => {
@@ -436,7 +436,7 @@
 			async function testTreeInsertionBefore(beforeElement, expectedColor) {
 				const newElement = document.createElement('div');
 				const newChild = document.createElement('div');
-				newChild.classList.add('a_test');
+				newChild.classList.add('a_Test');
 				newElement.appendChild(newChild);
 
 				beforeElement.before(newElement);
@@ -453,7 +453,7 @@
 			async function testTreeInsertionAfter(afterElement, expectedColor) {
 				const newElement = document.createElement('div');
 				const newChild = document.createElement('div');
-				newChild.classList.add('a_test');
+				newChild.classList.add('a_Test');
 				newElement.appendChild(newChild);
 
 				afterElement.after(newElement);

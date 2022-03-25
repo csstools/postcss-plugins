@@ -62,6 +62,12 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 			return true;
 		}
 
+		if (features[feature.id]) {
+			// feature is explicitly enabled
+			logger.log(`  ${feature.id} does not meet the required vendor implementations but has been enabled by options`);
+			return true;
+		}
+
 		logger.log(`  ${feature.id} with ${feature.vendors_implementations} vendor implementations has been disabled`);
 		return false;
 	});
@@ -78,7 +84,7 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 			logger.log(`  ${feature.id} has been disabled by options`);
 		} else if (!isAllowedStage) {
 			if (isAllowedFeature) {
-				logger.log(`  ${feature.id} has been enabled by options`);
+				logger.log(`  ${feature.id} does not meet the required stage but has been enabled by options`);
 			} else {
 				logger.log(`  ${feature.id} with stage ${feature.stage} has been disabled`);
 			}

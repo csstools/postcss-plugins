@@ -11,7 +11,7 @@ export function generatePropertyTestCases(property) {
 	properties.push(`--${property}`);
 	properties.push(`foo-${property}`);
 
-	let result =  properties.map((x, index) => {
+	let result = properties.map((x, index) => {
 		return `.order-${index} {
 	${x}: ${index};
 }`;

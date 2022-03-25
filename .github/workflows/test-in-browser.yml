@@ -10,12 +10,12 @@ jobs:
   test_in_browser:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
 
       - run: npm ci
       - run: npm run build --workspaces --if-present
-      - run: npm run test:browser --workspaces --if-present
+      - run: npm run --silent test:browser --workspaces --if-present
 

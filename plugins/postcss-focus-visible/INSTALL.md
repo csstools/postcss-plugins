@@ -13,14 +13,14 @@ Add [PostCSS Focus Visible] to your project:
 npm install postcss postcss-focus-visible --save-dev
 ```
 
-Use [PostCSS Focus Visible] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
 const postcssFocusVisible = require('postcss-focus-visible');
 
 postcss([
-  postcssFocusVisible(/* pluginOptions */)
+	postcssFocusVisible(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-focus-visible --save-dev
 ```
 
 Use [PostCSS Focus Visible] in your `postcss.config.js` configuration file:
@@ -38,44 +38,56 @@ Use [PostCSS Focus Visible] in your `postcss.config.js` configuration file:
 const postcssFocusVisible = require('postcss-focus-visible');
 
 module.exports = {
-  plugins: [
-    postcssFocusVisible(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssFocusVisible(/* pluginOptions */)
+	]
 }
 ```
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-focus-visible --save-dev
 ```
 
 Use [PostCSS Focus Visible] in your Webpack configuration:
 
 ```js
-const postcssFocusVisible = require('postcss-focus-visible');
-
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssFocusVisible(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-focus-visible",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
+};
 ```
 
 ## Create React App
@@ -83,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-focus-visible --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Focus Visible] in your
@@ -94,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssFocusVisible = require('postcss-focus-visible');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssFocusVisible(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssFocusVisible(/* pluginOptions */)
+	]
 });
 ```
 
@@ -105,7 +117,7 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-focus-visible --save-dev
 ```
 
 Use [PostCSS Focus Visible] in your Gulpfile:
@@ -114,13 +126,15 @@ Use [PostCSS Focus Visible] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssFocusVisible = require('postcss-focus-visible');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssFocusVisible(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+gulp.task('css', function () {
+	var plugins = [
+		postcssFocusVisible(/* pluginOptions */)
+	];
+
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -128,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-focus-visible --save-dev
 ```
 
 Use [PostCSS Focus Visible] in your Gruntfile:
@@ -139,16 +153,16 @@ const postcssFocusVisible = require('postcss-focus-visible');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssFocusVisible(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssFocusVisible(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 
