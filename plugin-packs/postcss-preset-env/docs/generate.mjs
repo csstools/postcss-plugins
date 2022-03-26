@@ -1,4 +1,4 @@
-import { packageNamesToIds } from '../src/plugins/plugins-map.mjs';
+import { getFeaturesIds } from '../src/plugins/plugins-map.mjs';
 import cssdb from 'cssdb';
 import { promises as fsp } from 'fs';
 
@@ -7,18 +7,18 @@ let featuresTable = '';
 featuresTable = featuresTable + '| ID | Feature | example | docs |\n';
 featuresTable = featuresTable + '|:--- |:--- |:--- |:--- |\n';
 
-const ids = Array.from(Object.values(packageNamesToIds));
+const ids = getFeaturesIds();
 ids.sort();
 
 for (const id of ids) {
 	const cssdbFeature = cssdb.find(feature => feature.id === id);
 	const cssdbPlugins = cssdbFeature.polyfills.filter(polyfill => polyfill.type === 'PostCSS Plugin');
 	cssdbPlugins.sort((a) => {
-		if (a.link.includes('https://github.com/csstools')) {
+		if (a.link.indexOf('https://github.com/csstools') === 0) {
 			return -1;
 		}
 
-		if (a.link.includes('https://github.com/postcss')) {
+		if (a.link.indexOf('https://github.com/postcss') === 0) {
 			return -1;
 		}
 

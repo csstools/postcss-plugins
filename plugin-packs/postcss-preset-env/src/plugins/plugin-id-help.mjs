@@ -1,8 +1,9 @@
-import { idsToPackageNames, packageNamesToIds } from './plugins-map.mjs';
+import { getFeaturesIds, getPackageNames, getPackageNamesToIds } from './plugins-map.mjs';
 
 export function pluginIdHelp(featureNamesInOptions, root, result) {
-	const featureNames = Object.keys(idsToPackageNames);
-	const packageNames = Object.keys(packageNamesToIds);
+	const featureNames = getFeaturesIds();
+	const packageNames = getPackageNames();
+	const packageNamesToIds = getPackageNamesToIds();
 
 	featureNamesInOptions.forEach((featureName) => {
 		if (featureNames.includes(featureName)) {

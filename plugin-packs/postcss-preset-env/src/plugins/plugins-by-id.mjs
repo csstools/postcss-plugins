@@ -1,42 +1,42 @@
-import postcssAttributeCaseInsensitive from 'postcss-attribute-case-insensitive';
+import postcssInitial from 'postcss-initial';
+import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
 import postcssBlankPseudo from 'css-blank-pseudo';
+import postcssPageBreak from 'postcss-page-break';
+import postcssAttributeCaseInsensitive from 'postcss-attribute-case-insensitive';
+import postcssClamp from 'postcss-clamp';
+import postcssColorFunction from '@csstools/postcss-color-function';
 import postcssColorFunctionalNotation from 'postcss-color-functional-notation';
-import postcssColorHexAlpha from 'postcss-color-hex-alpha';
-import postcssColorRebeccapurple from 'postcss-color-rebeccapurple';
 import postcssCustomMedia from 'postcss-custom-media';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomSelectors from 'postcss-custom-selectors';
 import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
+import postcssNormalizeDisplayValues from '@csstools/postcss-normalize-display-values';
 import postcssDoublePositionGradients from 'postcss-double-position-gradients';
 import postcssEnvFunction from 'postcss-env-function';
 import postcssFocusVisible from 'postcss-focus-visible';
 import postcssFocusWithin from 'postcss-focus-within';
+import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
 import postcssFontVariant from 'postcss-font-variant';
-import postcssFontFamilySystemUi from '../patch/postcss-system-ui-font-family.mjs';
 import postcssGapProperties from 'postcss-gap-properties';
 import postcssHasPseudo from 'css-has-pseudo';
-import postcssImageSetPolyfill from 'postcss-image-set-function';
-import postcssInitial from 'postcss-initial';
+import postcssColorHexAlpha from 'postcss-color-hex-alpha';
+import postcssHWBFunction from '@csstools/postcss-hwb-function';
+import postcssICUnit from '@csstools/postcss-ic-unit';
+import postcssImageSetFunction from 'postcss-image-set-function';
+import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 import postcssLabFunction from 'postcss-lab-function';
 import postcssLogical from 'postcss-logical';
 import postcssMediaMinmax from 'postcss-media-minmax';
 import postcssNesting from 'postcss-nesting';
+import postcssSelectorNot from 'postcss-selector-not';
+import postcssOKLabFunction from '@csstools/postcss-oklab-function';
+import postcssOpacityPercentage from 'postcss-opacity-percentage';
 import postcssOverflowShorthand from 'postcss-overflow-shorthand';
-import postcssPageBreak from 'postcss-page-break';
+import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
 import postcssPlace from 'postcss-place';
 import postcssPrefersColorScheme from 'css-prefers-color-scheme';
-import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
-import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
-import postcssSelectorNot from 'postcss-selector-not';
-import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
-import postcssHWBFunction from '@csstools/postcss-hwb-function';
-import postcssOpacityPercentage from 'postcss-opacity-percentage';
-import postcssClamp from 'postcss-clamp';
-import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
-import postcssNormalizeDisplayValues from '@csstools/postcss-normalize-display-values';
-import postcssColorFunction from '@csstools/postcss-color-function';
-import postcssOKLabFunction from '@csstools/postcss-oklab-function';
-import postcssICUnit from '@csstools/postcss-ic-unit';
+import postcssColorRebeccapurple from 'postcss-color-rebeccapurple';
+import postcssFontFamilySystemUI from '../patch/postcss-system-ui-font-family.mjs';
 
 // postcss plugins ordered by id
 export const pluginsById = new Map(
@@ -61,11 +61,11 @@ export const pluginsById = new Map(
 		['font-format-keywords', postcssFontFormatKeywords],
 		['font-variant-property', postcssFontVariant],
 		['gap-properties', postcssGapProperties],
-		['hwb-function', postcssHWBFunction],
 		['has-pseudo-class', postcssHasPseudo],
 		['hexadecimal-alpha-notation', postcssColorHexAlpha],
+		['hwb-function', postcssHWBFunction],
 		['ic-unit', postcssICUnit],
-		['image-set-function', postcssImageSetPolyfill],
+		['image-set-function', postcssImageSetFunction],
 		['is-pseudo-class', postcssIsPseudoClass],
 		['lab-function', postcssLabFunction],
 		['logical-properties-and-values', postcssLogical],
@@ -79,6 +79,6 @@ export const pluginsById = new Map(
 		['place-properties', postcssPlace],
 		['prefers-color-scheme-query', postcssPrefersColorScheme],
 		['rebeccapurple-color', postcssColorRebeccapurple],
-		['system-ui-font-family', postcssFontFamilySystemUi],
+		['system-ui-font-family', postcssFontFamilySystemUI],
 	],
 );

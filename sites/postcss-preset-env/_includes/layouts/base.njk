@@ -1,0 +1,76 @@
+{%- set siteTitle = title | default(metadata.title) | escape -%}
+{%- set siteDesc = description | default(metadata.description) | escape -%}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="max-snippet:-1, max-image-preview: large, max-video-preview: -1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="preconnect" href="/" crossorigin>
+	<title>{{ siteTitle }}</title>
+	<meta property="og:title" content="{{ siteTitle }}">
+	<meta name="description" content="{{ siteDesc  }}">
+	<meta property="og:description" content="{{ siteDesc }}">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@{{ metadata.author.twitterHandle }}">
+	<meta name="twitter:creator" content="@{{ metadata.author.twitterHandle }}">
+	<meta property="og:image" content="{{ metadata.image }}">
+	<link rel="canonical" href="{{ metadata.url }}{{ canonicalUrl or page.url }}">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content={{ metadata.url }}{{ canonicalUrl or page.url }}>
+	<meta name="referrer" content="no-referrer-when-downgrade">
+	<link href="{{ "/favicon.ico" | addHash }}" rel="shortcut icon">
+	<link type="text/css" rel="stylesheet" href="{{ '/static/css/styles.css' | addHash }}">
+</head>
+<body{% if baseClass %} class="{{ baseClass }}"{% endif %}>
+<header class="ppe-heading">
+	<a class="ppe-heading-title-link" href="/" rel="home">postcss-preset-env</a>
+
+	<nav class="ppe-heading-menu">
+		<ul class="ppe-heading-menu-list">
+			<li class="ppe-heading-menu-item">
+				<a class="ppe-heading-menu-link" href="/features"{% if page.url === '/features/' %} aria-current="page"{% endif%} aria-label="List of features">
+					<svg viewBox="0 0 60 38" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+						<path d="M56.932 16.077 42.699 1.719C41.59.602 40.142 0 38.523 0c-1.62 0-3.069.602-4.176 1.72a1.254 1.254 0 0 0 0 1.805 1.228 1.228 0 0 0 1.79 0c.681-.688 1.448-1.032 2.386-1.032.937 0 1.79.344 2.386 1.032L50.966 13.67H9.119l9.972-10.145c.682-.688 1.449-1.032 2.386-1.032.938 0 1.79.344 2.387 1.032a1.228 1.228 0 0 0 1.79 0 1.254 1.254 0 0 0 0-1.806C24.545.602 23.096 0 21.476 0c-1.619 0-3.068.602-4.176 1.72L2.813 16.334l-.171.172-.17.172-.17.172C.851 18.484 0 20.634 0 23.04v5.588C0 33.787 4.176 38 9.29 38h4.176c8.182 0 14.83-6.706 14.83-14.96 0-.773-.086-1.46-.256-2.235.511-.43 1.193-.687 1.96-.687.682 0 1.364.258 1.96.687a9.452 9.452 0 0 0-.256 2.236c0 8.253 6.648 14.959 14.83 14.959h4.176c5.114 0 9.29-4.213 9.29-9.371v-5.588a9.452 9.452 0 0 0-3.068-6.964ZM13.552 35.42H9.715c-.511 0-.852-.688-.426-1.118l11.25-11.348a1.287 1.287 0 0 0-.085-1.892c-.512-.43-1.279-.343-1.705.172L6.562 33.53c-.51.516-1.363.516-1.875.086a1.358 1.358 0 0 1 0-1.891l7.756-7.823c.426-.43.511-1.204.17-1.72a1.26 1.26 0 0 0-1.874-.086l-7.074 6.964c-.426.43-1.108.086-1.108-.43v-5.588c0-1.806.767-3.525 1.875-4.729l.17-.172C5.795 16.937 7.5 16.25 9.29 16.25h9.801c3.75 0 6.733 3.009 6.818 6.792 0 6.792-5.54 12.38-12.358 12.38ZM30 17.624c-1.023 0-2.046.258-2.898.86-.426-.86-1.023-1.547-1.704-2.235h9.204a7.39 7.39 0 0 0-1.704 2.235c-.853-.602-1.875-.86-2.898-.86ZM57.443 28.63c0 3.783-3.068 6.878-6.818 6.878h-4.176c-.852 0-1.62-.086-2.386-.258-.597-.086-.768-.774-.341-1.204l10.994-11.09a1.287 1.287 0 0 0-.085-1.892c-.512-.43-1.279-.343-1.705.172L41.165 33.014c-.426.43-1.193.515-1.705.171-.682-.515-.767-1.461-.17-2.063l7.33-7.393c.425-.43.596-1.204.17-1.72a1.26 1.26 0 0 0-1.875-.086l-7.16 7.222c-.596.602-1.704.43-2.13-.344a11.182 11.182 0 0 1-1.364-5.846c0-3.783 3.069-6.792 6.819-6.792h9.545c1.705 0 3.239.602 4.432 1.72l.596.601c1.108 1.204 1.705 2.837 1.705 4.557v5.588h.085Z"/><linearGradient id="a" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(62 78 -78 62 39 -26)"><stop stop-color="#F527E0"/><stop offset="1" stop-color="#FF8E26"/></linearGradient>
+					</svg>
+
+					<span aria-hidden="true">Features</span>
+				</a>
+			</li>
+			{# Removing for now
+			<li class="ppe-heading-menu-item">
+				<a class="ppe-heading-menu-link" href="/playground"{% if page.url === '/playground/' %} aria-current="page"{% endif%} aria-label="Try out PostCSS Preset Env in an interactive playgroud">
+					<svg viewBox="-5 -10 82 82" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+						<path d="M62 4.878C62 2.277 59.891.17 57.224.046a36.03 36.03 0 0 0-3.66 0c-2.542.124-4.589 1.983-4.713 4.399-.062 1.115-.062 2.292-.062 3.407v2.106h-7.257V4.816c-.061-2.54-2.17-4.584-4.713-4.708-.62 0-1.179-.062-1.86-.062-.56 0-1.18 0-1.8.062-2.604.124-4.713 2.107-4.837 4.646-.062 1.177-.124 2.726 0 4.275.062 1.362-.248 2.601-1.055 3.964a2592.975 2592.975 0 0 1-10.296 17.655L.598 58.709c-.62 1.053-.745 1.92-.435 2.478.31.557 1.179.867 2.357.805 6.327-.186 12.653-.124 17.925 0 1.612 0 2.543-.495 3.349-1.92 3.225-5.7 6.574-11.398 9.8-16.973l3.163-5.39c.124-.247.31-.433.496-.743l1.302-1.92v24.902c0 1.61.807 1.858 1.427 1.858.434 0 .806-.062 1.054-.31.31-.31.496-.805.496-1.61v-4.088h17.429v4.398c.124 1.61.992 1.734 1.613 1.672 1.178-.062 1.364-1.177 1.364-1.796v-3.655C62 39.258 62 22.1 62 4.878Zm-11.102 8.61c.248-.371.806-.495 1.054-.495h6.823v7.62H46.68l1.179-2.045a542.932 542.932 0 0 0 3.039-5.08Zm-19.6-8.3c0-.124 0-.248.063-.372.434-1.858 2.109-2.044 4.962-1.796 1.488.124 2.294.929 2.294 2.416v3.407c0 .124 0 .31-.062.433l-.186.682H31.3v-4.77ZM39.92 26.25c-6.078 10.406-12.095 20.875-18.173 31.282-.62 1.053-1.302 1.487-2.48 1.487h-.063a284.973 284.973 0 0 0-10.295 0h-4.9L15.855 38.7c4.652-8.177 9.366-16.23 14.08-24.407.558-.991 1.24-1.363 2.356-1.363 3.535.062 7.009.062 10.606 0h4.59l-.62 1.24c-.125.309-.31.619-.435.866L39.92 26.25Zm18.917 26.512h-17.18V45.33h17.18v7.433Zm-17.18-10.716v-7.558h17.118v7.496H41.657v.062Zm17.18-10.655h-17.49l.62-2.602.124-.186c.248-.433.496-.929.744-1.424.558-1.24 1.178-2.478 2.295-3.098 1.054-.62 2.48-.495 3.845-.433.558.062 1.117.062 1.55.062H58.9v7.681h-.062Zm.062-21.929v.496h-7.133V8.099c0-1.053-.062-2.106.062-3.097.124-1.92 1.675-1.982 4.404-1.982.744 0 2.667 0 2.729 2.044.062.991 0 1.982 0 3.035-.062.434-.062.868-.062 1.363Z"/>
+					</svg>
+
+					<span aria-hidden="true">Try It Now</span>
+				</a>
+			</li>
+			#}
+			<li class="ppe-heading-menu-item">
+				<a class="ppe-heading-menu-link" href="https://discord.gg/bUadyRwkJS" target="_blank" rel="noreferrer" aria-label="Contact maintainers for support with Discord. Opens in a new tab.">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73 58" aria-hidden="true">
+						<path d="M61.796 5.494a59.415 59.415 0 0 0-15.05-4.73 44.128 44.128 0 0 0-1.928 4.003c-5.612-.844-11.172-.844-16.68 0a42.783 42.783 0 0 0-1.95-4.002 59.218 59.218 0 0 0-15.062 4.74C1.6 19.9-.981 33.936.31 47.772c6.317 4.717 12.44 7.583 18.458 9.458a45.906 45.906 0 0 0 3.954-6.51 38.872 38.872 0 0 1-6.226-3.03 30.957 30.957 0 0 0 1.526-1.208c12.004 5.615 25.046 5.615 36.906 0 .499.416 1.01.82 1.526 1.208a38.775 38.775 0 0 1-6.237 3.035 45.704 45.704 0 0 0 3.953 6.511c6.025-1.875 12.153-4.74 18.47-9.464 1.515-16.04-2.587-29.947-10.844-42.277Zm-37.44 33.767c-3.602 0-6.557-3.363-6.557-7.46 0-4.096 2.891-7.466 6.558-7.466 3.666 0 6.621 3.364 6.558 7.466.006 4.097-2.892 7.46-6.558 7.46Zm24.237 0c-3.603 0-6.558-3.363-6.558-7.46 0-4.096 2.892-7.466 6.558-7.466 3.667 0 6.622 3.364 6.559 7.466 0 4.097-2.892 7.46-6.559 7.46Z" />
+					</svg>
+
+					<span aria-hidden="true">Support</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</header>
+
+{% block content %}
+{{ content | safe }}
+{% endblock %}
+
+<footer>
+</footer>
+
+<!-- Current page: {{ page.url | url }} -->
+<script async defer src="{{ "/static/js/scripts.js" | addHash }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
