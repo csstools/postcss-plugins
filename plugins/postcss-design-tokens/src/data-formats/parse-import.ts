@@ -4,13 +4,12 @@ import { extractStyleDictionaryTokens, latestStyleDictionaryVersion } from './st
 import path from 'path';
 import { promises as fsp } from 'fs';
 
-function parseImport(statement: string): { filePath: string, vendor: string, version: string, variants: Array<string> } {
+function parseImport(statement: string): { filePath: string, format: string, variants: Array<string> } {
 	const importAST = valueParser(statement);
 
 	const result = {
 		filePath: '',
-		vendor: 'standard',
-		version: '',
+		format: 'standard',
 		variants: ['default'],
 	};
 
@@ -19,12 +18,8 @@ function parseImport(statement: string): { filePath: string, vendor: string, ver
 			result.filePath = node.nodes[0].value;
 		}
 
-		if (node.type === 'function' && node.value === 'vendor') {
-			result.vendor = node.nodes[0].value;
-		}
-
-		if (node.type === 'function' && node.value === 'version') {
-			result.version = node.nodes[0].value;
+		if (node.type === 'function' && node.value === 'format') {
+			result.format = node.nodes[0].value;
 		}
 
 		if (node.type === 'function' && node.value === 'variants') {
@@ -36,26 +31,11 @@ function parseImport(statement: string): { filePath: string, vendor: string, ver
 		result.variants = ['default'];
 	}
 
-	if (!result.version) {
-		switch (result.vendor) {
-			case 'standard':
-				result.version = '0.0.1';
-				break;
-
-			case 'style-dictionary':
-				result.version = latestStyleDictionaryVersion;
-				break;
-
-			default:
-				break;
-		}
-	}
-
 	return result;
 }
 
 export async function tokensFromImport(currentVariants: Array<string>, sourceFilePath: string, statement: string, alreadyImported: Set<string>): Promise<{ filePath: string, tokens: Map<string, Token> }|false> {
-	const { filePath, vendor, version, variants } = parseImport(statement);
+	const { filePath, format, variants } = parseImport(statement);
 	if (!variants.every((variant) => currentVariants.includes(variant))) {
 		return false;
 	}
@@ -70,16 +50,16 @@ export async function tokensFromImport(currentVariants: Array<string>, sourceFil
 	const fileContents = await fsp.readFile(resolvedPath, 'utf8');
 	const tokenContents = JSON.parse(fileContents);
 
-	switch (vendor) {
-		case 'style-dictionary':
+	switch (format) {
+		case 'style-dictionary3':
 			return {
 				filePath: path.resolve(filePath),
-				tokens: extractStyleDictionaryTokens(version, tokenContents, resolvedPath),
+				tokens: extractStyleDictionaryTokens('3', tokenContents, resolvedPath),
 			};
 
 		default:
 			break;
 	}
 
-	throw new Error('Unsupported vendor: ' + vendor);
+	throw new Error('Unsupported format: ' + format);
 }
