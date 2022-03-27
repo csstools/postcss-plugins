@@ -11,6 +11,12 @@ postcssTape(plugin)({
 			plugin()
 		]
 	},
+	'variants': {
+		message: "supports basic usage",
+		options: {
+			variants: ['dark', 'tablet', 'branded-green']
+		}
+	},
 	'examples/example': {
 		message: 'minimal example',
 		options: {},

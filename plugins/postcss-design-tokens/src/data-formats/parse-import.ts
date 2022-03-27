@@ -56,7 +56,7 @@ function parseImport(statement: string): { filePath: string, vendor: string, ver
 
 export async function tokensFromImport(currentVariants: Array<string>, sourceFilePath: string, statement: string): Promise<{ filePath: string, tokens: Map<string, Token> }|false> {
 	const { filePath, vendor, version, variants } = parseImport(statement);
-	if (!currentVariants.every((variant) => variants.includes(variant))) {
+	if (!variants.every((variant) => currentVariants.includes(variant))) {
 		return false;
 	}
 

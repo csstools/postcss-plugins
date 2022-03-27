@@ -1,5 +1,5 @@
 @import url('./imported.css');
-@design-tokens url('./tokens.json') vendor('style-dictionary') version('3');
+@design-tokens url('./tokens/basic.json') vendor('style-dictionary') version('3');
 
 .foo {
 	font-family: design-token('font.family.serif');
