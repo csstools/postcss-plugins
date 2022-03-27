@@ -1,6 +1,6 @@
 import valueParser from 'postcss-value-parser';
 import { Token } from './base/token';
-import { extractStyleDictionaryTokens, latestStyleDictionaryVersion } from './style-dictionary/style-dictionary';
+import { extractStyleDictionaryTokens } from './style-dictionary/style-dictionary';
 import path from 'path';
 import { promises as fsp } from 'fs';
 
@@ -23,7 +23,9 @@ function parseImport(statement: string): { filePath: string, format: string, var
 		}
 
 		if (node.type === 'function' && node.value === 'variants') {
-			result.variants = node.nodes.filter((child) => child.type === 'string').map((child) => child.value);
+			result.variants = node.nodes.filter((child) => {
+				return child.type === 'string';
+			}).map((child) => child.value);
 		}
 	});
 
