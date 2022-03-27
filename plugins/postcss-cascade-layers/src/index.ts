@@ -1,6 +1,6 @@
-import { Container } from 'postcss';
+import type { Container, PluginCreator } from 'postcss';
 
-function postcssCascadeLayers(opts) {
+const creator: PluginCreator<undefined> = () => {
 	return {
 		postcssPlugin: 'postcss-cascade-layers',
 		Once(root: Container) {
@@ -75,8 +75,8 @@ function postcssCascadeLayers(opts) {
 			console.log(layerOrder);
 		},
 	};
-}
+};
 
-postcssCascadeLayers.postcss = true;
+creator.postcss = true;
 
-export default postcssCascadeLayers;
+export default creator;
