@@ -1,5 +1,3 @@
-@design-tokens url('./tokens-light.json') vendor('style-dictionary') version('3');
-
 .foo {
 	color: #fff;
 }

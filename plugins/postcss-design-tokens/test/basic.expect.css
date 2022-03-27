@@ -1,5 +1,3 @@
-@design-tokens url('../../../node_modules/style-dictionary-design-tokens-example/style-dictionary.tokens.json') vendor('style-dictionary') version('3');
-@design-tokens url('./tokens.json') vendor('style-dictionary') version('3');
 .foo {
 	font-family: serif;
 	font-size: 10;

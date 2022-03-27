@@ -26,8 +26,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							return;
 						}
 						const importResult = await tokensFromImport(variants, atRule.source.input.file, atRule.params);
+						atRule.remove();
 						if (!importResult) {
-							atRule.remove();
 							return;
 						}
 
