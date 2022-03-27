@@ -363,6 +363,7 @@ postcssTape(plugin)({
 	},
 	'import': {
 		message: 'supports { importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',
+		warnings: 2,
 		options: {
 			importFrom: {
 				customMedia: {
@@ -383,6 +384,7 @@ postcssTape(plugin)({
 	},
 	'import:ch87': {
 		message: 'supports { browsers: "chrome >= 87", importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',
+		warnings: 2,
 		options: {
 			browsers: 'chrome >= 87',
 			importFrom: {
@@ -404,6 +406,7 @@ postcssTape(plugin)({
 	},
 	'import:ch87:array': {
 		message: 'supports { browsers: "chrome >= 87", importFrom: [{ customMedia, customProperties, customSelectors, environmentVariables }] } usage',
+		warnings: 2,
 		options: {
 			browsers: 'chrome >= 87',
 			importFrom: [{
@@ -433,6 +436,7 @@ postcssTape(plugin)({
 	},
 	'basic:export': {
 		message: 'supports { stage: 0 } usage',
+		warnings: 1,
 		options: {
 			stage: 0,
 			exportTo: [

@@ -1,12 +1,16 @@
 {
 	"name": "postcss-custom-properties",
 	"description": "Use Custom Properties Queries in CSS",
-	"version": "12.1.4",
+	"version": "12.1.5",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"contributors": [
 		"Maxime Thirouin"
 	],
 	"license": "MIT",
+	"funding": {
+		"type": "opencollective",
+		"url": "https://opencollective.com/csstools"
+	},
 	"engines": {
 		"node": "^12 || ^14 || >=16"
 	},

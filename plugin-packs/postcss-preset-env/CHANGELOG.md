@@ -1,5 +1,26 @@
 # Changes to PostCSS Preset Env
 
+### 7.4.3 (March 19, 2022)
+
+- Fix manually enabling a feature that doesn't meet the required vendor implementations. [#310](https://github.com/csstools/postcss-plugins/issues/310)
+- Updated `postcss-clamp` to `4.1.0` (minor)
+- Updated `@csstools/postcss-color-function` to `1.0.3` (patch)
+- Updated `@csstools/postcss-is-pseudo-class` to `2.0.1` (patch)
+- Updated `@csstools/postcss-oklab-function` to `1.0.2` (patch)
+- Updated `@csstools/postcss-progressive-custom-properties` to `1.3.0` (minor)
+- Updated `autoprefixer` to `10.4.4` (patch)
+- Updated `browserslist` to `4.20.2` (patch)
+- Updated `cssdb` to `6.5.0` (minor)
+- Updated `postcss-custom-properties` to `12.1.5` (patch)
+- Updated `postcss-double-position-gradients` to `3.1.1` (patch)
+- Updated `postcss-env-function` to `4.0.6` (patch)
+- Updated `postcss-lab-function` to `4.1.2` (patch)
+- Updated `postcss-nesting` to `10.1.3` (patch)
+- Remove internal patch for `postcss-clamp`
+- Document all features. [https://github.com/csstools/postcss-preset-env/issues/156](https://github.com/csstools/postcss-preset-env/issues/156)
+
+[see the list of features](https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md)
+
 ### 7.4.2 (March 2, 2022)
 
 - Adding internal patch for `postcss-clamp` to fix issue when `clamp` was being used with any other values along. [#274](https://github.com/csstools/postcss-plugins/issues/274)

@@ -16,6 +16,7 @@ postcssTape(plugin)({
 	},
 	'basic:import': {
 		message: 'supports { importFrom: { customProperties: { ... } } } usage',
+		warnings: 1,
 		options: {
 			importFrom: {
 				customProperties: {
@@ -30,6 +31,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-fn': {
 		message: 'supports { importFrom() } usage',
+		warnings: 1,
 		options: {
 			importFrom() {
 				return {
@@ -48,6 +50,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-fn-promise': {
 		message: 'supports { async importFrom() } usage',
+		warnings: 1,
 		options: {
 			importFrom() {
 				return new Promise(resolve => {
@@ -67,6 +70,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-json': {
 		message: 'supports { importFrom: "test/import-properties.json" } usage',
+		warnings: 1,
 		options: {
 			importFrom: 'test/import-properties.json'
 		},
@@ -75,6 +79,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-cjs': {
 		message: 'supports { importFrom: "test/import-properties{-2}?.cjs" } usage',
+		warnings: 1,
 		options: {
 			importFrom: [
 				'test/import-properties.cjs',
@@ -86,6 +91,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-mjs': {
 		message: 'supports { importFrom: "test/import-properties{-2}?.mjs" } usage',
+		warnings: 1,
 		options: {
 			importFrom: [
 				'test/import-properties.mjs',
@@ -97,6 +103,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-css': {
 		message: 'supports { importFrom: "test/import-properties{-2}?.css" } usage',
+		warnings: 1,
 		options: {
 			importFrom: [
 				'test/import-properties.css',
@@ -108,6 +115,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-css-js': {
 		message: 'supports { importFrom: "test/import-properties{-2}?.{css|js}" } usage',
+		warnings: 1,
 		options: {
 			importFrom: [
 				'test/import-properties.js',
@@ -119,6 +127,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-css-pcss': {
 		message: 'supports { importFrom: "test/import-properties.{p}?css" } usage',
+		warnings: 1,
 		options: {
 			importFrom: [
 				'test/import-properties.pcss',
@@ -130,6 +139,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-css-from': {
 		message: 'supports { importFrom: { from: "test/import-properties.css" } } usage',
+		warnings: 1,
 		options: {
 			importFrom: [
 				{ from: 'test/import-properties.css' },
@@ -141,6 +151,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-css-from-type': {
 		message: 'supports { importFrom: [ { from: "test/import-properties.css", type: "css" } ] } usage',
+		warnings: 1,
 		options: {
 			importFrom: [
 				{ from: 'test/import-properties.css', type: 'css' },
@@ -152,6 +163,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-override': {
 		message: 'importFrom with { preserve: false } should override root properties',
+		warnings: 1,
 		options: {
 			preserve: false,
 			importFrom: {
@@ -170,6 +182,7 @@ postcssTape(plugin)({
 	},
 	'basic:import-override:inverse': {
 		message: 'importFrom with { preserve: false, overrideImportFromWithRoot: true  } should override importFrom properties',
+		warnings: 1,
 		options: {
 			preserve: false,
 			overrideImportFromWithRoot: true,
@@ -189,6 +202,7 @@ postcssTape(plugin)({
 	},
 	'basic:export': {
 		message: 'supports { exportTo: { customProperties: { ... } } } usage',
+		warnings: 1,
 		options: {
 			exportTo: (global.__exportPropertiesObject = global.__exportPropertiesObject || {
 				customProperties: null
@@ -204,6 +218,7 @@ postcssTape(plugin)({
 	},
 	'basic:export-fn': {
 		message: 'supports { exportTo() } usage',
+		warnings: 1,
 		options: {
 			exportTo(customProperties) {
 				if (customProperties['--color'] !== 'rgb(255, 0, 0)') {
@@ -216,6 +231,7 @@ postcssTape(plugin)({
 	},
 	'basic:export-fn-promise': {
 		message: 'supports { async exportTo() } usage',
+		warnings: 1,
 		options: {
 			exportTo(customProperties) {
 				return new Promise((resolve, reject) => {
@@ -232,6 +248,7 @@ postcssTape(plugin)({
 	},
 	'basic:export-scss': {
 		message: 'supports { exportTo: "test/export-properties.scss" } usage',
+		warnings: 1,
 		options: {
 			exportTo: 'test/export-properties.scss'
 		},
@@ -251,6 +268,7 @@ postcssTape(plugin)({
 	},
 	'basic:export-json': {
 		message: 'supports { exportTo: "test/export-properties.json" } usage',
+		warnings: 1,
 		options: {
 			exportTo: 'test/export-properties.json'
 		},
@@ -270,6 +288,7 @@ postcssTape(plugin)({
 	},
 	'basic:export-js': {
 		message: 'supports { exportTo: "test/export-properties.js" } usage',
+		warnings: 1,
 		options: {
 			exportTo: 'test/export-properties.js'
 		},
@@ -289,6 +308,7 @@ postcssTape(plugin)({
 	},
 	'basic:export-mjs': {
 		message: 'supports { exportTo: "test/export-properties.mjs" } usage',
+		warnings: 1,
 		options: {
 			exportTo: 'test/export-properties.mjs'
 		},
@@ -308,6 +328,7 @@ postcssTape(plugin)({
 	},
 	'basic:export-css': {
 		message: 'supports { exportTo: "test/export-properties.css" } usage',
+		warnings: 1,
 		options: {
 			exportTo: 'test/export-properties.css'
 		},
@@ -327,6 +348,7 @@ postcssTape(plugin)({
 	},
 	'basic:export-css-to': {
 		message: 'supports { exportTo: { to: "test/export-properties.css" } } usage',
+		warnings: 1,
 		options: {
 			exportTo: { to: 'test/export-properties.css' }
 		},
@@ -346,6 +368,7 @@ postcssTape(plugin)({
 	},
 	'basic:export-css-to-type': {
 		message: 'supports { exportTo: { to: "test/export-properties.css", type: "css" } } usage',
+		warnings: 1,
 		options: {
 			exportTo: { to: 'test/export-properties.css', type: 'css' }
 		},
@@ -366,7 +389,8 @@ postcssTape(plugin)({
 	'basic:import-is-empty': {
 		message: 'supports { importFrom: {} } usage',
 		options: {
-			importFrom: {}
+			importFrom: {},
+			disableDeprecationNotice: true
 		}
 	},
 	'import': {

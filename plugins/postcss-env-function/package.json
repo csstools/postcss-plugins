@@ -1,9 +1,13 @@
 {
 	"name": "postcss-env-function",
 	"description": "Use env() variables in CSS",
-	"version": "4.0.5",
+	"version": "4.0.6",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
+	"funding": {
+		"type": "opencollective",
+		"url": "https://opencollective.com/csstools"
+	},
 	"engines": {
 		"node": "^12 || ^14 || >=16"
 	},

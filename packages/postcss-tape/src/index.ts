@@ -266,15 +266,16 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				} catch (err) {
 					hasErrors = true;
 
+					const helpText = '\nThis is most likely a newly created PostCSS AST Node without a value for "source".\nsee :\n- https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#24-set-nodesource-for-new-nodes\n- https://postcss.org/api/#node-source';
 					if (emitGitHubAnnotations) {
 						console.log(formatGitHubActionAnnotation(
-							`${testCaseLabel}\n\nbroken source map: ${JSON.stringify(result.map.toJSON().sources)}`,
+							`${testCaseLabel}\n\nbroken source map: ${JSON.stringify(result.map.toJSON().sources)}\n${helpText}`,
 							'error',
 							{ file: testFilePath, line: 1, col: 1 },
 						));
 					} else {
 						failureSummary.add(testCaseLabel);
-						console.error(`\n${testCaseLabel}\n\nbroken source map: ${JSON.stringify(result.map.toJSON().sources)}\n\n${dashesSeparator}`);
+						console.error(`\n${testCaseLabel}\n\nbroken source map: ${JSON.stringify(result.map.toJSON().sources)}\n${helpText}\n\n${dashesSeparator}`);
 					}
 				}
 			}

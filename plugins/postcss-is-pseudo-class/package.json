@@ -4,6 +4,10 @@
 	"version": "2.0.1",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
+	"funding": {
+		"type": "opencollective",
+		"url": "https://opencollective.com/csstools"
+	},
 	"engines": {
 		"node": "^12 || ^14 || >=16"
 	},
@@ -30,7 +34,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"puppeteer": "^13.4.1"
+		"puppeteer": "^13.5.1"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
