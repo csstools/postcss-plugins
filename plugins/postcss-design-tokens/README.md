@@ -19,7 +19,7 @@
 
 ```pcss
 @design-tokens url('./tokens-light.json') format('style-dictionary3');
-@design-tokens url('./tokens-dark.json') variants('dark') format('style-dictionary3');
+@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
 
 .foo {
 	color: design-token('color.background.primary');
@@ -59,13 +59,15 @@ instructions for:
 
 ## Options
 
-### variants
+### is
 
-The `variants` option determines which design tokens are used.
+The `is` option determines which design tokens are used.
 This allows you to generate multiple themed stylesheets.
 
+By default only `@design-tokens` without any `when('foo')` conditions are used.
+
 ```js
-postcssDesignTokens({ variants: ['dark'] })
+postcssDesignTokens({ is: ['dark'] })
 ```
 
 ```json
@@ -80,7 +82,7 @@ postcssDesignTokens({ variants: ['dark'] })
 
 ```pcss
 @design-tokens url('./tokens-light.json') format('style-dictionary3');
-@design-tokens url('./tokens-dark.json') variants('dark') format('style-dictionary3');
+@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
 
 .foo {
 	color: design-token('color.background.primary');

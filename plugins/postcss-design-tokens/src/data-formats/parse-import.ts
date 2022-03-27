@@ -4,13 +4,13 @@ import { extractStyleDictionaryTokens } from './style-dictionary/style-dictionar
 import path from 'path';
 import { promises as fsp } from 'fs';
 
-function parseImport(statement: string): { filePath: string, format: string, variants: Array<string> } {
+function parseImport(statement: string): { filePath: string, format: string, conditions: Array<string> } {
 	const importAST = valueParser(statement);
 
 	const result = {
 		filePath: '',
 		format: 'standard',
-		variants: ['default'],
+		conditions: ['default'],
 	};
 
 	importAST.walk((node) => {
@@ -22,23 +22,23 @@ function parseImport(statement: string): { filePath: string, format: string, var
 			result.format = node.nodes[0].value;
 		}
 
-		if (node.type === 'function' && node.value === 'variants') {
-			result.variants = node.nodes.filter((child) => {
+		if (node.type === 'function' && node.value === 'when') {
+			result.conditions = node.nodes.filter((child) => {
 				return child.type === 'string';
 			}).map((child) => child.value);
 		}
 	});
 
-	if (!result.variants.length) {
-		result.variants = ['default'];
+	if (!result.conditions.length) {
+		result.conditions = ['default'];
 	}
 
 	return result;
 }
 
-export async function tokensFromImport(currentVariants: Array<string>, sourceFilePath: string, statement: string, alreadyImported: Set<string>): Promise<{ filePath: string, tokens: Map<string, Token> }|false> {
-	const { filePath, format, variants } = parseImport(statement);
-	if (!variants.every((variant) => currentVariants.includes(variant))) {
+export async function tokensFromImport(buildIs: Array<string>, sourceFilePath: string, statement: string, alreadyImported: Set<string>): Promise<{ filePath: string, tokens: Map<string, Token> }|false> {
+	const { filePath, format, conditions } = parseImport(statement);
+	if (!conditions.every((condition) => buildIs.includes(condition))) {
 		return false;
 	}
 

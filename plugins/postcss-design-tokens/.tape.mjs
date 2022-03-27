@@ -11,10 +11,10 @@ postcssTape(plugin)({
 			plugin()
 		]
 	},
-	'variants': {
+	'is': {
 		message: "supports basic usage",
 		options: {
-			variants: ['dark', 'tablet', 'branded-green']
+			is: ['dark', 'tablet', 'branded-green']
 		}
 	},
 	'examples/example': {
@@ -24,9 +24,7 @@ postcssTape(plugin)({
 	'examples/example:dark': {
 		message: 'minimal example with dark theme',
 		options: {
-			variants: [
-				'dark'
-			]
+			is: ['dark']
 		},
 	},
 });

@@ -5,13 +5,13 @@ import { mergeTokens } from './data-formats/token';
 import { onCSSValue } from './values';
 
 type pluginOptions = {
-	variants?: Array<string>
+	is?: Array<string>
 }
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const variants = opts?.variants ?? [];
-	if (variants.length === 0) {
-		variants.push('default');
+	const buildIs = opts?.is ?? [];
+	if (buildIs.length === 0) {
+		buildIs.push('default');
 	}
 
 	return {
@@ -44,7 +44,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					});
 
 					for (const atRule of designTokenAtRules.values()) {
-						const importResult = await tokensFromImport(variants, atRule.filePath, atRule.params, importedFiles);
+						const importResult = await tokensFromImport(buildIs, atRule.filePath, atRule.params, importedFiles);
 						if (!importResult) {
 							continue;
 						}
