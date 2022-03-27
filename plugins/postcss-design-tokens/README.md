@@ -7,23 +7,30 @@
 
 [PostCSS Design Tokens] lets easily create new plugins following some [CSS Specification].
 
-```pcss
-.foo {
-	color: red;
+```json
+{
+	"color": {
+		"background": {
+			"primary": { "value": "#fff" }
+		}
+	}
 }
+```
 
-.baz {
-	color: green;
+```pcss
+@design-tokens url('./tokens-light.json') vendor('style-dictionary') version('3');
+@design-tokens url('./tokens-dark.json') variant('dark') vendor('style-dictionary') version('3');
+
+.foo {
+	color: design-token('color.background.primary');
 }
 
 /* becomes */
 
-.foo {
-	color: blue;
-}
+@design-tokens url('./tokens-dark.json') variant('dark') vendor('style-dictionary') version('3');
 
-.baz {
-	color: green;
+.foo {
+	color: #fff;
 }
 ```
 
@@ -39,10 +46,10 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssBasePlugin = require('@csstools/postcss-design-tokens');
+const postcssDesignTokens = require('@csstools/postcss-design-tokens');
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssDesignTokens(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -54,33 +61,39 @@ instructions for:
 
 ## Options
 
-### preserve
+### variants
 
-The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
+The `variants` option determines which design tokens are used.
+This allows you to generate multiple themed stylesheets.
 
 ```js
-postcssBasePlugin({ preserve: true })
+postcssDesignTokens({ variants: ['dark'] })
+```
+
+```json
+{
+	"color": {
+		"background": {
+			"primary": { "value": "#000" }
+		}
+	}
+}
 ```
 
 ```pcss
-.foo {
-	color: red;
-}
+@design-tokens url('./tokens-light.json') vendor('style-dictionary') version('3');
+@design-tokens url('./tokens-dark.json') variant('dark') vendor('style-dictionary') version('3');
 
-.baz {
-	color: green;
+.foo {
+	color: design-token('color.background.primary');
 }
 
 /* becomes */
 
-.foo {
-	color: blue;
-	color: red;
-}
+@design-tokens url('./tokens-light.json') vendor('style-dictionary') version('3');
 
-.baz {
-	color: green;
+.foo {
+	color: #000;
 }
 ```
 

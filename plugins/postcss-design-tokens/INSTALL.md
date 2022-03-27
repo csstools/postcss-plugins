@@ -17,10 +17,10 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssBasePlugin = require('@csstools/postcss-design-tokens');
+const postcssDesignTokens = require('@csstools/postcss-design-tokens');
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssDesignTokens(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -35,11 +35,11 @@ npm install postcss-cli @csstools/postcss-design-tokens --save-dev
 Use [PostCSS Design Tokens] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-design-tokens');
+const postcssDesignTokens = require('@csstools/postcss-design-tokens');
 
 module.exports = {
 	plugins: [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssDesignTokens(/* pluginOptions */)
 	]
 }
 ```
@@ -103,11 +103,11 @@ Use [React App Rewire PostCSS] and [PostCSS Design Tokens] in your
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssBasePlugin = require('@csstools/postcss-design-tokens');
+const postcssDesignTokens = require('@csstools/postcss-design-tokens');
 
 module.exports = config => reactAppRewirePostcss(config, {
 	plugins: () => [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssDesignTokens(/* pluginOptions */)
 	]
 });
 ```
@@ -124,11 +124,11 @@ Use [PostCSS Design Tokens] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssBasePlugin = require('@csstools/postcss-design-tokens');
+const postcssDesignTokens = require('@csstools/postcss-design-tokens');
 
 gulp.task('css', function () {
 	var plugins = [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssDesignTokens(/* pluginOptions */)
 	];
 
 	return gulp.src('./src/*.css')
@@ -148,7 +148,7 @@ npm install grunt-postcss @csstools/postcss-design-tokens --save-dev
 Use [PostCSS Design Tokens] in your Gruntfile:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-design-tokens');
+const postcssDesignTokens = require('@csstools/postcss-design-tokens');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -156,7 +156,7 @@ grunt.initConfig({
 	postcss: {
 		options: {
 			processors: [
-			postcssBasePlugin(/* pluginOptions */)
+			postcssDesignTokens(/* pluginOptions */)
 			]
 		},
 		dist: {

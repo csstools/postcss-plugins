@@ -1,21 +1,6 @@
+@design-tokens url('./tokens-light.json') vendor('style-dictionary') version('3');
+@design-tokens url('./tokens-dark.json') variant('dark') vendor('style-dictionary') version('3');
+
 .foo {
-	color: design-token(color);
-}
-
-@media (design-token: medium) {
-	.baz {
-		color: design-token(color);
-		background-color: rgb(design-token(red-components));
-	}
-}
-
-@supports (design-token: cover) {
-	.baz {
-		color: design-token(color);
-		object-fit: cover;
-	}
-}
-
-:design-token(button) {
-	color: design-token(color);
+	color: design-token('color.background.primary');
 }

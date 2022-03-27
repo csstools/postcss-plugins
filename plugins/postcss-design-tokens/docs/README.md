@@ -16,6 +16,10 @@
 
 [<humanReadableName>] lets easily create new plugins following some [CSS Specification].
 
+```json
+<tokens-light.json>
+```
+
 ```pcss
 <example.css>
 
@@ -30,13 +34,17 @@
 
 ## Options
 
-### preserve
+### variants
 
-The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
+The `variants` option determines which design tokens are used.
+This allows you to generate multiple themed stylesheets.
 
 ```js
-<exportName>({ preserve: true })
+<exportName>({ variants: ['dark'] })
+```
+
+```json
+<tokens-dark.json>
 ```
 
 ```pcss
@@ -44,7 +52,7 @@ is preserved. By default, it is not preserved.
 
 /* becomes */
 
-<example.preserve-true.expect.css>
+<example.dark.expect.css>
 ```
 
 <link-list>

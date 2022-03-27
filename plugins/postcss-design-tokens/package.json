@@ -29,6 +29,10 @@
 	"peerDependencies": {
 		"postcss": "^8.3"
 	},
+	"devDependencies": {
+		"postcss-import": "^14.1.0",
+		"style-dictionary-design-tokens-example": "^1.0.0"
+	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",

@@ -1,21 +1,8 @@
+@import url('./imported.css');
+@design-tokens url('./tokens.json') vendor('style-dictionary') version('3');
+
 .foo {
-	color: design-token(color);
-}
-
-@media (design-token: medium) {
-	.baz {
-		color: design-token(color);
-		background-color: rgb(design-token(red-components));
-	}
-}
-
-@supports (design-token: cover) {
-	.baz {
-		color: design-token(color);
-		object-fit: cover;
-	}
-}
-
-:design-token(button) {
-	color: design-token(color);
+	font-family: design-token('font.family.serif');
+	font-size: design-token('size.font.small');
+	color: design-token('color.font.base');
 }

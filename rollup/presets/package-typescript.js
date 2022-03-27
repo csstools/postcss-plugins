@@ -21,7 +21,7 @@ export function packageTypescript() {
 					extensions: ['.js', '.ts'],
 					presets: packageBabelPreset,
 				}),
-				terser(),
+				// terser(),
 			],
 		},
 	];

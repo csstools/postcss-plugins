@@ -1,21 +1,5 @@
+@design-tokens url('./tokens-dark.json') variant('dark') vendor('style-dictionary') version('3');
+
 .foo {
-	color: #f00;
-}
-
-@media (design-token: medium) {
-	.baz {
-		color: #f00;
-		background-color: rgb(255, 0, 0);
-	}
-}
-
-@supports (design-token: cover) {
-	.baz {
-		color: #f00;
-		object-fit: cover;
-	}
-}
-
-:design-token(button) {
-	color: #f00;
+	color: #fff;
 }
