@@ -19,7 +19,7 @@
 
 ```pcss
 @design-tokens url('./tokens-light.json') vendor('style-dictionary') version('3');
-@design-tokens url('./tokens-dark.json') variant('dark') vendor('style-dictionary') version('3');
+@design-tokens url('./tokens-dark.json') variants('dark') vendor('style-dictionary') version('3');
 
 .foo {
 	color: design-token('color.background.primary');
@@ -80,7 +80,7 @@ postcssDesignTokens({ variants: ['dark'] })
 
 ```pcss
 @design-tokens url('./tokens-light.json') vendor('style-dictionary') version('3');
-@design-tokens url('./tokens-dark.json') variant('dark') vendor('style-dictionary') version('3');
+@design-tokens url('./tokens-dark.json') variants('dark') vendor('style-dictionary') version('3');
 
 .foo {
 	color: design-token('color.background.primary');

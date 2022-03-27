@@ -4,14 +4,14 @@ import { extractStyleDictionaryTokens, latestStyleDictionaryVersion } from './st
 import path from 'path';
 import { promises as fsp } from 'fs';
 
-function parseImport(statement: string): { filePath: string, vendor: string, version: string, variant: string } {
+function parseImport(statement: string): { filePath: string, vendor: string, version: string, variants: Array<string> } {
 	const importAST = valueParser(statement);
 
 	const result = {
 		filePath: '',
 		vendor: 'standard',
 		version: '',
-		variant: 'default',
+		variants: ['default'],
 	};
 
 	importAST.walk((node) => {
@@ -27,13 +27,13 @@ function parseImport(statement: string): { filePath: string, vendor: string, ver
 			result.version = node.nodes[0].value;
 		}
 
-		if (node.type === 'function' && node.value === 'variant') {
-			result.variant = node.nodes[0].value;
+		if (node.type === 'function' && node.value === 'variants') {
+			result.variants = node.nodes.filter((child) => child.type === 'string').map((child) => child.value);
 		}
 	});
 
-	if (!result.variant) {
-		result.variant = 'default';
+	if (!result.variants.length) {
+		result.variants = ['default'];
 	}
 
 	if (!result.version) {
@@ -55,8 +55,8 @@ function parseImport(statement: string): { filePath: string, vendor: string, ver
 }
 
 export async function tokensFromImport(currentVariants: Array<string>, sourceFilePath: string, statement: string): Promise<{ filePath: string, tokens: Map<string, Token> }|false> {
-	const { filePath, vendor, version, variant } = parseImport(statement);
-	if (!currentVariants.includes(variant)) {
+	const { filePath, vendor, version, variants } = parseImport(statement);
+	if (!currentVariants.every((variant) => variants.includes(variant))) {
 		return false;
 	}
 
