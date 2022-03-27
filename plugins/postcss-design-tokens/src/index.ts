@@ -18,15 +18,24 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-design-tokens',
 		prepare() {
 			let tokens = new Map<string, Token>();
+			let importedFiles = new Set<string>();
 
 			return {
+				OnceExit() {
+					tokens = new Map<string, Token>();
+					importedFiles = new Set<string>();
+				},
 				AtRule: {
 					'design-tokens': async (atRule, { result }) => {
 						if (!atRule?.source?.input?.file) {
 							return;
 						}
-						const importResult = await tokensFromImport(variants, atRule.source.input.file, atRule.params);
+
+						const filePath = atRule.source.input.file;
+						const params = atRule.params;
 						atRule.remove();
+
+						const importResult = await tokensFromImport(variants, filePath, params, importedFiles);
 						if (!importResult) {
 							return;
 						}
@@ -35,7 +44,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							type: 'dependency',
 							plugin: 'postcss-design-tokens',
 							file: importResult.filePath,
-							parent: atRule.source.input.file,
+							parent: filePath,
 						});
 
 						tokens = mergeTokens(tokens, importResult.tokens);

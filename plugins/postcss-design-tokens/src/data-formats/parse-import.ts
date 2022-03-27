@@ -54,13 +54,19 @@ function parseImport(statement: string): { filePath: string, vendor: string, ver
 	return result;
 }
 
-export async function tokensFromImport(currentVariants: Array<string>, sourceFilePath: string, statement: string): Promise<{ filePath: string, tokens: Map<string, Token> }|false> {
+export async function tokensFromImport(currentVariants: Array<string>, sourceFilePath: string, statement: string, alreadyImported: Set<string>): Promise<{ filePath: string, tokens: Map<string, Token> }|false> {
 	const { filePath, vendor, version, variants } = parseImport(statement);
 	if (!variants.every((variant) => currentVariants.includes(variant))) {
 		return false;
 	}
 
 	const resolvedPath = path.resolve(path.dirname(sourceFilePath), filePath);
+	if (alreadyImported.has(resolvedPath)) {
+		return false;
+	}
+
+	alreadyImported.add(resolvedPath);
+
 	const fileContents = await fsp.readFile(resolvedPath, 'utf8');
 	const tokenContents = JSON.parse(fileContents);
 
