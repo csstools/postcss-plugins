@@ -12,7 +12,7 @@
 
 	/* becomes */
 
-  color-1: rgb(245,0,135);
+	color-1: rgb(245,0,135);
 	color-2: rgb(253,0,127);
 	color-3: rgb(253,0,127);
 }
