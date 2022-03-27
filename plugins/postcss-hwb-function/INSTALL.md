@@ -1,7 +1,6 @@
 # Installing PostCSS HWB Function
 
-[PostCSS HWB Function] runs in all Node environments, with special
-instructions for:
+[PostCSS HWB Function] runs in all Node environments, with special instructions for:
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
 | --- | --- | --- | --- | --- | --- |
@@ -21,7 +20,7 @@ const postcss = require('postcss');
 const postcssHWBFunction = require('@csstools/postcss-hwb-function');
 
 postcss([
-  postcssHWBFunction(/* pluginOptions */)
+	postcssHWBFunction(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -30,54 +29,65 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli @csstools/postcss-hwb-function --save-dev
 ```
 
-Use [PostCSS HWB Function] in your `postcss.config.js` configuration
-file:
+Use [PostCSS HWB Function] in your `postcss.config.js` configuration file:
 
 ```js
 const postcssHWBFunction = require('@csstools/postcss-hwb-function');
 
 module.exports = {
-  plugins: [
-    postcssHWBFunction(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssHWBFunction(/* pluginOptions */)
+	]
 }
 ```
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader @csstools/postcss-hwb-function --save-dev
 ```
 
 Use [PostCSS HWB Function] in your Webpack configuration:
 
 ```js
-const postcssHWBFunction = require('@csstools/postcss-hwb-function');
-
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssHWBFunction(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"@csstools/postcss-hwb-function",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
+};
 ```
 
 ## Create React App
@@ -85,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss @csstools/postcss-hwb-function --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS HWB Function] in your
@@ -96,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssHWBFunction = require('@csstools/postcss-hwb-function');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssHWBFunction(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssHWBFunction(/* pluginOptions */)
+	]
 });
 ```
 
@@ -107,7 +117,7 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss @csstools/postcss-hwb-function --save-dev
 ```
 
 Use [PostCSS HWB Function] in your Gulpfile:
@@ -116,13 +126,15 @@ Use [PostCSS HWB Function] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssHWBFunction = require('@csstools/postcss-hwb-function');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssHWBFunction(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+gulp.task('css', function () {
+	var plugins = [
+		postcssHWBFunction(/* pluginOptions */)
+	];
+
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -130,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss @csstools/postcss-hwb-function --save-dev
 ```
 
 Use [PostCSS HWB Function] in your Gruntfile:
@@ -141,16 +153,16 @@ const postcssHWBFunction = require('@csstools/postcss-hwb-function');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssHWBFunction(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssHWBFunction(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

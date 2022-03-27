@@ -16,11 +16,11 @@ npm install postcss postcss-place --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'postcss';
-import postcssPlace from 'postcss-place';
+const postcss = require('postcss');
+const postcssPlace = require('postcss-place');
 
 postcss([
-  postcssPlace(/* pluginOptions */)
+	postcssPlace(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-place --save-dev
 ```
 
 Use [PostCSS Place Properties] in your `postcss.config.js` configuration file:
@@ -38,44 +38,56 @@ Use [PostCSS Place Properties] in your `postcss.config.js` configuration file:
 const postcssPlace = require('postcss-place');
 
 module.exports = {
-  plugins: [
-    postcssPlace(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssPlace(/* pluginOptions */)
+	]
 }
 ```
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-place --save-dev
 ```
 
 Use [PostCSS Place Properties] in your Webpack configuration:
 
 ```js
-import postcssPlace from 'postcss-place';
-
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssPlace(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-place",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
+};
 ```
 
 ## Create React App
@@ -83,20 +95,20 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-place --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Place Properties] in your
 `config-overrides.js` file:
 
 ```js
-import reactAppRewirePostcss from 'react-app-rewire-postcss';
-import postcssPlace from 'postcss-place';
+const reactAppRewirePostcss = require('react-app-rewire-postcss');
+const postcssPlace = require('postcss-place');
 
-export default config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssPlace(/* pluginOptions */)
-  ]
+module.exports = config => reactAppRewirePostcss(config, {
+	plugins: () => [
+		postcssPlace(/* pluginOptions */)
+	]
 });
 ```
 
@@ -105,22 +117,24 @@ export default config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-place --save-dev
 ```
 
 Use [PostCSS Place Properties] in your Gulpfile:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssPlace from 'postcss-place';
+const postcss = require('gulp-postcss');
+const postcssPlace = require('postcss-place');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssPlace(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+gulp.task('css', function () {
+	var plugins = [
+		postcssPlace(/* pluginOptions */)
+	];
+
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -128,27 +142,27 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-place --save-dev
 ```
 
 Use [PostCSS Place Properties] in your Gruntfile:
 
 ```js
-import postcssPlace from 'postcss-place';
+const postcssPlace = require('postcss-place');
 
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssPlace(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssPlace(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

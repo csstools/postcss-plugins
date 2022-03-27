@@ -1,5 +1,35 @@
 # Changes to PostCSS Lab Function
 
+### 4.1.2 (March 8, 2022)
+
+- Fix gamut mapping giving overly unsaturated colors.
+- Implement powerless color components in gamut mapping.
+
+### 4.1.1 (February 15, 2022)
+
+- Fix plugin name
+
+### 4.1.0 (February 12, 2022)
+
+- Add gamut mapping for out of gamut colors.
+- Add conversion to `display-p3` as a wider gamut fallback.
+
+[Read more about out of gamut colors](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-lab-function/README.md#out-of-gamut-colors)
+
+[Read more about `color(display-p3 0 0 0)`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color())
+
+```css
+.color-lab {
+	color: lab(40% 56.6 39);
+}
+
+/* with a display-p3 fallback : */
+.color {
+	color: rgb(179, 35, 35);
+	color: color(display-p3 0.64331 0.19245 0.16771);
+}
+```
+
 ### 4.0.4 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

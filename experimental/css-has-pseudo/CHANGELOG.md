@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### 0.3.0 (February 24, 2022)
+
+- Use base36 encoding to fix support for upper case characters in selectors.
+
 ### 0.2.1 (February 6, 2022)
 
 - Do not leak visitedness via `:has` pseudo-class.

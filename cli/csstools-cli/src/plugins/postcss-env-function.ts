@@ -8,7 +8,7 @@ export default function postcssEnvFunction() {
 		helpTextLogger(
 			'@csstools/cli postcss-env-function',
 			'PostCSS Environment Variables',
-			'Lets you use `env()` variables in CSS, following the [CSS Environment Variables] specification.',
+			'Lets you use `env()` variables in CSS, following the CSS Environment Variables specification.',
 			{
 				importFrom: ['import-variables.js'],
 			},

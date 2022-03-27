@@ -1,0 +1,9 @@
+.color {
+	color: rgb(179,35,35);
+	color: color(display-p3 0.64331 0.19245 0.16771);
+}
+
+:root {
+	--a-color: rgb(164,49,43);
+	--a-color: color(srgb 0.64331 0.19245 0.16771);
+}

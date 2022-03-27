@@ -1,0 +1,123 @@
+---
+layout: layouts/base.njk
+title: Features - PostCSS Preset Env - CSSTools
+description: List of features included in PostCSS Preset Env
+baseClass: 'ppe-features-page'
+---
+
+<main class="ppe-features">
+	<aside class="ppe-navigation">
+		<div class="ppe-navigation-sticky">
+			<div class="ppe-navigation-sticky-overflow">
+				<label for="feature-navigation-select">Filter features by Stage:</label>
+				<select id="feature-navigation-select" class="ppe-navigation-select">
+					<option value="0" selected>Stage 0+</option>
+					<option value="1">Stage 1+</option>
+					<option value="2">Stage 2+</option>
+					<option value="3">Stage 3+</option>
+				</select>
+
+				<nav class="ppe-feature-menu" aria-label="Feature Navigation">
+					<ul class="ppe-feature-menu-list">
+						{% for feature in features %}
+						<li class="ppe-menu-item" data-stage="{{ feature.stage }}">
+							<a class="ppe-menu-link" href="/features/#{{ feature.id }}">
+								{{ feature.title | inlineMarkdown | safe }}
+							</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</nav>
+
+				<nav class="ppe-sidebar-menu" aria-label="Additional Navigation">
+					<ul class="ppe-sidebar-menu-list">
+						<li class="ppe-menu-item">
+							<a
+									class="ppe-menu-link"
+									href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#usage"
+									rel="noreferrer"
+									target="_blank"
+							>
+								Installation and Usage
+							</a>
+						</li>
+						<li class="ppe-menu-item">
+							<a
+									class="ppe-menu-link"
+									href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#options"
+									rel="noreferrer"
+									target="_blank"
+							>
+								Options
+							</a>
+						</li>
+						<li class="ppe-menu-item">
+							<a
+									class="ppe-menu-link"
+									href="https://cssdb.org/#the-staging-process"
+									rel="noreferrer"
+									target="_blank"
+							>
+								Stages
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</aside>
+	<div class="ppe-features-list">
+		<h1 class="ppe-features-list-heading u-visually-hidden">Features</h1>
+		{% for feature in features %}
+			{% set link %}/features/#{{ feature.id }}{% endset %}
+			<section class="ppe-feature" data-stage={{ feature.stage }}>
+				<header class="ppe-feature-heading" id={{ feature.id }}>
+					<h2 class="ppe-feature-title">
+						<a class="ppe-feature-title-link" href={{ link }}>
+							{{ feature.title | inlineMarkdown | safe }}
+						</a>
+					</h2>
+
+					<!-- TODO : should be a region that is skippable for a11y -->
+					<div class="ppe-feature-heading-link-list">
+						<a
+								class="ppe-feature-heading-link ppe-feature-heading-stage"
+								data-stage="{{ feature.stage }}"
+								aria-label="Stage for {{ feature.title | inlineMarkdown | cleanMarkdown }}"
+								href={{ link }}
+						>
+							Stage {{ feature.stage }}
+						</a>
+						<a
+								class="ppe-feature-heading-link ppe-feature-heading-specLink"
+								href="{{ feature.specification }}"
+								rel="noreferrer"
+								target="_blank"
+								aria-label="Specification for {{ feature.title | inlineMarkdown | cleanMarkdown }}"
+						>
+							Specification
+						</a>
+						{% for polyfill in feature.polyfills %}
+							{% set polyfillText %}{{ polyfill.type | replace('JavaScript ', '') | replace('PostCSS ', '') }}{% endset %}
+							<a
+									class="ppe-feature-heading-link ppe-feature-heading-pluginLink"
+									href="{{ polyfill.link }}"
+									rel="noreferrer"
+									aria-label="{{ polyfillText }} {{ feature.title | inlineMarkdown | cleanMarkdown }}"
+									target="_blank"
+							>
+								{{ polyfillText }}
+							</a>
+						{% endfor %}
+					</div>
+				</header>
+				<p class="ppe-feature-description">
+					{{ feature.description | inlineMarkdown | safe }}
+				</p>
+				{%- set description %}/* {{ feature.id }} */
+{{ feature.example | safe }}{% endset -%}
+				{% highlight "css" %}{{ description | safe }}{% endhighlight %}
+			</section>
+		{% endfor %}
+	</div>
+</main>

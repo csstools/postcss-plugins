@@ -26,7 +26,12 @@ assert.deepStrictEqual(
 		],
 		vendors_implementations: 1,
 		plugin: true,
-		pluginOptions: { subFeatures: { areaHrefNeedsFixing: true } },
+		pluginOptions: {
+			subFeatures: {
+				areaHrefNeedsFixing: true,
+			},
+			enableProgressiveCustomProperties: false,
+		},
 		id: 'any-link-pseudo-class',
 	},
 );
@@ -55,7 +60,12 @@ assert.deepStrictEqual(
 		],
 		vendors_implementations: 1,
 		plugin: true,
-		pluginOptions: { subFeatures: { areaHrefNeedsFixing: true } },
+		pluginOptions: {
+			subFeatures: {
+				areaHrefNeedsFixing: true,
+			},
+			enableProgressiveCustomProperties: false,
+		},
 		id: 'any-link-pseudo-class',
 	},
 );
@@ -86,7 +96,13 @@ assert.deepStrictEqual(
 		],
 		vendors_implementations: 1,
 		plugin: true,
-		pluginOptions: { subFeatures: { areaHrefNeedsFixing: true }, shared: true },
+		pluginOptions: {
+			subFeatures: {
+				areaHrefNeedsFixing: true,
+			},
+			enableProgressiveCustomProperties: false,
+			shared: true,
+		},
 		id: 'any-link-pseudo-class',
 	},
 );
@@ -115,7 +131,13 @@ assert.deepStrictEqual(
 		],
 		vendors_implementations: 1,
 		plugin: true,
-		pluginOptions: { subFeatures: { areaHrefNeedsFixing: true }, shared: true },
+		pluginOptions: {
+			subFeatures: {
+				areaHrefNeedsFixing: true,
+			},
+			enableProgressiveCustomProperties: false,
+			shared: true,
+		},
 		id: 'any-link-pseudo-class',
 	},
 );

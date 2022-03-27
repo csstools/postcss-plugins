@@ -58,7 +58,7 @@ postcssTape(plugin)({
 		}
 	},
 	'basic:ch88-ff78:no-is-pseudo': {
-		message: ':is pseudo for nesting can be disable with modern browsers  { browsers: "chrome >= 88, firefox >= 78", stage: 0, features: { nesting-rules: { noIsPseudoSelector: true } } } usage',
+		message: ':is pseudo for nesting can be disable with modern browsers { browsers: "chrome >= 88, firefox >= 78", stage: 0, features: { nesting-rules: { noIsPseudoSelector: true } } } usage',
 		options: {
 			browsers: 'chrome >= 88, firefox >= 78',
 			stage: 0,
@@ -235,7 +235,8 @@ postcssTape(plugin)({
 		options: {
 			stage: 0,
 			features: {
-				'lab-function': true
+				'lab-function': true,
+				'color-function': false,
 			}
 		}
 	},
@@ -245,6 +246,10 @@ postcssTape(plugin)({
 			stage: 0,
 			features: {
 				'lab-function': true
+			},
+			features: {
+				'lab-function': true,
+				'color-function': false,
 			},
 			insertBefore: {
 				'lab-function': [
@@ -262,42 +267,14 @@ postcssTape(plugin)({
 			features: {
 				'lab-function': true
 			},
+			features: {
+				'lab-function': true,
+				'color-function': false,
+			},
 			insertBefore: {
 				'lab-function': [
 					orderDetectionPlugin('before', (decl) => {
 						return decl.prop === 'color' && decl.value.indexOf('rgba(') === 0;
-					})
-				]
-			}
-		}
-	},
-	'insert:after:match-result:feature-is-run': {
-		message: 'supports { insertBefore } usage when looking for a result and the attached feature is skipped',
-		options: {
-			stage: 0,
-			browsers: [
-				'safari >= 15',
-			],
-			insertAfter: {
-				'lab-function': [
-					orderDetectionPlugin('after', (decl) => {
-						return decl.prop === 'color' && decl.value !== 'changed-this-declaration';
-					})
-				]
-			}
-		}
-	},
-	'insert:after:match-result:feature-is-skipped': {
-		message: 'supports { insertBefore } usage when looking for a result and the attached feature is skipped',
-		options: {
-			stage: 0,
-			browsers: [
-				'safari >= 15',
-			],
-			insertAfter: {
-				'lab-function': [
-					orderDetectionPlugin('after', (decl) => {
-						return decl.prop === 'color' && decl.value !== 'changed-this-declaration';
 					})
 				]
 			}
@@ -308,7 +285,8 @@ postcssTape(plugin)({
 		options: {
 			stage: 0,
 			features: {
-				'lab-function': true
+				'lab-function': true,
+				'color-function': false,
 			},
 			insertAfter: {
 				'lab-function': [
@@ -324,7 +302,8 @@ postcssTape(plugin)({
 		options: {
 			stage: 0,
 			features: {
-				'lab-function': true
+				'lab-function': true,
+				'color-function': false,
 			},
 			insertAfter: {
 				'lab-function': [
@@ -340,7 +319,8 @@ postcssTape(plugin)({
 		options: {
 			stage: 0,
 			features: {
-				'lab-function': true
+				'lab-function': true,
+				'color-function': false,
 			},
 			insertAfter: {
 				'lab-function': orderDetectionPlugin('after', (decl) => {
@@ -349,8 +329,41 @@ postcssTape(plugin)({
 			}
 		},
 	},
+	'insert:before:match-result:feature-is-skipped': {
+		message: 'supports { insertBefore } usage when looking for a result and the attached feature is skipped',
+		options: {
+			stage: 0,
+			browsers: [
+				'safari >= 15',
+			],
+			insertBefore: {
+				'lab-function': [
+					orderDetectionPlugin('before', (decl) => {
+						return decl.prop === 'color' && decl.value !== 'changed-this-declaration';
+					})
+				]
+			}
+		}
+	},
+	'insert:after:match-result:feature-is-skipped': {
+		message: 'supports { insertAfter } usage when looking for a result and the attached feature is skipped',
+		options: {
+			stage: 0,
+			browsers: [
+				'safari >= 15',
+			],
+			insertAfter: {
+				'lab-function': [
+					orderDetectionPlugin('after', (decl) => {
+						return decl.prop === 'color' && decl.value !== 'changed-this-declaration';
+					})
+				]
+			}
+		}
+	},
 	'import': {
 		message: 'supports { importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',
+		warnings: 2,
 		options: {
 			importFrom: {
 				customMedia: {
@@ -371,6 +384,7 @@ postcssTape(plugin)({
 	},
 	'import:ch87': {
 		message: 'supports { browsers: "chrome >= 87", importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',
+		warnings: 2,
 		options: {
 			browsers: 'chrome >= 87',
 			importFrom: {
@@ -392,6 +406,7 @@ postcssTape(plugin)({
 	},
 	'import:ch87:array': {
 		message: 'supports { browsers: "chrome >= 87", importFrom: [{ customMedia, customProperties, customSelectors, environmentVariables }] } usage',
+		warnings: 2,
 		options: {
 			browsers: 'chrome >= 87',
 			importFrom: [{
@@ -421,6 +436,7 @@ postcssTape(plugin)({
 	},
 	'basic:export': {
 		message: 'supports { stage: 0 } usage',
+		warnings: 1,
 		options: {
 			stage: 0,
 			exportTo: [
@@ -466,6 +482,14 @@ postcssTape(plugin)({
 				}
 			});
 		}
+	},
+	'progressive-custom-properties': {
+		message: 'supports progressive custom properties plugin',
+		options: {
+			preserve: true,
+			stage: 0,
+			browsers: '> 0%'
+		},
 	},
 	'unknown-feature': {
 		message: 'warns on unknown features',

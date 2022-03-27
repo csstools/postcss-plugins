@@ -1,5 +1,11 @@
 # Changes to PostCSS Custom Properties
 
+### 12.1.5 (March 19, 2022)
+
+- Add deprecation notice for `importFrom` and `exportTo`
+
+[see the discussion](https://github.com/csstools/postcss-plugins/discussions/192)
+
 ### 12.1.4 (January 31, 2022)
 
 - Fix `.mjs` in `importFrom` when using `export default`

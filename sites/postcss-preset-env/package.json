@@ -1,0 +1,98 @@
+{
+  "name": "@csstools/postcss-preset-env-www",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site for PostCSS Preset Env",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "homepage": "https://github.com/csstools/postcss-plugins/tree/main/sites/postcss-preset-env#readme",
+  "bugs": "https://github.com/csstools/postcss-plugins/issues",
+  "scripts": {
+    "start": "npm-run-all clean --parallel css js browsersync eleventy",
+    "css": "postcss src/static/css/styles.css -o dist/static/css/styles.css --watch",
+    "js": "rollup -c rollup.config.js -w",
+    "eleventy": "eleventy --watch",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+    "browsersync": "browser-sync start --server 'dist' --files 'dist' --port 8080 --no-notify",
+    "build": "npm-run-all clean build:css build:js build:eleventy",
+    "build:js": "rollup -c rollup.config.js",
+    "build:css": "postcss src/static/css/styles.css -o dist/static/css/styles.css --env production",
+    "build:eleventy": "NODE_ENV=production eleventy"
+  },
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "indentation": "tab",
+      "property-no-unknown": [
+        true,
+        {
+          "ignoreProperties": [
+            "font-smoothing"
+          ]
+        }
+      ],
+      "selector-class-pattern": null,
+      "no-descending-specificity": null,
+      "value-keyword-case": null,
+      "number-leading-zero": "never"
+    }
+  },
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "specifications",
+    "specs",
+    "features",
+    "lists",
+    "stages",
+    "w3c",
+    "csswg",
+    "future",
+    "next"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csstools/postcss-plugins.git",
+    "directory": "sites/colors"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^1.0.0",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "babel-eslint": "^10.1.0",
+    "cssdb": "^6.5.0",
+    "cssnano": "^5.1.5",
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.4",
+    "hasha": "^5.2.2",
+    "markdown-it": "^12.3.2",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.12",
+    "postcss-cli": "^9.1.0",
+    "postcss-import": "^14.1.0",
+    "postcss-preset-env": "^7.4.3",
+    "rollup": "^2.70.1",
+    "rollup-plugin-filesize": "^9.1.2",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.2"
+  },
+  "devDependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "browser-sync": "^2.27.9",
+    "rollup-plugin-polyfill-node": "^0.8.0"
+  },
+  "volta": {
+    "node": "16.14.0"
+  }
+}

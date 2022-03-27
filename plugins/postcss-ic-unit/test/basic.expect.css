@@ -1,0 +1,10 @@
+.ic-unit {
+	--value-2ic: 'something';
+	text-indent: 2em;
+	content: var(--value-2ic);
+	left: var(--non-existing, 2em);
+	width: calc(8em + 20px);
+	height: 10px;
+	margin: 0.5em 1em .2em;
+	padding: 2    ic;
+}

@@ -28,7 +28,7 @@ The solution is to wrap Custom Property declarations in an `@supports` rule.
 	--a-color: red;
 }
 
-@supports (--a-color: oklch(40% 0.234 0.39 / var(--opacity-50))) {
+@supports (color: oklch(0% 0 0)) {
 	:root {
 		--a-color: oklch(40% 0.234 0.39 / var(--opacity-50));
 	}
@@ -93,6 +93,14 @@ postcss([
   postcssProgressiveCustomProperties()
 ]).process(YOUR_CSS /*, processOptions */);
 ```
+
+## @supports
+
+This plugin wraps Custom Property override declarations in an `@supports` rule.
+With PostCSS 8 this trigger declaration visitors to run again.
+
+Make sure your plugin detects and ignores values inside relevant `@supports` rules.
+
 
 [PostCSS Progressive Custom Properties] runs in all Node environments, with special instructions for:
 

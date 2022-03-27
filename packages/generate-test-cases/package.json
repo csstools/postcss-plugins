@@ -1,30 +1,36 @@
 {
-  "name": "@csstools/generate-test-cases",
-  "private": true,
-  "version": "1.0.0",
-  "description": "PostCSS test case generator",
-  "type": "module",
-  "main": "src/index.mjs",
-  "author": "",
-  "license": "CC0-1.0",
-  "scripts": {
-    "build": "exit 0;",
-    "generate": "node ./src/index.mjs",
-    "lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
-    "test": "exit 0;"
-  },
-  "engines": {
-    "node": "^12 || ^14 || >=16"
-  },
-  "devDependencies": {
-    "mdn-data": "^2.0.25"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/csstools/postcss-plugins.git",
-    "directory": "packages/generate-test-cases"
-  },
-  "volta": {
-    "extends": "../../package.json"
-  }
+	"name": "@csstools/generate-test-cases",
+	"description": "PostCSS test case generator",
+	"version": "1.0.0",
+	"author": "",
+	"license": "CC0-1.0",
+	"funding": {
+		"type": "opencollective",
+		"url": "https://opencollective.com/csstools"
+	},
+	"private": true,
+	"engines": {
+		"node": "^12 || ^14 || >=16"
+	},
+	"type": "module",
+	"main": "src/index.mjs",
+	"devDependencies": {
+		"mdn-data": "^2.0.25"
+	},
+	"scripts": {
+		"build": "exit 0;",
+		"generate": "node ./src/index.mjs",
+		"lint": "npm run lint:eslint && npm run lint:package-json",
+		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
+		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
+		"test": "exit 0;"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/csstools/postcss-plugins.git",
+		"directory": "packages/generate-test-cases"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
 }

@@ -1,5 +1,28 @@
 # Changes to PostCSS Nesting
 
+### 10.1.3 (March 4, 2022)
+
+- Avoid creating duplicate selectors containing only comments.
+
+```diff
+.alpha {
+	/* loose comment */
+	& .beta {
+		order: 1;
+	}
+}
+
+/* becomes */
+
+- .alpha {
+-   /* loose comment */
+- }
++ /* loose comment */
+.alpha .beta {
+	order: 1;
+}
+```
+
 ### 10.1.2 (January 12, 2022)
 
 - Improved : selector specificity calculation

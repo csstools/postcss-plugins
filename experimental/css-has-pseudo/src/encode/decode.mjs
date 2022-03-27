@@ -1,21 +1,17 @@
 
 /** Decodes an identifier back into a CSS selector */
 export default function decodeCSS(value) {
-	let out = '';
-
-	for (let i = 0; i < value.length; i++) {
-		const char = value[i];
-
-		switch (char) {
-			case '\\':
-				i++;
-				out += value[i];
-				continue;
-			default:
-				out += char;
-				continue;
-		}
+	if (value.slice(0, 13) !== 'csstools-has-') {
+		return '';
 	}
 
-	return decodeURIComponent(out);
+	value = value.slice(13);
+	let values = value.split('-');
+
+	let result = '';
+	for (let i = 0; i < values.length; i++) {
+		result += String.fromCharCode(parseInt(values[i], 36));
+	}
+
+	return result;
 }

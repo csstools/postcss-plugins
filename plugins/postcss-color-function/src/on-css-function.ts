@@ -80,7 +80,7 @@ export function onCSSFunctionSRgb(node: FunctionNode, decl: Declaration, result:
 	if (!inGamut(channelNumbers) && preserve) {
 		decl.warn(
 			result,
-			`"${originalForWarnings}" is out of gamut for "${nodes.colorSpace}". When "preserve: true" is set this will lead to unexpected results in some browsers.`,
+			`"${originalForWarnings}" is out of gamut for "${nodes.colorSpace}". Given "preserve: true" is set, this will lead to unexpected results in some browsers.`,
 		);
 	}
 

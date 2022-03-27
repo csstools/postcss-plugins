@@ -1,8 +1,12 @@
+import type { FunctionNode, Dimension, Node, DivNode, WordNode, SpaceNode } from 'postcss-value-parser';
 import valueParser from 'postcss-value-parser';
-import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
-import { labToSRgb, lchToSRgb } from './color';
+import { Declaration, Result } from 'postcss';
+import { labToDisplayP3 } from './convert-lab-to-display-p3';
+import { labToSRgb } from './convert-lab-to-srgb';
+import { lchToDisplayP3 } from './convert-lch-to-display-p3';
+import { lchToSRgb } from './convert-lch-to-srgb';
 
-function onCSSFunction(node: FunctionNode) {
+export function onCSSFunctionSRgb(node: FunctionNode) {
 	const value = node.value;
 	const rawNodes = node.nodes;
 	const relevantNodes = rawNodes.slice().filter((x) => {
@@ -47,8 +51,6 @@ function onCSSFunction(node: FunctionNode) {
 
 	const rgbValues = toRGB(
 		channelNumbers,
-	).map(
-		channelValue => Math.max(Math.min(Math.round(channelValue * 2.55), 255), 0),
 	);
 
 	node.nodes.splice(node.nodes.indexOf(channelNode1) + 1, 0, commaNode());
@@ -68,10 +70,80 @@ function onCSSFunction(node: FunctionNode) {
 		...channelNode3,
 		value: String(rgbValues[2]),
 	});
-
 }
 
-export default onCSSFunction;
+export function onCSSFunctionDisplayP3(node: FunctionNode, decl: Declaration, result: Result, preserve: boolean) {
+	const originalForWarnings = valueParser.stringify(node);
+
+	const value = node.value;
+	const rawNodes = node.nodes;
+	const relevantNodes = rawNodes.slice().filter((x) => {
+		return x.type !== 'comment' && x.type !== 'space';
+	});
+
+	let nodes: Lch | Lab | null = null;
+	if (value === 'lab') {
+		nodes = labFunctionContents(relevantNodes);
+	} else if (value === 'lch') {
+		nodes = lchFunctionContents(relevantNodes);
+	}
+
+	if (!nodes) {
+		return;
+	}
+
+	if (relevantNodes.length > 3 && (!nodes.slash || !nodes.alpha)) {
+		return;
+	}
+
+	// rename the Color function to `color`
+	node.value = 'color';
+
+	/** Extracted Color channels. */
+	const [channelNode1, channelNode2, channelNode3] = channelNodes(nodes);
+	const [channelDimension1, channelDimension2, channelDimension3] = channelDimensions(nodes);
+
+	/** Corresponding Color transformer. */
+	const toDisplayP3 = value === 'lab' ? labToDisplayP3 : lchToDisplayP3;
+
+	/** RGB channels from the source color. */
+	const channelNumbers: [number, number, number] = [
+		channelDimension1.number,
+		channelDimension2.number,
+		channelDimension3.number,
+	].map(
+		channelNumber => parseFloat(channelNumber),
+	) as [number, number, number];
+
+	const [rgbValues, inGamut] = toDisplayP3(
+		channelNumbers,
+	);
+
+	if (!inGamut && preserve) {
+		decl.warn(
+			result,
+			`"${originalForWarnings}" is out of gamut for "display-p3". Given "preserve: true" is set, this will lead to unexpected results in some browsers.`,
+		);
+	}
+
+	node.nodes.splice(0, 0, displayP3Node());
+	node.nodes.splice(1, 0, spaceNode());
+
+	replaceWith(node.nodes, channelNode1, {
+		...channelNode1,
+		value: rgbValues[0].toFixed(5),
+	});
+
+	replaceWith(node.nodes, channelNode2, {
+		...channelNode2,
+		value: rgbValues[1].toFixed(5),
+	});
+
+	replaceWith(node.nodes, channelNode3, {
+		...channelNode3,
+		value: rgbValues[2].toFixed(5),
+	});
+}
 
 function commaNode(): DivNode {
 	return {
@@ -81,6 +153,24 @@ function commaNode(): DivNode {
 		type: 'div',
 		before: '',
 		after: '',
+	};
+}
+
+function spaceNode(): SpaceNode {
+	return {
+		sourceIndex: 0,
+		sourceEndIndex: 1,
+		value: ' ',
+		type: 'space',
+	};
+}
+
+function displayP3Node(): WordNode {
+	return {
+		sourceIndex: 0,
+		sourceEndIndex: 10,
+		value: 'display-p3',
+		type: 'word',
 	};
 }
 
@@ -273,7 +363,7 @@ function labFunctionContents(nodes): Lab|null {
 		out.slash = nodes[3];
 	}
 
-	if ((isNumericNodePercentageOrNumber(nodes[4]) || isCalcNode(nodes[4]))) {
+	if ((isNumericNodePercentageOrNumber(nodes[4]) || isCalcNode(nodes[4]) || isVarNode(nodes[4]))) {
 		out.alpha = nodes[4];
 	}
 

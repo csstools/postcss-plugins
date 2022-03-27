@@ -1,5 +1,11 @@
 # Changes to PostCSS Environment Variables
 
+### 4.0.6 (March 19, 2022)
+
+- Add deprecation notice for `postcss-env-function`
+
+[see the discussion](https://github.com/csstools/postcss-plugins/discussions/192)
+
 ### 4.0.5 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility
