@@ -27,7 +27,7 @@
 
 /* becomes */
 
-@design-tokens url('./tokens-dark.json') variant('dark') vendor('style-dictionary') version('3');
+@design-tokens url('./tokens-light.json') vendor('style-dictionary') version('3');
 
 .foo {
 	color: #fff;
@@ -90,7 +90,7 @@ postcssDesignTokens({ variants: ['dark'] })
 
 /* becomes */
 
-@design-tokens url('./tokens-light.json') vendor('style-dictionary') version('3');
+@design-tokens url('./tokens-dark.json') variant('dark') vendor('style-dictionary') version('3');
 
 .foo {
 	color: #000;
