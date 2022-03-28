@@ -4,6 +4,18 @@
 	}
 }
 
+@layer B {
+	target {
+		color: orange;
+	}
+}
+
+@layer C {
+	target {
+		color: yellow;
+	}
+}
+
 @layer anon0 {
 	target {
 		color: green;

@@ -1,9 +1,3 @@
-@layer A {
-	target {
-		color: red;
-	}
-}
-
 @layer anon0 {
 	target {
 		color: green;

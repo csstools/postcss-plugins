@@ -11,10 +11,13 @@ postcssTape(plugin)({
 			color: 'purple'
 		}
 	},
-	example: {
-		message: "minimal example",
-	},
 	nested: {
 		message: "supporting nested layer usage",
+	},
+	'anon-layer': {
+		message: "supporting anonymous layer usage",
+	},
+	'examples/example': {
+		message: "minimal example",
 	},
 });
