@@ -27,7 +27,7 @@ function postcssCascadeLayers(opts) {
 				});
 
 				if (hasNestedLayers && hasUnlayeredStyles) {
-					//create new final layer via cloning, empty it
+					// create new final layer via cloning, empty it
 					const implicitLayer = atRule.clone({
 						params: `${atRule.params}-implicit`,
 					});
@@ -55,15 +55,18 @@ function postcssCascadeLayers(opts) {
 
 			// functions for 2nd walkthrough
 			function generateNot(specificity: number) {
-				let list = ''; for (let i = 0; i < specificity; i++) {
+				let list = '';
+				for (let i = 0; i < specificity; i++) {
 					list += '#\\#'; // something short but still very uncommon
-				} return `:not(${list})`;
+				}
+				return `:not(${list})`;
 			}
 			function hasLayerAtRuleAncestor(node: Node): boolean {
 				let parent = node.parent;
 				while (parent) {
 					if (parent.type !== 'atrule') {
-						parent = parent.parent; continue;
+						parent = parent.parent;
+						continue;
 					}
 					if ((parent as AtRule).name === 'layer') {
 						return true;
@@ -82,7 +85,8 @@ function postcssCascadeLayers(opts) {
 			root.walkRules((rule) => {
 				if (hasLayerAtRuleAncestor(rule)) {
 					return;
-				} rule.selectors = rule.selectors.map((selector) => {
+				}
+				rule.selectors = rule.selectors.map((selector) => {
 					// Needs `postcss-selector-parser` to insert `:not()` before any pseudo elements like `::after`
 					// This is a side track and can be fixed later.
 					return `${generateNot(layerCount)} ${selector}`;
