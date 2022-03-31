@@ -1,14 +1,14 @@
-import { Container, AtRule, Node} from "postcss";
+import { Container, AtRule, Node } from 'postcss';
 
 function postcssCascadeLayers(opts) {
 	return {
-		postcssPlugin: "postcss-cascade-layers",
+		postcssPlugin: 'postcss-cascade-layers',
 		Once(root: Container) {
 			let layerCount = 0;
-			let layerOrder = {};
+			const layerOrder = {};
 
 			// 1st walkthrough to rename anon layers and store state (no modification of layer styles)
-			root.walkAtRules("layer", (atRule) => {
+			root.walkAtRules('layer', (atRule) => {
 				// give anonymous layers a name
 				if (!atRule.params) {
 					atRule.params = `anon${layerCount}`;
@@ -19,9 +19,9 @@ function postcssCascadeLayers(opts) {
 
 				// check for where a layer has nested layers AND styles outside of those layers
 				atRule.each((node) => {
-					if (node.type == "atrule") {
+					if (node.type == 'atrule') {
 						hasNestedLayers = true;
-					} else if (node.type == "rule") {
+					} else if (node.type == 'rule') {
 						hasUnlayeredStyles = true;
 					}
 				});
@@ -40,7 +40,7 @@ function postcssCascadeLayers(opts) {
 
 					// go through the unlayered rules, clone, and delete from top level atRule
 					atRule.each((node) => {
-						if (node.type == "rule") {
+						if (node.type == 'rule') {
 							implicitLayer.append(node.clone());
 							node.remove();
 						}
@@ -48,7 +48,7 @@ function postcssCascadeLayers(opts) {
 				}
 			});
 
-			root.walkAtRules("layer", (layer) => {
+			root.walkAtRules('layer', (layer) => {
 				layerCount += 1;
 				layerOrder[layer.params] = layerCount;
 			});
@@ -66,30 +66,33 @@ function postcssCascadeLayers(opts) {
 						parent = parent.parent; continue;
 					}
 					if ((parent as AtRule).name === 'layer') {
-						 return true;
-						}
-						parent = parent.parent;
+						return true;
 					}
-					return false; }
+					parent = parent.parent;
+				}
+				return false;
+			}
 
-					if (!layerCount) {
-						// no layers, so nothing to transform.
-						return;
-						} // 2nd walkthrough to transform unlayered styles - need highest specificity (layerCount)
-						root.walkRules((rule) => {
-							if (hasLayerAtRuleAncestor(rule)) {
-							  return;
-								} rule.selectors = rule.selectors.map((selector) => {
-									// Needs `postcss-selector-parser` to insert `:not()` before any pseudo elements like `::after`
-									// This is a side track and can be fixed later.
-									return `${generateNot(layerCount)} ${selector}`;
-								});
-							});
+			if (!layerCount) {
+				// no layers, so nothing to transform.
+				return;
+			}
+
+			// 2nd walkthrough to transform unlayered styles - need highest specificity (layerCount)
+			root.walkRules((rule) => {
+				if (hasLayerAtRuleAncestor(rule)) {
+					return;
+				} rule.selectors = rule.selectors.map((selector) => {
+					// Needs `postcss-selector-parser` to insert `:not()` before any pseudo elements like `::after`
+					// This is a side track and can be fixed later.
+					return `${generateNot(layerCount)} ${selector}`;
+				});
+			});
 
 			// 3rd walkthrough to transform layered styles:
 			//  - move out styles from atRule, insert before: https://postcss.org/api/#container-insertbefore
 			//  - delete empty atRule
-			//  - give selectors the specifity they need based on layerPriority state
+			//  - give selectors the specificity they need based on layerPriority state
 			// root.walkAtRules((atRule) => {
 			// 	console.log(atRule, "third walkthrough");
 			// });
