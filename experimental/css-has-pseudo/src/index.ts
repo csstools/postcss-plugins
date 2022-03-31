@@ -121,28 +121,12 @@ function selectorSpecificity(node) {
 		b += 1;
 	} else if (node.type === 'attribute') {
 		b += 1;
+	} else if (node.type === 'pseudo' && node.value.indexOf('::') === 0) {
+		c += 1;
 	} else if (node.type === 'pseudo') {
 		switch (node.value) {
-			case '::after':
 			case ':after':
-			case '::backdrop':
-			case '::before':
 			case ':before':
-			case '::cue':
-			case '::cue-region':
-			case '::first-letter':
-			case ':first-letter':
-			case '::first-line':
-			case ':first-line':
-			case '::file-selector-button':
-			case '::grammar-error':
-			case '::marker':
-			case '::part':
-			case '::placeholder':
-			case '::selection':
-			case '::slotted':
-			case '::spelling-error':
-			case '::target-text':
 				c += 1;
 				break;
 
