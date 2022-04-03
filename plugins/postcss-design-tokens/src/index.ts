@@ -11,7 +11,7 @@ type pluginOptions = {
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const buildIs = opts?.is ?? [];
 	if (buildIs.length === 0) {
-		buildIs.push('default');
+		buildIs.push('6b4e71e7-4787-42f7-a092-8684961895db'); // a random, but shared default condition
 	}
 
 	return {

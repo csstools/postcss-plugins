@@ -1,5 +1,9 @@
 .foo {
-	font-family: serif;
+	font-family: Helvetica sans;
 	font-size: 10;
 	color: #111111;
+}
+.card {
+	background-color: blue;
+	color: red;
 }

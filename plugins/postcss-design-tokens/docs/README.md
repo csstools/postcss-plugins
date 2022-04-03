@@ -17,7 +17,7 @@
 [<humanReadableName>] lets easily create new plugins following some [CSS Specification].
 
 ```json
-<tokens-light.json>
+<tokens.json>
 ```
 
 ```pcss
@@ -41,20 +41,52 @@ This allows you to generate multiple themed stylesheets.
 
 By default only `@design-tokens` without any `when('foo')` conditions are used.
 
-```js
-<exportName>({ is: ['dark'] })
+#### Example usage
+
+**For these two token files :**
+
+```json
+<tokens-light.json>
 ```
 
 ```json
 <tokens-dark.json>
 ```
 
+**And this CSS :**
+
 ```pcss
-<example.css>
+<example-conditional.css>
+```
+
+**You can configure :**
+
+##### No `is` option.
+
+```js
+<exportName>()
+```
+
+```pcss
+<example-conditional.css>
 
 /* becomes */
 
-<example.dark.expect.css>
+<example-conditional.expect.css>
+```
+
+##### `is` option set to 'dark'.
+
+```js
+<exportName>({ is: ['dark'] })
+```
+
+```pcss
+<example-conditional.css>
+
+/* becomes */
+
+<example-conditional.dark.expect.css>
 ```
 
 <link-list>

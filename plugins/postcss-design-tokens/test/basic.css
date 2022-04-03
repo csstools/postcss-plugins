@@ -2,7 +2,12 @@
 @design-tokens url('./tokens/basic.json') format('style-dictionary3');
 
 .foo {
-	font-family: design-token('font.family.serif');
+	font-family: design-token('font.family.base');
 	font-size: design-token('size.font.small');
 	color: design-token('color.font.base');
+}
+
+.card {
+	background-color: design-token('card.background');
+	color: design-token('card.foreground');
 }

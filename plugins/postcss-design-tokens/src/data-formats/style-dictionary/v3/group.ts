@@ -1,4 +1,5 @@
 import { Token } from '../../base/token';
+import { dereferenceTokenValues } from './dereference';
 import { extractStyleDictionaryV3Token, StyleDictionaryV3TokenValue } from './value';
 
 export type StyleDictionaryV3TokenGroup = {
@@ -33,5 +34,5 @@ function extractTokens(node: StyleDictionaryV3TokenGroup, path: Array<string>, f
 }
 
 export function extractStyleDictionaryV3Tokens(node: StyleDictionaryV3TokenGroup, filePath: string): Map<string, Token> {
-	return extractTokens(node, [], filePath);
+	return dereferenceTokenValues(extractTokens(node, [], filePath));
 }

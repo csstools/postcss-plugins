@@ -18,8 +18,7 @@
 ```
 
 ```pcss
-@design-tokens url('./tokens-light.json') format('style-dictionary3');
-@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
+@design-tokens url('./tokens.json') format('style-dictionary3');
 
 .foo {
 	color: design-token('color.background.primary');
@@ -66,8 +65,18 @@ This allows you to generate multiple themed stylesheets.
 
 By default only `@design-tokens` without any `when('foo')` conditions are used.
 
-```js
-postcssDesignTokens({ is: ['dark'] })
+#### Example usage
+
+**For these two token files :**
+
+```json
+{
+	"color": {
+		"background": {
+			"primary": { "value": "#fff" }
+		}
+	}
+}
 ```
 
 ```json
@@ -78,6 +87,46 @@ postcssDesignTokens({ is: ['dark'] })
 		}
 	}
 }
+```
+
+**And this CSS :**
+
+```pcss
+@design-tokens url('./tokens-light.json') format('style-dictionary3');
+@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
+
+.foo {
+	color: design-token('color.background.primary');
+}
+```
+
+**You can configure :**
+
+##### No `is` option.
+
+```js
+postcssDesignTokens()
+```
+
+```pcss
+@design-tokens url('./tokens-light.json') format('style-dictionary3');
+@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
+
+.foo {
+	color: design-token('color.background.primary');
+}
+
+/* becomes */
+
+.foo {
+	color: #fff;
+}
+```
+
+##### `is` option set to 'dark'.
+
+```js
+postcssDesignTokens({ is: ['dark'] })
 ```
 
 ```pcss

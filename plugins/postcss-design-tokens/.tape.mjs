@@ -21,8 +21,12 @@ postcssTape(plugin)({
 		message: 'minimal example',
 		options: {},
 	},
-	'examples/example:dark': {
-		message: 'minimal example with dark theme',
+	'examples/example-conditional': {
+		message: 'minimal example with conditional imports : default',
+		options: {},
+	},
+	'examples/example-conditional:dark': {
+		message: 'minimal example with conditional imports : dark',
 		options: {
 			is: ['dark']
 		},

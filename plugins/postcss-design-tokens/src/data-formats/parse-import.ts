@@ -10,7 +10,7 @@ function parseImport(statement: string): { filePath: string, format: string, con
 	const result = {
 		filePath: '',
 		format: 'standard',
-		conditions: ['default'],
+		conditions: ['6b4e71e7-4787-42f7-a092-8684961895db'], // a random, but shared default condition
 	};
 
 	importAST.walk((node) => {
@@ -30,7 +30,7 @@ function parseImport(statement: string): { filePath: string, format: string, con
 	});
 
 	if (!result.conditions.length) {
-		result.conditions = ['default'];
+		result.conditions = ['6b4e71e7-4787-42f7-a092-8684961895db']; // a random, but shared default condition
 	}
 
 	return result;
