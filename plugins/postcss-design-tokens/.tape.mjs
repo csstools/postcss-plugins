@@ -11,6 +11,11 @@ postcssTape(plugin)({
 			plugin()
 		]
 	},
+	'errors': {
+		message: "handles issues correctly",
+		options: {},
+		warnings: 4
+	},
 	'is': {
 		message: "supports basic usage",
 		options: {

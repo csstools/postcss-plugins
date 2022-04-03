@@ -31,7 +31,7 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 	// check for unknown nodes
 	edges.forEach(function (edge) {
 		if (!nodesHash.has(edge[0]) || !nodesHash.has(edge[1])) {
-			throw new Error('Unknown node. There is an unknown node in the supplied edges.');
+			throw new Error('Unknown token. Make sure to provide all tokens used in aliases.');
 		}
 	});
 
@@ -47,7 +47,7 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 		if (predecessors.has(node)) {
 			let nodeRep;
 			try {
-				nodeRep = ', node was:' + JSON.stringify(node);
+				nodeRep = ', token was: ' + JSON.stringify(node);
 			} catch (e) {
 				nodeRep = '';
 			}
@@ -55,7 +55,7 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 		}
 
 		if (!nodesHash.has(node)) {
-			throw new Error('Found unknown node. Make sure to provided all involved nodes. Unknown node: ' + JSON.stringify(node));
+			throw new Error('Found unknown token. Make sure to provided all involved tokens. Unknown token: ' + JSON.stringify(node));
 		}
 
 		if (visited[j]) {

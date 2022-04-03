@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { Node, PluginCreator } from 'postcss';
 import { Token } from './data-formats/base/token';
 import { tokensFromImport } from './data-formats/parse-import';
 import { mergeTokens } from './data-formats/token';
@@ -26,10 +26,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					importedFiles = new Set<string>();
 				},
 				Once: async (root, { result }) => {
-					const designTokenAtRules: Array<{filePath: string, params: string}> = [];
+					const designTokenAtRules: Array<{filePath: string, params: string, node: Node}> = [];
 					root.walkAtRules('design-tokens', (atRule) => {
 						if (!atRule?.source?.input?.file) {
-							atRule.remove();
 							return;
 						}
 
@@ -40,12 +39,19 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						designTokenAtRules.push({
 							filePath: filePath,
 							params: params,
+							node: atRule,
 						});
 					});
 
 					for (const atRule of designTokenAtRules.values()) {
-						const importResult = await tokensFromImport(buildIs, atRule.filePath, atRule.params, importedFiles);
-						if (!importResult) {
+						let importResult: { filePath: string, tokens: Map<string, Token> }|false;
+						try {
+							importResult = await tokensFromImport(buildIs, atRule.filePath, atRule.params, importedFiles);
+							if (!importResult) {
+								continue;
+							}
+						} catch (e) {
+							atRule.node.warn(result, `Failed to import design tokens from "${atRule.params}" with error:\n\t` + e.message);
 							continue;
 						}
 
