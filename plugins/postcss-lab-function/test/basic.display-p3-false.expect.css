@@ -28,6 +28,17 @@
 	color-15: rgb(212, 118, 84);
 	color-16: rgb(212, 118, 84);
 	color-17: lch(60% 50 0.785398unknown);
+	color-18: rgb(212, 118, 84);
+}
+
+.test-percentages {
+	color-1: rgb(163, 57, 35);
+	color-2: rgb(181, 30, 19);
+}
+
+.test-numbers {
+	color-1: rgb(152, 68, 47);
+	color-2: rgb(157, 63, 45);
 }
 
 .test-author-provided-fallback {
