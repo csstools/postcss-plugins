@@ -1,6 +1,6 @@
 # Changes to PostCSS Lab Function
 
-### Unreleased (minor)
+### 4.2.0 (April 4, 2022)
 
 - Allow percentage and number units in more color components.
 
