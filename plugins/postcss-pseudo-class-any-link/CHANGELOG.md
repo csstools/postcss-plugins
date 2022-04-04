@@ -1,6 +1,6 @@
 # Changes to PostCSS Pseudo Class Any Link
 
-### Unreleased (patch)
+### 7.1.2 (April 4, 2022)
 
 - Improved : compound selector order with pseudo elements
 
