@@ -42,7 +42,7 @@
 		"postcss": "^8.3"
 	},
 	"devDependencies": {
-		"@mrhenry/core-web": "^0.6.10",
+		"@mrhenry/core-web": "^0.7.0",
 		"puppeteer": "^13.5.2"
 	},
 	"scripts": {
