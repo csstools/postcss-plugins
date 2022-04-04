@@ -1,8 +1,9 @@
 # Changes to PostCSS Nesting
 
-### Unreleased (patch)
+### 10.1.4 (April 4, 2022)
 
 - Improved : compound selector order with pseudo elements
+- Improved : selector specificity calculation.
 
 ### 10.1.3 (March 4, 2022)
 
