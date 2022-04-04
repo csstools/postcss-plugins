@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Function
 
-### Unreleased (minor)
+### 1.1.0 (April 4, 2022)
 
 - Allow percentage units in XYZ color spaces.
 
