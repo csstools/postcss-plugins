@@ -870,7 +870,7 @@ __foo {
 	order: 199;
 }
 
-::before:link, ::before:visited, area[href]::before {
+:link::before, :visited::before, area[href]::before {
 	order: 200;
 }
 

@@ -24,10 +24,6 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 		return;
 	}
 
-	if (relevantNodes.length > 3 && (!nodes.slash || !nodes.alpha)) {
-		return;
-	}
-
 	// rename the Color function to `rgb`
 	node.value = 'rgb';
 
@@ -191,23 +187,6 @@ function isNumericNode(node: Node): node is WordNode {
 	return !!unitAndValue.number;
 }
 
-function isNumericNodeNumber(node): node is WordNode {
-	if (!node || node.type !== 'word') {
-		return false;
-	}
-
-	if (!canParseAsUnit(node)) {
-		return false;
-	}
-
-	const unitAndValue = valueParser.unit(node.value);
-	if (!unitAndValue) {
-		return false;
-	}
-
-	return !!unitAndValue.number && unitAndValue.unit === '';
-}
-
 function isNumericNodeHueLike(node: Node): node is WordNode {
 	if (!node || node.type !== 'word') {
 		return false;
@@ -229,23 +208,6 @@ function isNumericNodeHueLike(node: Node): node is WordNode {
 		unitAndValue.unit === 'turn' ||
 		unitAndValue.unit === ''
 	);
-}
-
-function isNumericNodePercentage(node: Node): node is WordNode {
-	if (!node || node.type !== 'word') {
-		return false;
-	}
-
-	if (!canParseAsUnit(node)) {
-		return false;
-	}
-
-	const unitAndValue = valueParser.unit(node.value);
-	if (!unitAndValue) {
-		return false;
-	}
-
-	return unitAndValue.unit === '%';
 }
 
 function isNumericNodePercentageOrNumber(node: Node): node is WordNode {
@@ -289,11 +251,11 @@ type Lch = {
 }
 
 function lchFunctionContents(nodes): Lch|null {
-	if (!isNumericNodePercentage(nodes[0])) {
+	if (!isNumericNodePercentageOrNumber(nodes[0])) {
 		return null;
 	}
 
-	if (!isNumericNodeNumber(nodes[1])) {
+	if (!isNumericNodePercentageOrNumber(nodes[1])) {
 		return null;
 	}
 
@@ -323,6 +285,21 @@ function lchFunctionContents(nodes): Lch|null {
 		out.alpha = nodes[4];
 	}
 
+	if (nodes.length > 3 && (!out.slash || !out.alpha)) {
+		return null;
+	}
+
+	// 0% = 0.0, 100% = 100.0
+	if (out.l.unit === '%') {
+		out.l.unit = '';
+	}
+
+	// 0% = 0, 100% = 150
+	if (out.c.unit === '%') {
+		out.c.unit = '';
+		out.c.number = ((parseFloat(out.c.number) / 100) * 150).toFixed(10);
+	}
+
 	return out;
 }
 
@@ -338,15 +315,15 @@ type Lab = {
 }
 
 function labFunctionContents(nodes): Lab|null {
-	if (!isNumericNodePercentage(nodes[0])) {
+	if (!isNumericNodePercentageOrNumber(nodes[0])) {
 		return null;
 	}
 
-	if (!isNumericNodeNumber(nodes[1])) {
+	if (!isNumericNodePercentageOrNumber(nodes[1])) {
 		return null;
 	}
 
-	if (!isNumericNodeNumber(nodes[2])) {
+	if (!isNumericNodePercentageOrNumber(nodes[2])) {
 		return null;
 	}
 
@@ -365,6 +342,27 @@ function labFunctionContents(nodes): Lab|null {
 
 	if ((isNumericNodePercentageOrNumber(nodes[4]) || isCalcNode(nodes[4]) || isVarNode(nodes[4]))) {
 		out.alpha = nodes[4];
+	}
+
+	if (nodes.length > 3 && (!out.slash || !out.alpha)) {
+		return null;
+	}
+
+	// 0% = 0.0, 100% = 100.0
+	if (out.l.unit === '%') {
+		out.l.unit = '';
+	}
+
+	// -100% = -125, 100% = 125
+	if (out.a.unit === '%') {
+		out.a.unit = '';
+		out.a.number = ((parseFloat(out.a.number) / 100) * 125).toFixed(10);
+	}
+
+	// -100% = -125, 100% = 125
+	if (out.b.unit === '%') {
+		out.b.unit = '';
+		out.b.number = ((parseFloat(out.b.number) / 100) * 125).toFixed(10);
 	}
 
 	return out;

@@ -15,16 +15,12 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 
 	let nodes: Lch | Lab | null = null;
 	if (value === 'oklab') {
-		nodes = labFunctionContents(relevantNodes);
+		nodes = oklabFunctionContents(relevantNodes);
 	} else if (value === 'oklch') {
-		nodes = lchFunctionContents(relevantNodes);
+		nodes = oklchFunctionContents(relevantNodes);
 	}
 
 	if (!nodes) {
-		return;
-	}
-
-	if (relevantNodes.length > 3 && (!nodes.slash || !nodes.alpha)) {
 		return;
 	}
 
@@ -83,9 +79,9 @@ export function onCSSFunctionDisplayP3(node: FunctionNode, decl: Declaration, re
 
 	let nodes: Lch | Lab | null = null;
 	if (value === 'oklab') {
-		nodes = labFunctionContents(relevantNodes);
+		nodes = oklabFunctionContents(relevantNodes);
 	} else if (value === 'oklch') {
-		nodes = lchFunctionContents(relevantNodes);
+		nodes = oklchFunctionContents(relevantNodes);
 	}
 
 	if (!nodes) {
@@ -191,23 +187,6 @@ function isNumericNode(node: Node): node is WordNode {
 	return !!unitAndValue.number;
 }
 
-function isNumericNodeNumber(node): node is WordNode {
-	if (!node || node.type !== 'word') {
-		return false;
-	}
-
-	if (!canParseAsUnit(node)) {
-		return false;
-	}
-
-	const unitAndValue = valueParser.unit(node.value);
-	if (!unitAndValue) {
-		return false;
-	}
-
-	return !!unitAndValue.number && unitAndValue.unit === '';
-}
-
 function isNumericNodeHueLike(node: Node): node is WordNode {
 	if (!node || node.type !== 'word') {
 		return false;
@@ -229,23 +208,6 @@ function isNumericNodeHueLike(node: Node): node is WordNode {
 		unitAndValue.unit === 'turn' ||
 		unitAndValue.unit === ''
 	);
-}
-
-function isNumericNodePercentage(node: Node): node is WordNode {
-	if (!node || node.type !== 'word') {
-		return false;
-	}
-
-	if (!canParseAsUnit(node)) {
-		return false;
-	}
-
-	const unitAndValue = valueParser.unit(node.value);
-	if (!unitAndValue) {
-		return false;
-	}
-
-	return unitAndValue.unit === '%';
 }
 
 function isNumericNodePercentageOrNumber(node: Node): node is WordNode {
@@ -288,12 +250,12 @@ type Lch = {
 	alpha?: WordNode|FunctionNode,
 }
 
-function lchFunctionContents(nodes): Lch|null {
-	if (!isNumericNodePercentage(nodes[0])) {
+function oklchFunctionContents(nodes): Lch|null {
+	if (!isNumericNodePercentageOrNumber(nodes[0])) {
 		return null;
 	}
 
-	if (!isNumericNodeNumber(nodes[1])) {
+	if (!isNumericNodePercentageOrNumber(nodes[1])) {
 		return null;
 	}
 
@@ -323,6 +285,22 @@ function lchFunctionContents(nodes): Lch|null {
 		out.alpha = nodes[4];
 	}
 
+	if (nodes.length > 3 && (!out.slash || !out.alpha)) {
+		return null;
+	}
+
+	// 0% = 0.0, 100% = 1.0
+	if (out.l.unit === '%') {
+		out.l.unit = '';
+		out.l.number = (parseFloat(out.l.number) / 100).toFixed(10);
+	}
+
+	// -100% = -0.4, 100% = 0.4
+	if (out.c.unit === '%') {
+		out.c.unit = '';
+		out.c.number = ((parseFloat(out.c.number) / 100) * 0.4).toFixed(10);
+	}
+
 	return out;
 }
 
@@ -337,16 +315,16 @@ type Lab = {
 	alpha?: WordNode | FunctionNode,
 }
 
-function labFunctionContents(nodes): Lab|null {
-	if (!isNumericNodePercentage(nodes[0])) {
+function oklabFunctionContents(nodes): Lab|null {
+	if (!isNumericNodePercentageOrNumber(nodes[0])) {
 		return null;
 	}
 
-	if (!isNumericNodeNumber(nodes[1])) {
+	if (!isNumericNodePercentageOrNumber(nodes[1])) {
 		return null;
 	}
 
-	if (!isNumericNodeNumber(nodes[2])) {
+	if (!isNumericNodePercentageOrNumber(nodes[2])) {
 		return null;
 	}
 
@@ -365,6 +343,28 @@ function labFunctionContents(nodes): Lab|null {
 
 	if ((isNumericNodePercentageOrNumber(nodes[4]) || isCalcNode(nodes[4]) || isVarNode(nodes[4]))) {
 		out.alpha = nodes[4];
+	}
+
+	if (nodes.length > 3 && (!out.slash || !out.alpha)) {
+		return null;
+	}
+
+	// 0% = 0.0, 100% = 1.0
+	if (out.l.unit === '%') {
+		out.l.unit = '';
+		out.l.number = (parseFloat(out.l.number) / 100).toFixed(10);
+	}
+
+	// -100% = -0.4, 100% = 0.4
+	if (out.a.unit === '%') {
+		out.a.unit = '';
+		out.a.number = ((parseFloat(out.a.number) / 100) * 0.4).toFixed(10);
+	}
+
+	// -100% = -0.4, 100% = 0.4
+	if (out.b.unit === '%') {
+		out.b.unit = '';
+		out.b.number = ((parseFloat(out.b.number) / 100) * 0.4).toFixed(10);
 	}
 
 	return out;

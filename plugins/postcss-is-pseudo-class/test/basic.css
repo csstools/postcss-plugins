@@ -105,3 +105,7 @@ foo[baz=":is(.some, .other)"], .ok {
 :is(.bar, .foo:lang(ae, ar, arc, bcc, bqi, ckb, dv, fa, glk, he, ku, mzn, nqo, pnb, ps, sd, ug, ur, yi)) {
 	order: 27;
 }
+
+:is(::after, .foo):is(:hover, :focus) {
+	order: 28;
+}

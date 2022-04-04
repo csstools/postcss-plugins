@@ -33,6 +33,17 @@
 	color-15: oklch(60% 0.1250 50grad);
 	color-16: oklch(60% 0.1250 0.785398rad);
 	color-17: oklch(60% 0.1250 0.785398unknown);
+	color-18: oklch(60% 0.1250 405);
+}
+
+.test-percentages {
+	color-1: oklab(40% 0.309% 0.975%);
+	color-2: oklch(40% 31.718385875% 34.568626);
+}
+
+.test-numbers {
+	color-1: oklab(0.40 0.001236 0.0039);
+	color-2: oklch(0.40 0.1268735435 34.568626);
 }
 
 .test-author-provided-fallback {

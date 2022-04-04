@@ -1,5 +1,9 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### Unreleased (patch)
+
+- Improved : compound selector order with pseudo elements
+
 ### 7.1.1 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

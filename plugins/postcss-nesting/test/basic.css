@@ -104,7 +104,7 @@ a {
 .b {
 	&.c,
 	&.d {
-		&:before {
+		&::before {
 			order: 41;
 		}
 	}
@@ -119,27 +119,33 @@ a {
 /* leading : root */
 .comments {
 	/* leading : 1 */
-	order: 1;
+	order: 61;
 	/* trailing: 2 */
 
 	& .comment {
-		order: 2;
+		order: 62;
 	}
 
 	/* loose comment */
 	& .comment {
-		order: 3;
+		order: 63;
 	}
 
 	/* leading : 4 */
-	order: 4;
+	order: 64;
 	/* trailing: 5 */
 
 	& .comment {
 		/* nested deeper */
 
 		& .comment {
-			order: 5;
+			order: 65;
 		}
+	}
+}
+
+.pseudo-element {
+	@nest ::before& {
+		order: 71;
 	}
 }
