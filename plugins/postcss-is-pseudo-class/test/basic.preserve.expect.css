@@ -397,3 +397,23 @@ button:focus::before {
 :is(a, button):is(:hover, :focus)::before {
 	order: 26;
 }
+
+:not(.does-not-exist):hover::after {
+	order: 27;
+}
+
+:not(.does-not-exist):focus::after {
+	order: 27;
+}
+
+.foo:hover {
+	order: 27;
+}
+
+.foo:focus {
+	order: 27;
+}
+
+:is(::after, .foo):is(:hover, :focus) {
+	order: 27;
+}

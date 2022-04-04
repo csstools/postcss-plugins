@@ -15,14 +15,18 @@ ul a:any-link > span {
 	order: 4;
 }
 
-div :any-link {
+.foo :any-link {
 	order: 5;
 }
 
-div:any-link {
+.foo:any-link {
 	order: 6;
 }
 
-div:is(:any-link) {
+.foo:is(:any-link) {
 	order: 7;
+}
+
+::before:any-link {
+	order: 8;
 }

@@ -30,26 +30,34 @@ ul a:any-link > span {
 	order: 4;
 }
 
-div :link, div :visited {
+.foo :link, .foo :visited {
 	order: 5;
 }
 
-div :any-link {
+.foo :any-link {
 	order: 5;
 }
 
-div:link, div:visited {
+.foo:link, .foo:visited {
 	order: 6;
 }
 
-div:any-link {
+.foo:any-link {
 	order: 6;
 }
 
-div:is(:link), div:is(:visited) {
+.foo:is(:link), .foo:is(:visited) {
 	order: 7;
 }
 
-div:is(:any-link) {
+.foo:is(:any-link) {
 	order: 7;
+}
+
+:link::before, :visited::before {
+	order: 8;
+}
+
+::before:any-link {
+	order: 8;
 }
