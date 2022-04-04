@@ -1,8 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased (patch)
+### 2.0.2 (April 4, 2022)
 
 - Improved : compound selector order with pseudo elements
+- Improved : selector specificity calculation.
 
 ### 2.0.1 (March 4, 2022)
 
