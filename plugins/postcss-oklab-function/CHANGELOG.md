@@ -1,6 +1,6 @@
 # Changes to PostCSS OKLab Function
 
-### Unreleased (minor)
+### 1.1.0 (April 4, 2022)
 
 - Allow percentage and number units in more color components.
 
