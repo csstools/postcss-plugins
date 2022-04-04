@@ -29,7 +29,13 @@ export function selectorSpecificity(node) {
 	let b = 0;
 	let c = 0;
 
-	if (node.type === 'id') {
+	if (node.type == 'universal') {
+		return {
+			a: 0,
+			b: 0,
+			c: 0,
+		};
+	} else if (node.type === 'id') {
 		a += 1;
 	} else if (node.type === 'tag') {
 		c += 1;
@@ -37,28 +43,12 @@ export function selectorSpecificity(node) {
 		b += 1;
 	} else if (node.type === 'attribute') {
 		b += 1;
+	} else if (node.type === 'pseudo' && node.value.indexOf('::') === 0) {
+		c += 1;
 	} else if (node.type === 'pseudo') {
 		switch (node.value) {
-			case '::after':
 			case ':after':
-			case '::backdrop':
-			case '::before':
 			case ':before':
-			case '::cue':
-			case '::cue-region':
-			case '::first-letter':
-			case ':first-letter':
-			case '::first-line':
-			case ':first-line':
-			case '::file-selector-button':
-			case '::grammar-error':
-			case '::marker':
-			case '::part':
-			case '::placeholder':
-			case '::selection':
-			case '::slotted':
-			case '::spelling-error':
-			case '::target-text':
 				c += 1;
 				break;
 
@@ -113,7 +103,7 @@ export function selectorSpecificity(node) {
 					});
 
 					if (ofSeparatorIndex > -1) {
-						const ofSpecificity = selectorSpecificity(parser.selector({ nodes: node.nodes.slice(ofSeparatorIndex + 1) }));
+						const ofSpecificity = selectorSpecificity(parser.selector({ nodes: node.nodes.slice(ofSeparatorIndex + 1), value: '' }));
 						a += ofSpecificity.a;
 						b += ofSpecificity.b;
 						c += ofSpecificity.c;
@@ -143,4 +133,3 @@ export function selectorSpecificity(node) {
 		c,
 	};
 }
-
