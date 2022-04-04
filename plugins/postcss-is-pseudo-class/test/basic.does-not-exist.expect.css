@@ -334,11 +334,11 @@ button:focus::before {
 	order: 27;
 }
 
-::after:not(.something-random):hover {
+:not(.something-random):hover::after {
 	order: 28;
 }
 
-::after:not(.something-random):focus {
+:not(.something-random):focus::after {
 	order: 28;
 }
 

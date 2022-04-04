@@ -410,11 +410,11 @@ button:focus::before {
 	order: 27;
 }
 
-::after:not(.does-not-exist):hover {
+:not(.does-not-exist):hover::after {
 	order: 28;
 }
 
-::after:not(.does-not-exist):focus {
+:not(.does-not-exist):focus::after {
 	order: 28;
 }
 
