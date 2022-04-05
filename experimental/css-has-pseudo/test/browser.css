@@ -178,3 +178,7 @@ main {
 #main_specificity :has(span, li, p) {
 	--t5:FAIL;
 }
+
+#nested_main :has(> :has(#c)) {
+	color: red;
+}

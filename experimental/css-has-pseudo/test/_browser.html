@@ -28,6 +28,7 @@
 		}
 
 		self.runTest = async function runTest() {
+			const nestedResult = await testNestedHas();
 			const adjacentPositionResult = await testAdjacentPosition();
 			const hasWithPseudoClassesResult = await testHasWithPseudoClasses();
 			const invalidationResult = await testInvalidation();
@@ -41,7 +42,8 @@
 				invalidationResult &&
 				parentPositionResult &&
 				specificityResult &&
-				visitednessResult
+				visitednessResult &&
+				nestedResult
 			);
 		}
 
@@ -709,6 +711,36 @@
 					test_div('remove "div > div[attrname]" from #b_div_subject', b_div_subject, grey);
 				});
 			}
+
+			return true;
+		}
+
+		async function testNestedHas() {
+			// https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-pseudo-class.html
+
+			fixture.innerHTML = `
+				<main id="nested_main">
+					<div id="a">
+						<div id="b">
+							<div id="c">
+							</div>
+						</div>
+					</div>
+				</main>
+			`;
+
+			const red = 'rgb(255, 0, 0)';
+
+			function testColor(el, color) {
+				var actual = getComputedStyle(el).color;
+				if (actual !== color) {
+					throw new Error('nested :has is allowed : div#' + el.id + '.color; expected ' + color + ' but got ' + actual);
+				}
+			}
+
+			await rafP(() => {
+				testColor(document.getElementById('a'), red);
+			});
 
 			return true;
 		}
