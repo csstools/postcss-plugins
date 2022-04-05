@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased (patch)
+### 12.1.6 (April 5, 2022)
 
 - Fix `var()` fallback value downgrades with value lists.
 
