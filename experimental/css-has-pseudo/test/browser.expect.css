@@ -178,3 +178,7 @@ main {
 [csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-37-34-2p-32-18-w-30-2x-18-w-34-15]:not(#does-not-exist):not(does-not-exist) {
 	--t5:FAIL;
 }
+
+[csstools-has-z-32-2t-37-38-2t-2s-2n-31-2p-2x-32-w-1m-2w-2p-37-14-1q-w-1m-2w-2p-37-14-z-2r-15-15]:not(#does-not-exist):not(#does-not-exist) {
+	color: red;
+}
