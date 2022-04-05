@@ -10,7 +10,7 @@
 	<!-- This is the real test stylesheet and has correct CORS attributes and http headers -->
 	<link rel="stylesheet" href="http://localhost:8081/test/browser.expect.css" crossorigin="anonymous">
 	<script src="http://localhost:8082/dist/browser-global.js"></script>
-	<script>cssHasPseudo(document, { observedAttributes: ['attrname'], debug: true, hover: true, forcePolyfill: true });</script>
+	<script>cssHasPseudo(document, { observedAttributes: ['attrname'], debug: false, hover: true, forcePolyfill: true });</script>
 </head>
 <body>
 	<the-fixture id="fixture"></the-fixture>
@@ -733,8 +733,8 @@
 
 			function testColor(el, color) {
 				var actual = getComputedStyle(el).color;
-				if (actual !== color) {
-					throw new Error('nested :has is allowed : div#' + el.id + '.color; expected ' + color + ' but got ' + actual);
+				if (actual === color) {
+					throw new Error('nested :has should not be allowed : div#' + el.id + '.color; expected ' + color + ' but got ' + actual);
 				}
 			}
 
