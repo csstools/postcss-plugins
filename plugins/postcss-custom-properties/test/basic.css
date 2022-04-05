@@ -134,3 +134,7 @@ html {
 .test-unicode {
 	color: var(--✅-size);
 }
+
+.test {
+	font-family: var(--font, "Helvetica Neue", Arial, sans-serif);
+}

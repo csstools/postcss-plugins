@@ -155,3 +155,8 @@ html {
 	color: 2em;
 	color: var(--✅-size);
 }
+
+.test {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-family: var(--font, "Helvetica Neue", Arial, sans-serif);
+}
