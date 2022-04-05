@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased (patch)
+
+- Fix `var()` fallback value downgrades with value lists.
+
 ### 12.1.5 (March 19, 2022)
 
 - Add deprecation notice for `importFrom` and `exportTo`
