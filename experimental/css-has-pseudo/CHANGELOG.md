@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased (minor)
+### 0.4.0 (April 5, 2022)
 
 - Update `querySelector(:has())` polyfill, disallowing nested `:has` (`:has(.foo, :has(.bar))`)
 
