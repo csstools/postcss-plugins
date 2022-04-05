@@ -1,0 +1,9 @@
+@layer anon0 {
+	target {
+		color: green;
+	}
+}
+
+target {
+	color: purple;
+}

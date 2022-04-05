@@ -1,0 +1,15 @@
+.ppe-playground {
+	display: flex;
+}
+
+.ppe-codepen {
+	background-color: #1b2b34;
+	min-height: calc(100vh - var(--heading-size));
+	width: 100%;
+}
+
+@media (--from-medium) {
+	.ppe-codepen {
+		min-height: calc(100vh - var(--heading-size-from-medium));
+	}
+}

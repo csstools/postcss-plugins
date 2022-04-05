@@ -6,7 +6,7 @@ export function generateValueTestCases(value) {
 	values.push(`var(${value}, 1)`);
 	values.push(`var(${value}, ${value})`);
 
-	let result =  values.map((x, index) => {
+	let result = values.map((x, index) => {
 		return `.order-${index} {
 	order: ${x};
 }`;

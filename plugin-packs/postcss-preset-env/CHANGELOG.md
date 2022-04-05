@@ -1,5 +1,76 @@
 # Changes to PostCSS Preset Env
 
+### 7.4.3 (March 19, 2022)
+
+- Fix manually enabling a feature that doesn't meet the required vendor implementations. [#310](https://github.com/csstools/postcss-plugins/issues/310)
+- Updated `postcss-clamp` to `4.1.0` (minor)
+- Updated `@csstools/postcss-color-function` to `1.0.3` (patch)
+- Updated `@csstools/postcss-is-pseudo-class` to `2.0.1` (patch)
+- Updated `@csstools/postcss-oklab-function` to `1.0.2` (patch)
+- Updated `@csstools/postcss-progressive-custom-properties` to `1.3.0` (minor)
+- Updated `autoprefixer` to `10.4.4` (patch)
+- Updated `browserslist` to `4.20.2` (patch)
+- Updated `cssdb` to `6.5.0` (minor)
+- Updated `postcss-custom-properties` to `12.1.5` (patch)
+- Updated `postcss-double-position-gradients` to `3.1.1` (patch)
+- Updated `postcss-env-function` to `4.0.6` (patch)
+- Updated `postcss-lab-function` to `4.1.2` (patch)
+- Updated `postcss-nesting` to `10.1.3` (patch)
+- Remove internal patch for `postcss-clamp`
+- Document all features. [https://github.com/csstools/postcss-preset-env/issues/156](https://github.com/csstools/postcss-preset-env/issues/156)
+
+[see the list of features](https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md)
+
+### 7.4.2 (March 2, 2022)
+
+- Adding internal patch for `postcss-clamp` to fix issue when `clamp` was being used with any other values along. [#274](https://github.com/csstools/postcss-plugins/issues/274)
+
+### 7.4.1 (February 17, 2022) 
+
+- Updated `postcss-clamp` to `4.0.0` (major)
+
+### 7.4.0 (February 16, 2022)
+
+- Added `@csstools/color-function` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function#readme) for usage details.
+- Added `@csstools/oklab-function` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function#readme) for usage details.
+- Added `@csstools/ic-unit` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit#readme) for usage details.
+- Updated `@csstools/postcss-progressive-custom-properties` to `1.2.0` (minor)
+- Updated `cssdb` to `6.3.1` (patch)
+- Updated `postcss-double-position-gradients` to `3.1.0` (minor)
+- Updated `postcss-lab-function` to `4.1.1` (patch)
+
+### 7.3.3 (February 13, 2022)
+
+- Updated `cssdb` to `6.3.0` (minor)
+
+### 6.7.1 (February 13, 2022)
+
+- Added notice when using preset-env with PostCSS > 7 to prompt to upgrade.
+
+### 7.3.2 (February 12, 2022)
+
+- Updated `postcss-lab-function` to `4.1.0` (minor)
+
+`postcss-lab-function` now supports [wide gamut colors](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function#displayp3) and [out of gamut color mapping](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function#displayp3).
+
+- Updated `css-blank-pseudo` to `3.0.3` (patch)
+- Updated `css-has-pseudo` to `3.0.4` (patch)
+- Updated `cssdb` to `6.2.1` (patch)
+- Updated `postcss-color-functional-notation` to `4.2.2` (patch)
+- Updated `postcss-color-hex-alpha` to `8.0.3` (patch)
+- Updated `postcss-dir-pseudo-class` to `6.0.4` (patch)
+- Updated `postcss-double-position-gradients` to `3.0.5` (patch)
+- Updated `postcss-env-function` to `4.0.5` (patch)
+- Updated `postcss-focus-visible` to `6.0.4` (patch)
+- Updated `postcss-focus-within` to `5.0.4` (patch)
+- Updated `postcss-gap-properties` to `3.0.3` (patch)
+- Updated `postcss-image-set-function` to `4.0.6` (patch)
+- Updated `postcss-logical` to `5.0.4` (patch)
+- Updated `postcss-overflow-shorthand` to `3.0.3` (patch)
+- Updated `postcss-place` to `7.0.4` (patch)
+- Updated `postcss-pseudo-class-any-link` to `7.1.1` (patch)
+- Updated `@csstools/postcss-progressive-custom-properties` to `1.1.0`.
+
 ### 7.3.1 (February 3, 2022) 
 
 - Ensured that `debug` option uses a single instance per run, this allows for `debug` to work on parallel runs within CI environments.

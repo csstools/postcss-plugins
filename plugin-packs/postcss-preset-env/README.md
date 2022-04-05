@@ -9,6 +9,26 @@
 can understand, determining the polyfills you need based on your targeted
 browsers or runtime environments.
 
+## Quick start
+
+[PostCSS Preset Env] is a [PostCSS] plugin.<br>
+If you are already using [PostCSS] to build your CSS, you can simply add [PostCSS Preset Env] to your configuration.
+
+- Install `postcss-preset-env` from npm.
+- Add `postcss-preset-env` to your configuration:
+
+```js
+const postcssPresetEnv = require('postcss-preset-env');
+
+const yourConfig = {
+	plugins: [
+		postcssPresetEnv(/* pluginOptions */)
+	]
+}
+```
+
+_[Read more on how to use and install PostCSS Preset Env.](#usage)_
+
 ## How does it work?
 
 [PostCSS Preset Env] is a Plugin Pack for [PostCSS]. It leverages the list of the features we keep an eye from [CSSDB][cssdb] and applies plugins, so you can use those new features without having to worry about browser support.
@@ -19,7 +39,7 @@ By providing a list of browser targets for your project, plugins that aren't nee
 
 What [PostCSS Preset Env] does is to take the support data that comes from MDN and Can I Use and determine from a [browserlist](https://github.com/browserslist/browserslist) whether those transformations are needed. It also packs [Autoprefixer](https://github.com/postcss/autoprefixer) within and shares the list with it, so prefixes are only applied when you're going to need them given your browser support list.
 
-Glossary:
+### Glossary:
 
 * **Browser list option**: [Browserlist](https://github.com/browserslist/browserslist) is a package that gives you a list of browsers for a given query. For example, `chrome < 42` will give you a list of every Chrome version that has been released up to, but not including, 42.
 * **Browser support stats**: Features get introduced on browsers at certain versions. They're often visible on [MDN](https://developer.mozilla.org/en-US/) and [Can I Use](https://caniuse.com/). Comparing these stats with the needed _support_ for your project tells you if it's safe to use a feature or not.
@@ -179,7 +199,7 @@ Having 2 independent implementations is [a critical step in proposals becoming s
 
 The `features` option enables or disables specific polyfills by ID. Passing
 `true` to a specific feature ID will enable its polyfill, while passing `false`
-will disable it. [List of IDs](https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/src/lib/plugins-by-id.js#L74)
+will disable it. [List of Features](https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md)
 
 ```js
 postcssPresetEnv({

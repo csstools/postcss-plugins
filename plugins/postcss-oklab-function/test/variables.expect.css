@@ -1,0 +1,28 @@
+:root {
+	--firebrick: rgb(90, 66, 47);
+	--firebrick-a50: rgba(83, 67, 71, 0.5);
+
+	--opacity-50: 0.5;
+	--firebrick-a50-var: rgba(83, 67, 71, var(--opacity-50));
+
+	--point-five: 0.5;
+	--firebrick-var: oklch(40% var(--point-five) 0.1324 / var(--opacity-50));
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+:root {
+	--firebrick: color(display-p3 0.33927 0.26183 0.19371);
+}
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+:root {
+	--firebrick-a50: color(display-p3 0.31481 0.26364 0.27826 / 50%);
+}
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+:root {
+	--firebrick-a50-var: color(display-p3 0.31481 0.26364 0.27826 / var(--opacity-50));
+}
+}

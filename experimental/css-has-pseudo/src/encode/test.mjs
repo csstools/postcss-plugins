@@ -22,102 +22,102 @@ testEncoderDecoder(
 
 testEncoderDecoder(
 	':has()',
-	'\\:has\\(\\)',
+	'csstools-has-1m-2w-2p-37-14-15',
 );
 
 testEncoderDecoder(
 	':has( )',
-	'\\:has\\(\\%20\\)',
+	'csstools-has-1m-2w-2p-37-14-w-15',
 );
 
 testEncoderDecoder(
 	':has(*)',
-	'\\:has\\(\\*\\)',
+	'csstools-has-1m-2w-2p-37-14-16-15',
 );
 
 testEncoderDecoder(
 	':has(:focus)',
-	'\\:has\\(\\:focus\\)',
+	'csstools-has-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15',
 );
 
 testEncoderDecoder(
 	':has(~ p)',
-	'\\:has\\(\\~\\%20p\\)',
+	'csstools-has-1m-2w-2p-37-14-3i-w-34-15',
 );
 
 testEncoderDecoder(
 	':has(> p)',
-	'\\:has\\(\\%3E\\%20p\\)',
+	'csstools-has-1m-2w-2p-37-14-1q-w-34-15',
 );
 
 testEncoderDecoder(
 	':has(+ p)',
-	'\\:has\\(\\%2B\\%20p\\)',
+	'csstools-has-1m-2w-2p-37-14-17-w-34-15',
 );
 
 testEncoderDecoder(
 	':has(\\~ p)',
-	'\\:has\\(\\%5C\\~\\%20p\\)',
+	'csstools-has-1m-2w-2p-37-14-2k-3i-w-34-15',
 );
 
 testEncoderDecoder(
 	':has(\\> p)',
-	'\\:has\\(\\%5C\\%3E\\%20p\\)',
+	'csstools-has-1m-2w-2p-37-14-2k-1q-w-34-15',
 );
 
 testEncoderDecoder(
 	':has(\\+ p)',
-	'\\:has\\(\\%5C\\%2B\\%20p\\)',
+	'csstools-has-1m-2w-2p-37-14-2k-17-w-34-15',
 );
 
 testEncoderDecoder(
 	':has(\\,\\(\\)\\[\\]\\:\\. p)\\',
-	'\\:has\\(\\%5C\\,\\%5C\\(\\%5C\\)\\%5C\\[\\%5C\\]\\%5C\\:\\%5C\\.\\%20p\\)\\%5C',
+	'csstools-has-1m-2w-2p-37-14-2k-18-2k-14-2k-15-2k-2j-2k-2l-2k-1m-2k-1a-w-34-15-2k',
 );
 
 testEncoderDecoder(
 	':has(.esc\\\\\\:aped)',
-	'\\:has\\(\\.esc\\%5C\\%5C\\%5C\\:aped\\)',
+	'csstools-has-1m-2w-2p-37-14-1a-2t-37-2r-2k-2k-2k-1m-2p-34-2t-2s-15',
 );
 
 testEncoderDecoder(
 	':has(> [a=":has(.x)"]:hover)',
-	'\\:has\\(\\%3E\\%20\\[a\\%3D\\%22\\:has\\(\\.x\\)\\%22\\]\\:hover\\)',
+	'csstools-has-1m-2w-2p-37-14-1q-w-2j-2p-1p-y-1m-2w-2p-37-14-1a-3c-15-y-2l-1m-2w-33-3a-2t-36-15',
 );
 
 testEncoderDecoder(
 	':has(h1, h2, h3, h4, h5, h6)',
-	'\\:has\\(h1\\,\\%20h2\\,\\%20h3\\,\\%20h4\\,\\%20h5\\,\\%20h6\\)',
+	'csstools-has-1m-2w-2p-37-14-2w-1d-18-w-2w-1e-18-w-2w-1f-18-w-2w-1g-18-w-2w-1h-18-w-2w-1i-15',
 );
 
 testEncoderDecoder(
 	':has(> [\\:has\\(\\%3E\\%20\\.a\\:hover\\)',
-	'\\:has\\(\\%3E\\%20\\[\\%5C\\:has\\%5C\\(\\%5C\\%253E\\%5C\\%2520\\%5C\\.a\\%5C\\:hover\\%5C\\)',
+	'csstools-has-1m-2w-2p-37-14-1q-w-2j-2k-1m-2w-2p-37-2k-14-2k-11-1f-1x-2k-11-1e-1c-2k-1a-2p-2k-1m-2w-33-3a-2t-36-2k-15',
 );
 
 testEncoderDecoder(
 	':has(\\%perc)',
-	'\\:has\\(\\%5C\\%25perc\\)',
+	'csstools-has-1m-2w-2p-37-14-2k-11-34-2t-36-2r-15',
 );
 
 testEncoderDecoder(
 	'foo',
-	'foo',
+	'csstools-has-2u-33-33',
 );
 
 testEncoderDecoder(
 	':has(> [foo="some"])',
-	'\\:has\\(\\%3E\\%20\\[foo\\%3D\\%22some\\%22\\]\\)',
+	'csstools-has-1m-2w-2p-37-14-1q-w-2j-2u-33-33-1p-y-37-33-31-2t-y-2l-15',
 );
 
 testEncoderDecoder(
 	'#d_main:has(#d_checkbox:checked)>#d_subject',
-	'\\%23d_main\\:has\\(\\%23d_checkbox\\:checked\\)\\%3E\\%23d_subject',
+	'csstools-has-z-2s-2n-31-2p-2x-32-1m-2w-2p-37-14-z-2s-2n-2r-2w-2t-2r-2z-2q-33-3c-1m-2r-2w-2t-2r-2z-2t-2s-15-1q-z-2s-2n-37-39-2q-2y-2t-2r-38',
 );
 
 testEncoderDecoder(
 	'#something-complex:has(> #d_checkbox:checked [foo="some"] * + [bar^="[baz]"] ~ a[class~="logo"] :has(~ .foo:is(button, input)))',
-	'\\%23something-complex\\:has\\(\\%3E\\%20\\%23d_checkbox\\:checked\\%20\\[foo\\%3D\\%22some\\%22\\]\\%20\\*\\%20\\%2B\\%20\\[bar\\%5E\\%3D\\%22\\[baz\\]\\%22\\]\\%20\\~\\%20a\\[class\\~\\%3D\\%22logo\\%22\\]\\%20\\:has\\(\\~\\%20\\.foo\\:is\\(button\\,\\%20input\\)\\)\\)',
+	'csstools-has-z-37-33-31-2t-38-2w-2x-32-2v-19-2r-33-31-34-30-2t-3c-1m-2w-2p-37-14-1q-w-z-2s-2n-2r-2w-2t-2r-2z-2q-33-3c-1m-2r-2w-2t-2r-2z-2t-2s-w-2j-2u-33-33-1p-y-37-33-31-2t-y-2l-w-16-w-17-w-2j-2q-2p-36-2m-1p-y-2j-2q-2p-3e-2l-y-2l-w-3i-w-2p-2j-2r-30-2p-37-37-3i-1p-y-30-33-2v-33-y-2l-w-1m-2w-2p-37-14-3i-w-1a-2u-33-33-1m-2x-37-14-2q-39-38-38-33-32-18-w-2x-32-34-39-38-15-15-15',
 );
 
 function testExtract(encoded, rules) {
@@ -130,201 +130,26 @@ testExtract(
 );
 
 testExtract(
-	'.a, [\\.x\\:has\\(\\%3E\\%20\\.b\\)][\\.x\\:has\\(\\%3E\\%20\\.b\\)]',
-	['.x:has(> .b)'],
-);
-
-testExtract(
-	'[\\.x\\:has\\(\\%3E\\%20\\.b\\)][\\.x\\:has\\(\\%3E\\%20\\.b\\)], a',
-	['.x:has(> .b)'],
-);
-
-testExtract(
-	'[\\.x\\:has\\(\\%3E\\%20\\.a\\)\\%20\\.b][\\.x\\:has\\(\\%3E\\%20\\.a\\)\\%20\\.b][\\.x\\:has\\(\\%3E\\%20\\.a\\)\\%20\\.b]',
-	['.x:has(> .a) .b'],
-);
-
-testExtract(
-	'[\\.x\\:has\\(\\%3E\\%20\\.\\%F0\\%9F\\%A7\\%91\\%F0\\%9F\\%8F\\%BE\\%E2\\%80\\%8D\\%F0\\%9F\\%8E\\%A4\\)][\\.x\\:has\\(\\%3E\\%20\\.\\%F0\\%9F\\%A7\\%91\\%F0\\%9F\\%8F\\%BE\\%E2\\%80\\%8D\\%F0\\%9F\\%8E\\%A4\\)]',
-	['.x:has(> .🧑🏾‍🎤)'],
-);
-
-testExtract(
-	'[\\.x\\:has\\(\\%3E\\%20\\.a\\:has\\(\\%20\\%2B\\%20\\.b\\)\\)][\\.x\\:has\\(\\%3E\\%20\\.a\\:has\\(\\%20\\%2B\\%20\\.b\\)\\)][\\.x\\:has\\(\\%3E\\%20\\.a\\:has\\(\\%20\\%2B\\%20\\.b\\)\\)]',
-	['.x:has(> .a:has( + .b))'],
-);
-
-testExtract(
-	'[\\:has\\(\\:focus\\)]',
-	[':has(:focus)'],
-);
-
-testExtract(
-	'[\\:is\\(\\:focus\\)]',
-	[],
-);
-
-testExtract(
-	'[[\\:has\\(\\:focus\\)]]',
-	[],
-);
-
-testExtract(
-	'\\[\\:has\\(\\:focus\\)\\]',
-	[],
-);
-
-testExtract(
-	'[attr="foo"]',
-	[],
-);
-
-testExtract(
-	'[\\.x\\:has\\(\\%3E\\%20\\.a\\)][\\.x\\:has\\(\\%3E\\%20\\.a\\)], [\\.x\\:has\\(\\%3E\\%20\\.b\\)][\\.x\\:has\\(\\%3E\\%20\\.b\\)]',
-	['.x:has(> .a)', '.x:has(> .b)'],
-);
-
-testExtract(
-	'[\\.x\\:has\\(\\%3E\\%20\\.a\\)][\\.x\\:has\\(\\%3E\\%20\\.a\\)][\\.x\\:has\\(\\%3E\\%20\\.b\\)][\\.x\\:has\\(\\%3E\\%20\\.b\\)]',
-	['.x:has(> .a)', '.x:has(> .b)'],
-);
-
-testExtract(
-	'[\\.b_subject\\:has\\(\\.b_descendant\\)][\\.b_subject\\:has\\(\\.b_descendant\\)]',
-	['.b_subject:has(.b_descendant)'],
-);
-
-testExtract(
-	'[foo="\\[\\.b_subject\\:has\\(\\.b_descendant\\)\\]\\[\\.b_subject\\:has\\(\\.b_descendant\\)\\]"]',
-	[],
-);
-
-testExtract(
-	'[foo="[\\.b_subject\\:has\\(\\.b_descendant\\)\\]\\[\\.b_subject\\:has\\(\\.b_descendant\\)]"]',
-	[],
-);
-
-testExtract(
-	'"\\"[\\.b_subject\\:has\\(\\.b_descendant\\)][\\.b_subject\\:has\\(\\.b_descendant\\)]"',
-	[],
-);
-
-testExtract(
-	'"\\""[\\.b_subject\\:has\\(\\.b_descendant\\)][\\.b_subject\\:has\\(\\.b_descendant\\)]',
-	['.b_subject:has(.b_descendant)'],
-);
-
-testExtract(
-	'["[[\\.b_subject\\:has\\(\\.b_descendant\\)][\\.b_subject\\:has\\(\\.b_descendant\\)]]"]',
-	[],
-);
-
-testExtract(
-	'[\\:has\\(\\%3E\\%20\\[foo\\%3D\\%22some\\%22\\]\\)]',
+	'.a, [csstools-has-1m-2w-2p-37-14-1q-w-2j-2u-33-33-1p-y-37-33-31-2t-y-2l-15]',
 	[':has(> [foo="some"])'],
 );
 
 testExtract(
-	'"\'\\[\\:has\\(\\:focus\\)\\]',
-	[],
+	'[csstools-has-1m-2w-2p-37-14-1q-w-2j-2u-33-33-1p-y-37-33-31-2t-y-2l-15], a',
+	[':has(> [foo="some"])'],
 );
 
 testExtract(
-	'\\["\'\\:has\\(\\:focus\\)\\]',
-	[],
+	'[csstools-has-1m-2w-2p-37-14-1q-w-2j-2u-33-33-1p-y-37-33-31-2t-y-2l-15][csstools-has-1m-2w-2p-37-14-1q-w-2j-2u-33-33-1p-y-37-33-31-2t-y-2l-15][csstools-has-1m-2w-2p-37-14-1q-w-2j-2u-33-33-1p-y-37-33-31-2t-y-2l-15]',
+	[':has(> [foo="some"])'],
 );
 
 testExtract(
-	'\\:has\\(\\:focus\\)',
-	[],
+	'[' + encodeCSS('.x:has(> .🧑🏾‍🎤)') +']',
+	['.x:has(> .🧑🏾‍🎤)'],
 );
 
 testExtract(
-	'[:has(:focus)]',
-	[':has(:focus)'],
+	'[' + encodeCSS('.x:has(> .a:has( + .b))') + ']',
+	['.x:has(> .a:has( + .b))'],
 );
-
-testExtract(
-	'[:has(:focus)\']\']',
-	[':has(:focus)]'],
-);
-
-testExtract(
-	'[:has(:focus)\'"]\']',
-	[':has(:focus)"]'],
-);
-
-testExtract(
-	'[\'"[\':has(:focus)]',
-	['"[:has(:focus)'],
-);
-
-testExtract(
-	'[:has(:focus)[foo=%22some%22]]',
-	[':has(:focus)[foo="some"]'],
-);
-
-testExtract(
-	'[[:has(:focus)]]',
-	[],
-);
-
-testExtract(
-	'":has(:focus)"',
-	[],
-);
-
-testExtract(
-	'\':has(:focus)\'',
-	[],
-);
-
-testExtract(
-	'[":has(:focus)"]',
-	[],
-);
-
-testExtract(
-	'[\':has(:focus)\']',
-	[],
-);
-
-testExtract(
-	'"\':has(:focus)"\'"',
-	[],
-);
-
-testExtract(
-	'\'":has(:focus)\'"',
-	[],
-);
-
-
-testExtract(
-	':is(:focus)',
-	[],
-);
-
-testExtract(
-	'[:is(:focus)]',
-	[],
-);
-
-testExtract(
-	'[":is(:focus)"]',
-	[],
-);
-
-testExtract(
-	'[\\%23something-complex\\:has\\(\\%3E\\%20\\%23d_checkbox\\:checked\\%20\\[foo\\%3D\\%22some\\%22\\]\\%20\\*\\%20\\%2B\\%20\\[bar\\%5E\\%3D\\%22\\[baz\\]\\%22\\]\\%20\\~\\%20a\\[class\\~\\%3D\\%22logo\\%22\\]\\%20\\:has\\(\\~\\%20\\.foo\\:is\\(button\\,\\%20input\\)\\)\\)]',
-	['#something-complex:has(> #d_checkbox:checked [foo="some"] * + [bar^="[baz]"] ~ a[class~="logo"] :has(~ .foo:is(button, input)))'],
-);
-
-
-// Safari already removes escape sequences in CSS selectors.
-// This is most likely a bug in Safari.
-testExtract(
-	'[.b_subject:has(.b_descendant)][.b_subject:has(.b_descendant)]',
-	['.b_subject:has(.b_descendant)'],
-);
-

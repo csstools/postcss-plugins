@@ -50,22 +50,7 @@ export default function extractEncodedSelectors(value) {
 				}
 
 				continue;
-			case ':':
-				if (quoted) {
-					continue;
-				}
-
-				if (depth === 1 && (value.slice(i, i + 4) === ':has')) {
-					containsUnescapedUnquotedHasAtDepth1 = true;
-				}
-
-				candidate += value[i];
-				continue;
 			case '\\':
-				if (depth === 1 && quoted === false && (value.slice(i+1, i + 7) === ':has\\(')) {
-					containsUnescapedUnquotedHasAtDepth1 = true;
-				}
-
 				candidate += value[i];
 				candidate += value[i+1];
 				i++;
@@ -86,6 +71,10 @@ export default function extractEncodedSelectors(value) {
 				continue;
 
 			default:
+				if (candidate === '' && depth === 1 && (value.slice(i, i + 13) === 'csstools-has-')) {
+					containsUnescapedUnquotedHasAtDepth1 = true;
+				}
+
 				candidate += char;
 				continue;
 		}

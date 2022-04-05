@@ -2,6 +2,10 @@
 	order: 0;
 }
 
+.some.other {
+	order: 0;
+}
+
 .other.some {
 	order: 0;
 }
@@ -18,6 +22,10 @@
 	order: 1;
 }
 
+.some.other {
+	order: 1;
+}
+
 .other.some {
 	order: 1;
 }
@@ -31,6 +39,10 @@
 }
 
 .some.some {
+	order: 2;
+}
+
+.some.other {
 	order: 2;
 }
 
@@ -890,11 +902,11 @@ button {
 	order: 59;
 }
 
-.some.🧑🏾‍🎤 {
+.🧑🏾‍🎤.some {
 	order: 60;
 }
 
-.other.🧑🏾‍🎤 {
+.🧑🏾‍🎤.other {
 	order: 60;
 }
 
@@ -1230,11 +1242,11 @@ button {
 	order: 90;
 }
 
-.foo.some {
+.some.foo {
 	order: 91;
 }
 
-.foo.other {
+.other.foo {
 	order: 91;
 }
 

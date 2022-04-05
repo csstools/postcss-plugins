@@ -22,7 +22,7 @@ const postcss = require('postcss');
 const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 postcss([
-  cssHasPseudoExperimental(/* pluginOptions */)
+	cssHasPseudoExperimental(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -40,9 +40,9 @@ Use [CSS Has Pseudo] in your `postcss.config.js` configuration file:
 const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 module.exports = {
-  plugins: [
-    cssHasPseudoExperimental(/* pluginOptions */)
-  ]
+	plugins: [
+		cssHasPseudoExperimental(/* pluginOptions */)
+	]
 }
 ```
 
@@ -60,23 +60,23 @@ Use [CSS Has Pseudo] in your Webpack configuration:
 const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              cssHasPseudoExperimental(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				use: [
+					'style-loader',
+					{ loader: 'css-loader', options: { importLoaders: 1 } },
+					{ loader: 'postcss-loader', options: {
+						ident: 'postcss',
+						plugins: () => [
+							cssHasPseudoExperimental(/* pluginOptions */)
+						]
+					} }
+				]
+			}
+		]
+	}
 }
 ```
 
@@ -97,9 +97,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    cssHasPseudoExperimental(/* pluginOptions */)
-  ]
+	plugins: () => [
+		cssHasPseudoExperimental(/* pluginOptions */)
+	]
 });
 ```
 
@@ -118,11 +118,11 @@ const postcss = require('gulp-postcss');
 const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    cssHasPseudoExperimental(/* pluginOptions */)
-  ])
+	postcss([
+		cssHasPseudoExperimental(/* pluginOptions */)
+	])
 ).pipe(
-  gulp.dest('.')
+	gulp.dest('.')
 ));
 ```
 
@@ -142,16 +142,16 @@ const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental'
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       cssHasPseudoExperimental(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			use: [
+			cssHasPseudoExperimental(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

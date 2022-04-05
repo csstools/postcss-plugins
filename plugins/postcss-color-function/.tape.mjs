@@ -17,14 +17,14 @@ postcssTape(plugin)({
 		message: 'supports usage along side postcss-lab-function',
 		plugins: [
 			plugin({ preserve: true }),
-			lab({ preserve: true, displayP3: true }),
+			lab({ preserve: true, subFeatures: { displayP3: true } }),
 		]
 	},
 	'lab-function-interop:preserve:false': {
 		message: 'supports usage along side postcss-lab-function with { preserve: false }',
 		plugins: [
 			plugin({ preserve: false}),
-			lab({ preserve: false, displayP3: true }),
+			lab({ preserve: false, subFeatures: { displayP3: true } }),
 		]
 	},
 	'variables': {
@@ -43,4 +43,20 @@ postcssTape(plugin)({
 			enableProgressiveCustomProperties: false,
 		}
 	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-true': {
+		message: 'minimal example',
+		options: {
+			preserve: true
+		}
+	},
+	'examples/example:preserve-true:progressive-false': {
+		message: 'minimal example',
+		options: {
+			preserve: true,
+			enableProgressiveCustomProperties: false,
+		}
+	}
 });

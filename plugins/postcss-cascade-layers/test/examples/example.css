@@ -1,0 +1,9 @@
+@layer {
+	target {
+		color: green;
+	}
+}
+
+target {
+	color: purple;
+}

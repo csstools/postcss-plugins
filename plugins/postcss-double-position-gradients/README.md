@@ -92,6 +92,30 @@ postcssDoublePositionGradients({ preserve: false })
 }
 ```
 
+### enableProgressiveCustomProperties
+
+The `enableProgressiveCustomProperties` option determines whether the original notation
+is wrapped with `@supports` when used in Custom Properties. By default, it is enabled.
+
+⚠️ We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties. See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
+
+```js
+postcssDoublePositionGradients({ enableProgressiveCustomProperties: false })
+```
+
+```pcss
+:root {
+	--a-gradient: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+
+/* becomes */
+
+:root {
+	--a-gradient: linear-gradient(90deg, black 25%, black 50%, blue 50%, blue 75%); /* will never be used, not even in older browser */
+	--a-gradient: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+```
+
 [css-url]: https://cssdb.org/#double-position-gradients
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/postcss-double-position-gradients

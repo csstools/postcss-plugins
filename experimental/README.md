@@ -33,11 +33,11 @@ The order can be important but this will be detailed in the experimental plugin 
 
 ```js
 plugins: [
-  postcssPresetEnv({
-    features: {
-      'css-has-pseudo': false
-    }
-  }),
-  cssHasPseudoExperimental(),
+	postcssPresetEnv({
+		features: {
+			'css-has-pseudo': false
+		}
+	}),
+	cssHasPseudoExperimental(),
 ]
 ```

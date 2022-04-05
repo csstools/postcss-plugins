@@ -10,17 +10,17 @@
 Add [PostCSS Gap Properties] to your project:
 
 ```bash
-npm install postcss-gap-properties --save-dev
+npm install postcss postcss-gap-properties --save-dev
 ```
 
-Use [PostCSS Gap Properties] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'postcss';
-import postcssGapProperties from 'postcss-gap-properties';
+const postcss = require('postcss');
+const postcssGapProperties = require('postcss-gap-properties');
 
 postcss([
-  postcssGapProperties(/* pluginOptions */)
+	postcssGapProperties(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-gap-properties --save-dev
 ```
 
 Use [PostCSS Gap Properties] in your `postcss.config.js` configuration file:
@@ -38,44 +38,56 @@ Use [PostCSS Gap Properties] in your `postcss.config.js` configuration file:
 const postcssGapProperties = require('postcss-gap-properties');
 
 module.exports = {
-  plugins: [
-    postcssGapProperties(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssGapProperties(/* pluginOptions */)
+	]
 }
 ```
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-gap-properties --save-dev
 ```
 
 Use [PostCSS Gap Properties] in your Webpack configuration:
 
 ```js
-import postcssGapProperties from 'postcss-gap-properties';
-
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssGapProperties(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-gap-properties",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
+};
 ```
 
 ## Create React App
@@ -83,20 +95,20 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-gap-properties --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Gap Properties] in your
 `config-overrides.js` file:
 
 ```js
-import reactAppRewirePostcss from 'react-app-rewire-postcss';
-import postcssGapProperties from 'postcss-gap-properties';
+const reactAppRewirePostcss = require('react-app-rewire-postcss');
+const postcssGapProperties = require('postcss-gap-properties');
 
-export default config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssGapProperties(/* pluginOptions */)
-  ]
+module.exports = config => reactAppRewirePostcss(config, {
+	plugins: () => [
+		postcssGapProperties(/* pluginOptions */)
+	]
 });
 ```
 
@@ -105,22 +117,24 @@ export default config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-gap-properties --save-dev
 ```
 
 Use [PostCSS Gap Properties] in your Gulpfile:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssGapProperties from 'postcss-gap-properties';
+const postcss = require('gulp-postcss');
+const postcssGapProperties = require('postcss-gap-properties');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssGapProperties(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+gulp.task('css', function () {
+	var plugins = [
+		postcssGapProperties(/* pluginOptions */)
+	];
+
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -128,27 +142,27 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-gap-properties --save-dev
 ```
 
 Use [PostCSS Gap Properties] in your Gruntfile:
 
 ```js
-import postcssGapProperties from 'postcss-gap-properties';
+const postcssGapProperties = require('postcss-gap-properties');
 
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssGapProperties(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssGapProperties(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

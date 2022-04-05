@@ -1,6 +1,7 @@
 import cssBlankPseudo from './plugins/css-blank-pseudo';
 import cssHasPseudo from './plugins/css-has-pseudo';
 import cssPrefersColorScheme from './plugins/css-prefers-color-scheme';
+import postcssColorFunction from './plugins/postcss-color-function';
 import postcssColorFunctionalNotation from './plugins/postcss-color-functional-notation';
 import postcssColorHexAlpha from './plugins/postcss-color-hex-alpha';
 import postcssColorRebeccaPurple from './plugins/postcss-color-rebeccapurple';
@@ -13,12 +14,14 @@ import postcssFocusWithin from './plugins/postcss-focus-within';
 import postcssFontFormatKeywords from './plugins/postcss-font-format-keywords';
 import postcssGapProperties from './plugins/postcss-gap-properties';
 import postcssHWBFunction from './plugins/postcss-hwb-function';
+import postcssICUnit from './plugins/postcss-ic-unit';
 import postcssImageSetFunction from './plugins/postcss-image-set-function';
 import postcssIsPseudoClass from './plugins/postcss-is-pseudo-class';
 import postcssLabFunction from './plugins/postcss-lab-function';
 import postcssLogical from './plugins/postcss-logical';
 import postcssNesting from './plugins/postcss-nesting';
 import postcssNormalizeDisplayValues from './plugins/postcss-normalize-display-values';
+import postcssOKLabFunction from './plugins/postcss-oklab-function';
 import postcssOverflowShorthand from './plugins/postcss-overflow-shorthand';
 import postcssPlace from './plugins/postcss-place';
 import postcssPresetEnv from './plugins/postcss-preset-env';
@@ -35,6 +38,9 @@ function main() {
 			return;
 		case 'css-prefers-color-scheme':
 			cssPrefersColorScheme();
+			return;
+		case 'postcss-color-function':
+			postcssColorFunction();
 			return;
 		case 'postcss-color-functional-notation':
 			postcssColorFunctionalNotation();
@@ -72,6 +78,9 @@ function main() {
 		case 'postcss-hwb-function':
 			postcssHWBFunction();
 			return;
+		case 'postcss-ic-unit':
+			postcssICUnit();
+			return;
 		case 'postcss-image-set-function':
 			postcssImageSetFunction();
 			return;
@@ -89,6 +98,9 @@ function main() {
 			return;
 		case 'postcss-normalize-display-values':
 			postcssNormalizeDisplayValues();
+			return;
+		case 'postcss-oklab-function':
+			postcssOKLabFunction();
 			return;
 		case 'postcss-overflow-shorthand':
 			postcssOverflowShorthand();
@@ -117,6 +129,7 @@ function main() {
 				'  css-blank-pseudo',
 				'  css-has-pseudo',
 				'  css-prefers-color-scheme',
+				'  postcss-color-function',
 				'  postcss-color-functional-notation',
 				'  postcss-color-hex-alpha',
 				'  postcss-color-rebeccapurple',
@@ -129,12 +142,14 @@ function main() {
 				'  postcss-font-format-keywords',
 				'  postcss-gap-properties',
 				'  postcss-hwb-function',
+				'  postcss-ic-unit',
 				'  postcss-image-set-function',
 				'  postcss-is-pseudo-class',
 				'  postcss-lab-function',
 				'  postcss-logical',
 				'  postcss-nesting',
 				'  postcss-normalize-display-values',
+				'  postcss-oklab-function',
 				'  postcss-overflow-shorthand',
 				'  postcss-place',
 				'  postcss-pseudo-class-any-link',

@@ -1,6 +1,34 @@
 # Changes to CSSTools CLI
 
-### 1.1.0  (January 31, 2022)
+### 1.2.0 (February 16, 2022)
+
+- Added `@csstools/color-function`.
+- Added `@csstools/ic-unit`.
+- Added `@csstools/oklab-function`.
+- Fixing minor formatting.
+- Added support for new options for:
+  - `postcss-double-position-gradients`
+  - `postcss-lab-function`
+- Updated `postcss` to `8.4.6` (patch)
+- Updated `css-blank-pseudo` to `3.0.3` (patch)
+- Updated `css-has-pseudo` to `3.0.4` (patch)
+- Updated `postcss-color-functional-notation` to `4.2.2` (patch)
+- Updated `postcss-color-hex-alpha` to `8.0.3` (patch)
+- Updated `postcss-dir-pseudo-class` to `6.0.4` (patch)
+- Updated `postcss-double-position-gradients` to `3.1.0` (minor)
+- Updated `postcss-env-function` to `4.0.5` (patch)
+- Updated `postcss-focus-visible` to `6.0.4` (patch)
+- Updated `postcss-focus-within` to `5.0.4` (patch)
+- Updated `postcss-gap-properties` to `3.0.3` (patch)
+- Updated `postcss-image-set-function` to `4.0.6` (patch)
+- Updated `postcss-lab-function` to `4.1.1` (patch)
+- Updated `postcss-logical` to `5.0.4` (patch)
+- Updated `postcss-overflow-shorthand` to `3.0.3` (patch)
+- Updated `postcss-place` to `7.0.4` (patch)
+- Updated `postcss-preset-env` to `7.4.0` (minor)
+- Updated `postcss-pseudo-class-any-link` to `7.1.1` (patch)
+
+### 1.1.0 (January 31, 2022)
 
 - Emit warnings from plugins
 - Added `@csstools/postcss-font-format-keywords`

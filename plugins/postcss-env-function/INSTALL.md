@@ -10,7 +10,7 @@
 Add [PostCSS Environment Variables] to your project:
 
 ```bash
-npm install postcss-env-function --save-dev
+npm install postcss postcss-env-function --save-dev
 ```
 
 Use it as a [PostCSS] plugin:
@@ -20,7 +20,7 @@ const postcss = require('postcss');
 const postcssEnvFunction = require('postcss-env-function');
 
 postcss([
-  postcssEnvFunction(/* pluginOptions */)
+	postcssEnvFunction(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-env-function --save-dev
 ```
 
 Use [PostCSS Environment Variables] in your `postcss.config.js` configuration file:
@@ -38,44 +38,56 @@ Use [PostCSS Environment Variables] in your `postcss.config.js` configuration fi
 const postcssEnvFunction = require('postcss-env-function');
 
 module.exports = {
-  plugins: [
-    postcssEnvFunction(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssEnvFunction(/* pluginOptions */)
+	]
 }
 ```
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-env-function --save-dev
 ```
 
 Use [PostCSS Environment Variables] in your Webpack configuration:
 
 ```js
-const postcssEnvFunction = require('postcss-env-function');
-
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssEnvFunction(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-env-function",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
+};
 ```
 
 ## Create React App
@@ -83,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-env-function --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Environment Variables] in your
@@ -94,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssEnvFunction = require('postcss-env-function');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssEnvFunction(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssEnvFunction(/* pluginOptions */)
+	]
 });
 ```
 
@@ -105,7 +117,7 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-env-function --save-dev
 ```
 
 Use [PostCSS Environment Variables] in your Gulpfile:
@@ -114,13 +126,15 @@ Use [PostCSS Environment Variables] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssEnvFunction = require('postcss-env-function');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssEnvFunction(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+gulp.task('css', function () {
+	var plugins = [
+		postcssEnvFunction(/* pluginOptions */)
+	];
+
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -128,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-env-function --save-dev
 ```
 
 Use [PostCSS Environment Variables] in your Gruntfile:
@@ -139,16 +153,16 @@ const postcssEnvFunction = require('postcss-env-function');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssEnvFunction(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssEnvFunction(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 

@@ -1,6 +1,5 @@
-import { Container, AtRule, Node } from 'postcss';
-
-function postcssCascadeLayers(opts) {
+import { Container, AtRule, Node, PluginCreator } from 'postcss';
+const creator: PluginCreator<undefined> = () => {
 	return {
 		postcssPlugin: 'postcss-cascade-layers',
 		Once(root: Container) {
@@ -11,6 +10,7 @@ function postcssCascadeLayers(opts) {
 			root.walkAtRules('layer', (atRule) => {
 				// give anonymous layers a name
 				if (!atRule.params) {
+					atRule.raws.afterName = ' ';
 					atRule.params = `anon${layerCount}`;
 				}
 
@@ -23,6 +23,10 @@ function postcssCascadeLayers(opts) {
 						hasNestedLayers = true;
 					} else if (node.type == 'rule') {
 						hasUnlayeredStyles = true;
+					}
+
+					if (hasNestedLayers && hasUnlayeredStyles) {
+						return false;
 					}
 				});
 
@@ -44,6 +48,9 @@ function postcssCascadeLayers(opts) {
 							implicitLayer.append(node.clone());
 							node.remove();
 						}
+
+						implicitLayer.append(node.clone());
+						node.remove();
 					});
 				}
 			});
@@ -100,11 +107,10 @@ function postcssCascadeLayers(opts) {
 			// root.walkAtRules((atRule) => {
 			// 	console.log(atRule, "third walkthrough");
 			// });
-			console.log(layerOrder);
 		},
 	};
-}
+};
 
-postcssCascadeLayers.postcss = true;
+creator.postcss = true;
 
-export default postcssCascadeLayers;
+export default creator;

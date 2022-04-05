@@ -1,26 +1,26 @@
 # Installing PostCSS Nesting
 
-[PostCSS Nesting] runs in all Node environments and Deno, with special instructions for:
+[PostCSS Nesting] runs in all Node environments, with special instructions for:
 
-| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) | [Deno](#deno) |
-| --- | --- | --- | --- | --- | --- | --- |
+| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Node
 
 Add [PostCSS Nesting] to your project:
 
 ```bash
-npm install postcss-nesting --save-dev
+npm install postcss postcss-nesting --save-dev
 ```
 
-Use [PostCSS Nesting] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'postcss';
-import postcssNesting from 'postcss-nesting';
+const postcss = require('postcss');
+const postcssNesting = require('postcss-nesting');
 
 postcss([
-  postcssNesting(/* pluginOptions */)
+	postcssNesting(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -29,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-nesting --save-dev
 ```
 
 Use [PostCSS Nesting] in your `postcss.config.js` configuration file:
@@ -38,44 +38,56 @@ Use [PostCSS Nesting] in your `postcss.config.js` configuration file:
 const postcssNesting = require('postcss-nesting');
 
 module.exports = {
-  plugins: [
-    postcssNesting(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssNesting(/* pluginOptions */)
+	]
 }
 ```
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-nesting --save-dev
 ```
 
 Use [PostCSS Nesting] in your Webpack configuration:
 
 ```js
-import postcssNesting from 'postcss-nesting';
-
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssNesting(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-nesting",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
+};
 ```
 
 ## Create React App
@@ -83,20 +95,20 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-nesting --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Nesting] in your
 `config-overrides.js` file:
 
 ```js
-import reactAppRewirePostcss from 'react-app-rewire-postcss';
-import postcssNesting from 'postcss-nesting';
+const reactAppRewirePostcss = require('react-app-rewire-postcss');
+const postcssNesting = require('postcss-nesting');
 
-export default config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssNesting(/* pluginOptions */)
-  ]
+module.exports = config => reactAppRewirePostcss(config, {
+	plugins: () => [
+		postcssNesting(/* pluginOptions */)
+	]
 });
 ```
 
@@ -105,22 +117,24 @@ export default config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-nesting --save-dev
 ```
 
 Use [PostCSS Nesting] in your Gulpfile:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssNesting from 'postcss-nesting';
+const postcss = require('gulp-postcss');
+const postcssNesting = require('postcss-nesting');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssNesting(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+gulp.task('css', function () {
+	var plugins = [
+		postcssNesting(/* pluginOptions */)
+	];
+
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -128,39 +142,28 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-nesting --save-dev
 ```
 
 Use [PostCSS Nesting] in your Gruntfile:
 
 ```js
-import postcssNesting from 'postcss-nesting';
+const postcssNesting = require('postcss-nesting');
 
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssNesting(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssNesting(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
-```
-
-## Deno
-
-You can also use [PostCSS Nesting] on [Deno]:
-
-```js
-import postcss from "https://deno.land/x/postcss/mod.js";
-import postcssNesting from "https://cdn.jsdelivr.net/npm/postcss-nesting@10/mod.js";
-
-await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
 ```
 
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
@@ -171,4 +174,3 @@ await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
 [PostCSS Nesting]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired
-[Deno]: https://deno.land/x/postcss_nesting

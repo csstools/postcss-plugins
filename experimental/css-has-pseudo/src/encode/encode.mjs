@@ -1,62 +1,20 @@
 
 /** Returns the string as an encoded CSS identifier. */
 export default function encodeCSS(value) {
-	let out = '';
-	let current = '';
+	if (value === '') {
+		return '';
+	}
 
-	const flushCurrent = () => {
-		const encoded = encodeURIComponent(current);
-		let encodedCurrent = '';
-		let encodedOut = '';
-
-		const flushEncoded = () => {
-			encodedOut += encodedCurrent;
-			encodedCurrent = '';
-		};
-
-		for (let i = 0; i < encoded.length; i++) {
-			const char = encoded[i];
-
-			switch (char) {
-				case '%':
-					flushEncoded();
-					encodedOut += ( '\\' + char );
-					continue;
-
-				default:
-					encodedCurrent += char;
-					continue;
-			}
-		}
-
-		flushEncoded();
-		out += encodedOut;
-		current = '';
-	};
-
+	let hex;
+	let result = '';
 	for (let i = 0; i < value.length; i++) {
-		const char = value[i];
-
-		switch (char) {
-			case ':':
-			case '[':
-			case ']':
-			case ',':
-			case '(':
-			case ')':
-			case '.':
-			case '*':
-			case '~':
-				flushCurrent();
-				out += ( '\\' + char );
-				continue;
-			default:
-				current += char;
-				continue;
+		hex = value.charCodeAt(i).toString(36);
+		if (i === 0) {
+			result += hex;
+		} else {
+			result += '-' + hex;
 		}
 	}
 
-	flushCurrent();
-
-	return out;
+	return 'csstools-has-' + result;
 }
