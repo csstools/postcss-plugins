@@ -18,6 +18,6 @@ target {
   color: green;
 }
 
-h1, p {
+span h1, span p {
   color:black
 }
