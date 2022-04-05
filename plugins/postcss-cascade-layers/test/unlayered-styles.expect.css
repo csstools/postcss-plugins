@@ -1,0 +1,23 @@
+@layer A {
+	target {
+		color: red;
+	}
+}
+
+@layer anon0 {
+	target {
+		color: green;
+	}
+}
+
+:not(#\##\#) a {
+	color: purple;
+}
+
+:not(#\##\#) target {
+  color: green;
+}
+
+:not(#\##\#) h1, :not(#\##\#) p {
+  color:black
+}

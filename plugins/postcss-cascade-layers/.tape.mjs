@@ -20,4 +20,7 @@ postcssTape(plugin)({
 	'examples/example': {
 		message: "minimal example",
 	},
+	'unlayered-styles': {
+		message: 'supports unlayered styles alonsgide layers',
+	},
 });
