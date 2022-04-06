@@ -18,6 +18,6 @@
   color: green;
 }
 
-:not(#\##\#) h1, :not(#\##\#) p {
-  color:black
+:not(#\##\#) span h1, :not(#\##\#) span p {
+  color:red;
 }
