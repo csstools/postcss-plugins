@@ -4,6 +4,6 @@
 	}
 }
 
-target {
+target:not(#\#) {
 	color: purple;
 }

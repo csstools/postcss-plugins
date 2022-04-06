@@ -20,14 +20,6 @@
 }
 
 @layer B {
-
-	@layer Z {
-		target {
-			color: yellow;
-		}
-	}
-
-@layer B-implicit {
 	@keyframes slide-left {
 		from {
 			margin-left: 0;
@@ -37,23 +29,25 @@
 			margin-left: -100%;
 		}
 	}
-}
-}
-
-@layer C {
 
 	@layer Z {
 		target {
 			color: yellow;
 		}
 	}
+}
 
-@layer C-implicit {
+@layer C {
 	@media (prefers-color-scheme: dark) {
 		h1 {
 			color: red;
 			background: black;
 		}
 	}
-}
+
+	@layer Z {
+		target {
+			color: yellow;
+		}
+	}
 }

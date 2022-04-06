@@ -4,12 +4,20 @@
 	}
 }
 
-@layer anon0 {
+@layer {
 	target {
 		color: green;
 	}
 }
 
-target:not(#\##\#) {
+a {
 	color: purple;
+}
+
+target {
+  color: green;
+}
+
+span h1, span p {
+  color:red;
 }

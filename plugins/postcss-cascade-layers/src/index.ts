@@ -1,5 +1,4 @@
-import type { Container, PluginCreator } from 'postcss';
-
+import { Container, AtRule, Node, PluginCreator } from 'postcss';
 const creator: PluginCreator<undefined> = () => {
 	return {
 		postcssPlugin: 'postcss-cascade-layers',
@@ -20,9 +19,9 @@ const creator: PluginCreator<undefined> = () => {
 
 				// check for where a layer has nested layers AND styles outside of those layers
 				atRule.each((node) => {
-					if (node.type == 'atrule' && node.name === 'layer') {
+					if (node.type == 'atrule') {
 						hasNestedLayers = true;
-					} else {
+					} else if (node.type == 'rule') {
 						hasUnlayeredStyles = true;
 					}
 
@@ -32,10 +31,11 @@ const creator: PluginCreator<undefined> = () => {
 				});
 
 				if (hasNestedLayers && hasUnlayeredStyles) {
-					//create new final layer via cloning, empty it
+					// create new final layer via cloning, empty it
 					const implicitLayer = atRule.clone({
 						params: `${atRule.params}-implicit`,
 					});
+
 					implicitLayer.each((node) => {
 						node.remove();
 					});
@@ -60,19 +60,31 @@ const creator: PluginCreator<undefined> = () => {
 				layerOrder[layer.params] = layerCount;
 			});
 
-			// 2nd walkthrough to transform unlayered styles - need highest specificity (layerCount + 1)
-			// root.walkRules((rule) => {
-			// 	console.log("second walkthrough");
-			// });
+			if (!layerCount) {
+				// no layers, so nothing to transform.
+				return;
+			}
+
+			// 2nd walkthrough to transform unlayered styles - need highest specificity (layerCount)
+			root.walkRules((rule) => {
+				if (hasLayerAtRuleAncestor(rule)) {
+					return;
+				}
+
+				rule.selectors = rule.selectors.map((selector) => {
+					// Needs `postcss-selector-parser` to insert `:not()` before any pseudo elements like `::after`
+					// This is a side track and can be fixed later.
+					return `${selector}${generateNot(layerCount)}`;
+				});
+			});
 
 			// 3rd walkthrough to transform layered styles:
 			//  - move out styles from atRule, insert before: https://postcss.org/api/#container-insertbefore
 			//  - delete empty atRule
-			//  - give selectors the specifity they need based on layerPriority state
+			//  - give selectors the specificity they need based on layerPriority state
 			// root.walkAtRules((atRule) => {
 			// 	console.log(atRule, "third walkthrough");
 			// });
-			console.log(layerOrder);
 		},
 	};
 };
@@ -80,3 +92,30 @@ const creator: PluginCreator<undefined> = () => {
 creator.postcss = true;
 
 export default creator;
+
+function generateNot(specificity: number) {
+	let list = '';
+	for (let i = 0; i < specificity; i++) {
+		list += '#\\#'; // something short but still very uncommon
+	}
+
+	return `:not(${list})`;
+}
+
+function hasLayerAtRuleAncestor(node: Node): boolean {
+	let parent = node.parent;
+	while (parent) {
+		if (parent.type !== 'atrule') {
+			parent = parent.parent;
+			continue;
+		}
+
+		if ((parent as AtRule).name === 'layer') {
+			return true;
+		}
+
+		parent = parent.parent;
+	}
+
+	return false;
+}

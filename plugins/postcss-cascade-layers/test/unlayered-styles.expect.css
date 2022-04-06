@@ -1,0 +1,23 @@
+@layer A {
+	target {
+		color: red;
+	}
+}
+
+@layer anon0 {
+	target {
+		color: green;
+	}
+}
+
+a:not(#\##\#) {
+	color: purple;
+}
+
+target:not(#\##\#) {
+  color: green;
+}
+
+span h1:not(#\##\#), span p:not(#\##\#) {
+  color:red;
+}
