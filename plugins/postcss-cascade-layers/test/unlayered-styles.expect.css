@@ -10,14 +10,14 @@
 	}
 }
 
-:not(#\##\#) a {
+a:not(#\##\#) {
 	color: purple;
 }
 
-:not(#\##\#) target {
+target:not(#\##\#) {
   color: green;
 }
 
-:not(#\##\#) span h1, :not(#\##\#) span p {
+span h1:not(#\##\#), span p:not(#\##\#) {
   color:red;
 }

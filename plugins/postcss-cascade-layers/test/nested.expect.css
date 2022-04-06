@@ -1,4 +1,22 @@
 @layer A {
+
+	@layer Z {
+		target {
+			color: yellow;
+		}
+	}@layer A-implicit {
+	target {
+		color: red;
+	}
+
+	p {
+		color: blue;
+	}
+
+	i {
+		color: red;
+	}
+}
 }
 
 @layer B {

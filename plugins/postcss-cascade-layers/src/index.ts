@@ -35,6 +35,7 @@ const creator: PluginCreator<undefined> = () => {
 					const implicitLayer = atRule.clone({
 						params: `${atRule.params}-implicit`,
 					});
+
 					implicitLayer.each((node) => {
 						node.remove();
 					});
@@ -44,9 +45,8 @@ const creator: PluginCreator<undefined> = () => {
 
 					// go through the unlayered rules, clone, and delete from top level atRule
 					atRule.each((node) => {
-						if (node.type == 'rule') {
-							implicitLayer.append(node.clone());
-							node.remove();
+						if (node.type == 'atrule' && node.name === 'layer') {
+							return;
 						}
 
 						implicitLayer.append(node.clone());
@@ -60,29 +60,6 @@ const creator: PluginCreator<undefined> = () => {
 				layerOrder[layer.params] = layerCount;
 			});
 
-			// functions for 2nd walkthrough
-			function generateNot(specificity: number) {
-				let list = '';
-				for (let i = 0; i < specificity; i++) {
-					list += '#\\#'; // something short but still very uncommon
-				}
-				return `:not(${list})`;
-			}
-			function hasLayerAtRuleAncestor(node: Node): boolean {
-				let parent = node.parent;
-				while (parent) {
-					if (parent.type !== 'atrule') {
-						parent = parent.parent;
-						continue;
-					}
-					if ((parent as AtRule).name === 'layer') {
-						return true;
-					}
-					parent = parent.parent;
-				}
-				return false;
-			}
-
 			if (!layerCount) {
 				// no layers, so nothing to transform.
 				return;
@@ -93,10 +70,11 @@ const creator: PluginCreator<undefined> = () => {
 				if (hasLayerAtRuleAncestor(rule)) {
 					return;
 				}
+
 				rule.selectors = rule.selectors.map((selector) => {
 					// Needs `postcss-selector-parser` to insert `:not()` before any pseudo elements like `::after`
 					// This is a side track and can be fixed later.
-					return `${generateNot(layerCount)} ${selector}`;
+					return `${selector}${generateNot(layerCount)}`;
 				});
 			});
 
@@ -114,3 +92,30 @@ const creator: PluginCreator<undefined> = () => {
 creator.postcss = true;
 
 export default creator;
+
+function generateNot(specificity: number) {
+	let list = '';
+	for (let i = 0; i < specificity; i++) {
+		list += '#\\#'; // something short but still very uncommon
+	}
+
+	return `:not(${list})`;
+}
+
+function hasLayerAtRuleAncestor(node: Node): boolean {
+	let parent = node.parent;
+	while (parent) {
+		if (parent.type !== 'atrule') {
+			parent = parent.parent;
+			continue;
+		}
+
+		if ((parent as AtRule).name === 'layer') {
+			return true;
+		}
+
+		parent = parent.parent;
+	}
+
+	return false;
+}
