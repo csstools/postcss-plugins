@@ -10,6 +10,6 @@
 	}
 }
 
-:not(#\##\#) target {
+target:not(#\##\#) {
 	color: purple;
 }
