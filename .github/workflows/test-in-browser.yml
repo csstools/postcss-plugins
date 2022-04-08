@@ -1,7 +1,7 @@
 name: test in browser
 on:
   push:
-  pull_request:
+  pull_request_target:
 
 concurrency:
   group: branch-node-test-in-browser-${{ github.ref }}
