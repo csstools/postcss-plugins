@@ -258,3 +258,18 @@ body:not(:has(:focus)) {
 .x:has(> :any-link) {
 	order: 31;
 }
+
+@supports selector(:has(:focus)) {
+	:has(:focus) {
+		order: 32;
+	}
+}
+
+@supports (display: grid) {
+	[csstools-has-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15] {
+		order: 33;
+	}
+	:has(:focus) {
+		order: 33;
+	}
+}

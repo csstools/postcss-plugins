@@ -130,3 +130,15 @@ body:not(:has(:focus)) {
 .x:has(> :any-link) {
 	order: 31;
 }
+
+@supports selector(:has(:focus)) {
+	:has(:focus) {
+		order: 32;
+	}
+}
+
+@supports (display: grid) {
+	:has(:focus) {
+		order: 33;
+	}
+}
