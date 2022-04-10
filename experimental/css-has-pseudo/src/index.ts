@@ -16,7 +16,7 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 	return {
 		postcssPlugin: 'css-has-pseudo-experimental',
 		RuleExit: (rule, { result }) => {
-			if (!rule.selector.includes(':has(')) {
+			if (!rule.selector.includes(':has(') || isWithinSupportCheck(rule)) {
 				return;
 			}
 
@@ -101,6 +101,22 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 creator.postcss = true;
 
 export default creator;
+
+function isWithinSupportCheck(rule) {
+	let isSupportCheck = false;
+	let ruleParent = rule.parent;
+
+	while (!isSupportCheck && ruleParent) {
+		if (ruleParent.type === 'atrule') {
+
+			isSupportCheck = ruleParent.params.includes(':has(') && ruleParent.params.startsWith('selector(');
+		}
+
+		ruleParent = ruleParent.parent;
+	}
+
+	return isSupportCheck;
+}
 
 function selectorSpecificity(node) {
 	let a = 0;
