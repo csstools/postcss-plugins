@@ -1,5 +1,16 @@
 # Changes to CSS Has Pseudo
 
+### Unreleased (minor)
+
+- Rules within `@supports` selector check for `:has` won't be transformed. This respects stylesheet author of making the selector conditional:
+
+```pcss
+@supports selector(:has(:focus)) {
+	/* Won't be transformed */
+	:has(:focus) {}
+}
+```
+
 ### 0.4.0 (April 5, 2022)
 
 - Update `querySelector(:has())` polyfill, disallowing nested `:has` (`:has(.foo, :has(.bar))`)
