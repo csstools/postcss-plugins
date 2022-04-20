@@ -1,10 +1,11 @@
-import { Container, AtRule, Node, PluginCreator } from 'postcss';
+import { Container, AtRule, Node, PluginCreator, decl, Declaration, Rule } from 'postcss';
 const creator: PluginCreator<undefined> = () => {
 	return {
 		postcssPlugin: 'postcss-cascade-layers',
 		Once(root: Container) {
 			let layerCount = 0;
 			const layerOrder = {};
+
 
 			// 1st walkthrough to rename anon layers and store state (no modification of layer styles)
 			root.walkAtRules('layer', (atRule) => {
@@ -82,9 +83,11 @@ const creator: PluginCreator<undefined> = () => {
 			//  - move out styles from atRule, insert before: https://postcss.org/api/#container-insertbefore
 			//  - delete empty atRule
 			//  - give selectors the specificity they need based on layerPriority state
-			// root.walkAtRules((atRule) => {
-			// 	console.log(atRule, "third walkthrough");
-			// });
+			root.walkAtRules('layer', (atRule) => {
+				// move out styles from atRule, insert before
+
+				atRule.replaceWith(new Rule({nodes: atRule.nodes, source: atRule.source, selector: `${generateNot(layerOrder[atRule.params])}`}));
+			});
 		},
 	};
 };
