@@ -67,7 +67,7 @@ export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3Toke
 		}
 	}
 
-	// Topological dereferrence.
+	// Topological dereference.
 	{
 		const nodes : Array<string> = Array.from(tokens.keys());
 		const edges: Array<Array<string>> = [];
