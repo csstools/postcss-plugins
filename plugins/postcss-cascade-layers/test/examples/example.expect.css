@@ -1,9 +1,9 @@
-@layer anon0 {
-	target {
-		color: green;
-	}
-}
 
 target:not(#\#) {
 	color: purple;
 }
+
+target {
+		color: green;
+	}
+

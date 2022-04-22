@@ -8,27 +8,28 @@
 [PostCSS Cascade Layers] lets use `@layer` following the [Cascade Layers Specification].
 
 ```pcss
+
+target {
+	color: purple;
+}
+
 @layer {
 	target {
 		color: green;
 	}
 }
 
-target {
-	color: purple;
-}
 
 /* becomes */
 
-@layer anon0 {
+
 	target {
 		color: green;
 	}
-}
-
-target {
+target:not(#\#) {
 	color: purple;
 }
+
 ```
 
 ## Usage

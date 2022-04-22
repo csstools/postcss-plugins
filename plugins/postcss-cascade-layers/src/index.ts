@@ -1,28 +1,98 @@
-import { Container, AtRule, Node, PluginCreator, decl, Declaration, Rule } from 'postcss';
+import type { Container, AtRule, Node, PluginCreator } from 'postcss';
+import selectorParser from 'postcss-selector-parser';
+import { adjustSelectorSpecificity } from './adjust-selector-specificity';
+import { desugarNestedLayers } from './desugar-nested-layers';
+import { getLayerAtRuleAncestor } from './has-layer-atrule-ancestor';
+import { Model } from './model';
+import { someInTree } from './some-in-tree';
+import { selectorSpecificity } from './specificity';
+
 const creator: PluginCreator<undefined> = () => {
 	return {
 		postcssPlugin: 'postcss-cascade-layers',
 		Once(root: Container) {
-			let layerCount = 0;
-			const layerOrder = {};
+			const model = new Model();
 
+			// - parse layer names
+			// - rename anon layers
+			// - handle empty layers
+			root.walkAtRules('layer', (layerRule) => {
+				if (layerRule.params) {
+					const layerNameList: Array<string> = [];
+					let isInvalidLayerName = false;
 
-			// 1st walkthrough to rename anon layers and store state (no modification of layer styles)
-			root.walkAtRules('layer', (atRule) => {
+					selectorParser().astSync(layerRule.params).each((selector) => {
+						const currentLayerNameParts: Array<string> = [];
+
+						selector.walk((node) => {
+							switch (node.type) {
+								case 'class':
+									currentLayerNameParts.push(node.value);
+									break;
+								case 'tag':
+									currentLayerNameParts.push(node.value);
+									break;
+								default:
+									isInvalidLayerName = true;
+									break;
+							}
+						});
+
+						if (isInvalidLayerName) {
+							return;
+						}
+
+						layerNameList.push(currentLayerNameParts.join('.'));
+
+						model.addLayerNameParts(currentLayerNameParts);
+					});
+
+					model.addLayerParams(layerRule.params, layerNameList);
+
+					if (layerRule.nodes && layerNameList.length > 1) {
+						// If the layer is a container rule it can not have multiple layer names.
+						isInvalidLayerName = true;
+					}
+
+					if (isInvalidLayerName) {
+						// Set invalid layers to "invalid-layer"
+						// We reset these later.
+						layerRule.name = 'invalid-layer';
+						return;
+					}
+
+					// handle empty layer at-rules.
+					if (!layerRule.nodes || layerRule.nodes.length === 0) {
+						layerNameList.forEach((name) => {
+							model.getLayerNameList(name).forEach((part) => {
+								if (model.layerOrder.has(part)) {
+									return;
+								}
+
+								model.layerOrder.set(part, model.layerCount);
+								model.layerCount += 1;
+							});
+						});
+
+						layerRule.remove();
+						return;
+					}
+				}
+
 				// give anonymous layers a name
-				if (!atRule.params) {
-					atRule.raws.afterName = ' ';
-					atRule.params = `anon${layerCount}`;
+				if (!layerRule.params) {
+					layerRule.raws.afterName = ' ';
+					layerRule.params = model.createAnonymousLayerName();
 				}
 
 				let hasNestedLayers = false;
 				let hasUnlayeredStyles = false;
 
 				// check for where a layer has nested layers AND styles outside of those layers
-				atRule.each((node) => {
-					if (node.type == 'atrule') {
+				layerRule.each((node) => {
+					if (node.type === 'atrule' && node.name === 'layer') {
 						hasNestedLayers = true;
-					} else if (node.type == 'rule') {
+					} else {
 						hasUnlayeredStyles = true;
 					}
 
@@ -32,61 +102,196 @@ const creator: PluginCreator<undefined> = () => {
 				});
 
 				if (hasNestedLayers && hasUnlayeredStyles) {
-					// create new final layer via cloning, empty it
-					const implicitLayer = atRule.clone({
-						params: `${atRule.params}-implicit`,
+					// create new final layer via cloning and keep only the styles
+					const implicitLayerName = model.createImplicitLayerName(layerRule.params);
+					const implicitLayer = layerRule.clone({
+						params: implicitLayerName,
 					});
 
 					implicitLayer.each((node) => {
-						node.remove();
+						if (node.type === 'atrule' && node.name === 'layer') {
+							node.remove();
+						}
 					});
 
 					// insert new layer
-					atRule.append(implicitLayer);
+					layerRule.append(implicitLayer);
 
-					// go through the unlayered rules, clone, and delete from top level atRule
-					atRule.each((node) => {
-						if (node.type == 'atrule' && node.name === 'layer') {
+					// go through the unlayered rules and delete from top level atRule
+					layerRule.each((node) => {
+						if (node.type === 'atrule' && node.name === 'layer') {
 							return;
 						}
 
-						implicitLayer.append(node.clone());
 						node.remove();
 					});
 				}
 			});
 
-			root.walkAtRules('layer', (layer) => {
-				layerCount += 1;
-				layerOrder[layer.params] = layerCount;
+			// record layer order
+			root.walkAtRules('layer', (layerRule) => {
+				const currentLayerNameParts = model.getLayerParams(layerRule);
+				const fullLayerName = currentLayerNameParts.join('.');
+				if (model.layerOrder.has(fullLayerName)) {
+					return;
+				}
+
+				if (!model.layerParamsParsed.has(fullLayerName)) {
+					model.layerParamsParsed.set(fullLayerName, [fullLayerName]);
+				}
+
+				if (!model.layerNameParts.has(fullLayerName)) {
+					model.layerNameParts.set(fullLayerName, [...currentLayerNameParts]);
+				}
+
+				model.getLayerNameList(fullLayerName).forEach((name) => {
+					if (model.layerOrder.has(name)) {
+						return;
+					}
+
+					model.layerOrder.set(name, model.layerCount);
+					model.layerCount += 1;
+				});
 			});
 
-			if (!layerCount) {
+			if (!model.layerCount) {
+				// Reset "invalid-layer" at rules
+				root.walkAtRules('invalid-layer', (layerRule) => {
+					layerRule.name = 'layer';
+				});
+
 				// no layers, so nothing to transform.
 				return;
 			}
 
-			// 2nd walkthrough to transform unlayered styles - need highest specificity (layerCount)
+			// record selector specificity
+			let highestASpecificity = 0;
 			root.walkRules((rule) => {
-				if (hasLayerAtRuleAncestor(rule)) {
+				rule.selectors.forEach((selector) => {
+					const specificity = selectorSpecificity(selectorParser().astSync(selector));
+					highestASpecificity = Math.max(highestASpecificity, specificity.a + 1);
+				});
+			});
+
+
+			// transform unlayered styles - need highest specificity (layerCount)
+			root.walkRules((rule) => {
+				if (getLayerAtRuleAncestor(rule)) {
+					return;
+				}
+
+				// Skip any at rules that do not contain regular declarations (@keyframes)
+				if (rule.parent && rule.parent.type === 'atrule' && (rule.parent as AtRule).name === 'keyframes') {
 					return;
 				}
 
 				rule.selectors = rule.selectors.map((selector) => {
-					// Needs `postcss-selector-parser` to insert `:not()` before any pseudo elements like `::after`
-					// This is a side track and can be fixed later.
-					return `${selector}${generateNot(layerCount)}`;
+					return adjustSelectorSpecificity(selector, model.layerCount * highestASpecificity);
 				});
 			});
 
-			// 3rd walkthrough to transform layered styles:
-			//  - move out styles from atRule, insert before: https://postcss.org/api/#container-insertbefore
-			//  - delete empty atRule
-			//  - give selectors the specificity they need based on layerPriority state
-			root.walkAtRules('layer', (atRule) => {
-				// move out styles from atRule, insert before
+			// Sort layer names
+			model.sortLayerNames();
 
-				atRule.replaceWith(new Rule({nodes: atRule.nodes, source: atRule.source, selector: `${generateNot(layerOrder[atRule.params])}`}));
+			// Desugar nested layers
+			desugarNestedLayers(root, model);
+
+			// Transform order of CSS
+			// - split selector rules from  non-selector rules
+			// - sort non-selector rules
+			{
+				// Separate selector rules from other rules
+				root.walkAtRules('layer', (layerRule) => {
+					const withSelectorRules = layerRule.clone();
+					const withoutSelectorRules = layerRule.clone();
+
+					withSelectorRules.walkAtRules((atRule) => {
+						if (atRule.name === 'keyframes') {
+							const parent = atRule.parent;
+							atRule.remove();
+							if (parent.nodes.length === 0) {
+								parent.remove();
+							}
+
+							return;
+						}
+
+						if (someInTree(atRule, (node) => {
+							return node.type === 'rule';
+						})) {
+							return;
+						}
+
+						const parent = atRule.parent;
+						atRule.remove();
+						if (parent.nodes.length === 0) {
+							parent.remove();
+						}
+					});
+
+					withoutSelectorRules.walkRules((rule) => {
+						if (rule.parent && rule.parent.type === 'atrule' && (rule.parent as AtRule).name === 'keyframes') {
+							return;
+						}
+
+						const parent = rule.parent;
+						rule.remove();
+						if (parent.nodes.length === 0) {
+							parent.remove();
+						}
+					});
+
+					withSelectorRules.name = 'layer-with-selector-rules';
+
+					layerRule.replaceWith(withSelectorRules, withoutSelectorRules);
+					if (withSelectorRules.nodes.length === 0) {
+						withSelectorRules.remove();
+					}
+
+					if (withoutSelectorRules.nodes.length === 0) {
+						withoutSelectorRules.remove();
+					}
+				});
+
+				// Sort layer nodes
+				model.sortRootNodes(root.nodes);
+
+				// Reset "layer-with-selector-rules" at rules
+				root.walkAtRules('layer-with-selector-rules', (atRule) => {
+					atRule.name = 'layer';
+				});
+			}
+
+			// transform layered styles:
+			//  - give selectors the specificity they need based on layerPriority state
+			root.walkRules((rule) => {
+				const layerForCurrentRule = getLayerAtRuleAncestor(rule);
+				if (!layerForCurrentRule) {
+					return;
+				}
+
+				// Skip any at rules that do not contain regular declarations (@keyframes)
+				if (rule.parent && rule.parent.type === 'atrule' && (rule.parent as AtRule).name === 'keyframes') {
+					return;
+				}
+
+				const fullLayerName = model.getLayerParams(layerForCurrentRule).join('.');
+				rule.selectors = rule.selectors.map((selector) => {
+					return adjustSelectorSpecificity(selector, model.layerOrder.get(fullLayerName) * highestASpecificity);
+				});
+			});
+
+			// Remove all @layer at-rules
+			// Contained styles are inserted before
+			while (someInTree(root, (node) => node.type === 'atrule' && node.name === 'layer')) {
+				root.walkAtRules('layer', (atRule) => {
+					atRule.replaceWith(atRule.nodes);
+				});
+			}
+
+			// Reset "invalid-layer" at rules
+			root.walkAtRules('invalid-layer', (atRule) => {
+				atRule.name = 'layer';
 			});
 		},
 	};
@@ -95,30 +300,3 @@ const creator: PluginCreator<undefined> = () => {
 creator.postcss = true;
 
 export default creator;
-
-function generateNot(specificity: number) {
-	let list = '';
-	for (let i = 0; i < specificity; i++) {
-		list += '#\\#'; // something short but still very uncommon
-	}
-
-	return `:not(${list})`;
-}
-
-function hasLayerAtRuleAncestor(node: Node): boolean {
-	let parent = node.parent;
-	while (parent) {
-		if (parent.type !== 'atrule') {
-			parent = parent.parent;
-			continue;
-		}
-
-		if ((parent as AtRule).name === 'layer') {
-			return true;
-		}
-
-		parent = parent.parent;
-	}
-
-	return false;
-}

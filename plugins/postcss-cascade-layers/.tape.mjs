@@ -11,16 +11,22 @@ postcssTape(plugin)({
 			color: 'purple'
 		}
 	},
+	atrules: {
+		message: "supports @keyframes usage",
+	},
 	nested: {
-		message: "supporting nested layer usage",
+		message: "supports nested layer usage",
 	},
 	'anon-layer': {
-		message: "supporting anonymous layer usage",
+		message: "supports anonymous layer usage",
 	},
 	'examples/example': {
 		message: "minimal example",
 	},
 	'unlayered-styles': {
-		message: 'supports unlayered styles alonsgide layers',
+		message: 'supports unlayered styles alongside layers',
+	},
+	'invalid-rules': {
+		message: 'correctly handles invalid rules',
 	},
 });

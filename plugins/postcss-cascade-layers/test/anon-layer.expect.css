@@ -1,26 +1,19 @@
-@layer A {
+
 	target {
 		color: red;
 	}
-}
 
-@layer B {
-	target {
+target:not(#\#) {
 		color: orange;
 	}
-}
 
-@layer C {
-	target {
+target:not(#\##\#) {
 		color: yellow;
 	}
-}
 
-@layer anon0 {
-	target {
+target:not(#\##\##\#) {
 		color: green;
 	}
-}
 
 target:not(#\##\##\##\#) {
 	color: purple;
