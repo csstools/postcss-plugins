@@ -2,7 +2,7 @@ import type { Container, AtRule, Node, PluginCreator } from 'postcss';
 import selectorParser from 'postcss-selector-parser';
 import { adjustSelectorSpecificity } from './adjust-selector-specificity';
 import { desugarNestedLayers } from './desugar-nested-layers';
-import { getLayerAtRuleAncestor } from './has-layer-atrule-ancestor';
+import { getLayerAtRuleAncestor } from './get-layer-atrule-ancestor';
 import { Model } from './model';
 import { someInTree } from './some-in-tree';
 import { selectorSpecificity } from './specificity';
