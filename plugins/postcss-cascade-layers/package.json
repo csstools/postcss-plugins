@@ -25,8 +25,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"postcss-selector-parser": "^6.0.10",
-		"postcss-value-parser": "^4.2.0"
+		"postcss-selector-parser": "^6.0.10"
 	},
 	"peerDependencies": {
 		"postcss": "^8.3"
