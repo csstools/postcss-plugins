@@ -1,11 +1,11 @@
 import type { Container, AtRule, ChildNode } from 'postcss';
-import { Model } from './model';
-import { someInTree } from './some-in-tree';
+import type { Model } from './model';
+import { someAtRuleInTree } from './some-in-tree';
 
 export function desugarNestedLayers(root: Container<ChildNode>, model: Model) {
-	while (someInTree(root, (node) => {
-		return node.type === 'atrule' && node.nodes && someInTree(node, (nested) => {
-			return nested.type === 'atrule' && nested.name === 'layer';
+	while (someAtRuleInTree(root, (node) => {
+		return node.nodes && someAtRuleInTree(node, (nested) => {
+			return nested.name === 'layer';
 		});
 	})) {
 		let foundUnexpectedLayerNesting = false;

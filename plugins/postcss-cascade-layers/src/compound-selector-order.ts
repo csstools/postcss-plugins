@@ -64,11 +64,11 @@ export function sortCompoundSelector(node) {
 
 function selectorTypeOrder(selector, type) {
 	if (selectorParser.isPseudoElement(selector)) {
-		return selectorTypeOrderIndex['pseudoElement'];
+		return selectorTypeOrderIndex.pseudoElement;
 	}
 
 	if (type === 'pseudo' && selector && selector.indexOf('::') === 0) {
-		return selectorTypeOrderIndex['pseudoElement'];
+		return selectorTypeOrderIndex.pseudoElement;
 	}
 	return selectorTypeOrderIndex[type];
 }

@@ -23,12 +23,13 @@ target {
 /* becomes */
 
 
-	target {
-		color: green;
-	}
 target:not(#\#) {
 	color: purple;
 }
+
+target {
+		color: green;
+	}
 
 ```
 

@@ -1,4 +1,4 @@
-import type { AtRule, ChildNode, Node } from 'postcss';
+import type { AtRule, Node } from 'postcss';
 
 export class Model {
 	anonymousLayerCount = 0;
@@ -157,38 +157,6 @@ export class Model {
 		this.layerOrder.clear();
 		layerOrderStructured.forEach((pair, index) => {
 			this.layerOrder.set(pair[0], index);
-		});
-	}
-
-	// Sort root nodes to apply the preferred order by layer priority for non-selector rules.
-	// Selector rules are adjusted by specificity.
-	sortRootNodes(rootNodes: Array<ChildNode>) {
-		rootNodes.sort((a, b) => {
-			const aIsCharset = a.type === 'atrule' && a.name === 'charset';
-			const bIsCharset = b.type === 'atrule' && b.name === 'charset';
-			if (aIsCharset && bIsCharset) {
-				return 0;
-			} else if (aIsCharset !== bIsCharset) {
-				return aIsCharset ? -1 : 1;
-			}
-
-			const aIsImport = a.type === 'atrule' && a.name === 'import';
-			const bIsImport = b.type === 'atrule' && b.name === 'import';
-			if (aIsImport && bIsImport) {
-				return 0;
-			} else if (aIsImport !== bIsImport) {
-				return aIsImport ? -1 : 1;
-			}
-
-			const aIsLayer = a.type === 'atrule' && a.name === 'layer';
-			const bIsLayer = b.type === 'atrule' && b.name === 'layer';
-			if (aIsLayer && bIsLayer) {
-				return this.layerOrder.get(a.params) - this.layerOrder.get(b.params);
-			} else if (aIsLayer !== bIsLayer) {
-				return aIsLayer ? -1 : 1;
-			}
-
-			return 0;
 		});
 	}
 }
