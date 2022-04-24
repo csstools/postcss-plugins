@@ -9,8 +9,8 @@ module.exports = ctx => {
 				stage: 0,
 				preserve: true,
 				features: {
-					'custom-properties': false
-				}
+					'custom-properties': false,
+				},
 			},
 			'cssnano': isProd ? {
 				preset: 'default',
