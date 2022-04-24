@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased (minor)
+### 0.5.0 (April 24, 2022)
 
 - Rules within `@supports` selector check for `:has` won't be transformed. This respects stylesheet author of making the selector conditional:
 
