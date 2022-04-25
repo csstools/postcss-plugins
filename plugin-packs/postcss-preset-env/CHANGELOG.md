@@ -2,8 +2,15 @@
 
 ### Unreleased
 
+- Updated `@csstools/postcss-color-function` to `1.1.0` (minor)
+- Updated `@csstools/postcss-is-pseudo-class` to `2.0.2` (patch)
+- Updated `@csstools/postcss-oklab-function` to `1.1.0` (minor)
 - Updated `autoprefixer` to `10.4.5` (patch)
 - Updated `browserslist` to `4.20.3` (patch)
+- Updated `postcss-custom-properties` to `12.1.7` (patch)
+- Updated `postcss-lab-function` to `4.2.0` (minor)
+- Updated `postcss-nesting` to `10.1.4` (patch)
+- Updated `postcss-pseudo-class-any-link` to `7.1.2` (patch)
 
 ### 7.4.3 (March 19, 2022)
 
