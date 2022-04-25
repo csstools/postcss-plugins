@@ -1,5 +1,10 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased
+
+- Updated `autoprefixer` to `10.4.5` (patch)
+- Updated `browserslist` to `4.20.3` (patch)
+
 ### 7.4.3 (March 19, 2022)
 
 - Fix manually enabling a feature that doesn't meet the required vendor implementations. [#310](https://github.com/csstools/postcss-plugins/issues/310)
