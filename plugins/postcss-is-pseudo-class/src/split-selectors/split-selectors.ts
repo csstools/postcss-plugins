@@ -1,5 +1,5 @@
 import parser from 'postcss-selector-parser';
-import { selectorSpecificity } from './specificity';
+import selectorSpecificity from '@csstools/selector-specificity';
 
 // splitSelectors handles the forgiving list behavior of ":is".
 // After created all combinations it wraps the individual selectors in ":-csstools-matches".

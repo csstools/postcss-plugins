@@ -19,6 +19,7 @@ export function denoJavascript() {
 					rootDir: path.join(process.cwd(), '..', '..'),
 					browser: true,
 					resolveOnly: [
+						'@csstools/selector-specificity',
 						'cssesc',
 						'postcss-selector-parser',
 						'util-deprecate',

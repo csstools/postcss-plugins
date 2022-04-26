@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased
+
+- Use `@csstools/selector-specificity` for specificity calculations.
+
 ### 10.1.4 (April 4, 2022)
 
 - Improved : compound selector order with pseudo elements
