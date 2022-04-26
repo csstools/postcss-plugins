@@ -1,11 +1,11 @@
 import selectorParser from 'postcss-selector-parser';
+import selectorSpecificity from '@csstools/selector-specificity';
 import type { Container, AtRule, PluginCreator } from 'postcss';
 import { Model } from './model';
 import { adjustSelectorSpecificity } from './adjust-selector-specificity';
 import { desugarAndParseLayerNames } from './desugar-and-parse-layer-names';
 import { desugarNestedLayers } from './desugar-nested-layers';
 import { getLayerAtRuleAncestor } from './get-layer-atrule-ancestor';
-import { selectorSpecificity } from './specificity';
 import { someAtRuleInTree } from './some-in-tree';
 import { sortRootNodes } from './sort-root-nodes';
 import { recordLayerOrder } from './record-layer-order';
