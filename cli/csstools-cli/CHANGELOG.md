@@ -1,6 +1,6 @@
 # Changes to CSSTools CLI
 
-### Unreleased (patch)
+### 1.2.1 (April 26, 2022)
 
 - Updated `@csstools/postcss-is-pseudo-class` to `2.0.2` (patch)
 - Updated `postcss-custom-properties` to `12.1.7` (patch)
