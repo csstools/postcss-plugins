@@ -10,12 +10,12 @@ following the [Selectors Level 4] specification.
 
 ```css
 body:has(:focus) {
-  background-color: yellow;
+	background-color: yellow;
 }
 
 /* becomes */
 
-[body\:has\(\:focus\)] {
+[csstools-has-2q-33-2s-3d-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15]:not(does-not-exist) {
 	background-color: yellow;
 }
 
@@ -43,7 +43,7 @@ const postcss = require('postcss');
 const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
 
 postcss([
-  cssHasPseudoExperimental(/* pluginOptions */)
+	cssHasPseudoExperimental(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -66,13 +66,13 @@ cssHasPseudoExperimental({ preserve: false });
 
 ```css
 body:has(:focus) {
-  background-color: yellow;
+	background-color: yellow;
 }
 
 /* becomes */
 
-body[\:has\(\:focus\)] {
-  background-color: yellow;
+[csstools-has-2q-33-2s-3d-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15]:not(does-not-exist) {
+	background-color: yellow;
 }
 ```
 
@@ -86,7 +86,7 @@ See how `:not` is used to modify [specificity](#specificity).
 
 ```js
 postcss([
-  cssHasPseudoExperimental({ specificityMatchingName: 'something-random' })
+	cssHasPseudoExperimental({ specificityMatchingName: 'something-random' })
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -102,10 +102,10 @@ Before :
 
 After :
 
-[specificity 1, 2, 0](https://polypane.app/css-specificity-calculator/#selector=%5B%5C.x%5C%3Ahas%5C(%5C%253E%5C%2520%5C%2523a%5C%3Ahover%5C)%5D%3Anot(%23does-not-exist)%3Anot(.does-not-exist))
+[specificity 1, 2, 0](https://polypane.app/css-specificity-calculator/#selector=%5Bcsstools-has-1a-3c-1m-2w-2p-37-14-1q-w-z-2p-1m-2w-33-3a-2t-36-15%5D%3Anot(%23does-not-exist)%3Anot(.does-not-exist))
 
 ```css
-[\.x\:has\(\%3E\%20\%23a\:hover\)]:not(#does-not-exist):not(.does-not-exist) {
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-z-2p-1m-2w-33-3a-2t-36-15]:not(#does-not-exist):not(.does-not-exist) {
 	order: 11;
 }
 ```
@@ -127,10 +127,10 @@ figure:has(> img)
 
 After :
 
-[specificity 0, 1, 2](https://polypane.app/css-specificity-calculator/#selector=%5Bfigure%5C%3Ahas%5C(%5C%253E%5C%2520img%5C)%5D%3Anot(does-not-exist)%3Anot(does-not-exist))
+[specificity 0, 1, 2](https://polypane.app/css-specificity-calculator/#selector=%5Bcsstools-has-2u-2x-2v-39-36-2t-1m-2w-2p-37-14-1q-w-2x-31-2v-15%5D%3Anot(does-not-exist)%3Anot(does-not-exist))
 
 ```css
-[figure\:has\(\%3E\%20img\)]:not(does-not-exist):not(does-not-exist)
+[csstools-has-2u-2x-2v-39-36-2t-1m-2w-2p-37-14-1q-w-2x-31-2v-15]:not(does-not-exist):not(does-not-exist)
 ```
 
 ### Plugin order
@@ -152,14 +152,14 @@ The experimental plugin must be added after any other plugin that modifies selec
 
 ```js
 plugins: [
-  // other plugins
-  postcssPresetEnv({
-    features: {
-      'css-has-pseudo': false
-    }
-  }),
-  // other plugins
-  cssHasPseudoExperimental(), // last
+	// other plugins
+	postcssPresetEnv({
+		features: {
+			'css-has-pseudo': false
+		}
+	}),
+	// other plugins
+	cssHasPseudoExperimental(), // last
 ]
 ```
 

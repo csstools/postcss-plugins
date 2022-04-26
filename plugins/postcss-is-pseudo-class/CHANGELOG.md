@@ -1,5 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased
+
+- Use `@csstools/selector-specificity` for specificity calculations.
+
 ### 2.0.2 (April 4, 2022)
 
 - Improved : compound selector order with pseudo elements
