@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased
+### 7.4.4 (April 26, 2022)
 
 - Updated `@csstools/postcss-color-function` to `1.1.0` (minor)
 - Updated `@csstools/postcss-is-pseudo-class` to `2.0.2` (patch)
