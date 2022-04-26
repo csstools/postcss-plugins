@@ -1,0 +1,19 @@
+{
+	"$schema": "../../node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+	"mutate": [
+		"src/**/*.ts"
+	],
+	"buildCommand": "npm run build",
+	"testRunner": "command",
+	"coverageAnalysis": "perTest",
+	"tempDirName": "../../.stryker-tmp",
+	"commandRunner": {
+		"command": "npm run test"
+	},
+	"thresholds": {
+		"high": 100,
+		"low": 100,
+		"break": 100
+	},
+	"inPlace": true
+}

@@ -51,10 +51,19 @@ assert.deepEqual(calculate('header:where(#top) nav li:nth-child(2n + 1)'), { a: 
 // Examples by Kilian, remixed
 assert.deepEqual(calculate('header:has(#top) nav li:nth-child(2n + 1)'), { a: 1, b: 1, c: 3 }, 'header:has(#top) nav li:nth-child(2n + 1) = (1,1,3)');
 assert.deepEqual(calculate('header:has(#top) nav li:nth-child(2n + 1 of)'), { a: 1, b: 1, c: 3 }, 'header:has(#top) nav li:nth-child(2n + 1 of) = (1,1,3)');
+assert.deepEqual(calculate('header:has(#top) nav li:nth-child(2n + 1 of of)'), { a: 1, b: 1, c: 4 }, 'header:has(#top) nav li:nth-child(2n + 1 of of) = (1,1,4)');
 assert.deepEqual(calculate('header:has(#top) nav li:nth-child(2n + 1 of .foo)'), { a: 1, b: 2, c: 3 }, 'header:has(#top) nav li:nth-child(2n + 1 of .foo) = (1,2,3)');
 assert.deepEqual(calculate('header:has(#top) nav li:nth-child(2n + 1 of .foo, #bar)'), { a: 2, b: 1, c: 3 }, 'header:has(#top) nav li:nth-child(2n + 1 of .foo, #bar) = (2,1,3)');
 assert.deepEqual(calculate('header:has(#top) nav li:nth-child(2n + 1 of .foo, #bar, #bar > #baz)'), { a: 3, b: 1, c: 3 }, 'header:has(#top) nav li:nth-child(2n + 1 of .foo, #bar, #bar > #baz) = (3,1,3)');
 assert.deepEqual(calculate('header:has(#top) nav li:nth-child(2n + 1 of #bar > #baz, .foo, #bar)'), { a: 3, b: 1, c: 3 }, 'header:has(#top) nav li:nth-child(2n + 1 of #bar > #baz, .foo, #bar) = (3,1,3)');
+
+assert.deepEqual(calculate('header:has(#top) nav li:nth-last-child(2n + 1)'), { a: 1, b: 1, c: 3 }, 'header:has(#top) nav li:nth-last-child(2n + 1) = (1,1,3)');
+assert.deepEqual(calculate('header:has(#top) nav li:nth-last-child(2n + 1 of)'), { a: 1, b: 1, c: 3 }, 'header:has(#top) nav li:nth-last-child(2n + 1 of) = (1,1,3)');
+assert.deepEqual(calculate('header:has(#top) nav li:nth-last-child(2n + 1 of of)'), { a: 1, b: 1, c: 4 }, 'header:has(#top) nav li:nth-last-child(2n + 1 of of) = (1,1,4)');
+assert.deepEqual(calculate('header:has(#top) nav li:nth-last-child(2n + 1 of .foo)'), { a: 1, b: 2, c: 3 }, 'header:has(#top) nav li:nth-last-child(2n + 1 of .foo) = (1,2,3)');
+assert.deepEqual(calculate('header:has(#top) nav li:nth-last-child(2n + 1 of .foo, #bar)'), { a: 2, b: 1, c: 3 }, 'header:has(#top) nav li:nth-last-child(2n + 1 of .foo, #bar) = (2,1,3)');
+assert.deepEqual(calculate('header:has(#top) nav li:nth-last-child(2n + 1 of .foo, #bar, #bar > #baz)'), { a: 3, b: 1, c: 3 }, 'header:has(#top) nav li:nth-last-child(2n + 1 of .foo, #bar, #bar > #baz) = (3,1,3)');
+assert.deepEqual(calculate('header:has(#top) nav li:nth-last-child(2n + 1 of #bar > #baz, .foo, #bar)'), { a: 3, b: 1, c: 3 }, 'header:has(#top) nav li:nth-last-child(2n + 1 of #bar > #baz, .foo, #bar) = (3,1,3)');
 
 // Pseudo-Element Selector = (0,0,1)
 assert.deepEqual(calculate('::after'), { a: 0, b: 0, c: 1 }, '::after');
