@@ -10,7 +10,7 @@
 	<!-- This is the real test stylesheet and has correct CORS attributes and http headers -->
 	<link rel="stylesheet" href="http://localhost:8081/test/browser.expect.css" crossorigin="anonymous">
 	<script src="http://localhost:8082/dist/browser-global.js"></script>
-	<script>cssHasPseudo(document, { observedAttributes: ['attrname'], debug: false, hover: true, forcePolyfill: true });</script>
+	<script>cssHasPseudo(document, { observedAttributes: ['attrname', 'a_test_attr', 'c_test_attr'], debug: false, hover: true, forcePolyfill: true });</script>
 </head>
 <body>
 	<the-fixture id="fixture"></the-fixture>
@@ -252,12 +252,66 @@
 
 				beforeElement.before(newElement);
 				await rafP(() => {
-					testColor(`insert element div.c_test before ${beforeElement.id}`, expectedColor);
+					testColor(`insert element div.test before ${beforeElement.id}`, expectedColor);
+				});
+
+				newElement.classList.remove('c_test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element inserted before ${beforeElement.id}`, grey);
+				});
+
+				newElement.classList.add('c_test');
+				await rafP(() => {
+					testColor(`add the class 'test' again to the element inserted before ${beforeElement.id}`, expectedColor);
 				});
 
 				newElement.remove();
 				await rafP(() => {
-					testColor(`remove element div.c_test before ${beforeElement.id}`, grey);
+					testColor(`remove element div.test before ${beforeElement.id}`, grey);
+				});
+
+				newElement.classList.remove('c_test');
+
+				beforeElement.before(newElement);
+				await rafP(() => {
+					testColor(`insert element div before ${beforeElement.id}`, grey);
+				});
+
+				newElement.classList.add('c_test');
+				await rafP(() => {
+					testColor(`add the class 'test' to the element inserted again before ${beforeElement.id}`, expectedColor);
+				});
+
+				newElement.classList.remove('c_test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element inserted again before ${beforeElement.id}`, grey);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove element div before ${beforeElement.id}`, grey);
+				});
+
+				newElement.setAttribute('c_test_attr', '');
+
+				beforeElement.before(newElement);
+				await rafP(() => {
+					testColor(`insert element div[test_attr] before ${beforeElement.id}`, expectedColor);
+				});
+
+				newElement.removeAttribute('c_test_attr');
+				await rafP(() => {
+					testColor(`remove attribute div[test_attr] before ${beforeElement.id}`, grey);
+				});
+
+				newElement.setAttribute('c_test_attr', '');
+				await rafP(() => {
+					testColor(`insert attribute div[test_attr] before ${beforeElement.id}`, expectedColor);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove element div[test_attr] before ${beforeElement.id}`, grey);
 				});
 			}
 
@@ -267,12 +321,66 @@
 
 				afterElement.after(newElement);
 				await rafP(() => {
-					testColor(`insert element div.c_test after ${afterElement.id}`, expectedColor);
+					testColor(`insert element div.test after ${afterElement.id}`, expectedColor);
+				});
+
+				newElement.classList.remove('c_test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element inserted after ${afterElement.id}`, grey);
+				});
+
+				newElement.classList.add('c_test');
+				await rafP(() => {
+					testColor(`add the class 'test' again to the element inserted after ${afterElement.id}`, expectedColor);
 				});
 
 				newElement.remove();
 				await rafP(() => {
-					testColor(`remove element div.c_test after ${afterElement.id}`, grey);
+					testColor(`remove element div.test after ${afterElement.id}`, grey);
+				});
+
+				newElement.classList.remove('c_test');
+
+				afterElement.after(newElement);
+				await rafP(() => {
+					testColor(`insert element div after ${afterElement.id}`, grey);
+				});
+
+				newElement.classList.add('c_test');
+				await rafP(() => {
+					testColor(`add the class 'test' to the element inserted again after ${afterElement.id}`, expectedColor);
+				});
+
+				newElement.classList.remove('c_test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element inserted again after ${afterElement.id}`, grey);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove element div after ${afterElement.id}`, grey);
+				});
+
+				newElement.setAttribute('c_test_attr', '');
+
+				afterElement.after(newElement);
+				await rafP(() => {
+					testColor(`insert element div[c_test_attr] after ${afterElement.id}`, expectedColor);
+				});
+
+				newElement.removeAttribute('c_test_attr');
+				await rafP(() => {
+					testColor(`remove attribute div[test_attr] before ${afterElement.id}`, grey);
+				});
+
+				newElement.setAttribute('c_test_attr', '');
+				await rafP(() => {
+					testColor(`insert attribute div[test_attr] before ${afterElement.id}`, expectedColor);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove element div[c_test_attr] after ${afterElement.id}`, grey);
 				});
 			}
 
@@ -284,12 +392,66 @@
 
 				beforeElement.before(newElement);
 				await rafP(() => {
-					testColor(`insert tree div>div.c_test before ${beforeElement.id}`, expectedColor);
+					testColor(`insert tree div>div.test before ${beforeElement.id}`, expectedColor);
+				});
+
+				newChild.classList.remove('c_test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element in the tree inserted before ${beforeElement.id}`, grey);
+				});
+
+				newChild.classList.add('c_test');
+				await rafP(() => {
+					testColor(`add the class 'test' again to the element in the tree inserted before ${beforeElement.id}`, expectedColor);
 				});
 
 				newElement.remove();
 				await rafP(() => {
-					testColor(`remove tree div>div.c_test before ${beforeElement.id}`, grey);
+					testColor(`remove tree div>div.test before ${beforeElement.id}`, grey);
+				});
+
+				newChild.classList.remove('c_test');
+
+				beforeElement.before(newElement);
+				await rafP(() => {
+					testColor(`insert tree div>div before ${beforeElement.id}`, grey);
+				});
+
+				newChild.classList.add('c_test');
+				await rafP(() => {
+					testColor(`add the class 'test' to the element in the tree inserted again before ${beforeElement.id}`, expectedColor);
+				});
+
+				newChild.classList.remove('c_test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element in the tree inserted again before ${beforeElement.id}`, grey);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove tree div>div before ${beforeElement.id}`, grey);
+				});
+
+				newChild.setAttribute('c_test_attr', '');
+
+				beforeElement.before(newElement);
+				await rafP(() => {
+					testColor(`insert element div>div[test_attr] before ${beforeElement.id}`, expectedColor);
+				});
+
+				newChild.removeAttribute('c_test_attr');
+				await rafP(() => {
+					testColor(`remove attribute div[test_attr] before ${beforeElement.id}`, grey);
+				});
+
+				newChild.setAttribute('c_test_attr', '');
+				await rafP(() => {
+					testColor(`insert attribute div[test_attr] before ${beforeElement.id}`, expectedColor);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove element div>div[test_attr] before ${beforeElement.id}`, grey);
 				});
 			}
 
@@ -301,12 +463,66 @@
 
 				afterElement.after(newElement);
 				await rafP(() => {
-					testColor(`insert tree div>div.c_test after ${afterElement.id}`, expectedColor);
+					testColor(`insert tree div>div.test after ${afterElement.id}`, expectedColor);
+				});
+
+				newChild.classList.remove('c_test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element in the tree inserted after ${afterElement.id}`, grey);
+				});
+
+				newChild.classList.add('c_test');
+				await rafP(() => {
+					testColor(`add the class 'test' again to the element in the tree inserted after ${afterElement.id}`, expectedColor);
 				});
 
 				newElement.remove();
 				await rafP(() => {
-					testColor(`remove tree div>div.c_test after ${afterElement.id}`, grey);
+					testColor(`remove tree div>div.test after ${afterElement.id}`, grey);
+				});
+
+				newChild.classList.remove('c_test');
+
+				afterElement.after(newElement);
+				await rafP(() => {
+					testColor(`insert tree div>div after ${afterElement.id}`, grey);
+				});
+
+				newChild.classList.add('c_test');
+				await rafP(() => {
+					testColor(`add the class 'test' to the element in the tree inserted again after ${afterElement.id}`, expectedColor);
+				});
+
+				newChild.classList.remove('c_test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element in the tree inserted again after ${afterElement.id}`, grey);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove tree div>div after ${afterElement.id}`, grey);
+				});
+
+				newChild.setAttribute('c_test_attr', '');
+
+				afterElement.after(newElement);
+				await rafP(() => {
+					testColor(`insert element div>div[test_attr] after ${afterElement.id}`, expectedColor);
+				});
+
+				newChild.removeAttribute('c_test_attr');
+				await rafP(() => {
+					testColor(`remove attribute div[test_attr] before ${afterElement.id}`, grey);
+				});
+
+				newChild.setAttribute('c_test_attr', '');
+				await rafP(() => {
+					testColor(`insert attribute div[test_attr] before ${afterElement.id}`, expectedColor);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove element div>div[test_attr] after ${afterElement.id}`, grey);
 				});
 			}
 
@@ -414,9 +630,65 @@
 					testColor(`insert element div.test before ${beforeElement.id}`, expectedColor);
 				});
 
+				newElement.classList.remove('a_Test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element inserted before ${beforeElement.id}`, grey);
+				});
+
+				newElement.classList.add('a_Test');
+				await rafP(() => {
+					testColor(`add the class 'test' again to the element inserted before ${beforeElement.id}`, expectedColor);
+				});
+
 				newElement.remove();
 				await rafP(() => {
 					testColor(`remove element div.test before ${beforeElement.id}`, grey);
+				});
+
+				newElement.classList.remove('a_Test');
+
+				beforeElement.before(newElement);
+				await rafP(() => {
+					testColor(`insert element div before ${beforeElement.id}`, grey);
+				});
+
+				newElement.classList.add('a_Test');
+				await rafP(() => {
+					testColor(`add the class 'test' to the element inserted again before ${beforeElement.id}`, expectedColor);
+				});
+
+				newElement.classList.remove('a_Test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element inserted again before ${beforeElement.id}`, grey);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove element div before ${beforeElement.id}`, grey);
+				});
+
+				newElement.setAttribute('a_test_attr', '');
+
+				beforeElement.before(newElement);
+				await rafP(() => {
+					testColor(`insert element div[test_attr] before ${beforeElement.id}`, expectedColor);
+				});
+
+				newElement.removeAttribute('a_test_attr');
+
+				await rafP(() => {
+					testColor(`remove attribute div[test_attr] before ${beforeElement.id}`, grey);
+				});
+
+				newElement.setAttribute('a_test_attr', '');
+
+				await rafP(() => {
+					testColor(`insert attribute div[test_attr] before ${beforeElement.id}`, expectedColor);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove element div[test_attr] before ${beforeElement.id}`, grey);
 				});
 			}
 
@@ -429,9 +701,65 @@
 					testColor(`insert element div.test after ${afterElement.id}`, expectedColor);
 				});
 
+				newElement.classList.remove('a_Test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element inserted after ${afterElement.id}`, grey);
+				});
+
+				newElement.classList.add('a_Test');
+				await rafP(() => {
+					testColor(`add the class 'test' again to the element inserted after ${afterElement.id}`, expectedColor);
+				});
+
 				newElement.remove();
 				await rafP(() => {
 					testColor(`remove element div.test after ${afterElement.id}`, grey);
+				});
+
+				newElement.classList.remove('a_Test');
+
+				afterElement.after(newElement);
+				await rafP(() => {
+					testColor(`insert element div after ${afterElement.id}`, grey);
+				});
+
+				newElement.classList.add('a_Test');
+				await rafP(() => {
+					testColor(`add the class 'test' to the element inserted again after ${afterElement.id}`, expectedColor);
+				});
+
+				newElement.classList.remove('a_Test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element inserted again after ${afterElement.id}`, grey);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove element div after ${afterElement.id}`, grey);
+				});
+
+				newElement.setAttribute('a_test_attr', '');
+
+				afterElement.after(newElement);
+				await rafP(() => {
+					testColor(`insert element div[test_attr] after ${afterElement.id}`, expectedColor);
+				});
+
+				newElement.removeAttribute('a_test_attr');
+
+				await rafP(() => {
+					testColor(`remove attribute div[test_attr] before ${afterElement.id}`, grey);
+				});
+
+				newElement.setAttribute('a_test_attr', '');
+
+				await rafP(() => {
+					testColor(`insert attribute div[test_attr] before ${afterElement.id}`, expectedColor);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove element div[test_attr] after ${afterElement.id}`, grey);
 				});
 			}
 
@@ -446,9 +774,65 @@
 					testColor(`insert tree div>div.test before ${beforeElement.id}`, expectedColor);
 				});
 
+				newChild.classList.remove('a_Test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element in the tree inserted before ${beforeElement.id}`, grey);
+				});
+
+				newChild.classList.add('a_Test');
+				await rafP(() => {
+					testColor(`add the class 'test' again to the element in the tree inserted before ${beforeElement.id}`, expectedColor);
+				});
+
 				newElement.remove();
 				await rafP(() => {
 					testColor(`remove tree div>div.test before ${beforeElement.id}`, grey);
+				});
+
+				newChild.classList.remove('a_Test');
+
+				beforeElement.before(newElement);
+				await rafP(() => {
+					testColor(`insert tree div>div before ${beforeElement.id}`, grey);
+				});
+
+				newChild.classList.add('a_Test');
+				await rafP(() => {
+					testColor(`add the class 'test' to the element in the tree inserted again before ${beforeElement.id}`, expectedColor);
+				});
+
+				newChild.classList.remove('a_Test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element in the tree inserted again before ${beforeElement.id}`, grey);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove tree div>div before ${beforeElement.id}`, grey);
+				});
+
+				newChild.setAttribute('a_test_attr', '');
+
+				beforeElement.before(newElement);
+				await rafP(() => {
+					testColor(`insert element div>div[test_attr] before ${beforeElement.id}`, expectedColor);
+				});
+
+				newChild.removeAttribute('a_test_attr');
+
+				await rafP(() => {
+					testColor(`remove attribute div[test_attr] before ${beforeElement.id}`, grey);
+				});
+
+				newChild.setAttribute('a_test_attr', '');
+
+				await rafP(() => {
+					testColor(`insert attribute div[test_attr] before ${beforeElement.id}`, expectedColor);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove element div>div[test_attr] before ${beforeElement.id}`, grey);
 				});
 			}
 
@@ -463,9 +847,65 @@
 					testColor(`insert tree div>div.test after ${afterElement.id}`, expectedColor);
 				});
 
+				newChild.classList.remove('a_Test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element in the tree inserted after ${afterElement.id}`, grey);
+				});
+
+				newChild.classList.add('a_Test');
+				await rafP(() => {
+					testColor(`add the class 'test' again to the element in the tree inserted after ${afterElement.id}`, expectedColor);
+				});
+
 				newElement.remove();
 				await rafP(() => {
 					testColor(`remove tree div>div.test after ${afterElement.id}`, grey);
+				});
+
+				newChild.classList.remove('a_Test');
+
+				afterElement.after(newElement);
+				await rafP(() => {
+					testColor(`insert tree div>div after ${afterElement.id}`, grey);
+				});
+
+				newChild.classList.add('a_Test');
+				await rafP(() => {
+					testColor(`add the class 'test' to the element in the tree inserted again after ${afterElement.id}`, expectedColor);
+				});
+
+				newChild.classList.remove('a_Test');
+				await rafP(() => {
+					testColor(`remove the class 'test' from the element in the tree inserted again after ${afterElement.id}`, grey);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove tree div>div after ${afterElement.id}`, grey);
+				});
+
+				newChild.setAttribute('a_test_attr', '');
+
+				afterElement.after(newElement);
+				await rafP(() => {
+					testColor(`insert element div>div[test_attr] after ${afterElement.id}`, expectedColor);
+				});
+
+				newChild.removeAttribute('a_test_attr');
+
+				await rafP(() => {
+					testColor(`remove attribute div[test_attr] before ${afterElement.id}`, grey);
+				});
+
+				newChild.setAttribute('a_test_attr', '');
+
+				await rafP(() => {
+					testColor(`insert attribute div[test_attr] before ${afterElement.id}`, expectedColor);
+				});
+
+				newElement.remove();
+				await rafP(() => {
+					testColor(`remove element div>div[test_attr] after ${afterElement.id}`, grey);
 				});
 			}
 
@@ -734,7 +1174,7 @@
 			function testColor(el, color) {
 				var actual = getComputedStyle(el).color;
 				if (actual === color) {
-					throw new Error('nested :has should not be allowed : div#' + el.id + '.color; expected ' + color + ' but got ' + actual);
+					throw new Error('nested :has should not be allowed : div#' + el.id + '.color; did not expected ' + color + ' but got ' + actual + ' anyway.');
 				}
 			}
 

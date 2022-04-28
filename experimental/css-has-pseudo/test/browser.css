@@ -36,52 +36,52 @@
 }
 
 /* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-ancestor-position.html */
-div:has(.c_test) #c_subject {
+div:has(.c_test, [c_test_attr]) #c_subject {
 	background-color: red
 }
 
-div:has(> .c_test) #c_subject {
+div:has(> .c_test, > [c_test_attr]) #c_subject {
 	background-color: green
 }
 
-div:has(~ .c_test) #c_subject {
+div:has(~ .c_test, ~ [c_test_attr]) #c_subject {
 	background-color: yellow
 }
 
-div:has(+ .c_test) #c_subject {
+div:has(+ .c_test, + [c_test_attr]) #c_subject {
 	background-color: blue
 }
 
-div:has(~ div .c_test) #c_subject {
+div:has(~ div .c_test, ~ div [c_test_attr]) #c_subject {
 	background-color: purple
 }
 
-div:has(+ div .c_test) #c_subject {
+div:has(+ div .c_test, + div [c_test_attr]) #c_subject {
 	background-color: pink
 }
 
 /* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
-div:has(.a_Test)+#a_subject {
+div:has(.a_Test, [a_test_attr])+#a_subject {
 	background-color: red;
 }
 
-div:has(> .a_Test)+#a_subject {
+div:has(> .a_Test, > [a_test_attr])+#a_subject {
 	background-color: green;
 }
 
-div:has(~ .a_Test)+#a_subject {
+div:has(~ .a_Test, ~ [a_test_attr])+#a_subject {
 	background-color: yellow;
 }
 
-div:has(+ .a_Test)+#a_subject {
+div:has(+ .a_Test, + [a_test_attr])+#a_subject {
 	background-color: blue;
 }
 
-div:has(~ div .a_Test)+#a_subject {
+div:has(~ div .a_Test, ~ div [a_test_attr])+#a_subject {
 	background-color: purple;
 }
 
-div:has(+ div .a_Test)+#a_subject {
+div:has(+ div .a_Test, + div [a_test_attr])+#a_subject {
 	background-color: pink;
 }
 
