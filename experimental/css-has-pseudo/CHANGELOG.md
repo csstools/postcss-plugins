@@ -3,6 +3,7 @@
 ### Unreleased
 
 - Use `@csstools/selector-specificity` for specificity calculations.
+- Update `querySelector(:has())` polyfill, ensuring temporary html attributes are correctly removed.
 - Improve documentation
 
 ### 0.5.0 (April 24, 2022)
