@@ -12,6 +12,10 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 			const layerNameList: Array<string> = [];
 			let isInvalidLayerName = false;
 
+			// Layer names ("A.B, C") have a similar syntax as selector lists with only class and tag name selectors.
+			// - comma separated
+			// - "." as a delimiter between idents.
+			// We can use "postcss-selector-parser" to analyse layer names so that we don't have to implement our own tokenizer and parser.
 			selectorParser().astSync(layerRule.params).each((selector) => {
 				const currentLayerNameParts: Array<string> = [];
 
