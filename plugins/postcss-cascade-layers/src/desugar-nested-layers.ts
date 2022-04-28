@@ -19,7 +19,7 @@ export function desugarNestedLayers(root: Container<ChildNode>, model: Model) {
 				const parent = layerRule.parent as AtRule;
 
 				// Concatenate the current layer params with those of the parent. Store the result in the data model.
-								model.layerNameParts.set(`${parent.params}.${layerRule.params}`, [...model.layerNameParts.get(parent.params), ...model.layerNameParts.get(layerRule.params)]);
+				model.layerNameParts.set(`${parent.params}.${layerRule.params}`, [...model.layerNameParts.get(parent.params), ...model.layerNameParts.get(layerRule.params)]);
 				model.layerParamsParsed.set(`${parent.params}.${layerRule.params}`, [`${parent.params}.${layerRule.params}`]);
 
 				layerRule.params = `${parent.params}.${layerRule.params}`;
