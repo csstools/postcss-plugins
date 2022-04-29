@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased
+### 0.5.1 (April 29, 2022)
 
 - Use `@csstools/selector-specificity` for specificity calculations.
 - Update `querySelector(:has())` polyfill, ensuring temporary html attributes are correctly removed.
