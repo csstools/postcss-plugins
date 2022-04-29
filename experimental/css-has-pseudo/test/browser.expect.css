@@ -36,52 +36,52 @@
 }
 
 /* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-ancestor-position.html */
-[csstools-has-2s-2x-3a-1m-2w-2p-37-14-1a-2r-2n-38-2t-37-38-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-1a-2r-2n-38-2t-37-38-18-w-2j-2r-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
 	background-color: red
 }
 
-[csstools-has-2s-2x-3a-1m-2w-2p-37-14-1q-w-1a-2r-2n-38-2t-37-38-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-1q-w-1a-2r-2n-38-2t-37-38-18-w-1q-w-2j-2r-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
 	background-color: green
 }
 
-[csstools-has-2s-2x-3a-1m-2w-2p-37-14-3i-w-1a-2r-2n-38-2t-37-38-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-3i-w-1a-2r-2n-38-2t-37-38-18-w-3i-w-2j-2r-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
 	background-color: yellow
 }
 
-[csstools-has-2s-2x-3a-1m-2w-2p-37-14-17-w-1a-2r-2n-38-2t-37-38-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-17-w-1a-2r-2n-38-2t-37-38-18-w-17-w-2j-2r-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
 	background-color: blue
 }
 
-[csstools-has-2s-2x-3a-1m-2w-2p-37-14-3i-w-2s-2x-3a-w-1a-2r-2n-38-2t-37-38-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-3i-w-2s-2x-3a-w-1a-2r-2n-38-2t-37-38-18-w-3i-w-2s-2x-3a-w-2j-2r-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
 	background-color: purple
 }
 
-[csstools-has-2s-2x-3a-1m-2w-2p-37-14-17-w-2s-2x-3a-w-1a-2r-2n-38-2t-37-38-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-17-w-2s-2x-3a-w-1a-2r-2n-38-2t-37-38-18-w-17-w-2s-2x-3a-w-2j-2r-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
 	background-color: pink
 }
 
 /* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
-[csstools-has-2s-2x-3a-1m-2w-2p-37-14-1a-2p-2n-2c-2t-37-38-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-1a-2p-2n-2c-2t-37-38-18-w-2j-2p-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
 	background-color: red;
 }
 
-[csstools-has-2s-2x-3a-1m-2w-2p-37-14-1q-w-1a-2p-2n-2c-2t-37-38-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-1q-w-1a-2p-2n-2c-2t-37-38-18-w-1q-w-2j-2p-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
 	background-color: green;
 }
 
-[csstools-has-2s-2x-3a-1m-2w-2p-37-14-3i-w-1a-2p-2n-2c-2t-37-38-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-3i-w-1a-2p-2n-2c-2t-37-38-18-w-3i-w-2j-2p-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
 	background-color: yellow;
 }
 
-[csstools-has-2s-2x-3a-1m-2w-2p-37-14-17-w-1a-2p-2n-2c-2t-37-38-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-17-w-1a-2p-2n-2c-2t-37-38-18-w-17-w-2j-2p-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
 	background-color: blue;
 }
 
-[csstools-has-2s-2x-3a-1m-2w-2p-37-14-3i-w-2s-2x-3a-w-1a-2p-2n-2c-2t-37-38-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-3i-w-2s-2x-3a-w-1a-2p-2n-2c-2t-37-38-18-w-3i-w-2s-2x-3a-w-2j-2p-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
 	background-color: purple;
 }
 
-[csstools-has-2s-2x-3a-1m-2w-2p-37-14-17-w-2s-2x-3a-w-1a-2p-2n-2c-2t-37-38-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-17-w-2s-2x-3a-w-1a-2p-2n-2c-2t-37-38-18-w-17-w-2s-2x-3a-w-2j-2p-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
 	background-color: pink;
 }
 
