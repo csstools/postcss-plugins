@@ -21,8 +21,40 @@
 	transform: rotateX(mod(140deg, -90deg)) rotateY(rem(140deg, -90deg));
 }
 
+.round {
+	top: 3px;
+	top: round(2.5px, 1px);
+	right: 3px;
+	right: round(nearest, 2.5px, 1px);
+	bottom: 3px;
+	bottom: round(up, 2.5px, 1px);
+	left: 2px;
+	left: round(down, 2.5px, 1px);
+	inset: 2px;
+	inset: round(to-zero, 2.5px, 1px);
+}
+
+.round-multiple {
+	top: 16px;
+	top: round(15px, 4px);
+	right: 16px;
+	right: round(nearest, 15px, 4px);
+	bottom: 21px;
+	bottom: round(up, 15px, 7px);
+	left: 12px;
+	left: round(down, 15px, 4px);
+	inset: 12px;
+	inset: round(to-zero, 15px, 4px);
+}
+
 .invalid {
 	font-size: mod(18px, 5rem);
 	width: rem(var(--foo), 5px);
 	padding: mod(Fo0px, 5px);
+	left: mod(1px, 0px);
+	right: 1px;
+	right: mod(1px, 200px);
+	inset: round(something, 15px, 4px);
+	margin-top: round(nearest, 15px, 4px, 50px);
+	margin-bottom: round(nearest, 15px, 4%);
 }

@@ -33,7 +33,7 @@ function transformModFunction(
 		const numberB = Number(valueB.number);
 		const modulus = ((numberA % numberB) + numberB) % numberB;
 
-		if (typeof modulus !== 'number' && !isNaN(modulus)) {
+		if (typeof modulus !== 'number' || isNaN(modulus)) {
 			return;
 		}
 

@@ -1,6 +1,7 @@
 import type { PluginCreator } from 'postcss';
 import { transformModFunction, modFunctionCheck } from './mod';
 import { transformRemFunction, remFunctionCheck } from './rem';
+import { transformRoundFunction, roundFunctionCheck } from './round';
 
 export type pluginOptions = { preserve?: boolean, onInvalid?: string };
 
@@ -21,6 +22,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const checks = [
 				modFunctionCheck,
 				remFunctionCheck,
+				roundFunctionCheck,
 			];
 			const hasSupportedFunction = checks.some(functionCheck => decl.value.includes(functionCheck));
 
@@ -40,6 +42,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			if (newDeclaration.value.includes(remFunctionCheck)) {
 				const modValue = transformRemFunction(newDeclaration, result, options);
+
+				if (modValue) {
+					newDeclaration.value = modValue;
+				}
+			}
+
+			if (newDeclaration.value.includes(roundFunctionCheck)) {
+				const modValue = transformRoundFunction(newDeclaration, result, options);
 
 				if (modValue) {
 					newDeclaration.value = modValue;
