@@ -1,0 +1,21 @@
+.mod {
+	padding: 8px 3px 1px calc(3px + 50%);
+	transform: rotate(-50deg);
+}
+
+.rem {
+	padding: 8px 3px 1px calc(3px + 50%);
+	transform: rotate(-50deg);
+}
+
+.mod-rem {
+	font-size: 2px;
+	width: -3px;
+	transform: rotateX(-40deg) rotateY(50deg);
+}
+
+.invalid {
+	font-size: mod(18px, 5rem);
+	width: rem(var(--foo), 5px);
+	padding: mod(Fo0px, 5px);
+}
