@@ -1,4 +1,4 @@
-import valueParser, { FunctionNode, Node } from 'postcss-value-parser';
+import valueParser, { FunctionNode, Node, WordNode } from 'postcss-value-parser';
 import { Declaration, Result } from 'postcss';
 import { pluginOptions } from './index';
 
@@ -78,5 +78,13 @@ export function optionallyWarn(
 	}
 
 	decl.warn(result, message);
+}
+
+export function functionNodeToWordNode(fn: FunctionNode): WordNode {
+	delete fn.nodes;
+	const node = fn as Node;
+	node.type = 'word';
+
+	return node as WordNode;
 }
 

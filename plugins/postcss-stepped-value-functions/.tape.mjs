@@ -9,12 +9,13 @@ postcssTape(plugin)({
 		message: 'supports { onInvalid: "warn" } usage',
 		options: {
 			onInvalid: 'warn'
-		}
+		},
+		warnings: 2,
 	},
 	'basic:preserve-true': {
 		message: 'supports { preserve: true } usage',
 		options: {
 			preserve: true
-		}
+		},
 	},
 });

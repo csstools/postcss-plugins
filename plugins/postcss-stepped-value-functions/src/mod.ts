@@ -1,6 +1,6 @@
 import { Declaration, Result } from 'postcss';
 import valueParser from 'postcss-value-parser';
-import { validateArgumentsAndTypes } from './utils';
+import { functionNodeToWordNode, validateArgumentsAndTypes } from './utils';
 import { pluginOptions } from './index';
 
 const modFunctionCheck = 'mod(';
@@ -37,8 +37,8 @@ function transformModFunction(
 			return;
 		}
 
-		node.type = 'word';
-		node.value = modulus === 0 ? '0' : `${modulus}${valueA.unit}`;
+		const transformedNode = functionNodeToWordNode(node);
+		transformedNode.value = modulus === 0 ? '0' : `${modulus}${valueA.unit}`;
 	});
 
 	return parsedValue.toString();

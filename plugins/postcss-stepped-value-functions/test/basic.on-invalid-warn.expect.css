@@ -1,24 +1,17 @@
 .mod {
 	padding: 8px 3px 1px calc(3px + 50%);
-	padding: 8px mod(18px, 5px) 1px calc(mod(15px, 6px) + 50%);
 	transform: rotate(-50deg);
-	transform: rotate(mod(-140deg, -90deg));
 }
 
 .rem {
 	padding: 8px 3px 1px calc(3px + 50%);
-	padding: 8px rem(18px, 5px) 1px calc(rem(15px, 6px) + 50%);
 	transform: rotate(-50deg);
-	transform: rotate(rem(-140deg, -90deg));
 }
 
 .mod-rem {
 	font-size: 2px;
-	font-size: mod(-18px, 5px);
 	width: -3px;
-	width: rem(-18px, 5px);
 	transform: rotateX(-40deg) rotateY(50deg);
-	transform: rotateX(mod(140deg, -90deg)) rotateY(rem(140deg, -90deg));
 }
 
 .invalid {

@@ -39,15 +39,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			}
 
 			if (newDeclaration.value.includes(remFunctionCheck)) {
-				console.log('Has mod');
 				const modValue = transformRemFunction(newDeclaration, result, options);
 
 				if (modValue) {
-					decl.value = modValue;
+					newDeclaration.value = modValue;
 				}
 			}
-			console.log('Original', decl.value);
-			console.log('Original', newDeclaration.value);
 
 			if (decl.value !== newDeclaration.value) {
 				if (options.preserve) {

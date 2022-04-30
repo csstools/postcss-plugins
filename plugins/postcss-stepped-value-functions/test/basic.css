@@ -1,8 +1,4 @@
-.test {
-	transform: rotate(rem(-140deg, -90deg));
-}
-
-/*.mod {
+.mod {
 	padding: 8px mod(18px, 5px) 1px calc(mod(15px, 6px) + 50%);
 	transform: rotate(mod(-140deg, -90deg));
 }
@@ -22,4 +18,4 @@
 	font-size: mod(18px, 5rem);
 	width: rem(var(--foo), 5px);
 	padding: mod(Fo0px, 5px);
-}*/
+}

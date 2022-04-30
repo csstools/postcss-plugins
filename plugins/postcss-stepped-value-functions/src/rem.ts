@@ -1,6 +1,6 @@
 import { Declaration, Result } from 'postcss';
 import valueParser from 'postcss-value-parser';
-import { validateArgumentsAndTypes } from './utils';
+import { functionNodeToWordNode, validateArgumentsAndTypes } from './utils';
 import { pluginOptions } from './index';
 
 const remFunctionCheck = 'rem(';
@@ -35,8 +35,8 @@ function transformRemFunction(
 			return;
 		}
 
-		node.type = 'word';
-		node.value = remainder === 0 ? '0' : `${remainder}${valueA.unit}`;
+		const transformedNode = functionNodeToWordNode(node);
+		transformedNode.value = remainder === 0 ? '0' : `${remainder}${valueA.unit}`;
 	});
 
 	return parsedValue.toString();
