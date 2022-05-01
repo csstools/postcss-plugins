@@ -199,7 +199,7 @@ const formatted = {};
 Object.assign(formatted, packageJSONInfo);
 
 if (process.env.GITHUB_ACTIONS && JSON.stringify(formatted, null, '\t') !== packageJSONInfoCopy) {
-	console.error('package.json has an incorrect field order. Run "npm run lint" to resolve.')
+	console.error('::error file=./package.json,line=1,col=1::package.json has an incorrect field order. Run "npm run lint" to resolve.')
 	process.exit(1);
 }
 
