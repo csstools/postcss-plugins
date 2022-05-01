@@ -248,7 +248,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 						console.log(formatGitHubActionAnnotation(
 							formatCSSAssertError(testCaseLabel, testCaseOptions, err, true),
 							'error',
-							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
+							{ file: expectFilePath, line: 1, col: 1 },
 						));
 					} else {
 						failureSummary.add(testCaseLabel);
@@ -344,7 +344,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 						console.log(formatGitHubActionAnnotation(
 							'testing older PostCSS:\n' + formatCSSAssertError(testCaseLabel, testCaseOptions, err, true),
 							'error',
-							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
+							{ file: expectFilePath, line: 1, col: 1 },
 						));
 					} else {
 						failureSummary.add(testCaseLabel);
@@ -366,7 +366,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 						console.log(formatGitHubActionAnnotation(
 							formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings(), testCaseOptions.warnings, true),
 							'error',
-							{ file: normalizeFilePathForGithubAnnotation(expectFilePath), line: 1, col: 1 },
+							{ file: expectFilePath, line: 1, col: 1 },
 						));
 					} else {
 						failureSummary.add(testCaseLabel);
@@ -389,23 +389,4 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 
 		console.warn('pass ' + (currentPlugin() as Plugin).postcssPlugin);
 	};
-}
-
-function normalizeFilePathForGithubAnnotation(filePath: string) {
-	// Any plugin or packages is located in `<workspace>/<package>`;
-	const parts = process.cwd().split('/').slice(-2);
-
-	const workspaces = [
-		'packages',
-		'plugins',
-		'plugin-packs',
-		'cli',
-		'experimental',
-	];
-
-	if (!workspaces.includes(parts[0])) {
-		throw new Error('PostCSS Tape was intended to be run from <workspace>/<package>');
-	}
-
-	return path.join(parts.join('/'), filePath);
 }
