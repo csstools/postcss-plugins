@@ -1,7 +1,9 @@
-.foo {
-	color: red;
-}
-
-.baz {
-	color: green;
+.test-functions {
+	padding: 8px mod(18px, 5px) 1px calc(rem(15px, 6px) + 50%);
+	transform: rotate(mod(-140deg, -90deg));
+	top: round(15px, 4px);
+	right: round(nearest, 15px, 4px);
+	bottom: round(up, 15px, 7px);
+	left: round(down, 15px, 4px);
+	width: round(to-zero, 15px, 4px);
 }

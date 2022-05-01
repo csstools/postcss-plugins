@@ -14,7 +14,7 @@
 
 <header>
 
-[<humanReadableName>] lets easily create new plugins following some [CSS Specification].
+[<humanReadableName>] lets you use `round`, `rem` and `mod` stepped value functions, following the [CSS Values 4][CSS Specification].
 
 ```pcss
 <example.css>
@@ -27,6 +27,12 @@
 <usage>
 
 <env-support>
+
+## ⚠️ About custom properties
+
+Given the dynamic nature of custom properties it's impossible to know what the variable value is which means the plugin can't compute a final value for the stylesheet. 
+
+Because of that, any usage that contains a `var` is skipped.
 
 ## Options
 
@@ -47,5 +53,25 @@ is preserved. By default, it is not preserved.
 <example.preserve-true.expect.css>
 ```
 
+### onInvalid
+
+`onInvalid` option allows you to assign the `warn` value so you can get warnings when the usage of the functions is wrong.
+
+```js
+<exportName>({ onInvalid: 'warn' })
+```
+
+```pcss
+.invalid {
+	font-size: mod(18px, 5rem);
+}
+```
+
+Will produce on the terminal:
+
+```bash
+[postcss-stepped-value-functions]: Failed to transform mod(18px, 5rem) as the units don't match
+```
+
 <link-list>
-[CSS Specification]: <specUrl>
+[CSS Specification]: https://www.w3.org/TR/css-values-4/#round-func

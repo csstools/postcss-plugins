@@ -17,10 +17,10 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssBasePlugin = require('@csstools/postcss-stepped-value-functions');
+const postcssSteppedValueFunctions = require('@csstools/postcss-stepped-value-functions');
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssSteppedValueFunctions(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -35,11 +35,11 @@ npm install postcss-cli @csstools/postcss-stepped-value-functions --save-dev
 Use [PostCSS Stepped Value Functions] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-stepped-value-functions');
+const postcssSteppedValueFunctions = require('@csstools/postcss-stepped-value-functions');
 
 module.exports = {
 	plugins: [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssSteppedValueFunctions(/* pluginOptions */)
 	]
 }
 ```
@@ -103,11 +103,11 @@ Use [React App Rewire PostCSS] and [PostCSS Stepped Value Functions] in your
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssBasePlugin = require('@csstools/postcss-stepped-value-functions');
+const postcssSteppedValueFunctions = require('@csstools/postcss-stepped-value-functions');
 
 module.exports = config => reactAppRewirePostcss(config, {
 	plugins: () => [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssSteppedValueFunctions(/* pluginOptions */)
 	]
 });
 ```
@@ -124,11 +124,11 @@ Use [PostCSS Stepped Value Functions] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssBasePlugin = require('@csstools/postcss-stepped-value-functions');
+const postcssSteppedValueFunctions = require('@csstools/postcss-stepped-value-functions');
 
 gulp.task('css', function () {
 	var plugins = [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssSteppedValueFunctions(/* pluginOptions */)
 	];
 
 	return gulp.src('./src/*.css')
@@ -148,7 +148,7 @@ npm install grunt-postcss @csstools/postcss-stepped-value-functions --save-dev
 Use [PostCSS Stepped Value Functions] in your Gruntfile:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-stepped-value-functions');
+const postcssSteppedValueFunctions = require('@csstools/postcss-stepped-value-functions');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -156,7 +156,7 @@ grunt.initConfig({
 	postcss: {
 		options: {
 			processors: [
-			postcssBasePlugin(/* pluginOptions */)
+			postcssSteppedValueFunctions(/* pluginOptions */)
 			]
 		},
 		dist: {
