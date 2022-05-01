@@ -56,10 +56,10 @@
 		"postcss-plugin"
 	],
 	"csstools": {
-		"cssdbId": "TODO",
+		"cssdbId": "stepped-value-functions",
 		"exportName": "postcssSteppedValueFunctions",
 		"humanReadableName": "PostCSS Stepped Value Functions",
-		"specUrl": "#TODO"
+		"specUrl": "https://www.w3.org/TR/css-values-4/#round-func"
 	},
 	"volta": {
 		"extends": "../../package.json"
