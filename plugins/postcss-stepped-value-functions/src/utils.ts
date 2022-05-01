@@ -1,5 +1,6 @@
-import valueParser, { FunctionNode, Node, WordNode } from 'postcss-value-parser';
-import { Declaration, Result } from 'postcss';
+import valueParser from 'postcss-value-parser';
+import type { FunctionNode, Node, WordNode } from 'postcss-value-parser';
+import type { Declaration, Result } from 'postcss';
 import { pluginOptions } from './index';
 
 export function isVarNode(node: Node) {
