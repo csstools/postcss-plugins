@@ -10,7 +10,7 @@ postcssTape(plugin)({
 		options: {
 			onInvalid: 'warn'
 		},
-		warnings: 15,
+		warnings: 17,
 	},
 	'basic:preserve-true': {
 		message: 'supports { preserve: true } usage',
