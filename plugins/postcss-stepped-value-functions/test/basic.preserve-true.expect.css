@@ -59,6 +59,9 @@
 	top: 2px;
 	top: round(nearest, mod(2px, 5px), 2px);
 	top: round(nearest, mod(mod(-18px, 5px), 5px), 2px);
+	right: 8px;
+	right: round(up, rem(mod(3px, 7px), 15px), 8px);
+	right: round(up, rem(mod(mod(8px, 5px), 7px), 15px), 8px);
 }
 
 .invalid {
