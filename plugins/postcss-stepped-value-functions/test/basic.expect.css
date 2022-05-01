@@ -1,6 +1,7 @@
 .mod {
 	padding: 8px 3px 1px calc(3px + 50%);
 	transform: rotate(-50deg);
+	width: 2px;
 }
 
 .rem {
@@ -12,6 +13,7 @@
 	font-size: 2px;
 	width: -3px;
 	transform: rotateX(-40deg) rotateY(50deg);
+	height: 0;
 }
 
 .round {
@@ -30,6 +32,11 @@
 	inset: 12px;
 }
 
+.round-complex {
+	left: 2px;
+	top: 2px;
+}
+
 .invalid {
 	font-size: mod(18px, 5rem);
 	width: rem(var(--foo), 5px);
@@ -39,4 +46,13 @@
 	inset: round(something, 15px, 4px);
 	margin-top: round(nearest, 15px, 4px, 50px);
 	margin-bottom: round(nearest, 15px, 4%);
+	font-size: mod;
+	font-size: mod();
+	font-size: mod(1px);
+	font-size: rem;
+	font-size: rem();
+	font-size: rem(1px);
+	font-size: round;
+	font-size: round();
+	font-size: round(1px);
 }
