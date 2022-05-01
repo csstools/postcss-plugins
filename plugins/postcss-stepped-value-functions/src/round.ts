@@ -1,4 +1,4 @@
-import { Declaration, Result } from 'postcss';
+import type { Declaration, Result } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { functionNodeToWordNode, optionallyWarn } from './utils';
 import { pluginOptions } from './index';
