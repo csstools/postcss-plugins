@@ -64,12 +64,12 @@ function transformRoundFunction(
 				return;
 			}
 
-			valueA = valueParser.unit(childNodes[1].value);
-			valueB = valueParser.unit(childNodes[2].value);
+			valueA = valueParser.unit(childNodes?.[1]?.value || '');
+			valueB = valueParser.unit(childNodes?.[2]?.value || '');
 		} else { // Default to "nearest"
 			strategy = RoundingStrategy.Nearest;
-			valueA = valueParser.unit(childNodes[0].value);
-			valueB = valueParser.unit(childNodes[1].value);
+			valueA = valueParser.unit(childNodes?.[0]?.value || '');
+			valueB = valueParser.unit(childNodes?.[1]?.value || '');
 		}
 
 		if (!valueA || !valueB) {
