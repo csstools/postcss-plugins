@@ -64,6 +64,7 @@
 		"design",
 		"display-p3",
 		"postcss",
+		"postcss-plugin",
 		"prophoto-rgb",
 		"rec2020",
 		"rgb",
