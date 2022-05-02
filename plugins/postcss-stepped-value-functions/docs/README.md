@@ -74,4 +74,4 @@ Will produce on the terminal:
 ```
 
 <link-list>
-[CSS Specification]: https://www.w3.org/TR/css-values-4/#round-func
+[CSS Values 4]: <specUrl>
