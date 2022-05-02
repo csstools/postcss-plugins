@@ -4,7 +4,7 @@ import { cli, helpTextLogger } from '@csstools/base-cli';
 export default function postcssUnsetValue() {
 	cli(
 		plugin,
-		['preserve', 'onInvalid'],
+		['preserve'],
 		helpTextLogger(
 			'@csstools/cli postcss-unset-value',
 			'PostCSS Stepped Unset Value',
