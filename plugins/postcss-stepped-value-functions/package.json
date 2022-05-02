@@ -1,7 +1,7 @@
 {
-	"name": "@csstools/postcss-base-plugin",
-	"description": "A base plugin",
-	"version": "0.0.0",
+	"name": "@csstools/postcss-stepped-value-functions",
+	"description": "Use round, rem and mod functions in CSS",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -18,15 +18,11 @@
 		"type": "opencollective",
 		"url": "https://opencollective.com/csstools"
 	},
-	"private": true,
 	"engines": {
 		"node": "^12 || ^14 || >=16"
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
-	"bin": {
-		"postcss-base-plugin": "dist/cli.cjs"
-	},
 	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
@@ -41,6 +37,9 @@
 		"README.md",
 		"dist"
 	],
+	"dependencies": {
+		"postcss-value-parser": "^4.2.0"
+	},
 	"peerDependencies": {
 		"postcss": "^8.3"
 	},
@@ -52,25 +51,30 @@
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run clean && npm run build && npm run test",
-		"stryker": "stryker run --logLevel error",
 		"test": "node .tape.mjs && npm run test:exports",
-		"test:cli": "bash ./test/cli/test.sh",
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
-		"directory": "plugins/postcss-base-plugin"
+		"directory": "plugins/postcss-stepped-value-functions"
 	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"css",
+		"modulus",
+		"postcss-plugin",
+		"remainder",
+		"round",
+		"stepped"
 	],
 	"csstools": {
-		"cssdbId": "TODO",
-		"exportName": "postcssBasePlugin",
-		"humanReadableName": "PostCSS Base Plugin",
-		"specUrl": "#TODO"
+		"cssdbId": "stepped-value-functions",
+		"exportName": "postcssSteppedValueFunctions",
+		"humanReadableName": "PostCSS Stepped Value Functions",
+		"specUrl": "https://www.w3.org/TR/css-values-4/#round-func"
 	},
 	"volta": {
 		"extends": "../../package.json"
