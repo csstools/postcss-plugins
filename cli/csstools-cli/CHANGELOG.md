@@ -2,6 +2,7 @@
 
 ### 1.3.0 (Unrelease)
 
+- Added `@csstools/postcss-unset-value` (minor)
 - Added `@csstools/postcss-stepped-value-functions` (minor)
 - Updated `postcss-preset-env` to `7.5.0` (minor)
 

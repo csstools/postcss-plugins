@@ -433,6 +433,10 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	padding: 2    ic;
 }
 
+.unset {
+	clip: unset;
+}
+
 .mod {
 	padding: 8px 3px 1px calc(3px + 50%);
 	transform: rotate(-50deg);

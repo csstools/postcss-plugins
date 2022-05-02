@@ -40,6 +40,7 @@
 		"@csstools/postcss-normalize-display-values": "^1.0.0",
 		"@csstools/postcss-oklab-function": "^1.1.0",
 		"@csstools/postcss-stepped-value-functions": "^1.0.0",
+		"@csstools/postcss-unset-value": "^1.0.0",
 		"css-blank-pseudo": "^3.0.3",
 		"css-has-pseudo": "^3.0.4",
 		"css-prefers-color-scheme": "^6.0.3",

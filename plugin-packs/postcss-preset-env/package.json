@@ -36,6 +36,7 @@
 		"@csstools/postcss-oklab-function": "^1.1.0",
 		"@csstools/postcss-progressive-custom-properties": "^1.3.0",
 		"@csstools/postcss-stepped-value-functions": "^1.0.0",
+		"@csstools/postcss-unset-value": "^1.0.0",
 		"autoprefixer": "^10.4.6",
 		"browserslist": "^4.20.3",
 		"css-blank-pseudo": "^3.0.3",

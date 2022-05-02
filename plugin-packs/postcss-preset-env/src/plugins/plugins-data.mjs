@@ -200,4 +200,9 @@ export default [
 		'id': 'system-ui-font-family',
 		'importName': 'postcssFontFamilySystemUI',
 	},
+	{
+		'packageName': '@csstools/postcss-unset-value',
+		'id': 'unset-value',
+		'importName': 'postcssUnsetValue',
+	},
 ];

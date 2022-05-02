@@ -38,6 +38,7 @@ import postcssPrefersColorScheme from 'css-prefers-color-scheme';
 import postcssColorRebeccapurple from 'postcss-color-rebeccapurple';
 import postcssSteppedValueFunctions from '@csstools/postcss-stepped-value-functions';
 import postcssFontFamilySystemUI from '../patch/postcss-system-ui-font-family.mjs';
+import postcssUnsetValue from '@csstools/postcss-unset-value';
 
 // postcss plugins ordered by id
 export const pluginsById = new Map(
@@ -82,5 +83,6 @@ export const pluginsById = new Map(
 		['rebeccapurple-color', postcssColorRebeccapurple],
 		['stepped-value-functions', postcssSteppedValueFunctions],
 		['system-ui-font-family', postcssFontFamilySystemUI],
+		['unset-value', postcssUnsetValue],
 	],
 );

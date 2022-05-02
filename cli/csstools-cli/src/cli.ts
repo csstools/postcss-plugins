@@ -27,6 +27,7 @@ import postcssPlace from './plugins/postcss-place';
 import postcssPresetEnv from './plugins/postcss-preset-env';
 import postcssPseudoClassAnyLink from './plugins/postcss-pseudo-class-any-link';
 import postcssSteppedValueFunctions from './plugins/postcss-stepped-value-functions';
+import postcssUnsetValue from './plugins/postcss-unset-value';
 
 main();
 function main() {
@@ -118,6 +119,9 @@ function main() {
 		case 'postcss-stepped-value-functions':
 			postcssSteppedValueFunctions();
 			return;
+		case 'postcss-unset-value':
+			postcssUnsetValue();
+			return;
 		default:
 		{
 			const allHelp = [
@@ -158,6 +162,7 @@ function main() {
 				'  postcss-place',
 				'  postcss-pseudo-class-any-link',
 				'  postcss-stepped-value-functions',
+				'  postcss-unset-value',
 
 				'\nPlugin Help:',
 				'  @csstools/csstools-cli <plugin-name>',

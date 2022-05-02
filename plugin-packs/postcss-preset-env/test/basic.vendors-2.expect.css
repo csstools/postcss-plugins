@@ -483,6 +483,11 @@
 	padding: 2    ic;
 }
 
+.unset {
+	clip: auto;
+	clip: initial;
+}
+
 .mod {
 	padding: 8px mod(18px, 5px) 1px calc(mod(15px, 6px) + 50%);
 	transform: rotate(mod(-140deg, -90deg));
