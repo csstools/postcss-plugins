@@ -14,7 +14,7 @@
 
 <header>
 
-[<humanReadableName>] lets you use `round`, `rem` and `mod` stepped value functions, following the [CSS Values 4][CSS Specification].
+[<humanReadableName>] lets you use `round`, `rem` and `mod` stepped value functions, following the [CSS Values 4].
 
 ```pcss
 <example.css>
