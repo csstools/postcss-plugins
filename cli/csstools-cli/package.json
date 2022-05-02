@@ -59,7 +59,7 @@
 		"postcss-nesting": "^10.1.4",
 		"postcss-overflow-shorthand": "^3.0.3",
 		"postcss-place": "^7.0.4",
-		"postcss-preset-env": "^7.5.0",
+		"postcss-preset-env": "^7.4.4",
 		"postcss-pseudo-class-any-link": "^7.1.2"
 	},
 	"devDependencies": {
