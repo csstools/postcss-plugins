@@ -5,7 +5,7 @@
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-[PostCSS Stepped Value Functions] lets you use `round`, `rem` and `mod` stepped value functions, following the [CSS Values 4][CSS Specification].
+[PostCSS Stepped Value Functions] lets you use `round`, `rem` and `mod` stepped value functions, following the [CSS Values 4].
 
 ```pcss
 .test-functions {
@@ -134,4 +134,4 @@ Will produce on the terminal:
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Stepped Value Functions]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions
-[CSS Specification]: https://www.w3.org/TR/css-values-4/#round-func
+[CSS Values 4]: https://www.w3.org/TR/css-values-4/#round-func
