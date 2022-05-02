@@ -42,6 +42,24 @@
 			color: red;
 			background: black;
 		}
+
+		@layer Z {
+			target {
+				color: lime;
+			}
+		}
+	}
+
+	@layer Z {
+		target {
+			color: yellow;
+		}
+	}
+}
+
+@layer C.D {
+	target {
+		color: red;
 	}
 
 	@layer Z {

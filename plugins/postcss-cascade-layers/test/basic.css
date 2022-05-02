@@ -1,11 +1,11 @@
 @layer A {
-	target {
+	#target {
 		color: red;
 	}
 }
 
 @layer {
-	target {
+	#foo #bar target::before {
 		color: green;
 	}
 }

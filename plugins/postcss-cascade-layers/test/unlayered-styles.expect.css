@@ -1,14 +1,11 @@
-@layer A {
+
 	target {
 		color: red;
 	}
-}
 
-@layer anon0 {
-	target {
+target:not(#\#) {
 		color: green;
 	}
-}
 
 a:not(#\##\#) {
 	color: purple;

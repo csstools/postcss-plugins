@@ -29,20 +29,26 @@ import postcss from 'postcss';
 							<ul>
 								<li><a href="/wpt/layer-basic.html">basic</a></li>
 								<li><a href="/wpt/layer-counter-style-override.html">counter style override</a></li>
-								</ul>
+								<li><a href="/wpt/layer-important.html">important</a></li>
+								<li><a href="/wpt/layer-keyframes-override.html">keyframes override</a></li>
+								<li><a href="/wpt/layer-media-query.html">media query</a></li>
+								<li><a href="/wpt/layer-property-override.html">property override</a></li>
+								<li><a href="/wpt/layer-vs-inline-style.html">layer vs. inline style</a></li>
+							</ul>
 						</body>
 					</html>
 				`);
 				break;
 			case '/wpt/layer-basic.html':
-				res.setHeader('Content-type', 'text/html');
-				res.writeHead(200);
-				res.end(await fsp.readFile('test/wpt/layer-basic.html', 'utf8'));
-				break;
 			case '/wpt/layer-counter-style-override.html':
+			case '/wpt/layer-important.html':
+			case '/wpt/layer-keyframes-override.html':
+			case '/wpt/layer-media-query.html':
+			case '/wpt/layer-property-override.html':
+			case '/wpt/layer-vs-inline-style.html':
 				res.setHeader('Content-type', 'text/html');
 				res.writeHead(200);
-				res.end(await fsp.readFile('test/wpt/layer-counter-style-override.html', 'utf8'));
+				res.end(await fsp.readFile('test' + pathname, 'utf8'));
 				break;
 			case '/test/styles.css':
 				if (req.method === 'POST') {
@@ -90,8 +96,16 @@ import postcss from 'postcss';
 			throw msg;
 		});
 
-		{
-			await page.goto('http://localhost:8080/wpt/layer-basic.html');
+		for (const url of [
+			'wpt/layer-basic.html',
+			'wpt/layer-counter-style-override.html',
+			'wpt/layer-important.html',
+			'wpt/layer-keyframes-override.html',
+			'wpt/layer-media-query.html',
+			'wpt/layer-property-override.html',
+			'wpt/layer-vs-inline-style.html',
+		]) {
+			await page.goto('http://localhost:8080/' + url);
 			const result = await page.evaluate(async () => {
 				// eslint-disable-next-line no-undef
 				return await window.runTest();
@@ -100,18 +114,6 @@ import postcss from 'postcss';
 				throw new Error('Test failed, expected "window.runTest()" to return true');
 			}
 		}
-
-		// TODO : uncomment
-		// {
-		// 	await page.goto('http://localhost:8080/wpt/layer-counter-style-override.html');
-		// 	const result = await page.evaluate(async () => {
-		// 		// eslint-disable-next-line no-undef
-		// 		return await window.runTest();
-		// 	});
-		// 	if (!result) {
-		// 		throw new Error('Test failed, expected "window.runTest()" to return true');
-		// 	}
-		// }
 
 		await browser.close();
 
