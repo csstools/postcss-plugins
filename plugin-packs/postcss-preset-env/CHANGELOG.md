@@ -1,5 +1,11 @@
 # Changes to PostCSS Preset Env
 
+### 7.5.0 (Unreleased)
+
+- Added `@csstools/postcss-unset-value` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset-value#readme) for usage details.
+- Added `@csstools/postcss-stepped-value-functions` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions#readme) for usage details.
+- Updated `cssdb` to `6.6.0` (minor)
+
 ### 7.4.4 (April 26, 2022)
 
 - Updated `@csstools/postcss-color-function` to `1.1.0` (minor)
