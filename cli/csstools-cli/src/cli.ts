@@ -26,6 +26,7 @@ import postcssOverflowShorthand from './plugins/postcss-overflow-shorthand';
 import postcssPlace from './plugins/postcss-place';
 import postcssPresetEnv from './plugins/postcss-preset-env';
 import postcssPseudoClassAnyLink from './plugins/postcss-pseudo-class-any-link';
+import postcssSteppedValueFunctions from './plugins/postcss-stepped-value-functions';
 
 main();
 function main() {
@@ -114,6 +115,9 @@ function main() {
 		case 'postcss-pseudo-class-any-link':
 			postcssPseudoClassAnyLink();
 			return;
+		case 'postcss-stepped-value-functions':
+			postcssSteppedValueFunctions();
+			return;
 		default:
 		{
 			const allHelp = [
@@ -153,6 +157,7 @@ function main() {
 				'  postcss-overflow-shorthand',
 				'  postcss-place',
 				'  postcss-pseudo-class-any-link',
+				'  postcss-stepped-value-functions',
 
 				'\nPlugin Help:',
 				'  @csstools/csstools-cli <plugin-name>',

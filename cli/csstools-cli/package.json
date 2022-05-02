@@ -2,7 +2,17 @@
 	"name": "@csstools/csstools-cli",
 	"description": "Transform CSS with any plugin from csstools/postcss-plugins",
 	"version": "1.2.1",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke ",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
@@ -29,6 +39,7 @@
 		"@csstools/postcss-is-pseudo-class": "^2.0.2",
 		"@csstools/postcss-normalize-display-values": "^1.0.0",
 		"@csstools/postcss-oklab-function": "^1.1.0",
+		"@csstools/postcss-stepped-value-functions": "^1.0.0",
 		"css-blank-pseudo": "^3.0.3",
 		"css-has-pseudo": "^3.0.4",
 		"css-prefers-color-scheme": "^6.0.3",
@@ -48,11 +59,11 @@
 		"postcss-nesting": "^10.1.4",
 		"postcss-overflow-shorthand": "^3.0.3",
 		"postcss-place": "^7.0.4",
-		"postcss-preset-env": "^7.4.3",
+		"postcss-preset-env": "^7.5.0",
 		"postcss-pseudo-class-any-link": "^7.1.2"
 	},
 	"devDependencies": {
-		"postcss": "^8.4.6"
+		"postcss": "^8.4.13"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",

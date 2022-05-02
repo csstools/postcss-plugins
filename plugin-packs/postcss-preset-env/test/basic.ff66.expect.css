@@ -427,3 +427,22 @@
 	margin: 0.5em 1em .2em;
 	padding: 2    ic;
 }
+
+.mod {
+	padding: 8px 3px 1px calc(3px + 50%);
+	transform: rotate(-50deg);
+	width: 2px;
+}
+
+.rem {
+	padding: 8px 3px 1px calc(3px + 50%);
+	transform: rotate(-50deg);
+}
+
+.round {
+	top: 3px;
+	right: 3px;
+	bottom: 3px;
+	left: 2px;
+	inset: 2px;
+}

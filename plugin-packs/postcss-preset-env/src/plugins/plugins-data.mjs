@@ -190,6 +190,11 @@ export default [
 		'importName': 'postcssSelectorNot',
 	},
 	{
+		'packageName': '@csstools/postcss-stepped-value-functions',
+		'id': 'stepped-value-functions',
+		'importName': 'postcssSteppedValueFunctions',
+	},
+	{
 		'packageName': 'postcss-system-ui-font-family',
 		'importedPackage': '../patch/postcss-system-ui-font-family.mjs',
 		'id': 'system-ui-font-family',
