@@ -2,8 +2,12 @@
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
 		"outDir": "dist",
-		"declarationDir": "."
+		"declarationDir": ".",
+		"baseUrl": "./src/"
 	},
-	"include": ["./src/**/*"],
-	"exclude": ["dist"],
+	"include": [
+		"./src/**/*",
+		"types/global.d.ts"
+	],
+	"exclude": ["dist"]
 }
