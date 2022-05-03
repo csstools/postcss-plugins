@@ -37,6 +37,11 @@
 		"README.md",
 		"dist"
 	],
+	"eslintConfig": {
+		"rules": {
+			"@typescript-eslint/no-loss-of-precision": "off"
+		}
+	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
