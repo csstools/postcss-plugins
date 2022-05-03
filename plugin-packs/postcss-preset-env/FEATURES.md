@@ -42,7 +42,9 @@ The `ID` listed is the key for PostCSS Preset Env configuration in your project.
 | `place-properties` | Place Properties | [example](https://preset-env.cssdb.org/features/#place-properties) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place#readme) |
 | `prefers-color-scheme-query` | `prefers-color-scheme` Media Query | [example](https://preset-env.cssdb.org/features/#prefers-color-scheme-query) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme#readme) |
 | `rebeccapurple-color` | `rebeccapurple` Color | [example](https://preset-env.cssdb.org/features/#rebeccapurple-color) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple#readme) |
+| `stepped-value-functions` | `round()`, `mod()` and `rem()` functions | [example](https://preset-env.cssdb.org/features/#stepped-value-functions) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions#readme) |
 | `system-ui-font-family` | `system-ui` Font Family | [example](https://preset-env.cssdb.org/features/#system-ui-font-family) | [docs](https://github.com/JLHwung/postcss-font-family-system-ui#readme) |
+| `unset-value` | `unset` Keyword | [example](https://preset-env.cssdb.org/features/#unset-value) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset-value#readme) |
 
 
 -------

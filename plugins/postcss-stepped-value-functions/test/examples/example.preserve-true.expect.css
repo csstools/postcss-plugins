@@ -1,0 +1,16 @@
+.test-functions {
+	padding: 8px 3px 1px calc(3px + 50%);
+	padding: 8px mod(18px, 5px) 1px calc(rem(15px, 6px) + 50%);
+	transform: rotate(-50deg);
+	transform: rotate(mod(-140deg, -90deg));
+	top: 16px;
+	top: round(15px, 4px);
+	right: 16px;
+	right: round(nearest, 15px, 4px);
+	bottom: 21px;
+	bottom: round(up, 15px, 7px);
+	left: 12px;
+	left: round(down, 15px, 4px);
+	width: 12px;
+	width: round(to-zero, 15px, 4px);
+}

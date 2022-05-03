@@ -1,0 +1,59 @@
+.mod {
+	padding: 8px 3px 1px calc(3px + 50%);
+	transform: rotate(-50deg);
+	width: 2px;
+}
+
+.rem {
+	padding: 8px 3px 1px calc(3px + 50%);
+	transform: rotate(-50deg);
+}
+
+.mod-rem {
+	font-size: 2px;
+	width: -3px;
+	transform: rotateX(-40deg) rotateY(50deg);
+	height: 0;
+}
+
+.round {
+	top: 3px;
+	right: 3px;
+	bottom: 3px;
+	left: 2px;
+	inset: 2px;
+}
+
+.round-multiple {
+	top: 16px;
+	right: 16px;
+	bottom: 21px;
+	left: 12px;
+	inset: 12px;
+}
+
+.round-complex {
+	left: 2px;
+	top: 2px;
+	right: 8px;
+}
+
+.invalid {
+	font-size: mod(18px, 5rem);
+	width: rem(var(--foo), 5px);
+	padding: mod(Fo0px, 5px);
+	left: mod(1px, 0px);
+	right: 1px;
+	inset: round(something, 15px, 4px);
+	margin-top: round(nearest, 15px, 4px, 50px);
+	margin-bottom: round(nearest, 15px, 4%);
+	font-size: mod;
+	font-size: mod();
+	font-size: mod(1px);
+	font-size: rem;
+	font-size: rem();
+	font-size: rem(1px);
+	font-size: round;
+	font-size: round();
+	font-size: round(1px);
+}

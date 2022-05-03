@@ -1,0 +1,86 @@
+.mod {
+	padding: 8px 3px 1px calc(3px + 50%);
+	padding: 8px mod(18px, 5px) 1px calc(mod(15px, 6px) + 50%);
+	transform: rotate(-50deg);
+	transform: rotate(mod(-140deg, -90deg));
+	width: 2px;
+	width: mod(2px, 5px);
+	width: mod(mod(-18px, 5px), 5px);
+}
+
+.rem {
+	padding: 8px 3px 1px calc(3px + 50%);
+	padding: 8px rem(18px, 5px) 1px calc(rem(15px, 6px) + 50%);
+	transform: rotate(-50deg);
+	transform: rotate(rem(-140deg, -90deg));
+}
+
+.mod-rem {
+	font-size: 2px;
+	font-size: mod(-18px, 5px);
+	width: -3px;
+	width: rem(-18px, 5px);
+	transform: rotateX(-40deg) rotateY(50deg);
+	transform: rotateX(mod(140deg, -90deg)) rotateY(rem(140deg, -90deg));
+	height: 0;
+	height: rem(mod(2px, 5px), 2px);
+	height: rem(mod(mod(-18px, 5px), 5px), 2px);
+}
+
+.round {
+	top: 3px;
+	top: round(2.5px, 1px);
+	right: 3px;
+	right: round(nearest, 2.5px, 1px);
+	bottom: 3px;
+	bottom: round(up, 2.5px, 1px);
+	left: 2px;
+	left: round(down, 2.5px, 1px);
+	inset: 2px;
+	inset: round(to-zero, 2.5px, 1px);
+}
+
+.round-multiple {
+	top: 16px;
+	top: round(15px, 4px);
+	right: 16px;
+	right: round(nearest, 15px, 4px);
+	bottom: 21px;
+	bottom: round(up, 15px, 7px);
+	left: 12px;
+	left: round(down, 15px, 4px);
+	inset: 12px;
+	inset: round(to-zero, 15px, 4px);
+}
+
+.round-complex {
+	left: 2px;
+	left: round(nearest, mod(-18px, 5px), 2px);
+	top: 2px;
+	top: round(nearest, mod(2px, 5px), 2px);
+	top: round(nearest, mod(mod(-18px, 5px), 5px), 2px);
+	right: 8px;
+	right: round(up, rem(mod(3px, 7px), 15px), 8px);
+	right: round(up, rem(mod(mod(8px, 5px), 7px), 15px), 8px);
+}
+
+.invalid {
+	font-size: mod(18px, 5rem);
+	width: rem(var(--foo), 5px);
+	padding: mod(Fo0px, 5px);
+	left: mod(1px, 0px);
+	right: 1px;
+	right: mod(1px, 200px);
+	inset: round(something, 15px, 4px);
+	margin-top: round(nearest, 15px, 4px, 50px);
+	margin-bottom: round(nearest, 15px, 4%);
+	font-size: mod;
+	font-size: mod();
+	font-size: mod(1px);
+	font-size: rem;
+	font-size: rem();
+	font-size: rem(1px);
+	font-size: round;
+	font-size: round();
+	font-size: round(1px);
+}

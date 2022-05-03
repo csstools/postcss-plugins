@@ -12,7 +12,13 @@ ids.sort();
 
 for (const id of ids) {
 	const cssdbFeature = cssdb.find(feature => feature.id === id);
-	const cssdbPlugins = cssdbFeature.polyfills.filter(polyfill => polyfill.type === 'PostCSS Plugin');
+	const polyfills = cssdbFeature.polyfills || [];
+	const cssdbPlugins = polyfills.filter(polyfill => polyfill.type === 'PostCSS Plugin');
+
+	if (cssdbPlugins.length === 0) {
+		continue;
+	}
+
 	cssdbPlugins.sort((a) => {
 		if (a.link.indexOf('https://github.com/csstools') === 0) {
 			return -1;
