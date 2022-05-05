@@ -10,6 +10,7 @@ export default function postcssPresetEnv() {
 			'features',
 			'browsers',
 			'autoprefixer',
+			'preserve',
 			'importFrom',
 			'exportTo',
 			'enableClientSidePolyfills',
