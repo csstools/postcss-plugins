@@ -1,5 +1,22 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### Unreleased
+
+- Improve handling of `<area>` fallbacks for IE and Edge.
+
+```diff
+a:any-link {
+	text-decoration: none;
+}
+
+/* becomes */
+
+- a:link, a:visited, aarea[href] {
++ a:link, a:visited {
+	text-decoration: none;
+}
+```
+
 ### 7.1.2 (April 4, 2022)
 
 - Improved : compound selector order with pseudo elements

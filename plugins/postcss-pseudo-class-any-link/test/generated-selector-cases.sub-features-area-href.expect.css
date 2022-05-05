@@ -78,7 +78,7 @@
 	order: 19;
 }
 
-button:link, button:visited, buttonarea[href] {
+button:link, button:visited {
 	order: 20;
 }
 
@@ -430,7 +430,7 @@ button {
 	order: 99;
 }
 
-__foo:link, __foo:visited, __fooarea[href] {
+__foo:link, __foo:visited {
 	order: 100;
 }
 
@@ -978,7 +978,7 @@ foo[baz=":any-link"] {
 	order: 224;
 }
 
-__:link, __:visited, __area[href] {
+__:link, __:visited {
 	order: 225;
 }
 

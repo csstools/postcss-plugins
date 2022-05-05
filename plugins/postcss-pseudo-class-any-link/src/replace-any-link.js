@@ -4,6 +4,7 @@ import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-
 const linkAST = parser().astSync(':link').nodes[0];
 const visitedAST = parser().astSync(':visited').nodes[0];
 const areaHrefAST = parser().astSync('area[href]').nodes[0];
+const hrefAST = parser().astSync('[href]').nodes[0];
 
 export function replaceAnyLink(rule, result, preserve, areaHrefNeedsFixing) {
 	let updatedSelectors = [];
@@ -53,26 +54,33 @@ function modifiedSelector(selector, areaHrefNeedsFixing) {
 
 	// update the selector
 	parser((selectorsAST) => {
-		let anyLinkCount = 0;
+		let replacements = [];
 		selectorsAST.walkPseudos((pseudo) => {
 			if (pseudo.value !== ':any-link' || (pseudo.nodes && pseudo.nodes.length)) {
 				return;
 			}
 
-			anyLinkCount++;
+			if (!areaHrefNeedsFixing) {
+				replacements.push([linkAST.clone(), visitedAST.clone()]);
+				return;
+			}
+
+			const tags = getTagElementsNextToPseudo(pseudo);
+			if (tags.includes('area')) {
+				replacements.push([linkAST.clone(), visitedAST.clone(), hrefAST.clone()]);
+				return;
+			}
+
+			if (tags.length) {
+				replacements.push([linkAST.clone(), visitedAST.clone()]);
+				return;
+			}
+
+			replacements.push([linkAST.clone(), visitedAST.clone(), areaHrefAST.clone()]);
 		});
 
-		if (!anyLinkCount) {
+		if (!replacements.length) {
 			return;
-		}
-
-		let replacements = [];
-		for (let i = 0; i < anyLinkCount; i++) {
-			if (areaHrefNeedsFixing) {
-				replacements.push([linkAST.clone(), visitedAST.clone(), areaHrefAST.clone()]);
-			} else {
-				replacements.push([linkAST.clone(), visitedAST.clone()]);
-			}
 		}
 
 		let replacementsCartesianProduct = cartesianProduct(...replacements);
@@ -120,4 +128,36 @@ function cartesianProduct(...args) {
 	}
 	helper([], 0);
 	return r;
+}
+
+function getTagElementsNextToPseudo(pseudo) {
+	let tags = [];
+
+	let prev = pseudo.prev();
+	while (prev) {
+		if (prev.type === 'combinator') {
+			break;
+		}
+
+		if (prev.type === 'tag') {
+			tags.push(prev.value);
+		}
+
+		prev = prev.prev();
+	}
+
+	let next = pseudo.next();
+	while (next) {
+		if (next.type === 'combinator') {
+			break;
+		}
+
+		if (next.type === 'tag') {
+			tags.push(next.value);
+		}
+
+		next = next.next();
+	}
+
+	return tags;
 }

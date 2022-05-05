@@ -30,3 +30,23 @@ ul a:any-link > span {
 ::before:any-link {
 	order: 8;
 }
+
+a:any-link {
+	order: 9;
+}
+
+area:any-link {
+	order: 10;
+}
+
+area :any-link {
+	order: 11;
+}
+
+area > :any-link {
+	order: 12;
+}
+
+div:any-link {
+	order: 13;
+}

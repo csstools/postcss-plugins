@@ -61,3 +61,43 @@ ul a:any-link > span {
 ::before:any-link {
 	order: 8;
 }
+
+a:link, a:visited {
+	order: 9;
+}
+
+a:any-link {
+	order: 9;
+}
+
+area:link, area:visited {
+	order: 10;
+}
+
+area:any-link {
+	order: 10;
+}
+
+area :link, area :visited {
+	order: 11;
+}
+
+area :any-link {
+	order: 11;
+}
+
+area > :link, area > :visited {
+	order: 12;
+}
+
+area > :any-link {
+	order: 12;
+}
+
+div:link, div:visited {
+	order: 13;
+}
+
+div:any-link {
+	order: 13;
+}
