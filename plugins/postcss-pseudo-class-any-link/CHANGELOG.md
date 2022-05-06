@@ -1,6 +1,6 @@
 # Changes to PostCSS Pseudo Class Any Link
 
-### Unreleased
+### 7.1.3 (April 6, 2022)
 
 - Improve handling of `<area>` fallbacks for IE and Edge.
 
