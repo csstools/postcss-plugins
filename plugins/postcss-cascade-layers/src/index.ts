@@ -16,7 +16,7 @@ import { pluginOptions } from './options';
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		onRevertLayerKeyword: 'warn',
-		onMixedLayerOrder: 'warn',
+		onConditionalRulesChangingLayerOrder: 'warn',
 	}, opts);
 
 	return {

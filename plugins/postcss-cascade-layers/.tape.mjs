@@ -39,7 +39,7 @@ postcssTape(plugin)({
 		message: 'correctly handles warnings',
 		options: {
 			onRevertLayerKeyword: 'warn',
-			onMixedLayerOrder: 'warn',
+			onConditionalRulesChangingLayerOrder: 'warn',
 		},
 		warnings: 2,
 	}

@@ -19,7 +19,7 @@ export function recordLayerOrder(root: Container, model: Model, { result, option
 		}
 
 		if (
-			options.onMixedLayerOrder &&
+			options.onConditionalRulesChangingLayerOrder &&
 			getConditionalAtRuleAncestor(layerRule) &&
 			!layerRule.params.endsWith(IMPLICIT_LAYER_SUFFIX) &&
 			!layerRule.params.endsWith(ANONYMOUS_LAYER_SUFFIX)

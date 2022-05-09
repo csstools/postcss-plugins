@@ -80,15 +80,15 @@ postcssCascadeLayers({ onRevertLayerKeyword: 'warn' }) // 'warn' | false
 }
 ```
 
-### onMixedLayerOrder
+### onConditionalRulesChangingLayerOrder
 
-The `onMixedLayerOrder` option enables warnings if layers are declared in multiple different orders in conditional rules.
+The `onConditionalRulesChangingLayerOrder` option enables warnings if layers are declared in multiple different orders in conditional rules.
 Transforming these layers correctly for older browsers is not possible in this plugin.
 
 Defaults to `warn`
 
 ```js
-postcssCascadeLayers({ onMixedLayerOrder: 'warn' }) // 'warn' | false
+postcssCascadeLayers({ onConditionalRulesChangingLayerOrder: 'warn' }) // 'warn' | false
 ```
 
 ```pcss
