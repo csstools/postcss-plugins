@@ -1,4 +1,5 @@
 import type { AtRule, Node } from 'postcss';
+import { ANONYMOUS_LAYER_SUFFIX, IMPLICIT_LAYER_SUFFIX } from './constants';
 
 export class Model {
 	anonymousLayerCount = 0;
@@ -23,7 +24,7 @@ export class Model {
 	}
 
 	createAnonymousLayerName(): string {
-		const name = `anon${this.anonymousLayerCount}`;
+		const name = `anonymous-${this.anonymousLayerCount}-${ANONYMOUS_LAYER_SUFFIX}`;
 		this.addLayerNameParts(name);
 		this.layerParamsParsed.set(name, [name]);
 
@@ -35,7 +36,7 @@ export class Model {
 	createImplicitLayerName(layerName: string): string {
 		const parts = this.layerNameParts.get(layerName);
 		const last = parts[parts.length - 1];
-		const name = `${last}-implicit`;
+		const name = `implicit-${last}-${IMPLICIT_LAYER_SUFFIX}`;
 
 		this.addLayerNameParts([...parts, name]);
 		this.layerParamsParsed.set(name, [name]);
@@ -88,8 +89,6 @@ export class Model {
 		// Layer names were collected inside out, so order needs to be reversed.
 		params.reverse();
 
-		// Individual layers can also be specified as `@layer foo.bar {}`.
-		// Joining and splitting by "." ensures that we handle each sub layer.
 		return params.flatMap((param) => {
 			return this.layerNameParts.get(param);
 		});

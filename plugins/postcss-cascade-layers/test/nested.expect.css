@@ -9,6 +9,9 @@
 		}
 	}
 
+@keyframes slide-left {
+	}
+
 	target {
 			color: yellow;
 		}
@@ -34,22 +37,22 @@ target:not(#\##\##\##\##\##\#) {
 		}
 
 @media (prefers-color-scheme: dark) {
-			target:not(#\##\##\##\##\##\##\#) {
-				color: lime;
-			}
-	}
-
-@media (prefers-color-scheme: dark) {
-		h1:not(#\##\##\##\##\##\##\##\#) {
+		h1:not(#\##\##\##\##\##\##\#) {
 			color: red;
 			background: black;
 		}
 	}
 
-target:not(#\##\##\##\##\##\##\##\##\#) {
+@media (prefers-color-scheme: dark) {
+			target:not(#\##\##\##\##\##\#) {
+				color: lime;
+			}
+	}
+
+target:not(#\##\##\##\##\##\##\##\#) {
 			color: yellow;
 		}
 
-target:not(#\##\##\##\##\##\##\##\##\##\#) {
+target:not(#\##\##\##\##\##\##\##\##\#) {
 		color: red;
 	}

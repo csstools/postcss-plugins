@@ -1,4 +1,5 @@
 import type { Container, AtRule, ChildNode } from 'postcss';
+import { removeEmptyAncestorBlocks, removeEmptyDescendantBlocks } from './clean-blocks';
 import type { Model } from './model';
 import { someAtRuleInTree } from './some-in-tree';
 
@@ -25,9 +26,8 @@ export function desugarNestedLayers(root: Container<ChildNode>, model: Model) {
 				layerRule.params = `${parent.params}.${layerRule.params}`;
 
 				parent.before(layerRule);
-				if (parent.nodes.length === 0) {
-					parent.remove();
-				}
+				removeEmptyDescendantBlocks(parent);
+				removeEmptyAncestorBlocks(parent);
 
 				return;
 			}
@@ -46,9 +46,8 @@ export function desugarNestedLayers(root: Container<ChildNode>, model: Model) {
 				parent.before(layerRuleClone);
 
 				layerRule.remove();
-				if (parent.nodes.length === 0) {
-					parent.remove();
-				}
+				removeEmptyDescendantBlocks(parent);
+				removeEmptyAncestorBlocks(parent);
 				return;
 			}
 

@@ -1,0 +1,36 @@
+@layer A, B;
+
+@layer B {
+	.foo {
+		background-color: red;
+		color: red !important;
+		something-else: red !important;
+	}
+
+	.bar {
+		background-color: blue;
+		color: blue !important;
+	}
+}
+
+@layer A {
+	.foo {
+		background-color: pink;
+		color: pink !important;
+	}
+
+	.bar {
+		background-color: yellow;
+		color: green !important;
+	}
+}
+
+.foo {
+	background-color: orange;
+	color: orange !important;
+}
+
+.bar {
+	background-color: green;
+	color: purple !important;
+}

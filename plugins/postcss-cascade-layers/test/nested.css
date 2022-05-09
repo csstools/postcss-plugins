@@ -37,6 +37,12 @@
 }
 
 @layer C {
+	@layer Z {
+		target {
+			color: yellow;
+		}
+	}
+
 	@media (prefers-color-scheme: dark) {
 		h1 {
 			color: red;
@@ -47,12 +53,6 @@
 			target {
 				color: lime;
 			}
-		}
-	}
-
-	@layer Z {
-		target {
-			color: yellow;
 		}
 	}
 }

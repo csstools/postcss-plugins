@@ -2,6 +2,9 @@ import type { Container } from 'postcss';
 import type { Model } from './model';
 import selectorParser from 'postcss-selector-parser';
 import { INVALID_LAYER_NAME } from './constants';
+import { someAtRuleInTree, someInTree } from './some-in-tree';
+import { getLayerAtRuleAncestor } from './get-layer-atrule-ancestor';
+import { removeEmptyAncestorBlocks, removeEmptyDescendantBlocks } from './clean-blocks';
 
 export function desugarAndParseLayerNames(root: Container, model: Model) {
 	// - parse layer names
@@ -56,20 +59,23 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 				return;
 			}
 
-			// handle empty layer at-rules.
+			// split empty layer at-rules.
 			if (!layerRule.nodes || layerRule.nodes.length === 0) {
-				layerNameList.forEach((name) => {
-					model.getLayerNameList(name).forEach((part) => {
-						if (model.layerOrder.has(part)) {
-							return;
-						}
+				if (layerNameList.length <= 1) {
+					return;
+				}
 
-						model.layerOrder.set(part, model.layerCount);
-						model.layerCount += 1;
+				layerNameList.slice(0, -1).forEach((name) => {
+					model.addLayerParams(name, name);
+
+					layerRule.cloneBefore({
+						params: name,
 					});
 				});
 
-				layerRule.remove();
+				model.addLayerParams(layerNameList[layerNameList.length - 1], layerNameList[layerNameList.length - 1]);
+				layerRule.params = layerNameList[layerNameList.length - 1];
+
 				return;
 			}
 		}
@@ -80,20 +86,14 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 			layerRule.params = model.createAnonymousLayerName();
 		}
 
-		let hasNestedLayers = false;
-		let hasUnlayeredStyles = false;
-
-		// check for where a layer has nested layers AND styles outside of those layers
-		layerRule.each((node) => {
-			if (node.type === 'atrule' && node.name === 'layer') {
-				hasNestedLayers = true;
-			} else {
-				hasUnlayeredStyles = true;
+		const hasNestedLayers = someAtRuleInTree(layerRule, (node) => node.name === 'layer');
+		const hasUnlayeredStyles = someInTree(layerRule, (node) => {
+			if (node.type !== 'rule') {
+				return;
 			}
 
-			if (hasNestedLayers && hasUnlayeredStyles) {
-				return false;
-			}
+			const closestLayer = getLayerAtRuleAncestor(node);
+			return closestLayer === layerRule;
 		});
 
 		if (hasNestedLayers && hasUnlayeredStyles) {
@@ -103,8 +103,19 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 				params: implicitLayerName,
 			});
 
-			implicitLayer.each((node) => {
-				if (node.type === 'atrule' && node.name === 'layer') {
+			// only keep unlayered styles for the implicit layer.
+			implicitLayer.walkAtRules('layer', (node) => {
+				node.remove();
+			});
+
+			// go through the unlayered rules and delete these from top level atRule
+			layerRule.walk((node) => {
+				if (node.type !== 'rule') {
+					return;
+				}
+
+				const closestLayer = getLayerAtRuleAncestor(node);
+				if (closestLayer === layerRule) {
 					node.remove();
 				}
 			});
@@ -112,14 +123,8 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 			// insert new layer
 			layerRule.append(implicitLayer);
 
-			// go through the unlayered rules and delete from top level atRule
-			layerRule.each((node) => {
-				if (node.type === 'atrule' && node.name === 'layer') {
-					return;
-				}
-
-				node.remove();
-			});
+			removeEmptyDescendantBlocks(layerRule);
+			removeEmptyAncestorBlocks(layerRule);
 		}
 	});
 }

@@ -1,0 +1,27 @@
+/* [postcss-cascade-layers]: handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions. */
+@layer {
+	.foo {
+		color: revert-layer;
+	}
+}
+
+/* [postcss-cascade-layers]: handling different layer orders in conditional rules is unsupported by this plugin and will cause style differences between browser versions. */
+@media (min-width: 10px) {
+	@layer B {
+		.foo {
+			color: red;
+		}
+	}
+}
+
+@layer A {
+	.foo {
+		color: pink;
+	}
+}
+
+@layer B {
+	.foo {
+		color: red;
+	}
+}

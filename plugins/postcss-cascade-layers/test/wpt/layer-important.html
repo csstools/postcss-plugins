@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<title>CSS Cascade Layers: !important</title>
 	<meta name="assert" content="!important in CSS Cascade Layers">
-	<link rel="author" title="Antti Koivisto" href="mailto:antti@apple.com">
 	<link rel="help" href="https://www.w3.org/TR/css-cascade-5/#layering">
 </head>
 
@@ -43,13 +41,55 @@
 				},
 				// TODO : Unsure if we can implement !important correctly
 				// see : https://github.com/web-platform-tests/wpt/issues/33767
-				// {
-				// 	title: 'Same specificity, both important',
-				// 	style: `
-				// 		@layer { target { color: red !important; } }
-				// 		@layer { target { color: green !important; } }
-				// 	`,
-				// },
+				{
+					title: 'Same specificity, all important (order A)',
+					style: `
+						@layer { target { color: green !important; } }
+						@layer { target { color: red !important; } }
+						target { color: red !important; }
+					`,
+				},
+				{
+					title: 'Same specificity, all important (order B)',
+					style: `
+						@layer { target { color: green !important; } }
+						target { color: red !important; }
+						@layer { target { color: red !important; } }
+					`,
+				},
+				{
+					title: 'Same specificity, all important (order C)',
+					style: `
+						target { color: red !important; }
+						@layer { target { color: green !important; } }
+						@layer { target { color: red !important; } }
+					`,
+				},
+				{
+					title: 'Same specificity, all important (order D)',
+					style: `
+						@layer A, B;
+						@layer B { target { color: red !important; } }
+						@layer A { target { color: green !important; } }
+						target { color: red !important; }
+					`,
+				},
+				{
+					title: 'Different specificity (A), all important',
+					style: `
+						@layer { target { color: green !important; } }
+						@layer { target { color: red !important; } }
+						target.first { color: red !important; }
+					`,
+				},
+				{
+					title: 'Different specificity (B), all important',
+					style: `
+						@layer { target { color: green !important; } }
+						@layer { target.first { color: red !important; } }
+						target { color: red !important; }
+					`,
+				},
 			];
 
 			for (let testCase of testCases) {

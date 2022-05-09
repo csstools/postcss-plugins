@@ -1,7 +1,8 @@
 import type { AtRule, Container } from 'postcss';
 import type { Model } from './model';
-import { WITH_SELECTORS_LAYER_NAME } from './constants';
+import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, CONDITIONAL_ATRULES, WITH_SELECTORS_LAYER_NAME } from './constants';
 import { someInTree } from './some-in-tree';
+import { removeEmptyAncestorBlocks, removeEmptyDescendantBlocks } from './clean-blocks';
 
 // Sort root nodes to apply the preferred order by layer priority for non-selector rules.
 // Selector rules are adjusted by specificity.
@@ -12,12 +13,11 @@ export function sortRootNodes(root: Container, model: Model) {
 		const withoutSelectorRules = layerRule.clone();
 
 		withSelectorRules.walkAtRules((atRule) => {
-			if (atRule.name === 'keyframes') {
+			if (ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS.includes(atRule.name)) {
 				const parent = atRule.parent;
 				atRule.remove();
-				if (parent.nodes.length === 0) {
-					parent.remove();
-				}
+				removeEmptyDescendantBlocks(parent);
+				removeEmptyAncestorBlocks(parent);
 
 				return;
 			}
@@ -30,20 +30,26 @@ export function sortRootNodes(root: Container, model: Model) {
 
 			const parent = atRule.parent;
 			atRule.remove();
-			if (parent.nodes.length === 0) {
-				parent.remove();
-			}
+			removeEmptyDescendantBlocks(parent);
+			removeEmptyAncestorBlocks(parent);
 		});
 
 		withoutSelectorRules.walkRules((rule) => {
-			if (rule.parent && rule.parent.type === 'atrule' && (rule.parent as AtRule).name === 'keyframes') {
+			if (rule.parent && rule.parent.type === 'atrule' && ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS.includes((rule.parent as AtRule).name)) {
 				return;
 			}
 
 			const parent = rule.parent;
 			rule.remove();
-			if (parent.nodes.length === 0) {
-				parent.remove();
+			removeEmptyDescendantBlocks(parent);
+			removeEmptyAncestorBlocks(parent);
+		});
+
+		withoutSelectorRules.walkAtRules((atRule) => {
+			if (CONDITIONAL_ATRULES.includes(atRule.name)) {
+				removeEmptyDescendantBlocks(atRule);
+				removeEmptyAncestorBlocks(atRule);
+				return;
 			}
 		});
 
