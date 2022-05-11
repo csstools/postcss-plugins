@@ -17,6 +17,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		onRevertLayerKeyword: 'warn',
 		onConditionalRulesChangingLayerOrder: 'warn',
+		onImportLayerRule: 'warn',
 	}, opts);
 
 	return {
@@ -30,6 +31,15 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						decl.warn(result, 'handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions.');
 					}
 				});
+			}
+
+			if(options.onImportLayerRule){
+				root.walkAtRules('import', (atRule) => {
+					if(atRule.params.includes('layer')){
+						atRule.warn(result, 'To use @import with layers, the postcss-import plugin is also required. This plugin alone will not support using the @import at-rule.');
+					}
+				},
+				);
 			}
 
 			splitImportantStyles(root);

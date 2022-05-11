@@ -1,8 +1,8 @@
 {
 	"name": "@csstools/postcss-cascade-layers",
-	"description": "A base plugin",
-	"version": "0.0.0",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"description": "Use layers in CSS",
+	"version": "1.0.0",
+	"author": "Olu Niyi-Awosusi <o.niyiawosusi@gmail.com>, Sana Javed <sanajaved7@gmail.com>, Romain Menke <romainmenke@gmail.com>",
 	"license": "CC0-1.0",
 	"private": true,
 	"engines": {

@@ -40,7 +40,8 @@ postcssTape(plugin)({
 		options: {
 			onRevertLayerKeyword: 'warn',
 			onConditionalRulesChangingLayerOrder: 'warn',
+			onImportLayerRule: 'warn'
 		},
-		warnings: 2,
+		warnings: 3,
 	}
 });
