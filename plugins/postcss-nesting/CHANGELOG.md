@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### Unreleased
+### 10.1.5 (May 11, 2022)
 
 - Use `@csstools/selector-specificity` for specificity calculations.
 
