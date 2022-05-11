@@ -1,0 +1,63 @@
+.sin {
+	order: 0.70711;
+	order: 0.70711;
+	order: 0.70711;
+	order: 0.70711;
+	order: 0.70711;
+	order: -0.70711;
+	order: -0.70711;
+	order: -0.70711;
+	order: -0.70711;
+	order: -0.70711;
+	order: 0;
+	order: 0.64964;
+	order: 0.56868;
+	order: sin(1px);
+	order: sin(foo);
+	order: NaN;
+	order: NaN;
+	order: sin(3.14159 / 4);
+}
+
+.cos {
+	order: 0.70711;
+	order: 0.70711;
+	order: 0.70711;
+	order: 0.5403;
+	order: 0.5403;
+	order: 0.70711;
+	order: 0.70711;
+	order: 0.70711;
+	order: 0.70711;
+	order: 0.70711;
+	order: 0.76024;
+	order: 0.74872;
+	order: cos(1px);
+	order: cos(foo);
+	order: NaN;
+	order: NaN;
+	order: cos(3.14159 / 4);
+}
+
+.tan {
+	order: 1;
+	order: infinity;
+	order: -infinity;
+	order: 1;
+	order: 1;
+	order: 1.55741;
+	order: 1.55741;
+	order: -1;
+	order: -1;
+	order: -1;
+	order: -1;
+	order: -1;
+	order: 0;
+	order: 1.55741;
+	order: -0.84159;
+	order: tan(1px);
+	order: tan(foo);
+	order: NaN;
+	order: NaN;
+	order: tan(3.14159 / 4);
+}

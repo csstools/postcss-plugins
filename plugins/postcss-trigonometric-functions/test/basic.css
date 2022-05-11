@@ -1,0 +1,82 @@
+.sin {
+	order: sin(45deg);
+	order: sin(.125turn);
+	order: sin(50grad);
+	order: sin(0.785398rad);
+	order: sin(0.785398);
+	order: sin(-45deg);
+	order: sin(-.125turn);
+	order: sin(-50grad);
+	order: sin(-0.785398rad);
+	order: sin(-0.785398);
+	order: sin(0);
+	order: sin(sin(0.785398));
+	order: sin(sin(sin(sin(0.785398))));
+	order: sin(1px);
+	order: sin(foo);
+	order: sin(Infinity);
+	order: sin(InFiNiTy);
+	order: sin(-infinity);
+	order: sin(3.14159 / 4);
+}
+
+.cos {
+	order: cos(45deg);
+	order: cos(.125turn);
+	order: cos(50grad);
+	order: cos(1rad);
+	order: cos(1);
+	order: cos(-45deg);
+	order: cos(-.125turn);
+	order: cos(-50grad);
+	order: cos(-0.785398rad);
+	order: cos(-0.785398);
+	order: cos(cos(0.785398));
+	order: cos(cos(cos(cos(0.785398))));
+	order: cos(1px);
+	order: cos(foo);
+	order: cos(Infinity);
+	order: cos(InFiNiTy);
+	order: cos(-infinity);
+	order: cos(3.14159 / 4);
+}
+
+.tan {
+	order: tan(45deg);
+	order: tan(90deg);
+	order: tan(-90deg);
+	order: tan(.125turn);
+	order: tan(50grad);
+	order: tan(1rad);
+	order: tan(1);
+	order: tan(-45deg);
+	order: tan(-.125turn);
+	order: tan(-50grad);
+	order: tan(-0.785398rad);
+	order: tan(-0.785398);
+	order: tan(0);
+	order: tan(tan(0.785398));
+	order: tan(tan(tan(tan(0.785398))));
+	order: tan(1px);
+	order: tan(foo);
+	order: tan(Infinity);
+	order: tan(InFiNiTy);
+	order: tan(-infinity);
+	order: tan(3.14159 / 4);
+}
+
+.asin {
+	order: asin(sin(45deg));
+	order: asin(-1);
+	order: asin(-0.5);
+	order: asin(0);
+	order: asin(0.5);
+	order: asin(1);
+	order: asin(2);
+	order: asin(-20);
+	order: asin(45deg);
+	order: asin(1rad);
+	order: asin(foo);
+	order: asin(infinity);
+	order: asin(-infinity);
+}
