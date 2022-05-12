@@ -1,0 +1,58 @@
+
+	@keyframes slide-left {
+		from {
+			margin-left: 0;
+		}
+
+		to {
+			margin-left: -100%;
+		}
+	}
+
+@keyframes slide-left {
+	}
+
+	target {
+			color: yellow;
+		}
+
+target:not(#\#) {
+		color: red;
+	}
+
+p:not(#\#) {
+		color: blue;
+	}
+
+i:not(#\#) {
+		color: red;
+	}
+
+target:not(#\##\##\#) {
+			color: yellow;
+		}
+
+target:not(#\##\##\##\##\##\#) {
+			color: yellow;
+		}
+
+@media (prefers-color-scheme: dark) {
+		h1:not(#\##\##\##\##\##\##\#) {
+			color: red;
+			background: black;
+		}
+	}
+
+@media (prefers-color-scheme: dark) {
+			target:not(#\##\##\##\##\##\#) {
+				color: lime;
+			}
+	}
+
+target:not(#\##\##\##\##\##\##\##\#) {
+			color: yellow;
+		}
+
+target:not(#\##\##\##\##\##\##\##\##\#) {
+		color: red;
+	}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS Cascade Layers: !important</title>
+	<meta name="assert" content="!important in CSS Cascade Layers">
+	<link rel="help" href="https://www.w3.org/TR/css-cascade-5/#layering">
+</head>
+
+<body>
+	<target class="first"></target>
+	<target class="second"></target>
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			// In all test cases, the rule specified as "color: green" should win.
+			var testCases = [
+				{
+					title: 'Same specificity, layered important first',
+					style: `
+							@layer { target { color: green !important; } }
+							target { color: red; }
+					`,
+				},
+				{
+					title: 'Same specificity, layered important second',
+					style: `
+							target { color: red; }
+							@layer { target { color: green !important; } }
+					`,
+				},
+				// TODO : Unsure if we can implement !important correctly
+				// see : https://github.com/web-platform-tests/wpt/issues/33767
+				{
+					title: 'Same specificity, all important (order A)',
+					style: `
+						@layer { target { color: green !important; } }
+						@layer { target { color: red !important; } }
+						target { color: red !important; }
+					`,
+				},
+				{
+					title: 'Same specificity, all important (order B)',
+					style: `
+						@layer { target { color: green !important; } }
+						target { color: red !important; }
+						@layer { target { color: red !important; } }
+					`,
+				},
+				{
+					title: 'Same specificity, all important (order C)',
+					style: `
+						target { color: red !important; }
+						@layer { target { color: green !important; } }
+						@layer { target { color: red !important; } }
+					`,
+				},
+				{
+					title: 'Same specificity, all important (order D)',
+					style: `
+						@layer A, B;
+						@layer B { target { color: red !important; } }
+						@layer A { target { color: green !important; } }
+						target { color: red !important; }
+					`,
+				},
+				{
+					title: 'Different specificity (A), all important',
+					style: `
+						@layer { target { color: green !important; } }
+						@layer { target { color: red !important; } }
+						target.first { color: red !important; }
+					`,
+				},
+				{
+					title: 'Different specificity (B), all important',
+					style: `
+						@layer { target { color: green !important; } }
+						@layer { target.first { color: red !important; } }
+						target { color: red !important; }
+					`,
+				},
+			];
+
+			for (let testCase of testCases) {
+				{
+					const styleElement = document.createElement('style');
+
+					const testCaseStyle = await (fetch(`/test/styles.css`, {
+						method: 'POST',
+						body: testCase['style'],
+					}).then((response) => response.text()));
+
+					styleElement.textContent = testCaseStyle;
+					document.head.append(styleElement);
+
+					var targets = document.querySelectorAll('target');
+					for (let target of targets) {
+						assert_equals(
+							window.getComputedStyle(target).color,
+							'rgb(0, 128, 0)',
+							testCase['title'] + " (processed), target '" + target.classList[0] + "'"
+						);
+					}
+
+					styleElement.remove();
+				}
+
+				{
+					const styleElement = document.createElement('style');
+
+					styleElement.textContent = testCase['style'];
+					document.head.append(styleElement);
+
+					var targets = document.querySelectorAll('target');
+					for (let target of targets) {
+						assert_equals(
+							window.getComputedStyle(target).color,
+							'rgb(0, 128, 0)',
+							testCase['title'] + " (native), target '" + target.classList[0] + "'"
+						);
+					}
+
+					styleElement.remove();
+				}
+			}
+
+			return true;
+		}
+	</script>
+</body>
+
+</html>

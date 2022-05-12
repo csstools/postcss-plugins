@@ -1,0 +1,23 @@
+@layer A {
+	target {
+		color: red;
+	}
+}
+
+@layer {
+	target {
+		color: green;
+	}
+}
+
+a {
+	color: purple;
+}
+
+target {
+  color: green;
+}
+
+span h1, span p {
+  color:red;
+}

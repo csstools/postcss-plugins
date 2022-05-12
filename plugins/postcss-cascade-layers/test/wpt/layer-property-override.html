@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<title>Resolving @property name conflicts with cascade layers</title>
+<link rel="help" href="https://drafts.csswg.org/css-cascade-5/#layering">
+<link rel="author" href="mailto:xiaochengh@chromium.org">
+<!-- Source : https://github.com/web-platform-tests/wpt/blob/master/css/css-cascade/layer-property-override.html -->
+
+<style>
+	#target,
+	#reference {
+		width: 100px;
+		height: 100px;
+	}
+
+	#reference {
+		background-color: green;
+	}
+</style>
+
+<div id="target"></div>
+<div id="reference"></div>
+<div id="log"></div>
+
+<script type="module">
+	window.addEventListener('click', () => {
+		window.runTest();
+	});
+
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual != expected) {
+				log.innerHTML = message + ": expected " + expected + ", got " + actual;
+				throw new Error(message + ": expected " + expected + ", got " + actual);
+			}
+		}
+
+		// In all tests, background color of #target should be green, same as #reference
+
+		const testCases = [
+			{
+				title: '@property unlayered overrides layered',
+				style: `
+				#target {
+					background-color: var(--foo);
+				}
+
+				@property --foo {
+					syntax: '<color>';
+					inherits: false;
+					initial-value: green;
+				}
+
+				@layer {
+					@property --foo {
+						syntax: '<color>';
+						inherits: false;
+						initial-value: red;
+					}
+				}
+		`
+			},
+
+			{
+				title: '@property override between layers',
+				style: `
+				@layer base, override;
+
+				#target {
+					background-color: var(--foo);
+				}
+
+				@layer override {
+					@property --foo {
+						syntax: '<color>';
+						inherits: false;
+						initial-value: green;
+					}
+				}
+
+				@layer base {
+					@property --foo {
+						syntax: '<color>';
+						inherits: false;
+						initial-value: red;
+					}
+				}
+			`
+			},
+
+			{
+				title: '@property override update with appended sheet 1',
+				style: `
+				@layer base, override;
+
+				#target {
+					background-color: var(--foo);
+				}
+
+				@layer override {
+					@property --foo {
+						syntax: '<color>';
+						inherits: false;
+						initial-value: green;
+					}
+				}
+			`,
+				append: `
+				@layer base {
+					@property --foo {
+						syntax: '<color>';
+						inherits: false;
+						initial-value: red;
+					}
+				}
+			`
+			},
+
+			{
+				title: '@property override update with appended sheet 2',
+				style: `
+				@layer base, override;
+
+				#target {
+					background-color: var(--foo);
+				}
+
+				@layer base {
+					@property --foo {
+						syntax: '<color>';
+						inherits: false;
+						initial-value: red;
+					}
+				}
+			`,
+				append: `
+				@layer override {
+					@property --foo {
+						syntax: '<color>';
+						inherits: false;
+						initial-value: green;
+					}
+				}
+			`
+			},
+		];
+
+		for (let testCase of testCases) {
+			var documentStyle = document.createElement('style');
+
+			const testCaseStyle = await (fetch(`/test/styles.css`, {
+				method: 'POST',
+				body: testCase['style'],
+			}).then((response) => response.text()));
+
+			documentStyle.appendChild(document.createTextNode(testCaseStyle));
+			document.head.appendChild(documentStyle);
+
+			var appendedStyle;
+			if (testCase['append']) {
+				document.body.offsetLeft;  // Force style update
+				appendedStyle = document.createElement('style');
+
+				const testCaseAppend = await (fetch(`/test/styles.css`, {
+					method: 'POST',
+					body: testCase['style'] + "\n" + testCase['append'],
+				}).then((response) => response.text()));
+
+				appendedStyle.appendChild(document.createTextNode(testCaseAppend));
+				document.head.appendChild(appendedStyle);
+			}
+
+			assert_equals(
+				getComputedStyle(target).backgroundColor,
+				getComputedStyle(reference).backgroundColor,
+				testCase['title'] + ': background color'
+			);
+
+			if (appendedStyle) {
+				appendedStyle.remove();
+			}
+
+			documentStyle.remove();
+		}
+
+		return true;
+	}
+</script>
