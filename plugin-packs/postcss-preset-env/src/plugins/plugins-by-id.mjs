@@ -2,6 +2,7 @@ import postcssInitial from 'postcss-initial';
 import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
 import postcssBlankPseudo from 'css-blank-pseudo';
 import postcssPageBreak from 'postcss-page-break';
+import postcssCascadeLayers from '@csstools/postcss-cascade-layers';
 import postcssAttributeCaseInsensitive from 'postcss-attribute-case-insensitive';
 import postcssClamp from 'postcss-clamp';
 import postcssColorFunction from '@csstools/postcss-color-function';
@@ -47,6 +48,7 @@ export const pluginsById = new Map(
 		['any-link-pseudo-class', postcssPseudoClassAnyLink],
 		['blank-pseudo-class', postcssBlankPseudo],
 		['break-properties', postcssPageBreak],
+		['cascade-layers', postcssCascadeLayers],
 		['case-insensitive-attributes', postcssAttributeCaseInsensitive],
 		['clamp', postcssClamp],
 		['color-function', postcssColorFunction],

@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased
+
+- Added `@csstools/postcss-cascade-layers` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers#readme) for usage details.
+
 ### 7.5.0 (May 2, 2022)
 
 - Added `@csstools/postcss-unset-value` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset-value#readme) for usage details.

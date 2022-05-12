@@ -205,4 +205,9 @@ export default [
 		'id': 'unset-value',
 		'importName': 'postcssUnsetValue',
 	},
+	{
+		'packageName': '@csstools/postcss-cascade-layers',
+		'id': 'cascade-layers',
+		'importName': 'postcssCascadeLayers',
+	},
 ];

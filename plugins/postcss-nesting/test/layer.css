@@ -1,0 +1,14 @@
+.container {
+	contain: layout inline-size;
+}
+
+.contained {
+	background-color: blue;
+	height: 100px;
+	width: 100px;
+
+	@layer A {
+		/* There is no definition for this behavior */
+		background-color: red;
+	}
+}

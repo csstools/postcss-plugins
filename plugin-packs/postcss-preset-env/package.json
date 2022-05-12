@@ -27,6 +27,7 @@
 		"dist"
 	],
 	"dependencies": {
+		"@csstools/postcss-cascade-layers": "^1.0.0",
 		"@csstools/postcss-color-function": "^1.1.0",
 		"@csstools/postcss-font-format-keywords": "^1.0.0",
 		"@csstools/postcss-hwb-function": "^1.0.0",
