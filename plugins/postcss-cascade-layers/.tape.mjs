@@ -1,5 +1,6 @@
 import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from '@csstools/postcss-cascade-layers';
+import postcssImport from 'postcss-import';
 
 postcssTape(plugin)({
 	basic: {
@@ -43,5 +44,18 @@ postcssTape(plugin)({
 			onImportLayerRule: 'warn'
 		},
 		warnings: 3,
+	},
+	'warnings:with-postcss-import': {
+		message: 'correctly handles warnings when postcss-import is used',
+		options: {
+			onRevertLayerKeyword: 'warn',
+			onConditionalRulesChangingLayerOrder: 'warn',
+			onImportLayerRule: 'warn'
+		},
+		warnings: 2,
+		plugins: [
+			postcssImport(), /* postcss-import must run first */
+			plugin(),
+		]
 	}
 });

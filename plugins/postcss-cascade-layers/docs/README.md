@@ -14,7 +14,7 @@
 
 <header>
 
-[<humanReadableName>] lets use `@layer` following the [Cascade Layers Specification].
+[<humanReadableName>] lets you use `@layer` following the [Cascade Layers Specification]. For more information on layers, checkout [A Complete Guide to CSS Cascade Layers] by Miriam Suzanne.
 
 ```pcss
 <example.css>
@@ -84,7 +84,27 @@ Defaults to `warn`
 }
 ```
 
-<!-- TODO : Add a reference to oddbird for doing all the heavy lifting -->
+### onImportLayerRule
+
+The `@import` at-rule can also be used with cascade layers, specifically to create a new layer like so: 
+```css
+@import 'theme.css' layer(utilities);
+```
+If your CSS uses `@import` with layers, you will also need the [postcss-import] plugin. This plugin alone will not handle the `@import` at-rule.  
+
+This plugin will warn you when it detects that [postcss-import] did not transform`@import` at-rules.
+
+```js
+<exportName>({ onImportLayerRule: 'warn' }) // 'warn' | false
+```
+
+### Contributors
+The contributors to this plugin were [Olu Niyi-Awosusi] and [Sana Javed] from [Oddbird] and Romain Menke.
 
 <link-list>
 [Cascade Layers Specification]: <specUrl>
+[A Complete Guide to CSS Cascade Layers]: https://css-tricks.com/css-cascade-layers/
+[Olu Niyi-Awosusi]: https://github.com/oluoluoxenfree
+[Sana Javed]: https://github.com/sanajaved7
+[Oddbird]: https://github.com/oddbird
+[postcss-import]: https://github.com/postcss/postcss-import

@@ -5,7 +5,7 @@
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-[PostCSS Cascade Layers] lets you use `@layer` following the [Cascade Layers Specification]. For more information on layers, checkout [A Complete Guide to CSS Cascade Layers] by Miriam Suzanne.   
+[PostCSS Cascade Layers] lets you use `@layer` following the [Cascade Layers Specification]. For more information on layers, checkout [A Complete Guide to CSS Cascade Layers] by Miriam Suzanne.
 
 ```pcss
 
@@ -114,16 +114,22 @@ postcssCascadeLayers({ onConditionalRulesChangingLayerOrder: 'warn' }) // 'warn'
 }
 ```
 
-### Using `@import` with layers
+### onImportLayerRule
+
 The `@import` at-rule can also be used with cascade layers, specifically to create a new layer like so: 
-```
+```css
 @import 'theme.css' layer(utilities);
 ```
 If your CSS uses `@import` with layers, you will also need the [postcss-import] plugin. This plugin alone will not handle the `@import` at-rule.  
 
+This plugin will warn you when it detects that [postcss-import] did not transform`@import` at-rules.
+
+```js
+postcssCascadeLayers({ onImportLayerRule: 'warn' }) // 'warn' | false
+```
 
 ### Contributors
-The contributors to this plugin were [Olu Niyi-Awosusi] and [Sana Javed] from [Oddbird] and [Romain Menke].
+The contributors to this plugin were [Olu Niyi-Awosusi] and [Sana Javed] from [Oddbird] and Romain Menke.
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#cascade-layers
@@ -136,9 +142,8 @@ The contributors to this plugin were [Olu Niyi-Awosusi] and [Sana Javed] from [O
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Cascade Layers]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers
 [Cascade Layers Specification]: https://www.w3.org/TR/css-cascade-5/#layering
-[A Complete Guide to CSS Cascade Layers]: https://css-tricks.com/css-cascade-layers/ 
+[A Complete Guide to CSS Cascade Layers]: https://css-tricks.com/css-cascade-layers/
 [Olu Niyi-Awosusi]: https://github.com/oluoluoxenfree
 [Sana Javed]: https://github.com/sanajaved7
-[Romain Menke]: https://github.com/romainmenke
-[Oddbird]: https://github.com/oddbird 
+[Oddbird]: https://github.com/oddbird
 [postcss-import]: https://github.com/postcss/postcss-import

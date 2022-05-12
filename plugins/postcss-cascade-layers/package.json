@@ -1,10 +1,31 @@
 {
 	"name": "@csstools/postcss-cascade-layers",
-	"description": "Use layers in CSS",
+	"description": "Use cascade layers in CSS",
 	"version": "1.0.0",
-	"author": "Olu Niyi-Awosusi <o.niyiawosusi@gmail.com>, Sana Javed <sanajaved7@gmail.com>, Romain Menke <romainmenke@gmail.com>",
+	"contributors": [
+		{
+			"name": "Olu Niyi-Awosusi",
+			"email": "o.niyiawosusi@gmail.com"
+		},
+		{
+			"name": "Sana Javed",
+			"email": "sanajaved7@gmail.com"
+		},
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke ",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
-	"private": true,
+	"funding": {
+		"type": "opencollective",
+		"url": "https://opencollective.com/csstools"
+	},
 	"engines": {
 		"node": "^12 || ^14 || >=16"
 	},
@@ -31,6 +52,9 @@
 	"peerDependencies": {
 		"postcss": "^8.3"
 	},
+	"devDependencies": {
+		"postcss-import": "^14.1.0"
+	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
@@ -44,13 +68,21 @@
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-cascade-layers"
 	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"cascade",
+		"css",
+		"layers",
+		"postcss",
+		"postcss-plugin",
+		"selectors",
+		"specificity"
 	],
 	"csstools": {
 		"cssdbId": "cascade-layers",

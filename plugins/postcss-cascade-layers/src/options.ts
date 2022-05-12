@@ -1,5 +1,5 @@
 export type pluginOptions = {
-	onRevertLayerKeyword: 'warn'|false,
-	onConditionalRulesChangingLayerOrder: 'warn'|false,
-	onImportLayerRule: 'warn'|false,
+	onRevertLayerKeyword: 'warn' | false,
+	onConditionalRulesChangingLayerOrder: 'warn' | false,
+	onImportLayerRule: 'warn' | false,
 }
