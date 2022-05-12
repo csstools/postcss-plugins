@@ -14,17 +14,17 @@ export function labToDisplayP3(labRaw: color): [color, boolean] {
 	const labA = Math.min(
 		Math.max(
 			labARaw,
-			-127,
+			-160,
 		),
-		128,
+		160,
 	);
 
 	const labB = Math.min(
 		Math.max(
 			labBRaw,
-			-127,
+			-160,
 		),
-		128,
+		160,
 	);
 
 	const lab = [labL, labA, labB];

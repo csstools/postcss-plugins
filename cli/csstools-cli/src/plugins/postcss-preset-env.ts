@@ -6,11 +6,14 @@ export default function postcssPresetEnv() {
 		plugin,
 		[
 			'stage',
+			'minimumVendorImplementations',
 			'features',
 			'browsers',
 			'autoprefixer',
+			'preserve',
 			'importFrom',
 			'exportTo',
+			'enableClientSidePolyfills',
 		],
 		helpTextLogger(
 			'@csstools/cli postcss-preset-env',
@@ -18,6 +21,7 @@ export default function postcssPresetEnv() {
 			'Lets you convert modern CSS into something most browsers can understand, determining the polyfills you need based on your targeted browsers or runtime environments.',
 			{
 				stage: 0,
+				minimumVendorImplementations: 2,
 				features: {
 					'blank-pseudo-class': { preserve: false },
 					'color-functional-notation': { preserve: true },
@@ -27,6 +31,7 @@ export default function postcssPresetEnv() {
 				preserve: false,
 				importFrom: 'path/to/file.css',
 				exportTo: 'path/to/file.css',
+				enableClientSidePolyfills: false,
 			},
 		),
 		false,

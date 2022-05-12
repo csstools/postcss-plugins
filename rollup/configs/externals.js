@@ -5,12 +5,13 @@ export const externalsForCLI = [
 
 	'@csstools/postcss-color-function',
 	'@csstools/postcss-font-format-keywords',
-	'@csstools/postcss-ic-unit',
 	'@csstools/postcss-hwb-function',
+	'@csstools/postcss-ic-unit',
 	'@csstools/postcss-is-pseudo-class',
 	'@csstools/postcss-normalize-display-values',
 	'@csstools/postcss-oklab-function',
 	'@csstools/postcss-progressive-custom-properties',
+	'@csstools/selector-specificity',
 	'autoprefixer',
 	'browserslist',
 	'caniuse-lite',
@@ -46,7 +47,6 @@ export const externalsForCLI = [
 	'postcss-selector-not',
 	'postcss-selector-parser',
 	'postcss-value-parser',
-	'postcss-values-parser',
 ];
 
 export const externalsForPlugin = [
@@ -67,6 +67,7 @@ export const externalsForPlugin = [
 	'@csstools/postcss-normalize-display-values',
 	'@csstools/postcss-oklab-function',
 	'@csstools/postcss-progressive-custom-properties',
+	'@csstools/selector-specificity',
 	'autoprefixer',
 	'browserslist',
 	'caniuse-lite',
@@ -104,7 +105,6 @@ export const externalsForPlugin = [
 	'postcss-selector-not',
 	'postcss-selector-parser',
 	'postcss-value-parser',
-	'postcss-values-parser',
 ];
 
 export const externalsForBrowser = [];

@@ -1,5 +1,13 @@
 # Changes to PostCSS Custom Properties
 
+### 12.1.7 (April 8, 2022)
+
+- Fix racing condition that could happen when using other async PostCSS plugins ([#331](https://github.com/csstools/postcss-plugins/issues/331))
+
+### 12.1.6 (April 5, 2022)
+
+- Fix `var()` fallback value downgrades with value lists.
+
 ### 12.1.5 (March 19, 2022)
 
 - Add deprecation notice for `importFrom` and `exportTo`

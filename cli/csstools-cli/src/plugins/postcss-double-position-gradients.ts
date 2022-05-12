@@ -10,9 +10,7 @@ export default function postcssDoublePositionGradients() {
 			'PostCSS Double Position Gradients',
 			'Lets you use double-position gradients in CSS, following the CSS Image Values and Replaced Content specification',
 			{
-				dir: 'ltr',
 				preserve: true,
-				shadow: true,
 				enableProgressiveCustomProperties: false,
 			},
 		),

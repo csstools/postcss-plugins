@@ -8,7 +8,7 @@ pre[class*="language-"] {
 	word-wrap: normal;
 	color: #c3cee3;
 	background: #263238;
-	font-size: 1em;
+	font-size: 1rem;
 	line-height: 1.5;
 
 	-moz-tab-size: 2;

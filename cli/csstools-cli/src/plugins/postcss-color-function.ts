@@ -1,4 +1,4 @@
-import plugin from 'postcss-color-functional-notation';
+import plugin from '@csstools/postcss-color-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
 export default function postcssColorFunction() {

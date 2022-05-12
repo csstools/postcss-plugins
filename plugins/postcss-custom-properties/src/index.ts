@@ -48,14 +48,14 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 	// promise any custom selectors are imported
 	const customPropertiesPromise = getCustomPropertiesFromImports(importFrom);
 
-	let customProperties: Map<string, valuesParser.ParsedValue> = new Map();
-
 	// whether to return synchronous function if no asynchronous operations are requested
 	const canReturnSyncFunction = importFrom.length === 0 && exportTo.length === 0;
 
 	return {
 		postcssPlugin: 'postcss-custom-properties',
 		prepare () {
+			let customProperties: Map<string, valuesParser.ParsedValue> = new Map();
+
 			if (canReturnSyncFunction) {
 				return {
 					Once: (root) => {

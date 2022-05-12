@@ -325,3 +325,27 @@ button:hover::before {
 button:focus::before {
 	order: 26;
 }
+
+.bar:not(.something-random) {
+	order: 27;
+}
+
+.foo:lang(ae, ar, arc, bcc, bqi, ckb, dv, fa, glk, he, ku, mzn, nqo, pnb, ps, sd, ug, ur, yi) {
+	order: 27;
+}
+
+:not(.something-random):hover::after {
+	order: 28;
+}
+
+:not(.something-random):focus::after {
+	order: 28;
+}
+
+.foo:hover {
+	order: 28;
+}
+
+.foo:focus {
+	order: 28;
+}

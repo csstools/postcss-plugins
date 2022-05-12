@@ -1,5 +1,35 @@
 # Changes to PostCSS Lab Function
 
+### 4.2.0 (April 4, 2022)
+
+- Allow percentage and number units in more color components.
+
+```css
+.percentages {
+	color-1: lab(40% 35% 30%);
+	color-2: lch(40% 50% 39);
+
+	/* becomes */
+
+	color-1: rgb(163, 57, 35);
+	color-1: color(display-p3 0.59266 0.25309 0.17075);
+	color-2: rgb(181, 30, 19);
+	color-2: color(display-p3 0.65205 0.18193 0.12753);
+}
+
+.numbers {
+	color-1: lab(40 35 30);
+	color-2: lch(40 50 39);
+
+	/* becomes */
+
+	color-1: rgb(152, 68, 47);
+	color-1: color(display-p3 0.55453 0.28432 0.20788);
+	color-2: rgb(157, 63, 45);
+	color-2: color(display-p3 0.57072 0.27138 0.20109);
+}
+```
+
 ### 4.1.2 (March 8, 2022)
 
 - Fix gamut mapping giving overly unsaturated colors.

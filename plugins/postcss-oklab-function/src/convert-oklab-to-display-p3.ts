@@ -11,7 +11,7 @@ export function oklabToDisplayP3(oklabRaw: color): [color, boolean] {
 		0,
 	);
 
-	const oklab = [oklabL / 100, oklabARaw, oklabBRaw] as color;
+	const oklab = [oklabL, oklabARaw, oklabBRaw] as color;
 
 	let conversion = oklab as color;
 	let oklch = OKLab_to_OKLCH(conversion);

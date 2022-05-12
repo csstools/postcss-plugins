@@ -1,5 +1,30 @@
 # Changes to CSS Has Pseudo
 
+### 0.5.1 (April 29, 2022)
+
+- Use `@csstools/selector-specificity` for specificity calculations.
+- Update `querySelector(:has())` polyfill, ensuring temporary html attributes are correctly removed.
+- Improve documentation
+
+### 0.5.0 (April 24, 2022)
+
+- Rules within `@supports` selector check for `:has` won't be transformed. This respects stylesheet author of making the selector conditional:
+
+```pcss
+@supports selector(:has(:focus)) {
+	/* Won't be transformed */
+	:has(:focus) {}
+}
+```
+
+### 0.4.0 (April 5, 2022)
+
+- Update `querySelector(:has())` polyfill, disallowing nested `:has` (`:has(.foo, :has(.bar))`)
+
+### 0.3.1 (April 4, 2022)
+
+- Improving selector specificity calculation.
+
 ### 0.3.0 (February 24, 2022)
 
 - Use base36 encoding to fix support for upper case characters in selectors.
