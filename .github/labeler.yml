@@ -36,6 +36,10 @@
   - plugins/postcss-attribute-case-insensitive/**
   - experimental/postcss-attribute-case-insensitive/**
 
+"plugins/postcss-cascade-layers":
+  - plugins/postcss-cascade-layers/**
+  - experimental/postcss-cascade-layers/**
+
 "plugins/postcss-color-function":
   - plugins/postcss-color-function/**
   - experimental/postcss-color-function/**

@@ -1,0 +1,15 @@
+@layer A {
+	#target {
+		color: red;
+	}
+}
+
+@layer {
+	#foo #bar target::before {
+		color: green;
+	}
+}
+
+target {
+	color: purple;
+}

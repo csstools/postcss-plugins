@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<title>Resolving @keyframe name conflicts with cascade layers</title>
+<link rel="help" href="https://drafts.csswg.org/css-cascade-5/#layering">
+<link rel="author" href="mailto:xiaochengh@chromium.org">
+<!-- Source : https://github.com/web-platform-tests/wpt/blob/master/css/css-cascade/layer-keyframes-override.html -->
+<style>
+	#target,
+	#reference {
+		width: 100px;
+		height: 100px;
+	}
+
+	#reference {
+		background-color: green;
+	}
+</style>
+
+<div id="target"></div>
+<div id="reference"></div>
+
+<div id="log"></div>
+
+<script type="module">
+	window.addEventListener('click', () => {
+		window.runTest();
+	});
+
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual != expected) {
+				log.innerHTML = message + ": expected " + expected + ", got " + actual;
+				throw new Error(message + ": expected " + expected + ", got " + actual);
+			}
+		}
+
+		// In all tests, background color of #target should be green, same as #reference
+
+		const testCases = [
+			{
+				title: '@keyframes unlayered overrides layered',
+				style: `
+			#target {
+				animation: anim 1s paused;
+			}
+
+			@keyframes anim {
+				from { background-color: green; }
+			}
+
+			@layer {
+				@keyframes anim {
+					from { background-color: red; }
+				}
+			}
+		`
+			},
+
+			{
+				title: '@keyframes override between layers',
+				style: `
+			@layer base, override;
+
+			#target {
+				animation: anim 1s paused;
+			}
+
+			@layer override {
+				@keyframes anim {
+					from { background-color: green; }
+				}
+			}
+
+			@layer base {
+				@keyframes anim {
+					from { background-color: red; }
+				}
+			}
+		`
+			},
+
+			{
+				title: '@keyframes override update with appended sheet 1',
+				style: `
+			@layer base, override;
+
+			#target {
+				animation: anim 1s paused;
+			}
+
+			@layer override {
+				@keyframes anim {
+					from { background-color: green; }
+				}
+			}
+		`,
+				append: `
+			@layer base {
+				@keyframes anim {
+					from { background-color: red; }
+				}
+			}
+		`
+			},
+
+			{
+				title: '@keyframes override update with appended sheet 2',
+				style: `
+			@layer base, override;
+
+			#target {
+				animation: anim 1s paused;
+			}
+
+			@layer base {
+				@keyframes anim {
+					from { background-color: red; }
+				}
+			}
+		`,
+				append: `
+			@layer override {
+				@keyframes anim {
+					from { background-color: green; }
+				}
+			}
+		`
+			},
+		];
+
+		for (let testCase of testCases) {
+			var documentStyle = document.createElement('style');
+
+			const testCaseStyle = await (fetch(`/test/styles.css`, {
+				method: 'POST',
+				body: testCase['style'],
+			}).then((response) => response.text()));
+
+			documentStyle.appendChild(document.createTextNode(testCaseStyle));
+			document.head.appendChild(documentStyle);
+
+			var appendedStyle;
+			if (testCase['append']) {
+				document.body.offsetLeft;  // Force style update
+				appendedStyle = document.createElement('style');
+
+				const testCaseAppend= await (fetch(`/test/styles.css`, {
+					method: 'POST',
+					body: testCase['style'] + "\n" + testCase['append'],
+				}).then((response) => response.text()));
+
+				appendedStyle.appendChild(document.createTextNode(testCaseAppend));
+				document.head.appendChild(appendedStyle);
+			}
+
+			assert_equals(
+				getComputedStyle(target).backgroundColor,
+				getComputedStyle(reference).backgroundColor,
+				testCase.title + ': background color'
+			);
+
+			if (appendedStyle) {
+				appendedStyle.remove();
+			}
+
+			documentStyle.remove();
+		}
+
+		return true;
+	}
+</script>

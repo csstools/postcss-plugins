@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<title>Resolving @counter-style name conflicts with cascade layers</title>
+<link rel="help" href="https://drafts.csswg.org/css-cascade-5/#layering">
+<link rel="author" href="mailto:xiaochengh@chromium.org">
+<!-- Source : https://github.com/web-platform-tests/wpt/blob/master/css/css-cascade/layer-counter-style-override.html -->
+<style>
+	#target,
+	#reference {
+		font-family: monospace;
+		width: min-content;
+	}
+
+	#reference::before {
+		content: '0000';
+	}
+
+	@counter-style three {
+		system: cyclic;
+		symbols: '000';
+	}
+
+	@counter-style four {
+		system: cyclic;
+		symbols: '0000';
+	}
+</style>
+
+<ul>
+	<li id="target"></li>
+	<li id="reference"></li>
+</ul>
+
+<div id="log"></div>
+
+<script type="module">
+	window.addEventListener('click', () => {
+		window.runTest();
+	});
+
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual != expected) {
+				log.innerHTML = message + ": expected " + expected + ", got " + actual;
+				throw new Error(message + ": expected " + expected + ", got " + actual);
+			}
+		}
+		// In all tests, #target::before should have 4 characters, same as #reference.
+
+		const testCases = [
+			{
+				title: '@counter-style unlayered overrides layered',
+				style: `
+				#target::before {
+					content: counter(dont-care, custom-counter-style);
+				}
+
+				@counter-style custom-counter-style {
+					system: extends four;
+				}
+
+				@layer {
+					@counter-style custom-counter-style {
+						system: extends three;
+					}
+				}
+			`
+			},
+
+			{
+				title: '@counter-style override between layers',
+				style: `
+				@layer base, override;
+
+				#target::before {
+					content: counter(dont-care, custom-counter-style);
+				}
+
+				@layer override {
+					@counter-style custom-counter-style {
+						system: extends four;
+					}
+				}
+
+				@layer base {
+					@counter-style custom-counter-style {
+						system: extends three;
+					}
+				}
+			`
+			},
+
+			{
+				title: '@counter-style override update with appended sheet 1',
+				style: `
+				@layer base, override;
+
+				#target::before {
+					content: counter(dont-care, custom-counter-style);
+				}
+
+				@layer override {
+					@counter-style custom-counter-style {
+						system: extends four;
+					}
+				}
+			`,
+				append: `
+				@layer base {
+					@counter-style custom-counter-style {
+						system: extends three;
+					}
+				}
+			`
+			},
+
+			{
+				title: '@counter-style override update with appended sheet 2',
+				style: `
+				@layer base, override;
+
+				#target::before {
+					content: counter(dont-care, custom-counter-style);
+				}
+
+				@layer base {
+					@counter-style custom-counter-style {
+						system: extends three;
+					}
+				}
+			`,
+				append: `
+				@layer override {
+					@counter-style custom-counter-style {
+						system: extends four;
+					}
+				}
+			`
+			},
+		];
+
+		for (let testCase of testCases) {
+			var documentStyle = document.createElement('style');
+
+			const testCaseStyle = await (fetch(`/test/styles.css`, {
+				method: 'POST',
+				body: testCase['style'],
+			}).then((response) => response.text()));
+
+			documentStyle.appendChild(document.createTextNode(testCaseStyle));
+			document.head.appendChild(documentStyle);
+
+			var appendedStyle;
+			if (testCase['append']) {
+				document.body.offsetLeft;  // Force style update
+				appendedStyle = document.createElement('style');
+
+				const testCaseAppend= await (fetch(`/test/styles.css`, {
+					method: 'POST',
+					body: testCase['style'] + "\n" + testCase['append'],
+				}).then((response) => response.text()));
+
+				appendedStyle.appendChild(document.createTextNode(testCaseAppend));
+				document.head.appendChild(appendedStyle);
+			}
+
+			assert_equals(
+				getComputedStyle(target).width,
+				getComputedStyle(reference).width,
+				testCase.title + ': width'
+			);
+
+			if (appendedStyle) {
+				appendedStyle.remove();
+			}
+
+			documentStyle.remove();
+		}
+
+		return true;
+	}
+</script>

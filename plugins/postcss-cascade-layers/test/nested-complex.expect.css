@@ -1,0 +1,69 @@
+
+	target {
+		order: 1;
+	}
+
+	@media screen {
+		target {
+			order: 2;
+		}
+	}
+
+@media screen {
+		target:not(#\#) {
+			order: 4;
+		}
+}
+
+@media screen {
+	target:not(#\##\##\##\##\##\##\#) {
+		layered: no;
+		order: 3;
+	}
+}
+
+@media screen {
+		target:not(#\##\##\##\##\#) {
+			order: 6;
+		}
+
+		@media screen {
+			target:not(#\##\##\##\##\#) {
+				order: 7;
+			}
+		}
+}
+
+@media screen {
+
+		@media screen {
+				target:not(#\##\##\#) {
+					order: 8;
+				}
+
+				@media screen {
+					target:not(#\##\##\#) {
+						order: 9;
+					}
+				}
+		}
+}
+
+@media screen {
+
+		@media screen {
+
+				@media screen {
+						target:not(#\##\#) {
+							order: 10;
+						}
+				}
+		}
+}
+
+@media screen {
+	target:not(#\##\##\##\##\##\##\#) {
+		layered: no;
+		order: 5;
+	}
+}
