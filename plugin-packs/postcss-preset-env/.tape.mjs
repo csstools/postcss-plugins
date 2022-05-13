@@ -170,6 +170,7 @@ postcssTape(plugin)({
 	'layers-basic:preserve:true': {
 		message: 'supports layers usage with { preserve: true }',
 		options: {
+			preserve: true,
 			stage: 0,
 			browsers: '> 0%'
 		},
