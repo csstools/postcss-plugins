@@ -140,7 +140,7 @@
 	}
 }
 
-@supports (background: linear-gradient(blue 0%, blue 0% 1%, blue 2%)) and (color: oklch(0% 0 0)) {
+@supports (background: linear-gradient(blue 0%, blue 0% 1%, blue 2%)) and (color: oklch(0% 0 0)) and (something: else) {
 	:root {
 		--already-in-supports-rule-3: red;
 		--already-in-supports-rule-3: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
