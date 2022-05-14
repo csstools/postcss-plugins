@@ -59,3 +59,23 @@
 	--gradient-prop-6: repeating-radial-gradient(in oklch, red 0 8%, yellow 8% 16%, blue 16% 24%);
 }
 }
+
+/* Valid at supports guard */
+@supports (background: repeating-radial-gradient(in oklch, blue, blue 5px 2px, blue 3px)) {
+	:root {
+		--gradient-prop-7: repeating-radial-gradient(in oklch, red 0 8%, yellow 8% 16%, blue 16% 24%);
+	}
+}
+
+/* Invalid at supports guard */
+@supports (background: repeating-radial-gradient(red, red 1px 2px, red 3px)) {
+	:root {
+		--gradient-prop-8: repeating-radial-gradient(red 0,red 8%,color-mix(in oklch, red 90%, yellow 10%) calc(8% + ((8% - 8%) * 0.1)),color-mix(in oklch, red 80%, yellow 20%) calc(8% + ((8% - 8%) * 0.2)),color-mix(in oklch, red 70%, yellow 30%) calc(8% + ((8% - 8%) * 0.3)),color-mix(in oklch, red 60%, yellow 40%) calc(8% + ((8% - 8%) * 0.4)),color-mix(in oklch, red 50%, yellow 50%) calc(8% + ((8% - 8%) * 0.5)),color-mix(in oklch, red 40%, yellow 60%) calc(8% + ((8% - 8%) * 0.6)),color-mix(in oklch, red 30%, yellow 70%) calc(8% + ((8% - 8%) * 0.7)),color-mix(in oklch, red 20%, yellow 80%) calc(8% + ((8% - 8%) * 0.8)),color-mix(in oklch, red 10%, yellow 90%) calc(8% + ((8% - 8%) * 0.9)),yellow 8%,yellow 16%,color-mix(in oklch, yellow 90%, blue 10%) calc(16% + ((16% - 16%) * 0.1)),color-mix(in oklch, yellow 80%, blue 20%) calc(16% + ((16% - 16%) * 0.2)),color-mix(in oklch, yellow 70%, blue 30%) calc(16% + ((16% - 16%) * 0.3)),color-mix(in oklch, yellow 60%, blue 40%) calc(16% + ((16% - 16%) * 0.4)),color-mix(in oklch, yellow 50%, blue 50%) calc(16% + ((16% - 16%) * 0.5)),color-mix(in oklch, yellow 40%, blue 60%) calc(16% + ((16% - 16%) * 0.6)),color-mix(in oklch, yellow 30%, blue 70%) calc(16% + ((16% - 16%) * 0.7)),color-mix(in oklch, yellow 20%, blue 80%) calc(16% + ((16% - 16%) * 0.8)),color-mix(in oklch, yellow 10%, blue 90%) calc(16% + ((16% - 16%) * 0.9)),blue 16%,blue 24%);
+	}
+
+@supports (background: repeating-radial-gradient(in oklch, red, red 1px 2px, red 3px)) {
+:root {
+		--gradient-prop-8: repeating-radial-gradient(in oklch, red 0 8%, yellow 8% 16%, blue 16% 24%);
+	}
+}
+}

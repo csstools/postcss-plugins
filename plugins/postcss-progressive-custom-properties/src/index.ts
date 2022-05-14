@@ -1,7 +1,12 @@
-import type { PluginCreator } from 'postcss';
+import type { Declaration, PluginCreator } from 'postcss';
 import { supportConditionsFromValue } from './support-conditions-from-values';
+import { isGuardedByAtSupports } from './is-guarded-by-at-supports';
 
-const creator: PluginCreator<null> = () => {
+type Plugin = PluginCreator<null> & {
+	declarationIsGuardedByAtSupports(decl: Declaration, value: string): boolean;
+}
+
+const creator: Plugin = () => {
 	return {
 		postcssPlugin: 'postcss-progressive-custom-properties',
 		RuleExit: (rule, { postcss }) => {
@@ -35,6 +40,10 @@ const creator: PluginCreator<null> = () => {
 
 				const supportConditions = supportConditionsFromValue(decl.value);
 				if (!supportConditions.length) {
+					return;
+				}
+
+				if (isGuardedByAtSupports(decl, supportConditions)) {
 					return;
 				}
 
@@ -76,5 +85,13 @@ const creator: PluginCreator<null> = () => {
 
 creator.postcss = true;
 
-export default creator;
+creator.declarationIsGuardedByAtSupports = function declarationIsGuardedByAtSupports(decl: Declaration, value: string): boolean {
+	const valueConditions = supportConditionsFromValue(value);
+	if (!valueConditions.length) {
+		return false;
+	}
 
+	return isGuardedByAtSupports(decl, valueConditions);
+};
+
+export default creator;

@@ -20,3 +20,17 @@
 	--gradient-prop-5: repeating-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
 	--gradient-prop-6: repeating-radial-gradient(in oklch, red 0 8%, yellow 8% 16%, blue 16% 24%);
 }
+
+/* Valid at supports guard */
+@supports (background: repeating-radial-gradient(in oklch, blue, blue 5px 2px, blue 3px)) {
+	:root {
+		--gradient-prop-7: repeating-radial-gradient(in oklch, red 0 8%, yellow 8% 16%, blue 16% 24%);
+	}
+}
+
+/* Invalid at supports guard */
+@supports (background: repeating-radial-gradient(red, red 1px 2px, red 3px)) {
+	:root {
+		--gradient-prop-8: repeating-radial-gradient(in oklch, red 0 8%, yellow 8% 16%, blue 16% 24%);
+	}
+}

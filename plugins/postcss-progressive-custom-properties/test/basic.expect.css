@@ -269,3 +269,43 @@
 	);
 }
 }
+
+/* Custom props already wrapped in relevant @supports are ignored */
+@supports (background: linear-gradient(blue 0%, blue 0% 1%, blue 2%)) {
+	:root {
+		--already-in-supports-rule-1: red;
+		--already-in-supports-rule-1: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+	}
+}
+
+@supports (color: oklch(0% 0 0)) {
+	:root {
+		--already-in-supports-rule-1:red;
+		--already-in-supports-rule-2: 1px solid oklch(40% 0.234 0.39 / var(--opacity-50));
+	}
+}
+
+@supports (background: linear-gradient(blue 0%, blue 0% 1%, blue 2%)) and (color: oklch(0% 0 0)) {
+	:root {
+		--already-in-supports-rule-3: red;
+		--already-in-supports-rule-3: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+
+		--already-in-supports-rule-4: red;
+		--already-in-supports-rule-4: 1px solid oklch(40% 0.234 0.39 / var(--opacity-50));
+	}
+}
+
+@supports (background: linear-gradient(blue 0%, blue 0% 1%, blue 2%)) {
+	:root {
+		--already-in-supports-rule-5: red;
+		--already-in-supports-rule-5: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+
+		--already-in-supports-rule-6: red;
+	}
+
+@supports (color: oklch(0% 0 0)) {
+:root {
+		--already-in-supports-rule-6: 1px solid oklch(40% 0.234 0.39 / var(--opacity-50));
+	}
+}
+}

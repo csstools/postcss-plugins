@@ -3,7 +3,6 @@ import type { PluginCreator } from 'postcss';
 import type { Node } from 'postcss-value-parser';
 import valueParser from 'postcss-value-parser';
 import { ColorStop, colorStopList } from './color-stop-list';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { includesGradientsFunction, isGradientsFunctions } from './is-gradient';
 
 const interpolationMethods = [
@@ -27,7 +26,7 @@ const basePlugin = (opts) => {
 				return;
 			}
 
-			if (hasSupportsAtRuleAncestor(decl)) {
+			if (postcssProgressiveCustomProperties.declarationIsGuardedByAtSupports(decl, decl.value)) {
 				return;
 			}
 
