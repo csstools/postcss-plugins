@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased
+
+ - Fix selector order with `:before` and other pseudo elements.
+
 ### 10.1.5 (May 11, 2022)
 
 - Use `@csstools/selector-specificity` for specificity calculations.

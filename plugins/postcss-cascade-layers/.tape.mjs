@@ -6,12 +6,6 @@ postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
 	},
-	'basic:color': {
-		message: "supports { color: '<a color>' }",
-		options: {
-			color: 'purple'
-		}
-	},
 	atrules: {
 		message: "supports @keyframes usage",
 	},
