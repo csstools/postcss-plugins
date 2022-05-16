@@ -10,13 +10,13 @@ import { atan2FunctionCheck, transformAtan2Function } from './atan2';
 type pluginOptions = { preserve?: boolean };
 
 const Transformations = [
-	{ check: sinFunctionCheck, transform: transformSinFunction },
-	{ check: cosFunctionCheck, transform: transformCosFunction },
-	{ check: tanFunctionCheck, transform: transformTanFunction },
 	{ check: asinFunctionCheck, transform: transformAsinFunction },
 	{ check: acosFunctionCheck, transform: transformAcosFunction },
 	{ check: atanFunctionCheck, transform: transformAtanFunction },
 	{ check: atan2FunctionCheck, transform: transformAtan2Function },
+	{ check: sinFunctionCheck, transform: transformSinFunction },
+	{ check: cosFunctionCheck, transform: transformCosFunction },
+	{ check: tanFunctionCheck, transform: transformTanFunction },
 ];
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
