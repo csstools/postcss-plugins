@@ -94,11 +94,21 @@ export function computeCalculation(nodes: Node[], ignoreUnit = false) {
 			: ExpressionPart.Number;
 	};
 
-	for (let i = 0, len = words.length; i < len && isValid; i++) {
-		const word = words[i];
+	for (let i = 0, len = filteredNodes.length; i < len && isValid; i++) {
+		const word = filteredNodes[i];
 
 		if (ALLOWED_OPERATIONS.includes(word.value)) {
 			addToExpression(word.value, ExpressionPart.Operation);
+			continue;
+		}
+
+		if (word.value === 'pi') {
+			addToExpression(Math.PI.toString(), ExpressionPart.Number);
+			continue;
+		}
+
+		if (word.value === 'e') {
+			addToExpression(Math.E.toString(), ExpressionPart.Number);
 			continue;
 		}
 
@@ -243,6 +253,10 @@ export function parseNumber(value: string) {
 		number = Infinity;
 	} else if (value.toLowerCase() === '-infinity') {
 		number = Infinity * -1;
+	} else if (value === 'pi') {
+		number = Math.PI;
+	} else if (value === 'e') {
+		number = Math.E;
 	}
 
 	if (!number) {
