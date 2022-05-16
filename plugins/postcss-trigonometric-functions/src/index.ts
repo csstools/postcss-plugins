@@ -3,6 +3,9 @@ import { sinFunctionCheck, transformSinFunction } from './sin';
 import { cosFunctionCheck, transformCosFunction } from './cos';
 import { tanFunctionCheck, transformTanFunction } from './tan';
 import { asinFunctionCheck, transformAsinFunction } from './asin';
+import { acosFunctionCheck, transformAcosFunction } from './acos';
+import { atanFunctionCheck, transformAtanFunction } from './atan';
+import { atan2FunctionCheck, transformAtan2Function } from './atan2';
 
 type pluginOptions = { preserve?: boolean };
 
@@ -11,6 +14,9 @@ const Transformations = [
 	{ check: cosFunctionCheck, transform: transformCosFunction },
 	{ check: tanFunctionCheck, transform: transformTanFunction },
 	{ check: asinFunctionCheck, transform: transformAsinFunction },
+	{ check: acosFunctionCheck, transform: transformAcosFunction },
+	{ check: atanFunctionCheck, transform: transformAtanFunction },
+	{ check: atan2FunctionCheck, transform: transformAtan2Function },
 ];
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
