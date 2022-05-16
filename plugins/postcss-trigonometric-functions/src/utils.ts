@@ -76,7 +76,9 @@ enum ExpressionPart {
 export function computeCalculation(nodes: Node[], ignoreUnit = false) {
 	let isValid = true;
 	const expression = [];
-	const words = nodes.filter(filterOnlyWords);
+	const filteredNodes = nodes.filter(
+		node => node.type === 'word' || ALLOWED_OPERATIONS.includes(node.value)
+	);
 	let operationPart = ExpressionPart.Number;
 	let detectedUnit;
 
