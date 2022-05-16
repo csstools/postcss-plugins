@@ -1,0 +1,44 @@
+/* https://wpt.fyi/results/css/css-values/acos-asin-atan-atan2-computed.html?label=experimental&label=master&aligned&q=sin */
+.test {
+	order: 0deg; /* Should be 0deg */
+	order: 0deg; /* Should be 0deg */
+	order: 0deg; /* Should be 0deg */
+	order: 0deg; /* Should be 0deg */
+	order: 90deg; /* Should be 90deg */
+	order: 0deg; /* Should be 0deg */
+	order: 0deg; /* Should be 0deg */
+	order: 90deg; /* Should be 90deg */
+	order: 0deg; /* Should be 0deg */
+	order: 90deg; /* Should be 90deg */
+	order: 90deg; /* Should be 90deg */
+	order: 0deg; /* Should be 0deg */
+	order: 45deg; /* Should be 45deg */
+	order: 45deg; /* Should be 45deg */
+	order: 45deg; /* Should be 45deg */
+	order: 90deg; /* Should be 90deg */
+	order: 0deg; /* Should be 0deg */
+	order: 180deg; /* Should be 180deg */
+	order: 135deg; /* Should be 135deg */
+	order: -45deg; /* Should be -45deg */
+	order: 1; /* Should be 1 */
+	order: 1; /* Should be 1 */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+	order: 135deg; /* Should be 135deg */
+}

@@ -5,4 +5,7 @@ postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
 	},
+	wpt: {
+		message: "supports wpt cases",
+	},
 });

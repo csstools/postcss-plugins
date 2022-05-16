@@ -17,6 +17,7 @@
 	order: NaN;
 	order: NaN;
 	order: NaN;
+	order: sin(var(--foo));
 }
 
 .cos {
@@ -124,4 +125,51 @@
 	order: -45deg; /* -45deg */
 	order: -45deg; /* -45deg */
 	order: -45deg; /* -45deg */
+}
+
+.atan2 {
+	order: -135deg;
+	order: -90deg;
+	order: -90deg;
+	order: -90deg;
+	order: -90deg;
+	order: -45deg;
+
+	order: -180deg;
+	order: -135deg;
+	order: -90deg;
+	order: -90deg;
+	order: -45deg;
+	order: 0deg;
+
+	order: -180deg;
+	order: -180deg;
+	order: -180deg;
+	order: 0deg;
+	order: 0deg;
+	order: 0deg;
+
+	order: 180deg;
+	order: 180deg;
+	order: 180deg;
+	order: 0deg;
+	order: 0deg;
+	order: 0deg;
+
+	order: 180deg;
+	order: 135deg;
+	order: 90deg;
+	order: 90deg;
+	order: 45deg;
+	order: 0deg;
+
+	order: 135deg;
+	order: 90deg;
+	order: 90deg;
+	order: 90deg;
+	order: 90deg;
+	order: 45deg;
+
+	order: 80.54deg;
+	order: 9.46deg;
 }

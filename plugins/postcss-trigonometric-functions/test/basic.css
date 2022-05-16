@@ -17,6 +17,7 @@
 	order: sin(Infinity);
 	order: sin(InFiNiTy);
 	order: sin(-infinity);
+	order: sin(var(--foo));
 }
 
 .cos {
@@ -168,4 +169,7 @@
 	order: atan2(infinity, 0);
 	order: atan2(infinity, 1);
 	order: atan2(infinity, infinity);
+
+	order: atan2(90, 15);
+	order: atan2(15, 90);
 }
