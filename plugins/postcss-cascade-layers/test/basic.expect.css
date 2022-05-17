@@ -10,3 +10,7 @@
 target:not(#\##\##\##\##\##\#) {
 	color: purple;
 }
+
+target:not(#\##\##\##\##\##\#):before {
+	color: pink;
+}

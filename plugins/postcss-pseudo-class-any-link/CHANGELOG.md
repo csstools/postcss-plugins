@@ -1,5 +1,9 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### Unreleased
+
+ - Fix selector order with `:before` and other pseudo elements.
+
 ### 7.1.3 (May 6, 2022)
 
 - Improve handling of `<area>` fallbacks for IE and Edge.
