@@ -1,6 +1,6 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased
+### 2.0.4 (May 17, 2022)
 
  - Fix selector order with `:before` and other pseudo elements.
 
