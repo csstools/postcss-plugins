@@ -42,3 +42,67 @@
 	order: atan2(1s, -1s); /* Should be 135deg */
 	order: atan2(1ms, -1ms); /* Should be 135deg */
 }
+
+/* https://wpt.fyi/results/css/css-values/acos-asin-atan-atan2-invalid.html?label=master&label=experimental&aligned&q=sin */
+.wrong {
+	order: asin());
+	order: asin( ));
+	order: asin(,));
+	order: asin(1dag));
+	order: asin(1deg, ));
+	order: asin(, 1deg));
+	order: asin(1deg + ));
+	order: asin(1deg - ));
+	order: asin(1deg * ));
+	order: asin(1deg / ));
+	order: asin(1deg 2deg));
+	order: asin(1deg, , 2deg));
+	order: acos());
+	order: acos( ));
+	order: acos(,));
+	order: acos(1dag));
+	order: acos(1deg, ));
+	order: acos(, 1deg));
+	order: acos(1deg + ));
+	order: acos(1deg - ));
+	order: acos(1deg * ));
+	order: acos(1deg / ));
+	order: acos(1deg 2deg));
+	order: acos(1deg, , 2deg));
+	order: atan());
+	order: atan( ));
+	order: atan(,));
+	order: atan(1dag));
+	order: atan(1deg, ));
+	order: atan(, 1deg));
+	order: atan(1deg + ));
+	order: atan(1deg - ));
+	order: atan(1deg * ));
+	order: atan(1deg / ));
+	order: atan(1deg 2deg));
+	order: atan(1deg, , 2deg));
+	order: asin(90px));
+	order: asin(30deg + 1.0471967rad, 0));
+	order: acos( 0 ,));
+	order: acos( () 30deg - 0.523599rad ));
+	order: atan(45deg ));
+	order: atan(30deg, + 0.261799rad));
+	order: atan2());
+	order: atan2( ));
+	order: atan2(,));
+	order: atan2(1dag));
+	order: atan2(1deg, ));
+	order: atan2(, 1deg));
+	order: atan2(1deg + ));
+	order: atan2(1deg - ));
+	order: atan2(1deg * ));
+	order: atan2(1deg / ));
+	order: atan2(1deg 2deg));
+	order: atan2(1deg, , 2deg));
+	order: atan2(90px));
+	order: atan2(30deg + 1.0471967rad, 0));
+	order: atan2( 0 ,));
+	order: atan2( () 30deg - 0.523599rad ));
+	order: atan2(45deg ));
+	order: atan2(30deg, + 0.261799rad));
+}
