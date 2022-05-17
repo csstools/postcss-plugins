@@ -326,26 +326,58 @@ button:focus::before {
 	order: 26;
 }
 
-.bar:not(.does-not-exist) {
+a:hover:before {
 	order: 27;
+}
+
+a:focus:not(does-not-exist) {
+	order: 27;
+}
+
+button:hover:before {
+	order: 27;
+}
+
+button:focus:not(does-not-exist) {
+	order: 27;
+}
+
+a:hover:before {
+	order: 28;
+}
+
+a:focus:before {
+	order: 28;
+}
+
+button:hover:before {
+	order: 28;
+}
+
+button:focus:before {
+	order: 28;
+}
+
+.bar:not(.does-not-exist) {
+	order: 29;
 }
 
 .foo:lang(ae, ar, arc, bcc, bqi, ckb, dv, fa, glk, he, ku, mzn, nqo, pnb, ps, sd, ug, ur, yi) {
-	order: 27;
+	order: 29;
 }
 
 :not(.does-not-exist):hover::after {
-	order: 28;
+	order: 30;
 }
 
 :not(.does-not-exist):focus::after {
-	order: 28;
+	order: 30;
 }
 
 .foo:hover {
-	order: 28;
+	order: 30;
 }
 
 .foo:focus {
-	order: 28;
+	order: 30;
 }

@@ -7,6 +7,11 @@ function calculate(selector) {
 	return selectorSpecificity(selectorAST);
 }
 
+assert.deepEqual(calculate(':before'), { a: 0, b: 0, c: 1 });
+assert.deepEqual(calculate('::before'), { a: 0, b: 0, c: 1 });
+
+assert.deepEqual(calculate(':focus'), { a: 0, b: 1, c: 0 });
+
 assert.deepEqual(calculate(':is(a + a, b + b + b)'), { a: 0, b: 0, c: 3 });
 assert.deepEqual(calculate(':is(.a + .a, .b + .b + .b)'), { a: 0, b: 3, c: 0 });
 assert.deepEqual(calculate(':is(#a + #a, #b + #b + #b)'), { a: 3, b: 0, c: 0 });

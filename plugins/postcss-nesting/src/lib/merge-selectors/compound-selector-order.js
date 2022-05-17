@@ -57,14 +57,15 @@ export function sortCompoundSelector(node) {
 	// `h1.foo`
 
 	node.nodes.sort((a, b) => {
-		return selectorTypeOrder(a.value, a.type) - selectorTypeOrder(b.value, b.type);
+		return selectorTypeOrder(a, a.type) - selectorTypeOrder(b, b.type);
 	});
 }
 
 function selectorTypeOrder(selector, type) {
-	if (type === 'pseudo' && selector && selector.indexOf('::') === 0) {
-		return selectorTypeOrderIndex['pseudoElement'];
+	if (parser.isPseudoElement(selector)) {
+		return selectorTypeOrderIndex.pseudoElement;
 	}
+
 	return selectorTypeOrderIndex[type];
 }
 
