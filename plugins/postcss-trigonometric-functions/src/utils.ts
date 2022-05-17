@@ -288,7 +288,7 @@ export function validateNode(
 	node.nodes = computeCalculation(node.nodes);
 	const words = node.nodes.filter(filterOnlyWords);
 
-	if (words.length !== 1) {
+	if (node.nodes.length !== 1 || words.length !== 1) {
 		return;
 	}
 
