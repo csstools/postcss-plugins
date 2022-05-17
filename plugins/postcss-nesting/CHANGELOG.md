@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### Unreleased
+### 10.1.6 (May 17, 2022)
 
  - Fix selector order with `:before` and other pseudo elements.
 
