@@ -36,11 +36,11 @@ function transformAtan2Function(decl: Declaration): string | undefined {
 
 		// Compute calculations first
 		if (first.length > 1) {
-			first = computeCalculation(first);
+			first = computeCalculation(first, true);
 		}
 
 		if (second.length > 1) {
-			second = computeCalculation(second);
+			second = computeCalculation(second, true);
 		}
 
 		if (first.length !== 1 || second.length !== 1) {
