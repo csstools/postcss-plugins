@@ -33,6 +33,30 @@ target {
 
 ```
 
+## How it works
+
+[PostCSS Cascade Layers] creates "layers" of specificity.
+
+It applies extra specificity on all your styles based on :
+- the most specific selector found
+- the order in which layers are defined
+
+for `@layer A, B, C`:
+
+| layer | specificity | selector |
+| ------ | ----------- | --- |
+| `A` | 0 | N/A |
+| `B` | 3 | `:not(#/##/##/#)` |
+| `C` | 6 | `:not(#/##/##/##/##/##/#)` |
+
+This approach lets more important (later) layers always override less important (earlier) layers.<br>
+But each layer has enough room internally so that each selector works and overrides as expected.
+
+More layers with more specificity will cause longer `:not(...)` selectors to be generated.
+
+⚠️ For this to work the plugin needs to analyze your entire stylesheet at once.<br>
+If you have different assets that are unaware of each other it will not work correctly as the analysis will be incorrect.
+
 ## Usage
 
 Add [PostCSS Cascade Layers] to your project:
