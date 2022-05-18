@@ -43,14 +43,14 @@ It applies extra specificity on all your styles based on :
 
 for `@layer A, B, C`:
 
-| layer | specificity | selector |
+| layer | specificity adjustment | selector |
 | ------ | ----------- | --- |
 | `A` | 0 | N/A |
 | `B` | 3 | `:not(#/##/##/#)` |
 | `C` | 6 | `:not(#/##/##/##/##/##/#)` |
 
 This approach lets more important (later) layers always override less important (earlier) layers.<br>
-But each layer has enough room internally so that each selector works and overrides as expected.
+And layers have enough room internally so that each selector works and overrides as expected.
 
 More layers with more specificity will cause longer `:not(...)` selectors to be generated.
 
