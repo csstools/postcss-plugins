@@ -356,8 +356,12 @@ function needsConversion(isRGB: boolean, nodes: Array<Node>) {
 	let hasPercentageAlpha = false;
 	let isRGB_AndHasAnyPercentageValue = false;
 
-	for (let i = 0; i < nodes.length; i++) {
-		const node = nodes[i];
+	const relevantNodes = nodes.slice().filter((x) => {
+		return x.type !== 'comment' && x.type !== 'space';
+	});
+
+	for (let i = 0; i < relevantNodes.length; i++) {
+		const node = relevantNodes[i];
 		if (node.type === 'word' && node.value === 'from') {
 			// Too modern, not handled by this plugin
 			return false;
