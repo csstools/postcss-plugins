@@ -1,5 +1,13 @@
 # Changes to PostCSS Nesting
 
+### Unreleased
+
+- Add tentative support for `@layer`. The actual behavior is poorly defined and may change in the future. Use with caution.
+
+### 10.1.6 (May 17, 2022)
+
+ - Fix selector order with `:before` and other pseudo elements.
+
 ### 10.1.5 (May 11, 2022)
 
 - Use `@csstools/selector-specificity` for specificity calculations.

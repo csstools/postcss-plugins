@@ -1,5 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
+### 2.0.4 (May 17, 2022)
+
+ - Fix selector order with `:before` and other pseudo elements.
+
 ### 2.0.3 (May 11, 2022)
 
 - Use `@csstools/selector-specificity` for specificity calculations.

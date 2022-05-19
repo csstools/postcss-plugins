@@ -149,3 +149,9 @@ a {
 		order: 71;
 	}
 }
+
+.pseudo-element {
+	@nest :before& {
+		order: 72;
+	}
+}

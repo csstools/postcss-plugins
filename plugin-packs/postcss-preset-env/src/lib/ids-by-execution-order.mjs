@@ -32,4 +32,5 @@ export default [
 	'overflow-wrap-property',
 	'place-properties',
 	'system-ui-font-family',
+	'cascade-layers',
 ];

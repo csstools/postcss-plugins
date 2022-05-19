@@ -1,5 +1,21 @@
 # Changes to PostCSS Color Functional Notation
 
+### 4.2.3 (May 19, 2022)
+
+- Handle modern channel values in legacy notation (comma separated)
+
+```css
+.color {
+  color: rgba(0, 255, 0, 50%);
+}
+
+/* becomes */
+
+.color {
+  color: rgba(0, 255, 0, 0.5);
+}
+```
+
 ### 4.2.2 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

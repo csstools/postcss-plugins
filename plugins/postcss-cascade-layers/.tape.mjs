@@ -6,12 +6,6 @@ postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
 	},
-	'basic:color': {
-		message: "supports { color: '<a color>' }",
-		options: {
-			color: 'purple'
-		}
-	},
 	atrules: {
 		message: "supports @keyframes usage",
 	},
@@ -57,5 +51,11 @@ postcssTape(plugin)({
 			postcssImport(), /* postcss-import must run first */
 			plugin(),
 		]
-	}
+	},
+	'specificity-buckets-a': {
+		message: "creates non overlapping specificity buckets",
+	},
+	'specificity-buckets-b': {
+		message: "creates non overlapping specificity buckets",
+	},
 });

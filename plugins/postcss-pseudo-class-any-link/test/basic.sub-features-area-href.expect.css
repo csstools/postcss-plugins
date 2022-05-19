@@ -55,11 +55,17 @@ ul a:any-link > span {
 	order: 7;
 }
 
-:link::before, :visited::before, area[href]::before {
+:link::before,
+:visited::before,
+area[href]::before,
+:link:before,
+:visited:before,
+area[href]:before {
 	order: 8;
 }
 
-::before:any-link {
+::before:any-link,
+:before:any-link {
 	order: 8;
 }
 

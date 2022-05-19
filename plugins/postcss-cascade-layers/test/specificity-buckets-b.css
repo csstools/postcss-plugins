@@ -1,0 +1,41 @@
+@layer A, B;
+
+foo {
+	bucket: 1;
+}
+
+@layer A {
+	foo {
+		bucket: 2;
+	}
+
+	#foo {
+		bucket: 2;
+	}
+
+	#foo #fooz {
+		bucket: 2;
+	}
+
+	#foo #fooz #foos {
+		bucket: 2;
+	}
+}
+
+@layer B {
+	foo {
+		bucket: 3;
+	}
+
+	#foo {
+		bucket: 3;
+	}
+
+	#foo #fooz {
+		bucket: 3;
+	}
+
+	#foo #fooz #foos {
+		bucket: 3;
+	}
+}

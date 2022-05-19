@@ -1,7 +1,12 @@
 .test-hwb {
 	color: rgb(0, 195, 255); /* #00c3ff */
 	color: rgba(0, 195, 255, .5); /* #00c3ff with 50% opacity */
-
+	color: rgb(26, 26, 26);
+	color: rgb(51, 51, 51);
+	color: rgb(77, 77, 77);
+	color: rgb(102, 102, 102);
+	color: rgb(128, 128, 128);
+	color: rgb(153, 153, 153);
 }
 
 .test-ignore {
