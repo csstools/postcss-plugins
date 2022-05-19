@@ -71,3 +71,26 @@
 	color: hsl(120 100% 50% / 50%);
 	color: hsl(120, 100%, 50%, 0);
 }
+
+.test-legacy-notation-with-modern-components--rgb {
+	color: rgb(50%, 34, 34);
+	color: rgb(178, 10%, 34);
+	color: rgb(178, 34, 10%);
+}
+
+.test-legacy-notation-with-modern-components--rgba {
+	color: rgba(50%, 34, 34, 1);
+	color: rgba(178, 10%, 34, 1);
+	color: rgba(178, 34, 10%, 1);
+	color: rgba(178, 34, 34, 100%);
+}
+
+.test-legacy-notation-with-modern-components--hsla {
+	color: hsla(120, 100%, 50%, 100%);
+}
+
+.test-ignore {
+	/* this plugin shouldn't format */
+	color: rgba(0,0,0,0.1); /* spaceless */
+	color: rgba(0, 0, 0, 0.2); /* with spaces */
+}
