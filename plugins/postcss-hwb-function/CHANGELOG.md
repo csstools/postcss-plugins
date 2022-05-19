@@ -1,6 +1,6 @@
 # Changes to PostCSS HWB Function
 
-### 1.0.01 (May 18, 2022)
+### 1.0.1 (May 18, 2022)
 
 - Fix grayscale conversions.
 
