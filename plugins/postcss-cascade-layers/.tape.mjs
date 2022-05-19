@@ -51,5 +51,11 @@ postcssTape(plugin)({
 			postcssImport(), /* postcss-import must run first */
 			plugin(),
 		]
-	}
+	},
+	'specificity-buckets-a': {
+		message: "creates non overlapping specificity buckets",
+	},
+	'specificity-buckets-b': {
+		message: "creates non overlapping specificity buckets",
+	},
 });

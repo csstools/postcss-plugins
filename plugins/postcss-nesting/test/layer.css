@@ -1,0 +1,14 @@
+.unlayered {
+	contain: layout inline-size;
+}
+
+.partially-layered {
+	background-color: blue;
+	height: 100px;
+	width: 100px;
+
+	@layer A {
+		/* There is no definition for this behavior */
+		background-color: red;
+	}
+}
