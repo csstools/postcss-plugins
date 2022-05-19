@@ -1,7 +1,7 @@
 {
 	"name": "postcss-preset-env",
 	"description": "Convert modern CSS into something browsers understand",
-	"version": "7.5.0",
+	"version": "7.6.0",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
 	"funding": {
