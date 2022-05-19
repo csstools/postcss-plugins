@@ -20,8 +20,8 @@ function generateNot(specificity: number) {
 
 	let list = '';
 	for (let i = 0; i < specificity; i++) {
-		list += '#\\#'; // something short but still very uncommon
+		list += ':not(#\\#)'; // something short but still very uncommon
 	}
 
-	return `:not(${list})`;
+	return list;
 }

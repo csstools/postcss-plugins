@@ -15,7 +15,7 @@
 		system: extends three;
 	}
 
-#target:not(#\##\##\##\##\##\##\##\#) {
+#target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	animation: anim 1s paused;
 }
 
@@ -23,7 +23,7 @@
 	from { background-color: green; }
 }
 
-#target:not(#\##\##\##\##\##\##\##\#)::before {
+#target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#)::before {
 	content: counter(dont-care, custom-counter-style);
 }
 

@@ -7,14 +7,14 @@ target:not(#\#) {
 		color: green;
 	}
 
-a:not(#\##\#) {
+a:not(#\#):not(#\#) {
 	color: purple;
 }
 
-target:not(#\##\#) {
+target:not(#\#):not(#\#) {
   color: green;
 }
 
-span h1:not(#\##\#), span p:not(#\##\#) {
+span h1:not(#\#):not(#\#), span p:not(#\#):not(#\#) {
   color:red;
 }
