@@ -4,6 +4,9 @@
 	order: 0.70711; /* 45deg */
 	order: 0.70711; /* 45deg */
 	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
 	order: -0.70711; /* -45deg */
 	order: -0.70711; /* -45deg */
 	order: -0.70711; /* -45deg */
@@ -54,6 +57,8 @@
 	order: 0;
 	order: 1.55741;
 	order: -0.84159;
+	order: 1.80405; /* 61deg */
+	order: 1.80405; /* 61deg should be similar to above */
 	/* Asymptotes */
 	order: infinity;
 	order: infinity;
@@ -63,6 +68,10 @@
 	order: -infinity;
 	order: -infinity;
 	order: -infinity;
+	/* 1 + 2 -> 3 */
+	/* 3 * 3 -> 9 */
+	/* 9 * 10deg -> 90deg */
+	order: infinity; /* Is asymptotic */
 	/* Non Asymptotes */
 	order: 0;
 	order: 0;
@@ -172,4 +181,10 @@
 
 	order: 80.54deg;
 	order: 9.46deg;
+}
+
+.complex-calculations {
+	order: sin(1deg + 3 + .25turn); /* Mixed units, should not calculate */
+	order: 0.90533; /* Mixed units but separated, should calculate */
+	order: sin(var(--foo) * 3deg);
 }

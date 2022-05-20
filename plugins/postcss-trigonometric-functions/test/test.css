@@ -1,3 +1,6 @@
-.test {
-	order: tan(((1 + 2) * 3) * 1deg);
+.calculations {
+	/* 1 + 2 -> 3 */
+	/* 3 * 3 -> 9 */
+	/* 9 * 10deg -> 90deg */
+	order: tan(((1 + 2) * 3) * 10deg); /* Is asymptotic */
 }
