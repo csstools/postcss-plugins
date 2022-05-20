@@ -361,3 +361,23 @@
 	order: sin((1deg + 3) + .25turn); /* Mixed units but separated, should calculate */
 	order: sin(var(--foo) * 3deg);
 }
+
+.ignore-not-a-function {
+	order: sin;
+	order: cos;
+	order: tan;
+	order: asin;
+	order: acos;
+	order: atan;
+	order: atan2;
+}
+
+.ignore-no-arguments {
+	order: sin();
+	order: cos();
+	order: tan();
+	order: asin();
+	order: acos();
+	order: atan();
+	order: atan2();
+}
