@@ -1,4 +1,4 @@
-#foo:not(#\##\##\##\#) {
+#foo:not(#\#):not(#\#):not(#\#):not(#\#) {
 	bucket: 1;
 }
 
@@ -6,6 +6,6 @@
 		bucket: 2;
 	}
 
-#foo:not(#\##\#) {
+#foo:not(#\#):not(#\#) {
 		bucket: 3;
 	}

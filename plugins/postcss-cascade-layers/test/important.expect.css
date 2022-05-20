@@ -15,7 +15,7 @@
 		background-color: blue;
 	}
 
-.foo:not(#\##\#) {
+.foo:not(#\#):not(#\#) {
 		color: pink !important;
 	}
 
@@ -23,7 +23,7 @@
 		background-color: pink;
 	}
 
-.bar:not(#\##\#) {
+.bar:not(#\#):not(#\#) {
 		color: green !important;
 	}
 
@@ -35,7 +35,7 @@
 	color: orange !important;
 }
 
-.foo:not(#\##\#) {
+.foo:not(#\#):not(#\#) {
 	background-color: orange;
 }
 
@@ -43,6 +43,6 @@
 	color: purple !important;
 }
 
-.bar:not(#\##\#) {
+.bar:not(#\#):not(#\#) {
 	background-color: green;
 }

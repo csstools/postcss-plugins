@@ -7,14 +7,14 @@ target:not(#\#) {
 		color: orange;
 	}
 
-target:not(#\##\#) {
+target:not(#\#):not(#\#) {
 		color: yellow;
 	}
 
-target:not(#\##\##\#) {
+target:not(#\#):not(#\#):not(#\#) {
 		color: green;
 	}
 
-target:not(#\##\##\##\#) {
+target:not(#\#):not(#\#):not(#\#):not(#\#) {
 	color: purple;
 }

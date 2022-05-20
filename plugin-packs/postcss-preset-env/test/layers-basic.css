@@ -38,7 +38,7 @@
 			order: 5;
 
 			@layer D {
-				is-layer: C.D;
+				is-layer: C_D;
 				order: 5.1;
 			}
 		}
