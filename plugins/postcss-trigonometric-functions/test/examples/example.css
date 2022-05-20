@@ -1,0 +1,15 @@
+.trigonometry {
+	line-height: sin(pi / 4);
+	line-height: cos(.125turn);
+	line-height: tan(50grad);
+	transform: rotate(asin(-1));
+	transform: rotate(asin(sin(30deg + 1.0471967rad)));
+	transform: rotate(acos(-1));
+	transform: rotate(acos(cos(0 / 2 + 1 - 1)));
+	transform: rotate(atan(infinity));
+	transform: rotate(atan(e - 2.7182818284590452354));
+	transform: rotate(atan2(-infinity,-infinity));
+	transform: rotate(atan2(-infinity,infinity));
+	transform: rotate(atan2(-infinity,infinity));
+	transform: rotate(atan2(90, 15));
+}

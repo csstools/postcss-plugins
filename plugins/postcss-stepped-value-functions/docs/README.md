@@ -30,7 +30,7 @@
 
 ## ⚠️ About custom properties
 
-Given the dynamic nature of custom properties it's impossible to know what the variable value is which means the plugin can't compute a final value for the stylesheet. 
+Given the dynamic nature of custom properties it's impossible to know what the variable value is, which means the plugin can't compute a final value for the stylesheet. 
 
 Because of that, any usage that contains a `var` is skipped.
 

@@ -1,0 +1,210 @@
+.sin {
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: -0.70711; /* -45deg */
+	order: -0.70711; /* -45deg */
+	order: -0.70711; /* -45deg */
+	order: -0.70711; /* -45deg */
+	order: -0.70711; /* -45deg */
+	order: 0;
+	order: 0.64964;
+	order: 0.56868;
+	order: sin(1px);
+	order: sin(foo);
+	order: NaN;
+	order: NaN;
+	order: NaN;
+	order: sin(var(--foo));
+}
+
+.cos {
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* 45deg */
+	order: 0.70711; /* -45deg */
+	order: 0.70711; /* -45deg */
+	order: 0.70711; /* -45deg */
+	order: 0.70711; /* -45deg */
+	order: 0.70711; /* -45deg */
+	order: 0.76024;
+	order: 0.74872;
+	order: cos(1px);
+	order: cos(foo);
+	order: NaN;
+	order: NaN;
+	order: NaN;
+}
+
+.tan {
+	order: 1;  /* 45deg */
+	order: 1; /* 45deg */
+	order: 1; /* 45deg */
+	order: 1; /* 45deg */
+	order: 1; /* 45deg */
+	order: -1; /* -45deg */
+	order: -1; /* -45deg */
+	order: -1; /* -45deg */
+	order: -1; /* -45deg */
+	order: -1; /* -45deg */
+	order: 0;
+	order: 1.55741;
+	order: -0.84159;
+	order: 1.80405; /* 61deg */
+	order: 1.80405; /* 61deg should be similar to above */
+	/* Asymptotes */
+	order: infinity;
+	order: infinity;
+	order: infinity;
+	order: infinity;
+	order: -infinity;
+	order: -infinity;
+	order: -infinity;
+	order: -infinity;
+	/* 1 + 2 -> 3 */
+	/* 3 * 3 -> 9 */
+	/* 9 * 10deg -> 90deg */
+	order: infinity; /* Is asymptotic */
+	/* Non Asymptotes */
+	order: 0;
+	order: 0;
+	order: 0;
+	order: 0;
+	order: tan(1px);
+	order: tan(foo);
+	order: NaN;
+	order: NaN;
+	order: NaN;
+}
+
+.asin {
+	order: 45deg;
+	order: 90deg;
+	order: -90deg;
+	order: -30deg;
+	order: 0deg;
+	order: 30deg;
+	order: 90deg;
+	order: NaN;
+	order: NaN;
+	order: asin(45deg);
+	order: asin(1rad);
+	order: asin(foo);
+	order: NaN;
+	order: NaN;
+}
+
+.acos {
+	order: 45deg;
+	order: 90deg;
+	order: 180deg;
+	order: 120deg;
+	order: 90deg;
+	order: 60deg;
+	order: 0deg;
+	order: NaN;
+	order: NaN;
+	order: acos(45deg);
+	order: acos(1rad);
+	order: acos(foo);
+	order: NaN;
+	order: NaN;
+}
+
+.atan {
+	order: 90deg;
+	order: -90deg;
+	order: 45deg;
+	order: 0deg;
+	order: 0deg;
+	order: 45deg; /* 45deg */
+	order: 45deg; /* 45deg */
+	order: 45deg; /* 45deg */
+	order: 45deg; /* 45deg */
+	order: 45deg; /* 45deg */
+	order: -45deg; /* -45deg */
+	order: -45deg; /* -45deg */
+	order: -45deg; /* -45deg */
+	order: -45deg; /* -45deg */
+	order: -45deg; /* -45deg */
+}
+
+.atan2 {
+	order: -135deg;
+	order: -90deg;
+	order: -90deg;
+	order: -90deg;
+	order: -90deg;
+	order: -45deg;
+
+	order: -180deg;
+	order: -135deg;
+	order: -90deg;
+	order: -90deg;
+	order: -45deg;
+	order: 0deg;
+
+	order: -180deg;
+	order: -180deg;
+	order: -180deg;
+	order: 0deg;
+	order: 0deg;
+	order: 0deg;
+
+	order: 180deg;
+	order: 180deg;
+	order: 180deg;
+	order: 0deg;
+	order: 0deg;
+	order: 0deg;
+
+	order: 180deg;
+	order: 135deg;
+	order: 90deg;
+	order: 90deg;
+	order: 45deg;
+	order: 0deg;
+
+	order: 135deg;
+	order: 90deg;
+	order: 90deg;
+	order: 90deg;
+	order: 90deg;
+	order: 45deg;
+
+	order: 80.54deg;
+	order: 9.46deg;
+}
+
+.complex-calculations {
+	order: sin(1deg + 3 + .25turn); /* Mixed units, should not calculate */
+	order: 0.90533; /* Mixed units but separated, should calculate */
+	order: sin(var(--foo) * 3deg);
+}
+
+.ignore-not-a-function {
+	order: sin;
+	order: cos;
+	order: tan;
+	order: asin;
+	order: acos;
+	order: atan;
+	order: atan2;
+}
+
+.ignore-no-arguments {
+	order: sin();
+	order: cos();
+	order: tan();
+	order: asin();
+	order: acos();
+	order: atan();
+	order: atan2();
+}

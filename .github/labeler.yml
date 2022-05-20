@@ -188,5 +188,9 @@
   - plugins/postcss-stepped-value-functions/**
   - experimental/postcss-stepped-value-functions/**
 
+"plugins/postcss-trigonometric-functions":
+  - plugins/postcss-trigonometric-functions/**
+  - experimental/postcss-trigonometric-functions/**
+
 "sites/postcss-preset-env":
   - sites/postcss-preset-env/**
