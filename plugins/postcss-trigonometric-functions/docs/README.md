@@ -46,8 +46,6 @@ The following units are supported:
 
 Some calculations (such as `sin(-infinity)`) might return `NaN` as per the spec. Given that `NaN` can't be replaced with a value that's useful to CSS it is left as is, as the result will be effectively ignored by the browser.
 
-
-
 ## Options
 
 ### preserve
