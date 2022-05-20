@@ -54,6 +54,10 @@ enum ExpressionPart {
 	Operation
 }
 
+function isFiniteNumber(number: number) {
+	return !Number.isNaN(number) && Number.isFinite(number);
+}
+
 /**
  * Try to compute a calculation from a Node.
  *
@@ -76,16 +80,61 @@ enum ExpressionPart {
 export function computeCalculation(nodes: Node[], ignoreUnit = false) {
 	let isValid = true;
 	const expression = [];
+
+	// Compute functions first, this will go as deep as it needs to resolve parenthesis first
+	// recursion happening here if any parsed value isn't valid everything bails out
+	nodes.filter(node => node.type === 'function').forEach((functionNode: FunctionNode) => {
+		if (!isValid) {
+			return;
+		}
+
+		if (functionNode.value !== '') {
+			isValid = false;
+			return;
+		}
+
+		const clonedNodes = functionNode.nodes.slice(0);
+		const result = computeCalculation(clonedNodes, ignoreUnit);
+		const hasOneItem = result.length === 1;
+		const itemValue = Number(result[0]?.value || '');
+		const isValidResult = hasOneItem && result[0].type === 'word' && !Number.isNaN(itemValue);
+
+		if (!isValidResult) {
+			isValid = false;
+			return;
+		}
+
+		functionNodeToWordNode(functionNode);
+		functionNode.value = result[0].value;
+	});
+
+	if (!isValid) {
+		return nodes;
+	}
+
 	const filteredNodes = nodes.filter(
 		node => node.type === 'word' || ALLOWED_OPERATIONS.includes(node.value),
 	);
 	let operationPart = ExpressionPart.Number;
+	const expressionUnits = [];
 	let detectedUnit;
 
-	const addToExpression = (part: string, type: ExpressionPart) => {
+	const addToExpression = (part: string, type: ExpressionPart, unit?: string) => {
 		if (operationPart !== type) {
 			isValid = false;
 			return;
+		}
+
+		if (type === ExpressionPart.Number) {
+			const normalizedUnit = unit || '';
+
+			if (!expressionUnits.includes(normalizedUnit)) {
+				expressionUnits.push({
+					number: part,
+					unit: normalizedUnit,
+					index: expression.length,
+				});
+			}
 		}
 
 		expression.push(part);
@@ -142,20 +191,13 @@ export function computeCalculation(nodes: Node[], ignoreUnit = false) {
 		}
 
 		if (parsed.unit === 'rad') {
-			addToExpression(parsed.number, ExpressionPart.Number);
+			addToExpression(parsed.number, ExpressionPart.Number, parsed.unit);
 			continue;
 		}
 
 		if (typeof toRad[parsed.unit] === 'function') {
-			const number = toRad[parsed.unit](Number(parsed.number));
-
-			if (!Number.isNaN(number) && Number.isFinite(number)) {
-				addToExpression(number.toString(), ExpressionPart.Number);
-				continue;
-			} else {
-				isValid = false;
-				break;
-			}
+			addToExpression(parsed.number, ExpressionPart.Number, parsed.unit);
+			continue;
 		}
 
 		isValid = false;
@@ -178,12 +220,49 @@ export function computeCalculation(nodes: Node[], ignoreUnit = false) {
 	let result;
 
 	try {
+		let expressionConversion = '';
+		const differentUnits = new Set<string>(expressionUnits.map(part => part.unit));
+
+		if (differentUnits.size > 1) {
+			// If there's no empty unit this means is computing operations
+			// such as 15deg + 0.25turn
+			// among different units At this stage we're certain they're
+			// degrees, but we need to convert them first to radians
+			if (!differentUnits.has('')) {
+				expressionUnits.forEach(part => {
+					if (part.unit !== 'rad') {
+						const converted = toRad[part.unit](Number(part.number));
+
+						if (isFiniteNumber(converted)) {
+							expression[part.index] = converted.toString();
+						} else {
+							// Bail out
+							throw new Error();
+						}
+					}
+				});
+			} else if (differentUnits.size === 2) {
+				// Now we can only calculate if we don't have more than 2 units
+				// having empty unit and more than 1 is not calculable
+				[expressionConversion] = Array.from(differentUnits).filter(v => v !== '');
+			} else {
+				// Bail out
+				throw new Error();
+			}
+		}
+
 		const context = vm.createContext({ result: NaN });
 		const calculation = new vm.Script(`result = ${expression.join(' ')}`);
 		calculation.runInContext(context);
 
-		if (typeof context.result === 'number' && !Number.isNaN(context.result) && Number.isFinite(context.result)) {
-			result = context.result;
+		if (typeof context.result === 'number' && isFiniteNumber(context.result)) {
+			if (expressionConversion) {
+				context.result = toRad[expressionConversion](context.result);
+			}
+
+			if (isFiniteNumber(context.result)) {
+				result = context.result;
+			}
 		}
 	} catch(error) {
 		// Error silently
