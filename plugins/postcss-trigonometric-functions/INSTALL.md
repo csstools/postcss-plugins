@@ -17,10 +17,10 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssBasePlugin = require('@csstools/postcss-trigonometric-functions');
+const postcssTrigonometricFunctions = require('@csstools/postcss-trigonometric-functions');
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssTrigonometricFunctions(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -35,11 +35,11 @@ npm install postcss-cli @csstools/postcss-trigonometric-functions --save-dev
 Use [PostCSS Trigonometric Functions] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-trigonometric-functions');
+const postcssTrigonometricFunctions = require('@csstools/postcss-trigonometric-functions');
 
 module.exports = {
 	plugins: [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssTrigonometricFunctions(/* pluginOptions */)
 	]
 }
 ```
@@ -103,11 +103,11 @@ Use [React App Rewire PostCSS] and [PostCSS Trigonometric Functions] in your
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssBasePlugin = require('@csstools/postcss-trigonometric-functions');
+const postcssTrigonometricFunctions = require('@csstools/postcss-trigonometric-functions');
 
 module.exports = config => reactAppRewirePostcss(config, {
 	plugins: () => [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssTrigonometricFunctions(/* pluginOptions */)
 	]
 });
 ```
@@ -124,11 +124,11 @@ Use [PostCSS Trigonometric Functions] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssBasePlugin = require('@csstools/postcss-trigonometric-functions');
+const postcssTrigonometricFunctions = require('@csstools/postcss-trigonometric-functions');
 
 gulp.task('css', function () {
 	var plugins = [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssTrigonometricFunctions(/* pluginOptions */)
 	];
 
 	return gulp.src('./src/*.css')
@@ -148,7 +148,7 @@ npm install grunt-postcss @csstools/postcss-trigonometric-functions --save-dev
 Use [PostCSS Trigonometric Functions] in your Gruntfile:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-trigonometric-functions');
+const postcssTrigonometricFunctions = require('@csstools/postcss-trigonometric-functions');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -156,7 +156,7 @@ grunt.initConfig({
 	postcss: {
 		options: {
 			processors: [
-			postcssBasePlugin(/* pluginOptions */)
+			postcssTrigonometricFunctions(/* pluginOptions */)
 			]
 		},
 		dist: {
