@@ -16,19 +16,19 @@
 }
 
 @media screen {
-	target:not(#\##\##\##\##\##\##\#) {
+	target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		layered: no;
 		order: 3;
 	}
 }
 
 @media screen {
-		target:not(#\##\##\##\##\#) {
+		target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 			order: 6;
 		}
 
 		@media screen {
-			target:not(#\##\##\##\##\#) {
+			target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 				order: 7;
 			}
 		}
@@ -37,12 +37,12 @@
 @media screen {
 
 		@media screen {
-				target:not(#\##\##\#) {
+				target:not(#\#):not(#\#):not(#\#) {
 					order: 8;
 				}
 
 				@media screen {
-					target:not(#\##\##\#) {
+					target:not(#\#):not(#\#):not(#\#) {
 						order: 9;
 					}
 				}
@@ -54,7 +54,7 @@
 		@media screen {
 
 				@media screen {
-						target:not(#\##\#) {
+						target:not(#\#):not(#\#) {
 							order: 10;
 						}
 				}
@@ -62,7 +62,7 @@
 }
 
 @media screen {
-	target:not(#\##\##\##\##\##\##\#) {
+	target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		layered: no;
 		order: 5;
 	}

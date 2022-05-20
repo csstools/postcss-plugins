@@ -13,7 +13,7 @@
 		}
 }
 
-.foo:not(#\##\#) {
+.foo:not(#\#):not(#\#) {
 		color: pink;
 	}
 

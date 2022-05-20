@@ -28,31 +28,31 @@ i:not(#\#) {
 		color: red;
 	}
 
-target:not(#\##\##\#) {
+target:not(#\#):not(#\#):not(#\#) {
 			color: yellow;
 		}
 
-target:not(#\##\##\##\##\##\#) {
+target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 			color: yellow;
 		}
 
 @media (prefers-color-scheme: dark) {
-		h1:not(#\##\##\##\##\##\##\#) {
+		h1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 			color: red;
 			background: black;
 		}
 	}
 
 @media (prefers-color-scheme: dark) {
-			target:not(#\##\##\##\##\##\#) {
+			target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 				color: lime;
 			}
 	}
 
-target:not(#\##\##\##\##\##\##\##\#) {
+target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 			color: yellow;
 		}
 
-target:not(#\##\##\##\##\##\##\##\##\#) {
+target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		color: red;
 	}

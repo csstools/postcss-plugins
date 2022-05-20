@@ -37,8 +37,8 @@ for `@layer A, B, C`:
 | layer | specificity adjustment | selector |
 | ------ | ----------- | --- |
 | `A` | 0 | N/A |
-| `B` | 3 | `:not(#/##/##/#)` |
-| `C` | 6 | `:not(#/##/##/##/##/##/#)` |
+| `B` | 3 | `:not(#/#):not(#/#):not(#/#)` |
+| `C` | 6 | `:not(#/#):not(#/#):not(#/#):not(#/#):not(#/#):not(#/#)` |
 
 This approach lets more important (later) layers always override less important (earlier) layers.<br>
 And layers have enough room internally so that each selector works and overrides as expected.
