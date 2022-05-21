@@ -1,8 +1,9 @@
 import type { Declaration, Result } from 'postcss';
 import valueParser from 'postcss-value-parser';
-import { Token } from './data-formats/base/token';
+import { Token, TokenTransformOptions } from './data-formats/base/token';
+import { pluginOptions } from './options';
 
-export function onCSSValue(tokens: Map<string, Token>, result: Result, decl: Declaration) {
+export function onCSSValue(tokens: Map<string, Token>, result: Result, decl: Declaration, opts?: pluginOptions) {
 	const valueAST = valueParser(decl.value);
 
 	valueAST.walk(node => {
@@ -10,23 +11,47 @@ export function onCSSValue(tokens: Map<string, Token>, result: Result, decl: Dec
 			return;
 		}
 
-		if (!node.nodes || node.nodes.length !== 1) {
-			decl.warn(result, 'Expected a single string literal for the design-token function.');
+		if (!node.nodes || node.nodes.length === 0) {
+			decl.warn(result, 'Expected at least a single string literal for the design-token function.');
 			return;
 		}
 
 		if (node.nodes[0].type !== 'string') {
-			decl.warn(result, 'Expected a single string literal for the design-token function.');
+			decl.warn(result, 'Expected at least a single string literal for the design-token function.');
 			return;
 		}
 
-		const replacement = tokens.get(node.nodes[0].value);
+		const tokenName = node.nodes[0].value;
+		const replacement = tokens.get(tokenName);
 		if (!replacement) {
-			decl.warn(result, `design-token: "${node.nodes[0].value}" is not configured.`);
+			decl.warn(result, `design-token: "${tokenName}" is not configured.`);
 			return;
 		}
 
-		node.value = replacement.cssValue();
+		const remainingNodes = node.nodes.slice(1).filter(x => x.type === 'word');
+		if (!remainingNodes.length) {
+			node.value = replacement.cssValue();
+			node.nodes = undefined;
+			return;
+		}
+
+		const transformOptions: TokenTransformOptions = {
+			pluginOptions: opts?.unitsAndValues,
+		};
+		for (let i = 0; i < remainingNodes.length; i++) {
+			if (
+				remainingNodes[i].type === 'word' &&
+				remainingNodes[i].value === 'to' &&
+				remainingNodes[i + 1] &&
+				remainingNodes[i + 1].type === 'word' &&
+				['px', 'rem'].includes(remainingNodes[i + 1].value)
+			) {
+				transformOptions.toUnit = remainingNodes[i + 1].value;
+				i++;
+			}
+		}
+
+		node.value = replacement.cssValue(transformOptions);
 		node.nodes = undefined;
 	});
 

@@ -1,5 +1,8 @@
+import { TokenTransformOptions } from '../../base/token';
+import valueParser from 'postcss-value-parser';
+
 export type StyleDictionaryV3TokenValue = {
-	cssValue(): string
+	cssValue(transformOptions?: TokenTransformOptions): string
 	// The value of the design token. This can be any type of data, a hex string, an integer, a file path to a file, even an object or array.
 	value: unknown
 	// Usually the name for a design token is generated with a name transform, but you can write your own if you choose. By default Style Dictionary will add a default name which is the key of the design token object.
@@ -33,8 +36,8 @@ export function extractStyleDictionaryV3Token(node: unknown, key: string, path: 
 
 	return {
 		value: value,
-		cssValue: () => {
-			return value ?? '';
+		cssValue: (transformOptions?: TokenTransformOptions) => {
+			return applyTransformsToValue(value, transformOptions);
 		},
 		name: node['name'] ?? key,
 		comment: node['comment'] ?? undefined,
@@ -45,4 +48,59 @@ export function extractStyleDictionaryV3Token(node: unknown, key: string, path: 
 			isSource: true,
 		},
 	};
+}
+
+export function applyTransformsToValue(value: string|undefined|null, transformOptions?: TokenTransformOptions): string {
+	if (!value) {
+		return '';
+	}
+
+	if (!transformOptions) {
+		return value;
+	}
+
+	if (transformOptions.toUnit) {
+		const dimension = valueParser.unit(value ?? '');
+		if (!dimension || dimension.unit === transformOptions.toUnit) {
+			return `${value}`;
+		}
+
+		if (dimension.unit === 'rem' && transformOptions.toUnit === 'px') {
+			return remToPx(parseFloat(dimension.number), transformOptions.pluginOptions?.rootFontSize ?? 16);
+		}
+
+		if (dimension.unit === 'px' && transformOptions.toUnit === 'rem') {
+			return pxToRem(parseFloat(dimension.number), transformOptions.pluginOptions?.rootFontSize ?? 16);
+		}
+	}
+
+	return value;
+}
+
+function remToPx(value: number, rootFontSize: number): string {
+	return `${formatFloat(value * rootFontSize)}px`;
+}
+
+function pxToRem(value: number, rootFontSize: number): string {
+	return `${formatFloat(value / rootFontSize)}rem`;
+}
+
+function formatFloat(value: number): string {
+	if (Number.isInteger(value)) {
+		return value.toString();
+	}
+
+	let fixedPrecision = value.toFixed(5);
+	for (let i = fixedPrecision.length; i > 0; i--) {
+		if (fixedPrecision[i] === '.') {
+			break;
+		}
+
+		if (fixedPrecision[i] !== '0') {
+			fixedPrecision = fixedPrecision.slice(0, i + 1);
+			continue;
+		}
+	}
+
+	return fixedPrecision;
 }

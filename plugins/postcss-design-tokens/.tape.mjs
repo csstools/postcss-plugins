@@ -5,10 +5,20 @@ import postcssImport from 'postcss-import';
 postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
-		options: {},
 		plugins: [
 			postcssImport(),
 			plugin()
+		]
+	},
+	'basic:rootFontSize-20': {
+		message: "supports basic usage with { unitsAndValues { rootFontSize: 20 } }",
+		plugins: [
+			postcssImport(),
+			plugin({
+				unitsAndValues: {
+					rootFontSize: 20
+				}
+			})
 		]
 	},
 	'errors': {
