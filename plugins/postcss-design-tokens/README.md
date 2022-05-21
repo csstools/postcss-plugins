@@ -188,6 +188,50 @@ postcssDesignTokens({
 }
 ```
 
+## Syntax
+
+[PostCSS Design Tokens] is non-standard and is not part of any official CSS Specification.
+
+### `@design-tokens` rule
+
+The `@design-tokens` rule is used to import design tokens from a JSON file into your CSS.
+
+```pcss
+@design-tokens url('./tokens.json') format('style-dictionary3');
+```
+
+```pcss
+@design-tokens url('./tokens.json') format('style-dictionary3');
+@design-tokens url('./tokens-dark-mode.json') format('style-dictionary3') when('dark');
+```
+
+```
+@design-tokens [ <url> | <string> ]
+               [ when(<theme-condition>) ]?
+               format(<format-name>);
+
+<theme-condition> = <string>
+
+<format-name> = [ 'style-dictionary3' ]
+```
+
+### `design-token()` function
+
+The `design-token()` function takes a token path and returns the token value.
+
+```pcss
+.foo {
+	color: design-token('color.background.primary');
+}
+```
+
+```
+design-token() = design-token( <token-path> [ to <unit> ]? )
+
+<token-path> = <string>
+<unit> = [ px | rem ]
+```
+
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#TODO
 [discord]: https://discord.gg/bUadyRwkJS
