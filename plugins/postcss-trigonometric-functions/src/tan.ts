@@ -1,6 +1,6 @@
 import type { Declaration } from 'postcss';
 import valueParser from 'postcss-value-parser';
-import { formatResultingNumber, gradToDeg, radToDeg, validateNode } from './utils';
+import { formatResultingNumber, radToDeg, validateNode } from './utils';
 
 const tanFunctionCheck = 'tan(';
 
