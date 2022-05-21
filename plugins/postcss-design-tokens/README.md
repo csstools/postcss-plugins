@@ -62,6 +62,14 @@ instructions for:
 | [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
 | --- | --- | --- | --- | --- | --- |
 
+## Formats
+
+At this time there is no standardized format for design tokens.
+Although there is an ongoing effort to create this, we feel it is still too early to adopt this.
+
+For the moment we only support [Style Dictionary](https://amzn.github.io/style-dictionary/#/).
+Use `style-dictionary3` in `@design-tokens` rules to pick this format.
+
 ## Options
 
 ### is
