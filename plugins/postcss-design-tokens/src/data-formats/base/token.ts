@@ -1,3 +1,10 @@
+export interface TokenTransformOptions {
+	pluginOptions?: {
+		rootFontSize?: number;
+	};
+	toUnit?: string;
+}
+
 export interface Token {
-	cssValue(): string
+	cssValue(opts?: TokenTransformOptions): string
 }

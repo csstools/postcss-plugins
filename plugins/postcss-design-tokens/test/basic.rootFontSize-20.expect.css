@@ -17,9 +17,9 @@
 	padding-bottom: 32px;
 }
 .px-to-rem {
-	padding-bottom: 0.5rem;
-	padding-bottom: 1.1rem;
-	padding-bottom: 2rem;
+	padding-bottom: 0.4rem;
+	padding-bottom: 0.9rem;
+	padding-bottom: 1.6rem;
 }
 .rem-to-rem {
 	padding-bottom: 0.5rem;
@@ -27,9 +27,9 @@
 	padding-bottom: 2rem;
 }
 .rem-to-px {
-	padding-bottom: 8px;
-	padding-bottom: 18px;
-	padding-bottom: 32px;
+	padding-bottom: 10px;
+	padding-bottom: 22.5px;
+	padding-bottom: 40px;
 }
 .invalid-conversion {
 	color: red;

@@ -1,5 +1,6 @@
+import { TokenTransformOptions } from '../../base/token';
 import { toposort } from '../../toposort/toposort';
-import { StyleDictionaryV3TokenValue } from './value';
+import { applyTransformsToValue, StyleDictionaryV3TokenValue } from './value';
 
 export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3TokenValue>): Map<string, StyleDictionaryV3TokenValue> {
 	const tainted = new Set<string>();
@@ -53,8 +54,8 @@ export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3Toke
 			const currentToken = tokens.get(id);
 
 			currentToken.value = value;
-			currentToken.cssValue = () => {
-				return value ?? '';
+			currentToken.cssValue = (transformOptions: TokenTransformOptions) => {
+				return applyTransformsToValue(value, transformOptions);
 			};
 
 			tokens.set(id, currentToken);
@@ -125,8 +126,8 @@ export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3Toke
 			const currentToken = tokens.get(id);
 
 			currentToken.value = value;
-			currentToken.cssValue = () => {
-				return value ?? '';
+			currentToken.cssValue = (transformOptions: TokenTransformOptions) => {
+				return applyTransformsToValue(value, transformOptions);
 			};
 
 			tokens.set(id, currentToken);
