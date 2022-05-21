@@ -1,1 +1,5 @@
-type Color = [number, number, number];
+export {};
+
+declare global {
+	type Color = [number, number, number];
+}

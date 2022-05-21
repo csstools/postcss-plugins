@@ -1,6 +1,6 @@
 import { clip } from 'utils/clip';
 import { OKLCH_to_OKLab } from 'conversions/oklch-to-oklab';
-import { deltaEOK } from 'calculations/deltaEOK';
+import { deltaEOK } from 'calculations/delta-EOK';
 
 /**
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document

@@ -12,6 +12,6 @@
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
-export function polar_premultiply(color: Color, alpha: number, hueIndex: number): Color {
+export function polarPremultiply(color: Color, alpha: number, hueIndex: number): Color {
 	return color.map((c, i) => c * (hueIndex === i ? 1 : alpha)) as Color;
 }
