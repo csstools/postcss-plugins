@@ -29,7 +29,11 @@ installDoc = installDoc.replace(`<!-- Available Variables: -->
 installDoc = installDoc.replace('<header>', `# <humanReadableName> [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/<packageName>.svg" height="20">][npm-url]
-[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/<cssdbId>.svg" height="20">][css-url]
+${
+	packageJSONInfo.csstools?.cssdbId ?
+	`[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/<cssdbId>.svg" height="20">][css-url]` :
+	''
+}
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]`);
 
@@ -62,7 +66,11 @@ instructions for:
 
 // Insert "Link List" section
 installDoc = installDoc.replace('<link-list>', `[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[css-url]: https://cssdb.org/#<cssdbId>
+${
+	packageJSONInfo.csstools?.cssdbId ?
+		`[css-url]: https://cssdb.org/#<cssdbId>` :
+		''
+}
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/<packageName>
 

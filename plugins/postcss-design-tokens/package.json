@@ -56,10 +56,8 @@
 		"postcss-plugin"
 	],
 	"csstools": {
-		"cssdbId": "TODO",
 		"exportName": "postcssDesignTokens",
-		"humanReadableName": "PostCSS Design Tokens",
-		"specUrl": "#TODO"
+		"humanReadableName": "PostCSS Design Tokens"
 	},
 	"volta": {
 		"extends": "../../package.json"

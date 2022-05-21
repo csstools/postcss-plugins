@@ -14,7 +14,7 @@
 
 <header>
 
-[<humanReadableName>] lets easily create new plugins following some [CSS Specification].
+[<humanReadableName>] lets you use design tokens in your CSS source files.
 
 ```json
 <tokens.json>
@@ -159,4 +159,3 @@ design-token() = design-token( <token-path> [ to <unit> ]? )
 ```
 
 <link-list>
-[CSS Specification]: <specUrl>

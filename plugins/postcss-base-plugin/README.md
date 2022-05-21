@@ -5,7 +5,7 @@
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-[PostCSS Base Plugin] lets easily create new plugins following some [CSS Specification].
+[PostCSS Base Plugin] lets you easily create new plugins following some [CSS Specification].
 
 ```pcss
 .foo {

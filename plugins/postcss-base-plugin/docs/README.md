@@ -14,7 +14,7 @@
 
 <header>
 
-[<humanReadableName>] lets easily create new plugins following some [CSS Specification].
+[<humanReadableName>] lets you easily create new plugins following some [CSS Specification].
 
 ```pcss
 <example.css>
