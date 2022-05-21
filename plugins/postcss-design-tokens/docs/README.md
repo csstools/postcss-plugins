@@ -89,5 +89,30 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 <example-conditional.dark.expect.css>
 ```
 
+### unitsAndValues
+
+The `unitsAndValues` option allows you to control some aspects of how design values are converted to CSS.
+`rem` <-> `px` for example can only be calculated when we know the root font size.
+
+#### rootFontSize
+
+defaults to `16`
+
+```js
+<exportName>({
+	unitsAndValues: {
+		rootFontSize: 20,
+	},
+})
+```
+
+```pcss
+<example.css>
+
+/* becomes */
+
+<example.rootFontSize-20.expect.css>
+```
+
 <link-list>
 [CSS Specification]: <specUrl>

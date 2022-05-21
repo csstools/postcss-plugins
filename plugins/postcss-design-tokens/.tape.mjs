@@ -46,4 +46,12 @@ postcssTape(plugin)({
 			is: ['dark']
 		},
 	},
+	'examples/example:rootFontSize-20': {
+		message: "minimal example with { unitsAndValues { rootFontSize: 20 } }",
+		options: {
+			unitsAndValues: {
+				rootFontSize: 20
+			}
+		}
+	},
 });

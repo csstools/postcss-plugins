@@ -13,6 +13,11 @@
 		"background": {
 			"primary": { "value": "#fff" }
 		}
+	},
+	"size": {
+		"spacing": {
+			"small": { "value": "16px" }
+		}
 	}
 }
 ```
@@ -22,12 +27,16 @@
 
 .foo {
 	color: design-token('color.background.primary');
+	padding-left: design-token('size.spacing.small' to px);
+	padding-bottom: design-token('size.spacing.small' to rem);
 }
 
 /* becomes */
 
 .foo {
 	color: #fff;
+	padding-left: 16px;
+	padding-bottom: 1rem;
 }
 ```
 
@@ -141,6 +150,41 @@ postcssDesignTokens({ is: ['dark'] })
 
 .foo {
 	color: #000;
+}
+```
+
+### unitsAndValues
+
+The `unitsAndValues` option allows you to control some aspects of how design values are converted to CSS.
+`rem` <-> `px` for example can only be calculated when we know the root font size.
+
+#### rootFontSize
+
+defaults to `16`
+
+```js
+postcssDesignTokens({
+	unitsAndValues: {
+		rootFontSize: 20,
+	},
+})
+```
+
+```pcss
+@design-tokens url('./tokens.json') format('style-dictionary3');
+
+.foo {
+	color: design-token('color.background.primary');
+	padding-left: design-token('size.spacing.small' to px);
+	padding-bottom: design-token('size.spacing.small' to rem);
+}
+
+/* becomes */
+
+.foo {
+	color: #fff;
+	padding-left: 16px;
+	padding-bottom: 0.8rem;
 }
 ```
 

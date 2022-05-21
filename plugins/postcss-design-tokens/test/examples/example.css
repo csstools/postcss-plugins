@@ -2,4 +2,6 @@
 
 .foo {
 	color: design-token('color.background.primary');
+	padding-left: design-token('size.spacing.small' to px);
+	padding-bottom: design-token('size.spacing.small' to rem);
 }
