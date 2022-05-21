@@ -1,0 +1,210 @@
+.sin {
+	order: sin(45deg); /* 45deg */
+	order: sin(15 * 3deg); /* 45deg */
+	order: sin(.125turn); /* 45deg */
+	order: sin(1 / 8turn); /* 45deg */
+	order: sin(50grad); /* 45deg */
+	order: sin(10 + 4 * 10grad); /* 45deg */
+	order: sin(0.785398rad); /* 45deg */
+	order: sin(0.785398); /* 45deg */
+	order: sin(-45deg); /* -45deg */
+	order: sin(-.125turn); /* -45deg */
+	order: sin(-50grad); /* -45deg */
+	order: sin(-0.785398rad); /* -45deg */
+	order: sin(-0.785398); /* -45deg */
+	order: sin(0);
+	order: sin(sin(0.785398));
+	order: sin(sin(sin(sin(0.785398))));
+	order: sin(1px);
+	order: sin(foo);
+	order: sin(Infinity);
+	order: sin(InFiNiTy);
+	order: sin(-infinity);
+	order: sin(var(--foo));
+}
+
+.cos {
+	order: cos(45deg); /* 45deg */
+	order: cos(.125turn); /* 45deg */
+	order: cos(50grad); /* 45deg */
+	order: cos(0.785398rad); /* 45deg */
+	order: cos(0.785398); /* 45deg */
+	order: cos(-45deg); /* -45deg */
+	order: cos(-.125turn); /* -45deg */
+	order: cos(-50grad); /* -45deg */
+	order: cos(-0.785398rad); /* -45deg */
+	order: cos(-0.785398); /* -45deg */
+	order: cos(cos(0.785398));
+	order: cos(cos(cos(cos(0.785398))));
+	order: cos(1px);
+	order: cos(foo);
+	order: cos(Infinity);
+	order: cos(InFiNiTy);
+	order: cos(-infinity);
+}
+
+.tan {
+	order: tan(45deg);  /* 45deg */
+	order: tan(.125turn); /* 45deg */
+	order: tan(50grad); /* 45deg */
+	order: tan(0.785398rad); /* 45deg */
+	order: tan(0.785398); /* 45deg */
+	order: tan(-45deg); /* -45deg */
+	order: tan(-.125turn); /* -45deg */
+	order: tan(-50grad); /* -45deg */
+	order: tan(-0.785398rad); /* -45deg */
+	order: tan(-0.785398); /* -45deg */
+	order: tan(0);
+	order: tan(tan(0.785398));
+	order: tan(tan(tan(tan(0.785398))));
+	order: tan(61deg); /* 61deg */
+	order: tan(1 + 2 * 3 * 10deg); /* 61deg should be similar to above */
+	/* Asymptotes */
+	order: tan(90deg);
+	order: tan(100grad);
+	order: tan(270deg);
+	order: tan(300grad);
+	order: tan(-270deg);
+	order: tan(-100grad);
+	order: tan(-450deg);
+	order: tan(-300grad);
+	/* 1 + 2 -> 3 */
+	/* 3 * 3 -> 9 */
+	/* 9 * 10deg -> 90deg */
+	order: tan(((1 + 2) * 3) * 10deg); /* Is asymptotic */
+	/* Non Asymptotes */
+	order: tan(180deg);
+	order: tan(200grad);
+	order: tan(360deg);
+	order: tan(400grad);
+	order: tan(1px);
+	order: tan(foo);
+	order: tan(Infinity);
+	order: tan(InFiNiTy);
+	order: tan(-infinity);
+}
+
+.asin {
+	order: asin(sin(45deg));
+	order: asin(sin(90deg));
+	order: asin(-1);
+	order: asin(-0.5);
+	order: asin(0);
+	order: asin(0.5);
+	order: asin(1);
+	order: asin(2);
+	order: asin(-20);
+	order: asin(45deg);
+	order: asin(1rad);
+	order: asin(foo);
+	order: asin(infinity);
+	order: asin(-infinity);
+}
+
+.acos {
+	order: acos(cos(45deg));
+	order: acos(cos(90deg));
+	order: acos(-1);
+	order: acos(-0.5);
+	order: acos(0);
+	order: acos(0.5);
+	order: acos(1);
+	order: acos(2);
+	order: acos(-20);
+	order: acos(45deg);
+	order: acos(1rad);
+	order: acos(foo);
+	order: acos(infinity);
+	order: acos(-infinity);
+}
+
+.atan {
+	order: atan(infinity);
+	order: atan(-infinity);
+	order: atan(1);
+	order: atan(0);
+	order: atan(-0);
+	order: atan(tan(45deg)); /* 45deg */
+	order: atan(tan(.125turn)); /* 45deg */
+	order: atan(tan(50grad)); /* 45deg */
+	order: atan(tan(0.785398rad)); /* 45deg */
+	order: atan(tan(0.785398)); /* 45deg */
+	order: atan(tan(-45deg)); /* -45deg */
+	order: atan(tan(-.125turn)); /* -45deg */
+	order: atan(tan(-50grad)); /* -45deg */
+	order: atan(tan(-0.785398rad)); /* -45deg */
+	order: atan(tan(-0.785398)); /* -45deg */
+}
+
+.atan2 {
+	order: atan2(-infinity, -infinity);
+	order: atan2(-infinity, -1);
+	order: atan2(-infinity, -0);
+	order: atan2(-infinity, 0);
+	order: atan2(-infinity, 1);
+	order: atan2(-infinity, infinity);
+
+	order: atan2(-1, -infinity);
+	order: atan2(-1, -1);
+	order: atan2(-1, -0);
+	order: atan2(-1, 0);
+	order: atan2(-1, 1);
+	order: atan2(-1, infinity);
+
+	order: atan2(-0, -infinity);
+	order: atan2(-0, -1);
+	order: atan2(-0, -0);
+	order: atan2(-0, 0);
+	order: atan2(-0, 1);
+	order: atan2(-0, infinity);
+
+	order: atan2(0, -infinity);
+	order: atan2(0, -1);
+	order: atan2(0, -0);
+	order: atan2(0, 0);
+	order: atan2(0, 1);
+	order: atan2(0, infinity);
+
+	order: atan2(1, -infinity);
+	order: atan2(1, -1);
+	order: atan2(1, -0);
+	order: atan2(1, 0);
+	order: atan2(1, 1);
+	order: atan2(1, infinity);
+
+	order: atan2(infinity, -infinity);
+	order: atan2(infinity, -1);
+	order: atan2(infinity, -0);
+	order: atan2(infinity, 0);
+	order: atan2(infinity, 1);
+	order: atan2(infinity, infinity);
+
+	order: atan2(90, 15);
+	order: atan2(15, 90);
+}
+
+.complex-calculations {
+	order: sin(1deg + 3 + .25turn); /* Mixed units, should not calculate */
+	order: sin((1deg + 3) + .25turn); /* Mixed units but separated, should calculate */
+	order: sin(var(--foo) * 3deg);
+}
+
+.ignore-not-a-function {
+	order: sin;
+	order: cos;
+	order: tan;
+	order: asin;
+	order: acos;
+	order: atan;
+	order: atan2;
+}
+
+.ignore-no-arguments {
+	order: sin();
+	order: cos();
+	order: tan();
+	order: asin();
+	order: acos();
+	order: atan();
+	order: atan2();
+}

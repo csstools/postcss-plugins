@@ -156,3 +156,7 @@ a b[a="a&b"] {
 .pseudo-element::before {
 		order: 71
 }
+
+.pseudo-element:before {
+		order: 72
+}

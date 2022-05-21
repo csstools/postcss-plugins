@@ -1,0 +1,17 @@
+@layer A, B;
+
+#foo {
+	bucket: 1;
+}
+
+@layer A {
+	#foo {
+		bucket: 2;
+	}
+}
+
+@layer B {
+	#foo {
+		bucket: 3;
+	}
+}

@@ -1,0 +1,35 @@
+foo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	bucket: 1;
+}
+
+foo {
+		bucket: 2;
+	}
+
+#foo {
+		bucket: 2;
+	}
+
+#foo #fooz {
+		bucket: 2;
+	}
+
+#foo #fooz #foos {
+		bucket: 2;
+	}
+
+foo:not(#\#):not(#\#):not(#\#):not(#\#) {
+		bucket: 3;
+	}
+
+#foo:not(#\#):not(#\#):not(#\#):not(#\#) {
+		bucket: 3;
+	}
+
+#foo #fooz:not(#\#):not(#\#):not(#\#):not(#\#) {
+		bucket: 3;
+	}
+
+#foo #fooz #foos:not(#\#):not(#\#):not(#\#):not(#\#) {
+		bucket: 3;
+	}

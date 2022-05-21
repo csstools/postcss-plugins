@@ -1,0 +1,108 @@
+/* https://wpt.fyi/results/css/css-values/acos-asin-atan-atan2-computed.html?label=experimental&label=master&aligned&q=sin */
+.test {
+	order: acos(1); /* Should be 0deg */
+	order: atan(0); /* Should be 0deg */
+	order: asin(0); /* Should be 0deg */
+	order: atan2(0, 0); /* Should be 0deg */
+	order: asin(sin(pi / 2)); /* Should be 90deg */
+	order: acos(cos(pi - 3.14159265358979323846)); /* Should be 0deg */
+	order: atan(e - 2.7182818284590452354); /* Should be 0deg */
+	order: asin(sin(30deg + 1.0471967rad)); /* Should be 90deg */
+	order: acos(cos(30deg - 0.523599rad)); /* Should be 0deg */
+	order: asin(sin(3.14159 / 2 + 1 - 1)); /* Should be 90deg */
+	order: asin(sin(100grad)); /* Should be 90deg */
+	order: acos(cos(0 / 2 + 1 - 1)); /* Should be 0deg */
+	order: atan(tan(30deg + 0.261799rad)); /* Should be 45deg */
+	order: atan(tan(0.7853975rad)); /* Should be 45deg */
+	order: atan(tan(3.14159 / 4 + 1 - 1)); /* Should be 45deg */
+	order: asin(sin(0.25turn)); /* Should be 90deg */
+	order: atan2(0,1); /* Should be 0deg */
+	order: atan2(0,-1); /* Should be 180deg */
+	order: atan2(1,-1); /* Should be 135deg */
+	order: atan2(-1,1); /* Should be -45deg */
+	order: cos(sin(acos(cos(pi)))); /* Should be 1 */
+	order: sin(atan(tan(pi/2))); /* Should be 1 */
+	order: atan2(1px, -1px); /* Should be 135deg */
+	order: atan2(1cm, -1cm); /* Should be 135deg */
+	order: atan2(1mm, -1mm); /* Should be 135deg */
+	order: atan2(1Q, -1Q); /* Should be 135deg */
+	order: atan2(1in, -1in); /* Should be 135deg */
+	order: atan2(1pc, -1pc); /* Should be 135deg */
+	order: atan2(1pt, -1pt); /* Should be 135deg */
+	order: atan2(1em, -1em); /* Should be 135deg */
+	order: atan2(1ex, -1ex); /* Should be 135deg */
+	order: atan2(1ch, -1ch); /* Should be 135deg */
+	order: atan2(1rem, -1rem); /* Should be 135deg */
+	order: atan2(1vh, -1vh); /* Should be 135deg */
+	order: atan2(1vw, -1vw); /* Should be 135deg */
+	order: atan2(1deg, -1deg); /* Should be 135deg */
+	order: atan2(1grad, -1grad); /* Should be 135deg */
+	order: atan2(1turn, -1turn); /* Should be 135deg */
+	order: atan2(1rad, -1rad); /* Should be 135deg */
+	order: atan2(1s, -1s); /* Should be 135deg */
+	order: atan2(1ms, -1ms); /* Should be 135deg */
+}
+
+/* https://wpt.fyi/results/css/css-values/acos-asin-atan-atan2-invalid.html?label=master&label=experimental&aligned&q=sin */
+.wrong {
+	order: asin());
+	order: asin( ));
+	order: asin(,));
+	order: asin(1dag));
+	order: asin(1deg, ));
+	order: asin(, 1deg));
+	order: asin(1deg + ));
+	order: asin(1deg - ));
+	order: asin(1deg * ));
+	order: asin(1deg / ));
+	order: asin(1deg 2deg));
+	order: asin(1deg, , 2deg));
+	order: acos());
+	order: acos( ));
+	order: acos(,));
+	order: acos(1dag));
+	order: acos(1deg, ));
+	order: acos(, 1deg));
+	order: acos(1deg + ));
+	order: acos(1deg - ));
+	order: acos(1deg * ));
+	order: acos(1deg / ));
+	order: acos(1deg 2deg));
+	order: acos(1deg, , 2deg));
+	order: atan());
+	order: atan( ));
+	order: atan(,));
+	order: atan(1dag));
+	order: atan(1deg, ));
+	order: atan(, 1deg));
+	order: atan(1deg + ));
+	order: atan(1deg - ));
+	order: atan(1deg * ));
+	order: atan(1deg / ));
+	order: atan(1deg 2deg));
+	order: atan(1deg, , 2deg));
+	order: asin(90px));
+	order: asin(30deg + 1.0471967rad, 0));
+	order: acos( 0 ,));
+	order: acos( () 30deg - 0.523599rad ));
+	order: atan(45deg ));
+	order: atan(30deg, + 0.261799rad));
+	order: atan2());
+	order: atan2( ));
+	order: atan2(,));
+	order: atan2(1dag));
+	order: atan2(1deg, ));
+	order: atan2(, 1deg));
+	order: atan2(1deg + ));
+	order: atan2(1deg - ));
+	order: atan2(1deg * ));
+	order: atan2(1deg / ));
+	order: atan2(1deg 2deg));
+	order: atan2(1deg, , 2deg));
+	order: atan2(90px));
+	order: atan2(30deg + 1.0471967rad, 0));
+	order: atan2( 0 ,));
+	order: atan2( () 30deg - 0.523599rad ));
+	order: atan2(45deg ));
+	order: atan2(30deg, + 0.261799rad));
+}

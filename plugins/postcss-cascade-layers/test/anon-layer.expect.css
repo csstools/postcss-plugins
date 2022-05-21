@@ -1,0 +1,20 @@
+
+	target {
+		color: red;
+	}
+
+target:not(#\#) {
+		color: orange;
+	}
+
+target:not(#\#):not(#\#) {
+		color: yellow;
+	}
+
+target:not(#\#):not(#\#):not(#\#) {
+		color: green;
+	}
+
+target:not(#\#):not(#\#):not(#\#):not(#\#) {
+	color: purple;
+}

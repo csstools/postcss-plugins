@@ -1,0 +1,9 @@
+
+target:not(#\#) {
+	color: purple;
+}
+
+target {
+		color: green;
+	}
+

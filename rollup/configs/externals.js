@@ -3,6 +3,7 @@ export const externalsForCLI = [
 	'path',
 	'url',
 
+	'@csstools/postcss-cascade-layers',
 	'@csstools/postcss-color-function',
 	'@csstools/postcss-font-format-keywords',
 	'@csstools/postcss-hwb-function',
@@ -11,6 +12,8 @@ export const externalsForCLI = [
 	'@csstools/postcss-normalize-display-values',
 	'@csstools/postcss-oklab-function',
 	'@csstools/postcss-progressive-custom-properties',
+	'@csstools/postcss-stepped-value-functions',
+	'@csstools/postcss-unset-value',
 	'@csstools/selector-specificity',
 	'autoprefixer',
 	'browserslist',
@@ -59,6 +62,7 @@ export const externalsForPlugin = [
 	/^postcss-\d\.\d$/,
 	/^postcss\/lib\/*/,
 
+	'@csstools/postcss-cascade-layers',
 	'@csstools/postcss-color-function',
 	'@csstools/postcss-font-format-keywords',
 	'@csstools/postcss-hwb-function',
@@ -67,6 +71,8 @@ export const externalsForPlugin = [
 	'@csstools/postcss-normalize-display-values',
 	'@csstools/postcss-oklab-function',
 	'@csstools/postcss-progressive-custom-properties',
+	'@csstools/postcss-stepped-value-functions',
+	'@csstools/postcss-unset-value',
 	'@csstools/selector-specificity',
 	'autoprefixer',
 	'browserslist',

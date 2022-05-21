@@ -27,6 +27,27 @@ ul a:any-link > span {
 	order: 7;
 }
 
-::before:any-link {
+::before:any-link,
+:before:any-link {
 	order: 8;
+}
+
+a:any-link {
+	order: 9;
+}
+
+area:any-link {
+	order: 10;
+}
+
+area :any-link {
+	order: 11;
+}
+
+area > :any-link {
+	order: 12;
+}
+
+div:any-link {
+	order: 13;
 }
