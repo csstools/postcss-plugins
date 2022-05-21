@@ -1,9 +1,23 @@
 {
 	"name": "@csstools/postcss-design-tokens",
-	"description": "TODO: Add description for Design Tokens",
+	"description": "Use design tokens in your CSS",
 	"version": "1.0.0",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke ",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
+	"funding": {
+		"type": "opencollective",
+		"url": "https://opencollective.com/csstools"
+	},
 	"engines": {
 		"node": "^12 || ^14 || >=16"
 	},
@@ -53,6 +67,7 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"design-tokens",
 		"postcss-plugin"
 	],
 	"csstools": {
