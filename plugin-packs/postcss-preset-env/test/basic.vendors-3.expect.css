@@ -290,7 +290,7 @@
 }
 
 .test-hwb-function {
-	background-color: hwb(194 0% 0% / .5);
+	background-color: rgba(0, 195, 255, .5);
 }
 
 .test-opacity-percent {
@@ -461,4 +461,31 @@
 	height: 10px;
 	margin: 0.5ic 1ic .2ic;
 	padding: 2    ic;
+}
+
+.unset {
+	clip: auto;
+	clip: initial;
+}
+
+.mod {
+	padding: 8px mod(18px, 5px) 1px calc(mod(15px, 6px) + 50%);
+	transform: rotate(mod(-140deg, -90deg));
+	width: mod(mod(-18px, 5px), 5px);
+}
+
+.rem {
+	padding: 8px rem(18px, 5px) 1px calc(rem(15px, 6px) + 50%);
+	transform: rotate(rem(-140deg, -90deg));
+}
+
+.round {
+	top: round(2.5px, 1px);
+	right: round(nearest, 2.5px, 1px);
+	bottom: round(up, 2.5px, 1px);
+	left: round(down, 2.5px, 1px);
+	top: round(to-zero, 2.5px, 1px);
+	right: round(to-zero, 2.5px, 1px);
+	bottom: round(to-zero, 2.5px, 1px);
+	left: round(to-zero, 2.5px, 1px);
 }

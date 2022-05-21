@@ -8,16 +8,6 @@
 [EXPERIMENTAL CSS Has Pseudo] lets you style elements relative to other elements in CSS,
 following the [Selectors Level 4] specification.
 
-```css
-input {
-  /* style an input */
-}
-
-body[\:has\(\:focus\)] {
-  /* style an input without a value */
-}
-```
-
 ## Usage
 
 Add [EXPERIMENTAL CSS Has Pseudo] to your build tool:

@@ -236,8 +236,7 @@ function colorFunctionContents(nodes): Color|null {
 			}
 		}
 
-		if (!out.colorSpace.startsWith('xyz') && isNumericNodePercentageOrNumber(nodes[i])) {
-			// non-xyz DOES support percentages
+		if (isNumericNodePercentageOrNumber(nodes[i])) {
 			const unitAndValue = valueParser.unit(nodes[i].value) as Dimension;
 			if (unitAndValue.unit === '%') {
 				// transform the channel from a Percentage to (0-1) Number
@@ -250,19 +249,6 @@ function colorFunctionContents(nodes): Color|null {
 				value: unitAndValue,
 				node: nodes[i],
 			});
-
-		} else if (out.colorSpace.startsWith('xyz') && isNumericNodePercentageOrNumber(nodes[i])) {
-			// xyz DOES NOT support percentages
-			const unitAndValue = valueParser.unit(nodes[i].value) as Dimension;
-			if (unitAndValue.unit !== '') {
-				return null;
-			}
-
-			out.parameters.push({
-				value: unitAndValue,
-				node: nodes[i],
-			});
-
 		} else {
 			return null;
 		}

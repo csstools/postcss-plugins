@@ -144,7 +144,6 @@
 	align-items: unset;
 	align-self: unset;
 	alignment-baseline: unset;
-	all: unset;
 	animation-composition: unset;
 	animation-delay: unset;
 	animation-direction: unset;
@@ -426,4 +425,12 @@
 
 .margin-shorthand-incorrect-usage {
 	margin: 20px unset unset unset;
+}
+
+.important {
+	color: unset !important;
+}
+
+.all {
+	all: unset;
 }

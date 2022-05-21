@@ -2,6 +2,7 @@
   - .github/**
   - packages/base-cli/**
   - packages/postcss-tape/**
+  - packages/selector-specificity/**
   - plugins/postcss-base-plugin/**
   - rollup/**
 
@@ -34,6 +35,10 @@
 "plugins/postcss-attribute-case-insensitive":
   - plugins/postcss-attribute-case-insensitive/**
   - experimental/postcss-attribute-case-insensitive/**
+
+"plugins/postcss-cascade-layers":
+  - plugins/postcss-cascade-layers/**
+  - experimental/postcss-cascade-layers/**
 
 "plugins/postcss-color-function":
   - plugins/postcss-color-function/**
@@ -178,6 +183,14 @@
 "plugins/postcss-unset-value":
   - plugins/postcss-unset-value/**
   - experimental/postcss-unset-value/**
+
+"plugins/postcss-stepped-value-functions":
+  - plugins/postcss-stepped-value-functions/**
+  - experimental/postcss-stepped-value-functions/**
+
+"plugins/postcss-trigonometric-functions":
+  - plugins/postcss-trigonometric-functions/**
+  - experimental/postcss-trigonometric-functions/**
 
 "sites/postcss-preset-env":
   - sites/postcss-preset-env/**

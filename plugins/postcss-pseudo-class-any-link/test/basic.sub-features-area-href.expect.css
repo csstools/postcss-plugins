@@ -10,8 +10,7 @@
 :visited,
 area[href],
 ul a:link > span,
-ul a:visited > span,
-ul aarea[href] > span {
+ul a:visited > span {
 	order: 2;
 }
 
@@ -32,26 +31,80 @@ ul a:any-link > span {
 	order: 4;
 }
 
-div :link, div :visited, div area[href] {
+.foo :link, .foo :visited, .foo area[href] {
 	order: 5;
 }
 
-div :any-link {
+.foo :any-link {
 	order: 5;
 }
 
-div:link, div:visited, divarea[href] {
+.foo:link, .foo:visited, area.foo[href] {
 	order: 6;
+}
+
+.foo:any-link {
+	order: 6;
+}
+
+.foo:is(:link), .foo:is(:visited), .foo:is(area[href]) {
+	order: 7;
+}
+
+.foo:is(:any-link) {
+	order: 7;
+}
+
+:link::before,
+:visited::before,
+area[href]::before,
+:link:before,
+:visited:before,
+area[href]:before {
+	order: 8;
+}
+
+::before:any-link,
+:before:any-link {
+	order: 8;
+}
+
+a:link, a:visited {
+	order: 9;
+}
+
+a:any-link {
+	order: 9;
+}
+
+area:link, area:visited, area[href] {
+	order: 10;
+}
+
+area:any-link {
+	order: 10;
+}
+
+area :link, area :visited, area area[href] {
+	order: 11;
+}
+
+area :any-link {
+	order: 11;
+}
+
+area > :link, area > :visited, area > area[href] {
+	order: 12;
+}
+
+area > :any-link {
+	order: 12;
+}
+
+div:link, div:visited {
+	order: 13;
 }
 
 div:any-link {
-	order: 6;
-}
-
-div:is(:link), div:is(:visited), div:is(area[href]) {
-	order: 7;
-}
-
-div:is(:any-link) {
-	order: 7;
+	order: 13;
 }

@@ -124,3 +124,9 @@
 		plum
 	);
 }
+
+:root {
+	/* Not expected to be handled here at the moment, but might be needed in the future */
+	--color-functional-notation-percentage-alpha: rgba(0, 0, 0, 1);
+	--color-functional-notation-percentage-alpha: rgba(0, 0, 0, 100%);
+}

@@ -2,6 +2,7 @@ import postcssInitial from 'postcss-initial';
 import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
 import postcssBlankPseudo from 'css-blank-pseudo';
 import postcssPageBreak from 'postcss-page-break';
+import postcssCascadeLayers from '@csstools/postcss-cascade-layers';
 import postcssAttributeCaseInsensitive from 'postcss-attribute-case-insensitive';
 import postcssClamp from 'postcss-clamp';
 import postcssColorFunction from '@csstools/postcss-color-function';
@@ -36,7 +37,9 @@ import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
 import postcssPlace from 'postcss-place';
 import postcssPrefersColorScheme from 'css-prefers-color-scheme';
 import postcssColorRebeccapurple from 'postcss-color-rebeccapurple';
+import postcssSteppedValueFunctions from '@csstools/postcss-stepped-value-functions';
 import postcssFontFamilySystemUI from '../patch/postcss-system-ui-font-family.mjs';
+import postcssUnsetValue from '@csstools/postcss-unset-value';
 
 // postcss plugins ordered by id
 export const pluginsById = new Map(
@@ -45,6 +48,7 @@ export const pluginsById = new Map(
 		['any-link-pseudo-class', postcssPseudoClassAnyLink],
 		['blank-pseudo-class', postcssBlankPseudo],
 		['break-properties', postcssPageBreak],
+		['cascade-layers', postcssCascadeLayers],
 		['case-insensitive-attributes', postcssAttributeCaseInsensitive],
 		['clamp', postcssClamp],
 		['color-function', postcssColorFunction],
@@ -79,6 +83,8 @@ export const pluginsById = new Map(
 		['place-properties', postcssPlace],
 		['prefers-color-scheme-query', postcssPrefersColorScheme],
 		['rebeccapurple-color', postcssColorRebeccapurple],
+		['stepped-value-functions', postcssSteppedValueFunctions],
 		['system-ui-font-family', postcssFontFamilySystemUI],
+		['unset-value', postcssUnsetValue],
 	],
 );

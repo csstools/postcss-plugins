@@ -1,4 +1,5 @@
 import { promises as fsp, constants } from 'fs';
+import path from 'path';
 
 const packageJSONInfo = JSON.parse(await fsp.readFile('./package.json', 'utf8'));
 const packageJSONInfoCopy = JSON.stringify(packageJSONInfo, null, '\t');
@@ -199,7 +200,7 @@ const formatted = {};
 Object.assign(formatted, packageJSONInfo);
 
 if (process.env.GITHUB_ACTIONS && JSON.stringify(formatted, null, '\t') !== packageJSONInfoCopy) {
-	console.error('package.json has an incorrect field order. Run "npm run lint" to resolve.')
+	console.error(`::error file=${path.relative(process.env.GITHUB_WORKSPACE, path.resolve('./package.json'))},line=1,col=1::package.json has an incorrect field order. Run "npm run lint" to resolve.`);
 	process.exit(1);
 }
 

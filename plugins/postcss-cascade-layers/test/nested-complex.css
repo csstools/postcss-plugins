@@ -1,0 +1,63 @@
+@layer D, E, F, F.G, F.G.H;
+
+@layer D {
+	target {
+		order: 1;
+	}
+
+	@media screen {
+		target {
+			order: 2;
+		}
+	}
+}
+
+@media screen {
+	target {
+		layered: no;
+		order: 3;
+	}
+
+	@layer E {
+		target {
+			order: 4;
+		}
+	}
+}
+
+@media screen {
+	target {
+		layered: no;
+		order: 5;
+	}
+
+	@layer F {
+		target {
+			order: 6;
+		}
+
+		@media screen {
+			target {
+				order: 7;
+			}
+
+			@layer G {
+				target {
+					order: 8;
+				}
+
+				@media screen {
+					target {
+						order: 9;
+					}
+
+					@layer H {
+						target {
+							order: 10;
+						}
+					}
+				}
+			}
+		}
+	}
+}

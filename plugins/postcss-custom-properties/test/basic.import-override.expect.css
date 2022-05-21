@@ -105,3 +105,7 @@
 .test-unicode {
 	color: 2em;
 }
+
+.test {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+}

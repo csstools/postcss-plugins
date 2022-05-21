@@ -64,9 +64,9 @@
 }
 
 .test-percentage-xyz {
-	color-1: color(xyz-d50 64.331% 0.19245 0.16771);
-	color-2: color(xyz-d65 0.64331 19.245% 0.16771);
-	color-3: color(xyz 0.64331 0.19245 16.771%);
+	color-1: rgb(252,0,135);
+	color-2: rgb(255,0,126);
+	color-3: rgb(255,0,126);
 }
 
 .test-author-provided-fallback {

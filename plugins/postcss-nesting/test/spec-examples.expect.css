@@ -11,7 +11,7 @@ table.colortable td.c {
 		}
 
 table.colortable td:first-child,
-		:first-child:is(table.colortable td)+td {
+		:is(table.colortable td):first-child+td {
 			border: 1px solid black
 		}
 

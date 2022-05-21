@@ -1,0 +1,48 @@
+
+	.foo:not(#\#) {
+		color: red !important;
+		something-else: red !important;
+	}
+	.foo:not(#\#) {
+		background-color: red;
+	}
+
+	.bar:not(#\#) {
+		color: blue !important;
+	}
+
+	.bar:not(#\#) {
+		background-color: blue;
+	}
+
+.foo:not(#\#):not(#\#) {
+		color: pink !important;
+	}
+
+.foo {
+		background-color: pink;
+	}
+
+.bar:not(#\#):not(#\#) {
+		color: green !important;
+	}
+
+.bar {
+		background-color: yellow;
+	}
+
+.foo {
+	color: orange !important;
+}
+
+.foo:not(#\#):not(#\#) {
+	background-color: orange;
+}
+
+.bar {
+	color: purple !important;
+}
+
+.bar:not(#\#):not(#\#) {
+	background-color: green;
+}

@@ -47,68 +47,39 @@ export function sortCompoundSelector(node) {
 
 	node.nodes.sort((a, b) => {
 		if (a.type === 'selector' && b.type === 'selector' && a.nodes.length && b.nodes.length) {
-			if (a.nodes[0].type === b.nodes[0].type) {
-				return 0;
-			}
-
-			if (selectorTypeOrder[a.nodes[0].type] < selectorTypeOrder[b.nodes[0].type]) {
-				return -1;
-			}
-
-			if (selectorTypeOrder[a.nodes[0].type] > selectorTypeOrder[b.nodes[0].type]) {
-				return 1;
-			}
+			return selectorTypeOrder(a.nodes[0], a.nodes[0].type) - selectorTypeOrder(b.nodes[0], b.nodes[0].type);
 		}
 
 		if (a.type === 'selector' && a.nodes.length) {
-			if (a.nodes[0].type === b.type) {
-				return 0;
-			}
-
-			if (selectorTypeOrder[a.nodes[0].type] < selectorTypeOrder[b.type]) {
-				return -1;
-			}
-
-			if (selectorTypeOrder[a.nodes[0].type] > selectorTypeOrder[b.type]) {
-				return 1;
-			}
+			return selectorTypeOrder(a.nodes[0], a.nodes[0].type) - selectorTypeOrder(b, b.type);
 		}
 
 		if (b.type === 'selector' && b.nodes.length) {
-			if (a.type === b.nodes[0].type) {
-				return 0;
-			}
-
-			if (selectorTypeOrder[a.type] < selectorTypeOrder[b.nodes[0].type]) {
-				return -1;
-			}
-
-			if (selectorTypeOrder[a.type] > selectorTypeOrder[b.nodes[0].type]) {
-				return 1;
-			}
+			return selectorTypeOrder(a, a.type) - selectorTypeOrder(b.nodes[0], b.nodes[0].type);
 		}
 
-		if (a.type === b.type) {
-			return 0;
-		}
-
-		if (selectorTypeOrder[a.type] < selectorTypeOrder[b.type]) {
-			return -1;
-		}
-
-		return 1;
+		return selectorTypeOrder(a, a.type) - selectorTypeOrder(b, b.type);
 	});
 }
 
-const selectorTypeOrder = {
+function selectorTypeOrder(selector, type) {
+	if (parser.isPseudoElement(selector)) {
+		return selectorTypeOrderIndex.pseudoElement;
+	}
+
+	return selectorTypeOrderIndex[type];
+}
+
+const selectorTypeOrderIndex = {
 	universal: 0,
 	tag: 1,
 	id: 2,
 	class: 3,
 	attribute: 4,
-	pseudo: 5,
-	selector: 7,
+	selector: 5,
+	pseudo: 6,
+	pseudoElement: 7,
 	string: 8,
-	root : 9,
+	root: 9,
 	comment: 10,
 };

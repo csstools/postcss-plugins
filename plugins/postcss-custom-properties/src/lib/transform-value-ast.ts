@@ -19,7 +19,7 @@ export default function transformValueAST(root, customProperties) {
 				} else if (fallbacks.length) {
 					// No match, but fallback available
 					if (index > -1) {
-						root.nodes.splice(index, 1, ...fallbacks);
+						root.nodes.splice(index, 1, ...child.nodes.slice(child.nodes.indexOf(fallbacks[0])));
 					}
 
 					transformValueAST(root, customProperties);

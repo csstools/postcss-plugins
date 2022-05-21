@@ -121,7 +121,7 @@ a b[a="a&b"] {
 		order: 31;
 	}
 
-.a.c:before, .b.c:before, .a.d:before, .b.d:before {
+.a.c::before, .b.c::before, .a.d::before, .b.d::before {
 			order: 41;
 		}
 
@@ -132,23 +132,31 @@ a b[a="a&b"] {
 /* leading : root */
 .comments {
 	/* leading : 1 */
-	order: 1
+	order: 61
 	/* trailing: 2 */
 }
 .comments .comment {
-		order: 2;
+		order: 62;
 	}
 /* loose comment */
 .comments .comment {
-		order: 3;
+		order: 63;
 	}
 .comments {
 
 	/* leading : 4 */
-	order: 4
+	order: 64
 	/* trailing: 5 */
 }
 /* nested deeper */
 .comments .comment .comment {
-			order: 5;
+			order: 65;
 		}
+
+.pseudo-element::before {
+		order: 71
+}
+
+.pseudo-element:before {
+		order: 72
+}

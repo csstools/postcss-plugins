@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CSS Cascade Layers: Media queries</title>
+	<meta name="assert" content="CSS Cascade Layers nested in Media Queries">
+	<link rel="author" title="Antti Koivisto" href="mailto:antti@apple.com">
+	<link rel="help" href="https://www.w3.org/TR/css-cascade-5/#layering">
+	<!-- Source : https://github.com/web-platform-tests/wpt/blob/master/css/css-cascade/layer-media-query.html -->
+</head>
+
+<body>
+	<iframe width=300 height=300 frameborder=0></iframe>
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			// For 300px wide iframe the target should be red and for 500px green.
+			const testCases = [
+				{
+					title: 'A1 Basic',
+					style: `
+							@layer { target { color: red } }
+							@media (min-width: 500px) {
+									@layer {
+											target { color: green; }
+									}
+							}
+					`
+				},
+				{
+					title: 'A2 Basic',
+					style: `
+							@media (min-width: 500px) {
+									@layer {
+											target { color: green; }
+									}
+							}
+							@media (max-width: 300px) {
+									@layer {
+											target { color: red; }
+									}
+							}
+					`
+				},
+				{
+					title: 'C1 Reordering',
+					skip: true,
+					style: `
+							@media (max-width: 300px) {
+									@layer B {
+											target { color: green; }
+									}
+									@layer A {
+											target { color: red; }
+									}
+							}
+							@media (min-width: 500px) {
+									@layer A {
+											target { color: red; }
+									}
+									@layer B {
+											target { color: green; }
+									}
+							}
+					`
+				},
+				{
+					title: 'C2 Reordering',
+					skip: true,
+					style: `
+							@media (max-width: 300px) {
+									@layer B { }
+									@layer A { target { color: red; } }
+							}
+							@media (min-width: 500px) {
+									@layer A { target { color: red; } }
+									@layer B { }
+							}
+							@layer B {
+									target { color: green; }
+							}
+					`
+				},
+				{
+					title: 'C3 Reordering',
+					skip: true,
+					style: `
+							@media (max-width: 300px) {
+									@layer B, A;
+							}
+							@media (min-width: 500px) {
+									@layer A, B;
+							}
+							@layer A {
+									target { color: red; }
+							}
+							@layer B {
+									target { color: green; }
+							}
+					`
+				},
+			];
+
+			let iframe = document.querySelector("iframe");
+
+			for (let testCase of testCases) {
+				if (testCase.skip) {
+					console.log("Skipping test case: " + testCase.title);
+					continue;
+				}
+
+				const styleText = testCase['style'];
+
+				const testCaseStyle = await (fetch(`/test/styles.css`, {
+					method: 'POST',
+					body: styleText,
+				}).then((response) => response.text()));
+
+				iframe.width = 300;
+
+				await new Promise(resolve => {
+					iframe.onload = resolve;
+					iframe.srcdoc = `
+								<style>
+								${testCaseStyle}
+								</style>
+								<target></target>
+						`;
+				});
+
+				const target = iframe.contentDocument.querySelector('target');
+				assert_equals(getComputedStyle(target).color, 'rgb(255, 0, 0)', testCase['title']);
+
+				iframe.width = 500;
+
+				assert_equals(getComputedStyle(target).color, 'rgb(0, 128, 0)', testCase['title']);
+			}
+
+			return true;
+		}
+	</script>
+</body>
+
+</html>

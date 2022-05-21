@@ -100,6 +100,9 @@ postcssTape(plugin)({
 			noIsPseudoSelector: true,
 		},
 	},
+	'layer': {
+		message: 'supports nested @layer',
+	},
 	'empty': {
 		message: 'removes empty rules',
 	},

@@ -3,10 +3,11 @@ import type { FunctionNode, Dimension, Node, DivNode, WordNode, SpaceNode } from
 
 function onCSSFunction(node: FunctionNode) {
 	const value = node.value;
-	let rawNodes = node.nodes;
-	if (value === 'rgb' || value === 'hsl') {
-		rawNodes = convertOldSyntaxToNewSyntaxBeforeTransform(rawNodes);
+	if (!needsConversion(value === 'rgb' || value === 'rgba', node.nodes)) {
+		return;
 	}
+
+	const rawNodes = convertOldSyntaxToNewSyntaxBeforeTransform(node.nodes);
 
 	const relevantNodes = rawNodes.slice().filter((x) => {
 		return x.type !== 'comment' && x.type !== 'space';
@@ -348,4 +349,47 @@ function convertOldSyntaxToNewSyntaxBeforeTransform(nodes: Array<Node>): Array<N
 	}
 
 	return nodes;
+}
+
+function needsConversion(isRGB: boolean, nodes: Array<Node>) {
+	let hasCommas = false;
+	let hasPercentageAlpha = false;
+	let isRGB_AndHasAnyPercentageValue = false;
+
+	const relevantNodes = nodes.slice().filter((x) => {
+		return x.type !== 'comment' && x.type !== 'space';
+	});
+
+	for (let i = 0; i < relevantNodes.length; i++) {
+		const node = relevantNodes[i];
+		if (node.type === 'word' && node.value === 'from') {
+			// Too modern, not handled by this plugin
+			return false;
+		}
+
+		if (node.type === 'div' && node.value === ',') {
+			hasCommas = true;
+			continue;
+		}
+
+		if (isRGB && node.type === 'word' && node.value.endsWith('%')) {
+			isRGB_AndHasAnyPercentageValue = true;
+			continue;
+		}
+
+		if (i === (nodes.length - 1) && node.type === 'word' && node.value.endsWith('%')) {
+			hasPercentageAlpha = true;
+			continue;
+		}
+	}
+
+	if (hasCommas && (hasPercentageAlpha || isRGB_AndHasAnyPercentageValue)) {
+		return true;
+	}
+
+	if (hasCommas) {
+		return false;
+	}
+
+	return true;
 }

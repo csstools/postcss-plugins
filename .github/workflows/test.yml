@@ -1,6 +1,9 @@
 name: test
 on:
   push:
+    branches:
+    - 'main'
+  pull_request:
 
 concurrency:
   group: branch-node-${{ github.ref }}
@@ -11,21 +14,21 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
-      # Test node 16/17 on ubuntu
+      # Test node 16/18 on ubuntu
       # Test node 16 on macos/windows
       # Enable annotations only for node 16 + ubuntu
       matrix:
         os: [ubuntu-latest]
-        node: [16, 17]
+        node: [16, 18]
         include:
         - os: macos-latest
           node: 16
         - os: windows-latest
           node: 16
         - node: 16
-          enable_annotations_for_node: true
+          is_base_node_version: true
         - os: ubuntu-latest
-          enable_annotations_for_os: true
+          is_base_os_version: true
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -38,12 +41,13 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm run build --workspaces --if-present
       - run: npm run lint --workspaces --if-present
+        if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # PostCSS Tape tests
       - run: npm run test --workspaces --if-present
         env:
-          ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.enable_annotations_for_node }}
-          ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.enable_annotations_for_os }}
+          ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.is_base_node_version }}
+          ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.is_base_os_version }}
 
         # CLI Tests
         # running "npm install" places the cli in node_modules/bin

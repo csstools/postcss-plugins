@@ -1,5 +1,32 @@
 # Changes to PostCSS Preset Env
 
+### 7.6.0 (May 19, 2022)
+
+- Added `@csstools/postcss-cascade-layers` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers#readme) for usage details.
+- Updated `@csstools/postcss-hwb-function`  to `1.0.1` (patch)
+- Updated `@csstools/postcss-is-pseudo-class`  to `2.0.4` (patch)
+- Updated `@csstools/postcss-unset-value`  to `1.0.1` (patch)
+- Updated `postcss-nesting` to `10.1.6` (patch)
+- Updated `postcss-pseudo-class-any-link`  to `7.1.4` (patch)
+
+### 7.5.0 (May 2, 2022)
+
+- Added `@csstools/postcss-unset-value` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset-value#readme) for usage details.
+- Added `@csstools/postcss-stepped-value-functions` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions#readme) for usage details.
+- Updated `cssdb` to `6.6.0` (minor)
+
+### 7.4.4 (April 26, 2022)
+
+- Updated `@csstools/postcss-color-function` to `1.1.0` (minor)
+- Updated `@csstools/postcss-is-pseudo-class` to `2.0.2` (patch)
+- Updated `@csstools/postcss-oklab-function` to `1.1.0` (minor)
+- Updated `autoprefixer` to `10.4.5` (patch)
+- Updated `browserslist` to `4.20.3` (patch)
+- Updated `postcss-custom-properties` to `12.1.7` (patch)
+- Updated `postcss-lab-function` to `4.2.0` (minor)
+- Updated `postcss-nesting` to `10.1.4` (patch)
+- Updated `postcss-pseudo-class-any-link` to `7.1.2` (patch)
+
 ### 7.4.3 (March 19, 2022)
 
 - Fix manually enabling a feature that doesn't meet the required vendor implementations. [#310](https://github.com/csstools/postcss-plugins/issues/310)

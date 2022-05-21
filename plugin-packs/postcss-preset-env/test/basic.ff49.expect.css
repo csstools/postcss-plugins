@@ -356,11 +356,11 @@
 }
 
 .color-function {
-	prop-1: rgb(0, 132, 94);
+	prop-1: rgb(0,132,94);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
 	prop-3: rgba(7,3,1,1);
 	prop-4: rgba(7,3,1,calc(33 / 22));
-	prop-5: rgb(255, 255, 255);
+	prop-5: rgb(255,255,255);
 }
 
 .oklab {
@@ -438,4 +438,30 @@
 	height: 10px;
 	margin: 0.5em 1em .2em;
 	padding: 2    ic;
+}
+
+.unset {
+	clip: unset;
+}
+
+.mod {
+	padding: 8px 3px 1px calc(3px + 50%);
+	transform: rotate(-50deg);
+	width: 2px;
+}
+
+.rem {
+	padding: 8px 3px 1px calc(3px + 50%);
+	transform: rotate(-50deg);
+}
+
+.round {
+	top: 3px;
+	right: 3px;
+	bottom: 3px;
+	left: 2px;
+	top: 2px;
+	right: 2px;
+	bottom: 2px;
+	left: 2px;
 }

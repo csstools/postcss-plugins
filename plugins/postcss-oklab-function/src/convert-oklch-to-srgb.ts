@@ -11,7 +11,7 @@ export function oklchToSRgb(oklchRaw: color): color {
 		0,
 	);
 
-	const oklch = [oklchL / 100, oklchCRaw, oklchHRaw % 360] as color;
+	const oklch = [oklchL, oklchCRaw, oklchHRaw % 360] as color;
 
 	let conversion = oklch as color;
 	if (conversion[0] < 0.000001) {

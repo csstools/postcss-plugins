@@ -12,19 +12,19 @@ following the [Selectors Level 4] specification.
 
 ```css
 a:has(> img) {
-  /* style links that contain an image */
+	/* style links that contain an image */
 }
 
 h1:has(+ p) {
-  /* style level 1 headings that are followed by a paragraph */
+	/* style level 1 headings that are followed by a paragraph */
 }
 
 section:not(:has(h1, h2, h3, h4, h5, h6)) {
-  /* style sections that don’t contain any heading elements */
+	/* style sections that don’t contain any heading elements */
 }
 
 body:has(:focus) {
-  /* style the body if it contains a focused element */
+	/* style the body if it contains a focused element */
 }
 ```
 
@@ -55,16 +55,16 @@ replacing them with an alternative `[:has]` selector.
 
 ```css
 body:has(:focus) {
-  background-color: yellow;
+	background-color: yellow;
 }
 
 section:not(:has(h1, h2, h3, h4, h5, h6)) {
-  background-color: gray;
+	background-color: gray;
 }
 
 /* becomes */
 
-[body\:has\(\:focus\)] {
+[csstools-has-2q-33-2s-3d-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15]:not(does-not-exist) {
 	background-color: yellow;
 }
 
@@ -72,7 +72,7 @@ body:has(:focus) {
 	background-color: yellow;
 }
 
-[section\:not\(\:has\(h1\,\%20h2\,\%20h3\,\%20h4\,\%20h5\,\%20h6\)\)] {
+[csstools-has-37-2t-2r-38-2x-33-32-1m-32-33-38-14-1m-2w-2p-37-14-2w-1d-18-w-2w-1e-18-w-2w-1f-18-w-2w-1g-18-w-2w-1h-18-w-2w-1i-15-15]:not(does-not-exist):not(does-not-exist) {
 	background-color: gray;
 }
 
@@ -85,8 +85,8 @@ Next, the [JavaScript library](README-BROWSER.md) adds a `[:has]` attribute to
 elements otherwise matching `:has` natively.
 
 ```html
-<body body:has(:focus)>
-  <input value="This element is focused">
+<body csstools-has-2q-33-2s-3d-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15>
+	<input value="This element is focused">
 </body>
 ```
 
@@ -98,14 +98,14 @@ The experimental plugin must be added after any other plugin that modifies selec
 
 ```js
 plugins: [
-  // other plugins
-  postcssPresetEnv({
-    features: {
-      'css-has-pseudo': false
-    }
-  }),
-  // other plugins
-  cssHasPseudoExperimental(), // last
+	// other plugins
+	postcssPresetEnv({
+		features: {
+			'css-has-pseudo': false
+		}
+	}),
+	// other plugins
+	cssHasPseudoExperimental(), // last
 ]
 ```
 

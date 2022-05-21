@@ -1,5 +1,22 @@
 # Changes to CSSTools CLI
 
+### 1.3.0 (May 2, 2022)
+
+- Added `@csstools/postcss-unset-value` (minor)
+- Added `@csstools/postcss-stepped-value-functions` (minor)
+- Updated `postcss-preset-env` to `7.5.0` (minor)
+
+### 1.2.1 (April 26, 2022)
+
+- Updated `@csstools/postcss-is-pseudo-class` to `2.0.2` (patch)
+- Updated `postcss-custom-properties` to `12.1.7` (patch)
+- Updated `postcss-double-position-gradients` to `3.1.1` (patch)
+- Updated `postcss-env-function` to `4.0.6` (patch)
+- Updated `postcss-lab-function` to `4.2.0` (minor)
+- Updated `postcss-nesting` to `10.1.4` (patch)
+- Updated `postcss-preset-env` to `7.4.3` (patch)
+- Updated `postcss-pseudo-class-any-link` to `7.1.2` (patch)
+
 ### 1.2.0 (February 16, 2022)
 
 - Added `@csstools/color-function`.
