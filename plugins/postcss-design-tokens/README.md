@@ -212,6 +212,16 @@ The `@design-tokens` rule is used to import design tokens from a JSON file into 
 <format-name> = [ 'style-dictionary3' ]
 ```
 
+All `@design-tokens` rules in a document are evaluated in order of appearance.
+If a token with the same path and name already exists it will be overridden.
+
+All `@design-tokens` rules are evaluated before any `design-token()` functions.
+
+`@design-tokens` rules can never be made conditional through `@supports`, `@media` or other conditional rules.
+
+Any form of nesting is meaningless, `@design-tokens` will always be evaluated as if they were declared at the top level.
+
+
 ### `design-token()` function
 
 The `design-token()` function takes a token path and returns the token value.
