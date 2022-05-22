@@ -1,0 +1,5 @@
+@design-tokens url('./tokens/value-parsing-g.json') format('style-dictionary3');
+
+.value-parsing {
+	order: design-token('token');
+}

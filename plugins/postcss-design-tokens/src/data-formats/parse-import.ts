@@ -3,6 +3,7 @@ import { Token } from './base/token';
 import { extractStyleDictionaryTokens } from './style-dictionary/style-dictionary';
 import path from 'path';
 import { promises as fsp } from 'fs';
+import { DEFAULT_CONDITION } from '../constants';
 
 function parseImport(statement: string): { filePath: string, format: string, conditions: Array<string> } {
 	const importAST = valueParser(statement);
@@ -10,7 +11,7 @@ function parseImport(statement: string): { filePath: string, format: string, con
 	const result = {
 		filePath: '',
 		format: 'standard',
-		conditions: ['6b4e71e7-4787-42f7-a092-8684961895db'], // a random, but shared default condition
+		conditions: [DEFAULT_CONDITION],
 	};
 
 	importAST.walk((node) => {
@@ -30,7 +31,7 @@ function parseImport(statement: string): { filePath: string, format: string, con
 	});
 
 	if (!result.conditions.length) {
-		result.conditions = ['6b4e71e7-4787-42f7-a092-8684961895db']; // a random, but shared default condition
+		result.conditions = [DEFAULT_CONDITION];
 	}
 
 	return result;

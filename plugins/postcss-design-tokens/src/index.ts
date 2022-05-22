@@ -2,15 +2,12 @@ import type { Node, PluginCreator } from 'postcss';
 import { Token } from './data-formats/base/token';
 import { tokensFromImport } from './data-formats/parse-import';
 import { mergeTokens } from './data-formats/token';
-import { pluginOptions } from './options';
+import { parsePluginOptions, pluginOptions } from './options';
 import { onCSSValue } from './values';
 
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const buildIs = opts?.is ?? [];
-	if (buildIs.length === 0) {
-		buildIs.push('6b4e71e7-4787-42f7-a092-8684961895db'); // a random, but shared default condition
-	}
+	const options = parsePluginOptions(opts);
 
 	return {
 		postcssPlugin: 'postcss-design-tokens',
@@ -44,7 +41,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					for (const atRule of designTokenAtRules.values()) {
 						let importResult: { filePath: string, tokens: Map<string, Token> }|false;
 						try {
-							importResult = await tokensFromImport(buildIs, atRule.filePath, atRule.params, importedFiles);
+							importResult = await tokensFromImport(options.is, atRule.filePath, atRule.params, importedFiles);
 							if (!importResult) {
 								continue;
 							}
@@ -68,7 +65,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					const modifiedValue = onCSSValue(tokens, result, decl, opts);
+					const modifiedValue = onCSSValue(tokens, result, decl, options);
 					if (modifiedValue === decl.value) {
 						return;
 					}

@@ -29,7 +29,16 @@ export type StyleDictionaryV3TokenValue = {
 
 export function extractStyleDictionaryV3Token(node: Record<string, unknown>, key: string, path: Array<string>, filePath: string): StyleDictionaryV3TokenValue {
 	if (typeof node['value'] === 'undefined') {
-		throw new Error('Token value is undefined : ' + path.join('.'));
+		throw new Error('Token value is undefined for "' + [...path, key].join('.') + '"');
+	}
+
+	switch (typeof node['value']) {
+		case 'string':
+		case 'number':
+			break;
+
+		default:
+			throw new Error('Token value is not a string or a number for "' + [...path, key].join('.') + '"');
 	}
 
 	const value = String(node['value']);

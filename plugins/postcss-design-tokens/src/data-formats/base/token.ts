@@ -1,6 +1,6 @@
 export interface TokenTransformOptions {
-	pluginOptions?: {
-		rootFontSize?: number;
+	pluginOptions: {
+		rootFontSize: number;
 	};
 	toUnit?: string;
 }

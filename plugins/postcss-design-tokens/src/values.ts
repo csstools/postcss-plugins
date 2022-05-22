@@ -1,9 +1,9 @@
 import type { Declaration, Result } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { Token, TokenTransformOptions } from './data-formats/base/token';
-import { pluginOptions } from './options';
+import { parsedPluginOptions } from './options';
 
-export function onCSSValue(tokens: Map<string, Token>, result: Result, decl: Declaration, opts?: pluginOptions) {
+export function onCSSValue(tokens: Map<string, Token>, result: Result, decl: Declaration, opts: parsedPluginOptions) {
 	const valueAST = valueParser(decl.value);
 
 	valueAST.walk(node => {
@@ -37,7 +37,7 @@ export function onCSSValue(tokens: Map<string, Token>, result: Result, decl: Dec
 		}
 
 		const transformOptions: TokenTransformOptions = {
-			pluginOptions: opts?.unitsAndValues,
+			pluginOptions: opts.unitsAndValues,
 		};
 		for (let i = 0; i < remainingNodes.length; i++) {
 			if (
