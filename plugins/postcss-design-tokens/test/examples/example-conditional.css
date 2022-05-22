@@ -1,0 +1,6 @@
+@design-tokens url('./tokens-light.json') format('style-dictionary3');
+@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
+
+.foo {
+	color: design-token('color.background.primary');
+}

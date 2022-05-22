@@ -1,0 +1,12 @@
+@design-tokens url('./tokens/color_dark_branded-blue.tokens.json') when('dark' 'branded-blue') format('style-dictionary3');
+@design-tokens url('./tokens/color_light_branded-blue.tokens.json') when('light' 'branded-blue') format('style-dictionary3');
+@design-tokens url('./tokens/color_dark_branded-green.tokens.json') when('dark' 'branded-green') format('style-dictionary3');
+@design-tokens url('./tokens/color_light_branded-green.tokens.json') when('light' 'branded-green') format('style-dictionary3');
+@design-tokens url('./tokens/size_mobile.tokens.json') when('mobile') format('style-dictionary3');
+@design-tokens url('./tokens/size_tablet.tokens.json') when('tablet') format('style-dictionary3');
+@design-tokens url('./tokens/size_desktop.tokens.json') when('desktop') format('style-dictionary3');
+
+.foo {
+	color: design-token('color');
+	font-size: design-token('size');
+}
