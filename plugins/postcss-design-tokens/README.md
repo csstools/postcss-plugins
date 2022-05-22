@@ -24,6 +24,7 @@
 
 .foo {
 	color: design-token('color.background.primary');
+	padding-top: design-token('size.spacing.small');
 	padding-left: design-token('size.spacing.small' to px);
 	padding-bottom: design-token('size.spacing.small' to rem);
 }
@@ -32,6 +33,7 @@
 
 .foo {
 	color: #fff;
+	padding-top: 16px;
 	padding-left: 16px;
 	padding-bottom: 1rem;
 }
@@ -180,6 +182,7 @@ postcssDesignTokens({
 
 .foo {
 	color: design-token('color.background.primary');
+	padding-top: design-token('size.spacing.small');
 	padding-left: design-token('size.spacing.small' to px);
 	padding-bottom: design-token('size.spacing.small' to rem);
 }
@@ -188,6 +191,7 @@ postcssDesignTokens({
 
 .foo {
 	color: #fff;
+	padding-top: 16px;
 	padding-left: 16px;
 	padding-bottom: 0.8rem;
 }
