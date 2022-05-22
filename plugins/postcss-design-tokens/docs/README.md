@@ -141,7 +141,7 @@ The `@design-tokens` rule is used to import design tokens from a JSON file into 
 
 ```
 @design-tokens [ <url> | <string> ]
-               [ when(<theme-condition>) ]?
+               [ when(<theme-condition>*) ]?
                format(<format-name>);
 
 <theme-condition> = <string>
@@ -154,7 +154,20 @@ If a token with the same path and name already exists it will be overridden.
 
 All `@design-tokens` rules are evaluated before any `design-token()` functions.
 
+`@design-tokens` rules can be conditional through `when` conditions. Multiple values can be specified in `when`.
+
+> ```css
+> /* always evaluated when tooling receives 'blue' and 'muted' as arguments */
+> @design-tokens url('./tokens.json') format('style-dictionary3') when('blue' 'muted');
+> ```
+
 `@design-tokens` rules can never be made conditional through `@supports`, `@media` or other conditional rules.
+
+> ```css
+> @media (min-width: 500px) {
+>   @design-tokens url('./tokens.json') format('style-dictionary3'); /* always evaluated */
+> }
+> ```
 
 Any form of nesting is meaningless, `@design-tokens` will always be evaluated as if they were declared at the top level.
 
