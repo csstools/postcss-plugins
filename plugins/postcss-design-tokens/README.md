@@ -232,7 +232,7 @@ All `@design-tokens` rules are evaluated before any `design-token()` functions.
 `@design-tokens` rules can be conditional through `when` conditions. Multiple values can be specified in `when`.
 
 > ```css
-> /* always evaluated when tooling receives 'blue' and 'muted' as arguments */
+> /* only evaluated when tooling receives 'blue' and 'muted' as arguments */
 > @design-tokens url('./tokens.json') format('style-dictionary3') when('blue' 'muted');
 > ```
 
