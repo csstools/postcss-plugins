@@ -64,7 +64,7 @@
 		"postcss-pseudo-class-any-link": "^7.1.2"
 	},
 	"devDependencies": {
-		"postcss": "^8.4.13"
+		"postcss": "^8.4.14"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",

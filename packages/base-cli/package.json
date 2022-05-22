@@ -19,7 +19,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"postcss": "^8.3.6"
+		"postcss": "^8.4.14"
 	},
 	"scripts": {
 		"build": "tsc",
