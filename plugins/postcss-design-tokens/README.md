@@ -239,7 +239,8 @@ If a token with the same path and name already exists it will be overridden.
 
 All `@design-tokens` rules are evaluated before any `design-token()` functions.
 
-`@design-tokens` rules can be conditional through `when` conditions. Multiple values can be specified in `when`.
+`@design-tokens` rules can be conditional through `when` conditions. Multiple values can be specified in `when`.<br>
+Multiple conditions always have an `AND` relationship.
 
 > ```css
 > /* only evaluated when tooling receives 'blue' and 'muted' as arguments */
