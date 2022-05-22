@@ -31,7 +31,8 @@ export function onCSSValue(tokens: Map<string, Token>, result: Result, decl: Dec
 		const remainingNodes = node.nodes.slice(1).filter(x => x.type === 'word');
 		if (!remainingNodes.length) {
 			node.value = replacement.cssValue();
-			node.nodes = undefined;
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			(node as any).nodes = undefined;
 			return;
 		}
 
@@ -52,7 +53,8 @@ export function onCSSValue(tokens: Map<string, Token>, result: Result, decl: Dec
 		}
 
 		node.value = replacement.cssValue(transformOptions);
-		node.nodes = undefined;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(node as any).nodes = undefined;
 	});
 
 	return String(valueAST);

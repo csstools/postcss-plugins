@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { TokenTransformOptions } from '../../base/token';
 import { toposort } from '../../toposort/toposort';
 import { applyTransformsToValue, StyleDictionaryV3TokenValue } from './value';
@@ -37,7 +38,7 @@ export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3Toke
 					throw new Error('Alias "' + reference.raw + '" not found');
 				}
 
-				const sourceToken = tokens.get(reference.raw);
+				const sourceToken = tokens.get(reference.raw)!;
 				referenceAST[i] = {
 					type: 'value-resolved',
 					raw: reference.raw,
@@ -51,7 +52,7 @@ export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3Toke
 			}
 
 			const value = (referenceAST as ValuePartsResolved).map(part => part.value).join('');
-			const currentToken = tokens.get(id);
+			const currentToken = tokens.get(id)!;
 
 			currentToken.value = value;
 			currentToken.cssValue = (transformOptions: TokenTransformOptions) => {
@@ -94,7 +95,7 @@ export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3Toke
 				continue;
 			}
 
-			const referenceAST = referenceASTs.get(id);
+			const referenceAST = referenceASTs.get(id)!;
 			for (let i = 0; i < referenceAST.length; i++) {
 				const reference = referenceAST[i];
 				if (reference.type !== 'value-reference') {
@@ -109,7 +110,7 @@ export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3Toke
 					throw new Error('Alias "' + reference.raw + '" not found');
 				}
 
-				const sourceToken = tokens.get(reference.raw);
+				const sourceToken = tokens.get(reference.raw)!;
 				referenceAST[i] = {
 					type: 'value-resolved',
 					raw: reference.raw,
@@ -123,7 +124,7 @@ export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3Toke
 			}
 
 			const value = (referenceAST as ValuePartsResolved).map(part => part.value).join('');
-			const currentToken = tokens.get(id);
+			const currentToken = tokens.get(id)!;
 
 			currentToken.value = value;
 			currentToken.cssValue = (transformOptions: TokenTransformOptions) => {

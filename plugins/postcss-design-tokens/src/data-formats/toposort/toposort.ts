@@ -22,7 +22,7 @@
 export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<string> {
 	let cursor = nodes.length;
 	const sorted: Array<string> = new Array(cursor);
-	const visited = {};
+	const visited: Record<number, boolean> = {};
 	let i = cursor;
 	// Better data structures make algorithm much faster.
 	const outgoingEdges = makeOutgoingEdges(edges);
@@ -43,7 +43,7 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 
 	return sorted;
 
-	function visit(node, j, predecessors) {
+	function visit(node: string, j: number, predecessors: Set<string>) {
 		if (predecessors.has(node)) {
 			let nodeRep;
 			try {
@@ -80,7 +80,7 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 	}
 }
 
-function makeOutgoingEdges(arr) {
+function makeOutgoingEdges(arr: Array<Array<string>>) {
 	const edges = new Map();
 	for (let i = 0, len = arr.length; i < len; i++) {
 		const edge = arr[i];
@@ -95,7 +95,7 @@ function makeOutgoingEdges(arr) {
 	return edges;
 }
 
-function makeNodesHash(arr) {
+function makeNodesHash(arr: Array<string>) {
 	const res = new Map();
 	for (let i = 0, len = arr.length; i < len; i++) {
 		res.set(arr[i], i);

@@ -4,6 +4,7 @@
 		"outDir": "dist",
 		"declarationDir": ".",
 		"module": "es2020",
+		"strict": true,
 	},
 	"include": ["./src/**/*"],
 	"exclude": ["dist"],

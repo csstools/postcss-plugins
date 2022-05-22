@@ -49,7 +49,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 								continue;
 							}
 						} catch (e) {
-							atRule.node.warn(result, `Failed to import design tokens from "${atRule.params}" with error:\n\t` + e.message);
+							atRule.node.warn(result, `Failed to import design tokens from "${atRule.params}" with error:\n\t` + (e as Error).message);
 							continue;
 						}
 

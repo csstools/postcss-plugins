@@ -27,22 +27,22 @@ export type StyleDictionaryV3TokenValue = {
 	}
 }
 
-export function extractStyleDictionaryV3Token(node: unknown, key: string, path: Array<string>, filePath: string): StyleDictionaryV3TokenValue {
+export function extractStyleDictionaryV3Token(node: Record<string, unknown>, key: string, path: Array<string>, filePath: string): StyleDictionaryV3TokenValue {
 	if (typeof node['value'] === 'undefined') {
 		throw new Error('Token value is undefined : ' + path.join('.'));
 	}
 
-	const value = node['value'] ?? undefined;
+	const value = String(node['value']);
 
 	return {
 		value: value,
 		cssValue: (transformOptions?: TokenTransformOptions) => {
 			return applyTransformsToValue(value, transformOptions);
 		},
-		name: node['name'] ?? key,
-		comment: node['comment'] ?? undefined,
+		name: String(node['name'] ?? '') || key,
+		comment: String(node['comment'] ?? '') || undefined,
 		metadata: {
-			name: node['name'] ? key : undefined,
+			name: String(node['name'] ?? '') ? key : undefined,
 			path: [...path, key],
 			filePath: filePath,
 			isSource: true,
