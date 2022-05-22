@@ -126,6 +126,16 @@ defaults to `16`
 
 [<humanReadableName>] is non-standard and is not part of any official CSS Specification.
 
+### Editor support
+
+This is all very new and we hope that one day design tokens will become first class citizens in editors and other tools.
+Until then we will do our best to provide extensions.
+These will have rough edges but should illustrate were we want to go.
+
+| editor | plugin |
+| --- | --- |
+| VSCode | [CSSTools Design Tokens](https://marketplace.visualstudio.com/items?itemName=RomainMenke.csstools-design-tokens) |
+
 ### `@design-tokens` rule
 
 The `@design-tokens` rule is used to import design tokens from a JSON file into your CSS.
