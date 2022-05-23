@@ -1,6 +1,7 @@
 import cssBlankPseudo from './plugins/css-blank-pseudo';
 import cssHasPseudo from './plugins/css-has-pseudo';
 import cssPrefersColorScheme from './plugins/css-prefers-color-scheme';
+import postcssCascadeLayers from './plugins/postcss-cascade-layers';
 import postcssColorFunction from './plugins/postcss-color-function';
 import postcssColorFunctionalNotation from './plugins/postcss-color-functional-notation';
 import postcssColorHexAlpha from './plugins/postcss-color-hex-alpha';
@@ -27,6 +28,7 @@ import postcssPlace from './plugins/postcss-place';
 import postcssPresetEnv from './plugins/postcss-preset-env';
 import postcssPseudoClassAnyLink from './plugins/postcss-pseudo-class-any-link';
 import postcssSteppedValueFunctions from './plugins/postcss-stepped-value-functions';
+import postcssTrigonometricFunctions from './plugins/postcss-trigonometric-functions';
 import postcssUnsetValue from './plugins/postcss-unset-value';
 
 main();
@@ -40,6 +42,9 @@ function main() {
 			return;
 		case 'css-prefers-color-scheme':
 			cssPrefersColorScheme();
+			return;
+		case 'postcss-cascade-layers':
+			postcssCascadeLayers();
 			return;
 		case 'postcss-color-function':
 			postcssColorFunction();
@@ -119,6 +124,9 @@ function main() {
 		case 'postcss-stepped-value-functions':
 			postcssSteppedValueFunctions();
 			return;
+		case 'postcss-trigonometric-functions':
+			postcssTrigonometricFunctions();
+			return;
 		case 'postcss-unset-value':
 			postcssUnsetValue();
 			return;
@@ -137,6 +145,7 @@ function main() {
 				'  css-blank-pseudo',
 				'  css-has-pseudo',
 				'  css-prefers-color-scheme',
+				'  postcss-cascade-layers',
 				'  postcss-color-function',
 				'  postcss-color-functional-notation',
 				'  postcss-color-hex-alpha',
@@ -162,6 +171,7 @@ function main() {
 				'  postcss-place',
 				'  postcss-pseudo-class-any-link',
 				'  postcss-stepped-value-functions',
+				'  postcss-trigonometric-functions',
 				'  postcss-unset-value',
 
 				'\nPlugin Help:',
