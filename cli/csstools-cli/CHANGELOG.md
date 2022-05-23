@@ -1,5 +1,11 @@
 # Changes to CSSTools CLI
 
+### Unreleased
+
+- Added `@csstools/postcss-cascade-layers`
+- Added `@csstools/postcss-trigonometric-functions`
+- Updated `postcss-preset-env` to `7.6.0` (minor)
+
 ### 1.3.0 (May 2, 2022)
 
 - Added `@csstools/postcss-unset-value` (minor)
