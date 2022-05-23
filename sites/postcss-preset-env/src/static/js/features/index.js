@@ -5,6 +5,11 @@
 		return;
 	}
 
+	const hashElements = [];
+	const omittedElements = [];
+	const stages = [0, 1, 2, 3];
+	let stageSelect = null;
+
 	function onParsed() {
 		initFeatureNav();
 		onHashChange();
@@ -17,11 +22,6 @@
 	}();
 
 	window.addEventListener('hashchange', onHashChange);
-
-	const hashElements = [];
-	const omittedElements = [];
-	const stages = [0, 1, 2, 3];
-	let stageSelect = null;
 
 	function onHashChange() {
 		hashElements.forEach(element => {
