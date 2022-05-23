@@ -8,6 +8,7 @@ The `ID` listed is the key for PostCSS Preset Env configuration in your project.
 | `any-link-pseudo-class` | `:any-link` Hyperlink Pseudo-Class | [example](https://preset-env.cssdb.org/features/#any-link-pseudo-class) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link#readme) |
 | `blank-pseudo-class` | `:blank` Empty-Value Pseudo-Class | [example](https://preset-env.cssdb.org/features/#blank-pseudo-class) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo#readme) |
 | `break-properties` | Break Properties | [example](https://preset-env.cssdb.org/features/#break-properties) | [docs](https://github.com/shrpne/postcss-page-break#readme) |
+| `cascade-layers` | CSS Cascade Layers | [example](https://preset-env.cssdb.org/features/#cascade-layers) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers#readme) |
 | `case-insensitive-attributes` | Case-Insensitive Attributes | [example](https://preset-env.cssdb.org/features/#case-insensitive-attributes) | [docs](https://github.com/Semigradsky/postcss-attribute-case-insensitive#readme) |
 | `clamp` | `clamp` Function | [example](https://preset-env.cssdb.org/features/#clamp) | [docs](https://github.com/polemius/postcss-clamp#readme) |
 | `color-function` | `color()` Function | [example](https://preset-env.cssdb.org/features/#color-function) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function#readme) |
