@@ -10,6 +10,9 @@ module.exports = ctx => {
 				preserve: true,
 				features: {
 					'custom-properties': false,
+					'custom-media-queries': {
+						preserve: false,
+					},
 				},
 			},
 			'cssnano': isProd ? {
