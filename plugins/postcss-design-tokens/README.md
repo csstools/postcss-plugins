@@ -275,6 +275,11 @@ design-token() = design-token( <token-path> [ to <unit> ]? )
 <unit> = [ px | rem ]
 ```
 
+## Further reading
+
+- [Why we think PostCSS Design Tokens is needed]
+- [About Design Tokens (Adobe Spectrum)]
+
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 
 [discord]: https://discord.gg/bUadyRwkJS
@@ -285,3 +290,5 @@ design-token() = design-token( <token-path> [ to <unit> ]? )
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Design Tokens]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-design-tokens
+[Why we think PostCSS Design Tokens is needed]: https://github.com/csstools/postcss-plugins/wiki/Why-we-think-PostCSS-Design-Tokens-is-needed
+[About Design Tokens (Adobe Spectrum)]: https://spectrum.adobe.com/page/design-tokens/
