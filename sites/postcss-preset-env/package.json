@@ -24,7 +24,7 @@
 		"eleventy": "eleventy --watch",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"browsersync": "browser-sync start --server 'dist' --files 'dist' --port 8080 --no-notify",
-		"build": "npm-run-all clean build:css build:js build:eleventy",
+		"build": "npm run clean && npm run build:css && npm run build:js && npm run build:eleventy",
 		"build:js": "rollup -c rollup.config.js",
 		"build:css": "postcss src/static/css/styles.css -o dist/static/css/styles.css --env production",
 		"build:eleventy": "NODE_ENV=production eleventy"
