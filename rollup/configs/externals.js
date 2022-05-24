@@ -13,6 +13,7 @@ export const externalsForCLI = [
 	'@csstools/postcss-oklab-function',
 	'@csstools/postcss-progressive-custom-properties',
 	'@csstools/postcss-stepped-value-functions',
+	'@csstools/postcss-trigonometric-functions',
 	'@csstools/postcss-unset-value',
 	'@csstools/selector-specificity',
 	'autoprefixer',
