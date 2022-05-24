@@ -34,5 +34,5 @@ export default [
 	'system-ui-font-family',
 	'cascade-layers',
 	'stepped-value-functions',
-	'trigonometric-functions'
+	'trigonometric-functions',
 ];
