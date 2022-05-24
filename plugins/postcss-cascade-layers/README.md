@@ -1,9 +1,6 @@
 # PostCSS Cascade Layers [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-cascade-layers.svg" height="20">][npm-url]
-[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/cascade-layers.svg" height="20">][css-url]
-[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
-[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-cascade-layers.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/cascade-layers.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Cascade Layers] lets you use `@layer` following the [Cascade Layers Specification]. For more information on layers, checkout [A Complete Guide to CSS Cascade Layers] by Miriam Suzanne.
 
@@ -32,6 +29,30 @@ target {
 	}
 
 ```
+
+## How it works
+
+[PostCSS Cascade Layers] creates "layers" of specificity.
+
+It applies extra specificity on all your styles based on :
+- the most specific selector found
+- the order in which layers are defined
+
+for `@layer A, B, C`:
+
+| layer | specificity adjustment | selector |
+| ------ | ----------- | --- |
+| `A` | 0 | N/A |
+| `B` | 3 | `:not(#/#):not(#/#):not(#/#)` |
+| `C` | 6 | `:not(#/#):not(#/#):not(#/#):not(#/#):not(#/#):not(#/#)` |
+
+This approach lets more important (later) layers always override less important (earlier) layers.<br>
+And layers have enough room internally so that each selector works and overrides as expected.
+
+More layers with more specificity will cause longer `:not(...)` selectors to be generated.
+
+⚠️ For this to work the plugin needs to analyze your entire stylesheet at once.<br>
+If you have different assets that are unaware of each other it will not work correctly as the analysis will be incorrect.
 
 ## Usage
 

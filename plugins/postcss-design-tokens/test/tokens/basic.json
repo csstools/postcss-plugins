@@ -1,0 +1,45 @@
+{
+	"font": {
+		"family": {
+			"sans": { "value": "sans" },
+			"helvetica": { "value": "Helvetica" },
+			"serif": { "value": "serif" },
+			"base": { "value": "{ font.family.helvetica.value} {font.family.sans.value}" }
+		}
+	},
+	"card": {
+		"foreground":  { "value": "{logical-color.foreground}" },
+		"background":  { "value": "{logical-color.background}" }
+	},
+	"base-color": {
+		"red": { "value": "red" },
+		"blue": { "value": "blue" }
+	},
+	"logical-color": {
+		"foreground": { "value": "{base-color.red}" },
+		"background": { "value": "{base-color.blue}" }
+	},
+	"space": {
+		"small": {
+			"value": "8px"
+		},
+		"default": {
+			"value": "18px"
+		},
+		"large": {
+			"value": "32px"
+		},
+		"small-b": {
+			"value": "0.5rem"
+		},
+		"default-b": {
+			"value": "1.125rem"
+		},
+		"large-b": {
+			"value": "2rem"
+		},
+		"lh": {
+			"value": "1lh"
+		}
+	}
+}

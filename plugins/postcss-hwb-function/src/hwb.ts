@@ -10,7 +10,7 @@ export function hwbToRgb(hwb: color): color {
 	black /= 100;
 	if (white + black >= 1) {
 		const gray = white / (white + black);
-		return [gray, gray, gray];
+		return [gray, gray, gray].map((x) => Math.round(x * 255)) as color;
 	}
 	const rgb = hslToRgb([hue, 100, 50]);
 	for (let i = 0; i < 3; i++) {

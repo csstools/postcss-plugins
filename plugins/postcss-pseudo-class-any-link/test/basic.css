@@ -27,7 +27,8 @@ ul a:any-link > span {
 	order: 7;
 }
 
-::before:any-link {
+::before:any-link,
+:before:any-link {
 	order: 8;
 }
 

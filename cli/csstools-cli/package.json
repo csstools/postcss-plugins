@@ -32,19 +32,21 @@
 		"dist"
 	],
 	"dependencies": {
+		"@csstools/postcss-cascade-layers": "^1.0.2",
 		"@csstools/postcss-color-function": "^1.1.0",
 		"@csstools/postcss-font-format-keywords": "^1.0.0",
-		"@csstools/postcss-hwb-function": "^1.0.0",
+		"@csstools/postcss-hwb-function": "^1.0.1",
 		"@csstools/postcss-ic-unit": "^1.0.0",
-		"@csstools/postcss-is-pseudo-class": "^2.0.2",
+		"@csstools/postcss-is-pseudo-class": "^2.0.4",
 		"@csstools/postcss-normalize-display-values": "^1.0.0",
 		"@csstools/postcss-oklab-function": "^1.1.0",
 		"@csstools/postcss-stepped-value-functions": "^1.0.0",
-		"@csstools/postcss-unset-value": "^1.0.0",
+		"@csstools/postcss-trigonometric-functions": "^1.0.0",
+		"@csstools/postcss-unset-value": "^1.0.1",
 		"css-blank-pseudo": "^3.0.3",
 		"css-has-pseudo": "^3.0.4",
 		"css-prefers-color-scheme": "^6.0.3",
-		"postcss-color-functional-notation": "^4.2.2",
+		"postcss-color-functional-notation": "^4.2.3",
 		"postcss-color-hex-alpha": "^8.0.3",
 		"postcss-color-rebeccapurple": "^7.0.2",
 		"postcss-custom-properties": "^12.1.7",
@@ -57,14 +59,14 @@
 		"postcss-image-set-function": "^4.0.6",
 		"postcss-lab-function": "^4.2.0",
 		"postcss-logical": "^5.0.4",
-		"postcss-nesting": "^10.1.4",
+		"postcss-nesting": "^10.1.7",
 		"postcss-overflow-shorthand": "^3.0.3",
 		"postcss-place": "^7.0.4",
-		"postcss-preset-env": "^7.5.0",
-		"postcss-pseudo-class-any-link": "^7.1.2"
+		"postcss-preset-env": "^7.6.0",
+		"postcss-pseudo-class-any-link": "^7.1.4"
 	},
 	"devDependencies": {
-		"postcss": "^8.4.13"
+		"postcss": "^8.4.14"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",

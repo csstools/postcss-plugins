@@ -13,3 +13,7 @@
 target {
 	color: purple;
 }
+
+target:before {
+	color: pink;
+}

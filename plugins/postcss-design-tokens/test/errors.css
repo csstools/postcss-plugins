@@ -1,0 +1,4 @@
+@design-tokens url('./tokens/does-not-exist.json') format('style-dictionary3');
+@design-tokens url('./tokens/basic.json') format('does not exist');
+@design-tokens url('./tokens/circular.json') format('style-dictionary3');
+@design-tokens url('./tokens/missing.json') format('style-dictionary3');

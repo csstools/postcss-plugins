@@ -125,6 +125,12 @@
 	);
 }
 
+:root {
+	/* Not expected to be handled here at the moment, but might be needed in the future */
+	--color-functional-notation-percentage-alpha: rgba(0, 0, 0, 1);
+	--color-functional-notation-percentage-alpha: rgba(0, 0, 0, 100%);
+}
+
 /* Custom props already wrapped in relevant @supports are ignored */
 @supports (background: linear-gradient(blue 0%, blue 0% 1%, blue 2%)) {
 	:root {

@@ -24,6 +24,30 @@
 <example.expect.css>
 ```
 
+## How it works
+
+[<humanReadableName>] creates "layers" of specificity.
+
+It applies extra specificity on all your styles based on :
+- the most specific selector found
+- the order in which layers are defined
+
+for `@layer A, B, C`:
+
+| layer | specificity adjustment | selector |
+| ------ | ----------- | --- |
+| `A` | 0 | N/A |
+| `B` | 3 | `:not(#/#):not(#/#):not(#/#)` |
+| `C` | 6 | `:not(#/#):not(#/#):not(#/#):not(#/#):not(#/#):not(#/#)` |
+
+This approach lets more important (later) layers always override less important (earlier) layers.<br>
+And layers have enough room internally so that each selector works and overrides as expected.
+
+More layers with more specificity will cause longer `:not(...)` selectors to be generated.
+
+⚠️ For this to work the plugin needs to analyze your entire stylesheet at once.<br>
+If you have different assets that are unaware of each other it will not work correctly as the analysis will be incorrect.
+
 <usage>
 
 <env-support>

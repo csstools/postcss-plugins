@@ -1,9 +1,6 @@
 # PostCSS Stepped Value Functions [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-stepped-value-functions.svg" height="20">][npm-url]
-[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/stepped-value-functions.svg" height="20">][css-url]
-[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
-[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-stepped-value-functions.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/stepped-value-functions.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Stepped Value Functions] lets you use `round`, `rem` and `mod` stepped value functions, following the [CSS Values 4].
 
@@ -58,7 +55,7 @@ instructions for:
 
 ## ⚠️ About custom properties
 
-Given the dynamic nature of custom properties it's impossible to know what the variable value is which means the plugin can't compute a final value for the stylesheet. 
+Given the dynamic nature of custom properties it's impossible to know what the variable value is, which means the plugin can't compute a final value for the stylesheet. 
 
 Because of that, any usage that contains a `var` is skipped.
 
