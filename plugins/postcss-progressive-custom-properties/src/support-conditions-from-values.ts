@@ -14,6 +14,13 @@ export function supportConditionsFromValue(value: string): Array<string> {
 		}
 	});
 
+	if (
+		!relevantMatchers.length &&
+		value.indexOf('-gradient(') === -1
+	) {
+		return supportConditions;
+	}
+
 	try {
 		const ast = valueParser(value);
 		ast.walk((node) => {
