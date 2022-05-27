@@ -315,3 +315,28 @@
 	}
 }
 }
+
+:root {
+	--a: red;
+}
+
+@supports (color: rgba(0 0 0 / 0)) {
+:root {
+	--a: rgba(
+		0   100%
+		/* a comment */
+		0 /  0.5
+	);
+}
+}
+
+@supports (color: rgba(0 0 0 / 0)) {
+	:root {
+		--b: red;
+		--b: rgba(
+			0   100%
+			/* a comment */
+			0 /  0.5
+		);
+	}
+}

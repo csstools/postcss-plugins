@@ -1,0 +1,6 @@
+@supports selector(:has(foo)) {
+	/* is guarded by at supports */
+	.foo:has(> bar) {
+		color: red;
+	}
+}

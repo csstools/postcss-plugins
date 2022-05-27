@@ -28,6 +28,7 @@
 		"dist"
 	],
 	"dependencies": {
+		"@csstools/postcss-pattern-matchers": "^1.0.0",
 		"@csstools/postcss-progressive-custom-properties": "^1.1.0",
 		"postcss-value-parser": "^4.2.0"
 	},

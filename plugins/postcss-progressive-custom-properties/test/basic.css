@@ -165,3 +165,23 @@
 		--already-in-supports-rule-6: 1px solid oklch(40% 0.234 0.39 / var(--opacity-50));
 	}
 }
+
+:root {
+	--a: red;
+	--a: rgba(
+		0   100%
+		/* a comment */
+		0 /  0.5
+	);
+}
+
+@supports (color: rgba(0 0 0 / 0)) {
+	:root {
+		--b: red;
+		--b: rgba(
+			0   100%
+			/* a comment */
+			0 /  0.5
+		);
+	}
+}

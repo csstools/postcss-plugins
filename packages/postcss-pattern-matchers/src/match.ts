@@ -12,25 +12,33 @@ export function matches(a, b) {
 	}
 
 	if (a.nodes && b.nodes) {
-		for (let i = 0; i < a.nodes.length; i++) {
-			let ia = i;
-			let ib = i;
+		let ia = 0;
+		let ib = 0;
 
-			while (a.nodes[ia] && a.nodes[ia].type === 'space') {
+		while (a.nodes[ia] || b.nodes[ib]) {
+			if (!!a.nodes[ia] !== !!b.nodes[ib]) {
+				return false;
+			}
+
+			while (a.nodes[ia] && (a.nodes[ia].type === 'space' || a.nodes[ia].type === 'comment')) {
 				ia++;
 			}
 
-			while (b.nodes[ib] && b.nodes[ib].type === 'space') {
+			while (b.nodes[ib] && (b.nodes[ib].type === 'space' || b.nodes[ib].type === 'comment')) {
 				ib++;
-			}
-
-			if (!!a.nodes[ia] !== !!b.nodes[ib]) {
-				return false;
 			}
 
 			if (!matches(a.nodes[ia], b.nodes[ib])) {
 				return false;
 			}
+
+			if (a.nodes[ia].isVariadic && !!b.nodes[ib + 1] && matches(a.nodes[ia], b.nodes[ib+1])) {
+				ib++;
+				continue;
+			}
+
+			ia++;
+			ib++;
 		}
 
 		return true;

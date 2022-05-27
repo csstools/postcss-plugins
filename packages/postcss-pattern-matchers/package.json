@@ -1,8 +1,18 @@
 {
-	"name": "@csstools/postcss-progressive-custom-properties",
-	"description": "Correctly declare progressive enhancements for CSS Custom Properties.",
-	"version": "1.3.0",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"name": "@csstools/postcss-pattern-matchers",
+	"description": "Detect features and CSS patterns",
+	"version": "1.0.0",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke ",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
@@ -27,15 +37,15 @@
 		"README.md",
 		"dist"
 	],
-	"dependencies": {
-		"@csstools/postcss-pattern-matchers": "^1.0.0",
-		"postcss-value-parser": "^4.2.0"
-	},
 	"peerDependencies": {
 		"postcss": "^8.3"
 	},
+	"dependencies": {
+		"postcss-selector-parser": "^6.0.10",
+		"postcss-value-parser":"^4.2.0"
+	},
 	"scripts": {
-		"build": "rollup -c ../../rollup/default.js",
+		"build": "node ./generate/matchers.mjs && eslint --fix ./src/*.ts && rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
@@ -47,27 +57,18 @@
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/postcss-pattern-matchers#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
-		"directory": "plugins/postcss-progressive-custom-properties"
+		"directory": "packages/postcss-pattern-matchers"
 	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"css",
-		"custom",
-		"declarations",
 		"postcss",
 		"postcss-plugin",
-		"progressive",
-		"properties",
-		"utility",
-		"variables",
-		"vars"
+		"patterns"
 	],
-	"csstools": {
-		"exportName": "postcssProgressiveCustomProperties",
-		"humanReadableName": "PostCSS Progressive Custom Properties"
-	},
 	"volta": {
 		"extends": "../../package.json"
 	}

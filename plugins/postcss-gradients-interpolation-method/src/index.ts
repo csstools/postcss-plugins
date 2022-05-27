@@ -1,3 +1,4 @@
+import { declarationIsGuardedByAtSupports } from '@csstools/postcss-pattern-matchers';
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { PluginCreator } from 'postcss';
 import type { Node } from 'postcss-value-parser';
@@ -26,7 +27,7 @@ const basePlugin = (opts) => {
 				return;
 			}
 
-			if (postcssProgressiveCustomProperties.declarationIsGuardedByAtSupports(decl, decl.value)) {
+			if (declarationIsGuardedByAtSupports(decl)) {
 				return;
 			}
 

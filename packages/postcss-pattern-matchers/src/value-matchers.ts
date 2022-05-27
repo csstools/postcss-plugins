@@ -1,8 +1,8 @@
-export const matchers = [
+export const valueMatchers = [
 	{
-		'supports': 'color(srgb 0 0 0)',
-		'property': 'color',
-		'sniff': 'color',
+		'feature': 'color',
+		'supports': '(color: color(srgb 0 0 0))',
+		'sniff': 'color(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -77,9 +77,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(srgb-linear 0 0 0)',
-		'property': 'color',
-		'sniff': 'color',
+		'feature': 'color',
+		'supports': '(color: color(srgb-linear 0 0 0))',
+		'sniff': 'color(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -154,9 +154,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(a98-rgb 0 0 0)',
-		'property': 'color',
-		'sniff': 'color',
+		'feature': 'color',
+		'supports': '(color: color(a98-rgb 0 0 0))',
+		'sniff': 'color(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -231,9 +231,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(prophoto-rgb 0 0 0)',
-		'property': 'color',
-		'sniff': 'color',
+		'feature': 'color',
+		'supports': '(color: color(prophoto-rgb 0 0 0))',
+		'sniff': 'color(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -308,9 +308,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(display-p3 0 0 0)',
-		'property': 'color',
-		'sniff': 'color',
+		'feature': 'color',
+		'supports': '(color: color(display-p3 0 0 0))',
+		'sniff': 'color(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -385,9 +385,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(rec2020 0 0 0)',
-		'property': 'color',
-		'sniff': 'color',
+		'feature': 'color',
+		'supports': '(color: color(rec2020 0 0 0))',
+		'sniff': 'color(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -462,9 +462,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(xyz-d50 0 0 0)',
-		'property': 'color',
-		'sniff': 'color',
+		'feature': 'color',
+		'supports': '(color: color(xyz-d50 0 0 0))',
+		'sniff': 'color(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -539,9 +539,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(xyz-d65 0 0 0)',
-		'property': 'color',
-		'sniff': 'color',
+		'feature': 'color',
+		'supports': '(color: color(xyz-d65 0 0 0))',
+		'sniff': 'color(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -616,9 +616,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(xyz 0 0 0)',
-		'property': 'color',
-		'sniff': 'color',
+		'feature': 'color',
+		'supports': '(color: color(xyz 0 0 0))',
+		'sniff': 'color(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -693,9 +693,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'hsl(0, 0%, 0%)',
-		'property': 'color',
-		'sniff': 'hsl',
+		'feature': 'hsl',
+		'supports': '(color: hsl(0, 0%, 0%))',
+		'sniff': 'hsl(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -734,9 +734,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'hsl(0 0% 0% / 0)',
-		'property': 'color',
-		'sniff': 'hsl',
+		'feature': 'hsl',
+		'supports': '(color: hsl(0 0% 0% / 0))',
+		'sniff': 'hsl(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -797,9 +797,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'hsla(0 0% 0% / 0)',
-		'property': 'color',
-		'sniff': 'hsla',
+		'feature': 'hsla',
+		'supports': '(color: hsla(0 0% 0% / 0))',
+		'sniff': 'hsla(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -836,9 +836,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'hwb(0 0% 0%)',
-		'property': 'color',
-		'sniff': 'hwb',
+		'feature': 'hwb',
+		'supports': '(color: hwb(0 0% 0%))',
+		'sniff': 'hwb(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -899,9 +899,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'lab(0% 0 0)',
-		'property': 'color',
-		'sniff': 'lab',
+		'feature': 'lab',
+		'supports': '(color: lab(0% 0 0))',
+		'sniff': 'lab(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -962,9 +962,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'lch(0% 0 0)',
-		'property': 'color',
-		'sniff': 'lch',
+		'feature': 'lch',
+		'supports': '(color: lch(0% 0 0))',
+		'sniff': 'lch(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -1025,9 +1025,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'oklab(0% 0 0)',
-		'property': 'color',
-		'sniff': 'oklab',
+		'feature': 'oklab',
+		'supports': '(color: oklab(0% 0 0))',
+		'sniff': 'oklab(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -1088,9 +1088,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'oklch(0% 0 0)',
-		'property': 'color',
-		'sniff': 'oklch',
+		'feature': 'oklch',
+		'supports': '(color: oklch(0% 0 0))',
+		'sniff': 'oklch(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -1151,9 +1151,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'rgb(0, 0, 0, 0)',
-		'property': 'color',
-		'sniff': 'rgb',
+		'feature': 'rgb',
+		'supports': '(color: rgb(0, 0, 0, 0))',
+		'sniff': 'rgb(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -1192,9 +1192,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'rgb(0 0 0 / 0)',
-		'property': 'color',
-		'sniff': 'rgb',
+		'feature': 'rgb',
+		'supports': '(color: rgb(0 0 0 / 0))',
+		'sniff': 'rgb(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -1255,9 +1255,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'rgba(0 0 0 / 0)',
-		'property': 'color',
-		'sniff': 'rgba',
+		'feature': 'rgba',
+		'supports': '(color: rgba(0 0 0 / 0))',
+		'sniff': 'rgba(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -1294,9 +1294,9 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color-mix(in oklch, #000, #fff)',
-		'property': 'color',
-		'sniff': 'color-mix',
+		'feature': 'color-mix',
+		'supports': '(color: color-mix(in oklch, #000, #fff))',
+		'sniff': 'color-mix(',
 		'matchers': [
 			{
 				'type': 'function',
@@ -1649,8 +1649,8 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': '1ic',
-		'property': 'font-size',
+		'feature': 'ic',
+		'supports': '(font-size: 1ic)',
 		'sniff': 'ic',
 		'matchers': [
 			{

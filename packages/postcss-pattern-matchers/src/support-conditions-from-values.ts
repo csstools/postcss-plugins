@@ -1,5 +1,5 @@
 import valueParser from 'postcss-value-parser';
-import { matchers } from './matchers';
+import { valueMatchers as matchers } from './value-matchers';
 import { matches } from './match';
 import { doublePositionGradients } from './custom/double-position-gradients';
 
@@ -40,7 +40,7 @@ export function supportConditionsFromValue(value: string): Array<string> {
 					// Matchers are ordered from most specific to least.
 					// Only one needs to match.
 					if (matches(matcherAST, node)) {
-						supportConditions.push(`(${propertyValueMatcher.property}: ${propertyValueMatcher.supports})`);
+						supportConditions.push(propertyValueMatcher.supports);
 						return;
 					}
 				}

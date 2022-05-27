@@ -10,6 +10,11 @@ export function matcherForValue(value) {
 			delete node.after;
 			delete node.sourceEndIndex;
 
+			if (node.value && node.value.startsWith('...')) {
+				node.isVariadic = true;
+				node.value = node.value.substring(3);
+			}
+
 			if (node.type === 'space') {
 				delete node.value;
 			} else if (node.value.startsWith('$')) {
