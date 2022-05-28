@@ -37,10 +37,10 @@ export function declarationIsGuardedByAtSupports(decl: Declaration): boolean {
 }
 
 export function selectorIsGuardedByAtSupports(rule: Rule): boolean {
-	const valueConditions = supportConditionsFromSelector(rule.selector);
-	if (!valueConditions.length) {
+	const selectorConditions = supportConditionsFromSelector(rule.selector);
+	if (!selectorConditions.length) {
 		return false;
 	}
 
-	return isGuardedByAtSupports(rule, valueConditions);
+	return isGuardedByAtSupports(rule, selectorConditions);
 }

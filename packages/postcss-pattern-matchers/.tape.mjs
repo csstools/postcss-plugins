@@ -5,7 +5,7 @@ const creator = () => {
 	return {
 		postcssPlugin: 'postcss-test-plugin',
 		Rule(rule, { Comment }) {
-			if (selectorIsGuardedByAtSupports) {
+			if (selectorIsGuardedByAtSupports(rule)) {
 				rule.before(
 					new Comment({ text: 'is guarded by at supports', source: rule.source })
 				);

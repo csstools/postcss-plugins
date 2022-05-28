@@ -1,3 +1,4 @@
+import { matcherForSelector } from './matcher-for-selector.mjs';
 import { matcherForValue } from './matcher-for-value.mjs';
 
 export const hasPseudoMatchers = [
@@ -6,7 +7,8 @@ export const hasPseudoMatchers = [
 		'supports': 'selector(:has(f))',
 		'sniff': ':has(',
 		'matchers': [
-			matcherForValue('selector(:has(...$1))'),
+			matcherForSelector(':has($$)'),
+			matcherForValue('selector(:has($$), :is(foo))'),
 		],
 	},
 ];

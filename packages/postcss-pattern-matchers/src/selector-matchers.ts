@@ -5,21 +5,76 @@ export const selectorMatchers = [
 		'sniff': ':has(',
 		'matchers': [
 			{
+				'type': 'selector',
+				'value': '',
+				'nodes': [
+					{
+						'type': 'pseudo',
+						'value': ':has($$)',
+						'nodes': [
+							{
+								'type': 'selector',
+								'value': '',
+								'nodes': [
+									{
+										'type': 'tag',
+										'value': '$$',
+										'isVariable': true,
+										'isVariadic': true,
+									},
+								],
+							},
+						],
+					},
+				],
+			},
+			{
 				'type': 'function',
 				'value': 'selector',
 				'nodes': [
 					{
-						'type': 'div',
-						'value': ':',
-					},
-					{
-						'type': 'function',
-						'value': 'has',
+						'type': 'selector',
+						'value': '',
 						'nodes': [
 							{
-								'type': 'word',
-								'isVariadic': true,
-								'isVariable': true,
+								'type': 'pseudo',
+								'value': ':has($$)',
+								'nodes': [
+									{
+										'type': 'selector',
+										'value': '',
+										'nodes': [
+											{
+												'type': 'tag',
+												'value': '$$',
+												'isVariable': true,
+												'isVariadic': true,
+											},
+										],
+									},
+								],
+							},
+						],
+					},
+					{
+						'type': 'selector',
+						'value': '',
+						'nodes': [
+							{
+								'type': 'pseudo',
+								'value': ' :is(foo)',
+								'nodes': [
+									{
+										'type': 'selector',
+										'value': '',
+										'nodes': [
+											{
+												'type': 'tag',
+												'value': 'foo',
+											},
+										],
+									},
+								],
 							},
 						],
 					},

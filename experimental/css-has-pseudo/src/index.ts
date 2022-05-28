@@ -2,6 +2,7 @@ import parser from 'postcss-selector-parser';
 import selectorSpecificity from '@csstools/selector-specificity';
 import encodeCSS from './encode/encode.mjs';
 import type { PluginCreator } from 'postcss';
+import { selectorIsGuardedByAtSupports } from '@csstools/postcss-pattern-matchers';
 
 const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: string }> = (opts?: { preserve?: boolean, specificityMatchingName?: string }) => {
 	const options = {
@@ -17,7 +18,7 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 	return {
 		postcssPlugin: 'css-has-pseudo-experimental',
 		RuleExit: (rule, { result }) => {
-			if (!rule.selector.includes(':has(') || isWithinSupportCheck(rule)) {
+			if (!rule.selector.includes(':has(') || selectorIsGuardedByAtSupports(rule)) {
 				return;
 			}
 
@@ -102,19 +103,3 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 creator.postcss = true;
 
 export default creator;
-
-function isWithinSupportCheck(rule) {
-	let isSupportCheck = false;
-	let ruleParent = rule.parent;
-
-	while (!isSupportCheck && ruleParent) {
-		if (ruleParent.type === 'atrule') {
-
-			isSupportCheck = ruleParent.params.includes(':has(') && ruleParent.params.startsWith('selector(');
-		}
-
-		ruleParent = ruleParent.parent;
-	}
-
-	return isSupportCheck;
-}

@@ -1,6 +1,17 @@
 @supports selector(:has(foo)) {
-	/* is guarded by at supports */
 	.foo:has(> bar) {
 		color: red;
+	}
+}
+
+@supports selector(:has(:focus)) {
+	:has(:focus) {
+		order: 32;
+	}
+}
+
+@supports (display: grid) {
+	:has(:focus) {
+		order: 33;
 	}
 }

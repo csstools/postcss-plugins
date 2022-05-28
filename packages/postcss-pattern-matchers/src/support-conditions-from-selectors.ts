@@ -29,21 +29,21 @@ export function supportConditionsFromSelector(value: string): Array<string> {
 			}
 
 			for (let i = 0; i < relevantMatchers.length; i++) {
-				const propertyValueMatcher = relevantMatchers[i];
+				const selectorMatchers = relevantMatchers[i];
 
-				for (let j = 0; j < propertyValueMatcher.matchers.length; j++) {
-					const matcherAST = propertyValueMatcher.matchers[j];
+				for (let j = 0; j < selectorMatchers.matchers.length; j++) {
+					const matcherAST = selectorMatchers.matchers[j];
 					// Matchers are ordered from most specific to least.
 					// Only one needs to match.
 					if (matches(matcherAST, node)) {
-						supportConditions.push(propertyValueMatcher.supports);
+						supportConditions.push(selectorMatchers.supports);
 						return;
 					}
 				}
 			}
 		});
 
-	} catch (_) {
+	} catch (e) {
 		/* ignore */
 	}
 

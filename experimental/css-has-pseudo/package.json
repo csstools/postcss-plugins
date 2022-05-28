@@ -36,6 +36,7 @@
 		"dist"
 	],
 	"dependencies": {
+		"@csstools/postcss-pattern-matchers": "^1.0.0",
 		"@csstools/selector-specificity": "1.0.0",
 		"postcss-selector-parser": "^6.0.10"
 	},
