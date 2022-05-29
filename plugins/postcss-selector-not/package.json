@@ -20,14 +20,14 @@
     "dist"
   ],
   "dependencies": {
-    "balanced-match": "^1.0.0"
+    "postcss-selector-parser": "^6.0.10"
   },
   "peerDependencies": {
     "postcss": "^8.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
     "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "@babel/register": "^7.11.5",
     "eslint": "^7.9.0",

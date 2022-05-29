@@ -1,68 +1,74 @@
-import list from "postcss/lib/list"
+import parser from "postcss-selector-parser"
 
-import balancedMatch from "balanced-match"
+function cleanupWhitespace(node) {
+	if (node.spaces) {
+		node.spaces.after = ""
+		node.spaces.before = ""
+	}
 
-function explodeSelector(pseudoClass, selector) {
-  const position = locatePseudoClass(selector, pseudoClass)
-  if (selector && position > -1) {
-    const pre = selector.slice(0, position)
-    const matches = balancedMatch("(", ")", selector.slice(position))
+	if (node.nodes && node.nodes.length > 0) {
+		if (node.nodes[0] && node.nodes[0].spaces) {
+			node.nodes[0].spaces.before = ""
+		}
 
-    if (!matches) {
-      return selector
-    }
-
-    const bodySelectors = matches.body
-      ? list
-        .comma(matches.body)
-        .map(s => explodeSelector(pseudoClass, s))
-        .join(`)${pseudoClass}(`)
-      : ""
-    const postSelectors = matches.post
-      ? explodeSelector(pseudoClass, matches.post)
-      : ""
-
-    return `${pre}${pseudoClass}(${bodySelectors})${postSelectors}`
-  }
-  return selector
+		if (
+			node.nodes[node.nodes.length - 1] &&
+			node.nodes[node.nodes.length - 1].spaces
+		) {
+			node.nodes[node.nodes.length - 1].spaces.after = ""
+		}
+	}
 }
 
-const patternCache = {}
+const creator = () => {
+	return {
+		postcssPlugin: "postcss-selector-not",
+		Rule: (rule, {result}) => {
+			if (rule.selector && rule.selector.indexOf(":not(") > -1) {
+				try {
+					const selectorAST = parser().astSync(rule.selector)
+					selectorAST.walkPseudos((pseudo) => {
+						if (pseudo.value !== ":not") {
+							return
+						}
 
-function locatePseudoClass(selector, pseudoClass) {
-  patternCache[pseudoClass] = patternCache[pseudoClass]
-    || new RegExp(`([^\\\\]|^)${pseudoClass}`)
+						if (!pseudo.nodes || pseudo.nodes.length < 2) {
+							return
+						}
 
-  // The regex is used to ensure that selectors with
-  // escaped colons in them are treated properly
-  // Ex: .foo\:not-bar is a valid CSS selector
-  // But it is not a reference to a pseudo selector
-  const pattern = patternCache[pseudoClass]
-  const position = selector.search(pattern)
+						const replacements = []
 
-  if (position === -1) {
-    return -1
-  }
+						pseudo.nodes.forEach((node) => {
+							cleanupWhitespace(node)
 
-  // The offset returned by the regex may be off by one because
-  // of it including the negated character match in the position
-  return position + selector.slice(position).indexOf(pseudoClass)
+							// Wrap each child selector in it's own `:not()`
+							const newPseudo = parser.pseudo({
+								value: ":not",
+								nodes: [node],
+							})
+							replacements.push(newPseudo)
+						})
+
+						// Replace the pseudo with the list of new pseudos
+						pseudo.replaceWith(...replacements)
+					})
+
+					const modifiedSelector = selectorAST.toString()
+					if (modifiedSelector !== rule.selector) {
+						rule.selector = modifiedSelector
+					}
+				}
+				catch (_) {
+					rule.warn(
+						result,
+						`Failed to parse selector "${rule.selector}"`
+					)
+				}
+			}
+		},
+	}
 }
 
-function explodeSelectors(pseudoClass) {
-  return () => {
-    return {
-      postcssPlugin: "postcss-selector-not",
-      Rule: (rule) => {
-        if (rule.selector && rule.selector.indexOf(pseudoClass) > -1) {
-          rule.selector = explodeSelector(pseudoClass, rule.selector)
-        }
-      },
-    }
-  }
-}
-
-const creator = explodeSelectors(":not")
 creator.postcss = true
 
 export default creator

@@ -1,3 +1,8 @@
+# Unreleased (TODO: update this before release)
+
+- Fixed: doesn't consider attribute selectors ([#23](https://github.com/postcss/postcss-selector-not/issues/23))
+- Fixed: unexpected results when `:not` is not a pseudo class function ([#28](https://github.com/postcss/postcss-selector-not/issues/28))
+
 # 5.0.0 - 2021-01-31
 
 - Added: Support for PostCSS v8.
