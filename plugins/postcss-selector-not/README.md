@@ -1,4 +1,4 @@
-# postcss-selector-not [![CSS Standard Status](https://cssdb.org/badge/not-pseudo-class.svg)](https://cssdb.org/#not-pseudo-class) [![Build Status](https://travis-ci.org/postcss/postcss-selector-not.svg?branch=master)](https://travis-ci.org/postcss/postcss-selector-not)
+# postcss-selector-not [![CSS Standard Status](https://cssdb.org/images/badges/not-pseudo-class.svg)](https://cssdb.org/#not-pseudo-class) [<img alt="build status" src="https://github.com/postcss/postcss-selector-not/workflows/test/badge.svg" height="20">][cli-url]
 
 > PostCSS plugin to transform `:not()` W3C CSS level 4 pseudo class to :not() CSS level 3 selectors
 
@@ -35,3 +35,5 @@ p:not(:first-child):not(.special) {
 ## [Changelog](CHANGELOG.md)
 
 ## [License](LICENSE)
+
+[cli-url]: https://github.com/postcss/postcss-selector-not/actions/workflows/test.yml?query=workflow/test
