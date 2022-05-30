@@ -13,8 +13,20 @@ export function matcherForValue(value) {
 			if (node.type === 'space') {
 				delete node.value;
 			} else if (node.value.startsWith('$')) {
-				delete node.value;
-				node.isVariable = true;
+				try {
+					node.dimension = valueParser.unit(node.value.slice(1));
+				} finally {
+					if (node.dimension !== false && node.dimension.unit) {
+						delete node.dimension.number;
+						delete node.value;
+						node.dimension.isVariable = true;
+
+					} else {
+						delete node.dimension;
+						delete node.value;
+						node.isVariable = true;
+					}
+				}
 			} else {
 				try {
 					node.dimension = valueParser.unit(node.value);

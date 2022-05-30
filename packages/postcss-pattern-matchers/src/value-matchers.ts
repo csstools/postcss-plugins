@@ -1193,6 +1193,255 @@ export const valueMatchers = [
 	},
 	{
 		'feature': 'rgb',
+		'supports': '(color: rgb(0%, 0%, 0%, 0%))',
+		'sniff': 'rgb(',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'rgb',
+				'nodes': [
+					{
+						'type': 'word',
+						'dimension': {
+							'unit': '%',
+							'isVariable': true,
+						},
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'rgb',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'dimension': {
+							'unit': '%',
+							'isVariable': true,
+						},
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'rgb',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'dimension': {
+							'unit': '%',
+							'isVariable': true,
+						},
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'rgb',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'dimension': {
+							'unit': '%',
+							'isVariable': true,
+						},
+					},
+				],
+			},
+		],
+	},
+	{
+		'feature': 'rgb',
+		'supports': '(color: rgb(0%, 0%, 0%))',
+		'sniff': 'rgb(',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'rgb',
+				'nodes': [
+					{
+						'type': 'word',
+						'dimension': {
+							'unit': '%',
+							'isVariable': true,
+						},
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'rgb',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'dimension': {
+							'unit': '%',
+							'isVariable': true,
+						},
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'rgb',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'dimension': {
+							'unit': '%',
+							'isVariable': true,
+						},
+					},
+				],
+			},
+		],
+	},
+	{
+		'feature': 'rgb',
 		'supports': '(color: rgb(0 0 0 / 0))',
 		'sniff': 'rgb(',
 		'matchers': [
@@ -1288,6 +1537,161 @@ export const valueMatchers = [
 					{
 						'type': 'word',
 						'isVariable': true,
+					},
+				],
+			},
+		],
+	},
+	{
+		'feature': 'rgba',
+		'supports': '(color: rgba(0%, 0%, 0%, 0%))',
+		'sniff': 'rgba(',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'rgba',
+				'nodes': [
+					{
+						'type': 'word',
+						'dimension': {
+							'unit': '%',
+							'isVariable': true,
+						},
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'rgba',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'dimension': {
+							'unit': '%',
+							'isVariable': true,
+						},
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'rgba',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'dimension': {
+							'unit': '%',
+							'isVariable': true,
+						},
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'rgba',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'dimension': {
+							'unit': '%',
+							'isVariable': true,
+						},
 					},
 				],
 			},

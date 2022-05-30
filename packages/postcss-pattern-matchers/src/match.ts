@@ -54,6 +54,10 @@ function doesNotMatchValue(a, b) {
 		return a.dimension.unit !== b.dimension.unit;
 	}
 
+	if (a.dimension && a.dimension.isVariable) {
+		return false;
+	}
+
 	if (a.value !== b.value) {
 		return true;
 	}

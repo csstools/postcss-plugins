@@ -118,7 +118,28 @@ export const rgbMatchers = [
 		'supports': '(color: rgb(0, 0, 0, 0))',
 		'sniff': 'rgb(',
 		'matchers': [
-			matcherForValue('rgb($1,$2,$3,$4)'),
+			matcherForValue('rgb($1, $2, $3, $4)'),
+		],
+	},
+	{
+		'feature': 'rgb',
+		'supports': '(color: rgb(0%, 0%, 0%, 0%))',
+		'sniff': 'rgb(',
+		'matchers': [
+			matcherForValue('rgb($1%, $2, $3, $4)'),
+			matcherForValue('rgb($1, $2%, $3, $4)'),
+			matcherForValue('rgb($1, $2, $3%, $4)'),
+			matcherForValue('rgb($1, $2, $3, $4%)'),
+		],
+	},
+	{
+		'feature': 'rgb',
+		'supports': '(color: rgb(0%, 0%, 0%))',
+		'sniff': 'rgb(',
+		'matchers': [
+			matcherForValue('rgb($1%, $2, $3)'),
+			matcherForValue('rgb($1, $2%, $3)'),
+			matcherForValue('rgb($1, $2, $3%)'),
 		],
 	},
 	{
@@ -136,6 +157,17 @@ export const rgbMatchers = [
 		'sniff': 'rgba(',
 		'matchers': [
 			matcherForValue('rgba($1 $2 $3 / $4)'),
+		],
+	},
+	{
+		'feature': 'rgba',
+		'supports': '(color: rgba(0%, 0%, 0%, 0%))',
+		'sniff': 'rgba(',
+		'matchers': [
+			matcherForValue('rgba($1%, $2, $3, $4)'),
+			matcherForValue('rgba($1, $2%, $3, $4)'),
+			matcherForValue('rgba($1, $2, $3%, $4)'),
+			matcherForValue('rgba($1, $2, $3, $4%)'),
 		],
 	},
 ];

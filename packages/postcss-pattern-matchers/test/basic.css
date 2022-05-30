@@ -1,5 +1,5 @@
 @supports selector(:has(foo)) {
-	.foo:has(> bar) {
+	.a:has(> bar) {
 		color: red;
 	}
 }
@@ -14,4 +14,24 @@
 	:has(:focus) {
 		order: 33;
 	}
+}
+
+.aaa {
+	color: rgb(0, 0, 100%);
+}
+
+.aab {
+	color: rgb(0, 0, 100%, 0);
+}
+
+.aac {
+	color: hsla(0, 0%, 100%, 0);
+}
+
+.aad {
+	color: hsl(0, 0%, 100%, 0);
+}
+
+.aae {
+	color: hsl(0 0% 100% / 0);
 }

@@ -1,6 +1,6 @@
 @supports selector(:has(foo)) {
 	/* is guarded by at supports */
-	.foo:has(> bar) {
+	.a:has(> bar) {
 		color: red;
 	}
 }
@@ -13,7 +13,32 @@
 }
 
 @supports (display: grid) {
+	/* matched patterns: ["selector(a:has(b))"] */
 	:has(:focus) {
 		order: 33;
 	}
+}
+
+.aaa {
+	/* matched patterns: ["(color: rgb(0%, 0%, 0%))"] */
+	color: rgb(0, 0, 100%);
+}
+
+.aab {
+	/* matched patterns: ["(color: rgb(0, 0, 0, 0))","(color: rgb(0%, 0%, 0%, 0%))"] */
+	color: rgb(0, 0, 100%, 0);
+}
+
+.aac {
+	color: hsla(0, 0%, 100%, 0);
+}
+
+.aad {
+	/* matched patterns: ["(color: hsl(0, 0%, 0%))"] */
+	color: hsl(0, 0%, 100%, 0);
+}
+
+.aae {
+	/* matched patterns: ["(color: hsl(0 0% 0% / 0))"] */
+	color: hsl(0 0% 100% / 0);
 }

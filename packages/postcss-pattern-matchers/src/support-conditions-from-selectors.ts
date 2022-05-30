@@ -57,27 +57,27 @@ export function supportConditionsFromSelector(selector: string): Array<string> {
 		ast.walk((node) => {
 			if (node.type === 'pseudo' && node.value === ':any-link') {
 				supportConditions.add('selector(:any-link)');
-				return;
+				return false;
 			}
 
 			if (node.type === 'pseudo' && node.value === ':blank') {
 				supportConditions.add('selector(:blank)');
-				return;
+				return false;
 			}
 
 			if (node.type === 'pseudo' && node.value === ':dir') {
 				supportConditions.add('selector(:dir(rtl))');
-				return;
+				return false;
 			}
 
 			if (node.type === 'pseudo' && node.value === ':focus-visible') {
 				supportConditions.add('selector(:focus-visible)');
-				return;
+				return false;
 			}
 
 			if (node.type === 'pseudo' && node.value === ':focus-within') {
 				supportConditions.add('selector(:focus-within)');
-				return;
+				return false;
 			}
 
 			if (node.type === 'pseudo' && node.value === ':has') {

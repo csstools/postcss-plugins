@@ -32,6 +32,7 @@ export function supportConditionsFromValue(value: string): Array<string> {
 				}
 			}
 
+			OUTER:
 			for (let i = 0; i < relevantMatchers.length; i++) {
 				const propertyValueMatcher = relevantMatchers[i];
 
@@ -41,7 +42,7 @@ export function supportConditionsFromValue(value: string): Array<string> {
 					// Only one needs to match.
 					if (matches(matcherAST, node)) {
 						supportConditions.add(propertyValueMatcher.supports);
-						return;
+						continue OUTER;
 					}
 				}
 			}
