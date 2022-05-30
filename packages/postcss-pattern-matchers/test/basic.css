@@ -24,6 +24,24 @@
 	color: rgb(0, 0, 100%, 0);
 }
 
+@supports (color: rgb(0, 0, 0, 0)) {
+	.aab {
+		color: rgb(0, 0, 100%, 0);
+	}
+}
+
+@supports (color: rgb(0%, 0%, 0%, 0%)) {
+	.aab {
+		color: rgb(0, 0, 100%, 0);
+	}
+}
+
+@supports (color: rgb(0, 0, 0, 0)) and (color: rgb(0%, 0%, 0%, 0%)) {
+	.aab {
+		color: rgb(0, 0, 100%, 0);
+	}
+}
+
 .aac {
 	color: hsla(0, 0%, 100%, 0);
 }

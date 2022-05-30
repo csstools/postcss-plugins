@@ -1,5 +1,5 @@
 import type { PluginCreator } from 'postcss';
-import { supportConditionsFromValue, isGuardedByAtSupports } from '@csstools/postcss-pattern-matchers';
+import { supportConditionsFromValue, declarationIsGuardedByAtSupports } from '@csstools/postcss-pattern-matchers';
 
 const creator: PluginCreator<null> = () => {
 	return {
@@ -38,7 +38,7 @@ const creator: PluginCreator<null> = () => {
 					return;
 				}
 
-				if (isGuardedByAtSupports(decl, supportConditions)) {
+				if (declarationIsGuardedByAtSupports(decl, supportConditions)) {
 					return;
 				}
 

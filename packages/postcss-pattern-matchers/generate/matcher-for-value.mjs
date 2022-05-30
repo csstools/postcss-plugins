@@ -27,7 +27,7 @@ export function matcherForValue(value) {
 						node.isVariable = true;
 					}
 				}
-			} else {
+			} else if (node.type === 'word') {
 				try {
 					node.dimension = valueParser.unit(node.value);
 				} finally {

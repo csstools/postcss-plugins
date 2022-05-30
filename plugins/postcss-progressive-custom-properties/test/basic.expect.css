@@ -271,9 +271,23 @@
 }
 
 :root {
-	/* Not expected to be handled here at the moment, but might be needed in the future */
 	--color-functional-notation-percentage-alpha: rgba(0, 0, 0, 1);
+}
+
+@supports (color: rgba(0%, 0%, 0%, 0%)) {
+:root {
 	--color-functional-notation-percentage-alpha: rgba(0, 0, 0, 100%);
+}
+}
+
+:root {
+	--color-functional-notation-percentage-alpha: rgba(0, 0, var(--a), 1);
+}
+
+@supports (color: rgba(0%, 0%, 0%, 0%)) {
+:root {
+	--color-functional-notation-percentage-alpha: rgba(0, 0, var(--a), 100%);
+}
 }
 
 /* Custom props already wrapped in relevant @supports are ignored */

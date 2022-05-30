@@ -1,3 +1,5 @@
+import valueParser from 'postcss-value-parser';
+
 export function matches(a, b) {
 	if (a.isVariable && !!b) {
 		return true;
@@ -35,14 +37,20 @@ export function matches(a, b) {
 			ia++;
 			ib++;
 		}
-
-		return true;
 	}
 
 	return true;
 }
 
 function doesNotMatchValue(a, b) {
+	if (b.type === 'word' && b.value && (typeof b.dimension === 'undefined')) {
+		try {
+			b.dimension = valueParser.unit(b.value);
+		} catch (_) {
+			// ignore
+		}
+	}
+
 	if (
 		a.type === 'space' && b.type === 'space' &&
 		a.value.trim() === b.value.trim()

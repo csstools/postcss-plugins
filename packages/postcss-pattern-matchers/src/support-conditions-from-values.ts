@@ -24,14 +24,6 @@ export function supportConditionsFromValue(value: string): Array<string> {
 	try {
 		const ast = valueParser(value);
 		ast.walk((node) => {
-			try {
-				node['dimension'] = valueParser.unit(node.value);
-			} finally {
-				if (node['dimension'] === false) {
-					delete node['dimension'];
-				}
-			}
-
 			OUTER:
 			for (let i = 0; i < relevantMatchers.length; i++) {
 				const propertyValueMatcher = relevantMatchers[i];

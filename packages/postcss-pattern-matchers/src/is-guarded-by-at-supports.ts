@@ -2,8 +2,8 @@ import type { AtRule, ChildNode, Container, Document, Declaration, Rule } from '
 import { supportConditionsFromValue } from './support-conditions-from-values';
 import { supportConditionsForSelectorFromAtSupports, supportConditionsFromSelector } from './support-conditions-from-selectors';
 
-export function declarationIsGuardedByAtSupports(decl: Declaration): boolean {
-	const valueConditions = supportConditionsFromValue(decl.value);
+export function declarationIsGuardedByAtSupports(decl: Declaration, valueConditions?: Array<string>): boolean {
+	valueConditions = valueConditions || supportConditionsFromValue(decl.value);
 	if (!valueConditions.length) {
 		return false;
 	}
@@ -32,8 +32,8 @@ export function declarationIsGuardedByAtSupports(decl: Declaration): boolean {
 	return valueConditionsFound.size === valueConditions.length;
 }
 
-export function selectorIsGuardedByAtSupports(rule: Rule): boolean {
-	const selectorConditions = supportConditionsFromSelector(rule.selector);
+export function selectorIsGuardedByAtSupports(rule: Rule, selectorConditions?: Array<string>): boolean {
+	selectorConditions = selectorConditions || supportConditionsFromSelector(rule.selector);
 	if (!selectorConditions.length) {
 		return false;
 	}

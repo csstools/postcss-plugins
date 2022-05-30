@@ -29,6 +29,27 @@
 	color: rgb(0, 0, 100%, 0);
 }
 
+@supports (color: rgb(0, 0, 0, 0)) {
+	.aab {
+		/* matched patterns: ["(color: rgb(0, 0, 0, 0))","(color: rgb(0%, 0%, 0%, 0%))"] */
+		color: rgb(0, 0, 100%, 0);
+	}
+}
+
+@supports (color: rgb(0%, 0%, 0%, 0%)) {
+	.aab {
+		/* is guarded by at supports */
+		color: rgb(0, 0, 100%, 0);
+	}
+}
+
+@supports (color: rgb(0, 0, 0, 0)) and (color: rgb(0%, 0%, 0%, 0%)) {
+	.aab {
+		/* is guarded by at supports */
+		color: rgb(0, 0, 100%, 0);
+	}
+}
+
 .aac {
 	color: hsla(0, 0%, 100%, 0);
 }
