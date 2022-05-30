@@ -132,7 +132,7 @@
 }
 
 @supports selector(:has(:focus)) {
-	[csstools-has-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15] {
+	:has(:focus) {
 		order: 32;
 	}
 }
