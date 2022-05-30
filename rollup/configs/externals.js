@@ -2,6 +2,7 @@ export const externalsForCLI = [
 	'fs',
 	'path',
 	'url',
+	'node:vm',
 
 	'@csstools/postcss-cascade-layers',
 	'@csstools/postcss-color-function',
@@ -57,6 +58,7 @@ export const externalsForPlugin = [
 	'fs',
 	'path',
 	'url',
+	'node:vm',
 
 	'postcss',
 	/^postcss-\d\.\d$/,
