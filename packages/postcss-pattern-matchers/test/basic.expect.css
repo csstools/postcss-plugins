@@ -1,10 +1,12 @@
 @supports selector(:has(foo)) {
+	/* is guarded by at supports */
 	.foo:has(> bar) {
 		color: red;
 	}
 }
 
-@supports selector(:has(:focus)) {
+@supports selector(:has(:focus), :has(:hover)) {
+	/* is guarded by at supports */
 	:has(:focus) {
 		order: 32;
 	}

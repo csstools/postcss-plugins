@@ -2,7 +2,6 @@ import { promises as fsp } from 'fs';
 import { colorMixMatchers } from './color-mix.mjs';
 import { colorMatchers, hslMatchers, hwbMatchers, labMatchers, lchMatchers, oklabMatchers, oklchMatchers, rgbMatchers } from './color.mjs';
 import { icUnitMatchers } from './font-size.mjs';
-import { hasPseudoMatchers } from './has-pseudo.mjs';
 
 fsp.writeFile(
 	'./src/value-matchers.ts',
@@ -23,17 +22,6 @@ fsp.writeFile(
 
 			// font-size:
 			...icUnitMatchers,
-		],
-		null,
-		'\t',
-	),
-);
-
-fsp.writeFile(
-	'./src/selector-matchers.ts',
-	'export const selectorMatchers = ' + JSON.stringify(
-		[
-			...hasPseudoMatchers,
 		],
 		null,
 		'\t',

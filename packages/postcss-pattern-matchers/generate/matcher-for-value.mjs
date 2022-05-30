@@ -1,5 +1,4 @@
 import valueParser from 'postcss-value-parser';
-import { matcherForSelector } from './matcher-for-selector.mjs';
 
 export function matcherForValue(value) {
 
@@ -10,24 +9,6 @@ export function matcherForValue(value) {
 			delete node.before;
 			delete node.after;
 			delete node.sourceEndIndex;
-
-			if (node.type === 'function' && node.value === 'selector') {
-				const selectorNodes = matcherForSelector(valueParser.stringify(node.nodes));
-				if (Array.isArray(selectorNodes)) {
-					node.nodes = selectorNodes;
-				} else {
-					node.nodes = [selectorNodes];
-				}
-				return;
-			}
-
-			if (node.value && node.value.startsWith('$$')) {
-				delete node.value;
-				delete node.type;
-				node.isVariadic = true;
-				node.isVariable = true;
-				return;
-			}
 
 			if (node.type === 'space') {
 				delete node.value;
@@ -52,8 +33,7 @@ export function matcherForValue(value) {
 		} else {
 			return ast.nodes;
 		}
-	} catch (e) {
-		console.log(e);
+	} catch (_) {
 		/* ignore */
 	}
 }

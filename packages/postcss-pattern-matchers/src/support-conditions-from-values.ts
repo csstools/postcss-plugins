@@ -4,7 +4,7 @@ import { matches } from './match';
 import { doublePositionGradients } from './custom/double-position-gradients';
 
 export function supportConditionsFromValue(value: string): Array<string> {
-	const supportConditions: Array<string> = [];
+	const supportConditions: Set<string> = new Set();
 
 	const relevantMatchers = [];
 
@@ -18,7 +18,7 @@ export function supportConditionsFromValue(value: string): Array<string> {
 		!relevantMatchers.length &&
 		value.indexOf('-gradient(') === -1
 	) {
-		return supportConditions;
+		return [];
 	}
 
 	try {
@@ -40,18 +40,20 @@ export function supportConditionsFromValue(value: string): Array<string> {
 					// Matchers are ordered from most specific to least.
 					// Only one needs to match.
 					if (matches(matcherAST, node)) {
-						supportConditions.push(propertyValueMatcher.supports);
+						supportConditions.add(propertyValueMatcher.supports);
 						return;
 					}
 				}
 			}
 
-			supportConditions.push(...doublePositionGradients(node));
+			doublePositionGradients(node).forEach((condition) => {
+				supportConditions.add(condition);
+			});
 		});
 
 	} catch (_) {
 		/* ignore */
 	}
 
-	return Array.from(new Set(supportConditions)); // list with unique items.
+	return Array.from(supportConditions); // list with unique items.
 }

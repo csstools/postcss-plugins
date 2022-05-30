@@ -32,11 +32,6 @@ export function matches(a, b) {
 				return false;
 			}
 
-			if (a.nodes[ia].isVariadic && !!b.nodes[ib + 1] && matches(a.nodes[ia], b.nodes[ib+1])) {
-				ib++;
-				continue;
-			}
-
 			ia++;
 			ib++;
 		}

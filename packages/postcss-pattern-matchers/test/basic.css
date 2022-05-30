@@ -4,7 +4,7 @@
 	}
 }
 
-@supports selector(:has(:focus)) {
+@supports selector(:has(:focus), :has(:hover)) {
 	:has(:focus) {
 		order: 32;
 	}
