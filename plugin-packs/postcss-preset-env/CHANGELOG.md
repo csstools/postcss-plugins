@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### 7.7.0 (Unreleased)
+### 7.7.0 (May 31, 2022)
 
 - Added `@csstools/postcss-trigonometric-functions` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions#readme) for usage details.
 - Updated `@csstools/postcss-cascade-layers` to `1.0.2` (patch)
