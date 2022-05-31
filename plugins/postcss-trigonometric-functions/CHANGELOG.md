@@ -1,6 +1,6 @@
 # Changes to PostCSS Trigonometric Functions
 
-### Unreleased
+### 1.0.1 (May 31, 2022)
 
 - Ensure that the plugin works in node 14
 
