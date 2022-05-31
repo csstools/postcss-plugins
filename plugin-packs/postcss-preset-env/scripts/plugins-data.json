@@ -209,5 +209,10 @@
 		"packageName": "@csstools/postcss-cascade-layers",
 		"id": "cascade-layers",
 		"importName": "postcssCascadeLayers"
+	},
+	{
+		"packageName": "@csstools/postcss-trigonometric-functions",
+		"id": "trigonometric-functions",
+		"importName": "postcssTrigonometricFunctions"
 	}
 ]

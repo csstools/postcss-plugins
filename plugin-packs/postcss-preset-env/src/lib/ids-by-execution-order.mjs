@@ -33,4 +33,6 @@ export default [
 	'place-properties',
 	'system-ui-font-family',
 	'cascade-layers',
+	'stepped-value-functions',
+	'trigonometric-functions',
 ];
