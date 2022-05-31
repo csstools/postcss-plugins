@@ -45,6 +45,7 @@ The `ID` listed is the key for PostCSS Preset Env configuration in your project.
 | `rebeccapurple-color` | `rebeccapurple` Color | [example](https://preset-env.cssdb.org/features/#rebeccapurple-color) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple#readme) |
 | `stepped-value-functions` | `round()`, `mod()` and `rem()` functions | [example](https://preset-env.cssdb.org/features/#stepped-value-functions) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions#readme) |
 | `system-ui-font-family` | `system-ui` Font Family | [example](https://preset-env.cssdb.org/features/#system-ui-font-family) | [docs](https://github.com/JLHwung/postcss-font-family-system-ui#readme) |
+| `trigonometric-functions` | `sin()`, `cos()`, `tan()`, `asin()`, `acos()`, `atan()` and `atan2()` functions | [example](https://preset-env.cssdb.org/features/#trigonometric-functions) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions#readme) |
 | `unset-value` | `unset` Keyword | [example](https://preset-env.cssdb.org/features/#unset-value) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset-value#readme) |
 
 
