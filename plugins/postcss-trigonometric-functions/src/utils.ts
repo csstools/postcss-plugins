@@ -1,6 +1,6 @@
 import type { FunctionNode, WordNode, Node } from 'postcss-value-parser';
 import valueParser from 'postcss-value-parser';
-import vm from 'node:vm';
+import vm from 'vm';
 
 export function turnToRad(turn: number): number {
 	return turn * 2 * Math.PI;
