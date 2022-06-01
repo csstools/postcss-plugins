@@ -21,7 +21,7 @@ async function exportCustomSelectorsToCssFile(to, customSelectors) {
 async function exportCustomSelectorsToJsonFile(to, customSelectors) {
 	const jsonContent = JSON.stringify({
 		'custom-selectors': customSelectors,
-	}, null, '  ');
+	}, null, '\t');
 	const json = `${jsonContent}\n`;
 
 	await writeFile(to, json);

@@ -11,6 +11,15 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve': {
+		message: 'minimal example',
+		options: {
+			preserve: true
+		}
+	},
 	'safety': {
 		message: 'supports safe tag ordering (.foo:--h1 becomes h1.foo instead of .fooh1)'
 	},

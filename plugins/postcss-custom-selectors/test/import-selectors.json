@@ -1,5 +1,5 @@
 {
-  "custom-selectors": {
-    ":--heading": "h1, h2, h3"
-  }
+	"custom-selectors": {
+		":--heading": "h1, h2, h3"
+	}
 }

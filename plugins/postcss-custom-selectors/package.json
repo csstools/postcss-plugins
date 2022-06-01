@@ -62,7 +62,7 @@
 		"prepublishOnly": "npm run clean && npm run build && npm run test",
 		"test": "node .tape.cjs && node .tape.mjs && npm run test:exports",
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
-		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs && REWRITE_EXPECTS=true node .tape.cjs"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors#readme",
 	"repository": {
@@ -72,7 +72,19 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"at-rule",
+		"atrule",
+		"css",
+		"csswg",
+		"custom",
+		"declarative",
+		"extensions",
+		"postcss",
+		"postcss-plugin",
+		"rule",
+		"selectors",
+		"specification",
+		"w3c"
 	],
 	"csstools": {
 		"cssdbId": "custom-selectors",
