@@ -5,7 +5,7 @@ import transformSelectorsByCustomSelectors from './transform-selectors-by-custom
 export default (root, customSelectors, opts) => {
 	root.walkRules(customPseudoRegExp, rule => {
 		const selector = parser(selectors => {
-			transformSelectorsByCustomSelectors(selectors, customSelectors, opts)
+			transformSelectorsByCustomSelectors(selectors, customSelectors, opts);
 		}).processSync(rule.selector);
 
 		if (opts.preserve) {

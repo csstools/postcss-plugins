@@ -1,9 +1,9 @@
-import getCustomSelectors from './lib/custom-selectors-from-root';
-import transformRules from './lib/transform-rules';
-import importCustomSelectorsFromSources from './lib/import-from';
-import exportCustomSelectorsToDestinations from './lib/export-to';
+import getCustomSelectors from './custom-selectors-from-root';
+import transformRules from './transform-rules';
+import importCustomSelectorsFromSources from './import-from';
+import exportCustomSelectorsToDestinations from './export-to';
 
-const postcssCustomSelectors = (opts) => {
+const creator = (opts) => {
 	// whether to preserve custom selectors and rules using them
 	const preserve = Boolean(Object(opts).preserve);
 
@@ -21,16 +21,18 @@ const postcssCustomSelectors = (opts) => {
 			const customProperties = Object.assign(
 				{},
 				await customSelectorsPromise,
-				getCustomSelectors(root, { preserve })
+				getCustomSelectors(root, { preserve }),
 			);
 
 			await exportCustomSelectorsToDestinations(customProperties, exportTo);
 
 			transformRules(root, customProperties, { preserve });
 		},
-	}
+	};
 };
 
-postcssCustomSelectors.postcss = true;
+creator.postcss = true;
 
-export default postcssCustomSelectors;
+export default creator;
+
+

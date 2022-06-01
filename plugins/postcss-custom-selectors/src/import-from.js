@@ -27,7 +27,7 @@ async function importCustomSelectorsFromCSSFile(from) {
 function importCustomSelectorsFromObject(object) {
 	const customSelectors = Object.assign(
 		{},
-		Object(object).customSelectors || Object(object)['custom-selectors']
+		Object(object).customSelectors || Object(object)['custom-selectors'],
 	);
 
 	for (const key in customSelectors) {
@@ -71,7 +71,7 @@ export default function importCustomSelectorsFromSources(sources) {
 
 		// skip objects with custom selectors
 		if (Object(opts).customSelectors || Object(opts)['custom-selectors']) {
-			return opts
+			return opts;
 		}
 
 		// source pathname
@@ -82,7 +82,7 @@ export default function importCustomSelectorsFromSources(sources) {
 
 		return { type, from };
 	}).reduce(async (customSelectorsPromise, source) => {
-		const customSelectors = await customSelectorsPromise
+		const customSelectors = await customSelectorsPromise;
 		const { type, from } = await source;
 
 		if (type === 'ast') {

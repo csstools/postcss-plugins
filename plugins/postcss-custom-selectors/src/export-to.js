@@ -20,7 +20,7 @@ async function exportCustomSelectorsToCssFile(to, customSelectors) {
 
 async function exportCustomSelectorsToJsonFile(to, customSelectors) {
 	const jsonContent = JSON.stringify({
-		'custom-selectors': customSelectors
+		'custom-selectors': customSelectors,
 	}, null, '  ');
 	const json = `${jsonContent}\n`;
 

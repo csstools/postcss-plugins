@@ -1,6 +1,19 @@
-module.exports = {
+import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import plugin from 'postcss-custom-selectors';
+import fs from 'fs';
+
+postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage'
+	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve': {
+		message: 'minimal example',
+		options: {
+			preserve: true
+		}
 	},
 	'basic:preserve': {
 		message: 'supports { preserve: true } usage',
@@ -11,7 +24,7 @@ module.exports = {
 	'safety': {
 		message: 'supports safe tag ordering (.foo:--h1 becomes h1.foo instead of .fooh1)'
 	},
-	'basic:import': {
+	'basic-import': {
 		message: 'supports { importFrom: { customSelectors: { ... } } } usage',
 		options: {
 			importFrom: {
@@ -21,7 +34,7 @@ module.exports = {
 			}
 		}
 	},
-	'basic:import-fn': {
+	'basic-import:fn': {
 		message: 'supports { importFrom() } usage',
 		options: {
 			importFrom() {
@@ -32,10 +45,9 @@ module.exports = {
 				};
 			}
 		},
-		expect: 'basic.import.expect.css',
-		result: 'basic.import.result.css'
+		expect: 'basic-import.expect.css'
 	},
-	'basic:import-fn-promise': {
+	'basic-import:fn-promise': {
 		message: 'supports { async importFrom() } usage',
 		options: {
 			importFrom() {
@@ -48,58 +60,52 @@ module.exports = {
 				});
 			}
 		},
-		expect: 'basic.import.expect.css',
-		result: 'basic.import.result.css'
+		expect: 'basic-import.expect.css'
 	},
-	'basic:import-json': {
+	'basic-import:json': {
 		message: 'supports { importFrom: "test/import-selectors.json" } usage',
 		options: {
 			importFrom: 'test/import-selectors.json'
 		},
-		expect: 'basic.import.expect.css',
-		result: 'basic.import.result.css'
+		expect: 'basic-import.expect.css'
 	},
-	'basic:import-js': {
-		message: 'supports { importFrom: "test/import-selectors.js" } usage',
-		options: {
-			importFrom: 'test/import-selectors.js'
-		},
-		expect: 'basic.import.expect.css',
-		result: 'basic.import.result.css'
-	},
-	'basic:import-css': {
+	// ⚠️ Importing CJS in MJS does not work ⚠️
+	// 'basic-import:js': {
+	// 	message: 'supports { importFrom: "test/import-selectors.js" } usage',
+	// 	options: {
+	// 		importFrom: 'test/import-selectors.js'
+	// 	},
+	// 	expect: 'basic-import.expect.css'
+	// },
+	'basic-import:css': {
 		message: 'supports { importFrom: "test/import-selectors.css" } usage',
 		options: {
 			importFrom: 'test/import-selectors.css'
 		},
-		expect: 'basic.import.expect.css',
-		result: 'basic.import.result.css'
+		expect: 'basic-import.expect.css'
 	},
-	'basic:import-css-from': {
+	'basic-import:css-from': {
 		message: 'supports { importFrom: { from: "test/import-selectors.css" } } usage',
 		options: {
 			importFrom: { from: 'test/import-selectors.css' }
 		},
-		expect: 'basic.import.expect.css',
-		result: 'basic.import.result.css'
+		expect: 'basic-import.expect.css'
 	},
-	'basic:import-css-from-multiple-files': {
+	'basic-import:css-from-multiple-files': {
 		message: 'supports { importFrom: ["test/empty.css", "test/import-selectors.css"] } usage',
 		options: {
 			importFrom: ["test/empty.css", "test/import-selectors.css"]
 		},
-		expect: 'basic.import.expect.css',
-		result: 'basic.import.result.css'
+		expect: 'basic-import.expect.css'
 	},
-	'basic:import-css-from-type': {
+	'basic-import:css-from-type': {
 		message: 'supports { importFrom: [ { from: "test/import-selectors.css", type: "css" } ] } usage',
 		options: {
-			importFrom: [ { from: 'test/import-selectors.css', type: 'css' } ]
+			importFrom: [{ from: 'test/import-selectors.css', type: 'css' }]
 		},
-		expect: 'basic.import.expect.css',
-		result: 'basic.import.result.css'
+		expect: 'basic-import.expect.css'
 	},
-	'basic:import-empty': {
+	'basic-import:empty': {
 		message: 'supports { importFrom: {} } usage',
 		options: {
 			importFrom: {}
@@ -112,8 +118,6 @@ module.exports = {
 				customSelectors: null
 			})
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		after() {
 			if (__exportSelectorObject.customSelectors[':--foo'] !== '.foo') {
 				throw new Error('The exportTo function failed');
@@ -129,8 +133,7 @@ module.exports = {
 				}
 			}
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css'
+		expect: 'basic.expect.css'
 	},
 	'basic:export-fn-promise': {
 		message: 'supports { async exportTo() } usage',
@@ -145,103 +148,96 @@ module.exports = {
 				});
 			}
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css'
+		expect: 'basic.expect.css'
 	},
 	'basic:export-json': {
 		message: 'supports { exportTo: "test/export-selectors.json" } usage',
 		options: {
 			exportTo: 'test/export-selectors.json'
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		before() {
-			global.__exportSelectorsString = require('fs').readFileSync('test/export-selectors.json', 'utf8');
+			global.__exportSelectorsString = fs.readFileSync('test/export-selectors.json', 'utf8');
 		},
 		after() {
-			if (global.__exportSelectorsString !== require('fs').readFileSync('test/export-selectors.json', 'utf8')) {
+			if (global.__exportSelectorsString !== fs.readFileSync('test/export-selectors.json', 'utf8')) {
 				throw new Error('The original file did not match the freshly exported copy');
 			}
-		}
+		},
+		expect: 'basic.expect.css'
 	},
 	'basic:export-js': {
 		message: 'supports { exportTo: "test/export-selectors.js" } usage',
 		options: {
 			exportTo: 'test/export-selectors.js'
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		before() {
-			global.__exportSelectorsString = require('fs').readFileSync('test/export-selectors.js', 'utf8');
+			global.__exportSelectorsString = fs.readFileSync('test/export-selectors.js', 'utf8');
 		},
 		after() {
-			if (global.__exportSelectorsString !== require('fs').readFileSync('test/export-selectors.js', 'utf8')) {
+			if (global.__exportSelectorsString !== fs.readFileSync('test/export-selectors.js', 'utf8')) {
 				throw new Error('The original file did not match the freshly exported copy');
 			}
-		}
+		},
+		expect: 'basic.expect.css'
 	},
 	'basic:export-mjs': {
 		message: 'supports { exportTo: "test/export-selectors.mjs" } usage',
 		options: {
 			exportTo: 'test/export-selectors.mjs'
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		before() {
-			global.__exportSelectorsString = require('fs').readFileSync('test/export-selectors.mjs', 'utf8');
+			global.__exportSelectorsString = fs.readFileSync('test/export-selectors.mjs', 'utf8');
 		},
 		after() {
-			if (global.__exportSelectorsString !== require('fs').readFileSync('test/export-selectors.mjs', 'utf8')) {
+			if (global.__exportSelectorsString !== fs.readFileSync('test/export-selectors.mjs', 'utf8')) {
 				throw new Error('The original file did not match the freshly exported copy');
 			}
-		}
+		},
+		expect: 'basic.expect.css'
 	},
 	'basic:export-css': {
 		message: 'supports { exportTo: "test/export-selectors.css" } usage',
 		options: {
 			exportTo: 'test/export-selectors.css'
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		before() {
-			global.__exportSelectorsString = require('fs').readFileSync('test/export-selectors.css', 'utf8');
+			global.__exportSelectorsString = fs.readFileSync('test/export-selectors.css', 'utf8');
 		},
 		after() {
-			if (global.__exportSelectorsString !== require('fs').readFileSync('test/export-selectors.css', 'utf8')) {
+			if (global.__exportSelectorsString !== fs.readFileSync('test/export-selectors.css', 'utf8')) {
 				throw new Error('The original file did not match the freshly exported copy');
 			}
-		}
+		},
+		expect: 'basic.expect.css'
 	},
 	'basic:export-css-to': {
 		message: 'supports { exportTo: { to: "test/export-selectors.css" } } usage',
 		options: {
 			exportTo: { to: 'test/export-selectors.css' }
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		before() {
-			global.__exportSelectorsString = require('fs').readFileSync('test/export-selectors.css', 'utf8');
+			global.__exportSelectorsString = fs.readFileSync('test/export-selectors.css', 'utf8');
 		},
 		after() {
-			if (global.__exportSelectorsString !== require('fs').readFileSync('test/export-selectors.css', 'utf8')) {
+			if (global.__exportSelectorsString !== fs.readFileSync('test/export-selectors.css', 'utf8')) {
 				throw new Error('The original file did not match the freshly exported copy');
 			}
-		}
+		},
+		expect: 'basic.expect.css'
 	},
 	'basic:export-css-to-type': {
 		message: 'supports { exportTo: { to: "test/export-selectors.css", type: "css" } } usage',
 		options: {
 			exportTo: { to: 'test/export-selectors.css', type: 'css' }
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		before() {
-			global.__exportSelectorsString = require('fs').readFileSync('test/export-selectors.css', 'utf8');
+			global.__exportSelectorsString = fs.readFileSync('test/export-selectors.css', 'utf8');
 		},
 		after() {
-			if (global.__exportSelectorsString !== require('fs').readFileSync('test/export-selectors.css', 'utf8')) {
+			if (global.__exportSelectorsString !== fs.readFileSync('test/export-selectors.css', 'utf8')) {
 				throw new Error('The original file did not match the freshly exported copy');
 			}
-		}
+		},
+		expect: 'basic.expect.css'
 	}
-};
+});

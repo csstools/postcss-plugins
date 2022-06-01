@@ -7,7 +7,7 @@ export default selectorString => {
 	let selectorAST;
 
 	parser(selectors => {
-		selectorAST = selectors
+		selectorAST = selectors;
 	}).processSync(selectorString);
 
 	return selectorAST;

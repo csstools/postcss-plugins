@@ -10,25 +10,17 @@
 Add [PostCSS Custom Selectors] to your project:
 
 ```bash
-npm install postcss-custom-selectors --save-dev
+npm install postcss postcss-custom-selectors --save-dev
 ```
 
-Use [PostCSS Custom Selectors] to process your CSS:
-
-```js
-const postcssCustomSelectors = require('postcss-custom-selectors');
-
-postcssCustomSelectors.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
 const postcssCustomSelectors = require('postcss-custom-selectors');
 
 postcss([
-  postcssCustomSelectors(/* pluginOptions */)
+	postcssCustomSelectors(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -37,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-custom-selectors --save-dev
 ```
 
 Use [PostCSS Custom Selectors] in your `postcss.config.js` configuration file:
@@ -46,44 +38,56 @@ Use [PostCSS Custom Selectors] in your `postcss.config.js` configuration file:
 const postcssCustomSelectors = require('postcss-custom-selectors');
 
 module.exports = {
-  plugins: [
-    postcssCustomSelectors(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssCustomSelectors(/* pluginOptions */)
+	]
 }
 ```
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-custom-selectors --save-dev
 ```
 
 Use [PostCSS Custom Selectors] in your Webpack configuration:
 
 ```js
-const postcssCustomSelectors = require('postcss-custom-selectors');
-
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssCustomSelectors(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-custom-selectors",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
+};
 ```
 
 ## Create React App
@@ -91,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-custom-selectors --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Custom Selectors] in your
@@ -101,10 +105,10 @@ Use [React App Rewire PostCSS] and [PostCSS Custom Selectors] in your
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssCustomSelectors = require('postcss-custom-selectors');
 
-module.exports config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssCustomSelectors(/* pluginOptions */)
-  ]
+module.exports = config => reactAppRewirePostcss(config, {
+	plugins: () => [
+		postcssCustomSelectors(/* pluginOptions */)
+	]
 });
 ```
 
@@ -113,7 +117,7 @@ module.exports config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-custom-selectors --save-dev
 ```
 
 Use [PostCSS Custom Selectors] in your Gulpfile:
@@ -122,13 +126,15 @@ Use [PostCSS Custom Selectors] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssCustomSelectors = require('postcss-custom-selectors');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssCustomSelectors(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+gulp.task('css', function () {
+	var plugins = [
+		postcssCustomSelectors(/* pluginOptions */)
+	];
+
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -136,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-custom-selectors --save-dev
 ```
 
 Use [PostCSS Custom Selectors] in your Gruntfile:
@@ -147,16 +153,16 @@ const postcssCustomSelectors = require('postcss-custom-selectors');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssCustomSelectors(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssCustomSelectors(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 
@@ -164,7 +170,7 @@ grunt.initConfig({
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
-[PostCSS Custom Selectors]: https://github.com/postcss/postcss-custom-selectors
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
+[PostCSS Custom Selectors]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired
