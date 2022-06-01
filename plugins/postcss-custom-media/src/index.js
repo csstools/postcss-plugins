@@ -1,7 +1,7 @@
-import getCustomMediaFromRoot from './lib/custom-media-from-root';
-import getCustomMediaFromImports from './lib/get-custom-media-from-imports';
-import transformAtrules from './lib/transform-atrules';
-import writeCustomMediaToExports from './lib/write-custom-media-to-exports';
+import getCustomMediaFromRoot from './custom-media-from-root';
+import getCustomMediaFromImports from './get-custom-media-from-imports';
+import transformAtrules from './transform-atrules';
+import writeCustomMediaToExports from './write-custom-media-to-exports';
 
 const creator = opts => {
 	// whether to preserve custom media and at-rules using them
@@ -9,6 +9,7 @@ const creator = opts => {
 
 	// sources to import custom media from
 	const importFrom = [].concat(Object(opts).importFrom || []);
+
 
 	// destinations to export custom media to
 	const exportTo = [].concat(Object(opts).exportTo || []);
@@ -23,19 +24,19 @@ const creator = opts => {
 			// combine rules from root and from imports
 			helpers.customMedia = Object.assign(
 				await customMediaImportsPromise,
-				getCustomMediaFromRoot(root, { preserve })
+				getCustomMediaFromRoot(root, { preserve }),
 			);
 
 			await writeCustomMediaToExports(helpers.customMedia, exportTo);
 		},
 		AtRule: {
 			media: (atrule, helpers) => {
-				transformAtrules(atrule, {preserve}, helpers)
-			}
-		}
-	}
-}
+				transformAtrules(atrule, { preserve }, helpers);
+			},
+		},
+	};
+};
 
-creator.postcss = true
+creator.postcss = true;
 
-export default creator
+export default creator;

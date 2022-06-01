@@ -10,25 +10,17 @@
 Add [PostCSS Custom Media] to your project:
 
 ```bash
-npm install postcss-custom-media --save-dev
+npm install postcss postcss-custom-media --save-dev
 ```
 
-Use [PostCSS Custom Media] to process your CSS:
-
-```js
-const postcssCustomMedia = require('postcss-custom-media');
-
-postcssCustomMedia.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
 const postcssCustomMedia = require('postcss-custom-media');
 
 postcss([
-  postcssCustomMedia(/* pluginOptions */)
+	postcssCustomMedia(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -37,7 +29,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-custom-media --save-dev
 ```
 
 Use [PostCSS Custom Media] in your `postcss.config.js` configuration file:
@@ -46,44 +38,56 @@ Use [PostCSS Custom Media] in your `postcss.config.js` configuration file:
 const postcssCustomMedia = require('postcss-custom-media');
 
 module.exports = {
-  plugins: [
-    postcssCustomMedia(/* pluginOptions */)
-  ]
+	plugins: [
+		postcssCustomMedia(/* pluginOptions */)
+	]
 }
 ```
 
 ## Webpack
 
+_Webpack version 5_
+
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-custom-media --save-dev
 ```
 
 Use [PostCSS Custom Media] in your Webpack configuration:
 
 ```js
-const postcssCustomMedia = require('postcss-custom-media');
-
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssCustomMedia(/* pluginOptions */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-custom-media",
+										{
+											// Options
+										},
+									],
+								],
+							},
+						},
+					},
+				],
+			},
+		],
+	},
+};
 ```
 
 ## Create React App
@@ -91,7 +95,7 @@ module.exports = {
 Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
+npm install react-app-rewired react-app-rewire-postcss postcss-custom-media --save-dev
 ```
 
 Use [React App Rewire PostCSS] and [PostCSS Custom Media] in your
@@ -102,9 +106,9 @@ const reactAppRewirePostcss = require('react-app-rewire-postcss');
 const postcssCustomMedia = require('postcss-custom-media');
 
 module.exports = config => reactAppRewirePostcss(config, {
-  plugins: () => [
-    postcssCustomMedia(/* pluginOptions */)
-  ]
+	plugins: () => [
+		postcssCustomMedia(/* pluginOptions */)
+	]
 });
 ```
 
@@ -113,7 +117,7 @@ module.exports = config => reactAppRewirePostcss(config, {
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-custom-media --save-dev
 ```
 
 Use [PostCSS Custom Media] in your Gulpfile:
@@ -122,13 +126,15 @@ Use [PostCSS Custom Media] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssCustomMedia = require('postcss-custom-media');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssCustomMedia(/* pluginOptions */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
+gulp.task('css', function () {
+	var plugins = [
+		postcssCustomMedia(/* pluginOptions */)
+	];
+
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -136,7 +142,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-custom-media --save-dev
 ```
 
 Use [PostCSS Custom Media] in your Gruntfile:
@@ -147,16 +153,16 @@ const postcssCustomMedia = require('postcss-custom-media');
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssCustomMedia(/* pluginOptions */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
+	postcss: {
+		options: {
+			processors: [
+			postcssCustomMedia(/* pluginOptions */)
+			]
+		},
+		dist: {
+			src: '*.css'
+		}
+	}
 });
 ```
 
@@ -165,6 +171,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Custom Media]: https://github.com/postcss/postcss-custom-media
+[PostCSS Custom Media]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

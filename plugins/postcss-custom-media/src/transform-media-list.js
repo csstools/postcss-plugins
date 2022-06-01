@@ -28,13 +28,13 @@ function transformMedia(media, customMedias) {
 				// use the first available modifier unless they cancel each other out
 				const modifier = media.modifier !== replacementMedia.modifier
 					? media.modifier || replacementMedia.modifier
-				: '';
+					: '';
 				const mediaClone = media.clone({
 					modifier,
 					// conditionally use the raws from the first available modifier
 					raws: !modifier || media.modifier
 						? { ...media.raws }
-					: { ...replacementMedia.raws },
+						: { ...replacementMedia.raws },
 					type: media.type || replacementMedia.type,
 				});
 
@@ -43,7 +43,7 @@ function transformMedia(media, customMedias) {
 					Object.assign(mediaClone.raws, {
 						and: replacementMedia.raws.and,
 						beforeAnd: replacementMedia.raws.beforeAnd,
-						beforeExpression: replacementMedia.raws.beforeExpression
+						beforeExpression: replacementMedia.raws.beforeExpression,
 					});
 				}
 

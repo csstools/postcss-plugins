@@ -20,8 +20,8 @@ async function writeCustomMediaToCssFile(to, customMedia) {
 
 async function writeCustomMediaToJsonFile(to, customMedia) {
 	const jsonContent = JSON.stringify({
-		'custom-media': customMedia
-	}, null, '  ');
+		'custom-media': customMedia,
+	}, null, '\t');
 	const json = `${jsonContent}\n`;
 
 	await writeFile(to, json);

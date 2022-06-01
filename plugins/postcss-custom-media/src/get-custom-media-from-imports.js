@@ -21,7 +21,7 @@ function getCustomMediaFromObject(object) {
 	const customMedia = Object.assign(
 		{},
 		Object(object).customMedia,
-		Object(object)['custom-media']
+		Object(object)['custom-media'],
 	);
 
 	for (const key in customMedia) {
@@ -65,7 +65,7 @@ export default function getCustomMediaFromSources(sources) {
 
 		// skip objects with custom media
 		if (Object(opts).customMedia || Object(opts)['custom-media']) {
-			return opts
+			return opts;
 		}
 
 		// source pathname

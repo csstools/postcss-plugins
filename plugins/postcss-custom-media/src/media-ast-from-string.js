@@ -28,7 +28,7 @@ function parse(string, splitByAnd) {
 			buffer = '';
 			split = false;
 		} else {
-			buffer += char
+			buffer += char;
 		}
 	}
 
@@ -47,7 +47,7 @@ class MediaQueryList {
 	invert() {
 		this.nodes.forEach(node => {
 			node.invert();
-		})
+		});
 
 		return this;
 	}
@@ -72,7 +72,7 @@ class MediaQuery {
 			modifier,
 			type,
 			raws,
-			nodes
+			nodes,
 		});
 	}
 

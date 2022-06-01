@@ -1,9 +1,22 @@
-module.exports = {
+const postcssTape = require('../../packages/postcss-tape/dist/index.cjs');
+const plugin = require('postcss-custom-media');
+const fs = require('fs');
+
+postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage'
 	},
 	'basic:preserve': {
 		message: 'supports { preserve: true } usage',
+		options: {
+			preserve: true
+		}
+	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve': {
+		message: 'minimal example',
 		options: {
 			preserve: true
 		}
@@ -86,7 +99,7 @@ module.exports = {
 	'import:css-from-type': {
 		message: 'supports { importFrom: [ { from: "test/import-media.css", type: "css" } ] } usage',
 		options: {
-			importFrom: [ { from: 'test/import-media.css', type: 'css' } ]
+			importFrom: [{ from: 'test/import-media.css', type: 'css' }]
 		},
 		expect: 'import.expect.css',
 		result: 'import.result.css'
@@ -148,10 +161,10 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportMediaString = require('fs').readFileSync('test/export-media.json', 'utf8');
+			global.__exportMediaString = fs.readFileSync('test/export-media.json', 'utf8');
 		},
 		after() {
-			if (global.__exportMediaString !== require('fs').readFileSync('test/export-media.json', 'utf8')) {
+			if (global.__exportMediaString !== fs.readFileSync('test/export-media.json', 'utf8')) {
 				throw new Error('The original file did not match the freshly exported copy');
 			}
 		}
@@ -164,10 +177,10 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportMediaString = require('fs').readFileSync('test/export-media.js', 'utf8');
+			global.__exportMediaString = fs.readFileSync('test/export-media.js', 'utf8');
 		},
 		after() {
-			if (global.__exportMediaString !== require('fs').readFileSync('test/export-media.js', 'utf8')) {
+			if (global.__exportMediaString !== fs.readFileSync('test/export-media.js', 'utf8')) {
 				throw new Error('The original file did not match the freshly exported copy');
 			}
 		}
@@ -180,10 +193,10 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportMediaString = require('fs').readFileSync('test/export-media.mjs', 'utf8');
+			global.__exportMediaString = fs.readFileSync('test/export-media.mjs', 'utf8');
 		},
 		after() {
-			if (global.__exportMediaString !== require('fs').readFileSync('test/export-media.mjs', 'utf8')) {
+			if (global.__exportMediaString !== fs.readFileSync('test/export-media.mjs', 'utf8')) {
 				throw new Error('The original file did not match the freshly exported copy');
 			}
 		}
@@ -196,10 +209,10 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportMediaString = require('fs').readFileSync('test/export-media.css', 'utf8');
+			global.__exportMediaString = fs.readFileSync('test/export-media.css', 'utf8');
 		},
 		after() {
-			if (global.__exportMediaString !== require('fs').readFileSync('test/export-media.css', 'utf8')) {
+			if (global.__exportMediaString !== fs.readFileSync('test/export-media.css', 'utf8')) {
 				throw new Error('The original file did not match the freshly exported copy');
 			}
 		}
@@ -212,10 +225,10 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportMediaString = require('fs').readFileSync('test/export-media.css', 'utf8');
+			global.__exportMediaString = fs.readFileSync('test/export-media.css', 'utf8');
 		},
 		after() {
-			if (global.__exportMediaString !== require('fs').readFileSync('test/export-media.css', 'utf8')) {
+			if (global.__exportMediaString !== fs.readFileSync('test/export-media.css', 'utf8')) {
 				throw new Error('The original file did not match the freshly exported copy');
 			}
 		}
@@ -228,12 +241,12 @@ module.exports = {
 		expect: 'basic.expect.css',
 		result: 'basic.result.css',
 		before() {
-			global.__exportMediaString = require('fs').readFileSync('test/export-media.css', 'utf8');
+			global.__exportMediaString = fs.readFileSync('test/export-media.css', 'utf8');
 		},
 		after() {
-			if (global.__exportMediaString !== require('fs').readFileSync('test/export-media.css', 'utf8')) {
+			if (global.__exportMediaString !== fs.readFileSync('test/export-media.css', 'utf8')) {
 				throw new Error('The original file did not match the freshly exported copy');
 			}
 		}
 	}
-};
+});

@@ -1,5 +1,5 @@
-import transformMediaList from "./transform-media-list";
-import mediaASTFromString from "./media-ast-from-string";
+import transformMediaList from './transform-media-list';
+import mediaASTFromString from './media-ast-from-string';
 
 // transform custom pseudo selectors with custom selectors
 export default (atrule, { preserve }, { customMedia }) => {
@@ -25,5 +25,5 @@ export default (atrule, { preserve }, { customMedia }) => {
 	}
 };
 
-const visitedFlag = Symbol("customMediaVisited");
+const visitedFlag = Symbol('customMediaVisited');
 const customPseudoRegExp = /\(--[A-z][\w-]*\)/;
