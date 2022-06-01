@@ -9,6 +9,7 @@ p:not(:first-child, .special) {
 	color: red;
 }
 
+
 /* becomes */
 
 p:not(:first-child):not(.special) {

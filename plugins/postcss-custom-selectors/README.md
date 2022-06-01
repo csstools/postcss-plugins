@@ -11,6 +11,7 @@ article :--heading + p {
 	margin-top: 0;
 }
 
+
 /* becomes */
 
 article h1 + p,article h2 + p,article h3 + p {
