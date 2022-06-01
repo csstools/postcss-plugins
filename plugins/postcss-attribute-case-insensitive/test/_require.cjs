@@ -1,5 +1,5 @@
 const assert = require('assert');
-const plugin = require('@csstools/postcss-attribute-case-insensitive');
+const plugin = require('postcss-attribute-case-insensitive');
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

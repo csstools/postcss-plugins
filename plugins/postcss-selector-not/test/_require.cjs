@@ -1,5 +1,5 @@
 const assert = require('assert');
-const plugin = require('@csstools/postcss-selector-not');
+const plugin = require('postcss-selector-not');
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

@@ -1,5 +1,5 @@
 import assert from 'assert';
-import plugin from '@csstools/postcss-attribute-case-insensitive';
+import plugin from 'postcss-attribute-case-insensitive';
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');
