@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased
+
+- Updated: use specific AtRule visitor
+
 ### 8.0.0 (January 12, 2021)
 
 - Added: Support for PostCSS v8

@@ -83,27 +83,9 @@
 	}
 }
 
-@media (--circular-mq-a) {
-	body {
-		order: 3;
-	}
-}
-
 @media (--circular-mq-b) {
 	body {
 		order: 4;
-	}
-}
-
-@media (--circular-mq-b) {
-	body {
-		order: 4;
-	}
-}
-
-@media (--unresolved-mq) {
-	body {
-		order: 5;
 	}
 }
 

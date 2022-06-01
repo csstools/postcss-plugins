@@ -2,7 +2,7 @@ import transformMediaList from './transform-media-list';
 import mediaASTFromString from './media-ast-from-string';
 
 // transform custom pseudo selectors with custom selectors
-export default (atrule, { preserve }, { customMedia }) => {
+export default (atrule, customMedia, { preserve }) => {
 	if (customPseudoRegExp.test(atrule.params)) {
 		// prevent infinite loops when using 'preserve' option
 		if (!atrule[visitedFlag]) {
@@ -11,16 +11,24 @@ export default (atrule, { preserve }, { customMedia }) => {
 			const mediaAST = mediaASTFromString(atrule.params);
 			const params = String(transformMediaList(mediaAST, customMedia));
 
+			if (params === null) {
+				return;
+			}
+
+			if (params === atrule.params) {
+				return;
+			}
+
 			if (preserve) {
 				// keep an original copy
-				const node = atrule.cloneAfter();
-				node[visitedFlag] = true;
+				atrule.cloneBefore({
+					params: params,
+				});
+
+				return;
 			}
-			// replace the variable with the params from @custom-media rule
-			// skip if the variable is undefined
-			if (params != null) {
-				atrule.params = params;
-			}
+
+			atrule.params = params;
 		}
 	}
 };

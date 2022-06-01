@@ -1,4 +1,4 @@
-# Unreleased (TODO: update this before release)
+# Unreleased
 
 - Fixed: doesn't consider attribute selectors ([#23](https://github.com/postcss/postcss-selector-not/issues/23))
 - Fixed: unexpected results when `:not` is not a pseudo class function ([#28](https://github.com/postcss/postcss-selector-not/issues/28))
