@@ -58,7 +58,7 @@
 # 5.0.1 (February 3, 2016)
 
 - Fixed: circular dependencies are properly detected
-([#17](https://github.com/postcss/postcss-custom-media/pull/17))
+(https://github.com/postcss/postcss-custom-media/pull/17)
 
 # 5.0.0 (August 25, 2015)
 
@@ -68,13 +68,13 @@
 # 4.1.0 (06 30, 2015)
 
 - Added: Allow custom media to reference each other
-([#10](https://github.com/postcss/postcss-custom-media/pull/10))
+(https://github.com/postcss/postcss-custom-media/pull/10)
 
 # 4.0.0 (May 17, 2015)
 
 - Changed: warning messages are now sent via postcss messages api (^4.1.0)
 - Added: automatic custom media `--` prefixing
-([#11](https://github.com/postcss/postcss-custom-media/issues/11))
+(https://github.com/postcss/postcss-custom-media/issues/11)
 - Added: `preserve` allows you to preserve custom media query defintions
 - Added: `appendExtensions` allows you (when `preserve` is truthy) to append your extensions as media queries
 
@@ -97,16 +97,16 @@ _You never saw this version (this is a bad release that points to 1.0.0)._
 
 # 1.2.0 (October 1, 2014)
 
-- Added: support for multiples media in query list (ref [#rework-custom-media/5](https://github.com/reworkcss/rework-custom-media/pull/5))
+- Added: support for multiples media in query list (ref https://github.com/reworkcss/rework-custom-media/pull/5)
 
 # 1.1.0 (September 30, 2014)
 
-- Added: support for js-defined media queries (fix [#3](https://github.com/postcss/postcss-custom-media/issues/3))
+- Added: support for js-defined media queries (fix https://github.com/postcss/postcss-custom-media/issues/3)
 
 # 1.0.1 (September 16, 2014)
 
-- Added: Allow whitespace around custom media name (fix [#2](https://github.com/postcss/postcss-custom-media/issues/2))
+- Added: Allow whitespace around custom media name (fix https://github.com/postcss/postcss-custom-media/issues/2)
 
 # 1.0.0 (August 12, 2014)
 
-✨ First release based on [rework-custom-media](https://github.com/reworkcss/rework-custom-media) v0.1.1
+✨ First release based on https://github.com/reworkcss/rework-custom-media v0.1.1
