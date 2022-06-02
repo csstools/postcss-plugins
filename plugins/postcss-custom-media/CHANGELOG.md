@@ -3,6 +3,8 @@
 ### Unreleased
 
 - Updated: use specific AtRule visitor
+- Fixed: allow any valid ident in custom media (`@custom-media --🧑🏾‍🎤 (min-width: 320px);`)
+- Fixed: allow white space around custom media (`@media ( --mq-1   );`) (https://github.com/csstools/postcss-custom-media/pull/59) (https://github.com/csstools/postcss-custom-media/pull/71)
 
 ### 8.0.0 (January 12, 2021)
 

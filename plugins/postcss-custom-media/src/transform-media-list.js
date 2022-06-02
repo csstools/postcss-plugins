@@ -1,3 +1,5 @@
+import { getCustomMediaNameReference } from './custom-media-name';
+
 // return transformed medias, replacing custom pseudo medias with custom medias
 export default function transformMediaList(mediaList, customMedias) {
 	let index = mediaList.nodes.length - 1;
@@ -21,9 +23,8 @@ function transformMedia(media, customMedias) {
 
 	for (const index in media.nodes) {
 		const { value, nodes } = media.nodes[index];
-		const key = value.replace(customPseudoRegExp, '$1');
-
-		if (key in customMedias) {
+		const key = getCustomMediaNameReference(value);
+		if (key && (key in customMedias)) {
 			for (const replacementMedia of customMedias[key].nodes) {
 				// use the first available modifier unless they cancel each other out
 				const modifier = media.modifier !== replacementMedia.modifier
@@ -77,8 +78,6 @@ function transformMedia(media, customMedias) {
 
 	return transpiledMedias;
 }
-
-const customPseudoRegExp = /\((--[A-z][\w-]*)\)/;
 
 const getCustomMediasWithoutKey = (customMedias, key) => {
 	const nextCustomMedias = Object.assign({}, customMedias);

@@ -21,6 +21,9 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
+	'complex': {
+		message: 'supports complex usage'
+	},
 	'import': {
 		message: 'supports { importFrom: { customMedia: { ... } } } usage',
 		options: {
