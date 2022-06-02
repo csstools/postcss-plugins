@@ -1,5 +1,9 @@
 # Changes to PostCSS Attribute Case Insensitive
 
+## Unreleased
+
+- Prevent exponential backtracking when checking for selectors with case insensitive value matching.
+
 ## 5.0.0 (15 Sep 2020)
 
 - Postcss 8.x support

@@ -85,13 +85,11 @@ function transform(selectors) {
 	}
 }
 
-const caseInsensitiveRegExp = /i(\s*\/\*[\W\w]*?\*\/)*\s*\]/;
-
 const creator: PluginCreator<never> = () => {
 	return {
 		postcssPlugin: 'postcss-attribute-case-insensitive',
 		Rule(rule) {
-			if (caseInsensitiveRegExp.test(rule.selector)) {
+			if (rule.selector.includes('i]')) {
 				rule.selector = selectorParser(transform).processSync(rule.selector);
 			}
 		},

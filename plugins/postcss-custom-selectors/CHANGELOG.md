@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Selectors
 
+## Unreleased
+
+- Fixed: invalid whitespace (https://github.com/csstools/postcss-custom-selectors/pull/55)
+
 ### 6.0.0 (January 12, 2021)
 
 - Added: Support for PostCSS v8
