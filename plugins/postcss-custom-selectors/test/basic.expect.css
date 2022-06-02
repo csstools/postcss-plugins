@@ -54,4 +54,32 @@ main .foo + p {
 	margin-top: 16px;
 }
 
-.foo {}
+.foo {
+	order: 1000;
+}
+a,.foo {
+	order: 1001;
+}
+b,.foo {
+	order: 1002;
+}
+
+.foo.baz {
+	order: 1010;
+}
+a,.foo.baz {
+	order: 1011;
+}
+b,.foo.baz {
+	order: 1012;
+}
+
+.foo .baz {
+	order: 1020;
+}
+a,.foo .baz {
+	order: 1021;
+}
+b,.foo .baz {
+	order: 1022;
+}

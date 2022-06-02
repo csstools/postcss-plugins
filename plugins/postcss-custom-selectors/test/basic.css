@@ -91,4 +91,36 @@ main :--foo + p {
 
 @custom-selector :--foobar .foo;
 
-:--foobar {}
+:--foobar {
+	order: 1000;
+}
+a, :--foobar {
+	order: 1001;
+}
+b,:--foobar {
+	order: 1002;
+}
+
+@custom-selector :--foobaz .foo.baz;
+
+:--foobaz {
+	order: 1010;
+}
+a, :--foobaz {
+	order: 1011;
+}
+b,:--foobaz {
+	order: 1012;
+}
+
+@custom-selector :--foobazz .foo .baz;
+
+:--foobazz {
+	order: 1020;
+}
+a, :--foobazz {
+	order: 1021;
+}
+b,:--foobazz {
+	order: 1022;
+}

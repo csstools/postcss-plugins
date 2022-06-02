@@ -18,3 +18,5 @@
 @custom-selector :--button button, .button;
 @custom-selector :--enter :hover, :focus;
 @custom-selector :--any-foobar .foo, .bar;
+@custom-selector :--foobaz .foo.baz;
+@custom-selector :--foobazz .foo .baz;

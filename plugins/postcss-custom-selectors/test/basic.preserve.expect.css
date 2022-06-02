@@ -143,6 +143,66 @@ main :--foo + p {
 
 @custom-selector :--foobar .foo;
 
-.foo {}
+.foo {
+	order: 1000;
+}
 
-:--foobar {}
+:--foobar {
+	order: 1000;
+}
+a,.foo {
+	order: 1001;
+}
+a, :--foobar {
+	order: 1001;
+}
+b,.foo {
+	order: 1002;
+}
+b,:--foobar {
+	order: 1002;
+}
+
+@custom-selector :--foobaz .foo.baz;
+
+.foo.baz {
+	order: 1010;
+}
+
+:--foobaz {
+	order: 1010;
+}
+a,.foo.baz {
+	order: 1011;
+}
+a, :--foobaz {
+	order: 1011;
+}
+b,.foo.baz {
+	order: 1012;
+}
+b,:--foobaz {
+	order: 1012;
+}
+
+@custom-selector :--foobazz .foo .baz;
+
+.foo .baz {
+	order: 1020;
+}
+
+:--foobazz {
+	order: 1020;
+}
+a,.foo .baz {
+	order: 1021;
+}
+a, :--foobazz {
+	order: 1021;
+}
+b,.foo .baz {
+	order: 1022;
+}
+b,:--foobazz {
+	order: 1022;
+}
