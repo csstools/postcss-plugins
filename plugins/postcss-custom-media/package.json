@@ -44,11 +44,11 @@
 		"README.md",
 		"dist"
 	],
-	"devDependencies": {
-		"postcss-value-parser": "^4.2.0"
-	},
 	"peerDependencies": {
 		"postcss": "^8.3"
+	},
+	"devDependencies": {
+		"postcss-value-parser": "^4.2.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",

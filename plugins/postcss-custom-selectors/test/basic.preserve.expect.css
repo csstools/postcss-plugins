@@ -29,7 +29,7 @@ h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
 :--foobar > :--baz {}
 .fizz > .foo,.buzz > .foo {}
 :--fizzbuzz > :--foobar {}
-.btn-primary,.btn-success,.btn-info,.btn-warning,.btn-danger, .btn-primary:active, .btn-success:active, .btn-info:active, .btn-warning:active, .btn-danger:active {}
+.btn-primary,.btn-success,.btn-info,.btn-warning,.btn-danger,.btn-primary:active,.btn-success:active,.btn-info:active,.btn-warning:active,.btn-danger:active {}
 :--button-types, :--button-types:active {}
 
 @custom-selector :--commented-foo
@@ -37,7 +37,7 @@ h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
 	.foo,
 	.bar > .baz;
 
-.foo + p,.bar>.baz + p {
+.foo + p,.bar > .baz + p {
 	display: block;
 }
 
@@ -57,7 +57,7 @@ h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
 
 @custom-selector :--foo .foo;
 
-.foo, .foo.bar {
+.foo,.foo.bar {
 	color: white;
 }
 
@@ -106,7 +106,7 @@ article :--heading + p {
 	.foo,
 	.bar > .baz;
 
-.foo,.bar>.baz {
+.foo,.bar > .baz {
 	display: block;
 }
 

@@ -6,9 +6,9 @@ h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
 
 .foo > .baz {}
 .fizz > .foo,.buzz > .foo {}
-.btn-primary,.btn-success,.btn-info,.btn-warning,.btn-danger, .btn-primary:active, .btn-success:active, .btn-info:active, .btn-warning:active, .btn-danger:active {}
+.btn-primary,.btn-success,.btn-info,.btn-warning,.btn-danger,.btn-primary:active,.btn-success:active,.btn-info:active,.btn-warning:active,.btn-danger:active {}
 
-.foo + p,.bar>.baz + p {
+.foo + p,.bar > .baz + p {
 	display: block;
 }
 
@@ -16,7 +16,7 @@ h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
 	display: block;
 }
 
-.foo, .foo.bar {
+.foo,.foo.bar {
 	color: white;
 }
 
@@ -38,7 +38,7 @@ article :--heading + p {
 	margin-top: 0;
 }
 
-.foo,.bar>.baz {
+.foo,.bar > .baz {
 	display: block;
 }
 

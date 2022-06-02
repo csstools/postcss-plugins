@@ -26,9 +26,21 @@ function transformSelector(selector, customSelectors) {
 			for (const replacementSelector of customSelectors[value].nodes) {
 				const selectorClone = selector.clone();
 
-				selectorClone.nodes.splice(index, 1, ...replacementSelector.clone().nodes.map(node => {
-					// use spacing from the current usage
-					node.spaces = { ...selector.nodes[index].spaces };
+				const replacementSelectorNodes = replacementSelector.clone().nodes;
+
+				selectorClone.nodes.splice(index, 1, ...replacementSelectorNodes.map((node, index) => {
+					if (node.type === 'selector') {
+						// use spacing from the current usage
+						node.spaces = { ...selector.nodes[index].spaces };
+					}
+
+					if (index === 0 && node.spaces) {
+						node.spaces.before = '';
+					}
+
+					if (index === (replacementSelectorNodes.length - 1) && node.spaces) {
+						node.spaces.after = '';
+					}
 
 					return node;
 				}));
