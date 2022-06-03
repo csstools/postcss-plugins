@@ -36,7 +36,7 @@ import selectorSpecificity, { compare } from '@csstools/selector-specificity';
 
 const s1 = selectorSpecificity(ast1);
 const s2 = selectorSpecificity(ast2);
-compare(s1, s2); // -1, 0, 1
+compare(s1, s2); // -1 | 0 | 1
 ```
 
 - if `s1 < s2` then `compare(s1, s2)` returns a negative number (`< 0`)
