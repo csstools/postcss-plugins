@@ -8,7 +8,7 @@
 - Added `postcss-custom-media`
 - Added `postcss-custom-selectors`
 - Added `postcss-selector-not`
-- Updated `postcss-preset-env` to `7.6.0` (minor)
+- Updated `postcss-preset-env` to `7.7.1` (minor)
 
 ### 1.3.0 (May 2, 2022)
 
