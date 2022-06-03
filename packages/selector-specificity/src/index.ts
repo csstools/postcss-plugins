@@ -1,7 +1,7 @@
 import parser from 'postcss-selector-parser';
 import type { Node } from 'postcss-selector-parser';
 
-export default function selectorSpecificity(node: Node) {
+export function selectorSpecificity(node: Node) {
 	// https://www.w3.org/TR/selectors-4/#specificity-rules
 
 	if (!node) {

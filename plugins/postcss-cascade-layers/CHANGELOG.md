@@ -1,5 +1,9 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased (patch)
+
+- Update `@csstools/selector-specificity` (major)
+
 ### 1.0.2 (May 20, 2022)
 
 - Use only simple `:not(#\#)` selectors to adjust specificity.
