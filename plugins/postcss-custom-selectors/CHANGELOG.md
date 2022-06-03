@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Selectors
 
-## Unreleased
+## 6.0.1 (June 3, 2022)
 
 - Fixed: invalid whitespace (https://github.com/csstools/postcss-custom-selectors/pull/55)
 
