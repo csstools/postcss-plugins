@@ -1,0 +1,17 @@
+@custom-selector :--3xl .xl3;
+
+:--3xl {
+	order: 1;
+}
+
+@custom-selector :--🧑🏾‍🎤 .singer;
+
+:--🧑🏾‍🎤 {
+	order: 2;
+}
+
+@custom-selector :------- .dash;
+
+:------- {
+	order: 3;
+}

@@ -21,6 +21,9 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
+	'complex': {
+		message: 'supports complex usage'
+	},
 	'safety': {
 		message: 'supports safe tag ordering (.foo:--h1 becomes h1.foo instead of .fooh1)'
 	},

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import postcss from 'postcss';
-import getSelectorsAstFromSelectorsString from './selectors-ast-from-selectors-string';
+import parser from 'postcss-selector-parser';
 import getCustomSelectors from './custom-selectors-from-root';
 
 /* Import Custom Selectors from CSS AST
@@ -31,7 +31,7 @@ function importCustomSelectorsFromObject(object) {
 	);
 
 	for (const key in customSelectors) {
-		customSelectors[key] = getSelectorsAstFromSelectorsString(customSelectors[key]);
+		customSelectors[key] = parser().astSync(customSelectors[key]);
 	}
 
 	return customSelectors;

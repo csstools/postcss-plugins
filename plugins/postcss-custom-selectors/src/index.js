@@ -29,7 +29,7 @@ const creator = (opts) => {
 			await exportCustomSelectorsToDestinations(helpers[customSelectorHelperKey], exportTo);
 		},
 		Rule: (rule, helpers) => {
-			if (!rule.selector.match(/:--[A-z][\w-]*/)) {
+			if (!rule.selector.includes(':--')) {
 				return;
 			}
 
