@@ -1,4 +1,4 @@
-import plugin from 'postcss-attribute-case-insensitive';
+import plugin from 'postcss-custom-selectors';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
 export default function postcssCustomSelectors() {
