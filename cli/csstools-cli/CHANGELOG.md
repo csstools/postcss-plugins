@@ -1,6 +1,6 @@
 # Changes to CSSTools CLI
 
-### Unreleased
+### 1.4.0 (June 3, 2022)
 
 - Added `@csstools/postcss-cascade-layers`
 - Added `@csstools/postcss-trigonometric-functions`
