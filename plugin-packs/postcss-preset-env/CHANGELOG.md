@@ -6,7 +6,7 @@
 - Updated `@csstools/postcss-trigonometric-functions` to `1.0.1` (patch)
 - Updated `postcss-attribute-case-insensitive` to `5.0.1` (patch)
 - Updated `postcss-custom-media` to `8.0.1` (patch)
-- Updated `postcss-custom-selectors` to `6.0.1` (patch)
+- Updated `postcss-custom-selectors` to `6.0.2` (patch)
 - Updated `cssdb` to `6.6.3` (patch)
 
 ### 7.7.0 (May 31, 2022)
