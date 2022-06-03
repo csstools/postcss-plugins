@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Selectors
 
+### Unreleased
+
+- Fixed: prevent duplicate rules when custom selectors are not defined
+- Fixed: selectors not resolving when using with other features like nesting
+
 ### 6.0.1 (June 3, 2022)
 
 - Fixed: invalid whitespace (https://github.com/csstools/postcss-custom-selectors/pull/55)
