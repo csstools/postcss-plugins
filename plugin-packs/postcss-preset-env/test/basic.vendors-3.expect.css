@@ -522,3 +522,11 @@
 	left: atan();
 	left: atan2();
 }
+
+@custom-selector :--view-m [data-view-size=m];
+
+.view {
+	@nest :--view-m & {
+		background: red;
+	}
+}
