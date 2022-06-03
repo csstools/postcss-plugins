@@ -32,7 +32,7 @@ To compare or otherwise manipulate lists of selectors you need to call `selector
 The package exports a utility function to compare two specificities.
 
 ```js
-import selectorSpecificity, { compare } from '@csstools/selector-specificity';
+import { selectorSpecificity , compare } from '@csstools/selector-specificity';
 
 const s1 = selectorSpecificity(ast1);
 const s2 = selectorSpecificity(ast2);
