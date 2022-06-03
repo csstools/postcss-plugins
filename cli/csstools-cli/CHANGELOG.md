@@ -4,6 +4,10 @@
 
 - Added `@csstools/postcss-cascade-layers`
 - Added `@csstools/postcss-trigonometric-functions`
+- Added `postcss-attribute-case-insensitive`
+- Added `postcss-custom-media`
+- Added `postcss-custom-selectors`
+- Added `postcss-selector-not`
 - Updated `postcss-preset-env` to `7.6.0` (minor)
 
 ### 1.3.0 (May 2, 2022)
