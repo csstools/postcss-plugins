@@ -1,5 +1,5 @@
 import getCustomSelectors from './custom-selectors-from-root';
-import transformRules from './transform-rules';
+import transformRule from './transform-rule';
 import importCustomSelectorsFromSources from './import-from';
 import exportCustomSelectorsToDestinations from './export-to';
 
@@ -15,18 +15,25 @@ const creator = (opts) => {
 
 	// promise any custom selectors are imported
 	const customSelectorsPromise = importCustomSelectorsFromSources(importFrom);
+
+	const customSelectorHelperKey = Symbol('customSelectorHelper');
+
 	return {
 		postcssPlugin: 'postcss-custom-selectors',
-		async Once(root) {
-			const customProperties = Object.assign(
-				{},
+		Once: async (root, helpers) => {
+			helpers[customSelectorHelperKey] = Object.assign(
 				await customSelectorsPromise,
 				getCustomSelectors(root, { preserve }),
 			);
 
-			await exportCustomSelectorsToDestinations(customProperties, exportTo);
+			await exportCustomSelectorsToDestinations(helpers[customSelectorHelperKey], exportTo);
+		},
+		Rule: (rule, helpers) => {
+			if (!rule.selector.match(/:--[A-z][\w-]*/)) {
+				return;
+			}
 
-			transformRules(root, customProperties, { preserve });
+			transformRule(rule, helpers[customSelectorHelperKey], { preserve });
 		},
 	};
 };

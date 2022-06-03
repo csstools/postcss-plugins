@@ -7,6 +7,7 @@ module.exports = {
 		'--order': '1'
 	},
 	customSelectors: {
-		':--heading': 'h1, h2, h3, h4, h5, h6'
+		':--heading': 'h1, h2, h3, h4, h5, h6',
+		':--view-m': '[data-view-size=m]'
 	}
 };

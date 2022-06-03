@@ -401,3 +401,9 @@
 	left: atan();
 	left: atan2();
 }
+
+@custom-selector :--view-m [data-view-size=m];
+
+:--view-m .view {
+		background: red
+}
