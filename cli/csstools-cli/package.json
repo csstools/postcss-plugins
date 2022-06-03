@@ -46,10 +46,13 @@
 		"css-blank-pseudo": "^3.0.3",
 		"css-has-pseudo": "^3.0.4",
 		"css-prefers-color-scheme": "^6.0.3",
+		"postcss-attribute-case-insensitive": "^5.0.1",
 		"postcss-color-functional-notation": "^4.2.3",
 		"postcss-color-hex-alpha": "^8.0.3",
 		"postcss-color-rebeccapurple": "^7.0.2",
+		"postcss-custom-media": "^8.0.1",
 		"postcss-custom-properties": "^12.1.7",
+		"postcss-custom-selectors": "^6.0.2",
 		"postcss-dir-pseudo-class": "^6.0.4",
 		"postcss-double-position-gradients": "^3.1.1",
 		"postcss-env-function": "^4.0.6",
@@ -63,7 +66,8 @@
 		"postcss-overflow-shorthand": "^3.0.3",
 		"postcss-place": "^7.0.4",
 		"postcss-preset-env": "^7.6.0",
-		"postcss-pseudo-class-any-link": "^7.1.4"
+		"postcss-pseudo-class-any-link": "^7.1.4",
+		"postcss-selector-not": "^6.0.0"
 	},
 	"devDependencies": {
 		"postcss": "^8.4.14"
