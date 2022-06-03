@@ -1,4 +1,4 @@
-import plugin from 'postcss-attribute-case-insensitive';
+import plugin from 'postcss-custom-media';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
 export default function postcssCustomMedia() {
