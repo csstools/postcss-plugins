@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Media
 
-### Unreleased
+### 8.0.1 (June 3, 2022)
 
 - Updated: use specific AtRule visitor
 - Fixed: allow any valid ident in custom media (`@custom-media --🧑🏾‍🎤 (min-width: 320px);`)
