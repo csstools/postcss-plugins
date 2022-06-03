@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Selectors
 
-### Unreleased
+### 6.0.2 (June 3, 2022)
 
 - Fixed: prevent duplicate rules when custom selectors are not defined
 - Fixed: selectors not resolving when using with other features like nesting
