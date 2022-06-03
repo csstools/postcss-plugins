@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { default: selectorSpecificity, compare } = require('@csstools/selector-specificity');
+const { selectorSpecificity, compare } = require('@csstools/selector-specificity');
 
 assert.equal(selectorSpecificity().a, 0);
 assert.equal(selectorSpecificity().b, 0);

@@ -7,7 +7,7 @@ export type Specificity = {
 	c: number,
 };
 
-export default function selectorSpecificity(node: Node): Specificity {
+export function selectorSpecificity(node: Node): Specificity {
 	// https://www.w3.org/TR/selectors-4/#specificity-rules
 
 	if (!node) {

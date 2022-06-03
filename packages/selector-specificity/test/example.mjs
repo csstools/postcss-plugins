@@ -1,5 +1,5 @@
 import assert from 'assert';
-import selectorSpecificity from '@csstools/selector-specificity';
+import { selectorSpecificity } from '@csstools/selector-specificity';
 import parser from 'postcss-selector-parser';
 
 const selectorAST = parser().astSync('#foo:has(> .foo)');

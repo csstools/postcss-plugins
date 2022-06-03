@@ -14,7 +14,7 @@ npm install postcss @csstools/selector-specificity --save-dev
 
 ```js
 import parser from 'postcss-selector-parser';
-import selectorSpecificity from '@csstools/selector-specificity';
+import { selectorSpecificity } from '@csstools/selector-specificity';
 
 const selectorAST = parser().astSync('#foo:has(> .foo)');
 const specificity = selectorSpecificity(selectorAST);
