@@ -1,6 +1,6 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased (patch)
+### 2.0.5 (June 4, 2022)
 
 - Update `@csstools/selector-specificity` (major)
 
