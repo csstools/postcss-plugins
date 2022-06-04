@@ -70,7 +70,20 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"4-digit",
+		"8-digit",
+		"alpha",
+		"color",
+		"css",
+		"csswg",
+		"hex",
+		"postcss",
+		"postcss-plugin",
+		"spec",
+		"specification",
+		"transparency",
+		"transparent",
+		"w3c"
 	],
 	"csstools": {
 		"cssdbId": "hexadecimal-alpha-notation",
