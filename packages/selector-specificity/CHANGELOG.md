@@ -1,6 +1,6 @@
 # Changes to Selector Specificity
 
-### Unreleased (major)
+### 2.0.0 (June 3, 2022)
 
 - Breaking: use only named exports instead of `default`
 - Added: `compare(a, b)` function to compare selectors by specificity
