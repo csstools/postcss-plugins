@@ -9,16 +9,20 @@ fileNames = fileNames.filter((f) => {
 		return false; // trailing newline
 	}
 
-	if (-1 !== f.indexOf('node_modules')) {
+	if (f.includes('node_modules')) {
 		return false; // node_modules folders are not distributed
 	}
 
-	if (0 === f.indexOf('./.git/')) {
+	if (f.startsWith('./.git/')) {
 		return false; // git stuffs
 	}
 
-	if (0 === f.indexOf('./.github/')) {
+	if (f.startsWith('./.github/')) {
 		return false; // these are not distributed
+	}
+
+	if (f.endsWith('dist/cli.cjs')) {
+		return false; // this is expected to be executable
 	}
 
 	return !allowList.includes(f);
@@ -28,16 +32,17 @@ if (!fileNames || !fileNames.length) {
 	process.exit(0);
 }
 
-if (!process.env.GITHUB_ACTIONS || process.env.DISABLE_GITHUB_ACTIONS_ANNOTATIONS) {
+if (!process.env.GITHUB_ACTIONS) {
+	console.log(`Unexpected executables:`);
 	fileNames.forEach((f) => {
-		console.log(`Unexpected executable\n  to fix    : chmod a-x ${f}`);
+		console.log(`chmod a-x ${f}`);
 	});
 	process.exit(1);
 }
 
 fileNames.forEach((f) => {
 	const annotation = formatGitHubActionAnnotation(
-		`Unexpected executable\n  to fix    : chmod a-x ${f}`,
+		`This file is unexpectedly executable`,
 		'error',
 		{
 			file: f,
