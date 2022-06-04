@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Media
 
-### Unreleased
+### 8.0.2 (June 4, 2022)
 
 - Fixed: dependency declarations in package.json
 
