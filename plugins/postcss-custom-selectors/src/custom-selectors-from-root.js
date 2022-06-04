@@ -1,4 +1,4 @@
-import getASTFromSelectors from './selectors-ast-from-selectors-string';
+import parser from 'postcss-selector-parser';
 
 // return custom selectors from the css root, conditionally removing them
 export default (root, opts) => {
@@ -7,28 +7,32 @@ export default (root, opts) => {
 
 	// for each custom selector atrule that is a child of the css root
 	root.nodes.slice().forEach(node => {
-		if (isCustomSelector(node)) {
-			// extract the name and selectors from the params of the custom selector
-			const [, name, selectors] = node.params.match(customSelectorParamsRegExp);
+		if (node.type !== 'atrule' || node.name !== 'custom-selector') {
+			return;
+		}
 
-			// write the parsed selectors to the custom selector
-			customSelectors[name] = getASTFromSelectors(selectors);
+		if (!node.params || !node.params.includes(':--')) {
+			return;
+		}
 
-			// conditionally remove the custom selector atrule
-			if (!Object(opts).preserve) {
-				node.remove();
-			}
+		const source = node.params.trim();
+
+		const selectorAST = parser().astSync(source);
+		const nameNode = selectorAST?.nodes?.[0]?.nodes?.[0];
+		if (!nameNode || nameNode.type !== 'pseudo' || !nameNode.value.startsWith(':--')) {
+			return;
+		}
+
+		const name = nameNode.toString();
+
+		// re-parsing is important to obtain the correct AST shape
+		customSelectors[name] = parser().astSync(source.slice(name.length).trim());
+
+		// conditionally remove the custom selector atrule
+		if (!Object(opts).preserve) {
+			node.remove();
 		}
 	});
 
 	return customSelectors;
 };
-
-// match the custom selector name
-const customSelectorNameRegExp = /^custom-selector$/i;
-
-// match the custom selector params
-const customSelectorParamsRegExp = /^(:--[A-z][\w-]*)\s+([\W\w]+)\s*$/;
-
-// whether the atrule is a custom selector
-const isCustomSelector = node => node.type === 'atrule' && customSelectorNameRegExp.test(node.name) && customSelectorParamsRegExp.test(node.params);

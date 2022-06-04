@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Selectors
 
+### Unreleased
+
+- Fixed: allow any valid ident in custom media (`@custom-selector :--🧑🏾‍🎤 .singer`)
+
 ### 6.0.2 (June 3, 2022)
 
 - Fixed: prevent duplicate rules when custom selectors are not defined
