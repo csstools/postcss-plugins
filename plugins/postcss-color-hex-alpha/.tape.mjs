@@ -13,5 +13,14 @@ postcssTape(plugin)({
 	},
 	'clip-path': {
 		message: 'ignores clip-path with hash in url'
-	}
+	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-true': {
+		message: 'minimal example',
+		options: {
+			preserve: true
+		}
+	},
 });

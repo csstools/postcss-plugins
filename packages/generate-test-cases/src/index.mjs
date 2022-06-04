@@ -79,6 +79,14 @@ import { generate } from './generate.mjs';
 			),
 
 			generate(
+				'value',
+				path.join('../../plugins', 'postcss-color-rebeccapurple'),
+				[
+					'rebeccapurple',
+				],
+			),
+
+			generate(
 				'declaration',
 				path.join('../../plugins', 'postcss-place'),
 				[
