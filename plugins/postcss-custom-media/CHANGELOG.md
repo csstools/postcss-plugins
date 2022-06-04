@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased
+
+- Fixed: dependency declarations in package.json
+
 ### 8.0.1 (June 3, 2022)
 
 - Updated: use specific AtRule visitor
