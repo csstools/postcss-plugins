@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Selectors
 
-### Unreleased
+### 6.0.3 (June 4, 2022)
 
 - Fixed: allow any valid ident in custom media (`@custom-selector :--🧑🏾‍🎤 .singer`)
 
