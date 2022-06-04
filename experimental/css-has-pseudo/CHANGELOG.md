@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### 0.5.2 (June 3, 2022)
+### 0.5.2 (June 4, 2022)
 
 - Update `@csstools/selector-specificity` (major)
 

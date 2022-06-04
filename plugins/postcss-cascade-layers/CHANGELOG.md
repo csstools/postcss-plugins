@@ -1,6 +1,6 @@
 # Changes to PostCSS Cascade Layers
 
-### 1.0.3 (June 3, 2022)
+### 1.0.3 (June 4, 2022)
 
 - Update `@csstools/selector-specificity` (major)
 
