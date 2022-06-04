@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### Unreleased (patch)
+### 10.1.8 (June 4, 2022)
 
 - Update `@csstools/selector-specificity` (major)
 
