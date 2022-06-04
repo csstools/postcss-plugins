@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (patch)
+
+- Update `@csstools/selector-specificity` (major)
+
 ### 10.1.7 (May 20, 2022)
 
 - Add tentative support for `@layer`. The actual behavior is poorly defined and may change in the future. Use with caution.

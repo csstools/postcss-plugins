@@ -1,5 +1,5 @@
 import parser from 'postcss-selector-parser';
-import selectorSpecificity from '@csstools/selector-specificity';
+import { selectorSpecificity } from '@csstools/selector-specificity';
 
 export function nodesAreEquallySpecific(nodes) {
 	// Selector specificity is important when the parent selector is a list.

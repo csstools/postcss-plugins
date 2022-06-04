@@ -1,7 +1,13 @@
 import parser from 'postcss-selector-parser';
 import type { Node } from 'postcss-selector-parser';
 
-export default function selectorSpecificity(node: Node) {
+export type Specificity = {
+	a: number,
+	b: number,
+	c: number,
+};
+
+export function selectorSpecificity(node: Node): Specificity {
 	// https://www.w3.org/TR/selectors-4/#specificity-rules
 
 	if (!node) {
@@ -156,4 +162,14 @@ function isPseudoElement(node: Node): boolean {
 	// Typescript definition of "isPseudoElement" is incorrect.
 	// This function removes the magic and is a simple boolean check.
 	return parser.isPseudoElement(node);
+}
+
+export function compare(s1: Specificity, s2: Specificity): number {
+	if (s1.a === s2.a) {
+		if (s1.b === s2.b) {
+			return s1.c - s2.c;
+		}
+		return s1.b - s2.b;
+	}
+	return s1.a - s2.a;
 }
