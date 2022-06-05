@@ -8,8 +8,9 @@
 <!-- <example.css> file contents for examples/example.css -->
 <!-- <header> -->
 <!-- <usage> usage instructions -->
-<!-- <env-support> -->
-<!-- <link-list> -->
+<!-- <envSupport> -->
+<!-- <corsWarning> -->
+<!-- <linkList> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -27,7 +28,7 @@ CSS, following the [CSS Color] specification.
 
 <usage>
 
-<env-support>
+<envSupport>
 
 ## Options
 

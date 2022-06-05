@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="help" href="https://drafts.csswg.org/selectors/#relational">
+	<!-- Included only to trigger CORS errors -->
+	<!-- This stylesheet is not accessible in JS and must not cause cascading failures -->
+	<link rel="stylesheet" href="http://localhost:8081/test/basic.expect.css">
+	<!-- This is the real test stylesheet and has correct CORS attributes and http headers -->
+	<link rel="stylesheet" href="http://localhost:8081/test/browser.expect.css" crossorigin="anonymous">
+	<script src="http://localhost:8082/dist/browser-global.js"></script>
+	<script>self._prefersColorScheme = prefersColorSchemeInit()</script>
+</head>
+<body>
+	<the-fixture id="fixture">Fixture</the-fixture>
+
+	<script type="module">
+		function rafP(callback) {
+			return new Promise((resolve) => {
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						callback();
+						resolve();
+					});
+				});
+			});
+		}
+
+		self.runTest = async function runTest() {
+			return await testPreferenceSwitch();
+		}
+
+		async function testPreferenceSwitch() {
+			const purple = 'rgb(128, 0, 128)';
+			const pink = 'rgb(255, 192, 203)';
+
+			function testColor(test_name, color) {
+				var actual = getComputedStyle(fixture).color;
+				if (actual !== color) {
+					throw new Error(test_name + ': ' + fixture.id + '.color; expected ' + color + ' but got ' + actual);
+				}
+			}
+
+			await rafP(() => {
+				testColor(`light`, pink);
+			});
+
+			self._prefersColorScheme.scheme = 'dark';
+
+			await rafP(() => {
+				testColor(`dark`, purple);
+			});
+
+			self._prefersColorScheme.scheme = 'light';
+
+			await rafP(() => {
+				testColor(`light`, pink);
+			});
+
+			return true;
+		}
+	</script>
+</body>
+</html>

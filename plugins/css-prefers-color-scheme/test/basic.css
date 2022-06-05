@@ -19,6 +19,13 @@
 	}
 }
 
+@media only screen and ((prefers-color-scheme: light) and (min-width: 300px)) or ((prefers-color-scheme: dark) and (max-width: 299px)) {
+	:root {
+		--site-bgcolor: #fff;
+		--site-color: #222;
+	}
+}
+
 body {
 	background-color: var(--site-bgcolor, #f9f9f9);
 	color: var(--site-color, #111);

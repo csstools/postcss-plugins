@@ -1,5 +1,29 @@
 # Changes to Prefers Color Scheme
 
+### Unreleased (major)
+
+- Breaking : removed old CDN urls
+- Breaking : remove `color-depth` queries fallback
+- Breaking : remove 'no-preference' support as this was dropped from the spec
+- Breaking : remove old global object
+
+#### How to migrate :
+
+- If you use a CDN url, please update it.
+- Re-build your CSS with the new version of the library.
+- Use `prefersColorSchemeInit` to initialize the polyfill in the browser.
+
+```diff
+- <script src="https://unpkg.com/css-prefers-color-scheme/browser"></script>
+- <script src="https://unpkg.com/css-prefers-color-scheme/browser.min"></script>
++ <script src="https://unpkg.com/css-prefers-color-scheme/dist/browser-global.js"></script>
+```
+
+```diff
+- initPrefersColorScheme()
++ prefersColorSchemeInit()
+```
+
 ### 6.0.3 (January 31, 2022)
 
 - Fix `preserve: false` option.

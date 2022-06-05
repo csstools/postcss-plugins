@@ -1,28 +1,7 @@
-@media (color-index: 22) {
-	:root {
-		--site-bgcolor: #f9f9f9;
-		--site-color: #111;
-	}
-}
-
-@media (color: 22511989) {
-	:root {
-		--site-bgcolor: #f9f9f9;
-		--site-color: #111;
-	}
-}
-
 @media (prefers-color-scheme: no-preference) {
 	:root {
 		--site-bgcolor: #f9f9f9;
 		--site-color: #111;
-	}
-}
-
-@media (color-index: 48) {
-	:root {
-		--site-bgcolor: #1b1b1b;
-		--site-color: #fff;
 	}
 }
 
@@ -40,13 +19,6 @@
 	}
 }
 
-@media (color-index: 70) {
-	:root {
-		--site-bgcolor: #fff;
-		--site-color: #222;
-	}
-}
-
 @media (color: 70318723) {
 	:root {
 		--site-bgcolor: #fff;
@@ -55,6 +27,27 @@
 }
 
 @media (prefers-color-scheme: light) {
+	:root {
+		--site-bgcolor: #fff;
+		--site-color: #222;
+	}
+}
+
+@media only screen and ((color: 70318723) and (min-width: 300px)) or ((color: 48842621) and (max-width: 299px)) {
+	:root {
+		--site-bgcolor: #fff;
+		--site-color: #222;
+	}
+}
+
+@media only screen and ((color: 70318723) and (min-width: 300px)) or ((prefers-color-scheme: dark) and (max-width: 299px)) {
+	:root {
+		--site-bgcolor: #fff;
+		--site-color: #222;
+	}
+}
+
+@media only screen and ((prefers-color-scheme: light) and (min-width: 300px)) or ((prefers-color-scheme: dark) and (max-width: 299px)) {
 	:root {
 		--site-bgcolor: #fff;
 		--site-color: #222;
