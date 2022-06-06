@@ -1,7 +1,18 @@
 /* global document,window,matchMedia */
 const prefersColorSchemeRegExp = /prefers-color-scheme:/i;
 
-const prefersColorSchemeInit = initialColorScheme => {
+const prefersColorSchemeInit = (initialColorScheme, options) => {
+	// OPTIONS
+	{
+		if (!options) {
+			options = {};
+		}
+
+		options = {
+			debug: (!!options.debug) || false,
+		};
+	}
+
 	const mediaQueryString = '(prefers-color-scheme: dark)';
 	const mediaQueryList = window.matchMedia && matchMedia(mediaQueryString);
 	const hasNativeSupport = mediaQueryList && mediaQueryList.media === mediaQueryString;
@@ -52,8 +63,10 @@ const prefersColorSchemeInit = initialColorScheme => {
 						}
 					}
 				});
-			} catch (_) {
-				// Do nothing.
+			} catch (e) {
+				if (options.debug) {
+					console.error(e);
+				}
 			}
 		});
 	};

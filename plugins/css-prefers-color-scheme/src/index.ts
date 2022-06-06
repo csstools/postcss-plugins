@@ -1,10 +1,21 @@
-const prefersInterfaceRegExp = /\(\s*prefers-color-scheme\s*:\s*(dark|light)\s*\)/i;
+import type { PluginCreator } from 'postcss';
 
-const colorDepthByStyle = { dark: 48842621, light: 70318723 };
+const prefersInterfaceRegExp = /\(\s*prefers-color-scheme\s*:\s*(dark|light)\s*\)/gi;
+
+const colorDepthByStyle = { dark: '48842621', light: '70318723' };
 const prefersInterfaceColorDepthReplacer = ($0, style) => `(color: ${colorDepthByStyle[style.toLowerCase()]})`;
 
-const creator = opts => {
-	const preserve = 'preserve' in Object(opts) ? opts.preserve : true;
+type pluginOptions = { preserve?: boolean };
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign(
+		// Default options
+		{
+			preserve: true,
+		},
+		// Provided options
+		opts,
+	);
 
 	return {
 		postcssPlugin: 'postcss-prefers-color-scheme',
@@ -21,7 +32,7 @@ const creator = opts => {
 
 			atRule.cloneBefore({ params: altParamsColorDepth });
 
-			if (!preserve) {
+			if (!options.preserve) {
 				atRule.remove();
 			}
 		},
@@ -31,3 +42,4 @@ const creator = opts => {
 creator.postcss = true;
 
 export default creator;
+

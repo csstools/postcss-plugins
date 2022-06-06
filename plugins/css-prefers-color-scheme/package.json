@@ -2,7 +2,21 @@
 	"name": "css-prefers-color-scheme",
 	"description": "Use light and dark color schemes in all browsers",
 	"version": "6.0.3",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		},
+		{
+			"name": "Jonathan Neal",
+			"email": "jonathantneal@hotmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
@@ -13,6 +27,7 @@
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./dist/index.mjs",
@@ -32,17 +47,15 @@
 		"CHANGELOG.md",
 		"LICENSE.md",
 		"README.md",
-		"browser.js",
-		"browser.min.js",
 		"dist"
 	],
 	"peerDependencies": {
-		"postcss": "^8.4"
+		"postcss": "^8.3"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
@@ -76,8 +89,10 @@
 		"scheme"
 	],
 	"csstools": {
+		"cssdbId": "prefers-color-scheme-query",
 		"exportName": "prefersColorScheme",
-		"humanReadableName": "Prefers Color Scheme"
+		"humanReadableName": "Prefers Color Scheme",
+		"specUrl": "https://www.w3.org/TR/mediaqueries-5/#prefers-color-scheme"
 	},
 	"volta": {
 		"extends": "../../package.json"

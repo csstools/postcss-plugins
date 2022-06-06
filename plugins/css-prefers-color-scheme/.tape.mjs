@@ -8,11 +8,20 @@ postcssTape(plugin)({
 	'basic:preserve': {
 		message: 'supports { preserve: true } usage',
 		options: {
-			preserve: true
+			preserve: false
 		}
 	},
 	'basic:preserve:false': {
 		message: 'supports { preserve: false } usage',
+		options: {
+			preserve: false
+		}
+	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-false': {
+		message: 'minimal example',
 		options: {
 			preserve: false
 		}
