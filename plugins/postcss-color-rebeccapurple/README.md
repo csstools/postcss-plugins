@@ -1,25 +1,20 @@
-# PostCSS RebeccaPurple [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
+# PostCSS RebeccaPurple [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-color-rebeccapurple.svg" height="20">][npm-url]
-[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/rebeccapurple-color.svg" height="20">][css-url]
-[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg" height="20">][cli-url]
-[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-color-rebeccapurple.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/rebeccapurple-color.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS RebeccaPurple] lets you use the `rebeccapurple` color keyword in CSS.
 
 ```pcss
 .heading {
-  color: rebeccapurple;
+	color: rebeccapurple;
 }
 
 /* becomes */
 
 .heading {
-  color: #639;
+	color: #639;
 }
 ```
-
-[!['Can I use' table](https://caniuse.bitsofco.de/image/css-rebeccapurple.png)](https://caniuse.com/#feat=css-rebeccapurple)
 
 ## About the `rebeccapurple` keyword
 
@@ -32,29 +27,31 @@ In her memory, the hex color `#663399` is named `rebeccapurple` and [added to th
 Add [PostCSS RebeccaPurple] to your project:
 
 ```bash
-npm install postcss-color-rebeccapurple --save-dev
+npm install postcss postcss-color-rebeccapurple --save-dev
 ```
 
-Use **PostCSS RebeccaPurple** as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
 const postcssRebeccaPurple = require('postcss-color-rebeccapurple');
 
 postcss([
-  postcssRebeccaPurple(/* pluginOptions */)
+	postcssRebeccaPurple(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-**PostCSS RebeccaPurple** runs in all Node environments, with special instructions for:
+[PostCSS RebeccaPurple] runs in all Node environments, with special
+instructions for:
 
 | [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
 | --- | --- | --- | --- | --- | --- |
 
+## Options
 
 ### preserve
 
-The `preserve` option determines whether the original `rebeccapurple` keyword
+The `preserve` option determines whether the original notation
 is preserved. By default, it is not preserved.
 
 ```js
@@ -63,14 +60,14 @@ postcssRebeccaPurple({ preserve: true })
 
 ```pcss
 .heading {
-  color: rebeccapurple;
+	color: rebeccapurple;
 }
 
 /* becomes */
 
 .heading {
-  color: #639;
-  color: rebeccapurple;
+	color: #639;
+	color: rebeccapurple;
 }
 ```
 
@@ -79,5 +76,8 @@ postcssRebeccaPurple({ preserve: true })
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/postcss-color-rebeccapurple
 
+[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
+[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
+[PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS RebeccaPurple]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple

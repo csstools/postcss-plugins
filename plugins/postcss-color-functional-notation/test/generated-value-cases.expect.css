@@ -14,6 +14,30 @@
 	order: var(rgba(178, 34, 34, 1), rgba(178, 34, 34, 1));
 }
 
+.order-4 {
+	order: prergba(178 34 34 / 1);
+}
+
+.order-5 {
+	order: pre rgba(178, 34, 34, 1);
+}
+
+.order-6 {
+	order: pre,rgba(178, 34, 34, 1);
+}
+
+.order-7 {
+	order: rgba(178, 34, 34, 1)post;
+}
+
+.order-8 {
+	order: rgba(178, 34, 34, 1) post;
+}
+
+.order-9 {
+	order: rgba(178, 34, 34, 1),post;
+}
+
 /* rgba(178 34 34 / 1) */
 
 :root {
@@ -44,6 +68,30 @@
 
 .order-3 {
 	order: var(hsla(120, 100%, 50%, 1), hsla(120, 100%, 50%, 1));
+}
+
+.order-4 {
+	order: prehsl(120 100% 50% / 1);
+}
+
+.order-5 {
+	order: pre hsla(120, 100%, 50%, 1);
+}
+
+.order-6 {
+	order: pre,hsla(120, 100%, 50%, 1);
+}
+
+.order-7 {
+	order: hsla(120, 100%, 50%, 1)post;
+}
+
+.order-8 {
+	order: hsla(120, 100%, 50%, 1) post;
+}
+
+.order-9 {
+	order: hsla(120, 100%, 50%, 1),post;
 }
 
 /* hsl(120 100% 50% / 1) */

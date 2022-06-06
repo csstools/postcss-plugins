@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased
+
+- Remove some unneeded regular expressions.
+
 ### 12.1.7 (April 8, 2022)
 
 - Fix racing condition that could happen when using other async PostCSS plugins ([#331](https://github.com/csstools/postcss-plugins/issues/331))
