@@ -1,15 +1,17 @@
 import { promises as fsp } from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 const template = await fsp.readFile(path.join('docs', './README.md'), 'utf8');
+const corsTemplate = await fsp.readFile(path.join(path.dirname(fileURLToPath(import.meta.url)), './cors-template.md'), 'utf8');
 const packageJSONInfo = JSON.parse(await fsp.readFile('./package.json', 'utf8'));
 
 const exampleFilePaths = await fsp.readdir(path.join('test', 'examples'));
 
-let installDoc = template.toString();
+let readmeDoc = template.toString();
 
 // Cleanup docs instructions
-installDoc = installDoc.replace(`<!-- Available Variables: -->
+readmeDoc = readmeDoc.replace(`<!-- Available Variables: -->
 <!-- <humanReadableName> PostCSS Your Plugin -->
 <!-- <exportName> postcssYourPlugin -->
 <!-- <packageName> @csstools/postcss-your-plugin -->
@@ -19,14 +21,18 @@ installDoc = installDoc.replace(`<!-- Available Variables: -->
 <!-- <example.css> file contents for examples/example.css -->
 <!-- <header> -->
 <!-- <usage> usage instructions -->
-<!-- <env-support> -->
-<!-- <link-list> -->
+<!-- <envSupport> -->
+<!-- <corsWarning> -->
+<!-- <linkList> -->
 <!-- to generate : npm run docs -->
 
 `, '');
 
+// Insert sub-templates
+readmeDoc = readmeDoc.replaceAll('<corsWarning>', corsTemplate);
+
 // Insert "Header" section
-installDoc = installDoc.replace('<header>', `# <humanReadableName> [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
+readmeDoc = readmeDoc.replace('<header>', `# <humanReadableName> [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 ` + `[<img alt="npm version" src="https://img.shields.io/npm/v/<packageName>.svg" height="20">][npm-url] ` +
 `${
@@ -38,7 +44,7 @@ installDoc = installDoc.replace('<header>', `# <humanReadableName> [<img src="ht
 `[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]`);
 
 // Insert "Usage" section
-installDoc = installDoc.replace('<usage>', `## Usage
+readmeDoc = readmeDoc.replace('<usage>', `## Usage
 
 Add [<humanReadableName>] to your project:
 
@@ -58,14 +64,14 @@ postcss([
 \`\`\``);
 
 // Insert "Env Support" section
-installDoc = installDoc.replace('<env-support>', `[<humanReadableName>] runs in all Node environments, with special
+readmeDoc = readmeDoc.replace('<envSupport>', `[<humanReadableName>] runs in all Node environments, with special
 instructions for:
 
 | [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
 | --- | --- | --- | --- | --- | --- |`);
 
 // Insert "Link List" section
-installDoc = installDoc.replace('<link-list>', `[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+readmeDoc = readmeDoc.replace('<linkList>', `[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 ${
 	packageJSONInfo.csstools?.cssdbId ?
 		`[css-url]: https://cssdb.org/#<cssdbId>` :
@@ -80,18 +86,18 @@ ${
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [<humanReadableName>]: https://github.com/csstools/postcss-plugins/tree/main/<packagePath>`);
 
-installDoc = installDoc.replaceAll('<cssdbId>', packageJSONInfo.csstools.cssdbId);
-installDoc = installDoc.replaceAll('<exportName>', packageJSONInfo.csstools.exportName);
-installDoc = installDoc.replaceAll('<humanReadableName>', packageJSONInfo.csstools.humanReadableName);
-installDoc = installDoc.replaceAll('<packageName>', packageJSONInfo.name);
-installDoc = installDoc.replaceAll('<packagePath>', path.join(path.basename(path.dirname(process.cwd())), path.basename(process.cwd())));
-installDoc = installDoc.replaceAll('<specUrl>', packageJSONInfo.csstools.specUrl);
+readmeDoc = readmeDoc.replaceAll('<cssdbId>', packageJSONInfo.csstools.cssdbId);
+readmeDoc = readmeDoc.replaceAll('<exportName>', packageJSONInfo.csstools.exportName);
+readmeDoc = readmeDoc.replaceAll('<humanReadableName>', packageJSONInfo.csstools.humanReadableName);
+readmeDoc = readmeDoc.replaceAll('<packageName>', packageJSONInfo.name);
+readmeDoc = readmeDoc.replaceAll('<packagePath>', path.join(path.basename(path.dirname(process.cwd())), path.basename(process.cwd())));
+readmeDoc = readmeDoc.replaceAll('<specUrl>', packageJSONInfo.csstools.specUrl);
 
 for (const exampleFilePath of exampleFilePaths) {
-	installDoc = installDoc.replaceAll(
+	readmeDoc = readmeDoc.replaceAll(
 		`<${exampleFilePath}>`,
 		(await fsp.readFile(path.join('test', 'examples', exampleFilePath), 'utf8')).toString().slice(0, -1) // trim final newline
 	);
 }
 
-await fsp.writeFile('./README.md', installDoc);
+await fsp.writeFile('./README.md', readmeDoc);

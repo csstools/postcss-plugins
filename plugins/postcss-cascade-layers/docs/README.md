@@ -8,8 +8,9 @@
 <!-- <example.css> file contents for examples/example.css -->
 <!-- <header> -->
 <!-- <usage> usage instructions -->
-<!-- <env-support> -->
-<!-- <link-list> -->
+<!-- <envSupport> -->
+<!-- <corsWarning> -->
+<!-- <linkList> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -50,7 +51,7 @@ If you have different assets that are unaware of each other it will not work cor
 
 <usage>
 
-<env-support>
+<envSupport>
 
 ## Options
 
@@ -125,7 +126,7 @@ This plugin will warn you when it detects that [postcss-import] did not transfor
 ### Contributors
 The contributors to this plugin were [Olu Niyi-Awosusi] and [Sana Javed] from [Oddbird] and Romain Menke.
 
-<link-list>
+<linkList>
 [Cascade Layers Specification]: <specUrl>
 [A Complete Guide to CSS Cascade Layers]: https://css-tricks.com/css-cascade-layers/
 [Olu Niyi-Awosusi]: https://github.com/oluoluoxenfree
