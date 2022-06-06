@@ -1,7 +1,7 @@
 ## CORS
 
 ⚠️ Applies to you if you load CSS from a different domain than the page.
-In this case the CSS is treated as untrusted and will not be made available to the Javascript polyfill.
+In this case the CSS is treated as untrusted and will not be made available to the JavaScript polyfill.
 
 Example :
 
@@ -28,7 +28,7 @@ Firefox :
 To resolve CORS errors you need to take two steps :
 
 - add HTTP header `Access-Control-Allow-Origin: <your-value>` to your CSS file.
-- add `crossorigin="anonymous"` to the `<link rel="stylesheet">` tage for your CSS file.
+- add `crossorigin="anonymous"` to the `<link rel="stylesheet">` tag for your CSS file.
 
 In a node server setting the HTTP header might look like this :
 
