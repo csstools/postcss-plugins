@@ -1,0 +1,7 @@
+:root {
+	--c: hsl(50deg 50% 50%);
+}
+
+.a {
+	color: var(--c);
+}

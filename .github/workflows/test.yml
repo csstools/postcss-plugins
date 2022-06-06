@@ -72,6 +72,10 @@ jobs:
             npm install
             npm run build
             npm run test
+      - run: |
+            cd e2e/webpack/postcss-loader
+            npm install
+            npm run build
 
       # Deno compatibility
       - uses: denoland/setup-deno@v1
