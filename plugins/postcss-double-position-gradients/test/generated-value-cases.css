@@ -14,6 +14,30 @@
 	order: var(linear-gradient(90deg, black 25% 50%, blue 50% 75%), linear-gradient(90deg, black 25% 50%, blue 50% 75%));
 }
 
+.order-4 {
+	order: prelinear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+
+.order-5 {
+	order: pre linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+
+.order-6 {
+	order: pre,linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+
+.order-7 {
+	order: linear-gradient(90deg, black 25% 50%, blue 50% 75%)post;
+}
+
+.order-8 {
+	order: linear-gradient(90deg, black 25% 50%, blue 50% 75%) post;
+}
+
+.order-9 {
+	order: linear-gradient(90deg, black 25% 50%, blue 50% 75%),post;
+}
+
 /* linear-gradient(90deg, black 25% 50%, blue 50% 75%) */
 
 :root {

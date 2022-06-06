@@ -1,5 +1,9 @@
 # Changes to PostCSS RebeccaPurple
 
+### Unreleased
+
+- Added: Typescript typings
+
 ### 7.0.2 (January 2, 2022)
 
 - Removed Sourcemaps from package tarball.

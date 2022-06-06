@@ -1,0 +1,55 @@
+.order-0 {
+	order: #639 !important;
+}
+
+.order-1 {
+	order: var(1, #639);
+}
+
+.order-2 {
+	order: var(#639, 1);
+}
+
+.order-3 {
+	order: var(#639, #639);
+}
+
+.order-4 {
+	order: prerebeccapurple;
+}
+
+.order-5 {
+	order: pre #639;
+}
+
+.order-6 {
+	order: pre,#639;
+}
+
+.order-7 {
+	order: rebeccapurplepost;
+}
+
+.order-8 {
+	order: #639 post;
+}
+
+.order-9 {
+	order: #639,post;
+}
+
+/* rebeccapurple */
+
+:root {
+	--some-var: #639;
+}
+
+.content {
+	content: 'rebeccapurple';
+}
+
+@supports (order: rebeccapurple) {
+	.support {
+		order: #639;
+	}
+}

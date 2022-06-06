@@ -12,7 +12,7 @@ export default (decl, customProperties, opts) => {
 		// protect against circular references
 		const valueSet = new Set();
 
-		while (customPropertiesRegExp.test(value) && !valueSet.has(value)) {
+		while (value.includes('--') && value.includes('var(') && !valueSet.has(value)) {
 			valueSet.add(value);
 			const parsedValueAST = valuesParser(value);
 			value = transformValueAST(parsedValueAST, customProperties);
@@ -40,13 +40,9 @@ export default (decl, customProperties, opts) => {
 };
 
 // match custom properties
-const customPropertyRegExp = /^--[A-z][\w-]*$/;
-
-// match custom property inclusions
-const customPropertiesRegExp = /(^|[^\w-])var\([\W\w]+\)/;
 
 // whether the declaration should be potentially transformed
-const isTransformableDecl = decl => !customPropertyRegExp.test(decl.prop) && customPropertiesRegExp.test(decl.value);
+const isTransformableDecl = decl => !decl.variable && decl.value.includes('--') && decl.value.includes('var(');
 
 // whether the declaration has a trailing comment
 const hasTrailingComment = decl => 'value' in Object(Object(decl.raws).value) && 'raw' in decl.raws.value && trailingCommentRegExp.test(decl.raws.value.raw);

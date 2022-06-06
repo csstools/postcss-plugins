@@ -2,9 +2,23 @@
 	"name": "postcss-color-hex-alpha",
 	"description": "Use 4 & 8 character hex color notation in CSS",
 	"version": "8.0.3",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"contributors": [
-		"Maxime Thirouin"
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		},
+		{
+			"name": "Jonathan Neal",
+			"email": "jonathantneal@hotmail.com"
+		},
+		{
+			"name": "Maxime Thirouin"
+		}
 	],
 	"license": "MIT",
 	"funding": {
@@ -16,7 +30,7 @@
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
-	"types": "index.d.ts",
+	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./dist/index.mjs",
@@ -28,8 +42,7 @@
 		"CHANGELOG.md",
 		"LICENSE.md",
 		"README.md",
-		"dist",
-		"index.d.ts"
+		"dist"
 	],
 	"dependencies": {
 		"postcss-value-parser": "^4.2.0"
@@ -40,7 +53,7 @@
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
@@ -73,8 +86,10 @@
 		"w3c"
 	],
 	"csstools": {
+		"cssdbId": "hexadecimal-alpha-notation",
 		"exportName": "postcssColorHexAlpha",
-		"humanReadableName": "PostCSS Color Hex Alpha"
+		"humanReadableName": "PostCSS Color Hex Alpha",
+		"specUrl": "https://www.w3.org/TR/css-color-4/#hex-notation"
 	},
 	"volta": {
 		"extends": "../../package.json"

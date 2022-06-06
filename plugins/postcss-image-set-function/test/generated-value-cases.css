@@ -14,6 +14,30 @@
 	order: var(image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x), image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x));
 }
 
+.order-4 {
+	order: preimage-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+}
+
+.order-5 {
+	order: pre image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+}
+
+.order-6 {
+	order: pre,image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+}
+
+.order-7 {
+	order: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x)post;
+}
+
+.order-8 {
+	order: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x) post;
+}
+
+.order-9 {
+	order: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x),post;
+}
+
 /* image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x) */
 
 :root {

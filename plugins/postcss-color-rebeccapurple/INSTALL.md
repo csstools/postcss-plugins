@@ -17,10 +17,10 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssRebeccapurple = require('postcss-color-rebeccapurple');
+const postcssRebeccaPurple = require('postcss-color-rebeccapurple');
 
 postcss([
-	postcssRebeccapurple(/* pluginOptions */)
+	postcssRebeccaPurple(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -35,11 +35,11 @@ npm install postcss-cli postcss-color-rebeccapurple --save-dev
 Use [PostCSS RebeccaPurple] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssRebeccapurple = require('postcss-color-rebeccapurple');
+const postcssRebeccaPurple = require('postcss-color-rebeccapurple');
 
 module.exports = {
 	plugins: [
-		postcssRebeccapurple(/* pluginOptions */)
+		postcssRebeccaPurple(/* pluginOptions */)
 	]
 }
 ```
@@ -103,11 +103,11 @@ Use [React App Rewire PostCSS] and [PostCSS RebeccaPurple] in your
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssRebeccapurple = require('postcss-color-rebeccapurple');
+const postcssRebeccaPurple = require('postcss-color-rebeccapurple');
 
 module.exports = config => reactAppRewirePostcss(config, {
 	plugins: () => [
-		postcssRebeccapurple(/* pluginOptions */)
+		postcssRebeccaPurple(/* pluginOptions */)
 	]
 });
 ```
@@ -124,11 +124,11 @@ Use [PostCSS RebeccaPurple] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssRebeccapurple = require('postcss-color-rebeccapurple');
+const postcssRebeccaPurple = require('postcss-color-rebeccapurple');
 
 gulp.task('css', function () {
 	var plugins = [
-		postcssRebeccapurple(/* pluginOptions */)
+		postcssRebeccaPurple(/* pluginOptions */)
 	];
 
 	return gulp.src('./src/*.css')
@@ -148,7 +148,7 @@ npm install grunt-postcss postcss-color-rebeccapurple --save-dev
 Use [PostCSS RebeccaPurple] in your Gruntfile:
 
 ```js
-const postcssRebeccapurple = require('postcss-color-rebeccapurple');
+const postcssRebeccaPurple = require('postcss-color-rebeccapurple');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -156,7 +156,7 @@ grunt.initConfig({
 	postcss: {
 		options: {
 			processors: [
-			postcssRebeccapurple(/* pluginOptions */)
+			postcssRebeccaPurple(/* pluginOptions */)
 			]
 		},
 		dist: {
