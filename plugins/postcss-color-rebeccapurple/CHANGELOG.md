@@ -1,6 +1,6 @@
 # Changes to PostCSS RebeccaPurple
 
-### Unreleased
+### 7.1.0 (June 10, 2022)
 
 - Added: Typescript typings
 
