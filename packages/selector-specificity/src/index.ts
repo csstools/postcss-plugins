@@ -57,6 +57,7 @@ export function selectorSpecificity(node: Node): Specificity {
 					b += mostSpecificListItem.b;
 					c += mostSpecificListItem.c;
 				}
+
 				break;
 			}
 
@@ -71,40 +72,46 @@ export function selectorSpecificity(node: Node): Specificity {
 				{
 					b += 1;
 
-					const ofSeparatorIndex = node.nodes[0].nodes.findIndex((x) => {
-						return x.type === 'tag' && x.value === 'of';
-					});
+					if (node.nodes && node.nodes.length > 0) {
+						const ofSeparatorIndex = node.nodes[0].nodes.findIndex((x) => {
+							return x.type === 'tag' && x.value === 'of';
+						});
 
-					if (ofSeparatorIndex > -1) {
-						const subSelector = [
-							parser.selector({
-								nodes: node.nodes[0].nodes.slice(ofSeparatorIndex + 1),
-								value: '',
-							}),
-						];
+						if (ofSeparatorIndex > -1) {
+							const subSelector = [
+								parser.selector({
+									nodes: node.nodes[0].nodes.slice(ofSeparatorIndex + 1),
+									value: '',
+								}),
+							];
 
-						if (node.nodes.length > 1) {
-							subSelector.push(...node.nodes.slice(1));
+							if (node.nodes.length > 1) {
+								subSelector.push(...node.nodes.slice(1));
+							}
+
+							const mostSpecificListItem = specificityOfMostSpecificListItem(subSelector);
+
+							a += mostSpecificListItem.a;
+							b += mostSpecificListItem.b;
+							c += mostSpecificListItem.c;
 						}
-
-						const mostSpecificListItem = specificityOfMostSpecificListItem(subSelector);
-
-						a += mostSpecificListItem.a;
-						b += mostSpecificListItem.b;
-						c += mostSpecificListItem.c;
 					}
 				}
+
 				break;
 
 			case ':local':
 			case ':global':
 				// see : https://github.com/css-modules/css-modules
-				node.nodes.forEach((child) => {
-					const specificity = selectorSpecificity(child);
-					a += specificity.a;
-					b += specificity.b;
-					c += specificity.c;
-				});
+				if (node.nodes && node.nodes.length > 0) {
+					node.nodes.forEach((child) => {
+						const specificity = selectorSpecificity(child);
+						a += specificity.a;
+						b += specificity.b;
+						c += specificity.c;
+					});
+				}
+
 				break;
 
 			default:
