@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased
+### 12.1.8 (June 10, 2022)
 
 - Remove some unneeded regular expressions.
 
