@@ -1,6 +1,6 @@
 # Changes to Selector Specificity
 
-### Unreleased (patch)
+### 2.0.1 (June 10, 2022)
 
 - Fixed: Exception on `:nth-child` without arguments. [#439](https://github.com/csstools/postcss-plugins/issues/439)
 
