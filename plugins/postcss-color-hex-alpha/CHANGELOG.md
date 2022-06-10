@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Hex Alpha
 
-### Unreleased (patch)
+### 8.0.4 (June 10, 2022)
 
 - Fixed: Issue with SVG hashes being interpreted as hex colors
 
