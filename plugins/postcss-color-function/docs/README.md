@@ -8,8 +8,9 @@
 <!-- <example.css> file contents for examples/example.css -->
 <!-- <header> -->
 <!-- <usage> usage instructions -->
-<!-- <env-support> -->
-<!-- <link-list> -->
+<!-- <envSupport> -->
+<!-- <corsWarning> -->
+<!-- <linkList> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -27,7 +28,7 @@ CSS, following the [CSS Color] specification.
 
 <usage>
 
-<env-support>
+<envSupport>
 
 ## Options
 
@@ -103,5 +104,5 @@ To resolve this warning pick a larger color space when declaring the original va
 
 This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/tree/main/css-color-4. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
 
-<link-list>
+<linkList>
 [CSS Color]: <specUrl>

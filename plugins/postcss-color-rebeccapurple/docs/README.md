@@ -8,8 +8,9 @@
 <!-- <example.css> file contents for examples/example.css -->
 <!-- <header> -->
 <!-- <usage> usage instructions -->
-<!-- <env-support> -->
-<!-- <link-list> -->
+<!-- <envSupport> -->
+<!-- <corsWarning> -->
+<!-- <linkList> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -32,7 +33,7 @@ In her memory, the hex color `#663399` is named `rebeccapurple` and [added to th
 
 <usage>
 
-<env-support>
+<envSupport>
 
 ## Options
 
@@ -53,4 +54,4 @@ is preserved. By default, it is not preserved.
 <example.preserve-true.expect.css>
 ```
 
-<link-list>
+<linkList>

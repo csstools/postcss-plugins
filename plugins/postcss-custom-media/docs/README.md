@@ -8,8 +8,9 @@
 <!-- <example.css> file contents for examples/example.css -->
 <!-- <header> -->
 <!-- <usage> usage instructions -->
-<!-- <env-support> -->
-<!-- <link-list> -->
+<!-- <envSupport> -->
+<!-- <corsWarning> -->
+<!-- <linkList> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -26,7 +27,7 @@
 
 <usage>
 
-<env-support>
+<envSupport>
 
 ## Options
 
@@ -131,5 +132,5 @@ See example exports written to [CSS](test/export-media.css),
 [JS](test/export-media.js), [MJS](test/export-media.mjs), and
 [JSON](test/export-media.json).
 
-<link-list>
+<linkList>
 [Custom Media Specification]: <specUrl>
