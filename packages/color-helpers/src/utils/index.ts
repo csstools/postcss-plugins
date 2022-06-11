@@ -1,2 +1,2 @@
-export { clip } from './clip';
-export { inGamut } from './in-gamut';
+export * from './clip';
+export * from './in-gamut';
