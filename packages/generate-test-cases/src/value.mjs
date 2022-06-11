@@ -5,6 +5,12 @@ export function generateValueTestCases(value) {
 	values.push(`var(1, ${value})`);
 	values.push(`var(${value}, 1)`);
 	values.push(`var(${value}, ${value})`);
+	values.push(`pre${value}`);
+	values.push(`pre ${value}`);
+	values.push(`pre,${value}`);
+	values.push(`${value}post`);
+	values.push(`${value} post`);
+	values.push(`${value},post`);
 
 	let result = values.map((x, index) => {
 		return `.order-${index} {

@@ -25,21 +25,23 @@
 		"@rollup/plugin-typescript": "^8.3.2",
 		"@stryker-mutator/core": "^6.0.2",
 		"@typescript-eslint/eslint-plugin": "^5.26.0",
-		"eslint": "^8.16.0",
+		"eslint": "^8.17.0",
 		"rollup": "^2.75.3",
 		"rollup-plugin-terser": "^7.0.2",
-		"typescript": "^4.7.2"
+		"typescript": "^4.7.3"
 	},
 	"scripts": {
 		"build": "npm run build --workspaces --if-present",
 		"clean": "bash ./.github/bin/clean.sh",
 		"get-me-going": "npm run clean && npm ci && npm run build && npm run test",
 		"docs": "npm run docs --workspaces --if-present",
-		"lint": "npm run lint --workspaces --if-present && npm run lint:rollup-config",
+		"lint": "npm run lint --workspaces --if-present && npm run lint:rollup-config && npm run lint:executable-files",
+		"lint:executable-files": "bash .github/bin/detect-executable-files/detect-executable-files.sh",
 		"lint:rollup-config": "eslint ./rollup --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"new-plugin": "node ./.github/bin/new-plugin.mjs",
 		"prepare-repo-for-releases": "npm run clean && npm ci && npm run docs && npm run lint && npm run build && npm run test && bash ./.github/bin/fail-on-changes.sh",
-		"test": "npm run test --workspaces --if-present"
+		"test": "npm run test --workspaces --if-present",
+		"test:browser": "npm run test:browser --workspaces --if-present"
 	},
 	"volta": {
 		"node": "16.13.1",

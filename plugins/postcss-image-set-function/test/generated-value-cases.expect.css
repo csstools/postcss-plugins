@@ -38,6 +38,65 @@
 }
 }
 
+.order-4 {
+	order: preimage-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+}
+
+.order-5 {
+	order: pre url(img/test.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.order-5 {
+	order: pre url(img/test-2x.png);
+}
+}
+
+.order-6 {
+	order: pre,url(img/test.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.order-6 {
+	order: pre,url(img/test-2x.png);
+}
+}
+
+.order-7 {
+	order: url(img/test.png)post;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.order-7 {
+	order: url(img/test-2x.png)post;
+}
+}
+
+.order-8 {
+	order: url(img/test.png) post;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.order-8 {
+	order: url(img/test-2x.png) post;
+}
+}
+
+.order-9 {
+	order: url(img/test.png),post;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.order-9 {
+	order: url(img/test-2x.png),post;
+}
+}
+
 /* image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x) */
 
 :root {

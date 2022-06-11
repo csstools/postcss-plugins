@@ -1,5 +1,9 @@
 # Changes to Selector Specificity
 
+### 2.0.1 (June 10, 2022)
+
+- Fixed: Exception on `:nth-child` without arguments. [#439](https://github.com/csstools/postcss-plugins/issues/439)
+
 ### 2.0.0 (June 4, 2022)
 
 - Breaking: use only named exports instead of `default`
