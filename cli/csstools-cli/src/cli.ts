@@ -1,12 +1,15 @@
 import cssBlankPseudo from './plugins/css-blank-pseudo';
 import cssHasPseudo from './plugins/css-has-pseudo';
 import cssPrefersColorScheme from './plugins/css-prefers-color-scheme';
+import postcssAttributeCaseInsensitive from './plugins/postcss-attribute-case-insensitive';
 import postcssCascadeLayers from './plugins/postcss-cascade-layers';
 import postcssColorFunction from './plugins/postcss-color-function';
 import postcssColorFunctionalNotation from './plugins/postcss-color-functional-notation';
 import postcssColorHexAlpha from './plugins/postcss-color-hex-alpha';
 import postcssColorRebeccaPurple from './plugins/postcss-color-rebeccapurple';
+import postcssCustomMedia from './plugins/postcss-custom-media';
 import postcssCustomProperties from './plugins/postcss-custom-properties';
+import postcssCustomSelectors from './plugins/postcss-custom-selectors';
 import postcssDirPseudoClass from './plugins/postcss-dir-pseudo-class';
 import postcssDoublePositionGradients from './plugins/postcss-double-position-gradients';
 import postcssEnvFunction from './plugins/postcss-env-function';
@@ -27,6 +30,7 @@ import postcssOverflowShorthand from './plugins/postcss-overflow-shorthand';
 import postcssPlace from './plugins/postcss-place';
 import postcssPresetEnv from './plugins/postcss-preset-env';
 import postcssPseudoClassAnyLink from './plugins/postcss-pseudo-class-any-link';
+import postcssSelectorNot from './plugins/postcss-selector-not';
 import postcssSteppedValueFunctions from './plugins/postcss-stepped-value-functions';
 import postcssTrigonometricFunctions from './plugins/postcss-trigonometric-functions';
 import postcssUnsetValue from './plugins/postcss-unset-value';
@@ -43,6 +47,9 @@ function main() {
 		case 'css-prefers-color-scheme':
 			cssPrefersColorScheme();
 			return;
+		case 'postcss-attribute-case-insensitive':
+			postcssAttributeCaseInsensitive();
+			return;
 		case 'postcss-cascade-layers':
 			postcssCascadeLayers();
 			return;
@@ -58,8 +65,14 @@ function main() {
 		case 'postcss-color-rebeccapurple':
 			postcssColorRebeccaPurple();
 			return;
+		case 'postcss-custom-media':
+			postcssCustomMedia();
+			return;
 		case 'postcss-custom-properties':
 			postcssCustomProperties();
+			return;
+		case 'postcss-custom-selectors':
+			postcssCustomSelectors();
 			return;
 		case 'postcss-dir-pseudo-class':
 			postcssDirPseudoClass();
@@ -121,6 +134,9 @@ function main() {
 		case 'postcss-pseudo-class-any-link':
 			postcssPseudoClassAnyLink();
 			return;
+		case 'postcss-selector-not':
+			postcssSelectorNot();
+			return;
 		case 'postcss-stepped-value-functions':
 			postcssSteppedValueFunctions();
 			return;
@@ -145,12 +161,15 @@ function main() {
 				'  css-blank-pseudo',
 				'  css-has-pseudo',
 				'  css-prefers-color-scheme',
+				'  postcss-attribute-case-insensitive',
 				'  postcss-cascade-layers',
 				'  postcss-color-function',
 				'  postcss-color-functional-notation',
 				'  postcss-color-hex-alpha',
 				'  postcss-color-rebeccapurple',
+				'  postcss-custom-media',
 				'  postcss-custom-properties',
+				'  postcss-custom-selectors',
 				'  postcss-dir-pseudo-class',
 				'  postcss-double-position-gradients',
 				'  postcss-env-function',
@@ -170,6 +189,7 @@ function main() {
 				'  postcss-overflow-shorthand',
 				'  postcss-place',
 				'  postcss-pseudo-class-any-link',
+				'  postcss-selector-not',
 				'  postcss-stepped-value-functions',
 				'  postcss-trigonometric-functions',
 				'  postcss-unset-value',

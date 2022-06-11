@@ -975,3 +975,57 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	left: round(to-zero, 2.5px, 1px);
 	inset: round(to-zero, 2.5px, 1px);
 }
+
+.trigonometric {
+	left: 0.70711;
+	left: sin(45deg);
+	left: 0.70711;
+	left: cos(45deg);
+	left: 1;
+	left: tan(45deg);
+	left: 30deg;
+	left: asin(0.5);
+	left: 60deg;
+	left: acos(0.5);
+	left: 84.29deg;
+	left: atan(10);
+	left: -45deg;
+	left: atan2(-1, 1);
+	left: 90deg;
+	left: asin(1);
+	left: asin(sin(pi / 2));
+	left: 135deg;
+	left: atan2(infinity, -infinity);
+	left: 0.90533;
+	left: sin((1deg + 3) + .25turn);
+}
+
+.trigonometric-ignore-not-a-function {
+	left: sin;
+	left: cos;
+	left: tan;
+	left: asin;
+	left: acos;
+	left: atan;
+	left: atan2;
+}
+
+.trigonometric-ignore-no-arguments {
+	left: sin();
+	left: cos();
+	left: tan();
+	left: asin();
+	left: acos();
+	left: atan();
+	left: atan2();
+}
+
+@custom-selector :--view-m [data-view-size=m];
+
+[data-view-size=m] .view {
+		background: red
+}
+
+:--view-m .view {
+		background: red
+}

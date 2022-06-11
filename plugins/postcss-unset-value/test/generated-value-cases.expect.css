@@ -15,6 +15,30 @@
 	order: var(unset, unset);
 }
 
+.order-4 {
+	order: preunset;
+}
+
+.order-5 {
+	order: pre unset;
+}
+
+.order-6 {
+	order: pre,unset;
+}
+
+.order-7 {
+	order: unsetpost;
+}
+
+.order-8 {
+	order: unset post;
+}
+
+.order-9 {
+	order: unset,post;
+}
+
 /* unset */
 
 :root {

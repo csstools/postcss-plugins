@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Hex Alpha
 
+### 8.0.4 (June 10, 2022)
+
+- Fixed: Issue with SVG hashes being interpreted as hex colors
+
 ### 8.0.3 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

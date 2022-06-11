@@ -1,5 +1,5 @@
 import selectorParser from 'postcss-selector-parser';
-import selectorSpecificity from '@csstools/selector-specificity';
+import { selectorSpecificity } from '@csstools/selector-specificity';
 import type { Container, AtRule, PluginCreator, Result } from 'postcss';
 import { Model } from './model';
 import { adjustSelectorSpecificity } from './adjust-selector-specificity';

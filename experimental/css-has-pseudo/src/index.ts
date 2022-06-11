@@ -1,5 +1,5 @@
 import parser from 'postcss-selector-parser';
-import selectorSpecificity from '@csstools/selector-specificity';
+import { selectorSpecificity } from '@csstools/selector-specificity';
 import encodeCSS from './encode/encode.mjs';
 import type { PluginCreator } from 'postcss';
 

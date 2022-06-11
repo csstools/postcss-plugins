@@ -1,0 +1,13 @@
+@custom-selector :--h1 h1;
+
+.class:--h1,   #id:--h1,   ::before:--h1,   *:--h1 {
+	order: 1;
+}
+
+.foo.class:--h1   , .foo#id:--h1   , .foo::before:--h1   {
+	order: 2;
+}
+
+.foo.class:--h1   ,   .foo#id:--h1   ,   .foo::before:--h1   {
+	order: 3;
+}

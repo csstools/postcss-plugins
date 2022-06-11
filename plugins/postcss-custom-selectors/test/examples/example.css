@@ -1,0 +1,5 @@
+@custom-selector :--heading h1, h2, h3;
+
+article :--heading + p {
+	margin-top: 0;
+}

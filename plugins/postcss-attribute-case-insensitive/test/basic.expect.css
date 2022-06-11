@@ -1,0 +1,15 @@
+[data-foo=test],[data-foo=Test],[data-foo=tEst],[data-foo=TEst],[data-foo=teSt],[data-foo=TeSt],[data-foo=tESt],[data-foo=TESt],[data-foo=tesT],[data-foo=TesT],[data-foo=tEsT],[data-foo=TEsT],[data-foo=teST],[data-foo=TeST],[data-foo=tEST],[data-foo=TEST] {
+	order: 1;
+}
+
+[foo="a b"],[foo="A b"],[foo="a B"],[foo="A B"] {
+	order: 2;
+}
+
+[foo=a]{
+	order: 3;
+}
+
+[foobar=b],[foo=a],[foo=A],[bar=c],[bar=C]{
+	order: 4;
+}

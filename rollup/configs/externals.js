@@ -2,6 +2,7 @@ export const externalsForCLI = [
 	'fs',
 	'path',
 	'url',
+	'vm',
 
 	'@csstools/postcss-cascade-layers',
 	'@csstools/postcss-color-function',
@@ -13,6 +14,7 @@ export const externalsForCLI = [
 	'@csstools/postcss-oklab-function',
 	'@csstools/postcss-progressive-custom-properties',
 	'@csstools/postcss-stepped-value-functions',
+	'@csstools/postcss-trigonometric-functions',
 	'@csstools/postcss-unset-value',
 	'@csstools/selector-specificity',
 	'autoprefixer',
@@ -57,6 +59,7 @@ export const externalsForPlugin = [
 	'fs',
 	'path',
 	'url',
+	'vm',
 
 	'postcss',
 	/^postcss-\d\.\d$/,
@@ -72,6 +75,7 @@ export const externalsForPlugin = [
 	'@csstools/postcss-oklab-function',
 	'@csstools/postcss-progressive-custom-properties',
 	'@csstools/postcss-stepped-value-functions',
+	'@csstools/postcss-trigonometric-functions',
 	'@csstools/postcss-unset-value',
 	'@csstools/selector-specificity',
 	'autoprefixer',

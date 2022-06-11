@@ -56,9 +56,9 @@
   - plugins/postcss-color-mod-function/**
   - experimental/postcss-color-mod-function/**
 
-"plugins/postcss-custom-media-queries":
-  - plugins/postcss-custom-media-queries/**
-  - experimental/postcss-custom-media-queries/**
+"plugins/postcss-custom-media":
+  - plugins/postcss-custom-media/**
+  - experimental/postcss-custom-media/**
 
 "plugins/postcss-custom-properties":
   - plugins/postcss-custom-properties/**

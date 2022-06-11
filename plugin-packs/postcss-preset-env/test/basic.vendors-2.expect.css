@@ -509,3 +509,44 @@
 	bottom: round(to-zero, 2.5px, 1px);
 	left: round(to-zero, 2.5px, 1px);
 }
+
+.trigonometric {
+	left: sin(45deg);
+	left: cos(45deg);
+	left: tan(45deg);
+	left: asin(0.5);
+	left: acos(0.5);
+	left: atan(10);
+	left: atan2(-1, 1);
+	left: asin(sin(pi / 2));
+	left: atan2(infinity, -infinity);
+	left: sin((1deg + 3) + .25turn);
+}
+
+.trigonometric-ignore-not-a-function {
+	left: sin;
+	left: cos;
+	left: tan;
+	left: asin;
+	left: acos;
+	left: atan;
+	left: atan2;
+}
+
+.trigonometric-ignore-no-arguments {
+	left: sin();
+	left: cos();
+	left: tan();
+	left: asin();
+	left: acos();
+	left: atan();
+	left: atan2();
+}
+
+@custom-selector :--view-m [data-view-size=m];
+
+.view {
+	@nest :--view-m & {
+		background: red;
+	}
+}

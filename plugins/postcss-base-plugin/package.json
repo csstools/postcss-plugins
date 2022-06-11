@@ -9,7 +9,7 @@
 			"url": "https://antonio.laguna.es"
 		},
 		{
-			"name": "Romain Menke ",
+			"name": "Romain Menke",
 			"email": "romainmenke@gmail.com"
 		}
 	],
@@ -42,7 +42,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"postcss": "^8.3"
+		"postcss": "^8.4"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",

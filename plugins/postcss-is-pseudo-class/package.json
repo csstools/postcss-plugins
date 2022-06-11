@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-is-pseudo-class",
 	"description": "A pseudo-class for matching elements in a selector list",
-	"version": "2.0.4",
+	"version": "2.0.5",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
 	"funding": {
@@ -28,7 +28,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/selector-specificity": "^1.0.0",
+		"@csstools/selector-specificity": "^2.0.0",
 		"postcss-selector-parser": "^6.0.10"
 	},
 	"peerDependencies": {

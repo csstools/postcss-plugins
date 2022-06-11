@@ -1,0 +1,55 @@
+.order-0 {
+	order: rebeccapurple !important;
+}
+
+.order-1 {
+	order: var(1, rebeccapurple);
+}
+
+.order-2 {
+	order: var(rebeccapurple, 1);
+}
+
+.order-3 {
+	order: var(rebeccapurple, rebeccapurple);
+}
+
+.order-4 {
+	order: prerebeccapurple;
+}
+
+.order-5 {
+	order: pre rebeccapurple;
+}
+
+.order-6 {
+	order: pre,rebeccapurple;
+}
+
+.order-7 {
+	order: rebeccapurplepost;
+}
+
+.order-8 {
+	order: rebeccapurple post;
+}
+
+.order-9 {
+	order: rebeccapurple,post;
+}
+
+/* rebeccapurple */
+
+:root {
+	--some-var: rebeccapurple;
+}
+
+.content {
+	content: 'rebeccapurple';
+}
+
+@supports (order: rebeccapurple) {
+	.support {
+		order: rebeccapurple;
+	}
+}

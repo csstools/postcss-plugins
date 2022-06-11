@@ -210,4 +210,9 @@ export default [
 		'id': 'cascade-layers',
 		'importName': 'postcssCascadeLayers',
 	},
+	{
+		'packageName': '@csstools/postcss-trigonometric-functions',
+		'id': 'trigonometric-functions',
+		'importName': 'postcssTrigonometricFunctions',
+	},
 ];

@@ -450,3 +450,44 @@
 	left: 2px;
 	inset: 2px;
 }
+
+.trigonometric {
+	left: 0.70711;
+	left: 0.70711;
+	left: 1;
+	left: 30deg;
+	left: 60deg;
+	left: 84.29deg;
+	left: -45deg;
+	left: 90deg;
+	left: 135deg;
+	left: 0.90533;
+}
+
+.trigonometric-ignore-not-a-function {
+	left: sin;
+	left: cos;
+	left: tan;
+	left: asin;
+	left: acos;
+	left: atan;
+	left: atan2;
+}
+
+.trigonometric-ignore-no-arguments {
+	left: sin();
+	left: cos();
+	left: tan();
+	left: asin();
+	left: acos();
+	left: atan();
+	left: atan2();
+}
+
+@custom-selector :--view-m [data-view-size=m];
+
+.view {
+	@nest :--view-m & {
+		background: red;
+	}
+}

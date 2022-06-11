@@ -1,10 +1,24 @@
 {
 	"name": "postcss-color-rebeccapurple",
 	"description": "Use the rebeccapurple color keyword in CSS",
-	"version": "7.0.2",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"version": "7.1.0",
 	"contributors": [
-		"Maxime Thirouin"
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		},
+		{
+			"name": "Jonathan Neal",
+			"email": "jonathantneal@hotmail.com"
+		},
+		{
+			"name": "Maxime Thirouin"
+		}
 	],
 	"license": "CC0-1.0",
 	"funding": {
@@ -16,6 +30,7 @@
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./dist/index.mjs",
@@ -38,7 +53,7 @@
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
@@ -71,8 +86,10 @@
 		"w3c"
 	],
 	"csstools": {
-		"exportName": "postcssRebeccapurple",
-		"humanReadableName": "PostCSS RebeccaPurple"
+		"cssdbId": "rebeccapurple-color",
+		"exportName": "postcssRebeccaPurple",
+		"humanReadableName": "PostCSS RebeccaPurple",
+		"specUrl": "https://www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple"
 	},
 	"volta": {
 		"extends": "../../package.json"

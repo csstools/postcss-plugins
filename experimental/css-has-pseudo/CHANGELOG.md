@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### 0.5.2 (June 4, 2022)
+
+- Update `@csstools/selector-specificity` (major)
+
 ### 0.5.1 (April 29, 2022)
 
 - Use `@csstools/selector-specificity` for specificity calculations.

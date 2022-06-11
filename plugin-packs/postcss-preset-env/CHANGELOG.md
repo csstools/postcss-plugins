@@ -1,13 +1,29 @@
 # Changes to PostCSS Preset Env
 
+### 7.7.1 (June 3, 2022)
+
+- Updated `postcss-selector-not` to `6.0.0` (major)
+- Updated `@csstools/postcss-trigonometric-functions` to `1.0.1` (patch)
+- Updated `postcss-attribute-case-insensitive` to `5.0.1` (patch)
+- Updated `postcss-custom-media` to `8.0.1` (patch)
+- Updated `postcss-custom-selectors` to `6.0.2` (patch)
+- Updated `cssdb` to `6.6.3` (patch)
+
+### 7.7.0 (May 31, 2022)
+
+- Added `@csstools/postcss-trigonometric-functions` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions#readme) for usage details.
+- Updated `@csstools/postcss-cascade-layers` to `1.0.2` (patch)
+- Updated `postcss-color-functional-notation` to `4.2.3` (patch)
+- Updated `postcss-nesting` to `10.1.7` (patch)
+
 ### 7.6.0 (May 19, 2022)
 
 - Added `@csstools/postcss-cascade-layers` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers#readme) for usage details.
-- Updated `@csstools/postcss-hwb-function`  to `1.0.1` (patch)
-- Updated `@csstools/postcss-is-pseudo-class`  to `2.0.4` (patch)
-- Updated `@csstools/postcss-unset-value`  to `1.0.1` (patch)
+- Updated `@csstools/postcss-hwb-function` to `1.0.1` (patch)
+- Updated `@csstools/postcss-is-pseudo-class` to `2.0.4` (patch)
+- Updated `@csstools/postcss-unset-value` to `1.0.1` (patch)
 - Updated `postcss-nesting` to `10.1.6` (patch)
-- Updated `postcss-pseudo-class-any-link`  to `7.1.4` (patch)
+- Updated `postcss-pseudo-class-any-link` to `7.1.4` (patch)
 
 ### 7.5.0 (May 2, 2022)
 

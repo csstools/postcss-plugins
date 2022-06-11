@@ -1,0 +1,15 @@
+[data-foo=test i] {
+	order: 1;
+}
+
+[foo="a b" i] {
+	order: 2;
+}
+
+[foo=a]{
+	order: 3;
+}
+
+[foo=a i],[foobar=b],[bar=c i]{
+	order: 4;
+}

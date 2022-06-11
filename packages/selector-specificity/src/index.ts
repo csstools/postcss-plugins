@@ -1,7 +1,13 @@
 import parser from 'postcss-selector-parser';
 import type { Node } from 'postcss-selector-parser';
 
-export default function selectorSpecificity(node: Node) {
+export type Specificity = {
+	a: number,
+	b: number,
+	c: number,
+};
+
+export function selectorSpecificity(node: Node): Specificity {
 	// https://www.w3.org/TR/selectors-4/#specificity-rules
 
 	if (!node) {
@@ -51,6 +57,7 @@ export default function selectorSpecificity(node: Node) {
 					b += mostSpecificListItem.b;
 					c += mostSpecificListItem.c;
 				}
+
 				break;
 			}
 
@@ -65,40 +72,46 @@ export default function selectorSpecificity(node: Node) {
 				{
 					b += 1;
 
-					const ofSeparatorIndex = node.nodes[0].nodes.findIndex((x) => {
-						return x.type === 'tag' && x.value === 'of';
-					});
+					if (node.nodes && node.nodes.length > 0) {
+						const ofSeparatorIndex = node.nodes[0].nodes.findIndex((x) => {
+							return x.type === 'tag' && x.value === 'of';
+						});
 
-					if (ofSeparatorIndex > -1) {
-						const subSelector = [
-							parser.selector({
-								nodes: node.nodes[0].nodes.slice(ofSeparatorIndex + 1),
-								value: '',
-							}),
-						];
+						if (ofSeparatorIndex > -1) {
+							const subSelector = [
+								parser.selector({
+									nodes: node.nodes[0].nodes.slice(ofSeparatorIndex + 1),
+									value: '',
+								}),
+							];
 
-						if (node.nodes.length > 1) {
-							subSelector.push(...node.nodes.slice(1));
+							if (node.nodes.length > 1) {
+								subSelector.push(...node.nodes.slice(1));
+							}
+
+							const mostSpecificListItem = specificityOfMostSpecificListItem(subSelector);
+
+							a += mostSpecificListItem.a;
+							b += mostSpecificListItem.b;
+							c += mostSpecificListItem.c;
 						}
-
-						const mostSpecificListItem = specificityOfMostSpecificListItem(subSelector);
-
-						a += mostSpecificListItem.a;
-						b += mostSpecificListItem.b;
-						c += mostSpecificListItem.c;
 					}
 				}
+
 				break;
 
 			case ':local':
 			case ':global':
 				// see : https://github.com/css-modules/css-modules
-				node.nodes.forEach((child) => {
-					const specificity = selectorSpecificity(child);
-					a += specificity.a;
-					b += specificity.b;
-					c += specificity.c;
-				});
+				if (node.nodes && node.nodes.length > 0) {
+					node.nodes.forEach((child) => {
+						const specificity = selectorSpecificity(child);
+						a += specificity.a;
+						b += specificity.b;
+						c += specificity.c;
+					});
+				}
+
 				break;
 
 			default:
@@ -156,4 +169,14 @@ function isPseudoElement(node: Node): boolean {
 	// Typescript definition of "isPseudoElement" is incorrect.
 	// This function removes the magic and is a simple boolean check.
 	return parser.isPseudoElement(node);
+}
+
+export function compare(s1: Specificity, s2: Specificity): number {
+	if (s1.a === s2.a) {
+		if (s1.b === s2.b) {
+			return s1.c - s2.c;
+		}
+		return s1.b - s2.b;
+	}
+	return s1.a - s2.a;
 }
