@@ -189,5 +189,5 @@ the hexidecimal value of black. Likewise, `70` is chosen for light mode because
 it is the keycode for `f`, the hexidecimal value of white.
 These are suffixed with a random large number.
 
-<link-list>
+<linkList>
 [Media Queries]: <specUrl>
