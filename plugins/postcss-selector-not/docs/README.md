@@ -32,5 +32,5 @@ Complex selectors (`:not(.a > .b, .c ~ .d)`) can not be downgraded.
 
 <envSupport>
 
-<link-list>
+<linkList>
 [Selectors 4 Specification]: <specUrl>

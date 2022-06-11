@@ -88,5 +88,5 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 
 _Custom properties do not fallback to the previous declaration_
 
-<link-list>
+<linkList>
 [CSS Specification]: <specUrl>

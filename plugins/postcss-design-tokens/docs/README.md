@@ -206,6 +206,6 @@ design-token() = design-token( <token-path> [ to <unit> ]? )
 - [Why we think PostCSS Design Tokens is needed]
 - [About Design Tokens (Adobe Spectrum)]
 
-<link-list>
+<linkList>
 [Why we think PostCSS Design Tokens is needed]: https://github.com/csstools/postcss-plugins/wiki/Why-we-think-PostCSS-Design-Tokens-is-needed
 [About Design Tokens (Adobe Spectrum)]: https://spectrum.adobe.com/page/design-tokens/

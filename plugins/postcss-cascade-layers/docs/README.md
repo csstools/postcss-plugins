@@ -126,7 +126,7 @@ This plugin will warn you when it detects that [postcss-import] did not transfor
 ### Contributors
 The contributors to this plugin were [Olu Niyi-Awosusi] and [Sana Javed] from [Oddbird] and Romain Menke.
 
-<link-list>
+<linkList>
 [Cascade Layers Specification]: <specUrl>
 [A Complete Guide to CSS Cascade Layers]: https://css-tricks.com/css-cascade-layers/
 [Olu Niyi-Awosusi]: https://github.com/oluoluoxenfree

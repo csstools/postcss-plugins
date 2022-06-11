@@ -132,5 +132,5 @@ See example exports written to [CSS](test/export-media.css),
 [JS](test/export-media.js), [MJS](test/export-media.mjs), and
 [JSON](test/export-media.json).
 
-<link-list>
+<linkList>
 [Custom Media Specification]: <specUrl>

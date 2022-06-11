@@ -29,5 +29,5 @@
 
 <envSupport>
 
-<link-list>
+<linkList>
 [Case Insensitive Attribute]: <specUrl>

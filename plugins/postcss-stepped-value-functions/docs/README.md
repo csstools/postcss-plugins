@@ -74,5 +74,5 @@ Will produce on the terminal:
 [postcss-stepped-value-functions]: Failed to transform mod(18px, 5rem) as the units don't match
 ```
 
-<link-list>
+<linkList>
 [CSS Values 4]: <specUrl>

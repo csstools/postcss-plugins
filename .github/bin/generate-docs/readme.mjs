@@ -71,7 +71,7 @@ instructions for:
 | --- | --- | --- | --- | --- | --- |`);
 
 // Insert "Link List" section
-readmeDoc = readmeDoc.replace('<link-list>', `[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+readmeDoc = readmeDoc.replace('<linkList>', `[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 ${
 	packageJSONInfo.csstools?.cssdbId ?
 		`[css-url]: https://cssdb.org/#<cssdbId>` :

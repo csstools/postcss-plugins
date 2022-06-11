@@ -127,5 +127,5 @@ const cachedObject = { customSelectors: {} };
 });
 ```
 
-<link-list>
+<linkList>
 [Custom Selectors Specification]: <specUrl>

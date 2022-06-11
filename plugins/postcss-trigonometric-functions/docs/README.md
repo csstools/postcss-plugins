@@ -66,5 +66,5 @@ is preserved. By default, it is not preserved.
 <example.preserve-true.expect.css>
 ```
 
-<link-list>
+<linkList>
 [CSS Values 4]: <specUrl>
