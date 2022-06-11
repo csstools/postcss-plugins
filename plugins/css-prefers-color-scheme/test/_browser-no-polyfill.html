@@ -9,8 +9,6 @@
 	<link rel="stylesheet" href="http://localhost:8081/test/basic.expect.css">
 	<!-- This is the real test stylesheet and has correct CORS attributes and http headers -->
 	<link rel="stylesheet" href="http://localhost:8081/test/browser.expect.css" crossorigin="anonymous">
-	<script src="http://localhost:8082/dist/browser-global.js"></script>
-	<script>self._prefersColorScheme = prefersColorSchemeInit()</script>
 </head>
 <body>
 	<the-fixture id="fixture">Fixture</the-fixture>
@@ -46,69 +44,13 @@
 				await rafP(() => {
 					testColor('before', pink);
 				});
-
-				self._prefersColorScheme.scheme = 'dark';
-
-				await rafP(() => {
-					testColor('dark', purple);
-				});
-
-				self._prefersColorScheme.scheme = 'light';
-
-				await rafP(() => {
-					testColor('light', pink);
-				});
-
-				self._prefersColorScheme.scheme = '';
-
-				await rafP(() => {
-					testColor('empty', pink);
-				});
-
 			} else if (window.location.hash === '#dark') {
 				await rafP(() => {
 					testColor('before', purple);
 				});
-
-				self._prefersColorScheme.scheme = 'dark';
-
-				await rafP(() => {
-					testColor('dark', purple);
-				});
-
-				self._prefersColorScheme.scheme = 'light';
-
-				await rafP(() => {
-					testColor('light', pink);
-				});
-
-				self._prefersColorScheme.scheme = '';
-
-				await rafP(() => {
-					testColor('empty', purple);
-				});
-
 			} else {
 				await rafP(() => {
 					testColor('before', pink);
-				});
-
-				self._prefersColorScheme.scheme = 'dark';
-
-				await rafP(() => {
-					testColor('dark', purple);
-				});
-
-				self._prefersColorScheme.scheme = 'light';
-
-				await rafP(() => {
-					testColor('light', pink);
-				});
-
-				self._prefersColorScheme.scheme = '';
-
-				await rafP(() => {
-					testColor('empty', pink);
 				});
 			}
 

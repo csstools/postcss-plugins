@@ -1,4 +1,4 @@
-/* global document,window,matchMedia */
+/* global document,window */
 const prefersColorSchemeRegExp = /prefers-color-scheme:/i;
 
 const prefersColorSchemeInit = (initialColorScheme, options) => {
@@ -14,17 +14,25 @@ const prefersColorSchemeInit = (initialColorScheme, options) => {
 	}
 
 	const mediaQueryString = '(prefers-color-scheme: dark)';
-	const mediaQueryList = window.matchMedia && matchMedia(mediaQueryString);
+	const mediaQueryList = ('matchMedia' in window) && window.matchMedia(mediaQueryString);
 	const hasNativeSupport = mediaQueryList && mediaQueryList.media === mediaQueryString;
 	const mediaQueryListener = () => {
-		set(mediaQueryList.matches ? 'dark' : 'light');
+		set((mediaQueryList && mediaQueryList.matches) ? 'dark' : 'light');
 	};
 	const removeListener = () => {
 		if (mediaQueryList) {
 			mediaQueryList.removeListener(mediaQueryListener);
 		}
 	};
-	const set = colorScheme => {
+	const set = (colorScheme) => {
+		if (colorScheme !== 'dark' && colorScheme !== 'light') {
+			if (hasNativeSupport) {
+				colorScheme = mediaQueryList.matches ? 'dark' : 'light';
+			} else {
+				colorScheme = 'light';
+			}
+		}
+
 		if (colorScheme !== currentColorScheme) {
 			currentColorScheme = colorScheme;
 

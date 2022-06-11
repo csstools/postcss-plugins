@@ -28,8 +28,5 @@ postcssTape(plugin)({
 	},
 	'browser': {
 		message: 'css for browser tests',
-		options: {
-			preserve: false
-		}
 	},
 });
