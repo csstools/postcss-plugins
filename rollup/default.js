@@ -33,7 +33,7 @@ const presets = [];
 
 if (isTypescript) {
 	if (packageInfo.main || packageInfo.module) {
-		presets.push(...packageTypescript(packageInfo));
+		presets.push(...packageTypescript());
 	}
 
 	if (packageInfo.bin) {
