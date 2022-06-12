@@ -2,10 +2,10 @@
 
 ### Unreleased (major)
 
-- Breaking : removed old CDN urls
-- Breaking : remove `color-depth` queries fallback
-- Breaking : remove 'no-preference' support as this was dropped from the spec
-- Breaking : remove old global object
+- Breaking: removed old CDN urls
+- Breaking: remove `color-depth` queries fallback
+- Breaking: remove 'no-preference' support as this was dropped from the spec
+- Breaking: remove old global object
 
 #### How to migrate :
 
