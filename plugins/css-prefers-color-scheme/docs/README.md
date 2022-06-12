@@ -52,7 +52,8 @@ is preserved. By default, it is preserved.
 
 ```js
 // initialize prefersColorScheme (applies the current OS color scheme, if available)
-const prefersColorScheme = require('css-prefers-color-scheme/browser')();
+import prefersColorSchemeInit from '<packageName>/browser';
+const prefersColorScheme = prefersColorSchemeInit();
 
 // apply "dark" queries (you can also apply "light")
 prefersColorScheme.scheme = 'dark';
@@ -62,7 +63,7 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/css-prefers-color-scheme@7.0.0/dist/browser-global.js"></script>
+<script src="https://unpkg.com/<packageName>@7.0.0/dist/browser-global.js"></script>
 <script>prefersColorSchemeInit()</script>
 ```
 
@@ -79,7 +80,8 @@ experience, even when JavaScript is unable to run.
 Use [Prefers Color Scheme] to activate your `prefers-color-scheme` queries:
 
 ```js
-const prefersColorScheme = require('css-prefers-color-scheme/browser')();
+import prefersColorSchemeInit from '<packageName>/browser';
+const prefersColorScheme = prefersColorSchemeInit();
 ```
 
 By default, the current OS color scheme is applied if your browser supports it.
@@ -87,7 +89,8 @@ Otherwise, the light color scheme is applied. You may override this by passing
 in a color scheme.
 
 ```js
-const prefersColorScheme = require('css-prefers-color-scheme/browser')('dark');
+import prefersColorSchemeInit from '<packageName>/browser';
+const prefersColorScheme = prefersColorSchemeInit('dark');
 ```
 
 The `prefersColorScheme` object returns the following properties — `scheme`,
@@ -99,7 +102,8 @@ The `scheme` property returns the currently preferred color scheme, and it can
 be changed.
 
 ```js
-const prefersColorScheme = require('css-prefers-color-scheme/browser')();
+import prefersColorSchemeInit from '<packageName>/browser';
+const prefersColorScheme = prefersColorSchemeInit();
 
 // log the preferred color scheme
 console.log(prefersColorScheme.scheme);
@@ -129,11 +133,12 @@ This is provided to give you complete control over plugin cleanup.
 If styles are not applied you can enable debug mode to log exceptions.
 
 ```js
-const prefersColorScheme = require('css-prefers-color-scheme/browser')('light', { debug: true });
+import prefersColorSchemeInit from '<packageName>/browser';
+const prefersColorScheme = prefersColorSchemeInit('light', { debug: true });
 ```
 
 ```html
-<script src="https://unpkg.com/css-prefers-color-scheme@7.0.0/dist/browser-global.js"></script>
+<script src="https://unpkg.com/<packageName>@7.0.0/dist/browser-global.js"></script>
 <script>prefersColorSchemeInit('light', { debug: true })</script>
 ```
 
