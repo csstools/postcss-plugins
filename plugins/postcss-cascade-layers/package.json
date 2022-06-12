@@ -54,7 +54,7 @@
 	},
 	"devDependencies": {
 		"postcss-import": "^14.1.0",
-		"puppeteer": "^13.6.0"
+		"puppeteer": "^14.3.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
