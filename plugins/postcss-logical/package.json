@@ -27,7 +27,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"postcss": "^8.4"
+		"postcss": "^8.2"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
