@@ -31,7 +31,7 @@
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {
-		"postcss": "^8.3"
+		"postcss": "^8.2"
 	},
 	"scripts": {
 		"build": "node ./generate/matchers.mjs && eslint --fix ./src/matchers.ts && rollup -c ../../rollup/default.js",
