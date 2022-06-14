@@ -1,105 +1,83 @@
-# CSS Has Pseudo [<img src="http://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][CSS Has Pseudo]
+# PostCSS Has Pseudo [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![NPM Version][npm-img]][npm-url]
-[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/css-has-pseudo.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/has-pseudo-class.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-[CSS Has Pseudo] lets you style elements relative to other elements in CSS,
-following the [Selectors Level 4] specification.
+[PostCSS Has Pseudo] lets you easily create new plugins following some [CSS Specification].
 
-[!['Can I use' table](https://caniuse.bitsofco.de/image/css-has.png)](https://caniuse.com/#feat=css-has)
-
-```css
-a:has(> img) {
-  /* style links that contain an image */
-}
-
+```pcss
 h1:has(+ p) {
-  /* style level 1 headings that are followed by a paragraph */
+	margin-bottom: 1.5rem;
 }
 
-section:not(:has(h1, h2, h3, h4, h5, h6)) {
-  /* style sections that don’t contain any heading elements */
-}
+/* becomes */
 
-body:has(:focus) {
-  /* style the body if it contains a focused element */
+[csstools-has-2w-1d-1m-2w-2p-37-14-17-w-34-15]:not(does-not-exist):not(does-not-exist) {
+	margin-bottom: 1.5rem;
+}
+h1:has(+ p) {
+	margin-bottom: 1.5rem;
 }
 ```
 
 ## Usage
 
-From the command line, transform CSS files that use `:has` selectors:
+Add [PostCSS Has Pseudo] to your project:
 
 ```bash
-npx css-has-pseudo SOURCE.css --output TRANSFORMED.css
+npm install postcss css-has-pseudo --save-dev
 ```
 
-Next, use your transformed CSS with this script:
+Use it as a [PostCSS] plugin:
 
-```html
-<link rel="stylesheet" href="TRANSFORMED.css">
-<script src="https://unpkg.com/css-has-pseudo/dist/browser-global.js"></script>
-<script>cssHasPseudo(document)</script>
+```js
+const postcss = require('postcss');
+const postcssHasPseudo = require('css-has-pseudo');
+
+postcss([
+	postcssHasPseudo(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-⚠️ Please use a versioned url, like this : `https://unpkg.com/css-has-pseudo@3.0.0/dist/browser-global.js`
-Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+[PostCSS Has Pseudo] runs in all Node environments, with special
+instructions for:
 
-⚠️ If you were using an older version via a CDN, please update the entire url.
-The old URL will no longer work in a future release.
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
-That’s it. The script is 765 bytes and works in most browser versions, including
-Internet Explorer 11. With a [Mutation Observer polyfill], the script will work
-down to Internet Explorer 9.
+## Options
 
-See [README BROWSER](README-BROWSER.md) for more information.
+### preserve
 
-## How it works
+The `preserve` option determines whether the original notation
+is preserved. By default, it is not preserved.
 
-The [PostCSS plugin](README-POSTCSS.md) clones rules containing `:has`,
-replacing them with an alternative `[:has]` selector.
+```js
+postcssHasPseudo({ preserve: true })
+```
 
-```css
-body:has(:focus) {
-  background-color: yellow;
-}
-
-section:not(:has(h1, h2, h3, h4, h5, h6)) {
-  background-color: gray;
+```pcss
+h1:has(+ p) {
+	margin-bottom: 1.5rem;
 }
 
 /* becomes */
 
-body[\:has\(\:focus\)] {
-  background-color: yellow;
+[csstools-has-2w-1d-1m-2w-2p-37-14-17-w-34-15]:not(does-not-exist):not(does-not-exist) {
+	margin-bottom: 1.5rem;
 }
-
-body:has(:focus) {
-  background-color: yellow;
-}
-
-section[\:not-has\(h1\,\%20h2\,\%20h3\,\%20h4\,\%20h5\,\%20h6\)] {
-  background-color: gray;
-}
-
-section:not(:has(h1, h2, h3, h4, h5, h6)) {
-  background-color: gray;
+h1:has(+ p) {
+	margin-bottom: 1.5rem;
 }
 ```
 
-Next, the [JavaScript library](README-BROWSER.md) adds a `[:has]` attribute to
-elements otherwise matching `:has` natively.
-
-```html
-<body :has(:focus)>
-  <input value="This element is focused">
-</body>
-```
-
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+[css-url]: https://cssdb.org/#has-pseudo-class
 [discord]: https://discord.gg/bUadyRwkJS
-[npm-img]: https://img.shields.io/npm/v/css-has-pseudo.svg
 [npm-url]: https://www.npmjs.com/package/css-has-pseudo
 
-[CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
-[Mutation Observer polyfill]: https://github.com/webmodules/mutation-observer
-[Selectors Level 4]: https://drafts.csswg.org/selectors-4/#has-pseudo
+[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
+[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
+[PostCSS]: https://github.com/postcss/postcss
+[PostCSS Loader]: https://github.com/postcss/postcss-loader
+[PostCSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
+[CSS Specification]: https://www.w3.org/TR/selectors-4/#has-pseudo

@@ -1,880 +1,880 @@
-[\:has\(.foo\)][\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 0;
 }
 
-[\:has\(.foo\)][\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 1;
 }
 
-[\:has\(.foo\)] [\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 2;
 }
 
-[\:has\(.foo\)] [\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 3;
 }
 
-[\:has\(.foo\)]  [\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 4;
 }
 
-[\:has\(.foo\)]  [\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 5;
 }
 
-[\:has\(.foo\)]+[\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-17-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 6;
 }
 
-[\:has\(.foo\)]+[\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-17-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 7;
 }
 
-[\:has\(.foo\)] + [\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-17-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 8;
 }
 
-[\:has\(.foo\)] + [\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-17-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 9;
 }
 
-[\:has\(.foo\)]~[\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-3i-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 10;
 }
 
-[\:has\(.foo\)]~[\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-3i-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 11;
 }
 
-[\:has\(.foo\)] ~ [\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-3i-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 12;
 }
 
-[\:has\(.foo\)] ~ [\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-3i-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 13;
 }
 
-[\:has\(.foo\)]>[\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1q-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 14;
 }
 
-[\:has\(.foo\)]>[\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1q-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 15;
 }
 
-[\:has\(.foo\)] > [\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1q-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 16;
 }
 
-[\:has\(.foo\)] > [\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1q-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 17;
 }
 
-[\:has\(.foo\)],[\%20\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15], [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 18;
 }
 
-[\:has\(.foo\)],[\%20\:has\(.foo\)] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15], [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 19;
 }
 
-button[\:has\(.foo\)] {
+[csstools-has-2q-39-38-38-33-32-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 20;
 }
 
-[\:has\(.foo\)]button {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-2q-39-38-38-33-32]:not(does-not-exist) {
 	order: 21;
 }
 
-button [\:has\(.foo\)] {
+[csstools-has-2q-39-38-38-33-32-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 22;
 }
 
-[\:has\(.foo\)] button {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-2q-39-38-38-33-32]:not(does-not-exist) {
 	order: 23;
 }
 
-button  [\:has\(.foo\)] {
+[csstools-has-2q-39-38-38-33-32-w-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 24;
 }
 
-[\:has\(.foo\)]  button {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-w-2q-39-38-38-33-32]:not(does-not-exist) {
 	order: 25;
 }
 
-button+[\:has\(.foo\)] {
+[csstools-has-2q-39-38-38-33-32-17-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 26;
 }
 
-[\:has\(.foo\)]+button {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-17-2q-39-38-38-33-32]:not(does-not-exist) {
 	order: 27;
 }
 
-button + [\:has\(.foo\)] {
+[csstools-has-2q-39-38-38-33-32-w-17-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 28;
 }
 
-[\:has\(.foo\)] + button {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-17-w-2q-39-38-38-33-32]:not(does-not-exist) {
 	order: 29;
 }
 
-button~[\:has\(.foo\)] {
+[csstools-has-2q-39-38-38-33-32-3i-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 30;
 }
 
-[\:has\(.foo\)]~button {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-3i-2q-39-38-38-33-32]:not(does-not-exist) {
 	order: 31;
 }
 
-button ~ [\:has\(.foo\)] {
+[csstools-has-2q-39-38-38-33-32-w-3i-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 32;
 }
 
-[\:has\(.foo\)] ~ button {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-3i-w-2q-39-38-38-33-32]:not(does-not-exist) {
 	order: 33;
 }
 
-button>[\:has\(.foo\)] {
+[csstools-has-2q-39-38-38-33-32-1q-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 34;
 }
 
-[\:has\(.foo\)]>button {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1q-2q-39-38-38-33-32]:not(does-not-exist) {
 	order: 35;
 }
 
-button > [\:has\(.foo\)] {
+[csstools-has-2q-39-38-38-33-32-w-1q-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 36;
 }
 
-[\:has\(.foo\)] > button {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1q-w-2q-39-38-38-33-32]:not(does-not-exist) {
 	order: 37;
 }
 
-button,[\%20\:has\(.foo\)] {
+button, [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 38;
 }
 
-[\:has\(.foo\)], button {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15], button {
 	order: 39;
 }
 
-.🧑🏾‍🎤[\:has\(.foo\)] {
+[csstools-has-1a-16pq-17td-16po-188u-6bx-16po-186c-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 40;
 }
 
-[\:has\(.foo\)].🧑🏾‍🎤 {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1a-16pq-17td-16po-188u-6bx-16po-186c]:not(.does-not-exist) {
 	order: 41;
 }
 
-.🧑🏾‍🎤 [\:has\(.foo\)] {
+[csstools-has-1a-16pq-17td-16po-188u-6bx-16po-186c-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 42;
 }
 
-[\:has\(.foo\)] .🧑🏾‍🎤 {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1a-16pq-17td-16po-188u-6bx-16po-186c]:not(.does-not-exist) {
 	order: 43;
 }
 
-.🧑🏾‍🎤  [\:has\(.foo\)] {
+[csstools-has-1a-16pq-17td-16po-188u-6bx-16po-186c-w-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 44;
 }
 
-[\:has\(.foo\)]  .🧑🏾‍🎤 {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-w-1a-16pq-17td-16po-188u-6bx-16po-186c]:not(.does-not-exist) {
 	order: 45;
 }
 
-.🧑🏾‍🎤+[\:has\(.foo\)] {
+[csstools-has-1a-16pq-17td-16po-188u-6bx-16po-186c-17-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 46;
 }
 
-[\:has\(.foo\)]+.🧑🏾‍🎤 {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-17-1a-16pq-17td-16po-188u-6bx-16po-186c]:not(.does-not-exist) {
 	order: 47;
 }
 
-.🧑🏾‍🎤 + [\:has\(.foo\)] {
+[csstools-has-1a-16pq-17td-16po-188u-6bx-16po-186c-w-17-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 48;
 }
 
-[\:has\(.foo\)] + .🧑🏾‍🎤 {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-17-w-1a-16pq-17td-16po-188u-6bx-16po-186c]:not(.does-not-exist) {
 	order: 49;
 }
 
-.🧑🏾‍🎤~[\:has\(.foo\)] {
+[csstools-has-1a-16pq-17td-16po-188u-6bx-16po-186c-3i-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 50;
 }
 
-[\:has\(.foo\)]~.🧑🏾‍🎤 {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-3i-1a-16pq-17td-16po-188u-6bx-16po-186c]:not(.does-not-exist) {
 	order: 51;
 }
 
-.🧑🏾‍🎤 ~ [\:has\(.foo\)] {
+[csstools-has-1a-16pq-17td-16po-188u-6bx-16po-186c-w-3i-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 52;
 }
 
-[\:has\(.foo\)] ~ .🧑🏾‍🎤 {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-3i-w-1a-16pq-17td-16po-188u-6bx-16po-186c]:not(.does-not-exist) {
 	order: 53;
 }
 
-.🧑🏾‍🎤>[\:has\(.foo\)] {
+[csstools-has-1a-16pq-17td-16po-188u-6bx-16po-186c-1q-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 54;
 }
 
-[\:has\(.foo\)]>.🧑🏾‍🎤 {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1q-1a-16pq-17td-16po-188u-6bx-16po-186c]:not(.does-not-exist) {
 	order: 55;
 }
 
-.🧑🏾‍🎤 > [\:has\(.foo\)] {
+[csstools-has-1a-16pq-17td-16po-188u-6bx-16po-186c-w-1q-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 56;
 }
 
-[\:has\(.foo\)] > .🧑🏾‍🎤 {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1q-w-1a-16pq-17td-16po-188u-6bx-16po-186c]:not(.does-not-exist) {
 	order: 57;
 }
 
-.🧑🏾‍🎤,[\%20\:has\(.foo\)] {
+.🧑🏾‍🎤, [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 58;
 }
 
-[\:has\(.foo\)], .🧑🏾‍🎤 {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15], .🧑🏾‍🎤 {
 	order: 59;
 }
 
-.foo[\:has\(.foo\)] {
+[csstools-has-1a-2u-33-33-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 60;
 }
 
-[\:has\(.foo\)].foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1a-2u-33-33]:not(.does-not-exist) {
 	order: 61;
 }
 
-.foo [\:has\(.foo\)] {
+[csstools-has-1a-2u-33-33-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 62;
 }
 
-[\:has\(.foo\)] .foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1a-2u-33-33]:not(.does-not-exist) {
 	order: 63;
 }
 
-.foo  [\:has\(.foo\)] {
+[csstools-has-1a-2u-33-33-w-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 64;
 }
 
-[\:has\(.foo\)]  .foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-w-1a-2u-33-33]:not(.does-not-exist) {
 	order: 65;
 }
 
-.foo+[\:has\(.foo\)] {
+[csstools-has-1a-2u-33-33-17-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 66;
 }
 
-[\:has\(.foo\)]+.foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-17-1a-2u-33-33]:not(.does-not-exist) {
 	order: 67;
 }
 
-.foo + [\:has\(.foo\)] {
+[csstools-has-1a-2u-33-33-w-17-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 68;
 }
 
-[\:has\(.foo\)] + .foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-17-w-1a-2u-33-33]:not(.does-not-exist) {
 	order: 69;
 }
 
-.foo~[\:has\(.foo\)] {
+[csstools-has-1a-2u-33-33-3i-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 70;
 }
 
-[\:has\(.foo\)]~.foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-3i-1a-2u-33-33]:not(.does-not-exist) {
 	order: 71;
 }
 
-.foo ~ [\:has\(.foo\)] {
+[csstools-has-1a-2u-33-33-w-3i-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 72;
 }
 
-[\:has\(.foo\)] ~ .foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-3i-w-1a-2u-33-33]:not(.does-not-exist) {
 	order: 73;
 }
 
-.foo>[\:has\(.foo\)] {
+[csstools-has-1a-2u-33-33-1q-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 74;
 }
 
-[\:has\(.foo\)]>.foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1q-1a-2u-33-33]:not(.does-not-exist) {
 	order: 75;
 }
 
-.foo > [\:has\(.foo\)] {
+[csstools-has-1a-2u-33-33-w-1q-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 76;
 }
 
-[\:has\(.foo\)] > .foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1q-w-1a-2u-33-33]:not(.does-not-exist) {
 	order: 77;
 }
 
-.foo,[\%20\:has\(.foo\)] {
+.foo, [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 78;
 }
 
-[\:has\(.foo\)], .foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15], .foo {
 	order: 79;
 }
 
-#foo[\:has\(.foo\)] {
+[csstools-has-z-2u-33-33-1m-2w-2p-37-14-1a-2u-33-33-15]:not(#does-not-exist) {
 	order: 80;
 }
 
-[\:has\(.foo\)]#foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-z-2u-33-33]:not(#does-not-exist) {
 	order: 81;
 }
 
-#foo [\:has\(.foo\)] {
+[csstools-has-z-2u-33-33-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(#does-not-exist) {
 	order: 82;
 }
 
-[\:has\(.foo\)] #foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-z-2u-33-33]:not(#does-not-exist) {
 	order: 83;
 }
 
-#foo  [\:has\(.foo\)] {
+[csstools-has-z-2u-33-33-w-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(#does-not-exist) {
 	order: 84;
 }
 
-[\:has\(.foo\)]  #foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-w-z-2u-33-33]:not(#does-not-exist) {
 	order: 85;
 }
 
-#foo+[\:has\(.foo\)] {
+[csstools-has-z-2u-33-33-17-1m-2w-2p-37-14-1a-2u-33-33-15]:not(#does-not-exist) {
 	order: 86;
 }
 
-[\:has\(.foo\)]+#foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-17-z-2u-33-33]:not(#does-not-exist) {
 	order: 87;
 }
 
-#foo + [\:has\(.foo\)] {
+[csstools-has-z-2u-33-33-w-17-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(#does-not-exist) {
 	order: 88;
 }
 
-[\:has\(.foo\)] + #foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-17-w-z-2u-33-33]:not(#does-not-exist) {
 	order: 89;
 }
 
-#foo~[\:has\(.foo\)] {
+[csstools-has-z-2u-33-33-3i-1m-2w-2p-37-14-1a-2u-33-33-15]:not(#does-not-exist) {
 	order: 90;
 }
 
-[\:has\(.foo\)]~#foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-3i-z-2u-33-33]:not(#does-not-exist) {
 	order: 91;
 }
 
-#foo ~ [\:has\(.foo\)] {
+[csstools-has-z-2u-33-33-w-3i-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(#does-not-exist) {
 	order: 92;
 }
 
-[\:has\(.foo\)] ~ #foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-3i-w-z-2u-33-33]:not(#does-not-exist) {
 	order: 93;
 }
 
-#foo>[\:has\(.foo\)] {
+[csstools-has-z-2u-33-33-1q-1m-2w-2p-37-14-1a-2u-33-33-15]:not(#does-not-exist) {
 	order: 94;
 }
 
-[\:has\(.foo\)]>#foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1q-z-2u-33-33]:not(#does-not-exist) {
 	order: 95;
 }
 
-#foo > [\:has\(.foo\)] {
+[csstools-has-z-2u-33-33-w-1q-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(#does-not-exist) {
 	order: 96;
 }
 
-[\:has\(.foo\)] > #foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1q-w-z-2u-33-33]:not(#does-not-exist) {
 	order: 97;
 }
 
-#foo,[\%20\:has\(.foo\)] {
+#foo, [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 98;
 }
 
-[\:has\(.foo\)], #foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15], #foo {
 	order: 99;
 }
 
-__foo[\:has\(.foo\)] {
+[csstools-has-2n-2n-2u-33-33-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 100;
 }
 
-[\:has\(.foo\)]__foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-2n-2n-2u-33-33]:not(does-not-exist) {
 	order: 101;
 }
 
-__foo [\:has\(.foo\)] {
+[csstools-has-2n-2n-2u-33-33-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 102;
 }
 
-[\:has\(.foo\)] __foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-2n-2n-2u-33-33]:not(does-not-exist) {
 	order: 103;
 }
 
-__foo  [\:has\(.foo\)] {
+[csstools-has-2n-2n-2u-33-33-w-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 104;
 }
 
-[\:has\(.foo\)]  __foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-w-2n-2n-2u-33-33]:not(does-not-exist) {
 	order: 105;
 }
 
-__foo+[\:has\(.foo\)] {
+[csstools-has-2n-2n-2u-33-33-17-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 106;
 }
 
-[\:has\(.foo\)]+__foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-17-2n-2n-2u-33-33]:not(does-not-exist) {
 	order: 107;
 }
 
-__foo + [\:has\(.foo\)] {
+[csstools-has-2n-2n-2u-33-33-w-17-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 108;
 }
 
-[\:has\(.foo\)] + __foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-17-w-2n-2n-2u-33-33]:not(does-not-exist) {
 	order: 109;
 }
 
-__foo~[\:has\(.foo\)] {
+[csstools-has-2n-2n-2u-33-33-3i-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 110;
 }
 
-[\:has\(.foo\)]~__foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-3i-2n-2n-2u-33-33]:not(does-not-exist) {
 	order: 111;
 }
 
-__foo ~ [\:has\(.foo\)] {
+[csstools-has-2n-2n-2u-33-33-w-3i-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 112;
 }
 
-[\:has\(.foo\)] ~ __foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-3i-w-2n-2n-2u-33-33]:not(does-not-exist) {
 	order: 113;
 }
 
-__foo>[\:has\(.foo\)] {
+[csstools-has-2n-2n-2u-33-33-1q-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 114;
 }
 
-[\:has\(.foo\)]>__foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1q-2n-2n-2u-33-33]:not(does-not-exist) {
 	order: 115;
 }
 
-__foo > [\:has\(.foo\)] {
+[csstools-has-2n-2n-2u-33-33-w-1q-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 116;
 }
 
-[\:has\(.foo\)] > __foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1q-w-2n-2n-2u-33-33]:not(does-not-exist) {
 	order: 117;
 }
 
-__foo,[\%20\:has\(.foo\)] {
+__foo, [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 118;
 }
 
-[\:has\(.foo\)], __foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15], __foo {
 	order: 119;
 }
 
-:--foo[\:has\(.foo\)] {
+[csstools-has-1m-19-19-2u-33-33-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 120;
 }
 
-[\:has\(.foo\)]:--foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1m-19-19-2u-33-33]:not(.does-not-exist) {
 	order: 121;
 }
 
-:--foo [\:has\(.foo\)] {
+[csstools-has-1m-19-19-2u-33-33-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 122;
 }
 
-[\:has\(.foo\)] :--foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1m-19-19-2u-33-33]:not(.does-not-exist) {
 	order: 123;
 }
 
-:--foo  [\:has\(.foo\)] {
+[csstools-has-1m-19-19-2u-33-33-w-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 124;
 }
 
-[\:has\(.foo\)]  :--foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-w-1m-19-19-2u-33-33]:not(.does-not-exist) {
 	order: 125;
 }
 
-:--foo+[\:has\(.foo\)] {
+[csstools-has-1m-19-19-2u-33-33-17-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 126;
 }
 
-[\:has\(.foo\)]+:--foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-17-1m-19-19-2u-33-33]:not(.does-not-exist) {
 	order: 127;
 }
 
-:--foo + [\:has\(.foo\)] {
+[csstools-has-1m-19-19-2u-33-33-w-17-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 128;
 }
 
-[\:has\(.foo\)] + :--foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-17-w-1m-19-19-2u-33-33]:not(.does-not-exist) {
 	order: 129;
 }
 
-:--foo~[\:has\(.foo\)] {
+[csstools-has-1m-19-19-2u-33-33-3i-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 130;
 }
 
-[\:has\(.foo\)]~:--foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-3i-1m-19-19-2u-33-33]:not(.does-not-exist) {
 	order: 131;
 }
 
-:--foo ~ [\:has\(.foo\)] {
+[csstools-has-1m-19-19-2u-33-33-w-3i-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 132;
 }
 
-[\:has\(.foo\)] ~ :--foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-3i-w-1m-19-19-2u-33-33]:not(.does-not-exist) {
 	order: 133;
 }
 
-:--foo>[\:has\(.foo\)] {
+[csstools-has-1m-19-19-2u-33-33-1q-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 134;
 }
 
-[\:has\(.foo\)]>:--foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1q-1m-19-19-2u-33-33]:not(.does-not-exist) {
 	order: 135;
 }
 
-:--foo > [\:has\(.foo\)] {
+[csstools-has-1m-19-19-2u-33-33-w-1q-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 136;
 }
 
-[\:has\(.foo\)] > :--foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1q-w-1m-19-19-2u-33-33]:not(.does-not-exist) {
 	order: 137;
 }
 
-:--foo,[\%20\:has\(.foo\)] {
+:--foo, [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 138;
 }
 
-[\:has\(.foo\)], :--foo {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15], :--foo {
 	order: 139;
 }
 
-[foo="baz"][\:has\(.foo\)] {
+[csstools-has-2j-2u-33-33-1p-y-2q-2p-3e-y-2l-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 140;
 }
 
-[\:has\(.foo\)][foo="baz"] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-2j-2u-33-33-1p-y-2q-2p-3e-y-2l]:not(.does-not-exist) {
 	order: 141;
 }
 
-[foo="baz"] [\:has\(.foo\)] {
+[csstools-has-2j-2u-33-33-1p-y-2q-2p-3e-y-2l-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 142;
 }
 
-[\:has\(.foo\)] [foo="baz"] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-2j-2u-33-33-1p-y-2q-2p-3e-y-2l]:not(.does-not-exist) {
 	order: 143;
 }
 
-[foo="baz"]  [\:has\(.foo\)] {
+[csstools-has-2j-2u-33-33-1p-y-2q-2p-3e-y-2l-w-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 144;
 }
 
-[\:has\(.foo\)]  [foo="baz"] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-w-2j-2u-33-33-1p-y-2q-2p-3e-y-2l]:not(.does-not-exist) {
 	order: 145;
 }
 
-[foo="baz"]+[\:has\(.foo\)] {
+[csstools-has-2j-2u-33-33-1p-y-2q-2p-3e-y-2l-17-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 146;
 }
 
-[\:has\(.foo\)]+[foo="baz"] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-17-2j-2u-33-33-1p-y-2q-2p-3e-y-2l]:not(.does-not-exist) {
 	order: 147;
 }
 
-[foo="baz"] + [\:has\(.foo\)] {
+[csstools-has-2j-2u-33-33-1p-y-2q-2p-3e-y-2l-w-17-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 148;
 }
 
-[\:has\(.foo\)] + [foo="baz"] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-17-w-2j-2u-33-33-1p-y-2q-2p-3e-y-2l]:not(.does-not-exist) {
 	order: 149;
 }
 
-[foo="baz"]~[\:has\(.foo\)] {
+[csstools-has-2j-2u-33-33-1p-y-2q-2p-3e-y-2l-3i-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 150;
 }
 
-[\:has\(.foo\)]~[foo="baz"] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-3i-2j-2u-33-33-1p-y-2q-2p-3e-y-2l]:not(.does-not-exist) {
 	order: 151;
 }
 
-[foo="baz"] ~ [\:has\(.foo\)] {
+[csstools-has-2j-2u-33-33-1p-y-2q-2p-3e-y-2l-w-3i-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 152;
 }
 
-[\:has\(.foo\)] ~ [foo="baz"] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-3i-w-2j-2u-33-33-1p-y-2q-2p-3e-y-2l]:not(.does-not-exist) {
 	order: 153;
 }
 
-[foo="baz"]>[\:has\(.foo\)] {
+[csstools-has-2j-2u-33-33-1p-y-2q-2p-3e-y-2l-1q-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 154;
 }
 
-[\:has\(.foo\)]>[foo="baz"] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1q-2j-2u-33-33-1p-y-2q-2p-3e-y-2l]:not(.does-not-exist) {
 	order: 155;
 }
 
-[foo="baz"] > [\:has\(.foo\)] {
+[csstools-has-2j-2u-33-33-1p-y-2q-2p-3e-y-2l-w-1q-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 156;
 }
 
-[\:has\(.foo\)] > [foo="baz"] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1q-w-2j-2u-33-33-1p-y-2q-2p-3e-y-2l]:not(.does-not-exist) {
 	order: 157;
 }
 
-[foo="baz"],[\%20\:has\(.foo\)] {
+[foo="baz"], [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 158;
 }
 
-[\:has\(.foo\)], [foo="baz"] {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15], [foo="baz"] {
 	order: 159;
 }
 
-*[\:has\(.foo\)] {
+[csstools-has-16-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 160;
 }
 
-[\:has\(.foo\)]* {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-16] {
 	order: 161;
 }
 
-* [\:has\(.foo\)] {
+[csstools-has-16-w-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 162;
 }
 
-[\:has\(.foo\)] * {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-16] {
 	order: 163;
 }
 
-*  [\:has\(.foo\)] {
+[csstools-has-16-w-w-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 164;
 }
 
-[\:has\(.foo\)]  * {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-w-16] {
 	order: 165;
 }
 
-*+[\:has\(.foo\)] {
+[csstools-has-16-17-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 166;
 }
 
-[\:has\(.foo\)]+* {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-17-16] {
 	order: 167;
 }
 
-* + [\:has\(.foo\)] {
+[csstools-has-16-w-17-w-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 168;
 }
 
-[\:has\(.foo\)] + * {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-17-w-16] {
 	order: 169;
 }
 
-*~[\:has\(.foo\)] {
+[csstools-has-16-3i-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 170;
 }
 
-[\:has\(.foo\)]~* {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-3i-16] {
 	order: 171;
 }
 
-* ~ [\:has\(.foo\)] {
+[csstools-has-16-w-3i-w-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 172;
 }
 
-[\:has\(.foo\)] ~ * {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-3i-w-16] {
 	order: 173;
 }
 
-*>[\:has\(.foo\)] {
+[csstools-has-16-1q-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 174;
 }
 
-[\:has\(.foo\)]>* {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1q-16] {
 	order: 175;
 }
 
-* > [\:has\(.foo\)] {
+[csstools-has-16-w-1q-w-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 176;
 }
 
-[\:has\(.foo\)] > * {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1q-w-16] {
 	order: 177;
 }
 
-*,[\%20\:has\(.foo\)] {
+*, [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 178;
 }
 
-[\:has\(.foo\)], * {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15], * {
 	order: 179;
 }
 
-:hover[\:has\(.foo\)] {
+[csstools-has-1m-2w-33-3a-2t-36-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 180;
 }
 
-[\:has\(.foo\)]:hover {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1m-2w-33-3a-2t-36]:not(.does-not-exist) {
 	order: 181;
 }
 
-:hover [\:has\(.foo\)] {
+[csstools-has-1m-2w-33-3a-2t-36-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 182;
 }
 
-[\:has\(.foo\)] :hover {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1m-2w-33-3a-2t-36]:not(.does-not-exist) {
 	order: 183;
 }
 
-:hover  [\:has\(.foo\)] {
+[csstools-has-1m-2w-33-3a-2t-36-w-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 184;
 }
 
-[\:has\(.foo\)]  :hover {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-w-1m-2w-33-3a-2t-36]:not(.does-not-exist) {
 	order: 185;
 }
 
-:hover+[\:has\(.foo\)] {
+[csstools-has-1m-2w-33-3a-2t-36-17-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 186;
 }
 
-[\:has\(.foo\)]+:hover {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-17-1m-2w-33-3a-2t-36]:not(.does-not-exist) {
 	order: 187;
 }
 
-:hover + [\:has\(.foo\)] {
+[csstools-has-1m-2w-33-3a-2t-36-w-17-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 188;
 }
 
-[\:has\(.foo\)] + :hover {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-17-w-1m-2w-33-3a-2t-36]:not(.does-not-exist) {
 	order: 189;
 }
 
-:hover~[\:has\(.foo\)] {
+[csstools-has-1m-2w-33-3a-2t-36-3i-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 190;
 }
 
-[\:has\(.foo\)]~:hover {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-3i-1m-2w-33-3a-2t-36]:not(.does-not-exist) {
 	order: 191;
 }
 
-:hover ~ [\:has\(.foo\)] {
+[csstools-has-1m-2w-33-3a-2t-36-w-3i-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 192;
 }
 
-[\:has\(.foo\)] ~ :hover {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-3i-w-1m-2w-33-3a-2t-36]:not(.does-not-exist) {
 	order: 193;
 }
 
-:hover>[\:has\(.foo\)] {
+[csstools-has-1m-2w-33-3a-2t-36-1q-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 194;
 }
 
-[\:has\(.foo\)]>:hover {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1q-1m-2w-33-3a-2t-36]:not(.does-not-exist) {
 	order: 195;
 }
 
-:hover > [\:has\(.foo\)] {
+[csstools-has-1m-2w-33-3a-2t-36-w-1q-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 196;
 }
 
-[\:has\(.foo\)] > :hover {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1q-w-1m-2w-33-3a-2t-36]:not(.does-not-exist) {
 	order: 197;
 }
 
-:hover,[\%20\:has\(.foo\)] {
+:hover, [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 198;
 }
 
-[\:has\(.foo\)], :hover {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15], :hover {
 	order: 199;
 }
 
-::before[\:has\(.foo\)] {
+[csstools-has-1m-1m-2q-2t-2u-33-36-2t-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 200;
 }
 
-[\:has\(.foo\)]::before {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1m-1m-2q-2t-2u-33-36-2t]:not(does-not-exist) {
 	order: 201;
 }
 
-::before [\:has\(.foo\)] {
+[csstools-has-1m-1m-2q-2t-2u-33-36-2t-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 202;
 }
 
-[\:has\(.foo\)] ::before {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1m-1m-2q-2t-2u-33-36-2t]:not(does-not-exist) {
 	order: 203;
 }
 
-::before  [\:has\(.foo\)] {
+[csstools-has-1m-1m-2q-2t-2u-33-36-2t-w-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 204;
 }
 
-[\:has\(.foo\)]  ::before {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-w-1m-1m-2q-2t-2u-33-36-2t]:not(does-not-exist) {
 	order: 205;
 }
 
-::before+[\:has\(.foo\)] {
+[csstools-has-1m-1m-2q-2t-2u-33-36-2t-17-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 206;
 }
 
-[\:has\(.foo\)]+::before {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-17-1m-1m-2q-2t-2u-33-36-2t]:not(does-not-exist) {
 	order: 207;
 }
 
-::before + [\:has\(.foo\)] {
+[csstools-has-1m-1m-2q-2t-2u-33-36-2t-w-17-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 208;
 }
 
-[\:has\(.foo\)] + ::before {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-17-w-1m-1m-2q-2t-2u-33-36-2t]:not(does-not-exist) {
 	order: 209;
 }
 
-::before~[\:has\(.foo\)] {
+[csstools-has-1m-1m-2q-2t-2u-33-36-2t-3i-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 210;
 }
 
-[\:has\(.foo\)]~::before {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-3i-1m-1m-2q-2t-2u-33-36-2t]:not(does-not-exist) {
 	order: 211;
 }
 
-::before ~ [\:has\(.foo\)] {
+[csstools-has-1m-1m-2q-2t-2u-33-36-2t-w-3i-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 212;
 }
 
-[\:has\(.foo\)] ~ ::before {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-3i-w-1m-1m-2q-2t-2u-33-36-2t]:not(does-not-exist) {
 	order: 213;
 }
 
-::before>[\:has\(.foo\)] {
+[csstools-has-1m-1m-2q-2t-2u-33-36-2t-1q-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 214;
 }
 
-[\:has\(.foo\)]>::before {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-1q-1m-1m-2q-2t-2u-33-36-2t]:not(does-not-exist) {
 	order: 215;
 }
 
-::before > [\:has\(.foo\)] {
+[csstools-has-1m-1m-2q-2t-2u-33-36-2t-w-1q-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 216;
 }
 
-[\:has\(.foo\)] > ::before {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15-w-1q-w-1m-1m-2q-2t-2u-33-36-2t]:not(does-not-exist) {
 	order: 217;
 }
 
-::before,[\%20\:has\(.foo\)] {
+::before, [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15] {
 	order: 218;
 }
 
-[\:has\(.foo\)], ::before {
+[csstools-has-1m-2w-2p-37-14-1a-2u-33-33-15], ::before {
 	order: 219;
 }
 
@@ -886,7 +886,7 @@ foo[baz=":has(.foo)"] {
 	order: 221;
 }
 
-[\:not-has\(.foo\)] {
+[csstools-has-1m-32-33-38-14-1m-2w-2p-37-14-1a-2u-33-33-15-15] {
 	order: 222;
 }
 
@@ -894,11 +894,11 @@ foo[baz=":has(.foo)"] {
 	order: 223;
 }
 
-:--[\:has\(.foo\)] {
+[csstools-has-1m-19-19-1m-2w-2p-37-14-1a-2u-33-33-15]:not(.does-not-exist) {
 	order: 224;
 }
 
-__[\:has\(.foo\)] {
+[csstools-has-2n-2n-1m-2w-2p-37-14-1a-2u-33-33-15]:not(does-not-exist) {
 	order: 225;
 }
 

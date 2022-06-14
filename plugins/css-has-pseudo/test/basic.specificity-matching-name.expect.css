@@ -1,0 +1,275 @@
+[csstools-has-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15] {
+	order: 1;
+}
+
+:has(:focus) {
+	order: 1;
+}
+
+[csstools-has-2p-1m-2w-2p-37-14-1q-w-2x-31-2v-15]:not(other-thing-that-does-not-exist):not(other-thing-that-does-not-exist) {
+	order: 2;
+}
+
+a:has(> img) {
+	order: 2;
+}
+
+[csstools-has-2w-1d-1m-2w-2p-37-14-17-w-34-15]:not(other-thing-that-does-not-exist):not(other-thing-that-does-not-exist) {
+	order: 3;
+}
+
+h1:has(+ p) {
+	order: 3;
+}
+
+[csstools-has-2w-1d-1m-2w-2p-37-14-3i-w-34-15]:not(other-thing-that-does-not-exist):not(other-thing-that-does-not-exist) {
+	order: 4;
+}
+
+h1:has(~ p) {
+	order: 4;
+}
+
+[csstools-has-37-2t-2r-38-2x-33-32-1m-32-33-38-14-1m-2w-2p-37-14-2w-1d-18-w-2w-1e-18-w-2w-1f-18-w-2w-1g-18-w-2w-1h-18-w-2w-1i-15-15]:not(other-thing-that-does-not-exist):not(other-thing-that-does-not-exist) {
+	order: 5;
+}
+
+section:not(:has(h1, h2, h3, h4, h5, h6)) {
+	order: 5;
+}
+
+[csstools-has-2q-33-2s-3d-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15]:not(other-thing-that-does-not-exist) {
+	order: 6;
+}
+
+body:has(:focus) {
+	order: 6;
+}
+
+[csstools-has-2q-33-2s-3d-1m-32-33-38-14-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15-15]:not(other-thing-that-does-not-exist) {
+	order: 7;
+}
+
+body:not(:has(:focus)) {
+	order: 7;
+}
+
+:has-ignore(:focus),
+:ignore-has(:focus) {
+	order: 8;
+}
+
+[csstools-has-1m-2w-2p-37-14-1a-2t-37-2r-2k-2k-2k-1m-2p-34-2t-2s-15] {
+	order: 9;
+}
+
+:has(.esc\\\:aped) {
+	order: 9;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-2p-1m-2w-33-3a-2t-36-15]:not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist) {
+	order: 10;
+}
+
+.x:has(> .a:hover) {
+	order: 10;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-z-2p-1m-2w-33-3a-2t-36-15]:not(#other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist) {
+	order: 11;
+}
+
+.x:has(> #a:hover) {
+	order: 11;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-2j-2p-2l-1m-2w-33-3a-2t-36-15]:not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist) {
+	order: 12;
+}
+
+.x:has(> [a]:hover) {
+	order: 12;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-2j-2p-1p-y-2q-y-2l-1m-2w-33-3a-2t-36-15]:not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist) {
+	order: 13;
+}
+
+.x:has(> [a="b"]:hover) {
+	order: 13;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-2j-2p-1p-y-1m-2w-2p-37-14-1a-3c-15-y-2l-1m-2w-33-3a-2t-36-15]:not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist) {
+	order: 14;
+}
+
+.x:has(> [a=":has(.x)"]:hover) {
+	order: 14;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-2j-2k-1m-2w-2p-37-2k-14-2k-11-1f-1x-2k-11-1e-1c-2k-1a-2p-2k-1m-2w-33-3a-2t-36-2k-15-2l-1m-2w-33-3a-2t-36-15]:not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist) {
+	order: 15;
+}
+
+.x:has(> [\:has\(\%3E\%20\.a\:hover\)]:hover) {
+	order: 15;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1m-1m-2q-2t-2u-33-36-2t-1m-2w-33-3a-2t-36-15]:not(.other-thing-that-does-not-exist):not(other-thing-that-does-not-exist) {
+	order: 16; /* not allowed by spec but encoding should work */
+}
+
+.x:has(> ::before:hover) {
+	order: 16; /* not allowed by spec but encoding should work */
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-2p-1m-2w-2p-37-14-w-17-w-1a-2q-15-15]:not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist) {
+	order: 17;
+}
+
+.x:has(> .a:has( + .b)) {
+	order: 17;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-2n-2n-2u-33-33-15]:not(other-thing-that-does-not-exist) {
+	order: 18;
+}
+
+.x:has(> __foo) {
+	order: 18;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1m-19-19-2u-33-33-15]:not(.other-thing-that-does-not-exist) {
+	order: 19;
+}
+
+.x:has(> :--foo) {
+	order: 19;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-16-15] {
+	order: 20;
+}
+
+.x:has(> *) {
+	order: 20;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-3d-w-16-15]:not(.other-thing-that-does-not-exist) {
+	order: 21;
+}
+
+.x:has(> .y *) {
+	order: 21;
+}
+
+[csstools-has-1a-2p-1m-32-33-38-14-1m-2w-2p-37-14-1q-w-1a-2q-15-15]:not(.other-thing-that-does-not-exist) {
+	order: 22;
+}
+
+.a:not(:has(> .b)) {
+	order: 22;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-3i-w-1a-3d-1m-2w-2p-37-14-1a-2v-w-1a-2w-15-w-1a-2x-15]:not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist) {
+	order: 23;
+}
+
+.x:has(~ .y:has(.g .h) .i) {
+	order: 23;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-2p-15-w-3i-w-1a-3c-1m-2w-2p-37-14-1q-w-1a-2q-15]:not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist) {
+	order: 24;
+}
+
+.x:has(> .a) ~ .x:has(> .b) {
+	order: 24;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-2p-15-w-1a-2q]:not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist) {
+	order: 24;
+}
+
+.x:has(> .a) .b {
+	order: 24;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-16pq-17td-16po-188u-6bx-16po-186c-15]:not(.other-thing-that-does-not-exist) {
+	order: 25;
+}
+
+.x:has(> .🧑🏾‍🎤) {
+	order: 25;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-2p-15]:not(.other-thing-that-does-not-exist), [csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-2q-15]:not(.other-thing-that-does-not-exist) {
+	order: 26;
+}
+
+.x:has(> .a), .x:has(> .b) {
+	order: 26;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-2p-15-w-3i-w-1a-3c-1m-2w-2p-37-14-1q-w-1a-2q-15]:not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist):not(.other-thing-that-does-not-exist) {
+	order: 27;
+}
+
+.x:has(> .a) ~ .x:has(> .b) {
+	order: 27;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-2p-15]:not(.other-thing-that-does-not-exist), .b {
+	order: 28;
+}
+
+.x:has(> .a), .b {
+	order: 28;
+}
+
+.a, [csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-2q-15]:not(.other-thing-that-does-not-exist) {
+	order: 29;
+}
+
+.a, .x:has(> .b) {
+	order: 29;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-2q-w-16-15]:not(.other-thing-that-does-not-exist) {
+	order: 30;
+}
+
+.x:has(> .b *) {
+	order: 30;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1a-33-38-2w-2t-36-19-38-2w-2x-32-2v-19-38-2w-2p-38-19-2s-33-2t-37-19-32-33-38-19-2t-3c-2x-37-38-15]:not(.other-thing-that-does-not-exist) {
+	order: 31;
+}
+
+.x:has(> :visited) {
+	order: 31;
+}
+
+[csstools-has-1a-3c-1m-2w-2p-37-14-1q-w-1m-30-2x-32-2z-15]:not(.other-thing-that-does-not-exist) {
+	order: 31;
+}
+
+.x:has(> :any-link) {
+	order: 31;
+}
+
+@supports selector(:has(:focus)) {
+	:has(:focus) {
+		order: 32;
+	}
+}
+
+@supports (display: grid) {
+	[csstools-has-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15] {
+		order: 33;
+	}
+	:has(:focus) {
+		order: 33;
+	}
+}
