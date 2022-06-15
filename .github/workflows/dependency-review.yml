@@ -13,4 +13,4 @@ jobs:
         with:
           fail-on-severity: low
           # Possible values: Any `spdx_id` value(s) from https://docs.github.com/en/rest/licenses
-          allow-licenses: CC0-1.0
+          allow-licenses: BSD-3-Clause
