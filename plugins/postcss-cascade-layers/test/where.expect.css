@@ -1,0 +1,11 @@
+:where(.foo):not(#\#):not(#\#) {
+	color: green;
+}
+
+:where(.foo):not(#\#) {
+		color: orange;
+	}
+
+:where(.foo) {
+		color: red;
+	}
