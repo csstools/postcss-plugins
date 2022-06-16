@@ -1,4 +1,4 @@
-@import "base/media-queries.css" layer(base);
+@import "base/media-queries.css";
 
 @import "base/variables.css" layer(base);
 @import "base/utilities.css" layer(base);
