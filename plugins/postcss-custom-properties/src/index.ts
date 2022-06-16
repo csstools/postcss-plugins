@@ -7,9 +7,6 @@ import transformProperties from './lib/transform-properties';
 import writeCustomPropertiesToExports from './lib/write-custom-properties-to-exports';
 import type { ImportOptions, ExportOptions } from './lib/options';
 
-/**
- * @license YOU-CANT-USE-THIS
- */
 export interface PluginOptions {
 	/** Do not emit warnings about "importFrom" and "exportTo" deprecations */
 	disableDeprecationNotice?: boolean;
