@@ -94,7 +94,7 @@ const allFiles = (await getFiles('./')).filter((file) => {
 		withLicense.set(file, parseLicenseField(packageJson.license));
 
 		parseLicenseField(packageJson.license).forEach((license) => {
-			if (osiApprovedWithCCO.includes(license)) {
+			if (osiApprovedWithCCO.includes(license) || licenseIsOkByException(file, license)) {
 				return;
 			}
 
