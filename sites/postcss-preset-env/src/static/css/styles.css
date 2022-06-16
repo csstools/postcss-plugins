@@ -1,11 +1,12 @@
-@import "base/media-queries.css";
+@import "base/media-queries.css" layer(base);
 
-@import "base/variables.css";
-@import "base/utilities.css";
+@import "base/variables.css" layer(base);
+@import "base/utilities.css" layer(base);
+@import "_global.css" layer(base);
 
-@import "_global.css";
-@import "_nav.css";
-@import "_prism.css";
-@import "pages/_landing.css";
-@import "pages/_playground.css";
-@import "pages/_features.css";
+@import "_nav.css" layer(components);
+@import "_prism.css" layer(components);
+
+@import "pages/_landing.css" layer(layout);
+@import "pages/_playground.css" layer(layout);
+@import "pages/_features.css" layer(layout);
