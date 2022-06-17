@@ -33,11 +33,11 @@ export default function getUnsupportedBrowsersByFeature(feature) {
 	const query = [];
 
 	browsers.forEach(browser => {
-		// if (browser === 'op_mini' && (typeof feature.browser_support[browser] === 'undefined')) {
-		// 	// Opera Mini is always "op_mini all"
-		// 	query.push('op_mini all');
-		// 	return;
-		// }
+		if (browser === 'op_mini' && (typeof feature.browser_support[browser] === 'undefined')) {
+			// Opera Mini is always "op_mini all"
+			query.push('op_mini all');
+			return;
+		}
 
 		const browserSupport = feature.browser_support[browser];
 		// Browser support info must be a valid version.
