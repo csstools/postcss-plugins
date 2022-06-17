@@ -38,7 +38,37 @@ It applies extra specificity on all your styles based on :
 - the most specific selector found
 - the order in which layers are defined
 
-for `@layer A, B, C`:
+```css
+@layer A, B;
+
+@layer B {
+	.a-less-specific-selector {
+		/* styles */
+	}
+}
+
+@layer A {
+	#something #very-specific {
+		/* styles */
+	}
+}
+
+@layer C {
+	.a-less-specific-selector {
+		/* styles */
+	}
+}
+```
+
+most specific selector :
+- `#something #very-specific`
+- `[2, 0, 0]`
+- `2 + 1` -> `3` to ensure there is no overlap
+
+the order in which layers are defined :
+- `A`
+- `B`
+- `C`
 
 | layer | specificity adjustment | selector |
 | ------ | ----------- | --- |
