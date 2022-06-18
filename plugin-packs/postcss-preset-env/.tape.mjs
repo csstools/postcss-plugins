@@ -57,6 +57,13 @@ postcssTape(plugin)({
 			browsers: 'safari >= 15'
 		}
 	},
+	'basic:op_mini': {
+		message: 'supports { browsers: "op_mini all" } usage',
+		options: {
+			stage: 0,
+			browsers: 'op_mini all'
+		}
+	},
 	'basic:ch88-ff78:no-is-pseudo': {
 		message: ':is pseudo for nesting can be disable with modern browsers { browsers: "chrome >= 88, firefox >= 78", stage: 0, features: { nesting-rules: { noIsPseudoSelector: true } } } usage',
 		options: {
