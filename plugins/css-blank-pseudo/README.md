@@ -1,104 +1,94 @@
-# CSS Blank Pseudo [<img src="http://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][CSS Blank Pseudo]
+# PostCSS Blank Pseudo [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![NPM Version][npm-img]][npm-url]
-[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-blank-pseudo.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/TODO.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-[CSS Blank Pseudo] lets you style form elements when they are empty, following
-the [Selectors Level 4] specification.
+[PostCSS Blank Pseudo] lets you easily create new plugins following some [CSS Specification].
 
-```css
-input {
-  /* style an input */
+```pcss
+.foo {
+	color: red;
 }
 
-input:blank {
-  /* style an input without a value */
+.baz {
+	color: green;
+}
+
+/* becomes */
+
+.foo {
+	color: blue;
+}
+
+.baz {
+	color: green;
 }
 ```
 
 ## Usage
 
-From the command line, transform CSS files that use `:blank` selectors:
+Add [PostCSS Blank Pseudo] to your project:
 
 ```bash
-npx css-blank-pseudo SOURCE.css --output TRANSFORMED.css
+npm install postcss @csstools/postcss-blank-pseudo --save-dev
 ```
 
-Next, use your transformed CSS with this script:
+Use it as a [PostCSS] plugin:
 
-```html
-<link rel="stylesheet" href="TRANSFORMED.css">
-<script src="https://unpkg.com/css-blank-pseudo/dist/browser-global.js"></script>
-<script>cssBlankPseudo(document)</script>
+```js
+const postcss = require('postcss');
+const postcssBasePlugin = require('@csstools/postcss-blank-pseudo');
+
+postcss([
+	postcssBasePlugin(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-⚠️ Please use a versioned url, like this : `https://unpkg.com/css-blank-pseudo@3.0.0/dist/browser-global.js`
-Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+[PostCSS Blank Pseudo] runs in all Node environments, with special
+instructions for:
 
-⚠️ If you were using an older version via a CDN, please update the entire url.
-The old URL will no longer work in a future release.
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
-That’s it. The script works in most browsers.
+## Options
 
-## How it works
+### preserve
 
-The [PostCSS plugin](README-POSTCSS.md) clones rules containing `:blank`,
-replacing them with an alternative `[blank]` selector.
+The `preserve` option determines whether the original notation
+is preserved. By default, it is not preserved.
 
-```css
-input:blank {
-  background-color: yellow;
+```js
+postcssBasePlugin({ preserve: true })
+```
+
+```pcss
+.foo {
+	color: red;
+}
+
+.baz {
+	color: green;
 }
 
 /* becomes */
 
-input[blank] {
-  background-color: yellow;
+.foo {
+	color: blue;
+	color: red;
 }
 
-input:blank {
-  background-color: yellow;
-}
-```
-
-Next, the [JavaScript library](README-BROWSER.md) adds a `blank` attribute to
-elements otherwise matching `:blank` natively.
-
-```html
-<input value="" blank>
-<input value="This element has a value">
-```
-
-## ⚠️ `:not(:blank)`
-
-with option : `preserve` `true`
-
-```css
-input:not(:blank) {
-  background-color: yellow;
-}
-
-/* becomes */
-
-input:not([blank]) {
-  background-color: yellow;
-}
-
-input:not(:blank) {
-  background-color: yellow;
+.baz {
+	color: green;
 }
 ```
 
-When you do not include the JS polyfill one will always match in browsers that support `:blank` natively.
-In browsers that do not support `:blank` natively the rule will be invalid.
-
-_currently no browsers support `:blank`_
-
-
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+[css-url]: https://cssdb.org/#TODO
 [discord]: https://discord.gg/bUadyRwkJS
-[npm-img]: https://img.shields.io/npm/v/css-blank-pseudo.svg
-[npm-url]: https://www.npmjs.com/package/css-blank-pseudo
+[npm-url]: https://www.npmjs.com/package/@csstools/postcss-blank-pseudo
 
-[CSS Blank Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo
-[PostCSS Preset Env]: https://preset-env.cssdb.org/
-[Selectors Level 4]: https://drafts.csswg.org/selectors-4/#blank
+[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
+[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
+[PostCSS]: https://github.com/postcss/postcss
+[PostCSS Loader]: https://github.com/postcss/postcss-loader
+[PostCSS Blank Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-blank-pseudo
+[CSS Specification]: #TODO

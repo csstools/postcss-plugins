@@ -24,4 +24,28 @@ postcssTape(plugin)({
 			preserve: false
 		}
 	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-false': {
+		message: 'minimal example',
+		options: {
+			preserve: false
+		}
+	},
+	'examples/example:replacewith': {
+		message: 'minimal example',
+		options: {
+			replaceWith: '.css-blank'
+		}
+	},
+	'browser': {
+		message: 'css for browser tests',
+	},
+	'browser:replacewith': {
+		message: 'css for browser tests',
+		options: {
+			replaceWith: '.css-blank'
+		}
+	},
 });

@@ -1,5 +1,26 @@
 # Changes to CSS Blank Pseudo
 
+### Unreleased (major)
+
+- Breaking: removed old CDN urls
+- Breaking: removed old CLI
+
+#### How to migrate:
+
+- If you use a CDN url, please update it.
+- Re-build your CSS with the new version of the library.
+
+```diff
+- <script src="https://unpkg.com/css-blank-pseudo/browser"></script>
+- <script src="https://unpkg.com/css-blank-pseudo/browser.min"></script>
++ <script src="https://unpkg.com/css-blank-pseudo/dist/browser-global.js"></script>
+```
+
+```diff
+- cssBlankPseudo(document)
++ cssBlankPseudoInit()
+```
+
 ### 3.0.3 (February 5, 2022)
 
 - Rebuild of browser polyfills
