@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased
+
+- Fix `op_mini all` not working as a browser list.
+
 ### 7.7.1 (June 3, 2022)
 
 - Updated `postcss-selector-not` to `6.0.0` (major)

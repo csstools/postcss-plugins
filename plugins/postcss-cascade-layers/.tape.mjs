@@ -52,6 +52,9 @@ postcssTape(plugin)({
 			plugin(),
 		]
 	},
+	'where': {
+		message: "works with zero specificity selectors",
+	},
 	'specificity-buckets-a': {
 		message: "creates non overlapping specificity buckets",
 	},
