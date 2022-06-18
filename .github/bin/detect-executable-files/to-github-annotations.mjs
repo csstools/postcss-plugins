@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 const data = fs.readFileSync(0, 'utf-8');
 let fileNames = data.split(/\r?\n/);
 
