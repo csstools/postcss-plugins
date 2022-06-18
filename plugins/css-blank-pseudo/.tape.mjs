@@ -17,11 +17,11 @@ postcssTape(plugin)({
 			preserve: false
 		}
 	},
-	'generated-selector-cases': {
-		message: 'correctly handles generated cases',
+	'basic:wrong-replacewith': {
+		message: 'correctly warns when replace with is invalid',
 		warnings: 1,
 		options: {
-			preserve: false
+			replaceWith: '#css-blank'
 		}
 	},
 	'examples/example': {

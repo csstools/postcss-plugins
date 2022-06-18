@@ -1,4 +1,4 @@
-input[blank] {
+input.css-blank {
 	background-color: yellow;
 }
 input:blank {

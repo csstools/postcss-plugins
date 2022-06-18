@@ -1,6 +1,6 @@
-input[blank] {
+.css-blank {
 	background-color: yellow;
 }
-input:blank {
+:blank {
 	background-color: yellow;
 }
