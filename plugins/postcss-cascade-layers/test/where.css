@@ -1,0 +1,17 @@
+@layer default, override;
+
+:where(.foo) {
+	color: green;
+}
+
+@layer override {
+	:where(.foo) {
+		color: orange;
+	}
+}
+
+@layer default {
+	:where(.foo) {
+		color: red;
+	}
+}
