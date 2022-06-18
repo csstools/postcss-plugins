@@ -1,7 +1,8 @@
+import type { PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
 import { selectorSpecificity } from '@csstools/selector-specificity';
 import encodeCSS from './encode/encode.mjs';
-import type { PluginCreator } from 'postcss';
+import { isGuardedByAtSupportsFromAtRuleParams } from './is-guarded-by-at-supports.js';
 
 const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: string }> = (opts?: { preserve?: boolean, specificityMatchingName?: string }) => {
 	const options = {
@@ -90,10 +91,10 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 				return;
 			}
 
-			if (options.preserve) {
-				rule.cloneBefore({ selectors: selectors });
-			} else {
-				rule.selectors = selectors;
+			rule.cloneBefore({ selectors: selectors });
+
+			if (!options.preserve) {
+				rule.remove();
 			}
 		},
 	};
@@ -104,17 +105,18 @@ creator.postcss = true;
 export default creator;
 
 function isWithinSupportCheck(rule) {
-	let isSupportCheck = false;
 	let ruleParent = rule.parent;
 
-	while (!isSupportCheck && ruleParent) {
-		if (ruleParent.type === 'atrule') {
-
-			isSupportCheck = ruleParent.params.includes(':has(') && ruleParent.params.startsWith('selector(');
+	while (ruleParent) {
+		if (
+			ruleParent.type === 'atrule' &&
+			isGuardedByAtSupportsFromAtRuleParams(ruleParent.params)
+		) {
+			return true;
 		}
 
 		ruleParent = ruleParent.parent;
 	}
 
-	return isSupportCheck;
+	return false;
 }

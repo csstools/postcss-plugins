@@ -142,3 +142,9 @@ body:not(:has(:focus)) {
 		order: 33;
 	}
 }
+
+@supports (display: grid) and selector(  :has(  :focus)) {
+	:has(:focus) {
+		order: 34;
+	}
+}
