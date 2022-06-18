@@ -171,13 +171,6 @@
 
 @custom-media --dark-mode (prefers-color-scheme: dark);
 
-@media (color-index: 48) {
-	body {
-		background-color: black;
-		color: white;
-	}
-}
-
 @media (color: 48842621) {
 	body {
 		background-color: black;
