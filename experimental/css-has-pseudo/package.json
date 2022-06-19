@@ -44,7 +44,7 @@
 	},
 	"devDependencies": {
 		"@mrhenry/core-web": "^0.7.2",
-		"puppeteer": "^13.6.0"
+		"puppeteer": "^14.4.1"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
