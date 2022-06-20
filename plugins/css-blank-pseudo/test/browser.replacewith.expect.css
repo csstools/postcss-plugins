@@ -1,6 +1,13 @@
-.css-blank {
-	background-color: yellow;
+input,
+select,
+textarea {
+	background-color: rgb(255, 192, 203);
 }
+
+.css-blank {
+	background-color: rgb(128, 0, 128);
+}
+
 :blank {
-	background-color: yellow;
+	background-color: rgb(128, 0, 128);
 }

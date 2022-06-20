@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="help" href=https://www.w3.org/TR/selectors-4/#blank">
+	<link rel="stylesheet" href="/test/browser.expect.css">
+	<script src="/dist/browser-global.js"></script>
+	<script>self._cssBlankPseudoInit = cssBlankPseudoInit</script>
+</head>
+<body>
+	<input type="tel" id="tel-input" aria-label="">
+	<input type="text" id="text-input" aria-label="" value="something">
+	<input type="number" id="number-input" aria-label="">
+	<input type="password" id="password-input" aria-label="">
+	<textarea id="textarea" aria-label=""></textarea>
+	<select id="select" aria-label="">
+		<option value="">Empty</option>
+		<option value="non-empty">Non Empty</option>
+	</select>
+
+	<script type="module">
+		function rafP(callback) {
+			return new Promise((resolve) => {
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						callback();
+						resolve();
+					});
+				});
+			});
+		}
+
+		self.runTest = async function runTest() {
+			self._cssBlankPseudoInit();
+			return await testBlank();
+		}
+
+		async function testBlank() {
+			const purple = 'rgb(128, 0, 128)';
+			const tel = document.getElementById('tel-input');
+			const text = document.getElementById('text-input');
+			const number = document.getElementById('number-input');
+			const password = document.getElementById('password-input');
+			const textarea = document.getElementById('textarea');
+			const select = document.getElementById('select');
+
+			function isBlank(element) {
+				const containsAttribute = element.hasAttribute('blank') || element.classList.contains('css-blank');
+				const background = getComputedStyle(element).backgroundColor;
+
+				return containsAttribute && background === purple;
+			}
+
+			function isNotBlank(element) {
+				return !isBlank(element);
+			}
+
+			function testBlank(test_name, element, shouldBeBlank) {
+				const testFunction = shouldBeBlank ? isBlank : isNotBlank;
+				const wording = shouldBeBlank ? 'to be' : 'not to be';
+				const result = testFunction(element);
+
+				if (result !== true) {
+					throw new Error(test_name + ': ' + element.id + ' expected ' + wording + ' blank');
+				}
+			}
+
+			await rafP(() => {
+				testBlank('on load', tel, true);
+				testBlank('on load', text, false);
+				testBlank('on load', number, true);
+				testBlank('on load', password, true);
+				testBlank('on load', textarea, true);
+				testBlank('on load', select, true);
+			});
+
+			return true;
+		}
+	</script>
+</body>
+</html>

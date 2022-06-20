@@ -1,8 +1,8 @@
 /* global document,MutationObserver */
-import isValidReplacement from './is-valid-replacement.mjs';
+import isValidReplacement from './is-valid-replacement.js';
 
 // form control elements selector
-const selector = 'input,select,textarea';
+const BLANK_CANDIDATES = 'input,select,textarea';
 
 function createNewEvent(eventName) {
 	let event;
@@ -30,14 +30,14 @@ function generateHandler(replaceWith) {
 		add = (el) => el.classList.add(selector);
 	} else {
 		// A bit naive
-		selector = replaceWith(1, -1);
-		remove = (el) => el.setAttribute(selector, '');
-		add = (el) => el.removeAttribute(selector);
+		selector = replaceWith.slice(1, -1);
+		remove = (el) => el.removeAttribute(selector, '');
+		add = (el) => el.setAttribute(selector, '');
 	}
 
 	return function handleInputOrChangeEvent(event) {
 		const element = event.target;
-		if (!element[matches](selector)) {
+		if (!element[matches](BLANK_CANDIDATES)) {
 			return;
 		}
 
@@ -82,7 +82,7 @@ function observeValueOfHTMLElement(HTMLElement, handler) {
 	Object.defineProperty(HTMLElement.prototype, 'value', descriptor);
 }
 
-export default function cssBlankPseudoInit(document, opts) {
+export default function cssBlankPseudoInit(opts) {
 	// configuration
 	const options = Object.assign(
 		// Default options
@@ -121,7 +121,7 @@ export default function cssBlankPseudoInit(document, opts) {
 
 	// conditionally update all form control elements
 	Array.prototype.forEach.call(
-		document.querySelectorAll(selector),
+		document.querySelectorAll(BLANK_CANDIDATES),
 		node => {
 			handler({ target: node });
 		},
@@ -134,7 +134,8 @@ export default function cssBlankPseudoInit(document, opts) {
 				Array.prototype.forEach.call(
 					mutation.addedNodes || [],
 					node => {
-						if (node.nodeType === 1 && node.matches(selector)) {
+						// Matches isn't polyfilled here since IE9 doesn't have support for MO
+						if (node.nodeType === 1 && node.matches(BLANK_CANDIDATES)) {
 							handler({ target: node });
 						}
 					},
