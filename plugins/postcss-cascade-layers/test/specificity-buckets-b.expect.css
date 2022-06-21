@@ -26,10 +26,10 @@ foo:not(#\#):not(#\#):not(#\#):not(#\#) {
 		bucket: 3;
 	}
 
-#foo #fooz:not(#\#):not(#\#):not(#\#):not(#\#) {
+#foo:not(#\#):not(#\#):not(#\#):not(#\#) #fooz {
 		bucket: 3;
 	}
 
-#foo #fooz #foos:not(#\#):not(#\#):not(#\#):not(#\#) {
+#foo:not(#\#):not(#\#):not(#\#):not(#\#) #fooz #foos {
 		bucket: 3;
 	}

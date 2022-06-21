@@ -1,0 +1,27 @@
+::-csstools-invalid-after:hover {
+	order: 1.0;
+}
+
+.some:focus {
+	order: 1.1;
+}
+
+::-csstools-invalid-after:not(.does-not-exist):focus {
+	order: 1.1;
+}
+
+.some:focus {
+	order: 1.2;
+}
+
+.other:focus {
+	order: 1.2;
+}
+
+::-csstools-invalid-after:not(.does-not-exist):focus {
+	order: 1.2;
+}
+
+:not(::-csstools-invalid-after):focus {
+	order: 1.3;
+}

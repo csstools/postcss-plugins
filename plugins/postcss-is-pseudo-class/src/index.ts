@@ -20,17 +20,28 @@ const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning'
 			}
 
 			// Because of loops and recursion we try to only warn once per selector.
-			let didWarn = false;
+			let didWarnForComplexSelectors = false;
 			const warnOnComplexSelector = () => {
 				if (options.onComplexSelector !== 'warning') {
 					return;
 				}
-				if (didWarn) {
+				if (didWarnForComplexSelectors) {
 					return;
 				}
 
-				didWarn = true;
+				didWarnForComplexSelectors = true;
 				rule.warn(result, `Complex selectors in '${rule.selector}' can not be transformed to an equivalent selector without ':is()'.`);
+			};
+
+			// Because of loops and recursion we try to only warn once per selector.
+			let didWarnForPseudoElements = false;
+			const warnOnPseudoElements = () => {
+				if (didWarnForPseudoElements) {
+					return;
+				}
+
+				didWarnForPseudoElements = true;
+				rule.warn(result, `Pseudo elements are not allowed in ':is()', unable to transform '${rule.selector}'`);
 			};
 
 			try {
@@ -52,6 +63,7 @@ const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning'
 						onComplexSelector: options.onComplexSelector,
 					},
 					warnOnComplexSelector,
+					warnOnPseudoElements,
 				);
 
 				// 3. Remove duplicates.

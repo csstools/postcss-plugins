@@ -358,23 +358,23 @@ a:not(.does-not-exist) {
 	order: 24;
 }
 
-a:hover::before {
+a:hover {
 	order: 25;
 }
 
-a:focus:not(does-not-exist) {
+a:focus {
 	order: 25;
 }
 
-button:hover::before {
+button:hover {
 	order: 25;
 }
 
-button:focus:not(does-not-exist) {
+button:focus {
 	order: 25;
 }
 
-:is(a, button):is(:hover::before, :focus) {
+:is(a, button):is(:hover, :focus) {
 	order: 25;
 }
 
@@ -398,23 +398,23 @@ button:focus::before {
 	order: 26;
 }
 
-a:hover:before {
+a:hover {
 	order: 27;
 }
 
-a:focus:not(does-not-exist) {
+a:focus {
 	order: 27;
 }
 
-button:hover:before {
+button:hover {
 	order: 27;
 }
 
-button:focus:not(does-not-exist) {
+button:focus {
 	order: 27;
 }
 
-:is(a, button):is(:hover:before, :focus) {
+:is(a, button):is(:hover, :focus) {
 	order: 27;
 }
 
@@ -450,22 +450,26 @@ button:focus:before {
 	order: 29;
 }
 
-:not(.does-not-exist):hover::after {
+::before:hover {
 	order: 30;
 }
 
-:not(.does-not-exist):focus::after {
+::before:focus {
 	order: 30;
 }
 
-.foo:hover {
+::before:is(:hover, :focus) {
 	order: 30;
 }
 
-.foo:focus {
-	order: 30;
+:hover::after {
+	order: 31;
 }
 
-:is(::after, .foo):is(:hover, :focus) {
-	order: 30;
+:focus::after {
+	order: 31;
+}
+
+:is(:hover, :focus)::after {
+	order: 31;
 }

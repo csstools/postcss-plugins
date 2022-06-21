@@ -38,12 +38,16 @@ postcssTape(plugin)({
 	},
 	'generated-selector-class-function-cases': {
 		message: "supports generated selector class function cases",
-		warnings: 1,
+		warnings: 11,
 		options: {
 			preserve: true
 		}
 	},
 	example: {
 		message: "minimal example",
+	},
+	'pseudo-element-warning': {
+		message: "warns when pseudo elements are found",
+		warnings: 4,
 	},
 });

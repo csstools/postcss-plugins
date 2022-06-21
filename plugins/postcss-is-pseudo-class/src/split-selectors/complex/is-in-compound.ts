@@ -1,3 +1,5 @@
+import parser from 'postcss-selector-parser';
+
 // .a:-csstools-matches(.b > .c)
 // equivalent to
 // .b > .c.a
@@ -38,7 +40,9 @@ export function isInCompoundWithOneOtherElement(selector): boolean {
 	}
 
 	if (selector.nodes[simpleSelectorIndex].type === 'selector') {
-		if (selector.nodes[simpleSelectorIndex].some((x) => x.type === 'combinator')) {
+		if (selector.nodes[simpleSelectorIndex].some((x) => {
+			return x.type === 'combinator' || parser.isPseudoClass(x);
+		})) {
 			return false;
 		}
 	}
