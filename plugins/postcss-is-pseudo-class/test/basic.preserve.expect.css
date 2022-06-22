@@ -473,3 +473,55 @@ button:focus:before {
 :is(:hover, :focus)::after {
 	order: 31;
 }
+
+ol:hover > li.foo {
+	order: 32
+}
+
+ol:hover > li.bar {
+	order: 32
+}
+
+ol:focus > li.foo {
+	order: 32
+}
+
+ol:focus-visible > li.foo {
+	order: 32
+}
+
+ol:focus > li.bar {
+	order: 32
+}
+
+ol:focus-visible > li.bar {
+	order: 32
+}
+
+ul:hover > li.foo {
+	order: 32
+}
+
+ul:hover > li.bar {
+	order: 32
+}
+
+ul:focus > li.foo {
+	order: 32
+}
+
+ul:focus-visible > li.foo {
+	order: 32
+}
+
+ul:focus > li.bar {
+	order: 32
+}
+
+ul:focus-visible > li.bar {
+	order: 32
+}
+
+:is(ol, ul):is(:hover, :is(:focus, :focus-visible)) > li:is(.foo, .bar) {
+	order: 32
+}
