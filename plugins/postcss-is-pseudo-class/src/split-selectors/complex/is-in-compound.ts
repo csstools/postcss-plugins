@@ -41,7 +41,7 @@ export function isInCompoundWithOneOtherElement(selector): boolean {
 
 	if (selector.nodes[simpleSelectorIndex].type === 'selector') {
 		if (selector.nodes[simpleSelectorIndex].some((x) => {
-			return x.type === 'combinator' || parser.isPseudoClass(x);
+			return x.type === 'combinator' || parser.isPseudoElement(x);
 		})) {
 			return false;
 		}

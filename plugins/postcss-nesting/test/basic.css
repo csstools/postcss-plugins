@@ -148,10 +148,38 @@ a {
 	@nest ::before& {
 		order: 71;
 	}
+
+	@nest ::before & {
+		order: 71.1;
+	}
 }
 
 .pseudo-element {
 	@nest :before& {
 		order: 72;
+	}
+
+	@nest :before & {
+		order: 72.1;
+	}
+}
+
+.pseudo-element {
+	@nest &::after {
+		order: 73;
+	}
+
+	@nest & ::after {
+		order: 73.1;
+	}
+}
+
+.pseudo-element {
+	@nest &:after {
+		order: 74;
+	}
+
+	@nest & :after {
+		order: 74.1;
 	}
 }

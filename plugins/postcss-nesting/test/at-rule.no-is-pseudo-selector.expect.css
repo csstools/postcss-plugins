@@ -34,7 +34,7 @@ a[foo="& ,\'"] {
 a[a="& ,\'"][b='& . \\a &'] {
 		order: 7
 }
-a\\foo {
+a:is(\\foo) {
 		order: 8
 }
 
