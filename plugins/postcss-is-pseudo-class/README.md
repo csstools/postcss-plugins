@@ -140,10 +140,24 @@ postcss([
 
 Warn when pseudo elements are used in `:is` pseudo class functions.
 
+⚠️ Pseudo elements are always invalid and will be transformed to `::-csstools-invalid-<pseudo-name>`.
+
 ```js
 postcss([
   postcssIsPseudoClass({ onPseudoElement: 'warning' })
 ]).process(YOUR_CSS /*, processOptions */);
+```
+
+```css
+:is(::after):hover {
+	order: 1.0;
+}
+
+/* becomes */
+
+::-csstools-invalid-after:hover {
+	order: 1.0;
+}
 ```
 
 ## ⚠️ Known shortcomings

@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased
+
+- Fix selector order with any pseudo element.
+
 ### 10.1.8 (June 4, 2022)
 
 - Update `@csstools/selector-specificity` (major)
