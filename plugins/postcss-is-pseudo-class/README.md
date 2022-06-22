@@ -128,11 +128,21 @@ button:not(.something-random):hover {
 
 ### onComplexSelector
 
-Warn on complex selectors in `:is` pseudo classes.
+Warn on complex selectors in `:is` pseudo class functions.
 
 ```js
 postcss([
   postcssIsPseudoClass({ onComplexSelector: 'warning' })
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+### onPseudoElement
+
+Warn when pseudo elements are used in `:is` pseudo class functions.
+
+```js
+postcss([
+  postcssIsPseudoClass({ onPseudoElement: 'warning' })
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
