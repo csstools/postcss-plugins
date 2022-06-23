@@ -88,7 +88,7 @@
 		"postcss": "^8.4.14",
 		"postcss-cli": "^9.1.0",
 		"postcss-import": "^14.1.0",
-		"postcss-preset-env": "^7.7.1",
+		"postcss-preset-env": "^7.7.2",
 		"rollup": "^2.75.5",
 		"rollup-plugin-filesize": "^9.1.2",
 		"rollup-plugin-livereload": "^2.0.5",
