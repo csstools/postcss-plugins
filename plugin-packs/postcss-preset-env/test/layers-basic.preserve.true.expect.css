@@ -6,7 +6,7 @@
 				-webkit-order: 5.1;
 				   -moz-box-ordinal-group: 6;
 				    -ms-flex-order: 5.1;
-				        order: 5.1
+				        order: 5.1;
 		}
 
 :root:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
@@ -60,19 +60,19 @@
 }
 
 [dir="ltr"] .test-logical-properties-and-values:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){
-		margin: 1px 4px 3px 2px
+		margin: 1px 4px 3px 2px;
 }
 
 .test-logical-properties-and-values:dir(ltr):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){
-		margin: 1px 4px 3px 2px
+		margin: 1px 4px 3px 2px;
 }
 
 [dir="rtl"] .test-logical-properties-and-values:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){
-		margin: 1px 2px 3px 4px
+		margin: 1px 2px 3px 4px;
 }
 
 .test-logical-properties-and-values:dir(rtl):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){
-		margin: 1px 2px 3px 4px
+		margin: 1px 2px 3px 4px;
 }
 
 .test-logical-properties-and-values:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
@@ -103,7 +103,7 @@
 			-webkit-order: 5;
 			   -moz-box-ordinal-group: 6;
 			    -ms-flex-order: 5;
-			        order: 5
+			        order: 5;
 		}
 
 .test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {

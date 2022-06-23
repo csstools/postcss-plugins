@@ -5,12 +5,12 @@
 .contained {
 	background-color: blue;
 	height: 100px;
-	width: 100px
+	width: 100px;
 }
 
 @container (min-width: 640px) {
 
 .contained {
-		background-color: red
+		background-color: red;
 }
 	}

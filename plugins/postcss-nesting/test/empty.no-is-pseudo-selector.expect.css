@@ -3,7 +3,7 @@
 			order: 1;
 		}
 d {
-	order: 2
+	order: 2;
 }
 d e {
 		order: 3;
@@ -15,13 +15,13 @@ f {
 	order: 5;
 }
 a b c {
-			order: 1
+			order: 1;
 }
 d {
-	order: 2
+	order: 2;
 }
 d e {
-		order: 3
+		order: 3;
 }
 f g {
 		order: 4;
