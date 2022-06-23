@@ -1,5 +1,4 @@
 import parser from 'postcss-selector-parser';
-import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
 
 const linkAST = parser().astSync(':link').nodes[0];
 const visitedAST = parser().astSync(':visited').nodes[0];
@@ -34,18 +33,14 @@ export function replaceAnyLink(rule, result, preserve, areaHrefNeedsFixing) {
 		selectors: updatedSelectors,
 	});
 
-	if (preserve) {
-		if (untouchedSelectors.length) {
-			rule.cloneBefore({
-				selectors: untouchedSelectors,
-			});
-		}
-	} else {
-		if (untouchedSelectors.length) {
-			rule.selectors = untouchedSelectors;
-		} else {
-			rule.remove();
-		}
+	if (untouchedSelectors.length) {
+		rule.cloneBefore({
+			selectors: untouchedSelectors,
+		});
+	}
+
+	if (!preserve) {
+		rule.remove();
 	}
 }
 
@@ -92,16 +87,8 @@ function modifiedSelector(selector, areaHrefNeedsFixing) {
 					return;
 				}
 
-				pseudo.replaceWith(...replacement.shift().nodes);
-			});
-
-			clone.walk((node) => {
-				if ('nodes' in node) {
-					node.nodes.forEach((child) => {
-						sortCompoundSelectorsInsideComplexSelector(child);
-					});
-					sortCompoundSelectorsInsideComplexSelector(node);
-				}
+				insertNode(pseudo.parent, pseudo, replacement.shift());
+				pseudo.remove();
 			});
 
 			out.push(clone.toString());
@@ -135,7 +122,7 @@ function getTagElementsNextToPseudo(pseudo) {
 
 	let prev = pseudo.prev();
 	while (prev) {
-		if (prev.type === 'combinator') {
+		if (prev.type === 'combinator' || parser.isPseudoElement(prev)) {
 			break;
 		}
 
@@ -148,7 +135,7 @@ function getTagElementsNextToPseudo(pseudo) {
 
 	let next = pseudo.next();
 	while (next) {
-		if (next.type === 'combinator') {
+		if (next.type === 'combinator' || parser.isPseudoElement(next)) {
 			break;
 		}
 
@@ -160,4 +147,49 @@ function getTagElementsNextToPseudo(pseudo) {
 	}
 
 	return tags;
+}
+
+// Inserts a node around a given node.
+// - in the same compound selector
+// - try to keep the result serializable without side effects
+function insertNode(container, aroundNode, node) {
+	let type = node.type;
+	if (node.type === 'selector' && node.nodes && node.nodes.length) {
+		type = node.nodes[0].type;
+	}
+
+	let start = -1;
+	let end = -1;
+	const index = container.index(aroundNode);
+
+	for (let i = index; i >= 0; i--) {
+		if (container.nodes[i].type === 'combinator' || parser.isPseudoElement(container.nodes[i].type)) {
+			break;
+		}
+
+		start = i;
+	}
+
+	if (type === 'tag') {
+		container.insertBefore(container.at(start), node);
+		return;
+	}
+
+	for (let i = index; i < container.nodes.length; i++) {
+		if (container.nodes[i].type === 'combinator' || parser.isPseudoElement(container.nodes[i].type)) {
+			break;
+		}
+
+		end = i;
+	}
+
+	for (let i = start; i <= end; i++) {
+		if (container.nodes[i].type === type) {
+			container.insertAfter(container.at(i), node);
+			return;
+		}
+	}
+
+	container.insertAfter(container.at(start), node);
+	return;
 }

@@ -168,7 +168,6 @@
 	line-height: normal;
 	height: auto;
 	-webkit-hyphens: none;
-	    -ms-hyphens: none;
 	        hyphens: none;
 	left: auto;
 	letter-spacing: normal;
@@ -228,7 +227,7 @@
 	order: 22;
 }
 
-.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area.test-any-link-pseudo-class[href] {
+.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area[href].test-any-link-pseudo-class {
 	order: 23;
 }
 

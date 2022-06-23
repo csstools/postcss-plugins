@@ -3526,11 +3526,11 @@ __foo {
 	order: 299;
 }
 
-.some::before {
+::before.some {
 	order: 300;
 }
 
-.other::before {
+::before.other {
 	order: 300;
 }
 
@@ -3550,7 +3550,7 @@ __foo {
 	order: 301;
 }
 
-::before::before {
+::-csstools-invalid-before::-csstools-invalid-before {
 	order: 302;
 }
 
@@ -3582,7 +3582,7 @@ __foo {
 	order: 304;
 }
 
-::before ::before {
+::-csstools-invalid-before ::-csstools-invalid-before {
 	order: 305;
 }
 
@@ -3614,7 +3614,7 @@ __foo {
 	order: 307;
 }
 
-::before  ::before {
+::-csstools-invalid-before  ::-csstools-invalid-before {
 	order: 308;
 }
 
@@ -3646,7 +3646,7 @@ __foo {
 	order: 310;
 }
 
-::before+::before {
+::-csstools-invalid-before+::-csstools-invalid-before {
 	order: 311;
 }
 
@@ -3678,7 +3678,7 @@ __foo {
 	order: 313;
 }
 
-::before + ::before {
+::-csstools-invalid-before + ::-csstools-invalid-before {
 	order: 314;
 }
 
@@ -3710,7 +3710,7 @@ __foo {
 	order: 316;
 }
 
-::before~::before {
+::-csstools-invalid-before~::-csstools-invalid-before {
 	order: 317;
 }
 
@@ -3742,7 +3742,7 @@ __foo {
 	order: 319;
 }
 
-::before ~ ::before {
+::-csstools-invalid-before ~ ::-csstools-invalid-before {
 	order: 320;
 }
 
@@ -3774,7 +3774,7 @@ __foo {
 	order: 322;
 }
 
-::before>::before {
+::-csstools-invalid-before>::-csstools-invalid-before {
 	order: 323;
 }
 
@@ -3806,7 +3806,7 @@ __foo {
 	order: 325;
 }
 
-::before > ::before {
+::-csstools-invalid-before > ::-csstools-invalid-before {
 	order: 326;
 }
 
@@ -3846,7 +3846,7 @@ __foo {
 	order: 328;
 }
 
-::before {
+::-csstools-invalid-before {
 	order: 329;
 }
 

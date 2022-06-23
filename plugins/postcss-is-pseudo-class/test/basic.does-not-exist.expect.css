@@ -294,19 +294,19 @@ a:not(.something-random) {
 	order: 24;
 }
 
-a:hover::before {
+a:hover {
 	order: 25;
 }
 
-a:focus:not(something-random) {
+a:focus {
 	order: 25;
 }
 
-button:hover::before {
+button:hover {
 	order: 25;
 }
 
-button:focus:not(something-random) {
+button:focus {
 	order: 25;
 }
 
@@ -326,19 +326,19 @@ button:focus::before {
 	order: 26;
 }
 
-a:hover:before {
+a:hover {
 	order: 27;
 }
 
-a:focus:not(something-random) {
+a:focus {
 	order: 27;
 }
 
-button:hover:before {
+button:hover {
 	order: 27;
 }
 
-button:focus:not(something-random) {
+button:focus {
 	order: 27;
 }
 
@@ -366,18 +366,66 @@ button:focus:before {
 	order: 29;
 }
 
-:not(.something-random):hover::after {
+::before:hover {
 	order: 30;
 }
 
-:not(.something-random):focus::after {
+::before:focus {
 	order: 30;
 }
 
-.foo:hover {
-	order: 30;
+:hover::after {
+	order: 31;
 }
 
-.foo:focus {
-	order: 30;
+:focus::after {
+	order: 31;
+}
+
+ol:hover > li.foo {
+	order: 32
+}
+
+ol:hover > li.bar {
+	order: 32
+}
+
+ol:focus > li.foo {
+	order: 32
+}
+
+ol:focus-visible > li.foo {
+	order: 32
+}
+
+ol:focus > li.bar {
+	order: 32
+}
+
+ol:focus-visible > li.bar {
+	order: 32
+}
+
+ul:hover > li.foo {
+	order: 32
+}
+
+ul:hover > li.bar {
+	order: 32
+}
+
+ul:focus > li.foo {
+	order: 32
+}
+
+ul:focus-visible > li.foo {
+	order: 32
+}
+
+ul:focus > li.bar {
+	order: 32
+}
+
+ul:focus-visible > li.bar {
+	order: 32
 }

@@ -5,7 +5,7 @@
 }
 
 @layer {
-	#foo #bar target::before {
+	#foo #bar target::before:hover {
 		color: green;
 	}
 }

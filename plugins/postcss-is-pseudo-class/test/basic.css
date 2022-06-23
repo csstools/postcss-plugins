@@ -94,7 +94,7 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 24;
 }
 
-:is(a, button):is(:hover::before, :focus) {
+:is(a, button):is(:hover, :focus) {
 	order: 25;
 }
 
@@ -102,7 +102,7 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 26;
 }
 
-:is(a, button):is(:hover:before, :focus) {
+:is(a, button):is(:hover, :focus) {
 	order: 27;
 }
 
@@ -114,6 +114,14 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 29;
 }
 
-:is(::after, .foo):is(:hover, :focus) {
+::before:is(:hover, :focus) {
 	order: 30;
+}
+
+:is(:hover, :focus)::after {
+	order: 31;
+}
+
+:is(ol, ul):is(:hover, :is(:focus, :focus-visible)) > li:is(.foo, .bar) {
+	order: 32
 }

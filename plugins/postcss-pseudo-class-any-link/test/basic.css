@@ -27,9 +27,14 @@ ul a:any-link > span {
 	order: 7;
 }
 
+:any-link::before,
+:any-link:before {
+	order: 8;
+}
+
 ::before:any-link,
 :before:any-link {
-	order: 8;
+	order: 8.1;
 }
 
 a:any-link {
@@ -38,6 +43,10 @@ a:any-link {
 
 area:any-link {
 	order: 10;
+}
+
+[hidden]area:any-link {
+	order: 10.1;
 }
 
 area :any-link {
@@ -51,3 +60,48 @@ area > :any-link {
 div:any-link {
 	order: 13;
 }
+
+:any-link + input[type=file]:hover::file-selector-button {
+	order: 14;
+}
+
+:any-link + input[type=file]::file-selector-button:hover {
+	order: 15;
+}
+
+a:any-link,
+b {
+	order: 16;
+}
+
+.any > .class:any-link[attr]::before:focus {
+	order: 100.1;
+}
+
+.any > .class[attr]:any-link::before:focus {
+	order: 100.2;
+}
+
+.any > .class[attr]:any-link::before:focus {
+	order: 100.3;
+}
+
+.any > .class:any-link[attr]:focus::before {
+	order: 101.1;
+}
+
+.any > .class[attr]:any-link:focus::before {
+	order: 101.2;
+}
+
+.any > .class[attr]:any-link:focus::before {
+	order: 101.3;
+}
+
+.any > .class[attr]:focus:any-link::before {
+	order: 101.3;
+}
+
+.any + :any-link + .other {
+		order: 101.4;
+	}

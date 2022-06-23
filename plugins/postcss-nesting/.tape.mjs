@@ -91,6 +91,12 @@ postcssTape(plugin)({
 			noIsPseudoSelector: true,
 		},
 	},
+	'multiple-replacements': {
+		message: 'supports multiple replacements',
+	},
+	'pseudo-element': {
+		message: 'supports pseudo elements',
+	},
 	'supports': {
 		message: 'supports nested @supports',
 	},

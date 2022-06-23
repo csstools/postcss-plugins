@@ -1,8 +1,8 @@
 a {
-	order: 1
+	order: 1;
 }
 @document url("https://www.example.com/") {
 	a {
-		order: 2
+		order: 2;
 }
 	}

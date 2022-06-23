@@ -1,64 +1,78 @@
 import parser from 'postcss-selector-parser';
 
-import { wrapMultipleTagSelectorsWithIsPseudo } from './wrap-multiple-tag-selectors-with-is-pseudo';
+const isPseudo = parser.pseudo({ value: ':is' });
 
-export function sortCompoundSelectorsInsideComplexSelector(node, wrapWithIsPseudo) {
-	let compound = [];
-	let foundOtherNesting = false;
+export function sortCompoundSelectorsInsideComplexSelector(node) {
+	if (!node || !node.nodes) {
+		return;
+	}
 
-	const nodes = [...node.nodes];
+	const compoundSelectors = [];
+	let currentCompoundSelector = [];
+	for (let i = 0; i < node.nodes.length; i++) {
+		if (node.nodes[i].type === 'combinator') {
+			// Push the current compound selector
+			compoundSelectors.push(currentCompoundSelector);
 
-	for (let i = 0; i < (nodes.length+1); i++) {
-		const child = nodes[i];
-		if (!child || child.type === 'combinator') {
-			if (foundOtherNesting) {
-				// nesting walker will further manipulate the selector and revisit this function later.
-				// not skipping here will break the nesting walker as the order and contents of the nodes have changed too much.
-				compound = [];
-				continue;
-			}
+			// Push the combinator
+			compoundSelectors.push([node.nodes[i]]);
 
-			if (compound.length > 1) {
-				const compoundSelector = parser.selector();
-				compound[0].replaceWith(compoundSelector);
+			// Start a new compound selector
+			currentCompoundSelector = [];
 
-				compound.slice(1).forEach((compoundPart) => {
-					compoundPart.remove();
-				});
-
-				compound.forEach((compoundPart) => {
-					compoundSelector.append(compoundPart);
-				});
-
-				sortCompoundSelector(compoundSelector);
-				if (wrapWithIsPseudo) {
-					wrapMultipleTagSelectorsWithIsPseudo(compoundSelector);
-				}
-				compoundSelector.replaceWith(...(compoundSelector.nodes));
-			}
-
-			compound = [];
 			continue;
 		}
 
-		if (child.type === 'nesting') {
-			foundOtherNesting = true;
+		if (parser.isPseudoElement(node.nodes[i])) {
+			// Push the current compound selector
+			compoundSelectors.push(currentCompoundSelector);
+
+			// Start a new compound selector with the pseudo element as the first element
+			currentCompoundSelector = [node.nodes[i]];
+
+			continue;
 		}
 
-		compound.push(child);
+		if (node.nodes[i].type === 'tag' && currentCompoundSelector.find(x => x.type === 'tag') ) {
+			const isPseudoClone = isPseudo.clone();
+			const child = node.nodes[i];
+			child.replaceWith(isPseudoClone);
+			isPseudoClone.append(child);
+		}
+
+		currentCompoundSelector.push(node.nodes[i]);
 	}
-}
 
-export function sortCompoundSelector(node) {
-	// simply concatenating with selectors can lead to :
-	// `.fooh1`
-	//
-	// applying a sort where tag selectors are first will result in :
-	// `h1.foo`
+	compoundSelectors.push(currentCompoundSelector);
 
-	node.nodes.sort((a, b) => {
-		return selectorTypeOrder(a, a.type) - selectorTypeOrder(b, b.type);
-	});
+	const sortedCompoundSelectors = [];
+	for (let i = 0; i < compoundSelectors.length; i++) {
+		const compoundSelector = compoundSelectors[i];
+		compoundSelector.sort((a, b) => {
+			if (a.type === 'selector' && b.type === 'selector' && a.nodes.length && b.nodes.length) {
+				return selectorTypeOrder(a.nodes[0], a.nodes[0].type) - selectorTypeOrder(b.nodes[0], b.nodes[0].type);
+			}
+
+			if (a.type === 'selector' && a.nodes.length) {
+				return selectorTypeOrder(a.nodes[0], a.nodes[0].type) - selectorTypeOrder(b, b.type);
+			}
+
+			if (b.type === 'selector' && b.nodes.length) {
+				return selectorTypeOrder(a, a.type) - selectorTypeOrder(b.nodes[0], b.nodes[0].type);
+			}
+
+			return selectorTypeOrder(a, a.type) - selectorTypeOrder(b, b.type);
+		});
+
+		for (let j = 0; j < compoundSelector.length; j++) {
+			sortedCompoundSelectors.push(compoundSelector[j]);
+		}
+	}
+
+	for (let i = sortedCompoundSelectors.length - 1; i >= 0; i--) {
+		sortedCompoundSelectors[i].remove();
+		node.prepend(sortedCompoundSelectors[i]);
+	}
 }
 
 function selectorTypeOrder(selector, type) {
@@ -72,15 +86,13 @@ function selectorTypeOrder(selector, type) {
 const selectorTypeOrderIndex = {
 	universal: 0,
 	tag: 1,
-	id: 2,
-	class: 3,
-	attribute: 4,
-	selector: 5,
+	pseudoElement: 2,
+	id: 3,
+	class: 4,
+	attribute: 5,
 	pseudo: 6,
-	pseudoElement: 7,
+	selector: 7,
 	string: 8,
 	root: 9,
 	comment: 10,
-
-	nesting: 9999,
 };

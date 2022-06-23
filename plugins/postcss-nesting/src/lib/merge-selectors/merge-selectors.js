@@ -1,8 +1,7 @@
 import parser from 'postcss-selector-parser';
 import { combinationsWithSizeN } from './combinations-of-size-n';
-import { sortCompoundSelector, sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
+import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
 import { nodesAreEquallySpecific } from './specificity';
-import { wrapMultipleTagSelectorsWithIsPseudo } from './wrap-multiple-tag-selectors-with-is-pseudo';
 
 export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 	const fromListHasUniformSpecificity = nodesAreEquallySpecific(fromSelectors);
@@ -88,11 +87,7 @@ export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 					}
 
 					if (parent && parent.nodes.length > 1) {
-						sortCompoundSelector(parent);
-
-						if (!opts.noIsPseudoSelector) {
-							wrapMultipleTagSelectorsWithIsPseudo(parent);
-						}
+						sortCompoundSelectorsInsideComplexSelector(parent);
 					}
 
 					return;
@@ -103,7 +98,7 @@ export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 					nesting.replaceWith(fromSelectorAST.clone().nodes[0]);
 
 					if (parent) {
-						sortCompoundSelectorsInsideComplexSelector(parent, !opts.noIsPseudoSelector);
+						sortCompoundSelectorsInsideComplexSelector(parent);
 					}
 
 					return;
@@ -114,7 +109,7 @@ export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 					nesting.replaceWith(...(fromSelectorAST.clone().nodes));
 
 					if (parent) {
-						sortCompoundSelectorsInsideComplexSelector(parent, !opts.noIsPseudoSelector);
+						sortCompoundSelectorsInsideComplexSelector(parent);
 					}
 
 					return;
@@ -125,7 +120,7 @@ export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 					nesting.replaceWith(...(fromSelectorAST.clone().nodes));
 
 					if (parent) {
-						sortCompoundSelectorsInsideComplexSelector(parent, !opts.noIsPseudoSelector);
+						sortCompoundSelectorsInsideComplexSelector(parent);
 					}
 
 					return;
@@ -136,7 +131,7 @@ export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 					nesting.replaceWith(...(fromSelectorAST.clone().nodes));
 
 					if (parent) {
-						sortCompoundSelectorsInsideComplexSelector(parent, !opts.noIsPseudoSelector);
+						sortCompoundSelectorsInsideComplexSelector(parent);
 					}
 
 					return;
@@ -150,7 +145,7 @@ export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 				}
 
 				if (parent) {
-					sortCompoundSelectorsInsideComplexSelector(parent, !opts.noIsPseudoSelector);
+					sortCompoundSelectorsInsideComplexSelector(parent);
 				}
 			});
 
@@ -162,7 +157,7 @@ export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 }
 
 function isSimpleSelector(selector) {
-	if (selector.type === 'combinator') {
+	if (selector.type === 'combinator' || parser.isPseudoElement(selector)) {
 		return false;
 	}
 
@@ -183,7 +178,7 @@ function isCompoundSelector(selector, toSelector = null) {
 	}
 
 	const hasCombinators = !!(selector.parent.nodes.find((x) => {
-		return x.type === 'combinator' || x.type === 'comment';
+		return x.type === 'combinator' || parser.isPseudoElement(x);
 	}));
 
 	if (hasCombinators) {
@@ -213,6 +208,10 @@ function nestingIsFirstAndOnlyInSelectorWithEitherSpaceOrChildCombinator(selecto
 
 	for (let i = 1; i < selector.parent.nodes.length; i++) {
 		if (selector.parent.nodes[i].type === 'combinator' && (selector.parent.nodes[i].value !== ' ' && selector.parent.nodes[i].value !== '>')) {
+			return false;
+		}
+
+		if (parser.isPseudoElement(selector.parent.nodes[i])) {
 			return false;
 		}
 	}

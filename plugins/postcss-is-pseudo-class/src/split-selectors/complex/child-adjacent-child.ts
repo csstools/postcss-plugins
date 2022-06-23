@@ -1,7 +1,7 @@
 // :-csstools-matches(.a > .b) + :-csstools-matches(.c > .d)
 // equivalent to
 // .a.c > .b + .d
-// because a adjacent elements have the same parent element.
+// because adjacent elements have the same parent element.
 export function childAdjacentChild(selector): boolean {
 	if (!selector || !selector.nodes) {
 		return false;

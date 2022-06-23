@@ -2,7 +2,7 @@
  * two tag selectors in a compound selector
  * would never match any elements selector, but :is required to have a correct selector
  */
-bodyhtml {
+body:is(html) {
 		order: 1;
 	}
 
