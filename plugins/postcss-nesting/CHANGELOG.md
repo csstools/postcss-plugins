@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### Unreleased
+### 10.1.9 (June 23, 2022)
 
 - Fix selector order with any pseudo element.
 - Fix semicolons being removed [#497](https://github.com/csstools/postcss-plugins/issues/497).
