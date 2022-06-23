@@ -1,6 +1,6 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased
+### 2.0.6 (June 23, 2022)
 
 - Fix selector order with any pseudo element.
 - Fix transforming pseudo elements in `:is()`. Following the specification pseudo elements are invalid and we now transform to a known invalid pseudo element.
