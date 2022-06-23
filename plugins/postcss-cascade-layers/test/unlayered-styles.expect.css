@@ -15,6 +15,6 @@ target:not(#\#):not(#\#) {
   color: green;
 }
 
-span h1:not(#\#):not(#\#), span p:not(#\#):not(#\#) {
+span:not(#\#):not(#\#) h1, span:not(#\#):not(#\#) p {
   color:red;
 }

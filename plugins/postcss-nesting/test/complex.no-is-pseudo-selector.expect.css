@@ -42,12 +42,12 @@ body > p body > p, body > p body > ul, body > ul body > p, body > ul body > ul {
 	}
 
 
-body > pbody > p, body > pbody > ul, body > ulbody > p, body > ulbody > ul {
+body > p:is(body) > p, body > p:is(body) > ul, body > ul:is(body) > p, body > ul:is(body) > ul {
 		order: 7;
 	}
 
 
-body > pbody > pbody > p, body > pbody > pbody > ul, body > pbody > ulbody > p, body > pbody > ulbody > ul, body > ulbody > pbody > p, body > ulbody > pbody > ul, body > ulbody > ulbody > p, body > ulbody > ulbody > ul {
+body > p:is(body) > p:is(body) > p, body > p:is(body) > p:is(body) > ul, body > p:is(body) > ul:is(body) > p, body > p:is(body) > ul:is(body) > ul, body > ul:is(body) > p:is(body) > p, body > ul:is(body) > p:is(body) > ul, body > ul:is(body) > ul:is(body) > p, body > ul:is(body) > ul:is(body) > ul {
 		order: 8;
 	}
 
@@ -91,12 +91,12 @@ body > p>*:hover, body > .foo>*:hover {
 		}
 
 
-body > pbody > p, body > pbody > .foo, body > body.foo > p, body > body.foo > .foo {
+body > p:is(body) > p, body > p:is(body) > .foo, body > body.foo > p, body > body.foo > .foo {
 		order: 106;
 	}
 
 
-body > pbody > pbody > p, body > pbody > pbody > .foo, body > pbody > body.foo > p, body > pbody > body.foo > .foo, body > body.foo > pbody > p, body > body.foo > pbody > .foo, body > body.foo > body.foo > p, body > body.foo > body.foo > .foo {
+body > p:is(body) > p:is(body) > p, body > p:is(body) > p:is(body) > .foo, body > p:is(body) > body.foo > p, body > p:is(body) > body.foo > .foo, body > body.foo > p:is(body) > p, body > body.foo > p:is(body) > .foo, body > body.foo > body.foo > p, body > body.foo > body.foo > .foo {
 		order: 107;
 	}
 

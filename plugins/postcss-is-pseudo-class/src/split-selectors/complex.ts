@@ -4,7 +4,7 @@ import { childAdjacentChild } from './complex/child-adjacent-child';
 import { isInCompoundWithOneOtherElement } from './complex/is-in-compound';
 import type { Container } from 'postcss-selector-parser';
 
-export default function complexSelectors(selectors: string[], pluginOptions: { onComplexSelector?: 'warning' }, warnFn: () => void) {
+export default function complexSelectors(selectors: string[], pluginOptions: { onComplexSelector?: 'warning' }, warnOnComplexSelector: () => void, warnOnPseudoElements: () => void) {
 	return selectors.flatMap((selector) => {
 		if (selector.indexOf(':-csstools-matches') === -1 && selector.indexOf(':is') === -1) {
 			return selector;
@@ -33,6 +33,23 @@ export default function complexSelectors(selectors: string[], pluginOptions: { o
 				pseudo.remove();
 				return;
 			}
+
+			pseudo.walkPseudos((pseudoElement) => {
+				if (parser.isPseudoElement(pseudoElement)) {
+					let value = pseudoElement.value;
+					if (value.startsWith('::-csstools-invalid-')) {
+						// already invalidated and reported
+						return;
+					}
+
+					while (value.startsWith(':')) {
+						value = value.slice(1);
+					}
+
+					pseudoElement.value = `::-csstools-invalid-${value}`;
+					warnOnPseudoElements();
+				}
+			});
 
 			if (
 				pseudo.nodes.length === 1 &&
@@ -69,7 +86,7 @@ export default function complexSelectors(selectors: string[], pluginOptions: { o
 			}
 
 			if (pluginOptions.onComplexSelector === 'warning') {
-				warnFn();
+				warnOnComplexSelector();
 			}
 
 			pseudo.value = ':is';

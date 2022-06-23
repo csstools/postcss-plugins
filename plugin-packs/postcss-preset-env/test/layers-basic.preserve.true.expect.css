@@ -1,6 +1,6 @@
 
 
-		.test-nesting-rules p:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) p {
 				is-layer: C_D;
 				-webkit-box-ordinal-group: 6;
 				-webkit-order: 5.1;
@@ -59,7 +59,7 @@
 	}
 }
 
-[dir="ltr"] .test-logical-properties-and-values:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){
+[dir="ltr"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-logical-properties-and-values{
 		margin: 1px 4px 3px 2px;
 }
 
@@ -67,7 +67,7 @@
 		margin: 1px 4px 3px 2px;
 }
 
-[dir="rtl"] .test-logical-properties-and-values:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){
+[dir="rtl"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-logical-properties-and-values{
 		margin: 1px 2px 3px 4px;
 }
 
@@ -97,7 +97,7 @@
 		        order: 4;
 	}
 
-.test-nesting-rules p:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) p {
 			is-layer: C;
 			-webkit-box-ordinal-group: 6;
 			-webkit-order: 5;
@@ -125,7 +125,7 @@
 	        order: 7;
 }
 
-.test-nesting-rules + p:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), #test-is-pseudo + p:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) + p, #test-is-pseudo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) + p {
 		-webkit-box-ordinal-group: 9;
 		-webkit-order: 8;
 		   -moz-box-ordinal-group: 9;
@@ -445,7 +445,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 20;
 }
 
-.test-matches-pseudo-class:matches( .special,:first-child):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-matches-pseudo-class:matches(:first-child, .special):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	-webkit-box-ordinal-group: 22;
 	-webkit-order: 21;
 	   -moz-box-ordinal-group: 22;
@@ -461,7 +461,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 22;
 }
 
-.test-any-link-pseudo-class:link:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), .test-any-link-pseudo-class:visited:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), area.test-any-link-pseudo-class[href]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-any-link-pseudo-class:link:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), .test-any-link-pseudo-class:visited:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), area[href].test-any-link-pseudo-class:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	-webkit-box-ordinal-group: 24;
 	-webkit-order: 23;
 	   -moz-box-ordinal-group: 24;
@@ -488,7 +488,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 23;
 }
 
-[dir="rtl"] .test-dir-pseudo-class:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+[dir="rtl"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-dir-pseudo-class {
 	-webkit-box-ordinal-group: 25;
 	-webkit-order: 24;
 	   -moz-box-ordinal-group: 25;
@@ -590,7 +590,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 		        order: 27;
 	}
 
-.a.c > .b + .d:not(#\#):not(#\#):not(#\#):not(#\#) {
+.a.c:not(#\#):not(#\#):not(#\#):not(#\#) > .b + .d {
 		-webkit-box-ordinal-group: 29;
 		-webkit-order: 28;
 		   -moz-box-ordinal-group: 29;
@@ -598,7 +598,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 		        order: 28;
 	}
 
-:is(.a > .b) + :is(.c > .d):not(#\#):not(#\#):not(#\#):not(#\#) {
+:is(.a > .b):not(#\#):not(#\#):not(#\#):not(#\#) + :is(.c > .d) {
 		-webkit-box-ordinal-group: 29;
 		-webkit-order: 28;
 		   -moz-box-ordinal-group: 29;

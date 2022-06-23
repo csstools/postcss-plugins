@@ -80,11 +80,11 @@ a {
 }
 		}
 
-bodya {
+body:is(a) {
 		order: 17;
 }
 
-html bodya {
+html body:is(a) {
 		order: 18;
 }
 
@@ -153,12 +153,36 @@ a b[a="a&b"] {
 			order: 65;
 		}
 
-.pseudo-element::before {
+::before.pseudo-element {
 		order: 71;
 }
 
-.pseudo-element:before {
+::before .pseudo-element {
+		order: 71.1;
+}
+
+:before.pseudo-element {
 		order: 72;
+}
+
+:before .pseudo-element {
+		order: 72.1;
+}
+
+.pseudo-element::after {
+		order: 73;
+}
+
+.pseudo-element ::after {
+		order: 73.1;
+}
+
+.pseudo-element:after {
+		order: 74;
+}
+
+.pseudo-element :after {
+		order: 74.1;
 }
 
 .has-semi-colons-on-the-last-decl {
