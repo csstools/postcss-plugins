@@ -3,6 +3,7 @@
 ### Unreleased
 
 - Fix selector order with any pseudo element.
+- Fix semicolons being removed [#497](https://github.com/csstools/postcss-plugins/issues/497).
 
 ### 10.1.8 (June 4, 2022)
 

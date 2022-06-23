@@ -1,7 +1,7 @@
 
 
 .foo:is(::before), ::before:focus {
-		order: 1
+		order: 1;
 }
 
 .a:hover::before, .b:focus::before, .a:hover::after, .b:focus::after {
@@ -17,7 +17,7 @@
 	}
 
 .a::before {
-		order: 5
+		order: 5;
 	}
 
 .a::before:focus {
@@ -25,7 +25,7 @@
 		}
 
 .a::after {
-		order: 7
+		order: 7;
 	}
 
 .a::after:hover {

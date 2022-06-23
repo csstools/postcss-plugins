@@ -1023,9 +1023,9 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 @custom-selector :--view-m [data-view-size=m];
 
 [data-view-size=m] .view {
-		background: red
+		background: red;
 }
 
 :--view-m .view {
-		background: red
+		background: red;
 }
