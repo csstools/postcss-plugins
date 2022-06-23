@@ -7,7 +7,7 @@ a, b {
 & e {
 	order: 3;
 }
-fg {
+f:is(g) {
 		order: 5;
 	}
 a, b {
@@ -19,8 +19,8 @@ a, b {
 @nest & e {
 	order: 3;
 }
-fh {
-		order: 5
+f:is(h) {
+		order: 5;
 }
 f {
 	@nest &|i {

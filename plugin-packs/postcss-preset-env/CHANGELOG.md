@@ -1,8 +1,18 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased
+### 7.7.2 (June 23, 2022)
 
 - Fix `op_mini all` not working as a browser list.
+- Updated `postcss-color-rebeccapurple` to `7.1.0` (minor)
+- Updated `browserslist` to `4.21.0` (minor)
+- Updated `csstools/postcss-cascade-layers` to `1.0.4` (patch)
+- Updated `csstools/postcss-is-pseudo-class` to `2.0.6` (patch)
+- Updated `postcss-color-hex-alpha` to `8.0.4` (patch)
+- Updated `postcss-custom-media` to `8.0.2` (patch)
+- Updated `postcss-custom-properties` to `12.1.8` (patch)
+- Updated `postcss-custom-selectors` to `6.0.3` (patch)
+- Updated `postcss-nesting` to `10.1.9` (patch)
+- Updated `postcss-pseudo-class-any-link` to `7.1.5` (patch)
 
 ### 7.7.1 (June 3, 2022)
 

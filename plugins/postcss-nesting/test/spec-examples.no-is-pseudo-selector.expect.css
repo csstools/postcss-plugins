@@ -3,7 +3,7 @@
 /* Example 2 */
 
 table.colortable td {
-		text-align: center
+		text-align: center;
 	}
 
 table.colortable td.c {
@@ -24,7 +24,7 @@ table.colortable th {
 /* Example 3 */
 /* & can be used on its own */
 .foo {
-	color: blue
+	color: blue;
 }
 .foo>.bar {
 		color: red;
@@ -39,7 +39,7 @@ table.colortable th {
 /* or in a compound selector,
    refining the parent’s selector */
 .foo {
-	color: blue
+	color: blue;
 }
 .foo.bar {
 		color: red;
@@ -54,7 +54,7 @@ table.colortable th {
    start with & */
 .foo,
 .bar {
-	color: blue
+	color: blue;
 }
 .foo+.baz,
 	.bar+.baz,
@@ -71,7 +71,7 @@ table.colortable th {
 
 /* & can be used multiple times in a single selector */
 .foo {
-	color: blue
+	color: blue;
 }
 .foo .bar .foo .baz .foo .qux {
 		color: red;
@@ -84,7 +84,7 @@ table.colortable th {
 
 /* Somewhat silly, but can be used all on its own, as well. */
 .foo {
-	color: blue
+	color: blue;
 }
 .foo {
 		padding: 2ch;
@@ -104,7 +104,7 @@ table.colortable th {
 
 /* Again, silly, but can even be doubled up. */
 .foo {
-	color: blue
+	color: blue;
 }
 .foo.foo {
 		padding: 2ch;
@@ -135,10 +135,10 @@ table.colortable th {
 
 /* Multiple levels of nesting "stack up" the selectors */
 figure {
-	margin: 0
+	margin: 0;
 }
 figure>figcaption {
-		background: hsl(0 0% 0% / 50%)
+		background: hsl(0 0% 0% / 50%);
 	}
 figure>figcaption>p {
 			font-size: .9rem;
@@ -152,7 +152,7 @@ figure>figcaption>p {
 
 /* No concatenation */
 .foo {
-	color: blue
+	color: blue;
 }
 __bar.foo {
 		color: red;
@@ -189,10 +189,10 @@ __bar.foo {
 
 /* Example 4 */
 .foo {
-	color: red
+	color: red;
 }
 .foo>.bar {
-		color: blue
+		color: blue;
 }
 
 /* equivalent to
@@ -201,11 +201,11 @@ __bar.foo {
 */
 
 .foo {
-	color: red
+	color: red;
 }
 
 .parent .foo {
-		color: blue
+		color: blue;
 }
 
 /* equivalent to
@@ -214,11 +214,11 @@ __bar.foo {
 */
 
 .foo {
-	color: red
+	color: red;
 }
 
 :not(.foo) {
-		color: blue
+		color: blue;
 }
 
 /* equivalent to
@@ -250,10 +250,10 @@ __bar.foo {
 
 /* Example 5 */
 .foo {
-	color: blue
+	color: blue;
 }
 .bar .foo {
-		color: red
+		color: red;
 }
 .bar .foo.baz {
 			color: green;
@@ -268,11 +268,11 @@ __bar.foo {
 /* Example 6 */
 /* Properties can be directly used */
 .foo {
-	display: grid
+	display: grid;
 }
 @media (orientation: landscape) {
 .foo {
-		grid-auto-flow: column
+		grid-auto-flow: column;
 }
 	}
 
@@ -298,16 +298,16 @@ __bar.foo {
 
 /* Conditionals can be further nested */
 .foo {
-	display: grid
+	display: grid;
 }
 @media (orientation: landscape) {
 .foo {
-		grid-auto-flow: column
+		grid-auto-flow: column;
 }
 	}
 @media (orientation: landscape) and (min-inline-size > 1024px) {
 .foo {
-			max-inline-size: 1024px
+			max-inline-size: 1024px;
 }
 		}
 
@@ -328,7 +328,7 @@ __bar.foo {
 */
 
 .foo {
-	color: red
+	color: red;
 }
 
 @media (min-width: 480px) {
@@ -373,7 +373,7 @@ article {
 	}
 
 article {
-	color: green
+	color: green;
 }
 
 article {

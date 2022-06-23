@@ -587,5 +587,5 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 }
 
 [data-view-size=m] .view {
-		background: red
+		background: red;
 }

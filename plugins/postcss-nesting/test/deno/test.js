@@ -13,7 +13,7 @@ a [foo="&"] {
 `, { from: 'raw', to: 'raw' }).then(result => {
 	assertStrictEquals(`
 a [foo="&"] {
-	color : red
+	color : red;
 }
 a .baz[foo="&"] {
 		color : blue;

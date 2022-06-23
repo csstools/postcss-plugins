@@ -2,7 +2,14 @@ import type { PluginCreator } from 'postcss';
 import complexSelectors from './split-selectors/complex';
 import splitSelectors from './split-selectors/split-selectors';
 
-const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning', specificityMatchingName?: string }> = (opts?: { preserve?: boolean, onComplexSelector?: 'warning', specificityMatchingName?: string }) => {
+type pluginOptions = {
+	preserve?: boolean,
+	onComplexSelector?: 'warning',
+	onPseudoElement?: 'warning',
+	specificityMatchingName?: string
+}
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = {
 		specificityMatchingName: 'does-not-exist',
 		...(opts || {}),
@@ -20,17 +27,31 @@ const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning'
 			}
 
 			// Because of loops and recursion we try to only warn once per selector.
-			let didWarn = false;
+			let didWarnForComplexSelectors = false;
 			const warnOnComplexSelector = () => {
 				if (options.onComplexSelector !== 'warning') {
 					return;
 				}
-				if (didWarn) {
+				if (didWarnForComplexSelectors) {
 					return;
 				}
 
-				didWarn = true;
+				didWarnForComplexSelectors = true;
 				rule.warn(result, `Complex selectors in '${rule.selector}' can not be transformed to an equivalent selector without ':is()'.`);
+			};
+
+			// Because of loops and recursion we try to only warn once per selector.
+			let didWarnForPseudoElements = false;
+			const warnOnPseudoElements = () => {
+				if (options.onPseudoElement !== 'warning') {
+					return;
+				}
+				if (didWarnForPseudoElements) {
+					return;
+				}
+
+				didWarnForPseudoElements = true;
+				rule.warn(result, `Pseudo elements are not allowed in ':is()', unable to transform '${rule.selector}'`);
 			};
 
 			try {
@@ -52,6 +73,7 @@ const creator: PluginCreator<{ preserve?: boolean, onComplexSelector?: 'warning'
 						onComplexSelector: options.onComplexSelector,
 					},
 					warnOnComplexSelector,
+					warnOnPseudoElements,
 				);
 
 				// 3. Remove duplicates.

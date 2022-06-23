@@ -1,7 +1,5 @@
 import { replaceAnyLink } from './replace-any-link';
 
-const anyAnyLinkMatch = /:any-link/;
-
 /**
  * @param {{preserve?: boolean, subFeatures?: { areaHrefNeedsFixing?: boolean }}} opts
  * @returns {import('postcss').Plugin}
@@ -20,14 +18,14 @@ function creator(opts) {
 	return {
 		postcssPlugin: 'postcss-pseudo-class-any-link',
 		Rule(rule, { result }) {
-			if (!anyAnyLinkMatch.test(rule.selector)) {
+			if (!rule.selector.includes(':any-link')) {
 				return;
 			}
 
 			const rawSelector = rule.raws.selector && rule.raws.selector.raw || rule.selector;
 
 			// workaround for https://github.com/postcss/postcss-selector-parser/issues/28#issuecomment-171910556
-			if (rawSelector[rawSelector.length - 1] === ':') {
+			if (rawSelector.endsWith( ':')) {
 				return;
 			}
 
