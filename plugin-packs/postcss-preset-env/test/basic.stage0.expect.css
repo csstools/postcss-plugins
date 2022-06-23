@@ -199,7 +199,6 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	line-height: normal;
 	height: auto;
 	-webkit-hyphens: none;
-	    -ms-hyphens: none;
 	        hyphens: none;
 	left: auto;
 	letter-spacing: normal;
