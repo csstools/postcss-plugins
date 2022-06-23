@@ -155,3 +155,21 @@ a {
 		order: 72;
 	}
 }
+
+.has-semi-colons-on-the-last-decl {
+	order: 73;
+	/* a comment */
+
+	& .foo {
+		order: 73.1;
+	}
+}
+
+.has-semi-colons-on-the-last-decl {
+	order: 74;
+	/* a comment */
+
+	@nest & .foo {
+		order: 74.1;
+	}
+}

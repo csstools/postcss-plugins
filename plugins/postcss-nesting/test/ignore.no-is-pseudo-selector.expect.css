@@ -20,7 +20,7 @@ a, b {
 	order: 3;
 }
 fh {
-		order: 5
+		order: 5;
 }
 f {
 	@nest &|i {
