@@ -1,13 +1,13 @@
-# Installing CSS Has Pseudo
+# Installing PostCSS Has Pseudo
 
-[CSS Has Pseudo] runs in all Node environments, with special instructions for:
+[PostCSS Has Pseudo] runs in all Node environments, with special instructions for:
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
 | --- | --- | --- | --- | --- | --- |
 
 ## Node
 
-Add [CSS Has Pseudo] to your project:
+Add [PostCSS Has Pseudo] to your project:
 
 ```bash
 npm install postcss css-has-pseudo --save-dev
@@ -32,7 +32,7 @@ Add [PostCSS CLI] to your project:
 npm install postcss-cli css-has-pseudo --save-dev
 ```
 
-Use [CSS Has Pseudo] in your `postcss.config.js` configuration file:
+Use [PostCSS Has Pseudo] in your `postcss.config.js` configuration file:
 
 ```js
 const postcssHasPseudo = require('css-has-pseudo');
@@ -54,7 +54,7 @@ Add [PostCSS Loader] to your project:
 npm install postcss-loader css-has-pseudo --save-dev
 ```
 
-Use [CSS Has Pseudo] in your Webpack configuration:
+Use [PostCSS Has Pseudo] in your Webpack configuration:
 
 ```js
 module.exports = {
@@ -98,7 +98,7 @@ Add [React App Rewired] and [React App Rewire PostCSS] to your project:
 npm install react-app-rewired react-app-rewire-postcss css-has-pseudo --save-dev
 ```
 
-Use [React App Rewire PostCSS] and [CSS Has Pseudo] in your
+Use [React App Rewire PostCSS] and [PostCSS Has Pseudo] in your
 `config-overrides.js` file:
 
 ```js
@@ -120,7 +120,7 @@ Add [Gulp PostCSS] to your project:
 npm install gulp-postcss css-has-pseudo --save-dev
 ```
 
-Use [CSS Has Pseudo] in your Gulpfile:
+Use [PostCSS Has Pseudo] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
@@ -145,7 +145,7 @@ Add [Grunt PostCSS] to your project:
 npm install grunt-postcss css-has-pseudo --save-dev
 ```
 
-Use [CSS Has Pseudo] in your Gruntfile:
+Use [PostCSS Has Pseudo] in your Gruntfile:
 
 ```js
 const postcssHasPseudo = require('css-has-pseudo');
@@ -171,6 +171,6 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
+[PostCSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired

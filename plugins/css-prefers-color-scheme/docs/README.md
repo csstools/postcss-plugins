@@ -2,6 +2,7 @@
 <!-- <humanReadableName> PostCSS Your Plugin -->
 <!-- <exportName> postcssYourPlugin -->
 <!-- <packageName> @csstools/postcss-your-plugin -->
+<!-- <packageVersion> 1.0.0 -->
 <!-- <packagePath> plugins/postcss-your-plugin -->
 <!-- <cssdbId> your-feature -->
 <!-- <specUrl> https://www.w3.org/TR/css-color-4/#funcdef-color -->
@@ -63,21 +64,24 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/<packageName>@7.0.0/dist/browser-global.js"></script>
+<script src="https://unpkg.com/<packageName>@<packageVersion>/dist/browser-global.js"></script>
 <script>prefersColorSchemeInit()</script>
 ```
 
-[Prefers Color Scheme] works in all major browsers, including Safari 6+ and
+⚠️ Please use a versioned url, like this : `https://unpkg.com/<packageName>@<packageVersion>/dist/browser-global.js`
+Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+
+[<humanReadableName>] works in all major browsers, including Safari 6+ and
 Internet Explorer 9+ without any additional polyfills.
 
 To maintain compatibility with browsers supporting `prefers-color-scheme`, the
 library will remove `prefers-color-scheme` media queries in favor of
-cross-browser compatible `color` media queries. This ensures a seemless
+cross-browser compatible `color` media queries. This ensures a seamless
 experience, even when JavaScript is unable to run.
 
 ### Browser Usage
 
-Use [Prefers Color Scheme] to activate your `prefers-color-scheme` queries:
+Use [<humanReadableName>] to activate your `prefers-color-scheme` queries:
 
 ```js
 import prefersColorSchemeInit from '<packageName>/browser';
@@ -128,7 +132,7 @@ The `removeListener` function removes the native `prefers-color-scheme`
 listener, which may or may not be applied, depending on your browser support.
 This is provided to give you complete control over plugin cleanup.
 
-#### debug mode
+#### debug
 
 If styles are not applied you can enable debug mode to log exceptions.
 
@@ -138,7 +142,7 @@ const prefersColorScheme = prefersColorSchemeInit('light', { debug: true });
 ```
 
 ```html
-<script src="https://unpkg.com/<packageName>@7.0.0/dist/browser-global.js"></script>
+<script src="https://unpkg.com/<packageName>@<packageVersion>/dist/browser-global.js"></script>
 <script>prefersColorSchemeInit('light', { debug: true })</script>
 ```
 
@@ -162,7 +166,7 @@ ECMA Script:
 
 ## How does it work?
 
-[Prefers Color Scheme] is a [PostCSS] plugin that transforms `prefers-color-scheme` queries into `color` queries.
+[<humanReadableName>] is a [PostCSS] plugin that transforms `prefers-color-scheme` queries into `color` queries.
 This changes `prefers-color-scheme: dark` into `(color: 48842621)` and `prefers-color-scheme: light` into `(color: 70318723)`.
 
 The frontend receives these `color` queries, which are understood in all
@@ -170,7 +174,7 @@ major browsers going back to Internet Explorer 9.
 However, since browsers can only have a reasonably small number of bits per color,
 our color scheme values are ignored.
 
-[Prefers Color Scheme] uses a [browser script](#browser) to change
+[<humanReadableName>] uses a [browser script](#browser) to change
 `(color: 48842621)` queries into `(max-color: 48842621)` in order to
 activate “dark mode” specific CSS, and it changes `(color: 70318723)` queries
 into `(max-color: 48842621)` to activate “light mode” specific CSS.

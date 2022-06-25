@@ -1,0 +1,17 @@
+a {
+	&:has(.b) {
+		order: 1;
+	}
+}
+
+a:has(> img) {
+	&:focus {
+		order: 2;
+	}
+}
+
+a:has(> img) {
+	& :has(> .some) {
+		order: 3;
+	}
+}

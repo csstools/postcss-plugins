@@ -133,16 +133,19 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/css-prefers-color-scheme@7.0.0/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-prefers-color-scheme@6.0.3/dist/browser-global.js"></script>
 <script>prefersColorSchemeInit()</script>
 ```
+
+⚠️ Please use a versioned url, like this : `https://unpkg.com/css-prefers-color-scheme@6.0.3/dist/browser-global.js`
+Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
 [Prefers Color Scheme] works in all major browsers, including Safari 6+ and
 Internet Explorer 9+ without any additional polyfills.
 
 To maintain compatibility with browsers supporting `prefers-color-scheme`, the
 library will remove `prefers-color-scheme` media queries in favor of
-cross-browser compatible `color` media queries. This ensures a seemless
+cross-browser compatible `color` media queries. This ensures a seamless
 experience, even when JavaScript is unable to run.
 
 ### Browser Usage
@@ -198,7 +201,7 @@ The `removeListener` function removes the native `prefers-color-scheme`
 listener, which may or may not be applied, depending on your browser support.
 This is provided to give you complete control over plugin cleanup.
 
-#### debug mode
+#### debug
 
 If styles are not applied you can enable debug mode to log exceptions.
 
@@ -208,7 +211,7 @@ const prefersColorScheme = prefersColorSchemeInit('light', { debug: true });
 ```
 
 ```html
-<script src="https://unpkg.com/css-prefers-color-scheme@7.0.0/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-prefers-color-scheme@6.0.3/dist/browser-global.js"></script>
 <script>prefersColorSchemeInit('light', { debug: true })</script>
 ```
 
