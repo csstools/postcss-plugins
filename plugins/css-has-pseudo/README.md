@@ -49,10 +49,10 @@ instructions for:
 ### preserve
 
 The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
+is preserved. By default the original rules are preserved.
 
 ```js
-postcssHasPseudo({ preserve: true })
+postcssHasPseudo({ preserve: false })
 ```
 
 ```pcss
@@ -63,9 +63,6 @@ postcssHasPseudo({ preserve: true })
 /* becomes */
 
 [csstools-has-1a-38-2x-38-30-2t-1m-2w-2p-37-14-17-w-34-15]:not(does-not-exist) {
-	margin-bottom: 1.5rem;
-}
-.title:has(+ p) {
 	margin-bottom: 1.5rem;
 }
 ```

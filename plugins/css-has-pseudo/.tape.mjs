@@ -23,10 +23,10 @@ postcssTape(plugin)({
 	'examples/example': {
 		message: 'minimal example',
 	},
-	'examples/example:preserve-true': {
+	'examples/example:preserve-false': {
 		message: 'minimal example',
 		options: {
-			preserve: true
+			preserve: false
 		}
 	},
 	'generated-selector-cases': {
