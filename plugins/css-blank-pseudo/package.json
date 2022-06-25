@@ -69,11 +69,13 @@
 		"test:invalid-replacement": "node ./test/_valid-replacements.mjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/css-blank-pseudo"
 	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"a11y",
 		"accessibility",
@@ -99,7 +101,5 @@
 	},
 	"volta": {
 		"extends": "../../package.json"
-	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo#readme",
-	"bugs": "https://github.com/csstools/postcss-plugins/issues"
+	}
 }
