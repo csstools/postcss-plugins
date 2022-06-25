@@ -95,8 +95,8 @@
 	],
 	"csstools": {
 		"cssdbId": "blank-pseudo-class",
-		"exportName": "blankPseudo",
-		"humanReadableName": "Blank Pseudo",
+		"exportName": "postcssBlankPseudo",
+		"humanReadableName": "PostCSS Blank Pseudo",
 		"specUrl": "https://www.w3.org/TR/selectors-4/#blank"
 	},
 	"volta": {
