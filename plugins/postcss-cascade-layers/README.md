@@ -38,13 +38,43 @@ It applies extra specificity on all your styles based on :
 - the most specific selector found
 - the order in which layers are defined
 
-for `@layer A, B, C`:
+```css
+@layer A, B;
 
-| layer | specificity adjustment | selector |
-| ------ | ----------- | --- |
-| `A` | 0 | N/A |
-| `B` | 3 | `:not(#/#):not(#/#):not(#/#)` |
-| `C` | 6 | `:not(#/#):not(#/#):not(#/#):not(#/#):not(#/#):not(#/#)` |
+@layer B {
+	.a-less-specific-selector {
+		/* styles */
+	}
+}
+
+@layer A {
+	#something #very-specific {
+		/* styles */
+	}
+}
+
+@layer C {
+	.a-less-specific-selector {
+		/* styles */
+	}
+}
+```
+
+most specific selector :
+- `#something #very-specific`
+- `[2, 0, 0]`
+- `2 + 1` -> `3` to ensure there is no overlap
+
+the order in which layers are defined :
+- `A`
+- `B`
+- `C`
+
+| layer | previous adjustment | specificity adjustment | selector |
+| ------ | ------ | ----------- | --- |
+| `A` | `0` | `0 + 0 = 0` | N/A |
+| `B` | `0` | `0 + 3 = 3` | `:not(#/#):not(#/#):not(#/#)` |
+| `C` | `3` | `3 + 3 = 6` | `:not(#/#):not(#/#):not(#/#):not(#/#):not(#/#):not(#/#)` |
 
 This approach lets more important (later) layers always override less important (earlier) layers.<br>
 And layers have enough room internally so that each selector works and overrides as expected.
