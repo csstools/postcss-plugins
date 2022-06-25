@@ -14,14 +14,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-unset-value',
 		Declaration(decl) {
-			if (decl.value !== 'unset') {
+			if (decl.value.toLowerCase() !== 'unset') {
 				return;
 			}
 
 			let replacement : string|false = false;
-			if (inherited.has(decl.prop)) {
+			if (inherited.has(decl.prop.toLowerCase())) {
 				replacement = 'inherit';
-			} else if (nonInherited.has(decl.prop)) {
+			} else if (nonInherited.has(decl.prop.toLowerCase())) {
 				replacement = 'initial';
 			}
 

@@ -3,7 +3,7 @@ import { CONDITIONAL_ATRULES } from './constants';
 
 export function removeEmptyDescendantBlocks(block: Container) {
 	block.walk((node) => {
-		if (node.type === 'rule' || (node.type === 'atrule' && ['layer', ...CONDITIONAL_ATRULES].includes(node.name))) {
+		if (node.type === 'rule' || (node.type === 'atrule' && ['layer', ...CONDITIONAL_ATRULES].includes(node.name.toLowerCase()))) {
 			if (!node.nodes || !node.nodes.length) {
 				node.remove();
 			}

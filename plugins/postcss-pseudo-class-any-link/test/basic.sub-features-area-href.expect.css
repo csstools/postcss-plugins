@@ -6,6 +6,14 @@
 	order: 1;
 }
 
+:link, :visited, area[href] {
+	order: 1.1;
+}
+
+:aNy-LiNK {
+	order: 1.1;
+}
+
 :link,
 :visited,
 area[href],
@@ -105,6 +113,14 @@ area:any-link {
 
 [hidden]area:any-link {
 	order: 10.1;
+}
+
+AREA:link, AREA:visited, AREA[href] {
+	order: 10.2;
+}
+
+AREA:any-link {
+	order: 10.2;
 }
 
 area :link, area :visited, area area[href] {

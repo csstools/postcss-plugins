@@ -79,7 +79,7 @@ export class Model {
 				continue;
 			}
 
-			if ((parent as AtRule).name === 'layer') {
+			if ((parent as AtRule).name.toLowerCase() === 'layer') {
 				params.push(...this.layerParamsParsed.get((parent as AtRule).params));
 			}
 

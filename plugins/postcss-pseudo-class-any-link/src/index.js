@@ -18,7 +18,7 @@ function creator(opts) {
 	return {
 		postcssPlugin: 'postcss-pseudo-class-any-link',
 		Rule(rule, { result }) {
-			if (!rule.selector.includes(':any-link')) {
+			if (!rule.selector.toLowerCase().includes(':any-link')) {
 				return;
 			}
 
