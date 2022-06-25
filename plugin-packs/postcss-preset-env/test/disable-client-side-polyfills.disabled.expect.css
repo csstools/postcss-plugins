@@ -6,7 +6,7 @@ input:blank {
 	order: 1;
 }
 
-a[\:has\(\%3E\%20img\)] {
+[csstools-has-2p-1m-2w-2p-37-14-1q-w-2x-31-2v-15]:not(does-not-exist):not(does-not-exist) {
 	order: 2;
 }
 

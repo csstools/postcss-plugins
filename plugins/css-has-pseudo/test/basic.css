@@ -10,23 +10,141 @@ h1:has(+ p) {
 	order: 3;
 }
 
-section:not(:has(h1, h2, h3, h4, h5, h6)) {
+h1:has(~ p) {
 	order: 4;
 }
 
+section:not(:has(h1, h2, h3, h4, h5, h6)) {
+	order: 5;
+}
+
 body:has(:focus) {
-  order: 5;
+	order: 6;
 }
 
 body:not(:has(:focus)) {
-  order: 5;
+	order: 7;
 }
 
 :has-ignore(:focus),
 :ignore-has(:focus) {
-	order: 6;
+	order: 8;
 }
 
-:has(.esc\:aped) {
-	order: 7;
+:has(.esc\\\:aped) {
+	order: 9;
+}
+
+.x:has(> .a:hover) {
+	order: 10;
+}
+
+.x:has(> #a:hover) {
+	order: 11;
+}
+
+.x:has(> [a]:hover) {
+	order: 12;
+}
+
+.x:has(> [a="b"]:hover) {
+	order: 13;
+}
+
+.x:has(> [a=":has(.x)"]:hover) {
+	order: 14;
+}
+
+.x:has(> [\:has\(\%3E\%20\.a\:hover\)]:hover) {
+	order: 15;
+}
+
+.x:has(> ::before:hover) {
+	order: 16; /* not allowed by spec but encoding should work */
+}
+
+.x:has(> .a:has( + .b)) {
+	order: 17;
+}
+
+.x:has(> __foo) {
+	order: 18;
+}
+
+.x:has(> :--foo) {
+	order: 19;
+}
+
+.x:has(> *) {
+	order: 20;
+}
+
+.x:has(> .y *) {
+	order: 21;
+}
+
+.a:not(:has(> .b)) {
+	order: 22;
+}
+
+.x:has(~ .y:has(.g .h) .i) {
+	order: 23;
+}
+
+.x:has(> .a) ~ .x:has(> .b) {
+	order: 24;
+}
+
+.x:has(> .a) .b {
+	order: 24;
+}
+
+.x:has(> .🧑🏾‍🎤) {
+	order: 25;
+}
+
+.x:has(> .a), .x:has(> .b) {
+	order: 26;
+}
+
+.x:has(> .a) ~ .x:has(> .b) {
+	order: 27;
+}
+
+.x:has(> .a), .b {
+	order: 28;
+}
+
+.a, .x:has(> .b) {
+	order: 29;
+}
+
+.x:has(> .b *) {
+	order: 30;
+}
+
+.x:has(> :visited) {
+	order: 31;
+}
+
+.x:has(> :any-link) {
+	order: 31;
+}
+
+@supports selector(:has(:focus)) {
+	:has(:focus) {
+		order: 32;
+	}
+}
+
+@supports (display: grid) {
+	:has(:focus) {
+		order: 33;
+	}
+}
+
+@supports (display: grid) and selector(  :has(  :focus)) {
+	:has(:focus) {
+		order: 34;
+	}
 }

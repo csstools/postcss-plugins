@@ -1,0 +1,184 @@
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-pseudo-class.html */
+[csstools-has-z-2s-2n-31-2p-2x-32-1m-2w-2p-37-14-2x-32-34-39-38-15-w-2s-2x-3a]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	color: grey
+}
+
+[csstools-has-z-2s-2n-31-2p-2x-32-1m-2w-2p-37-14-z-2s-2n-2r-2w-2t-2r-2z-2q-33-3c-1m-2r-2w-2t-2r-2z-2t-2s-15-1q-z-2s-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: red
+}
+
+[csstools-has-z-2s-2n-31-2p-2x-32-1m-2w-2p-37-14-z-2s-2n-33-34-38-2x-33-32-1m-2r-2w-2t-2r-2z-2t-2s-15-1q-z-2s-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: red
+}
+
+[csstools-has-z-2s-2n-31-2p-2x-32-1m-2w-2p-37-14-z-2s-2n-2r-2w-2t-2r-2z-2q-33-3c-1m-2s-2x-37-2p-2q-30-2t-2s-15-1q-z-2s-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: green
+}
+
+[csstools-has-z-2s-2n-31-2p-2x-32-1m-2w-2p-37-14-z-2s-2n-33-34-38-2x-33-32-1m-2s-2x-37-2p-2q-30-2t-2s-15-1q-w-1m-2x-37-14-z-2s-2n-37-39-2q-2y-2t-2r-38-18-w-z-2s-2n-37-39-2q-2y-2t-2r-38-1e-15]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: green
+}
+
+[csstools-has-z-2s-2n-31-2p-2x-32-1m-2w-2p-37-14-z-2s-2n-33-34-38-2v-36-33-39-34-1m-2s-2x-37-2p-2q-30-2t-2s-15-1q-z-2s-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: blue
+}
+
+[csstools-has-z-2s-2n-31-2p-2x-32-1m-32-33-38-14-1m-2w-2p-37-14-z-2s-2n-2r-2w-2t-2r-2z-2q-33-3c-1m-2t-32-2p-2q-30-2t-2s-15-15-1q-z-2s-2n-37-39-2q-2y-2t-2r-38-1f]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: green
+}
+
+[csstools-has-z-2s-2n-31-2p-2x-32-1m-32-33-38-14-1m-2w-2p-37-14-z-2s-2n-33-34-38-2x-33-32-1m-2t-32-2p-2q-30-2t-2s-15-15-w-1m-2x-37-14-z-2s-2n-37-39-2q-2y-2t-2r-38-1f-18-w-z-2s-2n-37-39-2q-2y-2t-2r-38-1g-15]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: green
+}
+
+[csstools-has-z-2s-2n-31-2p-2x-32-1m-32-33-38-14-1m-2w-2p-37-14-z-2s-2n-33-34-38-2v-36-33-39-34-1m-2t-32-2p-2q-30-2t-2s-15-15-1q-z-2s-2n-37-39-2q-2y-2t-2r-38-1f]:not(#does-not-exist):not(#does-not-exist):not(#does-not-exist) {
+	color: blue
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-ancestor-position.html */
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-1a-2r-2n-38-2t-37-38-18-w-2j-2r-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+	background-color: red
+}
+
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-1q-w-1a-2r-2n-38-2t-37-38-18-w-1q-w-2j-2r-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+	background-color: green
+}
+
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-3i-w-1a-2r-2n-38-2t-37-38-18-w-3i-w-2j-2r-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+	background-color: yellow
+}
+
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-17-w-1a-2r-2n-38-2t-37-38-18-w-17-w-2j-2r-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+	background-color: blue
+}
+
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-3i-w-2s-2x-3a-w-1a-2r-2n-38-2t-37-38-18-w-3i-w-2s-2x-3a-w-2j-2r-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	background-color: purple
+}
+
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-17-w-2s-2x-3a-w-1a-2r-2n-38-2t-37-38-18-w-17-w-2s-2x-3a-w-2j-2r-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-w-z-2r-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	background-color: pink
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-in-adjacent-position.html */
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-1a-2p-2n-2c-2t-37-38-18-w-2j-2p-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+	background-color: red;
+}
+
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-1q-w-1a-2p-2n-2c-2t-37-38-18-w-1q-w-2j-2p-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+	background-color: green;
+}
+
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-3i-w-1a-2p-2n-2c-2t-37-38-18-w-3i-w-2j-2p-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+	background-color: yellow;
+}
+
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-17-w-1a-2p-2n-2c-2t-37-38-18-w-17-w-2j-2p-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist) {
+	background-color: blue;
+}
+
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-3i-w-2s-2x-3a-w-1a-2p-2n-2c-2t-37-38-18-w-3i-w-2s-2x-3a-w-2j-2p-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	background-color: purple;
+}
+
+[csstools-has-2s-2x-3a-1m-2w-2p-37-14-17-w-2s-2x-3a-w-1a-2p-2n-2c-2t-37-38-18-w-17-w-2s-2x-3a-w-2j-2p-2n-38-2t-37-38-2n-2p-38-38-36-2l-15-17-z-2p-2n-37-39-2q-2y-2t-2r-38]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	background-color: pink;
+}
+
+/* https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/attribute-or-elemental-selectors-in-has.html */
+div,
+main {
+	background-color: grey;
+	margin: 5px;
+	min-height: 20px;
+	min-width: 20px;
+	padding: 5px;
+}
+
+[csstools-has-1a-2q-2n-37-39-2q-2y-2t-2r-38-1m-2w-2p-37-14-1q-w-1a-2q-2n-2r-2w-2x-30-2s-15]:not(.does-not-exist) {
+	background-color: red;
+}
+
+[csstools-has-1a-2q-2n-37-39-2q-2y-2t-2r-38-1m-2w-2p-37-14-1a-2q-2n-2s-2t-37-2r-2t-32-2s-2p-32-38-15]:not(.does-not-exist) {
+	background-color: green;
+}
+
+[csstools-has-1a-2q-2n-37-39-2q-2y-2t-2r-38-1m-2w-2p-37-14-2j-2p-38-38-36-32-2p-31-2t-1p-y-2q-2n-2s-2t-37-2r-2t-32-2s-2p-32-38-y-2l-15]:not(.does-not-exist) {
+	background-color: blue;
+}
+
+[csstools-has-1a-2q-2n-37-39-2q-2y-2t-2r-38-1m-2w-2p-37-14-z-2q-2n-2s-2x-3a-2n-2s-2t-37-2r-2t-32-2s-2p-32-38-15]:not(#does-not-exist) {
+	background-color: yellow;
+}
+
+[csstools-has-1a-2q-2n-37-39-2q-2y-2t-2r-38-1m-2w-2p-37-14-2q-2n-2s-2t-37-2r-2t-32-2s-2p-32-38-15]:not(does-not-exist) {
+	background-color: yellowgreen;
+}
+
+[csstools-has-z-3a-2x-37-2x-38-2t-2s-19-1d-1m-2w-2p-37-14-1m-30-2x-32-2z-15]:not(#does-not-exist) {
+	color: green;
+}
+
+[csstools-has-z-3a-2x-37-2x-38-2t-2s-19-1e-1m-2w-2p-37-14-1a-2s-33-2t-37-19-32-33-38-19-2t-3c-2x-37-38-15]:not(#does-not-exist) {
+	color: yellow;
+}
+
+[csstools-has-z-3a-2x-37-2x-38-2t-2s-19-1f-1m-2w-2p-37-14-1m-30-2x-32-2z-15]:not(#does-not-exist) {
+	color: yellowgreen;
+}
+
+[csstools-has-z-3a-2x-37-2x-38-2t-2s-19-1g-1m-2w-2p-37-14-1a-2s-33-2t-37-19-32-33-38-19-2t-3c-2x-37-38-15]:not(#does-not-exist) {
+	color: red;
+}
+
+[csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-z-2u-33-33-15]:not(#does-not-exist):not(#does-not-exist) {
+	--t0:PASS;
+}
+
+[csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-1a-2u-33-33-15]:not(#does-not-exist) {
+	--t0:FAIL;
+}
+
+[csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-37-34-2p-32-z-2u-33-33-15]:not(#does-not-exist):not(#does-not-exist):not(does-not-exist) {
+	--t1:PASS;
+}
+
+[csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-z-2u-33-33-15]:not(#does-not-exist):not(#does-not-exist) {
+	--t1:FAIL;
+}
+
+[csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-1a-2q-2p-36-18-w-z-2u-33-33-15]:not(#does-not-exist):not(#does-not-exist) {
+	--t2:FAIL;
+}
+
+[csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-z-2u-33-33-18-w-1a-2q-2p-36-15]:not(#does-not-exist):not(#does-not-exist) {
+	--t2:PASS;
+}
+
+[csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-1a-2q-2p-36-18-w-z-2u-33-33-15]:not(#does-not-exist):not(#does-not-exist) {
+	--t3:PASS;
+}
+
+[csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-1a-2u-33-33-18-w-1a-2q-2p-36-15]:not(#does-not-exist) {
+	--t3:FAIL;
+}
+
+[csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-37-34-2p-32-w-17-w-37-34-2p-32-15]:not(#does-not-exist):not(does-not-exist):not(does-not-exist) {
+	--t4:PASS;
+}
+
+[csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-37-34-2p-32-15]:not(#does-not-exist):not(does-not-exist) {
+	--t4:FAIL;
+}
+
+[csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-37-34-2p-32-18-w-30-2x-18-w-z-2u-33-33-15]:not(#does-not-exist):not(#does-not-exist) {
+	--t5:PASS;
+}
+
+[csstools-has-z-31-2p-2x-32-2n-37-34-2t-2r-2x-2u-2x-2r-2x-38-3d-w-1m-2w-2p-37-14-37-34-2p-32-18-w-30-2x-18-w-34-15]:not(#does-not-exist):not(does-not-exist) {
+	--t5:FAIL;
+}
+
+[csstools-has-z-32-2t-37-38-2t-2s-2n-31-2p-2x-32-w-1m-2w-2p-37-14-1q-w-1m-2w-2p-37-14-z-2r-15-15]:not(#does-not-exist):not(#does-not-exist) {
+	color: red;
+}
