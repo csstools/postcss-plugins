@@ -15,6 +15,7 @@ readmeDoc = readmeDoc.replace(`<!-- Available Variables: -->
 <!-- <humanReadableName> PostCSS Your Plugin -->
 <!-- <exportName> postcssYourPlugin -->
 <!-- <packageName> @csstools/postcss-your-plugin -->
+<!-- <packageVersion> 1.0.0 -->
 <!-- <packagePath> plugins/postcss-your-plugin -->
 <!-- <cssdbId> your-feature -->
 <!-- <specUrl> https://www.w3.org/TR/css-color-4/#funcdef-color -->
@@ -90,6 +91,7 @@ readmeDoc = readmeDoc.replaceAll('<cssdbId>', packageJSONInfo.csstools.cssdbId);
 readmeDoc = readmeDoc.replaceAll('<exportName>', packageJSONInfo.csstools.exportName);
 readmeDoc = readmeDoc.replaceAll('<humanReadableName>', packageJSONInfo.csstools.humanReadableName);
 readmeDoc = readmeDoc.replaceAll('<packageName>', packageJSONInfo.name);
+readmeDoc = readmeDoc.replaceAll('<packageVersion>', packageJSONInfo.version);
 readmeDoc = readmeDoc.replaceAll('<packagePath>', path.join(path.basename(path.dirname(process.cwd())), path.basename(process.cwd())));
 readmeDoc = readmeDoc.replaceAll('<specUrl>', packageJSONInfo.csstools.specUrl);
 

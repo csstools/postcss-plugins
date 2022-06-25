@@ -9,6 +9,7 @@ export default function transformNestRuleWithinRule(node, walk, opts) {
 
 	// clone the parent as a new rule with children appended to it
 	const rule = parent.clone().removeAll().append(node.nodes);
+	rule.raws.semicolon = true; /* nested rules end with "}" and do not have this flag set */
 
 	// replace the node with the new rule
 	node.replaceWith(rule);

@@ -1,0 +1,15 @@
+:is(::after):hover {
+	order: 1.0;
+}
+
+:is(.some, ::after):focus {
+	order: 1.1;
+}
+
+:is(.some, :is(.other, ::after)):focus {
+	order: 1.2;
+}
+
+:is(:not(::after)):focus {
+	order: 1.3;
+}

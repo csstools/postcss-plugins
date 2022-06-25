@@ -1,14 +1,21 @@
 import selectorParser from 'postcss-selector-parser';
-import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
 
 export function adjustSelectorSpecificity(selector: string, amount: number): string {
-	const selectorAST = selectorParser().astSync(selector + generateNot(amount));
+	const selectorAST = selectorParser().astSync(selector);
+	const adjustment = selectorParser().astSync(generateNot(amount));
 
-	selectorAST.walk((node) => {
-		if ('nodes' in node) {
-			sortCompoundSelectorsInsideComplexSelector(node);
+	let didInsert = false;
+	for (let i = 0; i < selectorAST.nodes[0].nodes.length; i++) {
+		if (selectorAST.nodes[0].nodes[i].type === 'combinator' || selectorParser.isPseudoElement(selectorAST.nodes[0].nodes[i])) {
+			selectorAST.nodes[0].insertBefore(selectorAST.nodes[0].nodes[i], adjustment);
+			didInsert = true;
+			break;
 		}
-	});
+	}
+
+	if (!didInsert) {
+		selectorAST.nodes[0].insertAfter(selectorAST.nodes[0].nodes[selectorAST.nodes[0].nodes.length - 1], adjustment);
+	}
 
 	return selectorAST.toString();
 }

@@ -1,8 +1,12 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### 7.1.5 (June 23, 2022)
+
+- Fix selector order with any pseudo element. This plugin will no longer re-order selectors.
+
 ### 7.1.4 (May 17, 2022)
 
- - Fix selector order with `:before` and other pseudo elements.
+- Fix selector order with `:before` and other pseudo elements.
 
 ### 7.1.3 (May 6, 2022)
 

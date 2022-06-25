@@ -1,5 +1,9 @@
 # Changes to PostCSS Cascade Layers
 
+### 1.0.4 (June 23, 2022)
+
+- Fix selector order with any pseudo element. This plugin will no longer re-order selectors.
+
 ### 1.0.3 (June 4, 2022)
 
 - Update `@csstools/selector-specificity` (major)

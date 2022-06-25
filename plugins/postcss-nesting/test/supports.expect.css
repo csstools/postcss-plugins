@@ -1,13 +1,13 @@
 a {
-	order: 1
+	order: 1;
 }
 @supports (order: 2) {
 	a {
-		order: 2
+		order: 2;
 }
 	}
 @supports (background-image: url('fo and o.png')) {
 	a {
-		order: 3
+		order: 3;
 }
 	}
