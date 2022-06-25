@@ -2,6 +2,7 @@
 <!-- <humanReadableName> PostCSS Your Plugin -->
 <!-- <exportName> postcssYourPlugin -->
 <!-- <packageName> @csstools/postcss-your-plugin -->
+<!-- <packageVersion> 1.0.0 -->
 <!-- <packagePath> plugins/postcss-your-plugin -->
 <!-- <cssdbId> your-feature -->
 <!-- <specUrl> https://www.w3.org/TR/css-color-4/#funcdef-color -->
