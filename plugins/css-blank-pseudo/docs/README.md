@@ -88,6 +88,17 @@ or
 [<humanReadableName>] works in all major browsers, including Safari 6+ and
 Internet Explorer 9+ without any additional polyfills.
 
+This plugin conditionally uses `MutationObserver` to ensure recently inserted 
+inputs get correct styling upon insertion. If you intend to rely on that 
+behaviour for browsers that do not support `MutationObserver`, you have two
+options:
+
+1. Polyfill `MutationObserver`. As long as it runs before `cssBlankPseudoInit`,
+the polyfill will work.
+2. If you don't want to polyfill `MutationObserver` you can also manually fire
+a `change` event upon insertion so they're automatically inspected by the
+polyfill.
+
 ### Browser Usage
 
 #### force

@@ -2,6 +2,8 @@
 
 ### Unreleased (major)
 
+- Updated: The polyfill now only attaches a single listener to the body so it's
+more efficient and also does less work at the MutationObserver handler.
 - Breaking: removed old CDN urls
 - Breaking: removed old CLI
 
