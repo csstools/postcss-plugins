@@ -8,10 +8,10 @@ function createNewEvent(eventName) {
 	let event;
 
 	if (typeof(Event) === 'function') {
-		event = new Event(eventName);
+		event = new Event(eventName, { bubbles: true });
 	} else {
 		event = document.createEvent('Event');
-		event.initEvent(eventName, true, true);
+		event.initEvent(eventName, true, false);
 	}
 
 	return event;
@@ -63,7 +63,7 @@ function observeSelectedOfHTMLElement(HTMLElement) {
 		nativeSet.apply(this, arguments);
 
 		const event = createNewEvent('change');
-		this.dispatchEvent(event);
+		this.parentElement.dispatchEvent(event);
 	};
 
 	Object.defineProperty(HTMLElement.prototype, 'selected', descriptor);
