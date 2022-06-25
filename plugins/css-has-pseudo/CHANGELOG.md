@@ -1,5 +1,32 @@
 # Changes to CSS Has Pseudo
 
+### Unreleased (major)
+
+[Read the full changelog](https://github.com/csstools/postcss-plugins/wiki/PostCSS-Preset-Env-8)
+
+- Breaking: removed old CDN urls
+- Added: 'hover' options for browser polyfill
+- Added: 'observedAttributes' options for browser polyfill
+- Added: 'forcePolyfill' options for browser polyfill
+- Added: Rules within `@supports selector(:has(something))` won't be transformed.
+- Fix: Use base36 encoding to support all possible selectors.
+
+#### How to migrate :
+
+##### Re-build your CSS with the new version of the library.
+
+##### If you use a CDN url, please update it.
+
+```diff
+- <script src="https://unpkg.com/css-has-pseudo/browser"></script>
++ <script src="https://unpkg.com/css-has-pseudo/dist/browser-global.js"></script>
+```
+
+```diff
+- <script src="https://unpkg.com/css-has-pseudo/browser.min"></script>
++ <script src="https://unpkg.com/css-has-pseudo/dist/browser-global.js"></script>
+```
+
 ### 3.0.4 (February 5, 2022)
 
 - Rebuild of browser polyfills
