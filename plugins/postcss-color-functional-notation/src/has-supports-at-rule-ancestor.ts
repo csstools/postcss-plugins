@@ -8,7 +8,7 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 			continue;
 		}
 
-		if ((parent as AtRule).name === 'supports' && (parent as AtRule).params.indexOf('(color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5))') !== -1) {
+		if ((parent as AtRule).name === 'supports' && (parent as AtRule).params.toLowerCase().indexOf('(color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5))') !== -1) {
 			return true;
 		}
 
