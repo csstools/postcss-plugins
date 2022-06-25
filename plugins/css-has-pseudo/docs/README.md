@@ -85,7 +85,7 @@ After :
 
 ### Specificity
 
-`:has` transforms will result in at least one tag selector with specificity `0, 1, 0`.
+`:has` transforms will result in at least one attribute selector with specificity `0, 1, 0`.
 If your selector has only tags we won't be able to match the original specificity.
 
 Before :
