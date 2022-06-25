@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
-import isValidReplacement from './is-valid-replacement.js';
+import isValidReplacement from './is-valid-replacement.mjs';
 
 type pluginOptions = { color?: string, preserve?: boolean };
 

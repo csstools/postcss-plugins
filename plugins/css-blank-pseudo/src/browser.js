@@ -1,5 +1,5 @@
 /* global document,MutationObserver */
-import isValidReplacement from './is-valid-replacement.js';
+import isValidReplacement from './is-valid-replacement.mjs';
 
 // form control elements selector
 const BLANK_CANDIDATES = 'input,select,textarea';
