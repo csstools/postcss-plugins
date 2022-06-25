@@ -201,7 +201,7 @@ The `removeListener` function removes the native `prefers-color-scheme`
 listener, which may or may not be applied, depending on your browser support.
 This is provided to give you complete control over plugin cleanup.
 
-#### debug mode
+#### debug
 
 If styles are not applied you can enable debug mode to log exceptions.
 
