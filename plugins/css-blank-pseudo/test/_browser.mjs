@@ -1,3 +1,4 @@
+/* global window,requestAnimationFrame */
 import puppeteer from 'puppeteer';
 import http from 'http';
 import { promises as fsp } from 'fs';
@@ -61,7 +62,7 @@ import { promises as fsp } from 'fs';
 			const input = await page.$(selector);
 			await input.click({ clickCount: 3 });
 			await page.keyboard.press('Backspace');
-		}
+		};
 
 		// Default
 		{

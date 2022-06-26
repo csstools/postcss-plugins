@@ -4,7 +4,7 @@ import isValidReplacement from '../src/is-valid-replacement.mjs';
 const valid = [
 	'[some-attribute]',
 	'[data-blank]',
-	'.class'
+	'.class',
 ];
 
 const invalid = [
