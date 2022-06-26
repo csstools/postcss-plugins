@@ -280,7 +280,7 @@ postcssPresetEnv({
 
 Passing `autoprefixer: false` disables autoprefixer.
 
-⚠️ [autoprefixer] has [complex logic to fix CSS Grid in IE en older Edge](https://github.com/postcss/autoprefixer#grid-autoplacement-support-in-ie).
+⚠️ [autoprefixer] has [complex logic to fix CSS Grid in IE and older Edge](https://github.com/postcss/autoprefixer#grid-autoplacement-support-in-ie).
 
 This can have unexpected results with certain features and when [`preserve: true`](#preserve) is used. (defaults to `true`)
 
