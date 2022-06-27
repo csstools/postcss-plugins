@@ -1,10 +1,32 @@
+import type { PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
+import isValidReplacement from './is-valid-replacement.mjs';
 
-const creator = opts => {
-	const replaceWith = String(Object(opts).replaceWith || '[blank]');
-	const replacementAST = parser().astSync(replaceWith);
+type pluginOptions = { color?: string, preserve?: boolean };
 
-	const preserve = Boolean('preserve' in Object(opts) ? opts.preserve : true);
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign(
+		// Default options
+		{
+			preserve: true,
+			replaceWith: '[blank]',
+		},
+		// Provided options
+		opts,
+	);
+	const replacementAST = parser().astSync(options.replaceWith);
+
+	if (!isValidReplacement(options.replaceWith)) {
+		return {
+			postcssPlugin: 'css-blank-pseudo',
+			Once: (root, { result }) => {
+				root.warn(
+					result,
+					`${options.replaceWith} is not a valid replacement since it can't be applied to single elements.`,
+				);
+			},
+		};
+	}
 
 	return {
 		postcssPlugin: 'css-blank-pseudo',
@@ -26,7 +48,7 @@ const creator = opts => {
 							return;
 						}
 
-						selector.replaceWith(replacementAST.clone());
+						selector.replaceWith(replacementAST.clone({}));
 					});
 				}).processSync(rule.selector);
 
@@ -46,7 +68,7 @@ const creator = opts => {
 
 			const clone = rule.clone({ selector: modifiedSelector });
 
-			if (preserve) {
+			if (options.preserve) {
 				rule.before(clone);
 			} else {
 				rule.replaceWith(clone);
@@ -58,3 +80,4 @@ const creator = opts => {
 creator.postcss = true;
 
 export default creator;
+

@@ -1,0 +1,6 @@
+input[blank] {
+	background-color: yellow;
+}
+input:blank {
+	background-color: yellow;
+}

@@ -1,104 +1,163 @@
-# CSS Blank Pseudo [<img src="http://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][CSS Blank Pseudo]
+# PostCSS Blank Pseudo [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![NPM Version][npm-img]][npm-url]
-[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/css-blank-pseudo.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/blank-pseudo-class.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-[CSS Blank Pseudo] lets you style form elements when they are empty, following
+[PostCSS Blank Pseudo] lets you style form elements when they are empty, following 
 the [Selectors Level 4] specification.
 
-```css
-input {
-  /* style an input */
-}
-
+```pcss
 input:blank {
-  /* style an input without a value */
-}
-```
-
-## Usage
-
-From the command line, transform CSS files that use `:blank` selectors:
-
-```bash
-npx css-blank-pseudo SOURCE.css --output TRANSFORMED.css
-```
-
-Next, use your transformed CSS with this script:
-
-```html
-<link rel="stylesheet" href="TRANSFORMED.css">
-<script src="https://unpkg.com/css-blank-pseudo/dist/browser-global.js"></script>
-<script>cssBlankPseudo(document)</script>
-```
-
-⚠️ Please use a versioned url, like this : `https://unpkg.com/css-blank-pseudo@3.0.0/dist/browser-global.js`
-Without the version, you might unexpectedly get a new major version of the library with breaking changes.
-
-⚠️ If you were using an older version via a CDN, please update the entire url.
-The old URL will no longer work in a future release.
-
-That’s it. The script works in most browsers.
-
-## How it works
-
-The [PostCSS plugin](README-POSTCSS.md) clones rules containing `:blank`,
-replacing them with an alternative `[blank]` selector.
-
-```css
-input:blank {
-  background-color: yellow;
+	background-color: yellow;
 }
 
 /* becomes */
 
 input[blank] {
-  background-color: yellow;
+	background-color: yellow;
 }
-
 input:blank {
-  background-color: yellow;
+	background-color: yellow;
 }
 ```
 
-Next, the [JavaScript library](README-BROWSER.md) adds a `blank` attribute to
-elements otherwise matching `:blank` natively.
+## Usage
 
-```html
-<input value="" blank>
-<input value="This element has a value">
+Add [PostCSS Blank Pseudo] to your project:
+
+```bash
+npm install postcss css-blank-pseudo --save-dev
 ```
 
-## ⚠️ `:not(:blank)`
+Use it as a [PostCSS] plugin:
 
-with option : `preserve` `true`
+```js
+const postcss = require('postcss');
+const postcssBlankPseudo = require('css-blank-pseudo');
 
-```css
-input:not(:blank) {
-  background-color: yellow;
+postcss([
+	postcssBlankPseudo(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+[PostCSS Blank Pseudo] runs in all Node environments, with special
+instructions for:
+
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
+
+## Options
+
+### preserve
+
+The `preserve` option determines whether the original notation
+is preserved. By default, it is preserved.
+
+```js
+postcssBlankPseudo({ preserve: false })
+```
+
+```pcss
+input:blank {
+	background-color: yellow;
 }
 
 /* becomes */
 
-input:not([blank]) {
-  background-color: yellow;
-}
-
-input:not(:blank) {
-  background-color: yellow;
+input[blank] {
+	background-color: yellow;
 }
 ```
 
-When you do not include the JS polyfill one will always match in browsers that support `:blank` natively.
-In browsers that do not support `:blank` natively the rule will be invalid.
+### replaceWith
 
-_currently no browsers support `:blank`_
+The `replaceWith` option determines the selector to use when replacing
+the `:blank` pseudo. By default is `[blank]`
 
+```js
+postcssBlankPseudo({ replaceWith: '.css-blank' })
+```
 
+```pcss
+input:blank {
+	background-color: yellow;
+}
+
+/* becomes */
+
+.foo {
+	color: blue;
+	color: red;
+}
+
+.baz {
+	color: green;
+}
+```
+
+Note that changing this option implies that it needs to be passed to the
+browser polyfill as well.
+
+## Browser
+
+```js
+import cssBlankPseudoInit from 'css-blank-pseudo/browser';
+
+cssBlankPseudoInit();
+```
+
+or
+
+```html
+<!-- When using a CDN url you will have to manually update the version number -->
+<script src="https://unpkg.com/css-blank-pseudo@3.0.3/dist/browser-global.js"></script>
+<script>cssBlankPseudoInit()</script>
+```
+
+[PostCSS Blank Pseudo] works in all major browsers, including Safari 6+ and
+Internet Explorer 9+ without any additional polyfills.
+
+This plugin conditionally uses `MutationObserver` to ensure recently inserted 
+inputs get correct styling upon insertion. If you intend to rely on that 
+behaviour for browsers that do not support `MutationObserver`, you have two
+options:
+
+1. Polyfill `MutationObserver`. As long as it runs before `cssBlankPseudoInit`,
+the polyfill will work.
+2. If you don't want to polyfill `MutationObserver` you can also manually fire
+a `change` event upon insertion so they're automatically inspected by the
+polyfill.
+
+### Browser Usage
+
+#### force
+
+The `force` option determines whether the library runs even if the browser 
+supports the selector or not. By default, it won't run if the browser does
+support the selector.
+
+```js
+cssBlankPseudoInit({ force: true });
+```
+
+#### replaceWith
+
+Similar to the option for the PostCSS Plugin, `replaceWith` determines the
+attribute or class to apply to an element when it's considered to be `:blank`.
+
+```js
+cssBlankPseudoInit({ replaceWith: '.css-blank' });
+```
+
+This option should be used if it was changed at PostCSS configuration level.
+
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+[css-url]: https://cssdb.org/#blank-pseudo-class
 [discord]: https://discord.gg/bUadyRwkJS
-[npm-img]: https://img.shields.io/npm/v/css-blank-pseudo.svg
 [npm-url]: https://www.npmjs.com/package/css-blank-pseudo
 
-[CSS Blank Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo
-[PostCSS Preset Env]: https://preset-env.cssdb.org/
-[Selectors Level 4]: https://drafts.csswg.org/selectors-4/#blank
+[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
+[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
+[PostCSS]: https://github.com/postcss/postcss
+[PostCSS Loader]: https://github.com/postcss/postcss-loader
+[PostCSS Blank Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo
+[Selectors Level 4]: https://www.w3.org/TR/selectors-4/#blank
