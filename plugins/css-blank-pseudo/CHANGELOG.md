@@ -23,6 +23,16 @@ more efficient and also does less work at the MutationObserver handler.
 + cssBlankPseudoInit()
 ```
 
+```diff
+- cssBlankPseudo({
+-  attr: false,
+-  className: 'blank'
+- })
++ cssBlankPseudoInit({
++  replaceWith: '.blank'
++ })
+```
+
 ### 3.0.3 (February 5, 2022)
 
 - Rebuild of browser polyfills
