@@ -2,6 +2,14 @@
 	order: 0;
 }
 
+:host-context([dir="ltr"]) {
+	order: 0.1;
+}
+
+:host-context([dir="rtl"]) {
+	order: 0.2;
+}
+
 :host-context([dir="ltr"]) test {
 	order: 1;
 }

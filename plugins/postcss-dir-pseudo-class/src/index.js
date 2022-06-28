@@ -1,7 +1,5 @@
 import selectorParser from 'postcss-selector-parser';
 
-const dirRegex = /:dir\([^)]*\)/;
-
 function creator(opts) {
 	const dir = Object(opts).dir;
 	const preserve = Boolean(Object(opts).preserve);
@@ -13,7 +11,7 @@ function creator(opts) {
 			let emittedWarningForHierarchicalDir = false;
 
 			// walk rules using the :dir pseudo-class
-			if (!dirRegex.test(rule.selector)) {
+			if (!rule.selector.toLowerCase().includes(':dir(')) {
 				return;
 			}
 
@@ -29,19 +27,23 @@ function creator(opts) {
 								return;
 							}
 
-							if (':dir' !== node.value) {
+							if (':dir' !== node.value.toLowerCase()) {
+								return;
+							}
+
+							if (!node.nodes || !node.nodes.length) {
 								return;
 							}
 
 							// value of the :dir pseudo-class
-							const value = node.nodes.toString();
+							const value = node.nodes.toString().toLowerCase();
 							if (value !== 'rtl' && value !== 'ltr') {
 								return;
 							}
 
 							const parent = node.parent;
 							const otherDirPseudos = parent.nodes.filter((other) => {
-								return 'pseudo' === other.type && ':dir' === other.value;
+								return 'pseudo' === other.type && ':dir' === other.value.toLowerCase();
 							});
 							if (otherDirPseudos.length > 1 && !emittedWarningForHierarchicalDir) {
 								emittedWarningForHierarchicalDir = true;
@@ -73,8 +75,8 @@ function creator(opts) {
 							// conditionally prepend a combinator before inserting the [dir] attribute
 							const first = parent.nodes[0];
 							const firstIsSpaceCombinator = first && 'combinator' === first.type && ' ' === first.value;
-							const firstIsHtml = first && 'tag' === first.type && 'html' === first.value;
-							const firstIsRoot = first && 'pseudo' === first.type && ':root' === first.value;
+							const firstIsHtml = first && 'tag' === first.type && 'html' === first.value.toLowerCase();
+							const firstIsRoot = first && 'pseudo' === first.type && ':root' === first.value.toLowerCase();
 
 							if (first && !firstIsHtml && !firstIsRoot && !firstIsSpaceCombinator) {
 								parent.prepend(
@@ -150,10 +152,10 @@ function creator(opts) {
 				return;
 			}
 
-			if (preserve) {
-				rule.cloneBefore({ selector: modifiedSelector });
-			} else {
-				rule.selector = modifiedSelector;
+			rule.cloneBefore({ selector: modifiedSelector });
+
+			if (!preserve) {
+				rule.remove();
 			}
 		},
 	};

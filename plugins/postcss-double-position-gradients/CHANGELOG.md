@@ -1,5 +1,9 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased
+
+- Fix case insensitive matching.
+
 ### 3.1.1 (March 7, 2022)
 
 - Add typescript support

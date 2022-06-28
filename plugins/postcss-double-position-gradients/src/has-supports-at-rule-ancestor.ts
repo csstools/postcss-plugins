@@ -9,7 +9,7 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 			continue;
 		}
 
-		if ((parent as AtRule).name === 'supports' && includesGradientsFunction((parent as AtRule).params)) {
+		if ((parent as AtRule).name.toLowerCase() === 'supports' && includesGradientsFunction((parent as AtRule).params.toLowerCase())) {
 			return true;
 		}
 
