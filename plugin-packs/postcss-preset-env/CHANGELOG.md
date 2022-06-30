@@ -38,12 +38,14 @@
 - Updated `@csstools/postcss-unset-value` to `1.0.1` (patch)
 - Updated `postcss-nesting` to `10.1.6` (patch)
 - Updated `postcss-pseudo-class-any-link` to `7.1.4` (patch)
+- Updated `autoprefixer` to `10.4.7` (patch)
 
 ### 7.5.0 (May 2, 2022)
 
 - Added `@csstools/postcss-unset-value` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset-value#readme) for usage details.
 - Added `@csstools/postcss-stepped-value-functions` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions#readme) for usage details.
 - Updated `cssdb` to `6.6.0` (minor)
+- Updated `autoprefixer` to `10.4.6` (patch)
 
 ### 7.4.4 (April 26, 2022)
 

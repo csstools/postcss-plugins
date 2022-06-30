@@ -1,6 +1,6 @@
 
 
-.foo:is(::before), ::before:focus {
+.foo::before, ::before:focus {
 		order: 1;
 }
 
@@ -31,3 +31,7 @@
 .a::after:hover {
 			order: 8;
 		}
+
+.something_else > .anything::before {
+		order: 9;
+}

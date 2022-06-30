@@ -1,5 +1,27 @@
 # Changes to PostCSS Nesting
 
+### 10.1.10 (June 30, 2022)
+
+- Partially revert the changes to pseudo element selectors from 10.1.9.
+
+```diff
+.anything::before {
+	@nest .something_else > & {
+		order: 1;
+	}
+}
+
+/* becomes */
+
+- .something_else > :is(.anything:::before) { /* 10.1.9 */
++ .something_else > .anything::before { /* previous and restored behavior */
+		order: 1;
+}
+```
+
+The exact behavior of this pattern is unspecified and might change in the future.
+We are reverting to the previous behavior until the specification is clarified.
+
 ### 10.1.9 (June 23, 2022)
 
 - Fix selector order with any pseudo element.
