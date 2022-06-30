@@ -157,7 +157,7 @@ export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 }
 
 function isSimpleSelector(selector) {
-	if (selector.type === 'combinator' || parser.isPseudoElement(selector)) {
+	if (selector.type === 'combinator') {
 		return false;
 	}
 
@@ -178,7 +178,7 @@ function isCompoundSelector(selector, toSelector = null) {
 	}
 
 	const hasCombinators = !!(selector.parent.nodes.find((x) => {
-		return x.type === 'combinator' || parser.isPseudoElement(x);
+		return x.type === 'combinator';
 	}));
 
 	if (hasCombinators) {
@@ -208,10 +208,6 @@ function nestingIsFirstAndOnlyInSelectorWithEitherSpaceOrChildCombinator(selecto
 
 	for (let i = 1; i < selector.parent.nodes.length; i++) {
 		if (selector.parent.nodes[i].type === 'combinator' && (selector.parent.nodes[i].value !== ' ' && selector.parent.nodes[i].value !== '>')) {
-			return false;
-		}
-
-		if (parser.isPseudoElement(selector.parent.nodes[i])) {
 			return false;
 		}
 	}
