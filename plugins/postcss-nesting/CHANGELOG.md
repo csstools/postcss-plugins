@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### Unreleased
+### 10.1.10 (June 30, 2022)
 
 - Partially revert the changes to pseudo element selectors from 10.1.9.
 
