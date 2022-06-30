@@ -1,41 +1,22 @@
-.focus-visible {
+.js-focus-visible .focus-visible {
 	order: 1;
 }
 
-:focus-visible {
-	order: 1;
-}
-
-.focus-visible,.focus-visible test,
-test .focus-visible,
-test test.focus-visible,
-test .focus-visible test,
-test test.focus-visible test,
-test .focus-visible .focus-visible test,
-test :matches(.focus-visible) test,
-test :matches(.focus-visible test) test,
-test :matches(test .focus-visible) test,
-test :matches(test test.focus-visible) test,
-test :matches(test .focus-visible test) test,
-test :matches(test test.focus-visible test) test,
-test :matches(test .focus-visible .focus-visible test) test {
-	order: 2;
-}
-
-:focus-visible,
-:focus-visible test,
-test :focus-visible,
-test test:focus-visible,
-test :focus-visible test,
-test test:focus-visible test,
-test :focus-visible :focus-visible test,
-test :matches(:focus-visible) test,
-test :matches(:focus-visible test) test,
-test :matches(test :focus-visible) test,
-test :matches(test test:focus-visible) test,
-test :matches(test :focus-visible test) test,
-test :matches(test test:focus-visible test) test,
-test :matches(test :focus-visible :focus-visible test) test {
+.js-focus-visible .focus-visible,
+.js-focus-visible .focus-visible test,
+.js-focus-visible test .focus-visible,
+.js-focus-visible test test.focus-visible,
+html.js-focus-visible[dir="rtl"] .focus-visible,
+.js-focus-visible test .focus-visible test,
+.js-focus-visible test test.focus-visible test,
+.js-focus-visible test .focus-visible .focus-visible test,
+.js-focus-visible test :matches(.focus-visible) test,
+.js-focus-visible test :matches(.focus-visible test) test,
+.js-focus-visible test :matches(test .focus-visible) test,
+.js-focus-visible test :matches(test test.focus-visible) test,
+.js-focus-visible test :matches(test .focus-visible test) test,
+.js-focus-visible test :matches(test test.focus-visible test) test,
+.js-focus-visible test :matches(test .focus-visible .focus-visible test) test {
 	order: 2;
 }
 
@@ -52,14 +33,19 @@ test :matches(test :focus-visible :focus-visible test) test {
 
 .escaped\:focus-visible,
 .escaped\:times\:two\:focus-visible,
-.escaped\:focus-visible.focus-visible,
-.escaped\:times\:two.focus-visible {
+.js-focus-visible .escaped\:focus-visible.focus-visible,
+.js-focus-visible .escaped\:times\:two.focus-visible {
 	order: 5;
 }
 
-.escaped\:focus-visible,
-.escaped\:times\:two\:focus-visible,
-.escaped\:focus-visible:focus-visible,
-.escaped\:times\:two:focus-visible {
-	order: 5;
+html.js-focus-visible .focus-visible {
+	order: 6;
+}
+
+.js-focus-visible :not(.focus-visible) {
+	order: 7;
+}
+
+html.js-focus-visible :not(.focus-visible) {
+	order: 8;
 }

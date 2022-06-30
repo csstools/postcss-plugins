@@ -1,57 +1,85 @@
-
 import parser from 'postcss-selector-parser';
 import type { PluginCreator } from 'postcss';
 
-const creator: PluginCreator<{ preserve?: boolean, replaceWith?: string }> = (opts?: { preserve?: boolean, replaceWith?: string }) => {
-	opts = Object(opts);
-	const preserve = Boolean('preserve' in opts ? opts.preserve : true);
-	const replaceWith = String(opts.replaceWith || '.focus-visible');
-	const replacementAST = parser().astSync(replaceWith);
+type pluginOptions = { preserve?: boolean, replaceWith?: string };
+
+const POLYFILL_READY_CLASSNAME = '.js-focus-visible';
+const PSEUDO = ':focus-visible';
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign(
+		// Default options
+		{
+			preserve: false,
+			replaceWith: '.focus-visible',
+		},
+		// Provided options
+		opts,
+	);
+	const replacementAST = parser().astSync(options.replaceWith);
 
 	return {
 		postcssPlugin: 'postcss-focus-visible',
 		Rule(rule, { result }) {
-			if (!rule.selector.includes(':focus-visible')) {
+			if (!rule.selector.includes(PSEUDO)) {
 				return;
 			}
 
-			let modifiedSelector;
+			const selectors = rule.selectors.map((selector) => {
+				if (!selector.includes(PSEUDO)) {
+					return selector;
+				}
 
-			try {
-				const modifiedSelectorAST = parser((selectors) => {
-					selectors.walkPseudos((pseudo) => {
-						if (pseudo.value !== ':focus-visible') {
-							return;
-						}
+				let selectorAST;
 
-						if (pseudo.nodes && pseudo.nodes.length) {
-							return;
-						}
+				try {
+					selectorAST = parser().astSync(selector);
+				} catch (_) {
+					rule.warn(result, `Failed to parse selector : ${selector}`);
+					return selector;
+				}
 
-						pseudo.replaceWith(replacementAST.clone({}));
-					});
-				}).processSync(rule.selector);
+				if (typeof selectorAST === 'undefined') {
+					return selector;
+				}
 
-				modifiedSelector = String(modifiedSelectorAST);
-			} catch (_) {
-				rule.warn(result, `Failed to parse selector : ${rule.selector}`);
+				let containsPseudo = false;
+				selectorAST.walkPseudos((pseudo) => {
+					if (pseudo.value !== PSEUDO) {
+						return;
+					}
+
+					if (pseudo.nodes && pseudo.nodes.length) {
+						return;
+					}
+
+					containsPseudo = true;
+					pseudo.replaceWith(replacementAST.clone({}));
+				});
+
+				if (!containsPseudo) {
+					return selector;
+				}
+
+				let newSelector = selectorAST.toString();
+
+				if (newSelector.startsWith('html')) {
+					newSelector = newSelector.replace('html', `html${POLYFILL_READY_CLASSNAME}`);
+				} else {
+					newSelector = `${POLYFILL_READY_CLASSNAME} ${newSelector}`;
+				}
+
+				return newSelector;
+			});
+
+			if (selectors.join(',') === rule.selectors.join(',')) {
 				return;
 			}
 
-			if (typeof modifiedSelector === 'undefined') {
-				return;
-			}
+			rule.cloneBefore({ selectors: selectors });
 
-			if (modifiedSelector === rule.selector) {
-				return;
-			}
-
-			const clone = rule.clone({ selector: modifiedSelector });
-
-			if (preserve) {
-				rule.before(clone);
-			} else {
-				rule.replaceWith(clone);
+			if (!options.preserve) {
+				rule.remove();
 			}
 		},
 	};
@@ -60,3 +88,4 @@ const creator: PluginCreator<{ preserve?: boolean, replaceWith?: string }> = (op
 creator.postcss = true;
 
 export default creator;
+

@@ -6,6 +6,7 @@
 :focus-visible test,
 test :focus-visible,
 test test:focus-visible,
+html[dir="rtl"] :focus-visible,
 test :focus-visible test,
 test test:focus-visible test,
 test :focus-visible :focus-visible test,
@@ -35,4 +36,16 @@ test :matches(test :focus-visible :focus-visible test) test {
 .escaped\:focus-visible:focus-visible,
 .escaped\:times\:two:focus-visible {
 	order: 5;
+}
+
+html :focus-visible {
+	order: 6;
+}
+
+:not(:focus-visible) {
+	order: 7;
+}
+
+html :not(:focus-visible) {
+	order: 8;
 }
