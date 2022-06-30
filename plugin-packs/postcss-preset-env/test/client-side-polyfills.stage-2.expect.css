@@ -2,7 +2,7 @@
 	order: 1;
 }
 
-.focus-visible {
+.js-focus-visible .focus-visible {
 	order: 2;
 }
 

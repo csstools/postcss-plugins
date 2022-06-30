@@ -168,11 +168,7 @@
 	overflow-wrap: break-word;
 }
 
-.test-focus-visible-pseudo-class.focus-visible {
-	order: 26;
-}
-
-.test-focus-visible-pseudo-class:focus-visible {
+.js-focus-visible .test-focus-visible-pseudo-class.focus-visible {
 	order: 26;
 }
 
