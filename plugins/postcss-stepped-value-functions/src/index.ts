@@ -24,7 +24,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				remFunctionCheck,
 				roundFunctionCheck,
 			];
-			const hasSupportedFunction = checks.some(functionCheck => decl.value.includes(functionCheck));
+			const hasSupportedFunction = checks.some(functionCheck => decl.value.toLowerCase().includes(functionCheck));
 
 			if (!decl || !hasSupportedFunction) {
 				return;
@@ -32,7 +32,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			const newDeclaration = decl.clone();
 
-			if (decl.value.includes(modFunctionCheck)) {
+			if (newDeclaration.value.toLowerCase().includes(modFunctionCheck)) {
 				const modValue = transformModFunction(newDeclaration, result, options);
 
 				if (modValue) {
@@ -40,7 +40,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				}
 			}
 
-			if (newDeclaration.value.includes(remFunctionCheck)) {
+			if (newDeclaration.value.toLowerCase().includes(remFunctionCheck)) {
 				const modValue = transformRemFunction(newDeclaration, result, options);
 
 				if (modValue) {
@@ -48,7 +48,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				}
 			}
 
-			if (newDeclaration.value.includes(roundFunctionCheck)) {
+			if (newDeclaration.value.toLowerCase().includes(roundFunctionCheck)) {
 				const modValue = transformRoundFunction(newDeclaration, result, options);
 
 				if (modValue) {
@@ -56,12 +56,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				}
 			}
 
-			if (decl.value !== newDeclaration.value) {
-				if (options.preserve) {
-					decl.cloneBefore({ value: newDeclaration.value });
-				} else {
-					decl.value = newDeclaration.value;
-				}
+			if (decl.value === newDeclaration.value) {
+				return;
+			}
+
+			decl.before(newDeclaration);
+
+			if (!options.preserve) {
+				decl.remove();
 			}
 		},
 	};

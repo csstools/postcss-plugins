@@ -23,7 +23,7 @@ function transformRoundFunction(
 	const parsedValue = valueParser(decl.value);
 
 	parsedValue.walk(node => {
-		if (node.type !== 'function' || node.value !== 'round') {
+		if (node.type !== 'function' || node.value.toLowerCase() !== 'round') {
 			return;
 		}
 
@@ -47,13 +47,13 @@ function transformRoundFunction(
 		let valueB;
 
 		// If the first argument is only letters, MUST be a matching Rounding Strategy
-		if (onlyRoundingRegex.test(firstValue)) {
-			const isValid = Object.values(RoundingStrategy).includes(
-				firstValue as RoundingStrategy,
+		if (onlyRoundingRegex.test(firstValue.toLowerCase())) {
+			const isValid = (Object.values(RoundingStrategy) as Array<string>).includes(
+				firstValue.toLowerCase(),
 			);
 
 			if (isValid) {
-				strategy = firstValue as RoundingStrategy;
+				strategy = firstValue.toLowerCase() as RoundingStrategy;
 			} else {
 				optionallyWarn(
 					decl,
@@ -112,7 +112,7 @@ function transformRoundFunction(
 
 		const transformedNode = functionNodeToWordNode(node);
 		transformedNode.value = roundedValue === 0 ? '0' : `${roundedValue}${valueA.unit}`;
-	});
+	}, true);
 
 	return parsedValue.toString();
 }

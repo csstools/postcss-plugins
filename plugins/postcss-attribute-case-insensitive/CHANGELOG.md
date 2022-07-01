@@ -2,7 +2,7 @@
 
 ### Unreleased
 
-- Fix incorrect selector updates
+- Fix incorrect selector AST updates
 
 ### 5.0.1 (3 June, 2022)
 

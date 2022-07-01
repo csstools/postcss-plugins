@@ -8,7 +8,7 @@ function transformAsinFunction(decl: Declaration): string | undefined {
 	const parsedValue = valueParser(decl.value);
 
 	parsedValue.walk(node => {
-		if (node.type !== 'function' || node.value !== 'asin') {
+		if (node.type !== 'function' || node.value.toLowerCase() !== 'asin') {
 			return;
 		}
 
@@ -26,7 +26,7 @@ function transformAsinFunction(decl: Declaration): string | undefined {
 		}
 
 		transformedNode.value = value + '';
-	});
+	}, true);
 
 	return parsedValue.toString();
 }
