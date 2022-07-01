@@ -1,7 +1,7 @@
 {
 	"name": "postcss-nesting",
 	"description": "Nest rules inside each other in CSS",
-	"version": "10.1.9",
+	"version": "10.1.10",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
 	"funding": {
