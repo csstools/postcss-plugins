@@ -1,57 +1,109 @@
-
 import parser from 'postcss-selector-parser';
 import type { PluginCreator } from 'postcss';
 
-const creator: PluginCreator<{ preserve?: boolean, replaceWith?: string }> = (opts?: { preserve?: boolean, replaceWith?: string }) => {
-	opts = Object(opts);
-	const preserve = Boolean('preserve' in opts ? opts.preserve : true);
-	const replaceWith = String(opts.replaceWith || '.focus-visible');
-	const replacementAST = parser().astSync(replaceWith);
+type pluginOptions = { preserve?: boolean, replaceWith?: string };
+
+const POLYFILL_READY_CLASSNAME = 'js-focus-visible';
+const PSEUDO = ':focus-visible';
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign(
+		// Default options
+		{
+			preserve: false,
+			replaceWith: '.focus-visible',
+		},
+		// Provided options
+		opts,
+	);
+
+	const replacementAST = parser().astSync(options.replaceWith);
 
 	return {
 		postcssPlugin: 'postcss-focus-visible',
 		Rule(rule, { result }) {
-			if (!rule.selector.includes(':focus-visible')) {
+			if (!rule.selector.includes(PSEUDO)) {
 				return;
 			}
 
-			let modifiedSelector;
+			const selectors = rule.selectors.flatMap((selector) => {
+				if (!selector.includes(PSEUDO)) {
+					return [selector];
+				}
 
-			try {
-				const modifiedSelectorAST = parser((selectors) => {
-					selectors.walkPseudos((pseudo) => {
-						if (pseudo.value !== ':focus-visible') {
-							return;
+				let selectorAST;
+
+				try {
+					selectorAST = parser().astSync(selector);
+				} catch (_) {
+					rule.warn(result, `Failed to parse selector : ${selector}`);
+					return selector;
+				}
+
+				if (typeof selectorAST === 'undefined') {
+					return [selector];
+				}
+
+				let containsPseudo = false;
+				selectorAST.walkPseudos((pseudo) => {
+					if (pseudo.value !== PSEUDO) {
+						return;
+					}
+
+					if (pseudo.nodes && pseudo.nodes.length) {
+						return;
+					}
+
+					containsPseudo = true;
+					pseudo.replaceWith(replacementAST.clone({}));
+				});
+
+				if (!containsPseudo) {
+					return [selector];
+				}
+
+				const selectorASTClone = selectorAST.clone();
+
+				// html > .foo:focus-visible
+				// becomes:
+				// html.js-focus-visible > .foo:focus-visible,
+				// .js-focus-visible html > .foo:focus-visible
+				{
+					if (selectorAST.nodes?.[0]?.nodes?.length) {
+						for (let i = 0; i < selectorAST.nodes[0].nodes.length; i++) {
+							const node = selectorAST.nodes[0].nodes[i];
+							if (node.type === 'combinator' || parser.isPseudoElement(node)) {
+								// Insert the class before the first combinator or pseudo element.
+								selectorAST.nodes[0].insertBefore(node, parser.className({ value: POLYFILL_READY_CLASSNAME }));
+								break;
+							}
+
+							if (i === selectorAST.nodes[0].nodes.length - 1) {
+								// Append the class to the end of the selector if not combinator or pseudo element was found.
+								selectorAST.nodes[0].append(parser.className({ value: POLYFILL_READY_CLASSNAME }));
+								break;
+							}
 						}
+					}
 
-						if (pseudo.nodes && pseudo.nodes.length) {
-							return;
-						}
+					if (selectorAST.nodes?.[0]?.nodes) {
+						// Prepend a space combinator and the class to the beginning of the selector.
+						selectorASTClone.nodes[0].prepend(parser.combinator({ value: ' ' }));
+						selectorASTClone.nodes[0].prepend(parser.className({ value: POLYFILL_READY_CLASSNAME }));
+					}
+				}
 
-						pseudo.replaceWith(replacementAST.clone({}));
-					});
-				}).processSync(rule.selector);
+				return [selectorAST.toString(), selectorASTClone.toString()];
+			});
 
-				modifiedSelector = String(modifiedSelectorAST);
-			} catch (_) {
-				rule.warn(result, `Failed to parse selector : ${rule.selector}`);
+			if (selectors.join(',') === rule.selectors.join(',')) {
 				return;
 			}
 
-			if (typeof modifiedSelector === 'undefined') {
-				return;
-			}
+			rule.cloneBefore({ selectors: selectors });
 
-			if (modifiedSelector === rule.selector) {
-				return;
-			}
-
-			const clone = rule.clone({ selector: modifiedSelector });
-
-			if (preserve) {
-				rule.before(clone);
-			} else {
-				rule.replaceWith(clone);
+			if (!options.preserve) {
+				rule.remove();
 			}
 		},
 	};
@@ -60,3 +112,4 @@ const creator: PluginCreator<{ preserve?: boolean, replaceWith?: string }> = (op
 creator.postcss = true;
 
 export default creator;
+
