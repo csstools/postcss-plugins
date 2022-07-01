@@ -169,7 +169,7 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	overflow-wrap: break-word;
 }
 
-.js-focus-visible .test-focus-visible-pseudo-class.focus-visible {
+.test-focus-visible-pseudo-class.focus-visible.js-focus-visible, .js-focus-visible .test-focus-visible-pseudo-class.focus-visible {
 	order: 26;
 }
 

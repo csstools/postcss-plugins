@@ -4,6 +4,6 @@ textarea {
 	background-color: rgb(255, 192, 203);
 }
 
-.js-focus-visible .focus-visible {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	background-color: rgb(128, 0, 128);
 }

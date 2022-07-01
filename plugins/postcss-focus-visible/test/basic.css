@@ -42,10 +42,38 @@ html :focus-visible {
 	order: 6;
 }
 
+html:focus-visible {
+	order: 6.1;
+}
+
 :not(:focus-visible) {
 	order: 7;
 }
 
 html :not(:focus-visible) {
 	order: 8;
+}
+
+:focus-visible::before {
+	order: 10.0;
+}
+
+:focus-visible .foo {
+	order: 10.1;
+}
+
+:focus-visible > .foo {
+	order: 10.2;
+}
+
+::before:focus-visible {
+	order: 10.3;
+}
+
+.foo :focus-visible {
+	order: 10.4;
+}
+
+.foo > :focus-visible {
+	order: 10.5;
 }

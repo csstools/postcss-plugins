@@ -445,7 +445,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	word-wrap: break-word;
 }
 
-.js-focus-visible:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-focus-visible-pseudo-class.focus-visible {
+.test-focus-visible-pseudo-class.focus-visible.js-focus-visible:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), .js-focus-visible:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-focus-visible-pseudo-class.focus-visible {
 	-webkit-box-ordinal-group: 27;
 	-webkit-order: 26;
 	   -moz-box-ordinal-group: 27;

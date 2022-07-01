@@ -3,7 +3,7 @@ import type { PluginCreator } from 'postcss';
 
 type pluginOptions = { preserve?: boolean, replaceWith?: string };
 
-const POLYFILL_READY_CLASSNAME = '.js-focus-visible';
+const POLYFILL_READY_CLASSNAME = 'js-focus-visible';
 const PSEUDO = ':focus-visible';
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
@@ -16,6 +16,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		// Provided options
 		opts,
 	);
+
 	const replacementAST = parser().astSync(options.replaceWith);
 
 	return {
@@ -25,9 +26,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			const selectors = rule.selectors.map((selector) => {
+			const selectors = rule.selectors.flatMap((selector) => {
 				if (!selector.includes(PSEUDO)) {
-					return selector;
+					return [selector];
 				}
 
 				let selectorAST;
@@ -40,7 +41,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				}
 
 				if (typeof selectorAST === 'undefined') {
-					return selector;
+					return [selector];
 				}
 
 				let containsPseudo = false;
@@ -58,18 +59,41 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				});
 
 				if (!containsPseudo) {
-					return selector;
+					return [selector];
 				}
 
-				let newSelector = selectorAST.toString();
+				const selectorASTClone = selectorAST.clone();
 
-				if (newSelector.startsWith('html')) {
-					newSelector = newSelector.replace('html', `html${POLYFILL_READY_CLASSNAME}`);
-				} else {
-					newSelector = `${POLYFILL_READY_CLASSNAME} ${newSelector}`;
+				// html > .foo:focus-visible
+				// becomes:
+				// html.js-focus-visible > .foo:focus-visible,
+				// .js-focus-visible html > .foo:focus-visible
+				{
+					if (selectorAST.nodes?.[0]?.nodes?.length) {
+						for (let i = 0; i < selectorAST.nodes[0].nodes.length; i++) {
+							const node = selectorAST.nodes[0].nodes[i];
+							if (node.type === 'combinator' || parser.isPseudoElement(node)) {
+								// Insert the class before the first combinator or pseudo element.
+								selectorAST.nodes[0].insertBefore(node, parser.className({ value: POLYFILL_READY_CLASSNAME }));
+								break;
+							}
+
+							if (i === selectorAST.nodes[0].nodes.length - 1) {
+								// Append the class to the end of the selector if not combinator or pseudo element was found.
+								selectorAST.nodes[0].append(parser.className({ value: POLYFILL_READY_CLASSNAME }));
+								break;
+							}
+						}
+					}
+
+					if (selectorAST.nodes?.[0]?.nodes) {
+						// Prepend a space combinator and the class to the beginning of the selector.
+						selectorASTClone.nodes[0].prepend(parser.combinator({ value: ' ' }));
+						selectorASTClone.nodes[0].prepend(parser.className({ value: POLYFILL_READY_CLASSNAME }));
+					}
 				}
 
-				return newSelector;
+				return [selectorAST.toString(), selectorASTClone.toString()];
 			});
 
 			if (selectors.join(',') === rule.selectors.join(',')) {

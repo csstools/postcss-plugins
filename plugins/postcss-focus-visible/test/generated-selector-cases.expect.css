@@ -1,84 +1,84 @@
-.js-focus-visible .focus-visible.focus-visible {
+.focus-visible.focus-visible.js-focus-visible, .js-focus-visible .focus-visible.focus-visible {
 	order: 0;
 }
 
-.js-focus-visible .focus-visible.focus-visible {
+.focus-visible.focus-visible.js-focus-visible, .js-focus-visible .focus-visible.focus-visible {
 	order: 1;
 }
 
-.js-focus-visible .focus-visible .focus-visible {
+.focus-visible.js-focus-visible .focus-visible, .js-focus-visible .focus-visible .focus-visible {
 	order: 2;
 }
 
-.js-focus-visible .focus-visible .focus-visible {
+.focus-visible.js-focus-visible .focus-visible, .js-focus-visible .focus-visible .focus-visible {
 	order: 3;
 }
 
-.js-focus-visible .focus-visible  .focus-visible {
+.focus-visible.js-focus-visible  .focus-visible, .js-focus-visible .focus-visible  .focus-visible {
 	order: 4;
 }
 
-.js-focus-visible .focus-visible  .focus-visible {
+.focus-visible.js-focus-visible  .focus-visible, .js-focus-visible .focus-visible  .focus-visible {
 	order: 5;
 }
 
-.js-focus-visible .focus-visible+.focus-visible {
+.focus-visible.js-focus-visible+.focus-visible, .js-focus-visible .focus-visible+.focus-visible {
 	order: 6;
 }
 
-.js-focus-visible .focus-visible+.focus-visible {
+.focus-visible.js-focus-visible+.focus-visible, .js-focus-visible .focus-visible+.focus-visible {
 	order: 7;
 }
 
-.js-focus-visible .focus-visible + .focus-visible {
+.focus-visible.js-focus-visible + .focus-visible, .js-focus-visible .focus-visible + .focus-visible {
 	order: 8;
 }
 
-.js-focus-visible .focus-visible + .focus-visible {
+.focus-visible.js-focus-visible + .focus-visible, .js-focus-visible .focus-visible + .focus-visible {
 	order: 9;
 }
 
-.js-focus-visible .focus-visible~.focus-visible {
+.focus-visible.js-focus-visible~.focus-visible, .js-focus-visible .focus-visible~.focus-visible {
 	order: 10;
 }
 
-.js-focus-visible .focus-visible~.focus-visible {
+.focus-visible.js-focus-visible~.focus-visible, .js-focus-visible .focus-visible~.focus-visible {
 	order: 11;
 }
 
-.js-focus-visible .focus-visible ~ .focus-visible {
+.focus-visible.js-focus-visible ~ .focus-visible, .js-focus-visible .focus-visible ~ .focus-visible {
 	order: 12;
 }
 
-.js-focus-visible .focus-visible ~ .focus-visible {
+.focus-visible.js-focus-visible ~ .focus-visible, .js-focus-visible .focus-visible ~ .focus-visible {
 	order: 13;
 }
 
-.js-focus-visible .focus-visible>.focus-visible {
+.focus-visible.js-focus-visible>.focus-visible, .js-focus-visible .focus-visible>.focus-visible {
 	order: 14;
 }
 
-.js-focus-visible .focus-visible>.focus-visible {
+.focus-visible.js-focus-visible>.focus-visible, .js-focus-visible .focus-visible>.focus-visible {
 	order: 15;
 }
 
-.js-focus-visible .focus-visible > .focus-visible {
+.focus-visible.js-focus-visible > .focus-visible, .js-focus-visible .focus-visible > .focus-visible {
 	order: 16;
 }
 
-.js-focus-visible .focus-visible > .focus-visible {
+.focus-visible.js-focus-visible > .focus-visible, .js-focus-visible .focus-visible > .focus-visible {
 	order: 17;
 }
 
-.js-focus-visible .focus-visible, .js-focus-visible .focus-visible {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible, .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 18;
 }
 
-.js-focus-visible .focus-visible, .js-focus-visible .focus-visible {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible, .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 19;
 }
 
-.js-focus-visible button.focus-visible {
+button.focus-visible.js-focus-visible, .js-focus-visible button.focus-visible {
 	order: 20;
 }
 
@@ -86,319 +86,319 @@
 	order: 21;
 }
 
-.js-focus-visible button .focus-visible {
+button.js-focus-visible .focus-visible, .js-focus-visible button .focus-visible {
 	order: 22;
 }
 
-.js-focus-visible .focus-visible button {
+.focus-visible.js-focus-visible button, .js-focus-visible .focus-visible button {
 	order: 23;
 }
 
-.js-focus-visible button  .focus-visible {
+button.js-focus-visible  .focus-visible, .js-focus-visible button  .focus-visible {
 	order: 24;
 }
 
-.js-focus-visible .focus-visible  button {
+.focus-visible.js-focus-visible  button, .js-focus-visible .focus-visible  button {
 	order: 25;
 }
 
-.js-focus-visible button+.focus-visible {
+button.js-focus-visible+.focus-visible, .js-focus-visible button+.focus-visible {
 	order: 26;
 }
 
-.js-focus-visible .focus-visible+button {
+.focus-visible.js-focus-visible+button, .js-focus-visible .focus-visible+button {
 	order: 27;
 }
 
-.js-focus-visible button + .focus-visible {
+button.js-focus-visible + .focus-visible, .js-focus-visible button + .focus-visible {
 	order: 28;
 }
 
-.js-focus-visible .focus-visible + button {
+.focus-visible.js-focus-visible + button, .js-focus-visible .focus-visible + button {
 	order: 29;
 }
 
-.js-focus-visible button~.focus-visible {
+button.js-focus-visible~.focus-visible, .js-focus-visible button~.focus-visible {
 	order: 30;
 }
 
-.js-focus-visible .focus-visible~button {
+.focus-visible.js-focus-visible~button, .js-focus-visible .focus-visible~button {
 	order: 31;
 }
 
-.js-focus-visible button ~ .focus-visible {
+button.js-focus-visible ~ .focus-visible, .js-focus-visible button ~ .focus-visible {
 	order: 32;
 }
 
-.js-focus-visible .focus-visible ~ button {
+.focus-visible.js-focus-visible ~ button, .js-focus-visible .focus-visible ~ button {
 	order: 33;
 }
 
-.js-focus-visible button>.focus-visible {
+button.js-focus-visible>.focus-visible, .js-focus-visible button>.focus-visible {
 	order: 34;
 }
 
-.js-focus-visible .focus-visible>button {
+.focus-visible.js-focus-visible>button, .js-focus-visible .focus-visible>button {
 	order: 35;
 }
 
-.js-focus-visible button > .focus-visible {
+button.js-focus-visible > .focus-visible, .js-focus-visible button > .focus-visible {
 	order: 36;
 }
 
-.js-focus-visible .focus-visible > button {
+.focus-visible.js-focus-visible > button, .js-focus-visible .focus-visible > button {
 	order: 37;
 }
 
-button, .js-focus-visible .focus-visible {
+button, .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 38;
 }
 
-.js-focus-visible .focus-visible, button {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible, button {
 	order: 39;
 }
 
-.js-focus-visible .🧑🏾‍🎤.focus-visible {
+.🧑🏾‍🎤.focus-visible.js-focus-visible, .js-focus-visible .🧑🏾‍🎤.focus-visible {
 	order: 40;
 }
 
-.js-focus-visible .focus-visible.🧑🏾‍🎤 {
+.focus-visible.🧑🏾‍🎤.js-focus-visible, .js-focus-visible .focus-visible.🧑🏾‍🎤 {
 	order: 41;
 }
 
-.js-focus-visible .🧑🏾‍🎤 .focus-visible {
+.🧑🏾‍🎤.js-focus-visible .focus-visible, .js-focus-visible .🧑🏾‍🎤 .focus-visible {
 	order: 42;
 }
 
-.js-focus-visible .focus-visible .🧑🏾‍🎤 {
+.focus-visible.js-focus-visible .🧑🏾‍🎤, .js-focus-visible .focus-visible .🧑🏾‍🎤 {
 	order: 43;
 }
 
-.js-focus-visible .🧑🏾‍🎤  .focus-visible {
+.🧑🏾‍🎤.js-focus-visible  .focus-visible, .js-focus-visible .🧑🏾‍🎤  .focus-visible {
 	order: 44;
 }
 
-.js-focus-visible .focus-visible  .🧑🏾‍🎤 {
+.focus-visible.js-focus-visible  .🧑🏾‍🎤, .js-focus-visible .focus-visible  .🧑🏾‍🎤 {
 	order: 45;
 }
 
-.js-focus-visible .🧑🏾‍🎤+.focus-visible {
+.🧑🏾‍🎤.js-focus-visible+.focus-visible, .js-focus-visible .🧑🏾‍🎤+.focus-visible {
 	order: 46;
 }
 
-.js-focus-visible .focus-visible+.🧑🏾‍🎤 {
+.focus-visible.js-focus-visible+.🧑🏾‍🎤, .js-focus-visible .focus-visible+.🧑🏾‍🎤 {
 	order: 47;
 }
 
-.js-focus-visible .🧑🏾‍🎤 + .focus-visible {
+.🧑🏾‍🎤.js-focus-visible + .focus-visible, .js-focus-visible .🧑🏾‍🎤 + .focus-visible {
 	order: 48;
 }
 
-.js-focus-visible .focus-visible + .🧑🏾‍🎤 {
+.focus-visible.js-focus-visible + .🧑🏾‍🎤, .js-focus-visible .focus-visible + .🧑🏾‍🎤 {
 	order: 49;
 }
 
-.js-focus-visible .🧑🏾‍🎤~.focus-visible {
+.🧑🏾‍🎤.js-focus-visible~.focus-visible, .js-focus-visible .🧑🏾‍🎤~.focus-visible {
 	order: 50;
 }
 
-.js-focus-visible .focus-visible~.🧑🏾‍🎤 {
+.focus-visible.js-focus-visible~.🧑🏾‍🎤, .js-focus-visible .focus-visible~.🧑🏾‍🎤 {
 	order: 51;
 }
 
-.js-focus-visible .🧑🏾‍🎤 ~ .focus-visible {
+.🧑🏾‍🎤.js-focus-visible ~ .focus-visible, .js-focus-visible .🧑🏾‍🎤 ~ .focus-visible {
 	order: 52;
 }
 
-.js-focus-visible .focus-visible ~ .🧑🏾‍🎤 {
+.focus-visible.js-focus-visible ~ .🧑🏾‍🎤, .js-focus-visible .focus-visible ~ .🧑🏾‍🎤 {
 	order: 53;
 }
 
-.js-focus-visible .🧑🏾‍🎤>.focus-visible {
+.🧑🏾‍🎤.js-focus-visible>.focus-visible, .js-focus-visible .🧑🏾‍🎤>.focus-visible {
 	order: 54;
 }
 
-.js-focus-visible .focus-visible>.🧑🏾‍🎤 {
+.focus-visible.js-focus-visible>.🧑🏾‍🎤, .js-focus-visible .focus-visible>.🧑🏾‍🎤 {
 	order: 55;
 }
 
-.js-focus-visible .🧑🏾‍🎤 > .focus-visible {
+.🧑🏾‍🎤.js-focus-visible > .focus-visible, .js-focus-visible .🧑🏾‍🎤 > .focus-visible {
 	order: 56;
 }
 
-.js-focus-visible .focus-visible > .🧑🏾‍🎤 {
+.focus-visible.js-focus-visible > .🧑🏾‍🎤, .js-focus-visible .focus-visible > .🧑🏾‍🎤 {
 	order: 57;
 }
 
-.🧑🏾‍🎤, .js-focus-visible .focus-visible {
+.🧑🏾‍🎤, .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 58;
 }
 
-.js-focus-visible .focus-visible, .🧑🏾‍🎤 {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible, .🧑🏾‍🎤 {
 	order: 59;
 }
 
-.js-focus-visible .foo.focus-visible {
+.foo.focus-visible.js-focus-visible, .js-focus-visible .foo.focus-visible {
 	order: 60;
 }
 
-.js-focus-visible .focus-visible.foo {
+.focus-visible.foo.js-focus-visible, .js-focus-visible .focus-visible.foo {
 	order: 61;
 }
 
-.js-focus-visible .foo .focus-visible {
+.foo.js-focus-visible .focus-visible, .js-focus-visible .foo .focus-visible {
 	order: 62;
 }
 
-.js-focus-visible .focus-visible .foo {
+.focus-visible.js-focus-visible .foo, .js-focus-visible .focus-visible .foo {
 	order: 63;
 }
 
-.js-focus-visible .foo  .focus-visible {
+.foo.js-focus-visible  .focus-visible, .js-focus-visible .foo  .focus-visible {
 	order: 64;
 }
 
-.js-focus-visible .focus-visible  .foo {
+.focus-visible.js-focus-visible  .foo, .js-focus-visible .focus-visible  .foo {
 	order: 65;
 }
 
-.js-focus-visible .foo+.focus-visible {
+.foo.js-focus-visible+.focus-visible, .js-focus-visible .foo+.focus-visible {
 	order: 66;
 }
 
-.js-focus-visible .focus-visible+.foo {
+.focus-visible.js-focus-visible+.foo, .js-focus-visible .focus-visible+.foo {
 	order: 67;
 }
 
-.js-focus-visible .foo + .focus-visible {
+.foo.js-focus-visible + .focus-visible, .js-focus-visible .foo + .focus-visible {
 	order: 68;
 }
 
-.js-focus-visible .focus-visible + .foo {
+.focus-visible.js-focus-visible + .foo, .js-focus-visible .focus-visible + .foo {
 	order: 69;
 }
 
-.js-focus-visible .foo~.focus-visible {
+.foo.js-focus-visible~.focus-visible, .js-focus-visible .foo~.focus-visible {
 	order: 70;
 }
 
-.js-focus-visible .focus-visible~.foo {
+.focus-visible.js-focus-visible~.foo, .js-focus-visible .focus-visible~.foo {
 	order: 71;
 }
 
-.js-focus-visible .foo ~ .focus-visible {
+.foo.js-focus-visible ~ .focus-visible, .js-focus-visible .foo ~ .focus-visible {
 	order: 72;
 }
 
-.js-focus-visible .focus-visible ~ .foo {
+.focus-visible.js-focus-visible ~ .foo, .js-focus-visible .focus-visible ~ .foo {
 	order: 73;
 }
 
-.js-focus-visible .foo>.focus-visible {
+.foo.js-focus-visible>.focus-visible, .js-focus-visible .foo>.focus-visible {
 	order: 74;
 }
 
-.js-focus-visible .focus-visible>.foo {
+.focus-visible.js-focus-visible>.foo, .js-focus-visible .focus-visible>.foo {
 	order: 75;
 }
 
-.js-focus-visible .foo > .focus-visible {
+.foo.js-focus-visible > .focus-visible, .js-focus-visible .foo > .focus-visible {
 	order: 76;
 }
 
-.js-focus-visible .focus-visible > .foo {
+.focus-visible.js-focus-visible > .foo, .js-focus-visible .focus-visible > .foo {
 	order: 77;
 }
 
-.foo, .js-focus-visible .focus-visible {
+.foo, .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 78;
 }
 
-.js-focus-visible .focus-visible, .foo {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible, .foo {
 	order: 79;
 }
 
-.js-focus-visible #foo.focus-visible {
+#foo.focus-visible.js-focus-visible, .js-focus-visible #foo.focus-visible {
 	order: 80;
 }
 
-.js-focus-visible .focus-visible#foo {
+.focus-visible#foo.js-focus-visible, .js-focus-visible .focus-visible#foo {
 	order: 81;
 }
 
-.js-focus-visible #foo .focus-visible {
+#foo.js-focus-visible .focus-visible, .js-focus-visible #foo .focus-visible {
 	order: 82;
 }
 
-.js-focus-visible .focus-visible #foo {
+.focus-visible.js-focus-visible #foo, .js-focus-visible .focus-visible #foo {
 	order: 83;
 }
 
-.js-focus-visible #foo  .focus-visible {
+#foo.js-focus-visible  .focus-visible, .js-focus-visible #foo  .focus-visible {
 	order: 84;
 }
 
-.js-focus-visible .focus-visible  #foo {
+.focus-visible.js-focus-visible  #foo, .js-focus-visible .focus-visible  #foo {
 	order: 85;
 }
 
-.js-focus-visible #foo+.focus-visible {
+#foo.js-focus-visible+.focus-visible, .js-focus-visible #foo+.focus-visible {
 	order: 86;
 }
 
-.js-focus-visible .focus-visible+#foo {
+.focus-visible.js-focus-visible+#foo, .js-focus-visible .focus-visible+#foo {
 	order: 87;
 }
 
-.js-focus-visible #foo + .focus-visible {
+#foo.js-focus-visible + .focus-visible, .js-focus-visible #foo + .focus-visible {
 	order: 88;
 }
 
-.js-focus-visible .focus-visible + #foo {
+.focus-visible.js-focus-visible + #foo, .js-focus-visible .focus-visible + #foo {
 	order: 89;
 }
 
-.js-focus-visible #foo~.focus-visible {
+#foo.js-focus-visible~.focus-visible, .js-focus-visible #foo~.focus-visible {
 	order: 90;
 }
 
-.js-focus-visible .focus-visible~#foo {
+.focus-visible.js-focus-visible~#foo, .js-focus-visible .focus-visible~#foo {
 	order: 91;
 }
 
-.js-focus-visible #foo ~ .focus-visible {
+#foo.js-focus-visible ~ .focus-visible, .js-focus-visible #foo ~ .focus-visible {
 	order: 92;
 }
 
-.js-focus-visible .focus-visible ~ #foo {
+.focus-visible.js-focus-visible ~ #foo, .js-focus-visible .focus-visible ~ #foo {
 	order: 93;
 }
 
-.js-focus-visible #foo>.focus-visible {
+#foo.js-focus-visible>.focus-visible, .js-focus-visible #foo>.focus-visible {
 	order: 94;
 }
 
-.js-focus-visible .focus-visible>#foo {
+.focus-visible.js-focus-visible>#foo, .js-focus-visible .focus-visible>#foo {
 	order: 95;
 }
 
-.js-focus-visible #foo > .focus-visible {
+#foo.js-focus-visible > .focus-visible, .js-focus-visible #foo > .focus-visible {
 	order: 96;
 }
 
-.js-focus-visible .focus-visible > #foo {
+.focus-visible.js-focus-visible > #foo, .js-focus-visible .focus-visible > #foo {
 	order: 97;
 }
 
-#foo, .js-focus-visible .focus-visible {
+#foo, .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 98;
 }
 
-.js-focus-visible .focus-visible, #foo {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible, #foo {
 	order: 99;
 }
 
-.js-focus-visible __foo.focus-visible {
+__foo.focus-visible.js-focus-visible, .js-focus-visible __foo.focus-visible {
 	order: 100;
 }
 
@@ -406,475 +406,475 @@ button, .js-focus-visible .focus-visible {
 	order: 101;
 }
 
-.js-focus-visible __foo .focus-visible {
+__foo.js-focus-visible .focus-visible, .js-focus-visible __foo .focus-visible {
 	order: 102;
 }
 
-.js-focus-visible .focus-visible __foo {
+.focus-visible.js-focus-visible __foo, .js-focus-visible .focus-visible __foo {
 	order: 103;
 }
 
-.js-focus-visible __foo  .focus-visible {
+__foo.js-focus-visible  .focus-visible, .js-focus-visible __foo  .focus-visible {
 	order: 104;
 }
 
-.js-focus-visible .focus-visible  __foo {
+.focus-visible.js-focus-visible  __foo, .js-focus-visible .focus-visible  __foo {
 	order: 105;
 }
 
-.js-focus-visible __foo+.focus-visible {
+__foo.js-focus-visible+.focus-visible, .js-focus-visible __foo+.focus-visible {
 	order: 106;
 }
 
-.js-focus-visible .focus-visible+__foo {
+.focus-visible.js-focus-visible+__foo, .js-focus-visible .focus-visible+__foo {
 	order: 107;
 }
 
-.js-focus-visible __foo + .focus-visible {
+__foo.js-focus-visible + .focus-visible, .js-focus-visible __foo + .focus-visible {
 	order: 108;
 }
 
-.js-focus-visible .focus-visible + __foo {
+.focus-visible.js-focus-visible + __foo, .js-focus-visible .focus-visible + __foo {
 	order: 109;
 }
 
-.js-focus-visible __foo~.focus-visible {
+__foo.js-focus-visible~.focus-visible, .js-focus-visible __foo~.focus-visible {
 	order: 110;
 }
 
-.js-focus-visible .focus-visible~__foo {
+.focus-visible.js-focus-visible~__foo, .js-focus-visible .focus-visible~__foo {
 	order: 111;
 }
 
-.js-focus-visible __foo ~ .focus-visible {
+__foo.js-focus-visible ~ .focus-visible, .js-focus-visible __foo ~ .focus-visible {
 	order: 112;
 }
 
-.js-focus-visible .focus-visible ~ __foo {
+.focus-visible.js-focus-visible ~ __foo, .js-focus-visible .focus-visible ~ __foo {
 	order: 113;
 }
 
-.js-focus-visible __foo>.focus-visible {
+__foo.js-focus-visible>.focus-visible, .js-focus-visible __foo>.focus-visible {
 	order: 114;
 }
 
-.js-focus-visible .focus-visible>__foo {
+.focus-visible.js-focus-visible>__foo, .js-focus-visible .focus-visible>__foo {
 	order: 115;
 }
 
-.js-focus-visible __foo > .focus-visible {
+__foo.js-focus-visible > .focus-visible, .js-focus-visible __foo > .focus-visible {
 	order: 116;
 }
 
-.js-focus-visible .focus-visible > __foo {
+.focus-visible.js-focus-visible > __foo, .js-focus-visible .focus-visible > __foo {
 	order: 117;
 }
 
-__foo, .js-focus-visible .focus-visible {
+__foo, .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 118;
 }
 
-.js-focus-visible .focus-visible, __foo {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible, __foo {
 	order: 119;
 }
 
-.js-focus-visible :--foo.focus-visible {
+:--foo.focus-visible.js-focus-visible, .js-focus-visible :--foo.focus-visible {
 	order: 120;
 }
 
-.js-focus-visible .focus-visible:--foo {
+.focus-visible:--foo.js-focus-visible, .js-focus-visible .focus-visible:--foo {
 	order: 121;
 }
 
-.js-focus-visible :--foo .focus-visible {
+:--foo.js-focus-visible .focus-visible, .js-focus-visible :--foo .focus-visible {
 	order: 122;
 }
 
-.js-focus-visible .focus-visible :--foo {
+.focus-visible.js-focus-visible :--foo, .js-focus-visible .focus-visible :--foo {
 	order: 123;
 }
 
-.js-focus-visible :--foo  .focus-visible {
+:--foo.js-focus-visible  .focus-visible, .js-focus-visible :--foo  .focus-visible {
 	order: 124;
 }
 
-.js-focus-visible .focus-visible  :--foo {
+.focus-visible.js-focus-visible  :--foo, .js-focus-visible .focus-visible  :--foo {
 	order: 125;
 }
 
-.js-focus-visible :--foo+.focus-visible {
+:--foo.js-focus-visible+.focus-visible, .js-focus-visible :--foo+.focus-visible {
 	order: 126;
 }
 
-.js-focus-visible .focus-visible+:--foo {
+.focus-visible.js-focus-visible+:--foo, .js-focus-visible .focus-visible+:--foo {
 	order: 127;
 }
 
-.js-focus-visible :--foo + .focus-visible {
+:--foo.js-focus-visible + .focus-visible, .js-focus-visible :--foo + .focus-visible {
 	order: 128;
 }
 
-.js-focus-visible .focus-visible + :--foo {
+.focus-visible.js-focus-visible + :--foo, .js-focus-visible .focus-visible + :--foo {
 	order: 129;
 }
 
-.js-focus-visible :--foo~.focus-visible {
+:--foo.js-focus-visible~.focus-visible, .js-focus-visible :--foo~.focus-visible {
 	order: 130;
 }
 
-.js-focus-visible .focus-visible~:--foo {
+.focus-visible.js-focus-visible~:--foo, .js-focus-visible .focus-visible~:--foo {
 	order: 131;
 }
 
-.js-focus-visible :--foo ~ .focus-visible {
+:--foo.js-focus-visible ~ .focus-visible, .js-focus-visible :--foo ~ .focus-visible {
 	order: 132;
 }
 
-.js-focus-visible .focus-visible ~ :--foo {
+.focus-visible.js-focus-visible ~ :--foo, .js-focus-visible .focus-visible ~ :--foo {
 	order: 133;
 }
 
-.js-focus-visible :--foo>.focus-visible {
+:--foo.js-focus-visible>.focus-visible, .js-focus-visible :--foo>.focus-visible {
 	order: 134;
 }
 
-.js-focus-visible .focus-visible>:--foo {
+.focus-visible.js-focus-visible>:--foo, .js-focus-visible .focus-visible>:--foo {
 	order: 135;
 }
 
-.js-focus-visible :--foo > .focus-visible {
+:--foo.js-focus-visible > .focus-visible, .js-focus-visible :--foo > .focus-visible {
 	order: 136;
 }
 
-.js-focus-visible .focus-visible > :--foo {
+.focus-visible.js-focus-visible > :--foo, .js-focus-visible .focus-visible > :--foo {
 	order: 137;
 }
 
-:--foo, .js-focus-visible .focus-visible {
+:--foo, .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 138;
 }
 
-.js-focus-visible .focus-visible, :--foo {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible, :--foo {
 	order: 139;
 }
 
-.js-focus-visible [foo="baz"].focus-visible {
+[foo="baz"].focus-visible.js-focus-visible, .js-focus-visible [foo="baz"].focus-visible {
 	order: 140;
 }
 
-.js-focus-visible .focus-visible[foo="baz"] {
+.focus-visible[foo="baz"].js-focus-visible, .js-focus-visible .focus-visible[foo="baz"] {
 	order: 141;
 }
 
-.js-focus-visible [foo="baz"] .focus-visible {
+[foo="baz"].js-focus-visible .focus-visible, .js-focus-visible [foo="baz"] .focus-visible {
 	order: 142;
 }
 
-.js-focus-visible .focus-visible [foo="baz"] {
+.focus-visible.js-focus-visible [foo="baz"], .js-focus-visible .focus-visible [foo="baz"] {
 	order: 143;
 }
 
-.js-focus-visible [foo="baz"]  .focus-visible {
+[foo="baz"].js-focus-visible  .focus-visible, .js-focus-visible [foo="baz"]  .focus-visible {
 	order: 144;
 }
 
-.js-focus-visible .focus-visible  [foo="baz"] {
+.focus-visible.js-focus-visible  [foo="baz"], .js-focus-visible .focus-visible  [foo="baz"] {
 	order: 145;
 }
 
-.js-focus-visible [foo="baz"]+.focus-visible {
+[foo="baz"].js-focus-visible+.focus-visible, .js-focus-visible [foo="baz"]+.focus-visible {
 	order: 146;
 }
 
-.js-focus-visible .focus-visible+[foo="baz"] {
+.focus-visible.js-focus-visible+[foo="baz"], .js-focus-visible .focus-visible+[foo="baz"] {
 	order: 147;
 }
 
-.js-focus-visible [foo="baz"] + .focus-visible {
+[foo="baz"].js-focus-visible + .focus-visible, .js-focus-visible [foo="baz"] + .focus-visible {
 	order: 148;
 }
 
-.js-focus-visible .focus-visible + [foo="baz"] {
+.focus-visible.js-focus-visible + [foo="baz"], .js-focus-visible .focus-visible + [foo="baz"] {
 	order: 149;
 }
 
-.js-focus-visible [foo="baz"]~.focus-visible {
+[foo="baz"].js-focus-visible~.focus-visible, .js-focus-visible [foo="baz"]~.focus-visible {
 	order: 150;
 }
 
-.js-focus-visible .focus-visible~[foo="baz"] {
+.focus-visible.js-focus-visible~[foo="baz"], .js-focus-visible .focus-visible~[foo="baz"] {
 	order: 151;
 }
 
-.js-focus-visible [foo="baz"] ~ .focus-visible {
+[foo="baz"].js-focus-visible ~ .focus-visible, .js-focus-visible [foo="baz"] ~ .focus-visible {
 	order: 152;
 }
 
-.js-focus-visible .focus-visible ~ [foo="baz"] {
+.focus-visible.js-focus-visible ~ [foo="baz"], .js-focus-visible .focus-visible ~ [foo="baz"] {
 	order: 153;
 }
 
-.js-focus-visible [foo="baz"]>.focus-visible {
+[foo="baz"].js-focus-visible>.focus-visible, .js-focus-visible [foo="baz"]>.focus-visible {
 	order: 154;
 }
 
-.js-focus-visible .focus-visible>[foo="baz"] {
+.focus-visible.js-focus-visible>[foo="baz"], .js-focus-visible .focus-visible>[foo="baz"] {
 	order: 155;
 }
 
-.js-focus-visible [foo="baz"] > .focus-visible {
+[foo="baz"].js-focus-visible > .focus-visible, .js-focus-visible [foo="baz"] > .focus-visible {
 	order: 156;
 }
 
-.js-focus-visible .focus-visible > [foo="baz"] {
+.focus-visible.js-focus-visible > [foo="baz"], .js-focus-visible .focus-visible > [foo="baz"] {
 	order: 157;
 }
 
-[foo="baz"], .js-focus-visible .focus-visible {
+[foo="baz"], .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 158;
 }
 
-.js-focus-visible .focus-visible, [foo="baz"] {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible, [foo="baz"] {
 	order: 159;
 }
 
-.js-focus-visible *.focus-visible {
+*.focus-visible.js-focus-visible, .js-focus-visible *.focus-visible {
 	order: 160;
 }
 
-.js-focus-visible .focus-visible* {
+.focus-visible*.js-focus-visible, .js-focus-visible .focus-visible* {
 	order: 161;
 }
 
-.js-focus-visible * .focus-visible {
+*.js-focus-visible .focus-visible, .js-focus-visible * .focus-visible {
 	order: 162;
 }
 
-.js-focus-visible .focus-visible * {
+.focus-visible.js-focus-visible *, .js-focus-visible .focus-visible * {
 	order: 163;
 }
 
-.js-focus-visible *  .focus-visible {
+*.js-focus-visible  .focus-visible, .js-focus-visible *  .focus-visible {
 	order: 164;
 }
 
-.js-focus-visible .focus-visible  * {
+.focus-visible.js-focus-visible  *, .js-focus-visible .focus-visible  * {
 	order: 165;
 }
 
-.js-focus-visible *+.focus-visible {
+*.js-focus-visible+.focus-visible, .js-focus-visible *+.focus-visible {
 	order: 166;
 }
 
-.js-focus-visible .focus-visible+* {
+.focus-visible.js-focus-visible+*, .js-focus-visible .focus-visible+* {
 	order: 167;
 }
 
-.js-focus-visible * + .focus-visible {
+*.js-focus-visible + .focus-visible, .js-focus-visible * + .focus-visible {
 	order: 168;
 }
 
-.js-focus-visible .focus-visible + * {
+.focus-visible.js-focus-visible + *, .js-focus-visible .focus-visible + * {
 	order: 169;
 }
 
-.js-focus-visible *~.focus-visible {
+*.js-focus-visible~.focus-visible, .js-focus-visible *~.focus-visible {
 	order: 170;
 }
 
-.js-focus-visible .focus-visible~* {
+.focus-visible.js-focus-visible~*, .js-focus-visible .focus-visible~* {
 	order: 171;
 }
 
-.js-focus-visible * ~ .focus-visible {
+*.js-focus-visible ~ .focus-visible, .js-focus-visible * ~ .focus-visible {
 	order: 172;
 }
 
-.js-focus-visible .focus-visible ~ * {
+.focus-visible.js-focus-visible ~ *, .js-focus-visible .focus-visible ~ * {
 	order: 173;
 }
 
-.js-focus-visible *>.focus-visible {
+*.js-focus-visible>.focus-visible, .js-focus-visible *>.focus-visible {
 	order: 174;
 }
 
-.js-focus-visible .focus-visible>* {
+.focus-visible.js-focus-visible>*, .js-focus-visible .focus-visible>* {
 	order: 175;
 }
 
-.js-focus-visible * > .focus-visible {
+*.js-focus-visible > .focus-visible, .js-focus-visible * > .focus-visible {
 	order: 176;
 }
 
-.js-focus-visible .focus-visible > * {
+.focus-visible.js-focus-visible > *, .js-focus-visible .focus-visible > * {
 	order: 177;
 }
 
-*, .js-focus-visible .focus-visible {
+*, .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 178;
 }
 
-.js-focus-visible .focus-visible, * {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible, * {
 	order: 179;
 }
 
-.js-focus-visible :hover.focus-visible {
+:hover.focus-visible.js-focus-visible, .js-focus-visible :hover.focus-visible {
 	order: 180;
 }
 
-.js-focus-visible .focus-visible:hover {
+.focus-visible:hover.js-focus-visible, .js-focus-visible .focus-visible:hover {
 	order: 181;
 }
 
-.js-focus-visible :hover .focus-visible {
+:hover.js-focus-visible .focus-visible, .js-focus-visible :hover .focus-visible {
 	order: 182;
 }
 
-.js-focus-visible .focus-visible :hover {
+.focus-visible.js-focus-visible :hover, .js-focus-visible .focus-visible :hover {
 	order: 183;
 }
 
-.js-focus-visible :hover  .focus-visible {
+:hover.js-focus-visible  .focus-visible, .js-focus-visible :hover  .focus-visible {
 	order: 184;
 }
 
-.js-focus-visible .focus-visible  :hover {
+.focus-visible.js-focus-visible  :hover, .js-focus-visible .focus-visible  :hover {
 	order: 185;
 }
 
-.js-focus-visible :hover+.focus-visible {
+:hover.js-focus-visible+.focus-visible, .js-focus-visible :hover+.focus-visible {
 	order: 186;
 }
 
-.js-focus-visible .focus-visible+:hover {
+.focus-visible.js-focus-visible+:hover, .js-focus-visible .focus-visible+:hover {
 	order: 187;
 }
 
-.js-focus-visible :hover + .focus-visible {
+:hover.js-focus-visible + .focus-visible, .js-focus-visible :hover + .focus-visible {
 	order: 188;
 }
 
-.js-focus-visible .focus-visible + :hover {
+.focus-visible.js-focus-visible + :hover, .js-focus-visible .focus-visible + :hover {
 	order: 189;
 }
 
-.js-focus-visible :hover~.focus-visible {
+:hover.js-focus-visible~.focus-visible, .js-focus-visible :hover~.focus-visible {
 	order: 190;
 }
 
-.js-focus-visible .focus-visible~:hover {
+.focus-visible.js-focus-visible~:hover, .js-focus-visible .focus-visible~:hover {
 	order: 191;
 }
 
-.js-focus-visible :hover ~ .focus-visible {
+:hover.js-focus-visible ~ .focus-visible, .js-focus-visible :hover ~ .focus-visible {
 	order: 192;
 }
 
-.js-focus-visible .focus-visible ~ :hover {
+.focus-visible.js-focus-visible ~ :hover, .js-focus-visible .focus-visible ~ :hover {
 	order: 193;
 }
 
-.js-focus-visible :hover>.focus-visible {
+:hover.js-focus-visible>.focus-visible, .js-focus-visible :hover>.focus-visible {
 	order: 194;
 }
 
-.js-focus-visible .focus-visible>:hover {
+.focus-visible.js-focus-visible>:hover, .js-focus-visible .focus-visible>:hover {
 	order: 195;
 }
 
-.js-focus-visible :hover > .focus-visible {
+:hover.js-focus-visible > .focus-visible, .js-focus-visible :hover > .focus-visible {
 	order: 196;
 }
 
-.js-focus-visible .focus-visible > :hover {
+.focus-visible.js-focus-visible > :hover, .js-focus-visible .focus-visible > :hover {
 	order: 197;
 }
 
-:hover, .js-focus-visible .focus-visible {
+:hover, .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 198;
 }
 
-.js-focus-visible .focus-visible, :hover {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible, :hover {
 	order: 199;
 }
 
-.js-focus-visible ::before.focus-visible {
+.js-focus-visible::before.focus-visible, .js-focus-visible ::before.focus-visible {
 	order: 200;
 }
 
-.js-focus-visible .focus-visible::before {
+.focus-visible.js-focus-visible::before, .js-focus-visible .focus-visible::before {
 	order: 201;
 }
 
-.js-focus-visible ::before .focus-visible {
+.js-focus-visible::before .focus-visible, .js-focus-visible ::before .focus-visible {
 	order: 202;
 }
 
-.js-focus-visible .focus-visible ::before {
+.focus-visible.js-focus-visible ::before, .js-focus-visible .focus-visible ::before {
 	order: 203;
 }
 
-.js-focus-visible ::before  .focus-visible {
+.js-focus-visible::before  .focus-visible, .js-focus-visible ::before  .focus-visible {
 	order: 204;
 }
 
-.js-focus-visible .focus-visible  ::before {
+.focus-visible.js-focus-visible  ::before, .js-focus-visible .focus-visible  ::before {
 	order: 205;
 }
 
-.js-focus-visible ::before+.focus-visible {
+.js-focus-visible::before+.focus-visible, .js-focus-visible ::before+.focus-visible {
 	order: 206;
 }
 
-.js-focus-visible .focus-visible+::before {
+.focus-visible.js-focus-visible+::before, .js-focus-visible .focus-visible+::before {
 	order: 207;
 }
 
-.js-focus-visible ::before + .focus-visible {
+.js-focus-visible::before + .focus-visible, .js-focus-visible ::before + .focus-visible {
 	order: 208;
 }
 
-.js-focus-visible .focus-visible + ::before {
+.focus-visible.js-focus-visible + ::before, .js-focus-visible .focus-visible + ::before {
 	order: 209;
 }
 
-.js-focus-visible ::before~.focus-visible {
+.js-focus-visible::before~.focus-visible, .js-focus-visible ::before~.focus-visible {
 	order: 210;
 }
 
-.js-focus-visible .focus-visible~::before {
+.focus-visible.js-focus-visible~::before, .js-focus-visible .focus-visible~::before {
 	order: 211;
 }
 
-.js-focus-visible ::before ~ .focus-visible {
+.js-focus-visible::before ~ .focus-visible, .js-focus-visible ::before ~ .focus-visible {
 	order: 212;
 }
 
-.js-focus-visible .focus-visible ~ ::before {
+.focus-visible.js-focus-visible ~ ::before, .js-focus-visible .focus-visible ~ ::before {
 	order: 213;
 }
 
-.js-focus-visible ::before>.focus-visible {
+.js-focus-visible::before>.focus-visible, .js-focus-visible ::before>.focus-visible {
 	order: 214;
 }
 
-.js-focus-visible .focus-visible>::before {
+.focus-visible.js-focus-visible>::before, .js-focus-visible .focus-visible>::before {
 	order: 215;
 }
 
-.js-focus-visible ::before > .focus-visible {
+.js-focus-visible::before > .focus-visible, .js-focus-visible ::before > .focus-visible {
 	order: 216;
 }
 
-.js-focus-visible .focus-visible > ::before {
+.focus-visible.js-focus-visible > ::before, .js-focus-visible .focus-visible > ::before {
 	order: 217;
 }
 
-::before, .js-focus-visible .focus-visible {
+::before, .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 218;
 }
 
-.js-focus-visible .focus-visible, ::before {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible, ::before {
 	order: 219;
 }
 
@@ -886,7 +886,7 @@ foo[baz=":focus-visible"] {
 	order: 221;
 }
 
-.js-focus-visible :not(.focus-visible) {
+:not(.focus-visible).js-focus-visible, .js-focus-visible :not(.focus-visible) {
 	order: 222;
 }
 
@@ -894,11 +894,11 @@ foo[baz=":focus-visible"] {
 	order: 223;
 }
 
-.js-focus-visible :--.focus-visible {
+:--.focus-visible.js-focus-visible, .js-focus-visible :--.focus-visible {
 	order: 224;
 }
 
-.js-focus-visible __.focus-visible {
+__.focus-visible.js-focus-visible, .js-focus-visible __.focus-visible {
 	order: 225;
 }
 
