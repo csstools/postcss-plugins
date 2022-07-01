@@ -20,7 +20,7 @@ the browser's polyfill as well.
 
 /* becomes */
 
-:focus:not(.focus-visible) {
+:focus:not(.focus-visible).js-focus-visible, .js-focus-visible :focus:not(.focus-visible) {
 	outline: none;
 }
 ```
@@ -88,7 +88,7 @@ The `replaceWith` option defines the selector to replace `:focus-visible`. By
 default, the replacement selector is `.focus-visible`.
 
 ```js
-postcssFocusVisible({ replaceWith: '.css-blank' })
+postcssFocusVisible({ replaceWith: '[data-focus-visible-added]' })
 ```
 
 ```pcss
@@ -109,7 +109,7 @@ postcssFocusVisible({ replaceWith: '.css-blank' })
 ```
 
 Note that if you want to keep using [focus-visible polyfill], the only 
-acceptable value would be `[data-focus-visible-addeddata-focus-visible-added]`,
+acceptable value would be `[data-focus-visible-added]`,
 given that the polyfill does not support arbitrary values.
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
