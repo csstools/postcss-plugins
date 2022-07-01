@@ -1,5 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased
+
+- Fix case insensitive matching.
+
 ### 2.0.6 (June 23, 2022)
 
 - Fix selector order with any pseudo element.

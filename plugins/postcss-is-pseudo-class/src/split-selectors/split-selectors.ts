@@ -10,7 +10,7 @@ export default function splitSelectors(selectors: string[], pluginOptions: { spe
 	const specificityMatchingNameTag = ':not(' + pluginOptions.specificityMatchingName + ')';
 
 	return selectors.flatMap((selector) => {
-		if (selector.indexOf(':is') === -1) {
+		if (selector.toLowerCase().indexOf(':is') === -1) {
 			return selector;
 		}
 
@@ -19,7 +19,7 @@ export default function splitSelectors(selectors: string[], pluginOptions: { spe
 
 		const selectorAST = parser().astSync(selector);
 		selectorAST.walkPseudos((pseudo) => {
-			if (pseudo.value !== ':is' || !pseudo.nodes || !pseudo.nodes.length) {
+			if (pseudo.value.toLowerCase() !== ':is' || !pseudo.nodes || !pseudo.nodes.length) {
 				return;
 			}
 
@@ -29,7 +29,7 @@ export default function splitSelectors(selectors: string[], pluginOptions: { spe
 
 			let parent = pseudo.parent;
 			while (parent) {
-				if (parent.value === ':is' && parent.type === 'pseudo') {
+				if (parent.value && parent.value.toLowerCase() === ':is' && parent.type === 'pseudo') {
 					foundNestedIs = true;
 					return;
 				}

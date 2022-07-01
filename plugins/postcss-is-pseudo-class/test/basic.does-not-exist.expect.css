@@ -429,3 +429,19 @@ ul:focus > li.bar {
 ul:focus-visible > li.bar {
 	order: 32
 }
+
+.all.mixed:not(.something-random):not(.something-random) {
+	order: 33;
+}
+
+.all.caps.nested:focus {
+	order: 33;
+}
+
+.caps.mixed:not(.something-random):not(.something-random) {
+	order: 33;
+}
+
+.caps.caps.nested:focus {
+	order: 33;
+}

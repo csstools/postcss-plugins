@@ -54,6 +54,16 @@
 	color-17: lch(60% 50 0.785398unknown);
 	color-18: rgb(212, 118, 84);
 	color-18: lch(60% 50 405);
+
+	color-20: rgb(0, 166, 143);
+
+	color-20: LCH(60% 50 180DEG);
+	color-21: rgb(0, 166, 143);
+	color-21: Lch(60% 50 0.5TURN);
+	color-22: rgb(0, 166, 143);
+	color-22: lCh(60% 50 200GRAD);
+	color-23: rgb(0, 166, 143);
+	color-23: lcH(60% 50 3.14159RAD);
 }
 
 .test-percentages {
