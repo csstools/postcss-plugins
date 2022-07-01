@@ -64,6 +64,18 @@
 	color-17: oklch(60% 0.1250 0.785398unknown);
 	color-18: rgb(188, 101, 59);
 	color-18: oklch(60% 0.1250 405);
+
+	color-20: rgb(0, 152, 131);
+
+	color-20: OKLCH(60% 0.1250 180);
+	color-21: rgb(0, 152, 131);
+	color-21: Oklch(60% 0.1250 180DEG);
+	color-22: rgb(0, 152, 131);
+	color-22: oKlch(60% 0.1250 0.5TURN);
+	color-23: rgb(0, 152, 131);
+	color-23: okLch(60% 0.1250 200GRAD);
+	color-24: rgb(0, 152, 131);
+	color-24: oklCh(60% 0.1250 3.14159RAD);
 }
 
 .test-percentages {
