@@ -3,7 +3,7 @@ import options from './options';
 
 export default (decl, { result }) => {
 	// alignment
-	const alignment = decl.prop.match(placeMatch)[1];
+	const alignment = decl.prop.toLowerCase().match(placeMatch)[1];
 
 	// value ast and child nodes
 	let value;

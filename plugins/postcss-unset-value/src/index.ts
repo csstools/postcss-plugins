@@ -29,10 +29,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			if (options.preserve) {
-				decl.cloneBefore({ prop: decl.prop, value: replacement });
-			} else {
-				decl.value = replacement;
+			decl.cloneBefore({ prop: decl.prop, value: replacement });
+
+			if (!options.preserve) {
+				decl.remove();
 			}
 		},
 	};

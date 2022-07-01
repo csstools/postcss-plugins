@@ -4,6 +4,12 @@ a {
 	place-self: first second;
 }
 
+A {
+	PLACE-CONTENT: first second;
+	PLACE-ITEMS: first second;
+	PLACE-SELF: first second;
+}
+
 b {
 	place-content: first;
 	place-items: first;

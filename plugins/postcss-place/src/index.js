@@ -10,7 +10,7 @@ const creator = opts => {
 	return {
 		postcssPlugin: 'postcss-place',
 		Declaration: (decl, { result }) => {
-			if (placeMatch.test(decl)) {
+			if (placeMatch.test(decl.prop.toLowerCase())) {
 				onCSSDeclaration(decl, { result });
 			}
 		},
