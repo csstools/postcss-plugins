@@ -34,38 +34,40 @@ const creator: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolea
 		prepare() {
 			const cache = new Map();
 			return {
-				Declaration: {
-					display(decl) {
-						const value = decl.value;
+				Declaration(decl) {
+					if (decl.prop.toLowerCase() !== 'display') {
+						return;
+					}
 
-						if (!value) {
-							return;
-						}
+					const value = decl.value;
+					if (!value) {
+						return;
+					}
 
-						if (cache.has(value)) {
-							if (decl.value !== cache.get(value)) {
-								if (preserve) {
-									decl.cloneBefore({ value: cache.get(value) });
-								} else {
-									decl.value = cache.get(value);
-								}
-							}
+					if (cache.has(value)) {
+						if (decl.value !== cache.get(value)) {
+							decl.cloneBefore({ value: cache.get(value) });
 
-							return;
-						}
-
-						const result = transform(value);
-
-						if (decl.value !== result) {
-							if (preserve) {
-								decl.cloneBefore( { value: result } );
-							} else {
-								decl.value = result;
+							if (!preserve) {
+								decl.remove();
 							}
 						}
 
-						cache.set(value, result);
-					},
+						return;
+					}
+
+					const result = transform(value);
+					cache.set(value, result);
+
+					if (decl.value === result) {
+						return;
+					}
+
+					decl.cloneBefore({ value: result });
+
+					if (!preserve) {
+						decl.remove();
+					}
 				},
 			};
 		},
