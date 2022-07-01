@@ -1,5 +1,9 @@
 # Changes to PostCSS HWB Function
 
+### Unreleased
+
+- Fix case insensitive matching.
+
 ### 1.0.1 (May 18, 2022)
 
 - Fix grayscale conversions.

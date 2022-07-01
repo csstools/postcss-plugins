@@ -21,7 +21,11 @@ const creator: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolea
 				return;
 			}
 
-			atRule.walkDecls('src', decl => {
+			atRule.walkDecls(decl => {
+				if (decl.prop.toLowerCase() !== 'src') {
+					return;
+				}
+
 				if (!decl.value.toLowerCase().includes('format(')) {
 					// No point in doing parsing if no format is specified
 					return;
