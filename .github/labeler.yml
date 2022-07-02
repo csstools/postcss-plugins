@@ -164,9 +164,9 @@
   - plugins/postcss-pseudo-class-any-link/**
   - experimental/postcss-pseudo-class-any-link/**
 
-"plugins/postcss-rebeccapurple":
-  - plugins/postcss-rebeccapurple/**
-  - experimental/postcss-rebeccapurple/**
+"plugins/postcss-color-rebeccapurple":
+  - plugins/postcss-color-rebeccapurple/**
+  - experimental/postcss-color-rebeccapurple/**
 
 "plugins/postcss-replace-overflow-wrap":
   - plugins/postcss-replace-overflow-wrap/**

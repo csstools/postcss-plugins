@@ -27,15 +27,19 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			// Warnings
 			if (options.onRevertLayerKeyword) {
 				root.walkDecls((decl) => {
-					if (decl.value === 'revert-layer') {
+					if (decl.value.toLowerCase() === 'revert-layer') {
 						decl.warn(result, 'handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions.');
 					}
 				});
 			}
 
 			if (options.onImportLayerRule) {
-				root.walkAtRules('import', (atRule) => {
-					if (atRule.params.includes('layer')) {
+				root.walkAtRules((atRule) => {
+					if (atRule.name.toLowerCase() !== 'import') {
+						return;
+					}
+
+					if (atRule.params.toLowerCase().includes('layer')) {
 						atRule.warn(result, 'To use @import with layers, the postcss-import plugin is also required. This plugin alone will not support using the @import at-rule.');
 					}
 				},
@@ -73,7 +77,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			// transform unlayered styles - need highest specificity (layerCount)
 			root.walkRules((rule) => {
 				// Skip any at rules that do not contain regular declarations (@keyframes)
-				if (rule.parent && rule.parent.type === 'atrule' && ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS.includes((rule.parent as AtRule).name)) {
+				if (rule.parent && rule.parent.type === 'atrule' && ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS.includes((rule.parent as AtRule).name.toLowerCase())) {
 					return;
 				}
 
@@ -107,7 +111,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			//  - give selectors the specificity they need based on layerPriority state
 			root.walkRules((rule) => {
 				// Skip any at rules that do not contain regular declarations (@keyframes)
-				if (rule.parent && rule.parent.type === 'atrule' && ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS.includes((rule.parent as AtRule).name)) {
+				if (rule.parent && rule.parent.type === 'atrule' && ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS.includes((rule.parent as AtRule).name.toLowerCase())) {
 					return;
 				}
 
@@ -131,8 +135,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			// Remove all @layer at-rules
 			// Contained styles are inserted before
-			while (someAtRuleInTree(root, (node) => node.name === 'layer')) {
-				root.walkAtRules('layer', (atRule) => {
+			while (someAtRuleInTree(root, (node) => node.name.toLowerCase() === 'layer')) {
+				root.walkAtRules((atRule) => {
+					if (atRule.name.toLowerCase() !== 'layer') {
+						return;
+					}
+
 					atRule.replaceWith(atRule.nodes);
 				});
 			}

@@ -1,0 +1,70 @@
+@LaYeR A {
+	target {
+		color: red;
+	}
+
+	p {
+		color: blue;
+	}
+
+	@LAYER Z {
+		target {
+			color: yellow;
+		}
+	}
+
+	i {
+		color: red;
+	}
+}
+
+@layer B {
+	@KEYFRAMES slide-left {
+		from {
+			margin-left: 0;
+		}
+
+		to {
+			margin-left: -100%;
+		}
+	}
+
+	@layer Z {
+		target {
+			color: yellow;
+		}
+	}
+}
+
+@layer C {
+	@layer Z {
+		target {
+			color: yellow;
+		}
+	}
+
+	@mediA (prefers-color-scheme: dark) {
+		h1 {
+			color: red;
+			background: black;
+		}
+
+		@LAYER Z {
+			target {
+				color: lime;
+			}
+		}
+	}
+}
+
+@layer C.D {
+	target {
+		color: red;
+	}
+
+	@layer Z {
+		target {
+			color: yellow;
+		}
+	}
+}

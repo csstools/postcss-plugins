@@ -1,5 +1,9 @@
 # Changes to PostCSS Unset Value
 
+### Unreleased
+
+- Fixed: Case insensitive property and keyword matching.
+
 ### 1.0.1 (May 11, 2022)
 
 - No longer converts `all: unset;` to `all: initial;`. `all: unset` is now ignored.

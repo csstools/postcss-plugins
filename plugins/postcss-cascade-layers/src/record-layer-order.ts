@@ -6,7 +6,11 @@ import { pluginOptions } from './options';
 
 export function recordLayerOrder(root: Container, model: Model, { result, options }: { result: Result, options: pluginOptions }) {
 	// record layer order
-	root.walkAtRules('layer', (layerRule) => {
+	root.walkAtRules((layerRule) => {
+		if (layerRule.name.toLowerCase() !== 'layer') {
+			return;
+		}
+
 		const currentLayerNameParts = model.getLayerParams(layerRule);
 		const fullLayerName = currentLayerNameParts.join('.');
 		if (model.layerOrder.has(fullLayerName)) {

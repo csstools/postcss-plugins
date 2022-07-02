@@ -21,14 +21,16 @@ const keywords = [
 export function doublePositionGradients(node: Node): Array<string> {
 	const supportConditions: Array<string> = [];
 
+	const lowerCaseValue = node.value.toLowerCase();
+
 	// custom matchers :
 	if (node.type === 'function' && (
-		node.value === 'conic-gradient' ||
-		node.value === 'linear-gradient' ||
-		node.value === 'radial-gradient' ||
-		node.value === 'repeating-conic-gradient' ||
-		node.value === 'repeating-linear-gradient' ||
-		node.value === 'repeating-radial-gradient'
+		lowerCaseValue === 'conic-gradient' ||
+		lowerCaseValue === 'linear-gradient' ||
+		lowerCaseValue === 'radial-gradient' ||
+		lowerCaseValue === 'repeating-conic-gradient' ||
+		lowerCaseValue === 'repeating-linear-gradient' ||
+		lowerCaseValue === 'repeating-radial-gradient'
 	)) {
 
 		let components = 0;
@@ -37,7 +39,7 @@ export function doublePositionGradients(node: Node): Array<string> {
 
 		nodesLoop: for (let i = 0; i < node.nodes.length; i++) {
 			const childNode = node.nodes[i];
-			if (childNode.type === 'word' && keywords.includes(childNode.value)) {
+			if (childNode.type === 'word' && keywords.includes(childNode.value.toLowerCase())) {
 				inPrefix = true;
 			}
 
@@ -47,7 +49,7 @@ export function doublePositionGradients(node: Node): Array<string> {
 				continue;
 			}
 
-			if (childNode.type === 'word' && childNode.value === 'in') {
+			if (childNode.type === 'word' && childNode.value.toLowerCase() === 'in') {
 				hasColorInterpolationMethod = true;
 				continue;
 			}
@@ -57,7 +59,7 @@ export function doublePositionGradients(node: Node): Array<string> {
 			}
 
 			if (hasColorInterpolationMethod) {
-				switch (node.value) {
+				switch (node.value.toLowerCase()) {
 					case 'conic-gradient':
 						supportConditions.push('(background: conic-gradient(in oklch, red 0deg, red 0deg 1deg, red 2deg))');
 						break nodesLoop;
@@ -80,7 +82,7 @@ export function doublePositionGradients(node: Node): Array<string> {
 			}
 
 			if (!inPrefix && components === 3) {
-				switch (node.value) {
+				switch (node.value.toLowerCase()) {
 					case 'conic-gradient':
 						supportConditions.push('(background: conic-gradient(red 0deg, red 0deg 1deg, red 2deg))');
 						break nodesLoop;

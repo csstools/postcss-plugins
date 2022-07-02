@@ -1,5 +1,9 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased
+
+- Fix case insensitive `@layer` matching (`@LaYeR`).
+
 ### 1.0.4 (June 23, 2022)
 
 - Fix selector order with any pseudo element. This plugin will no longer re-order selectors.

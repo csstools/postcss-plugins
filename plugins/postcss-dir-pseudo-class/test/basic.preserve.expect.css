@@ -6,6 +6,22 @@
 	order: 0;
 }
 
+[dir="ltr"] {
+	order: 0.1;
+}
+
+:DIR(lTr) {
+	order: 0.1;
+}
+
+[dir="rtl"] {
+	order: 0.2;
+}
+
+:dIr(RtL) {
+	order: 0.2;
+}
+
 [dir="ltr"] test {
 	order: 1;
 }

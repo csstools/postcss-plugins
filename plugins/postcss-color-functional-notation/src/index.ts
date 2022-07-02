@@ -13,12 +13,18 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 	return {
 		postcssPlugin: 'postcss-color-functional-notation',
 		Declaration: (decl: Declaration, { result, postcss }: { result: Result, postcss: Postcss }) => {
-			if (preserve && hasSupportsAtRuleAncestor(decl)) {
+			if (hasSupportsAtRuleAncestor(decl)) {
 				return;
 			}
 
 			const originalValue = decl.value;
-			if (!(/(^|[^\w-])(hsla?|rgba?)\(/i.test(originalValue))) {
+			const lowerCaseValue = originalValue.toLowerCase();
+			if (
+				!lowerCaseValue.includes('rgb') &&
+				!lowerCaseValue.includes('rgba') &&
+				!lowerCaseValue.includes('hsl') &&
+				!lowerCaseValue.includes('hsla')
+			) {
 				return;
 			}
 
@@ -42,11 +48,13 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 					return;
 				}
 
+				const lowerCaseNodeValue = node.value.toLowerCase();
+
 				if (
-					node.value !== 'hsl' &&
-					node.value !== 'hsla' &&
-					node.value !== 'rgb' &&
-					node.value !== 'rgba'
+					lowerCaseNodeValue !== 'hsl' &&
+					lowerCaseNodeValue !== 'hsla' &&
+					lowerCaseNodeValue !== 'rgb' &&
+					lowerCaseNodeValue !== 'rgba'
 				) {
 					return;
 				}
@@ -87,11 +95,11 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 
 				insertAfter.after(atSupports);
 
-				decl.value = modifiedValue;
+				decl.replaceWith(decl.clone({ value: modifiedValue }));
 			} else if (preserve) {
 				decl.cloneBefore({ value: modifiedValue });
 			} else {
-				decl.value = modifiedValue;
+				decl.replaceWith(decl.clone({ value: modifiedValue }));
 			}
 		},
 	};

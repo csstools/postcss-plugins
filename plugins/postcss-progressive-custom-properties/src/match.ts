@@ -51,7 +51,15 @@ function doesNotMatchValue(a, b) {
 		return a.dimension.unit !== b.dimension.unit;
 	}
 
-	if (a.value !== b.value) {
+	if (a.type === 'string') {
+		if (a.value !== b.value) {
+			return true;
+		}
+
+		return false;
+	}
+
+	if (a.value.toLowerCase() !== b.value.toLowerCase()) {
 		return true;
 	}
 

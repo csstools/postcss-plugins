@@ -15,7 +15,7 @@ export function getImage(node) {
 
 	if (
 		node.type === 'function' &&
-		imageFuncRegexp.test(node.value)
+		imageFuncRegexp.test(node.value.toLowerCase())
 	) {
 		return valueParser.stringify(node);
 	}

@@ -17,7 +17,7 @@ const creator: PluginCreator<{ preserve: boolean, oninvalid: string }> = (opts?:
 			const value = decl.value;
 
 			// if a declaration likely uses an image-set() function
-			if (!imageSetValueMatchRegExp.test(value)) {
+			if (!imageSetValueMatchRegExp.test(value.toLowerCase())) {
 				return;
 			}
 
@@ -44,7 +44,7 @@ const creator: PluginCreator<{ preserve: boolean, oninvalid: string }> = (opts?:
 					return;
 				}
 
-				if (!imageSetFunctionMatchRegExp.test(node.value)) {
+				if (!imageSetFunctionMatchRegExp.test(node.value.toLowerCase())) {
 					return;
 				}
 
@@ -52,7 +52,7 @@ const creator: PluginCreator<{ preserve: boolean, oninvalid: string }> = (opts?:
 				valueParser.walk(node.nodes, (child) => {
 					if (
 						child.type === 'function' &&
-						imageSetFunctionMatchRegExp.test(child.value)
+						imageSetFunctionMatchRegExp.test(child.value.toLowerCase())
 					) {
 						foundNestedImageSet = true;
 					}

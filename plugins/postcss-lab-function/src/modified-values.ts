@@ -24,7 +24,7 @@ export function modifiedValues(originalValue: string, decl: Declaration, result:
 			return;
 		}
 
-		if (node.value !== 'lab' && node.value !== 'lch') {
+		if (node.value.toLowerCase() !== 'lab' && node.value.toLowerCase() !== 'lch') {
 			return;
 		}
 
@@ -43,7 +43,7 @@ export function modifiedValues(originalValue: string, decl: Declaration, result:
 			return;
 		}
 
-		if (node.value !== 'lab' && node.value !== 'lch') {
+		if (node.value.toLowerCase() !== 'lab' && node.value.toLowerCase() !== 'lch') {
 			return;
 		}
 

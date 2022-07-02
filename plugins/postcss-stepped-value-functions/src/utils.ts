@@ -4,7 +4,7 @@ import type { Declaration, Result } from 'postcss';
 import { pluginOptions } from './index';
 
 export function isVarNode(node: Node) {
-	return node.type === 'function' && node.value === 'var';
+	return node.type === 'function' && node.value.toLowerCase() === 'var';
 }
 
 export function validateArgumentsAndTypes(

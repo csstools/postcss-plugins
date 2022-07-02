@@ -2,6 +2,14 @@ html:not([dir="rtl"]) {
 	order: 0;
 }
 
+html:not([dir="rtl"]) {
+	order: 0.1;
+}
+
+[dir="rtl"] {
+	order: 0.2;
+}
+
 html:not([dir="rtl"]) test {
 	order: 1;
 }

@@ -2,7 +2,7 @@ import valueParser from 'postcss-value-parser';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode, SpaceNode } from 'postcss-value-parser';
 
 function onCSSFunction(node: FunctionNode) {
-	const value = node.value;
+	const value = node.value.toLowerCase();
 	if (!needsConversion(value === 'rgb' || value === 'rgba', node.nodes)) {
 		return;
 	}
@@ -81,11 +81,13 @@ function isNumericNodeHueLike(node: Node): node is WordNode {
 		return false;
 	}
 
+	const lowerCaseUnit = unitAndValue.unit.toLowerCase();
+
 	return !!unitAndValue.number && (
-		unitAndValue.unit === 'deg' ||
-		unitAndValue.unit === 'grad' ||
-		unitAndValue.unit === 'rad' ||
-		unitAndValue.unit === 'turn' ||
+		lowerCaseUnit === 'deg' ||
+		lowerCaseUnit === 'grad' ||
+		lowerCaseUnit === 'rad' ||
+		lowerCaseUnit === 'turn' ||
 		unitAndValue.unit === ''
 	);
 }
@@ -108,11 +110,11 @@ function isNumericNodePercentageOrNumber(node: Node): node is WordNode {
 }
 
 function isCalcNode(node: Node): node is FunctionNode {
-	return node && node.type === 'function' && node.value === 'calc';
+	return node && node.type === 'function' && node.value.toLowerCase() === 'calc';
 }
 
 function isVarNode(node: Node): node is FunctionNode {
-	return node && node.type === 'function' && node.value === 'var';
+	return node && node.type === 'function' && node.value.toLowerCase() === 'var';
 }
 
 function isSlashNode(node: Node): node is DivNode {
@@ -246,9 +248,9 @@ function channelNodes(x: Hsl | Rgb): [Node, Node, Node] {
 }
 
 function transformAlpha(node: FunctionNode, slashNode: DivNode | undefined, alphaNode: WordNode | FunctionNode | undefined) {
-	if (node.value === 'hsl' || node.value === 'hsla') {
+	if (node.value.toLowerCase() === 'hsl' || node.value.toLowerCase() === 'hsla') {
 		node.value = 'hsl';
-	} else if (node.value === 'rgb' || node.value === 'rgba') {
+	} else if (node.value.toLowerCase() === 'rgb' || node.value.toLowerCase() === 'rgba') {
 		node.value = 'rgb';
 	}
 
@@ -256,7 +258,7 @@ function transformAlpha(node: FunctionNode, slashNode: DivNode | undefined, alph
 		return;
 	}
 
-	if (node.value === 'hsl') {
+	if (node.value.toLowerCase() === 'hsl') {
 		node.value = 'hsla';
 	} else {
 		node.value = 'rgba';
@@ -282,7 +284,7 @@ function transformAlpha(node: FunctionNode, slashNode: DivNode | undefined, alph
 }
 
 function normalizeHueNode(dimension: Dimension) {
-	switch (dimension.unit) {
+	switch (dimension.unit.toLowerCase()) {
 		case 'deg':
 			dimension.unit = '';
 			return;
@@ -362,7 +364,7 @@ function needsConversion(isRGB: boolean, nodes: Array<Node>) {
 
 	for (let i = 0; i < relevantNodes.length; i++) {
 		const node = relevantNodes[i];
-		if (node.type === 'word' && node.value === 'from') {
+		if (node.type === 'word' && node.value.toLowerCase() === 'from') {
 			// Too modern, not handled by this plugin
 			return false;
 		}

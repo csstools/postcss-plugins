@@ -2,6 +2,10 @@
 	order: 1;
 }
 
+:link, :visited {
+	order: 1.1;
+}
+
 :link,
 :visited,
 ul a:link > span,
@@ -53,6 +57,10 @@ area:link, area:visited {
 
 [hidden]area:link, [hidden]area:visited {
 	order: 10.1;
+}
+
+AREA:link, AREA:visited {
+	order: 10.2;
 }
 
 area :link, area :visited {

@@ -5,3 +5,15 @@ html.single-overflow {
 html.double-overflow {
 	overflow: hidden auto;
 }
+
+html.double-overflow {
+	overflow: auto auto;
+}
+
+html.double-overflow {
+	overflow: hidden /* a comment */ auto;
+}
+
+html.double-overflow {
+	overflow: hidden      auto;
+}

@@ -26,7 +26,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 			}
 
 			const originalValue = decl.value;
-			if (!(/(^|[^\w-])(oklab|oklch)\(/i.test(originalValue))) {
+			if (!(/(^|[^\w-])(oklab|oklch)\(/i.test(originalValue.toLowerCase()))) {
 				return;
 			}
 

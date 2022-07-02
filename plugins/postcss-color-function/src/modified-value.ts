@@ -24,7 +24,7 @@ export function modifiedValues(originalValue: string, decl: Declaration, result:
 			return;
 		}
 
-		if (node.value !== 'color') {
+		if (node.value.toLowerCase() !== 'color') {
 			return;
 		}
 

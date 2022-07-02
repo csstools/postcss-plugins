@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Function
 
+### Unreleased
+
+- Fix case insensitive matching.
+
 ### 1.1.0 (April 4, 2022)
 
 - Allow percentage units in XYZ color spaces.

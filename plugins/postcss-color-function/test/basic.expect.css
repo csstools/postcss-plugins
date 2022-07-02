@@ -7,6 +7,12 @@
 	color-6: rgba(255,255,255,0.5);
 }
 
+.test-case {
+	color-1: rgb(0,0,0);
+	color-3: rgba(0,0,0,CALC(1 + 1));
+	color-4: rgba(255,255,255,VAR(--ALPHA));
+}
+
 .test-color-none {
 	color-1: color(display-p3 none);
 	color-3: color(display-p3 none none);

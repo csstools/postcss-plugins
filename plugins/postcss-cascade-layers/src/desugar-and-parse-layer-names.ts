@@ -10,7 +10,11 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 	// - parse layer names
 	// - rename anon layers
 	// - handle empty layers
-	root.walkAtRules('layer', (layerRule) => {
+	root.walkAtRules((layerRule) => {
+		if (layerRule.name.toLowerCase() !== 'layer') {
+			return;
+		}
+
 		if (layerRule.params) {
 			const layerNameList: Array<string> = [];
 			let isInvalidLayerName = false;
@@ -86,7 +90,7 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 			layerRule.params = model.createAnonymousLayerName();
 		}
 
-		const hasNestedLayers = someAtRuleInTree(layerRule, (node) => node.name === 'layer');
+		const hasNestedLayers = someAtRuleInTree(layerRule, (node) => node.name.toLowerCase() === 'layer');
 		const hasUnlayeredStyles = someInTree(layerRule, (node) => {
 			if (node.type !== 'rule') {
 				return;
@@ -104,7 +108,11 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 			});
 
 			// only keep unlayered styles for the implicit layer.
-			implicitLayer.walkAtRules('layer', (node) => {
+			implicitLayer.walkAtRules((node) => {
+				if (node.name.toLowerCase() !== 'layer') {
+					return;
+				}
+
 				node.remove();
 			});
 

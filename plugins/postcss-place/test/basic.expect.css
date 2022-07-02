@@ -10,6 +10,18 @@ a {
 	place-self: first second;
 }
 
+A {
+	align-content: first;
+	justify-content: second;
+	PLACE-CONTENT: first second;
+	align-items: first;
+	justify-items: second;
+	PLACE-ITEMS: first second;
+	align-self: first;
+	justify-self: second;
+	PLACE-SELF: first second;
+}
+
 b {
 	align-content: first;
 	justify-content: first;

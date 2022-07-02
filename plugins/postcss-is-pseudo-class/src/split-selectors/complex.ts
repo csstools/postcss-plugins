@@ -6,7 +6,7 @@ import type { Container } from 'postcss-selector-parser';
 
 export default function complexSelectors(selectors: string[], pluginOptions: { onComplexSelector?: 'warning' }, warnOnComplexSelector: () => void, warnOnPseudoElements: () => void) {
 	return selectors.flatMap((selector) => {
-		if (selector.indexOf(':-csstools-matches') === -1 && selector.indexOf(':is') === -1) {
+		if (selector.indexOf(':-csstools-matches') === -1 && selector.toLowerCase().indexOf(':is') === -1) {
 			return selector;
 		}
 
@@ -14,7 +14,7 @@ export default function complexSelectors(selectors: string[], pluginOptions: { o
 		selectorAST.walkPseudos((pseudo) => {
 			// `:is()` -> `:not(*)`
 			if (
-				pseudo.value === ':is' &&
+				pseudo.value.toLowerCase() === ':is' &&
 				pseudo.nodes &&
 				pseudo.nodes.length &&
 				pseudo.nodes[0].type === 'selector' &&

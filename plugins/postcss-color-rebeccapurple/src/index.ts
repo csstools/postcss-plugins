@@ -16,13 +16,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-color-rebeccapurple',
 		Declaration(decl) {
-			if (!decl.value.includes('rebeccapurple')) {
+			if (!decl.value.toLowerCase().includes('rebeccapurple')) {
 				return;
 			}
 
 			const valueAST = valuesParser(decl.value);
 			valueAST.walk(node => {
-				if (node.type === 'word' && node.value === 'rebeccapurple') {
+				if (node.type === 'word' && node.value.toLowerCase() === 'rebeccapurple') {
 					node.value = '#639';
 				}
 			});

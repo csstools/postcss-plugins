@@ -1,5 +1,9 @@
 # Changes to PostCSS Dir Pseudo Class
 
+### Unreleased
+
+- Fix case insensitive matching.
+
 ### 6.0.4 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility
