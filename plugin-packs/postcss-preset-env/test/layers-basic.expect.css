@@ -453,6 +453,14 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 26;
 }
 
+.test-focus-visible-pseudo-class:focus-visible:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	-webkit-box-ordinal-group: 27;
+	-webkit-order: 26;
+	   -moz-box-ordinal-group: 27;
+	    -ms-flex-order: 26;
+	        order: 26;
+}
+
 .test-double-position-gradients:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg,gold 75%, #f06 0deg);
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);

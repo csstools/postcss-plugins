@@ -6,7 +6,7 @@
 	order: 2;
 }
 
-[focus-within] {
+[focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 3;
 }
 
