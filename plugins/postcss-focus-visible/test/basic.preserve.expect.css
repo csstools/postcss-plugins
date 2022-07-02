@@ -1,20 +1,37 @@
-.focus-visible {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 1;
 }
 
-.focus-visible,.focus-visible test,
-test .focus-visible,
-test test.focus-visible,
-test .focus-visible test,
-test test.focus-visible test,
-test .focus-visible .focus-visible test,
-test :matches(.focus-visible) test,
-test :matches(.focus-visible test) test,
-test :matches(test .focus-visible) test,
-test :matches(test test.focus-visible) test,
-test :matches(test .focus-visible test) test,
-test :matches(test test.focus-visible test) test,
-test :matches(test .focus-visible .focus-visible test) test {
+.focus-visible.js-focus-visible,
+.js-focus-visible .focus-visible,
+.focus-visible.js-focus-visible test,
+.js-focus-visible .focus-visible test,
+test.js-focus-visible .focus-visible,
+.js-focus-visible test .focus-visible,
+test.js-focus-visible test.focus-visible,
+.js-focus-visible test test.focus-visible,
+html[dir="rtl"].js-focus-visible .focus-visible,
+.js-focus-visible html[dir="rtl"] .focus-visible,
+test.js-focus-visible .focus-visible test,
+.js-focus-visible test .focus-visible test,
+test.js-focus-visible test.focus-visible test,
+.js-focus-visible test test.focus-visible test,
+test.js-focus-visible .focus-visible .focus-visible test,
+.js-focus-visible test .focus-visible .focus-visible test,
+test.js-focus-visible :matches(.focus-visible) test,
+.js-focus-visible test :matches(.focus-visible) test,
+test.js-focus-visible :matches(.focus-visible test) test,
+.js-focus-visible test :matches(.focus-visible test) test,
+test.js-focus-visible :matches(test .focus-visible) test,
+.js-focus-visible test :matches(test .focus-visible) test,
+test.js-focus-visible :matches(test test.focus-visible) test,
+.js-focus-visible test :matches(test test.focus-visible) test,
+test.js-focus-visible :matches(test .focus-visible test) test,
+.js-focus-visible test :matches(test .focus-visible test) test,
+test.js-focus-visible :matches(test test.focus-visible test) test,
+.js-focus-visible test :matches(test test.focus-visible test) test,
+test.js-focus-visible :matches(test .focus-visible .focus-visible test) test,
+.js-focus-visible test :matches(test .focus-visible .focus-visible test) test {
 	order: 2;
 }
 
@@ -31,7 +48,49 @@ test :matches(test .focus-visible .focus-visible test) test {
 
 .escaped\:focus-visible,
 .escaped\:times\:two\:focus-visible,
-.escaped\:focus-visible.focus-visible,
-.escaped\:times\:two.focus-visible {
+.escaped\:focus-visible.focus-visible.js-focus-visible,
+.js-focus-visible .escaped\:focus-visible.focus-visible,
+.escaped\:times\:two.focus-visible.js-focus-visible,
+.js-focus-visible .escaped\:times\:two.focus-visible {
 	order: 5;
+}
+
+html.js-focus-visible .focus-visible, .js-focus-visible html .focus-visible {
+	order: 6;
+}
+
+html.focus-visible.js-focus-visible, .js-focus-visible html.focus-visible {
+	order: 6.1;
+}
+
+:not(.focus-visible).js-focus-visible, .js-focus-visible :not(.focus-visible) {
+	order: 7;
+}
+
+html.js-focus-visible :not(.focus-visible), .js-focus-visible html :not(.focus-visible) {
+	order: 8;
+}
+
+.focus-visible.js-focus-visible::before, .js-focus-visible .focus-visible::before {
+	order: 10.0;
+}
+
+.focus-visible.js-focus-visible .foo, .js-focus-visible .focus-visible .foo {
+	order: 10.1;
+}
+
+.focus-visible.js-focus-visible > .foo, .js-focus-visible .focus-visible > .foo {
+	order: 10.2;
+}
+
+.js-focus-visible::before.focus-visible, .js-focus-visible ::before.focus-visible {
+	order: 10.3;
+}
+
+.foo.js-focus-visible .focus-visible, .js-focus-visible .foo .focus-visible {
+	order: 10.4;
+}
+
+.foo.js-focus-visible > .focus-visible, .js-focus-visible .foo > .focus-visible {
+	order: 10.5;
 }

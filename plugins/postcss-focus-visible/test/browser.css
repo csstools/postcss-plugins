@@ -1,0 +1,9 @@
+input,
+select,
+textarea {
+	background-color: rgb(255, 192, 203);
+}
+
+:focus-visible {
+	background-color: rgb(128, 0, 128);
+}

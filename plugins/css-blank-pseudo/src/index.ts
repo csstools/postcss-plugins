@@ -2,7 +2,7 @@ import type { PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
 import isValidReplacement from './is-valid-replacement.mjs';
 
-type pluginOptions = { color?: string, preserve?: boolean };
+type pluginOptions = { preserve?: boolean, replaceWith?: string };
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
