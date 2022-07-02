@@ -36,7 +36,7 @@ function creator(opts) {
 							}
 
 							// value of the :dir pseudo-class
-							const value = node.nodes.toString().toLowerCase();
+							const value = node.nodes.toString().toLowerCase(); /* needs to be lower case because attribute value selectors are case sensitive */
 							if (value !== 'rtl' && value !== 'ltr') {
 								return;
 							}
