@@ -1,5 +1,9 @@
 # Changes to PostCSS OKLab Function
 
+### Unreleased
+
+- Fix case insensitive matching.
+
 ### 1.1.0 (April 4, 2022)
 
 - Allow percentage and number units in more color components.

@@ -13,7 +13,7 @@ function transformRemFunction(
 	const parsedValue = valueParser(decl.value);
 
 	parsedValue.walk(node => {
-		if (node.type !== 'function' || node.value !== 'rem') {
+		if (node.type !== 'function' || node.value.toLowerCase() !== 'rem') {
 			return;
 		}
 
@@ -37,7 +37,7 @@ function transformRemFunction(
 
 		const transformedNode = functionNodeToWordNode(node);
 		transformedNode.value = remainder === 0 ? '0' : `${remainder}${valueA.unit}`;
-	});
+	}, true);
 
 	return parsedValue.toString();
 }

@@ -1,5 +1,9 @@
 # Changes to PostCSS Overflow Shorthand
 
+### Unreleased
+
+- Fix case insensitive matching.
+
 ### 3.0.3 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

@@ -851,6 +851,11 @@
 	color: unset !important;
 }
 
+.mixed-case {
+	cOlOr: inherit;
+	cOlOr: unsEt;
+}
+
 .all {
 	all: unset;
 }

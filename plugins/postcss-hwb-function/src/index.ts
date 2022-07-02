@@ -20,7 +20,7 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 			}
 
 			const originalValue = decl.value;
-			if (!originalValue.includes('hwb')) {
+			if (!originalValue.toLowerCase().includes('hwb')) {
 				return;
 			}
 
@@ -41,12 +41,12 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 
 				insertAtSupportsAfterCorrectRule(atSupports, parent, atSupportsHwbParams);
 
-				decl.value = modified;
+				decl.replaceWith(decl.clone({ value: modified }));
 			} else if (preserve) {
 				decl.cloneBefore({ value: modified });
 
 			} else {
-				decl.value = modified;
+				decl.replaceWith(decl.clone({ value: modified }));
 			}
 		},
 	};
@@ -77,7 +77,7 @@ function modifiedValues(originalValue: string, decl: Declaration, result: Result
 			return;
 		}
 
-		if (node.value !== 'hwb') {
+		if (node.value.toLowerCase() !== 'hwb') {
 			return;
 		}
 
@@ -101,7 +101,7 @@ function insertAtSupportsAfterCorrectRule(atSupports: AtRule, parent: Container<
 		insertAfter &&
 		nextInsertAfter &&
 		nextInsertAfter.type === 'atrule' &&
-		nextInsertAfter.name === 'supports' &&
+		nextInsertAfter.name.toLowerCase() === 'supports' &&
 		nextInsertAfter.params === params
 	) {
 		insertAfter = nextInsertAfter;

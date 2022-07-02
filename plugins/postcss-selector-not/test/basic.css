@@ -29,6 +29,10 @@ em[:not="abc"] {
 	order: 7;
 }
 
+:nOt(a, b) {
+	order: 7.1;
+}
+
 tag:not(.class, .class2) {
 	order: 8;
 }

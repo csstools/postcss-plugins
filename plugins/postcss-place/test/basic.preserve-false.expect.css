@@ -7,6 +7,15 @@ a {
 	justify-self: second;
 }
 
+A {
+	align-content: first;
+	justify-content: second;
+	align-items: first;
+	justify-items: second;
+	align-self: first;
+	justify-self: second;
+}
+
 b {
 	align-content: first;
 	justify-content: first;

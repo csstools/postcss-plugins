@@ -7,3 +7,20 @@ html.double-overflow {
 	overflow-y: auto;
 	overflow: hidden auto;
 }
+
+html.double-overflow {
+	overflow: auto;
+	overflow: auto auto;
+}
+
+html.double-overflow {
+	overflow-x: hidden;
+	overflow-y: auto;
+	overflow: hidden /* a comment */ auto;
+}
+
+html.double-overflow {
+	overflow-x: hidden;
+	overflow-y: auto;
+	overflow: hidden      auto;
+}

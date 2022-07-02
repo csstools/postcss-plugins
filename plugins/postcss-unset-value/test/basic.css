@@ -431,6 +431,10 @@
 	color: unset !important;
 }
 
+.mixed-case {
+	cOlOr: unsEt;
+}
+
 .all {
 	all: unset;
 }

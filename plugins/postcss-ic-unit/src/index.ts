@@ -11,7 +11,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 	return {
 		postcssPlugin: 'postcss-ic-unit',
 		Declaration(decl) {
-			if (!decl.value.includes('ic')) {
+			if (!decl.value.toLowerCase().includes('ic')) {
 				return;
 			}
 
@@ -28,19 +28,21 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 
 				const dimension = valueParser.unit(node.value);
 
-				if (dimension && dimension.unit === 'ic') {
+				if (dimension && dimension.unit.toLowerCase() === 'ic') {
 					node.value = `${dimension.number}em`;
 				}
 			});
 
 			const modifiedValue = String(parsedValue);
 
-			if (modifiedValue !== decl.value) {
-				if (opts.preserve) {
-					decl.cloneBefore({ value: modifiedValue });
-				} else {
-					decl.value = modifiedValue;
-				}
+			if (modifiedValue === decl.value) {
+				return;
+			}
+
+			decl.cloneBefore({ value: modifiedValue });
+
+			if (!opts.preserve) {
+				decl.remove();
 			}
 		},
 	};

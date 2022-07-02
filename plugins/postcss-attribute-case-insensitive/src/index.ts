@@ -90,7 +90,12 @@ const creator: PluginCreator<never> = () => {
 		postcssPlugin: 'postcss-attribute-case-insensitive',
 		Rule(rule) {
 			if (rule.selector.includes('i]')) {
-				rule.selector = selectorParser(transform).processSync(rule.selector);
+				const modifiedSelector = selectorParser(transform).processSync(rule.selector);
+				if (modifiedSelector === rule.selector) {
+					return;
+				}
+
+				rule.replaceWith(rule.clone({ selector: modifiedSelector }));
 			}
 		},
 	};

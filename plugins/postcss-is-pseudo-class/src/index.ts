@@ -22,7 +22,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			if (rule.selector.indexOf(':is') === -1) {
+			if (rule.selector.toLowerCase().indexOf(':is') === -1) {
 				return;
 			}
 

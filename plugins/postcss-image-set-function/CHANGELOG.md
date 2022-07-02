@@ -1,5 +1,9 @@
 # Changes to PostCSS image-set() Function
 
+### Unreleased
+
+- Fix case insensitive matching.
+
 ### 4.0.6 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

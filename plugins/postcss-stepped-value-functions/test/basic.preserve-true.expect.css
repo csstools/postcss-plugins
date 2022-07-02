@@ -4,7 +4,6 @@
 	transform: rotate(-50deg);
 	transform: rotate(mod(-140deg, -90deg));
 	width: 2px;
-	width: mod(2px, 5px);
 	width: mod(mod(-18px, 5px), 5px);
 }
 
@@ -23,7 +22,6 @@
 	transform: rotateX(-40deg) rotateY(50deg);
 	transform: rotateX(mod(140deg, -90deg)) rotateY(rem(140deg, -90deg));
 	height: 0;
-	height: rem(mod(2px, 5px), 2px);
 	height: rem(mod(mod(-18px, 5px), 5px), 2px);
 }
 
@@ -57,11 +55,13 @@
 	left: 2px;
 	left: round(nearest, mod(-18px, 5px), 2px);
 	top: 2px;
-	top: round(nearest, mod(2px, 5px), 2px);
 	top: round(nearest, mod(mod(-18px, 5px), 5px), 2px);
+	/* lower case */
 	right: 8px;
-	right: round(up, rem(mod(3px, 7px), 15px), 8px);
 	right: round(up, rem(mod(mod(8px, 5px), 7px), 15px), 8px);
+	/* upper case */
+	right: 8px;
+	right: ROUND(UP, REM(mod(MOD(8px, 5px), 7px), 15px), 8px);
 }
 
 .invalid {

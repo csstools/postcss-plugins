@@ -100,12 +100,14 @@ function isNumericNodeHueLike(node: Node): node is WordNode {
 		return false;
 	}
 
+	const unit = unitAndValue.unit.toLowerCase();
+
 	return !!unitAndValue.number && (
-		unitAndValue.unit === 'deg' ||
-		unitAndValue.unit === 'grad' ||
-		unitAndValue.unit === 'rad' ||
-		unitAndValue.unit === 'turn' ||
-		unitAndValue.unit === ''
+		unit === 'deg' ||
+		unit === 'grad' ||
+		unit === 'rad' ||
+		unit === 'turn' ||
+		unit === ''
 	);
 }
 
@@ -127,11 +129,11 @@ function isNumericNodePercentageOrNumber(node: Node): node is WordNode {
 }
 
 function isCalcNode(node: Node): node is FunctionNode {
-	return node && node.type === 'function' && node.value === 'calc';
+	return node && node.type === 'function' && node.value.toLowerCase() === 'calc';
 }
 
 function isVarNode(node: Node): node is FunctionNode {
-	return node && node.type === 'function' && node.value === 'var';
+	return node && node.type === 'function' && node.value.toLowerCase() === 'var';
 }
 
 function isSlashNode(node: Node): node is DivNode {
@@ -229,7 +231,7 @@ function replaceWith(nodes: Array<Node>, oldNode: Node, newNode: Node) {
 }
 
 function normalizeHueNode(dimension: Dimension) {
-	switch (dimension.unit) {
+	switch (dimension.unit.toLowerCase()) {
 		case 'deg':
 			dimension.unit = '';
 			return;

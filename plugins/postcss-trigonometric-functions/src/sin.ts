@@ -8,7 +8,7 @@ function transformSinFunction(decl: Declaration): string | undefined {
 	const parsedValue = valueParser(decl.value);
 
 	parsedValue.walk(node => {
-		if (node.type !== 'function' || node.value !== 'sin') {
+		if (node.type !== 'function' || node.value.toLowerCase() !== 'sin') {
 			return;
 		}
 
@@ -20,7 +20,7 @@ function transformSinFunction(decl: Declaration): string | undefined {
 
 		const [transformedNode, number] = validated;
 		transformedNode.value = formatResultingNumber(Math.sin(number), 5);
-	});
+	}, true);
 
 	return parsedValue.toString();
 }

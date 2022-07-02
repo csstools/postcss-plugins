@@ -22,7 +22,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				},
 				Once: async (root, { result }) => {
 					const designTokenAtRules: Array<{filePath: string, params: string, node: Node}> = [];
-					root.walkAtRules('design-tokens', (atRule) => {
+					root.walkAtRules((atRule) => {
+						if (atRule.name.toLowerCase() !== 'design-tokens') {
+							return;
+						}
+
 						if (!atRule?.source?.input?.file) {
 							return;
 						}
@@ -61,7 +65,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 				},
 				Declaration(decl, { result }) {
-					if (decl.value.indexOf('design-token') === -1) {
+					if (decl.value.toLowerCase().indexOf('design-token') === -1) {
 						return;
 					}
 

@@ -35,6 +35,9 @@
 .round-complex {
 	left: 2px;
 	top: 2px;
+	/* lower case */
+	right: 8px;
+	/* upper case */
 	right: 8px;
 }
 

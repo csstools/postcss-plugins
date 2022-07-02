@@ -39,7 +39,7 @@ export function selectorSpecificity(node: Node): Specificity {
 	} else if (isPseudoElement(node)) {
 		c += 1;
 	} else if (parser.isPseudoClass(node)) {
-		switch (node.value) {
+		switch (node.value.toLowerCase()) {
 			case ':-moz-any':
 			case ':-webkit-any':
 			case ':any':
@@ -74,7 +74,7 @@ export function selectorSpecificity(node: Node): Specificity {
 
 					if (node.nodes && node.nodes.length > 0) {
 						const ofSeparatorIndex = node.nodes[0].nodes.findIndex((x) => {
-							return x.type === 'tag' && x.value === 'of';
+							return x.type === 'tag' && x.value.toLowerCase() === 'of';
 						});
 
 						if (ofSeparatorIndex > -1) {

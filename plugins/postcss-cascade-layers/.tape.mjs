@@ -12,6 +12,9 @@ postcssTape(plugin)({
 	nested: {
 		message: "supports nested layer usage",
 	},
+	'nested-case-insensitive': {
+		message: "supports layer and other keywords written in any case",
+	},
 	'nested-complex': {
 		message: "supports nested layer usage",
 	},

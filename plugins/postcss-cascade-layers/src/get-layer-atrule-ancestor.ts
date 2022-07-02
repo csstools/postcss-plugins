@@ -9,7 +9,7 @@ export function getLayerAtRuleAncestor(node: Node): AtRule | null {
 			continue;
 		}
 
-		if ((parent as AtRule).name === 'layer') {
+		if ((parent as AtRule).name.toLowerCase() === 'layer') {
 			return parent as AtRule;
 		}
 
