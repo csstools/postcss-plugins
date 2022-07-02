@@ -1,10 +1,19 @@
 import parser from 'postcss-selector-parser';
 import type { PluginCreator } from 'postcss';
 
-const creator: PluginCreator<{ preserve?: boolean, replaceWith?: string }> = (opts?: { preserve?: boolean, replaceWith?: string }) => {
-	const replaceWith = String(Object(opts).replaceWith || '[focus-within]');
-	const preserve = Boolean('preserve' in Object(opts) ? opts.preserve : true);
-	const replacementAST = parser().astSync(replaceWith);
+type pluginOptions = { preserve?: boolean, replaceWith?: string };
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign(
+		// Default options
+		{
+			preserve: false,
+			replaceWith: '[focus-within]',
+		},
+		// Provided options
+		opts,
+	);
+	const replacementAST = parser().astSync(options.replaceWith);
 
 	return {
 		postcssPlugin: 'postcss-focus-within',
@@ -46,7 +55,7 @@ const creator: PluginCreator<{ preserve?: boolean, replaceWith?: string }> = (op
 
 			const clone = rule.clone({ selector: modifiedSelector });
 
-			if (preserve) {
+			if (options.preserve) {
 				rule.before(clone);
 			} else {
 				rule.replaceWith(clone);
