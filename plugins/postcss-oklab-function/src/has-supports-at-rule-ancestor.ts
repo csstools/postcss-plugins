@@ -8,12 +8,12 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 			continue;
 		}
 
-		if ((parent as AtRule).name === 'supports') {
-			if ((parent as AtRule).params.indexOf('oklab(') !== -1) {
+		if ((parent as AtRule).name.toLowerCase() === 'supports') {
+			if ((parent as AtRule).params.toLowerCase().indexOf('oklab(') !== -1) {
 				return true;
 			}
 
-			if ((parent as AtRule).params.indexOf('oklch(') !== -1) {
+			if ((parent as AtRule).params.toLowerCase().indexOf('oklch(') !== -1) {
 				return true;
 			}
 		}

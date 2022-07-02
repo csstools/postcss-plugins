@@ -1,5 +1,9 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### Unreleased
+
+- Fix case insensitive `:any-link` matching.
+
 ### 7.1.5 (June 23, 2022)
 
 - Fix selector order with any pseudo element. This plugin will no longer re-order selectors.

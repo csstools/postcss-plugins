@@ -125,3 +125,7 @@ foo[baz=":is(.some, .other)"], .ok {
 :is(ol, ul):is(:hover, :is(:focus, :focus-visible)) > li:is(.foo, .bar) {
 	order: 32
 }
+
+:IS(.all,.caps):iS(.mixed,.caps:Is(.nested:focus)) {
+	order: 33;
+}

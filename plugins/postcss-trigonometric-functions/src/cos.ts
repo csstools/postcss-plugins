@@ -8,7 +8,7 @@ function transformCosFunction(decl: Declaration): string | undefined {
 	const parsedValue = valueParser(decl.value);
 
 	parsedValue.walk(node => {
-		if (node.type !== 'function' || node.value !== 'cos') {
+		if (node.type !== 'function' || node.value.toLowerCase() !== 'cos') {
 			return;
 		}
 
@@ -20,7 +20,7 @@ function transformCosFunction(decl: Declaration): string | undefined {
 
 		const [transformedNode, number] = validated;
 		transformedNode.value = formatResultingNumber(Math.cos(number), 5);
-	});
+	}, true);
 
 	return parsedValue.toString();
 }

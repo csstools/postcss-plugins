@@ -10,7 +10,7 @@ export function getConditionalAtRuleAncestor(layerRule: AtRule): AtRule | null {
 			continue;
 		}
 
-		if (CONDITIONAL_ATRULES.includes((parent as AtRule).name)) {
+		if (CONDITIONAL_ATRULES.includes((parent as AtRule).name.toLowerCase())) {
 			return parent as AtRule;
 		}
 

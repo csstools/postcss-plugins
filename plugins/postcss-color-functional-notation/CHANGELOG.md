@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Functional Notation
 
+### Unreleased
+
+- Fix case insensitive matching.
+
 ### 4.2.3 (May 19, 2022)
 
 - Handle modern channel values in legacy notation (comma separated)

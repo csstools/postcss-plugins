@@ -1,5 +1,9 @@
 # Changes to PostCSS Selector Not
 
+### Unreleased
+
+- Fixed: Case insensitive `:not` matching.
+
 ### 6.0.0 (June 3, 2022)
 
 - Fixed: default export ([#409](https://github.com/csstools/postcss-plugins/issues/409))

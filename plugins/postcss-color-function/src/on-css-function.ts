@@ -21,7 +21,7 @@ export function onCSSFunctionSRgb(node: FunctionNode, decl: Declaration, result:
 	});
 
 	let nodes: Color | null = null;
-	if (value === 'color') {
+	if (value.toLowerCase() === 'color') {
 		nodes = colorFunctionContents(relevantNodes);
 	}
 
@@ -138,7 +138,7 @@ function isColorSpaceNode(node: Node): node is WordNode {
 		return false;
 	}
 
-	switch (node.value) {
+	switch (node.value.toLowerCase()) {
 		case 'srgb':
 		case 'srgb-linear':
 		case 'display-p3':
@@ -190,11 +190,11 @@ function isNumericNodePercentageOrNumber(node: Node): node is WordNode {
 }
 
 function isCalcNode(node: Node): node is FunctionNode {
-	return node && node.type === 'function' && node.value === 'calc';
+	return node && node.type === 'function' && node.value.toLowerCase() === 'calc';
 }
 
 function isVarNode(node: Node): node is FunctionNode {
-	return node && node.type === 'function' && node.value === 'var';
+	return node && node.type === 'function' && node.value.toLowerCase() === 'var';
 }
 
 function isSlashNode(node: Node): node is DivNode {
@@ -218,7 +218,7 @@ function colorFunctionContents(nodes): Color|null {
 	}
 
 	const out: Color = {
-		colorSpace: nodes[0].value,
+		colorSpace: nodes[0].value.toLowerCase(),
 		colorSpaceNode: nodes[0],
 		parameters: [],
 	};

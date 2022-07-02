@@ -525,3 +525,23 @@ ul:focus-visible > li.bar {
 :is(ol, ul):is(:hover, :is(:focus, :focus-visible)) > li:is(.foo, .bar) {
 	order: 32
 }
+
+.all.mixed:not(.does-not-exist):not(.does-not-exist) {
+	order: 33;
+}
+
+.all.caps.nested:focus {
+	order: 33;
+}
+
+.caps.mixed:not(.does-not-exist):not(.does-not-exist) {
+	order: 33;
+}
+
+.caps.caps.nested:focus {
+	order: 33;
+}
+
+:IS(.all,.caps):iS(.mixed,.caps:Is(.nested:focus)) {
+	order: 33;
+}

@@ -15,7 +15,7 @@ function transformAtan2Function(decl: Declaration): string | undefined {
 	const parsedValue = valueParser(decl.value);
 
 	parsedValue.walk(node => {
-		if (node.type !== 'function' || node.value !== 'atan2') {
+		if (node.type !== 'function' || node.value.toLowerCase() !== 'atan2') {
 			return;
 		}
 
@@ -70,7 +70,7 @@ function transformAtan2Function(decl: Declaration): string | undefined {
 
 		const transformedNode = functionNodeToWordNode(node);
 		transformedNode.value = value + '';
-	});
+	}, true);
 
 	return parsedValue.toString();
 }

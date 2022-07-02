@@ -54,6 +54,16 @@
 	color-17: lch(60% 50 0.785398unknown);
 	color-18: rgb(212, 118, 84);
 	color-18: color(display-p3 0.78108 0.48084 0.35822);
+
+	color-20: rgb(0, 166, 143);
+
+	color-20: color(display-p3 0.17545 0.64269 0.56213);
+	color-21: rgb(0, 166, 143);
+	color-21: color(display-p3 0.17545 0.64269 0.56213);
+	color-22: rgb(0, 166, 143);
+	color-22: color(display-p3 0.17545 0.64269 0.56213);
+	color-23: rgb(0, 166, 143);
+	color-23: color(display-p3 0.17545 0.64269 0.56213);
 }
 
 .test-percentages {

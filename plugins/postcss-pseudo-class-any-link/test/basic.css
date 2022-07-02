@@ -2,6 +2,10 @@
 	order: 1;
 }
 
+:aNy-LiNK {
+	order: 1.1;
+}
+
 :any-link,
 ul a:any-link > span {
 	order: 2;
@@ -47,6 +51,10 @@ area:any-link {
 
 [hidden]area:any-link {
 	order: 10.1;
+}
+
+AREA:any-link {
+	order: 10.2;
 }
 
 area :any-link {

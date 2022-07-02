@@ -744,7 +744,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	text-indent: 2em;
 	content: var(--value-2ic);
 	left: 2em;
-	left: 2em;
 	left: var(--non-existing, 2em);
 	width: -webkit-calc(8em + 20px);
 	width: -moz-calc(8em + 20px);

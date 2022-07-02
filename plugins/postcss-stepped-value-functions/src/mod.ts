@@ -13,7 +13,7 @@ function transformModFunction(
 	const parsedValue = valueParser(decl.value);
 
 	parsedValue.walk(node => {
-		if (node.type !== 'function' || node.value !== 'mod') {
+		if (node.type !== 'function' || node.value.toLowerCase() !== 'mod') {
 			return;
 		}
 
@@ -39,7 +39,7 @@ function transformModFunction(
 
 		const transformedNode = functionNodeToWordNode(node);
 		transformedNode.value = modulus === 0 ? '0' : `${modulus}${valueA.unit}`;
-	});
+	}, true);
 
 	return parsedValue.toString();
 }

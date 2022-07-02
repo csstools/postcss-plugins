@@ -921,7 +921,6 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	     -o-transform: rotate(mod(-140deg, -90deg));
 	        transform: rotate(mod(-140deg, -90deg));
 	width: 2px;
-	width: mod(2px, 5px);
 	width: mod(mod(-18px, 5px), 5px);
 }
 

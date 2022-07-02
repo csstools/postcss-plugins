@@ -51,7 +51,7 @@ function modifiedSelector(selector, areaHrefNeedsFixing) {
 	parser((selectorsAST) => {
 		let replacements = [];
 		selectorsAST.walkPseudos((pseudo) => {
-			if (pseudo.value !== ':any-link' || (pseudo.nodes && pseudo.nodes.length)) {
+			if (pseudo.value.toLowerCase() !== ':any-link' || (pseudo.nodes && pseudo.nodes.length)) {
 				return;
 			}
 
@@ -83,7 +83,7 @@ function modifiedSelector(selector, areaHrefNeedsFixing) {
 		replacementsCartesianProduct.forEach((replacement) => {
 			const clone = selectorsAST.clone();
 			clone.walkPseudos((pseudo) => {
-				if (pseudo.value !== ':any-link' || (pseudo.nodes && pseudo.nodes.length)) {
+				if (pseudo.value.toLowerCase() !== ':any-link' || (pseudo.nodes && pseudo.nodes.length)) {
 					return;
 				}
 
@@ -127,7 +127,7 @@ function getTagElementsNextToPseudo(pseudo) {
 		}
 
 		if (prev.type === 'tag') {
-			tags.push(prev.value);
+			tags.push(prev.value.toLowerCase());
 		}
 
 		prev = prev.prev();
@@ -140,7 +140,7 @@ function getTagElementsNextToPseudo(pseudo) {
 		}
 
 		if (next.type === 'tag') {
-			tags.push(next.value);
+			tags.push(next.value.toLowerCase());
 		}
 
 		next = next.next();

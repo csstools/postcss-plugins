@@ -17,7 +17,7 @@ const creator: PluginCreator<null> = () => {
 					return;
 				}
 
-				if (decl.value.trim() === 'initial') {
+				if (decl.value.trim().toLowerCase() === 'initial') {
 					// https://www.w3.org/TR/css-variables-1/#guaranteed-invalid
 					return;
 				}
@@ -28,8 +28,8 @@ const creator: PluginCreator<null> = () => {
 				}
 
 				// The first encountered property is the fallback for the oldest targets.
-				if (!variableNames.has(decl.prop.toString())) {
-					variableNames.add(decl.prop.toString());
+				if (!variableNames.has(decl.prop.toString().toLowerCase())) {
+					variableNames.add(decl.prop.toString().toLowerCase());
 					return;
 				}
 

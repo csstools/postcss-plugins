@@ -29,7 +29,7 @@
 	font-style: normal;
 	font-weight: 300;
 	font-display: swap;
-	src: format(woff)
+	src: format("woff")
 }
 
 @no-font-face {

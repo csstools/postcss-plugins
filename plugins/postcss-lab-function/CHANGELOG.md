@@ -1,5 +1,9 @@
 # Changes to PostCSS Lab Function
 
+### Unreleased
+
+- Fix case insensitive matching.
+
 ### 4.2.0 (April 4, 2022)
 
 - Allow percentage and number units in more color components.

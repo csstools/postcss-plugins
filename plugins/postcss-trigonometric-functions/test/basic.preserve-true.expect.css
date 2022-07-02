@@ -28,12 +28,8 @@
 	order: 0;
 	order: sin(0);
 	order: 0.64964;
-	order: sin(0.70711);
 	order: sin(sin(0.785398));
 	order: 0.56868;
-	order: sin(0.6049);
-	order: sin(sin(0.64964));
-	order: sin(sin(sin(0.70711)));
 	order: sin(sin(sin(sin(0.785398))));
 	order: sin(1px);
 	order: sin(foo);
@@ -68,12 +64,8 @@
 	order: 0.70711;
 	order: cos(-0.785398); /* -45deg */
 	order: 0.76024;
-	order: cos(0.70711);
 	order: cos(cos(0.785398));
 	order: 0.74872;
-	order: cos(0.72467);
-	order: cos(cos(0.76024));
-	order: cos(cos(cos(0.70711)));
 	order: cos(cos(cos(cos(0.785398))));
 	order: cos(1px);
 	order: cos(foo);
@@ -109,12 +101,8 @@
 	order: 0;
 	order: tan(0);
 	order: 1.55741;
-	order: tan(1);
 	order: tan(tan(0.785398));
 	order: -0.84159;
-	order: tan(74.69863);
-	order: tan(tan(1.55741));
-	order: tan(tan(tan(1)));
 	order: tan(tan(tan(tan(0.785398))));
 	order: 1.80405;
 	order: tan(61deg); /* 61deg */

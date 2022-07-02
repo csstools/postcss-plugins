@@ -24,7 +24,7 @@ export function modifiedValues(originalValue: string, decl: Declaration, result:
 			return;
 		}
 
-		if (node.value !== 'oklab' && node.value !== 'oklch') {
+		if (node.value.toLowerCase() !== 'oklab' && node.value.toLowerCase() !== 'oklch') {
 			return;
 		}
 
@@ -43,7 +43,7 @@ export function modifiedValues(originalValue: string, decl: Declaration, result:
 			return;
 		}
 
-		if (node.value !== 'oklab' && node.value !== 'oklch') {
+		if (node.value.toLowerCase() !== 'oklab' && node.value.toLowerCase() !== 'oklch') {
 			return;
 		}
 
