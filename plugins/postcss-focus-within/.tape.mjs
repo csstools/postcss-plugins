@@ -26,6 +26,9 @@ postcssTape(plugin)({
 	},
 	'examples/example:preserve-false': {
 		message: 'minimal example',
+		options: {
+			preserve: false,
+		},
 	},
 	'examples/example:replacewith': {
 		message: 'minimal example',

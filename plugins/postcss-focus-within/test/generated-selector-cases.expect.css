@@ -2,7 +2,15 @@
 	order: 0;
 }
 
+:focus-within:focus-within {
+	order: 0;
+}
+
 [focus-within][focus-within].js-focus-within, .js-focus-within [focus-within][focus-within] {
+	order: 1;
+}
+
+:focus-within:focus-within {
 	order: 1;
 }
 
@@ -10,7 +18,15 @@
 	order: 2;
 }
 
+:focus-within :focus-within {
+	order: 2;
+}
+
 [focus-within].js-focus-within [focus-within], .js-focus-within [focus-within] [focus-within] {
+	order: 3;
+}
+
+:focus-within :focus-within {
 	order: 3;
 }
 
@@ -18,7 +34,15 @@
 	order: 4;
 }
 
+:focus-within  :focus-within {
+	order: 4;
+}
+
 [focus-within].js-focus-within  [focus-within], .js-focus-within [focus-within]  [focus-within] {
+	order: 5;
+}
+
+:focus-within  :focus-within {
 	order: 5;
 }
 
@@ -26,7 +50,15 @@
 	order: 6;
 }
 
+:focus-within+:focus-within {
+	order: 6;
+}
+
 [focus-within].js-focus-within+[focus-within], .js-focus-within [focus-within]+[focus-within] {
+	order: 7;
+}
+
+:focus-within+:focus-within {
 	order: 7;
 }
 
@@ -34,7 +66,15 @@
 	order: 8;
 }
 
+:focus-within + :focus-within {
+	order: 8;
+}
+
 [focus-within].js-focus-within + [focus-within], .js-focus-within [focus-within] + [focus-within] {
+	order: 9;
+}
+
+:focus-within + :focus-within {
 	order: 9;
 }
 
@@ -42,7 +82,15 @@
 	order: 10;
 }
 
+:focus-within~:focus-within {
+	order: 10;
+}
+
 [focus-within].js-focus-within~[focus-within], .js-focus-within [focus-within]~[focus-within] {
+	order: 11;
+}
+
+:focus-within~:focus-within {
 	order: 11;
 }
 
@@ -50,7 +98,15 @@
 	order: 12;
 }
 
+:focus-within ~ :focus-within {
+	order: 12;
+}
+
 [focus-within].js-focus-within ~ [focus-within], .js-focus-within [focus-within] ~ [focus-within] {
+	order: 13;
+}
+
+:focus-within ~ :focus-within {
 	order: 13;
 }
 
@@ -58,7 +114,15 @@
 	order: 14;
 }
 
+:focus-within>:focus-within {
+	order: 14;
+}
+
 [focus-within].js-focus-within>[focus-within], .js-focus-within [focus-within]>[focus-within] {
+	order: 15;
+}
+
+:focus-within>:focus-within {
 	order: 15;
 }
 
@@ -66,7 +130,15 @@
 	order: 16;
 }
 
+:focus-within > :focus-within {
+	order: 16;
+}
+
 [focus-within].js-focus-within > [focus-within], .js-focus-within [focus-within] > [focus-within] {
+	order: 17;
+}
+
+:focus-within > :focus-within {
 	order: 17;
 }
 
@@ -74,11 +146,23 @@
 	order: 18;
 }
 
+:focus-within, :focus-within {
+	order: 18;
+}
+
 [focus-within].js-focus-within, .js-focus-within [focus-within], [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 19;
 }
 
+:focus-within, :focus-within {
+	order: 19;
+}
+
 button[focus-within].js-focus-within, .js-focus-within button[focus-within] {
+	order: 20;
+}
+
+button:focus-within {
 	order: 20;
 }
 
@@ -90,7 +174,15 @@ button.js-focus-within [focus-within], .js-focus-within button [focus-within] {
 	order: 22;
 }
 
+button :focus-within {
+	order: 22;
+}
+
 [focus-within].js-focus-within button, .js-focus-within [focus-within] button {
+	order: 23;
+}
+
+:focus-within button {
 	order: 23;
 }
 
@@ -98,7 +190,15 @@ button.js-focus-within  [focus-within], .js-focus-within button  [focus-within] 
 	order: 24;
 }
 
+button  :focus-within {
+	order: 24;
+}
+
 [focus-within].js-focus-within  button, .js-focus-within [focus-within]  button {
+	order: 25;
+}
+
+:focus-within  button {
 	order: 25;
 }
 
@@ -106,7 +206,15 @@ button.js-focus-within+[focus-within], .js-focus-within button+[focus-within] {
 	order: 26;
 }
 
+button+:focus-within {
+	order: 26;
+}
+
 [focus-within].js-focus-within+button, .js-focus-within [focus-within]+button {
+	order: 27;
+}
+
+:focus-within+button {
 	order: 27;
 }
 
@@ -114,7 +222,15 @@ button.js-focus-within + [focus-within], .js-focus-within button + [focus-within
 	order: 28;
 }
 
+button + :focus-within {
+	order: 28;
+}
+
 [focus-within].js-focus-within + button, .js-focus-within [focus-within] + button {
+	order: 29;
+}
+
+:focus-within + button {
 	order: 29;
 }
 
@@ -122,7 +238,15 @@ button.js-focus-within~[focus-within], .js-focus-within button~[focus-within] {
 	order: 30;
 }
 
+button~:focus-within {
+	order: 30;
+}
+
 [focus-within].js-focus-within~button, .js-focus-within [focus-within]~button {
+	order: 31;
+}
+
+:focus-within~button {
 	order: 31;
 }
 
@@ -130,7 +254,15 @@ button.js-focus-within ~ [focus-within], .js-focus-within button ~ [focus-within
 	order: 32;
 }
 
+button ~ :focus-within {
+	order: 32;
+}
+
 [focus-within].js-focus-within ~ button, .js-focus-within [focus-within] ~ button {
+	order: 33;
+}
+
+:focus-within ~ button {
 	order: 33;
 }
 
@@ -138,7 +270,15 @@ button.js-focus-within>[focus-within], .js-focus-within button>[focus-within] {
 	order: 34;
 }
 
+button>:focus-within {
+	order: 34;
+}
+
 [focus-within].js-focus-within>button, .js-focus-within [focus-within]>button {
+	order: 35;
+}
+
+:focus-within>button {
 	order: 35;
 }
 
@@ -146,7 +286,15 @@ button.js-focus-within > [focus-within], .js-focus-within button > [focus-within
 	order: 36;
 }
 
+button > :focus-within {
+	order: 36;
+}
+
 [focus-within].js-focus-within > button, .js-focus-within [focus-within] > button {
+	order: 37;
+}
+
+:focus-within > button {
 	order: 37;
 }
 
@@ -154,7 +302,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 38;
 }
 
+button, :focus-within {
+	order: 38;
+}
+
 [focus-within].js-focus-within, .js-focus-within [focus-within], button {
+	order: 39;
+}
+
+:focus-within, button {
 	order: 39;
 }
 
@@ -162,7 +318,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 40;
 }
 
+.🧑🏾‍🎤:focus-within {
+	order: 40;
+}
+
 [focus-within].🧑🏾‍🎤.js-focus-within, .js-focus-within [focus-within].🧑🏾‍🎤 {
+	order: 41;
+}
+
+:focus-within.🧑🏾‍🎤 {
 	order: 41;
 }
 
@@ -170,7 +334,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 42;
 }
 
+.🧑🏾‍🎤 :focus-within {
+	order: 42;
+}
+
 [focus-within].js-focus-within .🧑🏾‍🎤, .js-focus-within [focus-within] .🧑🏾‍🎤 {
+	order: 43;
+}
+
+:focus-within .🧑🏾‍🎤 {
 	order: 43;
 }
 
@@ -178,7 +350,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 44;
 }
 
+.🧑🏾‍🎤  :focus-within {
+	order: 44;
+}
+
 [focus-within].js-focus-within  .🧑🏾‍🎤, .js-focus-within [focus-within]  .🧑🏾‍🎤 {
+	order: 45;
+}
+
+:focus-within  .🧑🏾‍🎤 {
 	order: 45;
 }
 
@@ -186,7 +366,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 46;
 }
 
+.🧑🏾‍🎤+:focus-within {
+	order: 46;
+}
+
 [focus-within].js-focus-within+.🧑🏾‍🎤, .js-focus-within [focus-within]+.🧑🏾‍🎤 {
+	order: 47;
+}
+
+:focus-within+.🧑🏾‍🎤 {
 	order: 47;
 }
 
@@ -194,7 +382,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 48;
 }
 
+.🧑🏾‍🎤 + :focus-within {
+	order: 48;
+}
+
 [focus-within].js-focus-within + .🧑🏾‍🎤, .js-focus-within [focus-within] + .🧑🏾‍🎤 {
+	order: 49;
+}
+
+:focus-within + .🧑🏾‍🎤 {
 	order: 49;
 }
 
@@ -202,7 +398,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 50;
 }
 
+.🧑🏾‍🎤~:focus-within {
+	order: 50;
+}
+
 [focus-within].js-focus-within~.🧑🏾‍🎤, .js-focus-within [focus-within]~.🧑🏾‍🎤 {
+	order: 51;
+}
+
+:focus-within~.🧑🏾‍🎤 {
 	order: 51;
 }
 
@@ -210,7 +414,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 52;
 }
 
+.🧑🏾‍🎤 ~ :focus-within {
+	order: 52;
+}
+
 [focus-within].js-focus-within ~ .🧑🏾‍🎤, .js-focus-within [focus-within] ~ .🧑🏾‍🎤 {
+	order: 53;
+}
+
+:focus-within ~ .🧑🏾‍🎤 {
 	order: 53;
 }
 
@@ -218,7 +430,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 54;
 }
 
+.🧑🏾‍🎤>:focus-within {
+	order: 54;
+}
+
 [focus-within].js-focus-within>.🧑🏾‍🎤, .js-focus-within [focus-within]>.🧑🏾‍🎤 {
+	order: 55;
+}
+
+:focus-within>.🧑🏾‍🎤 {
 	order: 55;
 }
 
@@ -226,7 +446,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 56;
 }
 
+.🧑🏾‍🎤 > :focus-within {
+	order: 56;
+}
+
 [focus-within].js-focus-within > .🧑🏾‍🎤, .js-focus-within [focus-within] > .🧑🏾‍🎤 {
+	order: 57;
+}
+
+:focus-within > .🧑🏾‍🎤 {
 	order: 57;
 }
 
@@ -234,7 +462,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 58;
 }
 
+.🧑🏾‍🎤, :focus-within {
+	order: 58;
+}
+
 [focus-within].js-focus-within, .js-focus-within [focus-within], .🧑🏾‍🎤 {
+	order: 59;
+}
+
+:focus-within, .🧑🏾‍🎤 {
 	order: 59;
 }
 
@@ -242,7 +478,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 60;
 }
 
+.foo:focus-within {
+	order: 60;
+}
+
 [focus-within].foo.js-focus-within, .js-focus-within [focus-within].foo {
+	order: 61;
+}
+
+:focus-within.foo {
 	order: 61;
 }
 
@@ -250,7 +494,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 62;
 }
 
+.foo :focus-within {
+	order: 62;
+}
+
 [focus-within].js-focus-within .foo, .js-focus-within [focus-within] .foo {
+	order: 63;
+}
+
+:focus-within .foo {
 	order: 63;
 }
 
@@ -258,7 +510,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 64;
 }
 
+.foo  :focus-within {
+	order: 64;
+}
+
 [focus-within].js-focus-within  .foo, .js-focus-within [focus-within]  .foo {
+	order: 65;
+}
+
+:focus-within  .foo {
 	order: 65;
 }
 
@@ -266,7 +526,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 66;
 }
 
+.foo+:focus-within {
+	order: 66;
+}
+
 [focus-within].js-focus-within+.foo, .js-focus-within [focus-within]+.foo {
+	order: 67;
+}
+
+:focus-within+.foo {
 	order: 67;
 }
 
@@ -274,7 +542,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 68;
 }
 
+.foo + :focus-within {
+	order: 68;
+}
+
 [focus-within].js-focus-within + .foo, .js-focus-within [focus-within] + .foo {
+	order: 69;
+}
+
+:focus-within + .foo {
 	order: 69;
 }
 
@@ -282,7 +558,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 70;
 }
 
+.foo~:focus-within {
+	order: 70;
+}
+
 [focus-within].js-focus-within~.foo, .js-focus-within [focus-within]~.foo {
+	order: 71;
+}
+
+:focus-within~.foo {
 	order: 71;
 }
 
@@ -290,7 +574,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 72;
 }
 
+.foo ~ :focus-within {
+	order: 72;
+}
+
 [focus-within].js-focus-within ~ .foo, .js-focus-within [focus-within] ~ .foo {
+	order: 73;
+}
+
+:focus-within ~ .foo {
 	order: 73;
 }
 
@@ -298,7 +590,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 74;
 }
 
+.foo>:focus-within {
+	order: 74;
+}
+
 [focus-within].js-focus-within>.foo, .js-focus-within [focus-within]>.foo {
+	order: 75;
+}
+
+:focus-within>.foo {
 	order: 75;
 }
 
@@ -306,7 +606,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 76;
 }
 
+.foo > :focus-within {
+	order: 76;
+}
+
 [focus-within].js-focus-within > .foo, .js-focus-within [focus-within] > .foo {
+	order: 77;
+}
+
+:focus-within > .foo {
 	order: 77;
 }
 
@@ -314,7 +622,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 78;
 }
 
+.foo, :focus-within {
+	order: 78;
+}
+
 [focus-within].js-focus-within, .js-focus-within [focus-within], .foo {
+	order: 79;
+}
+
+:focus-within, .foo {
 	order: 79;
 }
 
@@ -322,7 +638,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 80;
 }
 
+#foo:focus-within {
+	order: 80;
+}
+
 [focus-within]#foo.js-focus-within, .js-focus-within [focus-within]#foo {
+	order: 81;
+}
+
+:focus-within#foo {
 	order: 81;
 }
 
@@ -330,7 +654,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 82;
 }
 
+#foo :focus-within {
+	order: 82;
+}
+
 [focus-within].js-focus-within #foo, .js-focus-within [focus-within] #foo {
+	order: 83;
+}
+
+:focus-within #foo {
 	order: 83;
 }
 
@@ -338,7 +670,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 84;
 }
 
+#foo  :focus-within {
+	order: 84;
+}
+
 [focus-within].js-focus-within  #foo, .js-focus-within [focus-within]  #foo {
+	order: 85;
+}
+
+:focus-within  #foo {
 	order: 85;
 }
 
@@ -346,7 +686,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 86;
 }
 
+#foo+:focus-within {
+	order: 86;
+}
+
 [focus-within].js-focus-within+#foo, .js-focus-within [focus-within]+#foo {
+	order: 87;
+}
+
+:focus-within+#foo {
 	order: 87;
 }
 
@@ -354,7 +702,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 88;
 }
 
+#foo + :focus-within {
+	order: 88;
+}
+
 [focus-within].js-focus-within + #foo, .js-focus-within [focus-within] + #foo {
+	order: 89;
+}
+
+:focus-within + #foo {
 	order: 89;
 }
 
@@ -362,7 +718,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 90;
 }
 
+#foo~:focus-within {
+	order: 90;
+}
+
 [focus-within].js-focus-within~#foo, .js-focus-within [focus-within]~#foo {
+	order: 91;
+}
+
+:focus-within~#foo {
 	order: 91;
 }
 
@@ -370,7 +734,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 92;
 }
 
+#foo ~ :focus-within {
+	order: 92;
+}
+
 [focus-within].js-focus-within ~ #foo, .js-focus-within [focus-within] ~ #foo {
+	order: 93;
+}
+
+:focus-within ~ #foo {
 	order: 93;
 }
 
@@ -378,7 +750,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 94;
 }
 
+#foo>:focus-within {
+	order: 94;
+}
+
 [focus-within].js-focus-within>#foo, .js-focus-within [focus-within]>#foo {
+	order: 95;
+}
+
+:focus-within>#foo {
 	order: 95;
 }
 
@@ -386,7 +766,15 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 96;
 }
 
+#foo > :focus-within {
+	order: 96;
+}
+
 [focus-within].js-focus-within > #foo, .js-focus-within [focus-within] > #foo {
+	order: 97;
+}
+
+:focus-within > #foo {
 	order: 97;
 }
 
@@ -394,11 +782,23 @@ button, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 98;
 }
 
+#foo, :focus-within {
+	order: 98;
+}
+
 [focus-within].js-focus-within, .js-focus-within [focus-within], #foo {
 	order: 99;
 }
 
+:focus-within, #foo {
+	order: 99;
+}
+
 __foo[focus-within].js-focus-within, .js-focus-within __foo[focus-within] {
+	order: 100;
+}
+
+__foo:focus-within {
 	order: 100;
 }
 
@@ -410,7 +810,15 @@ __foo.js-focus-within [focus-within], .js-focus-within __foo [focus-within] {
 	order: 102;
 }
 
+__foo :focus-within {
+	order: 102;
+}
+
 [focus-within].js-focus-within __foo, .js-focus-within [focus-within] __foo {
+	order: 103;
+}
+
+:focus-within __foo {
 	order: 103;
 }
 
@@ -418,7 +826,15 @@ __foo.js-focus-within  [focus-within], .js-focus-within __foo  [focus-within] {
 	order: 104;
 }
 
+__foo  :focus-within {
+	order: 104;
+}
+
 [focus-within].js-focus-within  __foo, .js-focus-within [focus-within]  __foo {
+	order: 105;
+}
+
+:focus-within  __foo {
 	order: 105;
 }
 
@@ -426,7 +842,15 @@ __foo.js-focus-within+[focus-within], .js-focus-within __foo+[focus-within] {
 	order: 106;
 }
 
+__foo+:focus-within {
+	order: 106;
+}
+
 [focus-within].js-focus-within+__foo, .js-focus-within [focus-within]+__foo {
+	order: 107;
+}
+
+:focus-within+__foo {
 	order: 107;
 }
 
@@ -434,7 +858,15 @@ __foo.js-focus-within + [focus-within], .js-focus-within __foo + [focus-within] 
 	order: 108;
 }
 
+__foo + :focus-within {
+	order: 108;
+}
+
 [focus-within].js-focus-within + __foo, .js-focus-within [focus-within] + __foo {
+	order: 109;
+}
+
+:focus-within + __foo {
 	order: 109;
 }
 
@@ -442,7 +874,15 @@ __foo.js-focus-within~[focus-within], .js-focus-within __foo~[focus-within] {
 	order: 110;
 }
 
+__foo~:focus-within {
+	order: 110;
+}
+
 [focus-within].js-focus-within~__foo, .js-focus-within [focus-within]~__foo {
+	order: 111;
+}
+
+:focus-within~__foo {
 	order: 111;
 }
 
@@ -450,7 +890,15 @@ __foo.js-focus-within ~ [focus-within], .js-focus-within __foo ~ [focus-within] 
 	order: 112;
 }
 
+__foo ~ :focus-within {
+	order: 112;
+}
+
 [focus-within].js-focus-within ~ __foo, .js-focus-within [focus-within] ~ __foo {
+	order: 113;
+}
+
+:focus-within ~ __foo {
 	order: 113;
 }
 
@@ -458,7 +906,15 @@ __foo.js-focus-within>[focus-within], .js-focus-within __foo>[focus-within] {
 	order: 114;
 }
 
+__foo>:focus-within {
+	order: 114;
+}
+
 [focus-within].js-focus-within>__foo, .js-focus-within [focus-within]>__foo {
+	order: 115;
+}
+
+:focus-within>__foo {
 	order: 115;
 }
 
@@ -466,7 +922,15 @@ __foo.js-focus-within > [focus-within], .js-focus-within __foo > [focus-within] 
 	order: 116;
 }
 
+__foo > :focus-within {
+	order: 116;
+}
+
 [focus-within].js-focus-within > __foo, .js-focus-within [focus-within] > __foo {
+	order: 117;
+}
+
+:focus-within > __foo {
 	order: 117;
 }
 
@@ -474,7 +938,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 118;
 }
 
+__foo, :focus-within {
+	order: 118;
+}
+
 [focus-within].js-focus-within, .js-focus-within [focus-within], __foo {
+	order: 119;
+}
+
+:focus-within, __foo {
 	order: 119;
 }
 
@@ -482,7 +954,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 120;
 }
 
+:--foo:focus-within {
+	order: 120;
+}
+
 [focus-within]:--foo.js-focus-within, .js-focus-within [focus-within]:--foo {
+	order: 121;
+}
+
+:focus-within:--foo {
 	order: 121;
 }
 
@@ -490,7 +970,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 122;
 }
 
+:--foo :focus-within {
+	order: 122;
+}
+
 [focus-within].js-focus-within :--foo, .js-focus-within [focus-within] :--foo {
+	order: 123;
+}
+
+:focus-within :--foo {
 	order: 123;
 }
 
@@ -498,7 +986,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 124;
 }
 
+:--foo  :focus-within {
+	order: 124;
+}
+
 [focus-within].js-focus-within  :--foo, .js-focus-within [focus-within]  :--foo {
+	order: 125;
+}
+
+:focus-within  :--foo {
 	order: 125;
 }
 
@@ -506,7 +1002,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 126;
 }
 
+:--foo+:focus-within {
+	order: 126;
+}
+
 [focus-within].js-focus-within+:--foo, .js-focus-within [focus-within]+:--foo {
+	order: 127;
+}
+
+:focus-within+:--foo {
 	order: 127;
 }
 
@@ -514,7 +1018,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 128;
 }
 
+:--foo + :focus-within {
+	order: 128;
+}
+
 [focus-within].js-focus-within + :--foo, .js-focus-within [focus-within] + :--foo {
+	order: 129;
+}
+
+:focus-within + :--foo {
 	order: 129;
 }
 
@@ -522,7 +1034,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 130;
 }
 
+:--foo~:focus-within {
+	order: 130;
+}
+
 [focus-within].js-focus-within~:--foo, .js-focus-within [focus-within]~:--foo {
+	order: 131;
+}
+
+:focus-within~:--foo {
 	order: 131;
 }
 
@@ -530,7 +1050,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 132;
 }
 
+:--foo ~ :focus-within {
+	order: 132;
+}
+
 [focus-within].js-focus-within ~ :--foo, .js-focus-within [focus-within] ~ :--foo {
+	order: 133;
+}
+
+:focus-within ~ :--foo {
 	order: 133;
 }
 
@@ -538,7 +1066,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 134;
 }
 
+:--foo>:focus-within {
+	order: 134;
+}
+
 [focus-within].js-focus-within>:--foo, .js-focus-within [focus-within]>:--foo {
+	order: 135;
+}
+
+:focus-within>:--foo {
 	order: 135;
 }
 
@@ -546,7 +1082,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 136;
 }
 
+:--foo > :focus-within {
+	order: 136;
+}
+
 [focus-within].js-focus-within > :--foo, .js-focus-within [focus-within] > :--foo {
+	order: 137;
+}
+
+:focus-within > :--foo {
 	order: 137;
 }
 
@@ -554,7 +1098,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 138;
 }
 
+:--foo, :focus-within {
+	order: 138;
+}
+
 [focus-within].js-focus-within, .js-focus-within [focus-within], :--foo {
+	order: 139;
+}
+
+:focus-within, :--foo {
 	order: 139;
 }
 
@@ -562,7 +1114,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 140;
 }
 
+[foo="baz"]:focus-within {
+	order: 140;
+}
+
 [focus-within][foo="baz"].js-focus-within, .js-focus-within [focus-within][foo="baz"] {
+	order: 141;
+}
+
+:focus-within[foo="baz"] {
 	order: 141;
 }
 
@@ -570,7 +1130,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 142;
 }
 
+[foo="baz"] :focus-within {
+	order: 142;
+}
+
 [focus-within].js-focus-within [foo="baz"], .js-focus-within [focus-within] [foo="baz"] {
+	order: 143;
+}
+
+:focus-within [foo="baz"] {
 	order: 143;
 }
 
@@ -578,7 +1146,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 144;
 }
 
+[foo="baz"]  :focus-within {
+	order: 144;
+}
+
 [focus-within].js-focus-within  [foo="baz"], .js-focus-within [focus-within]  [foo="baz"] {
+	order: 145;
+}
+
+:focus-within  [foo="baz"] {
 	order: 145;
 }
 
@@ -586,7 +1162,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 146;
 }
 
+[foo="baz"]+:focus-within {
+	order: 146;
+}
+
 [focus-within].js-focus-within+[foo="baz"], .js-focus-within [focus-within]+[foo="baz"] {
+	order: 147;
+}
+
+:focus-within+[foo="baz"] {
 	order: 147;
 }
 
@@ -594,7 +1178,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 148;
 }
 
+[foo="baz"] + :focus-within {
+	order: 148;
+}
+
 [focus-within].js-focus-within + [foo="baz"], .js-focus-within [focus-within] + [foo="baz"] {
+	order: 149;
+}
+
+:focus-within + [foo="baz"] {
 	order: 149;
 }
 
@@ -602,7 +1194,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 150;
 }
 
+[foo="baz"]~:focus-within {
+	order: 150;
+}
+
 [focus-within].js-focus-within~[foo="baz"], .js-focus-within [focus-within]~[foo="baz"] {
+	order: 151;
+}
+
+:focus-within~[foo="baz"] {
 	order: 151;
 }
 
@@ -610,7 +1210,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 152;
 }
 
+[foo="baz"] ~ :focus-within {
+	order: 152;
+}
+
 [focus-within].js-focus-within ~ [foo="baz"], .js-focus-within [focus-within] ~ [foo="baz"] {
+	order: 153;
+}
+
+:focus-within ~ [foo="baz"] {
 	order: 153;
 }
 
@@ -618,7 +1226,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 154;
 }
 
+[foo="baz"]>:focus-within {
+	order: 154;
+}
+
 [focus-within].js-focus-within>[foo="baz"], .js-focus-within [focus-within]>[foo="baz"] {
+	order: 155;
+}
+
+:focus-within>[foo="baz"] {
 	order: 155;
 }
 
@@ -626,7 +1242,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 156;
 }
 
+[foo="baz"] > :focus-within {
+	order: 156;
+}
+
 [focus-within].js-focus-within > [foo="baz"], .js-focus-within [focus-within] > [foo="baz"] {
+	order: 157;
+}
+
+:focus-within > [foo="baz"] {
 	order: 157;
 }
 
@@ -634,7 +1258,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 158;
 }
 
+[foo="baz"], :focus-within {
+	order: 158;
+}
+
 [focus-within].js-focus-within, .js-focus-within [focus-within], [foo="baz"] {
+	order: 159;
+}
+
+:focus-within, [foo="baz"] {
 	order: 159;
 }
 
@@ -642,7 +1274,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 160;
 }
 
+*:focus-within {
+	order: 160;
+}
+
 [focus-within]*.js-focus-within, .js-focus-within [focus-within]* {
+	order: 161;
+}
+
+:focus-within* {
 	order: 161;
 }
 
@@ -650,7 +1290,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 162;
 }
 
+* :focus-within {
+	order: 162;
+}
+
 [focus-within].js-focus-within *, .js-focus-within [focus-within] * {
+	order: 163;
+}
+
+:focus-within * {
 	order: 163;
 }
 
@@ -658,7 +1306,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 164;
 }
 
+*  :focus-within {
+	order: 164;
+}
+
 [focus-within].js-focus-within  *, .js-focus-within [focus-within]  * {
+	order: 165;
+}
+
+:focus-within  * {
 	order: 165;
 }
 
@@ -666,7 +1322,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 166;
 }
 
+*+:focus-within {
+	order: 166;
+}
+
 [focus-within].js-focus-within+*, .js-focus-within [focus-within]+* {
+	order: 167;
+}
+
+:focus-within+* {
 	order: 167;
 }
 
@@ -674,7 +1338,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 168;
 }
 
+* + :focus-within {
+	order: 168;
+}
+
 [focus-within].js-focus-within + *, .js-focus-within [focus-within] + * {
+	order: 169;
+}
+
+:focus-within + * {
 	order: 169;
 }
 
@@ -682,7 +1354,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 170;
 }
 
+*~:focus-within {
+	order: 170;
+}
+
 [focus-within].js-focus-within~*, .js-focus-within [focus-within]~* {
+	order: 171;
+}
+
+:focus-within~* {
 	order: 171;
 }
 
@@ -690,7 +1370,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 172;
 }
 
+* ~ :focus-within {
+	order: 172;
+}
+
 [focus-within].js-focus-within ~ *, .js-focus-within [focus-within] ~ * {
+	order: 173;
+}
+
+:focus-within ~ * {
 	order: 173;
 }
 
@@ -698,7 +1386,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 174;
 }
 
+*>:focus-within {
+	order: 174;
+}
+
 [focus-within].js-focus-within>*, .js-focus-within [focus-within]>* {
+	order: 175;
+}
+
+:focus-within>* {
 	order: 175;
 }
 
@@ -706,7 +1402,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 176;
 }
 
+* > :focus-within {
+	order: 176;
+}
+
 [focus-within].js-focus-within > *, .js-focus-within [focus-within] > * {
+	order: 177;
+}
+
+:focus-within > * {
 	order: 177;
 }
 
@@ -714,7 +1418,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 178;
 }
 
+*, :focus-within {
+	order: 178;
+}
+
 [focus-within].js-focus-within, .js-focus-within [focus-within], * {
+	order: 179;
+}
+
+:focus-within, * {
 	order: 179;
 }
 
@@ -722,7 +1434,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 180;
 }
 
+:hover:focus-within {
+	order: 180;
+}
+
 [focus-within]:hover.js-focus-within, .js-focus-within [focus-within]:hover {
+	order: 181;
+}
+
+:focus-within:hover {
 	order: 181;
 }
 
@@ -730,7 +1450,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 182;
 }
 
+:hover :focus-within {
+	order: 182;
+}
+
 [focus-within].js-focus-within :hover, .js-focus-within [focus-within] :hover {
+	order: 183;
+}
+
+:focus-within :hover {
 	order: 183;
 }
 
@@ -738,7 +1466,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 184;
 }
 
+:hover  :focus-within {
+	order: 184;
+}
+
 [focus-within].js-focus-within  :hover, .js-focus-within [focus-within]  :hover {
+	order: 185;
+}
+
+:focus-within  :hover {
 	order: 185;
 }
 
@@ -746,7 +1482,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 186;
 }
 
+:hover+:focus-within {
+	order: 186;
+}
+
 [focus-within].js-focus-within+:hover, .js-focus-within [focus-within]+:hover {
+	order: 187;
+}
+
+:focus-within+:hover {
 	order: 187;
 }
 
@@ -754,7 +1498,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 188;
 }
 
+:hover + :focus-within {
+	order: 188;
+}
+
 [focus-within].js-focus-within + :hover, .js-focus-within [focus-within] + :hover {
+	order: 189;
+}
+
+:focus-within + :hover {
 	order: 189;
 }
 
@@ -762,7 +1514,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 190;
 }
 
+:hover~:focus-within {
+	order: 190;
+}
+
 [focus-within].js-focus-within~:hover, .js-focus-within [focus-within]~:hover {
+	order: 191;
+}
+
+:focus-within~:hover {
 	order: 191;
 }
 
@@ -770,7 +1530,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 192;
 }
 
+:hover ~ :focus-within {
+	order: 192;
+}
+
 [focus-within].js-focus-within ~ :hover, .js-focus-within [focus-within] ~ :hover {
+	order: 193;
+}
+
+:focus-within ~ :hover {
 	order: 193;
 }
 
@@ -778,7 +1546,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 194;
 }
 
+:hover>:focus-within {
+	order: 194;
+}
+
 [focus-within].js-focus-within>:hover, .js-focus-within [focus-within]>:hover {
+	order: 195;
+}
+
+:focus-within>:hover {
 	order: 195;
 }
 
@@ -786,7 +1562,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 196;
 }
 
+:hover > :focus-within {
+	order: 196;
+}
+
 [focus-within].js-focus-within > :hover, .js-focus-within [focus-within] > :hover {
+	order: 197;
+}
+
+:focus-within > :hover {
 	order: 197;
 }
 
@@ -794,7 +1578,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 198;
 }
 
+:hover, :focus-within {
+	order: 198;
+}
+
 [focus-within].js-focus-within, .js-focus-within [focus-within], :hover {
+	order: 199;
+}
+
+:focus-within, :hover {
 	order: 199;
 }
 
@@ -802,7 +1594,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 200;
 }
 
+::before:focus-within {
+	order: 200;
+}
+
 [focus-within].js-focus-within::before, .js-focus-within [focus-within]::before {
+	order: 201;
+}
+
+:focus-within::before {
 	order: 201;
 }
 
@@ -810,7 +1610,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 202;
 }
 
+::before :focus-within {
+	order: 202;
+}
+
 [focus-within].js-focus-within ::before, .js-focus-within [focus-within] ::before {
+	order: 203;
+}
+
+:focus-within ::before {
 	order: 203;
 }
 
@@ -818,7 +1626,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 204;
 }
 
+::before  :focus-within {
+	order: 204;
+}
+
 [focus-within].js-focus-within  ::before, .js-focus-within [focus-within]  ::before {
+	order: 205;
+}
+
+:focus-within  ::before {
 	order: 205;
 }
 
@@ -826,7 +1642,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 206;
 }
 
+::before+:focus-within {
+	order: 206;
+}
+
 [focus-within].js-focus-within+::before, .js-focus-within [focus-within]+::before {
+	order: 207;
+}
+
+:focus-within+::before {
 	order: 207;
 }
 
@@ -834,7 +1658,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 208;
 }
 
+::before + :focus-within {
+	order: 208;
+}
+
 [focus-within].js-focus-within + ::before, .js-focus-within [focus-within] + ::before {
+	order: 209;
+}
+
+:focus-within + ::before {
 	order: 209;
 }
 
@@ -842,7 +1674,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 210;
 }
 
+::before~:focus-within {
+	order: 210;
+}
+
 [focus-within].js-focus-within~::before, .js-focus-within [focus-within]~::before {
+	order: 211;
+}
+
+:focus-within~::before {
 	order: 211;
 }
 
@@ -850,7 +1690,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 212;
 }
 
+::before ~ :focus-within {
+	order: 212;
+}
+
 [focus-within].js-focus-within ~ ::before, .js-focus-within [focus-within] ~ ::before {
+	order: 213;
+}
+
+:focus-within ~ ::before {
 	order: 213;
 }
 
@@ -858,7 +1706,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 214;
 }
 
+::before>:focus-within {
+	order: 214;
+}
+
 [focus-within].js-focus-within>::before, .js-focus-within [focus-within]>::before {
+	order: 215;
+}
+
+:focus-within>::before {
 	order: 215;
 }
 
@@ -866,7 +1722,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 216;
 }
 
+::before > :focus-within {
+	order: 216;
+}
+
 [focus-within].js-focus-within > ::before, .js-focus-within [focus-within] > ::before {
+	order: 217;
+}
+
+:focus-within > ::before {
 	order: 217;
 }
 
@@ -874,7 +1738,15 @@ __foo, [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 218;
 }
 
+::before, :focus-within {
+	order: 218;
+}
+
 [focus-within].js-focus-within, .js-focus-within [focus-within], ::before {
+	order: 219;
+}
+
+:focus-within, ::before {
 	order: 219;
 }
 
@@ -890,6 +1762,10 @@ foo[baz=":focus-within"] {
 	order: 222;
 }
 
+:not(:focus-within) {
+	order: 222;
+}
+
 ::focus-within {
 	order: 223;
 }
@@ -898,7 +1774,15 @@ foo[baz=":focus-within"] {
 	order: 224;
 }
 
+:--:focus-within {
+	order: 224;
+}
+
 __[focus-within].js-focus-within, .js-focus-within __[focus-within] {
+	order: 225;
+}
+
+__:focus-within {
 	order: 225;
 }
 
