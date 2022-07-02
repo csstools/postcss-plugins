@@ -59,10 +59,10 @@ instructions for:
 ### preserve
 
 The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
+is preserved. By default, it is preserved.
 
 ```js
-postcssFocusVisible({ preserve: true })
+postcssFocusVisible({ preserve: false })
 ```
 
 ```pcss
@@ -72,13 +72,8 @@ postcssFocusVisible({ preserve: true })
 
 /* becomes */
 
-.foo {
-	color: blue;
-	color: red;
-}
-
-.baz {
-	color: green;
+:focus:not(.focus-visible).js-focus-visible, .js-focus-visible :focus:not(.focus-visible) {
+	outline: none;
 }
 ```
 
@@ -98,14 +93,7 @@ postcssFocusVisible({ replaceWith: '[data-focus-visible-added]' })
 
 /* becomes */
 
-.foo {
-	color: blue;
-	color: red;
-}
-
-.baz {
-	color: green;
-}
+<example.preserve-true.expect.css>
 ```
 
 Note that if you want to keep using [focus-visible polyfill], the only 

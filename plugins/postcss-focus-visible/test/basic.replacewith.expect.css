@@ -94,3 +94,7 @@ html.js-focus-visible :not([data-focus-visible-added]), .js-focus-visible html :
 .foo.js-focus-visible > [data-focus-visible-added], .js-focus-visible .foo > [data-focus-visible-added] {
 	order: 10.5;
 }
+
+[data-focus-visible-added].js-focus-visible, .js-focus-visible [data-focus-visible-added] {
+	order: 11;
+}

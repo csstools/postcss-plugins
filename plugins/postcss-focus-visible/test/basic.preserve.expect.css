@@ -94,3 +94,7 @@ html.js-focus-visible :not(.focus-visible), .js-focus-visible html :not(.focus-v
 .foo.js-focus-visible > .focus-visible, .js-focus-visible .foo > .focus-visible {
 	order: 10.5;
 }
+
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
+	order: 11;
+}

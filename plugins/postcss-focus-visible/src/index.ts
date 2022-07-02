@@ -10,7 +10,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
 		// Default options
 		{
-			preserve: false,
+			preserve: true,
 			replaceWith: '.focus-visible',
 		},
 		// Provided options
@@ -22,12 +22,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-focus-visible',
 		Rule(rule, { result }) {
-			if (!rule.selector.includes(PSEUDO)) {
+			if (!rule.selector.toLowerCase().includes(PSEUDO)) {
 				return;
 			}
 
 			const selectors = rule.selectors.flatMap((selector) => {
-				if (!selector.includes(PSEUDO)) {
+				if (!selector.toLowerCase().includes(PSEUDO)) {
 					return [selector];
 				}
 
@@ -46,7 +46,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 				let containsPseudo = false;
 				selectorAST.walkPseudos((pseudo) => {
-					if (pseudo.value !== PSEUDO) {
+					if (pseudo.value.toLowerCase() !== PSEUDO) {
 						return;
 					}
 
