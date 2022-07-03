@@ -20,7 +20,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-prefers-color-scheme',
 		AtRule: (atRule) => {
-			if (atRule.name !== 'media') {
+			if (atRule.name.toLowerCase() !== 'media') {
 				return;
 			}
 

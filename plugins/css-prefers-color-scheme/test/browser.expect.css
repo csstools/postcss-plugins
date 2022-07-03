@@ -16,13 +16,13 @@
 	}
 }
 
-@media (color: 70318723) {
+@MEDIA (color: 70318723) {
 	#fixture {
 		color: rgb(255, 192, 203);
 	}
 }
 
-@media (prefers-color-scheme: light) {
+@MEDIA (PREFERS-COLOR-SCHEME: LIGHT) {
 	#fixture {
 		color: rgb(255, 192, 203);
 	}

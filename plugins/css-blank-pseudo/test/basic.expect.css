@@ -57,3 +57,11 @@ test:not([blank]) {
 test:not(:blank) {
 	order: 5;
 }
+
+uppercase [blank] {
+	order: 6;
+}
+
+uppercase :BLaNK {
+	order: 6;
+}

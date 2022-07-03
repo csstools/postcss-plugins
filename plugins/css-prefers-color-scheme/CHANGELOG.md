@@ -8,6 +8,7 @@
 - Breaking: remove `color-depth` queries fallback
 - Breaking: remove 'no-preference' support as this was dropped from the spec
 - Breaking: remove old global object
+- Fix: case insensitive matching.
 
 #### How to migrate :
 

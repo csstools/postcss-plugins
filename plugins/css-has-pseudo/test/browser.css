@@ -3,7 +3,7 @@
 	color: grey
 }
 
-#d_main:has(#d_checkbox:checked)>#d_subject {
+#d_main:HAS(#d_checkbox:checked)>#d_subject {
 	color: red
 }
 
@@ -11,7 +11,7 @@
 	color: red
 }
 
-#d_main:has(#d_checkbox:disabled)>#d_subject {
+#d_main:hAs(#d_checkbox:disabled)>#d_subject {
 	color: green
 }
 

@@ -2,7 +2,7 @@ import valueParser from 'postcss-value-parser';
 import selectorParser from 'postcss-selector-parser';
 
 export function isGuardedByAtSupportsFromAtRuleParams(atSupportsParams: string): boolean {
-	if (!atSupportsParams.includes(':has(')) {
+	if (!atSupportsParams.toLowerCase().includes(':has(')) {
 		return false;
 	}
 
@@ -13,7 +13,7 @@ export function isGuardedByAtSupportsFromAtRuleParams(atSupportsParams: string):
 
 		const ast = valueParser(atSupportsParams);
 		ast.walk((node) => {
-			if (node.type === 'function' && node.value === 'selector') {
+			if (node.type === 'function' && node.value.toLowerCase() === 'selector') {
 				selectors.add(valueParser.stringify(node.nodes));
 				return false;
 			}
@@ -33,7 +33,7 @@ export function isGuardedByAtSupportsFromAtRuleParams(atSupportsParams: string):
 }
 
 export function selectorContainsHasPseudo(selector: string): boolean {
-	if (!selector.includes(':has(')) {
+	if (!selector.toLowerCase().includes(':has(')) {
 		return false;
 	}
 
@@ -42,7 +42,7 @@ export function selectorContainsHasPseudo(selector: string): boolean {
 	try {
 		const ast = selectorParser().astSync(selector);
 		ast.walk((node) => {
-			if (node.type === 'pseudo' && node.value === ':has' && node.nodes && node.nodes.length > 0) {
+			if (node.type === 'pseudo' && node.value.toLowerCase() === ':has' && node.nodes && node.nodes.length > 0) {
 				containsHasPseudo = true;
 				return false;
 			}

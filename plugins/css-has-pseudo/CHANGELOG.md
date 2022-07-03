@@ -10,6 +10,7 @@
 - Added: 'forcePolyfill' options for browser polyfill
 - Added: Rules within `@supports selector(:has(something))` won't be transformed.
 - Fix: Use base36 encoding to support all possible selectors.
+- Fix: case insensitive matching.
 
 #### How to migrate :
 
