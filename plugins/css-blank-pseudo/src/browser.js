@@ -163,15 +163,6 @@ export default function cssBlankPseudoInit(opts) {
 			);
 		});
 
-		window.addEventListener('load', () => {
-			Array.prototype.forEach.call(
-				document.querySelectorAll('input, select, textarea'),
-				node => {
-					handler({ target: node });
-				},
-			);
-		});
-
 		window.addEventListener('DOMContentLoaded', () => {
 			Array.prototype.forEach.call(
 				document.querySelectorAll('input, select, textarea'),
