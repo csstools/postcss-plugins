@@ -43,7 +43,7 @@ export function browserJavascript() {
 					rootDir: path.join(process.cwd(), '..', '..'),
 				}),
 				babel(babelConfig),
-				terser(),
+				// terser(),
 			],
 		},
 		{
@@ -60,7 +60,7 @@ export function browserJavascript() {
 					rootDir: path.join(process.cwd(), '..', '..'),
 				}),
 				babel(babelConfig),
-				terser(),
+				// terser(),
 			],
 		},
 	];
