@@ -37,15 +37,18 @@ function generateHandler(replaceWith) {
 
 export default function focusWithin(opts) {
 	// configuration
-	const options = Object.assign(
-		// Default options
-		{
-			force: false,
-			replaceWith: '[focus-within]',
-		},
-		// Provided options
-		opts,
-	);
+	const options = {
+		force: false,
+		replaceWith: '[focus-within]',
+	};
+
+	if (typeof opts !== 'undefined' && 'force' in opts) {
+		options.force = opts.force;
+	}
+
+	if (typeof opts !== 'undefined' && 'replaceWith' in opts) {
+		options.replaceWith = opts.replaceWith;
+	}
 
 	if (!isValidReplacement(options.replaceWith)) {
 		throw new Error(`${options.replaceWith} is not a valid replacement since it can't be applied to single elements.`);
