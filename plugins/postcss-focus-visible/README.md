@@ -23,6 +23,9 @@ the browser's polyfill as well.
 :focus:not(.focus-visible).js-focus-visible, .js-focus-visible :focus:not(.focus-visible) {
 	outline: none;
 }
+:focus:not(:focus-visible) {
+	outline: none;
+}
 ```
 
 [PostCSS Focus Visible] duplicates rules using the `:focus-visible` pseudo-class
