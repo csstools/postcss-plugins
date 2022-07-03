@@ -1,4 +1,4 @@
-/* global document */
+/* global document,window */
 import isValidReplacement from './is-valid-replacement.mjs';
 function generateHandler(replaceWith) {
 	let selector;
@@ -65,7 +65,11 @@ export default function focusWithin(opts) {
 	const handleFocusChange = generateHandler(options.replaceWith);
 
 	const initialize = function initializeEventListeners() {
-		document.documentElement.classList.add('js-focus-within');
+		if (document.documentElement.className.indexOf('js-focus-within') > -1) {
+			return;
+		}
+
+		document.documentElement.className = document.documentElement.className + ' js-focus-within';
 		document.addEventListener('focus', handleFocusChange, true);
 		document.addEventListener('blur', handleFocusChange, true);
 	};
