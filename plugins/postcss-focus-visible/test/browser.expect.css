@@ -7,3 +7,7 @@ textarea {
 .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	background-color: rgb(128, 0, 128);
 }
+
+:focus-visible {
+	background-color: rgb(128, 0, 128);
+}

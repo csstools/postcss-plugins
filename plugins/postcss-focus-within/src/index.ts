@@ -1,55 +1,121 @@
 import parser from 'postcss-selector-parser';
 import type { PluginCreator } from 'postcss';
+import isValidReplacement from './is-valid-replacement.mjs';
 
-const creator: PluginCreator<{ preserve?: boolean, replaceWith?: string }> = (opts?: { preserve?: boolean, replaceWith?: string }) => {
-	const replaceWith = String(Object(opts).replaceWith || '[focus-within]');
-	const preserve = Boolean('preserve' in Object(opts) ? opts.preserve : true);
-	const replacementAST = parser().astSync(replaceWith);
+type pluginOptions = { preserve?: boolean, replaceWith?: string };
+
+const POLYFILL_READY_CLASSNAME = 'js-focus-within';
+const PSEUDO = ':focus-within';
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign(
+		// Default options
+		{
+			preserve: true,
+			replaceWith: '[focus-within]',
+		},
+		// Provided options
+		opts,
+	);
+
+	const replacementAST = parser().astSync(options.replaceWith);
+	if (!isValidReplacement(options.replaceWith)) {
+		return {
+			postcssPlugin: 'postcss-focus-within',
+			Once: (root, { result }) => {
+				root.warn(
+					result,
+					`${options.replaceWith} is not a valid replacement since it can't be applied to single elements.`,
+				);
+			},
+		};
+	}
 
 	return {
 		postcssPlugin: 'postcss-focus-within',
-		Rule: (rule, { result })=> {
-			if (!rule.selector.includes(':focus-within')) {
+		Rule(rule, { result }) {
+			if (!rule.selector.toLowerCase().includes(PSEUDO)) {
 				return;
 			}
 
-			let modifiedSelector;
+			const selectors = rule.selectors.flatMap((selector) => {
+				if (!selector.toLowerCase().includes(PSEUDO)) {
+					return [selector];
+				}
 
-			try {
-				const modifiedSelectorAST = parser((selectors) => {
-					selectors.walkPseudos((pseudo) => {
-						if (pseudo.value !== ':focus-within') {
-							return;
+				let selectorAST;
+
+				try {
+					selectorAST = parser().astSync(selector);
+				} catch (_) {
+					rule.warn(result, `Failed to parse selector : ${selector}`);
+					return selector;
+				}
+
+				if (typeof selectorAST === 'undefined') {
+					return [selector];
+				}
+
+				let containsPseudo = false;
+				selectorAST.walkPseudos((pseudo) => {
+					if (pseudo.value.toLowerCase() !== PSEUDO) {
+						return;
+					}
+
+					if (pseudo.nodes && pseudo.nodes.length) {
+						return;
+					}
+
+					containsPseudo = true;
+					pseudo.replaceWith(replacementAST.clone({}));
+				});
+
+				if (!containsPseudo) {
+					return [selector];
+				}
+
+				const selectorASTClone = selectorAST.clone();
+
+				// html > .foo:focus-within
+				// becomes:
+				// html.js-focus-within > .foo:focus-within,
+				// .js-focus-within html > .foo:focus-within
+				{
+					if (selectorAST.nodes?.[0]?.nodes?.length) {
+						for (let i = 0; i < selectorAST.nodes[0].nodes.length; i++) {
+							const node = selectorAST.nodes[0].nodes[i];
+							if (node.type === 'combinator' || parser.isPseudoElement(node)) {
+								// Insert the class before the first combinator or pseudo element.
+								selectorAST.nodes[0].insertBefore(node, parser.className({ value: POLYFILL_READY_CLASSNAME }));
+								break;
+							}
+
+							if (i === selectorAST.nodes[0].nodes.length - 1) {
+								// Append the class to the end of the selector if not combinator or pseudo element was found.
+								selectorAST.nodes[0].append(parser.className({ value: POLYFILL_READY_CLASSNAME }));
+								break;
+							}
 						}
+					}
 
-						if (pseudo.nodes && pseudo.nodes.length) {
-							return;
-						}
+					if (selectorAST.nodes?.[0]?.nodes) {
+						// Prepend a space combinator and the class to the beginning of the selector.
+						selectorASTClone.nodes[0].prepend(parser.combinator({ value: ' ' }));
+						selectorASTClone.nodes[0].prepend(parser.className({ value: POLYFILL_READY_CLASSNAME }));
+					}
+				}
 
-						pseudo.replaceWith(replacementAST.clone({}));
-					});
-				}).processSync(rule.selector);
+				return [selectorAST.toString(), selectorASTClone.toString()];
+			});
 
-				modifiedSelector = String(modifiedSelectorAST);
-			} catch (_) {
-				rule.warn(result, `Failed to parse selector : ${rule.selector}`);
+			if (selectors.join(',') === rule.selectors.join(',')) {
 				return;
 			}
 
-			if (typeof modifiedSelector === 'undefined') {
-				return;
-			}
+			rule.cloneBefore({ selectors: selectors });
 
-			if (modifiedSelector === rule.selector) {
-				return;
-			}
-
-			const clone = rule.clone({ selector: modifiedSelector });
-
-			if (preserve) {
-				rule.before(clone);
-			} else {
-				rule.replaceWith(clone);
+			if (!options.preserve) {
+				rule.remove();
 			}
 		},
 	};

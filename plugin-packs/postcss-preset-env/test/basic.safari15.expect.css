@@ -141,6 +141,10 @@
 	order: 26;
 }
 
+.test-focus-visible-pseudo-class:focus-visible {
+	order: 26;
+}
+
 .test-double-position-gradients {
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
 }

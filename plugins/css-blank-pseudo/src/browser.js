@@ -87,6 +87,7 @@ function observeValueOfHTMLElement(HTMLElement, handler) {
 }
 
 export default function cssBlankPseudoInit(opts) {
+	// configuration
 	const options = {
 		force: false,
 		replaceWith: '[blank]',
