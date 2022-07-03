@@ -18,12 +18,12 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 	return {
 		postcssPlugin: 'css-has-pseudo-experimental',
 		RuleExit: (rule, { result }) => {
-			if (!rule.selector.includes(':has(') || isWithinSupportCheck(rule)) {
+			if (!rule.selector.toLowerCase().includes(':has(') || isWithinSupportCheck(rule)) {
 				return;
 			}
 
 			const selectors = rule.selectors.map((selector) => {
-				if (!selector.includes(':has(')) {
+				if (!selector.toLowerCase().includes(':has(')) {
 					return selector;
 				}
 
@@ -41,7 +41,7 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 
 				let containsHasPseudo = false;
 				selectorAST.walkPseudos((node) => {
-					containsHasPseudo = containsHasPseudo || (node.value === ':has' && node.nodes);
+					containsHasPseudo = containsHasPseudo || (node.value.toLowerCase() === ':has' && node.nodes);
 
 					// see : https://bugs.chromium.org/p/chromium/issues/detail?id=669058#c34
 					// When we have ':has(:visited) {...}', the subject elements of the rule
@@ -51,7 +51,7 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 					// selector does not match if it is inside the ':has()' argument selector.
 					// So if a ':has()' argument selector requires a matching ':visited', the
 					// style rule are not applied.
-					if (node.value === ':visited') {
+					if (node.value.toLowerCase() === ':visited') {
 						// We can't leave `:has` untouched as that might cause broken selector lists.
 						// Replacing with the specificity matching name as this should never match anything without `:not()`.
 						node.replaceWith(parser.className({
@@ -59,7 +59,7 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 						}));
 					}
 
-					if (node.value === ':any-link') {
+					if (node.value.toLowerCase() === ':any-link') {
 						// we can transform `:any-link` to `:link` as this is allowed
 						node.value = ':link';
 					}

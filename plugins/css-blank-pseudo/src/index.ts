@@ -31,7 +31,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'css-blank-pseudo',
 		Rule: (rule, { result }) => {
-			if (rule.selector.indexOf(':blank') === -1) {
+			if (rule.selector.toLowerCase().indexOf(':blank') === -1) {
 				return;
 			}
 
@@ -39,7 +39,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			try {
 				const modifiedSelectorAST = parser((selectors) => {
 					selectors.walkPseudos((selector) => {
-						if (selector.value !== ':blank') {
+						if (selector.value.toLowerCase() !== ':blank') {
 							return;
 						}
 
@@ -66,12 +66,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			const clone = rule.clone({ selector: modifiedSelector });
+			rule.cloneBefore({ selector: modifiedSelector });
 
-			if (options.preserve) {
-				rule.before(clone);
-			} else {
-				rule.replaceWith(clone);
+			if (!options.preserve) {
+				rule.remove();
 			}
 		},
 	};

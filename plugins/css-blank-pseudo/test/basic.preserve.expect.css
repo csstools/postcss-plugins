@@ -32,3 +32,7 @@ test :matches(test [blank] [blank] test) test {
 test:not([blank]) {
 	order: 5;
 }
+
+uppercase [blank] {
+	order: 6;
+}

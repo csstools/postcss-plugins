@@ -6,6 +6,7 @@
 more efficient and also does less work at the MutationObserver handler.
 - Breaking: removed old CDN urls
 - Breaking: removed old CLI
+- Fix case insensitive matching.
 
 #### How to migrate:
 

@@ -10,7 +10,7 @@
 	}
 }
 
-@media (prefers-color-scheme: light) {
+@MEDIA (PREFERS-COLOR-SCHEME: LIGHT) {
 	#fixture {
 		color: rgb(255, 192, 203);
 	}
