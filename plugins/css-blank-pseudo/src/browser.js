@@ -1,8 +1,14 @@
-/* global document,MutationObserver */
+/* global document,window,self,MutationObserver */
 import isValidReplacement from './is-valid-replacement.mjs';
 
 // form control elements selector
-const BLANK_CANDIDATES = 'input,select,textarea';
+function isFormControlElement(element) {
+	if (element.nodeName === 'INPUT' || element.nodeName === 'SELECT' || element.nodeName === 'TEXTAREA') {
+		return true;
+	}
+
+	return false;
+}
 
 function createNewEvent(eventName) {
 	let event;
@@ -21,8 +27,6 @@ function generateHandler(replaceWith) {
 	let selector;
 	let remove;
 	let add;
-	const matches = typeof document.body.matches === 'function'
-		? 'matches' : 'msMatchesSelector';
 
 	if (replaceWith[0] === '.') {
 		selector = replaceWith.slice(1);
@@ -37,7 +41,7 @@ function generateHandler(replaceWith) {
 
 	return function handleInputOrChangeEvent(event) {
 		const element = event.target;
-		if (!element[matches](BLANK_CANDIDATES)) {
+		if (!isFormControlElement(element)) {
 			return;
 		}
 
@@ -111,39 +115,62 @@ export default function cssBlankPseudoInit(opts) {
 
 	const handler = generateHandler(options.replaceWith);
 
-	document.body.addEventListener('change', handler);
-	document.body.addEventListener('input', handler);
+	if (document.body) {
+		document.body.addEventListener('change', handler);
+		document.body.addEventListener('input', handler);
+	} else {
+		window.addEventListener('load', () => {
+			if (document.body) {
+				document.body.addEventListener('change', handler);
+				document.body.addEventListener('input', handler);
+			}
+		});
+	}
 
-	// observe value changes on <input>, <select>, and <textarea>
-	const window = (document.ownerDocument || document).defaultView;
-
-	observeValueOfHTMLElement(window.HTMLInputElement, handler);
-	observeValueOfHTMLElement(window.HTMLSelectElement, handler);
-	observeValueOfHTMLElement(window.HTMLTextAreaElement, handler);
-	observeSelectedOfHTMLElement(window.HTMLOptionElement, handler);
+	observeValueOfHTMLElement(self.HTMLInputElement, handler);
+	observeValueOfHTMLElement(self.HTMLSelectElement, handler);
+	observeValueOfHTMLElement(self.HTMLTextAreaElement, handler);
+	observeSelectedOfHTMLElement(self.HTMLOptionElement, handler);
 
 	// conditionally update all form control elements
 	Array.prototype.forEach.call(
-		document.querySelectorAll(BLANK_CANDIDATES),
+		document.querySelectorAll('input, select, textarea'),
 		node => {
 			handler({ target: node });
 		},
 	);
 
-	if (typeof window.MutationObserver !== 'undefined') {
+	if (typeof self.MutationObserver !== 'undefined') {
 		// conditionally observe added or unobserve removed form control elements
 		new MutationObserver(mutationsList => {
 			mutationsList.forEach(mutation => {
 				Array.prototype.forEach.call(
 					mutation.addedNodes || [],
 					node => {
-						// Matches isn't polyfilled here since IE9 doesn't have support for MO
-						if (node.nodeType === 1 && node.matches(BLANK_CANDIDATES)) {
+						if (node.nodeType === 1 && isFormControlElement(node)) {
 							handler({ target: node });
 						}
 					},
 				);
 			});
 		}).observe(document, { childList: true, subtree: true });
+	} else {
+		window.addEventListener('load', () => {
+			Array.prototype.forEach.call(
+				document.querySelectorAll('input, select, textarea'),
+				node => {
+					handler({ target: node });
+				},
+			);
+		});
+
+		window.addEventListener('DOMContentLoaded', () => {
+			Array.prototype.forEach.call(
+				document.querySelectorAll('input, select, textarea'),
+				node => {
+					handler({ target: node });
+				},
+			);
+		});
 	}
 }
