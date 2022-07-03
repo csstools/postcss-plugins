@@ -1,0 +1,3 @@
+.my-form-field[focus-within].js-focus-within label, .js-focus-within .my-form-field[focus-within] label {
+	background-color: yellow;
+}

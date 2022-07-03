@@ -26,7 +26,7 @@ a:has(> img) {
 	}
 }
 
-.my-form-field[focus-within] label {
+.my-form-field[focus-within].js-focus-within label, .js-focus-within .my-form-field[focus-within] label {
 	order: 4;
 }
 
