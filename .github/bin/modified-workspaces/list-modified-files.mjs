@@ -2,20 +2,15 @@ import { exec } from './exec.mjs';
 
 export async function listModifiedFilesSince(refCommit) {
 	try {
-		const args = [
-			'--no-pager',
-			'diff',
-			'--name-only',
-			refCommit,
-		];
-
-		if (!process.env.GITHUB_ACTIONS) {
-			args.push('HEAD');
-		}
-
 		const result = await exec(
 			'git',
-			args,
+			[
+				'--no-pager',
+				'diff',
+				'--name-only',
+				refCommit,
+				'HEAD',
+			],
 		);
 
 		const list = result.stdout.split('\n').filter((x) => !!x);

@@ -41,11 +41,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: git log
-        run: |
-          git --no-pager log -9 --skip 1 --no-merges --pretty=format:'%H--test-dist-${{ matrix.node }}-${{ matrix.os }}'
-          git --no-pager log -1 --no-merges --pretty=format:'%H'
-
       - name: env
         run: |
           echo 'dist-restore-keys<<EOF' >> $GITHUB_ENV
@@ -74,31 +69,31 @@ jobs:
           npm ci --ignore-scripts
           node './.github/bin/modified-workspaces/log-modified-workspaces.mjs'
 
-  #     - name: lint
-  #       run: npm run lint --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
-  #       if: matrix.is_base_node_version && matrix.is_base_os_version
+      - name: lint
+        run: npm run lint --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+        if: matrix.is_base_node_version && matrix.is_base_os_version
 
-  #       # Basic tests
-  #     - name: test
-  #       run: npm run test --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
-  #       env:
-  #         ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.is_base_node_version }}
-  #         ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.is_base_os_version }}
+        # Basic tests
+      - name: test
+        run: npm run test --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+        env:
+          ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.is_base_node_version }}
+          ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.is_base_os_version }}
 
-  #       # CLI Tests
-  #       # running "npm install" places the cli in node_modules/bin
-  #     - name: test:cli
-  #       run: |
-  #         npm install --ignore-scripts
-  #         npm run test:cli --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+        # CLI Tests
+        # running "npm install" places the cli in node_modules/bin
+      - name: test:cli
+        run: |
+          npm install --ignore-scripts
+          npm run test:cli --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
 
-  #       # Browser Tests
-  #       # running "npm ci" again, but allowing scripts so that Chrome is installed
-  #     - name: test:browser
-  #       run: |
-  #         npm ci
-  #         npm run test:browser --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
-  #       if: matrix.is_base_node_version && matrix.is_base_os_version
+        # Browser Tests
+        # running "npm ci" again, but allowing scripts so that Chrome is installed
+      - name: test:browser
+        run: |
+          npm ci
+          npm run test:browser --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+        if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # record the current commit for the cache at the end of the job
         # must be the last step
@@ -106,31 +101,31 @@ jobs:
         run: |
           echo "$(git --no-pager log -1 --no-merges --pretty=format:'%H')" > .cached-commit
 
-  # # Run e2e tests
-  # test_e2e:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - uses: actions/setup-node@v3
-  #       with:
-  #         node-version: 16
+  # Run e2e tests
+  test_e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
-  #     - run: npm ci --ignore-scripts
-  #     - run: npm run build
+      - run: npm ci --ignore-scripts
+      - run: npm run build
 
-  #     # Webpack compatibility
-  #     - run: |
-  #           cd e2e/webpack/bundle-through
-  #           npm install
-  #           npm run build
-  #           npm run test
-  #     - run: |
-  #           cd e2e/webpack/postcss-loader
-  #           npm install
-  #           npm run build
+      # Webpack compatibility
+      - run: |
+            cd e2e/webpack/bundle-through
+            npm install
+            npm run build
+            npm run test
+      - run: |
+            cd e2e/webpack/postcss-loader
+            npm install
+            npm run build
 
-  #     # Deno compatibility
-  #     - uses: denoland/setup-deno@v1
-  #       with:
-  #         deno-version: v1.x.x
-  #     - run: npm run test:deno --workspaces --if-present
+      # Deno compatibility
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x.x
+      - run: npm run test:deno --workspaces --if-present
