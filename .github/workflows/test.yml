@@ -39,7 +39,7 @@ jobs:
 
       - name: git log
         run: |
-          git --no-pager log -5 --pretty=format:'%H'
+          git --no-pager log -5
 
       - name: env
         run: |
