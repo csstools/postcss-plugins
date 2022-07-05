@@ -9,6 +9,10 @@ concurrency:
   group: branch-node-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   test:
     runs-on: ${{ matrix.os }}
@@ -39,7 +43,7 @@ jobs:
 
       - name: git log
         run: |
-          git --no-pager log -9 --skip 1 --no-merges --pretty=format:'%H--test-dist-${{ matrix.node }}-${{ matrix.os }}')
+          git --no-pager log -9 --skip 1 --no-merges --pretty=format:'%H--test-dist-${{ matrix.node }}-${{ matrix.os }}'
           git --no-pager log -1 --no-merges --pretty=format:'%H'
 
       - name: env
