@@ -88,10 +88,10 @@ jobs:
           npm run test:cli --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
 
         # Browser Tests
-        # running "npm install" again, but allowing scripts so that Chrome is installed
+        # running "npm ci" again, but allowing scripts so that Chrome is installed
       - name: test:browser
         run: |
-          npm install
+          npm ci
           npm run test:browser --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
@@ -115,6 +115,7 @@ jobs:
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x.x
+        if: matrix.is_base_node_version && matrix.is_base_os_version
 
       - name: test:deno
         run: npm run test:deno --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
