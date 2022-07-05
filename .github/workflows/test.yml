@@ -40,7 +40,7 @@ jobs:
       - name: env
         run: |
           echo 'dist-restore-keys<<EOF' >> $GITHUB_ENV
-          echo "$(git --no-pager log -9 --skip 1 --pretty=format:'test-dist-${{ matrix.node }}-${{ matrix.os }}--%H')" >> $GITHUB_ENV
+          echo "$(git --no-pager log -9 --skip 1 --pretty=format:'%H--test-dist-${{ matrix.node }}-${{ matrix.os }}')" >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
           echo "commit-sha=$(git --no-pager log -1 --pretty=format:'%H')" >> $GITHUB_ENV
 
@@ -54,7 +54,7 @@ jobs:
             packages/*/dist/**
             plugin-packs/*/dist/**
             plugins/*/dist/**
-          key: test-dist-${{ matrix.node }}-${{ matrix.os }}--${{ env.commit-sha }}
+          key: ${{ env.commit-sha }}--test-dist-${{ matrix.node }}-${{ matrix.os }}
           restore-keys: ${{ env.dist-restore-keys }}
 
         # Build, lint and PostCSS Tape tests must all work and pass :
