@@ -12,7 +12,5 @@ export async function lastCachedCommit() {
 		return false;
 	}
 
-	console.log(`commit sha : "${process.env['commit-sha'].trim()}"`);
-
 	return process.env['commit-sha'].trim();
 }
