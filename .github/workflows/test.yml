@@ -70,12 +70,12 @@ jobs:
           node './.github/bin/modified-workspaces/log-modified-workspaces.mjs'
 
       - name: lint
-        run: npm run lint --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+        run: npm run lint
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # Basic tests
       - name: test
-        run: npm run test --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+        run: npm run test
         env:
           ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.is_base_node_version }}
           ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.is_base_os_version }}
@@ -85,14 +85,14 @@ jobs:
       - name: test:cli
         run: |
           npm install --ignore-scripts
-          npm run test:cli --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+          npm run test:cli
 
         # Browser Tests
         # running "npm ci" again, but allowing scripts so that Chrome is installed
       - name: test:browser
         run: |
           npm ci
-          npm run test:browser --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+          npm run test:browser
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # record the current commit for the cache at the end of the job
