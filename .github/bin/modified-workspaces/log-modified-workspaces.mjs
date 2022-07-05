@@ -14,5 +14,5 @@ if (modifiedWorkspaces.nothing) {
 	process.exit(0);
 }
 
-process.stdout.write(`--workspace=${modifiedWorkspaces.map((x) => x.name).join(' --workspace=')}`);
+process.stdout.write(`--workspace=${modifiedWorkspaces.modified.map((x) => x.name).join(' --workspace=')}`);
 process.exit(0);

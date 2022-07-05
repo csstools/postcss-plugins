@@ -37,10 +37,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: git log
-        run: |
-          git --no-pager log -5 --no-merges
-
       - name: env
         run: |
           echo 'dist-restore-keys<<EOF' >> $GITHUB_ENV
