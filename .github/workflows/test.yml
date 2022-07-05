@@ -44,18 +44,18 @@ jobs:
           echo 'EOF' >> $GITHUB_ENV
           echo "commit-sha=$(git --no-pager log -1 --no-merges --pretty=format:'%H')" >> $GITHUB_ENV
 
-  #     - name: fetch previous build artifacts
-  #       uses: actions/cache@v3.0.3
-  #       with:
-  #         path: |
-  #           .cached-commit
-  #           cli/*/dist/**
-  #           experimental/*/dist/**
-  #           packages/*/dist/**
-  #           plugin-packs/*/dist/**
-  #           plugins/*/dist/**
-  #         key: ${{ env.commit-sha }}--test-dist-${{ matrix.node }}-${{ matrix.os }}
-  #         restore-keys: ${{ env.dist-restore-keys }}
+      - name: fetch previous build artifacts
+        uses: actions/cache@v3.0.3
+        with:
+          path: |
+            .cached-commit
+            cli/*/dist/**
+            experimental/*/dist/**
+            packages/*/dist/**
+            plugin-packs/*/dist/**
+            plugins/*/dist/**
+          key: ${{ env.commit-sha }}--test-dist-${{ matrix.node }}-${{ matrix.os }}
+          restore-keys: ${{ env.dist-restore-keys }}
 
         # Build, lint and PostCSS Tape tests must all work and pass :
         # - with exact dependencies from package-lock.json
