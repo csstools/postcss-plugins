@@ -37,6 +37,11 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - name: git log
+        run: |
+          git --no-pager log -9 --skip 1 --no-merges --pretty=format:'%H--test-dist-${{ matrix.node }}-${{ matrix.os }}')
+          git --no-pager log -1 --no-merges --pretty=format:'%H'
+
       - name: env
         run: |
           echo 'dist-restore-keys<<EOF' >> $GITHUB_ENV
@@ -91,11 +96,11 @@ jobs:
   #         npm run test:browser --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
   #       if: matrix.is_base_node_version && matrix.is_base_os_version
 
-  #       # record the current commit for the cache at the end of the job
-  #       # must be the last step
-  #     - name: record current commit
-  #       run: |
-  #         echo "$(git --no-pager log -1 --no-merges --pretty=format:'%H')" > .cached-commit
+        # record the current commit for the cache at the end of the job
+        # must be the last step
+      - name: record current commit
+        run: |
+          echo "$(git --no-pager log -1 --no-merges --pretty=format:'%H')" > .cached-commit
 
   # # Run e2e tests
   # test_e2e:
