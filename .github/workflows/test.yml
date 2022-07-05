@@ -81,7 +81,7 @@ jobs:
       - name: test:cli
         run: |
           npm install --ignore-scripts
-          npm run test:cli --workspace="@csstools/postcss-base-plugin"
+          npm run test:cli --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
 
         # Browser Tests
         # running "npm ci" again, but allowing scripts so that Chrome is installed

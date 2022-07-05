@@ -1,6 +1,6 @@
 import { listModifiedWorkspaces } from "./modified-workspaces.mjs";
 
-const modifiedWorkspaces = (await listModifiedWorkspaces()).map((x) => x.name);
+const modifiedWorkspaces = await listModifiedWorkspaces();
 if (modifiedWorkspaces.all) {
 	// root package.json will take over.
 	process.stdout.write(``);
@@ -14,5 +14,5 @@ if (modifiedWorkspaces.nothing) {
 	process.exit(0);
 }
 
-process.stdout.write(`--workspace=${modifiedWorkspaces.join(' --workspace=')}`);
+process.stdout.write(`--workspace=${modifiedWorkspaces.map((x) => x.name).join(' --workspace=')}`);
 process.exit(0);
