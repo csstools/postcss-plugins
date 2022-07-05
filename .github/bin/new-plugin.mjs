@@ -79,7 +79,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 	packageInfo.description = `TODO: Add description for ${pluginName}`;
 	packageInfo.version = '1.0.0';
 	packageInfo.homepage = `https://github.com/csstools/postcss-plugins/tree/main/plugins/${pluginSlug}#readme`;
-	packageInfo.bugs = `https://github.com/csstools/postcss-plugins/issues`;
+	packageInfo.bugs = 'https://github.com/csstools/postcss-plugins/issues';
 	packageInfo.csstools.exportName = exportName;
 	packageInfo.csstools.humanReadableName = humanReadableName;
 
@@ -113,7 +113,7 @@ async function replaceBasePluginReferencesForFilePath(filePath) {
 	await fsp.writeFile(
 		filePath,
 		replaceBasePluginReferences(
-			(await fsp.readFile(filePath, 'utf8')).toString()
+			(await fsp.readFile(filePath, 'utf8')).toString(),
 		),
 	);
 }

@@ -33,7 +33,7 @@ if (!fileNames || !fileNames.length) {
 }
 
 if (!process.env.GITHUB_ACTIONS) {
-	console.log(`Unexpected executables:`);
+	console.log('Unexpected executables:');
 	fileNames.forEach((f) => {
 		console.log(`chmod a-x ${f}`);
 	});
@@ -42,13 +42,13 @@ if (!process.env.GITHUB_ACTIONS) {
 
 fileNames.forEach((f) => {
 	const annotation = formatGitHubActionAnnotation(
-		`This file is unexpectedly executable`,
+		'This file is unexpectedly executable',
 		'error',
 		{
 			file: f,
 			line: 1,
 			col: 1,
-		}
+		},
 	);
 
 	console.log(annotation);
