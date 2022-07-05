@@ -63,15 +63,15 @@ jobs:
       - name: build
         run: |
           npm ci --ignore-scripts
-          npm run build
+          npm run build --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
 
       - name: lint
-        run: npm run lint
+        run: npm run lint --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # Basic tests
       - name: test
-        run: npm run test
+        run: npm run test --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
         env:
           ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.is_base_node_version }}
           ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.is_base_os_version }}
@@ -88,7 +88,7 @@ jobs:
       - name: test:browser
         run: |
           npm ci
-          npm run test:browser
+          npm run test:browser --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # record the current commit for the cache at the end of the job

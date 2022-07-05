@@ -9,10 +9,11 @@ export async function listModifiedFilesSince(refCommit) {
 				'diff',
 				'--name-only',
 				refCommit,
+				'HEAD',
 			],
 		);
 
-		const list = result.stdout.split('\n');
+		const list = result.stdout.split('\n').filter((x) => !!x);
 		if (!list.length && result.stderr) {
 			throw new Error(`empty list of modified files with message "${result.stderr}"`);
 		}

@@ -1,6 +1,7 @@
 import path from 'path';
 import { promises as fsp } from 'fs';
 import glob from 'glob';
+import { toposort } from './toposort.mjs';
 
 export async function listWorkspaces() {
 	try {
@@ -30,9 +31,32 @@ export async function listWorkspaces() {
 				dependencies: [
 					...Object.keys(Object(packageJSON.devDependencies)),
 					...Object.keys(Object(packageJSON.dependencies)),
-				]
+				],
 			});
 		}
+
+		const packageNames =  result.map((x) => x.name);
+
+		result.forEach((x) => {
+			x.dependencies = x.dependencies.filter((y) => {
+				return packageNames.includes(y);
+			});
+		});
+
+		const dependencyGraphEdges = result.flatMap((x) => {
+			return x.dependencies.map((y) => {
+				return [y, x.name];
+			});
+		});
+
+		const sorted = toposort(packageNames, dependencyGraphEdges);
+		if (!sorted) {
+			throw new Error('Circular reference detected');
+		}
+
+		result.sort((a, b) => {
+			return sorted.indexOf(a) - sorted.indexOf(b);
+		});
 
 		return result;
 	} catch(err) {
@@ -40,6 +64,3 @@ export async function listWorkspaces() {
 		throw new Error('failed to get the list of workspaces');
 	}
 }
-
-
-console.log(await listWorkspaces());
