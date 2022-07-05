@@ -62,6 +62,7 @@ jobs:
         # - without requiring postinstall scripts from dependencies to run
       - name: build
         run: |
+          npm ci --ignore-scripts
           node './.github/bin/modified-workspaces/log-modified-workspaces.mjs'
 
   #     - name: lint
