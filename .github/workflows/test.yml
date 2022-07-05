@@ -42,7 +42,7 @@ jobs:
           echo 'dist-restore-keys<<EOF' >> $GITHUB_ENV
           echo "$(git --no-pager log -9 --skip 1 --pretty=format:'test-dist-${{ matrix.node }}-${{ matrix.os }}--%H')" >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
-          echo "commit-sha=$(echo ${GITHUB_SHA})" >> $GITHUB_ENV
+          echo "commit-sha=$(git --no-pager log -1 --pretty=format:'%H')" >> $GITHUB_ENV
 
       - name: fetch previous build artifacts
         uses: actions/cache@v3.0.3
@@ -95,7 +95,7 @@ jobs:
         # must be the last step
       - name: record current commit
         run: |
-          echo "${GITHUB_SHA}" > .cached-commit
+          echo "$(git --no-pager log -1 --pretty=format:'%H')" > .cached-commit
 
   # Run e2e tests
   test_e2e:
