@@ -8,9 +8,11 @@ export async function lastCachedCommit() {
 		return false;
 	}
 
-	try {
-		return (await fsp.readFile('.cached-commit')).toString().trim();
-	} catch(_) {
+	if (!process.env['commit-sha']) {
 		return false;
 	}
+
+	console.log(`commit sha : "${process.env['commit-sha'].trim()}"`);
+
+	return process.env['commit-sha'].trim();
 }

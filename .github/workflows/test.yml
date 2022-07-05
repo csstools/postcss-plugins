@@ -61,6 +61,8 @@ jobs:
           key: ${{ env.commit-sha }}--test-dist-${{ matrix.node }}-${{ matrix.os }}
           restore-keys: ${{ env.dist-restore-keys }}
 
+      - run: node './.github/bin/modified-workspaces/log-modified-workspaces.mjs'
+
         # Build, lint and PostCSS Tape tests must all work and pass :
         # - with exact dependencies from package-lock.json
         # - without requiring postinstall scripts from dependencies to run
