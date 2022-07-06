@@ -1,6 +1,13 @@
 import { listModifiedWorkspaces } from "./modified-workspaces.mjs";
 
 const modifiedWorkspaces = await listModifiedWorkspaces();
+if (process.env.VERBOSE) {
+	console.log('all', modifiedWorkspaces.all);
+	console.log('nothing', modifiedWorkspaces.nothing);
+	console.log('modified length', modifiedWorkspaces.modified.length);
+	console.log(modifiedWorkspaces.modified.map((x) => x.name));
+}
+
 if (modifiedWorkspaces.all) {
 	// root package.json will take over.
 	process.stdout.write(``);

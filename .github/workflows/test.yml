@@ -67,6 +67,7 @@ jobs:
       - name: build
         run: |
           npm ci --ignore-scripts
+          VERBOSE=true node './.github/bin/modified-workspaces/log-modified-workspaces.mjs'
           npm run build --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
 
       - name: lint
