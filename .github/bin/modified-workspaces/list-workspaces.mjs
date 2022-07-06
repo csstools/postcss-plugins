@@ -1,4 +1,5 @@
 import path from 'path';
+import posixPath from 'path/posix';
 import { promises as fsp } from 'fs';
 import glob from 'glob';
 import { toposort } from './toposort.mjs';
@@ -10,11 +11,12 @@ export async function listWorkspaces() {
 
 		if (process.env.VERBOSE) {
 			console.log('root', rootPackageJSON.name);
+			console.log('declared workspaces', rootPackageJSON.workspaces);
 		}
 
 		const packages = new Set();
 		workspaces.forEach((workspace) => {
-			glob.sync(path.join(workspace, 'package.json')).forEach((packageJSONPath) => {
+			glob.sync(posixPath.join(workspace, 'package.json')).forEach((packageJSONPath) => {
 				if (process.env.VERBOSE) {
 					console.log('globbed', packageJSONPath);
 				}
