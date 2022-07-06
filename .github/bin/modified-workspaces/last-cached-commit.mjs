@@ -8,9 +8,12 @@ export async function lastCachedCommit() {
 		return false;
 	}
 
-	if (!process.env['commit-sha']) {
+	try {
+		return (await fsp.readFile('.cached-commit')).toString().trim();
+	} catch(err) {
+		if (process.env.VERBOSE) {
+			console.log(err);
+		}
 		return false;
 	}
-
-	return process.env['commit-sha'].trim();
 }
