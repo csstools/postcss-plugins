@@ -64,7 +64,7 @@ jobs:
           echo "$(git --no-pager log -9 --skip 1 --no-merges --pretty=format:'%H--test-dist-${{ matrix.node }}-${{ matrix.os }}')" >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
           echo "COMMIT_SHA=$(git --no-pager log -1 --no-merges --pretty=format:'%H')" >> $GITHUB_ENV
-          echo "BUILD_AND_TEST_ALL_PACKAGES=$(echo ${{ github.event.inputs.run_index }})"
+          echo "BUILD_AND_TEST_ALL_PACKAGES=$(echo ${{ github.event.inputs.run_index }})" >> $GITHUB_ENV
 
       - name: previous build artifacts cache
         uses: actions/cache@v3.0.3
@@ -81,7 +81,7 @@ jobs:
 
       - name: determine modified workspaces
         run: |
-          echo "MODIFIED_WORKSPACES=$(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')"
+          echo "MODIFIED_WORKSPACES=$(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')" >> $GITHUB_ENV
 
         # Build, lint and PostCSS Tape tests must all work and pass :
         # - with exact dependencies from package-lock.json
