@@ -75,15 +75,15 @@ jobs:
         run: |
           npm ci --ignore-scripts
           echo "MODIFIED_WORKSPACES=$(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')" >> $GITHUB_ENV
-          npm run build --if-present "${{ env.MODIFIED_WORKSPACES }}"
+          npm run build
 
       - name: lint
-        run: npm run lint --if-present "${{ env.MODIFIED_WORKSPACES }}"
+        run: npm run lint --if-present ${{ env.MODIFIED_WORKSPACES }}
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # Basic tests
       - name: test
-        run: npm run test --if-present "${{ env.MODIFIED_WORKSPACES }}"
+        run: npm run test --if-present ${{ env.MODIFIED_WORKSPACES }}
         env:
           ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.is_base_node_version }}
           ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.is_base_os_version }}
@@ -93,14 +93,14 @@ jobs:
       - name: test:cli
         run: |
           npm install --ignore-scripts
-          npm run test:cli --if-present "${{ env.MODIFIED_WORKSPACES }}"
+          npm run test:cli --if-present ${{ env.MODIFIED_WORKSPACES }}
 
         # Browser Tests
         # running "npm ci" again, but allowing scripts so that Chrome is installed
       - name: test:browser
         run: |
           npm ci
-          npm run test:browser --if-present "${{ env.MODIFIED_WORKSPACES }}"
+          npm run test:browser --if-present ${{ env.MODIFIED_WORKSPACES }}
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # Webpack compatibility
@@ -126,7 +126,7 @@ jobs:
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
       - name: test:deno
-        run: npm run test:deno --if-present "${{ env.MODIFIED_WORKSPACES }}"
+        run: npm run test:deno --if-present ${{ env.MODIFIED_WORKSPACES }}
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # record the current commit for the cache at the end of the job
