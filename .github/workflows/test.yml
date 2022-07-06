@@ -4,6 +4,12 @@ on:
     branches:
     - 'main'
   pull_request:
+  workflow_dispatch:
+    inputs:
+      build_and_test_all_packages:
+        type: boolean
+        description: Build and test all packages
+        required: true
 
 concurrency:
   group: branch-node-${{ github.ref }}
@@ -47,6 +53,7 @@ jobs:
           echo "$(git --no-pager log -9 --skip 1 --no-merges --pretty=format:'%H--test-dist-${{ matrix.node }}-${{ matrix.os }}')" >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
           echo "commit-sha=$(git --no-pager log -1 --no-merges --pretty=format:'%H')" >> $GITHUB_ENV
+          echo "build-and-test-all-packages=$(echo ${{ github.event.inputs.run_index }})"
 
       - name: fetch previous build artifacts
         uses: actions/cache@v3.0.3

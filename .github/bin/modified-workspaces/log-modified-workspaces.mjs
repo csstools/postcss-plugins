@@ -2,6 +2,7 @@ import { listModifiedWorkspaces } from "./modified-workspaces.mjs";
 
 const modifiedWorkspaces = await listModifiedWorkspaces();
 if (process.env.VERBOSE) {
+	console.log('build-and-test-all-packages', JSON.stringify(process.env['build-and-test-all-packages']));
 	console.log('all', modifiedWorkspaces.all);
 	console.log('nothing', modifiedWorkspaces.nothing);
 	console.log('modified length', modifiedWorkspaces.modified.length);
@@ -10,7 +11,7 @@ if (process.env.VERBOSE) {
 
 if (modifiedWorkspaces.all) {
 	// root package.json will take over.
-	process.stdout.write(``);
+	process.stdout.write('');
 	process.exit(0);
 }
 
