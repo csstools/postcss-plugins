@@ -8,6 +8,11 @@ const privateRootDependencies = [
 
 export async function listModifiedWorkspaces() {
 	const workspaces = await listWorkspaces();
+
+	if (process.env.VERBOSE) {
+		console.log('workspaces', workspaces.filter((workspace) => modifiedWorkspaces.has(workspace.name)));
+	}
+
 	const since = await lastCachedCommit();
 	if (!since) {
 		// we have no previous commit to compare with
