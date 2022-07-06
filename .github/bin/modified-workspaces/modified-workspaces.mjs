@@ -7,6 +7,16 @@ const privateRootDependencies = [
 ];
 
 export async function listModifiedWorkspaces() {
+	if (process.env['build-and-test-all-packages']) {
+		// forcibly re-build and test everything.
+		return {
+			nothing: false,
+			all: true,
+			forced: true,
+			modified: [],
+		};
+	}
+
 	const workspaces = await listWorkspaces();
 
 	const since = await lastCachedCommit();

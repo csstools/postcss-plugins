@@ -2,6 +2,8 @@ import { listModifiedWorkspaces } from './modified-workspaces.mjs';
 import { promises as fsp } from 'fs';
 
 const modifiedWorkspaces = await listModifiedWorkspaces();
+
+// Summary
 if (process.env.GITHUB_STEP_SUMMARY) {
 	let summary = '';
 	if (modifiedWorkspaces.nothing) {
@@ -10,23 +12,18 @@ if (process.env.GITHUB_STEP_SUMMARY) {
 - no changes detected
 - tasks need something to do
 - requesting a build and test for \`@csstools/postcss-tape\`
-
-build-and-test-all-packages: ${JSON.stringify(process.env['build-and-test-all-packages'])}
 `;
 	} else if (modifiedWorkspaces.all) {
 		summary = `## Modified workspaces
 
 - all workspaces are affected
 - rebuilding and testing every workspace
-
-build-and-test-all-packages: ${JSON.stringify(process.env['build-and-test-all-packages'])}
+- forced: ${modifiedWorkspaces.forced ? 'true' : 'false'}
 `;
 	} else if (modifiedWorkspaces.modified && modifiedWorkspaces.modified.length) {
 		summary = `## Modified workspaces
 
 - ${modifiedWorkspaces.modified.map((x) => '`' + x.name + '`').join('\n- ')}
-
-build-and-test-all-packages: ${JSON.stringify(process.env['build-and-test-all-packages'])}
 `;
 	}
 
@@ -36,6 +33,7 @@ build-and-test-all-packages: ${JSON.stringify(process.env['build-and-test-all-pa
 	);
 }
 
+// Output modified workspaces
 if (modifiedWorkspaces.all) {
 	// root package.json will take over.
 	process.stdout.write('');
