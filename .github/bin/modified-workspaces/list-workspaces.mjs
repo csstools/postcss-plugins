@@ -1,4 +1,3 @@
-import path from 'path';
 import posixPath from 'path/posix';
 import { promises as fsp } from 'fs';
 import glob from 'glob';
@@ -9,17 +8,12 @@ export async function listWorkspaces() {
 		const rootPackageJSON = JSON.parse(await fsp.readFile('package.json'));
 		const workspaces = rootPackageJSON.workspaces;
 
-		if (process.env.VERBOSE) {
-			console.log('root', rootPackageJSON.name);
-			console.log('declared workspaces', rootPackageJSON.workspaces);
-		}
-
 		const packages = new Set();
 		workspaces.forEach((workspace) => {
+			// minimatch glob v5 does not allow backslashes in paths and therefor doesn't work correctly on windows.
+			// is it absurd that a package mainly used to match paths is using backslashes as an escape character.
+			// only way around it is to join as posix before globbing.
 			glob.sync(posixPath.join(workspace, 'package.json')).forEach((packageJSONPath) => {
-				if (process.env.VERBOSE) {
-					console.log('globbed', packageJSONPath);
-				}
 
 				if (packages.has(packageJSONPath)) {
 					return;
@@ -30,10 +24,6 @@ export async function listWorkspaces() {
 		});
 
 		const result = [];
-
-		if (process.env.VERBOSE) {
-			console.log('packages', Array.from(packages));
-		}
 
 		for (const packageJSONPath of Array.from(packages)) {
 			const packageJSON = JSON.parse(await fsp.readFile(packageJSONPath));

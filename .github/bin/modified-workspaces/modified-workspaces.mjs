@@ -9,10 +9,6 @@ const privateRootDependencies = [
 export async function listModifiedWorkspaces() {
 	const workspaces = await listWorkspaces();
 
-	if (process.env.VERBOSE) {
-		console.log('workspaces', workspaces.map((workspace) => workspace.name));
-	}
-
 	const since = await lastCachedCommit();
 	if (!since) {
 		// we have no previous commit to compare with
@@ -20,7 +16,7 @@ export async function listModifiedWorkspaces() {
 		return {
 			nothing: false,
 			all: true,
-			modified: workspaces
+			modified: workspaces,
 		};
 	}
 
@@ -29,7 +25,7 @@ export async function listModifiedWorkspaces() {
 		return {
 			nothing: true,
 			all: false,
-			modified: []
+			modified: [],
 		};
 	}
 
@@ -43,7 +39,7 @@ export async function listModifiedWorkspaces() {
 				return {
 					nothing: false,
 					all: true,
-					modified: workspaces
+					modified: workspaces,
 				};
 			}
 		}
@@ -63,7 +59,7 @@ export async function listModifiedWorkspaces() {
 			return {
 				nothing: false,
 				all: true,
-				modified: workspaces
+				modified: workspaces,
 			};
 		}
 	}
@@ -79,6 +75,6 @@ export async function listModifiedWorkspaces() {
 	return {
 		nothing: false,
 		all: false,
-		modified: workspaces.filter((workspace) => modifiedWorkspaces.has(workspace.name))
+		modified: workspaces.filter((workspace) => modifiedWorkspaces.has(workspace.name)),
 	};
 }
