@@ -47,6 +47,9 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - name: npm ci
+        run: npm ci --ignore-scripts
+
       - name: env
         run: |
           echo 'dist-restore-keys<<EOF' >> $GITHUB_ENV
@@ -54,6 +57,7 @@ jobs:
           echo 'EOF' >> $GITHUB_ENV
           echo "commit-sha=$(git --no-pager log -1 --no-merges --pretty=format:'%H')" >> $GITHUB_ENV
           echo "build-and-test-all-packages=$(echo ${{ github.event.inputs.run_index }})"
+          echo "modified-workspaces=$(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')"
 
       - name: fetch previous build artifacts
         uses: actions/cache@v3.0.3
@@ -74,16 +78,15 @@ jobs:
       - name: build
         run: |
           npm ci --ignore-scripts
-          VERBOSE=true node './.github/bin/modified-workspaces/log-modified-workspaces.mjs'
-          npm run build --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+          npm run build --if-present ${{ env.modified-workspaces }}
 
       - name: lint
-        run: npm run lint --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+        run: npm run lint --if-present ${{ env.modified-workspaces }}
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # Basic tests
       - name: test
-        run: npm run test --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+        run: npm run test --if-present ${{ env.modified-workspaces }}
         env:
           ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.is_base_node_version }}
           ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.is_base_os_version }}
@@ -93,14 +96,14 @@ jobs:
       - name: test:cli
         run: |
           npm install --ignore-scripts
-          npm run test:cli --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+          npm run test:cli --if-present ${{ env.modified-workspaces }}
 
         # Browser Tests
         # running "npm ci" again, but allowing scripts so that Chrome is installed
       - name: test:browser
         run: |
           npm ci
-          npm run test:browser --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+          npm run test:browser --if-present ${{ env.modified-workspaces }}
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # Webpack compatibility
@@ -126,7 +129,7 @@ jobs:
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
       - name: test:deno
-        run: npm run test:deno --if-present $(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')
+        run: npm run test:deno --if-present ${{ env.modified-workspaces }}
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # record the current commit for the cache at the end of the job

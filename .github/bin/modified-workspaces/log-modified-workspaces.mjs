@@ -1,12 +1,39 @@
 import { listModifiedWorkspaces } from './modified-workspaces.mjs';
+import { promises as fsp } from 'fs';
 
 const modifiedWorkspaces = await listModifiedWorkspaces();
-if (process.env.VERBOSE) {
-	console.log('build-and-test-all-packages', JSON.stringify(process.env['build-and-test-all-packages']));
-	console.log('all', modifiedWorkspaces.all);
-	console.log('nothing', modifiedWorkspaces.nothing);
-	console.log('modified length', modifiedWorkspaces.modified.length);
-	console.log(modifiedWorkspaces.modified.map((x) => x.name));
+if (process.env.GITHUB_STEP_SUMMARY) {
+	let summary = '';
+	if (modifiedWorkspaces.nothing) {
+		summary = `## Modified workspaces
+
+- no changes detected
+- tasks need something to do
+- requesting a build and test for \`@csstools/postcss-tape\`
+
+build-and-test-all-packages: ${JSON.stringify(process.env['build-and-test-all-packages'])}
+`;
+	} else if (modifiedWorkspaces.all) {
+		summary = `## Modified workspaces
+
+- all workspaces are affected
+- rebuilding and testing every workspace
+
+build-and-test-all-packages: ${JSON.stringify(process.env['build-and-test-all-packages'])}
+`;
+	} else if (modifiedWorkspaces.modified && modifiedWorkspaces.modified.length) {
+		summary = `## Modified workspaces
+
+- ${modifiedWorkspaces.modified.map((x) => '`' + x.name + '`').join('\n- ')}
+
+build-and-test-all-packages: ${JSON.stringify(process.env['build-and-test-all-packages'])}
+`;
+	}
+
+	await fsp.appendFile(
+		process.env.GITHUB_STEP_SUMMARY,
+		summary,
+	);
 }
 
 if (modifiedWorkspaces.all) {
