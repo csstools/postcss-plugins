@@ -16,6 +16,7 @@ export async function listModifiedFilesSince(refCommit) {
 		if (process.env.VERBOSE) {
 			console.log(result);
 			console.log(refCommit);
+			console.log(result.stdout.split('\n').filter((x) => !!x));
 		}
 
 		const list = result.stdout.split('\n').filter((x) => !!x);
