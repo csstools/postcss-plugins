@@ -47,9 +47,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: npm ci
-        run: npm ci --ignore-scripts
-
       - name: env
         run: |
           echo 'DIST_RESTORE_KEYS<<EOF' >> $GITHUB_ENV
@@ -71,15 +68,13 @@ jobs:
           key: ${{ env.COMMIT_SHA }}--test-dist-${{ matrix.node }}-${{ matrix.os }}
           restore-keys: ${{ env.DIST_RESTORE_KEYS }}
 
-      - name: determine modified workspaces
-        run: |
-          echo "MODIFIED_WORKSPACES=$(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')" >> $GITHUB_ENV
-
         # Build, lint and PostCSS Tape tests must all work and pass :
         # - with exact dependencies from package-lock.json
         # - without requiring postinstall scripts from dependencies to run
       - name: build
         run: |
+          npm ci --ignore-scripts
+          echo "MODIFIED_WORKSPACES=$(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')" >> $GITHUB_ENV
           npm run build --if-present "${{ env.MODIFIED_WORKSPACES }}"
 
       - name: lint
