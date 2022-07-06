@@ -33,6 +33,11 @@ if (process.env.GITHUB_STEP_SUMMARY) {
 	);
 }
 
+if (parseInt('1', 10) === 1) {
+	process.stdout.write('--workspace=@csstools/postcss-tape');
+	process.exit(0);
+}
+
 // Output modified workspaces
 if (modifiedWorkspaces.all) {
 	// root package.json will take over.
