@@ -48,6 +48,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: node_modules cache
+        id: node-modules-cache
         uses: actions/cache@v3.0.3
         with:
           path: |
@@ -57,6 +58,7 @@ jobs:
 
       - name: npm ci
         run: npm ci --ignore-scripts
+        if: ${{ steps.node-modules-cache.outputs.cache-hit == 'false' }}
 
       - name: env
         run: |
@@ -88,8 +90,6 @@ jobs:
         # - without requiring postinstall scripts from dependencies to run
       - name: build
         run: |
-          npm ci --ignore-scripts
-          echo ${{ env.MODIFIED_WORKSPACES }}
           npm run build --if-present "${{ env.MODIFIED_WORKSPACES }}"
 
       - name: lint
