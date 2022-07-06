@@ -7,7 +7,7 @@ const privateRootDependencies = [
 ];
 
 export async function listModifiedWorkspaces() {
-	if (process.env['build-and-test-all-packages']) {
+	if (process.env.BUILD_AND_TEST_ALL_PACKAGES) {
 		// forcibly re-build and test everything.
 		return {
 			nothing: false,
