@@ -8,9 +8,17 @@ export async function listWorkspaces() {
 		const rootPackageJSON = JSON.parse(await fsp.readFile('package.json'));
 		const workspaces = rootPackageJSON.workspaces;
 
+		if (process.env.VERBOSE) {
+			console.log('root', rootPackageJSON.name);
+		}
+
 		const packages = new Set();
 		workspaces.forEach((workspace) => {
 			glob.sync(path.join(workspace, 'package.json')).forEach((packageJSONPath) => {
+				if (process.env.VERBOSE) {
+					console.log('globbed', packageJSONPath);
+				}
+
 				if (packages.has(packageJSONPath)) {
 					return;
 				}
@@ -20,6 +28,10 @@ export async function listWorkspaces() {
 		});
 
 		const result = [];
+
+		if (process.env.VERBOSE) {
+			console.log('packages', Array.from(packages));
+		}
 
 		for (const packageJSONPath of Array.from(packages)) {
 			const packageJSON = JSON.parse(await fsp.readFile(packageJSONPath));

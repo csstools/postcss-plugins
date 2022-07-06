@@ -11,7 +11,9 @@ if (process.env.VERBOSE) {
 
 if (modifiedWorkspaces.all) {
 	// root package.json will take over.
-	process.stdout.write('');
+	// process.stdout.write('');
+	// process.exit(0);
+	process.stdout.write(`--workspace=@csstools/selector-specificity`);
 	process.exit(0);
 }
 
@@ -22,5 +24,8 @@ if (modifiedWorkspaces.nothing) {
 	process.exit(0);
 }
 
-process.stdout.write(`--workspace=${modifiedWorkspaces.modified.map((x) => x.name).join(' --workspace=')}`);
+// process.stdout.write(`--workspace=${modifiedWorkspaces.modified.map((x) => x.name).join(' --workspace=')}`);
+// process.exit(0);
+
+process.stdout.write(`--workspace=@csstools/selector-specificity`);
 process.exit(0);

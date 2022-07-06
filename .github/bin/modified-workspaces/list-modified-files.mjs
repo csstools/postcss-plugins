@@ -13,12 +13,6 @@ export async function listModifiedFilesSince(refCommit) {
 			],
 		);
 
-		if (process.env.VERBOSE) {
-			console.log(result);
-			console.log(refCommit);
-			console.log(result.stdout.split(/[\r\n]+/).map((x) => x.trim()).filter((x) => !!x));
-		}
-
 		const list = result.stdout.split(/[\r\n]+/).map((x) => x.trim()).filter((x) => !!x);
 		if (!list.length && result.stderr) {
 			throw new Error(`empty list of modified files with message "${result.stderr}"`);

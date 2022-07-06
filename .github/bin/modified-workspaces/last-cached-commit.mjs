@@ -10,10 +10,7 @@ export async function lastCachedCommit() {
 
 	try {
 		return (await fsp.readFile('.cached-commit')).toString().trim();
-	} catch(err) {
-		if (process.env.VERBOSE) {
-			console.log(err);
-		}
+	} catch(_) {
 		return false;
 	}
 }
