@@ -10,7 +10,7 @@ export async function listModifiedWorkspaces() {
 	const workspaces = await listWorkspaces();
 
 	if (process.env.VERBOSE) {
-		console.log('workspaces', workspaces.filter((workspace) => modifiedWorkspaces.has(workspace.name)));
+		console.log('workspaces', workspaces.map((workspace) => workspace.name));
 	}
 
 	const since = await lastCachedCommit();
