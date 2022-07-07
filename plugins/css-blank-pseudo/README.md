@@ -12,7 +12,7 @@ input:blank {
 
 /* becomes */
 
-input[blank] {
+input[blank].js-blank-pseudo, .js-blank-pseudo input[blank] {
 	background-color: yellow;
 }
 input:blank {
@@ -63,7 +63,7 @@ input:blank {
 
 /* becomes */
 
-input[blank] {
+input[blank].js-blank-pseudo, .js-blank-pseudo input[blank] {
 	background-color: yellow;
 }
 ```
