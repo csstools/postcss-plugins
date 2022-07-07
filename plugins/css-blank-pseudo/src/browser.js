@@ -118,8 +118,8 @@ export default function cssBlankPseudoInit(opts) {
 	const handler = generateHandler(options.replaceWith);
 	const bindEvents = () => {
 		if (document.body) {
-			document.body.addEventListener( 'change', handler );
-			document.body.addEventListener( 'input', handler );
+			document.body.addEventListener('change', handler);
+			document.body.addEventListener('input', handler);
 		}
 	};
 	const updateAllCandidates = () => {
