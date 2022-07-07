@@ -1,4 +1,4 @@
-[blank] {
+[blank].js-blank-pseudo, .js-blank-pseudo [blank] {
 	order: 1;
 }
 
@@ -6,19 +6,34 @@
 	order: 1;
 }
 
-[blank],[blank] test,
-test [blank],
-test test[blank],
-test [blank] test,
-test test[blank] test,
-test [blank] [blank] test,
-test :matches([blank]) test,
-test :matches([blank] test) test,
-test :matches(test [blank]) test,
-test :matches(test test[blank]) test,
-test :matches(test [blank] test) test,
-test :matches(test test[blank] test) test,
-test :matches(test [blank] [blank] test) test {
+[blank].js-blank-pseudo,
+.js-blank-pseudo [blank],
+[blank].js-blank-pseudo test,
+.js-blank-pseudo [blank] test,
+test.js-blank-pseudo [blank],
+.js-blank-pseudo test [blank],
+test.js-blank-pseudo test[blank],
+.js-blank-pseudo test test[blank],
+test.js-blank-pseudo [blank] test,
+.js-blank-pseudo test [blank] test,
+test.js-blank-pseudo test[blank] test,
+.js-blank-pseudo test test[blank] test,
+test.js-blank-pseudo [blank] [blank] test,
+.js-blank-pseudo test [blank] [blank] test,
+test.js-blank-pseudo :matches([blank]) test,
+.js-blank-pseudo test :matches([blank]) test,
+test.js-blank-pseudo :matches([blank] test) test,
+.js-blank-pseudo test :matches([blank] test) test,
+test.js-blank-pseudo :matches(test [blank]) test,
+.js-blank-pseudo test :matches(test [blank]) test,
+test.js-blank-pseudo :matches(test test[blank]) test,
+.js-blank-pseudo test :matches(test test[blank]) test,
+test.js-blank-pseudo :matches(test [blank] test) test,
+.js-blank-pseudo test :matches(test [blank] test) test,
+test.js-blank-pseudo :matches(test test[blank] test) test,
+.js-blank-pseudo test :matches(test test[blank] test) test,
+test.js-blank-pseudo :matches(test [blank] [blank] test) test,
+.js-blank-pseudo test :matches(test [blank] [blank] test) test {
 	order: 2;
 }
 
@@ -50,7 +65,7 @@ test :matches(test :blank :blank test) test {
 	order: 4;
 }
 
-test:not([blank]) {
+test:not([blank]).js-blank-pseudo, .js-blank-pseudo test:not([blank]) {
 	order: 5;
 }
 
@@ -58,7 +73,7 @@ test:not(:blank) {
 	order: 5;
 }
 
-uppercase [blank] {
+uppercase.js-blank-pseudo [blank], .js-blank-pseudo uppercase [blank] {
 	order: 6;
 }
 
