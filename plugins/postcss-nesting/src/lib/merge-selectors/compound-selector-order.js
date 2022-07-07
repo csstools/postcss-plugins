@@ -33,7 +33,7 @@ export function sortCompoundSelectorsInsideComplexSelector(node) {
 			continue;
 		}
 
-		if (node.nodes[i].type === 'tag' && currentCompoundSelector.find(x => x.type === 'tag') ) {
+		if (node.nodes[i].type === 'tag' && currentCompoundSelector.find(x => x.type === 'tag')) {
 			const isPseudoClone = isPseudo.clone();
 			const child = node.nodes[i];
 			child.replaceWith(isPseudoClone);

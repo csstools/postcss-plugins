@@ -54,7 +54,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			decl.before( newDeclaration );
+			decl.before(newDeclaration);
 
 			if (!options.preserve) {
 				decl.remove();

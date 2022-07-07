@@ -58,7 +58,7 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 			return true;
 		}
 
-		if ( minimumVendorImplementations <= feature.vendors_implementations ) {
+		if (minimumVendorImplementations <= feature.vendors_implementations) {
 			return true;
 		}
 

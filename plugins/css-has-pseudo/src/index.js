@@ -95,7 +95,7 @@ const getEscapedCss = (/** @type {string} */ value) => {
 				switch (char) {
 					case '%':
 						flushEncoded();
-						encodedOut += ( '\\' + char );
+						encodedOut += ('\\' + char);
 						continue;
 					case '\\':
 						encodedCurrent += char;
@@ -132,7 +132,7 @@ const getEscapedCss = (/** @type {string} */ value) => {
 			case '(':
 			case ')':
 				flushCurrent();
-				out += ( '\\' + char );
+				out += ('\\' + char);
 				continue;
 			case '\\':
 				current += char;

@@ -18,7 +18,7 @@ function extractTokens(node: StyleDictionaryV3TokenGroup, path: Array<string>, f
 			if (typeof child['value'] !== 'undefined') {
 				const token = extractStyleDictionaryV3Token(child, key, path, filePath);
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				result.set(token.metadata!.path.join('.'), token );
+				result.set(token.metadata!.path.join('.'), token);
 				continue;
 			}
 
