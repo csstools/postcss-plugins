@@ -1,7 +1,6 @@
 /* global document,window,self,MutationObserver */
 import isValidReplacement from './is-valid-replacement.mjs';
 
-const supportsClassList = ('classList' in document.documentElement);
 const CSS_CLASS_LOADED = 'js-blank-pseudo';
 
 // form control elements selector
@@ -33,27 +32,8 @@ function generateHandler(replaceWith) {
 
 	if (replaceWith[0] === '.') {
 		selector = replaceWith.slice(1);
-		remove = (el) => {
-			if (supportsClassList) {
-				el.classList.remove(selector);
-			} else {
-				const classes = el.className.split(/\s+/);
-				const index = classes.indexOf(selector);
-
-				if (index > -1) {
-					classes.splice(index, 1);
-				}
-
-				el.className = classes.join(' ');
-			}
-		};
-		add = (el) => {
-			if (supportsClassList) {
-				el.classList.add(selector);
-			} else {
-				el.className += ` ${selector}`;
-			}
-		};
+		remove = (el) => el.classList.remove(selector);
+		add = (el) => el.classList.add(selector);
 	} else {
 		// A bit naive
 		selector = replaceWith.slice(1, -1);

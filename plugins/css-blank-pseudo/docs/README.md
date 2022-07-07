@@ -122,6 +122,9 @@ cssBlankPseudoInit({ replaceWith: '.css-blank' });
 ```
 
 This option should be used if it was changed at PostCSS configuration level.
+Please note that using a class, leverages `classList` under the hood which 
+might  not be supported on some old browsers such as IE9, so you may need 
+to polyfill `classList` in those cases.
 
 <linkList>
 [Selectors Level 4]: <specUrl>
