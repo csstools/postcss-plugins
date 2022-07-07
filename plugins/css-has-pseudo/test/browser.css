@@ -182,3 +182,7 @@ main {
 #nested_main :has(> :has(#c)) {
 	color: red;
 }
+
+#pseudo_main :has(> #b)::before {
+	color: green;
+}

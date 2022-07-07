@@ -38,9 +38,6 @@ postcssTape(plugin)({
 	},
 	'browser': {
 		message: 'prepare CSS for chrome test',
-		options: {
-			preserve: false
-		}
 	},
 	'plugin-order-logical:before': {
 		message: 'works with other plugins that modify selectors',

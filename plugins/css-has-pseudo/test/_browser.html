@@ -10,7 +10,7 @@
 	<!-- This is the real test stylesheet and has correct CORS attributes and http headers -->
 	<link rel="stylesheet" href="http://localhost:8081/test/browser.expect.css" crossorigin="anonymous">
 	<script src="http://localhost:8082/dist/browser-global.js"></script>
-	<script>cssHasPseudo(document, { observedAttributes: ['attrname', 'a_test_attr', 'c_test_attr'], debug: false, hover: true, forcePolyfill: true });</script>
+	<script>cssHasPseudo(document, { observedAttributes: ['attrname', 'a_test_attr', 'c_test_attr'], debug: false, hover: true, forcePolyfill: window.location.hash === '#force-polyfill' });</script>
 </head>
 <body>
 	<the-fixture id="fixture"></the-fixture>
@@ -28,22 +28,24 @@
 		}
 
 		self.runTest = async function runTest() {
-			const nestedResult = await testNestedHas();
 			const adjacentPositionResult = await testAdjacentPosition();
 			const hasWithPseudoClassesResult = await testHasWithPseudoClasses();
 			const invalidationResult = await testInvalidation();
+			const nestedResult = await testNestedHas();
 			const parentPositionResult = await testParentPosition();
+			const pseudoResult = await testPseudos();
 			const specificityResult = await testSpecificity();
-			const visitednessResult = await testVisitedness()
+			const visitednessResult = await testVisitedness();
 
 			return (
 				adjacentPositionResult &&
 				hasWithPseudoClassesResult &&
 				invalidationResult &&
+				nestedResult &&
 				parentPositionResult &&
+				pseudoResult &&
 				specificityResult &&
-				visitednessResult &&
-				nestedResult
+				visitednessResult
 			);
 		}
 
@@ -1180,6 +1182,34 @@
 
 			await rafP(() => {
 				testColor(document.getElementById('a'), red);
+			});
+
+			return true;
+		}
+
+		async function testPseudos() {
+			// https://github.com/web-platform-tests/wpt/blob/master/css/selectors/invalidation/has-pseudo-class.html
+
+			fixture.innerHTML = `
+				<main id="pseudo_main">
+					<div id="a">
+						<div id="b"></div>
+					</div>
+				</main>
+			`;
+
+			const red = 'rgb(255, 0, 0)';
+			var green = 'rgb(0, 128, 0)';
+
+			function testColor(el, pseudo, color) {
+				var actual = getComputedStyle(el, pseudo).color;
+				if (actual !== color) {
+					throw new Error('pseudo elements after :has should work : div#' + el.id + '.color; expected ' + color + ' but got ' + actual);
+				}
+			}
+
+			await rafP(() => {
+				testColor(document.getElementById('a'), '::before', green);
 			});
 
 			return true;
