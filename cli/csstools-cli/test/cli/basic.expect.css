@@ -1,4 +1,4 @@
-[csstools-has-1a-2u-33-33-1m-2w-2p-37-14-1a-2q-2p-3e-15]:not(.does-not-exist) {
+.js-has-pseudo [csstools-has-1a-2u-33-33-1m-2w-2p-37-14-1a-2q-2p-3e-15]:not(.does-not-exist) {
 	color: red;
 }
 .foo:has(.baz) {
