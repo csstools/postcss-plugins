@@ -1,6 +1,8 @@
 /* global document,window,self,MutationObserver */
 import isValidReplacement from './is-valid-replacement.mjs';
 
+const supportsClassList = ('classList' in document.documentElement);
+
 // form control elements selector
 function isFormControlElement(element) {
 	if (element.nodeName === 'INPUT' || element.nodeName === 'SELECT' || element.nodeName === 'TEXTAREA') {
@@ -30,8 +32,27 @@ function generateHandler(replaceWith) {
 
 	if (replaceWith[0] === '.') {
 		selector = replaceWith.slice(1);
-		remove = (el) => el.classList.remove(selector);
-		add = (el) => el.classList.add(selector);
+		remove = (el) => {
+			if (supportsClassList) {
+				el.classList.remove(selector);
+			} else {
+				const classes = el.className.split(/\s+/);
+				const index = classes.indexOf(selector);
+
+				if (index > -1) {
+					classes.splice(index, 1);
+				}
+
+				el.className = classes.join(' ');
+			}
+		};
+		add = (el) => {
+			if (supportsClassList) {
+				el.classList.add(selector);
+			} else {
+				el.className += ` ${selector}`;
+			}
+		};
 	} else {
 		// A bit naive
 		selector = replaceWith.slice(1, -1);
