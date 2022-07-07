@@ -527,7 +527,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
 }
 
-.test-blank-pseudo-class[blank]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-blank-pseudo-class[blank].js-blank-pseudo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), .js-blank-pseudo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-blank-pseudo-class[blank] {
 	background-color: yellow;
 }
 

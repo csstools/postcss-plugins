@@ -284,7 +284,7 @@
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
 }
 
-.test-blank-pseudo-class[blank] {
+.test-blank-pseudo-class[blank].js-blank-pseudo, .js-blank-pseudo .test-blank-pseudo-class[blank] {
 	background-color: yellow;
 }
 

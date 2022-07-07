@@ -4,7 +4,7 @@ textarea {
 	background-color: rgb(255, 192, 203);
 }
 
-[blank] {
+[blank].js-blank-pseudo, .js-blank-pseudo [blank] {
 	background-color: rgb(128, 0, 128);
 }
 
