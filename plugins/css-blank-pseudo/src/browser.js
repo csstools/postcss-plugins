@@ -180,6 +180,7 @@ export default function cssBlankPseudoInit(opts) {
 		}).observe(document, { childList: true, subtree: true });
 	} else {
 		const handleOnLoad = () => {
+			document.documentElement.className = document.documentElement.className + ' js-blank-pseudo';
 			updateAllCandidates();
 		};
 
