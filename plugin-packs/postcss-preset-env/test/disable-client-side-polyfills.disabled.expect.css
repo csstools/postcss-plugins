@@ -1,4 +1,4 @@
-input[blank] {
+input[blank].js-blank-pseudo, .js-blank-pseudo input[blank] {
 	order: 1;
 }
 
