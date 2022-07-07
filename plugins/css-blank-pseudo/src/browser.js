@@ -2,6 +2,7 @@
 import isValidReplacement from './is-valid-replacement.mjs';
 
 const supportsClassList = ('classList' in document.documentElement);
+const CSS_CLASS_LOADED = 'js-blank-pseudo';
 
 // form control elements selector
 function isFormControlElement(element) {
@@ -180,8 +181,10 @@ export default function cssBlankPseudoInit(opts) {
 		}).observe(document, { childList: true, subtree: true });
 	} else {
 		const handleOnLoad = () => {
-			document.documentElement.className = document.documentElement.className + ' js-blank-pseudo';
-			updateAllCandidates();
+			if (document.documentElement.className.indexOf(CSS_CLASS_LOADED) === -1) {
+				document.documentElement.className += ` ${CSS_CLASS_LOADED}`;
+				updateAllCandidates();
+			}
 		};
 
 		window.addEventListener('load', handleOnLoad);
