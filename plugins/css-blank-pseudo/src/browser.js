@@ -135,17 +135,25 @@ export default function cssBlankPseudoInit(opts) {
 	} catch (ignoredError) { /* do nothing and continue */ }
 
 	const handler = generateHandler(options.replaceWith);
+	const bindEvents = () => {
+		if (document.body) {
+			document.body.addEventListener( 'change', handler );
+			document.body.addEventListener( 'input', handler );
+		}
+	};
+	const updateAllCandidates = () => {
+		Array.prototype.forEach.call(
+			document.querySelectorAll('input, select, textarea'),
+			node => {
+				handler({ target: node });
+			},
+		);
+	};
 
 	if (document.body) {
-		document.body.addEventListener('change', handler);
-		document.body.addEventListener('input', handler);
+		bindEvents();
 	} else {
-		window.addEventListener('load', () => {
-			if (document.body) {
-				document.body.addEventListener('change', handler);
-				document.body.addEventListener('input', handler);
-			}
-		});
+		window.addEventListener('load', bindEvents);
 	}
 
 	observeValueOfHTMLElement(self.HTMLInputElement, handler);
@@ -154,12 +162,7 @@ export default function cssBlankPseudoInit(opts) {
 	observeSelectedOfHTMLElement(self.HTMLOptionElement, handler);
 
 	// conditionally update all form control elements
-	Array.prototype.forEach.call(
-		document.querySelectorAll('input, select, textarea'),
-		node => {
-			handler({ target: node });
-		},
-	);
+	updateAllCandidates();
 
 	if (typeof self.MutationObserver !== 'undefined') {
 		// conditionally observe added or unobserve removed form control elements
@@ -176,22 +179,11 @@ export default function cssBlankPseudoInit(opts) {
 			});
 		}).observe(document, { childList: true, subtree: true });
 	} else {
-		window.addEventListener('load', () => {
-			Array.prototype.forEach.call(
-				document.querySelectorAll('input, select, textarea'),
-				node => {
-					handler({ target: node });
-				},
-			);
-		});
+		const handleOnLoad = () => {
+			updateAllCandidates();
+		};
 
-		window.addEventListener('DOMContentLoaded', () => {
-			Array.prototype.forEach.call(
-				document.querySelectorAll('input, select, textarea'),
-				node => {
-					handler({ target: node });
-				},
-			);
-		});
+		window.addEventListener('load', handleOnLoad);
+		window.addEventListener('DOMContentLoaded', handleOnLoad);
 	}
 }
