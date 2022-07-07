@@ -15,7 +15,7 @@ export function gradToRad(grad: number): number {
 }
 
 export function radToDeg(rad: number): number {
-	return rad * ( 180 / Math.PI );
+	return rad * (180 / Math.PI);
 }
 
 export function gradToDeg(grad: number): number {
@@ -328,7 +328,7 @@ export function parseNumber(value: string) {
 	let number;
 	let unit = '';
 
-	if (value.toLowerCase() === 'infinity' ) {
+	if (value.toLowerCase() === 'infinity') {
 		number = Infinity;
 	} else if (value.toLowerCase() === '-infinity') {
 		number = Infinity * -1;
