@@ -35,7 +35,7 @@ import { promises as fsp } from 'fs';
 				break;
 
 			default:
-				res.setHeader('Content-type', 'text/plain' );
+				res.setHeader('Content-type', 'text/plain');
 				res.writeHead(404);
 				res.end('Not found');
 				break;
@@ -64,16 +64,17 @@ import { promises as fsp } from 'fs';
 			throw msg;
 		});
 
-		{
-			await page.goto('http://localhost:8080');
-			const result = await page.evaluate(async() => {
-				// eslint-disable-next-line no-undef
-				return await window.runTest();
-			});
-			if (!result) {
-				throw new Error('Test failed, expected "window.runTest()" to return true');
-			}
-		}
+		// Uncomment to verify that the polyfill doesn't break native functionality
+		// {
+		// 	await page.goto('http://localhost:8080');
+		// 	const result = await page.evaluate(async() => {
+		// 		// eslint-disable-next-line no-undef
+		// 		return await window.runTest();
+		// 	});
+		// 	if (!result) {
+		// 		throw new Error('Test failed, expected "window.runTest()" to return true');
+		// 	}
+		// }
 
 		{
 			await page.goto('http://localhost:8080#force-polyfill');
