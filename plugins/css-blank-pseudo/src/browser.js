@@ -137,6 +137,10 @@ export default function cssBlankPseudoInit(opts) {
 		window.addEventListener('load', bindEvents);
 	}
 
+	if (document.documentElement.className.indexOf(CSS_CLASS_LOADED) === -1) {
+		document.documentElement.className += ` ${CSS_CLASS_LOADED}`;
+	}
+
 	observeValueOfHTMLElement(self.HTMLInputElement, handler);
 	observeValueOfHTMLElement(self.HTMLSelectElement, handler);
 	observeValueOfHTMLElement(self.HTMLTextAreaElement, handler);
@@ -160,12 +164,7 @@ export default function cssBlankPseudoInit(opts) {
 			});
 		}).observe(document, { childList: true, subtree: true });
 	} else {
-		const handleOnLoad = () => {
-			if (document.documentElement.className.indexOf(CSS_CLASS_LOADED) === -1) {
-				document.documentElement.className += ` ${CSS_CLASS_LOADED}`;
-				updateAllCandidates();
-			}
-		};
+		const handleOnLoad = () => updateAllCandidates();
 
 		window.addEventListener('load', handleOnLoad);
 		window.addEventListener('DOMContentLoaded', handleOnLoad);
