@@ -39,9 +39,20 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 					return selector;
 				}
 
-				let containsHasPseudo = false;
 				selectorAST.walkPseudos((node) => {
-					containsHasPseudo = containsHasPseudo || (node.value.toLowerCase() === ':has' && node.nodes);
+					let parent = node.parent;
+					let insideHasPseudoClass = false;
+					while (parent) {
+						if (parser.isPseudoClass(parent) && parent.value.toLowerCase() === ':has') {
+							insideHasPseudoClass = true;
+						}
+
+						parent = parent.parent;
+					}
+
+					if (!insideHasPseudoClass) {
+						return;
+					}
 
 					// see : https://bugs.chromium.org/p/chromium/issues/detail?id=669058#c34
 					// When we have ':has(:visited) {...}', the subject elements of the rule
@@ -65,26 +76,97 @@ const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: str
 					}
 				});
 
-				if (!containsHasPseudo) {
-					return selector;
+				selectorAST.walkPseudos((node) => {
+					if (node.value.toLowerCase() !== ':has' || !node.nodes) {
+						return;
+					}
+
+					let container = node.parent ?? node;
+
+					// Split the selector at the pseudo element boundary
+					// - :has(...)::before  ->  :has(...) | ::before
+					// - :has(...) ~ span::before  ->  :has(...) ~ span | ::before
+					if (container !== node) {
+						let sliceIndex = container.nodes.length;
+
+						PSEUDO_ELEMENT_LOOP:
+						for (let i = 0; i < container.nodes.length; i++) {
+							const element = container.nodes[i];
+
+							if (parser.isPseudoElement(element)) {
+								for (let j = i - 1; j >= 0; j--) {
+									if (container.nodes[i].type === 'combinator' || container.nodes[i].type  === 'comment') {
+										continue;
+									}
+
+									sliceIndex = j + 1;
+									break PSEUDO_ELEMENT_LOOP;
+								}
+							}
+						}
+
+						if (sliceIndex < container.nodes.length) {
+							const a = parser.selector({
+								value: '',
+								nodes: [],
+							});
+
+							const aNodes = container.nodes.slice(0, sliceIndex);
+							aNodes.forEach((x) => {
+								delete x.parent;
+								a.append(x);
+							});
+
+							const b = parser.selector({
+								value: '',
+								nodes: [],
+							});
+
+							const bNodes = container.nodes.slice(sliceIndex);
+							bNodes.forEach((x) => {
+								delete x.parent;
+								b.append(x);
+							});
+
+							const newContainer = parser.selector({
+								value: '',
+								nodes: [],
+							});
+
+							newContainer.append(a);
+							newContainer.append(b);
+
+							container.replaceWith(newContainer);
+							container = a;
+						}
+					}
+
+					const encodedSelector = '[' + encodeCSS(container.toString()) + ']';
+					const abcSpecificity = selectorSpecificity(container);
+
+					let encodedSelectorWithSpecificity = encodedSelector;
+					for (let i = 0; i < abcSpecificity.a; i++) {
+						encodedSelectorWithSpecificity += specificityMatchingNameId;
+					}
+					const bSpecificity = Math.max(1, abcSpecificity.b) - 1;
+					for (let i = 0; i < bSpecificity; i++) {
+						encodedSelectorWithSpecificity += specificityMatchingNameClass;
+					}
+					for (let i = 0; i < abcSpecificity.c; i++) {
+						encodedSelectorWithSpecificity += specificityMatchingNameTag;
+					}
+
+					const encodedSelectorAST = parser().astSync(encodedSelectorWithSpecificity);
+
+					container.replaceWith(encodedSelectorAST.nodes[0]);
+				});
+
+				const modifiedSelector = selectorAST.toString();
+				if (modifiedSelector !== selector) {
+					return '.js-has-pseudo ' + modifiedSelector;
 				}
 
-				const encodedSelector = '[' + encodeCSS(selectorAST.toString()) + ']';
-				const abcSpecificity = selectorSpecificity(selectorAST);
-
-				let encodedSelectorWithSpecificity = encodedSelector;
-				for (let i = 0; i < abcSpecificity.a; i++) {
-					encodedSelectorWithSpecificity += specificityMatchingNameId;
-				}
-				const bSpecificity = Math.max(1, abcSpecificity.b) - 1;
-				for (let i = 0; i < bSpecificity; i++) {
-					encodedSelectorWithSpecificity += specificityMatchingNameClass;
-				}
-				for (let i = 0; i < abcSpecificity.c; i++) {
-					encodedSelectorWithSpecificity += specificityMatchingNameTag;
-				}
-
-				return encodedSelectorWithSpecificity;
+				return selector;
 			});
 
 			if (selectors.join(',') === rule.selectors.join(',')) {

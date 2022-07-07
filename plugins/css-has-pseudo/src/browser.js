@@ -4,6 +4,28 @@ import '@mrhenry/core-web/modules/~element-qsa-has.js';
 import extractEncodedSelectors from './encode/extract.mjs';
 import encodeCSS from './encode/encode.mjs';
 
+function hasNativeSupport(document) {
+	try {
+		// Chrome does not support forgiving selector lists in :has()
+		document.querySelector(':has(*, :does-not-exist, > *)');
+		document.querySelector(':has(:has(any))');
+
+		// Safari incorrectly returns the html element with this query
+		if (document.querySelector(':has(:scope *)')) {
+			return false;
+		}
+
+		if (!('CSS' in self) || !('supports' in self.CSS) || !self.CSS.supports(':has(any)')) {
+			return false;
+		}
+
+	} catch (_) {
+		return false;
+	}
+
+	return true;
+}
+
 export default function cssHasPseudo(document, options) {
 	// OPTIONS
 	{
@@ -18,23 +40,7 @@ export default function cssHasPseudo(document, options) {
 			forcePolyfill: (!!options.forcePolyfill) || false,
 		};
 
-		if (!options.forcePolyfill) {
-			try {
-				// Chrome does not support forgiving selector lists in :has()
-				document.querySelector(':has(*, :does-not-exist, > *)');
-
-				// Safari incorrectly returns the html element with this query
-				if (!document.querySelector(':has(:scope *)')) {
-					// Native support detected.
-					// Doing early return.
-					return;
-				}
-
-				// fallthrough to polyfill
-			} catch (_) {
-				// fallthrough to polyfill
-			}
-		}
+		options.mustPolyfill = options.forcePolyfill || !hasNativeSupport(document);
 
 		if (!Array.isArray(options.observedAttributes)) {
 			options.observedAttributes = [];
@@ -56,6 +62,12 @@ export default function cssHasPseudo(document, options) {
 
 	// walk all stylesheets to collect observed css rules
 	[].forEach.call(document.styleSheets, walkStyleSheet);
+	if (!options.mustPolyfill) {
+		// Cleanup of rules will have happened in `walkStyleSheet`
+		// Native support will take over from here
+		return;
+	}
+
 	transformObservedItemsThrottled();
 
 	// observe DOM modifications that affect selectors
@@ -228,10 +240,17 @@ export default function cssHasPseudo(document, options) {
 			// walk a css rule to collect observed css rules
 			[].forEach.call(styleSheet.cssRules || [], (rule) => {
 				if (rule.selectorText) {
+					rule.selectorText = rule.selectorText.replace(/\.js-has-pseudo\s/g, '');
+
 					try {
 						// decode the selector text in all browsers to:
 						const hasSelectors = extractEncodedSelectors(rule.selectorText.toString());
 						if (hasSelectors.length === 0) {
+							return;
+						}
+
+						if (!options.mustPolyfill) {
+							rule.deleteRule();
 							return;
 						}
 

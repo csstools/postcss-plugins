@@ -128,7 +128,7 @@ body:not(:has(:focus)) {
 }
 
 .x:has(> :any-link) {
-	order: 31;
+	order: 31.1;
 }
 
 @supports selector(:has(:focus)) {
@@ -147,4 +147,8 @@ body:not(:has(:focus)) {
 	:has(:focus) {
 		order: 34;
 	}
+}
+
+#pseudo_main :has(> #b)::before:hover::marker {
+	content: 'must preserve entire pseudo element part outside of the encoding';
 }
