@@ -92,17 +92,17 @@ function transformRoundFunction(
 
 		switch (strategy) {
 			case RoundingStrategy.Down:
-				roundedValue = Math.floor( numberA / numberB ) * numberB;
+				roundedValue = Math.floor(numberA / numberB) * numberB;
 				break;
 			case RoundingStrategy.Up:
-				roundedValue = Math.ceil( numberA / numberB ) * numberB;
+				roundedValue = Math.ceil(numberA / numberB) * numberB;
 				break;
 			case RoundingStrategy.ToZero:
-				roundedValue = Math.trunc( numberA / numberB ) * numberB;
+				roundedValue = Math.trunc(numberA / numberB) * numberB;
 				break;
 			case RoundingStrategy.Nearest:
 			default:
-				roundedValue = Math.round( numberA / numberB ) * numberB;
+				roundedValue = Math.round(numberA / numberB) * numberB;
 				break;
 		}
 

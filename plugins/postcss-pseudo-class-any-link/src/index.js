@@ -25,7 +25,7 @@ function creator(opts) {
 			const rawSelector = rule.raws.selector && rule.raws.selector.raw || rule.selector;
 
 			// workaround for https://github.com/postcss/postcss-selector-parser/issues/28#issuecomment-171910556
-			if (rawSelector.endsWith( ':')) {
+			if (rawSelector.endsWith(':')) {
 				return;
 			}
 
