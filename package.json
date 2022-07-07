@@ -26,6 +26,7 @@
 		"@stryker-mutator/core": "^6.0.2",
 		"@typescript-eslint/eslint-plugin": "^5.30.4",
 		"eslint": "^8.18.0",
+		"glob": "^8.0.3",
 		"rollup": "^2.75.7",
 		"rollup-plugin-terser": "^7.0.2",
 		"typescript": "^4.7.4"
@@ -37,6 +38,7 @@
 		"docs": "npm run docs --workspaces --if-present",
 		"lint": "npm run lint --workspaces --if-present && npm run lint:rollup-config && npm run lint:executable-files && npm run lint:licenses",
 		"lint:executable-files": "bash .github/bin/detect-executable-files/detect-executable-files.sh",
+		"lint:glue-scripts": "eslint ./.github/bin --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:licenses": "node .github/bin/license/check-license.mjs",
 		"lint:rollup-config": "eslint ./rollup --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"new-plugin": "node ./.github/bin/new-plugin.mjs",

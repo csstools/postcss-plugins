@@ -8,3 +8,4 @@ reports
 */**/package-lock.json
 !e2e/webpack/bundle-through/package-lock.json
 !sites/*/package-lock.json
+.cached-commit

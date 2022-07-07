@@ -35,14 +35,14 @@ readmeDoc = readmeDoc.replaceAll('<corsWarning>', corsTemplate);
 // Insert "Header" section
 readmeDoc = readmeDoc.replace('<header>', `# <humanReadableName> [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-` + `[<img alt="npm version" src="https://img.shields.io/npm/v/<packageName>.svg" height="20">][npm-url] ` +
+` + '[<img alt="npm version" src="https://img.shields.io/npm/v/<packageName>.svg" height="20">][npm-url] ' +
 `${
 	packageJSONInfo.csstools?.cssdbId ?
-	`[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/<cssdbId>.svg" height="20">][css-url] ` :
-	''
+		'[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/<cssdbId>.svg" height="20">][css-url] ' :
+		''
 }` +
-`[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] ` +
-`[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]`);
+'[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] ' +
+'[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]');
 
 // Insert "Usage" section
 readmeDoc = readmeDoc.replace('<usage>', `## Usage
@@ -75,7 +75,7 @@ instructions for:
 readmeDoc = readmeDoc.replace('<linkList>', `[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 ${
 	packageJSONInfo.csstools?.cssdbId ?
-		`[css-url]: https://cssdb.org/#<cssdbId>` :
+		'[css-url]: https://cssdb.org/#<cssdbId>' :
 		''
 }
 [discord]: https://discord.gg/bUadyRwkJS
@@ -98,7 +98,7 @@ readmeDoc = readmeDoc.replaceAll('<specUrl>', packageJSONInfo.csstools.specUrl);
 for (const exampleFilePath of exampleFilePaths) {
 	readmeDoc = readmeDoc.replaceAll(
 		`<${exampleFilePath}>`,
-		(await fsp.readFile(path.join('test', 'examples', exampleFilePath), 'utf8')).toString().slice(0, -1) // trim final newline
+		(await fsp.readFile(path.join('test', 'examples', exampleFilePath), 'utf8')).toString().slice(0, -1), // trim final newline
 	);
 }
 
