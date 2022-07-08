@@ -1,6 +1,6 @@
 # Changes to PostCSS Lab Function
 
-### Unreleased
+### 4.2.1 (July 8, 2022)
 
 - Fix case insensitive matching.
 
