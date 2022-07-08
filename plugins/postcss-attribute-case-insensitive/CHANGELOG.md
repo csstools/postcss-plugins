@@ -1,6 +1,6 @@
 # Changes to PostCSS Attribute Case Insensitive
 
-### Unreleased
+### 5.0.2 (June 8, 2022)
 
 - Fix incorrect selector AST updates
 
