@@ -70,11 +70,6 @@ export default [
 		'importName': 'postcssDoublePositionGradients',
 	},
 	{
-		'packageName': 'postcss-env-function',
-		'id': 'environment-variables',
-		'importName': 'postcssEnvFunction',
-	},
-	{
 		'packageName': 'postcss-focus-visible',
 		'id': 'focus-visible-pseudo-class',
 		'importName': 'postcssFocusVisible',

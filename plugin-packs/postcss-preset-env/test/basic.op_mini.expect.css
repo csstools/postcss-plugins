@@ -98,7 +98,29 @@
 	}
 }
 
-h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.test-custom-selectors,h5.test-custom-selectors,h6.test-custom-selectors {
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+h1.test-custom-selectors {
+	order:12;
+}
+
+h2.test-custom-selectors {
+	order:12;
+}
+
+h3.test-custom-selectors {
+	order:12;
+}
+
+h4.test-custom-selectors {
+	order:12;
+}
+
+h5.test-custom-selectors {
+	order:12;
+}
+
+h6.test-custom-selectors {
 	order:12;
 }
 
@@ -584,6 +606,8 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	left: atan();
 	left: atan2();
 }
+
+@custom-selector :--view-m [data-view-size=m];
 
 [data-view-size=m] .view {
 		background: red;

@@ -55,7 +55,6 @@
 		"postcss-custom-selectors": "^6.0.2",
 		"postcss-dir-pseudo-class": "^6.0.4",
 		"postcss-double-position-gradients": "^3.1.1",
-		"postcss-env-function": "^4.0.6",
 		"postcss-focus-visible": "^6.0.4",
 		"postcss-focus-within": "^5.0.4",
 		"postcss-gap-properties": "^3.0.3",

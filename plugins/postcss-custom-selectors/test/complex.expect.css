@@ -1,11 +1,17 @@
-.xl3 {
+@custom-selector :--3xl .xl3;
+
+:is(.xl3) {
 	order: 1;
 }
 
-.singer {
+@custom-selector :--🧑🏾‍🎤 .singer;
+
+:is(.singer) {
 	order: 2;
 }
 
-.dash {
+@custom-selector :------- .dash;
+
+:is(.dash) {
 	order: 3;
 }

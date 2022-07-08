@@ -138,3 +138,7 @@ html {
 .test {
 	font-family: var(--font, "Helvetica Neue", Arial, sans-serif);
 }
+
+.fallbacks-with-main-values-that-dont-exist {
+	color: var(--does-not-exist, var(--color))
+}

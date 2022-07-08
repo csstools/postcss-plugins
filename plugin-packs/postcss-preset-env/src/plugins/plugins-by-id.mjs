@@ -13,7 +13,6 @@ import postcssCustomSelectors from 'postcss-custom-selectors';
 import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
 import postcssNormalizeDisplayValues from '@csstools/postcss-normalize-display-values';
 import postcssDoublePositionGradients from 'postcss-double-position-gradients';
-import postcssEnvFunction from 'postcss-env-function';
 import postcssFocusVisible from 'postcss-focus-visible';
 import postcssFocusWithin from 'postcss-focus-within';
 import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
@@ -60,7 +59,6 @@ export const pluginsById = new Map(
 		['dir-pseudo-class', postcssDirPseudoClass],
 		['display-two-values', postcssNormalizeDisplayValues],
 		['double-position-gradients', postcssDoublePositionGradients],
-		['environment-variables', postcssEnvFunction],
 		['focus-visible-pseudo-class', postcssFocusVisible],
 		['focus-within-pseudo-class', postcssFocusWithin],
 		['font-format-keywords', postcssFontFormatKeywords],

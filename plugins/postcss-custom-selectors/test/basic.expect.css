@@ -1,34 +1,69 @@
-.foo.foo {
+@custom-selector :--foo .bar, .baz;
+
+.foo:is(.foo) {
 	margin-top: 16px;
 }
 
-h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
+@custom-selector :--any-heading h1, h2, h3, h4, h5, h6;
 
-.foo > .baz {}
-.fizz > .foo,.buzz > .foo {}
-.btn-primary,.btn-success,.btn-info,.btn-warning,.btn-danger,.btn-primary:active,.btn-success:active,.btn-info:active,.btn-warning:active,.btn-danger:active {}
+:is(h1, h2, h3, h4, h5, h6) + p {}
 
-.foo + p,.bar > .baz + p {
+@custom-selector :--foobar .foo, .bar;
+@custom-selector :--baz .baz;
+@custom-selector :--fizzbuzz .fizz, .buzz;
+@custom-selector :--button-types
+	.btn-primary,
+	.btn-success,
+	.btn-info,
+	.btn-warning,
+	.btn-danger;
+
+:is(.foo) > :is(.baz) {}
+:is(.fizz, .buzz) > :is(.foo) {}
+:is(.btn-primary,
+	.btn-success,
+	.btn-info,
+	.btn-warning,
+	.btn-danger),:is(.btn-primary,
+	.btn-success,
+	.btn-info,
+	.btn-warning,
+	.btn-danger):active {}
+
+@custom-selector :--commented-foo
+	/* comment */
+	.foo,
+	.bar > .baz;
+
+:is(.foo,
+	.bar > .baz) + p {
 	display: block;
 }
 
-.foo > a::before img,.foo > a::after img {
+@custom-selector :--pseudo ::before, ::after;
+
+.foo > a:is(::before, ::after) img {
 	display: block;
 }
 
-.foo,.foo.bar {
+@custom-selector :--foo .foo;
+
+:is(.foo),:is(.foo).bar {
 	color: white;
 }
 
-.foo .foo:hover {
+:is(.foo) :is(.foo):hover {
 	color: white;
 }
 
-.fo--oo > h1,.fo--oo > h2,.fo--oo > h3 {
+@custom-selector :--fo-----o h1, h2, h3;
+@custom-selector :--ba-----r h4, h5, h6;
+
+.fo--oo > :is(h1, h2, h3) {
 	margin: auto;
 }
 
-h4:hover .ba--z,h5:hover .ba--z,h6:hover .ba--z {
+:is(h4, h5, h6):hover .ba--z {
 	display: block;
 }
 
@@ -38,48 +73,64 @@ article :--heading + p {
 	margin-top: 0;
 }
 
-.foo,.bar > .baz {
+@custom-selector :--multiline
+	.foo,
+	.bar > .baz;
+
+:is(.foo,
+	.bar > .baz) {
 	display: block;
 }
 
 /* should works with collapsed custom selectors */
 
-button:hover,button:focus,.button:hover,.button:focus {}
+@custom-selector :--button button, .button;
+@custom-selector :--enter :hover, :focus;
 
-.foo h1,.bar h1 {
+:is(button, .button):is(:hover, :focus) {}
+
+@custom-selector :--any-foobar .foo, .bar;
+
+:is(.foo, .bar) h1 {
 	margin-top: 16px;
 }
 
-main .foo + p {
+main :is(.foo) + p {
 	margin-top: 16px;
 }
 
-.foo {
+@custom-selector :--foobar .foo;
+
+:is(.foo) {
 	order: 1000;
 }
-a,.foo {
+a,:is(.foo) {
 	order: 1001;
 }
-b,.foo {
+b,:is(.foo) {
 	order: 1002;
 }
 
-.foo.baz {
+@custom-selector :--foobaz .foo.baz;
+
+:is(.foo.baz) {
 	order: 1010;
 }
-a,.foo.baz {
+a,:is(.foo.baz) {
 	order: 1011;
 }
-b,.foo.baz {
+b,:is(.foo.baz) {
 	order: 1012;
 }
 
-.foo .baz {
+@custom-selector :--foobazz .foo .baz;
+
+:is(.foo .baz) {
 	order: 1020;
 }
-a,.foo .baz {
+a,:is(.foo .baz) {
 	order: 1021;
 }
-b,.foo .baz {
+b,:is(.foo .baz) {
 	order: 1022;
 }

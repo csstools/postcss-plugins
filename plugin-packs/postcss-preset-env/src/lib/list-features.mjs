@@ -1,5 +1,4 @@
 import browserslist from 'browserslist';
-import { pluginHasSideEffects } from '../side-effects/plugins.mjs';
 import { featuresWithClientSide } from '../client-side-polyfills/plugins.mjs';
 import { stageFromOptions } from './stage.mjs';
 import { prepareFeaturesList } from './prepare-features-list.mjs';
@@ -107,10 +106,6 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	const supportedFeatures = stagedFeatures.filter((feature) => {
 		if (feature.id in features) {
 			return features[feature.id];
-		}
-
-		if (pluginHasSideEffects(feature)) {
-			return true;
 		}
 
 		const unsupportedBrowsers = browserslist(feature.browsers, {

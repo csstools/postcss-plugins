@@ -166,7 +166,49 @@
 	}
 }
 
-h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h2.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h3.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h4.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h5.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	-webkit-box-ordinal-group:13;
+	-webkit-order:12;
+	   -moz-box-ordinal-group:13;
+	    -ms-flex-order:12;
+	        order:12;
+}
+
+h2.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	-webkit-box-ordinal-group:13;
+	-webkit-order:12;
+	   -moz-box-ordinal-group:13;
+	    -ms-flex-order:12;
+	        order:12;
+}
+
+h3.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	-webkit-box-ordinal-group:13;
+	-webkit-order:12;
+	   -moz-box-ordinal-group:13;
+	    -ms-flex-order:12;
+	        order:12;
+}
+
+h4.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	-webkit-box-ordinal-group:13;
+	-webkit-order:12;
+	   -moz-box-ordinal-group:13;
+	    -ms-flex-order:12;
+	        order:12;
+}
+
+h5.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	-webkit-box-ordinal-group:13;
+	-webkit-order:12;
+	   -moz-box-ordinal-group:13;
+	    -ms-flex-order:12;
+	        order:12;
+}
+
+h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	-webkit-box-ordinal-group:13;
 	-webkit-order:12;
 	   -moz-box-ordinal-group:13;

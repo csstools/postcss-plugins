@@ -159,3 +159,8 @@ html {
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	font-family: var(--font, "Helvetica Neue", Arial, sans-serif);
 }
+
+.fallbacks-with-main-values-that-dont-exist {
+	color: rgb(255, 0, 0);
+	color: var(--does-not-exist, var(--color))
+}

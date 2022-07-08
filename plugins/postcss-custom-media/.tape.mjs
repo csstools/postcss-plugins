@@ -1,5 +1,5 @@
 import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
-import plugin from 'postcss-custom-selectors';
+import plugin from 'postcss-custom-media';
 
 postcssTape(plugin)({
 	'basic': {
@@ -22,8 +22,5 @@ postcssTape(plugin)({
 	},
 	'complex': {
 		message: 'supports complex usage'
-	},
-	'safety': {
-		message: 'supports safe tag ordering (.foo:--h1 becomes h1.foo instead of .fooh1)'
 	},
 });
