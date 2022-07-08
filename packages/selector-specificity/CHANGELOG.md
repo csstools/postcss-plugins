@@ -1,6 +1,6 @@
 # Changes to Selector Specificity
 
-### 2.0.2 (June 8, 2022)
+### 2.0.2 (July 8, 2022)
 
 - Fix case insensitive matching.
 
