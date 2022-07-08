@@ -1,6 +1,6 @@
 # Changes to PostCSS Gap Properties
 
-### Unreleased
+### 3.0.4 (July 8, 2022)
 
 - Fix case insensitive matching.
 
