@@ -1,6 +1,6 @@
 # Changes to PostCSS image-set() Function
 
-### Unreleased
+### 4.0.7 (July 8, 2022)
 
 - Fix case insensitive matching.
 
