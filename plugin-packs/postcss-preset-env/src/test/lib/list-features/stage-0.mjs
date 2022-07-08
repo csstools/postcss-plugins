@@ -28,22 +28,6 @@ assert.deepStrictEqual(
 			},
 			id: 'any-link-pseudo-class',
 		},
-		{
-			browsers: [
-				'and_chr >= 1', 'and_ff >= 1',
-				'and_qq >= 1', 'and_uc >= 1',
-				'android >= 1', 'baidu >= 1',
-				'chrome >= 1', 'edge >= 1',
-				'firefox >= 1', 'ie >= 1',
-				'ie_mob >= 1', 'ios_saf >= 1',
-				'kaios >= 1', 'op_mini all',
-				'op_mob >= 1', 'opera >= 1',
-				'safari >= 1', 'samsung >= 1',
-			],
-			vendors_implementations: 0,
-			pluginOptions: { enableProgressiveCustomProperties: false },
-			id: 'blank-pseudo-class',
-		},
 	],
 );
 
@@ -52,6 +36,7 @@ assert.deepStrictEqual(
 	testLogger.getLogs(),
 	[
 		'Using features from Stage 0',
+		'  blank-pseudo-class has been disabled by "enableClientSidePolyfills: false".',
 		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
 	],
 );
