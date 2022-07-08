@@ -11,7 +11,7 @@ import { insertAfterKey, insertBeforeKey } from '../own-keys/keys.mjs';
 export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	// initialize options
 	const features = Object(options.features);
-	const enableClientSidePolyfills = 'enableClientSidePolyfills' in options ? options.enableClientSidePolyfills : true;
+	const enableClientSidePolyfills = 'enableClientSidePolyfills' in options ? options.enableClientSidePolyfills : false;
 	const insertBefore = Object(options.insertBefore);
 	const insertAfter = Object(options.insertAfter);
 	const browsers = options.browsers;

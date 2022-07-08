@@ -91,13 +91,6 @@
 	}
 }
 
-@media (color: 48842621) {
-	body {
-		background-color: black;
-		color: white;
-	}
-}
-
 @media (prefers-color-scheme: dark) {
 	body {
 		background-color: black;
@@ -278,11 +271,6 @@
 	word-wrap: break-word;
 }
 
-.test-focus-visible-pseudo-class.focus-visible.js-focus-visible, .js-focus-visible .test-focus-visible-pseudo-class.focus-visible {
-	-ms-flex-order: 26;
-	    order: 26;
-}
-
 .test-focus-visible-pseudo-class:focus-visible {
 	-ms-flex-order: 26;
 	    order: 26;
@@ -293,15 +281,7 @@
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
 }
 
-.test-blank-pseudo-class[blank].js-blank-pseudo, .js-blank-pseudo .test-blank-pseudo-class[blank] {
-	background-color: yellow;
-}
-
 .test-blank-pseudo-class:blank {
-	background-color: yellow;
-}
-
-.js-has-pseudo [csstools-has-1a-38-2t-37-38-19-2w-2p-37-19-34-37-2t-39-2s-33-19-2r-30-2p-37-37-1m-2w-2p-37-14-1a-2x-32-32-2t-36-19-2r-30-2p-37-37-15]:not(.does-not-exist) {
 	background-color: yellow;
 }
 
