@@ -1,6 +1,6 @@
 # Changes to PostCSS IC Unit
 
-### Unreleased
+### 1.0.1 (July 8, 2022)
 
 - Fix case insensitive matching.
 
