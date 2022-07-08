@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-cascade-layers",
 	"description": "Use cascade layers in CSS",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"contributors": [
 		{
 			"name": "Olu Niyi-Awosusi",
@@ -46,7 +46,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/selector-specificity": "^2.0.0",
+		"@csstools/selector-specificity": "^2.0.2",
 		"postcss-selector-parser": "^6.0.10"
 	},
 	"peerDependencies": {
