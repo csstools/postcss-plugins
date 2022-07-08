@@ -1,6 +1,6 @@
 # Changes to PostCSS Unset Value
 
-### Unreleased
+### 1.0.2 (July 8, 2022)
 
 - Fixed: Case insensitive property and keyword matching.
 

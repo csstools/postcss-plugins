@@ -1,8 +1,9 @@
 # Changes to PostCSS Cascade Layers
 
-### Unreleased
+### 1.0.5 (July 8, 2022)
 
 - Fix case insensitive `@layer` matching (`@LaYeR`).
+- Updated `@csstools/selector-specificity` to `2.0.2` (patch)
 
 ### 1.0.4 (June 23, 2022)
 

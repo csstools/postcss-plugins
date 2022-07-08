@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Function
 
-### Unreleased
+### 1.1.1 (July 8, 2022)
 
 - Fix case insensitive matching.
 
