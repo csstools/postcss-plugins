@@ -1,6 +1,6 @@
 # Changes to PostCSS Focus Within
 
-### Unreleased (major)
+### 6.0.0 (July 8, 2022)
 
 - Breaking: Changed generated classes so it prepends `.js-focus-within` to the
 generated class so CSS is applied when the polyfill is known to be running.
