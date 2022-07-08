@@ -1,6 +1,6 @@
 # Changes to PostCSS Selector Not
 
-### Unreleased
+### 6.0.1 (July 8, 2022)
 
 - Fixed: Case insensitive `:not` matching.
 
