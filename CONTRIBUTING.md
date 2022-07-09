@@ -23,10 +23,20 @@ instructions:
 
 - [Node.js](https://nodejs.org/) >= 16.0.0
 
+### Quick start
+
+1. fork the repo and clone it locally
+2. `npm run get-me-going` to install and build dependencies
+3. `cd plugins/<plugin-name>`
+4. `npm run build && npm run test` to build and test the plugin after making changes
+5. open a pull request with the changes
+
 ## Submitting Pull Requests
 
-Pull requests are the greatest contributions, so be sure they are focused in
-scope and avoid unrelated commits.
+We try our best to create a safe and welcoming environment for contributors.
+
+Your changes do not have to be complete and tests do not have to pass before opening a pull request.
+Receiving early feedback on your work will help you iterate more quickly in the right direction.
 
 1. To begin; [fork this project], clone your fork, and add our upstream.
    ```bash
@@ -132,6 +142,12 @@ Your next steps:
 
 Change "blue" to "purple" in "src/index.ts" and see how it affects the test outcome
 ```
+
+## Read the guidelines and best practices for plugins
+
+- [PostCSS API documentation](https://postcss.org/api/)
+- [PostCSS guidelines for plugins](https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md)
+- [CSSTools guidelines for plugins](https://github.com/csstools/postcss-plugins/wiki/Plugin-best-practices)
 
 ## Trouble shooting
 
