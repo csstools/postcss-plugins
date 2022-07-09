@@ -1,6 +1,6 @@
 # Changes to PostCSS Double Position Gradients
 
-### Unreleased
+### 3.1.2 (July 8, 2022)
 
 - Fix case insensitive matching.
 

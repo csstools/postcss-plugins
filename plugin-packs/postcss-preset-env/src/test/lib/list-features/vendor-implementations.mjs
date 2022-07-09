@@ -154,6 +154,7 @@ assert.deepStrictEqual(
 		'Using features with 2 or more vendor implementations',
 		'Using features from Stage 0',
 		'  blank-pseudo-class does not meet the required vendor implementations but has been enabled by options',
+		'  blank-pseudo-class has been disabled by "enableClientSidePolyfills: false".',
 		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
 	],
 );

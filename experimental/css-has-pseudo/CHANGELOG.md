@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased
+### 0.6.0 (July 8, 2022)
 
 - `@csstools/css-has-pseudo-experimental` is no longer supported. Please use `css-has-pseudo` instead.
 All issues have been resolved in the main plugin and the experimental plugin is no longer maintained.

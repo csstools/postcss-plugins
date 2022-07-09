@@ -1,6 +1,6 @@
 # Changes to PostCSS Place Properties
 
-### Unreleased
+### 7.0.5 (July 8, 2022)
 
 - Fix case insensitive matching.
 

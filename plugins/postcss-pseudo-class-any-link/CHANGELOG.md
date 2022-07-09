@@ -1,6 +1,6 @@
 # Changes to PostCSS Pseudo Class Any Link
 
-### Unreleased
+### 7.1.6 (July 8, 2022)
 
 - Fix case insensitive `:any-link` matching.
 

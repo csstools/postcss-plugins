@@ -460,7 +460,7 @@ The `debug` option enables debugging messages to stdout which should be useful t
 
 ### enableClientSidePolyfills
 
-The `enableClientSidePolyfills` enables any feature that would need an extra browser library to be loaded into the page for it to work. Defaults to `true`.
+The `enableClientSidePolyfills` enables any feature that would need an extra browser library to be loaded into the page for it to work. Defaults to `false`.
 
 Note that manually enabling/disabling features via the "feature" option overrides this flag.
 

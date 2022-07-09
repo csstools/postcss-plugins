@@ -1,5 +1,31 @@
 # Changes to PostCSS Preset Env
 
+### 8.0.0-alpha.0 (July 8, 2022)
+
+- Breaking: `enableClientSidePolyfills` is now `false` by default (was `true`)
+- Updated `@csstools/postcss-stepped-value-functions` to `1.0.1` (patch)
+- Updated `@csstools/postcss-trigonometric-functions` to `1.0.2` (patch)
+- Updated `@csstools/postcss-unset-value` to `1.0.2` (patch)
+- Updated `browserslist` to `4.21.1` (patch)
+- Updated `css-blank-pseudo` to `4.0.0` (major)
+- Updated `css-has-pseudo` to `4.0.0` (major)
+- Updated `css-prefers-color-scheme` to `7.0.0` (major)
+- Updated `postcss-attribute-case-insensitive` to `5.0.2` (patch)
+- Updated `postcss-color-functional-notation` to `4.2.4` (patch)
+- Updated `postcss-color-rebeccapurple` to `7.1.1` (patch)
+- Updated `postcss-dir-pseudo-class` to `6.0.5` (patch)
+- Updated `postcss-double-position-gradients` to `3.1.2` (patch)
+- Updated `postcss-focus-visible` to `7.0.0` (major)
+- Updated `postcss-focus-within` to `6.0.0` (major)
+- Updated `postcss-gap-properties` to `3.0.4` (patch)
+- Updated `postcss-image-set-function` to `4.0.7` (patch)
+- Updated `postcss-lab-function` to `4.2.1` (patch)
+- Updated `postcss-nesting` to `10.1.10` (patch)
+- Updated `postcss-overflow-shorthand` to `3.0.4` (patch)
+- Updated `postcss-place` to `7.0.5` (patch)
+- Updated `postcss-pseudo-class-any-link` to `7.1.6` (patch)
+- Updated `postcss-selector-not` to `6.0.1` (patch)
+
 ### 7.7.2 (June 23, 2022)
 
 - Fix `op_mini all` not working as a browser list.

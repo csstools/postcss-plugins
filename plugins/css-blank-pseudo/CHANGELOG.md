@@ -1,6 +1,6 @@
 # Changes to CSS Blank Pseudo
 
-### Unreleased (major)
+### 4.0.0 (July 8, 2022)
 
 - Updated: The polyfill now only attaches a single listener to the body so it's
 more efficient and also does less work at the MutationObserver handler.

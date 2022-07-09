@@ -1,7 +1,7 @@
 {
 	"name": "css-blank-pseudo",
 	"description": "Style form elements when they are empty",
-	"version": "3.0.3",
+	"version": "4.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",

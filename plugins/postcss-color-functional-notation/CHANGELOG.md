@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Functional Notation
 
-### Unreleased
+### 4.2.4 (July 8, 2022)
 
 - Fix case insensitive matching.
 

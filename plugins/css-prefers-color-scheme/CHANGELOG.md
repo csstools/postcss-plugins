@@ -1,6 +1,6 @@
 # Changes to Prefers Color Scheme
 
-### Unreleased (major)
+### 7.0.0 (July 8, 2022)
 
 [Read the full changelog](https://github.com/csstools/postcss-plugins/wiki/PostCSS-Preset-Env-8)
 

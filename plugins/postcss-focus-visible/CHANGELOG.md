@@ -1,6 +1,6 @@
 # Changes to PostCSS Focus Visible
 
-### Unreleased (major)
+### 7.0.0 (July 8, 2022)
 
 - Breaking: Changed generated classes so it prepends `.js-focus-visible` to the 
 generated class so CSS is applied when the polyfill is known to be running.
