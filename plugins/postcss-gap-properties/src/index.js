@@ -17,6 +17,10 @@ function creator(opts) {
 			}
 
 			const isNotDisplayGrid = !(decl.parent.some((node) => {
+				if (node.type !== 'decl') {
+					return false;
+				}
+
 				return node.prop.toLowerCase() === 'display' && node.value.toLowerCase() === 'grid';
 			}));
 			if (isNotDisplayGrid) {
