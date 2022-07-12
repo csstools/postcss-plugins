@@ -29,6 +29,10 @@ function creator(opts) {
 
 			const replacement = `grid-${decl.prop.toLowerCase()}`;
 			const hasGridPrefixedDeclaration = decl.parent.some((node) => {
+				if (node.type !== 'decl') {
+					return false;
+				}
+
 				return node.prop.toLowerCase() === replacement;
 			});
 			if (hasGridPrefixedDeclaration) {
