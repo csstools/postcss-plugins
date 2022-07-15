@@ -3,13 +3,14 @@ import type { Model } from './model';
 import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, CONDITIONAL_ATRULES, WITH_SELECTORS_LAYER_NAME } from './constants';
 import { someInTree } from './some-in-tree';
 import { removeEmptyAncestorBlocks, removeEmptyDescendantBlocks } from './clean-blocks';
+import { isProcessableLayerRule } from './is-processable-layer-rule';
 
 // Sort root nodes to apply the preferred order by layer priority for non-selector rules.
 // Selector rules are adjusted by specificity.
 export function sortRootNodes(root: Container, model: Model) {
 	// Separate selector rules from other rules
 	root.walkAtRules((layerRule) => {
-		if (layerRule.name.toLowerCase() !== 'layer') {
+		if (!isProcessableLayerRule(layerRule)) {
 			return;
 		}
 

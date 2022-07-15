@@ -5,13 +5,14 @@ import { INVALID_LAYER_NAME } from './constants';
 import { someAtRuleInTree, someInTree } from './some-in-tree';
 import { getLayerAtRuleAncestor } from './get-layer-atrule-ancestor';
 import { removeEmptyAncestorBlocks, removeEmptyDescendantBlocks } from './clean-blocks';
+import { isProcessableLayerRule } from './is-processable-layer-rule';
 
 export function desugarAndParseLayerNames(root: Container, model: Model) {
 	// - parse layer names
 	// - rename anon layers
 	// - handle empty layers
 	root.walkAtRules((layerRule) => {
-		if (layerRule.name.toLowerCase() !== 'layer') {
+		if (!isProcessableLayerRule(layerRule)) {
 			return;
 		}
 
@@ -90,7 +91,7 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 			layerRule.params = model.createAnonymousLayerName();
 		}
 
-		const hasNestedLayers = someAtRuleInTree(layerRule, (node) => node.name.toLowerCase() === 'layer');
+		const hasNestedLayers = someAtRuleInTree(layerRule, (node) => isProcessableLayerRule(node));
 		const hasUnlayeredStyles = someInTree(layerRule, (node) => {
 			if (node.type !== 'rule') {
 				return;
@@ -109,7 +110,7 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 
 			// only keep unlayered styles for the implicit layer.
 			implicitLayer.walkAtRules((node) => {
-				if (node.name.toLowerCase() !== 'layer') {
+				if (!isProcessableLayerRule(node)) {
 					return;
 				}
 

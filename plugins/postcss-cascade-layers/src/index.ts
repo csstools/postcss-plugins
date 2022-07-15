@@ -12,6 +12,7 @@ import { recordLayerOrder } from './record-layer-order';
 import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, INVALID_LAYER_NAME } from './constants';
 import { splitImportantStyles } from './split-important-styles';
 import { pluginOptions } from './options';
+import { isProcessableLayerRule } from './is-processable-layer-rule';
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
@@ -22,7 +23,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-cascade-layers',
-		OnceExit(root: Container, { result }: { result: Result }) {
+		Once(root: Container, { result }: { result: Result }) {
 
 			// Warnings
 			if (options.onRevertLayerKeyword) {
@@ -135,9 +136,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			// Remove all @layer at-rules
 			// Contained styles are inserted before
-			while (someAtRuleInTree(root, (node) => node.name.toLowerCase() === 'layer')) {
+			while (someAtRuleInTree(root, (node) => isProcessableLayerRule(node))) {
 				root.walkAtRules((atRule) => {
-					if (atRule.name.toLowerCase() !== 'layer') {
+					if (!isProcessableLayerRule(atRule)) {
 						return;
 					}
 

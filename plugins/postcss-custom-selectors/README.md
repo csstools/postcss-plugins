@@ -13,7 +13,9 @@ article :--heading + p {
 
 /* becomes */
 
-article h1 + p,article h2 + p,article h3 + p {
+@custom-selector :--heading h1, h2, h3;
+
+article :is(h1, h2, h3) + p  {
 	margin-top: 0;
 }
 ```
@@ -65,92 +67,13 @@ article :--heading + p {
 
 @custom-selector :--heading h1, h2, h3;
 
-article h1 + p,article h2 + p,article h3 + p {
+article :is(h1, h2, h3) + p  {
 	margin-top: 0;
 }
 
 article :--heading + p {
 	margin-top: 0;
 }
-```
-
-### importFrom
-
-The `importFrom` option specifies sources where custom selectors can be
-imported from, which might be CSS, JS, and JSON files, functions, and directly
-passed objects.
-
-```js
-postcssCustomSelectors({
-	importFrom: 'path/to/file.css' // => @custom-selector :--heading h1, h2, h3;
-});
-```
-
-```pcss
-article :--heading + p {
-	margin-top: 0;
-}
-
-/* becomes */
-
-article h1 + p, article h2 + p, article h3 + p {}
-```
-
-Multiple sources can be passed into this option, and they will be parsed in the
-order they are received. JavaScript files, JSON files, functions, and objects
-will need to namespace custom selectors using the `customProperties` or
-`custom-properties` key.
-
-```js
-postcssCustomSelectors({
-	importFrom: [
-		'path/to/file.css',
-		'and/then/this.js',
-		'and/then/that.json',
-		{
-			customSelectors: { ':--heading': 'h1, h2, h3' }
-		},
-		() => {
-			const customProperties = { ':--heading': 'h1, h2, h3' };
-
-			return { customProperties };
-		}
-	]
-});
-```
-
-### exportTo
-
-The `exportTo` option specifies destinations where custom selectors can be
-exported to, which might be CSS, JS, and JSON files, functions, and directly
-passed objects.
-
-```js
-postcssCustomSelectors({
-	exportTo: 'path/to/file.css' // @custom-selector :--heading h1, h2, h3;
-});
-```
-
-Multiple destinations can be passed into this option, and they will be parsed
-in the order they are received. JavaScript files, JSON files, and objects will
-need to namespace custom selectors using the `customProperties` or
-`custom-properties` key.
-
-```js
-const cachedObject = { customSelectors: {} };
-
-postcssCustomSelectors({
-	exportTo: [
-		'path/to/file.css',   // @custom-selector :--heading h1, h2, h3;
-		'and/then/this.js',   // module.exports = { customSelectors: { ':--heading': 'h1, h2, h3' } }
-		'and/then/this.mjs',  // export const customSelectors = { ':--heading': 'h1, h2, h3' } }
-		'and/then/that.json', // { "custom-selectors": { ":--heading": "h1, h2, h3" } }
-		cachedObject,
-		customProperties => {
-			customProperties    // { ':--heading': 'h1, h2, h3' }
-		}
-	]
-});
 ```
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test

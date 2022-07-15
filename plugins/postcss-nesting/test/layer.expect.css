@@ -6,12 +6,9 @@
 	background-color: blue;
 	height: 100px;
 	width: 100px;
-}
 
-@layer A {
-
-.partially-layered {
+	@layer A {
 		/* There is no definition for this behavior */
 		background-color: red;
-}
 	}
+}

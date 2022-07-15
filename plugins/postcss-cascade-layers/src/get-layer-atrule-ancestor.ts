@@ -1,4 +1,5 @@
 import type { AtRule, Node } from 'postcss';
+import { isProcessableLayerRule } from './is-processable-layer-rule';
 
 // Returns the first ancestor of the current node that is an @layer rule.
 export function getLayerAtRuleAncestor(node: Node): AtRule | null {
@@ -9,7 +10,7 @@ export function getLayerAtRuleAncestor(node: Node): AtRule | null {
 			continue;
 		}
 
-		if ((parent as AtRule).name.toLowerCase() === 'layer') {
+		if (isProcessableLayerRule(parent as AtRule)) {
 			return parent as AtRule;
 		}
 
