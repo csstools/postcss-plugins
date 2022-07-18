@@ -40,7 +40,7 @@
 		"@csstools/postcss-trigonometric-functions": "^1.0.2",
 		"@csstools/postcss-unset-value": "^1.0.2",
 		"autoprefixer": "^10.4.7",
-		"browserslist": "^4.21.1",
+		"browserslist": "^4.21.2",
 		"css-blank-pseudo": "^4.0.0",
 		"css-has-pseudo": "^4.0.0",
 		"css-prefers-color-scheme": "^7.0.0",
