@@ -110,10 +110,11 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 
 			// only keep unlayered styles for the implicit layer.
 			implicitLayer.walkAtRules((node) => {
-				if (isProcessableLayerRule(node)) {
-					node.remove();
+				if (!isProcessableLayerRule(node)) {
 					return;
 				}
+
+				node.remove();
 			});
 
 			// go through the unlayered rules and delete these from top level atRule

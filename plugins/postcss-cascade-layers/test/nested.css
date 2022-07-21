@@ -35,12 +35,6 @@
 			url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
 	}
 
-	@foo {
-		.child {
-			order: red;
-		}
-	}
-
 	@layer Z {
 		target {
 			color: yellow;

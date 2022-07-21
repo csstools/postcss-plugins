@@ -35,12 +35,6 @@ target:not(#\#):not(#\#):not(#\#) {
 			color: yellow;
 		}
 
-@foo {
-		.child:not(#\#):not(#\#):not(#\#):not(#\#) {
-			order: red;
-		}
-	}
-
 target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 			color: yellow;
 		}
