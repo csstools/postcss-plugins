@@ -1,0 +1,23 @@
+/* We expect unlayered extensions to be global and these must appear later so that they override layered extensions */
+
+@custom-media --custom-media-query: (min-width: 0px);
+
+@custom-selector --custom-selector: #custom-selector;
+
+@property --property {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: #fff;
+}
+
+@layer A {
+	@custom-media --custom-media-query-layered: (min-width: 0px);
+
+	@custom-selector --custom-selector-layered: #custom-selector;
+
+	@property --property-layered {
+		syntax: '<color>';
+		inherits: false;
+		initial-value: #000;
+	}
+}

@@ -29,6 +29,18 @@
 		}
 	}
 
+	@font-face {
+		font-family: "Open Sans";
+		src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+			url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
+	}
+
+	@foo {
+		.child {
+			order: red;
+		}
+	}
+
 	@layer Z {
 		target {
 			color: yellow;
@@ -43,8 +55,12 @@
 		}
 	}
 
+	h1 {
+		color: pink;
+	}
+
 	@media (prefers-color-scheme: dark) {
-		h1 {
+		h2 {
 			color: red;
 			background: black;
 		}

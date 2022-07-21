@@ -9,6 +9,7 @@ export const IMPLICIT_LAYER_SUFFIX = 'b147acf6-11a6-4338-a4d0-80aef4cd1a2f';
 export const CONDITIONAL_ATRULES = [
 	'media',
 	'supports',
+	'container',
 ];
 
 export const ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS = [

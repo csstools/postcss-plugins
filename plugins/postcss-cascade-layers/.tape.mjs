@@ -27,6 +27,9 @@ postcssTape(plugin)({
 	'examples/example': {
 		message: "minimal example",
 	},
+	'extensions': {
+		message: "css custom extensions",
+	},
 	'unlayered-styles': {
 		message: 'supports unlayered styles alongside layers',
 	},

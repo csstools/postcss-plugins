@@ -1,7 +1,7 @@
 import type { Container } from 'postcss';
 import type { Model } from './model';
 import selectorParser from 'postcss-selector-parser';
-import { INVALID_LAYER_NAME } from './constants';
+import { CONDITIONAL_ATRULES, INVALID_LAYER_NAME } from './constants';
 import { someAtRuleInTree, someInTree } from './some-in-tree';
 import { getLayerAtRuleAncestor } from './get-layer-atrule-ancestor';
 import { removeEmptyAncestorBlocks, removeEmptyDescendantBlocks } from './clean-blocks';
@@ -110,16 +110,19 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 
 			// only keep unlayered styles for the implicit layer.
 			implicitLayer.walkAtRules((node) => {
-				if (!isProcessableLayerRule(node)) {
+				if (isProcessableLayerRule(node)) {
+					node.remove();
 					return;
 				}
-
-				node.remove();
 			});
 
 			// go through the unlayered rules and delete these from top level atRule
 			layerRule.walk((node) => {
-				if (node.type !== 'rule') {
+				if (node.type === 'atrule' && isProcessableLayerRule(node)) {
+					return;
+				}
+
+				if (node.type === 'atrule' && CONDITIONAL_ATRULES.includes(node.name.toLowerCase())) {
 					return;
 				}
 

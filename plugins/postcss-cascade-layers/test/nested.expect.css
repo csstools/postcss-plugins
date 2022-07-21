@@ -9,7 +9,10 @@
 		}
 	}
 
-@keyframes slide-left {
+	@font-face {
+		font-family: "Open Sans";
+		src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+			url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
 	}
 
 	target {
@@ -32,12 +35,22 @@ target:not(#\#):not(#\#):not(#\#) {
 			color: yellow;
 		}
 
+@foo {
+		.child:not(#\#):not(#\#):not(#\#):not(#\#) {
+			order: red;
+		}
+	}
+
 target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 			color: yellow;
 		}
 
+h1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		color: pink;
+	}
+
 @media (prefers-color-scheme: dark) {
-		h1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		h2:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 			color: red;
 			background: black;
 		}

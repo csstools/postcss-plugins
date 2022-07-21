@@ -71,22 +71,6 @@ export function sortRootNodes(root: Container, model: Model) {
 	});
 
 	root.nodes.sort((a, b) => {
-		const aIsCharset = a.type === 'atrule' && a.name.toLowerCase() === 'charset';
-		const bIsCharset = b.type === 'atrule' && b.name.toLowerCase() === 'charset';
-		if (aIsCharset && bIsCharset) {
-			return 0;
-		} else if (aIsCharset !== bIsCharset) {
-			return aIsCharset ? -1 : 1;
-		}
-
-		const aIsImport = a.type === 'atrule' && a.name.toLowerCase() === 'import';
-		const bIsImport = b.type === 'atrule' && b.name.toLowerCase() === 'import';
-		if (aIsImport && bIsImport) {
-			return 0;
-		} else if (aIsImport !== bIsImport) {
-			return aIsImport ? -1 : 1;
-		}
-
 		const aIsLayer = a.type === 'atrule' && a.name.toLowerCase() === 'layer';
 		const bIsLayer = b.type === 'atrule' && b.name.toLowerCase() === 'layer';
 		if (aIsLayer && bIsLayer) {
