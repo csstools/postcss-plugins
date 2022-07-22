@@ -1,0 +1,14 @@
+.set-to-false {
+	--dark-mode: ;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	:root {
+		--dark-mode: true;
+	}
+}
+
+.valid {
+	color: csstools-if(--dark-mode black else white);
+	background-color: csstools-if(--dark-mode yellow else brown);
+}
