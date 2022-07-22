@@ -4,7 +4,7 @@
 
 [PostCSS Conditional Values] lets you easily apply space toggle hacks.
 
-This plugin adds a non-standard function : `csstools-if()` which acts as a ternary operator.
+This plugin adds a non-standard function : `csstools-if( else )` which acts as a ternary operator.
 
 `csstools-if(--a-variable <value-when-true> else <value-when-false>)`
 
