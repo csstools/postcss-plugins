@@ -11,6 +11,9 @@ postcssTape(plugin)({
 	'pre-existing-false': {
 		message: "supports default false in :root{}",
 	},
+	'complex': {
+		message: "supports complex usage",
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

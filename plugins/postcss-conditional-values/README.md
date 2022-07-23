@@ -2,7 +2,7 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-conditional-values.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-[PostCSS Conditional Values] lets you easily apply space toggle hacks.
+[PostCSS Conditional Values] lets you easily apply space toggle hacks with some syntactic sugar.
 
 This plugin adds a non-standard function : `csstools-if( else )` which acts as a ternary operator.
 
@@ -64,6 +64,43 @@ instructions for:
 
 | [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
 | --- | --- | --- | --- | --- | --- |
+
+## Syntax
+
+### `csstools-if else` function
+
+The `csstools-if else` function is used to declare which values must be used when a condition is true or false.
+
+```pcss
+color: csstools-if(--a-condition yellow else red);
+```
+
+```
+csstools-if(<custom-property-name> <declaration-value> else <declaration-value>);
+```
+
+### `true` and `false` keywords
+
+The `true` and `false` keywords are syntactic sugar for `initial` and `<space>`.
+
+```pcss
+--a-condition: true;
+
+/* becomes */
+
+--a-condition: initial;
+```
+
+```pcss
+--a-condition: false;
+
+/* becomes */
+
+--a-condition:  ;
+```
+
+You can manually toggle the condition with `initial` and `<space>`.
+This makes it possible to control the outcome of conditions with javascript, inline styles, ...
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 

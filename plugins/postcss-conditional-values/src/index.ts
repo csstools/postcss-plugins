@@ -59,6 +59,8 @@ const creator: PluginCreator<unknown> = () => {
 									return;
 								}
 							});
+
+							return false;
 						});
 					}
 
@@ -92,8 +94,34 @@ const creator: PluginCreator<unknown> = () => {
 							value: `var(${conditionalVarName}) ${falsyValue}`,
 						});
 
+						valueAST.walk((functionNode) => {
+							if (functionNode.type !== 'function' || !functionNode.nodes) {
+								return;
+							}
+
+							if (functionNode.value.toLowerCase() !== 'csstools-if') {
+								return;
+							}
+
+							functionNode.value = 'var';
+							functionNode.nodes = [
+								...valuesParser(varName).nodes,
+								{
+									sourceIndex: 0,
+									sourceEndIndex: 1,
+									value: ',',
+									type: 'div',
+									before: '',
+									after: '',
+								},
+								...valuesParser(truthyValue).nodes,
+							];
+
+							return false;
+						});
+
 						decl.cloneBefore({
-							value: `var(${varName},${truthyValue})`,
+							value: valueAST.toString(),
 						});
 					}
 

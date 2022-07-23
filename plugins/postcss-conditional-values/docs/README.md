@@ -16,7 +16,7 @@
 
 <header>
 
-[<humanReadableName>] lets you easily apply space toggle hacks.
+[<humanReadableName>] lets you easily apply space toggle hacks with some syntactic sugar.
 
 This plugin adds a non-standard function : `csstools-if( else )` which acts as a ternary operator.
 
@@ -40,5 +40,42 @@ For more information see one of the articles :
 <usage>
 
 <envSupport>
+
+## Syntax
+
+### `csstools-if else` function
+
+The `csstools-if else` function is used to declare which values must be used when a condition is true or false.
+
+```pcss
+color: csstools-if(--a-condition yellow else red);
+```
+
+```
+csstools-if(<custom-property-name> <declaration-value> else <declaration-value>);
+```
+
+### `true` and `false` keywords
+
+The `true` and `false` keywords are syntactic sugar for `initial` and `<space>`.
+
+```pcss
+--a-condition: true;
+
+/* becomes */
+
+--a-condition: initial;
+```
+
+```pcss
+--a-condition: false;
+
+/* becomes */
+
+--a-condition:  ;
+```
+
+You can manually toggle the condition with `initial` and `<space>`.
+This makes it possible to control the outcome of conditions with javascript, inline styles, ...
 
 <linkList>
