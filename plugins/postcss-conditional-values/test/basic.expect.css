@@ -1,0 +1,18 @@
+:root {
+	--dark-mode:  ;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	:root {
+		--dark-mode: initial;
+	}
+}
+
+.valid {
+	--dark-mode--0: var(--dark-mode) white;
+	color: var(--dark-mode--0,black);
+}
+
+.ignore {
+	color: csstools-if(--dark-mode black, red else green, blue);
+}

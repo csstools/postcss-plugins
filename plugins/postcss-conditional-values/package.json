@@ -1,8 +1,18 @@
 {
-	"name": "@csstools/postcss-is-pseudo-class",
-	"description": "A pseudo-class for matching elements in a selector list",
-	"version": "2.0.7",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"name": "@csstools/postcss-conditional-values",
+	"description": "Easily apply space toggle hacks with some syntactic sugar",
+	"version": "1.0.0",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
@@ -27,50 +37,37 @@
 		"README.md",
 		"dist"
 	],
-	"dependencies": {
-		"@csstools/selector-specificity": "^2.0.0",
-		"postcss-selector-parser": "^6.0.10"
-	},
 	"peerDependencies": {
 		"postcss": "^8.2"
 	},
 	"devDependencies": {
-		"puppeteer": "^15.5.0"
+		"postcss-value-parser": "^4.2.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run clean && npm run build && npm run test",
-		"stryker": "stryker run --logLevel error",
 		"test": "node .tape.mjs && npm run test:exports",
-		"test:browser": "node ./test/_browser.mjs",
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#readme",
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-conditional-values#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
-		"directory": "plugins/postcss-is-pseudo-class"
+		"directory": "plugins/postcss-conditional-values"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"css",
-		"is",
-		"matches",
-		"polyfill",
-		"postcss",
-		"postcss-plugin",
-		"pseudo",
-		"selector"
+		"postcss-plugin"
 	],
 	"csstools": {
-		"exportName": "postcssIsPseudoClass",
-		"humanReadableName": "PostCSS Is Pseudo"
+		"exportName": "postcssConditionalValues",
+		"humanReadableName": "PostCSS Conditional Values"
 	},
 	"volta": {
 		"extends": "../../package.json"
