@@ -1,0 +1,16 @@
+.set-to-false {
+	--dark-mode: ;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	:root {
+		--dark-mode: initial;
+	}
+}
+
+.valid {
+	--dark-mode--0: var(--dark-mode) white;
+	color: var(--dark-mode--0,black);
+	--dark-mode--1: var(--dark-mode) brown;
+	background-color: var(--dark-mode--1,yellow);
+}
