@@ -65,6 +65,41 @@ instructions for:
 | [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
 | --- | --- | --- | --- | --- | --- |
 
+## Options
+
+### functionName
+
+The `functionName` option allows you to set a custom alias for `csstools-if`.
+
+```js
+postcssConditionalValues({ functionName: 'if' })
+```
+
+```pcss
+.fancy-container {
+	--is-fancy: true;
+}
+
+.block {
+	color: if(--is-fancy pink else red);
+}
+
+/* becomes */
+
+:root {
+	--is-fancy:  ;
+}
+
+.fancy-container {
+	--is-fancy: initial;
+}
+
+.block {
+	--is-fancy--0: var(--is-fancy) red;
+	color: var(--is-fancy--0,pink);
+}
+```
+
 ## Syntax
 
 ### `csstools-if else` function

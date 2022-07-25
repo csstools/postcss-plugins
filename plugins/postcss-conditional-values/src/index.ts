@@ -2,7 +2,13 @@ import { PluginCreator } from 'postcss';
 import type { Rule } from 'postcss';
 import valuesParser from 'postcss-value-parser';
 
-const creator: PluginCreator<unknown> = () => {
+type pluginOptions = {
+	functionName: string;
+}
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const pluginOptions = Object.assign({ functionName: 'csstools-if' }, opts);
+
 	return {
 		postcssPlugin: 'postcss-conditional-values',
 		prepare() {
@@ -12,7 +18,7 @@ const creator: PluginCreator<unknown> = () => {
 
 			return {
 				Declaration(decl, { postcss }) {
-					if (!decl.value.toLowerCase().includes('csstools-if')) {
+					if (!decl.value.toLowerCase().includes(pluginOptions.functionName)) {
 						return;
 					}
 
@@ -30,7 +36,7 @@ const creator: PluginCreator<unknown> = () => {
 								return;
 							}
 
-							if (functionNode.value.toLowerCase() !== 'csstools-if') {
+							if (functionNode.value.toLowerCase() !== pluginOptions.functionName) {
 								return;
 							}
 
@@ -99,7 +105,7 @@ const creator: PluginCreator<unknown> = () => {
 								return;
 							}
 
-							if (functionNode.value.toLowerCase() !== 'csstools-if') {
+							if (functionNode.value.toLowerCase() !== pluginOptions.functionName) {
 								return;
 							}
 

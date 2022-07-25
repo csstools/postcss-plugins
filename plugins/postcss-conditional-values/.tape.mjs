@@ -17,4 +17,10 @@ postcssTape(plugin)({
 	'examples/example': {
 		message: 'minimal example',
 	},
+	'examples/example-custom-function-name': {
+		message: 'minimal example with { functionName: "if" }',
+		options: {
+			functionName: 'if'
+		}
+	},
 });

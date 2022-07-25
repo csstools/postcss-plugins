@@ -41,6 +41,24 @@ For more information see one of the articles :
 
 <envSupport>
 
+## Options
+
+### functionName
+
+The `functionName` option allows you to set a custom alias for `csstools-if`.
+
+```js
+<exportName>({ functionName: 'if' })
+```
+
+```pcss
+<example-custom-function-name.css>
+
+/* becomes */
+
+<example-custom-function-name.expect.css>
+```
+
 ## Syntax
 
 ### `csstools-if else` function

@@ -1,6 +1,6 @@
 {
 	"name": "@csstools/postcss-conditional-values",
-	"description": "TODO: Add description for Conditional Values",
+	"description": "Easily apply space toggle hacks with some syntactic sugar",
 	"version": "1.0.0",
 	"contributors": [
 		{
