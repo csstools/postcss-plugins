@@ -103,6 +103,33 @@ Note that if you want to keep using [focus-visible polyfill], the only
 acceptable value would be `[data-focus-visible-added]`,
 given that the polyfill does not support arbitrary values.
 
+### disablePolyfillReadyClass
+
+The `disablePolyfillReadyClass` option determines if selectors are prefixed with an indicator class.
+This class is only set on your document if the polyfill loads and is needed.
+
+ By default this option is `false`.
+Set this to `true` to prevent the class from being added.
+
+```js
+postcssFocusVisible({ disablePolyfillReadyClass: true })
+```
+
+```pcss
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+/* becomes */
+
+:focus:not(.focus-visible), :focus:not(.focus-visible) {
+	outline: none;
+}
+:focus:not(:focus-visible) {
+	outline: none;
+}
+```
+
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#focus-visible-pseudo-class
 [discord]: https://discord.gg/bUadyRwkJS

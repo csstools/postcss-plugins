@@ -97,6 +97,33 @@ input:blank {
 Note that changing this option implies that it needs to be passed to the
 browser polyfill as well.
 
+### disablePolyfillReadyClass
+
+The `disablePolyfillReadyClass` option determines if selectors are prefixed with an indicator class.
+This class is only set on your document if the polyfill loads and is needed.
+
+ By default this option is `false`.
+Set this to `true` to prevent the class from being added.
+
+```js
+postcssBlankPseudo({ disablePolyfillReadyClass: true })
+```
+
+```pcss
+input:blank {
+	background-color: yellow;
+}
+
+/* becomes */
+
+input[blank], input[blank] {
+	background-color: yellow;
+}
+input:blank {
+	background-color: yellow;
+}
+```
+
 ## Browser
 
 ```js
@@ -109,7 +136,7 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/css-blank-pseudo@3.0.3/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-blank-pseudo@4.0.0/dist/browser-global.js"></script>
 <script>cssBlankPseudoInit()</script>
 ```
 
