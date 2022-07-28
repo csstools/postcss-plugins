@@ -1,0 +1,12 @@
+:root {
+	--is-fancy:  ;
+}
+
+.fancy-container {
+	--is-fancy: initial;
+}
+
+.block {
+	--is-fancy--0: var(--is-fancy) red;
+	color: var(--is-fancy--0,pink);
+}
