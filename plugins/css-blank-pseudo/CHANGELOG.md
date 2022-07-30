@@ -1,6 +1,6 @@
 # Changes to CSS Blank Pseudo
 
-### Unreleased
+### 4.1.0 (July 30, 2022)
 
 - Added: `disablePolyfillReadyClass` plugin option to prevent `.js-blank-pseudo` from being added.
 
