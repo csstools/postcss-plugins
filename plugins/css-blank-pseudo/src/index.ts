@@ -2,7 +2,7 @@ import type { PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
 import isValidReplacement from './is-valid-replacement.mjs';
 
-type pluginOptions = { preserve?: boolean, replaceWith?: string };
+type pluginOptions = { preserve?: boolean, replaceWith?: string, disablePolyfillReadyClass?: boolean };
 
 const POLYFILL_READY_CLASSNAME = 'js-blank-pseudo';
 const PSEUDO = ':blank';
@@ -13,6 +13,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		{
 			preserve: true,
 			replaceWith: '[blank]',
+			disablePolyfillReadyClass: false,
 		},
 		// Provided options
 		opts,
@@ -80,7 +81,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				// becomes:
 				// html.js-blank-pseudo > .foo:focus-within,
 				// .js-blank-pseudo html > .foo:focus-within
-				{
+				if (!options.disablePolyfillReadyClass) {
 					if (selectorAST.nodes?.[0]?.nodes?.length) {
 						for (let i = 0; i < selectorAST.nodes[0].nodes.length; i++) {
 							const node = selectorAST.nodes[0].nodes[i];

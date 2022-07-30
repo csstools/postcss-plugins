@@ -83,6 +83,26 @@ Note that if you want to keep using [focus-visible polyfill], the only
 acceptable value would be `[data-focus-visible-added]`,
 given that the polyfill does not support arbitrary values.
 
+### disablePolyfillReadyClass
+
+The `disablePolyfillReadyClass` option determines if selectors are prefixed with an indicator class.
+This class is only set on your document if the polyfill loads and is needed.
+
+By default this option is `false`.
+Set this to `true` to prevent the class from being added.
+
+```js
+<exportName>({ disablePolyfillReadyClass: true })
+```
+
+```pcss
+<example.css>
+
+/* becomes */
+
+<example.disable-polyfill-ready-class.expect.css>
+```
+
 <linkList>
 [Selectors Level 4 specification]: <specUrl>
 [focus-visible polyfill]: https://github.com/WICG/focus-visible

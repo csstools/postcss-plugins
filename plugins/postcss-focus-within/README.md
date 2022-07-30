@@ -104,6 +104,33 @@ postcssFocusWithin({ replaceWith: '.focus-within' });
 Note that changing this option implies that it needs to be passed to the
 browser polyfill as well.
 
+### disablePolyfillReadyClass
+
+The `disablePolyfillReadyClass` option determines if selectors are prefixed with an indicator class.
+This class is only set on your document if the polyfill loads and is needed.
+
+By default this option is `false`.
+Set this to `true` to prevent the class from being added.
+
+```js
+postcssFocusWithin({ disablePolyfillReadyClass: true })
+```
+
+```pcss
+.my-form-field:focus-within label {
+	background-color: yellow;
+}
+
+/* becomes */
+
+.my-form-field[focus-within] label, .my-form-field[focus-within] label {
+	background-color: yellow;
+}
+.my-form-field:focus-within label {
+	background-color: yellow;
+}
+```
+
 ## Browser
 
 ```js
@@ -116,7 +143,7 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/postcss-focus-within@5.0.4/dist/browser-global.js"></script>
+<script src="https://unpkg.com/postcss-focus-within@6.0.0/dist/browser-global.js"></script>
 <script>focusWithinInit()</script>
 ```
 
