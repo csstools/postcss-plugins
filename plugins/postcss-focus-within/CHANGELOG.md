@@ -1,6 +1,6 @@
 # Changes to PostCSS Focus Within
 
-### Unreleased
+### 6.1.0 (July 30, 2022)
 
 - Added: `disablePolyfillReadyClass` plugin option to prevent `.js-focus-within` from being added.
 
