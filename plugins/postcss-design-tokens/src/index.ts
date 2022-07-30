@@ -65,7 +65,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 				},
 				Declaration(decl, { result }) {
-					if (decl.value.toLowerCase().includes(options.functionName)) {
+					if (!decl.value.toLowerCase().includes(options.functionName)) {
 						return;
 					}
 
