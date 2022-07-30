@@ -102,7 +102,7 @@ postcssTape(plugin)({
 		}
 	},
 	'examples/example-custom-function-name': {
-		message: 'minimal example with { functionName: "tokens" }',
+		message: 'minimal example with { functionName: "token" }',
 		options: {
 			functionName: 'token'
 		}
