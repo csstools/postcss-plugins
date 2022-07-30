@@ -107,6 +107,10 @@ postcssTape(plugin)({
 			valueFunctionName: 'token'
 		}
 	},
+	'examples/example-custom-at-rule-name': {
+		message: 'minimal example with { atRuleName: "tokens" }',
+		options: {
+			atRuleName: 'tokens'
 		}
 	},
 });

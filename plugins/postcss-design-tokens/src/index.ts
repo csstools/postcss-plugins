@@ -23,7 +23,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				Once: async (root, { result }) => {
 					const designTokenAtRules: Array<{filePath: string, params: string, node: Node}> = [];
 					root.walkAtRules((atRule) => {
-						if (atRule.name.toLowerCase() !== 'design-tokens') {
+						if (atRule.name.toLowerCase() !== options.atRuleName) {
 							return;
 						}
 

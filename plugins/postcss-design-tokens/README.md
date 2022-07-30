@@ -74,6 +74,34 @@ Use `style-dictionary3` in `@design-tokens` rules to pick this format.
 
 ## Options
 
+### atRuleName
+
+The `atRuleName` option allows you to set a custom alias for `@design-tokens`.
+
+```js
+postcssDesignTokens({ atRuleName: 'tokens' })
+```
+
+```pcss
+@tokens url('./tokens.json') format('style-dictionary3');
+
+.foo {
+	color: design-token('color.background.primary');
+	padding-top: design-token('size.spacing.small');
+	padding-left: design-token('size.spacing.small' to px);
+	padding-bottom: design-token('size.spacing.small' to rem);
+}
+
+/* becomes */
+
+.foo {
+	color: #fff;
+	padding-top: 16px;
+	padding-left: 16px;
+	padding-bottom: 1rem;
+}
+```
+
 ### is
 
 The `is` option determines which design tokens are used.
