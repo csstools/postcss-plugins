@@ -88,7 +88,7 @@ given that the polyfill does not support arbitrary values.
 The `disablePolyfillReadyClass` option determines if selectors are prefixed with an indicator class.
 This class is only set on your document if the polyfill loads and is needed.
 
- By default this option is `false`.
+By default this option is `false`.
 Set this to `true` to prevent the class from being added.
 
 ```js
