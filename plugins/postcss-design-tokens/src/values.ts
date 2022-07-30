@@ -7,7 +7,7 @@ export function onCSSValue(tokens: Map<string, Token>, result: Result, decl: Dec
 	const valueAST = valueParser(decl.value);
 
 	valueAST.walk(node => {
-		if (node.type !== 'function' || node.value.toLowerCase() !== opts.functionName) {
+		if (node.type !== 'function' || node.value.toLowerCase() !== opts.valueFunctionName) {
 			return;
 		}
 

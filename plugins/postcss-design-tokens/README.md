@@ -81,12 +81,12 @@ This allows you to generate multiple themed stylesheets.
 
 By default only `@design-tokens` without any `when('foo')` conditions are used.
 
-### functionName
+### valueFunctionName
 
-The `functionName` option allows you to set a custom alias for `design-token`.
+The `valueFunctionName` option allows you to set a custom alias for `design-token`.
 
 ```js
-postcssDesignTokens({ functionName: 'token' })
+postcssDesignTokens({ valueFunctionName: 'token' })
 ```
 
 ```pcss
