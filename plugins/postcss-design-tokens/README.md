@@ -81,6 +81,34 @@ This allows you to generate multiple themed stylesheets.
 
 By default only `@design-tokens` without any `when('foo')` conditions are used.
 
+### functionName
+
+The `functionName` option allows you to set a custom alias for `design-token`.
+
+```js
+postcssDesignTokens({ functionName: 'token' })
+```
+
+```pcss
+@design-tokens url('./tokens.json') format('style-dictionary3');
+
+.foo {
+	color: token('color.background.primary');
+	padding-top: token('size.spacing.small');
+	padding-left: token('size.spacing.small' to px);
+	padding-bottom: token('size.spacing.small' to rem);
+}
+
+/* becomes */
+
+.foo {
+	color: #fff;
+	padding-top: 16px;
+	padding-left: 16px;
+	padding-bottom: 1rem;
+}
+```
+
 #### Example usage
 
 **For these two token files :**

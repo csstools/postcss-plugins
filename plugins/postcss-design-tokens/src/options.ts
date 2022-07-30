@@ -1,14 +1,16 @@
-import { DEFAULT_CONDITION } from './constants';
+import { DEFAULT_CONDITION, DEFAULT_FUNCTION_NAME } from './constants';
 
 export type pluginOptions = {
 	is?: Array<string>
+	functionName: string,
 	unitsAndValues?: {
 		rootFontSize?: number
 	}
 }
 
 export type parsedPluginOptions = {
-	is: Array<string>
+	is: Array<string>,
+	functionName: string,
 	unitsAndValues: {
 		rootFontSize: number
 	}
@@ -17,6 +19,7 @@ export type parsedPluginOptions = {
 export function parsePluginOptions(opts?: pluginOptions): parsedPluginOptions {
 	const options: parsedPluginOptions = {
 		is: [DEFAULT_CONDITION],
+		functionName: DEFAULT_FUNCTION_NAME,
 		unitsAndValues: {
 			rootFontSize: 16,
 		},
@@ -40,6 +43,10 @@ export function parsePluginOptions(opts?: pluginOptions): parsedPluginOptions {
 
 	if (typeof opts.unitsAndValues === 'object' && typeof opts.unitsAndValues.rootFontSize === 'number' && isPositiveAndNotZero(opts.unitsAndValues.rootFontSize)) {
 		options.unitsAndValues.rootFontSize = opts.unitsAndValues.rootFontSize;
+	}
+
+	if (typeof opts.functionName === 'string') {
+		options.functionName = opts.functionName;
 	}
 
 	return options;

@@ -65,7 +65,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 				},
 				Declaration(decl, { result }) {
-					if (decl.value.toLowerCase().indexOf('design-token') === -1) {
+					if (decl.value.toLowerCase().includes(options.functionName)) {
 						return;
 					}
 

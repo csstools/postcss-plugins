@@ -101,4 +101,10 @@ postcssTape(plugin)({
 			}
 		}
 	},
+	'examples/example-custom-function-name': {
+		message: 'minimal example with { functionName: "tokens" }',
+		options: {
+			functionName: 'token'
+		}
+	},
 });
