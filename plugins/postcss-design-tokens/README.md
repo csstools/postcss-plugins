@@ -74,12 +74,12 @@ Use `style-dictionary3` in `@design-tokens` rules to pick this format.
 
 ## Options
 
-### atRuleName
+### importAtRuleName
 
-The `atRuleName` option allows you to set a custom alias for `@design-tokens`.
+The `importAtRuleName` option allows you to set a custom alias for `@design-tokens`.
 
 ```js
-postcssDesignTokens({ atRuleName: 'tokens' })
+postcssDesignTokens({ importAtRuleName: 'tokens' })
 ```
 
 ```pcss

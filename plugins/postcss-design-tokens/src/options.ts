@@ -1,11 +1,11 @@
 import {
 	DEFAULT_CONDITION,
 	DEFAULT_VALUE_FUNCTION_NAME,
-	DEFAULT_AT_RULE_NAME,
+	DEFAULT_IMPORT_AT_RULE_NAME,
 } from './constants';
 
 export type pluginOptions = {
-	atRuleName: string,
+	importAtRuleName: string,
 	is?: Array<string>
 	unitsAndValues?: {
 		rootFontSize?: number
@@ -14,7 +14,7 @@ export type pluginOptions = {
 }
 
 export type parsedPluginOptions = {
-	atRuleName: string,
+	importAtRuleName: string,
 	is: Array<string>,
 	unitsAndValues: {
 		rootFontSize: number
@@ -24,7 +24,7 @@ export type parsedPluginOptions = {
 
 export function parsePluginOptions(opts?: pluginOptions): parsedPluginOptions {
 	const options: parsedPluginOptions = {
-		atRuleName: DEFAULT_AT_RULE_NAME,
+		importAtRuleName: DEFAULT_IMPORT_AT_RULE_NAME,
 		is: [DEFAULT_CONDITION],
 		unitsAndValues: {
 			rootFontSize: 16,
@@ -56,8 +56,8 @@ export function parsePluginOptions(opts?: pluginOptions): parsedPluginOptions {
 		options.valueFunctionName = opts.valueFunctionName;
 	}
 
-	if (typeof opts.atRuleName === 'string') {
-		options.atRuleName = opts.atRuleName;
+	if (typeof opts.importAtRuleName === 'string') {
+		options.importAtRuleName = opts.importAtRuleName;
 	}
 
 	return options;

@@ -44,20 +44,20 @@ Use `style-dictionary3` in `@design-tokens` rules to pick this format.
 
 ## Options
 
-### atRuleName
+### importAtRuleName
 
-The `atRuleName` option allows you to set a custom alias for `@design-tokens`.
+The `importAtRuleName` option allows you to set a custom alias for `@design-tokens`.
 
 ```js
-<exportName>({ atRuleName: 'tokens' })
+<exportName>({ importAtRuleName: 'tokens' })
 ```
 
 ```pcss
-<example-custom-at-rule-name.css>
+<example-custom-import-at-rule-name.css>
 
 /* becomes */
 
-<example-custom-at-rule-name.expect.css>
+<example-custom-import-at-rule-name.expect.css>
 ```
 
 ### is
