@@ -39,7 +39,7 @@
 		"@csstools/postcss-stepped-value-functions": "^1.0.0",
 		"@csstools/postcss-trigonometric-functions": "^1.0.1",
 		"@csstools/postcss-unset-value": "^1.0.1",
-		"autoprefixer": "^10.4.7",
+		"autoprefixer": "^10.4.8",
 		"browserslist": "^4.21.2",
 		"css-blank-pseudo": "^3.0.3",
 		"css-has-pseudo": "^3.0.4",
