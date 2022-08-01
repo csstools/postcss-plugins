@@ -67,22 +67,6 @@ This allows you to generate multiple themed stylesheets.
 
 By default only `@design-tokens` without any `when('foo')` conditions are used.
 
-### valueFunctionName
-
-The `valueFunctionName` option allows you to set a custom alias for `design-token`.
-
-```js
-<exportName>({ valueFunctionName: 'token' })
-```
-
-```pcss
-<example-custom-value-function-name.css>
-
-/* becomes */
-
-<example-custom-value-function-name.expect.css>
-```
-
 #### Example usage
 
 **For these two token files :**
@@ -129,6 +113,22 @@ The `valueFunctionName` option allows you to set a custom alias for `design-toke
 /* becomes */
 
 <example-conditional.dark.expect.css>
+```
+
+### valueFunctionName
+
+The `valueFunctionName` option allows you to set a custom alias for `design-token`.
+
+```js
+<exportName>({ valueFunctionName: 'token' })
+```
+
+```pcss
+<example-custom-value-function-name.css>
+
+/* becomes */
+
+<example-custom-value-function-name.expect.css>
 ```
 
 ### unitsAndValues
