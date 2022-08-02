@@ -101,4 +101,16 @@ postcssTape(plugin)({
 			}
 		}
 	},
+	'examples/example-custom-value-function-name': {
+		message: 'minimal example with { valueFunctionName: "token" }',
+		options: {
+			valueFunctionName: 'token'
+		}
+	},
+	'examples/example-custom-import-at-rule-name': {
+		message: 'minimal example with { importAtRuleName: "tokens" }',
+		options: {
+			importAtRuleName: 'tokens'
+		}
+	},
 });
