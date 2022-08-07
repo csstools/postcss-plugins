@@ -44,6 +44,22 @@ Use `style-dictionary3` in `@design-tokens` rules to pick this format.
 
 ## Options
 
+### importAtRuleName
+
+The `importAtRuleName` option allows you to set a custom alias for `@design-tokens`.
+
+```js
+<exportName>({ importAtRuleName: 'tokens' })
+```
+
+```pcss
+<example-custom-import-at-rule-name.css>
+
+/* becomes */
+
+<example-custom-import-at-rule-name.expect.css>
+```
+
 ### is
 
 The `is` option determines which design tokens are used.
@@ -97,6 +113,22 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 /* becomes */
 
 <example-conditional.dark.expect.css>
+```
+
+### valueFunctionName
+
+The `valueFunctionName` option allows you to set a custom alias for `design-token`.
+
+```js
+<exportName>({ valueFunctionName: 'token' })
+```
+
+```pcss
+<example-custom-value-function-name.css>
+
+/* becomes */
+
+<example-custom-value-function-name.expect.css>
 ```
 
 ### unitsAndValues
