@@ -1,0 +1,7 @@
+.fancy-container {
+	--is-fancy: true;
+}
+
+.block {
+	color: if(--is-fancy pink else red);
+}

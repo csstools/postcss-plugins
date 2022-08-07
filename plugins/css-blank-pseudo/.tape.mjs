@@ -24,6 +24,12 @@ postcssTape(plugin)({
 			replaceWith: '#css-blank'
 		}
 	},
+	'basic:disable-polyfill-ready-class': {
+		message: 'supports { disablePolyfillReadyClass: true } usage',
+		options: {
+			disablePolyfillReadyClass: true
+		}
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},
@@ -37,6 +43,12 @@ postcssTape(plugin)({
 		message: 'minimal example',
 		options: {
 			replaceWith: '.css-blank'
+		}
+	},
+	'examples/example:disable-polyfill-ready-class': {
+		message: 'minimal example',
+		options: {
+			disablePolyfillReadyClass: true
 		}
 	},
 	'browser': {

@@ -1,5 +1,9 @@
 # Changes to PostCSS Gap Properties
 
+### 3.0.5 (July 12, 2022)
+
+- Fix detection of `display: grid;`
+
 ### 3.0.4 (July 8, 2022)
 
 - Fix case insensitive matching.

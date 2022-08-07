@@ -11,7 +11,7 @@
 
 /* becomes */
 
-[csstools-has-1a-38-2x-38-30-2t-1m-2w-2p-37-14-17-w-34-15]:not(does-not-exist) {
+.js-has-pseudo [csstools-has-1a-38-2x-38-30-2t-1m-2w-2p-37-14-17-w-34-15]:not(does-not-exist) {
 	margin-bottom: 1.5rem;
 }
 .title:has(+ p) {
@@ -62,7 +62,7 @@ postcssHasPseudo({ preserve: false })
 
 /* becomes */
 
-[csstools-has-1a-38-2x-38-30-2t-1m-2w-2p-37-14-17-w-34-15]:not(does-not-exist) {
+.js-has-pseudo [csstools-has-1a-38-2x-38-30-2t-1m-2w-2p-37-14-17-w-34-15]:not(does-not-exist) {
 	margin-bottom: 1.5rem;
 }
 ```
@@ -143,11 +143,11 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/css-has-pseudo@3.0.4/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-has-pseudo@4.0.0/dist/browser-global.js"></script>
 <script>cssHasPseudo(document)</script>
 ```
 
-⚠️ Please use a versioned url, like this : `https://unpkg.com/css-has-pseudo@3.0.4/dist/browser-global.js`
+⚠️ Please use a versioned url, like this : `https://unpkg.com/css-has-pseudo@4.0.0/dist/browser-global.js`
 Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
 [PostCSS Has Pseudo] works in all major browsers, including
@@ -277,7 +277,7 @@ replacing them with an alternative `[csstools-has-]` selector.
 
 /* becomes */
 
-[csstools-has-1a-38-2x-38-30-2t-1m-2w-2p-37-14-17-w-34-15]:not(does-not-exist) {
+.js-has-pseudo [csstools-has-1a-38-2x-38-30-2t-1m-2w-2p-37-14-17-w-34-15]:not(does-not-exist) {
 	margin-bottom: 1.5rem;
 }
 .title:has(+ p) {

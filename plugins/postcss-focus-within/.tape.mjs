@@ -11,6 +11,12 @@ postcssTape(plugin)({
 			replaceWith: '.focus-within',
 		},
 	},
+	'basic:disable-polyfill-ready-class': {
+		message: 'supports { disablePolyfillReadyClass: true } usage',
+		options: {
+			disablePolyfillReadyClass: true
+		}
+	},
 	'basic:preserve': {
 		message: 'supports { preserve: false } usage',
 		options: {
@@ -35,6 +41,12 @@ postcssTape(plugin)({
 		options: {
 			replaceWith: '.focus-within',
 		},
+	},
+	'examples/example:disable-polyfill-ready-class': {
+		message: 'minimal example',
+		options: {
+			disablePolyfillReadyClass: true
+		}
 	},
 	'browser': {
 		message: 'css for browser tests',

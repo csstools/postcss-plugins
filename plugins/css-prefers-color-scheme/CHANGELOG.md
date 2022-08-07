@@ -14,7 +14,6 @@
 
 ##### Re-build your CSS with the new version of the library.
 
-
 ##### If you use a CDN url, please update it.
 
 ```diff
