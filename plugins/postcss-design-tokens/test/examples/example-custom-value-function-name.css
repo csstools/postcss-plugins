@@ -1,0 +1,8 @@
+@design-tokens url('./tokens.json') format('style-dictionary3');
+
+.foo {
+	color: token('color.background.primary');
+	padding-top: token('size.spacing.small');
+	padding-left: token('size.spacing.small' to px);
+	padding-bottom: token('size.spacing.small' to rem);
+}

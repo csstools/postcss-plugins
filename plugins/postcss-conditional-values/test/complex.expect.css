@@ -1,0 +1,49 @@
+:root {
+	--dark-mode:  ;
+	--fancy-mode:  ;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	:root {
+		--dark-mode: initial;
+	}
+}
+
+.dark-mode {
+	--dark-mode: initial;
+}
+
+.dark-node.no-js {
+	--dark-mode:  ;
+}
+
+.fancy-mode {
+	--fancy-mode: initial;
+}
+
+.fancy-node.no-js {
+	--fancy-mode:  ;
+}
+
+.something {
+	--dark-mode--0: var(--dark-mode) white;
+	color: var(--dark-mode--0,black);
+	--dark-mode--1: var(--dark-mode) brown;
+	background-color: var(--dark-mode--1,yellow);
+	--dark-mode--2: var(--dark-mode) blue;
+	background-color: var(--dark-mode--2,cyan);
+}
+
+.something-else {
+	--fancy-mode--0: var(--fancy-mode) solid;
+	text-decoration: underline var(--fancy-mode--0,wavy) 1px red;
+}
+
+.nested {
+	--fancy-mode--1: var(--fancy-mode) yellow;
+	--dark-mode--3: var(--dark-mode) var(--fancy-mode--1,orange);
+	color: var(--dark-mode--3,red);
+	--dark-mode--4: var(--dark-mode) rgb(255, 0, 200);
+	--fancy-mode--2: var(--fancy-mode) rgb(0, 255, 174);
+	background-color: var(--dark-mode--4,var(--fancy-mode--2,rgb(0, 123, 255)));
+}
