@@ -23,7 +23,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			}
 
 			const originalValue = decl.value;
-
 			let valueAST: ParsedValue | undefined;
 
 			try {
@@ -33,8 +32,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					result,
 					`Failed to parse value '${originalValue}'. Leaving the original value intact.`,
 				);
+				return;
 			}
-
 			if (typeof valueAST === 'undefined') {
 				return;
 			}
@@ -60,8 +59,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					nestedCalc.value = '';
 				});
 			}, true);
-			const modifiedValue = String(valueAST);
 
+			const modifiedValue = String(valueAST);
 			if (modifiedValue === originalValue) {
 				return;
 			}
