@@ -1,4 +1,4 @@
-/* We expect unlayered extensions to be global and these must appear later so that they override layered extensions */
+/* We expect unlayered extensions to appear later so that they override layered extensions */
 
 @custom-media --custom-media-query: (min-width: 0px);
 
