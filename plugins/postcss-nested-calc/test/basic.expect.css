@@ -36,3 +36,7 @@
 .ignore {
 	order: calc(1 + var(--foo, calc(2 * 2)));
 }
+
+.custom-props {
+	--order: calc(1 + var(--foo, calc(2 * 2)));
+}

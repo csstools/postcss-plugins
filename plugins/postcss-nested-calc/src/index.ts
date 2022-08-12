@@ -17,8 +17,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-nested-calc',
 		Declaration(decl, { result }) {
-			if (decl.value.toLowerCase().split('calc(').length < 2) {
+			if (decl.value.toLowerCase().split('calc(').length <= 2) {
 				// must have at least two calc functions.
+				return;
+			}
+
+			if (decl.variable) {
+				// We can not determine if something will become a nested calc after variable substitution.
+				// Not touching variables at all is safest for now.
 				return;
 			}
 
