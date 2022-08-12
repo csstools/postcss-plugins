@@ -2,6 +2,16 @@
 	order: calc(1 + (2 * 2));
 }
 
+.mixed-casing {
+	order: calc(1 + (2 * 2));
+}
+
+.multi-line {
+	order: calc(1 +
+		(2 * 2)
+	);
+}
+
 .multiple-nested {
 	order: calc(2 + (2 * 2) + (2 * 2));
 }

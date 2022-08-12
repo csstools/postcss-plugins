@@ -1,6 +1,7 @@
 import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import type { ParsedValue } from 'postcss-value-parser';
+import { numberOfOccurrences } from './occurrences';
 
 type pluginOptions = { preserve?: boolean };
 
@@ -17,7 +18,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-nested-calc',
 		Declaration(decl, { result }) {
-			if (decl.value.toLowerCase().split('calc(').length <= 2) {
+			if (numberOfOccurrences(decl.value, /calc\(/gim) < 2) {
 				// must have at least two calc functions.
 				return;
 			}

@@ -3,6 +3,20 @@
 	order: calc(1 + calc(2 * 2));
 }
 
+.mixed-casing {
+	order: calc(1 + (2 * 2));
+	order: calc(1 + cAlC(2 * 2));
+}
+
+.multi-line {
+	order: calc(1 +
+		(2 * 2)
+	);
+	order: calc(1 +
+		calc(2 * 2)
+	);
+}
+
 .multiple-nested {
 	order: calc(2 + (2 * 2) + (2 * 2));
 	order: calc(2 + calc(2 * 2) + calc(2 * 2));
