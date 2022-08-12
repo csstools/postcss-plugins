@@ -1,7 +1,3 @@
-.foo {
+.example {
 	order: calc(1 + (2 * 2));
-}
-
-.ignore {
-	order: calc(1 + var(--foo, calc(2 * 2)));
 }

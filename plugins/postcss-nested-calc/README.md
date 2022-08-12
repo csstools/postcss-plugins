@@ -5,23 +5,15 @@
 [PostCSS Nested Calc] lets you use nested `calc()` expressions following the [CSS Values and Units 4 specification].
 
 ```pcss
-.foo {
+.example {
 	order: calc(1 + calc(2 * 2));
-}
-
-.ignore {
-	order: calc(1 + var(--foo, calc(2 * 2)));
 }
 
 /* becomes */
 
-.foo {
+.example {
 	order: calc(1 + (2 * 2));
 	order: calc(1 + calc(2 * 2));
-}
-
-.ignore {
-	order: calc(1 + var(--foo, calc(2 * 2)));
 }
 ```
 
@@ -62,22 +54,14 @@ postcssNestedCalc({ preserve: false })
 ```
 
 ```pcss
-.foo {
+.example {
 	order: calc(1 + calc(2 * 2));
-}
-
-.ignore {
-	order: calc(1 + var(--foo, calc(2 * 2)));
 }
 
 /* becomes */
 
-.foo {
+.example {
 	order: calc(1 + (2 * 2));
-}
-
-.ignore {
-	order: calc(1 + var(--foo, calc(2 * 2)));
 }
 ```
 
