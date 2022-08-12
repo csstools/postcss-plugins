@@ -1,0 +1,57 @@
+.a {
+	text-decoration: wavy;
+}
+
+.b {
+	text-decoration: overline;
+}
+
+.ab {
+	text-decoration: wavy overline;
+}
+
+.abc {
+	text-decoration: wavy overline purple;
+}
+
+.bcd {
+	text-decoration: overline purple 4px;
+}
+
+.cd {
+	text-decoration: purple 4px;
+}
+
+.d {
+	text-decoration: wavy overline purple 4px;
+}
+
+.abcd {
+	text-decoration: wavy overline purple 4px;
+}
+
+.bcda {
+	text-decoration: overline purple 4px wavy;
+}
+
+.cdab {
+	text-decoration: purple 4px wavy overline;
+}
+
+.dabc {
+	text-decoration: 4px wavy overline purple;
+}
+
+.with-comment {
+	text-decoration: wavy /* a comment */ overline purple 4px;
+}
+
+.future-percentage-thickness-a {
+	/* how authors write it */
+	text-decoration: 2% wavy overline purple;
+}
+
+.future-percentage-thickness-b {
+	/* the fallback we will provide */
+	text-decoration: calc(1em / 100 * 2) wavy overline purple;
+}
