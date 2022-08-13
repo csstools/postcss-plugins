@@ -70,7 +70,6 @@
 		"postcss-plugin"
 	],
 	"csstools": {
-		"cssdbId": "TODO",
 		"exportName": "postcssNestedCalc",
 		"humanReadableName": "PostCSS Nested Calc",
 		"specUrl": "https://www.w3.org/TR/css-values/#calc-func"
