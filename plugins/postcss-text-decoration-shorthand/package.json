@@ -73,7 +73,6 @@
 		"text-decoration-thickness"
 	],
 	"csstools": {
-		"cssdbId": "TODO",
 		"exportName": "postcssTextDecorationShorthand",
 		"humanReadableName": "PostCSS Text Decoration Shorthand",
 		"specUrl": "https://drafts.csswg.org/css-text-decor-4/#text-decoration-property"
