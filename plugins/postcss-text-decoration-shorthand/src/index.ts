@@ -15,149 +15,181 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-text-decoration-shorthand',
-		Declaration: (decl) => {
-			if (decl.prop.toLowerCase() !== 'text-decoration') {
-				return;
-			}
+		prepare() {
+			const convertedValues : Map<string, string> = new Map();
 
-			const ownIndex = decl.parent.index(decl);
-			const hasFallbacksOrOverrides = decl.parent.nodes.some((node) => {
-				return node.type === 'decl' &&
-					decl.prop.toLowerCase() === 'text-decoration' &&
-					decl.parent.index(node) !== ownIndex;
-			});
-			if (hasFallbacksOrOverrides) {
-				return;
-			}
+			return {
+				OnceExit: () => {
+					convertedValues.clear();
+				},
+				Declaration: (decl) => {
+					if (decl.prop.toLowerCase() !== 'text-decoration') {
+						return;
+					}
 
-			const valueAST = valueParser(decl.value);
-			const relevantNodes = valueAST.nodes.filter((node) => {
-				return node.type !== 'space' && node.type !== 'comment';
-			});
+					const ownIndex = decl.parent.index(decl);
+					const hasFallbacksOrOverrides = decl.parent.nodes.some((node) => {
+						return node.type === 'decl' &&
+							node.prop.toLowerCase() === 'text-decoration' &&
+							convertedValues.get(decl.value) === node.value &&
+							decl.parent.index(node) !== ownIndex;
+					});
+					if (hasFallbacksOrOverrides) {
+						return;
+					}
 
-			if (relevantNodes.length > 4) {
-				return;
-			}
+					const valueAST = valueParser(decl.value);
+					const relevantNodes = valueAST.nodes.filter((node) => {
+						return node.type !== 'space' && node.type !== 'comment';
+					});
 
-			if (relevantNodes.find((node) => {
-				return node.value.toLowerCase() === 'var' && node.type === 'function';
-			})) {
-				return;
-			}
+					if (relevantNodes.length > 4) {
+						return;
+					}
 
-			if (relevantNodes.find((node) => {
-				return node.type === 'word' && cssWideKeywords.includes(node.value);
-			})) {
-				return;
-			}
+					if (relevantNodes.find((node) => {
+						return node.value.toLowerCase() === 'var' && node.type === 'function';
+					})) {
+						return;
+					}
 
-			const data = {
-				line: null,
-				style: null,
-				color: null,
-				thickness: null,
-			};
+					if (relevantNodes.find((node) => {
+						return node.type === 'word' && cssWideKeywords.includes(node.value);
+					})) {
+						return;
+					}
 
-			for (let i = 0; i < relevantNodes.length; i++) {
-				const currentNode = relevantNodes[i];
+					const data = {
+						line: null,
+						style: null,
+						color: null,
+						thickness: null,
+					};
 
-				if (currentNode.type === 'word' && lineKeywords.includes(currentNode.value.toLowerCase())) {
-					data.line = currentNode;
-					continue;
-				}
+					for (let i = 0; i < relevantNodes.length; i++) {
+						const currentNode = relevantNodes[i];
 
-				if (currentNode.type === 'word' && styleKeywords.includes(currentNode.value.toLowerCase())) {
-					data.style = currentNode;
-					continue;
-				}
+						if (currentNode.type === 'word' && lineKeywords.includes(currentNode.value.toLowerCase())) {
+							data.line = currentNode;
+							continue;
+						}
 
-				if (nodeIsAColor(currentNode)) {
-					data.color = currentNode;
-					continue;
-				}
+						if (currentNode.type === 'word' && styleKeywords.includes(currentNode.value.toLowerCase())) {
+							data.style = currentNode;
+							continue;
+						}
 
-				if (currentNode.type === 'word' && currentNode.value.toLowerCase() === 'none') {
-					if (!data.color) {
-						data.color = currentNode;
+						if (nodeIsAColor(currentNode)) {
+							data.color = currentNode;
+							continue;
+						}
+
+						if (currentNode.type === 'word' && currentNode.value.toLowerCase() === 'none') {
+							if (!data.color) {
+								data.color = currentNode;
+							}
+
+							if (!data.line) {
+								data.line = currentNode;
+							}
+
+							continue;
+						}
+
+						data.thickness = currentNode;
 					}
 
 					if (!data.line) {
-						data.line = currentNode;
+						data.line = {
+							type: 'word',
+							value: 'none',
+						};
 					}
 
-					continue;
-				}
+					if (!data.style) {
+						data.style = {
+							type: 'word',
+							value: 'solid',
+						};
+					}
 
-				data.thickness = currentNode;
-			}
+					if (!data.color) {
+						data.color = {
+							type: 'word',
+							value: 'currentColor',
+						};
+					}
 
-			if (!data.line) {
-				data.line = {
-					type: 'word',
-					value: 'none',
-				};
-			}
+					if (!data.thickness) {
+						data.thickness = {
+							type: 'word',
+							value: 'auto',
+						};
+					}
 
-			if (!data.style) {
-				data.style = {
-					type: 'word',
-					value: 'solid',
-				};
-			}
+					try {
+						const valueAndUnit = valueParser.unit(data.thickness.value);
+						if (valueAndUnit && valueAndUnit.unit === '%') {
+							data.thickness = {
+								type: 'function',
+								value: 'calc',
+								nodes: [
+									{ type: 'word',value: '0.01em' },
+									{ type: 'space', value: ' ' },
+									{ type: 'word', value: '*' },
+									{ type: 'space', value: ' ' },
+									{ type: 'word', value: valueAndUnit.number },
+								],
+							};
+						}
+					} catch (_) {
+						// Ignore errors.
+					}
 
-			if (!data.color) {
-				data.color = {
-					type: 'word',
-					value: 'currentColor',
-				};
-			}
+					const nonShortHandValue = valueParser.stringify(data.line);
+					if (decl.value.toLowerCase() === nonShortHandValue) {
+						return;
+					}
 
-			if (!data.thickness) {
-				data.thickness = {
-					type: 'word',
-					value: 'auto',
-				};
-			}
+					const shortHandValue = valueParser.stringify([
+						data.line,
+						{
+							type: 'space',
+							value: ' ',
+						},
+						data.style,
+						{
+							type: 'space',
+							value: ' ',
+						},
+						data.color,
+					]);
 
-			const nonShortHandValue = valueParser.stringify(data.line);
-			if (decl.value.toLowerCase() === nonShortHandValue) {
-				return;
-			}
+					decl.cloneBefore({
+						prop: 'text-decoration',
+						value: nonShortHandValue,
+					});
 
-			const shortHandValue = valueParser.stringify([
-				data.line,
-				{
-					type: 'space',
-					value: ' ',
+					decl.cloneBefore({
+						prop: 'text-decoration',
+						value: shortHandValue,
+					});
+
+					decl.cloneBefore({
+						prop: 'text-decoration-thickness',
+						value: valueParser.stringify([
+							data.thickness,
+						]),
+					});
+
+					convertedValues.set(decl.value, nonShortHandValue);
+					convertedValues.set(shortHandValue, nonShortHandValue);
+
+					if (!options.preserve) {
+						decl.remove();
+					}
 				},
-				data.style,
-				{
-					type: 'space',
-					value: ' ',
-				},
-				data.color,
-			]);
-
-			decl.cloneBefore({
-				prop: 'text-decoration',
-				value: nonShortHandValue,
-			});
-
-			decl.cloneBefore({
-				prop: 'text-decoration',
-				value: shortHandValue,
-			});
-
-			decl.cloneBefore({
-				prop: 'text-decoration-thickness',
-				value: valueParser.stringify([
-					data.thickness,
-				]),
-			});
-
-			if (!options.preserve) {
-				decl.remove();
-			}
+			};
 		},
 	};
 };

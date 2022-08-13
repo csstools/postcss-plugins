@@ -6,7 +6,7 @@
 
 ```pcss
 .example {
-	text-decoration: wavy underline purple 4px;
+	text-decoration: wavy underline purple 25%;
 }
 
 /* becomes */
@@ -14,7 +14,7 @@
 .example {
 	text-decoration: underline;
 	text-decoration: underline wavy purple;
-	text-decoration-thickness: 4px;
+	text-decoration-thickness: calc(0.01em * 25);
 }
 ```
 
@@ -56,7 +56,7 @@ postcssTextDecorationShorthand({ preserve: true })
 
 ```pcss
 .example {
-	text-decoration: wavy underline purple 4px;
+	text-decoration: wavy underline purple 25%;
 }
 
 /* becomes */
@@ -64,8 +64,8 @@ postcssTextDecorationShorthand({ preserve: true })
 .example {
 	text-decoration: underline;
 	text-decoration: underline wavy purple;
-	text-decoration-thickness: 4px;
-	text-decoration: wavy underline purple 4px;
+	text-decoration-thickness: calc(0.01em * 25);
+	text-decoration: wavy underline purple 25%;
 }
 ```
 

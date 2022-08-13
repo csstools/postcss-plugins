@@ -101,22 +101,11 @@
 	        text-decoration: wavy /* a comment */ overline purple 4px;
 }
 
-.future-percentage-thickness-a {
-	/* how authors write it */
+.percentage-thickness {
 	text-decoration: overline;
 	-webkit-text-decoration: overline wavy purple;
 	        text-decoration: overline wavy purple;
-	text-decoration-thickness: 2%;
+	text-decoration-thickness: calc(0.01em * 2);
 	-webkit-text-decoration: 2% wavy overline purple;
 	        text-decoration: 2% wavy overline purple;
-}
-
-.future-percentage-thickness-b {
-	/* the fallback we will provide */
-	text-decoration: overline;
-	-webkit-text-decoration: overline wavy purple;
-	        text-decoration: overline wavy purple;
-	text-decoration-thickness: calc(1em / 100 * 2);
-	-webkit-text-decoration: calc(1em / 100 * 2) wavy overline purple;
-	        text-decoration: calc(1em / 100 * 2) wavy overline purple;
 }

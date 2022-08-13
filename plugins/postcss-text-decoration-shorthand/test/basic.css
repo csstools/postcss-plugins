@@ -46,12 +46,6 @@
 	text-decoration: wavy /* a comment */ overline purple 4px;
 }
 
-.future-percentage-thickness-a {
-	/* how authors write it */
+.percentage-thickness {
 	text-decoration: 2% wavy overline purple;
-}
-
-.future-percentage-thickness-b {
-	/* the fallback we will provide */
-	text-decoration: calc(1em / 100 * 2) wavy overline purple;
 }

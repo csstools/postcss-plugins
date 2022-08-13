@@ -68,16 +68,8 @@
 	text-decoration-thickness: 4px;
 }
 
-.future-percentage-thickness-a {
-	/* how authors write it */
+.percentage-thickness {
 	text-decoration: overline;
 	text-decoration: overline wavy purple;
-	text-decoration-thickness: 2%;
-}
-
-.future-percentage-thickness-b {
-	/* the fallback we will provide */
-	text-decoration: overline;
-	text-decoration: overline wavy purple;
-	text-decoration-thickness: calc(1em / 100 * 2);
+	text-decoration-thickness: calc(0.01em * 2);
 }
