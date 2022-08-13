@@ -2,7 +2,6 @@
 	text-decoration: none;
 	-webkit-text-decoration: none wavy currentColor;
 	        text-decoration: none wavy currentColor;
-	text-decoration-thickness: auto;
 	-webkit-text-decoration: wavy;
 	        text-decoration: wavy;
 }
@@ -15,16 +14,12 @@
 	text-decoration: overline;
 	-webkit-text-decoration: overline wavy currentColor;
 	        text-decoration: overline wavy currentColor;
-	text-decoration-thickness: auto;
 	-webkit-text-decoration: wavy overline;
 	        text-decoration: wavy overline;
 }
 
 .abc {
 	text-decoration: overline;
-	-webkit-text-decoration: overline wavy purple;
-	        text-decoration: overline wavy purple;
-	text-decoration-thickness: auto;
 	-webkit-text-decoration: wavy overline purple;
 	        text-decoration: wavy overline purple;
 }

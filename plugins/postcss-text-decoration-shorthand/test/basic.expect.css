@@ -1,7 +1,6 @@
 .a {
 	text-decoration: none;
 	text-decoration: none wavy currentColor;
-	text-decoration-thickness: auto;
 }
 
 .b {
@@ -11,13 +10,10 @@
 .ab {
 	text-decoration: overline;
 	text-decoration: overline wavy currentColor;
-	text-decoration-thickness: auto;
 }
 
 .abc {
 	text-decoration: overline;
-	text-decoration: overline wavy purple;
-	text-decoration-thickness: auto;
 }
 
 .bcd {

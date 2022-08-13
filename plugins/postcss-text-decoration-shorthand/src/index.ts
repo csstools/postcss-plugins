@@ -120,13 +120,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						};
 					}
 
-					if (!data.thickness) {
-						data.thickness = {
-							type: 'word',
-							value: 'auto',
-						};
-					}
-
 					try {
 						const valueAndUnit = valueParser.unit(data.thickness.value);
 						if (valueAndUnit && valueAndUnit.unit === '%') {
@@ -170,17 +163,24 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						value: nonShortHandValue,
 					});
 
-					decl.cloneBefore({
-						prop: 'text-decoration',
-						value: shortHandValue,
-					});
+					// Construct a new shorthand value without thickness:
+					// - when thickness is set
+					// - when not all shorthand properties are set
+					if (data.thickness || relevantNodes.length !== 3) {
+						decl.cloneBefore({
+							prop: 'text-decoration',
+							value: shortHandValue,
+						});
+					}
 
-					decl.cloneBefore({
-						prop: 'text-decoration-thickness',
-						value: valueParser.stringify([
-							data.thickness,
-						]),
-					});
+					if (data.thickness) {
+						decl.cloneBefore({
+							prop: 'text-decoration-thickness',
+							value: valueParser.stringify([
+								data.thickness,
+							]),
+						});
+					}
 
 					convertedValues.set(decl.value, nonShortHandValue);
 					convertedValues.set(shortHandValue, nonShortHandValue);
