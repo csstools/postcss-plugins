@@ -73,3 +73,15 @@
 	text-decoration: overline wavy purple;
 	text-decoration-thickness: calc(0.01em * 2);
 }
+
+.two-rules-with-same-transform--a {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: calc(0.01em * 2);
+}
+
+.two-rules-with-same-transform--b {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: calc(0.01em * 2);
+}

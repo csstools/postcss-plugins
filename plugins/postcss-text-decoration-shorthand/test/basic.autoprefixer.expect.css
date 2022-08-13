@@ -109,3 +109,21 @@
 	-webkit-text-decoration: 2% wavy overline purple;
 	        text-decoration: 2% wavy overline purple;
 }
+
+.two-rules-with-same-transform--a {
+	text-decoration: overline;
+	-webkit-text-decoration: overline wavy purple;
+	        text-decoration: overline wavy purple;
+	text-decoration-thickness: calc(0.01em * 2);
+	-webkit-text-decoration: 2% wavy overline purple;
+	        text-decoration: 2% wavy overline purple;
+}
+
+.two-rules-with-same-transform--b {
+	text-decoration: overline;
+	-webkit-text-decoration: overline wavy purple;
+	        text-decoration: overline wavy purple;
+	text-decoration-thickness: calc(0.01em * 2);
+	-webkit-text-decoration: 2% wavy overline purple;
+	        text-decoration: 2% wavy overline purple;
+}

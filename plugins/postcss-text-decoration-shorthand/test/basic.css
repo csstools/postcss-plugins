@@ -49,3 +49,11 @@
 .percentage-thickness {
 	text-decoration: 2% wavy overline purple;
 }
+
+.two-rules-with-same-transform--a {
+	text-decoration: 2% wavy overline purple;
+}
+
+.two-rules-with-same-transform--b {
+	text-decoration: 2% wavy overline purple;
+}
