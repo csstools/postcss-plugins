@@ -1,0 +1,39 @@
+* {
+	--csstools-itp-transform: initial;
+	--csstools-itp-rotate: initial;
+	--csstools-itp-scale: initial;
+	--csstools-itp-translate: initial;
+}
+
+.all-props {
+	transform: skewX(25deg);
+	--csstools-itp-transform: skewX(25deg);
+	--csstools-itp-rotate: rotate3d(180deg);
+	--csstools-itp-scale: scale3d(2 2);
+	--csstools-itp-translate: translate3d(10px 10px);
+	transform: var(--csstools-itp-translate, ) var(--csstools-itp-scale, ) var(--csstools-itp-rotate, ) var(--csstools-itp-transform, );
+}
+
+.individual-props {
+	--csstools-itp-rotate: rotate3d(180deg);
+	--csstools-itp-scale: scale3d(2 2);
+	--csstools-itp-translate: translate3d(10px 10px);
+	transform: var(--csstools-itp-translate, ) var(--csstools-itp-scale, ) var(--csstools-itp-rotate, ) var(--csstools-itp-transform, );
+}
+
+.transform-only {
+	transform: skewX(25deg);
+	--csstools-itp-transform: skewX(25deg);
+	transform: var(--csstools-itp-translate, ) var(--csstools-itp-scale, ) var(--csstools-itp-rotate, ) var(--csstools-itp-transform, );
+}
+
+.inherited-prop {
+	--csstools-itp-scale: scale3d(inherit);
+	transform: var(--csstools-itp-translate, ) var(--csstools-itp-scale, ) var(--csstools-itp-rotate, ) var(--csstools-itp-transform, );
+}
+
+.inherited-transform {
+	transform: inherit;
+	--csstools-itp-transform: inherit;
+	transform: var(--csstools-itp-translate, ) var(--csstools-itp-scale, ) var(--csstools-itp-rotate, ) var(--csstools-itp-transform, );
+}

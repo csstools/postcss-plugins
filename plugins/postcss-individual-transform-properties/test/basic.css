@@ -1,0 +1,24 @@
+.all-props {
+	transform: skewX(25deg);
+	rotate: 180deg;
+	scale: 2 2;
+	translate: 10px 10px;
+}
+
+.individual-props {
+	rotate: 180deg;
+	scale: 2 2;
+	translate: 10px 10px;
+}
+
+.transform-only {
+	transform: skewX(25deg);
+}
+
+.inherited-prop {
+	scale: inherit;
+}
+
+.inherited-transform {
+	transform: inherit;
+}
