@@ -192,6 +192,10 @@
   - plugins/postcss-stepped-value-functions/**
   - experimental/postcss-stepped-value-functions/**
 
+"plugins/postcss-text-decoration-shorthand":
+  - plugins/postcss-text-decoration-shorthand/**
+  - experimental/postcss-text-decoration-shorthand/**
+
 "plugins/postcss-trigonometric-functions":
   - plugins/postcss-trigonometric-functions/**
   - experimental/postcss-trigonometric-functions/**

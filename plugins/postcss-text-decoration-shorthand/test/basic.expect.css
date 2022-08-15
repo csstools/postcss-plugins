@@ -1,0 +1,83 @@
+.a {
+	text-decoration: none;
+	text-decoration: none wavy currentColor;
+}
+
+.b {
+	text-decoration: overline;
+}
+
+.ab {
+	text-decoration: overline;
+	text-decoration: overline wavy currentColor;
+}
+
+.abc {
+	text-decoration: overline;
+}
+
+.bcd {
+	text-decoration: overline;
+	text-decoration: overline solid purple;
+	text-decoration-thickness: 4px;
+}
+
+.cd {
+	text-decoration: none;
+	text-decoration: none solid purple;
+	text-decoration-thickness: 4px;
+}
+
+.d {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: 4px;
+}
+
+.abcd {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: 4px;
+}
+
+.bcda {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: 4px;
+}
+
+.cdab {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: 4px;
+}
+
+.dabc {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: 4px;
+}
+
+.with-comment {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: 4px;
+}
+
+.percentage-thickness {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: calc(0.01em * 2);
+}
+
+.two-rules-with-same-transform--a {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: calc(0.01em * 2);
+}
+
+.two-rules-with-same-transform--b {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: calc(0.01em * 2);
+}
