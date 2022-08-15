@@ -639,3 +639,16 @@
 		background: red;
 	}
 }
+
+.nested-calc {
+	-ms-flex-order: calc(1 * (8 / 3 + (5 * 10)));
+	    order: calc(1 * (8 / 3 + (5 * 10)));
+	-ms-flex-order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+	    order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+}
+
+.text-decoration-shorthand {
+	text-decoration: overline;
+	text-decoration: overline wavy pink;
+	text-decoration-thickness: 3px;
+}

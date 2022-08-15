@@ -397,3 +397,11 @@
 		background: red;
 	}
 }
+
+.nested-calc {
+	order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+}
+
+.text-decoration-shorthand {
+	text-decoration: 3px wavy pink overline;
+}

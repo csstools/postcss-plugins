@@ -624,3 +624,15 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 [data-view-size=m] .view {
 		background: red;
 }
+
+.nested-calc {
+	order: calc(1 * (8 / 3 + (5 * 10)));
+	order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+}
+
+.text-decoration-shorthand {
+	text-decoration: overline;
+	-webkit-text-decoration: overline wavy pink;
+	        text-decoration: overline wavy pink;
+	text-decoration-thickness: 3px;
+}

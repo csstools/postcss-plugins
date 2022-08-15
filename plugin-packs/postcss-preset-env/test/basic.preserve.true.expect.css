@@ -1048,3 +1048,25 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 :--view-m .view {
 		background: red;
 }
+
+.nested-calc {
+	-webkit-box-ordinal-group: NaN;
+	-webkit-order: -webkit-calc(1 * (8 / 3 + (5 * 10)));
+	   -moz-box-ordinal-group: NaN;
+	    -ms-flex-order: calc(1 * (8 / 3 + (5 * 10)));
+	        order: calc(1 * (8 / 3 + (5 * 10)));
+	-webkit-order: -webkit-calc(1 * -webkit-calc(8 / 3 + -webkit-calc(5 * 10)));
+	    -ms-flex-order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+	        order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+}
+
+.text-decoration-shorthand {
+	text-decoration: overline;
+	-webkit-text-decoration: overline wavy pink;
+	   -moz-text-decoration: overline wavy pink;
+	        text-decoration: overline wavy pink;
+	text-decoration-thickness: 3px;
+	-webkit-text-decoration: 3px wavy pink overline;
+	   -moz-text-decoration: 3px wavy pink overline;
+	        text-decoration: 3px wavy pink overline;
+}
