@@ -772,6 +772,26 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	display: ruby-text flow;
 }
 
+[dir="ltr"] .logical-float {
+	float: left;
+}
+
+.logical-float:dir(ltr) {
+	float: left;
+}
+
+[dir="rtl"] .logical-float {
+	float: right;
+}
+
+.logical-float:dir(rtl) {
+	float: right;
+}
+
+.logical-float {
+	float: inline-start;
+}
+
 .color-function {
 	prop-1: rgb(0,132,94);
 	prop-1: color(display-p3 0.00000 0.51872 0.36985);
