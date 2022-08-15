@@ -132,6 +132,10 @@
   - plugins/postcss-media-query-ranges/**
   - experimental/postcss-media-query-ranges/**
 
+"plugins/postcss-nested-calc":
+  - plugins/postcss-nested-calc/**
+  - experimental/postcss-nested-calc/**
+
 "plugins/postcss-nesting":
   - plugins/postcss-nesting/**
   - experimental/postcss-nesting/**

@@ -86,6 +86,7 @@ body:
         - PostCSS Lab Function
         - PostCSS Logical
         - PostCSS Media Query Ranges
+        - PostCSS Nested Calc
         - PostCSS Nesting
         - PostCSS OKLab Function
         - PostCSS Overflow Shorthand
