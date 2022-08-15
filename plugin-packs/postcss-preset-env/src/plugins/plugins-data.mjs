@@ -215,4 +215,14 @@ export default [
 		'id': 'trigonometric-functions',
 		'importName': 'postcssTrigonometricFunctions',
 	},
+	{
+		'packageName': '@csstools/postcss-nested-calc',
+		'id': 'nested-calc',
+		'importName': 'postcssNestedCalc',
+	},
+	{
+		'packageName': '@csstools/postcss-text-decoration-shorthand',
+		'id': 'text-decoration-shorthand',
+		'importName': 'postcssTextDecorationShorthand',
+	},
 ];

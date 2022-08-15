@@ -189,11 +189,23 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	background-color: yellow;
 }
 
-:is(.a, .b):is(:focus, :hover) {
+.a:focus {
 	order: 27;
 }
 
-:is(.a > .b) + :is(.c > .d) {
+.a:hover {
+	order: 27;
+}
+
+.b:focus {
+	order: 27;
+}
+
+.b:hover {
+	order: 27;
+}
+
+.a.c > .b + .d {
 	order: 28;
 }
 
@@ -330,6 +342,14 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 .ruby-text-flow {
 	display: ruby-text;
 	display: ruby-text flow;
+}
+
+[dir="ltr"] .logical-float {
+	float: left;
+}
+
+[dir="rtl"] .logical-float {
+	float: right;
 }
 
 .color-function {
@@ -478,4 +498,12 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 
 [data-view-size=m] .view {
 		background: red;
+}
+
+.nested-calc {
+	order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+}
+
+.text-decoration-shorthand {
+	text-decoration: 3px wavy pink overline;
 }

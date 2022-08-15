@@ -478,6 +478,14 @@
 	display: ruby-text flow;
 }
 
+[dir="ltr"] .logical-float {
+	float: left;
+}
+
+[dir="rtl"] .logical-float {
+	float: right;
+}
+
 .color-function {
 	prop-1: rgb(0,132,94);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
@@ -630,4 +638,17 @@
 	@nest :--view-m & {
 		background: red;
 	}
+}
+
+.nested-calc {
+	-ms-flex-order: calc(1 * (8 / 3 + (5 * 10)));
+	    order: calc(1 * (8 / 3 + (5 * 10)));
+	-ms-flex-order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+	    order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+}
+
+.text-decoration-shorthand {
+	text-decoration: overline;
+	text-decoration: overline wavy pink;
+	text-decoration-thickness: 3px;
 }

@@ -34,6 +34,7 @@ The `ID` listed is the key for PostCSS Preset Env configuration in your project.
 | `lab-function` | `lab()` Function | [example](https://preset-env.cssdb.org/features/#lab-function) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function#readme) |
 | `logical-properties-and-values` | Logical Properties and Values | [example](https://preset-env.cssdb.org/features/#logical-properties-and-values) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme) |
 | `media-query-ranges` | Media Query Ranges | [example](https://preset-env.cssdb.org/features/#media-query-ranges) | [docs](https://github.com/postcss/postcss-media-minmax#readme) |
+| `nested-calc` | Nested `calc()` | [example](https://preset-env.cssdb.org/features/#nested-calc) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc#readme) |
 | `nesting-rules` | Nesting Rules | [example](https://preset-env.cssdb.org/features/#nesting-rules) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting#readme) |
 | `not-pseudo-class` | `:not()` Negation List Pseudo-Class | [example](https://preset-env.cssdb.org/features/#not-pseudo-class) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-selector-not#readme) |
 | `oklab-function` | `oklab` and `oklch` color functions | [example](https://preset-env.cssdb.org/features/#oklab-function) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function#readme) |
@@ -45,6 +46,7 @@ The `ID` listed is the key for PostCSS Preset Env configuration in your project.
 | `rebeccapurple-color` | `rebeccapurple` Color | [example](https://preset-env.cssdb.org/features/#rebeccapurple-color) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple#readme) |
 | `stepped-value-functions` | `round()`, `mod()` and `rem()` functions | [example](https://preset-env.cssdb.org/features/#stepped-value-functions) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions#readme) |
 | `system-ui-font-family` | `system-ui` Font Family | [example](https://preset-env.cssdb.org/features/#system-ui-font-family) | [docs](https://github.com/JLHwung/postcss-font-family-system-ui#readme) |
+| `text-decoration-shorthand` | `text-decoration` shorthand | [example](https://preset-env.cssdb.org/features/#text-decoration-shorthand) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand#readme) |
 | `trigonometric-functions` | `sin()`, `cos()`, `tan()`, `asin()`, `acos()`, `atan()` and `atan2()` functions | [example](https://preset-env.cssdb.org/features/#trigonometric-functions) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions#readme) |
 | `unset-value` | `unset` Keyword | [example](https://preset-env.cssdb.org/features/#unset-value) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset-value#readme) |
 

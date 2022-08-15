@@ -1,12 +1,44 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (minor)
+
+- Added `@csstools/postcss-nested-calc` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc#readme) for usage details.
+- Added `@csstools/postcss-text-decoration-shorthand` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand#readme) for usage details.
+- Update `@csstools/postcss-cascade-layers` to `1.0.5` (patch)
+- Update `@csstools/postcss-color-function` to `1.1.1` (patch)
+- Update `@csstools/postcss-font-format-keywords` to `1.0.1` (patch)
+- Update `@csstools/postcss-hwb-function` to `1.0.2` (patch)
+- Update `@csstools/postcss-ic-unit` to `1.0.1` (patch)
+- Update `@csstools/postcss-is-pseudo-class` to `2.0.7` (patch)
+- Update `@csstools/postcss-normalize-display-values` to `1.0.1` (patch)
+- Update `@csstools/postcss-oklab-function` to `1.1.1` (patch)
+- Update `@csstools/postcss-stepped-value-functions` to `1.0.1` (patch)
+- Update `@csstools/postcss-trigonometric-functions` to `1.0.2` (patch)
+- Update `@csstools/postcss-unset-value` to `1.0.2` (patch)
+- Update `autoprefixer` to `10.4.8` (patch)
+- Update `browserslist` to `4.21.3` (patch)
+- Update `cssdb` to `7.0.0` (major)
+- Update `postcss-attribute-case-insensitive` to `5.0.2` (patch)
+- Update `postcss-color-functional-notation` to `4.2.4` (patch)
+- Update `postcss-color-rebeccapurple` to `7.1.1` (patch)
+- Update `postcss-dir-pseudo-class` to `6.0.5` (patch)
+- Update `postcss-double-position-gradients` to `3.1.2` (patch)
+- Update `postcss-gap-properties` to `3.0.5` (patch)
+- Update `postcss-image-set-function` to `4.0.7` (patch)
+- Update `postcss-lab-function` to `4.2.1` (patch)
+- Update `postcss-nesting` to `10.1.10` (patch)
+- Update `postcss-overflow-shorthand` to `3.0.4` (patch)
+- Update `postcss-place` to `7.0.5` (patch)
+- Update `postcss-pseudo-class-any-link` to `7.1.6` (patch)
+- Update `postcss-selector-not` to `6.0.1` (patch)
+
 ### 7.7.2 (June 23, 2022)
 
 - Fix `op_mini all` not working as a browser list.
 - Updated `postcss-color-rebeccapurple` to `7.1.0` (minor)
 - Updated `browserslist` to `4.21.0` (minor)
-- Updated `csstools/postcss-cascade-layers` to `1.0.4` (patch)
-- Updated `csstools/postcss-is-pseudo-class` to `2.0.6` (patch)
+- Updated `@csstools/postcss-cascade-layers` to `1.0.4` (patch)
+- Updated `@csstools/postcss-is-pseudo-class` to `2.0.6` (patch)
 - Updated `postcss-color-hex-alpha` to `8.0.4` (patch)
 - Updated `postcss-custom-media` to `8.0.2` (patch)
 - Updated `postcss-custom-properties` to `12.1.8` (patch)
