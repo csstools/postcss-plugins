@@ -73,6 +73,7 @@
 		"text-decoration-thickness"
 	],
 	"csstools": {
+		"cssdbId": "text-decoration-shorthand",
 		"exportName": "postcssTextDecorationShorthand",
 		"humanReadableName": "PostCSS Text Decoration Shorthand",
 		"specUrl": "https://drafts.csswg.org/css-text-decor-4/#text-decoration-property"
