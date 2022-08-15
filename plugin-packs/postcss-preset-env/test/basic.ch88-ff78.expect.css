@@ -62,7 +62,7 @@
 	order: 7;
 }
 
-:is(.test-nesting-rules,#test-is-pseudo) + p {
+.test-nesting-rules + p, #test-is-pseudo + p {
 		order: 8;
 	}
 
@@ -189,11 +189,23 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	background-color: yellow;
 }
 
-:is(.a, .b):is(:focus, :hover) {
+.a:focus {
 	order: 27;
 }
 
-:is(.a > .b) + :is(.c > .d) {
+.a:hover {
+	order: 27;
+}
+
+.b:focus {
+	order: 27;
+}
+
+.b:hover {
+	order: 27;
+}
+
+.a.c > .b + .d {
 	order: 28;
 }
 

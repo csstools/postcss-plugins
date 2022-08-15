@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (minor)
+
+- Update `cssdb` to `7.0.0` (major)
+
 ### 7.7.2 (June 23, 2022)
 
 - Fix `op_mini all` not working as a browser list.
