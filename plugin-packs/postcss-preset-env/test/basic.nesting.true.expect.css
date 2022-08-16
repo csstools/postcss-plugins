@@ -290,6 +290,10 @@
 	display: ruby-text flow;
 }
 
+.logical-float {
+	float: inline-start;
+}
+
 .color-function {
 	prop-1: color(display-p3 0.00000 0.51872 0.36985);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
@@ -406,4 +410,13 @@
 
 :--view-m .view {
 		background: red;
+}
+
+.nested-calc {
+	order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+}
+
+.text-decoration-shorthand {
+	-webkit-text-decoration: 3px wavy pink overline;
+	        text-decoration: 3px wavy pink overline;
 }

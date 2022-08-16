@@ -1,0 +1,97 @@
+.a {
+	text-decoration: none;
+	text-decoration: none wavy currentColor;
+	text-decoration: wavy;
+}
+
+.b {
+	text-decoration: overline;
+}
+
+.ab {
+	text-decoration: overline;
+	text-decoration: overline wavy currentColor;
+	text-decoration: wavy overline;
+}
+
+.abc {
+	text-decoration: overline;
+	text-decoration: wavy overline purple;
+}
+
+.bcd {
+	text-decoration: overline;
+	text-decoration: overline solid purple;
+	text-decoration-thickness: 4px;
+	text-decoration: overline purple 4px;
+}
+
+.cd {
+	text-decoration: none;
+	text-decoration: none solid purple;
+	text-decoration-thickness: 4px;
+	text-decoration: purple 4px;
+}
+
+.d {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: 4px;
+	text-decoration: wavy overline purple 4px;
+}
+
+.abcd {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: 4px;
+	text-decoration: wavy overline purple 4px;
+}
+
+.bcda {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: 4px;
+	text-decoration: overline purple 4px wavy;
+}
+
+.cdab {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: 4px;
+	text-decoration: purple 4px wavy overline;
+}
+
+.dabc {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: 4px;
+	text-decoration: 4px wavy overline purple;
+}
+
+.with-comment {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: 4px;
+	text-decoration: wavy /* a comment */ overline purple 4px;
+}
+
+.percentage-thickness {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: calc(0.01em * 2);
+	text-decoration: 2% wavy overline purple;
+}
+
+.two-rules-with-same-transform--a {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: calc(0.01em * 2);
+	text-decoration: 2% wavy overline purple;
+}
+
+.two-rules-with-same-transform--b {
+	text-decoration: overline;
+	text-decoration: overline wavy purple;
+	text-decoration-thickness: calc(0.01em * 2);
+	text-decoration: 2% wavy overline purple;
+}

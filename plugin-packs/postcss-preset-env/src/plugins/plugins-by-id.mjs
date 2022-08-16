@@ -27,6 +27,7 @@ import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 import postcssLabFunction from 'postcss-lab-function';
 import postcssLogical from 'postcss-logical';
 import postcssMediaMinmax from 'postcss-media-minmax';
+import postcssNestedCalc from '@csstools/postcss-nested-calc';
 import postcssNesting from 'postcss-nesting';
 import postcssSelectorNot from 'postcss-selector-not';
 import postcssOKLabFunction from '@csstools/postcss-oklab-function';
@@ -38,6 +39,7 @@ import postcssPrefersColorScheme from 'css-prefers-color-scheme';
 import postcssColorRebeccapurple from 'postcss-color-rebeccapurple';
 import postcssSteppedValueFunctions from '@csstools/postcss-stepped-value-functions';
 import postcssFontFamilySystemUI from '../patch/postcss-system-ui-font-family.mjs';
+import postcssTextDecorationShorthand from '@csstools/postcss-text-decoration-shorthand';
 import postcssTrigonometricFunctions from '@csstools/postcss-trigonometric-functions';
 import postcssUnsetValue from '@csstools/postcss-unset-value';
 
@@ -73,6 +75,7 @@ export const pluginsById = new Map(
 		['lab-function', postcssLabFunction],
 		['logical-properties-and-values', postcssLogical],
 		['media-query-ranges', postcssMediaMinmax],
+		['nested-calc', postcssNestedCalc],
 		['nesting-rules', postcssNesting],
 		['not-pseudo-class', postcssSelectorNot],
 		['oklab-function', postcssOKLabFunction],
@@ -84,6 +87,7 @@ export const pluginsById = new Map(
 		['rebeccapurple-color', postcssColorRebeccapurple],
 		['stepped-value-functions', postcssSteppedValueFunctions],
 		['system-ui-font-family', postcssFontFamilySystemUI],
+		['text-decoration-shorthand', postcssTextDecorationShorthand],
 		['trigonometric-functions', postcssTrigonometricFunctions],
 		['unset-value', postcssUnsetValue],
 	],
