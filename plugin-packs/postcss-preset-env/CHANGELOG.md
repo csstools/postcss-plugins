@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 7.8.0 (August 16, 2022)
 
 - Added `@csstools/postcss-nested-calc` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc#readme) for usage details.
 - Added `@csstools/postcss-text-decoration-shorthand` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand#readme) for usage details.
