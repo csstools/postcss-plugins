@@ -1,0 +1,4 @@
+.example {
+	order: calc(1 + (2 * 2));
+	order: calc(1 + calc(2 * 2));
+}
