@@ -93,7 +93,27 @@
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
-.test-custom-selectors:is(h1, h2, h3, h4, h5, h6) {
+h1.test-custom-selectors {
+	order:12;
+}
+
+h2.test-custom-selectors {
+	order:12;
+}
+
+h3.test-custom-selectors {
+	order:12;
+}
+
+h4.test-custom-selectors {
+	order:12;
+}
+
+h5.test-custom-selectors {
+	order:12;
+}
+
+h6.test-custom-selectors {
 	order:12;
 }
 
@@ -488,7 +508,7 @@
 
 @custom-selector :--view-m [data-view-size=m];
 
-:is([data-view-size=m]) .view {
+[data-view-size=m] .view {
 		background: red;
 }
 
