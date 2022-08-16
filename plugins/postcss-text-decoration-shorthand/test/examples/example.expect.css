@@ -1,0 +1,5 @@
+.example {
+	text-decoration: underline;
+	text-decoration: underline wavy purple;
+	text-decoration-thickness: calc(0.01em * 25);
+}

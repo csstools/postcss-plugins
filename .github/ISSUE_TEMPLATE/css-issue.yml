@@ -86,6 +86,7 @@ body:
         - PostCSS Lab Function
         - PostCSS Logical
         - PostCSS Media Query Ranges
+        - PostCSS Nested Calc
         - PostCSS Nesting
         - PostCSS OKLab Function
         - PostCSS Overflow Shorthand
@@ -96,7 +97,10 @@ body:
         - PostCSS Rebeccapurple
         - PostCSS Replace Overflow Wrap
         - PostCSS Selector Not
+        - PostCSS Stepped Value Functions
         - PostCSS System Ui Font Family
+        - PostCSS Text Decoration Shorthand
+        - PostCSS Trigonometric-Functions
         - PostCSS Unset Value
   - type: input
     id: version
