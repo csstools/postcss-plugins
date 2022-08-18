@@ -1,23 +1,23 @@
 /* We expect unlayered extensions to appear later so that they override layered extensions */
 
-@custom-media --custom-media-query: (min-width: 0px);
+@custom-media --custom-media-query: unlayered;
 
-@custom-selector --custom-selector: #custom-selector;
+@custom-selector --custom-selector: #unlayered;
 
 @property --property {
 	syntax: '<color>';
 	inherits: false;
-	initial-value: #fff;
+	initial-value: unlayered;
 }
 
 @layer A {
-	@custom-media --custom-media-query-layered: (min-width: 0px);
+	@custom-media --custom-media-query: layered;
 
-	@custom-selector --custom-selector-layered: #custom-selector;
+	@custom-selector --custom-selector: #layered;
 
-	@property --property-layered {
+	@property --property {
 		syntax: '<color>';
 		inherits: false;
-		initial-value: #000;
+		initial-value: layered;
 	}
 }
