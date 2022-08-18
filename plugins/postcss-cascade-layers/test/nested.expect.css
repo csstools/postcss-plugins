@@ -11,11 +11,15 @@
 
 	@font-face {
 		font-family: "Open Sans";
-		src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
-			url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
-	}
+		src: url("/fonts/OpenSans-Regular-webfont.woff2#layered") format("woff2"),
+			url("/fonts/OpenSans-Regular-webfont.woff#layered") format("woff");
+	}@font-face {
+	font-family: "Open Sans";
+	src: url("/fonts/OpenSans-Regular-webfont.woff2#unlayered") format("woff2"),
+		url("/fonts/OpenSans-Regular-webfont.woff#unlayered") format("woff");
+}
 
-	target {
+target {
 			color: yellow;
 		}
 
