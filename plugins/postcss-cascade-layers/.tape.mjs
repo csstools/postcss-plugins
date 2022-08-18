@@ -24,8 +24,8 @@ postcssTape(plugin)({
 	'anon-layer': {
 		message: "supports anonymous layer usage",
 	},
-	'examples/example': {
-		message: "minimal example",
+	'invalid-nested-css': {
+		message: "ignores nested css",
 	},
 	'extensions': {
 		message: "css custom extensions",
@@ -66,5 +66,8 @@ postcssTape(plugin)({
 	},
 	'specificity-buckets-b': {
 		message: "creates non overlapping specificity buckets",
+	},
+	'examples/example': {
+		message: "minimal example",
 	},
 });

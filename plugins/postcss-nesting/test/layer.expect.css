@@ -8,7 +8,7 @@
 	width: 100px;
 
 	@layer A {
-		/* There is no definition for this behavior */
+		/* Only conditional rules are allowed to be nested */
 		background-color: red;
 	}
 }
