@@ -15,7 +15,7 @@ article :--heading + p {
 
 @custom-selector :--heading h1, h2, h3;
 
-article :is(h1, h2, h3) + p  {
+article :is(h1, h2, h3) + p {
 	margin-top: 0;
 }
 ```
@@ -67,7 +67,7 @@ article :--heading + p {
 
 @custom-selector :--heading h1, h2, h3;
 
-article :is(h1, h2, h3) + p  {
+article :is(h1, h2, h3) + p {
 	margin-top: 0;
 }
 
