@@ -4,7 +4,7 @@ import valueParser from 'postcss-value-parser';
 // return custom selectors from the css root, conditionally removing them
 export default (root, opts) => {
 	// initialize custom selectors
-	const customMedias = {};
+	const customMedias = new Map();
 
 	// for each custom selector atrule that is a child of the css root
 	root.nodes.slice().forEach(node => {
@@ -50,7 +50,7 @@ export default (root, opts) => {
 		const selectors = valueParser.stringify(paramsAst.nodes.slice(nameNodeIndex + 1)).trim();
 
 		// write the parsed selectors to the custom selector
-		customMedias[name] = mediaASTFromString(selectors);
+		customMedias.set(name, mediaASTFromString(selectors));
 
 		// conditionally remove the custom selector atrule
 		if (!Object(opts).preserve) {

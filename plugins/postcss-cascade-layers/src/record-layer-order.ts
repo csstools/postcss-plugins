@@ -1,13 +1,14 @@
 import type { Container, Result } from 'postcss';
 import { ANONYMOUS_LAYER_SUFFIX, IMPLICIT_LAYER_SUFFIX } from './constants';
 import { getConditionalAtRuleAncestor } from './get-conditional-atrule-ancestor';
+import { isProcessableLayerRule } from './is-processable-layer-rule';
 import type { Model } from './model';
 import { pluginOptions } from './options';
 
 export function recordLayerOrder(root: Container, model: Model, { result, options }: { result: Result, options: pluginOptions }) {
 	// record layer order
 	root.walkAtRules((layerRule) => {
-		if (layerRule.name.toLowerCase() !== 'layer') {
+		if (!isProcessableLayerRule(layerRule)) {
 			return;
 		}
 

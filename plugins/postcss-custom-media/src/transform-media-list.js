@@ -24,8 +24,8 @@ function transformMedia(media, customMedias) {
 	for (const index in media.nodes) {
 		const { value, nodes } = media.nodes[index];
 		const key = getCustomMediaNameReference(value);
-		if (key && (key in customMedias)) {
-			for (const replacementMedia of customMedias[key].nodes) {
+		if (key && customMedias.has(key)) {
+			for (const replacementMedia of customMedias.get(key).nodes) {
 				// use the first available modifier unless they cancel each other out
 				const modifier = media.modifier !== replacementMedia.modifier
 					? media.modifier || replacementMedia.modifier
@@ -80,9 +80,8 @@ function transformMedia(media, customMedias) {
 }
 
 const getCustomMediasWithoutKey = (customMedias, key) => {
-	const nextCustomMedias = Object.assign({}, customMedias);
-
-	delete nextCustomMedias[key];
+	const nextCustomMedias = new Map(customMedias);
+	nextCustomMedias.delete(key);
 
 	return nextCustomMedias;
 };

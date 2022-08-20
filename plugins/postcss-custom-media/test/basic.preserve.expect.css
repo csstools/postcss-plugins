@@ -222,3 +222,37 @@
 }
 
 @custom-media trailer-- (min-width: 320px);
+
+/* Handled incorrectly : */
+@custom-media --truthy true;
+/* Handled incorrectly : */
+@custom-media --falsy false;
+
+@media screen or (--truthy) {
+	body {
+		order: 1007;
+	}
+}
+
+@media screen and false {
+	body {
+		order: 1008;
+	}
+}
+
+@media screen and (--falsy) {
+	body {
+		order: 1008;
+	}
+}
+
+/* Handled incorrectly : */
+@custom-media --modern (color), (hover);
+
+@media (color) and (width > 1024px),(hover) and (width > 1024px) {
+	.a { color: green; }
+}
+
+@media (--modern) and (width > 1024px) {
+	.a { color: green; }
+}

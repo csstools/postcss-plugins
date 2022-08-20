@@ -1,5 +1,6 @@
 // ids ordered by required execution, then alphabetically
 export default [
+	'cascade-layers',
 	'custom-media-queries',
 	'custom-properties',
 	'environment-variables', // run environment-variables here to access transpiled custom media params and properties
@@ -32,7 +33,6 @@ export default [
 	'overflow-wrap-property',
 	'place-properties',
 	'system-ui-font-family',
-	'cascade-layers',
 	'stepped-value-functions',
 	'trigonometric-functions',
 ];

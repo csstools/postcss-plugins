@@ -6,12 +6,9 @@
 	background-color: blue;
 	height: 100px;
 	width: 100px;
-}
 
-@layer A {
-
-.partially-layered {
-		/* There is no definition for this behavior */
+	@layer A {
+		/* Only conditional rules are allowed to be nested */
 		background-color: red;
-}
 	}
+}
