@@ -1,5 +1,10 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased (major)
+
+- Run `postcss-cascade-layers` early compared to other PostCSS plugins (breaking)
+- Fix broken `@keyframes` in `@layer`
+
 ### 1.0.5 (July 8, 2022)
 
 - Fix case insensitive `@layer` matching (`@LaYeR`).
