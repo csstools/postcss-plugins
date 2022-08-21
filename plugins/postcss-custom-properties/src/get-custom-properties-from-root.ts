@@ -25,6 +25,10 @@ export default function getCustomPropertiesFromRoot(root: Root): Map<string, val
 					return;
 				}
 
+				if (decl.value.toLowerCase().trim() === 'initial') {
+					return;
+				}
+
 				customPropertiesFromHtmlElement.set(decl.prop, valuesParser(decl.value));
 			});
 		} else if (isRootRule(rule)) {
@@ -34,6 +38,10 @@ export default function getCustomPropertiesFromRoot(root: Root): Map<string, val
 				}
 
 				if (!decl.variable || isBlockIgnored(decl)) {
+					return;
+				}
+
+				if (decl.value.toLowerCase().trim() === 'initial') {
 					return;
 				}
 

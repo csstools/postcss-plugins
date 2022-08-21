@@ -868,6 +868,7 @@ h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	--value-2ic: 'something';
 	text-indent: 2em;
 	text-indent: 2ic;
+	content: 'something';
 	content: var(--value-2ic);
 	left: 2em;
 	left: var(--non-existing, 2em);

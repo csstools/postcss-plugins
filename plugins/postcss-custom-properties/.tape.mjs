@@ -12,6 +12,15 @@ postcssTape(plugin)({
 			preserve: false
 		}
 	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve': {
+		message: 'minimal example with { preserve: false }',
+		options: {
+			preserve: false
+		}
+	},
 	'import': {
 		message: 'supports "postcss-import"',
 		plugins: [postcssImport(), plugin()]

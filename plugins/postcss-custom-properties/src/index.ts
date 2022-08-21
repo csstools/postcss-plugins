@@ -1,7 +1,8 @@
 import type { PluginCreator } from 'postcss';
-import type valuesParser from 'postcss-value-parser';
+import valuesParser from 'postcss-value-parser';
 
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
+import { isBlockIgnored } from './is-ignored';
 import transformProperties from './transform-properties';
 
 export interface PluginOptions {
@@ -22,7 +23,38 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 					customProperties = getCustomPropertiesFromRoot(root);
 				},
 				Declaration: (decl) => {
-					transformProperties(decl, customProperties, { preserve: preserve });
+					let localCustomProperties = customProperties;
+					if (preserve && decl.parent) {
+						let didCopy = false;
+
+						decl.parent.each((siblingDecl) => {
+							if (decl === siblingDecl) {
+								return;
+							}
+
+							if (siblingDecl.type !== 'decl') {
+								return;
+							}
+
+							if (!siblingDecl.variable || isBlockIgnored(siblingDecl)) {
+								return;
+							}
+
+							if (!didCopy) {
+								localCustomProperties = new Map(customProperties);
+								didCopy = true;
+							}
+
+							if (siblingDecl.value.toLowerCase().trim() === 'initial') {
+								localCustomProperties.delete(siblingDecl.prop);
+								return;
+							}
+
+							localCustomProperties.set(siblingDecl.prop, valuesParser(siblingDecl.value));
+						});
+					}
+
+					transformProperties(decl, localCustomProperties, { preserve: preserve });
 				},
 			};
 		},
