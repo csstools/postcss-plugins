@@ -1,5 +1,9 @@
 # Changes to PostCSS Focus Within
 
+### Unreleased
+
+- Fix: assign global browser polyfill to `window`, `self` or a blank object.
+
 ### 6.1.0 (July 30, 2022)
 
 - Added: `disablePolyfillReadyClass` plugin option to prevent `.js-focus-within` from being added.

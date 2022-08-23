@@ -1,3 +1,6 @@
-/* global self */
+/* global self,window */
 import { default as cssBlankPseudoInit } from './browser';
-self.cssBlankPseudoInit = cssBlankPseudoInit;
+
+(function (global) {
+	global.cssBlankPseudoInit = cssBlankPseudoInit;
+}('object' === typeof window && window || 'object' === typeof self && self || {}));
