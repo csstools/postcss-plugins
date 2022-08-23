@@ -1,3 +1,6 @@
-/* global self */
+/* global self,window */
 import { default as prefersColorSchemeInit } from './browser';
-self.prefersColorSchemeInit = prefersColorSchemeInit;
+
+(function (global) {
+	global.prefersColorSchemeInit = prefersColorSchemeInit;
+}('object' === typeof window && window || 'object' === typeof self && self || {}));
