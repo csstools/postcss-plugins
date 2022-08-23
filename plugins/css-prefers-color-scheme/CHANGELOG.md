@@ -1,6 +1,6 @@
 # Changes to Prefers Color Scheme
 
-### Unreleased
+### 7.0.1 (August 23, 2022)
 
 - Fix: assign global browser polyfill to `window`, `self` or a blank object.
 
