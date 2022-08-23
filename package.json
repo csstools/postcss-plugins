@@ -24,7 +24,7 @@
 		"@rollup/plugin-node-resolve": "^13.3.0",
 		"@rollup/plugin-typescript": "^8.3.3",
 		"@stryker-mutator/core": "^6.0.2",
-		"@typescript-eslint/eslint-plugin": "^5.33.0",
+		"@typescript-eslint/eslint-plugin": "^5.34.0",
 		"eslint": "^8.22.0",
 		"glob": "^8.0.3",
 		"rollup": "^2.78.1",
