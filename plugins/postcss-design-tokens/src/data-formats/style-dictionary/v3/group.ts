@@ -7,12 +7,20 @@ export type StyleDictionaryV3TokenGroup = {
 }
 
 function extractTokens(node: StyleDictionaryV3TokenGroup, path: Array<string>, filePath: string): Map<string, StyleDictionaryV3TokenValue> {
-	const result: Map<string,StyleDictionaryV3TokenValue> = new Map();
+	const result: Map<string, StyleDictionaryV3TokenValue> = new Map();
 	for (const key in node) {
 		if (Object.hasOwnProperty.call(node, key)) {
+			if (
+				typeof node[key] !== 'object' ||
+				Array.isArray(node[key]) &&
+				node[key] === null
+			) {
+				throw new Error(`Parsing error at "${[...path, key].join('.')}"`);
+			}
+
 			const child = Object(node[key]);
 			if (!child) {
-				throw new Error('Parsing error');
+				throw new Error(`Parsing error at "${[...path, key].join('.')}"`);
 			}
 
 			if (typeof child['value'] !== 'undefined') {

@@ -68,6 +68,10 @@
   - plugins/postcss-custom-selectors/**
   - experimental/postcss-custom-selectors/**
 
+"plugins/postcss-design-tokens":
+  - plugins/postcss-design-tokens/**
+  - experimental/postcss-design-tokens/**
+
 "plugins/postcss-dir-pseudo-class":
   - plugins/postcss-dir-pseudo-class/**
   - experimental/postcss-dir-pseudo-class/**

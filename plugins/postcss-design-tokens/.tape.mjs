@@ -113,4 +113,8 @@ postcssTape(plugin)({
 			importAtRuleName: 'tokens'
 		}
 	},
+	'issue-583': {
+		message: 'A meaningful error message is given and no stack overflow.',
+		warnings: 1
+	},
 });
