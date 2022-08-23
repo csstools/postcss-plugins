@@ -1,6 +1,6 @@
 # Changes to PostCSS Focus Within
 
-### Unreleased
+### 6.1.1 (August 23, 2022)
 
 - Fix: assign global browser polyfill to `window`, `self` or a blank object.
 
