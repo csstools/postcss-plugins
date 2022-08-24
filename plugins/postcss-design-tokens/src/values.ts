@@ -50,6 +50,16 @@ export function onCSSValue(tokens: Map<string, Token>, result: Result, decl: Dec
 				transformOptions.toUnit = remainingNodes[i + 1].value;
 				i++;
 			}
+
+			if (
+				remainingNodes[i].type === 'word' &&
+				remainingNodes[i].value.toLowerCase() === 'as' &&
+				remainingNodes[i + 1] &&
+				remainingNodes[i + 1].type === 'word'
+			) {
+				transformOptions.asUnit = remainingNodes[i + 1].value;
+				i++;
+			}
 		}
 
 		node.value = replacement.cssValue(transformOptions);

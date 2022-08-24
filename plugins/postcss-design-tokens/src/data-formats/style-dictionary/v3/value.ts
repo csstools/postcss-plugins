@@ -83,6 +83,11 @@ export function applyTransformsToValue(value: string|undefined|null, transformOp
 		}
 	}
 
+	// add unit to unit-less value
+	if (transformOptions.asUnit) {
+		return `${value}${transformOptions.asUnit}`;
+	}
+
 	return value;
 }
 

@@ -3,6 +3,7 @@ export interface TokenTransformOptions {
 		rootFontSize: number;
 	};
 	toUnit?: string;
+	asUnit?: string;
 }
 
 export interface Token {
