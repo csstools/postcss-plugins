@@ -11,9 +11,9 @@ function extractTokens(node: StyleDictionaryV3TokenGroup, path: Array<string>, f
 	for (const key in node) {
 		if (Object.hasOwnProperty.call(node, key)) {
 			if (
+				node[key] === null ||
 				typeof node[key] !== 'object' ||
-				Array.isArray(node[key]) &&
-				node[key] === null
+				Array.isArray(node[key])
 			) {
 				throw new Error(`Parsing error at "${[...path, key].join('.')}"`);
 			}

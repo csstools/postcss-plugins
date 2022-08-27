@@ -44,15 +44,19 @@ export function onCSSValue(tokens: Map<string, Token>, result: Result, decl: Dec
 				remainingNodes[i].type === 'word' &&
 				remainingNodes[i].value.toLowerCase() === 'to' &&
 				remainingNodes[i + 1] &&
-				remainingNodes[i + 1].type === 'word' &&
-				['px', 'rem'].includes(remainingNodes[i + 1].value)
+				remainingNodes[i + 1].type === 'word'
 			) {
 				transformOptions.toUnit = remainingNodes[i + 1].value;
 				i++;
 			}
 		}
 
-		node.value = replacement.cssValue(transformOptions);
+		try {
+			node.value = replacement.cssValue(transformOptions);
+		} catch (err) {
+			decl.warn(result, (err as Error).message);
+			return;
+		}
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		(node as any).nodes = undefined;
 	});
