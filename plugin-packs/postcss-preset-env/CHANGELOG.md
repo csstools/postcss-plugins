@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased
+
+- Update `cssdb` to `7.0.1` (patch)
+
 ### 7.8.0 (August 16, 2022)
 
 - Added `@csstools/postcss-nested-calc` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc#readme) for usage details.
