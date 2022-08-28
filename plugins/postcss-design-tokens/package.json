@@ -45,7 +45,7 @@
 	},
 	"devDependencies": {
 		"postcss-import": "^14.1.0",
-		"style-dictionary-design-tokens-example": "^1.0.0"
+		"style-dictionary-design-tokens-example": "^1.1.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
