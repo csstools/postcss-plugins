@@ -5,7 +5,6 @@ import { mergeTokens } from './data-formats/token';
 import { parsePluginOptions, pluginOptions } from './options';
 import { onCSSValue } from './values';
 
-
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = parsePluginOptions(opts);
 
