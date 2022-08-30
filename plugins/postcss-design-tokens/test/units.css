@@ -1,0 +1,55 @@
+@import url('./imported.css');
+@design-tokens url('./tokens/basic.json') format('style-dictionary3');
+
+.px-to-px {
+	padding-bottom: design-token('space.small' to px);
+	padding-bottom: design-token('space.default' to px);
+	padding-bottom: design-token('space.large' to px);
+}
+
+.px-to-rem {
+	padding-bottom: design-token('space.small' to rem);
+	padding-bottom: design-token('space.default' to rem);
+	padding-bottom: design-token('space.large' to rem);
+}
+
+.px-to-vh {
+	padding-bottom: design-token('space.small' to vh);
+	padding-bottom: design-token('space.default' to vh);
+	padding-bottom: design-token('space.large' to vh);
+}
+
+.rem-to-rem {
+	padding-bottom: design-token('space.small-b' to rem);
+	padding-bottom: design-token('space.default-b' to rem);
+	padding-bottom: design-token('space.large-b' to rem);
+}
+
+.rem-to-px {
+	padding-bottom: design-token('space.small-b' to px);
+	padding-bottom: design-token('space.default-b' to px);
+	padding-bottom: design-token('space.large-b' to px);
+}
+
+.rem-to-vh {
+	padding-bottom: design-token('space.small-b' to vh);
+	padding-bottom: design-token('space.default-b' to vh);
+	padding-bottom: design-token('space.large-b' to vh);
+}
+
+.invalid-conversion {
+	color: design-token('card.foreground' to rem);
+	color: design-token('card.foreground' to px);
+	color: design-token('space.lh' to rem);
+	color: design-token('space.lh' to px);
+}
+
+.unitless {
+	padding-bottom: design-token('space.unitless' to rem);
+	padding-bottom: design-token('space.unitless' to px);
+	padding-bottom: design-token('space.unitless' to --rpx);
+	padding-bottom: design-token('space.unitless' to vh);
+	padding-bottom: design-token('space.unitless' to ch);
+	padding-bottom: design-token('space.unitless' to 5);
+	padding-bottom: design-token('space.unitless' to 0.5);
+}

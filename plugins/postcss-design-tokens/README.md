@@ -74,34 +74,6 @@ Use `style-dictionary3` in `@design-tokens` rules to pick this format.
 
 ## Options
 
-### importAtRuleName
-
-The `importAtRuleName` option allows you to set a custom alias for `@design-tokens`.
-
-```js
-postcssDesignTokens({ importAtRuleName: 'tokens' })
-```
-
-```pcss
-@tokens url('./tokens.json') format('style-dictionary3');
-
-.foo {
-	color: design-token('color.background.primary');
-	padding-top: design-token('size.spacing.small');
-	padding-left: design-token('size.spacing.small' to px);
-	padding-bottom: design-token('size.spacing.small' to rem);
-}
-
-/* becomes */
-
-.foo {
-	color: #fff;
-	padding-top: 16px;
-	padding-left: 16px;
-	padding-bottom: 1rem;
-}
-```
-
 ### is
 
 The `is` option determines which design tokens are used.
@@ -188,34 +160,6 @@ postcssDesignTokens({ is: ['dark'] })
 }
 ```
 
-### valueFunctionName
-
-The `valueFunctionName` option allows you to set a custom alias for `design-token`.
-
-```js
-postcssDesignTokens({ valueFunctionName: 'token' })
-```
-
-```pcss
-@design-tokens url('./tokens.json') format('style-dictionary3');
-
-.foo {
-	color: token('color.background.primary');
-	padding-top: token('size.spacing.small');
-	padding-left: token('size.spacing.small' to px);
-	padding-bottom: token('size.spacing.small' to rem);
-}
-
-/* becomes */
-
-.foo {
-	color: #fff;
-	padding-top: 16px;
-	padding-left: 16px;
-	padding-bottom: 1rem;
-}
-```
-
 ### unitsAndValues
 
 The `unitsAndValues` option allows you to control some aspects of how design values are converted to CSS.
@@ -250,6 +194,64 @@ postcssDesignTokens({
 	padding-top: 16px;
 	padding-left: 16px;
 	padding-bottom: 0.8rem;
+}
+```
+
+### Customize function and at rule names
+
+#### importAtRuleName
+
+The `importAtRuleName` option allows you to set a custom alias for `@design-tokens`.
+
+```js
+postcssDesignTokens({ importAtRuleName: 'tokens' })
+```
+
+```pcss
+@tokens url('./tokens.json') format('style-dictionary3');
+
+.foo {
+	color: design-token('color.background.primary');
+	padding-top: design-token('size.spacing.small');
+	padding-left: design-token('size.spacing.small' to px);
+	padding-bottom: design-token('size.spacing.small' to rem);
+}
+
+/* becomes */
+
+.foo {
+	color: #fff;
+	padding-top: 16px;
+	padding-left: 16px;
+	padding-bottom: 1rem;
+}
+```
+
+#### valueFunctionName
+
+The `valueFunctionName` option allows you to set a custom alias for `design-token`.
+
+```js
+postcssDesignTokens({ valueFunctionName: 'token' })
+```
+
+```pcss
+@design-tokens url('./tokens.json') format('style-dictionary3');
+
+.foo {
+	color: token('color.background.primary');
+	padding-top: token('size.spacing.small');
+	padding-left: token('size.spacing.small' to px);
+	padding-bottom: token('size.spacing.small' to rem);
+}
+
+/* becomes */
+
+.foo {
+	color: #fff;
+	padding-top: 16px;
+	padding-left: 16px;
+	padding-bottom: 1rem;
 }
 ```
 
@@ -328,8 +330,11 @@ The `design-token()` function takes a token path and returns the token value.
 design-token() = design-token( <token-path> [ to <unit> ]? )
 
 <token-path> = <string>
-<unit> = [ px | rem ]
+<unit> = [ px | rem | ... ]
 ```
+
+The plugin can convert `px` to `rem` and `rem` to `px` via the [`unitsandvalues`](#unitsandvalues) plugin options.
+When a design token is unit-less any `unit` can be assigned with `to`.
 
 ## Further reading
 

@@ -10,30 +10,5 @@
 	color: red;
 	color: red;
 	color: red;
-}
-.px-to-px {
-	padding-bottom: 8px;
-	padding-bottom: 18px;
-	padding-bottom: 32px;
-}
-.px-to-rem {
-	padding-bottom: 0.5rem;
-	padding-bottom: 1.1rem;
-	padding-bottom: 2rem;
-}
-.rem-to-rem {
-	padding-bottom: 0.5rem;
-	padding-bottom: 1.125rem;
-	padding-bottom: 2rem;
-}
-.rem-to-px {
-	padding-bottom: 8px;
-	padding-bottom: 18px;
-	padding-bottom: 32px;
-}
-.invalid-conversion {
-	color: red;
-	color: red;
-	color: 1lh;
-	color: 1lh;
+	color: design-token('does.not.exist');
 }

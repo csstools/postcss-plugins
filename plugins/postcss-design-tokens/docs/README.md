@@ -44,22 +44,6 @@ Use `style-dictionary3` in `@design-tokens` rules to pick this format.
 
 ## Options
 
-### importAtRuleName
-
-The `importAtRuleName` option allows you to set a custom alias for `@design-tokens`.
-
-```js
-<exportName>({ importAtRuleName: 'tokens' })
-```
-
-```pcss
-<example-custom-import-at-rule-name.css>
-
-/* becomes */
-
-<example-custom-import-at-rule-name.expect.css>
-```
-
 ### is
 
 The `is` option determines which design tokens are used.
@@ -115,22 +99,6 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 <example-conditional.dark.expect.css>
 ```
 
-### valueFunctionName
-
-The `valueFunctionName` option allows you to set a custom alias for `design-token`.
-
-```js
-<exportName>({ valueFunctionName: 'token' })
-```
-
-```pcss
-<example-custom-value-function-name.css>
-
-/* becomes */
-
-<example-custom-value-function-name.expect.css>
-```
-
 ### unitsAndValues
 
 The `unitsAndValues` option allows you to control some aspects of how design values are converted to CSS.
@@ -154,6 +122,40 @@ defaults to `16`
 /* becomes */
 
 <example.rootFontSize-20.expect.css>
+```
+
+### Customize function and at rule names
+
+#### importAtRuleName
+
+The `importAtRuleName` option allows you to set a custom alias for `@design-tokens`.
+
+```js
+<exportName>({ importAtRuleName: 'tokens' })
+```
+
+```pcss
+<example-custom-import-at-rule-name.css>
+
+/* becomes */
+
+<example-custom-import-at-rule-name.expect.css>
+```
+
+#### valueFunctionName
+
+The `valueFunctionName` option allows you to set a custom alias for `design-token`.
+
+```js
+<exportName>({ valueFunctionName: 'token' })
+```
+
+```pcss
+<example-custom-value-function-name.css>
+
+/* becomes */
+
+<example-custom-value-function-name.expect.css>
 ```
 
 ## Syntax
@@ -231,8 +233,11 @@ The `design-token()` function takes a token path and returns the token value.
 design-token() = design-token( <token-path> [ to <unit> ]? )
 
 <token-path> = <string>
-<unit> = [ px | rem ]
+<unit> = [ px | rem | ... ]
 ```
+
+The plugin can convert `px` to `rem` and `rem` to `px` via the [`unitsandvalues`](#unitsandvalues) plugin options.
+When a design token is unit-less any `unit` can be assigned with `to`.
 
 ## Further reading
 
