@@ -2,7 +2,10 @@
 
 ### Unreleased
 
+- Added support for design token file imports from npm packages.
 - Added support for arbitrary unit assignment to unit-less design tokens.
+
+npm package : `@your-org/your-tokens`
 
 ```json
 {
@@ -11,6 +14,8 @@
 ```
 
 ```css
+@design-tokens url(node_modules://@your-org/your-tokens/tokens.json) format('style-dictionary3');
+
 .example {
 	font-size: design-token('font-size' to vh);
 
