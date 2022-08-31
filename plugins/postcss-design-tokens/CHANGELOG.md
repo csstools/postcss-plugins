@@ -1,5 +1,9 @@
 # Changes to PostCSS Design Tokens
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### Unreleased
 
 - Added support for design token file imports from npm packages.

@@ -20,7 +20,7 @@
 	},
 	"private": true,
 	"engines": {
-		"node": "^12 || ^14 || >=16"
+		"node": "^14 || ^16 || >=18"
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
@@ -42,7 +42,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"postcss": "^8.2"
+		"postcss": "^8.4"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",

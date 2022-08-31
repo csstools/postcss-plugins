@@ -91,20 +91,3 @@ set -e
 git --no-pager diff --no-index --word-diff ./test-self/basic.break-css.expect.log ./test-self/basic.break-css.result.log
 git --no-pager diff --no-index --word-diff ./test-self/basic.break-css.expect.code ./test-self/basic.break-css.result.code
 # endregion:Basic with broken result CSS
-
-# region:Basic PostCSS 8.3
-
-# This test might need updates in the future if we update PostCSS versions.
-# Check the release logs of PostCSS and pick something else that is new to use.
-# Disabling this test is also fine.
-set +e
-
-echo "" > ./test-self/basic.postcss-8-3.result.log
-
-node ./test/basic.postcss-8-3.mjs > ./test-self/basic.postcss-8-3.result.log 2>&1
-echo "$?" > ./test-self/basic.postcss-8-3.result.code
-
-set -e
-git --no-pager diff --no-index --word-diff ./test-self/basic.postcss-8-3.expect.log ./test-self/basic.postcss-8-3.result.log
-git --no-pager diff --no-index --word-diff ./test-self/basic.postcss-8-3.expect.code ./test-self/basic.postcss-8-3.result.code
-# endregion:Basic PostCSS 8.3

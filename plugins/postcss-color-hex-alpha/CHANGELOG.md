@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Hex Alpha
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 8.0.4 (June 10, 2022)
 
 - Fixed: Issue with SVG hashes being interpreted as hex colors

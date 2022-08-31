@@ -1,5 +1,9 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ## 1.3.0 (March 7, 2022)
 
 - Add matching rules for `color-mix`
