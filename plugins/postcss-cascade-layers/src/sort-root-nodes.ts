@@ -3,13 +3,14 @@ import type { Model } from './model';
 import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, CONDITIONAL_ATRULES, WITH_SELECTORS_LAYER_NAME } from './constants';
 import { someInTree } from './some-in-tree';
 import { removeEmptyAncestorBlocks, removeEmptyDescendantBlocks } from './clean-blocks';
+import { isProcessableLayerRule } from './is-processable-layer-rule';
 
 // Sort root nodes to apply the preferred order by layer priority for non-selector rules.
 // Selector rules are adjusted by specificity.
 export function sortRootNodes(root: Container, model: Model) {
 	// Separate selector rules from other rules
 	root.walkAtRules((layerRule) => {
-		if (layerRule.name.toLowerCase() !== 'layer') {
+		if (!isProcessableLayerRule(layerRule)) {
 			return;
 		}
 
@@ -70,22 +71,6 @@ export function sortRootNodes(root: Container, model: Model) {
 	});
 
 	root.nodes.sort((a, b) => {
-		const aIsCharset = a.type === 'atrule' && a.name.toLowerCase() === 'charset';
-		const bIsCharset = b.type === 'atrule' && b.name.toLowerCase() === 'charset';
-		if (aIsCharset && bIsCharset) {
-			return 0;
-		} else if (aIsCharset !== bIsCharset) {
-			return aIsCharset ? -1 : 1;
-		}
-
-		const aIsImport = a.type === 'atrule' && a.name.toLowerCase() === 'import';
-		const bIsImport = b.type === 'atrule' && b.name.toLowerCase() === 'import';
-		if (aIsImport && bIsImport) {
-			return 0;
-		} else if (aIsImport !== bIsImport) {
-			return aIsImport ? -1 : 1;
-		}
-
 		const aIsLayer = a.type === 'atrule' && a.name.toLowerCase() === 'layer';
 		const bIsLayer = b.type === 'atrule' && b.name.toLowerCase() === 'layer';
 		if (aIsLayer && bIsLayer) {

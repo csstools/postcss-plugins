@@ -53,7 +53,7 @@
 		"postcss": "^8.2"
 	},
 	"devDependencies": {
-		"postcss-import": "^14.1.0",
+		"postcss-import": "^15.0.0",
 		"puppeteer": "^16.2.0"
 	},
 	"scripts": {

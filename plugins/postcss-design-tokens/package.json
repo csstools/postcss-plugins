@@ -44,7 +44,7 @@
 		"postcss": "^8.2"
 	},
 	"devDependencies": {
-		"postcss-import": "^14.1.0",
+		"postcss-import": "^15.0.0",
 		"style-dictionary-design-tokens-example": "^1.1.0"
 	},
 	"scripts": {
