@@ -1,5 +1,9 @@
 # Changes to PostCSS Attribute Case Insensitive
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 5.0.2 (July 8, 2022)
 
 - Fix incorrect selector AST updates

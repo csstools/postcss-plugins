@@ -1,5 +1,9 @@
 # Changes to PostCSS Place Properties
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 7.0.5 (July 8, 2022)
 
 - Fix case insensitive matching.

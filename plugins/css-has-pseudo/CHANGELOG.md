@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 4.0.1 (August 23, 2022)
 
 - Fix: assign global browser polyfill to `window`, `self` or a blank object.

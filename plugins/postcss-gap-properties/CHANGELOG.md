@@ -1,5 +1,9 @@
 # Changes to PostCSS Gap Properties
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 3.0.5 (July 12, 2022)
 
 - Fix detection of `display: grid;`

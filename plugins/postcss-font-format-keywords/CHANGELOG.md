@@ -1,5 +1,9 @@
 # Changes to PostCSS Font Format
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 1.0.1 (July 8, 2022)
 
 - Fix case insensitive matching.

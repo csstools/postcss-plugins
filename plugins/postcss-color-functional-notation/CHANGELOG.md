@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Functional Notation
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 4.2.4 (July 8, 2022)
 
 - Fix case insensitive matching.

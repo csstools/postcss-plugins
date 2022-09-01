@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 import postcss from 'postcss';
-import postcssOldestSupported, { AcceptedPlugin } from 'postcss-8.2';
+import postcssOldestSupported, { AcceptedPlugin } from 'postcss-8.4';
 import path from 'path';
 import fs, { promises as fsp } from 'fs';
 import { strict as assert } from 'assert';

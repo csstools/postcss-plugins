@@ -10,7 +10,7 @@
 	},
 	"private": true,
 	"engines": {
-		"node": "^12 || ^14 || >=16"
+		"node": "^14 || ^16 || >=18"
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
@@ -27,7 +27,7 @@
 	],
 	"dependencies": {
 		"postcss": "~8.4",
-		"postcss-8.2": "npm:postcss@~8.2"
+		"postcss-8.4": "npm:postcss@~8.4"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",

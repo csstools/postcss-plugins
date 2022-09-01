@@ -1,5 +1,9 @@
 # Changes to Prefers Color Scheme
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 7.0.1 (August 23, 2022)
 
 - Fix: assign global browser polyfill to `window`, `self` or a blank object.
