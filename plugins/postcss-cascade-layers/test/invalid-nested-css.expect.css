@@ -1,0 +1,14 @@
+.unlayered {
+	contain: layout inline-size;
+}
+
+.partially-layered {
+	background-color: blue;
+	height: 100px;
+	width: 100px;
+
+	@layer A {
+		/* Only conditional rules are allowed to be nested */
+		background-color: red;
+	}
+}
