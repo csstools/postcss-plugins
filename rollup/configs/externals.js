@@ -67,6 +67,7 @@ export const externalsForPlugin = [
 	'postcss',
 	/^postcss-\d\.\d$/,
 	/^postcss\/lib\/*/,
+	'postcss-html',
 
 	'@csstools/postcss-cascade-layers',
 	'@csstools/postcss-color-function',
