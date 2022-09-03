@@ -17,7 +17,7 @@
 <header>
 
 [<humanReadableName>] lets you use Custom Properties in CSS, following
-the [PostCSS Custom Properties] specification.
+the [CSS Custom Properties] specification.
 
 [!['Can I use' table](https://caniuse.bitsofco.de/image/css-variables.png)](https://caniuse.com/#feat=css-variables)
 
@@ -59,4 +59,4 @@ Custom property declarations are always preserved only `var()` functions can be 
 ```
 
 <linkList>
-[PostCSS Custom Properties]: <specUrl>
+[CSS Custom Properties]: <specUrl>
