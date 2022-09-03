@@ -3,6 +3,24 @@
 ### Unreleased (major)
 
 - Updated: Support for Node v14+ (major).
+- Removed : `importFrom` feature (breaking).
+- Removed : `exportTo` feature (breaking).
+- Added support for local custom property declarations.
+
+```css
+.example {
+	--a-value: 20px;
+	margin: var(--a-value);
+}
+
+/* becomes */
+
+.example {
+	--a-value: 20px;
+	margin: 20px;
+	margin: var(--a-value);
+}
+```
 
 ### 12.1.8 (June 10, 2022)
 
