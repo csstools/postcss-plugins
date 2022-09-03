@@ -31,7 +31,7 @@ the [PostCSS Custom Properties] specification.
 
 **Note:** This plugin only processes variables that are defined in the `:root` or `html` selector.
 
-Locally defined custom properties will be used as fallbacks inly within the same rule.
+Locally defined custom properties will be used as fallbacks inly within the same rule, but not elsewhere.
 
 <usage>
 
