@@ -3,6 +3,7 @@
 ### Unreleased (8.0.0-alpha.1)
 
 - Updated: Support for Node v14+ (major).
+- Remove `postcss-env-function` (breaking).
 
 ### 8.0.0-alpha.0 (July 8, 2022)
 
