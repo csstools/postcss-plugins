@@ -43,7 +43,7 @@
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
@@ -73,8 +73,10 @@
 		"w3c"
 	],
 	"csstools": {
+		"cssdbId": "custom-properties",
 		"exportName": "postcssCustomProperties",
-		"humanReadableName": "PostCSS Custom Properties"
+		"humanReadableName": "PostCSS Custom Properties",
+		"specUrl": "https://www.w3.org/TR/css-variables-1/"
 	},
 	"volta": {
 		"extends": "../../package.json"

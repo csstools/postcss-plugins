@@ -7,6 +7,7 @@ html {
 	--color-h: 0;
 	--color-s: 100%;
 	--color-l: 50%;
+	--color-components: var(--color-h), var(--color-s), var(--color-l);
 	--color-hsl: hsl(var(--color-h), var(--color-s), var(--color-l));
 	--ref-color: var(--color);
 	--circular: var(--circular-2);
@@ -72,6 +73,11 @@ html {
 
 .test--color_w_vars {
 	color: var(--color-hsl);
+}
+
+.test--color_components {
+	color: hsl(var(--color-components));
+	background-color: hsl(var(--does-not-exist, 0 , 1%, 2%));
 }
 
 .test--circular_var {
@@ -172,4 +178,9 @@ html {
 
 .conditionals {
 	color: var(--color);
+}
+
+.local-variable {
+	--local: 1;
+	order: var(--local);
 }

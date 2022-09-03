@@ -15,7 +15,7 @@ postcssTape(plugin)({
 	'examples/example': {
 		message: 'minimal example',
 	},
-	'examples/example:preserve': {
+	'examples/example:preserve-false': {
 		message: 'minimal example with { preserve: false }',
 		options: {
 			preserve: false

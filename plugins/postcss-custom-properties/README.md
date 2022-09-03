@@ -1,47 +1,71 @@
-# PostCSS Custom Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
+# PostCSS Custom Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![NPM Version][npm-img]][npm-url]
-[![CSS Standard Status][css-img]][css-url]
-[![Build Status][cli-img]][cli-url]
-[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-custom-properties.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/custom-properties.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Custom Properties] lets you use Custom Properties in CSS, following
-the [CSS Custom Properties] specification.
+the [PostCSS Custom Properties] specification.
 
 [!['Can I use' table](https://caniuse.bitsofco.de/image/css-variables.png)](https://caniuse.com/#feat=css-variables)
 
 ```pcss
 :root {
-	--color: red;
+	--color-blue-dark: rgb(0, 61, 184);
+	--color-blue-light: rgb(0, 217, 255);
+	--color-pink: rgb(255, 192, 211);
+	--text-color: var(--color-pink);
 }
 
-h1 {
-	color: var(--color);
+.element {
+	/* custom props */
+	--border-color: var(--color-blue-light);
+
+	/* props */
+	border: 1px solid var(--border-color);
+	color: var(--text-color);
+}
+
+.element--dark {
+	--border-color: var(--color-blue-dark);
 }
 
 /* becomes */
 
 :root {
-	--color: red;
+	--color-blue-dark: rgb(0, 61, 184);
+	--color-blue-light: rgb(0, 217, 255);
+	--color-pink: rgb(255, 192, 211);
+	--text-color: var(--color-pink);
 }
 
-h1 {
-	color: red;
-	color: var(--color);
+.element {
+	/* custom props */
+	--border-color: var(--color-blue-light);
+
+	/* props */
+	border: 1px solid rgb(0, 217, 255);
+	border: 1px solid var(--border-color);
+	color: rgb(255, 192, 211);
+	color: var(--text-color);
+}
+
+.element--dark {
+	--border-color: var(--color-blue-dark);
 }
 ```
 
 **Note:** This plugin only processes variables that are defined in the `:root` or `html` selector.
+
+Locally defined custom properties will be used as fallbacks inly within the same rule.
 
 ## Usage
 
 Add [PostCSS Custom Properties] to your project:
 
 ```bash
-npm install postcss-custom-properties --save-dev
+npm install postcss postcss-custom-properties --save-dev
 ```
 
-Use [PostCSS Custom Properties] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
@@ -52,7 +76,8 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-[PostCSS Custom Properties] runs in all Node environments, with special instructions for:
+[PostCSS Custom Properties] runs in all Node environments, with special
+instructions for:
 
 | [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
 | --- | --- | --- | --- | --- | --- |
@@ -64,43 +89,64 @@ postcss([
 The `preserve` option determines whether properties using
 custom properties should be preserved in their original form. By default these are preserved.
 
+Custom property declarations are always preserved only `var()` functions can be omitted.
+
 ```js
-postcssCustomProperties({
-	preserve: false
-});
+postcssCustomProperties({ preserve: false })
 ```
 
 ```pcss
 :root {
-	--color: red;
+	--color-blue-dark: rgb(0, 61, 184);
+	--color-blue-light: rgb(0, 217, 255);
+	--color-pink: rgb(255, 192, 211);
+	--text-color: var(--color-pink);
 }
 
-h1 {
-	color: var(--color);
+.element {
+	/* custom props */
+	--border-color: var(--color-blue-light);
+
+	/* props */
+	border: 1px solid var(--border-color);
+	color: var(--text-color);
+}
+
+.element--dark {
+	--border-color: var(--color-blue-dark);
 }
 
 /* becomes */
 
 :root {
-	--color: red;
+	--color-blue-dark: rgb(0, 61, 184);
+	--color-blue-light: rgb(0, 217, 255);
+	--color-pink: rgb(255, 192, 211);
+	--text-color: var(--color-pink);
 }
 
-h1 {
-	color: red;
+.element {
+	/* custom props */
+	--border-color: var(--color-blue-light);
+
+	/* props */
+	border: 1px solid var(--border-color);
+	color: rgb(255, 192, 211);
+}
+
+.element--dark {
+	--border-color: var(--color-blue-dark);
 }
 ```
 
-No Custom Properties will be removed from `:root` or `html` even when `preserve` is false.
-It is impossible to know if a Custom Property is truly unused or only unused in the current stylesheet.
-
-[cli-img]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[css-img]: https://cssdb.org/images/badges/custom-properties.svg
 [css-url]: https://cssdb.org/#custom-properties
 [discord]: https://discord.gg/bUadyRwkJS
-[npm-img]: https://img.shields.io/npm/v/postcss-custom-properties.svg
 [npm-url]: https://www.npmjs.com/package/postcss-custom-properties
 
-[CSS Custom Properties]: https://www.w3.org/TR/css-variables-1/
+[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
+[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
+[PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Custom Properties]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties
+[PostCSS Custom Properties]: https://www.w3.org/TR/css-variables-1/

@@ -13,6 +13,14 @@ export interface PluginOptions {
 const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
 
+	if ('importFrom' in Object(opts)) {
+		throw new Error('[postcss-custom-properties] "importFrom" is no longer supported');
+	}
+
+	if ('exportTo' in Object(opts)) {
+		throw new Error('[postcss-custom-properties] "exportTo" is no longer supported');
+	}
+
 	return {
 		postcssPlugin: 'postcss-custom-properties',
 		prepare: () => {
