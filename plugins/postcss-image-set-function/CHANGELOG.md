@@ -1,5 +1,9 @@
 # Changes to PostCSS image-set() Function
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 4.0.7 (July 8, 2022)
 
 - Fix case insensitive matching.

@@ -4,6 +4,9 @@ import { extractStyleDictionaryTokens } from './style-dictionary/style-dictionar
 import path from 'path';
 import { promises as fsp } from 'fs';
 import { DEFAULT_CONDITION } from '../constants';
+import module from 'module';
+
+const require = module.createRequire(import.meta.url);
 
 function parseImport(statement: string): { filePath: string, format: string, conditions: Array<string> } {
 	const importAST = valueParser(statement);
@@ -43,7 +46,21 @@ export async function tokensFromImport(buildIs: Array<string>, sourceFilePath: s
 		return false;
 	}
 
-	const resolvedPath = path.resolve(path.dirname(sourceFilePath), filePath);
+	let resolvedPath = '';
+	if (filePath.startsWith('node_modules://')) {
+		try {
+			resolvedPath = require.resolve(filePath.slice(15), {
+				paths: [
+					path.dirname(sourceFilePath),
+				],
+			});
+		} catch (e) {
+			throw new Error(`Failed to read ${filePath} with error ${(e as Error).message}`);
+		}
+	} else {
+		resolvedPath = path.resolve(path.dirname(sourceFilePath), filePath);
+	}
+
 	if (alreadyImported.has(resolvedPath)) {
 		return false;
 	}

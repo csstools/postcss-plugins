@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 10.1.10 (June 30, 2022)
 
 - Partially revert the changes to pseudo element selectors from 10.1.9.

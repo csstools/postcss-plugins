@@ -40,6 +40,9 @@
 		},
 		"lh": {
 			"value": "1lh"
+		},
+		"unitless": {
+			"value": "1.25"
 		}
 	}
 }

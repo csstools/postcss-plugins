@@ -1,5 +1,13 @@
 # Changes to CSS Blank Pseudo
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
+### 4.1.1 (August, 23, 2022)
+
+- Fix: assign global browser polyfill to `window`, `self` or a blank object.
+
 ### 4.1.0 (July 30, 2022)
 
 - Added: `disablePolyfillReadyClass` plugin option to prevent `.js-blank-pseudo` from being added.

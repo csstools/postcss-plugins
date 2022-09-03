@@ -1,3 +1,6 @@
-/* global self */
+/* global self,window */
 import { default as cssHasPseudo } from './browser';
-self.cssHasPseudo = cssHasPseudo;
+
+(function (global) {
+	global.cssHasPseudo = cssHasPseudo;
+}('object' === typeof window && window || 'object' === typeof self && self || {}));

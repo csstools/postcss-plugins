@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 8.0.2 (June 4, 2022)
 
 - Fixed: dependency declarations in package.json

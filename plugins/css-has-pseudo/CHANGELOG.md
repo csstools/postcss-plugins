@@ -1,5 +1,13 @@
 # Changes to CSS Has Pseudo
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
+### 4.0.1 (August 23, 2022)
+
+- Fix: assign global browser polyfill to `window`, `self` or a blank object.
+
 ### 4.0.0 (July 8, 2022)
 
 [Read the full changelog](https://github.com/csstools/postcss-plugins/wiki/PostCSS-Preset-Env-8)

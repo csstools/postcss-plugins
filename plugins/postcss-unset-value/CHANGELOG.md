@@ -1,5 +1,9 @@
 # Changes to PostCSS Unset Value
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 1.0.2 (July 8, 2022)
 
 - Fixed: Case insensitive property and keyword matching.

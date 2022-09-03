@@ -8,40 +8,48 @@ postcssTape(plugin)({
 		plugins: [
 			postcssImport(),
 			plugin()
-		]
+		],
+		warnings: 1
 	},
-	'basic:rootFontSize-20': {
-		message: "supports basic usage with { unitsAndValues { rootFontSize: 20 } }",
+	'units': {
+		message: "supports units usage",
 		plugins: [
-			postcssImport(),
+			plugin()
+		],
+		warnings: 2
+	},
+	'units:rootFontSize-20': {
+		message: "supports units usage with { unitsAndValues { rootFontSize: 20 } }",
+		plugins: [
 			plugin({
 				unitsAndValues: {
 					rootFontSize: 20
 				}
 			})
-		]
+		],
+		warnings: 2
 	},
-	'basic:rootFontSize-NaN': {
-		message: "supports basic usage with { unitsAndValues { rootFontSize: NaN } }",
+	'units:rootFontSize-NaN': {
+		message: "supports units usage with { unitsAndValues { rootFontSize: NaN } }",
 		plugins: [
-			postcssImport(),
 			plugin({
 				unitsAndValues: {
 					rootFontSize: NaN
 				}
 			})
-		]
+		],
+		warnings: 2
 	},
-	'basic:rootFontSize-invalid': {
-		message: "supports basic usage with { unitsAndValues { rootFontSize: invalid } }",
+	'units:rootFontSize-invalid': {
+		message: "supports units usage with { unitsAndValues { rootFontSize: invalid } }",
 		plugins: [
-			postcssImport(),
 			plugin({
 				unitsAndValues: {
 					rootFontSize: 'invalid'
 				}
 			})
-		]
+		],
+		warnings: 2
 	},
 	'errors': {
 		message: "handles issues correctly",
@@ -112,5 +120,9 @@ postcssTape(plugin)({
 		options: {
 			importAtRuleName: 'tokens'
 		}
+	},
+	'issue-583': {
+		message: 'A meaningful error message is given and no stack overflow.',
+		warnings: 1
 	},
 });
