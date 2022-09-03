@@ -1,18 +1,31 @@
 /* [postcss-cascade-layers]: To use the @import at-rule with layer, the postcss-import plugin is also required. This plugin alone will not support importing layers. */
 .theme-styles {
 	color:red;
+}
+@media screen and (prefers-color-scheme: dark) {
+	.theme-styles {
+			color: pink;
+		}
+}
+.theme-styles:not(#\#) {
+	color:blue;
+}
+@media screen and (prefers-color-scheme: dark) {
+	.theme-styles:not(#\#) {
+			color: cyan;
+		}
 }/* [postcss-cascade-layers]: handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions. */
-.foo:not(#\#) {
+.foo:not(#\#):not(#\#) {
 		color: revert-layer;
 	}/* [postcss-cascade-layers]: handling different layer orders in conditional rules is unsupported by this plugin and will cause style differences between browser versions. */
 @media (min-width: 10px) {
-		.foo:not(#\#):not(#\#) {
+		.foo:not(#\#):not(#\#):not(#\#) {
 			color: red;
 		}
 }
-.foo:not(#\#):not(#\#):not(#\#) {
+.foo:not(#\#):not(#\#):not(#\#):not(#\#) {
 		color: pink;
 	}
-.foo:not(#\#):not(#\#) {
+.foo:not(#\#):not(#\#):not(#\#) {
 		color: red;
 	}

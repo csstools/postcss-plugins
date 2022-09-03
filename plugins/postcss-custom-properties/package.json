@@ -38,7 +38,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"postcss-import": "^14.0.2"
+		"postcss-import": "^15.0.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
