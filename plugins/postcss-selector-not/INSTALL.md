@@ -16,8 +16,19 @@ npm install postcss postcss-selector-not --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssSelectorNot = require('postcss-selector-not');
+
+postcss([
+	postcssSelectorNot(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssSelectorNot from 'postcss-selector-not';
 
 postcss([
 	postcssSelectorNot(/* pluginOptions */)

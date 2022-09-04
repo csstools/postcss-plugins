@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-stepped-value-functions --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssSteppedValueFunctions = require('@csstools/postcss-stepped-value-functions');
+
+postcss([
+	postcssSteppedValueFunctions(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssSteppedValueFunctions from '@csstools/postcss-stepped-value-functions';
 
 postcss([
 	postcssSteppedValueFunctions(/* pluginOptions */)
