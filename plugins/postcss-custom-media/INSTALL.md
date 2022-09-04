@@ -16,8 +16,19 @@ npm install postcss postcss-custom-media --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssCustomMedia = require('postcss-custom-media');
+
+postcss([
+	postcssCustomMedia(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssCustomMedia from 'postcss-custom-media';
 
 postcss([
 	postcssCustomMedia(/* pluginOptions */)

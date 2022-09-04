@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-base-plugin --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssBasePlugin = require('@csstools/postcss-base-plugin');
+
+postcss([
+	postcssBasePlugin(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssBasePlugin from '@csstools/postcss-base-plugin';
 
 postcss([
 	postcssBasePlugin(/* pluginOptions */)

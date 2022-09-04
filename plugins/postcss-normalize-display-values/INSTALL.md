@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-normalize-display-values --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssNormalizeDisplayValues = require('@csstools/postcss-normalize-display-values');
+
+postcss([
+	postcssNormalizeDisplayValues(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssNormalizeDisplayValues from '@csstools/postcss-normalize-display-values';
 
 postcss([
 	postcssNormalizeDisplayValues(/* pluginOptions */)

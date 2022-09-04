@@ -16,8 +16,19 @@ npm install postcss postcss-env-function --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssEnvFunction = require('postcss-env-function');
+
+postcss([
+	postcssEnvFunction(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssEnvFunction from 'postcss-env-function';
 
 postcss([
 	postcssEnvFunction(/* pluginOptions */)

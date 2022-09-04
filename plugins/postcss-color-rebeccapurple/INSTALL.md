@@ -16,8 +16,19 @@ npm install postcss postcss-color-rebeccapurple --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssRebeccaPurple = require('postcss-color-rebeccapurple');
+
+postcss([
+	postcssRebeccaPurple(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssRebeccaPurple from 'postcss-color-rebeccapurple';
 
 postcss([
 	postcssRebeccaPurple(/* pluginOptions */)

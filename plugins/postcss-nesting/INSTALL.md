@@ -16,8 +16,19 @@ npm install postcss postcss-nesting --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssNesting = require('postcss-nesting');
+
+postcss([
+	postcssNesting(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssNesting from 'postcss-nesting';
 
 postcss([
 	postcssNesting(/* pluginOptions */)

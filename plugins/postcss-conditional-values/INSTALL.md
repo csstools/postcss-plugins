@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-conditional-values --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssConditionalValues = require('@csstools/postcss-conditional-values');
+
+postcss([
+	postcssConditionalValues(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssConditionalValues from '@csstools/postcss-conditional-values';
 
 postcss([
 	postcssConditionalValues(/* pluginOptions */)

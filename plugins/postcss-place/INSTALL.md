@@ -16,8 +16,19 @@ npm install postcss postcss-place --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssPlace = require('postcss-place');
+
+postcss([
+	postcssPlace(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssPlace from 'postcss-place';
 
 postcss([
 	postcssPlace(/* pluginOptions */)

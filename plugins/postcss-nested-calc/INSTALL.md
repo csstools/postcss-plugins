@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-nested-calc --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssNestedCalc = require('@csstools/postcss-nested-calc');
+
+postcss([
+	postcssNestedCalc(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssNestedCalc from '@csstools/postcss-nested-calc';
 
 postcss([
 	postcssNestedCalc(/* pluginOptions */)

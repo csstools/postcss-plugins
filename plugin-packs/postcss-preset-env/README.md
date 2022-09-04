@@ -215,10 +215,10 @@ Passing an object to a specific feature ID will both enable and configure it.
 
 ```js
 postcssPresetEnv({
-  /* use stage 3 features + css color-mod (warning on unresolved) */
+  /* use stage 3 features + custom-selectors (preserving the original CSS) */
   stage: 3,
   features: {
-    'color-mod-function': { unresolved: 'warn' }
+    'custom-selectors': { preserve: true  }
   }
 })
 ```
