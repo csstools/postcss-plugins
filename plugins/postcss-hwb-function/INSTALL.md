@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-hwb-function --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssHWBFunction = require('@csstools/postcss-hwb-function');
+
+postcss([
+	postcssHWBFunction(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssHWBFunction from '@csstools/postcss-hwb-function';
 
 postcss([
 	postcssHWBFunction(/* pluginOptions */)

@@ -16,8 +16,19 @@ npm install postcss css-blank-pseudo --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssBlankPseudo = require('css-blank-pseudo');
+
+postcss([
+	postcssBlankPseudo(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssBlankPseudo from 'css-blank-pseudo';
 
 postcss([
 	postcssBlankPseudo(/* pluginOptions */)

@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-font-format-keywords --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssFontFormatKeywords = require('@csstools/postcss-font-format-keywords');
+
+postcss([
+	postcssFontFormatKeywords(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
 
 postcss([
 	postcssFontFormatKeywords(/* pluginOptions */)

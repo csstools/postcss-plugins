@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-gradients-interpolation-method --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssGradientsInterpolationMethod = require('@csstools/postcss-gradients-interpolation-method');
+
+postcss([
+	postcssGradientsInterpolationMethod(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssGradientsInterpolationMethod from '@csstools/postcss-gradients-interpolation-method';
 
 postcss([
 	postcssGradientsInterpolationMethod(/* pluginOptions */)
