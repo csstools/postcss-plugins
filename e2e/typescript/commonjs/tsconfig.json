@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"allowJs": false,
+		"allowSyntheticDefaultImports": true,
+		"declaration": true,
+		"declarationDir": ".",
+		"lib": ["es2020"],
+		"module": "CommonJS",
+		"moduleResolution": "classic",
+		"outDir": ".",
+		"target": "es2020",
+		"strict": true
+	},
+	"include": ["index.cts"],
+	"exclude": ["./index.cjs"],
+}
