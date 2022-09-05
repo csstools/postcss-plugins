@@ -1,0 +1,14 @@
+{
+	"name": "@csstools/e2e--typescript--commonjs",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Can you use PostCSS with one of our plugins from a Typescript file?",
+	"scripts": {
+		"build": "tsc",
+		"test": "node ./index.cjs"
+	},
+	"devDependencies": {
+		"@csstools/postcss-ic-unit": "^1.0.1",
+		"typescript": "^4.8.2"
+	}
+}
