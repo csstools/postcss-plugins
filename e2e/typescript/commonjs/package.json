@@ -8,7 +8,7 @@
 		"test": "node ./index.cjs"
 	},
 	"devDependencies": {
-		"@csstools/postcss-ic-unit": "1.0.0",
+		"@csstools/postcss-ic-unit": "^1.0.1",
 		"typescript": "^4.8.2"
 	}
 }
