@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"allowJs": false,
+		"allowSyntheticDefaultImports": true,
+		"declaration": true,
+		"declarationDir": ".",
+		"lib": ["es2020"],
+		"module": "ES6",
+		"moduleResolution": "node",
+		"outDir": ".",
+		"target": "es2020",
+		"strict": true
+	},
+	"include": ["./index.mts"],
+	"exclude": ["./index.mjs"],
+}
