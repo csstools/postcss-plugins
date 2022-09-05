@@ -81,7 +81,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"postcss-simple-vars": "^6.0.3"
+		"postcss-simple-vars": "^7.0.0"
 	},
 	"scripts": {
 		"prebuild": "node ./scripts/generate-plugins-data.mjs && eslint --fix ./src/plugins/*.mjs",
