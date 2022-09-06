@@ -1,6 +1,6 @@
 @custom-selector :--foo .bar, .baz;
 
-.foo.foo {
+.foo:is(.foo) {
 	margin-top: 16px;
 }
 
@@ -10,7 +10,7 @@
 
 @custom-selector :--any-heading h1, h2, h3, h4, h5, h6;
 
-h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
+:is(h1, h2, h3, h4, h5, h6) + p {}
 
 :--any-heading + p {}
 
@@ -24,12 +24,20 @@ h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
 	.btn-warning,
 	.btn-danger;
 
-.foo > .baz {}
+:is(.foo) > :is(.baz) {}
 
 :--foobar > :--baz {}
-.fizz > .foo,.buzz > .foo {}
+:is(.fizz, .buzz) > :is(.foo) {}
 :--fizzbuzz > :--foobar {}
-.btn-primary,.btn-success,.btn-info,.btn-warning,.btn-danger,.btn-primary:active,.btn-success:active,.btn-info:active,.btn-warning:active,.btn-danger:active {}
+:is(.btn-primary,
+	.btn-success,
+	.btn-info,
+	.btn-warning,
+	.btn-danger),:is(.btn-primary,
+	.btn-success,
+	.btn-info,
+	.btn-warning,
+	.btn-danger):active {}
 :--button-types, :--button-types:active {}
 
 @custom-selector :--commented-foo
@@ -37,7 +45,8 @@ h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
 	.foo,
 	.bar > .baz;
 
-.foo + p,.bar > .baz + p {
+:is(.foo,
+	.bar > .baz) + p {
 	display: block;
 }
 
@@ -47,7 +56,7 @@ h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
 
 @custom-selector :--pseudo ::before, ::after;
 
-.foo > a::before img,.foo > a::after img {
+.foo > a:is(::before, ::after) img {
 	display: block;
 }
 
@@ -57,7 +66,7 @@ h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
 
 @custom-selector :--foo .foo;
 
-.foo,.foo.bar {
+:is(.foo),:is(.foo).bar {
 	color: white;
 }
 
@@ -65,7 +74,7 @@ h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
 	color: white;
 }
 
-.foo .foo:hover {
+:is(.foo) :is(.foo):hover {
 	color: white;
 }
 
@@ -76,7 +85,7 @@ h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
 @custom-selector :--fo-----o h1, h2, h3;
 @custom-selector :--ba-----r h4, h5, h6;
 
-.fo--oo > h1,.fo--oo > h2,.fo--oo > h3 {
+.fo--oo > :is(h1, h2, h3) {
 	margin: auto;
 }
 
@@ -84,7 +93,7 @@ h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {}
 	margin: auto;
 }
 
-h4:hover .ba--z,h5:hover .ba--z,h6:hover .ba--z {
+:is(h4, h5, h6):hover .ba--z {
 	display: block;
 }
 
@@ -102,7 +111,8 @@ article :--heading + p {
 	.foo,
 	.bar > .baz;
 
-.foo,.bar > .baz {
+:is(.foo,
+	.bar > .baz) {
 	display: block;
 }
 
@@ -115,13 +125,13 @@ article :--heading + p {
 @custom-selector :--button button, .button;
 @custom-selector :--enter :hover, :focus;
 
-button:hover,button:focus,.button:hover,.button:focus {}
+:is(button, .button):is(:hover, :focus) {}
 
 :--button:--enter {}
 
 @custom-selector :--any-foobar .foo, .bar;
 
-.foo h1,.bar h1 {
+:is(.foo, .bar) h1 {
 	margin-top: 16px;
 }
 
@@ -129,7 +139,7 @@ button:hover,button:focus,.button:hover,.button:focus {}
 	margin-top: 16px;
 }
 
-main .foo + p {
+main :is(.foo) + p {
 	margin-top: 16px;
 }
 
@@ -139,20 +149,20 @@ main :--foo + p {
 
 @custom-selector :--foobar .foo;
 
-.foo {
+:is(.foo) {
 	order: 1000;
 }
 
 :--foobar {
 	order: 1000;
 }
-a,.foo {
+a,:is(.foo) {
 	order: 1001;
 }
 a, :--foobar {
 	order: 1001;
 }
-b,.foo {
+b,:is(.foo) {
 	order: 1002;
 }
 b,:--foobar {
@@ -161,20 +171,20 @@ b,:--foobar {
 
 @custom-selector :--foobaz .foo.baz;
 
-.foo.baz {
+:is(.foo.baz) {
 	order: 1010;
 }
 
 :--foobaz {
 	order: 1010;
 }
-a,.foo.baz {
+a,:is(.foo.baz) {
 	order: 1011;
 }
 a, :--foobaz {
 	order: 1011;
 }
-b,.foo.baz {
+b,:is(.foo.baz) {
 	order: 1012;
 }
 b,:--foobaz {
@@ -183,20 +193,20 @@ b,:--foobaz {
 
 @custom-selector :--foobazz .foo .baz;
 
-.foo .baz {
+:is(.foo .baz) {
 	order: 1020;
 }
 
 :--foobazz {
 	order: 1020;
 }
-a,.foo .baz {
+a,:is(.foo .baz) {
 	order: 1021;
 }
 a, :--foobazz {
 	order: 1021;
 }
-b,.foo .baz {
+b,:is(.foo .baz) {
 	order: 1022;
 }
 b,:--foobazz {

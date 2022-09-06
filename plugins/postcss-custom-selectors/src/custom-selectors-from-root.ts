@@ -1,13 +1,15 @@
+import type { Root as PostCSSRoot } from 'postcss';
+import type { Root as SelectorRoot } from 'postcss-selector-parser';
 import parser from 'postcss-selector-parser';
 
 // return custom selectors from the css root, conditionally removing them
-export default (root, opts) => {
+export default function getCustomSelectors(root: PostCSSRoot, opts: { preserve?: boolean }): Map<string, SelectorRoot> {
 	// initialize custom selectors
-	const customSelectors = {};
+	const customSelectors = new Map<string, SelectorRoot>();
 
 	// for each custom selector atrule that is a child of the css root
 	root.nodes.slice().forEach(node => {
-		if (node.type !== 'atrule' || node.name !== 'custom-selector') {
+		if (node.type !== 'atrule' || node.name.toLowerCase() !== 'custom-selector') {
 			return;
 		}
 
@@ -26,13 +28,12 @@ export default (root, opts) => {
 		const name = nameNode.toString();
 
 		// re-parsing is important to obtain the correct AST shape
-		customSelectors[name] = parser().astSync(source.slice(name.length).trim());
+		customSelectors.set(name, parser().astSync(source.slice(name.length).trim()));
 
-		// conditionally remove the custom selector atrule
-		if (!Object(opts).preserve) {
+		if (!opts.preserve) {
 			node.remove();
 		}
 	});
 
 	return customSelectors;
-};
+}

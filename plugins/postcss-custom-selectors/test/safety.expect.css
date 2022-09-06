@@ -1,11 +1,11 @@
-h1.class,   h1#id,   h1::before,   h1* {
+.class:is(h1),   #id:is(h1),   ::before:is(h1),   *:is(h1) {
 	order: 1;
 }
 
-h1.foo.class, h1.foo#id, h1.foo::before   {
+.foo.class:is(h1), .foo#id:is(h1), .foo::before:is(h1)   {
 	order: 2;
 }
 
-h1.foo.class,   h1.foo#id,   h1.foo::before   {
+.foo.class:is(h1),   .foo#id:is(h1),   .foo::before:is(h1)   {
 	order: 3;
 }
