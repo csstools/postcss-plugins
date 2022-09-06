@@ -55,7 +55,7 @@ the [CSS Custom Properties] specification.
 
 **Note:** This plugin only processes variables that are defined in the `:root` or `html` selector.
 
-Locally defined custom properties will be used as fallbacks inly within the same rule, but not elsewhere.
+Locally defined custom properties will be used as fallbacks only within the same rule, but not elsewhere.
 
 ## Usage
 
