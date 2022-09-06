@@ -3,7 +3,7 @@
 [<img alt="npm version" src="https://img.shields.io/npm/v/postcss-custom-properties.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/custom-properties.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Custom Properties] lets you use Custom Properties in CSS, following
-the [PostCSS Custom Properties] specification.
+the [CSS Custom Properties] specification.
 
 [!['Can I use' table](https://caniuse.bitsofco.de/image/css-variables.png)](https://caniuse.com/#feat=css-variables)
 
