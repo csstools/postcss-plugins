@@ -16,8 +16,19 @@ npm install postcss postcss-overflow-shorthand --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssOverflowShorthand = require('postcss-overflow-shorthand');
+
+postcss([
+	postcssOverflowShorthand(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssOverflowShorthand from 'postcss-overflow-shorthand';
 
 postcss([
 	postcssOverflowShorthand(/* pluginOptions */)

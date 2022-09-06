@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-unset-value --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssUnsetValue = require('@csstools/postcss-unset-value');
+
+postcss([
+	postcssUnsetValue(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssUnsetValue from '@csstools/postcss-unset-value';
 
 postcss([
 	postcssUnsetValue(/* pluginOptions */)

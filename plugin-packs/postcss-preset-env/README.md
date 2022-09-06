@@ -215,10 +215,10 @@ Passing an object to a specific feature ID will both enable and configure it.
 
 ```js
 postcssPresetEnv({
-  /* use stage 3 features + css color-mod (warning on unresolved) */
+  /* use stage 3 features + custom-selectors (preserving the original CSS) */
   stage: 3,
   features: {
-    'color-mod-function': { unresolved: 'warn' }
+    'custom-selectors': { preserve: true  }
   }
 })
 ```
@@ -323,134 +323,6 @@ default, this option is not configured.
 ```js
 postcssPresetEnv({
   preserve: false // instruct all plugins to omit pre-polyfilled CSS
-});
-```
-
-### importFrom
-
-The `importFrom` option specifies sources where variables like Custom Media,
-Custom Properties, Custom Selectors, and Environment Variables can be imported
-from, which might be CSS, JS, and JSON files, functions, and directly passed
-objects.
-
-```js
-postcssPresetEnv({
-  /*
-    @custom-media --small-viewport (max-width: 30em);
-    @custom-selector :--heading h1, h2, h3;
-    :root { --color: red; }
-  */
-  importFrom: 'path/to/file.css'
-});
-```
-
-Multiple sources can be passed into this option, and they will be parsed in the
-order they are received. JavaScript files, JSON files, functions, and objects
-will use different namespaces to import different kinds of variables.
-
-```js
-postcssPresetEnv({
-  importFrom: [
-    /*
-      @custom-media --small-viewport (max-width: 30em);
-      @custom-selector :--heading h1, h2, h3;
-      :root { --color: red; }
-    */
-    'path/to/file.css',
-
-    /* module.exports = {
-      customMedia: { '--small-viewport': '(max-width: 30em)' },
-      customProperties: { '--color': 'red' },
-      customSelectors: { ':--heading': 'h1, h2, h3' },
-      environmentVariables: { '--branding-padding': '20px' }
-    } */
-    'and/then/this.js',
-
-    /* {
-      "custom-media": { "--small-viewport": "(max-width: 30em)" }
-      "custom-properties": { "--color": "red" },
-      "custom-selectors": { ":--heading": "h1, h2, h3" },
-      "environment-variables": { "--branding-padding": "20px" }
-    } */
-    'and/then/that.json',
-
-    {
-      customMedia: { '--small-viewport': '(max-width: 30em)' },
-      customProperties: { '--color': 'red' },
-      customSelectors: { ':--heading': 'h1, h2, h3' },
-      environmentVariables: { '--branding-padding': '20px' }
-    },
-    () => {
-      const customMedia = { '--small-viewport': '(max-width: 30em)' };
-      const customProperties = { '--color': 'red' };
-      const customSelectors = { ':--heading': 'h1, h2, h3' };
-      const environmentVariables = { '--branding-padding': '20px' };
-
-      return { customMedia, customProperties, customSelectors, environmentVariables };
-    }
-  ]
-});
-```
-
-### exportTo
-
-The `exportTo` option specifies destinations where variables like Custom Media,
-Custom Properties, Custom Selectors, and Environment Variables can be exported
-to, which might be CSS, JS, and JSON files, functions, and directly passed
-objects.
-
-```js
-postcssPresetEnv({
-  /*
-    @custom-media --small-viewport (max-width: 30em);
-    @custom-selector :--heading h1, h2, h3;
-    :root { --color: red; }
-  */
-  exportTo: 'path/to/file.css'
-});
-```
-
-Multiple destinations can be passed into this option as well, and they will be
-parsed in the order they are received. JavaScript files, JSON files, and
-objects will use different namespaces to import different kinds of variables.
-
-```js
-const cachedObject = {};
-
-postcssPresetEnv({
-  exportTo: [
-    /*
-      @custom-media --small-viewport (max-width: 30em);
-      @custom-selector :--heading h1, h2, h3;
-      :root { --color: red; }
-    */
-    'path/to/file.css',
-
-    /* module.exports = {
-      customMedia: { '--small-viewport': '(max-width: 30em)' },
-      customProperties: { '--color': 'red' },
-      customSelectors: { ':--heading': 'h1, h2, h3' },
-      environmentVariables: { '--branding-padding': '20px' }
-    } */
-    'and/then/this.js',
-
-    /* {
-      "custom-media": { "--small-viewport": "(max-width: 30em)" }
-      "custom-properties": { "--color": "red" },
-      "custom-selectors": { ":--heading": "h1, h2, h3" },
-      "environment-variables": { "--branding-padding": "20px" }
-    } */
-    'and/then/that.json',
-
-    cachedObject,
-    variables => {
-      if ('customProperties' in variables) {
-        // do something special with customProperties
-      }
-
-      Object.assign(cachedObject, variables);
-    }
-  ]
 });
 ```
 

@@ -17,3 +17,12 @@ updates:
     timezone: Europe/Brussels
   open-pull-requests-limit: 10
   rebase-strategy: auto
+- package-ecosystem: "npm"
+  directory: "/e2e"
+  schedule:
+    interval: weekly
+    time: "01:00"
+    timezone: "Europe/Brussels"
+  open-pull-requests-limit: 10
+  versioning-strategy: increase
+  rebase-strategy: auto

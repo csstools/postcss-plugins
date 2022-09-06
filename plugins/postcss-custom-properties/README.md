@@ -55,7 +55,7 @@ the [PostCSS Custom Properties] specification.
 
 **Note:** This plugin only processes variables that are defined in the `:root` or `html` selector.
 
-Locally defined custom properties will be used as fallbacks inly within the same rule, but not elsewhere.
+Locally defined custom properties will be used as fallbacks only within the same rule, but not elsewhere.
 
 ## Usage
 
@@ -149,4 +149,4 @@ postcssCustomProperties({ preserve: false })
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Custom Properties]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties
-[PostCSS Custom Properties]: https://www.w3.org/TR/css-variables-1/
+[CSS Custom Properties]: https://www.w3.org/TR/css-variables-1/

@@ -16,8 +16,19 @@ npm install postcss postcss-attribute-case-insensitive --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssAttributeCaseInsensitive = require('postcss-attribute-case-insensitive');
+
+postcss([
+	postcssAttributeCaseInsensitive(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssAttributeCaseInsensitive from 'postcss-attribute-case-insensitive';
 
 postcss([
 	postcssAttributeCaseInsensitive(/* pluginOptions */)

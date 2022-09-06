@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-cascade-layers --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssCascadeLayers = require('@csstools/postcss-cascade-layers');
+
+postcss([
+	postcssCascadeLayers(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssCascadeLayers from '@csstools/postcss-cascade-layers';
 
 postcss([
 	postcssCascadeLayers(/* pluginOptions */)

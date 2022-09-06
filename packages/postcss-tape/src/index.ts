@@ -1,12 +1,14 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
-import postcss from 'postcss';
-import postcssOldestSupported, { AcceptedPlugin } from 'postcss-8.4';
 import path from 'path';
 import fs, { promises as fsp } from 'fs';
 import { strict as assert } from 'assert';
 
+import postcss from 'postcss';
 import type { PluginCreator, Plugin, Result } from 'postcss';
+
+import postcssOldestSupported, { AcceptedPlugin } from 'postcss-8.4';
+
+import syntaxHTML from 'postcss-html';
+
 import { formatGitHubActionAnnotation } from './github-annotations';
 import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts';
 import noopPlugin from './noop-plugin';
@@ -34,7 +36,18 @@ type TestCaseOptions = {
 	// Do something before the test is run.
 	before?: () => void,
 	// Do something after the test is run.
-	after?: () => void|Promise<void>,
+	after?: () => void | Promise<void>,
+
+	// Process the test cases with "postcss-html" as the syntax
+	postcssSyntaxHTML?: boolean,
+}
+
+function postcssSyntax(options: TestCaseOptions) {
+	if (options.postcssSyntaxHTML) {
+		return syntaxHTML();
+	}
+
+	return null;
 }
 
 export default function runner(currentPlugin: PluginCreator<unknown>) {
@@ -145,9 +158,14 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			const testSourceFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.split(':')[0]);
 			const testFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.replace(/:/g, '.'));
 
-			const testFilePath = `${testSourceFilePathWithoutExtension}.css`;
-			let expectFilePath = `${testFilePathWithoutExtension}.expect.css`;
-			let resultFilePath = `${testFilePathWithoutExtension}.result.css`;
+			let extension = 'css';
+			if (testCaseOptions.postcssSyntaxHTML) {
+				extension = 'html';
+			}
+
+			const testFilePath = `${testSourceFilePathWithoutExtension}.${extension}`;
+			let expectFilePath = `${testFilePathWithoutExtension}.expect.${extension}`;
+			let resultFilePath = `${testFilePathWithoutExtension}.result.${extension}`;
 
 			if (testCaseOptions.expect) {
 				expectFilePath = path.join('.', 'test', testCaseOptions.expect);
@@ -191,6 +209,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 						inline: false,
 						annotation: false,
 					},
+					syntax: postcssSyntax(testCaseOptions),
 				});
 			} catch (err) {
 				sawException = true;
@@ -260,7 +279,10 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			// Assert result sourcemaps with recent PostCSS.
 			{
 				try {
-					if (result.map.toJSON().sources.includes('<no source>')) {
+					if (
+						!testCaseOptions.postcssSyntaxHTML &&
+						result.map.toJSON().sources.includes('<no source>')
+					) {
 						throw new Error('Sourcemap is broken');
 					}
 				} catch (err) {
@@ -296,6 +318,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 							inline: false,
 							annotation: false,
 						},
+						syntax: postcssSyntax(testCaseOptions),
 					});
 
 					if (secondPassResult.warnings().length) {

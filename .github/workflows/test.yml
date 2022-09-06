@@ -25,17 +25,17 @@ jobs:
     strategy:
       fail-fast: false
       # Test node 16/18 on ubuntu
-      # Test node 16 on macos/windows
-      # Enable annotations only for node 16 + ubuntu
+      # Test node 18 on macos/windows
+      # Enable annotations only for node 18 + ubuntu
       matrix:
         os: [ubuntu-latest]
         node: [16, 18]
         include:
         - os: macos-latest
-          node: 16
+          node: 18
         - os: windows-latest
-          node: 16
-        - node: 16
+          node: 18
+        - node: 18
           is_base_node_version: true
         - os: ubuntu-latest
           is_base_os_version: true
@@ -109,20 +109,13 @@ jobs:
           npm run test:browser --if-present $MODIFIED_WORKSPACES
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
-        # Webpack compatibility
-      - name: test:webpack bundle
+        # E2E Tests
+      - name: test:e2e
         run: |
-          cd e2e/webpack/bundle-through
+          cd e2e
           npm install
           npm run build
           npm run test
-        if: matrix.is_base_node_version && matrix.is_base_os_version
-
-      - name: test:webpack loader
-        run: |
-          cd e2e/webpack/postcss-loader
-          npm install
-          npm run build
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
       # Deno compatibility

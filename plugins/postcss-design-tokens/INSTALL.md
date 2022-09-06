@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-design-tokens --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssDesignTokens = require('@csstools/postcss-design-tokens');
+
+postcss([
+	postcssDesignTokens(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssDesignTokens from '@csstools/postcss-design-tokens';
 
 postcss([
 	postcssDesignTokens(/* pluginOptions */)

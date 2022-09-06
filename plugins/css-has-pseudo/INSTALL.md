@@ -16,8 +16,19 @@ npm install postcss css-has-pseudo --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssHasPseudo = require('css-has-pseudo');
+
+postcss([
+	postcssHasPseudo(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssHasPseudo from 'css-has-pseudo';
 
 postcss([
 	postcssHasPseudo(/* pluginOptions */)

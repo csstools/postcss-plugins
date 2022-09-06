@@ -16,8 +16,19 @@ npm install postcss postcss-pseudo-class-any-link --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssPseudoClassAnyLink = require('postcss-pseudo-class-any-link');
+
+postcss([
+	postcssPseudoClassAnyLink(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
 
 postcss([
 	postcssPseudoClassAnyLink(/* pluginOptions */)

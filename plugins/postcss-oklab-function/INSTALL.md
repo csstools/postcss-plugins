@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-oklab-function --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssOKLabFunction = require('@csstools/postcss-oklab-function');
+
+postcss([
+	postcssOKLabFunction(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssOKLabFunction from '@csstools/postcss-oklab-function';
 
 postcss([
 	postcssOKLabFunction(/* pluginOptions */)
