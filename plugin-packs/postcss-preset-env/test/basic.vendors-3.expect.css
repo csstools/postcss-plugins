@@ -459,7 +459,7 @@
 }
 
 .ic-unit {
-	--value-2ic: 'something';
+	--value-2ic: initial;
 	text-indent: 2ic;
 	content: var(--value-2ic);
 	left: 2ic;

@@ -2,7 +2,6 @@ import autoprefixer from 'autoprefixer';
 import cssdb from 'cssdb';
 import logFeaturesList from './log/features-list.mjs';
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import writeToExports from './side-effects/write-to-exports.mjs';
 import { initializeSharedOptions } from './lib/shared-options.mjs';
 import { listFeatures } from './lib/list-features.mjs';
 import { newLogger } from './log/helper.mjs';
@@ -47,10 +46,6 @@ const plugin = (opts) => {
 
 				// Always reset the logger, if when debug is false
 				logger.resetLogger();
-
-				if (options.exportTo) {
-					writeToExports(sharedOptions.exportTo, opts.exportTo);
-				}
 			},
 		};
 	};

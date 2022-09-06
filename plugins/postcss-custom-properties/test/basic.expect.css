@@ -7,6 +7,7 @@ html {
 	--color-h: 0;
 	--color-s: 100%;
 	--color-l: 50%;
+	--color-components: var(--color-h), var(--color-s), var(--color-l);
 	--color-hsl: hsl(var(--color-h), var(--color-s), var(--color-l));
 	--ref-color: var(--color);
 	--circular: var(--circular-2);
@@ -84,6 +85,13 @@ html {
 	color: var(--color-hsl);
 }
 
+.test--color_components {
+	color: hsl(0, 100%, 50%);
+	color: hsl(var(--color-components));
+	background-color: hsl(0 , 1%, 2%);
+	background-color: hsl(var(--does-not-exist, 0 , 1%, 2%));
+}
+
 .test--circular_var {
 	color: var(--circular);
 }
@@ -158,4 +166,51 @@ html {
 .test {
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	font-family: var(--font, "Helvetica Neue", Arial, sans-serif);
+}
+
+.fallbacks-with-main-values-that-dont-exist {
+	color: rgb(255, 0, 0);
+	color: var(--does-not-exist, var(--color))
+}
+
+:root {
+	--ignored-values-1: initial;
+}
+
+.ignored-values {
+	color: var(--ignored-values-1);
+	color: green;
+	color: var(--ignored-values-1, green);
+}
+
+:root {
+	--space-1:;
+	--space-2: ;
+	--space-3:  ;
+}
+
+.space-values {
+	a: list("a",,"c");
+	a: list("a",var(--space-1),"c");
+	b: list("a", ,"c");
+	b: list("a",var(--space-2),"c");
+	c: list("a",  ,"c");
+	c: list("a",var(--space-3),"c");
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color: rgb(255, 167, 167);
+	}
+}
+
+.conditionals {
+	color: rgb(255, 0, 0);
+	color: var(--color);
+}
+
+.local-variable {
+	--local: 1;
+	order: 1;
+	order: var(--local);
 }

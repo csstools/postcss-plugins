@@ -1,9 +1,6 @@
-# PostCSS Custom Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
+# PostCSS Custom Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[![NPM Version][npm-img]][npm-url]
-[![CSS Standard Status][css-img]][css-url]
-[![Build Status][cli-img]][cli-url]
-[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-custom-properties.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/custom-properties.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Custom Properties] lets you use Custom Properties in CSS, following
 the [CSS Custom Properties] specification.
@@ -12,47 +9,75 @@ the [CSS Custom Properties] specification.
 
 ```pcss
 :root {
-  --color: red;
+	--color-blue-dark: rgb(0, 61, 184);
+	--color-blue-light: rgb(0, 217, 255);
+	--color-pink: rgb(255, 192, 211);
+	--text-color: var(--color-pink);
 }
 
-h1 {
-  color: var(--color);
+.element {
+	/* custom props */
+	--border-color: var(--color-blue-light);
+
+	/* props */
+	border: 1px solid var(--border-color);
+	color: var(--text-color);
+}
+
+.element--dark {
+	--border-color: var(--color-blue-dark);
 }
 
 /* becomes */
 
 :root {
-  --color: red;
+	--color-blue-dark: rgb(0, 61, 184);
+	--color-blue-light: rgb(0, 217, 255);
+	--color-pink: rgb(255, 192, 211);
+	--text-color: var(--color-pink);
 }
 
-h1 {
-  color: red;
-  color: var(--color);
+.element {
+	/* custom props */
+	--border-color: var(--color-blue-light);
+
+	/* props */
+	border: 1px solid rgb(0, 217, 255);
+	border: 1px solid var(--border-color);
+	color: rgb(255, 192, 211);
+	color: var(--text-color);
+}
+
+.element--dark {
+	--border-color: var(--color-blue-dark);
 }
 ```
 
-**Note:** This plugin only processes variables that are defined in the `:root` selector.
+**Note:** This plugin only processes variables that are defined in the `:root` or `html` selector.
+
+Locally defined custom properties will be used as fallbacks only within the same rule, but not elsewhere.
 
 ## Usage
 
 Add [PostCSS Custom Properties] to your project:
 
 ```bash
-npm install postcss-custom-properties --save-dev
+npm install postcss postcss-custom-properties --save-dev
 ```
 
-Use [PostCSS Custom Properties] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
 const postcssCustomProperties = require('postcss-custom-properties');
 
 postcss([
-  postcssCustomProperties(/* pluginOptions */)
+	postcssCustomProperties(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-[PostCSS Custom Properties] runs in all Node environments, with special instructions for:
+[PostCSS Custom Properties] runs in all Node environments, with special
+instructions for:
 
 | [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
 | --- | --- | --- | --- | --- | --- |
@@ -61,147 +86,67 @@ postcss([
 
 ### preserve
 
-The `preserve` option determines whether Custom Properties and properties using
-custom properties should be preserved in their original form. By default, both
-of these are preserved.
+The `preserve` option determines whether properties using
+custom properties should be preserved in their original form. By default these are preserved.
+
+Custom property declarations are always preserved only `var()` functions can be omitted.
 
 ```js
-postcssCustomProperties({
-  preserve: false
-});
+postcssCustomProperties({ preserve: false })
 ```
 
 ```pcss
 :root {
-  --color: red;
+	--color-blue-dark: rgb(0, 61, 184);
+	--color-blue-light: rgb(0, 217, 255);
+	--color-pink: rgb(255, 192, 211);
+	--text-color: var(--color-pink);
 }
 
-h1 {
-  color: var(--color);
+.element {
+	/* custom props */
+	--border-color: var(--color-blue-light);
+
+	/* props */
+	border: 1px solid var(--border-color);
+	color: var(--text-color);
 }
 
-/* becomes */
-
-h1 {
-  color: red;
-}
-```
-
-### importFrom
-
-The `importFrom` option specifies sources where Custom Properties can be imported
-from, which might be CSS, JS, and JSON files, functions, and directly passed
-objects.
-
-```js
-postcssCustomProperties({
-  importFrom: 'path/to/file.css' // => :root { --color: red }
-});
-```
-
-```pcss
-h1 {
-  color: var(--color);
+.element--dark {
+	--border-color: var(--color-blue-dark);
 }
 
 /* becomes */
 
-h1 {
-  color: red;
+:root {
+	--color-blue-dark: rgb(0, 61, 184);
+	--color-blue-light: rgb(0, 217, 255);
+	--color-pink: rgb(255, 192, 211);
+	--text-color: var(--color-pink);
+}
+
+.element {
+	/* custom props */
+	--border-color: var(--color-blue-light);
+
+	/* props */
+	border: 1px solid var(--border-color);
+	color: rgb(255, 192, 211);
+}
+
+.element--dark {
+	--border-color: var(--color-blue-dark);
 }
 ```
 
-Multiple sources can be passed into this option, and they will be parsed in the
-order they are received. JavaScript files, JSON files, functions, and objects
-will need to namespace Custom Properties using the `customProperties` or
-`custom-properties` key.
-
-```js
-postcssCustomProperties({
-  importFrom: [
-    'path/to/file.css',   // :root { --color: red; }
-    'and/then/this.js',   // module.exports = { customProperties: { '--color': 'red' } }
-    'and/then/that.json', // { "custom-properties": { "--color": "red" } }
-    {
-      customProperties: { '--color': 'red' }
-    },
-    () => {
-      const customProperties = { '--color': 'red' };
-
-      return { customProperties };
-    }
-  ]
-});
-```
-
-See example imports written in [CSS](test/import-properties.css),
-[JS](test/import-properties.js), and [JSON](test/import-properties.json).
-
-### overrideImportFromWithRoot
-
-The `overrideImportFromWithRoot` option determines if properties added via `importFrom` are overridden by properties that exist in `:root`.
-Defaults to `false`.
-
-```js
-postcssCustomProperties({
-  overrideImportFromWithRoot: true
-});
-```
-
-### exportTo
-
-The `exportTo` option specifies destinations where Custom Properties can be exported
-to, which might be CSS, JS, and JSON files, functions, and directly passed
-objects.
-
-```js
-postcssCustomProperties({
-  exportTo: 'path/to/file.css' // :root { --color: red; }
-});
-```
-
-Multiple destinations can be passed into this option, and they will be parsed
-in the order they are received. JavaScript files, JSON files, and objects will
-need to namespace Custom Properties using the `customProperties` or
-`custom-properties` key.
-
-```js
-const cachedObject = { customProperties: {} };
-
-postcssCustomProperties({
-  exportTo: [
-    'path/to/file.css',   // :root { --color: red; }
-    'and/then/this.js',   // module.exports = { customProperties: { '--color': 'red' } }
-    'and/then/this.mjs',  // export const customProperties = { '--color': 'red' } }
-    'and/then/that.json', // { "custom-properties": { "--color": "red" } }
-    'and/then/that.scss', // $color: red;
-    cachedObject,
-    customProperties => {
-      customProperties    // { '--color': 'red' }
-    }
-  ]
-});
-```
-
-See example exports written to [CSS](test/export-properties.css),
-[JS](test/export-properties.js), [MJS](test/export-properties.mjs),
-[JSON](test/export-properties.json) and [SCSS](test/export-properties.scss).
-
-### disableDeprecationNotice
-
-Silence the deprecation notice that is printed to the console when using `importFrom` or `exportTo`.
-
-> "importFrom" and "exportTo" will be removed in a future version of postcss-custom-properties.
-> Check the discussion on github for more details. https://github.com/csstools/postcss-plugins/discussions/192
-
-[cli-img]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[css-img]: https://cssdb.org/images/badges/custom-properties.svg
 [css-url]: https://cssdb.org/#custom-properties
 [discord]: https://discord.gg/bUadyRwkJS
-[npm-img]: https://img.shields.io/npm/v/postcss-custom-properties.svg
 [npm-url]: https://www.npmjs.com/package/postcss-custom-properties
 
-[CSS Custom Properties]: https://www.w3.org/TR/css-variables-1/
+[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
+[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
+[PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Custom Properties]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties
+[CSS Custom Properties]: https://www.w3.org/TR/css-variables-1/
