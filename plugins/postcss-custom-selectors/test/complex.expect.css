@@ -1,16 +1,10 @@
-@custom-selector :--3xl .xl3;
-
 :is(.xl3) {
 	order: 1;
 }
 
-@custom-selector :--🧑🏾‍🎤 .singer;
-
 :is(.singer) {
 	order: 2;
 }
-
-@custom-selector :------- .dash;
 
 :is(.dash) {
 	order: 3;

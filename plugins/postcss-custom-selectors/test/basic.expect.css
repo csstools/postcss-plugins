@@ -1,22 +1,8 @@
-@custom-selector :--foo .bar, .baz;
-
 .foo:is(.foo) {
 	margin-top: 16px;
 }
 
-@custom-selector :--any-heading h1, h2, h3, h4, h5, h6;
-
 :is(h1, h2, h3, h4, h5, h6) + p {}
-
-@custom-selector :--foobar .foo, .bar;
-@custom-selector :--baz .baz;
-@custom-selector :--fizzbuzz .fizz, .buzz;
-@custom-selector :--button-types
-	.btn-primary,
-	.btn-success,
-	.btn-info,
-	.btn-warning,
-	.btn-danger;
 
 :is(.foo) > :is(.baz) {}
 :is(.fizz, .buzz) > :is(.foo) {}
@@ -30,23 +16,14 @@
 	.btn-warning,
 	.btn-danger):active {}
 
-@custom-selector :--commented-foo
-	/* comment */
-	.foo,
-	.bar > .baz;
-
 :is(.foo,
 	.bar > .baz) + p {
 	display: block;
 }
 
-@custom-selector :--pseudo ::before, ::after;
-
 .foo > a:is(::before, ::after) img {
 	display: block;
 }
-
-@custom-selector :--foo .foo;
 
 :is(.foo),:is(.foo).bar {
 	color: white;
@@ -55,9 +32,6 @@
 :is(.foo) :is(.foo):hover {
 	color: white;
 }
-
-@custom-selector :--fo-----o h1, h2, h3;
-@custom-selector :--ba-----r h4, h5, h6;
 
 .fo--oo > :is(h1, h2, h3) {
 	margin: auto;
@@ -73,10 +47,6 @@ article :--heading + p {
 	margin-top: 0;
 }
 
-@custom-selector :--multiline
-	.foo,
-	.bar > .baz;
-
 :is(.foo,
 	.bar > .baz) {
 	display: block;
@@ -84,12 +54,7 @@ article :--heading + p {
 
 /* should works with collapsed custom selectors */
 
-@custom-selector :--button button, .button;
-@custom-selector :--enter :hover, :focus;
-
 :is(button, .button):is(:hover, :focus) {}
-
-@custom-selector :--any-foobar .foo, .bar;
 
 :is(.foo, .bar) h1 {
 	margin-top: 16px;
@@ -98,8 +63,6 @@ article :--heading + p {
 main :is(.foo) + p {
 	margin-top: 16px;
 }
-
-@custom-selector :--foobar .foo;
 
 :is(.foo) {
 	order: 1000;
@@ -111,8 +74,6 @@ b,:is(.foo) {
 	order: 1002;
 }
 
-@custom-selector :--foobaz .foo.baz;
-
 :is(.foo.baz) {
 	order: 1010;
 }
@@ -122,8 +83,6 @@ a,:is(.foo.baz) {
 b,:is(.foo.baz) {
 	order: 1012;
 }
-
-@custom-selector :--foobazz .foo .baz;
 
 :is(.foo .baz) {
 	order: 1020;

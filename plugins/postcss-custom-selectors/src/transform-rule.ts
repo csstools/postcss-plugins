@@ -2,7 +2,7 @@ import type { Root, Selector } from 'postcss-selector-parser';
 import parser from 'postcss-selector-parser';
 
 // transform custom pseudo selectors with custom selectors
-export default (rule, customSelectors: Map<string, Root>, opts) => {
+export default (rule, customSelectors: Map<string, Root>, opts: { preserve?: boolean }) => {
 	const selector = parser(selectors => {
 		selectors.walkPseudos((pseudo) => {
 			if (!customSelectors.has(pseudo.value)) {
@@ -18,8 +18,6 @@ export default (rule, customSelectors: Map<string, Root>, opts) => {
 			base.each((node) => {
 				isWrapper.append(node.clone({}) as Selector);
 			});
-
-			const parent = pseudo.parent;
 
 			pseudo.replaceWith(isWrapper);
 

@@ -18,7 +18,7 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 
 			return {
 				Once: (root) => {
-					customSelectors = getCustomSelectors(root);
+					customSelectors = getCustomSelectors(root, { preserve: preserve });
 				},
 				Rule: (rule) => {
 					if (!rule.selector.includes(':--')) {

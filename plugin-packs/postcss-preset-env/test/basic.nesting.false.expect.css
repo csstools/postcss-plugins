@@ -85,8 +85,6 @@
 	}
 }
 
-@custom-selector :--heading h1, h2, h3, h4, h5, h6;
-
 h1.test-custom-selectors {
 	order:12;
 }
@@ -609,8 +607,6 @@ h6.test-custom-selectors {
 	left: atan();
 	left: atan2();
 }
-
-@custom-selector :--view-m [data-view-size=m];
 
 .view {
 	@nest :--view-m & {

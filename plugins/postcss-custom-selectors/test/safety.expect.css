@@ -1,5 +1,3 @@
-@custom-selector :--h1 h1;
-
 .class:is(h1),   #id:is(h1),   ::before:is(h1),   *:is(h1) {
 	order: 1;
 }
