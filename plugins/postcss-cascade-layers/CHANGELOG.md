@@ -3,7 +3,6 @@
 ### Unreleased
 
 - Fix broken `@keyframes` in `@layer`.
-- Add support for `@container` as a conditional rule.
 
 ### 1.0.5 (July 8, 2022)
 
