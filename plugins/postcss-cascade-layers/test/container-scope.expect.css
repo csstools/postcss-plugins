@@ -1,0 +1,42 @@
+
+
+@scope (.media) to (.content) {
+
+		@keyframes slide-left {
+			from { translate: 0; }
+			to { translate: -100% 0; }
+		}
+}@scope (.media) to (.content) {
+	@keyframes slide-left {
+		from { margin-left: 0; }
+		to { margin-left: -100%; }
+	}
+}
+
+#target {
+		color: red;
+	}
+
+@container (min-width: 700px) {
+		#foo:not(#\#):not(#\#):not(#\#) #bar target::before:hover {
+			color: green;
+		}
+}
+
+#target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		color: orange;
+	}
+
+@scope (.media) to (.content) {
+		#target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+			color: yellow;
+		}
+}
+
+target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	color: purple;
+}
+
+target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):before {
+	color: pink;
+}
