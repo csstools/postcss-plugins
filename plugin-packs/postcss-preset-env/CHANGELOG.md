@@ -31,6 +31,11 @@
 - Updated `postcss-pseudo-class-any-link` to `7.1.6` (patch)
 - Updated `postcss-selector-not` to `6.0.1` (patch)
 
+### 7.8.1 (September 7, 2022)
+
+- Update `cssdb` to `7.0.1` (patch)
+- Update `@csstools/postcss-cascade-layers` to `1.0.6` (patch)
+
 ### 7.8.0 (August 16, 2022)
 
 - Added `@csstools/postcss-nested-calc` <br/> [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc#readme) for usage details.

@@ -4,6 +4,7 @@ package-lock.json
 yarn.lock
 *.result.css
 *.result.css.map
+*.result.html
 !.editorconfig
 !.gitignore
 !.rollup.js
