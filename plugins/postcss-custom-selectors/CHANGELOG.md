@@ -3,9 +3,10 @@
 ### Unreleased (major)
 
 - Updated: Support for Node v14+ (major).
-- Removed : `importFrom` feature (breaking).
-- Removed : `exportTo` feature (breaking).
+- Removed: `importFrom` feature (breaking).
+- Removed: `exportTo` feature (breaking).
 - Fixed: follow the specification and use `:is()` in transformed selectors (breaking).
+- Added: Support for `@scope` and `@container` as parent rules of `@custom-selector`.
 
 ```diff
 @custom-selector :--heading h1, h2, h3;

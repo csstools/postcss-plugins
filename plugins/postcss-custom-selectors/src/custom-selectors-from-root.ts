@@ -1,23 +1,19 @@
-import type { Root as PostCSSRoot } from 'postcss';
+import type { ChildNode, Container, Document, Root as PostCSSRoot } from 'postcss';
 import type { Root as SelectorRoot } from 'postcss-selector-parser';
 import parser from 'postcss-selector-parser';
+import { isProcessableCustomSelectorRule } from './is-processable-custom-selector-rule';
 
 // return custom selectors from the css root, conditionally removing them
 export default function getCustomSelectors(root: PostCSSRoot, opts: { preserve?: boolean }): Map<string, SelectorRoot> {
 	// initialize custom selectors
 	const customSelectors = new Map<string, SelectorRoot>();
 
-	// for each custom selector atrule that is a child of the css root
-	root.nodes.slice().forEach(node => {
-		if (node.type !== 'atrule' || node.name.toLowerCase() !== 'custom-selector') {
+	root.walkAtRules((atRule) => {
+		if (!isProcessableCustomSelectorRule(atRule)) {
 			return;
 		}
 
-		if (!node.params || !node.params.includes(':--')) {
-			return;
-		}
-
-		const source = node.params.trim();
+		const source = atRule.params.trim();
 
 		const selectorAST = parser().astSync(source);
 		const nameNode = selectorAST?.nodes?.[0]?.nodes?.[0];
@@ -31,9 +27,26 @@ export default function getCustomSelectors(root: PostCSSRoot, opts: { preserve?:
 		customSelectors.set(name, parser().astSync(source.slice(name.length).trim()));
 
 		if (!opts.preserve) {
-			node.remove();
+			const parent = atRule.parent;
+			atRule.remove();
+
+			removeEmptyAncestorBlocks(parent);
 		}
 	});
 
 	return customSelectors;
+}
+
+function removeEmptyAncestorBlocks(block: Container) {
+	let currentNode: Document | Container<ChildNode> = block;
+
+	while (currentNode) {
+		if (currentNode.nodes && currentNode.nodes.length > 0) {
+			return;
+		}
+
+		const parent = currentNode.parent;
+		currentNode.remove();
+		currentNode = parent;
+	}
 }

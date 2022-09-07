@@ -11,6 +11,9 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
+	'conditionals': {
+		message: 'handles conditional rules'
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},
