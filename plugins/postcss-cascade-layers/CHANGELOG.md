@@ -1,6 +1,6 @@
 # Changes to PostCSS Cascade Layers
 
-### Unreleased
+### 1.0.6 (September 7, 2022)
 
 - Fix broken `@keyframes` in `@layer`.
 
