@@ -4,7 +4,7 @@
 
 - Updated: Support for Node v14+ (major).
 
-### Unreleased
+### 1.2.0 (September 7, 2022)
 
 - Added support for design token file imports from npm packages.
 - Added support for arbitrary unit assignment to unit-less design tokens.
