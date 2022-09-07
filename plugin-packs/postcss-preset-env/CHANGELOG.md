@@ -1,8 +1,9 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased
+### 7.8.1 (September 7, 2022)
 
 - Update `cssdb` to `7.0.1` (patch)
+- Update `@csstools/postcss-cascade-layers` to `1.0.6` (patch)
 
 ### 7.8.0 (August 16, 2022)
 
