@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased
+
+- Added: TypeScript typings
+
 ### 10.1.10 (June 30, 2022)
 
 - Partially revert the changes to pseudo element selectors from 10.1.9.
@@ -13,7 +17,7 @@
 
 /* becomes */
 
-- .something_else > :is(.anything:::before) { /* 10.1.9 */
+- .something_else > :is(.anything::before) { /* 10.1.9 */
 + .something_else > .anything::before { /* previous and restored behavior */
 		order: 1;
 }

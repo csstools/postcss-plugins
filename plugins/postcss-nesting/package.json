@@ -13,6 +13,7 @@
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
 	"jsdelivr": "dist/index.mjs",
 	"unpkg": "dist/index.mjs",
 	"exports": {
@@ -41,7 +42,6 @@
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run clean && npm run build && npm run test",
-		"stryker": "stryker run --logLevel error",
 		"test": "node .tape.mjs && npm run test:exports",
 		"test:deno": "deno run --unstable --allow-env --allow-read test/deno/test.js",
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
