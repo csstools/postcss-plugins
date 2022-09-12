@@ -10,21 +10,31 @@ you might want to use [PostCSS Nested] instead.
 
 ```pcss
 a, b {
-  color: red;
+	color: red;
 
-  & c, & d {
-    color: white;
-  }
+	/* "&" comes first */
+	& c, & d {
+		color: white;
+	}
+
+	/* "&" comes later, requiring "@nest" */
+	@nest e & {
+		color: yellow;
+	}
 }
 
 /* becomes */
 
 a, b {
-  color: red;
+	color: red;
 }
 
 a c, a d, b c, b d {
-  color: white;
+	color: white;
+}
+
+e a, e b {
+	color: yellow;
 }
 ```
 
@@ -36,15 +46,7 @@ Add [PostCSS Nesting] to your project:
 npm install postcss-nesting --save-dev
 ```
 
-Use [PostCSS Nesting] to process your CSS:
-
-```js
-import postcssNesting from 'postcss-nesting';
-
-postcssNesting.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Nesting] as a [PostCSS] plugin:
 
 ```js
 import postcss from 'postcss';
@@ -174,8 +176,8 @@ _writing the selector without nesting is advised here_
 
 ### ⚠️ Spec disclaimer
 
-The [CSS Nesting Module] spec states on nesting that "Declarations occuring after a nested rule are invalid and ignored.".
-While we think it makes sense on browsers, enforcing this at the plugin level introduces several constrains that would
+The [CSS Nesting Module] spec states on nesting that "Declarations occurring after a nested rule are invalid and ignored.".
+While we think it makes sense on browsers, enforcing this at the plugin level introduces several constraints that would
 interfere with PostCSS' plugin nature such as with `@mixin`
 
 [css-img]: https://cssdb.org/images/badges/nesting-rules.svg
