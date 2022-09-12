@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased
+
+- Update `autoprefixer` to `10.4.9` (patch)
+
 ### 7.8.1 (September 7, 2022)
 
 - Update `cssdb` to `7.0.1` (patch)
