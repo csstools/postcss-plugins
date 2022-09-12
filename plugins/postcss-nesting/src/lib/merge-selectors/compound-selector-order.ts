@@ -1,14 +1,15 @@
 import parser from 'postcss-selector-parser';
+import type { Container, Node, Pseudo } from 'postcss-selector-parser';
 
 const isPseudo = parser.pseudo({ value: ':is' });
 
-export function sortCompoundSelectorsInsideComplexSelector(node) {
+export function sortCompoundSelectorsInsideComplexSelector(node: Container<string, Node>) {
 	if (!node || !node.nodes) {
 		return;
 	}
 
-	const compoundSelectors = [];
-	let currentCompoundSelector = [];
+	const compoundSelectors: Array<Array<Node>> = [];
+	let currentCompoundSelector: Array<Node> = [];
 	for (let i = 0; i < node.nodes.length; i++) {
 		if (node.nodes[i].type === 'combinator') {
 			// Push the current compound selector
@@ -34,10 +35,13 @@ export function sortCompoundSelectorsInsideComplexSelector(node) {
 		}
 
 		if (node.nodes[i].type === 'tag' && currentCompoundSelector.find(x => x.type === 'tag')) {
-			const isPseudoClone = isPseudo.clone();
+			const isPseudoClone = isPseudo.clone({}) as Pseudo;
 			const child = node.nodes[i];
 			child.replaceWith(isPseudoClone);
-			isPseudoClone.append(child);
+			isPseudoClone.append(parser.selector({
+				nodes: [child],
+				value: undefined,
+			}));
 		}
 
 		currentCompoundSelector.push(node.nodes[i]);
@@ -50,18 +54,18 @@ export function sortCompoundSelectorsInsideComplexSelector(node) {
 		const compoundSelector = compoundSelectors[i];
 		compoundSelector.sort((a, b) => {
 			if (a.type === 'selector' && b.type === 'selector' && a.nodes.length && b.nodes.length) {
-				return selectorTypeOrder(a.nodes[0], a.nodes[0].type) - selectorTypeOrder(b.nodes[0], b.nodes[0].type);
+				return selectorTypeOrder(a.nodes[0]) - selectorTypeOrder(b.nodes[0]);
 			}
 
 			if (a.type === 'selector' && a.nodes.length) {
-				return selectorTypeOrder(a.nodes[0], a.nodes[0].type) - selectorTypeOrder(b, b.type);
+				return selectorTypeOrder(a.nodes[0]) - selectorTypeOrder(b);
 			}
 
 			if (b.type === 'selector' && b.nodes.length) {
-				return selectorTypeOrder(a, a.type) - selectorTypeOrder(b.nodes[0], b.nodes[0].type);
+				return selectorTypeOrder(a) - selectorTypeOrder(b.nodes[0]);
 			}
 
-			return selectorTypeOrder(a, a.type) - selectorTypeOrder(b, b.type);
+			return selectorTypeOrder(a) - selectorTypeOrder(b);
 		});
 
 		for (let j = 0; j < compoundSelector.length; j++) {
@@ -75,12 +79,12 @@ export function sortCompoundSelectorsInsideComplexSelector(node) {
 	}
 }
 
-function selectorTypeOrder(selector, type) {
+function selectorTypeOrder(selector: Node) {
 	if (parser.isPseudoElement(selector)) {
 		return selectorTypeOrderIndex.pseudoElement;
 	}
 
-	return selectorTypeOrderIndex[type];
+	return selectorTypeOrderIndex[selector.type];
 }
 
 const selectorTypeOrderIndex = {

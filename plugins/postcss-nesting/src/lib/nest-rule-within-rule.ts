@@ -2,10 +2,13 @@ import { comma } from './list.js';
 import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
 import cleanupParent from './cleanup-parent.js';
 import mergeSelectors from './merge-selectors/merge-selectors.js';
+import type { AtRule, Rule } from 'postcss';
+import { walkFunc } from './walk-func.js';
+import { options } from './options.js';
 
-export default function transformNestRuleWithinRule(node, walk, opts) {
+export default function transformNestRuleWithinRule(node: AtRule, parent: Rule, walk: walkFunc, opts: options) {
 	// move previous siblings and the node to before the parent
-	const parent = shiftNodesBeforeParent(node);
+	shiftNodesBeforeParent(node, parent);
 
 	// clone the parent as a new rule with children appended to it
 	const rule = parent.clone().removeAll().append(node.nodes);
@@ -24,4 +27,9 @@ export default function transformNestRuleWithinRule(node, walk, opts) {
 	walk(rule, opts);
 }
 
-export const isNestRuleWithinRule = (node) => node.type === 'atrule' && node.name === 'nest' && Object(node.parent).type === 'rule' && comma(node.params).every((selector) => selector.split('&').length >= 2 && selector.indexOf('|') === -1);
+export function isValidNestRuleWithinRule(node: AtRule) {
+	return comma(node.params).every((selector) => {
+		return selector.split('&').length >= 2 &&
+			selector.indexOf('|') === -1;
+	});
+}

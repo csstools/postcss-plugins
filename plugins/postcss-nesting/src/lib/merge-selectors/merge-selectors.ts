@@ -1,9 +1,11 @@
 import parser from 'postcss-selector-parser';
+import type { Root, Nesting } from 'postcss-selector-parser';
 import { combinationsWithSizeN } from './combinations-of-size-n';
 import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
 import { nodesAreEquallySpecific } from './specificity';
+import { options } from '../options';
 
-export default function mergeSelectors(fromSelectors, toSelectors, opts) {
+export default function mergeSelectors(fromSelectors: Array<string>, toSelectors: Array<string>, opts: options) {
 	const fromListHasUniformSpecificity = nodesAreEquallySpecific(fromSelectors);
 
 	let fromSelectorsAST = [];
@@ -16,7 +18,7 @@ export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 		fromSelectorsAST = [parser().astSync(`:is(${fromSelectors.join(',')})`)];
 	}
 
-	let result = [];
+	const result = [];
 
 	for (let x = 0; x < toSelectors.length; x++) {
 		const toSelector = toSelectors[x];
@@ -141,7 +143,7 @@ export default function mergeSelectors(fromSelectors, toSelectors, opts) {
 				if (opts.noIsPseudoSelector) {
 					nesting.replaceWith(...(fromSelectorAST.clone().nodes));
 				} else {
-					nesting.replaceWith(...(fromSelectorWithIsAST.clone().nodes));
+					nesting.replaceWith(...((fromSelectorWithIsAST.clone({}) as Root).nodes));
 				}
 
 				if (parent) {
@@ -215,7 +217,7 @@ function nestingIsFirstAndOnlyInSelectorWithEitherSpaceOrChildCombinator(selecto
 	return true;
 }
 
-function nestingIsNotInsideCompoundSelector(selector) {
+function nestingIsNotInsideCompoundSelector(selector: Nesting) {
 	if (isSimpleSelector(selector)) {
 		return true;
 	}
@@ -225,7 +227,7 @@ function nestingIsNotInsideCompoundSelector(selector) {
 	}
 
 	for (let i = 0; i < selector.parent.nodes.length; i++) {
-		if (!selector.parent.nodes[i].type === 'nesting') {
+		if (selector.parent.nodes[i].type === 'nesting') {
 			continue;
 		}
 

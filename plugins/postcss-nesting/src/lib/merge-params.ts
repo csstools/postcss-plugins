@@ -1,6 +1,6 @@
 import { comma } from './list.js';
 
-export default function mergeParams(fromParams, toParams) {
+export default function mergeParams(fromParams: string, toParams: string) {
 	return comma(fromParams)
 		.map((params1) =>
 			comma(toParams)
