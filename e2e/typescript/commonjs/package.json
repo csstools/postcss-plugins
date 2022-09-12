@@ -9,6 +9,6 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-ic-unit": "^1.0.1",
-		"typescript": "^4.8.2"
+		"typescript": "^4.8.3"
 	}
 }
