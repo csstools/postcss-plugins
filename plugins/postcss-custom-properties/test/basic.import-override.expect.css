@@ -109,3 +109,8 @@
 .test {
 	font-family: "Helvetica Neue", Arial, sans-serif;
 }
+
+.ignores-declarations-that-have-an-exact-fallback {
+	left: 1rem;
+	left: 1rem;
+}

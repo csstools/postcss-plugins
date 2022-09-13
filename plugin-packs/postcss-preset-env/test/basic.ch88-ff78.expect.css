@@ -507,3 +507,11 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 .text-decoration-shorthand {
 	text-decoration: 3px wavy pink overline;
 }
+
+[dir="ltr"] .stage__container {
+	left: var(--size, 1rem);
+}
+
+[dir="rtl"] .stage__container {
+	right: var(--size, 1rem);
+}

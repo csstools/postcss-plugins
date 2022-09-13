@@ -525,3 +525,11 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	text-decoration: overline wavy pink;
 	text-decoration-thickness: 3px;
 }
+
+.stage__container:dir(ltr) {
+	left: var(--size, 1rem);
+}
+
+.stage__container:dir(rtl) {
+	right: var(--size, 1rem);
+}

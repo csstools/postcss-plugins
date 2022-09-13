@@ -160,3 +160,9 @@ html {
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	font-family: var(--font, "Helvetica Neue", Arial, sans-serif);
 }
+
+.ignores-declarations-that-have-an-exact-fallback {
+	left: 1rem;
+	left: 1rem;
+	left: var(--size, 1rem);
+}
