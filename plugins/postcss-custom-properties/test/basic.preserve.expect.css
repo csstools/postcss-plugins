@@ -112,5 +112,5 @@
 
 .ignores-declarations-that-have-an-exact-fallback {
 	left: 1rem;
-	left: 1rem;
+	left: var(--size, 1rem);
 }

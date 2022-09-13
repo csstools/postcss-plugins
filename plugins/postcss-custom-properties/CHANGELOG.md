@@ -1,5 +1,24 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased
+
+- Prevent duplicate code generation.
+
+```diff
+.foo {
+	order: 1;
+	order: var(--my-order, 1);
+}
+
+/* becomes */
+
+.foo {
+	order: 1;
+- 	order: 1;
+	order: var(--my-order, 1);
+}
+```
+
 ### 12.1.8 (June 10, 2022)
 
 - Remove some unneeded regular expressions.

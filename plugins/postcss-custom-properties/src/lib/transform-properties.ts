@@ -21,9 +21,9 @@ export default (decl, customProperties, opts) => {
 
 		// conditionally transform values that have changed
 		if (value !== originalValue) {
-			// if (parentHasExactFallback(decl, value)) {
-			// 	return;
-			// }
+			if (parentHasExactFallback(decl, value)) {
+				return;
+			}
 
 			if (opts.preserve) {
 				const beforeDecl = decl.cloneBefore({ value });

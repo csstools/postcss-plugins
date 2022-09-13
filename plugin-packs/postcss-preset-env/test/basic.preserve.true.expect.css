@@ -1078,7 +1078,6 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 
 [dir="ltr"] .stage__container {
 	left: 1rem;
-	left: 1rem;
 	left: var(--size, 1rem);
 }
 
@@ -1093,7 +1092,6 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 }
 
 [dir="rtl"] .stage__container {
-	right: 1rem;
 	right: 1rem;
 	right: var(--size, 1rem);
 }
