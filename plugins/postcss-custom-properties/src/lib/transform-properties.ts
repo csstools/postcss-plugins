@@ -1,7 +1,7 @@
 import valuesParser from 'postcss-value-parser';
 import transformValueAST from './transform-value-ast';
 import { isRuleIgnored } from './is-ignored';
-import { Container, Declaration, Node } from 'postcss';
+import { Declaration } from 'postcss';
 
 // transform custom pseudo selectors with custom selectors
 export default (decl, customProperties, opts) => {
@@ -59,9 +59,14 @@ function parentHasExactFallback(decl: Declaration, value: string): boolean {
 	}
 
 	let hasFallback = false;
-	decl.parent.each((sibling) => {
+	const declIndex = decl.parent.index(decl);
+	decl.parent.each((sibling, index) => {
 		if (sibling === decl) {
-			return;
+			return false;
+		}
+
+		if (index >= declIndex) {
+			return false;
 		}
 
 		if (sibling.type !== 'decl') {

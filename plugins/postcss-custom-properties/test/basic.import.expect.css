@@ -165,3 +165,9 @@ html {
 	left: 1rem;
 	left: var(--size, 1rem);
 }
+
+.does-not-ignore-declarations-that-have-an-exact-override {
+	left: 1rem;
+	left: var(--size, 1rem);
+	left: 1rem;
+}
