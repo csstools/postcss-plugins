@@ -1,5 +1,9 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased
+
+- Add support for `@scope` and `@container` as parent rules for `@layer`
+
 ### 1.0.6 (September 7, 2022)
 
 - Fix broken `@keyframes` in `@layer`.

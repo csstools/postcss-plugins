@@ -5,12 +5,42 @@
 		from { translate: 0; }
 		to { translate: -100% 0; }
 	}
+
+	.foo {
+		order: 1.1;
+	}
+
+	@container (min-width: 700px) {
+		.foo {
+			order: 1.2;
+		}
+
+		@keyframes slide-left {
+			from { translate: 700; }
+			to { translate: -100% 0; }
+		}
+	}
 }
 
 @layer framework {
 	@keyframes slide-left {
 		from { margin-left: 0; }
 		to { margin-left: -100%; }
+	}
+
+	.foo {
+		order: 2.1;
+	}
+
+	@container (min-width: 700px) {
+		.foo {
+			order: 2.2;
+		}
+
+		@keyframes slide-left {
+			from { margin-left: 700; }
+			to { margin-left: -100%; }
+		}
 	}
 }
 
