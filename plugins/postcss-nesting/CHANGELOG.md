@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### Unreleased
+### 10.2.0 (September 14, 2022)
 
 - Added: TypeScript typings
 
