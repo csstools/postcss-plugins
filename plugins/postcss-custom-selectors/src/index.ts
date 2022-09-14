@@ -11,6 +11,14 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 	// whether to preserve custom selectors and rules using them
 	const preserve = Boolean(Object(opts).preserve);
 
+	if ('importFrom' in Object(opts)) {
+		throw new Error('[postcss-custom-selectors] "importFrom" is no longer supported');
+	}
+
+	if ('exportTo' in Object(opts)) {
+		throw new Error('[postcss-custom-selectors] "exportTo" is no longer supported');
+	}
+
 	return {
 		postcssPlugin: 'postcss-custom-selectors',
 		prepare() {

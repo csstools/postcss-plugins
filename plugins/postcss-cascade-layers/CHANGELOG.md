@@ -5,6 +5,10 @@
 - Run `postcss-cascade-layers` early compared to other PostCSS plugins (breaking)
 - Updated: Support for Node v14+ (major).
 
+### Unreleased
+
+- Add support for `@scope` and `@container` as parent rules for `@layer`
+
 ### 1.0.6 (September 7, 2022)
 
 - Fix broken `@keyframes` in `@layer`.

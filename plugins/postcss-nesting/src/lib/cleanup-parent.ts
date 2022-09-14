@@ -1,4 +1,6 @@
-export default function cleanupParent(parent) {
+import type { ChildNode, Container } from 'postcss';
+
+export default function cleanupParent(parent: Container<ChildNode>) {
 	if (!parent.nodes.length) {
 		parent.remove();
 		return;

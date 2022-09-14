@@ -13,8 +13,6 @@ article :--heading + p {
 
 /* becomes */
 
-@custom-selector :--heading h1, h2, h3;
-
 article :is(h1, h2, h3) + p {
 	margin-top: 0;
 }

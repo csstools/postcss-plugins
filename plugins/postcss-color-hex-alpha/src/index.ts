@@ -76,7 +76,7 @@ const hexa2rgba = (node) => {
 	const hex = node.value;
 
 	// conditionally expand a hex
-	const hex8 = `0x${hex.length === 5 ? hex.slice(1).replace(/[0-9A-f]/g, '$&$&') : hex.slice(1)}`;
+	const hex8 = `0x${hex.length === 5 ? hex.slice(1).replace(/[0-9A-Fa-f]/g, '$&$&') : hex.slice(1)}`;
 
 	// extract the red, blue, green, and alpha values from the hex
 	const [r, g, b, a] = [

@@ -1,6 +1,7 @@
 import valuesParser from 'postcss-value-parser';
 import transformValueAST from './transform-value-ast';
 import { isRuleIgnored } from './is-ignored';
+import { Declaration } from 'postcss';
 
 // transform custom pseudo selectors with custom selectors
 export default (decl, customProperties, opts) => {
@@ -20,6 +21,10 @@ export default (decl, customProperties, opts) => {
 
 		// conditionally transform values that have changed
 		if (value !== originalValue) {
+			if (parentHasExactFallback(decl, value)) {
+				return;
+			}
+
 			if (opts.preserve) {
 				const beforeDecl = decl.cloneBefore({ value });
 
@@ -47,3 +52,31 @@ const isTransformableDecl = decl => !decl.variable && decl.value.includes('--') 
 // whether the declaration has a trailing comment
 const hasTrailingComment = decl => 'value' in Object(Object(decl.raws).value) && 'raw' in decl.raws.value && trailingCommentRegExp.test(decl.raws.value.raw);
 const trailingCommentRegExp = /^([\W\w]+)(\s*\/\*[\W\w]+?\*\/)$/;
+
+function parentHasExactFallback(decl: Declaration, value: string): boolean {
+	if (!decl || !decl.parent) {
+		return false;
+	}
+
+	let hasFallback = false;
+	const declIndex = decl.parent.index(decl);
+	decl.parent.each((sibling, index) => {
+		if (sibling === decl) {
+			return false;
+		}
+
+		if (index >= declIndex) {
+			return false;
+		}
+
+		if (sibling.type !== 'decl') {
+			return;
+		}
+
+		if (sibling.prop.toLowerCase() === decl.prop.toLowerCase() && sibling.value === value) {
+			hasFallback = true;
+		}
+	});
+
+	return hasFallback;
+}
