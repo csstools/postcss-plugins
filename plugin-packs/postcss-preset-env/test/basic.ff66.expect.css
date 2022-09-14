@@ -505,3 +505,7 @@
 	text-decoration: overline wavy pink;
 	text-decoration-thickness: 3px;
 }
+
+.stage__container {
+	inset-inline-start: var(--size, 1rem);
+}
