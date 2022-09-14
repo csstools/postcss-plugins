@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased
+### 12.1.9 (September 14, 2022)
 
 - Prevent duplicate code generation.
 
