@@ -1,6 +1,6 @@
 import type { AtRule, ChildNode, Container, Document } from 'postcss';
 
-const allowedParentAtRules = new Set(['layer', 'supports', 'media']);
+const allowedParentAtRules = new Set(['layer', 'supports', 'media', 'container', 'scope']);
 
 export function isProcessableLayerRule(atRule: AtRule): boolean {
 	if (atRule.type !== 'atrule') {

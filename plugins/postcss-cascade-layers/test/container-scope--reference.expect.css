@@ -1,0 +1,33 @@
+
+
+	@keyframes slide-left {
+		from { translate: 0; }
+		to { translate: -100% 0; }
+	}@keyframes slide-left {
+	from { margin-left: 0; }
+	to { margin-left: -100%; }
+}
+
+#target {
+		color: red;
+	}
+
+#foo:not(#\#):not(#\#):not(#\#) #bar target::before:hover {
+		color: green;
+	}
+
+#target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		color: orange;
+	}
+
+#target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		color: yellow;
+	}
+
+target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	color: purple;
+}
+
+target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):before {
+	color: pink;
+}

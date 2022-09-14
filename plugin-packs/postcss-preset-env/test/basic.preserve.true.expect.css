@@ -1092,3 +1092,54 @@ h6.test-custom-selectors {
 	   -moz-text-decoration: 3px wavy pink overline;
 	        text-decoration: 3px wavy pink overline;
 }
+
+[dir="ltr"] .stage__container {
+	left: 1rem;
+	left: var(--size, 1rem);
+}
+
+[dir="ltr"] .stage__container {
+	left: 1rem;
+	left: var(--size, 1rem);
+}
+
+.stage__container:dir(ltr) {
+	left: 1rem;
+	left: var(--size, 1rem);
+}
+
+[dir="rtl"] .stage__container {
+	right: 1rem;
+	right: var(--size, 1rem);
+}
+
+[dir="rtl"] .stage__container {
+	right: 1rem;
+	right: var(--size, 1rem);
+}
+
+.stage__container:dir(rtl) {
+	right: 1rem;
+	right: var(--size, 1rem);
+}
+
+[dir="ltr"] .stage__container {
+	left: 1rem;
+}
+
+.stage__container:dir(ltr) {
+	left: 1rem;
+}
+
+[dir="rtl"] .stage__container {
+	right: 1rem;
+}
+
+.stage__container:dir(rtl) {
+	right: 1rem;
+}
+
+.stage__container {
+	inset-inline-start: 1rem;
+	inset-inline-start: var(--size, 1rem);
+}

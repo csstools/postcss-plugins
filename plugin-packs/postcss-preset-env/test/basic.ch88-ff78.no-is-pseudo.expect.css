@@ -515,3 +515,11 @@ h6.test-custom-selectors {
 .text-decoration-shorthand {
 	text-decoration: 3px wavy pink overline;
 }
+
+[dir="ltr"] .stage__container {
+	left: var(--size, 1rem);
+}
+
+[dir="rtl"] .stage__container {
+	right: var(--size, 1rem);
+}

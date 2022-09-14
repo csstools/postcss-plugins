@@ -608,3 +608,21 @@ h6.test-custom-selectors {
 	text-decoration: overline wavy pink;
 	text-decoration-thickness: 3px;
 }
+
+[dir="ltr"] .stage__container {
+	left: 1rem;
+	left: var(--size, 1rem);
+}
+
+[dir="rtl"] .stage__container {
+	right: 1rem;
+	right: var(--size, 1rem);
+}
+
+[dir="ltr"] .stage__container {
+	left: 1rem;
+}
+
+[dir="rtl"] .stage__container {
+	right: 1rem;
+}

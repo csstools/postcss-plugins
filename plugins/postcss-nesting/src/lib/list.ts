@@ -1,13 +1,13 @@
-export const comma = (string) => {
-	let array = [];
+export function comma(string: string) {
+	const array: Array<string> = [];
 	let current = '';
 	let split = false;
 
 	let func = 0;
-	let quote = false;
+	let quote: string|false = false;
 	let escape = false;
 
-	for (let letter of string) {
+	for (const letter of string) {
 		if (escape) {
 			escape = false;
 		} else if (letter === '\\') {
@@ -43,4 +43,4 @@ export const comma = (string) => {
 
 	array.push(current.trim());
 	return array;
-};
+}

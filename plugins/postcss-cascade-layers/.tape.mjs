@@ -9,6 +9,12 @@ postcssTape(plugin)({
 	atrules: {
 		message: "supports @keyframes usage",
 	},
+	'container-scope--reference': {
+		message: "Layered styles without @container or @scope but with the same layers and layer order as the @container/@scope test",
+	},
+	'container-scope': {
+		message: "Layered styles with @container or @scope, these at rules are expected not to have any effect on the final order or specificity",
+	},
 	nested: {
 		message: "supports nested layer usage",
 	},

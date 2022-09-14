@@ -420,3 +420,7 @@
 	-webkit-text-decoration: 3px wavy pink overline;
 	        text-decoration: 3px wavy pink overline;
 }
+
+.stage__container {
+	inset-inline-start: var(--size, 1rem);
+}
