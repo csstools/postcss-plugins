@@ -109,3 +109,13 @@
 .test {
 	font-family: "Helvetica Neue", Arial, sans-serif;
 }
+
+.ignores-declarations-that-have-an-exact-fallback {
+	left: 1rem;
+	left: var(--size, 1rem);
+}
+
+.does-not-ignore-declarations-that-have-an-exact-override {
+	left: 1rem;
+	left: 1rem;
+}
