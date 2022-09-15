@@ -31,9 +31,12 @@
 - Updated `postcss-pseudo-class-any-link` to `7.1.6` (patch)
 - Updated `postcss-selector-not` to `6.0.1` (patch)
 
-### Unreleased
+### 7.8.2 (September 15, 2022)
 
-- Update `autoprefixer` to `10.4.9` (patch)
+- Update `@csstools/postcss-cascade-layers` to `1.1.0` (minor)
+- Update `autoprefixer` to `10.4.11` (patch)
+- Update `postcss-custom-properties` to `12.1.9` (patch)
+- Update `postcss-nesting` to `10.2.0` (minor)
 
 ### 7.8.1 (September 7, 2022)
 

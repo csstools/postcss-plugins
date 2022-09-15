@@ -1085,11 +1085,9 @@ h6.test-custom-selectors {
 .text-decoration-shorthand {
 	text-decoration: overline;
 	-webkit-text-decoration: overline wavy pink;
-	   -moz-text-decoration: overline wavy pink;
 	        text-decoration: overline wavy pink;
 	text-decoration-thickness: 3px;
 	-webkit-text-decoration: 3px wavy pink overline;
-	   -moz-text-decoration: 3px wavy pink overline;
 	        text-decoration: 3px wavy pink overline;
 }
 

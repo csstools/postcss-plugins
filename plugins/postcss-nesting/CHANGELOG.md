@@ -4,7 +4,7 @@
 
 - Updated: Support for Node v14+ (major).
 
-### Unreleased
+### 10.2.0 (September 14, 2022)
 
 - Added: TypeScript typings
 
