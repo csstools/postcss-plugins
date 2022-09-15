@@ -493,8 +493,7 @@
 
 .text-decoration-shorthand {
 	text-decoration: overline;
-	-webkit-text-decoration: overline wavy pink;
-	        text-decoration: overline wavy pink;
+	text-decoration: overline wavy pink;
 	text-decoration-thickness: 3px;
 }
 
