@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased
+### 7.8.2 (September 15, 2022)
 
 - Update `@csstools/postcss-cascade-layers` to `1.1.0` (minor)
 - Update `autoprefixer` to `10.4.11` (patch)
