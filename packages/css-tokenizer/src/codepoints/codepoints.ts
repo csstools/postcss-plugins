@@ -1,0 +1,14 @@
+export const CARRIAGE_RETURN = '\u{d}'.charCodeAt(0);
+export const FORM_FEED = '\u{c}'.charCodeAt(0);
+export const LINE_FEED = '\u{a}'.charCodeAt(0);
+export const REVERSE_SOLIDUS = '\u{5c}'.charCodeAt(0);
+export const PLUS_SIGN = '\u{2b}'.charCodeAt(0);
+export const HYPHEN_MINUS = '\u{2d}'.charCodeAt(0);
+export const FULL_STOP = '\u{2e}'.charCodeAt(0);
+export const LOW_LINE = '\u{5f}'.charCodeAt(0);
+export const NULL = '\u{0}'.charCodeAt(0);
+export const BACKSPACE = '\u{8}'.charCodeAt(0);
+export const LINE_TABULATION = '\u{b}'.charCodeAt(0);
+export const SHIFT_OUT = '\u{e}'.charCodeAt(0);
+export const INFORMATION_SEPARATOR_ONE = '\u{1f}'.charCodeAt(0);
+export const DELETE = '\u{7f}'.charCodeAt(0);

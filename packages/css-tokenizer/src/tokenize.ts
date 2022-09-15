@@ -48,7 +48,7 @@ const RE_WORD_END = /[\t\n\f\r !"#'():;@[\\\]{}]|\/(?=\*)/g;
 const RE_BAD_BRACKET = /.[\n"'(/\\]/;
 const RE_HEX_ESCAPE = /[\da-f]/i;
 
-module.exports = function tokenizer(input, options = {}) {
+export function tokenizer(input, options: { ignoreErrors?: boolean } = {}) {
 	const css = input.css.valueOf();
 	const ignore = options.ignoreErrors;
 
@@ -290,4 +290,4 @@ module.exports = function tokenizer(input, options = {}) {
 		endOfFile,
 		position,
 	};
-};
+}
