@@ -1,6 +1,9 @@
 export enum TokenType {
 	Comment = 'comment',
+	Dimension = 'dimension',
 	Error = 'error',
+	Number = 'number',
+	Percentage = 'percentage',
 	Whitespace = 'space',
 }
 

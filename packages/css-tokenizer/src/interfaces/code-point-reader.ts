@@ -13,4 +13,6 @@ export type CodePointReader = {
 
 	representation(): [number, number]
 	resetRepresentation()
+
+	slice(start: number, end: number): string
 }
