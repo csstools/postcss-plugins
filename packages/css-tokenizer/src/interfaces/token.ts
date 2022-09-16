@@ -1,10 +1,14 @@
 export enum TokenType {
+	Comment = 'comment',
+	Error = 'error',
 	Whitespace = 'space',
 }
 
-export type TokenWhitespace = Token<TokenType.Whitespace>;
+export type TokenComment = Token<TokenType.Comment, never>;
+export type TokenError = Token<TokenType.Error, Record<string, unknown>>;
+export type TokenWhitespace = Token<TokenType.Whitespace, never>;
 
-export type Token<T extends TokenType> = [
+export type Token<T extends TokenType, U> = [
 	// The type of token
 	T,
 	// The token value
@@ -13,4 +17,6 @@ export type Token<T extends TokenType> = [
 	number,
 	// End position of representation
 	number,
+	// Extra data
+	U?,
 ]

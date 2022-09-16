@@ -1,3 +1,4 @@
+export const ASTERISK = '\u{2a}'.charCodeAt(0);
 export const BACKSPACE = '\u{8}'.charCodeAt(0);
 export const CARRIAGE_RETURN = '\u{d}'.charCodeAt(0);
 export const CHARACTER_TABULATION = '\u{9}'.charCodeAt(0);
@@ -13,4 +14,5 @@ export const NULL = '\u{0}'.charCodeAt(0);
 export const PLUS_SIGN = '\u{2b}'.charCodeAt(0);
 export const REVERSE_SOLIDUS = '\u{5c}'.charCodeAt(0);
 export const SHIFT_OUT = '\u{e}'.charCodeAt(0);
+export const SOLIDUS = '\u{2f}'.charCodeAt(0);
 export const SPACE = '\u{20}'.charCodeAt(0);
