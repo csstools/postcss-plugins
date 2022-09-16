@@ -19,8 +19,8 @@ export class Reader implements CodePointReader {
 		}
 	}
 
-	slice(start: number, end: number): string {
-		return this.#stringSource.slice(start, end);
+	cursorPositionOfLastReadCodePoint(): number {
+		return this.#cursor - 1;
 	}
 
 	peekOneCodePoint(): number | false {
@@ -66,14 +66,14 @@ export class Reader implements CodePointReader {
 	}
 
 	readCodePoint(): number | false {
-		const first = this.#codePointSource[this.#cursor];
-		if (typeof first === 'undefined') {
+		const codePoint = this.#codePointSource[this.#cursor];
+		if (typeof codePoint === 'undefined') {
 			return false;
 		}
 
 		this.#representationEnd = this.#cursor + 1;
 		this.#cursor += 1;
-		return first;
+		return codePoint;
 	}
 
 	representation(): [number, number] {
@@ -86,5 +86,9 @@ export class Reader implements CodePointReader {
 	resetRepresentation() {
 		this.#representationStart = this.#cursor;
 		this.#representationEnd = this.#cursor;
+	}
+
+	slice(start: number, end: number): string {
+		return this.#stringSource.slice(start, end);
 	}
 }

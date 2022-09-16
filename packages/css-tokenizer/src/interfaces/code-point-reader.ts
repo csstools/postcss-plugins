@@ -5,6 +5,8 @@
 // A char code in JS is equivalent to a code point from the CSS Specification.
 
 export type CodePointReader = {
+	cursorPositionOfLastReadCodePoint(): number;
+
 	peekOneCodePoint(): number | false
 	peekTwoCodePoints(): [number, number] | false
 	peekThreeCodePoints(): [number, number, number] | false

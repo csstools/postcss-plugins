@@ -6,7 +6,7 @@ export enum NumberType {
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-number
-export function consumeNumber(reader: CodePointReader): [number, NumberType] {
+export function consumeNumber(reader: CodePointReader, initial: number): [number, NumberType] {
 	reader.representation();
 
 	return [0, NumberType.Integer];

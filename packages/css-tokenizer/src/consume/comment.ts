@@ -4,7 +4,8 @@ import { TokenComment, TokenError, TokenType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comment
 export function consumeComment(reader: CodePointReader): TokenComment|TokenError|undefined {
-	let value = '';
+	let start = -1;
+	let end = -1;
 
 	const open = reader.peekOneCodePoint();
 	if (open === false) {
@@ -39,7 +40,13 @@ export function consumeComment(reader: CodePointReader): TokenComment|TokenError
 		}
 
 		if (codePoint !== ASTERISK) {
-			value += String.fromCharCode(codePoint);
+			if (start === -1) {
+				// current cursor position minus one.
+				start = reader.cursorPositionOfLastReadCodePoint();
+			}
+
+			end = reader.cursorPositionOfLastReadCodePoint() + 1;
+
 			continue;
 		}
 
@@ -60,7 +67,7 @@ export function consumeComment(reader: CodePointReader): TokenComment|TokenError
 
 			return [
 				TokenType.Comment,
-				value,
+				reader.slice(start, end),
 				...reader.representation(),
 			];
 		}
