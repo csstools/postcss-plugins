@@ -3,6 +3,7 @@ import { isIdentStartCodePoint } from '../codepoints/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { checkIfTwoCodePointsAreAValidEscape } from './two-code-points-are-valid-escape';
 
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#would-start-an-identifier
 export function checkIfThreeCodePointsWouldStartAnIdentSequence(reader: CodePointReader): boolean {
 	const peeked = reader.peekThreeCodePoints();
 	if (peeked === false) {
