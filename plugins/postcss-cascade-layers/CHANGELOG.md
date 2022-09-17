@@ -1,6 +1,6 @@
 # Changes to PostCSS Cascade Layers
 
-### Unreleased
+### 1.1.1 (September 17, 2022)
 
 - Fix pre-defined layer order in nested `@layer` rules.
 
