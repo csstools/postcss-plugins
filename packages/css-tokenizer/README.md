@@ -1,5 +1,7 @@
 # TODO
 
+Implemented from : https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/
+
 A CSS tokenizer that strictly follows the spec.
 
 Goals :

@@ -57,3 +57,16 @@ world!" }`,
 		],
 	);
 }
+
+{
+	const t = tokenizer({
+		css: '/* a comment */',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['comment', '/* a comment */', 0, 14],
+		],
+	);
+}

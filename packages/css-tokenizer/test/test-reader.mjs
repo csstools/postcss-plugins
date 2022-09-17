@@ -20,7 +20,7 @@ import { Reader } from '@csstools/css-tokenizer';
 			r.representation(),
 			[
 				0,
-				0,
+				-1,
 			],
 		);
 	}
@@ -46,7 +46,7 @@ import { Reader } from '@csstools/css-tokenizer';
 			r.representation(),
 			[
 				0,
-				0,
+				-1,
 			],
 		);
 	}
@@ -77,7 +77,7 @@ import { Reader } from '@csstools/css-tokenizer';
 			r.representation(),
 			[
 				0,
-				0,
+				-1,
 			],
 		);
 	}
@@ -98,8 +98,13 @@ import { Reader } from '@csstools/css-tokenizer';
 			r.representation(),
 			[
 				0,
-				1,
+				0,
 			],
+		);
+
+		assert.deepEqual(
+			r.representationString(),
+			'a',
 		);
 	}
 
@@ -144,7 +149,7 @@ import { Reader } from '@csstools/css-tokenizer';
 			r.representation(),
 			[
 				1,
-				5,
+				4,
 			],
 		);
 
@@ -164,12 +169,17 @@ import { Reader } from '@csstools/css-tokenizer';
 			r.representation(),
 			[
 				1,
-				15,
+				14,
 			],
 		);
 
 		assert.deepEqual(
-			r.slice(r.representation()[0], r.representation()[1]),
+			r.slice(r.representation()[0], r.representation()[1] + 1),
+			'bc👨‍👨‍👧‍👦d',
+		);
+
+		assert.deepEqual(
+			r.representationString(),
 			'bc👨‍👨‍👧‍👦d',
 		);
 	}

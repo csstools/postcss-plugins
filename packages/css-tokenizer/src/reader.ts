@@ -7,7 +7,7 @@ export class Reader implements CodePointReader {
 	#length = 0;
 
 	#representationStart = 0;
-	#representationEnd = 0;
+	#representationEnd = -1;
 
 	constructor(source: string) {
 		this.#cursor = 0;
@@ -71,7 +71,7 @@ export class Reader implements CodePointReader {
 			return false;
 		}
 
-		this.#representationEnd = this.#cursor + 1;
+		this.#representationEnd = this.#cursor;
 		this.#cursor += 1;
 		return codePoint;
 	}
@@ -83,9 +83,18 @@ export class Reader implements CodePointReader {
 		];
 	}
 
+	representationString(): string {
+		const representation = this.representation();
+		if (representation[1] === -1) {
+			return '';
+		}
+
+		return this.slice(representation[0], representation[1] + 1);
+	}
+
 	resetRepresentation() {
 		this.#representationStart = this.#cursor;
-		this.#representationEnd = this.#cursor;
+		this.#representationEnd = -1;
 	}
 
 	slice(start: number, end: number): string {
