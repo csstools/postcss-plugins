@@ -36,6 +36,9 @@ postcssTape(plugin)({
 	'extensions': {
 		message: "css custom extensions",
 	},
+	'pre-defined-order-for-nested-layer': {
+		message: 'supports pre-defined orders for nested layers'
+	},
 	'unlayered-styles': {
 		message: 'supports unlayered styles alongside layers',
 	},
