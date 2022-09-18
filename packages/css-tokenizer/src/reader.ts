@@ -97,6 +97,7 @@ export class Reader implements CodePointReader {
 
 		this.#representationEnd = this.#cursor;
 		this.#cursor += 1;
+
 		return codePoint;
 	}
 

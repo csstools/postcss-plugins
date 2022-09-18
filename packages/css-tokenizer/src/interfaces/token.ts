@@ -5,6 +5,8 @@ export enum TokenType {
 
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-at-keyword-token */
 	AtKeyword = 'at-keyword-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-bad-string-token */
+	BadString = 'bad-string-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-cdc-token */
 	CDC = 'CDC-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-cdo-token */
@@ -27,6 +29,8 @@ export enum TokenType {
 	Percentage = 'percentage-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-semicolon-token */
 	Semicolon = 'semicolon-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-string-token */
+	String = 'string-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-whitespace-token */
 	Whitespace = 'whitespace-token',
 
@@ -55,29 +59,32 @@ export enum HashType {
 }
 
 export type TokenAtKeyword = Token<TokenType.AtKeyword, { value: string }>;
-export type TokenCDC = Token<TokenType.CDC, never>;
-export type TokenCDO = Token<TokenType.CDO, never>;
-export type TokenColon = Token<TokenType.Colon, never>;
-export type TokenComma = Token<TokenType.Comma, never>;
-export type TokenComment = Token<TokenType.Comment, never>;
+export type TokenBadString = Token<TokenType.BadString, undefined>;
+export type TokenCDC = Token<TokenType.CDC, undefined>;
+export type TokenCDO = Token<TokenType.CDO, undefined>;
+export type TokenColon = Token<TokenType.Colon, undefined>;
+export type TokenComma = Token<TokenType.Comma, undefined>;
+export type TokenComment = Token<TokenType.Comment, undefined>;
 export type TokenDelim = Token<TokenType.Delim, { value: string }>;
 export type TokenDimension = Token<TokenType.Dimension, { value: number, unit: string, type: NumberType }>;
-export type TokenEOF = Token<TokenType.EOF, never>;
+export type TokenEOF = Token<TokenType.EOF, undefined>;
 export type TokenError = Token<TokenType.Error, Record<string, unknown>>;
 export type TokenHash = Token<TokenType.Hash, { value: string, type: HashType }>;
 export type TokenNumber = Token<TokenType.Number, { value: number, type: NumberType }>;
 export type TokenPercentage = Token<TokenType.Percentage, { value: number }>;
-export type TokenSemicolon = Token<TokenType.Semicolon, never>;
-export type TokenWhitespace = Token<TokenType.Whitespace, never>;
+export type TokenSemicolon = Token<TokenType.Semicolon, undefined>;
+export type TokenString = Token<TokenType.String, { value: string }>;
+export type TokenWhitespace = Token<TokenType.Whitespace, undefined>;
 
-export type TokenOpenParen = Token<TokenType.OpenParen, never>;
-export type TokenCloseParen = Token<TokenType.CloseParen, never>;
-export type TokenOpenSquare = Token<TokenType.OpenSquare, never>;
-export type TokenCloseSquare = Token<TokenType.CloseSquare, never>;
-export type TokenOpenCurly = Token<TokenType.OpenCurly, never>;
-export type TokenCloseCurly = Token<TokenType.CloseCurly, never>;
+export type TokenOpenParen = Token<TokenType.OpenParen, undefined>;
+export type TokenCloseParen = Token<TokenType.CloseParen, undefined>;
+export type TokenOpenSquare = Token<TokenType.OpenSquare, undefined>;
+export type TokenCloseSquare = Token<TokenType.CloseSquare, undefined>;
+export type TokenOpenCurly = Token<TokenType.OpenCurly, undefined>;
+export type TokenCloseCurly = Token<TokenType.CloseCurly, undefined>;
 
 export type CSSToken = TokenAtKeyword |
+	TokenBadString |
 	TokenCDC |
 	TokenCDO |
 	TokenColon |
@@ -91,6 +98,7 @@ export type CSSToken = TokenAtKeyword |
 	TokenNumber |
 	TokenPercentage |
 	TokenSemicolon |
+	TokenString |
 	TokenWhitespace |
 	TokenOpenParen |
 	TokenCloseParen |
@@ -109,5 +117,5 @@ export type Token<T extends TokenType, U> = [
 	/** End position of representation */
 	number,
 	/** Extra data */
-	U?,
+	U,
 ]

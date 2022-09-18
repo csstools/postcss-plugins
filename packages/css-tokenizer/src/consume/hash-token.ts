@@ -5,6 +5,7 @@ import { CodePointReader } from '../interfaces/code-point-reader';
 import { HashType, TokenDelim, TokenHash, TokenType } from '../interfaces/token';
 import { consumeIdentSequence } from './ident-sequence';
 
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-token
 export function consumeHashToken(reader: CodePointReader): TokenDelim|TokenHash {
 	reader.readCodePoint();
 

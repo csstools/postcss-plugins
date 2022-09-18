@@ -1,3 +1,4 @@
+export const APOSTROPHE = '\u{27}'.charCodeAt(0);
 export const ASTERISK = '\u{2a}'.charCodeAt(0);
 export const BACKSPACE = '\u{8}'.charCodeAt(0);
 export const CARRIAGE_RETURN = '\u{d}'.charCodeAt(0);
@@ -26,6 +27,7 @@ export const NULL = '\u{0}'.charCodeAt(0);
 export const NUMBER_SIGN = '\u{23}'.charCodeAt(0);
 export const PERCENTAGE_SIGN = '\u{25}'.charCodeAt(0);
 export const PLUS_SIGN = '\u{2b}'.charCodeAt(0);
+export const QUOTATION_MARK = '\u{22}'.charCodeAt(0);
 export const REPLACEMENT_CHARACTER = '\u{0FFFD}'.charCodeAt(0);
 export const REVERSE_SOLIDUS = '\u{5c}'.charCodeAt(0);
 export const RIGHT_CURLY_BRACKET = '\u{7d}'.charCodeAt(0);

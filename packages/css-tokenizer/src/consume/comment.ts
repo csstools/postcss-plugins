@@ -3,7 +3,7 @@ import { CodePointReader } from '../interfaces/code-point-reader';
 import { TokenComment, TokenError, TokenType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comment
-export function consumeComment(reader: CodePointReader): TokenComment|TokenError|undefined {
+export function consumeComment(reader: CodePointReader): TokenComment|TokenError {
 	const open = reader.peekOneCodePoint();
 	if (open === false) {
 		return [
@@ -59,6 +59,7 @@ export function consumeComment(reader: CodePointReader): TokenComment|TokenError
 				TokenType.Comment,
 				reader.representationString(),
 				...reader.representation(),
+				undefined,
 			];
 		}
 	}

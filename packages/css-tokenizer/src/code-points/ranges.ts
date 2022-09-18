@@ -121,6 +121,22 @@ export function isNonPrintableCodePoint(search: number): boolean {
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#whitespace
+export function isNewLine(search: number): boolean {
+	switch (search) {
+		case LINE_FEED:
+		case CARRIAGE_RETURN:
+		case FORM_FEED:
+			// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#input-preprocessing
+			// We can not follow the preprocessing rules because our output is text and must be minimally different from the input.
+			// Applying the preprocessing rules would make it impossible to match the input.
+			// A side effect of this is that our definition of whitespace is broader.
+			return true;
+		default:
+			return false;
+	}
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#whitespace
 export function isWhitespace(search: number): boolean {
 	switch (search) {
 		case LINE_FEED:

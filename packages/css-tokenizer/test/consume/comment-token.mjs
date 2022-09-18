@@ -9,7 +9,7 @@ import { Reader, consumeComment } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		token,
-		['comment', '/* a comment */', 0, 14],
+		['comment', '/* a comment */', 0, 14, undefined],
 	);
 
 	assert.deepEqual(

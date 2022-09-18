@@ -12,6 +12,7 @@ export function consumeWhiteSpace(reader: CodePointReader, max = -1): TokenWhite
 				TokenType.Whitespace,
 				reader.representationString(),
 				...reader.representation(),
+				undefined,
 			];
 		}
 
@@ -22,6 +23,7 @@ export function consumeWhiteSpace(reader: CodePointReader, max = -1): TokenWhite
 				TokenType.Whitespace,
 				reader.representationString(),
 				...reader.representation(),
+				undefined,
 			];
 		}
 
@@ -36,5 +38,6 @@ export function consumeWhiteSpace(reader: CodePointReader, max = -1): TokenWhite
 		TokenType.Whitespace,
 		reader.representationString(),
 		...reader.representation(),
+		undefined,
 	];
 }

@@ -3,6 +3,7 @@ import { isIdentCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { consumeEscapedCodePoint } from './escaped-code-point';
 
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-name
 export function consumeIdentSequence(reader: CodePointReader): Array<number> {
 	const result = [];
 
