@@ -1,11 +1,11 @@
 import assert from 'assert';
-import { Reader, consumeCommentToken } from '@csstools/css-tokenizer';
+import { Reader, consumeComment } from '@csstools/css-tokenizer';
 
 {
 	const r = new Reader('/* a comment */');
 	r.readCodePoint();
 
-	const token = consumeCommentToken(r);
+	const token = consumeComment(r);
 
 	assert.deepEqual(
 		token,
