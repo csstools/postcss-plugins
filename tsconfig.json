@@ -2,10 +2,10 @@
 	"compilerOptions": {
 		"moduleResolution": "node",
 		"allowJs": false,
-		"target": "es2020",
-		"lib": ["es2020"],
+		"target": "ES2022",
+		"lib": ["ES2022"],
 		"allowSyntheticDefaultImports": true,
-		"module": "es6",
+		"module": "ES2022",
 		"declaration": true
 	}
 }
