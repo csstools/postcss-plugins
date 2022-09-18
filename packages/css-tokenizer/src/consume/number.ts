@@ -3,8 +3,8 @@ import { isDigitCodePoint } from '../codepoints/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 
 export enum NumberType {
-	Integer = 0,
-	Number = 1,
+	Integer = 'integer',
+	Number = 'number',
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-number

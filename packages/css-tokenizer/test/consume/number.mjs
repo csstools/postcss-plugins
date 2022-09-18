@@ -7,7 +7,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		number,
-		[12, 0],
+		[12, 'integer'],
 	);
 }
 
@@ -17,7 +17,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		number,
-		[4.01, 1],
+		[4.01, 'number'],
 	);
 }
 
@@ -27,7 +27,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		number,
-		[-456.8, 1],
+		[-456.8, 'number'],
 	);
 }
 
@@ -37,7 +37,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		number,
-		[0, 1],
+		[0, 'number'],
 	);
 }
 
@@ -47,7 +47,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		number,
-		[0, 1],
+		[0, 'number'],
 	);
 }
 
@@ -57,7 +57,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		number,
-		[0, 1],
+		[0, 'number'],
 	);
 }
 
@@ -67,7 +67,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		number,
-		[0.6, 1],
+		[0.6, 'number'],
 	);
 }
 
@@ -77,7 +77,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		number,
-		[10e3, 1],
+		[10e3, 'number'],
 	);
 }
 
@@ -87,7 +87,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		number,
-		[-0.034, 1],
+		[-0.034, 'number'],
 	);
 }
 
@@ -100,7 +100,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		number,
-		[12, 0],
+		[12, 'integer'],
 	);
 }
 
@@ -110,7 +110,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		number,
-		[0, 0],
+		[0, 'integer'],
 	);
 }
 
@@ -120,6 +120,6 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		number,
-		[12.1, 1],
+		[12.1, 'number'],
 	);
 }
