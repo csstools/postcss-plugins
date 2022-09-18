@@ -76,6 +76,17 @@ export class Reader implements CodePointReader {
 		return codePoint;
 	}
 
+	unreadCodePoint(): boolean {
+		if (this.#cursor === 0) {
+			return false;
+		}
+
+		this.#representationEnd = this.#cursor - 1;
+		this.#cursor -= 1;
+
+		return true;
+	}
+
 	representation(): [number, number] {
 		return [
 			this.#representationStart,

@@ -12,6 +12,7 @@ export type CodePointReader = {
 	peekThreeCodePoints(): [number, number, number] | false
 
 	readCodePoint(): number | false
+	unreadCodePoint(): boolean
 
 	representation(): [number, number]
 	representationString(): string
