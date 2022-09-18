@@ -1,5 +1,7 @@
-import { COLON, COMMA, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON } from './code-points/code-points';
+import { checkIfThreeCodePointsWouldStartCDO } from './checks/three-code-points-would-start-cdo';
+import { COLON, COMMA, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, NUMBER_SIGN, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON } from './code-points/code-points';
 import { isWhitespace } from './code-points/ranges';
+import { consumeHashToken } from './consume/hash-token';
 import { consumeWhiteSpace } from './consume/whitespace';
 import { CSSToken, TokenType } from './interfaces/token';
 import { Reader } from './reader';
@@ -48,6 +50,29 @@ export function tokenizer(input: { css: Stringer }) {
 			case RIGHT_CURLY_BRACKET:
 				reader.readCodePoint();
 				return [TokenType.CloseCurly, reader.representationString(), ...reader.representation()];
+			default:
+				break;
+		}
+
+		switch (peeked) {
+			case NUMBER_SIGN:
+				return consumeHashToken(reader);
+
+			case LESS_THAN_SIGN: {
+				reader.readCodePoint();
+
+				if (checkIfThreeCodePointsWouldStartCDO(reader)) {
+					reader.readCodePoint();
+					reader.readCodePoint();
+					reader.readCodePoint();
+
+					return [TokenType.CDO, reader.representationString(), ...reader.representation()];
+				}
+
+				return [TokenType.Delim, reader.representationString(), ...reader.representation(), {
+					value: '<',
+				}];
+			}
 			default:
 				break;
 		}

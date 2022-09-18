@@ -2,7 +2,7 @@ import { checkIfThreeCodePointsWouldStartAnIdentSequence } from '../checks/three
 import { PERCENTAGE_SIGN } from '../code-points/code-points';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '../interfaces/token';
-import { consumeIdentSequence } from './consume-ident-sequence';
+import { consumeIdentSequence } from './ident-sequence';
 import { consumeNumber } from './number';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-numeric-token

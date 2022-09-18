@@ -1,7 +1,7 @@
 import { checkIfTwoCodePointsAreAValidEscape } from '../checks/two-code-points-are-valid-escape';
 import { isIdentCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
-import { consumeEscapedCodePoint } from './consume-escaped-code-pooint';
+import { consumeEscapedCodePoint } from './escaped-code-point';
 
 export function consumeIdentSequence(reader: CodePointReader): Array<number> {
 	const result = [];

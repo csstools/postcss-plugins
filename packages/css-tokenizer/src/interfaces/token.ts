@@ -3,14 +3,22 @@ export enum TokenType {
 	Comment = 'comment',
 	Error = 'error',
 
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-cdc-token */
+	CDC = 'CDC-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-cdo-token */
+	CDO = 'CDO-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-colon-token */
 	Colon = 'colon-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-comma-token */
 	Comma = 'comma-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-delim-token */
+	Delim = 'delim-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-dimension-token */
 	Dimension = 'dimension-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-eof-token */
 	EOF = 'EOF-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-hash-token */
+	Hash = 'hash-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-percentage-token */
 	Number = 'number-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-percentage-token */
@@ -39,12 +47,21 @@ export enum NumberType {
 	Number = 'number',
 }
 
+export enum HashType {
+	Unrestricted = 'unrestricted',
+	ID = 'id',
+}
+
+export type TokenCDC = Token<TokenType.CDC, never>;
+export type TokenCDO = Token<TokenType.CDO, never>;
 export type TokenColon = Token<TokenType.Colon, never>;
 export type TokenComma = Token<TokenType.Comma, never>;
 export type TokenComment = Token<TokenType.Comment, never>;
+export type TokenDelim = Token<TokenType.Delim, { value: string }>;
 export type TokenDimension = Token<TokenType.Dimension, { value: number, unit: string, type: NumberType }>;
 export type TokenEOF = Token<TokenType.EOF, never>;
 export type TokenError = Token<TokenType.Error, Record<string, unknown>>;
+export type TokenHash = Token<TokenType.Hash, { value: string, type: HashType }>;
 export type TokenNumber = Token<TokenType.Number, { value: number, type: NumberType }>;
 export type TokenPercentage = Token<TokenType.Percentage, { value: number }>;
 export type TokenSemicolon = Token<TokenType.Semicolon, never>;
@@ -57,12 +74,16 @@ export type TokenCloseSquare = Token<TokenType.CloseSquare, never>;
 export type TokenOpenCurly = Token<TokenType.OpenCurly, never>;
 export type TokenCloseCurly = Token<TokenType.CloseCurly, never>;
 
-export type CSSToken = TokenColon |
+export type CSSToken = TokenCDC |
+	TokenCDO |
+	TokenColon |
 	TokenComma |
 	TokenComment |
+	TokenDelim |
 	TokenDimension |
 	TokenEOF |
 	TokenError |
+	TokenHash |
 	TokenNumber |
 	TokenPercentage |
 	TokenSemicolon |
