@@ -1,4 +1,4 @@
-import { isWhitespace } from '../codepoints/ranges';
+import { isWhitespace } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { TokenType, TokenWhitespace } from '../interfaces/token';
 

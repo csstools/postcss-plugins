@@ -1,11 +1,7 @@
-import { FULL_STOP, HYPHEN_MINUS, LATIN_CAPITAL_LETTER_E, LATIN_SMALL_LETTER_E, PLUS_SIGN } from '../codepoints/codepoints';
-import { isDigitCodePoint } from '../codepoints/ranges';
+import { FULL_STOP, HYPHEN_MINUS, LATIN_CAPITAL_LETTER_E, LATIN_SMALL_LETTER_E, PLUS_SIGN } from '../code-points/code-points';
+import { isDigitCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
-
-export enum NumberType {
-	Integer = 'integer',
-	Number = 'number',
-}
+import { NumberType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-number
 export function consumeNumber(reader: CodePointReader): [number, NumberType] {
@@ -29,7 +25,7 @@ export function consumeNumber(reader: CodePointReader): [number, NumberType] {
 	{
 		// 4. If the next 2 input code points are U+002E FULL STOP (.) followed by a digit, then:
 		const peeked = reader.peekTwoCodePoints();
-		if (peeked !== false && peeked[0] === FULL_STOP && isDigitCodePoint(peeked[1])) {
+		if (peeked[0] === FULL_STOP && isDigitCodePoint(peeked[1])) {
 			// 4.1. Consume them.
 			reader.readCodePoint();
 			reader.readCodePoint();
@@ -49,51 +45,33 @@ export function consumeNumber(reader: CodePointReader): [number, NumberType] {
 		// 5. If the next 2 or 3 input code points are U+0045 LATIN CAPITAL LETTER E (E) or U+0065 LATIN SMALL LETTER E (e),
 		// optionally followed by U+002D HYPHEN-MINUS (-) or U+002B PLUS SIGN (+),
 		// followed by a digit, then:
+		const peeked = reader.peekThreeCodePoints();
+		if (
+			(peeked[0] === LATIN_SMALL_LETTER_E || peeked[0] === LATIN_CAPITAL_LETTER_E) &&
+			(
+				(
+					isDigitCodePoint(peeked[1])
+				)
+				||
+				(
+					(peeked[1] === HYPHEN_MINUS || peeked[1] === PLUS_SIGN) &&
+					isDigitCodePoint(peeked[2])
+				)
+			)
+		) {
+			// 5.1. Consume them.
+			reader.readCodePoint();
+			reader.readCodePoint();
+			reader.readCodePoint();
 
-		{
-			const peeked = reader.peekTwoCodePoints();
-			if (
-				peeked !== false &&
-				(peeked[0] === LATIN_SMALL_LETTER_E || peeked[0] === LATIN_CAPITAL_LETTER_E) &&
-				isDigitCodePoint(peeked[1])
-			) {
-				// 5.1. Consume them.
-				reader.readCodePoint();
-				reader.readCodePoint();
+			// 5.2. Append them to repr.
+			repr.push(...peeked);
 
-				// 5.2. Append them to repr.
-				repr.push(...peeked);
+			// 5.3. Set type to "number".
+			type = NumberType.Number;
 
-				// 5.3. Set type to "number".
-				type = NumberType.Number;
-
-				// 5.4. While the next input code point is a digit, consume it and append it to repr.
-				repr.push(...consumeDigits(reader));
-			}
-		}
-
-		{
-			const peeked = reader.peekThreeCodePoints();
-			if (
-				peeked !== false &&
-				(peeked[0] === LATIN_SMALL_LETTER_E || peeked[0] === LATIN_CAPITAL_LETTER_E) &&
-				(peeked[1] === HYPHEN_MINUS || peeked[1] === PLUS_SIGN) &&
-				isDigitCodePoint(peeked[2])
-			) {
-				// 5.1. Consume them.
-				reader.readCodePoint();
-				reader.readCodePoint();
-				reader.readCodePoint();
-
-				// 5.2. Append them to repr.
-				repr.push(...peeked);
-
-				// 5.3. Set type to "number".
-				type = NumberType.Number;
-
-				// 5.4. While the next input code point is a digit, consume it and append it to repr.
-				repr.push(...consumeDigits(reader));
-			}
+			// 5.4. While the next input code point is a digit, consume it and append it to repr.
+			repr.push(...consumeDigits(reader));
 		}
 	}
 

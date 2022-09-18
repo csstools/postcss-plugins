@@ -1,9 +1,9 @@
-import { ASTERISK, SOLIDUS } from '../codepoints/codepoints';
+import { ASTERISK, SOLIDUS } from '../code-points/code-points';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { TokenComment, TokenError, TokenType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comment
-export function consumeComment(reader: CodePointReader): TokenComment|TokenError|undefined {
+export function consumeCommentToken(reader: CodePointReader): TokenComment|TokenError|undefined {
 	const open = reader.peekOneCodePoint();
 	if (open === false) {
 		return [

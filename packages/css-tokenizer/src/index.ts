@@ -1,4 +1,5 @@
 export { Reader } from './reader';
-export { consumeComment } from './consume/comment';
+export { consumeCommentToken } from './consume/comment-token';
+export { consumeNumericToken } from './consume/numeric-token';
 export { consumeNumber } from './consume/number';
 export * from './tokenize';

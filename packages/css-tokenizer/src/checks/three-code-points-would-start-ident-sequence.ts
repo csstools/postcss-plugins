@@ -1,15 +1,11 @@
-import { HYPHEN_MINUS, LINE_FEED, REVERSE_SOLIDUS } from '../codepoints/codepoints';
-import { isIdentStartCodePoint } from '../codepoints/ranges';
+import { HYPHEN_MINUS, LINE_FEED, REVERSE_SOLIDUS } from '../code-points/code-points';
+import { isIdentStartCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { checkIfTwoCodePointsAreAValidEscape } from './two-code-points-are-valid-escape';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#would-start-an-identifier
 export function checkIfThreeCodePointsWouldStartAnIdentSequence(reader: CodePointReader): boolean {
 	const peeked = reader.peekThreeCodePoints();
-	if (peeked === false) {
-		return false;
-	}
-
 	const [first, second, third] = peeked;
 
 	// // U+002D HYPHEN-MINUS

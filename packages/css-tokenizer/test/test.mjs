@@ -1,7 +1,8 @@
 import assert from 'assert';
 import { tokenizer } from '@csstools/css-tokenizer';
 import './test-reader.mjs';
-import './consume/comment.mjs';
+import './consume/comment-token.mjs';
+import './consume/numeric-token.mjs';
 import './consume/number.mjs';
 
 function collectTokens(t) {

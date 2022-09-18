@@ -1,4 +1,4 @@
-import { BACKSPACE, DELETE, INFORMATION_SEPARATOR_ONE, LINE_TABULATION, LOW_LINE, HYPHEN_MINUS, NULL, SHIFT_OUT, LINE_FEED, CARRIAGE_RETURN, FORM_FEED, CHARACTER_TABULATION, SPACE } from './codepoints';
+import { BACKSPACE, DELETE, INFORMATION_SEPARATOR_ONE, LINE_TABULATION, LOW_LINE, HYPHEN_MINUS, NULL, SHIFT_OUT, LINE_FEED, CARRIAGE_RETURN, FORM_FEED, CHARACTER_TABULATION, SPACE } from './code-points';
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokenizer-definitions
 
 const digitsLow = '\u{30}'.charCodeAt(0);
@@ -139,4 +139,16 @@ export function isWhitespace(search: number): boolean {
 		default:
 			return false;
 	}
+}
+
+const surrogateLow = '\u{d800}'.charCodeAt(0);
+const surrogateHigh = '\u{dfff}'.charCodeAt(0);
+
+// https://infra.spec.whatwg.org/#surrogate
+export function isSurrogate(search: number): boolean {
+	if (surrogateLow <= search && search <= surrogateHigh) {
+		return true;
+	}
+
+	return false;
 }
