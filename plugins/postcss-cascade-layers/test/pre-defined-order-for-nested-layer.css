@@ -1,0 +1,27 @@
+@layer one {
+	@layer two, three;
+
+	@layer three {
+		.test {
+			/* Third most specific */
+			order: 1.3;
+		}
+	}
+
+	@layer two {
+		.test {
+			/* Least specific */
+			order: 1.2;
+		}
+	}
+
+	.test {
+		/* Second most specific */
+		order: 1;
+	}
+}
+
+.test {
+	/* Most specific */
+	order: 0;
+}
