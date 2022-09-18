@@ -2,6 +2,7 @@ import assert from 'assert';
 import { tokenizer } from '@csstools/css-tokenizer';
 import './test-reader.mjs';
 import './consume/comment.mjs';
+import './consume/number.mjs';
 
 function collectTokens(t) {
 	const bag = [];
