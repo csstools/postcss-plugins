@@ -8,7 +8,7 @@ import { Reader, consumeNumericToken } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		token,
-		['dimension', '10px', 0, 3, { value: 10, type: 'integer', unit: 'px' }],
+		['dimension-token', '10px', 0, 3, { value: 10, type: 'integer', unit: 'px' }],
 	);
 
 	assert.deepEqual(
@@ -29,7 +29,7 @@ import { Reader, consumeNumericToken } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		token,
-		['percentage', '10%', 0, 2, { value: 10 }],
+		['percentage-token', '10%', 0, 2, { value: 10 }],
 	);
 
 	assert.deepEqual(
@@ -50,7 +50,7 @@ import { Reader, consumeNumericToken } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		token,
-		['number', '-3.4e-2', 0, 6, { value: -0.034, type: 'number' }],
+		['number-token', '-3.4e-2', 0, 6, { value: -0.034, type: 'number' }],
 	);
 
 	assert.deepEqual(
@@ -71,7 +71,7 @@ import { Reader, consumeNumericToken } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		token,
-		['dimension', '-3.4e', 0, 4, { value: -3.4, type: 'number', unit: 'e' }],
+		['dimension-token', '-3.4e', 0, 4, { value: -3.4, type: 'number', unit: 'e' }],
 	);
 
 	assert.deepEqual(
@@ -92,7 +92,7 @@ import { Reader, consumeNumericToken } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		token,
-		['dimension', '20--foo', 0, 6, { value: 20, type: 'integer', unit: '--foo' }],
+		['dimension-token', '20--foo', 0, 6, { value: 20, type: 'integer', unit: '--foo' }],
 	);
 
 	assert.deepEqual(

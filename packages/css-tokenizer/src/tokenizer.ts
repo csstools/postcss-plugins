@@ -21,12 +21,6 @@ export function tokenizer(input: { css: Stringer }) {
 
 		// Simple, one character tokens:
 		switch (peeked) {
-			case LEFT_PARENTHESIS:
-				reader.readCodePoint();
-				return [TokenType.OpenParen, reader.representationString(), ...reader.representation()];
-			case RIGHT_PARENTHESIS:
-				reader.readCodePoint();
-				return [TokenType.CloseParen, reader.representationString(), ...reader.representation()];
 			case COMMA:
 				reader.readCodePoint();
 				return [TokenType.Comma, reader.representationString(), ...reader.representation()];
@@ -36,6 +30,12 @@ export function tokenizer(input: { css: Stringer }) {
 			case SEMICOLON:
 				reader.readCodePoint();
 				return [TokenType.Semicolon, reader.representationString(), ...reader.representation()];
+			case LEFT_PARENTHESIS:
+				reader.readCodePoint();
+				return [TokenType.OpenParen, reader.representationString(), ...reader.representation()];
+			case RIGHT_PARENTHESIS:
+				reader.readCodePoint();
+				return [TokenType.CloseParen, reader.representationString(), ...reader.representation()];
 			case LEFT_SQUARE_BRACKET:
 				reader.readCodePoint();
 				return [TokenType.OpenSquare, reader.representationString(), ...reader.representation()];

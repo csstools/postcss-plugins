@@ -1,20 +1,36 @@
 export enum TokenType {
-	Colon = 'colon-token',
-	Comma = 'comma-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#comment-diagram */
 	Comment = 'comment',
-	Dimension = 'dimension',
 	Error = 'error',
-	Number = 'number',
-	Percentage = 'percentage',
-	Semicolon = 'semicolon-token',
-	Whitespace = 'whitespace-token',
-	EOF = 'EOF-token',
 
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-colon-token */
+	Colon = 'colon-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-comma-token */
+	Comma = 'comma-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-dimension-token */
+	Dimension = 'dimension-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-eof-token */
+	EOF = 'EOF-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-percentage-token */
+	Number = 'number-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-percentage-token */
+	Percentage = 'percentage-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-semicolon-token */
+	Semicolon = 'semicolon-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-whitespace-token */
+	Whitespace = 'whitespace-token',
+
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-open-paren */
 	OpenParen = '(-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-close-paren */
 	CloseParen = ')-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-open-square */
 	OpenSquare = '[-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-close-square */
 	CloseSquare = ']-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-open-curly */
 	OpenCurly = '{-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-close-curly */
 	CloseCurly = '}-token',
 }
 
@@ -59,14 +75,14 @@ export type CSSToken = TokenColon |
 	TokenCloseCurly;
 
 export type Token<T extends TokenType, U> = [
-	// The type of token
+	/** The type of token */
 	T,
-	// The token value
+	/** The token value */
 	string,
-	// Start position of representation
+	/** Start position of representation */
 	number,
-	// End position of representation
+	/** End position of representation */
 	number,
-	// Extra data
+	/** Extra data */
 	U?,
 ]
