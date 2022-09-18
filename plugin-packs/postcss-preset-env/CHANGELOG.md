@@ -31,6 +31,10 @@
 - Updated `postcss-pseudo-class-any-link` to `7.1.6` (patch)
 - Updated `postcss-selector-not` to `6.0.1` (patch)
 
+### Unreleased
+
+- Update `@csstools/postcss-cascade-layers` to `1.1.1` (patch)
+
 ### 7.8.2 (September 15, 2022)
 
 - Update `@csstools/postcss-cascade-layers` to `1.1.0` (minor)

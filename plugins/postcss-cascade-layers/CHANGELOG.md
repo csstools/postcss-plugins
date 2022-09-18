@@ -4,6 +4,10 @@
 
 - Updated: Support for Node v14+ (major).
 
+### 1.1.1 (September 17, 2022)
+
+- Fix pre-defined layer order in nested `@layer` rules.
+
 ### 1.1.0 (September 14, 2022)
 
 - Add support for `@scope` and `@container` as parent rules for `@layer`
