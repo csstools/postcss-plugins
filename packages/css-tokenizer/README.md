@@ -10,6 +10,6 @@ Goals :
 - must be transformable
 - must be able to serialize from a constructed AST
 - must be able to serialize from a parsed AST (without any mutation or data loss)
-- must have the same interface as the PostCSS tokenizer.
+- tokens must have the same interface as the PostCSS tokenizer. This does not mean that tokens will be equivalent or that the tokenizer will have the exact same interface.
 
 This will be a mashup of my previous work on a [CSS tokenizer in Go](https://github.com/romainmenke/css) and the API surface of the PostCSS tokenizer.

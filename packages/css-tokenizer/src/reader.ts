@@ -11,7 +11,7 @@ export class Reader implements CodePointReader {
 
 	constructor(source: string) {
 		this.#cursor = 0;
-		this.#stringSource = source.valueOf();
+		this.#stringSource = source;
 		this.#length = source.length;
 
 		for (let i = 0; i < this.#length; i++) {

@@ -10,7 +10,7 @@ export function consumeWhiteSpace(reader: CodePointReader, max = -1): TokenWhite
 		if (max !== -1 && current === max) {
 			return [
 				TokenType.Whitespace,
-				' ',
+				reader.representationString(),
 				...reader.representation(),
 			];
 		}
@@ -20,7 +20,7 @@ export function consumeWhiteSpace(reader: CodePointReader, max = -1): TokenWhite
 		if (peeked === false) {
 			return [
 				TokenType.Whitespace,
-				' ',
+				reader.representationString(),
 				...reader.representation(),
 			];
 		}
@@ -34,7 +34,7 @@ export function consumeWhiteSpace(reader: CodePointReader, max = -1): TokenWhite
 
 	return [
 		TokenType.Whitespace,
-		' ',
+		reader.representationString(),
 		...reader.representation(),
 	];
 }

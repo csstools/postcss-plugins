@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { tokenizer } from '@csstools/css-tokenizer';
+import { postcssTokenizer } from '@csstools/css-tokenizer';
 import './test-reader.mjs';
 import './consume/comment-token.mjs';
 import './consume/numeric-token.mjs';
@@ -15,7 +15,7 @@ function collectTokens(t) {
 }
 
 {
-	const t = tokenizer({
+	const t = postcssTokenizer.tokenizer({
 		css: '@media screen and (min-width: 200px) {}',
 	});
 
@@ -37,7 +37,7 @@ function collectTokens(t) {
 }
 
 {
-	const t = tokenizer({
+	const t = postcssTokenizer.tokenizer({
 		css: `.foo { content: "hello
 
 world!" }`,
@@ -61,7 +61,7 @@ world!" }`,
 }
 
 {
-	const t = tokenizer({
+	const t = postcssTokenizer.tokenizer({
 		css: '/* a comment */',
 	});
 
