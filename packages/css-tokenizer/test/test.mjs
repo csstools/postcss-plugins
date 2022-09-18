@@ -4,6 +4,7 @@ import './test-reader.mjs';
 import './consume/comment-token.mjs';
 import './consume/numeric-token.mjs';
 import './consume/number.mjs';
+import './token/basic.mjs';
 
 function collectTokens(t) {
 	const bag = [];

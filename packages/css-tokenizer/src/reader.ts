@@ -65,6 +65,30 @@ export class Reader implements CodePointReader {
 		return [first, second, third];
 	}
 
+	peekFourCodePoints(): [number, number, number, number] | [number, number, number] | [number, number] | [number] | [] {
+		const first = this.#codePointSource[this.#cursor];
+		if (typeof first === 'undefined') {
+			return [];
+		}
+
+		const second = this.#codePointSource[this.#cursor + 1];
+		if (typeof second === 'undefined') {
+			return [first];
+		}
+
+		const third = this.#codePointSource[this.#cursor + 2];
+		if (typeof third === 'undefined') {
+			return [first, second];
+		}
+
+		const fourth = this.#codePointSource[this.#cursor + 2];
+		if (typeof fourth === 'undefined') {
+			return [first, second, third];
+		}
+
+		return [first, second, third, fourth];
+	}
+
 	readCodePoint(): number | false {
 		const codePoint = this.#codePointSource[this.#cursor];
 		if (typeof codePoint === 'undefined') {

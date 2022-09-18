@@ -10,6 +10,7 @@ export type CodePointReader = {
 	peekOneCodePoint(): number | false
 	peekTwoCodePoints(): [number, number] | [number] | []
 	peekThreeCodePoints(): [number, number, number] | [number, number] | [number] | []
+	peekFourCodePoints(): [number, number, number, number] | [number, number, number] | [number, number] | [number] | []
 
 	readCodePoint(): number | false
 	unreadCodePoint(): boolean

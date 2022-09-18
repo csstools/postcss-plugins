@@ -3,6 +3,8 @@ export enum TokenType {
 	Comment = 'comment',
 	Error = 'error',
 
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-at-keyword-token */
+	AtKeyword = 'at-keyword-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-cdc-token */
 	CDC = 'CDC-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-cdo-token */
@@ -52,6 +54,7 @@ export enum HashType {
 	ID = 'id',
 }
 
+export type TokenAtKeyword = Token<TokenType.AtKeyword, { value: string }>;
 export type TokenCDC = Token<TokenType.CDC, never>;
 export type TokenCDO = Token<TokenType.CDO, never>;
 export type TokenColon = Token<TokenType.Colon, never>;
@@ -74,7 +77,8 @@ export type TokenCloseSquare = Token<TokenType.CloseSquare, never>;
 export type TokenOpenCurly = Token<TokenType.OpenCurly, never>;
 export type TokenCloseCurly = Token<TokenType.CloseCurly, never>;
 
-export type CSSToken = TokenCDC |
+export type CSSToken = TokenAtKeyword |
+	TokenCDC |
 	TokenCDO |
 	TokenColon |
 	TokenComma |

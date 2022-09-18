@@ -25,7 +25,7 @@ export function consumeWhiteSpace(reader: CodePointReader, max = -1): TokenWhite
 			];
 		}
 
-		if (isWhitespace(peeked)) {
+		if (!isWhitespace(peeked)) {
 			break;
 		}
 
