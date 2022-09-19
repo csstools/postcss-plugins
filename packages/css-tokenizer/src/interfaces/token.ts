@@ -7,6 +7,8 @@ export enum TokenType {
 	AtKeyword = 'at-keyword-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-bad-string-token */
 	BadString = 'bad-string-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-bad-url-token */
+	BadURL = 'bad-url-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-cdc-token */
 	CDC = 'CDC-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-cdo-token */
@@ -21,8 +23,12 @@ export enum TokenType {
 	Dimension = 'dimension-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-eof-token */
 	EOF = 'EOF-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-function-token */
+	Function = 'function-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-hash-token */
 	Hash = 'hash-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-ident-token */
+	Ident = 'ident-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-percentage-token */
 	Number = 'number-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-percentage-token */
@@ -31,6 +37,8 @@ export enum TokenType {
 	Semicolon = 'semicolon-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-string-token */
 	String = 'string-token',
+	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-url-token */
+	URL = 'url-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-whitespace-token */
 	Whitespace = 'whitespace-token',
 
@@ -60,6 +68,7 @@ export enum HashType {
 
 export type TokenAtKeyword = Token<TokenType.AtKeyword, { value: string }>;
 export type TokenBadString = Token<TokenType.BadString, undefined>;
+export type TokenBadURL = Token<TokenType.BadURL, undefined>;
 export type TokenCDC = Token<TokenType.CDC, undefined>;
 export type TokenCDO = Token<TokenType.CDO, undefined>;
 export type TokenColon = Token<TokenType.Colon, undefined>;
@@ -69,11 +78,14 @@ export type TokenDelim = Token<TokenType.Delim, { value: string }>;
 export type TokenDimension = Token<TokenType.Dimension, { value: number, unit: string, type: NumberType }>;
 export type TokenEOF = Token<TokenType.EOF, undefined>;
 export type TokenError = Token<TokenType.Error, Record<string, unknown>>;
+export type TokenFunction = Token<TokenType.Function, { value: string }>;
 export type TokenHash = Token<TokenType.Hash, { value: string, type: HashType }>;
+export type TokenIdent = Token<TokenType.Ident, { value: string }>;
 export type TokenNumber = Token<TokenType.Number, { value: number, type: NumberType }>;
 export type TokenPercentage = Token<TokenType.Percentage, { value: number }>;
 export type TokenSemicolon = Token<TokenType.Semicolon, undefined>;
 export type TokenString = Token<TokenType.String, { value: string }>;
+export type TokenURL = Token<TokenType.URL, { value: string }>;
 export type TokenWhitespace = Token<TokenType.Whitespace, undefined>;
 
 export type TokenOpenParen = Token<TokenType.OpenParen, undefined>;
@@ -85,6 +97,7 @@ export type TokenCloseCurly = Token<TokenType.CloseCurly, undefined>;
 
 export type CSSToken = TokenAtKeyword |
 	TokenBadString |
+	TokenBadURL |
 	TokenCDC |
 	TokenCDO |
 	TokenColon |
@@ -94,11 +107,14 @@ export type CSSToken = TokenAtKeyword |
 	TokenDimension |
 	TokenEOF |
 	TokenError |
+	TokenFunction |
 	TokenHash |
+	TokenIdent |
 	TokenNumber |
 	TokenPercentage |
 	TokenSemicolon |
 	TokenString |
+	TokenURL |
 	TokenWhitespace |
 	TokenOpenParen |
 	TokenCloseParen |

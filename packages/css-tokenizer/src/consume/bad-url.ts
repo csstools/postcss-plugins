@@ -1,31 +1,29 @@
 import { checkIfTwoCodePointsAreAValidEscape } from '../checks/two-code-points-are-valid-escape';
-import { isIdentCodePoint } from '../code-points/ranges';
+import { RIGHT_PARENTHESIS } from '../code-points/code-points';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { consumeEscapedCodePoint } from './escaped-code-point';
 
-// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-name
-export function consumeIdentSequence(reader: CodePointReader): Array<number> {
-	const result = [];
-
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-remnants-of-bad-url
+export function consumeBadURL(reader: CodePointReader) {
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const peeked = reader.peekOneCodePoint();
 		if (peeked === false) {
-			return result;
+			return;
 		}
 
-		if (isIdentCodePoint(peeked)) {
+		if (peeked === RIGHT_PARENTHESIS) {
 			reader.readCodePoint();
-			result.push(peeked);
-			continue;
+			return;
 		}
 
 		if (checkIfTwoCodePointsAreAValidEscape(reader)) {
 			reader.readCodePoint();
-			result.push(consumeEscapedCodePoint(reader));
+			consumeEscapedCodePoint(reader);
 			continue;
 		}
 
-		return result;
+		reader.readCodePoint();
+		continue;
 	}
 }

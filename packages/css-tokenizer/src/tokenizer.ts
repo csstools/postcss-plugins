@@ -3,16 +3,17 @@ import { checkIfThreeCodePointsWouldStartAnIdentSequence } from './checks/three-
 import { checkIfThreeCodePointsWouldStartANumber } from './checks/three-code-points-would-start-number';
 import { checkIfTwoCodePointsStartAComment } from './checks/two-code-points-start-comment';
 import { checkIfThreeCodePointsWouldStartCDC } from './checks/three-code-points-would-start-cdc';
-import { APOSTROPHE, COLON, COMMA, COMMERCIAL_AT, FULL_STOP, HYPHEN_MINUS, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, NUMBER_SIGN, PLUS_SIGN, QUOTATION_MARK, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON, SOLIDUS } from './code-points/code-points';
-import { isDigitCodePoint, isWhitespace } from './code-points/ranges';
+import { APOSTROPHE, COLON, COMMA, COMMERCIAL_AT, FULL_STOP, HYPHEN_MINUS, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, NUMBER_SIGN, PLUS_SIGN, QUOTATION_MARK, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON } from './code-points/code-points';
+import { isDigitCodePoint, isIdentStartCodePoint, isWhitespace } from './code-points/ranges';
 import { consumeComment } from './consume/comment';
 import { consumeHashToken } from './consume/hash-token';
 import { consumeIdentSequence } from './consume/ident-sequence';
 import { consumeNumericToken } from './consume/numeric-token';
-import { consumeWhiteSpace } from './consume/whitespace';
+import { consumeWhiteSpace } from './consume/whitespace-token';
 import { CSSToken, TokenType } from './interfaces/token';
 import { Reader } from './reader';
-import { consumeStringToken } from './consume/string';
+import { consumeStringToken } from './consume/string-token';
+import { consumeIdentLikeToken } from './consume/ident-like-token';
 
 interface Stringer {
 	valueOf(): string
@@ -157,6 +158,10 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 
 		if (isDigitCodePoint(peeked)) {
 			return consumeNumericToken(reader);
+		}
+
+		if (isIdentStartCodePoint(peeked)) {
+			return consumeIdentLikeToken(reader);
 		}
 
 		reader.readCodePoint();

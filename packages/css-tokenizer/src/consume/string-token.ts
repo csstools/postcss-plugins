@@ -11,7 +11,6 @@ export function consumeStringToken(reader: CodePointReader): TokenBadString|Toke
 	const first = reader.readCodePoint();
 	if (first === false) {
 		throw new Error('Unexpected EOF');
-
 	}
 
 	// eslint-disable-next-line no-constant-condition
