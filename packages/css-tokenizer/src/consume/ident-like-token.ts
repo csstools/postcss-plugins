@@ -2,14 +2,15 @@ import { checkIfCodePointsMatchURLIdent } from '../checks/matches-url-ident';
 import { APOSTROPHE, LEFT_PARENTHESIS, QUOTATION_MARK } from '../code-points/code-points';
 import { isWhitespace } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
+import { Context } from '../interfaces/context';
 import { TokenBadURL, TokenFunction, TokenIdent, TokenType, TokenURL } from '../interfaces/token';
 import { consumeIdentSequence } from './ident-sequence';
 import { consumeUrlToken } from './url-token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-ident-like-token
-export function consumeIdentLikeToken(reader: CodePointReader): TokenIdent|TokenFunction|TokenURL|TokenBadURL {
-	const codePoints = consumeIdentSequence(reader);
-	if (checkIfCodePointsMatchURLIdent(codePoints)) {
+export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): TokenIdent|TokenFunction|TokenURL|TokenBadURL {
+	const codePoints = consumeIdentSequence(ctx, reader);
+	if (checkIfCodePointsMatchURLIdent(ctx, codePoints)) {
 		const peeked = reader.peekOneCodePoint();
 		if (peeked === LEFT_PARENTHESIS) {
 			reader.readCodePoint();
@@ -48,7 +49,7 @@ export function consumeIdentLikeToken(reader: CodePointReader): TokenIdent|Token
 				reader.unreadCodePoint();
 			}
 
-			return consumeUrlToken(reader);
+			return consumeUrlToken(ctx, reader);
 		}
 	}
 

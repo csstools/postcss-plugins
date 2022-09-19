@@ -1,8 +1,9 @@
 import { isWhitespace } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
+import { Context } from '../interfaces/context';
 import { TokenType, TokenWhitespace } from '../interfaces/token';
 
-export function consumeWhiteSpace(reader: CodePointReader, max = -1): TokenWhitespace {
+export function consumeWhiteSpace(ctx: Context, reader: CodePointReader, max = -1): TokenWhitespace {
 	let current = 0;
 
 	// eslint-disable-next-line no-constant-condition

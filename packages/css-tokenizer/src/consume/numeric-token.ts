@@ -1,16 +1,17 @@
 import { checkIfThreeCodePointsWouldStartAnIdentSequence } from '../checks/three-code-points-would-start-ident-sequence';
 import { PERCENTAGE_SIGN } from '../code-points/code-points';
 import { CodePointReader } from '../interfaces/code-point-reader';
+import { Context } from '../interfaces/context';
 import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '../interfaces/token';
 import { consumeIdentSequence } from './ident-sequence';
 import { consumeNumber } from './number';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-numeric-token
-export function consumeNumericToken(reader: CodePointReader): TokenPercentage|TokenNumber|TokenDimension {
-	const numberValue = consumeNumber(reader);
+export function consumeNumericToken(ctx: Context, reader: CodePointReader): TokenPercentage|TokenNumber|TokenDimension {
+	const numberValue = consumeNumber(ctx, reader);
 
-	if (checkIfThreeCodePointsWouldStartAnIdentSequence(reader)) {
-		const unit = consumeIdentSequence(reader);
+	if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
+		const unit = consumeIdentSequence(ctx, reader);
 
 		return [
 			TokenType.Dimension,

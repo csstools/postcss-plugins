@@ -1,9 +1,10 @@
 import { FULL_STOP, HYPHEN_MINUS, PLUS_SIGN } from '../code-points/code-points';
 import { isDigitCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
+import { Context } from '../interfaces/context';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#starts-with-a-number
-export function checkIfThreeCodePointsWouldStartANumber(reader: CodePointReader): boolean {
+export function checkIfThreeCodePointsWouldStartANumber(ctx: Context, reader: CodePointReader): boolean {
 	const peeked = reader.peekThreeCodePoints();
 	const [first, second, third] = peeked;
 

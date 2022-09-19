@@ -1,11 +1,12 @@
 import { REVERSE_SOLIDUS } from '../code-points/code-points';
 import { isNewLine } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
+import { Context } from '../interfaces/context';
 import { TokenBadString, TokenString, TokenType } from '../interfaces/token';
 import { consumeEscapedCodePoint } from './escaped-code-point';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-string-token
-export function consumeStringToken(reader: CodePointReader): TokenBadString|TokenString {
+export function consumeStringToken(ctx: Context, reader: CodePointReader): TokenBadString|TokenString {
 	let result = '';
 
 	const first = reader.readCodePoint();
@@ -40,7 +41,7 @@ export function consumeStringToken(reader: CodePointReader): TokenBadString|Toke
 				continue;
 			}
 
-			result += String.fromCharCode(consumeEscapedCodePoint(reader));
+			result += String.fromCharCode(consumeEscapedCodePoint(ctx, reader));
 			continue;
 		}
 

@@ -1,10 +1,11 @@
 import { HYPHEN_MINUS, LINE_FEED, REVERSE_SOLIDUS } from '../code-points/code-points';
 import { isIdentStartCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
+import { Context } from '../interfaces/context';
 import { checkIfTwoCodePointsAreAValidEscape } from './two-code-points-are-valid-escape';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#would-start-an-identifier
-export function checkIfThreeCodePointsWouldStartAnIdentSequence(reader: CodePointReader): boolean {
+export function checkIfThreeCodePointsWouldStartAnIdentSequence(ctx: Context, reader: CodePointReader): boolean {
 	const peeked = reader.peekThreeCodePoints();
 	const [first, second, third] = peeked;
 
@@ -38,7 +39,7 @@ export function checkIfThreeCodePointsWouldStartAnIdentSequence(reader: CodePoin
 	if (first === REVERSE_SOLIDUS) {
 		// If the first and second code points are a valid escape, return true.
 		// Otherwise, return false.
-		return checkIfTwoCodePointsAreAValidEscape(reader);
+		return checkIfTwoCodePointsAreAValidEscape(ctx, reader);
 	}
 
 	// anything else

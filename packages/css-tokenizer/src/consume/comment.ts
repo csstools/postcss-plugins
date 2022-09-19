@@ -1,9 +1,10 @@
 import { ASTERISK, SOLIDUS } from '../code-points/code-points';
 import { CodePointReader } from '../interfaces/code-point-reader';
+import { Context } from '../interfaces/context';
 import { TokenComment, TokenError, TokenType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comment
-export function consumeComment(reader: CodePointReader): TokenComment|TokenError {
+export function consumeComment(ctx: Context, reader: CodePointReader): TokenComment|TokenError {
 	const open = reader.peekOneCodePoint();
 	if (open === false) {
 		return [
@@ -11,7 +12,7 @@ export function consumeComment(reader: CodePointReader): TokenComment|TokenError
 			'',
 			...reader.representation(),
 			{
-				reason: 'parse error while consuming a comment, expected "*" after "/".',
+				message: 'parse error while consuming a comment, expected "*" after "/".',
 			},
 		];
 	}
@@ -31,7 +32,7 @@ export function consumeComment(reader: CodePointReader): TokenComment|TokenError
 				'',
 				...reader.representation(),
 				{
-					reason: 'parse error while consuming a comment, comment was unclosed before the end of the file.',
+					message: 'parse error while consuming a comment, comment was unclosed before the end of the file.',
 				},
 			];
 		}
@@ -47,7 +48,7 @@ export function consumeComment(reader: CodePointReader): TokenComment|TokenError
 				'',
 				...reader.representation(),
 				{
-					reason: 'parse error while consuming a comment, comment was unclosed before the end of the file.',
+					message: 'parse error while consuming a comment, comment was unclosed before the end of the file.',
 				},
 			];
 		}

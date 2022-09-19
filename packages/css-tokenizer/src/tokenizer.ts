@@ -19,19 +19,23 @@ interface Stringer {
 	valueOf(): string
 }
 
-export function tokenizer(input: { css: Stringer }, options?: { commentsAreTokens?: false }) {
+export function tokenizer(input: { css: Stringer }, options?: { commentsAreTokens?: false, onParseError?: (TokenizerError) => void }) {
 	const css = input.css.valueOf();
 
 	const reader = new Reader(css);
 
+	const ctx = {
+		onParseError: options?.onParseError ?? (() => { /* noop */ }),
+	};
+
 	function nextToken(): CSSToken | undefined {
 		reader.resetRepresentation();
 
-		if (checkIfTwoCodePointsStartAComment(reader)) {
+		if (checkIfTwoCodePointsStartAComment(ctx, reader)) {
 			if (options?.commentsAreTokens) {
-				return consumeComment(reader);
+				return consumeComment(ctx, reader);
 			} else {
-				consumeComment(reader);
+				consumeComment(ctx, reader);
 			}
 		}
 
@@ -78,14 +82,14 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 		switch (peeked) {
 			case APOSTROPHE:
 			case QUOTATION_MARK:
-				return consumeStringToken(reader);
+				return consumeStringToken(ctx, reader);
 			case NUMBER_SIGN:
-				return consumeHashToken(reader);
+				return consumeHashToken(ctx, reader);
 
 			case PLUS_SIGN:
 			case FULL_STOP: {
-				if (checkIfThreeCodePointsWouldStartANumber(reader)) {
-					return consumeNumericToken(reader);
+				if (checkIfThreeCodePointsWouldStartANumber(ctx, reader)) {
+					return consumeNumericToken(ctx, reader);
 				}
 
 				reader.readCodePoint();
@@ -95,11 +99,11 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 			}
 
 			case HYPHEN_MINUS: {
-				if (checkIfThreeCodePointsWouldStartANumber(reader)) {
-					return consumeNumericToken(reader);
+				if (checkIfThreeCodePointsWouldStartANumber(ctx, reader)) {
+					return consumeNumericToken(ctx, reader);
 				}
 
-				if (checkIfThreeCodePointsWouldStartCDC(reader)) {
+				if (checkIfThreeCodePointsWouldStartCDC(ctx, reader)) {
 					reader.readCodePoint();
 					reader.readCodePoint();
 					reader.readCodePoint();
@@ -107,7 +111,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					return [TokenType.CDC, reader.representationString(), ...reader.representation(), undefined];
 				}
 
-				if (checkIfThreeCodePointsWouldStartAnIdentSequence(reader)) {
+				if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 					// return consumeIdentLike...
 				}
 
@@ -118,7 +122,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 			}
 
 			case LESS_THAN_SIGN: {
-				if (checkIfFourCodePointsWouldStartCDO(reader)) {
+				if (checkIfFourCodePointsWouldStartCDO(ctx, reader)) {
 					reader.readCodePoint();
 					reader.readCodePoint();
 					reader.readCodePoint();
@@ -135,8 +139,8 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 
 			case COMMERCIAL_AT: {
 				reader.readCodePoint();
-				if (checkIfThreeCodePointsWouldStartAnIdentSequence(reader)) {
-					const identSequence = consumeIdentSequence(reader);
+				if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
+					const identSequence = consumeIdentSequence(ctx, reader);
 
 					return [TokenType.AtKeyword, reader.representationString(), ...reader.representation(), {
 						value: identSequence.map((x) => String.fromCharCode(x)).join(''),
@@ -153,15 +157,15 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 		}
 
 		if (isWhitespace(peeked)) {
-			return consumeWhiteSpace(reader);
+			return consumeWhiteSpace(ctx, reader);
 		}
 
 		if (isDigitCodePoint(peeked)) {
-			return consumeNumericToken(reader);
+			return consumeNumericToken(ctx, reader);
 		}
 
 		if (isIdentStartCodePoint(peeked)) {
-			return consumeIdentLikeToken(reader);
+			return consumeIdentLikeToken(ctx, reader);
 		}
 
 		reader.readCodePoint();
