@@ -7,6 +7,17 @@ import { Context } from '../interfaces/context';
 export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): number {
 	const codePoint = reader.readCodePoint();
 	if (codePoint === false) {
+		const representation = reader.representation();
+		ctx.onParseError({
+			message: 'Unexpected EOF while consuming an escaped code point.',
+			start: representation[0],
+			end: representation[1],
+			state: [
+				'4.3.7. Consume an escaped code point',
+				'Unexpected EOF',
+			],
+		});
+
 		return REPLACEMENT_CHARACTER;
 	}
 

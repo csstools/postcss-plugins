@@ -1,7 +1,6 @@
 export enum TokenType {
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#comment-diagram */
 	Comment = 'comment',
-	Error = 'error',
 
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-at-keyword-token */
 	AtKeyword = 'at-keyword-token',
@@ -77,7 +76,6 @@ export type TokenComment = Token<TokenType.Comment, undefined>;
 export type TokenDelim = Token<TokenType.Delim, { value: string }>;
 export type TokenDimension = Token<TokenType.Dimension, { value: number, unit: string, type: NumberType }>;
 export type TokenEOF = Token<TokenType.EOF, undefined>;
-export type TokenError = Token<TokenType.Error, { message: string }>;
 export type TokenFunction = Token<TokenType.Function, { value: string }>;
 export type TokenHash = Token<TokenType.Hash, { value: string, type: HashType }>;
 export type TokenIdent = Token<TokenType.Ident, { value: string }>;
@@ -106,7 +104,6 @@ export type CSSToken = TokenAtKeyword |
 	TokenDelim |
 	TokenDimension |
 	TokenEOF |
-	TokenError |
 	TokenFunction |
 	TokenHash |
 	TokenIdent |

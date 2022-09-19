@@ -1,3 +1,5 @@
+import { ParserError } from './error';
+
 export type Context = {
-	onParseError: (TokenizerError) => void
+	onParseError: (error: ParserError) => void
 }

@@ -18,10 +18,34 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 	while (true) {
 		const next = reader.readCodePoint();
 		if (next === false) {
-			return [TokenType.String, reader.representationString(), ...reader.representation(), { value: result }];
+			const representation = reader.representation();
+			ctx.onParseError({
+				message: 'Unexpected EOF while consuming a string token.',
+				start: representation[0],
+				end: representation[1],
+				state: [
+					'4.3.5. Consume a string token',
+					'Unexpected EOF',
+				],
+			});
+
+			return [TokenType.String, reader.representationString(), ...representation, { value: result }];
 		}
 
 		if (isNewLine(next)) {
+			{
+				const representation = reader.representation();
+				ctx.onParseError({
+					message: 'Unexpected newline while consuming a string token.',
+					start: representation[0],
+					end: representation[1],
+					state: [
+						'4.3.5. Consume a string token',
+						'Unexpected newline',
+					],
+				});
+			}
+
 			reader.unreadCodePoint();
 			return [TokenType.BadString, reader.representationString(), ...reader.representation(), undefined];
 		}

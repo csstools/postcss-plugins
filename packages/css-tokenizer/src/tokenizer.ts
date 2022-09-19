@@ -3,7 +3,7 @@ import { checkIfThreeCodePointsWouldStartAnIdentSequence } from './checks/three-
 import { checkIfThreeCodePointsWouldStartANumber } from './checks/three-code-points-would-start-number';
 import { checkIfTwoCodePointsStartAComment } from './checks/two-code-points-start-comment';
 import { checkIfThreeCodePointsWouldStartCDC } from './checks/three-code-points-would-start-cdc';
-import { APOSTROPHE, COLON, COMMA, COMMERCIAL_AT, FULL_STOP, HYPHEN_MINUS, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, NUMBER_SIGN, PLUS_SIGN, QUOTATION_MARK, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON } from './code-points/code-points';
+import { APOSTROPHE, COLON, COMMA, COMMERCIAL_AT, FULL_STOP, HYPHEN_MINUS, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, NUMBER_SIGN, PLUS_SIGN, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON } from './code-points/code-points';
 import { isDigitCodePoint, isIdentStartCodePoint, isWhitespace } from './code-points/ranges';
 import { consumeComment } from './consume/comment';
 import { consumeHashToken } from './consume/hash-token';
@@ -14,12 +14,14 @@ import { CSSToken, TokenType } from './interfaces/token';
 import { Reader } from './reader';
 import { consumeStringToken } from './consume/string-token';
 import { consumeIdentLikeToken } from './consume/ident-like-token';
+import { checkIfTwoCodePointsAreAValidEscape } from './checks/two-code-points-are-valid-escape';
+import { ParserError } from './interfaces/error';
 
 interface Stringer {
 	valueOf(): string
 }
 
-export function tokenizer(input: { css: Stringer }, options?: { commentsAreTokens?: false, onParseError?: (TokenizerError) => void }) {
+export function tokenizer(input: { css: Stringer }, options?: { commentsAreTokens?: false, onParseError?: (error: ParserError) => void }) {
 	const css = input.css.valueOf();
 
 	const reader = new Reader(css);
@@ -149,6 +151,30 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 
 				return [TokenType.Delim, reader.representationString(), ...reader.representation(), {
 					value: '@',
+				}];
+			}
+
+			case REVERSE_SOLIDUS: {
+				if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
+					return consumeIdentLikeToken(ctx, reader);
+				}
+
+				reader.readCodePoint();
+
+				const representation = reader.representation();
+				ctx.onParseError({
+					message: 'Invalid escape sequence after "\\"',
+					start: representation[0],
+					end: representation[1],
+					state: [
+						'4.3.1. Consume a token',
+						'U+005C REVERSE SOLIDUS (\\)',
+						'The input stream does not start with a valid escape sequence',
+					],
+				});
+
+				return [TokenType.Delim, reader.representationString(), ...representation, {
+					value: '\\',
 				}];
 			}
 
