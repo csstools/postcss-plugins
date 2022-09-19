@@ -3,7 +3,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 {
 	const r = new Reader('12');
-	const number = consumeNumber(r);
+	const number = consumeNumber({}, r);
 
 	assert.deepEqual(
 		number,
@@ -13,7 +13,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 {
 	const r = new Reader('4.01');
-	const number = consumeNumber(r);
+	const number = consumeNumber({}, r);
 
 	assert.deepEqual(
 		number,
@@ -23,7 +23,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 {
 	const r = new Reader('-456.8');
-	const number = consumeNumber(r);
+	const number = consumeNumber({}, r);
 
 	assert.deepEqual(
 		number,
@@ -33,7 +33,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 {
 	const r = new Reader('0.0');
-	const number = consumeNumber(r);
+	const number = consumeNumber({}, r);
 
 	assert.deepEqual(
 		number,
@@ -43,7 +43,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 {
 	const r = new Reader('+0.0');
-	const number = consumeNumber(r);
+	const number = consumeNumber({}, r);
 
 	assert.deepEqual(
 		number,
@@ -53,7 +53,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 {
 	const r = new Reader('-0.0');
-	const number = consumeNumber(r);
+	const number = consumeNumber({}, r);
 
 	assert.deepEqual(
 		number,
@@ -63,7 +63,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 {
 	const r = new Reader('.60');
-	const number = consumeNumber(r);
+	const number = consumeNumber({}, r);
 
 	assert.deepEqual(
 		number,
@@ -73,7 +73,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 {
 	const r = new Reader('10e3');
-	const number = consumeNumber(r);
+	const number = consumeNumber({}, r);
 
 	assert.deepEqual(
 		number,
@@ -83,7 +83,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 {
 	const r = new Reader('-3.4e-2');
-	const number = consumeNumber(r);
+	const number = consumeNumber({}, r);
 
 	assert.deepEqual(
 		number,
@@ -96,7 +96,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 // A result of this is that invalid inputs do return numbers when fed to this algorithm
 {
 	const r = new Reader('12.');
-	const number = consumeNumber(r);
+	const number = consumeNumber({}, r);
 
 	assert.deepEqual(
 		number,
@@ -106,7 +106,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 {
 	const r = new Reader('+-12.2');
-	const number = consumeNumber(r);
+	const number = consumeNumber({}, r);
 
 	assert.deepEqual(
 		number,
@@ -116,7 +116,7 @@ import { Reader, consumeNumber } from '@csstools/css-tokenizer';
 
 {
 	const r = new Reader('12.1.1');
-	const number = consumeNumber(r);
+	const number = consumeNumber({}, r);
 
 	assert.deepEqual(
 		number,

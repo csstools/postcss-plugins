@@ -4,7 +4,7 @@ import { Reader, consumeNumericToken } from '@csstools/css-tokenizer';
 {
 	const r = new Reader('10px');
 
-	const token = consumeNumericToken(r);
+	const token = consumeNumericToken({}, r);
 
 	assert.deepEqual(
 		token,
@@ -25,7 +25,7 @@ import { Reader, consumeNumericToken } from '@csstools/css-tokenizer';
 {
 	const r = new Reader('10%');
 
-	const token = consumeNumericToken(r);
+	const token = consumeNumericToken({}, r);
 
 	assert.deepEqual(
 		token,
@@ -46,7 +46,7 @@ import { Reader, consumeNumericToken } from '@csstools/css-tokenizer';
 {
 	const r = new Reader('-3.4e-2');
 
-	const token = consumeNumericToken(r);
+	const token = consumeNumericToken({}, r);
 
 	assert.deepEqual(
 		token,
@@ -67,7 +67,7 @@ import { Reader, consumeNumericToken } from '@csstools/css-tokenizer';
 {
 	const r = new Reader('-3.4e');
 
-	const token = consumeNumericToken(r);
+	const token = consumeNumericToken({}, r);
 
 	assert.deepEqual(
 		token,
@@ -88,7 +88,7 @@ import { Reader, consumeNumericToken } from '@csstools/css-tokenizer';
 {
 	const r = new Reader('20--foo');
 
-	const token = consumeNumericToken(r);
+	const token = consumeNumericToken({}, r);
 
 	assert.deepEqual(
 		token,

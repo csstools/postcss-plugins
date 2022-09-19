@@ -5,7 +5,7 @@ import { Reader, consumeComment } from '@csstools/css-tokenizer';
 	const r = new Reader('/* a comment */');
 	r.readCodePoint();
 
-	const token = consumeComment(r);
+	const token = consumeComment({}, r);
 
 	assert.deepEqual(
 		token,

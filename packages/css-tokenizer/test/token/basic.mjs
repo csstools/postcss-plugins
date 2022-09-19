@@ -54,7 +54,7 @@ function collectTokens(t) {
 			['ident-token', 'foo', 43, 45, { value: 'foo' }],
 			['colon-token', ':', 46, 46, undefined],
 			['whitespace-token', ' ', 47, 47, undefined],
-			['string-token', '"\\A9 bar"', 48, 56, { value: '© bar' }],
+			['string-token', '"\\A9 bar"', 48, 56, { value: '©bar' }],
 			[')-token', ')', 57, 57, undefined],
 			['whitespace-token', ' ', 58, 58, undefined],
 			['ident-token', 'and', 59, 61, { value: 'and' }],
