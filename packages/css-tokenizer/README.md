@@ -13,3 +13,29 @@ Goals :
 - tokens must have the same interface as the PostCSS tokenizer. This does not mean that tokens will be equivalent or that the tokenizer will have the exact same interface.
 
 This will be a mashup of my previous work on a [CSS tokenizer in Go](https://github.com/romainmenke/css) and the API surface of the PostCSS tokenizer.
+
+Example :
+
+```js
+import { tokenizer } from '@csstools/css-tokenizer';
+
+const myCSS =  `@media only screen and (min-width: 768rem) {
+	.foo {
+		content: 'Some content!' !important;
+	}
+}
+`;
+
+const t = tokenizer({
+	css: myCSS,
+});
+
+while (true) {
+	const token = t.nextToken();
+	if (token[0] === 'EOF-token') {
+		break;
+	}
+
+	console.log(token);
+}
+```

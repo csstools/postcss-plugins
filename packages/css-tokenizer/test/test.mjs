@@ -5,6 +5,8 @@ import './consume/comment-token.mjs';
 import './consume/numeric-token.mjs';
 import './consume/number.mjs';
 import './token/basic.mjs';
+// import './token/bootstrap.mjs';
+// import './token/benchmark.mjs';
 
 function collectTokens(t) {
 	const bag = [];
