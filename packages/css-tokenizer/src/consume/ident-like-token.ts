@@ -26,7 +26,7 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 					continue;
 				}
 
-				const firstNonWhitespace = isWhitespace(peeked2[0]) ? peeked2[0] : peeked2[1];
+				const firstNonWhitespace = isWhitespace(peeked2[0]) ? peeked2[1] : peeked2[0];
 				if (firstNonWhitespace === QUOTATION_MARK || firstNonWhitespace === APOSTROPHE) {
 					for (let i = 0; i < read; i++) {
 						reader.unreadCodePoint();
