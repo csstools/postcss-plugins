@@ -16,11 +16,11 @@ export function checkIfCodePointsMatchURLIdent(ctx: Context, codePoints: Array<n
 		return false;
 	}
 
-	if (codePoints[0] !== r && codePoints[0] !== R) {
+	if (codePoints[1] !== r && codePoints[1] !== R) {
 		return false;
 	}
 
-	if (codePoints[0] !== l && codePoints[0] !== L) {
+	if (codePoints[2] !== l && codePoints[2] !== L) {
 		return false;
 	}
 

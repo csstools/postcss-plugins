@@ -9,7 +9,7 @@ export function checkIfTwoCodePointsStartAComment(ctx: Context, reader: CodePoin
 		return false;
 	}
 
-	if (peeked[1] === ASTERISK) {
+	if (peeked[1] !== ASTERISK) {
 		return false;
 	}
 

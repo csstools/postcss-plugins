@@ -77,8 +77,6 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 			case RIGHT_CURLY_BRACKET:
 				reader.readCodePoint();
 				return [TokenType.CloseCurly, reader.representationString(), ...reader.representation(), undefined];
-			default:
-				break;
 		}
 
 		switch (peeked) {
@@ -177,9 +175,6 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					value: '\\',
 				}];
 			}
-
-			default:
-				break;
 		}
 
 		if (isWhitespace(peeked)) {
