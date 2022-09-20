@@ -36,6 +36,51 @@ URL( h )\
 {
 	const t = tokenizer({
 		css: `
+url(\
+https://\
+example.com\
+/some-path/\
+?query=param\
+&more-query=params\
+)\
+`,
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['whitespace-token', '\n', 0, 0, undefined],
+			[
+				'url-token',
+				'url(https://example.com/some-path/?query=param&more-query=params)',
+				1,
+				65,
+				{
+					value: 'https://example.com/some-path/?query=param&more-query=params',
+				},
+			],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: 'url(https://example.com a',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['bad-url-token', 'url(https://example.com a', 0, 24, undefined],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: `
 url( 'single-quoted' )\
 url( "double-quoted" )\
 url( 'mix-quoted" ' )\
