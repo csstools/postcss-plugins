@@ -3,6 +3,10 @@ import { bootstrapTokens } from './bootstrap-tokens.mjs';
 import assert from 'assert';
 import fs from 'fs';
 
+// TODO : delete me
+// I do not want to test against bootstrap, but I do want a big bunch of valid CSS as a temporary test corpus.
+// This makes the impact of changes and fixes more visible while writing more tests
+
 function collectTokens(t) {
 	const bag = [];
 	// eslint-disable-next-line no-constant-condition
