@@ -112,7 +112,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 				}
 
 				if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
-					// return consumeIdentLike...
+					return consumeIdentLikeToken(ctx, reader);
 				}
 
 				reader.readCodePoint();

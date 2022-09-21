@@ -253,10 +253,7 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 		],
 		[
 			'-a',
-			[
-				['delim-token', '-', 0, 0, { value: '-' }],
-				['ident-token', 'a', 1, 1, { value: 'a' }],
-			],
+			[['ident-token', '-a', 0, 1, { value: '-a' }]],
 		],
 		[
 			'_a',

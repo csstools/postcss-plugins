@@ -56,30 +56,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		237,
-		237,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		238,
-		238,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-blue",
-		239,
+		"--bs-blue",
+		237,
 		245,
 		{
-			"value": "bs-blue"
+			"value": "--bs-blue"
 		}
 	],
 	[
@@ -107,30 +89,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		255,
-		255,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		256,
-		256,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-indigo",
-		257,
+		"--bs-indigo",
+		255,
 		265,
 		{
-			"value": "bs-indigo"
+			"value": "--bs-indigo"
 		}
 	],
 	[
@@ -158,30 +122,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		275,
-		275,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		276,
-		276,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-purple",
-		277,
+		"--bs-purple",
+		275,
 		285,
 		{
-			"value": "bs-purple"
+			"value": "--bs-purple"
 		}
 	],
 	[
@@ -209,30 +155,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		295,
-		295,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		296,
-		296,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pink",
-		297,
+		"--bs-pink",
+		295,
 		303,
 		{
-			"value": "bs-pink"
+			"value": "--bs-pink"
 		}
 	],
 	[
@@ -260,30 +188,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		313,
-		313,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		314,
-		314,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-red",
-		315,
+		"--bs-red",
+		313,
 		320,
 		{
-			"value": "bs-red"
+			"value": "--bs-red"
 		}
 	],
 	[
@@ -311,30 +221,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		330,
-		330,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		331,
-		331,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-orange",
-		332,
+		"--bs-orange",
+		330,
 		340,
 		{
-			"value": "bs-orange"
+			"value": "--bs-orange"
 		}
 	],
 	[
@@ -362,30 +254,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		350,
-		350,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		351,
-		351,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-yellow",
-		352,
+		"--bs-yellow",
+		350,
 		360,
 		{
-			"value": "bs-yellow"
+			"value": "--bs-yellow"
 		}
 	],
 	[
@@ -413,30 +287,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		370,
-		370,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		371,
-		371,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-green",
-		372,
+		"--bs-green",
+		370,
 		379,
 		{
-			"value": "bs-green"
+			"value": "--bs-green"
 		}
 	],
 	[
@@ -464,30 +320,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		389,
-		389,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		390,
-		390,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-teal",
-		391,
+		"--bs-teal",
+		389,
 		397,
 		{
-			"value": "bs-teal"
+			"value": "--bs-teal"
 		}
 	],
 	[
@@ -515,30 +353,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		407,
-		407,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		408,
-		408,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-cyan",
-		409,
+		"--bs-cyan",
+		407,
 		415,
 		{
-			"value": "bs-cyan"
+			"value": "--bs-cyan"
 		}
 	],
 	[
@@ -566,30 +386,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		425,
-		425,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		426,
-		426,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-black",
-		427,
+		"--bs-black",
+		425,
 		434,
 		{
-			"value": "bs-black"
+			"value": "--bs-black"
 		}
 	],
 	[
@@ -617,30 +419,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		441,
-		441,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		442,
-		442,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-white",
-		443,
+		"--bs-white",
+		441,
 		450,
 		{
-			"value": "bs-white"
+			"value": "--bs-white"
 		}
 	],
 	[
@@ -668,30 +452,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		457,
-		457,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		458,
-		458,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gray",
-		459,
+		"--bs-gray",
+		457,
 		465,
 		{
-			"value": "bs-gray"
+			"value": "--bs-gray"
 		}
 	],
 	[
@@ -719,30 +485,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		475,
-		475,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		476,
-		476,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gray-dark",
-		477,
+		"--bs-gray-dark",
+		475,
 		488,
 		{
-			"value": "bs-gray-dark"
+			"value": "--bs-gray-dark"
 		}
 	],
 	[
@@ -770,30 +518,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		498,
-		498,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		499,
-		499,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gray-100",
-		500,
+		"--bs-gray-100",
+		498,
 		510,
 		{
-			"value": "bs-gray-100"
+			"value": "--bs-gray-100"
 		}
 	],
 	[
@@ -821,30 +551,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		520,
-		520,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		521,
-		521,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gray-200",
-		522,
+		"--bs-gray-200",
+		520,
 		532,
 		{
-			"value": "bs-gray-200"
+			"value": "--bs-gray-200"
 		}
 	],
 	[
@@ -872,30 +584,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		542,
-		542,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		543,
-		543,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gray-300",
-		544,
+		"--bs-gray-300",
+		542,
 		554,
 		{
-			"value": "bs-gray-300"
+			"value": "--bs-gray-300"
 		}
 	],
 	[
@@ -923,30 +617,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		564,
-		564,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		565,
-		565,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gray-400",
-		566,
+		"--bs-gray-400",
+		564,
 		576,
 		{
-			"value": "bs-gray-400"
+			"value": "--bs-gray-400"
 		}
 	],
 	[
@@ -974,30 +650,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		586,
-		586,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		587,
-		587,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gray-500",
-		588,
+		"--bs-gray-500",
+		586,
 		598,
 		{
-			"value": "bs-gray-500"
+			"value": "--bs-gray-500"
 		}
 	],
 	[
@@ -1025,30 +683,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		608,
-		608,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		609,
-		609,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gray-600",
-		610,
+		"--bs-gray-600",
+		608,
 		620,
 		{
-			"value": "bs-gray-600"
+			"value": "--bs-gray-600"
 		}
 	],
 	[
@@ -1076,30 +716,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		630,
-		630,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		631,
-		631,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gray-700",
-		632,
+		"--bs-gray-700",
+		630,
 		642,
 		{
-			"value": "bs-gray-700"
+			"value": "--bs-gray-700"
 		}
 	],
 	[
@@ -1127,30 +749,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		652,
-		652,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		653,
-		653,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gray-800",
-		654,
+		"--bs-gray-800",
+		652,
 		664,
 		{
-			"value": "bs-gray-800"
+			"value": "--bs-gray-800"
 		}
 	],
 	[
@@ -1178,30 +782,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		674,
-		674,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		675,
-		675,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gray-900",
-		676,
+		"--bs-gray-900",
+		674,
 		686,
 		{
-			"value": "bs-gray-900"
+			"value": "--bs-gray-900"
 		}
 	],
 	[
@@ -1229,30 +815,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		696,
-		696,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		697,
-		697,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-primary",
-		698,
+		"--bs-primary",
+		696,
 		707,
 		{
-			"value": "bs-primary"
+			"value": "--bs-primary"
 		}
 	],
 	[
@@ -1280,30 +848,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		717,
-		717,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		718,
-		718,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-secondary",
-		719,
+		"--bs-secondary",
+		717,
 		730,
 		{
-			"value": "bs-secondary"
+			"value": "--bs-secondary"
 		}
 	],
 	[
@@ -1331,30 +881,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		740,
-		740,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		741,
-		741,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-success",
-		742,
+		"--bs-success",
+		740,
 		751,
 		{
-			"value": "bs-success"
+			"value": "--bs-success"
 		}
 	],
 	[
@@ -1382,30 +914,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		761,
-		761,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		762,
-		762,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-info",
-		763,
+		"--bs-info",
+		761,
 		769,
 		{
-			"value": "bs-info"
+			"value": "--bs-info"
 		}
 	],
 	[
@@ -1433,30 +947,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		779,
-		779,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		780,
-		780,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-warning",
-		781,
+		"--bs-warning",
+		779,
 		790,
 		{
-			"value": "bs-warning"
+			"value": "--bs-warning"
 		}
 	],
 	[
@@ -1484,30 +980,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		800,
-		800,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		801,
-		801,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-danger",
-		802,
+		"--bs-danger",
+		800,
 		810,
 		{
-			"value": "bs-danger"
+			"value": "--bs-danger"
 		}
 	],
 	[
@@ -1535,30 +1013,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		820,
-		820,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		821,
-		821,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-light",
-		822,
+		"--bs-light",
+		820,
 		829,
 		{
-			"value": "bs-light"
+			"value": "--bs-light"
 		}
 	],
 	[
@@ -1586,30 +1046,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		839,
-		839,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		840,
-		840,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dark",
-		841,
+		"--bs-dark",
+		839,
 		847,
 		{
-			"value": "bs-dark"
+			"value": "--bs-dark"
 		}
 	],
 	[
@@ -1637,30 +1079,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		857,
-		857,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		858,
-		858,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-primary-rgb",
-		859,
+		"--bs-primary-rgb",
+		857,
 		872,
 		{
-			"value": "bs-primary-rgb"
+			"value": "--bs-primary-rgb"
 		}
 	],
 	[
@@ -1722,30 +1146,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		885,
-		885,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		886,
-		886,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-secondary-rgb",
-		887,
+		"--bs-secondary-rgb",
+		885,
 		902,
 		{
-			"value": "bs-secondary-rgb"
+			"value": "--bs-secondary-rgb"
 		}
 	],
 	[
@@ -1807,30 +1213,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		916,
-		916,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		917,
-		917,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-success-rgb",
-		918,
+		"--bs-success-rgb",
+		916,
 		931,
 		{
-			"value": "bs-success-rgb"
+			"value": "--bs-success-rgb"
 		}
 	],
 	[
@@ -1892,30 +1280,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		943,
-		943,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		944,
-		944,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-info-rgb",
-		945,
+		"--bs-info-rgb",
+		943,
 		955,
 		{
-			"value": "bs-info-rgb"
+			"value": "--bs-info-rgb"
 		}
 	],
 	[
@@ -1977,30 +1347,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		968,
-		968,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		969,
-		969,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-warning-rgb",
-		970,
+		"--bs-warning-rgb",
+		968,
 		983,
 		{
-			"value": "bs-warning-rgb"
+			"value": "--bs-warning-rgb"
 		}
 	],
 	[
@@ -2062,30 +1414,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		995,
-		995,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		996,
-		996,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-danger-rgb",
-		997,
+		"--bs-danger-rgb",
+		995,
 		1009,
 		{
-			"value": "bs-danger-rgb"
+			"value": "--bs-danger-rgb"
 		}
 	],
 	[
@@ -2147,30 +1481,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1021,
-		1021,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1022,
-		1022,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-light-rgb",
-		1023,
+		"--bs-light-rgb",
+		1021,
 		1034,
 		{
-			"value": "bs-light-rgb"
+			"value": "--bs-light-rgb"
 		}
 	],
 	[
@@ -2232,30 +1548,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1048,
-		1048,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1049,
-		1049,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dark-rgb",
-		1050,
+		"--bs-dark-rgb",
+		1048,
 		1060,
 		{
-			"value": "bs-dark-rgb"
+			"value": "--bs-dark-rgb"
 		}
 	],
 	[
@@ -2317,30 +1615,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1071,
-		1071,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1072,
-		1072,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-white-rgb",
-		1073,
+		"--bs-white-rgb",
+		1071,
 		1084,
 		{
-			"value": "bs-white-rgb"
+			"value": "--bs-white-rgb"
 		}
 	],
 	[
@@ -2402,30 +1682,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1098,
-		1098,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1099,
-		1099,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-black-rgb",
-		1100,
+		"--bs-black-rgb",
+		1098,
 		1111,
 		{
-			"value": "bs-black-rgb"
+			"value": "--bs-black-rgb"
 		}
 	],
 	[
@@ -2487,30 +1749,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1119,
-		1119,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1120,
-		1120,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-color-rgb",
-		1121,
+		"--bs-body-color-rgb",
+		1119,
 		1137,
 		{
-			"value": "bs-body-color-rgb"
+			"value": "--bs-body-color-rgb"
 		}
 	],
 	[
@@ -2572,30 +1816,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1148,
-		1148,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1149,
-		1149,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-bg-rgb",
-		1150,
+		"--bs-body-bg-rgb",
+		1148,
 		1163,
 		{
-			"value": "bs-body-bg-rgb"
+			"value": "--bs-body-bg-rgb"
 		}
 	],
 	[
@@ -2657,30 +1883,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1177,
-		1177,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1178,
-		1178,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-font-sans-serif",
-		1179,
+		"--bs-font-sans-serif",
+		1177,
 		1196,
 		{
-			"value": "bs-font-sans-serif"
+			"value": "--bs-font-sans-serif"
 		}
 	],
 	[
@@ -2707,21 +1915,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1208,
-		1208,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"apple-system",
-		1209,
+		"-apple-system",
+		1208,
 		1220,
 		{
-			"value": "apple-system"
+			"value": "-apple-system"
 		}
 	],
 	[
@@ -2908,30 +2107,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1378,
-		1378,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1379,
-		1379,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-font-monospace",
-		1380,
+		"--bs-font-monospace",
+		1378,
 		1396,
 		{
-			"value": "bs-font-monospace"
+			"value": "--bs-font-monospace"
 		}
 	],
 	[
@@ -3054,30 +2235,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1477,
-		1477,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1478,
-		1478,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gradient",
-		1479,
+		"--bs-gradient",
+		1477,
 		1489,
 		{
-			"value": "bs-gradient"
+			"value": "--bs-gradient"
 		}
 	],
 	[
@@ -3346,30 +2509,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1566,
-		1566,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1567,
-		1567,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-font-family",
-		1568,
+		"--bs-body-font-family",
+		1566,
 		1586,
 		{
-			"value": "bs-body-font-family"
+			"value": "--bs-body-font-family"
 		}
 	],
 	[
@@ -3389,30 +2534,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		1592,
-		1592,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1593,
-		1593,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-font-sans-serif",
-		1594,
+		"--bs-font-sans-serif",
+		1592,
 		1611,
 		{
-			"value": "bs-font-sans-serif"
+			"value": "--bs-font-sans-serif"
 		}
 	],
 	[
@@ -3430,30 +2557,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1614,
-		1614,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1615,
-		1615,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-font-size",
-		1616,
+		"--bs-body-font-size",
+		1614,
 		1632,
 		{
-			"value": "bs-body-font-size"
+			"value": "--bs-body-font-size"
 		}
 	],
 	[
@@ -3482,30 +2591,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1639,
-		1639,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1640,
-		1640,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-font-weight",
-		1641,
+		"--bs-body-font-weight",
+		1639,
 		1659,
 		{
-			"value": "bs-body-font-weight"
+			"value": "--bs-body-font-weight"
 		}
 	],
 	[
@@ -3533,30 +2624,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1665,
-		1665,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1666,
-		1666,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-line-height",
-		1667,
+		"--bs-body-line-height",
+		1665,
 		1685,
 		{
-			"value": "bs-body-line-height"
+			"value": "--bs-body-line-height"
 		}
 	],
 	[
@@ -3584,30 +2657,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1691,
-		1691,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1692,
-		1692,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-color",
-		1693,
+		"--bs-body-color",
+		1691,
 		1705,
 		{
-			"value": "bs-body-color"
+			"value": "--bs-body-color"
 		}
 	],
 	[
@@ -3635,30 +2690,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1715,
-		1715,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1716,
-		1716,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-bg",
-		1717,
+		"--bs-body-bg",
+		1715,
 		1726,
 		{
-			"value": "bs-body-bg"
+			"value": "--bs-body-bg"
 		}
 	],
 	[
@@ -3686,30 +2723,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1733,
-		1733,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1734,
-		1734,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-width",
-		1735,
+		"--bs-border-width",
+		1733,
 		1749,
 		{
-			"value": "bs-border-width"
+			"value": "--bs-border-width"
 		}
 	],
 	[
@@ -3738,30 +2757,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1755,
-		1755,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1756,
-		1756,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-style",
-		1757,
+		"--bs-border-style",
+		1755,
 		1771,
 		{
-			"value": "bs-border-style"
+			"value": "--bs-border-style"
 		}
 	],
 	[
@@ -3788,30 +2789,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1779,
-		1779,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1780,
-		1780,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color",
-		1781,
+		"--bs-border-color",
+		1779,
 		1795,
 		{
-			"value": "bs-border-color"
+			"value": "--bs-border-color"
 		}
 	],
 	[
@@ -3839,30 +2822,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1805,
-		1805,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1806,
-		1806,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color-translucent",
-		1807,
+		"--bs-border-color-translucent",
+		1805,
 		1833,
 		{
-			"value": "bs-border-color-translucent"
+			"value": "--bs-border-color-translucent"
 		}
 	],
 	[
@@ -3978,30 +2943,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1856,
-		1856,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1857,
-		1857,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius",
-		1858,
+		"--bs-border-radius",
+		1856,
 		1873,
 		{
-			"value": "bs-border-radius"
+			"value": "--bs-border-radius"
 		}
 	],
 	[
@@ -4030,30 +2977,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1884,
-		1884,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1885,
-		1885,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius-sm",
-		1886,
+		"--bs-border-radius-sm",
+		1884,
 		1904,
 		{
-			"value": "bs-border-radius-sm"
+			"value": "--bs-border-radius-sm"
 		}
 	],
 	[
@@ -4082,30 +3011,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1914,
-		1914,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1915,
-		1915,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius-lg",
-		1916,
+		"--bs-border-radius-lg",
+		1914,
 		1934,
 		{
-			"value": "bs-border-radius-lg"
+			"value": "--bs-border-radius-lg"
 		}
 	],
 	[
@@ -4134,30 +3045,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1943,
-		1943,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1944,
-		1944,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius-xl",
-		1945,
+		"--bs-border-radius-xl",
+		1943,
 		1963,
 		{
-			"value": "bs-border-radius-xl"
+			"value": "--bs-border-radius-xl"
 		}
 	],
 	[
@@ -4186,30 +3079,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1970,
-		1970,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1971,
-		1971,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius-2xl",
-		1972,
+		"--bs-border-radius-2xl",
+		1970,
 		1991,
 		{
-			"value": "bs-border-radius-2xl"
+			"value": "--bs-border-radius-2xl"
 		}
 	],
 	[
@@ -4238,30 +3113,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		1998,
-		1998,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		1999,
-		1999,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius-pill",
-		2000,
+		"--bs-border-radius-pill",
+		1998,
 		2020,
 		{
-			"value": "bs-border-radius-pill"
+			"value": "--bs-border-radius-pill"
 		}
 	],
 	[
@@ -4290,30 +3147,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		2028,
-		2028,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		2029,
-		2029,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-link-color",
-		2030,
+		"--bs-link-color",
+		2028,
 		2042,
 		{
-			"value": "bs-link-color"
+			"value": "--bs-link-color"
 		}
 	],
 	[
@@ -4341,30 +3180,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		2052,
-		2052,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		2053,
-		2053,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-link-hover-color",
-		2054,
+		"--bs-link-hover-color",
+		2052,
 		2072,
 		{
-			"value": "bs-link-hover-color"
+			"value": "--bs-link-hover-color"
 		}
 	],
 	[
@@ -4392,30 +3213,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		2082,
-		2082,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		2083,
-		2083,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-code-color",
-		2084,
+		"--bs-code-color",
+		2082,
 		2096,
 		{
-			"value": "bs-code-color"
+			"value": "--bs-code-color"
 		}
 	],
 	[
@@ -4443,30 +3246,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		2106,
-		2106,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		2107,
-		2107,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-highlight-bg",
-		2108,
+		"--bs-highlight-bg",
+		2106,
 		2122,
 		{
-			"value": "bs-highlight-bg"
+			"value": "--bs-highlight-bg"
 		}
 	],
 	[
@@ -4800,30 +3585,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		2279,
-		2279,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		2280,
-		2280,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-font-family",
-		2281,
+		"--bs-body-font-family",
+		2279,
 		2299,
 		{
-			"value": "bs-body-font-family"
+			"value": "--bs-body-font-family"
 		}
 	],
 	[
@@ -4866,30 +3633,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		2316,
-		2316,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		2317,
-		2317,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-font-size",
-		2318,
+		"--bs-body-font-size",
+		2316,
 		2334,
 		{
-			"value": "bs-body-font-size"
+			"value": "--bs-body-font-size"
 		}
 	],
 	[
@@ -4932,30 +3681,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		2353,
-		2353,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		2354,
-		2354,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-font-weight",
-		2355,
+		"--bs-body-font-weight",
+		2353,
 		2373,
 		{
-			"value": "bs-body-font-weight"
+			"value": "--bs-body-font-weight"
 		}
 	],
 	[
@@ -4998,30 +3729,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		2392,
-		2392,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		2393,
-		2393,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-line-height",
-		2394,
+		"--bs-body-line-height",
+		2392,
 		2412,
 		{
-			"value": "bs-body-line-height"
+			"value": "--bs-body-line-height"
 		}
 	],
 	[
@@ -5064,30 +3777,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		2425,
-		2425,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		2426,
-		2426,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-color",
-		2427,
+		"--bs-body-color",
+		2425,
 		2439,
 		{
-			"value": "bs-body-color"
+			"value": "--bs-body-color"
 		}
 	],
 	[
@@ -5130,30 +3825,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		2457,
-		2457,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		2458,
-		2458,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-text-align",
-		2459,
+		"--bs-body-text-align",
+		2457,
 		2476,
 		{
-			"value": "bs-body-text-align"
+			"value": "--bs-body-text-align"
 		}
 	],
 	[
@@ -5196,30 +3873,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		2500,
-		2500,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		2501,
-		2501,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-bg",
-		2502,
+		"--bs-body-bg",
+		2500,
 		2511,
 		{
-			"value": "bs-body-bg"
+			"value": "--bs-body-bg"
 		}
 	],
 	[
@@ -5237,21 +3896,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		2514,
-		2514,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-text-size-adjust",
-		2515,
+		"-webkit-text-size-adjust",
+		2514,
 		2537,
 		{
-			"value": "webkit-text-size-adjust"
+			"value": "-webkit-text-size-adjust"
 		}
 	],
 	[
@@ -5278,21 +3928,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		2544,
-		2544,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-tap-highlight-color",
-		2545,
+		"-webkit-tap-highlight-color",
+		2544,
 		2570,
 		{
-			"value": "webkit-tap-highlight-color"
+			"value": "-webkit-tap-highlight-color"
 		}
 	],
 	[
@@ -7269,21 +5910,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		3215,
-		3215,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-text-decoration",
-		3216,
+		"-webkit-text-decoration",
+		3215,
 		3237,
 		{
-			"value": "webkit-text-decoration"
+			"value": "-webkit-text-decoration"
 		}
 	],
 	[
@@ -7406,21 +6038,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		3301,
-		3301,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-text-decoration-skip-ink",
-		3302,
+		"-webkit-text-decoration-skip-ink",
+		3301,
 		3332,
 		{
-			"value": "webkit-text-decoration-skip-ink"
+			"value": "-webkit-text-decoration-skip-ink"
 		}
 	],
 	[
@@ -8390,30 +7013,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		3728,
-		3728,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		3729,
-		3729,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-highlight-bg",
-		3730,
+		"--bs-highlight-bg",
+		3728,
 		3744,
 		{
-			"value": "bs-highlight-bg"
+			"value": "--bs-highlight-bg"
 		}
 	],
 	[
@@ -8735,30 +7340,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		3871,
-		3871,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		3872,
-		3872,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-link-color",
-		3873,
+		"--bs-link-color",
+		3871,
 		3885,
 		{
-			"value": "bs-link-color"
+			"value": "--bs-link-color"
 		}
 	],
 	[
@@ -8865,30 +7452,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		3932,
-		3932,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		3933,
-		3933,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-link-hover-color",
-		3934,
+		"--bs-link-hover-color",
+		3932,
 		3952,
 		{
-			"value": "bs-link-hover-color"
+			"value": "--bs-link-hover-color"
 		}
 	],
 	[
@@ -9291,30 +7860,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		4084,
-		4084,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		4085,
-		4085,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-font-monospace",
-		4086,
+		"--bs-font-monospace",
+		4084,
 		4102,
 		{
-			"value": "bs-font-monospace"
+			"value": "--bs-font-monospace"
 		}
 	],
 	[
@@ -9750,30 +8301,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		4291,
-		4291,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		4292,
-		4292,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-code-color",
-		4293,
+		"--bs-code-color",
+		4291,
 		4305,
 		{
-			"value": "bs-code-color"
+			"value": "--bs-code-color"
 		}
 	],
 	[
@@ -10016,30 +8549,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		4406,
-		4406,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		4407,
-		4407,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-bg",
-		4408,
+		"--bs-body-bg",
+		4406,
 		4417,
 		{
-			"value": "bs-body-bg"
+			"value": "--bs-body-bg"
 		}
 	],
 	[
@@ -10082,30 +8597,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		4441,
-		4441,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		4442,
-		4442,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-color",
-		4443,
+		"--bs-body-color",
+		4441,
 		4455,
 		{
-			"value": "bs-body-color"
+			"value": "--bs-body-color"
 		}
 	],
 	[
@@ -10697,21 +9194,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		4725,
-		4725,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-match-parent",
-		4726,
+		"-webkit-match-parent",
+		4725,
 		4744,
 		{
-			"value": "webkit-match-parent"
+			"value": "-webkit-match-parent"
 		}
 	],
 	[
@@ -11939,21 +10427,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		5243,
-		5243,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-calendar-picker-indicator",
-		5244,
+		"-webkit-calendar-picker-indicator",
+		5243,
 		5275,
 		{
-			"value": "webkit-calendar-picker-indicator"
+			"value": "-webkit-calendar-picker-indicator"
 		}
 	],
 	[
@@ -12174,21 +10653,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		5348,
-		5348,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-appearance",
-		5349,
+		"-webkit-appearance",
+		5348,
 		5365,
 		{
-			"value": "webkit-appearance"
+			"value": "-webkit-appearance"
 		}
 	],
 	[
@@ -12577,21 +11047,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		5499,
-		5499,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-focus-inner",
-		5500,
+		"-moz-focus-inner",
+		5499,
 		5514,
 		{
-			"value": "moz-focus-inner"
+			"value": "-moz-focus-inner"
 		}
 	],
 	[
@@ -13327,21 +11788,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		5802,
-		5802,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-datetime-edit-day-field",
-		5803,
+		"-webkit-datetime-edit-day-field",
+		5802,
 		5832,
 		{
-			"value": "webkit-datetime-edit-day-field"
+			"value": "-webkit-datetime-edit-day-field"
 		}
 	],
 	[
@@ -13366,21 +11818,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		5836,
-		5836,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-datetime-edit-fields-wrapper",
-		5837,
+		"-webkit-datetime-edit-fields-wrapper",
+		5836,
 		5871,
 		{
-			"value": "webkit-datetime-edit-fields-wrapper"
+			"value": "-webkit-datetime-edit-fields-wrapper"
 		}
 	],
 	[
@@ -13405,21 +11848,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		5875,
-		5875,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-datetime-edit-hour-field",
-		5876,
+		"-webkit-datetime-edit-hour-field",
+		5875,
 		5906,
 		{
-			"value": "webkit-datetime-edit-hour-field"
+			"value": "-webkit-datetime-edit-hour-field"
 		}
 	],
 	[
@@ -13444,21 +11878,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		5910,
-		5910,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-datetime-edit-minute",
-		5911,
+		"-webkit-datetime-edit-minute",
+		5910,
 		5937,
 		{
-			"value": "webkit-datetime-edit-minute"
+			"value": "-webkit-datetime-edit-minute"
 		}
 	],
 	[
@@ -13483,21 +11908,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		5941,
-		5941,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-datetime-edit-month-field",
-		5942,
+		"-webkit-datetime-edit-month-field",
+		5941,
 		5973,
 		{
-			"value": "webkit-datetime-edit-month-field"
+			"value": "-webkit-datetime-edit-month-field"
 		}
 	],
 	[
@@ -13522,21 +11938,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		5977,
-		5977,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-datetime-edit-text",
-		5978,
+		"-webkit-datetime-edit-text",
+		5977,
 		6002,
 		{
-			"value": "webkit-datetime-edit-text"
+			"value": "-webkit-datetime-edit-text"
 		}
 	],
 	[
@@ -13561,21 +11968,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		6006,
-		6006,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-datetime-edit-year-field",
-		6007,
+		"-webkit-datetime-edit-year-field",
+		6006,
 		6037,
 		{
-			"value": "webkit-datetime-edit-year-field"
+			"value": "-webkit-datetime-edit-year-field"
 		}
 	],
 	[
@@ -13633,21 +12031,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		6051,
-		6051,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-inner-spin-button",
-		6052,
+		"-webkit-inner-spin-button",
+		6051,
 		6075,
 		{
-			"value": "webkit-inner-spin-button"
+			"value": "-webkit-inner-spin-button"
 		}
 	],
 	[
@@ -13772,21 +12161,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		6123,
-		6123,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-appearance",
-		6124,
+		"-webkit-appearance",
+		6123,
 		6140,
 		{
-			"value": "webkit-appearance"
+			"value": "-webkit-appearance"
 		}
 	],
 	[
@@ -13827,21 +12207,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		6154,
-		6154,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-search-decoration",
-		6155,
+		"-webkit-search-decoration",
+		6154,
 		6178,
 		{
-			"value": "webkit-search-decoration"
+			"value": "-webkit-search-decoration"
 		}
 	],
 	[
@@ -13852,21 +12223,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		6180,
-		6180,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-appearance",
-		6181,
+		"-webkit-appearance",
+		6180,
 		6197,
 		{
-			"value": "webkit-appearance"
+			"value": "-webkit-appearance"
 		}
 	],
 	[
@@ -13907,21 +12269,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		6206,
-		6206,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-color-swatch-wrapper",
-		6207,
+		"-webkit-color-swatch-wrapper",
+		6206,
 		6233,
 		{
-			"value": "webkit-color-swatch-wrapper"
+			"value": "-webkit-color-swatch-wrapper"
 		}
 	],
 	[
@@ -13979,21 +12332,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		6247,
-		6247,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-file-upload-button",
-		6248,
+		"-webkit-file-upload-button",
+		6247,
 		6272,
 		{
-			"value": "webkit-file-upload-button"
+			"value": "-webkit-file-upload-button"
 		}
 	],
 	[
@@ -14036,21 +12380,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		6287,
-		6287,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-appearance",
-		6288,
+		"-webkit-appearance",
+		6287,
 		6304,
 		{
-			"value": "webkit-appearance"
+			"value": "-webkit-appearance"
 		}
 	],
 	[
@@ -14139,21 +12474,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		6349,
-		6349,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-appearance",
-		6350,
+		"-webkit-appearance",
+		6349,
 		6366,
 		{
-			"value": "webkit-appearance"
+			"value": "-webkit-appearance"
 		}
 	],
 	[
@@ -17489,30 +15815,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		7908,
-		7908,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		7909,
-		7909,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color",
-		7910,
+		"--bs-border-color",
+		7908,
 		7924,
 		{
-			"value": "bs-border-color"
+			"value": "--bs-border-color"
 		}
 	],
 	[
@@ -18044,30 +16352,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		8197,
-		8197,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		8198,
-		8198,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		8199,
+		"--bs-gutter-x",
+		8197,
 		8209,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -18096,30 +16386,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		8218,
-		8218,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		8219,
-		8219,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		8220,
+		"--bs-gutter-y",
+		8218,
 		8230,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -18213,30 +16485,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		8268,
-		8268,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		8269,
-		8269,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		8270,
+		"--bs-gutter-x",
+		8268,
 		8280,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -18328,30 +16582,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		8311,
-		8311,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		8312,
-		8312,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		8313,
+		"--bs-gutter-x",
+		8311,
 		8323,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -19523,30 +17759,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		8852,
-		8852,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		8853,
-		8853,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		8854,
+		"--bs-gutter-x",
+		8852,
 		8864,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -19575,30 +17793,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		8873,
-		8873,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		8874,
-		8874,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		8875,
+		"--bs-gutter-y",
+		8873,
 		8885,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -19757,30 +17957,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		8942,
-		8942,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		8943,
-		8943,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		8944,
+		"--bs-gutter-y",
+		8942,
 		8954,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -19872,30 +18054,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		8986,
-		8986,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		8987,
-		8987,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		8988,
+		"--bs-gutter-x",
+		8986,
 		8998,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -19987,30 +18151,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		9029,
-		9029,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		9030,
-		9030,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		9031,
+		"--bs-gutter-x",
+		9029,
 		9041,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -20209,30 +18355,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		9115,
-		9115,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		9116,
-		9116,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		9117,
+		"--bs-gutter-x",
+		9115,
 		9127,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -20324,30 +18452,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		9158,
-		9158,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		9159,
-		9159,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		9160,
+		"--bs-gutter-x",
+		9158,
 		9170,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -20430,30 +18540,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		9194,
-		9194,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		9195,
-		9195,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		9196,
+		"--bs-gutter-y",
+		9194,
 		9206,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -23825,30 +21917,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		10371,
-		10371,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		10372,
-		10372,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		10373,
+		"--bs-gutter-x",
+		10371,
 		10383,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -23926,30 +22000,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		10398,
-		10398,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		10399,
-		10399,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		10400,
+		"--bs-gutter-y",
+		10398,
 		10410,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -24027,30 +22083,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		10425,
-		10425,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		10426,
-		10426,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		10427,
+		"--bs-gutter-x",
+		10425,
 		10437,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -24129,30 +22167,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		10458,
-		10458,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		10459,
-		10459,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		10460,
+		"--bs-gutter-y",
+		10458,
 		10470,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -24231,30 +22251,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		10491,
-		10491,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		10492,
-		10492,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		10493,
+		"--bs-gutter-x",
+		10491,
 		10503,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -24333,30 +22335,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		10523,
-		10523,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		10524,
-		10524,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		10525,
+		"--bs-gutter-y",
+		10523,
 		10535,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -24435,30 +22419,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		10555,
-		10555,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		10556,
-		10556,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		10557,
+		"--bs-gutter-x",
+		10555,
 		10567,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -24537,30 +22503,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		10585,
-		10585,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		10586,
-		10586,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		10587,
+		"--bs-gutter-y",
+		10585,
 		10597,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -24639,30 +22587,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		10615,
-		10615,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		10616,
-		10616,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		10617,
+		"--bs-gutter-x",
+		10615,
 		10627,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -24741,30 +22671,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		10647,
-		10647,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		10648,
-		10648,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		10649,
+		"--bs-gutter-y",
+		10647,
 		10659,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -24843,30 +22755,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		10679,
-		10679,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		10680,
-		10680,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		10681,
+		"--bs-gutter-x",
+		10679,
 		10691,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -24945,30 +22839,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		10709,
-		10709,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		10710,
-		10710,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		10711,
+		"--bs-gutter-y",
+		10709,
 		10721,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -28473,30 +26349,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		12044,
-		12044,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		12045,
-		12045,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		12046,
+		"--bs-gutter-x",
+		12044,
 		12056,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -28574,30 +26432,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		12077,
-		12077,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		12078,
-		12078,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		12079,
+		"--bs-gutter-y",
+		12077,
 		12089,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -28675,30 +26515,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		12110,
-		12110,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		12111,
-		12111,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		12112,
+		"--bs-gutter-x",
+		12110,
 		12122,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -28777,30 +26599,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		12149,
-		12149,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		12150,
-		12150,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		12151,
+		"--bs-gutter-y",
+		12149,
 		12161,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -28879,30 +26683,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		12188,
-		12188,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		12189,
-		12189,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		12190,
+		"--bs-gutter-x",
+		12188,
 		12200,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -28981,30 +26767,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		12226,
-		12226,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		12227,
-		12227,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		12228,
+		"--bs-gutter-y",
+		12226,
 		12238,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -29083,30 +26851,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		12264,
-		12264,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		12265,
-		12265,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		12266,
+		"--bs-gutter-x",
+		12264,
 		12276,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -29185,30 +26935,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		12300,
-		12300,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		12301,
-		12301,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		12302,
+		"--bs-gutter-y",
+		12300,
 		12312,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -29287,30 +27019,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		12336,
-		12336,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		12337,
-		12337,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		12338,
+		"--bs-gutter-x",
+		12336,
 		12348,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -29389,30 +27103,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		12374,
-		12374,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		12375,
-		12375,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		12376,
+		"--bs-gutter-y",
+		12374,
 		12386,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -29491,30 +27187,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		12412,
-		12412,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		12413,
-		12413,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		12414,
+		"--bs-gutter-x",
+		12412,
 		12424,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -29593,30 +27271,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		12448,
-		12448,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		12449,
-		12449,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		12450,
+		"--bs-gutter-y",
+		12448,
 		12460,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -33128,30 +30788,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		13784,
-		13784,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		13785,
-		13785,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		13786,
+		"--bs-gutter-x",
+		13784,
 		13796,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -33229,30 +30871,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		13817,
-		13817,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		13818,
-		13818,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		13819,
+		"--bs-gutter-y",
+		13817,
 		13829,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -33330,30 +30954,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		13850,
-		13850,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		13851,
-		13851,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		13852,
+		"--bs-gutter-x",
+		13850,
 		13862,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -33432,30 +31038,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		13889,
-		13889,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		13890,
-		13890,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		13891,
+		"--bs-gutter-y",
+		13889,
 		13901,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -33534,30 +31122,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		13928,
-		13928,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		13929,
-		13929,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		13930,
+		"--bs-gutter-x",
+		13928,
 		13940,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -33636,30 +31206,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		13966,
-		13966,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		13967,
-		13967,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		13968,
+		"--bs-gutter-y",
+		13966,
 		13978,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -33738,30 +31290,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		14004,
-		14004,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		14005,
-		14005,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		14006,
+		"--bs-gutter-x",
+		14004,
 		14016,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -33840,30 +31374,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		14040,
-		14040,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		14041,
-		14041,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		14042,
+		"--bs-gutter-y",
+		14040,
 		14052,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -33942,30 +31458,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		14076,
-		14076,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		14077,
-		14077,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		14078,
+		"--bs-gutter-x",
+		14076,
 		14088,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -34044,30 +31542,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		14114,
-		14114,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		14115,
-		14115,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		14116,
+		"--bs-gutter-y",
+		14114,
 		14126,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -34146,30 +31626,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		14152,
-		14152,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		14153,
-		14153,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		14154,
+		"--bs-gutter-x",
+		14152,
 		14164,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -34248,30 +31710,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		14188,
-		14188,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		14189,
-		14189,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		14190,
+		"--bs-gutter-y",
+		14188,
 		14200,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -37783,30 +35227,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		15524,
-		15524,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		15525,
-		15525,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		15526,
+		"--bs-gutter-x",
+		15524,
 		15536,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -37884,30 +35310,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		15557,
-		15557,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		15558,
-		15558,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		15559,
+		"--bs-gutter-y",
+		15557,
 		15569,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -37985,30 +35393,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		15590,
-		15590,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		15591,
-		15591,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		15592,
+		"--bs-gutter-x",
+		15590,
 		15602,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -38087,30 +35477,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		15629,
-		15629,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		15630,
-		15630,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		15631,
+		"--bs-gutter-y",
+		15629,
 		15641,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -38189,30 +35561,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		15668,
-		15668,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		15669,
-		15669,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		15670,
+		"--bs-gutter-x",
+		15668,
 		15680,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -38291,30 +35645,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		15706,
-		15706,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		15707,
-		15707,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		15708,
+		"--bs-gutter-y",
+		15706,
 		15718,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -38393,30 +35729,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		15744,
-		15744,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		15745,
-		15745,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		15746,
+		"--bs-gutter-x",
+		15744,
 		15756,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -38495,30 +35813,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		15780,
-		15780,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		15781,
-		15781,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		15782,
+		"--bs-gutter-y",
+		15780,
 		15792,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -38597,30 +35897,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		15816,
-		15816,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		15817,
-		15817,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		15818,
+		"--bs-gutter-x",
+		15816,
 		15828,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -38699,30 +35981,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		15854,
-		15854,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		15855,
-		15855,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		15856,
+		"--bs-gutter-y",
+		15854,
 		15866,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -38801,30 +36065,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		15892,
-		15892,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		15893,
-		15893,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		15894,
+		"--bs-gutter-x",
+		15892,
 		15904,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -38903,30 +36149,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		15928,
-		15928,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		15929,
-		15929,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		15930,
+		"--bs-gutter-y",
+		15928,
 		15940,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -42438,30 +39666,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		17265,
-		17265,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		17266,
-		17266,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		17267,
+		"--bs-gutter-x",
+		17265,
 		17277,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -42539,30 +39749,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		17298,
-		17298,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		17299,
-		17299,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		17300,
+		"--bs-gutter-y",
+		17298,
 		17310,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -42640,30 +39832,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		17331,
-		17331,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		17332,
-		17332,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		17333,
+		"--bs-gutter-x",
+		17331,
 		17343,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -42742,30 +39916,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		17370,
-		17370,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		17371,
-		17371,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		17372,
+		"--bs-gutter-y",
+		17370,
 		17382,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -42844,30 +40000,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		17409,
-		17409,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		17410,
-		17410,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		17411,
+		"--bs-gutter-x",
+		17409,
 		17421,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -42946,30 +40084,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		17447,
-		17447,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		17448,
-		17448,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		17449,
+		"--bs-gutter-y",
+		17447,
 		17459,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -43048,30 +40168,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		17485,
-		17485,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		17486,
-		17486,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		17487,
+		"--bs-gutter-x",
+		17485,
 		17497,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -43150,30 +40252,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		17521,
-		17521,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		17522,
-		17522,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		17523,
+		"--bs-gutter-y",
+		17521,
 		17533,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -43252,30 +40336,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		17557,
-		17557,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		17558,
-		17558,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		17559,
+		"--bs-gutter-x",
+		17557,
 		17569,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -43354,30 +40420,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		17595,
-		17595,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		17596,
-		17596,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		17597,
+		"--bs-gutter-y",
+		17595,
 		17607,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -43456,30 +40504,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		17633,
-		17633,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		17634,
-		17634,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		17635,
+		"--bs-gutter-x",
+		17633,
 		17645,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -43558,30 +40588,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		17669,
-		17669,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		17670,
-		17670,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		17671,
+		"--bs-gutter-y",
+		17669,
 		17681,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -47093,30 +44105,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19041,
-		19041,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19042,
-		19042,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		19043,
+		"--bs-gutter-x",
+		19041,
 		19053,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -47194,30 +44188,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19076,
-		19076,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19077,
-		19077,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		19078,
+		"--bs-gutter-y",
+		19076,
 		19088,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -47295,30 +44271,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19111,
-		19111,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19112,
-		19112,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		19113,
+		"--bs-gutter-x",
+		19111,
 		19123,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -47397,30 +44355,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19152,
-		19152,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19153,
-		19153,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		19154,
+		"--bs-gutter-y",
+		19152,
 		19164,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -47499,30 +44439,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19193,
-		19193,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19194,
-		19194,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		19195,
+		"--bs-gutter-x",
+		19193,
 		19205,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -47601,30 +44523,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19233,
-		19233,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19234,
-		19234,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		19235,
+		"--bs-gutter-y",
+		19233,
 		19245,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -47703,30 +44607,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19273,
-		19273,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19274,
-		19274,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		19275,
+		"--bs-gutter-x",
+		19273,
 		19285,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -47805,30 +44691,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19311,
-		19311,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19312,
-		19312,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		19313,
+		"--bs-gutter-y",
+		19311,
 		19323,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -47907,30 +44775,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19349,
-		19349,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19350,
-		19350,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		19351,
+		"--bs-gutter-x",
+		19349,
 		19361,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -48009,30 +44859,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19389,
-		19389,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19390,
-		19390,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		19391,
+		"--bs-gutter-y",
+		19389,
 		19401,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -48111,30 +44943,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19429,
-		19429,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19430,
-		19430,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-x",
-		19431,
+		"--bs-gutter-x",
+		19429,
 		19441,
 		{
-			"value": "bs-gutter-x"
+			"value": "--bs-gutter-x"
 		}
 	],
 	[
@@ -48213,30 +45027,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19467,
-		19467,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19468,
-		19468,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gutter-y",
-		19469,
+		"--bs-gutter-y",
+		19467,
 		19479,
 		{
-			"value": "bs-gutter-y"
+			"value": "--bs-gutter-y"
 		}
 	],
 	[
@@ -48297,30 +45093,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19494,
-		19494,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19495,
-		19495,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		19496,
+		"--bs-table-color",
+		19494,
 		19509,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -48340,30 +45118,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		19515,
-		19515,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19516,
-		19516,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-color",
-		19517,
+		"--bs-body-color",
+		19515,
 		19529,
 		{
-			"value": "bs-body-color"
+			"value": "--bs-body-color"
 		}
 	],
 	[
@@ -48381,30 +45141,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19532,
-		19532,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19533,
-		19533,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-bg",
-		19534,
+		"--bs-table-bg",
+		19532,
 		19544,
 		{
-			"value": "bs-table-bg"
+			"value": "--bs-table-bg"
 		}
 	],
 	[
@@ -48431,30 +45173,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19558,
-		19558,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19559,
-		19559,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		19560,
+		"--bs-table-border-color",
+		19558,
 		19580,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -48474,30 +45198,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		19586,
-		19586,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19587,
-		19587,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color",
-		19588,
+		"--bs-border-color",
+		19586,
 		19602,
 		{
-			"value": "bs-border-color"
+			"value": "--bs-border-color"
 		}
 	],
 	[
@@ -48515,30 +45221,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19605,
-		19605,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19606,
-		19606,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-accent-bg",
-		19607,
+		"--bs-table-accent-bg",
+		19605,
 		19624,
 		{
-			"value": "bs-table-accent-bg"
+			"value": "--bs-table-accent-bg"
 		}
 	],
 	[
@@ -48565,30 +45253,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19638,
-		19638,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19639,
-		19639,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-color",
-		19640,
+		"--bs-table-striped-color",
+		19638,
 		19661,
 		{
-			"value": "bs-table-striped-color"
+			"value": "--bs-table-striped-color"
 		}
 	],
 	[
@@ -48608,30 +45278,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		19667,
-		19667,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19668,
-		19668,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-color",
-		19669,
+		"--bs-body-color",
+		19667,
 		19681,
 		{
-			"value": "bs-body-color"
+			"value": "--bs-body-color"
 		}
 	],
 	[
@@ -48649,30 +45301,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19684,
-		19684,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19685,
-		19685,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-bg",
-		19686,
+		"--bs-table-striped-bg",
+		19684,
 		19704,
 		{
-			"value": "bs-table-striped-bg"
+			"value": "--bs-table-striped-bg"
 		}
 	],
 	[
@@ -48788,30 +45422,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19726,
-		19726,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19727,
-		19727,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-color",
-		19728,
+		"--bs-table-active-color",
+		19726,
 		19748,
 		{
-			"value": "bs-table-active-color"
+			"value": "--bs-table-active-color"
 		}
 	],
 	[
@@ -48831,30 +45447,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		19754,
-		19754,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19755,
-		19755,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-color",
-		19756,
+		"--bs-body-color",
+		19754,
 		19768,
 		{
-			"value": "bs-body-color"
+			"value": "--bs-body-color"
 		}
 	],
 	[
@@ -48872,30 +45470,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19771,
-		19771,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19772,
-		19772,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-bg",
-		19773,
+		"--bs-table-active-bg",
+		19771,
 		19790,
 		{
-			"value": "bs-table-active-bg"
+			"value": "--bs-table-active-bg"
 		}
 	],
 	[
@@ -49011,30 +45591,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19811,
-		19811,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19812,
-		19812,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-color",
-		19813,
+		"--bs-table-hover-color",
+		19811,
 		19832,
 		{
-			"value": "bs-table-hover-color"
+			"value": "--bs-table-hover-color"
 		}
 	],
 	[
@@ -49054,30 +45616,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		19838,
-		19838,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19839,
-		19839,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-color",
-		19840,
+		"--bs-body-color",
+		19838,
 		19852,
 		{
-			"value": "bs-body-color"
+			"value": "--bs-body-color"
 		}
 	],
 	[
@@ -49095,30 +45639,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		19855,
-		19855,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19856,
-		19856,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-bg",
-		19857,
+		"--bs-table-hover-bg",
+		19855,
 		19873,
 		{
-			"value": "bs-table-hover-bg"
+			"value": "--bs-table-hover-bg"
 		}
 	],
 	[
@@ -49325,30 +45851,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		19936,
-		19936,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19937,
-		19937,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		19938,
+		"--bs-table-color",
+		19936,
 		19951,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -49423,30 +45931,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		19990,
-		19990,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		19991,
-		19991,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		19992,
+		"--bs-table-border-color",
+		19990,
 		20012,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -49643,30 +46133,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		20081,
-		20081,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		20082,
-		20082,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-bg",
-		20083,
+		"--bs-table-bg",
+		20081,
 		20093,
 		{
-			"value": "bs-table-bg"
+			"value": "--bs-table-bg"
 		}
 	],
 	[
@@ -49828,30 +46300,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		20154,
-		20154,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		20155,
-		20155,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-accent-bg",
-		20156,
+		"--bs-table-accent-bg",
+		20154,
 		20173,
 		{
-			"value": "bs-table-accent-bg"
+			"value": "--bs-table-accent-bg"
 		}
 	],
 	[
@@ -50961,30 +47415,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		20643,
-		20643,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		20644,
-		20644,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-accent-bg",
-		20645,
+		"--bs-table-accent-bg",
+		20643,
 		20662,
 		{
-			"value": "bs-table-accent-bg"
+			"value": "--bs-table-accent-bg"
 		}
 	],
 	[
@@ -51004,30 +47440,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		20668,
-		20668,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		20669,
-		20669,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-bg",
-		20670,
+		"--bs-table-striped-bg",
+		20668,
 		20688,
 		{
-			"value": "bs-table-striped-bg"
+			"value": "--bs-table-striped-bg"
 		}
 	],
 	[
@@ -51070,30 +47488,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		20701,
-		20701,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		20702,
-		20702,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-color",
-		20703,
+		"--bs-table-striped-color",
+		20701,
 		20724,
 		{
-			"value": "bs-table-striped-color"
+			"value": "--bs-table-striped-color"
 		}
 	],
 	[
@@ -51238,30 +47638,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		20782,
-		20782,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		20783,
-		20783,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-accent-bg",
-		20784,
+		"--bs-table-accent-bg",
+		20782,
 		20801,
 		{
-			"value": "bs-table-accent-bg"
+			"value": "--bs-table-accent-bg"
 		}
 	],
 	[
@@ -51281,30 +47663,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		20807,
-		20807,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		20808,
-		20808,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-bg",
-		20809,
+		"--bs-table-striped-bg",
+		20807,
 		20827,
 		{
-			"value": "bs-table-striped-bg"
+			"value": "--bs-table-striped-bg"
 		}
 	],
 	[
@@ -51347,30 +47711,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		20840,
-		20840,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		20841,
-		20841,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-color",
-		20842,
+		"--bs-table-striped-color",
+		20840,
 		20863,
 		{
-			"value": "bs-table-striped-color"
+			"value": "--bs-table-striped-color"
 		}
 	],
 	[
@@ -51413,30 +47759,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		20880,
-		20880,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		20881,
-		20881,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-accent-bg",
-		20882,
+		"--bs-table-accent-bg",
+		20880,
 		20899,
 		{
-			"value": "bs-table-accent-bg"
+			"value": "--bs-table-accent-bg"
 		}
 	],
 	[
@@ -51456,30 +47784,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		20905,
-		20905,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		20906,
-		20906,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-bg",
-		20907,
+		"--bs-table-active-bg",
+		20905,
 		20924,
 		{
-			"value": "bs-table-active-bg"
+			"value": "--bs-table-active-bg"
 		}
 	],
 	[
@@ -51522,30 +47832,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		20937,
-		20937,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		20938,
-		20938,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-color",
-		20939,
+		"--bs-table-active-color",
+		20937,
 		20959,
 		{
-			"value": "bs-table-active-color"
+			"value": "--bs-table-active-color"
 		}
 	],
 	[
@@ -51658,30 +47950,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		20992,
-		20992,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		20993,
-		20993,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-accent-bg",
-		20994,
+		"--bs-table-accent-bg",
+		20992,
 		21011,
 		{
-			"value": "bs-table-accent-bg"
+			"value": "--bs-table-accent-bg"
 		}
 	],
 	[
@@ -51701,30 +47975,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		21017,
-		21017,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21018,
-		21018,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-bg",
-		21019,
+		"--bs-table-hover-bg",
+		21017,
 		21035,
 		{
-			"value": "bs-table-hover-bg"
+			"value": "--bs-table-hover-bg"
 		}
 	],
 	[
@@ -51767,30 +48023,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		21048,
-		21048,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21049,
-		21049,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-color",
-		21050,
+		"--bs-table-hover-color",
+		21048,
 		21069,
 		{
-			"value": "bs-table-hover-color"
+			"value": "--bs-table-hover-color"
 		}
 	],
 	[
@@ -51833,30 +48071,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21087,
-		21087,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21088,
-		21088,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		21089,
+		"--bs-table-color",
+		21087,
 		21102,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -51884,30 +48104,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21109,
-		21109,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21110,
-		21110,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-bg",
-		21111,
+		"--bs-table-bg",
+		21109,
 		21121,
 		{
-			"value": "bs-table-bg"
+			"value": "--bs-table-bg"
 		}
 	],
 	[
@@ -51935,30 +48137,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21131,
-		21131,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21132,
-		21132,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		21133,
+		"--bs-table-border-color",
+		21131,
 		21153,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -51986,30 +48170,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21163,
-		21163,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21164,
-		21164,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-bg",
-		21165,
+		"--bs-table-striped-bg",
+		21163,
 		21183,
 		{
-			"value": "bs-table-striped-bg"
+			"value": "--bs-table-striped-bg"
 		}
 	],
 	[
@@ -52037,30 +48203,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21193,
-		21193,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21194,
-		21194,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-color",
-		21195,
+		"--bs-table-striped-color",
+		21193,
 		21216,
 		{
-			"value": "bs-table-striped-color"
+			"value": "--bs-table-striped-color"
 		}
 	],
 	[
@@ -52088,30 +48236,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21223,
-		21223,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21224,
-		21224,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-bg",
-		21225,
+		"--bs-table-active-bg",
+		21223,
 		21242,
 		{
-			"value": "bs-table-active-bg"
+			"value": "--bs-table-active-bg"
 		}
 	],
 	[
@@ -52139,30 +48269,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21252,
-		21252,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21253,
-		21253,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-color",
-		21254,
+		"--bs-table-active-color",
+		21252,
 		21274,
 		{
-			"value": "bs-table-active-color"
+			"value": "--bs-table-active-color"
 		}
 	],
 	[
@@ -52190,30 +48302,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21281,
-		21281,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21282,
-		21282,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-bg",
-		21283,
+		"--bs-table-hover-bg",
+		21281,
 		21299,
 		{
-			"value": "bs-table-hover-bg"
+			"value": "--bs-table-hover-bg"
 		}
 	],
 	[
@@ -52241,30 +48335,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21309,
-		21309,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21310,
-		21310,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-color",
-		21311,
+		"--bs-table-hover-color",
+		21309,
 		21330,
 		{
-			"value": "bs-table-hover-color"
+			"value": "--bs-table-hover-color"
 		}
 	],
 	[
@@ -52317,30 +48393,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		21347,
-		21347,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21348,
-		21348,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		21349,
+		"--bs-table-color",
+		21347,
 		21362,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -52383,30 +48441,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		21382,
-		21382,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21383,
-		21383,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		21384,
+		"--bs-table-border-color",
+		21382,
 		21404,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -52449,30 +48489,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21424,
-		21424,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21425,
-		21425,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		21426,
+		"--bs-table-color",
+		21424,
 		21439,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -52500,30 +48522,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21446,
-		21446,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21447,
-		21447,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-bg",
-		21448,
+		"--bs-table-bg",
+		21446,
 		21458,
 		{
-			"value": "bs-table-bg"
+			"value": "--bs-table-bg"
 		}
 	],
 	[
@@ -52551,30 +48555,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21468,
-		21468,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21469,
-		21469,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		21470,
+		"--bs-table-border-color",
+		21468,
 		21490,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -52602,30 +48588,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21500,
-		21500,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21501,
-		21501,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-bg",
-		21502,
+		"--bs-table-striped-bg",
+		21500,
 		21520,
 		{
-			"value": "bs-table-striped-bg"
+			"value": "--bs-table-striped-bg"
 		}
 	],
 	[
@@ -52653,30 +48621,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21530,
-		21530,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21531,
-		21531,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-color",
-		21532,
+		"--bs-table-striped-color",
+		21530,
 		21553,
 		{
-			"value": "bs-table-striped-color"
+			"value": "--bs-table-striped-color"
 		}
 	],
 	[
@@ -52704,30 +48654,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21560,
-		21560,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21561,
-		21561,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-bg",
-		21562,
+		"--bs-table-active-bg",
+		21560,
 		21579,
 		{
-			"value": "bs-table-active-bg"
+			"value": "--bs-table-active-bg"
 		}
 	],
 	[
@@ -52755,30 +48687,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21589,
-		21589,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21590,
-		21590,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-color",
-		21591,
+		"--bs-table-active-color",
+		21589,
 		21611,
 		{
-			"value": "bs-table-active-color"
+			"value": "--bs-table-active-color"
 		}
 	],
 	[
@@ -52806,30 +48720,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21618,
-		21618,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21619,
-		21619,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-bg",
-		21620,
+		"--bs-table-hover-bg",
+		21618,
 		21636,
 		{
-			"value": "bs-table-hover-bg"
+			"value": "--bs-table-hover-bg"
 		}
 	],
 	[
@@ -52857,30 +48753,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21646,
-		21646,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21647,
-		21647,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-color",
-		21648,
+		"--bs-table-hover-color",
+		21646,
 		21667,
 		{
-			"value": "bs-table-hover-color"
+			"value": "--bs-table-hover-color"
 		}
 	],
 	[
@@ -52933,30 +48811,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		21684,
-		21684,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21685,
-		21685,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		21686,
+		"--bs-table-color",
+		21684,
 		21699,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -52999,30 +48859,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		21719,
-		21719,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21720,
-		21720,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		21721,
+		"--bs-table-border-color",
+		21719,
 		21741,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -53065,30 +48907,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21759,
-		21759,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21760,
-		21760,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		21761,
+		"--bs-table-color",
+		21759,
 		21774,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -53116,30 +48940,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21781,
-		21781,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21782,
-		21782,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-bg",
-		21783,
+		"--bs-table-bg",
+		21781,
 		21793,
 		{
-			"value": "bs-table-bg"
+			"value": "--bs-table-bg"
 		}
 	],
 	[
@@ -53167,30 +48973,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21803,
-		21803,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21804,
-		21804,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		21805,
+		"--bs-table-border-color",
+		21803,
 		21825,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -53218,30 +49006,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21835,
-		21835,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21836,
-		21836,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-bg",
-		21837,
+		"--bs-table-striped-bg",
+		21835,
 		21855,
 		{
-			"value": "bs-table-striped-bg"
+			"value": "--bs-table-striped-bg"
 		}
 	],
 	[
@@ -53269,30 +49039,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21865,
-		21865,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21866,
-		21866,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-color",
-		21867,
+		"--bs-table-striped-color",
+		21865,
 		21888,
 		{
-			"value": "bs-table-striped-color"
+			"value": "--bs-table-striped-color"
 		}
 	],
 	[
@@ -53320,30 +49072,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21895,
-		21895,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21896,
-		21896,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-bg",
-		21897,
+		"--bs-table-active-bg",
+		21895,
 		21914,
 		{
-			"value": "bs-table-active-bg"
+			"value": "--bs-table-active-bg"
 		}
 	],
 	[
@@ -53371,30 +49105,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21924,
-		21924,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21925,
-		21925,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-color",
-		21926,
+		"--bs-table-active-color",
+		21924,
 		21946,
 		{
-			"value": "bs-table-active-color"
+			"value": "--bs-table-active-color"
 		}
 	],
 	[
@@ -53422,30 +49138,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21953,
-		21953,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21954,
-		21954,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-bg",
-		21955,
+		"--bs-table-hover-bg",
+		21953,
 		21971,
 		{
-			"value": "bs-table-hover-bg"
+			"value": "--bs-table-hover-bg"
 		}
 	],
 	[
@@ -53473,30 +49171,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		21981,
-		21981,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		21982,
-		21982,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-color",
-		21983,
+		"--bs-table-hover-color",
+		21981,
 		22002,
 		{
-			"value": "bs-table-hover-color"
+			"value": "--bs-table-hover-color"
 		}
 	],
 	[
@@ -53549,30 +49229,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		22019,
-		22019,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22020,
-		22020,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		22021,
+		"--bs-table-color",
+		22019,
 		22034,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -53615,30 +49277,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		22054,
-		22054,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22055,
-		22055,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		22056,
+		"--bs-table-border-color",
+		22054,
 		22076,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -53681,30 +49325,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22091,
-		22091,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22092,
-		22092,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		22093,
+		"--bs-table-color",
+		22091,
 		22106,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -53732,30 +49358,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22113,
-		22113,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22114,
-		22114,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-bg",
-		22115,
+		"--bs-table-bg",
+		22113,
 		22125,
 		{
-			"value": "bs-table-bg"
+			"value": "--bs-table-bg"
 		}
 	],
 	[
@@ -53783,30 +49391,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22135,
-		22135,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22136,
-		22136,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		22137,
+		"--bs-table-border-color",
+		22135,
 		22157,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -53834,30 +49424,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22167,
-		22167,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22168,
-		22168,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-bg",
-		22169,
+		"--bs-table-striped-bg",
+		22167,
 		22187,
 		{
-			"value": "bs-table-striped-bg"
+			"value": "--bs-table-striped-bg"
 		}
 	],
 	[
@@ -53885,30 +49457,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22197,
-		22197,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22198,
-		22198,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-color",
-		22199,
+		"--bs-table-striped-color",
+		22197,
 		22220,
 		{
-			"value": "bs-table-striped-color"
+			"value": "--bs-table-striped-color"
 		}
 	],
 	[
@@ -53936,30 +49490,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22227,
-		22227,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22228,
-		22228,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-bg",
-		22229,
+		"--bs-table-active-bg",
+		22227,
 		22246,
 		{
-			"value": "bs-table-active-bg"
+			"value": "--bs-table-active-bg"
 		}
 	],
 	[
@@ -53987,30 +49523,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22256,
-		22256,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22257,
-		22257,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-color",
-		22258,
+		"--bs-table-active-color",
+		22256,
 		22278,
 		{
-			"value": "bs-table-active-color"
+			"value": "--bs-table-active-color"
 		}
 	],
 	[
@@ -54038,30 +49556,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22285,
-		22285,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22286,
-		22286,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-bg",
-		22287,
+		"--bs-table-hover-bg",
+		22285,
 		22303,
 		{
-			"value": "bs-table-hover-bg"
+			"value": "--bs-table-hover-bg"
 		}
 	],
 	[
@@ -54089,30 +49589,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22313,
-		22313,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22314,
-		22314,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-color",
-		22315,
+		"--bs-table-hover-color",
+		22313,
 		22334,
 		{
-			"value": "bs-table-hover-color"
+			"value": "--bs-table-hover-color"
 		}
 	],
 	[
@@ -54165,30 +49647,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		22351,
-		22351,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22352,
-		22352,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		22353,
+		"--bs-table-color",
+		22351,
 		22366,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -54231,30 +49695,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		22386,
-		22386,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22387,
-		22387,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		22388,
+		"--bs-table-border-color",
+		22386,
 		22408,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -54297,30 +49743,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22426,
-		22426,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22427,
-		22427,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		22428,
+		"--bs-table-color",
+		22426,
 		22441,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -54348,30 +49776,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22448,
-		22448,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22449,
-		22449,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-bg",
-		22450,
+		"--bs-table-bg",
+		22448,
 		22460,
 		{
-			"value": "bs-table-bg"
+			"value": "--bs-table-bg"
 		}
 	],
 	[
@@ -54399,30 +49809,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22470,
-		22470,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22471,
-		22471,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		22472,
+		"--bs-table-border-color",
+		22470,
 		22492,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -54450,30 +49842,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22502,
-		22502,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22503,
-		22503,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-bg",
-		22504,
+		"--bs-table-striped-bg",
+		22502,
 		22522,
 		{
-			"value": "bs-table-striped-bg"
+			"value": "--bs-table-striped-bg"
 		}
 	],
 	[
@@ -54501,30 +49875,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22532,
-		22532,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22533,
-		22533,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-color",
-		22534,
+		"--bs-table-striped-color",
+		22532,
 		22555,
 		{
-			"value": "bs-table-striped-color"
+			"value": "--bs-table-striped-color"
 		}
 	],
 	[
@@ -54552,30 +49908,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22562,
-		22562,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22563,
-		22563,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-bg",
-		22564,
+		"--bs-table-active-bg",
+		22562,
 		22581,
 		{
-			"value": "bs-table-active-bg"
+			"value": "--bs-table-active-bg"
 		}
 	],
 	[
@@ -54603,30 +49941,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22591,
-		22591,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22592,
-		22592,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-color",
-		22593,
+		"--bs-table-active-color",
+		22591,
 		22613,
 		{
-			"value": "bs-table-active-color"
+			"value": "--bs-table-active-color"
 		}
 	],
 	[
@@ -54654,30 +49974,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22620,
-		22620,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22621,
-		22621,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-bg",
-		22622,
+		"--bs-table-hover-bg",
+		22620,
 		22638,
 		{
-			"value": "bs-table-hover-bg"
+			"value": "--bs-table-hover-bg"
 		}
 	],
 	[
@@ -54705,30 +50007,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22648,
-		22648,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22649,
-		22649,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-color",
-		22650,
+		"--bs-table-hover-color",
+		22648,
 		22669,
 		{
-			"value": "bs-table-hover-color"
+			"value": "--bs-table-hover-color"
 		}
 	],
 	[
@@ -54781,30 +50065,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		22686,
-		22686,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22687,
-		22687,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		22688,
+		"--bs-table-color",
+		22686,
 		22701,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -54847,30 +50113,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		22721,
-		22721,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22722,
-		22722,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		22723,
+		"--bs-table-border-color",
+		22721,
 		22743,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -54913,30 +50161,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22760,
-		22760,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22761,
-		22761,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		22762,
+		"--bs-table-color",
+		22760,
 		22775,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -54964,30 +50194,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22782,
-		22782,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22783,
-		22783,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-bg",
-		22784,
+		"--bs-table-bg",
+		22782,
 		22794,
 		{
-			"value": "bs-table-bg"
+			"value": "--bs-table-bg"
 		}
 	],
 	[
@@ -55015,30 +50227,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22804,
-		22804,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22805,
-		22805,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		22806,
+		"--bs-table-border-color",
+		22804,
 		22826,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -55066,30 +50260,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22836,
-		22836,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22837,
-		22837,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-bg",
-		22838,
+		"--bs-table-striped-bg",
+		22836,
 		22856,
 		{
-			"value": "bs-table-striped-bg"
+			"value": "--bs-table-striped-bg"
 		}
 	],
 	[
@@ -55117,30 +50293,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22866,
-		22866,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22867,
-		22867,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-color",
-		22868,
+		"--bs-table-striped-color",
+		22866,
 		22889,
 		{
-			"value": "bs-table-striped-color"
+			"value": "--bs-table-striped-color"
 		}
 	],
 	[
@@ -55168,30 +50326,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22896,
-		22896,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22897,
-		22897,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-bg",
-		22898,
+		"--bs-table-active-bg",
+		22896,
 		22915,
 		{
-			"value": "bs-table-active-bg"
+			"value": "--bs-table-active-bg"
 		}
 	],
 	[
@@ -55219,30 +50359,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22925,
-		22925,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22926,
-		22926,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-color",
-		22927,
+		"--bs-table-active-color",
+		22925,
 		22947,
 		{
-			"value": "bs-table-active-color"
+			"value": "--bs-table-active-color"
 		}
 	],
 	[
@@ -55270,30 +50392,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22954,
-		22954,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22955,
-		22955,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-bg",
-		22956,
+		"--bs-table-hover-bg",
+		22954,
 		22972,
 		{
-			"value": "bs-table-hover-bg"
+			"value": "--bs-table-hover-bg"
 		}
 	],
 	[
@@ -55321,30 +50425,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		22982,
-		22982,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		22983,
-		22983,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-color",
-		22984,
+		"--bs-table-hover-color",
+		22982,
 		23003,
 		{
-			"value": "bs-table-hover-color"
+			"value": "--bs-table-hover-color"
 		}
 	],
 	[
@@ -55397,30 +50483,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		23020,
-		23020,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23021,
-		23021,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		23022,
+		"--bs-table-color",
+		23020,
 		23035,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -55463,30 +50531,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		23055,
-		23055,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23056,
-		23056,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		23057,
+		"--bs-table-border-color",
+		23055,
 		23077,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -55529,30 +50579,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23093,
-		23093,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23094,
-		23094,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		23095,
+		"--bs-table-color",
+		23093,
 		23108,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -55580,30 +50612,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23115,
-		23115,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23116,
-		23116,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-bg",
-		23117,
+		"--bs-table-bg",
+		23115,
 		23127,
 		{
-			"value": "bs-table-bg"
+			"value": "--bs-table-bg"
 		}
 	],
 	[
@@ -55631,30 +50645,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23137,
-		23137,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23138,
-		23138,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		23139,
+		"--bs-table-border-color",
+		23137,
 		23159,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -55682,30 +50678,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23169,
-		23169,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23170,
-		23170,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-bg",
-		23171,
+		"--bs-table-striped-bg",
+		23169,
 		23189,
 		{
-			"value": "bs-table-striped-bg"
+			"value": "--bs-table-striped-bg"
 		}
 	],
 	[
@@ -55733,30 +50711,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23199,
-		23199,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23200,
-		23200,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-color",
-		23201,
+		"--bs-table-striped-color",
+		23199,
 		23222,
 		{
-			"value": "bs-table-striped-color"
+			"value": "--bs-table-striped-color"
 		}
 	],
 	[
@@ -55784,30 +50744,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23229,
-		23229,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23230,
-		23230,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-bg",
-		23231,
+		"--bs-table-active-bg",
+		23229,
 		23248,
 		{
-			"value": "bs-table-active-bg"
+			"value": "--bs-table-active-bg"
 		}
 	],
 	[
@@ -55835,30 +50777,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23258,
-		23258,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23259,
-		23259,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-color",
-		23260,
+		"--bs-table-active-color",
+		23258,
 		23280,
 		{
-			"value": "bs-table-active-color"
+			"value": "--bs-table-active-color"
 		}
 	],
 	[
@@ -55886,30 +50810,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23287,
-		23287,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23288,
-		23288,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-bg",
-		23289,
+		"--bs-table-hover-bg",
+		23287,
 		23305,
 		{
-			"value": "bs-table-hover-bg"
+			"value": "--bs-table-hover-bg"
 		}
 	],
 	[
@@ -55937,30 +50843,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23315,
-		23315,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23316,
-		23316,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-color",
-		23317,
+		"--bs-table-hover-color",
+		23315,
 		23336,
 		{
-			"value": "bs-table-hover-color"
+			"value": "--bs-table-hover-color"
 		}
 	],
 	[
@@ -56013,30 +50901,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		23353,
-		23353,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23354,
-		23354,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		23355,
+		"--bs-table-color",
+		23353,
 		23368,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -56079,30 +50949,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		23388,
-		23388,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23389,
-		23389,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		23390,
+		"--bs-table-border-color",
+		23388,
 		23410,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -56145,30 +50997,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23425,
-		23425,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23426,
-		23426,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		23427,
+		"--bs-table-color",
+		23425,
 		23440,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -56196,30 +51030,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23447,
-		23447,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23448,
-		23448,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-bg",
-		23449,
+		"--bs-table-bg",
+		23447,
 		23459,
 		{
-			"value": "bs-table-bg"
+			"value": "--bs-table-bg"
 		}
 	],
 	[
@@ -56247,30 +51063,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23469,
-		23469,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23470,
-		23470,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		23471,
+		"--bs-table-border-color",
+		23469,
 		23491,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -56298,30 +51096,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23501,
-		23501,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23502,
-		23502,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-bg",
-		23503,
+		"--bs-table-striped-bg",
+		23501,
 		23521,
 		{
-			"value": "bs-table-striped-bg"
+			"value": "--bs-table-striped-bg"
 		}
 	],
 	[
@@ -56349,30 +51129,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23531,
-		23531,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23532,
-		23532,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-striped-color",
-		23533,
+		"--bs-table-striped-color",
+		23531,
 		23554,
 		{
-			"value": "bs-table-striped-color"
+			"value": "--bs-table-striped-color"
 		}
 	],
 	[
@@ -56400,30 +51162,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23561,
-		23561,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23562,
-		23562,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-bg",
-		23563,
+		"--bs-table-active-bg",
+		23561,
 		23580,
 		{
-			"value": "bs-table-active-bg"
+			"value": "--bs-table-active-bg"
 		}
 	],
 	[
@@ -56451,30 +51195,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23590,
-		23590,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23591,
-		23591,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-active-color",
-		23592,
+		"--bs-table-active-color",
+		23590,
 		23612,
 		{
-			"value": "bs-table-active-color"
+			"value": "--bs-table-active-color"
 		}
 	],
 	[
@@ -56502,30 +51228,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23619,
-		23619,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23620,
-		23620,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-bg",
-		23621,
+		"--bs-table-hover-bg",
+		23619,
 		23637,
 		{
-			"value": "bs-table-hover-bg"
+			"value": "--bs-table-hover-bg"
 		}
 	],
 	[
@@ -56553,30 +51261,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23647,
-		23647,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23648,
-		23648,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-hover-color",
-		23649,
+		"--bs-table-hover-color",
+		23647,
 		23668,
 		{
-			"value": "bs-table-hover-color"
+			"value": "--bs-table-hover-color"
 		}
 	],
 	[
@@ -56629,30 +51319,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		23685,
-		23685,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23686,
-		23686,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-color",
-		23687,
+		"--bs-table-color",
+		23685,
 		23700,
 		{
-			"value": "bs-table-color"
+			"value": "--bs-table-color"
 		}
 	],
 	[
@@ -56695,30 +51367,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		23720,
-		23720,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		23721,
-		23721,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-table-border-color",
-		23722,
+		"--bs-table-border-color",
+		23720,
 		23742,
 		{
-			"value": "bs-table-border-color"
+			"value": "--bs-table-border-color"
 		}
 	],
 	[
@@ -56793,21 +51447,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23779,
-		23779,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-overflow-scrolling",
-		23780,
+		"-webkit-overflow-scrolling",
+		23779,
 		23804,
 		{
-			"value": "webkit-overflow-scrolling"
+			"value": "-webkit-overflow-scrolling"
 		}
 	],
 	[
@@ -56955,21 +51600,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23877,
-		23877,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-overflow-scrolling",
-		23878,
+		"-webkit-overflow-scrolling",
+		23877,
 		23902,
 		{
-			"value": "webkit-overflow-scrolling"
+			"value": "-webkit-overflow-scrolling"
 		}
 	],
 	[
@@ -57124,21 +51760,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		23976,
-		23976,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-overflow-scrolling",
-		23977,
+		"-webkit-overflow-scrolling",
+		23976,
 		24001,
 		{
-			"value": "webkit-overflow-scrolling"
+			"value": "-webkit-overflow-scrolling"
 		}
 	],
 	[
@@ -57293,21 +51920,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		24075,
-		24075,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-overflow-scrolling",
-		24076,
+		"-webkit-overflow-scrolling",
+		24075,
 		24100,
 		{
-			"value": "webkit-overflow-scrolling"
+			"value": "-webkit-overflow-scrolling"
 		}
 	],
 	[
@@ -57462,21 +52080,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		24175,
-		24175,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-overflow-scrolling",
-		24176,
+		"-webkit-overflow-scrolling",
+		24175,
 		24200,
 		{
-			"value": "webkit-overflow-scrolling"
+			"value": "-webkit-overflow-scrolling"
 		}
 	],
 	[
@@ -57631,21 +52240,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		24276,
-		24276,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-overflow-scrolling",
-		24277,
+		"-webkit-overflow-scrolling",
+		24276,
 		24301,
 		{
-			"value": "webkit-overflow-scrolling"
+			"value": "-webkit-overflow-scrolling"
 		}
 	],
 	[
@@ -59015,21 +53615,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		24935,
-		24935,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-appearance",
-		24936,
+		"-webkit-appearance",
+		24935,
 		24952,
 		{
-			"value": "webkit-appearance"
+			"value": "-webkit-appearance"
 		}
 	],
 	[
@@ -59056,21 +53647,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		24959,
-		24959,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-appearance",
-		24960,
+		"-moz-appearance",
+		24959,
 		24973,
 		{
-			"value": "moz-appearance"
+			"value": "-moz-appearance"
 		}
 	],
 	[
@@ -60060,21 +54642,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		25416,
-		25416,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-date-and-time-value",
-		25417,
+		"-webkit-date-and-time-value",
+		25416,
 		25442,
 		{
-			"value": "webkit-date-and-time-value"
+			"value": "-webkit-date-and-time-value"
 		}
 	],
 	[
@@ -60151,21 +54724,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		25472,
-		25472,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-placeholder",
-		25473,
+		"-moz-placeholder",
+		25472,
 		25487,
 		{
-			"value": "moz-placeholder"
+			"value": "-moz-placeholder"
 		}
 	],
 	[
@@ -60495,21 +55059,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		25637,
-		25637,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-file-upload-button",
-		25638,
+		"-webkit-file-upload-button",
+		25637,
 		25662,
 		{
-			"value": "webkit-file-upload-button"
+			"value": "-webkit-file-upload-button"
 		}
 	],
 	[
@@ -60624,21 +55179,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		25711,
-		25711,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-margin-end",
-		25712,
+		"-webkit-margin-end",
+		25711,
 		25728,
 		{
-			"value": "webkit-margin-end"
+			"value": "-webkit-margin-end"
 		}
 	],
 	[
@@ -60963,21 +55509,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		25920,
-		25920,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-transition",
-		25921,
+		"-webkit-transition",
+		25920,
 		25937,
 		{
-			"value": "webkit-transition"
+			"value": "-webkit-transition"
 		}
 	],
 	[
@@ -61556,21 +56093,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		26263,
-		26263,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-margin-end",
-		26264,
+		"-webkit-margin-end",
+		26263,
 		26280,
 		{
-			"value": "webkit-margin-end"
+			"value": "-webkit-margin-end"
 		}
 	],
 	[
@@ -62205,21 +56733,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		26652,
-		26652,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-file-upload-button",
-		26653,
+		"-webkit-file-upload-button",
+		26652,
 		26677,
 		{
-			"value": "webkit-file-upload-button"
+			"value": "-webkit-file-upload-button"
 		}
 	],
 	[
@@ -62230,21 +56749,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		26679,
-		26679,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-transition",
-		26680,
+		"-webkit-transition",
+		26679,
 		26696,
 		{
-			"value": "webkit-transition"
+			"value": "-webkit-transition"
 		}
 	],
 	[
@@ -62523,21 +57033,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		26824,
-		26824,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-file-upload-button",
-		26825,
+		"-webkit-file-upload-button",
+		26824,
 		26849,
 		{
-			"value": "webkit-file-upload-button"
+			"value": "-webkit-file-upload-button"
 		}
 	],
 	[
@@ -63654,21 +58155,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		27443,
-		27443,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-file-upload-button",
-		27444,
+		"-webkit-file-upload-button",
+		27443,
 		27468,
 		{
-			"value": "webkit-file-upload-button"
+			"value": "-webkit-file-upload-button"
 		}
 	],
 	[
@@ -63783,21 +58275,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		27513,
-		27513,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-margin-end",
-		27514,
+		"-webkit-margin-end",
+		27513,
 		27530,
 		{
-			"value": "webkit-margin-end"
+			"value": "-webkit-margin-end"
 		}
 	],
 	[
@@ -64012,21 +58495,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		27644,
-		27644,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-margin-end",
-		27645,
+		"-webkit-margin-end",
+		27644,
 		27661,
 		{
-			"value": "webkit-margin-end"
+			"value": "-webkit-margin-end"
 		}
 	],
 	[
@@ -64384,21 +58858,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		27821,
-		27821,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-file-upload-button",
-		27822,
+		"-webkit-file-upload-button",
+		27821,
 		27846,
 		{
-			"value": "webkit-file-upload-button"
+			"value": "-webkit-file-upload-button"
 		}
 	],
 	[
@@ -64513,21 +58978,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		27887,
-		27887,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-margin-end",
-		27888,
+		"-webkit-margin-end",
+		27887,
 		27904,
 		{
-			"value": "webkit-margin-end"
+			"value": "-webkit-margin-end"
 		}
 	],
 	[
@@ -64742,21 +59198,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		28012,
-		28012,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-margin-end",
-		28013,
+		"-webkit-margin-end",
+		28012,
 		28029,
 		{
-			"value": "webkit-margin-end"
+			"value": "-webkit-margin-end"
 		}
 	],
 	[
@@ -65660,21 +60107,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		28410,
-		28410,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-color-swatch",
-		28411,
+		"-moz-color-swatch",
+		28410,
 		28426,
 		{
-			"value": "moz-color-swatch"
+			"value": "-moz-color-swatch"
 		}
 	],
 	[
@@ -65802,21 +60240,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		28490,
-		28490,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-color-swatch",
-		28491,
+		"-webkit-color-swatch",
+		28490,
 		28509,
 		{
-			"value": "webkit-color-swatch"
+			"value": "-webkit-color-swatch"
 		}
 	],
 	[
@@ -66360,21 +60789,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		28747,
-		28747,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-padding-start",
-		28748,
+		"-moz-padding-start",
+		28747,
 		28764,
 		{
-			"value": "moz-padding-start"
+			"value": "-moz-padding-start"
 		}
 	],
 	[
@@ -67034,21 +61454,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		29320,
-		29320,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-appearance",
-		29321,
+		"-webkit-appearance",
+		29320,
 		29337,
 		{
-			"value": "webkit-appearance"
+			"value": "-webkit-appearance"
 		}
 	],
 	[
@@ -67075,21 +61486,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		29344,
-		29344,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-appearance",
-		29345,
+		"-moz-appearance",
+		29344,
 		29358,
 		{
-			"value": "moz-appearance"
+			"value": "-moz-appearance"
 		}
 	],
 	[
@@ -67875,21 +62277,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		29706,
-		29706,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-focusring",
-		29707,
+		"-moz-focusring",
+		29706,
 		29719,
 		{
-			"value": "moz-focusring"
+			"value": "-moz-focusring"
 		}
 	],
 	[
@@ -69376,21 +63769,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		30501,
-		30501,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-appearance",
-		30502,
+		"-webkit-appearance",
+		30501,
 		30518,
 		{
-			"value": "webkit-appearance"
+			"value": "-webkit-appearance"
 		}
 	],
 	[
@@ -69417,21 +63801,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		30525,
-		30525,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-appearance",
-		30526,
+		"-moz-appearance",
+		30525,
 		30539,
 		{
-			"value": "moz-appearance"
+			"value": "-moz-appearance"
 		}
 	],
 	[
@@ -69490,21 +63865,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		30562,
-		30562,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-print-color-adjust",
-		30563,
+		"-webkit-print-color-adjust",
+		30562,
 		30587,
 		{
-			"value": "webkit-print-color-adjust"
+			"value": "-webkit-print-color-adjust"
 		}
 	],
 	[
@@ -72788,21 +67154,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		33249,
-		33249,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-appearance",
-		33250,
+		"-webkit-appearance",
+		33249,
 		33266,
 		{
-			"value": "webkit-appearance"
+			"value": "-webkit-appearance"
 		}
 	],
 	[
@@ -72829,21 +67186,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		33273,
-		33273,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-appearance",
-		33274,
+		"-moz-appearance",
+		33273,
 		33287,
 		{
-			"value": "moz-appearance"
+			"value": "-moz-appearance"
 		}
 	],
 	[
@@ -73024,21 +67372,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		33357,
-		33357,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-slider-thumb",
-		33358,
+		"-webkit-slider-thumb",
+		33357,
 		33376,
 		{
-			"value": "webkit-slider-thumb"
+			"value": "-webkit-slider-thumb"
 		}
 	],
 	[
@@ -73352,21 +67691,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		33457,
-		33457,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-range-thumb",
-		33458,
+		"-moz-range-thumb",
+		33457,
 		33472,
 		{
-			"value": "moz-range-thumb"
+			"value": "-moz-range-thumb"
 		}
 	],
 	[
@@ -73664,21 +67994,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		33547,
-		33547,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-focus-outer",
-		33548,
+		"-moz-focus-outer",
+		33547,
 		33562,
 		{
-			"value": "moz-focus-outer"
+			"value": "-moz-focus-outer"
 		}
 	],
 	[
@@ -73754,21 +68075,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		33586,
-		33586,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-slider-thumb",
-		33587,
+		"-webkit-slider-thumb",
+		33586,
 		33605,
 		{
-			"value": "webkit-slider-thumb"
+			"value": "-webkit-slider-thumb"
 		}
 	],
 	[
@@ -73981,21 +68293,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		33702,
-		33702,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-transition",
-		33703,
+		"-webkit-transition",
+		33702,
 		33719,
 		{
-			"value": "webkit-transition"
+			"value": "-webkit-transition"
 		}
 	],
 	[
@@ -74322,21 +68625,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		33916,
-		33916,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-appearance",
-		33917,
+		"-webkit-appearance",
+		33916,
 		33933,
 		{
-			"value": "webkit-appearance"
+			"value": "-webkit-appearance"
 		}
 	],
 	[
@@ -74489,21 +68783,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		34008,
-		34008,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-slider-thumb",
-		34009,
+		"-webkit-slider-thumb",
+		34008,
 		34027,
 		{
-			"value": "webkit-slider-thumb"
+			"value": "-webkit-slider-thumb"
 		}
 	],
 	[
@@ -74514,21 +68799,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		34029,
-		34029,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-transition",
-		34030,
+		"-webkit-transition",
+		34029,
 		34046,
 		{
-			"value": "webkit-transition"
+			"value": "-webkit-transition"
 		}
 	],
 	[
@@ -74626,21 +68902,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		34083,
-		34083,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-slider-thumb",
-		34084,
+		"-webkit-slider-thumb",
+		34083,
 		34102,
 		{
-			"value": "webkit-slider-thumb"
+			"value": "-webkit-slider-thumb"
 		}
 	],
 	[
@@ -74732,21 +68999,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		34149,
-		34149,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-slider-runnable-track",
-		34150,
+		"-webkit-slider-runnable-track",
+		34149,
 		34177,
 		{
-			"value": "webkit-slider-runnable-track"
+			"value": "-webkit-slider-runnable-track"
 		}
 	],
 	[
@@ -75018,21 +69276,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		34318,
-		34318,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-range-thumb",
-		34319,
+		"-moz-range-thumb",
+		34318,
 		34333,
 		{
-			"value": "moz-range-thumb"
+			"value": "-moz-range-thumb"
 		}
 	],
 	[
@@ -75211,21 +69460,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		34411,
-		34411,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-transition",
-		34412,
+		"-moz-transition",
+		34411,
 		34425,
 		{
-			"value": "moz-transition"
+			"value": "-moz-transition"
 		}
 	],
 	[
@@ -75552,21 +69792,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		34622,
-		34622,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-appearance",
-		34623,
+		"-moz-appearance",
+		34622,
 		34636,
 		{
-			"value": "moz-appearance"
+			"value": "-moz-appearance"
 		}
 	],
 	[
@@ -75719,21 +69950,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		34711,
-		34711,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-range-thumb",
-		34712,
+		"-moz-range-thumb",
+		34711,
 		34726,
 		{
-			"value": "moz-range-thumb"
+			"value": "-moz-range-thumb"
 		}
 	],
 	[
@@ -75744,21 +69966,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		34728,
-		34728,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-transition",
-		34729,
+		"-moz-transition",
+		34728,
 		34742,
 		{
-			"value": "moz-transition"
+			"value": "-moz-transition"
 		}
 	],
 	[
@@ -75856,21 +70069,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		34779,
-		34779,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-range-thumb",
-		34780,
+		"-moz-range-thumb",
+		34779,
 		34794,
 		{
-			"value": "moz-range-thumb"
+			"value": "-moz-range-thumb"
 		}
 	],
 	[
@@ -75962,21 +70166,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		34841,
-		34841,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-range-track",
-		34842,
+		"-moz-range-track",
+		34841,
 		34856,
 		{
-			"value": "moz-range-track"
+			"value": "-moz-range-track"
 		}
 	],
 	[
@@ -76337,21 +70532,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		35047,
-		35047,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-slider-thumb",
-		35048,
+		"-webkit-slider-thumb",
+		35047,
 		35066,
 		{
-			"value": "webkit-slider-thumb"
+			"value": "-webkit-slider-thumb"
 		}
 	],
 	[
@@ -76443,21 +70629,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		35115,
-		35115,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-range-thumb",
-		35116,
+		"-moz-range-thumb",
+		35115,
 		35130,
 		{
-			"value": "moz-range-thumb"
+			"value": "-moz-range-thumb"
 		}
 	],
 	[
@@ -77839,21 +72016,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		35835,
-		35835,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-placeholder",
-		35836,
+		"-moz-placeholder",
+		35835,
 		35850,
 		{
-			"value": "moz-placeholder"
+			"value": "-moz-placeholder"
 		}
 	],
 	[
@@ -77923,21 +72091,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		35882,
-		35882,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-placeholder",
-		35883,
+		"-moz-placeholder",
+		35882,
 		35897,
 		{
-			"value": "moz-placeholder"
+			"value": "-moz-placeholder"
 		}
 	],
 	[
@@ -78230,21 +72389,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		36073,
-		36073,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-placeholder-shown",
-		36074,
+		"-moz-placeholder-shown",
+		36073,
 		36094,
 		{
-			"value": "moz-placeholder-shown"
+			"value": "-moz-placeholder-shown"
 		}
 	],
 	[
@@ -78330,21 +72480,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		36131,
-		36131,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-placeholder-shown",
-		36132,
+		"-moz-placeholder-shown",
+		36131,
 		36152,
 		{
-			"value": "moz-placeholder-shown"
+			"value": "-moz-placeholder-shown"
 		}
 	],
 	[
@@ -78868,21 +73009,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		36478,
-		36478,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-autofill",
-		36479,
+		"-webkit-autofill",
+		36478,
 		36493,
 		{
-			"value": "webkit-autofill"
+			"value": "-webkit-autofill"
 		}
 	],
 	[
@@ -78945,21 +73077,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		36524,
-		36524,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-autofill",
-		36525,
+		"-webkit-autofill",
+		36524,
 		36539,
 		{
-			"value": "webkit-autofill"
+			"value": "-webkit-autofill"
 		}
 	],
 	[
@@ -79226,21 +73349,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		36691,
-		36691,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-placeholder-shown",
-		36692,
+		"-moz-placeholder-shown",
+		36691,
 		36712,
 		{
-			"value": "moz-placeholder-shown"
+			"value": "-moz-placeholder-shown"
 		}
 	],
 	[
@@ -79963,21 +74077,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		37071,
-		37071,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-autofill",
-		37072,
+		"-webkit-autofill",
+		37071,
 		37086,
 		{
-			"value": "webkit-autofill"
+			"value": "-webkit-autofill"
 		}
 	],
 	[
@@ -95976,30 +90081,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46296,
-		46296,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46297,
-		46297,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-padding-x",
-		46298,
+		"--bs-btn-padding-x",
+		46296,
 		46313,
 		{
-			"value": "bs-btn-padding-x"
+			"value": "--bs-btn-padding-x"
 		}
 	],
 	[
@@ -96028,30 +90115,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46323,
-		46323,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46324,
-		46324,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-padding-y",
-		46325,
+		"--bs-btn-padding-y",
+		46323,
 		46340,
 		{
-			"value": "bs-btn-padding-y"
+			"value": "--bs-btn-padding-y"
 		}
 	],
 	[
@@ -96080,30 +90149,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46351,
-		46351,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46352,
-		46352,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-font-family",
-		46353,
+		"--bs-btn-font-family",
+		46351,
 		46370,
 		{
-			"value": "bs-btn-font-family"
+			"value": "--bs-btn-font-family"
 		}
 	],
 	[
@@ -96128,30 +90179,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46374,
-		46374,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46375,
-		46375,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-font-size",
-		46376,
+		"--bs-btn-font-size",
+		46374,
 		46391,
 		{
-			"value": "bs-btn-font-size"
+			"value": "--bs-btn-font-size"
 		}
 	],
 	[
@@ -96180,30 +90213,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46398,
-		46398,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46399,
-		46399,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-font-weight",
-		46400,
+		"--bs-btn-font-weight",
+		46398,
 		46417,
 		{
-			"value": "bs-btn-font-weight"
+			"value": "--bs-btn-font-weight"
 		}
 	],
 	[
@@ -96231,30 +90246,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46423,
-		46423,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46424,
-		46424,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-line-height",
-		46425,
+		"--bs-btn-line-height",
+		46423,
 		46442,
 		{
-			"value": "bs-btn-line-height"
+			"value": "--bs-btn-line-height"
 		}
 	],
 	[
@@ -96282,30 +90279,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46448,
-		46448,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46449,
-		46449,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		46450,
+		"--bs-btn-color",
+		46448,
 		46461,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -96333,30 +90312,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46471,
-		46471,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46472,
-		46472,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-bg",
-		46473,
+		"--bs-btn-bg",
+		46471,
 		46481,
 		{
-			"value": "bs-btn-bg"
+			"value": "--bs-btn-bg"
 		}
 	],
 	[
@@ -96383,30 +90344,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46495,
-		46495,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46496,
-		46496,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-width",
-		46497,
+		"--bs-btn-border-width",
+		46495,
 		46515,
 		{
-			"value": "bs-btn-border-width"
+			"value": "--bs-btn-border-width"
 		}
 	],
 	[
@@ -96435,30 +90378,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46521,
-		46521,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46522,
-		46522,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		46523,
+		"--bs-btn-border-color",
+		46521,
 		46541,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -96485,30 +90410,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46555,
-		46555,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46556,
-		46556,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-radius",
-		46557,
+		"--bs-btn-border-radius",
+		46555,
 		46576,
 		{
-			"value": "bs-btn-border-radius"
+			"value": "--bs-btn-border-radius"
 		}
 	],
 	[
@@ -96537,30 +90444,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46587,
-		46587,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46588,
-		46588,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		46589,
+		"--bs-btn-hover-border-color",
+		46587,
 		46613,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -96587,30 +90476,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46627,
-		46627,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46628,
-		46628,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-box-shadow",
-		46629,
+		"--bs-btn-box-shadow",
+		46627,
 		46645,
 		{
-			"value": "bs-btn-box-shadow"
+			"value": "--bs-btn-box-shadow"
 		}
 	],
 	[
@@ -96952,30 +90823,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46718,
-		46718,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46719,
-		46719,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-opacity",
-		46720,
+		"--bs-btn-disabled-opacity",
+		46718,
 		46742,
 		{
-			"value": "bs-btn-disabled-opacity"
+			"value": "--bs-btn-disabled-opacity"
 		}
 	],
 	[
@@ -97003,30 +90856,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		46749,
-		46749,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46750,
-		46750,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-box-shadow",
-		46751,
+		"--bs-btn-focus-box-shadow",
+		46749,
 		46773,
 		{
-			"value": "bs-btn-focus-box-shadow"
+			"value": "--bs-btn-focus-box-shadow"
 		}
 	],
 	[
@@ -97124,30 +90959,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		46798,
-		46798,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46799,
-		46799,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		46800,
+		"--bs-btn-focus-shadow-rgb",
+		46798,
 		46822,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -97253,30 +91070,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		46863,
-		46863,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46864,
-		46864,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-padding-y",
-		46865,
+		"--bs-btn-padding-y",
+		46863,
 		46880,
 		{
-			"value": "bs-btn-padding-y"
+			"value": "--bs-btn-padding-y"
 		}
 	],
 	[
@@ -97303,30 +91102,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		46887,
-		46887,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46888,
-		46888,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-padding-x",
-		46889,
+		"--bs-btn-padding-x",
+		46887,
 		46904,
 		{
-			"value": "bs-btn-padding-x"
+			"value": "--bs-btn-padding-x"
 		}
 	],
 	[
@@ -97369,30 +91150,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		46923,
-		46923,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46924,
-		46924,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-font-family",
-		46925,
+		"--bs-btn-font-family",
+		46923,
 		46942,
 		{
-			"value": "bs-btn-font-family"
+			"value": "--bs-btn-font-family"
 		}
 	],
 	[
@@ -97435,30 +91198,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		46959,
-		46959,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46960,
-		46960,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-font-size",
-		46961,
+		"--bs-btn-font-size",
+		46959,
 		46976,
 		{
-			"value": "bs-btn-font-size"
+			"value": "--bs-btn-font-size"
 		}
 	],
 	[
@@ -97501,30 +91246,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		46995,
-		46995,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		46996,
-		46996,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-font-weight",
-		46997,
+		"--bs-btn-font-weight",
+		46995,
 		47014,
 		{
-			"value": "bs-btn-font-weight"
+			"value": "--bs-btn-font-weight"
 		}
 	],
 	[
@@ -97567,30 +91294,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47033,
-		47033,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47034,
-		47034,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-line-height",
-		47035,
+		"--bs-btn-line-height",
+		47033,
 		47052,
 		{
-			"value": "bs-btn-line-height"
+			"value": "--bs-btn-line-height"
 		}
 	],
 	[
@@ -97633,30 +91342,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47065,
-		47065,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47066,
-		47066,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		47067,
+		"--bs-btn-color",
+		47065,
 		47078,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -97802,21 +91493,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		47157,
-		47157,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-user-select",
-		47158,
+		"-webkit-user-select",
+		47157,
 		47175,
 		{
-			"value": "webkit-user-select"
+			"value": "-webkit-user-select"
 		}
 	],
 	[
@@ -97843,21 +91525,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		47182,
-		47182,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-user-select",
-		47183,
+		"-moz-user-select",
+		47182,
 		47197,
 		{
-			"value": "moz-user-select"
+			"value": "-moz-user-select"
 		}
 	],
 	[
@@ -97941,30 +91614,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47232,
-		47232,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47233,
-		47233,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-width",
-		47234,
+		"--bs-btn-border-width",
+		47232,
 		47252,
 		{
-			"value": "bs-btn-border-width"
+			"value": "--bs-btn-border-width"
 		}
 	],
 	[
@@ -98007,30 +91662,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47265,
-		47265,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47266,
-		47266,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		47267,
+		"--bs-btn-border-color",
+		47265,
 		47285,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -98073,30 +91710,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47306,
-		47306,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47307,
-		47307,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-radius",
-		47308,
+		"--bs-btn-border-radius",
+		47306,
 		47327,
 		{
-			"value": "bs-btn-border-radius"
+			"value": "--bs-btn-border-radius"
 		}
 	],
 	[
@@ -98139,30 +91758,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47351,
-		47351,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47352,
-		47352,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-bg",
-		47353,
+		"--bs-btn-bg",
+		47351,
 		47361,
 		{
-			"value": "bs-btn-bg"
+			"value": "--bs-btn-bg"
 		}
 	],
 	[
@@ -98695,30 +92296,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47612,
-		47612,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47613,
-		47613,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		47614,
+		"--bs-btn-hover-color",
+		47612,
 		47631,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -98761,30 +92344,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47655,
-		47655,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47656,
-		47656,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		47657,
+		"--bs-btn-hover-bg",
+		47655,
 		47671,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -98827,30 +92392,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47691,
-		47691,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47692,
-		47692,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		47693,
+		"--bs-btn-hover-border-color",
+		47691,
 		47717,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -98934,30 +92481,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47749,
-		47749,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47750,
-		47750,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		47751,
+		"--bs-btn-hover-color",
+		47749,
 		47768,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -99000,30 +92529,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47792,
-		47792,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47793,
-		47793,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		47794,
+		"--bs-btn-hover-bg",
+		47792,
 		47808,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -99066,30 +92577,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47828,
-		47828,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47829,
-		47829,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		47830,
+		"--bs-btn-hover-border-color",
+		47828,
 		47854,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -99165,30 +92658,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47882,
-		47882,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47883,
-		47883,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-box-shadow",
-		47884,
+		"--bs-btn-focus-box-shadow",
+		47882,
 		47906,
 		{
-			"value": "bs-btn-focus-box-shadow"
+			"value": "--bs-btn-focus-box-shadow"
 		}
 	],
 	[
@@ -99299,30 +92774,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		47956,
-		47956,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		47957,
-		47957,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		47958,
+		"--bs-btn-hover-border-color",
+		47956,
 		47982,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -99398,30 +92855,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		48010,
-		48010,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48011,
-		48011,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-box-shadow",
-		48012,
+		"--bs-btn-focus-box-shadow",
+		48010,
 		48034,
 		{
-			"value": "bs-btn-focus-box-shadow"
+			"value": "--bs-btn-focus-box-shadow"
 		}
 	],
 	[
@@ -99766,30 +93205,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		48146,
-		48146,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48147,
-		48147,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		48148,
+		"--bs-btn-active-color",
+		48146,
 		48166,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -99832,30 +93253,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		48190,
-		48190,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48191,
-		48191,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		48192,
+		"--bs-btn-active-bg",
+		48190,
 		48207,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -99898,30 +93301,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		48227,
-		48227,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48228,
-		48228,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		48229,
+		"--bs-btn-active-border-color",
+		48227,
 		48254,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -100346,30 +93731,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		48441,
-		48441,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48442,
-		48442,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-box-shadow",
-		48443,
+		"--bs-btn-focus-box-shadow",
+		48441,
 		48465,
 		{
-			"value": "bs-btn-focus-box-shadow"
+			"value": "--bs-btn-focus-box-shadow"
 		}
 	],
 	[
@@ -100553,30 +93920,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		48529,
-		48529,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48530,
-		48530,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		48531,
+		"--bs-btn-disabled-color",
+		48529,
 		48551,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -100651,30 +94000,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		48595,
-		48595,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48596,
-		48596,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		48597,
+		"--bs-btn-disabled-bg",
+		48595,
 		48614,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -100717,30 +94048,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		48634,
-		48634,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48635,
-		48635,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		48636,
+		"--bs-btn-disabled-border-color",
+		48634,
 		48663,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -100783,30 +94096,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		48678,
-		48678,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48679,
-		48679,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-opacity",
-		48680,
+		"--bs-btn-disabled-opacity",
+		48678,
 		48702,
 		{
-			"value": "bs-btn-disabled-opacity"
+			"value": "--bs-btn-disabled-opacity"
 		}
 	],
 	[
@@ -100849,30 +94144,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		48718,
-		48718,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48719,
-		48719,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		48720,
+		"--bs-btn-color",
+		48718,
 		48731,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -100900,30 +94177,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		48738,
-		48738,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48739,
-		48739,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-bg",
-		48740,
+		"--bs-btn-bg",
+		48738,
 		48748,
 		{
-			"value": "bs-btn-bg"
+			"value": "--bs-btn-bg"
 		}
 	],
 	[
@@ -100951,30 +94210,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		48758,
-		48758,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48759,
-		48759,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		48760,
+		"--bs-btn-border-color",
+		48758,
 		48778,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -101002,30 +94243,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		48788,
-		48788,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48789,
-		48789,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		48790,
+		"--bs-btn-hover-color",
+		48788,
 		48807,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -101053,30 +94276,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		48814,
-		48814,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48815,
-		48815,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		48816,
+		"--bs-btn-hover-bg",
+		48814,
 		48830,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -101104,30 +94309,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		48840,
-		48840,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48841,
-		48841,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		48842,
+		"--bs-btn-hover-border-color",
+		48840,
 		48866,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -101155,30 +94342,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		48876,
-		48876,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48877,
-		48877,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		48878,
+		"--bs-btn-focus-shadow-rgb",
+		48876,
 		48900,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -101240,30 +94409,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		48913,
-		48913,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48914,
-		48914,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		48915,
+		"--bs-btn-active-color",
+		48913,
 		48933,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -101291,30 +94442,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		48940,
-		48940,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48941,
-		48941,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		48942,
+		"--bs-btn-active-bg",
+		48940,
 		48957,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -101342,30 +94475,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		48967,
-		48967,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		48968,
-		48968,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		48969,
+		"--bs-btn-active-border-color",
+		48967,
 		48994,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -101393,30 +94508,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49004,
-		49004,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49005,
-		49005,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		49006,
+		"--bs-btn-active-shadow",
+		49004,
 		49025,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -101601,30 +94698,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49064,
-		49064,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49065,
-		49065,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		49066,
+		"--bs-btn-disabled-color",
+		49064,
 		49086,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -101652,30 +94731,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49093,
-		49093,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49094,
-		49094,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		49095,
+		"--bs-btn-disabled-bg",
+		49093,
 		49112,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -101703,30 +94764,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49122,
-		49122,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49123,
-		49123,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		49124,
+		"--bs-btn-disabled-border-color",
+		49122,
 		49151,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -101779,30 +94822,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49176,
-		49176,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49177,
-		49177,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		49178,
+		"--bs-btn-color",
+		49176,
 		49189,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -101830,30 +94855,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49196,
-		49196,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49197,
-		49197,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-bg",
-		49198,
+		"--bs-btn-bg",
+		49196,
 		49206,
 		{
-			"value": "bs-btn-bg"
+			"value": "--bs-btn-bg"
 		}
 	],
 	[
@@ -101881,30 +94888,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49216,
-		49216,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49217,
-		49217,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		49218,
+		"--bs-btn-border-color",
+		49216,
 		49236,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -101932,30 +94921,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49246,
-		49246,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49247,
-		49247,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		49248,
+		"--bs-btn-hover-color",
+		49246,
 		49265,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -101983,30 +94954,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49272,
-		49272,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49273,
-		49273,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		49274,
+		"--bs-btn-hover-bg",
+		49272,
 		49288,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -102034,30 +94987,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49298,
-		49298,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49299,
-		49299,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		49300,
+		"--bs-btn-hover-border-color",
+		49298,
 		49324,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -102085,30 +95020,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49334,
-		49334,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49335,
-		49335,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		49336,
+		"--bs-btn-focus-shadow-rgb",
+		49334,
 		49358,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -102170,30 +95087,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49372,
-		49372,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49373,
-		49373,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		49374,
+		"--bs-btn-active-color",
+		49372,
 		49392,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -102221,30 +95120,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49399,
-		49399,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49400,
-		49400,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		49401,
+		"--bs-btn-active-bg",
+		49399,
 		49416,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -102272,30 +95153,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49426,
-		49426,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49427,
-		49427,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		49428,
+		"--bs-btn-active-border-color",
+		49426,
 		49453,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -102323,30 +95186,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49463,
-		49463,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49464,
-		49464,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		49465,
+		"--bs-btn-active-shadow",
+		49463,
 		49484,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -102531,30 +95376,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49523,
-		49523,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49524,
-		49524,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		49525,
+		"--bs-btn-disabled-color",
+		49523,
 		49545,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -102582,30 +95409,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49552,
-		49552,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49553,
-		49553,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		49554,
+		"--bs-btn-disabled-bg",
+		49552,
 		49571,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -102633,30 +95442,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49581,
-		49581,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49582,
-		49582,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		49583,
+		"--bs-btn-disabled-border-color",
+		49581,
 		49610,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -102709,30 +95500,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49633,
-		49633,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49634,
-		49634,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		49635,
+		"--bs-btn-color",
+		49633,
 		49646,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -102760,30 +95533,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49653,
-		49653,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49654,
-		49654,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-bg",
-		49655,
+		"--bs-btn-bg",
+		49653,
 		49663,
 		{
-			"value": "bs-btn-bg"
+			"value": "--bs-btn-bg"
 		}
 	],
 	[
@@ -102811,30 +95566,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49673,
-		49673,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49674,
-		49674,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		49675,
+		"--bs-btn-border-color",
+		49673,
 		49693,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -102862,30 +95599,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49703,
-		49703,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49704,
-		49704,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		49705,
+		"--bs-btn-hover-color",
+		49703,
 		49722,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -102913,30 +95632,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49729,
-		49729,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49730,
-		49730,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		49731,
+		"--bs-btn-hover-bg",
+		49729,
 		49745,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -102964,30 +95665,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49755,
-		49755,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49756,
-		49756,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		49757,
+		"--bs-btn-hover-border-color",
+		49755,
 		49781,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -103015,30 +95698,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49791,
-		49791,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49792,
-		49792,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		49793,
+		"--bs-btn-focus-shadow-rgb",
+		49791,
 		49815,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -103100,30 +95765,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49828,
-		49828,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49829,
-		49829,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		49830,
+		"--bs-btn-active-color",
+		49828,
 		49848,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -103151,30 +95798,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49855,
-		49855,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49856,
-		49856,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		49857,
+		"--bs-btn-active-bg",
+		49855,
 		49872,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -103202,30 +95831,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49882,
-		49882,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49883,
-		49883,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		49884,
+		"--bs-btn-active-border-color",
+		49882,
 		49909,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -103253,30 +95864,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49919,
-		49919,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49920,
-		49920,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		49921,
+		"--bs-btn-active-shadow",
+		49919,
 		49940,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -103461,30 +96054,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		49979,
-		49979,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		49980,
-		49980,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		49981,
+		"--bs-btn-disabled-color",
+		49979,
 		50001,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -103512,30 +96087,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50008,
-		50008,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50009,
-		50009,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		50010,
+		"--bs-btn-disabled-bg",
+		50008,
 		50027,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -103563,30 +96120,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50037,
-		50037,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50038,
-		50038,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		50039,
+		"--bs-btn-disabled-border-color",
+		50037,
 		50066,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -103639,30 +96178,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50086,
-		50086,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50087,
-		50087,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		50088,
+		"--bs-btn-color",
+		50086,
 		50099,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -103690,30 +96211,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50106,
-		50106,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50107,
-		50107,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-bg",
-		50108,
+		"--bs-btn-bg",
+		50106,
 		50116,
 		{
-			"value": "bs-btn-bg"
+			"value": "--bs-btn-bg"
 		}
 	],
 	[
@@ -103741,30 +96244,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50126,
-		50126,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50127,
-		50127,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		50128,
+		"--bs-btn-border-color",
+		50126,
 		50146,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -103792,30 +96277,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50156,
-		50156,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50157,
-		50157,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		50158,
+		"--bs-btn-hover-color",
+		50156,
 		50175,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -103843,30 +96310,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50182,
-		50182,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50183,
-		50183,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		50184,
+		"--bs-btn-hover-bg",
+		50182,
 		50198,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -103894,30 +96343,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50208,
-		50208,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50209,
-		50209,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		50210,
+		"--bs-btn-hover-border-color",
+		50208,
 		50234,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -103945,30 +96376,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50244,
-		50244,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50245,
-		50245,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		50246,
+		"--bs-btn-focus-shadow-rgb",
+		50244,
 		50268,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -104030,30 +96443,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50281,
-		50281,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50282,
-		50282,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		50283,
+		"--bs-btn-active-color",
+		50281,
 		50301,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -104081,30 +96476,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50308,
-		50308,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50309,
-		50309,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		50310,
+		"--bs-btn-active-bg",
+		50308,
 		50325,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -104132,30 +96509,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50335,
-		50335,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50336,
-		50336,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		50337,
+		"--bs-btn-active-border-color",
+		50335,
 		50362,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -104183,30 +96542,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50372,
-		50372,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50373,
-		50373,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		50374,
+		"--bs-btn-active-shadow",
+		50372,
 		50393,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -104391,30 +96732,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50432,
-		50432,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50433,
-		50433,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		50434,
+		"--bs-btn-disabled-color",
+		50432,
 		50454,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -104442,30 +96765,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50461,
-		50461,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50462,
-		50462,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		50463,
+		"--bs-btn-disabled-bg",
+		50461,
 		50480,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -104493,30 +96798,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50490,
-		50490,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50491,
-		50491,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		50492,
+		"--bs-btn-disabled-border-color",
+		50490,
 		50519,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -104569,30 +96856,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50542,
-		50542,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50543,
-		50543,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		50544,
+		"--bs-btn-color",
+		50542,
 		50555,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -104620,30 +96889,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50562,
-		50562,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50563,
-		50563,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-bg",
-		50564,
+		"--bs-btn-bg",
+		50562,
 		50572,
 		{
-			"value": "bs-btn-bg"
+			"value": "--bs-btn-bg"
 		}
 	],
 	[
@@ -104671,30 +96922,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50582,
-		50582,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50583,
-		50583,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		50584,
+		"--bs-btn-border-color",
+		50582,
 		50602,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -104722,30 +96955,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50612,
-		50612,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50613,
-		50613,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		50614,
+		"--bs-btn-hover-color",
+		50612,
 		50631,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -104773,30 +96988,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50638,
-		50638,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50639,
-		50639,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		50640,
+		"--bs-btn-hover-bg",
+		50638,
 		50654,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -104824,30 +97021,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50664,
-		50664,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50665,
-		50665,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		50666,
+		"--bs-btn-hover-border-color",
+		50664,
 		50690,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -104875,30 +97054,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50700,
-		50700,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50701,
-		50701,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		50702,
+		"--bs-btn-focus-shadow-rgb",
+		50700,
 		50724,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -104960,30 +97121,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50736,
-		50736,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50737,
-		50737,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		50738,
+		"--bs-btn-active-color",
+		50736,
 		50756,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -105011,30 +97154,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50763,
-		50763,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50764,
-		50764,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		50765,
+		"--bs-btn-active-bg",
+		50763,
 		50780,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -105062,30 +97187,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50790,
-		50790,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50791,
-		50791,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		50792,
+		"--bs-btn-active-border-color",
+		50790,
 		50817,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -105113,30 +97220,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50827,
-		50827,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50828,
-		50828,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		50829,
+		"--bs-btn-active-shadow",
+		50827,
 		50848,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -105321,30 +97410,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50887,
-		50887,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50888,
-		50888,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		50889,
+		"--bs-btn-disabled-color",
+		50887,
 		50909,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -105372,30 +97443,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50916,
-		50916,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50917,
-		50917,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		50918,
+		"--bs-btn-disabled-bg",
+		50916,
 		50935,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -105423,30 +97476,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50945,
-		50945,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50946,
-		50946,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		50947,
+		"--bs-btn-disabled-border-color",
+		50945,
 		50974,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -105499,30 +97534,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		50996,
-		50996,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		50997,
-		50997,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		50998,
+		"--bs-btn-color",
+		50996,
 		51009,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -105550,30 +97567,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51016,
-		51016,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51017,
-		51017,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-bg",
-		51018,
+		"--bs-btn-bg",
+		51016,
 		51026,
 		{
-			"value": "bs-btn-bg"
+			"value": "--bs-btn-bg"
 		}
 	],
 	[
@@ -105601,30 +97600,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51036,
-		51036,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51037,
-		51037,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		51038,
+		"--bs-btn-border-color",
+		51036,
 		51056,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -105652,30 +97633,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51066,
-		51066,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51067,
-		51067,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		51068,
+		"--bs-btn-hover-color",
+		51066,
 		51085,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -105703,30 +97666,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51092,
-		51092,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51093,
-		51093,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		51094,
+		"--bs-btn-hover-bg",
+		51092,
 		51108,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -105754,30 +97699,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51118,
-		51118,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51119,
-		51119,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		51120,
+		"--bs-btn-hover-border-color",
+		51118,
 		51144,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -105805,30 +97732,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51154,
-		51154,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51155,
-		51155,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		51156,
+		"--bs-btn-focus-shadow-rgb",
+		51154,
 		51178,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -105890,30 +97799,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51190,
-		51190,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51191,
-		51191,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		51192,
+		"--bs-btn-active-color",
+		51190,
 		51210,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -105941,30 +97832,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51217,
-		51217,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51218,
-		51218,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		51219,
+		"--bs-btn-active-bg",
+		51217,
 		51234,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -105992,30 +97865,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51244,
-		51244,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51245,
-		51245,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		51246,
+		"--bs-btn-active-border-color",
+		51244,
 		51271,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -106043,30 +97898,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51281,
-		51281,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51282,
-		51282,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		51283,
+		"--bs-btn-active-shadow",
+		51281,
 		51302,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -106251,30 +98088,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51341,
-		51341,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51342,
-		51342,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		51343,
+		"--bs-btn-disabled-color",
+		51341,
 		51363,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -106302,30 +98121,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51370,
-		51370,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51371,
-		51371,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		51372,
+		"--bs-btn-disabled-bg",
+		51370,
 		51389,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -106353,30 +98154,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51399,
-		51399,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51400,
-		51400,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		51401,
+		"--bs-btn-disabled-border-color",
+		51399,
 		51428,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -106429,30 +98212,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51449,
-		51449,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51450,
-		51450,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		51451,
+		"--bs-btn-color",
+		51449,
 		51462,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -106480,30 +98245,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51469,
-		51469,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51470,
-		51470,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-bg",
-		51471,
+		"--bs-btn-bg",
+		51469,
 		51479,
 		{
-			"value": "bs-btn-bg"
+			"value": "--bs-btn-bg"
 		}
 	],
 	[
@@ -106531,30 +98278,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51489,
-		51489,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51490,
-		51490,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		51491,
+		"--bs-btn-border-color",
+		51489,
 		51509,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -106582,30 +98311,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51519,
-		51519,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51520,
-		51520,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		51521,
+		"--bs-btn-hover-color",
+		51519,
 		51538,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -106633,30 +98344,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51545,
-		51545,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51546,
-		51546,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		51547,
+		"--bs-btn-hover-bg",
+		51545,
 		51561,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -106684,30 +98377,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51571,
-		51571,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51572,
-		51572,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		51573,
+		"--bs-btn-hover-border-color",
+		51571,
 		51597,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -106735,30 +98410,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51607,
-		51607,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51608,
-		51608,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		51609,
+		"--bs-btn-focus-shadow-rgb",
+		51607,
 		51631,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -106820,30 +98477,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51645,
-		51645,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51646,
-		51646,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		51647,
+		"--bs-btn-active-color",
+		51645,
 		51665,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -106871,30 +98510,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51672,
-		51672,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51673,
-		51673,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		51674,
+		"--bs-btn-active-bg",
+		51672,
 		51689,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -106922,30 +98543,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51699,
-		51699,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51700,
-		51700,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		51701,
+		"--bs-btn-active-border-color",
+		51699,
 		51726,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -106973,30 +98576,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51736,
-		51736,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51737,
-		51737,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		51738,
+		"--bs-btn-active-shadow",
+		51736,
 		51757,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -107181,30 +98766,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51796,
-		51796,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51797,
-		51797,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		51798,
+		"--bs-btn-disabled-color",
+		51796,
 		51818,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -107232,30 +98799,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51825,
-		51825,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51826,
-		51826,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		51827,
+		"--bs-btn-disabled-bg",
+		51825,
 		51844,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -107283,30 +98832,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51854,
-		51854,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51855,
-		51855,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		51856,
+		"--bs-btn-disabled-border-color",
+		51854,
 		51883,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -107359,30 +98890,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51903,
-		51903,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51904,
-		51904,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		51905,
+		"--bs-btn-color",
+		51903,
 		51916,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -107410,30 +98923,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51923,
-		51923,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51924,
-		51924,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-bg",
-		51925,
+		"--bs-btn-bg",
+		51923,
 		51933,
 		{
-			"value": "bs-btn-bg"
+			"value": "--bs-btn-bg"
 		}
 	],
 	[
@@ -107461,30 +98956,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51943,
-		51943,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51944,
-		51944,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		51945,
+		"--bs-btn-border-color",
+		51943,
 		51963,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -107512,30 +98989,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51973,
-		51973,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		51974,
-		51974,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		51975,
+		"--bs-btn-hover-color",
+		51973,
 		51992,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -107563,30 +99022,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		51999,
-		51999,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52000,
-		52000,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		52001,
+		"--bs-btn-hover-bg",
+		51999,
 		52015,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -107614,30 +99055,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52025,
-		52025,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52026,
-		52026,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		52027,
+		"--bs-btn-hover-border-color",
+		52025,
 		52051,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -107665,30 +99088,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52061,
-		52061,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52062,
-		52062,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		52063,
+		"--bs-btn-focus-shadow-rgb",
+		52061,
 		52085,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -107750,30 +99155,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52096,
-		52096,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52097,
-		52097,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		52098,
+		"--bs-btn-active-color",
+		52096,
 		52116,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -107801,30 +99188,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52123,
-		52123,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52124,
-		52124,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		52125,
+		"--bs-btn-active-bg",
+		52123,
 		52140,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -107852,30 +99221,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52150,
-		52150,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52151,
-		52151,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		52152,
+		"--bs-btn-active-border-color",
+		52150,
 		52177,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -107903,30 +99254,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52187,
-		52187,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52188,
-		52188,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		52189,
+		"--bs-btn-active-shadow",
+		52187,
 		52208,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -108111,30 +99444,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52247,
-		52247,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52248,
-		52248,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		52249,
+		"--bs-btn-disabled-color",
+		52247,
 		52269,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -108162,30 +99477,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52276,
-		52276,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52277,
-		52277,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		52278,
+		"--bs-btn-disabled-bg",
+		52276,
 		52295,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -108213,30 +99510,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52305,
-		52305,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52306,
-		52306,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		52307,
+		"--bs-btn-disabled-border-color",
+		52305,
 		52334,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -108289,30 +99568,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52365,
-		52365,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52366,
-		52366,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		52367,
+		"--bs-btn-color",
+		52365,
 		52378,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -108340,30 +99601,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52388,
-		52388,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52389,
-		52389,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		52390,
+		"--bs-btn-border-color",
+		52388,
 		52408,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -108391,30 +99634,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52418,
-		52418,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52419,
-		52419,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		52420,
+		"--bs-btn-hover-color",
+		52418,
 		52437,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -108442,30 +99667,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52444,
-		52444,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52445,
-		52445,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		52446,
+		"--bs-btn-hover-bg",
+		52444,
 		52460,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -108493,30 +99700,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52470,
-		52470,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52471,
-		52471,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		52472,
+		"--bs-btn-hover-border-color",
+		52470,
 		52496,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -108544,30 +99733,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52506,
-		52506,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52507,
-		52507,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		52508,
+		"--bs-btn-focus-shadow-rgb",
+		52506,
 		52530,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -108629,30 +99800,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52543,
-		52543,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52544,
-		52544,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		52545,
+		"--bs-btn-active-color",
+		52543,
 		52563,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -108680,30 +99833,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52570,
-		52570,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52571,
-		52571,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		52572,
+		"--bs-btn-active-bg",
+		52570,
 		52587,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -108731,30 +99866,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52597,
-		52597,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52598,
-		52598,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		52599,
+		"--bs-btn-active-border-color",
+		52597,
 		52624,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -108782,30 +99899,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52634,
-		52634,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52635,
-		52635,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		52636,
+		"--bs-btn-active-shadow",
+		52634,
 		52655,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -108990,30 +100089,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52694,
-		52694,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52695,
-		52695,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		52696,
+		"--bs-btn-disabled-color",
+		52694,
 		52716,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -109041,30 +100122,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52726,
-		52726,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52727,
-		52727,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		52728,
+		"--bs-btn-disabled-bg",
+		52726,
 		52745,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -109091,30 +100154,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52759,
-		52759,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52760,
-		52760,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		52761,
+		"--bs-btn-disabled-border-color",
+		52759,
 		52788,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -109142,30 +100187,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52798,
-		52798,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52799,
-		52799,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gradient",
-		52800,
+		"--bs-gradient",
+		52798,
 		52810,
 		{
-			"value": "bs-gradient"
+			"value": "--bs-gradient"
 		}
 	],
 	[
@@ -109217,30 +100244,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52840,
-		52840,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52841,
-		52841,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		52842,
+		"--bs-btn-color",
+		52840,
 		52853,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -109268,30 +100277,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52863,
-		52863,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52864,
-		52864,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		52865,
+		"--bs-btn-border-color",
+		52863,
 		52883,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -109319,30 +100310,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52893,
-		52893,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52894,
-		52894,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		52895,
+		"--bs-btn-hover-color",
+		52893,
 		52912,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -109370,30 +100343,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52919,
-		52919,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52920,
-		52920,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		52921,
+		"--bs-btn-hover-bg",
+		52919,
 		52935,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -109421,30 +100376,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52945,
-		52945,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52946,
-		52946,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		52947,
+		"--bs-btn-hover-border-color",
+		52945,
 		52971,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -109472,30 +100409,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		52981,
-		52981,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		52982,
-		52982,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		52983,
+		"--bs-btn-focus-shadow-rgb",
+		52981,
 		53005,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -109557,30 +100476,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53019,
-		53019,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53020,
-		53020,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		53021,
+		"--bs-btn-active-color",
+		53019,
 		53039,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -109608,30 +100509,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53046,
-		53046,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53047,
-		53047,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		53048,
+		"--bs-btn-active-bg",
+		53046,
 		53063,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -109659,30 +100542,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53073,
-		53073,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53074,
-		53074,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		53075,
+		"--bs-btn-active-border-color",
+		53073,
 		53100,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -109710,30 +100575,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53110,
-		53110,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53111,
-		53111,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		53112,
+		"--bs-btn-active-shadow",
+		53110,
 		53131,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -109918,30 +100765,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53170,
-		53170,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53171,
-		53171,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		53172,
+		"--bs-btn-disabled-color",
+		53170,
 		53192,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -109969,30 +100798,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53202,
-		53202,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53203,
-		53203,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		53204,
+		"--bs-btn-disabled-bg",
+		53202,
 		53221,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -110019,30 +100830,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53235,
-		53235,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53236,
-		53236,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		53237,
+		"--bs-btn-disabled-border-color",
+		53235,
 		53264,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -110070,30 +100863,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53274,
-		53274,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53275,
-		53275,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gradient",
-		53276,
+		"--bs-gradient",
+		53274,
 		53286,
 		{
-			"value": "bs-gradient"
+			"value": "--bs-gradient"
 		}
 	],
 	[
@@ -110145,30 +100920,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53314,
-		53314,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53315,
-		53315,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		53316,
+		"--bs-btn-color",
+		53314,
 		53327,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -110196,30 +100953,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53337,
-		53337,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53338,
-		53338,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		53339,
+		"--bs-btn-border-color",
+		53337,
 		53357,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -110247,30 +100986,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53367,
-		53367,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53368,
-		53368,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		53369,
+		"--bs-btn-hover-color",
+		53367,
 		53386,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -110298,30 +101019,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53393,
-		53393,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53394,
-		53394,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		53395,
+		"--bs-btn-hover-bg",
+		53393,
 		53409,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -110349,30 +101052,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53419,
-		53419,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53420,
-		53420,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		53421,
+		"--bs-btn-hover-border-color",
+		53419,
 		53445,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -110400,30 +101085,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53455,
-		53455,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53456,
-		53456,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		53457,
+		"--bs-btn-focus-shadow-rgb",
+		53455,
 		53479,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -110485,30 +101152,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53491,
-		53491,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53492,
-		53492,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		53493,
+		"--bs-btn-active-color",
+		53491,
 		53511,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -110536,30 +101185,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53518,
-		53518,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53519,
-		53519,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		53520,
+		"--bs-btn-active-bg",
+		53518,
 		53535,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -110587,30 +101218,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53545,
-		53545,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53546,
-		53546,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		53547,
+		"--bs-btn-active-border-color",
+		53545,
 		53572,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -110638,30 +101251,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53582,
-		53582,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53583,
-		53583,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		53584,
+		"--bs-btn-active-shadow",
+		53582,
 		53603,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -110846,30 +101441,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53642,
-		53642,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53643,
-		53643,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		53644,
+		"--bs-btn-disabled-color",
+		53642,
 		53664,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -110897,30 +101474,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53674,
-		53674,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53675,
-		53675,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		53676,
+		"--bs-btn-disabled-bg",
+		53674,
 		53693,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -110947,30 +101506,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53707,
-		53707,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53708,
-		53708,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		53709,
+		"--bs-btn-disabled-border-color",
+		53707,
 		53736,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -110998,30 +101539,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53746,
-		53746,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53747,
-		53747,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gradient",
-		53748,
+		"--bs-gradient",
+		53746,
 		53758,
 		{
-			"value": "bs-gradient"
+			"value": "--bs-gradient"
 		}
 	],
 	[
@@ -111073,30 +101596,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53783,
-		53783,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53784,
-		53784,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		53785,
+		"--bs-btn-color",
+		53783,
 		53796,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -111124,30 +101629,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53806,
-		53806,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53807,
-		53807,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		53808,
+		"--bs-btn-border-color",
+		53806,
 		53826,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -111175,30 +101662,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53836,
-		53836,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53837,
-		53837,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		53838,
+		"--bs-btn-hover-color",
+		53836,
 		53855,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -111226,30 +101695,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53862,
-		53862,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53863,
-		53863,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		53864,
+		"--bs-btn-hover-bg",
+		53862,
 		53878,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -111277,30 +101728,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53888,
-		53888,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53889,
-		53889,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		53890,
+		"--bs-btn-hover-border-color",
+		53888,
 		53914,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -111328,30 +101761,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53924,
-		53924,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53925,
-		53925,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		53926,
+		"--bs-btn-focus-shadow-rgb",
+		53924,
 		53948,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -111413,30 +101828,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53961,
-		53961,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53962,
-		53962,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		53963,
+		"--bs-btn-active-color",
+		53961,
 		53981,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -111464,30 +101861,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		53988,
-		53988,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		53989,
-		53989,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		53990,
+		"--bs-btn-active-bg",
+		53988,
 		54005,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -111515,30 +101894,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54015,
-		54015,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54016,
-		54016,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		54017,
+		"--bs-btn-active-border-color",
+		54015,
 		54042,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -111566,30 +101927,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54052,
-		54052,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54053,
-		54053,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		54054,
+		"--bs-btn-active-shadow",
+		54052,
 		54073,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -111774,30 +102117,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54112,
-		54112,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54113,
-		54113,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		54114,
+		"--bs-btn-disabled-color",
+		54112,
 		54134,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -111825,30 +102150,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54144,
-		54144,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54145,
-		54145,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		54146,
+		"--bs-btn-disabled-bg",
+		54144,
 		54163,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -111875,30 +102182,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54177,
-		54177,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54178,
-		54178,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		54179,
+		"--bs-btn-disabled-border-color",
+		54177,
 		54206,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -111926,30 +102215,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54216,
-		54216,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54217,
-		54217,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gradient",
-		54218,
+		"--bs-gradient",
+		54216,
 		54228,
 		{
-			"value": "bs-gradient"
+			"value": "--bs-gradient"
 		}
 	],
 	[
@@ -112001,30 +102272,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54256,
-		54256,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54257,
-		54257,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		54258,
+		"--bs-btn-color",
+		54256,
 		54269,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -112052,30 +102305,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54279,
-		54279,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54280,
-		54280,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		54281,
+		"--bs-btn-border-color",
+		54279,
 		54299,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -112103,30 +102338,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54309,
-		54309,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54310,
-		54310,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		54311,
+		"--bs-btn-hover-color",
+		54309,
 		54328,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -112154,30 +102371,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54335,
-		54335,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54336,
-		54336,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		54337,
+		"--bs-btn-hover-bg",
+		54335,
 		54351,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -112205,30 +102404,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54361,
-		54361,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54362,
-		54362,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		54363,
+		"--bs-btn-hover-border-color",
+		54361,
 		54387,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -112256,30 +102437,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54397,
-		54397,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54398,
-		54398,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		54399,
+		"--bs-btn-focus-shadow-rgb",
+		54397,
 		54421,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -112341,30 +102504,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54433,
-		54433,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54434,
-		54434,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		54435,
+		"--bs-btn-active-color",
+		54433,
 		54453,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -112392,30 +102537,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54460,
-		54460,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54461,
-		54461,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		54462,
+		"--bs-btn-active-bg",
+		54460,
 		54477,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -112443,30 +102570,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54487,
-		54487,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54488,
-		54488,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		54489,
+		"--bs-btn-active-border-color",
+		54487,
 		54514,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -112494,30 +102603,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54524,
-		54524,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54525,
-		54525,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		54526,
+		"--bs-btn-active-shadow",
+		54524,
 		54545,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -112702,30 +102793,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54584,
-		54584,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54585,
-		54585,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		54586,
+		"--bs-btn-disabled-color",
+		54584,
 		54606,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -112753,30 +102826,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54616,
-		54616,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54617,
-		54617,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		54618,
+		"--bs-btn-disabled-bg",
+		54616,
 		54635,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -112803,30 +102858,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54649,
-		54649,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54650,
-		54650,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		54651,
+		"--bs-btn-disabled-border-color",
+		54649,
 		54678,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -112854,30 +102891,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54688,
-		54688,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54689,
-		54689,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gradient",
-		54690,
+		"--bs-gradient",
+		54688,
 		54700,
 		{
-			"value": "bs-gradient"
+			"value": "--bs-gradient"
 		}
 	],
 	[
@@ -112929,30 +102948,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54727,
-		54727,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54728,
-		54728,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		54729,
+		"--bs-btn-color",
+		54727,
 		54740,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -112980,30 +102981,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54750,
-		54750,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54751,
-		54751,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		54752,
+		"--bs-btn-border-color",
+		54750,
 		54770,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -113031,30 +103014,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54780,
-		54780,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54781,
-		54781,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		54782,
+		"--bs-btn-hover-color",
+		54780,
 		54799,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -113082,30 +103047,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54806,
-		54806,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54807,
-		54807,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		54808,
+		"--bs-btn-hover-bg",
+		54806,
 		54822,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -113133,30 +103080,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54832,
-		54832,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54833,
-		54833,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		54834,
+		"--bs-btn-hover-border-color",
+		54832,
 		54858,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -113184,30 +103113,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54868,
-		54868,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54869,
-		54869,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		54870,
+		"--bs-btn-focus-shadow-rgb",
+		54868,
 		54892,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -113269,30 +103180,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54904,
-		54904,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54905,
-		54905,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		54906,
+		"--bs-btn-active-color",
+		54904,
 		54924,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -113320,30 +103213,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54931,
-		54931,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54932,
-		54932,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		54933,
+		"--bs-btn-active-bg",
+		54931,
 		54948,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -113371,30 +103246,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54958,
-		54958,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54959,
-		54959,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		54960,
+		"--bs-btn-active-border-color",
+		54958,
 		54985,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -113422,30 +103279,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		54995,
-		54995,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		54996,
-		54996,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		54997,
+		"--bs-btn-active-shadow",
+		54995,
 		55016,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -113630,30 +103469,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55055,
-		55055,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55056,
-		55056,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		55057,
+		"--bs-btn-disabled-color",
+		55055,
 		55077,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -113681,30 +103502,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55087,
-		55087,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55088,
-		55088,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		55089,
+		"--bs-btn-disabled-bg",
+		55087,
 		55106,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -113731,30 +103534,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55120,
-		55120,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55121,
-		55121,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		55122,
+		"--bs-btn-disabled-border-color",
+		55120,
 		55149,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -113782,30 +103567,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55159,
-		55159,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55160,
-		55160,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gradient",
-		55161,
+		"--bs-gradient",
+		55159,
 		55171,
 		{
-			"value": "bs-gradient"
+			"value": "--bs-gradient"
 		}
 	],
 	[
@@ -113857,30 +103624,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55197,
-		55197,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55198,
-		55198,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		55199,
+		"--bs-btn-color",
+		55197,
 		55210,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -113908,30 +103657,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55220,
-		55220,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55221,
-		55221,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		55222,
+		"--bs-btn-border-color",
+		55220,
 		55240,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -113959,30 +103690,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55250,
-		55250,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55251,
-		55251,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		55252,
+		"--bs-btn-hover-color",
+		55250,
 		55269,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -114010,30 +103723,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55276,
-		55276,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55277,
-		55277,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		55278,
+		"--bs-btn-hover-bg",
+		55276,
 		55292,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -114061,30 +103756,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55302,
-		55302,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55303,
-		55303,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		55304,
+		"--bs-btn-hover-border-color",
+		55302,
 		55328,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -114112,30 +103789,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55338,
-		55338,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55339,
-		55339,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		55340,
+		"--bs-btn-focus-shadow-rgb",
+		55338,
 		55362,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -114197,30 +103856,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55376,
-		55376,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55377,
-		55377,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		55378,
+		"--bs-btn-active-color",
+		55376,
 		55396,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -114248,30 +103889,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55403,
-		55403,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55404,
-		55404,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		55405,
+		"--bs-btn-active-bg",
+		55403,
 		55420,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -114299,30 +103922,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55430,
-		55430,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55431,
-		55431,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		55432,
+		"--bs-btn-active-border-color",
+		55430,
 		55457,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -114350,30 +103955,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55467,
-		55467,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55468,
-		55468,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		55469,
+		"--bs-btn-active-shadow",
+		55467,
 		55488,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -114558,30 +104145,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55527,
-		55527,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55528,
-		55528,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		55529,
+		"--bs-btn-disabled-color",
+		55527,
 		55549,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -114609,30 +104178,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55559,
-		55559,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55560,
-		55560,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		55561,
+		"--bs-btn-disabled-bg",
+		55559,
 		55578,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -114659,30 +104210,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55592,
-		55592,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55593,
-		55593,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		55594,
+		"--bs-btn-disabled-border-color",
+		55592,
 		55621,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -114710,30 +104243,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55631,
-		55631,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55632,
-		55632,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gradient",
-		55633,
+		"--bs-gradient",
+		55631,
 		55643,
 		{
-			"value": "bs-gradient"
+			"value": "--bs-gradient"
 		}
 	],
 	[
@@ -114785,30 +104300,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55668,
-		55668,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55669,
-		55669,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		55670,
+		"--bs-btn-color",
+		55668,
 		55681,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -114836,30 +104333,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55691,
-		55691,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55692,
-		55692,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		55693,
+		"--bs-btn-border-color",
+		55691,
 		55711,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -114887,30 +104366,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55721,
-		55721,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55722,
-		55722,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		55723,
+		"--bs-btn-hover-color",
+		55721,
 		55740,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -114938,30 +104399,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55747,
-		55747,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55748,
-		55748,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-bg",
-		55749,
+		"--bs-btn-hover-bg",
+		55747,
 		55763,
 		{
-			"value": "bs-btn-hover-bg"
+			"value": "--bs-btn-hover-bg"
 		}
 	],
 	[
@@ -114989,30 +104432,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55773,
-		55773,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55774,
-		55774,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		55775,
+		"--bs-btn-hover-border-color",
+		55773,
 		55799,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -115040,30 +104465,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55809,
-		55809,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55810,
-		55810,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		55811,
+		"--bs-btn-focus-shadow-rgb",
+		55809,
 		55833,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -115125,30 +104532,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55844,
-		55844,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55845,
-		55845,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		55846,
+		"--bs-btn-active-color",
+		55844,
 		55864,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -115176,30 +104565,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55871,
-		55871,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55872,
-		55872,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-bg",
-		55873,
+		"--bs-btn-active-bg",
+		55871,
 		55888,
 		{
-			"value": "bs-btn-active-bg"
+			"value": "--bs-btn-active-bg"
 		}
 	],
 	[
@@ -115227,30 +104598,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55898,
-		55898,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55899,
-		55899,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		55900,
+		"--bs-btn-active-border-color",
+		55898,
 		55925,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -115278,30 +104631,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55935,
-		55935,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55936,
-		55936,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-shadow",
-		55937,
+		"--bs-btn-active-shadow",
+		55935,
 		55956,
 		{
-			"value": "bs-btn-active-shadow"
+			"value": "--bs-btn-active-shadow"
 		}
 	],
 	[
@@ -115486,30 +104821,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		55995,
-		55995,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		55996,
-		55996,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		55997,
+		"--bs-btn-disabled-color",
+		55995,
 		56017,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -115537,30 +104854,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56027,
-		56027,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56028,
-		56028,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-bg",
-		56029,
+		"--bs-btn-disabled-bg",
+		56027,
 		56046,
 		{
-			"value": "bs-btn-disabled-bg"
+			"value": "--bs-btn-disabled-bg"
 		}
 	],
 	[
@@ -115587,30 +104886,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56060,
-		56060,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56061,
-		56061,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		56062,
+		"--bs-btn-disabled-border-color",
+		56060,
 		56089,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -115638,30 +104919,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56099,
-		56099,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56100,
-		56100,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gradient",
-		56101,
+		"--bs-gradient",
+		56099,
 		56111,
 		{
-			"value": "bs-gradient"
+			"value": "--bs-gradient"
 		}
 	],
 	[
@@ -115713,30 +104976,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56128,
-		56128,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56129,
-		56129,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-font-weight",
-		56130,
+		"--bs-btn-font-weight",
+		56128,
 		56147,
 		{
-			"value": "bs-btn-font-weight"
+			"value": "--bs-btn-font-weight"
 		}
 	],
 	[
@@ -115764,30 +105009,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56153,
-		56153,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56154,
-		56154,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		56155,
+		"--bs-btn-color",
+		56153,
 		56166,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -115807,30 +105034,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		56172,
-		56172,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56173,
-		56173,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-link-color",
-		56174,
+		"--bs-link-color",
+		56172,
 		56186,
 		{
-			"value": "bs-link-color"
+			"value": "--bs-link-color"
 		}
 	],
 	[
@@ -115848,30 +105057,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56189,
-		56189,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56190,
-		56190,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-bg",
-		56191,
+		"--bs-btn-bg",
+		56189,
 		56199,
 		{
-			"value": "bs-btn-bg"
+			"value": "--bs-btn-bg"
 		}
 	],
 	[
@@ -115898,30 +105089,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56213,
-		56213,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56214,
-		56214,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-color",
-		56215,
+		"--bs-btn-border-color",
+		56213,
 		56233,
 		{
-			"value": "bs-btn-border-color"
+			"value": "--bs-btn-border-color"
 		}
 	],
 	[
@@ -115948,30 +105121,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56247,
-		56247,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56248,
-		56248,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		56249,
+		"--bs-btn-hover-color",
+		56247,
 		56266,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -115991,30 +105146,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		56272,
-		56272,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56273,
-		56273,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-link-hover-color",
-		56274,
+		"--bs-link-hover-color",
+		56272,
 		56292,
 		{
-			"value": "bs-link-hover-color"
+			"value": "--bs-link-hover-color"
 		}
 	],
 	[
@@ -116032,30 +105169,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56295,
-		56295,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56296,
-		56296,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-border-color",
-		56297,
+		"--bs-btn-hover-border-color",
+		56295,
 		56321,
 		{
-			"value": "bs-btn-hover-border-color"
+			"value": "--bs-btn-hover-border-color"
 		}
 	],
 	[
@@ -116082,30 +105201,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56335,
-		56335,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56336,
-		56336,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-color",
-		56337,
+		"--bs-btn-active-color",
+		56335,
 		56355,
 		{
-			"value": "bs-btn-active-color"
+			"value": "--bs-btn-active-color"
 		}
 	],
 	[
@@ -116125,30 +105226,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		56361,
-		56361,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56362,
-		56362,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-link-hover-color",
-		56363,
+		"--bs-link-hover-color",
+		56361,
 		56381,
 		{
-			"value": "bs-link-hover-color"
+			"value": "--bs-link-hover-color"
 		}
 	],
 	[
@@ -116166,30 +105249,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56384,
-		56384,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56385,
-		56385,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-active-border-color",
-		56386,
+		"--bs-btn-active-border-color",
+		56384,
 		56411,
 		{
-			"value": "bs-btn-active-border-color"
+			"value": "--bs-btn-active-border-color"
 		}
 	],
 	[
@@ -116216,30 +105281,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56425,
-		56425,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56426,
-		56426,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-color",
-		56427,
+		"--bs-btn-disabled-color",
+		56425,
 		56447,
 		{
-			"value": "bs-btn-disabled-color"
+			"value": "--bs-btn-disabled-color"
 		}
 	],
 	[
@@ -116267,30 +105314,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56457,
-		56457,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56458,
-		56458,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-disabled-border-color",
-		56459,
+		"--bs-btn-disabled-border-color",
+		56457,
 		56486,
 		{
-			"value": "bs-btn-disabled-border-color"
+			"value": "--bs-btn-disabled-border-color"
 		}
 	],
 	[
@@ -116317,30 +105346,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56500,
-		56500,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56501,
-		56501,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-box-shadow",
-		56502,
+		"--bs-btn-box-shadow",
+		56500,
 		56518,
 		{
-			"value": "bs-btn-box-shadow"
+			"value": "--bs-btn-box-shadow"
 		}
 	],
 	[
@@ -116367,30 +105378,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56525,
-		56525,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56526,
-		56526,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-focus-shadow-rgb",
-		56527,
+		"--bs-btn-focus-shadow-rgb",
+		56525,
 		56549,
 		{
-			"value": "bs-btn-focus-shadow-rgb"
+			"value": "--bs-btn-focus-shadow-rgb"
 		}
 	],
 	[
@@ -116550,30 +105543,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		56622,
-		56622,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56623,
-		56623,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-color",
-		56624,
+		"--bs-btn-color",
+		56622,
 		56635,
 		{
-			"value": "bs-btn-color"
+			"value": "--bs-btn-color"
 		}
 	],
 	[
@@ -116657,30 +105632,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		56664,
-		56664,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56665,
-		56665,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-hover-color",
-		56666,
+		"--bs-btn-hover-color",
+		56664,
 		56683,
 		{
-			"value": "bs-btn-hover-color"
+			"value": "--bs-btn-hover-color"
 		}
 	],
 	[
@@ -116775,30 +105732,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56713,
-		56713,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56714,
-		56714,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-padding-y",
-		56715,
+		"--bs-btn-padding-y",
+		56713,
 		56730,
 		{
-			"value": "bs-btn-padding-y"
+			"value": "--bs-btn-padding-y"
 		}
 	],
 	[
@@ -116827,30 +105766,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56739,
-		56739,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56740,
-		56740,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-padding-x",
-		56741,
+		"--bs-btn-padding-x",
+		56739,
 		56756,
 		{
-			"value": "bs-btn-padding-x"
+			"value": "--bs-btn-padding-x"
 		}
 	],
 	[
@@ -116879,30 +105800,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56763,
-		56763,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56764,
-		56764,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-font-size",
-		56765,
+		"--bs-btn-font-size",
+		56763,
 		56780,
 		{
-			"value": "bs-btn-font-size"
+			"value": "--bs-btn-font-size"
 		}
 	],
 	[
@@ -116931,30 +105834,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56790,
-		56790,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56791,
-		56791,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-radius",
-		56792,
+		"--bs-btn-border-radius",
+		56790,
 		56811,
 		{
-			"value": "bs-btn-border-radius"
+			"value": "--bs-btn-border-radius"
 		}
 	],
 	[
@@ -117060,30 +105945,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56847,
-		56847,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56848,
-		56848,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-padding-y",
-		56849,
+		"--bs-btn-padding-y",
+		56847,
 		56864,
 		{
-			"value": "bs-btn-padding-y"
+			"value": "--bs-btn-padding-y"
 		}
 	],
 	[
@@ -117112,30 +105979,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56874,
-		56874,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56875,
-		56875,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-padding-x",
-		56876,
+		"--bs-btn-padding-x",
+		56874,
 		56891,
 		{
-			"value": "bs-btn-padding-x"
+			"value": "--bs-btn-padding-x"
 		}
 	],
 	[
@@ -117164,30 +106013,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56900,
-		56900,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56901,
-		56901,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-font-size",
-		56902,
+		"--bs-btn-font-size",
+		56900,
 		56917,
 		{
-			"value": "bs-btn-font-size"
+			"value": "--bs-btn-font-size"
 		}
 	],
 	[
@@ -117216,30 +106047,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		56928,
-		56928,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		56929,
-		56929,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-btn-border-radius",
-		56930,
+		"--bs-btn-border-radius",
+		56928,
 		56949,
 		{
-			"value": "bs-btn-border-radius"
+			"value": "--bs-btn-border-radius"
 		}
 	],
 	[
@@ -119038,30 +107851,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		57808,
-		57808,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		57809,
-		57809,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-zindex",
-		57810,
+		"--bs-dropdown-zindex",
+		57808,
 		57827,
 		{
-			"value": "bs-dropdown-zindex"
+			"value": "--bs-dropdown-zindex"
 		}
 	],
 	[
@@ -119089,30 +107884,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		57834,
-		57834,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		57835,
-		57835,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-min-width",
-		57836,
+		"--bs-dropdown-min-width",
+		57834,
 		57856,
 		{
-			"value": "bs-dropdown-min-width"
+			"value": "--bs-dropdown-min-width"
 		}
 	],
 	[
@@ -119141,30 +107918,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		57864,
-		57864,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		57865,
-		57865,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-padding-x",
-		57866,
+		"--bs-dropdown-padding-x",
+		57864,
 		57886,
 		{
-			"value": "bs-dropdown-padding-x"
+			"value": "--bs-dropdown-padding-x"
 		}
 	],
 	[
@@ -119192,30 +107951,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		57890,
-		57890,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		57891,
-		57891,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-padding-y",
-		57892,
+		"--bs-dropdown-padding-y",
+		57890,
 		57912,
 		{
-			"value": "bs-dropdown-padding-y"
+			"value": "--bs-dropdown-padding-y"
 		}
 	],
 	[
@@ -119244,30 +107985,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		57921,
-		57921,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		57922,
-		57922,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-spacer",
-		57923,
+		"--bs-dropdown-spacer",
+		57921,
 		57940,
 		{
-			"value": "bs-dropdown-spacer"
+			"value": "--bs-dropdown-spacer"
 		}
 	],
 	[
@@ -119296,30 +108019,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		57951,
-		57951,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		57952,
-		57952,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-font-size",
-		57953,
+		"--bs-dropdown-font-size",
+		57951,
 		57973,
 		{
-			"value": "bs-dropdown-font-size"
+			"value": "--bs-dropdown-font-size"
 		}
 	],
 	[
@@ -119348,30 +108053,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		57980,
-		57980,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		57981,
-		57981,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-color",
-		57982,
+		"--bs-dropdown-color",
+		57980,
 		57998,
 		{
-			"value": "bs-dropdown-color"
+			"value": "--bs-dropdown-color"
 		}
 	],
 	[
@@ -119399,30 +108086,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58008,
-		58008,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58009,
-		58009,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-bg",
-		58010,
+		"--bs-dropdown-bg",
+		58008,
 		58023,
 		{
-			"value": "bs-dropdown-bg"
+			"value": "--bs-dropdown-bg"
 		}
 	],
 	[
@@ -119450,30 +108119,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58030,
-		58030,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58031,
-		58031,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-border-color",
-		58032,
+		"--bs-dropdown-border-color",
+		58030,
 		58055,
 		{
-			"value": "bs-dropdown-border-color"
+			"value": "--bs-dropdown-border-color"
 		}
 	],
 	[
@@ -119493,30 +108144,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		58061,
-		58061,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58062,
-		58062,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color-translucent",
-		58063,
+		"--bs-border-color-translucent",
+		58061,
 		58089,
 		{
-			"value": "bs-border-color-translucent"
+			"value": "--bs-border-color-translucent"
 		}
 	],
 	[
@@ -119534,30 +108167,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58092,
-		58092,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58093,
-		58093,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-border-radius",
-		58094,
+		"--bs-dropdown-border-radius",
+		58092,
 		58118,
 		{
-			"value": "bs-dropdown-border-radius"
+			"value": "--bs-dropdown-border-radius"
 		}
 	],
 	[
@@ -119586,30 +108201,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58129,
-		58129,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58130,
-		58130,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-border-width",
-		58131,
+		"--bs-dropdown-border-width",
+		58129,
 		58154,
 		{
-			"value": "bs-dropdown-border-width"
+			"value": "--bs-dropdown-border-width"
 		}
 	],
 	[
@@ -119638,30 +108235,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58160,
-		58160,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58161,
-		58161,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-inner-border-radius",
-		58162,
+		"--bs-dropdown-inner-border-radius",
+		58160,
 		58192,
 		{
-			"value": "bs-dropdown-inner-border-radius"
+			"value": "--bs-dropdown-inner-border-radius"
 		}
 	],
 	[
@@ -119740,30 +108319,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58215,
-		58215,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58216,
-		58216,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-divider-bg",
-		58217,
+		"--bs-dropdown-divider-bg",
+		58215,
 		58238,
 		{
-			"value": "bs-dropdown-divider-bg"
+			"value": "--bs-dropdown-divider-bg"
 		}
 	],
 	[
@@ -119783,30 +108344,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		58244,
-		58244,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58245,
-		58245,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color-translucent",
-		58246,
+		"--bs-border-color-translucent",
+		58244,
 		58272,
 		{
-			"value": "bs-border-color-translucent"
+			"value": "--bs-border-color-translucent"
 		}
 	],
 	[
@@ -119824,30 +108367,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58275,
-		58275,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58276,
-		58276,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-divider-margin-y",
-		58277,
+		"--bs-dropdown-divider-margin-y",
+		58275,
 		58304,
 		{
-			"value": "bs-dropdown-divider-margin-y"
+			"value": "--bs-dropdown-divider-margin-y"
 		}
 	],
 	[
@@ -119876,30 +108401,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58313,
-		58313,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58314,
-		58314,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-box-shadow",
-		58315,
+		"--bs-dropdown-box-shadow",
+		58313,
 		58336,
 		{
-			"value": "bs-dropdown-box-shadow"
+			"value": "--bs-dropdown-box-shadow"
 		}
 	],
 	[
@@ -120068,30 +108575,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58372,
-		58372,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58373,
-		58373,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-color",
-		58374,
+		"--bs-dropdown-link-color",
+		58372,
 		58395,
 		{
-			"value": "bs-dropdown-link-color"
+			"value": "--bs-dropdown-link-color"
 		}
 	],
 	[
@@ -120119,30 +108608,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58405,
-		58405,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58406,
-		58406,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-hover-color",
-		58407,
+		"--bs-dropdown-link-hover-color",
+		58405,
 		58434,
 		{
-			"value": "bs-dropdown-link-hover-color"
+			"value": "--bs-dropdown-link-hover-color"
 		}
 	],
 	[
@@ -120170,30 +108641,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58444,
-		58444,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58445,
-		58445,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-hover-bg",
-		58446,
+		"--bs-dropdown-link-hover-bg",
+		58444,
 		58470,
 		{
-			"value": "bs-dropdown-link-hover-bg"
+			"value": "--bs-dropdown-link-hover-bg"
 		}
 	],
 	[
@@ -120221,30 +108674,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58480,
-		58480,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58481,
-		58481,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-active-color",
-		58482,
+		"--bs-dropdown-link-active-color",
+		58480,
 		58510,
 		{
-			"value": "bs-dropdown-link-active-color"
+			"value": "--bs-dropdown-link-active-color"
 		}
 	],
 	[
@@ -120272,30 +108707,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58517,
-		58517,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58518,
-		58518,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-active-bg",
-		58519,
+		"--bs-dropdown-link-active-bg",
+		58517,
 		58544,
 		{
-			"value": "bs-dropdown-link-active-bg"
+			"value": "--bs-dropdown-link-active-bg"
 		}
 	],
 	[
@@ -120323,30 +108740,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58554,
-		58554,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58555,
-		58555,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-disabled-color",
-		58556,
+		"--bs-dropdown-link-disabled-color",
+		58554,
 		58586,
 		{
-			"value": "bs-dropdown-link-disabled-color"
+			"value": "--bs-dropdown-link-disabled-color"
 		}
 	],
 	[
@@ -120374,30 +108773,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58596,
-		58596,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58597,
-		58597,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-item-padding-x",
-		58598,
+		"--bs-dropdown-item-padding-x",
+		58596,
 		58623,
 		{
-			"value": "bs-dropdown-item-padding-x"
+			"value": "--bs-dropdown-item-padding-x"
 		}
 	],
 	[
@@ -120426,30 +108807,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58630,
-		58630,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58631,
-		58631,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-item-padding-y",
-		58632,
+		"--bs-dropdown-item-padding-y",
+		58630,
 		58657,
 		{
-			"value": "bs-dropdown-item-padding-y"
+			"value": "--bs-dropdown-item-padding-y"
 		}
 	],
 	[
@@ -120478,30 +108841,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58667,
-		58667,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58668,
-		58668,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-header-color",
-		58669,
+		"--bs-dropdown-header-color",
+		58667,
 		58692,
 		{
-			"value": "bs-dropdown-header-color"
+			"value": "--bs-dropdown-header-color"
 		}
 	],
 	[
@@ -120529,30 +108874,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58702,
-		58702,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58703,
-		58703,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-header-padding-x",
-		58704,
+		"--bs-dropdown-header-padding-x",
+		58702,
 		58731,
 		{
-			"value": "bs-dropdown-header-padding-x"
+			"value": "--bs-dropdown-header-padding-x"
 		}
 	],
 	[
@@ -120581,30 +108908,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		58738,
-		58738,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58739,
-		58739,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-header-padding-y",
-		58740,
+		"--bs-dropdown-header-padding-y",
+		58738,
 		58767,
 		{
-			"value": "bs-dropdown-header-padding-y"
+			"value": "--bs-dropdown-header-padding-y"
 		}
 	],
 	[
@@ -120690,30 +108999,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		58806,
-		58806,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58807,
-		58807,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-zindex",
-		58808,
+		"--bs-dropdown-zindex",
+		58806,
 		58825,
 		{
-			"value": "bs-dropdown-zindex"
+			"value": "--bs-dropdown-zindex"
 		}
 	],
 	[
@@ -120788,30 +109079,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		58855,
-		58855,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58856,
-		58856,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-min-width",
-		58857,
+		"--bs-dropdown-min-width",
+		58855,
 		58877,
 		{
-			"value": "bs-dropdown-min-width"
+			"value": "--bs-dropdown-min-width"
 		}
 	],
 	[
@@ -120854,30 +109127,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		58892,
-		58892,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58893,
-		58893,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-padding-y",
-		58894,
+		"--bs-dropdown-padding-y",
+		58892,
 		58914,
 		{
-			"value": "bs-dropdown-padding-y"
+			"value": "--bs-dropdown-padding-y"
 		}
 	],
 	[
@@ -120904,30 +109159,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		58921,
-		58921,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58922,
-		58922,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-padding-x",
-		58923,
+		"--bs-dropdown-padding-x",
+		58921,
 		58943,
 		{
-			"value": "bs-dropdown-padding-x"
+			"value": "--bs-dropdown-padding-x"
 		}
 	],
 	[
@@ -121003,30 +109240,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		58969,
-		58969,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		58970,
-		58970,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-font-size",
-		58971,
+		"--bs-dropdown-font-size",
+		58969,
 		58991,
 		{
-			"value": "bs-dropdown-font-size"
+			"value": "--bs-dropdown-font-size"
 		}
 	],
 	[
@@ -121069,30 +109288,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		59004,
-		59004,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		59005,
-		59005,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-color",
-		59006,
+		"--bs-dropdown-color",
+		59004,
 		59022,
 		{
-			"value": "bs-dropdown-color"
+			"value": "--bs-dropdown-color"
 		}
 	],
 	[
@@ -121199,30 +109400,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		59078,
-		59078,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		59079,
-		59079,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-bg",
-		59080,
+		"--bs-dropdown-bg",
+		59078,
 		59093,
 		{
-			"value": "bs-dropdown-bg"
+			"value": "--bs-dropdown-bg"
 		}
 	],
 	[
@@ -121297,30 +109480,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		59135,
-		59135,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		59136,
-		59136,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-border-width",
-		59137,
+		"--bs-dropdown-border-width",
+		59135,
 		59160,
 		{
-			"value": "bs-dropdown-border-width"
+			"value": "--bs-dropdown-border-width"
 		}
 	],
 	[
@@ -121363,30 +109528,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		59173,
-		59173,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		59174,
-		59174,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-border-color",
-		59175,
+		"--bs-dropdown-border-color",
+		59173,
 		59198,
 		{
-			"value": "bs-dropdown-border-color"
+			"value": "--bs-dropdown-border-color"
 		}
 	],
 	[
@@ -121429,30 +109576,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		59219,
-		59219,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		59220,
-		59220,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-border-radius",
-		59221,
+		"--bs-dropdown-border-radius",
+		59219,
 		59245,
 		{
-			"value": "bs-dropdown-border-radius"
+			"value": "--bs-dropdown-border-radius"
 		}
 	],
 	[
@@ -121608,30 +109737,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		59310,
-		59310,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		59311,
-		59311,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-spacer",
-		59312,
+		"--bs-dropdown-spacer",
+		59310,
 		59329,
 		{
-			"value": "bs-dropdown-spacer"
+			"value": "--bs-dropdown-spacer"
 		}
 	],
 	[
@@ -121674,30 +109785,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		59353,
-		59353,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		59354,
-		59354,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-position",
-		59355,
+		"--bs-position",
+		59353,
 		59365,
 		{
-			"value": "bs-position"
+			"value": "--bs-position"
 		}
 	],
 	[
@@ -121862,30 +109955,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		59447,
-		59447,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		59448,
-		59448,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-position",
-		59449,
+		"--bs-position",
+		59447,
 		59459,
 		{
-			"value": "bs-position"
+			"value": "--bs-position"
 		}
 	],
 	[
@@ -122114,30 +110189,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		59567,
-		59567,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		59568,
-		59568,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-position",
-		59569,
+		"--bs-position",
+		59567,
 		59579,
 		{
-			"value": "bs-position"
+			"value": "--bs-position"
 		}
 	],
 	[
@@ -122302,30 +110359,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		59667,
-		59667,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		59668,
-		59668,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-position",
-		59669,
+		"--bs-position",
+		59667,
 		59679,
 		{
-			"value": "bs-position"
+			"value": "--bs-position"
 		}
 	],
 	[
@@ -122561,30 +110600,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		59791,
-		59791,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		59792,
-		59792,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-position",
-		59793,
+		"--bs-position",
+		59791,
 		59803,
 		{
-			"value": "bs-position"
+			"value": "--bs-position"
 		}
 	],
 	[
@@ -122749,30 +110770,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		59891,
-		59891,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		59892,
-		59892,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-position",
-		59893,
+		"--bs-position",
+		59891,
 		59903,
 		{
-			"value": "bs-position"
+			"value": "--bs-position"
 		}
 	],
 	[
@@ -123008,30 +111011,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		60015,
-		60015,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		60016,
-		60016,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-position",
-		60017,
+		"--bs-position",
+		60015,
 		60027,
 		{
-			"value": "bs-position"
+			"value": "--bs-position"
 		}
 	],
 	[
@@ -123196,30 +111181,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		60115,
-		60115,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		60116,
-		60116,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-position",
-		60117,
+		"--bs-position",
+		60115,
 		60127,
 		{
-			"value": "bs-position"
+			"value": "--bs-position"
 		}
 	],
 	[
@@ -123455,30 +111422,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		60240,
-		60240,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		60241,
-		60241,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-position",
-		60242,
+		"--bs-position",
+		60240,
 		60252,
 		{
-			"value": "bs-position"
+			"value": "--bs-position"
 		}
 	],
 	[
@@ -123643,30 +111592,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		60340,
-		60340,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		60341,
-		60341,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-position",
-		60342,
+		"--bs-position",
+		60340,
 		60352,
 		{
-			"value": "bs-position"
+			"value": "--bs-position"
 		}
 	],
 	[
@@ -123902,30 +111833,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		60466,
-		60466,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		60467,
-		60467,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-position",
-		60468,
+		"--bs-position",
+		60466,
 		60478,
 		{
-			"value": "bs-position"
+			"value": "--bs-position"
 		}
 	],
 	[
@@ -124090,30 +112003,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		60568,
-		60568,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		60569,
-		60569,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-position",
-		60570,
+		"--bs-position",
+		60568,
 		60580,
 		{
-			"value": "bs-position"
+			"value": "--bs-position"
 		}
 	],
 	[
@@ -124455,30 +112350,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		60735,
-		60735,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		60736,
-		60736,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-spacer",
-		60737,
+		"--bs-dropdown-spacer",
+		60735,
 		60754,
 		{
-			"value": "bs-dropdown-spacer"
+			"value": "--bs-dropdown-spacer"
 		}
 	],
 	[
@@ -125266,30 +113143,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		61119,
-		61119,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		61120,
-		61120,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-spacer",
-		61121,
+		"--bs-dropdown-spacer",
+		61119,
 		61138,
 		{
-			"value": "bs-dropdown-spacer"
+			"value": "--bs-dropdown-spacer"
 		}
 	],
 	[
@@ -126183,30 +114042,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		61558,
-		61558,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		61559,
-		61559,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-spacer",
-		61560,
+		"--bs-dropdown-spacer",
+		61558,
 		61577,
 		{
-			"value": "bs-dropdown-spacer"
+			"value": "--bs-dropdown-spacer"
 		}
 	],
 	[
@@ -127232,30 +115073,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		62087,
-		62087,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		62088,
-		62088,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-divider-margin-y",
-		62089,
+		"--bs-dropdown-divider-margin-y",
+		62087,
 		62116,
 		{
-			"value": "bs-dropdown-divider-margin-y"
+			"value": "--bs-dropdown-divider-margin-y"
 		}
 	],
 	[
@@ -127381,30 +115204,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		62162,
-		62162,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		62163,
-		62163,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-divider-bg",
-		62164,
+		"--bs-dropdown-divider-bg",
+		62162,
 		62185,
 		{
-			"value": "bs-dropdown-divider-bg"
+			"value": "--bs-dropdown-divider-bg"
 		}
 	],
 	[
@@ -127569,30 +115374,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		62250,
-		62250,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		62251,
-		62251,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-item-padding-y",
-		62252,
+		"--bs-dropdown-item-padding-y",
+		62250,
 		62277,
 		{
-			"value": "bs-dropdown-item-padding-y"
+			"value": "--bs-dropdown-item-padding-y"
 		}
 	],
 	[
@@ -127619,30 +115406,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		62284,
-		62284,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		62285,
-		62285,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-item-padding-x",
-		62286,
+		"--bs-dropdown-item-padding-x",
+		62284,
 		62311,
 		{
-			"value": "bs-dropdown-item-padding-x"
+			"value": "--bs-dropdown-item-padding-x"
 		}
 	],
 	[
@@ -127750,30 +115519,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		62351,
-		62351,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		62352,
-		62352,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-color",
-		62353,
+		"--bs-dropdown-link-color",
+		62351,
 		62374,
 		{
-			"value": "bs-dropdown-link-color"
+			"value": "--bs-dropdown-link-color"
 		}
 	],
 	[
@@ -128059,30 +115810,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		62526,
-		62526,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		62527,
-		62527,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-hover-color",
-		62528,
+		"--bs-dropdown-link-hover-color",
+		62526,
 		62555,
 		{
-			"value": "bs-dropdown-link-hover-color"
+			"value": "--bs-dropdown-link-hover-color"
 		}
 	],
 	[
@@ -128125,30 +115858,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		62579,
-		62579,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		62580,
-		62580,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-hover-bg",
-		62581,
+		"--bs-dropdown-link-hover-bg",
+		62579,
 		62605,
 		{
-			"value": "bs-dropdown-link-hover-bg"
+			"value": "--bs-dropdown-link-hover-bg"
 		}
 	],
 	[
@@ -128275,30 +115990,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		62662,
-		62662,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		62663,
-		62663,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-active-color",
-		62664,
+		"--bs-dropdown-link-active-color",
+		62662,
 		62692,
 		{
-			"value": "bs-dropdown-link-active-color"
+			"value": "--bs-dropdown-link-active-color"
 		}
 	],
 	[
@@ -128373,30 +116070,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		62737,
-		62737,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		62738,
-		62738,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-active-bg",
-		62739,
+		"--bs-dropdown-link-active-bg",
+		62737,
 		62764,
 		{
-			"value": "bs-dropdown-link-active-bg"
+			"value": "--bs-dropdown-link-active-bg"
 		}
 	],
 	[
@@ -128523,30 +116202,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		62825,
-		62825,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		62826,
-		62826,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-disabled-color",
-		62827,
+		"--bs-dropdown-link-disabled-color",
+		62825,
 		62857,
 		{
-			"value": "bs-dropdown-link-disabled-color"
+			"value": "--bs-dropdown-link-disabled-color"
 		}
 	],
 	[
@@ -128785,30 +116446,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		62986,
-		62986,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		62987,
-		62987,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-header-padding-y",
-		62988,
+		"--bs-dropdown-header-padding-y",
+		62986,
 		63015,
 		{
-			"value": "bs-dropdown-header-padding-y"
+			"value": "--bs-dropdown-header-padding-y"
 		}
 	],
 	[
@@ -128835,30 +116478,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		63022,
-		63022,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63023,
-		63023,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-header-padding-x",
-		63024,
+		"--bs-dropdown-header-padding-x",
+		63022,
 		63051,
 		{
-			"value": "bs-dropdown-header-padding-x"
+			"value": "--bs-dropdown-header-padding-x"
 		}
 	],
 	[
@@ -128968,30 +116593,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		63098,
-		63098,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63099,
-		63099,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-header-color",
-		63100,
+		"--bs-dropdown-header-color",
+		63098,
 		63123,
 		{
-			"value": "bs-dropdown-header-color"
+			"value": "--bs-dropdown-header-color"
 		}
 	],
 	[
@@ -129123,30 +116730,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		63191,
-		63191,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63192,
-		63192,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-item-padding-y",
-		63193,
+		"--bs-dropdown-item-padding-y",
+		63191,
 		63218,
 		{
-			"value": "bs-dropdown-item-padding-y"
+			"value": "--bs-dropdown-item-padding-y"
 		}
 	],
 	[
@@ -129173,30 +116762,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		63225,
-		63225,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63226,
-		63226,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-item-padding-x",
-		63227,
+		"--bs-dropdown-item-padding-x",
+		63225,
 		63252,
 		{
-			"value": "bs-dropdown-item-padding-x"
+			"value": "--bs-dropdown-item-padding-x"
 		}
 	],
 	[
@@ -129239,30 +116810,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		63265,
-		63265,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63266,
-		63266,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-color",
-		63267,
+		"--bs-dropdown-link-color",
+		63265,
 		63288,
 		{
-			"value": "bs-dropdown-link-color"
+			"value": "--bs-dropdown-link-color"
 		}
 	],
 	[
@@ -129305,30 +116858,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		63311,
-		63311,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63312,
-		63312,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-color",
-		63313,
+		"--bs-dropdown-color",
+		63311,
 		63329,
 		{
-			"value": "bs-dropdown-color"
+			"value": "--bs-dropdown-color"
 		}
 	],
 	[
@@ -129356,30 +116891,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		63339,
-		63339,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63340,
-		63340,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-bg",
-		63341,
+		"--bs-dropdown-bg",
+		63339,
 		63354,
 		{
-			"value": "bs-dropdown-bg"
+			"value": "--bs-dropdown-bg"
 		}
 	],
 	[
@@ -129407,30 +116924,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		63364,
-		63364,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63365,
-		63365,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-border-color",
-		63366,
+		"--bs-dropdown-border-color",
+		63364,
 		63389,
 		{
-			"value": "bs-dropdown-border-color"
+			"value": "--bs-dropdown-border-color"
 		}
 	],
 	[
@@ -129450,30 +116949,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		63395,
-		63395,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63396,
-		63396,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color-translucent",
-		63397,
+		"--bs-border-color-translucent",
+		63395,
 		63423,
 		{
-			"value": "bs-border-color-translucent"
+			"value": "--bs-border-color-translucent"
 		}
 	],
 	[
@@ -129491,30 +116972,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		63426,
-		63426,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63427,
-		63427,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-box-shadow",
-		63428,
+		"--bs-dropdown-box-shadow",
+		63426,
 		63449,
 		{
-			"value": "bs-dropdown-box-shadow"
+			"value": "--bs-dropdown-box-shadow"
 		}
 	],
 	[
@@ -129539,30 +117002,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		63453,
-		63453,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63454,
-		63454,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-color",
-		63455,
+		"--bs-dropdown-link-color",
+		63453,
 		63476,
 		{
-			"value": "bs-dropdown-link-color"
+			"value": "--bs-dropdown-link-color"
 		}
 	],
 	[
@@ -129590,30 +117035,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		63486,
-		63486,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63487,
-		63487,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-hover-color",
-		63488,
+		"--bs-dropdown-link-hover-color",
+		63486,
 		63515,
 		{
-			"value": "bs-dropdown-link-hover-color"
+			"value": "--bs-dropdown-link-hover-color"
 		}
 	],
 	[
@@ -129641,30 +117068,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		63522,
-		63522,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63523,
-		63523,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-divider-bg",
-		63524,
+		"--bs-dropdown-divider-bg",
+		63522,
 		63545,
 		{
-			"value": "bs-dropdown-divider-bg"
+			"value": "--bs-dropdown-divider-bg"
 		}
 	],
 	[
@@ -129684,30 +117093,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		63551,
-		63551,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63552,
-		63552,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color-translucent",
-		63553,
+		"--bs-border-color-translucent",
+		63551,
 		63579,
 		{
-			"value": "bs-border-color-translucent"
+			"value": "--bs-border-color-translucent"
 		}
 	],
 	[
@@ -129725,30 +117116,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		63582,
-		63582,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63583,
-		63583,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-hover-bg",
-		63584,
+		"--bs-dropdown-link-hover-bg",
+		63582,
 		63608,
 		{
-			"value": "bs-dropdown-link-hover-bg"
+			"value": "--bs-dropdown-link-hover-bg"
 		}
 	],
 	[
@@ -129864,30 +117237,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		63636,
-		63636,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63637,
-		63637,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-active-color",
-		63638,
+		"--bs-dropdown-link-active-color",
+		63636,
 		63666,
 		{
-			"value": "bs-dropdown-link-active-color"
+			"value": "--bs-dropdown-link-active-color"
 		}
 	],
 	[
@@ -129915,30 +117270,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		63673,
-		63673,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63674,
-		63674,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-active-bg",
-		63675,
+		"--bs-dropdown-link-active-bg",
+		63673,
 		63700,
 		{
-			"value": "bs-dropdown-link-active-bg"
+			"value": "--bs-dropdown-link-active-bg"
 		}
 	],
 	[
@@ -129966,30 +117303,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		63710,
-		63710,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63711,
-		63711,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-link-disabled-color",
-		63712,
+		"--bs-dropdown-link-disabled-color",
+		63710,
 		63742,
 		{
-			"value": "bs-dropdown-link-disabled-color"
+			"value": "--bs-dropdown-link-disabled-color"
 		}
 	],
 	[
@@ -130017,30 +117336,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		63752,
-		63752,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		63753,
-		63753,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dropdown-header-color",
-		63754,
+		"--bs-dropdown-header-color",
+		63752,
 		63777,
 		{
-			"value": "bs-dropdown-header-color"
+			"value": "--bs-dropdown-header-color"
 		}
 	],
 	[
@@ -134565,30 +121866,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		65990,
-		65990,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		65991,
-		65991,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-padding-x",
-		65992,
+		"--bs-nav-link-padding-x",
+		65990,
 		66012,
 		{
-			"value": "bs-nav-link-padding-x"
+			"value": "--bs-nav-link-padding-x"
 		}
 	],
 	[
@@ -134617,30 +121900,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		66019,
-		66019,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66020,
-		66020,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-padding-y",
-		66021,
+		"--bs-nav-link-padding-y",
+		66019,
 		66041,
 		{
-			"value": "bs-nav-link-padding-y"
+			"value": "--bs-nav-link-padding-y"
 		}
 	],
 	[
@@ -134669,30 +121934,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		66050,
-		66050,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66051,
-		66051,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-font-weight",
-		66052,
+		"--bs-nav-link-font-weight",
+		66050,
 		66074,
 		{
-			"value": "bs-nav-link-font-weight"
+			"value": "--bs-nav-link-font-weight"
 		}
 	],
 	[
@@ -134717,30 +121964,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		66078,
-		66078,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66079,
-		66079,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-color",
-		66080,
+		"--bs-nav-link-color",
+		66078,
 		66096,
 		{
-			"value": "bs-nav-link-color"
+			"value": "--bs-nav-link-color"
 		}
 	],
 	[
@@ -134760,30 +121989,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		66102,
-		66102,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66103,
-		66103,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-link-color",
-		66104,
+		"--bs-link-color",
+		66102,
 		66116,
 		{
-			"value": "bs-link-color"
+			"value": "--bs-link-color"
 		}
 	],
 	[
@@ -134801,30 +122012,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		66119,
-		66119,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66120,
-		66120,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-hover-color",
-		66121,
+		"--bs-nav-link-hover-color",
+		66119,
 		66143,
 		{
-			"value": "bs-nav-link-hover-color"
+			"value": "--bs-nav-link-hover-color"
 		}
 	],
 	[
@@ -134844,30 +122037,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		66149,
-		66149,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66150,
-		66150,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-link-hover-color",
-		66151,
+		"--bs-link-hover-color",
+		66149,
 		66169,
 		{
-			"value": "bs-link-hover-color"
+			"value": "--bs-link-hover-color"
 		}
 	],
 	[
@@ -134885,30 +122060,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		66172,
-		66172,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66173,
-		66173,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-disabled-color",
-		66174,
+		"--bs-nav-link-disabled-color",
+		66172,
 		66199,
 		{
-			"value": "bs-nav-link-disabled-color"
+			"value": "--bs-nav-link-disabled-color"
 		}
 	],
 	[
@@ -135180,30 +122337,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		66320,
-		66320,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66321,
-		66321,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-padding-y",
-		66322,
+		"--bs-nav-link-padding-y",
+		66320,
 		66342,
 		{
-			"value": "bs-nav-link-padding-y"
+			"value": "--bs-nav-link-padding-y"
 		}
 	],
 	[
@@ -135230,30 +122369,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		66349,
-		66349,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66350,
-		66350,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-padding-x",
-		66351,
+		"--bs-nav-link-padding-x",
+		66349,
 		66371,
 		{
-			"value": "bs-nav-link-padding-x"
+			"value": "--bs-nav-link-padding-x"
 		}
 	],
 	[
@@ -135296,30 +122417,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		66388,
-		66388,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66389,
-		66389,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-font-size",
-		66390,
+		"--bs-nav-link-font-size",
+		66388,
 		66410,
 		{
-			"value": "bs-nav-link-font-size"
+			"value": "--bs-nav-link-font-size"
 		}
 	],
 	[
@@ -135362,30 +122465,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		66429,
-		66429,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66430,
-		66430,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-font-weight",
-		66431,
+		"--bs-nav-link-font-weight",
+		66429,
 		66453,
 		{
-			"value": "bs-nav-link-font-weight"
+			"value": "--bs-nav-link-font-weight"
 		}
 	],
 	[
@@ -135428,30 +122513,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		66466,
-		66466,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66467,
-		66467,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-color",
-		66468,
+		"--bs-nav-link-color",
+		66466,
 		66484,
 		{
-			"value": "bs-nav-link-color"
+			"value": "--bs-nav-link-color"
 		}
 	],
 	[
@@ -135900,30 +122967,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		66714,
-		66714,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66715,
-		66715,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-hover-color",
-		66716,
+		"--bs-nav-link-hover-color",
+		66714,
 		66738,
 		{
-			"value": "bs-nav-link-hover-color"
+			"value": "--bs-nav-link-hover-color"
 		}
 	],
 	[
@@ -136009,30 +123058,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		66770,
-		66770,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66771,
-		66771,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-disabled-color",
-		66772,
+		"--bs-nav-link-disabled-color",
+		66770,
 		66797,
 		{
-			"value": "bs-nav-link-disabled-color"
+			"value": "--bs-nav-link-disabled-color"
 		}
 	],
 	[
@@ -136139,30 +123170,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		66845,
-		66845,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66846,
-		66846,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-border-width",
-		66847,
+		"--bs-nav-tabs-border-width",
+		66845,
 		66870,
 		{
-			"value": "bs-nav-tabs-border-width"
+			"value": "--bs-nav-tabs-border-width"
 		}
 	],
 	[
@@ -136191,30 +123204,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		66876,
-		66876,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66877,
-		66877,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-border-color",
-		66878,
+		"--bs-nav-tabs-border-color",
+		66876,
 		66901,
 		{
-			"value": "bs-nav-tabs-border-color"
+			"value": "--bs-nav-tabs-border-color"
 		}
 	],
 	[
@@ -136242,30 +123237,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		66911,
-		66911,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66912,
-		66912,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-border-radius",
-		66913,
+		"--bs-nav-tabs-border-radius",
+		66911,
 		66937,
 		{
-			"value": "bs-nav-tabs-border-radius"
+			"value": "--bs-nav-tabs-border-radius"
 		}
 	],
 	[
@@ -136294,30 +123271,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		66948,
-		66948,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		66949,
-		66949,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-link-hover-border-color",
-		66950,
+		"--bs-nav-tabs-link-hover-border-color",
+		66948,
 		66984,
 		{
-			"value": "bs-nav-tabs-link-hover-border-color"
+			"value": "--bs-nav-tabs-link-hover-border-color"
 		}
 	],
 	[
@@ -136379,30 +123338,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		67010,
-		67010,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67011,
-		67011,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-link-active-color",
-		67012,
+		"--bs-nav-tabs-link-active-color",
+		67010,
 		67040,
 		{
-			"value": "bs-nav-tabs-link-active-color"
+			"value": "--bs-nav-tabs-link-active-color"
 		}
 	],
 	[
@@ -136430,30 +123371,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		67050,
-		67050,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67051,
-		67051,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-link-active-bg",
-		67052,
+		"--bs-nav-tabs-link-active-bg",
+		67050,
 		67077,
 		{
-			"value": "bs-nav-tabs-link-active-bg"
+			"value": "--bs-nav-tabs-link-active-bg"
 		}
 	],
 	[
@@ -136481,30 +123404,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		67084,
-		67084,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67085,
-		67085,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-link-active-border-color",
-		67086,
+		"--bs-nav-tabs-link-active-border-color",
+		67084,
 		67121,
 		{
-			"value": "bs-nav-tabs-link-active-border-color"
+			"value": "--bs-nav-tabs-link-active-border-color"
 		}
 	],
 	[
@@ -136591,30 +123496,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		67162,
-		67162,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67163,
-		67163,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-border-width",
-		67164,
+		"--bs-nav-tabs-border-width",
+		67162,
 		67187,
 		{
-			"value": "bs-nav-tabs-border-width"
+			"value": "--bs-nav-tabs-border-width"
 		}
 	],
 	[
@@ -136657,30 +123544,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		67200,
-		67200,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67201,
-		67201,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-border-color",
-		67202,
+		"--bs-nav-tabs-border-color",
+		67200,
 		67225,
 		{
-			"value": "bs-nav-tabs-border-color"
+			"value": "--bs-nav-tabs-border-color"
 		}
 	],
 	[
@@ -136815,30 +123684,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		67276,
-		67276,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67277,
-		67277,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-border-width",
-		67278,
+		"--bs-nav-tabs-border-width",
+		67276,
 		67301,
 		{
-			"value": "bs-nav-tabs-border-width"
+			"value": "--bs-nav-tabs-border-width"
 		}
 	],
 	[
@@ -136938,30 +123789,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		67331,
-		67331,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67332,
-		67332,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-border-width",
-		67333,
+		"--bs-nav-tabs-border-width",
+		67331,
 		67356,
 		{
-			"value": "bs-nav-tabs-border-width"
+			"value": "--bs-nav-tabs-border-width"
 		}
 	],
 	[
@@ -137036,30 +123869,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		67404,
-		67404,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67405,
-		67405,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-border-radius",
-		67406,
+		"--bs-nav-tabs-border-radius",
+		67404,
 		67430,
 		{
-			"value": "bs-nav-tabs-border-radius"
+			"value": "--bs-nav-tabs-border-radius"
 		}
 	],
 	[
@@ -137102,30 +123917,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		67461,
-		67461,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67462,
-		67462,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-border-radius",
-		67463,
+		"--bs-nav-tabs-border-radius",
+		67461,
 		67487,
 		{
-			"value": "bs-nav-tabs-border-radius"
+			"value": "--bs-nav-tabs-border-radius"
 		}
 	],
 	[
@@ -137332,30 +124129,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		67577,
-		67577,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67578,
-		67578,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-link-hover-border-color",
-		67579,
+		"--bs-nav-tabs-link-hover-border-color",
+		67577,
 		67613,
 		{
-			"value": "bs-nav-tabs-link-hover-border-color"
+			"value": "--bs-nav-tabs-link-hover-border-color"
 		}
 	],
 	[
@@ -137532,30 +124311,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		67684,
-		67684,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67685,
-		67685,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-disabled-color",
-		67686,
+		"--bs-nav-link-disabled-color",
+		67684,
 		67711,
 		{
-			"value": "bs-nav-link-disabled-color"
+			"value": "--bs-nav-link-disabled-color"
 		}
 	],
 	[
@@ -137823,30 +124584,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		67840,
-		67840,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67841,
-		67841,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-link-active-color",
-		67842,
+		"--bs-nav-tabs-link-active-color",
+		67840,
 		67870,
 		{
-			"value": "bs-nav-tabs-link-active-color"
+			"value": "--bs-nav-tabs-link-active-color"
 		}
 	],
 	[
@@ -137889,30 +124632,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		67894,
-		67894,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67895,
-		67895,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-link-active-bg",
-		67896,
+		"--bs-nav-tabs-link-active-bg",
+		67894,
 		67921,
 		{
-			"value": "bs-nav-tabs-link-active-bg"
+			"value": "--bs-nav-tabs-link-active-bg"
 		}
 	],
 	[
@@ -137955,30 +124680,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		67941,
-		67941,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		67942,
-		67942,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-link-active-border-color",
-		67943,
+		"--bs-nav-tabs-link-active-border-color",
+		67941,
 		67978,
 		{
-			"value": "bs-nav-tabs-link-active-border-color"
+			"value": "--bs-nav-tabs-link-active-border-color"
 		}
 	],
 	[
@@ -138113,30 +124820,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		68031,
-		68031,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		68032,
-		68032,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-tabs-border-width",
-		68033,
+		"--bs-nav-tabs-border-width",
+		68031,
 		68056,
 		{
-			"value": "bs-nav-tabs-border-width"
+			"value": "--bs-nav-tabs-border-width"
 		}
 	],
 	[
@@ -138252,30 +124941,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		68122,
-		68122,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		68123,
-		68123,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-pills-border-radius",
-		68124,
+		"--bs-nav-pills-border-radius",
+		68122,
 		68149,
 		{
-			"value": "bs-nav-pills-border-radius"
+			"value": "--bs-nav-pills-border-radius"
 		}
 	],
 	[
@@ -138304,30 +124975,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		68160,
-		68160,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		68161,
-		68161,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-pills-link-active-color",
-		68162,
+		"--bs-nav-pills-link-active-color",
+		68160,
 		68191,
 		{
-			"value": "bs-nav-pills-link-active-color"
+			"value": "--bs-nav-pills-link-active-color"
 		}
 	],
 	[
@@ -138355,30 +125008,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		68198,
-		68198,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		68199,
-		68199,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-pills-link-active-bg",
-		68200,
+		"--bs-nav-pills-link-active-bg",
+		68198,
 		68226,
 		{
-			"value": "bs-nav-pills-link-active-bg"
+			"value": "--bs-nav-pills-link-active-bg"
 		}
 	],
 	[
@@ -138564,30 +125199,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		68299,
-		68299,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		68300,
-		68300,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-pills-border-radius",
-		68301,
+		"--bs-nav-pills-border-radius",
+		68299,
 		68326,
 		{
-			"value": "bs-nav-pills-border-radius"
+			"value": "--bs-nav-pills-border-radius"
 		}
 	],
 	[
@@ -138696,30 +125313,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		68369,
-		68369,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		68370,
-		68370,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-disabled-color",
-		68371,
+		"--bs-nav-link-disabled-color",
+		68369,
 		68396,
 		{
-			"value": "bs-nav-link-disabled-color"
+			"value": "--bs-nav-link-disabled-color"
 		}
 	],
 	[
@@ -138971,30 +125570,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		68518,
-		68518,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		68519,
-		68519,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-pills-link-active-color",
-		68520,
+		"--bs-nav-pills-link-active-color",
+		68518,
 		68549,
 		{
-			"value": "bs-nav-pills-link-active-color"
+			"value": "--bs-nav-pills-link-active-color"
 		}
 	],
 	[
@@ -139037,30 +125618,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		68573,
-		68573,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		68574,
-		68574,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-pills-link-active-bg",
-		68575,
+		"--bs-nav-pills-link-active-bg",
+		68573,
 		68601,
 		{
-			"value": "bs-nav-pills-link-active-bg"
+			"value": "--bs-nav-pills-link-active-bg"
 		}
 	],
 	[
@@ -139853,30 +126416,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		68924,
-		68924,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		68925,
-		68925,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-padding-x",
-		68926,
+		"--bs-navbar-padding-x",
+		68924,
 		68944,
 		{
-			"value": "bs-navbar-padding-x"
+			"value": "--bs-navbar-padding-x"
 		}
 	],
 	[
@@ -139904,30 +126449,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		68948,
-		68948,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		68949,
-		68949,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-padding-y",
-		68950,
+		"--bs-navbar-padding-y",
+		68948,
 		68968,
 		{
-			"value": "bs-navbar-padding-y"
+			"value": "--bs-navbar-padding-y"
 		}
 	],
 	[
@@ -139956,30 +126483,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		68977,
-		68977,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		68978,
-		68978,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-color",
-		68979,
+		"--bs-navbar-color",
+		68977,
 		68993,
 		{
-			"value": "bs-navbar-color"
+			"value": "--bs-navbar-color"
 		}
 	],
 	[
@@ -140095,30 +126604,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69015,
-		69015,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69016,
-		69016,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-hover-color",
-		69017,
+		"--bs-navbar-hover-color",
+		69015,
 		69037,
 		{
-			"value": "bs-navbar-hover-color"
+			"value": "--bs-navbar-hover-color"
 		}
 	],
 	[
@@ -140234,30 +126725,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69058,
-		69058,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69059,
-		69059,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-disabled-color",
-		69060,
+		"--bs-navbar-disabled-color",
+		69058,
 		69083,
 		{
-			"value": "bs-navbar-disabled-color"
+			"value": "--bs-navbar-disabled-color"
 		}
 	],
 	[
@@ -140373,30 +126846,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69104,
-		69104,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69105,
-		69105,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-active-color",
-		69106,
+		"--bs-navbar-active-color",
+		69104,
 		69127,
 		{
-			"value": "bs-navbar-active-color"
+			"value": "--bs-navbar-active-color"
 		}
 	],
 	[
@@ -140512,30 +126967,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69148,
-		69148,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69149,
-		69149,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-padding-y",
-		69150,
+		"--bs-navbar-brand-padding-y",
+		69148,
 		69174,
 		{
-			"value": "bs-navbar-brand-padding-y"
+			"value": "--bs-navbar-brand-padding-y"
 		}
 	],
 	[
@@ -140564,30 +127001,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69186,
-		69186,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69187,
-		69187,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-margin-end",
-		69188,
+		"--bs-navbar-brand-margin-end",
+		69186,
 		69213,
 		{
-			"value": "bs-navbar-brand-margin-end"
+			"value": "--bs-navbar-brand-margin-end"
 		}
 	],
 	[
@@ -140616,30 +127035,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69220,
-		69220,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69221,
-		69221,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-font-size",
-		69222,
+		"--bs-navbar-brand-font-size",
+		69220,
 		69246,
 		{
-			"value": "bs-navbar-brand-font-size"
+			"value": "--bs-navbar-brand-font-size"
 		}
 	],
 	[
@@ -140668,30 +127069,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69256,
-		69256,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69257,
-		69257,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-color",
-		69258,
+		"--bs-navbar-brand-color",
+		69256,
 		69278,
 		{
-			"value": "bs-navbar-brand-color"
+			"value": "--bs-navbar-brand-color"
 		}
 	],
 	[
@@ -140807,30 +127190,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69299,
-		69299,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69300,
-		69300,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-hover-color",
-		69301,
+		"--bs-navbar-brand-hover-color",
+		69299,
 		69327,
 		{
-			"value": "bs-navbar-brand-hover-color"
+			"value": "--bs-navbar-brand-hover-color"
 		}
 	],
 	[
@@ -140946,30 +127311,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69348,
-		69348,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69349,
-		69349,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		69350,
+		"--bs-navbar-nav-link-padding-x",
+		69348,
 		69377,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -140998,30 +127345,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69386,
-		69386,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69387,
-		69387,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-padding-y",
-		69388,
+		"--bs-navbar-toggler-padding-y",
+		69386,
 		69414,
 		{
-			"value": "bs-navbar-toggler-padding-y"
+			"value": "--bs-navbar-toggler-padding-y"
 		}
 	],
 	[
@@ -141050,30 +127379,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69424,
-		69424,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69425,
-		69425,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-padding-x",
-		69426,
+		"--bs-navbar-toggler-padding-x",
+		69424,
 		69452,
 		{
-			"value": "bs-navbar-toggler-padding-x"
+			"value": "--bs-navbar-toggler-padding-x"
 		}
 	],
 	[
@@ -141102,30 +127413,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69462,
-		69462,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69463,
-		69463,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-font-size",
-		69464,
+		"--bs-navbar-toggler-font-size",
+		69462,
 		69490,
 		{
-			"value": "bs-navbar-toggler-font-size"
+			"value": "--bs-navbar-toggler-font-size"
 		}
 	],
 	[
@@ -141154,30 +127447,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69500,
-		69500,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69501,
-		69501,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-icon-bg",
-		69502,
+		"--bs-navbar-toggler-icon-bg",
+		69500,
 		69526,
 		{
-			"value": "bs-navbar-toggler-icon-bg"
+			"value": "--bs-navbar-toggler-icon-bg"
 		}
 	],
 	[
@@ -141220,30 +127495,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69764,
-		69764,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69765,
-		69765,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-border-color",
-		69766,
+		"--bs-navbar-toggler-border-color",
+		69764,
 		69795,
 		{
-			"value": "bs-navbar-toggler-border-color"
+			"value": "--bs-navbar-toggler-border-color"
 		}
 	],
 	[
@@ -141359,30 +127616,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69816,
-		69816,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69817,
-		69817,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-border-radius",
-		69818,
+		"--bs-navbar-toggler-border-radius",
+		69816,
 		69848,
 		{
-			"value": "bs-navbar-toggler-border-radius"
+			"value": "--bs-navbar-toggler-border-radius"
 		}
 	],
 	[
@@ -141411,30 +127650,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69859,
-		69859,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69860,
-		69860,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-focus-width",
-		69861,
+		"--bs-navbar-toggler-focus-width",
+		69859,
 		69889,
 		{
-			"value": "bs-navbar-toggler-focus-width"
+			"value": "--bs-navbar-toggler-focus-width"
 		}
 	],
 	[
@@ -141463,30 +127684,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		69899,
-		69899,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		69900,
-		69900,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-transition",
-		69901,
+		"--bs-navbar-toggler-transition",
+		69899,
 		69928,
 		{
-			"value": "bs-navbar-toggler-transition"
+			"value": "--bs-navbar-toggler-transition"
 		}
 	],
 	[
@@ -141732,30 +127935,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		70066,
-		70066,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70067,
-		70067,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-padding-y",
-		70068,
+		"--bs-navbar-padding-y",
+		70066,
 		70086,
 		{
-			"value": "bs-navbar-padding-y"
+			"value": "--bs-navbar-padding-y"
 		}
 	],
 	[
@@ -141782,30 +127967,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		70093,
-		70093,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70094,
-		70094,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-padding-x",
-		70095,
+		"--bs-navbar-padding-x",
+		70093,
 		70113,
 		{
-			"value": "bs-navbar-padding-x"
+			"value": "--bs-navbar-padding-x"
 		}
 	],
 	[
@@ -142365,30 +128532,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		70381,
-		70381,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70382,
-		70382,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-padding-y",
-		70383,
+		"--bs-navbar-brand-padding-y",
+		70381,
 		70407,
 		{
-			"value": "bs-navbar-brand-padding-y"
+			"value": "--bs-navbar-brand-padding-y"
 		}
 	],
 	[
@@ -142431,30 +128580,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		70429,
-		70429,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70430,
-		70430,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-padding-y",
-		70431,
+		"--bs-navbar-brand-padding-y",
+		70429,
 		70455,
 		{
-			"value": "bs-navbar-brand-padding-y"
+			"value": "--bs-navbar-brand-padding-y"
 		}
 	],
 	[
@@ -142497,30 +128628,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		70475,
-		70475,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70476,
-		70476,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-margin-end",
-		70477,
+		"--bs-navbar-brand-margin-end",
+		70475,
 		70502,
 		{
-			"value": "bs-navbar-brand-margin-end"
+			"value": "--bs-navbar-brand-margin-end"
 		}
 	],
 	[
@@ -142563,30 +128676,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		70519,
-		70519,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70520,
-		70520,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-font-size",
-		70521,
+		"--bs-navbar-brand-font-size",
+		70519,
 		70545,
 		{
-			"value": "bs-navbar-brand-font-size"
+			"value": "--bs-navbar-brand-font-size"
 		}
 	],
 	[
@@ -142629,30 +128724,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		70558,
-		70558,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70559,
-		70559,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-color",
-		70560,
+		"--bs-navbar-brand-color",
+		70558,
 		70580,
 		{
-			"value": "bs-navbar-brand-color"
+			"value": "--bs-navbar-brand-color"
 		}
 	],
 	[
@@ -142841,30 +128918,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		70673,
-		70673,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70674,
-		70674,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-hover-color",
-		70675,
+		"--bs-navbar-brand-hover-color",
+		70673,
 		70701,
 		{
-			"value": "bs-navbar-brand-hover-color"
+			"value": "--bs-navbar-brand-hover-color"
 		}
 	],
 	[
@@ -142907,30 +128966,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		70716,
-		70716,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70717,
-		70717,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-padding-x",
-		70718,
+		"--bs-nav-link-padding-x",
+		70716,
 		70738,
 		{
-			"value": "bs-nav-link-padding-x"
+			"value": "--bs-nav-link-padding-x"
 		}
 	],
 	[
@@ -142958,30 +128999,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		70742,
-		70742,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70743,
-		70743,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-padding-y",
-		70744,
+		"--bs-nav-link-padding-y",
+		70742,
 		70764,
 		{
-			"value": "bs-nav-link-padding-y"
+			"value": "--bs-nav-link-padding-y"
 		}
 	],
 	[
@@ -143010,30 +129033,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		70773,
-		70773,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70774,
-		70774,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-font-weight",
-		70775,
+		"--bs-nav-link-font-weight",
+		70773,
 		70797,
 		{
-			"value": "bs-nav-link-font-weight"
+			"value": "--bs-nav-link-font-weight"
 		}
 	],
 	[
@@ -143058,30 +129063,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		70801,
-		70801,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70802,
-		70802,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-color",
-		70803,
+		"--bs-nav-link-color",
+		70801,
 		70819,
 		{
-			"value": "bs-nav-link-color"
+			"value": "--bs-nav-link-color"
 		}
 	],
 	[
@@ -143101,30 +129088,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		70825,
-		70825,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70826,
-		70826,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-color",
-		70827,
+		"--bs-navbar-color",
+		70825,
 		70841,
 		{
-			"value": "bs-navbar-color"
+			"value": "--bs-navbar-color"
 		}
 	],
 	[
@@ -143142,30 +129111,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		70844,
-		70844,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70845,
-		70845,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-hover-color",
-		70846,
+		"--bs-nav-link-hover-color",
+		70844,
 		70868,
 		{
-			"value": "bs-nav-link-hover-color"
+			"value": "--bs-nav-link-hover-color"
 		}
 	],
 	[
@@ -143185,30 +129136,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		70874,
-		70874,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70875,
-		70875,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-hover-color",
-		70876,
+		"--bs-navbar-hover-color",
+		70874,
 		70896,
 		{
-			"value": "bs-navbar-hover-color"
+			"value": "--bs-navbar-hover-color"
 		}
 	],
 	[
@@ -143226,30 +129159,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		70899,
-		70899,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70900,
-		70900,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-nav-link-disabled-color",
-		70901,
+		"--bs-nav-link-disabled-color",
+		70899,
 		70926,
 		{
-			"value": "bs-nav-link-disabled-color"
+			"value": "--bs-nav-link-disabled-color"
 		}
 	],
 	[
@@ -143269,30 +129184,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		70932,
-		70932,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		70933,
-		70933,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-disabled-color",
-		70934,
+		"--bs-navbar-disabled-color",
+		70932,
 		70957,
 		{
-			"value": "bs-navbar-disabled-color"
+			"value": "--bs-navbar-disabled-color"
 		}
 	],
 	[
@@ -143642,30 +129539,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		71109,
-		71109,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		71110,
-		71110,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-active-color",
-		71111,
+		"--bs-navbar-active-color",
+		71109,
 		71132,
 		{
-			"value": "bs-navbar-active-color"
+			"value": "--bs-navbar-active-color"
 		}
 	],
 	[
@@ -143883,30 +129762,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		71240,
-		71240,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		71241,
-		71241,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-color",
-		71242,
+		"--bs-navbar-color",
+		71240,
 		71256,
 		{
-			"value": "bs-navbar-color"
+			"value": "--bs-navbar-color"
 		}
 	],
 	[
@@ -144104,30 +129965,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		71326,
-		71326,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		71327,
-		71327,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-active-color",
-		71328,
+		"--bs-navbar-active-color",
+		71326,
 		71349,
 		{
-			"value": "bs-navbar-active-color"
+			"value": "--bs-navbar-active-color"
 		}
 	],
 	[
@@ -144317,30 +130160,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		71444,
-		71444,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		71445,
-		71445,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-padding-y",
-		71446,
+		"--bs-navbar-toggler-padding-y",
+		71444,
 		71472,
 		{
-			"value": "bs-navbar-toggler-padding-y"
+			"value": "--bs-navbar-toggler-padding-y"
 		}
 	],
 	[
@@ -144367,30 +130192,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		71479,
-		71479,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		71480,
-		71480,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-padding-x",
-		71481,
+		"--bs-navbar-toggler-padding-x",
+		71479,
 		71507,
 		{
-			"value": "bs-navbar-toggler-padding-x"
+			"value": "--bs-navbar-toggler-padding-x"
 		}
 	],
 	[
@@ -144433,30 +130240,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		71524,
-		71524,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		71525,
-		71525,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-font-size",
-		71526,
+		"--bs-navbar-toggler-font-size",
+		71524,
 		71552,
 		{
-			"value": "bs-navbar-toggler-font-size"
+			"value": "--bs-navbar-toggler-font-size"
 		}
 	],
 	[
@@ -144532,30 +130321,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		71579,
-		71579,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		71580,
-		71580,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-color",
-		71581,
+		"--bs-navbar-color",
+		71579,
 		71595,
 		{
-			"value": "bs-navbar-color"
+			"value": "--bs-navbar-color"
 		}
 	],
 	[
@@ -144630,30 +130401,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		71638,
-		71638,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		71639,
-		71639,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-width",
-		71640,
+		"--bs-border-width",
+		71638,
 		71654,
 		{
-			"value": "bs-border-width"
+			"value": "--bs-border-width"
 		}
 	],
 	[
@@ -144696,30 +130449,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		71667,
-		71667,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		71668,
-		71668,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-border-color",
-		71669,
+		"--bs-navbar-toggler-border-color",
+		71667,
 		71698,
 		{
-			"value": "bs-navbar-toggler-border-color"
+			"value": "--bs-navbar-toggler-border-color"
 		}
 	],
 	[
@@ -144762,30 +130497,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		71719,
-		71719,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		71720,
-		71720,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-border-radius",
-		71721,
+		"--bs-navbar-toggler-border-radius",
+		71719,
 		71751,
 		{
-			"value": "bs-navbar-toggler-border-radius"
+			"value": "--bs-navbar-toggler-border-radius"
 		}
 	],
 	[
@@ -144828,30 +130545,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		71769,
-		71769,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		71770,
-		71770,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-transition",
-		71771,
+		"--bs-navbar-toggler-transition",
+		71769,
 		71798,
 		{
-			"value": "bs-navbar-toggler-transition"
+			"value": "--bs-navbar-toggler-transition"
 		}
 	],
 	[
@@ -145250,30 +130949,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		71990,
-		71990,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		71991,
-		71991,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-focus-width",
-		71992,
+		"--bs-navbar-toggler-focus-width",
+		71990,
 		72020,
 		{
-			"value": "bs-navbar-toggler-focus-width"
+			"value": "--bs-navbar-toggler-focus-width"
 		}
 	],
 	[
@@ -145473,30 +131154,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		72133,
-		72133,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		72134,
-		72134,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-icon-bg",
-		72135,
+		"--bs-navbar-toggler-icon-bg",
+		72133,
 		72159,
 		{
-			"value": "bs-navbar-toggler-icon-bg"
+			"value": "--bs-navbar-toggler-icon-bg"
 		}
 	],
 	[
@@ -145660,30 +131323,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		72272,
-		72272,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		72273,
-		72273,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-scroll-height",
-		72274,
+		"--bs-scroll-height",
+		72272,
 		72289,
 		{
-			"value": "bs-scroll-height"
+			"value": "--bs-scroll-height"
 		}
 	],
 	[
@@ -146193,30 +131838,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		72570,
-		72570,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		72571,
-		72571,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		72572,
+		"--bs-navbar-nav-link-padding-x",
+		72570,
 		72599,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -146259,30 +131886,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		72619,
-		72619,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		72620,
-		72620,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		72621,
+		"--bs-navbar-nav-link-padding-x",
+		72619,
 		72648,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -147837,30 +133446,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		73484,
-		73484,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		73485,
-		73485,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		73486,
+		"--bs-navbar-nav-link-padding-x",
+		73484,
 		73513,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -147903,30 +133494,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		73533,
-		73533,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		73534,
-		73534,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		73535,
+		"--bs-navbar-nav-link-padding-x",
+		73533,
 		73562,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -149481,30 +135054,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		74398,
-		74398,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		74399,
-		74399,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		74400,
+		"--bs-navbar-nav-link-padding-x",
+		74398,
 		74427,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -149547,30 +135102,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		74447,
-		74447,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		74448,
-		74448,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		74449,
+		"--bs-navbar-nav-link-padding-x",
+		74447,
 		74476,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -151125,30 +136662,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		75313,
-		75313,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		75314,
-		75314,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		75315,
+		"--bs-navbar-nav-link-padding-x",
+		75313,
 		75342,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -151191,30 +136710,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		75362,
-		75362,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		75363,
-		75363,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		75364,
+		"--bs-navbar-nav-link-padding-x",
+		75362,
 		75391,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -152769,30 +138270,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		76232,
-		76232,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		76233,
-		76233,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		76234,
+		"--bs-navbar-nav-link-padding-x",
+		76232,
 		76261,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -152835,30 +138318,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		76281,
-		76281,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		76282,
-		76282,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		76283,
+		"--bs-navbar-nav-link-padding-x",
+		76281,
 		76310,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -154349,30 +139814,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		77115,
-		77115,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		77116,
-		77116,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		77117,
+		"--bs-navbar-nav-link-padding-x",
+		77115,
 		77144,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -154415,30 +139862,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		77164,
-		77164,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		77165,
-		77165,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-nav-link-padding-x",
-		77166,
+		"--bs-navbar-nav-link-padding-x",
+		77164,
 		77193,
 		{
-			"value": "bs-navbar-nav-link-padding-x"
+			"value": "--bs-navbar-nav-link-padding-x"
 		}
 	],
 	[
@@ -155569,30 +140998,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		77766,
-		77766,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		77767,
-		77767,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-color",
-		77768,
+		"--bs-navbar-color",
+		77766,
 		77782,
 		{
-			"value": "bs-navbar-color"
+			"value": "--bs-navbar-color"
 		}
 	],
 	[
@@ -155708,30 +141119,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		77810,
-		77810,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		77811,
-		77811,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-hover-color",
-		77812,
+		"--bs-navbar-hover-color",
+		77810,
 		77832,
 		{
-			"value": "bs-navbar-hover-color"
+			"value": "--bs-navbar-hover-color"
 		}
 	],
 	[
@@ -155847,30 +141240,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		77860,
-		77860,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		77861,
-		77861,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-disabled-color",
-		77862,
+		"--bs-navbar-disabled-color",
+		77860,
 		77885,
 		{
-			"value": "bs-navbar-disabled-color"
+			"value": "--bs-navbar-disabled-color"
 		}
 	],
 	[
@@ -155986,30 +141361,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		77913,
-		77913,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		77914,
-		77914,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-active-color",
-		77915,
+		"--bs-navbar-active-color",
+		77913,
 		77936,
 		{
-			"value": "bs-navbar-active-color"
+			"value": "--bs-navbar-active-color"
 		}
 	],
 	[
@@ -156037,30 +141394,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		77943,
-		77943,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		77944,
-		77944,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-color",
-		77945,
+		"--bs-navbar-brand-color",
+		77943,
 		77965,
 		{
-			"value": "bs-navbar-brand-color"
+			"value": "--bs-navbar-brand-color"
 		}
 	],
 	[
@@ -156088,30 +141427,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		77972,
-		77972,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		77973,
-		77973,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-brand-hover-color",
-		77974,
+		"--bs-navbar-brand-hover-color",
+		77972,
 		78000,
 		{
-			"value": "bs-navbar-brand-hover-color"
+			"value": "--bs-navbar-brand-hover-color"
 		}
 	],
 	[
@@ -156139,30 +141460,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78007,
-		78007,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78008,
-		78008,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-border-color",
-		78009,
+		"--bs-navbar-toggler-border-color",
+		78007,
 		78038,
 		{
-			"value": "bs-navbar-toggler-border-color"
+			"value": "--bs-navbar-toggler-border-color"
 		}
 	],
 	[
@@ -156278,30 +141581,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78065,
-		78065,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78066,
-		78066,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-navbar-toggler-icon-bg",
-		78067,
+		"--bs-navbar-toggler-icon-bg",
+		78065,
 		78091,
 		{
-			"value": "bs-navbar-toggler-icon-bg"
+			"value": "--bs-navbar-toggler-icon-bg"
 		}
 	],
 	[
@@ -156369,30 +141654,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78341,
-		78341,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78342,
-		78342,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-spacer-y",
-		78343,
+		"--bs-card-spacer-y",
+		78341,
 		78358,
 		{
-			"value": "bs-card-spacer-y"
+			"value": "--bs-card-spacer-y"
 		}
 	],
 	[
@@ -156421,30 +141688,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78365,
-		78365,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78366,
-		78366,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-spacer-x",
-		78367,
+		"--bs-card-spacer-x",
+		78365,
 		78382,
 		{
-			"value": "bs-card-spacer-x"
+			"value": "--bs-card-spacer-x"
 		}
 	],
 	[
@@ -156473,30 +141722,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78389,
-		78389,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78390,
-		78390,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-title-spacer-y",
-		78391,
+		"--bs-card-title-spacer-y",
+		78389,
 		78412,
 		{
-			"value": "bs-card-title-spacer-y"
+			"value": "--bs-card-title-spacer-y"
 		}
 	],
 	[
@@ -156525,30 +141756,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78421,
-		78421,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78422,
-		78422,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-border-width",
-		78423,
+		"--bs-card-border-width",
+		78421,
 		78442,
 		{
-			"value": "bs-card-border-width"
+			"value": "--bs-card-border-width"
 		}
 	],
 	[
@@ -156577,30 +141790,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78448,
-		78448,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78449,
-		78449,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-border-color",
-		78450,
+		"--bs-card-border-color",
+		78448,
 		78469,
 		{
-			"value": "bs-card-border-color"
+			"value": "--bs-card-border-color"
 		}
 	],
 	[
@@ -156620,30 +141815,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		78475,
-		78475,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78476,
-		78476,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color-translucent",
-		78477,
+		"--bs-border-color-translucent",
+		78475,
 		78503,
 		{
-			"value": "bs-border-color-translucent"
+			"value": "--bs-border-color-translucent"
 		}
 	],
 	[
@@ -156661,30 +141838,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78506,
-		78506,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78507,
-		78507,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-border-radius",
-		78508,
+		"--bs-card-border-radius",
+		78506,
 		78528,
 		{
-			"value": "bs-card-border-radius"
+			"value": "--bs-card-border-radius"
 		}
 	],
 	[
@@ -156713,30 +141872,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78539,
-		78539,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78540,
-		78540,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-box-shadow",
-		78541,
+		"--bs-card-box-shadow",
+		78539,
 		78558,
 		{
-			"value": "bs-card-box-shadow"
+			"value": "--bs-card-box-shadow"
 		}
 	],
 	[
@@ -156761,30 +141902,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78562,
-		78562,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78563,
-		78563,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		78564,
+		"--bs-card-inner-border-radius",
+		78562,
 		78590,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -156863,30 +141986,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78613,
-		78613,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78614,
-		78614,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-padding-y",
-		78615,
+		"--bs-card-cap-padding-y",
+		78613,
 		78635,
 		{
-			"value": "bs-card-cap-padding-y"
+			"value": "--bs-card-cap-padding-y"
 		}
 	],
 	[
@@ -156915,30 +142020,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78644,
-		78644,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78645,
-		78645,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-padding-x",
-		78646,
+		"--bs-card-cap-padding-x",
+		78644,
 		78666,
 		{
-			"value": "bs-card-cap-padding-x"
+			"value": "--bs-card-cap-padding-x"
 		}
 	],
 	[
@@ -156967,30 +142054,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78673,
-		78673,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78674,
-		78674,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-bg",
-		78675,
+		"--bs-card-cap-bg",
+		78673,
 		78688,
 		{
-			"value": "bs-card-cap-bg"
+			"value": "--bs-card-cap-bg"
 		}
 	],
 	[
@@ -157106,30 +142175,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78710,
-		78710,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78711,
-		78711,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-color",
-		78712,
+		"--bs-card-cap-color",
+		78710,
 		78728,
 		{
-			"value": "bs-card-cap-color"
+			"value": "--bs-card-cap-color"
 		}
 	],
 	[
@@ -157154,30 +142205,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78732,
-		78732,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78733,
-		78733,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-height",
-		78734,
+		"--bs-card-height",
+		78732,
 		78747,
 		{
-			"value": "bs-card-height"
+			"value": "--bs-card-height"
 		}
 	],
 	[
@@ -157202,30 +142235,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78751,
-		78751,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78752,
-		78752,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-color",
-		78753,
+		"--bs-card-color",
+		78751,
 		78765,
 		{
-			"value": "bs-card-color"
+			"value": "--bs-card-color"
 		}
 	],
 	[
@@ -157250,30 +142265,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78769,
-		78769,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78770,
-		78770,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-bg",
-		78771,
+		"--bs-card-bg",
+		78769,
 		78780,
 		{
-			"value": "bs-card-bg"
+			"value": "--bs-card-bg"
 		}
 	],
 	[
@@ -157301,30 +142298,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78787,
-		78787,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78788,
-		78788,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-img-overlay-padding",
-		78789,
+		"--bs-card-img-overlay-padding",
+		78787,
 		78815,
 		{
-			"value": "bs-card-img-overlay-padding"
+			"value": "--bs-card-img-overlay-padding"
 		}
 	],
 	[
@@ -157353,30 +142332,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		78822,
-		78822,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78823,
-		78823,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-group-margin",
-		78824,
+		"--bs-card-group-margin",
+		78822,
 		78843,
 		{
-			"value": "bs-card-group-margin"
+			"value": "--bs-card-group-margin"
 		}
 	],
 	[
@@ -157559,30 +142520,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		78929,
-		78929,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78930,
-		78930,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-height",
-		78931,
+		"--bs-card-height",
+		78929,
 		78944,
 		{
-			"value": "bs-card-height"
+			"value": "--bs-card-height"
 		}
 	],
 	[
@@ -157657,30 +142600,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		78989,
-		78989,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		78990,
-		78990,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-bg",
-		78991,
+		"--bs-card-bg",
+		78989,
 		79000,
 		{
-			"value": "bs-card-bg"
+			"value": "--bs-card-bg"
 		}
 	],
 	[
@@ -157755,30 +142680,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79041,
-		79041,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79042,
-		79042,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-border-width",
-		79043,
+		"--bs-card-border-width",
+		79041,
 		79062,
 		{
-			"value": "bs-card-border-width"
+			"value": "--bs-card-border-width"
 		}
 	],
 	[
@@ -157821,30 +142728,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79075,
-		79075,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79076,
-		79076,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-border-color",
-		79077,
+		"--bs-card-border-color",
+		79075,
 		79096,
 		{
-			"value": "bs-card-border-color"
+			"value": "--bs-card-border-color"
 		}
 	],
 	[
@@ -157887,30 +142776,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79117,
-		79117,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79118,
-		79118,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-border-radius",
-		79119,
+		"--bs-card-border-radius",
+		79117,
 		79139,
 		{
-			"value": "bs-card-border-radius"
+			"value": "--bs-card-border-radius"
 		}
 	],
 	[
@@ -158279,30 +143150,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79315,
-		79315,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79316,
-		79316,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		79317,
+		"--bs-card-inner-border-radius",
+		79315,
 		79343,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -158345,30 +143198,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79374,
-		79374,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79375,
-		79375,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		79376,
+		"--bs-card-inner-border-radius",
+		79374,
 		79402,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -158512,30 +143347,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79487,
-		79487,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79488,
-		79488,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		79489,
+		"--bs-card-inner-border-radius",
+		79487,
 		79515,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -158578,30 +143395,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79548,
-		79548,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79549,
-		79549,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		79550,
+		"--bs-card-inner-border-radius",
+		79548,
 		79576,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -158926,30 +143725,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79691,
-		79691,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79692,
-		79692,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-spacer-y",
-		79693,
+		"--bs-card-spacer-y",
+		79691,
 		79708,
 		{
-			"value": "bs-card-spacer-y"
+			"value": "--bs-card-spacer-y"
 		}
 	],
 	[
@@ -158976,30 +143757,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79715,
-		79715,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79716,
-		79716,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-spacer-x",
-		79717,
+		"--bs-card-spacer-x",
+		79715,
 		79732,
 		{
-			"value": "bs-card-spacer-x"
+			"value": "--bs-card-spacer-x"
 		}
 	],
 	[
@@ -159042,30 +143805,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79745,
-		79745,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79746,
-		79746,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-color",
-		79747,
+		"--bs-card-color",
+		79745,
 		79759,
 		{
-			"value": "bs-card-color"
+			"value": "--bs-card-color"
 		}
 	],
 	[
@@ -159133,30 +143878,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79792,
-		79792,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79793,
-		79793,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-title-spacer-y",
-		79794,
+		"--bs-card-title-spacer-y",
+		79792,
 		79815,
 		{
-			"value": "bs-card-title-spacer-y"
+			"value": "--bs-card-title-spacer-y"
 		}
 	],
 	[
@@ -159266,30 +143993,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79859,
-		79859,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79860,
-		79860,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-title-spacer-y",
-		79861,
+		"--bs-card-title-spacer-y",
+		79859,
 		79882,
 		{
-			"value": "bs-card-title-spacer-y"
+			"value": "--bs-card-title-spacer-y"
 		}
 	],
 	[
@@ -159498,30 +144207,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		79978,
-		79978,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		79979,
-		79979,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-spacer-x",
-		79980,
+		"--bs-card-spacer-x",
+		79978,
 		79995,
 		{
-			"value": "bs-card-spacer-x"
+			"value": "--bs-card-spacer-x"
 		}
 	],
 	[
@@ -159589,30 +144280,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80023,
-		80023,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80024,
-		80024,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-padding-y",
-		80025,
+		"--bs-card-cap-padding-y",
+		80023,
 		80045,
 		{
-			"value": "bs-card-cap-padding-y"
+			"value": "--bs-card-cap-padding-y"
 		}
 	],
 	[
@@ -159639,30 +144312,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80052,
-		80052,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80053,
-		80053,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-padding-x",
-		80054,
+		"--bs-card-cap-padding-x",
+		80052,
 		80074,
 		{
-			"value": "bs-card-cap-padding-x"
+			"value": "--bs-card-cap-padding-x"
 		}
 	],
 	[
@@ -159738,30 +144393,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80103,
-		80103,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80104,
-		80104,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-color",
-		80105,
+		"--bs-card-cap-color",
+		80103,
 		80121,
 		{
-			"value": "bs-card-cap-color"
+			"value": "--bs-card-cap-color"
 		}
 	],
 	[
@@ -159804,30 +144441,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80145,
-		80145,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80146,
-		80146,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-bg",
-		80147,
+		"--bs-card-cap-bg",
+		80145,
 		80160,
 		{
-			"value": "bs-card-cap-bg"
+			"value": "--bs-card-cap-bg"
 		}
 	],
 	[
@@ -159870,30 +144489,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80181,
-		80181,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80182,
-		80182,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-border-width",
-		80183,
+		"--bs-card-border-width",
+		80181,
 		80202,
 		{
-			"value": "bs-card-border-width"
+			"value": "--bs-card-border-width"
 		}
 	],
 	[
@@ -159936,30 +144537,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80215,
-		80215,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80216,
-		80216,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-border-color",
-		80217,
+		"--bs-card-border-color",
+		80215,
 		80236,
 		{
-			"value": "bs-card-border-color"
+			"value": "--bs-card-border-color"
 		}
 	],
 	[
@@ -160043,30 +144626,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80282,
-		80282,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80283,
-		80283,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		80284,
+		"--bs-card-inner-border-radius",
+		80282,
 		80310,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -160093,30 +144658,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80317,
-		80317,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80318,
-		80318,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		80319,
+		"--bs-card-inner-border-radius",
+		80317,
 		80345,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -160218,30 +144765,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80377,
-		80377,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80378,
-		80378,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-padding-y",
-		80379,
+		"--bs-card-cap-padding-y",
+		80377,
 		80399,
 		{
-			"value": "bs-card-cap-padding-y"
+			"value": "--bs-card-cap-padding-y"
 		}
 	],
 	[
@@ -160268,30 +144797,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80406,
-		80406,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80407,
-		80407,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-padding-x",
-		80408,
+		"--bs-card-cap-padding-x",
+		80406,
 		80428,
 		{
-			"value": "bs-card-cap-padding-x"
+			"value": "--bs-card-cap-padding-x"
 		}
 	],
 	[
@@ -160334,30 +144845,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80441,
-		80441,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80442,
-		80442,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-color",
-		80443,
+		"--bs-card-cap-color",
+		80441,
 		80459,
 		{
-			"value": "bs-card-cap-color"
+			"value": "--bs-card-cap-color"
 		}
 	],
 	[
@@ -160400,30 +144893,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80483,
-		80483,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80484,
-		80484,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-bg",
-		80485,
+		"--bs-card-cap-bg",
+		80483,
 		80498,
 		{
-			"value": "bs-card-cap-bg"
+			"value": "--bs-card-cap-bg"
 		}
 	],
 	[
@@ -160466,30 +144941,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80516,
-		80516,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80517,
-		80517,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-border-width",
-		80518,
+		"--bs-card-border-width",
+		80516,
 		80537,
 		{
-			"value": "bs-card-border-width"
+			"value": "--bs-card-border-width"
 		}
 	],
 	[
@@ -160532,30 +144989,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80550,
-		80550,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80551,
-		80551,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-border-color",
-		80552,
+		"--bs-card-border-color",
+		80550,
 		80571,
 		{
-			"value": "bs-card-border-color"
+			"value": "--bs-card-border-color"
 		}
 	],
 	[
@@ -160673,30 +145112,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80620,
-		80620,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80621,
-		80621,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		80622,
+		"--bs-card-inner-border-radius",
+		80620,
 		80648,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -160723,30 +145144,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80655,
-		80655,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80656,
-		80656,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		80657,
+		"--bs-card-inner-border-radius",
+		80655,
 		80683,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -160856,30 +145259,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80732,
-		80732,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80733,
-		80733,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-padding-x",
-		80734,
+		"--bs-card-cap-padding-x",
+		80732,
 		80754,
 		{
-			"value": "bs-card-cap-padding-x"
+			"value": "--bs-card-cap-padding-x"
 		}
 	],
 	[
@@ -160971,30 +145356,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80786,
-		80786,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80787,
-		80787,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-padding-y",
-		80788,
+		"--bs-card-cap-padding-y",
+		80786,
 		80808,
 		{
-			"value": "bs-card-cap-padding-y"
+			"value": "--bs-card-cap-padding-y"
 		}
 	],
 	[
@@ -161086,30 +145453,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80839,
-		80839,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80840,
-		80840,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-padding-x",
-		80841,
+		"--bs-card-cap-padding-x",
+		80839,
 		80861,
 		{
-			"value": "bs-card-cap-padding-x"
+			"value": "--bs-card-cap-padding-x"
 		}
 	],
 	[
@@ -161260,30 +145609,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80937,
-		80937,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80938,
-		80938,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-bg",
-		80939,
+		"--bs-card-bg",
+		80937,
 		80948,
 		{
-			"value": "bs-card-bg"
+			"value": "--bs-card-bg"
 		}
 	],
 	[
@@ -161326,30 +145657,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		80975,
-		80975,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		80976,
-		80976,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-bg",
-		80977,
+		"--bs-card-bg",
+		80975,
 		80986,
 		{
-			"value": "bs-card-bg"
+			"value": "--bs-card-bg"
 		}
 	],
 	[
@@ -161459,30 +145772,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		81036,
-		81036,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		81037,
-		81037,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-padding-x",
-		81038,
+		"--bs-card-cap-padding-x",
+		81036,
 		81058,
 		{
-			"value": "bs-card-cap-padding-x"
+			"value": "--bs-card-cap-padding-x"
 		}
 	],
 	[
@@ -161574,30 +145869,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		81089,
-		81089,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		81090,
-		81090,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-cap-padding-x",
-		81091,
+		"--bs-card-cap-padding-x",
+		81089,
 		81111,
 		{
-			"value": "bs-card-cap-padding-x"
+			"value": "--bs-card-cap-padding-x"
 		}
 	],
 	[
@@ -161836,30 +146113,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		81193,
-		81193,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		81194,
-		81194,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-img-overlay-padding",
-		81195,
+		"--bs-card-img-overlay-padding",
+		81193,
 		81221,
 		{
-			"value": "bs-card-img-overlay-padding"
+			"value": "--bs-card-img-overlay-padding"
 		}
 	],
 	[
@@ -161902,30 +146161,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		81242,
-		81242,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		81243,
-		81243,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		81244,
+		"--bs-card-inner-border-radius",
+		81242,
 		81270,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -162125,30 +146366,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		81376,
-		81376,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		81377,
-		81377,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		81378,
+		"--bs-card-inner-border-radius",
+		81376,
 		81404,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -162191,30 +146414,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		81435,
-		81435,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		81436,
-		81436,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		81437,
+		"--bs-card-inner-border-radius",
+		81435,
 		81463,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -162307,30 +146512,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		81524,
-		81524,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		81525,
-		81525,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		81526,
+		"--bs-card-inner-border-radius",
+		81524,
 		81552,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -162373,30 +146560,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		81585,
-		81585,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		81586,
-		81586,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-inner-border-radius",
-		81587,
+		"--bs-card-inner-border-radius",
+		81585,
 		81613,
 		{
-			"value": "bs-card-inner-border-radius"
+			"value": "--bs-card-inner-border-radius"
 		}
 	],
 	[
@@ -162491,30 +146660,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		81652,
-		81652,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		81653,
-		81653,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-card-group-margin",
-		81654,
+		"--bs-card-group-margin",
+		81652,
 		81673,
 		{
-			"value": "bs-card-group-margin"
+			"value": "--bs-card-group-margin"
 		}
 	],
 	[
@@ -164403,30 +148554,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		82540,
-		82540,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		82541,
-		82541,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-color",
-		82542,
+		"--bs-accordion-color",
+		82540,
 		82559,
 		{
-			"value": "bs-accordion-color"
+			"value": "--bs-accordion-color"
 		}
 	],
 	[
@@ -164446,30 +148579,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		82565,
-		82565,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		82566,
-		82566,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-color",
-		82567,
+		"--bs-body-color",
+		82565,
 		82579,
 		{
-			"value": "bs-body-color"
+			"value": "--bs-body-color"
 		}
 	],
 	[
@@ -164487,30 +148602,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		82582,
-		82582,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		82583,
-		82583,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-bg",
-		82584,
+		"--bs-accordion-bg",
+		82582,
 		82598,
 		{
-			"value": "bs-accordion-bg"
+			"value": "--bs-accordion-bg"
 		}
 	],
 	[
@@ -164538,30 +148635,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		82605,
-		82605,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		82606,
-		82606,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-transition",
-		82607,
+		"--bs-accordion-transition",
+		82605,
 		82629,
 		{
-			"value": "bs-accordion-transition"
+			"value": "--bs-accordion-transition"
 		}
 	],
 	[
@@ -164822,30 +148901,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		82775,
-		82775,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		82776,
-		82776,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-color",
-		82777,
+		"--bs-accordion-border-color",
+		82775,
 		82801,
 		{
-			"value": "bs-accordion-border-color"
+			"value": "--bs-accordion-border-color"
 		}
 	],
 	[
@@ -164865,30 +148926,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		82807,
-		82807,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		82808,
-		82808,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color",
-		82809,
+		"--bs-border-color",
+		82807,
 		82823,
 		{
-			"value": "bs-border-color"
+			"value": "--bs-border-color"
 		}
 	],
 	[
@@ -164906,30 +148949,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		82826,
-		82826,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		82827,
-		82827,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-width",
-		82828,
+		"--bs-accordion-border-width",
+		82826,
 		82852,
 		{
-			"value": "bs-accordion-border-width"
+			"value": "--bs-accordion-border-width"
 		}
 	],
 	[
@@ -164958,30 +148983,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		82858,
-		82858,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		82859,
-		82859,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-radius",
-		82860,
+		"--bs-accordion-border-radius",
+		82858,
 		82885,
 		{
-			"value": "bs-accordion-border-radius"
+			"value": "--bs-accordion-border-radius"
 		}
 	],
 	[
@@ -165010,30 +149017,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		82896,
-		82896,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		82897,
-		82897,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-inner-border-radius",
-		82898,
+		"--bs-accordion-inner-border-radius",
+		82896,
 		82929,
 		{
-			"value": "bs-accordion-inner-border-radius"
+			"value": "--bs-accordion-inner-border-radius"
 		}
 	],
 	[
@@ -165112,30 +149101,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		82952,
-		82952,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		82953,
-		82953,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-padding-x",
-		82954,
+		"--bs-accordion-btn-padding-x",
+		82952,
 		82979,
 		{
-			"value": "bs-accordion-btn-padding-x"
+			"value": "--bs-accordion-btn-padding-x"
 		}
 	],
 	[
@@ -165164,30 +149135,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		82989,
-		82989,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		82990,
-		82990,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-padding-y",
-		82991,
+		"--bs-accordion-btn-padding-y",
+		82989,
 		83016,
 		{
-			"value": "bs-accordion-btn-padding-y"
+			"value": "--bs-accordion-btn-padding-y"
 		}
 	],
 	[
@@ -165216,30 +149169,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		83023,
-		83023,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		83024,
-		83024,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-color",
-		83025,
+		"--bs-accordion-btn-color",
+		83023,
 		83046,
 		{
-			"value": "bs-accordion-btn-color"
+			"value": "--bs-accordion-btn-color"
 		}
 	],
 	[
@@ -165259,30 +149194,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		83052,
-		83052,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		83053,
-		83053,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-color",
-		83054,
+		"--bs-body-color",
+		83052,
 		83066,
 		{
-			"value": "bs-body-color"
+			"value": "--bs-body-color"
 		}
 	],
 	[
@@ -165300,30 +149217,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		83069,
-		83069,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		83070,
-		83070,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-bg",
-		83071,
+		"--bs-accordion-btn-bg",
+		83069,
 		83089,
 		{
-			"value": "bs-accordion-btn-bg"
+			"value": "--bs-accordion-btn-bg"
 		}
 	],
 	[
@@ -165343,30 +149242,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		83095,
-		83095,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		83096,
-		83096,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-bg",
-		83097,
+		"--bs-accordion-bg",
+		83095,
 		83111,
 		{
-			"value": "bs-accordion-bg"
+			"value": "--bs-accordion-bg"
 		}
 	],
 	[
@@ -165384,30 +149265,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		83114,
-		83114,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		83115,
-		83115,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-icon",
-		83116,
+		"--bs-accordion-btn-icon",
+		83114,
 		83136,
 		{
-			"value": "bs-accordion-btn-icon"
+			"value": "--bs-accordion-btn-icon"
 		}
 	],
 	[
@@ -165450,30 +149313,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		83425,
-		83425,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		83426,
-		83426,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-icon-width",
-		83427,
+		"--bs-accordion-btn-icon-width",
+		83425,
 		83453,
 		{
-			"value": "bs-accordion-btn-icon-width"
+			"value": "--bs-accordion-btn-icon-width"
 		}
 	],
 	[
@@ -165502,30 +149347,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		83463,
-		83463,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		83464,
-		83464,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-icon-transform",
-		83465,
+		"--bs-accordion-btn-icon-transform",
+		83463,
 		83495,
 		{
-			"value": "bs-accordion-btn-icon-transform"
+			"value": "--bs-accordion-btn-icon-transform"
 		}
 	],
 	[
@@ -165570,30 +149397,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		83513,
-		83513,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		83514,
-		83514,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-icon-transition",
-		83515,
+		"--bs-accordion-btn-icon-transition",
+		83513,
 		83546,
 		{
-			"value": "bs-accordion-btn-icon-transition"
+			"value": "--bs-accordion-btn-icon-transition"
 		}
 	],
 	[
@@ -165654,30 +149463,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		83575,
-		83575,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		83576,
-		83576,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-active-icon",
-		83577,
+		"--bs-accordion-btn-active-icon",
+		83575,
 		83604,
 		{
-			"value": "bs-accordion-btn-active-icon"
+			"value": "--bs-accordion-btn-active-icon"
 		}
 	],
 	[
@@ -165720,30 +149511,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		83878,
-		83878,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		83879,
-		83879,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-focus-border-color",
-		83880,
+		"--bs-accordion-btn-focus-border-color",
+		83878,
 		83914,
 		{
-			"value": "bs-accordion-btn-focus-border-color"
+			"value": "--bs-accordion-btn-focus-border-color"
 		}
 	],
 	[
@@ -165771,30 +149544,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		83924,
-		83924,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		83925,
-		83925,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-focus-box-shadow",
-		83926,
+		"--bs-accordion-btn-focus-box-shadow",
+		83924,
 		83958,
 		{
-			"value": "bs-accordion-btn-focus-box-shadow"
+			"value": "--bs-accordion-btn-focus-box-shadow"
 		}
 	],
 	[
@@ -165979,30 +149734,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		83999,
-		83999,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84000,
-		84000,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-body-padding-x",
-		84001,
+		"--bs-accordion-body-padding-x",
+		83999,
 		84027,
 		{
-			"value": "bs-accordion-body-padding-x"
+			"value": "--bs-accordion-body-padding-x"
 		}
 	],
 	[
@@ -166031,30 +149768,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		84037,
-		84037,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84038,
-		84038,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-body-padding-y",
-		84039,
+		"--bs-accordion-body-padding-y",
+		84037,
 		84065,
 		{
-			"value": "bs-accordion-body-padding-y"
+			"value": "--bs-accordion-body-padding-y"
 		}
 	],
 	[
@@ -166083,30 +149802,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		84072,
-		84072,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84073,
-		84073,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-active-color",
-		84074,
+		"--bs-accordion-active-color",
+		84072,
 		84098,
 		{
-			"value": "bs-accordion-active-color"
+			"value": "--bs-accordion-active-color"
 		}
 	],
 	[
@@ -166134,30 +149835,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		84108,
-		84108,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84109,
-		84109,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-active-bg",
-		84110,
+		"--bs-accordion-active-bg",
+		84108,
 		84131,
 		{
-			"value": "bs-accordion-active-bg"
+			"value": "--bs-accordion-active-bg"
 		}
 	],
 	[
@@ -166363,30 +150046,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		84232,
-		84232,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84233,
-		84233,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-padding-y",
-		84234,
+		"--bs-accordion-btn-padding-y",
+		84232,
 		84259,
 		{
-			"value": "bs-accordion-btn-padding-y"
+			"value": "--bs-accordion-btn-padding-y"
 		}
 	],
 	[
@@ -166413,30 +150078,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		84266,
-		84266,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84267,
-		84267,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-padding-x",
-		84268,
+		"--bs-accordion-btn-padding-x",
+		84266,
 		84293,
 		{
-			"value": "bs-accordion-btn-padding-x"
+			"value": "--bs-accordion-btn-padding-x"
 		}
 	],
 	[
@@ -166513,30 +150160,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		84321,
-		84321,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84322,
-		84322,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-color",
-		84323,
+		"--bs-accordion-btn-color",
+		84321,
 		84344,
 		{
-			"value": "bs-accordion-btn-color"
+			"value": "--bs-accordion-btn-color"
 		}
 	],
 	[
@@ -166611,30 +150240,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		84384,
-		84384,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84385,
-		84385,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-bg",
-		84386,
+		"--bs-accordion-btn-bg",
+		84384,
 		84404,
 		{
-			"value": "bs-accordion-btn-bg"
+			"value": "--bs-accordion-btn-bg"
 		}
 	],
 	[
@@ -166775,30 +150386,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		84468,
-		84468,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84469,
-		84469,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-transition",
-		84470,
+		"--bs-accordion-transition",
+		84468,
 		84492,
 		{
-			"value": "bs-accordion-transition"
+			"value": "--bs-accordion-transition"
 		}
 	],
 	[
@@ -167033,30 +150626,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		84613,
-		84613,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84614,
-		84614,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-active-color",
-		84615,
+		"--bs-accordion-active-color",
+		84613,
 		84639,
 		{
-			"value": "bs-accordion-active-color"
+			"value": "--bs-accordion-active-color"
 		}
 	],
 	[
@@ -167099,30 +150674,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		84663,
-		84663,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84664,
-		84664,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-active-bg",
-		84665,
+		"--bs-accordion-active-bg",
+		84663,
 		84686,
 		{
-			"value": "bs-accordion-active-bg"
+			"value": "--bs-accordion-active-bg"
 		}
 	],
 	[
@@ -167240,30 +150797,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		84722,
-		84722,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84723,
-		84723,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-width",
-		84724,
+		"--bs-accordion-border-width",
+		84722,
 		84748,
 		{
-			"value": "bs-accordion-border-width"
+			"value": "--bs-accordion-border-width"
 		}
 	],
 	[
@@ -167314,30 +150853,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		84758,
-		84758,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84759,
-		84759,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-color",
-		84760,
+		"--bs-accordion-border-color",
+		84758,
 		84784,
 		{
-			"value": "bs-accordion-border-color"
+			"value": "--bs-accordion-border-color"
 		}
 	],
 	[
@@ -167469,30 +150990,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		84849,
-		84849,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84850,
-		84850,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-active-icon",
-		84851,
+		"--bs-accordion-btn-active-icon",
+		84849,
 		84878,
 		{
-			"value": "bs-accordion-btn-active-icon"
+			"value": "--bs-accordion-btn-active-icon"
 		}
 	],
 	[
@@ -167535,30 +151038,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		84895,
-		84895,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84896,
-		84896,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-icon-transform",
-		84897,
+		"--bs-accordion-btn-icon-transform",
+		84895,
 		84927,
 		{
-			"value": "bs-accordion-btn-icon-transform"
+			"value": "--bs-accordion-btn-icon-transform"
 		}
 	],
 	[
@@ -167682,30 +151167,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		84979,
-		84979,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		84980,
-		84980,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-icon-width",
-		84981,
+		"--bs-accordion-btn-icon-width",
+		84979,
 		85007,
 		{
-			"value": "bs-accordion-btn-icon-width"
+			"value": "--bs-accordion-btn-icon-width"
 		}
 	],
 	[
@@ -167748,30 +151215,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85021,
-		85021,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85022,
-		85022,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-icon-width",
-		85023,
+		"--bs-accordion-btn-icon-width",
+		85021,
 		85049,
 		{
-			"value": "bs-accordion-btn-icon-width"
+			"value": "--bs-accordion-btn-icon-width"
 		}
 	],
 	[
@@ -167878,30 +151327,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85101,
-		85101,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85102,
-		85102,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-icon",
-		85103,
+		"--bs-accordion-btn-icon",
+		85101,
 		85123,
 		{
-			"value": "bs-accordion-btn-icon"
+			"value": "--bs-accordion-btn-icon"
 		}
 	],
 	[
@@ -167976,30 +151407,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85174,
-		85174,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85175,
-		85175,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-icon-width",
-		85176,
+		"--bs-accordion-btn-icon-width",
+		85174,
 		85202,
 		{
-			"value": "bs-accordion-btn-icon-width"
+			"value": "--bs-accordion-btn-icon-width"
 		}
 	],
 	[
@@ -168042,30 +151455,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85220,
-		85220,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85221,
-		85221,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-icon-transition",
-		85222,
+		"--bs-accordion-btn-icon-transition",
+		85220,
 		85253,
 		{
-			"value": "bs-accordion-btn-icon-transition"
+			"value": "--bs-accordion-btn-icon-transition"
 		}
 	],
 	[
@@ -168405,30 +151800,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85422,
-		85422,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85423,
-		85423,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-focus-border-color",
-		85424,
+		"--bs-accordion-btn-focus-border-color",
+		85422,
 		85458,
 		{
-			"value": "bs-accordion-btn-focus-border-color"
+			"value": "--bs-accordion-btn-focus-border-color"
 		}
 	],
 	[
@@ -168504,30 +151881,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85486,
-		85486,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85487,
-		85487,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-btn-focus-box-shadow",
-		85488,
+		"--bs-accordion-btn-focus-box-shadow",
+		85486,
 		85520,
 		{
-			"value": "bs-accordion-btn-focus-box-shadow"
+			"value": "--bs-accordion-btn-focus-box-shadow"
 		}
 	],
 	[
@@ -168653,30 +152012,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85583,
-		85583,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85584,
-		85584,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-color",
-		85585,
+		"--bs-accordion-color",
+		85583,
 		85602,
 		{
-			"value": "bs-accordion-color"
+			"value": "--bs-accordion-color"
 		}
 	],
 	[
@@ -168719,30 +152060,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85626,
-		85626,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85627,
-		85627,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-bg",
-		85628,
+		"--bs-accordion-bg",
+		85626,
 		85642,
 		{
-			"value": "bs-accordion-bg"
+			"value": "--bs-accordion-bg"
 		}
 	],
 	[
@@ -168785,30 +152108,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85656,
-		85656,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85657,
-		85657,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-width",
-		85658,
+		"--bs-accordion-border-width",
+		85656,
 		85682,
 		{
-			"value": "bs-accordion-border-width"
+			"value": "--bs-accordion-border-width"
 		}
 	],
 	[
@@ -168851,30 +152156,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85695,
-		85695,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85696,
-		85696,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-color",
-		85697,
+		"--bs-accordion-border-color",
+		85695,
 		85721,
 		{
-			"value": "bs-accordion-border-color"
+			"value": "--bs-accordion-border-color"
 		}
 	],
 	[
@@ -168958,30 +152245,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85781,
-		85781,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85782,
-		85782,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-radius",
-		85783,
+		"--bs-accordion-border-radius",
+		85781,
 		85808,
 		{
-			"value": "bs-accordion-border-radius"
+			"value": "--bs-accordion-border-radius"
 		}
 	],
 	[
@@ -169024,30 +152293,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85839,
-		85839,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85840,
-		85840,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-radius",
-		85841,
+		"--bs-accordion-border-radius",
+		85839,
 		85866,
 		{
-			"value": "bs-accordion-border-radius"
+			"value": "--bs-accordion-border-radius"
 		}
 	],
 	[
@@ -169156,30 +152407,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		85944,
-		85944,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		85945,
-		85945,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-inner-border-radius",
-		85946,
+		"--bs-accordion-inner-border-radius",
+		85944,
 		85977,
 		{
-			"value": "bs-accordion-inner-border-radius"
+			"value": "--bs-accordion-inner-border-radius"
 		}
 	],
 	[
@@ -169222,30 +152455,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		86008,
-		86008,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		86009,
-		86009,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-inner-border-radius",
-		86010,
+		"--bs-accordion-inner-border-radius",
+		86008,
 		86041,
 		{
-			"value": "bs-accordion-inner-border-radius"
+			"value": "--bs-accordion-inner-border-radius"
 		}
 	],
 	[
@@ -169426,30 +152641,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		86153,
-		86153,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		86154,
-		86154,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-radius",
-		86155,
+		"--bs-accordion-border-radius",
+		86153,
 		86180,
 		{
-			"value": "bs-accordion-border-radius"
+			"value": "--bs-accordion-border-radius"
 		}
 	],
 	[
@@ -169492,30 +152689,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		86213,
-		86213,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		86214,
-		86214,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-radius",
-		86215,
+		"--bs-accordion-border-radius",
+		86213,
 		86240,
 		{
-			"value": "bs-accordion-border-radius"
+			"value": "--bs-accordion-border-radius"
 		}
 	],
 	[
@@ -169642,30 +152821,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		86331,
-		86331,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		86332,
-		86332,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-inner-border-radius",
-		86333,
+		"--bs-accordion-inner-border-radius",
+		86331,
 		86364,
 		{
-			"value": "bs-accordion-inner-border-radius"
+			"value": "--bs-accordion-inner-border-radius"
 		}
 	],
 	[
@@ -169708,30 +152869,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		86397,
-		86397,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		86398,
-		86398,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-inner-border-radius",
-		86399,
+		"--bs-accordion-inner-border-radius",
+		86397,
 		86430,
 		{
-			"value": "bs-accordion-inner-border-radius"
+			"value": "--bs-accordion-inner-border-radius"
 		}
 	],
 	[
@@ -169840,30 +152983,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		86513,
-		86513,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		86514,
-		86514,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-radius",
-		86515,
+		"--bs-accordion-border-radius",
+		86513,
 		86540,
 		{
-			"value": "bs-accordion-border-radius"
+			"value": "--bs-accordion-border-radius"
 		}
 	],
 	[
@@ -169906,30 +153031,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		86573,
-		86573,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		86574,
-		86574,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-border-radius",
-		86575,
+		"--bs-accordion-border-radius",
+		86573,
 		86600,
 		{
-			"value": "bs-accordion-border-radius"
+			"value": "--bs-accordion-border-radius"
 		}
 	],
 	[
@@ -169997,30 +153104,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		86631,
-		86631,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		86632,
-		86632,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-body-padding-y",
-		86633,
+		"--bs-accordion-body-padding-y",
+		86631,
 		86659,
 		{
-			"value": "bs-accordion-body-padding-y"
+			"value": "--bs-accordion-body-padding-y"
 		}
 	],
 	[
@@ -170047,30 +153136,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		86666,
-		86666,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		86667,
-		86667,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-accordion-body-padding-x",
-		86668,
+		"--bs-accordion-body-padding-x",
+		86666,
 		86694,
 		{
-			"value": "bs-accordion-body-padding-x"
+			"value": "--bs-accordion-body-padding-x"
 		}
 	],
 	[
@@ -170744,30 +153815,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		87085,
-		87085,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87086,
-		87086,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-padding-x",
-		87087,
+		"--bs-breadcrumb-padding-x",
+		87085,
 		87109,
 		{
-			"value": "bs-breadcrumb-padding-x"
+			"value": "--bs-breadcrumb-padding-x"
 		}
 	],
 	[
@@ -170795,30 +153848,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		87113,
-		87113,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87114,
-		87114,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-padding-y",
-		87115,
+		"--bs-breadcrumb-padding-y",
+		87113,
 		87137,
 		{
-			"value": "bs-breadcrumb-padding-y"
+			"value": "--bs-breadcrumb-padding-y"
 		}
 	],
 	[
@@ -170846,30 +153881,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		87141,
-		87141,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87142,
-		87142,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-margin-bottom",
-		87143,
+		"--bs-breadcrumb-margin-bottom",
+		87141,
 		87169,
 		{
-			"value": "bs-breadcrumb-margin-bottom"
+			"value": "--bs-breadcrumb-margin-bottom"
 		}
 	],
 	[
@@ -170898,30 +153915,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		87176,
-		87176,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87177,
-		87177,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-bg",
-		87178,
+		"--bs-breadcrumb-bg",
+		87176,
 		87193,
 		{
-			"value": "bs-breadcrumb-bg"
+			"value": "--bs-breadcrumb-bg"
 		}
 	],
 	[
@@ -170946,30 +153945,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		87197,
-		87197,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87198,
-		87198,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-border-radius",
-		87199,
+		"--bs-breadcrumb-border-radius",
+		87197,
 		87225,
 		{
-			"value": "bs-breadcrumb-border-radius"
+			"value": "--bs-breadcrumb-border-radius"
 		}
 	],
 	[
@@ -170994,30 +153975,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		87229,
-		87229,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87230,
-		87230,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-divider-color",
-		87231,
+		"--bs-breadcrumb-divider-color",
+		87229,
 		87257,
 		{
-			"value": "bs-breadcrumb-divider-color"
+			"value": "--bs-breadcrumb-divider-color"
 		}
 	],
 	[
@@ -171045,30 +154008,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		87267,
-		87267,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87268,
-		87268,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-item-padding-x",
-		87269,
+		"--bs-breadcrumb-item-padding-x",
+		87267,
 		87296,
 		{
-			"value": "bs-breadcrumb-item-padding-x"
+			"value": "--bs-breadcrumb-item-padding-x"
 		}
 	],
 	[
@@ -171097,30 +154042,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		87305,
-		87305,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87306,
-		87306,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-item-active-color",
-		87307,
+		"--bs-breadcrumb-item-active-color",
+		87305,
 		87337,
 		{
-			"value": "bs-breadcrumb-item-active-color"
+			"value": "--bs-breadcrumb-item-active-color"
 		}
 	],
 	[
@@ -171237,30 +154164,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		87387,
-		87387,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87388,
-		87388,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-padding-y",
-		87389,
+		"--bs-breadcrumb-padding-y",
+		87387,
 		87411,
 		{
-			"value": "bs-breadcrumb-padding-y"
+			"value": "--bs-breadcrumb-padding-y"
 		}
 	],
 	[
@@ -171287,30 +154196,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		87418,
-		87418,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87419,
-		87419,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-padding-x",
-		87420,
+		"--bs-breadcrumb-padding-x",
+		87418,
 		87442,
 		{
-			"value": "bs-breadcrumb-padding-x"
+			"value": "--bs-breadcrumb-padding-x"
 		}
 	],
 	[
@@ -171353,30 +154244,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		87463,
-		87463,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87464,
-		87464,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-margin-bottom",
-		87465,
+		"--bs-breadcrumb-margin-bottom",
+		87463,
 		87491,
 		{
-			"value": "bs-breadcrumb-margin-bottom"
+			"value": "--bs-breadcrumb-margin-bottom"
 		}
 	],
 	[
@@ -171419,30 +154292,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		87508,
-		87508,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87509,
-		87509,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-font-size",
-		87510,
+		"--bs-breadcrumb-font-size",
+		87508,
 		87532,
 		{
-			"value": "bs-breadcrumb-font-size"
+			"value": "--bs-breadcrumb-font-size"
 		}
 	],
 	[
@@ -171517,30 +154372,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		87572,
-		87572,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87573,
-		87573,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-bg",
-		87574,
+		"--bs-breadcrumb-bg",
+		87572,
 		87589,
 		{
-			"value": "bs-breadcrumb-bg"
+			"value": "--bs-breadcrumb-bg"
 		}
 	],
 	[
@@ -171583,30 +154420,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		87610,
-		87610,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87611,
-		87611,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-border-radius",
-		87612,
+		"--bs-breadcrumb-border-radius",
+		87610,
 		87638,
 		{
-			"value": "bs-breadcrumb-border-radius"
+			"value": "--bs-breadcrumb-border-radius"
 		}
 	],
 	[
@@ -171701,30 +154520,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		87692,
-		87692,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87693,
-		87693,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-item-padding-x",
-		87694,
+		"--bs-breadcrumb-item-padding-x",
+		87692,
 		87721,
 		{
-			"value": "bs-breadcrumb-item-padding-x"
+			"value": "--bs-breadcrumb-item-padding-x"
 		}
 	],
 	[
@@ -171874,30 +154675,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		87795,
-		87795,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87796,
-		87796,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-item-padding-x",
-		87797,
+		"--bs-breadcrumb-item-padding-x",
+		87795,
 		87824,
 		{
-			"value": "bs-breadcrumb-item-padding-x"
+			"value": "--bs-breadcrumb-item-padding-x"
 		}
 	],
 	[
@@ -171940,30 +154723,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		87837,
-		87837,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87838,
-		87838,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-divider-color",
-		87839,
+		"--bs-breadcrumb-divider-color",
+		87837,
 		87865,
 		{
-			"value": "bs-breadcrumb-divider-color"
+			"value": "--bs-breadcrumb-divider-color"
 		}
 	],
 	[
@@ -172006,30 +154771,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		87880,
-		87880,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87881,
-		87881,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-divider",
-		87882,
+		"--bs-breadcrumb-divider",
+		87880,
 		87902,
 		{
-			"value": "bs-breadcrumb-divider"
+			"value": "--bs-breadcrumb-divider"
 		}
 	],
 	[
@@ -172138,30 +154885,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		87944,
-		87944,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87945,
-		87945,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-breadcrumb-item-active-color",
-		87946,
+		"--bs-breadcrumb-item-active-color",
+		87944,
 		87976,
 		{
-			"value": "bs-breadcrumb-item-active-color"
+			"value": "--bs-breadcrumb-item-active-color"
 		}
 	],
 	[
@@ -172204,30 +154933,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		87991,
-		87991,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		87992,
-		87992,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-padding-x",
-		87993,
+		"--bs-pagination-padding-x",
+		87991,
 		88015,
 		{
-			"value": "bs-pagination-padding-x"
+			"value": "--bs-pagination-padding-x"
 		}
 	],
 	[
@@ -172256,30 +154967,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88025,
-		88025,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88026,
-		88026,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-padding-y",
-		88027,
+		"--bs-pagination-padding-y",
+		88025,
 		88049,
 		{
-			"value": "bs-pagination-padding-y"
+			"value": "--bs-pagination-padding-y"
 		}
 	],
 	[
@@ -172308,30 +155001,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88060,
-		88060,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88061,
-		88061,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-font-size",
-		88062,
+		"--bs-pagination-font-size",
+		88060,
 		88084,
 		{
-			"value": "bs-pagination-font-size"
+			"value": "--bs-pagination-font-size"
 		}
 	],
 	[
@@ -172360,30 +155035,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88091,
-		88091,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88092,
-		88092,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-color",
-		88093,
+		"--bs-pagination-color",
+		88091,
 		88111,
 		{
-			"value": "bs-pagination-color"
+			"value": "--bs-pagination-color"
 		}
 	],
 	[
@@ -172403,30 +155060,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		88117,
-		88117,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88118,
-		88118,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-link-color",
-		88119,
+		"--bs-link-color",
+		88117,
 		88131,
 		{
-			"value": "bs-link-color"
+			"value": "--bs-link-color"
 		}
 	],
 	[
@@ -172444,30 +155083,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88134,
-		88134,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88135,
-		88135,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-bg",
-		88136,
+		"--bs-pagination-bg",
+		88134,
 		88151,
 		{
-			"value": "bs-pagination-bg"
+			"value": "--bs-pagination-bg"
 		}
 	],
 	[
@@ -172495,30 +155116,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88158,
-		88158,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88159,
-		88159,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-border-width",
-		88160,
+		"--bs-pagination-border-width",
+		88158,
 		88185,
 		{
-			"value": "bs-pagination-border-width"
+			"value": "--bs-pagination-border-width"
 		}
 	],
 	[
@@ -172547,30 +155150,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88191,
-		88191,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88192,
-		88192,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-border-color",
-		88193,
+		"--bs-pagination-border-color",
+		88191,
 		88218,
 		{
-			"value": "bs-pagination-border-color"
+			"value": "--bs-pagination-border-color"
 		}
 	],
 	[
@@ -172598,30 +155183,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88228,
-		88228,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88229,
-		88229,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-border-radius",
-		88230,
+		"--bs-pagination-border-radius",
+		88228,
 		88256,
 		{
-			"value": "bs-pagination-border-radius"
+			"value": "--bs-pagination-border-radius"
 		}
 	],
 	[
@@ -172650,30 +155217,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88267,
-		88267,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88268,
-		88268,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-hover-color",
-		88269,
+		"--bs-pagination-hover-color",
+		88267,
 		88293,
 		{
-			"value": "bs-pagination-hover-color"
+			"value": "--bs-pagination-hover-color"
 		}
 	],
 	[
@@ -172693,30 +155242,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		88299,
-		88299,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88300,
-		88300,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-link-hover-color",
-		88301,
+		"--bs-link-hover-color",
+		88299,
 		88319,
 		{
-			"value": "bs-link-hover-color"
+			"value": "--bs-link-hover-color"
 		}
 	],
 	[
@@ -172734,30 +155265,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88322,
-		88322,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88323,
-		88323,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-hover-bg",
-		88324,
+		"--bs-pagination-hover-bg",
+		88322,
 		88345,
 		{
-			"value": "bs-pagination-hover-bg"
+			"value": "--bs-pagination-hover-bg"
 		}
 	],
 	[
@@ -172785,30 +155298,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88355,
-		88355,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88356,
-		88356,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-hover-border-color",
-		88357,
+		"--bs-pagination-hover-border-color",
+		88355,
 		88388,
 		{
-			"value": "bs-pagination-hover-border-color"
+			"value": "--bs-pagination-hover-border-color"
 		}
 	],
 	[
@@ -172836,30 +155331,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88398,
-		88398,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88399,
-		88399,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-focus-color",
-		88400,
+		"--bs-pagination-focus-color",
+		88398,
 		88424,
 		{
-			"value": "bs-pagination-focus-color"
+			"value": "--bs-pagination-focus-color"
 		}
 	],
 	[
@@ -172879,30 +155356,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		88430,
-		88430,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88431,
-		88431,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-link-hover-color",
-		88432,
+		"--bs-link-hover-color",
+		88430,
 		88450,
 		{
-			"value": "bs-link-hover-color"
+			"value": "--bs-link-hover-color"
 		}
 	],
 	[
@@ -172920,30 +155379,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88453,
-		88453,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88454,
-		88454,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-focus-bg",
-		88455,
+		"--bs-pagination-focus-bg",
+		88453,
 		88476,
 		{
-			"value": "bs-pagination-focus-bg"
+			"value": "--bs-pagination-focus-bg"
 		}
 	],
 	[
@@ -172971,30 +155412,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88486,
-		88486,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88487,
-		88487,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-focus-box-shadow",
-		88488,
+		"--bs-pagination-focus-box-shadow",
+		88486,
 		88517,
 		{
-			"value": "bs-pagination-focus-box-shadow"
+			"value": "--bs-pagination-focus-box-shadow"
 		}
 	],
 	[
@@ -173179,30 +155602,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88558,
-		88558,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88559,
-		88559,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-active-color",
-		88560,
+		"--bs-pagination-active-color",
+		88558,
 		88585,
 		{
-			"value": "bs-pagination-active-color"
+			"value": "--bs-pagination-active-color"
 		}
 	],
 	[
@@ -173230,30 +155635,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88592,
-		88592,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88593,
-		88593,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-active-bg",
-		88594,
+		"--bs-pagination-active-bg",
+		88592,
 		88616,
 		{
-			"value": "bs-pagination-active-bg"
+			"value": "--bs-pagination-active-bg"
 		}
 	],
 	[
@@ -173281,30 +155668,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88626,
-		88626,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88627,
-		88627,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-active-border-color",
-		88628,
+		"--bs-pagination-active-border-color",
+		88626,
 		88660,
 		{
-			"value": "bs-pagination-active-border-color"
+			"value": "--bs-pagination-active-border-color"
 		}
 	],
 	[
@@ -173332,30 +155701,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88670,
-		88670,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88671,
-		88671,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-disabled-color",
-		88672,
+		"--bs-pagination-disabled-color",
+		88670,
 		88699,
 		{
-			"value": "bs-pagination-disabled-color"
+			"value": "--bs-pagination-disabled-color"
 		}
 	],
 	[
@@ -173383,30 +155734,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88709,
-		88709,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88710,
-		88710,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-disabled-bg",
-		88711,
+		"--bs-pagination-disabled-bg",
+		88709,
 		88735,
 		{
-			"value": "bs-pagination-disabled-bg"
+			"value": "--bs-pagination-disabled-bg"
 		}
 	],
 	[
@@ -173434,30 +155767,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		88742,
-		88742,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88743,
-		88743,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-disabled-border-color",
-		88744,
+		"--bs-pagination-disabled-border-color",
+		88742,
 		88778,
 		{
-			"value": "bs-pagination-disabled-border-color"
+			"value": "--bs-pagination-disabled-border-color"
 		}
 	],
 	[
@@ -173696,30 +156011,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		88887,
-		88887,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88888,
-		88888,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-padding-y",
-		88889,
+		"--bs-pagination-padding-y",
+		88887,
 		88911,
 		{
-			"value": "bs-pagination-padding-y"
+			"value": "--bs-pagination-padding-y"
 		}
 	],
 	[
@@ -173746,30 +156043,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		88918,
-		88918,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88919,
-		88919,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-padding-x",
-		88920,
+		"--bs-pagination-padding-x",
+		88918,
 		88942,
 		{
-			"value": "bs-pagination-padding-x"
+			"value": "--bs-pagination-padding-x"
 		}
 	],
 	[
@@ -173812,30 +156091,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		88959,
-		88959,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88960,
-		88960,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-font-size",
-		88961,
+		"--bs-pagination-font-size",
+		88959,
 		88983,
 		{
-			"value": "bs-pagination-font-size"
+			"value": "--bs-pagination-font-size"
 		}
 	],
 	[
@@ -173878,30 +156139,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		88996,
-		88996,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		88997,
-		88997,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-color",
-		88998,
+		"--bs-pagination-color",
+		88996,
 		89016,
 		{
-			"value": "bs-pagination-color"
+			"value": "--bs-pagination-color"
 		}
 	],
 	[
@@ -173976,30 +156219,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89061,
-		89061,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89062,
-		89062,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-bg",
-		89063,
+		"--bs-pagination-bg",
+		89061,
 		89078,
 		{
-			"value": "bs-pagination-bg"
+			"value": "--bs-pagination-bg"
 		}
 	],
 	[
@@ -174042,30 +156267,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89092,
-		89092,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89093,
-		89093,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-border-width",
-		89094,
+		"--bs-pagination-border-width",
+		89092,
 		89119,
 		{
-			"value": "bs-pagination-border-width"
+			"value": "--bs-pagination-border-width"
 		}
 	],
 	[
@@ -174108,30 +156315,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89132,
-		89132,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89133,
-		89133,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-border-color",
-		89134,
+		"--bs-pagination-border-color",
+		89132,
 		89159,
 		{
-			"value": "bs-pagination-border-color"
+			"value": "--bs-pagination-border-color"
 		}
 	],
 	[
@@ -174590,30 +156779,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89392,
-		89392,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89393,
-		89393,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-hover-color",
-		89394,
+		"--bs-pagination-hover-color",
+		89392,
 		89418,
 		{
-			"value": "bs-pagination-hover-color"
+			"value": "--bs-pagination-hover-color"
 		}
 	],
 	[
@@ -174656,30 +156827,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89442,
-		89442,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89443,
-		89443,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-hover-bg",
-		89444,
+		"--bs-pagination-hover-bg",
+		89442,
 		89465,
 		{
-			"value": "bs-pagination-hover-bg"
+			"value": "--bs-pagination-hover-bg"
 		}
 	],
 	[
@@ -174722,30 +156875,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89485,
-		89485,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89486,
-		89486,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-hover-border-color",
-		89487,
+		"--bs-pagination-hover-border-color",
+		89485,
 		89518,
 		{
-			"value": "bs-pagination-hover-border-color"
+			"value": "--bs-pagination-hover-border-color"
 		}
 	],
 	[
@@ -174862,30 +156997,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89558,
-		89558,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89559,
-		89559,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-focus-color",
-		89560,
+		"--bs-pagination-focus-color",
+		89558,
 		89584,
 		{
-			"value": "bs-pagination-focus-color"
+			"value": "--bs-pagination-focus-color"
 		}
 	],
 	[
@@ -174928,30 +157045,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89608,
-		89608,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89609,
-		89609,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-focus-bg",
-		89610,
+		"--bs-pagination-focus-bg",
+		89608,
 		89631,
 		{
-			"value": "bs-pagination-focus-bg"
+			"value": "--bs-pagination-focus-bg"
 		}
 	],
 	[
@@ -175027,30 +157126,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89659,
-		89659,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89660,
-		89660,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-focus-box-shadow",
-		89661,
+		"--bs-pagination-focus-box-shadow",
+		89659,
 		89690,
 		{
-			"value": "bs-pagination-focus-box-shadow"
+			"value": "--bs-pagination-focus-box-shadow"
 		}
 	],
 	[
@@ -175221,30 +157302,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89750,
-		89750,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89751,
-		89751,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-active-color",
-		89752,
+		"--bs-pagination-active-color",
+		89750,
 		89777,
 		{
-			"value": "bs-pagination-active-color"
+			"value": "--bs-pagination-active-color"
 		}
 	],
 	[
@@ -175287,30 +157350,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89801,
-		89801,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89802,
-		89802,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-active-bg",
-		89803,
+		"--bs-pagination-active-bg",
+		89801,
 		89825,
 		{
-			"value": "bs-pagination-active-bg"
+			"value": "--bs-pagination-active-bg"
 		}
 	],
 	[
@@ -175353,30 +157398,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89845,
-		89845,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89846,
-		89846,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-active-border-color",
-		89847,
+		"--bs-pagination-active-border-color",
+		89845,
 		89879,
 		{
-			"value": "bs-pagination-active-border-color"
+			"value": "--bs-pagination-active-border-color"
 		}
 	],
 	[
@@ -175514,30 +157541,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		89933,
-		89933,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		89934,
-		89934,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-disabled-color",
-		89935,
+		"--bs-pagination-disabled-color",
+		89933,
 		89962,
 		{
-			"value": "bs-pagination-disabled-color"
+			"value": "--bs-pagination-disabled-color"
 		}
 	],
 	[
@@ -175612,30 +157621,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		90006,
-		90006,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90007,
-		90007,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-disabled-bg",
-		90008,
+		"--bs-pagination-disabled-bg",
+		90006,
 		90032,
 		{
-			"value": "bs-pagination-disabled-bg"
+			"value": "--bs-pagination-disabled-bg"
 		}
 	],
 	[
@@ -175678,30 +157669,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		90052,
-		90052,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90053,
-		90053,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-disabled-border-color",
-		90054,
+		"--bs-pagination-disabled-border-color",
+		90052,
 		90088,
 		{
-			"value": "bs-pagination-disabled-border-color"
+			"value": "--bs-pagination-disabled-border-color"
 		}
 	],
 	[
@@ -175933,30 +157906,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		90209,
-		90209,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90210,
-		90210,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-border-radius",
-		90211,
+		"--bs-pagination-border-radius",
+		90209,
 		90237,
 		{
-			"value": "bs-pagination-border-radius"
+			"value": "--bs-pagination-border-radius"
 		}
 	],
 	[
@@ -175999,30 +157954,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		90270,
-		90270,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90271,
-		90271,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-border-radius",
-		90272,
+		"--bs-pagination-border-radius",
+		90270,
 		90298,
 		{
-			"value": "bs-pagination-border-radius"
+			"value": "--bs-pagination-border-radius"
 		}
 	],
 	[
@@ -176131,30 +158068,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		90362,
-		90362,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90363,
-		90363,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-border-radius",
-		90364,
+		"--bs-pagination-border-radius",
+		90362,
 		90390,
 		{
-			"value": "bs-pagination-border-radius"
+			"value": "--bs-pagination-border-radius"
 		}
 	],
 	[
@@ -176197,30 +158116,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		90424,
-		90424,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90425,
-		90425,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-border-radius",
-		90426,
+		"--bs-pagination-border-radius",
+		90424,
 		90452,
 		{
-			"value": "bs-pagination-border-radius"
+			"value": "--bs-pagination-border-radius"
 		}
 	],
 	[
@@ -176263,30 +158164,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90470,
-		90470,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90471,
-		90471,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-padding-x",
-		90472,
+		"--bs-pagination-padding-x",
+		90470,
 		90494,
 		{
-			"value": "bs-pagination-padding-x"
+			"value": "--bs-pagination-padding-x"
 		}
 	],
 	[
@@ -176315,30 +158198,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90503,
-		90503,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90504,
-		90504,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-padding-y",
-		90505,
+		"--bs-pagination-padding-y",
+		90503,
 		90527,
 		{
-			"value": "bs-pagination-padding-y"
+			"value": "--bs-pagination-padding-y"
 		}
 	],
 	[
@@ -176367,30 +158232,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90537,
-		90537,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90538,
-		90538,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-font-size",
-		90539,
+		"--bs-pagination-font-size",
+		90537,
 		90561,
 		{
-			"value": "bs-pagination-font-size"
+			"value": "--bs-pagination-font-size"
 		}
 	],
 	[
@@ -176419,30 +158266,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90571,
-		90571,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90572,
-		90572,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-border-radius",
-		90573,
+		"--bs-pagination-border-radius",
+		90571,
 		90599,
 		{
-			"value": "bs-pagination-border-radius"
+			"value": "--bs-pagination-border-radius"
 		}
 	],
 	[
@@ -176496,30 +158325,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90623,
-		90623,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90624,
-		90624,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-padding-x",
-		90625,
+		"--bs-pagination-padding-x",
+		90623,
 		90647,
 		{
-			"value": "bs-pagination-padding-x"
+			"value": "--bs-pagination-padding-x"
 		}
 	],
 	[
@@ -176548,30 +158359,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90656,
-		90656,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90657,
-		90657,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-padding-y",
-		90658,
+		"--bs-pagination-padding-y",
+		90656,
 		90680,
 		{
-			"value": "bs-pagination-padding-y"
+			"value": "--bs-pagination-padding-y"
 		}
 	],
 	[
@@ -176600,30 +158393,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90690,
-		90690,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90691,
-		90691,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-font-size",
-		90692,
+		"--bs-pagination-font-size",
+		90690,
 		90714,
 		{
-			"value": "bs-pagination-font-size"
+			"value": "--bs-pagination-font-size"
 		}
 	],
 	[
@@ -176652,30 +158427,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90725,
-		90725,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90726,
-		90726,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-pagination-border-radius",
-		90727,
+		"--bs-pagination-border-radius",
+		90725,
 		90753,
 		{
-			"value": "bs-pagination-border-radius"
+			"value": "--bs-pagination-border-radius"
 		}
 	],
 	[
@@ -176729,30 +158486,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90770,
-		90770,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90771,
-		90771,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-badge-padding-x",
-		90772,
+		"--bs-badge-padding-x",
+		90770,
 		90789,
 		{
-			"value": "bs-badge-padding-x"
+			"value": "--bs-badge-padding-x"
 		}
 	],
 	[
@@ -176781,30 +158520,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90798,
-		90798,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90799,
-		90799,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-badge-padding-y",
-		90800,
+		"--bs-badge-padding-y",
+		90798,
 		90817,
 		{
-			"value": "bs-badge-padding-y"
+			"value": "--bs-badge-padding-y"
 		}
 	],
 	[
@@ -176833,30 +158554,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90826,
-		90826,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90827,
-		90827,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-badge-font-size",
-		90828,
+		"--bs-badge-font-size",
+		90826,
 		90845,
 		{
-			"value": "bs-badge-font-size"
+			"value": "--bs-badge-font-size"
 		}
 	],
 	[
@@ -176885,30 +158588,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90854,
-		90854,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90855,
-		90855,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-badge-font-weight",
-		90856,
+		"--bs-badge-font-weight",
+		90854,
 		90875,
 		{
-			"value": "bs-badge-font-weight"
+			"value": "--bs-badge-font-weight"
 		}
 	],
 	[
@@ -176936,30 +158621,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90881,
-		90881,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90882,
-		90882,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-badge-color",
-		90883,
+		"--bs-badge-color",
+		90881,
 		90896,
 		{
-			"value": "bs-badge-color"
+			"value": "--bs-badge-color"
 		}
 	],
 	[
@@ -176987,30 +158654,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		90903,
-		90903,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90904,
-		90904,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-badge-border-radius",
-		90905,
+		"--bs-badge-border-radius",
+		90903,
 		90926,
 		{
-			"value": "bs-badge-border-radius"
+			"value": "--bs-badge-border-radius"
 		}
 	],
 	[
@@ -177096,30 +158745,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		90970,
-		90970,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90971,
-		90971,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-badge-padding-y",
-		90972,
+		"--bs-badge-padding-y",
+		90970,
 		90989,
 		{
-			"value": "bs-badge-padding-y"
+			"value": "--bs-badge-padding-y"
 		}
 	],
 	[
@@ -177146,30 +158777,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		90996,
-		90996,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		90997,
-		90997,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-badge-padding-x",
-		90998,
+		"--bs-badge-padding-x",
+		90996,
 		91015,
 		{
-			"value": "bs-badge-padding-x"
+			"value": "--bs-badge-padding-x"
 		}
 	],
 	[
@@ -177212,30 +158825,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		91032,
-		91032,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91033,
-		91033,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-badge-font-size",
-		91034,
+		"--bs-badge-font-size",
+		91032,
 		91051,
 		{
-			"value": "bs-badge-font-size"
+			"value": "--bs-badge-font-size"
 		}
 	],
 	[
@@ -177278,30 +158873,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		91070,
-		91070,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91071,
-		91071,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-badge-font-weight",
-		91072,
+		"--bs-badge-font-weight",
+		91070,
 		91091,
 		{
-			"value": "bs-badge-font-weight"
+			"value": "--bs-badge-font-weight"
 		}
 	],
 	[
@@ -177377,30 +158954,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		91118,
-		91118,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91119,
-		91119,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-badge-color",
-		91120,
+		"--bs-badge-color",
+		91118,
 		91133,
 		{
-			"value": "bs-badge-color"
+			"value": "--bs-badge-color"
 		}
 	],
 	[
@@ -177539,30 +159098,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		91215,
-		91215,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91216,
-		91216,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-badge-border-radius",
-		91217,
+		"--bs-badge-border-radius",
+		91215,
 		91238,
 		{
-			"value": "bs-badge-border-radius"
+			"value": "--bs-badge-border-radius"
 		}
 	],
 	[
@@ -177794,30 +159335,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		91313,
-		91313,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91314,
-		91314,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-bg",
-		91315,
+		"--bs-alert-bg",
+		91313,
 		91325,
 		{
-			"value": "bs-alert-bg"
+			"value": "--bs-alert-bg"
 		}
 	],
 	[
@@ -177844,30 +159367,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		91339,
-		91339,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91340,
-		91340,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-padding-x",
-		91341,
+		"--bs-alert-padding-x",
+		91339,
 		91358,
 		{
-			"value": "bs-alert-padding-x"
+			"value": "--bs-alert-padding-x"
 		}
 	],
 	[
@@ -177896,30 +159401,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		91365,
-		91365,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91366,
-		91366,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-padding-y",
-		91367,
+		"--bs-alert-padding-y",
+		91365,
 		91384,
 		{
-			"value": "bs-alert-padding-y"
+			"value": "--bs-alert-padding-y"
 		}
 	],
 	[
@@ -177948,30 +159435,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		91391,
-		91391,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91392,
-		91392,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-margin-bottom",
-		91393,
+		"--bs-alert-margin-bottom",
+		91391,
 		91414,
 		{
-			"value": "bs-alert-margin-bottom"
+			"value": "--bs-alert-margin-bottom"
 		}
 	],
 	[
@@ -178000,30 +159469,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		91421,
-		91421,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91422,
-		91422,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-color",
-		91423,
+		"--bs-alert-color",
+		91421,
 		91436,
 		{
-			"value": "bs-alert-color"
+			"value": "--bs-alert-color"
 		}
 	],
 	[
@@ -178050,30 +159501,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		91446,
-		91446,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91447,
-		91447,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border-color",
-		91448,
+		"--bs-alert-border-color",
+		91446,
 		91468,
 		{
-			"value": "bs-alert-border-color"
+			"value": "--bs-alert-border-color"
 		}
 	],
 	[
@@ -178100,30 +159533,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		91482,
-		91482,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91483,
-		91483,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border",
-		91484,
+		"--bs-alert-border",
+		91482,
 		91498,
 		{
-			"value": "bs-alert-border"
+			"value": "--bs-alert-border"
 		}
 	],
 	[
@@ -178177,30 +159592,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		91514,
-		91514,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91515,
-		91515,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border-color",
-		91516,
+		"--bs-alert-border-color",
+		91514,
 		91536,
 		{
-			"value": "bs-alert-border-color"
+			"value": "--bs-alert-border-color"
 		}
 	],
 	[
@@ -178218,30 +159615,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		91539,
-		91539,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91540,
-		91540,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border-radius",
-		91541,
+		"--bs-alert-border-radius",
+		91539,
 		91562,
 		{
-			"value": "bs-alert-border-radius"
+			"value": "--bs-alert-border-radius"
 		}
 	],
 	[
@@ -178327,30 +159706,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		91603,
-		91603,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91604,
-		91604,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-padding-y",
-		91605,
+		"--bs-alert-padding-y",
+		91603,
 		91622,
 		{
-			"value": "bs-alert-padding-y"
+			"value": "--bs-alert-padding-y"
 		}
 	],
 	[
@@ -178377,30 +159738,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		91629,
-		91629,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91630,
-		91630,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-padding-x",
-		91631,
+		"--bs-alert-padding-x",
+		91629,
 		91648,
 		{
-			"value": "bs-alert-padding-x"
+			"value": "--bs-alert-padding-x"
 		}
 	],
 	[
@@ -178443,30 +159786,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		91669,
-		91669,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91670,
-		91670,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-margin-bottom",
-		91671,
+		"--bs-alert-margin-bottom",
+		91669,
 		91692,
 		{
-			"value": "bs-alert-margin-bottom"
+			"value": "--bs-alert-margin-bottom"
 		}
 	],
 	[
@@ -178509,30 +159834,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		91705,
-		91705,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91706,
-		91706,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-color",
-		91707,
+		"--bs-alert-color",
+		91705,
 		91720,
 		{
-			"value": "bs-alert-color"
+			"value": "--bs-alert-color"
 		}
 	],
 	[
@@ -178575,30 +159882,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		91744,
-		91744,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91745,
-		91745,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-bg",
-		91746,
+		"--bs-alert-bg",
+		91744,
 		91756,
 		{
-			"value": "bs-alert-bg"
+			"value": "--bs-alert-bg"
 		}
 	],
 	[
@@ -178641,30 +159930,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		91770,
-		91770,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91771,
-		91771,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border",
-		91772,
+		"--bs-alert-border",
+		91770,
 		91786,
 		{
-			"value": "bs-alert-border"
+			"value": "--bs-alert-border"
 		}
 	],
 	[
@@ -178707,30 +159978,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		91807,
-		91807,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		91808,
-		91808,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border-radius",
-		91809,
+		"--bs-alert-border-radius",
+		91807,
 		91830,
 		{
-			"value": "bs-alert-border-radius"
+			"value": "--bs-alert-border-radius"
 		}
 	],
 	[
@@ -179180,30 +160433,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92036,
-		92036,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92037,
-		92037,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-color",
-		92038,
+		"--bs-alert-color",
+		92036,
 		92051,
 		{
-			"value": "bs-alert-color"
+			"value": "--bs-alert-color"
 		}
 	],
 	[
@@ -179231,30 +160466,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92061,
-		92061,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92062,
-		92062,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-bg",
-		92063,
+		"--bs-alert-bg",
+		92061,
 		92073,
 		{
-			"value": "bs-alert-bg"
+			"value": "--bs-alert-bg"
 		}
 	],
 	[
@@ -179282,30 +160499,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92083,
-		92083,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92084,
-		92084,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border-color",
-		92085,
+		"--bs-alert-border-color",
+		92083,
 		92105,
 		{
-			"value": "bs-alert-border-color"
+			"value": "--bs-alert-border-color"
 		}
 	],
 	[
@@ -179441,30 +160640,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92173,
-		92173,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92174,
-		92174,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-color",
-		92175,
+		"--bs-alert-color",
+		92173,
 		92188,
 		{
-			"value": "bs-alert-color"
+			"value": "--bs-alert-color"
 		}
 	],
 	[
@@ -179492,30 +160673,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92198,
-		92198,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92199,
-		92199,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-bg",
-		92200,
+		"--bs-alert-bg",
+		92198,
 		92210,
 		{
-			"value": "bs-alert-bg"
+			"value": "--bs-alert-bg"
 		}
 	],
 	[
@@ -179543,30 +160706,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92220,
-		92220,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92221,
-		92221,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border-color",
-		92222,
+		"--bs-alert-border-color",
+		92220,
 		92242,
 		{
-			"value": "bs-alert-border-color"
+			"value": "--bs-alert-border-color"
 		}
 	],
 	[
@@ -179702,30 +160847,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92310,
-		92310,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92311,
-		92311,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-color",
-		92312,
+		"--bs-alert-color",
+		92310,
 		92325,
 		{
-			"value": "bs-alert-color"
+			"value": "--bs-alert-color"
 		}
 	],
 	[
@@ -179753,30 +160880,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92335,
-		92335,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92336,
-		92336,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-bg",
-		92337,
+		"--bs-alert-bg",
+		92335,
 		92347,
 		{
-			"value": "bs-alert-bg"
+			"value": "--bs-alert-bg"
 		}
 	],
 	[
@@ -179804,30 +160913,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92357,
-		92357,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92358,
-		92358,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border-color",
-		92359,
+		"--bs-alert-border-color",
+		92357,
 		92379,
 		{
-			"value": "bs-alert-border-color"
+			"value": "--bs-alert-border-color"
 		}
 	],
 	[
@@ -179963,30 +161054,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92442,
-		92442,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92443,
-		92443,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-color",
-		92444,
+		"--bs-alert-color",
+		92442,
 		92457,
 		{
-			"value": "bs-alert-color"
+			"value": "--bs-alert-color"
 		}
 	],
 	[
@@ -180014,30 +161087,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92467,
-		92467,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92468,
-		92468,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-bg",
-		92469,
+		"--bs-alert-bg",
+		92467,
 		92479,
 		{
-			"value": "bs-alert-bg"
+			"value": "--bs-alert-bg"
 		}
 	],
 	[
@@ -180065,30 +161120,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92489,
-		92489,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92490,
-		92490,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border-color",
-		92491,
+		"--bs-alert-border-color",
+		92489,
 		92511,
 		{
-			"value": "bs-alert-border-color"
+			"value": "--bs-alert-border-color"
 		}
 	],
 	[
@@ -180224,30 +161261,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92574,
-		92574,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92575,
-		92575,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-color",
-		92576,
+		"--bs-alert-color",
+		92574,
 		92589,
 		{
-			"value": "bs-alert-color"
+			"value": "--bs-alert-color"
 		}
 	],
 	[
@@ -180275,30 +161294,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92599,
-		92599,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92600,
-		92600,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-bg",
-		92601,
+		"--bs-alert-bg",
+		92599,
 		92611,
 		{
-			"value": "bs-alert-bg"
+			"value": "--bs-alert-bg"
 		}
 	],
 	[
@@ -180326,30 +161327,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92621,
-		92621,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92622,
-		92622,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border-color",
-		92623,
+		"--bs-alert-border-color",
+		92621,
 		92643,
 		{
-			"value": "bs-alert-border-color"
+			"value": "--bs-alert-border-color"
 		}
 	],
 	[
@@ -180485,30 +161468,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92708,
-		92708,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92709,
-		92709,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-color",
-		92710,
+		"--bs-alert-color",
+		92708,
 		92723,
 		{
-			"value": "bs-alert-color"
+			"value": "--bs-alert-color"
 		}
 	],
 	[
@@ -180536,30 +161501,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92733,
-		92733,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92734,
-		92734,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-bg",
-		92735,
+		"--bs-alert-bg",
+		92733,
 		92745,
 		{
-			"value": "bs-alert-bg"
+			"value": "--bs-alert-bg"
 		}
 	],
 	[
@@ -180587,30 +161534,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92755,
-		92755,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92756,
-		92756,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border-color",
-		92757,
+		"--bs-alert-border-color",
+		92755,
 		92777,
 		{
-			"value": "bs-alert-border-color"
+			"value": "--bs-alert-border-color"
 		}
 	],
 	[
@@ -180746,30 +161675,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92840,
-		92840,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92841,
-		92841,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-color",
-		92842,
+		"--bs-alert-color",
+		92840,
 		92855,
 		{
-			"value": "bs-alert-color"
+			"value": "--bs-alert-color"
 		}
 	],
 	[
@@ -180797,30 +161708,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92865,
-		92865,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92866,
-		92866,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-bg",
-		92867,
+		"--bs-alert-bg",
+		92865,
 		92877,
 		{
-			"value": "bs-alert-bg"
+			"value": "--bs-alert-bg"
 		}
 	],
 	[
@@ -180848,30 +161741,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92887,
-		92887,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92888,
-		92888,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border-color",
-		92889,
+		"--bs-alert-border-color",
+		92887,
 		92909,
 		{
-			"value": "bs-alert-border-color"
+			"value": "--bs-alert-border-color"
 		}
 	],
 	[
@@ -181007,30 +161882,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92970,
-		92970,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92971,
-		92971,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-color",
-		92972,
+		"--bs-alert-color",
+		92970,
 		92985,
 		{
-			"value": "bs-alert-color"
+			"value": "--bs-alert-color"
 		}
 	],
 	[
@@ -181058,30 +161915,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		92995,
-		92995,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		92996,
-		92996,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-bg",
-		92997,
+		"--bs-alert-bg",
+		92995,
 		93007,
 		{
-			"value": "bs-alert-bg"
+			"value": "--bs-alert-bg"
 		}
 	],
 	[
@@ -181109,30 +161948,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		93017,
-		93017,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93018,
-		93018,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-alert-border-color",
-		93019,
+		"--bs-alert-border-color",
+		93017,
 		93039,
 		{
-			"value": "bs-alert-border-color"
+			"value": "--bs-alert-border-color"
 		}
 	],
 	[
@@ -181446,30 +162267,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		93231,
-		93231,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93232,
-		93232,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-height",
-		93233,
+		"--bs-progress-height",
+		93231,
 		93250,
 		{
-			"value": "bs-progress-height"
+			"value": "--bs-progress-height"
 		}
 	],
 	[
@@ -181498,30 +162301,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		93257,
-		93257,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93258,
-		93258,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-font-size",
-		93259,
+		"--bs-progress-font-size",
+		93257,
 		93279,
 		{
-			"value": "bs-progress-font-size"
+			"value": "--bs-progress-font-size"
 		}
 	],
 	[
@@ -181550,30 +162335,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		93289,
-		93289,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93290,
-		93290,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-bg",
-		93291,
+		"--bs-progress-bg",
+		93289,
 		93304,
 		{
-			"value": "bs-progress-bg"
+			"value": "--bs-progress-bg"
 		}
 	],
 	[
@@ -181601,30 +162368,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		93314,
-		93314,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93315,
-		93315,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-border-radius",
-		93316,
+		"--bs-progress-border-radius",
+		93314,
 		93340,
 		{
-			"value": "bs-progress-border-radius"
+			"value": "--bs-progress-border-radius"
 		}
 	],
 	[
@@ -181653,30 +162402,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		93351,
-		93351,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93352,
-		93352,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-box-shadow",
-		93353,
+		"--bs-progress-box-shadow",
+		93351,
 		93374,
 		{
-			"value": "bs-progress-box-shadow"
+			"value": "--bs-progress-box-shadow"
 		}
 	],
 	[
@@ -181861,30 +162592,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		93413,
-		93413,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93414,
-		93414,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-bar-color",
-		93415,
+		"--bs-progress-bar-color",
+		93413,
 		93435,
 		{
-			"value": "bs-progress-bar-color"
+			"value": "--bs-progress-bar-color"
 		}
 	],
 	[
@@ -181912,30 +162625,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		93442,
-		93442,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93443,
-		93443,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-bar-bg",
-		93444,
+		"--bs-progress-bar-bg",
+		93442,
 		93461,
 		{
-			"value": "bs-progress-bar-bg"
+			"value": "--bs-progress-bar-bg"
 		}
 	],
 	[
@@ -181963,30 +162658,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		93471,
-		93471,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93472,
-		93472,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-bar-transition",
-		93473,
+		"--bs-progress-bar-transition",
+		93471,
 		93498,
 		{
-			"value": "bs-progress-bar-transition"
+			"value": "--bs-progress-bar-transition"
 		}
 	],
 	[
@@ -182104,30 +162781,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		93540,
-		93540,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93541,
-		93541,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-height",
-		93542,
+		"--bs-progress-height",
+		93540,
 		93559,
 		{
-			"value": "bs-progress-height"
+			"value": "--bs-progress-height"
 		}
 	],
 	[
@@ -182202,30 +162861,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		93592,
-		93592,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93593,
-		93593,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-font-size",
-		93594,
+		"--bs-progress-font-size",
+		93592,
 		93614,
 		{
-			"value": "bs-progress-font-size"
+			"value": "--bs-progress-font-size"
 		}
 	],
 	[
@@ -182268,30 +162909,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		93638,
-		93638,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93639,
-		93639,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-bg",
-		93640,
+		"--bs-progress-bg",
+		93638,
 		93653,
 		{
-			"value": "bs-progress-bg"
+			"value": "--bs-progress-bg"
 		}
 	],
 	[
@@ -182334,30 +162957,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		93674,
-		93674,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93675,
-		93675,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-border-radius",
-		93676,
+		"--bs-progress-border-radius",
+		93674,
 		93700,
 		{
-			"value": "bs-progress-border-radius"
+			"value": "--bs-progress-border-radius"
 		}
 	],
 	[
@@ -182553,30 +163158,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		93801,
-		93801,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93802,
-		93802,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-bar-color",
-		93803,
+		"--bs-progress-bar-color",
+		93801,
 		93823,
 		{
-			"value": "bs-progress-bar-color"
+			"value": "--bs-progress-bar-color"
 		}
 	],
 	[
@@ -182683,30 +163270,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		93884,
-		93884,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93885,
-		93885,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-bar-bg",
-		93886,
+		"--bs-progress-bar-bg",
+		93884,
 		93903,
 		{
-			"value": "bs-progress-bar-bg"
+			"value": "--bs-progress-bar-bg"
 		}
 	],
 	[
@@ -182749,30 +163318,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		93921,
-		93921,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		93922,
-		93922,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-bar-transition",
-		93923,
+		"--bs-progress-bar-transition",
+		93921,
 		93948,
 		{
-			"value": "bs-progress-bar-transition"
+			"value": "--bs-progress-bar-transition"
 		}
 	],
 	[
@@ -183428,30 +163979,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		94241,
-		94241,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94242,
-		94242,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-height",
-		94243,
+		"--bs-progress-height",
+		94241,
 		94260,
 		{
-			"value": "bs-progress-height"
+			"value": "--bs-progress-height"
 		}
 	],
 	[
@@ -183478,30 +164011,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		94267,
-		94267,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94268,
-		94268,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-progress-height",
-		94269,
+		"--bs-progress-height",
+		94267,
 		94286,
 		{
-			"value": "bs-progress-height"
+			"value": "--bs-progress-height"
 		}
 	],
 	[
@@ -183544,21 +164059,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94312,
-		94312,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-animation",
-		94313,
+		"-webkit-animation",
+		94312,
 		94328,
 		{
-			"value": "webkit-animation"
+			"value": "-webkit-animation"
 		}
 	],
 	[
@@ -183804,21 +164310,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94482,
-		94482,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-animation",
-		94483,
+		"-webkit-animation",
+		94482,
 		94498,
 		{
-			"value": "webkit-animation"
+			"value": "-webkit-animation"
 		}
 	],
 	[
@@ -183909,30 +164406,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94533,
-		94533,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94534,
-		94534,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-color",
-		94535,
+		"--bs-list-group-color",
+		94533,
 		94553,
 		{
-			"value": "bs-list-group-color"
+			"value": "--bs-list-group-color"
 		}
 	],
 	[
@@ -183960,30 +164439,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94563,
-		94563,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94564,
-		94564,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-bg",
-		94565,
+		"--bs-list-group-bg",
+		94563,
 		94580,
 		{
-			"value": "bs-list-group-bg"
+			"value": "--bs-list-group-bg"
 		}
 	],
 	[
@@ -184011,30 +164472,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94587,
-		94587,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94588,
-		94588,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-color",
-		94589,
+		"--bs-list-group-border-color",
+		94587,
 		94614,
 		{
-			"value": "bs-list-group-border-color"
+			"value": "--bs-list-group-border-color"
 		}
 	],
 	[
@@ -184150,30 +164593,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94637,
-		94637,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94638,
-		94638,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		94639,
+		"--bs-list-group-border-width",
+		94637,
 		94664,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -184202,30 +164627,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94670,
-		94670,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94671,
-		94671,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		94672,
+		"--bs-list-group-border-radius",
+		94670,
 		94698,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -184254,30 +164661,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94709,
-		94709,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94710,
-		94710,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-item-padding-x",
-		94711,
+		"--bs-list-group-item-padding-x",
+		94709,
 		94738,
 		{
-			"value": "bs-list-group-item-padding-x"
+			"value": "--bs-list-group-item-padding-x"
 		}
 	],
 	[
@@ -184306,30 +164695,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94745,
-		94745,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94746,
-		94746,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-item-padding-y",
-		94747,
+		"--bs-list-group-item-padding-y",
+		94745,
 		94774,
 		{
-			"value": "bs-list-group-item-padding-y"
+			"value": "--bs-list-group-item-padding-y"
 		}
 	],
 	[
@@ -184358,30 +164729,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94783,
-		94783,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94784,
-		94784,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-action-color",
-		94785,
+		"--bs-list-group-action-color",
+		94783,
 		94810,
 		{
-			"value": "bs-list-group-action-color"
+			"value": "--bs-list-group-action-color"
 		}
 	],
 	[
@@ -184409,30 +164762,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94820,
-		94820,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94821,
-		94821,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-action-hover-color",
-		94822,
+		"--bs-list-group-action-hover-color",
+		94820,
 		94853,
 		{
-			"value": "bs-list-group-action-hover-color"
+			"value": "--bs-list-group-action-hover-color"
 		}
 	],
 	[
@@ -184460,30 +164795,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94863,
-		94863,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94864,
-		94864,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-action-hover-bg",
-		94865,
+		"--bs-list-group-action-hover-bg",
+		94863,
 		94893,
 		{
-			"value": "bs-list-group-action-hover-bg"
+			"value": "--bs-list-group-action-hover-bg"
 		}
 	],
 	[
@@ -184511,30 +164828,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94903,
-		94903,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94904,
-		94904,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-action-active-color",
-		94905,
+		"--bs-list-group-action-active-color",
+		94903,
 		94937,
 		{
-			"value": "bs-list-group-action-active-color"
+			"value": "--bs-list-group-action-active-color"
 		}
 	],
 	[
@@ -184562,30 +164861,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94947,
-		94947,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94948,
-		94948,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-action-active-bg",
-		94949,
+		"--bs-list-group-action-active-bg",
+		94947,
 		94978,
 		{
-			"value": "bs-list-group-action-active-bg"
+			"value": "--bs-list-group-action-active-bg"
 		}
 	],
 	[
@@ -184613,30 +164894,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		94988,
-		94988,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		94989,
-		94989,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-disabled-color",
-		94990,
+		"--bs-list-group-disabled-color",
+		94988,
 		95017,
 		{
-			"value": "bs-list-group-disabled-color"
+			"value": "--bs-list-group-disabled-color"
 		}
 	],
 	[
@@ -184664,30 +164927,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		95027,
-		95027,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		95028,
-		95028,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-disabled-bg",
-		95029,
+		"--bs-list-group-disabled-bg",
+		95027,
 		95053,
 		{
-			"value": "bs-list-group-disabled-bg"
+			"value": "--bs-list-group-disabled-bg"
 		}
 	],
 	[
@@ -184715,30 +164960,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		95060,
-		95060,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		95061,
-		95061,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-active-color",
-		95062,
+		"--bs-list-group-active-color",
+		95060,
 		95087,
 		{
-			"value": "bs-list-group-active-color"
+			"value": "--bs-list-group-active-color"
 		}
 	],
 	[
@@ -184766,30 +164993,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		95094,
-		95094,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		95095,
-		95095,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-active-bg",
-		95096,
+		"--bs-list-group-active-bg",
+		95094,
 		95118,
 		{
-			"value": "bs-list-group-active-bg"
+			"value": "--bs-list-group-active-bg"
 		}
 	],
 	[
@@ -184817,30 +165026,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		95128,
-		95128,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		95129,
-		95129,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-active-border-color",
-		95130,
+		"--bs-list-group-active-border-color",
+		95128,
 		95162,
 		{
-			"value": "bs-list-group-active-border-color"
+			"value": "--bs-list-group-active-border-color"
 		}
 	],
 	[
@@ -185023,30 +165214,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		95256,
-		95256,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		95257,
-		95257,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		95258,
+		"--bs-list-group-border-radius",
+		95256,
 		95284,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -185429,30 +165602,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		95504,
-		95504,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		95505,
-		95505,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-action-color",
-		95506,
+		"--bs-list-group-action-color",
+		95504,
 		95531,
 		{
-			"value": "bs-list-group-action-color"
+			"value": "--bs-list-group-action-color"
 		}
 	],
 	[
@@ -185642,30 +165797,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		95633,
-		95633,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		95634,
-		95634,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-action-hover-color",
-		95635,
+		"--bs-list-group-action-hover-color",
+		95633,
 		95666,
 		{
-			"value": "bs-list-group-action-hover-color"
+			"value": "--bs-list-group-action-hover-color"
 		}
 	],
 	[
@@ -185740,30 +165877,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		95711,
-		95711,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		95712,
-		95712,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-action-hover-bg",
-		95713,
+		"--bs-list-group-action-hover-bg",
+		95711,
 		95741,
 		{
-			"value": "bs-list-group-action-hover-bg"
+			"value": "--bs-list-group-action-hover-bg"
 		}
 	],
 	[
@@ -185847,30 +165966,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		95785,
-		95785,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		95786,
-		95786,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-action-active-color",
-		95787,
+		"--bs-list-group-action-active-color",
+		95785,
 		95819,
 		{
-			"value": "bs-list-group-action-active-color"
+			"value": "--bs-list-group-action-active-color"
 		}
 	],
 	[
@@ -185913,30 +166014,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		95843,
-		95843,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		95844,
-		95844,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-action-active-bg",
-		95845,
+		"--bs-list-group-action-active-bg",
+		95843,
 		95874,
 		{
-			"value": "bs-list-group-action-active-bg"
+			"value": "--bs-list-group-action-active-bg"
 		}
 	],
 	[
@@ -186068,30 +166151,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		95938,
-		95938,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		95939,
-		95939,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-item-padding-y",
-		95940,
+		"--bs-list-group-item-padding-y",
+		95938,
 		95967,
 		{
-			"value": "bs-list-group-item-padding-y"
+			"value": "--bs-list-group-item-padding-y"
 		}
 	],
 	[
@@ -186118,30 +166183,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		95974,
-		95974,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		95975,
-		95975,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-item-padding-x",
-		95976,
+		"--bs-list-group-item-padding-x",
+		95974,
 		96003,
 		{
-			"value": "bs-list-group-item-padding-x"
+			"value": "--bs-list-group-item-padding-x"
 		}
 	],
 	[
@@ -186184,30 +166231,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		96016,
-		96016,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		96017,
-		96017,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-color",
-		96018,
+		"--bs-list-group-color",
+		96016,
 		96036,
 		{
-			"value": "bs-list-group-color"
+			"value": "--bs-list-group-color"
 		}
 	],
 	[
@@ -186282,30 +166311,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		96081,
-		96081,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		96082,
-		96082,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-bg",
-		96083,
+		"--bs-list-group-bg",
+		96081,
 		96098,
 		{
-			"value": "bs-list-group-bg"
+			"value": "--bs-list-group-bg"
 		}
 	],
 	[
@@ -186348,30 +166359,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		96112,
-		96112,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		96113,
-		96113,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		96114,
+		"--bs-list-group-border-width",
+		96112,
 		96139,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -186414,30 +166407,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		96152,
-		96152,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		96153,
-		96153,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-color",
-		96154,
+		"--bs-list-group-border-color",
+		96152,
 		96179,
 		{
-			"value": "bs-list-group-border-color"
+			"value": "--bs-list-group-border-color"
 		}
 	],
 	[
@@ -186774,30 +166749,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		96433,
-		96433,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		96434,
-		96434,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-disabled-color",
-		96435,
+		"--bs-list-group-disabled-color",
+		96433,
 		96462,
 		{
-			"value": "bs-list-group-disabled-color"
+			"value": "--bs-list-group-disabled-color"
 		}
 	],
 	[
@@ -186872,30 +166829,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		96506,
-		96506,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		96507,
-		96507,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-disabled-bg",
-		96508,
+		"--bs-list-group-disabled-bg",
+		96506,
 		96532,
 		{
-			"value": "bs-list-group-disabled-bg"
+			"value": "--bs-list-group-disabled-bg"
 		}
 	],
 	[
@@ -187014,30 +166953,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		96579,
-		96579,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		96580,
-		96580,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-active-color",
-		96581,
+		"--bs-list-group-active-color",
+		96579,
 		96606,
 		{
-			"value": "bs-list-group-active-color"
+			"value": "--bs-list-group-active-color"
 		}
 	],
 	[
@@ -187080,30 +167001,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		96630,
-		96630,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		96631,
-		96631,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-active-bg",
-		96632,
+		"--bs-list-group-active-bg",
+		96630,
 		96654,
 		{
-			"value": "bs-list-group-active-bg"
+			"value": "--bs-list-group-active-bg"
 		}
 	],
 	[
@@ -187146,30 +167049,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		96674,
-		96674,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		96675,
-		96675,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-active-border-color",
-		96676,
+		"--bs-list-group-active-border-color",
+		96674,
 		96708,
 		{
-			"value": "bs-list-group-active-border-color"
+			"value": "--bs-list-group-active-border-color"
 		}
 	],
 	[
@@ -187409,30 +167294,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		96830,
-		96830,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		96831,
-		96831,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		96832,
+		"--bs-list-group-border-width",
+		96830,
 		96857,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -187482,30 +167349,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		96882,
-		96882,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		96883,
-		96883,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		96884,
+		"--bs-list-group-border-width",
+		96882,
 		96909,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -187712,30 +167561,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		97053,
-		97053,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		97054,
-		97054,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		97055,
+		"--bs-list-group-border-radius",
+		97053,
 		97081,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -187918,30 +167749,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		97207,
-		97207,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		97208,
-		97208,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		97209,
+		"--bs-list-group-border-radius",
+		97207,
 		97235,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -188199,30 +168012,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		97404,
-		97404,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		97405,
-		97405,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		97406,
+		"--bs-list-group-border-width",
+		97404,
 		97431,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -188437,30 +168232,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		97544,
-		97544,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		97545,
-		97545,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		97546,
+		"--bs-list-group-border-width",
+		97544,
 		97571,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -188510,30 +168287,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		97597,
-		97597,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		97598,
-		97598,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		97599,
+		"--bs-list-group-border-width",
+		97597,
 		97624,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -188804,30 +168563,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		97799,
-		97799,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		97800,
-		97800,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		97801,
+		"--bs-list-group-border-radius",
+		97799,
 		97827,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -189010,30 +168751,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		97956,
-		97956,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		97957,
-		97957,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		97958,
+		"--bs-list-group-border-radius",
+		97956,
 		97984,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -189291,30 +169014,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		98159,
-		98159,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		98160,
-		98160,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		98161,
+		"--bs-list-group-border-width",
+		98159,
 		98186,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -189529,30 +169234,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		98302,
-		98302,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		98303,
-		98303,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		98304,
+		"--bs-list-group-border-width",
+		98302,
 		98329,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -189602,30 +169289,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		98355,
-		98355,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		98356,
-		98356,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		98357,
+		"--bs-list-group-border-width",
+		98355,
 		98382,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -189903,30 +169572,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		98558,
-		98558,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		98559,
-		98559,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		98560,
+		"--bs-list-group-border-radius",
+		98558,
 		98586,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -190109,30 +169760,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		98715,
-		98715,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		98716,
-		98716,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		98717,
+		"--bs-list-group-border-radius",
+		98715,
 		98743,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -190390,30 +170023,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		98918,
-		98918,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		98919,
-		98919,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		98920,
+		"--bs-list-group-border-width",
+		98918,
 		98945,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -190628,30 +170243,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		99061,
-		99061,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		99062,
-		99062,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		99063,
+		"--bs-list-group-border-width",
+		99061,
 		99088,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -190701,30 +170298,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		99114,
-		99114,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		99115,
-		99115,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		99116,
+		"--bs-list-group-border-width",
+		99114,
 		99141,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -191002,30 +170581,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		99317,
-		99317,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		99318,
-		99318,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		99319,
+		"--bs-list-group-border-radius",
+		99317,
 		99345,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -191208,30 +170769,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		99474,
-		99474,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		99475,
-		99475,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		99476,
+		"--bs-list-group-border-radius",
+		99474,
 		99502,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -191489,30 +171032,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		99677,
-		99677,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		99678,
-		99678,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		99679,
+		"--bs-list-group-border-width",
+		99677,
 		99704,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -191727,30 +171252,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		99820,
-		99820,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		99821,
-		99821,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		99822,
+		"--bs-list-group-border-width",
+		99820,
 		99847,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -191800,30 +171307,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		99873,
-		99873,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		99874,
-		99874,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		99875,
+		"--bs-list-group-border-width",
+		99873,
 		99900,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -192101,30 +171590,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		100077,
-		100077,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		100078,
-		100078,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		100079,
+		"--bs-list-group-border-radius",
+		100077,
 		100105,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -192307,30 +171778,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		100234,
-		100234,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		100235,
-		100235,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		100236,
+		"--bs-list-group-border-radius",
+		100234,
 		100262,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -192588,30 +172041,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		100437,
-		100437,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		100438,
-		100438,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		100439,
+		"--bs-list-group-border-width",
+		100437,
 		100464,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -192826,30 +172261,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		100580,
-		100580,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		100581,
-		100581,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		100582,
+		"--bs-list-group-border-width",
+		100580,
 		100607,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -192899,30 +172316,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		100633,
-		100633,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		100634,
-		100634,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		100635,
+		"--bs-list-group-border-width",
+		100633,
 		100660,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -193200,30 +172599,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		100839,
-		100839,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		100840,
-		100840,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		100841,
+		"--bs-list-group-border-radius",
+		100839,
 		100867,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -193406,30 +172787,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		100997,
-		100997,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		100998,
-		100998,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-radius",
-		100999,
+		"--bs-list-group-border-radius",
+		100997,
 		101025,
 		{
-			"value": "bs-list-group-border-radius"
+			"value": "--bs-list-group-border-radius"
 		}
 	],
 	[
@@ -193687,30 +173050,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		101202,
-		101202,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		101203,
-		101203,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		101204,
+		"--bs-list-group-border-width",
+		101202,
 		101229,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -193925,30 +173270,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		101346,
-		101346,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		101347,
-		101347,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		101348,
+		"--bs-list-group-border-width",
+		101346,
 		101373,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -193998,30 +173325,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		101399,
-		101399,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		101400,
-		101400,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		101401,
+		"--bs-list-group-border-width",
+		101399,
 		101426,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -194215,30 +173524,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		101520,
-		101520,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		101521,
-		101521,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-list-group-border-width",
-		101522,
+		"--bs-list-group-border-width",
+		101520,
 		101547,
 		{
-			"value": "bs-list-group-border-width"
+			"value": "--bs-list-group-border-width"
 		}
 	],
 	[
@@ -198810,21 +178101,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		104876,
-		104876,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-user-select",
-		104877,
+		"-webkit-user-select",
+		104876,
 		104894,
 		{
-			"value": "webkit-user-select"
+			"value": "-webkit-user-select"
 		}
 	],
 	[
@@ -198851,21 +178133,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		104901,
-		104901,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-user-select",
-		104902,
+		"-moz-user-select",
+		104901,
 		104916,
 		{
-			"value": "moz-user-select"
+			"value": "-moz-user-select"
 		}
 	],
 	[
@@ -199120,30 +178393,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105026,
-		105026,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105027,
-		105027,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-zindex",
-		105028,
+		"--bs-toast-zindex",
+		105026,
 		105042,
 		{
-			"value": "bs-toast-zindex"
+			"value": "--bs-toast-zindex"
 		}
 	],
 	[
@@ -199171,30 +178426,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105049,
-		105049,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105050,
-		105050,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-padding-x",
-		105051,
+		"--bs-toast-padding-x",
+		105049,
 		105068,
 		{
-			"value": "bs-toast-padding-x"
+			"value": "--bs-toast-padding-x"
 		}
 	],
 	[
@@ -199223,30 +178460,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105078,
-		105078,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105079,
-		105079,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-padding-y",
-		105080,
+		"--bs-toast-padding-y",
+		105078,
 		105097,
 		{
-			"value": "bs-toast-padding-y"
+			"value": "--bs-toast-padding-y"
 		}
 	],
 	[
@@ -199275,30 +178494,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105106,
-		105106,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105107,
-		105107,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-spacing",
-		105108,
+		"--bs-toast-spacing",
+		105106,
 		105123,
 		{
-			"value": "bs-toast-spacing"
+			"value": "--bs-toast-spacing"
 		}
 	],
 	[
@@ -199327,30 +178528,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105132,
-		105132,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105133,
-		105133,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-max-width",
-		105134,
+		"--bs-toast-max-width",
+		105132,
 		105151,
 		{
-			"value": "bs-toast-max-width"
+			"value": "--bs-toast-max-width"
 		}
 	],
 	[
@@ -199379,30 +178562,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105159,
-		105159,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105160,
-		105160,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-font-size",
-		105161,
+		"--bs-toast-font-size",
+		105159,
 		105178,
 		{
-			"value": "bs-toast-font-size"
+			"value": "--bs-toast-font-size"
 		}
 	],
 	[
@@ -199431,30 +178596,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105189,
-		105189,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105190,
-		105190,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-color",
-		105191,
+		"--bs-toast-color",
+		105189,
 		105204,
 		{
-			"value": "bs-toast-color"
+			"value": "--bs-toast-color"
 		}
 	],
 	[
@@ -199479,30 +178626,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105208,
-		105208,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105209,
-		105209,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-bg",
-		105210,
+		"--bs-toast-bg",
+		105208,
 		105220,
 		{
-			"value": "bs-toast-bg"
+			"value": "--bs-toast-bg"
 		}
 	],
 	[
@@ -199618,30 +178747,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105248,
-		105248,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105249,
-		105249,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-border-width",
-		105250,
+		"--bs-toast-border-width",
+		105248,
 		105270,
 		{
-			"value": "bs-toast-border-width"
+			"value": "--bs-toast-border-width"
 		}
 	],
 	[
@@ -199670,30 +178781,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105276,
-		105276,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105277,
-		105277,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-border-color",
-		105278,
+		"--bs-toast-border-color",
+		105276,
 		105298,
 		{
-			"value": "bs-toast-border-color"
+			"value": "--bs-toast-border-color"
 		}
 	],
 	[
@@ -199713,30 +178806,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		105304,
-		105304,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105305,
-		105305,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color-translucent",
-		105306,
+		"--bs-border-color-translucent",
+		105304,
 		105332,
 		{
-			"value": "bs-border-color-translucent"
+			"value": "--bs-border-color-translucent"
 		}
 	],
 	[
@@ -199754,30 +178829,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105335,
-		105335,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105336,
-		105336,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-border-radius",
-		105337,
+		"--bs-toast-border-radius",
+		105335,
 		105358,
 		{
-			"value": "bs-toast-border-radius"
+			"value": "--bs-toast-border-radius"
 		}
 	],
 	[
@@ -199806,30 +178863,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105369,
-		105369,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105370,
-		105370,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-box-shadow",
-		105371,
+		"--bs-toast-box-shadow",
+		105369,
 		105389,
 		{
-			"value": "bs-toast-box-shadow"
+			"value": "--bs-toast-box-shadow"
 		}
 	],
 	[
@@ -199998,30 +179037,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105425,
-		105425,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105426,
-		105426,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-header-color",
-		105427,
+		"--bs-toast-header-color",
+		105425,
 		105447,
 		{
-			"value": "bs-toast-header-color"
+			"value": "--bs-toast-header-color"
 		}
 	],
 	[
@@ -200049,30 +179070,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105457,
-		105457,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105458,
-		105458,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-header-bg",
-		105459,
+		"--bs-toast-header-bg",
+		105457,
 		105476,
 		{
-			"value": "bs-toast-header-bg"
+			"value": "--bs-toast-header-bg"
 		}
 	],
 	[
@@ -200188,30 +179191,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		105504,
-		105504,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105505,
-		105505,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-header-border-color",
-		105506,
+		"--bs-toast-header-border-color",
+		105504,
 		105533,
 		{
-			"value": "bs-toast-header-border-color"
+			"value": "--bs-toast-header-border-color"
 		}
 	],
 	[
@@ -200352,30 +179337,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		105565,
-		105565,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105566,
-		105566,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-max-width",
-		105567,
+		"--bs-toast-max-width",
+		105565,
 		105584,
 		{
-			"value": "bs-toast-max-width"
+			"value": "--bs-toast-max-width"
 		}
 	],
 	[
@@ -200450,30 +179417,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		105616,
-		105616,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105617,
-		105617,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-font-size",
-		105618,
+		"--bs-toast-font-size",
+		105616,
 		105635,
 		{
-			"value": "bs-toast-font-size"
+			"value": "--bs-toast-font-size"
 		}
 	],
 	[
@@ -200516,30 +179465,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		105648,
-		105648,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105649,
-		105649,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-color",
-		105650,
+		"--bs-toast-color",
+		105648,
 		105663,
 		{
-			"value": "bs-toast-color"
+			"value": "--bs-toast-color"
 		}
 	],
 	[
@@ -200614,30 +179545,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		105707,
-		105707,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105708,
-		105708,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-bg",
-		105709,
+		"--bs-toast-bg",
+		105707,
 		105719,
 		{
-			"value": "bs-toast-bg"
+			"value": "--bs-toast-bg"
 		}
 	],
 	[
@@ -200712,30 +179625,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		105761,
-		105761,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105762,
-		105762,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-border-width",
-		105763,
+		"--bs-toast-border-width",
+		105761,
 		105783,
 		{
-			"value": "bs-toast-border-width"
+			"value": "--bs-toast-border-width"
 		}
 	],
 	[
@@ -200778,30 +179673,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		105796,
-		105796,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105797,
-		105797,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-border-color",
-		105798,
+		"--bs-toast-border-color",
+		105796,
 		105818,
 		{
-			"value": "bs-toast-border-color"
+			"value": "--bs-toast-border-color"
 		}
 	],
 	[
@@ -200844,30 +179721,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		105836,
-		105836,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105837,
-		105837,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-box-shadow",
-		105838,
+		"--bs-toast-box-shadow",
+		105836,
 		105856,
 		{
-			"value": "bs-toast-box-shadow"
+			"value": "--bs-toast-box-shadow"
 		}
 	],
 	[
@@ -200910,30 +179769,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		105877,
-		105877,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		105878,
-		105878,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-border-radius",
-		105879,
+		"--bs-toast-border-radius",
+		105877,
 		105900,
 		{
-			"value": "bs-toast-border-radius"
+			"value": "--bs-toast-border-radius"
 		}
 	],
 	[
@@ -201207,30 +180048,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106006,
-		106006,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106007,
-		106007,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-zindex",
-		106008,
+		"--bs-toast-zindex",
+		106006,
 		106022,
 		{
-			"value": "bs-toast-zindex"
+			"value": "--bs-toast-zindex"
 		}
 	],
 	[
@@ -201264,21 +180087,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		106031,
-		106031,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-max-content",
-		106032,
+		"-webkit-max-content",
+		106031,
 		106049,
 		{
-			"value": "webkit-max-content"
+			"value": "-webkit-max-content"
 		}
 	],
 	[
@@ -201305,21 +180119,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		106057,
-		106057,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-max-content",
-		106058,
+		"-moz-max-content",
+		106057,
 		106072,
 		{
-			"value": "moz-max-content"
+			"value": "-moz-max-content"
 		}
 	],
 	[
@@ -201524,30 +180329,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106180,
-		106180,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106181,
-		106181,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-spacing",
-		106182,
+		"--bs-toast-spacing",
+		106180,
 		106197,
 		{
-			"value": "bs-toast-spacing"
+			"value": "--bs-toast-spacing"
 		}
 	],
 	[
@@ -201679,30 +180466,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106258,
-		106258,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106259,
-		106259,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-padding-y",
-		106260,
+		"--bs-toast-padding-y",
+		106258,
 		106277,
 		{
-			"value": "bs-toast-padding-y"
+			"value": "--bs-toast-padding-y"
 		}
 	],
 	[
@@ -201729,30 +180498,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106284,
-		106284,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106285,
-		106285,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-padding-x",
-		106286,
+		"--bs-toast-padding-x",
+		106284,
 		106303,
 		{
-			"value": "bs-toast-padding-x"
+			"value": "--bs-toast-padding-x"
 		}
 	],
 	[
@@ -201795,30 +180546,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106316,
-		106316,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106317,
-		106317,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-header-color",
-		106318,
+		"--bs-toast-header-color",
+		106316,
 		106338,
 		{
-			"value": "bs-toast-header-color"
+			"value": "--bs-toast-header-color"
 		}
 	],
 	[
@@ -201861,30 +180594,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106362,
-		106362,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106363,
-		106363,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-header-bg",
-		106364,
+		"--bs-toast-header-bg",
+		106362,
 		106381,
 		{
-			"value": "bs-toast-header-bg"
+			"value": "--bs-toast-header-bg"
 		}
 	],
 	[
@@ -201959,30 +180674,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106430,
-		106430,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106431,
-		106431,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-border-width",
-		106432,
+		"--bs-toast-border-width",
+		106430,
 		106452,
 		{
-			"value": "bs-toast-border-width"
+			"value": "--bs-toast-border-width"
 		}
 	],
 	[
@@ -202025,30 +180722,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106465,
-		106465,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106466,
-		106466,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-header-border-color",
-		106467,
+		"--bs-toast-header-border-color",
+		106465,
 		106494,
 		{
-			"value": "bs-toast-header-border-color"
+			"value": "--bs-toast-header-border-color"
 		}
 	],
 	[
@@ -202100,30 +180779,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106529,
-		106529,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106530,
-		106530,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-border-radius",
-		106531,
+		"--bs-toast-border-radius",
+		106529,
 		106552,
 		{
-			"value": "bs-toast-border-radius"
+			"value": "--bs-toast-border-radius"
 		}
 	],
 	[
@@ -202166,30 +180827,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106561,
-		106561,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106562,
-		106562,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-border-width",
-		106563,
+		"--bs-toast-border-width",
+		106561,
 		106583,
 		{
-			"value": "bs-toast-border-width"
+			"value": "--bs-toast-border-width"
 		}
 	],
 	[
@@ -202248,30 +180891,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106620,
-		106620,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106621,
-		106621,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-border-radius",
-		106622,
+		"--bs-toast-border-radius",
+		106620,
 		106643,
 		{
-			"value": "bs-toast-border-radius"
+			"value": "--bs-toast-border-radius"
 		}
 	],
 	[
@@ -202314,30 +180939,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106652,
-		106652,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106653,
-		106653,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-border-width",
-		106654,
+		"--bs-toast-border-width",
+		106652,
 		106674,
 		{
-			"value": "bs-toast-border-width"
+			"value": "--bs-toast-border-width"
 		}
 	],
 	[
@@ -202479,30 +181086,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106731,
-		106731,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106732,
-		106732,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-padding-x",
-		106733,
+		"--bs-toast-padding-x",
+		106731,
 		106750,
 		{
-			"value": "bs-toast-padding-x"
+			"value": "--bs-toast-padding-x"
 		}
 	],
 	[
@@ -202552,30 +181141,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106770,
-		106770,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106771,
-		106771,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-padding-x",
-		106772,
+		"--bs-toast-padding-x",
+		106770,
 		106789,
 		{
-			"value": "bs-toast-padding-x"
+			"value": "--bs-toast-padding-x"
 		}
 	],
 	[
@@ -202643,30 +181214,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		106816,
-		106816,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106817,
-		106817,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-toast-padding-x",
-		106818,
+		"--bs-toast-padding-x",
+		106816,
 		106835,
 		{
-			"value": "bs-toast-padding-x"
+			"value": "--bs-toast-padding-x"
 		}
 	],
 	[
@@ -202741,30 +181294,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		106866,
-		106866,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106867,
-		106867,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-zindex",
-		106868,
+		"--bs-modal-zindex",
+		106866,
 		106882,
 		{
-			"value": "bs-modal-zindex"
+			"value": "--bs-modal-zindex"
 		}
 	],
 	[
@@ -202792,30 +181327,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		106889,
-		106889,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106890,
-		106890,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-width",
-		106891,
+		"--bs-modal-width",
+		106889,
 		106904,
 		{
-			"value": "bs-modal-width"
+			"value": "--bs-modal-width"
 		}
 	],
 	[
@@ -202844,30 +181361,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		106912,
-		106912,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106913,
-		106913,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-padding",
-		106914,
+		"--bs-modal-padding",
+		106912,
 		106929,
 		{
-			"value": "bs-modal-padding"
+			"value": "--bs-modal-padding"
 		}
 	],
 	[
@@ -202896,30 +181395,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		106936,
-		106936,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106937,
-		106937,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-margin",
-		106938,
+		"--bs-modal-margin",
+		106936,
 		106952,
 		{
-			"value": "bs-modal-margin"
+			"value": "--bs-modal-margin"
 		}
 	],
 	[
@@ -202948,30 +181429,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		106961,
-		106961,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106962,
-		106962,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-color",
-		106963,
+		"--bs-modal-color",
+		106961,
 		106976,
 		{
-			"value": "bs-modal-color"
+			"value": "--bs-modal-color"
 		}
 	],
 	[
@@ -202996,30 +181459,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		106980,
-		106980,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		106981,
-		106981,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-bg",
-		106982,
+		"--bs-modal-bg",
+		106980,
 		106992,
 		{
-			"value": "bs-modal-bg"
+			"value": "--bs-modal-bg"
 		}
 	],
 	[
@@ -203047,30 +181492,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		106999,
-		106999,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107000,
-		107000,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-border-color",
-		107001,
+		"--bs-modal-border-color",
+		106999,
 		107021,
 		{
-			"value": "bs-modal-border-color"
+			"value": "--bs-modal-border-color"
 		}
 	],
 	[
@@ -203090,30 +181517,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		107027,
-		107027,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107028,
-		107028,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color-translucent",
-		107029,
+		"--bs-border-color-translucent",
+		107027,
 		107055,
 		{
-			"value": "bs-border-color-translucent"
+			"value": "--bs-border-color-translucent"
 		}
 	],
 	[
@@ -203131,30 +181540,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107058,
-		107058,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107059,
-		107059,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-border-width",
-		107060,
+		"--bs-modal-border-width",
+		107058,
 		107080,
 		{
-			"value": "bs-modal-border-width"
+			"value": "--bs-modal-border-width"
 		}
 	],
 	[
@@ -203183,30 +181574,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107086,
-		107086,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107087,
-		107087,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-border-radius",
-		107088,
+		"--bs-modal-border-radius",
+		107086,
 		107109,
 		{
-			"value": "bs-modal-border-radius"
+			"value": "--bs-modal-border-radius"
 		}
 	],
 	[
@@ -203235,30 +181608,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107118,
-		107118,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107119,
-		107119,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-box-shadow",
-		107120,
+		"--bs-modal-box-shadow",
+		107118,
 		107138,
 		{
-			"value": "bs-modal-box-shadow"
+			"value": "--bs-modal-box-shadow"
 		}
 	],
 	[
@@ -203427,30 +181782,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107180,
-		107180,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107181,
-		107181,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-inner-border-radius",
-		107182,
+		"--bs-modal-inner-border-radius",
+		107180,
 		107209,
 		{
-			"value": "bs-modal-inner-border-radius"
+			"value": "--bs-modal-inner-border-radius"
 		}
 	],
 	[
@@ -203529,30 +181866,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107230,
-		107230,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107231,
-		107231,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-padding-x",
-		107232,
+		"--bs-modal-header-padding-x",
+		107230,
 		107256,
 		{
-			"value": "bs-modal-header-padding-x"
+			"value": "--bs-modal-header-padding-x"
 		}
 	],
 	[
@@ -203581,30 +181900,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107263,
-		107263,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107264,
-		107264,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-padding-y",
-		107265,
+		"--bs-modal-header-padding-y",
+		107263,
 		107289,
 		{
-			"value": "bs-modal-header-padding-y"
+			"value": "--bs-modal-header-padding-y"
 		}
 	],
 	[
@@ -203633,30 +181934,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107296,
-		107296,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107297,
-		107297,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-padding",
-		107298,
+		"--bs-modal-header-padding",
+		107296,
 		107320,
 		{
-			"value": "bs-modal-header-padding"
+			"value": "--bs-modal-header-padding"
 		}
 	],
 	[
@@ -203703,30 +181986,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107332,
-		107332,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107333,
-		107333,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-border-color",
-		107334,
+		"--bs-modal-header-border-color",
+		107332,
 		107361,
 		{
-			"value": "bs-modal-header-border-color"
+			"value": "--bs-modal-header-border-color"
 		}
 	],
 	[
@@ -203746,30 +182011,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		107367,
-		107367,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107368,
-		107368,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color",
-		107369,
+		"--bs-border-color",
+		107367,
 		107383,
 		{
-			"value": "bs-border-color"
+			"value": "--bs-border-color"
 		}
 	],
 	[
@@ -203787,30 +182034,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107386,
-		107386,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107387,
-		107387,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-border-width",
-		107388,
+		"--bs-modal-header-border-width",
+		107386,
 		107415,
 		{
-			"value": "bs-modal-header-border-width"
+			"value": "--bs-modal-header-border-width"
 		}
 	],
 	[
@@ -203839,30 +182068,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107421,
-		107421,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107422,
-		107422,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-title-line-height",
-		107423,
+		"--bs-modal-title-line-height",
+		107421,
 		107448,
 		{
-			"value": "bs-modal-title-line-height"
+			"value": "--bs-modal-title-line-height"
 		}
 	],
 	[
@@ -203890,30 +182101,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107454,
-		107454,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107455,
-		107455,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-footer-gap",
-		107456,
+		"--bs-modal-footer-gap",
+		107454,
 		107474,
 		{
-			"value": "bs-modal-footer-gap"
+			"value": "--bs-modal-footer-gap"
 		}
 	],
 	[
@@ -203942,30 +182135,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107483,
-		107483,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107484,
-		107484,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-footer-bg",
-		107485,
+		"--bs-modal-footer-bg",
+		107483,
 		107502,
 		{
-			"value": "bs-modal-footer-bg"
+			"value": "--bs-modal-footer-bg"
 		}
 	],
 	[
@@ -203990,30 +182165,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107506,
-		107506,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107507,
-		107507,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-footer-border-color",
-		107508,
+		"--bs-modal-footer-border-color",
+		107506,
 		107535,
 		{
-			"value": "bs-modal-footer-border-color"
+			"value": "--bs-modal-footer-border-color"
 		}
 	],
 	[
@@ -204033,30 +182190,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		107541,
-		107541,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107542,
-		107542,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color",
-		107543,
+		"--bs-border-color",
+		107541,
 		107557,
 		{
-			"value": "bs-border-color"
+			"value": "--bs-border-color"
 		}
 	],
 	[
@@ -204074,30 +182213,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		107560,
-		107560,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107561,
-		107561,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-footer-border-width",
-		107562,
+		"--bs-modal-footer-border-width",
+		107560,
 		107589,
 		{
-			"value": "bs-modal-footer-border-width"
+			"value": "--bs-modal-footer-border-width"
 		}
 	],
 	[
@@ -204249,30 +182370,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		107635,
-		107635,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107636,
-		107636,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-zindex",
-		107637,
+		"--bs-modal-zindex",
+		107635,
 		107651,
 		{
-			"value": "bs-modal-zindex"
+			"value": "--bs-modal-zindex"
 		}
 	],
 	[
@@ -204597,30 +182700,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		107788,
-		107788,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		107789,
-		107789,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-margin",
-		107790,
+		"--bs-modal-margin",
+		107788,
 		107804,
 		{
-			"value": "bs-modal-margin"
+			"value": "--bs-modal-margin"
 		}
 	],
 	[
@@ -205348,30 +183433,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		108143,
-		108143,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108144,
-		108144,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-margin",
-		108145,
+		"--bs-modal-margin",
+		108143,
 		108159,
 		{
-			"value": "bs-modal-margin"
+			"value": "--bs-modal-margin"
 		}
 	],
 	[
@@ -205780,30 +183847,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		108374,
-		108374,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108375,
-		108375,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-margin",
-		108376,
+		"--bs-modal-margin",
+		108374,
 		108390,
 		{
-			"value": "bs-modal-margin"
+			"value": "--bs-modal-margin"
 		}
 	],
 	[
@@ -206039,30 +184088,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		108487,
-		108487,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108488,
-		108488,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-color",
-		108489,
+		"--bs-modal-color",
+		108487,
 		108502,
 		{
-			"value": "bs-modal-color"
+			"value": "--bs-modal-color"
 		}
 	],
 	[
@@ -206137,30 +184168,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		108546,
-		108546,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108547,
-		108547,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-bg",
-		108548,
+		"--bs-modal-bg",
+		108546,
 		108558,
 		{
-			"value": "bs-modal-bg"
+			"value": "--bs-modal-bg"
 		}
 	],
 	[
@@ -206235,30 +184248,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		108600,
-		108600,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108601,
-		108601,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-border-width",
-		108602,
+		"--bs-modal-border-width",
+		108600,
 		108622,
 		{
-			"value": "bs-modal-border-width"
+			"value": "--bs-modal-border-width"
 		}
 	],
 	[
@@ -206301,30 +184296,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		108635,
-		108635,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108636,
-		108636,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-border-color",
-		108637,
+		"--bs-modal-border-color",
+		108635,
 		108657,
 		{
-			"value": "bs-modal-border-color"
+			"value": "--bs-modal-border-color"
 		}
 	],
 	[
@@ -206367,30 +184344,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		108678,
-		108678,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108679,
-		108679,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-border-radius",
-		108680,
+		"--bs-modal-border-radius",
+		108678,
 		108701,
 		{
-			"value": "bs-modal-border-radius"
+			"value": "--bs-modal-border-radius"
 		}
 	],
 	[
@@ -206466,30 +184425,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		108730,
-		108730,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108731,
-		108731,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-backdrop-zindex",
-		108732,
+		"--bs-backdrop-zindex",
+		108730,
 		108749,
 		{
-			"value": "bs-backdrop-zindex"
+			"value": "--bs-backdrop-zindex"
 		}
 	],
 	[
@@ -206517,30 +184458,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		108756,
-		108756,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108757,
-		108757,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-backdrop-bg",
-		108758,
+		"--bs-backdrop-bg",
+		108756,
 		108771,
 		{
-			"value": "bs-backdrop-bg"
+			"value": "--bs-backdrop-bg"
 		}
 	],
 	[
@@ -206568,30 +184491,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		108778,
-		108778,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108779,
-		108779,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-backdrop-opacity",
-		108780,
+		"--bs-backdrop-opacity",
+		108778,
 		108798,
 		{
-			"value": "bs-backdrop-opacity"
+			"value": "--bs-backdrop-opacity"
 		}
 	],
 	[
@@ -206742,30 +184647,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		108844,
-		108844,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108845,
-		108845,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-backdrop-zindex",
-		108846,
+		"--bs-backdrop-zindex",
+		108844,
 		108863,
 		{
-			"value": "bs-backdrop-zindex"
+			"value": "--bs-backdrop-zindex"
 		}
 	],
 	[
@@ -206876,30 +184763,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		108912,
-		108912,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108913,
-		108913,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-backdrop-bg",
-		108914,
+		"--bs-backdrop-bg",
+		108912,
 		108927,
 		{
-			"value": "bs-backdrop-bg"
+			"value": "--bs-backdrop-bg"
 		}
 	],
 	[
@@ -207061,30 +184930,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		108994,
-		108994,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		108995,
-		108995,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-backdrop-opacity",
-		108996,
+		"--bs-backdrop-opacity",
+		108994,
 		109014,
 		{
-			"value": "bs-backdrop-opacity"
+			"value": "--bs-backdrop-opacity"
 		}
 	],
 	[
@@ -207281,30 +185132,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109119,
-		109119,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109120,
-		109120,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-padding",
-		109121,
+		"--bs-modal-header-padding",
+		109119,
 		109143,
 		{
-			"value": "bs-modal-header-padding"
+			"value": "--bs-modal-header-padding"
 		}
 	],
 	[
@@ -207347,30 +185180,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109164,
-		109164,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109165,
-		109165,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-border-width",
-		109166,
+		"--bs-modal-header-border-width",
+		109164,
 		109193,
 		{
-			"value": "bs-modal-header-border-width"
+			"value": "--bs-modal-header-border-width"
 		}
 	],
 	[
@@ -207413,30 +185228,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109206,
-		109206,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109207,
-		109207,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-border-color",
-		109208,
+		"--bs-modal-header-border-color",
+		109206,
 		109235,
 		{
-			"value": "bs-modal-header-border-color"
+			"value": "--bs-modal-header-border-color"
 		}
 	],
 	[
@@ -207479,30 +185276,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109265,
-		109265,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109266,
-		109266,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-inner-border-radius",
-		109267,
+		"--bs-modal-inner-border-radius",
+		109265,
 		109294,
 		{
-			"value": "bs-modal-inner-border-radius"
+			"value": "--bs-modal-inner-border-radius"
 		}
 	],
 	[
@@ -207545,30 +185324,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109325,
-		109325,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109326,
-		109326,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-inner-border-radius",
-		109327,
+		"--bs-modal-inner-border-radius",
+		109325,
 		109354,
 		{
-			"value": "bs-modal-inner-border-radius"
+			"value": "--bs-modal-inner-border-radius"
 		}
 	],
 	[
@@ -207670,30 +185431,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109399,
-		109399,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109400,
-		109400,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-padding-y",
-		109401,
+		"--bs-modal-header-padding-y",
+		109399,
 		109425,
 		{
-			"value": "bs-modal-header-padding-y"
+			"value": "--bs-modal-header-padding-y"
 		}
 	],
 	[
@@ -207769,30 +185512,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109443,
-		109443,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109444,
-		109444,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-padding-x",
-		109445,
+		"--bs-modal-header-padding-x",
+		109443,
 		109469,
 		{
-			"value": "bs-modal-header-padding-x"
+			"value": "--bs-modal-header-padding-x"
 		}
 	],
 	[
@@ -207917,30 +185642,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109500,
-		109500,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109501,
-		109501,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-padding-y",
-		109502,
+		"--bs-modal-header-padding-y",
+		109500,
 		109526,
 		{
-			"value": "bs-modal-header-padding-y"
+			"value": "--bs-modal-header-padding-y"
 		}
 	],
 	[
@@ -208016,30 +185723,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109545,
-		109545,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109546,
-		109546,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-padding-x",
-		109547,
+		"--bs-modal-header-padding-x",
+		109545,
 		109571,
 		{
-			"value": "bs-modal-header-padding-x"
+			"value": "--bs-modal-header-padding-x"
 		}
 	],
 	[
@@ -208115,30 +185804,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109590,
-		109590,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109591,
-		109591,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-header-padding-y",
-		109592,
+		"--bs-modal-header-padding-y",
+		109590,
 		109616,
 		{
-			"value": "bs-modal-header-padding-y"
+			"value": "--bs-modal-header-padding-y"
 		}
 	],
 	[
@@ -208262,30 +185933,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109670,
-		109670,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109671,
-		109671,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-title-line-height",
-		109672,
+		"--bs-modal-title-line-height",
+		109670,
 		109697,
 		{
-			"value": "bs-modal-title-line-height"
+			"value": "--bs-modal-title-line-height"
 		}
 	],
 	[
@@ -208451,30 +186104,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109756,
-		109756,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109757,
-		109757,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-padding",
-		109758,
+		"--bs-modal-padding",
+		109756,
 		109773,
 		{
-			"value": "bs-modal-padding"
+			"value": "--bs-modal-padding"
 		}
 	],
 	[
@@ -208712,30 +186347,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109893,
-		109893,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109894,
-		109894,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-padding",
-		109895,
+		"--bs-modal-padding",
+		109893,
 		109910,
 		{
-			"value": "bs-modal-padding"
+			"value": "--bs-modal-padding"
 		}
 	],
 	[
@@ -208778,30 +186395,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109919,
-		109919,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109920,
-		109920,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-footer-gap",
-		109921,
+		"--bs-modal-footer-gap",
+		109919,
 		109939,
 		{
-			"value": "bs-modal-footer-gap"
+			"value": "--bs-modal-footer-gap"
 		}
 	],
 	[
@@ -208884,30 +186483,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		109969,
-		109969,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		109970,
-		109970,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-footer-bg",
-		109971,
+		"--bs-modal-footer-bg",
+		109969,
 		109988,
 		{
-			"value": "bs-modal-footer-bg"
+			"value": "--bs-modal-footer-bg"
 		}
 	],
 	[
@@ -208950,30 +186531,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		110006,
-		110006,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		110007,
-		110007,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-footer-border-width",
-		110008,
+		"--bs-modal-footer-border-width",
+		110006,
 		110035,
 		{
-			"value": "bs-modal-footer-border-width"
+			"value": "--bs-modal-footer-border-width"
 		}
 	],
 	[
@@ -209016,30 +186579,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		110048,
-		110048,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		110049,
-		110049,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-footer-border-color",
-		110050,
+		"--bs-modal-footer-border-color",
+		110048,
 		110077,
 		{
-			"value": "bs-modal-footer-border-color"
+			"value": "--bs-modal-footer-border-color"
 		}
 	],
 	[
@@ -209082,30 +186627,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		110111,
-		110111,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		110112,
-		110112,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-inner-border-radius",
-		110113,
+		"--bs-modal-inner-border-radius",
+		110111,
 		110140,
 		{
-			"value": "bs-modal-inner-border-radius"
+			"value": "--bs-modal-inner-border-radius"
 		}
 	],
 	[
@@ -209148,30 +186675,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		110173,
-		110173,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		110174,
-		110174,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-inner-border-radius",
-		110175,
+		"--bs-modal-inner-border-radius",
+		110173,
 		110202,
 		{
-			"value": "bs-modal-inner-border-radius"
+			"value": "--bs-modal-inner-border-radius"
 		}
 	],
 	[
@@ -209266,30 +186775,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		110237,
-		110237,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		110238,
-		110238,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-footer-gap",
-		110239,
+		"--bs-modal-footer-gap",
+		110237,
 		110257,
 		{
-			"value": "bs-modal-footer-gap"
+			"value": "--bs-modal-footer-gap"
 		}
 	],
 	[
@@ -209436,30 +186927,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		110298,
-		110298,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		110299,
-		110299,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-margin",
-		110300,
+		"--bs-modal-margin",
+		110298,
 		110314,
 		{
-			"value": "bs-modal-margin"
+			"value": "--bs-modal-margin"
 		}
 	],
 	[
@@ -209488,30 +186961,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		110324,
-		110324,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		110325,
-		110325,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-box-shadow",
-		110326,
+		"--bs-modal-box-shadow",
+		110324,
 		110344,
 		{
-			"value": "bs-modal-box-shadow"
+			"value": "--bs-modal-box-shadow"
 		}
 	],
 	[
@@ -209730,30 +187185,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		110408,
-		110408,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		110409,
-		110409,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-width",
-		110410,
+		"--bs-modal-width",
+		110408,
 		110423,
 		{
-			"value": "bs-modal-width"
+			"value": "--bs-modal-width"
 		}
 	],
 	[
@@ -209860,30 +187297,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		110471,
-		110471,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		110472,
-		110472,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-width",
-		110473,
+		"--bs-modal-width",
+		110471,
 		110486,
 		{
-			"value": "bs-modal-width"
+			"value": "--bs-modal-width"
 		}
 	],
 	[
@@ -210033,30 +187452,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		110540,
-		110540,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		110541,
-		110541,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-width",
-		110542,
+		"--bs-modal-width",
+		110540,
 		110555,
 		{
-			"value": "bs-modal-width"
+			"value": "--bs-modal-width"
 		}
 	],
 	[
@@ -210181,30 +187582,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		110600,
-		110600,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		110601,
-		110601,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-modal-width",
-		110602,
+		"--bs-modal-width",
+		110600,
 		110615,
 		{
-			"value": "bs-modal-width"
+			"value": "--bs-modal-width"
 		}
 	],
 	[
@@ -213734,30 +191117,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		112558,
-		112558,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112559,
-		112559,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-zindex",
-		112560,
+		"--bs-tooltip-zindex",
+		112558,
 		112576,
 		{
-			"value": "bs-tooltip-zindex"
+			"value": "--bs-tooltip-zindex"
 		}
 	],
 	[
@@ -213785,30 +191150,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		112583,
-		112583,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112584,
-		112584,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-max-width",
-		112585,
+		"--bs-tooltip-max-width",
+		112583,
 		112604,
 		{
-			"value": "bs-tooltip-max-width"
+			"value": "--bs-tooltip-max-width"
 		}
 	],
 	[
@@ -213837,30 +191184,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		112612,
-		112612,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112613,
-		112613,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-padding-x",
-		112614,
+		"--bs-tooltip-padding-x",
+		112612,
 		112633,
 		{
-			"value": "bs-tooltip-padding-x"
+			"value": "--bs-tooltip-padding-x"
 		}
 	],
 	[
@@ -213889,30 +191218,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		112642,
-		112642,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112643,
-		112643,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-padding-y",
-		112644,
+		"--bs-tooltip-padding-y",
+		112642,
 		112663,
 		{
-			"value": "bs-tooltip-padding-y"
+			"value": "--bs-tooltip-padding-y"
 		}
 	],
 	[
@@ -213941,30 +191252,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		112673,
-		112673,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112674,
-		112674,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-margin",
-		112675,
+		"--bs-tooltip-margin",
+		112673,
 		112691,
 		{
-			"value": "bs-tooltip-margin"
+			"value": "--bs-tooltip-margin"
 		}
 	],
 	[
@@ -213989,30 +191282,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		112695,
-		112695,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112696,
-		112696,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-font-size",
-		112697,
+		"--bs-tooltip-font-size",
+		112695,
 		112716,
 		{
-			"value": "bs-tooltip-font-size"
+			"value": "--bs-tooltip-font-size"
 		}
 	],
 	[
@@ -214041,30 +191316,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		112727,
-		112727,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112728,
-		112728,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-color",
-		112729,
+		"--bs-tooltip-color",
+		112727,
 		112744,
 		{
-			"value": "bs-tooltip-color"
+			"value": "--bs-tooltip-color"
 		}
 	],
 	[
@@ -214092,30 +191349,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		112751,
-		112751,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112752,
-		112752,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-bg",
-		112753,
+		"--bs-tooltip-bg",
+		112751,
 		112765,
 		{
-			"value": "bs-tooltip-bg"
+			"value": "--bs-tooltip-bg"
 		}
 	],
 	[
@@ -214143,30 +191382,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		112772,
-		112772,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112773,
-		112773,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-border-radius",
-		112774,
+		"--bs-tooltip-border-radius",
+		112772,
 		112797,
 		{
-			"value": "bs-tooltip-border-radius"
+			"value": "--bs-tooltip-border-radius"
 		}
 	],
 	[
@@ -214195,30 +191416,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		112808,
-		112808,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112809,
-		112809,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-opacity",
-		112810,
+		"--bs-tooltip-opacity",
+		112808,
 		112827,
 		{
-			"value": "bs-tooltip-opacity"
+			"value": "--bs-tooltip-opacity"
 		}
 	],
 	[
@@ -214246,30 +191449,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		112833,
-		112833,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112834,
-		112834,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-width",
-		112835,
+		"--bs-tooltip-arrow-width",
+		112833,
 		112856,
 		{
-			"value": "bs-tooltip-arrow-width"
+			"value": "--bs-tooltip-arrow-width"
 		}
 	],
 	[
@@ -214298,30 +191483,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		112865,
-		112865,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112866,
-		112866,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-height",
-		112867,
+		"--bs-tooltip-arrow-height",
+		112865,
 		112889,
 		{
-			"value": "bs-tooltip-arrow-height"
+			"value": "--bs-tooltip-arrow-height"
 		}
 	],
 	[
@@ -214375,30 +191542,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		112910,
-		112910,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112911,
-		112911,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-zindex",
-		112912,
+		"--bs-tooltip-zindex",
+		112910,
 		112928,
 		{
-			"value": "bs-tooltip-zindex"
+			"value": "--bs-tooltip-zindex"
 		}
 	],
 	[
@@ -214473,30 +191622,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		112957,
-		112957,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112958,
-		112958,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-height",
-		112959,
+		"--bs-tooltip-arrow-height",
+		112957,
 		112981,
 		{
-			"value": "bs-tooltip-arrow-height"
+			"value": "--bs-tooltip-arrow-height"
 		}
 	],
 	[
@@ -214539,30 +191670,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		112995,
-		112995,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		112996,
-		112996,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-margin",
-		112997,
+		"--bs-tooltip-margin",
+		112995,
 		113013,
 		{
-			"value": "bs-tooltip-margin"
+			"value": "--bs-tooltip-margin"
 		}
 	],
 	[
@@ -214605,30 +191718,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		113032,
-		113032,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		113033,
-		113033,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-font-sans-serif",
-		113034,
+		"--bs-font-sans-serif",
+		113032,
 		113051,
 		{
-			"value": "bs-font-sans-serif"
+			"value": "--bs-font-sans-serif"
 		}
 	],
 	[
@@ -215089,30 +192184,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		113304,
-		113304,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		113305,
-		113305,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-font-size",
-		113306,
+		"--bs-tooltip-font-size",
+		113304,
 		113325,
 		{
-			"value": "bs-tooltip-font-size"
+			"value": "--bs-tooltip-font-size"
 		}
 	],
 	[
@@ -215263,30 +192340,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		113385,
-		113385,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		113386,
-		113386,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-opacity",
-		113387,
+		"--bs-tooltip-opacity",
+		113385,
 		113404,
 		{
-			"value": "bs-tooltip-opacity"
+			"value": "--bs-tooltip-opacity"
 		}
 	],
 	[
@@ -215411,30 +192470,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		113455,
-		113455,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		113456,
-		113456,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-width",
-		113457,
+		"--bs-tooltip-arrow-width",
+		113455,
 		113478,
 		{
-			"value": "bs-tooltip-arrow-width"
+			"value": "--bs-tooltip-arrow-width"
 		}
 	],
 	[
@@ -215477,30 +192518,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		113492,
-		113492,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		113493,
-		113493,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-height",
-		113494,
+		"--bs-tooltip-arrow-height",
+		113492,
 		113516,
 		{
-			"value": "bs-tooltip-arrow-height"
+			"value": "--bs-tooltip-arrow-height"
 		}
 	],
 	[
@@ -216157,30 +193180,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		113857,
-		113857,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		113858,
-		113858,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-height",
-		113859,
+		"--bs-tooltip-arrow-height",
+		113857,
 		113881,
 		{
-			"value": "bs-tooltip-arrow-height"
+			"value": "--bs-tooltip-arrow-height"
 		}
 	],
 	[
@@ -216216,30 +193221,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		113893,
-		113893,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		113894,
-		113894,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-width",
-		113895,
+		"--bs-tooltip-arrow-width",
+		113893,
 		113916,
 		{
-			"value": "bs-tooltip-arrow-width"
+			"value": "--bs-tooltip-arrow-width"
 		}
 	],
 	[
@@ -216339,30 +193326,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		113948,
-		113948,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		113949,
-		113949,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-bg",
-		113950,
+		"--bs-tooltip-bg",
+		113948,
 		113962,
 		{
-			"value": "bs-tooltip-bg"
+			"value": "--bs-tooltip-bg"
 		}
 	],
 	[
@@ -216588,30 +193557,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		114075,
-		114075,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		114076,
-		114076,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-height",
-		114077,
+		"--bs-tooltip-arrow-height",
+		114075,
 		114099,
 		{
-			"value": "bs-tooltip-arrow-height"
+			"value": "--bs-tooltip-arrow-height"
 		}
 	],
 	[
@@ -216654,30 +193605,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		114113,
-		114113,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		114114,
-		114114,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-width",
-		114115,
+		"--bs-tooltip-arrow-width",
+		114113,
 		114136,
 		{
-			"value": "bs-tooltip-arrow-width"
+			"value": "--bs-tooltip-arrow-width"
 		}
 	],
 	[
@@ -216959,30 +193892,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		114281,
-		114281,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		114282,
-		114282,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-width",
-		114283,
+		"--bs-tooltip-arrow-width",
+		114281,
 		114304,
 		{
-			"value": "bs-tooltip-arrow-width"
+			"value": "--bs-tooltip-arrow-width"
 		}
 	],
 	[
@@ -217049,30 +193964,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		114317,
-		114317,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		114318,
-		114318,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-height",
-		114319,
+		"--bs-tooltip-arrow-height",
+		114317,
 		114341,
 		{
-			"value": "bs-tooltip-arrow-height"
+			"value": "--bs-tooltip-arrow-height"
 		}
 	],
 	[
@@ -217108,30 +194005,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		114353,
-		114353,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		114354,
-		114354,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-width",
-		114355,
+		"--bs-tooltip-arrow-width",
+		114353,
 		114376,
 		{
-			"value": "bs-tooltip-arrow-width"
+			"value": "--bs-tooltip-arrow-width"
 		}
 	],
 	[
@@ -217231,30 +194110,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		114410,
-		114410,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		114411,
-		114411,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-bg",
-		114412,
+		"--bs-tooltip-bg",
+		114410,
 		114424,
 		{
-			"value": "bs-tooltip-bg"
+			"value": "--bs-tooltip-bg"
 		}
 	],
 	[
@@ -217736,30 +194597,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		114679,
-		114679,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		114680,
-		114680,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-width",
-		114681,
+		"--bs-tooltip-arrow-width",
+		114679,
 		114702,
 		{
-			"value": "bs-tooltip-arrow-width"
+			"value": "--bs-tooltip-arrow-width"
 		}
 	],
 	[
@@ -217826,30 +194669,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		114715,
-		114715,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		114716,
-		114716,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-height",
-		114717,
+		"--bs-tooltip-arrow-height",
+		114715,
 		114739,
 		{
-			"value": "bs-tooltip-arrow-height"
+			"value": "--bs-tooltip-arrow-height"
 		}
 	],
 	[
@@ -217892,30 +194717,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		114766,
-		114766,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		114767,
-		114767,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-bg",
-		114768,
+		"--bs-tooltip-bg",
+		114766,
 		114780,
 		{
-			"value": "bs-tooltip-bg"
+			"value": "--bs-tooltip-bg"
 		}
 	],
 	[
@@ -218141,30 +194948,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		114895,
-		114895,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		114896,
-		114896,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-height",
-		114897,
+		"--bs-tooltip-arrow-height",
+		114895,
 		114919,
 		{
-			"value": "bs-tooltip-arrow-height"
+			"value": "--bs-tooltip-arrow-height"
 		}
 	],
 	[
@@ -218207,30 +194996,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		114933,
-		114933,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		114934,
-		114934,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-width",
-		114935,
+		"--bs-tooltip-arrow-width",
+		114933,
 		114956,
 		{
-			"value": "bs-tooltip-arrow-width"
+			"value": "--bs-tooltip-arrow-width"
 		}
 	],
 	[
@@ -218512,30 +195283,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		115101,
-		115101,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115102,
-		115102,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-width",
-		115103,
+		"--bs-tooltip-arrow-width",
+		115101,
 		115124,
 		{
-			"value": "bs-tooltip-arrow-width"
+			"value": "--bs-tooltip-arrow-width"
 		}
 	],
 	[
@@ -218628,30 +195381,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		115144,
-		115144,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115145,
-		115145,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-width",
-		115146,
+		"--bs-tooltip-arrow-width",
+		115144,
 		115167,
 		{
-			"value": "bs-tooltip-arrow-width"
+			"value": "--bs-tooltip-arrow-width"
 		}
 	],
 	[
@@ -218718,30 +195453,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		115180,
-		115180,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115181,
-		115181,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-arrow-height",
-		115182,
+		"--bs-tooltip-arrow-height",
+		115180,
 		115204,
 		{
-			"value": "bs-tooltip-arrow-height"
+			"value": "--bs-tooltip-arrow-height"
 		}
 	],
 	[
@@ -218784,30 +195501,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		115229,
-		115229,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115230,
-		115230,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-bg",
-		115231,
+		"--bs-tooltip-bg",
+		115229,
 		115243,
 		{
-			"value": "bs-tooltip-bg"
+			"value": "--bs-tooltip-bg"
 		}
 	],
 	[
@@ -218875,30 +195574,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		115275,
-		115275,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115276,
-		115276,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-max-width",
-		115277,
+		"--bs-tooltip-max-width",
+		115275,
 		115296,
 		{
-			"value": "bs-tooltip-max-width"
+			"value": "--bs-tooltip-max-width"
 		}
 	],
 	[
@@ -218941,30 +195622,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		115311,
-		115311,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115312,
-		115312,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-padding-y",
-		115313,
+		"--bs-tooltip-padding-y",
+		115311,
 		115332,
 		{
-			"value": "bs-tooltip-padding-y"
+			"value": "--bs-tooltip-padding-y"
 		}
 	],
 	[
@@ -218991,30 +195654,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		115339,
-		115339,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115340,
-		115340,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-padding-x",
-		115341,
+		"--bs-tooltip-padding-x",
+		115339,
 		115360,
 		{
-			"value": "bs-tooltip-padding-x"
+			"value": "--bs-tooltip-padding-x"
 		}
 	],
 	[
@@ -219057,30 +195702,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		115373,
-		115373,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115374,
-		115374,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-color",
-		115375,
+		"--bs-tooltip-color",
+		115373,
 		115390,
 		{
-			"value": "bs-tooltip-color"
+			"value": "--bs-tooltip-color"
 		}
 	],
 	[
@@ -219155,30 +195782,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		115432,
-		115432,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115433,
-		115433,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-bg",
-		115434,
+		"--bs-tooltip-bg",
+		115432,
 		115446,
 		{
-			"value": "bs-tooltip-bg"
+			"value": "--bs-tooltip-bg"
 		}
 	],
 	[
@@ -219221,30 +195830,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		115467,
-		115467,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115468,
-		115468,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-tooltip-border-radius",
-		115469,
+		"--bs-tooltip-border-radius",
+		115467,
 		115492,
 		{
-			"value": "bs-tooltip-border-radius"
+			"value": "--bs-tooltip-border-radius"
 		}
 	],
 	[
@@ -219287,30 +195878,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115504,
-		115504,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115505,
-		115505,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-zindex",
-		115506,
+		"--bs-popover-zindex",
+		115504,
 		115522,
 		{
-			"value": "bs-popover-zindex"
+			"value": "--bs-popover-zindex"
 		}
 	],
 	[
@@ -219338,30 +195911,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115529,
-		115529,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115530,
-		115530,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-max-width",
-		115531,
+		"--bs-popover-max-width",
+		115529,
 		115550,
 		{
-			"value": "bs-popover-max-width"
+			"value": "--bs-popover-max-width"
 		}
 	],
 	[
@@ -219390,30 +195945,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115558,
-		115558,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115559,
-		115559,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-font-size",
-		115560,
+		"--bs-popover-font-size",
+		115558,
 		115579,
 		{
-			"value": "bs-popover-font-size"
+			"value": "--bs-popover-font-size"
 		}
 	],
 	[
@@ -219442,30 +195979,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115590,
-		115590,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115591,
-		115591,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-bg",
-		115592,
+		"--bs-popover-bg",
+		115590,
 		115604,
 		{
-			"value": "bs-popover-bg"
+			"value": "--bs-popover-bg"
 		}
 	],
 	[
@@ -219493,30 +196012,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115611,
-		115611,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115612,
-		115612,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-width",
-		115613,
+		"--bs-popover-border-width",
+		115611,
 		115635,
 		{
-			"value": "bs-popover-border-width"
+			"value": "--bs-popover-border-width"
 		}
 	],
 	[
@@ -219545,30 +196046,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115641,
-		115641,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115642,
-		115642,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-color",
-		115643,
+		"--bs-popover-border-color",
+		115641,
 		115665,
 		{
-			"value": "bs-popover-border-color"
+			"value": "--bs-popover-border-color"
 		}
 	],
 	[
@@ -219588,30 +196071,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		115671,
-		115671,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115672,
-		115672,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color-translucent",
-		115673,
+		"--bs-border-color-translucent",
+		115671,
 		115699,
 		{
-			"value": "bs-border-color-translucent"
+			"value": "--bs-border-color-translucent"
 		}
 	],
 	[
@@ -219629,30 +196094,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115702,
-		115702,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115703,
-		115703,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-radius",
-		115704,
+		"--bs-popover-border-radius",
+		115702,
 		115727,
 		{
-			"value": "bs-popover-border-radius"
+			"value": "--bs-popover-border-radius"
 		}
 	],
 	[
@@ -219681,30 +196128,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115736,
-		115736,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115737,
-		115737,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-inner-border-radius",
-		115738,
+		"--bs-popover-inner-border-radius",
+		115736,
 		115767,
 		{
-			"value": "bs-popover-inner-border-radius"
+			"value": "--bs-popover-inner-border-radius"
 		}
 	],
 	[
@@ -219783,30 +196212,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115788,
-		115788,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115789,
-		115789,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-box-shadow",
-		115790,
+		"--bs-popover-box-shadow",
+		115788,
 		115810,
 		{
-			"value": "bs-popover-box-shadow"
+			"value": "--bs-popover-box-shadow"
 		}
 	],
 	[
@@ -219975,30 +196386,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115846,
-		115846,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115847,
-		115847,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-header-padding-x",
-		115848,
+		"--bs-popover-header-padding-x",
+		115846,
 		115874,
 		{
-			"value": "bs-popover-header-padding-x"
+			"value": "--bs-popover-header-padding-x"
 		}
 	],
 	[
@@ -220027,30 +196420,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115881,
-		115881,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115882,
-		115882,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-header-padding-y",
-		115883,
+		"--bs-popover-header-padding-y",
+		115881,
 		115909,
 		{
-			"value": "bs-popover-header-padding-y"
+			"value": "--bs-popover-header-padding-y"
 		}
 	],
 	[
@@ -220079,30 +196454,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115918,
-		115918,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115919,
-		115919,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-header-font-size",
-		115920,
+		"--bs-popover-header-font-size",
+		115918,
 		115946,
 		{
-			"value": "bs-popover-header-font-size"
+			"value": "--bs-popover-header-font-size"
 		}
 	],
 	[
@@ -220131,30 +196488,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115953,
-		115953,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115954,
-		115954,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-header-color",
-		115955,
+		"--bs-popover-header-color",
+		115953,
 		115977,
 		{
-			"value": "bs-popover-header-color"
+			"value": "--bs-popover-header-color"
 		}
 	],
 	[
@@ -220179,30 +196518,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		115981,
-		115981,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		115982,
-		115982,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-header-bg",
-		115983,
+		"--bs-popover-header-bg",
+		115981,
 		116002,
 		{
-			"value": "bs-popover-header-bg"
+			"value": "--bs-popover-header-bg"
 		}
 	],
 	[
@@ -220230,30 +196551,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		116012,
-		116012,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116013,
-		116013,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-body-padding-x",
-		116014,
+		"--bs-popover-body-padding-x",
+		116012,
 		116038,
 		{
-			"value": "bs-popover-body-padding-x"
+			"value": "--bs-popover-body-padding-x"
 		}
 	],
 	[
@@ -220282,30 +196585,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		116045,
-		116045,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116046,
-		116046,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-body-padding-y",
-		116047,
+		"--bs-popover-body-padding-y",
+		116045,
 		116071,
 		{
-			"value": "bs-popover-body-padding-y"
+			"value": "--bs-popover-body-padding-y"
 		}
 	],
 	[
@@ -220334,30 +196619,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		116078,
-		116078,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116079,
-		116079,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-body-color",
-		116080,
+		"--bs-popover-body-color",
+		116078,
 		116100,
 		{
-			"value": "bs-popover-body-color"
+			"value": "--bs-popover-body-color"
 		}
 	],
 	[
@@ -220385,30 +196652,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		116110,
-		116110,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116111,
-		116111,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-width",
-		116112,
+		"--bs-popover-arrow-width",
+		116110,
 		116133,
 		{
-			"value": "bs-popover-arrow-width"
+			"value": "--bs-popover-arrow-width"
 		}
 	],
 	[
@@ -220437,30 +196686,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		116140,
-		116140,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116141,
-		116141,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-height",
-		116142,
+		"--bs-popover-arrow-height",
+		116140,
 		116164,
 		{
-			"value": "bs-popover-arrow-height"
+			"value": "--bs-popover-arrow-height"
 		}
 	],
 	[
@@ -220489,30 +196720,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		116173,
-		116173,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116174,
-		116174,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-border",
-		116175,
+		"--bs-popover-arrow-border",
+		116173,
 		116197,
 		{
-			"value": "bs-popover-arrow-border"
+			"value": "--bs-popover-arrow-border"
 		}
 	],
 	[
@@ -220532,30 +196745,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		116203,
-		116203,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116204,
-		116204,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-color",
-		116205,
+		"--bs-popover-border-color",
+		116203,
 		116227,
 		{
-			"value": "bs-popover-border-color"
+			"value": "--bs-popover-border-color"
 		}
 	],
 	[
@@ -220598,30 +196793,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		116242,
-		116242,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116243,
-		116243,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-zindex",
-		116244,
+		"--bs-popover-zindex",
+		116242,
 		116260,
 		{
-			"value": "bs-popover-zindex"
+			"value": "--bs-popover-zindex"
 		}
 	],
 	[
@@ -220696,30 +196873,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		116291,
-		116291,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116292,
-		116292,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-max-width",
-		116293,
+		"--bs-popover-max-width",
+		116291,
 		116312,
 		{
-			"value": "bs-popover-max-width"
+			"value": "--bs-popover-max-width"
 		}
 	],
 	[
@@ -220762,30 +196921,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		116331,
-		116331,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116332,
-		116332,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-font-sans-serif",
-		116333,
+		"--bs-font-sans-serif",
+		116331,
 		116350,
 		{
-			"value": "bs-font-sans-serif"
+			"value": "--bs-font-sans-serif"
 		}
 	],
 	[
@@ -221246,30 +197387,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		116603,
-		116603,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116604,
-		116604,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-font-size",
-		116605,
+		"--bs-popover-font-size",
+		116603,
 		116624,
 		{
-			"value": "bs-popover-font-size"
+			"value": "--bs-popover-font-size"
 		}
 	],
 	[
@@ -221344,30 +197467,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		116669,
-		116669,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116670,
-		116670,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-bg",
-		116671,
+		"--bs-popover-bg",
+		116669,
 		116683,
 		{
-			"value": "bs-popover-bg"
+			"value": "--bs-popover-bg"
 		}
 	],
 	[
@@ -221442,30 +197547,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		116725,
-		116725,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116726,
-		116726,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-width",
-		116727,
+		"--bs-popover-border-width",
+		116725,
 		116749,
 		{
-			"value": "bs-popover-border-width"
+			"value": "--bs-popover-border-width"
 		}
 	],
 	[
@@ -221508,30 +197595,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		116762,
-		116762,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116763,
-		116763,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-color",
-		116764,
+		"--bs-popover-border-color",
+		116762,
 		116786,
 		{
-			"value": "bs-popover-border-color"
+			"value": "--bs-popover-border-color"
 		}
 	],
 	[
@@ -221574,30 +197643,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		116807,
-		116807,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116808,
-		116808,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-radius",
-		116809,
+		"--bs-popover-border-radius",
+		116807,
 		116832,
 		{
-			"value": "bs-popover-border-radius"
+			"value": "--bs-popover-border-radius"
 		}
 	],
 	[
@@ -221722,30 +197773,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		116883,
-		116883,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116884,
-		116884,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-width",
-		116885,
+		"--bs-popover-arrow-width",
+		116883,
 		116906,
 		{
-			"value": "bs-popover-arrow-width"
+			"value": "--bs-popover-arrow-width"
 		}
 	],
 	[
@@ -221788,30 +197821,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		116920,
-		116920,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		116921,
-		116921,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-height",
-		116922,
+		"--bs-popover-arrow-height",
+		116920,
 		116944,
 		{
-			"value": "bs-popover-arrow-height"
+			"value": "--bs-popover-arrow-height"
 		}
 	],
 	[
@@ -222396,30 +198411,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		117225,
-		117225,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		117226,
-		117226,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-height",
-		117227,
+		"--bs-popover-arrow-height",
+		117225,
 		117249,
 		{
-			"value": "bs-popover-arrow-height"
+			"value": "--bs-popover-arrow-height"
 		}
 	],
 	[
@@ -222469,30 +198466,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		117259,
-		117259,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		117260,
-		117260,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-width",
-		117261,
+		"--bs-popover-border-width",
+		117259,
 		117283,
 		{
-			"value": "bs-popover-border-width"
+			"value": "--bs-popover-border-width"
 		}
 	],
 	[
@@ -222942,30 +198921,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		117516,
-		117516,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		117517,
-		117517,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-height",
-		117518,
+		"--bs-popover-arrow-height",
+		117516,
 		117540,
 		{
-			"value": "bs-popover-arrow-height"
+			"value": "--bs-popover-arrow-height"
 		}
 	],
 	[
@@ -223001,30 +198962,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		117552,
-		117552,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		117553,
-		117553,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-width",
-		117554,
+		"--bs-popover-arrow-width",
+		117552,
 		117575,
 		{
-			"value": "bs-popover-arrow-width"
+			"value": "--bs-popover-arrow-width"
 		}
 	],
 	[
@@ -223357,30 +199300,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		117723,
-		117723,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		117724,
-		117724,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-border",
-		117725,
+		"--bs-popover-arrow-border",
+		117723,
 		117747,
 		{
-			"value": "bs-popover-arrow-border"
+			"value": "--bs-popover-arrow-border"
 		}
 	],
 	[
@@ -223623,30 +199548,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		117866,
-		117866,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		117867,
-		117867,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-width",
-		117868,
+		"--bs-popover-border-width",
+		117866,
 		117890,
 		{
-			"value": "bs-popover-border-width"
+			"value": "--bs-popover-border-width"
 		}
 	],
 	[
@@ -223689,30 +199596,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		117914,
-		117914,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		117915,
-		117915,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-bg",
-		117916,
+		"--bs-popover-bg",
+		117914,
 		117928,
 		{
-			"value": "bs-popover-bg"
+			"value": "--bs-popover-bg"
 		}
 	],
 	[
@@ -223958,30 +199847,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		118044,
-		118044,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		118045,
-		118045,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-height",
-		118046,
+		"--bs-popover-arrow-height",
+		118044,
 		118068,
 		{
-			"value": "bs-popover-arrow-height"
+			"value": "--bs-popover-arrow-height"
 		}
 	],
 	[
@@ -224031,30 +199902,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		118078,
-		118078,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		118079,
-		118079,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-width",
-		118080,
+		"--bs-popover-border-width",
+		118078,
 		118102,
 		{
-			"value": "bs-popover-border-width"
+			"value": "--bs-popover-border-width"
 		}
 	],
 	[
@@ -224104,30 +199957,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		118116,
-		118116,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		118117,
-		118117,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-height",
-		118118,
+		"--bs-popover-arrow-height",
+		118116,
 		118140,
 		{
-			"value": "bs-popover-arrow-height"
+			"value": "--bs-popover-arrow-height"
 		}
 	],
 	[
@@ -224170,30 +200005,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		118154,
-		118154,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		118155,
-		118155,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-width",
-		118156,
+		"--bs-popover-arrow-width",
+		118154,
 		118177,
 		{
-			"value": "bs-popover-arrow-width"
+			"value": "--bs-popover-arrow-width"
 		}
 	],
 	[
@@ -224645,30 +200462,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		118418,
-		118418,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		118419,
-		118419,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-width",
-		118420,
+		"--bs-popover-arrow-width",
+		118418,
 		118441,
 		{
-			"value": "bs-popover-arrow-width"
+			"value": "--bs-popover-arrow-width"
 		}
 	],
 	[
@@ -224735,30 +200534,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		118454,
-		118454,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		118455,
-		118455,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-height",
-		118456,
+		"--bs-popover-arrow-height",
+		118454,
 		118478,
 		{
-			"value": "bs-popover-arrow-height"
+			"value": "--bs-popover-arrow-height"
 		}
 	],
 	[
@@ -224794,30 +200575,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		118490,
-		118490,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		118491,
-		118491,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-width",
-		118492,
+		"--bs-popover-arrow-width",
+		118490,
 		118513,
 		{
-			"value": "bs-popover-arrow-width"
+			"value": "--bs-popover-arrow-width"
 		}
 	],
 	[
@@ -225150,30 +200913,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		118663,
-		118663,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		118664,
-		118664,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-border",
-		118665,
+		"--bs-popover-arrow-border",
+		118663,
 		118687,
 		{
-			"value": "bs-popover-arrow-border"
+			"value": "--bs-popover-arrow-border"
 		}
 	],
 	[
@@ -225416,30 +201161,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		118806,
-		118806,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		118807,
-		118807,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-width",
-		118808,
+		"--bs-popover-border-width",
+		118806,
 		118830,
 		{
-			"value": "bs-popover-border-width"
+			"value": "--bs-popover-border-width"
 		}
 	],
 	[
@@ -225482,30 +201209,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		118856,
-		118856,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		118857,
-		118857,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-bg",
-		118858,
+		"--bs-popover-bg",
+		118856,
 		118870,
 		{
-			"value": "bs-popover-bg"
+			"value": "--bs-popover-bg"
 		}
 	],
 	[
@@ -225751,30 +201460,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		118989,
-		118989,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		118990,
-		118990,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-height",
-		118991,
+		"--bs-popover-arrow-height",
+		118989,
 		119013,
 		{
-			"value": "bs-popover-arrow-height"
+			"value": "--bs-popover-arrow-height"
 		}
 	],
 	[
@@ -225824,30 +201515,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		119023,
-		119023,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		119024,
-		119024,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-width",
-		119025,
+		"--bs-popover-border-width",
+		119023,
 		119047,
 		{
-			"value": "bs-popover-border-width"
+			"value": "--bs-popover-border-width"
 		}
 	],
 	[
@@ -226323,30 +201996,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		119299,
-		119299,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		119300,
-		119300,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-width",
-		119301,
+		"--bs-popover-arrow-width",
+		119299,
 		119322,
 		{
-			"value": "bs-popover-arrow-width"
+			"value": "--bs-popover-arrow-width"
 		}
 	],
 	[
@@ -226413,30 +202068,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		119335,
-		119335,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		119336,
-		119336,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-height",
-		119337,
+		"--bs-popover-arrow-height",
+		119335,
 		119359,
 		{
-			"value": "bs-popover-arrow-height"
+			"value": "--bs-popover-arrow-height"
 		}
 	],
 	[
@@ -226712,30 +202349,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		119505,
-		119505,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		119506,
-		119506,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-border",
-		119507,
+		"--bs-popover-arrow-border",
+		119505,
 		119529,
 		{
-			"value": "bs-popover-arrow-border"
+			"value": "--bs-popover-arrow-border"
 		}
 	],
 	[
@@ -226978,30 +202597,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		119651,
-		119651,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		119652,
-		119652,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-width",
-		119653,
+		"--bs-popover-border-width",
+		119651,
 		119675,
 		{
-			"value": "bs-popover-border-width"
+			"value": "--bs-popover-border-width"
 		}
 	],
 	[
@@ -227044,30 +202645,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		119702,
-		119702,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		119703,
-		119703,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-bg",
-		119704,
+		"--bs-popover-bg",
+		119702,
 		119716,
 		{
-			"value": "bs-popover-bg"
+			"value": "--bs-popover-bg"
 		}
 	],
 	[
@@ -227435,30 +203018,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		119891,
-		119891,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		119892,
-		119892,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-width",
-		119893,
+		"--bs-popover-arrow-width",
+		119891,
 		119914,
 		{
-			"value": "bs-popover-arrow-width"
+			"value": "--bs-popover-arrow-width"
 		}
 	],
 	[
@@ -227543,30 +203108,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		119944,
-		119944,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		119945,
-		119945,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-width",
-		119946,
+		"--bs-popover-arrow-width",
+		119944,
 		119967,
 		{
-			"value": "bs-popover-arrow-width"
+			"value": "--bs-popover-arrow-width"
 		}
 	],
 	[
@@ -227648,30 +203195,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		120000,
-		120000,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		120001,
-		120001,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-width",
-		120002,
+		"--bs-popover-border-width",
+		120000,
 		120024,
 		{
-			"value": "bs-popover-border-width"
+			"value": "--bs-popover-border-width"
 		}
 	],
 	[
@@ -227714,30 +203243,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		120037,
-		120037,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		120038,
-		120038,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-header-bg",
-		120039,
+		"--bs-popover-header-bg",
+		120037,
 		120058,
 		{
-			"value": "bs-popover-header-bg"
+			"value": "--bs-popover-header-bg"
 		}
 	],
 	[
@@ -227983,30 +203494,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		120176,
-		120176,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		120177,
-		120177,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-height",
-		120178,
+		"--bs-popover-arrow-height",
+		120176,
 		120200,
 		{
-			"value": "bs-popover-arrow-height"
+			"value": "--bs-popover-arrow-height"
 		}
 	],
 	[
@@ -228056,30 +203549,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		120210,
-		120210,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		120211,
-		120211,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-width",
-		120212,
+		"--bs-popover-border-width",
+		120210,
 		120234,
 		{
-			"value": "bs-popover-border-width"
+			"value": "--bs-popover-border-width"
 		}
 	],
 	[
@@ -228129,30 +203604,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		120248,
-		120248,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		120249,
-		120249,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-height",
-		120250,
+		"--bs-popover-arrow-height",
+		120248,
 		120272,
 		{
-			"value": "bs-popover-arrow-height"
+			"value": "--bs-popover-arrow-height"
 		}
 	],
 	[
@@ -228195,30 +203652,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		120286,
-		120286,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		120287,
-		120287,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-width",
-		120288,
+		"--bs-popover-arrow-width",
+		120286,
 		120309,
 		{
-			"value": "bs-popover-arrow-width"
+			"value": "--bs-popover-arrow-width"
 		}
 	],
 	[
@@ -228670,30 +204109,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		120552,
-		120552,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		120553,
-		120553,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-width",
-		120554,
+		"--bs-popover-arrow-width",
+		120552,
 		120575,
 		{
-			"value": "bs-popover-arrow-width"
+			"value": "--bs-popover-arrow-width"
 		}
 	],
 	[
@@ -228786,30 +204207,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		120595,
-		120595,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		120596,
-		120596,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-width",
-		120597,
+		"--bs-popover-arrow-width",
+		120595,
 		120618,
 		{
-			"value": "bs-popover-arrow-width"
+			"value": "--bs-popover-arrow-width"
 		}
 	],
 	[
@@ -228876,30 +204279,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		120631,
-		120631,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		120632,
-		120632,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-height",
-		120633,
+		"--bs-popover-arrow-height",
+		120631,
 		120655,
 		{
-			"value": "bs-popover-arrow-height"
+			"value": "--bs-popover-arrow-height"
 		}
 	],
 	[
@@ -229175,30 +204560,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		120798,
-		120798,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		120799,
-		120799,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-arrow-border",
-		120800,
+		"--bs-popover-arrow-border",
+		120798,
 		120822,
 		{
-			"value": "bs-popover-arrow-border"
+			"value": "--bs-popover-arrow-border"
 		}
 	],
 	[
@@ -229441,30 +204808,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		120943,
-		120943,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		120944,
-		120944,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-width",
-		120945,
+		"--bs-popover-border-width",
+		120943,
 		120967,
 		{
-			"value": "bs-popover-border-width"
+			"value": "--bs-popover-border-width"
 		}
 	],
 	[
@@ -229507,30 +204856,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		120992,
-		120992,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		120993,
-		120993,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-bg",
-		120994,
+		"--bs-popover-bg",
+		120992,
 		121006,
 		{
-			"value": "bs-popover-bg"
+			"value": "--bs-popover-bg"
 		}
 	],
 	[
@@ -229598,30 +204929,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		121037,
-		121037,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		121038,
-		121038,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-header-padding-y",
-		121039,
+		"--bs-popover-header-padding-y",
+		121037,
 		121065,
 		{
-			"value": "bs-popover-header-padding-y"
+			"value": "--bs-popover-header-padding-y"
 		}
 	],
 	[
@@ -229648,30 +204961,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		121072,
-		121072,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		121073,
-		121073,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-header-padding-x",
-		121074,
+		"--bs-popover-header-padding-x",
+		121072,
 		121100,
 		{
-			"value": "bs-popover-header-padding-x"
+			"value": "--bs-popover-header-padding-x"
 		}
 	],
 	[
@@ -229747,30 +205042,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		121133,
-		121133,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		121134,
-		121134,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-header-font-size",
-		121135,
+		"--bs-popover-header-font-size",
+		121133,
 		121161,
 		{
-			"value": "bs-popover-header-font-size"
+			"value": "--bs-popover-header-font-size"
 		}
 	],
 	[
@@ -229813,30 +205090,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		121174,
-		121174,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		121175,
-		121175,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-header-color",
-		121176,
+		"--bs-popover-header-color",
+		121174,
 		121198,
 		{
-			"value": "bs-popover-header-color"
+			"value": "--bs-popover-header-color"
 		}
 	],
 	[
@@ -229879,30 +205138,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		121222,
-		121222,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		121223,
-		121223,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-header-bg",
-		121224,
+		"--bs-popover-header-bg",
+		121222,
 		121243,
 		{
-			"value": "bs-popover-header-bg"
+			"value": "--bs-popover-header-bg"
 		}
 	],
 	[
@@ -229945,30 +205186,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		121264,
-		121264,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		121265,
-		121265,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-width",
-		121266,
+		"--bs-popover-border-width",
+		121264,
 		121288,
 		{
-			"value": "bs-popover-border-width"
+			"value": "--bs-popover-border-width"
 		}
 	],
 	[
@@ -230011,30 +205234,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		121301,
-		121301,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		121302,
-		121302,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-border-color",
-		121303,
+		"--bs-popover-border-color",
+		121301,
 		121325,
 		{
-			"value": "bs-popover-border-color"
+			"value": "--bs-popover-border-color"
 		}
 	],
 	[
@@ -230077,30 +205282,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		121355,
-		121355,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		121356,
-		121356,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-inner-border-radius",
-		121357,
+		"--bs-popover-inner-border-radius",
+		121355,
 		121386,
 		{
-			"value": "bs-popover-inner-border-radius"
+			"value": "--bs-popover-inner-border-radius"
 		}
 	],
 	[
@@ -230143,30 +205330,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		121417,
-		121417,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		121418,
-		121418,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-inner-border-radius",
-		121419,
+		"--bs-popover-inner-border-radius",
+		121417,
 		121448,
 		{
-			"value": "bs-popover-inner-border-radius"
+			"value": "--bs-popover-inner-border-radius"
 		}
 	],
 	[
@@ -230307,30 +205476,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		121512,
-		121512,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		121513,
-		121513,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-body-padding-y",
-		121514,
+		"--bs-popover-body-padding-y",
+		121512,
 		121538,
 		{
-			"value": "bs-popover-body-padding-y"
+			"value": "--bs-popover-body-padding-y"
 		}
 	],
 	[
@@ -230357,30 +205508,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		121545,
-		121545,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		121546,
-		121546,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-body-padding-x",
-		121547,
+		"--bs-popover-body-padding-x",
+		121545,
 		121571,
 		{
-			"value": "bs-popover-body-padding-x"
+			"value": "--bs-popover-body-padding-x"
 		}
 	],
 	[
@@ -230423,30 +205556,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		121584,
-		121584,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		121585,
-		121585,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-popover-body-color",
-		121586,
+		"--bs-popover-body-color",
+		121584,
 		121606,
 		{
-			"value": "bs-popover-body-color"
+			"value": "--bs-popover-body-color"
 		}
 	],
 	[
@@ -231046,21 +206161,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		121887,
-		121887,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-backface-visibility",
-		121888,
+		"-webkit-backface-visibility",
+		121887,
 		121913,
 		{
-			"value": "webkit-backface-visibility"
+			"value": "-webkit-backface-visibility"
 		}
 	],
 	[
@@ -236378,30 +211484,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		125307,
-		125307,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125308,
-		125308,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-width",
-		125309,
+		"--bs-spinner-width",
+		125307,
 		125324,
 		{
-			"value": "bs-spinner-width"
+			"value": "--bs-spinner-width"
 		}
 	],
 	[
@@ -236444,30 +211532,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		125338,
-		125338,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125339,
-		125339,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-height",
-		125340,
+		"--bs-spinner-height",
+		125338,
 		125356,
 		{
-			"value": "bs-spinner-height"
+			"value": "--bs-spinner-height"
 		}
 	],
 	[
@@ -236510,30 +211580,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		125378,
-		125378,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125379,
-		125379,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-vertical-align",
-		125380,
+		"--bs-spinner-vertical-align",
+		125378,
 		125404,
 		{
-			"value": "bs-spinner-vertical-align"
+			"value": "--bs-spinner-vertical-align"
 		}
 	],
 	[
@@ -236583,21 +211635,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		125425,
-		125425,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-animation",
-		125426,
+		"-webkit-animation",
+		125425,
 		125441,
 		{
-			"value": "webkit-animation"
+			"value": "-webkit-animation"
 		}
 	],
 	[
@@ -236617,30 +211660,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		125447,
-		125447,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125448,
-		125448,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-animation-speed",
-		125449,
+		"--bs-spinner-animation-speed",
+		125447,
 		125474,
 		{
-			"value": "bs-spinner-animation-speed"
+			"value": "--bs-spinner-animation-speed"
 		}
 	],
 	[
@@ -236699,30 +211724,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		125497,
-		125497,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125498,
-		125498,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-animation-name",
-		125499,
+		"--bs-spinner-animation-name",
+		125497,
 		125523,
 		{
-			"value": "bs-spinner-animation-name"
+			"value": "--bs-spinner-animation-name"
 		}
 	],
 	[
@@ -236765,30 +211772,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		125540,
-		125540,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125541,
-		125541,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-animation-speed",
-		125542,
+		"--bs-spinner-animation-speed",
+		125540,
 		125567,
 		{
-			"value": "bs-spinner-animation-speed"
+			"value": "--bs-spinner-animation-speed"
 		}
 	],
 	[
@@ -236847,30 +211836,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		125590,
-		125590,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125591,
-		125591,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-animation-name",
-		125592,
+		"--bs-spinner-animation-name",
+		125590,
 		125616,
 		{
-			"value": "bs-spinner-animation-name"
+			"value": "--bs-spinner-animation-name"
 		}
 	],
 	[
@@ -237123,30 +212094,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		125753,
-		125753,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125754,
-		125754,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-width",
-		125755,
+		"--bs-spinner-width",
+		125753,
 		125770,
 		{
-			"value": "bs-spinner-width"
+			"value": "--bs-spinner-width"
 		}
 	],
 	[
@@ -237175,30 +212128,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		125777,
-		125777,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125778,
-		125778,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-height",
-		125779,
+		"--bs-spinner-height",
+		125777,
 		125795,
 		{
-			"value": "bs-spinner-height"
+			"value": "--bs-spinner-height"
 		}
 	],
 	[
@@ -237227,30 +212162,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		125802,
-		125802,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125803,
-		125803,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-vertical-align",
-		125804,
+		"--bs-spinner-vertical-align",
+		125802,
 		125828,
 		{
-			"value": "bs-spinner-vertical-align"
+			"value": "--bs-spinner-vertical-align"
 		}
 	],
 	[
@@ -237279,30 +212196,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		125839,
-		125839,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125840,
-		125840,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-border-width",
-		125841,
+		"--bs-spinner-border-width",
+		125839,
 		125863,
 		{
-			"value": "bs-spinner-border-width"
+			"value": "--bs-spinner-border-width"
 		}
 	],
 	[
@@ -237331,30 +212230,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		125872,
-		125872,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125873,
-		125873,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-animation-speed",
-		125874,
+		"--bs-spinner-animation-speed",
+		125872,
 		125899,
 		{
-			"value": "bs-spinner-animation-speed"
+			"value": "--bs-spinner-animation-speed"
 		}
 	],
 	[
@@ -237383,30 +212264,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		125907,
-		125907,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125908,
-		125908,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-animation-name",
-		125909,
+		"--bs-spinner-animation-name",
+		125907,
 		125933,
 		{
-			"value": "bs-spinner-animation-name"
+			"value": "--bs-spinner-animation-name"
 		}
 	],
 	[
@@ -237458,30 +212321,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		125961,
-		125961,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		125962,
-		125962,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-border-width",
-		125963,
+		"--bs-spinner-border-width",
+		125961,
 		125985,
 		{
-			"value": "bs-spinner-border-width"
+			"value": "--bs-spinner-border-width"
 		}
 	],
 	[
@@ -237588,30 +212433,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126057,
-		126057,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126058,
-		126058,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-width",
-		126059,
+		"--bs-spinner-width",
+		126057,
 		126074,
 		{
-			"value": "bs-spinner-width"
+			"value": "--bs-spinner-width"
 		}
 	],
 	[
@@ -237640,30 +212467,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126081,
-		126081,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126082,
-		126082,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-height",
-		126083,
+		"--bs-spinner-height",
+		126081,
 		126099,
 		{
-			"value": "bs-spinner-height"
+			"value": "--bs-spinner-height"
 		}
 	],
 	[
@@ -237692,30 +212501,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126106,
-		126106,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126107,
-		126107,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-border-width",
-		126108,
+		"--bs-spinner-border-width",
+		126106,
 		126130,
 		{
-			"value": "bs-spinner-border-width"
+			"value": "--bs-spinner-border-width"
 		}
 	],
 	[
@@ -238139,30 +212930,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126312,
-		126312,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126313,
-		126313,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-width",
-		126314,
+		"--bs-spinner-width",
+		126312,
 		126329,
 		{
-			"value": "bs-spinner-width"
+			"value": "--bs-spinner-width"
 		}
 	],
 	[
@@ -238191,30 +212964,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126336,
-		126336,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126337,
-		126337,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-height",
-		126338,
+		"--bs-spinner-height",
+		126336,
 		126354,
 		{
-			"value": "bs-spinner-height"
+			"value": "--bs-spinner-height"
 		}
 	],
 	[
@@ -238243,30 +212998,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126361,
-		126361,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126362,
-		126362,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-vertical-align",
-		126363,
+		"--bs-spinner-vertical-align",
+		126361,
 		126387,
 		{
-			"value": "bs-spinner-vertical-align"
+			"value": "--bs-spinner-vertical-align"
 		}
 	],
 	[
@@ -238295,30 +213032,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126398,
-		126398,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126399,
-		126399,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-animation-speed",
-		126400,
+		"--bs-spinner-animation-speed",
+		126398,
 		126425,
 		{
-			"value": "bs-spinner-animation-speed"
+			"value": "--bs-spinner-animation-speed"
 		}
 	],
 	[
@@ -238347,30 +213066,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126433,
-		126433,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126434,
-		126434,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-animation-name",
-		126435,
+		"--bs-spinner-animation-name",
+		126433,
 		126459,
 		{
-			"value": "bs-spinner-animation-name"
+			"value": "--bs-spinner-animation-name"
 		}
 	],
 	[
@@ -238487,30 +213188,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126531,
-		126531,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126532,
-		126532,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-width",
-		126533,
+		"--bs-spinner-width",
+		126531,
 		126548,
 		{
-			"value": "bs-spinner-width"
+			"value": "--bs-spinner-width"
 		}
 	],
 	[
@@ -238539,30 +213222,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126555,
-		126555,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126556,
-		126556,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-height",
-		126557,
+		"--bs-spinner-height",
+		126555,
 		126573,
 		{
-			"value": "bs-spinner-height"
+			"value": "--bs-spinner-height"
 		}
 	],
 	[
@@ -238703,30 +213368,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126649,
-		126649,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126650,
-		126650,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-spinner-animation-speed",
-		126651,
+		"--bs-spinner-animation-speed",
+		126649,
 		126676,
 		{
-			"value": "bs-spinner-animation-speed"
+			"value": "--bs-spinner-animation-speed"
 		}
 	],
 	[
@@ -238912,30 +213559,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126766,
-		126766,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126767,
-		126767,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-zindex",
-		126768,
+		"--bs-offcanvas-zindex",
+		126766,
 		126786,
 		{
-			"value": "bs-offcanvas-zindex"
+			"value": "--bs-offcanvas-zindex"
 		}
 	],
 	[
@@ -238963,30 +213592,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126793,
-		126793,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126794,
-		126794,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		126795,
+		"--bs-offcanvas-width",
+		126793,
 		126812,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -239015,30 +213626,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126820,
-		126820,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126821,
-		126821,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		126822,
+		"--bs-offcanvas-height",
+		126820,
 		126840,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -239067,30 +213660,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126847,
-		126847,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126848,
-		126848,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-padding-x",
-		126849,
+		"--bs-offcanvas-padding-x",
+		126847,
 		126870,
 		{
-			"value": "bs-offcanvas-padding-x"
+			"value": "--bs-offcanvas-padding-x"
 		}
 	],
 	[
@@ -239119,30 +213694,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126877,
-		126877,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126878,
-		126878,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-padding-y",
-		126879,
+		"--bs-offcanvas-padding-y",
+		126877,
 		126900,
 		{
-			"value": "bs-offcanvas-padding-y"
+			"value": "--bs-offcanvas-padding-y"
 		}
 	],
 	[
@@ -239171,30 +213728,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126907,
-		126907,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126908,
-		126908,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-color",
-		126909,
+		"--bs-offcanvas-color",
+		126907,
 		126926,
 		{
-			"value": "bs-offcanvas-color"
+			"value": "--bs-offcanvas-color"
 		}
 	],
 	[
@@ -239219,30 +213758,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126930,
-		126930,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126931,
-		126931,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-bg",
-		126932,
+		"--bs-offcanvas-bg",
+		126930,
 		126946,
 		{
-			"value": "bs-offcanvas-bg"
+			"value": "--bs-offcanvas-bg"
 		}
 	],
 	[
@@ -239270,30 +213791,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126953,
-		126953,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126954,
-		126954,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		126955,
+		"--bs-offcanvas-border-width",
+		126953,
 		126979,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -239322,30 +213825,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		126985,
-		126985,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		126986,
-		126986,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		126987,
+		"--bs-offcanvas-border-color",
+		126985,
 		127011,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -239365,30 +213850,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		127017,
-		127017,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		127018,
-		127018,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color-translucent",
-		127019,
+		"--bs-border-color-translucent",
+		127017,
 		127045,
 		{
-			"value": "bs-border-color-translucent"
+			"value": "--bs-border-color-translucent"
 		}
 	],
 	[
@@ -239406,30 +213873,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		127048,
-		127048,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		127049,
-		127049,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-box-shadow",
-		127050,
+		"--bs-offcanvas-box-shadow",
+		127048,
 		127072,
 		{
-			"value": "bs-offcanvas-box-shadow"
+			"value": "--bs-offcanvas-box-shadow"
 		}
 	],
 	[
@@ -239777,30 +214226,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		127192,
-		127192,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		127193,
-		127193,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-zindex",
-		127194,
+		"--bs-offcanvas-zindex",
+		127192,
 		127212,
 		{
-			"value": "bs-offcanvas-zindex"
+			"value": "--bs-offcanvas-zindex"
 		}
 	],
 	[
@@ -239939,30 +214370,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		127275,
-		127275,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		127276,
-		127276,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-color",
-		127277,
+		"--bs-offcanvas-color",
+		127275,
 		127294,
 		{
-			"value": "bs-offcanvas-color"
+			"value": "--bs-offcanvas-color"
 		}
 	],
 	[
@@ -240037,30 +214450,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		127336,
-		127336,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		127337,
-		127337,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-bg",
-		127338,
+		"--bs-offcanvas-bg",
+		127336,
 		127352,
 		{
-			"value": "bs-offcanvas-bg"
+			"value": "--bs-offcanvas-bg"
 		}
 	],
 	[
@@ -240604,30 +214999,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		127607,
-		127607,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		127608,
-		127608,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		127609,
+		"--bs-offcanvas-width",
+		127607,
 		127626,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -240670,30 +215047,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		127646,
-		127646,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		127647,
-		127647,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		127648,
+		"--bs-offcanvas-border-width",
+		127646,
 		127672,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -240736,30 +215095,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		127685,
-		127685,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		127686,
-		127686,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		127687,
+		"--bs-offcanvas-border-color",
+		127685,
 		127711,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -241030,30 +215371,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		127823,
-		127823,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		127824,
-		127824,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		127825,
+		"--bs-offcanvas-width",
+		127823,
 		127842,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -241096,30 +215419,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		127861,
-		127861,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		127862,
-		127862,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		127863,
+		"--bs-offcanvas-border-width",
+		127861,
 		127887,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -241162,30 +215467,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		127900,
-		127900,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		127901,
-		127901,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		127902,
+		"--bs-offcanvas-border-color",
+		127900,
 		127926,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -241489,30 +215776,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		128045,
-		128045,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		128046,
-		128046,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		128047,
+		"--bs-offcanvas-height",
+		128045,
 		128065,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -241587,30 +215856,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		128102,
-		128102,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		128103,
-		128103,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		128104,
+		"--bs-offcanvas-border-width",
+		128102,
 		128128,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -241653,30 +215904,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		128141,
-		128141,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		128142,
-		128142,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		128143,
+		"--bs-offcanvas-border-color",
+		128141,
 		128167,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -241947,30 +216180,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		128284,
-		128284,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		128285,
-		128285,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		128286,
+		"--bs-offcanvas-height",
+		128284,
 		128304,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -242045,30 +216260,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		128338,
-		128338,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		128339,
-		128339,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		128340,
+		"--bs-offcanvas-border-width",
+		128338,
 		128364,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -242111,30 +216308,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		128377,
-		128377,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		128378,
-		128378,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		128379,
+		"--bs-offcanvas-border-color",
+		128377,
 		128403,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -242758,30 +216937,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		128681,
-		128681,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		128682,
-		128682,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		128683,
+		"--bs-offcanvas-height",
+		128681,
 		128701,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -242808,30 +216969,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		128708,
-		128708,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		128709,
-		128709,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		128710,
+		"--bs-offcanvas-border-width",
+		128708,
 		128734,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -243407,30 +217550,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		129024,
-		129024,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		129025,
-		129025,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-zindex",
-		129026,
+		"--bs-offcanvas-zindex",
+		129024,
 		129044,
 		{
-			"value": "bs-offcanvas-zindex"
+			"value": "--bs-offcanvas-zindex"
 		}
 	],
 	[
@@ -243569,30 +217694,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		129107,
-		129107,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		129108,
-		129108,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-color",
-		129109,
+		"--bs-offcanvas-color",
+		129107,
 		129126,
 		{
-			"value": "bs-offcanvas-color"
+			"value": "--bs-offcanvas-color"
 		}
 	],
 	[
@@ -243667,30 +217774,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		129168,
-		129168,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		129169,
-		129169,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-bg",
-		129170,
+		"--bs-offcanvas-bg",
+		129168,
 		129184,
 		{
-			"value": "bs-offcanvas-bg"
+			"value": "--bs-offcanvas-bg"
 		}
 	],
 	[
@@ -244234,30 +218323,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		129439,
-		129439,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		129440,
-		129440,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		129441,
+		"--bs-offcanvas-width",
+		129439,
 		129458,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -244300,30 +218371,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		129478,
-		129478,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		129479,
-		129479,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		129480,
+		"--bs-offcanvas-border-width",
+		129478,
 		129504,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -244366,30 +218419,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		129517,
-		129517,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		129518,
-		129518,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		129519,
+		"--bs-offcanvas-border-color",
+		129517,
 		129543,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -244660,30 +218695,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		129655,
-		129655,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		129656,
-		129656,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		129657,
+		"--bs-offcanvas-width",
+		129655,
 		129674,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -244726,30 +218743,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		129693,
-		129693,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		129694,
-		129694,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		129695,
+		"--bs-offcanvas-border-width",
+		129693,
 		129719,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -244792,30 +218791,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		129732,
-		129732,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		129733,
-		129733,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		129734,
+		"--bs-offcanvas-border-color",
+		129732,
 		129758,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -245119,30 +219100,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		129877,
-		129877,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		129878,
-		129878,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		129879,
+		"--bs-offcanvas-height",
+		129877,
 		129897,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -245217,30 +219180,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		129934,
-		129934,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		129935,
-		129935,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		129936,
+		"--bs-offcanvas-border-width",
+		129934,
 		129960,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -245283,30 +219228,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		129973,
-		129973,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		129974,
-		129974,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		129975,
+		"--bs-offcanvas-border-color",
+		129973,
 		129999,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -245577,30 +219504,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		130116,
-		130116,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		130117,
-		130117,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		130118,
+		"--bs-offcanvas-height",
+		130116,
 		130136,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -245675,30 +219584,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		130170,
-		130170,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		130171,
-		130171,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		130172,
+		"--bs-offcanvas-border-width",
+		130170,
 		130196,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -245741,30 +219632,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		130209,
-		130209,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		130210,
-		130210,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		130211,
+		"--bs-offcanvas-border-color",
+		130209,
 		130235,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -246388,30 +220261,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		130513,
-		130513,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		130514,
-		130514,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		130515,
+		"--bs-offcanvas-height",
+		130513,
 		130533,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -246438,30 +220293,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		130540,
-		130540,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		130541,
-		130541,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		130542,
+		"--bs-offcanvas-border-width",
+		130540,
 		130566,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -247037,30 +220874,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		130856,
-		130856,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		130857,
-		130857,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-zindex",
-		130858,
+		"--bs-offcanvas-zindex",
+		130856,
 		130876,
 		{
-			"value": "bs-offcanvas-zindex"
+			"value": "--bs-offcanvas-zindex"
 		}
 	],
 	[
@@ -247199,30 +221018,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		130939,
-		130939,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		130940,
-		130940,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-color",
-		130941,
+		"--bs-offcanvas-color",
+		130939,
 		130958,
 		{
-			"value": "bs-offcanvas-color"
+			"value": "--bs-offcanvas-color"
 		}
 	],
 	[
@@ -247297,30 +221098,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		131000,
-		131000,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		131001,
-		131001,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-bg",
-		131002,
+		"--bs-offcanvas-bg",
+		131000,
 		131016,
 		{
-			"value": "bs-offcanvas-bg"
+			"value": "--bs-offcanvas-bg"
 		}
 	],
 	[
@@ -247864,30 +221647,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		131271,
-		131271,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		131272,
-		131272,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		131273,
+		"--bs-offcanvas-width",
+		131271,
 		131290,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -247930,30 +221695,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		131310,
-		131310,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		131311,
-		131311,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		131312,
+		"--bs-offcanvas-border-width",
+		131310,
 		131336,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -247996,30 +221743,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		131349,
-		131349,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		131350,
-		131350,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		131351,
+		"--bs-offcanvas-border-color",
+		131349,
 		131375,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -248290,30 +222019,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		131487,
-		131487,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		131488,
-		131488,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		131489,
+		"--bs-offcanvas-width",
+		131487,
 		131506,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -248356,30 +222067,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		131525,
-		131525,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		131526,
-		131526,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		131527,
+		"--bs-offcanvas-border-width",
+		131525,
 		131551,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -248422,30 +222115,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		131564,
-		131564,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		131565,
-		131565,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		131566,
+		"--bs-offcanvas-border-color",
+		131564,
 		131590,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -248749,30 +222424,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		131709,
-		131709,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		131710,
-		131710,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		131711,
+		"--bs-offcanvas-height",
+		131709,
 		131729,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -248847,30 +222504,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		131766,
-		131766,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		131767,
-		131767,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		131768,
+		"--bs-offcanvas-border-width",
+		131766,
 		131792,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -248913,30 +222552,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		131805,
-		131805,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		131806,
-		131806,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		131807,
+		"--bs-offcanvas-border-color",
+		131805,
 		131831,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -249207,30 +222828,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		131948,
-		131948,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		131949,
-		131949,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		131950,
+		"--bs-offcanvas-height",
+		131948,
 		131968,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -249305,30 +222908,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		132002,
-		132002,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		132003,
-		132003,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		132004,
+		"--bs-offcanvas-border-width",
+		132002,
 		132028,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -249371,30 +222956,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		132041,
-		132041,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		132042,
-		132042,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		132043,
+		"--bs-offcanvas-border-color",
+		132041,
 		132067,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -250018,30 +223585,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		132345,
-		132345,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		132346,
-		132346,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		132347,
+		"--bs-offcanvas-height",
+		132345,
 		132365,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -250068,30 +223617,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		132372,
-		132372,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		132373,
-		132373,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		132374,
+		"--bs-offcanvas-border-width",
+		132372,
 		132398,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -250667,30 +224198,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		132689,
-		132689,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		132690,
-		132690,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-zindex",
-		132691,
+		"--bs-offcanvas-zindex",
+		132689,
 		132709,
 		{
-			"value": "bs-offcanvas-zindex"
+			"value": "--bs-offcanvas-zindex"
 		}
 	],
 	[
@@ -250829,30 +224342,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		132772,
-		132772,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		132773,
-		132773,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-color",
-		132774,
+		"--bs-offcanvas-color",
+		132772,
 		132791,
 		{
-			"value": "bs-offcanvas-color"
+			"value": "--bs-offcanvas-color"
 		}
 	],
 	[
@@ -250927,30 +224422,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		132833,
-		132833,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		132834,
-		132834,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-bg",
-		132835,
+		"--bs-offcanvas-bg",
+		132833,
 		132849,
 		{
-			"value": "bs-offcanvas-bg"
+			"value": "--bs-offcanvas-bg"
 		}
 	],
 	[
@@ -251494,30 +224971,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		133106,
-		133106,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		133107,
-		133107,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		133108,
+		"--bs-offcanvas-width",
+		133106,
 		133125,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -251560,30 +225019,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		133145,
-		133145,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		133146,
-		133146,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		133147,
+		"--bs-offcanvas-border-width",
+		133145,
 		133171,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -251626,30 +225067,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		133184,
-		133184,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		133185,
-		133185,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		133186,
+		"--bs-offcanvas-border-color",
+		133184,
 		133210,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -251920,30 +225343,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		133323,
-		133323,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		133324,
-		133324,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		133325,
+		"--bs-offcanvas-width",
+		133323,
 		133342,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -251986,30 +225391,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		133361,
-		133361,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		133362,
-		133362,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		133363,
+		"--bs-offcanvas-border-width",
+		133361,
 		133387,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -252052,30 +225439,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		133400,
-		133400,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		133401,
-		133401,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		133402,
+		"--bs-offcanvas-border-color",
+		133400,
 		133426,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -252379,30 +225748,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		133546,
-		133546,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		133547,
-		133547,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		133548,
+		"--bs-offcanvas-height",
+		133546,
 		133566,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -252477,30 +225828,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		133603,
-		133603,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		133604,
-		133604,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		133605,
+		"--bs-offcanvas-border-width",
+		133603,
 		133629,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -252543,30 +225876,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		133642,
-		133642,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		133643,
-		133643,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		133644,
+		"--bs-offcanvas-border-color",
+		133642,
 		133668,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -252837,30 +226152,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		133786,
-		133786,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		133787,
-		133787,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		133788,
+		"--bs-offcanvas-height",
+		133786,
 		133806,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -252935,30 +226232,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		133840,
-		133840,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		133841,
-		133841,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		133842,
+		"--bs-offcanvas-border-width",
+		133840,
 		133866,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -253001,30 +226280,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		133879,
-		133879,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		133880,
-		133880,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		133881,
+		"--bs-offcanvas-border-color",
+		133879,
 		133905,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -253648,30 +226909,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		134186,
-		134186,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		134187,
-		134187,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		134188,
+		"--bs-offcanvas-height",
+		134186,
 		134206,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -253698,30 +226941,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		134213,
-		134213,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		134214,
-		134214,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		134215,
+		"--bs-offcanvas-border-width",
+		134213,
 		134239,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -254297,30 +227522,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		134531,
-		134531,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		134532,
-		134532,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-zindex",
-		134533,
+		"--bs-offcanvas-zindex",
+		134531,
 		134551,
 		{
-			"value": "bs-offcanvas-zindex"
+			"value": "--bs-offcanvas-zindex"
 		}
 	],
 	[
@@ -254459,30 +227666,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		134614,
-		134614,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		134615,
-		134615,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-color",
-		134616,
+		"--bs-offcanvas-color",
+		134614,
 		134633,
 		{
-			"value": "bs-offcanvas-color"
+			"value": "--bs-offcanvas-color"
 		}
 	],
 	[
@@ -254557,30 +227746,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		134675,
-		134675,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		134676,
-		134676,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-bg",
-		134677,
+		"--bs-offcanvas-bg",
+		134675,
 		134691,
 		{
-			"value": "bs-offcanvas-bg"
+			"value": "--bs-offcanvas-bg"
 		}
 	],
 	[
@@ -255124,30 +228295,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		134950,
-		134950,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		134951,
-		134951,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		134952,
+		"--bs-offcanvas-width",
+		134950,
 		134969,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -255190,30 +228343,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		134989,
-		134989,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		134990,
-		134990,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		134991,
+		"--bs-offcanvas-border-width",
+		134989,
 		135015,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -255256,30 +228391,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		135028,
-		135028,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		135029,
-		135029,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		135030,
+		"--bs-offcanvas-border-color",
+		135028,
 		135054,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -255550,30 +228667,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		135168,
-		135168,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		135169,
-		135169,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		135170,
+		"--bs-offcanvas-width",
+		135168,
 		135187,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -255616,30 +228715,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		135206,
-		135206,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		135207,
-		135207,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		135208,
+		"--bs-offcanvas-border-width",
+		135206,
 		135232,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -255682,30 +228763,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		135245,
-		135245,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		135246,
-		135246,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		135247,
+		"--bs-offcanvas-border-color",
+		135245,
 		135271,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -256009,30 +229072,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		135392,
-		135392,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		135393,
-		135393,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		135394,
+		"--bs-offcanvas-height",
+		135392,
 		135412,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -256107,30 +229152,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		135449,
-		135449,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		135450,
-		135450,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		135451,
+		"--bs-offcanvas-border-width",
+		135449,
 		135475,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -256173,30 +229200,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		135488,
-		135488,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		135489,
-		135489,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		135490,
+		"--bs-offcanvas-border-color",
+		135488,
 		135514,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -256467,30 +229476,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		135633,
-		135633,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		135634,
-		135634,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		135635,
+		"--bs-offcanvas-height",
+		135633,
 		135653,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -256565,30 +229556,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		135687,
-		135687,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		135688,
-		135688,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		135689,
+		"--bs-offcanvas-border-width",
+		135687,
 		135713,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -256631,30 +229604,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		135726,
-		135726,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		135727,
-		135727,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		135728,
+		"--bs-offcanvas-border-color",
+		135726,
 		135752,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -257278,30 +230233,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		136039,
-		136039,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		136040,
-		136040,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		136041,
+		"--bs-offcanvas-height",
+		136039,
 		136059,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -257328,30 +230265,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		136066,
-		136066,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		136067,
-		136067,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		136068,
+		"--bs-offcanvas-border-width",
+		136066,
 		136092,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -257863,30 +230782,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		136353,
-		136353,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		136354,
-		136354,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-zindex",
-		136355,
+		"--bs-offcanvas-zindex",
+		136353,
 		136373,
 		{
-			"value": "bs-offcanvas-zindex"
+			"value": "--bs-offcanvas-zindex"
 		}
 	],
 	[
@@ -258025,30 +230926,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		136436,
-		136436,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		136437,
-		136437,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-color",
-		136438,
+		"--bs-offcanvas-color",
+		136436,
 		136455,
 		{
-			"value": "bs-offcanvas-color"
+			"value": "--bs-offcanvas-color"
 		}
 	],
 	[
@@ -258123,30 +231006,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		136497,
-		136497,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		136498,
-		136498,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-bg",
-		136499,
+		"--bs-offcanvas-bg",
+		136497,
 		136513,
 		{
-			"value": "bs-offcanvas-bg"
+			"value": "--bs-offcanvas-bg"
 		}
 	],
 	[
@@ -258555,30 +231420,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		136708,
-		136708,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		136709,
-		136709,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		136710,
+		"--bs-offcanvas-width",
+		136708,
 		136727,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -258621,30 +231468,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		136747,
-		136747,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		136748,
-		136748,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		136749,
+		"--bs-offcanvas-border-width",
+		136747,
 		136773,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -258687,30 +231516,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		136786,
-		136786,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		136787,
-		136787,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		136788,
+		"--bs-offcanvas-border-color",
+		136786,
 		136812,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -258910,30 +231721,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		136892,
-		136892,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		136893,
-		136893,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-width",
-		136894,
+		"--bs-offcanvas-width",
+		136892,
 		136911,
 		{
-			"value": "bs-offcanvas-width"
+			"value": "--bs-offcanvas-width"
 		}
 	],
 	[
@@ -258976,30 +231769,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		136930,
-		136930,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		136931,
-		136931,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		136932,
+		"--bs-offcanvas-border-width",
+		136930,
 		136956,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -259042,30 +231817,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		136969,
-		136969,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		136970,
-		136970,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		136971,
+		"--bs-offcanvas-border-color",
+		136969,
 		136995,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -259298,30 +232055,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		137082,
-		137082,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		137083,
-		137083,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		137084,
+		"--bs-offcanvas-height",
+		137082,
 		137102,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -259396,30 +232135,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		137139,
-		137139,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		137140,
-		137140,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		137141,
+		"--bs-offcanvas-border-width",
+		137139,
 		137165,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -259462,30 +232183,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		137178,
-		137178,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		137179,
-		137179,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		137180,
+		"--bs-offcanvas-border-color",
+		137178,
 		137204,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -259685,30 +232388,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		137289,
-		137289,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		137290,
-		137290,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-height",
-		137291,
+		"--bs-offcanvas-height",
+		137289,
 		137309,
 		{
-			"value": "bs-offcanvas-height"
+			"value": "--bs-offcanvas-height"
 		}
 	],
 	[
@@ -259783,30 +232468,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		137343,
-		137343,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		137344,
-		137344,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-width",
-		137345,
+		"--bs-offcanvas-border-width",
+		137343,
 		137369,
 		{
-			"value": "bs-offcanvas-border-width"
+			"value": "--bs-offcanvas-border-width"
 		}
 	],
 	[
@@ -259849,30 +232516,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		137382,
-		137382,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		137383,
-		137383,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-border-color",
-		137384,
+		"--bs-offcanvas-border-color",
+		137382,
 		137408,
 		{
-			"value": "bs-offcanvas-border-color"
+			"value": "--bs-offcanvas-border-color"
 		}
 	],
 	[
@@ -260813,30 +233462,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		137844,
-		137844,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		137845,
-		137845,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-padding-y",
-		137846,
+		"--bs-offcanvas-padding-y",
+		137844,
 		137867,
 		{
-			"value": "bs-offcanvas-padding-y"
+			"value": "--bs-offcanvas-padding-y"
 		}
 	],
 	[
@@ -260863,30 +233494,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		137874,
-		137874,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		137875,
-		137875,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-padding-x",
-		137876,
+		"--bs-offcanvas-padding-x",
+		137874,
 		137897,
 		{
-			"value": "bs-offcanvas-padding-x"
+			"value": "--bs-offcanvas-padding-x"
 		}
 	],
 	[
@@ -260988,30 +233601,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		137946,
-		137946,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		137947,
-		137947,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-padding-y",
-		137948,
+		"--bs-offcanvas-padding-y",
+		137946,
 		137969,
 		{
-			"value": "bs-offcanvas-padding-y"
+			"value": "--bs-offcanvas-padding-y"
 		}
 	],
 	[
@@ -261087,30 +233682,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		137987,
-		137987,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		137988,
-		137988,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-padding-x",
-		137989,
+		"--bs-offcanvas-padding-x",
+		137987,
 		138010,
 		{
-			"value": "bs-offcanvas-padding-x"
+			"value": "--bs-offcanvas-padding-x"
 		}
 	],
 	[
@@ -261235,30 +233812,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		138045,
-		138045,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		138046,
-		138046,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-padding-y",
-		138047,
+		"--bs-offcanvas-padding-y",
+		138045,
 		138068,
 		{
-			"value": "bs-offcanvas-padding-y"
+			"value": "--bs-offcanvas-padding-y"
 		}
 	],
 	[
@@ -261350,30 +233909,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		138100,
-		138100,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		138101,
-		138101,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-padding-x",
-		138102,
+		"--bs-offcanvas-padding-x",
+		138100,
 		138123,
 		{
-			"value": "bs-offcanvas-padding-x"
+			"value": "--bs-offcanvas-padding-x"
 		}
 	],
 	[
@@ -261465,30 +234006,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		138156,
-		138156,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		138157,
-		138157,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-padding-y",
-		138158,
+		"--bs-offcanvas-padding-y",
+		138156,
 		138179,
 		{
-			"value": "bs-offcanvas-padding-y"
+			"value": "--bs-offcanvas-padding-y"
 		}
 	],
 	[
@@ -261687,30 +234210,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		138272,
-		138272,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		138273,
-		138273,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-padding-y",
-		138274,
+		"--bs-offcanvas-padding-y",
+		138272,
 		138295,
 		{
-			"value": "bs-offcanvas-padding-y"
+			"value": "--bs-offcanvas-padding-y"
 		}
 	],
 	[
@@ -261737,30 +234242,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		138302,
-		138302,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		138303,
-		138303,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-offcanvas-padding-x",
-		138304,
+		"--bs-offcanvas-padding-x",
+		138302,
 		138325,
 		{
-			"value": "bs-offcanvas-padding-x"
+			"value": "--bs-offcanvas-padding-x"
 		}
 	],
 	[
@@ -262387,21 +234874,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		138653,
-		138653,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-animation",
-		138654,
+		"-webkit-animation",
+		138653,
 		138669,
 		{
-			"value": "webkit-animation"
+			"value": "-webkit-animation"
 		}
 	],
 	[
@@ -262761,21 +235239,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		138877,
-		138877,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-mask-image",
-		138878,
+		"-webkit-mask-image",
+		138877,
 		138894,
 		{
-			"value": "webkit-mask-image"
+			"value": "-webkit-mask-image"
 		}
 	],
 	[
@@ -263202,21 +235671,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		139031,
-		139031,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-mask-size",
-		139032,
+		"-webkit-mask-size",
+		139031,
 		139047,
 		{
-			"value": "webkit-mask-size"
+			"value": "-webkit-mask-size"
 		}
 	],
 	[
@@ -263307,21 +235767,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		139079,
-		139079,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-animation",
-		139080,
+		"-webkit-animation",
+		139079,
 		139095,
 		{
-			"value": "webkit-animation"
+			"value": "-webkit-animation"
 		}
 	],
 	[
@@ -263528,21 +235979,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		139220,
-		139220,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-mask-position",
-		139221,
+		"-webkit-mask-position",
+		139220,
 		139240,
 		{
-			"value": "webkit-mask-position"
+			"value": "-webkit-mask-position"
 		}
 	],
 	[
@@ -263688,21 +236130,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		139308,
-		139308,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-mask-position",
-		139309,
+		"-webkit-mask-position",
+		139308,
 		139328,
 		{
-			"value": "webkit-mask-position"
+			"value": "-webkit-mask-position"
 		}
 	],
 	[
@@ -264105,30 +236538,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		139491,
-		139491,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		139492,
-		139492,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		139493,
+		"--bs-bg-opacity",
+		139491,
 		139505,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -264349,30 +236764,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		139599,
-		139599,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		139600,
-		139600,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		139601,
+		"--bs-bg-opacity",
+		139599,
 		139613,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -264593,30 +236990,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		139703,
-		139703,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		139704,
-		139704,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		139705,
+		"--bs-bg-opacity",
+		139703,
 		139717,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -264837,30 +237216,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		139805,
-		139805,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		139806,
-		139806,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		139807,
+		"--bs-bg-opacity",
+		139805,
 		139819,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -265081,30 +237442,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		139909,
-		139909,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		139910,
-		139910,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		139911,
+		"--bs-bg-opacity",
+		139909,
 		139923,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -265325,30 +237668,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		140012,
-		140012,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		140013,
-		140013,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		140014,
+		"--bs-bg-opacity",
+		140012,
 		140026,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -265569,30 +237894,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		140116,
-		140116,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		140117,
-		140117,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		140118,
+		"--bs-bg-opacity",
+		140116,
 		140130,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -265813,30 +238120,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		140216,
-		140216,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		140217,
-		140217,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		140218,
+		"--bs-bg-opacity",
+		140216,
 		140230,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -267762,30 +240051,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		141122,
-		141122,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		141123,
-		141123,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-aspect-ratio",
-		141124,
+		"--bs-aspect-ratio",
+		141122,
 		141138,
 		{
-			"value": "bs-aspect-ratio"
+			"value": "--bs-aspect-ratio"
 		}
 	],
 	[
@@ -268065,30 +240336,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		141226,
-		141226,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		141227,
-		141227,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-aspect-ratio",
-		141228,
+		"--bs-aspect-ratio",
+		141226,
 		141242,
 		{
-			"value": "bs-aspect-ratio"
+			"value": "--bs-aspect-ratio"
 		}
 	],
 	[
@@ -268140,30 +240393,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		141260,
-		141260,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		141261,
-		141261,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-aspect-ratio",
-		141262,
+		"--bs-aspect-ratio",
+		141260,
 		141276,
 		{
-			"value": "bs-aspect-ratio"
+			"value": "--bs-aspect-ratio"
 		}
 	],
 	[
@@ -268215,30 +240450,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		141294,
-		141294,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		141295,
-		141295,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-aspect-ratio",
-		141296,
+		"--bs-aspect-ratio",
+		141294,
 		141310,
 		{
-			"value": "bs-aspect-ratio"
+			"value": "--bs-aspect-ratio"
 		}
 	],
 	[
@@ -268290,30 +240507,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		141331,
-		141331,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		141332,
-		141332,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-aspect-ratio",
-		141333,
+		"--bs-aspect-ratio",
+		141331,
 		141347,
 		{
-			"value": "bs-aspect-ratio"
+			"value": "--bs-aspect-ratio"
 		}
 	],
 	[
@@ -268759,21 +240958,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		141511,
-		141511,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		141512,
+		"-webkit-sticky",
+		141511,
 		141524,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -268923,21 +241113,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		141585,
-		141585,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		141586,
+		"-webkit-sticky",
+		141585,
 		141598,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -269151,21 +241332,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		141687,
-		141687,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		141688,
+		"-webkit-sticky",
+		141687,
 		141700,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -269315,21 +241487,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		141764,
-		141764,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		141765,
+		"-webkit-sticky",
+		141764,
 		141777,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -269550,21 +241713,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		141867,
-		141867,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		141868,
+		"-webkit-sticky",
+		141867,
 		141880,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -269714,21 +241868,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		141944,
-		141944,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		141945,
+		"-webkit-sticky",
+		141944,
 		141957,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -269949,21 +242094,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		142047,
-		142047,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		142048,
+		"-webkit-sticky",
+		142047,
 		142060,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -270113,21 +242249,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		142124,
-		142124,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		142125,
+		"-webkit-sticky",
+		142124,
 		142137,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -270348,21 +242475,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		142228,
-		142228,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		142229,
+		"-webkit-sticky",
+		142228,
 		142241,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -270512,21 +242630,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		142305,
-		142305,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		142306,
+		"-webkit-sticky",
+		142305,
 		142318,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -270747,21 +242856,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		142410,
-		142410,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		142411,
+		"-webkit-sticky",
+		142410,
 		142423,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -270911,21 +243011,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		142488,
-		142488,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		142489,
+		"-webkit-sticky",
+		142488,
 		142501,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -275764,21 +247855,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		144782,
-		144782,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-sticky",
-		144783,
+		"-webkit-sticky",
+		144782,
 		144795,
 		{
-			"value": "webkit-sticky"
+			"value": "-webkit-sticky"
 		}
 	],
 	[
@@ -277100,30 +249182,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145366,
-		145366,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145367,
-		145367,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-width",
-		145368,
+		"--bs-border-width",
+		145366,
 		145382,
 		{
-			"value": "bs-border-width"
+			"value": "--bs-border-width"
 		}
 	],
 	[
@@ -277150,30 +249214,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145389,
-		145389,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145390,
-		145390,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-style",
-		145391,
+		"--bs-border-style",
+		145389,
 		145405,
 		{
-			"value": "bs-border-style"
+			"value": "--bs-border-style"
 		}
 	],
 	[
@@ -277200,30 +249246,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145412,
-		145412,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145413,
-		145413,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color",
-		145414,
+		"--bs-border-color",
+		145412,
 		145428,
 		{
-			"value": "bs-border-color"
+			"value": "--bs-border-color"
 		}
 	],
 	[
@@ -277385,30 +249413,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145497,
-		145497,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145498,
-		145498,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-width",
-		145499,
+		"--bs-border-width",
+		145497,
 		145513,
 		{
-			"value": "bs-border-width"
+			"value": "--bs-border-width"
 		}
 	],
 	[
@@ -277435,30 +249445,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145520,
-		145520,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145521,
-		145521,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-style",
-		145522,
+		"--bs-border-style",
+		145520,
 		145536,
 		{
-			"value": "bs-border-style"
+			"value": "--bs-border-style"
 		}
 	],
 	[
@@ -277485,30 +249477,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145543,
-		145543,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145544,
-		145544,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color",
-		145545,
+		"--bs-border-color",
+		145543,
 		145559,
 		{
-			"value": "bs-border-color"
+			"value": "--bs-border-color"
 		}
 	],
 	[
@@ -277670,30 +249644,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145638,
-		145638,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145639,
-		145639,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-width",
-		145640,
+		"--bs-border-width",
+		145638,
 		145654,
 		{
-			"value": "bs-border-width"
+			"value": "--bs-border-width"
 		}
 	],
 	[
@@ -277720,30 +249676,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145661,
-		145661,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145662,
-		145662,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-style",
-		145663,
+		"--bs-border-style",
+		145661,
 		145677,
 		{
-			"value": "bs-border-style"
+			"value": "--bs-border-style"
 		}
 	],
 	[
@@ -277770,30 +249708,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145684,
-		145684,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145685,
-		145685,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color",
-		145686,
+		"--bs-border-color",
+		145684,
 		145700,
 		{
-			"value": "bs-border-color"
+			"value": "--bs-border-color"
 		}
 	],
 	[
@@ -277955,30 +249875,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145785,
-		145785,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145786,
-		145786,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-width",
-		145787,
+		"--bs-border-width",
+		145785,
 		145801,
 		{
-			"value": "bs-border-width"
+			"value": "--bs-border-width"
 		}
 	],
 	[
@@ -278005,30 +249907,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145808,
-		145808,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145809,
-		145809,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-style",
-		145810,
+		"--bs-border-style",
+		145808,
 		145824,
 		{
-			"value": "bs-border-style"
+			"value": "--bs-border-style"
 		}
 	],
 	[
@@ -278055,30 +249939,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145831,
-		145831,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145832,
-		145832,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color",
-		145833,
+		"--bs-border-color",
+		145831,
 		145847,
 		{
-			"value": "bs-border-color"
+			"value": "--bs-border-color"
 		}
 	],
 	[
@@ -278240,30 +250106,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145933,
-		145933,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145934,
-		145934,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-width",
-		145935,
+		"--bs-border-width",
+		145933,
 		145949,
 		{
-			"value": "bs-border-width"
+			"value": "--bs-border-width"
 		}
 	],
 	[
@@ -278290,30 +250138,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145956,
-		145956,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145957,
-		145957,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-style",
-		145958,
+		"--bs-border-style",
+		145956,
 		145972,
 		{
-			"value": "bs-border-style"
+			"value": "--bs-border-style"
 		}
 	],
 	[
@@ -278340,30 +250170,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		145979,
-		145979,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		145980,
-		145980,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-color",
-		145981,
+		"--bs-border-color",
+		145979,
 		145995,
 		{
-			"value": "bs-border-color"
+			"value": "--bs-border-color"
 		}
 	],
 	[
@@ -278500,30 +250312,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		146064,
-		146064,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146065,
-		146065,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146066,
+		"--bs-border-opacity",
+		146064,
 		146082,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -278585,30 +250379,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146108,
-		146108,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146109,
-		146109,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-primary-rgb",
-		146110,
+		"--bs-primary-rgb",
+		146108,
 		146123,
 		{
-			"value": "bs-primary-rgb"
+			"value": "--bs-primary-rgb"
 		}
 	],
 	[
@@ -278635,30 +250411,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146130,
-		146130,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146131,
-		146131,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146132,
+		"--bs-border-opacity",
+		146130,
 		146148,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -278726,30 +250484,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		146180,
-		146180,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146181,
-		146181,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146182,
+		"--bs-border-opacity",
+		146180,
 		146198,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -278811,30 +250551,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146224,
-		146224,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146225,
-		146225,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-secondary-rgb",
-		146226,
+		"--bs-secondary-rgb",
+		146224,
 		146241,
 		{
-			"value": "bs-secondary-rgb"
+			"value": "--bs-secondary-rgb"
 		}
 	],
 	[
@@ -278861,30 +250583,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146248,
-		146248,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146249,
-		146249,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146250,
+		"--bs-border-opacity",
+		146248,
 		146266,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -278952,30 +250656,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		146296,
-		146296,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146297,
-		146297,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146298,
+		"--bs-border-opacity",
+		146296,
 		146314,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -279037,30 +250723,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146340,
-		146340,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146341,
-		146341,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-success-rgb",
-		146342,
+		"--bs-success-rgb",
+		146340,
 		146355,
 		{
-			"value": "bs-success-rgb"
+			"value": "--bs-success-rgb"
 		}
 	],
 	[
@@ -279087,30 +250755,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146362,
-		146362,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146363,
-		146363,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146364,
+		"--bs-border-opacity",
+		146362,
 		146380,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -279178,30 +250828,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		146407,
-		146407,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146408,
-		146408,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146409,
+		"--bs-border-opacity",
+		146407,
 		146425,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -279263,30 +250895,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146451,
-		146451,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146452,
-		146452,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-info-rgb",
-		146453,
+		"--bs-info-rgb",
+		146451,
 		146463,
 		{
-			"value": "bs-info-rgb"
+			"value": "--bs-info-rgb"
 		}
 	],
 	[
@@ -279313,30 +250927,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146470,
-		146470,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146471,
-		146471,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146472,
+		"--bs-border-opacity",
+		146470,
 		146488,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -279404,30 +251000,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		146518,
-		146518,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146519,
-		146519,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146520,
+		"--bs-border-opacity",
+		146518,
 		146536,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -279489,30 +251067,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146562,
-		146562,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146563,
-		146563,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-warning-rgb",
-		146564,
+		"--bs-warning-rgb",
+		146562,
 		146577,
 		{
-			"value": "bs-warning-rgb"
+			"value": "--bs-warning-rgb"
 		}
 	],
 	[
@@ -279539,30 +251099,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146584,
-		146584,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146585,
-		146585,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146586,
+		"--bs-border-opacity",
+		146584,
 		146602,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -279630,30 +251172,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		146631,
-		146631,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146632,
-		146632,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146633,
+		"--bs-border-opacity",
+		146631,
 		146649,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -279715,30 +251239,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146675,
-		146675,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146676,
-		146676,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-danger-rgb",
-		146677,
+		"--bs-danger-rgb",
+		146675,
 		146689,
 		{
-			"value": "bs-danger-rgb"
+			"value": "--bs-danger-rgb"
 		}
 	],
 	[
@@ -279765,30 +251271,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146696,
-		146696,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146697,
-		146697,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146698,
+		"--bs-border-opacity",
+		146696,
 		146714,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -279856,30 +251344,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		146742,
-		146742,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146743,
-		146743,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146744,
+		"--bs-border-opacity",
+		146742,
 		146760,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -279941,30 +251411,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146786,
-		146786,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146787,
-		146787,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-light-rgb",
-		146788,
+		"--bs-light-rgb",
+		146786,
 		146799,
 		{
-			"value": "bs-light-rgb"
+			"value": "--bs-light-rgb"
 		}
 	],
 	[
@@ -279991,30 +251443,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146806,
-		146806,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146807,
-		146807,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146808,
+		"--bs-border-opacity",
+		146806,
 		146824,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -280082,30 +251516,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		146851,
-		146851,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146852,
-		146852,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146853,
+		"--bs-border-opacity",
+		146851,
 		146869,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -280167,30 +251583,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146895,
-		146895,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146896,
-		146896,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dark-rgb",
-		146897,
+		"--bs-dark-rgb",
+		146895,
 		146907,
 		{
-			"value": "bs-dark-rgb"
+			"value": "--bs-dark-rgb"
 		}
 	],
 	[
@@ -280217,30 +251615,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		146914,
-		146914,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146915,
-		146915,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146916,
+		"--bs-border-opacity",
+		146914,
 		146932,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -280308,30 +251688,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		146960,
-		146960,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		146961,
-		146961,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		146962,
+		"--bs-border-opacity",
+		146960,
 		146978,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -280393,30 +251755,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		147004,
-		147004,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		147005,
-		147005,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-white-rgb",
-		147006,
+		"--bs-white-rgb",
+		147004,
 		147017,
 		{
-			"value": "bs-white-rgb"
+			"value": "--bs-white-rgb"
 		}
 	],
 	[
@@ -280443,30 +251787,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		147024,
-		147024,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		147025,
-		147025,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		147026,
+		"--bs-border-opacity",
+		147024,
 		147042,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -280534,30 +251860,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		147066,
-		147066,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		147067,
-		147067,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-width",
-		147068,
+		"--bs-border-width",
+		147066,
 		147082,
 		{
-			"value": "bs-border-width"
+			"value": "--bs-border-width"
 		}
 	],
 	[
@@ -280611,30 +251919,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		147098,
-		147098,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		147099,
-		147099,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-width",
-		147100,
+		"--bs-border-width",
+		147098,
 		147114,
 		{
-			"value": "bs-border-width"
+			"value": "--bs-border-width"
 		}
 	],
 	[
@@ -280688,30 +251978,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		147130,
-		147130,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		147131,
-		147131,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-width",
-		147132,
+		"--bs-border-width",
+		147130,
 		147146,
 		{
-			"value": "bs-border-width"
+			"value": "--bs-border-width"
 		}
 	],
 	[
@@ -280765,30 +252037,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		147162,
-		147162,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		147163,
-		147163,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-width",
-		147164,
+		"--bs-border-width",
+		147162,
 		147178,
 		{
-			"value": "bs-border-width"
+			"value": "--bs-border-width"
 		}
 	],
 	[
@@ -280842,30 +252096,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		147194,
-		147194,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		147195,
-		147195,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-width",
-		147196,
+		"--bs-border-width",
+		147194,
 		147210,
 		{
-			"value": "bs-border-width"
+			"value": "--bs-border-width"
 		}
 	],
 	[
@@ -280919,30 +252155,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		147235,
-		147235,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		147236,
-		147236,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		147237,
+		"--bs-border-opacity",
+		147235,
 		147253,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -280995,30 +252213,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		147278,
-		147278,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		147279,
-		147279,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		147280,
+		"--bs-border-opacity",
+		147278,
 		147296,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -281071,30 +252271,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		147322,
-		147322,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		147323,
-		147323,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		147324,
+		"--bs-border-opacity",
+		147322,
 		147340,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -281147,30 +252329,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		147365,
-		147365,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		147366,
-		147366,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		147367,
+		"--bs-border-opacity",
+		147365,
 		147383,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -281223,30 +252387,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		147410,
-		147410,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		147411,
-		147411,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-opacity",
-		147412,
+		"--bs-border-opacity",
+		147410,
 		147428,
 		{
-			"value": "bs-border-opacity"
+			"value": "--bs-border-opacity"
 		}
 	],
 	[
@@ -294587,30 +265733,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		153866,
-		153866,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		153867,
-		153867,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-font-monospace",
-		153868,
+		"--bs-font-monospace",
+		153866,
 		153884,
 		{
-			"value": "bs-font-monospace"
+			"value": "--bs-font-monospace"
 		}
 	],
 	[
@@ -297191,30 +268319,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		155219,
-		155219,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155220,
-		155220,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155221,
+		"--bs-text-opacity",
+		155219,
 		155235,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -297276,30 +268386,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155254,
-		155254,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155255,
-		155255,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-primary-rgb",
-		155256,
+		"--bs-primary-rgb",
+		155254,
 		155269,
 		{
-			"value": "bs-primary-rgb"
+			"value": "--bs-primary-rgb"
 		}
 	],
 	[
@@ -297326,30 +268418,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155276,
-		155276,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155277,
-		155277,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155278,
+		"--bs-text-opacity",
+		155276,
 		155292,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -297417,30 +268491,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		155322,
-		155322,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155323,
-		155323,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155324,
+		"--bs-text-opacity",
+		155322,
 		155338,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -297502,30 +268558,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155357,
-		155357,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155358,
-		155358,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-secondary-rgb",
-		155359,
+		"--bs-secondary-rgb",
+		155357,
 		155374,
 		{
-			"value": "bs-secondary-rgb"
+			"value": "--bs-secondary-rgb"
 		}
 	],
 	[
@@ -297552,30 +268590,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155381,
-		155381,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155382,
-		155382,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155383,
+		"--bs-text-opacity",
+		155381,
 		155397,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -297643,30 +268663,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		155425,
-		155425,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155426,
-		155426,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155427,
+		"--bs-text-opacity",
+		155425,
 		155441,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -297728,30 +268730,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155460,
-		155460,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155461,
-		155461,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-success-rgb",
-		155462,
+		"--bs-success-rgb",
+		155460,
 		155475,
 		{
-			"value": "bs-success-rgb"
+			"value": "--bs-success-rgb"
 		}
 	],
 	[
@@ -297778,30 +268762,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155482,
-		155482,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155483,
-		155483,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155484,
+		"--bs-text-opacity",
+		155482,
 		155498,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -297869,30 +268835,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		155523,
-		155523,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155524,
-		155524,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155525,
+		"--bs-text-opacity",
+		155523,
 		155539,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -297954,30 +268902,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155558,
-		155558,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155559,
-		155559,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-info-rgb",
-		155560,
+		"--bs-info-rgb",
+		155558,
 		155570,
 		{
-			"value": "bs-info-rgb"
+			"value": "--bs-info-rgb"
 		}
 	],
 	[
@@ -298004,30 +268934,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155577,
-		155577,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155578,
-		155578,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155579,
+		"--bs-text-opacity",
+		155577,
 		155593,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -298095,30 +269007,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		155621,
-		155621,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155622,
-		155622,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155623,
+		"--bs-text-opacity",
+		155621,
 		155637,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -298180,30 +269074,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155656,
-		155656,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155657,
-		155657,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-warning-rgb",
-		155658,
+		"--bs-warning-rgb",
+		155656,
 		155671,
 		{
-			"value": "bs-warning-rgb"
+			"value": "--bs-warning-rgb"
 		}
 	],
 	[
@@ -298230,30 +269106,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155678,
-		155678,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155679,
-		155679,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155680,
+		"--bs-text-opacity",
+		155678,
 		155694,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -298321,30 +269179,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		155721,
-		155721,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155722,
-		155722,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155723,
+		"--bs-text-opacity",
+		155721,
 		155737,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -298406,30 +269246,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155756,
-		155756,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155757,
-		155757,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-danger-rgb",
-		155758,
+		"--bs-danger-rgb",
+		155756,
 		155770,
 		{
-			"value": "bs-danger-rgb"
+			"value": "--bs-danger-rgb"
 		}
 	],
 	[
@@ -298456,30 +269278,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155777,
-		155777,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155778,
-		155778,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155779,
+		"--bs-text-opacity",
+		155777,
 		155793,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -298547,30 +269351,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		155819,
-		155819,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155820,
-		155820,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155821,
+		"--bs-text-opacity",
+		155819,
 		155835,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -298632,30 +269418,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155854,
-		155854,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155855,
-		155855,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-light-rgb",
-		155856,
+		"--bs-light-rgb",
+		155854,
 		155867,
 		{
-			"value": "bs-light-rgb"
+			"value": "--bs-light-rgb"
 		}
 	],
 	[
@@ -298682,30 +269450,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155874,
-		155874,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155875,
-		155875,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155876,
+		"--bs-text-opacity",
+		155874,
 		155890,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -298773,30 +269523,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		155915,
-		155915,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155916,
-		155916,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155917,
+		"--bs-text-opacity",
+		155915,
 		155931,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -298858,30 +269590,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155950,
-		155950,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155951,
-		155951,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dark-rgb",
-		155952,
+		"--bs-dark-rgb",
+		155950,
 		155962,
 		{
-			"value": "bs-dark-rgb"
+			"value": "--bs-dark-rgb"
 		}
 	],
 	[
@@ -298908,30 +269622,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		155969,
-		155969,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		155970,
-		155970,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		155971,
+		"--bs-text-opacity",
+		155969,
 		155985,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -298999,30 +269695,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156011,
-		156011,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156012,
-		156012,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156013,
+		"--bs-text-opacity",
+		156011,
 		156027,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -299084,30 +269762,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		156046,
-		156046,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156047,
-		156047,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-black-rgb",
-		156048,
+		"--bs-black-rgb",
+		156046,
 		156059,
 		{
-			"value": "bs-black-rgb"
+			"value": "--bs-black-rgb"
 		}
 	],
 	[
@@ -299134,30 +269794,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		156066,
-		156066,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156067,
-		156067,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156068,
+		"--bs-text-opacity",
+		156066,
 		156082,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -299225,30 +269867,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156108,
-		156108,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156109,
-		156109,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156110,
+		"--bs-text-opacity",
+		156108,
 		156124,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -299310,30 +269934,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		156143,
-		156143,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156144,
-		156144,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-white-rgb",
-		156145,
+		"--bs-white-rgb",
+		156143,
 		156156,
 		{
-			"value": "bs-white-rgb"
+			"value": "--bs-white-rgb"
 		}
 	],
 	[
@@ -299360,30 +269966,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		156163,
-		156163,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156164,
-		156164,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156165,
+		"--bs-text-opacity",
+		156163,
 		156179,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -299451,30 +270039,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156204,
-		156204,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156205,
-		156205,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156206,
+		"--bs-text-opacity",
+		156204,
 		156220,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -299536,30 +270106,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		156239,
-		156239,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156240,
-		156240,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-color-rgb",
-		156241,
+		"--bs-body-color-rgb",
+		156239,
 		156257,
 		{
-			"value": "bs-body-color-rgb"
+			"value": "--bs-body-color-rgb"
 		}
 	],
 	[
@@ -299586,30 +270138,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		156264,
-		156264,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156265,
-		156265,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156266,
+		"--bs-text-opacity",
+		156264,
 		156280,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -299677,30 +270211,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156306,
-		156306,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156307,
-		156307,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156308,
+		"--bs-text-opacity",
+		156306,
 		156322,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -299804,30 +270320,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156365,
-		156365,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156366,
-		156366,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156367,
+		"--bs-text-opacity",
+		156365,
 		156381,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -299998,30 +270496,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156431,
-		156431,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156432,
-		156432,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156433,
+		"--bs-text-opacity",
+		156431,
 		156447,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -300192,30 +270672,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156500,
-		156500,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156501,
-		156501,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156502,
+		"--bs-text-opacity",
+		156500,
 		156516,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -300318,30 +270780,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156561,
-		156561,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156562,
-		156562,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156563,
+		"--bs-text-opacity",
+		156561,
 		156577,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -300394,30 +270838,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156601,
-		156601,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156602,
-		156602,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156603,
+		"--bs-text-opacity",
+		156601,
 		156617,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -300470,30 +270896,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156640,
-		156640,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156641,
-		156641,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156642,
+		"--bs-text-opacity",
+		156640,
 		156656,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -300546,30 +270954,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156681,
-		156681,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156682,
-		156682,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-text-opacity",
-		156683,
+		"--bs-text-opacity",
+		156681,
 		156697,
 		{
-			"value": "bs-text-opacity"
+			"value": "--bs-text-opacity"
 		}
 	],
 	[
@@ -300622,30 +271012,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156713,
-		156713,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156714,
-		156714,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		156715,
+		"--bs-bg-opacity",
+		156713,
 		156727,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -300707,30 +271079,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		156757,
-		156757,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156758,
-		156758,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-primary-rgb",
-		156759,
+		"--bs-primary-rgb",
+		156757,
 		156772,
 		{
-			"value": "bs-primary-rgb"
+			"value": "--bs-primary-rgb"
 		}
 	],
 	[
@@ -300757,30 +271111,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		156779,
-		156779,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156780,
-		156780,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		156781,
+		"--bs-bg-opacity",
+		156779,
 		156793,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -300848,30 +271184,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156821,
-		156821,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156822,
-		156822,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		156823,
+		"--bs-bg-opacity",
+		156821,
 		156835,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -300933,30 +271251,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		156865,
-		156865,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156866,
-		156866,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-secondary-rgb",
-		156867,
+		"--bs-secondary-rgb",
+		156865,
 		156882,
 		{
-			"value": "bs-secondary-rgb"
+			"value": "--bs-secondary-rgb"
 		}
 	],
 	[
@@ -300983,30 +271283,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		156889,
-		156889,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156890,
-		156890,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		156891,
+		"--bs-bg-opacity",
+		156889,
 		156903,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -301074,30 +271356,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		156929,
-		156929,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156930,
-		156930,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		156931,
+		"--bs-bg-opacity",
+		156929,
 		156943,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -301159,30 +271423,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		156973,
-		156973,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156974,
-		156974,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-success-rgb",
-		156975,
+		"--bs-success-rgb",
+		156973,
 		156988,
 		{
-			"value": "bs-success-rgb"
+			"value": "--bs-success-rgb"
 		}
 	],
 	[
@@ -301209,30 +271455,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		156995,
-		156995,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		156996,
-		156996,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		156997,
+		"--bs-bg-opacity",
+		156995,
 		157009,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -301300,30 +271528,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		157032,
-		157032,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157033,
-		157033,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157034,
+		"--bs-bg-opacity",
+		157032,
 		157046,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -301385,30 +271595,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157076,
-		157076,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157077,
-		157077,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-info-rgb",
-		157078,
+		"--bs-info-rgb",
+		157076,
 		157088,
 		{
-			"value": "bs-info-rgb"
+			"value": "--bs-info-rgb"
 		}
 	],
 	[
@@ -301435,30 +271627,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157095,
-		157095,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157096,
-		157096,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157097,
+		"--bs-bg-opacity",
+		157095,
 		157109,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -301526,30 +271700,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		157135,
-		157135,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157136,
-		157136,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157137,
+		"--bs-bg-opacity",
+		157135,
 		157149,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -301611,30 +271767,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157179,
-		157179,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157180,
-		157180,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-warning-rgb",
-		157181,
+		"--bs-warning-rgb",
+		157179,
 		157194,
 		{
-			"value": "bs-warning-rgb"
+			"value": "--bs-warning-rgb"
 		}
 	],
 	[
@@ -301661,30 +271799,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157201,
-		157201,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157202,
-		157202,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157203,
+		"--bs-bg-opacity",
+		157201,
 		157215,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -301752,30 +271872,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		157240,
-		157240,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157241,
-		157241,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157242,
+		"--bs-bg-opacity",
+		157240,
 		157254,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -301837,30 +271939,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157284,
-		157284,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157285,
-		157285,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-danger-rgb",
-		157286,
+		"--bs-danger-rgb",
+		157284,
 		157298,
 		{
-			"value": "bs-danger-rgb"
+			"value": "--bs-danger-rgb"
 		}
 	],
 	[
@@ -301887,30 +271971,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157305,
-		157305,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157306,
-		157306,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157307,
+		"--bs-bg-opacity",
+		157305,
 		157319,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -301978,30 +272044,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		157343,
-		157343,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157344,
-		157344,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157345,
+		"--bs-bg-opacity",
+		157343,
 		157357,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -302063,30 +272111,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157387,
-		157387,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157388,
-		157388,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-light-rgb",
-		157389,
+		"--bs-light-rgb",
+		157387,
 		157400,
 		{
-			"value": "bs-light-rgb"
+			"value": "--bs-light-rgb"
 		}
 	],
 	[
@@ -302113,30 +272143,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157407,
-		157407,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157408,
-		157408,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157409,
+		"--bs-bg-opacity",
+		157407,
 		157421,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -302204,30 +272216,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		157444,
-		157444,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157445,
-		157445,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157446,
+		"--bs-bg-opacity",
+		157444,
 		157458,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -302289,30 +272283,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157488,
-		157488,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157489,
-		157489,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-dark-rgb",
-		157490,
+		"--bs-dark-rgb",
+		157488,
 		157500,
 		{
-			"value": "bs-dark-rgb"
+			"value": "--bs-dark-rgb"
 		}
 	],
 	[
@@ -302339,30 +272315,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157507,
-		157507,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157508,
-		157508,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157509,
+		"--bs-bg-opacity",
+		157507,
 		157521,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -302430,30 +272388,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		157545,
-		157545,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157546,
-		157546,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157547,
+		"--bs-bg-opacity",
+		157545,
 		157559,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -302515,30 +272455,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157589,
-		157589,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157590,
-		157590,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-black-rgb",
-		157591,
+		"--bs-black-rgb",
+		157589,
 		157602,
 		{
-			"value": "bs-black-rgb"
+			"value": "--bs-black-rgb"
 		}
 	],
 	[
@@ -302565,30 +272487,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157609,
-		157609,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157610,
-		157610,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157611,
+		"--bs-bg-opacity",
+		157609,
 		157623,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -302656,30 +272560,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		157647,
-		157647,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157648,
-		157648,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157649,
+		"--bs-bg-opacity",
+		157647,
 		157661,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -302741,30 +272627,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157691,
-		157691,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157692,
-		157692,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-white-rgb",
-		157693,
+		"--bs-white-rgb",
+		157691,
 		157704,
 		{
-			"value": "bs-white-rgb"
+			"value": "--bs-white-rgb"
 		}
 	],
 	[
@@ -302791,30 +272659,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157711,
-		157711,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157712,
-		157712,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157713,
+		"--bs-bg-opacity",
+		157711,
 		157725,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -302882,30 +272732,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		157748,
-		157748,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157749,
-		157749,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157750,
+		"--bs-bg-opacity",
+		157748,
 		157762,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -302967,30 +272799,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157792,
-		157792,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157793,
-		157793,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-body-bg-rgb",
-		157794,
+		"--bs-body-bg-rgb",
+		157792,
 		157807,
 		{
-			"value": "bs-body-bg-rgb"
+			"value": "--bs-body-bg-rgb"
 		}
 	],
 	[
@@ -303017,30 +272831,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		157814,
-		157814,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157815,
-		157815,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157816,
+		"--bs-bg-opacity",
+		157814,
 		157828,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -303108,30 +272904,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		157858,
-		157858,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157859,
-		157859,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157860,
+		"--bs-bg-opacity",
+		157858,
 		157872,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -303234,30 +273012,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		157930,
-		157930,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157931,
-		157931,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157932,
+		"--bs-bg-opacity",
+		157930,
 		157944,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -303310,30 +273070,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		157965,
-		157965,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		157966,
-		157966,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		157967,
+		"--bs-bg-opacity",
+		157965,
 		157979,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -303386,30 +273128,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		158001,
-		158001,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		158002,
-		158002,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		158003,
+		"--bs-bg-opacity",
+		158001,
 		158015,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -303462,30 +273186,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		158036,
-		158036,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		158037,
-		158037,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		158038,
+		"--bs-bg-opacity",
+		158036,
 		158050,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -303538,30 +273244,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		158073,
-		158073,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		158074,
-		158074,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-bg-opacity",
-		158075,
+		"--bs-bg-opacity",
+		158073,
 		158087,
 		{
-			"value": "bs-bg-opacity"
+			"value": "--bs-bg-opacity"
 		}
 	],
 	[
@@ -303639,30 +273327,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		158125,
-		158125,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		158126,
-		158126,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-gradient",
-		158127,
+		"--bs-gradient",
+		158125,
 		158137,
 		{
-			"value": "bs-gradient"
+			"value": "--bs-gradient"
 		}
 	],
 	[
@@ -303723,21 +273393,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		158167,
-		158167,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-user-select",
-		158168,
+		"-webkit-user-select",
+		158167,
 		158185,
 		{
-			"value": "webkit-user-select"
+			"value": "-webkit-user-select"
 		}
 	],
 	[
@@ -303782,21 +273443,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		158201,
-		158201,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-user-select",
-		158202,
+		"-moz-user-select",
+		158201,
 		158216,
 		{
-			"value": "moz-user-select"
+			"value": "-moz-user-select"
 		}
 	],
 	[
@@ -303916,21 +273568,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		158276,
-		158276,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-user-select",
-		158277,
+		"-webkit-user-select",
+		158276,
 		158294,
 		{
-			"value": "webkit-user-select"
+			"value": "-webkit-user-select"
 		}
 	],
 	[
@@ -303975,21 +273618,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		158311,
-		158311,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-user-select",
-		158312,
+		"-moz-user-select",
+		158311,
 		158326,
 		{
-			"value": "moz-user-select"
+			"value": "-moz-user-select"
 		}
 	],
 	[
@@ -304109,21 +273743,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		158388,
-		158388,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"webkit-user-select",
-		158389,
+		"-webkit-user-select",
+		158388,
 		158406,
 		{
-			"value": "webkit-user-select"
+			"value": "-webkit-user-select"
 		}
 	],
 	[
@@ -304168,21 +273793,12 @@ export const bootstrapTokens = [
 		null
 	],
 	[
-		"delim-token",
-		"-",
-		158423,
-		158423,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"moz-user-select",
-		158424,
+		"-moz-user-select",
+		158423,
 		158438,
 		{
-			"value": "moz-user-select"
+			"value": "-moz-user-select"
 		}
 	],
 	[
@@ -304477,30 +274093,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		158587,
-		158587,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		158588,
-		158588,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius",
-		158589,
+		"--bs-border-radius",
+		158587,
 		158604,
 		{
-			"value": "bs-border-radius"
+			"value": "--bs-border-radius"
 		}
 	],
 	[
@@ -304662,30 +274260,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		158683,
-		158683,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		158684,
-		158684,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius-sm",
-		158685,
+		"--bs-border-radius-sm",
+		158683,
 		158703,
 		{
-			"value": "bs-border-radius-sm"
+			"value": "--bs-border-radius-sm"
 		}
 	],
 	[
@@ -304771,30 +274351,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		158745,
-		158745,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		158746,
-		158746,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius",
-		158747,
+		"--bs-border-radius",
+		158745,
 		158762,
 		{
-			"value": "bs-border-radius"
+			"value": "--bs-border-radius"
 		}
 	],
 	[
@@ -304880,30 +274442,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		158804,
-		158804,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		158805,
-		158805,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius-lg",
-		158806,
+		"--bs-border-radius-lg",
+		158804,
 		158824,
 		{
-			"value": "bs-border-radius-lg"
+			"value": "--bs-border-radius-lg"
 		}
 	],
 	[
@@ -304989,30 +274533,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		158866,
-		158866,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		158867,
-		158867,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius-xl",
-		158868,
+		"--bs-border-radius-xl",
+		158866,
 		158886,
 		{
-			"value": "bs-border-radius-xl"
+			"value": "--bs-border-radius-xl"
 		}
 	],
 	[
@@ -305098,30 +274624,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		158928,
-		158928,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		158929,
-		158929,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius-2xl",
-		158930,
+		"--bs-border-radius-2xl",
+		158928,
 		158949,
 		{
-			"value": "bs-border-radius-2xl"
+			"value": "--bs-border-radius-2xl"
 		}
 	],
 	[
@@ -305282,30 +274790,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		159038,
-		159038,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		159039,
-		159039,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius-pill",
-		159040,
+		"--bs-border-radius-pill",
+		159038,
 		159060,
 		{
-			"value": "bs-border-radius-pill"
+			"value": "--bs-border-radius-pill"
 		}
 	],
 	[
@@ -305391,30 +274881,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		159113,
-		159113,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		159114,
-		159114,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius",
-		159115,
+		"--bs-border-radius",
+		159113,
 		159130,
 		{
-			"value": "bs-border-radius"
+			"value": "--bs-border-radius"
 		}
 	],
 	[
@@ -305475,30 +274947,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		159171,
-		159171,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		159172,
-		159172,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius",
-		159173,
+		"--bs-border-radius",
+		159171,
 		159188,
 		{
-			"value": "bs-border-radius"
+			"value": "--bs-border-radius"
 		}
 	],
 	[
@@ -305584,30 +275038,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		159242,
-		159242,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		159243,
-		159243,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius",
-		159244,
+		"--bs-border-radius",
+		159242,
 		159259,
 		{
-			"value": "bs-border-radius"
+			"value": "--bs-border-radius"
 		}
 	],
 	[
@@ -305668,30 +275104,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		159303,
-		159303,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		159304,
-		159304,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius",
-		159305,
+		"--bs-border-radius",
+		159303,
 		159320,
 		{
-			"value": "bs-border-radius"
+			"value": "--bs-border-radius"
 		}
 	],
 	[
@@ -305777,30 +275195,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		159380,
-		159380,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		159381,
-		159381,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius",
-		159382,
+		"--bs-border-radius",
+		159380,
 		159397,
 		{
-			"value": "bs-border-radius"
+			"value": "--bs-border-radius"
 		}
 	],
 	[
@@ -305861,30 +275261,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		159440,
-		159440,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		159441,
-		159441,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius",
-		159442,
+		"--bs-border-radius",
+		159440,
 		159457,
 		{
-			"value": "bs-border-radius"
+			"value": "--bs-border-radius"
 		}
 	],
 	[
@@ -305970,30 +275352,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		159515,
-		159515,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		159516,
-		159516,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius",
-		159517,
+		"--bs-border-radius",
+		159515,
 		159532,
 		{
-			"value": "bs-border-radius"
+			"value": "--bs-border-radius"
 		}
 	],
 	[
@@ -306054,30 +275418,12 @@ export const bootstrapTokens = [
 		}
 	],
 	[
-		"delim-token",
-		"-",
-		159572,
-		159572,
-		{
-			"value": "-"
-		}
-	],
-	[
-		"delim-token",
-		"-",
-		159573,
-		159573,
-		{
-			"value": "-"
-		}
-	],
-	[
 		"ident-token",
-		"bs-border-radius",
-		159574,
+		"--bs-border-radius",
+		159572,
 		159589,
 		{
-			"value": "bs-border-radius"
+			"value": "--bs-border-radius"
 		}
 	],
 	[

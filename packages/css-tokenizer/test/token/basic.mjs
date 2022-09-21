@@ -175,8 +175,8 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 
 {
 	const t = tokenizer({
-		css: '@media screen and ((min-width: 200px) and (foo: "\\A9\
- bar") and (fancy(baz))) {}',
+		css: `@media screen and ((min-width: 200px) and (foo: "\\A9\\
+bar") and (fancy(baz))) {}`,
 	});
 
 	assert.deepEqual(
@@ -208,20 +208,20 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 			['ident-token', 'foo', 43, 45, { value: 'foo' }],
 			['colon-token', ':', 46, 46, undefined],
 			['whitespace-token', ' ', 47, 47, undefined],
-			['string-token', '"\\A9 bar"', 48, 56, { value: '©bar' }],
-			[')-token', ')', 57, 57, undefined],
-			['whitespace-token', ' ', 58, 58, undefined],
-			['ident-token', 'and', 59, 61, { value: 'and' }],
-			['whitespace-token', ' ', 62, 62, undefined],
-			['(-token', '(', 63, 63, undefined],
-			['function-token', 'fancy(', 64, 69, { value: 'fancy' }],
-			['ident-token', 'baz', 70, 72, { value: 'baz' }],
-			[')-token', ')', 73, 73, undefined],
+			['string-token', '"\\A9\\\nbar"', 48, 57, { value: '©bar' }],
+			[')-token', ')', 58, 58, undefined],
+			['whitespace-token', ' ', 59, 59, undefined],
+			['ident-token', 'and', 60, 62, { value: 'and' }],
+			['whitespace-token', ' ', 63, 63, undefined],
+			['(-token', '(', 64, 64, undefined],
+			['function-token', 'fancy(', 65, 70, { value: 'fancy' }],
+			['ident-token', 'baz', 71, 73, { value: 'baz' }],
 			[')-token', ')', 74, 74, undefined],
 			[')-token', ')', 75, 75, undefined],
-			['whitespace-token', ' ', 76, 76, undefined],
-			['{-token', '{', 77, 77, undefined],
-			['}-token', '}', 78, 78, undefined],
+			[')-token', ')', 76, 76, undefined],
+			['whitespace-token', ' ', 77, 77, undefined],
+			['{-token', '{', 78, 78, undefined],
+			['}-token', '}', 79, 79, undefined],
 			['EOF-token', '', -1, -1, undefined],
 		],
 	);
