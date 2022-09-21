@@ -1,29 +1,21 @@
-# TODO
+# CSS Tokenizer
+
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/css-tokenizer.svg" height="20">][npm-url]
+[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
+[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 Implemented from : https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/
 
-A CSS tokenizer that strictly follows the spec.
+## Usage
 
-Goals :
-- only a tokenizer. I want to use the tokenizer of CSSTree but I don't want the other 1.5mb that come with it. This is a recurring problem. Most good CSS tokenizers are embedded in other packages.
-- just follows the spec without having any opinions about anything.
-- must be transformable
-- must be able to serialize from a constructed AST
-- must be able to serialize from a parsed AST (without any mutation or data loss)
-- tokens must have the same interface as the PostCSS tokenizer. This does not mean that tokens will be equivalent or that the tokenizer will have the exact same interface.
-- maintainable
-- understandable if you place the code next to the specification
+Add [CSS Tokenizer] to your project:
 
-Non goals : 
-- performance (we can make it fast later)
-- ease of use (a good API requires opinionated code, I am trying to avoid this)
-
-This will be a mashup of my previous work on a [CSS tokenizer in Go](https://github.com/romainmenke/css) and the API surface of the PostCSS tokenizer.
-
-Example :
+```bash
+npm install postcss @csstools/css-tokenizer --save-dev
+```
 
 ```js
-import { tokenizer } from '@csstools/css-tokenizer';
+import { tokenizer, TokenType } from '@csstools/css-tokenizer';
 
 const myCSS =  `@media only screen and (min-width: 768rem) {
 	.foo {
@@ -38,10 +30,99 @@ const t = tokenizer({
 
 while (true) {
 	const token = t.nextToken();
-	if (token[0] === 'EOF-token') {
+	if (token[0] === TokenType.EOF) {
 		break;
 	}
 
 	console.log(token);
 }
 ```
+
+### Options
+
+```ts
+{
+	commentsAreTokens?: false,
+	onParseError?: (error: ParserError) => void
+}
+```
+
+#### `commentsAreTokens`
+
+Following the CSS specification comments are never returned by the tokenizer.
+For many tools however it is desirable to be able to convert tokens back to a string.
+
+```js
+import { tokenizer, TokenType } from '@csstools/css-tokenizer';
+
+const t = tokenizer({
+	css: `/* a comment */`,
+}, { commentsAreTokens: true });
+
+while (true) {
+	const token = t.nextToken();
+	if (token[0] === TokenType.EOF) {
+		break;
+	}
+
+	console.log(token);
+}
+```
+
+logs : `['comment', '/* a comment */', <start>, <end>, undefined]`
+
+
+#### `onParseError`
+
+The tokenizer is forgiving and won't stop when a parse error is encountered.
+Parse errors also aren't tokens.
+
+To receive parsing error information you can set a callback.
+
+```js
+import { tokenizer, TokenType } from '@csstools/css-tokenizer';
+
+const t = tokenizer({
+	css: '\\',
+}, { onParseError: (err) => console.warn(err) });
+
+while (true) {
+	const token = t.nextToken();
+	if (token[0] === TokenType.EOF) {
+		break;
+	}
+}
+```
+
+logs : 
+
+```js
+{
+	message: 'Unexpected EOF while consuming an escaped code point.',
+	start: 0,
+	end: 0,
+	state: ['4.3.7. Consume an escaped code point', 'Unexpected EOF'],
+}
+```
+
+Parser errors will try to inform you about the point in the tokenizer logic the error happened.
+This tells you the kind of error.
+
+`start` and `end` are the location in your CSS source code.
+
+## Goals and non-goals
+
+Things this package aims to be:
+- specification compliant CSS tokenizer
+- a reliable low level package to be used in CSS parsers
+
+What it is not:
+- opinionated
+- fast
+- small
+
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+[discord]: https://discord.gg/bUadyRwkJS
+[npm-url]: https://www.npmjs.com/package/@csstools/css-tokenizer
+
+[CSS Tokenizer]: https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer
