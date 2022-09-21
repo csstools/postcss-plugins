@@ -1,6 +1,7 @@
 import { tokenizer } from '@csstools/css-tokenizer';
 import assert from 'assert';
 import { collectTokens } from '../util/collect-tokens.mjs';
+import fs from 'fs';
 
 {
 	const t = tokenizer({
@@ -36,29 +37,75 @@ URL( h )\
 {
 	const t = tokenizer({
 		css: `
-url(\
-https://\
-example.com\
-/some-path/\
-?query=param\
-&more-query=params\
-)\
-`,
+url("\\
+https://\\
+example.com\\
+/some-path/\\
+?query=param\\
+&more-query=params")`,
 	});
 
 	assert.deepEqual(
 		collectTokens(t),
 		[
 			['whitespace-token', '\n', 0, 0, undefined],
+			['function-token', 'url(', 1, 4, { value: 'url' }],
 			[
-				'url-token',
-				'url(https://example.com/some-path/?query=param&more-query=params)',
-				1,
-				65,
+				'string-token',
+				'"\\\n' +
+				'https://\\\n' +
+				'example.com\\\n' +
+				'/some-path/\\\n' +
+				'?query=param\\\n' +
+				'&more-query=params"',
+				5,
+				76,
 				{
 					value: 'https://example.com/some-path/?query=param&more-query=params',
 				},
 			],
+			[')-token', ')', 77, 77, undefined],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: fs.readFileSync('./test/css/multi-line.css').toString(),
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['delim-token', '.', 0, 0, { value: '.' }],
+			['ident-token', 'foo', 1, 3, { value: 'foo' }],
+			['whitespace-token', ' ', 4, 4, undefined],
+			['{-token', '{', 5, 5, undefined],
+			['whitespace-token', '\n\t', 6, 7, undefined],
+			['ident-token', 'src', 8, 10, { value: 'src' }],
+			['colon-token', ':', 11, 11, undefined],
+			['whitespace-token', ' ', 12, 12, undefined],
+			['function-token', 'url(', 13, 16, { value: 'url' }],
+			[
+				'string-token',
+				'"\\\n' +
+				'https: //\\\n' +
+				'example.com\\\n' +
+				'/some-path/\\\n' +
+				'?query=param\\\n' +
+				'&more-query=params"',
+				17,
+				89,
+				{
+					value: 'https: //example.com/some-path/?query=param&more-query=params',
+				},
+			],
+			[')-token', ')', 90, 90, undefined],
+			['semicolon-token', ';', 91, 91, undefined],
+			['whitespace-token', '\n', 92, 92, undefined],
+			['}-token', '}', 93, 93, undefined],
+			['whitespace-token', '\n', 94, 94, undefined],
 			['EOF-token', '', -1, -1, undefined],
 		],
 	);
@@ -73,6 +120,88 @@ example.com\
 		collectTokens(t),
 		[
 			['bad-url-token', 'url(https://example.com a', 0, 24, undefined],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: 'url("https://example.com',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['function-token', 'url(', 0, 3, { value: 'url' }],
+			[
+				'string-token',
+				'"https://example.com',
+				4,
+				23,
+				{ value: 'https://example.com' },
+			],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: 'url("https://example.com ',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['function-token', 'url(', 0, 3, { value: 'url' }],
+			[
+				'string-token',
+				'"https://example.com ',
+				4,
+				24,
+				{ value: 'https://example.com ' },
+			],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: 'url(https://example.com',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			[
+				'url-token',
+				'url(https://example.com',
+				0,
+				22,
+				{ value: 'https://example.com' },
+			],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: 'url(https://example.com ',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			[
+				'url-token',
+				'url(https://example.com ',
+				0,
+				23,
+				{ value: 'https://example.com' },
+			],
 			['EOF-token', '', -1, -1, undefined],
 		],
 	);

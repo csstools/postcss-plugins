@@ -49,15 +49,27 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 		const peeked = reader.peekThreeCodePoints();
 		if (
 			(peeked[0] === LATIN_SMALL_LETTER_E || peeked[0] === LATIN_CAPITAL_LETTER_E) &&
+			isDigitCodePoint(peeked[1])
+		) {
+			// 5.1. Consume them.
+			reader.readCodePoint();
+			reader.readCodePoint();
+
+			// 5.2. Append them to repr.
+			repr.push(...peeked);
+
+			// 5.3. Set type to "number".
+			type = NumberType.Number;
+
+			// 5.4. While the next input code point is a digit, consume it and append it to repr.
+			repr.push(...consumeDigits(reader));
+		}
+
+		if (
+			(peeked[0] === LATIN_SMALL_LETTER_E || peeked[0] === LATIN_CAPITAL_LETTER_E) &&
 			(
-				(
-					isDigitCodePoint(peeked[1])
-				)
-				||
-				(
-					(peeked[1] === HYPHEN_MINUS || peeked[1] === PLUS_SIGN) &&
-					isDigitCodePoint(peeked[2])
-				)
+				(peeked[1] === HYPHEN_MINUS || peeked[1] === PLUS_SIGN) &&
+				isDigitCodePoint(peeked[2])
 			)
 		) {
 			// 5.1. Consume them.
