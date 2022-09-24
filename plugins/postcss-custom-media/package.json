@@ -45,7 +45,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"postcss-value-parser": "^4.2.0"
+		"postcss-value-parser": "^4.2.0",
+		"@csstools/css-tokenizer": "^1.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
@@ -58,9 +59,9 @@
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run clean && npm run build && npm run test",
-		"test": "node .tape.cjs && npm run test:exports",
+		"test": "node .tape.mjs && npm run test:exports",
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
-		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.cjs"
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media#readme",
 	"repository": {

@@ -21,7 +21,7 @@ interface Stringer {
 	valueOf(): string
 }
 
-export function tokenizer(input: { css: Stringer }, options?: { commentsAreTokens?: false, onParseError?: (error: ParserError) => void }) {
+export function tokenizer(input: { css: Stringer }, options?: { commentsAreTokens?: boolean, onParseError?: (error: ParserError) => void }) {
 	const css = input.css.valueOf();
 
 	const reader = new Reader(css);

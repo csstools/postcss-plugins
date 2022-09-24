@@ -123,7 +123,7 @@ export type CSSToken = TokenAtKeyword |
 export type Token<T extends TokenType, U> = [
 	/** The type of token */
 	T,
-	/** The token value */
+	/** The token representation */
 	string,
 	/** Start position of representation */
 	number,
