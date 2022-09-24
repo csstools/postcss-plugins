@@ -64,7 +64,7 @@
 
 @media (min-width: 202px) {
 
-@media  not (max-color:2147477350) {
+@media not (max-color:2147477350) {
 	.b {
 		order: 4;
 	}
@@ -73,7 +73,7 @@
 
 @media not (min-width: 202px) {
 
-@media  not (color:2147477350) {
+@media not (color:2147477350) {
 	.b {
 		order: 4;
 	}
