@@ -46,30 +46,25 @@
 
 @media (min-width: 201px) {
 
-@media (min-width: 202px) {
-
-@media screen and (max-color:2147477350), not (max-color:2147477350) {
+@media screen and (max-color:2147477350) {
 	.b {
 		order: 4;
 	}
-}
-}
-
-@media not (min-width: 202px) {
-
-@media screen and (max-color:2147477350), not (color:2147477350) {
-	.b {
-		order: 4;
-	}
-}
 }
 }
 
 @media not (min-width: 201px) {
 
+@media screen and (color:2147477350) {
+	.b {
+		order: 4;
+	}
+}
+}
+
 @media (min-width: 202px) {
 
-@media screen and (color:2147477350), not (max-color:2147477350) {
+@media  not (max-color:2147477350) {
 	.b {
 		order: 4;
 	}
@@ -78,10 +73,9 @@
 
 @media not (min-width: 202px) {
 
-@media screen and (color:2147477350), not (color:2147477350) {
+@media  not (color:2147477350) {
 	.b {
 		order: 4;
 	}
-}
 }
 }

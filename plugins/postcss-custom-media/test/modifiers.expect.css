@@ -55,8 +55,14 @@
 }
 
 @media only screen and (min-width: 200px) {
+	.a {
+		order: 4;
+	}
+}
 
-@media only screen and (min-width: 200px), (not (max-color:2147477350)) {
+@media only screen and (min-width: 200px) {
+
+@media  (not (max-color:2147477350)) {
 	.a {
 		order: 4;
 	}
@@ -65,7 +71,7 @@
 
 @media not screen and (min-width: 200px) {
 
-@media only screen and (min-width: 200px), (not (color:2147477350)) {
+@media  (not (color:2147477350)) {
 	.a {
 		order: 4;
 	}

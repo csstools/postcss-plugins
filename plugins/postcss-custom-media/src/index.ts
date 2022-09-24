@@ -47,7 +47,7 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 							return;
 						}
 
-						atRule.cloneBefore({ params: transformedParams[0].replaceWith });
+						atRule.cloneBefore({ params: transformedParams[0].replaceWith.trim() });
 
 						if (!preserve) {
 							atRule.remove();
@@ -57,9 +57,28 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 						return;
 					}
 
+					const needsEncapsulation = !!(transformedParams.find((x) => {
+						return !!x.encapsulateWith;
+					}));
+
+					if (!needsEncapsulation) {
+						atRule.cloneBefore({ params: transformedParams.map((x) => x.replaceWith).join(',').trim() });
+						if (!preserve) {
+							atRule.remove();
+							return;
+						}
+
+						return;
+					}
+
 					transformedParams.forEach((transformed) => {
+						if (!transformed.encapsulateWith) {
+							atRule.cloneBefore({ params: transformed.replaceWith.trim() });
+							return;
+						}
+
 						const clone = atRule.clone({ params: transformed.replaceWith });
-						const encapsulate = atRule.clone({ params: transformed.encapsulateWith, nodes: [] });
+						const encapsulate = atRule.clone({ params: transformed.encapsulateWith.trim(), nodes: [] });
 						if (encapsulate.nodes && encapsulate.nodes.length) {
 							encapsulate.each((child) => {
 								child.remove();

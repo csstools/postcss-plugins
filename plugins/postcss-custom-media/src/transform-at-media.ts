@@ -48,13 +48,15 @@ export function transformAtMediaListTokens(params: string, replacements: Map<str
 			continue;
 		}
 
-		transformedQuery.map((transformedPart) => {
-			const replaceWithSource = stringQueries.slice();
-			replaceWithSource[i] = transformedPart.replaceWith;
-			transformedPart.replaceWith = replaceWithSource.join(',');
-		});
+		return stringQueries.flatMap((query, index) => {
+			if (index === i) {
+				return transformedQuery;
+			}
 
-		return transformedQuery;
+			return [{
+				replaceWith: query,
+			}];
+		});
 	}
 
 	return [];
