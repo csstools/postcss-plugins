@@ -27,8 +27,9 @@ export default function getCustomMedia(root: PostCSSRoot, opts: { preserve?: boo
 		customMediaGraph.push(...parsed.dependsOn);
 
 		if (!opts.preserve) {
+			const parent = atRule.parent;
 			atRule.remove();
-			removeEmptyAncestorBlocks(atRule);
+			removeEmptyAncestorBlocks(parent);
 		}
 	});
 

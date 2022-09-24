@@ -26,6 +26,12 @@ postcssTape(plugin)({
 	'cyclic': {
 		message: 'handles cyclic references'
 	},
+	'override': {
+		message: 'handles reference overrides'
+	},
+	'modifiers': {
+		message: 'supports media query modifiers'
+	},
 	'list': {
 		message: 'supports media query lists'
 	}
