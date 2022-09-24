@@ -2,14 +2,17 @@ import postcssTape from '../../packages/postcss-tape/dist/index.cjs';
 import plugin from 'postcss-custom-media';
 
 postcssTape(plugin)({
-	'basic': {
+	'basic-after-v9': {
 		message: 'supports basic usage'
 	},
-	'basic:preserve': {
+	'basic-after-v9:preserve': {
 		message: 'supports { preserve: true } usage',
 		options: {
 			preserve: true
 		}
+	},
+	'basic': {
+		message: 'supports basic usage (old)'
 	},
 	'examples/example': {
 		message: 'minimal example',
