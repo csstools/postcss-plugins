@@ -4,7 +4,11 @@ import type { CSSToken } from '@csstools/css-tokenizer';
 export function atMediaParamsTokens(params: string): Array<CSSToken> {
 	const t = tokenizer({
 		css: params,
-	}, {commentsAreTokens: true});
+	}, {
+		commentsAreTokens: true, onParseError: () => {
+			throw new Error(`Unable to parse media query "${params}"`);
+		},
+	});
 
 	const tokens: Array<CSSToken> = [];
 	while (!t.endOfFile()) {
@@ -17,18 +21,46 @@ export function atMediaParamsTokens(params: string): Array<CSSToken> {
 const alwaysTrue: Array<CSSToken> = [
 	[TokenType.Ident, 'max-color', 0, 0, { value: 'max-color' }],
 	[TokenType.Colon, ':', 0, 0, undefined],
-	[TokenType.Number, '9999943', 0, 0, { value: 9999943, type: NumberType.Integer }],
+	[TokenType.Number, '2147477350', 0, 0, { value: 9999943, type: NumberType.Integer }],
 ];
 
 const neverTrue: Array<CSSToken> = [
 	[TokenType.Ident, 'color', 0, 0, { value: 'color' }],
 	[TokenType.Colon, ':', 0, 0, undefined],
-	[TokenType.Number, '9999943', 0, 0, { value: 9999943, type: NumberType.Integer }],
+	[TokenType.Number, '2147477350', 0, 0, { value: 9999943, type: NumberType.Integer }],
 ];
 
-export function transformAtMediaTokens(params: string, replacements: Map<string, { truthy: string, falsy: string }>): Array<{replaceWith: string, encapsulateWith?: string}> {
-	const tokens = atMediaParamsTokens(params);
+export function transformAtMediaListTokens(params: string, replacements: Map<string, { truthy: string, falsy: string }>): Array<{ replaceWith: string, encapsulateWith?: string }> {
+	const mediaQueries = splitMediaQueryList(atMediaParamsTokens(params));
 
+	const stringQueries = mediaQueries.map((x) => stringify(...x));
+
+	for (let i = 0; i < mediaQueries.length; i++) {
+		const mediaQuery = mediaQueries[i];
+		const original = stringQueries[i];
+
+		const transformedQuery = transformAtMediaTokens(mediaQuery, replacements);
+		if (!transformedQuery || transformedQuery.length === 0) {
+			continue;
+		}
+
+		if (transformedQuery[0].replaceWith === original) {
+			continue;
+		}
+
+		transformedQuery.map((transformedPart) => {
+			const replaceWithSource = stringQueries.slice();
+			replaceWithSource[i] = transformedPart.replaceWith;
+			transformedPart.replaceWith = replaceWithSource.join(',');
+		});
+
+		return transformedQuery;
+	}
+
+	return [];
+}
+
+export function transformAtMediaTokens(tokens: Array<CSSToken>, replacements: Map<string, { truthy: string, falsy: string }>): Array<{replaceWith: string, encapsulateWith?: string}> {
 	const tokenTypes: Set<string> = new Set();
 	let identCounter = 0;
 	for (let i = 0; i < tokens.length; i++) {
@@ -164,8 +196,10 @@ export function transformAtMediaTokens(params: string, replacements: Map<string,
 	return [];
 }
 
-export function parseCustomMedia(params: string): {name: string, truthy: string, falsy: string}|false {
+export function parseCustomMedia(params: string): {name: string, truthy: string, falsy: string, dependsOn: Array<[string, string]>}|false {
 	const tokens = atMediaParamsTokens(params);
+
+	const customMediaReferences: Set<string> = new Set();
 
 	let name = '';
 	let remainder = tokens;
@@ -187,6 +221,15 @@ export function parseCustomMedia(params: string): {name: string, truthy: string,
 		}
 
 		return false;
+	}
+
+	for (let i = 0; i < remainder.length; i++) {
+		if (remainder[i][0] === TokenType.Ident) {
+			const identToken = remainder[i] as TokenIdent;
+			if (identToken[4].value.startsWith('--')) {
+				customMediaReferences.add(identToken[4].value);
+			}
+		}
 	}
 
 	const list = splitMediaQueryList(remainder);
@@ -247,8 +290,11 @@ export function parseCustomMedia(params: string): {name: string, truthy: string,
 
 	return {
 		name: name,
-		truthy: truthyParts.join(','),
-		falsy: falsyParts.join(','),
+		truthy: truthyParts.map((x) => x.trim()).join(','),
+		falsy: falsyParts.map((x) => x.trim()).join(','),
+		dependsOn: Array.from(customMediaReferences).map((x) => {
+			return [x, name];
+		}),
 	};
 }
 

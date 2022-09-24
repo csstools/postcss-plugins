@@ -19,7 +19,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<string> {
+export function removeCyclicReferences(nodes: Map<string, unknown>, edges: Array<Array<string>>) {
+	// eslint-disable-next-line no-constant-condition
+	let _edges = edges;
+	while (nodes.size > 0) {
+		try {
+			toposort(Array.from(nodes.keys()), _edges);
+			break;
+		} catch (e) {
+			if (e['_graphNode']) {
+
+				nodes.delete(e['_graphNode']);
+				_edges = _edges.filter((x) => {
+					return x.indexOf(e['_graphNode']) === -1;
+				});
+			} else {
+				throw e;
+			}
+		}
+	}
+}
+
+function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<string> {
 	let cursor = nodes.length;
 	const sorted: Array<string> = new Array(cursor);
 	const visited: Record<number, boolean> = {};
@@ -51,7 +72,10 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 			} catch (e) {
 				nodeRep = '';
 			}
-			throw new Error('Cyclic dependency' + nodeRep);
+			const err = new Error('Cyclic dependency' + nodeRep);
+			err['_graphNode'] = node;
+
+			throw err;
 		}
 
 		if (!nodesHash.has(node)) {

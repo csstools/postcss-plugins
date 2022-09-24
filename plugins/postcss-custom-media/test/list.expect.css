@@ -1,0 +1,87 @@
+/* Custom media with a list */
+
+@media (min-width: 101px),(min-height: 102px) {
+
+@media screen and (max-color:2147477350) {
+	.a {
+		order: 1;
+	}
+}
+}
+
+@media not (min-width: 101px),not (min-height: 102px) {
+
+@media screen and (color:2147477350) {
+	.a {
+		order: 1;
+	}
+}
+}
+
+@media (min-width: 101px),(min-height: 102px) {
+
+@media ((other: feature) and (max-color:2147477350)) {
+	.a {
+		order: 2;
+	}
+}
+}
+
+@media not (min-width: 101px),not (min-height: 102px) {
+
+@media ((other: feature) and (color:2147477350)) {
+	.a {
+		order: 2;
+	}
+}
+}
+
+/* Custom media used in a list */
+
+@media (min-width: 201px),(min-width: 202px) {
+	.b {
+		order: 3;
+	}
+}
+
+@media (min-width: 201px) {
+
+@media (min-width: 202px) {
+
+@media screen and (max-color:2147477350), not (max-color:2147477350) {
+	.b {
+		order: 4;
+	}
+}
+}
+
+@media not (min-width: 202px) {
+
+@media screen and (max-color:2147477350), not (color:2147477350) {
+	.b {
+		order: 4;
+	}
+}
+}
+}
+
+@media not (min-width: 201px) {
+
+@media (min-width: 202px) {
+
+@media screen and (color:2147477350), not (max-color:2147477350) {
+	.b {
+		order: 4;
+	}
+}
+}
+
+@media not (min-width: 202px) {
+
+@media screen and (color:2147477350), not (color:2147477350) {
+	.b {
+		order: 4;
+	}
+}
+}
+}

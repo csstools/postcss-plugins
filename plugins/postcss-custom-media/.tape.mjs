@@ -22,5 +22,11 @@ postcssTape(plugin)({
 	},
 	'complex': {
 		message: 'supports complex usage'
+	},
+	'cyclic': {
+		message: 'handles cyclic references'
+	},
+	'list': {
+		message: 'supports media query lists'
 	}
 });

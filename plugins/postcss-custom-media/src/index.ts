@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 import getCustomMedia from './custom-media-from-root';
-import { transformAtMediaTokens } from './transform-at-media';
+import { transformAtMediaListTokens } from './transform-at-media';
 
 export interface PluginOptions {
 	/** Determines whether Custom Selectors and selectors using custom selectors should be preserved in their original form. */
@@ -37,8 +37,8 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 						return;
 					}
 
-					const transformedParams = transformAtMediaTokens(atRule.params, customMedia);
-					if (transformedParams.length === 0) {
+					const transformedParams = transformAtMediaListTokens(atRule.params, customMedia);
+					if (!transformedParams || transformedParams.length === 0) {
 						return;
 					}
 
@@ -53,6 +53,8 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 							atRule.remove();
 							return;
 						}
+
+						return;
 					}
 
 					transformedParams.forEach((transformed) => {
