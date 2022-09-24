@@ -1,6 +1,6 @@
 {
-	"name": "@csstools/css-tokenizer",
-	"description": "Tokenize CSS",
+	"name": "@csstools/postcss-media-query-parser",
+	"description": "PostCSS Media Query Parser",
 	"version": "1.0.0",
 	"contributors": [
 		{
@@ -37,6 +37,9 @@
 		"README.md",
 		"dist"
 	],
+	"dependencies": {
+		"@csstools/css-tokenizer": "^1.0.0"
+	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
@@ -48,11 +51,11 @@
 		"test": "npm run test:exports && node ./test/test.mjs",
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer#readme",
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/postcss-media-query-parser#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
-		"directory": "packages/css-tokenizer"
+		"directory": "packages/postcss-media-query-parser"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [

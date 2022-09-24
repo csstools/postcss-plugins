@@ -1,8 +1,5 @@
-import assert from 'assert';
-import { selectorSpecificity, compare } from '@csstools/selector-specificity';
+import { tokenizer } from '@csstools/css-tokenizer';
 
-assert.equal(selectorSpecificity().a, 0);
-assert.equal(selectorSpecificity().b, 0);
-assert.equal(selectorSpecificity().c, 0);
-
-assert.equal(compare(selectorSpecificity(), selectorSpecificity()), 0);
+tokenizer({
+	css: '.some { css: ""; }',
+});

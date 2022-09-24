@@ -30,6 +30,10 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 		onParseError: options?.onParseError ?? (() => { /* noop */ }),
 	};
 
+	function endOfFile() {
+		return reader.peekOneCodePoint() === false;
+	}
+
 	function nextToken(): CSSToken | undefined {
 		reader.resetRepresentation();
 
@@ -196,6 +200,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 	}
 
 	return {
-		nextToken,
+		nextToken: nextToken,
+		endOfFile: endOfFile,
 	};
 }
