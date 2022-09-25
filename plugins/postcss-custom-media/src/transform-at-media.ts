@@ -340,6 +340,10 @@ export function parseCustomMedia(params: string): {name: string, truthy: string,
 			falsy.splice(j, 0,
 				[TokenType.Ident, 'not', 0, 0, { value: 'not' }],
 				[TokenType.Whitespace, ' ', 0, 0, undefined],
+				[TokenType.OpenParen, '(', 0, 0, undefined],
+			);
+			falsy.push(
+				[TokenType.CloseParen, ')', 0, 0, undefined],
 			);
 
 			truthyParts.push(truthy);

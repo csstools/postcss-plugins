@@ -69,5 +69,8 @@ postcssTape(plugin)({
 	},
 	'comma-2': {
 		message: 'can correctly split media query lists'
+	},
+	'or': {
+		message: 'supports media queries with "or"'
 	}
 });

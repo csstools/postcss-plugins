@@ -20,7 +20,7 @@
 	}
 }
 }
-@media not (min-width: 300px) {
+@media not ((min-width: 300px)) {
 @media screen and (color:2147477350) {
 	.a {
 		order: 2;
@@ -41,7 +41,7 @@
 	}
 }
 }
-@media not (min-width: 300px) {
+@media not ((min-width: 300px)) {
 @media not (color:2147477350) {
 	.a {
 		order: 3;
@@ -52,4 +52,31 @@
 	.a {
 		order: 3;
 	}
+}
+
+/* LightningCSS example */
+@custom-media --modern (color), (hover);
+
+@media (color),(hover) {
+
+@media (max-color:2147477350) and (width > 1024px) {
+  .a {
+    color: green;
+  }
+}
+}
+
+@media not ((color)),not ((hover)) {
+
+@media (color:2147477350) and (width > 1024px) {
+  .a {
+    color: green;
+  }
+}
+}
+
+@media (--modern) and (width > 1024px) {
+  .a {
+    color: green;
+  }
 }

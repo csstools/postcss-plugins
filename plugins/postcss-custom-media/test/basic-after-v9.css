@@ -20,3 +20,12 @@
 		order: 3;
 	}
 }
+
+/* LightningCSS example */
+@custom-media --modern (color), (hover);
+
+@media (--modern) and (width > 1024px) {
+  .a {
+    color: green;
+  }
+}
