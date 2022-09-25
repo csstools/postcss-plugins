@@ -128,10 +128,6 @@
 	order: 22;
 }
 
-.test-any-link-pseudo-class:-webkit-any-link {
-	order: 23;
-}
-
 .test-any-link-pseudo-class:-moz-any-link {
 	order: 23;
 }

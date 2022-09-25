@@ -143,8 +143,7 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 }
 
 .test-all-property {
-	-webkit-animation: none 0s ease 0s 1 normal none running;
-	        animation: none 0s ease 0s 1 normal none running;
+	animation: none 0s ease 0s 1 normal none running;
 	-webkit-backface-visibility: visible;
 	        backface-visibility: visible;
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
@@ -252,10 +251,6 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 }
 
 .test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area[href].test-any-link-pseudo-class {
-	order: 23;
-}
-
-.test-any-link-pseudo-class:-webkit-any-link {
 	order: 23;
 }
 
