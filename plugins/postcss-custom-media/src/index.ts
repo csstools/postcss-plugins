@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 import getCustomMedia from './custom-media-from-root';
-import { transformAtMediaListTokens } from './transform-at-media';
+import { transformAtMediaListTokens } from './transform-at-media/transform-at-media';
 
 export interface PluginOptions {
 	/** Determines whether Custom Media and media queries using custom media should be preserved in their original form. */
