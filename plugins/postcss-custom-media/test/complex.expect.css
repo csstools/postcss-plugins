@@ -25,7 +25,6 @@
 }
 
 /* #region https://github.com/csstools/postcss-custom-media/issues/51 */
-/* TODO: This is broken at the moment */
 
 @media --screen and (width >= 570px) {
 	body {
