@@ -143,8 +143,6 @@ export function transformAtMediaTokens(tokens: Array<CSSToken>, replacements: Ma
 						case TokenType.CloseParen:
 							depth--;
 							break;
-						default:
-							break;
 					}
 				}
 				break;
@@ -165,8 +163,6 @@ export function transformAtMediaTokens(tokens: Array<CSSToken>, replacements: Ma
 						case TokenType.CloseCurly:
 							depth--;
 							break;
-						default:
-							break;
 					}
 				}
 				break;
@@ -186,8 +182,6 @@ export function transformAtMediaTokens(tokens: Array<CSSToken>, replacements: Ma
 							break;
 						case TokenType.CloseSquare:
 							depth--;
-							break;
-						default:
 							break;
 					}
 				}
@@ -252,8 +246,6 @@ export function transformAtMediaTokens(tokens: Array<CSSToken>, replacements: Ma
 
 				break;
 			}
-			default:
-				break;
 		}
 	}
 
@@ -337,14 +329,26 @@ export function parseCustomMedia(params: string): {name: string, truthy: string,
 			}
 
 			const falsy = mediaQuery.slice();
-			falsy.splice(j, 0,
-				[TokenType.Ident, 'not', 0, 0, { value: 'not' }],
-				[TokenType.Whitespace, ' ', 0, 0, undefined],
-				[TokenType.OpenParen, '(', 0, 0, undefined],
-			);
-			falsy.push(
-				[TokenType.CloseParen, ')', 0, 0, undefined],
-			);
+
+			const falsyRemainder = falsy.slice(j);
+			const falsyRemainderKeywords = topLevelCombinationKeywords(falsyRemainder);
+			falsyRemainderKeywords.delete('not');
+
+			if (falsyRemainderKeywords.size > 0) {
+				falsy.splice(j, 0,
+					[TokenType.Ident, 'not', 0, 0, { value: 'not' }],
+					[TokenType.Whitespace, ' ', 0, 0, undefined],
+					[TokenType.OpenParen, '(', 0, 0, undefined],
+				);
+				falsy.push(
+					[TokenType.CloseParen, ')', 0, 0, undefined],
+				);
+			} else {
+				falsy.splice(j, 0,
+					[TokenType.Ident, 'not', 0, 0, { value: 'not' }],
+					[TokenType.Whitespace, ' ', 0, 0, undefined],
+				);
+			}
 
 			truthyParts.push(truthy);
 			falsyParts.push(stringify(...falsy));
@@ -485,4 +489,92 @@ export function splitMediaQueryList(tokens: Array<CSSToken>): Array<Array<CSSTok
 
 	listItems.push(tokens.slice(lastSliceIndex));
 	return listItems;
+}
+
+function topLevelCombinationKeywords(tokens: Array<CSSToken>): Set<string> {
+	const keywords: Set<string> = new Set();
+
+	for (let i = 0; i < tokens.length; i++) {
+		switch (tokens[i][0]) {
+			case TokenType.Function: {
+				let depth = 1;
+				while (depth !== 0) {
+					i++;
+					if (!tokens[i] || tokens[i][0] === TokenType.EOF) {
+						throw new Error('unexpected EOF');
+					}
+
+					switch (tokens[i][0]) {
+						case TokenType.OpenParen:
+						case TokenType.Function:
+							depth++;
+							break;
+						case TokenType.CloseParen:
+							depth--;
+							break;
+					}
+				}
+				break;
+			}
+
+			case TokenType.OpenCurly: {
+				let depth = 1;
+				while (depth !== 0) {
+					i++;
+					if (!tokens[i] || tokens[i][0] === TokenType.EOF) {
+						throw new Error('unexpected EOF');
+					}
+
+					switch (tokens[i][0]) {
+						case TokenType.OpenCurly:
+							depth++;
+							break;
+						case TokenType.CloseCurly:
+							depth--;
+							break;
+					}
+				}
+				break;
+			}
+
+			case TokenType.OpenSquare: {
+				let depth = 1;
+				while (depth !== 0) {
+					i++;
+					if (!tokens[i] || tokens[i][0] === TokenType.EOF) {
+						throw new Error('unexpected EOF');
+					}
+
+					switch (tokens[i][0]) {
+						case TokenType.OpenSquare:
+							depth++;
+							break;
+						case TokenType.CloseSquare:
+							depth--;
+							break;
+					}
+				}
+				break;
+			}
+
+			case TokenType.Ident: {
+				const identToken = tokens[i] as TokenIdent;
+				switch (identToken[4].value.toLowerCase()) {
+					case 'not':
+						keywords.add('not');
+						break;
+					case 'and':
+						keywords.add('and');
+						break;
+					case 'or':
+						keywords.add('or');
+						break;
+				}
+
+				break;
+			}
+		}
+	}
+
+	return keywords;
 }
