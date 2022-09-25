@@ -5,7 +5,7 @@
 }
 }
 
-@media not (max-color:2147477350) {
+@media not all and (max-color:2147477350) {
 
 @media screen and (color:2147477350) {
 	.true {
@@ -23,7 +23,7 @@
 }
 }
 
-@media not (color:2147477350) {
+@media not all and (color:2147477350) {
 
 @media screen and (color:2147477350) {
 	.false {

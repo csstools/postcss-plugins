@@ -84,11 +84,15 @@ export function parseCustomMedia(params: string): { name: string, truthy: string
 
 			const falsyRemainder = falsy.slice(j);
 			const falsyRemainderKeywords = topLevelCombinationKeywords(falsyRemainder);
-			falsyRemainderKeywords.delete('not');
+			falsyRemainderKeywords.delete('and');
 
 			if (falsyRemainderKeywords.size > 0) {
 				falsy.splice(j, 0,
 					[TokenType.Ident, 'not', 0, 0, { value: 'not' }],
+					[TokenType.Whitespace, ' ', 0, 0, undefined],
+					[TokenType.Ident, 'all', 0, 0, { value: 'all' }],
+					[TokenType.Whitespace, ' ', 0, 0, undefined],
+					[TokenType.Ident, 'and', 0, 0, { value: 'and' }],
 					[TokenType.Whitespace, ' ', 0, 0, undefined],
 					[TokenType.OpenParen, '(', 0, 0, undefined],
 				);
@@ -98,6 +102,10 @@ export function parseCustomMedia(params: string): { name: string, truthy: string
 			} else {
 				falsy.splice(j, 0,
 					[TokenType.Ident, 'not', 0, 0, { value: 'not' }],
+					[TokenType.Whitespace, ' ', 0, 0, undefined],
+					[TokenType.Ident, 'all', 0, 0, { value: 'all' }],
+					[TokenType.Whitespace, ' ', 0, 0, undefined],
+					[TokenType.Ident, 'and', 0, 0, { value: 'and' }],
 					[TokenType.Whitespace, ' ', 0, 0, undefined],
 				);
 			}

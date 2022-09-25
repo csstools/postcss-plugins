@@ -9,7 +9,7 @@
 }
 }
 
-@media not (min-width: 101px),not (min-height: 102px) {
+@media not all and (min-width: 101px),not all and (min-height: 102px) {
 
 @media screen and (color:2147477350) {
 	.a {
@@ -27,7 +27,7 @@
 }
 }
 
-@media not (min-width: 101px),not (min-height: 102px) {
+@media not all and (min-width: 101px),not all and (min-height: 102px) {
 
 @media ((other: feature) and (color:2147477350)) {
 	.a {
@@ -53,7 +53,7 @@
 }
 }
 
-@media not (min-width: 201px) {
+@media not all and (min-width: 201px) {
 
 @media screen and (color:2147477350) {
 	.b {
@@ -71,7 +71,7 @@
 }
 }
 
-@media not (min-width: 202px) {
+@media not all and (min-width: 202px) {
 
 @media not (color:2147477350) {
 	.b {

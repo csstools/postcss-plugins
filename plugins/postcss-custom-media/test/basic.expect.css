@@ -25,7 +25,7 @@
 }
 }
 
-@media not (max-width: 30em),not (max-height: 30em) {
+@media not all and (max-width: 30em),not all and (max-height: 30em) {
 
 @media not all and (color:2147477350) {
 	body {
@@ -43,7 +43,7 @@
 }
 }
 
-@media not (max-width: 30em),not (max-height: 30em) {
+@media not all and (max-width: 30em),not all and (max-height: 30em) {
 
 @media not all and (color:2147477350) {
 	body {
@@ -64,7 +64,7 @@
 }
 }
 
-@media not (max-width: 30em),not (max-height: 30em) {
+@media not all and (max-width: 30em),not all and (max-height: 30em) {
 
 @media not all and (color:2147477350) {
 
@@ -88,7 +88,7 @@
 }
 }
 
-@media not (max-width: 30em),not (max-height: 30em) {
+@media not all and (max-width: 30em),not all and (max-height: 30em) {
 
 @media all and (color:2147477350) {
 
@@ -129,7 +129,7 @@
 }
 }
 
-@media not (max-width: 640px) {
+@media not all and (max-width: 640px) {
 
 @media (max-color:2147477350) and (color:2147477350) {
 	body {
@@ -139,7 +139,7 @@
 }
 }
 
-@media not (min-width: 320px) {
+@media not all and (min-width: 320px) {
 
 @media (max-width: 640px) {
 
@@ -150,7 +150,7 @@
 }
 }
 
-@media not (max-width: 640px) {
+@media not all and (max-width: 640px) {
 
 @media (color:2147477350) and (color:2147477350) {
 	body {
@@ -175,7 +175,7 @@
 }
 }
 
-@media not ((min-width: 320px) and (max-width: 640px)) {
+@media not all and (min-width: 320px) and (max-width: 640px) {
 
 @media (color:2147477350) and (min-aspect-ratio: 16/9) {
 	body {

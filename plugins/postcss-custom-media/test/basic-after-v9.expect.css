@@ -13,7 +13,7 @@
 	}
 }
 }
-@media not (min-width: 300px) {
+@media not all and (min-width: 300px) {
 @media screen and (color:2147477350) {
 	.a {
 		order: 2;
@@ -29,7 +29,7 @@
 	}
 }
 }
-@media not (min-width: 300px) {
+@media not all and (min-width: 300px) {
 @media not (color:2147477350) {
 	.a {
 		order: 3;
@@ -48,7 +48,7 @@
 }
 }
 
-@media not (color),not (hover) {
+@media not all and (color),not all and (hover) {
 
 @media (color:2147477350) and (width > 1024px) {
   .a {
