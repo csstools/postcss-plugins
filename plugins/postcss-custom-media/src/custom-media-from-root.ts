@@ -4,7 +4,7 @@ import { removeCyclicReferences } from './toposort';
 import { parseCustomMedia } from './transform-at-media';
 
 // return custom media from the css root, conditionally removing them
-export default function getCustomMedia(root: PostCSSRoot, opts: { preserve?: boolean }): Map<string, { truthy: string, falsy: string }> {
+export default function getCustomMedia(root: PostCSSRoot, result, opts: { preserve?: boolean }): Map<string, { truthy: string, falsy: string }> {
 	// initialize custom media
 	const customMedia: Map<string, { truthy: string, falsy: string }> = new Map();
 	const customMediaGraph: Array<[string, string]> = [];
@@ -16,6 +16,10 @@ export default function getCustomMedia(root: PostCSSRoot, opts: { preserve?: boo
 
 		const parsed = parseCustomMedia(atRule.params);
 		if (!parsed) {
+			return;
+		}
+
+		if (!parsed.truthy.trim()) {
 			return;
 		}
 
@@ -33,7 +37,10 @@ export default function getCustomMedia(root: PostCSSRoot, opts: { preserve?: boo
 		}
 	});
 
-	removeCyclicReferences(customMedia, customMediaGraph);
+	const cyclicReferences = removeCyclicReferences(customMedia, customMediaGraph);
+	for (const cyclicReference of cyclicReferences.values()) {
+		root.warn(result, `@custom-media rules have cyclic dependencies for "${cyclicReference}"`);
+	}
 
 	return customMedia;
 }

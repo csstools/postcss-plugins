@@ -12,7 +12,8 @@ postcssTape(plugin)({
 		}
 	},
 	'basic': {
-		message: 'supports basic usage (old)'
+		message: 'supports basic usage (old)',
+		warnings: 1,
 	},
 	'examples/example': {
 		message: 'minimal example',
@@ -23,11 +24,33 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
+	'not-processable': {
+		message: 'only handles processable @custom-media rules'
+	},
+	'parser-checks': {
+		message: 'supports more obscure CSS'
+	},
+	'eof-1': {
+		message: 'handles EOF correctly (1)'
+	},
+	'eof-2': {
+		message: 'handles EOF correctly (2)',
+		warnings: 1,
+	},
+	'eof-3': {
+		message: 'handles EOF correctly (3)',
+		warnings: 1,
+	},
+	'eof-4': {
+		message: 'handles EOF correctly (4)',
+		warnings: 1,
+	},
 	'complex': {
 		message: 'supports complex usage'
 	},
 	'cyclic': {
-		message: 'handles cyclic references'
+		message: 'handles cyclic references',
+		warnings: 3,
 	},
 	'override': {
 		message: 'handles reference overrides'
@@ -37,5 +60,14 @@ postcssTape(plugin)({
 	},
 	'list': {
 		message: 'supports media query lists'
+	},
+	'true-false': {
+		message: 'supports true|false keywords'
+	},
+	'comma-1': {
+		message: 'can correctly split media query lists'
+	},
+	'comma-2': {
+		message: 'can correctly split media query lists'
 	}
 });

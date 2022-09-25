@@ -1,0 +1,39 @@
+@custom-media --list-1 screen, print;
+
+@media (--list-1) {
+	.a {
+		order: 1;
+	}
+}
+
+@custom-media --list-2 screen, (func(aa,bb,cc));
+
+@media (--list-2) {
+	.a {
+		order: 2;
+	}
+}
+
+@custom-media --list-3 screen, [aa,bb,cc];
+
+@media (--list-3) {
+	.a {
+		order: 3;
+	}
+}
+
+@custom-media --list-4 screen, ([aa,bb,cc]);
+
+@media (--list-4) {
+	.a {
+		order: 4;
+	}
+}
+
+@custom-media --list-5 screen, ({aa,bb,cc});
+
+@media (--list-5) {
+	.a {
+		order: 5;
+	}
+}

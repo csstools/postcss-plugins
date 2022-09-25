@@ -25,10 +25,10 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 			let customMedia = new Map();
 
 			return {
-				Once: (root) => {
-					customMedia = getCustomMedia(root, { preserve: preserve });
+				Once: (root, { result }) => {
+					customMedia = getCustomMedia(root, result, { preserve: preserve });
 				},
-				AtRule: (atRule) => {
+				AtRule: (atRule, { result }) => {
 					if (!atRule.params) {
 						return;
 					}
@@ -37,13 +37,21 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 						return;
 					}
 
-					const transformedParams = transformAtMediaListTokens(atRule.params, customMedia);
+					let transformedParams: Array<{ replaceWith: string, encapsulateWith?: string }> = [];
+
+					try {
+						transformedParams = transformAtMediaListTokens(atRule.params, customMedia);
+					} catch (err) {
+						atRule.warn(result, `Failed to parse @custom-media params with error message: "${err.message}"`);
+						return;
+					}
+
 					if (!transformedParams || transformedParams.length === 0) {
 						return;
 					}
 
 					if (transformedParams.length === 1) {
-						if (atRule.params === transformedParams[0].replaceWith) {
+						if (atRule.params.trim() === transformedParams[0].replaceWith.trim()) {
 							return;
 						}
 
@@ -63,9 +71,9 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 
 					if (!needsEncapsulation) {
 						atRule.cloneBefore({ params: transformedParams.map((x) => x.replaceWith).join(',').trim() });
+
 						if (!preserve) {
 							atRule.remove();
-							return;
 						}
 
 						return;
@@ -79,11 +87,6 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 
 						const clone = atRule.clone({ params: transformed.replaceWith });
 						const encapsulate = atRule.clone({ params: transformed.encapsulateWith.trim(), nodes: [] });
-						if (encapsulate.nodes && encapsulate.nodes.length) {
-							encapsulate.each((child) => {
-								child.remove();
-							});
-						}
 
 						clone.parent = null;
 						encapsulate.parent = null;

@@ -1,0 +1,46 @@
+@custom-media --list-1 screen;
+@custom-media --list-2 print;
+
+@media (--list-1),(--list-2) {
+	.a {
+		order: 1;
+	}
+}
+
+@media (--list-1), (func(aa,(--list-2),cc)) {
+	.a {
+		order: 2;
+	}
+}
+
+@media (--list-1), [aa,(--list-2),cc] {
+	.a {
+		order: 3;
+	}
+}
+
+@media (--list-1), ([aa,(--list-2),cc]) {
+	.a {
+		order: 4;
+	}
+}
+
+@media (--list-1), ([aa,[(--list-2)],cc]) {
+	.a {
+		order: 5;
+	}
+}
+
+@media (--list-1), ({aa,(--list-2),cc}) {
+	.a {
+		order: 6;
+	}
+}
+
+@media (--list-1), ({aa,{(--list-2)},cc}) {
+	.a {
+		order: 7;
+	}
+}
+
+

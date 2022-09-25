@@ -1,0 +1,43 @@
+@media screen,print {
+	.a {
+		order: 1;
+	}
+}
+
+@media screen, (func(aa,(--list-2),cc)) {
+	.a {
+		order: 2;
+	}
+}
+
+@media screen, [aa,(--list-2),cc] {
+	.a {
+		order: 3;
+	}
+}
+
+@media screen, ([aa,(--list-2),cc]) {
+	.a {
+		order: 4;
+	}
+}
+
+@media screen, ([aa,[(--list-2)],cc]) {
+	.a {
+		order: 5;
+	}
+}
+
+@media screen, ({aa,(--list-2),cc}) {
+	.a {
+		order: 6;
+	}
+}
+
+@media screen, ({aa,{(--list-2)},cc}) {
+	.a {
+		order: 7;
+	}
+}
+
+

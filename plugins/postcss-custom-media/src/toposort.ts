@@ -19,7 +19,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-export function removeCyclicReferences(nodes: Map<string, unknown>, edges: Array<Array<string>>) {
+// We (ab)use `toposort` to find cyclic references.
+// At the moment this is not optimized and uses a brute force approach.
+//
+// while there are cyclic ref errors
+// - remove node from graph
+// - re-do toposort
+export function removeCyclicReferences(nodes: Map<string, unknown>, edges: Array<Array<string>>): Set<string> {
+	const cyclicReferences: Set<string> = new Set();
+
 	// eslint-disable-next-line no-constant-condition
 	let _edges = edges;
 	while (nodes.size > 0) {
@@ -27,9 +35,11 @@ export function removeCyclicReferences(nodes: Map<string, unknown>, edges: Array
 			toposort(Array.from(nodes.keys()), _edges);
 			break;
 		} catch (e) {
+			/* see the hack below */
 			if (e['_graphNode']) {
 
 				nodes.delete(e['_graphNode']);
+				cyclicReferences.add(e['_graphNode']);
 				_edges = _edges.filter((x) => {
 					return x.indexOf(e['_graphNode']) === -1;
 				});
@@ -38,6 +48,8 @@ export function removeCyclicReferences(nodes: Map<string, unknown>, edges: Array
 			}
 		}
 	}
+
+	return cyclicReferences;
 }
 
 function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<string> {
@@ -66,14 +78,8 @@ function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<stri
 
 	function visit(node: string, j: number, predecessors: Set<string>) {
 		if (predecessors.has(node)) {
-			let nodeRep;
-			try {
-				nodeRep = ', token was: ' + JSON.stringify(node);
-			} catch (e) {
-				nodeRep = '';
-			}
-			const err = new Error('Cyclic dependency' + nodeRep);
-			err['_graphNode'] = node;
+			const err = new Error('Cyclic dependency' + JSON.stringify(node));
+			err['_graphNode'] = node; /* a hack to communicate which node is causing the cyclic error */
 
 			throw err;
 		}

@@ -78,18 +78,32 @@ export function transformAtMediaTokens(tokens: Array<CSSToken>, replacements: Ma
 	tokenTypes.delete(TokenType.CloseParen);
 	tokenTypes.delete(TokenType.Ident);
 
-	// replacement slot is a simple @media query :
+	// replacement slot is in a simple @media query :
 	// - @media (--custom-mq) { ... }
 	// - @media ((--custom-mq)) { ... }
 	if (tokenTypes.size == 0 && identCounter === 1) {
+		let candidate: Array<{ replaceWith: string, encapsulateWith?: string }> | null = null;
+
 		let parenDepth = 0;
 		for (let i = 0; i < tokens.length; i++) {
-			if (tokens[i][0] === TokenType.OpenParen) {
-				parenDepth++;
+			if (tokens[i][0] === TokenType.Whitespace || tokens[i][0] === TokenType.Comment) {
 				continue;
 			}
+
+			if (tokens[i][0] === TokenType.CloseParen) {
+				if (candidate) {
+					return candidate;
+				}
+			}
+
+			candidate = null;
+
 			if (tokens[i][0] === TokenType.CloseParen) {
 				parenDepth--;
+				continue;
+			}
+			if (tokens[i][0] === TokenType.OpenParen) {
+				parenDepth++;
 				continue;
 			}
 
@@ -97,44 +111,90 @@ export function transformAtMediaTokens(tokens: Array<CSSToken>, replacements: Ma
 				const identToken = tokens[i] as TokenIdent;
 
 				if (replacements.has(identToken[4].value)) {
-					return [{
+					candidate = [{
 						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 						replaceWith: replacements.get(identToken[4].value)!.truthy,
 					}];
-				} else {
-					return [];
 				}
 			}
 		}
+
+		return [];
 	}
 
-	let functionDepth = 0;
-
+	// replacement slot is in a comples @media query :
+	// - @media not (--custom-mq) { ... }
+	// - @media ((--custom-mq-1) or (--custom-mq-2) or (not (--custom-mq-3))) { ... }
 	for (let i = 0; i < tokens.length; i++) {
 		switch (tokens[i][0]) {
-			case TokenType.Function:
-				functionDepth++;
-				while (functionDepth !== 0) {
+			case TokenType.Function: {
+				let depth = 1;
+				while (depth !== 0) {
 					i++;
+					if (!tokens[i] || tokens[i][0] === TokenType.EOF) {
+						throw new Error('unexpected EOF');
+					}
+
 					switch (tokens[i][0]) {
 						case TokenType.OpenParen:
 						case TokenType.Function:
-							functionDepth++;
+							depth++;
 							break;
 						case TokenType.CloseParen:
-							functionDepth--;
+							depth--;
 							break;
-						case TokenType.EOF:
-							throw new Error('unexpected EOF');
 						default:
 							break;
 					}
 				}
 				break;
+			}
+
+			case TokenType.OpenCurly: {
+				let depth = 1;
+				while (depth !== 0) {
+					i++;
+					if (!tokens[i] || tokens[i][0] === TokenType.EOF) {
+						throw new Error('unexpected EOF');
+					}
+
+					switch (tokens[i][0]) {
+						case TokenType.OpenCurly:
+							depth++;
+							break;
+						case TokenType.CloseCurly:
+							depth--;
+							break;
+						default:
+							break;
+					}
+				}
+				break;
+			}
+
+			case TokenType.OpenSquare: {
+				let depth = 1;
+				while (depth !== 0) {
+					i++;
+					if (!tokens[i] || tokens[i][0] === TokenType.EOF) {
+						throw new Error('unexpected EOF');
+					}
+
+					switch (tokens[i][0]) {
+						case TokenType.OpenSquare:
+							depth++;
+							break;
+						case TokenType.CloseSquare:
+							depth--;
+							break;
+						default:
+							break;
+					}
+				}
+				break;
+			}
 
 			case TokenType.Ident: {
-				// TODO : custom media need to have enclosing parens.
-				// !! big bug
 				const identToken = tokens[i] as TokenIdent;
 
 				if (!replacements.has(identToken[4].value)) {
@@ -242,9 +302,9 @@ export function parseCustomMedia(params: string): {name: string, truthy: string,
 
 	MEDIA_QUERY_LIST_LOOP:
 	for (let i = 0; i < list.length; i++) {
-		const mediaQuery = list[i];
+		const mediaQuery = handleTrueAndFalseTokens(list[i]);
 
-		const truthy = stringify(...handleTrueAndFalseTokens(mediaQuery));
+		const truthy = stringify(...mediaQuery);
 
 		for (let j = 0; j < mediaQuery.length; j++) {
 			if (mediaQuery[j][0] === TokenType.Comment) {
@@ -304,6 +364,7 @@ export function parseCustomMedia(params: string): {name: string, truthy: string,
 
 export function handleTrueAndFalseTokens(tokens: Array<CSSToken>): Array<CSSToken> {
 	let booleanToken;
+	let remainder;
 
 	for (let i = 0; i < tokens.length; i++) {
 		if (tokens[i][0] === TokenType.Comment) {
@@ -313,23 +374,19 @@ export function handleTrueAndFalseTokens(tokens: Array<CSSToken>): Array<CSSToke
 			continue;
 		}
 
-		if (tokens[i][0] !== TokenType.Ident) {
-			return tokens;
-		}
+		if (tokens[i][0] === TokenType.Ident) {
+			const identToken = tokens[i] as TokenIdent;
+			if (identToken[4].value.toLowerCase() === 'true') {
+				booleanToken = 'true';
+				remainder = tokens.slice(i + 1);
+				break;
+			}
 
-		if (booleanToken) {
-			return tokens;
-		}
-
-		const identToken = tokens[i] as TokenIdent;
-		if (identToken[4].value.toLowerCase() === 'true') {
-			booleanToken = 'true';
-			continue;
-		}
-
-		if (identToken[4].value.toLowerCase() === 'false') {
-			booleanToken = 'false';
-			continue;
+			if (identToken[4].value.toLowerCase() === 'false') {
+				booleanToken = 'false';
+				remainder = tokens.slice(i + 1);
+				break;
+			}
 		}
 
 		return tokens;
@@ -337,6 +394,20 @@ export function handleTrueAndFalseTokens(tokens: Array<CSSToken>): Array<CSSToke
 
 	if (!booleanToken) {
 		return tokens;
+	}
+
+	{
+		// Nothing is allowed after true|false except for comments and whitespace
+		for (let i = 0; i < remainder.length; i++) {
+			if (remainder[i][0] === TokenType.Comment) {
+				continue;
+			}
+			if (remainder[i][0] === TokenType.Whitespace) {
+				continue;
+			}
+
+			return tokens;
+		}
 	}
 
 	if (booleanToken === 'true') {
@@ -367,33 +438,40 @@ export function splitMediaQueryList(tokens: Array<CSSToken>): Array<Array<CSSTok
 		if (tokens[i][0] === TokenType.OpenParen || tokens[i][0] === TokenType.Function) {
 			depth++;
 			parenDepth++;
+			continue;
 		}
 		if (tokens[i][0] === TokenType.CloseParen && parenDepth > 0) {
 			depth--;
 			parenDepth--;
+			continue;
 		}
 
 		if (tokens[i][0] === TokenType.OpenCurly) {
 			depth++;
 			curlyDepth++;
+			continue;
 		}
-		if (tokens[i][0] === TokenType.CloseParen && curlyDepth > 0) {
+		if (tokens[i][0] === TokenType.CloseCurly && curlyDepth > 0) {
 			depth--;
 			curlyDepth--;
+			continue;
 		}
 
 		if (tokens[i][0] === TokenType.OpenSquare) {
 			depth++;
 			squareDepth++;
+			continue;
 		}
 		if (tokens[i][0] === TokenType.CloseSquare && squareDepth > 0) {
 			depth--;
 			squareDepth--;
+			continue;
 		}
 
 		if (tokens[i][0] === TokenType.Comma && depth === 0) {
 			listItems.push(tokens.slice(lastSliceIndex, i));
 			lastSliceIndex = i + 1;
+			continue;
 		}
 	}
 

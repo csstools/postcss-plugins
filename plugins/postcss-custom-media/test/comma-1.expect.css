@@ -1,0 +1,29 @@
+@media screen,print {
+	.a {
+		order: 1;
+	}
+}
+
+@media screen,(func(aa,bb,cc)) {
+	.a {
+		order: 2;
+	}
+}
+
+@media screen,[aa,bb,cc] {
+	.a {
+		order: 3;
+	}
+}
+
+@media screen,([aa,bb,cc]) {
+	.a {
+		order: 4;
+	}
+}
+
+@media screen,({aa,bb,cc}) {
+	.a {
+		order: 5;
+	}
+}
