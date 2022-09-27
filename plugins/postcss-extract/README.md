@@ -121,10 +121,10 @@ postcssExtract({
 
 The `extractLate` option let's you define if the queries are run early or late in the PostCSS process.
 
-`extractLate: false` uses `Once` in PostCSS.
+`extractLate: false` uses `Once` in PostCSS.<br>
 This means that it will try to run early.
 
-`extractLate: true` uses `OnceExit` in PostCSS.
+`extractLate: true` uses `OnceExit` in PostCSS.<br>
 This means that it will try to run late.
 
 The order of plugins is still respected if multiple plugins use `Once`|`OnceExit`.
