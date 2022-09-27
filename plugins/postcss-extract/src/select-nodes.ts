@@ -1,5 +1,6 @@
 import type { Node, Container } from 'postcss';
-import type selectorParser from 'postcss-selector-parser';
+import selectorParser from 'postcss-selector-parser';
+import { notPseudo } from './pseudos/not';
 import { adjacentSiblingCombinator } from './selector-engine/combinators/adjacent-sibling';
 import { childCombinator } from './selector-engine/combinators/child';
 import { descendantCombinator } from './selector-engine/combinators/descendant';
@@ -112,6 +113,33 @@ function buildQuery(selector: selectorParser.Selector) {
 				};
 				break;
 			}
+			case 'pseudo': {
+				switch (selectorPart.value) {
+					case ':not': {
+						currentCondition = {
+							run: (list: NodeList): NodeList => {
+								const exclude = list.filter((excludeCandidate) => {
+									return selectorPart.nodes.flatMap((notSelectorPart) => {
+										const notQuery = buildQuery(notSelectorPart);
+										return executeConditions(notQuery, [excludeCandidate]);
+									}).length > 0;
+								});
+
+								return notPseudo(list, exclude);
+							},
+						};
+						break;
+					}
+					default:
+						currentCondition = {
+							run: (): NodeList => {
+								return [];
+							},
+						};
+						break;
+				}
+				break;
+			}
 			case 'attribute': {
 				switch (selectorPart.operator) {
 					case '^=':
@@ -151,7 +179,11 @@ function buildQuery(selector: selectorParser.Selector) {
 				break;
 			}
 			default:
-				break;
+				currentCondition = {
+					run: (): NodeList => {
+						return [];
+					},
+				};
 		}
 	});
 

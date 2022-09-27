@@ -44,6 +44,29 @@ postcssTape(plugin)({
 			}
 		}
 	},
+	'variables:adjacent-sibling-with-not': {
+		message: "Respects adjacent siblings and supports :not",
+		options: {
+			queries: {
+				'adjacent-sibling': 'rule[selector*=":root"] :not([selector*=":root"] comment[text="extract only this one"]) + decl[variable]'
+			},
+			results: function (results) {
+				assert.deepStrictEqual(
+					results,
+					{
+						'adjacent-sibling': [
+							{
+								type: 'decl',
+								prop: '--bar',
+								value: 'calc(1px * 100)',
+								variable: true
+							}
+						]
+					}
+				)
+			}
+		}
+	},
 	'media': {
 		message: "At rules : media",
 		options: {

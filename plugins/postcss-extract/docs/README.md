@@ -86,6 +86,7 @@ Supported selectors:
 - `[value^=cy]` starts with
 - `[value*=ya]` contains
 - `[value$=an]` ends with
+- `:not(<complex selector>)`
 
 Browser the [PostCSS API](https://postcss.org/api/) to gain more insights into the AST naming and structure.
 
