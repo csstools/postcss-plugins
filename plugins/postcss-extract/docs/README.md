@@ -18,9 +18,13 @@
 
 [<humanReadableName>] lets you easily export parts of your CSS source files to javascript objects.
 
+your query :
+
 ```css
 rule[selector*=":root" i] > decl[variable]
 ```
+
+your config :
 
 ```js
 <exportName>({
@@ -33,6 +37,8 @@ rule[selector*=":root" i] > decl[variable]
 })
 ```
 
+your css :
+
 ```css
 :root {
 	--your-property: cyan;
@@ -43,7 +49,7 @@ rule[selector*=":root" i] > decl[variable]
 }
 ```
 
-Is exported as :
+the exported data :
 
 ```js
 [

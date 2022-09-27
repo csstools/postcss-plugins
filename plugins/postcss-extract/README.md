@@ -4,9 +4,13 @@
 
 [PostCSS Extract] lets you easily export parts of your CSS source files to javascript objects.
 
+your query :
+
 ```css
 rule[selector*=":root" i] > decl[variable]
 ```
+
+your config :
 
 ```js
 postcssExtract({
@@ -19,6 +23,8 @@ postcssExtract({
 })
 ```
 
+your css :
+
 ```css
 :root {
 	--your-property: cyan;
@@ -29,7 +35,7 @@ postcssExtract({
 }
 ```
 
-Is exported as :
+the exported data :
 
 ```js
 [
