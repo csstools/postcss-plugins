@@ -118,9 +118,12 @@ function buildQuery(selector: selectorParser.Selector) {
 					case ':not': {
 						currentCondition = {
 							run: (list: NodeList): NodeList => {
+								const notQueries = selectorPart.nodes.map((notSelectorPart) => {
+									return buildQuery(notSelectorPart);
+								});
+
 								const exclude = list.filter((excludeCandidate) => {
-									return selectorPart.nodes.flatMap((notSelectorPart) => {
-										const notQuery = buildQuery(notSelectorPart);
+									return notQueries.flatMap((notQuery) => {
 										return executeConditions(notQuery, [excludeCandidate]);
 									}).length > 0;
 								});
