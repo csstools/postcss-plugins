@@ -1,8 +1,8 @@
-import type { Node } from 'postcss';
+import type { NodeList } from '../../node-list';
 
-export function descendantCombinator(list: Array<Node>): Array<Node> {
+export function descendantCombinator(list: NodeList): NodeList {
 	return list.flatMap((node) => {
-		const subList: Array<Node> = [];
+		const subList: NodeList = [];
 
 		let parent = node.parent;
 		while (parent) {

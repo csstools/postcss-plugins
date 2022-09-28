@@ -1,6 +1,6 @@
-import type { Node } from 'postcss';
+import type { NodeList } from '../../node-list';
 
-export function matchTagName(list: Array<Node>, tagName: string): Array<Node> {
+export function matchTagName(list: NodeList, tagName: string): NodeList {
 	const filtered = list.filter((node) => {
 		return node.type.toLowerCase() === tagName.toLowerCase();
 	});

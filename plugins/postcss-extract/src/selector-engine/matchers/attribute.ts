@@ -1,4 +1,5 @@
-import type { Node, Rule } from 'postcss';
+import type { Rule } from 'postcss';
+import type { NodeList } from '../../node-list';
 
 export enum AttributeMatchingFlag {
 	Exact = '',
@@ -7,7 +8,7 @@ export enum AttributeMatchingFlag {
 	Contains = '*',
 }
 
-export function matchAttribute(list: Array<Node>, attributeName: string, attributeValue: string | null | undefined, flag: AttributeMatchingFlag, caseInsensitive = false): Array<Node> {
+export function matchAttribute(list: NodeList, attributeName: string, attributeValue: string | null | undefined, flag: AttributeMatchingFlag, caseInsensitive = false): NodeList {
 	if (attributeName.startsWith('__proto__') || attributeValue?.startsWith('__proto__')) {
 		return [];
 	}

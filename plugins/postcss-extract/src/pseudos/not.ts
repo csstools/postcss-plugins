@@ -1,6 +1,6 @@
-import type { Node } from 'postcss';
+import type { NodeList } from '../node-list';
 
-export function notPseudo(list: Array<Node>, exclude: Array<Node>): Array<Node> {
+export function notPseudo(list: NodeList, exclude: NodeList): NodeList {
 	return list.filter((node) => {
 		return !exclude.includes(node);
 	});

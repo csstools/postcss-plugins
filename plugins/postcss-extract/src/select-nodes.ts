@@ -1,5 +1,6 @@
 import type { Node, Container } from 'postcss';
 import selectorParser from 'postcss-selector-parser';
+import type { NodeList } from './node-list';
 import { notPseudo } from './pseudos/not';
 import { adjacentSiblingCombinator } from './selector-engine/combinators/adjacent-sibling';
 import { childCombinator } from './selector-engine/combinators/child';
@@ -13,31 +14,33 @@ export function extract(container: Container<Node>, selectors: Map<string, selec
 	const output: Record<string, Array<Record<string, unknown>>> = {};
 
 	for (const [key, selectorRoot] of selectors) {
-		const result: Set<Node> = new Set();
+		let result: Set<Node> = new Set();
 
 		selectorRoot.each((selector) => {
-			const partialResult = selectNodesForSingleQuery(container, selector);
-			partialResult.forEach((node) => {
-				result.add(node);
-			});
+			result = selectNodesForSingleQuery(container, selector, result);
 		});
 
-		output[key] = Array.from(result.values()).map((node) => {
-			return simplifyASTNode(node);
-		});
+		output[key] = [];
+		for (const node of result) {
+			output[key].push(simplifyASTNode(node));
+		}
 	}
 
 	return output;
 }
 
-export function selectNodesForSingleQuery(container: Container<Node>, selector: selectorParser.Selector): Array<Node> {
+export function selectNodesForSingleQuery(container: Container<Node>, selector: selectorParser.Selector, previouslyMatchedNodes: Set<Node>): Set<Node> {
 	const query = buildQuery(selector);
-	const matchingNodes: Array<Node> = [];
+	const matchingNodes: Set<Node> = new Set(previouslyMatchedNodes);
 
 	container.walk((candidate) => {
-		const result = executeConditions(query, [candidate]);
-		if (result.length > 0) {
-			matchingNodes.push(candidate);
+		if (matchingNodes.has(candidate)) {
+			return;
+		}
+
+		const matchingTreeRoots = executeConditions(query, [candidate]);
+		if (matchingTreeRoots.length > 0) {
+			matchingNodes.add(candidate);
 		}
 	});
 
@@ -192,8 +195,6 @@ function buildQuery(selector: selectorParser.Selector) {
 
 	return currentCondition;
 }
-
-type NodeList = Array<Node>;
 
 type Condition = {
 	next?: Condition,
