@@ -34,7 +34,7 @@
 	"scripts": {
 		"build": "npm run build --workspaces --if-present",
 		"clean": "bash ./.github/bin/clean.sh",
-		"get-me-going": "npm run clean && npm ci && npm run build && npm run test",
+		"setup-workspace": "npm run clean && npm ci && npm run build && npm run test",
 		"docs": "npm run docs --workspaces --if-present",
 		"lint": "npm run lint --workspaces --if-present && npm run lint:rollup-config && npm run lint:executable-files && npm run lint:licenses",
 		"lint:executable-files": "bash .github/bin/detect-executable-files/detect-executable-files.sh",
