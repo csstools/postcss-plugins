@@ -4,29 +4,31 @@ export { TokenType, NumberType } from './interfaces/token';
 export { stringify } from './stringify';
 export { tokenizer } from './tokenizer';
 
-export type { TokenAtKeyword } from './interfaces/token';
-export type { TokenBadString } from './interfaces/token';
-export type { TokenBadURL } from './interfaces/token';
-export type { TokenCDC } from './interfaces/token';
-export type { TokenCDO } from './interfaces/token';
-export type { TokenColon } from './interfaces/token';
-export type { TokenComma } from './interfaces/token';
-export type { TokenComment } from './interfaces/token';
-export type { TokenDelim } from './interfaces/token';
-export type { TokenDimension } from './interfaces/token';
-export type { TokenEOF } from './interfaces/token';
-export type { TokenFunction } from './interfaces/token';
-export type { TokenHash } from './interfaces/token';
-export type { TokenIdent } from './interfaces/token';
-export type { TokenNumber } from './interfaces/token';
-export type { TokenPercentage } from './interfaces/token';
-export type { TokenSemicolon } from './interfaces/token';
-export type { TokenString } from './interfaces/token';
-export type { TokenURL } from './interfaces/token';
-export type { TokenWhitespace } from './interfaces/token';
-export type { TokenOpenParen } from './interfaces/token';
-export type { TokenCloseParen } from './interfaces/token';
-export type { TokenOpenSquare } from './interfaces/token';
-export type { TokenCloseSquare } from './interfaces/token';
-export type { TokenOpenCurly } from './interfaces/token';
-export type { TokenCloseCurly } from './interfaces/token';
+export type {
+	TokenAtKeyword,
+	TokenBadString,
+	TokenBadURL,
+	TokenCDC,
+	TokenCDO,
+	TokenColon,
+	TokenComma,
+	TokenComment,
+	TokenDelim,
+	TokenDimension,
+	TokenEOF,
+	TokenFunction,
+	TokenHash,
+	TokenIdent,
+	TokenNumber,
+	TokenPercentage,
+	TokenSemicolon,
+	TokenString,
+	TokenURL,
+	TokenWhitespace,
+	TokenOpenParen,
+	TokenCloseParen,
+	TokenOpenSquare,
+	TokenCloseSquare,
+	TokenOpenCurly,
+	TokenCloseCurly,
+} from './interfaces/token';
