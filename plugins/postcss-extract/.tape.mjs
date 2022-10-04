@@ -7,23 +7,34 @@ postcssTape(plugin)({
 		message: "Can extract custom props from root",
 		options: {
 			queries: {
-				'custom-props-in-root': 'rule[selector*=":ROOT" i] decl[variable]'
+				'custom-props-in-root': 'rule[selector*=":ROOT" i] decl[variable]',
+				'not-variable': 'decl:not([variable])'
 			},
 			results: function(results) {
 				assert.deepStrictEqual(
-					results,
-					{
-						'custom-props-in-root': [
-							{ type: 'decl', prop: '--foo', value: '1', variable: true },
-							{
-								type: 'decl',
-								prop: '--bar',
-								value: 'calc(1px * 100)',
-								variable: true
-							},
-							{ type: 'decl', prop: '--baz', value: '"a value"', variable: true }
-						]
-					}
+					results['custom-props-in-root'],
+					[
+						{ type: 'decl', prop: '--foo', value: '1', variable: true },
+						{
+							type: 'decl',
+							prop: '--bar',
+							value: 'calc(1px * 100)',
+							variable: true
+						},
+						{ type: 'decl', prop: '--baz', value: '"a value"', variable: true }
+					]
+				)
+
+				assert.deepStrictEqual(
+					results['not-variable'],
+					[
+						{
+							type: 'decl',
+							prop: 'not-a-variable',
+							value: '1',
+							variable: false
+						}
+					]
 				)
 			}
 		}

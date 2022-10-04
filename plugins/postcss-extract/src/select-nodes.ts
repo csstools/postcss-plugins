@@ -100,6 +100,7 @@ function buildQuery(selector: selectorParser.Selector) {
 						break;
 					default:
 						currentCondition = {
+							next: currentCondition,
 							run: (): NodeList => {
 								return [];
 							},
@@ -120,6 +121,7 @@ function buildQuery(selector: selectorParser.Selector) {
 				switch (selectorPart.value) {
 					case ':not': {
 						currentCondition = {
+							next: currentCondition,
 							run: (list: NodeList): NodeList => {
 								const notQueries = selectorPart.nodes.map((notSelectorPart) => {
 									return buildQuery(notSelectorPart);
@@ -138,6 +140,7 @@ function buildQuery(selector: selectorParser.Selector) {
 					}
 					default:
 						currentCondition = {
+							next: currentCondition,
 							run: (): NodeList => {
 								return [];
 							},
@@ -186,6 +189,7 @@ function buildQuery(selector: selectorParser.Selector) {
 			}
 			default:
 				currentCondition = {
+					next: currentCondition,
 					run: (): NodeList => {
 						return [];
 					},
