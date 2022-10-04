@@ -16,7 +16,7 @@
 
 <header>
 
-[<humanReadableName>] lets you easily export parts of your CSS source files to javascript objects.
+[<humanReadableName>] lets you easily export parts of your CSS source files to JavaScript objects.
 
 your query :
 
