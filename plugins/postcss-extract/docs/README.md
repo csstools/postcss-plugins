@@ -88,7 +88,7 @@ Supported selectors:
 - `[value$=an]` ends with
 - `:not(<complex selector>)`
 
-Browser the [PostCSS API](https://postcss.org/api/) to gain more insights into the AST naming and structure.
+Browse the [PostCSS API](https://postcss.org/api/) to gain more insights into the AST naming and structure.
 
 ```js
 <exportName>({
