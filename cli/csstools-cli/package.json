@@ -70,7 +70,7 @@
 		"postcss-selector-not": "^6.0.0"
 	},
 	"devDependencies": {
-		"postcss": "^8.4.14"
+		"postcss": "^8.4.17"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
