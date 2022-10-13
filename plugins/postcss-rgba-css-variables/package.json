@@ -71,5 +71,9 @@
 		"extends": "../../package.json"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rgba-css-variables#readme",
-	"bugs": "https://github.com/csstools/postcss-plugins/issues"
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
+	"dependencies": {
+		"colord": "^2.9.3",
+		"postcss-value-parser": "^4.2.0"
+	}
 }

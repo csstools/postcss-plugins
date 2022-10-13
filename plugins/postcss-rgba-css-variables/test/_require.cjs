@@ -1,5 +1,5 @@
 const assert = require('assert');
-const plugin = require('@csstools/postcss-rgba-css-variables');
+const plugin = require('postcss-rgba-css-variables');
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

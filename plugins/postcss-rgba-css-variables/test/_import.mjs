@@ -1,5 +1,5 @@
 import assert from 'assert';
-import plugin from '@csstools/postcss-rgba-css-variables';
+import plugin from 'postcss-rgba-css-variables';
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

@@ -1,48 +1,93 @@
 import type { PluginCreator } from 'postcss';
+import { Colord, colord } from 'colord';
+import getRgbaVariables from './lib/get-rgba';
+import valueParser from 'postcss-value-parser';
 
-type pluginOptions = { color?: string, preserve?: boolean };
+function parseColor(color: Colord): string {
+	if(!color.isValid()) {
+		return;
+	}
+	const { r, g, b } = color.toRgb();
+	return `${r}, ${g}, ${b}`;
+}
 
-const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const options = Object.assign(
-		// Default options
-		{
-			color: null,
-			preserve: false,
-		},
-		// Provided options
-		opts,
-	);
+function getCurrentDeclVariables(decl) {
+	console.log(decl.prop, decl.value);
+}
+
+type pluginOptions = {
+	mode?: 'replace-directly' | 'replace-required' | 'replace-all';
+	preserve?: boolean;
+};
+
+const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
+	const {
+		mode = 'replace-directly',
+		preserve = false,
+	} = {...options};
+
+	console.log(mode, preserve);
 
 	return {
 		postcssPlugin: 'postcss-rgba-css-variables',
-		Declaration(decl) {
-			if (decl.value === 'red') {
-				// Determine the new value.
-				let newValue = 'blue';
-				if (options.color) {
-					newValue = options.color;
-				}
+		prepare() {
+			return {
+				Once: root => {
+					// const cssVariables = getCssVariables(root);
+					const rgbaVariables = getRgbaVariables(root);
+					// console.dir(cssVariables, { depth: null });
 
-				// Check if it is different from the current value.
-				if (newValue === decl.value) {
-					return;
-				}
+					const variablesTree: Map<string, string> = new Map();
 
-				// Insert the new value before the current value.
-				decl.cloneBefore({
-					prop: 'color',
-					value: newValue,
-				});
+					for (const {decl, variableName } of rgbaVariables) {
+						decl.parent.walkDecls(currentDecl => {
+							// console.log(111, variableName);
+							const { prop, value } = currentDecl;
+							if (prop === variableName) {
+								const currentColor = colord(value);
 
-				// If the current value is preserved we are done and return here.
-				if (options.preserve) {
-					return;
-				}
-
-				// If the current value is not preserved we remove it.
-				decl.remove();
-			}
+								if (currentColor.isValid()) {
+									variablesTree.set(prop, parseColor(currentColor));
+								} else {
+									// console.log(1111, currentDecl);
+									getCurrentDeclVariables(currentDecl);
+								}
+							}
+						});
+					}
+				},
+			};
 		},
+
+		// Declaration(decl) {
+		// 	console.log(1111, decl);
+		// 	if (decl.value === 'red') {
+		// 		// Determine the new value.
+		// 		let newValue = 'blue';
+		// 		if (options.color) {
+		// 			newValue = options.color;
+		// 		}
+
+		// 		// Check if it is different from the current value.
+		// 		if (newValue === decl.value) {
+		// 			return;
+		// 		}
+
+		// 		// Insert the new value before the current value.
+		// 		decl.cloneBefore({
+		// 			prop: 'color',
+		// 			value: newValue,
+		// 		});
+
+		// 		// If the current value is preserved we are done and return here.
+		// 		if (options.preserve) {
+		// 			return;
+		// 		}
+
+		// 		// If the current value is not preserved we remove it.
+		// 		decl.remove();
+		// 	}
+		// },
 	};
 };
 

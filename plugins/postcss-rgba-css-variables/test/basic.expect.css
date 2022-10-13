@@ -1,7 +1,12 @@
-.foo {
-	color: blue;
+:root {
+	--width: 100px;
+	--color: rgb(255, 0, 0);
+	--bg-color: #555;
 }
 
-.baz {
-	color: green;
+.header {
+	width: var(--width);
+	height: 80px;
+	color: rgba(255, 0, 0, .6);
+	background-color: rgba(85, 85, 85, .4);
 }
