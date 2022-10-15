@@ -1,0 +1,36 @@
+@property --some-shorthand {
+	syntax:
+		"<color>"
+		"<length> <length>"
+		"[ flex | block ]";
+	constituent-properties: color padding display;
+	values:
+		default / purple 20px 10px block,
+		fancy / hotpink 15px 30px flex;
+}
+
+.a {
+	--some-shorthand: fancy;
+}
+
+.a.a {
+	--some-shorthand: default;
+}
+
+.b {
+	--some-shorthand: unknown;
+}
+
+.c {
+	/* This plugin doesn't validate actual values */
+	--some-shorthand: orange 5px 2px inline;
+}
+
+.d {
+	--some-shorthand: revert;
+}
+
+.e {
+	/* This plugin does try to operate on values, not tokens */
+	--some-shorthand: red 1/2 3 /  5 block;
+}

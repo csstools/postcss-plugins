@@ -1,0 +1,35 @@
+.a {
+	color: hotpink;
+	padding: 15px 30px;
+	display: flex;
+}
+
+.a.a {
+	color: purple;
+	padding: 20px 10px;
+	display: block;
+}
+
+.b {
+	--some-shorthand: unknown;
+}
+
+.c {
+	/* This plugin doesn't validate actual values */
+	color: orange;
+	padding: 5px 2px;
+	display: inline;
+}
+
+.d {
+	color: revert;
+	padding: revert;
+	display: revert;
+}
+
+.e {
+	/* This plugin does try to operate on values, not tokens */
+	color: red;
+	padding: 1/2 3 /  5;
+	display: block;
+}

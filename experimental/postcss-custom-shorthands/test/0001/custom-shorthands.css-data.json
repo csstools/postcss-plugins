@@ -1,0 +1,38 @@
+{
+	"version": 1.1,
+	"properties": [
+		{
+			"name": "--some-shorthand",
+			"description": "Syntax: <color> <length> <length> [ flex | block ]",
+			"references": [
+				{
+					"name": "color",
+					"url": "https://developer.mozilla.org/en-US/docs/Web/CSS/color"
+				},
+				{
+					"name": "padding",
+					"url": "https://developer.mozilla.org/en-US/docs/Web/CSS/padding"
+				},
+				{
+					"name": "display",
+					"url": "https://developer.mozilla.org/en-US/docs/Web/CSS/display"
+				}
+			]
+		}
+	],
+	"atDirectives": [
+		{
+			"name": "@csstools-shorthand-property",
+			"description": "Define custom shorthands in CSS",
+			"status": "nonstandard",
+			"references": [
+				{
+					"name": "CSSWG issue",
+					"url": "https://github.com/w3c/csswg-drafts/issues/7879"
+				}
+			]
+		}
+	],
+	"pseudoClasses": [],
+	"pseudoElements": []
+}

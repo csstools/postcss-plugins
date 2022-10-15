@@ -1,0 +1,14 @@
+@csstools-shorthand-property --some-shorthand {
+	syntax:
+		"<color>"
+		"<length> <length>"
+		"[ flex | block ]";
+	constituent-properties: color padding display;
+	values:
+		default / purple 20px 10px block,
+		fancy / hotpink 15px 30px flex;
+}
+
+.a {
+	--some-shorthand: fancy;
+}
