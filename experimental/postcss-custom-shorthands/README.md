@@ -4,7 +4,7 @@
 
 [PostCSS Custom Shorthands Experimental] lets you try out custom shorthands in CSS to give feedback on the [Proposed feature].
 
-⚠️ This is not a feature that is on a standard track. ⚠️
+⚠️ This is not a feature that is on a standards track. ⚠️
 
 Please do not use this in real projects.
 It is intended to try out the feature to see if it is useful.
