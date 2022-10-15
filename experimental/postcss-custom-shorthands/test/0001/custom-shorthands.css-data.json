@@ -3,7 +3,7 @@
 	"properties": [
 		{
 			"name": "--some-shorthand",
-			"description": "Syntax: <color> <length> <length> [ flex | block ]",
+			"description": "Syntax: default | fancy | [ <color> <length> <length> [ flex | block ] ]",
 			"references": [
 				{
 					"name": "color",

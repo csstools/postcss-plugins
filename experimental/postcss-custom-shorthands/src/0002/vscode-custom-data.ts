@@ -36,9 +36,18 @@ export function generateVSCodeCustomDataInDirectory(atRuleName: string, shorthan
 			syntax.push(part.join(' '));
 		});
 
+		const keywords = Array.from(shorthand.values.keys());
+
+		let syntaxDefinition = '';
+		if (keywords.length) {
+			syntaxDefinition = `${keywords.join(' | ')} | [ ${syntax.join(' ')} ]`;
+		} else {
+			syntaxDefinition = syntax.join(' ');
+		}
+
 		result.properties.push({
 			'name': name,
-			'description': 'Syntax: ' + syntax.join(' '),
+			'description': 'Syntax: ' + syntaxDefinition,
 			'references': shorthand.constituentProperties.filter((constituentProperty) => {
 				return !constituentProperty.startsWith('-');
 			}).map((constituentProperty) => {

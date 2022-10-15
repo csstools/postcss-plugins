@@ -3,7 +3,7 @@
 	"properties": [
 		{
 			"name": "--some-shorthand",
-			"description": "Syntax: <'color'> <'padding'> <'padding'> <'display'>",
+			"description": "Syntax: default | fancy | [ <'color'> <'padding'> <'padding'> <'display'> ]",
 			"references": [
 				{
 					"name": "color",
