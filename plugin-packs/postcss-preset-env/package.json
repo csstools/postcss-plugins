@@ -46,7 +46,7 @@
 		"css-blank-pseudo": "^3.0.3",
 		"css-has-pseudo": "^3.0.4",
 		"css-prefers-color-scheme": "^6.0.3",
-		"cssdb": "^7.0.1",
+		"cssdb": "^7.0.2",
 		"postcss-attribute-case-insensitive": "^5.0.2",
 		"postcss-clamp": "^4.1.0",
 		"postcss-color-functional-notation": "^4.2.4",
