@@ -1,16 +1,12 @@
 test-float:dir(ltr) {
 	float: left;
-}
-test-float:dir(rtl) {
+}test-float:dir(rtl) {
 	float: right;
-}
-test-float:dir(ltr) {
+}test-float:dir(ltr) {
 	float: right;
-}
-test-float:dir(rtl) {
+}test-float:dir(rtl) {
 	float: left;
-}
-test-float {
+}test-float {
 	float: left;
 	float: right;
 }

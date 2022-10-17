@@ -1,14 +1,8 @@
 body > p, body > ul {
 	order: 1;
-}
-
-
-body > p ~ body > p, body > p ~ body > ul, body > ul ~ body > p, body > ul ~ body > ul {
+}body > p ~ body > p, body > p ~ body > ul, body > ul ~ body > p, body > ul ~ body > ul {
 		order: 2;
-	}
-
-
-body > p ~ body > p:hover,
+	}body > p ~ body > p:hover,
 		body > p ~ body > ul:hover,
 		body > ul ~ body > p:hover,
 		body > ul ~ body > ul:hover,
@@ -17,10 +11,7 @@ body > p ~ body > p:hover,
 		body > ul ~ body > p:focus,
 		body > ul ~ body > ul:focus {
 			order: 3;
-		}
-
-
-body > p ~ body > p *:hover,
+		}body > p ~ body > p *:hover,
 		body > p ~ body > ul *:hover,
 		body > ul ~ body > p *:hover,
 		body > ul ~ body > ul *:hover,
@@ -29,25 +20,13 @@ body > p ~ body > p *:hover,
 		body > ul ~ body > p *:focus,
 		body > ul ~ body > ul *:focus {
 			order: 4;
-		}
-
-
-body > p > *:hover, body > ul > *:hover {
+		}body > p > *:hover, body > ul > *:hover {
 			order: 5;
-		}
-
-
-body > p body > p, body > p body > ul, body > ul body > p, body > ul body > ul {
+		}body > p body > p, body > p body > ul, body > ul body > p, body > ul body > ul {
 		order: 6;
-	}
-
-
-body > p:is(body) > p, body > p:is(body) > ul, body > ul:is(body) > p, body > ul:is(body) > ul {
+	}body > p:is(body) > p, body > p:is(body) > ul, body > ul:is(body) > p, body > ul:is(body) > ul {
 		order: 7;
-	}
-
-
-body > p:is(body) > p:is(body) > p, body > p:is(body) > p:is(body) > ul, body > p:is(body) > ul:is(body) > p, body > p:is(body) > ul:is(body) > ul, body > ul:is(body) > p:is(body) > p, body > ul:is(body) > p:is(body) > ul, body > ul:is(body) > ul:is(body) > p, body > ul:is(body) > ul:is(body) > ul {
+	}body > p:is(body) > p:is(body) > p, body > p:is(body) > p:is(body) > ul, body > p:is(body) > ul:is(body) > p, body > p:is(body) > ul:is(body) > ul, body > ul:is(body) > p:is(body) > p, body > ul:is(body) > p:is(body) > ul, body > ul:is(body) > ul:is(body) > p, body > ul:is(body) > ul:is(body) > ul {
 		order: 8;
 	}
 

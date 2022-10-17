@@ -76,6 +76,7 @@ body:
         - PostCSS Dir Pseudo Class
         - PostCSS Double Position Gradients
         - PostCSS Env Function
+        - PostCSS Extract
         - PostCSS Focus Visible
         - PostCSS Focus Within
         - PostCSS Font Variant

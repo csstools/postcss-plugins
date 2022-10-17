@@ -1,16 +1,12 @@
 a, b {
 	order: 1;
-}
-a c, b c, a d, b d {
+}a c, b c, a d, b d {
 		order: 2;
-	}
-a c e, b c e, a d e, b d e, a c f, b c f, a d f, b d f {
+	}a c e, b c e, a d e, b d e, a c f, b c f, a d f, b d f {
 			order: 3;
-		}
-a c, b c, a d, b d {
+		}a c, b c, a d, b d {
 		order: 4;
-	}
-a, b {
+	}a, b {
 	order: 5;
 }
 a, b {

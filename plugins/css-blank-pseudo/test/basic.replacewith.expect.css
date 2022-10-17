@@ -1,8 +1,6 @@
 .css-blank.js-blank-pseudo, .js-blank-pseudo .css-blank {
 	order: 1;
-}
-
-:blank {
+}:blank {
 	order: 1;
 }
 

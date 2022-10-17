@@ -10,40 +10,28 @@
 				   -moz-box-ordinal-group: 6;
 				    -ms-flex-order: 5.1;
 				        order: 5.1;
-		}
-
-:root:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		}:root:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		is-layer: C;
 		--order: 1;
-	}
-
-.test-custom-property-fallbacks:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	}.test-custom-property-fallbacks:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		is-layer: C;
 		--firebrick: rgb(179, 35, 35);
-	}
-
-@supports (color: color(display-p3 0 0 0)){
+	}@supports (color: color(display-p3 0 0 0)){
 .test-custom-property-fallbacks:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		--firebrick: color(display-p3 0.64331 0.19245 0.16771);
 	}
-}
-
-@supports (color: lab(0% 0 0)){
+}@supports (color: lab(0% 0 0)){
 .test-custom-property-fallbacks:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		--firebrick: lab(40% 56.6 39);
 	}
-}
-
-.test-custom-properties:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+}.test-custom-properties:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		is-layer: C;
 		-webkit-box-ordinal-group: var(--order);
 		-webkit-order: var(--order);
 		   -moz-box-ordinal-group: var(--order);
 		    -ms-flex-order: var(--order);
 		        order: var(--order);
-	}
-
-.test-image-set-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	}.test-image-set-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		is-layer: C;
 		background-image: url(img/test.png);
 		background-image: -webkit-image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
@@ -53,32 +41,20 @@
 		   -moz-box-ordinal-group: 3;
 		    -ms-flex-order: 2;
 		        order: 2;
-	}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi){
+	}@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi){
 
 	.test-image-set-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		background-image: url(img/test-2x.png);
 	}
-}
-
-[dir="ltr"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-logical-properties-and-values{
+}[dir="ltr"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-logical-properties-and-values{
 		margin: 1px 4px 3px 2px;
-}
-
-.test-logical-properties-and-values:dir(ltr):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){
+}.test-logical-properties-and-values:dir(ltr):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){
 		margin: 1px 4px 3px 2px;
-}
-
-[dir="rtl"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-logical-properties-and-values{
+}[dir="rtl"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-logical-properties-and-values{
 		margin: 1px 2px 3px 4px;
-}
-
-.test-logical-properties-and-values:dir(rtl):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){
+}.test-logical-properties-and-values:dir(rtl):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){
 		margin: 1px 2px 3px 4px;
-}
-
-.test-logical-properties-and-values:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+}.test-logical-properties-and-values:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		is-layer: C;
 		margin: logical 1px 2px 3px 4px;
 		-webkit-box-ordinal-group: 4;
@@ -89,27 +65,21 @@
 		padding-top: 5px;
 		padding-bottom: 5px;
 		padding-block: 5px;
-	}
-
-.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	}.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		is-layer: C;
 		-webkit-box-ordinal-group: 5;
 		-webkit-order: 4;
 		   -moz-box-ordinal-group: 5;
 		    -ms-flex-order: 4;
 		        order: 4;
-	}
-
-.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) p {
+	}.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) p {
 			is-layer: C;
 			-webkit-box-ordinal-group: 6;
 			-webkit-order: 5;
 			   -moz-box-ordinal-group: 6;
 			    -ms-flex-order: 5;
 			        order: 5;
-		}
-
-.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		}.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 
 		is-layer: C;
 		-webkit-box-ordinal-group: 7;
