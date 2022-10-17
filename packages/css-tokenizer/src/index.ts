@@ -1,6 +1,6 @@
 export type { CSSToken } from './interfaces/token';
 export { Reader } from './reader';
-export { TokenType, NumberType, mirrorVariant, isToken } from './interfaces/token';
+export { TokenType, NumberType, mirrorVariantType, isToken } from './interfaces/token';
 export { stringify } from './stringify';
 export { tokenizer } from './tokenizer';
 

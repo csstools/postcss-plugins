@@ -10,7 +10,7 @@
 	},
 	"workspaces": [
 		"packages/css-tokenizer",
-		"packages/css-parser",
+		"packages/css-parser-algorithms",
 		"packages/*",
 		"plugins/postcss-progressive-custom-properties",
 		"plugins/*",

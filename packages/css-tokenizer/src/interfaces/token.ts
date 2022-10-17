@@ -133,7 +133,7 @@ export type Token<T extends TokenType, U> = [
 	U,
 ]
 
-export function mirrorVariant(type: TokenType): TokenType|null {
+export function mirrorVariantType(type: TokenType): TokenType|null {
 	switch (type) {
 		case TokenType.OpenParen:
 			return TokenType.CloseParen;
