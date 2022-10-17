@@ -75,7 +75,7 @@
 		"@babel/preset-env": "^7.18.2",
 		"@rollup/plugin-babel": "^5.3.1",
 		"@rollup/plugin-commonjs": "^22.0.0",
-		"@rollup/plugin-node-resolve": "^14.0.0",
+		"@rollup/plugin-node-resolve": "^15.0.0",
 		"babel-eslint": "^10.1.0",
 		"cssdb": "^7.0.0",
 		"cssnano": "^5.1.10",
