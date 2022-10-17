@@ -1,8 +1,6 @@
 .focus-within.js-focus-within, .js-focus-within .focus-within {
 	order: 1;
-}
-
-:focus-within {
+}:focus-within {
 	order: 1;
 }
 

@@ -2,8 +2,7 @@
 	.js-has-pseudo [csstools-has-2p-1m-2w-2p-37-14-1a-2q-15]:not(does-not-exist) {
 		order: 1;
 	}
-
-a:has(.b) {
+	a:has(.b) {
 		order: 1;
 	}
 
