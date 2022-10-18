@@ -3,9 +3,7 @@
 		--site-bgcolor: #1b1b1b;
 		--site-color: #fff;
 	}
-}
-
-@media (prefers-color-scheme: dark) {
+}@media (prefers-color-scheme: dark) {
 	:root {
 		--site-bgcolor: #1b1b1b;
 		--site-color: #fff;

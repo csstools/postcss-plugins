@@ -1,16 +1,12 @@
 test-clear:dir(ltr) {
 	clear: left;
-}
-test-clear:dir(rtl) {
+}test-clear:dir(rtl) {
 	clear: right;
-}
-test-clear:dir(ltr) {
+}test-clear:dir(ltr) {
 	clear: right;
-}
-test-clear:dir(rtl) {
+}test-clear:dir(rtl) {
 	clear: left;
-}
-test-clear {
+}test-clear {
 	clear: both;
 	clear: left;
 	clear: right;

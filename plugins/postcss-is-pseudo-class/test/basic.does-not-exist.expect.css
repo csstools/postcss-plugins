@@ -1,16 +1,10 @@
 input[active]:hover > b {
 	order: 1;
-}
-
-input[active]:focus > b {
+}input[active]:focus > b {
 	order: 1;
-}
-
-button[active]:hover > b {
+}button[active]:hover > b {
 	order: 1;
-}
-
-button[active]:focus > b {
+}button[active]:focus > b {
 	order: 1;
 }
 

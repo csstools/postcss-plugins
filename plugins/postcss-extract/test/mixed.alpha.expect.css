@@ -1,0 +1,14 @@
+.a-selector, another-selector {
+	order: 1;
+	--color: red;
+}
+
+@media screen {
+	[more=selectors] {
+		@supports (display: grid) {
+			& {
+				color: var(--color);
+			}
+		}
+	}
+}

@@ -1,8 +1,6 @@
 :link, :visited {
 	order: 1;
-}
-
-:any-link {
+}:any-link {
 	order: 1;
 }
 

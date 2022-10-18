@@ -1,0 +1,18 @@
+:root {
+	/* extract only this one */
+	--foo: 1;
+	--bar: calc(1px * 100);
+	not-a-variable: 1;
+}
+
+:root {
+	@media screen {
+		:root {
+				--baz: "a value";
+			}
+	}
+}
+
+.other {
+	--ignored: 1;
+}
