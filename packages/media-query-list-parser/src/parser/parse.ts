@@ -1,5 +1,6 @@
-import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
-import { tokenizer } from '@csstools/css-tokenizer';
+import { ComponentValue, parseCommaSeparatedListOfComponentValues, TokenNode } from '@csstools/css-parser-algorithms';
+import { tokenizer, TokenType } from '@csstools/css-tokenizer';
+import { GeneralEnclosed } from '../nodes/general-enclosed';
 
 export function parse(source: string) {
 	const onParseError = (err) => {
@@ -21,9 +22,52 @@ export function parse(source: string) {
 		tokens.push(t.nextToken()); // EOF-token
 	}
 
-	const result = parseCommaSeparatedListOfComponentValues(tokens, {
+	const parsed = parseCommaSeparatedListOfComponentValues(tokens, {
 		onParseError: onParseError,
 	});
 
-	return result;
+	const mediaQueryList = parsed.map((componentValuesList) => {
+		const result = [];
+
+		const lastSliceIndex = 0;
+		for (let i = 0; i < componentValuesList.length; i++) {
+			const componentValue = componentValuesList[i];
+			if (componentValue.type === 'whitespace' || componentValue.type === 'comment') {
+				continue;
+			}
+
+			if (componentValue.type === 'function') {
+				result.push(new GeneralEnclosed(componentValue));
+			}
+		}
+
+	});
+
+	return mediaQueryList;
+}
+
+function consumeMediaQueryWithType(componentValuesList: Array<ComponentValue>) {
+	const modifier: Array<CSSToken> = [];
+	const mediaType: Array<CSSToken> = [];
+
+	const lastSliceIndex = 0;
+	for (let i = 0; i < componentValuesList.length; i++) {
+		const componentValue = componentValuesList[i];
+		if (componentValue.type === 'whitespace' || componentValue.type === 'comment') {
+			continue;
+		}
+
+		if (componentValue.type === 'token') {
+			const token = (componentValue as TokenNode).value;
+
+			switch (token[0]) {
+				case TokenType.Ident:
+
+					break;
+
+				default:
+					break;
+			}
+		}
+	}
 }

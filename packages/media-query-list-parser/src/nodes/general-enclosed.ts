@@ -26,8 +26,22 @@ export class GeneralEnclosed {
 		return this.value.toString();
 	}
 
-	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode | GeneralEnclosed }, index: number) => boolean) {
-		if (cb({ node: this.value, parent: this }, 0) === false) {
+	indexOf(item: ComponentValue): number | string {
+		if (item === this.value) {
+			return 'value';
+		}
+
+		return -1;
+	}
+
+	at(index: number | string) {
+		if (index === 'value') {
+			return this.value;
+		}
+	}
+
+	walk(cb: (entry: { node: GeneralEnclosedWalkerEntry, parent: GeneralEnclosedWalkerParent }, index: number | string) => boolean) {
+		if (cb({ node: this.value, parent: this }, 'value') === false) {
 			return false;
 		}
 
@@ -36,3 +50,6 @@ export class GeneralEnclosed {
 		}
 	}
 }
+
+export type GeneralEnclosedWalkerEntry = ComponentValue;
+export type GeneralEnclosedWalkerParent = ContainerNode | GeneralEnclosed;

@@ -98,7 +98,20 @@ export class FunctionNode {
 		return stringify(this.name) + valueString + stringify(this.endToken);
 	}
 
-	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number) => boolean) {
+	indexOf(item: ComponentValue): number | string {
+		return this.value.indexOf(item);
+	}
+
+	at(index: number | string) {
+		if (typeof index === 'number') {
+			if (index < 0) {
+				index = this.value.length + index;
+			}
+			return this.value[index];
+		}
+	}
+
+	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number | string) => boolean) {
 		let aborted = false;
 
 		this.value.forEach((child, index) => {
@@ -210,7 +223,20 @@ export class SimpleBlockNode {
 		return stringify(this.startToken) + valueString + stringify(this.endToken);
 	}
 
-	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number) => boolean) {
+	indexOf(item: ComponentValue): number | string {
+		return this.value.indexOf(item);
+	}
+
+	at(index: number | string) {
+		if (typeof index === 'number') {
+			if (index < 0) {
+				index = this.value.length + index;
+			}
+			return this.value[index];
+		}
+	}
+
+	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number | string) => boolean) {
 		let aborted = false;
 
 		this.value.forEach((child, index) => {

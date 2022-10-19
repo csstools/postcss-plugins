@@ -1,5 +1,5 @@
-import { MediaConditionListWithAnd, MediaConditionListWithOr } from './media-condition-list';
-import { MediaNot } from './media-not';
+import { MediaConditionListWithAnd, MediaConditionListWithAndWalkerEntry, MediaConditionListWithAndWalkerParent, MediaConditionListWithOr, MediaConditionListWithOrWalkerEntry, MediaConditionListWithOrWalkerParent } from './media-condition-list';
+import { MediaNot, MediaNotWalkerEntry, MediaNotWalkerParent } from './media-not';
 
 export class MediaCondition {
 	type = 'media-condition';
@@ -10,7 +10,36 @@ export class MediaCondition {
 		this.media = media;
 	}
 
+	tokens() {
+		return this.media.tokens();
+	}
+
 	toString() {
 		return this.media.toString();
 	}
+
+	indexOf(item: MediaNot | MediaConditionListWithAnd | MediaConditionListWithOr): number | string {
+		if (item === this.media) {
+			return 'media';
+		}
+
+		return -1;
+	}
+
+	at(index: number | string) {
+		if (index === 'media') {
+			return this.media;
+		}
+	}
+
+	walk(cb: (entry: { node: MediaConditionWalkerEntry, parent: MediaConditionWalkerParent }, index: number | string) => boolean) {
+		if (cb({ node: this.media, parent: this }, 'media') === false) {
+			return false;
+		}
+
+		return this.media.walk(cb);
+	}
 }
+
+export type MediaConditionWalkerEntry = MediaNotWalkerEntry | MediaConditionListWithAndWalkerEntry | MediaConditionListWithOrWalkerEntry | MediaNot | MediaConditionListWithAnd | MediaConditionListWithOr;
+export type MediaConditionWalkerParent = MediaNotWalkerParent | MediaConditionListWithAndWalkerParent | MediaConditionListWithOrWalkerParent | MediaCondition;

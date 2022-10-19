@@ -1,8 +1,7 @@
-import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
 import { stringify, TokenDelim } from '@csstools/css-tokenizer';
 import { comparisonFromTokens } from './media-feature-comparison';
 import { MediaFeatureName } from './media-feature-name';
-import { MediaFeatureValue } from './media-feature-value';
+import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
 
 export type MediaFeatureRange = MediaFeatureRangeNameValue |
 	MediaFeatureRangeValueName |
@@ -38,8 +37,30 @@ export class MediaFeatureRangeNameValue {
 		return this.name.toString() + stringify(...this.operator) + this.value.toString();
 	}
 
-	walk(cb: (entry: { node: ComponentValue | MediaFeatureValue, parent: ContainerNode | MediaFeatureValue | MediaFeatureRange }, index: number) => boolean) {
-		if (cb({ node: this.value, parent: this }, 0) === false) {
+	indexOf(item: MediaFeatureName | MediaFeatureValue): number | string {
+		if (item === this.name) {
+			return 'name';
+		}
+
+		if (item === this.value) {
+			return 'value';
+		}
+
+		return -1;
+	}
+
+	at(index: number | string) {
+		if (index === 'name') {
+			return this.name;
+		}
+
+		if (index === 'value') {
+			return this.value;
+		}
+	}
+
+	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean) {
+		if (cb({ node: this.value, parent: this }, 'value') === false) {
 			return false;
 		}
 
@@ -78,8 +99,30 @@ export class MediaFeatureRangeValueName {
 		return this.value.toString() + stringify(...this.operator) + this.name.toString();
 	}
 
-	walk(cb: (entry: { node: ComponentValue | MediaFeatureValue, parent: ContainerNode | MediaFeatureValue | MediaFeatureRange }, index: number) => boolean) {
-		if (cb({ node: this.value, parent: this }, 0) === false) {
+	indexOf(item: MediaFeatureName | MediaFeatureValue): number | string {
+		if (item === this.name) {
+			return 'name';
+		}
+
+		if (item === this.value) {
+			return 'value';
+		}
+
+		return -1;
+	}
+
+	at(index: number | string) {
+		if (index === 'name') {
+			return this.name;
+		}
+
+		if (index === 'value') {
+			return this.value;
+		}
+	}
+
+	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean) {
+		if (cb({ node: this.value, parent: this }, 'value') === false) {
 			return false;
 		}
 
@@ -128,8 +171,38 @@ export class MediaFeatureRangeLowHigh {
 		return this.low.toString() + stringify(...this.lowOperator) + this.name.toString() + stringify(...this.highOperator) + this.high.toString();
 	}
 
-	walk(cb: (entry: { node: ComponentValue | MediaFeatureValue, parent: ContainerNode | MediaFeatureValue | MediaFeatureRange }, index: number) => boolean) {
-		if (cb({ node: this.low, parent: this }, 0) === false) {
+	indexOf(item: MediaFeatureName | MediaFeatureValue): number | string {
+		if (item === this.name) {
+			return 'name';
+		}
+
+		if (item === this.low) {
+			return 'low';
+		}
+
+		if (item === this.high) {
+			return 'high';
+		}
+
+		return -1;
+	}
+
+	at(index: number | string) {
+		if (index === 'name') {
+			return this.name;
+		}
+
+		if (index === 'low') {
+			return this.low;
+		}
+
+		if (index === 'high') {
+			return this.high;
+		}
+	}
+
+	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean) {
+		if (cb({ node: this.low, parent: this }, 'low') === false) {
 			return false;
 		}
 
@@ -139,7 +212,7 @@ export class MediaFeatureRangeLowHigh {
 			}
 		}
 
-		if (cb({ node: this.high, parent: this }, 0) === false) {
+		if (cb({ node: this.high, parent: this }, 'high') === false) {
 			return false;
 		}
 
@@ -190,8 +263,38 @@ export class MediaFeatureRangeHighLow {
 		return this.high.toString() + stringify(...this.highOperator) + this.name.toString() + stringify(...this.lowOperator) + this.low.toString();
 	}
 
-	walk(cb: (entry: { node: ComponentValue | MediaFeatureValue, parent: ContainerNode | MediaFeatureValue | MediaFeatureRange }, index: number) => boolean) {
-		if (cb({ node: this.high, parent: this }, 0) === false) {
+	indexOf(item: MediaFeatureName | MediaFeatureValue): number | string {
+		if (item === this.name) {
+			return 'name';
+		}
+
+		if (item === this.low) {
+			return 'low';
+		}
+
+		if (item === this.high) {
+			return 'high';
+		}
+
+		return -1;
+	}
+
+	at(index: number | string) {
+		if (index === 'name') {
+			return this.name;
+		}
+
+		if (index === 'low') {
+			return this.low;
+		}
+
+		if (index === 'high') {
+			return this.high;
+		}
+	}
+
+	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean) {
+		if (cb({ node: this.high, parent: this }, 'high') === false) {
 			return false;
 		}
 
@@ -201,7 +304,7 @@ export class MediaFeatureRangeHighLow {
 			}
 		}
 
-		if (cb({ node: this.low, parent: this }, 0) === false) {
+		if (cb({ node: this.low, parent: this }, 'low') === false) {
 			return false;
 		}
 
@@ -212,3 +315,6 @@ export class MediaFeatureRangeHighLow {
 		}
 	}
 }
+
+export type MediaFeatureRangeWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
+export type MediaFeatureRangeWalkerParent = MediaFeatureValueWalkerParent | MediaFeatureRange;

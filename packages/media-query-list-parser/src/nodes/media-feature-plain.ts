@@ -1,7 +1,6 @@
-import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
 import { stringify, TokenColon } from '@csstools/css-tokenizer';
 import { MediaFeatureName } from './media-feature-name';
-import { MediaFeatureValue } from './media-feature-value';
+import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
 
 export class MediaFeaturePlain {
 	type = 'mf-plain';
@@ -28,11 +27,36 @@ export class MediaFeaturePlain {
 		return this.name.toString() + stringify(this.colon) + this.value.toString();
 	}
 
-	walk(cb: (entry: { node: ComponentValue | MediaFeatureValue, parent: ContainerNode | MediaFeaturePlain | MediaFeatureValue }, index: number) => boolean) {
-		if (cb({ node: this.value, parent: this }, 0) === false) {
+	indexOf(item: MediaFeatureName | MediaFeatureValue): number | string {
+		if (item === this.name) {
+			return 'name';
+		}
+
+		if (item === this.value) {
+			return 'value';
+		}
+
+		return -1;
+	}
+
+	at(index: number | string) {
+		if (index === 'name') {
+			return this.name;
+		}
+
+		if (index === 'value') {
+			return this.value;
+		}
+	}
+
+	walk(cb: (entry: { node: MediaFeaturePlainWalkerEntry, parent: MediaFeaturePlainWalkerParent }, index: number | string) => boolean) {
+		if (cb({ node: this.value, parent: this }, 'value') === false) {
 			return false;
 		}
 
 		return this.value.walk(cb);
 	}
 }
+
+export type MediaFeaturePlainWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
+export type MediaFeaturePlainWalkerParent = MediaFeatureValueWalkerParent | MediaFeaturePlain;

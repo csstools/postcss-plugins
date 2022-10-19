@@ -7,62 +7,44 @@ import { MediaFeature } from './media-feature';
 export class MediaInParens {
 	type = 'media-in-parens';
 
-	startToken?: CSSToken;
-	endToken?: CSSToken;
 	media: MediaCondition | MediaFeature | GeneralEnclosed;
+	before: Array<CSSToken>;
+	after: Array<CSSToken>;
 
-	constructor(media: MediaCondition | MediaFeature | GeneralEnclosed, startToken?: CSSToken, endToken?: CSSToken) {
-		this.startToken = startToken;
-		this.endToken = endToken;
+	constructor(media: MediaCondition | MediaFeature | GeneralEnclosed, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
 		this.media = media;
+		this.before = before;
+		this.after = after;
 	}
 
 	tokens() {
-		if (this.media.type === 'general-enclosed') {
-			return this.media.tokens();
-		}
-
-		if (this.media.type === 'media-feature') {
-			return this.media.tokens();
-		}
-
-		if (this.media.type === 'media-condition') {
-			if (!this.startToken || !this.endToken) {
-				throw new Error('Failed to list tokens for "media-in-parens" with "media-condition"');
-			}
-
-			return [
-				this.startToken,
-				...this.media.tokens(),
-				this.endToken,
-			];
-		}
-
-		throw new Error('Failed to list tokens for "media-in-parens"');
+		return [
+			...this.before,
+			...this.media.tokens(),
+			...this.after,
+		];
 	}
 
 	toString() {
-		if (this.media.type === 'general-enclosed') {
-			return this.media.toString();
-		}
-
-		if (this.media.type === 'media-feature') {
-			return this.media.toString();
-		}
-
-		if (this.media.type === 'media-condition') {
-			if (!this.startToken || !this.endToken) {
-				throw new Error('Failed to stringify "media-in-parens" with "media-condition"');
-			}
-
-			return stringify(this.startToken) + this.media.toString() + stringify(this.endToken);
-		}
-
-		throw new Error('Failed to stringify "media-in-parens"');
+		return stringify(...this.before) + this.media.toString() + stringify(...this.after);
 	}
 
-	walk(cb: (entry: { node: ComponentValue | MediaCondition | MediaFeature | GeneralEnclosed, parent: ContainerNode | MediaInParens | GeneralEnclosed }, index: number) => boolean) {
-		if (cb({ node: this.media, parent: this }, 0) === false) {
+	indexOf(item: MediaCondition | MediaFeature | GeneralEnclosed): number | string {
+		if (item === this.media) {
+			return 'media';
+		}
+
+		return -1;
+	}
+
+	at(index: number | string) {
+		if (index === 'media') {
+			return this.media;
+		}
+	}
+
+	walk(cb: (entry: { node: MediaInParensWalkerEntry, parent: MediaInParensWalkerParent }, index: number | string) => boolean) {
+		if (cb({ node: this.media, parent: this }, 'media') === false) {
 			return false;
 		}
 
@@ -71,3 +53,6 @@ export class MediaInParens {
 		}
 	}
 }
+
+export type MediaInParensWalkerEntry = ComponentValue | MediaCondition | MediaFeature | GeneralEnclosed;
+export type MediaInParensWalkerParent = ContainerNode | MediaInParens | GeneralEnclosed;

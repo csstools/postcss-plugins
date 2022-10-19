@@ -1,39 +1,70 @@
-import { MediaCondition } from './media-condition';
-import { MediaConditionWithoutOr } from './media-condition-without-or-or';
-import { MediaQueryModifier } from './media-query-modifier';
-import { MediaType } from './media-type';
+import { CSSToken, stringify } from '@csstools/css-tokenizer';
+import { MediaCondition, MediaConditionWalkerEntry, MediaConditionWalkerParent } from './media-condition';
+import { MediaConditionWithoutOr, MediaConditionWithoutOrWalkerEntry, MediaConditionWithoutOrWalkerParent } from './media-condition-without-or';
 
 export type MediaQuery = MediaQueryWithType | MediaQueryWithoutType;
 
 export class MediaQueryWithType {
 	type = 'media-query-with-type';
 
-	modifier?: MediaQueryModifier;
-	mediaType: MediaType;
-	media?: MediaConditionWithoutOr;
+	modifier: Array<CSSToken>;
+	mediaType: Array<CSSToken>;
+	media: MediaConditionWithoutOr | null = null;
 
-	constructor(modifier: MediaQueryModifier | null, mediaType: MediaType, media: MediaConditionWithoutOr | null) {
+	constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, media?: MediaConditionWithoutOr | null) {
 		this.modifier = modifier;
 		this.mediaType = mediaType;
 		this.media = media;
 	}
 
-	toString() {
-		if (this.modifier && this.media) {
-			return `${this.modifier} ${this.mediaType} and ${this.media.toString()}`;
-		}
-
-		if (this.modifier) {
-			return `${this.modifier} ${this.mediaType}`;
-		}
-
+	tokens() {
 		if (this.media) {
-			return `${this.mediaType} and ${this.media.toString()}`;
+			return [
+				...this.modifier,
+				...this.mediaType,
+				...this.media.tokens(),
+			];
 		}
 
-		return this.mediaType;
+		return [
+			...this.modifier,
+			...this.mediaType,
+		];
+	}
+
+	toString() {
+		if (this.media) {
+			return stringify(...this.modifier) + stringify(...this.mediaType) + this.media.toString();
+		}
+
+		return stringify(...this.modifier) + stringify(...this.mediaType);
+	}
+
+	indexOf(item: MediaConditionWithoutOr): number | string {
+		if (item === this.media) {
+			return 'media';
+		}
+
+		return -1;
+	}
+
+	at(index: number | string) {
+		if (index === 'media') {
+			return this.media;
+		}
+	}
+
+	walk(cb: (entry: { node: MediaQueryWithTypeWalkerEntry, parent: MediaQueryWithTypeWalkerParent }, index: number | string) => boolean) {
+		if (cb({ node: this.media, parent: this }, 'media') === false) {
+			return false;
+		}
+
+		return this.media.walk(cb);
 	}
 }
+
+export type MediaQueryWithTypeWalkerEntry = MediaConditionWithoutOrWalkerEntry | MediaConditionWithoutOr;
+export type MediaQueryWithTypeWalkerParent = MediaConditionWithoutOrWalkerParent | MediaQueryWithType;
 
 export class MediaQueryWithoutType {
 	type = 'media-query-without-type';
@@ -44,7 +75,36 @@ export class MediaQueryWithoutType {
 		this.media = media;
 	}
 
+	tokens() {
+		return this.media.tokens();
+	}
+
 	toString() {
 		return this.media.toString();
 	}
+
+	indexOf(item: MediaCondition): number | string {
+		if (item === this.media) {
+			return 'media';
+		}
+
+		return -1;
+	}
+
+	at(index: number | string) {
+		if (index === 'media') {
+			return this.media;
+		}
+	}
+
+	walk(cb: (entry: { node: MediaQueryWithoutTypeWalkerEntry, parent: MediaQueryWithoutTypeWalkerParent }, index: number | string) => boolean) {
+		if (cb({ node: this.media, parent: this }, 'media') === false) {
+			return false;
+		}
+
+		return this.media.walk(cb);
+	}
 }
+
+export type MediaQueryWithoutTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
+export type MediaQueryWithoutTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithoutType;
