@@ -17,6 +17,7 @@
 - 	order: 1;
 - 	order: var(--my-order, 1);
 }
+```
 
 ### 12.1.9 (September 14, 2022)
 
