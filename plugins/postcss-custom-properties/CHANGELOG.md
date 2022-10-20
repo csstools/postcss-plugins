@@ -2,20 +2,22 @@
 
 ### Unreleased
 
-- Fix how `preserve: false` interacts with logic around duplicate code.
+- Fix how `preserve: false` interacts with logic around duplicate code (see `12.1.9`).
 
 ```diff
-.foo {
-	order: 1;
-	order: var(--my-order, 1);
+:root {
+	--my-order: 1;
 }
 
-/* Only with `preserve: false` : */
+.foo {
+	order: 1;
+	order: var(--my-order);
+}
+
+/* With `preserve: false` : */
 
 .foo {
 	order: 1;
-- 	order: 1;
-- 	order: var(--my-order, 1);
 }
 ```
 
