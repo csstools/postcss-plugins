@@ -22,6 +22,10 @@ export default (decl, customProperties, opts) => {
 		// conditionally transform values that have changed
 		if (value !== originalValue) {
 			if (parentHasExactFallback(decl, value)) {
+				if (!opts.preserve) {
+					decl.remove();
+				}
+
 				return;
 			}
 

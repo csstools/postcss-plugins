@@ -1,5 +1,23 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased
+
+- Fix how `preserve: false` interacts with logic around duplicate code.
+
+```diff
+.foo {
+	order: 1;
+	order: var(--my-order, 1);
+}
+
+/* Only with `preserve: false` : */
+
+.foo {
+	order: 1;
+- 	order: 1;
+- 	order: var(--my-order, 1);
+}
+
 ### 12.1.9 (September 14, 2022)
 
 - Prevent duplicate code generation.

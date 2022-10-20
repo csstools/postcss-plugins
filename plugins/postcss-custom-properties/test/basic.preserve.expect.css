@@ -112,12 +112,10 @@
 
 .ignores-declarations-that-have-an-exact-fallback-a {
 	left: 1rem;
-	left: var(--does-not-exist, 1rem);
 }
 
 .ignores-declarations-that-have-an-exact-fallback-b {
 	right: 2em;
-	right: var(--✅-size);
 }
 
 .does-not-ignore-declarations-that-have-an-exact-override-a {
