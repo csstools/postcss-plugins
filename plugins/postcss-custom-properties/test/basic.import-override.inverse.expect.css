@@ -110,12 +110,22 @@
 	font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-.ignores-declarations-that-have-an-exact-fallback {
+.ignores-declarations-that-have-an-exact-fallback-a {
 	left: 1rem;
-	left: var(--size, 1rem);
+	left: var(--does-not-exist, 1rem);
 }
 
-.does-not-ignore-declarations-that-have-an-exact-override {
+.ignores-declarations-that-have-an-exact-fallback-b {
+	right: 2em;
+	right: var(--✅-size);
+}
+
+.does-not-ignore-declarations-that-have-an-exact-override-a {
 	left: 1rem;
 	left: 1rem;
+}
+
+.does-not-ignore-declarations-that-have-an-exact-override-b {
+	right: 2em;
+	right: 2em;
 }
