@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased
+### 12.1.10 (October 20, 2022)
 
 - Fix how `preserve: false` interacts with logic around duplicate code (see `12.1.9`).
 
