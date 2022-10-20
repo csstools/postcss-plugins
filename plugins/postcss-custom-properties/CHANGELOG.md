@@ -19,6 +19,26 @@
 	--a-value: 20px;
 	margin: 20px;
 	margin: var(--a-value);
+```
+
+### 12.1.10 (October 20, 2022)
+
+- Fix how `preserve: false` interacts with logic around duplicate code (see `12.1.9`).
+
+```css
+:root {
+	--my-order: 1;
+}
+
+.foo {
+	order: 1;
+	order: var(--my-order);
+}
+
+/* With `preserve: false` : */
+
+.foo {
+	order: 1;
 }
 ```
 
