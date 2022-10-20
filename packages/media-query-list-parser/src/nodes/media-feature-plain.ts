@@ -1,6 +1,7 @@
-import { stringify, TokenColon } from '@csstools/css-tokenizer';
-import { MediaFeatureName } from './media-feature-name';
-import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
+import { ComponentValue } from '@csstools/css-parser-algorithms';
+import { CSSToken, stringify, TokenColon, TokenType } from '@csstools/css-tokenizer';
+import { matchesMediaFeatureName, MediaFeatureName } from './media-feature-name';
+import { matchesMediaFeatureValue, MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
 
 export class MediaFeaturePlain {
 	type = 'mf-plain';
@@ -60,3 +61,36 @@ export class MediaFeaturePlain {
 
 export type MediaFeaturePlainWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
 export type MediaFeaturePlainWalkerParent = MediaFeatureValueWalkerParent | MediaFeaturePlain;
+
+export function matchesMediaFeaturePlain(componentValues: Array<ComponentValue>) {
+	let a: Array<ComponentValue> = [];
+	let b: Array<ComponentValue> = [];
+
+	for (let i = 0; i < componentValues.length; i++) {
+		const componentValue = componentValues[i];
+		if (componentValue.type === 'token') {
+			const token = componentValue.value as CSSToken;
+			if (token[0] === TokenType.Colon) {
+				a = componentValues.slice(0, i);
+				b = componentValues.slice(i + 1);
+				break;
+			}
+		}
+	}
+
+	if (!a.length || !b.length) {
+		return -1;
+	}
+
+	const aResult = matchesMediaFeatureName(a);
+	if (aResult === -1) {
+		return -1;
+	}
+
+	const bResult = matchesMediaFeatureValue(b);
+	if (bResult === -1) {
+		return -1;
+	}
+
+	return [aResult, bResult];
+}

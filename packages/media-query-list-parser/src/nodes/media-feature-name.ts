@@ -1,29 +1,30 @@
 import { ComponentValue } from '@csstools/css-parser-algorithms';
-import { isToken, stringify } from '@csstools/css-tokenizer';
+import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
+import { isIdent } from '../util/component-value-is';
 
 export class MediaFeatureName {
 	type = 'mf-name';
 
 	name: ComponentValue;
+	before: Array<CSSToken>;
+	after: Array<CSSToken>;
 
-	constructor(name: ComponentValue) {
+	constructor(name: ComponentValue, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
 		this.name = name;
+		this.before = before;
+		this.after = after;
 	}
 
 	tokens() {
-		if (isToken(this.name)) {
-			return this.name;
-		}
-
-		return this.name.tokens();
+		return [
+			...this.before,
+			...this.name.tokens(),
+			...this.after,
+		];
 	}
 
 	toString() {
-		if (isToken(this.name)) {
-			return stringify(this.name);
-		}
-
-		return this.name.toString();
+		return stringify(...this.before) + this.name.toString() + stringify(...this.after);
 	}
 
 	indexOf(item: ComponentValue): number | string {
@@ -39,4 +40,32 @@ export class MediaFeatureName {
 			return this.name;
 		}
 	}
+}
+
+export function matchesMediaFeatureName(componentValues: Array<ComponentValue>) {
+	let singleIdentTokenIndex = -1;
+
+	for (let i = 0; i < componentValues.length; i++) {
+		const componentValue = componentValues[i];
+		if (componentValue.type === 'whitespace') {
+			continue;
+		}
+
+		if (componentValue.type === 'comment') {
+			continue;
+		}
+
+		if (isIdent(componentValue)) {
+			if (singleIdentTokenIndex !== -1) {
+				return -1;
+			}
+
+			singleIdentTokenIndex = i;
+			continue;
+		}
+
+		return -1;
+	}
+
+	return singleIdentTokenIndex;
 }

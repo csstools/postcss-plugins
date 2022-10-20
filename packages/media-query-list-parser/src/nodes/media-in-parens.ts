@@ -1,8 +1,15 @@
-import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
+import { ComponentValue, ContainerNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { GeneralEnclosed } from './general-enclosed';
+import { MediaAnd } from './media-and';
 import { MediaCondition } from './media-condition';
+import { MediaConditionList } from './media-condition-list';
 import { MediaFeature } from './media-feature';
+import { MediaFeatureBoolean } from './media-feature-boolean';
+import { MediaFeatureName } from './media-feature-name';
+import { MediaFeaturePlain } from './media-feature-plain';
+import { MediaFeatureRange } from './media-feature-range';
+import { MediaFeatureValue } from './media-feature-value';
 
 export class MediaInParens {
 	type = 'media-in-parens';
@@ -54,5 +61,5 @@ export class MediaInParens {
 	}
 }
 
-export type MediaInParensWalkerEntry = ComponentValue | MediaCondition | MediaFeature | GeneralEnclosed;
-export type MediaInParensWalkerParent = ContainerNode | MediaInParens | GeneralEnclosed;
+export type MediaInParensWalkerEntry = ComponentValue | Array<ComponentValue> | GeneralEnclosed | MediaAnd | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
+export type MediaInParensWalkerParent = ContainerNode | GeneralEnclosed | MediaAnd | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
