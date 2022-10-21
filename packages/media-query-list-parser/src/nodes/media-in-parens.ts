@@ -1,4 +1,4 @@
-import { ComponentValue, ContainerNode, TokenNode } from '@csstools/css-parser-algorithms';
+import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { GeneralEnclosed } from './general-enclosed';
 import { MediaAnd } from './media-and';

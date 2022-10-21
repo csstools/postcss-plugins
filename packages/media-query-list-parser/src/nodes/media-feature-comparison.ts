@@ -1,4 +1,5 @@
-import { TokenDelim, TokenType } from '@csstools/css-tokenizer';
+import { ComponentValue } from '@csstools/css-parser-algorithms';
+import { CSSToken, TokenDelim, TokenType } from '@csstools/css-tokenizer';
 
 export enum MediaFeatureLT {
 	LT = '<',
@@ -15,6 +16,43 @@ export enum MediaFeatureEQ {
 }
 
 export type MediaFeatureComparison = MediaFeatureLT | MediaFeatureGT | MediaFeatureEQ
+
+export function matchesComparison(componentValues: Array<ComponentValue>): false | [number, number] {
+	let firstTokenIndex = -1;
+
+	for (let i = 0; i < componentValues.length; i++) {
+		const componentValue = componentValues[i];
+		if (componentValue.type === 'token') {
+			const token = componentValue.value as CSSToken;
+			if (token[0] === TokenType.Delim) {
+				if (token[4].value === MediaFeatureEQ.EQ) {
+					if (firstTokenIndex) {
+						return [firstTokenIndex, i];
+					}
+
+					firstTokenIndex = i;
+					continue;
+				}
+				if (token[4].value === MediaFeatureLT.LT) {
+					firstTokenIndex = i;
+					continue;
+				}
+				if (token[4].value === MediaFeatureGT.GT) {
+					firstTokenIndex = i;
+					continue;
+				}
+			}
+		}
+
+		break;
+	}
+
+	if (firstTokenIndex !== -1) {
+		return [firstTokenIndex, firstTokenIndex];
+	}
+
+	return false;
+}
 
 export function comparisonFromTokens(tokens: [TokenDelim, TokenDelim] | [TokenDelim]): MediaFeatureComparison | false {
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment

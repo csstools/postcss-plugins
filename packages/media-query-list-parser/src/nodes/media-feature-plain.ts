@@ -1,7 +1,7 @@
 import { ComponentValue } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenColon, TokenType } from '@csstools/css-tokenizer';
-import { matchesMediaFeatureName, MediaFeatureName } from './media-feature-name';
-import { matchesMediaFeatureValue, MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
+import { parseMediaFeatureName, MediaFeatureName } from './media-feature-name';
+import { parseMediaFeatureValue, MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
 
 export class MediaFeaturePlain {
 	type = 'mf-plain';
@@ -62,9 +62,10 @@ export class MediaFeaturePlain {
 export type MediaFeaturePlainWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
 export type MediaFeaturePlainWalkerParent = MediaFeatureValueWalkerParent | MediaFeaturePlain;
 
-export function matchesMediaFeaturePlain(componentValues: Array<ComponentValue>) {
+export function parseMediaFeaturePlain(componentValues: Array<ComponentValue>) {
 	let a: Array<ComponentValue> = [];
 	let b: Array<ComponentValue> = [];
+	let colon: TokenColon | null = null;
 
 	for (let i = 0; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];
@@ -73,24 +74,25 @@ export function matchesMediaFeaturePlain(componentValues: Array<ComponentValue>)
 			if (token[0] === TokenType.Colon) {
 				a = componentValues.slice(0, i);
 				b = componentValues.slice(i + 1);
+				colon = token;
 				break;
 			}
 		}
 	}
 
 	if (!a.length || !b.length) {
-		return -1;
+		return false;
 	}
 
-	const aResult = matchesMediaFeatureName(a);
-	if (aResult === -1) {
-		return -1;
+	const name = parseMediaFeatureName(a);
+	if (name === false) {
+		return false;
 	}
 
-	const bResult = matchesMediaFeatureValue(b);
-	if (bResult === -1) {
-		return -1;
+	const value = parseMediaFeatureValue(b);
+	if (value === false) {
+		return false;
 	}
 
-	return [aResult, bResult];
+	return new MediaFeaturePlain(name, colon , value);
 }

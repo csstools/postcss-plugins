@@ -1,5 +1,5 @@
-import { ComponentValue, ContainerNode, FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify, TokenFunction, TokenType } from '@csstools/css-tokenizer';
+import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
+import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
 import { isDimension, isIdent, isNumber } from '../util/component-value-is';
 
 export class MediaFeatureValue {
@@ -10,7 +10,12 @@ export class MediaFeatureValue {
 	after: Array<CSSToken>;
 
 	constructor(value: ComponentValue | Array<ComponentValue>, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
-		this.value = value;
+		if (Array.isArray(value) && value.length === 1) {
+			this.value = value[0];
+		} else {
+			this.value = value;
+		}
+
 		this.before = before;
 		this.after = after;
 	}
@@ -67,7 +72,7 @@ export class MediaFeatureValue {
 export type MediaFeatureValueWalkerEntry = ComponentValue | Array<ComponentValue>;
 export type MediaFeatureValueWalkerParent = ContainerNode | MediaFeatureValue;
 
-export function matchesMediaFeatureValue(componentValues: Array<ComponentValue>) {
+export function parseMediaFeatureValue(componentValues: Array<ComponentValue>) {
 	let candidateIndexStart = -1;
 	let candidateIndexEnd = -1;
 
@@ -82,7 +87,7 @@ export function matchesMediaFeatureValue(componentValues: Array<ComponentValue>)
 		}
 
 		if (candidateIndexStart !== -1) {
-			return -1;
+			return false;
 		}
 
 		if (isNumber(componentValue)) {
@@ -111,10 +116,22 @@ export function matchesMediaFeatureValue(componentValues: Array<ComponentValue>)
 			continue;
 		}
 
-		return -1;
+		return false;
 	}
 
-	return [candidateIndexStart, candidateIndexEnd];
+	if (candidateIndexStart === -1) {
+		return false;
+	}
+
+	return new MediaFeatureValue(
+		componentValues.slice(candidateIndexStart, candidateIndexEnd + 1),
+		componentValues.slice(0, candidateIndexStart).flatMap((x) => {
+			return x.tokens();
+		}),
+		componentValues.slice(candidateIndexEnd + 1).flatMap((x) => {
+			return x.tokens();
+		}),
+	);
 }
 
 export function matchesRatioExactly(componentValues: Array<ComponentValue>) {

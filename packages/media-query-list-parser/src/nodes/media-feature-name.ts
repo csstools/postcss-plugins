@@ -1,5 +1,5 @@
 import { ComponentValue } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { isIdent } from '../util/component-value-is';
 
 export class MediaFeatureName {
@@ -42,7 +42,7 @@ export class MediaFeatureName {
 	}
 }
 
-export function matchesMediaFeatureName(componentValues: Array<ComponentValue>) {
+export function parseMediaFeatureName(componentValues: Array<ComponentValue>) {
 	let singleIdentTokenIndex = -1;
 
 	for (let i = 0; i < componentValues.length; i++) {
@@ -57,15 +57,27 @@ export function matchesMediaFeatureName(componentValues: Array<ComponentValue>) 
 
 		if (isIdent(componentValue)) {
 			if (singleIdentTokenIndex !== -1) {
-				return -1;
+				return false;
 			}
 
 			singleIdentTokenIndex = i;
 			continue;
 		}
 
-		return -1;
+		return false;
 	}
 
-	return singleIdentTokenIndex;
+	if (singleIdentTokenIndex === -1) {
+		return false;
+	}
+
+	return new MediaFeatureName(
+		componentValues[singleIdentTokenIndex],
+		componentValues.slice(0, singleIdentTokenIndex).flatMap((x) => {
+			return x.tokens();
+		}),
+		componentValues.slice(singleIdentTokenIndex + 1).flatMap((x) => {
+			return x.tokens();
+		}),
+	);
 }

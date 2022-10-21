@@ -1,5 +1,6 @@
-import { stringify, TokenDelim } from '@csstools/css-tokenizer';
-import { comparisonFromTokens } from './media-feature-comparison';
+import { ComponentValue } from '@csstools/css-parser-algorithms';
+import { CSSToken, stringify, TokenDelim, TokenType } from '@csstools/css-tokenizer';
+import { comparisonFromTokens, matchesComparison } from './media-feature-comparison';
 import { MediaFeatureName } from './media-feature-name';
 import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
 
@@ -318,3 +319,56 @@ export class MediaFeatureRangeHighLow {
 
 export type MediaFeatureRangeWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
 export type MediaFeatureRangeWalkerParent = MediaFeatureValueWalkerParent | MediaFeatureRange;
+
+export function matchesMediaFeaturePlain(componentValues: Array<ComponentValue>) {
+	let comparisonOne: false | [number, number] = false;
+	let comparisonTwo: false | [number, number] = false;
+
+	for (let i = 0; i < componentValues.length; i++) {
+		const componentValue = componentValues[i];
+		if (componentValue.type === 'token') {
+			const token = componentValue.value as CSSToken;
+			if (token[0] === TokenType.Delim) {
+				const comparison = matchesComparison(componentValues.slice(i));
+				if (comparison !== false) {
+					if (comparisonOne === false) {
+						comparisonOne = [
+							comparison[0] + i,
+							comparison[i] + i,
+						];
+					} else {
+						comparisonTwo = [
+							comparison[0] + i,
+							comparison[i] + i,
+						];
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	if (comparisonOne === -1) {
+		return false;
+	}
+
+	if (comparisonTwo === -1) {
+		return false;
+	}
+
+	if (!a.length || !b.length) {
+		return -1;
+	}
+
+	const aResult = matchesMediaFeatureName(a);
+	if (aResult === -1) {
+		return -1;
+	}
+
+	const bResult = matchesMediaFeatureValue(b);
+	if (bResult === -1) {
+		return -1;
+	}
+
+	return [aResult, bResult];
+}
