@@ -19,7 +19,7 @@ html {
 
 .footer {
 	--s-color: #eee;
-	---ccc-color: var(--bg-color);
+	--ccc-color: var(--bg-color);
 	--s-bg-color: var(--ccc-color);
 	color: rgba(var(--s-color), .3);
 	background-color: rgba(var(--s-bg-color), .7);

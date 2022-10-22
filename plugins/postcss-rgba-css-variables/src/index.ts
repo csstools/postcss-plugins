@@ -1,19 +1,9 @@
-import type { PluginCreator } from 'postcss';
+import type { PluginCreator, Rule } from 'postcss';
 import { Colord, colord } from 'colord';
 import getRgbaVariables from './lib/get-rgba';
+import { COMMON_VARIABLES_KEY } from './lib/utils';
+import getColorVariablesTree from './lib/get-color-variables-tree';
 import valueParser from 'postcss-value-parser';
-
-function parseColor(color: Colord): string {
-	if(!color.isValid()) {
-		return;
-	}
-	const { r, g, b } = color.toRgb();
-	return `${r}, ${g}, ${b}`;
-}
-
-function getCurrentDeclVariables(decl) {
-	console.log(decl.prop, decl.value);
-}
 
 type pluginOptions = {
 	mode?: 'replace-directly' | 'replace-required' | 'replace-all';
@@ -33,27 +23,27 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 		prepare() {
 			return {
 				Once: root => {
+					const colorVariablesTree = getColorVariablesTree(root);
+					console.log(1111, colorVariablesTree);
+					// console.dir(colorVariablesTree, { depth: null });
 					// const cssVariables = getCssVariables(root);
 					const rgbaVariables = getRgbaVariables(root);
 					// console.dir(cssVariables, { depth: null });
+					console.log(2222, rgbaVariables);
+					// console.dir(rgbaVariables, { depth: null });
 
-					const variablesTree: Map<string, string> = new Map();
+					for (const { variableName, decl } of rgbaVariables.values()) {
+						const { selector } = decl.parent as Rule;
+						const variableParsed = colorVariablesTree.get(selector)?.get(variableName) || colorVariablesTree.get(COMMON_VARIABLES_KEY)?.get(variableName);
 
-					for (const {decl, variableName } of rgbaVariables) {
-						decl.parent.walkDecls(currentDecl => {
-							// console.log(111, variableName);
-							const { prop, value } = currentDecl;
-							if (prop === variableName) {
-								const currentColor = colord(value);
+						console.log(333, variableName, variableParsed?.parsedValue);
 
-								if (currentColor.isValid()) {
-									variablesTree.set(prop, parseColor(currentColor));
-								} else {
-									// console.log(1111, currentDecl);
-									getCurrentDeclVariables(currentDecl);
-								}
-							}
-						});
+						if (variableParsed && variableParsed.parsedValue) {
+							console.log(decl.value.replace(/var\(([^()]*?--[^()]*)\)/, variableParsed.parsedValue));
+							decl.cloneAfter({
+								value: decl.value.replace(/var\(([^()]*?--[^()]*)\)/, variableParsed.parsedValue),
+							});
+						}
 					}
 				},
 			};
