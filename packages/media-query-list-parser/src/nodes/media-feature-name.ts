@@ -1,5 +1,5 @@
-import { ComponentValue } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify } from '@csstools/css-tokenizer';
+import { ComponentValue, TokenNode } from '@csstools/css-parser-algorithms';
+import { CSSToken, stringify, TokenIdent } from '@csstools/css-tokenizer';
 import { isIdent } from '../util/component-value-is';
 
 export class MediaFeatureName {
@@ -13,6 +13,11 @@ export class MediaFeatureName {
 		this.name = name;
 		this.before = before;
 		this.after = after;
+	}
+
+	getName() {
+		const token = (((this.name as TokenNode).value as CSSToken) as TokenIdent);
+		return token[4].value;
 	}
 
 	tokens() {

@@ -1,13 +1,12 @@
-import { ComponentValue } from '@csstools/css-parser-algorithms';
+import { ComponentValue, TokenNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenDelim, TokenType } from '@csstools/css-tokenizer';
 import { comparisonFromTokens, matchesComparison } from './media-feature-comparison';
-import { MediaFeatureName } from './media-feature-name';
-import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
+import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
+import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent, parseMediaFeatureValue } from './media-feature-value';
 
 export type MediaFeatureRange = MediaFeatureRangeNameValue |
 	MediaFeatureRangeValueName |
-	MediaFeatureRangeLowHigh |
-	MediaFeatureRangeHighLow;
+	MediaFeatureRangeValueNameValue;
 
 export class MediaFeatureRangeNameValue {
 	type = 'mf-range-name-value';
@@ -133,43 +132,43 @@ export class MediaFeatureRangeValueName {
 	}
 }
 
-export class MediaFeatureRangeLowHigh {
-	type = 'mf-range-low-high';
+export class MediaFeatureRangeValueNameValue {
+	type = 'mf-range-value-name-value';
 
 	name: MediaFeatureName;
-	low: MediaFeatureValue;
-	lowOperator: [TokenDelim, TokenDelim] | [TokenDelim];
-	high: MediaFeatureValue;
-	highOperator: [TokenDelim, TokenDelim] | [TokenDelim];
+	valueOne: MediaFeatureValue;
+	valueOneOperator: [TokenDelim, TokenDelim] | [TokenDelim];
+	valueTwo: MediaFeatureValue;
+	valueTwoOperator: [TokenDelim, TokenDelim] | [TokenDelim];
 
-	constructor(name: MediaFeatureName, low: MediaFeatureValue, lowOperator: [TokenDelim, TokenDelim] | [TokenDelim], high: MediaFeatureValue, highOperator: [TokenDelim, TokenDelim] | [TokenDelim]) {
+	constructor(name: MediaFeatureName, valueOne: MediaFeatureValue, valueOneOperator: [TokenDelim, TokenDelim] | [TokenDelim], valueTwo: MediaFeatureValue, valueTwoOperator: [TokenDelim, TokenDelim] | [TokenDelim]) {
 		this.name = name;
-		this.low = low;
-		this.lowOperator = lowOperator;
-		this.high = high;
-		this.highOperator = highOperator;
+		this.valueOne = valueOne;
+		this.valueOneOperator = valueOneOperator;
+		this.valueTwo = valueTwo;
+		this.valueTwoOperator = valueTwoOperator;
 	}
 
-	lowOperatorKind() {
-		return comparisonFromTokens(this.lowOperator);
+	valueOneOperatorKind() {
+		return comparisonFromTokens(this.valueOneOperator);
 	}
 
-	highOperatorKind() {
-		return comparisonFromTokens(this.highOperator);
+	valueTwoOperatorKind() {
+		return comparisonFromTokens(this.valueTwoOperator);
 	}
 
 	tokens() {
 		return [
-			...this.low.tokens(),
-			...this.lowOperator,
+			...this.valueOne.tokens(),
+			...this.valueOneOperator,
 			...this.name.tokens(),
-			...this.highOperator,
-			...this.high.tokens(),
+			...this.valueTwoOperator,
+			...this.valueTwo.tokens(),
 		];
 	}
 
 	toString() {
-		return this.low.toString() + stringify(...this.lowOperator) + this.name.toString() + stringify(...this.highOperator) + this.high.toString();
+		return this.valueOne.toString() + stringify(...this.valueOneOperator) + this.name.toString() + stringify(...this.valueTwoOperator) + this.valueTwo.toString();
 	}
 
 	indexOf(item: MediaFeatureName | MediaFeatureValue): number | string {
@@ -177,12 +176,12 @@ export class MediaFeatureRangeLowHigh {
 			return 'name';
 		}
 
-		if (item === this.low) {
-			return 'low';
+		if (item === this.valueOne) {
+			return 'valueOne';
 		}
 
-		if (item === this.high) {
-			return 'high';
+		if (item === this.valueTwo) {
+			return 'valueTwo';
 		}
 
 		return -1;
@@ -193,124 +192,32 @@ export class MediaFeatureRangeLowHigh {
 			return this.name;
 		}
 
-		if (index === 'low') {
-			return this.low;
+		if (index === 'valueOne') {
+			return this.valueOne;
 		}
 
-		if (index === 'high') {
-			return this.high;
-		}
-	}
-
-	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean) {
-		if (cb({ node: this.low, parent: this }, 'low') === false) {
-			return false;
-		}
-
-		if ('walk' in this.low) {
-			if (this.low.walk(cb) === false) {
-				return false;
-			}
-		}
-
-		if (cb({ node: this.high, parent: this }, 'high') === false) {
-			return false;
-		}
-
-		if ('walk' in this.high) {
-			if (this.high.walk(cb) === false) {
-				return false;
-			}
-		}
-	}
-}
-
-export class MediaFeatureRangeHighLow {
-	type = 'mf-range-high-low';
-
-	name: MediaFeatureName;
-	low: MediaFeatureValue;
-	lowOperator: [TokenDelim, TokenDelim] | [TokenDelim];
-	high: MediaFeatureValue;
-	highOperator: [TokenDelim, TokenDelim] | [TokenDelim];
-
-	constructor(name: MediaFeatureName, high: MediaFeatureValue, highOperator: [TokenDelim, TokenDelim] | [TokenDelim], low: MediaFeatureValue, lowOperator: [TokenDelim, TokenDelim] | [TokenDelim]) {
-		this.name = name;
-		this.low = low;
-		this.lowOperator = lowOperator;
-		this.high = high;
-		this.highOperator = highOperator;
-	}
-
-	lowOperatorKind() {
-		return comparisonFromTokens(this.lowOperator);
-	}
-
-	highOperatorKind() {
-		return comparisonFromTokens(this.highOperator);
-	}
-
-	tokens() {
-		return [
-			...this.high.tokens(),
-			...this.highOperator,
-			...this.name.tokens(),
-			...this.lowOperator,
-			...this.low.tokens(),
-		];
-	}
-
-	toString() {
-		return this.high.toString() + stringify(...this.highOperator) + this.name.toString() + stringify(...this.lowOperator) + this.low.toString();
-	}
-
-	indexOf(item: MediaFeatureName | MediaFeatureValue): number | string {
-		if (item === this.name) {
-			return 'name';
-		}
-
-		if (item === this.low) {
-			return 'low';
-		}
-
-		if (item === this.high) {
-			return 'high';
-		}
-
-		return -1;
-	}
-
-	at(index: number | string) {
-		if (index === 'name') {
-			return this.name;
-		}
-
-		if (index === 'low') {
-			return this.low;
-		}
-
-		if (index === 'high') {
-			return this.high;
+		if (index === 'valueTwo') {
+			return this.valueTwo;
 		}
 	}
 
 	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean) {
-		if (cb({ node: this.high, parent: this }, 'high') === false) {
+		if (cb({ node: this.valueOne, parent: this }, 'valueOne') === false) {
 			return false;
 		}
 
-		if ('walk' in this.high) {
-			if (this.high.walk(cb) === false) {
+		if ('walk' in this.valueOne) {
+			if (this.valueOne.walk(cb) === false) {
 				return false;
 			}
 		}
 
-		if (cb({ node: this.low, parent: this }, 'low') === false) {
+		if (cb({ node: this.valueTwo, parent: this }, 'valueTwo') === false) {
 			return false;
 		}
 
-		if ('walk' in this.low) {
-			if (this.low.walk(cb) === false) {
+		if ('walk' in this.valueTwo) {
+			if (this.valueTwo.walk(cb) === false) {
 				return false;
 			}
 		}
@@ -348,27 +255,123 @@ export function matchesMediaFeaturePlain(componentValues: Array<ComponentValue>)
 		}
 	}
 
-	if (comparisonOne === -1) {
+	if (comparisonOne === false) {
 		return false;
 	}
 
-	if (comparisonTwo === -1) {
+	const comparisonTokensOne: [TokenDelim, TokenDelim] | [TokenDelim] = [
+		(componentValues[comparisonOne[0]] as TokenNode).value as TokenDelim,
+	];
+	if (comparisonOne[0] !== comparisonOne[1]) {
+		comparisonTokensOne.push(
+			(componentValues[comparisonOne[1]] as TokenNode).value as TokenDelim,
+		);
+	}
+
+	if (comparisonTwo === false) {
+		const a = componentValues.slice(0, comparisonOne[0] - 1);
+		const b = componentValues.slice(comparisonOne[1] + 1);
+
+		const nameA = parseMediaFeatureName(a);
+		const nameB = parseMediaFeatureName(b);
+
+		if (!nameA && !nameB) {
+			return false;
+		}
+
+		if (
+			(nameA && !nameB) ||
+			nameA && mediaDescriptors.has(nameA.getName().toLowerCase())
+		) {
+			const value = parseMediaFeatureValue(b);
+			if (!value) {
+				return false;
+			}
+
+			return new MediaFeatureRangeNameValue(nameA, comparisonTokensOne, value);
+		}
+
+		if (
+			(!nameA && nameB) ||
+			nameB && mediaDescriptors.has(nameB.getName().toLowerCase())
+		) {
+			const value = parseMediaFeatureValue(a);
+			if (!value) {
+				return false;
+			}
+
+			return new MediaFeatureRangeValueName(nameB, comparisonTokensOne, value);
+		}
+
 		return false;
 	}
 
-	if (!a.length || !b.length) {
-		return -1;
+	const comparisonTokensTwo: [TokenDelim, TokenDelim] | [TokenDelim] = [
+		(componentValues[comparisonTwo[0]] as TokenNode).value as TokenDelim,
+	];
+	if (comparisonTwo[0] !== comparisonTwo[1]) {
+		comparisonTokensTwo.push(
+			(componentValues[comparisonTwo[1]] as TokenNode).value as TokenDelim,
+		);
 	}
 
-	const aResult = matchesMediaFeatureName(a);
-	if (aResult === -1) {
-		return -1;
+	const a = componentValues.slice(0, comparisonOne[0] - 1);
+	const b = componentValues.slice(comparisonOne[1] + 1, comparisonTwo[0] - 1);
+	const c = componentValues.slice(comparisonTwo[1] + 1);
+
+	const valueA = parseMediaFeatureValue(a);
+	const nameB = parseMediaFeatureName(b);
+	const valueC = parseMediaFeatureValue(c);
+
+	if (!valueA || !nameB || !valueC) {
+		return false;
 	}
 
-	const bResult = matchesMediaFeatureValue(b);
-	if (bResult === -1) {
-		return -1;
-	}
-
-	return [aResult, bResult];
+	return new MediaFeatureRangeValueNameValue(
+		nameB,
+		valueA,
+		comparisonTokensOne,
+		valueC,
+		comparisonTokensTwo,
+	);
 }
+
+export const mediaDescriptors = new Set([
+	'any-hover',
+	'any-pointer',
+	'aspect-ratio',
+	'color',
+	'color-gamut',
+	'color-index',
+	'device-aspect-ratio',
+	'device-height',
+	'device-width',
+	'display-mode',
+	'dynamic-range',
+	'environment-blending',
+	'forced-colors',
+	'grid',
+	'height',
+	'horizontal-viewport-segments',
+	'hover',
+	'inverted-colors',
+	'monochrome',
+	'nav-controls',
+	'orientation',
+	'overflow-block',
+	'overflow-inline',
+	'pointer',
+	'prefers-color-scheme',
+	'prefers-contrast',
+	'prefers-reduced-data',
+	'prefers-reduced-motion',
+	'prefers-reduced-transparency',
+	'resolution',
+	'scan',
+	'scripting',
+	'update',
+	'vertical-viewport-segments',
+	'video-color-gamut',
+	'video-dynamic-range',
+	'width',
+]);
