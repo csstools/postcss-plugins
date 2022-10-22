@@ -13,7 +13,7 @@ type VariableTypeMap = Map<string, VariableType>;
 
 type OutputType = Map<string, VariableTypeMap>;
 
-export default function getColorVariablesTree(root: Root) {
+export default function getColorVariablesTree(root: Root): OutputType {
 	const output: OutputType = new Map();
 
 	root.walkDecls(decl => {

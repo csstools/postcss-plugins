@@ -1,12 +1,16 @@
 :root {
 	--width: 100px;
 	--color: rgb(255, 0, 0);
+	--color-rgb: 255, 0, 0;
 	--bg-color: #555;
+	--bg-color-rgb: 85, 85, 85;
 }
 
 html {
 	--s-color: rgb(255, 255, 0);
+	--s-color-rgb: 255, 255, 0;
 	--s-bg-color: #999;
+	--s-bg-color-rgb: 153, 153, 153;
 	color: rgba(0, 0, 0, .3);
 }
 
@@ -14,29 +18,32 @@ html {
 	width: var(--width);
 	height: 80px;
 	color: rgba(var(--color), .6);
-	color: rgba(255, 0, 0, .6);
+	color: rgba(var(--color-rgb), .6);
 	background-color: rgba(var(--bg-color), .4);
-	background-color: rgba(85, 85, 85, .4);
+	background-color: rgba(var(--bg-color-rgb), .4);
 }
 
 .footer {
 	--s-color: #eee;
+	--s-color-rgb: 238, 238, 238;
 	--ccc-color: var(--bg-color);
+	--ccc-color-rgb: 85, 85, 85;
 	--s-bg-color: var(--ccc-color);
+	--s-bg-color-rgb: 85, 85, 85;
 	color: rgba(var(--s-color), .3);
-	color: rgba(238, 238, 238, .3);
+	color: rgba(var(--s-color-rgb), .3);
 	background-color: rgba(var(--s-bg-color), .7);
-	background-color: rgba(85, 85, 85, .7);
+	background-color: rgba(var(--s-bg-color-rgb), .7);
 }
 
 .aaa {
 	color: rgba(var(--color), .4);
-	color: rgba(255, 0, 0, .4);
+	color: rgba(var(--color-rgb), .4);
 }
 
 .bbb {
 	color: rgba(var(--color, blue), .4);
-	color: rgba(255, 0, 0, .4);
+	color: rgba(var(--color-rgb), .4);
 }
 
 .ccc {

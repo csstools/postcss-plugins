@@ -10,8 +10,10 @@ export function parseColor(color: Colord): string | undefined {
 	return `${r}, ${g}, ${b}`;
 }
 
+export const cssVariablesRegExp = new RegExp('var\\(([^()]*?--[^()]*)\\)', 'g');
+
 export function isCssVariableValue(value: string): boolean {
-	return /var\(([^()]*?--[^()]*)\)/g.test(value);
+	return cssVariablesRegExp.test(value);
 }
 
 export function isRootRule(selector: string): boolean{
