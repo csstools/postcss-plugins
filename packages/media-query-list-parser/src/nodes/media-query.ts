@@ -1,6 +1,5 @@
 import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { MediaCondition, MediaConditionWalkerEntry, MediaConditionWalkerParent } from './media-condition';
-import { MediaConditionWithoutOr, MediaConditionWithoutOrWalkerEntry, MediaConditionWithoutOrWalkerParent } from './media-condition-without-or';
 
 export type MediaQuery = MediaQueryWithType | MediaQueryWithoutType;
 
@@ -9,9 +8,9 @@ export class MediaQueryWithType {
 
 	modifier: Array<CSSToken>;
 	mediaType: Array<CSSToken>;
-	media: MediaConditionWithoutOr | null = null;
+	media: MediaCondition | null = null;
 
-	constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, media?: MediaConditionWithoutOr | null) {
+	constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, media?: MediaCondition | null) {
 		this.modifier = modifier;
 		this.mediaType = mediaType;
 		this.media = media;
@@ -40,7 +39,7 @@ export class MediaQueryWithType {
 		return stringify(...this.modifier) + stringify(...this.mediaType);
 	}
 
-	indexOf(item: MediaConditionWithoutOr): number | string {
+	indexOf(item: MediaCondition): number | string {
 		if (item === this.media) {
 			return 'media';
 		}
@@ -63,8 +62,8 @@ export class MediaQueryWithType {
 	}
 }
 
-export type MediaQueryWithTypeWalkerEntry = MediaConditionWithoutOrWalkerEntry | MediaConditionWithoutOr;
-export type MediaQueryWithTypeWalkerParent = MediaConditionWithoutOrWalkerParent | MediaQueryWithType;
+export type MediaQueryWithTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
+export type MediaQueryWithTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithType;
 
 export class MediaQueryWithoutType {
 	type = 'media-query-without-type';

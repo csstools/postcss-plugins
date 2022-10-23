@@ -1,8 +1,6 @@
-import { ComponentValueType, parseCommaSeparatedListOfComponentValues, SimpleBlockNode } from '@csstools/css-parser-algorithms';
+import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { tokenizer } from '@csstools/css-tokenizer';
-import { parseMediaCondition } from '../nodes/media-condition';
-import { parseMediaConditionListWithAnd } from '../nodes/media-condition-list';
-import { parseMediaInParensFromSimpleBlock } from '../nodes/media-in-parens';
+import { parseMediaQuery } from './parse-media-query';
 
 export function parse(source: string) {
 	const onParseError = (err) => {
@@ -24,27 +22,9 @@ export function parse(source: string) {
 		tokens.push(t.nextToken()); // EOF-token
 	}
 
-	const parsed = parseCommaSeparatedListOfComponentValues(tokens, {
+	return parseCommaSeparatedListOfComponentValues(tokens, {
 		onParseError: onParseError,
-	});
-
-	const mediaQueryList = parsed.map((componentValuesList) => {
-		const result = [];
-
-		for (let i = 0; i < componentValuesList.length; i++) {
-			const componentValue = componentValuesList[i];
-			if (componentValue.type === ComponentValueType.SimpleBlock) {
-				result.push(parseMediaInParensFromSimpleBlock(componentValue as SimpleBlockNode));
-			}
-		}
-
-		const x = parseMediaCondition(componentValuesList);
-		if (x) {
-			return x;
-		}
-
-		return {};
-	});
-
-	return mediaQueryList;
+	}).map((componentValuesList) => {
+		return parseMediaQuery(componentValuesList);
+	}).filter((x) => !!x);
 }

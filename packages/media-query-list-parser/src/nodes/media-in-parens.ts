@@ -1,10 +1,10 @@
-import { ComponentValue, ComponentValueType, ContainerNode, SimpleBlockNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
+import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
+import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { GeneralEnclosed } from './general-enclosed';
 import { MediaAnd } from './media-and';
-import { MediaCondition, parseMediaCondition } from './media-condition';
+import { MediaCondition } from './media-condition';
 import { MediaConditionList } from './media-condition-list';
-import { MediaFeature, parseMediaFeature } from './media-feature';
+import { MediaFeature } from './media-feature';
 import { MediaFeatureBoolean } from './media-feature-boolean';
 import { MediaFeatureName } from './media-feature-name';
 import { MediaFeaturePlain } from './media-feature-plain';
@@ -63,90 +63,3 @@ export class MediaInParens {
 
 export type MediaInParensWalkerEntry = ComponentValue | Array<ComponentValue> | GeneralEnclosed | MediaAnd | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
 export type MediaInParensWalkerParent = ContainerNode | GeneralEnclosed | MediaAnd | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
-
-export function parseMediaInParens(componentValues: Array<ComponentValue>) {
-	let singleSimpleBlockIndex = -1;
-
-	for (let i = 0; i < componentValues.length; i++) {
-		const componentValue = componentValues[i];
-		if (componentValue.type === ComponentValueType.Whitespace) {
-			continue;
-		}
-
-		if (componentValue.type === ComponentValueType.Comment) {
-			continue;
-		}
-
-		if (componentValue.type === ComponentValueType.SimpleBlock) {
-			if (singleSimpleBlockIndex !== -1) {
-				return false;
-			}
-
-			singleSimpleBlockIndex = i;
-			continue;
-		}
-
-		return false;
-	}
-
-	if (singleSimpleBlockIndex === -1) {
-		return false;
-	}
-
-	const simpleBlock = componentValues[singleSimpleBlockIndex] as SimpleBlockNode;
-	if (simpleBlock.startToken[0] !== TokenType.OpenParen) {
-		return false;
-	}
-
-	const before = [
-		...componentValues.slice(0, singleSimpleBlockIndex).flatMap((x) => {
-			return x.tokens();
-		}),
-		simpleBlock.startToken,
-	];
-
-	const after = [
-		simpleBlock.endToken,
-		...componentValues.slice(singleSimpleBlockIndex + 1).flatMap((x) => {
-			return x.tokens();
-		}),
-	];
-
-	const feature = parseMediaFeature(simpleBlock);
-	if (feature !== false) {
-		return new MediaInParens(feature, before, after);
-	}
-
-	const condition = parseMediaCondition(simpleBlock.value);
-	if (condition !== false) {
-		return new MediaInParens(condition, before, after);
-	}
-
-	return new MediaInParens(
-		new GeneralEnclosed(simpleBlock),
-		componentValues.slice(0, singleSimpleBlockIndex).flatMap((x) => {
-			return x.tokens();
-		}),
-		componentValues.slice(singleSimpleBlockIndex + 1).flatMap((x) => {
-			return x.tokens();
-		}),
-	);
-}
-
-export function parseMediaInParensFromSimpleBlock(simpleBlock: SimpleBlockNode) {
-	if (simpleBlock.startToken[0] !== TokenType.OpenParen) {
-		return false;
-	}
-
-	const feature = parseMediaFeature(simpleBlock);
-	if (feature !== false) {
-		return new MediaInParens(feature, [simpleBlock.startToken], [simpleBlock.endToken]);
-	}
-
-	const condition = parseMediaCondition(simpleBlock.value);
-	if (condition !== false) {
-		return new MediaInParens(condition, [simpleBlock.startToken], [simpleBlock.endToken]);
-	}
-
-	return new MediaInParens(new GeneralEnclosed(simpleBlock));
-}
