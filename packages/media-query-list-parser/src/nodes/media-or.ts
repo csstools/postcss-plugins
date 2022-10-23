@@ -1,7 +1,7 @@
 import { ComponentValue, ComponentValueType, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenIdent } from '@csstools/css-tokenizer';
 import { isIdent } from '../util/component-value-is';
-import { MediaInParens, MediaInParensWalkerEntry, MediaInParensWalkerParent, parseMediaInParens } from './media-in-parens';
+import { MediaInParens, MediaInParensWalkerEntry, MediaInParensWalkerParent, parseMediaInParensFromSimpleBlock } from './media-in-parens';
 
 export class MediaOr {
 	type = 'media-or';
@@ -79,7 +79,7 @@ export function parseMediaOr(componentValues: Array<ComponentValue>) {
 		}
 
 		if (sawOr && componentValue.type === ComponentValueType.SimpleBlock) {
-			const media = parseMediaInParens(componentValue as SimpleBlockNode);
+			const media = parseMediaInParensFromSimpleBlock(componentValue as SimpleBlockNode);
 			if (media === false) {
 				return false;
 			}

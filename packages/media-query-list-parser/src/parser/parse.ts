@@ -1,7 +1,8 @@
 import { ComponentValueType, parseCommaSeparatedListOfComponentValues, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import { tokenizer } from '@csstools/css-tokenizer';
+import { parseMediaCondition } from '../nodes/media-condition';
 import { parseMediaConditionListWithAnd } from '../nodes/media-condition-list';
-import { parseMediaInParens } from '../nodes/media-in-parens';
+import { parseMediaInParensFromSimpleBlock } from '../nodes/media-in-parens';
 
 export function parse(source: string) {
 	const onParseError = (err) => {
@@ -33,11 +34,11 @@ export function parse(source: string) {
 		for (let i = 0; i < componentValuesList.length; i++) {
 			const componentValue = componentValuesList[i];
 			if (componentValue.type === ComponentValueType.SimpleBlock) {
-				result.push(parseMediaInParens(componentValue as SimpleBlockNode));
+				result.push(parseMediaInParensFromSimpleBlock(componentValue as SimpleBlockNode));
 			}
 		}
 
-		const x = parseMediaConditionListWithAnd(componentValuesList);
+		const x = parseMediaCondition(componentValuesList);
 		if (x) {
 			return x;
 		}

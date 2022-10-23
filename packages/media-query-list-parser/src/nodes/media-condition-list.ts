@@ -1,7 +1,7 @@
 import { ComponentValue, ComponentValueType, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { MediaAnd, MediaAndWalkerEntry, MediaAndWalkerParent, parseMediaAnd } from './media-and';
-import { MediaInParens, parseMediaInParens } from './media-in-parens';
+import { MediaInParens, parseMediaInParensFromSimpleBlock } from './media-in-parens';
 import { MediaOr, MediaOrWalkerEntry, MediaOrWalkerParent, parseMediaOr } from './media-or';
 
 export type MediaConditionList = MediaConditionListWithAnd | MediaConditionListWithOr;
@@ -128,7 +128,7 @@ export function parseMediaConditionListWithAnd(componentValues: Array<ComponentV
 		}
 
 		if (leading === false && componentValue.type === ComponentValueType.SimpleBlock) {
-			leading = parseMediaInParens(componentValue as SimpleBlockNode);
+			leading = parseMediaInParensFromSimpleBlock(componentValue as SimpleBlockNode);
 			if (leading === false) {
 				return false;
 			}
@@ -279,7 +279,7 @@ export function parseMediaConditionListWithOr(componentValues: Array<ComponentVa
 		}
 
 		if (leading === false && componentValue.type === ComponentValueType.SimpleBlock) {
-			leading = parseMediaInParens(componentValue as SimpleBlockNode);
+			leading = parseMediaInParensFromSimpleBlock(componentValue as SimpleBlockNode);
 			if (leading === false) {
 				return false;
 			}
