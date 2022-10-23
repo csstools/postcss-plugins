@@ -1,7 +1,6 @@
-import { ComponentValue, parseCommaSeparatedListOfComponentValues, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, tokenizer, TokenType } from '@csstools/css-tokenizer';
-import { GeneralEnclosed } from '../nodes/general-enclosed';
-import { MediaFeatureName } from '../nodes/media-feature-name';
+import { ComponentValueType, parseCommaSeparatedListOfComponentValues, SimpleBlockNode } from '@csstools/css-parser-algorithms';
+import { tokenizer } from '@csstools/css-tokenizer';
+import { parseMediaInParens } from '../nodes/media-in-parens';
 
 export function parse(source: string) {
 	const onParseError = (err) => {
@@ -30,18 +29,14 @@ export function parse(source: string) {
 	const mediaQueryList = parsed.map((componentValuesList) => {
 		const result = [];
 
-		const lastSliceIndex = 0;
 		for (let i = 0; i < componentValuesList.length; i++) {
 			const componentValue = componentValuesList[i];
-			if (componentValue.type === 'whitespace' || componentValue.type === 'comment') {
-				continue;
-			}
-
-			if (componentValue.type === 'function') {
-				result.push(new GeneralEnclosed(componentValue));
+			if (componentValue.type === ComponentValueType.SimpleBlock) {
+				result.push(parseMediaInParens(componentValue as SimpleBlockNode));
 			}
 		}
 
+		return result;
 	});
 
 	return mediaQueryList;

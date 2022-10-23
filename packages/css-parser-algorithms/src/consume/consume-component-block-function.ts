@@ -5,6 +5,16 @@ export type ContainerNode = FunctionNode | SimpleBlockNode;
 
 export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode | UnclosedSimpleBlockNode | UnclosedFunctionNode;
 
+export enum ComponentValueType {
+	Function = 'function',
+	SimpleBlock = 'simple-block',
+	Whitespace = 'whitespace',
+	Comment = 'comment',
+	Token = 'token',
+	UnclosedFunction = 'unclosed-function',
+	UnclosedSimpleBlock = 'unclosed-simple-block'
+}
+
 // https://www.w3.org/TR/css-syntax-3/#consume-a-component-value
 export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: ComponentValue } {
 	const i = 0;
@@ -56,7 +66,7 @@ export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { 
 }
 
 export class FunctionNode {
-	type = 'function';
+	type: ComponentValueType = ComponentValueType.Function;
 
 	name: TokenFunction;
 	endToken: CSSToken;
@@ -185,7 +195,7 @@ export function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advanc
 }
 
 export class SimpleBlockNode {
-	type = 'simple-block';
+	type: ComponentValueType = ComponentValueType.SimpleBlock;
 
 	startToken: CSSToken;
 	endToken: CSSToken;
@@ -315,7 +325,7 @@ export function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { adv
 }
 
 export class WhitespaceNode {
-	type = 'whitespace';
+	type: ComponentValueType = ComponentValueType.Whitespace;
 
 	value: Array<CSSToken>;
 
@@ -350,7 +360,7 @@ export function consumeWhitespace(ctx: Context, tokens: Array<CSSToken>): { adva
 }
 
 export class CommentNode {
-	type = 'comment';
+	type: ComponentValueType = ComponentValueType.Comment;
 
 	value: CSSToken;
 
@@ -404,7 +414,7 @@ export function consumeAllCommentsAndWhitespace(ctx: Context, tokens: Array<CSST
 }
 
 export class TokenNode {
-	type = 'token';
+	type: ComponentValueType = ComponentValueType.Token;
 
 	value: CSSToken;
 
@@ -424,7 +434,7 @@ export class TokenNode {
 }
 
 export class UnclosedFunctionNode {
-	type = 'unclosed-function';
+	type: ComponentValueType = ComponentValueType.UnclosedFunction;
 
 	value: Array<CSSToken>;
 
@@ -442,7 +452,7 @@ export class UnclosedFunctionNode {
 }
 
 export class UnclosedSimpleBlockNode {
-	type = 'unclosed-simple-block';
+	type: ComponentValueType = ComponentValueType.UnclosedSimpleBlock;
 
 	value: Array<CSSToken>;
 

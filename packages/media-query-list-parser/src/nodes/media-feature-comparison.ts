@@ -1,4 +1,4 @@
-import { ComponentValue } from '@csstools/css-parser-algorithms';
+import { ComponentValue, ComponentValueType } from '@csstools/css-parser-algorithms';
 import { CSSToken, TokenDelim, TokenType } from '@csstools/css-tokenizer';
 
 export enum MediaFeatureLT {
@@ -22,7 +22,7 @@ export function matchesComparison(componentValues: Array<ComponentValue>): false
 
 	for (let i = 0; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];
-		if (componentValue.type === 'token') {
+		if (componentValue.type === ComponentValueType.Token) {
 			const token = componentValue.value as CSSToken;
 			if (token[0] === TokenType.Delim) {
 				if (token[4].value === MediaFeatureEQ.EQ) {

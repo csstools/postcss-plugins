@@ -1,10 +1,10 @@
-import { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
+import { ComponentValue, ComponentValueType, FunctionNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, TokenFunction, TokenIdent, TokenType } from '@csstools/css-tokenizer';
 
 export function isNumber(componentValue: ComponentValue) {
 	if (
-		(componentValue.type === 'token' && (componentValue.value as CSSToken)[0] === TokenType.Number) ||
-		(componentValue.type === 'function' && ((componentValue as FunctionNode).name as TokenFunction)[4].value === 'calc')
+		(componentValue.type === ComponentValueType.Token && (componentValue.value as CSSToken)[0] === TokenType.Number) ||
+		(componentValue.type === ComponentValueType.Function && ((componentValue as FunctionNode).name as TokenFunction)[4].value === 'calc')
 	) {
 		return true;
 	}
@@ -13,7 +13,7 @@ export function isNumber(componentValue: ComponentValue) {
 }
 
 export function isNumericConstant(componentValue: ComponentValue) {
-	if (componentValue.type === 'token' && (componentValue.value as CSSToken)[0] === TokenType.Ident) {
+	if (componentValue.type === ComponentValueType.Token && (componentValue.value as CSSToken)[0] === TokenType.Ident) {
 		const token = componentValue.value as TokenIdent;
 		const tokenValue = token[4].value.toLowerCase();
 		if (tokenValue === 'infinity') {
@@ -37,7 +37,7 @@ export function isNumericConstant(componentValue: ComponentValue) {
 }
 
 export function isDimension(componentValue: ComponentValue) {
-	if (componentValue.type === 'token' && (componentValue.value as CSSToken)[0] === TokenType.Dimension) {
+	if (componentValue.type === ComponentValueType.Token && (componentValue.value as CSSToken)[0] === TokenType.Dimension) {
 		return true;
 	}
 
@@ -45,7 +45,7 @@ export function isDimension(componentValue: ComponentValue) {
 }
 
 export function isIdent(componentValue: ComponentValue) {
-	if (componentValue.type === 'token' && (componentValue.value as CSSToken)[0] === TokenType.Ident) {
+	if (componentValue.type === ComponentValueType.Token && (componentValue.value as CSSToken)[0] === TokenType.Ident) {
 		return true;
 	}
 

@@ -1,4 +1,4 @@
-import { ComponentValue, TokenNode } from '@csstools/css-parser-algorithms';
+import { ComponentValue, ComponentValueType, TokenNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenDelim, TokenType } from '@csstools/css-tokenizer';
 import { comparisonFromTokens, matchesComparison } from './media-feature-comparison';
 import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
@@ -227,13 +227,13 @@ export class MediaFeatureRangeValueNameValue {
 export type MediaFeatureRangeWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
 export type MediaFeatureRangeWalkerParent = MediaFeatureValueWalkerParent | MediaFeatureRange;
 
-export function matchesMediaFeaturePlain(componentValues: Array<ComponentValue>) {
+export function parseMediaFeatureRange(componentValues: Array<ComponentValue>) {
 	let comparisonOne: false | [number, number] = false;
 	let comparisonTwo: false | [number, number] = false;
 
 	for (let i = 0; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];
-		if (componentValue.type === 'token') {
+		if (componentValue.type === ComponentValueType.Token) {
 			const token = componentValue.value as CSSToken;
 			if (token[0] === TokenType.Delim) {
 				const comparison = matchesComparison(componentValues.slice(i));

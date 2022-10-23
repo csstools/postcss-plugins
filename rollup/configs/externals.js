@@ -4,6 +4,7 @@ export const externalsForCLI = [
 	'url',
 	'vm',
 
+	'@csstools/css-parser-algorithms',
 	'@csstools/css-tokenizer',
 	'@csstools/postcss-cascade-layers',
 	'@csstools/postcss-color-function',
@@ -70,6 +71,7 @@ export const externalsForPlugin = [
 	/^postcss\/lib\/*/,
 	'postcss-html',
 
+	'@csstools/css-parser-algorithms',
 	'@csstools/css-tokenizer',
 	'@csstools/postcss-cascade-layers',
 	'@csstools/postcss-color-function',

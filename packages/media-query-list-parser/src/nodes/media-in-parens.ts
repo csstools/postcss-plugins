@@ -1,10 +1,10 @@
-import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify } from '@csstools/css-tokenizer';
+import { ComponentValue, ContainerNode, SimpleBlockNode } from '@csstools/css-parser-algorithms';
+import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
 import { GeneralEnclosed } from './general-enclosed';
 import { MediaAnd } from './media-and';
-import { MediaCondition } from './media-condition';
+import { MediaCondition, parseMediaCondition } from './media-condition';
 import { MediaConditionList } from './media-condition-list';
-import { MediaFeature } from './media-feature';
+import { MediaFeature, parseMediaFeature } from './media-feature';
 import { MediaFeatureBoolean } from './media-feature-boolean';
 import { MediaFeatureName } from './media-feature-name';
 import { MediaFeaturePlain } from './media-feature-plain';
@@ -63,3 +63,21 @@ export class MediaInParens {
 
 export type MediaInParensWalkerEntry = ComponentValue | Array<ComponentValue> | GeneralEnclosed | MediaAnd | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
 export type MediaInParensWalkerParent = ContainerNode | GeneralEnclosed | MediaAnd | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
+
+export function parseMediaInParens(simpleBlock: SimpleBlockNode) {
+	if (simpleBlock.startToken[0] !== TokenType.OpenParen) {
+		return false;
+	}
+
+	const feature = parseMediaFeature(simpleBlock);
+	if (feature !== false) {
+		return new MediaInParens(feature);
+	}
+
+	const condition = parseMediaCondition(simpleBlock.value);
+	if (condition !== false) {
+		return new MediaInParens(condition, [simpleBlock.startToken], [simpleBlock.endToken]);
+	}
+
+	return new GeneralEnclosed(simpleBlock);
+}

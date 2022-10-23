@@ -1,31 +1,24 @@
-import { CSSToken, stringify } from '@csstools/css-tokenizer';
-import { MediaFeatureBoolean } from './media-feature-boolean';
-import { MediaFeaturePlain, MediaFeaturePlainWalkerEntry, MediaFeaturePlainWalkerParent } from './media-feature-plain';
-import { MediaFeatureRange, MediaFeatureRangeWalkerEntry, MediaFeatureRangeWalkerParent } from './media-feature-range';
+import { SimpleBlockNode } from '@csstools/css-parser-algorithms';
+import { TokenType } from '@csstools/css-tokenizer';
+import { MediaFeatureBoolean, parseMediaFeatureBoolean } from './media-feature-boolean';
+import { MediaFeaturePlain, MediaFeaturePlainWalkerEntry, MediaFeaturePlainWalkerParent, parseMediaFeaturePlain } from './media-feature-plain';
+import { MediaFeatureRange, MediaFeatureRangeWalkerEntry, MediaFeatureRangeWalkerParent, parseMediaFeatureRange } from './media-feature-range';
 
 export class MediaFeature {
 	type = 'media-feature';
 
 	feature: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange;
-	before: Array<CSSToken>;
-	after: Array<CSSToken>;
 
-	constructor(feature: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
+	constructor(feature: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange) {
 		this.feature = feature;
-		this.before = before;
-		this.after = after;
 	}
 
 	tokens() {
-		return [
-			...this.before,
-			...this.feature.tokens(),
-			...this.after,
-		];
+		return this.feature.tokens();
 	}
 
 	toString() {
-		return stringify(...this.before) + this.feature.toString() + stringify(...this.after);
+		return this.feature.toString();
 	}
 
 	indexOf(item: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange): number | string {
@@ -55,3 +48,26 @@ export class MediaFeature {
 
 export type MediaFeatureWalkerEntry = MediaFeaturePlainWalkerEntry | MediaFeatureRangeWalkerEntry | MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange;
 export type MediaFeatureWalkerParent = MediaFeaturePlainWalkerParent | MediaFeatureRangeWalkerParent | MediaFeature;
+
+export function parseMediaFeature(simpleBlock: SimpleBlockNode) {
+	if (simpleBlock.startToken[0] !== TokenType.OpenParen) {
+		return false;
+	}
+
+	const boolean = parseMediaFeatureBoolean(simpleBlock.value);
+	if (boolean !== false) {
+		return new MediaFeature(boolean);
+	}
+
+	const plain = parseMediaFeaturePlain(simpleBlock.value);
+	if (plain !== false) {
+		return new MediaFeature(plain);
+	}
+
+	const range = parseMediaFeatureRange(simpleBlock.value);
+	if (range !== false) {
+		return new MediaFeature(range);
+	}
+
+	return false;
+}

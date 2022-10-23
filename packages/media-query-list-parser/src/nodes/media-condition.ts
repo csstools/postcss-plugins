@@ -1,3 +1,4 @@
+import { ComponentValue } from '@csstools/css-parser-algorithms';
 import { MediaConditionListWithAnd, MediaConditionListWithAndWalkerEntry, MediaConditionListWithAndWalkerParent, MediaConditionListWithOr, MediaConditionListWithOrWalkerEntry, MediaConditionListWithOrWalkerParent } from './media-condition-list';
 import { MediaNot, MediaNotWalkerEntry, MediaNotWalkerParent } from './media-not';
 
@@ -43,3 +44,7 @@ export class MediaCondition {
 
 export type MediaConditionWalkerEntry = MediaNotWalkerEntry | MediaConditionListWithAndWalkerEntry | MediaConditionListWithOrWalkerEntry | MediaNot | MediaConditionListWithAnd | MediaConditionListWithOr;
 export type MediaConditionWalkerParent = MediaNotWalkerParent | MediaConditionListWithAndWalkerParent | MediaConditionListWithOrWalkerParent | MediaCondition;
+
+export function parseMediaCondition(componentValues: Array<ComponentValue>): false | MediaCondition {
+	return false;
+}

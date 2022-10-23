@@ -1,4 +1,4 @@
-import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
+import { ComponentValue, ComponentValueType, ContainerNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
 import { isDimension, isIdent, isNumber } from '../util/component-value-is';
 
@@ -78,11 +78,11 @@ export function parseMediaFeatureValue(componentValues: Array<ComponentValue>) {
 
 	for (let i = 0; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];
-		if (componentValue.type === 'whitespace') {
+		if (componentValue.type === ComponentValueType.Whitespace) {
 			continue;
 		}
 
-		if (componentValue.type === 'comment') {
+		if (componentValue.type === ComponentValueType.Comment) {
 			continue;
 		}
 
