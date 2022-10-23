@@ -241,12 +241,12 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>) {
 					if (comparisonOne === false) {
 						comparisonOne = [
 							comparison[0] + i,
-							comparison[i] + i,
+							comparison[1] + i,
 						];
 					} else {
 						comparisonTwo = [
 							comparison[0] + i,
-							comparison[i] + i,
+							comparison[1] + i,
 						];
 						break;
 					}
@@ -269,7 +269,7 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>) {
 	}
 
 	if (comparisonTwo === false) {
-		const a = componentValues.slice(0, comparisonOne[0] - 1);
+		const a = componentValues.slice(0, comparisonOne[0]);
 		const b = componentValues.slice(comparisonOne[1] + 1);
 
 		const nameA = parseMediaFeatureName(a);
@@ -315,8 +315,8 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>) {
 		);
 	}
 
-	const a = componentValues.slice(0, comparisonOne[0] - 1);
-	const b = componentValues.slice(comparisonOne[1] + 1, comparisonTwo[0] - 1);
+	const a = componentValues.slice(0, comparisonOne[0]);
+	const b = componentValues.slice(comparisonOne[1] + 1, comparisonTwo[0]);
 	const c = componentValues.slice(comparisonTwo[1] + 1);
 
 	const valueA = parseMediaFeatureValue(a);
