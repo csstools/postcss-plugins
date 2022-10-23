@@ -71,7 +71,7 @@ export function parseMediaInParens(simpleBlock: SimpleBlockNode) {
 
 	const feature = parseMediaFeature(simpleBlock);
 	if (feature !== false) {
-		return new MediaInParens(feature);
+		return new MediaInParens(feature, [simpleBlock.startToken], [simpleBlock.endToken]);
 	}
 
 	const condition = parseMediaCondition(simpleBlock.value);
@@ -79,5 +79,5 @@ export function parseMediaInParens(simpleBlock: SimpleBlockNode) {
 		return new MediaInParens(condition, [simpleBlock.startToken], [simpleBlock.endToken]);
 	}
 
-	return new GeneralEnclosed(simpleBlock);
+	return new MediaInParens(new GeneralEnclosed(simpleBlock));
 }

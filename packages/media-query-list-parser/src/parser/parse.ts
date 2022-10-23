@@ -1,5 +1,6 @@
 import { ComponentValueType, parseCommaSeparatedListOfComponentValues, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import { tokenizer } from '@csstools/css-tokenizer';
+import { parseMediaConditionListWithAnd } from '../nodes/media-condition-list';
 import { parseMediaInParens } from '../nodes/media-in-parens';
 
 export function parse(source: string) {
@@ -36,7 +37,12 @@ export function parse(source: string) {
 			}
 		}
 
-		return result;
+		const x = parseMediaConditionListWithAnd(componentValuesList);
+		if (x) {
+			return x;
+		}
+
+		return {};
 	});
 
 	return mediaQueryList;

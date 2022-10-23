@@ -1,5 +1,7 @@
-import { CSSToken, stringify } from '@csstools/css-tokenizer';
-import { MediaInParens, MediaInParensWalkerEntry, MediaInParensWalkerParent } from './media-in-parens';
+import { ComponentValue, ComponentValueType, SimpleBlockNode } from '@csstools/css-parser-algorithms';
+import { CSSToken, stringify, TokenIdent } from '@csstools/css-tokenizer';
+import { isIdent } from '../util/component-value-is';
+import { MediaInParens, MediaInParensWalkerEntry, MediaInParensWalkerParent, parseMediaInParens } from './media-in-parens';
 
 export class MediaNot {
 	type = 'media-not';
@@ -48,3 +50,53 @@ export class MediaNot {
 
 export type MediaNotWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
 export type MediaNotWalkerParent = MediaInParensWalkerParent | MediaNot;
+
+export function parseMediaNot(componentValues: Array<ComponentValue>) {
+	let sawNot = false;
+
+	for (let i = 0; i < componentValues.length; i++) {
+		const componentValue = componentValues[i];
+		if (componentValue.type === ComponentValueType.Whitespace) {
+			continue;
+		}
+
+		if (componentValue.type === ComponentValueType.Comment) {
+			continue;
+		}
+
+		if (isIdent(componentValue)) {
+			const token = (componentValue.value as TokenIdent);
+			if (token[4].value.toLowerCase() === 'not') {
+				if (sawNot) {
+					return false;
+				}
+
+				sawNot = true;
+				continue;
+			}
+
+			return false;
+		}
+
+		if (sawNot && componentValue.type === ComponentValueType.SimpleBlock) {
+			const media = parseMediaInParens(componentValue as SimpleBlockNode);
+			if (media === false) {
+				return false;
+			}
+
+			return {
+				advance: i,
+				node: new MediaNot(
+					componentValues.slice(0, i).flatMap((x) => {
+						return x.tokens();
+					}),
+					media,
+				),
+			};
+		}
+
+		return false;
+	}
+
+	return false;
+}

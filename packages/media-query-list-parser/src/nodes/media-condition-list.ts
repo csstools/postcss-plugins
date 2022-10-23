@@ -1,7 +1,8 @@
+import { ComponentValue, ComponentValueType, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify } from '@csstools/css-tokenizer';
-import { MediaAnd, MediaAndWalkerEntry, MediaAndWalkerParent } from './media-and';
-import { MediaInParens } from './media-in-parens';
-import { MediaOr, MediaOrWalkerEntry, MediaOrWalkerParent } from './media-or';
+import { MediaAnd, MediaAndWalkerEntry, MediaAndWalkerParent, parseMediaAnd } from './media-and';
+import { MediaInParens, parseMediaInParens } from './media-in-parens';
+import { MediaOr, MediaOrWalkerEntry, MediaOrWalkerParent, parseMediaOr } from './media-or';
 
 export type MediaConditionList = MediaConditionListWithAnd | MediaConditionListWithOr;
 
@@ -98,6 +99,63 @@ export class MediaConditionListWithAnd {
 export type MediaConditionListWithAndWalkerEntry = MediaAndWalkerEntry | MediaAnd;
 export type MediaConditionListWithAndWalkerParent = MediaAndWalkerParent | MediaConditionListWithAnd;
 
+export function parseMediaConditionListWithAnd(componentValues: Array<ComponentValue>) {
+	let leading: MediaInParens | false = false;
+	const list: Array<MediaAnd> = [];
+	let firstIndex = -1;
+	let lastIndex = -1;
+
+	for (let i = 0; i < componentValues.length; i++) {
+		if (leading) {
+			const part = parseMediaAnd(componentValues.slice(i));
+			if (part !== false) {
+				i += part.advance;
+				list.push(part.node);
+				lastIndex = i;
+				continue;
+			}
+
+			return false;
+		}
+
+		const componentValue = componentValues[i];
+		if (componentValue.type === ComponentValueType.Whitespace) {
+			continue;
+		}
+
+		if (componentValue.type === ComponentValueType.Comment) {
+			continue;
+		}
+
+		if (leading === false && componentValue.type === ComponentValueType.SimpleBlock) {
+			leading = parseMediaInParens(componentValue as SimpleBlockNode);
+			if (leading === false) {
+				return false;
+			}
+
+			firstIndex = i;
+			continue;
+		}
+
+		return false;
+	}
+
+	if (leading && list.length) {
+		return new MediaConditionListWithAnd(
+			leading,
+			list,
+			componentValues.slice(0, firstIndex).flatMap((x) => {
+				return x.tokens();
+			}),
+			componentValues.slice(lastIndex + 1).flatMap((x) => {
+				return x.tokens();
+			}),
+		);
+	}
+
+	return false;
+}
+
 export class MediaConditionListWithOr {
 	type = 'media-condition-list-or';
 
@@ -190,3 +248,61 @@ export class MediaConditionListWithOr {
 
 export type MediaConditionListWithOrWalkerEntry = MediaOrWalkerEntry | MediaOr;
 export type MediaConditionListWithOrWalkerParent = MediaOrWalkerParent | MediaConditionListWithOr;
+
+
+export function parseMediaConditionListWithOr(componentValues: Array<ComponentValue>) {
+	let leading: MediaInParens | false = false;
+	const list: Array<MediaOr> = [];
+	let firstIndex = -1;
+	let lastIndex = -1;
+
+	for (let i = 0; i < componentValues.length; i++) {
+		if (leading) {
+			const part = parseMediaOr(componentValues.slice(i));
+			if (part !== false) {
+				i += part.advance;
+				list.push(part.node);
+				lastIndex = i;
+				continue;
+			}
+
+			return false;
+		}
+
+		const componentValue = componentValues[i];
+		if (componentValue.type === ComponentValueType.Whitespace) {
+			continue;
+		}
+
+		if (componentValue.type === ComponentValueType.Comment) {
+			continue;
+		}
+
+		if (leading === false && componentValue.type === ComponentValueType.SimpleBlock) {
+			leading = parseMediaInParens(componentValue as SimpleBlockNode);
+			if (leading === false) {
+				return false;
+			}
+
+			firstIndex = i;
+			continue;
+		}
+
+		return false;
+	}
+
+	if (leading && list.length) {
+		return new MediaConditionListWithOr(
+			leading,
+			list,
+			componentValues.slice(0, firstIndex).flatMap((x) => {
+				return x.tokens();
+			}),
+			componentValues.slice(lastIndex + 1).flatMap((x) => {
+				return x.tokens();
+			}),
+		);
+	}
+
+	return false;
+}
