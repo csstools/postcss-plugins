@@ -44,6 +44,14 @@ export class MediaAnd {
 
 		return this.media.walk(cb);
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			modifier: this.modifier,
+			media: this.media.toJSON(),
+		};
+	}
 }
 
 export type MediaAndWalkerEntry = MediaInParensWalkerEntry | MediaInParens;

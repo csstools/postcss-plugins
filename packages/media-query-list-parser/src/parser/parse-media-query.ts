@@ -45,15 +45,14 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>) {
 					typeIndex = i;
 					continue;
 				}
+
+				return false;
 			}
 
-			break;
-		}
-
-		const remainder = componentValues.slice(Math.max(modifierIndex, typeIndex) + 1);
-		const condition = parseMediaConditionWithoutOr(remainder);
-		if (condition === false) {
-			return false;
+			const condition = parseMediaConditionWithoutOr(componentValues.slice(i));
+			if (condition === false) {
+				return false;
+			}
 		}
 
 		let modifierTokens: Array<CSSToken> = [];
@@ -73,6 +72,20 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>) {
 			typeTokens = componentValues.slice(0, typeIndex + 1).flatMap((x) => {
 				return x.tokens();
 			});
+		}
+
+		const remainder = componentValues.slice(Math.max(modifierIndex, typeIndex) + 1);
+		const condition = parseMediaConditionWithoutOr(remainder);
+		if (condition === false) {
+			return new MediaQueryWithType(
+				modifierTokens,
+				[
+					...typeTokens,
+					...componentValues.slice(typeIndex + 1).flatMap((x) => {
+						return x.tokens();
+					}),
+				],
+			);
 		}
 
 		return new MediaQueryWithType(

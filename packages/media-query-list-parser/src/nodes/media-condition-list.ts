@@ -93,6 +93,16 @@ export class MediaConditionListWithAnd {
 			return false;
 		}
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			leading: this.leading.toJSON(),
+			list: this.list.map((x) => x.toJSON()),
+			before: this.before,
+			after: this.after,
+		};
+	}
 }
 
 export type MediaConditionListWithAndWalkerEntry = MediaAndWalkerEntry | MediaAnd;
@@ -185,6 +195,16 @@ export class MediaConditionListWithOr {
 		if (aborted) {
 			return false;
 		}
+	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			leading: this.leading.toJSON(),
+			list: this.list.map((x) => x.toJSON()),
+			before: this.before,
+			after: this.after,
+		};
 	}
 }
 

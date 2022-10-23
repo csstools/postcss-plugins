@@ -59,6 +59,15 @@ export class MediaInParens {
 			return this.media.walk(cb);
 		}
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			media: this.media.toJSON(),
+			before: this.before,
+			after: this.after,
+		};
+	}
 }
 
 export type MediaInParensWalkerEntry = ComponentValue | Array<ComponentValue> | GeneralEnclosed | MediaAnd | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;

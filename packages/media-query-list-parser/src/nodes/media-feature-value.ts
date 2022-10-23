@@ -67,6 +67,14 @@ export class MediaFeatureValue {
 			return this.value.walk(cb);
 		}
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			value: this.value.toString(),
+			tokens: this.tokens(),
+		};
+	}
 }
 
 export type MediaFeatureValueWalkerEntry = ComponentValue | Array<ComponentValue>;

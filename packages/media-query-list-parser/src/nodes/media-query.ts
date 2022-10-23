@@ -60,6 +60,15 @@ export class MediaQueryWithType {
 
 		return this.media.walk(cb);
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			modifier: this.modifier,
+			mediaType: this.mediaType,
+			media: this.media,
+		};
+	}
 }
 
 export type MediaQueryWithTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
@@ -102,6 +111,13 @@ export class MediaQueryWithoutType {
 		}
 
 		return this.media.walk(cb);
+	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			media: this.media,
+		};
 	}
 }
 

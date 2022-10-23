@@ -40,6 +40,13 @@ export class GeneralEnclosed {
 			return this.value.walk(cb);
 		}
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			tokens: this.tokens(),
+		};
+	}
 }
 
 export type GeneralEnclosedWalkerEntry = ComponentValue;

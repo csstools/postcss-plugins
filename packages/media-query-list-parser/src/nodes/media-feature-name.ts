@@ -45,6 +45,14 @@ export class MediaFeatureName {
 			return this.name;
 		}
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			name: this.getName(),
+			tokens: this.tokens(),
+		};
+	}
 }
 
 export function parseMediaFeatureName(componentValues: Array<ComponentValue>) {

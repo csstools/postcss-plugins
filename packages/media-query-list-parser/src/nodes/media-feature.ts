@@ -44,6 +44,13 @@ export class MediaFeature {
 			return this.feature.walk(cb);
 		}
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			feature: this.feature.toJSON(),
+		};
+	}
 }
 
 export type MediaFeatureWalkerEntry = MediaFeaturePlainWalkerEntry | MediaFeatureRangeWalkerEntry | MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange;

@@ -68,6 +68,15 @@ export class MediaFeatureRangeNameValue {
 			return this.value.walk(cb);
 		}
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			name: this.name.toJSON(),
+			value: this.value.toJSON(),
+			tokens: this.tokens(),
+		};
+	}
 }
 
 export class MediaFeatureRangeValueName {
@@ -129,6 +138,15 @@ export class MediaFeatureRangeValueName {
 		if ('walk' in this.value) {
 			return this.value.walk(cb);
 		}
+	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			name: this.name.toJSON(),
+			value: this.value.toJSON(),
+			tokens: this.tokens(),
+		};
 	}
 }
 
@@ -221,6 +239,16 @@ export class MediaFeatureRangeValueNameValue {
 				return false;
 			}
 		}
+	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			name: this.name.toJSON(),
+			valueOne: this.valueOne.toJSON(),
+			valueTwo: this.valueTwo.toJSON(),
+			tokens: this.tokens(),
+		};
 	}
 }
 

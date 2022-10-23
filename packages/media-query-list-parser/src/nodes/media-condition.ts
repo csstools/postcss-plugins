@@ -40,6 +40,13 @@ export class MediaCondition {
 
 		return this.media.walk(cb);
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			media: this.media.toJSON(),
+		};
+	}
 }
 
 export type MediaConditionWalkerEntry = MediaNotWalkerEntry | MediaConditionListWithAndWalkerEntry | MediaConditionListWithOrWalkerEntry | MediaNot | MediaConditionListWithAnd | MediaConditionListWithOr;
