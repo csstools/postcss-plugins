@@ -185,12 +185,22 @@ html {
 	order: var(--local);
 }
 
-.ignores-declarations-that-have-an-exact-fallback {
+.ignores-declarations-that-have-an-exact-fallback-a {
 	left: 1rem;
-	left: var(--size, 1rem);
+	left: var(--does-not-exist, 1rem);
 }
 
-.does-not-ignore-declarations-that-have-an-exact-override {
-	left: var(--size, 1rem);
+.ignores-declarations-that-have-an-exact-fallback-b {
+	right: 2em;
+	right: var(--✅-size);
+}
+
+.does-not-ignore-declarations-that-have-an-exact-override-a {
+	left: var(--does-not-exist, 1rem);
 	left: 1rem;
+}
+
+.does-not-ignore-declarations-that-have-an-exact-override-b {
+	right: var(--✅-size);
+	right: 2em;
 }
