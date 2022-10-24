@@ -146,6 +146,14 @@ export class FunctionNode {
 			return false;
 		}
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			name: this.name[4].value,
+			tokens: this.tokens(),
+		};
+	}
 }
 
 // https://www.w3.org/TR/css-syntax-3/#consume-function
@@ -271,6 +279,14 @@ export class SimpleBlockNode {
 			return false;
 		}
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			startToken: this.startToken,
+			tokens: this.tokens(),
+		};
+	}
 }
 
 /** https://www.w3.org/TR/css-syntax-3/#consume-simple-block */
@@ -340,6 +356,13 @@ export class WhitespaceNode {
 	toString() {
 		return stringify(...this.value);
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			tokens: this.tokens(),
+		};
+	}
 }
 
 export function consumeWhitespace(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: WhitespaceNode } {
@@ -376,6 +399,13 @@ export class CommentNode {
 
 	toString() {
 		return stringify(this.value);
+	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			tokens: this.tokens(),
+		};
 	}
 }
 
@@ -431,6 +461,13 @@ export class TokenNode {
 	toString() {
 		return stringify(this.value);
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			tokens: this.tokens(),
+		};
+	}
 }
 
 export class UnclosedFunctionNode {
@@ -449,6 +486,13 @@ export class UnclosedFunctionNode {
 	toString() {
 		return stringify(...this.value);
 	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			tokens: this.tokens(),
+		};
+	}
 }
 
 export class UnclosedSimpleBlockNode {
@@ -466,5 +510,12 @@ export class UnclosedSimpleBlockNode {
 
 	toString() {
 		return stringify(...this.value);
+	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			tokens: this.tokens(),
+		};
 	}
 }

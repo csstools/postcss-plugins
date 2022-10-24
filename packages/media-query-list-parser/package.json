@@ -48,7 +48,8 @@
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run clean && npm run build && npm run test",
-		"test": "node ./test/test.mjs"
+		"test": "node ./test/test.mjs",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node ./test/test.mjs"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser#readme",
 	"repository": {

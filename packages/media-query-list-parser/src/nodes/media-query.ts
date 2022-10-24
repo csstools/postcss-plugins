@@ -64,6 +64,7 @@ export class MediaQueryWithType {
 	toJSON() {
 		return {
 			type: this.type,
+			string: this.toString(),
 			modifier: this.modifier,
 			mediaType: this.mediaType,
 			media: this.media,
@@ -116,6 +117,7 @@ export class MediaQueryWithoutType {
 	toJSON() {
 		return {
 			type: this.type,
+			string: this.toString(),
 			media: this.media,
 		};
 	}

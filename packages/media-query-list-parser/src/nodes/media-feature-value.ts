@@ -69,9 +69,17 @@ export class MediaFeatureValue {
 	}
 
 	toJSON() {
+		if (Array.isArray(this.value)) {
+			return {
+				type: this.type,
+				value: this.value.map((x) => x.toJSON()),
+				tokens: this.tokens(),
+			};
+		}
+
 		return {
 			type: this.type,
-			value: this.value.toString(),
+			value: this.value.toJSON(),
 			tokens: this.tokens(),
 		};
 	}
