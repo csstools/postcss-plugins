@@ -1,10 +1,11 @@
 import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { MediaCondition, MediaConditionWalkerEntry, MediaConditionWalkerParent } from './media-condition';
+import { NodeType } from './node-type';
 
 export type MediaQuery = MediaQueryWithType | MediaQueryWithoutType;
 
 export class MediaQueryWithType {
-	type = 'media-query-with-type';
+	type = NodeType.MediaQueryWithType;
 
 	modifier: Array<CSSToken>;
 	mediaType: Array<CSSToken>;
@@ -76,7 +77,7 @@ export type MediaQueryWithTypeWalkerEntry = MediaConditionWalkerEntry | MediaCon
 export type MediaQueryWithTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithType;
 
 export class MediaQueryWithoutType {
-	type = 'media-query-without-type';
+	type = NodeType.MediaQueryWithoutType;
 
 	media: MediaCondition;
 

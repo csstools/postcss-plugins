@@ -94,7 +94,6 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>) {
 			condition,
 		);
 	}
-
 }
 
 export function parseMediaConditionListWithOr(componentValues: Array<ComponentValue>) {
@@ -385,6 +384,8 @@ export function parseMediaNot(componentValues: Array<ComponentValue>) {
 				}),
 				media,
 			);
+
+			continue;
 		}
 
 		return false;

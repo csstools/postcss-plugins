@@ -1,0 +1,35 @@
+[
+	{
+		"type": "media-query-with-type",
+		"string": "only screen",
+		"modifier": [
+			[
+				"ident-token",
+				"only",
+				0,
+				3,
+				{
+					"value": "only"
+				}
+			]
+		],
+		"mediaType": [
+			[
+				"whitespace-token",
+				" ",
+				4,
+				4,
+				null
+			],
+			[
+				"ident-token",
+				"screen",
+				5,
+				10,
+				{
+					"value": "screen"
+				}
+			]
+		]
+	}
+]

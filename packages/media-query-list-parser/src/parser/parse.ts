@@ -1,5 +1,6 @@
 import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { tokenizer } from '@csstools/css-tokenizer';
+import { MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
 import { parseMediaQuery } from './parse-media-query';
 
 export function parse(source: string) {
@@ -26,5 +27,5 @@ export function parse(source: string) {
 		onParseError: onParseError,
 	}).map((componentValuesList) => {
 		return parseMediaQuery(componentValuesList);
-	}).filter((x) => !!x);
+	}).filter((x) => !!x) as Array<MediaQueryWithType | MediaQueryWithoutType>;
 }
