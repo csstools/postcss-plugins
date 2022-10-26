@@ -60,6 +60,24 @@ console.log(result);
 - [`parseListOfComponentValues`](https://www.w3.org/TR/css-syntax-3/#parse-list-of-component-values)
 - [`parseCommaSeparatedListOfComponentValues`](https://www.w3.org/TR/css-syntax-3/#parse-comma-separated-list-of-component-values)
 
+### Utilities
+
+#### `gatherNodeAncestry`
+
+The AST does not expose the entire ancestry of each node.
+The walker methods do provide access to the current parent, but also not the entire ancestry.
+
+To gather the entire ancestry for a a given sub tree of the AST you can use `gatherNodeAncestry`.
+The result is a `Map` with the child nodes as keys and the parents as values.
+This allows you to lookup any ancestor of any node.
+
+```css
+import { parseComponentValue } from '@csstools/css-parser-algorithms';
+
+const result = parseComponentValue(tokens, options);
+const ancestry = gatherNodeAncestry(result);
+```
+
 ### Options
 
 ```ts
