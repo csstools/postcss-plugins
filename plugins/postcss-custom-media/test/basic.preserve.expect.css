@@ -14,6 +14,18 @@
 	}
 }
 
+@container (max-width: 30em),(max-height: 30em) {
+	body {
+		order: 1;
+	}
+}
+
+@container (--mq-a) {
+	body {
+		order: 1;
+	}
+}
+
 @media screen and (max-width: 30em) {
 	body {
 		order: 1;
