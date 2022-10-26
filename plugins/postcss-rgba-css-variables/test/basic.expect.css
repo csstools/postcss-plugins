@@ -13,9 +13,7 @@ html {
 .header {
 	width: var(--width);
 	height: 80px;
-	color: rgba(var(--color), .6);
 	color: rgba(255, 0, 0, .6);
-	background-color: rgba(var(--bg-color), .4);
 	background-color: rgba(85, 85, 85, .4);
 }
 
@@ -23,19 +21,15 @@ html {
 	--s-color: #eee;
 	--ccc-color: var(--bg-color);
 	--s-bg-color: var(--ccc-color);
-	color: rgba(var(--s-color), .3);
 	color: rgba(238, 238, 238, .3);
-	background-color: rgba(var(--s-bg-color), .7);
 	background-color: rgba(85, 85, 85, .7);
 }
 
 .aaa {
-	color: rgba(var(--color), .4);
 	color: rgba(255, 0, 0, .4);
 }
 
 .bbb {
-	color: rgba(var(--color, blue), .4);
 	color: rgba(255, 0, 0, .4);
 }
 

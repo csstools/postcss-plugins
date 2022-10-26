@@ -26,7 +26,6 @@ export default function getRgbaVariables(root: Root): Set<OutputProps> {
 		}
 	});
 
-
 	// console.dir(output, { depth: null });
 
 	return output;

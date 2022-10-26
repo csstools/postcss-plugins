@@ -59,7 +59,10 @@
 		"directory": "plugins/postcss-rgba-css-variables"
 	},
 	"keywords": [
-		"postcss-plugin"
+		"postcss-plugin",
+		"rgba",
+		"css variable",
+		"css 变量"
 	],
 	"csstools": {
 		"cssdbId": "TODO",

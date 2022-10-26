@@ -1,4 +1,4 @@
-import { Root, Rule, Declaration, comment } from 'postcss';
+import { Root, Rule, Declaration } from 'postcss';
 import { colord } from 'colord';
 import valueParser from 'postcss-value-parser';
 import { parseColor, isRootRule, COMMON_VARIABLES_KEY, getValueFromParsedVariable } from './utils';

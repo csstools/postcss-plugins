@@ -5,16 +5,18 @@ postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
 	},
-	'basic:replace-required': {
+	'basic.replace-required': {
 		message: '使用到的 variables 会替换成rgb',
 		options: {
-			mode: 'replace-required'
+			mode: 'replace-required',
+			preserve: true
 		}
 	},
-	'basic:replace-all': {
+	'basic.replace-all': {
 		message: '全部的 variables 会被替换成rgb',
 		options: {
-			mode: 'replace-all'
+			mode: 'replace-all',
+			preserve: true
 		}
 	}
 	// 'basic:color': {

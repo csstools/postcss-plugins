@@ -1,26 +1,120 @@
 # PostCSS rgba-css-variables [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-rgba-css-variables.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/TODO.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[PostCSS rgba-css-variables] lets you easily support `css variable` when use `rgba`.
 
-[PostCSS rgba-css-variables] lets you easily create new plugins following some [CSS Specification].
+If you enter this,
 
 ```pcss
-.foo {
-	color: red;
+:root {
+	--width: 100px;
+	--color: rgb(255, 0, 0);
+	--bg-color: #555;
 }
 
-.baz {
-	color: green;
+html {
+	--s-color: rgb(255, 255, 0);
+	--s-bg-color: #999;
+	color: rgba(0, 0, 0, 0.3);
 }
 
-/* becomes */
-
-.foo {
-	color: blue;
+.header {
+	width: var(--width);
+	height: 80px;
+	color: rgba(var(--color), 0.6);
+	color: rgba(255, 0, 0, 0.6);
+	background-color: rgba(var(--bg-color), 0.4);
+	background-color: rgba(85, 85, 85, 0.4);
 }
 
-.baz {
-	color: green;
+.footer {
+	--s-color: #eee;
+	--ccc-color: var(--bg-color);
+	--s-bg-color: var(--ccc-color);
+	color: rgba(var(--s-color), 0.3);
+	color: rgba(238, 238, 238, 0.3);
+	background-color: rgba(var(--s-bg-color), 0.7);
+	background-color: rgba(85, 85, 85, 0.7);
+}
+
+.aaa {
+	color: rgba(var(--color), 0.4);
+	color: rgba(255, 0, 0, 0.4);
+}
+
+.bbb {
+	color: rgba(var(--color, blue), 0.4);
+	color: rgba(255, 0, 0, 0.4);
+}
+
+.ccc {
+	--opacity: 0.5;
+	color: rgba(var(--color), var(--opacity));
+}
+
+.ddd {
+	--opacity: 0.5;
+	--color-r: 255;
+	--color-g: 0;
+	--color-b: 0;
+	color: rgba(var(--color-r), var(--color-g), var(--color-b), var(--opacity));
+}
+```
+
+then you will get:
+
+```pcss
+:root {
+	--width: 100px;
+	--color: rgb(255, 0, 0);
+	--bg-color: #555;
+}
+
+html {
+	--s-color: rgb(255, 255, 0);
+	--s-bg-color: #999;
+	color: rgba(0, 0, 0, 0.3);
+}
+
+.header {
+	width: var(--width);
+	height: 80px;
+	color: rgba(var(--color), 0.6);
+	color: rgba(255, 0, 0, 0.6);
+	background-color: rgba(var(--bg-color), 0.4);
+	background-color: rgba(85, 85, 85, 0.4);
+}
+
+.footer {
+	--s-color: #eee;
+	--ccc-color: var(--bg-color);
+	--s-bg-color: var(--ccc-color);
+	color: rgba(var(--s-color), 0.3);
+	color: rgba(238, 238, 238, 0.3);
+	background-color: rgba(var(--s-bg-color), 0.7);
+	background-color: rgba(85, 85, 85, 0.7);
+}
+
+.aaa {
+	color: rgba(var(--color), 0.4);
+	color: rgba(255, 0, 0, 0.4);
+}
+
+.bbb {
+	color: rgba(var(--color, blue), 0.4);
+	color: rgba(255, 0, 0, 0.4);
+}
+
+.ccc {
+	--opacity: 0.5;
+	color: rgba(var(--color), var(--opacity));
+}
+
+.ddd {
+	--opacity: 0.5;
+	--color-r: 255;
+	--color-g: 0;
+	--color-b: 0;
+	color: rgba(var(--color-r), var(--color-g), var(--color-b), var(--opacity));
 }
 ```
 
@@ -36,48 +130,129 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require("postcss");
-const postcssBasePlugin = require("postcss-rgba-css-variables");
+const postcssRgbaCssVariables = require("postcss-rgba-css-variables");
 
-postcss([postcssBasePlugin(/* pluginOptions */)]).process(
+postcss([postcssRgbaCssVariables(/* pluginOptions */)]).process(
 	YOUR_CSS /*, processOptions */
 );
 ```
 
-[PostCSS rgba-css-variables] runs in all Node environments, with special
-instructions for:
-
-| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
-| ----------------------- | ------------------------------------- | ----------------------------- | ----------------------------------------------- | ----------------------- | ------------------------- |
-
 ## Options
+
+### mode
+
+- optional: "replace-directly" | "replace-required" | "replace-all"
+- default: "replace-directly"
+
+`replace-directly` will replace all css variables which used in rgba :
+
+```pcss
+:root {
+	--color: #000;
+	--default-color: #fff;
+}
+
+div {
+	background-color: rgba(var(--color), 0.3);
+}
+
+/** will become */
+:root {
+	--color: #000;
+	--default-color: #fff;
+}
+
+div {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+```
+
+`replace-required` will use `xxx-rgb` replace all css variables which used in rgba :
+
+```pcss
+:root {
+	--color: #000;
+	--default-color: #fff;
+}
+
+div {
+	background-color: rgba(var(--color), 0.3);
+}
+
+/** will become */
+:root {
+	--color: #000;
+	--color-rgb: 0, 0, 0;
+	--default-color: #fff;
+}
+
+div {
+	background-color: rgba(var(--color-rgb), 0.3);
+}
+```
+
+`replace-all` will change all css variables whether it was used. This mode can be used when you want change css variables in browser.
+
+```pcss
+:root {
+	--color: #000;
+	--default-color: #fff;
+}
+
+div {
+	background-color: rgba(var(--color), 0.3);
+}
+
+/** will become */
+:root {
+	--color: #000;
+	--color-rgb: 0, 0, 0;
+	--default-color: #fff;
+	--default-color-rgb: 255, 255, 255;
+}
+
+div {
+	background-color: rgba(var(--color-rgb), 0.3);
+}
+```
+
+```js
+let root = document.documentElement;
+
+root.style.setProperty("--color", "red");
+root.style.setProperty("--color-rgb", "255, 0, 0");
+root.style.setProperty("--default-color", "green");
+root.style.setProperty("--default-color-rgb", "0, 255, 0");
+```
 
 ### preserve
 
 The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
+is preserved. By default, it is preserved.
 
 ```js
-postcssBasePlugin({ preserve: true });
+postcssRgbaCssVariables({ preserve: false });
 ```
 
 ```pcss
-.foo {
-	color: red;
+:root {
+	--color: #000;
+	--default-color: #fff;
 }
 
-.baz {
-	color: green;
+div {
+	background-color: rgba(var(--color), 0.3);
 }
 
-/* becomes */
-
-.foo {
-	color: blue;
-	color: red;
+/** will become */
+:root {
+	--color: #000;
+	--default-color: #fff;
 }
 
-.baz {
-	color: green;
+div {
+	background-color: rgba(var(--color), 0.3);
+	background-color: rgba(0, 0, 0, 0.3);
 }
 ```
 

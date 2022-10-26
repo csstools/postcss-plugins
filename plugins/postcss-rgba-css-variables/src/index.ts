@@ -11,17 +11,17 @@ type pluginOptions = {
 const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 	const {
 		mode = 'replace-directly',
-		preserve = true,
+		preserve = false,
 	} = {...options};
-
-	console.log(mode, preserve);
 
 	return {
 		postcssPlugin: 'postcss-rgba-css-variables',
 		prepare() {
 			return {
 				Once: root => {
+					// 获取所有的css variables
 					const colorVariablesTree = getColorVariablesTree(root);
+					// 获取所有rbga 引用到的css variables
 					const rgbaVariables = getRgbaVariables(root);
 
 					// mode === replace-required
@@ -33,7 +33,6 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 								if(!parsedValue) {
 									continue;
 								}
-
 								decl.cloneAfter({
 									prop: `${variableName}-rgb`,
 									value: parsedValue,
@@ -46,11 +45,8 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 						const { selector } = decl.parent as Rule;
 						const variableParsed = colorVariablesTree.get(selector)?.get(variableName) || colorVariablesTree.get(COMMON_VARIABLES_KEY)?.get(variableName);
 
-						// console.log(333, variableName, variableParsed?.value);
 
 						if (variableParsed && variableParsed.parsedValue) {
-							// console.log(decl.value.replace(cssVariablesRegExp, variableParsed.parsedValue));
-
 							if (mode === 'replace-directly') {
 								decl.cloneAfter({
 									value: decl.value.replace(cssVariablesRegExp, variableParsed.parsedValue),
@@ -85,8 +81,6 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 							decl.remove();
 						}
 					}
-
-
 				},
 			};
 		},
