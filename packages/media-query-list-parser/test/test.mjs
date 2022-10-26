@@ -12,6 +12,14 @@ import './cases/mf-plain/0003.mjs';
 import './cases/mf-plain/0004.mjs';
 import './cases/mf-plain/0005.mjs';
 
+import './cases/mf-range/0001.mjs';
+import './cases/mf-range/0002.mjs';
+import './cases/mf-range/0003.mjs';
+import './cases/mf-range/0004.mjs';
+import './cases/mf-range/0005.mjs';
+import './cases/mf-range/0006.mjs';
+import './cases/mf-range/0007.mjs';
+
 import './cases/query-with-type/0001.mjs';
 import './cases/query-with-type/0002.mjs';
 import './cases/query-with-type/0003.mjs';
