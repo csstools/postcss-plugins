@@ -10,7 +10,7 @@
 	}
 }
 
-@media screen,[aa,bb,cc] {
+@media screen {
 	.a {
 		order: 3;
 	}

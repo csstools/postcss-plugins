@@ -1,9 +1,10 @@
 import { MediaConditionListWithAnd, MediaConditionListWithAndWalkerEntry, MediaConditionListWithAndWalkerParent, MediaConditionListWithOr, MediaConditionListWithOrWalkerEntry, MediaConditionListWithOrWalkerParent } from './media-condition-list';
 import { MediaInParens } from './media-in-parens';
 import { MediaNot, MediaNotWalkerEntry, MediaNotWalkerParent } from './media-not';
+import { NodeType } from './node-type';
 
 export class MediaCondition {
-	type = 'media-condition';
+	type = NodeType.MediaCondition;
 
 	media: MediaNot | MediaInParens | MediaConditionListWithAnd | MediaConditionListWithOr;
 

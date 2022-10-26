@@ -1,9 +1,10 @@
 import { ComponentValue, ComponentValueType, ContainerNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
 import { isDimension, isIdent, isNumber } from '../util/component-value-is';
+import { NodeType } from './node-type';
 
 export class MediaFeatureValue {
-	type = 'mf-value';
+	type = NodeType.MediaFeatureValue;
 
 	value: ComponentValue | Array<ComponentValue>;
 	before: Array<CSSToken>;

@@ -3,13 +3,14 @@ import { CSSToken, stringify, TokenDelim, TokenType } from '@csstools/css-tokeni
 import { comparisonFromTokens, matchesComparison } from './media-feature-comparison';
 import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
 import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent, parseMediaFeatureValue } from './media-feature-value';
+import { NodeType } from './node-type';
 
 export type MediaFeatureRange = MediaFeatureRangeNameValue |
 	MediaFeatureRangeValueName |
 	MediaFeatureRangeValueNameValue;
 
 export class MediaFeatureRangeNameValue {
-	type = 'mf-range-name-value';
+	type = NodeType.MediaFeatureRangeNameValue;
 
 	name: MediaFeatureName;
 	operator: [TokenDelim, TokenDelim] | [TokenDelim];
@@ -80,7 +81,7 @@ export class MediaFeatureRangeNameValue {
 }
 
 export class MediaFeatureRangeValueName {
-	type = 'mf-range-value-range';
+	type = NodeType.MediaFeatureRangeValueName;
 
 	name: MediaFeatureName;
 	operator: [TokenDelim, TokenDelim] | [TokenDelim];
@@ -151,7 +152,7 @@ export class MediaFeatureRangeValueName {
 }
 
 export class MediaFeatureRangeValueNameValue {
-	type = 'mf-range-value-name-value';
+	type = NodeType.MediaFeatureRangeValueNameValue;
 
 	name: MediaFeatureName;
 	valueOne: MediaFeatureValue;

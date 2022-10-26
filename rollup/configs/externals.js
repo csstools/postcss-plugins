@@ -6,6 +6,7 @@ export const externalsForCLI = [
 
 	'@csstools/css-parser-algorithms',
 	'@csstools/css-tokenizer',
+	'@csstools/media-query-list-parser',
 	'@csstools/postcss-cascade-layers',
 	'@csstools/postcss-color-function',
 	'@csstools/postcss-font-format-keywords',
@@ -73,6 +74,7 @@ export const externalsForPlugin = [
 
 	'@csstools/css-parser-algorithms',
 	'@csstools/css-tokenizer',
+	'@csstools/media-query-list-parser',
 	'@csstools/postcss-cascade-layers',
 	'@csstools/postcss-color-function',
 	'@csstools/postcss-font-format-keywords',

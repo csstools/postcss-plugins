@@ -2,11 +2,12 @@ import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { MediaAnd, MediaAndWalkerEntry, MediaAndWalkerParent } from './media-and';
 import { MediaInParens } from './media-in-parens';
 import { MediaOr, MediaOrWalkerEntry, MediaOrWalkerParent } from './media-or';
+import { NodeType } from './node-type';
 
 export type MediaConditionList = MediaConditionListWithAnd | MediaConditionListWithOr;
 
 export class MediaConditionListWithAnd {
-	type = 'media-condition-list-and';
+	type = NodeType.MediaConditionListWithAnd;
 
 	leading: MediaInParens;
 	list: Array<MediaAnd>;
@@ -109,7 +110,7 @@ export type MediaConditionListWithAndWalkerEntry = MediaAndWalkerEntry | MediaAn
 export type MediaConditionListWithAndWalkerParent = MediaAndWalkerParent | MediaConditionListWithAnd;
 
 export class MediaConditionListWithOr {
-	type = 'media-condition-list-or';
+	type = NodeType.MediaConditionListWithOr;
 
 	leading: MediaInParens;
 	list: Array<MediaOr>;

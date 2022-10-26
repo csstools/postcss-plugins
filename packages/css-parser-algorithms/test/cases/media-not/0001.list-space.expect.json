@@ -1,0 +1,79 @@
+[
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"not",
+				0,
+				2,
+				{
+					"value": "not"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				3,
+				3,
+				null
+			]
+		]
+	},
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			4,
+			4,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				4,
+				4,
+				null
+			],
+			[
+				"ident-token",
+				"color",
+				5,
+				9,
+				{
+					"value": "color"
+				}
+			],
+			[
+				")-token",
+				")",
+				10,
+				10,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"color",
+						5,
+						9,
+						{
+							"value": "color"
+						}
+					]
+				]
+			}
+		]
+	}
+]

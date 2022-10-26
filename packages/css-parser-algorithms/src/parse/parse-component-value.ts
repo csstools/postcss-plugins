@@ -38,4 +38,3 @@ export function parseComponentValue(tokens: Array<CSSToken>, options?: { onParse
 		],
 	});
 }
-

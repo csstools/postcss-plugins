@@ -152,6 +152,7 @@ export class FunctionNode {
 			type: this.type,
 			name: this.name[4].value,
 			tokens: this.tokens(),
+			value: this.value.map((x) => x.toJSON()),
 		};
 	}
 }
@@ -285,6 +286,7 @@ export class SimpleBlockNode {
 			type: this.type,
 			startToken: this.startToken,
 			tokens: this.tokens(),
+			value: this.value.map((x) => x.toJSON()),
 		};
 	}
 }

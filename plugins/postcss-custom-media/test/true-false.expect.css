@@ -1,16 +1,16 @@
-@media (max-color:2147477350) {@media screen and (max-color:2147477350) {
+@media tRUe {@media screen and (max-color:2147477350) {
 	.true {
 		order: 1;
 	}
 }
-}@media not all and (max-color:2147477350) {@media screen and (color:2147477350) {
+}@media not tRUe {@media screen and (color:2147477350) {
 	.true {
 		order: 1;
 	}
 }
 }
 
-@media (color:2147477350) {
+@media fAlsE {
 
 @media screen and (max-color:2147477350) {
 	.false {
@@ -19,7 +19,7 @@
 }
 }
 
-@media not all and (color:2147477350) {
+@media not fAlsE {
 
 @media screen and (color:2147477350) {
 	.false {
@@ -28,13 +28,13 @@
 }
 }
 
-@media (max-color:2147477350) {
+@media tRUe {
 	.true {
 		order: 3;
 	}
 }
 
-@media (color:2147477350) {
+@media fAlsE {
 	.false {
 		order: 4;
 	}

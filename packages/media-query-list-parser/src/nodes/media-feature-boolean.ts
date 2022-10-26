@@ -1,8 +1,9 @@
 import { ComponentValue } from '@csstools/css-parser-algorithms';
 import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
+import { NodeType } from './node-type';
 
 export class MediaFeatureBoolean extends MediaFeatureName {
-	type = 'mf-boolean';
+	type = NodeType.MediaFeatureBoolean;
 }
 
 export function parseMediaFeatureBoolean(componentValues: Array<ComponentValue>) {

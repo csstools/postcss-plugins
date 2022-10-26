@@ -1,0 +1,788 @@
+[
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"not",
+				0,
+				2,
+				{
+					"value": "not"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				3,
+				3,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"screen",
+				4,
+				9,
+				{
+					"value": "screen"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				10,
+				10,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"and",
+				11,
+				13,
+				{
+					"value": "and"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				14,
+				14,
+				null
+			]
+		]
+	},
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			15,
+			15,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				15,
+				15,
+				null
+			],
+			[
+				"ident-token",
+				"min-width",
+				16,
+				24,
+				{
+					"value": "min-width"
+				}
+			],
+			[
+				"colon-token",
+				":",
+				25,
+				25,
+				null
+			],
+			[
+				"whitespace-token",
+				" ",
+				26,
+				26,
+				null
+			],
+			[
+				"dimension-token",
+				"300px",
+				27,
+				31,
+				{
+					"value": 300,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				")-token",
+				")",
+				32,
+				32,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"min-width",
+						16,
+						24,
+						{
+							"value": "min-width"
+						}
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"colon-token",
+						":",
+						25,
+						25,
+						null
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						26,
+						26,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"300px",
+						27,
+						31,
+						{
+							"value": 300,
+							"type": "integer",
+							"unit": "px"
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				33,
+				33,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"and",
+				34,
+				36,
+				{
+					"value": "and"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				37,
+				37,
+				null
+			]
+		]
+	},
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			38,
+			38,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				38,
+				38,
+				null
+			],
+			[
+				"ident-token",
+				"prefers-color-scheme",
+				39,
+				58,
+				{
+					"value": "prefers-color-scheme"
+				}
+			],
+			[
+				"colon-token",
+				":",
+				59,
+				59,
+				null
+			],
+			[
+				"comment",
+				"/* a comment */",
+				60,
+				74,
+				null
+			],
+			[
+				"ident-token",
+				"dark",
+				75,
+				78,
+				{
+					"value": "dark"
+				}
+			],
+			[
+				")-token",
+				")",
+				79,
+				79,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"prefers-color-scheme",
+						39,
+						58,
+						{
+							"value": "prefers-color-scheme"
+						}
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"colon-token",
+						":",
+						59,
+						59,
+						null
+					]
+				]
+			},
+			{
+				"type": "comment",
+				"tokens": [
+					[
+						"comment",
+						"/* a comment */",
+						60,
+						74,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"dark",
+						75,
+						78,
+						{
+							"value": "dark"
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				80,
+				80,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"and",
+				81,
+				83,
+				{
+					"value": "and"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				84,
+				84,
+				null
+			]
+		]
+	},
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			85,
+			85,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				85,
+				85,
+				null
+			],
+			[
+				"ident-token",
+				"width",
+				86,
+				90,
+				{
+					"value": "width"
+				}
+			],
+			[
+				"whitespace-token",
+				" ",
+				91,
+				91,
+				null
+			],
+			[
+				"delim-token",
+				"<",
+				92,
+				92,
+				{
+					"value": "<"
+				}
+			],
+			[
+				"whitespace-token",
+				" ",
+				93,
+				93,
+				null
+			],
+			[
+				"dimension-token",
+				"40vw",
+				94,
+				97,
+				{
+					"value": 40,
+					"type": "integer",
+					"unit": "vw"
+				}
+			],
+			[
+				")-token",
+				")",
+				98,
+				98,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"width",
+						86,
+						90,
+						{
+							"value": "width"
+						}
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						91,
+						91,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"delim-token",
+						"<",
+						92,
+						92,
+						{
+							"value": "<"
+						}
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						93,
+						93,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"40vw",
+						94,
+						97,
+						{
+							"value": 40,
+							"type": "integer",
+							"unit": "vw"
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				99,
+				99,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"and",
+				100,
+				102,
+				{
+					"value": "and"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				103,
+				103,
+				null
+			]
+		]
+	},
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			104,
+			104,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				104,
+				104,
+				null
+			],
+			[
+				"dimension-token",
+				"30px",
+				105,
+				108,
+				{
+					"value": 30,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				"whitespace-token",
+				" ",
+				109,
+				109,
+				null
+			],
+			[
+				"delim-token",
+				"<",
+				110,
+				110,
+				{
+					"value": "<"
+				}
+			],
+			[
+				"whitespace-token",
+				" ",
+				111,
+				111,
+				null
+			],
+			[
+				"ident-token",
+				"width",
+				112,
+				116,
+				{
+					"value": "width"
+				}
+			],
+			[
+				"whitespace-token",
+				" ",
+				117,
+				117,
+				null
+			],
+			[
+				"delim-token",
+				"<",
+				118,
+				118,
+				{
+					"value": "<"
+				}
+			],
+			[
+				"whitespace-token",
+				" ",
+				119,
+				119,
+				null
+			],
+			[
+				"dimension-token",
+				"50rem",
+				120,
+				124,
+				{
+					"value": 50,
+					"type": "integer",
+					"unit": "rem"
+				}
+			],
+			[
+				")-token",
+				")",
+				125,
+				125,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"30px",
+						105,
+						108,
+						{
+							"value": 30,
+							"type": "integer",
+							"unit": "px"
+						}
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						109,
+						109,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"delim-token",
+						"<",
+						110,
+						110,
+						{
+							"value": "<"
+						}
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						111,
+						111,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"width",
+						112,
+						116,
+						{
+							"value": "width"
+						}
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						117,
+						117,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"delim-token",
+						"<",
+						118,
+						118,
+						{
+							"value": "<"
+						}
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						119,
+						119,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"50rem",
+						120,
+						124,
+						{
+							"value": 50,
+							"type": "integer",
+							"unit": "rem"
+						}
+					]
+				]
+			}
+		]
+	}
+]

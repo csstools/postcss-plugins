@@ -23,7 +23,6 @@ export enum MediaType {
 	Speech = 'speech',
 }
 
-
 export function typeFromToken(token: TokenIdent): MediaType | false {
 	if (token[0] !== TokenType.Ident) {
 		return false;

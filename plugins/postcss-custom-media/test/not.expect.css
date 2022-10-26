@@ -9,7 +9,7 @@
 }
 }
 
-@media (min-height: 300px) {
+@media not (min-height: 300px) {
 
 @media not (color:2147477350) {
 	.a {

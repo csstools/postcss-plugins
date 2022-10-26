@@ -10,9 +10,10 @@ import { MediaFeatureName } from './media-feature-name';
 import { MediaFeaturePlain } from './media-feature-plain';
 import { MediaFeatureRange } from './media-feature-range';
 import { MediaFeatureValue } from './media-feature-value';
+import { NodeType } from './node-type';
 
 export class MediaInParens {
-	type = 'media-in-parens';
+	type = NodeType.MediaInParens;
 
 	media: MediaCondition | MediaFeature | GeneralEnclosed;
 	before: Array<CSSToken>;

@@ -1,0 +1,114 @@
+[
+	{
+		"type": "simple-block",
+		"startToken": [
+			"[-token",
+			"[",
+			0,
+			0,
+			null
+		],
+		"tokens": [
+			[
+				"[-token",
+				"[",
+				0,
+				0,
+				null
+			],
+			[
+				"ident-token",
+				"resolution",
+				1,
+				10,
+				{
+					"value": "resolution"
+				}
+			],
+			[
+				"colon-token",
+				":",
+				11,
+				11,
+				null
+			],
+			[
+				"whitespace-token",
+				" ",
+				12,
+				12,
+				null
+			],
+			[
+				"ident-token",
+				"infinite",
+				13,
+				20,
+				{
+					"value": "infinite"
+				}
+			],
+			[
+				"]-token",
+				"]",
+				21,
+				21,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"resolution",
+						1,
+						10,
+						{
+							"value": "resolution"
+						}
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"colon-token",
+						":",
+						11,
+						11,
+						null
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						12,
+						12,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"infinite",
+						13,
+						20,
+						{
+							"value": "infinite"
+						}
+					]
+				]
+			}
+		]
+	}
+]

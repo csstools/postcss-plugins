@@ -1,9 +1,10 @@
 import { ComponentValue, ComponentValueType, TokenNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenIdent } from '@csstools/css-tokenizer';
 import { isIdent } from '../util/component-value-is';
+import { NodeType } from './node-type';
 
 export class MediaFeatureName {
-	type = 'mf-name';
+	type = NodeType.MediaFeatureName;
 
 	name: ComponentValue;
 	before: Array<CSSToken>;

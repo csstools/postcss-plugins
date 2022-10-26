@@ -1,0 +1,345 @@
+[
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			0,
+			0,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				0,
+				0,
+				null
+			],
+			[
+				"ident-token",
+				"resolution",
+				1,
+				10,
+				{
+					"value": "resolution"
+				}
+			],
+			[
+				"whitespace-token",
+				" ",
+				11,
+				11,
+				null
+			],
+			[
+				"delim-token",
+				"<",
+				12,
+				12,
+				{
+					"value": "<"
+				}
+			],
+			[
+				"whitespace-token",
+				" ",
+				13,
+				13,
+				null
+			],
+			[
+				"ident-token",
+				"infinite",
+				14,
+				21,
+				{
+					"value": "infinite"
+				}
+			],
+			[
+				")-token",
+				")",
+				22,
+				22,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"resolution",
+						1,
+						10,
+						{
+							"value": "resolution"
+						}
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						11,
+						11,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"delim-token",
+						"<",
+						12,
+						12,
+						{
+							"value": "<"
+						}
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						13,
+						13,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"infinite",
+						14,
+						21,
+						{
+							"value": "infinite"
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				23,
+				23,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"and",
+				24,
+				26,
+				{
+					"value": "and"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				27,
+				27,
+				null
+			]
+		]
+	},
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			28,
+			28,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				28,
+				28,
+				null
+			],
+			[
+				"ident-token",
+				"infinite",
+				29,
+				36,
+				{
+					"value": "infinite"
+				}
+			],
+			[
+				"whitespace-token",
+				" ",
+				37,
+				37,
+				null
+			],
+			[
+				"delim-token",
+				"<",
+				38,
+				38,
+				{
+					"value": "<"
+				}
+			],
+			[
+				"delim-token",
+				"=",
+				39,
+				39,
+				{
+					"value": "="
+				}
+			],
+			[
+				"whitespace-token",
+				" ",
+				40,
+				40,
+				null
+			],
+			[
+				"ident-token",
+				"resolution",
+				41,
+				50,
+				{
+					"value": "resolution"
+				}
+			],
+			[
+				")-token",
+				")",
+				51,
+				51,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"infinite",
+						29,
+						36,
+						{
+							"value": "infinite"
+						}
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						37,
+						37,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"delim-token",
+						"<",
+						38,
+						38,
+						{
+							"value": "<"
+						}
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"delim-token",
+						"=",
+						39,
+						39,
+						{
+							"value": "="
+						}
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						40,
+						40,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"resolution",
+						41,
+						50,
+						{
+							"value": "resolution"
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				52,
+				52,
+				null
+			]
+		]
+	}
+]

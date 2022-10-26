@@ -1,7 +1,8 @@
 import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
+import { NodeType } from './node-type';
 
 export class GeneralEnclosed {
-	type = 'general-enclosed';
+	type = NodeType.GeneralEnclosed;
 
 	value: ComponentValue;
 

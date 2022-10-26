@@ -38,4 +38,3 @@ export function parseListOfComponentValues(tokens: Array<CSSToken>, options?: { 
 		i += result.advance;
 	}
 }
-

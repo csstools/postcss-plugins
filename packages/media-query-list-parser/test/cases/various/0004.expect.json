@@ -99,6 +99,78 @@
 										25,
 										null
 									]
+								],
+								"value": [
+									{
+										"type": "token",
+										"tokens": [
+											[
+												"dimension-token",
+												"50vw",
+												14,
+												17,
+												{
+													"value": 50,
+													"type": "integer",
+													"unit": "vw"
+												}
+											]
+										]
+									},
+									{
+										"type": "whitespace",
+										"tokens": [
+											[
+												"whitespace-token",
+												" ",
+												18,
+												18,
+												null
+											]
+										]
+									},
+									{
+										"type": "token",
+										"tokens": [
+											[
+												"delim-token",
+												"-",
+												19,
+												19,
+												{
+													"value": "-"
+												}
+											]
+										]
+									},
+									{
+										"type": "whitespace",
+										"tokens": [
+											[
+												"whitespace-token",
+												" ",
+												20,
+												20,
+												null
+											]
+										]
+									},
+									{
+										"type": "token",
+										"tokens": [
+											[
+												"dimension-token",
+												"3rem",
+												21,
+												24,
+												{
+													"value": 3,
+													"type": "integer",
+													"unit": "rem"
+												}
+											]
+										]
+									}
 								]
 							},
 							"tokens": [

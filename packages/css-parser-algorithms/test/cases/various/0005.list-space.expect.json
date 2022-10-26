@@ -1,0 +1,196 @@
+[
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"screen",
+				0,
+				5,
+				{
+					"value": "screen"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				6,
+				6,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"and",
+				7,
+				9,
+				{
+					"value": "and"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				10,
+				10,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"not",
+				11,
+				13,
+				{
+					"value": "not"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				14,
+				14,
+				null
+			]
+		]
+	},
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			15,
+			15,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				15,
+				15,
+				null
+			],
+			[
+				"ident-token",
+				"min-width",
+				16,
+				24,
+				{
+					"value": "min-width"
+				}
+			],
+			[
+				"colon-token",
+				":",
+				25,
+				25,
+				null
+			],
+			[
+				"whitespace-token",
+				" ",
+				26,
+				26,
+				null
+			],
+			[
+				"dimension-token",
+				"300px",
+				27,
+				31,
+				{
+					"value": 300,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				")-token",
+				")",
+				32,
+				32,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"min-width",
+						16,
+						24,
+						{
+							"value": "min-width"
+						}
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"colon-token",
+						":",
+						25,
+						25,
+						null
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						26,
+						26,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"300px",
+						27,
+						31,
+						{
+							"value": 300,
+							"type": "integer",
+							"unit": "px"
+						}
+					]
+				]
+			}
+		]
+	}
+]

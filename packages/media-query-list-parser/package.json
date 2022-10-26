@@ -1,6 +1,6 @@
 {
 	"name": "@csstools/media-query-list-parser",
-	"description": "Tokenize CSS",
+	"description": "Parse CSS media query lists.",
 	"version": "1.0.0",
 	"contributors": [
 		{
@@ -49,6 +49,7 @@
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run clean && npm run build && npm run test",
 		"test": "node ./test/test.mjs",
+		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node ./test/test.mjs"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser#readme",
@@ -60,7 +61,8 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"css",
-		"tokenizer"
+		"media query",
+		"parser"
 	],
 	"volta": {
 		"extends": "../../package.json"

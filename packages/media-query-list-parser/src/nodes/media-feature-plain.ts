@@ -2,9 +2,10 @@ import { ComponentValue, ComponentValueType } from '@csstools/css-parser-algorit
 import { CSSToken, stringify, TokenColon, TokenType } from '@csstools/css-tokenizer';
 import { parseMediaFeatureName, MediaFeatureName } from './media-feature-name';
 import { parseMediaFeatureValue, MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
+import { NodeType } from './node-type';
 
 export class MediaFeaturePlain {
-	type = 'mf-plain';
+	type = NodeType.MediaFeaturePlain;
 
 	name: MediaFeatureName;
 	colon: TokenColon;

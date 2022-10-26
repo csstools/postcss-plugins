@@ -1,8 +1,9 @@
 import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { MediaInParens, MediaInParensWalkerEntry, MediaInParensWalkerParent } from './media-in-parens';
+import { NodeType } from './node-type';
 
 export class MediaAnd {
-	type = 'media-and';
+	type = NodeType.MediaAnd;
 
 	modifier: Array<CSSToken>;
 	media: MediaInParens;

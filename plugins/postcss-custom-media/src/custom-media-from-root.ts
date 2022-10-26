@@ -1,7 +1,7 @@
 import type { ChildNode, Container, Document, Root as PostCSSRoot } from 'postcss';
 import { isProcessableCustomMediaRule } from './is-processable-custom-media-rule';
 import { removeCyclicReferences } from './toposort';
-import { parseCustomMedia } from './transform-at-media/custom-media';
+import { parseCustomMedia } from './transform-at-media-v2/custom-media';
 
 // return custom media from the css root, conditionally removing them
 export default function getCustomMedia(root: PostCSSRoot, result, opts: { preserve?: boolean }): Map<string, { truthy: string, falsy: string }> {

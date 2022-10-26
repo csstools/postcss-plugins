@@ -1,0 +1,165 @@
+[
+	[
+		{
+			"type": "simple-block",
+			"startToken": [
+				"(-token",
+				"(",
+				0,
+				0,
+				null
+			],
+			"tokens": [
+				[
+					"(-token",
+					"(",
+					0,
+					0,
+					null
+				],
+				[
+					"function-token",
+					"resolution(",
+					1,
+					11,
+					{
+						"value": "resolution"
+					}
+				],
+				[
+					"ident-token",
+					"foo",
+					12,
+					14,
+					{
+						"value": "foo"
+					}
+				],
+				[
+					")-token",
+					")",
+					15,
+					15,
+					null
+				],
+				[
+					"colon-token",
+					":",
+					16,
+					16,
+					null
+				],
+				[
+					"whitespace-token",
+					" ",
+					17,
+					17,
+					null
+				],
+				[
+					"ident-token",
+					"infinite",
+					18,
+					25,
+					{
+						"value": "infinite"
+					}
+				],
+				[
+					")-token",
+					")",
+					26,
+					26,
+					null
+				]
+			],
+			"value": [
+				{
+					"type": "function",
+					"name": "resolution",
+					"tokens": [
+						[
+							"function-token",
+							"resolution(",
+							1,
+							11,
+							{
+								"value": "resolution"
+							}
+						],
+						[
+							"ident-token",
+							"foo",
+							12,
+							14,
+							{
+								"value": "foo"
+							}
+						],
+						[
+							")-token",
+							")",
+							15,
+							15,
+							null
+						]
+					],
+					"value": [
+						{
+							"type": "token",
+							"tokens": [
+								[
+									"ident-token",
+									"foo",
+									12,
+									14,
+									{
+										"value": "foo"
+									}
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "token",
+					"tokens": [
+						[
+							"colon-token",
+							":",
+							16,
+							16,
+							null
+						]
+					]
+				},
+				{
+					"type": "whitespace",
+					"tokens": [
+						[
+							"whitespace-token",
+							" ",
+							17,
+							17,
+							null
+						]
+					]
+				},
+				{
+					"type": "token",
+					"tokens": [
+						[
+							"ident-token",
+							"infinite",
+							18,
+							25,
+							{
+								"value": "infinite"
+							}
+						]
+					]
+				}
+			]
+		}
+	]
+]

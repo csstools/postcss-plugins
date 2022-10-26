@@ -3,9 +3,10 @@ import { TokenType } from '@csstools/css-tokenizer';
 import { MediaFeatureBoolean, parseMediaFeatureBoolean } from './media-feature-boolean';
 import { MediaFeaturePlain, MediaFeaturePlainWalkerEntry, MediaFeaturePlainWalkerParent, parseMediaFeaturePlain } from './media-feature-plain';
 import { MediaFeatureRange, MediaFeatureRangeWalkerEntry, MediaFeatureRangeWalkerParent, parseMediaFeatureRange } from './media-feature-range';
+import { NodeType } from './node-type';
 
 export class MediaFeature {
-	type = 'media-feature';
+	type = NodeType.MediaFeature;
 
 	feature: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange;
 
