@@ -110,8 +110,8 @@ export function parseMediaFeatureValue(componentValues: Array<ComponentValue>) {
 		if (isNumber(componentValue)) {
 			const maybeRatio = matchesRatioExactly(componentValues.slice(i));
 			if (maybeRatio !== -1) {
-				candidateIndexStart = maybeRatio[0];
-				candidateIndexEnd = maybeRatio[1];
+				candidateIndexStart = maybeRatio[0] + i;
+				candidateIndexEnd = maybeRatio[1] + i;
 				i += maybeRatio[1] - maybeRatio[0];
 				continue;
 			}
