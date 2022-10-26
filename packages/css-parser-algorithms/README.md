@@ -99,4 +99,4 @@ What it is not:
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/@csstools/css-parser-algorithms
 
-[CSS Parser Algorithms]: https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser
+[CSS Parser Algorithms]: https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms

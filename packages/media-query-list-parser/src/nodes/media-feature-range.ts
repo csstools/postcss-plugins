@@ -60,7 +60,7 @@ export class MediaFeatureRangeNameValue {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean) {
+	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean | void) {
 		if (cb({ node: this.value, parent: this }, 'value') === false) {
 			return false;
 		}
@@ -131,7 +131,7 @@ export class MediaFeatureRangeValueName {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean) {
+	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean | void) {
 		if (cb({ node: this.value, parent: this }, 'value') === false) {
 			return false;
 		}
@@ -220,7 +220,7 @@ export class MediaFeatureRangeValueNameValue {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean) {
+	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean | void) {
 		if (cb({ node: this.valueOne, parent: this }, 'valueOne') === false) {
 			return false;
 		}

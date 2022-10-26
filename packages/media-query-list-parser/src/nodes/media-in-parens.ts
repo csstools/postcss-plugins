@@ -51,7 +51,7 @@ export class MediaInParens {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaInParensWalkerEntry, parent: MediaInParensWalkerParent }, index: number | string) => boolean) {
+	walk(cb: (entry: { node: MediaInParensWalkerEntry, parent: MediaInParensWalkerParent }, index: number | string) => boolean | void) {
 		if (cb({ node: this.media, parent: this }, 'media') === false) {
 			return false;
 		}

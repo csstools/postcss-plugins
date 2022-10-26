@@ -59,7 +59,7 @@ export class MediaConditionListWithAnd {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaConditionListWithAndWalkerEntry, parent: MediaConditionListWithAndWalkerParent }, index: number | string) => boolean) {
+	walk(cb: (entry: { node: MediaConditionListWithAndWalkerEntry, parent: MediaConditionListWithAndWalkerParent }, index: number | string) => boolean | void) {
 		if (cb({ node: this.leading, parent: this }, 'leading') === false) {
 			return false;
 		}
@@ -162,7 +162,7 @@ export class MediaConditionListWithOr {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaConditionListWithOrWalkerEntry, parent: MediaConditionListWithOrWalkerParent }, index: number | string) => boolean) {
+	walk(cb: (entry: { node: MediaConditionListWithOrWalkerEntry, parent: MediaConditionListWithOrWalkerParent }, index: number | string) => boolean | void) {
 		if (cb({ node: this.leading, parent: this }, 'leading') === false) {
 			return false;
 		}

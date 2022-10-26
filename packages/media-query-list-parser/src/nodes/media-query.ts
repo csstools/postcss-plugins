@@ -54,7 +54,7 @@ export class MediaQueryWithType {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaQueryWithTypeWalkerEntry, parent: MediaQueryWithTypeWalkerParent }, index: number | string) => boolean) {
+	walk(cb: (entry: { node: MediaQueryWithTypeWalkerEntry, parent: MediaQueryWithTypeWalkerParent }, index: number | string) => boolean | void) {
 		if (cb({ node: this.media, parent: this }, 'media') === false) {
 			return false;
 		}
@@ -107,7 +107,7 @@ export class MediaQueryWithoutType {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaQueryWithoutTypeWalkerEntry, parent: MediaQueryWithoutTypeWalkerParent }, index: number | string) => boolean) {
+	walk(cb: (entry: { node: MediaQueryWithoutTypeWalkerEntry, parent: MediaQueryWithoutTypeWalkerParent }, index: number | string) => boolean | void) {
 		if (cb({ node: this.media, parent: this }, 'media') === false) {
 			return false;
 		}

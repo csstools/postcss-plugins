@@ -121,7 +121,7 @@ export class FunctionNode {
 		}
 	}
 
-	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number | string) => boolean) {
+	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number | string) => boolean | void) {
 		let aborted = false;
 
 		this.value.forEach((child, index) => {
@@ -255,7 +255,7 @@ export class SimpleBlockNode {
 		}
 	}
 
-	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number | string) => boolean) {
+	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number | string) => boolean | void) {
 		let aborted = false;
 
 		this.value.forEach((child, index) => {
