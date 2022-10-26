@@ -45,8 +45,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/media-query-list-parser": "^1.0.0",
-		"@csstools/css-tokenizer": "^1.0.0"
+		"@csstools/css-tokenizer": "^1.0.0",
+		"@csstools/media-query-list-parser": "^1.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
