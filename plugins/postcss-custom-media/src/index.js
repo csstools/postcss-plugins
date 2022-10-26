@@ -32,7 +32,7 @@ const creator = opts => {
 			await writeCustomMediaToExports(helpers[customMediaHelperKey], exportTo);
 		},
 		AtRule: (atrule, helpers) => {
-			if (atrule.name !== 'media') {
+			if (!(atrule.name === 'media' || atrule.name === 'container')) {
 				return;
 			}
 
