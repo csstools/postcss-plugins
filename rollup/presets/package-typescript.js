@@ -21,9 +21,9 @@ export function packageTypescript() {
 					extensions: ['.js', '.ts'],
 					presets: packageBabelPreset,
 				}),
-				// terser({
-				// 	keep_classnames: true,
-				// }),
+				terser({
+					keep_classnames: true,
+				}),
 			],
 		},
 	];

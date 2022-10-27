@@ -1,6 +1,7 @@
 import { stringify, TokenIdent, TokenType } from '@csstools/css-tokenizer';
-import { NodeType, parse, MediaCondition, MediaInParens, MediaQueryWithoutType, MediaQueryWithType, MediaNot, MediaConditionListWithAnd } from '@csstools/media-query-list-parser';
+import { NodeType, parse, MediaCondition, MediaInParens, MediaQueryWithoutType, MediaQueryWithType, MediaNot } from '@csstools/media-query-list-parser';
 import { atMediaParamsTokens } from '../transform-at-media/at-media-params-tokens';
+import { replaceTrueAndFalseTokens } from './true-and-false';
 
 export function parseCustomMedia(params: string): { name: string, truthy: string, falsy: string, dependsOn: Array<[string, string]> } | false {
 	const tokens = atMediaParamsTokens(params);
@@ -38,8 +39,10 @@ export function parseCustomMedia(params: string): { name: string, truthy: string
 		}
 	}
 
-	const mediaQueryListTruthy = parse(stringify(...remainder));
-	const mediaQueryListFalsy = parse(stringify(...remainder));
+	remainder = replaceTrueAndFalseTokens(remainder);
+
+	const mediaQueryListTruthy = parse(stringify(...remainder), { preserveInvalidMediaQueries : true });
+	const mediaQueryListFalsy = parse(stringify(...remainder), { preserveInvalidMediaQueries: true });
 
 	for (let i = 0; i < mediaQueryListFalsy.length; i++) {
 		const mediaQuery = mediaQueryListFalsy[i];
@@ -70,16 +73,31 @@ export function parseCustomMedia(params: string): { name: string, truthy: string
 		}
 
 		if (mediaQuery.type === NodeType.MediaQueryWithoutType) {
-			const mediaCondition = (mediaQuery as MediaQueryWithoutType).media;
+			let mediaCondition = (mediaQuery as MediaQueryWithoutType).media;
 			if (mediaCondition.media.type === NodeType.MediaNot) {
 				const query = new MediaQueryWithoutType(
 					new MediaCondition(
-						((mediaQuery as MediaQueryWithoutType).media as MediaNot).media,
+						(mediaCondition.media as MediaNot).media,
 					),
 				);
 
 				mediaQueryListFalsy[i] = query;
 				continue;
+			}
+
+			if (mediaCondition.media.type === NodeType.MediaConditionListWithOr) {
+				mediaCondition = new MediaCondition(
+					new MediaInParens(
+						mediaCondition,
+						[
+							[TokenType.Whitespace, ' ', 0, 0, undefined],
+							[TokenType.OpenParen, '(', 0, 0, undefined],
+						],
+						[
+							[TokenType.CloseParen, ')', 0, 0, undefined],
+						],
+					),
+				);
 			}
 
 			const query = new MediaQueryWithType(

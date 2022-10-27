@@ -3,7 +3,11 @@ import { tokenizer } from '@csstools/css-tokenizer';
 import { MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
 import { parseMediaQuery } from './parse-media-query';
 
-export function parse(source: string) {
+export type Options = {
+	preserveInvalidMediaQueries?: boolean
+}
+
+export function parse(source: string, options?: Options) {
 	const onParseError = (err) => {
 		console.warn(err);
 		throw new Error(`Unable to parse "${source}"`);
@@ -23,9 +27,16 @@ export function parse(source: string) {
 		tokens.push(t.nextToken()); // EOF-token
 	}
 
-	return parseCommaSeparatedListOfComponentValues(tokens, {
+	const componentValuesLists = parseCommaSeparatedListOfComponentValues(tokens, {
 		onParseError: onParseError,
-	}).map((componentValuesList) => {
-		return parseMediaQuery(componentValuesList);
+	});
+
+	return componentValuesLists.map((componentValuesList, index) => {
+		const mediaQuery = parseMediaQuery(componentValuesList);
+		if (mediaQuery == false && options?.preserveInvalidMediaQueries === true) {
+			return componentValuesLists[index].map((x) => x.toString()).join('');
+		}
+
+		return mediaQuery;
 	}).filter((x) => !!x) as Array<MediaQueryWithType | MediaQueryWithoutType>;
 }
