@@ -1,4 +1,4 @@
-export { parse } from './parser/parse';
+export { parse, parseFromTokens } from './parser/parse';
 export { NodeType } from './nodes/node-type';
 
 export { GeneralEnclosed } from './nodes/general-enclosed';

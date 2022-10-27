@@ -1,5 +1,5 @@
-import { stringify, TokenIdent, TokenType } from '@csstools/css-tokenizer';
-import { NodeType, parse, MediaCondition, MediaInParens, MediaQueryWithoutType, MediaQueryWithType, MediaNot } from '@csstools/media-query-list-parser';
+import { CSSToken, stringify, TokenIdent, TokenType } from '@csstools/css-tokenizer';
+import { parseFromTokens, NodeType, MediaCondition, MediaInParens, MediaQueryWithoutType, MediaQueryWithType, MediaNot } from '@csstools/media-query-list-parser';
 import { atMediaParamsTokens } from '../transform-at-media/at-media-params-tokens';
 import { replaceTrueAndFalseTokens } from './true-and-false';
 
@@ -41,8 +41,8 @@ export function parseCustomMedia(params: string): { name: string, truthy: string
 
 	remainder = replaceTrueAndFalseTokens(remainder);
 
-	const mediaQueryListTruthy = parse(stringify(...remainder), { preserveInvalidMediaQueries : true });
-	const mediaQueryListFalsy = parse(stringify(...remainder), { preserveInvalidMediaQueries: true });
+	const mediaQueryListTruthy = parseFromTokens(cloneTokens(remainder), { preserveInvalidMediaQueries : true });
+	const mediaQueryListFalsy = parseFromTokens(cloneTokens(remainder), { preserveInvalidMediaQueries: true });
 
 	for (let i = 0; i < mediaQueryListFalsy.length; i++) {
 		const mediaQuery = mediaQueryListFalsy[i];
@@ -128,4 +128,12 @@ export function parseCustomMedia(params: string): { name: string, truthy: string
 			return [x, name];
 		}),
 	};
+}
+
+function cloneTokens(tokens: Array<CSSToken>): Array<CSSToken> {
+	if ('structuredClone' in globalThis) {
+		return structuredClone(tokens);
+	}
+
+	return JSON.parse(JSON.stringify(tokens));
 }
