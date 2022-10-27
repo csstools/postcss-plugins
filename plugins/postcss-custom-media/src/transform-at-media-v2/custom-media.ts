@@ -1,5 +1,5 @@
 import { stringify, TokenIdent, TokenType } from '@csstools/css-tokenizer';
-import { NodeType, parse, MediaCondition, MediaInParens, MediaQueryWithoutType, MediaQueryWithType, MediaNot } from '@csstools/media-query-list-parser';
+import { NodeType, parse, MediaCondition, MediaInParens, MediaQueryWithoutType, MediaQueryWithType, MediaNot, MediaConditionListWithAnd } from '@csstools/media-query-list-parser';
 import { atMediaParamsTokens } from '../transform-at-media/at-media-params-tokens';
 
 export function parseCustomMedia(params: string): { name: string, truthy: string, falsy: string, dependsOn: Array<[string, string]> } | false {
@@ -82,17 +82,19 @@ export function parseCustomMedia(params: string): { name: string, truthy: string
 				continue;
 			}
 
-			const query = new MediaQueryWithoutType(
-				new MediaNot(
-					[
-						[TokenType.Ident, 'not', 0, 0, { value: 'not' }],
-					],
-					new MediaInParens(
-						(mediaQuery as MediaQueryWithoutType).media,
-						[[TokenType.Whitespace, ' ', 0, 0, null],[TokenType.OpenParen, '(', 0, 0, null]],
-						[[TokenType.CloseParen, ')', 0, 0, null]],
-					),
-				),
+			const query = new MediaQueryWithType(
+				[
+					[TokenType.Ident, 'not', 0, 0, { value: 'not' }],
+					[TokenType.Whitespace, ' ', 0, 0, undefined],
+				],
+				[
+					[TokenType.Ident, 'all', 0, 0, { value: 'all' }],
+					[TokenType.Whitespace, ' ', 0, 0, undefined],
+				],
+				[
+					[TokenType.Ident, 'and', 0, 0, { value: 'and' }],
+				],
+				mediaCondition,
 			);
 
 			mediaQueryListFalsy[i] = query;

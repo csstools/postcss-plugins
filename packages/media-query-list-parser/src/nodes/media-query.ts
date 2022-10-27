@@ -9,19 +9,25 @@ export class MediaQueryWithType {
 
 	modifier: Array<CSSToken>;
 	mediaType: Array<CSSToken>;
+	and: Array<CSSToken>;
 	media: MediaCondition | null = null;
 
-	constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, media?: MediaCondition | null) {
+	constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, and?: Array<CSSToken>, media?: MediaCondition | null) {
 		this.modifier = modifier;
 		this.mediaType = mediaType;
-		this.media = media;
+
+		if (and && media) {
+			this.and = and;
+			this.media = media;
+		}
 	}
 
 	tokens() {
-		if (this.media) {
+		if (this.and && this.media) {
 			return [
 				...this.modifier,
 				...this.mediaType,
+				...this.and,
 				...this.media.tokens(),
 			];
 		}
@@ -33,8 +39,8 @@ export class MediaQueryWithType {
 	}
 
 	toString() {
-		if (this.media) {
-			return stringify(...this.modifier) + stringify(...this.mediaType) + this.media.toString();
+		if (this.and && this.media) {
+			return stringify(...this.modifier) + stringify(...this.mediaType) + stringify(...this.and) + this.media.toString();
 		}
 
 		return stringify(...this.modifier) + stringify(...this.mediaType);
@@ -68,6 +74,7 @@ export class MediaQueryWithType {
 			string: this.toString(),
 			modifier: this.modifier,
 			mediaType: this.mediaType,
+			and: this.and,
 			media: this.media,
 		};
 	}

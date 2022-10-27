@@ -17,7 +17,7 @@
 }
 }
 
-@media not ( (min-width: 3)),not ( (min-width: 4)) {
+@media not all and (min-width: 3),not all and (min-width: 4) {
 
 @media (color:2147477350) and (width > 1024px) {
 	.a { order: 3; }
@@ -67,7 +67,7 @@
 }
 }
 
-@media not ( (width >= 570px)) {
+@media not all and (width >= 570px) {
 
 @media (max-color:2147477350) and (color:2147477350) {
 	body {
@@ -88,7 +88,7 @@
 }
 }
 
-@media not ( (width >= 570px)) {
+@media not all and (width >= 570px) {
 
 @media (color:2147477350) and (color:2147477350) {
 	body {
@@ -109,7 +109,7 @@
 }
 }
 
-@media not ( (width < 1000px)) {
+@media not all and (width < 1000px) {
 
 @media (max-color:2147477350) and (color:2147477350) {
 	body {
@@ -119,7 +119,7 @@
 }
 }
 
-@media not ( (width >= 570px)) {
+@media not all and (width >= 570px) {
 
 @media (width < 1000px) {
 
@@ -130,7 +130,7 @@
 }
 }
 
-@media not ( (width < 1000px)) {
+@media not all and (width < 1000px) {
 
 @media (color:2147477350) and (color:2147477350) {
 	body {

@@ -23,6 +23,7 @@ import './cases/mf-range/0007.mjs';
 import './cases/query-with-type/0001.mjs';
 import './cases/query-with-type/0002.mjs';
 import './cases/query-with-type/0003.mjs';
+import './cases/query-with-type/0004.mjs';
 
 import './cases/various/0001.mjs';
 import './cases/various/0002.mjs';

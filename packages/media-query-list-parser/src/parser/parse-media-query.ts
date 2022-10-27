@@ -23,6 +23,7 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>) {
 	{
 		let modifierIndex = -1;
 		let typeIndex = -1;
+		let andIndex = -1;
 
 		for (let i = 0; i < componentValues.length; i++) {
 			const componentValue = componentValues[i];
@@ -36,23 +37,30 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>) {
 
 			if (componentValue.type === ComponentValueType.Token) {
 				const token = (componentValue as TokenNode).value;
-				if (token[0] === TokenType.Ident && modifierFromToken(token)) {
+				if (modifierIndex === -1 && token[0] === TokenType.Ident && modifierFromToken(token)) {
 					modifierIndex = i;
 					continue;
 				}
 
-				if (token[0] === TokenType.Ident) {
+				if (typeIndex === -1 && token[0] === TokenType.Ident && !modifierFromToken(token)) {
 					typeIndex = i;
 					continue;
+				}
+
+				if (andIndex === -1 && token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'and') {
+					andIndex = i;
+					const condition = parseMediaConditionWithoutOr(componentValues.slice(i+1));
+					if (condition === false) {
+						return false;
+					}
+
+					break;
 				}
 
 				return false;
 			}
 
-			const condition = parseMediaConditionWithoutOr(componentValues.slice(i));
-			if (condition === false) {
-				return false;
-			}
+			return false;
 		}
 
 		let modifierTokens: Array<CSSToken> = [];
@@ -74,7 +82,7 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>) {
 			});
 		}
 
-		const remainder = componentValues.slice(Math.max(modifierIndex, typeIndex) + 1);
+		const remainder = componentValues.slice(Math.max(modifierIndex, typeIndex, andIndex) + 1);
 		const condition = parseMediaConditionWithoutOr(remainder);
 		if (condition === false) {
 			return new MediaQueryWithType(
@@ -91,6 +99,9 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>) {
 		return new MediaQueryWithType(
 			modifierTokens,
 			typeTokens,
+			componentValues.slice(typeIndex + 1, andIndex + 1).flatMap((x) => {
+				return x.tokens();
+			}),
 			condition,
 		);
 	}
