@@ -1,0 +1,44 @@
+a {
+	order: 1;
+	@media (min-width: 100px) {
+		order: 2;
+		@media (max-width: 200px) {
+			order: 3;
+		}
+		& b {
+			@media (max-width: 200px) {
+				order: 4;
+			}
+		}
+	}
+	@media screen, print and speech {
+		@media (max-width: 300px), (min-aspect-ratio: 16/9) {
+			order: 5;
+			& c {
+				order: 6;
+			}
+		}
+	}
+}
+a {
+	order: 1;
+	@media (min-width: 100px) {
+		order: 2;
+		@media (max-width: 200px) {
+			order: 3;
+		}
+		& b {
+			@media (max-width: 200px) {
+				order: 4;
+			}
+		}
+	}
+	@media screen, print and speech {
+		@media (max-width: 300px), (min-aspect-ratio: 16/9) {
+			order: 5;
+			& c {
+				order: 6;
+			}
+		}
+	}
+}

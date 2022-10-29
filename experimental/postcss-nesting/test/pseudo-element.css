@@ -1,0 +1,45 @@
+::before {
+	.foo&, &:focus {
+		order: 1;
+	}
+}
+
+.a:hover, .b:focus {
+	&::before, &::after {
+		order: 2;
+	}
+}
+
+.a {
+	&::before {
+		order: 3;
+	}
+
+	&::after {
+		order: 4;
+	}
+}
+
+.a {
+	&::before {
+		order: 5;
+
+		&:focus {
+			order: 6;
+		}
+	}
+
+	&::after {
+		order: 7;
+
+		&:hover {
+			order: 8;
+		}
+	}
+}
+
+.anything::before {
+	.something_else > & {
+		order: 9;
+	}
+}

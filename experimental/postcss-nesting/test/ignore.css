@@ -1,0 +1,34 @@
+a, b {
+	order: 1;
+	c {
+		order: 2;
+	}
+}
+
+& e {
+	order: 3;
+}
+
+f {
+	&h {
+		order: 4;
+	}
+	&|i {
+		order: 5;
+	}
+}
+
+
+a {
+	foo :bar {
+		order: 6;
+	}
+}
+
+a {
+	order: 7;
+
+	foo :bar; {
+		order: 8;
+	}
+}

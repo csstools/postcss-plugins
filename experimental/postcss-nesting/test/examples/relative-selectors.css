@@ -1,0 +1,11 @@
+.parent {
+	color: red;
+
+	.child {
+		color: white;
+	}
+
+	> .other-child {
+		color: yellow;
+	}
+}

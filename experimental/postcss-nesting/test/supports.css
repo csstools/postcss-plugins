@@ -1,0 +1,11 @@
+a {
+	order: 1;
+
+	@supports (order: 2) {
+		order: 2;
+	}
+
+	@supports (background-image: url('fo and o.png')) {
+		order: 3;
+	}
+}
