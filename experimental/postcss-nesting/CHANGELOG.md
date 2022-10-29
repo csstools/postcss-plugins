@@ -13,3 +13,4 @@ Known issues :
 
 - selector invalidation works different (needs examples in README)
 - no support for `@scope` (needs media query parser)
+- invalid nesting has become more complex to detect with the new proposal. We are now transforming certain edge cases but also emitting a warning.

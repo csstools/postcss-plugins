@@ -10,12 +10,15 @@ export default function walk(node: Container, result: Result) {
 
 		if (
 			isRule(child) &&
-			isRule(parent)
+			child.selector.trim() &&
+			isRule(parent) &&
+			parent.selector.trim()
 		) {
 			transformRuleWithinRule(child, parent, result);
 		} else if (
 			isAtRule(child) &&
 			isRule(parent) &&
+			parent.selector.trim() &&
 			isAtruleWithinRule(child)
 		) {
 			transformAtruleWithinRule(child, parent, result, walk);

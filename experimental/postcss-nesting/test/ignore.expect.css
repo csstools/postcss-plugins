@@ -25,8 +25,8 @@ a, b {
 
 a {
 	order: 7;
-}
 
-:is(a) foo :bar {
+	foo :bar; {
 		order: 8;
 	}
+}
