@@ -101,7 +101,7 @@ interfere with PostCSS' plugin nature such as with `@mixin`
 [css-img]: https://cssdb.org/images/badges/nesting-rules.svg
 [css-url]: https://cssdb.org/#nesting-rules
 [discord]: https://discord.gg/bUadyRwkJS
-[npm-img]: https://img.shields.io/npm/v/postcss-nesting.svg
+[npm-img]: https://img.shields.io/npm/v/@csstools/postcss-nesting-experimental.svg
 [npm-url]: https://www.npmjs.com/package/@csstools/postcss-nesting-experimental
 
 [CSS Nesting]: https://drafts.csswg.org/css-nesting/
