@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting Experimental
 
-### 1.0.0
+### 1.0.0 (October 29, 2022)
 
 Implement the 28 October version of [css-nestng-1](https://drafts.csswg.org/css-nesting/)
 
