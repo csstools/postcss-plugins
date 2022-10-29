@@ -84,6 +84,7 @@ postcssTape(plugin)({
 	},
 	'spec-examples': {
 		message: 'supports all spec examples',
+		warnings: 1,
 	},
 	'requires-is-pseudo': {
 		message: 'examples of selector nesting that require :is to be correct',
