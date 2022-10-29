@@ -1,0 +1,31 @@
+a, b {
+	order: 1;
+	c, d {
+		order: 2;
+	}
+}
+& e {
+	order: 3;
+}
+f {
+	&g {
+		order: 5;
+	}
+}
+a, b {
+	order: 1;
+	:is(c), d {
+		order: 2;
+	}
+}
+& e {
+	order: 3;
+}
+f {
+	&h {
+		order: 5;
+	}
+	&|i {
+		order: 6;
+	}
+}

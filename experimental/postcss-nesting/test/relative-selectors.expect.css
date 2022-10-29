@@ -1,0 +1,16 @@
+
+	:is(.foo) .bar {
+		order: 1;
+	}
+:is(.foo)> .bar {
+		order: 1;
+	}
+:is(.foo)+ .bar {
+		order: 1;
+	}
+:is(.foo)~ .bar {
+		order: 1;
+	}
+:is(.foo)::before {
+		order: 1;
+	}

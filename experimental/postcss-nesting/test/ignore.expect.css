@@ -1,0 +1,27 @@
+a, b {
+	order: 1;
+}
+:is(a,b) c, :is(a,b) d {
+		order: 2;
+	}
+& e {
+	order: 3;
+}
+:is(f)g {
+		order: 5;
+	}
+a, b {
+	order: 1;
+}
+:is(a,b) :is(c), :is(a,b) d {
+		order: 2;
+	}
+& e {
+	order: 3;
+}
+:is(f)h {
+		order: 5;
+	}
+:is(f) &|i {
+		order: 6;
+	}

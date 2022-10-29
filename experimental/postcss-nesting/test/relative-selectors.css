@@ -1,0 +1,21 @@
+.foo {
+	.bar {
+		order: 1;
+	}
+
+	> .bar {
+		order: 1;
+	}
+
+	+ .bar {
+		order: 1;
+	}
+
+	~ .bar {
+		order: 1;
+	}
+
+	::before {
+		order: 1;
+	}
+}

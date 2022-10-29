@@ -1,0 +1,38 @@
+a {
+	& b {
+		& c {
+			order: 1;
+		}
+	}
+}
+d {
+	order: 2;
+	& e {
+		order: 3;
+	}
+}
+f {
+	& g {
+		order: 4;
+	}
+	order: 5;
+}
+a {
+	& b {
+		& c {
+			order: 1;
+		}
+	}
+}
+d {
+	order: 2;
+	& e {
+		order: 3;
+	}
+}
+f {
+	& g {
+		order: 4;
+	}
+	order: 5;
+}
