@@ -4,18 +4,41 @@
 	}
 
 	> .bar {
-		order: 1;
+		order: 2;
 	}
 
 	+ .bar {
-		order: 1;
+		order: 3;
 	}
 
 	~ .bar {
-		order: 1;
+		order: 4;
 	}
 
 	::before {
-		order: 1;
+		order: 5;
+	}
+}
+
+
+.foo {
+	.bar, & .other {
+		order: 11;
+	}
+
+	>.bar, & .other {
+		order: 12;
+	}
+
+	+.bar, & .other {
+		order: 13;
+	}
+
+	~.bar, & .other {
+		order: 14;
+	}
+
+	::before, & .other {
+		order: 15;
 	}
 }

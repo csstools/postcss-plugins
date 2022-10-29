@@ -4,8 +4,8 @@ import walk from './lib/walk.js';
 const creator: PluginCreator<never> = () => {
 	return {
 		postcssPlugin: 'postcss-nesting',
-		Rule(rule) {
-			walk(rule);
+		Rule(rule, { result }) {
+			walk(rule, result);
 		},
 	};
 };

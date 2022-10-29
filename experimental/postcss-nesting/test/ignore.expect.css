@@ -1,27 +1,32 @@
 a, b {
 	order: 1;
 }
-:is(a,b) c, :is(a,b) d {
+
+:is(a,b) c {
 		order: 2;
 	}
+
 & e {
 	order: 3;
 }
-:is(f)g {
-		order: 5;
-	}
-a, b {
-	order: 1;
-}
-:is(a,b) :is(c), :is(a,b) d {
-		order: 2;
-	}
-& e {
-	order: 3;
-}
+
 :is(f)h {
+		order: 4;
+	}
+
+:is(f) &|i {
 		order: 5;
 	}
-:is(f) &|i {
+
+
+:is(a) foo :bar {
 		order: 6;
+	}
+
+a {
+	order: 7;
+}
+
+:is(a) foo :bar {
+		order: 8;
 	}

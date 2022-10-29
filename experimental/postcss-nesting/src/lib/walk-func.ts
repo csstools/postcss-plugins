@@ -1,3 +1,3 @@
-import type { Container } from 'postcss';
+import type { Container, Result } from 'postcss';
 
-export type walkFunc = (node: Container) => void;
+export type walkFunc = (node: Container, result: Result) => void;

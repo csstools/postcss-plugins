@@ -1,10 +1,10 @@
 import transformRuleWithinRule from './rule-within-rule.js';
 import transformAtruleWithinRule, { isAtruleWithinRule } from './atrule-within-rule.js';
 import transformAtruleWithinAtrule, { isAtruleWithinAtrule } from './atrule-within-atrule.js';
-import type { Container } from 'postcss';
+import type { Container, Result } from 'postcss';
 import { isAtRule, isRule } from './is-type-of-rule.js';
 
-export default function walk(node: Container) {
+export default function walk(node: Container, result: Result) {
 	node.each((child) => {
 		const parent = child.parent;
 
@@ -12,13 +12,13 @@ export default function walk(node: Container) {
 			isRule(child) &&
 			isRule(parent)
 		) {
-			transformRuleWithinRule(child, parent);
+			transformRuleWithinRule(child, parent, result);
 		} else if (
 			isAtRule(child) &&
 			isRule(parent) &&
 			isAtruleWithinRule(child)
 		) {
-			transformAtruleWithinRule(child, parent, walk);
+			transformAtruleWithinRule(child, parent, result, walk);
 		} else if (
 			isAtRule(child) &&
 			isAtRule(parent) &&
@@ -28,7 +28,7 @@ export default function walk(node: Container) {
 		}
 
 		if ('nodes' in child && child.nodes.length) {
-			walk(child);
+			walk(child, result);
 		}
 	});
 }

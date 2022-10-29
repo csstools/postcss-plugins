@@ -72,6 +72,7 @@ postcssTape(plugin)({
 	},
 	'ignore': {
 		message: 'ignores invalid entries',
+		warnings: 4,
 	},
 	'mixin-declaration': {
 		message: 'supports other visitors (mixin declaration)',

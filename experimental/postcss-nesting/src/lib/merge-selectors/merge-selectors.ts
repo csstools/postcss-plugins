@@ -1,6 +1,7 @@
+import type { Node, Result } from 'postcss';
 import parser from 'postcss-selector-parser';
 
-export default function mergeSelectors(fromSelectors: Array<string>, toSelectors: Array<string>) {
+export default function mergeSelectors(node: Node, postcssResult: Result, fromSelectors: Array<string>, toSelectors: Array<string>) {
 	const result = [];
 	if (toSelectors.length === 0) {
 		return;
@@ -38,6 +39,22 @@ export default function mergeSelectors(fromSelectors: Array<string>, toSelectors
 
 				return false;
 			});
+
+			if (x === 0) {
+				let startsWithIdentifier = false;
+				selectorAST.each((maybeIdentifier) => {
+					if (maybeIdentifier.type === 'tag') {
+						startsWithIdentifier = true;
+						return false;
+					}
+
+					return false;
+				});
+
+				if (startsWithIdentifier) {
+					node.warn(postcssResult, `Invalid nested rule : "${toSelectors[x]}"`);
+				}
+			}
 
 			if (startsWithCombinator) {
 				selectorAST.insertBefore(selectorAST.at(0) , parser.nesting({}));

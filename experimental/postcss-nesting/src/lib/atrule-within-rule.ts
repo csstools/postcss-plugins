@@ -2,9 +2,9 @@ import cleanupParent from './cleanup-parent.js';
 import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
 import validAtrules from './valid-atrules.js';
 import { walkFunc } from './walk-func.js';
-import type { AtRule, Rule } from 'postcss';
+import type { AtRule, Result, Rule } from 'postcss';
 
-export default function atruleWithinRule(node: AtRule, parent: Rule, walk: walkFunc) {
+export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc) {
 	// move previous siblings and the node to before the parent
 	shiftNodesBeforeParent(node, parent);
 
@@ -19,7 +19,7 @@ export default function atruleWithinRule(node: AtRule, parent: Rule, walk: walkF
 		cleanupParent(parent);
 
 		// walk the children of the new rule
-		walk(rule);
+		walk(rule, result);
 	}
 }
 

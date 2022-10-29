@@ -1,31 +1,34 @@
 a, b {
 	order: 1;
-	c, d {
+	c {
 		order: 2;
 	}
 }
+
 & e {
 	order: 3;
 }
-f {
-	&g {
-		order: 5;
-	}
-}
-a, b {
-	order: 1;
-	:is(c), d {
-		order: 2;
-	}
-}
-& e {
-	order: 3;
-}
+
 f {
 	&h {
-		order: 5;
+		order: 4;
 	}
 	&|i {
+		order: 5;
+	}
+}
+
+
+a {
+	foo :bar {
 		order: 6;
+	}
+}
+
+a {
+	order: 7;
+
+	foo :bar {
+		order: 8;
 	}
 }
