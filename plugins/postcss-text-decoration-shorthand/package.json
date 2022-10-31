@@ -44,7 +44,7 @@
 		"postcss": "^8.2"
 	},
 	"devDependencies": {
-		"autoprefixer": "^10.4.8"
+		"autoprefixer": "^10.4.13"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js",
