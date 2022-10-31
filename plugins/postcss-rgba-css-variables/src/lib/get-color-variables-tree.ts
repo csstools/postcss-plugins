@@ -89,7 +89,7 @@ function traversalTreeGetParsedValue(
 	tree: VariableTypeMap,
 	root: VariableTypeMap,
 ): string | undefined {
-	const target = tree.get(value) || root.get(value);
+	const target = tree?.get(value) || root?.get(value);
 	if(!target) {
 		return;
 	}

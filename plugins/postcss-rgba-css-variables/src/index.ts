@@ -45,6 +45,15 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 						const { selector } = decl.parent as Rule;
 						const variableParsed = colorVariablesTree.get(selector)?.get(variableName) || colorVariablesTree.get(COMMON_VARIABLES_KEY)?.get(variableName);
 
+						if (mode === 'replace-all') {
+							decl.cloneAfter({
+								value: decl.value.replace(cssVariablesRegExp, `var(${variableName}-rgb)`),
+							});
+							if(!preserve) {
+								decl.remove();
+							}
+							continue;
+						}
 
 						if (variableParsed && variableParsed.parsedValue) {
 							if (mode === 'replace-directly') {
@@ -67,18 +76,9 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 									value: decl.value.replace(cssVariablesRegExp, `var(${variableName}-rgb)`),
 								});
 							}
-
-							if (mode === 'replace-all') {
-								decl.cloneAfter({
-									value: decl.value.replace(cssVariablesRegExp, `var(${variableName}-rgb)`),
-								});
+							if(!preserve) {
+								decl.remove();
 							}
-
-							if (preserve) {
-								continue;
-							}
-
-							decl.remove();
 						}
 					}
 				},
