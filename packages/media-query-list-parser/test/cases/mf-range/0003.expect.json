@@ -460,26 +460,28 @@
 								null
 							]
 						]
-					}
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							31,
+							31,
+							null
+						]
+					]
 				},
-				"before": [
-					[
-						"(-token",
-						"(",
-						0,
-						0,
-						null
-					]
-				],
-				"after": [
-					[
-						")-token",
-						")",
-						31,
-						31,
-						null
-					]
-				]
+				"before": [],
+				"after": []
 			}
 		}
 	}

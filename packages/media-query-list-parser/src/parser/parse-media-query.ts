@@ -316,9 +316,9 @@ export function parseMediaInParens(componentValues: Array<ComponentValue>) {
 		}),
 	];
 
-	const feature = parseMediaFeature(simpleBlock);
+	const feature = parseMediaFeature(simpleBlock, before, after);
 	if (feature !== false) {
-		return new MediaInParens(feature, before, after);
+		return new MediaInParens(feature);
 	}
 
 	const condition = parseMediaCondition(simpleBlock.value);
@@ -342,9 +342,9 @@ export function parseMediaInParensFromSimpleBlock(simpleBlock: SimpleBlockNode) 
 		return false;
 	}
 
-	const feature = parseMediaFeature(simpleBlock);
+	const feature = parseMediaFeature(simpleBlock, [simpleBlock.startToken], [simpleBlock.endToken]);
 	if (feature !== false) {
-		return new MediaInParens(feature, [simpleBlock.startToken], [simpleBlock.endToken]);
+		return new MediaInParens(feature);
 	}
 
 	const condition = parseMediaCondition(simpleBlock.value);

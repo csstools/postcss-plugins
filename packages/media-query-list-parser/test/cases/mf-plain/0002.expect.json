@@ -142,40 +142,42 @@
 								null
 							]
 						]
-					}
+					},
+					"before": [
+						[
+							"comment",
+							"/* comment 1 */",
+							0,
+							14,
+							null
+						],
+						[
+							"(-token",
+							"(",
+							15,
+							15,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							91,
+							91,
+							null
+						],
+						[
+							"comment",
+							"/* comment 6 */",
+							92,
+							106,
+							null
+						]
+					]
 				},
-				"before": [
-					[
-						"comment",
-						"/* comment 1 */",
-						0,
-						14,
-						null
-					],
-					[
-						"(-token",
-						"(",
-						15,
-						15,
-						null
-					]
-				],
-				"after": [
-					[
-						")-token",
-						")",
-						91,
-						91,
-						null
-					],
-					[
-						"comment",
-						"/* comment 6 */",
-						92,
-						106,
-						null
-					]
-				]
+				"before": [],
+				"after": []
 			}
 		}
 	}

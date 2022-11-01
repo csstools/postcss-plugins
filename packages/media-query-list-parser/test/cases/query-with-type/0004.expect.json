@@ -147,33 +147,35 @@
 								}
 							]
 						]
-					}
-				},
-				"before": [
-					[
-						"whitespace-token",
-						" ",
-						15,
-						15,
-						null
+					},
+					"before": [
+						[
+							"whitespace-token",
+							" ",
+							15,
+							15,
+							null
+						],
+						[
+							"(-token",
+							"(",
+							16,
+							16,
+							null
+						]
 					],
-					[
-						"(-token",
-						"(",
-						16,
-						16,
-						null
+					"after": [
+						[
+							")-token",
+							")",
+							33,
+							33,
+							null
+						]
 					]
-				],
-				"after": [
-					[
-						")-token",
-						")",
-						33,
-						33,
-						null
-					]
-				]
+				},
+				"before": [],
+				"after": []
 			}
 		}
 	}

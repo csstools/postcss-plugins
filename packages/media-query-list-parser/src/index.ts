@@ -5,7 +5,7 @@ export { GeneralEnclosed } from './nodes/general-enclosed';
 export { MediaAnd } from './nodes/media-and';
 export { MediaCondition } from './nodes/media-condition';
 export { MediaConditionList, MediaConditionListWithAnd, MediaConditionListWithOr } from './nodes/media-condition-list';
-export { MediaFeature } from './nodes/media-feature';
+export { MediaFeature, newMediaFeatureBoolean, newMediaFeaturePlain } from './nodes/media-feature';
 export { MediaFeatureBoolean } from './nodes/media-feature-boolean';
 export { MediaFeatureName } from './nodes/media-feature-name';
 export { MediaFeaturePlain } from './nodes/media-feature-plain';

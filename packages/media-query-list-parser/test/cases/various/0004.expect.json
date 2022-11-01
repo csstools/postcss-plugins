@@ -339,26 +339,28 @@
 								null
 							]
 						]
-					}
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							26,
+							26,
+							null
+						]
+					]
 				},
-				"before": [
-					[
-						"(-token",
-						"(",
-						0,
-						0,
-						null
-					]
-				],
-				"after": [
-					[
-						")-token",
-						")",
-						26,
-						26,
-						null
-					]
-				]
+				"before": [],
+				"after": []
 			}
 		}
 	}
