@@ -3,8 +3,9 @@ import type { CSSToken } from '@csstools/css-tokenizer';
 import { splitMediaQueryList } from './split-media-query-list';
 import { alwaysTrue, neverTrue } from './always-true-or-false';
 import { atMediaParamsTokens } from './at-media-params-tokens';
+import { MediaQuery } from '@csstools/media-query-list-parser';
 
-export function transformAtMediaListTokens(params: string, replacements: Map<string, { truthy: string, falsy: string }>): Array<{ replaceWith: string, encapsulateWith?: string }> {
+export function transformAtMediaListTokens(params: string, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): Array<{ replaceWith: string, encapsulateWith?: string }> {
 	const mediaQueries = splitMediaQueryList(atMediaParamsTokens(params));
 
 	const stringQueries = mediaQueries.map((x) => stringify(...x));
@@ -36,7 +37,7 @@ export function transformAtMediaListTokens(params: string, replacements: Map<str
 	return [];
 }
 
-export function transformAtMediaTokens(tokens: Array<CSSToken>, replacements: Map<string, { truthy: string, falsy: string }>): Array<{replaceWith: string, encapsulateWith?: string}> {
+export function transformAtMediaTokens(tokens: Array<CSSToken>, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): Array<{replaceWith: string, encapsulateWith?: string}> {
 	const tokenTypes: Set<string> = new Set();
 	let identCounter = 0;
 	for (let i = 0; i < tokens.length; i++) {
@@ -87,7 +88,7 @@ export function transformAtMediaTokens(tokens: Array<CSSToken>, replacements: Ma
 				if (replacements.has(identToken[4].value)) {
 					candidate = [{
 						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-						replaceWith: replacements.get(identToken[4].value)!.truthy,
+						replaceWith: replacements.get(identToken[4].value)!.truthy.map((x) => x.toString().trim()).join(','),
 					}];
 				}
 			}
@@ -209,11 +210,11 @@ export function transformAtMediaTokens(tokens: Array<CSSToken>, replacements: Ma
 					return [
 						{
 							replaceWith: stringify(...replaceWithTrue),
-							encapsulateWith: replacement.truthy,
+							encapsulateWith: replacement.truthy.map((x) => x.toString().trim()).join(','),
 						},
 						{
 							replaceWith: stringify(...replaceWithFalse),
-							encapsulateWith: replacement.falsy,
+							encapsulateWith: replacement.falsy.map((x) => x.toString().trim()).join(','),
 						},
 					];
 				}

@@ -1,9 +1,9 @@
-import { CSSToken, stringify, TokenIdent, TokenType } from '@csstools/css-tokenizer';
-import { parseFromTokens, NodeType, MediaCondition, MediaInParens, MediaQueryWithoutType, MediaQueryWithType, MediaNot } from '@csstools/media-query-list-parser';
+import { CSSToken, TokenIdent, TokenType } from '@csstools/css-tokenizer';
+import { parseFromTokens, NodeType, MediaCondition, MediaInParens, MediaQueryWithoutType, MediaQueryWithType, MediaNot, MediaQuery } from '@csstools/media-query-list-parser';
 import { atMediaParamsTokens } from '../transform-at-media/at-media-params-tokens';
 import { replaceTrueAndFalseTokens } from './true-and-false';
 
-export function parseCustomMedia(params: string): { name: string, truthy: string, falsy: string, dependsOn: Array<[string, string]> } | false {
+export function parseCustomMedia(params: string): { name: string, truthy: Array<MediaQuery>, falsy: Array<MediaQuery>, dependsOn: Array<[string, string]> } | false {
 	const tokens = atMediaParamsTokens(params);
 
 	const customMediaReferences: Set<string> = new Set();
@@ -46,7 +46,28 @@ export function parseCustomMedia(params: string): { name: string, truthy: string
 
 	for (let i = 0; i < mediaQueryListFalsy.length; i++) {
 		const mediaQuery = mediaQueryListFalsy[i];
-		if (mediaQuery.type === NodeType.MediaQueryWithType) {
+
+		if (mediaQuery.type === NodeType.MediaQueryInvalid || mediaQuery.toString().trim() === '') {
+			mediaQueryListTruthy[i] = new MediaQueryWithType(
+				[
+					[TokenType.Ident, 'not', 0, 0, { value: 'not' }],
+					[TokenType.Whitespace, ' ', 0, 0, undefined],
+				],
+				[
+					[TokenType.Ident, 'all', 0, 0, { value: 'all' }],
+				],
+				null,
+				null,
+			);
+
+			mediaQueryListFalsy[i] = new MediaQueryWithType(
+				[
+					[TokenType.Ident, 'all', 0, 0, { value: 'all' }],
+				],
+				null,
+				null,
+			);
+		}  else if (mediaQuery.type === NodeType.MediaQueryWithType) {
 			const query = mediaQuery as MediaQueryWithType;
 			if (query.modifier.length === 0) {
 				query.modifier = [
@@ -70,9 +91,7 @@ export function parseCustomMedia(params: string): { name: string, truthy: string
 
 			mediaQueryListFalsy[i] = query;
 			continue;
-		}
-
-		if (mediaQuery.type === NodeType.MediaQueryWithoutType) {
+		} else if (mediaQuery.type === NodeType.MediaQueryWithoutType) {
 			let mediaCondition = (mediaQuery as MediaQueryWithoutType).media;
 			if (mediaCondition.media.type === NodeType.MediaNot) {
 				const query = new MediaQueryWithoutType(
@@ -122,8 +141,8 @@ export function parseCustomMedia(params: string): { name: string, truthy: string
 
 	return {
 		name: name,
-		truthy: mediaQueryListTruthy.map((x) => x.toString().trim()).join(','),
-		falsy: mediaQueryListFalsy.map((x) => x.toString().trim()).join(','),
+		truthy: mediaQueryListTruthy,
+		falsy: mediaQueryListFalsy,
 		dependsOn: Array.from(customMediaReferences).map((x) => {
 			return [x, name];
 		}),

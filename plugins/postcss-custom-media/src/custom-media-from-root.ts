@@ -1,12 +1,13 @@
+import { MediaQuery } from '@csstools/media-query-list-parser';
 import type { ChildNode, Container, Document, Root as PostCSSRoot } from 'postcss';
 import { isProcessableCustomMediaRule } from './is-processable-custom-media-rule';
 import { removeCyclicReferences } from './toposort';
 import { parseCustomMedia } from './transform-at-media-v2/custom-media';
 
 // return custom media from the css root, conditionally removing them
-export default function getCustomMedia(root: PostCSSRoot, result, opts: { preserve?: boolean }): Map<string, { truthy: string, falsy: string }> {
+export default function getCustomMedia(root: PostCSSRoot, result, opts: { preserve?: boolean }): Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }> {
 	// initialize custom media
-	const customMedia: Map<string, { truthy: string, falsy: string }> = new Map();
+	const customMedia: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }> = new Map();
 	const customMediaGraph: Array<[string, string]> = [];
 
 	root.walkAtRules((atRule) => {
@@ -19,7 +20,7 @@ export default function getCustomMedia(root: PostCSSRoot, result, opts: { preser
 			return;
 		}
 
-		if (!parsed.truthy.trim()) {
+		if (parsed.truthy.length === 0) {
 			return;
 		}
 
