@@ -17,4 +17,5 @@ export enum NodeType {
 	MediaOr = 'media-or',
 	MediaQueryWithType = 'media-query-with-type',
 	MediaQueryWithoutType = 'media-query-without-type',
+	MediaQueryInvalid = 'media-query-invalid',
 }

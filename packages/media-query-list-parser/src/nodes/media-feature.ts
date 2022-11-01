@@ -20,7 +20,7 @@ export class MediaFeature {
 		this.after = after;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			...this.before,
 			...this.feature.tokens(),
@@ -28,7 +28,7 @@ export class MediaFeature {
 		];
 	}
 
-	toString() {
+	toString(): string {
 		return stringify(...this.before) + this.feature.toString() + stringify(...this.after);
 	}
 

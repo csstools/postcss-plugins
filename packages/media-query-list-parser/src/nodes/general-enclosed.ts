@@ -1,4 +1,5 @@
 import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
+import { CSSToken } from '@csstools/css-tokenizer';
 import { NodeType } from './node-type';
 
 export class GeneralEnclosed {
@@ -10,11 +11,11 @@ export class GeneralEnclosed {
 		this.value = value;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return this.value.tokens();
 	}
 
-	toString() {
+	toString(): string {
 		return this.value.toString();
 	}
 

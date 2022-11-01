@@ -13,14 +13,14 @@ export class MediaNot {
 		this.media = media;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			...this.modifier,
 			...this.media.tokens(),
 		];
 	}
 
-	toString() {
+	toString(): string {
 		return stringify(...this.modifier) + this.media.toString();
 	}
 

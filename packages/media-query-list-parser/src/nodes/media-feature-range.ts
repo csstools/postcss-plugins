@@ -26,7 +26,7 @@ export class MediaFeatureRangeNameValue {
 		return comparisonFromTokens(this.operator);
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			...this.name.tokens(),
 			...this.operator,
@@ -34,7 +34,7 @@ export class MediaFeatureRangeNameValue {
 		];
 	}
 
-	toString() {
+	toString(): string {
 		return this.name.toString() + stringify(...this.operator) + this.value.toString();
 	}
 
@@ -97,7 +97,7 @@ export class MediaFeatureRangeValueName {
 		return comparisonFromTokens(this.operator);
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			...this.value.tokens(),
 			...this.operator,
@@ -105,7 +105,7 @@ export class MediaFeatureRangeValueName {
 		];
 	}
 
-	toString() {
+	toString(): string {
 		return this.value.toString() + stringify(...this.operator) + this.name.toString();
 	}
 
@@ -176,7 +176,7 @@ export class MediaFeatureRangeValueNameValue {
 		return comparisonFromTokens(this.valueTwoOperator);
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			...this.valueOne.tokens(),
 			...this.valueOneOperator,
@@ -186,7 +186,7 @@ export class MediaFeatureRangeValueNameValue {
 		];
 	}
 
-	toString() {
+	toString(): string {
 		return this.valueOne.toString() + stringify(...this.valueOneOperator) + this.name.toString() + stringify(...this.valueTwoOperator) + this.valueTwo.toString();
 	}
 

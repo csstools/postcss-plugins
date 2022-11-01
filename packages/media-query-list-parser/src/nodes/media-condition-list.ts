@@ -21,16 +21,16 @@ export class MediaConditionListWithAnd {
 		this.after = after;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			...this.before,
-			this.leading.tokens(),
+			...this.leading.tokens(),
 			...this.list.flatMap((item) => item.tokens()),
 			...this.after,
 		];
 	}
 
-	toString() {
+	toString(): string {
 		return stringify(...this.before) + this.leading.toString() + this.list.map((item) => item.toString()).join('') + stringify(...this.after);
 	}
 
@@ -124,16 +124,16 @@ export class MediaConditionListWithOr {
 		this.after = after;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			...this.before,
-			this.leading.tokens(),
+			...this.leading.tokens(),
 			...this.list.flatMap((item) => item.tokens()),
 			...this.after,
 		];
 	}
 
-	toString() {
+	toString(): string {
 		return stringify(...this.before) + this.leading.toString() + this.list.map((item) => item.toString()).join('') + stringify(...this.after);
 	}
 

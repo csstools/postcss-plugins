@@ -25,7 +25,7 @@ export class MediaInParens {
 		this.after = after;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			...this.before,
 			...this.media.tokens(),
@@ -33,7 +33,7 @@ export class MediaInParens {
 		];
 	}
 
-	toString() {
+	toString(): string {
 		return stringify(...this.before) + this.media.toString() + stringify(...this.after);
 	}
 

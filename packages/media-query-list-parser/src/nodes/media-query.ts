@@ -1,8 +1,9 @@
+import { ComponentValue } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { MediaCondition, MediaConditionWalkerEntry, MediaConditionWalkerParent } from './media-condition';
 import { NodeType } from './node-type';
 
-export type MediaQuery = MediaQueryWithType | MediaQueryWithoutType;
+export type MediaQuery = MediaQueryWithType | MediaQueryWithoutType | MediaQueryInvalid;
 
 export class MediaQueryWithType {
 	type = NodeType.MediaQueryWithType;
@@ -92,11 +93,11 @@ export class MediaQueryWithoutType {
 		this.media = media;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return this.media.tokens();
 	}
 
-	toString() {
+	toString(): string {
 		return this.media.toString();
 	}
 
@@ -133,3 +134,58 @@ export class MediaQueryWithoutType {
 
 export type MediaQueryWithoutTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
 export type MediaQueryWithoutTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithoutType;
+
+export class MediaQueryInvalid {
+	type = NodeType.MediaQueryInvalid;
+
+	media: Array<ComponentValue>;
+
+	constructor(media: Array<ComponentValue>) {
+		this.media = media;
+	}
+
+	tokens(): Array<CSSToken> {
+		return this.media.flatMap((x) => x.tokens());
+	}
+
+	toString(): string {
+		return this.media.map((x) => x.toString()).join('');
+	}
+
+	walk(cb: (entry: { node: MediaQueryInvalidWalkerEntry, parent: MediaQueryInvalidWalkerParent }, index: number | string) => boolean | void) {
+		let aborted = false;
+
+		this.media.forEach((child, index) => {
+			if (aborted) {
+				return;
+			}
+
+			if (cb({ node: child, parent: this }, index) === false) {
+				aborted = true;
+				return;
+			}
+
+			if ('walk' in child) {
+				if (child.walk(cb) === false) {
+					aborted = true;
+					return;
+				}
+			}
+		});
+
+		if (aborted) {
+			return false;
+		}
+	}
+
+	toJSON() {
+		return {
+			type: this.type,
+			string: this.toString(),
+			media: this.media,
+		};
+	}
+}
+
+export type MediaQueryInvalidWalkerEntry = ComponentValue;
+export type MediaQueryInvalidWalkerParent = ComponentValue | MediaQueryInvalid;

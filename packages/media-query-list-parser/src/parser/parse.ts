@@ -1,40 +1,33 @@
 import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify, tokenizer } from '@csstools/css-tokenizer';
-import { MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
+import { ParserError } from '@csstools/css-parser-algorithms/dist/interfaces/error';
+import { CSSToken, tokenizer } from '@csstools/css-tokenizer';
+import { MediaQuery, MediaQueryInvalid } from '../nodes/media-query';
 import { parseMediaQuery } from './parse-media-query';
 
 export type Options = {
-	preserveInvalidMediaQueries?: boolean
+	preserveInvalidMediaQueries?: boolean,
+	onParseError?: (error: ParserError) => void
 }
 
 export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
-	const onParseError = (err) => {
-		console.warn(err);
-		throw new Error(`Unable to parse "${stringify(...tokens)}"`);
-	};
-
 	const componentValuesLists = parseCommaSeparatedListOfComponentValues(tokens, {
-		onParseError: onParseError,
+		onParseError: options?.onParseError,
 	});
 
 	return componentValuesLists.map((componentValuesList, index) => {
 		const mediaQuery = parseMediaQuery(componentValuesList);
 		if (mediaQuery == false && options?.preserveInvalidMediaQueries === true) {
-			return componentValuesLists[index].map((x) => x.toString()).join('');
+			return new MediaQueryInvalid(componentValuesLists[index]);
 		}
 
 		return mediaQuery;
-	}).filter((x) => !!x) as Array<MediaQueryWithType | MediaQueryWithoutType>;
+	}).filter((x) => !!x) as Array<MediaQuery>;
 }
 
 export function parse(source: string, options?: Options) {
-	const onParseError = (err) => {
-		console.warn(err);
-		throw new Error(`Unable to parse "${source}"`);
-	};
 	const t = tokenizer({ css: source }, {
 		commentsAreTokens: true,
-		onParseError: onParseError,
+		onParseError: options?.onParseError,
 	});
 
 	const tokens = [];

@@ -82,7 +82,7 @@ export class FunctionNode {
 		return this.name[4].value;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			this.name,
 			...this.value.flatMap((x) => {
@@ -96,7 +96,7 @@ export class FunctionNode {
 		];
 	}
 
-	toString() {
+	toString(): string {
 		const valueString = this.value.map((x) => {
 			if (isToken(x)) {
 				return stringify(x);
@@ -216,7 +216,7 @@ export class SimpleBlockNode {
 		this.value = value;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			this.startToken,
 			...this.value.flatMap((x) => {
@@ -230,7 +230,7 @@ export class SimpleBlockNode {
 		];
 	}
 
-	toString() {
+	toString(): string {
 		const valueString = this.value.map((x) => {
 			if (isToken(x)) {
 				return stringify(x);
@@ -351,11 +351,11 @@ export class WhitespaceNode {
 		this.value = value;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return this.value;
 	}
 
-	toString() {
+	toString(): string {
 		return stringify(...this.value);
 	}
 
@@ -393,13 +393,13 @@ export class CommentNode {
 		this.value = value;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			this.value,
 		];
 	}
 
-	toString() {
+	toString(): string {
 		return stringify(this.value);
 	}
 
@@ -454,13 +454,13 @@ export class TokenNode {
 		this.value = value;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			this.value,
 		];
 	}
 
-	toString() {
+	toString(): string {
 		return stringify(this.value);
 	}
 
@@ -481,11 +481,11 @@ export class UnclosedFunctionNode {
 		this.value = value;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return this.value;
 	}
 
-	toString() {
+	toString(): string {
 		return stringify(...this.value);
 	}
 
@@ -506,11 +506,11 @@ export class UnclosedSimpleBlockNode {
 		this.value = value;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return this.value;
 	}
 
-	toString() {
+	toString(): string {
 		return stringify(...this.value);
 	}
 

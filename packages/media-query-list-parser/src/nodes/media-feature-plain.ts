@@ -17,7 +17,7 @@ export class MediaFeaturePlain {
 		this.value = value;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return [
 			...this.name.tokens(),
 			this.colon,
@@ -25,7 +25,7 @@ export class MediaFeaturePlain {
 		];
 	}
 
-	toString() {
+	toString(): string {
 		return this.name.toString() + stringify(this.colon) + this.value.toString();
 	}
 

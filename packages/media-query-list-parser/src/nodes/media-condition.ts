@@ -1,3 +1,4 @@
+import { CSSToken } from '@csstools/css-tokenizer';
 import { MediaConditionListWithAnd, MediaConditionListWithAndWalkerEntry, MediaConditionListWithAndWalkerParent, MediaConditionListWithOr, MediaConditionListWithOrWalkerEntry, MediaConditionListWithOrWalkerParent } from './media-condition-list';
 import { MediaInParens } from './media-in-parens';
 import { MediaNot, MediaNotWalkerEntry, MediaNotWalkerParent } from './media-not';
@@ -12,11 +13,11 @@ export class MediaCondition {
 		this.media = media;
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		return this.media.tokens();
 	}
 
-	toString() {
+	toString(): string {
 		return this.media.toString();
 	}
 

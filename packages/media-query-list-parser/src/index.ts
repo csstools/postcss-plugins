@@ -14,7 +14,7 @@ export { MediaFeatureValue } from './nodes/media-feature-value';
 export { MediaInParens } from './nodes/media-in-parens';
 export { MediaNot } from './nodes/media-not';
 export { MediaOr  } from './nodes/media-or';
-export { MediaQuery, MediaQueryWithType, MediaQueryWithoutType } from './nodes/media-query';
+export { MediaQuery, MediaQueryWithType, MediaQueryWithoutType, MediaQueryInvalid } from './nodes/media-query';
 
 export { MediaFeatureComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT, matchesComparison, comparisonFromTokens } from './nodes/media-feature-comparison';
 export { MediaType, typeFromToken } from './nodes/media-type';
