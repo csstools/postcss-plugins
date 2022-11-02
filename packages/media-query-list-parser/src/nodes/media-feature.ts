@@ -95,13 +95,13 @@ export function parseMediaFeature(simpleBlock: SimpleBlockNode, before: Array<CS
 export function newMediaFeatureBoolean(name: string) {
 	return new MediaFeature(
 		new MediaFeatureBoolean(
-			new TokenNode([TokenType.Ident, name, 0, 0, { value: name }]),
+			new TokenNode([TokenType.Ident, name, -1, -1, { value: name }]),
 		),
 		[
-			[TokenType.OpenParen, '(', 0, 0, undefined],
+			[TokenType.OpenParen, '(', -1, -1, undefined],
 		],
 		[
-			[TokenType.CloseParen, ')', 0, 0, undefined],
+			[TokenType.CloseParen, ')', -1, -1, undefined],
 		],
 	);
 }
@@ -110,18 +110,18 @@ export function newMediaFeaturePlain(name: string, ...value: Array<CSSToken>) {
 	return new MediaFeature(
 		new MediaFeaturePlain(
 			new MediaFeatureName(
-				new TokenNode([TokenType.Ident, name, 0, 0, { value: name }]),
+				new TokenNode([TokenType.Ident, name, -1, -1, { value: name }]),
 			),
-			[TokenType.Colon, ':', 0, 0, undefined],
+			[TokenType.Colon, ':', -1, -1, undefined],
 			new MediaFeatureValue(
 				value.map((x) => new TokenNode(x)),
 			),
 		),
 		[
-			[TokenType.OpenParen, '(', 0, 0, undefined],
+			[TokenType.OpenParen, '(', -1, -1, undefined],
 		],
 		[
-			[TokenType.CloseParen, ')', 0, 0, undefined],
+			[TokenType.CloseParen, ')', -1, -1, undefined],
 		],
 	);
 }
