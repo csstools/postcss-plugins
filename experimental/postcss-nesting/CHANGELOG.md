@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting Experimental
 
-### Unreleased
+### 1.1.0 (November 3, 2022)
 
 - match Chrome's behavior for pseudo elements.
 - add support for `&` everywhere.

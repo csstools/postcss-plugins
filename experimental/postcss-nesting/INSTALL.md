@@ -17,10 +17,10 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssNestingExperimental = require('@csstools/postcss-nesting-experimental');
+const postcssNesting = require('@csstools/postcss-nesting-experimental');
 
 postcss([
-	postcssNestingExperimental(/* pluginOptions */)
+	postcssNesting(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -35,11 +35,11 @@ npm install postcss-cli @csstools/postcss-nesting-experimental --save-dev
 Use [PostCSS Nesting] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssNestingExperimental = require('@csstools/postcss-nesting-experimental');
+const postcssNesting = require('@csstools/postcss-nesting-experimental');
 
 module.exports = {
 	plugins: [
-		postcssNestingExperimental(/* pluginOptions */)
+		postcssNesting(/* pluginOptions */)
 	]
 }
 ```
@@ -103,11 +103,11 @@ Use [React App Rewire PostCSS] and [PostCSS Nesting] in your
 
 ```js
 const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssNestingExperimental = require('@csstools/postcss-nesting-experimental');
+const postcssNesting = require('@csstools/postcss-nesting-experimental');
 
 module.exports = config => reactAppRewirePostcss(config, {
 	plugins: () => [
-		postcssNestingExperimental(/* pluginOptions */)
+		postcssNesting(/* pluginOptions */)
 	]
 });
 ```
@@ -124,11 +124,11 @@ Use [PostCSS Nesting] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssNestingExperimental = require('@csstools/postcss-nesting-experimental');
+const postcssNesting = require('@csstools/postcss-nesting-experimental');
 
 gulp.task('css', function () {
 	var plugins = [
-		postcssNestingExperimental(/* pluginOptions */)
+		postcssNesting(/* pluginOptions */)
 	];
 
 	return gulp.src('./src/*.css')
@@ -148,7 +148,7 @@ npm install grunt-postcss @csstools/postcss-nesting-experimental --save-dev
 Use [PostCSS Nesting] in your Gruntfile:
 
 ```js
-const postcssNestingExperimental = require('@csstools/postcss-nesting-experimental');
+const postcssNesting = require('@csstools/postcss-nesting-experimental');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -156,7 +156,7 @@ grunt.initConfig({
 	postcss: {
 		options: {
 			processors: [
-			postcssNestingExperimental(/* pluginOptions */)
+			postcssNesting(/* pluginOptions */)
 			]
 		},
 		dist: {
