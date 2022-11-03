@@ -1,0 +1,15 @@
+:scope {
+	order: 1;
+}
+
+@scope (.foo) {
+	:scope {
+		order: 2;
+	}
+}
+
+@media screen {
+	:scope {
+		order: 3;
+	}
+}
