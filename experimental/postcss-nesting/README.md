@@ -73,14 +73,14 @@ Relative selectors :
 Add [PostCSS Nesting Experimental] to your project:
 
 ```bash
-npm install postcss-nesting --save-dev
+npm install @csstools/postcss-nesting-experimental --save-dev
 ```
 
 Use [PostCSS Nesting Experimental] as a [PostCSS] plugin:
 
 ```js
 import postcss from 'postcss';
-import postcssNestingExperimental from 'postcss-nesting';
+import postcssNestingExperimental from '@csstools/postcss-nesting-experimental';
 
 postcss([
   postcssNestingExperimental(/* pluginOptions */)
