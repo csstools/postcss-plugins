@@ -31,12 +31,6 @@ export default function mergeSelectors(node: Node, postcssResult: Result, fromSe
 					return false;
 				}
 
-				// see : https://github.com/w3c/csswg-drafts/issues/7979
-				if (parser.isPseudoElement(maybeCombinator)) {
-					startsWithCombinator = true;
-					return false;
-				}
-
 				return false;
 			});
 

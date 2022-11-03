@@ -1,5 +1,20 @@
 # Changes to PostCSS Nesting Experimental
 
+### Unreleased
+
+- match Chrome's behavior for pseudo elements.
+- add support for `&` everywhere.
+
+```css
+.foo {
+  ::before {}
+}
+
+/* becomes */
+
+.foo ::before {}
+```
+
 ### 1.0.0 (October 29, 2022)
 
 Implement the 28 October version of [css-nestng-1](https://drafts.csswg.org/css-nesting/)
