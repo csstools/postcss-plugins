@@ -2,7 +2,7 @@ import { CSSToken } from '@csstools/css-tokenizer';
 import { MediaConditionListWithAnd, MediaConditionListWithAndWalkerEntry, MediaConditionListWithAndWalkerParent, MediaConditionListWithOr, MediaConditionListWithOrWalkerEntry, MediaConditionListWithOrWalkerParent } from './media-condition-list';
 import { MediaInParens } from './media-in-parens';
 import { MediaNot, MediaNotWalkerEntry, MediaNotWalkerParent } from './media-not';
-import { NodeType } from './node-type';
+import { NodeType } from '../util/node-type';
 
 export class MediaCondition {
 	type = NodeType.MediaCondition;

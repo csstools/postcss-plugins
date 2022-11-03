@@ -1,19 +1,10 @@
 import { CSSToken, mirrorVariantType, stringify, TokenType, isToken, TokenFunction } from '@csstools/css-tokenizer';
 import { Context } from '../interfaces/context';
+import { ComponentValueType } from '../util/component-value-type';
 
 export type ContainerNode = FunctionNode | SimpleBlockNode;
 
 export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode | UnclosedSimpleBlockNode | UnclosedFunctionNode;
-
-export enum ComponentValueType {
-	Function = 'function',
-	SimpleBlock = 'simple-block',
-	Whitespace = 'whitespace',
-	Comment = 'comment',
-	Token = 'token',
-	UnclosedFunction = 'unclosed-function',
-	UnclosedSimpleBlock = 'unclosed-simple-block'
-}
 
 // https://www.w3.org/TR/css-syntax-3/#consume-a-component-value
 export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: ComponentValue } {
@@ -155,6 +146,22 @@ export class FunctionNode {
 			value: this.value.map((x) => x.toJSON()),
 		};
 	}
+
+	isFunctionNode(): this is FunctionNode {
+		return FunctionNode.isFunctionNode(this);
+	}
+
+	static isFunctionNode(x: unknown): x is FunctionNode {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof FunctionNode)) {
+			return false;
+		}
+
+		return x.type === ComponentValueType.Function;
+	}
 }
 
 // https://www.w3.org/TR/css-syntax-3/#consume-function
@@ -289,6 +296,22 @@ export class SimpleBlockNode {
 			value: this.value.map((x) => x.toJSON()),
 		};
 	}
+
+	isSimpleBlockNode(): this is SimpleBlockNode {
+		return SimpleBlockNode.isSimpleBlockNode(this);
+	}
+
+	static isSimpleBlockNode(x: unknown): x is SimpleBlockNode {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof SimpleBlockNode)) {
+			return false;
+		}
+
+		return x.type === ComponentValueType.SimpleBlock;
+	}
 }
 
 /** https://www.w3.org/TR/css-syntax-3/#consume-simple-block */
@@ -365,6 +388,22 @@ export class WhitespaceNode {
 			tokens: this.tokens(),
 		};
 	}
+
+	isWhitespaceNode(): this is WhitespaceNode {
+		return WhitespaceNode.isWhitespaceNode(this);
+	}
+
+	static isWhitespaceNode(x: unknown): x is WhitespaceNode {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof WhitespaceNode)) {
+			return false;
+		}
+
+		return x.type === ComponentValueType.Whitespace;
+	}
 }
 
 export function consumeWhitespace(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: WhitespaceNode } {
@@ -408,6 +447,22 @@ export class CommentNode {
 			type: this.type,
 			tokens: this.tokens(),
 		};
+	}
+
+	isCommentNode(): this is CommentNode {
+		return CommentNode.isCommentNode(this);
+	}
+
+	static isCommentNode(x: unknown): x is CommentNode {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof CommentNode)) {
+			return false;
+		}
+
+		return x.type === ComponentValueType.Comment;
 	}
 }
 
@@ -470,6 +525,22 @@ export class TokenNode {
 			tokens: this.tokens(),
 		};
 	}
+
+	isTokenNode(): this is TokenNode {
+		return TokenNode.isTokenNode(this);
+	}
+
+	static isTokenNode(x: unknown): x is TokenNode {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof TokenNode)) {
+			return false;
+		}
+
+		return x.type === ComponentValueType.Token;
+	}
 }
 
 export class UnclosedFunctionNode {
@@ -495,6 +566,22 @@ export class UnclosedFunctionNode {
 			tokens: this.tokens(),
 		};
 	}
+
+	isUnclosedFunctionNode(): this is UnclosedFunctionNode {
+		return UnclosedFunctionNode.isUnclosedFunctionNode(this);
+	}
+
+	static isUnclosedFunctionNode(x: unknown): x is UnclosedFunctionNode {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof UnclosedFunctionNode)) {
+			return false;
+		}
+
+		return x.type === ComponentValueType.UnclosedFunction;
+	}
 }
 
 export class UnclosedSimpleBlockNode {
@@ -519,5 +606,21 @@ export class UnclosedSimpleBlockNode {
 			type: this.type,
 			tokens: this.tokens(),
 		};
+	}
+
+	isUnclosedSimpleBlockNode(): this is UnclosedSimpleBlockNode {
+		return UnclosedSimpleBlockNode.isUnclosedSimpleBlockNode(this);
+	}
+
+	static isUnclosedSimpleBlockNode(x: unknown): x is UnclosedSimpleBlockNode {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof UnclosedSimpleBlockNode)) {
+			return false;
+		}
+
+		return x.type === ComponentValueType.UnclosedSimpleBlock;
 	}
 }

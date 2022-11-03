@@ -3,6 +3,7 @@ export { Reader } from './reader';
 export { TokenType, NumberType, mirrorVariantType, isToken } from './interfaces/token';
 export { stringify } from './stringify';
 export { tokenizer } from './tokenizer';
+export { cloneTokens } from './util/clone-tokens';
 
 export type {
 	TokenAtKeyword,

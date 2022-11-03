@@ -1,6 +1,6 @@
 import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { MediaInParens, MediaInParensWalkerEntry, MediaInParensWalkerParent } from './media-in-parens';
-import { NodeType } from './node-type';
+import { NodeType } from '../util/node-type';
 
 export class MediaOr {
 	type = NodeType.MediaOr;

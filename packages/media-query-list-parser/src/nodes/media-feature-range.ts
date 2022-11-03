@@ -3,7 +3,7 @@ import { CSSToken, stringify, TokenDelim, TokenType } from '@csstools/css-tokeni
 import { comparisonFromTokens, matchesComparison } from './media-feature-comparison';
 import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
 import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent, parseMediaFeatureValue } from './media-feature-value';
-import { NodeType } from './node-type';
+import { NodeType } from '../util/node-type';
 
 export type MediaFeatureRange = MediaFeatureRangeNameValue |
 	MediaFeatureRangeValueName |

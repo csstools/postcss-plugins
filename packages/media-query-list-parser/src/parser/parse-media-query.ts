@@ -1,4 +1,4 @@
-import { ComponentValue, ComponentValueType, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
+import { ComponentValue, ComponentValueType, isCommentNode, isTokenNode, isWhitespaceNode, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, TokenIdent, TokenType } from '@csstools/css-tokenizer';
 import { GeneralEnclosed } from '../nodes/general-enclosed';
 import { MediaAnd } from '../nodes/media-and';
@@ -26,17 +26,17 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>) {
 		let andIndex = -1;
 
 		for (let i = 0; i < componentValues.length; i++) {
-			const componentValue = componentValues[i];
-			if (componentValue.type === ComponentValueType.Whitespace) {
+			const componentValue = componentValues[i] as ComponentValue;
+			if (isWhitespaceNode(componentValue)) {
 				continue;
 			}
 
-			if (componentValue.type === ComponentValueType.Comment) {
+			if (isCommentNode(componentValue)) {
 				continue;
 			}
 
-			if (componentValue.type === ComponentValueType.Token) {
-				const token = (componentValue as TokenNode).value;
+			if (isTokenNode(componentValue)) {
+				const token = componentValue.value;
 				if (modifierIndex === -1 && token[0] === TokenType.Ident && modifierFromToken(token)) {
 					modifierIndex = i;
 					continue;

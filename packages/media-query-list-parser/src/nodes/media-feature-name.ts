@@ -1,7 +1,7 @@
 import { ComponentValue, ComponentValueType, TokenNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenIdent } from '@csstools/css-tokenizer';
 import { isIdent } from '../util/component-value-is';
-import { NodeType } from './node-type';
+import { NodeType } from '../util/node-type';
 
 export class MediaFeatureName {
 	type = NodeType.MediaFeatureName;

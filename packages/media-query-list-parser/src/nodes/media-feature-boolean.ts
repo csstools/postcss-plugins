@@ -1,6 +1,6 @@
 import { ComponentValue } from '@csstools/css-parser-algorithms';
 import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
-import { NodeType } from './node-type';
+import { NodeType } from '../util/node-type';
 
 export class MediaFeatureBoolean extends MediaFeatureName {
 	type = NodeType.MediaFeatureBoolean;

@@ -10,7 +10,7 @@ import { MediaFeatureName } from './media-feature-name';
 import { MediaFeaturePlain } from './media-feature-plain';
 import { MediaFeatureRange } from './media-feature-range';
 import { MediaFeatureValue } from './media-feature-value';
-import { NodeType } from './node-type';
+import { NodeType } from '../util/node-type';
 
 export class MediaInParens {
 	type = NodeType.MediaInParens;

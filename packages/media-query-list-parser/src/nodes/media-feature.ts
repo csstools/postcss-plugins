@@ -5,7 +5,7 @@ import { MediaFeatureName } from './media-feature-name';
 import { MediaFeaturePlain, MediaFeaturePlainWalkerEntry, MediaFeaturePlainWalkerParent, parseMediaFeaturePlain } from './media-feature-plain';
 import { MediaFeatureRange, MediaFeatureRangeWalkerEntry, MediaFeatureRangeWalkerParent, parseMediaFeatureRange } from './media-feature-range';
 import { MediaFeatureValue } from './media-feature-value';
-import { NodeType } from './node-type';
+import { NodeType } from '../util/node-type';
 
 export class MediaFeature {
 	type = NodeType.MediaFeature;

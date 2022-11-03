@@ -1,5 +1,29 @@
 export { parse, parseFromTokens } from './parser/parse';
-export { NodeType } from './nodes/node-type';
+export { NodeType } from './util/node-type';
+export {
+	isGeneralEnclosed,
+	isMediaAnd,
+	isMediaCondition,
+	isMediaConditionList,
+	isMediaConditionListWithAnd,
+	isMediaConditionListWithOr,
+	isMediaFeature,
+	isMediaFeatureBoolean,
+	isMediaFeatureName,
+	isMediaFeaturePlain,
+	isMediaFeatureRange,
+	isMediaFeatureRangeNameValue,
+	isMediaFeatureRangeValueName,
+	isMediaFeatureRangeValueNameValue,
+	isMediaFeatureValue,
+	isMediaInParens,
+	isMediaNot,
+	isMediaOr,
+	isMediaQuery,
+	isMediaQueryInvalid,
+	isMediaQueryWithType,
+	isMediaQueryWithoutType,
+} from './util/type-predicates';
 
 export { GeneralEnclosed } from './nodes/general-enclosed';
 export { MediaAnd } from './nodes/media-and';

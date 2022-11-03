@@ -1,9 +1,9 @@
 import { ComponentValue } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
+import { NodeType } from '../util/node-type';
 import { MediaCondition, MediaConditionWalkerEntry, MediaConditionWalkerParent } from './media-condition';
 import { MediaInParens } from './media-in-parens';
 import { MediaNot } from './media-not';
-import { NodeType } from './node-type';
 
 export type MediaQuery = MediaQueryWithType | MediaQueryWithoutType | MediaQueryInvalid;
 

@@ -1,6 +1,6 @@
 import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
 import { CSSToken } from '@csstools/css-tokenizer';
-import { NodeType } from './node-type';
+import { NodeType } from '../util/node-type';
 
 export class GeneralEnclosed {
 	type = NodeType.GeneralEnclosed;

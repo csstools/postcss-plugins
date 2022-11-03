@@ -1,5 +1,5 @@
-import { CSSToken, TokenIdent, TokenType } from '@csstools/css-tokenizer';
-import { parseFromTokens, NodeType, MediaCondition, MediaInParens, MediaQueryWithoutType, MediaQueryWithType, MediaNot, MediaQuery } from '@csstools/media-query-list-parser';
+import { cloneTokens, TokenIdent, TokenType } from '@csstools/css-tokenizer';
+import { parseFromTokens, MediaQuery } from '@csstools/media-query-list-parser';
 import { atMediaParamsTokens } from '../transform-at-media/at-media-params-tokens';
 import { replaceTrueAndFalseTokens } from './true-and-false';
 
@@ -56,12 +56,4 @@ export function parseCustomMedia(params: string): { name: string, truthy: Array<
 			return [x, name];
 		}),
 	};
-}
-
-function cloneTokens(tokens: Array<CSSToken>): Array<CSSToken> {
-	if ('structuredClone' in globalThis) {
-		return structuredClone(tokens);
-	}
-
-	return JSON.parse(JSON.stringify(tokens));
 }

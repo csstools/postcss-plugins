@@ -1,7 +1,7 @@
 import { ComponentValue, ComponentValueType, ContainerNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
 import { isDimension, isIdent, isNumber } from '../util/component-value-is';
-import { NodeType } from './node-type';
+import { NodeType } from '../util/node-type';
 
 export class MediaFeatureValue {
 	type = NodeType.MediaFeatureValue;

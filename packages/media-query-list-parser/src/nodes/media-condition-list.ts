@@ -2,7 +2,7 @@ import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { MediaAnd, MediaAndWalkerEntry, MediaAndWalkerParent } from './media-and';
 import { MediaInParens } from './media-in-parens';
 import { MediaOr, MediaOrWalkerEntry, MediaOrWalkerParent } from './media-or';
-import { NodeType } from './node-type';
+import { NodeType } from '../util/node-type';
 
 export type MediaConditionList = MediaConditionListWithAnd | MediaConditionListWithOr;
 
