@@ -1,0 +1,28 @@
+& {
+	order: 1;
+}
+
+.foo & {
+	order: 2;
+}
+
+
+.foo:has(&, :not(&)) {
+	order: 3;
+}
+
+&& + & {
+	order: 4;
+}
+
+@media screen {
+	& {
+		order: 5;
+	}
+}
+
+@container (.foo) {
+	& {
+		order: 6;
+	}
+}

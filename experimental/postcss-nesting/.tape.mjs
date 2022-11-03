@@ -92,4 +92,7 @@ postcssTape(plugin)({
 	'relative-selectors': {
 		message: 'examples of relative selectors',
 	},
+	'ampersand-everywhere': {
+		message: 'allow & to be used everywhere',
+	}
 });

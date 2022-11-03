@@ -9,3 +9,7 @@ a, b {
 		color: yellow;
 	}
 }
+
+& {
+	color: pink;
+}

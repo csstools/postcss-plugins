@@ -23,6 +23,11 @@ a, b {
 	}
 }
 
+& {
+	color: pink;
+}
+
+
 /* becomes */
 
 a, b {
@@ -30,11 +35,15 @@ a, b {
 }
 
 :is(a,b) c, :is(a,b) d {
-	color: white;
-}
+		color: white;
+	}
 
 :is(e) :is(a,b) {
-	color: yellow;
+		color: yellow;
+	}
+
+:scope {
+	color: pink;
 }
 ```
 

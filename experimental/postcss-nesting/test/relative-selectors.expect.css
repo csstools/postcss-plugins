@@ -19,7 +19,7 @@
 	}
 
 
-:is(.foo)::before {
+:is(.foo) ::before {
 		order: 5;
 	}
 
@@ -44,6 +44,6 @@
 	}
 
 
-:is(.foo)::before, :is(.foo) .other {
+:is(.foo) ::before, :is(.foo) .other {
 		order: 15;
 	}
