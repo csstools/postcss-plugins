@@ -37,6 +37,7 @@
 		"@csstools/postcss-normalize-display-values": "^1.0.1",
 		"@csstools/postcss-oklab-function": "^1.1.1",
 		"@csstools/postcss-progressive-custom-properties": "^1.3.0",
+		"@csstools/postcss-scope-pseudo-class": "^1.0.0",
 		"@csstools/postcss-stepped-value-functions": "^1.0.1",
 		"@csstools/postcss-text-decoration-shorthand": "^1.0.0",
 		"@csstools/postcss-trigonometric-functions": "^1.0.2",

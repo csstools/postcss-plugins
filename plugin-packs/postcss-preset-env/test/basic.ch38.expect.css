@@ -514,3 +514,19 @@
 [dir="rtl"] .stage__container {
 	right: 1rem;
 }
+
+:scope {
+	content: "plain :scope";
+}
+
+@scope (.foo) {
+	:scope {
+		content: ":scope in @scope";
+	}
+}
+
+:scope {
+	@scope (.foo) {
+		content: ":scope in @scope, but with nesting";
+	}
+}

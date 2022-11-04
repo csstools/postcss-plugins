@@ -19,3 +19,7 @@
 		order: 5;
 	}
 }
+
+.js-has-pseudo [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-w-1q-w-1m-37-2r-33-34-2t-w-17-w-1a-2q-2p-36-15]:not(.does-not-exist):not(.does-not-exist) {
+	content: ":scope in :has";
+}

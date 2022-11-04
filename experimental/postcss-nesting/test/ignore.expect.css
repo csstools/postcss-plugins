@@ -1,8 +1,6 @@
 a, b {
 	order: 1;
-}
-
-:is(a,b) c {
+}:is(a,b) c {
 		order: 2;
 	}
 

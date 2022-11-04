@@ -1,25 +1,13 @@
 
 	:is(.foo) .bar {
 		order: 1;
-	}
-
-
-:is(.foo)> .bar {
+	}:is(.foo)> .bar {
 		order: 2;
-	}
-
-
-:is(.foo)+ .bar {
+	}:is(.foo)+ .bar {
 		order: 3;
-	}
-
-
-:is(.foo)~ .bar {
+	}:is(.foo)~ .bar {
 		order: 4;
-	}
-
-
-:is(.foo) ::before {
+	}:is(.foo) ::before {
 		order: 5;
 	}
 

@@ -1,90 +1,48 @@
 a {
 	order: 1;
-}
-
-@media screen, print {
-
-a {
+}@media screen, print {a {
 		order: 2;
 }
-	}
-
-@media screen and (min-width: 480px), print and (min-width: 480px) {
-
-a {
+	}@media screen and (min-width: 480px), print and (min-width: 480px) {a {
 			order: 3;
 }
-		}
-
-@media screen, print {
-
-a {
+		}@media screen, print {a {
 
 		order: 4;
 }
-	}
-
-a {
+	}a {
 
 	order: 5;
 	order: 6;
-}
-
-:is(a) b {
+}:is(a) b {
 		order: 7;
-	}
-
-:is(:is(a) b) c {
+	}:is(:is(a) b) c {
 			order: 8;
-		}
-
-:is(a) b {
+		}:is(a) b {
 
 		order: 9;
-	}
-
-a {
+	}a {
 
 	order: 10;
-}
-
-:is(body) :is(a) {
+}:is(body) :is(a) {
 		order: 11;
-	}
-
-:is(html) :is(:is(body) :is(a)) {
+	}:is(html) :is(:is(body) :is(a)) {
 			order: 12;
-		}
-
-:is(body) :is(a) {
+		}:is(body) :is(a) {
 
 		order: 13;
-	}
-
-a {
+	}a {
 
 	order: 14;
-}
-
-@media screen {
-
-a {
+}@media screen {a {
 		order: 15;
 }
-	}
-
-@media screen and (min-width: 480px) {
-
-a {
+	}@media screen and (min-width: 480px) {a {
 			order: 16;
 }
-		}
-
-:is(body):is(a) {
+		}:is(body):is(a) {
 		order: 17;
-	}
-
-:is(html) body:is(a) {
+	}:is(html) body:is(a) {
 		order: 18;
 	}
 

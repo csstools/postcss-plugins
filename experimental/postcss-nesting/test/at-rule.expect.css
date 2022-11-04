@@ -1,16 +1,12 @@
 a {
 	order: 1;
-}
-:is(b) :is(a) {
+}:is(b) :is(a) {
 		order: 2;
-	}
-:id(c) :is(a) {
+	}:id(c) :is(a) {
 		order: 3;
-	}
-:is(d) :is(a) {
+	}:is(d) :is(a) {
 		order: 4;
-	}
-:is(e) :is(a) {
+	}:is(e) :is(a) {
 		order: 5;
 	}
 a {

@@ -527,3 +527,19 @@ h6.test-custom-selectors {
 .stage__container:dir(rtl) {
 	right: var(--size, 1rem);
 }
+
+:scope {
+	content: "plain :scope";
+}
+
+@scope (.foo) {
+	:scope {
+		content: ":scope in @scope";
+	}
+}
+
+:scope {
+	@scope (.foo) {
+		content: ":scope in @scope, but with nesting";
+	}
+}
