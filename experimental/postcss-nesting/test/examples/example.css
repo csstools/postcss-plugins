@@ -1,0 +1,15 @@
+a, b {
+	color: red;
+
+	& c, & d {
+		color: white;
+	}
+
+	:is(e) & {
+		color: yellow;
+	}
+}
+
+& {
+	color: pink;
+}

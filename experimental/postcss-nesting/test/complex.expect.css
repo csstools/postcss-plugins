@@ -1,0 +1,81 @@
+body > p, body > ul {
+	order: 1;
+}
+
+
+:is(body > p,body > ul) ~ :is(body > p,body > ul) {
+		order: 2;
+	}
+
+
+:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)):hover,
+		:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)):focus {
+			order: 3;
+		}
+
+
+:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)) *:hover,
+		:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)) *:focus {
+			order: 4;
+		}
+
+
+:is(:is(body > p,body > ul)) > *:hover {
+			order: 5;
+		}
+
+
+:is(body > p,body > ul) :is(body > p,body > ul) {
+		order: 6;
+	}
+
+
+:is(body > p,body > ul):is(body > p,body > ul) {
+		order: 7;
+	}
+
+
+:is(body > p,body > ul):is(body > p,body > ul):is(body > p,body > ul) {
+		order: 8;
+	}
+
+
+body > p, body > .foo {
+	order: 101;
+}
+
+
+:is(body > p,body > .foo)~:is(body > p,body > .foo) {
+		order: 102;
+	}
+
+
+:is(:is(body > p,body > .foo)~:is(body > p,body > .foo)):hover,
+		:is(:is(body > p,body > .foo)~:is(body > p,body > .foo)):focus {
+			order: 103;
+		}
+
+
+:is(:is(body > p,body > .foo)~:is(body > p,body > .foo)) *:hover,
+		:is(:is(body > p,body > .foo)~:is(body > p,body > .foo)) *:focus {
+			order: 104;
+		}
+
+
+:is(:is(body > p,body > .foo))>*:hover {
+			order: 105;
+		}
+
+
+:is(body > p,body > .foo):is(body > p,body > .foo) {
+		order: 106;
+	}
+
+
+:is(body > p,body > .foo):is(body > p,body > .foo):is(body > p,body > .foo) {
+		order: 107;
+	}
+
+:is(body.foo,html.baz) + :is(body.foo,html.baz) {
+		order: 201;
+	}

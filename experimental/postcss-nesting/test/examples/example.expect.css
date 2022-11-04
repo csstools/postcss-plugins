@@ -1,0 +1,15 @@
+a, b {
+	color: red;
+}
+
+:is(a,b) c, :is(a,b) d {
+		color: white;
+	}
+
+:is(e) :is(a,b) {
+		color: yellow;
+	}
+
+:scope {
+	color: pink;
+}

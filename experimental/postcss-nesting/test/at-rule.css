@@ -1,0 +1,93 @@
+a {
+	order: 1;
+	:is(b) & {
+		order: 2;
+	}
+	:id(c) & {
+		order: 3;
+	}
+	:is(d) & {
+		order: 4;
+	}
+	:is(e) & {
+		order: 5;
+	}
+}
+a {
+	order: 1;
+	& b {
+		order: 2;
+	}
+	& c {
+		order: 3;
+	}
+	& d {
+		order: 4;
+	}
+	& e {
+		order: 5;
+	}
+
+	&[foo="& ,\'"] {
+		order: 6;
+	}
+
+	&[a="& ,\'"][b='& . \\a &'] {
+		order: 7;
+	}
+
+	&\\foo {
+		order: 8;
+	}
+}
+
+.foo {
+	&h1 {
+		color: red;
+	}
+}
+
+.foo {
+	&h1, &h2 {
+		color: red;
+	}
+}
+
+.foo {
+	&.bar {
+		color: red;
+	}
+}
+
+
+.foo {
+	&.bar, &.baz {
+		color: red;
+	}
+}
+
+h1 {
+	.foo& {
+		color: blue;
+	}
+}
+
+h1 {
+	.foo& .baz & {
+		color: blue;
+	}
+}
+
+h1 {
+	.foo&, .bar& {
+		color: blue;
+	}
+}
+
+article {
+	color: blue;
+
+	:where(&) {
+		color: red;
+	}
+}
