@@ -23,6 +23,14 @@ import { generate } from './generate.mjs';
 
 			generate(
 				'selector',
+				path.join('../../plugins', 'postcss-scope-pseudo-class'),
+				[
+					':scope',
+				],
+			),
+
+			generate(
+				'selector',
 				path.join('../../plugins', 'postcss-focus-visible'),
 				[
 					':focus-visible',
