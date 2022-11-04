@@ -16,8 +16,19 @@ npm install postcss @csstools/postcss-extract --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssExtract = require('@csstools/postcss-extract');
+
+postcss([
+	postcssExtract(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssExtract from '@csstools/postcss-extract';
 
 postcss([
 	postcssExtract(/* pluginOptions */)

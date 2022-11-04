@@ -603,3 +603,19 @@
 [dir="rtl"] .stage__container {
 	right: 1rem;
 }
+
+:root {
+	content: "plain :scope";
+}
+
+@scope (.foo) {
+	:scope {
+		content: ":scope in @scope";
+	}
+}
+
+:root {
+	@scope (.foo) {
+		content: ":scope in @scope, but with nesting";
+	}
+}

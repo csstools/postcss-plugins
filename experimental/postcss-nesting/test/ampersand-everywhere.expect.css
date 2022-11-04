@@ -1,0 +1,28 @@
+:scope {
+	order: 1;
+}
+
+.foo :scope {
+	order: 2;
+}
+
+
+.foo:has(:scope, :not(:scope)) {
+	order: 3;
+}
+
+:scope:scope + :scope {
+	order: 4;
+}
+
+@media screen {
+	:scope {
+		order: 5;
+	}
+}
+
+@container (.foo) {
+	:scope {
+		order: 6;
+	}
+}

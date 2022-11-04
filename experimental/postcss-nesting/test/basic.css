@@ -1,0 +1,203 @@
+a {
+	order: 1;
+
+	@media screen, print {
+		order: 2;
+
+		@media (min-width: 480px) {
+			order: 3;
+		}
+
+		order: 4;
+	}
+
+	order: 5;
+	order: 6;
+
+	& b {
+		order: 7;
+
+		& c {
+			order: 8;
+		}
+
+		order: 9;
+	}
+
+	order: 10;
+
+	:is(body) & {
+		order: 11;
+
+		:is(html) & {
+			order: 12;
+		}
+
+		order: 13;
+	}
+
+	order: 14;
+
+	@media screen {
+		order: 15;
+
+		@media (min-width: 480px) {
+			order: 16;
+		}
+	}
+
+	:is(body)& {
+		order: 17;
+	}
+
+	:is(html) body& {
+		order: 18;
+	}
+}
+
+a {
+	.foo& {
+		order: 19;
+	}
+
+	.foo .bar& {
+		order: 20;
+	}
+}
+
+a b {
+	.foo& {
+		order: 21;
+	}
+
+	.foo .bar& {
+		order: 22;
+	}
+}
+
+.foo {
+	&h1,
+	&h2 {
+		color: red;
+	}
+}
+
+li {
+	&+& {
+		background: red;
+	}
+}
+
+.foo {
+	&:where(h1) {
+		background: red;
+	}
+}
+
+a {
+	& b[a="a&b"] {
+		order: 31;
+	}
+}
+
+.a,
+.b {
+	&.c,
+	&.d {
+		&::before {
+			order: 41;
+		}
+	}
+}
+
+.a:hover, .b:focus {
+	&::before, &::after {
+		order: 51;
+	}
+}
+
+/* leading : root */
+.comments {
+	/* leading : 1 */
+	order: 61;
+	/* trailing: 2 */
+
+	& .comment {
+		order: 62;
+	}
+
+	/* loose comment */
+	& .comment {
+		order: 63;
+	}
+
+	/* leading : 4 */
+	order: 64;
+	/* trailing: 5 */
+
+	& .comment {
+		/* nested deeper */
+
+		& .comment {
+			order: 65;
+		}
+	}
+}
+
+.pseudo-element {
+	::before& {
+		order: 71;
+	}
+
+	::before & {
+		order: 71.1;
+	}
+}
+
+.pseudo-element {
+	:before& {
+		order: 72;
+	}
+
+	:before & {
+		order: 72.1;
+	}
+}
+
+.pseudo-element {
+	&::after {
+		order: 73;
+	}
+
+	& ::after {
+		order: 73.1;
+	}
+}
+
+.pseudo-element {
+	&:after {
+		order: 74;
+	}
+
+	& :after {
+		order: 74.1;
+	}
+}
+
+.has-semi-colons-on-the-last-decl {
+	order: 73;
+	/* a comment */
+
+	& .foo {
+		order: 73.1;
+	}
+}
+
+.has-semi-colons-on-the-last-decl {
+	order: 74;
+	/* a comment */
+
+	& .foo {
+		order: 74.1;
+	}
+}

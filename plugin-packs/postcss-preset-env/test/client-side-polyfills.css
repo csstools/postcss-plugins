@@ -19,3 +19,7 @@
 		order: 5;
 	}
 }
+
+:has(.foo > :scope + .bar) {
+	content: ":scope in :has";
+}
