@@ -40,6 +40,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				}
 
 				selectorAST.walkPseudos((pseudo) => {
+					if (pseudo.value.toLowerCase() === ':has') {
+						return false;
+					}
+
 					if (pseudo.value.toLowerCase() === ':scope') {
 						pseudo.value = ':root';
 					}

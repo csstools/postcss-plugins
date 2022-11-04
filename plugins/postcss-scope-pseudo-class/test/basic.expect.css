@@ -13,3 +13,11 @@
 		order: 3;
 	}
 }
+
+:has(.foo > :scope + .bar) {
+	order: 3;
+}
+
+:has(.foo > :not(:scope) + .bar) {
+	order: 4;
+}
