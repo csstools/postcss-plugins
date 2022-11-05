@@ -48,7 +48,7 @@ export class MediaQueryWithType {
 				[TokenType.Whitespace, ' ', -1, -1, undefined],
 			];
 
-			return;
+			return copy;
 		}
 
 		for (let i = 0; i < copy.modifier.length; i++) {
