@@ -53,6 +53,22 @@ export class MediaNot {
 			media: this.media.toJSON(),
 		};
 	}
+
+	isMediaNot(): this is MediaNot {
+		return MediaNot.isMediaNot(this);
+	}
+
+	static isMediaNot(x: unknown): x is MediaNot {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaNot)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaNot;
+	}
 }
 
 export type MediaNotWalkerEntry = MediaInParensWalkerEntry | MediaInParens;

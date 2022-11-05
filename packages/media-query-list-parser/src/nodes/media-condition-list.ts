@@ -104,6 +104,22 @@ export class MediaConditionListWithAnd {
 			after: this.after,
 		};
 	}
+
+	isMediaConditionListWithAnd(): this is MediaConditionListWithAnd {
+		return MediaConditionListWithAnd.isMediaConditionListWithAnd(this);
+	}
+
+	static isMediaConditionListWithAnd(x: unknown): x is MediaConditionListWithAnd {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaConditionListWithAnd)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaConditionListWithAnd;
+	}
 }
 
 export type MediaConditionListWithAndWalkerEntry = MediaAndWalkerEntry | MediaAnd;
@@ -206,6 +222,22 @@ export class MediaConditionListWithOr {
 			before: this.before,
 			after: this.after,
 		};
+	}
+
+	isMediaConditionListWithOr(): this is MediaConditionListWithOr {
+		return MediaConditionListWithOr.isMediaConditionListWithOr(this);
+	}
+
+	static isMediaConditionListWithOr(x: unknown): x is MediaConditionListWithOr {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaConditionListWithOr)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaConditionListWithOr;
 	}
 }
 

@@ -64,6 +64,22 @@ export class MediaFeature {
 			after: this.after,
 		};
 	}
+
+	isMediaFeature(): this is MediaFeature {
+		return MediaFeature.isMediaFeature(this);
+	}
+
+	static isMediaFeature(x: unknown): x is MediaFeature {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaFeature)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaFeature;
+	}
 }
 
 export type MediaFeatureWalkerEntry = MediaFeaturePlainWalkerEntry | MediaFeatureRangeWalkerEntry | MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange;

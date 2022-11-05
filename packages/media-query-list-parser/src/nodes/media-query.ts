@@ -126,6 +126,10 @@ export class MediaQueryWithType {
 			return false;
 		}
 
+		if (!this.media) {
+			return;
+		}
+
 		return this.media.walk(cb);
 	}
 
@@ -138,6 +142,22 @@ export class MediaQueryWithType {
 			and: this.and,
 			media: this.media,
 		};
+	}
+
+	isMediaQueryWithType(): this is MediaQueryWithType {
+		return MediaQueryWithType.isMediaQueryWithType(this);
+	}
+
+	static isMediaQueryWithType(x: unknown): x is MediaQueryWithType {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaQueryWithType)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaQueryWithType;
 	}
 }
 
@@ -233,6 +253,22 @@ export class MediaQueryWithoutType {
 			media: this.media,
 		};
 	}
+
+	isMediaQueryWithoutType(): this is MediaQueryWithoutType {
+		return MediaQueryWithoutType.isMediaQueryWithoutType(this);
+	}
+
+	static isMediaQueryWithoutType(x: unknown): x is MediaQueryWithoutType {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaQueryWithoutType)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaQueryWithoutType;
+	}
 }
 
 export type MediaQueryWithoutTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
@@ -291,6 +327,22 @@ export class MediaQueryInvalid {
 			string: this.toString(),
 			media: this.media,
 		};
+	}
+
+	isMediaQueryInvalid(): this is MediaQueryInvalid {
+		return MediaQueryInvalid.isMediaQueryInvalid(this);
+	}
+
+	static isMediaQueryInvalid(x: unknown): x is MediaQueryInvalid {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaQueryInvalid)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaQueryInvalid;
 	}
 }
 

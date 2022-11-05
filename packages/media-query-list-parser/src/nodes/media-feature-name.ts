@@ -54,6 +54,22 @@ export class MediaFeatureName {
 			tokens: this.tokens(),
 		};
 	}
+
+	isMediaFeatureName(): this is MediaFeatureName {
+		return MediaFeatureName.isMediaFeatureName(this);
+	}
+
+	static isMediaFeatureName(x: unknown): x is MediaFeatureName {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaFeatureName)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaFeatureName;
+	}
 }
 
 export function parseMediaFeatureName(componentValues: Array<ComponentValue>) {

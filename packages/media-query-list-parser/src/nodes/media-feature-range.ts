@@ -78,6 +78,22 @@ export class MediaFeatureRangeNameValue {
 			tokens: this.tokens(),
 		};
 	}
+
+	isMediaFeatureRangeNameValue(): this is MediaFeatureRangeNameValue {
+		return MediaFeatureRangeNameValue.isMediaFeatureRangeNameValue(this);
+	}
+
+	static isMediaFeatureRangeNameValue(x: unknown): x is MediaFeatureRangeNameValue {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaFeatureRangeNameValue)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaFeatureRangeNameValue;
+	}
 }
 
 export class MediaFeatureRangeValueName {
@@ -148,6 +164,22 @@ export class MediaFeatureRangeValueName {
 			value: this.value.toJSON(),
 			tokens: this.tokens(),
 		};
+	}
+
+	isMediaFeatureRangeValueName(): this is MediaFeatureRangeValueName {
+		return MediaFeatureRangeValueName.isMediaFeatureRangeValueName(this);
+	}
+
+	static isMediaFeatureRangeValueName(x: unknown): x is MediaFeatureRangeValueName {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaFeatureRangeValueName)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaFeatureRangeValueName;
 	}
 }
 
@@ -250,6 +282,22 @@ export class MediaFeatureRangeValueNameValue {
 			valueTwo: this.valueTwo.toJSON(),
 			tokens: this.tokens(),
 		};
+	}
+
+	isMediaFeatureRangeValueNameValue(): this is MediaFeatureRangeValueNameValue {
+		return MediaFeatureRangeValueNameValue.isMediaFeatureRangeValueNameValue(this);
+	}
+
+	static isMediaFeatureRangeValueNameValue(x: unknown): x is MediaFeatureRangeValueNameValue {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaFeatureRangeValueNameValue)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaFeatureRangeValueNameValue;
 	}
 }
 

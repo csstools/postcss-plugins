@@ -49,6 +49,22 @@ export class GeneralEnclosed {
 			tokens: this.tokens(),
 		};
 	}
+
+	isGeneralEnclosed(): this is GeneralEnclosed {
+		return GeneralEnclosed.isGeneralEnclosed(this);
+	}
+
+	static isGeneralEnclosed(x: unknown): x is GeneralEnclosed {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof GeneralEnclosed)) {
+			return false;
+		}
+
+		return x.type === NodeType.GeneralEnclosed;
+	}
 }
 
 export type GeneralEnclosedWalkerEntry = ComponentValue;

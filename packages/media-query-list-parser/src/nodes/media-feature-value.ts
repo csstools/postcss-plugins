@@ -84,6 +84,22 @@ export class MediaFeatureValue {
 			tokens: this.tokens(),
 		};
 	}
+
+	isMediaFeatureValue(): this is MediaFeatureValue {
+		return MediaFeatureValue.isMediaFeatureValue(this);
+	}
+
+	static isMediaFeatureValue(x: unknown): x is MediaFeatureValue {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaFeatureValue)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaFeatureValue;
+	}
 }
 
 export type MediaFeatureValueWalkerEntry = ComponentValue | Array<ComponentValue>;

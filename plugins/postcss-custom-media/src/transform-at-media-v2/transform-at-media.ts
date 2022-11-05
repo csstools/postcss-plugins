@@ -1,18 +1,30 @@
 import { stringify, TokenType, TokenIdent } from '@csstools/css-tokenizer';
-import type { CSSToken } from '@csstools/css-tokenizer';
-import { splitMediaQueryList } from './split-media-query-list';
 import { alwaysTrue, neverTrue } from './always-true-or-false';
-import { atMediaParamsTokens } from './at-media-params-tokens';
-import { MediaQuery } from '@csstools/media-query-list-parser';
+import { isGeneralEnclosed, isMediaAnd, isMediaConditionList, isMediaFeatureBoolean, isMediaNot, isMediaOr, isMediaQueryInvalid, isMediaQueryWithType, MediaQuery, parse } from '@csstools/media-query-list-parser';
 
 export function transformAtMediaListTokens(params: string, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): Array<{ replaceWith: string, encapsulateWith?: string }> {
-	const mediaQueries = splitMediaQueryList(atMediaParamsTokens(params));
+	const mediaQueries = parse(params, { preserveInvalidMediaQueries: true });
 
-	const stringQueries = mediaQueries.map((x) => stringify(...x));
+	const stringQueries = mediaQueries.map((x) => x.toString());
 
 	for (let i = 0; i < mediaQueries.length; i++) {
 		const mediaQuery = mediaQueries[i];
 		const original = stringQueries[i];
+
+		{
+			const transformedQuery = transformSimpleMediaQuery(mediaQuery, replacements);
+			if (transformedQuery && transformedQuery.replaceWith !== original) {
+				return stringQueries.map((query, index) => {
+					if (index === i) {
+						return transformedQuery;
+					}
+
+					return {
+						replaceWith: query,
+					};
+				});
+			}
+		}
 
 		const transformedQuery = transformAtMediaTokens(mediaQuery, replacements);
 		if (!transformedQuery || transformedQuery.length === 0) {
@@ -37,65 +49,65 @@ export function transformAtMediaListTokens(params: string, replacements: Map<str
 	return [];
 }
 
-export function transformAtMediaTokens(tokens: Array<CSSToken>, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): Array<{replaceWith: string, encapsulateWith?: string}> {
-	const tokenTypes: Set<string> = new Set();
-	let identCounter = 0;
-	for (let i = 0; i < tokens.length; i++) {
-		tokenTypes.add(tokens[i][0]);
-		if (tokens[i][0] === TokenType.Ident) {
-			identCounter++;
-		}
+export function transformSimpleMediaQuery(mediaQuery: MediaQuery, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): { replaceWith: string, encapsulateWith?: string } | null {
+	if (!mediaQueryIsSimple(mediaQuery)) {
+		return null;
 	}
 
-	tokenTypes.delete(TokenType.Comment);
-	tokenTypes.delete(TokenType.Whitespace);
-	tokenTypes.delete(TokenType.OpenParen);
-	tokenTypes.delete(TokenType.CloseParen);
-	tokenTypes.delete(TokenType.Ident);
+	let candidate: { replaceWith: string, encapsulateWith?: string } | null = null;
 
-	// replacement slot is in a simple @media query :
-	// - @media (--custom-mq) { ... }
-	// - @media ((--custom-mq)) { ... }
-	if (tokenTypes.size == 0 && identCounter === 1) {
-		let candidate: Array<{ replaceWith: string, encapsulateWith?: string }> | null = null;
-
-		let parenDepth = 0;
-		for (let i = 0; i < tokens.length; i++) {
-			if (tokens[i][0] === TokenType.Whitespace || tokens[i][0] === TokenType.Comment) {
-				continue;
-			}
-
-			if (tokens[i][0] === TokenType.CloseParen) {
-				if (candidate) {
-					return candidate;
-				}
-			}
-
-			candidate = null;
-
-			if (tokens[i][0] === TokenType.CloseParen) {
-				parenDepth--;
-				continue;
-			}
-			if (tokens[i][0] === TokenType.OpenParen) {
-				parenDepth++;
-				continue;
-			}
-
-			if (tokens[i][0] === TokenType.Ident && parenDepth > 0) {
-				const identToken = tokens[i] as TokenIdent;
-
-				if (replacements.has(identToken[4].value)) {
-					candidate = [{
-						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-						replaceWith: replacements.get(identToken[4].value)!.truthy.map((x) => x.toString().trim()).join(','),
-					}];
-				}
-			}
+	mediaQuery.walk((entry) => {
+		const node = entry.node;
+		if (!isMediaFeatureBoolean(node)) {
+			return;
 		}
 
-		return [];
+		const name = node.getName();
+		if (!name.startsWith('--')) {
+			return false;
+		}
+
+		const replacement = replacements.get(name);
+		if (replacement) {
+			candidate = {
+				replaceWith: replacement.truthy.map((x) => x.toString().trim()).join(','),
+			};
+
+			return false;
+		}
+	});
+
+	return candidate;
+}
+
+function mediaQueryIsSimple(mediaQuery: MediaQuery): boolean {
+	if (isMediaQueryInvalid(mediaQuery)) {
+		return false;
 	}
+
+	if (isMediaQueryWithType(mediaQuery)) {
+		return false;
+	}
+
+	let isSimple = true;
+	mediaQuery.walk((entry) => {
+		if (
+			isMediaAnd(entry.node) ||
+			isMediaOr(entry.node) ||
+			isMediaNot(entry.node) ||
+			isMediaConditionList(entry.node) ||
+			isGeneralEnclosed(entry.node)
+		) {
+			isSimple = false;
+			return false;
+		}
+	});
+
+	return isSimple;
+}
+
+export function transformAtMediaTokens(mediaQuery: MediaQuery, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): Array<{replaceWith: string, encapsulateWith?: string}> {
+	const tokens = mediaQuery.tokens();
 
 	// replacement slot is in a complex @media query :
 	// - @media not (--custom-mq) { ... }

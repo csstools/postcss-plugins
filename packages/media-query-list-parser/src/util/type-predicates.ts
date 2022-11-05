@@ -12,30 +12,13 @@ import { MediaInParens } from '../nodes/media-in-parens';
 import { MediaNot } from '../nodes/media-not';
 import { MediaOr } from '../nodes/media-or';
 import { MediaQuery, MediaQueryInvalid, MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
-import { NodeType } from './node-type';
 
 export function isGeneralEnclosed(x: unknown): x is GeneralEnclosed {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof GeneralEnclosed)) {
-		return false;
-	}
-
-	return x.type === NodeType.GeneralEnclosed;
+	return GeneralEnclosed.isGeneralEnclosed(x);
 }
 
 export function isMediaAnd(x: unknown): x is MediaAnd {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaAnd)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaAnd;
+	return MediaAnd.isMediaAnd(x);
 }
 
 export function isMediaConditionList(x: unknown): x is MediaConditionList {
@@ -43,87 +26,31 @@ export function isMediaConditionList(x: unknown): x is MediaConditionList {
 }
 
 export function isMediaConditionListWithAnd(x: unknown): x is MediaConditionListWithAnd {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaConditionListWithAnd)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaConditionListWithAnd;
+	return MediaConditionListWithAnd.isMediaConditionListWithAnd(x);
 }
 
 export function isMediaConditionListWithOr(x: unknown): x is MediaConditionListWithOr {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaConditionListWithOr)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaConditionListWithOr;
+	return MediaConditionListWithOr.isMediaConditionListWithOr(x);
 }
 
 export function isMediaCondition(x: unknown): x is MediaCondition {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaCondition)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaCondition;
+	return MediaCondition.isMediaCondition(x);
 }
 
 export function isMediaFeatureBoolean(x: unknown): x is MediaFeatureBoolean {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaFeatureBoolean)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaFeatureBoolean;
+	return MediaFeatureBoolean.isMediaFeatureBoolean(x);
 }
 
 export function isMediaFeatureName(x: unknown): x is MediaFeatureName {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaFeatureName)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaFeatureName;
+	return MediaFeatureName.isMediaFeatureName(x);
 }
 
 export function isMediaFeatureValue(x: unknown): x is MediaFeatureValue {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaFeatureValue)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaFeatureValue;
+	return MediaFeatureValue.isMediaFeatureValue(x);
 }
 
 export function isMediaFeaturePlain(x: unknown): x is MediaFeaturePlain {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaFeaturePlain)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaFeaturePlain;
+	return MediaFeaturePlain.isMediaFeaturePlain(x);
 }
 
 export function isMediaFeatureRange(x: unknown): x is MediaFeatureRange {
@@ -131,87 +58,31 @@ export function isMediaFeatureRange(x: unknown): x is MediaFeatureRange {
 }
 
 export function isMediaFeatureRangeNameValue(x: unknown): x is MediaFeatureRangeNameValue {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaFeatureRangeNameValue)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaFeatureRangeNameValue;
+	return MediaFeatureRangeNameValue.isMediaFeatureRangeNameValue(x);
 }
 
 export function isMediaFeatureRangeValueName(x: unknown): x is MediaFeatureRangeValueName {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaFeatureRangeValueName)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaFeatureRangeValueName;
+	return MediaFeatureRangeValueName.isMediaFeatureRangeValueName(x);
 }
 
 export function isMediaFeatureRangeValueNameValue(x: unknown): x is MediaFeatureRangeValueNameValue {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaFeatureRangeValueNameValue)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaFeatureRangeValueNameValue;
+	return MediaFeatureRangeValueNameValue.isMediaFeatureRangeValueNameValue(x);
 }
 
 export function isMediaFeature(x: unknown): x is MediaFeature {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaFeature)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaFeature;
+	return MediaFeature.isMediaFeature(x);
 }
 
 export function isMediaInParens(x: unknown): x is MediaInParens {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaInParens)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaInParens;
+	return MediaInParens.isMediaInParens(x);
 }
 
 export function isMediaNot(x: unknown): x is MediaNot {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaNot)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaNot;
+	return MediaNot.isMediaNot(x);
 }
 
 export function isMediaOr(x: unknown): x is MediaOr {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaOr)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaOr;
+	return MediaOr.isMediaOr(x);
 }
 
 export function isMediaQuery(x: unknown): x is MediaQuery {
@@ -219,37 +90,13 @@ export function isMediaQuery(x: unknown): x is MediaQuery {
 }
 
 export function isMediaQueryWithType(x: unknown): x is MediaQueryWithType {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaQueryWithType)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaQueryWithType;
+	return MediaQueryWithType.isMediaQueryWithType(x);
 }
 
 export function isMediaQueryWithoutType(x: unknown): x is MediaQueryWithoutType {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaQueryWithoutType)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaQueryWithoutType;
+	return MediaQueryWithoutType.isMediaQueryWithoutType(x);
 }
 
 export function isMediaQueryInvalid(x: unknown): x is MediaQueryInvalid {
-	if (!x) {
-		return false;
-	}
-
-	if (!(x instanceof MediaQueryInvalid)) {
-		return false;
-	}
-
-	return x.type === NodeType.MediaQueryInvalid;
+	return MediaQueryInvalid.isMediaQueryInvalid(x);
 }

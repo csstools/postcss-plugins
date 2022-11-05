@@ -69,6 +69,22 @@ export class MediaInParens {
 			after: this.after,
 		};
 	}
+
+	isMediaInParens(): this is MediaInParens {
+		return MediaInParens.isMediaInParens(this);
+	}
+
+	static isMediaInParens(x: unknown): x is MediaInParens {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaInParens)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaInParens;
+	}
 }
 
 export type MediaInParensWalkerEntry = ComponentValue | Array<ComponentValue> | GeneralEnclosed | MediaAnd | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;

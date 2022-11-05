@@ -49,6 +49,22 @@ export class MediaCondition {
 			media: this.media.toJSON(),
 		};
 	}
+
+	isMediaCondition(): this is MediaCondition {
+		return MediaCondition.isMediaCondition(this);
+	}
+
+	static isMediaCondition(x: unknown): x is MediaCondition {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaCondition)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaCondition;
+	}
 }
 
 export type MediaConditionWalkerEntry = MediaNotWalkerEntry | MediaConditionListWithAndWalkerEntry | MediaConditionListWithOrWalkerEntry | MediaNot | MediaConditionListWithAnd | MediaConditionListWithOr;

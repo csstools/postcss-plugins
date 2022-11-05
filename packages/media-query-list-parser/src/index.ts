@@ -43,3 +43,4 @@ export { MediaQuery, MediaQueryWithType, MediaQueryWithoutType, MediaQueryInvali
 export { MediaFeatureComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT, matchesComparison, comparisonFromTokens } from './nodes/media-feature-comparison';
 export { MediaType, typeFromToken } from './nodes/media-type';
 export { MediaQueryModifier, modifierFromToken } from './nodes/media-query-modifier';
+export { cloneMediaQuery } from './util/clone-media-query';

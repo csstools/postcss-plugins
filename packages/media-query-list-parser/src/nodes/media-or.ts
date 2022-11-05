@@ -53,6 +53,22 @@ export class MediaOr {
 			media: this.media.toJSON(),
 		};
 	}
+
+	isMediaOr(): this is MediaOr {
+		return MediaOr.isMediaOr(this);
+	}
+
+	static isMediaOr(x: unknown): x is MediaOr {
+		if (!x) {
+			return false;
+		}
+
+		if (!(x instanceof MediaOr)) {
+			return false;
+		}
+
+		return x.type === NodeType.MediaOr;
+	}
 }
 
 export type MediaOrWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
