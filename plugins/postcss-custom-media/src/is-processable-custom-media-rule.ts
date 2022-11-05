@@ -17,10 +17,6 @@ export function isProcessableCustomMediaRule(atRule: AtRule): boolean {
 
 	let parent: Container<ChildNode> | Document = atRule.parent;
 	while (parent) {
-		if (parent.type === 'rule') {
-			return false;
-		}
-
 		if (parent.type === 'atrule' && !allowedParentAtRules.has((parent as AtRule).name.toLowerCase())) {
 			return false;
 		}

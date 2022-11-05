@@ -1,10 +1,9 @@
-import { stringify, TokenType, TokenIdent } from '@csstools/css-tokenizer';
-import { topLevelCombinationKeywords } from './top-level-combination-keywords';
-import { splitMediaQueryList } from './split-media-query-list';
+import { cloneTokens, stringify, TokenIdent, TokenType } from '@csstools/css-tokenizer';
+import { parseFromTokens, MediaQuery } from '@csstools/media-query-list-parser';
+import { atMediaParamsTokens } from '../transform-at-media/at-media-params-tokens';
 import { replaceTrueAndFalseTokens } from './true-and-false';
-import { atMediaParamsTokens } from './at-media-params-tokens';
 
-export function parseCustomMedia(params: string): { name: string, truthy: string, falsy: string, dependsOn: Array<[string, string]> } | false {
+export function parseCustomMedia(params: string): { name: string, truthy: Array<MediaQuery>, falsy: Array<MediaQuery>, dependsOn: Array<[string, string]> } | false {
 	const tokens = atMediaParamsTokens(params);
 
 	const customMediaReferences: Set<string> = new Set();
@@ -40,90 +39,29 @@ export function parseCustomMedia(params: string): { name: string, truthy: string
 		}
 	}
 
-	const list = splitMediaQueryList(remainder);
-	const truthyParts = [];
-	const falsyParts = [];
+	remainder = replaceTrueAndFalseTokens(remainder);
 
-	MEDIA_QUERY_LIST_LOOP:
-	for (let i = 0; i < list.length; i++) {
-		const mediaQuery = replaceTrueAndFalseTokens(list[i]);
+	const mediaQueryListTruthy = parseFromTokens(cloneTokens(remainder), {
+		preserveInvalidMediaQueries: true,
+		onParseError: () => {
+			throw new Error(`Unable to parse media query "${stringify(...remainder)}"`);
+		},
+	});
+	const mediaQueryListFalsy = parseFromTokens(cloneTokens(remainder), {
+		preserveInvalidMediaQueries: true,
+		onParseError: () => {
+			throw new Error(`Unable to parse media query "${stringify(...remainder) }"`);
+		},
+	});
 
-		const truthy = stringify(...mediaQuery);
-
-		for (let j = 0; j < mediaQuery.length; j++) {
-			if (mediaQuery[j][0] === TokenType.Comment) {
-				continue;
-			}
-			if (mediaQuery[j][0] === TokenType.Whitespace) {
-				continue;
-			}
-
-			if (mediaQuery[j][0] === TokenType.Ident) {
-				const identToken = mediaQuery[j] as TokenIdent;
-				if (identToken[4].value.toLowerCase() === 'not') {
-					truthyParts.push(truthy);
-
-					const falsy = mediaQuery.slice();
-					falsy.splice(j, 1);
-
-					falsyParts.push(stringify(...falsy));
-					continue MEDIA_QUERY_LIST_LOOP;
-				}
-
-				if (identToken[4].value.toLowerCase() === 'only') {
-					mediaQuery[j][1] = 'not';
-					mediaQuery[j][4].value = 'not';
-
-					truthyParts.push(truthy);
-					falsyParts.push(stringify(...mediaQuery));
-					continue MEDIA_QUERY_LIST_LOOP;
-				}
-			}
-
-			const falsy = mediaQuery.slice();
-
-			const falsyRemainder = falsy.slice(j);
-			const falsyRemainderKeywords = topLevelCombinationKeywords(falsyRemainder);
-			falsyRemainderKeywords.delete('and');
-
-			if (falsyRemainderKeywords.size > 0) {
-				falsy.splice(j, 0,
-					[TokenType.Ident, 'not', 0, 0, { value: 'not' }],
-					[TokenType.Whitespace, ' ', 0, 0, undefined],
-					[TokenType.Ident, 'all', 0, 0, { value: 'all' }],
-					[TokenType.Whitespace, ' ', 0, 0, undefined],
-					[TokenType.Ident, 'and', 0, 0, { value: 'and' }],
-					[TokenType.Whitespace, ' ', 0, 0, undefined],
-					[TokenType.OpenParen, '(', 0, 0, undefined],
-				);
-				falsy.push(
-					[TokenType.CloseParen, ')', 0, 0, undefined],
-				);
-			} else {
-				falsy.splice(j, 0,
-					[TokenType.Ident, 'not', 0, 0, { value: 'not' }],
-					[TokenType.Whitespace, ' ', 0, 0, undefined],
-					[TokenType.Ident, 'all', 0, 0, { value: 'all' }],
-					[TokenType.Whitespace, ' ', 0, 0, undefined],
-					[TokenType.Ident, 'and', 0, 0, { value: 'and' }],
-					[TokenType.Whitespace, ' ', 0, 0, undefined],
-				);
-			}
-
-			truthyParts.push(truthy);
-			falsyParts.push(stringify(...falsy));
-			continue MEDIA_QUERY_LIST_LOOP;
-		}
-
-		truthyParts.push(truthy);
-		falsyParts.push('not all');
-		continue MEDIA_QUERY_LIST_LOOP;
+	for (let i = 0; i < mediaQueryListFalsy.length; i++) {
+		mediaQueryListFalsy[i] = mediaQueryListFalsy[i].negateQuery();
 	}
 
 	return {
 		name: name,
-		truthy: truthyParts.map((x) => x.trim()).join(','),
-		falsy: falsyParts.map((x) => x.trim()).join(','),
+		truthy: mediaQueryListTruthy,
+		falsy: mediaQueryListFalsy,
 		dependsOn: Array.from(customMediaReferences).map((x) => {
 			return [x, name];
 		}),
