@@ -4,6 +4,7 @@
 
 - Updated: Support for Node v14+ (major).
 - Remove `postcss-env-function` (breaking).
+- Added `@csstools/postcss-scope-pseudo-class` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-scope-pseudo-class#readme) for usage details.
 
 ### 8.0.0-alpha.0 (July 8, 2022)
 

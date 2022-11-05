@@ -14,8 +14,7 @@ input:blank {
 
 input[blank].js-blank-pseudo, .js-blank-pseudo input[blank] {
 	background-color: yellow;
-}
-input:blank {
+}input:blank {
 	background-color: yellow;
 }
 ```
@@ -118,8 +117,7 @@ input:blank {
 
 input[blank], input[blank] {
 	background-color: yellow;
-}
-input:blank {
+}input:blank {
 	background-color: yellow;
 }
 ```

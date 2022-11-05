@@ -120,6 +120,11 @@ export default [
 		'importName': 'postcssIsPseudoClass',
 	},
 	{
+		'packageName': '@csstools/postcss-scope-pseudo-class',
+		'id': 'scope-pseudo-class',
+		'importName': 'postcssScopePseudoClass',
+	},
+	{
 		'packageName': 'postcss-lab-function',
 		'id': 'lab-function',
 		'importName': 'postcssLabFunction',

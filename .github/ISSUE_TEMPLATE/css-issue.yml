@@ -98,6 +98,7 @@ body:
         - PostCSS Pseudo Class Any Link
         - PostCSS Rebeccapurple
         - PostCSS Replace Overflow Wrap
+        - PostCSS Scope Pseudo Class
         - PostCSS Selector Not
         - PostCSS Stepped Value Functions
         - PostCSS System Ui Font Family
