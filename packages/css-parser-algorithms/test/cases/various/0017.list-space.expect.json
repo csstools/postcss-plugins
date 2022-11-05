@@ -1,0 +1,159 @@
+[
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			0,
+			0,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				0,
+				0,
+				null
+			],
+			[
+				"dimension-token",
+				"10px",
+				1,
+				4,
+				{
+					"value": 10,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				"comma-token",
+				",",
+				5,
+				5,
+				null
+			],
+			[
+				"dimension-token",
+				"12px",
+				6,
+				9,
+				{
+					"value": 12,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				")-token",
+				")",
+				10,
+				10,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"10px",
+						1,
+						4,
+						{
+							"value": 10,
+							"type": "integer",
+							"unit": "px"
+						}
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"comma-token",
+						",",
+						5,
+						5,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"12px",
+						6,
+						9,
+						{
+							"value": 12,
+							"type": "integer",
+							"unit": "px"
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"comma-token",
+				",",
+				11,
+				11,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"dimension-token",
+				"10px",
+				12,
+				15,
+				{
+					"value": 10,
+					"type": "integer",
+					"unit": "px"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				16,
+				16,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"dimension-token",
+				"10px",
+				17,
+				20,
+				{
+					"value": 10,
+					"type": "integer",
+					"unit": "px"
+				}
+			]
+		]
+	}
+]

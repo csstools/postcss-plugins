@@ -1,7 +1,3 @@
-:root {
-	@custom-media --foo screen;
-}
-
 @media print {
 	@custom-media --foo screen;
 }

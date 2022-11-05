@@ -1,0 +1,57 @@
+[
+	{
+		"type": "simple-block",
+		"startToken": [
+			"[-token",
+			"[",
+			0,
+			0,
+			null
+		],
+		"tokens": [
+			[
+				"[-token",
+				"[",
+				0,
+				0,
+				null
+			],
+			[
+				"dimension-token",
+				"10px",
+				1,
+				4,
+				{
+					"value": 10,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				"]-token",
+				"]",
+				5,
+				5,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"10px",
+						1,
+						4,
+						{
+							"value": 10,
+							"type": "integer",
+							"unit": "px"
+						}
+					]
+				]
+			}
+		]
+	}
+]

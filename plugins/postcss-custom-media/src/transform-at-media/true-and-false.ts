@@ -52,6 +52,7 @@ export function replaceTrueAndFalseTokens(tokens: Array<CSSToken>): Array<CSSTok
 
 	if (booleanToken === 'true') {
 		return [
+			[TokenType.Whitespace, ' ', 0, 0, undefined],
 			[TokenType.OpenParen, '(', 0, 0, undefined],
 			...alwaysTrue,
 			[TokenType.CloseParen, ')', 0, 0, undefined],
@@ -59,6 +60,7 @@ export function replaceTrueAndFalseTokens(tokens: Array<CSSToken>): Array<CSSTok
 	}
 
 	return [
+		[TokenType.Whitespace, ' ', 0, 0, undefined],
 		[TokenType.OpenParen, '(', 0, 0, undefined],
 		...neverTrue,
 		[TokenType.CloseParen, ')', 0, 0, undefined],

@@ -132,3 +132,54 @@ export type Token<T extends TokenType, U> = [
 	/** Extra data */
 	U,
 ]
+
+export function mirrorVariantType(type: TokenType): TokenType|null {
+	switch (type) {
+		case TokenType.OpenParen:
+			return TokenType.CloseParen;
+		case TokenType.CloseParen:
+			return TokenType.OpenParen;
+
+		case TokenType.OpenCurly:
+			return TokenType.CloseCurly;
+		case TokenType.CloseCurly:
+			return TokenType.OpenCurly;
+
+		case TokenType.OpenSquare:
+			return TokenType.CloseSquare;
+		case TokenType.CloseSquare:
+			return TokenType.OpenSquare;
+
+		default:
+			return null;
+	}
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function isToken(x: any): x is CSSToken {
+	if (!Array.isArray(x)) {
+		return false;
+	}
+
+	if (x.length < 4) {
+		return false;
+	}
+
+	if (!(x[0] in TokenType)) {
+		return false;
+	}
+
+	if (typeof x[1] !== 'string') {
+		return false;
+	}
+
+	if (typeof x[2] !== 'number') {
+		return false;
+	}
+
+	if (typeof x[3] !== 'number') {
+		return false;
+	}
+
+	return true;
+}

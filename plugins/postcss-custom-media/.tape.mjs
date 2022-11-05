@@ -24,6 +24,9 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
+	'nesting': {
+		message: 'works when nested'
+	},
 	'not-processable': {
 		message: 'only handles processable @custom-media rules'
 	},
@@ -31,7 +34,8 @@ postcssTape(plugin)({
 		message: 'supports more obscure CSS'
 	},
 	'eof-1': {
-		message: 'handles EOF correctly (1)'
+		message: 'handles EOF correctly (1)',
+		warnings: 1,
 	},
 	'eof-2': {
 		message: 'handles EOF correctly (2)',

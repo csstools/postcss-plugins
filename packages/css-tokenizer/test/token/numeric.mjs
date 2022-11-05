@@ -222,6 +222,26 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 
 {
 	const t = tokenizer({
+		css: '1e2 ',
+	});
+
+	assert.deepEqual(
+		collectTokens(t).slice(0, -1),
+		[
+			[
+				'number-token',
+				'1e2',
+				0,
+				2,
+				{ value: 100, type: 'number' },
+			],
+			['whitespace-token', ' ', 3, 3, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
 		css: '12rem ',
 	});
 

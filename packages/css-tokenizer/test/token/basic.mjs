@@ -21,6 +21,31 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 
 {
 	const t = tokenizer({
+		css: 'foo { width: calc(-infinity) }',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['ident-token', 'foo', 0, 2, { value: 'foo' }],
+			['whitespace-token', ' ', 3, 3, undefined],
+			['{-token', '{', 4, 4, undefined],
+			['whitespace-token', ' ', 5, 5, undefined],
+			['ident-token', 'width', 6, 10, { value: 'width' }],
+			['colon-token', ':', 11, 11, undefined],
+			['whitespace-token', ' ', 12, 12, undefined],
+			['function-token', 'calc(', 13, 17, { value: 'calc' }],
+			['ident-token', '-infinity', 18, 26, { value: '-infinity' }],
+			[')-token', ')', 27, 27, undefined],
+			['whitespace-token', ' ', 28, 28, undefined],
+			['}-token', '}', 29, 29, undefined],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
 		css: '@import url(https://example.com/stylesheet.css) layer( base.tokens ) supports( display: grid ) not screen and ((400px <= width < 1024px) and (prefers-color-scheme: dark));',
 	});
 

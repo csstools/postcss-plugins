@@ -1,0 +1,20 @@
+.foo {
+	.bar {
+
+		@media screen {
+			@custom-media --foo not all;
+		}
+	}
+
+	@media screen {
+		.bar {
+			@custom-media --foo not all;
+		}
+	}
+}
+
+@media print {
+	.a {
+		order: 1;
+	}
+}

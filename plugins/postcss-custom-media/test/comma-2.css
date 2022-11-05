@@ -43,4 +43,8 @@
 	}
 }
 
-
+@media ((--list-1) or (min-width: 300px)),((--list-2) and (min-height: 300px)) {
+	.a {
+		order: 8;
+	}
+}

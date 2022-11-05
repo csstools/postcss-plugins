@@ -1,0 +1,69 @@
+[
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			0,
+			0,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				0,
+				0,
+				null
+			],
+			[
+				"function-token",
+				"color(",
+				1,
+				6,
+				{
+					"value": "color"
+				}
+			],
+			[
+				")-token",
+				")",
+				7,
+				7,
+				null
+			],
+			[
+				")-token",
+				")",
+				8,
+				8,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "function",
+				"name": "color",
+				"tokens": [
+					[
+						"function-token",
+						"color(",
+						1,
+						6,
+						{
+							"value": "color"
+						}
+					],
+					[
+						")-token",
+						")",
+						7,
+						7,
+						null
+					]
+				],
+				"value": []
+			}
+		]
+	}
+]

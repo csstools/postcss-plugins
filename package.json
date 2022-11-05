@@ -9,6 +9,9 @@
 		"node": "^14 || ^16 || >=18"
 	},
 	"workspaces": [
+		"packages/css-tokenizer",
+		"packages/css-parser-algorithms",
+		"packages/media-query-list-parser",
 		"packages/*",
 		"plugins/postcss-progressive-custom-properties",
 		"plugins/*",
