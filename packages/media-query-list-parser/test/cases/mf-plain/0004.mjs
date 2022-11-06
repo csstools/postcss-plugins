@@ -10,4 +10,5 @@ runTest(
 			expected,
 		);
 	},
+	1,
 );

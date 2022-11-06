@@ -2,8 +2,8 @@ import assert from 'assert';
 import { runTest } from '../../util/run-test.mjs';
 
 runTest(
-	'(height > = 100px)',
-	'mf-range/0012',
+	'((color) and (pointer) or (hover))',
+	'specification-examples/0017',
 	(actual, expected) => {
 		assert.deepStrictEqual(
 			actual,

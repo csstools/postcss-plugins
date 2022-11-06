@@ -32,6 +32,25 @@ import './cases/query-with-type/0002.mjs';
 import './cases/query-with-type/0003.mjs';
 import './cases/query-with-type/0004.mjs';
 
+import './cases/specification-examples/0001.mjs';
+import './cases/specification-examples/0002.mjs';
+import './cases/specification-examples/0003.mjs';
+import './cases/specification-examples/0004.mjs';
+import './cases/specification-examples/0005.mjs';
+import './cases/specification-examples/0006.mjs';
+import './cases/specification-examples/0007.mjs';
+import './cases/specification-examples/0008.mjs';
+import './cases/specification-examples/0009.mjs';
+import './cases/specification-examples/0010.mjs';
+import './cases/specification-examples/0011.mjs';
+import './cases/specification-examples/0012.mjs';
+import './cases/specification-examples/0013.mjs';
+import './cases/specification-examples/0014.mjs';
+import './cases/specification-examples/0015.mjs';
+import './cases/specification-examples/0016.mjs';
+import './cases/specification-examples/0017.mjs';
+import './cases/specification-examples/0018.mjs';
+
 import './cases/various/0001.mjs';
 import './cases/various/0002.mjs';
 import './cases/various/0003.mjs';

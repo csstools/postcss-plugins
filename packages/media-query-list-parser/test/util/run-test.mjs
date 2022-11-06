@@ -1,9 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import { parse } from '@csstools/media-query-list-parser';
+import { isGeneralEnclosed, parse } from '@csstools/media-query-list-parser';
 
-export function runTest(source, testPath, assertEqual) {
-	const resultAST = parse(source);
+export function runTest(source, testPath, assertEqual, expectGeneralEnclosed = 0) {
+	const resultAST = parse(source, {
+		preserveInvalidMediaQueries: true,
+	});
 	const resultAST_JSON = JSON.stringify(resultAST, null, '\t');
 
 	if (process.env['REWRITE_EXPECTS'] === 'true') {
@@ -20,6 +22,20 @@ export function runTest(source, testPath, assertEqual) {
 		assertEqual(
 			JSON.parse(resultAST_JSON),
 			expectData,
+		);
+
+		let generalEnclosedCounter = 0;
+		resultAST.map((x) => {
+			x.walk((entry) => {
+				if (isGeneralEnclosed(entry.node)) {
+					generalEnclosedCounter++;
+				}
+			});
+		});
+
+		assertEqual(
+			generalEnclosedCounter,
+			expectGeneralEnclosed,
 		);
 	}
 }

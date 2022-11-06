@@ -2,13 +2,12 @@ import assert from 'assert';
 import { runTest } from '../../util/run-test.mjs';
 
 runTest(
-	'(height > = 100px)',
-	'mf-range/0012',
+	'speech and (device-aspect-ratio: 16/9)',
+	'specification-examples/0006',
 	(actual, expected) => {
 		assert.deepStrictEqual(
 			actual,
 			expected,
 		);
 	},
-	1,
 );

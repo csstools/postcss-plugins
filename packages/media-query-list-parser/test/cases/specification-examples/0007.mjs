@@ -2,13 +2,12 @@ import assert from 'assert';
 import { runTest } from '../../util/run-test.mjs';
 
 runTest(
-	'(height > = 100px)',
-	'mf-range/0012',
+	'not (width <= -100px)',
+	'specification-examples/0007',
 	(actual, expected) => {
 		assert.deepStrictEqual(
 			actual,
 			expected,
 		);
 	},
-	1,
 );
