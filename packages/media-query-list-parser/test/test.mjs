@@ -33,6 +33,7 @@ import './cases/query-with-type/0001.mjs';
 import './cases/query-with-type/0002.mjs';
 import './cases/query-with-type/0003.mjs';
 import './cases/query-with-type/0004.mjs';
+import './cases/query-with-type/0005.mjs';
 
 import './cases/specification-examples/0001.mjs';
 import './cases/specification-examples/0002.mjs';
@@ -59,5 +60,6 @@ import './cases/various/0003.mjs';
 import './cases/various/0004.mjs';
 import './cases/various/0005.mjs';
 import './cases/various/0006.mjs';
+import './cases/various/0007.mjs';
 
 import './serialize/0001.mjs';
