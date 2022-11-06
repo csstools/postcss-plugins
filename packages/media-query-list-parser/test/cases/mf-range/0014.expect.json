@@ -1,7 +1,7 @@
 [
 	{
 		"type": "media-query-without-type",
-		"string": "(width = 50px)",
+		"string": "(100px <= width)",
 		"media": {
 			"type": "media-condition",
 			"media": {
@@ -9,26 +9,26 @@
 				"media": {
 					"type": "media-feature",
 					"feature": {
-						"type": "mf-range-name-value",
+						"type": "mf-range-value-name",
 						"name": {
 							"type": "mf-name",
 							"name": "width",
 							"tokens": [
 								[
+									"whitespace-token",
+									" ",
+									9,
+									9,
+									null
+								],
+								[
 									"ident-token",
 									"width",
-									1,
-									5,
+									10,
+									14,
 									{
 										"value": "width"
 									}
-								],
-								[
-									"whitespace-token",
-									" ",
-									6,
-									6,
-									null
 								]
 							]
 						},
@@ -39,11 +39,11 @@
 								"tokens": [
 									[
 										"dimension-token",
-										"50px",
-										9,
-										12,
+										"100px",
+										1,
+										5,
 										{
-											"value": 50,
+											"value": 100,
 											"type": "integer",
 											"unit": "px"
 										}
@@ -52,33 +52,35 @@
 							},
 							"tokens": [
 								[
-									"whitespace-token",
-									" ",
-									8,
-									8,
-									null
-								],
-								[
 									"dimension-token",
-									"50px",
-									9,
-									12,
+									"100px",
+									1,
+									5,
 									{
-										"value": 50,
+										"value": 100,
 										"type": "integer",
 										"unit": "px"
 									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									6,
+									6,
+									null
 								]
 							]
 						},
 						"tokens": [
 							[
-								"ident-token",
-								"width",
+								"dimension-token",
+								"100px",
 								1,
 								5,
 								{
-									"value": "width"
+									"value": 100,
+									"type": "integer",
+									"unit": "px"
 								}
 							],
 							[
@@ -90,9 +92,18 @@
 							],
 							[
 								"delim-token",
+								"<",
+								7,
+								7,
+								{
+									"value": "<"
+								}
+							],
+							[
+								"delim-token",
 								"=",
-								7,
-								7,
+								8,
+								8,
 								{
 									"value": "="
 								}
@@ -100,19 +111,17 @@
 							[
 								"whitespace-token",
 								" ",
-								8,
-								8,
+								9,
+								9,
 								null
 							],
 							[
-								"dimension-token",
-								"50px",
-								9,
-								12,
+								"ident-token",
+								"width",
+								10,
+								14,
 								{
-									"value": 50,
-									"type": "integer",
-									"unit": "px"
+									"value": "width"
 								}
 							]
 						]
@@ -130,8 +139,8 @@
 						[
 							")-token",
 							")",
-							13,
-							13,
+							15,
+							15,
 							null
 						]
 					]

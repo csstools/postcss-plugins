@@ -1,7 +1,7 @@
 [
 	{
 		"type": "media-query-without-type",
-		"string": "(50pxundefined= width)",
+		"string": "(50px = width)",
 		"media": {
 			"type": "media-condition",
 			"media": {
@@ -61,6 +61,13 @@
 										"type": "integer",
 										"unit": "px"
 									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									5,
+									5,
+									null
 								]
 							]
 						},
@@ -77,13 +84,11 @@
 								}
 							],
 							[
-								[
-									"whitespace-token",
-									" ",
-									5,
-									5,
-									null
-								]
+								"whitespace-token",
+								" ",
+								5,
+								5,
+								null
 							],
 							[
 								"delim-token",

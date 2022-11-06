@@ -320,6 +320,7 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>) {
 							comparison[0] + i,
 							comparison[1] + i,
 						];
+						i += comparison[1];
 					} else {
 						comparisonTwo = [
 							comparison[0] + i,

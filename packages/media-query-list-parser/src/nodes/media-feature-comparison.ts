@@ -3,12 +3,12 @@ import { CSSToken, TokenDelim, TokenType } from '@csstools/css-tokenizer';
 
 export enum MediaFeatureLT {
 	LT = '<',
-	LT_OR_EQ = '< =',
+	LT_OR_EQ = '<=',
 }
 
 export enum MediaFeatureGT {
 	GT = '>',
-	GT_OR_EQ = '> =',
+	GT_OR_EQ = '>=',
 }
 
 export enum MediaFeatureEQ {
