@@ -8,52 +8,47 @@ export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | C
 
 // https://www.w3.org/TR/css-syntax-3/#consume-a-component-value
 export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: ComponentValue } {
-	const i = 0;
-
-	// eslint-disable-next-line no-constant-condition
-	while (true) {
-		const token = tokens[i];
-		if (
-			token[0] === TokenType.OpenParen ||
-			token[0] === TokenType.OpenCurly ||
-			token[0] === TokenType.OpenSquare
-		) {
-			const r = consumeSimpleBlock(ctx, tokens.slice(i));
-			return {
-				advance: r.advance + i,
-				node: r.node,
-			};
-		}
-
-		if (token[0] === TokenType.Function) {
-			const r = consumeFunction(ctx, tokens.slice(i));
-			return {
-				advance: r.advance + i,
-				node: r.node,
-			};
-		}
-
-		if (token[0] === TokenType.Whitespace) {
-			const r = consumeWhitespace(ctx, tokens.slice(i));
-			return {
-				advance: r.advance + i,
-				node: r.node,
-			};
-		}
-
-		if (token[0] === TokenType.Comment) {
-			const r = consumeComment(ctx, tokens.slice(i));
-			return {
-				advance: r.advance + i,
-				node: r.node,
-			};
-		}
-
+	const token = tokens[0];
+	if (
+		token[0] === TokenType.OpenParen ||
+		token[0] === TokenType.OpenCurly ||
+		token[0] === TokenType.OpenSquare
+	) {
+		const r = consumeSimpleBlock(ctx, tokens);
 		return {
-			advance: i + 1,
-			node: new TokenNode(token),
+			advance: r.advance,
+			node: r.node,
 		};
 	}
+
+	if (token[0] === TokenType.Function) {
+		const r = consumeFunction(ctx, tokens);
+		return {
+			advance: r.advance,
+			node: r.node,
+		};
+	}
+
+	if (token[0] === TokenType.Whitespace) {
+		const r = consumeWhitespace(ctx, tokens);
+		return {
+			advance: r.advance,
+			node: r.node,
+		};
+	}
+
+	if (token[0] === TokenType.Comment) {
+		const r = consumeComment(ctx, tokens);
+		return {
+			advance: r.advance,
+			node: r.node,
+		};
+	}
+
+	return {
+		advance: 1,
+		node: new TokenNode(token),
+	};
 }
 
 export class FunctionNode {

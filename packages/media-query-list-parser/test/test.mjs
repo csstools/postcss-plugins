@@ -1,3 +1,5 @@
+import './api/options.mjs';
+
 import './cases/media-not/0001.mjs';
 
 import './cases/mf-boolean/0001.mjs';

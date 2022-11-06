@@ -6,6 +6,7 @@ export function runTest(source, testPath, assertEqual, expectGeneralEnclosed = 0
 	const resultAST = parse(source, {
 		preserveInvalidMediaQueries: true,
 	});
+
 	const resultAST_JSON = JSON.stringify(resultAST, null, '\t');
 
 	if (process.env['REWRITE_EXPECTS'] === 'true') {
