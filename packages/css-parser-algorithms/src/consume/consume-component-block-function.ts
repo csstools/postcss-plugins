@@ -64,7 +64,7 @@ export class FunctionNode {
 		this.value = value;
 	}
 
-	get nameTokenValue(): string {
+	nameTokenValue(): string {
 		return this.name[4].value;
 	}
 
@@ -136,7 +136,7 @@ export class FunctionNode {
 	toJSON() {
 		return {
 			type: this.type,
-			name: this.name[4].value,
+			name: this.nameTokenValue(),
 			tokens: this.tokens(),
 			value: this.value.map((x) => x.toJSON()),
 		};
