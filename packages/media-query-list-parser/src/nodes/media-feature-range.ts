@@ -1,6 +1,6 @@
 import { ComponentValue, ComponentValueType, TokenNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenDelim, TokenType } from '@csstools/css-tokenizer';
-import { comparisonFromTokens, matchesComparison } from './media-feature-comparison';
+import { comparisonFromTokens, matchesComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT } from './media-feature-comparison';
 import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
 import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent, parseMediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
@@ -402,6 +402,53 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>) {
 
 	if (!valueA || !nameB || !valueC) {
 		return false;
+	}
+
+	// https://www.w3.org/TR/mediaqueries-5/#mq-range-context
+	// Only certain comparison operators are allowed and only in certain combinations.
+	{
+		const comparisonOneCheck = comparisonFromTokens(comparisonTokensOne);
+		if (
+			comparisonOneCheck === false ||
+			comparisonOneCheck === MediaFeatureEQ.EQ
+		) {
+			return false;
+		}
+		const comparisonTwoCheck = comparisonFromTokens(comparisonTokensTwo);
+		if (
+			comparisonTwoCheck === false ||
+			comparisonTwoCheck === MediaFeatureEQ.EQ
+		) {
+			return false;
+		}
+
+		if (
+			(
+				comparisonOneCheck === MediaFeatureLT.LT ||
+				comparisonOneCheck === MediaFeatureLT.LT_OR_EQ
+			)
+			&&
+			(
+				comparisonTwoCheck === MediaFeatureGT.GT ||
+				comparisonTwoCheck === MediaFeatureGT.GT_OR_EQ
+			)
+		) {
+			return false;
+		}
+
+		if (
+			(
+				comparisonOneCheck === MediaFeatureGT.GT ||
+				comparisonOneCheck === MediaFeatureGT.GT_OR_EQ
+			)
+			&&
+			(
+				comparisonTwoCheck === MediaFeatureLT.LT ||
+				comparisonTwoCheck === MediaFeatureLT.LT_OR_EQ
+			)
+		) {
+			return false;
+		}
 	}
 
 	return new MediaFeatureRangeValueNameValue(

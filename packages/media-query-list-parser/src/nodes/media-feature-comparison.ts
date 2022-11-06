@@ -26,7 +26,7 @@ export function matchesComparison(componentValues: Array<ComponentValue>): false
 			const token = componentValue.value as CSSToken;
 			if (token[0] === TokenType.Delim) {
 				if (token[4].value === MediaFeatureEQ.EQ) {
-					if (firstTokenIndex) {
+					if (firstTokenIndex !== -1) {
 						return [firstTokenIndex, i];
 					}
 

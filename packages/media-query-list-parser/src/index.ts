@@ -34,7 +34,7 @@ export { MediaFeatureBoolean } from './nodes/media-feature-boolean';
 export { MediaFeatureName } from './nodes/media-feature-name';
 export { MediaFeaturePlain } from './nodes/media-feature-plain';
 export { MediaFeatureRange, MediaFeatureRangeNameValue, MediaFeatureRangeValueName, MediaFeatureRangeValueNameValue } from './nodes/media-feature-range';
-export { MediaFeatureValue } from './nodes/media-feature-value';
+export { MediaFeatureValue, matchesRatio, matchesRatioExactly } from './nodes/media-feature-value';
 export { MediaInParens } from './nodes/media-in-parens';
 export { MediaNot } from './nodes/media-not';
 export { MediaOr  } from './nodes/media-or';
