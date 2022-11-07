@@ -1,0 +1,29 @@
+/* Simple cyclic */
+@custom-media --mq-a (--mq-b);
+@custom-media --mq-b (--mq-a);
+
+@media (--mq-a) {
+	.a {
+		color: red;
+	}
+}
+
+/* Indirect cyclic */
+@custom-media --mq-x (--mq-z);
+@custom-media --mq-y (--mq-x);
+@custom-media --mq-z (--mq-y);
+
+@media (--mq-z) {
+	.b {
+		color: red;
+	}
+}
+
+/* Self referencing */
+@custom-media --mq-self (--mq-self);
+
+@media (--mq-self) {
+	.c {
+		color: red;
+	}
+}

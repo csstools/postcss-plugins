@@ -1,0 +1,145 @@
+[
+	[
+		{
+			"type": "simple-block",
+			"startToken": [
+				"(-token",
+				"(",
+				0,
+				0,
+				null
+			],
+			"tokens": [
+				[
+					"(-token",
+					"(",
+					0,
+					0,
+					null
+				],
+				[
+					"comment",
+					"/* a comment */",
+					1,
+					15,
+					null
+				],
+				[
+					"ident-token",
+					"foo",
+					16,
+					18,
+					{
+						"value": "foo"
+					}
+				],
+				[
+					"whitespace-token",
+					"  ",
+					19,
+					20,
+					null
+				],
+				[
+					")-token",
+					")",
+					21,
+					21,
+					null
+				]
+			],
+			"value": [
+				{
+					"type": "comment",
+					"tokens": [
+						[
+							"comment",
+							"/* a comment */",
+							1,
+							15,
+							null
+						]
+					]
+				},
+				{
+					"type": "token",
+					"tokens": [
+						[
+							"ident-token",
+							"foo",
+							16,
+							18,
+							{
+								"value": "foo"
+							}
+						]
+					]
+				},
+				{
+					"type": "whitespace",
+					"tokens": [
+						[
+							"whitespace-token",
+							"  ",
+							19,
+							20,
+							null
+						]
+					]
+				}
+			]
+		},
+		{
+			"type": "whitespace",
+			"tokens": [
+				[
+					"whitespace-token",
+					" ",
+					22,
+					22,
+					null
+				]
+			]
+		},
+		{
+			"type": "token",
+			"tokens": [
+				[
+					"ident-token",
+					"something",
+					23,
+					31,
+					{
+						"value": "something"
+					}
+				]
+			]
+		},
+		{
+			"type": "whitespace",
+			"tokens": [
+				[
+					"whitespace-token",
+					" ",
+					32,
+					32,
+					null
+				]
+			]
+		},
+		{
+			"type": "token",
+			"tokens": [
+				[
+					"ident-token",
+					"else",
+					33,
+					36,
+					{
+						"value": "else"
+					}
+				]
+			]
+		}
+	]
+]

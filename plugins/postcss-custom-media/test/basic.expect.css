@@ -6,68 +6,182 @@
 
 @media screen and (max-width: 30em) {
 	body {
-		order: 1;
-	}
-}
-
-@media (max-width: 30em),(max-height: 30em), (max-width: 30em), (max-height: 30em) {
-	body {
-		order: 1;
-	}
-}
-
-@media not all and (max-width: 30em),not all and (max-height: 30em) {
-	body {
 		order: 2;
 	}
 }
 
-@media not all and (max-width: 30em),not all and (max-height: 30em) {
-	body {
-		order: 1;
-	}
-}
-
-@media all and (max-width: 30em),all and (max-height: 30em) {
-	body {
-		order: 2;
-	}
-}
-
-@media (--circular-mq-a) {
+@media (max-width: 30em),(max-height: 30em),(max-width: 30em),(max-height: 30em) {
 	body {
 		order: 3;
 	}
 }
 
-@media (--circular-mq-b) {
+@media (max-width: 30em),(max-height: 30em) {
+
+@media not all and (max-color:2147477350) {
 	body {
 		order: 4;
 	}
 }
+}
 
-@media (--unresolved-mq) {
+@media not all and (max-width: 30em),not all and (max-height: 30em) {
+
+@media not all and (color:2147477350) {
+	body {
+		order: 4;
+	}
+}
+}
+
+@media (max-width: 30em),(max-height: 30em) {
+
+@media not all and (max-color:2147477350) {
 	body {
 		order: 5;
 	}
 }
+}
 
-@media (min-width: 320px) and (max-width: 640px) {
+@media not all and (max-width: 30em),not all and (max-height: 30em) {
+
+@media not all and (color:2147477350) {
+	body {
+		order: 5;
+	}
+}
+}
+
+@media (max-width: 30em),(max-height: 30em) {
+
+@media not all and (max-color:2147477350) {
+
+@media not all and (max-color:2147477350) {
 	body {
 		order: 6;
 	}
 }
+}
+}
 
-@media (min-width: 320px) and (max-width: 640px) {
+@media not all and (max-width: 30em),not all and (max-height: 30em) {
+
+@media not all and (color:2147477350) {
+
+@media not all and (max-color:2147477350) {
+	body {
+		order: 6;
+	}
+}
+}
+}
+
+@media (max-width: 30em),(max-height: 30em) {
+
+@media all and (max-color:2147477350) {
+
+@media not all and (color:2147477350) {
+	body {
+		order: 6;
+	}
+}
+}
+}
+
+@media not all and (max-width: 30em),not all and (max-height: 30em) {
+
+@media all and (color:2147477350) {
+
+@media not all and (color:2147477350) {
+	body {
+		order: 6;
+	}
+}
+}
+}
+
+@media (--circular-mq-b) {
 	body {
 		order: 7;
 	}
 }
 
-@media (min-width: 320px) and (max-width: 640px) and (min-aspect-ratio: 16/9) {
+@media (--circular-mq-b) {
 	body {
 		order: 8;
 	}
+}
+
+@media (--unresolved-mq) {
+	body {
+		order: 9;
+	}
+}
+
+@media (min-width: 320px) {
+
+@media (max-width: 640px) {
+
+@media (max-color:2147477350) and (max-color:2147477350) {
+	body {
+		order: 10;
+	}
+}
+}
+
+@media not all and (max-width: 640px) {
+
+@media (max-color:2147477350) and (color:2147477350) {
+	body {
+		order: 10;
+	}
+}
+}
+}
+
+@media not all and (min-width: 320px) {
+
+@media (max-width: 640px) {
+
+@media (color:2147477350) and (max-color:2147477350) {
+	body {
+		order: 10;
+	}
+}
+}
+
+@media not all and (max-width: 640px) {
+
+@media (color:2147477350) and (color:2147477350) {
+	body {
+		order: 10;
+	}
+}
+}
+}
+
+@media (min-width: 320px) and (max-width: 640px) {
+	body {
+		order: 11;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 640px) {
+
+@media (max-color:2147477350) and (min-aspect-ratio: 16/9) {
+	body {
+		order: 12;
+	}
+}
+}
+
+@media not all and (min-width: 320px) and (max-width: 640px) {
+
+@media (color:2147477350) and (min-aspect-ratio: 16/9) {
+	body {
+		order: 12;
+	}
+}
 }
 
 @media (max-width: 30em),(max-height: 30em) {
@@ -82,27 +196,25 @@
 	}
 }
 
-@media (max-width: 30em),(max-height: 30em), (max-width: 30em), (max-height: 30em) {
+@media (max-width: 30em),(max-height: 30em),(max-width: 30em),(max-height: 30em) {
 	body {
 		order: 1002;
 	}
 }
 
-@media (max-width: 30em),(max-height: 30em), (max-width: 30em), (max-height: 30em) {
+@media (max-width: 30em),(max-height: 30em),(max-width: 30em),(max-height: 30em) {
 	body {
 		order: 1003;
 	}
 }
 
-@media (max-width: 30em),(max-height: 30em), (max-width: 30em), (max-height: 30em) {
+@media (max-width: 30em),(max-height: 30em),(max-width: 30em),(max-height: 30em) {
 	body {
 		order: 1004;
 	}
 }
 
-@media (max-width: 30em),(max-height: 30em),
-(max-width: 30em),
-(max-height: 30em) {
+@media (max-width: 30em),(max-height: 30em),(max-width: 30em),(max-height: 30em) {
 	body {
 		order: 1005;
 	}

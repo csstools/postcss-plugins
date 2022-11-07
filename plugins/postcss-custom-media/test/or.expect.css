@@ -1,0 +1,61 @@
+/* Media queries with "or" */
+
+@media (min-width: 300px) or (min-height: 300px) {
+
+@media not screen and (max-color:2147477350) {
+	.a {
+		order: 1;
+	}
+}
+}
+
+@media not all and ( (min-width: 300px) or (min-height: 300px)) {
+
+@media not screen and (color:2147477350) {
+	.a {
+		order: 1;
+	}
+}
+}
+
+@media not screen {
+
+@media not print {
+
+@media (max-color:2147477350) or (max-color:2147477350) {
+	.a {
+		order: 2;
+	}
+}
+}
+
+@media print {
+
+@media (max-color:2147477350) or (color:2147477350) {
+	.a {
+		order: 2;
+	}
+}
+}
+}
+
+@media screen {
+
+@media not print {
+
+@media (color:2147477350) or (max-color:2147477350) {
+	.a {
+		order: 2;
+	}
+}
+}
+
+@media print {
+
+@media (color:2147477350) or (color:2147477350) {
+	.a {
+		order: 2;
+	}
+}
+}
+}

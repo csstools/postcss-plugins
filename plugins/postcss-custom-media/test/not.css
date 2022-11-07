@@ -1,0 +1,17 @@
+/* Media queries with "and" */
+@custom-media --with-not not (min-height: 300px);
+
+@media not (--with-not) {
+	.a {
+		order: 1;
+	}
+}
+
+@custom-media --not-screen not screen;
+@custom-media --not-print not print;
+
+@media (--not-screen) and (not (--not-print)) {
+	.a {
+		order: 2;
+	}
+}

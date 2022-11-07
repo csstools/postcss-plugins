@@ -1,0 +1,56 @@
+[
+	[
+		{
+			"type": "token",
+			"tokens": [
+				[
+					"ident-token",
+					"only",
+					0,
+					3,
+					{
+						"value": "only"
+					}
+				]
+			]
+		},
+		{
+			"type": "whitespace",
+			"tokens": [
+				[
+					"whitespace-token",
+					" ",
+					4,
+					4,
+					null
+				]
+			]
+		},
+		{
+			"type": "token",
+			"tokens": [
+				[
+					"ident-token",
+					"screen",
+					5,
+					10,
+					{
+						"value": "screen"
+					}
+				]
+			]
+		},
+		{
+			"type": "whitespace",
+			"tokens": [
+				[
+					"whitespace-token",
+					" ",
+					11,
+					11,
+					null
+				]
+			]
+		}
+	]
+]

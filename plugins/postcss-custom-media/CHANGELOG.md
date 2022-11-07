@@ -3,6 +3,10 @@
 ### Unreleased (major)
 
 - Updated: Support for Node v14+ (major).
+- Removed: `importFrom` feature (breaking).
+- Removed: `exportTo` feature (breaking).
+- Fixed: implement logical evaluation of custom media queries.
+- Added: Support for `true` and `false` keywords in `@custom-media`.
 
 ### 8.0.2 (June 4, 2022)
 

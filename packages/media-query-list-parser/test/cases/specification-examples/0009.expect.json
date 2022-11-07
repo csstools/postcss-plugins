@@ -1,0 +1,270 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(update: slow) or (hover: none)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-condition-list-or",
+				"leading": {
+					"type": "media-in-parens",
+					"media": {
+						"type": "media-feature",
+						"feature": {
+							"type": "mf-plain",
+							"name": {
+								"type": "mf-name",
+								"name": "update",
+								"tokens": [
+									[
+										"ident-token",
+										"update",
+										1,
+										6,
+										{
+											"value": "update"
+										}
+									]
+								]
+							},
+							"value": {
+								"type": "mf-value",
+								"value": {
+									"type": "token",
+									"tokens": [
+										[
+											"ident-token",
+											"slow",
+											9,
+											12,
+											{
+												"value": "slow"
+											}
+										]
+									]
+								},
+								"tokens": [
+									[
+										"whitespace-token",
+										" ",
+										8,
+										8,
+										null
+									],
+									[
+										"ident-token",
+										"slow",
+										9,
+										12,
+										{
+											"value": "slow"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"ident-token",
+									"update",
+									1,
+									6,
+									{
+										"value": "update"
+									}
+								],
+								[
+									"colon-token",
+									":",
+									7,
+									7,
+									null
+								],
+								[
+									"whitespace-token",
+									" ",
+									8,
+									8,
+									null
+								],
+								[
+									"ident-token",
+									"slow",
+									9,
+									12,
+									{
+										"value": "slow"
+									}
+								]
+							]
+						},
+						"before": [
+							[
+								"(-token",
+								"(",
+								0,
+								0,
+								null
+							]
+						],
+						"after": [
+							[
+								")-token",
+								")",
+								13,
+								13,
+								null
+							]
+						]
+					},
+					"before": [],
+					"after": []
+				},
+				"list": [
+					{
+						"type": "media-or",
+						"modifier": [
+							[
+								"whitespace-token",
+								" ",
+								14,
+								14,
+								null
+							],
+							[
+								"ident-token",
+								"or",
+								15,
+								16,
+								{
+									"value": "or"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								17,
+								17,
+								null
+							]
+						],
+						"media": {
+							"type": "media-in-parens",
+							"media": {
+								"type": "media-feature",
+								"feature": {
+									"type": "mf-plain",
+									"name": {
+										"type": "mf-name",
+										"name": "hover",
+										"tokens": [
+											[
+												"ident-token",
+												"hover",
+												19,
+												23,
+												{
+													"value": "hover"
+												}
+											]
+										]
+									},
+									"value": {
+										"type": "mf-value",
+										"value": {
+											"type": "token",
+											"tokens": [
+												[
+													"ident-token",
+													"none",
+													26,
+													29,
+													{
+														"value": "none"
+													}
+												]
+											]
+										},
+										"tokens": [
+											[
+												"whitespace-token",
+												" ",
+												25,
+												25,
+												null
+											],
+											[
+												"ident-token",
+												"none",
+												26,
+												29,
+												{
+													"value": "none"
+												}
+											]
+										]
+									},
+									"tokens": [
+										[
+											"ident-token",
+											"hover",
+											19,
+											23,
+											{
+												"value": "hover"
+											}
+										],
+										[
+											"colon-token",
+											":",
+											24,
+											24,
+											null
+										],
+										[
+											"whitespace-token",
+											" ",
+											25,
+											25,
+											null
+										],
+										[
+											"ident-token",
+											"none",
+											26,
+											29,
+											{
+												"value": "none"
+											}
+										]
+									]
+								},
+								"before": [
+									[
+										"(-token",
+										"(",
+										18,
+										18,
+										null
+									]
+								],
+								"after": [
+									[
+										")-token",
+										")",
+										30,
+										30,
+										null
+									]
+								]
+							},
+							"before": [],
+							"after": []
+						}
+					}
+				],
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

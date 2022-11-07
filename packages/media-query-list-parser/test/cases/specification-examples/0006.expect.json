@@ -1,0 +1,231 @@
+[
+	{
+		"type": "media-query-with-type",
+		"string": "speech and (device-aspect-ratio: 16/9)",
+		"modifier": [],
+		"mediaType": [
+			[
+				"ident-token",
+				"speech",
+				0,
+				5,
+				{
+					"value": "speech"
+				}
+			]
+		],
+		"and": [
+			[
+				"whitespace-token",
+				" ",
+				6,
+				6,
+				null
+			],
+			[
+				"ident-token",
+				"and",
+				7,
+				9,
+				{
+					"value": "and"
+				}
+			]
+		],
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-plain",
+						"name": {
+							"type": "mf-name",
+							"name": "device-aspect-ratio",
+							"tokens": [
+								[
+									"ident-token",
+									"device-aspect-ratio",
+									12,
+									30,
+									{
+										"value": "device-aspect-ratio"
+									}
+								]
+							]
+						},
+						"value": {
+							"type": "mf-value",
+							"value": [
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"number-token",
+											"16",
+											33,
+											34,
+											{
+												"value": 16,
+												"type": "integer"
+											}
+										]
+									]
+								},
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"delim-token",
+											"/",
+											35,
+											35,
+											{
+												"value": "/"
+											}
+										]
+									]
+								},
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"number-token",
+											"9",
+											36,
+											36,
+											{
+												"value": 9,
+												"type": "integer"
+											}
+										]
+									]
+								}
+							],
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									32,
+									32,
+									null
+								],
+								[
+									"number-token",
+									"16",
+									33,
+									34,
+									{
+										"value": 16,
+										"type": "integer"
+									}
+								],
+								[
+									"delim-token",
+									"/",
+									35,
+									35,
+									{
+										"value": "/"
+									}
+								],
+								[
+									"number-token",
+									"9",
+									36,
+									36,
+									{
+										"value": 9,
+										"type": "integer"
+									}
+								]
+							]
+						},
+						"tokens": [
+							[
+								"ident-token",
+								"device-aspect-ratio",
+								12,
+								30,
+								{
+									"value": "device-aspect-ratio"
+								}
+							],
+							[
+								"colon-token",
+								":",
+								31,
+								31,
+								null
+							],
+							[
+								"whitespace-token",
+								" ",
+								32,
+								32,
+								null
+							],
+							[
+								"number-token",
+								"16",
+								33,
+								34,
+								{
+									"value": 16,
+									"type": "integer"
+								}
+							],
+							[
+								"delim-token",
+								"/",
+								35,
+								35,
+								{
+									"value": "/"
+								}
+							],
+							[
+								"number-token",
+								"9",
+								36,
+								36,
+								{
+									"value": 9,
+									"type": "integer"
+								}
+							]
+						]
+					},
+					"before": [
+						[
+							"whitespace-token",
+							" ",
+							10,
+							10,
+							null
+						],
+						[
+							"(-token",
+							"(",
+							11,
+							11,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							37,
+							37,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

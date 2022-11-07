@@ -10,23 +10,44 @@
 	}
 }
 
-@media (min-width: 3) and (width > 1024px),(min-width: 4) and (width > 1024px) {
+@media (min-width: 3),(min-width: 4) {
+
+@media (max-color:2147477350) and (width > 1024px) {
 	.a { order: 3; }
+}
+}
+
+@media not all and (min-width: 3),not all and (min-width: 4) {
+
+@media (color:2147477350) and (width > 1024px) {
+	.a { order: 3; }
+}
 }
 
 /* #region https://github.com/csstools/postcss-custom-media/issues/51 */
-/* TODO: This is broken at the moment */
 
-@media only screen(width >= 570px) {
+@media --screen and (width >= 570px) {
 	body {
 		background-color: red;
 	}
 }
 
-@media only screen(width >= 570px) {
+@media only screen {
+
+@media (max-color:2147477350) and (width >= 570px) {
 	body {
 		background-color: yellow;
 	}
+}
+}
+
+@media not screen {
+
+@media (color:2147477350) and (width >= 570px) {
+	body {
+		background-color: yellow;
+	}
+}
 }
 
 @media only screen and (width >= 570px) {
@@ -35,15 +56,87 @@
 	}
 }
 
-@media only screen(width >=570px) {
+@media only screen {
+
+@media (width >= 570px) {
+
+@media (max-color:2147477350) and (max-color:2147477350) {
 	body {
 		background-color: green;
 	}
 }
+}
 
-@media (width >=570px) and (width < 1000px) {
+@media not all and (width >= 570px) {
+
+@media (max-color:2147477350) and (color:2147477350) {
 	body {
 		background-color: green;
 	}
+}
+}
+}
+
+@media not screen {
+
+@media (width >= 570px) {
+
+@media (color:2147477350) and (max-color:2147477350) {
+	body {
+		background-color: green;
+	}
+}
+}
+
+@media not all and (width >= 570px) {
+
+@media (color:2147477350) and (color:2147477350) {
+	body {
+		background-color: green;
+	}
+}
+}
+}
+
+@media (width >= 570px) {
+
+@media (width < 1000px) {
+
+@media (max-color:2147477350) and (max-color:2147477350) {
+	body {
+		background-color: green;
+	}
+}
+}
+
+@media not all and (width < 1000px) {
+
+@media (max-color:2147477350) and (color:2147477350) {
+	body {
+		background-color: green;
+	}
+}
+}
+}
+
+@media not all and (width >= 570px) {
+
+@media (width < 1000px) {
+
+@media (color:2147477350) and (max-color:2147477350) {
+	body {
+		background-color: green;
+	}
+}
+}
+
+@media not all and (width < 1000px) {
+
+@media (color:2147477350) and (color:2147477350) {
+	body {
+		background-color: green;
+	}
+}
+}
 }
 /* #endregion https://github.com/csstools/postcss-custom-media/issues/51 */

@@ -1,0 +1,28 @@
+/* Media queries with modifiers (not|only) */
+@custom-media --mq-not-screen not screen;
+
+@media screen and (--mq-not-screen) {
+	.a {
+		order: 1;
+	}
+}
+
+@media only print and (not (--mq-not-screen)) {
+	.a {
+		order: 2;
+	}
+}
+
+@custom-media --mq-only-screen-min-width only screen and (min-width: 200px);
+
+@media print and (--mq-only-screen-min-width) {
+	.a {
+		order: 3;
+	}
+}
+
+@media (--mq-only-screen-min-width), (not (--mq-only-screen-min-width)) {
+	.a {
+		order: 4;
+	}
+}

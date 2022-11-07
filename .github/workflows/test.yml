@@ -47,49 +47,24 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: env
-        run: |
-          echo 'DIST_RESTORE_KEYS<<EOF' >> $GITHUB_ENV
-          echo "$(git --no-pager log -9 --skip 1 --no-merges --pretty=format:'%H--test-dist-${{ matrix.node }}-${{ matrix.os }}')" >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
-          echo "COMMIT_SHA=$(git --no-pager log -1 --no-merges --pretty=format:'%H')" >> $GITHUB_ENV
-          echo "BUILD_AND_TEST_ALL_PACKAGES=$(echo ${{ github.event.inputs.run_index }})" >> $GITHUB_ENV
-
-      - name: previous build artifacts cache
-        uses: actions/cache@v3.0.11
-        with:
-          path: |
-            .cached-commit
-            cli/*/dist/**
-            experimental/*/dist/**
-            packages/*/dist/**
-            plugin-packs/*/dist/**
-            plugins/*/dist/**
-          key: ${{ env.COMMIT_SHA }}--test-dist-${{ matrix.node }}-${{ matrix.os }}
-          restore-keys: ${{ env.DIST_RESTORE_KEYS }}
-
       - name: npm ci
         run: |
           npm ci --ignore-scripts
-
-      - name: determine modified workspaces
-        run: |
-          echo "MODIFIED_WORKSPACES=$(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')" >> $GITHUB_ENV
 
         # Build, lint and PostCSS Tape tests must all work and pass :
         # - with exact dependencies from package-lock.json
         # - without requiring postinstall scripts from dependencies to run
       - name: build
         run: |
-          npm run build --if-present $MODIFIED_WORKSPACES
+          npm run build --if-present
 
       - name: lint
-        run: npm run lint --if-present $MODIFIED_WORKSPACES
+        run: npm run lint --if-present
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # Basic tests
       - name: test
-        run: npm run test --if-present $MODIFIED_WORKSPACES
+        run: npm run test --if-present
         env:
           ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.is_base_node_version }}
           ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.is_base_os_version }}
@@ -99,14 +74,14 @@ jobs:
       - name: test:cli
         run: |
           npm install --ignore-scripts
-          npm run test:cli --if-present $MODIFIED_WORKSPACES
+          npm run test:cli --if-present
 
         # Browser Tests
         # running "npm ci" again, but allowing scripts so that Chrome is installed
       - name: test:browser
         run: |
           npm ci
-          npm run test:browser --if-present $MODIFIED_WORKSPACES
+          npm run test:browser --if-present
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # E2E Tests
@@ -125,11 +100,5 @@ jobs:
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
       - name: test:deno
-        run: npm run test:deno --if-present $MODIFIED_WORKSPACES
+        run: npm run test:deno --if-present
         if: matrix.is_base_node_version && matrix.is_base_os_version
-
-        # record the current commit for the cache at the end of the job
-        # must be the last step
-      - name: record current commit
-        run: |
-          echo "$(git --no-pager log -1 --no-merges --pretty=format:'%H')" > .cached-commit

@@ -1,0 +1,186 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "/* comment 1 */(/* comment 2 */30px/* comment 3 */</* comment 4 */width/* comment 5 */)/* comment 6 */",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-range-value-name",
+						"name": {
+							"type": "mf-name",
+							"name": "width",
+							"tokens": [
+								[
+									"comment",
+									"/* comment 4 */",
+									51,
+									65,
+									null
+								],
+								[
+									"ident-token",
+									"width",
+									66,
+									70,
+									{
+										"value": "width"
+									}
+								],
+								[
+									"comment",
+									"/* comment 5 */",
+									71,
+									85,
+									null
+								]
+							]
+						},
+						"value": {
+							"type": "mf-value",
+							"value": {
+								"type": "token",
+								"tokens": [
+									[
+										"dimension-token",
+										"30px",
+										31,
+										34,
+										{
+											"value": 30,
+											"type": "integer",
+											"unit": "px"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"comment",
+									"/* comment 2 */",
+									16,
+									30,
+									null
+								],
+								[
+									"dimension-token",
+									"30px",
+									31,
+									34,
+									{
+										"value": 30,
+										"type": "integer",
+										"unit": "px"
+									}
+								],
+								[
+									"comment",
+									"/* comment 3 */",
+									35,
+									49,
+									null
+								]
+							]
+						},
+						"tokens": [
+							[
+								"comment",
+								"/* comment 2 */",
+								16,
+								30,
+								null
+							],
+							[
+								"dimension-token",
+								"30px",
+								31,
+								34,
+								{
+									"value": 30,
+									"type": "integer",
+									"unit": "px"
+								}
+							],
+							[
+								"comment",
+								"/* comment 3 */",
+								35,
+								49,
+								null
+							],
+							[
+								"delim-token",
+								"<",
+								50,
+								50,
+								{
+									"value": "<"
+								}
+							],
+							[
+								"comment",
+								"/* comment 4 */",
+								51,
+								65,
+								null
+							],
+							[
+								"ident-token",
+								"width",
+								66,
+								70,
+								{
+									"value": "width"
+								}
+							],
+							[
+								"comment",
+								"/* comment 5 */",
+								71,
+								85,
+								null
+							]
+						]
+					},
+					"before": [
+						[
+							"comment",
+							"/* comment 1 */",
+							0,
+							14,
+							null
+						],
+						[
+							"(-token",
+							"(",
+							15,
+							15,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							86,
+							86,
+							null
+						],
+						[
+							"comment",
+							"/* comment 6 */",
+							87,
+							101,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

@@ -1,0 +1,452 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(20px < width <= calc(20px * 5))",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-range-value-name-value",
+						"name": {
+							"type": "mf-name",
+							"name": "width",
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									7,
+									7,
+									null
+								],
+								[
+									"ident-token",
+									"width",
+									8,
+									12,
+									{
+										"value": "width"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									13,
+									13,
+									null
+								]
+							]
+						},
+						"valueOne": {
+							"type": "mf-value",
+							"value": {
+								"type": "token",
+								"tokens": [
+									[
+										"dimension-token",
+										"20px",
+										1,
+										4,
+										{
+											"value": 20,
+											"type": "integer",
+											"unit": "px"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"dimension-token",
+									"20px",
+									1,
+									4,
+									{
+										"value": 20,
+										"type": "integer",
+										"unit": "px"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									5,
+									5,
+									null
+								]
+							]
+						},
+						"valueTwo": {
+							"type": "mf-value",
+							"value": {
+								"type": "function",
+								"name": "calc",
+								"tokens": [
+									[
+										"function-token",
+										"calc(",
+										17,
+										21,
+										{
+											"value": "calc"
+										}
+									],
+									[
+										"dimension-token",
+										"20px",
+										22,
+										25,
+										{
+											"value": 20,
+											"type": "integer",
+											"unit": "px"
+										}
+									],
+									[
+										"whitespace-token",
+										" ",
+										26,
+										26,
+										null
+									],
+									[
+										"delim-token",
+										"*",
+										27,
+										27,
+										{
+											"value": "*"
+										}
+									],
+									[
+										"whitespace-token",
+										" ",
+										28,
+										28,
+										null
+									],
+									[
+										"number-token",
+										"5",
+										29,
+										29,
+										{
+											"value": 5,
+											"type": "integer"
+										}
+									],
+									[
+										")-token",
+										")",
+										30,
+										30,
+										null
+									]
+								],
+								"value": [
+									{
+										"type": "token",
+										"tokens": [
+											[
+												"dimension-token",
+												"20px",
+												22,
+												25,
+												{
+													"value": 20,
+													"type": "integer",
+													"unit": "px"
+												}
+											]
+										]
+									},
+									{
+										"type": "whitespace",
+										"tokens": [
+											[
+												"whitespace-token",
+												" ",
+												26,
+												26,
+												null
+											]
+										]
+									},
+									{
+										"type": "token",
+										"tokens": [
+											[
+												"delim-token",
+												"*",
+												27,
+												27,
+												{
+													"value": "*"
+												}
+											]
+										]
+									},
+									{
+										"type": "whitespace",
+										"tokens": [
+											[
+												"whitespace-token",
+												" ",
+												28,
+												28,
+												null
+											]
+										]
+									},
+									{
+										"type": "token",
+										"tokens": [
+											[
+												"number-token",
+												"5",
+												29,
+												29,
+												{
+													"value": 5,
+													"type": "integer"
+												}
+											]
+										]
+									}
+								]
+							},
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									16,
+									16,
+									null
+								],
+								[
+									"function-token",
+									"calc(",
+									17,
+									21,
+									{
+										"value": "calc"
+									}
+								],
+								[
+									"dimension-token",
+									"20px",
+									22,
+									25,
+									{
+										"value": 20,
+										"type": "integer",
+										"unit": "px"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									26,
+									26,
+									null
+								],
+								[
+									"delim-token",
+									"*",
+									27,
+									27,
+									{
+										"value": "*"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									28,
+									28,
+									null
+								],
+								[
+									"number-token",
+									"5",
+									29,
+									29,
+									{
+										"value": 5,
+										"type": "integer"
+									}
+								],
+								[
+									")-token",
+									")",
+									30,
+									30,
+									null
+								]
+							]
+						},
+						"tokens": [
+							[
+								"dimension-token",
+								"20px",
+								1,
+								4,
+								{
+									"value": 20,
+									"type": "integer",
+									"unit": "px"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								5,
+								5,
+								null
+							],
+							[
+								"delim-token",
+								"<",
+								6,
+								6,
+								{
+									"value": "<"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								7,
+								7,
+								null
+							],
+							[
+								"ident-token",
+								"width",
+								8,
+								12,
+								{
+									"value": "width"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								13,
+								13,
+								null
+							],
+							[
+								"delim-token",
+								"<",
+								14,
+								14,
+								{
+									"value": "<"
+								}
+							],
+							[
+								"delim-token",
+								"=",
+								15,
+								15,
+								{
+									"value": "="
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								16,
+								16,
+								null
+							],
+							[
+								"function-token",
+								"calc(",
+								17,
+								21,
+								{
+									"value": "calc"
+								}
+							],
+							[
+								"dimension-token",
+								"20px",
+								22,
+								25,
+								{
+									"value": 20,
+									"type": "integer",
+									"unit": "px"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								26,
+								26,
+								null
+							],
+							[
+								"delim-token",
+								"*",
+								27,
+								27,
+								{
+									"value": "*"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								28,
+								28,
+								null
+							],
+							[
+								"number-token",
+								"5",
+								29,
+								29,
+								{
+									"value": 5,
+									"type": "integer"
+								}
+							],
+							[
+								")-token",
+								")",
+								30,
+								30,
+								null
+							]
+						]
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							31,
+							31,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

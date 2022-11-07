@@ -1,0 +1,19 @@
+[
+	{
+		"type": "media-query-with-type",
+		"string": "all",
+		"modifier": [],
+		"mediaType": [
+			[
+				"ident-token",
+				"all",
+				0,
+				2,
+				{
+					"value": "all"
+				}
+			]
+		],
+		"media": null
+	}
+]

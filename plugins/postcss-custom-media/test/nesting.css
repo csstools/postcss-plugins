@@ -1,0 +1,25 @@
+:root {
+	@custom-media --foo screen;
+}
+
+.foo {
+	.bar {
+		@custom-media --foo print;
+
+		@media screen {
+			@custom-media --foo not all;
+		}
+	}
+
+	@media screen {
+		.bar {
+			@custom-media --foo not all;
+		}
+	}
+}
+
+@media (--foo) {
+	.a {
+		order: 1;
+	}
+}
