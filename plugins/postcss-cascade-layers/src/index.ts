@@ -23,7 +23,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-cascade-layers',
-		OnceExit(root: Container, { result }: { result: Result }) {
+		Once(root: Container, { result }: { result: Result }) {
 
 			// Warnings
 			if (options.onRevertLayerKeyword) {

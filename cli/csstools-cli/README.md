@@ -98,8 +98,6 @@ Plugin Options:
   browsers      string
   autoprefixer  object
   preserve      boolean
-  importFrom    string
-  exportTo      string
 
   {
     "stage": 0,
@@ -116,8 +114,6 @@ Plugin Options:
       "grid": true
     },
     "preserve": false,
-    "importFrom": "path/to/file.css",
-    "exportTo": "path/to/file.css"
   }
 ```
 

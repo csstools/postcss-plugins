@@ -3,6 +3,8 @@
 ### Unreleased (major)
 
 - Updated: Support for Node v14+ (major).
+- Remove `postcss-env-function` (breaking).
+- Remove `importFrom` and `exportTo` plugin options (breaking).
 
 ### 1.4.0 (June 3, 2022)
 
