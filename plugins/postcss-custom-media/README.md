@@ -23,7 +23,7 @@
 With `@custom-media` you can use the constants `true` and `false`.
 These are especially handy when debugging.
 
-You are unsure how your page is affected when a certain media query matches or not you can use these to quickly toggle the results.
+If you are unsure how your page is affected when a certain media query matches or not you can use these, to quickly toggle the results.
 This plugin downgrades these queries to something that works in all browsers.
 
 Quickly check the result as if the query matches:
