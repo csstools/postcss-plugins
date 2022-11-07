@@ -11,8 +11,6 @@ export default function postcssPresetEnv() {
 			'browsers',
 			'autoprefixer',
 			'preserve',
-			'importFrom',
-			'exportTo',
 			'enableClientSidePolyfills',
 		],
 		helpTextLogger(
@@ -29,8 +27,6 @@ export default function postcssPresetEnv() {
 				browsers: 'last 2 versions',
 				autoprefixer: { grid: true },
 				preserve: false,
-				importFrom: 'path/to/file.css',
-				exportTo: 'path/to/file.css',
 				enableClientSidePolyfills: false,
 			},
 		),

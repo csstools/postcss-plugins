@@ -102,7 +102,6 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	// - features supported by the stage
 	// - features with `true` or with options
 	// - required for the browsers
-	// - having "importFrom" or "exportTo" options
 	const supportedFeatures = stagedFeatures.filter((feature) => {
 		if (feature.id in features) {
 			return features[feature.id];
