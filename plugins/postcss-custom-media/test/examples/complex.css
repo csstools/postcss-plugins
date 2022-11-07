@@ -1,0 +1,6 @@
+
+@custom-media --a-complex-query tty and (min-width: 300px);
+
+@media not screen and ((not (--a-complex-query)) or (color)) {
+	/* Your CSS */
+}

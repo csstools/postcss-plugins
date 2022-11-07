@@ -1,0 +1,5 @@
+@custom-media --small-viewport true;
+
+@media (--small-viewport) {
+	/* styles for small viewport */
+}
