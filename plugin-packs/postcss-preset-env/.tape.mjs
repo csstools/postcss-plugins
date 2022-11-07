@@ -171,7 +171,8 @@ postcssTape(plugin)({
 		options: {
 			stage: 0,
 			browsers: '> 0%'
-		}
+		},
+		warnings: 1
 	},
 	'layers-basic:preserve:true': {
 		message: 'supports layers usage with { preserve: true }',
@@ -179,7 +180,8 @@ postcssTape(plugin)({
 			preserve: true,
 			stage: 0,
 			browsers: '> 0%'
-		}
+		},
+		warnings: 1
 	},
 	'client-side-polyfills:stage-1': {
 		message: 'stable client side polyfill behavior',

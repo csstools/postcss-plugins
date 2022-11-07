@@ -1,5 +1,6 @@
 // ids ordered by required execution, then alphabetically
 export default [
+	'cascade-layers',
 	'custom-media-queries',
 	'custom-properties',
 	'environment-variables', // run environment-variables here to access transpiled custom media params and properties
@@ -26,13 +27,13 @@ export default [
 	'break-properties',
 	'font-variant-property',
 	'is-pseudo-class', // after other selector transforms, before :has()
+	'scope-pseudo-class',
 	'has-pseudo-class',
 	'gap-properties',
 	'overflow-property',
 	'overflow-wrap-property',
 	'place-properties',
 	'system-ui-font-family',
-	'cascade-layers',
 	'stepped-value-functions',
 	'trigonometric-functions',
 ];
