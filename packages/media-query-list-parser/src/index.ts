@@ -40,7 +40,7 @@ export { MediaNot } from './nodes/media-not';
 export { MediaOr  } from './nodes/media-or';
 export { MediaQuery, MediaQueryWithType, MediaQueryWithoutType, MediaQueryInvalid } from './nodes/media-query';
 
-export { MediaFeatureComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT, matchesComparison, comparisonFromTokens } from './nodes/media-feature-comparison';
+export { MediaFeatureComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT, invertComparison, matchesComparison, comparisonFromTokens } from './nodes/media-feature-comparison';
 export { MediaType, typeFromToken } from './nodes/media-type';
 export { MediaQueryModifier, modifierFromToken } from './nodes/media-query-modifier';
 export { cloneMediaQuery } from './util/clone-media-query';

@@ -53,6 +53,7 @@ import './cases/specification-examples/0015.mjs';
 import './cases/specification-examples/0016.mjs';
 import './cases/specification-examples/0017.mjs';
 import './cases/specification-examples/0018.mjs';
+import './cases/specification-examples/0019.mjs';
 
 import './cases/various/0001.mjs';
 import './cases/various/0002.mjs';
