@@ -26,7 +26,7 @@ instructions:
 ### Quick start
 
 1. fork the repo and clone it locally
-2. `npm run get-me-going` to install and build dependencies
+2. `npm run setup-workspace` to install and build dependencies
 3. `cd plugins/<plugin-name>`
 4. `npm run build && npm run test` to build and test the plugin after making changes
 5. open a pull request with the changes
@@ -58,7 +58,7 @@ Receiving early feedback on your work will help you iterate more quickly in the 
     # Install and build the needed things to start local development
     # This also does an initial test of everything.
     # If this gives errors please open an issue so that we can look into it.
-    npm run get-me-going
+    npm run setup-workspace
    ```
 
 * If you want to contribute to sites, you need to run the following command: 
@@ -67,7 +67,7 @@ Receiving early feedback on your work will help you iterate more quickly in the 
     cd sites
     # Install the needed things to start local development
     # If this gives errors please open an issue so that we can look into it.
-    npm run get-me-going
+    npm run setup-workspace
    ```
 
 3. Create a branch for your feature or fix:
@@ -111,7 +111,7 @@ That’s it! Now [open a pull request] with a clear title and description.
 ## Creating a new plugin here
 
 - Follow the guide for submitting a pull request
-- Run `npm run get-me-going` if you want to start local development.
+- Run `npm run setup-workspace` if you want to start local development.
 - Run `npm run new-plugin` to create a new plugin.
 
 ```bash
@@ -147,7 +147,8 @@ Change "blue" to "purple" in "src/index.ts" and see how it affects the test outc
 
 - [PostCSS API documentation](https://postcss.org/api/)
 - [PostCSS guidelines for plugins](https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md)
-- [CSSTools guidelines for plugins](https://github.com/csstools/postcss-plugins/wiki/Plugin-best-practices)
+- [CSSTools technical guidelines for plugins](https://github.com/csstools/postcss-plugins/wiki/Plugin-best-practices)
+- [CSSTools authoring guidelines](https://github.com/csstools/postcss-plugins/blob/main/AUTHORING_GUIDELINES.md)
 
 ## Trouble shooting
 
