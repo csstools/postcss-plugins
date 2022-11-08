@@ -76,10 +76,12 @@ Use `style-dictionary3` in `@design-tokens` rules to pick this format.
 
 ### is
 
-The `is` option determines which design tokens are used.
-This allows you to generate multiple themed stylesheets.
+The `is` option determines which design tokens are used.<br>
+This allows you to generate multiple themed stylesheets<br>by running PostCSS multiple times with different configurations.
 
 By default only `@design-tokens` without any `when('foo')` conditions are used.
+
+_This plugin itself does not produce multiple outputs, it only provides an API to change the output._
 
 #### Example usage
 
@@ -89,7 +91,7 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 {
 	"color": {
 		"background": {
-			"primary": { "value": "#fff" }
+			"primary": { "value": "#0ff" }
 		}
 	}
 }
@@ -99,7 +101,7 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 {
 	"color": {
 		"background": {
-			"primary": { "value": "#000" }
+			"primary": { "value": "#f0f" }
 		}
 	}
 }
@@ -108,8 +110,8 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 **And this CSS :**
 
 ```pcss
-@design-tokens url('./tokens-light.json') format('style-dictionary3');
-@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
+@design-tokens url('./tokens-brand-1.json') format('style-dictionary3');
+@design-tokens url('./tokens-brand-2.json') when('brand-2') format('style-dictionary3');
 
 .foo {
 	color: design-token('color.background.primary');
@@ -125,8 +127,8 @@ postcssDesignTokens()
 ```
 
 ```pcss
-@design-tokens url('./tokens-light.json') format('style-dictionary3');
-@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
+@design-tokens url('./tokens-brand-1.json') format('style-dictionary3');
+@design-tokens url('./tokens-brand-2.json') when('brand-2') format('style-dictionary3');
 
 .foo {
 	color: design-token('color.background.primary');
@@ -135,19 +137,19 @@ postcssDesignTokens()
 /* becomes */
 
 .foo {
-	color: #fff;
+	color: #0ff;
 }
 ```
 
-##### `is` option set to 'dark'.
+##### `is` option set to 'brand-2'.
 
 ```js
-postcssDesignTokens({ is: ['dark'] })
+postcssDesignTokens({ is: ['brand-2'] })
 ```
 
 ```pcss
-@design-tokens url('./tokens-light.json') format('style-dictionary3');
-@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
+@design-tokens url('./tokens-brand-1.json') format('style-dictionary3');
+@design-tokens url('./tokens-brand-2.json') when('brand-2') format('style-dictionary3');
 
 .foo {
 	color: design-token('color.background.primary');
@@ -156,7 +158,7 @@ postcssDesignTokens({ is: ['dark'] })
 /* becomes */
 
 .foo {
-	color: #000;
+	color: #f0f;
 }
 ```
 

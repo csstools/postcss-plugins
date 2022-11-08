@@ -95,10 +95,10 @@ postcssTape(plugin)({
 		message: 'minimal example with conditional imports : default',
 		options: {},
 	},
-	'examples/example-conditional:dark': {
-		message: 'minimal example with conditional imports : dark',
+	'examples/example-conditional:brand-2': {
+		message: 'minimal example with conditional imports : brand-2',
 		options: {
-			is: ['dark']
+			is: ['brand-2']
 		},
 	},
 	'examples/example:rootFontSize-20': {
