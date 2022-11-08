@@ -11,8 +11,11 @@ Implemented from : https://www.w3.org/TR/mediaqueries-5/
 Add [Media Query List Parser] to your project:
 
 ```bash
-npm install postcss @csstools/media-query-list-parser --save-dev
+npm install postcss @csstools/media-query-list-parser @csstools/css-parser-algorithms @csstools/css-tokenizer --save-dev
 ```
+
+[Media Query List Parser] depends on our CSS tokenizer and parser algorithms.
+It must be used together with `@csstools/css-tokenizer` and `@csstools/css-parser-algorithms`.
 
 ```ts
 import { parse } from '@csstools/media-query-list-parser';
@@ -56,5 +59,3 @@ export function parseCustomMedia() {
 [npm-url]: https://www.npmjs.com/package/@csstools/media-query-list-parser
 
 [Media Query List Parser]: https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser
-
-

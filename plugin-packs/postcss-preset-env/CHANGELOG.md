@@ -2,9 +2,17 @@
 
 ### Unreleased (8.0.0-alpha.1)
 
-- Updated: Support for Node v14+ (major).
-- Remove `postcss-env-function` (breaking).
+- Updated Support for Node v14+ (major).
+- Removed `postcss-env-function` (breaking).
+- Removed `importFrom` and `exportTo` plugin options from multiple plugins. (breaking)
+  - `postcss-custom-media`
+  - `postcss-custom-properties`
+  - `postcss-custom-selectors`
 - Added `@csstools/postcss-scope-pseudo-class` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-scope-pseudo-class#readme) for usage details.
+- Updated `postcss-custom-media` to `9.0.0` (major)
+- Updated `postcss-custom-properties` to `13.0.0` (major)
+- Updated `postcss-custom-selectors` to `7.0.0` (major)
+- Updated `@csstools/postcss-cascade-layers` to `2.0.0` (major)
 
 ### 8.0.0-alpha.0 (July 8, 2022)
 
