@@ -12,7 +12,7 @@
 - Updated `postcss-custom-media` to `9.0.0` (major)
 - Updated `postcss-custom-properties` to `13.0.0` (major)
 - Updated `postcss-custom-selectors` to `7.0.0` (major)
-- Updated `@csstools/postcss-cascade-layers` to `2.0.0` (minor)
+- Updated `@csstools/postcss-cascade-layers` to `2.0.0` (major)
 
 ### 8.0.0-alpha.0 (July 8, 2022)
 
