@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import url from 'url';
 
 /**
  * Import Custom Properties from Object
@@ -30,7 +31,7 @@ async function importEnvironmentVariablesFromJSONFile(from) {
  * @returns {Promise<Record<string, import('postcss-values-parser').Root>>}
  */
 async function importEnvironmentVariablesFromJSFile(from) {
-	const object = await import(path.resolve(from));
+	const object = await import(url.pathToFileURL(path.resolve(from)));
 
 	if ('default' in object) {
 		return importEnvironmentVariablesFromObject(object.default);
