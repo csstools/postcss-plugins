@@ -30,7 +30,7 @@
 		"postcss": "^8.2"
 	},
 	"scripts": {
-		"build": "rollup -c ../../rollup/default.js",
+		"build": "rollup -c ../../rollup/default.mjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",

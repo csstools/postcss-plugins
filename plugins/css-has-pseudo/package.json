@@ -45,7 +45,7 @@
 		"postcss": "^8.2"
 	},
 	"scripts": {
-		"build": "rollup -c ../../rollup/default.js && npm run copy-browser-scripts-to-old-location",
+		"build": "rollup -c ../../rollup/default.mjs && npm run copy-browser-scripts-to-old-location",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"copy-browser-scripts-to-old-location": "node -e \"fs.copyFileSync('./dist/browser-global.js', './browser.js')\"",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs",

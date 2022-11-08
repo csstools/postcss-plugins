@@ -32,6 +32,10 @@ async function importEnvironmentVariablesFromJSONFile(from) {
 async function importEnvironmentVariablesFromJSFile(from) {
 	const object = await import(path.resolve(from));
 
+	if ('default' in object) {
+		return importEnvironmentVariablesFromObject(object.default);
+	}
+
 	return importEnvironmentVariablesFromObject(object);
 }
 

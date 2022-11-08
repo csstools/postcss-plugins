@@ -52,6 +52,10 @@ async function importCustomSelectorsFromJSONFile(from) {
 async function importCustomSelectorsFromJSFile(from) {
 	const object = await import(path.resolve(from));
 
+	if ('default' in object) {
+		return importCustomSelectorsFromObject(object.default);
+	}
+
 	return importCustomSelectorsFromObject(object);
 }
 

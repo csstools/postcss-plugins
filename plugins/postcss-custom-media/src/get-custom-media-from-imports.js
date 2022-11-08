@@ -46,6 +46,10 @@ async function getCustomMediaFromJSONFile(from) {
 async function getCustomMediaFromJSFile(from) {
 	const object = await import(from);
 
+	if ('default' in object) {
+		return getCustomMediaFromObject(object.default);
+	}
+
 	return getCustomMediaFromObject(object);
 }
 

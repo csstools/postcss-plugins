@@ -47,7 +47,7 @@
 		"puppeteer": "^19.0.0"
 	},
 	"scripts": {
-		"build": "rollup -c ../../rollup/default.js",
+		"build": "rollup -c ../../rollup/default.mjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
