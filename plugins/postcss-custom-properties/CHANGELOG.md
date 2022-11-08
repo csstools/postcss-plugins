@@ -19,6 +19,7 @@
 	--a-value: 20px;
 	margin: 20px;
 	margin: var(--a-value);
+}
 ```
 
 ### 12.1.10 (October 20, 2022)
