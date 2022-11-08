@@ -46,7 +46,7 @@ Use `style-dictionary3` in `@design-tokens` rules to pick this format.
 
 ### is
 
-The `is` option determines which design tokens are used.
+The `is` option determines which design tokens are used.<br>
 This allows you to generate multiple themed stylesheets<br>by running PostCSS multiple times with different configurations.
 
 By default only `@design-tokens` without any `when('foo')` conditions are used.
