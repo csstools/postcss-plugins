@@ -47,20 +47,22 @@ Use `style-dictionary3` in `@design-tokens` rules to pick this format.
 ### is
 
 The `is` option determines which design tokens are used.
-This allows you to generate multiple themed stylesheets.
+This allows you to generate multiple themed stylesheets<br>by running PostCSS multiple times with different configurations.
 
 By default only `@design-tokens` without any `when('foo')` conditions are used.
+
+_This plugin itself does not produce multiple outputs, it only provides an API to change the output._
 
 #### Example usage
 
 **For these two token files :**
 
 ```json
-<tokens-light.json>
+<tokens-brand-1.json>
 ```
 
 ```json
-<tokens-dark.json>
+<tokens-brand-2.json>
 ```
 
 **And this CSS :**
@@ -85,10 +87,10 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 <example-conditional.expect.css>
 ```
 
-##### `is` option set to 'dark'.
+##### `is` option set to 'brand-2'.
 
 ```js
-<exportName>({ is: ['dark'] })
+<exportName>({ is: ['brand-2'] })
 ```
 
 ```pcss
@@ -96,7 +98,7 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 
 /* becomes */
 
-<example-conditional.dark.expect.css>
+<example-conditional.brand-2.expect.css>
 ```
 
 ### unitsAndValues
