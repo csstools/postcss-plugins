@@ -24,6 +24,15 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
+	'examples/true': {
+		message: 'minimal example with "true"',
+	},
+	'examples/false': {
+		message: 'minimal example with "false"',
+	},
+	'examples/complex': {
+		message: 'minimal example complex queries',
+	},
 	'nesting': {
 		message: 'works when nested'
 	},

@@ -18,6 +18,81 @@
 }
 ```
 
+## `true` and `false`
+
+With `@custom-media` you can use the constants `true` and `false`.
+These are especially handy when debugging.
+
+If you are unsure how your page is affected when a certain media query matches or not you can use these, to quickly toggle the results.
+This plugin downgrades these queries to something that works in all browsers.
+
+Quickly check the result as if the query matches:
+
+```pcss
+@custom-media --small-viewport true;
+
+@media (--small-viewport) {
+	/* styles for small viewport */
+}
+
+/* becomes */
+
+@media (max-color:2147477350) {
+	/* styles for small viewport */
+}
+```
+
+Quickly check the result as if the query does not match:
+
+```pcss
+@custom-media --small-viewport false;
+
+@media (--small-viewport) {
+	/* styles for small viewport */
+}
+
+/* becomes */
+
+@media (color:2147477350) {
+	/* styles for small viewport */
+}
+```
+
+## logical evaluation of complex media queries
+
+It is impossible to accurately and correctly resolve complex `@custom-media` queries
+as these depend on the browser the queries will eventually run in.
+
+_Some of these queries will have only one possible outcome but we have to account for all possible queries in this plugin._
+
+⚠️ When handling complex media queries you will see that your CSS is doubled for each level of complexity.<br>
+GZIP works great to de-dupe this but having a lot of complex media queries will have a performance impact.
+
+An example of a very complex (and artificial) use-case :
+
+```pcss
+
+@custom-media --a-complex-query tty and (min-width: 300px);
+
+@media not screen and ((not (--a-complex-query)) or (color)) {
+	/* Your CSS */
+}
+
+/* becomes */
+
+
+@media tty and (min-width: 300px) {
+@media not screen and ((not (max-color:2147477350)) or (color)) {
+	/* Your CSS */
+}
+}
+@media not  tty and (min-width: 300px) {
+@media not screen and ((not (color:2147477350)) or (color)) {
+	/* Your CSS */
+}
+}
+```
+
 ## Usage
 
 Add [PostCSS Custom Media] to your project:
