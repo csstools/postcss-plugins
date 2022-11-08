@@ -1,24 +1,21 @@
 import babel from '@rollup/plugin-babel';
-import typescript from '@rollup/plugin-typescript';
-import { terser } from 'rollup-plugin-terser';
-import { packageBabelPreset } from '../configs/babel-presets';
-import { externalsForPlugin } from '../configs/externals';
+import terser from '@rollup/plugin-terser';
+import { externalsForPlugin } from '../configs/externals.mjs';
+import { packageBabelPreset } from '../configs/babel-presets.mjs';
 
-export function packageTypescript() {
+export function packageJavascript() {
 	return [
 		{
-			input: 'src/index.ts',
+			input: 'src/index.js',
 			output: [
 				{ file: 'dist/index.cjs', format: 'cjs', sourcemap: false, exports: 'auto' },
 				{ file: 'dist/index.mjs', format: 'esm', sourcemap: false, exports: 'auto' },
 			],
 			external: externalsForPlugin,
 			plugins: [
-				typescript({ tsconfig: './tsconfig.json' }),
 				babel({
 					babelHelpers: 'bundled',
 					exclude: 'node_modules/**',
-					extensions: ['.js', '.ts'],
 					presets: packageBabelPreset,
 				}),
 				terser({
