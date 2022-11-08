@@ -1,23 +1,21 @@
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import path from 'path';
-import typescript from '@rollup/plugin-typescript';
+import terser from '@rollup/plugin-terser';
+import { addHashBang } from '../transforms/cli-hash-bang.mjs';
+import { externalsForCLI } from '../configs/externals.mjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
-import { externalsForCLI } from '../configs/externals';
-import { addHashBang } from '../transforms/cli-hash-bang';
-import { packageBabelPreset } from '../configs/babel-presets';
+import { packageBabelPreset } from '../configs/babel-presets.mjs';
 
-export function cliTypescript() {
+export function cliJavascript() {
 	return [
 		{
-			input: 'src/cli.ts',
+			input: 'src/cli.js',
 			output: [
 				{ file: 'dist/cli.cjs', format: 'cjs', sourcemap: false },
 			],
 			external: externalsForCLI,
 			plugins: [
-				typescript({ tsconfig: './tsconfig.json' }),
 				commonjs(),
 				nodeResolve({
 					rootDir: path.join(process.cwd(), '..', '..'),
@@ -25,10 +23,11 @@ export function cliTypescript() {
 				babel({
 					babelHelpers: 'bundled',
 					exclude: 'node_modules/**',
-					extensions: ['.js', '.ts'],
 					presets: packageBabelPreset,
 				}),
-				terser(),
+				terser({
+					keep_classnames: true,
+				}),
 				addHashBang(),
 			],
 		},

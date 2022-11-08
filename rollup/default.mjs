@@ -1,10 +1,10 @@
 import fs from 'fs';
-import { browserJavascript } from './presets/browser.javascript';
-import { cliJavascript } from './presets/cli-javascript';
-import { cliTypescript } from './presets/cli-typescript';
-import { denoJavascript } from './presets/deno-javascript';
-import { packageJavascript } from './presets/package-javascript';
-import { packageTypescript } from './presets/package-typescript';
+import { browserJavascript } from './presets/browser-javascript.mjs';
+import { cliJavascript } from './presets/cli-javascript.mjs';
+import { cliTypescript } from './presets/cli-typescript.mjs';
+import { denoJavascript } from './presets/deno-javascript.mjs';
+import { packageJavascript } from './presets/package-javascript.mjs';
+import { packageTypescript } from './presets/package-typescript.mjs';
 
 const packageInfo = JSON.parse(fs.readFileSync('./package.json'));
 

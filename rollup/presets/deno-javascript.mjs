@@ -1,9 +1,9 @@
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import path from 'path';
+import { externalsForDeno } from '../configs/externals.mjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import { packageBabelPreset } from '../configs/babel-presets';
-import { externalsForDeno } from '../configs/externals';
+import { packageBabelPreset } from '../configs/babel-presets.mjs';
 
 export function denoJavascript() {
 	return [
