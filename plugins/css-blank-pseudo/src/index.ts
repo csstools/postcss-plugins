@@ -50,7 +50,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					selectorAST = parser().astSync(selector);
 				} catch (err) {
 					rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
-					return selector;
+					return [selector];
 				}
 
 				if (typeof selectorAST === 'undefined') {
