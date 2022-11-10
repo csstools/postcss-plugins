@@ -14,6 +14,10 @@ postcssTape(plugin)({
 	'conditionals': {
 		message: 'handles conditional rules'
 	},
+	'invalid-selector': {
+		message: 'warns on invalid selectors',
+		warnings: 2
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

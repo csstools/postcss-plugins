@@ -15,8 +15,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-nesting',
-		Rule(rule) {
-			walk(rule, options);
+		Rule(rule, { result }) {
+			walk(rule, result, options);
 		},
 	};
 };

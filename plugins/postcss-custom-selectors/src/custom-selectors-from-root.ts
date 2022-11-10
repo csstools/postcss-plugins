@@ -1,10 +1,10 @@
-import type { ChildNode, Container, Document, Root as PostCSSRoot } from 'postcss';
+import type { ChildNode, Container, Document, Result, Root as PostCSSRoot } from 'postcss';
 import type { Root as SelectorRoot } from 'postcss-selector-parser';
 import parser from 'postcss-selector-parser';
 import { isProcessableCustomSelectorRule } from './is-processable-custom-selector-rule';
 
 // return custom selectors from the css root, conditionally removing them
-export default function getCustomSelectors(root: PostCSSRoot, opts: { preserve?: boolean }): Map<string, SelectorRoot> {
+export default function getCustomSelectors(root: PostCSSRoot, result: Result, opts: { preserve?: boolean }): Map<string, SelectorRoot> {
 	// initialize custom selectors
 	const customSelectors = new Map<string, SelectorRoot>();
 
@@ -13,24 +13,28 @@ export default function getCustomSelectors(root: PostCSSRoot, opts: { preserve?:
 			return;
 		}
 
-		const source = atRule.params.trim();
+		try {
+			const source = atRule.params.trim();
 
-		const selectorAST = parser().astSync(source);
-		const nameNode = selectorAST?.nodes?.[0]?.nodes?.[0];
-		if (!nameNode || nameNode.type !== 'pseudo' || !nameNode.value.startsWith(':--')) {
-			return;
-		}
+			const selectorAST = parser().astSync(source);
+			const nameNode = selectorAST?.nodes?.[0]?.nodes?.[0];
+			if (!nameNode || nameNode.type !== 'pseudo' || !nameNode.value.startsWith(':--')) {
+				return;
+			}
 
-		const name = nameNode.toString();
+			const name = nameNode.toString();
 
-		// re-parsing is important to obtain the correct AST shape
-		customSelectors.set(name, parser().astSync(source.slice(name.length).trim()));
+			// re-parsing is important to obtain the correct AST shape
+			customSelectors.set(name, parser().astSync(source.slice(name.length).trim()));
 
-		if (!opts.preserve) {
-			const parent = atRule.parent;
-			atRule.remove();
+			if (!opts.preserve) {
+				const parent = atRule.parent;
+				atRule.remove();
 
-			removeEmptyAncestorBlocks(parent);
+				removeEmptyAncestorBlocks(parent);
+			}
+		} catch (err) {
+			atRule.warn(result, `Failed to parse custom selector : "${atRule.params}" with message: "${err.message}"`);
 		}
 	});
 

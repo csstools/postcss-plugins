@@ -30,6 +30,10 @@ postcssTape(plugin)({
 			disablePolyfillReadyClass: true
 		}
 	},
+	'invalid-selector': {
+		message: 'warns on invalid selectors',
+		warnings: 1
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

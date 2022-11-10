@@ -25,15 +25,15 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 			let customSelectors = new Map();
 
 			return {
-				Once: (root) => {
-					customSelectors = getCustomSelectors(root, { preserve: preserve });
+				Once: (root, { result }) => {
+					customSelectors = getCustomSelectors(root, result, { preserve: preserve });
 				},
-				Rule: (rule) => {
+				Rule: (rule, { result }) => {
 					if (!rule.selector.includes(':--')) {
 						return;
 					}
 
-					transformRule(rule, customSelectors, { preserve: preserve });
+					transformRule(rule, result, customSelectors, { preserve: preserve });
 				},
 			};
 		},
