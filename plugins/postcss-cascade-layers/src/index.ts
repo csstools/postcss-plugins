@@ -69,8 +69,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			let highestASpecificity = 0;
 			root.walkRules((rule) => {
 				rule.selectors.forEach((selector) => {
-					const specificity = selectorSpecificity(selectorParser().astSync(selector));
-					highestASpecificity = Math.max(highestASpecificity, specificity.a + 1);
+					try {
+						const specificity = selectorSpecificity(selectorParser().astSync(selector));
+						highestASpecificity = Math.max(highestASpecificity, specificity.a + 1);
+					} catch (err) {
+						rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
+					}
 				});
 			});
 
@@ -93,7 +97,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				}
 
 				rule.selectors = rule.selectors.map((selector) => {
-					return adjustSelectorSpecificity(selector, model.layerCount * highestASpecificity);
+					try {
+						return adjustSelectorSpecificity(selector, model.layerCount * highestASpecificity);
+					} catch (err) {
+						rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
+					}
+
+					return selector;
 				});
 			});
 

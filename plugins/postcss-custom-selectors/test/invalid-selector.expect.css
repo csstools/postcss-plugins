@@ -1,0 +1,9 @@
+@custom-selector :--foo foo : bar;
+
+:--foo {
+	order: 1;
+}
+
+:--bar : foo {
+	order: 2;
+}

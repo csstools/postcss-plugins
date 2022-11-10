@@ -7,6 +7,7 @@
 - Removed: `exportTo` feature (breaking).
 - Fixed: follow the specification and use `:is()` in transformed selectors (breaking).
 - Added: Support for `@scope` and `@container` as parent rules of `@custom-selector`.
+- Fixed: Do not throw when a selector is invalid, show a warning instead.
 
 ```diff
 @custom-selector :--heading h1, h2, h3;

@@ -4,6 +4,7 @@
 
 - Run `postcss-cascade-layers` early compared to other PostCSS plugins (breaking)
 - Updated: Support for Node v14+ (major).
+- Fix: Do not throw when a selector is invalid, show a warning instead.
 
 ### 1.1.1 (September 17, 2022)
 

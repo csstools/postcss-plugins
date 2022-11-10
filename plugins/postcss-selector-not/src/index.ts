@@ -61,11 +61,8 @@ const creator: PluginCreator<never> = () => {
 				if (modifiedSelector !== rule.selector) {
 					rule.replaceWith(rule.clone({selector: modifiedSelector}));
 				}
-			} catch (_) {
-				rule.warn(
-					result,
-					`Failed to parse selector "${rule.selector}"`,
-				);
+			} catch (err) {
+				rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
 			}
 		},
 	};

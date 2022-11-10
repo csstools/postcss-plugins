@@ -1,5 +1,6 @@
 import type { PluginCreator } from 'postcss';
-import selectorParser, { Container } from 'postcss-selector-parser';
+import selectorParser from 'postcss-selector-parser';
+import type { Container } from 'postcss-selector-parser';
 
 function nodeIsInsensitiveAttribute(node) {
 	return node.type === 'attribute' && node.insensitive;
@@ -88,9 +89,18 @@ function transform(selectors) {
 const creator: PluginCreator<never> = () => {
 	return {
 		postcssPlugin: 'postcss-attribute-case-insensitive',
-		Rule(rule) {
+		Rule(rule, { result }) {
 			if (rule.selector.includes('i]')) {
-				const modifiedSelector = selectorParser(transform).processSync(rule.selector);
+
+				let modifiedSelector = rule.selector;
+
+				try {
+					modifiedSelector = selectorParser(transform).processSync(rule.selector);
+				} catch (err) {
+					rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
+					return;
+				}
+
 				if (modifiedSelector === rule.selector) {
 					return;
 				}

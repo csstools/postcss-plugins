@@ -1,0 +1,24 @@
+
+	&.child {
+		order: 1;
+	}.foo : bar {
+}
+
+@nest &.child {
+	}
+
+.foo : bar {
+}
+
+&.child : bar {
+		order: 3;
+	}
+
+.foo {
+}
+
+@nest &.child : bar {
+	}
+
+.foo {
+}

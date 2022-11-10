@@ -20,8 +20,8 @@ export function replaceAnyLink(rule, result, preserve, areaHrefNeedsFixing) {
 				untouchedSelectors.push(selector);
 			}
 		}
-	} catch (_) {
-		rule.warn(result, `Failed to parse selector : ${rule.selector}`);
+	} catch (err) {
+		rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
 		return;
 	}
 
