@@ -1,0 +1,11 @@
+.foo : bar {
+	&.child {
+		order: 1;
+	}
+}
+
+.foo {
+	&.child : bar {
+		order: 3;
+	}
+}
