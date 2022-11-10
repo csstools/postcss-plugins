@@ -1,7 +1,7 @@
-import type { Container, Node, Rule } from 'postcss';
+import type { Container, Node, Result, Rule } from 'postcss';
 import parser from 'postcss-selector-parser';
 
-export default function ampersandToScope(rule: Rule) {
+export default function ampersandToScope(rule: Rule, result: Result) {
 	let parent: Container<Node> = rule.parent;
 
 	while (parent) {
@@ -12,7 +12,13 @@ export default function ampersandToScope(rule: Rule) {
 		parent = parent.parent;
 	}
 
-	const selectorAST = parser().astSync(rule.selector);
+	let selectorAST: parser.Root;
+	try {
+		selectorAST = parser().astSync(rule.selector);
+	} catch (err) {
+		rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
+		return;
+	}
 	if (!selectorAST) {
 		return;
 	}

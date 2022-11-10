@@ -9,7 +9,7 @@ const creator: PluginCreator<never> = () => {
 			walk(rule, result);
 
 			if (rule.selector.trim().includes('&')) {
-				ampersandToScope(rule);
+				ampersandToScope(rule, result);
 			}
 		},
 	};

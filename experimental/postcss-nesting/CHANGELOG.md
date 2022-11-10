@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting Experimental
 
+### Unreleased
+
+- Fix: Do not throw when a selector is invalid, show a warning instead.
+
 ### 1.1.0 (November 3, 2022)
 
 - match Chrome's behavior for pseudo elements.

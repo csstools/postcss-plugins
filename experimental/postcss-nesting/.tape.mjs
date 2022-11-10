@@ -52,6 +52,10 @@ postcssTape(plugin)({
 	'document': {
 		message: 'supports nested @document',
 	},
+	'invalid-selector': {
+		message: 'warns on invalid selectors',
+		warnings: 3
+	},
 	'media': {
 		message: 'supports nested @media',
 	},
