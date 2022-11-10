@@ -49,6 +49,7 @@ html {
 .ccc {
 	--opacity: .5;
 	color: rgba(var(--color), var(--opacity));
+	color: rgba(var(--opacity-rgb), var(--opacity-rgb));
 }
 
 .ddd {
@@ -57,4 +58,5 @@ html {
 	--color-g: 0;
 	--color-b: 0;
 	color: rgba(var(--color-r), var(--color-g), var(--color-b), var(--opacity));
+	color: rgba(var(--opacity-rgb), var(--opacity-rgb), var(--opacity-rgb), var(--opacity-rgb));
 }
