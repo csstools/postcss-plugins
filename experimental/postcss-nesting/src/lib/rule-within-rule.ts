@@ -8,7 +8,13 @@ export default function transformRuleWithinRule(node: Rule, parent: Rule, result
 	shiftNodesBeforeParent(node, parent);
 
 	// update the selectors of the node to be merged with the parent
-	node.selectors = mergeSelectors(node, result, parent.selectors, node.selectors);
+	try {
+		const selectors = mergeSelectors(node, result, parent.selectors, node.selectors);
+		node.selectors = selectors;
+	} catch (err) {
+		node.warn(result, `Failed to transform selectors : "${parent.selector}" / "${node.selector}" with message: "${err.message}"`);
+		return;
+	}
 
 	// merge similar rules back together
 	const areSameRule = (node.type === 'rule' && parent.type === 'rule' && node.selector === parent.selector);

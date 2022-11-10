@@ -1,0 +1,12 @@
+
+	:scope.child {
+		order: 1;
+	}.foo : bar {
+}
+
+&.child : bar {
+		order: 3;
+	}
+
+.foo {
+}
