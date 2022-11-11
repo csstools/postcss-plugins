@@ -1,8 +1,12 @@
 a, b {
 	color: red;
-}:is(a,b) c, :is(a,b) d {
+}
+
+:is(a,b) c, :is(a,b) d {
 		color: white;
-	}:is(e) :is(a,b) {
+	}
+
+:is(e) :is(a,b) {
 		color: yellow;
 	}
 

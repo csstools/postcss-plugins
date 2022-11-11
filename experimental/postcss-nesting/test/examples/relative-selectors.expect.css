@@ -1,7 +1,9 @@
 .parent {
 	color: red;
-}:is(.parent) .child {
+}
+:is(.parent) .child {
 		color: white;
-	}:is(.parent)> .other-child {
+	}
+:is(.parent)> .other-child {
 		color: yellow;
 	}

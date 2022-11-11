@@ -1,8 +1,14 @@
 body > p, body > ul {
 	order: 1;
-}:is(body > p) ~ :is(body > p), :is(body > p) ~ :is(body > ul), :is(body > ul) ~ :is(body > p), :is(body > ul) ~ :is(body > ul) {
+}
+
+
+:is(body > p) ~ :is(body > p), :is(body > p) ~ :is(body > ul), :is(body > ul) ~ :is(body > p), :is(body > ul) ~ :is(body > ul) {
 		order: 2;
-	}:is(body > p) ~ :is(body > p):hover,
+	}
+
+
+:is(body > p) ~ :is(body > p):hover,
 		:is(body > p) ~ :is(body > ul):hover,
 		:is(body > ul) ~ :is(body > p):hover,
 		:is(body > ul) ~ :is(body > ul):hover,
@@ -11,7 +17,10 @@ body > p, body > ul {
 		:is(body > ul) ~ :is(body > p):focus,
 		:is(body > ul) ~ :is(body > ul):focus {
 			order: 3;
-		}:is(body > p) ~ :is(body > p) *:hover,
+		}
+
+
+:is(body > p) ~ :is(body > p) *:hover,
 		:is(body > p) ~ :is(body > ul) *:hover,
 		:is(body > ul) ~ :is(body > p) *:hover,
 		:is(body > ul) ~ :is(body > ul) *:hover,
@@ -20,13 +29,25 @@ body > p, body > ul {
 		:is(body > ul) ~ :is(body > p) *:focus,
 		:is(body > ul) ~ :is(body > ul) *:focus {
 			order: 4;
-		}body > p > *:hover, body > ul > *:hover {
+		}
+
+
+body > p > *:hover, body > ul > *:hover {
 			order: 5;
-		}body > p :is(body > p), body > p :is(body > ul), body > ul :is(body > p), body > ul :is(body > ul) {
+		}
+
+
+body > p :is(body > p), body > p :is(body > ul), body > ul :is(body > p), body > ul :is(body > ul) {
 		order: 6;
-	}body > p:is(body > p), body > p:is(body > ul), body > ul:is(body > p), body > ul:is(body > ul) {
+	}
+
+
+body > p:is(body > p), body > p:is(body > ul), body > ul:is(body > p), body > ul:is(body > ul) {
 		order: 7;
-	}body > p:is(body > p):is(body > p), body > p:is(body > p):is(body > ul), body > p:is(body > ul):is(body > p), body > p:is(body > ul):is(body > ul), body > ul:is(body > p):is(body > p), body > ul:is(body > p):is(body > ul), body > ul:is(body > ul):is(body > p), body > ul:is(body > ul):is(body > ul) {
+	}
+
+
+body > p:is(body > p):is(body > p), body > p:is(body > p):is(body > ul), body > p:is(body > ul):is(body > p), body > p:is(body > ul):is(body > ul), body > ul:is(body > p):is(body > p), body > ul:is(body > p):is(body > ul), body > ul:is(body > ul):is(body > p), body > ul:is(body > ul):is(body > ul) {
 		order: 8;
 	}
 

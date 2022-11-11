@@ -1,7 +1,9 @@
 
 	&.child {
 		order: 1;
-	}.foo : bar {
+	}
+
+.foo : bar {
 }
 
 @nest &.child {

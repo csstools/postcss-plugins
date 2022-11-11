@@ -1,6 +1,8 @@
 .js-has-pseudo [csstools-has-1m-2w-2p-37-14-1m-2u-33-2r-39-37-15] {
 	order: 1;
-}:has(:focus) {
+}
+
+:has(:focus) {
 	order: 1;
 }
 

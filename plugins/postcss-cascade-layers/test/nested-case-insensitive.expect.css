@@ -11,11 +11,17 @@
 
 	target {
 			color: yellow;
-		}target:not(#\#) {
+		}
+
+target:not(#\#) {
 		color: red;
-	}p:not(#\#) {
+	}
+
+p:not(#\#) {
 		color: blue;
-	}i:not(#\#) {
+	}
+
+i:not(#\#) {
 		color: red;
 	}
 

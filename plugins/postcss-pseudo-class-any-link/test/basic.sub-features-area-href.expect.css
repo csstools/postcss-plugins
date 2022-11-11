@@ -1,6 +1,8 @@
 :link, :visited, area[href] {
 	order: 1;
-}:any-link {
+}
+
+:any-link {
 	order: 1;
 }
 

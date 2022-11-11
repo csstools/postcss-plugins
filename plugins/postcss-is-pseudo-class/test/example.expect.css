@@ -1,9 +1,12 @@
 input:hover {
 	order: 1;
-}input:focus {
+}
+input:focus {
 	order: 1;
-}button:hover {
+}
+button:hover {
 	order: 1;
-}button:focus {
+}
+button:focus {
 	order: 1;
 }

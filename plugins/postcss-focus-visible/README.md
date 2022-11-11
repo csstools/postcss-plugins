@@ -22,7 +22,8 @@ the browser's polyfill as well.
 
 :focus:not(.focus-visible).js-focus-visible, .js-focus-visible :focus:not(.focus-visible) {
 	outline: none;
-}:focus:not(:focus-visible) {
+}
+:focus:not(:focus-visible) {
 	outline: none;
 }
 ```
@@ -123,7 +124,8 @@ postcssFocusVisible({ disablePolyfillReadyClass: true })
 
 :focus:not(.focus-visible), :focus:not(.focus-visible) {
 	outline: none;
-}:focus:not(:focus-visible) {
+}
+:focus:not(:focus-visible) {
 	outline: none;
 }
 ```

@@ -1,6 +1,8 @@
 a {
 	order: 1;
-}@document url("https://www.example.com/") {a {
+}
+@document url("https://www.example.com/") {
+	a {
 		order: 2;
 }
 	}

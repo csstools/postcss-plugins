@@ -1,4 +1,5 @@
 
 	:is(a) b {
 		color: red;
-	}:is(:is(a) .in).deep { color: blue; }
+	}
+:is(:is(a) .in).deep { color: blue; }

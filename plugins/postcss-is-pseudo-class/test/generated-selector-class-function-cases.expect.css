@@ -1,12 +1,20 @@
 .some.some {
 	order: 0;
-}.some.other {
+}
+
+.some.other {
 	order: 0;
-}.other.some {
+}
+
+.other.some {
 	order: 0;
-}.other.other {
+}
+
+.other.other {
 	order: 0;
-}:is(.some, .other):is(.some, .other) {
+}
+
+:is(.some, .other):is(.some, .other) {
 	order: 0;
 }
 

@@ -1,48 +1,90 @@
 a {
 	order: 1;
-}@media screen, print {a {
+}
+
+@media screen, print {
+
+a {
 		order: 2;
 }
-	}@media screen and (min-width: 480px), print and (min-width: 480px) {a {
+	}
+
+@media screen and (min-width: 480px), print and (min-width: 480px) {
+
+a {
 			order: 3;
 }
-		}@media screen, print {a {
+		}
+
+@media screen, print {
+
+a {
 
 		order: 4;
 }
-	}a {
+	}
+
+a {
 
 	order: 5;
 	order: 6;
-}a b {
+}
+
+a b {
 		order: 7;
-	}a b c {
+	}
+
+a b c {
 			order: 8;
-		}a b {
+		}
+
+a b {
 
 		order: 9;
-	}a {
+	}
+
+a {
 
 	order: 10;
-}body a {
+}
+
+body a {
 		order: 11;
-}html body a {
+}
+
+html body a {
 			order: 12;
-}body a {
+}
+
+body a {
 
 		order: 13;
-}a {
+}
+
+a {
 
 	order: 14;
-}@media screen {a {
+}
+
+@media screen {
+
+a {
 		order: 15;
 }
-	}@media screen and (min-width: 480px) {a {
+	}
+
+@media screen and (min-width: 480px) {
+
+a {
 			order: 16;
 }
-		}body:is(a) {
+		}
+
+body:is(a) {
 		order: 17;
-}html body:is(a) {
+}
+
+html body:is(a) {
 		order: 18;
 }
 

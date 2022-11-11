@@ -1,3 +1,5 @@
+
+
 .foo::before, ::before:focus {
 		order: 1;
 }

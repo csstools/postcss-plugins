@@ -61,7 +61,8 @@ postcssScopePseudoClass({ preserve: true })
 
 :root {
 	color: green;
-}:scope {
+}
+:scope {
 	color: green;
 }
 ```

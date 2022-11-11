@@ -1,20 +1,41 @@
 body > p, body > ul {
 	order: 1;
-}:is(body > p,body > ul) ~ :is(body > p,body > ul) {
+}
+
+
+:is(body > p,body > ul) ~ :is(body > p,body > ul) {
 		order: 2;
-	}:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)):hover,
+	}
+
+
+:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)):hover,
 		:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)):focus {
 			order: 3;
-		}:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)) *:hover,
+		}
+
+
+:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)) *:hover,
 		:is(:is(body > p,body > ul) ~ :is(body > p,body > ul)) *:focus {
 			order: 4;
-		}:is(:is(body > p,body > ul)) > *:hover {
+		}
+
+
+:is(:is(body > p,body > ul)) > *:hover {
 			order: 5;
-		}:is(body > p,body > ul) :is(body > p,body > ul) {
+		}
+
+
+:is(body > p,body > ul) :is(body > p,body > ul) {
 		order: 6;
-	}:is(body > p,body > ul):is(body > p,body > ul) {
+	}
+
+
+:is(body > p,body > ul):is(body > p,body > ul) {
 		order: 7;
-	}:is(body > p,body > ul):is(body > p,body > ul):is(body > p,body > ul) {
+	}
+
+
+:is(body > p,body > ul):is(body > p,body > ul):is(body > p,body > ul) {
 		order: 8;
 	}
 

@@ -1,12 +1,20 @@
 input[active]:hover > b {
 	order: 1;
-}input[active]:focus > b {
+}
+
+input[active]:focus > b {
 	order: 1;
-}button[active]:hover > b {
+}
+
+button[active]:hover > b {
 	order: 1;
-}button[active]:focus > b {
+}
+
+button[active]:focus > b {
 	order: 1;
-}[active]:is(input, button):is(:hover, :focus) > b {
+}
+
+[active]:is(input, button):is(:hover, :focus) > b {
 	order: 1;
 }
 

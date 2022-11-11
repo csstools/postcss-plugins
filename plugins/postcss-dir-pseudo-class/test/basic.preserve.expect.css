@@ -1,6 +1,8 @@
 [dir="ltr"] {
 	order: 0;
-}:dir(ltr) {
+}
+
+:dir(ltr) {
 	order: 0;
 }
 

@@ -10,10 +10,14 @@
 			from { margin-left: 700; }
 			to { margin-left: -100%; }
 		}
-	}@keyframes slide-left {
+	}
+
+@keyframes slide-left {
 		from { translate: 0; }
 		to { translate: -100% 0; }
-	}@container (min-width: 700px) {
+	}
+
+@container (min-width: 700px) {
 
 		@keyframes slide-left {
 			from { translate: 700; }

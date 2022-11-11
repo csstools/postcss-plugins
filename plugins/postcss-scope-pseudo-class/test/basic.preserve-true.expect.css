@@ -1,6 +1,8 @@
 :root {
 	order: 1;
-}:scope {
+}
+
+:scope {
 	order: 1;
 }
 

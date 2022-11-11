@@ -3,7 +3,11 @@
 		order: 1;
 	}
 }
-}@media not all and (max-color:2147477350) {@media screen and (color:2147477350) {
+}
+
+@media not all and (max-color:2147477350) {
+
+@media screen and (color:2147477350) {
 	.true {
 		order: 1;
 	}

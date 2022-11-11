@@ -13,7 +13,8 @@
 
 .js-has-pseudo [csstools-has-1a-38-2x-38-30-2t-1m-2w-2p-37-14-17-w-34-15]:not(does-not-exist) {
 	margin-bottom: 1.5rem;
-}.title:has(+ p) {
+}
+.title:has(+ p) {
 	margin-bottom: 1.5rem;
 }
 ```
@@ -278,7 +279,8 @@ replacing them with an alternative `[csstools-has-]` selector.
 
 .js-has-pseudo [csstools-has-1a-38-2x-38-30-2t-1m-2w-2p-37-14-17-w-34-15]:not(does-not-exist) {
 	margin-bottom: 1.5rem;
-}.title:has(+ p) {
+}
+.title:has(+ p) {
 	margin-bottom: 1.5rem;
 }
 ```

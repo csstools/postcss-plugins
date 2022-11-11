@@ -14,7 +14,8 @@ following the [Selectors Level 4 specification].
 
 .my-form-field[focus-within].js-focus-within label, .js-focus-within .my-form-field[focus-within] label {
 	background-color: yellow;
-}.my-form-field:focus-within label {
+}
+.my-form-field:focus-within label {
 	background-color: yellow;
 }
 ```
@@ -94,7 +95,8 @@ postcssFocusWithin({ replaceWith: '.focus-within' });
 
 .my-form-field.focus-within.js-focus-within label, .js-focus-within .my-form-field.focus-within label {
 	background-color: yellow;
-}.my-form-field:focus-within label {
+}
+.my-form-field:focus-within label {
 	background-color: yellow;
 }
 ```
@@ -123,7 +125,8 @@ postcssFocusWithin({ disablePolyfillReadyClass: true })
 
 .my-form-field[focus-within] label, .my-form-field[focus-within] label {
 	background-color: yellow;
-}.my-form-field:focus-within label {
+}
+.my-form-field:focus-within label {
 	background-color: yellow;
 }
 ```
