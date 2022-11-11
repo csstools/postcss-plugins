@@ -1,0 +1,234 @@
+import { ComponentValue, FunctionNode, isFunctionNode, isTokenNode, SimpleBlockNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
+import { NumberType, TokenType } from '@csstools/css-tokenizer';
+import { matchesRatioExactly, MediaFeatureValue } from '@csstools/media-query-list-parser';
+
+const precision = 100000;
+const nearInfinity = 2147483647;
+
+export function transformMediaFeatureValue(value: MediaFeatureValue) {
+	if (Array.isArray(value.value) && matchesRatioExactly(value.value)) {
+		const nodes: Array<ComponentValue> = [];
+
+		for (let i = 0; i < value.value.length; i++) {
+			const node = value.value[i];
+			if (isTokenNode(node) && node.value[0] === TokenType.Number) {
+				nodes.push(node);
+				continue;
+			}
+
+			if (isFunctionNode(node) && node.nameTokenValue().toLowerCase() === 'calc') {
+				nodes.push(node);
+				continue;
+			}
+		}
+
+		if (nodes.length !== 2) {
+			return;
+		}
+
+		const firstValue = nodes[0];
+		const firstValueIndex = value.value.indexOf(firstValue);
+		const secondValue = nodes[1];
+		const secondValueIndex = value.value.indexOf(secondValue);
+
+		// Ratio with division by 0
+		// "<any> / 0" -> "2147483647 / 1" (near infinity)
+		if (isTokenNode(secondValue) && secondValue.value[0] === TokenType.Number && secondValue.value[4].value === 0) {
+			value.value.splice(
+				firstValueIndex,
+				1,
+				new TokenNode(
+					[TokenType.Number, nearInfinity.toString(), -1, -1, { value: nearInfinity, type: NumberType.Integer }],
+				),
+			);
+
+			value.value.splice(
+				secondValueIndex,
+				1,
+				new TokenNode(
+					[TokenType.Number, '1', -1, -1, { value: 1, type: NumberType.Integer }],
+				),
+			);
+
+			return;
+		}
+
+		// Ratio with only integers
+		// "1 / 1"
+		if (
+			(isTokenNode(firstValue) && firstValue.value[0] === TokenType.Number && firstValue.value[4].type === NumberType.Integer) &&
+			(isTokenNode(secondValue) && secondValue.value[0] === TokenType.Number && secondValue.value[4].type === NumberType.Integer)
+		) {
+			return;
+		}
+
+		let firstValueModified: ComponentValue|null;
+		let secondValueModified: ComponentValue|null;
+
+		// Calc
+		{
+			if (isFunctionNode(firstValue) && firstValue.nameTokenValue().toLowerCase() === 'calc') {
+				// Avoid infinite loops
+				if (firstValue.toString().includes(precision.toString())) {
+					return;
+				}
+
+				firstValueModified = modifyCalc(firstValue);
+			}
+
+			if (isFunctionNode(secondValue) && secondValue.nameTokenValue().toLowerCase() === 'calc') {
+				// Avoid infinite loops
+				if (secondValue.toString().includes(precision.toString())) {
+					return;
+				}
+
+				secondValueModified = modifyCalc(secondValue);
+			}
+		}
+
+		// Numbers
+		{
+			if (isTokenNode(firstValue) && firstValue.value[0] === TokenType.Number) {
+				// Avoid infinite loops
+				if (firstValue.toString().includes(precision.toString())) {
+					return;
+				}
+
+				const token = firstValue.value;
+				firstValueModified = new TokenNode(
+					[TokenType.Number, Math.round(token[4].value * precision).toString(), -1, -1, { value: Math.round(token[4].value * precision), type: NumberType.Integer }],
+				);
+			}
+
+			if (isTokenNode(secondValue) && secondValue.value[0] === TokenType.Number) {
+				// Avoid infinite loops
+				if (secondValue.toString().includes(precision.toString())) {
+					return;
+				}
+
+				const token = secondValue.value;
+				secondValueModified = new TokenNode(
+					[TokenType.Number, Math.round(token[4].value * precision).toString(), -1, -1, { value: Math.round(token[4].value * precision), type: NumberType.Integer }],
+				);
+			}
+		}
+
+		if (firstValueModified && secondValueModified) {
+			value.value.splice(
+				firstValueIndex,
+				1,
+				firstValueModified,
+			);
+
+			value.value.splice(
+				secondValueIndex,
+				1,
+				secondValueModified,
+			);
+
+			return;
+		}
+
+		return;
+	}
+
+	const componentValues = Array.isArray(value.value) ? value.value : [value.value];
+	for (let i = 0; i < componentValues.length; i++) {
+		const componentValue = componentValues[i];
+
+		if (isTokenNode(componentValue)) {
+			const token = componentValue.value;
+			if (token[0] !== TokenType.Number) {
+				return;
+			}
+
+			// Single integer as <ratio>
+			// "1" -> "1 / 1"
+			if (token[4].type === NumberType.Integer) {
+				componentValues.splice(
+					i + 1,
+					0,
+					new TokenNode(
+						[TokenType.Delim, '/', -1, -1, { value: '/' }],
+					),
+					new TokenNode(
+						[TokenType.Number, '1', -1, -1, { value: 1, type: NumberType.Integer }],
+					),
+				);
+
+				value.value = componentValues;
+				return;
+			}
+
+			// Single float as <ratio>
+			// "0.001" -> "1000 / 1000000"
+			if (token[4].type === NumberType.Number) {
+				componentValues.splice(
+					i,
+					1,
+					new TokenNode(
+						[TokenType.Number, Math.round(token[4].value * precision).toString(), -1, -1, { value: Math.round(token[4].value * precision), type: NumberType.Integer }],
+					),
+					new TokenNode(
+						[TokenType.Delim, '/', -1, -1, { value: '/' }],
+					),
+					new TokenNode(
+						[TokenType.Number, precision.toString(), -1, -1, { value: precision, type: NumberType.Integer }],
+					),
+				);
+
+				value.value = componentValues;
+				return;
+			}
+
+			return;
+		}
+
+		// Single calc as <ratio>
+		// "calc(5 / 3)" -> "calc((5 / 3) * 1000000)/1000000"
+		if (isFunctionNode(componentValue) && componentValue.nameTokenValue().toLowerCase() === 'calc') {
+			componentValues.splice(
+				i,
+				1,
+				modifyCalc(componentValue),
+				new TokenNode(
+					[TokenType.Delim, '/', -1, -1, { value: '/' }],
+				),
+				new TokenNode(
+					[TokenType.Number, precision.toString(), -1, -1, { value: precision, type: NumberType.Integer }],
+				),
+			);
+
+			value.value = componentValues;
+			return;
+		}
+	}
+
+	return;
+}
+
+function modifyCalc(focus: FunctionNode) {
+	return new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc(' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		[
+			new SimpleBlockNode(
+				[TokenType.OpenParen, '(', -1, -1, undefined],
+				[TokenType.CloseParen, ')', -1, -1, undefined],
+				focus.value,
+			),
+			new WhitespaceNode(
+				[[TokenType.Whitespace, ' ', -1, -1, undefined]],
+			),
+			new TokenNode(
+				[TokenType.Delim, '*', -1, -1, { value: '*' }],
+			),
+			new WhitespaceNode(
+				[[TokenType.Whitespace, ' ', -1, -1, undefined]],
+			),
+			new TokenNode(
+				[TokenType.Number, precision.toString(), -1, -1, { value: precision, type: NumberType.Integer }],
+			),
+		],
+	);
+}
