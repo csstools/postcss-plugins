@@ -248,6 +248,14 @@ function modifyCalc(focus: FunctionNode) {
 
 // https://stackoverflow.com/questions/17445231/js-how-to-find-the-greatest-common-divisor
 function greatestCommonDivisor(a: number, b: number) {
+	if (Number.isNaN(a) || Number.isNaN(b)) {
+		throw new Error('Unexpected \'NaN\' when calculating the greatest common divisor.');
+	}
+
+	if (!Number.isFinite(a) || !Number.isFinite(b)) {
+		throw new Error('Unexpected \'Infinite\' value when calculating the greatest common divisor.');
+	}
+
 	if (b > a) {
 		[a, b] = [b, a];
 	}
