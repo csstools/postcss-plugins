@@ -8,22 +8,22 @@
 @media (min-aspect-ratio: 1/100) {}
 
 /* integer / number */
-@media (min-aspect-ratio: 1/0.01),(min-aspect-ratio: 100000/1000) {}
+@media (min-aspect-ratio: 1/0.01),(min-aspect-ratio: 100/1) {}
 
 /* integer / calc */
 @media (min-aspect-ratio: 1/calc(0.01)),(min-aspect-ratio: 100000/calc((0.01) * 100000)) {}
 
 
 /* number */
-@media (min-aspect-ratio: 1.77),(min-aspect-ratio: 177000/100000) {}
+@media (min-aspect-ratio: 1.77),(min-aspect-ratio: 177/100) {}
 /* number but with comments */
-@media (min-aspect-ratio: 0.0151987/* comment : 2 */),(min-aspect-ratio: 1520/100000/* comment : 2 */) {}
+@media (min-aspect-ratio: 0.0151987/* comment : 2 */),(min-aspect-ratio: 19/1250/* comment : 2 */) {}
 
 /* number / number */
-@media (min-aspect-ratio: 1.2541 / 543.324),(min-aspect-ratio: 125410 / 54332400) {}
+@media (min-aspect-ratio: 1.2541 / 543.324),(min-aspect-ratio: 12541 / 5433240) {}
 
 /* number / integer */
-@media (min-aspect-ratio: 0.01/1),(min-aspect-ratio: 1000/100000) {}
+@media (min-aspect-ratio: 0.01/1),(min-aspect-ratio: 1/100) {}
 
 /* number / calc */
 @media (min-aspect-ratio: 0.01/calc(1)),(min-aspect-ratio: 1000/calc((1) * 100000)) {}

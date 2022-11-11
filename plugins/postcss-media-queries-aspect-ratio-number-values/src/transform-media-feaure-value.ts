@@ -88,28 +88,38 @@ export function transformMediaFeatureValue(value: MediaFeatureValue) {
 
 		// Numbers
 		{
-			if (isTokenNode(firstValue) && firstValue.value[0] === TokenType.Number) {
-				// Avoid infinite loops
-				if (firstValue.toString().includes(precision.toString())) {
-					return;
-				}
+			if (
+				(isTokenNode(firstValue) && firstValue.value[0] === TokenType.Number) &&
+				(isTokenNode(secondValue) && secondValue.value[0] === TokenType.Number)
+			) {
+				const firstToken = firstValue.value;
+				const secondToken = secondValue.value;
 
-				const token = firstValue.value;
+				const firstNumber = Math.round(firstToken[4].value * precision);
+				const secondNumber = Math.round(secondToken[4].value * precision);
+				const gcd = greatestCommonDivisor(firstNumber, secondNumber);
+
 				firstValueModified = new TokenNode(
-					[TokenType.Number, Math.round(token[4].value * precision).toString(), -1, -1, { value: Math.round(token[4].value * precision), type: NumberType.Integer }],
+					[TokenType.Number, Math.round(firstNumber / gcd).toString(), -1, -1, { value: Math.round(firstNumber / gcd), type: NumberType.Integer }],
 				);
-			}
 
-			if (isTokenNode(secondValue) && secondValue.value[0] === TokenType.Number) {
-				// Avoid infinite loops
-				if (secondValue.toString().includes(precision.toString())) {
-					return;
+				secondValueModified = new TokenNode(
+					[TokenType.Number, Math.round(secondNumber / gcd).toString(), -1, -1, { value: Math.round(secondNumber / gcd), type: NumberType.Integer }],
+				);
+			} else {
+				if (isTokenNode(firstValue) && firstValue.value[0] === TokenType.Number) {
+					const token = firstValue.value;
+					firstValueModified = new TokenNode(
+						[TokenType.Number, Math.round(token[4].value * precision).toString(), -1, -1, { value: Math.round(token[4].value * precision), type: NumberType.Integer }],
+					);
 				}
 
-				const token = secondValue.value;
-				secondValueModified = new TokenNode(
-					[TokenType.Number, Math.round(token[4].value * precision).toString(), -1, -1, { value: Math.round(token[4].value * precision), type: NumberType.Integer }],
-				);
+				if (isTokenNode(secondValue) && secondValue.value[0] === TokenType.Number) {
+					const token = secondValue.value;
+					secondValueModified = new TokenNode(
+						[TokenType.Number, Math.round(token[4].value * precision).toString(), -1, -1, { value: Math.round(token[4].value * precision), type: NumberType.Integer }],
+					);
+				}
 			}
 		}
 
@@ -163,17 +173,20 @@ export function transformMediaFeatureValue(value: MediaFeatureValue) {
 			// Single float as <ratio>
 			// "0.001" -> "1000 / 1000000"
 			if (token[4].type === NumberType.Number) {
+				const firstNumber = Math.round(token[4].value * precision);
+				const gcd = greatestCommonDivisor(firstNumber, precision);
+
 				componentValues.splice(
 					i,
 					1,
 					new TokenNode(
-						[TokenType.Number, Math.round(token[4].value * precision).toString(), -1, -1, { value: Math.round(token[4].value * precision), type: NumberType.Integer }],
+						[TokenType.Number, Math.round(firstNumber / gcd).toString(), -1, -1, { value: Math.round(firstNumber / gcd), type: NumberType.Integer }],
 					),
 					new TokenNode(
 						[TokenType.Delim, '/', -1, -1, { value: '/' }],
 					),
 					new TokenNode(
-						[TokenType.Number, precision.toString(), -1, -1, { value: precision, type: NumberType.Integer }],
+						[TokenType.Number, Math.round(precision / gcd).toString(), -1, -1, { value: Math.round(precision / gcd), type: NumberType.Integer }],
 					),
 				);
 
@@ -231,4 +244,26 @@ function modifyCalc(focus: FunctionNode) {
 			),
 		],
 	);
+}
+
+// https://stackoverflow.com/questions/17445231/js-how-to-find-the-greatest-common-divisor
+function greatestCommonDivisor(a: number, b: number) {
+	if (b > a) {
+		[a, b] = [b, a];
+	}
+
+	// eslint-disable-next-line no-constant-condition
+	while (true) {
+		if (b == 0) {
+			return a;
+		}
+
+		a %= b;
+
+		if (a == 0) {
+			return b;
+		}
+
+		b %= a;
+	}
 }

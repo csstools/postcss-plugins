@@ -9,7 +9,7 @@
 
 /* becomes */
 
-@media (min-aspect-ratio: 177000/100000) {}
+@media (min-aspect-ratio: 177/100) {}
 ```
 
 ## Usage
@@ -53,7 +53,7 @@ postcssMediaQueriesAspectRatioNumberValues({ preserve: true })
 
 /* becomes */
 
-@media (min-aspect-ratio: 1.77),(min-aspect-ratio: 177000/100000) {}
+@media (min-aspect-ratio: 1.77),(min-aspect-ratio: 177/100) {}
 ```
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
