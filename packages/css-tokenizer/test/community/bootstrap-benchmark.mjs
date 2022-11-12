@@ -2,7 +2,7 @@ import { tokenizer, TokenType } from '@csstools/css-tokenizer';
 import postcssTokenizer from 'postcss/lib/tokenize';
 import fs from 'fs';
 
-{
+function csstoolsLargeSource() {
 	const source = fs.readFileSync('./test/community/bootstrap.css').toString();
 
 	const results = [];
@@ -55,7 +55,83 @@ import fs from 'fs';
 	console.log('deviation', results[949] - results[49]);
 }
 
-{
+function csstoolsSmallSource() {
+	const source = `@media (min-width: 768px) and (max-width: 991px) {
+	.visible-sm {
+		display: block !important;
+	}
+
+	table.visible-sm {
+		display: table !important;
+	}
+
+	tr.visible-sm {
+		display: table-row !important;
+	}
+
+	th.visible-sm,
+	td.visible-sm {
+		display: table-cell !important;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.visible-sm-block {
+		display: block !important;
+	}
+}`;
+
+	const results = [];
+	let tokenStreamLength = 0;
+
+	for (let i = 0; i < 1000; i++) {
+		tokenStreamLength = 0;
+
+		{
+			const t = tokenizer(
+				{
+					css: source,
+				},
+				{
+					onParseError: (err) => {
+						throw new Error(JSON.stringify(err));
+					},
+				},
+			);
+
+			const start = performance.now();
+
+			// eslint-disable-next-line no-constant-condition
+			while (true) {
+				const token = t.nextToken();
+				if (token[0] === TokenType.EOF) {
+					break;
+				}
+
+				tokenStreamLength++;
+			}
+
+			const end = performance.now();
+			results.push(end - start);
+		}
+	}
+
+	results.sort((a, b) => {
+		return a - b;
+	});
+
+	console.log('-------------- csstools tokenizer -------------');
+	console.log('tokens', tokenStreamLength);
+	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
+	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
+	console.log('-----------------------------------------------');
+	console.log('95th', results[949]);
+	console.log('90th', results[899]);
+	console.log('50th', results[499]);
+	console.log('deviation', results[949] - results[49]);
+}
+
+function postcssLargeSource() {
 	const source = fs.readFileSync('./test/community/bootstrap.css').toString();
 
 	const results = [];
@@ -101,6 +177,81 @@ import fs from 'fs';
 	console.log('50th', results[499]);
 	console.log('deviation', results[949] - results[49]);
 }
+
+function postcssSmallSource() {
+	const source = `@media (min-width: 768px) and (max-width: 991px) {
+	.visible-sm {
+		display: block !important;
+	}
+
+	table.visible-sm {
+		display: table !important;
+	}
+
+	tr.visible-sm {
+		display: table-row !important;
+	}
+
+	th.visible-sm,
+	td.visible-sm {
+		display: table-cell !important;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.visible-sm-block {
+		display: block !important;
+	}
+}`;
+
+	const results = [];
+	let tokenStreamLength = 0;
+
+	for (let i = 0; i < 1000; i++) {
+		tokenStreamLength = 0;
+		{
+			const t = postcssTokenizer(
+				{
+					css: source,
+				},
+			);
+
+			const start = performance.now();
+
+			// eslint-disable-next-line no-constant-condition
+			while (true) {
+				const token = t.nextToken();
+				if (!token) {
+					break;
+				}
+
+				tokenStreamLength++;
+			}
+
+			const end = performance.now();
+			results.push(end - start);
+		}
+	}
+
+	results.sort((a, b) => {
+		return a - b;
+	});
+
+	console.log('-------------- postcss tokenizer -------------');
+	console.log('tokens', tokenStreamLength);
+	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
+	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
+	console.log('----------------------------------------------');
+	console.log('95th', results[949]);
+	console.log('90th', results[899]);
+	console.log('50th', results[499]);
+	console.log('deviation', results[949] - results[49]);
+}
+
+csstoolsLargeSource();
+csstoolsSmallSource();
+postcssLargeSource();
+postcssSmallSource();
 
 // Last result:
 // -------------- csstools tokenizer -------------
