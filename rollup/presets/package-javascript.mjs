@@ -19,7 +19,9 @@ export function packageJavascript() {
 					presets: packageBabelPreset,
 				}),
 				terser({
-					compress: false, // https://github.com/terser/terser/issues/1305
+					compress: {
+						reduce_funcs: false, // https://github.com/terser/terser/issues/1305
+					},
 					keep_classnames: true,
 					keep_fnames: true,
 				}),
