@@ -22,7 +22,9 @@ export function packageTypescript() {
 					presets: packageBabelPreset,
 				}),
 				terser({
+					compress: false,
 					keep_classnames: true,
+					keep_fnames: true,
 				}),
 			],
 		},
