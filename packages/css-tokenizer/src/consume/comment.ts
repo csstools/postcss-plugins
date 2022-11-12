@@ -41,10 +41,12 @@ export function consumeComment(ctx: Context, reader: CodePointReader): TokenComm
 		}
 	}
 
+	const representation = reader.representation();
 	return [
 		TokenType.Comment,
 		reader.representationString(),
-		...reader.representation(),
+		representation[0],
+		representation[1],
 		undefined,
 	];
 }

@@ -29,12 +29,12 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 				],
 			});
 
-			return [TokenType.String, reader.representationString(), ...representation, { value: result }];
+			return [TokenType.String, reader.representationString(), representation[0], representation[1], { value: result }];
 		}
 
 		if (isNewLine(next)) {
+			const representation = reader.representation();
 			{
-				const representation = reader.representation();
 				ctx.onParseError({
 					message: 'Unexpected newline while consuming a string token.',
 					start: representation[0],
@@ -47,11 +47,12 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 			}
 
 			reader.unreadCodePoint();
-			return [TokenType.BadString, reader.representationString(), ...reader.representation(), undefined];
+			return [TokenType.BadString, reader.representationString(), representation[0], representation[1], undefined];
 		}
 
 		if (next === first) {
-			return [TokenType.String, reader.representationString(), ...reader.representation(), { value: result }];
+			const representation = reader.representation();
+			return [TokenType.String, reader.representationString(), representation[0], representation[1], { value: result }];
 		}
 
 		if (next === REVERSE_SOLIDUS) {

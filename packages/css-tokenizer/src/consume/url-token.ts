@@ -31,7 +31,8 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			return [
 				TokenType.URL,
 				reader.representationString(),
-				...representation,
+				representation[0],
+				representation[1],
 				{
 					value: string,
 				},
@@ -40,10 +41,12 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 
 		if (peeked === RIGHT_PARENTHESIS) {
 			reader.readCodePoint();
+			const representation = reader.representation();
 			return [
 				TokenType.URL,
 				reader.representationString(),
-				...reader.representation(),
+				representation[0],
+				representation[1],
 				{
 					value: string,
 				},
@@ -69,7 +72,8 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 				return [
 					TokenType.URL,
 					reader.representationString(),
-					...representation,
+					representation[0],
+					representation[1],
 					{
 						value: string,
 					},
@@ -78,10 +82,12 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 
 			if (peeked2 === RIGHT_PARENTHESIS) {
 				reader.readCodePoint();
+				const representation = reader.representation();
 				return [
 					TokenType.URL,
 					reader.representationString(),
-					...reader.representation(),
+					representation[0],
+					representation[1],
 					{
 						value: string,
 					},
@@ -89,10 +95,12 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			}
 
 			consumeBadURL(ctx, reader);
+			const representation = reader.representation();
 			return [
 				TokenType.BadURL,
 				reader.representationString(),
-				...reader.representation(),
+				representation[0],
+				representation[1],
 				undefined,
 			];
 		}
@@ -114,7 +122,8 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			return [
 				TokenType.BadURL,
 				reader.representationString(),
-				...representation,
+				representation[0],
+				representation[1],
 				undefined,
 			];
 		}
@@ -142,7 +151,8 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			return [
 				TokenType.BadURL,
 				reader.representationString(),
-				...representation,
+				representation[0],
+				representation[1],
 				undefined,
 			];
 		}

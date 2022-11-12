@@ -24,10 +24,12 @@ export function consumeHashToken(ctx: Context, reader: CodePointReader): TokenDe
 		}
 
 		const identSequence = consumeIdentSequence(ctx, reader);
+		const representation = reader.representation();
 		return [
 			TokenType.Hash,
 			reader.representationString(),
-			...reader.representation(),
+			representation[0],
+			representation[1],
 			{
 				value: codePointsToString(identSequence),
 				type: hashType,
@@ -35,10 +37,12 @@ export function consumeHashToken(ctx: Context, reader: CodePointReader): TokenDe
 		];
 	}
 
+	const representation = reader.representation();
 	return [
 		TokenType.Delim,
 		reader.representationString(),
-		...reader.representation(),
+		representation[0],
+		representation[1],
 		{
 			value: '#',
 		},

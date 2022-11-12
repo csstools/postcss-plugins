@@ -36,10 +36,12 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 						reader.unreadCodePoint();
 					}
 
+					const representation = reader.representation();
 					return [
 						TokenType.Function,
 						reader.representationString(),
-						...reader.representation(),
+						representation[0],
+						representation[1],
 						{
 							value: codePointsToString(codePoints),
 						},
@@ -59,20 +61,24 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 
 	if (peeked === LEFT_PARENTHESIS) {
 		reader.readCodePoint();
+		const representation = reader.representation();
 		return [
 			TokenType.Function,
 			reader.representationString(),
-			...reader.representation(),
+			representation[0],
+			representation[1],
 			{
 				value: codePointsToString(codePoints),
 			},
 		];
 	}
 
+	const representation = reader.representation();
 	return [
 		TokenType.Ident,
 		reader.representationString(),
-		...reader.representation(),
+		representation[0],
+		representation[1],
 		{
 			value: codePointsToString(codePoints),
 		},
