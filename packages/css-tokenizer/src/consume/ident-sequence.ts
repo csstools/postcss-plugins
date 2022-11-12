@@ -1,4 +1,5 @@
 import { checkIfTwoCodePointsAreAValidEscape } from '../checks/two-code-points-are-valid-escape';
+import { REVERSE_SOLIDUS } from '../code-points/code-points';
 import { isIdentCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
@@ -21,7 +22,7 @@ export function consumeIdentSequence(ctx: Context, reader: CodePointReader): Arr
 			continue;
 		}
 
-		if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
+		if (peeked === REVERSE_SOLIDUS && checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
 			reader.readCodePoint();
 			result.push(consumeEscapedCodePoint(ctx, reader));
 			continue;

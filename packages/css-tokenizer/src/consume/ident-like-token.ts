@@ -13,8 +13,8 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 	const codePoints = consumeIdentSequence(ctx, reader);
 	const peeked = reader.peekOneCodePoint();
 
-	if (checkIfCodePointsMatchURLIdent(ctx, codePoints)) {
-		if (peeked === LEFT_PARENTHESIS) {
+	if (peeked === LEFT_PARENTHESIS) {
+		if (checkIfCodePointsMatchURLIdent(ctx, codePoints)) {
 			reader.readCodePoint();
 
 			let read = 0;
@@ -57,9 +57,7 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 
 			return consumeUrlToken(ctx, reader);
 		}
-	}
 
-	if (peeked === LEFT_PARENTHESIS) {
 		reader.readCodePoint();
 		const representation = reader.representation();
 		return [
