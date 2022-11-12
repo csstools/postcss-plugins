@@ -1,4 +1,5 @@
 import { FULL_STOP, HYPHEN_MINUS, LATIN_CAPITAL_LETTER_E, LATIN_SMALL_LETTER_E, PLUS_SIGN } from '../code-points/code-points';
+import { codePointsToString } from '../code-points/code-points-to-string';
 import { isDigitCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
@@ -20,7 +21,10 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 		}
 
 		// 3. While the next input code point is a digit, consume it and append it to repr.
-		repr.push(...consumeDigits(reader));
+		const newPart = consumeDigits(reader);
+		for (let i = 0; i < newPart.length; i++) {
+			repr.push(newPart[i]);
+		}
 	}
 
 	{
@@ -32,13 +36,17 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 			reader.readCodePoint();
 
 			// 4.2. Append them to repr.
-			repr.push(...peeked);
+			repr.push(peeked[0]);
+			repr.push(peeked[1]);
 
 			// 4.3. Set type to "number".
 			type = NumberType.Number;
 
 			// 4.4. While the next input code point is a digit, consume it and append it to repr.
-			repr.push(...consumeDigits(reader));
+			const newPart = consumeDigits(reader);
+			for (let i = 0; i < newPart.length; i++) {
+				repr.push(newPart[i]);
+			}
 		}
 	}
 
@@ -56,13 +64,17 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 			reader.readCodePoint();
 
 			// 5.2. Append them to repr.
-			repr.push(...peeked);
+			repr.push(peeked[0]);
+			repr.push(peeked[1]);
 
 			// 5.3. Set type to "number".
 			type = NumberType.Number;
 
 			// 5.4. While the next input code point is a digit, consume it and append it to repr.
-			repr.push(...consumeDigits(reader));
+			const newPart = consumeDigits(reader);
+			for (let i = 0; i < newPart.length; i++) {
+				repr.push(newPart[i]);
+			}
 		}
 
 		if (
@@ -78,13 +90,18 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 			reader.readCodePoint();
 
 			// 5.2. Append them to repr.
-			repr.push(...peeked);
+			repr.push(peeked[0]);
+			repr.push(peeked[1]);
+			repr.push(peeked[2]);
 
 			// 5.3. Set type to "number".
 			type = NumberType.Number;
 
 			// 5.4. While the next input code point is a digit, consume it and append it to repr.
-			repr.push(...consumeDigits(reader));
+			const newPart = consumeDigits(reader);
+			for (let i = 0; i < newPart.length; i++) {
+				repr.push(newPart[i]);
+			}
 		}
 	}
 
@@ -204,9 +221,7 @@ function digitCodePointsToInteger(codePoints: Array<number>): number {
 		return 0;
 	}
 
-	const stringValue = codePoints.map((x) => {
-		return String.fromCharCode(x);
-	}).join('');
+	const stringValue = codePointsToString(codePoints);
 
 	const integerValue = Number.parseInt(stringValue, 10);
 	if (Number.isNaN(integerValue)) {

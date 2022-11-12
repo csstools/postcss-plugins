@@ -1,5 +1,6 @@
 import { checkIfThreeCodePointsWouldStartAnIdentSequence } from '../checks/three-code-points-would-start-ident-sequence';
 import { PERCENTAGE_SIGN } from '../code-points/code-points';
+import { codePointsToString } from '../code-points/code-points-to-string';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
 import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '../interfaces/token';
@@ -13,14 +14,16 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 	if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 		const unit = consumeIdentSequence(ctx, reader);
 
+		const representation = reader.representation();
 		return [
 			TokenType.Dimension,
 			reader.representationString(),
-			...reader.representation(),
+			representation[0],
+			representation[1],
 			{
 				value: numberValue[0],
 				type: numberValue[1],
-				unit: unit.map((x) => String.fromCharCode(x)).join(''),
+				unit: codePointsToString(unit),
 			},
 		];
 	}
@@ -30,10 +33,12 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 		if (peeked === PERCENTAGE_SIGN) {
 			reader.readCodePoint();
 
+			const representation = reader.representation();
 			return [
 				TokenType.Percentage,
 				reader.representationString(),
-				...reader.representation(),
+				representation[0],
+				representation[1],
 				{
 					value: numberValue[0],
 				},
@@ -41,10 +46,12 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 		}
 	}
 
+	const representation = reader.representation();
 	return [
 		TokenType.Number,
 		reader.representationString(),
-		...reader.representation(),
+		representation[0],
+		representation[1],
 		{
 			value: numberValue[0],
 			type: numberValue[1],

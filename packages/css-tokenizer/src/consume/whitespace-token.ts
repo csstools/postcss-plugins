@@ -9,10 +9,12 @@ export function consumeWhiteSpace(ctx: Context, reader: CodePointReader, max = -
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		if (max !== -1 && current === max) {
+			const representation = reader.representation();
 			return [
 				TokenType.Whitespace,
 				reader.representationString(),
-				...reader.representation(),
+				representation[0],
+				representation[1],
 				undefined,
 			];
 		}
@@ -20,10 +22,12 @@ export function consumeWhiteSpace(ctx: Context, reader: CodePointReader, max = -
 		current++;
 		const peeked = reader.peekOneCodePoint();
 		if (peeked === false) {
+			const representation = reader.representation();
 			return [
 				TokenType.Whitespace,
 				reader.representationString(),
-				...reader.representation(),
+				representation[0],
+				representation[1],
 				undefined,
 			];
 		}
@@ -35,10 +39,12 @@ export function consumeWhiteSpace(ctx: Context, reader: CodePointReader, max = -
 		reader.readCodePoint();
 	}
 
+	const representation = reader.representation();
 	return [
 		TokenType.Whitespace,
 		reader.representationString(),
-		...reader.representation(),
+		representation[0],
+		representation[1],
 		undefined,
 	];
 }

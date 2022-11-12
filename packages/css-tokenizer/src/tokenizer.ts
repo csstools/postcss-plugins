@@ -16,6 +16,7 @@ import { consumeStringToken } from './consume/string-token';
 import { consumeIdentLikeToken } from './consume/ident-like-token';
 import { checkIfTwoCodePointsAreAValidEscape } from './checks/two-code-points-are-valid-escape';
 import { ParserError } from './interfaces/error';
+import { codePointsToString } from './code-points/code-points-to-string';
 
 interface Stringer {
 	valueOf(): string
@@ -54,33 +55,51 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 
 		// Simple, one character tokens:
 		switch (peeked) {
-			case COMMA:
+			case COMMA: {
 				reader.readCodePoint();
-				return [TokenType.Comma, reader.representationString(), ...reader.representation(), undefined];
-			case COLON:
+				const representation = reader.representation();
+				return [TokenType.Comma, reader.representationString(), representation[0], representation[1], undefined];
+			}
+			case COLON: {
 				reader.readCodePoint();
-				return [TokenType.Colon, reader.representationString(), ...reader.representation(), undefined];
-			case SEMICOLON:
+				const representation = reader.representation();
+				return [TokenType.Colon, reader.representationString(), representation[0], representation[1], undefined];
+			}
+			case SEMICOLON: {
 				reader.readCodePoint();
-				return [TokenType.Semicolon, reader.representationString(), ...reader.representation(), undefined];
-			case LEFT_PARENTHESIS:
+				const representation = reader.representation();
+				return [TokenType.Semicolon, reader.representationString(), representation[0], representation[1], undefined];
+			}
+			case LEFT_PARENTHESIS: {
 				reader.readCodePoint();
-				return [TokenType.OpenParen, reader.representationString(), ...reader.representation(), undefined];
-			case RIGHT_PARENTHESIS:
+				const representation = reader.representation();
+				return [TokenType.OpenParen, reader.representationString(), representation[0], representation[1], undefined];
+			}
+			case RIGHT_PARENTHESIS: {
 				reader.readCodePoint();
-				return [TokenType.CloseParen, reader.representationString(), ...reader.representation(), undefined];
-			case LEFT_SQUARE_BRACKET:
+				const representation = reader.representation();
+				return [TokenType.CloseParen, reader.representationString(), representation[0], representation[1], undefined];
+			}
+			case LEFT_SQUARE_BRACKET: {
 				reader.readCodePoint();
-				return [TokenType.OpenSquare, reader.representationString(), ...reader.representation(), undefined];
-			case RIGHT_SQUARE_BRACKET:
+				const representation = reader.representation();
+				return [TokenType.OpenSquare, reader.representationString(), representation[0], representation[1], undefined];
+			}
+			case RIGHT_SQUARE_BRACKET: {
 				reader.readCodePoint();
-				return [TokenType.CloseSquare, reader.representationString(), ...reader.representation(), undefined];
-			case LEFT_CURLY_BRACKET:
+				const representation = reader.representation();
+				return [TokenType.CloseSquare, reader.representationString(), representation[0], representation[1], undefined];
+			}
+			case LEFT_CURLY_BRACKET: {
 				reader.readCodePoint();
-				return [TokenType.OpenCurly, reader.representationString(), ...reader.representation(), undefined];
-			case RIGHT_CURLY_BRACKET:
+				const representation = reader.representation();
+				return [TokenType.OpenCurly, reader.representationString(), representation[0], representation[1], undefined];
+			}
+			case RIGHT_CURLY_BRACKET: {
 				reader.readCodePoint();
-				return [TokenType.CloseCurly, reader.representationString(), ...reader.representation(), undefined];
+				const representation = reader.representation();
+				return [TokenType.CloseCurly, reader.representationString(), representation[0], representation[1], undefined];
+			}
 		}
 
 		switch (peeked) {
@@ -97,7 +116,8 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 				}
 
 				reader.readCodePoint();
-				return [TokenType.Delim, reader.representationString(), ...reader.representation(), {
+				const representation = reader.representation();
+				return [TokenType.Delim, reader.representationString(), representation[0], representation[1], {
 					value: String.fromCharCode(peeked),
 				}];
 			}
@@ -112,7 +132,8 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					reader.readCodePoint();
 					reader.readCodePoint();
 
-					return [TokenType.CDC, reader.representationString(), ...reader.representation(), undefined];
+					const representation = reader.representation();
+					return [TokenType.CDC, reader.representationString(), representation[0], representation[1], undefined];
 				}
 
 				if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
@@ -120,7 +141,8 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 				}
 
 				reader.readCodePoint();
-				return [TokenType.Delim, reader.representationString(), ...reader.representation(), {
+				const representation = reader.representation();
+				return [TokenType.Delim, reader.representationString(), representation[0], representation[1], {
 					value: '-',
 				}];
 			}
@@ -132,11 +154,13 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					reader.readCodePoint();
 					reader.readCodePoint();
 
-					return [TokenType.CDO, reader.representationString(), ...reader.representation(), undefined];
+					const representation = reader.representation();
+					return [TokenType.CDO, reader.representationString(), representation[0], representation[1], undefined];
 				}
 
 				reader.readCodePoint();
-				return [TokenType.Delim, reader.representationString(), ...reader.representation(), {
+				const representation = reader.representation();
+				return [TokenType.Delim, reader.representationString(), representation[0], representation[1], {
 					value: '<',
 				}];
 			}
@@ -146,12 +170,14 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 				if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 					const identSequence = consumeIdentSequence(ctx, reader);
 
-					return [TokenType.AtKeyword, reader.representationString(), ...reader.representation(), {
-						value: identSequence.map((x) => String.fromCharCode(x)).join(''),
+					const representation = reader.representation();
+					return [TokenType.AtKeyword, reader.representationString(), representation[0], representation[1], {
+						value: codePointsToString(identSequence),
 					}];
 				}
 
-				return [TokenType.Delim, reader.representationString(), ...reader.representation(), {
+				const representation = reader.representation();
+				return [TokenType.Delim, reader.representationString(), representation[0], representation[1], {
 					value: '@',
 				}];
 			}
@@ -175,7 +201,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					],
 				});
 
-				return [TokenType.Delim, reader.representationString(), ...representation, {
+				return [TokenType.Delim, reader.representationString(), representation[0], representation[1], {
 					value: '\\',
 				}];
 			}
@@ -194,7 +220,8 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 		}
 
 		reader.readCodePoint();
-		return [TokenType.Delim, reader.representationString(), ...reader.representation(), {
+		const representation = reader.representation();
+		return [TokenType.Delim, reader.representationString(), representation[0], representation[1], {
 			value: String.fromCharCode(peeked),
 		}];
 	}
