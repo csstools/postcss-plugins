@@ -1,5 +1,6 @@
 import { checkIfThreeCodePointsWouldStartAnIdentSequence } from '../checks/three-code-points-would-start-ident-sequence';
 import { checkIfTwoCodePointsAreAValidEscape } from '../checks/two-code-points-are-valid-escape';
+import { codePointsToString } from '../code-points/code-points-to-string';
 import { isIdentCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
@@ -28,7 +29,7 @@ export function consumeHashToken(ctx: Context, reader: CodePointReader): TokenDe
 			reader.representationString(),
 			...reader.representation(),
 			{
-				value: identSequence.map((x) => String.fromCharCode(x)).join(''),
+				value: codePointsToString(identSequence),
 				type: hashType,
 			},
 		];

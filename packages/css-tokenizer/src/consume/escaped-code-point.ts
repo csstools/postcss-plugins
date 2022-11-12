@@ -1,4 +1,5 @@
 import { MAXIMUM_ALLOWED_CODEPOINT, REPLACEMENT_CHARACTER } from '../code-points/code-points';
+import { codePointsToString } from '../code-points/code-points-to-string';
 import { isHexDigitCodePoint, isSurrogate, isWhitespace } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
@@ -35,7 +36,7 @@ export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): 
 			reader.readCodePoint();
 		}
 
-		const codePointLiteral = parseInt(hexSequence.map((x) => String.fromCharCode(x)).join(''), 16);
+		const codePointLiteral = parseInt(codePointsToString(hexSequence), 16);
 		if (codePointLiteral === 0) {
 			return REPLACEMENT_CHARACTER;
 		}

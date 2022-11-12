@@ -1,5 +1,6 @@
 import { checkIfThreeCodePointsWouldStartAnIdentSequence } from '../checks/three-code-points-would-start-ident-sequence';
 import { PERCENTAGE_SIGN } from '../code-points/code-points';
+import { codePointsToString } from '../code-points/code-points-to-string';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
 import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '../interfaces/token';
@@ -20,7 +21,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 			{
 				value: numberValue[0],
 				type: numberValue[1],
-				unit: unit.map((x) => String.fromCharCode(x)).join(''),
+				unit: codePointsToString(unit),
 			},
 		];
 	}

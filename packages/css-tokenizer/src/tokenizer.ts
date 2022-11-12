@@ -16,6 +16,7 @@ import { consumeStringToken } from './consume/string-token';
 import { consumeIdentLikeToken } from './consume/ident-like-token';
 import { checkIfTwoCodePointsAreAValidEscape } from './checks/two-code-points-are-valid-escape';
 import { ParserError } from './interfaces/error';
+import { codePointsToString } from './code-points/code-points-to-string';
 
 interface Stringer {
 	valueOf(): string
@@ -147,7 +148,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					const identSequence = consumeIdentSequence(ctx, reader);
 
 					return [TokenType.AtKeyword, reader.representationString(), ...reader.representation(), {
-						value: identSequence.map((x) => String.fromCharCode(x)).join(''),
+						value: codePointsToString(identSequence),
 					}];
 				}
 

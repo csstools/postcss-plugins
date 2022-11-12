@@ -1,4 +1,5 @@
 import { FULL_STOP, HYPHEN_MINUS, LATIN_CAPITAL_LETTER_E, LATIN_SMALL_LETTER_E, PLUS_SIGN } from '../code-points/code-points';
+import { codePointsToString } from '../code-points/code-points-to-string';
 import { isDigitCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
@@ -204,9 +205,7 @@ function digitCodePointsToInteger(codePoints: Array<number>): number {
 		return 0;
 	}
 
-	const stringValue = codePoints.map((x) => {
-		return String.fromCharCode(x);
-	}).join('');
+	const stringValue = codePointsToString(codePoints);
 
 	const integerValue = Number.parseInt(stringValue, 10);
 	if (Number.isNaN(integerValue)) {
