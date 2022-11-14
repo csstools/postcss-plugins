@@ -1,6 +1,6 @@
 # Changes to PostCSS Cascade Layers
 
-### Unreleased (major)
+### 2.0.0 (November 14, 2022)
 
 - Run `postcss-cascade-layers` early compared to other PostCSS plugins (breaking)
 - Updated: Support for Node v14+ (major).
