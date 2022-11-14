@@ -1,10 +1,10 @@
-import { terser } from 'rollup-plugin-terser';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
 import filesize from 'rollup-plugin-filesize';
 import json from '@rollup/plugin-json';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
+import resolve from '@rollup/plugin-node-resolve';
+import terser  from '@rollup/plugin-terser';
 
 const production = !process.env.ROLLUP_WATCH;
 
