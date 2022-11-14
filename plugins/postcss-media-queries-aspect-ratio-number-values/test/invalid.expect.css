@@ -1,0 +1,7 @@
+@media screen and (min-aspect-ratio: 1 * 100) {}
+@media screen and (min-aspect-ratio: 1 100) {}
+@media screen and (min-aspect-ratio: 1, 100) {}
+@media screen and (min-aspect-ratio: (1 / 100)) {}
+@media screen and (min-aspect-ratio: 1 / 100 / 3) {}
+@media screen and (min-aspect-ratio: calc(1) * calc(2)) {}
+@media screen and (min-aspect-ratio: calc(1) / calc(2) / calc(3)) {}
