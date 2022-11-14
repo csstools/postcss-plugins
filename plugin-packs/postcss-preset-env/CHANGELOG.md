@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (8.0.0-alpha.1)
+### (8.0.0-alpha.1) (November 14, 2022)
 
 - Updated Support for Node v14+ (major).
 - Removed `postcss-env-function` (breaking).
@@ -13,6 +13,11 @@
 - Updated `postcss-custom-properties` to `13.0.0` (major)
 - Updated `postcss-custom-selectors` to `7.0.0` (major)
 - Updated `@csstools/postcss-cascade-layers` to `2.0.0` (major)
+- Updated `css-blank-pseudo` to `4.1.1` (minor)
+- Updated `css-has-pseudo` to `4.0.1` (patch)
+- Updated `css-prefers-color-scheme` to `7.0.1` (patch)
+- Updated `postcss-focus-visible` to `7.1.0` (minor)
+- Updated `postcss-focus-within` to `6.1.1` (minor)
 
 ### 8.0.0-alpha.0 (July 8, 2022)
 
