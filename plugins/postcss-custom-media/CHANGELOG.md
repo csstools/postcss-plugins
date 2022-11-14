@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Media
 
-### Unreleased (major)
+### 9.0.0 (November 14, 2022)
 
 - Updated: Support for Node v14+ (major).
 - Removed: `importFrom` feature (breaking).
