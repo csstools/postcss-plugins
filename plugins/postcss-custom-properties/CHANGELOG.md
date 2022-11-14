@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased (major)
+### 13.0.0 (November 14, 2022)
 
 - Updated: Support for Node v14+ (major).
 - Removed : `importFrom` feature (breaking).
