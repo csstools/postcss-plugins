@@ -1,8 +1,8 @@
-const cases = require('postcss-parser-tests'); // .mjs import is broken
-const assert = require('assert');
-const { tokenizer, stringify, TokenType } = require('@csstools/css-tokenizer');
+import { eachTest } from 'postcss-parser-tests';
+import assert from 'assert';
+import { tokenizer, stringify, TokenType } from '@csstools/css-tokenizer';
 
-cases.eachTest((name, css) => {
+eachTest((name, css) => {
 	const t = tokenizer(
 		{
 			css: css,

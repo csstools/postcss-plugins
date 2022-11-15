@@ -13,4 +13,4 @@ import './complex/at-media-params.mjs';
 import './complex/parse-error.mjs';
 // Community
 import './community/bootstrap.mjs';
-import './community/postcss-parser-tests.cjs';
+import './community/postcss-parser-tests.mjs';
