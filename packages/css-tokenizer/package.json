@@ -37,6 +37,9 @@
 		"README.md",
 		"dist"
 	],
+	"devDependencies": {
+		"postcss-parser-tests": "^8.5.1"
+	},
 	"scripts": {
 		"benchmark": "node ./test/benchmark.mjs",
 		"build": "rollup -c ../../rollup/default.mjs",
