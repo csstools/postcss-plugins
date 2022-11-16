@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting Experimental
 
-### Unreleased
+### 1.1.1 (November 16, 2022)
 
 - Fix: Do not throw when a selector is invalid, show a warning instead.
 - Fix: Correctly handle declarations after nested rules.
