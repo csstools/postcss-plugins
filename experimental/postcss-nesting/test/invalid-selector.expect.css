@@ -1,14 +1,11 @@
-
-	:scope.child {
+.foo : bar {
+	&.child {
 		order: 1;
 	}
-
-.foo : bar {
 }
 
-&.child : bar {
+.foo {
+	&.child : bar {
 		order: 3;
 	}
-
-.foo {
 }
