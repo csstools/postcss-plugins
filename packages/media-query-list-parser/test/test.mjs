@@ -34,6 +34,9 @@ import './cases/query-with-type/0002.mjs';
 import './cases/query-with-type/0003.mjs';
 import './cases/query-with-type/0004.mjs';
 import './cases/query-with-type/0005.mjs';
+import './cases/query-with-type/0006.mjs';
+import './cases/query-with-type/0007.mjs';
+import './cases/query-with-type/0008.mjs';
 
 import './cases/specification-examples/0001.mjs';
 import './cases/specification-examples/0002.mjs';
