@@ -3,13 +3,11 @@ body {color: blue;
 
 	background: red;
 	font-size: 1rem;
+
+	margin: 0;
 }
 @media (min-width: 64em) {
 body {
 		background: green;
 }
 	}
-body {
-
-	margin: 0;
-}
