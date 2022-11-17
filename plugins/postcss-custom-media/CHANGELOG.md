@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased
+
+- Fixed: avoid complex generated CSS when `@custom-media` contains only a single simple media feature.
+
 ### 9.0.0 (November 14, 2022)
 
 - Updated: Support for Node v14+ (major).

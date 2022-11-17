@@ -13,6 +13,12 @@
 	}
 }
 
+@media (((--simple-feature-test))) {
+	.a {
+		order: 1.2;
+	}
+}
+
 /* Also a type condition */
 @media screen and (--simple-feature-test) {
 	.a {
@@ -31,7 +37,7 @@
 @custom-media --modern (color), (hover);
 
 @media (--modern) and (width > 1024px) {
-  .a {
-    color: green;
-  }
+	.a {
+		color: green;
+	}
 }
