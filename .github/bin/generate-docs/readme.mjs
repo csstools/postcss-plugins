@@ -70,6 +70,7 @@ instructions for:
 
 - [Node](INSTALL.md#node)
 - [PostCSS CLI](INSTALL.md#postcss-cli)
+- [PostCSS Load Config](INSTALL.md#postcss-load-config)
 - [Webpack](INSTALL.md#webpack)
 - [Create React App](INSTALL.md#create-react-app)
 - [Next.js](INSTALL.md#nextjs)

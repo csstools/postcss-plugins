@@ -4,6 +4,7 @@
 
 - [Node](#node)
 - [PostCSS CLI](#postcss-cli)
+- [PostCSS Load Config](#postcss-load-config)
 - [Webpack](#webpack)
 - [Create React App](#create-react-app)
 - [Next.js](#nextjs)
@@ -48,6 +49,34 @@ module.exports = {
 	]
 }
 ```
+
+## PostCSS Load Config
+
+If your framework/CLI supports [`postcss-load-config`](https://github.com/postcss/postcss-load-config).
+
+`package.json`:
+
+```json
+{
+	"postcss": {
+		"plugins": {
+			"@csstools/postcss-trigonometric-functions": {}
+		}
+	}
+}
+```
+
+`.postcssrc.json`:
+
+```json
+{
+	"plugins": {
+		"@csstools/postcss-trigonometric-functions": {}
+	}
+}
+```
+
+_See the [README of `postcss-load-config`](https://github.com/postcss/postcss-load-config#usage) for more usage options._
 
 ## Webpack
 
@@ -120,6 +149,10 @@ module.exports = config => reactAppRewirePostcss(config, {
 ## Next.js
 
 Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
+
+```bash
+npm install @csstools/postcss-trigonometric-functions --save-dev
+```
 
 Use [PostCSS Trigonometric Functions] in your `postcss.config.json` file:
 
