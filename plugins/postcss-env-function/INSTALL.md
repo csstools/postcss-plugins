@@ -54,6 +54,10 @@ module.exports = {
 
 If your framework/CLI supports [`postcss-load-config`](https://github.com/postcss/postcss-load-config).
 
+```bash
+npm install postcss-env-function --save-dev
+```
+
 `package.json`:
 
 ```json
