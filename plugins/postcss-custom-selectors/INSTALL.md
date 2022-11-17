@@ -2,8 +2,13 @@
 
 [PostCSS Custom Selectors] runs in all Node environments, with special instructions for:
 
-| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
-| --- | --- | --- | --- | --- | --- |
+- [Node](#node)
+- [PostCSS CLI](#postcss-cli)
+- [Webpack](#webpack)
+- [Create React App](#create-react-app)
+- [Next.js](#nextjs)
+- [Gulp](#gulp)
+- [Grunt](#grunt)
 
 ## Node
 
@@ -112,6 +117,33 @@ module.exports = config => reactAppRewirePostcss(config, {
 });
 ```
 
+## Next.js
+
+Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
+
+Use [PostCSS Custom Selectors] in your `postcss.config.json` file:
+
+```json
+{
+	"plugins": [
+		"postcss-custom-selectors"
+	]
+}
+```
+
+```json
+{
+	"plugins": [
+		[
+			"postcss-custom-selectors",
+			{
+				// Optionally add plugin options
+			}
+		]
+	]
+}
+```
+
 ## Gulp
 
 Add [Gulp PostCSS] to your project:
@@ -174,3 +206,4 @@ grunt.initConfig({
 [PostCSS Custom Selectors]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors
 [React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
 [React App Rewired]: https://github.com/timarney/react-app-rewired
+[Next.js]: https://nextjs.org

@@ -62,8 +62,13 @@ postcss([
 [PostCSS Conditional Values] runs in all Node environments, with special
 instructions for:
 
-| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
-| --- | --- | --- | --- | --- | --- |
+- [Node](INSTALL.md#node)
+- [PostCSS CLI](INSTALL.md#postcss-cli)
+- [Webpack](INSTALL.md#webpack)
+- [Create React App](INSTALL.md#create-react-app)
+- [Next.js](INSTALL.md#nextjs)
+- [Gulp](INSTALL.md#gulp)
+- [Grunt](INSTALL.md#grunt)
 
 ## Options
 

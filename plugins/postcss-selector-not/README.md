@@ -41,8 +41,13 @@ postcss([
 [PostCSS Selector Not] runs in all Node environments, with special
 instructions for:
 
-| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
-| --- | --- | --- | --- | --- | --- |
+- [Node](INSTALL.md#node)
+- [PostCSS CLI](INSTALL.md#postcss-cli)
+- [Webpack](INSTALL.md#webpack)
+- [Create React App](INSTALL.md#create-react-app)
+- [Next.js](INSTALL.md#nextjs)
+- [Gulp](INSTALL.md#gulp)
+- [Grunt](INSTALL.md#grunt)
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#not-pseudo-class
