@@ -131,7 +131,7 @@ Use [PostCSS Font Format Keywords] in your `postcss.config.json` file:
 }
 ```
 
-```json
+```json5
 {
 	"plugins": [
 		[

@@ -131,7 +131,7 @@ Use [PostCSS Color Hex Alpha] in your `postcss.config.json` file:
 }
 ```
 
-```json
+```json5
 {
 	"plugins": [
 		[

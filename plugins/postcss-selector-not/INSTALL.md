@@ -131,7 +131,7 @@ Use [PostCSS Selector Not] in your `postcss.config.json` file:
 }
 ```
 
-```json
+```json5
 {
 	"plugins": [
 		[

@@ -131,7 +131,7 @@ Use [PostCSS Logical Properties and Values] in your `postcss.config.json` file:
 }
 ```
 
-```json
+```json5
 {
 	"plugins": [
 		[

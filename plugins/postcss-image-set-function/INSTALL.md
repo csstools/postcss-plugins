@@ -131,7 +131,7 @@ Use [PostCSS image-set() Function] in your `postcss.config.json` file:
 }
 ```
 
-```json
+```json5
 {
 	"plugins": [
 		[
