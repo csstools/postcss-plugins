@@ -169,7 +169,7 @@ Read the instructions on how to [customize the PostCSS configuration in Next.js]
 npm install css-has-pseudo --save-dev
 ```
 
-Use [CSS Has Pseudo] in your `postcss.config.json` file:
+Use [PostCSS Has Pseudo] in your `postcss.config.json` file:
 
 ```json
 {

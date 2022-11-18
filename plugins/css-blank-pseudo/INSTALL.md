@@ -169,7 +169,7 @@ Read the instructions on how to [customize the PostCSS configuration in Next.js]
 npm install css-blank-pseudo --save-dev
 ```
 
-Use [CSS Blank Pseudo] in your `postcss.config.json` file:
+Use [PostCSS Blank Pseudo] in your `postcss.config.json` file:
 
 ```json
 {
