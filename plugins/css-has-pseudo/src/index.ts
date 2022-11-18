@@ -4,7 +4,15 @@ import { selectorSpecificity } from '@csstools/selector-specificity';
 import encodeCSS from './encode/encode.mjs';
 import { isGuardedByAtSupportsFromAtRuleParams } from './is-guarded-by-at-supports.js';
 
-const creator: PluginCreator<{ preserve?: boolean, specificityMatchingName?: string }> = (opts?: { preserve?: boolean, specificityMatchingName?: string }) => {
+/** css-blank-pseudo plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+	/** Change the selector that is used to adjust specificity. default: "does-not-exist" */
+	specificityMatchingName?: string
+};
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = {
 		preserve: true,
 		specificityMatchingName: 'does-not-exist',
