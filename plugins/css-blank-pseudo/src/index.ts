@@ -6,7 +6,7 @@ import isValidReplacement from './is-valid-replacement.mjs';
 export type pluginOptions = {
 	/** Preserve the original notation. default: true */
 	preserve?: boolean,
-	/** Replacement for ":blank". default: "[blank]"" */
+	/** Replacement for ":blank". default: "[blank]" */
 	replaceWith?: string,
 	/** Do not inject "js-blank-pseudo" before each selector with "[blank]". default: false */
 	disablePolyfillReadyClass?: boolean,

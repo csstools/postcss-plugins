@@ -1,0 +1,10 @@
+.standard-grid {
+	display: grid;
+	gap: 20px;
+}
+
+.spaced-grid {
+	display: grid;
+	column-gap: 40px;
+	row-gap: 20px;
+}

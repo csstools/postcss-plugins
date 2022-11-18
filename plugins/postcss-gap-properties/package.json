@@ -2,7 +2,21 @@
 	"name": "postcss-gap-properties",
 	"description": "Use the gap, column-gap, and row-gap shorthand properties in CSS",
 	"version": "3.0.5",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Jonathan Neal",
+			"email": "jonathantneal@hotmail.com"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
@@ -13,6 +27,7 @@
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./dist/index.mjs",
@@ -32,7 +47,7 @@
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
@@ -41,13 +56,11 @@
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gap-properties#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-gap-properties"
 	},
-	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"columns",
 		"css",
@@ -61,10 +74,14 @@
 		"shorthands"
 	],
 	"csstools": {
+		"cssdbId": "gap-properties",
 		"exportName": "postcssGapProperties",
-		"humanReadableName": "PostCSS Gap Properties"
+		"humanReadableName": "PostCSS Gap Properties",
+		"specUrl": "https://www.w3.org/TR/css-grid-1/#gutters"
 	},
 	"volta": {
 		"extends": "../../package.json"
-	}
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gap-properties#readme",
+	"bugs": "https://github.com/csstools/postcss-plugins/issues"
 }

@@ -1,9 +1,13 @@
 import type { PluginCreator } from 'postcss';
 import selectorParser from 'postcss-selector-parser';
 
-type pluginOptions = {
-	dir?: 'ltr' | 'rtl'
+/** postcss-dir-pseudo-class plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
 	preserve?: boolean,
+	/** Assume a direction for the document. default: null */
+	dir?: 'ltr' | 'rtl'
+	/** Assume that the CSS is intended to be used in Shadow DOM with Custom Elements. default: false */
 	shadow?: boolean,
 };
 
