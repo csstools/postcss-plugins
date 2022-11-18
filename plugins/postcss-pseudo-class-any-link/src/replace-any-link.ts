@@ -1,3 +1,4 @@
+import type { Result, Rule } from 'postcss';
 import parser from 'postcss-selector-parser';
 
 const linkAST = parser().astSync(':link').nodes[0];
@@ -5,9 +6,9 @@ const visitedAST = parser().astSync(':visited').nodes[0];
 const areaHrefAST = parser().astSync('area[href]').nodes[0];
 const hrefAST = parser().astSync('[href]').nodes[0];
 
-export function replaceAnyLink(rule, result, preserve, areaHrefNeedsFixing) {
-	let updatedSelectors = [];
-	let untouchedSelectors = [];
+export function replaceAnyLink(rule: Rule, result: Result, preserve: boolean, areaHrefNeedsFixing: boolean) {
+	const updatedSelectors = [];
+	const untouchedSelectors = [];
 
 	try {
 		for (let i = 0; i < rule.selectors.length; i++) {
@@ -45,43 +46,43 @@ export function replaceAnyLink(rule, result, preserve, areaHrefNeedsFixing) {
 }
 
 function modifiedSelector(selector, areaHrefNeedsFixing) {
-	let out = [];
+	const out = [];
 
 	// update the selector
 	parser((selectorsAST) => {
-		let replacements = [];
+		const replacements = [];
 		selectorsAST.walkPseudos((pseudo) => {
 			if (pseudo.value.toLowerCase() !== ':any-link' || (pseudo.nodes && pseudo.nodes.length)) {
 				return;
 			}
 
 			if (!areaHrefNeedsFixing) {
-				replacements.push([linkAST.clone(), visitedAST.clone()]);
+				replacements.push([linkAST.clone({}), visitedAST.clone({})]);
 				return;
 			}
 
 			const tags = getTagElementsNextToPseudo(pseudo);
 			if (tags.includes('area')) {
-				replacements.push([linkAST.clone(), visitedAST.clone(), hrefAST.clone()]);
+				replacements.push([linkAST.clone({}), visitedAST.clone({}), hrefAST.clone({})]);
 				return;
 			}
 
 			if (tags.length) {
-				replacements.push([linkAST.clone(), visitedAST.clone()]);
+				replacements.push([linkAST.clone({}), visitedAST.clone({})]);
 				return;
 			}
 
-			replacements.push([linkAST.clone(), visitedAST.clone(), areaHrefAST.clone()]);
+			replacements.push([linkAST.clone({}), visitedAST.clone({}), areaHrefAST.clone({})]);
 		});
 
 		if (!replacements.length) {
 			return;
 		}
 
-		let replacementsCartesianProduct = cartesianProduct(...replacements);
+		const replacementsCartesianProduct = cartesianProduct(...replacements);
 
 		replacementsCartesianProduct.forEach((replacement) => {
-			const clone = selectorsAST.clone();
+			const clone = selectorsAST.clone({}) as parser.Selector;
 			clone.walkPseudos((pseudo) => {
 				if (pseudo.value.toLowerCase() !== ':any-link' || (pseudo.nodes && pseudo.nodes.length)) {
 					return;
@@ -98,7 +99,7 @@ function modifiedSelector(selector, areaHrefNeedsFixing) {
 	return out;
 }
 
-function cartesianProduct(...args) {
+function cartesianProduct(...args: Array<Array<parser.Node>>): Array<Array<parser.Node>> {
 	const r = [];
 	const max = args.length - 1;
 
@@ -117,8 +118,8 @@ function cartesianProduct(...args) {
 	return r;
 }
 
-function getTagElementsNextToPseudo(pseudo) {
-	let tags = [];
+function getTagElementsNextToPseudo(pseudo: parser.Pseudo) {
+	const tags = [];
 
 	let prev = pseudo.prev();
 	while (prev) {
@@ -152,7 +153,7 @@ function getTagElementsNextToPseudo(pseudo) {
 // Inserts a node around a given node.
 // - in the same compound selector
 // - try to keep the result serializable without side effects
-function insertNode(container, aroundNode, node) {
+function insertNode(container: parser.Container, aroundNode: parser.Node, node: parser.Node) {
 	let type = node.type;
 	if (node.type === 'selector' && node.nodes && node.nodes.length) {
 		type = node.nodes[0].type;

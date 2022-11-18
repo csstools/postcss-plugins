@@ -36,4 +36,21 @@ postcssTape(plugin)({
 			}
 		}
 	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-false': {
+		message: 'minimal example',
+		options: {
+			preserve: false
+		}
+	},
+	'examples/example:area-false': {
+		message: 'minimal example',
+		options: {
+			subFeatures: {
+				areaHrefNeedsFixing: true
+			}
+		}
+	},
 });
