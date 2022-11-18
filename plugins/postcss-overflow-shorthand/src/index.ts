@@ -1,12 +1,25 @@
-// overflow shorthand property matcher
+import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 
-const creator = opts => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
+/** postcss-overflow-shorthand plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+};
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign(
+		// Default options
+		{
+			preserve: true,
+		},
+		// Provided options
+		opts,
+	);
 
 	return {
 		postcssPlugin: 'postcss-overflow-shorthand',
-		Declaration: (decl, {result}) => {
+		Declaration: (decl, { result }) => {
 			if (decl.prop.toLowerCase() !== 'overflow') {
 				return;
 			}
@@ -27,7 +40,7 @@ const creator = opts => {
 
 				xValue = valueParser.stringify(relevantNodes[0]);
 				yValue = valueParser.stringify(relevantNodes[1]);
-			} catch(err) {
+			} catch (err) {
 				decl.warn(
 					result,
 					`Failed to parse value '${originalValue}' as a shorthand for "overflow". Leaving the original value intact.`,
@@ -56,7 +69,7 @@ const creator = opts => {
 				});
 			}
 
-			if (!preserve) {
+			if (!options.preserve) {
 				decl.remove();
 			}
 		},

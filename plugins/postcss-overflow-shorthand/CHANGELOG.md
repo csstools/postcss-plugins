@@ -3,6 +3,7 @@
 ### Unreleased (major)
 
 - Updated: Support for Node v14+ (major).
+- Added: typescript support.
 
 ### 3.0.4 (July 8, 2022)
 

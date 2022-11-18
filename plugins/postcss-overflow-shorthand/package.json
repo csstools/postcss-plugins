@@ -2,7 +2,21 @@
 	"name": "postcss-overflow-shorthand",
 	"description": "Use the overflow shorthand in CSS",
 	"version": "3.0.4",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Jonathan Neal",
+			"email": "jonathantneal@hotmail.com"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
@@ -13,6 +27,7 @@
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./dist/index.mjs",
@@ -35,7 +50,7 @@
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
@@ -61,8 +76,10 @@
 		"values"
 	],
 	"csstools": {
+		"cssdbId": "overflow-property",
 		"exportName": "postcssOverflowShorthand",
-		"humanReadableName": "PostCSS Overflow Shorthand"
+		"humanReadableName": "PostCSS Overflow Shorthand",
+		"specUrl": "https://drafts.csswg.org/css-overflow/#propdef-overflow"
 	},
 	"volta": {
 		"extends": "../../package.json"
