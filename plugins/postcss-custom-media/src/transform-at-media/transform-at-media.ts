@@ -1,5 +1,19 @@
 import { alwaysTrue, neverTrue } from './always-true-or-false';
-import { isGeneralEnclosed, isMediaAnd, isMediaConditionList, isMediaFeature, isMediaFeatureBoolean, isMediaNot, isMediaOr, isMediaQueryInvalid, isMediaQueryWithType, MediaFeature, MediaQuery, newMediaFeaturePlain, parse } from '@csstools/media-query-list-parser';
+import {
+	MediaFeature,
+	MediaQuery,
+	isGeneralEnclosed,
+	isMediaAnd,
+	isMediaConditionList,
+	isMediaFeature,
+	isMediaFeatureBoolean,
+	isMediaNot,
+	isMediaOr,
+	isMediaQueryInvalid,
+	isMediaQueryWithType,
+	newMediaFeaturePlain,
+	parse,
+} from '@csstools/media-query-list-parser';
 
 export function transformAtMediaListTokens(params: string, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): Array<{ replaceWith: string, encapsulateWith?: string }> {
 	const mediaQueries = parse(params, {
