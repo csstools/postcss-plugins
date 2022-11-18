@@ -4,6 +4,7 @@
 
 - Updated: Support for Node v14+ (major).
 - Fix: Do not throw when a selector is invalid, show a warning instead.
+- Updated: Export and document the plugin options types.
 
 ### 4.1.1 (August, 23, 2022)
 
