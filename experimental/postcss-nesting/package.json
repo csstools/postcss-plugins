@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-nesting-experimental",
 	"description": "Nest rules inside each other in CSS (Draft : 28 October 2022)",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
 	"funding": {
@@ -26,7 +26,6 @@
 		"mod.js"
 	],
 	"dependencies": {
-		"@csstools/selector-specificity": "^2.0.0",
 		"postcss-selector-parser": "^6.0.10"
 	},
 	"peerDependencies": {

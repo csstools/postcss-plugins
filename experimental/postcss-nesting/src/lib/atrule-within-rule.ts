@@ -3,8 +3,12 @@ import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
 import validAtrules from './valid-atrules.js';
 import { walkFunc } from './walk-func.js';
 import type { AtRule, Result, Rule } from 'postcss';
+import groupDeclarations from './group-declarations.js';
 
 export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc) {
+	// Group all declarations after the first one.
+	groupDeclarations(parent);
+
 	// move previous siblings and the node to before the parent
 	shiftNodesBeforeParent(node, parent);
 

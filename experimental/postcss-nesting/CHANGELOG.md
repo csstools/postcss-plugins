@@ -1,8 +1,27 @@
 # Changes to PostCSS Nesting Experimental
 
-### Unreleased
+### 1.1.1 (November 16, 2022)
 
 - Fix: Do not throw when a selector is invalid, show a warning instead.
+- Fix: Correctly handle declarations after nested rules.
+
+```diff
+/* 
+	Example 7
+	https://drafts.csswg.org/css-nesting/#mixing
+*/
+article {
+	color: green;
+
++ 	color: red;
+}
+:is(article) {
+		color: blue;
+	}
+- article {
+- 	color: red;
+- }
+```
 
 ### 1.1.0 (November 3, 2022)
 
