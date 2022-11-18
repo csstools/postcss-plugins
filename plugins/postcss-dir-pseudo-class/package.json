@@ -2,7 +2,21 @@
 	"name": "postcss-dir-pseudo-class",
 	"description": "Use the :dir pseudo-class in CSS",
 	"version": "6.0.5",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Jonathan Neal",
+			"email": "jonathantneal@hotmail.com"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
@@ -13,6 +27,7 @@
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./dist/index.mjs",
@@ -35,7 +50,7 @@
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
@@ -52,24 +67,13 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"attribute",
-		"css",
-		"directionality",
-		"directions",
-		"left",
-		"left-to-right",
-		"ltr",
-		"polyfill",
-		"postcss",
-		"postcss-plugin",
-		"right",
-		"right-to-left",
-		"rtl",
-		"selector"
+		"postcss-plugin"
 	],
 	"csstools": {
+		"cssdbId": "dir-pseudo-class",
 		"exportName": "postcssDirPseudoClass",
-		"humanReadableName": "PostCSS Dir Pseudo Class"
+		"humanReadableName": "PostCSS Dir Pseudo Class",
+		"specUrl": "https://www.w3.org/TR/selectors-4/#the-dir-pseudo"
 	},
 	"volta": {
 		"extends": "../../package.json"
