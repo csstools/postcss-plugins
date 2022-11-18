@@ -44,38 +44,8 @@
 	}
 }
 
-@media (min-width: 201px) {
-
-@media screen and (max-color:2147477350) {
+@media screen and (min-width: 201px), not (min-width: 202px) {
 	.b {
 		order: 4;
 	}
-}
-}
-
-@media not all and (min-width: 201px) {
-
-@media screen and (color:2147477350) {
-	.b {
-		order: 4;
-	}
-}
-}
-
-@media (min-width: 202px) {
-
-@media not (max-color:2147477350) {
-	.b {
-		order: 4;
-	}
-}
-}
-
-@media not all and (min-width: 202px) {
-
-@media not (color:2147477350) {
-	.b {
-		order: 4;
-	}
-}
 }

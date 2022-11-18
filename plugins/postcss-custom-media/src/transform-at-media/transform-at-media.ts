@@ -1,5 +1,19 @@
 import { alwaysTrue, neverTrue } from './always-true-or-false';
-import { isGeneralEnclosed, isMediaAnd, isMediaConditionList, isMediaFeature, isMediaFeatureBoolean, isMediaNot, isMediaOr, isMediaQueryInvalid, isMediaQueryWithType, MediaQuery, newMediaFeaturePlain, parse } from '@csstools/media-query-list-parser';
+import {
+	MediaFeature,
+	MediaQuery,
+	isGeneralEnclosed,
+	isMediaAnd,
+	isMediaConditionList,
+	isMediaFeature,
+	isMediaFeatureBoolean,
+	isMediaNot,
+	isMediaOr,
+	isMediaQueryInvalid,
+	isMediaQueryWithType,
+	newMediaFeaturePlain,
+	parse,
+} from '@csstools/media-query-list-parser';
 
 export function transformAtMediaListTokens(params: string, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): Array<{ replaceWith: string, encapsulateWith?: string }> {
 	const mediaQueries = parse(params, {
@@ -104,6 +118,29 @@ export function transformComplexMediaQuery(mediaQuery: MediaQuery, replacements:
 
 		const replacement = replacements.get(name);
 		if (replacement) {
+
+			if (replacement.truthy.length === 1 && mediaQueryIsSimple(replacement.truthy[0])) {
+				let mediaFeature: MediaFeature | null = null;
+				const replacementMediaQuery = replacement.truthy[0];
+				replacementMediaQuery.walk((replacementEntry) => {
+					if (isMediaFeature(replacementEntry.node)) {
+						mediaFeature = replacementEntry.node;
+						return false;
+					}
+				});
+
+				if (mediaFeature && mediaFeature.feature) {
+					parent.feature = mediaFeature.feature;
+					candidate = [
+						{
+							replaceWith: mediaQuery.toString(),
+						},
+					];
+
+					return false;
+				}
+			}
+
 			const replaceWithTrue = newMediaFeaturePlain(
 				alwaysTrue[0][4].value as string,
 				alwaysTrue[2],
