@@ -67,7 +67,20 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"attribute",
+		"css",
+		"directionality",
+		"directions",
+		"left",
+		"left-to-right",
+		"ltr",
+		"polyfill",
+		"postcss",
+		"postcss-plugin",
+		"right",
+		"right-to-left",
+		"rtl",
+		"selector"
 	],
 	"csstools": {
 		"cssdbId": "dir-pseudo-class",
