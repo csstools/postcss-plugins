@@ -1,4 +1,4 @@
-# PostCSS Attribute Case Insensitive [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
+# PostCSS Attribute Case Insensitive [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/postcss-attribute-case-insensitive.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/case-insensitive-attributes.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
@@ -52,9 +52,6 @@ instructions for:
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/postcss-attribute-case-insensitive
 
-[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
-[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Attribute Case Insensitive]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-attribute-case-insensitive
 [Case Insensitive Attribute]: https://www.w3.org/TR/selectors4/#attribute-case

@@ -33,7 +33,7 @@ readmeDoc = readmeDoc.replace(`<!-- Available Variables: -->
 readmeDoc = readmeDoc.replaceAll('<corsWarning>', corsTemplate);
 
 // Insert "Header" section
-readmeDoc = readmeDoc.replace('<header>', `# <humanReadableName> [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
+readmeDoc = readmeDoc.replace('<header>', `# <humanReadableName> [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
 ` + '[<img alt="npm version" src="https://img.shields.io/npm/v/<packageName>.svg" height="20">][npm-url] ' +
 `${
@@ -87,10 +87,7 @@ ${
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/<packageName>
 
-[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
-[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Loader]: https://github.com/postcss/postcss-loader
 [<humanReadableName>]: https://github.com/csstools/postcss-plugins/tree/main/<packagePath>`);
 
 readmeDoc = readmeDoc.replaceAll('<cssdbId>', packageJSONInfo.csstools.cssdbId);
