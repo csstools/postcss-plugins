@@ -136,6 +136,21 @@ Without the version, you might unexpectedly get a new major version of the libra
 Internet Explorer 11. With a [Mutation Observer polyfill](https://github.com/webmodules/mutation-observer), the script will work
 down to Internet Explorer 9.
 
+### Using with Next.js
+
+Given that Next.js imports packages both on the browser and on the server, you need to make sure that the package is only imported on the browser.
+
+As outlined in the [Next.js documentation](https://nextjs.org/docs/advanced-features/dynamic-import#with-external-libraries), you need to load the package with a dynamic import:
+
+```jsx
+useEffect(async () => {
+	const cssHasPseudo = (await import('<packageName>/browser')).default;
+	cssHasPseudo(document);
+}, []);
+```
+
+We recommend you load the polyfill as high up on your Next application as possible, such as your `pages/_app.ts` file.
+
 ### Browser Usage
 
 #### hover
