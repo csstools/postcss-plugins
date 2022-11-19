@@ -178,3 +178,15 @@ a {
 :is(.has-semi-colons-on-the-last-decl) .foo {
 		order: 74.1;
 	}
+
+/* 1 */
+:has(:is(.foo) + .bar) {
+		/* "&" is ".foo" */
+		/* styles */
+	}
+
+/* 2 */
+.other :has(:is(:root,:host) + .bar) {
+	/* "&" is ":scope" */
+	/* styles */
+}
