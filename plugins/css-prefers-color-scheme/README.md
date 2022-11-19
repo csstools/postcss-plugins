@@ -288,6 +288,19 @@ HTML might look like this :
 ```
 
 
+### Using with Next.js
+
+Given that Next.js imports packages both on the browser and on the server, you need to make sure that the package is only imported on the browser.
+
+As outlined in the [Next.js documentation](https://nextjs.org/docs/advanced-features/dynamic-import#with-external-libraries), you need to load the package with a dynamic import:
+
+```jsx
+useEffect(async () => {
+	const prefersColorSchemeInit = (await import('css-prefers-color-scheme/browser')).default;
+	const prefersColorScheme = prefersColorSchemeInit();
+}, []);
+```
+
 ## How does it work?
 
 [Prefers Color Scheme] is a [PostCSS] plugin that transforms `prefers-color-scheme` queries into `color` queries.
