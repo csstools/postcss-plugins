@@ -201,17 +201,3 @@ a {
 		order: 74.1;
 	}
 }
-
-/* 1 */
-.foo {
-	:has(& + .bar) {
-		/* "&" is ".foo" */
-		/* styles */
-	}
-}
-
-/* 2 */
-.other :has(& + .bar) {
-	/* "&" is ":scope" */
-	/* styles */
-}
