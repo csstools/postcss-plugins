@@ -11,8 +11,10 @@ import { sortRootNodes } from './sort-root-nodes';
 import { recordLayerOrder } from './record-layer-order';
 import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, INVALID_LAYER_NAME } from './constants';
 import { splitImportantStyles } from './split-important-styles';
-import { pluginOptions } from './options';
+import type { pluginOptions } from './options';
 import { isProcessableLayerRule } from './is-processable-layer-rule';
+
+export type { pluginOptions } from './options';
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({

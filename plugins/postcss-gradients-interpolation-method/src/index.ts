@@ -205,9 +205,12 @@ const basePlugin = (opts) => {
 
 basePlugin.postcss = true;
 
-type pluginOptions = {
-	preserve?: boolean;
-	enableProgressiveCustomProperties?: boolean;
+/** postcss-gradients-interpolation-method plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+	/** Enable "@csstools/postcss-progressive-custom-properties". default: true */
+	enableProgressiveCustomProperties?: boolean,
 };
 
 // Transform gradient interpolation methods.

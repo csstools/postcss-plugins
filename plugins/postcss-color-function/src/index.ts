@@ -44,10 +44,13 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 
 basePlugin.postcss = true;
 
-type pluginOptions = {
+/** postcss-color-function plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
 	preserve?: boolean,
+	/** Enable "@csstools/postcss-progressive-custom-properties". default: true */
 	enableProgressiveCustomProperties?: boolean,
-}
+};
 
 /* Transform color() function in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {

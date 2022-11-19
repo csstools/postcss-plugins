@@ -259,6 +259,14 @@ h6.test-custom-selectors {
 	        order: 13;
 }
 
+.test-case-insensitive-attributes[frame=hsides i] {
+	-webkit-box-ordinal-group: 14;
+	-webkit-order: 13;
+	   -moz-box-ordinal-group: 14;
+	    -ms-flex-order: 13;
+	        order: 13;
+}
+
 .test-rebeccapurple-color {
 	color: #639;
 	color: rebeccapurple;

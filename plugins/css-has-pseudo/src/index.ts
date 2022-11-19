@@ -4,7 +4,7 @@ import { selectorSpecificity } from '@csstools/selector-specificity';
 import encodeCSS from './encode/encode.mjs';
 import { isGuardedByAtSupportsFromAtRuleParams } from './is-guarded-by-at-supports.js';
 
-/** css-blank-pseudo plugin options */
+/** css-has-pseudo plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: true */
 	preserve?: boolean,

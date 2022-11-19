@@ -30,5 +30,24 @@
 
 <envSupport>
 
+## Options
+
+### preserve
+
+The `preserve` option determines whether the original notation
+is preserved. By default, it is not preserved.
+
+```js
+<exportName>({ preserve: true })
+```
+
+```pcss
+<example.css>
+
+/* becomes */
+
+<example.preserve-true.expect.css>
+```
+
 <linkList>
 [Case Insensitive Attribute]: <specUrl>
