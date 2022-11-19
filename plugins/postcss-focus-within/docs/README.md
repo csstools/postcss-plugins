@@ -141,5 +141,18 @@ focusWithinInit({ replaceWith: '.focus-within });
 
 This option should be used if it was changed at PostCSS configuration level.
 
+### Using with Next.js
+
+Given that Next.js imports packages both on the browser and on the server, you need to make sure that the package is only imported on the browser.
+
+As outlined in the [Next.js documentation](https://nextjs.org/docs/advanced-features/dynamic-import#with-external-libraries), you need to load the package with a dynamic import:
+
+```jsx
+useEffect(async () => {
+	const focusWithinInit = (await import('<packageName>/browser')).default;
+	focusWithinInit();
+}, []);
+```
+
 <linkList>
 [Selectors Level 4 specification]: <specUrl>
