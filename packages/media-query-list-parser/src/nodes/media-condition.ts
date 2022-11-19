@@ -9,7 +9,7 @@ export class MediaCondition {
 
 	media: MediaNot | MediaInParens | MediaConditionListWithAnd | MediaConditionListWithOr;
 
-	constructor(media: MediaNot | MediaInParens |MediaConditionListWithAnd | MediaConditionListWithOr) {
+	constructor(media: MediaNot | MediaInParens | MediaConditionListWithAnd | MediaConditionListWithOr) {
 		this.media = media;
 	}
 

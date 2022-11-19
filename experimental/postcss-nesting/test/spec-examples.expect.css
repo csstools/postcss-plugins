@@ -366,14 +366,12 @@ figure {
 /* Example 7 */
 article {
 	color: green;
+
+	color: red;
 }
 :is(article) {
 		color: blue;
 	}
-article {
-
-	color: red;
-}
 
 /* Example 8 */
 .foo, .foo::before, .foo::after {

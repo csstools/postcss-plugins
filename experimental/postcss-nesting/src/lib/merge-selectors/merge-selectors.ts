@@ -71,4 +71,3 @@ export default function mergeSelectors(node: Node, postcssResult: Result, fromSe
 
 	return result;
 }
-

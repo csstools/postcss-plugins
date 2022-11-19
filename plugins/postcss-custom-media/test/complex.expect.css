@@ -58,85 +58,25 @@
 
 @media only screen {
 
-@media (width >= 570px) {
-
-@media (max-color:2147477350) and (max-color:2147477350) {
+@media (max-color:2147477350) and (width >= 570px) {
 	body {
 		background-color: green;
 	}
-}
-}
-
-@media not all and (width >= 570px) {
-
-@media (max-color:2147477350) and (color:2147477350) {
-	body {
-		background-color: green;
-	}
-}
 }
 }
 
 @media not screen {
 
-@media (width >= 570px) {
-
-@media (color:2147477350) and (max-color:2147477350) {
+@media (color:2147477350) and (width >= 570px) {
 	body {
 		background-color: green;
 	}
 }
 }
 
-@media not all and (width >= 570px) {
-
-@media (color:2147477350) and (color:2147477350) {
+@media (width >= 570px) and (width < 1000px) {
 	body {
 		background-color: green;
 	}
-}
-}
-}
-
-@media (width >= 570px) {
-
-@media (width < 1000px) {
-
-@media (max-color:2147477350) and (max-color:2147477350) {
-	body {
-		background-color: green;
-	}
-}
-}
-
-@media not all and (width < 1000px) {
-
-@media (max-color:2147477350) and (color:2147477350) {
-	body {
-		background-color: green;
-	}
-}
-}
-}
-
-@media not all and (width >= 570px) {
-
-@media (width < 1000px) {
-
-@media (color:2147477350) and (max-color:2147477350) {
-	body {
-		background-color: green;
-	}
-}
-}
-
-@media not all and (width < 1000px) {
-
-@media (color:2147477350) and (color:2147477350) {
-	body {
-		background-color: green;
-	}
-}
-}
 }
 /* #endregion https://github.com/csstools/postcss-custom-media/issues/51 */

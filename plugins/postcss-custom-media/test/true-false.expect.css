@@ -1,35 +1,13 @@
-@media (max-color:2147477350) {@media screen and (max-color:2147477350) {
-	.true {
-		order: 1;
-	}
-}
-}
-
-@media not all and (max-color:2147477350) {
-
-@media screen and (color:2147477350) {
-	.true {
-		order: 1;
-	}
-}
-}
-
-@media (color:2147477350) {
-
 @media screen and (max-color:2147477350) {
-	.false {
-		order: 2;
+	.true {
+		order: 1;
 	}
 }
-}
-
-@media not all and (color:2147477350) {
 
 @media screen and (color:2147477350) {
 	.false {
 		order: 2;
 	}
-}
 }
 
 @media (max-color:2147477350) {
