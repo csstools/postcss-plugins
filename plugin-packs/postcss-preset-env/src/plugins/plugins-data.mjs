@@ -140,6 +140,11 @@ export default [
 		'importName': 'postcssMediaMinmax',
 	},
 	{
+		'packageName': '@csstools/postcss-media-queries-aspect-ratio-number-values',
+		'id': 'media-queries-aspect-ratio-number-values',
+		'importName': 'postcssMediaQueriesAspectRatioNumberValues',
+	},
+	{
 		'packageName': 'postcss-nesting',
 		'id': 'nesting-rules',
 		'importName': 'postcssNesting',

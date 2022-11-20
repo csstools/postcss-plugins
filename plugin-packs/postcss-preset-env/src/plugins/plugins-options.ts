@@ -26,6 +26,7 @@ import type { pluginOptions as postcssImageSetFunction } from 'postcss-image-set
 import type { pluginOptions as postcssIsPseudoClass } from '@csstools/postcss-is-pseudo-class';
 import type { pluginOptions as postcssLabFunction } from 'postcss-lab-function';
 import type { pluginOptions as postcssLogical } from '../types/postcss-logical/plugin-options';
+import type { pluginOptions as postcssMediaQueriesAspectRatioNumberValues } from '@csstools/postcss-media-queries-aspect-ratio-number-values';
 import type { pluginOptions as postcssMediaMinmax } from '../types/postcss-media-minmax/plugin-options';
 import type { pluginOptions as postcssNestedCalc } from '@csstools/postcss-nested-calc';
 import type { pluginOptions as postcssNesting } from 'postcss-nesting';
@@ -101,6 +102,8 @@ export type pluginsOptions = {
 	'lab-function'?: postcssLabFunction | boolean
 	/** plugin options for "postcss-logical" */
 	'logical-properties-and-values'?: postcssLogical | boolean
+	/** plugin options for "@csstools/postcss-media-queries-aspect-ratio-number-values" */
+	'media-queries-aspect-ratio-number-values'?: postcssMediaQueriesAspectRatioNumberValues | boolean
 	/** plugin options for "postcss-media-minmax" */
 	'media-query-ranges'?: postcssMediaMinmax | boolean
 	/** plugin options for "@csstools/postcss-nested-calc" */

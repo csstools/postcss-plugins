@@ -369,8 +369,6 @@ Given they have no support they will always be enabled if they match by Stage:
 
 * `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md)
 * `custom-media-queries`: [Plugin](https://github.com/postcss/postcss-custom-media)
-* `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md)
-* `image-set-function`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function)
 * `media-query-ranges`: [Plugin](https://github.com/postcss/postcss-media-minmax)
 * `nesting-rules`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting)
 

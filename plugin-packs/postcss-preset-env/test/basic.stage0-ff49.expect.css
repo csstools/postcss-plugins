@@ -543,3 +543,7 @@ h6.test-custom-selectors {
 		content: ":scope in @scope, but with nesting";
 	}
 }
+
+@media (min-aspect-ratio: 1.77) {
+	/* media query aspect ratio : <number> */
+}
