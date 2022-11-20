@@ -146,5 +146,20 @@ Please note that using a class, leverages `classList` under the hood which
 might  not be supported on some old browsers such as IE9, so you may need 
 to polyfill `classList` in those cases.
 
+### Using with Next.js
+
+Given that Next.js imports packages both on the browser and on the server, you need to make sure that the package is only imported on the browser.
+
+As outlined in the [Next.js documentation](https://nextjs.org/docs/advanced-features/dynamic-import#with-external-libraries), you need to load the package with a dynamic import:
+
+```jsx
+useEffect(async () => {
+	const cssBlankPseudoInit = (await import('<packageName>/browser')).default;
+	cssBlankPseudoInit();
+}, []);
+```
+
+We recommend you load the polyfill as high up on your Next application as possible, such as your `pages/_app.ts` file.
+
 <linkList>
 [Selectors Level 4]: <specUrl>
