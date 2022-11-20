@@ -68,24 +68,32 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					const modifiedValue = transform(tokens, result, decl, decl.value, options);
-					if (modifiedValue === decl.value) {
-						return;
-					}
+					try {
+						const modifiedValue = transform(tokens, result, decl, decl.value, options);
+						if (modifiedValue === decl.value) {
+							return;
+						}
 
-					decl.value = modifiedValue;
+						decl.value = modifiedValue;
+					} catch (err) {
+						decl.warn(result, `Failed to parse and transform "${decl.value}"`);
+					}
 				},
 				AtRule(atRule, { result }) {
 					if (!atRule.params.toLowerCase().includes(options.valueFunctionName)) {
 						return;
 					}
 
-					const modifiedValue = transform(tokens, result, atRule, atRule.params, options);
-					if (modifiedValue === atRule.params) {
-						return;
-					}
+					try {
+						const modifiedValue = transform(tokens, result, atRule, atRule.params, options);
+						if (modifiedValue === atRule.params) {
+							return;
+						}
 
-					atRule.params = modifiedValue;
+						atRule.params = modifiedValue;
+					} catch(err) {
+						atRule.warn(result, `Failed to parse and transform "${atRule.params}"`);
+					}
 				},
 			};
 		},

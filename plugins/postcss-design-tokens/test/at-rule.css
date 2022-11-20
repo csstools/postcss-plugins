@@ -12,7 +12,7 @@
 	}
 }
 
-@supports (min-width: rgb(design-token('lists.comma'))) {
+@supports (color: rgb(design-token('lists.comma'))) {
 	.foo {
 		order: 3;
 	}

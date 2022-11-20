@@ -10,7 +10,7 @@
 	}
 }
 
-@supports (min-width: rgb(255, 0, 255)) {
+@supports (color: rgb(255, 0, 255)) {
 	.foo {
 		order: 3;
 	}
