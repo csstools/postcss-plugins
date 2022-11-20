@@ -8,6 +8,7 @@ import { parseComponentValues } from './parse-component-values';
 export function transform(tokens: Map<string, Token>, result: Result, postCSSNode: Node, source: string, opts: parsedPluginOptions) {
 	const componentValues = parseComponentValues(source);
 
+	let didChangeSomething = false;
 	componentValues.forEach((componentValue, index) => {
 		if (!('walk' in componentValue)) {
 			return;
@@ -17,6 +18,7 @@ export function transform(tokens: Map<string, Token>, result: Result, postCSSNod
 			const replacements = transformComponentValue(componentValue, tokens, result, postCSSNode, opts);
 			if (replacements) {
 				componentValues.splice(index, 1, ...replacements);
+				didChangeSomething = true;
 				return;
 			}
 		}
@@ -30,10 +32,15 @@ export function transform(tokens: Map<string, Token>, result: Result, postCSSNod
 			const replacements = transformComponentValue(entry.node, tokens, result, postCSSNode, opts);
 			if (replacements) {
 				entry.parent.value.splice(nodeIndex, 1, ...replacements);
+				didChangeSomething = true;
 				return false;
 			}
 		});
 	});
+
+	if (!didChangeSomething) {
+		return source;
+	}
 
 	return componentValues.map((x) => x.toString()).join('');
 }
