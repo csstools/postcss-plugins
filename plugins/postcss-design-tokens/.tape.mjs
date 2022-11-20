@@ -11,6 +11,9 @@ postcssTape(plugin)({
 		],
 		warnings: 1
 	},
+	'at-rule': {
+		message: "supports at rules",
+	},
 	'units': {
 		message: "supports units usage",
 		plugins: [

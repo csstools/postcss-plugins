@@ -187,7 +187,7 @@ The `@design-tokens` rule is used to import design tokens from a JSON file into 
 @design-tokens url('./tokens-dark-mode.json') format('style-dictionary3') when('dark');
 ```
 
-You can also import tokens from an `npm` pacakge:
+You can also import tokens from an `npm` package:
 
 ```pcss
 @design-tokens url('node_modules://my-npm-package/tokens.json') format('style-dictionary3');

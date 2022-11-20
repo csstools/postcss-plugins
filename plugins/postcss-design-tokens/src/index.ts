@@ -3,7 +3,7 @@ import { Token } from './data-formats/base/token';
 import { tokensFromImport } from './data-formats/parse-import';
 import { mergeTokens } from './data-formats/token';
 import { parsePluginOptions, pluginOptions } from './options';
-import { onCSSValue } from './values';
+import { transform } from './transform';
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = parsePluginOptions(opts);
@@ -68,12 +68,24 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					const modifiedValue = onCSSValue(tokens, result, decl, options);
+					const modifiedValue = transform(tokens, result, decl, decl.value, options);
 					if (modifiedValue === decl.value) {
 						return;
 					}
 
 					decl.value = modifiedValue;
+				},
+				AtRule(atRule, { result }) {
+					if (!atRule.params.toLowerCase().includes(options.valueFunctionName)) {
+						return;
+					}
+
+					const modifiedValue = transform(tokens, result, atRule, atRule.params, options);
+					if (modifiedValue === atRule.params) {
+						return;
+					}
+
+					atRule.params = modifiedValue;
 				},
 			};
 		},
