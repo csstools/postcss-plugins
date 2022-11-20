@@ -6,9 +6,10 @@ import { initializeSharedOptions } from './lib/shared-options.mjs';
 import { listFeatures } from './lib/list-features.mjs';
 import { newLogger } from './log/helper.mjs';
 import { pluginIdHelp } from './plugins/plugin-id-help.mjs';
+import type { pluginOptions } from './options';
+export type { pluginOptions } from './options';
 
-
-const plugin = (opts) => {
+const plugin = (opts: pluginOptions) => {
 	const logger = newLogger();
 
 	// initialize options

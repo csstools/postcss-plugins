@@ -27,7 +27,30 @@ export const pluginsById = new Map(
 	return result;
 }
 
+function generatePluginOptions(data) {
+	const plugins = data.slice(0).sort((a, b) => a.id.localeCompare(b.id));
+	let result = '';
+
+	for (let i = 0; i < plugins.length; i++) {
+		const plugin = plugins[i];
+		result += `import type { pluginOptions as ${plugin.importName} } from '${plugin.importedPackage || plugin.packageName}';\n`;
+	}
+
+	result += '\nexport type pluginsOptions = {\n';
+
+	for (let i = 0; i < plugins.length; i++) {
+		const plugin = plugins[i];
+		result += `\t/** plugin options for "${plugin.importedPackage || plugin.packageName}" */\n`;
+		result += `\t'${plugin.id}'?: ${plugin.importName} | boolean\n`;
+	}
+
+	result += '};\n';
+
+	return result;
+}
+
 await Promise.all([
 	writeFile('./src/plugins/plugins-data.mjs', esmPlugins),
 	writeFile('./src/plugins/plugins-by-id.mjs', generatePluginsByID(pluginsData)),
+	writeFile('./src/plugins/plugins-options.ts', generatePluginOptions(pluginsData)),
 ]);
