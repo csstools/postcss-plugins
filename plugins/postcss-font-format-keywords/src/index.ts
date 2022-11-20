@@ -11,7 +11,13 @@ const keywords = [
 	'svg',
 ];
 
-const creator: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
+/** postcss-font-format-keywords plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
 
 	return {

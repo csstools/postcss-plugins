@@ -2,8 +2,8 @@ import type { PluginCreator } from 'postcss';
 import { transformModFunction, modFunctionCheck } from './mod';
 import { transformRemFunction, remFunctionCheck } from './rem';
 import { transformRoundFunction, roundFunctionCheck } from './round';
-
-export type pluginOptions = { preserve?: boolean, onInvalid?: string };
+import type { pluginOptions } from './options';
+export type { pluginOptions } from './options';
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(

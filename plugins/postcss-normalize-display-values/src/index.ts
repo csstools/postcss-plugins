@@ -26,7 +26,13 @@ function transform(value) {
 	return match;
 }
 
-const creator: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
+/** postcss-normalize-display-values plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+};
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
 
 	return {

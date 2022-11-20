@@ -1,4 +1,7 @@
 import { readFile, writeFile } from 'fs/promises';
+import { existsSync } from 'fs';
+import path from 'path';
+
 const pluginsData = await readFile('./scripts/plugins-data.json', 'utf8').then(JSON.parse);
 
 const esmPlugins = `export default ${JSON.stringify(pluginsData, null, 2)}\n`;
@@ -33,14 +36,19 @@ function generatePluginOptions(data) {
 
 	for (let i = 0; i < plugins.length; i++) {
 		const plugin = plugins[i];
-		result += `import type { pluginOptions as ${plugin.importName} } from '${plugin.importedPackage || plugin.packageName}';\n`;
+
+		if (existsSync(path.join('./src/types/', plugin.packageName, 'plugin-options.ts'))) {
+			result += `import type { pluginOptions as ${plugin.importName} } from '${path.join('../types/', plugin.packageName, 'plugin-options')}';\n`;
+		} else {
+			result += `import type { pluginOptions as ${plugin.importName} } from '${plugin.packageName}';\n`;
+		}
 	}
 
 	result += '\nexport type pluginsOptions = {\n';
 
 	for (let i = 0; i < plugins.length; i++) {
 		const plugin = plugins[i];
-		result += `\t/** plugin options for "${plugin.importedPackage || plugin.packageName}" */\n`;
+		result += `\t/** plugin options for "${plugin.packageName}" */\n`;
 		result += `\t'${plugin.id}'?: ${plugin.importName} | boolean\n`;
 	}
 

@@ -1,10 +1,10 @@
-import type { pluginOptions as postcssInitial } from 'postcss-initial';
+import type { pluginOptions as postcssInitial } from '../types/postcss-initial/plugin-options';
 import type { pluginOptions as postcssPseudoClassAnyLink } from 'postcss-pseudo-class-any-link';
 import type { pluginOptions as postcssBlankPseudo } from 'css-blank-pseudo';
-import type { pluginOptions as postcssPageBreak } from 'postcss-page-break';
+import type { pluginOptions as postcssPageBreak } from '../types/postcss-page-break/plugin-options';
 import type { pluginOptions as postcssCascadeLayers } from '@csstools/postcss-cascade-layers';
 import type { pluginOptions as postcssAttributeCaseInsensitive } from 'postcss-attribute-case-insensitive';
-import type { pluginOptions as postcssClamp } from 'postcss-clamp';
+import type { pluginOptions as postcssClamp } from '../types/postcss-clamp/plugin-options';
 import type { pluginOptions as postcssColorFunction } from '@csstools/postcss-color-function';
 import type { pluginOptions as postcssColorFunctionalNotation } from 'postcss-color-functional-notation';
 import type { pluginOptions as postcssCustomMedia } from 'postcss-custom-media';
@@ -16,7 +16,7 @@ import type { pluginOptions as postcssDoublePositionGradients } from 'postcss-do
 import type { pluginOptions as postcssFocusVisible } from 'postcss-focus-visible';
 import type { pluginOptions as postcssFocusWithin } from 'postcss-focus-within';
 import type { pluginOptions as postcssFontFormatKeywords } from '@csstools/postcss-font-format-keywords';
-import type { pluginOptions as postcssFontVariant } from 'postcss-font-variant';
+import type { pluginOptions as postcssFontVariant } from '../types/postcss-font-variant/plugin-options';
 import type { pluginOptions as postcssGapProperties } from 'postcss-gap-properties';
 import type { pluginOptions as postcssHasPseudo } from 'css-has-pseudo';
 import type { pluginOptions as postcssColorHexAlpha } from 'postcss-color-hex-alpha';
@@ -25,21 +25,21 @@ import type { pluginOptions as postcssICUnit } from '@csstools/postcss-ic-unit';
 import type { pluginOptions as postcssImageSetFunction } from 'postcss-image-set-function';
 import type { pluginOptions as postcssIsPseudoClass } from '@csstools/postcss-is-pseudo-class';
 import type { pluginOptions as postcssLabFunction } from 'postcss-lab-function';
-import type { pluginOptions as postcssLogical } from 'postcss-logical';
-import type { pluginOptions as postcssMediaMinmax } from 'postcss-media-minmax';
+import type { pluginOptions as postcssLogical } from '../types/postcss-logical/plugin-options';
+import type { pluginOptions as postcssMediaMinmax } from '../types/postcss-media-minmax/plugin-options';
 import type { pluginOptions as postcssNestedCalc } from '@csstools/postcss-nested-calc';
 import type { pluginOptions as postcssNesting } from 'postcss-nesting';
 import type { pluginOptions as postcssSelectorNot } from 'postcss-selector-not';
 import type { pluginOptions as postcssOKLabFunction } from '@csstools/postcss-oklab-function';
-import type { pluginOptions as postcssOpacityPercentage } from 'postcss-opacity-percentage';
+import type { pluginOptions as postcssOpacityPercentage } from '../types/postcss-opacity-percentage/plugin-options';
 import type { pluginOptions as postcssOverflowShorthand } from 'postcss-overflow-shorthand';
-import type { pluginOptions as postcssReplaceOverflowWrap } from 'postcss-replace-overflow-wrap';
+import type { pluginOptions as postcssReplaceOverflowWrap } from '../types/postcss-replace-overflow-wrap/plugin-options';
 import type { pluginOptions as postcssPlace } from 'postcss-place';
 import type { pluginOptions as postcssPrefersColorScheme } from 'css-prefers-color-scheme';
 import type { pluginOptions as postcssColorRebeccapurple } from 'postcss-color-rebeccapurple';
 import type { pluginOptions as postcssScopePseudoClass } from '@csstools/postcss-scope-pseudo-class';
 import type { pluginOptions as postcssSteppedValueFunctions } from '@csstools/postcss-stepped-value-functions';
-import type { pluginOptions as postcssFontFamilySystemUI } from '../patch/postcss-system-ui-font-family.mjs';
+import type { pluginOptions as postcssFontFamilySystemUI } from '../types/postcss-system-ui-font-family/plugin-options';
 import type { pluginOptions as postcssTextDecorationShorthand } from '@csstools/postcss-text-decoration-shorthand';
 import type { pluginOptions as postcssTrigonometricFunctions } from '@csstools/postcss-trigonometric-functions';
 import type { pluginOptions as postcssUnsetValue } from '@csstools/postcss-unset-value';
@@ -127,7 +127,7 @@ export type pluginsOptions = {
 	'scope-pseudo-class'?: postcssScopePseudoClass | boolean
 	/** plugin options for "@csstools/postcss-stepped-value-functions" */
 	'stepped-value-functions'?: postcssSteppedValueFunctions | boolean
-	/** plugin options for "../patch/postcss-system-ui-font-family.mjs" */
+	/** plugin options for "postcss-system-ui-font-family" */
 	'system-ui-font-family'?: postcssFontFamilySystemUI | boolean
 	/** plugin options for "@csstools/postcss-text-decoration-shorthand" */
 	'text-decoration-shorthand'?: postcssTextDecorationShorthand | boolean

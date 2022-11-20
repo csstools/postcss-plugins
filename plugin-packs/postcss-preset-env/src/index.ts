@@ -7,9 +7,10 @@ import { listFeatures } from './lib/list-features.mjs';
 import { newLogger } from './log/helper.mjs';
 import { pluginIdHelp } from './plugins/plugin-id-help.mjs';
 import type { pluginOptions } from './options';
+import type { PluginCreator } from 'postcss';
 export type { pluginOptions } from './options';
 
-const plugin = (opts: pluginOptions) => {
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const logger = newLogger();
 
 	// initialize options
@@ -59,6 +60,6 @@ const plugin = (opts: pluginOptions) => {
 	};
 };
 
-plugin.postcss = true;
+creator.postcss = true;
 
-export default plugin;
+export default creator;

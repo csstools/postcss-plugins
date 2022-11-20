@@ -1,8 +1,11 @@
 import type { PluginCreator } from 'postcss';
 import { transformMediaQueryList } from './transform-media-query-list';
 
-type pluginOptions = { preserve?: boolean };
-
+/** postcss-media-queries-aspect-ratio-number-values plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(

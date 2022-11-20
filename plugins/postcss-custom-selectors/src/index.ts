@@ -2,12 +2,13 @@ import type { PluginCreator } from 'postcss';
 import getCustomSelectors from './custom-selectors-from-root';
 import transformRule from './transform-rule';
 
-export interface PluginOptions {
-	/** Determines whether Custom Selectors and selectors using custom selectors should be preserved in their original form. */
-	preserve?: boolean
-}
+/** postcss-custom-selectors plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
 
-const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	// whether to preserve custom selectors and rules using them
 	const preserve = Boolean(Object(opts).preserve);
 

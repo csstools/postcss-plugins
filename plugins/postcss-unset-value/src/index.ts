@@ -1,11 +1,11 @@
 import type { PluginCreator } from 'postcss';
 import { inherited, nonInherited } from './property-def';
 
-type pluginOptions = {
-	// Preserve the original declaration.
-	// Default: false
-	preserve: boolean;
-}
+/** postcss-unset-value plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
 
 // Convert "unset" to "inherit" or "initial" based on the property definition.
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {

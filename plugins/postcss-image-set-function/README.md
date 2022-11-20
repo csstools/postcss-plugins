@@ -115,18 +115,18 @@ postcssImageSetFunction({ preserve: false })
 }
 ```
 
-### onvalid
+### onInvalid
 
-The `oninvalid` option determines how invalid usage of `image-set()` should be
-handled. By default, invalid usages of `image-set()` are ignored. They can be
-configured to display a `warning` or `throw` an error.
+The `onInvalid` option determines how invalid usage of `image-set()` should be
+handled. By default, invalid usages of `image-set()` are ignored.
+They can be configured to emit a warning with `warn` or throw an exception with `throw`.
 
 ```js
-postcssImageSetFunction({ oninvalid: 'warning' }) // warn on invalid usages
+postcssImageSetFunction({ onInvalid: 'warn' }) // warn on invalid usages
 ```
 
 ```js
-postcssImageSetFunction({ oninvalid: 'throw' }) // throw on invalid usages
+postcssImageSetFunction({ onInvalid: 'throw' }) // throw on invalid usages
 ```
 
 ## Image Resolution

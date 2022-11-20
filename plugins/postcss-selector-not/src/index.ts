@@ -21,7 +21,10 @@ function cleanupWhitespace(node) {
 	}
 }
 
-const creator: PluginCreator<never> = () => {
+/** postcss-selector-not plugin options */
+export type pluginOptions = Record<string, never>;
+
+const creator: PluginCreator<pluginOptions> = () => {
 	return {
 		postcssPlugin: 'postcss-selector-not',
 		Rule: (rule, { result }) => {

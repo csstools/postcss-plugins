@@ -468,7 +468,6 @@ h6.test-custom-selectors {
 	width: auto;
 	word-spacing: normal;
 	z-index: auto;
-	all: initial;
 	-webkit-box-ordinal-group: 21;
 	-webkit-order: 20;
 	   -moz-box-ordinal-group: 21;
@@ -542,6 +541,7 @@ h6.test-custom-selectors {
 	    -ms-flex-order: 25;
 	        order: 25;
 	word-wrap: break-word;
+	overflow-wrap: break-word;
 }
 
 .test-focus-visible-pseudo-class:focus-visible {
@@ -952,7 +952,6 @@ h6.test-custom-selectors {
 }
 
 .unset {
-	clip: initial;
 	clip: unset;
 }
 

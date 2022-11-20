@@ -2,7 +2,7 @@ import type { PluginCreator } from 'postcss';
 import selectorParser from 'postcss-selector-parser';
 import { extract } from './select-nodes';
 
-type pluginOptions = {
+export type pluginOptions = {
 	/** Mapping of queries */
 	queries: Record<string, string>,
 	/** Extract after transforms are likely to be done, or before it */

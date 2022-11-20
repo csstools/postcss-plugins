@@ -1,7 +1,11 @@
 import type { AtRule, Container, Node, PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
 
-type pluginOptions = { preserve?: boolean };
+/** postcss-scope-pseudo-class plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(

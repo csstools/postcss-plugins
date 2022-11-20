@@ -2,7 +2,7 @@ import { PluginCreator } from 'postcss';
 import type { Rule } from 'postcss';
 import valuesParser from 'postcss-value-parser';
 
-type pluginOptions = {
+export type pluginOptions = {
 	functionName: string;
 }
 

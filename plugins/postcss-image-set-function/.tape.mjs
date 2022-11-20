@@ -19,7 +19,7 @@ postcssTape(plugin)({
 	'invalid:warn': {
 		message: 'warns invalid usage when { onvalid: "warn" }',
 		options: {
-			oninvalid: 'warn'
+			onInvalid: 'warn'
 		},
 		expect: 'invalid.css',
 		result: 'invalid.css',
@@ -28,7 +28,7 @@ postcssTape(plugin)({
 	'invalid:throw': {
 		message: 'throws invalid usage when { onvalid: "throw" }',
 		options: {
-			oninvalid: 'throw'
+			onInvalid: 'throw'
 		},
 		expect: 'invalid.css',
 		result: 'invalid.css',
