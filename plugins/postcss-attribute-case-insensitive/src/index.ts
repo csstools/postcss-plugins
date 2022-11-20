@@ -37,7 +37,6 @@ function createSensitiveAttributes(attribute) {
 			insensitive: false,
 		});
 
-		newAttribute.raws.insensitiveFlag = undefined;
 		newAttribute.setValue(x);
 
 		return newAttribute;

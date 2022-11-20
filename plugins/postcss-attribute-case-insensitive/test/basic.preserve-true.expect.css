@@ -42,13 +42,19 @@
 	order: 5.1;
 }
 
-[foo="c"i] {
-	/* https: //github.com/postcss/postcss-selector-parser/pull/267 */
+[foo="c"],[foo="C"] {
 	order: 5.2;
 }
 
+[foo="c"i] {
+	order: 5.2;
+}
+
+[foo="d"],[foo="D"] {
+	order: 5.3;
+}
+
 [foo="d"I] {
-	/* https: //github.com/postcss/postcss-selector-parser/pull/267 */
 	order: 5.3;
 }
 
