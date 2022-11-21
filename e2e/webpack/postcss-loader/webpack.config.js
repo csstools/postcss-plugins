@@ -1,4 +1,7 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const plugin = require('postcss-custom-media-8.0.2');
 
 module.exports = {
 	mode: 'production',
@@ -18,7 +21,7 @@ module.exports = {
 			{
 				test: /\.css$/i,
 				use: [
-					'style-loader',
+					MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
 						options: { importLoaders: 1 },
@@ -29,11 +32,8 @@ module.exports = {
 							postcssOptions: {
 								plugins: [
 									[
-										'postcss-preset-env',
-										{
-											stage: 0,
-											browsers: 'ie >= 10',
-										},
+										// presetEnv,
+										plugin(),
 									],
 								],
 							},
@@ -43,4 +43,9 @@ module.exports = {
 			},
 		],
 	},
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: '[name].css',
+		}),
+	],
 };

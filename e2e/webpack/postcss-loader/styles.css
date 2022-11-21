@@ -5,3 +5,15 @@
 .a {
 	color: var(--c);
 }
+
+@media (--tablet-up) {
+	.a {
+			color: pink;
+		}
+}
+
+@media (--tablet-down) {
+	.a {
+		color: hotpink;
+	}
+}
