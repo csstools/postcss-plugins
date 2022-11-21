@@ -71,6 +71,7 @@
 		"postcss-plugin"
 	],
 	"csstools": {
+		"assumesToProcessBundledCSS": true,
 		"exportName": "postcssDesignTokens",
 		"humanReadableName": "PostCSS Design Tokens"
 	},

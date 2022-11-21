@@ -73,6 +73,7 @@
 		"w3c"
 	],
 	"csstools": {
+		"assumesToProcessBundledCSS": true,
 		"cssdbId": "custom-properties",
 		"exportName": "postcssCustomProperties",
 		"humanReadableName": "PostCSS Custom Properties",

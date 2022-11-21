@@ -11,6 +11,9 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+⚠️ [PostCSS Cascade Layers] assumes to process your complete CSS bundle.<br>If your build tool processes files individually or in parallel the output will be incorrect.<br>Use [`postcss-import`](https://www.npmjs.com/package/postcss-import) and `@import` statements to make sure your CSS is bundled before it is processed by this plugin.
+
+
 ## Node
 
 Add [PostCSS Cascade Layers] to your project:
@@ -122,6 +125,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									["postcss-import"],
 									[
 										"@csstools/postcss-cascade-layers",
 										{

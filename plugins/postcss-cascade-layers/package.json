@@ -86,6 +86,7 @@
 		"specificity"
 	],
 	"csstools": {
+		"assumesToProcessBundledCSS": true,
 		"cssdbId": "cascade-layers",
 		"exportName": "postcssCascadeLayers",
 		"humanReadableName": "PostCSS Cascade Layers",
