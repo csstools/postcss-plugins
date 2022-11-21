@@ -191,3 +191,9 @@
 }
 
 @custom-media trailer-- (min-width: 320px);
+
+@media (min-width: 768px) {
+	a {
+		color: red;
+	}
+}

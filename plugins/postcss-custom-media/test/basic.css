@@ -130,3 +130,11 @@
 }
 
 @custom-media trailer-- (min-width: 320px);
+
+@custom-media --tabletUp (min-width: 768px);
+
+@media (--tabletUp) {
+	a {
+		color: red;
+	}
+}
