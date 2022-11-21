@@ -31,6 +31,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					customMedia = getCustomMedia(root, result, { preserve: preserve });
 				},
 				AtRule: (atRule, { result }) => {
+					if (atRule.name.toLowerCase() !== 'media') {
+						return;
+					}
+					
 					if (!atRule.params) {
 						return;
 					}
