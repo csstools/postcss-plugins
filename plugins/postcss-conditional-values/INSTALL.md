@@ -11,7 +11,7 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
-⚠️ [PostCSS Conditional Values] assumes to process your complete CSS bundle.<br>If your build tool processes files individually or in parallel the output will be incorrect.<br>Use [`postcss-import`](https://www.npmjs.com/package/postcss-import) and `@import` statements to make sure your CSS is bundled before it is processed by this plugin.
+⚠️ [PostCSS Conditional Values] assumes to process your complete CSS bundle.<br>If your build tool processes files individually or in parallel the output will be incorrect.<br>Using [`postcss-import`](https://www.npmjs.com/package/postcss-import) and `@import` statements is one way to make sure your CSS is bundled before it is processed by this plugin.
 
 
 ## Node
