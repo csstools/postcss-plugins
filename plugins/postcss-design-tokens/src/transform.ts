@@ -19,7 +19,7 @@ export function transform(tokens: Map<string, Token>, result: Result, postCSSNod
 			if (replacements) {
 				componentValues.splice(index, 1, ...replacements);
 				didChangeSomething = true;
-				return;
+				return false;
 			}
 		}
 
