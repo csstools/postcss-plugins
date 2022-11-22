@@ -16,7 +16,7 @@
 
 <header>
 
-[<humanReadableName>] lets you import or export `@custom-selector`'s into or out of your CSS.
+[<humanReadableName>] lets you import or export CSS custom properties (`--foo: pink;`) into or out of your CSS.
 
 <usage>
 
@@ -26,33 +26,36 @@
 
 ### importFrom
 
-The `importFrom` option specifies sources where custom selectors can be
+The `importFrom` option specifies sources where custom properties can be
 imported from, which might be CSS, JS, and JSON files, functions, and directly
 passed objects.
 
 ```js
 <exportName>({
-	importFrom: 'path/to/file.css' // => @custom-selector :--heading h1, h2, h3;
+	importFrom: 'path/to/file.css' // => :root { --color: var(rgb(245 20 255)); }
 });
 ```
 
 ```pcss
-article :--heading + p {
-	margin-top: 0;
+article {
+	color: var(--color);
 }
 
 /* becomes */
 
-@custom-selector :--heading h1, h2, h3;
-article :--heading+p {
-	margin-top: 0;
+article {
+	color: var(--color);
+}
+
+:root {
+	--color: var(rgb(245 20 255));
 }
 ```
 
 Multiple sources can be passed into this option, and they will be parsed in the
 order they are received. JavaScript files, JSON files, functions, and objects
-will need to namespace custom selectors using the `customSelectors` or
-`custom-selectors` key.
+will need to namespace custom properties using the `customProperties` or
+`custom-properties` key.
 
 ```js
 <exportName>({
@@ -61,12 +64,12 @@ will need to namespace custom selectors using the `customSelectors` or
 		'and/then/this.js',
 		'and/then/that.json',
 		{
-			customSelectors: { ':--heading': 'h1, h2, h3' }
+			customProperties: { '--color': 'var(rgb(245 20 255))' }
 		},
 		() => {
-			const customSelectors = { ':--heading': 'h1, h2, h3' };
+			const customProperties = { '--color': 'var(rgb(245 20 255))' };
 
-			return { customSelectors };
+			return { customProperties };
 		}
 	]
 });
@@ -74,46 +77,46 @@ will need to namespace custom selectors using the `customSelectors` or
 
 ### overrideImportFromWithRoot
 
-The `overrideImportFromWithRoot` option determines if selectors added via `importFrom` are overridden by selectors that exist in the root of your CSS.
-Defaults to `true`.
+The `overrideImportFromWithRoot` option determines if properties added via `importFrom` are overridden by properties that exist in `:root`.
+Defaults to `false`.
 
 _override `importFrom` with `root`_
 
 ```js
 <exportName>({
-	overrideImportFromWithRoot: false
+  overrideImportFromWithRoot: true
 });
 ```
 
 ### exportTo
 
-The `exportTo` option specifies destinations where custom selectors can be
+The `exportTo` option specifies destinations where custom properties can be
 exported to, which might be CSS, JS, and JSON files, functions, and directly
 passed objects.
 
 ```js
 <exportName>({
-	exportTo: 'path/to/file.css' // @custom-selector :--heading h1, h2, h3;
+	exportTo: 'path/to/file.css' // :root { --color: var(rgb(245 20 255)); }
 });
 ```
 
 Multiple destinations can be passed into this option, and they will be parsed
 in the order they are received. JavaScript files, JSON files, and objects will
-need to namespace custom selectors using the `customSelectors` or
-`custom-Selectors` key.
+need to namespace custom properties using the `customProperties` or
+`custom-properties` key.
 
 ```js
-const cachedObject = { customSelectors: {} };
+const cachedObject = { customProperties: {} };
 
 <exportName>({
 	exportTo: [
-		'path/to/file.css',   // @custom-selector :--heading h1, h2, h3;
-		'and/then/this.js',   // module.exports = { customSelectors: { ':--heading': 'h1, h2, h3' } }
-		'and/then/this.mjs',  // export const customSelectors = { ':--heading': 'h1, h2, h3' } }
-		'and/then/that.json', // { "custom-selectors": { ":--heading": "h1, h2, h3" } }
+		'path/to/file.css',   // :root { --color: var(rgb(245 20 255)); }
+		'and/then/this.js',   // module.exports = { customProperties: { '--color': 'var(rgb(245 20 255))' } }
+		'and/then/this.mjs',  // export const customProperties = { '--color': 'var(rgb(245 20 255))' } }
+		'and/then/that.json', // { "custom-properties": { "--color": "var(rgb(245 20 255))" } }
 		cachedObject,
-		(customSelectors) => {
-			customSelectors    // { ':--heading': 'h1, h2, h3' }
+		(customProperties) => {
+			customProperties    // { '--color': 'var(rgb(245 20 255))' }
 		}
 	]
 });

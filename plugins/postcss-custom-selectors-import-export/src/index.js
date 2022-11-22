@@ -3,8 +3,7 @@ import importCustomSelectorsFromSources from './import-from';
 import exportCustomSelectorsToDestinations from './export-to';
 
 const creator = (opts) => {
-	// whether to preserve custom selectors and rules using them
-	const preserve = Boolean(Object(opts).preserve);
+	const overrideImportFromWithRoot = 'overrideImportFromWithRoot' in Object(opts) ? Boolean(opts.overrideImportFromWithRoot) : true;
 
 	// sources to import custom selectors from
 	const importFrom = [].concat(Object(opts).importFrom || []);
@@ -17,53 +16,46 @@ const creator = (opts) => {
 
 	return {
 		postcssPlugin: 'postcss-custom-selectors-import-export',
-		Once: async (root, { AtRule }) => {
+		Once: async (root, { result, postcss }) => {
 			const importedSelectors = await customSelectorsPromise;
 
-			const allCustomSelectors = Object.assign(
-				{},
-				importedSelectors,
-				getCustomSelectors(root, { preserve }),
-			);
+			let allCustomSelectors;
+			if (overrideImportFromWithRoot) {
+				allCustomSelectors = Object.assign(
+					{},
+					importedSelectors,
+					getCustomSelectors(root),
+				);
+			} else {
+				allCustomSelectors = Object.assign(
+					{},
+					getCustomSelectors(root),
+					importedSelectors,
+				);
+			}
 
 			await exportCustomSelectorsToDestinations(allCustomSelectors, exportTo);
 
 			if (importedSelectors) {
 				const selectorNames = Object.keys(importedSelectors);
+				// Inserting in reverse order results in the correct order.
 				selectorNames.reverse();
 
-				const lastCustomSelector = root.nodes.find((node) => {
-					return node.type === 'atrule' && node.name === 'custom-selector';
-				});
-
-				if (lastCustomSelector) {
-					selectorNames.forEach((selectorName) => {
-						lastCustomSelector.before(new AtRule({
-							name: 'custom-selector',
-							params: `${selectorName} ${importedSelectors[selectorName].toString()}`,
-							source: {
-								input: {
-									from: root.input?.from ?? 'postcss-custom-selectors-import-export',
-								},
-								start: { line: 1, column: 1 },
-								end: { line: 1, column: 1 },
-							},
-						}));
-					});
-
-					return;
+				let operator = 'prepend';
+				if (!overrideImportFromWithRoot) {
+					operator = 'append';
 				}
 
 				selectorNames.forEach((selectorName) => {
-					root.prepend(new AtRule({
+					root[operator](postcss.atRule({
 						name: 'custom-selector',
 						params: `${selectorName} ${importedSelectors[selectorName].toString()}`,
 						source: {
 							input: {
-								from: root.input?.from ?? 'postcss-custom-selectors-import-export',
+								from: result.opts.from,
 							},
-							start: { line: 1, column: 1 },
-							end: { line: 1, column: 1 },
+							start: { offset: 0, line: 1, column: 1 },
+							end: { offset: 0, line: 1, column: 1 },
 						},
 					}));
 				});

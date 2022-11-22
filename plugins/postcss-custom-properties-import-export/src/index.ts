@@ -1,18 +1,10 @@
-import type { PluginCreator } from 'postcss';
-import type valuesParser from 'postcss-value-parser';
-
-import getCustomPropertiesFromRoot from './lib/get-custom-properties-from-root';
 import getCustomPropertiesFromImports from './lib/get-custom-properties-from-imports';
-import transformProperties from './lib/transform-properties';
+import getCustomPropertiesFromRoot from './lib/get-custom-properties-from-root';
 import writeCustomPropertiesToExports from './lib/write-custom-properties-to-exports';
 import type { ImportOptions, ExportOptions } from './lib/options';
+import type { PluginCreator } from 'postcss';
 
 export interface PluginOptions {
-	/** Do not emit warnings about "importFrom" and "exportTo" deprecations */
-	disableDeprecationNotice?: boolean;
-	/** Determines whether Custom Properties and properties using custom properties should be preserved in their original form. */
-	preserve?: boolean
-
 	/** Specifies sources where Custom Properties can be imported from, which might be CSS, JS, and JSON files, functions, and directly passed objects. */
 	importFrom?: ImportOptions | Array<ImportOptions>
 
@@ -24,10 +16,7 @@ export interface PluginOptions {
 }
 
 const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
-	// whether to preserve custom selectors and rules using them
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
 	const overrideImportFromWithRoot = 'overrideImportFromWithRoot' in Object(opts) ? Boolean(opts.overrideImportFromWithRoot) : false;
-	const disableDeprecationNotice = 'disableDeprecationNotice' in Object(opts) ? Boolean(opts.disableDeprecationNotice) : false;
 
 	// sources to import custom selectors from
 	let importFrom: Array<ImportOptions> = [];
@@ -48,56 +37,79 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 	// promise any custom selectors are imported
 	const customPropertiesPromise = getCustomPropertiesFromImports(importFrom);
 
-	// whether to return synchronous function if no asynchronous operations are requested
-	const canReturnSyncFunction = importFrom.length === 0 && exportTo.length === 0;
-
 	return {
 		postcssPlugin: 'postcss-custom-properties',
 		prepare () {
-			let customProperties: Map<string, valuesParser.ParsedValue> = new Map();
+			const customPropertiesForInsertion: Map<string, string> = new Map();
+			const customPropertiesForExport: Map<string, string> = new Map();
 
-			if (canReturnSyncFunction) {
-				return {
-					Once: (root) => {
-						customProperties = getCustomPropertiesFromRoot(root, { preserve });
-					},
-					Declaration: (decl) => {
-						transformProperties(decl, customProperties, { preserve });
-					},
-					OnceExit: () => {
-						customProperties.clear();
-					},
-				};
-			} else {
-				return {
-					Once: async root => {
-						const importedCustomerProperties = (await customPropertiesPromise).entries();
-						const rootCustomProperties = getCustomPropertiesFromRoot(root, { preserve: preserve }).entries();
+			return {
+				Once: async (root, { result, postcss }) => {
+					const importedCustomerProperties = (await customPropertiesPromise).entries();
+					const rootCustomProperties = getCustomPropertiesFromRoot(root).entries();
 
-						if (overrideImportFromWithRoot) {
-							for (const [name, value] of [...importedCustomerProperties, ...rootCustomProperties]) {
-								customProperties.set(name, value);
-							}
-						} else {
-							for (const [name, value] of [...rootCustomProperties, ...importedCustomerProperties]) {
-								customProperties.set(name, value);
-							}
+					for (const [name, value] of importedCustomerProperties) {
+						customPropertiesForInsertion.set(name, value);
+					}
+
+					if (overrideImportFromWithRoot) {
+						for (const [name, value] of [...importedCustomerProperties, ...rootCustomProperties]) {
+							customPropertiesForExport.set(name, value);
+						}
+					} else {
+						for (const [name, value] of [...rootCustomProperties, ...importedCustomerProperties]) {
+							customPropertiesForExport.set(name, value);
+						}
+					}
+
+					await writeCustomPropertiesToExports(customPropertiesForExport, exportTo);
+
+					if (customPropertiesForInsertion.size > 0) {
+						const propertyNames = Array.from(customPropertiesForInsertion.keys());
+						// Inserting in reverse order results in the correct order.
+						propertyNames.reverse();
+
+						let operator = 'prepend';
+						if (!overrideImportFromWithRoot) {
+							operator = 'append';
 						}
 
-						await writeCustomPropertiesToExports(customProperties, exportTo);
-					},
-					Declaration: (decl) => {
-						transformProperties(decl, customProperties, { preserve });
-					},
-					OnceExit: (root, { result }) => {
-						if (!disableDeprecationNotice && (importFrom.length > 0 || exportTo.length > 0)) {
-							root.warn(result, '"importFrom" and "exportTo" will be removed in a future version of postcss-custom-properties.\nWe are looking for insights and anecdotes on how these features are used so that we can design the best alternative.\nPlease let us know if our proposal will work for you.\nVisit the discussion on github for more details. https://github.com/csstools/postcss-plugins/discussions/192');
-						}
+						const rootRule = postcss.rule({
+							selector: ':root',
+							source: {
+								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+								// @ts-ignore
+								input: {
+									from: result.opts.from,
+								},
+								start: { offset: 0, line: 1, column: 1 },
+								end: { offset: 0, line: 1, column: 1 },
+							},
+						});
 
-						customProperties.clear();
-					},
-				};
-			}
+						root[operator](rootRule);
+
+						propertyNames.forEach((propertyName) => {
+							const decl = postcss.decl({
+								prop: propertyName,
+								value: customPropertiesForInsertion.get(propertyName),
+							});
+
+							decl.source = {
+								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+								// @ts-ignore
+								input: {
+									from: result.opts.from,
+								},
+								start: { offset: 0, line: 1, column: 1 },
+								end: { offset: 0, line: 1, column: 1 },
+							};
+
+							rootRule.append(decl);
+						});
+					}
+				},
+			};
 		},
 	};
 };

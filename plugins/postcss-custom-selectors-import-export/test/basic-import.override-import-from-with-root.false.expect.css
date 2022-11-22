@@ -8,3 +8,7 @@ article :--heading+p {
 .anything_else {
 	margin-bottom: 0;
 }
+
+@custom-selector :--text :--heading, p;
+
+@custom-selector :--heading h1, h2, h3

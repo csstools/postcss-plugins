@@ -64,8 +64,8 @@ article :--heading+p {
 
 Multiple sources can be passed into this option, and they will be parsed in the
 order they are received. JavaScript files, JSON files, functions, and objects
-will need to namespace custom selectors using the `customProperties` or
-`custom-properties` key.
+will need to namespace custom selectors using the `customSelectors` or
+`custom-selectors` key.
 
 ```js
 postcssCustomSelectorsImportExport({
@@ -77,11 +77,24 @@ postcssCustomSelectorsImportExport({
 			customSelectors: { ':--heading': 'h1, h2, h3' }
 		},
 		() => {
-			const customProperties = { ':--heading': 'h1, h2, h3' };
+			const customSelectors = { ':--heading': 'h1, h2, h3' };
 
-			return { customProperties };
+			return { customSelectors };
 		}
 	]
+});
+```
+
+### overrideImportFromWithRoot
+
+The `overrideImportFromWithRoot` option determines if selectors added via `importFrom` are overridden by selectors that exist in the root of your CSS.
+Defaults to `false`.
+
+_override `importFrom` with `root`_
+
+```js
+postcssCustomSelectorsImportExport({
+	overrideImportFromWithRoot: true
 });
 ```
 
@@ -99,8 +112,8 @@ postcssCustomSelectorsImportExport({
 
 Multiple destinations can be passed into this option, and they will be parsed
 in the order they are received. JavaScript files, JSON files, and objects will
-need to namespace custom selectors using the `customProperties` or
-`custom-properties` key.
+need to namespace custom selectors using the `customSelectors` or
+`custom-Selectors` key.
 
 ```js
 const cachedObject = { customSelectors: {} };
@@ -112,8 +125,8 @@ postcssCustomSelectorsImportExport({
 		'and/then/this.mjs',  // export const customSelectors = { ':--heading': 'h1, h2, h3' } }
 		'and/then/that.json', // { "custom-selectors": { ":--heading": "h1, h2, h3" } }
 		cachedObject,
-		customProperties => {
-			customProperties    // { ':--heading': 'h1, h2, h3' }
+		(customSelectors) => {
+			customSelectors    // { ':--heading': 'h1, h2, h3' }
 		}
 	]
 });

@@ -1,12 +1,9 @@
-import valuesParser from 'postcss-value-parser';
-import { isBlockIgnored } from './is-ignored';
-
 // return custom selectors from the css root, conditionally removing them
-export default function getCustomPropertiesFromRoot(root, opts): Map<string, valuesParser.ParsedValue> {
+export default function getCustomPropertiesFromRoot(root): Map<string, string> {
 	// initialize custom selectors
-	const customPropertiesFromHtmlElement: Map<string, valuesParser.ParsedValue> = new Map();
-	const customPropertiesFromRootPseudo: Map<string, valuesParser.ParsedValue> = new Map();
-	const out: Map<string, valuesParser.ParsedValue> = new Map();
+	const customPropertiesFromHtmlElement: Map<string, string> = new Map();
+	const customPropertiesFromRootPseudo: Map<string, string> = new Map();
+	const out: Map<string, string> = new Map();
 
 	// for each html or :root rule
 	root.nodes.slice().forEach(rule => {
@@ -19,23 +16,13 @@ export default function getCustomPropertiesFromRoot(root, opts): Map<string, val
 		// for each custom property
 		if (customPropertiesObject) {
 			rule.nodes.slice().forEach(decl => {
-				if (decl.variable && !isBlockIgnored(decl)) {
+				if (decl.variable) {
 					const { prop } = decl;
 
 					// write the parsed value to the custom property
-					customPropertiesObject.set(prop, valuesParser(decl.value));
-
-					// conditionally remove the custom property declaration
-					if (!opts.preserve) {
-						decl.remove();
-					}
+					customPropertiesObject.set(prop, decl.value);
 				}
 			});
-
-			// conditionally remove the empty html or :root rule
-			if (!opts.preserve && isEmptyParent(rule) && !isBlockIgnored(rule)) {
-				rule.remove();
-			}
 		}
 	});
 
@@ -58,6 +45,3 @@ const rootSelectorRegExp = /^:root$/i;
 // whether the node is an html or :root rule
 const isHtmlRule = node => node.type === 'rule' && node.selector.split(',').some(item => htmlSelectorRegExp.test(item)) && Object(node.nodes).length;
 const isRootRule = node => node.type === 'rule' && node.selector.split(',').some(item => rootSelectorRegExp.test(item)) && Object(node.nodes).length;
-
-// whether the node is a parent without children
-const isEmptyParent = node => Object(node.nodes).length === 0;

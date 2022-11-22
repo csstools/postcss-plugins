@@ -1,3 +1,7 @@
 article :is(h1, h2, h3)+p {
 	margin-top: 0;
 }
+
+.anything_else {
+	margin-bottom: 0;
+}

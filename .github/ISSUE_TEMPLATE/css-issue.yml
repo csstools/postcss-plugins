@@ -70,8 +70,11 @@ body:
         - PostCSS Color Hex Alpha
         - PostCSS Color Mod Function
         - PostCSS Custom Media Queries
+        - PostCSS Custom Media Queries Import/Export
         - PostCSS Custom Properties
+        - PostCSS Custom Properties Import/Export
         - PostCSS Custom Selectors
+        - PostCSS Custom Selectors Import/Export
         - PostCSS Design Tokens
         - PostCSS Dir Pseudo Class
         - PostCSS Double Position Gradients

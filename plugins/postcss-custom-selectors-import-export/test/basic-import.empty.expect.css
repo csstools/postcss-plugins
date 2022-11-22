@@ -1,3 +1,10 @@
 article :--heading+p {
 	margin-top: 0;
 }
+
+@custom-selector :--text p, b, strong, i, em, quote, cite;
+@custom-selector :--other .other;
+
+.anything_else {
+	margin-bottom: 0;
+}

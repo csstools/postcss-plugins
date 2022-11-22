@@ -1,5 +1,5 @@
 import assert from 'assert';
-import plugin from 'postcss-custom-properties';
+import plugin from '@csstools/postcss-custom-properties-import-export';
 import postcss from 'postcss';
 import fs from 'fs';
 

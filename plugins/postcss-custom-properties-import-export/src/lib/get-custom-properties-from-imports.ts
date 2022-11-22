@@ -2,7 +2,6 @@ import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
 import path from 'path';
 import { pathToFileURL } from 'url';
 import type { ImportCustomProperties, ImportOptions } from './options';
-import valuesParser from 'postcss-value-parser';
 import { parse } from 'postcss';
 import { promises as fsp } from 'fs';
 
@@ -10,27 +9,27 @@ import { promises as fsp } from 'fs';
 /* ========================================================================== */
 
 async function getCustomPropertiesFromCSSFile(from) {
-	const css = await fsp.readFile(from);
+	const css = await fsp.readFile(pathToFileURL(from));
 	const root = parse(css, { from : from.toString() });
 
-	return getCustomPropertiesFromRoot(root, { preserve: true });
+	return getCustomPropertiesFromRoot(root);
 }
 
 /* Get Custom Properties from Object
 /* ========================================================================== */
 
-function getCustomPropertiesFromObject(object: ImportCustomProperties): Map<string, valuesParser.ParsedValue> {
-	const out: Map<string, valuesParser.ParsedValue> = new Map();
+function getCustomPropertiesFromObject(object: ImportCustomProperties): Map<string, string> {
+	const out: Map<string, string> = new Map();
 
 	if ('customProperties' in object) {
 		for (const [name, value] of Object.entries(object.customProperties)) {
-			out.set(name, valuesParser(value.toString()));
+			out.set(name, value.toString());
 		}
 	}
 
 	if ('custom-properties' in object) {
 		for (const [name, value] of Object.entries(object['custom-properties'])) {
-			out.set(name, valuesParser(value.toString()));
+			out.set(name, value.toString());
 		}
 	}
 
@@ -40,8 +39,8 @@ function getCustomPropertiesFromObject(object: ImportCustomProperties): Map<stri
 /* Get Custom Properties from JSON file
 /* ========================================================================== */
 
-async function getCustomPropertiesFromJSONFile(from): Promise<Map<string, valuesParser.ParsedValue>> {
-	const object = await readJSON(from);
+async function getCustomPropertiesFromJSONFile(from): Promise<Map<string, string>> {
+	const object = await readJSON(pathToFileURL(from));
 
 	return getCustomPropertiesFromObject(object);
 }
@@ -49,15 +48,8 @@ async function getCustomPropertiesFromJSONFile(from): Promise<Map<string, values
 /* Get Custom Properties from JS file
 /* ========================================================================== */
 
-async function getCustomPropertiesFromJSFile(from): Promise<Map<string, valuesParser.ParsedValue>> {
-	let object;
-
-	try {
-		object = await import(from);
-	} catch (_) {
-		// windows support
-		object = await import(pathToFileURL(from).href);
-	}
+async function getCustomPropertiesFromJSFile(from): Promise<Map<string, string>> {
+	const object = await import(pathToFileURL(from).href);
 
 	if ('default' in object) {
 		return getCustomPropertiesFromObject(object.default);
@@ -69,7 +61,7 @@ async function getCustomPropertiesFromJSFile(from): Promise<Map<string, valuesPa
 /* Get Custom Properties from Imports
 /* ========================================================================== */
 
-export default async function getCustomPropertiesFromImports(sources: Array<ImportOptions>): Promise<Map<string, valuesParser.ParsedValue>> {
+export default async function getCustomPropertiesFromImports(sources: Array<ImportOptions>): Promise<Map<string, string>> {
 	const sourceData = (await Promise.all(sources.map(async (source) => {
 		if (source instanceof Promise) {
 			source = await source;
@@ -117,7 +109,7 @@ export default async function getCustomPropertiesFromImports(sources: Array<Impo
 		return !!x;
 	});
 
-	const data: Array<Map<string, valuesParser.ParsedValue>> = await Promise.all(sourceData.map(async (partialData) => {
+	const data: Array<Map<string, string>> = await Promise.all(sourceData.map(async (partialData) => {
 		if (('type' in partialData) && ('from' in partialData)) {
 			if (partialData.type === 'css' || partialData.type === 'pcss') {
 				return await getCustomPropertiesFromCSSFile(partialData.from);
@@ -142,7 +134,7 @@ export default async function getCustomPropertiesFromImports(sources: Array<Impo
 		return getCustomPropertiesFromObject(partialData);
 	}));
 
-	const out: Map<string, valuesParser.ParsedValue> = new Map();
+	const out: Map<string, string> = new Map();
 	data.forEach((partialData) => {
 		for (const [name, value] of partialData.entries()) {
 			out.set(name, value);

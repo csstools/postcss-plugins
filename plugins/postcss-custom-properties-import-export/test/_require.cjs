@@ -1,5 +1,5 @@
 const assert = require('assert');
-const plugin = require('postcss-custom-properties');
+const plugin = require('@csstools/postcss-custom-properties-import-export');
 const postcss = require('postcss');
 const fs = require('fs');
 

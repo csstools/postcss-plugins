@@ -1,5 +1,3 @@
-import type valuesParser from 'postcss-value-parser';
-
 import { promises as fsp } from 'fs';
 import path from 'path';
 import type { ExportOptions } from './options';
@@ -145,7 +143,7 @@ async function writePropertiesToFile(to: string, type: string, customProperties:
 /* Helper utilities
 /* ========================================================================== */
 
-function defaultCustomPropertiesToJSONObject(customProperties: Map<string, valuesParser.ParsedValue>): Record<string, string> {
+function defaultCustomPropertiesToJSONObject(customProperties: Map<string, string>): Record<string, string> {
 	const out = {};
 	for (const [name, value] of customProperties.entries()) {
 		out[name] = value.toString();

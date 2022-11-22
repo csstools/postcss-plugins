@@ -216,5 +216,13 @@
   - plugins/postcss-trigonometric-functions/**
   - experimental/postcss-trigonometric-functions/**
 
+"plugins/import-export":
+  - plugins/postcss-custom-media-queries-import-export/**
+  - experimental/postcss-custom-media-queries-import-export/**
+  - plugins/postcss-custom-properties-import-export/**
+  - experimental/postcss-custom-properties-import-export/**
+  - plugins/postcss-custom-selectors-import-export/**
+  - experimental/postcss-custom-selectors-import-export/**
+
 "sites/postcss-preset-env":
   - sites/postcss-preset-env/**

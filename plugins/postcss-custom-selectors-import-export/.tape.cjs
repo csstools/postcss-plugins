@@ -16,6 +16,40 @@ postcssTape(plugin)({
 			}
 		}
 	},
+	'basic-import:override-import-from-with-root:true': {
+		message: 'supports { overrideImportFromWithRoot: true, importFrom: { customSelectors: { ... } } } usage',
+		options: {
+			overrideImportFromWithRoot: true,
+			importFrom: {
+				customSelectors: {
+					':--heading': 'h1, h2, h3',
+					':--text': ':--heading, p',
+				}
+			},
+			exportTo(customProperties) {
+				if (customProperties[':--text'] !== 'p, b, strong, i, em, quote, cite') {
+					throw new Error('Incorrect value in exportTo ' + customProperties[':--text']);
+				}
+			}
+		}
+	},
+	'basic-import:override-import-from-with-root:false': {
+		message: 'supports { overrideImportFromWithRoot: true, importFrom: { customSelectors: { ... } } } usage',
+		options: {
+			overrideImportFromWithRoot: false,
+			importFrom: {
+				customSelectors: {
+					':--heading': 'h1, h2, h3',
+					':--text': ':--heading, p',
+				}
+			},
+			exportTo(customProperties) {
+				if (customProperties[':--text'] !== ':--heading, p') {
+					throw new Error('Incorrect value in exportTo ' + customProperties[':--text']);
+				}
+			}
+		}
+	},
 	'basic-import:fn': {
 		message: 'supports { importFrom() } usage',
 		options: {

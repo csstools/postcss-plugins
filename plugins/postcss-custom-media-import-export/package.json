@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-custom-media-import-export",
-	"description": "Use Custom Media Queries in CSS",
-	"version": "8.0.2",
+	"description": "Import/Export Custom Media Queries in CSS",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -47,11 +47,14 @@
 	"dependencies": {
 		"postcss-value-parser": "^4.2.0"
 	},
+	"devDependencies": {
+		"postcss-custom-media": "^9.0.1"
+	},
 	"peerDependencies": {
 		"postcss": "^8.2"
 	},
 	"scripts": {
-		"build": "rollup -c ../../rollup/default.js",
+		"build": "rollup -c ../../rollup/default.mjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
@@ -62,32 +65,27 @@
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.cjs"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media#readme",
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media-import-export#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
-		"directory": "plugins/postcss-custom-media"
+		"directory": "plugins/postcss-custom-media-import-export"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"at-rule",
 		"atrule",
 		"css",
-		"csswg",
 		"custom",
 		"media",
 		"postcss",
 		"postcss-plugin",
 		"queries",
-		"query",
-		"specification",
-		"w3c"
+		"query"
 	],
 	"csstools": {
-		"cssdbId": "custom-media-queries",
-		"exportName": "postcssCustomMedia",
-		"humanReadableName": "PostCSS Custom Media",
-		"specUrl": "https://www.w3.org/TR/mediaqueries-5/#at-ruledef-custom-media"
+		"exportName": "postcssCustomMediaImportExport",
+		"humanReadableName": "PostCSS Custom Media Import/Export"
 	},
 	"volta": {
 		"extends": "../../package.json"

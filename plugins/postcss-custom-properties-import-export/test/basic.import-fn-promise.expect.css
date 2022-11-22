@@ -161,9 +161,7 @@ html {
 
 :root {
 	--z-index: 10;
-	--shadow-color: rgb(0,0,0);
-	--margin: 0 10px 20px 30px;
 	--ref-color: var(--color);
 	--color-2: yellow;
-	--color: rgb(0, 0, 0);
+	--color: rgb(255, 0, 0);
 }

@@ -1,10 +1,24 @@
 {
 	"name": "@csstools/postcss-custom-properties-import-export",
-	"description": "Use Custom Properties Queries in CSS",
-	"version": "12.1.10",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"description": "Import/Export Custom Properties in CSS",
+	"version": "1.0.0",
 	"contributors": [
-		"Maxime Thirouin"
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		},
+		{
+			"name": "Jonathan Neal",
+			"email": "jonathantneal@hotmail.com"
+		},
+		{
+			"name": "Maxime Thirouin"
+		}
 	],
 	"license": "MIT",
 	"funding": {
@@ -12,7 +26,7 @@
 		"url": "https://opencollective.com/csstools"
 	},
 	"engines": {
-		"node": "^12 || ^14 || >=16"
+		"node": "^14 || ^16 || >=18"
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
@@ -31,19 +45,17 @@
 		"dist",
 		"index.d.ts"
 	],
-	"dependencies": {
-		"postcss-value-parser": "^4.2.0"
-	},
 	"peerDependencies": {
-		"postcss": "^8.2"
+		"postcss": "^8.4"
 	},
 	"devDependencies": {
+		"postcss-custom-properties": "^13.0.0",
 		"postcss-import": "^15.0.0"
 	},
 	"scripts": {
-		"build": "rollup -c ../../rollup/default.js",
+		"build": "rollup -c ../../rollup/default.mjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
@@ -52,29 +64,26 @@
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties#readme",
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties-import-export#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
-		"directory": "plugins/postcss-custom-properties"
+		"directory": "plugins/postcss-custom-properties-import-export"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"css",
-		"csswg",
 		"custom",
 		"declarations",
 		"postcss",
 		"postcss-plugin",
 		"properties",
-		"specification",
 		"variables",
-		"vars",
-		"w3c"
+		"vars"
 	],
 	"csstools": {
-		"exportName": "postcssCustomProperties",
-		"humanReadableName": "PostCSS Custom Properties"
+		"exportName": "postcssCustomPropertiesImportExport",
+		"humanReadableName": "PostCSS Custom Properties Import/Export"
 	},
 	"volta": {
 		"extends": "../../package.json"

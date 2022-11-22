@@ -1,207 +1,144 @@
-# PostCSS Custom Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
+# PostCSS Custom Properties Import/Export [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[![NPM Version][npm-img]][npm-url]
-[![CSS Standard Status][css-img]][css-url]
-[![Build Status][cli-img]][cli-url]
-[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-custom-properties-import-export.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-[PostCSS Custom Properties] lets you use Custom Properties in CSS, following
-the [CSS Custom Properties] specification.
-
-[!['Can I use' table](https://caniuse.bitsofco.de/image/css-variables.png)](https://caniuse.com/#feat=css-variables)
-
-```pcss
-:root {
-  --color: red;
-}
-
-h1 {
-  color: var(--color);
-}
-
-/* becomes */
-
-:root {
-  --color: red;
-}
-
-h1 {
-  color: red;
-  color: var(--color);
-}
-```
-
-**Note:** This plugin only processes variables that are defined in the `:root` selector.
+[PostCSS Custom Properties Import/Export] lets you import or export CSS custom properties (`--foo: pink;`) into or out of your CSS.
 
 ## Usage
 
-Add [PostCSS Custom Properties] to your project:
+Add [PostCSS Custom Properties Import/Export] to your project:
 
 ```bash
-npm install postcss-custom-properties --save-dev
+npm install postcss @csstools/postcss-custom-properties-import-export --save-dev
 ```
 
-Use [PostCSS Custom Properties] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssCustomProperties = require('postcss-custom-properties');
+const postcssCustomPropertiesImportExport = require('@csstools/postcss-custom-properties-import-export');
 
 postcss([
-  postcssCustomProperties(/* pluginOptions */)
+	postcssCustomPropertiesImportExport(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-[PostCSS Custom Properties] runs in all Node environments, with special instructions for:
+[PostCSS Custom Properties Import/Export] runs in all Node environments, with special
+instructions for:
 
-| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
-| --- | --- | --- | --- | --- | --- |
+- [Node](INSTALL.md#node)
+- [PostCSS CLI](INSTALL.md#postcss-cli)
+- [PostCSS Load Config](INSTALL.md#postcss-load-config)
+- [Webpack](INSTALL.md#webpack)
+- [Create React App](INSTALL.md#create-react-app)
+- [Next.js](INSTALL.md#nextjs)
+- [Gulp](INSTALL.md#gulp)
+- [Grunt](INSTALL.md#grunt)
 
 ## Options
 
-### preserve
-
-The `preserve` option determines whether Custom Properties and properties using
-custom properties should be preserved in their original form. By default, both
-of these are preserved.
-
-```js
-postcssCustomProperties({
-  preserve: false
-});
-```
-
-```pcss
-:root {
-  --color: red;
-}
-
-h1 {
-  color: var(--color);
-}
-
-/* becomes */
-
-h1 {
-  color: red;
-}
-```
-
 ### importFrom
 
-The `importFrom` option specifies sources where Custom Properties can be imported
-from, which might be CSS, JS, and JSON files, functions, and directly passed
-objects.
+The `importFrom` option specifies sources where custom properties can be
+imported from, which might be CSS, JS, and JSON files, functions, and directly
+passed objects.
 
 ```js
-postcssCustomProperties({
-  importFrom: 'path/to/file.css' // => :root { --color: red }
+postcssCustomPropertiesImportExport({
+	importFrom: 'path/to/file.css' // => :root { --color: var(rgb(245 20 255)); }
 });
 ```
 
 ```pcss
-h1 {
-  color: var(--color);
+article {
+	color: var(--color);
 }
 
 /* becomes */
 
-h1 {
-  color: red;
+article {
+	color: var(--color);
+}
+
+:root {
+	--color: var(rgb(245 20 255));
 }
 ```
 
 Multiple sources can be passed into this option, and they will be parsed in the
 order they are received. JavaScript files, JSON files, functions, and objects
-will need to namespace Custom Properties using the `customProperties` or
+will need to namespace custom properties using the `customProperties` or
 `custom-properties` key.
 
 ```js
-postcssCustomProperties({
-  importFrom: [
-    'path/to/file.css',   // :root { --color: red; }
-    'and/then/this.js',   // module.exports = { customProperties: { '--color': 'red' } }
-    'and/then/that.json', // { "custom-properties": { "--color": "red" } }
-    {
-      customProperties: { '--color': 'red' }
-    },
-    () => {
-      const customProperties = { '--color': 'red' };
+postcssCustomPropertiesImportExport({
+	importFrom: [
+		'path/to/file.css',
+		'and/then/this.js',
+		'and/then/that.json',
+		{
+			customProperties: { '--color': 'var(rgb(245 20 255))' }
+		},
+		() => {
+			const customProperties = { '--color': 'var(rgb(245 20 255))' };
 
-      return { customProperties };
-    }
-  ]
+			return { customProperties };
+		}
+	]
 });
 ```
-
-See example imports written in [CSS](test/import-properties.css),
-[JS](test/import-properties.js), and [JSON](test/import-properties.json).
 
 ### overrideImportFromWithRoot
 
 The `overrideImportFromWithRoot` option determines if properties added via `importFrom` are overridden by properties that exist in `:root`.
 Defaults to `false`.
 
+_override `importFrom` with `root`_
+
 ```js
-postcssCustomProperties({
+postcssCustomPropertiesImportExport({
   overrideImportFromWithRoot: true
 });
 ```
 
 ### exportTo
 
-The `exportTo` option specifies destinations where Custom Properties can be exported
-to, which might be CSS, JS, and JSON files, functions, and directly passed
-objects.
+The `exportTo` option specifies destinations where custom properties can be
+exported to, which might be CSS, JS, and JSON files, functions, and directly
+passed objects.
 
 ```js
-postcssCustomProperties({
-  exportTo: 'path/to/file.css' // :root { --color: red; }
+postcssCustomPropertiesImportExport({
+	exportTo: 'path/to/file.css' // :root { --color: var(rgb(245 20 255)); }
 });
 ```
 
 Multiple destinations can be passed into this option, and they will be parsed
 in the order they are received. JavaScript files, JSON files, and objects will
-need to namespace Custom Properties using the `customProperties` or
+need to namespace custom properties using the `customProperties` or
 `custom-properties` key.
 
 ```js
 const cachedObject = { customProperties: {} };
 
-postcssCustomProperties({
-  exportTo: [
-    'path/to/file.css',   // :root { --color: red; }
-    'and/then/this.js',   // module.exports = { customProperties: { '--color': 'red' } }
-    'and/then/this.mjs',  // export const customProperties = { '--color': 'red' } }
-    'and/then/that.json', // { "custom-properties": { "--color": "red" } }
-    'and/then/that.scss', // $color: red;
-    cachedObject,
-    customProperties => {
-      customProperties    // { '--color': 'red' }
-    }
-  ]
+postcssCustomPropertiesImportExport({
+	exportTo: [
+		'path/to/file.css',   // :root { --color: var(rgb(245 20 255)); }
+		'and/then/this.js',   // module.exports = { customProperties: { '--color': 'var(rgb(245 20 255))' } }
+		'and/then/this.mjs',  // export const customProperties = { '--color': 'var(rgb(245 20 255))' } }
+		'and/then/that.json', // { "custom-properties": { "--color": "var(rgb(245 20 255))" } }
+		cachedObject,
+		(customProperties) => {
+			customProperties    // { '--color': 'var(rgb(245 20 255))' }
+		}
+	]
 });
 ```
 
-See example exports written to [CSS](test/export-properties.css),
-[JS](test/export-properties.js), [MJS](test/export-properties.mjs),
-[JSON](test/export-properties.json) and [SCSS](test/export-properties.scss).
-
-### disableDeprecationNotice
-
-Silence the deprecation notice that is printed to the console when using `importFrom` or `exportTo`.
-
-> "importFrom" and "exportTo" will be removed in a future version of postcss-custom-properties.
-> Check the discussion on github for more details. https://github.com/csstools/postcss-plugins/discussions/192
-
-[cli-img]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[css-img]: https://cssdb.org/images/badges/custom-properties.svg
-[css-url]: https://cssdb.org/#custom-properties
-[discord]: https://discord.gg/bUadyRwkJS
-[npm-img]: https://img.shields.io/npm/v/postcss-custom-properties.svg
-[npm-url]: https://www.npmjs.com/package/postcss-custom-properties
 
-[CSS Custom Properties]: https://www.w3.org/TR/css-variables-1/
+[discord]: https://discord.gg/bUadyRwkJS
+[npm-url]: https://www.npmjs.com/package/@csstools/postcss-custom-properties-import-export
+
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Custom Properties]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties
+[PostCSS Custom Properties Import/Export]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties-import-export

@@ -3,6 +3,5 @@
 }
 
 a {
-	color: blue;
 	color: var(--color);
 }
