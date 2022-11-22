@@ -1,0 +1,160 @@
+html {
+	--ref-color: skip;
+}
+
+:root {
+	--color: rgb(255, 0, 0);
+	--color-h: 0;
+	--color-s: 100%;
+	--color-l: 50%;
+	--color-hsl: hsl(var(--color-h), var(--color-s), var(--color-l));
+	--ref-color: var(--color);
+	--circular: var(--circular-2);
+	--circular-2: var(--circular);
+	--margin: 0 10px 20px 30px;
+	--shadow-color: rgb(255,0,0);
+	--shadow: 0 6px 14px 0 color(var(--shadow-color) a(.15));
+	--font-family: "Open Sans", sans-serif;
+	--url-1: url("/my/path");
+	--url-2: url('/my/path');
+	--url-3: url(/my/path);
+	--url-4: url(data:image/png;bm90LWFuZC1pbWFnZQ==);
+	--✅-size: 2em;
+	color: var(--color);
+}
+
+:root,
+[data-theme=light] {
+	--theme-color: #053;
+}
+
+.ignore-line {
+	/* postcss-custom-properties: ignore next */
+	color: var(--color);
+	background-color: var(--color-2, blue);
+}
+
+.ignore-block {
+	/* postcss-custom-properties: off */
+	color: var(--color-2, blue);
+	box-shadow: inset 0 -3px 0        var(--color);
+	background-image: linear-gradient(to right, var(--color, transparent) 0%, var(--color, transparent) 100%);
+}
+
+.test {
+	--skip: gray;
+	color: var(--override, var(--color));
+}
+
+.test--color_spacing {
+	box-shadow: inset 0 -3px 0        var(--color);
+}
+
+.test--preserve_whitespaces {
+	margin: var(--margin);
+}
+
+.test--complex_values {
+	box-shadow: var(--shadow);
+}
+
+.test--comma_separated_values {
+	font-family: var(--font-family);
+}
+
+.test--fallback {
+	color: var(--color-2, blue);
+}
+
+.test--color_w_var {
+	color: var(--ref-color);
+}
+
+.test--color_w_vars {
+	color: var(--color-hsl);
+}
+
+.test--circular_var {
+	color: var(--circular);
+}
+
+.test--z-index {
+	z-index: var(--z-index);
+}
+
+.test--nested-fallback {
+	z-index: var(--xxx, var(--yyy, 1));
+}
+
+.text--calc {
+	width: calc((100% - var(--xxx, 1px)) + var(--yyy, 10px));
+}
+
+.test--linear-gradient {
+	background-image: linear-gradient(to right, var(--color, transparent) 0%, var(--color, transparent) 100%);
+}
+
+.test--loose-formatting {
+	color: var(
+		--color,
+		blue
+	)/*rtl:red*/;
+}
+
+.test--combined-selector {
+	color: var(--theme-color);
+}
+
+.test--variable-with-url {
+	order: 1;
+	background: var(--url-1);
+}
+
+.test--variable-with-url {
+	order: 2;
+	background: var(--url-2);
+}
+
+
+.test--variable-with-url {
+	order: 3;
+	background: var(--url-3);
+}
+
+
+.test--variable-with-url {
+	order: 4;
+	background: var(--url-4);
+}
+
+.no-prototype-collisions {
+	color: var(toString);
+}
+
+.test-unicode {
+	color: var(--✅-size);
+}
+
+.test {
+	font-family: var(--font, "Helvetica Neue", Arial, sans-serif);
+}
+
+.ignores-declarations-that-have-an-exact-fallback-a {
+	left: 1rem;
+	left: var(--does-not-exist, 1rem);
+}
+
+.ignores-declarations-that-have-an-exact-fallback-b {
+	right: 2em;
+	right: var(--✅-size);
+}
+
+.does-not-ignore-declarations-that-have-an-exact-override-a {
+	left: var(--does-not-exist, 1rem);
+	left: 1rem;
+}
+
+.does-not-ignore-declarations-that-have-an-exact-override-b {
+	right: var(--✅-size);
+	right: 2em;
+}

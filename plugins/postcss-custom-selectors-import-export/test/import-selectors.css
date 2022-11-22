@@ -1,0 +1,2 @@
+@custom-selector :--heading h1, h2, h3;
+@custom-selector :--text :--heading, p;
