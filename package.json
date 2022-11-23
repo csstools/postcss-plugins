@@ -29,7 +29,7 @@
 		"glob": "^8.0.3",
 		"rollup": "^2.78.1",
 		"rollup-plugin-terser": "^7.0.2",
-		"typescript": "git://github.com/microsoft/TypeScript.git#107f832b80df2dc97748021cb00af2b6813db75b"
+		"typescript": "git://github.com/microsoft/TypeScript.git#31bee5682df130a14ffdd5742f994dbe7313dd0e"
 	},
 	"overrides": {
 		"typescript": "$typescript"
