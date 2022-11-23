@@ -1,5 +1,8 @@
 {
 	"compilerOptions": {
+		"diagnostics": true,
+		"explainFiles": true,
+		"extendedDiagnostics": true,
 		"moduleResolution": "node",
 		"allowJs": false,
 		"target": "es2020",

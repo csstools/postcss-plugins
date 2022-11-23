@@ -44,7 +44,7 @@
 		"postcss-value-parser": "^4.2.0"
 	},
 	"scripts": {
-		"build": "rollup -c ../../rollup/default.js && lsof | wc -l",
+		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",

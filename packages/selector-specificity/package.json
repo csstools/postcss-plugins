@@ -45,7 +45,7 @@
 		"postcss-selector-parser": "^6.0.10"
 	},
 	"scripts": {
-		"build": "rollup -c ../../rollup/default.js && lsof | wc -l",
+		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
