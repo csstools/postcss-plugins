@@ -1,12 +1,3 @@
-:root {
-	--z-index: 10;
-	--shadow-color: rgb(0,0,0);
-	--margin: 0 10px 20px 30px;
-	--ref-color: var(--color);
-	--color-2: yellow;
-	--color: rgb(0, 0, 0);
-}
-
 html {
 	--ref-color: skip;
 }
@@ -35,19 +26,6 @@ html {
 :root,
 [data-theme=light] {
 	--theme-color: #053;
-}
-
-.ignore-line {
-	/* postcss-custom-properties: ignore next */
-	color: var(--color);
-	background-color: var(--color-2, blue);
-}
-
-.ignore-block {
-	/* postcss-custom-properties: off */
-	color: var(--color-2, blue);
-	box-shadow: inset 0 -3px 0        var(--color);
-	background-image: linear-gradient(to right, var(--color, transparent) 0%, var(--color, transparent) 100%);
 }
 
 .test {
@@ -166,4 +144,13 @@ html {
 .does-not-ignore-declarations-that-have-an-exact-override-b {
 	right: var(--✅-size);
 	right: 2em;
+}
+
+:root {
+	--z-index: 10;
+	--shadow-color: rgb(0,0,0);
+	--margin: 0 10px 20px 30px;
+	--ref-color: var(--color);
+	--color-2: yellow;
+	--color: rgb(0, 0, 0);
 }

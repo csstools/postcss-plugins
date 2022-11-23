@@ -16,14 +16,25 @@
 
 <header>
 
-[<humanReadableName>] lets you define `@custom-media` in CSS following the [Custom Media Specification].
+[<humanReadableName>] lets you import or export `@custom-media`'s into or out of your CSS.
 
-```pcss
-<example.css>
+## As a drop in for old versions of `postcss-custom-media`
 
-/* becomes */
+```js
+// commonjs
+const postcss = require('postcss');
+const postcssCustomMediaImportExport = require('@csstools/postcss-custom-media-import-export');
+const postcssCustomMedia = require('postcss-custom-media');
 
-<example.expect.css>
+postcss([
+	// First
+	postcssCustomMediaImportExport({
+		/* pluginOptions */
+		importedStylesOverrideDocumentStyles: false, // mimics old `postcss-custom-media`
+	}),
+	// Second
+	postcssCustomMedia()
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
 <usage>
@@ -31,24 +42,6 @@
 <envSupport>
 
 ## Options
-
-### preserve
-
-The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
-
-```js
-<exportName>({ preserve: true })
-```
-
-```pcss
-<example.css>
-
-/* becomes */
-
-<example.preserve.expect.css>
-```
-
 
 ### importFrom
 
@@ -63,9 +56,13 @@ objects.
 ```
 
 ```pcss
-@media (max-width: 30em) {
+@media (--small-viewport) {
 	/* styles for small viewport */
 }
+
+/* becomes */
+
+@custom-selector --small-viewport (max-width: 30em);
 
 @media (--small-viewport) {
 	/* styles for small viewport */
@@ -94,6 +91,16 @@ will need to namespace custom media using the `customMedia` or
 	]
 });
 ```
+
+### importedStylesOverrideDocumentStyles
+
+The `importedStylesOverrideDocumentStyles` option determines if queries added via `importFrom` override queries that exist in your CSS document.
+Defaults to `false`.
+
+```js
+<exportName>({
+	importedStylesOverrideDocumentStyles: true
+});
 
 ### exportTo
 
@@ -134,4 +141,3 @@ See example exports written to [CSS](test/export-media.css),
 [JSON](test/export-media.json).
 
 <linkList>
-[Custom Media Specification]: <specUrl>

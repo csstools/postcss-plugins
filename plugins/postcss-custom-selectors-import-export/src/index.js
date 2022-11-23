@@ -3,7 +3,7 @@ import importCustomSelectorsFromSources from './import-from';
 import exportCustomSelectorsToDestinations from './export-to';
 
 const creator = (opts) => {
-	const overrideImportFromWithRoot = 'overrideImportFromWithRoot' in Object(opts) ? Boolean(opts.overrideImportFromWithRoot) : true;
+	const importedStylesOverrideDocumentStyles = 'importedStylesOverrideDocumentStyles' in Object(opts) ? Boolean(opts.importedStylesOverrideDocumentStyles) : false;
 
 	// sources to import custom selectors from
 	const importFrom = [].concat(Object(opts).importFrom || []);
@@ -20,17 +20,17 @@ const creator = (opts) => {
 			const importedSelectors = await customSelectorsPromise;
 
 			let allCustomSelectors;
-			if (overrideImportFromWithRoot) {
+			if (importedStylesOverrideDocumentStyles) {
 				allCustomSelectors = Object.assign(
 					{},
-					importedSelectors,
 					getCustomSelectors(root),
+					importedSelectors,
 				);
 			} else {
 				allCustomSelectors = Object.assign(
 					{},
-					getCustomSelectors(root),
 					importedSelectors,
+					getCustomSelectors(root),
 				);
 			}
 
@@ -42,7 +42,7 @@ const creator = (opts) => {
 				selectorNames.reverse();
 
 				let operator = 'prepend';
-				if (!overrideImportFromWithRoot) {
+				if (importedStylesOverrideDocumentStyles) {
 					operator = 'append';
 				}
 

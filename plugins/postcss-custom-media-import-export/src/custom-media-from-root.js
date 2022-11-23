@@ -1,9 +1,8 @@
-import mediaASTFromString from './media-ast-from-string';
 import valueParser from 'postcss-value-parser';
 
-// return custom selectors from the css root, conditionally removing them
-export default (root, opts) => {
-	// initialize custom selectors
+// return custom media from the css root, conditionally removing them
+export default (root) => {
+	// initialize custom media
 	const customMedias = {};
 
 	// for each custom selector atrule that is a child of the css root
@@ -47,15 +46,9 @@ export default (root, opts) => {
 		}
 
 		const name = paramsAst.nodes[nameNodeIndex].value.trim();
-		const selectors = valueParser.stringify(paramsAst.nodes.slice(nameNodeIndex + 1)).trim();
+		const mediaQueries = valueParser.stringify(paramsAst.nodes.slice(nameNodeIndex + 1)).trim();
 
-		// write the parsed selectors to the custom selector
-		customMedias[name] = mediaASTFromString(selectors);
-
-		// conditionally remove the custom selector atrule
-		if (!Object(opts).preserve) {
-			node.remove();
-		}
+		customMedias[name] = mediaQueries;
 	});
 
 	return customMedias;

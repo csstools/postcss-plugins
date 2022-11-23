@@ -1,17 +1,17 @@
 import fs from 'fs';
 import path from 'path';
+import url from 'url';
 import { parse } from 'postcss';
-import getMediaAstFromMediaString from './media-ast-from-string';
 import getCustomMedia from './custom-media-from-root';
 
 /* Get Custom Media from CSS File
 /* ========================================================================== */
 
 async function getCustomMediaFromCSSFile(from) {
-	const css = await readFile(from);
+	const css = await readFile(url.pathToFileURL(path.resolve(from)));
 	const root = parse(css, { from });
 
-	return getCustomMedia(root, { preserve: true });
+	return getCustomMedia(root);
 }
 
 /* Get Custom Media from Object
@@ -24,10 +24,6 @@ function getCustomMediaFromObject(object) {
 		Object(object)['custom-media'],
 	);
 
-	for (const key in customMedia) {
-		customMedia[key] = getMediaAstFromMediaString(customMedia[key]);
-	}
-
 	return customMedia;
 }
 
@@ -35,7 +31,7 @@ function getCustomMediaFromObject(object) {
 /* ========================================================================== */
 
 async function getCustomMediaFromJSONFile(from) {
-	const object = await readJSON(from);
+	const object = await readJSON(url.pathToFileURL(path.resolve(from)));
 
 	return getCustomMediaFromObject(object);
 }
@@ -44,7 +40,11 @@ async function getCustomMediaFromJSONFile(from) {
 /* ========================================================================== */
 
 async function getCustomMediaFromJSFile(from) {
-	const object = await import(from);
+	const object = await import(url.pathToFileURL(path.resolve(from)).href);
+
+	if ('default' in object) {
+		return getCustomMediaFromObject(object.default);
+	}
 
 	return getCustomMediaFromObject(object);
 }
@@ -82,7 +82,12 @@ export default function getCustomMediaFromSources(sources) {
 			return Object.assign(await customMedia, await getCustomMediaFromCSSFile(from));
 		}
 
-		if (type === 'js') {
+		if (type === 'js' || type === 'cjs') {
+			return Object.assign(await customMedia, await getCustomMediaFromJSFile(from));
+		}
+
+		if (type === 'mjs') {
+			// Only works when running as a module.
 			return Object.assign(await customMedia, await getCustomMediaFromJSFile(from));
 		}
 

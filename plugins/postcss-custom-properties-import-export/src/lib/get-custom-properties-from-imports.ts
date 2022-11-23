@@ -9,7 +9,7 @@ import { promises as fsp } from 'fs';
 /* ========================================================================== */
 
 async function getCustomPropertiesFromCSSFile(from) {
-	const css = await fsp.readFile(pathToFileURL(from));
+	const css = await fsp.readFile(pathToFileURL(path.resolve(from)));
 	const root = parse(css, { from : from.toString() });
 
 	return getCustomPropertiesFromRoot(root);
@@ -40,7 +40,7 @@ function getCustomPropertiesFromObject(object: ImportCustomProperties): Map<stri
 /* ========================================================================== */
 
 async function getCustomPropertiesFromJSONFile(from): Promise<Map<string, string>> {
-	const object = await readJSON(pathToFileURL(from));
+	const object = await readJSON(pathToFileURL(path.resolve(from)));
 
 	return getCustomPropertiesFromObject(object);
 }
@@ -49,7 +49,7 @@ async function getCustomPropertiesFromJSONFile(from): Promise<Map<string, string
 /* ========================================================================== */
 
 async function getCustomPropertiesFromJSFile(from): Promise<Map<string, string>> {
-	const object = await import(pathToFileURL(from).href);
+	const object = await import(pathToFileURL(path.resolve(from)).href);
 
 	if ('default' in object) {
 		return getCustomPropertiesFromObject(object.default);

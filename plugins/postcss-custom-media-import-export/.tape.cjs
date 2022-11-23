@@ -1,32 +1,50 @@
 const postcssTape = require('../../packages/postcss-tape/dist/index.cjs');
-const plugin = require('postcss-custom-media');
+const plugin = require('@csstools/postcss-custom-media-import-export');
+const polyfillPlugin = require('postcss-custom-media');
 const fs = require('fs');
 
 postcssTape(plugin)({
-	'basic': {
-		message: 'supports basic usage'
-	},
-	'basic:preserve': {
-		message: 'supports { preserve: true } usage',
-		options: {
-			preserve: true
-		}
-	},
-	'examples/example': {
-		message: 'minimal example',
-	},
-	'examples/example:preserve': {
-		message: 'minimal example',
-		options: {
-			preserve: true
-		}
-	},
-	'complex': {
-		message: 'supports complex usage'
-	},
 	'import': {
 		message: 'supports { importFrom: { customMedia: { ... } } } usage',
 		options: {
+			importFrom: {
+				customMedia: {
+					'--mq-a': '(max-width: 30em), (max-height: 30em)',
+					'--not-mq-a': 'not all and (--mq-a)'
+				}
+			}
+		}
+	},
+	'import:with-polyfill-plugin': {
+		message: 'works correctly together with the polyfill',
+		plugins: [
+			plugin({
+				importFrom: {
+					customMedia: {
+						'--mq-a': '(max-width: 30em), (max-height: 30em)',
+						'--not-mq-a': 'not all and (--mq-a)'
+					}
+				}
+			}),
+			polyfillPlugin(),
+		]
+	},
+	'import:imported-styles-override-document-styles:true': {
+		message: 'supports { importedStylesOverrideDocumentStyles: true } usage',
+		options: {
+			importedStylesOverrideDocumentStyles: true,
+			importFrom: {
+				customMedia: {
+					'--mq-a': '(max-width: 30em), (max-height: 30em)',
+					'--not-mq-a': 'not all and (--mq-a)'
+				}
+			}
+		}
+	},
+	'import:imported-styles-override-document-styles:false': {
+		message: 'supports { importedStylesOverrideDocumentStyles: false } usage',
+		options: {
+			importedStylesOverrideDocumentStyles: false,
 			importFrom: {
 				customMedia: {
 					'--mq-a': '(max-width: 30em), (max-height: 30em)',
@@ -47,7 +65,6 @@ postcssTape(plugin)({
 				};
 			}
 		},
-		expect: 'import.expect.css',
 		result: 'import.result.css'
 	},
 	'import:import-fn-promise': {
@@ -64,7 +81,6 @@ postcssTape(plugin)({
 				});
 			}
 		},
-		expect: 'import.expect.css',
 		result: 'import.result.css'
 	},
 	'import:json': {
@@ -72,7 +88,6 @@ postcssTape(plugin)({
 		options: {
 			importFrom: 'test/import-media.json'
 		},
-		expect: 'import.expect.css',
 		result: 'import.result.css'
 	},
 	'import:js': {
@@ -80,7 +95,6 @@ postcssTape(plugin)({
 		options: {
 			importFrom: 'test/import-media.js'
 		},
-		expect: 'import.expect.css',
 		result: 'import.result.css'
 	},
 	'import:css': {
@@ -88,7 +102,6 @@ postcssTape(plugin)({
 		options: {
 			importFrom: 'test/import-media.css'
 		},
-		expect: 'import.expect.css',
 		result: 'import.result.css'
 	},
 	'import:css-from': {
@@ -96,7 +109,6 @@ postcssTape(plugin)({
 		options: {
 			importFrom: { from: 'test/import-media.css' }
 		},
-		expect: 'import.expect.css',
 		result: 'import.result.css'
 	},
 	'import:css-from-type': {
@@ -104,7 +116,6 @@ postcssTape(plugin)({
 		options: {
 			importFrom: [{ from: 'test/import-media.css', type: 'css' }]
 		},
-		expect: 'import.expect.css',
 		result: 'import.result.css'
 	},
 	'import:empty': {
@@ -120,8 +131,6 @@ postcssTape(plugin)({
 				customMedia: null
 			})
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		after() {
 			if (__exportMediaObject.customMedia['--mq-a'] !== '(max-width: 30em), (max-height: 30em)') {
 				throw new Error('The exportTo function failed');
@@ -137,7 +146,6 @@ postcssTape(plugin)({
 				}
 			}
 		},
-		expect: 'basic.expect.css',
 		result: 'basic.result.css'
 	},
 	'basic:export-fn-promise': {
@@ -153,7 +161,6 @@ postcssTape(plugin)({
 				});
 			}
 		},
-		expect: 'basic.expect.css',
 		result: 'basic.result.css'
 	},
 	'basic:export-json': {
@@ -161,8 +168,6 @@ postcssTape(plugin)({
 		options: {
 			exportTo: 'test/export-media.json'
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		before() {
 			global.__exportMediaString = fs.readFileSync('test/export-media.json', 'utf8');
 		},
@@ -177,8 +182,6 @@ postcssTape(plugin)({
 		options: {
 			exportTo: 'test/export-media.js'
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		before() {
 			global.__exportMediaString = fs.readFileSync('test/export-media.js', 'utf8');
 		},
@@ -193,8 +196,6 @@ postcssTape(plugin)({
 		options: {
 			exportTo: 'test/export-media.mjs'
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		before() {
 			global.__exportMediaString = fs.readFileSync('test/export-media.mjs', 'utf8');
 		},
@@ -209,8 +210,6 @@ postcssTape(plugin)({
 		options: {
 			exportTo: 'test/export-media.css'
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		before() {
 			global.__exportMediaString = fs.readFileSync('test/export-media.css', 'utf8');
 		},
@@ -225,8 +224,6 @@ postcssTape(plugin)({
 		options: {
 			exportTo: { to: 'test/export-media.css' }
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		before() {
 			global.__exportMediaString = fs.readFileSync('test/export-media.css', 'utf8');
 		},
@@ -241,8 +238,6 @@ postcssTape(plugin)({
 		options: {
 			exportTo: { to: 'test/export-media.css', type: 'css' }
 		},
-		expect: 'basic.expect.css',
-		result: 'basic.result.css',
 		before() {
 			global.__exportMediaString = fs.readFileSync('test/export-media.css', 'utf8');
 		},

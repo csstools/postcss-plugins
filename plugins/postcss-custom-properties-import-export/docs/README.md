@@ -18,6 +18,29 @@
 
 [<humanReadableName>] lets you import or export CSS custom properties (`--foo: pink;`) into or out of your CSS.
 
+## As a drop in for old versions of `postcss-custom-properties`
+
+⚠️ `postcss-custom-properties` no longer removes any custom properties.
+If you inject a lot of properties they will all be added to your final CSS.
+Use a separate CSS minifier/optimizer to remove unused custom properties.
+
+```js
+// commonjs
+const postcss = require('postcss');
+const postcssCustomPropertiesImportExport = require('@csstools/postcss-custom-properties-import-export');
+const postcssCustomProperties = require('postcss-custom-properties');
+
+postcss([
+	// First
+	postcssCustomPropertiesImportExport({
+		/* pluginOptions */
+		importedStylesOverrideDocumentStyles: true, // mimics old `postcss-custom-properties`
+	}),
+	// Second
+	postcssCustomProperties()
+]).process(YOUR_CSS /*, processOptions */);
+```
+
 <usage>
 
 <envSupport>
@@ -43,12 +66,12 @@ article {
 
 /* becomes */
 
-article {
-	color: var(--color);
-}
-
 :root {
 	--color: var(rgb(245 20 255));
+}
+
+article {
+	color: var(--color);
 }
 ```
 
@@ -75,18 +98,15 @@ will need to namespace custom properties using the `customProperties` or
 });
 ```
 
-### overrideImportFromWithRoot
+### importedStylesOverrideDocumentStyles
 
-The `overrideImportFromWithRoot` option determines if properties added via `importFrom` are overridden by properties that exist in `:root`.
+The `importedStylesOverrideDocumentStyles` option determines if properties added via `importFrom` override properties that exist in your CSS document.
 Defaults to `false`.
-
-_override `importFrom` with `root`_
 
 ```js
 <exportName>({
-  overrideImportFromWithRoot: true
+	importedStylesOverrideDocumentStyles: true
 });
-```
 
 ### exportTo
 

@@ -1,22 +1,61 @@
 import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from '@csstools/postcss-custom-properties-import-export';
+import polyfillPlugin from 'postcss-custom-properties';
 import { strict as assert } from 'assert';
 import postcssImport from 'postcss-import';
 import fs from 'fs';
 
 postcssTape(plugin)({
-	'basic': {
-		message: 'supports basic usage'
-	},
-	'basic:preserve': {
-		message: 'supports { preserve: false } usage',
-		options: {
-			preserve: false
-		}
-	},
 	'basic:import': {
 		message: 'supports { importFrom: { customProperties: { ... } } } usage',
 		options: {
+			importFrom: {
+				customProperties: {
+					'--color': 'rgb(255, 0, 0)',
+					'--color-2': 'yellow',
+					'--ref-color': 'var(--color)',
+					'--margin': '0 10px 20px 30px',
+					'--z-index': 10
+				}
+			}
+		}
+	},
+	'basic:import-with-polyfill-plugin': {
+		message: 'works correctly together with the polyfill',
+		plugins: [
+			plugin({
+				importFrom: {
+					customProperties: {
+						'--color': 'rgb(255, 0, 0)',
+						'--color-2': 'yellow',
+						'--ref-color': 'var(--color)',
+						'--margin': '0 10px 20px 30px',
+						'--z-index': 10
+					}
+				}
+			}),
+			polyfillPlugin(),
+		]
+	},
+	'basic:import-imported-styles-override-document-styles:true': {
+		message: 'supports { importedStylesOverrideDocumentStyles: true } usage',
+		options: {
+			importedStylesOverrideDocumentStyles: true,
+			importFrom: {
+				customProperties: {
+					'--color': 'rgb(255, 0, 0)',
+					'--color-2': 'yellow',
+					'--ref-color': 'var(--color)',
+					'--margin': '0 10px 20px 30px',
+					'--z-index': 10
+				}
+			}
+		}
+	},
+	'basic:import-imported-styles-override-document-styles:false': {
+		message: 'supports { importedStylesOverrideDocumentStyles: false } usage',
+		options: {
+			importedStylesOverrideDocumentStyles: false,
 			importFrom: {
 				customProperties: {
 					'--color': 'rgb(255, 0, 0)',
@@ -131,7 +170,7 @@ postcssTape(plugin)({
 		},
 	},
 	'basic:import-override': {
-		message: 'importFrom with { preserve: false } should override root properties',
+		message: 'importFrom with { preserve: false } should override importFrom properties',
 		options: {
 			preserve: false,
 			importFrom: {
@@ -147,10 +186,10 @@ postcssTape(plugin)({
 		},
 	},
 	'basic:import-override:inverse': {
-		message: 'importFrom with { preserve: false, overrideImportFromWithRoot: true  } should override importFrom properties',
+		message: 'importFrom with { preserve: false, importedStylesOverrideDocumentStyles: true  } should override root properties',
 		options: {
 			preserve: false,
-			overrideImportFromWithRoot: true,
+			importedStylesOverrideDocumentStyles: true,
 			importFrom: {
 				customProperties: {
 					'--color': 'rgb(0, 0, 0)',

@@ -12,11 +12,11 @@ export interface PluginOptions {
 	exportTo?: ExportOptions | Array<ExportOptions>
 
 	/** Specifies if `importFrom` properties or `:root` properties have priority. */
-	overrideImportFromWithRoot?: boolean
+	importedStylesOverrideDocumentStyles?: boolean
 }
 
 const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
-	const overrideImportFromWithRoot = 'overrideImportFromWithRoot' in Object(opts) ? Boolean(opts.overrideImportFromWithRoot) : false;
+	const importedStylesOverrideDocumentStyles = 'importedStylesOverrideDocumentStyles' in Object(opts) ? Boolean(opts.importedStylesOverrideDocumentStyles) : false;
 
 	// sources to import custom selectors from
 	let importFrom: Array<ImportOptions> = [];
@@ -38,7 +38,7 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 	const customPropertiesPromise = getCustomPropertiesFromImports(importFrom);
 
 	return {
-		postcssPlugin: 'postcss-custom-properties',
+		postcssPlugin: 'postcss-custom-properties-import-export',
 		prepare () {
 			const customPropertiesForInsertion: Map<string, string> = new Map();
 			const customPropertiesForExport: Map<string, string> = new Map();
@@ -52,12 +52,12 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 						customPropertiesForInsertion.set(name, value);
 					}
 
-					if (overrideImportFromWithRoot) {
-						for (const [name, value] of [...importedCustomerProperties, ...rootCustomProperties]) {
+					if (importedStylesOverrideDocumentStyles) {
+						for (const [name, value] of [...rootCustomProperties, ...importedCustomerProperties]) {
 							customPropertiesForExport.set(name, value);
 						}
 					} else {
-						for (const [name, value] of [...rootCustomProperties, ...importedCustomerProperties]) {
+						for (const [name, value] of [...importedCustomerProperties, ...rootCustomProperties]) {
 							customPropertiesForExport.set(name, value);
 						}
 					}
@@ -70,7 +70,7 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 						propertyNames.reverse();
 
 						let operator = 'prepend';
-						if (!overrideImportFromWithRoot) {
+						if (importedStylesOverrideDocumentStyles) {
 							operator = 'append';
 						}
 

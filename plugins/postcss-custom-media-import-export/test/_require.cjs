@@ -1,5 +1,5 @@
 const assert = require('assert');
-const plugin = require('postcss-custom-media');
+const plugin = require('@csstools/postcss-custom-media-import-export');
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

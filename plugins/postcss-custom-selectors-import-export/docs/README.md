@@ -18,6 +18,25 @@
 
 [<humanReadableName>] lets you import or export `@custom-selector`'s into or out of your CSS.
 
+## As a drop in for old versions of `postcss-custom-selectors`
+
+```js
+// commonjs
+const postcss = require('postcss');
+const postcssCustomSelectorsImportExport = require('@csstools/postcss-custom-selectors-import-export');
+const postcssCustomSelectors = require('postcss-custom-selectors');
+
+postcss([
+	// First
+	postcssCustomSelectorsImportExport({
+		/* pluginOptions */
+		importedStylesOverrideDocumentStyles: false, // mimics old `postcss-custom-selectors`
+	}),
+	// Second
+	postcssCustomSelectors()
+]).process(YOUR_CSS /*, processOptions */);
+```
+
 <usage>
 
 <envSupport>
@@ -44,6 +63,7 @@ article :--heading + p {
 /* becomes */
 
 @custom-selector :--heading h1, h2, h3;
+
 article :--heading+p {
 	margin-top: 0;
 }
@@ -72,18 +92,15 @@ will need to namespace custom selectors using the `customSelectors` or
 });
 ```
 
-### overrideImportFromWithRoot
+### importedStylesOverrideDocumentStyles
 
-The `overrideImportFromWithRoot` option determines if selectors added via `importFrom` are overridden by selectors that exist in the root of your CSS.
-Defaults to `true`.
-
-_override `importFrom` with `root`_
+The `importedStylesOverrideDocumentStyles` option determines if selectors added via `importFrom` override selectors that exist in your CSS document.
+Defaults to `false`.
 
 ```js
 <exportName>({
-	overrideImportFromWithRoot: false
+	importedStylesOverrideDocumentStyles: true
 });
-```
 
 ### exportTo
 

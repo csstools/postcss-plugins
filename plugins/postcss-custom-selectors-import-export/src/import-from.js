@@ -89,15 +89,16 @@ export default function importCustomSelectorsFromSources(sources) {
 			return Object.assign(customSelectors, importCustomSelectorsFromCSSAST(from));
 		}
 
-		if (type === 'css') {
+		if (type === 'css' || type === 'pcss') {
 			return Object.assign(customSelectors, await importCustomSelectorsFromCSSFile(from));
 		}
 
-		if (type === 'js') {
+		if (type === 'js' || type === 'cjs') {
 			return Object.assign(customSelectors, await importCustomSelectorsFromJSFile(from));
 		}
 
 		if (type === 'mjs') {
+			// Only works when running as a module.
 			return Object.assign(customSelectors, await importCustomSelectorsFromJSFile(from));
 		}
 

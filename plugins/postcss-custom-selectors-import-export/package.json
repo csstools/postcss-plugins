@@ -49,11 +49,11 @@
 	"dependencies": {
 		"postcss-selector-parser": "^6.0.4"
 	},
-	"devDependencies": {
-		"postcss-custom-selectors": "^7.0.0"
-	},
 	"peerDependencies": {
 		"postcss": "^8.4"
+	},
+	"devDependencies": {
+		"postcss-custom-selectors": "^7.0.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
