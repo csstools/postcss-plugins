@@ -85,7 +85,7 @@
 	},
 	"scripts": {
 		"prebuild": "node ./scripts/generate-plugins-data.mjs && eslint --fix ./src/plugins/*.mjs",
-		"build": "rollup -c ../../rollup/default.js",
+		"build": "rollup -c ../../rollup/default.js && lsof | wc -l",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"docs": "node ./docs/generate.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
