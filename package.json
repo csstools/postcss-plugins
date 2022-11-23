@@ -29,7 +29,10 @@
 		"glob": "^8.0.3",
 		"rollup": "^2.78.1",
 		"rollup-plugin-terser": "^7.0.2",
-		"typescript": "^4.8.4"
+		"typescript": "https://typescript.visualstudio.com/cf7ac146-d525-443c-b23c-0d58337efebc/_apis/build/builds/139076/artifacts?artifactName=tgz&fileId=FDFEBFD7D88247CD31A298D36CE4CF4D755D0D11C7B30BA428B6AB3F1180113F02&fileName=/typescript-4.9.3-insiders.20221122.tgz"
+	},
+	"overrides": {
+		"typescript": "$typescript"
 	},
 	"scripts": {
 		"build": "npm run build --workspaces --if-present",
