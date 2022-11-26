@@ -1,5 +1,5 @@
 import valuesParser from 'postcss-value-parser';
-import { isBlockIgnored } from './is-ignored';
+import { isBlockIgnored, hasIgnoreComment } from './is-ignored';
 
 // return custom selectors from the css root, conditionally removing them
 export default function getCustomPropertiesFromRoot(root, opts): Map<string, valuesParser.ParsedValue> {
@@ -7,6 +7,9 @@ export default function getCustomPropertiesFromRoot(root, opts): Map<string, val
 	const customPropertiesFromHtmlElement: Map<string, valuesParser.ParsedValue> = new Map();
 	const customPropertiesFromRootPseudo: Map<string, valuesParser.ParsedValue> = new Map();
 	const out: Map<string, valuesParser.ParsedValue> = new Map();
+
+
+	const isIgnoreCommentInFile = root.source && hasIgnoreComment(root.source.input.css);
 
 	// for each html or :root rule
 	root.nodes.slice().forEach(rule => {
@@ -19,7 +22,7 @@ export default function getCustomPropertiesFromRoot(root, opts): Map<string, val
 		// for each custom property
 		if (customPropertiesObject) {
 			rule.nodes.slice().forEach(decl => {
-				if (decl.variable && !isBlockIgnored(decl)) {
+				if (decl.variable && (!isIgnoreCommentInFile || !isBlockIgnored(decl))) {
 					const { prop } = decl;
 
 					// write the parsed value to the custom property
@@ -33,7 +36,7 @@ export default function getCustomPropertiesFromRoot(root, opts): Map<string, val
 			});
 
 			// conditionally remove the empty html or :root rule
-			if (!opts.preserve && isEmptyParent(rule) && !isBlockIgnored(rule)) {
+			if (!opts.preserve && isEmptyParent(rule) && (!isIgnoreCommentInFile || !isBlockIgnored(rule))) {
 				rule.remove();
 			}
 		}

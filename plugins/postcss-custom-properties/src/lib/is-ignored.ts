@@ -1,3 +1,7 @@
+function hasIgnoreComment(input: string) {
+	return /(!\s*)?postcss-custom-properties:\s*(?:off|ignore\s+next)\b/.test(input);
+}
+
 function isBlockIgnored(ruleOrDeclaration) {
 	const rule = ruleOrDeclaration.selector ?
 		ruleOrDeclaration : ruleOrDeclaration.parent;
@@ -15,6 +19,7 @@ function isRuleIgnored(rule) {
 }
 
 export {
+	hasIgnoreComment,
 	isBlockIgnored,
 	isRuleIgnored,
 };
