@@ -2,6 +2,8 @@
 
 set -e
 
+find . -type d -name 'dist' | xargs rm -r
+
 git clean -dfx --exclude \
 	.idea \
 	.vscode \
