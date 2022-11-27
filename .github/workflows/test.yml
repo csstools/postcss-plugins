@@ -49,10 +49,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: env
-        run: |
-          echo "GITHUB_ACTION_PULL_REQUEST_NUMBER=$(echo ${{ github.event.pull_request.number }})" >> $GITHUB_ENV
-
       - name: npm update
         run: |
           npm install -g npm@8
@@ -66,6 +62,8 @@ jobs:
       - name: determine modified workspaces
         run: |
           echo "MODIFIED_WORKSPACES=$(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')" >> $GITHUB_ENV
+        env:
+          GITHUB_ACTION_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
 
         # Build, lint and PostCSS Tape tests must all work and pass :
         # - with exact dependencies from package-lock.json

@@ -18,7 +18,7 @@ export async function listModifiedWorkspaces() {
 
 	const workspaces = await listWorkspaces();
 
-	const repository = process.env.GITHUB_ACTION_REPOSITORY;
+	const repository = process.env.GITHUB_REPOSITORY;
 	const pullRequestNumber = process.env.GITHUB_ACTION_PULL_REQUEST_NUMBER;
 	if (!repository || !pullRequestNumber) {
 		return {
