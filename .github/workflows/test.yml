@@ -70,7 +70,6 @@ jobs:
         # - without requiring postinstall scripts from dependencies to run
       - name: build
         run: |
-          npm run clean --if-present $MODIFIED_WORKSPACES
           npm run build --if-present $MODIFIED_WORKSPACES
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
