@@ -55,7 +55,7 @@ jobs:
 
       - name: npm update
         run: |
-          sudo npm update -g npm@8
+          sudo npm install -g npm@8
           npm --version
         if: matrix.needs_npm_update
 
