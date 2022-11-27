@@ -46,7 +46,6 @@
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.js && npm run copy-browser-scripts-to-old-location && npm run set-cli-file-permissions",
-		"set-cli-file-permissions": "chmod a+x ./dist/cli.cjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"copy-browser-scripts-to-old-location": "node -e \"fs.copyFileSync('./dist/browser-global.js', './browser.js')\"",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs",
@@ -54,6 +53,7 @@
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run clean && npm run build && npm run test",
+		"set-cli-file-permissions": "chmod a+x ./dist/cli.cjs",
 		"test": "node .tape.mjs && npm run test:exports",
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
