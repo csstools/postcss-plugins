@@ -80,7 +80,9 @@ jobs:
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
       - name: repo is clean after "build" and "lint" steps
-        run: git diff --quiet --exit-code
+        run: |
+          git --no-pager diff --name-only
+          git diff --quiet --exit-code
 
         # Basic tests
       - name: test
