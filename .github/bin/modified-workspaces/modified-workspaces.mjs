@@ -1,5 +1,4 @@
-import { lastCachedCommit } from './last-cached-commit.mjs';
-import { listModifiedFilesSince } from './list-modified-files.mjs';
+import { listModifiedFilesInPullRequest } from './list-modified-files.mjs';
 import { listWorkspaces } from './list-workspaces.mjs';
 
 const privateRootDependencies = [
@@ -19,10 +18,12 @@ export async function listModifiedWorkspaces() {
 
 	const workspaces = await listWorkspaces();
 
-	const since = await lastCachedCommit();
-	if (!since) {
-		// we have no previous commit to compare with
-		// anything or everything might have changed
+	console.log(process.env.GITHUB_ACTION_REPOSITORY);
+	console.log(process.env.GITHUB_ACTION_PULL_REQUEST_NUMBER);
+
+	const repository = process.env.GITHUB_ACTION_REPOSITORY;
+	const pullRequestNumber = process.env.GITHUB_ACTION_PULL_REQUEST_NUMBER;
+	if (!repository || !pullRequestNumber) {
 		return {
 			nothing: false,
 			all: true,
@@ -30,7 +31,7 @@ export async function listModifiedWorkspaces() {
 		};
 	}
 
-	const modifiedFiles = await listModifiedFilesSince(since);
+	const modifiedFiles = await listModifiedFilesInPullRequest(repository, pullRequestNumber);
 	if (modifiedFiles.length === 0) {
 		return {
 			nothing: true,
