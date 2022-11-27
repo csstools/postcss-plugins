@@ -3,6 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import path from 'path';
 import typescript from '@rollup/plugin-typescript';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
 import { externalsForCLI } from '../configs/externals';
 import { addHashBang } from '../transforms/cli-hash-bang';
 import { packageBabelPreset } from '../configs/babel-presets';
@@ -27,6 +28,7 @@ export function cliTypescript() {
 					extensions: ['.js', '.ts'],
 					presets: packageBabelPreset,
 				}),
+				terser(),
 				addHashBang(),
 			],
 		},
