@@ -6,7 +6,6 @@ import { terser } from 'rollup-plugin-terser';
 import { externalsForCLI } from '../configs/externals';
 import { addHashBang } from '../transforms/cli-hash-bang';
 import { packageBabelPreset } from '../configs/babel-presets';
-import { setFilePermissions } from '../transforms/set-file-permissions';
 
 export function cliJavascript() {
 	return [
@@ -28,7 +27,6 @@ export function cliJavascript() {
 				}),
 				terser(),
 				addHashBang(),
-				setFilePermissions('dist/cli.cjs'),
 			],
 		},
 	];

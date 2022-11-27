@@ -45,7 +45,8 @@
 		"postcss": "^8.2"
 	},
 	"scripts": {
-		"build": "rollup -c ../../rollup/default.js && npm run copy-browser-scripts-to-old-location",
+		"build": "rollup -c ../../rollup/default.js && npm run copy-browser-scripts-to-old-location && npm run set-cli-file-permissions",
+		"set-cli-file-permissions": "chmod a+x ./dist/cli.cjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"cli": "css-blank-pseudo",
 		"copy-browser-scripts-to-old-location": "node -e \"fs.copyFileSync('./dist/browser-global.js', './browser.js'); fs.copyFileSync('./dist/browser-global.js', './browser-legacy.js')\"",
