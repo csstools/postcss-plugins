@@ -1,4 +1,4 @@
-import posixPath from 'path/posix';
+import path from 'path';
 import { promises as fsp } from 'fs';
 import glob from 'glob';
 import { toposort } from './toposort.mjs';
@@ -13,7 +13,7 @@ export async function listWorkspaces() {
 			// minimatch glob v5 does not allow backslashes in paths and therefor doesn't work correctly on windows.
 			// it is absurd that a package mainly used to match paths is using backslashes as an escape character.
 			// only way around it is to join as posix before globbing.
-			glob.sync(posixPath.join(workspace, 'package.json')).forEach((packageJSONPath) => {
+			glob.sync((path.posix ?? path).join(workspace, 'package.json')).forEach((packageJSONPath) => {
 
 				if (packages.has(packageJSONPath)) {
 					return;
