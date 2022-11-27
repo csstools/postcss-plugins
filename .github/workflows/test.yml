@@ -81,7 +81,7 @@ jobs:
 
       - name: repo is clean after "build" and "lint" steps
         run: |
-          git --no-pager diff --name-only
+          git --no-pager diff
           git diff --quiet --exit-code
 
         # Basic tests
