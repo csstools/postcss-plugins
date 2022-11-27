@@ -56,6 +56,7 @@ jobs:
       - name: npm update
         run: |
           npm update -g npm
+          npm --version
         if: matrix.needs_npm_update
 
       - name: npm ci
