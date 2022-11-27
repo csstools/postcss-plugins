@@ -78,7 +78,11 @@ jobs:
         run: npm run lint --if-present $MODIFIED_WORKSPACES
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
-      - name: repo is clean after "build" and "lint" steps
+      - name: docs
+        run: npm run docs --if-present $MODIFIED_WORKSPACES
+        if: matrix.is_base_node_version && matrix.is_base_os_version
+
+      - name: repo is clean after "build", "lint" and "docs" steps
         run: |
           git diff --quiet --exit-code
 
