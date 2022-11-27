@@ -35,6 +35,7 @@
 		"postcss": "^8.2"
 	},
 	"scripts": {
+		"prebuild": "npm run clean",
 		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs",

@@ -33,6 +33,7 @@
 	},
 	"scripts": {
 		"build": "npm run build --workspaces --if-present",
+		"prebuild": "npm run clean",
 		"clean": "bash ./.github/bin/clean.sh",
 		"docs": "npm run docs --workspaces --if-present",
 		"lint": "npm run lint --workspaces --if-present && npm run lint:rollup-config && npm run lint:executable-files && npm run lint:licenses",
