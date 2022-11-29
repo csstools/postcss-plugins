@@ -3,6 +3,7 @@
 ### Unreleased (major)
 
 - Updated: Support for Node v14+ (major).
+- Added support for design tokens in at rules (`@media`, `@supports`, ...)
 
 ### 1.2.0 (September 7, 2022)
 
