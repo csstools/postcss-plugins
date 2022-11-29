@@ -22,3 +22,12 @@
 	);
 	color: design-token('does.not.exist');
 }
+
+.lists {
+	margin: design-token('lists.space');
+	color: rgb(design-token('lists.comma'));
+	complex: does-not-exist(
+		foo(design-token('lists.space')),
+		bar(design-token('lists.comma'))
+	);
+}

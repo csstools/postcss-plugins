@@ -1,0 +1,19 @@
+@design-tokens url('./tokens/basic.json') format('style-dictionary3');
+
+@media screen and (min-width: design-token('space.large-b')) {
+	.foo {
+		order: 1;
+	}
+}
+
+@media screen and (min-width: calc(design-token('space.large-b') * 10)) {
+	.foo {
+		order: 2;
+	}
+}
+
+@supports (color: rgb(design-token('lists.comma'))) {
+	.foo {
+		order: 3;
+	}
+}

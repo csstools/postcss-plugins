@@ -12,3 +12,11 @@
 	color: red;
 	color: design-token('does.not.exist');
 }
+.lists {
+	margin: 0.5rem 0.25rem;
+	color: rgb(255, 0, 255);
+	complex: does-not-exist(
+		foo(0.5rem 0.25rem),
+		bar(255, 0, 255)
+	);
+}
