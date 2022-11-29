@@ -620,6 +620,6 @@
 	}
 }
 
-@media (min-aspect-ratio: 1.77) {
+@media (min-aspect-ratio: 177/100) {
 	/* media query aspect ratio : <number> */
 }

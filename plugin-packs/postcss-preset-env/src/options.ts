@@ -59,14 +59,14 @@ export type pluginOptions = {
 	 * This is only useful if you are also using sugary PostCSS plugins that must execute before certain polyfills.
 	 * `insertBefore` supports chaining one or multiple plugins.
 	*/
-	insertBefore?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
+	insertBefore?: Record<string, unknown>
 
 	/**
 	 * The `insertAfter` key allows you to insert other PostCSS plugins into the chain.
 	 * This is only useful if you are also using sugary PostCSS plugins that must execute after certain polyfills.
 	 * `insertAfter` supports chaining one or multiple plugins.
 	*/
-	insertAfter?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
+	insertAfter?: Record<string, unknown>
 
 	/**
 	 * Enable debugging messages to stdout giving insights into which features have been enabled/disabled and why.
