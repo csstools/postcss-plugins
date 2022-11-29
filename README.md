@@ -33,23 +33,6 @@ While it's not always possible we're enabling over 30 features with these plugin
 
 You can keep track of our current efforts on the [PostCSS Preset Env Project] and also read announcements on the [project's discussions][discussions].
 
-### ⚠️ PostCSS Preset Env 8 ⚠️
-
-We're currently working on a major version upgrade for PostCSS Preset Env. Sadly, major version implies breaking changes. 
-
-We've decided to keep the work on a separate branch, so we can keep updating the plugins and/or `postcss-preset-env` for
-any bugfixes. We know this can be confusing since you might see new major versions coming up on NPM but the code and
-CHANGELOG does not reflect what you're seeing.
-
-You can navigate the repo on the [V8 working branch](https://github.com/csstools/postcss-plugins/tree/postcss-preset-env--v8). 
-If you're not finding code for a new version you will probably find it there!
-
-You can also read about PostCSS Preset Env 8 [in our wiki](https://github.com/csstools/postcss-plugins/wiki/PostCSS-Preset-Env-8). 
-If you're curious to know why things are changing and what is changing we hope we've portrayed that information there.
-
-We would also appreciate if you tested the new versions and/or the alphas we keep releasing. If you find any bug or 
-any docs that aren't clear we would appreciate even more if you could let us know!
-
 ## Contributing
 
 Thanks for being willing to contribute! Please read our [contributing guide]!
