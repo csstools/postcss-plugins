@@ -11,6 +11,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Color Functional Notation] to your project:
@@ -122,6 +124,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"postcss-color-functional-notation",
 										{

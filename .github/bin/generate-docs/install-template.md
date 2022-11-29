@@ -11,6 +11,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+<parallelBuildsNotice>
+
 ## Node
 
 Add [<humanReadableName>] to your project:
@@ -122,6 +124,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									<otherPluginsInWebpack>,
 									[
 										"<packageName>",
 										{

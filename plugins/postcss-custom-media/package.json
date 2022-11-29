@@ -86,6 +86,7 @@
 		"w3c"
 	],
 	"csstools": {
+		"assumesToProcessBundledCSS": true,
 		"cssdbId": "custom-media-queries",
 		"exportName": "postcssCustomMedia",
 		"humanReadableName": "PostCSS Custom Media",
