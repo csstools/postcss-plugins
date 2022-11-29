@@ -5,6 +5,10 @@ const blockRegExp = /(!\s*)?postcss-custom-properties:\s*off\b/i;
 const blockIgnoredCache = new WeakMap();
 
 function isBlockIgnored(container: Container) {
+	if (!container || !container.nodes) {
+		return false;
+	}
+
 	if (blockIgnoredCache.has(container)) {
 		return blockIgnoredCache.get(container);
 	}
@@ -18,7 +22,11 @@ function isBlockIgnored(container: Container) {
 const declarationRegExp = /(!\s*)?postcss-custom-properties:\s*ignore\s+next\b/i;
 
 function isDeclarationIgnored(decl: Declaration) {
-	if (decl.parent && isBlockIgnored(decl.parent)) {
+	if (!decl) {
+		return false;
+	}
+
+	if (isBlockIgnored(decl.parent)) {
 		return true;
 	}
 
