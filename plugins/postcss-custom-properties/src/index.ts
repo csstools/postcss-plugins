@@ -2,7 +2,7 @@ import type { PluginCreator } from 'postcss';
 import valuesParser from 'postcss-value-parser';
 
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
-import { isBlockIgnored } from './is-ignored';
+import { isDeclarationIgnored } from './is-ignored';
 import transformProperties from './transform-properties';
 
 /** postcss-custom-properties plugin options */
@@ -45,7 +45,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 								return;
 							}
 
-							if (!siblingDecl.variable || isBlockIgnored(siblingDecl)) {
+							if (!siblingDecl.variable || isDeclarationIgnored(siblingDecl)) {
 								return;
 							}
 

@@ -1,6 +1,6 @@
 import { Root, Rule } from 'postcss';
 import valuesParser from 'postcss-value-parser';
-import { isBlockIgnored } from './is-ignored';
+import { isBlockIgnored, isDeclarationIgnored } from './is-ignored';
 
 // return custom selectors from the css root, conditionally removing them
 export default function getCustomPropertiesFromRoot(root: Root): Map<string, valuesParser.ParsedValue> {
@@ -15,13 +15,17 @@ export default function getCustomPropertiesFromRoot(root: Root): Map<string, val
 			return;
 		}
 
+		if (isBlockIgnored(rule)) {
+			return;
+		}
+
 		if (isHtmlRule(rule)) {
 			rule.each((decl) => {
 				if (decl.type !== 'decl') {
 					return;
 				}
 
-				if (!decl.variable || isBlockIgnored(decl)) {
+				if (!decl.variable || isDeclarationIgnored(decl)) {
 					return;
 				}
 
@@ -37,7 +41,7 @@ export default function getCustomPropertiesFromRoot(root: Root): Map<string, val
 					return;
 				}
 
-				if (!decl.variable || isBlockIgnored(decl)) {
+				if (!decl.variable || isDeclarationIgnored(decl)) {
 					return;
 				}
 
