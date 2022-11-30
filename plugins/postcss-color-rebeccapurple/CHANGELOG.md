@@ -10,7 +10,7 @@
 
 ### 7.1.0 (June 10, 2022)
 
-- Added: Typescript typings
+- Added: TypeScript typings
 
 ### 7.0.2 (January 2, 2022)
 

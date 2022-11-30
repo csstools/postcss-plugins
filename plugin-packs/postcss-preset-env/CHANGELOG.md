@@ -1,5 +1,11 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased
+
+- Added: TypeScript support.
+- Added `@csstools/postcss-media-queries-aspect-ratio-number-values` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values#readme) for usage details.
+- Fixed: `all-property` and `overflow-wrap-property` now follow the `preserve` plugin option
+
 ### (8.0.0-alpha.1) (November 14, 2022)
 
 - Updated Support for Node v14+ (major).
