@@ -1,9 +1,27 @@
+import type { PluginCreator } from 'postcss';
 import selectorParser from 'postcss-selector-parser';
 
-function creator(opts) {
-	const dir = Object(opts).dir;
-	const preserve = Boolean(Object(opts).preserve);
-	const shadow = Boolean(Object(opts).shadow);
+/** postcss-dir-pseudo-class plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+	/** Assume a direction for the document. default: null */
+	dir?: 'ltr' | 'rtl'
+	/** Assume that the CSS is intended to be used in Shadow DOM with Custom Elements. default: false */
+	shadow?: boolean,
+};
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign(
+		// Default options
+		{
+			dir: null,
+			preserve: false,
+			shadow: false,
+		},
+		// Provided options
+		opts,
+	);
 
 	return {
 		postcssPlugin: 'postcss-dir-pseudo-class',
@@ -82,12 +100,12 @@ function creator(opts) {
 								parent.prepend(
 									selectorParser.combinator({
 										value: ' ',
-									}),
+									}) as unknown as selectorParser.Selector,
 								);
 							}
 
 							// whether :dir matches the presumed direction
-							const isdir = dir === value;
+							const isdir = options.dir === value;
 
 							// [dir] attribute
 							const dirAttr = selectorParser.attribute({
@@ -95,13 +113,14 @@ function creator(opts) {
 								operator: '=',
 								quoteMark: '"',
 								value: `"${value}"`,
+								raws: null,
 							});
 
 							// :host-context([dir]) for Shadow DOM CSS
 							const hostContextPseudo = selectorParser.pseudo({
 								value: ':host-context',
 							});
-							hostContextPseudo.append(dirAttr);
+							hostContextPseudo.append(dirAttr as unknown as selectorParser.Selector);
 
 							// not[dir] attribute
 							const notDirAttr = selectorParser.pseudo({
@@ -114,7 +133,8 @@ function creator(opts) {
 									operator: '=',
 									quoteMark: '"',
 									value: `"${'ltr' === value ? 'rtl' : 'ltr'}"`,
-								}),
+									raws: null,
+								}) as unknown as selectorParser.Selector,
 							);
 
 							if (isdir) {
@@ -124,17 +144,17 @@ function creator(opts) {
 									parent.insertAfter(first, notDirAttr);
 								} else {
 									// prepend :root
-									parent.prepend(notDirAttr);
+									parent.prepend(notDirAttr as unknown as selectorParser.Selector);
 								}
 							} else if (firstIsHtml) {
 								// insert dir attribute after html tag
 								parent.insertAfter(first, dirAttr);
-							} else if (shadow && !firstIsRoot) {
+							} else if (options.shadow && !firstIsRoot) {
 								// prepend :host-context([dir])
-								parent.prepend(hostContextPseudo);
+								parent.prepend(hostContextPseudo as unknown as selectorParser.Selector);
 							} else {
 								// otherwise, prepend the dir attribute
-								parent.prepend(dirAttr);
+								parent.prepend(dirAttr as unknown as selectorParser.Selector);
 							}
 						});
 					});
@@ -154,12 +174,12 @@ function creator(opts) {
 
 			rule.cloneBefore({ selector: modifiedSelector });
 
-			if (!preserve) {
+			if (!options.preserve) {
 				rule.remove();
 			}
 		},
 	};
-}
+};
 
 creator.postcss = true;
 

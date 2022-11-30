@@ -26,6 +26,7 @@ import postcssImageSetFunction from 'postcss-image-set-function';
 import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 import postcssLabFunction from 'postcss-lab-function';
 import postcssLogical from 'postcss-logical';
+import postcssMediaQueriesAspectRatioNumberValues from '@csstools/postcss-media-queries-aspect-ratio-number-values';
 import postcssMediaMinmax from 'postcss-media-minmax';
 import postcssNestedCalc from '@csstools/postcss-nested-calc';
 import postcssNesting from 'postcss-nesting';
@@ -75,6 +76,7 @@ export const pluginsById = new Map(
 		['is-pseudo-class', postcssIsPseudoClass],
 		['lab-function', postcssLabFunction],
 		['logical-properties-and-values', postcssLogical],
+		['media-queries-aspect-ratio-number-values', postcssMediaQueriesAspectRatioNumberValues],
 		['media-query-ranges', postcssMediaMinmax],
 		['nested-calc', postcssNestedCalc],
 		['nesting-rules', postcssNesting],

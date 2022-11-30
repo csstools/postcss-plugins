@@ -3,7 +3,11 @@ import valueParser from 'postcss-value-parser';
 import type { ParsedValue } from 'postcss-value-parser';
 import { numberOfCalcOccurrences } from './occurrences';
 
-type pluginOptions = { preserve?: boolean };
+/** postcss-nested-calc plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+};
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(

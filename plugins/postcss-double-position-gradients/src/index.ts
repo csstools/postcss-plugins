@@ -137,9 +137,12 @@ const basePlugin = (opts) => {
 
 basePlugin.postcss = true;
 
-type pluginOptions = {
-	preserve?: boolean;
-	enableProgressiveCustomProperties?: boolean;
+/** postcss-double-position-gradients plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+	/** Enable "@csstools/postcss-progressive-custom-properties". default: true */
+	enableProgressiveCustomProperties?: boolean,
 };
 
 // Transform double-position gradients in CSS.

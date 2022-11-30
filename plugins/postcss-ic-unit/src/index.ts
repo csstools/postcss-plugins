@@ -50,10 +50,13 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 
 basePlugin.postcss = true;
 
-type pluginOptions = {
+/** postcss-ic-unit plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
 	preserve?: boolean,
+	/** Enable "@csstools/postcss-progressive-custom-properties". default: true */
 	enableProgressiveCustomProperties?: boolean,
-}
+};
 
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({

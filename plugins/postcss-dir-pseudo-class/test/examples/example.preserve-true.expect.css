@@ -1,0 +1,15 @@
+[dir="rtl"] article h3 {
+	margin-right: 10px;
+}
+
+article h3:dir(rtl) {
+	margin-right: 10px;
+}
+
+[dir="ltr"] article h3 {
+	margin-left: 10px;
+}
+
+article h3:dir(ltr) {
+	margin-left: 10px;
+}

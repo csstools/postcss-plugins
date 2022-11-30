@@ -102,7 +102,7 @@
 
 - Add `overrideImportFromWithRoot` option
 - Allow `.mjs` in `importFrom`
-- Converted to typescript
+- Converted to TypeScript
 - Correct typings for plugin options
 - Fix unicode support in custom property names
 

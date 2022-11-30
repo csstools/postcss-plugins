@@ -26,7 +26,7 @@ function transformString(strings, charPos, string) {
 	return transformString(newStrings, charPos + 1, string);
 }
 
-function createSensitiveAtributes(attribute) {
+function createSensitiveAttributes(attribute) {
 	const attributes = transformString([''], 0, attribute.value);
 	return attributes.map(x => {
 		const newAttribute = attribute.clone({
@@ -54,7 +54,7 @@ function createNewSelectors(selector) {
 			return;
 		}
 
-		const sensitiveAttributes = createSensitiveAtributes(node);
+		const sensitiveAttributes = createSensitiveAttributes(node);
 		const newSelectorsWithSensitiveAttributes = [];
 
 		sensitiveAttributes.forEach(newNode => {
@@ -86,26 +86,46 @@ function transform(selectors) {
 	}
 }
 
-const creator: PluginCreator<never> = () => {
+/** postcss-prefers-color-scheme plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign(
+		// Default options
+		{
+			preserve: false,
+		},
+		// Provided options
+		opts,
+	);
+
 	return {
 		postcssPlugin: 'postcss-attribute-case-insensitive',
 		Rule(rule, { result }) {
-			if (rule.selector.includes('i]')) {
+			if (!(/i\s*]/gmi.test(rule.selector))) {
+				return;
+			}
 
-				let modifiedSelector = rule.selector;
+			let modifiedSelector = rule.selector;
 
-				try {
-					modifiedSelector = selectorParser(transform).processSync(rule.selector);
-				} catch (err) {
-					rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
-					return;
-				}
+			try {
+				modifiedSelector = selectorParser(transform).processSync(rule.selector);
+			} catch (err) {
+				rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
+				return;
+			}
 
-				if (modifiedSelector === rule.selector) {
-					return;
-				}
+			if (modifiedSelector === rule.selector) {
+				return;
+			}
 
-				rule.replaceWith(rule.clone({ selector: modifiedSelector }));
+			rule.cloneBefore({ selector: modifiedSelector });
+
+			if (!options.preserve) {
+				rule.remove();
 			}
 		},
 	};

@@ -259,6 +259,14 @@ h6.test-custom-selectors {
 	        order: 13;
 }
 
+.test-case-insensitive-attributes[frame=hsides i] {
+	-webkit-box-ordinal-group: 14;
+	-webkit-order: 13;
+	   -moz-box-ordinal-group: 14;
+	    -ms-flex-order: 13;
+	        order: 13;
+}
+
 .test-rebeccapurple-color {
 	color: #639;
 	color: rebeccapurple;
@@ -460,7 +468,6 @@ h6.test-custom-selectors {
 	width: auto;
 	word-spacing: normal;
 	z-index: auto;
-	all: initial;
 	-webkit-box-ordinal-group: 21;
 	-webkit-order: 20;
 	   -moz-box-ordinal-group: 21;
@@ -534,6 +541,7 @@ h6.test-custom-selectors {
 	    -ms-flex-order: 25;
 	        order: 25;
 	word-wrap: break-word;
+	overflow-wrap: break-word;
 }
 
 .test-focus-visible-pseudo-class:focus-visible {
@@ -944,7 +952,6 @@ h6.test-custom-selectors {
 }
 
 .unset {
-	clip: initial;
 	clip: unset;
 }
 
@@ -1166,4 +1173,8 @@ h6.test-custom-selectors {
 	@scope (.foo) {
 		content: ":scope in @scope, but with nesting";
 	}
+}
+
+@media (min-aspect-ratio: 1.77),(min-aspect-ratio: 177/100) {
+	/* media query aspect ratio : <number> */
 }

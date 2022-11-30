@@ -1,10 +1,17 @@
+import type { PluginCreator } from 'postcss';
 import { replaceAnyLink } from './replace-any-link';
 
-/**
- * @param {{preserve?: boolean, subFeatures?: { areaHrefNeedsFixing?: boolean }}} opts
- * @returns {import('postcss').Plugin}
- */
-function creator(opts) {
+/** postcss-pseudo-class-any-link plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+	/** Add an extra fallback for the "<area>" element in IE and Edge. default: false */
+	subFeatures?: {
+		areaHrefNeedsFixing?: boolean
+	},
+};
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = {
 		preserve: true,
 		...opts,
@@ -32,7 +39,7 @@ function creator(opts) {
 			replaceAnyLink(rule, result, options.preserve, subFeatures.areaHrefNeedsFixing);
 		},
 	};
-}
+};
 
 creator.postcss = true;
 

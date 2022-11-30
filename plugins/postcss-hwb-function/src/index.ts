@@ -8,8 +8,14 @@ import type { PluginCreator } from 'postcss';
 
 const atSupportsHwbParams = '(color: hwb(0% 0 0))';
 
+/** postcss-hwb-function plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
+
 /** Transform hwb() functions in CSS. */
-const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
+const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
 
 	return {

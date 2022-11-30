@@ -1,12 +1,26 @@
-// gap shorthand property matcher
+import type { PluginCreator } from 'postcss';
+
+/** postcss-gap-properties plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+};
+
 const gapProperties = [
 	'column-gap',
 	'gap',
 	'row-gap',
 ];
 
-function creator(opts) {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign(
+		// Default options
+		{
+			preserve: true,
+		},
+		// Provided options
+		opts,
+	);
 
 	return {
 		postcssPlugin: 'postcss-gap-properties',
@@ -45,12 +59,12 @@ function creator(opts) {
 			});
 
 			// conditionally remove the original declaration
-			if (!preserve) {
+			if (!options.preserve) {
 				decl.remove();
 			}
 		},
 	};
-}
+};
 
 creator.postcss = true;
 

@@ -4,6 +4,7 @@
 
 - Updated: Support for Node v14+ (major).
 - Fix: Do not throw when a selector is invalid, show a warning instead.
+- Added: `preserve` plugin option.
 
 ### 5.0.2 (July 8, 2022)
 

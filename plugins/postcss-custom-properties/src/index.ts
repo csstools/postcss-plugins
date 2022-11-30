@@ -5,12 +5,13 @@ import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
 import { isBlockIgnored } from './is-ignored';
 import transformProperties from './transform-properties';
 
-export interface PluginOptions {
-	/** Determines whether properties using custom properties should be preserved in their original form. */
-	preserve?: boolean
-}
+/** postcss-custom-properties plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+};
 
-const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
 
 	if ('importFrom' in Object(opts)) {

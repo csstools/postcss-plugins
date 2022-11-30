@@ -1,7 +1,7 @@
+import type { Declaration, Result } from 'postcss';
 import valueParser from 'postcss-value-parser';
-import options from './options';
 
-export default (decl, { result }) => {
+export function onCSSDeclaration(decl: Declaration, result: Result , options: { preserve: boolean }) {
 	// alignment
 	const alignment = decl.prop.toLowerCase().match(placeMatch)[1];
 
@@ -47,6 +47,6 @@ export default (decl, { result }) => {
 	if (!options.preserve) {
 		decl.remove();
 	}
-};
+}
 
 export const placeMatch = /^place-(content|items|self)/;

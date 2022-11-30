@@ -23,4 +23,13 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-false': {
+		message: 'minimal example',
+		options: {
+			preserve: false
+		}
+	},
 });

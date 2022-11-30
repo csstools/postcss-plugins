@@ -68,7 +68,7 @@
 		"postcss-plugin"
 	],
 	"csstools": {
-		"cssdbId": "TODO",
+		"cssdbId": "media-queries-aspect-ratio-number-values",
 		"exportName": "postcssMediaQueriesAspectRatioNumberValues",
 		"humanReadableName": "PostCSS Media Queries Aspect-Ratio Number Values",
 		"specUrl": "https://www.w3.org/TR/mediaqueries-4/#aspect-ratio"

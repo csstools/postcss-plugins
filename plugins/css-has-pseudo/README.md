@@ -75,7 +75,7 @@ postcssHasPseudo({ preserve: false })
 
 ### specificityMatchingName
 
-The `specificityMatchingName` option allows you to change to selector that is used to adjust specificity.
+The `specificityMatchingName` option allows you to change the selector that is used to adjust specificity.
 The default value is `does-not-exist`.
 If this is an actual class, id or tag name in your code, you will need to set a different option here.
 

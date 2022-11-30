@@ -3,12 +3,13 @@ import type { PluginCreator } from 'postcss';
 import getCustomMedia from './custom-media-from-root';
 import { transformAtMediaListTokens } from './transform-at-media/transform-at-media';
 
-export interface PluginOptions {
-	/** Determines whether Custom Media and media queries using custom media should be preserved in their original form. */
-	preserve?: boolean
-}
+/** postcss-custom-media plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
 
-const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	// whether to preserve custom media and rules using them
 	const preserve = Boolean(Object(opts).preserve);
 
@@ -30,6 +31,10 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 					customMedia = getCustomMedia(root, result, { preserve: preserve });
 				},
 				AtRule: (atRule, { result }) => {
+					if (atRule.name.toLowerCase() !== 'media') {
+						return;
+					}
+					
 					if (!atRule.params) {
 						return;
 					}

@@ -7,7 +7,11 @@ import { acosFunctionCheck, transformAcosFunction } from './acos';
 import { atanFunctionCheck, transformAtanFunction } from './atan';
 import { atan2FunctionCheck, transformAtan2Function } from './atan2';
 
-type pluginOptions = { preserve?: boolean };
+/** postcss-trigonometric-functions plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
 
 const Transformations = [
 	{ check: asinFunctionCheck, transform: transformAsinFunction },

@@ -1,7 +1,11 @@
 import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 
-type pluginOptions = { color?: string, preserve?: boolean };
+/** postcss-text-decoration-shorthand plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(

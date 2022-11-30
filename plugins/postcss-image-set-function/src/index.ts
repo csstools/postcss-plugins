@@ -6,10 +6,27 @@ import { handleInvalidation } from './lib/handle-invalidation';
 const imageSetValueMatchRegExp = /(^|[^\w-])(-webkit-)?image-set\(/i;
 const imageSetFunctionMatchRegExp = /^(-webkit-)?image-set$/i;
 
-const creator: PluginCreator<{ preserve: boolean, oninvalid: string }> = (opts?: { preserve: boolean, oninvalid: string }) => {
+/** postcss-image-set-function plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+	/**
+	 * Determine how invalid usage of `image-set()` should be handled.
+	 * By default, invalid usages of `image-set()` are ignored.
+	 * They can be configured to emit a warning with `warn` or throw an exception with `throw`.
+	 * default: 'ignore'
+	 */
+	onInvalid?: 'warn' | 'throw' | 'ignore' | false
+};
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	// prepare options
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
-	const oninvalid = 'oninvalid' in Object(opts) ? opts.oninvalid : 'ignore';
+	const oninvalid = 'onInvalid' in Object(opts) ? opts.onInvalid : 'ignore';
+
+	if ('oninvalid' in Object(opts)) {
+		throw new Error('"oninvalid" was changed to "onInvalid" to match other plugins with similar options');
+	}
 
 	return {
 		postcssPlugin: 'postcss-image-set-function',

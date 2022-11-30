@@ -1,0 +1,7 @@
+html:not([dir="ltr"]) article h3 {
+	margin-right: 10px;
+}
+
+[dir="ltr"] article h3 {
+	margin-left: 10px;
+}

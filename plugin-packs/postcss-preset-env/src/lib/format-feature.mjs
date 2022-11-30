@@ -54,6 +54,16 @@ export function formatStagedFeature(cssdbList, browsers, features, feature, shar
 	// postcss-preset-env : option overrides
 	options.enableProgressiveCustomProperties = false;
 
+	// https://github.com/maximkoretskiy/postcss-initial#replace
+	if (feature.id === 'all-property' && 'preserve' in options) {
+		options.replace = options.preserve;
+	}
+
+	// https://github.com/MattDiMu/postcss-replace-overflow-wrap/blob/ec9914e0b9473a75a5d1fe32ea4311555eb81b71/index.js#L10
+	if (feature.id === 'overflow-wrap-property' && 'preserve' in options) {
+		options.method = options.preserve ? 'copy' : 'replace';
+	}
+
 	if (feature.plugin.postcss && typeof feature.plugin === 'function') {
 		plugin = feature.plugin(options);
 	} else if (feature.plugin && feature.plugin.default && typeof feature.plugin.default === 'function' && feature.plugin.default.postcss) {

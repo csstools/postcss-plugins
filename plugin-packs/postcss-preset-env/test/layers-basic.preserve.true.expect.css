@@ -230,6 +230,14 @@ h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 13;
 }
 
+.test-case-insensitive-attributes[frame=hsides i]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	-webkit-box-ordinal-group: 14;
+	-webkit-order: 13;
+	   -moz-box-ordinal-group: 14;
+	    -ms-flex-order: 13;
+	        order: 13;
+}
+
 .test-rebeccapurple-color:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	color: #639;
 	color: rebeccapurple;
@@ -431,7 +439,6 @@ h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	width: auto;
 	word-spacing: normal;
 	z-index: auto;
-	all: initial;
 	-webkit-box-ordinal-group: 21;
 	-webkit-order: 20;
 	   -moz-box-ordinal-group: 21;
@@ -505,6 +512,7 @@ h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	    -ms-flex-order: 25;
 	        order: 25;
 	word-wrap: break-word;
+	overflow-wrap: break-word;
 }
 
 .test-focus-visible-pseudo-class:focus-visible:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
@@ -888,7 +896,6 @@ h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 }
 
 .unset:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	clip: initial;
 	clip: unset;
 }
 

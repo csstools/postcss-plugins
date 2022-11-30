@@ -5,7 +5,11 @@ const prefersInterfaceRegExp = /\(\s*prefers-color-scheme\s*:\s*(dark|light)\s*\
 const colorDepthByStyle = { dark: '48842621', light: '70318723' };
 const prefersInterfaceColorDepthReplacer = ($0, style) => `(color: ${colorDepthByStyle[style.toLowerCase()]})`;
 
-type pluginOptions = { preserve?: boolean };
+/** postcss-prefers-color-scheme plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+};
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(

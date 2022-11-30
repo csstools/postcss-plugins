@@ -1,0 +1,7 @@
+article h3:dir(rtl) {
+	margin-right: 10px;
+}
+
+article h3:dir(ltr) {
+	margin-left: 10px;
+}

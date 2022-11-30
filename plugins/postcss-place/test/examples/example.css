@@ -1,0 +1,4 @@
+.example {
+	place-self: center;
+	place-content: space-between center;
+}

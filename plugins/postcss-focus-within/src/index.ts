@@ -2,7 +2,15 @@ import parser from 'postcss-selector-parser';
 import type { PluginCreator } from 'postcss';
 import isValidReplacement from './is-valid-replacement.mjs';
 
-type pluginOptions = { preserve?: boolean, replaceWith?: string, disablePolyfillReadyClass?: boolean };
+/** postcss-focus-within plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+	/** The replacement class to be used in the polyfill. default: "[focus-within]" */
+	replaceWith?: string,
+	/** Disable the selector prefix that is used to prevent a flash of incorrectly styled content. default: false */
+	disablePolyfillReadyClass?: boolean
+};
 
 const POLYFILL_READY_CLASSNAME = 'js-focus-within';
 const PSEUDO = ':focus-within';

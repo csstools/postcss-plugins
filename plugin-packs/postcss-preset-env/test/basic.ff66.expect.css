@@ -499,3 +499,7 @@
 		content: ":scope in @scope, but with nesting";
 	}
 }
+
+@media (min-aspect-ratio: 177/100) {
+	/* media query aspect ratio : <number> */
+}
