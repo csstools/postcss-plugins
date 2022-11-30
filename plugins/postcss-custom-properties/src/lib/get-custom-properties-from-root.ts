@@ -1,15 +1,18 @@
 import valuesParser from 'postcss-value-parser';
-import { isBlockIgnored } from './is-ignored';
+import { isBlockIgnored, isDeclarationIgnored } from './is-ignored';
 
 // return custom selectors from the css root, conditionally removing them
 export default function getCustomPropertiesFromRoot(root, opts): Map<string, valuesParser.ParsedValue> {
 	// initialize custom selectors
-	const customPropertiesFromHtmlElement: Map<string, valuesParser.ParsedValue> = new Map();
-	const customPropertiesFromRootPseudo: Map<string, valuesParser.ParsedValue> = new Map();
-	const out: Map<string, valuesParser.ParsedValue> = new Map();
+	const customPropertiesFromHtmlElement: Map<string, string> = new Map();
+	const customPropertiesFromRootPseudo: Map<string, string> = new Map();
 
 	// for each html or :root rule
 	root.nodes.slice().forEach(rule => {
+		if (isBlockIgnored(rule)) {
+			return;
+		}
+
 		const customPropertiesObject = isHtmlRule(rule)
 			? customPropertiesFromHtmlElement
 			: isRootRule(rule)
@@ -19,11 +22,11 @@ export default function getCustomPropertiesFromRoot(root, opts): Map<string, val
 		// for each custom property
 		if (customPropertiesObject) {
 			rule.nodes.slice().forEach(decl => {
-				if (decl.variable && !isBlockIgnored(decl)) {
+				if (decl.variable && !isDeclarationIgnored(decl)) {
 					const { prop } = decl;
 
 					// write the parsed value to the custom property
-					customPropertiesObject.set(prop, valuesParser(decl.value));
+					customPropertiesObject.set(prop, decl.value);
 
 					// conditionally remove the custom property declaration
 					if (!opts.preserve) {
@@ -33,18 +36,19 @@ export default function getCustomPropertiesFromRoot(root, opts): Map<string, val
 			});
 
 			// conditionally remove the empty html or :root rule
-			if (!opts.preserve && isEmptyParent(rule) && !isBlockIgnored(rule)) {
+			if (!opts.preserve && isEmptyParent(rule)) {
 				rule.remove();
 			}
 		}
 	});
 
+	const out: Map<string, valuesParser.ParsedValue> = new Map();
 	for (const [name, value] of customPropertiesFromHtmlElement.entries()) {
-		out.set(name, value);
+		out.set(name, valuesParser(value));
 	}
 
 	for (const [name, value] of customPropertiesFromRootPseudo.entries()) {
-		out.set(name, value);
+		out.set(name, valuesParser(value));
 	}
 
 	// return all custom properties, preferring :root properties over html properties
