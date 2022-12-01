@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased
+### 12.1.11 (December 1, 2022)
 
 - Improve plugin performance
 
