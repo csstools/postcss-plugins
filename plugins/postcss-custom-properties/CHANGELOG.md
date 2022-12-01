@@ -1,8 +1,8 @@
 # Changes to PostCSS Custom Properties
 
-### 12.1.11 (December 1, 2022)
+### Unreleased
 
-- Improve plugin performance
+- Improve plugin performance (port of fixes in `v12.1.11`)
 
 ### 13.0.0 (November 14, 2022)
 
@@ -25,6 +25,10 @@
 	margin: var(--a-value);
 }
 ```
+
+### 12.1.11 (December 1, 2022)
+
+- Improve plugin performance
 
 ### 12.1.10 (October 20, 2022)
 
