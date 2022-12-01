@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### 12.1.11 (December 1, 2022)
+
+- Improve plugin performance
+
 ### 12.1.10 (October 20, 2022)
 
 - Fix how `preserve: false` interacts with logic around duplicate code (see `12.1.9`).
