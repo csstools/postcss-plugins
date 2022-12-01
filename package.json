@@ -38,7 +38,6 @@
 	"scripts": {
 		"build": "npm run build --workspaces --if-present",
 		"clean": "bash ./.github/bin/clean.sh",
-		"setup-workspace": "npm run clean && npm ci && npm run build && npm run test",
 		"docs": "npm run docs --workspaces --if-present",
 		"lint": "npm run lint --workspaces --if-present && npm run lint:rollup-config && npm run lint:executable-files && npm run lint:licenses",
 		"lint:executable-files": "bash .github/bin/detect-executable-files/detect-executable-files.sh",
@@ -46,7 +45,6 @@
 		"lint:licenses": "node .github/bin/license/check-license.mjs",
 		"lint:rollup-config": "eslint ./rollup --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"new-plugin": "node ./.github/bin/new-plugin.mjs",
-		"prepare-repo-for-releases": "npm run clean && npm ci && npm run docs && npm run lint && npm run build && npm run test && bash ./.github/bin/fail-on-changes.sh",
 		"test": "npm run test --workspaces --if-present",
 		"test:browser": "npm run test:browser --workspaces --if-present"
 	},

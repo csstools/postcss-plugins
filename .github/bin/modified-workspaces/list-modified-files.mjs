@@ -1,26 +1,31 @@
-import { exec } from './exec.mjs';
+import https from 'https';
 
-export async function listModifiedFilesSince(refCommit) {
-	try {
-		const result = await exec(
-			'git',
-			[
-				'--no-pager',
-				'diff',
-				'--name-only',
-				refCommit,
-				'HEAD',
-			],
-		);
+export async function listModifiedFilesInPullRequest(repository, pullRequestNumber) {
+	return await (new Promise((resolve, reject) => {
+		https.get({
+			host: 'api.github.com',
+			port: 443,
+			path: `/repos/${repository}/pulls/${pullRequestNumber}/files`,
+			method: 'GET',
+			headers: { 'User-Agent': 'GitHub Workflow' }
+		}, (res) => {
+			if (!res.statusCode || (Math.floor(res.statusCode / 100) !== 2)) {
+				throw new Error(`Unepected response code "${res.statusCode}" with message "${res.statusMessage}"`)
+			}
 
-		const list = result.stdout.split(/[\r\n]+/).map((x) => x.trim()).filter((x) => !!x);
-		if (!list.length && result.stderr) {
-			throw new Error(`empty list of modified files with message "${result.stderr}"`);
-		}
+			let data = [];
+			res.on('data', (chunk) => {
+				data.push(chunk);
+			});
 
-		return list;
-	} catch(err) {
-		console.error(err);
-		throw new Error('failed to get the list of modified files');
-	}
+			res.on('end', () => {
+				resolve(
+					JSON.parse(Buffer.concat(data).toString()).map((x) => x.filename)
+				);
+			});
+
+		}).on('error', (err) => {
+			reject(err);
+		});
+	}));
 }

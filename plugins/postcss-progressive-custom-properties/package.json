@@ -34,6 +34,7 @@
 		"postcss": "^8.4"
 	},
 	"scripts": {
+		"prebuild": "npm run clean",
 		"build": "node ./generate/matchers.mjs && eslint --fix ./src/matchers.ts && rollup -c ../../rollup/default.mjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs",

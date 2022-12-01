@@ -24,47 +24,70 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
-      # Test node 16/18 on ubuntu
+      # Test node 14/16/18 on ubuntu
       # Test node 18 on macos/windows
       # Enable annotations only for node 18 + ubuntu
       matrix:
         os: [ubuntu-latest]
-        node: [16, 18]
+        node: [14, 16, 18]
         include:
         - os: macos-latest
           node: 18
         - os: windows-latest
           node: 18
-        - node: 18
-          is_base_node_version: true
         - os: ubuntu-latest
           is_base_os_version: true
+        - node: 18
+          is_base_node_version: true
+        - node: 14
+          needs_npm_update: true
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 30
+          fetch-depth: 1
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
+      - name: npm update
+        run: |
+          npm install -g npm@8
+          npm --version
+        if: matrix.needs_npm_update
+
       - name: npm ci
         run: |
           npm ci --ignore-scripts
+
+      - name: determine modified workspaces
+        run: |
+          echo "MODIFIED_WORKSPACES=$(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')" >> $GITHUB_ENV
+        env:
+          GITHUB_ACTION_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
 
         # Build, lint and PostCSS Tape tests must all work and pass :
         # - with exact dependencies from package-lock.json
         # - without requiring postinstall scripts from dependencies to run
       - name: build
         run: |
-          npm run build --if-present
+          npm run build --if-present $MODIFIED_WORKSPACES
+        if: matrix.is_base_node_version && matrix.is_base_os_version
 
       - name: lint
-        run: npm run lint --if-present
+        run: npm run lint --if-present $MODIFIED_WORKSPACES
         if: matrix.is_base_node_version && matrix.is_base_os_version
+
+      - name: docs
+        run: npm run docs --if-present $MODIFIED_WORKSPACES
+        if: matrix.is_base_node_version && matrix.is_base_os_version
+
+      - name: repo is clean after "build", "lint" and "docs" steps
+        run: |
+          git diff --quiet --exit-code
 
         # Basic tests
       - name: test
-        run: npm run test --if-present
+        run: npm run test --if-present $MODIFIED_WORKSPACES
         env:
           ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.is_base_node_version }}
           ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.is_base_os_version }}
@@ -74,14 +97,14 @@ jobs:
       - name: test:cli
         run: |
           npm install --ignore-scripts
-          npm run test:cli --if-present
+          npm run test:cli --if-present $MODIFIED_WORKSPACES
 
         # Browser Tests
         # running "npm ci" again, but allowing scripts so that Chrome is installed
       - name: test:browser
         run: |
           npm ci
-          npm run test:browser --if-present
+          npm run test:browser --if-present $MODIFIED_WORKSPACES
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # E2E Tests
@@ -91,14 +114,4 @@ jobs:
           npm install
           npm run build
           npm run test
-        if: matrix.is_base_node_version && matrix.is_base_os_version
-
-      # Deno compatibility
-      - uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x.x
-        if: matrix.is_base_node_version && matrix.is_base_os_version
-
-      - name: test:deno
-        run: npm run test:deno --if-present
         if: matrix.is_base_node_version && matrix.is_base_os_version

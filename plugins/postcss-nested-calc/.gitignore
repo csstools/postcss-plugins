@@ -4,4 +4,3 @@ yarn.lock
 *.result.css
 *.result.css.map
 *.result.html
-dist/*

@@ -42,6 +42,7 @@
 	},
 	"scripts": {
 		"benchmark": "node ./test/benchmark.mjs",
+		"prebuild": "npm run clean",
 		"build": "rollup -c ../../rollup/default.mjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
