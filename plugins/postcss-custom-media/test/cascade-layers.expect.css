@@ -1,0 +1,13 @@
+@layer extensions, components;
+
+@media (min-width:320px) and (debug-layer: extensions) {
+	p {
+		color: yellow;
+	}
+}
+
+@media (min-width:768px) and (debug-layer: components) {
+	p {
+		color: green;
+	}
+}

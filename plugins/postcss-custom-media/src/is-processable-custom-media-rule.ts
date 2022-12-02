@@ -1,6 +1,6 @@
 import type { AtRule, ChildNode, Container, Document } from 'postcss';
 
-const allowedParentAtRules = new Set(['scope', 'container']);
+const allowedParentAtRules = new Set(['scope', 'container', 'layer']);
 
 export function isProcessableCustomMediaRule(atRule: AtRule): boolean {
 	if (atRule.name.toLowerCase() !== 'custom-media') {

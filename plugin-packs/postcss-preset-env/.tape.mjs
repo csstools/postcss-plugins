@@ -1,5 +1,6 @@
 import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'postcss-preset-env';
+import postcssImport from 'postcss-import';
 
 const orderDetectionPlugin = (prop, changeWhenMatches) => {
 	return {
@@ -172,7 +173,7 @@ postcssTape(plugin)({
 			stage: 0,
 			browsers: '> 0%'
 		},
-		warnings: 1
+		warnings: 0
 	},
 	'layers-basic:preserve:true': {
 		message: 'supports layers usage with { preserve: true }',
@@ -181,7 +182,7 @@ postcssTape(plugin)({
 			stage: 0,
 			browsers: '> 0%'
 		},
-		warnings: 1
+		warnings: 0
 	},
 	'client-side-polyfills:stage-1': {
 		message: 'stable client side polyfill behavior',
@@ -403,4 +404,14 @@ postcssTape(plugin)({
 			}
 		},
 	},
+	'postcss-import/styles': {
+		message: 'works well with "postcss-import"',
+		plugins: [
+			postcssImport(),
+			plugin({
+				stage: 0,
+				browsers: '> 0%'
+			})
+		]
+	}
 });

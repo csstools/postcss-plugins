@@ -1,0 +1,26 @@
+@layer extensions, components;
+
+@layer components {
+	@custom-media --tablet (min-width:768px) and (debug-layer: components);
+}
+
+@layer extensions {
+	@custom-media --mobile (min-width:320px) and (debug-layer: extensions);
+	@custom-media --tablet (min-width:768px) and (debug-layer: extensions);
+
+	@layer {
+		@custom-media --mobile (min-width:320px) and (debug-layer: extensions.anon-1);
+	}
+}
+
+@media (--mobile) {
+	p {
+		color: yellow;
+	}
+}
+
+@media (--tablet) {
+	p {
+		color: green;
+	}
+}

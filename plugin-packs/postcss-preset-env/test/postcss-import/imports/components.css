@@ -1,0 +1,11 @@
+:--button {
+	color: var(--color-red);
+
+	@media (--dark) {
+		color: var(--color-blue);
+	}
+
+	@layer foo {
+		text-align: left;
+	}
+}

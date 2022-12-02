@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased
+
+- Added: Support for Cascade Layers.
+
 ### 9.0.1 (November 19, 2022)
 
 - Fixed: avoid complex generated CSS when `@custom-media` contains only a single simple media feature.

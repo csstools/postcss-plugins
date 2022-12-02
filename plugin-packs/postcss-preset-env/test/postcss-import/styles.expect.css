@@ -1,0 +1,19 @@
+
+
+@custom-selector :--h h1, h2, h3, h4, h5, h6;
+@custom-selector :--button button, input[type="submit"];
+:root {
+	--color-red: red;
+	--color-blue: blue;
+}
+:--button:not(#\#) {
+		text-align: left;
+}
+:--button:not(#\#):not(#\#) {
+	color: var(--color-red);
+}
+@media (prefers-color-scheme: dark) {
+:--button:not(#\#):not(#\#) {
+		color: var(--color-blue);
+}
+	}
