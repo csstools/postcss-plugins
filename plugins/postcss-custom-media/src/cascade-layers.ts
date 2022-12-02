@@ -61,11 +61,14 @@ export function collectCascadeLayerOrder(root: Root) {
 
 		if (node.nodes) {
 			const implicitLayerName = currentLayerNames[0] + '.' + 'csstools-implicit-layer';
-			addLayerToModel(layers, [implicitLayerName]);
 			references.set(node, implicitLayerName);
 			referencesForLayerNames.set(node, currentLayerNames[0]);
 		}
 	});
+
+	for (const layerName of references.values()) {
+		addLayerToModel(layers, [layerName]);
+	}
 
 	const finalLayers = layers.map((x) => x.join('.'));
 
@@ -103,12 +106,12 @@ function addLayerToModel(layers, currentLayerNames) {
 			let layerWithMostEqualSegments = -1;
 			let mostEqualSegments = 0;
 
-			LAYERS_LOOP: for (let i = 0; i < layers.length; i++) {
+			for (let i = 0; i < layers.length; i++) {
 				const existingLayerParts = layers[i];
 
 				let numberOfEqualSegments = 0;
 
-				for (let j = 0; j < existingLayerParts.length; j++) {
+				LAYER_PARTS_LOOP: for (let j = 0; j < existingLayerParts.length; j++) {
 					const existingLayerPart = existingLayerParts[j];
 					const layerPart = layerNameParts[j];
 
@@ -122,7 +125,7 @@ function addLayerToModel(layers, currentLayerNames) {
 					}
 
 					if (layerPart !== existingLayerPart) {
-						continue LAYERS_LOOP;
+						break LAYER_PARTS_LOOP;
 					}
 				}
 
