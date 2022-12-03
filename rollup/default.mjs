@@ -1,6 +1,5 @@
 import fs from 'fs';
 import { browserJavascript } from './presets/browser-javascript.mjs';
-import { cliJavascript } from './presets/cli-javascript.mjs';
 import { cliTypescript } from './presets/cli-typescript.mjs';
 import { denoJavascript } from './presets/deno-javascript.mjs';
 import { packageJavascript } from './presets/package-javascript.mjs';
@@ -36,10 +35,6 @@ if (isTypescript) {
 		presets.push(...packageTypescript());
 	}
 
-	if (packageInfo.bin) {
-		presets.push(...cliTypescript());
-	}
-
 	if (packageInfo.exports && ('./browser' in packageInfo.exports)) {
 		// Browser script remain javascript as it's simpler to go old school JS in regular JS.
 		presets.push(...browserJavascript());
@@ -49,10 +44,6 @@ if (isTypescript) {
 		presets.push(...packageJavascript());
 	}
 
-	if (packageInfo.bin) {
-		presets.push(...cliJavascript());
-	}
-
 	if (hasDenoOutput) {
 		presets.push(...denoJavascript());
 	}
@@ -60,6 +51,10 @@ if (isTypescript) {
 	if (packageInfo.exports && ('./browser' in packageInfo.exports)) {
 		presets.push(...browserJavascript());
 	}
+}
+
+if (packageInfo.bin) {
+	presets.push(...cliTypescript());
 }
 
 export default presets;

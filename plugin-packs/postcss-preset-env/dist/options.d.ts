@@ -6,7 +6,7 @@ export declare type pluginOptions = {
      * based upon their process in becoming web standards.
      * default: 2
      */
-    stage?: number;
+    stage?: number | false;
     /**
      * Determine which CSS features to polyfill,
      * based their implementation status.

@@ -4,6 +4,11 @@ export const externalsForCLI = [
 	'url',
 	'vm',
 
+	'postcss',
+	/^postcss-\d\.\d$/,
+	/^postcss\/lib\/*/,
+	'postcss-html',
+
 	'@csstools/css-parser-algorithms',
 	'@csstools/css-tokenizer',
 	'@csstools/media-query-list-parser',
