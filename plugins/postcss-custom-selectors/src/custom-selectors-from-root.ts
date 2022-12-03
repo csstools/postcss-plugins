@@ -1,12 +1,16 @@
 import type { ChildNode, Container, Document, Result, Root as PostCSSRoot } from 'postcss';
 import type { Root as SelectorRoot } from 'postcss-selector-parser';
 import parser from 'postcss-selector-parser';
+import { cascadeLayerNumberForNode, collectCascadeLayerOrder } from './cascade-layers';
 import { isProcessableCustomSelectorRule } from './is-processable-custom-selector-rule';
 
 // return custom selectors from the css root, conditionally removing them
 export default function getCustomSelectors(root: PostCSSRoot, result: Result, opts: { preserve?: boolean }): Map<string, SelectorRoot> {
 	// initialize custom selectors
 	const customSelectors = new Map<string, SelectorRoot>();
+	const customSelectorsCascadeLayerMapping: Map<string, number> = new Map();
+
+	const cascadeLayersOrder = collectCascadeLayerOrder(root);
 
 	root.walkAtRules((atRule) => {
 		if (!isProcessableCustomSelectorRule(atRule)) {
@@ -24,8 +28,14 @@ export default function getCustomSelectors(root: PostCSSRoot, result: Result, op
 
 			const name = nameNode.toString();
 
-			// re-parsing is important to obtain the correct AST shape
-			customSelectors.set(name, parser().astSync(source.slice(name.length).trim()));
+			const thisCascadeLayer = cascadeLayerNumberForNode(atRule, cascadeLayersOrder);
+			const existingCascadeLayer = customSelectorsCascadeLayerMapping.get(name) ?? -1;
+
+			if (thisCascadeLayer >= existingCascadeLayer) {
+				customSelectorsCascadeLayerMapping.set(name, thisCascadeLayer);
+				// re-parsing is important to obtain the correct AST shape
+				customSelectors.set(name, parser().astSync(source.slice(name.length).trim()));
+			}
 
 			if (!opts.preserve) {
 				const parent = atRule.parent;

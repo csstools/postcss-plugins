@@ -11,6 +11,9 @@ postcssTape(plugin)({
 			preserve: true
 		}
 	},
+	'cascade-layers': {
+		message: 'supports cascade layers',
+	},
 	'conditionals': {
 		message: 'handles conditional rules'
 	},

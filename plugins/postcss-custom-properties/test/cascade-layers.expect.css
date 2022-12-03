@@ -19,8 +19,7 @@
 }
 
 @layer extensions {
-	@layer one,
-	two;
+	@layer one, two;
 
 	.foo {}
 
