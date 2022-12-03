@@ -36,6 +36,11 @@
 
 .test-custom-properties:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		is-layer: C;
+		-webkit-box-ordinal-group: 2;
+		-webkit-order: 1;
+		   -moz-box-ordinal-group: 2;
+		    -ms-flex-order: 1;
+		        order: 1;
 		-webkit-box-ordinal-group: var(--order);
 		-webkit-order: var(--order);
 		   -moz-box-ordinal-group: var(--order);

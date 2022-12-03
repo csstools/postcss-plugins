@@ -10,10 +10,12 @@
 		text-align: left;
 }
 :--button:not(#\#):not(#\#) {
+	color: red;
 	color: var(--color-red);
 }
 @media (prefers-color-scheme: dark) {
 :--button:not(#\#):not(#\#) {
+		color: blue;
 		color: var(--color-blue);
 }
 	}
