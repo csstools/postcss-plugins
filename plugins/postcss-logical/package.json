@@ -2,7 +2,21 @@
 	"name": "postcss-logical",
 	"description": "Use logical properties and values in CSS",
 	"version": "5.0.4",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		},
+		{
+			"name": "Jonathan Neal",
+			"email": "jonathantneal@hotmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
@@ -13,6 +27,7 @@
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./dist/index.mjs",
@@ -33,55 +48,33 @@
 		"prebuild": "npm run clean",
 		"build": "rollup -c ../../rollup/default.mjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run clean && npm run build && npm run test",
+		"stryker": "stryker run --logLevel error",
 		"test": "node .tape.mjs && npm run test:exports",
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-logical"
 	},
-	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"align",
-		"block",
-		"border",
-		"clear",
-		"css",
-		"dir",
-		"directional",
-		"directions",
-		"end",
-		"float",
-		"flow",
-		"inline",
-		"logical",
-		"ltr",
-		"margin",
-		"padding",
-		"postcss",
-		"postcss-plugin",
-		"properties",
-		"property",
-		"relative",
-		"rtl",
-		"size",
-		"start",
-		"text",
-		"values"
+		"postcss-plugin"
 	],
 	"csstools": {
+		"cssdbId": "TODO",
 		"exportName": "postcssLogical",
-		"humanReadableName": "PostCSS Logical Properties and Values"
+		"humanReadableName": "PostCSS Logical Properties and Values",
+		"specUrl": "#TODO"
 	},
 	"volta": {
 		"extends": "../../package.json"
-	}
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme",
+	"bugs": "https://github.com/csstools/postcss-plugins/issues"
 }
