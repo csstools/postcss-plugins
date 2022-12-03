@@ -64,6 +64,7 @@ jobs:
           echo "MODIFIED_WORKSPACES=$(node './.github/bin/modified-workspaces/log-modified-workspaces.mjs')" >> $GITHUB_ENV
         env:
           GITHUB_ACTION_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
         # Build, lint and PostCSS Tape tests must all work and pass :
         # - with exact dependencies from package-lock.json

@@ -13,13 +13,6 @@ export async function listModifiedFilesInPullRequest(repository, pullRequestNumb
 		if (newFiles.length < 100) {
 			break;
 		}
-
-		await new Promise((resolve) => {
-			// API is rate limited
-			setTimeout(() => {
-				resolve()
-			}, 1000);
-		})
 	}
 
 	return allFiles;
@@ -27,12 +20,20 @@ export async function listModifiedFilesInPullRequest(repository, pullRequestNumb
 
 async function getPullRequestFiles(repository, pullRequestNumber, page) {
 	return await (new Promise((resolve, reject) => {
+		const headers = {
+			'User-Agent': 'GitHub Workflow'
+		}
+
+		if (process.env.GITHUB_TOKEN) {
+			headers['authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`;
+		}
+
 		https.get({
 			host: 'api.github.com',
 			port: 443,
 			path: `/repos/${repository}/pulls/${pullRequestNumber}/files?per_page=100&page=${page}`,
 			method: 'GET',
-			headers: { 'User-Agent': 'GitHub Workflow' }
+			headers: headers
 		}, (res) => {
 			if (!res.statusCode || (Math.floor(res.statusCode / 100) !== 2)) {
 				throw new Error(`Unepected response code "${res.statusCode}" with message "${res.statusMessage}"`)
