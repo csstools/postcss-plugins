@@ -15,6 +15,7 @@
 @layer extensions {
 	@layer one, two;
 
+	/* https://github.com/postcss/postcss/issues/1802#issuecomment-1336371947 */
 	.foo {}
 
 	@custom-selector :--mobile :mobile(extensions);
