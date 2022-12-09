@@ -1,5 +1,5 @@
 import type { PluginCreator } from 'postcss';
-export declare type pluginOptions = {
+export type pluginOptions = {
     preserve?: boolean;
     onInvalid?: string;
 };

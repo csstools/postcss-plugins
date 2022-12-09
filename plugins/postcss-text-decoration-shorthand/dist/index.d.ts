@@ -1,5 +1,5 @@
 import type { PluginCreator } from 'postcss';
-declare type pluginOptions = {
+type pluginOptions = {
     color?: string;
     preserve?: boolean;
 };

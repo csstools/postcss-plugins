@@ -6,7 +6,7 @@
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js
  */
-declare type color = [number, number, number];
+type color = [number, number, number];
 export declare function sRGB_to_luminance(RGB: color): number;
 export declare function contrast(RGB1: color, RGB2: color): number;
 export declare function sRGB_to_LCH(RGB: color): color;

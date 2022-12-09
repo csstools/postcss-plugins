@@ -1,4 +1,4 @@
-export declare type Arguments = {
+export type Arguments = {
     stdin: boolean;
     stdout: boolean;
     inputs: Array<string>;

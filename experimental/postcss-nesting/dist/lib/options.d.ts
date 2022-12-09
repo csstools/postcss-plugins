@@ -1,3 +1,3 @@
-export declare type options = {
+export type options = {
     noIsPseudoSelector: boolean;
 };

@@ -1,5 +1,5 @@
 import type { Node } from 'postcss-value-parser';
-export declare type ColorStop = {
+export type ColorStop = {
     color: string;
     colorStopLength: string;
     colorHintBetween: Array<ColorStop>;
