@@ -67,9 +67,9 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"CSS4",
 		"attribute",
 		"css",
+		"CSS4",
 		"insensitive",
 		"postcss",
 		"postcss-plugin",
