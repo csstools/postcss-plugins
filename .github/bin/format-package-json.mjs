@@ -208,6 +208,9 @@ const formatted = {};
 	delete packageJSONInfo.keywords;
 
 	if (formatted.keywords && formatted.keywords.length) {
+		const keywords = new Set(formatted.keywords);
+		keywords.forEach((keyword) => keywords.delete(keyword + 's')); // poor mans pluralize, we only want singular words as keywords
+		formatted.keywords = Array.from(keywords);
 		formatted.keywords.sort();
 	}
 
