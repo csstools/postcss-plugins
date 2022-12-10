@@ -209,7 +209,7 @@ const formatted = {};
 		const keywords = new Set(formatted.keywords);
 		keywords.forEach((keyword) => keywords.delete(keyword + 's')); // poor mans pluralize, we only want singular words as keywords
 		formatted.keywords = Array.from(keywords);
-		formatted.keywords.sort();
+		formatted.keywords.sort((a, b) => a.localeCompare(b));
 	}
 
 	if (Object.keys(packageJSONInfo.csstools ?? {}).length) {
