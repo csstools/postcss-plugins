@@ -70,8 +70,7 @@
 		"Not",
 		"postcss",
 		"postcss-plugin",
-		"selector",
-		"selectors"
+		"selector"
 	],
 	"csstools": {
 		"cssdbId": "not-pseudo-class",
