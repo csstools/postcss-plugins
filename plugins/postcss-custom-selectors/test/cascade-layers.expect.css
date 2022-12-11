@@ -1,10 +1,7 @@
 @layer extensions, components;
 
 @layer extensions {
-	@layer one, two;
-
-	/* https://github.com/postcss/postcss/issues/1802#issuecomment-1336371947 */
-	.foo {}
+	@layer one, two
 }
 
 :is(:mobile(extensions)) {

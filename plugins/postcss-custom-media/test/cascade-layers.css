@@ -15,9 +15,6 @@
 @layer extensions {
 	@layer one, two;
 
-	/* https://github.com/postcss/postcss/issues/1802#issuecomment-1336371947 */
-	.foo {}
-
 	@custom-media --mobile (min-width:320px) and (debug-layer: extensions);
 	@custom-media --tablet (min-width:768px) and (debug-layer: extensions);
 	@custom-media --desktop (min-width:1280px) and (debug-layer: extensions);
