@@ -62,8 +62,8 @@ export declare class MediaFeature {
     isMediaFeature(): this is MediaFeature;
     static isMediaFeature(x: unknown): x is MediaFeature;
 }
-export declare type MediaFeatureWalkerEntry = MediaFeaturePlainWalkerEntry | MediaFeatureRangeWalkerEntry | MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange;
-export declare type MediaFeatureWalkerParent = MediaFeaturePlainWalkerParent | MediaFeatureRangeWalkerParent | MediaFeature;
+export type MediaFeatureWalkerEntry = MediaFeaturePlainWalkerEntry | MediaFeatureRangeWalkerEntry | MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange;
+export type MediaFeatureWalkerParent = MediaFeaturePlainWalkerParent | MediaFeatureRangeWalkerParent | MediaFeature;
 export declare function parseMediaFeature(simpleBlock: SimpleBlockNode, before?: Array<CSSToken>, after?: Array<CSSToken>): false | MediaFeature;
 export declare function newMediaFeatureBoolean(name: string): MediaFeature;
 export declare function newMediaFeaturePlain(name: string, ...value: Array<CSSToken>): MediaFeature;

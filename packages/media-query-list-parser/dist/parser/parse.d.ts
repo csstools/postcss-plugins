@@ -1,7 +1,7 @@
 import { ParserError } from '@csstools/css-parser-algorithms/dist/interfaces/error';
 import { CSSToken } from '@csstools/css-tokenizer';
 import { MediaQuery } from '../nodes/media-query';
-export declare type Options = {
+export type Options = {
     preserveInvalidMediaQueries?: boolean;
     onParseError?: (error: ParserError) => void;
 };

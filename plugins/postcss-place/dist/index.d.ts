@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 /** postcss-place plugin options */
-export declare type pluginOptions = {
+export type pluginOptions = {
     /** Preserve the original notation. default: true */
     preserve?: boolean;
 };

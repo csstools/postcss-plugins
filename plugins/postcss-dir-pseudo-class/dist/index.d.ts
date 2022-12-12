@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 /** postcss-dir-pseudo-class plugin options */
-export declare type pluginOptions = {
+export type pluginOptions = {
     /** Preserve the original notation. default: true */
     preserve?: boolean;
     /** Assume a direction for the document. default: null */

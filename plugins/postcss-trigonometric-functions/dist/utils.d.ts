@@ -56,6 +56,6 @@ export declare function parseNumber(value: string): false | {
     number: any;
     unit: string;
 };
-declare type validateNodeReturn = [WordNode, number] | undefined;
+type validateNodeReturn = [WordNode, number] | undefined;
 export declare function validateNode(node: FunctionNode, parseUnit?: boolean): validateNodeReturn;
 export { toRad, toDeg };

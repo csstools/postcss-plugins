@@ -18,5 +18,5 @@ export declare class MediaOr {
     isMediaOr(): this is MediaOr;
     static isMediaOr(x: unknown): x is MediaOr;
 }
-export declare type MediaOrWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
-export declare type MediaOrWalkerParent = MediaInParensWalkerParent | MediaOr;
+export type MediaOrWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
+export type MediaOrWalkerParent = MediaInParensWalkerParent | MediaOr;

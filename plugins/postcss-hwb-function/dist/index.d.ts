@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 /** postcss-hwb-function plugin options */
-export declare type pluginOptions = {
+export type pluginOptions = {
     /** Preserve the original notation. default: false */
     preserve?: boolean;
 };

@@ -6,7 +6,7 @@
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js
  */
-declare type color = [number, number, number];
+type color = [number, number, number];
 export declare const D50: number[];
 export declare const D65: number[];
 export declare function lin_sRGB(RGB: color): color;

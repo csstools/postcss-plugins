@@ -60,58 +60,58 @@ export declare enum HashType {
     Unrestricted = "unrestricted",
     ID = "id"
 }
-export declare type TokenAtKeyword = Token<TokenType.AtKeyword, {
+export type TokenAtKeyword = Token<TokenType.AtKeyword, {
     value: string;
 }>;
-export declare type TokenBadString = Token<TokenType.BadString, undefined>;
-export declare type TokenBadURL = Token<TokenType.BadURL, undefined>;
-export declare type TokenCDC = Token<TokenType.CDC, undefined>;
-export declare type TokenCDO = Token<TokenType.CDO, undefined>;
-export declare type TokenColon = Token<TokenType.Colon, undefined>;
-export declare type TokenComma = Token<TokenType.Comma, undefined>;
-export declare type TokenComment = Token<TokenType.Comment, undefined>;
-export declare type TokenDelim = Token<TokenType.Delim, {
+export type TokenBadString = Token<TokenType.BadString, undefined>;
+export type TokenBadURL = Token<TokenType.BadURL, undefined>;
+export type TokenCDC = Token<TokenType.CDC, undefined>;
+export type TokenCDO = Token<TokenType.CDO, undefined>;
+export type TokenColon = Token<TokenType.Colon, undefined>;
+export type TokenComma = Token<TokenType.Comma, undefined>;
+export type TokenComment = Token<TokenType.Comment, undefined>;
+export type TokenDelim = Token<TokenType.Delim, {
     value: string;
 }>;
-export declare type TokenDimension = Token<TokenType.Dimension, {
+export type TokenDimension = Token<TokenType.Dimension, {
     value: number;
     unit: string;
     type: NumberType;
 }>;
-export declare type TokenEOF = Token<TokenType.EOF, undefined>;
-export declare type TokenFunction = Token<TokenType.Function, {
+export type TokenEOF = Token<TokenType.EOF, undefined>;
+export type TokenFunction = Token<TokenType.Function, {
     value: string;
 }>;
-export declare type TokenHash = Token<TokenType.Hash, {
+export type TokenHash = Token<TokenType.Hash, {
     value: string;
     type: HashType;
 }>;
-export declare type TokenIdent = Token<TokenType.Ident, {
+export type TokenIdent = Token<TokenType.Ident, {
     value: string;
 }>;
-export declare type TokenNumber = Token<TokenType.Number, {
+export type TokenNumber = Token<TokenType.Number, {
     value: number;
     type: NumberType;
 }>;
-export declare type TokenPercentage = Token<TokenType.Percentage, {
+export type TokenPercentage = Token<TokenType.Percentage, {
     value: number;
 }>;
-export declare type TokenSemicolon = Token<TokenType.Semicolon, undefined>;
-export declare type TokenString = Token<TokenType.String, {
+export type TokenSemicolon = Token<TokenType.Semicolon, undefined>;
+export type TokenString = Token<TokenType.String, {
     value: string;
 }>;
-export declare type TokenURL = Token<TokenType.URL, {
+export type TokenURL = Token<TokenType.URL, {
     value: string;
 }>;
-export declare type TokenWhitespace = Token<TokenType.Whitespace, undefined>;
-export declare type TokenOpenParen = Token<TokenType.OpenParen, undefined>;
-export declare type TokenCloseParen = Token<TokenType.CloseParen, undefined>;
-export declare type TokenOpenSquare = Token<TokenType.OpenSquare, undefined>;
-export declare type TokenCloseSquare = Token<TokenType.CloseSquare, undefined>;
-export declare type TokenOpenCurly = Token<TokenType.OpenCurly, undefined>;
-export declare type TokenCloseCurly = Token<TokenType.CloseCurly, undefined>;
-export declare type CSSToken = TokenAtKeyword | TokenBadString | TokenBadURL | TokenCDC | TokenCDO | TokenColon | TokenComma | TokenComment | TokenDelim | TokenDimension | TokenEOF | TokenFunction | TokenHash | TokenIdent | TokenNumber | TokenPercentage | TokenSemicolon | TokenString | TokenURL | TokenWhitespace | TokenOpenParen | TokenCloseParen | TokenOpenSquare | TokenCloseSquare | TokenOpenCurly | TokenCloseCurly;
-export declare type Token<T extends TokenType, U> = [
+export type TokenWhitespace = Token<TokenType.Whitespace, undefined>;
+export type TokenOpenParen = Token<TokenType.OpenParen, undefined>;
+export type TokenCloseParen = Token<TokenType.CloseParen, undefined>;
+export type TokenOpenSquare = Token<TokenType.OpenSquare, undefined>;
+export type TokenCloseSquare = Token<TokenType.CloseSquare, undefined>;
+export type TokenOpenCurly = Token<TokenType.OpenCurly, undefined>;
+export type TokenCloseCurly = Token<TokenType.CloseCurly, undefined>;
+export type CSSToken = TokenAtKeyword | TokenBadString | TokenBadURL | TokenCDC | TokenCDO | TokenColon | TokenComma | TokenComment | TokenDelim | TokenDimension | TokenEOF | TokenFunction | TokenHash | TokenIdent | TokenNumber | TokenPercentage | TokenSemicolon | TokenString | TokenURL | TokenWhitespace | TokenOpenParen | TokenCloseParen | TokenOpenSquare | TokenCloseSquare | TokenOpenCurly | TokenCloseCurly;
+export type Token<T extends TokenType, U> = [
     /** The type of token */
     T,
     /** The token representation */

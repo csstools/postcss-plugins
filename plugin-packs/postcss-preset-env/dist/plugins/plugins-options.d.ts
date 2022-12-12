@@ -44,7 +44,7 @@ import type { pluginOptions as postcssFontFamilySystemUI } from '../types/postcs
 import type { pluginOptions as postcssTextDecorationShorthand } from '@csstools/postcss-text-decoration-shorthand';
 import type { pluginOptions as postcssTrigonometricFunctions } from '@csstools/postcss-trigonometric-functions';
 import type { pluginOptions as postcssUnsetValue } from '@csstools/postcss-unset-value';
-export declare type pluginsOptions = {
+export type pluginsOptions = {
     /** plugin options for "postcss-initial" */
     'all-property'?: postcssInitial | boolean;
     /** plugin options for "postcss-pseudo-class-any-link" */

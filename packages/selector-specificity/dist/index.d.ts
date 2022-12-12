@@ -1,5 +1,5 @@
 import type { Node } from 'postcss-selector-parser';
-export declare type Specificity = {
+export type Specificity = {
     a: number;
     b: number;
     c: number;

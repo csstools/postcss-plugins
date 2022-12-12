@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 /** postcss-pseudo-class-any-link plugin options */
-export declare type pluginOptions = {
+export type pluginOptions = {
     /** Preserve the original notation. default: true */
     preserve?: boolean;
     /** Add an extra fallback for the "<area>" element in IE and Edge. default: false */

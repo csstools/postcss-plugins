@@ -1,5 +1,5 @@
 /** postcss-cascasde-layers plugin options */
-export declare type pluginOptions = {
+export type pluginOptions = {
     /** Emit a warning when the "revert" keyword is found in your CSS. default: "warn" */
     onRevertLayerKeyword?: 'warn' | false;
     /** Emit a warning when conditional rules could change the layer order. default: "warn" */

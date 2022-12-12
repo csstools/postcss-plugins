@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 /** postcss-nesting plugin options */
-export declare type pluginOptions = {
+export type pluginOptions = {
     /** Avoid the `:is()` pseudo class as much as possible. default: false */
     noIsPseudoSelector?: boolean;
 };

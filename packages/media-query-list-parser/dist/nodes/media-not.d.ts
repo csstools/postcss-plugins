@@ -18,5 +18,5 @@ export declare class MediaNot {
     isMediaNot(): this is MediaNot;
     static isMediaNot(x: unknown): x is MediaNot;
 }
-export declare type MediaNotWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
-export declare type MediaNotWalkerParent = MediaInParensWalkerParent | MediaNot;
+export type MediaNotWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
+export type MediaNotWalkerParent = MediaInParensWalkerParent | MediaNot;

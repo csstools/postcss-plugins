@@ -1,6 +1,6 @@
 import type autoprefixer from 'autoprefixer';
 import { pluginsOptions } from './plugins/plugins-options';
-export declare type pluginOptions = {
+export type pluginOptions = {
     /**
      * Determine which CSS features to polyfill,
      * based upon their process in becoming web standards.

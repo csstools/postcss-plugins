@@ -20,5 +20,5 @@ export declare class GeneralEnclosed {
     isGeneralEnclosed(): this is GeneralEnclosed;
     static isGeneralEnclosed(x: unknown): x is GeneralEnclosed;
 }
-export declare type GeneralEnclosedWalkerEntry = ComponentValue;
-export declare type GeneralEnclosedWalkerParent = ContainerNode | GeneralEnclosed;
+export type GeneralEnclosedWalkerEntry = ComponentValue;
+export type GeneralEnclosedWalkerParent = ContainerNode | GeneralEnclosed;
