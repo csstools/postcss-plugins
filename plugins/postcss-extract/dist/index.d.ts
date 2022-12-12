@@ -1,5 +1,5 @@
 import type { PluginCreator } from 'postcss';
-declare type pluginOptions = {
+type pluginOptions = {
     /** Mapping of queries */
     queries: Record<string, string>;
     /** Extract after transforms are likely to be done, or before it */

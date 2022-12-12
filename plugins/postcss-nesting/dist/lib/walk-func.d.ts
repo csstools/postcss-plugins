@@ -1,4 +1,4 @@
 import type { Container } from 'postcss';
-export declare type walkFunc = (node: Container, opts: {
+export type walkFunc = (node: Container, opts: {
     noIsPseudoSelector: boolean;
 }) => void;

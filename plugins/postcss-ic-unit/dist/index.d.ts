@@ -1,5 +1,5 @@
 import type { PluginCreator } from 'postcss';
-declare type pluginOptions = {
+type pluginOptions = {
     preserve?: boolean;
     enableProgressiveCustomProperties?: boolean;
 };

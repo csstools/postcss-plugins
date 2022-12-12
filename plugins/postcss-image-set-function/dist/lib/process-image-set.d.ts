@@ -1,6 +1,6 @@
 import type { Declaration, Result, Postcss } from 'postcss';
 import type { Node } from 'postcss-value-parser';
-declare type imageSetFunction = {
+type imageSetFunction = {
     imageSetFunction: Node;
     imageSetOptionNodes: Array<Node>;
 };
