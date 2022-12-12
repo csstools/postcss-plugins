@@ -6,6 +6,10 @@
 - Fix: Do not throw when a selector is invalid, show a warning instead.
 - Fix: make `:has()` unforgiving. `:has(.foo, :some-invalid-selector)` will no longer match elements that have children with `.foo`.
 
+### 4.0.2 (December 12, 2022)
+
+ - Fix: correctly cleanup style rules when a browser has native support. [backported](https://github.com/csstools/postcss-plugins/pull/752)
+
 ### 4.0.1 (August 23, 2022)
 
 - Fix: assign global browser polyfill to `window`, `self` or a blank object.
