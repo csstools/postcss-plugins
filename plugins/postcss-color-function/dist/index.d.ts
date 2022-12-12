@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 /** postcss-color-function plugin options */
-export declare type pluginOptions = {
+export type pluginOptions = {
     /** Preserve the original notation. default: false */
     preserve?: boolean;
     /** Enable "@csstools/postcss-progressive-custom-properties". default: true */

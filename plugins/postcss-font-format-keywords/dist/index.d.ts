@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 /** postcss-font-format-keywords plugin options */
-export declare type pluginOptions = {
+export type pluginOptions = {
     /** Preserve the original notation. default: false */
     preserve?: boolean;
 };

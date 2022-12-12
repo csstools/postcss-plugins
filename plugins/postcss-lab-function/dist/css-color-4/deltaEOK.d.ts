@@ -6,6 +6,6 @@
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/deltaEOK.js
  */
-declare type color = [number, number, number];
+type color = [number, number, number];
 export declare function deltaEOK(reference: color, sample: color): number;
 export {};

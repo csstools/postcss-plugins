@@ -1,5 +1,5 @@
 import type { PluginCreator, Plugin } from 'postcss';
-declare type TestCaseOptions = {
+type TestCaseOptions = {
     message?: string;
     options?: unknown;
     plugins?: Array<Plugin>;

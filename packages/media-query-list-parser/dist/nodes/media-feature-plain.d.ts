@@ -34,6 +34,6 @@ export declare class MediaFeaturePlain {
     isMediaFeaturePlain(): this is MediaFeaturePlain;
     static isMediaFeaturePlain(x: unknown): x is MediaFeaturePlain;
 }
-export declare type MediaFeaturePlainWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
-export declare type MediaFeaturePlainWalkerParent = MediaFeatureValueWalkerParent | MediaFeaturePlain;
+export type MediaFeaturePlainWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
+export type MediaFeaturePlainWalkerParent = MediaFeatureValueWalkerParent | MediaFeaturePlain;
 export declare function parseMediaFeaturePlain(componentValues: Array<ComponentValue>): false | MediaFeaturePlain;

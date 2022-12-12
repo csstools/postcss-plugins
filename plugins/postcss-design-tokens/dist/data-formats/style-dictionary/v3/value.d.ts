@@ -1,5 +1,5 @@
 import { TokenTransformOptions } from '../../base/token';
-export declare type StyleDictionaryV3TokenValue = {
+export type StyleDictionaryV3TokenValue = {
     cssValue(transformOptions?: TokenTransformOptions): string;
     value: unknown;
     name?: string;

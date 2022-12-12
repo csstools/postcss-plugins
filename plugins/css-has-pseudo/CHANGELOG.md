@@ -4,6 +4,7 @@
 
 - Updated: Support for Node v14+ (major).
 - Fix: Do not throw when a selector is invalid, show a warning instead.
+- Fix: make `:has()` unforgiving. `:has(.foo, :some-invalid-selector)` will no longer match elements that have children with `.foo`.
 
 ### 4.0.1 (August 23, 2022)
 

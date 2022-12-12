@@ -3,7 +3,7 @@ import { MediaAnd, MediaAndWalkerEntry, MediaAndWalkerParent } from './media-and
 import { MediaInParens } from './media-in-parens';
 import { MediaOr, MediaOrWalkerEntry, MediaOrWalkerParent } from './media-or';
 import { NodeType } from '../util/node-type';
-export declare type MediaConditionList = MediaConditionListWithAnd | MediaConditionListWithOr;
+export type MediaConditionList = MediaConditionListWithAnd | MediaConditionListWithOr;
 export declare class MediaConditionListWithAnd {
     type: NodeType;
     leading: MediaInParens;
@@ -23,8 +23,8 @@ export declare class MediaConditionListWithAnd {
     isMediaConditionListWithAnd(): this is MediaConditionListWithAnd;
     static isMediaConditionListWithAnd(x: unknown): x is MediaConditionListWithAnd;
 }
-export declare type MediaConditionListWithAndWalkerEntry = MediaAndWalkerEntry | MediaAnd;
-export declare type MediaConditionListWithAndWalkerParent = MediaAndWalkerParent | MediaConditionListWithAnd;
+export type MediaConditionListWithAndWalkerEntry = MediaAndWalkerEntry | MediaAnd;
+export type MediaConditionListWithAndWalkerParent = MediaAndWalkerParent | MediaConditionListWithAnd;
 export declare class MediaConditionListWithOr {
     type: NodeType;
     leading: MediaInParens;
@@ -44,5 +44,5 @@ export declare class MediaConditionListWithOr {
     isMediaConditionListWithOr(): this is MediaConditionListWithOr;
     static isMediaConditionListWithOr(x: unknown): x is MediaConditionListWithOr;
 }
-export declare type MediaConditionListWithOrWalkerEntry = MediaOrWalkerEntry | MediaOr;
-export declare type MediaConditionListWithOrWalkerParent = MediaOrWalkerParent | MediaConditionListWithOr;
+export type MediaConditionListWithOrWalkerEntry = MediaOrWalkerEntry | MediaOr;
+export type MediaConditionListWithOrWalkerParent = MediaOrWalkerParent | MediaConditionListWithOr;

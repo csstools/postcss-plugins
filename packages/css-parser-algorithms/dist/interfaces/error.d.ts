@@ -1,4 +1,4 @@
-export declare type ParserError = {
+export type ParserError = {
     message: string;
     start: number;
     end: number;

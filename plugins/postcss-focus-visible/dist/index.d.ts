@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 /** postcss-focus-visible plugin options */
-export declare type pluginOptions = {
+export type pluginOptions = {
     /** Preserve the original notation. default: true */
     preserve?: boolean;
     /** The replacement class to be used in the polyfill. default: ".focus-visible" */

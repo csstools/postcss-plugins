@@ -11,7 +11,7 @@ export declare enum MediaFeatureGT {
 export declare enum MediaFeatureEQ {
     EQ = "="
 }
-export declare type MediaFeatureComparison = MediaFeatureLT | MediaFeatureGT | MediaFeatureEQ;
+export type MediaFeatureComparison = MediaFeatureLT | MediaFeatureGT | MediaFeatureEQ;
 export declare function matchesComparison(componentValues: Array<ComponentValue>): false | [number, number];
 export declare function comparisonFromTokens(tokens: [TokenDelim, TokenDelim] | [TokenDelim]): MediaFeatureComparison | false;
 export declare function invertComparison(operator: MediaFeatureComparison): MediaFeatureComparison | false;

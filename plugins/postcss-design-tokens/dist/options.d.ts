@@ -1,4 +1,4 @@
-export declare type pluginOptions = {
+export type pluginOptions = {
     importAtRuleName: string;
     is?: Array<string>;
     unitsAndValues?: {
@@ -6,7 +6,7 @@ export declare type pluginOptions = {
     };
     valueFunctionName: string;
 };
-export declare type parsedPluginOptions = {
+export type parsedPluginOptions = {
     importAtRuleName: string;
     is: Array<string>;
     unitsAndValues: {
