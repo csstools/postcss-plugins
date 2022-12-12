@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased
+### 4.0.2 (December 12, 2022)
 
 - Fix: correctly cleanup style rules when a browser has native support.
 
