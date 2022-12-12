@@ -1,4 +1,4 @@
 import { ParserError } from './error';
-export declare type Context = {
+export type Context = {
     onParseError: (error: ParserError) => void;
 };

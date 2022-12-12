@@ -3,7 +3,7 @@ import { CSSToken, TokenDelim } from '@csstools/css-tokenizer';
 import { MediaFeatureName } from './media-feature-name';
 import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
 import { NodeType } from '../util/node-type';
-export declare type MediaFeatureRange = MediaFeatureRangeNameValue | MediaFeatureRangeValueName | MediaFeatureRangeValueNameValue;
+export type MediaFeatureRange = MediaFeatureRangeNameValue | MediaFeatureRangeValueName | MediaFeatureRangeValueNameValue;
 export declare class MediaFeatureRangeNameValue {
     type: NodeType;
     name: MediaFeatureName;
@@ -108,7 +108,7 @@ export declare class MediaFeatureRangeValueNameValue {
     isMediaFeatureRangeValueNameValue(): this is MediaFeatureRangeValueNameValue;
     static isMediaFeatureRangeValueNameValue(x: unknown): x is MediaFeatureRangeValueNameValue;
 }
-export declare type MediaFeatureRangeWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
-export declare type MediaFeatureRangeWalkerParent = MediaFeatureValueWalkerParent | MediaFeatureRange;
+export type MediaFeatureRangeWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
+export type MediaFeatureRangeWalkerParent = MediaFeatureValueWalkerParent | MediaFeatureRange;
 export declare function parseMediaFeatureRange(componentValues: Array<ComponentValue>): false | MediaFeatureRangeNameValue | MediaFeatureRangeValueName | MediaFeatureRangeValueNameValue;
 export declare const mediaDescriptors: Set<string>;

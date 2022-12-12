@@ -2,7 +2,7 @@ import { ComponentValue } from '@csstools/css-parser-algorithms';
 import { CSSToken } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
 import { MediaCondition, MediaConditionWalkerEntry, MediaConditionWalkerParent } from './media-condition';
-export declare type MediaQuery = MediaQueryWithType | MediaQueryWithoutType | MediaQueryInvalid;
+export type MediaQuery = MediaQueryWithType | MediaQueryWithoutType | MediaQueryInvalid;
 export declare class MediaQueryWithType {
     type: NodeType;
     modifier: Array<CSSToken>;
@@ -32,8 +32,8 @@ export declare class MediaQueryWithType {
     isMediaQueryWithType(): this is MediaQueryWithType;
     static isMediaQueryWithType(x: unknown): x is MediaQueryWithType;
 }
-export declare type MediaQueryWithTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
-export declare type MediaQueryWithTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithType;
+export type MediaQueryWithTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
+export type MediaQueryWithTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithType;
 export declare class MediaQueryWithoutType {
     type: NodeType;
     media: MediaCondition;
@@ -55,8 +55,8 @@ export declare class MediaQueryWithoutType {
     isMediaQueryWithoutType(): this is MediaQueryWithoutType;
     static isMediaQueryWithoutType(x: unknown): x is MediaQueryWithoutType;
 }
-export declare type MediaQueryWithoutTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
-export declare type MediaQueryWithoutTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithoutType;
+export type MediaQueryWithoutTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
+export type MediaQueryWithoutTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithoutType;
 export declare class MediaQueryInvalid {
     type: NodeType;
     media: Array<ComponentValue>;
@@ -76,5 +76,5 @@ export declare class MediaQueryInvalid {
     isMediaQueryInvalid(): this is MediaQueryInvalid;
     static isMediaQueryInvalid(x: unknown): x is MediaQueryInvalid;
 }
-export declare type MediaQueryInvalidWalkerEntry = ComponentValue;
-export declare type MediaQueryInvalidWalkerParent = ComponentValue | MediaQueryInvalid;
+export type MediaQueryInvalidWalkerEntry = ComponentValue;
+export type MediaQueryInvalidWalkerParent = ComponentValue | MediaQueryInvalid;

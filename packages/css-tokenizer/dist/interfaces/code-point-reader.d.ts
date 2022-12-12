@@ -1,4 +1,4 @@
-export declare type CodePointReader = {
+export type CodePointReader = {
     cursorPositionOfLastReadCodePoint(): number;
     peekOneCodePoint(): number | false;
     peekTwoCodePoints(): [number, number] | [number] | [];

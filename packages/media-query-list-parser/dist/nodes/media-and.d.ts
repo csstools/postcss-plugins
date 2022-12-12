@@ -18,5 +18,5 @@ export declare class MediaAnd {
     isMediaAnd(): this is MediaAnd;
     static isMediaAnd(x: unknown): x is MediaAnd;
 }
-export declare type MediaAndWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
-export declare type MediaAndWalkerParent = MediaInParensWalkerParent | MediaAnd;
+export type MediaAndWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
+export type MediaAndWalkerParent = MediaInParensWalkerParent | MediaAnd;

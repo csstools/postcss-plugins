@@ -23,8 +23,8 @@ export declare class MediaFeatureValue {
     isMediaFeatureValue(): this is MediaFeatureValue;
     static isMediaFeatureValue(x: unknown): x is MediaFeatureValue;
 }
-export declare type MediaFeatureValueWalkerEntry = ComponentValue | Array<ComponentValue>;
-export declare type MediaFeatureValueWalkerParent = ContainerNode | MediaFeatureValue;
+export type MediaFeatureValueWalkerEntry = ComponentValue | Array<ComponentValue>;
+export type MediaFeatureValueWalkerParent = ContainerNode | MediaFeatureValue;
 export declare function parseMediaFeatureValue(componentValues: Array<ComponentValue>): false | MediaFeatureValue;
 export declare function matchesRatioExactly(componentValues: Array<ComponentValue>): -1 | number[];
 export declare function matchesRatio(componentValues: Array<ComponentValue>): -1 | number[];

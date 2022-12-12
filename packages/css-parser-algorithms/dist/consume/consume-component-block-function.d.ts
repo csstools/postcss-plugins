@@ -1,8 +1,8 @@
 import { CSSToken, TokenFunction } from '@csstools/css-tokenizer';
 import { Context } from '../interfaces/context';
 import { ComponentValueType } from '../util/component-value-type';
-export declare type ContainerNode = FunctionNode | SimpleBlockNode;
-export declare type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode | UnclosedSimpleBlockNode | UnclosedFunctionNode;
+export type ContainerNode = FunctionNode | SimpleBlockNode;
+export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode | UnclosedSimpleBlockNode | UnclosedFunctionNode;
 export declare function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): {
     advance: number;
     node: ComponentValue;
