@@ -1,5 +1,6 @@
 import { MediaQuery } from '@csstools/media-query-list-parser';
 import type { ChildNode, Container, Document, Root as PostCSSRoot } from 'postcss';
+import { collectCascadeLayerOrder, cascadeLayerNumberForNode } from './cascade-layers';
 import { isProcessableCustomMediaRule } from './is-processable-custom-media-rule';
 import { removeCyclicReferences } from './toposort';
 import { parseCustomMedia } from './transform-at-media/custom-media';
@@ -8,7 +9,10 @@ import { parseCustomMedia } from './transform-at-media/custom-media';
 export default function getCustomMedia(root: PostCSSRoot, result, opts: { preserve?: boolean }): Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }> {
 	// initialize custom media
 	const customMedia: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }> = new Map();
+	const customMediaCascadeLayerMapping: Map<string, number> = new Map();
 	const customMediaGraph: Array<[string, string]> = [];
+
+	const cascadeLayersOrder = collectCascadeLayerOrder(root);
 
 	root.walkAtRules((atRule) => {
 		if (!isProcessableCustomMediaRule(atRule)) {
@@ -24,12 +28,18 @@ export default function getCustomMedia(root: PostCSSRoot, result, opts: { preser
 			return;
 		}
 
-		customMedia.set(parsed.name, {
-			truthy: parsed.truthy,
-			falsy: parsed.falsy,
-		});
+		const thisCascadeLayer = cascadeLayerNumberForNode(atRule, cascadeLayersOrder);
+		const existingCascadeLayer = customMediaCascadeLayerMapping.get(parsed.name) ?? -1;
 
-		customMediaGraph.push(...parsed.dependsOn);
+		if (thisCascadeLayer >= existingCascadeLayer) {
+			customMediaCascadeLayerMapping.set(parsed.name, thisCascadeLayer);
+			customMedia.set(parsed.name, {
+				truthy: parsed.truthy,
+				falsy: parsed.falsy,
+			});
+
+			customMediaGraph.push(...parsed.dependsOn);
+		}
 
 		if (!opts.preserve) {
 			const parent = atRule.parent;

@@ -15,6 +15,9 @@ postcssTape(plugin)({
 		message: 'supports basic usage (old)',
 		warnings: 1,
 	},
+	'cascade-layers': {
+		message: 'supports cascade layers',
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

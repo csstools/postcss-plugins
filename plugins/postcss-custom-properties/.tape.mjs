@@ -12,6 +12,9 @@ postcssTape(plugin)({
 			preserve: false
 		}
 	},
+	'cascade-layers': {
+		message: 'supports cascade layers'
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

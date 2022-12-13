@@ -1,5 +1,12 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased
+
+- Run `postcss-cascade-layers` late compared to other PostCSS plugins (breaking)
+
+_This will be the last time we change this after several times back and forth.
+We are sticking with this configuration now._
+
 ### 2.0.0 (November 14, 2022)
 
 - Run `postcss-cascade-layers` early compared to other PostCSS plugins (breaking)
