@@ -462,7 +462,9 @@ The `debug` option enables debugging messages to stdout which should be useful t
 
 The `enableClientSidePolyfills` enables any feature that would need an extra browser library to be loaded into the page for it to work. Defaults to `true`.
 
-Note that manually enabling/disabling features via the "feature" option overrides this flag.
+- Note that manually enabling/disabling features via the "feature" option overrides this flag.
+- This only controls if the PostCSS plugins are enabled. It does not cause the browsers libraries to be included in your bundle.
+
 
 ## Stability and Portability
 
