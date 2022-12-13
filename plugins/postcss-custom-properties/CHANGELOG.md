@@ -2,6 +2,7 @@
 
 ### Unreleased
 
+- Added: Support for Cascade Layers.
 - Improve plugin performance (port of fixes in `v12.1.11`)
 
 ### 13.0.0 (November 14, 2022)

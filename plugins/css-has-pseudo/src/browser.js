@@ -4,18 +4,9 @@ import '@mrhenry/core-web/modules/~element-qsa-has.js';
 import extractEncodedSelectors from './encode/extract.mjs';
 import encodeCSS from './encode/encode.mjs';
 
-function hasNativeSupport(document) {
+function hasNativeSupport() {
 	try {
-		// Chrome does not support forgiving selector lists in :has()
-		document.querySelector(':has(*, :does-not-exist, > *)');
-		document.querySelector(':has(:has(any))');
-
-		// Safari incorrectly returns the html element with this query
-		if (document.querySelector(':has(:scope *)')) {
-			return false;
-		}
-
-		if (!('CSS' in self) || !('supports' in self.CSS) || !self.CSS.supports(':has(any)')) {
+		if (!('CSS' in self) || !('supports' in self.CSS) || !self.CSS.supports('selector(:has(div))')) {
 			return false;
 		}
 
@@ -40,7 +31,7 @@ export default function cssHasPseudo(document, options) {
 			forcePolyfill: (!!options.forcePolyfill) || false,
 		};
 
-		options.mustPolyfill = options.forcePolyfill || !hasNativeSupport(document);
+		options.mustPolyfill = options.forcePolyfill || !hasNativeSupport();
 
 		if (!Array.isArray(options.observedAttributes)) {
 			options.observedAttributes = [];
@@ -238,7 +229,7 @@ export default function cssHasPseudo(document, options) {
 	function walkStyleSheet(styleSheet) {
 		try {
 			// walk a css rule to collect observed css rules
-			[].forEach.call(styleSheet.cssRules || [], (rule) => {
+			[].forEach.call(styleSheet.cssRules || [], (rule, index) => {
 				if (rule.selectorText) {
 					rule.selectorText = rule.selectorText.replace(/\.js-has-pseudo\s/g, '');
 
@@ -250,7 +241,7 @@ export default function cssHasPseudo(document, options) {
 						}
 
 						if (!options.mustPolyfill) {
-							rule.deleteRule();
+							styleSheet.deleteRule(index);
 							return;
 						}
 

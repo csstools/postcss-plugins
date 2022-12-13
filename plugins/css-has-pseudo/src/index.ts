@@ -24,7 +24,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const specificityMatchingNameTag = ':not(' + options.specificityMatchingName + ')';
 
 	return {
-		postcssPlugin: 'css-has-pseudo-experimental',
+		postcssPlugin: 'css-has-pseudo',
 		RuleExit: (rule, { result }) => {
 			if (!rule.selector.toLowerCase().includes(':has(') || isWithinSupportCheck(rule)) {
 				return;

@@ -1,0 +1,25 @@
+@layer extensions, components;
+
+@layer extensions {
+	@layer one, two
+}
+
+:is(:mobile(extensions)) {
+	color: yellow;
+}
+
+:is(:tablet(components)) {
+	color: green;
+}
+
+:is(:desktop(unlayered)) {
+	color: blue;
+}
+
+:is(:dark(layouts)) {
+	color: pink;
+}
+
+:is(:light(extensions-two)) {
+	color: red;
+}
