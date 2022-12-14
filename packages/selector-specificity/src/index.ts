@@ -47,6 +47,11 @@ export function selectorSpecificity(node: Node): Specificity {
 					c += 1;
 
 					if (node.nodes && node.nodes.length > 0) {
+						// We are more forgiving that the specification and use the most specific complex selector.
+						// This gives the community more options to do non-standard things.
+						//
+						// This code is correct for correct CSS.
+						// It is only different for invalid CSS.
 						const mostSpecificListItem = specificityOfMostSpecificListItem(node.nodes);
 
 						a += mostSpecificListItem.a;
@@ -150,6 +155,11 @@ export function selectorSpecificity(node: Node): Specificity {
 					if (node.nodes && node.nodes.length > 0) {
 						const mostSpecificListItem = specificityOfMostSpecificListItem(node.nodes);
 
+						// We are more forgiving that the specification and use the most specific complex selector.
+						// This gives the community more options to do non-standard things.
+						//
+						// This code is correct for correct CSS.
+						// It is only different for invalid CSS.
 						a += mostSpecificListItem.a;
 						b += mostSpecificListItem.b;
 						c += mostSpecificListItem.c;
