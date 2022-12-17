@@ -13,6 +13,18 @@ export class LayerName {
 		];
 	}
 
+	slice(start, end) {
+		const indices = [];
+		for (let i = 0; i < this.parts.length; i++) {
+			if (this.parts[i][0] === TokenType.Ident) {
+				indices.push(i);
+			}
+		}
+
+		const slice = indices.slice(start, end);
+		return new LayerName(this.parts.slice(slice[0], slice[slice.length-1]+1));
+	}
+
 	segments(): Array<string> {
 		return this.parts.filter((x) => {
 			return x[0] === TokenType.Ident;

@@ -1,10 +1,11 @@
 import type { AtRule, Container, Document, Node, Root } from 'postcss';
+import { LayerName, parse as parseCascadeLayerNames } from '@csstools/cascade-layer-name-parser';
 
 export function collectCascadeLayerOrder(root: Root) {
-	const references: Map<Node, string> = new Map();
-	const referencesForLayerNames: Map<Node, string> = new Map();
+	const references: Map<Node, LayerName> = new Map();
+	const referencesForLayerNames: Map<Node, LayerName> = new Map();
 
-	const layers: Array<Array<string>> = [];
+	const layers: Array<LayerName> = [];
 	const anonLayerCounter = 1;
 
 	root.walkAtRules((node) => {
@@ -32,16 +33,20 @@ export function collectCascadeLayerOrder(root: Root) {
 			}
 		}
 
-		let currentLayerNames = [];
+		let layerParams;
 		if (node.nodes) { // @layer { .foo {} }
-			currentLayerNames.push(normalizeLayerName(node.params, anonLayerCounter));
+			layerParams = normalizeLayerName(node.params, anonLayerCounter);
 		} else if (node.params.trim()) { // @layer a, b;
-			currentLayerNames = node.params.split(',').map((layerName) => {
-				return layerName.trim();
-			});
+			layerParams = node.params;
 		} else { // @layer;
 			return;
 		}
+
+		let currentLayerNames = parseCascadeLayerNames(layerParams, {
+			onParseError(error) {
+				throw node.error(error.message);
+			},
+		});
 
 		{
 			// Stitch the layer names of the current node together with those of ancestors.
@@ -56,7 +61,11 @@ export function collectCascadeLayerOrder(root: Root) {
 				}
 
 				currentLayerNames = currentLayerNames.map((layerName) => {
-					return parentLayerName + '.' + layerName;
+					return parseCascadeLayerNames(parentLayerName.toString().trim() + '.' + layerName.toString().trim(), {
+						onParseError(error) {
+							throw node.error(error.message);
+						},
+					})[0];
 				});
 
 				parent = parent.parent;
@@ -75,7 +84,7 @@ export function collectCascadeLayerOrder(root: Root) {
 			// 3. use the real layer to resolve other real layer names
 			// 4. use the implicit layer later
 
-			const implicitLayerName = currentLayerNames[0] + '.' + 'csstools-implicit-layer';
+			const implicitLayerName = parseCascadeLayerNames(currentLayerNames[0].toString().trim() + '.' + 'csstools-implicit-layer')[0];
 			references.set(node, implicitLayerName);
 			referencesForLayerNames.set(node, currentLayerNames[0]);
 		}
@@ -87,11 +96,25 @@ export function collectCascadeLayerOrder(root: Root) {
 		addLayerToModel(layers, [layerName]);
 	}
 
-	const finalLayers = layers.map((x) => x.join('.'));
-
 	const out: WeakMap<Node, number> = new WeakMap();
 	for (const [node, layerName] of references) {
-		out.set(node, finalLayers.indexOf(layerName));
+		const layerNameSegments = layerName.segments();
+		out.set(node, layers.findIndex((x) => {
+			const cursorSegments = x.segments();
+			if (cursorSegments.length !== layerNameSegments.length) {
+				return false;
+			}
+
+			for (let i = 0; i < cursorSegments.length; i++) {
+				const a = cursorSegments[i];
+				const b = layerNameSegments[i];
+				if (a !== b) {
+					return false;
+				}
+			}
+
+			return true;
+		}));
 	}
 
 	return out;
@@ -129,18 +152,19 @@ function normalizeLayerName(layerName, counter) {
 // [["a", "b"]]
 // insert "c"
 // [["a", "b", "c"]]
-function addLayerToModel(layers, currentLayerNames) {
+function addLayerToModel(layers: Array<LayerName>, currentLayerNames: Array<LayerName>) {
 	currentLayerNames.forEach((layerName) => {
-		const allLayerNameParts = layerName.split('.');
+		const allLayerNameParts = layerName.segments();
 
 		ALL_LAYER_NAME_PARTS_LOOP: for (let x = 0; x < allLayerNameParts.length; x++) {
-			const layerNameParts = allLayerNameParts.slice(0, x + 1);
+			const layerNameSlice = layerName.slice(0, x + 1);
+			const layerNameParts = layerNameSlice.segments();
 
 			let layerWithMostEqualSegments = -1;
 			let mostEqualSegments = 0;
 
 			for (let i = 0; i < layers.length; i++) {
-				const existingLayerParts = layers[i];
+				const existingLayerParts = layers[i].segments();
 
 				let numberOfEqualSegments = 0;
 
@@ -169,9 +193,9 @@ function addLayerToModel(layers, currentLayerNames) {
 			}
 
 			if (layerWithMostEqualSegments === -1) {
-				layers.push(layerNameParts);
+				layers.push(layerNameSlice);
 			} else {
-				layers.splice(layerWithMostEqualSegments+1, 0, layerNameParts);
+				layers.splice(layerWithMostEqualSegments + 1, 0, layerNameSlice);
 			}
 		}
 	});
