@@ -62,8 +62,8 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"css",
 		"cascade-layer",
+		"css",
 		"parser"
 	],
 	"volta": {

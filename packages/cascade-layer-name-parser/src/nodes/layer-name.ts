@@ -22,7 +22,11 @@ export class LayerName {
 	}
 
 	name(): string {
-		return this.segments().join('.');
+		return this.parts.filter((x) => {
+			return x[0] === TokenType.Ident || x[0] === TokenType.Delim;
+		}).map((x: TokenIdent) => {
+			return x[1];
+		}).join('');
 	}
 
 	toString(): string {
