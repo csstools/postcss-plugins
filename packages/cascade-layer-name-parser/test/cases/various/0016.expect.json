@@ -1,0 +1,88 @@
+[
+	{
+		"parts": [
+			[
+				"whitespace-token",
+				" \t ",
+				0,
+				2,
+				null
+			],
+			[
+				"ident-token",
+				"layer",
+				3,
+				7,
+				{
+					"value": "layer"
+				}
+			]
+		],
+		"segments": [
+			"layer"
+		],
+		"name": "layer"
+	},
+	{
+		"parts": [
+			[
+				"whitespace-token",
+				" \t ",
+				9,
+				11,
+				null
+			],
+			[
+				"ident-token",
+				"other-layer",
+				12,
+				22,
+				{
+					"value": "other-layer"
+				}
+			],
+			[
+				"whitespace-token",
+				" \t ",
+				23,
+				25,
+				null
+			]
+		],
+		"segments": [
+			"other-layer"
+		],
+		"name": "other-layer"
+	},
+	{
+		"parts": [
+			[
+				"whitespace-token",
+				"\n\n",
+				27,
+				28,
+				null
+			],
+			[
+				"ident-token",
+				"last-layer",
+				29,
+				38,
+				{
+					"value": "last-layer"
+				}
+			],
+			[
+				"whitespace-token",
+				"\n\n",
+				39,
+				40,
+				null
+			]
+		],
+		"segments": [
+			"last-layer"
+		],
+		"name": "last-layer"
+	}
+]

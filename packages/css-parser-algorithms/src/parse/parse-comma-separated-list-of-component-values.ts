@@ -43,10 +43,7 @@ export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>
 		}
 
 		if (tokensCopy[i][0] === TokenType.Comma) {
-			if (list.length) {
-				listOfCvls.push(list);
-			}
-
+			listOfCvls.push(list);
 			list = [];
 			i++;
 			continue;

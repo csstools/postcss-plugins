@@ -1,0 +1,38 @@
+[
+	{
+		"parts": [
+			[
+				"ident-token",
+				"layer-name",
+				0,
+				9,
+				{
+					"value": "layer-name"
+				}
+			],
+			[
+				"delim-token",
+				".",
+				10,
+				10,
+				{
+					"value": "."
+				}
+			],
+			[
+				"ident-token",
+				"sub-part",
+				11,
+				18,
+				{
+					"value": "sub-part"
+				}
+			]
+		],
+		"segments": [
+			"layer-name",
+			"sub-part"
+		],
+		"name": "layer-name.sub-part"
+	}
+]
