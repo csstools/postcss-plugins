@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { PluginCreator, Declaration } from 'postcss';
 import { hasKeyframesAtRuleAncestor } from '../lib/has-keyframes-atrule-ancestor';
 import { transformSide } from '../lib/transform-side';
 
@@ -54,7 +54,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		throw new Error('[postcss-logical] "blockDirection" and "inlineDirection" must be on separate axes');
 	}
 
-	const makeTransform = (transform) => {
+	const makeTransform = (transform: (decl: Declaration) => void) => {
 		return (decl) => {
 			if (hasKeyframesAtRuleAncestor(decl)) {
 				return;
@@ -76,11 +76,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-logical',
 		Declaration: {
 			// Margins
-			'margin-block-start': (decl) => makeTransform(
-				transformSide(decl, 'margin', blockStart),
+			'margin-block-start': makeTransform(
+				transformSide('margin', blockStart),
 			),
-			'margin-block-end': (decl) => makeTransform(
-				transformSide(decl, 'margin', blockEnd),
+			'margin-block-end': makeTransform(
+				transformSide('margin', blockEnd),
 			),
 		},
 	};
