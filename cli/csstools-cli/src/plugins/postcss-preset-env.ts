@@ -14,6 +14,7 @@ export default function postcssPresetEnv() {
 			'importFrom',
 			'exportTo',
 			'enableClientSidePolyfills',
+			'debug',
 		],
 		helpTextLogger(
 			'@csstools/cli postcss-preset-env',
@@ -32,6 +33,7 @@ export default function postcssPresetEnv() {
 				importFrom: 'path/to/file.css',
 				exportTo: 'path/to/file.css',
 				enableClientSidePolyfills: false,
+				debug: false,
 			},
 		),
 		false,
