@@ -78,6 +78,10 @@ export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
 					continue;
 				}
 
+				if (sawWhiteSpaceAfterIdent && token[0] === TokenType.Comment) {
+					continue;
+				}
+
 				if (sawWhiteSpaceAfterIdent) {
 					onParseError(genericError('Encountered unexpected whitespace between layer name parts.'));
 					return [];

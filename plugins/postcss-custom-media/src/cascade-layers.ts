@@ -1,5 +1,7 @@
 import type { AtRule, Container, Document, Node, Root } from 'postcss';
-import { LayerName, parse as parseCascadeLayerNames } from '@csstools/cascade-layer-name-parser';
+import { LayerName, parse as parseCascadeLayerNames, addLayerToModel } from '@csstools/cascade-layer-name-parser';
+
+const implicitLayerNameForCloning = parseCascadeLayerNames('csstools-implicit-layer')[0];
 
 export function collectCascadeLayerOrder(root: Root) {
 	const references: Map<Node, LayerName> = new Map();
@@ -61,11 +63,7 @@ export function collectCascadeLayerOrder(root: Root) {
 				}
 
 				currentLayerNames = currentLayerNames.map((layerName) => {
-					return parseCascadeLayerNames(parentLayerName.toString().trim() + '.' + layerName.toString().trim(), {
-						onParseError(error) {
-							throw node.error(error.message);
-						},
-					})[0];
+					return parentLayerName.concat(layerName);
 				});
 
 				parent = parent.parent;
@@ -84,7 +82,7 @@ export function collectCascadeLayerOrder(root: Root) {
 			// 3. use the real layer to resolve other real layer names
 			// 4. use the implicit layer later
 
-			const implicitLayerName = parseCascadeLayerNames(currentLayerNames[0].toString().trim() + '.' + 'csstools-implicit-layer')[0];
+			const implicitLayerName = currentLayerNames[0].concat(implicitLayerNameForCloning);
 			references.set(node, implicitLayerName);
 			referencesForLayerNames.set(node, currentLayerNames[0]);
 		}
@@ -98,22 +96,8 @@ export function collectCascadeLayerOrder(root: Root) {
 
 	const out: WeakMap<Node, number> = new WeakMap();
 	for (const [node, layerName] of references) {
-		const layerNameSegments = layerName.segments();
 		out.set(node, layers.findIndex((x) => {
-			const cursorSegments = x.segments();
-			if (cursorSegments.length !== layerNameSegments.length) {
-				return false;
-			}
-
-			for (let i = 0; i < cursorSegments.length; i++) {
-				const a = cursorSegments[i];
-				const b = layerNameSegments[i];
-				if (a !== b) {
-					return false;
-				}
-			}
-
-			return true;
+			return layerName.equal(x);
 		}));
 	}
 
@@ -136,69 +120,9 @@ export function cascadeLayerNumberForNode(node: Node, layers: WeakMap<Node, numb
 }
 
 function normalizeLayerName(layerName, counter) {
-	return layerName.trim() || `csstools-anon-layer--${counter++}`;
-}
+	if (layerName.trim()) {
+		return layerName;
+	}
 
-// Insert new items after the most similar current item
-//
-// [["a", "b"]]
-// insert "a.first"
-// [["a", "a.first", "b"]]
-//
-// [["a", "a.first", "a.second", "b"]]
-// insert "a.first.foo"
-// [["a", "a.first", "a.first.foo", "a.second", "b"]]
-//
-// [["a", "b"]]
-// insert "c"
-// [["a", "b", "c"]]
-function addLayerToModel(layers: Array<LayerName>, currentLayerNames: Array<LayerName>) {
-	currentLayerNames.forEach((layerName) => {
-		const allLayerNameParts = layerName.segments();
-
-		ALL_LAYER_NAME_PARTS_LOOP: for (let x = 0; x < allLayerNameParts.length; x++) {
-			const layerNameSlice = layerName.slice(0, x + 1);
-			const layerNameParts = layerNameSlice.segments();
-
-			let layerWithMostEqualSegments = -1;
-			let mostEqualSegments = 0;
-
-			for (let i = 0; i < layers.length; i++) {
-				const existingLayerParts = layers[i].segments();
-
-				let numberOfEqualSegments = 0;
-
-				LAYER_PARTS_LOOP: for (let j = 0; j < existingLayerParts.length; j++) {
-					const existingLayerPart = existingLayerParts[j];
-					const layerPart = layerNameParts[j];
-
-					if (layerPart === existingLayerPart && (j + 1) === layerNameParts.length) {
-						continue ALL_LAYER_NAME_PARTS_LOOP; // layer already exists in model
-					}
-
-					if (layerPart === existingLayerPart) {
-						numberOfEqualSegments++;
-						continue;
-					}
-
-					if (layerPart !== existingLayerPart) {
-						break LAYER_PARTS_LOOP;
-					}
-				}
-
-				if (numberOfEqualSegments >= mostEqualSegments) {
-					layerWithMostEqualSegments = i;
-					mostEqualSegments = numberOfEqualSegments;
-				}
-			}
-
-			if (layerWithMostEqualSegments === -1) {
-				layers.push(layerNameSlice);
-			} else {
-				layers.splice(layerWithMostEqualSegments + 1, 0, layerNameSlice);
-			}
-		}
-	});
-
-	return layers;
+	return `csstools-anon-layer--${counter++}`;
 }

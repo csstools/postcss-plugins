@@ -48,6 +48,9 @@
 		"dist"
 	],
 	"dependencies": {
+		"@csstools/cascade-layer-name-parser": "^1.0.0",
+		"@csstools/css-parser-algorithms": "^1.0.0",
+		"@csstools/css-tokenizer": "^1.0.0",
 		"postcss-selector-parser": "^6.0.4"
 	},
 	"peerDependencies": {

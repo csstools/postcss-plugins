@@ -16,4 +16,8 @@ import './cases/various/0015.mjs';
 import './cases/various/0016.mjs';
 import './cases/various/0017.mjs';
 
+import './concat.mjs';
+import './equal.mjs';
+import './model.mjs';
 import './slice.mjs';
+import './tokens.mjs';
