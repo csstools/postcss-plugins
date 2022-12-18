@@ -15,6 +15,7 @@ import './cases/various/0014.mjs';
 import './cases/various/0015.mjs';
 import './cases/various/0016.mjs';
 import './cases/various/0017.mjs';
+import './cases/various/0018.mjs';
 
 import './concat.mjs';
 import './equal.mjs';
