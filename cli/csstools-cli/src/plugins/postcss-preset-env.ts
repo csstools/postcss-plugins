@@ -12,6 +12,7 @@ export default function postcssPresetEnv() {
 			'autoprefixer',
 			'preserve',
 			'enableClientSidePolyfills',
+			'debug',
 		],
 		helpTextLogger(
 			'@csstools/cli postcss-preset-env',
@@ -28,6 +29,7 @@ export default function postcssPresetEnv() {
 				autoprefixer: { grid: true },
 				preserve: false,
 				enableClientSidePolyfills: false,
+				debug: false,
 			},
 		),
 		false,
