@@ -1,0 +1,10 @@
+@todo-or-die if(20 > 16) {
+	.baz {
+		color: green;
+	}
+}
+
+.baz {
+	@todo-or-die browserslist("chrome < 80");
+	color: pink;
+}
