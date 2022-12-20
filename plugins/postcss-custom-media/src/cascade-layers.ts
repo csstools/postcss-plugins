@@ -44,15 +44,8 @@ export function collectCascadeLayerOrder(root: Root) {
 			return;
 		}
 
-		let parsingError;
-		let currentLayerNames = parseCascadeLayerNames(layerParams, {
-			onParseError(error) {
-				parsingError = error;
-			},
-		});
-		if (parsingError) {
-			// We ignore invalid layer names for this feature.
-			// They will not affect the layer order.
+		let currentLayerNames = parseCascadeLayerNames(layerParams);
+		if (!currentLayerNames?.length) {
 			return;
 		}
 
