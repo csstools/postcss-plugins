@@ -60,7 +60,7 @@ You can use these conditions :
 | condition | todo | dies |
 | --- | --- | --- |
 | `if` | when `true` or `unknown` | when `false` |
-| `not` | when `true` or `unknown` | when `false` |
+| `not` | when `false` or `unknown` | when `true` |
 | `before-date` | when "now" is before the date | when "now" is after |
 | `browserslist` | when browsers match those of your project | when no browsers match |
 
