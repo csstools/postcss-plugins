@@ -251,3 +251,68 @@ bar") and (fancy(baz))) {}`,
 		],
 	);
 }
+
+// https://github.com/w3c/csswg-drafts/issues/5764
+{
+	{
+		const t = tokenizer({
+			css: ' -- ',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['whitespace-token', ' ', 0, 0, undefined],
+				['ident-token', '--', 1, 2, { value: '--' }],
+				['whitespace-token', ' ', 3, 3, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: '.--',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['delim-token', '.', 0, 0, { value: '.' }],
+				['ident-token', '--', 1, 2, { value: '--' }],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: ' _ ',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['whitespace-token', ' ', 0, 0, undefined],
+				['ident-token', '_', 1, 1, { value: '_' }],
+				['whitespace-token', ' ', 2, 2, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: '._',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['delim-token', '.', 0, 0, { value: '.' }],
+				['ident-token', '_', 1, 1, { value: '_' }],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+}
