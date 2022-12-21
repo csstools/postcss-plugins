@@ -31,10 +31,6 @@ export async function matchIssueOpenCondition(repository: string, issue: number,
 function fetch(repository: string, issue: number) {
 	return new Promise<string>((resolve, reject) => {
 		let rejected = false;
-		if (path.normalize(repository) !== repository) {
-			reject(new Error('Invalid repository'));
-			return;
-		}
 
 		const url = new URL(
 			path.join('repos', repository, 'issues', issue.toString()),
