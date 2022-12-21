@@ -1,6 +1,5 @@
 
 	.baz {
-		@todo-or-die before-date(3022 01 02);
 		order: 1;
 	}
 
@@ -35,3 +34,7 @@
 .baz {
 	order: 6;
 }
+
+.baz {
+		order: 7;
+	}

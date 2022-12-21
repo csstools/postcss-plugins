@@ -1,7 +1,6 @@
 import { FunctionNode, isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
 
-
 export type BeforeDateCondition = {
 	year: number,
 	month: number,

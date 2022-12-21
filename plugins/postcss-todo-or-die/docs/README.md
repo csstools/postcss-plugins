@@ -68,12 +68,14 @@ You can use these conditions :
 | `not` | when `false` or `unknown` | when `true` |
 | `before-date` | when "now" is before the date | when "now" is after |
 | `browserslist` | when browsers match those of your project | when no browsers match |
+| `issue-open` | when the issue is open | when closed |
 
 ```pcss
 @todo-or-die if(10 > 8);
 @todo-or-die not(10 < 8);
 @todo-or-die before-date(2006 01 31); /* year, month, day */
 @todo-or-die browserslist("chrome <= 80");
+@todo-or-die issue-open("csstools/postcss-plugins" 1);
 ```
 
 You can combine this plugin with others like `@csstools/postcss-design-tokens` :
@@ -87,6 +89,7 @@ You can combine this plugin with others like `@csstools/postcss-design-tokens` :
 @todo-or-die not(<value> <operator> <value>);
 @todo-or-die before-date(<integer> <integer> <integer>);
 @todo-or-die browserslist(<string>);
+@todo-or-die issue-open(<string> <integer>);
 
 <operator> = [ '<' | '>' | '=' ]
 ```

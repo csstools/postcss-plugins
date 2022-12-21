@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { AtRule, PluginCreator } from 'postcss';
 import { tokenizer } from '@csstools/css-tokenizer';
 import { isCommentNode, isFunctionNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, ParserError } from '@csstools/css-parser-algorithms';
 import { parseIfCondition } from './parse/if';
@@ -11,13 +11,19 @@ import { matchBrowserslistCondition } from './match/browserslist';
 import { died } from './died';
 import { parseBeforeDateCondition } from './parse/before-data';
 import { matchBeforeDateCondition } from './match/before-date';
+import { parseIssueOpenCondition } from './parse/issue-open';
+import { matchIssueOpenCondition } from './match/issue-open';
 
 const creator: PluginCreator<never> = () => {
 	const browsers = new Set(browserslist());
 
+	const cache: Map<string, string> = new Map();
+
 	return {
 		postcssPlugin: 'postcss-todo-or-die',
-		Once(root, { result }) {
+		async Once(root, { result }) {
+			const atRules: Array<AtRule> = [];
+
 			root.walkAtRules((atRule) => {
 				if (atRule.name.toLowerCase() !== 'todo-or-die') {
 					return;
@@ -27,6 +33,10 @@ const creator: PluginCreator<never> = () => {
 					throw atRule.error('Rule must have valid params');
 				}
 
+				atRules.push(atRule);
+			});
+
+			for (const atRule of atRules) {
 				const errorHandler = (err: ParserError) => {
 					throw atRule.error(err.message);
 				};
@@ -128,6 +138,20 @@ const creator: PluginCreator<never> = () => {
 
 							break;
 						}
+						case 'issue-open': {
+							const conditionParams = parseIssueOpenCondition(todoOrDieCondition[0]);
+							if (!conditionParams) {
+								atRule.warn(result, 'Incorrect arguments in `issue-open()` function.');
+								return;
+							}
+
+							const conditionResult = await matchIssueOpenCondition(conditionParams.repository, conditionParams.issue, cache);
+							if (died(conditionResult)) {
+								throw atRule.error(conditionResult);
+							}
+
+							break;
+						}
 						default:
 							break;
 					}
@@ -138,7 +162,7 @@ const creator: PluginCreator<never> = () => {
 				} else {
 					atRule.remove();
 				}
-			});
+			}
 		},
 	};
 };

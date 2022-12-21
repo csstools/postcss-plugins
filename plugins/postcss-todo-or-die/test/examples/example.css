@@ -4,7 +4,7 @@
 	color: pink;
 	color: hwb(350 75% 0%);
 
-	/* change number to "3000" */
+	/* do something after a date */
 	@todo-or-die before-date(3000 01 01);
 	content: "2000";
 }
