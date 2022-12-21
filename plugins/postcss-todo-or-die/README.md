@@ -9,7 +9,7 @@ Based on [todo-or-die in rust](https://github.com/davidpdrsn/todo-or-die) and [t
 The intention is to get a clear signal when a TODO can be resolved.<br>
 The clearest signal is a hard error. It forces you to stop and resolve the issue.
 
-`@todo-or-die` rules are considered open TODOs while they are true.
+`@todo-or-die` rules are considered open TODOs while they are true.<br>
 Once they become false they will throw an exception.
 
 ```pcss
