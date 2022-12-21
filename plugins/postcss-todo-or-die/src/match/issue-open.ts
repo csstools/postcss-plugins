@@ -8,7 +8,9 @@ export async function matchIssueOpenCondition(repository: string, issue: number,
 	if (!cache.has(cacheKey)) {
 		try {
 			state = await fetch(repository, issue);
-		} catch (_) {
+		} catch (err) {
+			console.log(err);
+
 			// Any network errors are ignored.
 			// We do not want builds to fail when GitHub is offline.
 			return;
@@ -37,15 +39,13 @@ function fetch(repository: string, issue: number) {
 			'https://api.github.com/',
 		);
 
-		// set the desired timeout in options
 		const options = {
 			headers: {
 				'User-Agent': 'PostCSS TODO or Die',
 			},
-			timeout: 1000,
+			timeout: 2500,
 		};
 
-		// create a request
 		const request = https.request(url, options, (response) => {
 			if (rejected) {
 				return;
