@@ -9,6 +9,9 @@ Based on [todo-or-die in rust](https://github.com/davidpdrsn/todo-or-die) and [t
 The intention is to get a clear signal when a TODO can be resolved.<br>
 The clearest signal is a hard error. It forces you to stop and resolve the issue.
 
+`@todo-or-die` rules are considered open TODOs while they are true.
+Once they become false they will throw an exception.
+
 ```pcss
 @todo-or-die if(20 > 16) {
 	.baz {
@@ -113,7 +116,7 @@ You can use these conditions :
 @todo-or-die browserslist("chrome <= 80");
 ```
 
-You can combine this plugin with others like `@csstools/design-tokens` :
+You can combine this plugin with others like `@csstools/postcss-design-tokens` :
 
 ```pcss
 @todo-or-die if(10 > design-token('foo.bar'));
