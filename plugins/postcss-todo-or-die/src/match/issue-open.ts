@@ -8,8 +8,7 @@ export async function matchIssueOpenCondition(repository: string, issue: number,
 	if (!cache.has(cacheKey)) {
 		try {
 			state = await fetch(repository, issue);
-		} catch (err) {
-			console.log(err);
+		} catch (_) {
 
 			// Any network errors are ignored.
 			// We do not want builds to fail when GitHub is offline.
