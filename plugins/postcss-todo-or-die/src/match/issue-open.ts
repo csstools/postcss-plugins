@@ -45,6 +45,10 @@ function fetch(repository: string, issue: number) {
 			timeout: 15000,
 		};
 
+		if (process.env.GITHUB_TOKEN) {
+			options.headers['Authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`;
+		}
+
 		const request = https.request(url, options, (response) => {
 			if (rejected) {
 				return;
