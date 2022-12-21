@@ -42,7 +42,7 @@ function fetch(repository: string, issue: number) {
 			headers: {
 				'User-Agent': 'PostCSS TODO or Die',
 			},
-			timeout: 2500,
+			timeout: 15000,
 		};
 
 		const request = https.request(url, options, (response) => {
