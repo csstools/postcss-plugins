@@ -13,12 +13,6 @@ The clearest signal is a hard error. It forces you to stop and resolve the issue
 Once they become false they will throw an exception.
 
 ```pcss
-@todo-or-die if(20 > 16) {
-	.baz {
-		color: green;
-	}
-}
-
 .baz {
 	/* "hwb" is fully supported */
 	@todo-or-die browserslist("chrome < 101, safari < 15, firefox < 96");
@@ -30,12 +24,14 @@ Once they become false they will throw an exception.
 	content: "2000";
 }
 
-/* becomes */
-
-
+/* You can also wrap large chunks of CSS */
+@todo-or-die if(20 > 16) {
 	.baz {
 		color: green;
 	}
+}
+
+/* becomes */
 
 .baz {
 	/* "hwb" is fully supported */
@@ -45,6 +41,11 @@ Once they become false they will throw an exception.
 	/* change number to "3000" */
 	content: "2000";
 }
+
+/* You can also wrap large chunks of CSS */
+.baz {
+		color: green;
+	}
 ```
 
 ## Usage
