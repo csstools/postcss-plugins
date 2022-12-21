@@ -5,6 +5,12 @@
 }
 
 .baz {
-	@todo-or-die browserslist("chrome < 80");
+	/* "hwb" is fully supported */
+	@todo-or-die browserslist("chrome < 101, safari < 15, firefox < 96");
 	color: pink;
+	color: hwb(350 75% 0%);
+
+	/* change number to "3000" */
+	@todo-or-die before-date(3000 01 01);
+	content: "2000";
 }

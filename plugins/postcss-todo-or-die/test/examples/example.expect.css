@@ -4,5 +4,10 @@
 	}
 
 .baz {
+	/* "hwb" is fully supported */
 	color: pink;
+	color: hwb(350 75% 0%);
+
+	/* change number to "3000" */
+	content: "2000";
 }

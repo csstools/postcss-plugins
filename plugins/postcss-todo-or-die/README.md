@@ -4,6 +4,8 @@
 
 [PostCSS Todo or Die] lets you write TODOs in CSS that ensure you actually do them.
 
+Based on [todo-or-die in rust](https://github.com/davidpdrsn/todo-or-die) and [todo-or-die in ruby](https://github.com/searls/todo_or_die)
+
 The intention is to get a clear signal when a TODO can be resolved.<br>
 The clearest signal is a hard error. It forces you to stop and resolve the issue.
 
@@ -15,8 +17,14 @@ The clearest signal is a hard error. It forces you to stop and resolve the issue
 }
 
 .baz {
-	@todo-or-die browserslist("chrome < 80");
+	/* "hwb" is fully supported */
+	@todo-or-die browserslist("chrome < 101, safari < 15, firefox < 96");
 	color: pink;
+	color: hwb(350 75% 0%);
+
+	/* change number to "3000" */
+	@todo-or-die before-date(3000 01 01);
+	content: "2000";
 }
 
 /* becomes */
@@ -27,7 +35,12 @@ The clearest signal is a hard error. It forces you to stop and resolve the issue
 	}
 
 .baz {
+	/* "hwb" is fully supported */
 	color: pink;
+	color: hwb(350 75% 0%);
+
+	/* change number to "3000" */
+	content: "2000";
 }
 ```
 

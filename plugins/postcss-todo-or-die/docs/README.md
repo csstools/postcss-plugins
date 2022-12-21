@@ -18,6 +18,8 @@
 
 [<humanReadableName>] lets you write TODOs in CSS that ensure you actually do them.
 
+Based on [todo-or-die in rust](https://github.com/davidpdrsn/todo-or-die) and [todo-or-die in ruby](https://github.com/searls/todo_or_die)
+
 The intention is to get a clear signal when a TODO can be resolved.<br>
 The clearest signal is a hard error. It forces you to stop and resolve the issue.
 
