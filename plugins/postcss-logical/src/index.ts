@@ -1,6 +1,6 @@
 import type { PluginCreator, Declaration } from 'postcss';
-import { hasKeyframesAtRuleAncestor } from '../lib/has-keyframes-atrule-ancestor';
-import { transformSide } from '../lib/transform-side';
+import { hasKeyframesAtRuleAncestor } from './lib/has-keyframes-atrule-ancestor';
+import { transformSide } from './lib/transform-side';
 
 enum Direction {
 	TopToBottom = 'top-to-bottom',
@@ -10,12 +10,6 @@ enum Direction {
 }
 
 const Axes = ['top', 'right', 'bottom', 'left'];
-
-/**
- * Validar Direccion?
- * Bottom To Top existe?
- * Validar block diferente a inline?
- */
 
 /** postcss-overflow-shorthand plugin options */
 export type pluginOptions = {
@@ -81,6 +75,26 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			),
 			'margin-block-end': makeTransform(
 				transformSide('margin', blockEnd),
+			),
+			'margin-inline-start': makeTransform(
+				transformSide('margin', inlineStart),
+			),
+			'margin-inline-end': makeTransform(
+				transformSide('margin', inlineEnd),
+			),
+
+			// Paddings
+			'padding-block-start': makeTransform(
+				transformSide('padding', blockStart),
+			),
+			'padding-block-end': makeTransform(
+				transformSide('padding', blockEnd),
+			),
+			'padding-inline-start': makeTransform(
+				transformSide('padding', inlineStart),
+			),
+			'padding-inline-end': makeTransform(
+				transformSide('padding', inlineEnd),
 			),
 		},
 	};

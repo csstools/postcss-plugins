@@ -1,0 +1,9 @@
+.block-side {
+	padding-right: 1px;
+	padding-left: 2px;
+}
+
+.inline-side {
+	padding-top: 1px;
+	padding-bottom: 2px;
+}

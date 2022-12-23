@@ -2,3 +2,8 @@
 	margin-block-start: 1px;
 	margin-block-end: 2px;
 }
+
+.inline-side {
+	margin-inline-start: 1px;
+	margin-inline-end: 2px;
+}
