@@ -9,6 +9,7 @@ export const externalsForCLI = [
 	/^postcss\/lib\/*/,
 	'postcss-html',
 
+	'@csstools/cascade-layer-name-parser',
 	'@csstools/css-parser-algorithms',
 	'@csstools/css-tokenizer',
 	'@csstools/media-query-list-parser',
@@ -82,6 +83,7 @@ export const externalsForPlugin = [
 	/^postcss\/lib\/*/,
 	'postcss-html',
 
+	'@csstools/cascade-layer-name-parser',
 	'@csstools/css-parser-algorithms',
 	'@csstools/css-tokenizer',
 	'@csstools/media-query-list-parser',

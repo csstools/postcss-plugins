@@ -1,0 +1,156 @@
+[
+	{
+		"parts": [
+			[
+				"comment",
+				"/* a comment */",
+				0,
+				14,
+				null
+			],
+			[
+				"ident-token",
+				"abc",
+				15,
+				17,
+				{
+					"value": "abc"
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				18,
+				32,
+				null
+			],
+			[
+				"delim-token",
+				".",
+				33,
+				33,
+				{
+					"value": "."
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				34,
+				48,
+				null
+			],
+			[
+				"ident-token",
+				"def",
+				49,
+				51,
+				{
+					"value": "def"
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				52,
+				66,
+				null
+			]
+		],
+		"segments": [
+			"abc",
+			"def"
+		],
+		"name": "abc.def"
+	},
+	{
+		"parts": [
+			[
+				"comment",
+				"/* a comment */",
+				68,
+				82,
+				null
+			],
+			[
+				"ident-token",
+				"ghi",
+				83,
+				85,
+				{
+					"value": "ghi"
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				86,
+				100,
+				null
+			],
+			[
+				"delim-token",
+				".",
+				101,
+				101,
+				{
+					"value": "."
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				102,
+				116,
+				null
+			],
+			[
+				"ident-token",
+				"jkl",
+				117,
+				119,
+				{
+					"value": "jkl"
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				120,
+				134,
+				null
+			],
+			[
+				"delim-token",
+				".",
+				135,
+				135,
+				{
+					"value": "."
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				136,
+				150,
+				null
+			],
+			[
+				"ident-token",
+				"mno",
+				151,
+				153,
+				{
+					"value": "mno"
+				}
+			]
+		],
+		"segments": [
+			"ghi",
+			"jkl",
+			"mno"
+		],
+		"name": "ghi.jkl.mno"
+	}
+]
