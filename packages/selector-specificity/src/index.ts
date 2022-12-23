@@ -155,7 +155,7 @@ export function selectorSpecificity(node: Node): Specificity {
 					if (node.nodes && node.nodes.length > 0) {
 						const mostSpecificListItem = specificityOfMostSpecificListItem(node.nodes);
 
-						// We are more forgiving that the specification and use the most specific complex selector.
+						// We are more forgiving than the specification and use the most specific complex selector.
 						// This gives the community more options to do non-standard things.
 						//
 						// This code is correct for correct CSS.
