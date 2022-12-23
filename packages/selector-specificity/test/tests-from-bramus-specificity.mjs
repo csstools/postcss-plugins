@@ -104,3 +104,26 @@ assert.deepEqual(calculate('ns|a'), { a: 0, b: 0, c: 1 }, 'ns|a = (0,0,1)');
 
 // Calculate accepts an empty value
 assert.deepEqual(calculate(''), { a: 0, b: 0, c: 0 }, '"" = (0,0,0)');
+
+// CSS :host() / :host-context() = Pseudo-class, plus the specificity of its argument
+assert.deepEqual(calculate(':host'), { a: 0, b: 1, c: 0 }, ':host = (0,1,0)');
+assert.deepEqual(calculate(':host()'), { a: 0, b: 1, c: 0 }, ':host() = (0,1,0)');
+assert.deepEqual(calculate(':host(#foo.bar)'), { a: 1, b: 2, c: 0 }, ':host(#foo.bar) = (1,2,0)');
+assert.deepEqual(calculate(':host-context()'), { a: 0, b: 1, c: 0 }, ':host-context() = (0,1,0)');
+assert.deepEqual(calculate(':host-context(#foo.bar)'), { a: 1, b: 2, c: 0 }, ':host-context(#foo.bar) = (1,2,0)');
+
+// We do not follow bramus/specificity.
+// We are more forgiving than the specification.
+assert.deepEqual(calculate(':host(#foo.bar invalid)'), { a: 1, b: 2, c: 1 }, ':host(#foo.bar invalid) = (1,2,1)');
+assert.deepEqual(calculate(':host-context(#foo.bar invalid)'), { a: 1, b: 2, c: 1 }, ':host-context(#foo.bar invalid) = (1,2,1)');
+
+// Pseudo-Element Selector ::slotted
+assert.deepEqual(calculate('::slotted'), { a: 0, b: 0, c: 1 }, '::slotted');
+assert.deepEqual(calculate('::slotted()'), { a: 0, b: 0, c: 1 }, '::slotted()');
+assert.deepEqual(calculate('::slotted(div#foo)'), { a: 1, b: 0, c: 2 }, '::slotted(div#foo)');
+assert.deepEqual(calculate('::slotted(#foo.bar)'), { a: 1, b: 1, c: 1 }, '::slotted(#foo.bar)');
+
+// We do not follow bramus/specificity.
+// We are more forgiving than the specification.
+assert.deepEqual(calculate('::slotted(#foo invalid)'), { a: 1, b: 0, c: 2 }, '::slotted(#foo invalid)');
+assert.deepEqual(calculate('::slotted(#foo.bar invalid)'), { a: 1, b: 1, c: 2 }, '::slotted(#foo.bar invalid)');
