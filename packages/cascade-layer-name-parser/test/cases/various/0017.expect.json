@@ -1,0 +1,55 @@
+[
+	{
+		"parts": [
+			[
+				"ident-token",
+				"lay\\,er",
+				0,
+				6,
+				{
+					"value": "lay,er"
+				}
+			]
+		],
+		"segments": [
+			"lay,er"
+		],
+		"name": "lay\\,er"
+	},
+	{
+		"parts": [
+			[
+				"ident-token",
+				"other-la\\.yer",
+				8,
+				20,
+				{
+					"value": "other-la.yer"
+				}
+			],
+			[
+				"delim-token",
+				".",
+				21,
+				21,
+				{
+					"value": "."
+				}
+			],
+			[
+				"ident-token",
+				"sub-layer",
+				22,
+				30,
+				{
+					"value": "sub-layer"
+				}
+			]
+		],
+		"segments": [
+			"other-la.yer",
+			"sub-layer"
+		],
+		"name": "other-la\\.yer.sub-layer"
+	}
+]

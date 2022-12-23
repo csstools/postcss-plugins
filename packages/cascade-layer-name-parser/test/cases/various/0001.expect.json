@@ -1,0 +1,19 @@
+[
+	{
+		"parts": [
+			[
+				"ident-token",
+				"layer-name",
+				0,
+				9,
+				{
+					"value": "layer-name"
+				}
+			]
+		],
+		"segments": [
+			"layer-name"
+		],
+		"name": "layer-name"
+	}
+]

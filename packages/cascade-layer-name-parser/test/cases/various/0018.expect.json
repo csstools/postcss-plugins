@@ -1,0 +1,205 @@
+[
+	{
+		"parts": [
+			[
+				"whitespace-token",
+				"  ",
+				0,
+				1,
+				null
+			],
+			[
+				"comment",
+				"/* a comment */",
+				2,
+				16,
+				null
+			],
+			[
+				"whitespace-token",
+				"  ",
+				17,
+				18,
+				null
+			],
+			[
+				"ident-token",
+				"abc",
+				19,
+				21,
+				{
+					"value": "abc"
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				22,
+				36,
+				null
+			],
+			[
+				"delim-token",
+				".",
+				37,
+				37,
+				{
+					"value": "."
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				38,
+				52,
+				null
+			],
+			[
+				"ident-token",
+				"def",
+				53,
+				55,
+				{
+					"value": "def"
+				}
+			],
+			[
+				"whitespace-token",
+				"  ",
+				56,
+				57,
+				null
+			],
+			[
+				"comment",
+				"/* a comment */",
+				58,
+				72,
+				null
+			],
+			[
+				"whitespace-token",
+				"  ",
+				73,
+				74,
+				null
+			]
+		],
+		"segments": [
+			"abc",
+			"def"
+		],
+		"name": "abc.def"
+	},
+	{
+		"parts": [
+			[
+				"whitespace-token",
+				"  ",
+				76,
+				77,
+				null
+			],
+			[
+				"comment",
+				"/* a comment */",
+				78,
+				92,
+				null
+			],
+			[
+				"whitespace-token",
+				"  ",
+				93,
+				94,
+				null
+			],
+			[
+				"ident-token",
+				"ghi",
+				95,
+				97,
+				{
+					"value": "ghi"
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				98,
+				112,
+				null
+			],
+			[
+				"delim-token",
+				".",
+				113,
+				113,
+				{
+					"value": "."
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				114,
+				128,
+				null
+			],
+			[
+				"ident-token",
+				"jkl",
+				129,
+				131,
+				{
+					"value": "jkl"
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				132,
+				146,
+				null
+			],
+			[
+				"delim-token",
+				".",
+				147,
+				147,
+				{
+					"value": "."
+				}
+			],
+			[
+				"comment",
+				"/* a comment */",
+				148,
+				162,
+				null
+			],
+			[
+				"ident-token",
+				"mno",
+				163,
+				165,
+				{
+					"value": "mno"
+				}
+			],
+			[
+				"whitespace-token",
+				"  ",
+				166,
+				167,
+				null
+			]
+		],
+		"segments": [
+			"ghi",
+			"jkl",
+			"mno"
+		],
+		"name": "ghi.jkl.mno"
+	}
+]
