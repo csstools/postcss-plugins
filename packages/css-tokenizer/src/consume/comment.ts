@@ -5,18 +5,16 @@ import { TokenComment, TokenType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comment
 export function consumeComment(ctx: Context, reader: CodePointReader): TokenComment {
-	reader.readCodePoint();
-	reader.readCodePoint();
+	reader.readCodePoint(2);
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const codePoint = reader.readCodePoint();
 		if (codePoint === false) {
-			const representation = reader.representation();
 			ctx.onParseError({
 				message: 'Unexpected EOF while consuming a comment.',
-				start: representation[0],
-				end: representation[1],
+				start: reader.representationStart,
+				end: reader.representationEnd,
 				state: [
 					'4.3.2. Consume comments',
 					'Unexpected EOF',
@@ -30,23 +28,21 @@ export function consumeComment(ctx: Context, reader: CodePointReader): TokenComm
 			continue;
 		}
 
-		const close = reader.peekOneCodePoint();
-		if (close === false) {
+		if (reader.peekedOne === undefined) {
 			continue;
 		}
 
-		if (close === SOLIDUS) {
+		if (reader.peekedOne === SOLIDUS) {
 			reader.readCodePoint();
 			break;
 		}
 	}
 
-	const representation = reader.representation();
 	return [
 		TokenType.Comment,
 		reader.representationString(),
-		representation[0],
-		representation[1],
+		reader.representationStart,
+		reader.representationEnd,
 		undefined,
 	];
 }

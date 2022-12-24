@@ -1,5 +1,4 @@
 import { MAXIMUM_ALLOWED_CODEPOINT, REPLACEMENT_CHARACTER } from '../code-points/code-points';
-import { codePointsToString } from '../code-points/code-points-to-string';
 import { isHexDigitCodePoint, isSurrogate, isWhitespace } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
@@ -8,11 +7,10 @@ import { Context } from '../interfaces/context';
 export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): number {
 	const codePoint = reader.readCodePoint();
 	if (codePoint === false) {
-		const representation = reader.representation();
 		ctx.onParseError({
 			message: 'Unexpected EOF while consuming an escaped code point.',
-			start: representation[0],
-			end: representation[1],
+			start: reader.representationStart,
+			end: reader.representationEnd,
 			state: [
 				'4.3.7. Consume an escaped code point',
 				'Unexpected EOF',
@@ -25,18 +23,16 @@ export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): 
 	if (isHexDigitCodePoint(codePoint)) {
 		const hexSequence: Array<number> = [codePoint];
 
-		let peeked = reader.peekOneCodePoint();
-		while (peeked !== false && isHexDigitCodePoint(peeked) && hexSequence.length < 6) {
-			reader.readCodePoint();
-			hexSequence.push(peeked);
-			peeked = reader.peekOneCodePoint();
-		}
-
-		if (peeked !== false && isWhitespace(peeked)) {
+		while ((typeof reader.peekedOne !== 'undefined') && isHexDigitCodePoint(reader.peekedOne) && hexSequence.length < 6) {
+			hexSequence.push(reader.peekedOne);
 			reader.readCodePoint();
 		}
 
-		const codePointLiteral = parseInt(codePointsToString(hexSequence), 16);
+		if (isWhitespace(reader.peekedOne)) {
+			reader.readCodePoint();
+		}
+
+		const codePointLiteral = parseInt(String.fromCharCode(...hexSequence), 16);
 		if (codePointLiteral === 0) {
 			return REPLACEMENT_CHARACTER;
 		}

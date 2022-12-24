@@ -11,18 +11,17 @@ export function consumeIdentSequence(ctx: Context, reader: CodePointReader): Arr
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		const peeked = reader.peekOneCodePoint();
-		if (peeked === false) {
+		if (reader.peekedOne === undefined) {
 			return result;
 		}
 
-		if (isIdentCodePoint(peeked)) {
+		if (isIdentCodePoint(reader.peekedOne)) {
+			result.push(reader.peekedOne);
 			reader.readCodePoint();
-			result.push(peeked);
 			continue;
 		}
 
-		if (peeked === REVERSE_SOLIDUS && checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
+		if (reader.peekedOne === REVERSE_SOLIDUS && checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
 			reader.readCodePoint();
 			result.push(consumeEscapedCodePoint(ctx, reader));
 			continue;

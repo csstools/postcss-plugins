@@ -2,9 +2,46 @@ import { tokenizer, TokenType } from '@csstools/css-tokenizer';
 import postcssTokenizer from 'postcss/lib/tokenize';
 import fs from 'fs';
 
-function csstoolsLargeSource() {
-	const source = fs.readFileSync('./test/community/bootstrap.css').toString();
+const bootstrapSource = fs.readFileSync('./test/community/bootstrap.css').toString();
+const openPropsSource = fs.readFileSync('./test/community/open-props.css').toString();
 
+const largeSource = `
+/* a comment */
+<!-- CDO -->
+
+-->
+/* more comments */
+
+.foo {
+	image: url(https://example.com/foo.jpg);
+	image: url("https://example.com/foo.jpg");
+}
+
+.foo {
+	image: url(();
+}
+
+.foo {
+	content: "foo
+bar";
+}
+
+#1 {}
+
+#foo {}
+
+.foo {
+	margin: 0;
+	margin: 1px;
+	line-height: 1%;
+	line-height: 1.2;
+}
+
+${bootstrapSource}
+${openPropsSource}
+`;
+
+function csstoolsLargeSource() {
 	const results = [];
 	let tokenStreamLength = 0;
 
@@ -14,11 +51,11 @@ function csstoolsLargeSource() {
 		{
 			const t = tokenizer(
 				{
-					css: source,
+					css: largeSource,
 				},
 				{
-					onParseError: (err) => {
-						throw new Error(JSON.stringify(err));
+					onParseError: () => {
+						// noop
 					},
 				},
 			);
@@ -48,10 +85,11 @@ function csstoolsLargeSource() {
 	console.log('tokens', tokenStreamLength);
 	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
 	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
+	console.log('tokens/μs @ 5th', (tokenStreamLength / results[49]) / 1000);
 	console.log('-----------------------------------------------');
 	console.log('95th', results[949]);
-	console.log('90th', results[899]);
 	console.log('50th', results[499]);
+	console.log('5th', results[49]);
 	console.log('deviation', results[949] - results[49]);
 }
 
@@ -124,16 +162,15 @@ function csstoolsSmallSource() {
 	console.log('tokens', tokenStreamLength);
 	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
 	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
+	console.log('tokens/μs @ 5th', (tokenStreamLength / results[49]) / 1000);
 	console.log('-----------------------------------------------');
 	console.log('95th', results[949]);
-	console.log('90th', results[899]);
 	console.log('50th', results[499]);
+	console.log('5th', results[49]);
 	console.log('deviation', results[949] - results[49]);
 }
 
 function postcssLargeSource() {
-	const source = fs.readFileSync('./test/community/bootstrap.css').toString();
-
 	const results = [];
 	let tokenStreamLength = 0;
 
@@ -142,7 +179,7 @@ function postcssLargeSource() {
 		{
 			const t = postcssTokenizer(
 				{
-					css: source,
+					css: largeSource,
 				},
 			);
 
@@ -171,10 +208,11 @@ function postcssLargeSource() {
 	console.log('tokens', tokenStreamLength);
 	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
 	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
-	console.log('----------------------------------------------');
+	console.log('tokens/μs @ 5th', (tokenStreamLength / results[49]) / 1000);
+	console.log('-----------------------------------------------');
 	console.log('95th', results[949]);
-	console.log('90th', results[899]);
 	console.log('50th', results[499]);
+	console.log('5th', results[49]);
 	console.log('deviation', results[949] - results[49]);
 }
 
@@ -241,17 +279,23 @@ function postcssSmallSource() {
 	console.log('tokens', tokenStreamLength);
 	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
 	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
-	console.log('----------------------------------------------');
+	console.log('tokens/μs @ 5th', (tokenStreamLength / results[49]) / 1000);
+	console.log('-----------------------------------------------');
 	console.log('95th', results[949]);
-	console.log('90th', results[899]);
 	console.log('50th', results[499]);
+	console.log('5th', results[49]);
 	console.log('deviation', results[949] - results[49]);
 }
 
-csstoolsLargeSource();
+await new Promise((resolve) => setTimeout(resolve(), 1000));
 csstoolsSmallSource();
-postcssLargeSource();
+await new Promise((resolve) => setTimeout(resolve(), 1000));
 postcssSmallSource();
+await new Promise((resolve) => setTimeout(resolve(), 1000));
+csstoolsLargeSource();
+await new Promise((resolve) => setTimeout(resolve(), 1000));
+postcssLargeSource();
+await new Promise((resolve) => setTimeout(resolve(), 1000));
 
 // Last result:
 // -------------- csstools tokenizer -------------

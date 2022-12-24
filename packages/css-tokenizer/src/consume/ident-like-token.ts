@@ -1,6 +1,5 @@
 import { checkIfCodePointsMatchURLIdent } from '../checks/matches-url-ident';
 import { APOSTROPHE, LEFT_PARENTHESIS, QUOTATION_MARK } from '../code-points/code-points';
-import { codePointsToString } from '../code-points/code-points-to-string';
 import { isWhitespace } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
@@ -11,39 +10,35 @@ import { consumeUrlToken } from './url-token';
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-ident-like-token
 export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): TokenIdent | TokenFunction | TokenURL | TokenBadURL {
 	const codePoints = consumeIdentSequence(ctx, reader);
-	const peeked = reader.peekOneCodePoint();
 
-	if (peeked === LEFT_PARENTHESIS) {
+	if (reader.peekedOne === LEFT_PARENTHESIS) {
 		if (checkIfCodePointsMatchURLIdent(ctx, codePoints)) {
 			reader.readCodePoint();
 
 			let read = 0;
 			// eslint-disable-next-line no-constant-condition
 			while (true) {
-				const peeked2 = reader.peekTwoCodePoints();
-				const firstIsWhitespace = isWhitespace(peeked2[0]);
-				const secondIsWhitespace = isWhitespace(peeked2[1]);
+				const firstIsWhitespace = isWhitespace(reader.peekedOne);
+				const secondIsWhitespace = isWhitespace(reader.peekedTwo);
 				if (firstIsWhitespace && secondIsWhitespace) {
 					read += 2;
-					reader.readCodePoint();
-					reader.readCodePoint();
+					reader.readCodePoint(2);
 					continue;
 				}
 
-				const firstNonWhitespace = firstIsWhitespace ? peeked2[1] : peeked2[0];
+				const firstNonWhitespace = firstIsWhitespace ? reader.peekedTwo : reader.peekedOne;
 				if (firstNonWhitespace === QUOTATION_MARK || firstNonWhitespace === APOSTROPHE) {
 					for (let i = 0; i < read; i++) {
 						reader.unreadCodePoint();
 					}
 
-					const representation = reader.representation();
 					return [
 						TokenType.Function,
 						reader.representationString(),
-						representation[0],
-						representation[1],
+						reader.representationStart,
+						reader.representationEnd,
 						{
-							value: codePointsToString(codePoints),
+							value: String.fromCharCode(...codePoints),
 						},
 					];
 				}
@@ -59,26 +54,24 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 		}
 
 		reader.readCodePoint();
-		const representation = reader.representation();
 		return [
 			TokenType.Function,
 			reader.representationString(),
-			representation[0],
-			representation[1],
+			reader.representationStart,
+			reader.representationEnd,
 			{
-				value: codePointsToString(codePoints),
+				value: String.fromCharCode(...codePoints),
 			},
 		];
 	}
 
-	const representation = reader.representation();
 	return [
 		TokenType.Ident,
 		reader.representationString(),
-		representation[0],
-		representation[1],
+		reader.representationStart,
+		reader.representationEnd,
 		{
-			value: codePointsToString(codePoints),
+			value: String.fromCharCode(...codePoints),
 		},
 	];
 }

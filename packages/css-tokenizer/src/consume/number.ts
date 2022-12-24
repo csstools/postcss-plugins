@@ -1,5 +1,4 @@
 import { FULL_STOP, HYPHEN_MINUS, LATIN_CAPITAL_LETTER_E, LATIN_SMALL_LETTER_E, PLUS_SIGN } from '../code-points/code-points';
-import { codePointsToString } from '../code-points/code-points-to-string';
 import { isDigitCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
@@ -14,10 +13,9 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 
 	{
 		// 2. If the next input code point is U+002B PLUS SIGN (+) or U+002D HYPHEN-MINUS (-), consume it and append it to repr.
-		const peeked = reader.peekOneCodePoint();
-		if (peeked === PLUS_SIGN || peeked === HYPHEN_MINUS) {
+		if (reader.peekedOne === PLUS_SIGN || reader.peekedOne === HYPHEN_MINUS) {
+			repr.push(reader.peekedOne);
 			reader.readCodePoint();
-			repr.push(peeked);
 		}
 
 		// 3. While the next input code point is a digit, consume it and append it to repr.
@@ -29,15 +27,13 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 
 	{
 		// 4. If the next 2 input code points are U+002E FULL STOP (.) followed by a digit, then:
-		const peeked = reader.peekTwoCodePoints();
-		if (peeked[0] === FULL_STOP && isDigitCodePoint(peeked[1])) {
-			// 4.1. Consume them.
-			reader.readCodePoint();
-			reader.readCodePoint();
-
+		if (reader.peekedOne === FULL_STOP && isDigitCodePoint(reader.peekedTwo)) {
 			// 4.2. Append them to repr.
-			repr.push(peeked[0]);
-			repr.push(peeked[1]);
+			repr.push(reader.peekedOne);
+			repr.push(reader.peekedTwo);
+
+			// 4.1. Consume them.
+			reader.readCodePoint(2);
 
 			// 4.3. Set type to "number".
 			type = NumberType.Number;
@@ -54,18 +50,16 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 		// 5. If the next 2 or 3 input code points are U+0045 LATIN CAPITAL LETTER E (E) or U+0065 LATIN SMALL LETTER E (e),
 		// optionally followed by U+002D HYPHEN-MINUS (-) or U+002B PLUS SIGN (+),
 		// followed by a digit, then:
-		const peeked = reader.peekThreeCodePoints();
 		if (
-			(peeked[0] === LATIN_SMALL_LETTER_E || peeked[0] === LATIN_CAPITAL_LETTER_E) &&
-			isDigitCodePoint(peeked[1])
+			(reader.peekedOne === LATIN_SMALL_LETTER_E || reader.peekedOne === LATIN_CAPITAL_LETTER_E) &&
+			isDigitCodePoint(reader.peekedTwo)
 		) {
-			// 5.1. Consume them.
-			reader.readCodePoint();
-			reader.readCodePoint();
-
 			// 5.2. Append them to repr.
-			repr.push(peeked[0]);
-			repr.push(peeked[1]);
+			repr.push(reader.peekedOne);
+			repr.push(reader.peekedTwo);
+
+			// 5.1. Consume them.
+			reader.readCodePoint(2);
 
 			// 5.3. Set type to "number".
 			type = NumberType.Number;
@@ -78,21 +72,19 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 		}
 
 		if (
-			(peeked[0] === LATIN_SMALL_LETTER_E || peeked[0] === LATIN_CAPITAL_LETTER_E) &&
+			(reader.peekedOne === LATIN_SMALL_LETTER_E || reader.peekedOne === LATIN_CAPITAL_LETTER_E) &&
 			(
-				(peeked[1] === HYPHEN_MINUS || peeked[1] === PLUS_SIGN) &&
-				isDigitCodePoint(peeked[2])
+				(reader.peekedTwo === HYPHEN_MINUS || reader.peekedTwo === PLUS_SIGN) &&
+				isDigitCodePoint(reader.peekedThree)
 			)
 		) {
-			// 5.1. Consume them.
-			reader.readCodePoint();
-			reader.readCodePoint();
-			reader.readCodePoint();
-
 			// 5.2. Append them to repr.
-			repr.push(peeked[0]);
-			repr.push(peeked[1]);
-			repr.push(peeked[2]);
+			repr.push(reader.peekedOne);
+			repr.push(reader.peekedTwo);
+			repr.push(reader.peekedThree);
+
+			// 5.1. Consume them.
+			reader.readCodePoint(3);
 
 			// 5.3. Set type to "number".
 			type = NumberType.Number;
@@ -117,13 +109,12 @@ function consumeDigits(reader: CodePointReader): Array<number> {
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		const peeked = reader.peekOneCodePoint();
-		if (peeked === false) {
+		if (reader.peekedOne === undefined) {
 			return value;
 		}
 
-		if (isDigitCodePoint(peeked)) {
-			value.push(peeked);
+		if (isDigitCodePoint(reader.peekedOne)) {
+			value.push(reader.peekedOne);
 			reader.readCodePoint();
 		} else {
 			return value;
@@ -221,7 +212,7 @@ function digitCodePointsToInteger(codePoints: Array<number>): number {
 		return 0;
 	}
 
-	const stringValue = codePointsToString(codePoints);
+	const stringValue = String.fromCharCode(...codePoints);
 
 	const integerValue = Number.parseInt(stringValue, 10);
 	if (Number.isNaN(integerValue)) {

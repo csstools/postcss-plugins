@@ -9,42 +9,38 @@ export function consumeWhiteSpace(ctx: Context, reader: CodePointReader, max = -
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		if (max !== -1 && current === max) {
-			const representation = reader.representation();
 			return [
 				TokenType.Whitespace,
 				reader.representationString(),
-				representation[0],
-				representation[1],
+				reader.representationStart,
+				reader.representationEnd,
 				undefined,
 			];
 		}
 
 		current++;
-		const peeked = reader.peekOneCodePoint();
-		if (peeked === false) {
-			const representation = reader.representation();
+		if (reader.peekedOne === undefined) {
 			return [
 				TokenType.Whitespace,
 				reader.representationString(),
-				representation[0],
-				representation[1],
+				reader.representationStart,
+				reader.representationEnd,
 				undefined,
 			];
 		}
 
-		if (!isWhitespace(peeked)) {
+		if (!isWhitespace(reader.peekedOne)) {
 			break;
 		}
 
 		reader.readCodePoint();
 	}
 
-	const representation = reader.representation();
 	return [
 		TokenType.Whitespace,
 		reader.representationString(),
-		representation[0],
-		representation[1],
+		reader.representationStart,
+		reader.representationEnd,
 		undefined,
 	];
 }

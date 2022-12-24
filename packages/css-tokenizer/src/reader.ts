@@ -1,140 +1,86 @@
 import { CodePointReader } from './interfaces/code-point-reader';
 
 export class Reader implements CodePointReader {
-	#cursor: number;
-	#stringSource = '';
-	#codePointSource: Array<number> = [];
-	#length = 0;
+	cursor: number;
+	stringSource = '';
+	codePointSource: Array<number> = [];
+	length = 0;
 
-	#representationStart = 0;
-	#representationEnd = -1;
+	representationStart = 0;
+	representationEnd = -1;
+
+	peekedOne: number | undefined;
+	peekedTwo: number | undefined;
+	peekedThree: number | undefined;
 
 	constructor(source: string) {
-		this.#cursor = 0;
-		this.#stringSource = source;
-		this.#length = source.length;
+		this.cursor = 0;
+		this.stringSource = source;
+		this.length = source.length;
 
-		this.#codePointSource = new Array(this.#length);
-		for (let i = 0; i < this.#length; i++) {
-			this.#codePointSource[i] = this.#stringSource.charCodeAt(i);
+		this.codePointSource = new Array(this.length);
+		for (let i = 0; i < this.length; i++) {
+			this.codePointSource[i] = this.stringSource.charCodeAt(i);
 		}
+
+		this.peekedOne = this.codePointSource[this.cursor];
+		this.peekedTwo = this.codePointSource[this.cursor + 1];
+		this.peekedThree = this.codePointSource[this.cursor + 2];
+		this.peekedFour = this.codePointSource[this.cursor + 3];
 	}
+	peekedFour: number;
 
 	cursorPositionOfLastReadCodePoint(): number {
-		return this.#cursor - 1;
+		return this.cursor - 1;
 	}
 
-	peekOneCodePoint(): number | false {
-		const first = this.#codePointSource[this.#cursor];
-		if (typeof first === 'undefined') {
-			return false;
-		}
-
-		return first;
-	}
-
-	peekTwoCodePoints(): [number, number] | [number] | [] {
-		const first = this.#codePointSource[this.#cursor];
-		if (typeof first === 'undefined') {
-			return [];
-		}
-
-		const second = this.#codePointSource[this.#cursor + 1];
-		if (typeof second === 'undefined') {
-			return [first];
-		}
-
-		return [first, second];
-	}
-
-	peekThreeCodePoints(): [number, number, number] | [number, number] | [number] | [] {
-		const first = this.#codePointSource[this.#cursor];
-		if (typeof first === 'undefined') {
-			return [];
-		}
-
-		const second = this.#codePointSource[this.#cursor + 1];
-		if (typeof second === 'undefined') {
-			return [first];
-		}
-
-		const third = this.#codePointSource[this.#cursor + 2];
-		if (typeof third === 'undefined') {
-			return [first, second];
-		}
-
-		return [first, second, third];
-	}
-
-	peekFourCodePoints(): [number, number, number, number] | [number, number, number] | [number, number] | [number] | [] {
-		const first = this.#codePointSource[this.#cursor];
-		if (typeof first === 'undefined') {
-			return [];
-		}
-
-		const second = this.#codePointSource[this.#cursor + 1];
-		if (typeof second === 'undefined') {
-			return [first];
-		}
-
-		const third = this.#codePointSource[this.#cursor + 2];
-		if (typeof third === 'undefined') {
-			return [first, second];
-		}
-
-		const fourth = this.#codePointSource[this.#cursor + 2];
-		if (typeof fourth === 'undefined') {
-			return [first, second, third];
-		}
-
-		return [first, second, third, fourth];
-	}
-
-	readCodePoint(): number | false {
-		const codePoint = this.#codePointSource[this.#cursor];
+	readCodePoint(n = 1): number | false {
+		const codePoint = this.codePointSource[this.cursor];
 		if (typeof codePoint === 'undefined') {
 			return false;
 		}
 
-		this.#representationEnd = this.#cursor;
-		this.#cursor += 1;
+		this.cursor += n;
+		this.representationEnd = this.cursor - 1;
+
+		this.peekedOne = this.codePointSource[this.cursor];
+		this.peekedTwo = this.codePointSource[this.cursor + 1];
+		this.peekedThree = this.codePointSource[this.cursor + 2];
+		this.peekedFour = this.codePointSource[this.cursor + 3];
 
 		return codePoint;
 	}
 
 	unreadCodePoint(): boolean {
-		if (this.#cursor === 0) {
+		if (this.cursor === 0) {
 			return false;
 		}
 
-		this.#representationEnd = this.#cursor - 1;
-		this.#cursor -= 1;
+		this.representationEnd = this.cursor - 1;
+		this.cursor -= 1;
+
+		this.peekedOne = this.codePointSource[this.cursor];
+		this.peekedTwo = this.codePointSource[this.cursor + 1];
+		this.peekedThree = this.codePointSource[this.cursor + 2];
+		this.peekedFour = this.codePointSource[this.cursor + 3];
 
 		return true;
 	}
 
-	representation(): [number, number] {
-		return [
-			this.#representationStart,
-			this.#representationEnd,
-		];
-	}
-
 	representationString(): string {
-		const representation = this.representation();
-		if (representation[1] === -1) {
+		if (this.representationEnd === -1) {
 			return '';
 		}
 
-		return this.slice(representation[0], representation[1] + 1);
+		return this.stringSource.slice(this.representationStart, this.representationEnd + 1);
 	}
 
 	resetRepresentation() {
-		this.#representationStart = this.#cursor;
-		this.#representationEnd = -1;
+		this.representationStart = this.cursor;
+		this.representationEnd = -1;
 	}
 
 	slice(start: number, end: number): string {
-		return this.#stringSource.slice(start, end);
+		return this.stringSource.slice(start, end);
 	}
 }

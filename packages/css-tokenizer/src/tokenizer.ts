@@ -16,7 +16,6 @@ import { consumeStringToken } from './consume/string-token';
 import { consumeIdentLikeToken } from './consume/ident-like-token';
 import { checkIfTwoCodePointsAreAValidEscape } from './checks/two-code-points-are-valid-escape';
 import { ParserError } from './interfaces/error';
-import { codePointsToString } from './code-points/code-points-to-string';
 
 interface Stringer {
 	valueOf(): string
@@ -32,7 +31,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 	};
 
 	function endOfFile() {
-		return reader.peekOneCodePoint() === false;
+		return reader.peekedOne === undefined;
 	}
 
 	function nextToken(): CSSToken | undefined {
@@ -47,9 +46,8 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 		}
 
 		reader.resetRepresentation();
-
-		const peeked = reader.peekOneCodePoint();
-		if (peeked === false) {
+		const peeked = reader.peekedOne;
+		if (peeked === undefined) {
 			return [TokenType.EOF, '', -1, -1, undefined];
 		}
 
@@ -57,52 +55,40 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 		switch (peeked) {
 			case COMMA: {
 				reader.readCodePoint();
-				const representation = reader.representation();
-				return [TokenType.Comma, reader.representationString(), representation[0], representation[1], undefined];
+				return [TokenType.Comma, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case COLON: {
 				reader.readCodePoint();
-				const representation = reader.representation();
-				return [TokenType.Colon, reader.representationString(), representation[0], representation[1], undefined];
+				return [TokenType.Colon, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case SEMICOLON: {
 				reader.readCodePoint();
-				const representation = reader.representation();
-				return [TokenType.Semicolon, reader.representationString(), representation[0], representation[1], undefined];
+				return [TokenType.Semicolon, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case LEFT_PARENTHESIS: {
 				reader.readCodePoint();
-				const representation = reader.representation();
-				return [TokenType.OpenParen, reader.representationString(), representation[0], representation[1], undefined];
+				return [TokenType.OpenParen, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case RIGHT_PARENTHESIS: {
 				reader.readCodePoint();
-				const representation = reader.representation();
-				return [TokenType.CloseParen, reader.representationString(), representation[0], representation[1], undefined];
+				return [TokenType.CloseParen, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case LEFT_SQUARE_BRACKET: {
 				reader.readCodePoint();
-				const representation = reader.representation();
-				return [TokenType.OpenSquare, reader.representationString(), representation[0], representation[1], undefined];
+				return [TokenType.OpenSquare, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case RIGHT_SQUARE_BRACKET: {
 				reader.readCodePoint();
-				const representation = reader.representation();
-				return [TokenType.CloseSquare, reader.representationString(), representation[0], representation[1], undefined];
+				return [TokenType.CloseSquare, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case LEFT_CURLY_BRACKET: {
 				reader.readCodePoint();
-				const representation = reader.representation();
-				return [TokenType.OpenCurly, reader.representationString(), representation[0], representation[1], undefined];
+				return [TokenType.OpenCurly, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case RIGHT_CURLY_BRACKET: {
 				reader.readCodePoint();
-				const representation = reader.representation();
-				return [TokenType.CloseCurly, reader.representationString(), representation[0], representation[1], undefined];
+				return [TokenType.CloseCurly, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
-		}
-
-		switch (peeked) {
 			case APOSTROPHE:
 			case QUOTATION_MARK:
 				return consumeStringToken(ctx, reader);
@@ -116,8 +102,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 				}
 
 				reader.readCodePoint();
-				const representation = reader.representation();
-				return [TokenType.Delim, reader.representationString(), representation[0], representation[1], {
+				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
 					value: String.fromCharCode(peeked),
 				}];
 			}
@@ -128,12 +113,9 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 				}
 
 				if (checkIfThreeCodePointsWouldStartCDC(ctx, reader)) {
-					reader.readCodePoint();
-					reader.readCodePoint();
-					reader.readCodePoint();
+					reader.readCodePoint(3);
 
-					const representation = reader.representation();
-					return [TokenType.CDC, reader.representationString(), representation[0], representation[1], undefined];
+					return [TokenType.CDC, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 				}
 
 				if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
@@ -141,26 +123,20 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 				}
 
 				reader.readCodePoint();
-				const representation = reader.representation();
-				return [TokenType.Delim, reader.representationString(), representation[0], representation[1], {
+				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
 					value: '-',
 				}];
 			}
 
 			case LESS_THAN_SIGN: {
 				if (checkIfFourCodePointsWouldStartCDO(ctx, reader)) {
-					reader.readCodePoint();
-					reader.readCodePoint();
-					reader.readCodePoint();
-					reader.readCodePoint();
+					reader.readCodePoint(4);
 
-					const representation = reader.representation();
-					return [TokenType.CDO, reader.representationString(), representation[0], representation[1], undefined];
+					return [TokenType.CDO, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 				}
 
 				reader.readCodePoint();
-				const representation = reader.representation();
-				return [TokenType.Delim, reader.representationString(), representation[0], representation[1], {
+				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
 					value: '<',
 				}];
 			}
@@ -170,14 +146,12 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 				if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 					const identSequence = consumeIdentSequence(ctx, reader);
 
-					const representation = reader.representation();
-					return [TokenType.AtKeyword, reader.representationString(), representation[0], representation[1], {
-						value: codePointsToString(identSequence),
+					return [TokenType.AtKeyword, reader.representationString(), reader.representationStart, reader.representationEnd, {
+						value: String.fromCharCode(...identSequence),
 					}];
 				}
 
-				const representation = reader.representation();
-				return [TokenType.Delim, reader.representationString(), representation[0], representation[1], {
+				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
 					value: '@',
 				}];
 			}
@@ -189,11 +163,10 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 
 				reader.readCodePoint();
 
-				const representation = reader.representation();
 				ctx.onParseError({
 					message: 'Invalid escape sequence after "\\"',
-					start: representation[0],
-					end: representation[1],
+					start: reader.representationStart,
+					end: reader.representationEnd,
 					state: [
 						'4.3.1. Consume a token',
 						'U+005C REVERSE SOLIDUS (\\)',
@@ -201,7 +174,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					],
 				});
 
-				return [TokenType.Delim, reader.representationString(), representation[0], representation[1], {
+				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
 					value: '\\',
 				}];
 			}
@@ -220,8 +193,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 		}
 
 		reader.readCodePoint();
-		const representation = reader.representation();
-		return [TokenType.Delim, reader.representationString(), representation[0], representation[1], {
+		return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
 			value: String.fromCharCode(peeked),
 		}];
 	}
