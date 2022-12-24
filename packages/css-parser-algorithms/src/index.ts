@@ -10,7 +10,5 @@ export {
 	isFunctionNode,
 	isSimpleBlockNode,
 	isTokenNode,
-	isUnclosedFunctionNode,
-	isUnclosedSimpleBlockNode,
 	isWhitespaceNode,
 } from './util/type-predicates';

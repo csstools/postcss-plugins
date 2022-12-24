@@ -259,3 +259,49 @@ url( 'mix-quoted" ' )\
 		],
 	);
 }
+
+{
+	const t1 = tokenizer({
+		css: 'background-image:url(foo)',
+	});
+
+	const t2 = tokenizer({
+		css: 'background-image:url(foo',
+	});
+
+	assert.deepEqual(
+		collectTokens(t1).map((x) => {
+			x[1] = '';
+			x[3] = 0;
+			return x;
+		}),
+		collectTokens(t2).map((x) => {
+			x[1] = '';
+			x[3] = 0;
+			return x;
+		}),
+	);
+}
+
+{
+	const t1 = tokenizer({
+		css: 'background-image:url()',
+	});
+
+	const t2 = tokenizer({
+		css: 'background-image:url(',
+	});
+
+	assert.deepEqual(
+		collectTokens(t1).map((x) => {
+			x[1] = '';
+			x[3] = 0;
+			return x;
+		}),
+		collectTokens(t2).map((x) => {
+			x[1] = '';
+			x[3] = 0;
+			return x;
+		}),
+	);
+}

@@ -42,7 +42,7 @@ import { parse } from '@csstools/media-query-list-parser';
 
 	assert.equal(
 		resultAST.length,
-		0,
+		1,
 	);
 }
 
@@ -56,7 +56,41 @@ import { parse } from '@csstools/media-query-list-parser';
 
 	assert.equal(
 		resultAST.length,
-		0,
+		1,
+	);
+
+	assert.deepEqual(
+		error,
+		{
+			message: 'Unexpected EOF while consuming a simple block.',
+			start: 0,
+			end: -1,
+			state: ['5.4.8. Consume a simple block', 'Unexpected EOF'],
+		},
+	);
+}
+
+
+{
+	const resultAST = parse('(foo');
+
+	assert.equal(
+		resultAST.length,
+		1,
+	);
+}
+
+{
+	let error;
+	const resultAST = parse('(foo', {
+		onParseError: (err) => {
+			error = err;
+		},
+	});
+
+	assert.equal(
+		resultAST.length,
+		1,
 	);
 
 	assert.deepEqual(

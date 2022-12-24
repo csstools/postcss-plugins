@@ -2,7 +2,7 @@ import { CSSToken, TokenFunction } from '@csstools/css-tokenizer';
 import { Context } from '../interfaces/context';
 import { ComponentValueType } from '../util/component-value-type';
 export type ContainerNode = FunctionNode | SimpleBlockNode;
-export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode | UnclosedSimpleBlockNode | UnclosedFunctionNode;
+export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode | UnclosedFunctionNode;
 export declare function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): {
     advance: number;
     node: ComponentValue;
@@ -28,7 +28,7 @@ export declare class FunctionNode {
 }
 export declare function consumeFunction(ctx: Context, tokens: Array<CSSToken>): {
     advance: number;
-    node: FunctionNode | UnclosedFunctionNode;
+    node: FunctionNode;
 };
 export declare class SimpleBlockNode {
     type: ComponentValueType;
@@ -51,7 +51,7 @@ export declare class SimpleBlockNode {
 /** https://www.w3.org/TR/css-syntax-3/#consume-simple-block */
 export declare function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): {
     advance: number;
-    node: SimpleBlockNode | UnclosedSimpleBlockNode;
+    node: SimpleBlockNode;
 };
 export declare class WhitespaceNode {
     type: ComponentValueType;
@@ -116,17 +116,4 @@ export declare class UnclosedFunctionNode {
     };
     isUnclosedFunctionNode(): this is UnclosedFunctionNode;
     static isUnclosedFunctionNode(x: unknown): x is UnclosedFunctionNode;
-}
-export declare class UnclosedSimpleBlockNode {
-    type: ComponentValueType;
-    value: Array<CSSToken>;
-    constructor(value: Array<CSSToken>);
-    tokens(): Array<CSSToken>;
-    toString(): string;
-    toJSON(): {
-        type: ComponentValueType;
-        tokens: CSSToken[];
-    };
-    isUnclosedSimpleBlockNode(): this is UnclosedSimpleBlockNode;
-    static isUnclosedSimpleBlockNode(x: unknown): x is UnclosedSimpleBlockNode;
 }

@@ -4,7 +4,7 @@ import { ComponentValueType } from '../util/component-value-type';
 
 export type ContainerNode = FunctionNode | SimpleBlockNode;
 
-export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode | UnclosedSimpleBlockNode | UnclosedFunctionNode;
+export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode | UnclosedFunctionNode;
 
 // https://www.w3.org/TR/css-syntax-3/#consume-a-component-value
 export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: ComponentValue } {
@@ -69,6 +69,19 @@ export class FunctionNode {
 	}
 
 	tokens(): Array<CSSToken> {
+		if (this.endToken[0] === TokenType.EOF) {
+			return [
+				this.name,
+				...this.value.flatMap((x) => {
+					if (isToken(x)) {
+						return x;
+					}
+
+					return x.tokens();
+				}),
+			];
+		}
+
 		return [
 			this.name,
 			...this.value.flatMap((x) => {
@@ -160,7 +173,7 @@ export class FunctionNode {
 }
 
 // https://www.w3.org/TR/css-syntax-3/#consume-function
-export function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: FunctionNode | UnclosedFunctionNode } {
+export function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: FunctionNode } {
 	const value: Array<ComponentValue> = [];
 
 	let i = 1;
@@ -181,7 +194,7 @@ export function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advanc
 
 			return {
 				advance: tokens.length,
-				node: new UnclosedFunctionNode(tokens),
+				node: new FunctionNode(tokens[0] as TokenFunction, token, value),
 			};
 		}
 
@@ -219,6 +232,19 @@ export class SimpleBlockNode {
 	}
 
 	tokens(): Array<CSSToken> {
+		if (this.endToken[0] === TokenType.EOF) {
+			return [
+				this.startToken,
+				...this.value.flatMap((x) => {
+					if (isToken(x)) {
+						return x;
+					}
+
+					return x.tokens();
+				}),
+			];
+		}
+
 		return [
 			this.startToken,
 			...this.value.flatMap((x) => {
@@ -310,7 +336,7 @@ export class SimpleBlockNode {
 }
 
 /** https://www.w3.org/TR/css-syntax-3/#consume-simple-block */
-export function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: SimpleBlockNode | UnclosedSimpleBlockNode } {
+export function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: SimpleBlockNode } {
 	const endingTokenType = mirrorVariantType(tokens[0][0]);
 	if (!endingTokenType) {
 		throw new Error('Failed to parse, a mirror variant must exist for all block open tokens.');
@@ -336,7 +362,7 @@ export function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { adv
 
 			return {
 				advance: tokens.length,
-				node: new UnclosedSimpleBlockNode(tokens),
+				node: new SimpleBlockNode(tokens[0], token, value),
 			};
 		}
 
@@ -576,46 +602,5 @@ export class UnclosedFunctionNode {
 		}
 
 		return x.type === ComponentValueType.UnclosedFunction;
-	}
-}
-
-export class UnclosedSimpleBlockNode {
-	type: ComponentValueType = ComponentValueType.UnclosedSimpleBlock;
-
-	value: Array<CSSToken>;
-
-	constructor(value: Array<CSSToken>) {
-		this.value = value;
-	}
-
-	tokens(): Array<CSSToken> {
-		return this.value;
-	}
-
-	toString(): string {
-		return stringify(...this.value);
-	}
-
-	toJSON() {
-		return {
-			type: this.type,
-			tokens: this.tokens(),
-		};
-	}
-
-	isUnclosedSimpleBlockNode(): this is UnclosedSimpleBlockNode {
-		return UnclosedSimpleBlockNode.isUnclosedSimpleBlockNode(this);
-	}
-
-	static isUnclosedSimpleBlockNode(x: unknown): x is UnclosedSimpleBlockNode {
-		if (!x) {
-			return false;
-		}
-
-		if (!(x instanceof UnclosedSimpleBlockNode)) {
-			return false;
-		}
-
-		return x.type === ComponentValueType.UnclosedSimpleBlock;
 	}
 }

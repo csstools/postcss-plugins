@@ -1,4 +1,4 @@
-import { CommentNode, FunctionNode, SimpleBlockNode, TokenNode, UnclosedFunctionNode, UnclosedSimpleBlockNode, WhitespaceNode } from '../consume/consume-component-block-function';
+import { CommentNode, FunctionNode, SimpleBlockNode, TokenNode, WhitespaceNode } from '../consume/consume-component-block-function';
 
 export function isSimpleBlockNode(x: unknown): x is SimpleBlockNode {
 	return SimpleBlockNode.isSimpleBlockNode(x);
@@ -6,14 +6,6 @@ export function isSimpleBlockNode(x: unknown): x is SimpleBlockNode {
 
 export function isFunctionNode(x: unknown): x is FunctionNode {
 	return FunctionNode.isFunctionNode(x);
-}
-
-export function isUnclosedSimpleBlockNode(x: unknown): x is UnclosedSimpleBlockNode {
-	return UnclosedSimpleBlockNode.isUnclosedSimpleBlockNode(x);
-}
-
-export function isUnclosedFunctionNode(x: unknown): x is UnclosedFunctionNode {
-	return UnclosedFunctionNode.isUnclosedFunctionNode(x);
 }
 
 export function isWhitespaceNode(x: unknown): x is WhitespaceNode {

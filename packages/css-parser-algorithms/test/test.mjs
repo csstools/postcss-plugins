@@ -36,3 +36,5 @@ import './cases/various/0017.mjs';
 import './cases/various/0018.mjs';
 import './cases/various/0019.mjs';
 import './cases/various/0020.mjs';
+
+import './cases/wpt/0001.mjs';

@@ -5,4 +5,4 @@ export { parseCommaSeparatedListOfComponentValues } from './parse/parse-comma-se
 export { gatherNodeAncestry } from './util/node-ancestry';
 export { ParserError } from './interfaces/error';
 export { ComponentValueType } from './util/component-value-type';
-export { isCommentNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isUnclosedFunctionNode, isUnclosedSimpleBlockNode, isWhitespaceNode, } from './util/type-predicates';
+export { isCommentNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode, } from './util/type-predicates';
