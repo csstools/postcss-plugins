@@ -17,7 +17,9 @@ import './complex/parse-error.mjs';
 
 // Community
 import './community/bootstrap.mjs';
+import './community/open-props.mjs';
 import './community/postcss-parser-tests.mjs';
+import './community/token-types.mjs';
 
 // Stringify
 import './test-stringify.mjs';
