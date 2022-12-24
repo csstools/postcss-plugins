@@ -11,51 +11,9 @@ import { consumeUrlToken } from './url-token';
 export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): TokenIdent | TokenFunction | TokenURL | TokenBadURL {
 	const codePoints = consumeIdentSequence(ctx, reader);
 
-	if (reader.peekedOne === LEFT_PARENTHESIS) {
-		if (checkIfCodePointsMatchURLIdent(ctx, codePoints)) {
-			reader.readCodePoint();
-
-			let read = 0;
-			// eslint-disable-next-line no-constant-condition
-			while (true) {
-				const firstIsWhitespace = isWhitespace(reader.peekedOne);
-				const secondIsWhitespace = isWhitespace(reader.peekedTwo);
-				if (firstIsWhitespace && secondIsWhitespace) {
-					read += 2;
-					reader.readCodePoint(2);
-					continue;
-				}
-
-				const firstNonWhitespace = firstIsWhitespace ? reader.peekedTwo : reader.peekedOne;
-				if (firstNonWhitespace === QUOTATION_MARK || firstNonWhitespace === APOSTROPHE) {
-					for (let i = 0; i < read; i++) {
-						reader.unreadCodePoint();
-					}
-
-					return [
-						TokenType.Function,
-						reader.representationString(),
-						reader.representationStart,
-						reader.representationEnd,
-						{
-							value: String.fromCharCode(...codePoints),
-						},
-					];
-				}
-
-				break;
-			}
-
-			for (let i = 0; i < read; i++) {
-				reader.unreadCodePoint();
-			}
-
-			return consumeUrlToken(ctx, reader);
-		}
-
-		reader.readCodePoint();
+	if (reader.codePointSource[reader.cursor] !== LEFT_PARENTHESIS) {
 		return [
-			TokenType.Function,
+			TokenType.Ident,
 			reader.representationString(),
 			reader.representationStart,
 			reader.representationEnd,
@@ -65,8 +23,50 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 		];
 	}
 
+	if (checkIfCodePointsMatchURLIdent(ctx, codePoints)) {
+		reader.readCodePoint();
+
+		let read = 0;
+		// eslint-disable-next-line no-constant-condition
+		while (true) {
+			const firstIsWhitespace = isWhitespace(reader.codePointSource[reader.cursor]);
+			const secondIsWhitespace = isWhitespace(reader.codePointSource[reader.cursor+1]);
+			if (firstIsWhitespace && secondIsWhitespace) {
+				read += 2;
+				reader.readCodePoint(2);
+				continue;
+			}
+
+			const firstNonWhitespace = firstIsWhitespace ? reader.codePointSource[reader.cursor+1] : reader.codePointSource[reader.cursor];
+			if (firstNonWhitespace === QUOTATION_MARK || firstNonWhitespace === APOSTROPHE) {
+				if (read > 0) {
+					reader.unreadCodePoint(read);
+				}
+
+				return [
+					TokenType.Function,
+					reader.representationString(),
+					reader.representationStart,
+					reader.representationEnd,
+					{
+						value: String.fromCharCode(...codePoints),
+					},
+				];
+			}
+
+			break;
+		}
+
+		if (read > 0) {
+			reader.unreadCodePoint(read);
+		}
+
+		return consumeUrlToken(ctx, reader);
+	}
+
+	reader.readCodePoint();
 	return [
-		TokenType.Ident,
+		TokenType.Function,
 		reader.representationString(),
 		reader.representationStart,
 		reader.representationEnd,

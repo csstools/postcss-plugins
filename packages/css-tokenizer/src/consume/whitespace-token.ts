@@ -19,7 +19,7 @@ export function consumeWhiteSpace(ctx: Context, reader: CodePointReader, max = -
 		}
 
 		current++;
-		if (reader.peekedOne === undefined) {
+		if (reader.codePointSource[reader.cursor] === undefined) {
 			return [
 				TokenType.Whitespace,
 				reader.representationString(),
@@ -29,7 +29,7 @@ export function consumeWhiteSpace(ctx: Context, reader: CodePointReader, max = -
 			];
 		}
 
-		if (!isWhitespace(reader.peekedOne)) {
+		if (!isWhitespace(reader.codePointSource[reader.cursor])) {
 			break;
 		}
 

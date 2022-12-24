@@ -8,15 +8,13 @@ export type CodePointReader = {
 	representationStart: number;
 	representationEnd: number;
 
-	peekedOne: number | undefined;
-	peekedTwo: number | undefined;
-	peekedThree: number | undefined;
-	peekedFour: number | undefined;
+	cursor: number;
+	codePointSource: Array<number> ;
 
 	cursorPositionOfLastReadCodePoint(): number;
 
 	readCodePoint(n?: number): number | false
-	unreadCodePoint(): boolean
+	unreadCodePoint(n?: number): boolean
 
 	representationString(): string
 	resetRepresentation()

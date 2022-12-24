@@ -4,5 +4,5 @@ import { Context } from '../interfaces/context';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-token
 export function checkIfFourCodePointsWouldStartCDO(ctx: Context, reader: CodePointReader): boolean {
-	return reader.peekedOne === LESS_THAN_SIGN && reader.peekedTwo === EXCLAMATION_MARK && reader.peekedThree === HYPHEN_MINUS && reader.peekedFour === HYPHEN_MINUS;
+	return reader.codePointSource[reader.cursor] === LESS_THAN_SIGN && reader.codePointSource[reader.cursor+1] === EXCLAMATION_MARK && reader.codePointSource[reader.cursor + 2] === HYPHEN_MINUS && reader.codePointSource[reader.cursor+3] === HYPHEN_MINUS;
 }

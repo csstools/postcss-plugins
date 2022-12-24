@@ -7,19 +7,19 @@ import { checkIfTwoCodePointsAreAValidEscape } from './two-code-points-are-valid
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#would-start-an-identifier
 export function checkIfThreeCodePointsWouldStartAnIdentSequence(ctx: Context, reader: CodePointReader): boolean {
 	// // U+002D HYPHEN-MINUS
-	if (reader.peekedOne === HYPHEN_MINUS) {
+	if (reader.codePointSource[reader.cursor] === HYPHEN_MINUS) {
 		// If the second code point is a U+002D HYPHEN-MINUS return true
-		if (reader.peekedTwo === HYPHEN_MINUS) {
+		if (reader.codePointSource[reader.cursor+1] === HYPHEN_MINUS) {
 			return true;
 		}
 
 		// If the second code point is an ident-start code point return true
-		if (isIdentStartCodePoint(reader.peekedTwo)) {
+		if (isIdentStartCodePoint(reader.codePointSource[reader.cursor+1])) {
 			return true;
 		}
 
 		// If the second and third code points are a valid escape return true
-		if (reader.peekedTwo === REVERSE_SOLIDUS && reader.peekedThree !== LINE_FEED) {
+		if (reader.codePointSource[reader.cursor+1] === REVERSE_SOLIDUS && reader.codePointSource[reader.cursor + 2] !== LINE_FEED) {
 			return true;
 		}
 
@@ -28,18 +28,10 @@ export function checkIfThreeCodePointsWouldStartAnIdentSequence(ctx: Context, re
 
 	// ident-start code point
 	// Return true.
-	if (isIdentStartCodePoint(reader.peekedOne)) {
+	if (isIdentStartCodePoint(reader.codePointSource[reader.cursor])) {
 		return true;
 	}
 
 	// U+005C REVERSE SOLIDUS (\)
-	if (reader.peekedOne === REVERSE_SOLIDUS) {
-		// If the first and second code points are a valid escape, return true.
-		// Otherwise, return false.
-		return checkIfTwoCodePointsAreAValidEscape(ctx, reader);
-	}
-
-	// anything else
-	// Return false.
-	return false;
+	return checkIfTwoCodePointsAreAValidEscape(ctx, reader);
 }

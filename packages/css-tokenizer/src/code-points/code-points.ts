@@ -76,3 +76,23 @@ export const SHIFT_OUT = '\u{e}'.charCodeAt(0);
 export const SOLIDUS = '\u{2f}'.charCodeAt(0);
 /** \u20 */
 export const SPACE = '\u{20}'.charCodeAt(0);
+/** 0 */
+export const DIGIT_0 = '\u{30}'.charCodeAt(0);
+/** 1 */
+export const DIGIT_1 = '\u{31}'.charCodeAt(0);
+/** 2 */
+export const DIGIT_2 = '\u{32}'.charCodeAt(0);
+/** 3 */
+export const DIGIT_3 = '\u{33}'.charCodeAt(0);
+/** 4 */
+export const DIGIT_4 = '\u{34}'.charCodeAt(0);
+/** 5 */
+export const DIGIT_5 = '\u{35}'.charCodeAt(0);
+/** 6 */
+export const DIGIT_6 = '\u{36}'.charCodeAt(0);
+/** 7 */
+export const DIGIT_7 = '\u{37}'.charCodeAt(0);
+/** 8 */
+export const DIGIT_8 = '\u{38}'.charCodeAt(0);
+/** 9 */
+export const DIGIT_9 = '\u{39}'.charCodeAt(0);

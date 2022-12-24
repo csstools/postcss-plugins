@@ -1,5 +1,4 @@
 import { checkIfTwoCodePointsAreAValidEscape } from '../checks/two-code-points-are-valid-escape';
-import { REVERSE_SOLIDUS } from '../code-points/code-points';
 import { isIdentCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
@@ -11,17 +10,17 @@ export function consumeIdentSequence(ctx: Context, reader: CodePointReader): Arr
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		if (reader.peekedOne === undefined) {
+		if (reader.codePointSource[reader.cursor] === undefined) {
 			return result;
 		}
 
-		if (isIdentCodePoint(reader.peekedOne)) {
-			result.push(reader.peekedOne);
+		if (isIdentCodePoint(reader.codePointSource[reader.cursor])) {
+			result.push(reader.codePointSource[reader.cursor]);
 			reader.readCodePoint();
 			continue;
 		}
 
-		if (reader.peekedOne === REVERSE_SOLIDUS && checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
+		if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
 			reader.readCodePoint();
 			result.push(consumeEscapedCodePoint(ctx, reader));
 			continue;

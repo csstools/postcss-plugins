@@ -8,11 +8,11 @@ import { consumeEscapedCodePoint } from './escaped-code-point';
 export function consumeBadURL(ctx: Context, reader: CodePointReader) {
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		if (reader.peekedOne === undefined) {
+		if (reader.codePointSource[reader.cursor] === undefined) {
 			return;
 		}
 
-		if (reader.peekedOne === RIGHT_PARENTHESIS) {
+		if (reader.codePointSource[reader.cursor] === RIGHT_PARENTHESIS) {
 			reader.readCodePoint();
 			return;
 		}

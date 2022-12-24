@@ -9,10 +9,6 @@ export class Reader implements CodePointReader {
 	representationStart = 0;
 	representationEnd = -1;
 
-	peekedOne: number | undefined;
-	peekedTwo: number | undefined;
-	peekedThree: number | undefined;
-
 	constructor(source: string) {
 		this.cursor = 0;
 		this.stringSource = source;
@@ -22,13 +18,7 @@ export class Reader implements CodePointReader {
 		for (let i = 0; i < this.length; i++) {
 			this.codePointSource[i] = this.stringSource.charCodeAt(i);
 		}
-
-		this.peekedOne = this.codePointSource[this.cursor];
-		this.peekedTwo = this.codePointSource[this.cursor + 1];
-		this.peekedThree = this.codePointSource[this.cursor + 2];
-		this.peekedFour = this.codePointSource[this.cursor + 3];
 	}
-	peekedFour: number;
 
 	cursorPositionOfLastReadCodePoint(): number {
 		return this.cursor - 1;
@@ -36,33 +26,23 @@ export class Reader implements CodePointReader {
 
 	readCodePoint(n = 1): number | false {
 		const codePoint = this.codePointSource[this.cursor];
-		if (typeof codePoint === 'undefined') {
+		if (codePoint === undefined) {
 			return false;
 		}
 
 		this.cursor += n;
 		this.representationEnd = this.cursor - 1;
 
-		this.peekedOne = this.codePointSource[this.cursor];
-		this.peekedTwo = this.codePointSource[this.cursor + 1];
-		this.peekedThree = this.codePointSource[this.cursor + 2];
-		this.peekedFour = this.codePointSource[this.cursor + 3];
-
 		return codePoint;
 	}
 
-	unreadCodePoint(): boolean {
+	unreadCodePoint(n = 1): boolean {
 		if (this.cursor === 0) {
 			return false;
 		}
 
+		this.cursor -= n;
 		this.representationEnd = this.cursor - 1;
-		this.cursor -= 1;
-
-		this.peekedOne = this.codePointSource[this.cursor];
-		this.peekedTwo = this.codePointSource[this.cursor + 1];
-		this.peekedThree = this.codePointSource[this.cursor + 2];
-		this.peekedFour = this.codePointSource[this.cursor + 3];
 
 		return true;
 	}

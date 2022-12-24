@@ -23,12 +23,12 @@ export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): 
 	if (isHexDigitCodePoint(codePoint)) {
 		const hexSequence: Array<number> = [codePoint];
 
-		while ((typeof reader.peekedOne !== 'undefined') && isHexDigitCodePoint(reader.peekedOne) && hexSequence.length < 6) {
-			hexSequence.push(reader.peekedOne);
+		while ((reader.codePointSource[reader.cursor] !== undefined) && isHexDigitCodePoint(reader.codePointSource[reader.cursor]) && hexSequence.length < 6) {
+			hexSequence.push(reader.codePointSource[reader.cursor]);
 			reader.readCodePoint();
 		}
 
-		if (isWhitespace(reader.peekedOne)) {
+		if (isWhitespace(reader.codePointSource[reader.cursor])) {
 			reader.readCodePoint();
 		}
 

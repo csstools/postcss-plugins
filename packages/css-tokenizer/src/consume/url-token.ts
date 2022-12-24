@@ -15,7 +15,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		if (reader.peekedOne === undefined) {
+		if (reader.codePointSource[reader.cursor] === undefined) {
 			ctx.onParseError({
 				message: 'Unexpected EOF while consuming a url token.',
 				start: reader.representationStart,
@@ -37,7 +37,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			];
 		}
 
-		if (reader.peekedOne === RIGHT_PARENTHESIS) {
+		if (reader.codePointSource[reader.cursor] === RIGHT_PARENTHESIS) {
 			reader.readCodePoint();
 			return [
 				TokenType.URL,
@@ -50,9 +50,9 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			];
 		}
 
-		if (isWhitespace(reader.peekedOne)) {
+		if (isWhitespace(reader.codePointSource[reader.cursor])) {
 			consumeWhiteSpace(ctx, reader);
-			if (reader.peekedOne === undefined) {
+			if (reader.codePointSource[reader.cursor] === undefined) {
 				ctx.onParseError({
 					message: 'Unexpected EOF while consuming a url token.',
 					start: reader.representationStart,
@@ -75,7 +75,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 				];
 			}
 
-			if (reader.peekedOne === RIGHT_PARENTHESIS) {
+			if (reader.codePointSource[reader.cursor] === RIGHT_PARENTHESIS) {
 				reader.readCodePoint();
 				return [
 					TokenType.URL,
@@ -98,7 +98,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			];
 		}
 
-		if (reader.peekedOne === QUOTATION_MARK || reader.peekedOne === APOSTROPHE || reader.peekedOne === LEFT_PARENTHESIS || isNonPrintableCodePoint(reader.peekedOne)) {
+		if (reader.codePointSource[reader.cursor] === QUOTATION_MARK || reader.codePointSource[reader.cursor] === APOSTROPHE || reader.codePointSource[reader.cursor] === LEFT_PARENTHESIS || isNonPrintableCodePoint(reader.codePointSource[reader.cursor])) {
 			consumeBadURL(ctx, reader);
 
 			ctx.onParseError({
@@ -120,7 +120,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			];
 		}
 
-		if (reader.peekedOne === REVERSE_SOLIDUS) {
+		if (reader.codePointSource[reader.cursor] === REVERSE_SOLIDUS) {
 			if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
 				string += String.fromCharCode(consumeEscapedCodePoint(ctx, reader));
 				continue;
@@ -148,7 +148,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			];
 		}
 
-		string += String.fromCharCode(reader.peekedOne);
+		string += String.fromCharCode(reader.codePointSource[reader.cursor]);
 		reader.readCodePoint();
 	}
 }

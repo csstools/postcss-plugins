@@ -6,11 +6,7 @@ const digitsHigh = '\u{39}'.charCodeAt(0);
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#digit
 export function isDigitCodePoint(search: number): boolean {
-	if (digitsLow <= search && search <= digitsHigh) {
-		return true;
-	}
-
-	return false;
+	return digitsLow <= search && search <= digitsHigh;
 }
 
 const letterUppercaseLow = '\u{41}'.charCodeAt(0);
@@ -18,11 +14,7 @@ const letterUppercaseHigh = '\u{5a}'.charCodeAt(0);
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#uppercase-letter
 export function isUppercaseLetterCodePoint(search: number): boolean {
-	if (letterUppercaseLow <= search && search <= letterUppercaseHigh) {
-		return true;
-	}
-
-	return false;
+	return letterUppercaseLow <= search && search <= letterUppercaseHigh;
 }
 
 const letterLowercaseLow = '\u{61}'.charCodeAt(0);
@@ -30,11 +22,7 @@ const letterLowercaseHigh = '\u{7a}'.charCodeAt(0);
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#lowercase-letter
 export function isLowercaseLetterCodePoint(search: number): boolean {
-	if (letterLowercaseLow <= search && search <= letterLowercaseHigh) {
-		return true;
-	}
-
-	return false;
+	return letterLowercaseLow <= search && search <= letterLowercaseHigh;
 }
 
 const afUppercaseHigh = '\u{46}'.charCodeAt(0);
@@ -42,15 +30,15 @@ const afLowercaseHigh = '\u{66}'.charCodeAt(0);
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#hex-digit
 export function isHexDigitCodePoint(search: number): boolean {
-	if (isDigitCodePoint(search)) {
-		return true;
-	}
-
-	if (letterUppercaseLow <= search && search <= afUppercaseHigh) {
+	if (digitsLow <= search && search <= digitsHigh) {
 		return true;
 	}
 
 	if (letterLowercaseLow <= search && search <= afLowercaseHigh) {
+		return true;
+	}
+
+	if (letterUppercaseLow <= search && search <= afUppercaseHigh) {
 		return true;
 	}
 
@@ -59,11 +47,7 @@ export function isHexDigitCodePoint(search: number): boolean {
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#letter
 export function isLetterCodePoint(search: number): boolean {
-	if (isUppercaseLetterCodePoint(search) || isLowercaseLetterCodePoint(search)) {
-		return true;
-	}
-
-	return false;
+	return isLowercaseLetterCodePoint(search) || isUppercaseLetterCodePoint(search);
 }
 
 const nonASCIILow = '\u{80}'.charCodeAt(0);
@@ -113,11 +97,7 @@ export function isNonPrintableCodePoint(search: number): boolean {
 		return true;
 	}
 
-	if (SHIFT_OUT <= search && search <= INFORMATION_SEPARATOR_ONE) {
-		return true;
-	}
-
-	return false;
+	return SHIFT_OUT <= search && search <= INFORMATION_SEPARATOR_ONE;
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#whitespace
@@ -138,17 +118,16 @@ export function isNewLine(search: number): boolean {
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#whitespace
 export function isWhitespace(search: number): boolean {
+	// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#input-preprocessing
+	// We can not follow the preprocessing rules because our output is text and must be minimally different from the input.
+	// Applying the preprocessing rules would make it impossible to match the input.
+	// A side effect of this is that our definition of whitespace is broader.
+
 	switch (search) {
 		case LINE_FEED:
 		case CARRIAGE_RETURN:
 		case FORM_FEED:
-			// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#input-preprocessing
-			// We can not follow the preprocessing rules because our output is text and must be minimally different from the input.
-			// Applying the preprocessing rules would make it impossible to match the input.
-			// A side effect of this is that our definition of whitespace is broader.
-			return true;
 		case CHARACTER_TABULATION:
-			return true;
 		case SPACE:
 			return true;
 
@@ -162,9 +141,5 @@ const surrogateHigh = '\u{dfff}'.charCodeAt(0);
 
 // https://infra.spec.whatwg.org/#surrogate
 export function isSurrogate(search: number): boolean {
-	if (surrogateLow <= search && search <= surrogateHigh) {
-		return true;
-	}
-
-	return false;
+	return surrogateLow <= search && search <= surrogateHigh;
 }

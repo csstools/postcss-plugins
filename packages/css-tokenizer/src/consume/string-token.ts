@@ -53,11 +53,11 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 		}
 
 		if (next === REVERSE_SOLIDUS) {
-			if (reader.peekedOne === undefined) {
+			if (reader.codePointSource[reader.cursor] === undefined) {
 				continue;
 			}
 
-			if (isNewLine(reader.peekedOne)) {
+			if (isNewLine(reader.codePointSource[reader.cursor])) {
 				reader.readCodePoint();
 				continue;
 			}

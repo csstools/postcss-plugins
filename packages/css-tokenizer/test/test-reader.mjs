@@ -5,7 +5,7 @@ import { Reader } from '@csstools/css-tokenizer';
 	const r = new Reader('abc👨‍👨‍👧‍👦d');
 
 	{
-		const peeked = r.peekedOne;
+		const peeked = r.codePointSource[r.cursor];
 		assert.deepEqual(
 			peeked,
 			97,
@@ -30,8 +30,8 @@ import { Reader } from '@csstools/css-tokenizer';
 
 	{
 		const peeked = [
-			r.peekedOne,
-			r.peekedTwo,
+			r.codePointSource[r.cursor],
+			r.codePointSource[r.cursor+1],
 		];
 		assert.deepEqual(
 			peeked,
@@ -62,9 +62,9 @@ import { Reader } from '@csstools/css-tokenizer';
 
 	{
 		const peeked = [
-			r.peekedOne,
-			r.peekedTwo,
-			r.peekedThree,
+			r.codePointSource[r.cursor],
+			r.codePointSource[r.cursor+1],
+			r.codePointSource[r.cursor+2],
 		];
 		assert.deepEqual(
 			peeked,

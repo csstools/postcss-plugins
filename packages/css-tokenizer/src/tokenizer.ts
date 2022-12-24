@@ -3,8 +3,8 @@ import { checkIfThreeCodePointsWouldStartAnIdentSequence } from './checks/three-
 import { checkIfThreeCodePointsWouldStartANumber } from './checks/three-code-points-would-start-number';
 import { checkIfTwoCodePointsStartAComment } from './checks/two-code-points-start-comment';
 import { checkIfThreeCodePointsWouldStartCDC } from './checks/three-code-points-would-start-cdc';
-import { APOSTROPHE, COLON, COMMA, COMMERCIAL_AT, FULL_STOP, HYPHEN_MINUS, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, NUMBER_SIGN, PLUS_SIGN, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON } from './code-points/code-points';
-import { isDigitCodePoint, isIdentStartCodePoint, isWhitespace } from './code-points/ranges';
+import { APOSTROPHE, CARRIAGE_RETURN, CHARACTER_TABULATION, COLON, COMMA, COMMERCIAL_AT, DIGIT_0, DIGIT_1, DIGIT_2, DIGIT_3, DIGIT_4, DIGIT_5, DIGIT_6, DIGIT_7, DIGIT_8, DIGIT_9, FORM_FEED, FULL_STOP, HYPHEN_MINUS, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, LINE_FEED, NUMBER_SIGN, PLUS_SIGN, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON, SPACE } from './code-points/code-points';
+import { isIdentStartCodePoint } from './code-points/ranges';
 import { consumeComment } from './consume/comment';
 import { consumeHashToken } from './consume/hash-token';
 import { consumeIdentSequence } from './consume/ident-sequence';
@@ -31,7 +31,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 	};
 
 	function endOfFile() {
-		return reader.peekedOne === undefined;
+		return reader.codePointSource[reader.cursor] === undefined;
 	}
 
 	function nextToken(): CSSToken | undefined {
@@ -42,13 +42,17 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 				return consumeComment(ctx, reader);
 			} else {
 				consumeComment(ctx, reader);
+				reader.resetRepresentation();
 			}
 		}
 
-		reader.resetRepresentation();
-		const peeked = reader.peekedOne;
+		const peeked = reader.codePointSource[reader.cursor];
 		if (peeked === undefined) {
 			return [TokenType.EOF, '', -1, -1, undefined];
+		}
+
+		if (isIdentStartCodePoint(peeked)) {
+			return consumeIdentLikeToken(ctx, reader);
 		}
 
 		// Simple, one character tokens:
@@ -106,6 +110,24 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					value: String.fromCharCode(peeked),
 				}];
 			}
+			case DIGIT_0:
+			case DIGIT_1:
+			case DIGIT_2:
+			case DIGIT_3:
+			case DIGIT_4:
+			case DIGIT_5:
+			case DIGIT_6:
+			case DIGIT_7:
+			case DIGIT_8:
+			case DIGIT_9:
+				return consumeNumericToken(ctx, reader);
+
+			case LINE_FEED:
+			case CARRIAGE_RETURN:
+			case FORM_FEED:
+			case CHARACTER_TABULATION:
+			case SPACE:
+				return consumeWhiteSpace(ctx, reader);
 
 			case HYPHEN_MINUS: {
 				if (checkIfThreeCodePointsWouldStartANumber(ctx, reader)) {
@@ -178,18 +200,6 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					value: '\\',
 				}];
 			}
-		}
-
-		if (isWhitespace(peeked)) {
-			return consumeWhiteSpace(ctx, reader);
-		}
-
-		if (isDigitCodePoint(peeked)) {
-			return consumeNumericToken(ctx, reader);
-		}
-
-		if (isIdentStartCodePoint(peeked)) {
-			return consumeIdentLikeToken(ctx, reader);
 		}
 
 		reader.readCodePoint();

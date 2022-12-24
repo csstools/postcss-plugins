@@ -13,8 +13,8 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 
 	{
 		// 2. If the next input code point is U+002B PLUS SIGN (+) or U+002D HYPHEN-MINUS (-), consume it and append it to repr.
-		if (reader.peekedOne === PLUS_SIGN || reader.peekedOne === HYPHEN_MINUS) {
-			repr.push(reader.peekedOne);
+		if (reader.codePointSource[reader.cursor] === PLUS_SIGN || reader.codePointSource[reader.cursor] === HYPHEN_MINUS) {
+			repr.push(reader.codePointSource[reader.cursor]);
 			reader.readCodePoint();
 		}
 
@@ -27,10 +27,10 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 
 	{
 		// 4. If the next 2 input code points are U+002E FULL STOP (.) followed by a digit, then:
-		if (reader.peekedOne === FULL_STOP && isDigitCodePoint(reader.peekedTwo)) {
+		if (reader.codePointSource[reader.cursor] === FULL_STOP && isDigitCodePoint(reader.codePointSource[reader.cursor+1])) {
 			// 4.2. Append them to repr.
-			repr.push(reader.peekedOne);
-			repr.push(reader.peekedTwo);
+			repr.push(reader.codePointSource[reader.cursor]);
+			repr.push(reader.codePointSource[reader.cursor+1]);
 
 			// 4.1. Consume them.
 			reader.readCodePoint(2);
@@ -51,12 +51,12 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 		// optionally followed by U+002D HYPHEN-MINUS (-) or U+002B PLUS SIGN (+),
 		// followed by a digit, then:
 		if (
-			(reader.peekedOne === LATIN_SMALL_LETTER_E || reader.peekedOne === LATIN_CAPITAL_LETTER_E) &&
-			isDigitCodePoint(reader.peekedTwo)
+			(reader.codePointSource[reader.cursor] === LATIN_SMALL_LETTER_E || reader.codePointSource[reader.cursor] === LATIN_CAPITAL_LETTER_E) &&
+			isDigitCodePoint(reader.codePointSource[reader.cursor+1])
 		) {
 			// 5.2. Append them to repr.
-			repr.push(reader.peekedOne);
-			repr.push(reader.peekedTwo);
+			repr.push(reader.codePointSource[reader.cursor]);
+			repr.push(reader.codePointSource[reader.cursor+1]);
 
 			// 5.1. Consume them.
 			reader.readCodePoint(2);
@@ -72,16 +72,16 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 		}
 
 		if (
-			(reader.peekedOne === LATIN_SMALL_LETTER_E || reader.peekedOne === LATIN_CAPITAL_LETTER_E) &&
+			(reader.codePointSource[reader.cursor] === LATIN_SMALL_LETTER_E || reader.codePointSource[reader.cursor] === LATIN_CAPITAL_LETTER_E) &&
 			(
-				(reader.peekedTwo === HYPHEN_MINUS || reader.peekedTwo === PLUS_SIGN) &&
-				isDigitCodePoint(reader.peekedThree)
+				(reader.codePointSource[reader.cursor+1] === HYPHEN_MINUS || reader.codePointSource[reader.cursor+1] === PLUS_SIGN) &&
+				isDigitCodePoint(reader.codePointSource[reader.cursor+2])
 			)
 		) {
 			// 5.2. Append them to repr.
-			repr.push(reader.peekedOne);
-			repr.push(reader.peekedTwo);
-			repr.push(reader.peekedThree);
+			repr.push(reader.codePointSource[reader.cursor]);
+			repr.push(reader.codePointSource[reader.cursor+1]);
+			repr.push(reader.codePointSource[reader.cursor+2]);
 
 			// 5.1. Consume them.
 			reader.readCodePoint(3);
@@ -109,12 +109,12 @@ function consumeDigits(reader: CodePointReader): Array<number> {
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		if (reader.peekedOne === undefined) {
+		if (reader.codePointSource[reader.cursor] === undefined) {
 			return value;
 		}
 
-		if (isDigitCodePoint(reader.peekedOne)) {
-			value.push(reader.peekedOne);
+		if (isDigitCodePoint(reader.codePointSource[reader.cursor])) {
+			value.push(reader.codePointSource[reader.cursor]);
 			reader.readCodePoint();
 		} else {
 			return value;
@@ -212,12 +212,5 @@ function digitCodePointsToInteger(codePoints: Array<number>): number {
 		return 0;
 	}
 
-	const stringValue = String.fromCharCode(...codePoints);
-
-	const integerValue = Number.parseInt(stringValue, 10);
-	if (Number.isNaN(integerValue)) {
-		throw new Error(`Unexpected "NaN" result when parsing a number from digit code points: "${stringValue}"`);
-	}
-
-	return integerValue;
+	return Number.parseInt(String.fromCharCode(...codePoints), 10);
 }

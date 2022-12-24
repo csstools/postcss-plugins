@@ -28,11 +28,11 @@ export function consumeComment(ctx: Context, reader: CodePointReader): TokenComm
 			continue;
 		}
 
-		if (reader.peekedOne === undefined) {
+		if (reader.codePointSource[reader.cursor] === undefined) {
 			continue;
 		}
 
-		if (reader.peekedOne === SOLIDUS) {
+		if (reader.codePointSource[reader.cursor] === SOLIDUS) {
 			reader.readCodePoint();
 			break;
 		}
