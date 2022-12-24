@@ -305,3 +305,18 @@ url( 'mix-quoted" ' )\
 		}),
 	);
 }
+
+{
+	const t = tokenizer({
+		css: 'url(foo())',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['bad-url-token', 'url(foo()', 0, 8, undefined],
+			[')-token', ')', 9, 9, undefined],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
