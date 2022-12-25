@@ -2,8 +2,33 @@ import { tokenizer, TokenType } from '@csstools/css-tokenizer';
 import postcssTokenizer from 'postcss/lib/tokenize';
 import fs from 'fs';
 
+function logResults(label, tokenStreamLength, results) {
+	console.log(`-------------- ${label} -------------`);
+	console.log('tokens', tokenStreamLength);
+	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
+	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
+	console.log('tokens/μs @ 5th ', (tokenStreamLength / results[49]) / 1000);
+	console.log('-----------------------------------------------');
+	console.log('95th', results[949]);
+	console.log('50th', results[499]);
+	console.log('5th ', results[49]);
+	console.log('deviation', results[949] - results[49]);
+}
+
 const bootstrapSource = fs.readFileSync('./test/community/bootstrap.css').toString();
 const openPropsSource = fs.readFileSync('./test/community/open-props.css').toString();
+
+const tinySources = [
+	'.foo',
+	'10px',
+	'-1276430.01',
+	'#bar',
+	'{ color: rgb(0, 0, 0) }',
+	'@media (min-width: 300px) {}',
+	'calc(10 + 2)',
+	'var(--foo)',
+	'--bar',
+];
 
 const smallSource = `
 /* a comment */
@@ -81,6 +106,8 @@ function csstoolsLargeSource() {
 		tokenStreamLength = 0;
 
 		{
+			const start = performance.now();
+
 			const t = tokenizer(
 				{
 					css: largeSource,
@@ -91,8 +118,6 @@ function csstoolsLargeSource() {
 					},
 				},
 			);
-
-			const start = performance.now();
 
 			// eslint-disable-next-line no-constant-condition
 			while (true) {
@@ -113,16 +138,7 @@ function csstoolsLargeSource() {
 		return a - b;
 	});
 
-	console.log('-------------- csstools tokenizer -------------');
-	console.log('tokens', tokenStreamLength);
-	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
-	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
-	console.log('tokens/μs @ 5th ', (tokenStreamLength / results[49]) / 1000);
-	console.log('-----------------------------------------------');
-	console.log('95th', results[949]);
-	console.log('50th', results[499]);
-	console.log('5th ', results[49]);
-	console.log('deviation', results[949] - results[49]);
+	logResults('csstools tokenizer', tokenStreamLength, results);
 }
 
 function csstoolsSmallSource() {
@@ -133,6 +149,8 @@ function csstoolsSmallSource() {
 		tokenStreamLength = 0;
 
 		{
+			const start = performance.now();
+
 			const t = tokenizer(
 				{
 					css: smallSource,
@@ -143,8 +161,6 @@ function csstoolsSmallSource() {
 					},
 				},
 			);
-
-			const start = performance.now();
 
 			// eslint-disable-next-line no-constant-condition
 			while (true) {
@@ -165,16 +181,52 @@ function csstoolsSmallSource() {
 		return a - b;
 	});
 
-	console.log('-------------- csstools tokenizer -------------');
-	console.log('tokens', tokenStreamLength);
-	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
-	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
-	console.log('tokens/μs @ 5th ', (tokenStreamLength / results[49]) / 1000);
-	console.log('-----------------------------------------------');
-	console.log('95th', results[949]);
-	console.log('50th', results[499]);
-	console.log('5th ', results[49]);
-	console.log('deviation', results[949] - results[49]);
+	logResults('csstools tokenizer', tokenStreamLength, results);
+}
+
+function csstoolsTinySource() {
+	const results = [];
+	let tokenStreamLength = 0;
+
+	for (let i = 0; i < 1000; i++) {
+		tokenStreamLength = 0;
+
+		for (let j = 0; j < tinySources.length; j++) {
+			const source = tinySources[j];
+
+			const start = performance.now();
+
+			const t = tokenizer(
+				{
+					css: source,
+				},
+				{
+					onParseError: () => {
+						// noop
+					},
+				},
+			);
+
+			// eslint-disable-next-line no-constant-condition
+			while (true) {
+				const token = t.nextToken();
+				if (token[0] === TokenType.EOF) {
+					break;
+				}
+
+				tokenStreamLength++;
+			}
+
+			const end = performance.now();
+			results.push(end - start);
+		}
+	}
+
+	results.sort((a, b) => {
+		return a - b;
+	});
+
+	logResults('csstools tokenizer', tokenStreamLength, results);
 }
 
 function postcssLargeSource() {
@@ -184,13 +236,13 @@ function postcssLargeSource() {
 	for (let i = 0; i < 1000; i++) {
 		tokenStreamLength = 0;
 		{
+			const start = performance.now();
+
 			const t = postcssTokenizer(
 				{
 					css: largeSource,
 				},
 			);
-
-			const start = performance.now();
 
 			// eslint-disable-next-line no-constant-condition
 			while (true) {
@@ -211,16 +263,7 @@ function postcssLargeSource() {
 		return a - b;
 	});
 
-	console.log('-------------- postcss tokenizer -------------');
-	console.log('tokens', tokenStreamLength);
-	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
-	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
-	console.log('tokens/μs @ 5th ', (tokenStreamLength / results[49]) / 1000);
-	console.log('-----------------------------------------------');
-	console.log('95th', results[949]);
-	console.log('50th', results[499]);
-	console.log('5th ', results[49]);
-	console.log('deviation', results[949] - results[49]);
+	logResults('postcss tokenizer', tokenStreamLength, results);
 }
 
 function postcssSmallSource() {
@@ -230,13 +273,13 @@ function postcssSmallSource() {
 	for (let i = 0; i < 1000; i++) {
 		tokenStreamLength = 0;
 		{
+			const start = performance.now();
+
 			const t = postcssTokenizer(
 				{
 					css: smallSource,
 				},
 			);
-
-			const start = performance.now();
 
 			// eslint-disable-next-line no-constant-condition
 			while (true) {
@@ -257,19 +300,54 @@ function postcssSmallSource() {
 		return a - b;
 	});
 
-	console.log('-------------- postcss tokenizer -------------');
-	console.log('tokens', tokenStreamLength);
-	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
-	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
-	console.log('tokens/μs @ 5th ', (tokenStreamLength / results[49]) / 1000);
-	console.log('-----------------------------------------------');
-	console.log('95th', results[949]);
-	console.log('50th', results[499]);
-	console.log('5th ', results[49]);
-	console.log('deviation', results[949] - results[49]);
+	logResults('postcss tokenizer', tokenStreamLength, results);
+}
+
+function postcssTinySource() {
+	const results = [];
+	let tokenStreamLength = 0;
+
+	for (let i = 0; i < 1000; i++) {
+		tokenStreamLength = 0;
+
+		for (let j = 0; j < tinySources.length; j++) {
+			const source = tinySources[j];
+
+			const start = performance.now();
+
+			const t = postcssTokenizer(
+				{
+					css: source,
+				},
+			);
+
+			// eslint-disable-next-line no-constant-condition
+			while (true) {
+				const token = t.nextToken();
+				if (!token) {
+					break;
+				}
+
+				tokenStreamLength++;
+			}
+
+			const end = performance.now();
+			results.push(end - start);
+		}
+	}
+
+	results.sort((a, b) => {
+		return a - b;
+	});
+
+	logResults('postcss tokenizer', tokenStreamLength, results);
 }
 
 await new Promise((resolve) => setTimeout(resolve(), 100));
+csstoolsTinySource();
+await new Promise((resolve) => setTimeout(resolve(), 1000));
+postcssTinySource();
+await new Promise((resolve) => setTimeout(resolve(), 1000));
 csstoolsSmallSource();
 await new Promise((resolve) => setTimeout(resolve(), 1000));
 postcssSmallSource();
@@ -280,42 +358,62 @@ postcssLargeSource();
 
 // Last result:
 // -------------- csstools tokenizer -------------
-// tokens 252
-// tokens/μs @ 95th 3.3863612154143867
-// tokens/μs @ 50th 17.530760432561532
-// tokens/μs @ 5th  21.52151425313569
+// tokens 43
+// tokens/μs @ 95th 147.10854159869496
+// tokens/μs @ 50th 171.76673523809524
+// tokens/μs @ 5th  206.82921100917432
 // -----------------------------------------------
-// 95th 0.0744161605834961
-// 50th 0.014374732971191406
-// 5th  0.011709213256835938
-// deviation 0.06270694732666016
+// 95th 0.0002923011779785156
+// 50th 0.0002503395080566406
+// 5th  0.0002079010009765625
+// deviation 0.00008440017700195312
+// -------------- postcss tokenizer -------------
+// tokens 24
+// tokens/μs @ 95th 191.3750874524715
+// tokens/μs @ 50th 192.10552671755724
+// tokens/μs @ 5th  289.2623448275862
+// -----------------------------------------------
+// 95th 0.00012540817260742188
+// 50th 0.00012493133544921875
+// 5th  0.00008296966552734375
+// deviation 0.000042438507080078125
+// -------------- csstools tokenizer -------------
+// tokens 252
+// tokens/μs @ 95th 2.4858291423249512
+// tokens/μs @ 50th 12.840642029302428
+// tokens/μs @ 5th  15.468529313625055
+// -----------------------------------------------
+// 95th 0.10137462615966797
+// 50th 0.019625186920166016
+// 5th  0.016291141510009766
+// deviation 0.0850834846496582
 // -------------- postcss tokenizer -------------
 // tokens 214
-// tokens/μs @ 95th 6.22542000277431
-// tokens/μs @ 50th 7.71170747130387
-// tokens/μs @ 5th  35.41871422934259
+// tokens/μs @ 95th 3.203975983951225
+// tokens/μs @ 50th 7.9627850463973315
+// tokens/μs @ 5th  25.67745325552123
 // -----------------------------------------------
-// 95th 0.03437519073486328
-// 50th 0.027750015258789062
-// 5th  0.006042003631591797
-// deviation 0.028333187103271484
+// 95th 0.06679201126098633
+// 50th 0.026875019073486328
+// 5th  0.008334159851074219
+// deviation 0.05845785140991211
 // -------------- csstools tokenizer -------------
 // tokens 87701
-// tokens/μs @ 95th 13.761066815747991
-// tokens/μs @ 50th 18.546012582330164
-// tokens/μs @ 5th  18.881747729614577
+// tokens/μs @ 95th 9.514877130822835
+// tokens/μs @ 50th 11.584315742427334
+// tokens/μs @ 5th  11.894349579771065
 // -----------------------------------------------
-// 95th 6.373125076293945
-// 50th 4.728833198547363
-// 5th  4.644750118255615
-// deviation 1.72837495803833
+// 95th 9.217249870300293
+// 50th 7.570667266845703
+// 5th  7.373332977294922
+// deviation 1.843916893005371
 // -------------- postcss tokenizer -------------
 // tokens 66238
-// tokens/μs @ 95th 18.133943098715402
-// tokens/μs @ 50th 25.854859639486747
-// tokens/μs @ 5th  26.910528838738287
+// tokens/μs @ 95th 18.456481036392354
+// tokens/μs @ 50th 25.63886291747939
+// tokens/μs @ 5th  26.946553538250367
 // -----------------------------------------------
-// 95th 3.652708053588867
-// 50th 2.5619168281555176
-// 5th  2.4614157676696777
-// deviation 1.1912922859191895
+// 95th 3.5888748168945312
+// 50th 2.5834999084472656
+// 5th  2.458125114440918
+// deviation 1.1307497024536133
