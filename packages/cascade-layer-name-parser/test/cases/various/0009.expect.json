@@ -1,0 +1,38 @@
+[
+	{
+		"parts": [
+			[
+				"ident-token",
+				"l\\61 yer",
+				0,
+				7,
+				{
+					"value": "layer"
+				}
+			],
+			[
+				"delim-token",
+				".",
+				8,
+				8,
+				{
+					"value": "."
+				}
+			],
+			[
+				"ident-token",
+				"part",
+				9,
+				12,
+				{
+					"value": "part"
+				}
+			]
+		],
+		"segments": [
+			"layer",
+			"part"
+		],
+		"name": "l\\61 yer.part"
+	}
+]

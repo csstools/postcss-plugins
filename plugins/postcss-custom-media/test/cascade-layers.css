@@ -1,4 +1,5 @@
 @layer extensions, components;
+@layer extensions.one,,invalid-layer-names..foo;
 
 @custom-media --desktop (min-width:1280px) and (debug-layer: unlayered);
 
