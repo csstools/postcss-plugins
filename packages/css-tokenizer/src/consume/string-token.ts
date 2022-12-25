@@ -10,9 +10,6 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 	let result = '';
 
 	const first = reader.readCodePoint();
-	if (first === false) {
-		throw new Error('Unexpected EOF');
-	}
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
@@ -28,7 +25,7 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 				],
 			});
 
-			return [TokenType.String, reader.representationString(), reader.representationStart, reader.representationEnd, { value: result }];
+			return [TokenType.String, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, { value: result }];
 		}
 
 		if (isNewLine(next)) {
@@ -45,11 +42,11 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 			}
 
 			reader.unreadCodePoint();
-			return [TokenType.BadString, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
+			return [TokenType.BadString, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, undefined];
 		}
 
 		if (next === first) {
-			return [TokenType.String, reader.representationString(), reader.representationStart, reader.representationEnd, { value: result }];
+			return [TokenType.String, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, { value: result }];
 		}
 
 		if (next === REVERSE_SOLIDUS) {

@@ -122,12 +122,13 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			r.representationString(),
+			r.source.slice(r.representationStart, r.representationEnd + 1),
 			'a',
 		);
 	}
 
-	r.resetRepresentation();
+	r.representationStart = r.cursor;
+	r.representationEnd = -1;
 
 	{
 		const read1 = r.readCodePoint();
@@ -199,12 +200,7 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			r.slice(r.representationStart, r.representationEnd + 1),
-			'bc👨‍👨‍👧‍👦d',
-		);
-
-		assert.deepEqual(
-			r.representationString(),
+			r.source.slice(r.representationStart, r.representationEnd + 1),
 			'bc👨‍👨‍👧‍👦d',
 		);
 	}

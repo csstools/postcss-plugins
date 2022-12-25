@@ -24,7 +24,7 @@ export function consumeHashToken(ctx: Context, reader: CodePointReader): TokenDe
 		const identSequence = consumeIdentSequence(ctx, reader);
 		return [
 			TokenType.Hash,
-			reader.representationString(),
+			reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 			reader.representationStart,
 			reader.representationEnd,
 			{
@@ -36,7 +36,7 @@ export function consumeHashToken(ctx: Context, reader: CodePointReader): TokenDe
 
 	return [
 		TokenType.Delim,
-		reader.representationString(),
+		'#',
 		reader.representationStart,
 		reader.representationEnd,
 		{

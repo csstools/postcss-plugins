@@ -14,9 +14,9 @@ export class Reader implements CodePointReader {
 		this.source = source;
 		this.length = source.length;
 
-		this.codePointSource = new Array(this.length);
-		for (let i = 0; i < this.length; i++) {
-			this.codePointSource[i] = this.source.charCodeAt(i);
+		this.codePointSource = [];
+		for (let i = 0; i < source.length; i++) {
+			this.codePointSource.push(source.charCodeAt(i));
 		}
 	}
 
@@ -50,18 +50,5 @@ export class Reader implements CodePointReader {
 		this.representationEnd = this.cursor - 1;
 
 		return true;
-	}
-
-	representationString(): string {
-		return this.source.slice(this.representationStart, this.representationEnd + 1);
-	}
-
-	resetRepresentation() {
-		this.representationStart = this.cursor;
-		this.representationEnd = -1;
-	}
-
-	slice(start: number, end: number): string {
-		return this.source.slice(start, end);
 	}
 }

@@ -3,8 +3,8 @@ import { checkIfThreeCodePointsWouldStartAnIdentSequence } from './checks/three-
 import { checkIfThreeCodePointsWouldStartANumber } from './checks/three-code-points-would-start-number';
 import { checkIfTwoCodePointsStartAComment } from './checks/two-code-points-start-comment';
 import { checkIfThreeCodePointsWouldStartCDC } from './checks/three-code-points-would-start-cdc';
-import { APOSTROPHE, CARRIAGE_RETURN, CHARACTER_TABULATION, COLON, COMMA, COMMERCIAL_AT, DIGIT_0, DIGIT_1, DIGIT_2, DIGIT_3, DIGIT_4, DIGIT_5, DIGIT_6, DIGIT_7, DIGIT_8, DIGIT_9, FORM_FEED, FULL_STOP, HYPHEN_MINUS, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, LINE_FEED, NUMBER_SIGN, PLUS_SIGN, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON, SPACE } from './code-points/code-points';
-import { isIdentStartCodePoint } from './code-points/ranges';
+import { APOSTROPHE, CARRIAGE_RETURN, CHARACTER_TABULATION, COLON, COMMA, COMMERCIAL_AT, FORM_FEED, FULL_STOP, HYPHEN_MINUS, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, LINE_FEED, NUMBER_SIGN, PLUS_SIGN, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON, SPACE } from './code-points/code-points';
+import { isDigitCodePoint, isIdentStartCodePoint } from './code-points/ranges';
 import { consumeComment } from './consume/comment';
 import { consumeHashToken } from './consume/hash-token';
 import { consumeIdentSequence } from './consume/ident-sequence';
@@ -35,14 +35,16 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 	}
 
 	function nextToken(): CSSToken | undefined {
-		reader.resetRepresentation();
+		reader.representationStart = reader.cursor;
+		reader.representationEnd = -1;
 
 		if (checkIfTwoCodePointsStartAComment(ctx, reader)) {
 			if (options?.commentsAreTokens) {
 				return consumeComment(ctx, reader);
 			} else {
 				consumeComment(ctx, reader);
-				reader.resetRepresentation();
+				reader.representationStart = reader.cursor;
+				reader.representationEnd = -1;
 			}
 		}
 
@@ -55,72 +57,65 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 			return consumeIdentLikeToken(ctx, reader);
 		}
 
+		if (isDigitCodePoint(peeked)) {
+			return consumeNumericToken(ctx, reader);
+		}
+
 		// Simple, one character tokens:
 		switch (peeked) {
-			case COMMA: {
+			case COMMA:
 				reader.advanceCodePoint();
-				return [TokenType.Comma, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
-			}
-			case COLON: {
+				return [TokenType.Comma, ',', reader.representationStart, reader.representationEnd, undefined];
+
+			case COLON:
 				reader.advanceCodePoint();
-				return [TokenType.Colon, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
-			}
-			case SEMICOLON: {
+				return [TokenType.Colon, ':', reader.representationStart, reader.representationEnd, undefined];
+
+			case SEMICOLON:
 				reader.advanceCodePoint();
-				return [TokenType.Semicolon, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
-			}
-			case LEFT_PARENTHESIS: {
+				return [TokenType.Semicolon, ';', reader.representationStart, reader.representationEnd, undefined];
+
+			case LEFT_PARENTHESIS:
 				reader.advanceCodePoint();
-				return [TokenType.OpenParen, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
-			}
-			case RIGHT_PARENTHESIS: {
+				return [TokenType.OpenParen, '(', reader.representationStart, reader.representationEnd, undefined];
+
+			case RIGHT_PARENTHESIS:
 				reader.advanceCodePoint();
-				return [TokenType.CloseParen, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
-			}
-			case LEFT_SQUARE_BRACKET: {
+				return [TokenType.CloseParen, ')', reader.representationStart, reader.representationEnd, undefined];
+
+			case LEFT_SQUARE_BRACKET:
 				reader.advanceCodePoint();
-				return [TokenType.OpenSquare, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
-			}
-			case RIGHT_SQUARE_BRACKET: {
+				return [TokenType.OpenSquare, '[', reader.representationStart, reader.representationEnd, undefined];
+
+			case RIGHT_SQUARE_BRACKET:
 				reader.advanceCodePoint();
-				return [TokenType.CloseSquare, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
-			}
-			case LEFT_CURLY_BRACKET: {
+				return [TokenType.CloseSquare, ']', reader.representationStart, reader.representationEnd, undefined];
+
+			case LEFT_CURLY_BRACKET:
 				reader.advanceCodePoint();
-				return [TokenType.OpenCurly, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
-			}
-			case RIGHT_CURLY_BRACKET: {
+				return [TokenType.OpenCurly, '{', reader.representationStart, reader.representationEnd, undefined];
+
+			case RIGHT_CURLY_BRACKET:
 				reader.advanceCodePoint();
-				return [TokenType.CloseCurly, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
-			}
+				return [TokenType.CloseCurly, '}', reader.representationStart, reader.representationEnd, undefined];
+
 			case APOSTROPHE:
 			case QUOTATION_MARK:
 				return consumeStringToken(ctx, reader);
+
 			case NUMBER_SIGN:
 				return consumeHashToken(ctx, reader);
 
 			case PLUS_SIGN:
-			case FULL_STOP: {
+			case FULL_STOP:
 				if (checkIfThreeCodePointsWouldStartANumber(ctx, reader)) {
 					return consumeNumericToken(ctx, reader);
 				}
 
 				reader.advanceCodePoint();
-				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
-					value: reader.representationString(),
+				return [TokenType.Delim, reader.source[reader.representationStart], reader.representationStart, reader.representationEnd, {
+					value: reader.source[reader.representationStart],
 				}];
-			}
-			case DIGIT_0:
-			case DIGIT_1:
-			case DIGIT_2:
-			case DIGIT_3:
-			case DIGIT_4:
-			case DIGIT_5:
-			case DIGIT_6:
-			case DIGIT_7:
-			case DIGIT_8:
-			case DIGIT_9:
-				return consumeNumericToken(ctx, reader);
 
 			case LINE_FEED:
 			case CARRIAGE_RETURN:
@@ -129,7 +124,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 			case SPACE:
 				return consumeWhiteSpace(ctx, reader);
 
-			case HYPHEN_MINUS: {
+			case HYPHEN_MINUS:
 				if (checkIfThreeCodePointsWouldStartANumber(ctx, reader)) {
 					return consumeNumericToken(ctx, reader);
 				}
@@ -137,7 +132,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 				if (checkIfThreeCodePointsWouldStartCDC(ctx, reader)) {
 					reader.advanceCodePoint(3);
 
-					return [TokenType.CDC, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
+					return [TokenType.CDC, '-->', reader.representationStart, reader.representationEnd, undefined];
 				}
 
 				if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
@@ -145,40 +140,37 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 				}
 
 				reader.advanceCodePoint();
-				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
+				return [TokenType.Delim, '-', reader.representationStart, reader.representationEnd, {
 					value: '-',
 				}];
-			}
 
-			case LESS_THAN_SIGN: {
+			case LESS_THAN_SIGN:
 				if (checkIfFourCodePointsWouldStartCDO(ctx, reader)) {
 					reader.advanceCodePoint(4);
 
-					return [TokenType.CDO, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
+					return [TokenType.CDO, '<!--', reader.representationStart, reader.representationEnd, undefined];
 				}
 
 				reader.advanceCodePoint();
-				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
+				return [TokenType.Delim, '<', reader.representationStart, reader.representationEnd, {
 					value: '<',
 				}];
-			}
 
-			case COMMERCIAL_AT: {
+			case COMMERCIAL_AT:
 				reader.advanceCodePoint();
 				if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 					const identSequence = consumeIdentSequence(ctx, reader);
 
-					return [TokenType.AtKeyword, reader.representationString(), reader.representationStart, reader.representationEnd, {
+					return [TokenType.AtKeyword, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, {
 						value: String.fromCharCode(...identSequence),
 					}];
 				}
 
-				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
+				return [TokenType.Delim, '@', reader.representationStart, reader.representationEnd, {
 					value: '@',
 				}];
-			}
 
-			case REVERSE_SOLIDUS: {
+			case REVERSE_SOLIDUS:
 				if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
 					return consumeIdentLikeToken(ctx, reader);
 				}
@@ -196,15 +188,14 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					],
 				});
 
-				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
+				return [TokenType.Delim, '\\', reader.representationStart, reader.representationEnd, {
 					value: '\\',
 				}];
-			}
 		}
 
 		reader.advanceCodePoint();
-		return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
-			value: reader.representationString(),
+		return [TokenType.Delim, reader.source[reader.representationStart], reader.representationStart, reader.representationEnd, {
+			value: reader.source[reader.representationStart],
 		}];
 	}
 

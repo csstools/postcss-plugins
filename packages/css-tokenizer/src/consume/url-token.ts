@@ -28,7 +28,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 
 			return [
 				TokenType.URL,
-				reader.representationString(),
+				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 				reader.representationStart,
 				reader.representationEnd,
 				{
@@ -41,7 +41,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			reader.advanceCodePoint();
 			return [
 				TokenType.URL,
-				reader.representationString(),
+				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 				reader.representationStart,
 				reader.representationEnd,
 				{
@@ -66,7 +66,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 
 				return [
 					TokenType.URL,
-					reader.representationString(),
+					reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 					reader.representationStart,
 					reader.representationEnd,
 					{
@@ -79,7 +79,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 				reader.advanceCodePoint();
 				return [
 					TokenType.URL,
-					reader.representationString(),
+					reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 					reader.representationStart,
 					reader.representationEnd,
 					{
@@ -91,7 +91,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			consumeBadURL(ctx, reader);
 			return [
 				TokenType.BadURL,
-				reader.representationString(),
+				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 				reader.representationStart,
 				reader.representationEnd,
 				undefined,
@@ -113,7 +113,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 
 			return [
 				TokenType.BadURL,
-				reader.representationString(),
+				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 				reader.representationStart,
 				reader.representationEnd,
 				undefined,
@@ -141,7 +141,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 
 			return [
 				TokenType.BadURL,
-				reader.representationString(),
+				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 				reader.representationStart,
 				reader.representationEnd,
 				undefined,

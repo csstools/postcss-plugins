@@ -11,7 +11,4 @@ export declare class Reader implements CodePointReader {
     advanceCodePoint(n?: number): void;
     readCodePoint(n?: number): number | false;
     unreadCodePoint(n?: number): boolean;
-    representationString(): string;
-    resetRepresentation(): void;
-    slice(start: number, end: number): string;
 }

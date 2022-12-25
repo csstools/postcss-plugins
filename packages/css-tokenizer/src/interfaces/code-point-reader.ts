@@ -17,9 +17,4 @@ export type CodePointReader = {
 	advanceCodePoint(n?: number)
 	readCodePoint(n?: number): number | false
 	unreadCodePoint(n?: number): boolean
-
-	representationString(): string
-	resetRepresentation()
-
-	slice(start: number, end: number): string
 }

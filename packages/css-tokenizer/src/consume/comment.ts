@@ -40,7 +40,7 @@ export function consumeComment(ctx: Context, reader: CodePointReader): TokenComm
 
 	return [
 		TokenType.Comment,
-		reader.representationString(),
+		reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 		reader.representationStart,
 		reader.representationEnd,
 		undefined,

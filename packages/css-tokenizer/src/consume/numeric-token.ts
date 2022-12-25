@@ -15,7 +15,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 
 		return [
 			TokenType.Dimension,
-			reader.representationString(),
+			reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 			reader.representationStart,
 			reader.representationEnd,
 			{
@@ -32,7 +32,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 
 			return [
 				TokenType.Percentage,
-				reader.representationString(),
+				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 				reader.representationStart,
 				reader.representationEnd,
 				{
@@ -44,7 +44,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 
 	return [
 		TokenType.Number,
-		reader.representationString(),
+		reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 		reader.representationStart,
 		reader.representationEnd,
 		{

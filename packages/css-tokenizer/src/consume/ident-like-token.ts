@@ -14,7 +14,7 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 	if (reader.codePointSource[reader.cursor] !== LEFT_PARENTHESIS) {
 		return [
 			TokenType.Ident,
-			reader.representationString(),
+			reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 			reader.representationStart,
 			reader.representationEnd,
 			{
@@ -45,7 +45,7 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 
 				return [
 					TokenType.Function,
-					reader.representationString(),
+					reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 					reader.representationStart,
 					reader.representationEnd,
 					{
@@ -67,7 +67,7 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 	reader.advanceCodePoint();
 	return [
 		TokenType.Function,
-		reader.representationString(),
+		reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 		reader.representationStart,
 		reader.representationEnd,
 		{

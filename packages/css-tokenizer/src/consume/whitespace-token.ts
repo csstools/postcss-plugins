@@ -15,7 +15,7 @@ export function consumeWhiteSpace(ctx: Context, reader: CodePointReader): TokenW
 
 	return [
 		TokenType.Whitespace,
-		reader.representationString(),
+		reader.source.slice(reader.representationStart, reader.representationEnd + 1),
 		reader.representationStart,
 		reader.representationEnd,
 		undefined,
