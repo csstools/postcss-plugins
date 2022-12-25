@@ -1,6 +1,7 @@
-import type { PluginCreator, Declaration } from 'postcss';
+import type { PluginCreator, Declaration, Result } from 'postcss';
 import { hasKeyframesAtRuleAncestor } from './lib/has-keyframes-atrule-ancestor';
 import { transformSide } from './lib/transform-side';
+import { transformSideShorthand } from './lib/transform-side-shorthand';
 
 enum Direction {
 	TopToBottom = 'top-to-bottom',
@@ -49,19 +50,31 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	}
 
 	const makeTransform = (transform: (decl: Declaration) => void) => {
-		return (decl) => {
+		return (
+			decl: Declaration,
+			{ result }: { result: Result },
+		) => {
 			if (hasKeyframesAtRuleAncestor(decl)) {
 				return;
 			}
 			const parent = decl.parent;
-			transform(decl);
+			let transformed = false;
 
-			if (!options.preserve) {
-				decl.remove();
+			try {
+				transform(decl);
+				transformed = true;
+			} catch (error) {
+				decl.warn(result, error.message);
 			}
 
-			if (!parent.nodes.length) {
-				parent.remove();
+			if (transformed) {
+				if (!options.preserve) {
+					decl.remove();
+				}
+
+				if (!parent.nodes.length) {
+					parent.remove();
+				}
 			}
 		};
 	};
@@ -82,6 +95,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			'margin-inline-end': makeTransform(
 				transformSide('margin', inlineEnd),
 			),
+			'margin-block': makeTransform(
+				transformSideShorthand('margin', [blockStart, blockEnd]),
+			),
+			'margin-inline': makeTransform(
+				transformSideShorthand('margin', [inlineStart, inlineEnd]),
+			),
 
 			// Paddings
 			'padding-block-start': makeTransform(
@@ -95,6 +114,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			),
 			'padding-inline-end': makeTransform(
 				transformSide('padding', inlineEnd),
+			),
+			'padding-block': makeTransform(
+				transformSideShorthand('padding', [blockStart, blockEnd]),
+			),
+			'padding-inline': makeTransform(
+				transformSideShorthand('padding', [inlineStart, inlineEnd]),
 			),
 		},
 	};

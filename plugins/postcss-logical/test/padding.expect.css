@@ -7,3 +7,27 @@
 	padding-left: 1px;
 	padding-right: 2px;
 }
+
+.block-single {
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+.block-double {
+	padding-top: 1px;
+	padding-bottom: 2px;
+}
+
+.inline-single {
+	padding-left: 1px;
+	padding-right: 1px;
+}
+
+.inline-double {
+	padding-left: 1px;
+	padding-right: 2px;
+}
+
+.error-1 {
+	padding-block: 1px 2px 3px 4px;
+}
