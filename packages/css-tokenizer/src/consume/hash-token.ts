@@ -8,7 +8,7 @@ import { consumeIdentSequence } from './ident-sequence';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-token
 export function consumeHashToken(ctx: Context, reader: CodePointReader): TokenDelim|TokenHash {
-	reader.readCodePoint();
+	reader.advanceCodePoint();
 
 	if (
 		(reader.codePointSource[reader.cursor] !== undefined) &&

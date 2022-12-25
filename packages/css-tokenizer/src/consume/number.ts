@@ -15,7 +15,7 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 		// 2. If the next input code point is U+002B PLUS SIGN (+) or U+002D HYPHEN-MINUS (-), consume it and append it to repr.
 		if (reader.codePointSource[reader.cursor] === PLUS_SIGN || reader.codePointSource[reader.cursor] === HYPHEN_MINUS) {
 			repr.push(reader.codePointSource[reader.cursor]);
-			reader.readCodePoint();
+			reader.advanceCodePoint();
 		}
 
 		// 3. While the next input code point is a digit, consume it and append it to repr.
@@ -33,7 +33,7 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 			repr.push(reader.codePointSource[reader.cursor+1]);
 
 			// 4.1. Consume them.
-			reader.readCodePoint(2);
+			reader.advanceCodePoint(2);
 
 			// 4.3. Set type to "number".
 			type = NumberType.Number;
@@ -59,7 +59,7 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 			repr.push(reader.codePointSource[reader.cursor+1]);
 
 			// 5.1. Consume them.
-			reader.readCodePoint(2);
+			reader.advanceCodePoint(2);
 
 			// 5.3. Set type to "number".
 			type = NumberType.Number;
@@ -84,7 +84,7 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 			repr.push(reader.codePointSource[reader.cursor+2]);
 
 			// 5.1. Consume them.
-			reader.readCodePoint(3);
+			reader.advanceCodePoint(3);
 
 			// 5.3. Set type to "number".
 			type = NumberType.Number;
@@ -115,7 +115,7 @@ function consumeDigits(reader: CodePointReader): Array<number> {
 
 		if (isDigitCodePoint(reader.codePointSource[reader.cursor])) {
 			value.push(reader.codePointSource[reader.cursor]);
-			reader.readCodePoint();
+			reader.advanceCodePoint();
 		} else {
 			return value;
 		}

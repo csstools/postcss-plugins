@@ -38,7 +38,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 		}
 
 		if (reader.codePointSource[reader.cursor] === RIGHT_PARENTHESIS) {
-			reader.readCodePoint();
+			reader.advanceCodePoint();
 			return [
 				TokenType.URL,
 				reader.representationString(),
@@ -76,7 +76,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			}
 
 			if (reader.codePointSource[reader.cursor] === RIGHT_PARENTHESIS) {
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [
 					TokenType.URL,
 					reader.representationString(),
@@ -149,6 +149,6 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 		}
 
 		string += String.fromCharCode(reader.codePointSource[reader.cursor]);
-		reader.readCodePoint();
+		reader.advanceCodePoint();
 	}
 }

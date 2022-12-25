@@ -9,10 +9,12 @@ export type CodePointReader = {
 	representationEnd: number;
 
 	cursor: number;
-	codePointSource: Array<number> ;
+	codePointSource: Array<number>;
+	source: string;
 
 	cursorPositionOfLastReadCodePoint(): number;
 
+	advanceCodePoint(n?: number)
 	readCodePoint(n?: number): number | false
 	unreadCodePoint(n?: number): boolean
 

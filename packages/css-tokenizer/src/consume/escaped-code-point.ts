@@ -25,11 +25,11 @@ export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): 
 
 		while ((reader.codePointSource[reader.cursor] !== undefined) && isHexDigitCodePoint(reader.codePointSource[reader.cursor]) && hexSequence.length < 6) {
 			hexSequence.push(reader.codePointSource[reader.cursor]);
-			reader.readCodePoint();
+			reader.advanceCodePoint();
 		}
 
 		if (isWhitespace(reader.codePointSource[reader.cursor])) {
-			reader.readCodePoint();
+			reader.advanceCodePoint();
 		}
 
 		const codePointLiteral = parseInt(String.fromCharCode(...hexSequence), 16);

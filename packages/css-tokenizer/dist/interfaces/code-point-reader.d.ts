@@ -4,6 +4,7 @@ export type CodePointReader = {
     cursor: number;
     codePointSource: Array<number>;
     cursorPositionOfLastReadCodePoint(): number;
+    advanceCodePoint(n?: number): any;
     readCodePoint(n?: number): number | false;
     unreadCodePoint(n?: number): boolean;
     representationString(): string;

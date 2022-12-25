@@ -28,7 +28,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 
 	{
 		if (reader.codePointSource[reader.cursor] === PERCENTAGE_SIGN) {
-			reader.readCodePoint();
+			reader.advanceCodePoint();
 
 			return [
 				TokenType.Percentage,

@@ -24,7 +24,7 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 	}
 
 	if (checkIfCodePointsMatchURLIdent(ctx, codePoints)) {
-		reader.readCodePoint();
+		reader.advanceCodePoint();
 
 		let read = 0;
 		// eslint-disable-next-line no-constant-condition
@@ -33,14 +33,14 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 			const secondIsWhitespace = isWhitespace(reader.codePointSource[reader.cursor+1]);
 			if (firstIsWhitespace && secondIsWhitespace) {
 				read += 2;
-				reader.readCodePoint(2);
+				reader.advanceCodePoint(2);
 				continue;
 			}
 
 			const firstNonWhitespace = firstIsWhitespace ? reader.codePointSource[reader.cursor+1] : reader.codePointSource[reader.cursor];
 			if (firstNonWhitespace === QUOTATION_MARK || firstNonWhitespace === APOSTROPHE) {
 				if (read > 0) {
-					reader.unreadCodePoint(read);
+					reader.advanceCodePoint(read);
 				}
 
 				return [
@@ -58,13 +58,13 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 		}
 
 		if (read > 0) {
-			reader.unreadCodePoint(read);
+			reader.advanceCodePoint(read);
 		}
 
 		return consumeUrlToken(ctx, reader);
 	}
 
-	reader.readCodePoint();
+	reader.advanceCodePoint();
 	return [
 		TokenType.Function,
 		reader.representationString(),

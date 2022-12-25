@@ -13,17 +13,17 @@ export function consumeBadURL(ctx: Context, reader: CodePointReader) {
 		}
 
 		if (reader.codePointSource[reader.cursor] === RIGHT_PARENTHESIS) {
-			reader.readCodePoint();
+			reader.advanceCodePoint();
 			return;
 		}
 
 		if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
-			reader.readCodePoint();
+			reader.advanceCodePoint();
 			consumeEscapedCodePoint(ctx, reader);
 			continue;
 		}
 
-		reader.readCodePoint();
+		reader.advanceCodePoint();
 		continue;
 	}
 }

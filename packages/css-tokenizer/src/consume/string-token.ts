@@ -58,7 +58,7 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 			}
 
 			if (isNewLine(reader.codePointSource[reader.cursor])) {
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				continue;
 			}
 

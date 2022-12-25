@@ -5,7 +5,7 @@ import { TokenComment, TokenType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comment
 export function consumeComment(ctx: Context, reader: CodePointReader): TokenComment {
-	reader.readCodePoint(2);
+	reader.advanceCodePoint(2);
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
@@ -33,7 +33,7 @@ export function consumeComment(ctx: Context, reader: CodePointReader): TokenComm
 		}
 
 		if (reader.codePointSource[reader.cursor] === SOLIDUS) {
-			reader.readCodePoint();
+			reader.advanceCodePoint();
 			break;
 		}
 	}

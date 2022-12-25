@@ -58,39 +58,39 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 		// Simple, one character tokens:
 		switch (peeked) {
 			case COMMA: {
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [TokenType.Comma, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case COLON: {
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [TokenType.Colon, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case SEMICOLON: {
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [TokenType.Semicolon, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case LEFT_PARENTHESIS: {
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [TokenType.OpenParen, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case RIGHT_PARENTHESIS: {
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [TokenType.CloseParen, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case LEFT_SQUARE_BRACKET: {
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [TokenType.OpenSquare, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case RIGHT_SQUARE_BRACKET: {
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [TokenType.CloseSquare, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case LEFT_CURLY_BRACKET: {
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [TokenType.OpenCurly, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case RIGHT_CURLY_BRACKET: {
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [TokenType.CloseCurly, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 			}
 			case APOSTROPHE:
@@ -105,9 +105,9 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					return consumeNumericToken(ctx, reader);
 				}
 
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
-					value: String.fromCharCode(peeked),
+					value: reader.representationString(),
 				}];
 			}
 			case DIGIT_0:
@@ -135,7 +135,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 				}
 
 				if (checkIfThreeCodePointsWouldStartCDC(ctx, reader)) {
-					reader.readCodePoint(3);
+					reader.advanceCodePoint(3);
 
 					return [TokenType.CDC, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 				}
@@ -144,7 +144,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					return consumeIdentLikeToken(ctx, reader);
 				}
 
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
 					value: '-',
 				}];
@@ -152,19 +152,19 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 
 			case LESS_THAN_SIGN: {
 				if (checkIfFourCodePointsWouldStartCDO(ctx, reader)) {
-					reader.readCodePoint(4);
+					reader.advanceCodePoint(4);
 
 					return [TokenType.CDO, reader.representationString(), reader.representationStart, reader.representationEnd, undefined];
 				}
 
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
 					value: '<',
 				}];
 			}
 
 			case COMMERCIAL_AT: {
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 				if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 					const identSequence = consumeIdentSequence(ctx, reader);
 
@@ -183,7 +183,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 					return consumeIdentLikeToken(ctx, reader);
 				}
 
-				reader.readCodePoint();
+				reader.advanceCodePoint();
 
 				ctx.onParseError({
 					message: 'Invalid escape sequence after "\\"',
@@ -202,9 +202,9 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 			}
 		}
 
-		reader.readCodePoint();
+		reader.advanceCodePoint();
 		return [TokenType.Delim, reader.representationString(), reader.representationStart, reader.representationEnd, {
-			value: String.fromCharCode(peeked),
+			value: reader.representationString(),
 		}];
 	}
 

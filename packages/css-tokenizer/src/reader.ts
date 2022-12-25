@@ -2,7 +2,7 @@ import { CodePointReader } from './interfaces/code-point-reader';
 
 export class Reader implements CodePointReader {
 	cursor: number;
-	stringSource = '';
+	source = '';
 	codePointSource: Array<number> = [];
 	length = 0;
 
@@ -11,17 +11,22 @@ export class Reader implements CodePointReader {
 
 	constructor(source: string) {
 		this.cursor = 0;
-		this.stringSource = source;
+		this.source = source;
 		this.length = source.length;
 
 		this.codePointSource = new Array(this.length);
 		for (let i = 0; i < this.length; i++) {
-			this.codePointSource[i] = this.stringSource.charCodeAt(i);
+			this.codePointSource[i] = this.source.charCodeAt(i);
 		}
 	}
 
 	cursorPositionOfLastReadCodePoint(): number {
 		return this.cursor - 1;
+	}
+
+	advanceCodePoint(n = 1) {
+		this.cursor += n;
+		this.representationEnd = this.cursor - 1;
 	}
 
 	readCodePoint(n = 1): number | false {
@@ -48,11 +53,7 @@ export class Reader implements CodePointReader {
 	}
 
 	representationString(): string {
-		if (this.representationEnd === -1) {
-			return '';
-		}
-
-		return this.stringSource.slice(this.representationStart, this.representationEnd + 1);
+		return this.source.slice(this.representationStart, this.representationEnd + 1);
 	}
 
 	resetRepresentation() {
@@ -61,6 +62,6 @@ export class Reader implements CodePointReader {
 	}
 
 	slice(start: number, end: number): string {
-		return this.stringSource.slice(start, end);
+		return this.source.slice(start, end);
 	}
 }
