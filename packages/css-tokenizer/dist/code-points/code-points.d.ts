@@ -76,23 +76,3 @@ export declare const SHIFT_OUT: number;
 export declare const SOLIDUS: number;
 /** \u20 */
 export declare const SPACE: number;
-/** 0 */
-export declare const DIGIT_0: number;
-/** 1 */
-export declare const DIGIT_1: number;
-/** 2 */
-export declare const DIGIT_2: number;
-/** 3 */
-export declare const DIGIT_3: number;
-/** 4 */
-export declare const DIGIT_4: number;
-/** 5 */
-export declare const DIGIT_5: number;
-/** 6 */
-export declare const DIGIT_6: number;
-/** 7 */
-export declare const DIGIT_7: number;
-/** 8 */
-export declare const DIGIT_8: number;
-/** 9 */
-export declare const DIGIT_9: number;

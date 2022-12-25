@@ -5,7 +5,7 @@ import fs from 'fs';
 const bootstrapSource = fs.readFileSync('./test/community/bootstrap.css').toString();
 const openPropsSource = fs.readFileSync('./test/community/open-props.css').toString();
 
-const largeSource = `
+const smallSource = `
 /* a comment */
 <!-- CDO -->
 
@@ -28,7 +28,11 @@ bar";
 
 #1 {}
 
-#foo {}
+#foo {
+	width: c\\61 lc(10% * 10px);
+}
+
+.fooz\\{\\} {}
 
 .foo {
 	margin: 0;
@@ -37,6 +41,34 @@ bar";
 	line-height: 1.2;
 }
 
+@media (min-width: 768px) and (max-width: 991px) {
+	.visible-sm {
+		display: block !important;
+	}
+
+	table.visible-sm {
+		display: table !important;
+	}
+
+	tr.visible-sm {
+		display: table-row !important;
+	}
+
+	th.visible-sm,
+	td.visible-sm {
+		display: table-cell !important;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.visible-sm-block {
+		display: block !important;
+	}
+}
+`;
+
+const largeSource = `
+${smallSource}
 ${bootstrapSource}
 ${openPropsSource}
 `;
@@ -85,40 +117,15 @@ function csstoolsLargeSource() {
 	console.log('tokens', tokenStreamLength);
 	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
 	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
-	console.log('tokens/μs @ 5th', (tokenStreamLength / results[49]) / 1000);
+	console.log('tokens/μs @ 5th ', (tokenStreamLength / results[49]) / 1000);
 	console.log('-----------------------------------------------');
 	console.log('95th', results[949]);
 	console.log('50th', results[499]);
-	console.log('5th', results[49]);
+	console.log('5th ', results[49]);
 	console.log('deviation', results[949] - results[49]);
 }
 
 function csstoolsSmallSource() {
-	const source = `@media (min-width: 768px) and (max-width: 991px) {
-	.visible-sm {
-		display: block !important;
-	}
-
-	table.visible-sm {
-		display: table !important;
-	}
-
-	tr.visible-sm {
-		display: table-row !important;
-	}
-
-	th.visible-sm,
-	td.visible-sm {
-		display: table-cell !important;
-	}
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-	.visible-sm-block {
-		display: block !important;
-	}
-}`;
-
 	const results = [];
 	let tokenStreamLength = 0;
 
@@ -128,11 +135,11 @@ function csstoolsSmallSource() {
 		{
 			const t = tokenizer(
 				{
-					css: source,
+					css: smallSource,
 				},
 				{
-					onParseError: (err) => {
-						throw new Error(JSON.stringify(err));
+					onParseError: () => {
+						// noop
 					},
 				},
 			);
@@ -162,11 +169,11 @@ function csstoolsSmallSource() {
 	console.log('tokens', tokenStreamLength);
 	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
 	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
-	console.log('tokens/μs @ 5th', (tokenStreamLength / results[49]) / 1000);
+	console.log('tokens/μs @ 5th ', (tokenStreamLength / results[49]) / 1000);
 	console.log('-----------------------------------------------');
 	console.log('95th', results[949]);
 	console.log('50th', results[499]);
-	console.log('5th', results[49]);
+	console.log('5th ', results[49]);
 	console.log('deviation', results[949] - results[49]);
 }
 
@@ -208,40 +215,15 @@ function postcssLargeSource() {
 	console.log('tokens', tokenStreamLength);
 	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
 	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
-	console.log('tokens/μs @ 5th', (tokenStreamLength / results[49]) / 1000);
+	console.log('tokens/μs @ 5th ', (tokenStreamLength / results[49]) / 1000);
 	console.log('-----------------------------------------------');
 	console.log('95th', results[949]);
 	console.log('50th', results[499]);
-	console.log('5th', results[49]);
+	console.log('5th ', results[49]);
 	console.log('deviation', results[949] - results[49]);
 }
 
 function postcssSmallSource() {
-	const source = `@media (min-width: 768px) and (max-width: 991px) {
-	.visible-sm {
-		display: block !important;
-	}
-
-	table.visible-sm {
-		display: table !important;
-	}
-
-	tr.visible-sm {
-		display: table-row !important;
-	}
-
-	th.visible-sm,
-	td.visible-sm {
-		display: table-cell !important;
-	}
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-	.visible-sm-block {
-		display: block !important;
-	}
-}`;
-
 	const results = [];
 	let tokenStreamLength = 0;
 
@@ -250,7 +232,7 @@ function postcssSmallSource() {
 		{
 			const t = postcssTokenizer(
 				{
-					css: source,
+					css: smallSource,
 				},
 			);
 
@@ -279,15 +261,15 @@ function postcssSmallSource() {
 	console.log('tokens', tokenStreamLength);
 	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
 	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
-	console.log('tokens/μs @ 5th', (tokenStreamLength / results[49]) / 1000);
+	console.log('tokens/μs @ 5th ', (tokenStreamLength / results[49]) / 1000);
 	console.log('-----------------------------------------------');
 	console.log('95th', results[949]);
 	console.log('50th', results[499]);
-	console.log('5th', results[49]);
+	console.log('5th ', results[49]);
 	console.log('deviation', results[949] - results[49]);
 }
 
-await new Promise((resolve) => setTimeout(resolve(), 1000));
+await new Promise((resolve) => setTimeout(resolve(), 100));
 csstoolsSmallSource();
 await new Promise((resolve) => setTimeout(resolve(), 1000));
 postcssSmallSource();
@@ -295,24 +277,45 @@ await new Promise((resolve) => setTimeout(resolve(), 1000));
 csstoolsLargeSource();
 await new Promise((resolve) => setTimeout(resolve(), 1000));
 postcssLargeSource();
-await new Promise((resolve) => setTimeout(resolve(), 1000));
 
 // Last result:
 // -------------- csstools tokenizer -------------
-// tokens 37088
-// tokens/μs @ 95th 10.38213287435934
-// tokens/μs @ 50th 11.020875148827852
+// tokens 252
+// tokens/μs @ 95th 3.3863612154143867
+// tokens/μs @ 50th 17.530760432561532
+// tokens/μs @ 5th  21.52151425313569
 // -----------------------------------------------
-// 95th 3.5722910165786743
-// 90th 3.4610829949378967
-// 50th 3.365249991416931
-// deviation 0.24970799684524536
+// 95th 0.0744161605834961
+// 50th 0.014374732971191406
+// 5th  0.011709213256835938
+// deviation 0.06270694732666016
 // -------------- postcss tokenizer -------------
-// tokens 27045
-// tokens/μs @ 95th 18.530318414584258
-// tokens/μs @ 50th 26.92161819321654
-// ----------------------------------------------
-// 95th 1.459500014781952
-// 90th 1.2470839619636536
-// 50th 1.0045830011367798
-// deviation 0.4862080216407776
+// tokens 214
+// tokens/μs @ 95th 6.22542000277431
+// tokens/μs @ 50th 7.71170747130387
+// tokens/μs @ 5th  35.41871422934259
+// -----------------------------------------------
+// 95th 0.03437519073486328
+// 50th 0.027750015258789062
+// 5th  0.006042003631591797
+// deviation 0.028333187103271484
+// -------------- csstools tokenizer -------------
+// tokens 87701
+// tokens/μs @ 95th 13.761066815747991
+// tokens/μs @ 50th 18.546012582330164
+// tokens/μs @ 5th  18.881747729614577
+// -----------------------------------------------
+// 95th 6.373125076293945
+// 50th 4.728833198547363
+// 5th  4.644750118255615
+// deviation 1.72837495803833
+// -------------- postcss tokenizer -------------
+// tokens 66238
+// tokens/μs @ 95th 18.133943098715402
+// tokens/μs @ 50th 25.854859639486747
+// tokens/μs @ 5th  26.910528838738287
+// -----------------------------------------------
+// 95th 3.652708053588867
+// 50th 2.5619168281555176
+// 5th  2.4614157676696777
+// deviation 1.1912922859191895
