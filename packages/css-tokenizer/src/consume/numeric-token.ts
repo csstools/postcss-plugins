@@ -12,7 +12,6 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 
 	if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 		const unit = consumeIdentSequence(ctx, reader);
-
 		return [
 			TokenType.Dimension,
 			reader.source.slice(reader.representationStart, reader.representationEnd + 1),
@@ -26,20 +25,18 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 		];
 	}
 
-	{
-		if (reader.codePointSource[reader.cursor] === PERCENTAGE_SIGN) {
-			reader.advanceCodePoint();
+	if (reader.codePointSource[reader.cursor] === PERCENTAGE_SIGN) {
+		reader.advanceCodePoint();
 
-			return [
-				TokenType.Percentage,
-				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
-				reader.representationStart,
-				reader.representationEnd,
-				{
-					value: numberValue[0],
-				},
-			];
-		}
+		return [
+			TokenType.Percentage,
+			reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+			reader.representationStart,
+			reader.representationEnd,
+			{
+				value: numberValue[0],
+			},
+		];
 	}
 
 	return [
