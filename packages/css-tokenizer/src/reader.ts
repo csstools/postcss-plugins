@@ -14,9 +14,9 @@ export class Reader implements CodePointReader {
 		this.source = source;
 		this.length = source.length;
 
-		this.codePointSource = [];
-		for (let i = 0; i < source.length; i++) {
-			this.codePointSource.push(source.charCodeAt(i));
+		this.codePointSource = new Array(this.length);
+		for (let i = 0; i < this.length; i++) {
+			this.codePointSource[i] = this.source.charCodeAt(i);
 		}
 	}
 
