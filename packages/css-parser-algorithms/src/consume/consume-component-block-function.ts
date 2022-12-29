@@ -4,7 +4,7 @@ import { ComponentValueType } from '../util/component-value-type';
 
 export type ContainerNode = FunctionNode | SimpleBlockNode;
 
-export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode | UnclosedFunctionNode;
+export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode;
 
 // https://www.w3.org/TR/css-syntax-3/#consume-a-component-value
 export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: ComponentValue } {
@@ -561,46 +561,5 @@ export class TokenNode {
 		}
 
 		return x.type === ComponentValueType.Token;
-	}
-}
-
-export class UnclosedFunctionNode {
-	type: ComponentValueType = ComponentValueType.UnclosedFunction;
-
-	value: Array<CSSToken>;
-
-	constructor(value: Array<CSSToken>) {
-		this.value = value;
-	}
-
-	tokens(): Array<CSSToken> {
-		return this.value;
-	}
-
-	toString(): string {
-		return stringify(...this.value);
-	}
-
-	toJSON() {
-		return {
-			type: this.type,
-			tokens: this.tokens(),
-		};
-	}
-
-	isUnclosedFunctionNode(): this is UnclosedFunctionNode {
-		return UnclosedFunctionNode.isUnclosedFunctionNode(this);
-	}
-
-	static isUnclosedFunctionNode(x: unknown): x is UnclosedFunctionNode {
-		if (!x) {
-			return false;
-		}
-
-		if (!(x instanceof UnclosedFunctionNode)) {
-			return false;
-		}
-
-		return x.type === ComponentValueType.UnclosedFunction;
 	}
 }

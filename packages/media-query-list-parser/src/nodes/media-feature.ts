@@ -20,6 +20,14 @@ export class MediaFeature {
 		this.after = after;
 	}
 
+	getName() {
+		this.feature.getName();
+	}
+
+	getNameToken() {
+		this.feature.getNameToken();
+	}
+
 	tokens(): Array<CSSToken> {
 		return [
 			...this.before,

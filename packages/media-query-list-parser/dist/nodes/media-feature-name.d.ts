@@ -1,5 +1,5 @@
 import { ComponentValue } from '@csstools/css-parser-algorithms';
-import { CSSToken } from '@csstools/css-tokenizer';
+import { CSSToken, TokenIdent } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
 export declare class MediaFeatureName {
     type: NodeType;
@@ -8,6 +8,7 @@ export declare class MediaFeatureName {
     after: Array<CSSToken>;
     constructor(name: ComponentValue, before?: Array<CSSToken>, after?: Array<CSSToken>);
     getName(): string;
+    getNameToken(): TokenIdent;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: ComponentValue): number | string;

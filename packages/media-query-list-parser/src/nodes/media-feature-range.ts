@@ -26,6 +26,14 @@ export class MediaFeatureRangeNameValue {
 		return comparisonFromTokens(this.operator);
 	}
 
+	getName() {
+		this.name.getName();
+	}
+
+	getNameToken() {
+		this.name.getNameToken();
+	}
+
 	tokens(): Array<CSSToken> {
 		return [
 			...this.name.tokens(),
@@ -111,6 +119,14 @@ export class MediaFeatureRangeValueName {
 
 	operatorKind() {
 		return comparisonFromTokens(this.operator);
+	}
+
+	getName() {
+		this.name.getName();
+	}
+
+	getNameToken() {
+		this.name.getNameToken();
 	}
 
 	tokens(): Array<CSSToken> {
@@ -206,6 +222,14 @@ export class MediaFeatureRangeValueNameValue {
 
 	valueTwoOperatorKind() {
 		return comparisonFromTokens(this.valueTwoOperator);
+	}
+
+	getName() {
+		this.name.getName();
+	}
+
+	getNameToken() {
+		this.name.getNameToken();
 	}
 
 	tokens(): Array<CSSToken> {

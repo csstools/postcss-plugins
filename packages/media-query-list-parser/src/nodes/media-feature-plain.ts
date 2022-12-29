@@ -17,6 +17,14 @@ export class MediaFeaturePlain {
 		this.value = value;
 	}
 
+	getName() {
+		this.name.getName();
+	}
+
+	getNameToken() {
+		this.name.getNameToken();
+	}
+
 	tokens(): Array<CSSToken> {
 		return [
 			...this.name.tokens(),

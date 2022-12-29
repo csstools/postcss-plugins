@@ -9,6 +9,8 @@ export declare class MediaFeaturePlain {
     colon: TokenColon;
     value: MediaFeatureValue;
     constructor(name: MediaFeatureName, colon: TokenColon, value: MediaFeatureValue);
+    getName(): void;
+    getNameToken(): void;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaFeatureName | MediaFeatureValue): number | string;

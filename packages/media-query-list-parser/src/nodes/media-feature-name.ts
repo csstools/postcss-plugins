@@ -21,6 +21,11 @@ export class MediaFeatureName {
 		return token[4].value;
 	}
 
+	getNameToken() {
+		const token = (((this.name as TokenNode).value as CSSToken) as TokenIdent);
+		return token;
+	}
+
 	tokens(): Array<CSSToken> {
 		return [
 			...this.before,

@@ -11,6 +11,8 @@ export declare class MediaFeatureRangeNameValue {
     value: MediaFeatureValue;
     constructor(name: MediaFeatureName, operator: [TokenDelim, TokenDelim] | [TokenDelim], value: MediaFeatureValue);
     operatorKind(): false | import("./media-feature-comparison").MediaFeatureComparison;
+    getName(): void;
+    getNameToken(): void;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaFeatureName | MediaFeatureValue): number | string;
@@ -43,6 +45,8 @@ export declare class MediaFeatureRangeValueName {
     value: MediaFeatureValue;
     constructor(name: MediaFeatureName, operator: [TokenDelim, TokenDelim] | [TokenDelim], value: MediaFeatureValue);
     operatorKind(): false | import("./media-feature-comparison").MediaFeatureComparison;
+    getName(): void;
+    getNameToken(): void;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaFeatureName | MediaFeatureValue): number | string;
@@ -78,6 +82,8 @@ export declare class MediaFeatureRangeValueNameValue {
     constructor(name: MediaFeatureName, valueOne: MediaFeatureValue, valueOneOperator: [TokenDelim, TokenDelim] | [TokenDelim], valueTwo: MediaFeatureValue, valueTwoOperator: [TokenDelim, TokenDelim] | [TokenDelim]);
     valueOneOperatorKind(): false | import("./media-feature-comparison").MediaFeatureComparison;
     valueTwoOperatorKind(): false | import("./media-feature-comparison").MediaFeatureComparison;
+    getName(): void;
+    getNameToken(): void;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaFeatureName | MediaFeatureValue): number | string;

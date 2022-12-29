@@ -10,6 +10,8 @@ export declare class MediaFeature {
     before: Array<CSSToken>;
     after: Array<CSSToken>;
     constructor(feature: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange, before?: Array<CSSToken>, after?: Array<CSSToken>);
+    getName(): void;
+    getNameToken(): void;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange): number | string;

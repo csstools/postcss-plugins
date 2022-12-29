@@ -4,6 +4,4 @@ export enum ComponentValueType {
 	Whitespace = 'whitespace',
 	Comment = 'comment',
 	Token = 'token',
-	UnclosedFunction = 'unclosed-function',
-	UnclosedSimpleBlock = 'unclosed-simple-block'
 }

@@ -2,7 +2,7 @@ import { CSSToken, TokenFunction } from '@csstools/css-tokenizer';
 import { Context } from '../interfaces/context';
 import { ComponentValueType } from '../util/component-value-type';
 export type ContainerNode = FunctionNode | SimpleBlockNode;
-export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode | UnclosedFunctionNode;
+export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode;
 export declare function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): {
     advance: number;
     node: ComponentValue;
@@ -103,17 +103,4 @@ export declare class TokenNode {
     };
     isTokenNode(): this is TokenNode;
     static isTokenNode(x: unknown): x is TokenNode;
-}
-export declare class UnclosedFunctionNode {
-    type: ComponentValueType;
-    value: Array<CSSToken>;
-    constructor(value: Array<CSSToken>);
-    tokens(): Array<CSSToken>;
-    toString(): string;
-    toJSON(): {
-        type: ComponentValueType;
-        tokens: CSSToken[];
-    };
-    isUnclosedFunctionNode(): this is UnclosedFunctionNode;
-    static isUnclosedFunctionNode(x: unknown): x is UnclosedFunctionNode;
 }
