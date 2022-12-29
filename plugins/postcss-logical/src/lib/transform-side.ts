@@ -4,12 +4,14 @@ import { cloneDeclaration } from './clone-declaration';
 export function transformSide(
 	prop: string,
 	side: string,
-): (declaration: Declaration) => void {
+): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
 		cloneDeclaration(
 			declaration,
 			declaration.value,
 			`${prop}-${side}`,
 		);
+
+		return true;
 	};
 }

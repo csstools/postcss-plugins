@@ -1,16 +1,11 @@
 import type { PluginCreator } from 'postcss';
-declare enum Direction {
-    TopToBottom = "top-to-bottom",
-    BottomToTop = "bottom-to-top",
-    RightToLeft = "right-to-left",
-    LeftToRight = "left-to-right"
-}
+import { DirectionFlow } from './lib/types';
 /** postcss-overflow-shorthand plugin options */
 export type pluginOptions = {
     /** Preserve the original notation. default: false */
     preserve?: boolean;
-    blockDirection?: Direction;
-    inlineDirection?: Direction;
+    blockDirection?: DirectionFlow;
+    inlineDirection?: DirectionFlow;
 };
 declare const creator: PluginCreator<pluginOptions>;
 export default creator;

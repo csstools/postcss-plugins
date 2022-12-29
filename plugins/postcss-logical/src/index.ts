@@ -1,23 +1,17 @@
-import type { PluginCreator, Declaration, Result } from 'postcss';
+import type { Declaration, PluginCreator, Result } from 'postcss';
+import { Axes, Direction, DirectionConfig, DirectionFlow } from './lib/types';
 import { hasKeyframesAtRuleAncestor } from './lib/has-keyframes-atrule-ancestor';
 import { transformSide } from './lib/transform-side';
 import { transformSideShorthand } from './lib/transform-side-shorthand';
-
-enum Direction {
-	TopToBottom = 'top-to-bottom',
-	BottomToTop = 'bottom-to-top',
-	RightToLeft = 'right-to-left',
-	LeftToRight = 'left-to-right',
-}
-
-const Axes = ['top', 'right', 'bottom', 'left'];
+import { transformValue, transformValueWithSingleDirection } from './lib/transform-value';
+import { directionFlowToAxes } from './utils/direction-flow-to-axes';
 
 /** postcss-overflow-shorthand plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: false */
 	preserve?: boolean,
-	blockDirection?: Direction,
-	inlineDirection?: Direction,
+	blockDirection?: DirectionFlow,
+	inlineDirection?: DirectionFlow,
 };
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
@@ -25,13 +19,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		// Default options
 		{
 			preserve: false,
-			blockDirection: Direction.TopToBottom,
-			inlineDirection: Direction.LeftToRight,
+			blockDirection: DirectionFlow.TopToBottom,
+			inlineDirection: DirectionFlow.LeftToRight,
 		},
 		// Provided options
 		opts,
 	);
-	const directionValues = Object.values(Direction);
+	const directionValues = Object.values(DirectionFlow);
 
 	if (!directionValues.includes(options.blockDirection)) {
 		throw new Error(`[postcss-logical] "blockDirection" must be one of ${directionValues.join(', ')}`);
@@ -41,28 +35,34 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		throw new Error(`[postcss-logical] "inlineDirection" must be one of ${directionValues.join(', ')}`);
 	}
 
-	const [blockStart, blockEnd] = options.blockDirection.split('-to-');
-	const [inlineStart, inlineEnd] = options.inlineDirection.split('-to-');
-	const allAxesCovered = Axes.every((axis) => [blockStart, blockEnd, inlineStart, inlineEnd].includes(axis));
+	const [blockStart, blockEnd] = directionFlowToAxes(options.blockDirection);
+	const [inlineStart, inlineEnd] = directionFlowToAxes(options.inlineDirection);
+	const allAxesCovered = Object.values(Axes)
+		.every((axis) => [blockStart, blockEnd, inlineStart, inlineEnd].includes(axis));
 
 	if (!allAxesCovered) {
 		throw new Error('[postcss-logical] "blockDirection" and "inlineDirection" must be on separate axes');
 	}
 
-	const makeTransform = (transform: (decl: Declaration) => void) => {
+	const directionConfig: DirectionConfig = {
+		block: [blockStart, blockEnd],
+		inline: [inlineStart, inlineEnd],
+		inlineIsHorizontal: [DirectionFlow.LeftToRight, DirectionFlow.RightToLeft].includes(options.inlineDirection),
+	};
+
+	const makeTransform = (transform: (decl: Declaration) => boolean | null) => {
 		return (
 			decl: Declaration,
 			{ result }: { result: Result },
 		) => {
-			if (hasKeyframesAtRuleAncestor(decl)) {
+			if (!transform || hasKeyframesAtRuleAncestor(decl)) {
 				return;
 			}
 			const parent = decl.parent;
 			let transformed = false;
 
 			try {
-				transform(decl);
-				transformed = true;
+				transformed = transform(decl);
 			} catch (error) {
 				decl.warn(result, error.message);
 			}
@@ -82,6 +82,20 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-logical',
 		Declaration: {
+			// Caption
+			'caption-side': makeTransform(transformValue(directionConfig)),
+			// Float & Clear
+			'float': makeTransform(
+				directionConfig.inlineIsHorizontal
+					? transformValueWithSingleDirection(Direction.Inline, directionConfig)
+					: null,
+			),
+			'clear': makeTransform(
+				directionConfig.inlineIsHorizontal
+					? transformValueWithSingleDirection(Direction.Inline, directionConfig)
+					: null,
+			),
+
 			// Margins
 			'margin-block-start': makeTransform(
 				transformSide('margin', blockStart),

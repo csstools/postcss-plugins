@@ -5,7 +5,7 @@ import valueParser from 'postcss-value-parser';
 export function transformSideShorthand(
 	prop: string,
 	side: [string,string],
-): (declaration: Declaration) => void {
+): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
 		const valuesAST = valueParser(declaration.value);
 		const values = valuesAST.nodes.filter((node) => node.type !== 'space');
@@ -40,5 +40,7 @@ export function transformSideShorthand(
 			valueB,
 			`${prop}-${sideB}`,
 		);
+
+		return true;
 	};
 }

@@ -1,0 +1,12 @@
+.float {
+	float: inline-start;
+}
+
+.clear {
+	clear: inline-end;
+}
+
+.ignore {
+	float: block-start;
+	clear: block-end;
+}
