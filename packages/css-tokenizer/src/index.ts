@@ -33,3 +33,7 @@ export type {
 	TokenOpenCurly,
 	TokenCloseCurly,
 } from './interfaces/token';
+
+export {
+	mutateIdent,
+} from './util/mutations';

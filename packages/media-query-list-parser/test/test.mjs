@@ -13,6 +13,9 @@ import './cases/mf-plain/0002.mjs';
 import './cases/mf-plain/0003.mjs';
 import './cases/mf-plain/0004.mjs';
 import './cases/mf-plain/0005.mjs';
+import './cases/mf-plain/0006.mjs';
+import './cases/mf-plain/0007.mjs';
+import './cases/mf-plain/0008.mjs';
 
 import './cases/mf-range/0001.mjs';
 import './cases/mf-range/0002.mjs';

@@ -119,7 +119,7 @@ export function parseMediaFeature(simpleBlock: SimpleBlockNode, before: Array<CS
 export function newMediaFeatureBoolean(name: string) {
 	return new MediaFeature(
 		new MediaFeatureBoolean(
-			new TokenNode([TokenType.Ident, name, -1, -1, { value: name }]),
+			new MediaFeatureName(new TokenNode([TokenType.Ident, name, -1, -1, { value: name }])),
 		),
 		[
 			[TokenType.OpenParen, '(', -1, -1, undefined],

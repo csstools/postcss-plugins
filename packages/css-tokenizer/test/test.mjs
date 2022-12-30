@@ -29,3 +29,6 @@ import './wpt/cdc-vs-ident-tokens.mjs';
 import './wpt/decimal-points-in-numbers.mjs';
 import './wpt/ident-three-code-points.mjs';
 import './wpt/inclusive-ranges.mjs';
+
+// Mutations
+import './mutations/ident.mjs';

@@ -18,7 +18,21 @@
 									"type": "media-feature",
 									"feature": {
 										"type": "mf-boolean",
-										"name": "color",
+										"name": {
+											"type": "mf-name",
+											"name": "color",
+											"tokens": [
+												[
+													"ident-token",
+													"color",
+													2,
+													6,
+													{
+														"value": "color"
+													}
+												]
+											]
+										},
 										"tokens": [
 											[
 												"ident-token",
@@ -87,7 +101,21 @@
 											"type": "media-feature",
 											"feature": {
 												"type": "mf-boolean",
-												"name": "pointer",
+												"name": {
+													"type": "mf-name",
+													"name": "pointer",
+													"tokens": [
+														[
+															"ident-token",
+															"pointer",
+															14,
+															20,
+															{
+																"value": "pointer"
+															}
+														]
+													]
+												},
 												"tokens": [
 													[
 														"ident-token",
@@ -181,7 +209,21 @@
 								"type": "media-feature",
 								"feature": {
 									"type": "mf-boolean",
-									"name": "hover",
+									"name": {
+										"type": "mf-name",
+										"name": "hover",
+										"tokens": [
+											[
+												"ident-token",
+												"hover",
+												28,
+												32,
+												{
+													"value": "hover"
+												}
+											]
+										]
+									},
 									"tokens": [
 										[
 											"ident-token",

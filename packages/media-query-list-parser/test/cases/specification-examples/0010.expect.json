@@ -36,7 +36,21 @@
 									"type": "media-feature",
 									"feature": {
 										"type": "mf-boolean",
-										"name": "color",
+										"name": {
+											"type": "mf-name",
+											"name": "color",
+											"tokens": [
+												[
+													"ident-token",
+													"color",
+													6,
+													10,
+													{
+														"value": "color"
+													}
+												]
+											]
+										},
 										"tokens": [
 											[
 												"ident-token",
@@ -126,7 +140,21 @@
 								"type": "media-feature",
 								"feature": {
 									"type": "mf-boolean",
-									"name": "hover",
+									"name": {
+										"type": "mf-name",
+										"name": "hover",
+										"tokens": [
+											[
+												"ident-token",
+												"hover",
+												18,
+												22,
+												{
+													"value": "hover"
+												}
+											]
+										]
+									},
 									"tokens": [
 										[
 											"ident-token",

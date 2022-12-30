@@ -1,21 +1,24 @@
 import { ComponentValue } from '@csstools/css-parser-algorithms';
+import { MediaFeatureName } from './media-feature-name';
 import { NodeType } from '../util/node-type';
-import { CSSToken, TokenIdent } from '@csstools/css-tokenizer';
+import { CSSToken } from '@csstools/css-tokenizer';
 export declare class MediaFeatureBoolean {
     type: NodeType;
-    name: ComponentValue;
-    before: Array<CSSToken>;
-    after: Array<CSSToken>;
-    constructor(name: ComponentValue, before?: Array<CSSToken>, after?: Array<CSSToken>);
+    name: MediaFeatureName;
+    constructor(name: MediaFeatureName);
     getName(): string;
-    getNameToken(): TokenIdent;
+    getNameToken(): import("@csstools/css-tokenizer").TokenIdent;
     tokens(): Array<CSSToken>;
     toString(): string;
-    indexOf(item: ComponentValue): number | string;
-    at(index: number | string): ComponentValue;
+    indexOf(item: MediaFeatureName): number | string;
+    at(index: number | string): MediaFeatureName;
     toJSON(): {
         type: NodeType;
-        name: string;
+        name: {
+            type: NodeType;
+            name: string;
+            tokens: CSSToken[];
+        };
         tokens: CSSToken[];
     };
     isMediaFeatureBoolean(): this is MediaFeatureBoolean;

@@ -40,7 +40,21 @@
 					"type": "media-feature",
 					"feature": {
 						"type": "mf-boolean",
-						"name": "color",
+						"name": {
+							"type": "mf-name",
+							"name": "color",
+							"tokens": [
+								[
+									"ident-token",
+									"color",
+									12,
+									16,
+									{
+										"value": "color"
+									}
+								]
+							]
+						},
 						"tokens": [
 							[
 								"ident-token",
@@ -132,7 +146,21 @@
 					"type": "media-feature",
 					"feature": {
 						"type": "mf-boolean",
-						"name": "color",
+						"name": {
+							"type": "mf-name",
+							"name": "color",
+							"tokens": [
+								[
+									"ident-token",
+									"color",
+									36,
+									40,
+									{
+										"value": "color"
+									}
+								]
+							]
+						},
 						"tokens": [
 							[
 								"ident-token",
