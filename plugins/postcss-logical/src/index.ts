@@ -3,6 +3,7 @@ import { Axes, Direction, DirectionConfig, DirectionFlow } from './lib/types';
 import { hasKeyframesAtRuleAncestor } from './lib/has-keyframes-atrule-ancestor';
 import { transformSide } from './lib/transform-side';
 import { transformSideShorthand } from './lib/transform-side-shorthand';
+import { transformTextAlign } from './lib/transform-text-align';
 import { transformValue, transformValueWithSingleDirection } from './lib/transform-value';
 import { directionFlowToAxes } from './utils/direction-flow-to-axes';
 
@@ -82,9 +83,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-logical',
 		Declaration: {
-			// Caption
+			// 2.1 Caption
 			'caption-side': makeTransform(transformValue(directionConfig)),
-			// Float & Clear
+			// 2.2 Float & Clear
 			'float': makeTransform(
 				directionConfig.inlineIsHorizontal
 					? transformValueWithSingleDirection(Direction.Inline, directionConfig)
@@ -93,6 +94,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			'clear': makeTransform(
 				directionConfig.inlineIsHorizontal
 					? transformValueWithSingleDirection(Direction.Inline, directionConfig)
+					: null,
+			),
+			// 2.3 Text Align
+			'text-align': makeTransform(
+				directionConfig.inlineIsHorizontal
+					? transformTextAlign(directionConfig.inline)
 					: null,
 			),
 

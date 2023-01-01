@@ -10,7 +10,7 @@ postcssTape(plugin)({
 		options: {
 			blockDirection: 'right-to-left',
 			inlineDirection: 'top-to-bottom'
-		}
+		},
 	},
 	'float-and-clear': {
 		message: 'supports logical "float" & "clear" properties',
@@ -20,6 +20,22 @@ postcssTape(plugin)({
 		options: {
 			blockDirection: 'right-to-left',
 			inlineDirection: 'top-to-bottom'
+		},
+	},
+	'text-align': {
+		message: 'supports logical "text-align" property',
+	},
+	'text-align:chinese': {
+		message: 'supports logical "text-align" property { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
+		options: {
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
+	},
+	'text-align:hebrew': {
+		message: 'supports logical "text-align" property { inlineDirection: "right-to-left" }',
+		options: {
+			inlineDirection: 'right-to-left',
 		}
 	},
 	margin: {
@@ -32,7 +48,7 @@ postcssTape(plugin)({
 		options: {
 			blockDirection: 'right-to-left',
 			inlineDirection: 'top-to-bottom'
-		}
+		},
 	},
 	padding: {
 		message: 'supports logical "padding" properties',
@@ -44,6 +60,6 @@ postcssTape(plugin)({
 		options: {
 			blockDirection: 'right-to-left',
 			inlineDirection: 'top-to-bottom'
-		}
-	}
+		},
+	},
 });

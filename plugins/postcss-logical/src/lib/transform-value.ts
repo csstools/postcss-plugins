@@ -3,32 +3,35 @@ import valueParser from 'postcss-value-parser';
 import { DirectionConfig, DirectionValues, Direction } from './types';
 import { logicalToPhysical } from '../utils/logical-to-physical';
 
+function doTransform(declaration, directionValues, config) {
+	const { prop, value } = declaration;
+	const valueAST = valueParser(value);
+
+	valueAST.nodes.forEach((node) => {
+		const valueCandidate = node.value.toLowerCase();
+		if (node.type === 'word' && directionValues.includes(valueCandidate)) {
+			node.value = logicalToPhysical(valueCandidate, config);
+		}
+
+		return node;
+	});
+
+	if (valueAST.toString() !== value) {
+		declaration.cloneBefore({
+			prop,
+			value: valueAST.toString(),
+		});
+		return true;
+	}
+
+	return false;
+}
+
 export function transformValue(
 	config: DirectionConfig,
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
-		const { prop, value } = declaration;
-		const valueAST = valueParser(value);
-
-		const directionValues = Object.values(DirectionValues);
-		valueAST.nodes.forEach((node) => {
-			const valueCandidate = node.value.toLowerCase();
-			if (node.type === 'word' && directionValues.includes(valueCandidate)) {
-				node.value = logicalToPhysical(valueCandidate, config);
-			}
-
-			return node;
-		});
-
-		if (valueAST.toString() !== value) {
-			declaration.cloneBefore({
-				prop,
-				value: valueAST.toString(),
-			});
-			return true;
-		}
-
-		return false;
+		return doTransform(declaration, Object.values(DirectionValues), config);
 	};
 }
 
@@ -37,8 +40,6 @@ export function transformValueWithSingleDirection(
 	config: DirectionConfig,
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
-		const { prop, value } = declaration;
-		const valueAST = valueParser(value);
 		let directionValues = [];
 
 		if (direction === Direction.Block) {
@@ -47,23 +48,6 @@ export function transformValueWithSingleDirection(
 			directionValues = [DirectionValues.InlineStart, DirectionValues.InlineEnd];
 		}
 
-		valueAST.nodes.forEach((node) => {
-			const valueCandidate = node.value.toLowerCase();
-			if (node.type === 'word' && directionValues.includes(valueCandidate)) {
-				node.value = logicalToPhysical(valueCandidate, config);
-			}
-
-			return node;
-		});
-
-		if (valueAST.toString() !== value) {
-			declaration.cloneBefore({
-				prop,
-				value: valueAST.toString(),
-			});
-			return true;
-		}
-
-		return false;
+		return doTransform(declaration, directionValues, config);
 	};
 }
