@@ -40,7 +40,7 @@ export function transformValueWithSingleDirection(
 	config: DirectionConfig,
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
-		let directionValues = [];
+		let directionValues;
 
 		if (direction === Direction.Block) {
 			directionValues = [DirectionValues.BlockStart, DirectionValues.BlockEnd];

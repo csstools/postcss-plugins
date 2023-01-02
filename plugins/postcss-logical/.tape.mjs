@@ -38,6 +38,26 @@ postcssTape(plugin)({
 			inlineDirection: 'right-to-left',
 		}
 	},
+	'resize': {
+		message: 'supports logical "resize" property',
+	},
+	'resize:chinese': {
+		message: 'supports logical "resize" property { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
+		options: {
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
+	},
+	'logical-size': {
+		message: 'supports logical "block-size" & "inline-size" properties',
+	},
+	'logical-size:chinese': {
+		message: 'supports logical "block-size" & "inline-size" properties { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
+		options: {
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
+	},
 	margin: {
 		message: 'supports logical "margin" properties',
 		warnings: 1,
@@ -45,6 +65,18 @@ postcssTape(plugin)({
 	'margin:chinese': {
 		message: 'supports logical "margin" properties { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
 		warnings: 1,
+		options: {
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
+	},
+	offsets: {
+		message: 'supports logical "offsets" properties',
+		warnings: 3,
+	},
+	'offsets:chinese': {
+		message: 'supports logical "offsets" properties { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
+		warnings: 3,
 		options: {
 			blockDirection: 'right-to-left',
 			inlineDirection: 'top-to-bottom'

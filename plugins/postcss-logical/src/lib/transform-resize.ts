@@ -1,26 +1,27 @@
 import type { Declaration } from 'postcss';
 import valueParser from 'postcss-value-parser';
-import { DirectionValue } from './types';
+import { DirectionConfig } from './types';
 import { cloneDeclaration } from './clone-declaration';
-export function transformTextAlign(
-	inlineValues: [string, string],
+export function transformResize(
+	directionConfig: DirectionConfig,
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
 		const { prop, value } = declaration;
 		const valueAST = valueParser(value);
-		const [start, end] = inlineValues;
+		const inlineValue = directionConfig.inlineIsHorizontal ? 'horizontal' : 'vertical';
+		const blockValue = directionConfig.inlineIsHorizontal ? 'vertical' : 'horizontal';
 
 		valueAST.nodes.forEach((node) => {
 			const valueCandidate = node.value.toLowerCase();
 
 			if (node.type === 'word') {
-				if (valueCandidate === DirectionValue.End) {
-					node.value = end;
+				if (valueCandidate === 'inline') {
+					node.value = inlineValue;
 					return;
 				}
 
-				if (valueCandidate === DirectionValue.Start) {
-					node.value = start;
+				if (valueCandidate === 'block') {
+					node.value = blockValue;
 				}
 			}
 		});

@@ -1,6 +1,11 @@
 import type { Declaration, PluginCreator, Result } from 'postcss';
 import { Axes, Direction, DirectionConfig, DirectionFlow } from './lib/types';
 import { hasKeyframesAtRuleAncestor } from './lib/has-keyframes-atrule-ancestor';
+import { transformLogicalSize } from './lib/transform-logical-size';
+import { transformOffset } from './lib/transform-offset';
+import { transformOffsetShorthand } from './lib/transform-offset-shorthand';
+import { transformInset } from './lib/transform-inset';
+import { transformResize } from './lib/transform-resize';
 import { transformSide } from './lib/transform-side';
 import { transformSideShorthand } from './lib/transform-side-shorthand';
 import { transformTextAlign } from './lib/transform-text-align';
@@ -102,8 +107,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					? transformTextAlign(directionConfig.inline)
 					: null,
 			),
-
-			// Margins
+			// 2.4 Resize
+			'resize': makeTransform(transformResize(directionConfig)),
+			// 4.1 Block Size and Inline Size
+			'block-size': makeTransform(transformLogicalSize(directionConfig)),
+			'inline-size': makeTransform(transformLogicalSize(directionConfig)),
+			// 4.2 Margins
 			'margin-block-start': makeTransform(
 				transformSide('margin', blockStart),
 			),
@@ -122,8 +131,15 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			'margin-inline': makeTransform(
 				transformSideShorthand('margin', [inlineStart, inlineEnd]),
 			),
-
-			// Paddings
+			// 4.3 Offsets
+			'inset-block': makeTransform(transformOffsetShorthand([blockStart, blockEnd])),
+			'inset-block-start': makeTransform(transformOffset(blockStart)),
+			'inset-block-end': makeTransform(transformOffset(blockEnd)),
+			'inset-inline': makeTransform(transformOffsetShorthand([inlineStart, inlineEnd])),
+			'inset-inline-start': makeTransform(transformOffset(inlineStart)),
+			'inset-inline-end': makeTransform(transformOffset(inlineEnd)),
+			'inset': makeTransform(transformInset()),
+			// 4.4 Paddings
 			'padding-block-start': makeTransform(
 				transformSide('padding', blockStart),
 			),

@@ -1,0 +1,7 @@
+.resize-block {
+	resize: horizontal;
+}
+
+.resize-inline {
+	resize: vertical;
+}

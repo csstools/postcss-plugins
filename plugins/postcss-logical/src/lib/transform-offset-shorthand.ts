@@ -2,8 +2,7 @@ import type { Declaration } from 'postcss';
 import { cloneDeclaration } from './clone-declaration';
 import valueParser from 'postcss-value-parser';
 
-export function transformSideShorthand(
-	prop: string,
+export function transformOffsetShorthand(
 	side: [string,string],
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
@@ -32,13 +31,13 @@ export function transformSideShorthand(
 		cloneDeclaration(
 			declaration,
 			valueA,
-			`${prop}-${sideA}`,
+			sideA,
 		);
 
 		cloneDeclaration(
 			declaration,
 			valueB,
-			`${prop}-${sideB}`,
+			sideB,
 		);
 
 		return true;
