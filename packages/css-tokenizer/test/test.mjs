@@ -7,8 +7,10 @@ import './code-points/ranges.mjs';
 
 // Tokens
 import './token/basic.mjs';
+import './token/cdo.mjs';
 import './token/comment.mjs';
 import './token/numeric.mjs';
+import './token/string.mjs';
 import './token/url.mjs';
 
 // Complex

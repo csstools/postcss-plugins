@@ -32,17 +32,13 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 			const firstIsWhitespace = isWhitespace(reader.codePointSource[reader.cursor]);
 			const secondIsWhitespace = isWhitespace(reader.codePointSource[reader.cursor+1]);
 			if (firstIsWhitespace && secondIsWhitespace) {
-				read += 2;
-				reader.advanceCodePoint(2);
+				read += 1;
+				reader.advanceCodePoint(1);
 				continue;
 			}
 
 			const firstNonWhitespace = firstIsWhitespace ? reader.codePointSource[reader.cursor+1] : reader.codePointSource[reader.cursor];
 			if (firstNonWhitespace === QUOTATION_MARK || firstNonWhitespace === APOSTROPHE) {
-				if (read > 0) {
-					reader.advanceCodePoint(read);
-				}
-
 				return [
 					TokenType.Function,
 					reader.source.slice(reader.representationStart, reader.representationEnd + 1),

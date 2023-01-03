@@ -320,3 +320,90 @@ url( 'mix-quoted" ' )\
 		],
 	);
 }
+
+// Whitespace before contents
+{
+	{
+		const t = tokenizer({
+			css: 'url("foo")',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['function-token', 'url(', 0, 3, { value: 'url' }],
+				['string-token', '"foo"', 4, 8, { value: 'foo' }],
+				[')-token', ')', 9, 9, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: 'url( "foo")',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['function-token', 'url(', 0, 3, { value: 'url' }],
+				['whitespace-token', ' ', 4, 4, undefined],
+				['string-token', '"foo"', 5, 9, { value: 'foo' }],
+				[')-token', ')', 10, 10, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: 'url(  "foo")',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['function-token', 'url( ', 0, 4, { value: 'url' }],
+				['whitespace-token', ' ', 5, 5, undefined],
+				['string-token', '"foo"', 6, 10, { value: 'foo' }],
+				[')-token', ')', 11, 11, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: 'not-url(  "foo")',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['function-token', 'not-url(', 0, 7, { value: 'not-url' }],
+				['whitespace-token', '  ', 8, 9, undefined],
+				['string-token', '"foo"', 10, 14, { value: 'foo' }],
+				[')-token', ')', 15, 15, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: 'url(   "foo")',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['function-token', 'url(  ', 0, 5, { value: 'url' }],
+				['whitespace-token', ' ', 6, 6, undefined],
+				['string-token', '"foo"', 7, 11, { value: 'foo' }],
+				[')-token', ')', 12, 12, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+}
