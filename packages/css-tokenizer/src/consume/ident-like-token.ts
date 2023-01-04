@@ -39,6 +39,11 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 
 			const firstNonWhitespace = firstIsWhitespace ? reader.codePointSource[reader.cursor+1] : reader.codePointSource[reader.cursor];
 			if (firstNonWhitespace === QUOTATION_MARK || firstNonWhitespace === APOSTROPHE) {
+				if (read > 0) {
+					// https://github.com/w3c/csswg-drafts/issues/8280#issuecomment-1370566921
+					reader.unreadCodePoint(read);
+				}
+
 				return [
 					TokenType.Function,
 					reader.source.slice(reader.representationStart, reader.representationEnd + 1),
@@ -51,10 +56,6 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 			}
 
 			break;
-		}
-
-		if (read > 0) {
-			reader.advanceCodePoint(read);
 		}
 
 		return consumeUrlToken(ctx, reader);
