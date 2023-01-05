@@ -21,7 +21,7 @@
 		"experimental/*"
 	],
 	"devDependencies": {
-		"@babel/core": "^7.19.3",
+		"@babel/core": "^7.20.7",
 		"@babel/preset-env": "^7.19.3",
 		"@rollup/plugin-babel": "^6.0.0",
 		"@rollup/plugin-commonjs": "^24.0.0",
@@ -29,7 +29,7 @@
 		"@rollup/plugin-terser": "^0.1.0",
 		"@rollup/plugin-typescript": "^10.0.0",
 		"@stryker-mutator/core": "^6.0.2",
-		"@typescript-eslint/eslint-plugin": "^5.39.0",
+		"@typescript-eslint/eslint-plugin": "^5.47.0",
 		"eslint": "^8.25.0",
 		"glob": "^8.0.3",
 		"rollup": "^3.2.5",
