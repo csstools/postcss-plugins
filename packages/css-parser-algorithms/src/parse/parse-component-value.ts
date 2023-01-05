@@ -1,8 +1,7 @@
-import { ParserError } from '../interfaces/error';
-import { CSSToken, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, ParseError, TokenType } from '@csstools/css-tokenizer';
 import { consumeComponentValue } from '../consume/consume-component-block-function';
 
-export function parseComponentValue(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParserError) => void }) {
+export function parseComponentValue(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParseError) => void }) {
 	const ctx = {
 		onParseError: options?.onParseError ?? (() => { /* noop */ }),
 	};
@@ -28,13 +27,13 @@ export function parseComponentValue(tokens: Array<CSSToken>, options?: { onParse
 		return result.node;
 	}
 
-	ctx.onParseError({
-		message: 'Expected EOF after parsing a component value.',
-		start: tokens[0][2],
-		end: tokens[tokens.length - 1][3],
-		state: [
+	ctx.onParseError(new ParseError(
+		'Expected EOF after parsing a component value.',
+		tokens[0][2],
+		tokens[tokens.length - 1][3],
+		[
 			'5.3.9. Parse a component value',
 			'Expected EOF',
 		],
-	});
+	));
 }

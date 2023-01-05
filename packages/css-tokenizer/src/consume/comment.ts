@@ -1,6 +1,7 @@
 import { ASTERISK, SOLIDUS } from '../code-points/code-points';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
+import { ParseError } from '../interfaces/error';
 import { TokenComment, TokenType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comment
@@ -11,15 +12,15 @@ export function consumeComment(ctx: Context, reader: CodePointReader): TokenComm
 	while (true) {
 		const codePoint = reader.readCodePoint();
 		if (codePoint === false) {
-			ctx.onParseError({
-				message: 'Unexpected EOF while consuming a comment.',
-				start: reader.representationStart,
-				end: reader.representationEnd,
-				state: [
+			ctx.onParseError(new ParseError(
+				'Unexpected EOF while consuming a comment.',
+				reader.representationStart,
+				reader.representationEnd,
+				[
 					'4.3.2. Consume comments',
 					'Unexpected EOF',
 				],
-			});
+			));
 
 			break;
 		}

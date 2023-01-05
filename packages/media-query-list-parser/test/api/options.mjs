@@ -60,12 +60,17 @@ import { parse } from '@csstools/media-query-list-parser';
 	);
 
 	assert.deepEqual(
-		error,
+		{
+			message: error.message,
+			sourceStart: error.sourceStart,
+			sourceEnd: error.sourceEnd,
+			parserState: error.parserState,
+		},
 		{
 			message: 'Unexpected EOF while consuming a simple block.',
-			start: 0,
-			end: -1,
-			state: ['5.4.8. Consume a simple block', 'Unexpected EOF'],
+			sourceStart: 0,
+			sourceEnd: -1,
+			parserState: ['5.4.8. Consume a simple block', 'Unexpected EOF'],
 		},
 	);
 }
@@ -94,12 +99,17 @@ import { parse } from '@csstools/media-query-list-parser';
 	);
 
 	assert.deepEqual(
-		error,
+		{
+			message: error.message,
+			sourceStart: error.sourceStart,
+			sourceEnd: error.sourceEnd,
+			parserState: error.parserState,
+		},
 		{
 			message: 'Unexpected EOF while consuming a simple block.',
-			start: 0,
-			end: -1,
-			state: ['5.4.8. Consume a simple block', 'Unexpected EOF'],
+			sourceStart: 0,
+			sourceEnd: -1,
+			parserState: ['5.4.8. Consume a simple block', 'Unexpected EOF'],
 		},
 	);
 }

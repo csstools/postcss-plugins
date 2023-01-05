@@ -1,4 +1,4 @@
-import { CSSToken, mirrorVariantType, stringify, TokenType, isToken, TokenFunction } from '@csstools/css-tokenizer';
+import { CSSToken, mirrorVariantType, stringify, TokenType, isToken, TokenFunction, ParseError } from '@csstools/css-tokenizer';
 import { Context } from '../interfaces/context';
 import { ComponentValueType } from '../util/component-value-type';
 
@@ -182,15 +182,15 @@ export function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advanc
 	while (true) {
 		const token = tokens[i];
 		if (!token || token[0] === TokenType.EOF) {
-			ctx.onParseError({
-				message: 'Unexpected EOF while consuming a function.',
-				start: tokens[0][2],
-				end: tokens[tokens.length - 1][3],
-				state: [
+			ctx.onParseError(new ParseError(
+				'Unexpected EOF while consuming a function.',
+				tokens[0][2],
+				tokens[tokens.length - 1][3],
+				[
 					'5.4.9. Consume a function',
 					'Unexpected EOF',
 				],
-			});
+			));
 
 			return {
 				advance: tokens.length,
@@ -350,15 +350,15 @@ export function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { adv
 	while (true) {
 		const token = tokens[i];
 		if (!token || token[0] === TokenType.EOF) {
-			ctx.onParseError({
-				message: 'Unexpected EOF while consuming a simple block.',
-				start: tokens[0][2],
-				end: tokens[tokens.length - 1][3],
-				state: [
+			ctx.onParseError(new ParseError(
+				'Unexpected EOF while consuming a simple block.',
+				tokens[0][2],
+				tokens[tokens.length - 1][3],
+				[
 					'5.4.8. Consume a simple block',
 					'Unexpected EOF',
 				],
-			});
+			));
 
 			return {
 				advance: tokens.length,

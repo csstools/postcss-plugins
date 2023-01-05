@@ -2,6 +2,7 @@ import { REVERSE_SOLIDUS } from '../code-points/code-points';
 import { isNewLine } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
+import { ParseError } from '../interfaces/error';
 import { TokenBadString, TokenString, TokenType } from '../interfaces/token';
 import { consumeEscapedCodePoint } from './escaped-code-point';
 
@@ -15,30 +16,30 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 	while (true) {
 		const next = reader.readCodePoint();
 		if (next === false) {
-			ctx.onParseError({
-				message: 'Unexpected EOF while consuming a string token.',
-				start: reader.representationStart,
-				end: reader.representationEnd,
-				state: [
+			ctx.onParseError(new ParseError(
+				'Unexpected EOF while consuming a string token.',
+				reader.representationStart,
+				reader.representationEnd,
+				[
 					'4.3.5. Consume a string token',
 					'Unexpected EOF',
 				],
-			});
+			));
 
 			return [TokenType.String, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, { value: result }];
 		}
 
 		if (isNewLine(next)) {
 			{
-				ctx.onParseError({
-					message: 'Unexpected newline while consuming a string token.',
-					start: reader.representationStart,
-					end: reader.representationEnd,
-					state: [
+				ctx.onParseError(new ParseError(
+					'Unexpected newline while consuming a string token.',
+					reader.representationStart,
+					reader.representationEnd,
+					[
 						'4.3.5. Consume a string token',
 						'Unexpected newline',
 					],
-				});
+				));
 			}
 
 			reader.unreadCodePoint();

@@ -23,13 +23,20 @@ import assert from 'assert';
 	}
 
 	assert.deepEqual(
-		parseErrors,
+		parseErrors.map((x) => {
+			return {
+				message: x.message,
+				sourceStart: x.sourceStart,
+				sourceEnd: x.sourceEnd,
+				parserState: x.parserState,
+			};
+		}),
 		[
 			{
 				message: 'Unexpected EOF while consuming an escaped code point.',
-				start: 0,
-				end: 0,
-				state: ['4.3.7. Consume an escaped code point', 'Unexpected EOF'],
+				sourceStart: 0,
+				sourceEnd: 0,
+				parserState: ['4.3.7. Consume an escaped code point', 'Unexpected EOF'],
 			},
 		],
 	);

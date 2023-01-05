@@ -15,13 +15,13 @@ import { Reader } from './reader';
 import { consumeStringToken } from './consume/string-token';
 import { consumeIdentLikeToken } from './consume/ident-like-token';
 import { checkIfTwoCodePointsAreAValidEscape } from './checks/two-code-points-are-valid-escape';
-import { ParserError } from './interfaces/error';
+import { ParseError } from './interfaces/error';
 
 interface Stringer {
 	valueOf(): string
 }
 
-export function tokenizer(input: { css: Stringer }, options?: { commentsAreTokens?: boolean, onParseError?: (error: ParserError) => void }) {
+export function tokenizer(input: { css: Stringer }, options?: { commentsAreTokens?: boolean, onParseError?: (error: ParseError) => void }) {
 	const css = input.css.valueOf();
 
 	const reader = new Reader(css);
@@ -177,16 +177,16 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 
 				reader.advanceCodePoint();
 
-				ctx.onParseError({
-					message: 'Invalid escape sequence after "\\"',
-					start: reader.representationStart,
-					end: reader.representationEnd,
-					state: [
+				ctx.onParseError(new ParseError(
+					'Invalid escape sequence after "\\"',
+					reader.representationStart,
+					reader.representationEnd,
+					[
 						'4.3.1. Consume a token',
 						'U+005C REVERSE SOLIDUS (\\)',
 						'The input stream does not start with a valid escape sequence',
 					],
-				});
+				));
 
 				return [TokenType.Delim, '\\', reader.representationStart, reader.representationEnd, {
 					value: '\\',
