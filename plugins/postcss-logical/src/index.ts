@@ -98,11 +98,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		};
 	};
 
-	const blockPair: [Axes, Axes] = [blockStart, blockEnd];
-	const inlinePair: [Axes, Axes] = [inlineStart, inlineEnd];
+	// Only used for border-radius
 	const textDirection: [Axes, Axes] = directionConfig.inlineIsHorizontal
 		? [inlineStart, inlineEnd]
-		: [blockStart, blockEnd];
+		: [Axes.Left, Axes.Right];
 
 	return {
 		postcssPlugin: 'postcss-logical',
@@ -145,13 +144,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				transformSide('margin', inlineEnd),
 			),
 			'margin-block': makeTransform(
-				transformSideShorthand('margin', blockPair),
+				transformSideShorthand('margin', directionConfig.block),
 			),
 			'margin-inline': makeTransform(
 				transformSideShorthand('margin', [inlineStart, inlineEnd]),
 			),
 			// 4.3 Offsets
-			'inset-block': makeTransform(transformOffsetShorthand(blockPair)),
+			'inset-block': makeTransform(transformOffsetShorthand(directionConfig.block)),
 			'inset-block-start': makeTransform(transformOffset(blockStart)),
 			'inset-block-end': makeTransform(transformOffset(blockEnd)),
 			'inset-inline': makeTransform(transformOffsetShorthand([inlineStart, inlineEnd])),
@@ -172,7 +171,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				transformSide('padding', inlineEnd),
 			),
 			'padding-block': makeTransform(
-				transformSideShorthand('padding', blockPair),
+				transformSideShorthand('padding', directionConfig.block),
 			),
 			'padding-inline': makeTransform(
 				transformSideShorthand('padding', [inlineStart, inlineEnd]),
@@ -192,10 +191,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				transformBorder('width', inlineEnd),
 			),
 			'border-block-width': makeTransform(
-				transformBorderProperty('width', blockPair),
+				transformBorderProperty('width', directionConfig.block),
 			),
 			'border-inline-width': makeTransform(
-				transformBorderProperty('width', inlinePair),
+				transformBorderProperty('width', directionConfig.inline),
 			),
 			// 4.5.2 Border Style
 			'border-block-start-style': makeTransform(
@@ -211,10 +210,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				transformBorder('style', inlineEnd),
 			),
 			'border-block-style': makeTransform(
-				transformBorderProperty('style', blockPair),
+				transformBorderProperty('style', directionConfig.block),
 			),
 			'border-inline-style': makeTransform(
-				transformBorderProperty('style', inlinePair),
+				transformBorderProperty('style', directionConfig.inline),
 			),
 			// 4.5.3 Border Color
 			'border-block-start-color': makeTransform(
@@ -230,14 +229,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				transformBorder('color', inlineEnd),
 			),
 			'border-block-color': makeTransform(
-				transformBorderProperty('color', blockPair),
+				transformBorderProperty('color', directionConfig.block),
 			),
 			'border-inline-color': makeTransform(
-				transformBorderProperty('color', inlinePair),
+				transformBorderProperty('color', directionConfig.inline),
 			),
 			// 4.5.4 Border Shorthand
 			'border-block': makeTransform(
-				transformBorderShorthand(blockPair),
+				transformBorderShorthand(directionConfig.block),
 			),
 			'border-block-start': makeTransform(
 				transformBorderShorthand([blockStart]),
@@ -246,7 +245,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				transformBorderShorthand([blockEnd]),
 			),
 			'border-inline': makeTransform(
-				transformBorderShorthand(inlinePair),
+				transformBorderShorthand(directionConfig.inline),
 			),
 			'border-inline-start': makeTransform(
 				transformBorderShorthand([inlineStart]),

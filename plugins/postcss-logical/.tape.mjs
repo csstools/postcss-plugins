@@ -106,4 +106,20 @@ postcssTape(plugin)({
 			inlineDirection: 'top-to-bottom'
 		},
 	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-true': {
+		message: 'minimal example',
+		options: {
+			preserve: true
+		}
+	},
+	'examples/example:chinese': {
+		message: 'minimal example',
+		options: {
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		}
+	},
 });

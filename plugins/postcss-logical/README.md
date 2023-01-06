@@ -1,49 +1,55 @@
-# PostCSS logical [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
+# PostCSS Logical Properties and Values [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-logical.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/TODO.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-logical.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/logical-properties-and-values.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-[PostCSS logical] lets you easily create new plugins following some [CSS Specification].
+[PostCSS Logical Properties and Values]  lets you use logical, rather than physical, direction and dimension mappings in CSS, following the [CSS Logical Properties and Values] specification.
 
 ```pcss
-.foo {
-	color: red;
-}
-
-.baz {
-	color: green;
+.element {
+	block-size: 100px;
+	inline-size: 200px;
+	padding-block: 10px 20px;
+	margin-inline: auto;
+	border-block-width: 2px;
+	border-block-style: solid;
 }
 
 /* becomes */
 
-.foo {
-	color: blue;
-}
-
-.baz {
-	color: green;
+.element {
+	height: 100px;
+	width: 200px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border-top-width: 2px;
+	border-bottom-width: 2px;
+	border-top-style: solid;
+	border-bottom-style: solid;
 }
 ```
 
 ## Usage
 
-Add [PostCSS logical] to your project:
+Add [PostCSS Logical Properties and Values] to your project:
 
 ```bash
-npm install postcss @csstools/postcss-logical --save-dev
+npm install postcss postcss-logical --save-dev
 ```
 
 Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssBasePlugin = require('@csstools/postcss-logical');
+const postcssLogical = require('postcss-logical');
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssLogical(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-[PostCSS logical] runs in all Node environments, with special
+[PostCSS Logical Properties and Values] runs in all Node environments, with special
 instructions for:
 
 - [Node](INSTALL.md#node)
@@ -57,41 +63,108 @@ instructions for:
 
 ## Options
 
+### blockDirection & inlineDirection
+
+The `blockDirection` and `inlineDirection` options allow you to specify the direction of the block and inline axes. The default values are `top-to-bottom` and `left-to-right` respectively which would match any latin language.
+
+You might want to tweak these values if you are using a different writing system, such as Arabic, Hebrew or Chinese for example.
+
+```js
+postcssLogical({
+	blockDirection: 'right-to-left',
+	inlineDirection: 'top-to-bottom'
+})
+```
+
+```pcss
+.element {
+	block-size: 100px;
+	inline-size: 200px;
+	padding-block: 10px 20px;
+	margin-inline: auto;
+	border-block-width: 2px;
+	border-block-style: solid;
+}
+
+/* becomes */
+
+.element {
+	width: 100px;
+	height: 200px;
+	padding-right: 10px;
+	padding-left: 20px;
+	margin-top: auto;
+	margin-bottom: auto;
+	border-right-width: 2px;
+	border-left-width: 2px;
+	border-right-style: solid;
+	border-left-style: solid;
+}
+```
+
+Each direction must be one of the following:
+
+- `top-to-bottom`
+- `bottom-to-top`
+- `left-to-right`
+- `right-to-left`
+
+You can't mix two vertical directions or two horizontal directions so for example `top-to-bottom` and `right-to-left` are valid, but `top-to-bottom` and `bottom-to-top` are not.
+
+Please do not that some properties won't be transformed if `inlineDirection` becomes vertical.
+
+These are:
+
+* `float`
+* `clear`
+* `text-align`
+
 ### preserve
 
 The `preserve` option determines whether the original notation
 is preserved. By default, it is not preserved.
 
 ```js
-postcssBasePlugin({ preserve: true })
+postcssLogical({ preserve: true })
 ```
 
 ```pcss
-.foo {
-	color: red;
-}
-
-.baz {
-	color: green;
+.element {
+	block-size: 100px;
+	inline-size: 200px;
+	padding-block: 10px 20px;
+	margin-inline: auto;
+	border-block-width: 2px;
+	border-block-style: solid;
 }
 
 /* becomes */
 
-.foo {
-	color: blue;
-	color: red;
-}
-
-.baz {
-	color: green;
+.element {
+	height: 100px;
+	block-size: 100px;
+	width: 200px;
+	inline-size: 200px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-block: 10px 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-inline: auto;
+	border-top-width: 2px;
+	border-bottom-width: 2px;
+	border-block-width: 2px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-block-style: solid;
 }
 ```
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[css-url]: https://cssdb.org/#TODO
+[css-url]: https://cssdb.org/#logical-properties-and-values
 [discord]: https://discord.gg/bUadyRwkJS
-[npm-url]: https://www.npmjs.com/package/@csstools/postcss-logical
+[npm-url]: https://www.npmjs.com/package/postcss-logical
 
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS logical]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical
-[CSS Specification]: #TODO
+[PostCSS Logical Properties and Values]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical
+[CSS Logical Properties and Values]: https://www.w3.org/TR/css-logical-1/

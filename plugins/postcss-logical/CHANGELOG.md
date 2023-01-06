@@ -3,6 +3,9 @@
 ### Unreleased (major)
 
 - Updated: Support for Node v14+ (major).
+- Added: Support for `block-size`, `inline-size` and `caption-side`.
+- Removed: Support for the `logical` keyword within `margin`, `padding`, `border-width`, `border-style`, `border-color` properties. (major)
+- Updated: The plugin now requires block and inline direction to be configured (uses `top-to-bottom` and `left-to-right` respectively) and no longer introduces `:dir` (major).
 
 ### 5.0.4 (February 5, 2022)
 

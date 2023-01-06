@@ -1,7 +1,12 @@
-.foo {
-	color: blue;
-}
-
-.baz {
-	color: green;
+.element {
+	height: 100px;
+	width: 200px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border-top-width: 2px;
+	border-bottom-width: 2px;
+	border-top-style: solid;
+	border-bottom-style: solid;
 }

@@ -70,10 +70,10 @@
 		"postcss-plugin"
 	],
 	"csstools": {
-		"cssdbId": "TODO",
+		"cssdbId": "logical-properties-and-values",
 		"exportName": "postcssLogical",
 		"humanReadableName": "PostCSS Logical Properties and Values",
-		"specUrl": "#TODO"
+		"specUrl": "https://www.w3.org/TR/css-logical-1/"
 	},
 	"volta": {
 		"extends": "../../package.json"

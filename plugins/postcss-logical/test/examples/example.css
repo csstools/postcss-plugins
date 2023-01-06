@@ -1,7 +1,8 @@
-.foo {
-	color: red;
-}
-
-.baz {
-	color: green;
+.element {
+	block-size: 100px;
+	inline-size: 200px;
+	padding-block: 10px 20px;
+	margin-inline: auto;
+	border-block-width: 2px;
+	border-block-style: solid;
 }
