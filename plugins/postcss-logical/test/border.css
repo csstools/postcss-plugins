@@ -1,0 +1,118 @@
+.border-width {
+	border-block-start-width: 1px;
+	border-block-end-width: 2px;
+	border-inline-start-width: 3px;
+	border-inline-end-width: 4px;
+}
+
+.border-width-block {
+	border-block-width: 1px;
+}
+
+.border-width-block {
+	border-block-width: 1px var(--border-width);
+}
+
+.border-width-block {
+	border-block-width: 1px 2px 3px;
+}
+
+.border-width-inline {
+	border-inline-width: 1px;
+}
+
+.border-width-inline {
+	border-inline-width: var(--border-width) 2px;
+}
+
+.border-width-inline {
+	border-inline-width: 1px 2px 3px;
+}
+
+.border-style {
+	border-block-start-style: dotted;
+	border-block-end-style: dashed;
+	border-inline-start-style: solid;
+	border-inline-end-style: double;
+}
+
+.border-style-block {
+	border-block-style: dotted;
+}
+
+.border-style-block {
+	border-block-style: dotted var(--border-style);
+}
+
+.border-style-block {
+	border-block-style: dotted dashed solid;
+}
+
+.border-style-inline {
+	border-inline-style: dotted;
+}
+
+.border-style-inline {
+	border-inline-style: var(--border-style) dotted;
+}
+
+.border-style-inline {
+	border-inline-style: dotted dashed solid;
+}
+
+.border-color {
+	border-block-start-color: red;
+	border-block-end-color: yellow;
+	border-inline-start-color: green;
+	border-inline-end-color: blue;
+}
+
+.border-color-block {
+	border-block-color: red;
+}
+
+.border-color-block {
+	border-block-color: red var(--border-color);
+}
+
+.border-color-block {
+	border-block-color: red yellow green;
+}
+
+.border-color-inline {
+	border-inline-color: red;
+}
+
+.border-color-inline {
+	border-inline-color: var(--border-color) yellow;
+}
+
+.border-color-inline {
+	border-inline-color: red yellow green;
+}
+
+.border-shorthand {
+	border-block-start: 1px dotted red;
+	border-block-end: 2px dashed yellow;
+	border-inline-start: 3px solid green;
+	border-inline-end: 4px double blue;
+}
+
+.border-shorthand-block {
+	border-block: 1px dotted red;
+}
+
+.border-shorthand-inline {
+	border-inline: 1px dotted red;
+}
+
+.border-shorthand {
+	border-block: var(--some-var);
+}
+
+.border-radius {
+	border-start-start-radius: 1px;
+	border-start-end-radius: 2px;
+	border-end-start-radius: 3px;
+	border-end-end-radius: 4px;
+}

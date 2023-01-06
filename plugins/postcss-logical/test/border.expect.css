@@ -1,0 +1,133 @@
+.border-width {
+	border-top-width: 1px;
+	border-bottom-width: 2px;
+	border-left-width: 3px;
+	border-right-width: 4px;
+}
+
+.border-width-block {
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+}
+
+.border-width-block {
+	border-top-width: 1px;
+	border-bottom-width: var(--border-width);
+}
+
+.border-width-block {
+	border-block-width: 1px 2px 3px;
+}
+
+.border-width-inline {
+	border-left-width: 1px;
+	border-right-width: 1px;
+}
+
+.border-width-inline {
+	border-left-width: var(--border-width);
+	border-right-width: 2px;
+}
+
+.border-width-inline {
+	border-inline-width: 1px 2px 3px;
+}
+
+.border-style {
+	border-top-style: dotted;
+	border-bottom-style: dashed;
+	border-left-style: solid;
+	border-right-style: double;
+}
+
+.border-style-block {
+	border-top-style: dotted;
+	border-bottom-style: dotted;
+}
+
+.border-style-block {
+	border-top-style: dotted;
+	border-bottom-style: var(--border-style);
+}
+
+.border-style-block {
+	border-block-style: dotted dashed solid;
+}
+
+.border-style-inline {
+	border-left-style: dotted;
+	border-right-style: dotted;
+}
+
+.border-style-inline {
+	border-left-style: var(--border-style);
+	border-right-style: dotted;
+}
+
+.border-style-inline {
+	border-inline-style: dotted dashed solid;
+}
+
+.border-color {
+	border-top-color: red;
+	border-bottom-color: yellow;
+	border-left-color: green;
+	border-right-color: blue;
+}
+
+.border-color-block {
+	border-top-color: red;
+	border-bottom-color: red;
+}
+
+.border-color-block {
+	border-top-color: red;
+	border-bottom-color: var(--border-color);
+}
+
+.border-color-block {
+	border-block-color: red yellow green;
+}
+
+.border-color-inline {
+	border-left-color: red;
+	border-right-color: red;
+}
+
+.border-color-inline {
+	border-left-color: var(--border-color);
+	border-right-color: yellow;
+}
+
+.border-color-inline {
+	border-inline-color: red yellow green;
+}
+
+.border-shorthand {
+	border-top: 1px dotted red;
+	border-bottom: 2px dashed yellow;
+	border-left: 3px solid green;
+	border-right: 4px double blue;
+}
+
+.border-shorthand-block {
+	border-top: 1px dotted red;
+	border-bottom: 1px dotted red;
+}
+
+.border-shorthand-inline {
+	border-left: 1px dotted red;
+	border-right: 1px dotted red;
+}
+
+.border-shorthand {
+	border-top: var(--some-var);
+	border-bottom: var(--some-var);
+}
+
+.border-radius {
+	border-top-left-radius: 1px;
+	border-top-right-radius: 2px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 4px;
+}

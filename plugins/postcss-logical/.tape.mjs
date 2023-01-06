@@ -94,4 +94,16 @@ postcssTape(plugin)({
 			inlineDirection: 'top-to-bottom'
 		},
 	},
+	border: {
+		message: 'supports logical "border" properties',
+		warnings: 6,
+	},
+	'border:chinese': {
+		message: 'supports logical "border" properties { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
+		warnings: 6,
+		options: {
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
+	},
 });
