@@ -10,12 +10,12 @@ export declare class MediaFeature {
     before: Array<CSSToken>;
     after: Array<CSSToken>;
     constructor(feature: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange, before?: Array<CSSToken>, after?: Array<CSSToken>);
-    getName(): void;
-    getNameToken(): void;
+    getName(): string;
+    getNameToken(): CSSToken;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange): number | string;
-    at(index: number | string): MediaFeatureBoolean | MediaFeaturePlain | MediaFeatureRange;
+    at(index: number | string): MediaFeatureBoolean | MediaFeaturePlain | MediaFeatureRange | undefined;
     walk(cb: (entry: {
         node: MediaFeatureWalkerEntry;
         parent: MediaFeatureWalkerParent;

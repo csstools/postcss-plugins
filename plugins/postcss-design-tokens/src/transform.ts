@@ -51,7 +51,7 @@ function transformComponentValue(node: ComponentValue, tokens: Map<string, Token
 		return;
 	}
 
-	if (node.nameTokenValue().toLowerCase() !== opts.valueFunctionName) {
+	if (node.getName().toLowerCase() !== opts.valueFunctionName) {
 		return;
 	}
 

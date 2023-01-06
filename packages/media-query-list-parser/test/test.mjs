@@ -1,5 +1,17 @@
 import './api/options.mjs';
 
+import './cases/custom-media/0001.mjs';
+import './cases/custom-media/0002.mjs';
+import './cases/custom-media/0003.mjs';
+import './cases/custom-media/0004.mjs';
+import './cases/custom-media/0005.mjs';
+import './cases/custom-media/0006.mjs';
+import './cases/custom-media/0007.mjs';
+import './cases/custom-media/0008.mjs';
+import './cases/custom-media/0009.mjs';
+import './cases/custom-media/0010.mjs';
+import './cases/custom-media/0011.mjs';
+
 import './cases/media-not/0001.mjs';
 
 import './cases/mf-boolean/0001.mjs';

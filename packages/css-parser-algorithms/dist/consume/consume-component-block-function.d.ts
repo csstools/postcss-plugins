@@ -13,11 +13,11 @@ export declare class FunctionNode {
     endToken: CSSToken;
     value: Array<ComponentValue>;
     constructor(name: TokenFunction, endToken: CSSToken, value: Array<ComponentValue>);
-    nameTokenValue(): string;
+    getName(): string;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: ComponentValue): number | string;
-    at(index: number | string): ComponentValue;
+    at(index: number | string): ComponentValue | undefined;
     walk(cb: (entry: {
         node: ComponentValue;
         parent: ContainerNode;
@@ -39,7 +39,7 @@ export declare class SimpleBlockNode {
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: ComponentValue): number | string;
-    at(index: number | string): ComponentValue;
+    at(index: number | string): ComponentValue | undefined;
     walk(cb: (entry: {
         node: ComponentValue;
         parent: ContainerNode;

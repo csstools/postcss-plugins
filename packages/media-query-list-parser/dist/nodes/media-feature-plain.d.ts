@@ -9,12 +9,12 @@ export declare class MediaFeaturePlain {
     colon: TokenColon;
     value: MediaFeatureValue;
     constructor(name: MediaFeatureName, colon: TokenColon, value: MediaFeatureValue);
-    getName(): void;
-    getNameToken(): void;
+    getName(): string;
+    getNameToken(): CSSToken;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaFeatureName | MediaFeatureValue): number | string;
-    at(index: number | string): MediaFeatureName | MediaFeatureValue;
+    at(index: number | string): MediaFeatureName | MediaFeatureValue | undefined;
     walk(cb: (entry: {
         node: MediaFeaturePlainWalkerEntry;
         parent: MediaFeaturePlainWalkerParent;
@@ -38,4 +38,4 @@ export declare class MediaFeaturePlain {
 }
 export type MediaFeaturePlainWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
 export type MediaFeaturePlainWalkerParent = MediaFeatureValueWalkerParent | MediaFeaturePlain;
-export declare function parseMediaFeaturePlain(componentValues: Array<ComponentValue>): false | MediaFeaturePlain;
+export declare function parseMediaFeaturePlain(componentValues: Array<ComponentValue>): MediaFeaturePlain | false;

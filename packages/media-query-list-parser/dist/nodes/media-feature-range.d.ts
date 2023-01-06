@@ -1,5 +1,6 @@
 import { ComponentValue } from '@csstools/css-parser-algorithms';
 import { CSSToken, TokenDelim } from '@csstools/css-tokenizer';
+import { MediaFeatureComparison } from './media-feature-comparison';
 import { MediaFeatureName } from './media-feature-name';
 import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
 import { NodeType } from '../util/node-type';
@@ -10,13 +11,13 @@ export declare class MediaFeatureRangeNameValue {
     operator: [TokenDelim, TokenDelim] | [TokenDelim];
     value: MediaFeatureValue;
     constructor(name: MediaFeatureName, operator: [TokenDelim, TokenDelim] | [TokenDelim], value: MediaFeatureValue);
-    operatorKind(): false | import("./media-feature-comparison").MediaFeatureComparison;
-    getName(): void;
-    getNameToken(): void;
+    operatorKind(): MediaFeatureComparison | false;
+    getName(): string;
+    getNameToken(): CSSToken;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaFeatureName | MediaFeatureValue): number | string;
-    at(index: number | string): MediaFeatureName | MediaFeatureValue;
+    at(index: number | string): MediaFeatureName | MediaFeatureValue | undefined;
     walk(cb: (entry: {
         node: MediaFeatureRangeWalkerEntry;
         parent: MediaFeatureRangeWalkerParent;
@@ -44,13 +45,13 @@ export declare class MediaFeatureRangeValueName {
     operator: [TokenDelim, TokenDelim] | [TokenDelim];
     value: MediaFeatureValue;
     constructor(name: MediaFeatureName, operator: [TokenDelim, TokenDelim] | [TokenDelim], value: MediaFeatureValue);
-    operatorKind(): false | import("./media-feature-comparison").MediaFeatureComparison;
-    getName(): void;
-    getNameToken(): void;
+    operatorKind(): MediaFeatureComparison | false;
+    getName(): string;
+    getNameToken(): CSSToken;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaFeatureName | MediaFeatureValue): number | string;
-    at(index: number | string): MediaFeatureName | MediaFeatureValue;
+    at(index: number | string): MediaFeatureName | MediaFeatureValue | undefined;
     walk(cb: (entry: {
         node: MediaFeatureRangeWalkerEntry;
         parent: MediaFeatureRangeWalkerParent;
@@ -80,14 +81,14 @@ export declare class MediaFeatureRangeValueNameValue {
     valueTwo: MediaFeatureValue;
     valueTwoOperator: [TokenDelim, TokenDelim] | [TokenDelim];
     constructor(name: MediaFeatureName, valueOne: MediaFeatureValue, valueOneOperator: [TokenDelim, TokenDelim] | [TokenDelim], valueTwo: MediaFeatureValue, valueTwoOperator: [TokenDelim, TokenDelim] | [TokenDelim]);
-    valueOneOperatorKind(): false | import("./media-feature-comparison").MediaFeatureComparison;
-    valueTwoOperatorKind(): false | import("./media-feature-comparison").MediaFeatureComparison;
-    getName(): void;
-    getNameToken(): void;
+    valueOneOperatorKind(): MediaFeatureComparison | false;
+    valueTwoOperatorKind(): MediaFeatureComparison | false;
+    getName(): string;
+    getNameToken(): CSSToken;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaFeatureName | MediaFeatureValue): number | string;
-    at(index: number | string): MediaFeatureName | MediaFeatureValue;
+    at(index: number | string): MediaFeatureName | MediaFeatureValue | undefined;
     walk(cb: (entry: {
         node: MediaFeatureRangeWalkerEntry;
         parent: MediaFeatureRangeWalkerParent;
@@ -116,5 +117,5 @@ export declare class MediaFeatureRangeValueNameValue {
 }
 export type MediaFeatureRangeWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
 export type MediaFeatureRangeWalkerParent = MediaFeatureValueWalkerParent | MediaFeatureRange;
-export declare function parseMediaFeatureRange(componentValues: Array<ComponentValue>): false | MediaFeatureRangeNameValue | MediaFeatureRangeValueName | MediaFeatureRangeValueNameValue;
+export declare function parseMediaFeatureRange(componentValues: Array<ComponentValue>): MediaFeatureRange | false;
 export declare const mediaDescriptors: Set<string>;

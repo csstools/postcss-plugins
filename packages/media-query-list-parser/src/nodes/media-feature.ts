@@ -20,12 +20,12 @@ export class MediaFeature {
 		this.after = after;
 	}
 
-	getName() {
-		this.feature.getName();
+	getName(): string {
+		return this.feature.getName();
 	}
 
-	getNameToken() {
-		this.feature.getNameToken();
+	getNameToken(): CSSToken {
+		return this.feature.getNameToken();
 	}
 
 	tokens(): Array<CSSToken> {
@@ -48,7 +48,7 @@ export class MediaFeature {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaFeatureBoolean | MediaFeaturePlain | MediaFeatureRange | undefined {
 		if (index === 'feature') {
 			return this.feature;
 		}

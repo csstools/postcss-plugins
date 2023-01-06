@@ -1,6 +1,7 @@
 import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { MediaInParens, MediaInParensWalkerEntry, MediaInParensWalkerParent } from './media-in-parens';
 import { NodeType } from '../util/node-type';
+import { ComponentValue } from '@csstools/css-parser-algorithms';
 
 export class MediaAnd {
 	type = NodeType.MediaAnd;
@@ -32,7 +33,7 @@ export class MediaAnd {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaInParens | null {
 		if (index === 'media') {
 			return this.media;
 		}

@@ -27,7 +27,7 @@ export class GeneralEnclosed {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): ComponentValue | undefined {
 		if (index === 'value') {
 			return this.value;
 		}

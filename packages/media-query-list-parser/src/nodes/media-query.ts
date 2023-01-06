@@ -25,7 +25,7 @@ export class MediaQueryWithType {
 		}
 	}
 
-	getModifier() {
+	getModifier(): string {
 		if (!this.modifier.length) {
 			return '';
 		}
@@ -68,7 +68,7 @@ export class MediaQueryWithType {
 		return copy;
 	}
 
-	getMediaType() {
+	getMediaType(): string {
 		if (!this.mediaType.length) {
 			return '';
 		}
@@ -83,7 +83,7 @@ export class MediaQueryWithType {
 		return '';
 	}
 
-	tokens() {
+	tokens(): Array<CSSToken> {
 		if (this.and && this.media) {
 			return [
 				...this.modifier,
@@ -99,7 +99,7 @@ export class MediaQueryWithType {
 		];
 	}
 
-	toString() {
+	toString(): string {
 		if (this.and && this.media) {
 			return stringify(...this.modifier) + stringify(...this.mediaType) + stringify(...this.and) + this.media.toString();
 		}
@@ -115,7 +115,7 @@ export class MediaQueryWithType {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaCondition | undefined {
 		if (index === 'media') {
 			return this.media;
 		}
@@ -232,7 +232,7 @@ export class MediaQueryWithoutType {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaCondition | undefined {
 		if (index === 'media') {
 			return this.media;
 		}

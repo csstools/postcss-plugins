@@ -14,7 +14,7 @@ export type CodePointReader = {
 
 	cursorPositionOfLastReadCodePoint(): number;
 
-	advanceCodePoint(n?: number)
+	advanceCodePoint(n?: number): void
 	readCodePoint(n?: number): number | false
 	unreadCodePoint(n?: number): boolean
 }

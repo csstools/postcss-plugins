@@ -29,7 +29,7 @@ export class MediaCondition {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaNot | MediaInParens | MediaConditionListWithAnd | MediaConditionListWithOr | undefined {
 		if (index === 'media') {
 			return this.media;
 		}

@@ -7,11 +7,11 @@ export declare class MediaFeatureBoolean {
     name: MediaFeatureName;
     constructor(name: MediaFeatureName);
     getName(): string;
-    getNameToken(): import("@csstools/css-tokenizer").TokenIdent;
+    getNameToken(): CSSToken;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaFeatureName): number | string;
-    at(index: number | string): MediaFeatureName;
+    at(index: number | string): MediaFeatureName | undefined;
     toJSON(): {
         type: NodeType;
         name: {

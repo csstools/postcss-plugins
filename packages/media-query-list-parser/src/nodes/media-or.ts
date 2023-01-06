@@ -32,7 +32,7 @@ export class MediaOr {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaInParens | undefined {
 		if (index === 'media') {
 			return this.media;
 		}

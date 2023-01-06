@@ -1,4 +1,5 @@
 export declare enum NodeType {
+    CustomMedia = "custom-media",
     GeneralEnclosed = "general-enclosed",
     MediaAnd = "media-and",
     MediaCondition = "media-condition",

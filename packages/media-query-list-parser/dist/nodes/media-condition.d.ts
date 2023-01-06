@@ -10,7 +10,7 @@ export declare class MediaCondition {
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaNot | MediaInParens | MediaConditionListWithAnd | MediaConditionListWithOr): number | string;
-    at(index: number | string): MediaInParens | MediaConditionListWithAnd | MediaConditionListWithOr | MediaNot;
+    at(index: number | string): MediaNot | MediaInParens | MediaConditionListWithAnd | MediaConditionListWithOr | undefined;
     walk(cb: (entry: {
         node: MediaConditionWalkerEntry;
         parent: MediaConditionWalkerParent;

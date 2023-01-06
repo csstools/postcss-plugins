@@ -12,11 +12,11 @@ export class MediaFeatureBoolean {
 		this.name = name;
 	}
 
-	getName() {
+	getName(): string {
 		return this.name.getName();
 	}
 
-	getNameToken() {
+	getNameToken(): CSSToken {
 		return this.name.getNameToken();
 	}
 
@@ -36,7 +36,7 @@ export class MediaFeatureBoolean {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaFeatureName | undefined {
 		if (index === 'name') {
 			return this.name;
 		}

@@ -9,7 +9,7 @@ export declare class MediaOr {
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaInParens): number | string;
-    at(index: number | string): MediaInParens;
+    at(index: number | string): MediaInParens | undefined;
     walk(cb: (entry: {
         node: MediaOrWalkerEntry;
         parent: MediaOrWalkerParent;

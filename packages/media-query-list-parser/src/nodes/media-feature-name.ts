@@ -16,12 +16,12 @@ export class MediaFeatureName {
 		this.after = after;
 	}
 
-	getName() {
+	getName(): string {
 		const token = (((this.name as TokenNode).value as CSSToken) as TokenIdent);
 		return token[4].value;
 	}
 
-	getNameToken() {
+	getNameToken(): CSSToken {
 		const token = (((this.name as TokenNode).value as CSSToken) as TokenIdent);
 		return token;
 	}
@@ -46,7 +46,7 @@ export class MediaFeatureName {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): ComponentValue | undefined {
 		if (index === 'name') {
 			return this.name;
 		}
@@ -77,7 +77,7 @@ export class MediaFeatureName {
 	}
 }
 
-export function parseMediaFeatureName(componentValues: Array<ComponentValue>) {
+export function parseMediaFeatureName(componentValues: Array<ComponentValue>): MediaFeatureName | false {
 	let singleIdentTokenIndex = -1;
 
 	for (let i = 0; i < componentValues.length; i++) {

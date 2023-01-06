@@ -64,7 +64,7 @@ export class FunctionNode {
 		this.value = value;
 	}
 
-	nameTokenValue(): string {
+	getName(): string {
 		return this.name[4].value;
 	}
 
@@ -111,7 +111,7 @@ export class FunctionNode {
 		return this.value.indexOf(item);
 	}
 
-	at(index: number | string) {
+	at(index: number | string): ComponentValue | undefined {
 		if (typeof index === 'number') {
 			if (index < 0) {
 				index = this.value.length + index;
@@ -149,7 +149,7 @@ export class FunctionNode {
 	toJSON() {
 		return {
 			type: this.type,
-			name: this.nameTokenValue(),
+			name: this.getName(),
 			tokens: this.tokens(),
 			value: this.value.map((x) => x.toJSON()),
 		};
@@ -274,7 +274,7 @@ export class SimpleBlockNode {
 		return this.value.indexOf(item);
 	}
 
-	at(index: number | string) {
+	at(index: number | string): ComponentValue | undefined {
 		if (typeof index === 'number') {
 			if (index < 0) {
 				index = this.value.length + index;

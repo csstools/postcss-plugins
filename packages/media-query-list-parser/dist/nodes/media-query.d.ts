@@ -13,10 +13,10 @@ export declare class MediaQueryWithType {
     getModifier(): string;
     negateQuery(): MediaQuery;
     getMediaType(): string;
-    tokens(): CSSToken[];
+    tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaCondition): number | string;
-    at(index: number | string): MediaCondition;
+    at(index: number | string): MediaCondition | undefined;
     walk(cb: (entry: {
         node: MediaQueryWithTypeWalkerEntry;
         parent: MediaQueryWithTypeWalkerParent;
@@ -42,7 +42,7 @@ export declare class MediaQueryWithoutType {
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaCondition): number | string;
-    at(index: number | string): MediaCondition;
+    at(index: number | string): MediaCondition | undefined;
     walk(cb: (entry: {
         node: MediaQueryWithoutTypeWalkerEntry;
         parent: MediaQueryWithoutTypeWalkerParent;

@@ -16,7 +16,7 @@ export function transformMediaFeatureValue(value: MediaFeatureValue) {
 				continue;
 			}
 
-			if (isFunctionNode(node) && node.nameTokenValue().toLowerCase() === 'calc') {
+			if (isFunctionNode(node) && node.getName().toLowerCase() === 'calc') {
 				nodes.push(node);
 				continue;
 			}
@@ -67,7 +67,7 @@ export function transformMediaFeatureValue(value: MediaFeatureValue) {
 
 		// Calc
 		{
-			if (isFunctionNode(firstValue) && firstValue.nameTokenValue().toLowerCase() === 'calc') {
+			if (isFunctionNode(firstValue) && firstValue.getName().toLowerCase() === 'calc') {
 				// Avoid infinite loops
 				if (firstValue.toString().includes(precision.toString())) {
 					return;
@@ -76,7 +76,7 @@ export function transformMediaFeatureValue(value: MediaFeatureValue) {
 				firstValueModified = modifyCalc(firstValue);
 			}
 
-			if (isFunctionNode(secondValue) && secondValue.nameTokenValue().toLowerCase() === 'calc') {
+			if (isFunctionNode(secondValue) && secondValue.getName().toLowerCase() === 'calc') {
 				// Avoid infinite loops
 				if (secondValue.toString().includes(precision.toString())) {
 					return;
@@ -199,7 +199,7 @@ export function transformMediaFeatureValue(value: MediaFeatureValue) {
 
 		// Single calc as <ratio>
 		// "calc(5 / 3)" -> "calc((5 / 3) * 1000000)/1000000"
-		if (isFunctionNode(componentValue) && componentValue.nameTokenValue().toLowerCase() === 'calc') {
+		if (isFunctionNode(componentValue) && componentValue.getName().toLowerCase() === 'calc') {
 			componentValues.splice(
 				i,
 				1,
