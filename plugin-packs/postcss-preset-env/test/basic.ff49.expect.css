@@ -29,15 +29,9 @@
 }
 }
 
-.test-logical-properties-and-values:dir(ltr) {
-	margin: 1px 4px 3px 2px;
-}
-
-.test-logical-properties-and-values:dir(rtl) {
-	margin: 1px 2px 3px 4px;
-}
-
 .test-logical-properties-and-values {
+	margin-left: auto;
+	margin-right: auto;
 	order: 3;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -329,12 +323,8 @@
 	display: ruby-text flow;
 }
 
-.logical-float:dir(ltr) {
+.logical-float {
 	float: left;
-}
-
-.logical-float:dir(rtl) {
-	float: right;
 }
 
 .color-function {
@@ -499,12 +489,8 @@
 	text-decoration-thickness: 3px;
 }
 
-.stage__container:dir(ltr) {
+.stage__container {
 	left: var(--size, 1rem);
-}
-
-.stage__container:dir(rtl) {
-	right: var(--size, 1rem);
 }
 
 :scope {

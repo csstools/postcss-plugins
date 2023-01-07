@@ -30,15 +30,9 @@
 }
 }
 
-[dir="ltr"] .test-logical-properties-and-values {
-	margin: 1px 4px 3px 2px;
-}
-
-[dir="rtl"] .test-logical-properties-and-values {
-	margin: 1px 2px 3px 4px;
-}
-
 .test-logical-properties-and-values {
+	margin-left: auto;
+	margin-right: auto;
 	order: 3;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -440,12 +434,8 @@ h6.test-custom-selectors {
 	display: ruby-text flow;
 }
 
-[dir="ltr"] .logical-float {
+.logical-float {
 	float: left;
-}
-
-[dir="rtl"] .logical-float {
-	float: right;
 }
 
 .color-function {
@@ -609,22 +599,9 @@ h6.test-custom-selectors {
 	text-decoration-thickness: 3px;
 }
 
-[dir="ltr"] .stage__container {
+.stage__container {
 	left: 1rem;
 	left: var(--size, 1rem);
-}
-
-[dir="rtl"] .stage__container {
-	right: 1rem;
-	right: var(--size, 1rem);
-}
-
-[dir="ltr"] .stage__container {
-	left: 1rem;
-}
-
-[dir="rtl"] .stage__container {
-	right: 1rem;
 }
 
 :root {
