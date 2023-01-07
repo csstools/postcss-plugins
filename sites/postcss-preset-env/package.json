@@ -22,7 +22,7 @@
 		"css": "postcss src/static/css/styles.css -o dist/static/css/styles.css --watch",
 		"js": "rollup -c rollup.config.mjs -w",
 		"eleventy": "eleventy --watch",
-		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });",
+		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');\"",
 		"browsersync": "browser-sync start --server 'dist' --files 'dist' --port 8080 --no-notify",
 		"build": "npm run clean && npm run build:css && npm run build:js && npm run build:eleventy",
 		"build:js": "rollup -c rollup.config.mjs",
@@ -70,13 +70,13 @@
 		"directory": "sites/postcss-preset-env"
 	},
 	"dependencies": {
-		"@11ty/eleventy": "^1.0.1",
+		"@11ty/eleventy": "^2.0.0-canary.25",
 		"@babel/core": "^7.18.2",
 		"@babel/preset-env": "^7.18.2",
 		"@rollup/plugin-babel": "^6.0.0",
-		"@rollup/plugin-commonjs": "^23.0.0",
+		"@rollup/plugin-commonjs": "^24.0.0",
 		"@rollup/plugin-node-resolve": "^15.0.0",
-		"@rollup/plugin-terser": "^0.1.0",
+		"@rollup/plugin-terser": "^0.3.0",
 		"babel-eslint": "^10.1.0",
 		"cssdb": "^7.0.0",
 		"cssnano": "^5.1.10",
@@ -98,7 +98,7 @@
 	},
 	"devDependencies": {
 		"@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
-		"@rollup/plugin-json": "^5.0.0",
+		"@rollup/plugin-json": "^6.0.0",
 		"browser-sync": "^2.27.10",
 		"rollup-plugin-polyfill-node": "^0.11.0"
 	},
