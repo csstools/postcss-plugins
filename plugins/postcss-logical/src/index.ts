@@ -1,6 +1,5 @@
 import type { Declaration, PluginCreator, Result } from 'postcss';
 import { Axes, Direction, DirectionConfig, DirectionFlow } from './lib/types';
-import { hasKeyframesAtRuleAncestor } from './lib/has-keyframes-atrule-ancestor';
 import {
 	transformBorder,
 	transformBorderProperty,
@@ -74,7 +73,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			decl: Declaration,
 			{ result }: { result: Result },
 		) => {
-			if (!transform || hasKeyframesAtRuleAncestor(decl)) {
+			if (!transform) {
 				return;
 			}
 			const parent = decl.parent;
