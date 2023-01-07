@@ -5,6 +5,9 @@ import './test-reader.mjs';
 import './code-points/code-points.mjs';
 import './code-points/ranges.mjs';
 
+// Fuzz
+import './fuzz/0001.mjs';
+
 // Tokens
 import './token/basic.mjs';
 import './token/cdo.mjs';

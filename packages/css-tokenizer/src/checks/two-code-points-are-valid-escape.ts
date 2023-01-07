@@ -1,4 +1,5 @@
-import { LINE_FEED, REVERSE_SOLIDUS } from '../code-points/code-points';
+import { REVERSE_SOLIDUS } from '../code-points/code-points';
+import { isNewLine } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
 
@@ -10,7 +11,7 @@ export function checkIfTwoCodePointsAreAValidEscape(ctx: Context, reader: CodePo
 	}
 
 	// Otherwise, if the second code point is a newline, return false.
-	if (reader.codePointSource[reader.cursor+1] === LINE_FEED) {
+	if (isNewLine(reader.codePointSource[reader.cursor+1])) {
 		return false;
 	}
 
