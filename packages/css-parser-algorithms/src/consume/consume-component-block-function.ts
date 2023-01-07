@@ -1,4 +1,4 @@
-import { CSSToken, mirrorVariantType, stringify, TokenType, isToken, TokenFunction, ParseError } from '@csstools/css-tokenizer';
+import { CSSToken, mirrorVariantType, mirrorVariant, stringify, TokenType, isToken, TokenFunction, ParseError } from '@csstools/css-tokenizer';
 import { Context } from '../interfaces/context';
 import { ComponentValueType } from '../util/component-value-type';
 
@@ -66,6 +66,16 @@ export class FunctionNode {
 
 	getName(): string {
 		return this.name[4].value;
+	}
+
+	/**
+	 * Normalize the current Function:
+	 * - if the "endToken" is EOF, replace with a ")-token"
+	 */
+	normalize() {
+		if (this.endToken[0] === TokenType.EOF) {
+			this.endToken = [TokenType.CloseParen, ')', -1, -1, undefined];
+		}
 	}
 
 	tokens(): Array<CSSToken> {
@@ -229,6 +239,19 @@ export class SimpleBlockNode {
 		this.startToken = startToken;
 		this.endToken = endToken;
 		this.value = value;
+	}
+
+	/**
+	 * Normalize the current Simple Block:
+	 * - if the "endToken" is EOF, replace with the mirror token of the "startToken"
+	 */
+	normalize() {
+		if (this.endToken[0] === TokenType.EOF) {
+			const mirror = mirrorVariant(this.startToken);
+			if (mirror) {
+				this.endToken = mirror;
+			}
+		}
 	}
 
 	tokens(): Array<CSSToken> {

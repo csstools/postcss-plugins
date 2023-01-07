@@ -14,6 +14,11 @@ export declare class FunctionNode {
     value: Array<ComponentValue>;
     constructor(name: TokenFunction, endToken: CSSToken, value: Array<ComponentValue>);
     getName(): string;
+    /**
+     * Normalize the current Function:
+     * - if the "endToken" is EOF, replace with a ")-token"
+     */
+    normalize(): void;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: ComponentValue): number | string;
@@ -36,6 +41,11 @@ export declare class SimpleBlockNode {
     endToken: CSSToken;
     value: Array<ComponentValue>;
     constructor(startToken: CSSToken, endToken: CSSToken, value: Array<ComponentValue>);
+    /**
+     * Normalize the current Simple Block:
+     * - if the "endToken" is EOF, replace with the mirror token of the "startToken"
+     */
+    normalize(): void;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: ComponentValue): number | string;
