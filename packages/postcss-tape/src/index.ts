@@ -12,6 +12,7 @@ import syntaxHTML from 'postcss-html';
 import { formatGitHubActionAnnotation } from './github-annotations';
 import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts';
 import noopPlugin from './noop-plugin';
+import { reduceInformationInCssSyntaxError } from './reduce-css-syntax-error';
 
 const emitGitHubAnnotations = process.env.GITHUB_ACTIONS && process.env.ENABLE_ANNOTATIONS_FOR_NODE === 'true' && process.env.ENABLE_ANNOTATIONS_FOR_OS === 'true';
 
@@ -179,7 +180,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			const input = await fsp.readFile(testFilePath, 'utf8');
 
 			// Check errors on expect file being missing
-			let expected: string|false = '';
+			let expected: string | false = '';
 			try {
 				expected = await fsp.readFile(expectFilePath, 'utf8');
 			} catch (_) {
@@ -212,6 +213,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 					syntax: postcssSyntax(testCaseOptions),
 				});
 			} catch (err) {
+				reduceInformationInCssSyntaxError(err);
 				sawException = true;
 				if (testCaseOptions.exception && testCaseOptions.exception.test(err.message)) {
 					// expected an exception and got one.
@@ -285,7 +287,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 					) {
 						throw new Error('Sourcemap is broken');
 					}
-				} catch (err) {
+				} catch (_) {
 					hasErrors = true;
 
 					const helpText = '\nThis is most likely a newly created PostCSS AST Node without a value for "source".\nsee :\n- https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#24-set-nodesource-for-new-nodes\n- https://postcss.org/api/#node-source';
@@ -361,6 +363,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				try {
 					assert.strictEqual(resultFromOldestPostCSS.css.toString(), resultString);
 				} catch (err) {
+					reduceInformationInCssSyntaxError(err);
 					hasErrors = true;
 
 					if (emitGitHubAnnotations) {
