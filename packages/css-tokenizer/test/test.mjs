@@ -37,3 +37,9 @@ import './wpt/inclusive-ranges.mjs';
 
 // Mutations
 import './mutations/ident.mjs';
+
+// css-tokenizer-tests
+//
+// Keep this as the last test,
+// it is only intended to increase test coverage by double checking more obscure cases.
+import './css-tokenizer-tests/test.mjs';
