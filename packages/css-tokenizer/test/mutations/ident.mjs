@@ -31,6 +31,34 @@ import { mutateIdent, tokenizer, stringify } from '@csstools/css-tokenizer';
 }
 
 {
+	const token = ['ident-token', 'foo-bar', 0, 6, { value: 'foo-bar' }];
+	mutateIdent(token, 'foo.bar');
+
+	assert.deepEqual(
+		token,
+		['ident-token', 'foo\\2e bar', 0, 6, { value: 'foo.bar' }],
+	);
+
+	const raw = stringify(token);
+	assert.deepEqual(
+		raw,
+		'foo\\2e bar',
+	);
+
+	const t = tokenizer({
+		css: raw,
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['ident-token', 'foo\\2e bar', 0, 9, { value: 'foo.bar' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
 	const token = ['ident-token', 'foo', 0, 2, { value: 'foo' }];
 	mutateIdent(token, '@foo');
 
