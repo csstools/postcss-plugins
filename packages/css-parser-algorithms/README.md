@@ -82,7 +82,7 @@ const ancestry = gatherNodeAncestry(result);
 
 ```ts
 {
-	onParseError?: (error: ParserError) => void
+	onParseError?: (error: ParseError) => void
 }
 ```
 
@@ -95,11 +95,6 @@ To receive parsing error information you can set a callback.
 
 Parser errors will try to inform you about the point in the parsing logic the error happened.
 This tells you the kind of error.
-
-`start` and `end` are the location in your CSS source code.
-
-`UnclosedSimpleBlockNode` and `UnclosedFunctionNode` entries will be added to the output.
-This allows you to recover from errors and/or show warnings.
 
 ## Goals and non-goals
 
