@@ -82,4 +82,8 @@ import './cases/various/0006.mjs';
 import './cases/various/0007.mjs';
 import './cases/various/0008.mjs';
 
+import './get-name/0001.mjs';
+
+import './new-feature/0001.mjs';
+
 import './serialize/0001.mjs';
