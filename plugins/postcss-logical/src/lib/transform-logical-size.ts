@@ -1,20 +1,19 @@
 import type { Declaration } from 'postcss';
-import valueParser from 'postcss-value-parser';
 import { cloneDeclaration } from './clone-declaration';
 import { DirectionConfig } from './types';
+
 export function transformLogicalSize(
 	directionConfig: DirectionConfig,
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
 		const { value } = declaration;
-		const valueAST = valueParser(value);
-		const inlineValue = directionConfig.inlineIsHorizontal ? 'width' : 'height';
-		const blockValue = directionConfig.inlineIsHorizontal ? 'height' : 'width';
-		const prop = declaration.prop === 'block-size' ? blockValue : inlineValue;
+		const inlineProp = directionConfig.inlineIsHorizontal ? 'width' : 'height';
+		const blockProp = directionConfig.inlineIsHorizontal ? 'height' : 'width';
+		const prop = declaration.prop === 'block-size' ? blockProp : inlineProp;
 
 		cloneDeclaration(
 			declaration,
-			valueAST.toString(),
+			value,
 			prop,
 		);
 

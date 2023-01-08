@@ -2,25 +2,24 @@ import type { Declaration } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { DirectionConfig, DirectionValues, Direction } from './types';
 import { logicalToPhysical } from '../utils/logical-to-physical';
+import { cloneDeclaration } from './clone-declaration';
 
-function doTransform(declaration, directionValues, config) {
+function doTransform(declaration: Declaration, directionValues: Array<string>, config: DirectionConfig) {
 	const { prop, value } = declaration;
 	const valueAST = valueParser(value);
 
 	valueAST.nodes.forEach((node) => {
-		const valueCandidate = node.value.toLowerCase();
-		if (node.type === 'word' && directionValues.includes(valueCandidate)) {
-			node.value = logicalToPhysical(valueCandidate, config);
+		if (node.type === 'word') {
+			const valueCandidate = node.value.toLowerCase();
+			if (directionValues.includes(valueCandidate)) {
+				node.value = logicalToPhysical(valueCandidate, config);
+			}
 		}
-
-		return node;
 	});
 
-	if (valueAST.toString() !== value) {
-		declaration.cloneBefore({
-			prop,
-			value: valueAST.toString(),
-		});
+	const modifiedValued = valueAST.toString();
+	if (modifiedValued !== value) {
+		cloneDeclaration(declaration, modifiedValued, prop);
 		return true;
 	}
 

@@ -21,7 +21,13 @@ export function transformOffsetShorthand(
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
 		const [sideA, sideB] = side;
-		const [valueA, valueB] = parseValueCouple(declaration);
+
+		const transformed = parseValueCouple(declaration);
+		if (!transformed) {
+			return;
+		}
+
+		const [valueA, valueB] = transformed;
 
 		cloneDeclaration(
 			declaration,

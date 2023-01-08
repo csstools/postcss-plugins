@@ -1,18 +1,18 @@
 export enum Direction {
-	Block= 'block',
-	Inline= 'inline',
+	Block = 'block',
+	Inline = 'inline',
 }
 
 export enum DirectionValue {
-	Start= 'start',
-	End= 'end',
+	Start = 'start',
+	End = 'end',
 }
 
 export const DirectionValues = {
-	BlockStart: `${Direction.Block}-${DirectionValue.Start}`,
-	BlockEnd: `${Direction.Block}-${DirectionValue.End}`,
-	InlineStart: `${Direction.Inline}-${DirectionValue.Start}`,
-	InlineEnd: `${Direction.Inline}-${DirectionValue.End}`,
+	BlockStart: 'block-start',
+	BlockEnd: 'block-end',
+	InlineStart: 'inline-start',
+	InlineEnd: 'inline-end',
 };
 
 export enum DirectionFlow {

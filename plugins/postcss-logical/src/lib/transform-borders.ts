@@ -19,11 +19,17 @@ export function transformBorder(
 
 export function transformBorderProperty(
 	borderSetting: string,
-	side: [string,string],
+	side: [string, string],
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
 		const [sideA, sideB] = side;
-		const [valueA, valueB] = parseValueCouple(declaration);
+
+		const transformed = parseValueCouple(declaration);
+		if (!transformed) {
+			return;
+		}
+
+		const [valueA, valueB] = transformed;
 
 		cloneDeclaration(
 			declaration,
@@ -42,7 +48,7 @@ export function transformBorderProperty(
 }
 
 export function transformBorderShorthand(
-	side: [string] | [string,string],
+	side: [string] | [string, string],
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
 		side.forEach((sidePart) => cloneDeclaration(
