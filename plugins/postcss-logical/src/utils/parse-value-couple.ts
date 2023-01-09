@@ -21,7 +21,7 @@ export function parseValueCouple(declaration: Declaration): [string, string] | v
 		}
 
 		valueA = valueParser.stringify(values[0]);
-		valueB = valueParser.stringify(values[0]);
+		valueB = valueA;
 	}
 
 	if (values.length === 2) {
