@@ -28,7 +28,9 @@ import { directionFlowToAxes } from './utils/direction-flow-to-axes';
 export type pluginOptions = {
 	/** Preserve the original notation. default: false */
 	preserve?: boolean,
+	/** Sets the direction for block. default: top-to-bottom */
 	blockDirection?: DirectionFlow,
+	/** Sets the direction for inline. default: left-to-right */
 	inlineDirection?: DirectionFlow,
 };
 
@@ -90,9 +92,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			if (!options.preserve) {
-				decl.remove();
-			}
+			decl.remove();
 		};
 	};
 
