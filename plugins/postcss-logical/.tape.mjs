@@ -2,6 +2,35 @@ import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'postcss-logical';
 
 postcssTape(plugin)({
+	'abstract': {
+		message: 'abstract test with default setting',
+	},
+	'abstract:rtl': {
+		message: 'abstract test with rtl',
+		options: {
+			inlineDirection: 'right-to-left'
+		},
+	},
+	'abstract:bt': {
+		message: 'abstract test with bt',
+		options: {
+			blockDirection: 'bottom-to-top'
+		},
+	},
+	'abstract:rtl-and-bt': {
+		message: 'abstract test with rtl and bt',
+		options: {
+			blockDirection: 'bottom-to-top',
+			inlineDirection: 'right-to-left'
+		},
+	},
+	'abstract:chinese': {
+		message: 'abstract test with rtl and bt',
+		options: {
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
+	},
 	'caption-side': {
 		message: 'supports logical "caption-side" properties',
 	},
