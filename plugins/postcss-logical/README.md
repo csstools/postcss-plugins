@@ -119,47 +119,6 @@ These are:
 * `clear`
 * `text-align`
 
-### preserve
-
-The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
-
-```js
-postcssLogical({ preserve: true })
-```
-
-```pcss
-.element {
-	block-size: 100px;
-	inline-size: 200px;
-	padding-block: 10px 20px;
-	margin-inline: auto;
-	border-block-width: 2px;
-	border-block-style: solid;
-}
-
-/* becomes */
-
-.element {
-	height: 100px;
-	block-size: 100px;
-	width: 200px;
-	inline-size: 200px;
-	padding-top: 10px;
-	padding-bottom: 20px;
-	padding-block: 10px 20px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-inline: auto;
-	border-top-width: 2px;
-	border-bottom-width: 2px;
-	border-block-width: 2px;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-block-style: solid;
-}
-```
-
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#logical-properties-and-values
 [discord]: https://discord.gg/bUadyRwkJS

@@ -2,9 +2,9 @@ import type { PluginCreator } from 'postcss';
 import { DirectionFlow } from './lib/types';
 /** postcss-overflow-shorthand plugin options */
 export type pluginOptions = {
-    /** Preserve the original notation. default: false */
-    preserve?: boolean;
+    /** Sets the direction for block. default: top-to-bottom */
     blockDirection?: DirectionFlow;
+    /** Sets the direction for inline. default: left-to-right */
     inlineDirection?: DirectionFlow;
 };
 declare const creator: PluginCreator<pluginOptions>;

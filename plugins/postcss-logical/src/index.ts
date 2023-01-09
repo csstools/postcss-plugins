@@ -26,8 +26,6 @@ import { directionFlowToAxes } from './utils/direction-flow-to-axes';
 
 /** postcss-overflow-shorthand plugin options */
 export type pluginOptions = {
-	/** Preserve the original notation. default: false */
-	preserve?: boolean,
 	/** Sets the direction for block. default: top-to-bottom */
 	blockDirection?: DirectionFlow,
 	/** Sets the direction for inline. default: left-to-right */
@@ -38,7 +36,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
 		// Default options
 		{
-			preserve: false,
 			blockDirection: DirectionFlow.TopToBottom,
 			inlineDirection: DirectionFlow.LeftToRight,
 		},

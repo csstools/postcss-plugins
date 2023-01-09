@@ -77,7 +77,6 @@
 		        order: 3;
 		padding-top: 5px;
 		padding-bottom: 5px;
-		padding-block: 5px;
 	}
 
 .test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
@@ -989,7 +988,6 @@ h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	top: 2px;
 	right: 2px;
 	bottom: 2px;
-	inset: 2px;
 	top: 2px;
 	top: round(to-zero, 2.5px, 1px);
 	right: 2px;
@@ -998,5 +996,4 @@ h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	bottom: round(to-zero, 2.5px, 1px);
 	left: 2px;
 	left: round(to-zero, 2.5px, 1px);
-	inset: round(to-zero, 2.5px, 1px);
 }
