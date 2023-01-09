@@ -4,6 +4,12 @@ export function cloneDeclaration(
 	declaration: Declaration,
 	value: string,
 	prop: string,
-) : Declaration {
-	return declaration.cloneBefore({ value, prop });
+): void {
+	if (declaration.parent && declaration.parent.some((x) => {
+		return x.type == 'decl' && x.prop === prop && x.value === value;
+	})) {
+		return;
+	}
+
+	declaration.cloneBefore({ value, prop });
 }

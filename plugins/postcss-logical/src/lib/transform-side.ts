@@ -19,7 +19,7 @@ export function transformSide(
 
 export function transformSideShorthand(
 	prop: string,
-	side: [string,string],
+	side: [string, string],
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
 		const [sideA, sideB] = side;

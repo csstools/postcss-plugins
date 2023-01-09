@@ -2,6 +2,7 @@ import type { Declaration } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { DirectionConfig } from './types';
 import { cloneDeclaration } from './clone-declaration';
+
 export function transformResize(
 	directionConfig: DirectionConfig,
 ): (declaration: Declaration) => boolean {
@@ -12,9 +13,9 @@ export function transformResize(
 		const blockValue = directionConfig.inlineIsHorizontal ? 'vertical' : 'horizontal';
 
 		valueAST.nodes.forEach((node) => {
-			const valueCandidate = node.value.toLowerCase();
-
 			if (node.type === 'word') {
+				const valueCandidate = node.value.toLowerCase();
+
 				if (valueCandidate === 'inline') {
 					node.value = inlineValue;
 					return;
@@ -26,12 +27,12 @@ export function transformResize(
 			}
 		});
 
-		const changed = valueAST.toString() !== value;
-
-		if (changed) {
-			cloneDeclaration(declaration, valueAST.toString(), prop);
+		const modifiedValued = valueAST.toString();
+		if (modifiedValued !== value) {
+			cloneDeclaration(declaration, modifiedValued, prop);
+			return true;
 		}
 
-		return changed;
+		return false;
 	};
 }

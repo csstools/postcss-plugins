@@ -518,10 +518,7 @@
 	right: 3px;
 	bottom: 3px;
 	left: 2px;
-	top: 2px;
-	right: 2px;
-	bottom: 2px;
-	left: 2px;
+	padding-left: 2px;
 }
 
 .trigonometric {

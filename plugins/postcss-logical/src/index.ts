@@ -76,23 +76,22 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			if (!transform) {
 				return;
 			}
-			const parent = decl.parent;
+
 			let transformed = false;
 
 			try {
 				transformed = transform(decl);
 			} catch (error) {
 				decl.warn(result, error.message);
+				return;
 			}
 
-			if (transformed) {
-				if (!options.preserve) {
-					decl.remove();
-				}
+			if (!transformed) {
+				return;
+			}
 
-				if (!parent.nodes.length) {
-					parent.remove();
-				}
+			if (!options.preserve) {
+				decl.remove();
 			}
 		};
 	};

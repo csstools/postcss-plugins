@@ -2,6 +2,7 @@ import type { Declaration } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { DirectionValue } from './types';
 import { cloneDeclaration } from './clone-declaration';
+
 export function transformTextAlign(
 	inlineValues: [string, string],
 ): (declaration: Declaration) => boolean {
@@ -11,9 +12,9 @@ export function transformTextAlign(
 		const [start, end] = inlineValues;
 
 		valueAST.nodes.forEach((node) => {
-			const valueCandidate = node.value.toLowerCase();
-
 			if (node.type === 'word') {
+				const valueCandidate = node.value.toLowerCase();
+
 				if (valueCandidate === DirectionValue.End) {
 					node.value = end;
 					return;
@@ -25,12 +26,12 @@ export function transformTextAlign(
 			}
 		});
 
-		const changed = valueAST.toString() !== value;
-
-		if (changed) {
-			cloneDeclaration(declaration, valueAST.toString(), prop);
+		const modifiedValued = valueAST.toString();
+		if (modifiedValued !== value) {
+			cloneDeclaration(declaration, modifiedValued, prop);
+			return true;
 		}
 
-		return changed;
+		return false;
 	};
 }

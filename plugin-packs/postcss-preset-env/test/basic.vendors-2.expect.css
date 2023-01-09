@@ -503,10 +503,7 @@
 	right: round(nearest, 2.5px, 1px);
 	bottom: round(up, 2.5px, 1px);
 	left: round(down, 2.5px, 1px);
-	top: round(to-zero, 2.5px, 1px);
-	right: round(to-zero, 2.5px, 1px);
-	bottom: round(to-zero, 2.5px, 1px);
-	left: round(to-zero, 2.5px, 1px);
+	padding-left: round(to-zero, 2.5px, 1px);
 }
 
 .trigonometric {
