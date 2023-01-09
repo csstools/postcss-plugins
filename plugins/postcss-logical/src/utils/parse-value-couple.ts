@@ -1,7 +1,7 @@
 import type { Declaration } from 'postcss';
 import valueParser from 'postcss-value-parser';
 
-export function parseValueCouple(declaration: Declaration): [string, string] | void {
+export function parseValueCouple(declaration: Declaration): [string, string] {
 	const valuesAST = valueParser(declaration.value);
 	const values = valuesAST.nodes.filter((node) => node.type !== 'space');
 

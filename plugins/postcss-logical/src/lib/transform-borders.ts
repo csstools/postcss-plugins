@@ -23,13 +23,7 @@ export function transformBorderProperty(
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
 		const [sideA, sideB] = side;
-
-		const transformed = parseValueCouple(declaration);
-		if (!transformed) {
-			return;
-		}
-
-		const [valueA, valueB] = transformed;
+		const [valueA, valueB] = parseValueCouple(declaration);
 
 		cloneDeclaration(
 			declaration,
