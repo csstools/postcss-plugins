@@ -4,7 +4,6 @@ import valueParser from 'postcss-value-parser';
 export function parseValueCouple(declaration: Declaration): [string, string] | void {
 	const valuesAST = valueParser(declaration.value);
 	const values = valuesAST.nodes.filter((node) => node.type !== 'space');
-	const hasVariables = valuesAST.nodes.find((node) => node.type === 'function' && node.value.toLowerCase() === 'var');
 
 	if (values.length > 2) {
 		const errorMessage = `[postcss-logical] Invalid number of values for ${declaration.prop}. Found ${values.length} values, expected 1 or 2.`;
@@ -15,11 +14,6 @@ export function parseValueCouple(declaration: Declaration): [string, string] | v
 	let valueB;
 
 	if (values.length === 1) {
-		if (hasVariables) {
-			// A variable can "resolve" to multiple separate values.
-			return;
-		}
-
 		valueA = valueParser.stringify(values[0]);
 		valueB = valueA;
 	}

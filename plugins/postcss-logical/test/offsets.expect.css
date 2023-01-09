@@ -23,7 +23,8 @@
 }
 
 .foo {
-	inset-block: var(--foo);
+	top: var(--foo);
+	bottom: var(--foo);
 }
 
 .foo {
@@ -52,7 +53,10 @@
 }
 
 .foo {
-	inset: var(--foo);
+	top: var(--foo);
+	right: var(--foo);
+	bottom: var(--foo);
+	left: var(--foo);
 }
 
 .foo {
@@ -63,7 +67,10 @@
 }
 
 .foo {
-	inset: var(--foo) 2px;
+	top: var(--foo);
+	right: 2px;
+	bottom: var(--foo);
+	left: 2px;
 }
 
 .foo {
@@ -74,7 +81,10 @@
 }
 
 .foo {
-	inset: 1px var(--foo) 3px;
+	top: 1px;
+	right: var(--foo);
+	bottom: 3px;
+	left: var(--foo);
 }
 
 .foo {

@@ -7,8 +7,6 @@ export function transformInset(
 	return (declaration: Declaration) => {
 		const valuesAST = valueParser(declaration.value);
 		const values = valuesAST.nodes.filter((node) => node.type !== 'space' && node.type !== 'comment');
-		const hasVariables = valuesAST.nodes.find((node) => node.type === 'function' && node.value.toLowerCase() === 'var');
-
 		if (values.length > 4) {
 			const errorMessage = `[postcss-logical] Invalid number of values for ${declaration.prop}. Found ${values.length} values, expected up to 4 values.`;
 			throw declaration.error(errorMessage);
@@ -20,12 +18,6 @@ export function transformInset(
 			'bottom': '',
 			'left': '',
 		};
-
-		if (hasVariables && values.length !== 4) {
-			// A variable can "resolve" to multiple separate values.
-			// This makes it impossible to statically map tokens to longhand properties.
-			return;
-		}
 
 		if (values.length === 1) {
 			newRules.top = valueParser.stringify(values[0]);
