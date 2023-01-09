@@ -9,7 +9,7 @@ export declare class MediaNot {
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaInParens): number | string;
-    at(index: number | string): MediaInParens;
+    at(index: number | string): MediaInParens | undefined;
     walk(cb: (entry: {
         node: MediaNotWalkerEntry;
         parent: MediaNotWalkerParent;

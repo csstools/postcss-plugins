@@ -1,3 +1,4 @@
+import { CustomMedia } from '../nodes/custom-media';
 import { GeneralEnclosed } from '../nodes/general-enclosed';
 import { MediaAnd } from '../nodes/media-and';
 import { MediaCondition } from '../nodes/media-condition';
@@ -12,6 +13,10 @@ import { MediaInParens } from '../nodes/media-in-parens';
 import { MediaNot } from '../nodes/media-not';
 import { MediaOr } from '../nodes/media-or';
 import { MediaQuery, MediaQueryInvalid, MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
+
+export function isCustomMedia(x: unknown): x is GeneralEnclosed {
+	return CustomMedia.isCustomMedia(x);
+}
 
 export function isGeneralEnclosed(x: unknown): x is GeneralEnclosed {
 	return GeneralEnclosed.isGeneralEnclosed(x);

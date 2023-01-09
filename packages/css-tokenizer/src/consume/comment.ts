@@ -1,27 +1,26 @@
 import { ASTERISK, SOLIDUS } from '../code-points/code-points';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
+import { ParseError } from '../interfaces/error';
 import { TokenComment, TokenType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comment
 export function consumeComment(ctx: Context, reader: CodePointReader): TokenComment {
-	reader.readCodePoint();
-	reader.readCodePoint();
+	reader.advanceCodePoint(2);
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const codePoint = reader.readCodePoint();
 		if (codePoint === false) {
-			const representation = reader.representation();
-			ctx.onParseError({
-				message: 'Unexpected EOF while consuming a comment.',
-				start: representation[0],
-				end: representation[1],
-				state: [
+			ctx.onParseError(new ParseError(
+				'Unexpected EOF while consuming a comment.',
+				reader.representationStart,
+				reader.representationEnd,
+				[
 					'4.3.2. Consume comments',
 					'Unexpected EOF',
 				],
-			});
+			));
 
 			break;
 		}
@@ -30,23 +29,21 @@ export function consumeComment(ctx: Context, reader: CodePointReader): TokenComm
 			continue;
 		}
 
-		const close = reader.peekOneCodePoint();
-		if (close === false) {
+		if (reader.codePointSource[reader.cursor] === undefined) {
 			continue;
 		}
 
-		if (close === SOLIDUS) {
-			reader.readCodePoint();
+		if (reader.codePointSource[reader.cursor] === SOLIDUS) {
+			reader.advanceCodePoint();
 			break;
 		}
 	}
 
-	const representation = reader.representation();
 	return [
 		TokenType.Comment,
-		reader.representationString(),
-		representation[0],
-		representation[1],
+		reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+		reader.representationStart,
+		reader.representationEnd,
 		undefined,
 	];
 }

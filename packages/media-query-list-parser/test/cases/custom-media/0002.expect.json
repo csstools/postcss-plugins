@@ -1,0 +1,43 @@
+{
+	"type": "custom-media",
+	"string": "--foo true",
+	"nameValue": "--foo",
+	"name": [
+		[
+			"ident-token",
+			"--foo",
+			0,
+			4,
+			{
+				"value": "--foo"
+			}
+		]
+	],
+	"hasFalseKeyword": false,
+	"hasTrueKeyword": true,
+	"trueOrFalseKeyword": [
+		[
+			"whitespace-token",
+			" ",
+			5,
+			5,
+			null
+		],
+		[
+			"ident-token",
+			"true",
+			6,
+			9,
+			{
+				"value": "true"
+			}
+		],
+		[
+			"EOF-token",
+			"",
+			-1,
+			-1,
+			null
+		]
+	]
+}

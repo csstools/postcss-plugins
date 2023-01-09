@@ -1,6 +1,5 @@
 import { checkIfThreeCodePointsWouldStartAnIdentSequence } from '../checks/three-code-points-would-start-ident-sequence';
 import { checkIfTwoCodePointsAreAValidEscape } from '../checks/two-code-points-are-valid-escape';
-import { codePointsToString } from '../code-points/code-points-to-string';
 import { isIdentCodePoint } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
@@ -9,12 +8,11 @@ import { consumeIdentSequence } from './ident-sequence';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-token
 export function consumeHashToken(ctx: Context, reader: CodePointReader): TokenDelim|TokenHash {
-	reader.readCodePoint();
+	reader.advanceCodePoint();
 
-	const peeked = reader.peekOneCodePoint();
 	if (
-		peeked !== false &&
-		isIdentCodePoint(peeked) ||
+		(reader.codePointSource[reader.cursor] !== undefined) &&
+		isIdentCodePoint(reader.codePointSource[reader.cursor]) ||
 		checkIfTwoCodePointsAreAValidEscape(ctx, reader)
 	) {
 		let hashType = HashType.Unrestricted;
@@ -24,25 +22,23 @@ export function consumeHashToken(ctx: Context, reader: CodePointReader): TokenDe
 		}
 
 		const identSequence = consumeIdentSequence(ctx, reader);
-		const representation = reader.representation();
 		return [
 			TokenType.Hash,
-			reader.representationString(),
-			representation[0],
-			representation[1],
+			reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+			reader.representationStart,
+			reader.representationEnd,
 			{
-				value: codePointsToString(identSequence),
+				value: String.fromCharCode(...identSequence),
 				type: hashType,
 			},
 		];
 	}
 
-	const representation = reader.representation();
 	return [
 		TokenType.Delim,
-		reader.representationString(),
-		representation[0],
-		representation[1],
+		'#',
+		reader.representationStart,
+		reader.representationEnd,
 		{
 			value: '#',
 		},

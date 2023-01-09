@@ -1,0 +1,57 @@
+{
+	"type": "custom-media",
+	"string": "/* comment : 1 */--foo/* comment : 2 */true/* comment : 3 */",
+	"nameValue": "--foo",
+	"name": [
+		[
+			"comment",
+			"/* comment : 1 */",
+			0,
+			16,
+			null
+		],
+		[
+			"ident-token",
+			"--foo",
+			17,
+			21,
+			{
+				"value": "--foo"
+			}
+		]
+	],
+	"hasFalseKeyword": false,
+	"hasTrueKeyword": true,
+	"trueOrFalseKeyword": [
+		[
+			"comment",
+			"/* comment : 2 */",
+			22,
+			38,
+			null
+		],
+		[
+			"ident-token",
+			"true",
+			39,
+			42,
+			{
+				"value": "true"
+			}
+		],
+		[
+			"comment",
+			"/* comment : 3 */",
+			43,
+			59,
+			null
+		],
+		[
+			"EOF-token",
+			"",
+			-1,
+			-1,
+			null
+		]
+	]
+}

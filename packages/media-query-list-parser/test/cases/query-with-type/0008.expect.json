@@ -42,7 +42,21 @@
 						"type": "media-feature",
 						"feature": {
 							"type": "mf-boolean",
-							"name": "height",
+							"name": {
+								"type": "mf-name",
+								"name": "height",
+								"tokens": [
+									[
+										"ident-token",
+										"height",
+										12,
+										17,
+										{
+											"value": "height"
+										}
+									]
+								]
+							},
 							"tokens": [
 								[
 									"ident-token",

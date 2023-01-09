@@ -3,48 +3,21 @@ import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
 import { TokenType, TokenWhitespace } from '../interfaces/token';
 
-export function consumeWhiteSpace(ctx: Context, reader: CodePointReader, max = -1): TokenWhitespace {
-	let current = 0;
-
+export function consumeWhiteSpace(ctx: Context, reader: CodePointReader): TokenWhitespace {
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		if (max !== -1 && current === max) {
-			const representation = reader.representation();
-			return [
-				TokenType.Whitespace,
-				reader.representationString(),
-				representation[0],
-				representation[1],
-				undefined,
-			];
-		}
-
-		current++;
-		const peeked = reader.peekOneCodePoint();
-		if (peeked === false) {
-			const representation = reader.representation();
-			return [
-				TokenType.Whitespace,
-				reader.representationString(),
-				representation[0],
-				representation[1],
-				undefined,
-			];
-		}
-
-		if (!isWhitespace(peeked)) {
+		if (!isWhitespace(reader.codePointSource[reader.cursor])) {
 			break;
 		}
 
-		reader.readCodePoint();
+		reader.advanceCodePoint();
 	}
 
-	const representation = reader.representation();
 	return [
 		TokenType.Whitespace,
-		reader.representationString(),
-		representation[0],
-		representation[1],
+		reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+		reader.representationStart,
+		reader.representationEnd,
 		undefined,
 	];
 }

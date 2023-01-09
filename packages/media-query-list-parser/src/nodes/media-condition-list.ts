@@ -46,7 +46,7 @@ export class MediaConditionListWithAnd {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaInParens | MediaAnd | undefined {
 		if (index === 'leading') {
 			return this.leading;
 		}
@@ -165,7 +165,7 @@ export class MediaConditionListWithOr {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaInParens | MediaOr | undefined {
 		if (index === 'leading') {
 			return this.leading;
 		}

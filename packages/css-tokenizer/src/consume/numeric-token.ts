@@ -1,6 +1,5 @@
 import { checkIfThreeCodePointsWouldStartAnIdentSequence } from '../checks/three-code-points-would-start-ident-sequence';
 import { PERCENTAGE_SIGN } from '../code-points/code-points';
-import { codePointsToString } from '../code-points/code-points-to-string';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
 import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '../interfaces/token';
@@ -13,45 +12,38 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 
 	if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 		const unit = consumeIdentSequence(ctx, reader);
-
-		const representation = reader.representation();
 		return [
 			TokenType.Dimension,
-			reader.representationString(),
-			representation[0],
-			representation[1],
+			reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+			reader.representationStart,
+			reader.representationEnd,
 			{
 				value: numberValue[0],
 				type: numberValue[1],
-				unit: codePointsToString(unit),
+				unit: String.fromCharCode(...unit),
 			},
 		];
 	}
 
-	{
-		const peeked = reader.peekOneCodePoint();
-		if (peeked === PERCENTAGE_SIGN) {
-			reader.readCodePoint();
+	if (reader.codePointSource[reader.cursor] === PERCENTAGE_SIGN) {
+		reader.advanceCodePoint();
 
-			const representation = reader.representation();
-			return [
-				TokenType.Percentage,
-				reader.representationString(),
-				representation[0],
-				representation[1],
-				{
-					value: numberValue[0],
-				},
-			];
-		}
+		return [
+			TokenType.Percentage,
+			reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+			reader.representationStart,
+			reader.representationEnd,
+			{
+				value: numberValue[0],
+			},
+		];
 	}
 
-	const representation = reader.representation();
 	return [
 		TokenType.Number,
-		reader.representationString(),
-		representation[0],
-		representation[1],
+		reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+		reader.representationStart,
+		reader.representationEnd,
 		{
 			value: numberValue[0],
 			type: numberValue[1],

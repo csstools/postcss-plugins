@@ -1,11 +1,10 @@
 import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
-import { ParserError } from '@csstools/css-parser-algorithms/dist/interfaces/error';
-import { CSSToken, tokenizer, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, tokenizer, TokenType, ParseError } from '@csstools/css-tokenizer';
 import { LayerName } from '../nodes/layer-name';
 
 export type Options = {
-	onParseError?: (error: ParserError) => void
+	onParseError?: (error: ParseError) => void
 }
 
 export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
@@ -20,18 +19,14 @@ export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
 	// There is no error recovery when parsing layer names.
 	// They are either fully valid or fully invalid.
 
-	const genericError = (message) => {
-		return {
-			message: `Invalid cascade layer name. ${message}`,
-			start: tokens[0][2],
-			end: tokens[tokens.length - 1][3],
-			state: [
-				'6.4.2. Layer Naming and Nesting',
-				'Layer name syntax',
-				'<layer-name> = <ident> [ \'.\' <ident> ]*',
-			],
-		};
-	};
+	const genericErrorParseState = [
+		'6.4.2. Layer Naming and Nesting',
+		'Layer name syntax',
+		'<layer-name> = <ident> [ \'.\' <ident> ]*',
+	];
+
+	const sourceStart = tokens[0][2];
+	const sourceEnd = tokens[tokens.length - 1][3];
 
 	const result: Array<LayerName> = [];
 
@@ -40,7 +35,13 @@ export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
 		for (let j = 0; j < componentValuesList.length; j++) {
 			const componentValue = componentValuesList[j];
 			if (!isTokenNode(componentValue) && !isCommentNode(componentValue) && !isWhitespaceNode(componentValue)) {
-				onParseError(genericError(`Invalid layer name part "${componentValue.toString()}"`));
+				onParseError(new ParseError(
+					`Invalid cascade layer name. Invalid layer name part "${componentValue.toString()}"`,
+					sourceStart,
+					sourceEnd,
+					genericErrorParseState,
+				));
+
 				return [];
 			}
 		}
@@ -61,13 +62,25 @@ export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
 					token[4].value === '.'
 				)
 			)) {
-				onParseError(genericError(`Invalid character "${token[1]}"`));
+				onParseError(new ParseError(
+					`Invalid cascade layer name. Invalid character "${token[1]}"`,
+					sourceStart,
+					sourceEnd,
+					genericErrorParseState,
+				));
+
 				return [];
 			}
 
 			if (!inLayerNameSequence) {
 				if (token[0] === TokenType.Delim) {
-					onParseError(genericError('Layer names can not start with a dot.'));
+					onParseError(new ParseError(
+						'Invalid cascade layer name. Layer names can not start with a dot.',
+						sourceStart,
+						sourceEnd,
+						genericErrorParseState,
+					));
+
 					return [];
 				}
 			}
@@ -83,20 +96,38 @@ export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
 				}
 
 				if (sawWhiteSpaceAfterIdent) {
-					onParseError(genericError('Encountered unexpected whitespace between layer name parts.'));
+					onParseError(new ParseError(
+						'Invalid cascade layer name. Encountered unexpected whitespace between layer name parts.',
+						sourceStart,
+						sourceEnd,
+						genericErrorParseState,
+					));
+
 					return [];
 				}
 
 				if (lastToken[0] === TokenType.Ident) {
 					if (token[0] === TokenType.Ident) {
-						onParseError(genericError('Layer name parts must be separated by dots.'));
+						onParseError(new ParseError(
+							'Invalid cascade layer name. Layer name parts must be separated by dots.',
+							sourceStart,
+							sourceEnd,
+							genericErrorParseState,
+						));
+
 						return [];
 					}
 				}
 
 				if (lastToken[0] === TokenType.Delim) {
 					if (token[0] === TokenType.Delim) {
-						onParseError(genericError('Layer name parts must not be empty.'));
+						onParseError(new ParseError(
+							'Invalid cascade layer name. Layer name parts must not be empty.',
+							sourceStart,
+							sourceEnd,
+							genericErrorParseState,
+						));
+
 						return [];
 					}
 				}
@@ -112,12 +143,24 @@ export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
 		}
 
 		if (!lastToken) {
-			onParseError(genericError('Empty layer name.'));
+			onParseError(new ParseError(
+				'Invalid cascade layer name. Empty layer name.',
+				sourceStart,
+				sourceEnd,
+				genericErrorParseState,
+			));
+
 			return [];
 		}
 
 		if (lastToken[0] === TokenType.Delim) {
-			onParseError(genericError('Layer name must not end with a dot.'));
+			onParseError(new ParseError(
+				'Invalid cascade layer name. Layer name must not end with a dot.',
+				sourceStart,
+				sourceEnd,
+				genericErrorParseState,
+			));
+
 			return [];
 		}
 

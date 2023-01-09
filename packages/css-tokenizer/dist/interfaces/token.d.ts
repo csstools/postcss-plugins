@@ -124,4 +124,5 @@ export type Token<T extends TokenType, U> = [
     U
 ];
 export declare function mirrorVariantType(type: TokenType): TokenType | null;
+export declare function mirrorVariant(token: CSSToken): CSSToken | null;
 export declare function isToken(x: any): x is CSSToken;

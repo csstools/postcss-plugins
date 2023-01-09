@@ -1,0 +1,44 @@
+[
+	[
+		{
+			"type": "function",
+			"name": "bar",
+			"tokens": [
+				[
+					"function-token",
+					"bar(",
+					0,
+					3,
+					{
+						"value": "bar"
+					}
+				],
+				[
+					"ident-token",
+					"foo",
+					4,
+					6,
+					{
+						"value": "foo"
+					}
+				]
+			],
+			"value": [
+				{
+					"type": "token",
+					"tokens": [
+						[
+							"ident-token",
+							"foo",
+							4,
+							6,
+							{
+								"value": "foo"
+							}
+						]
+					]
+				}
+			]
+		}
+	]
+]

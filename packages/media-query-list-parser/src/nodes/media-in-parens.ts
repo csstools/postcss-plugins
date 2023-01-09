@@ -45,7 +45,7 @@ export class MediaInParens {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaCondition | MediaFeature | GeneralEnclosed | undefined {
 		if (index === 'media') {
 			return this.media;
 		}

@@ -1,39 +1,34 @@
-import { ComponentValue, TokenNode } from '@csstools/css-parser-algorithms';
-import { parseMediaFeatureName } from './media-feature-name';
+import { ComponentValue } from '@csstools/css-parser-algorithms';
+import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
 import { NodeType } from '../util/node-type';
-import { CSSToken, stringify, TokenIdent } from '@csstools/css-tokenizer';
+import { CSSToken } from '@csstools/css-tokenizer';
 
 export class MediaFeatureBoolean {
 	type = NodeType.MediaFeatureBoolean;
 
-	name: ComponentValue;
-	before: Array<CSSToken>;
-	after: Array<CSSToken>;
+	name: MediaFeatureName;
 
-	constructor(name: ComponentValue, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
+	constructor(name: MediaFeatureName) {
 		this.name = name;
-		this.before = before;
-		this.after = after;
 	}
 
-	getName() {
-		const token = (((this.name as TokenNode).value as CSSToken) as TokenIdent);
-		return token[4].value;
+	getName(): string {
+		return this.name.getName();
+	}
+
+	getNameToken(): CSSToken {
+		return this.name.getNameToken();
 	}
 
 	tokens(): Array<CSSToken> {
-		return [
-			...this.before,
-			...this.name.tokens(),
-			...this.after,
-		];
+		return this.name.tokens();
 	}
 
 	toString(): string {
-		return stringify(...this.before) + this.name.toString() + stringify(...this.after);
+		return this.name.toString();
 	}
 
-	indexOf(item: ComponentValue): number | string {
+	indexOf(item: MediaFeatureName): number | string {
 		if (item === this.name) {
 			return 'name';
 		}
@@ -41,7 +36,7 @@ export class MediaFeatureBoolean {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaFeatureName | undefined {
 		if (index === 'name') {
 			return this.name;
 		}
@@ -50,7 +45,7 @@ export class MediaFeatureBoolean {
 	toJSON() {
 		return {
 			type: this.type,
-			name: this.getName(),
+			name: this.name.toJSON(),
 			tokens: this.tokens(),
 		};
 	}
@@ -78,5 +73,5 @@ export function parseMediaFeatureBoolean(componentValues: Array<ComponentValue>)
 		return mediaFeatureName;
 	}
 
-	return new MediaFeatureBoolean(mediaFeatureName.name, mediaFeatureName.before, mediaFeatureName.after);
+	return new MediaFeatureBoolean(mediaFeatureName);
 }

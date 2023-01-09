@@ -1,5 +1,5 @@
-import { SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
+import { SimpleBlockNode, TokenNode, parseListOfComponentValues } from '@csstools/css-parser-algorithms';
+import { CSSToken, mutateIdent, stringify, TokenType } from '@csstools/css-tokenizer';
 import { MediaFeatureBoolean, parseMediaFeatureBoolean } from './media-feature-boolean';
 import { MediaFeatureName } from './media-feature-name';
 import { MediaFeaturePlain, MediaFeaturePlainWalkerEntry, MediaFeaturePlainWalkerParent, parseMediaFeaturePlain } from './media-feature-plain';
@@ -18,6 +18,14 @@ export class MediaFeature {
 		this.feature = feature;
 		this.before = before;
 		this.after = after;
+	}
+
+	getName(): string {
+		return this.feature.getName();
+	}
+
+	getNameToken(): CSSToken {
+		return this.feature.getNameToken();
 	}
 
 	tokens(): Array<CSSToken> {
@@ -40,7 +48,7 @@ export class MediaFeature {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaFeatureBoolean | MediaFeaturePlain | MediaFeatureRange | undefined {
 		if (index === 'feature') {
 			return this.feature;
 		}
@@ -108,10 +116,13 @@ export function parseMediaFeature(simpleBlock: SimpleBlockNode, before: Array<CS
 	return false;
 }
 
-export function newMediaFeatureBoolean(name: string) {
+export function newMediaFeatureBoolean(name: string): MediaFeature {
+	const nameToken: CSSToken = [TokenType.Ident, '', -1, -1, { value: '' }];
+	mutateIdent(nameToken, name);
+
 	return new MediaFeature(
 		new MediaFeatureBoolean(
-			new TokenNode([TokenType.Ident, name, -1, -1, { value: name }]),
+			new MediaFeatureName(new TokenNode(nameToken)),
 		),
 		[
 			[TokenType.OpenParen, '(', -1, -1, undefined],
@@ -122,15 +133,20 @@ export function newMediaFeatureBoolean(name: string) {
 	);
 }
 
-export function newMediaFeaturePlain(name: string, ...value: Array<CSSToken>) {
+export function newMediaFeaturePlain(name: string, ...value: Array<CSSToken>): MediaFeature {
+	const nameToken: CSSToken = [TokenType.Ident, '', -1, -1, { value: '' }];
+	mutateIdent(nameToken, name);
+
+	const componentValues = parseListOfComponentValues(value);
+
 	return new MediaFeature(
 		new MediaFeaturePlain(
 			new MediaFeatureName(
-				new TokenNode([TokenType.Ident, name, -1, -1, { value: name }]),
+				new TokenNode(nameToken),
 			),
 			[TokenType.Colon, ':', -1, -1, undefined],
 			new MediaFeatureValue(
-				value.map((x) => new TokenNode(x)),
+				componentValues.length === 1 ? componentValues[0] : componentValues,
 			),
 		),
 		[

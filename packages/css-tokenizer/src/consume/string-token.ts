@@ -2,6 +2,7 @@ import { REVERSE_SOLIDUS } from '../code-points/code-points';
 import { isNewLine } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
+import { ParseError } from '../interfaces/error';
 import { TokenBadString, TokenString, TokenType } from '../interfaces/token';
 import { consumeEscapedCodePoint } from './escaped-code-point';
 
@@ -10,59 +11,52 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 	let result = '';
 
 	const first = reader.readCodePoint();
-	if (first === false) {
-		throw new Error('Unexpected EOF');
-	}
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const next = reader.readCodePoint();
 		if (next === false) {
-			const representation = reader.representation();
-			ctx.onParseError({
-				message: 'Unexpected EOF while consuming a string token.',
-				start: representation[0],
-				end: representation[1],
-				state: [
+			ctx.onParseError(new ParseError(
+				'Unexpected EOF while consuming a string token.',
+				reader.representationStart,
+				reader.representationEnd,
+				[
 					'4.3.5. Consume a string token',
 					'Unexpected EOF',
 				],
-			});
+			));
 
-			return [TokenType.String, reader.representationString(), representation[0], representation[1], { value: result }];
+			return [TokenType.String, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, { value: result }];
 		}
 
 		if (isNewLine(next)) {
-			const representation = reader.representation();
 			{
-				ctx.onParseError({
-					message: 'Unexpected newline while consuming a string token.',
-					start: representation[0],
-					end: representation[1],
-					state: [
+				ctx.onParseError(new ParseError(
+					'Unexpected newline while consuming a string token.',
+					reader.representationStart,
+					reader.representationEnd,
+					[
 						'4.3.5. Consume a string token',
 						'Unexpected newline',
 					],
-				});
+				));
 			}
 
 			reader.unreadCodePoint();
-			return [TokenType.BadString, reader.representationString(), representation[0], representation[1], undefined];
+			return [TokenType.BadString, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, undefined];
 		}
 
 		if (next === first) {
-			const representation = reader.representation();
-			return [TokenType.String, reader.representationString(), representation[0], representation[1], { value: result }];
+			return [TokenType.String, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, { value: result }];
 		}
 
 		if (next === REVERSE_SOLIDUS) {
-			const peeked = reader.peekOneCodePoint();
-			if (peeked === false) {
+			if (reader.codePointSource[reader.cursor] === undefined) {
 				continue;
 			}
 
-			if (isNewLine(peeked)) {
-				reader.readCodePoint();
+			if (isNewLine(reader.codePointSource[reader.cursor])) {
+				reader.advanceCodePoint();
 				continue;
 			}
 

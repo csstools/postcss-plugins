@@ -1,6 +1,5 @@
 import { checkIfCodePointsMatchURLIdent } from '../checks/matches-url-ident';
 import { APOSTROPHE, LEFT_PARENTHESIS, QUOTATION_MARK } from '../code-points/code-points';
-import { codePointsToString } from '../code-points/code-points-to-string';
 import { isWhitespace } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
@@ -11,74 +10,65 @@ import { consumeUrlToken } from './url-token';
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-ident-like-token
 export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): TokenIdent | TokenFunction | TokenURL | TokenBadURL {
 	const codePoints = consumeIdentSequence(ctx, reader);
-	const peeked = reader.peekOneCodePoint();
 
-	if (peeked === LEFT_PARENTHESIS) {
-		if (checkIfCodePointsMatchURLIdent(ctx, codePoints)) {
-			reader.readCodePoint();
-
-			let read = 0;
-			// eslint-disable-next-line no-constant-condition
-			while (true) {
-				const peeked2 = reader.peekTwoCodePoints();
-				const firstIsWhitespace = isWhitespace(peeked2[0]);
-				const secondIsWhitespace = isWhitespace(peeked2[1]);
-				if (firstIsWhitespace && secondIsWhitespace) {
-					read += 2;
-					reader.readCodePoint();
-					reader.readCodePoint();
-					continue;
-				}
-
-				const firstNonWhitespace = firstIsWhitespace ? peeked2[1] : peeked2[0];
-				if (firstNonWhitespace === QUOTATION_MARK || firstNonWhitespace === APOSTROPHE) {
-					for (let i = 0; i < read; i++) {
-						reader.unreadCodePoint();
-					}
-
-					const representation = reader.representation();
-					return [
-						TokenType.Function,
-						reader.representationString(),
-						representation[0],
-						representation[1],
-						{
-							value: codePointsToString(codePoints),
-						},
-					];
-				}
-
-				break;
-			}
-
-			for (let i = 0; i < read; i++) {
-				reader.unreadCodePoint();
-			}
-
-			return consumeUrlToken(ctx, reader);
-		}
-
-		reader.readCodePoint();
-		const representation = reader.representation();
+	if (reader.codePointSource[reader.cursor] !== LEFT_PARENTHESIS) {
 		return [
-			TokenType.Function,
-			reader.representationString(),
-			representation[0],
-			representation[1],
+			TokenType.Ident,
+			reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+			reader.representationStart,
+			reader.representationEnd,
 			{
-				value: codePointsToString(codePoints),
+				value: String.fromCharCode(...codePoints),
 			},
 		];
 	}
 
-	const representation = reader.representation();
+	if (checkIfCodePointsMatchURLIdent(ctx, codePoints)) {
+		reader.advanceCodePoint();
+
+		let read = 0;
+		// eslint-disable-next-line no-constant-condition
+		while (true) {
+			const firstIsWhitespace = isWhitespace(reader.codePointSource[reader.cursor]);
+			const secondIsWhitespace = isWhitespace(reader.codePointSource[reader.cursor+1]);
+			if (firstIsWhitespace && secondIsWhitespace) {
+				read += 1;
+				reader.advanceCodePoint(1);
+				continue;
+			}
+
+			const firstNonWhitespace = firstIsWhitespace ? reader.codePointSource[reader.cursor+1] : reader.codePointSource[reader.cursor];
+			if (firstNonWhitespace === QUOTATION_MARK || firstNonWhitespace === APOSTROPHE) {
+				if (read > 0) {
+					// https://github.com/w3c/csswg-drafts/issues/8280#issuecomment-1370566921
+					reader.unreadCodePoint(read);
+				}
+
+				return [
+					TokenType.Function,
+					reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+					reader.representationStart,
+					reader.representationEnd,
+					{
+						value: String.fromCharCode(...codePoints),
+					},
+				];
+			}
+
+			break;
+		}
+
+		return consumeUrlToken(ctx, reader);
+	}
+
+	reader.advanceCodePoint();
 	return [
-		TokenType.Ident,
-		reader.representationString(),
-		representation[0],
-		representation[1],
+		TokenType.Function,
+		reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+		reader.representationStart,
+		reader.representationEnd,
 		{
-			value: codePointsToString(codePoints),
+			value: String.fromCharCode(...codePoints),
 		},
 	];
 }

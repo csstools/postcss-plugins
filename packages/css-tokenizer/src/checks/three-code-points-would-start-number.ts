@@ -5,30 +5,27 @@ import { Context } from '../interfaces/context';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#starts-with-a-number
 export function checkIfThreeCodePointsWouldStartANumber(ctx: Context, reader: CodePointReader): boolean {
-	const peeked = reader.peekThreeCodePoints();
-	const [first, second, third] = peeked;
-
-	if (first === PLUS_SIGN || first === HYPHEN_MINUS) { // U+002B PLUS SIGN (+) or U+002D HYPHEN-MINUS (-)
+	if (reader.codePointSource[reader.cursor] === PLUS_SIGN || reader.codePointSource[reader.cursor] === HYPHEN_MINUS) { // U+002B PLUS SIGN (+) or U+002D HYPHEN-MINUS (-)
 		// If the second code point is a digit, return true.
-		if (isDigitCodePoint(second)) {
+		if (isDigitCodePoint(reader.codePointSource[reader.cursor+1])) {
 			return true;
 		}
 
 		// Otherwise, if the second code point is a U+002E FULL STOP (.)
-		if (second === FULL_STOP) {
+		if (reader.codePointSource[reader.cursor+1] === FULL_STOP) {
 			// and the third code point is a digit, return true.
-			return isDigitCodePoint(third);
+			return isDigitCodePoint(reader.codePointSource[reader.cursor+2]);
 		}
 
 		// Otherwise, return false.
 		return false;
 
-	} else if (first === FULL_STOP) { // U+002E FULL STOP (.)
+	} else if (reader.codePointSource[reader.cursor] === FULL_STOP) { // U+002E FULL STOP (.)
 		// If the second code point is a digit, return true.
 		// Otherwise, return false.
-		return isDigitCodePoint(second);
+		return isDigitCodePoint(reader.codePointSource[reader.cursor+1]);
 
-	} else if (isDigitCodePoint(first)) { // digit
+	} else if (isDigitCodePoint(reader.codePointSource[reader.cursor])) { // digit
 		// Return true.
 		return true;
 	}

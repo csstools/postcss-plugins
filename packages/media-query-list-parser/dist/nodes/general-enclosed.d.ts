@@ -8,7 +8,7 @@ export declare class GeneralEnclosed {
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: ComponentValue): number | string;
-    at(index: number | string): ComponentValue;
+    at(index: number | string): ComponentValue | undefined;
     walk(cb: (entry: {
         node: GeneralEnclosedWalkerEntry;
         parent: GeneralEnclosedWalkerParent;

@@ -1,78 +1,78 @@
 /** ' */
-export const APOSTROPHE = '\u{27}'.charCodeAt(0);
+export const APOSTROPHE = 0x0027;
 /** * */
-export const ASTERISK = '\u{2a}'.charCodeAt(0);
+export const ASTERISK = 0x002a;
 /** \b */
-export const BACKSPACE = '\u{8}'.charCodeAt(0);
+export const BACKSPACE = 0x008;
 /** \r */
-export const CARRIAGE_RETURN = '\u{d}'.charCodeAt(0);
+export const CARRIAGE_RETURN = 0x00d;
 /** \t */
-export const CHARACTER_TABULATION = '\u{9}'.charCodeAt(0);
+export const CHARACTER_TABULATION = 0x009;
 /** : */
-export const COLON = '\u{3a}'.charCodeAt(0);
+export const COLON = 0x003a;
 /** , */
-export const COMMA = '\u{2c}'.charCodeAt(0);
+export const COMMA = 0x002c;
 /** @ */
-export const COMMERCIAL_AT = '\u{40}'.charCodeAt(0);
+export const COMMERCIAL_AT = 0x0040;
 /** \x7F */
-export const DELETE = '\u{7f}'.charCodeAt(0);
+export const DELETE = 0x007f;
 /** ! */
-export const EXCLAMATION_MARK = '\u{21}'.charCodeAt(0);
+export const EXCLAMATION_MARK = 0x0021;
 /** \f */
-export const FORM_FEED = '\u{c}'.charCodeAt(0);
+export const FORM_FEED = 0x000c;
 /** . */
-export const FULL_STOP = '\u{2e}'.charCodeAt(0);
+export const FULL_STOP = 0x002e;
 /** > */
-export const GREATER_THAN_SIGN = '\u{3e}'.charCodeAt(0);
+export const GREATER_THAN_SIGN = 0x003e;
 /** - */
-export const HYPHEN_MINUS = '\u{2d}'.charCodeAt(0);
+export const HYPHEN_MINUS = 0x002d;
 /** \x1F */
-export const INFORMATION_SEPARATOR_ONE = '\u{1f}'.charCodeAt(0);
+export const INFORMATION_SEPARATOR_ONE = 0x001f;
 /** E */
-export const LATIN_CAPITAL_LETTER_E = '\u{45}'.charCodeAt(0);
+export const LATIN_CAPITAL_LETTER_E = 0x0045;
 /** e */
-export const LATIN_SMALL_LETTER_E = '\u{65}'.charCodeAt(0);
+export const LATIN_SMALL_LETTER_E = 0x0065;
 /** { */
-export const LEFT_CURLY_BRACKET = '\u{7b}'.charCodeAt(0);
+export const LEFT_CURLY_BRACKET = 0x007b;
 /** ( */
-export const LEFT_PARENTHESIS = '\u{28}'.charCodeAt(0);
+export const LEFT_PARENTHESIS = 0x0028;
 /** [ */
-export const LEFT_SQUARE_BRACKET = '\u{5b}'.charCodeAt(0);
+export const LEFT_SQUARE_BRACKET = 0x005b;
 /** < */
-export const LESS_THAN_SIGN = '\u{3c}'.charCodeAt(0);
+export const LESS_THAN_SIGN = 0x003c;
 /** \n */
-export const LINE_FEED = '\u{a}'.charCodeAt(0);
+export const LINE_FEED = 0x00a;
 /** \v */
-export const LINE_TABULATION = '\u{b}'.charCodeAt(0);
+export const LINE_TABULATION = 0x00b;
 /** _ */
-export const LOW_LINE = '\u{5f}'.charCodeAt(0);
+export const LOW_LINE = 0x005f;
 /** \x10FFFF */
-export const MAXIMUM_ALLOWED_CODEPOINT = '\u{10FFFF}'.charCodeAt(0);
+export const MAXIMUM_ALLOWED_CODEPOINT = 0x10FFFF;
 /** \x00 */
-export const NULL = '\u{0}'.charCodeAt(0);
+export const NULL = 0x000;
 /** # */
-export const NUMBER_SIGN = '\u{23}'.charCodeAt(0);
+export const NUMBER_SIGN = 0x0023;
 /** % */
-export const PERCENTAGE_SIGN = '\u{25}'.charCodeAt(0);
+export const PERCENTAGE_SIGN = 0x0025;
 /** + */
-export const PLUS_SIGN = '\u{2b}'.charCodeAt(0);
+export const PLUS_SIGN = 0x002b;
 /** " */
-export const QUOTATION_MARK = '\u{22}'.charCodeAt(0);
+export const QUOTATION_MARK = 0x0022;
 /** � */
-export const REPLACEMENT_CHARACTER = '\u{0FFFD}'.charCodeAt(0);
+export const REPLACEMENT_CHARACTER = 0xFFFD;
 /** \ */
-export const REVERSE_SOLIDUS = '\u{5c}'.charCodeAt(0);
+export const REVERSE_SOLIDUS = 0x005c;
 /** } */
-export const RIGHT_CURLY_BRACKET = '\u{7d}'.charCodeAt(0);
+export const RIGHT_CURLY_BRACKET = 0x007d;
 /** ) */
-export const RIGHT_PARENTHESIS = '\u{29}'.charCodeAt(0);
+export const RIGHT_PARENTHESIS = 0x0029;
 /** ] */
-export const RIGHT_SQUARE_BRACKET = '\u{5d}'.charCodeAt(0);
+export const RIGHT_SQUARE_BRACKET = 0x005d;
 /** ; */
-export const SEMICOLON = '\u{3b}'.charCodeAt(0);
+export const SEMICOLON = 0x003b;
 /** \u0E */
-export const SHIFT_OUT = '\u{e}'.charCodeAt(0);
+export const SHIFT_OUT = 0x00e;
 /** / */
-export const SOLIDUS = '\u{2f}'.charCodeAt(0);
+export const SOLIDUS = 0x002f;
 /** \u20 */
-export const SPACE = '\u{20}'.charCodeAt(0);
+export const SPACE = 0x0020;

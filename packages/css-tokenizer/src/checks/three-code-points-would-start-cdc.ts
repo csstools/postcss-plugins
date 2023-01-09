@@ -4,8 +4,5 @@ import { Context } from '../interfaces/context';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-token
 export function checkIfThreeCodePointsWouldStartCDC(ctx: Context, reader: CodePointReader): boolean {
-	const peeked = reader.peekThreeCodePoints();
-	const [first, second, third] = peeked;
-
-	return first === HYPHEN_MINUS && second === HYPHEN_MINUS && third === GREATER_THAN_SIGN;
+	return reader.codePointSource[reader.cursor] === HYPHEN_MINUS && reader.codePointSource[reader.cursor+1] === HYPHEN_MINUS && reader.codePointSource[reader.cursor + 2] === GREATER_THAN_SIGN;
 }

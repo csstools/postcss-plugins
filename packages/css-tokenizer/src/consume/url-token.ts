@@ -3,6 +3,7 @@ import { APOSTROPHE, LEFT_PARENTHESIS, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_PA
 import { isNonPrintableCodePoint, isWhitespace } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
+import { ParseError } from '../interfaces/error';
 import { TokenBadURL, TokenType, TokenURL } from '../interfaces/token';
 import { consumeBadURL } from './bad-url';
 import { consumeEscapedCodePoint } from './escaped-code-point';
@@ -15,79 +16,73 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		const peeked = reader.peekOneCodePoint();
-		if (peeked === false) {
-			const representation = reader.representation();
-			ctx.onParseError({
-				message: 'Unexpected EOF while consuming a url token.',
-				start: representation[0],
-				end: representation[1],
-				state: [
+		if (reader.codePointSource[reader.cursor] === undefined) {
+			ctx.onParseError(new ParseError(
+				'Unexpected EOF while consuming a url token.',
+				reader.representationStart,
+				reader.representationEnd,
+				[
 					'4.3.6. Consume a url token',
 					'Unexpected EOF',
 				],
-			});
+			));
 
 			return [
 				TokenType.URL,
-				reader.representationString(),
-				representation[0],
-				representation[1],
+				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+				reader.representationStart,
+				reader.representationEnd,
 				{
 					value: string,
 				},
 			];
 		}
 
-		if (peeked === RIGHT_PARENTHESIS) {
-			reader.readCodePoint();
-			const representation = reader.representation();
+		if (reader.codePointSource[reader.cursor] === RIGHT_PARENTHESIS) {
+			reader.advanceCodePoint();
 			return [
 				TokenType.URL,
-				reader.representationString(),
-				representation[0],
-				representation[1],
+				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+				reader.representationStart,
+				reader.representationEnd,
 				{
 					value: string,
 				},
 			];
 		}
 
-		if (isWhitespace(peeked)) {
+		if (isWhitespace(reader.codePointSource[reader.cursor])) {
 			consumeWhiteSpace(ctx, reader);
-			const peeked2 = reader.peekOneCodePoint();
-			if (peeked2 === false) {
-				const representation = reader.representation();
-				ctx.onParseError({
-					message: 'Unexpected EOF while consuming a url token.',
-					start: representation[0],
-					end: representation[1],
-					state: [
+			if (reader.codePointSource[reader.cursor] === undefined) {
+				ctx.onParseError(new ParseError(
+					'Unexpected EOF while consuming a url token.',
+					reader.representationStart,
+					reader.representationEnd,
+					[
 						'4.3.6. Consume a url token',
 						'Consume as much whitespace as possible',
 						'Unexpected EOF',
 					],
-				});
+				));
 
 				return [
 					TokenType.URL,
-					reader.representationString(),
-					representation[0],
-					representation[1],
+					reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+					reader.representationStart,
+					reader.representationEnd,
 					{
 						value: string,
 					},
 				];
 			}
 
-			if (peeked2 === RIGHT_PARENTHESIS) {
-				reader.readCodePoint();
-				const representation = reader.representation();
+			if (reader.codePointSource[reader.cursor] === RIGHT_PARENTHESIS) {
+				reader.advanceCodePoint();
 				return [
 					TokenType.URL,
-					reader.representationString(),
-					representation[0],
-					representation[1],
+					reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+					reader.representationStart,
+					reader.representationEnd,
 					{
 						value: string,
 					},
@@ -95,40 +90,38 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			}
 
 			consumeBadURL(ctx, reader);
-			const representation = reader.representation();
 			return [
 				TokenType.BadURL,
-				reader.representationString(),
-				representation[0],
-				representation[1],
+				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+				reader.representationStart,
+				reader.representationEnd,
 				undefined,
 			];
 		}
 
-		if (peeked === QUOTATION_MARK || peeked === APOSTROPHE || peeked === LEFT_PARENTHESIS || isNonPrintableCodePoint(peeked)) {
+		if (reader.codePointSource[reader.cursor] === QUOTATION_MARK || reader.codePointSource[reader.cursor] === APOSTROPHE || reader.codePointSource[reader.cursor] === LEFT_PARENTHESIS || isNonPrintableCodePoint(reader.codePointSource[reader.cursor])) {
 			consumeBadURL(ctx, reader);
 
-			const representation = reader.representation();
-			ctx.onParseError({
-				message: 'Unexpected character while consuming a url token.',
-				start: representation[0],
-				end: representation[1],
-				state: [
+			ctx.onParseError(new ParseError(
+				'Unexpected character while consuming a url token.',
+				reader.representationStart,
+				reader.representationEnd,
+				[
 					'4.3.6. Consume a url token',
 					'Unexpected U+0022 QUOTATION MARK ("), U+0027 APOSTROPHE (\'), U+0028 LEFT PARENTHESIS (() or non-printable code point',
 				],
-			});
+			));
 
 			return [
 				TokenType.BadURL,
-				reader.representationString(),
-				representation[0],
-				representation[1],
+				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+				reader.representationStart,
+				reader.representationEnd,
 				undefined,
 			];
 		}
 
-		if (peeked === REVERSE_SOLIDUS) {
+		if (reader.codePointSource[reader.cursor] === REVERSE_SOLIDUS) {
 			if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
 				string += String.fromCharCode(consumeEscapedCodePoint(ctx, reader));
 				continue;
@@ -136,28 +129,27 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 
 			consumeBadURL(ctx, reader);
 
-			const representation = reader.representation();
-			ctx.onParseError({
-				message: 'Invalid escape sequence while consuming a url token.',
-				start: representation[0],
-				end: representation[1],
-				state: [
+			ctx.onParseError(new ParseError(
+				'Invalid escape sequence while consuming a url token.',
+				reader.representationStart,
+				reader.representationEnd,
+				[
 					'4.3.6. Consume a url token',
 					'U+005C REVERSE SOLIDUS (\\)',
 					'The input stream does not start with a valid escape sequence',
 				],
-			});
+			));
 
 			return [
 				TokenType.BadURL,
-				reader.representationString(),
-				representation[0],
-				representation[1],
+				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+				reader.representationStart,
+				reader.representationEnd,
 				undefined,
 			];
 		}
 
-		reader.readCodePoint();
-		string += String.fromCharCode(peeked);
+		string += String.fromCharCode(reader.codePointSource[reader.cursor]);
+		reader.advanceCodePoint();
 	}
 }
