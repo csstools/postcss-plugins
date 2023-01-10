@@ -93,11 +93,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		};
 	};
 
-	// Only used for border-radius
-	const textDirection: [Axes, Axes] = directionConfig.inlineIsHorizontal
-		? [inlineStart, inlineEnd]
-		: [Axes.Left, Axes.Right];
-
 	return {
 		postcssPlugin: 'postcss-logical',
 		Declaration: {
@@ -142,13 +137,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				transformSideShorthand('margin', directionConfig.block),
 			),
 			'margin-inline': makeTransform(
-				transformSideShorthand('margin', [inlineStart, inlineEnd]),
+				transformSideShorthand('margin', directionConfig.inline),
 			),
 			// 4.3 Offsets
 			'inset-block': makeTransform(transformOffsetShorthand(directionConfig.block)),
 			'inset-block-start': makeTransform(transformOffset(blockStart)),
 			'inset-block-end': makeTransform(transformOffset(blockEnd)),
-			'inset-inline': makeTransform(transformOffsetShorthand([inlineStart, inlineEnd])),
+			'inset-inline': makeTransform(transformOffsetShorthand(directionConfig.inline)),
 			'inset-inline-start': makeTransform(transformOffset(inlineStart)),
 			'inset-inline-end': makeTransform(transformOffset(inlineEnd)),
 			'inset': makeTransform(transformInset()),
@@ -169,7 +164,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				transformSideShorthand('padding', directionConfig.block),
 			),
 			'padding-inline': makeTransform(
-				transformSideShorthand('padding', [inlineStart, inlineEnd]),
+				transformSideShorthand('padding', directionConfig.inline),
 			),
 			// 4.5 Borders
 			// 4.5.1 Border Width
@@ -250,16 +245,16 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			),
 			// 4.6 Border Radius
 			'border-start-start-radius': makeTransform(
-				transformBorderRadius(...textDirection),
+				transformBorderRadius(directionConfig),
 			),
 			'border-start-end-radius': makeTransform(
-				transformBorderRadius(...textDirection),
+				transformBorderRadius(directionConfig),
 			),
 			'border-end-start-radius': makeTransform(
-				transformBorderRadius(...textDirection),
+				transformBorderRadius(directionConfig),
 			),
 			'border-end-end-radius': makeTransform(
-				transformBorderRadius(...textDirection),
+				transformBorderRadius(directionConfig),
 			),
 		},
 	};
