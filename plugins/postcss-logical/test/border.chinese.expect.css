@@ -127,7 +127,7 @@
 
 .border-radius {
 	border-top-right-radius: 1px;
-	border-top-left-radius: 2px;
-	border-bottom-right-radius: 3px;
+	border-bottom-right-radius: 2px;
+	border-top-left-radius: 3px;
 	border-bottom-left-radius: 4px;
 }

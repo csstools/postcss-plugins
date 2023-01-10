@@ -50,9 +50,3 @@ export function transformValueWithSingleDirection(
 		return doTransform(declaration, directionValues, config);
 	};
 }
-
-export function reverseValues(value: string) {
-	const valueAST = valueParser(value);
-	valueAST.nodes.reverse();
-	return valueAST.toString();
-}

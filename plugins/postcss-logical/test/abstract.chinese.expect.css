@@ -11,8 +11,8 @@
 }
 
 .abstract {
-	border-top-right-radius: inline-start block-start;
-	border-top-left-radius: inline-end block-start;
-	border-bottom-right-radius: inline-start block-end;
-	border-bottom-left-radius: inline-end block-end;
+	border-top-right-radius: block-start inline-start;
+	border-bottom-right-radius: block-start inline-end;
+	border-top-left-radius: block-end inline-start;
+	border-bottom-left-radius: block-end inline-end;
 }
