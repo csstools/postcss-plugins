@@ -1,6 +1,8 @@
-import type { Declaration } from 'postcss';
+import { Declaration } from 'postcss';
 import { cloneDeclaration } from './clone-declaration';
 import { parseValueCouple } from '../utils/parse-value-couple';
+import { DirectionConfig } from './types';
+import { reverseValues } from './transform-value';
 
 export function transformBorder(
 	borderSetting: string,
@@ -56,30 +58,50 @@ export function transformBorderShorthand(
 }
 
 export function transformBorderRadius(
-	start: string,
-	end: string,
+	config: DirectionConfig,
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
 		let prop;
+		const value = config.inlineIsHorizontal ? declaration.value : reverseValues(declaration.value);
 
 		switch (declaration.prop.toLowerCase()) {
-			case 'border-start-start-radius':
-				prop = `border-top-${start}-radius`;
+			case 'border-start-start-radius': {
+				const replacement = config.inlineIsHorizontal ?
+					`${config.block[0]}-${config.inline[0]}` :
+					`${config.inline[0]}-${config.block[0]}`;
+
+				prop = `border-${replacement}-radius`;
 				break;
-			case 'border-start-end-radius':
-				prop = `border-top-${end}-radius`;
+			}
+			case 'border-start-end-radius': {
+				const replacement = config.inlineIsHorizontal ?
+					`${config.block[0]}-${config.inline[1]}` :
+					`${config.inline[0]}-${config.block[1]}`;
+
+				prop = `border-${replacement}-radius`;
 				break;
-			case 'border-end-start-radius':
-				prop = `border-bottom-${start}-radius`;
+			}
+			case 'border-end-start-radius': {
+				const replacement = config.inlineIsHorizontal ?
+					`${config.block[1]}-${config.inline[0]}` :
+					`${config.inline[1]}-${config.block[0]}`;
+
+				prop = `border-${replacement}-radius`;
 				break;
-			case 'border-end-end-radius':
-				prop = `border-bottom-${end}-radius`;
+			}
+			case 'border-end-end-radius': {
+				const replacement = config.inlineIsHorizontal ?
+					`${config.block[1]}-${config.inline[1]}` :
+					`${config.inline[1]}-${config.block[1]}`;
+
+				prop = `border-${replacement}-radius`;
 				break;
+			}
 		}
 
 		cloneDeclaration(
 			declaration,
-			declaration.value,
+			value,
 			prop,
 		);
 

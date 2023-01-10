@@ -9,3 +9,10 @@
 	float: inline-start;
 	clear: inline-end;
 }
+
+.abstract {
+	border-start-start-radius: block-start inline-start;
+	border-start-end-radius: block-start inline-end;
+	border-end-start-radius: block-end inline-start;
+	border-end-end-radius: block-end inline-end;
+}
