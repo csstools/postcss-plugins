@@ -1,0 +1,11 @@
+.abstract {
+	margin-bottom: block-start;
+	margin-left: inline-end;
+	margin-top: block-end;
+	margin-right: inline-start;
+}
+
+.abstract {
+	float: right;
+	clear: left;
+}
