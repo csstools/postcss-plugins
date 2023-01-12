@@ -1,10 +1,11 @@
-import valuesParser from 'postcss-value-parser';
+import valuesParser, { ParsedValue } from 'postcss-value-parser';
+import type { PluginOptions } from './options';
 import transformValueAST from './transform-value-ast';
-import { Declaration } from 'postcss';
+import type { Declaration } from 'postcss';
 import { isDeclarationIgnored } from './is-ignored';
 
 // transform custom pseudo selectors with custom selectors
-export default (decl, customProperties, opts) => {
+export default (decl: Declaration, customProperties: Map<string, ParsedValue>, opts: Pick<PluginOptions, 'preserve'>) => {
 	if (isTransformableDecl(decl) && !isDeclarationIgnored(decl)) {
 		const originalValue = decl.value;
 		const valueAST = valuesParser(originalValue);
@@ -29,19 +30,19 @@ export default (decl, customProperties, opts) => {
 				return;
 			}
 
-			if (opts.preserve) {
-				const beforeDecl = decl.cloneBefore({ value });
-
-				if (hasTrailingComment(beforeDecl)) {
-					beforeDecl.raws.value.value = beforeDecl.value.replace(trailingCommentRegExp, '$1');
-					beforeDecl.raws.value.raw = beforeDecl.raws.value.value + beforeDecl.raws.value.raw.replace(trailingCommentRegExp, '$2');
-				}
-			} else {
+			if (!opts.preserve || (typeof opts.preserve === 'function' && !opts.preserve(decl))) {
 				decl.value = value;
 
 				if (hasTrailingComment(decl)) {
 					decl.raws.value.value = decl.value.replace(trailingCommentRegExp, '$1');
 					decl.raws.value.raw = decl.raws.value.value + decl.raws.value.raw.replace(trailingCommentRegExp, '$2');
+				}
+			} else if (opts.preserve === true || opts.preserve(decl)) {
+				const beforeDecl = decl.cloneBefore({ value });
+
+				if (hasTrailingComment(beforeDecl)) {
+					beforeDecl.raws.value.value = beforeDecl.value.replace(trailingCommentRegExp, '$1');
+					beforeDecl.raws.value.raw = beforeDecl.raws.value.value + beforeDecl.raws.value.raw.replace(trailingCommentRegExp, '$2');
 				}
 			}
 		}

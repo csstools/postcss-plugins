@@ -1,2 +1,4 @@
+import type { Root } from 'postcss';
 import valuesParser from 'postcss-value-parser';
-export default function getCustomPropertiesFromRoot(root: any, opts: any): Map<string, valuesParser.ParsedValue>;
+import { PluginOptions } from './options';
+export default function getCustomPropertiesFromRoot(root: Root, opts: Pick<PluginOptions, 'preserve'>): Map<string, valuesParser.ParsedValue>;

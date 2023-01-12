@@ -1,7 +1,9 @@
-export default function transformValueAST(root, customProperties) {
+import type { FunctionNode, Node, ParsedValue } from 'postcss-value-parser';
+
+export default function transformValueAST(root: ParsedValue, customProperties: Map<string, ParsedValue>) {
 	if (root.nodes && root.nodes.length) {
-		root.nodes.slice().forEach((child) => {
-			if (isVarFunction(child)) {
+		root.nodes.slice().forEach((child: Node & ParsedValue) => {
+			if (isFunctionNode(child)) {
 				const [propertyNode, ...fallbacks] = child.nodes.filter((node) => node.type !== 'div');
 				const { value: name } = propertyNode;
 				const index = root.nodes.indexOf(child);
@@ -35,7 +37,7 @@ export default function transformValueAST(root, customProperties) {
 }
 
 // reTransform the current ast without a custom property (to prevent recursion)
-function reTransformValueAST(root, customProperties, withoutProperty) {
+function reTransformValueAST(root, customProperties: Map<string, ParsedValue>, withoutProperty) {
 	const nextCustomProperties = new Map(customProperties);
 
 	nextCustomProperties.delete(withoutProperty);
@@ -47,4 +49,4 @@ function reTransformValueAST(root, customProperties, withoutProperty) {
 const varRegExp = /^var$/i;
 
 // whether the node is a var() function
-const isVarFunction = node => node.type === 'function' && varRegExp.test(node.value) && Object(node.nodes).length > 0;
+const isFunctionNode = (node): node is FunctionNode => node.type === 'function' && varRegExp.test(node.value) && Object(node.nodes).length > 0;

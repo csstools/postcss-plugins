@@ -5,27 +5,15 @@ import getCustomPropertiesFromRoot from './lib/get-custom-properties-from-root';
 import getCustomPropertiesFromImports from './lib/get-custom-properties-from-imports';
 import transformProperties from './lib/transform-properties';
 import writeCustomPropertiesToExports from './lib/write-custom-properties-to-exports';
-import type { ImportOptions, ExportOptions } from './lib/options';
-
-export interface PluginOptions {
-	/** Do not emit warnings about "importFrom" and "exportTo" deprecations */
-	disableDeprecationNotice?: boolean;
-	/** Determines whether Custom Properties and properties using custom properties should be preserved in their original form. */
-	preserve?: boolean
-
-	/** Specifies sources where Custom Properties can be imported from, which might be CSS, JS, and JSON files, functions, and directly passed objects. */
-	importFrom?: ImportOptions | Array<ImportOptions>
-
-	/** Specifies destinations where Custom Properties can be exported to, which might be CSS, JS, and JSON files, functions, and directly passed objects. */
-	exportTo?: ExportOptions | Array<ExportOptions>
-
-	/** Specifies if `importFrom` properties or `:root` properties have priority. */
-	overrideImportFromWithRoot?: boolean
-}
+import type { ImportOptions, ExportOptions, PluginOptions } from './lib/options';
 
 const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 	// whether to preserve custom selectors and rules using them
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
+	const preserve = 'preserve' in Object(opts)
+		? (typeof opts.preserve === 'function'
+			? opts.preserve
+			: Boolean(opts.preserve))
+		: true;
 	const overrideImportFromWithRoot = 'overrideImportFromWithRoot' in Object(opts) ? Boolean(opts.overrideImportFromWithRoot) : false;
 	const disableDeprecationNotice = 'disableDeprecationNotice' in Object(opts) ? Boolean(opts.disableDeprecationNotice) : false;
 
@@ -72,7 +60,7 @@ const creator: PluginCreator<PluginOptions> = (opts?: PluginOptions) => {
 				return {
 					Once: async root => {
 						const importedCustomerProperties = (await customPropertiesPromise).entries();
-						const rootCustomProperties = getCustomPropertiesFromRoot(root, { preserve: preserve }).entries();
+						const rootCustomProperties = getCustomPropertiesFromRoot(root, { preserve }).entries();
 
 						if (overrideImportFromWithRoot) {
 							for (const [name, value] of [...importedCustomerProperties, ...rootCustomProperties]) {

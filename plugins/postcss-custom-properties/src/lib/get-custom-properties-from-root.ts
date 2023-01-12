@@ -1,14 +1,18 @@
+import type { Declaration, Root, Rule } from 'postcss';
+
 import valuesParser from 'postcss-value-parser';
 import { isBlockIgnored, isDeclarationIgnored } from './is-ignored';
+import { PluginOptions } from './options';
 
 // return custom selectors from the css root, conditionally removing them
-export default function getCustomPropertiesFromRoot(root, opts): Map<string, valuesParser.ParsedValue> {
+export default function getCustomPropertiesFromRoot(root: Root, opts: Pick<PluginOptions, 'preserve'>): Map<string, valuesParser.ParsedValue> {
 	// initialize custom selectors
 	const customPropertiesFromHtmlElement: Map<string, string> = new Map();
 	const customPropertiesFromRootPseudo: Map<string, string> = new Map();
+	const { preserve } = opts;
 
 	// for each html or :root rule
-	root.nodes.slice().forEach(rule => {
+	root.nodes.slice().forEach((rule: Rule) => {
 		if (isBlockIgnored(rule)) {
 			return;
 		}
@@ -21,7 +25,10 @@ export default function getCustomPropertiesFromRoot(root, opts): Map<string, val
 
 		// for each custom property
 		if (customPropertiesObject) {
-			rule.nodes.slice().forEach(decl => {
+			rule.nodes.slice().forEach((decl: Declaration) => {
+				const declarationCanBeRemoved = preserve === false ||
+					(typeof preserve === 'function' && !preserve(decl));
+
 				if (decl.variable && !isDeclarationIgnored(decl)) {
 					const { prop } = decl;
 
@@ -29,14 +36,14 @@ export default function getCustomPropertiesFromRoot(root, opts): Map<string, val
 					customPropertiesObject.set(prop, decl.value);
 
 					// conditionally remove the custom property declaration
-					if (!opts.preserve) {
+					if (declarationCanBeRemoved) {
 						decl.remove();
 					}
 				}
 			});
 
 			// conditionally remove the empty html or :root rule
-			if (!opts.preserve && isEmptyParent(rule)) {
+			if (!preserve && isEmptyParent(rule)) {
 				rule.remove();
 			}
 		}

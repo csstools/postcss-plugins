@@ -14,6 +14,32 @@ postcssTape(plugin)({
 			preserve: false
 		}
 	},
+	'basic:preserve-function': {
+		message: 'supports { preserve: Function } usage',
+		options: {
+			/**
+			 * @param {Declaration} d
+			 */
+			preserve: (d) => d.value.includes("--color"),
+		},
+	},
+	'import:preserve-function-filename': {
+		message: 'supports { preserve: Function } usage with filename',
+		warnings: 1,
+		plugins: [postcssImport(), plugin({
+			/**
+			 * @param {Declaration} declaration
+			 */
+			preserve: declaration => {
+				const cssInputFile = declaration.source.input.file;
+
+				return cssInputFile.endsWith('imported-file.css');
+			},
+			importFrom: [
+				'test/import-properties.css'
+			]
+		})],
+	},
 	'basic:import': {
 		message: 'supports { importFrom: { customProperties: { ... } } } usage',
 		warnings: 1,

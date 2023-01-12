@@ -1,3 +1,4 @@
+import { Declaration } from 'postcss';
 export type ImportFromSource = {
     from: string;
     type?: string;
@@ -24,3 +25,16 @@ export type ExportCustomProperties = {
 export type ExportAsFunction = (ExportCustomProperties: any) => void;
 export type ExportAsFunctionPromise = (ExportCustomProperties: any) => Promise<void>;
 export type ExportOptions = ExportToSource | ExportCustomProperties | ExportAsFunction | ExportAsFunctionPromise;
+export type PreserveOptions = boolean | ((declaration: Declaration) => boolean);
+export interface PluginOptions {
+    /** Do not emit warnings about "importFrom" and "exportTo" deprecations */
+    disableDeprecationNotice?: boolean;
+    /** Determines whether Custom Properties and properties using custom properties should be preserved in their original form. */
+    preserve?: PreserveOptions;
+    /** Specifies sources where Custom Properties can be imported from, which might be CSS, JS, and JSON files, functions, and directly passed objects. */
+    importFrom?: ImportOptions | Array<ImportOptions>;
+    /** Specifies destinations where Custom Properties can be exported to, which might be CSS, JS, and JSON files, functions, and directly passed objects. */
+    exportTo?: ExportOptions | Array<ExportOptions>;
+    /** Specifies if `importFrom` properties or `:root` properties have priority. */
+    overrideImportFromWithRoot?: boolean;
+}
