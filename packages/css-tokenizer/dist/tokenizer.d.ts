@@ -6,7 +6,6 @@ interface Stringer {
 export declare function tokenizer(input: {
     css: Stringer;
 }, options?: {
-    commentsAreTokens?: boolean;
     onParseError?: (error: ParseError) => void;
 }): {
     nextToken: () => CSSToken | undefined;

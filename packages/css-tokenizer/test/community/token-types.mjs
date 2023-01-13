@@ -48,7 +48,6 @@ ${openPropsSource}
 			css: source,
 		},
 		{
-			commentsAreTokens: true,
 			onParseError: () => {
 				// noop
 			},

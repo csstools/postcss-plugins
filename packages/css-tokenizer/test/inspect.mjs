@@ -47,7 +47,6 @@ while (true) {
 			css: source,
 		},
 		{
-			commentsAreTokens: true,
 			onParseError: () => {
 				// noop
 			},

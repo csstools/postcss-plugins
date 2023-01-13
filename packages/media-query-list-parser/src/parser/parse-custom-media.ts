@@ -67,7 +67,6 @@ export function parseCustomMediaFromTokens(tokens: Array<CSSToken>, options?: Op
 
 export function parseCustomMedia(source: string, options?: Options): CustomMedia | false {
 	const t = tokenizer({ css: source }, {
-		commentsAreTokens: true,
 		onParseError: options?.onParseError,
 	});
 

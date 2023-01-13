@@ -117,6 +117,7 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 			'screen/* a comment */(--custom-mq)',
 			[
 				['ident-token', 'screen', 0, 5, { value: 'screen' }],
+				['comment', '/* a comment */', 6, 20, undefined],
 				['(-token', '(', 21, 21, undefined],
 				['ident-token', '--custom-mq', 22, 32, { value: '--custom-mq' }],
 				[')-token', ')', 33, 33, undefined],

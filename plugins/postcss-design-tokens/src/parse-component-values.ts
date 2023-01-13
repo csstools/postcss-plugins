@@ -11,7 +11,6 @@ export function parseComponentValuesFromTokens(tokens: Array<CSSToken>) {
 
 export function parseComponentValues(source: string) {
 	const t = tokenizer({ css: source }, {
-		commentsAreTokens: true,
 		onParseError: (err) => {
 			throw new Error(JSON.stringify(err));
 		},
