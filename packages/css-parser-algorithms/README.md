@@ -45,7 +45,7 @@ const tokens = [];
 
 const options = {
 	onParseError: ((err) => {
-		throw new Error(JSON.stringify(err));
+		throw err;
 	}),
 };
 

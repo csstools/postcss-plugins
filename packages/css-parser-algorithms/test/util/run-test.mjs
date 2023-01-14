@@ -13,7 +13,6 @@ export function runTest(source, testPath, assertEqual, expectParseError = false)
 		throw new Error(`Unable to parse "${source}"`);
 	};
 	const t = tokenizer({ css: source }, {
-		commentsAreTokens: true,
 		onParseError: onParseError,
 	});
 

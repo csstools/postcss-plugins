@@ -7,7 +7,7 @@ import { tokenizer } from '@csstools/css-tokenizer';
 	for (const testCase in testCorpus) {
 		const t = tokenizer({
 			css: testCorpus[testCase].css,
-		}, {commentsAreTokens: true});
+		});
 
 		assert.deepEqual(
 			collectTokens(t).map((x) => toUniversal(x)).slice(0, -1),

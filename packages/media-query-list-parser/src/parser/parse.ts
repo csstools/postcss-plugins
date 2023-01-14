@@ -25,7 +25,6 @@ export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
 
 export function parse(source: string, options?: Options) {
 	const t = tokenizer({ css: source }, {
-		commentsAreTokens: true,
 		onParseError: options?.onParseError,
 	});
 

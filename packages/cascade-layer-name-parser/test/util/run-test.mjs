@@ -18,7 +18,7 @@ export function runTest(source, testPath, assertEqual, expectSuccess = true) {
 	} else {
 		if (expectSuccess) {
 			if (err) {
-				throw new Error(JSON.stringify(err));
+				throw err;
 			}
 		} else {
 			assertEqual(!!err, true);

@@ -21,7 +21,7 @@ interface Stringer {
 	valueOf(): string
 }
 
-export function tokenizer(input: { css: Stringer }, options?: { commentsAreTokens?: boolean, onParseError?: (error: ParseError) => void }) {
+export function tokenizer(input: { css: Stringer }, options?: { onParseError?: (error: ParseError) => void }) {
 	const css = input.css.valueOf();
 
 	const reader = new Reader(css);
@@ -39,13 +39,7 @@ export function tokenizer(input: { css: Stringer }, options?: { commentsAreToken
 		reader.representationEnd = -1;
 
 		if (checkIfTwoCodePointsStartAComment(ctx, reader)) {
-			if (options?.commentsAreTokens) {
-				return consumeComment(ctx, reader);
-			} else {
-				consumeComment(ctx, reader);
-				reader.representationStart = reader.cursor;
-				reader.representationEnd = -1;
-			}
+			return consumeComment(ctx, reader);
 		}
 
 		const peeked = reader.codePointSource[reader.cursor];

@@ -42,35 +42,9 @@ while (true) {
 
 ```ts
 {
-	commentsAreTokens?: false,
 	onParseError?: (error: ParseError) => void
 }
 ```
-
-#### `commentsAreTokens`
-
-Following the CSS specification comments are never returned by the tokenizer.
-For many tools however it is desirable to be able to convert tokens back to a string.
-
-```js
-import { tokenizer, TokenType } from '@csstools/css-tokenizer';
-
-const t = tokenizer({
-	css: `/* a comment */`,
-}, { commentsAreTokens: true });
-
-while (true) {
-	const token = t.nextToken();
-	if (token[0] === TokenType.EOF) {
-		break;
-	}
-
-	console.log(token);
-}
-```
-
-logs : `['comment', '/* a comment */', <start>, <end>, undefined]`
-
 
 #### `onParseError`
 
