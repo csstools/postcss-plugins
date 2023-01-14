@@ -65,8 +65,8 @@ postcss([
 [Prefers Color Scheme] runs in all Node environments, with special
 instructions for:
 
-| [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
-| --- | --- | --- | --- | --- |
+| [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- |
 
 ### Options
 
