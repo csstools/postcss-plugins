@@ -76,7 +76,6 @@ instructions for:
 - [PostCSS CLI](INSTALL.md#postcss-cli)
 - [PostCSS Load Config](INSTALL.md#postcss-load-config)
 - [Webpack](INSTALL.md#webpack)
-- [Create React App](INSTALL.md#create-react-app)
 - [Next.js](INSTALL.md#nextjs)
 - [Gulp](INSTALL.md#gulp)
 - [Grunt](INSTALL.md#grunt)

@@ -6,7 +6,6 @@
 - [PostCSS CLI](#postcss-cli)
 - [PostCSS Load Config](#postcss-load-config)
 - [Webpack](#webpack)
-- [Create React App](#create-react-app)
 - [Next.js](#nextjs)
 - [Gulp](#gulp)
 - [Grunt](#grunt)
@@ -142,28 +141,6 @@ module.exports = {
 };
 ```
 
-## Create React App
-
-Add [React App Rewired] and [React App Rewire PostCSS] to your project:
-
-```bash
-npm install react-app-rewired react-app-rewire-postcss postcss-color-functional-notation --save-dev
-```
-
-Use [React App Rewire PostCSS] and [PostCSS Color Functional Notation] in your
-`config-overrides.js` file:
-
-```js
-const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssColorFunctionalNotation = require('postcss-color-functional-notation');
-
-module.exports = config => reactAppRewirePostcss(config, {
-	plugins: () => [
-		postcssColorFunctionalNotation(/* pluginOptions */)
-	]
-});
-```
-
 ## Next.js
 
 Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
@@ -255,6 +232,4 @@ grunt.initConfig({
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Color Functional Notation]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation
-[React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
-[React App Rewired]: https://github.com/timarney/react-app-rewired
 [Next.js]: https://nextjs.org
