@@ -17,3 +17,25 @@
 	left: 5vh;
 	left: 5vi;
 }
+
+@supports (width: 100vb) {
+	.vi {
+		left: 5vi;
+	}
+}
+
+:root {
+	--var: 5vh;
+}
+
+@supports (top: 1vi) {
+
+:root {
+	--var: 5vi;
+}
+}
+
+.fallback {
+	left: 5vw;
+	left: 5vi;
+}

@@ -1,13 +1,6 @@
 import { stringify, tokenizer, TokenType } from '@csstools/css-tokenizer';
 
 export function transform(source: string, replacements: { vi: 'vw' | 'vh', vb: 'vw' | 'vh' }): string {
-	{
-		const lowerCaseValue = source.toLowerCase();
-		if (!(lowerCaseValue.includes('vb') || lowerCaseValue.includes('vi'))) {
-			return source;
-		}
-	}
-
 	const t = tokenizer({ css: source });
 	const tokens = [];
 	let didTransformUnits = false;
