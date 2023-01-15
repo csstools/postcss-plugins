@@ -62,13 +62,7 @@ Each direction must be one of the following:
 
 You can't mix two vertical directions or two horizontal directions so for example `top-to-bottom` and `right-to-left` are valid, but `top-to-bottom` and `bottom-to-top` are not.
 
-Please do not that some properties won't be transformed if `inlineDirection` becomes vertical.
-
-These are:
-
-* `float`
-* `clear`
-* `text-align`
+Please do not that `text-align` won't be transformed if `inlineDirection` becomes vertical.
 
 <linkList>
 [CSS Logical Properties and Values]: <specUrl>

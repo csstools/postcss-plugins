@@ -1,5 +1,5 @@
 import type { Declaration, PluginCreator, Result } from 'postcss';
-import { Axes, Direction, DirectionConfig, DirectionFlow } from './lib/types';
+import { Axes, DirectionConfig, DirectionFlow } from './lib/types';
 import {
 	transformBorder,
 	transformBorderProperty,
@@ -18,13 +18,10 @@ import {
 	transformSideShorthand,
 } from './lib/transform-side';
 import { transformTextAlign } from './lib/transform-text-align';
-import {
-	transformValue,
-	transformValueWithSingleDirection,
-} from './lib/transform-value';
+import { transformValue } from './lib/transform-value';
 import { directionFlowToAxes } from './utils/direction-flow-to-axes';
 
-/** postcss-overflow-shorthand plugin options */
+/** postcss-logical plugin options */
 export type pluginOptions = {
 	/** Sets the direction for block. default: top-to-bottom */
 	blockDirection?: DirectionFlow,
@@ -98,17 +95,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		Declaration: {
 			// 2.1 Caption
 			'caption-side': makeTransform(transformValue(directionConfig)),
-			// 2.2 Float & Clear
-			'float': makeTransform(
-				directionConfig.inlineIsHorizontal
-					? transformValueWithSingleDirection(Direction.Inline, directionConfig)
-					: null,
-			),
-			'clear': makeTransform(
-				directionConfig.inlineIsHorizontal
-					? transformValueWithSingleDirection(Direction.Inline, directionConfig)
-					: null,
-			),
 			// 2.3 Text Align
 			'text-align': makeTransform(
 				directionConfig.inlineIsHorizontal

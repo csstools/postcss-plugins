@@ -1,6 +1,6 @@
 import type { Declaration } from 'postcss';
 import valueParser from 'postcss-value-parser';
-import { DirectionConfig, DirectionValues, Direction } from './types';
+import { DirectionConfig, DirectionValues } from './types';
 import { logicalToPhysical } from '../utils/logical-to-physical';
 import { cloneDeclaration } from './clone-declaration';
 
@@ -31,22 +31,5 @@ export function transformValue(
 ): (declaration: Declaration) => boolean {
 	return (declaration: Declaration) => {
 		return doTransform(declaration, Object.values(DirectionValues), config);
-	};
-}
-
-export function transformValueWithSingleDirection(
-	direction: Direction,
-	config: DirectionConfig,
-): (declaration: Declaration) => boolean {
-	return (declaration: Declaration) => {
-		let directionValues;
-
-		if (direction === Direction.Block) {
-			directionValues = [DirectionValues.BlockStart, DirectionValues.BlockEnd];
-		} else {
-			directionValues = [DirectionValues.InlineStart, DirectionValues.InlineEnd];
-		}
-
-		return doTransform(declaration, directionValues, config);
 	};
 }

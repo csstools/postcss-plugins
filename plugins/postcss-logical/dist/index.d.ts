@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 import { DirectionFlow } from './lib/types';
-/** postcss-overflow-shorthand plugin options */
+/** postcss-logical plugin options */
 export type pluginOptions = {
     /** Sets the direction for block. default: top-to-bottom */
     blockDirection?: DirectionFlow;

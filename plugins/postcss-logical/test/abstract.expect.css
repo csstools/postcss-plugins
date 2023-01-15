@@ -6,11 +6,6 @@
 }
 
 .abstract {
-	float: left;
-	clear: right;
-}
-
-.abstract {
 	border-top-left-radius: block-start inline-start;
 	border-top-right-radius: block-start inline-end;
 	border-bottom-left-radius: block-end inline-start;
