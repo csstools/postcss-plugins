@@ -5,7 +5,7 @@ import { Context } from '../interfaces/context';
 import { NumberType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-number
-export function consumeNumber(ctx: Context, reader: CodePointReader): [number, NumberType] {
+export function consumeNumber(ctx: Context, reader: CodePointReader): NumberType {
 	// 1. Initially set type to "integer".
 	let type = NumberType.Integer;
 
@@ -71,9 +71,5 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): [number, N
 		}
 	}
 
-	// 6. Convert repr to a number, and set the value to the returned value.
-	const value = parseFloat(reader.source.slice(reader.representationStart, reader.representationEnd+1));
-
-	// 7. Return value and type.
-	return [value, type];
+	return type;
 }

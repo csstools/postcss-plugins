@@ -30,17 +30,15 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 		}
 
 		if (isNewLine(next)) {
-			{
-				ctx.onParseError(new ParseError(
-					'Unexpected newline while consuming a string token.',
-					reader.representationStart,
-					reader.representationEnd,
-					[
-						'4.3.5. Consume a string token',
-						'Unexpected newline',
-					],
-				));
-			}
+			ctx.onParseError(new ParseError(
+				'Unexpected newline while consuming a string token.',
+				reader.representationStart,
+				reader.representationEnd,
+				[
+					'4.3.5. Consume a string token',
+					'Unexpected newline',
+				],
+			));
 
 			reader.unreadCodePoint();
 			return [TokenType.BadString, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, undefined];
