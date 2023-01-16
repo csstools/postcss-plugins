@@ -59,7 +59,7 @@ Each direction must be one of the following:
 - `left-to-right`
 - `right-to-left`
 
-Please do not that transformations won't run if `inlineDirection` becomes vertical.
+Please do note that transformations won't run if `inlineDirection` becomes vertical.
 
 <linkList>
 [CSS Logical Properties and Values]: <specUrl>
