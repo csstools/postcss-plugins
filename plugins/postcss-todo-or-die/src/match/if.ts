@@ -1,5 +1,5 @@
-import { TokenType } from '@csstools/css-tokenizer';
 import { IfCondition } from '../parse/if';
+import { TokenType } from '@csstools/css-tokenizer';
 
 export function matchIfCondition(condition: IfCondition): string | true | undefined {
 	const a = condition.a;

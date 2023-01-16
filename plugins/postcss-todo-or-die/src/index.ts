@@ -1,18 +1,18 @@
 import type { AtRule, PluginCreator } from 'postcss';
-import { tokenizer } from '@csstools/css-tokenizer';
-import { isCommentNode, isFunctionNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, ParserError } from '@csstools/css-parser-algorithms';
-import { parseIfCondition } from './parse/if';
-import { parseNotCondition } from './parse/not';
-import { matchIfCondition } from './match/if';
-import { matchNotCondition } from './match/not';
 import browserslist from 'browserslist';
-import { parseBrowserslistCondition } from './parse/browserslist';
-import { matchBrowserslistCondition } from './match/browserslist';
+import { ParseError, tokenizer } from '@csstools/css-tokenizer';
 import { died } from './died';
-import { parseBeforeDateCondition } from './parse/before-data';
+import { isCommentNode, isFunctionNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { matchBeforeDateCondition } from './match/before-date';
-import { parseIssueOpenCondition } from './parse/issue-open';
+import { matchBrowserslistCondition } from './match/browserslist';
+import { matchIfCondition } from './match/if';
 import { matchIssueOpenCondition } from './match/issue-open';
+import { matchNotCondition } from './match/not';
+import { parseBeforeDateCondition } from './parse/before-data';
+import { parseBrowserslistCondition } from './parse/browserslist';
+import { parseIfCondition } from './parse/if';
+import { parseIssueOpenCondition } from './parse/issue-open';
+import { parseNotCondition } from './parse/not';
 
 const creator: PluginCreator<never> = () => {
 	const browsers = new Set(browserslist());
@@ -37,7 +37,7 @@ const creator: PluginCreator<never> = () => {
 			});
 
 			for (const atRule of atRules) {
-				const errorHandler = (err: ParserError) => {
+				const errorHandler = (err: ParseError) => {
 					throw atRule.error(err.message);
 				};
 

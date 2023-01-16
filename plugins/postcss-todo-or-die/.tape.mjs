@@ -15,10 +15,6 @@ postcssTape(plugin)({
 		message: "throws",
 		exception: /Died because the browsers matching "chrome <= 30" do not have any overlap with your project browserslist/
 	},
-	'issue-open': {
-		message: "throws",
-		exception: /Died because issue 2 in romainmenke\/repository-with-an-open-issue was closed/
-	},
 	'keyword-001': {
 		message: "throws",
 		exception: /Died because A \(left\) is no longer equal to B \(center\)/
@@ -43,3 +39,12 @@ postcssTape(plugin)({
 		message: 'minimal example',
 	},
 });
+
+if (!process.env.GITHUB_ACTION) {
+	postcssTape(plugin)({
+		'issue-open': {
+			message: "throws",
+			exception: /Died because issue 2 in romainmenke\/repository-with-an-open-issue was closed/
+		},
+	});
+}
