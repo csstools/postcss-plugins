@@ -89,6 +89,7 @@ body:
         - PostCSS Is Pseudo Class
         - PostCSS Lab Function
         - PostCSS Logical
+        - PostCSS Logical Float and Clear
         - PostCSS Media Queries Aspect-Ratio Number Values
         - PostCSS Media Query Ranges
         - PostCSS Nested Calc
