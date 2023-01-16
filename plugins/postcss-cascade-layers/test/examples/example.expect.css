@@ -1,5 +1,5 @@
 
-target:not(#\#) {
+target:not(_) {
 	color: purple;
 }
 

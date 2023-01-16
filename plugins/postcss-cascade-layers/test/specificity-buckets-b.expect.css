@@ -1,4 +1,4 @@
-foo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+foo:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	bucket: 1;
 }
 
@@ -18,18 +18,18 @@ foo {
 		bucket: 2;
 	}
 
-foo:not(#\#):not(#\#):not(#\#):not(#\#) {
+foo:not(_):not(_):not(_):not(_) {
 		bucket: 3;
 	}
 
-#foo:not(#\#):not(#\#):not(#\#):not(#\#) {
+#foo:not(_):not(_):not(_):not(_) {
 		bucket: 3;
 	}
 
-#foo:not(#\#):not(#\#):not(#\#):not(#\#) #fooz {
+#foo:not(_):not(_):not(_):not(_) #fooz {
 		bucket: 3;
 	}
 
-#foo:not(#\#):not(#\#):not(#\#):not(#\#) #fooz #foos {
+#foo:not(_):not(_):not(_):not(_) #fooz #foos {
 		bucket: 3;
 	}

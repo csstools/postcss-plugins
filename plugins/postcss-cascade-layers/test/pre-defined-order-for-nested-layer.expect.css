@@ -1,5 +1,5 @@
 
-		.test:not(#\#) {
+		.test:not(_) {
 			/* Third most specific */
 			order: 1.3;
 		}
@@ -9,12 +9,12 @@
 			order: 1.2;
 		}
 
-.test:not(#\#):not(#\#) {
+.test:not(_):not(_) {
 		/* Second most specific */
 		order: 1;
 	}
 
-.test:not(#\#):not(#\#):not(#\#):not(#\#) {
+.test:not(_):not(_):not(_):not(_) {
 	/* Most specific */
 	order: 0;
 }

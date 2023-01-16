@@ -27,7 +27,7 @@
 
 ### 1.0.2 (May 20, 2022)
 
-- Use only simple `:not(#\#)` selectors to adjust specificity.
+- Use only simple `:not(_)` selectors to adjust specificity.
 
 ### 1.0.1 (May 17, 2022)
 

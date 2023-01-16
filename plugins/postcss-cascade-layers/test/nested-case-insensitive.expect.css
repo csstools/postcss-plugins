@@ -13,43 +13,43 @@
 			color: yellow;
 		}
 
-target:not(#\#) {
+target:not(_) {
 		color: red;
 	}
 
-p:not(#\#) {
+p:not(_) {
 		color: blue;
 	}
 
-i:not(#\#) {
+i:not(_) {
 		color: red;
 	}
 
-target:not(#\#):not(#\#):not(#\#) {
+target:not(_):not(_):not(_) {
 			color: yellow;
 		}
 
-target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+target:not(_):not(_):not(_):not(_):not(_):not(_) {
 			color: yellow;
 		}
 
 @mediA (prefers-color-scheme: dark) {
-		h1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		h1:not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 			color: red;
 			background: black;
 		}
 	}
 
 @mediA (prefers-color-scheme: dark) {
-			target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+			target:not(_):not(_):not(_):not(_):not(_):not(_) {
 				color: lime;
 			}
 	}
 
-target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+target:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 			color: yellow;
 		}
 
-target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+target:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		color: red;
 	}

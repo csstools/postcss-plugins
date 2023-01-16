@@ -3,18 +3,18 @@
 		color: red;
 	}
 
-target:not(#\#) {
+target:not(_) {
 		color: orange;
 	}
 
-target:not(#\#):not(#\#) {
+target:not(_):not(_) {
 		color: yellow;
 	}
 
-target:not(#\#):not(#\#):not(#\#) {
+target:not(_):not(_):not(_) {
 		color: green;
 	}
 
-target:not(#\#):not(#\#):not(#\#):not(#\#) {
+target:not(_):not(_):not(_):not(_) {
 	color: purple;
 }

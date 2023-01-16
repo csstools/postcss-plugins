@@ -7,25 +7,25 @@
 			color: pink;
 		}
 }
-.theme-styles:not(#\#) {
+.theme-styles:not(_) {
 	color:blue;
 }
 @media screen and (prefers-color-scheme: dark) {
-	.theme-styles:not(#\#) {
+	.theme-styles:not(_) {
 			color: cyan;
 		}
 }/* [postcss-cascade-layers]: handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions. */
-.foo:not(#\#):not(#\#) {
+.foo:not(_):not(_) {
 		color: revert-layer;
 	}/* [postcss-cascade-layers]: handling different layer orders in conditional rules is unsupported by this plugin and will cause style differences between browser versions. */
 @media (min-width: 10px) {
-		.foo:not(#\#):not(#\#):not(#\#) {
+		.foo:not(_):not(_):not(_) {
 			color: red;
 		}
 }
-.foo:not(#\#):not(#\#):not(#\#):not(#\#) {
+.foo:not(_):not(_):not(_):not(_) {
 		color: pink;
 	}
-.foo:not(#\#):not(#\#):not(#\#) {
+.foo:not(_):not(_):not(_) {
 		color: red;
 	}

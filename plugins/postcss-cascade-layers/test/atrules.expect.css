@@ -31,10 +31,10 @@
 
 @counter-style custom-counter-style {
 		system: extends three;
-	}.foo:not(#\#):not(#\#) {
+	}.foo:not(_):not(_) {
 		order: 1.1;
 	}@container (min-width: 700px) {
-		.foo:not(#\#):not(#\#) {
+		.foo:not(_):not(_) {
 			order: 1.2;
 		}
 	}
@@ -49,7 +49,7 @@
 		}
 	}
 
-#target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+#target:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	animation: anim 1s paused;
 }
 
@@ -57,7 +57,7 @@
 	from { background-color: green; }
 }
 
-#target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#)::before {
+#target:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_)::before {
 	content: counter(dont-care, custom-counter-style);
 }
 

@@ -1,8 +1,8 @@
-:where(.foo):not(#\#):not(#\#) {
+:where(.foo):not(_):not(_) {
 	color: green;
 }
 
-:where(.foo):not(#\#) {
+:where(.foo):not(_) {
 		color: orange;
 	}
 

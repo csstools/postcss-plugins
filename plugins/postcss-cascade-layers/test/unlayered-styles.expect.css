@@ -3,18 +3,18 @@
 		color: red;
 	}
 
-target:not(#\#) {
+target:not(_) {
 		color: green;
 	}
 
-a:not(#\#):not(#\#) {
+a:not(_):not(_) {
 	color: purple;
 }
 
-target:not(#\#):not(#\#) {
+target:not(_):not(_) {
   color: green;
 }
 
-span:not(#\#):not(#\#) h1, span:not(#\#):not(#\#) p {
+span:not(_):not(_) h1, span:not(_):not(_) p {
   color:red;
 }

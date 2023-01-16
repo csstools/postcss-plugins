@@ -9,15 +9,15 @@
 
 /* [postcss-cascade-layers]: handling different layer orders in conditional rules is unsupported by this plugin and will cause style differences between browser versions. */
 @media (min-width: 10px) {
-		.foo:not(#\#) {
+		.foo:not(_) {
 			color: red;
 		}
 }
 
-.foo:not(#\#):not(#\#) {
+.foo:not(_):not(_) {
 		color: pink;
 	}
 
-.foo:not(#\#) {
+.foo:not(_) {
 		color: red;
 	}

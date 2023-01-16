@@ -1,6 +1,6 @@
 
 
-		.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) p {
+		.test-nesting-rules:not(_):not(_):not(_):not(_):not(_):not(_) p {
 				is-layer: C_D;
 				-webkit-box-ordinal-group: 6;
 				-webkit-order: 5.1;
@@ -9,23 +9,23 @@
 				        order: 5.1;
 		}
 
-:root:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+:root:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		is-layer: C;
 		--order: 1;
 	}
 
-.test-custom-property-fallbacks:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-custom-property-fallbacks:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		is-layer: C;
 		--firebrick: rgb(179, 35, 35);
 	}
 
 @supports (color: color(display-p3 0 0 0)){
-.test-custom-property-fallbacks:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-custom-property-fallbacks:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		--firebrick: color(display-p3 0.64331 0.19245 0.16771);
 	}
 }
 
-.test-custom-properties:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-custom-properties:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		is-layer: C;
 		-webkit-box-ordinal-group: var(--order);
 		-webkit-order: var(--order);
@@ -34,7 +34,7 @@
 		        order: var(--order);
 	}
 
-.test-image-set-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-image-set-function:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		is-layer: C;
 		background-image: url(img/test.png);
 		background-image: -webkit-image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
@@ -48,20 +48,20 @@
 
 @media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi){
 
-	.test-image-set-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	.test-image-set-function:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		background-image: url(img/test-2x.png);
 	}
 }
 
-[dir="ltr"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-logical-properties-and-values{
+[dir="ltr"]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) .test-logical-properties-and-values{
 		margin: 1px 4px 3px 2px;
 }
 
-[dir="rtl"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-logical-properties-and-values{
+[dir="rtl"]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) .test-logical-properties-and-values{
 		margin: 1px 2px 3px 4px;
 }
 
-.test-logical-properties-and-values:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-logical-properties-and-values:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		is-layer: C;
 		-webkit-box-ordinal-group: 4;
 		-webkit-order: 3;
@@ -72,7 +72,7 @@
 		padding-bottom: 5px;
 	}
 
-.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-nesting-rules:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		is-layer: C;
 		-webkit-box-ordinal-group: 5;
 		-webkit-order: 4;
@@ -81,7 +81,7 @@
 		        order: 4;
 	}
 
-.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) p {
+.test-nesting-rules:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) p {
 			is-layer: C;
 			-webkit-box-ordinal-group: 6;
 			-webkit-order: 5;
@@ -90,7 +90,7 @@
 			        order: 5;
 		}
 
-.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-nesting-rules:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 
 		is-layer: C;
 		-webkit-box-ordinal-group: 7;
@@ -100,8 +100,8 @@
 		        order: 6;
 	}
 
-.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),
-#test-is-pseudo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-nesting-rules:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),
+#test-is-pseudo:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-box-ordinal-group: 8;
 	-webkit-order: 7;
 	   -moz-box-ordinal-group: 8;
@@ -109,7 +109,7 @@
 	        order: 7;
 }
 
-.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) + p, #test-is-pseudo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) + p {
+.test-nesting-rules:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) + p, #test-is-pseudo:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) + p {
 		-webkit-box-ordinal-group: 9;
 		-webkit-order: 8;
 		   -moz-box-ordinal-group: 9;
@@ -117,8 +117,8 @@
 		        order: 8;
 	}
 
-.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),
-#test-is-pseudo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-nesting-rules:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),
+#test-is-pseudo:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 
 	-webkit-box-ordinal-group: 10;
 
@@ -132,7 +132,7 @@
 }
 
 @media (max-width: 30em) {
-	.test-custom-media-queries:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	.test-custom-media-queries:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		-webkit-box-ordinal-group: 11;
 		-webkit-order: 10;
 		   -moz-box-ordinal-group: 11;
@@ -153,27 +153,27 @@
 }
 
 @media (color-index: 48) {
-	body:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	body:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		background-color: black;
 		color: white;
 	}
 }
 
 @media (color: 48842621) {
-	body:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	body:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		background-color: black;
 		color: white;
 	}
 }
 
 @media (prefers-color-scheme: dark) {
-	body:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	body:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 		background-color: black;
 		color: white;
 	}
 }
 
-h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h2.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h3.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h4.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h5.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+h1.test-custom-selectors:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),h2.test-custom-selectors:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),h3.test-custom-selectors:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),h4.test-custom-selectors:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),h5.test-custom-selectors:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),h6.test-custom-selectors:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-box-ordinal-group:13;
 	-webkit-order:12;
 	   -moz-box-ordinal-group:13;
@@ -181,7 +181,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order:12;
 }
 
-.test-case-insensitive-attributes[frame=hsides]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=Hsides]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSides]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSides]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsIdes]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsIdes]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSIdes]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSIdes]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsiDes]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsiDes]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSiDes]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSiDes]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsIDes]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsIDes]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSIDes]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSIDes]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsidEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsidEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSidEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSidEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsIdEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsIdEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSIdEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSIdEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsiDEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsiDEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSiDEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSiDEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsIDEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsIDEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSIDEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSIDEs]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsideS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsideS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSideS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSideS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsIdeS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsIdeS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSIdeS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSIdeS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsiDeS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsiDeS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSiDeS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSiDeS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsIDeS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsIDeS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSIDeS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSIDeS]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsidES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsidES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSidES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSidES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsIdES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsIdES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSIdES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSIdES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsiDES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsiDES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSiDES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSiDES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hsIDES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HsIDES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=hSIDES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),.test-case-insensitive-attributes[frame=HSIDES]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-case-insensitive-attributes[frame=hsides]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=Hsides]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSides]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSides]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsIdes]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsIdes]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSIdes]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSIdes]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsiDes]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsiDes]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSiDes]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSiDes]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsIDes]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsIDes]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSIDes]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSIDes]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsidEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsidEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSidEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSidEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsIdEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsIdEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSIdEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSIdEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsiDEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsiDEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSiDEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSiDEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsIDEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsIDEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSIDEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSIDEs]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsideS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsideS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSideS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSideS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsIdeS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsIdeS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSIdeS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSIdeS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsiDeS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsiDeS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSiDeS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSiDeS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsIDeS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsIDeS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSIDeS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSIDeS]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsidES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsidES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSidES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSidES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsIdES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsIdES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSIdES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSIdES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsiDES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsiDES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSiDES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSiDES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hsIDES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HsIDES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=hSIDES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_),.test-case-insensitive-attributes[frame=HSIDES]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-box-ordinal-group: 14;
 	-webkit-order: 13;
 	   -moz-box-ordinal-group: 14;
@@ -189,7 +189,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 13;
 }
 
-.test-rebeccapurple-color:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-rebeccapurple-color:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	color: #639;
 	-webkit-box-ordinal-group: 15;
 	-webkit-order: 14;
@@ -198,7 +198,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 14;
 }
 
-.test-hexadecimal-alpha-notation:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-hexadecimal-alpha-notation:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	background-color: rgba(243,243,243,0.95294);
 	color: rgba(0,0,0,0.2);
 	-webkit-box-ordinal-group: 16;
@@ -208,7 +208,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 15;
 }
 
-.test-color-functional-notation:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-color-functional-notation:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	color: rgba(178, 34, 34, 0.5);
 	-webkit-box-ordinal-group: 17;
 	-webkit-order: 16;
@@ -217,7 +217,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 16;
 }
 
-.test-lab-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-lab-function:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	background-color: rgb(179, 35, 35);
 	background-color: color(display-p3 0.64331 0.19245 0.16771);
 	color: rgba(179, 34, 35, 0.5);
@@ -229,7 +229,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 17;
 }
 
-.test-system-ui-font-family:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-system-ui-font-family:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
 	-webkit-box-ordinal-group: 19;
 	-webkit-order: 18;
@@ -238,7 +238,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 18;
 }
 
-.test-font-variant-property:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-font-variant-property:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-font-feature-settings: "smcp";
 	   -moz-font-feature-settings: "smcp";
 	        font-feature-settings: "smcp";
@@ -250,7 +250,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 19;
 }
 
-.test-all-property:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-all-property:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-animation: none 0s ease 0s 1 normal none running;
 	   -moz-animation: none 0s ease 0s 1 normal none running;
 	     -o-animation: none 0s ease 0s 1 normal none running;
@@ -392,7 +392,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 20;
 }
 
-.test-matches-pseudo-class:matches(:first-child, .special):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-matches-pseudo-class:matches(:first-child, .special):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-box-ordinal-group: 22;
 	-webkit-order: 21;
 	   -moz-box-ordinal-group: 22;
@@ -400,7 +400,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 21;
 }
 
-.test-not-pseudo-class:not(:first-child):not(.special):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-not-pseudo-class:not(:first-child):not(.special):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-box-ordinal-group: 23;
 	-webkit-order: 22;
 	   -moz-box-ordinal-group: 23;
@@ -408,7 +408,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 22;
 }
 
-.test-any-link-pseudo-class:link:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), .test-any-link-pseudo-class:visited:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), area[href].test-any-link-pseudo-class:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-any-link-pseudo-class:link:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_), .test-any-link-pseudo-class:visited:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_), area[href].test-any-link-pseudo-class:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-box-ordinal-group: 24;
 	-webkit-order: 23;
 	   -moz-box-ordinal-group: 24;
@@ -416,18 +416,18 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 23;
 }
 
-.test-any-link-pseudo-class:-webkit-any-link:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-any-link-pseudo-class:-webkit-any-link:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-box-ordinal-group: 24;
 	-webkit-order: 23;
 	        order: 23;
 }
 
-.test-any-link-pseudo-class:-moz-any-link:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-any-link-pseudo-class:-moz-any-link:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-moz-box-ordinal-group: 24;
 	     order: 23;
 }
 
-.test-any-link-pseudo-class:any-link:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-any-link-pseudo-class:any-link:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-box-ordinal-group: 24;
 	-webkit-order: 23;
 	   -moz-box-ordinal-group: 24;
@@ -435,7 +435,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 23;
 }
 
-[dir="rtl"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-dir-pseudo-class {
+[dir="rtl"]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) .test-dir-pseudo-class {
 	-webkit-box-ordinal-group: 25;
 	-webkit-order: 24;
 	   -moz-box-ordinal-group: 25;
@@ -443,7 +443,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 24;
 }
 
-.test-overflow-wrap-property:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-overflow-wrap-property:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-box-ordinal-group: 26;
 	-webkit-order: 25;
 	   -moz-box-ordinal-group: 26;
@@ -452,7 +452,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	word-wrap: break-word;
 }
 
-.test-focus-visible-pseudo-class.focus-visible:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-focus-visible-pseudo-class.focus-visible:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-box-ordinal-group: 27;
 	-webkit-order: 26;
 	   -moz-box-ordinal-group: 27;
@@ -460,7 +460,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 26;
 }
 
-.test-focus-visible-pseudo-class:focus-visible:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-focus-visible-pseudo-class:focus-visible:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	-webkit-box-ordinal-group: 27;
 	-webkit-order: 26;
 	   -moz-box-ordinal-group: 27;
@@ -468,28 +468,28 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 26;
 }
 
-.test-double-position-gradients:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-double-position-gradients:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg,gold 75%, #f06 0deg);
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
 }
 
-.test-blank-pseudo-class[blank]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-blank-pseudo-class[blank]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	background-color: yellow;
 }
 
-.test-blank-pseudo-class:blank:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-blank-pseudo-class:blank:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	background-color: yellow;
 }
 
-.test-has-pseudo-class[\:has\(.inner-class\)]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-has-pseudo-class[\:has\(.inner-class\)]:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	background-color: yellow;
 }
 
-.test-has-pseudo-class:has(.inner-class):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-has-pseudo-class:has(.inner-class):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	background-color: yellow;
 }
 
-.a:focus:not(#\#):not(#\#):not(#\#):not(#\#) {
+.a:focus:not(_):not(_):not(_):not(_) {
 		-webkit-box-ordinal-group: 28;
 		-webkit-order: 27;
 		   -moz-box-ordinal-group: 28;
@@ -497,7 +497,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 		        order: 27;
 	}
 
-.a:hover:not(#\#):not(#\#):not(#\#):not(#\#) {
+.a:hover:not(_):not(_):not(_):not(_) {
 		-webkit-box-ordinal-group: 28;
 		-webkit-order: 27;
 		   -moz-box-ordinal-group: 28;
@@ -505,7 +505,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 		        order: 27;
 	}
 
-.b:focus:not(#\#):not(#\#):not(#\#):not(#\#) {
+.b:focus:not(_):not(_):not(_):not(_) {
 		-webkit-box-ordinal-group: 28;
 		-webkit-order: 27;
 		   -moz-box-ordinal-group: 28;
@@ -513,7 +513,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 		        order: 27;
 	}
 
-.b:hover:not(#\#):not(#\#):not(#\#):not(#\#) {
+.b:hover:not(_):not(_):not(_):not(_) {
 		-webkit-box-ordinal-group: 28;
 		-webkit-order: 27;
 		   -moz-box-ordinal-group: 28;
@@ -521,7 +521,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 		        order: 27;
 	}
 
-.a.c:not(#\#):not(#\#):not(#\#):not(#\#) > .b + .d {
+.a.c:not(_):not(_):not(_):not(_) > .b + .d {
 		-webkit-box-ordinal-group: 29;
 		-webkit-order: 28;
 		   -moz-box-ordinal-group: 29;
@@ -529,46 +529,46 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 		        order: 28;
 	}
 
-.test-hwb-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-hwb-function:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	background-color: rgba(0, 195, 255, .5);
 }
 
-.test-opacity-percent:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-opacity-percent:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	opacity: 0.42;
 }
 
-.clamp-same-unit:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.clamp-same-unit:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	width: max(10px, min(64px, 80px));
 }
 
-.complex-clamp:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.complex-clamp:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	width: max(-webkit-calc(100% - 10px), min(min(10px, 100%), max(40px, 4em)));
 	width: max(-moz-calc(100% - 10px), min(min(10px, 100%), max(40px, 4em)));
 	width: max(calc(100% - 10px), min(min(10px, 100%), max(40px, 4em)));
 }
 
-.clamp-different-units:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.clamp-different-units:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	width: max(10%, min(2px, 4rem));
 }
 
-.mixed-clamp:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.mixed-clamp:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	grid-template-columns: max(22rem, min(40%, 32rem)) minmax(0, 1fr);
 	margin: max(1rem, min(2%, 3rem)) 4vh;
 }
 
-.calc-clamp:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.calc-clamp:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	margin: 0 40px 0 -webkit-calc(-1 * max(32px, min(16vw, 64px)));
 	margin: 0 40px 0 -moz-calc(-1 * max(32px, min(16vw, 64px)));
 	margin: 0 40px 0 calc(-1 * max(32px, min(16vw, 64px)));
 }
 
-.multiple-calc-clamp:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.multiple-calc-clamp:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	margin: -webkit-calc(-1 * max(1px, min(2vw, 3px))) -webkit-calc(-1 * max(4px, min(5vw, 6px)));
 	margin: -moz-calc(-1 * max(1px, min(2vw, 3px))) -moz-calc(-1 * max(4px, min(5vw, 6px)));
 	margin: calc(-1 * max(1px, min(2vw, 3px))) calc(-1 * max(4px, min(5vw, 6px)));
 }
 
-.nested-clamp:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.nested-clamp:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	font-size: max(max(1rem, min(2vw, 3rem)), min(4vw, 5rem));
 }
 
@@ -580,42 +580,42 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	src: url(a) format("woff2");
 }
 
-.block-flow:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.block-flow:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: block;
 	display: block flow;
 }
 
-.block-flow-root:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.block-flow-root:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: flow-root;
 	display: block flow-root;
 }
 
-.inline-flow:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.inline-flow:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: inline;
 	display: inline flow;
 }
 
-.inline-flow-root:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.inline-flow-root:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: inline-block;
 	display: inline flow-root;
 }
 
-.run-in-flow:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.run-in-flow:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: run-in;
 	display: run-in flow;
 }
 
-.list-item-block-flow:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.list-item-block-flow:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: list-item;
 	display: list-item block flow;
 }
 
-.inline-flow-list-item:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.inline-flow-list-item:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: inline list-item;
 	display: inline flow list-item;
 }
 
-.block-flex:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.block-flex:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -moz-box;
@@ -624,7 +624,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	display: block flex;
 }
 
-.inline-flex:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.inline-flex:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: -webkit-inline-box;
 	display: -webkit-inline-flex;
 	display: -moz-inline-box;
@@ -633,52 +633,52 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	display: inline flex;
 }
 
-.block-grid:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.block-grid:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: grid;
 	display: block grid;
 }
 
-.inline-grid:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.inline-grid:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: inline-grid;
 	display: inline grid;
 }
 
-.inline-ruby:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.inline-ruby:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: ruby;
 	display: inline ruby;
 }
 
-.block-table:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.block-table:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: table;
 	display: block table;
 }
 
-.inline-table:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.inline-table:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: inline-table;
 	display: inline table;
 }
 
-.table-cell-flow:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.table-cell-flow:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: table-cell;
 	display: table-cell flow;
 }
 
-.table-caption-flow:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.table-caption-flow:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: table-caption;
 	display: table-caption flow;
 }
 
-.ruby-base-flow:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.ruby-base-flow:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: ruby-base;
 	display: ruby-base flow;
 }
 
-.ruby-text-flow:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.ruby-text-flow:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	display: ruby-text;
 	display: ruby-text flow;
 }
 
-.color-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.color-function:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	prop-1: rgb(0,132,94);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
 	prop-3: rgba(7,3,1,1);
@@ -688,7 +688,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	prop-5: rgb(255,255,255);
 }
 
-.oklab:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.oklab:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	color-1: rgb(73, 71, 69);
 	color-1: color(display-p3 0.28515 0.27983 0.27246);
 	color-2: rgba(121, 34, 67, 1);
@@ -714,7 +714,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	color-12: color(display-p3 0.45207 0.66555 0.91656);
 }
 
-.oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.oklch:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	color-1: rgb(126, 37, 15);
 	color-1: color(display-p3 0.45368 0.16978 0.09411);
 	color-2: rgba(126, 37, 15, 1);
@@ -754,7 +754,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	color-17: oklch(60% 0.1250 0.785398unknown);
 }
 
-.ic-unit:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.ic-unit:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	--value-2ic: 'something';
 	text-indent: 2em;
 	content: var(--value-2ic);
@@ -768,12 +768,12 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	padding: 2    ic;
 }
 
-.unset:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.unset:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	clip: auto;
 	clip: initial;
 }
 
-.mod:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.mod:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	padding: 8px 3px 1px -webkit-calc(3px + 50%);
 	padding: 8px 3px 1px -moz-calc(3px + 50%);
 	padding: 8px 3px 1px calc(3px + 50%);
@@ -785,7 +785,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	width: 2px;
 }
 
-.rem:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.rem:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	padding: 8px 3px 1px -webkit-calc(3px + 50%);
 	padding: 8px 3px 1px -moz-calc(3px + 50%);
 	padding: 8px 3px 1px calc(3px + 50%);
@@ -796,7 +796,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        transform: rotate(-50deg);
 }
 
-.round:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.round:not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(_) {
 	top: 3px;
 	right: 3px;
 	bottom: 3px;
