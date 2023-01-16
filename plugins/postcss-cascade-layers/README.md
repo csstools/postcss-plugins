@@ -20,7 +20,7 @@ target {
 /* becomes */
 
 
-target:not(#\#) {
+target:not(_) {
 	color: purple;
 }
 
@@ -73,8 +73,8 @@ the order in which layers are defined :
 | layer | previous adjustment | specificity adjustment | selector |
 | ------ | ------ | ----------- | --- |
 | `A` | `0` | `0 + 0 = 0` | N/A |
-| `B` | `0` | `0 + 3 = 3` | `:not(#/#):not(#/#):not(#/#)` |
-| `C` | `3` | `3 + 3 = 6` | `:not(#/#):not(#/#):not(#/#):not(#/#):not(#/#):not(#/#)` |
+| `B` | `0` | `0 + 3 = 3` | `:not(_):not(_):not(_)` |
+| `C` | `3` | `3 + 3 = 6` | `:not(_):not(_):not(_):not(_):not(_):not(_)` |
 
 This approach lets more important (later) layers always override less important (earlier) layers.<br>
 And layers have enough room internally so that each selector works and overrides as expected.
