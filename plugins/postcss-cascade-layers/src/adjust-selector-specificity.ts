@@ -25,10 +25,15 @@ function generateNot(specificity: number) {
 		return '';
 	}
 
-	let list = '';
-	for (let i = 0; i < specificity; i++) {
-		list += ':not(#\\#)'; // something short but still very uncommon
+	if (specificity === 1) {
+		return ':not(#\\#)';
 	}
+
+	let list = ':not(#\\#)';
+	for (let i = 0; i < specificity - 2; i++) {
+		list += ':not(_)'; // something short but still very uncommon
+	}
+	list += ':not(#\\#)';
 
 	return list;
 }
