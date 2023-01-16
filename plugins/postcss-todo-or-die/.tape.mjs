@@ -42,7 +42,7 @@ postcssTape(plugin)({
 
 // In this seems to sometimes randomly fail.
 // Most likely because we are hitting a rate limiter.
-if (!process.env.GITHUB_ACTION) {
+if (!process.env.GITHUB_ACTIONS) {
 	postcssTape(plugin)({
 		'issue-open': {
 			message: "throws",
