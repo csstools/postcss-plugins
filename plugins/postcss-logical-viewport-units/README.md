@@ -49,27 +49,39 @@ instructions for:
 
 ## Options
 
-### writingMode
+ ### inlineDirection
 
-The `writingMode` option determines whether fallback values are generated for documents with a horizontal or vertical writing mode.
-By default documents have a horizontal writing mode.
+ The `inlineDirection` option allows you to specify the direction of the inline axe. The default value is `left-to-right` respectively which would match any latin language.
 
-```js
-postcssLogicalViewportUnits({ writingMode: 'vertical' })
-```
+ You might want to tweak these value if you are using a different writing system, such as Arabic, Hebrew or Chinese for example.
 
-```pcss
-.foo {
+ ```js
+ postcssLogicalViewportUnits({
+ 	inlineDirection: 'top-to-bottom'
+ })
+ ```
+
+ ```pcss
+ .foo {
 	margin: 10vi 20vb;
 }
 
-/* becomes */
+ /* becomes */
 
-.foo {
+ .foo {
 	margin: 10vh 20vw;
 	margin: 10vi 20vb;
 }
-```
+ ```
+
+ Each direction must be one of the following:
+
+ - `top-to-bottom`
+ - `bottom-to-top`
+ - `left-to-right`
+ - `right-to-left`
+
+ Please do note that transformations won't do anything particular for `right-to-left` or `bottom-to-top`.
 
 ### preserve
 

@@ -1,36 +1,40 @@
 import type { PluginCreator } from 'postcss';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { DirectionFlow } from './lib/types';
 import { transform } from './transform';
 
 /** postcss-logical-viewport-units plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: false */
 	preserve?: boolean,
-	/** Control how logical viewport units are replaced. default: "horizontal" */
-	writingMode: 'horizontal' | 'vertical',
+	/** Sets the direction for inline. default: left-to-right */
+	inlineDirection?: DirectionFlow,
 };
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
 		// Default options
 		{
-			writingMode: 'horizontal',
+			inlineDirection: DirectionFlow.LeftToRight,
 			preserve: true,
 		},
 		// Provided options
 		opts,
 	);
 
-	if (options.writingMode !== 'vertical') {
-		options.writingMode = 'horizontal';
+	const directionValues = Object.values(DirectionFlow);
+	if (!directionValues.includes(options.inlineDirection)) {
+		throw new Error(`[postcss-logical-viewport-units] "inlineDirection" must be one of ${directionValues.join(', ')}`);
 	}
+
+	const isHorizontal = [DirectionFlow.LeftToRight, DirectionFlow.RightToLeft].includes(options.inlineDirection);
 
 	const replacements: { vi: 'vw' | 'vh', vb: 'vw' | 'vh' } = {
 		vb: 'vh',
 		vi: 'vw',
 	};
 
-	if (options.writingMode === 'vertical') {
+	if (!isHorizontal) {
 		replacements.vb = 'vw';
 		replacements.vi = 'vh';
 	}

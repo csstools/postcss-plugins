@@ -5,10 +5,16 @@ postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
 	},
-	'basic:vertical': {
-		message: "supports vertical writing mode",
+	'basic:hebrew': {
+		message: "supports { inlineDirection: 'right-to-left' }",
 		options: {
-			writingMode: 'vertical',
+			inlineDirection: 'right-to-left'
+		}
+	},
+	'basic:vertical': {
+		message: "supports { inlineDirection: 'top-to-bottom' }",
+		options: {
+			inlineDirection: 'top-to-bottom'
 		}
 	},
 	'examples/example': {
@@ -17,7 +23,7 @@ postcssTape(plugin)({
 	'examples/example:vertical': {
 		message: 'minimal example',
 		options: {
-			writingMode: 'vertical',
+			inlineDirection: 'top-to-bottom'
 		}
 	},
 	'examples/example:preserve-false': {
