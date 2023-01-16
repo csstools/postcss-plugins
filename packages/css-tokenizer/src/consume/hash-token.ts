@@ -11,9 +11,10 @@ export function consumeHashToken(ctx: Context, reader: CodePointReader): TokenDe
 	reader.advanceCodePoint();
 
 	if (
-		(reader.codePointSource[reader.cursor] !== undefined) &&
-		isIdentCodePoint(reader.codePointSource[reader.cursor]) ||
-		checkIfTwoCodePointsAreAValidEscape(ctx, reader)
+		(reader.codePointSource[reader.cursor] !== undefined) && (
+			isIdentCodePoint(reader.codePointSource[reader.cursor]) ||
+			checkIfTwoCodePointsAreAValidEscape(ctx, reader)
+		)
 	) {
 		let hashType = HashType.Unrestricted;
 

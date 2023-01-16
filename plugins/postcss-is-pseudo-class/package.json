@@ -35,7 +35,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"puppeteer": "^19.0.0"
+		"puppeteer": "^19.5.2"
 	},
 	"scripts": {
 		"prebuild": "npm run clean",

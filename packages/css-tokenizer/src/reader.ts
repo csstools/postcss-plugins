@@ -20,10 +20,6 @@ export class Reader implements CodePointReader {
 		}
 	}
 
-	cursorPositionOfLastReadCodePoint(): number {
-		return this.cursor - 1;
-	}
-
 	advanceCodePoint(n = 1): void {
 		this.cursor += n;
 		this.representationEnd = this.cursor - 1;

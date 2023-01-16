@@ -8,7 +8,8 @@ import { consumeNumber } from './number';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-numeric-token
 export function consumeNumericToken(ctx: Context, reader: CodePointReader): TokenPercentage|TokenNumber|TokenDimension {
-	const numberValue = consumeNumber(ctx, reader);
+	const numberType = consumeNumber(ctx, reader);
+	const numberValue = parseFloat(reader.source.slice(reader.representationStart, reader.representationEnd + 1));
 
 	if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 		const unit = consumeIdentSequence(ctx, reader);
@@ -18,8 +19,8 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 			reader.representationStart,
 			reader.representationEnd,
 			{
-				value: numberValue[0],
-				type: numberValue[1],
+				value: numberValue,
+				type: numberType,
 				unit: String.fromCharCode(...unit),
 			},
 		];
@@ -34,7 +35,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 			reader.representationStart,
 			reader.representationEnd,
 			{
-				value: numberValue[0],
+				value: numberValue,
 			},
 		];
 	}
@@ -45,8 +46,8 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 		reader.representationStart,
 		reader.representationEnd,
 		{
-			value: numberValue[0],
-			type: numberValue[1],
+			value: numberValue,
+			type: numberType,
 		},
 	];
 }
