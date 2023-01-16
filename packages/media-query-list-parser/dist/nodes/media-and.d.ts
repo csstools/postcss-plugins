@@ -9,7 +9,7 @@ export declare class MediaAnd {
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaInParens): number | string;
-    at(index: number | string): MediaInParens;
+    at(index: number | string): MediaInParens | null;
     walk(cb: (entry: {
         node: MediaAndWalkerEntry;
         parent: MediaAndWalkerParent;

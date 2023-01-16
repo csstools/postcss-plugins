@@ -136,6 +136,10 @@
   - plugins/postcss-logical/**
   - experimental/postcss-logical/**
 
+"plugins/postcss-logical-viewport-units":
+  - plugins/postcss-logical-viewport-units/**
+  - experimental/postcss-logical-viewport-units/**
+
 "plugins/media-queries-aspect-ratio-number-values":
   - plugins/postcss-media-queries-aspect-ratio-number-values/**
   - experimental/postcss-media-queries-aspect-ratio-number-values/**

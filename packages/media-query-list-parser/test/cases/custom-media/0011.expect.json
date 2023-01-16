@@ -1,0 +1,107 @@
+{
+	"type": "custom-media",
+	"string": "--foo (max-height: does-not-exist(foo))",
+	"nameValue": "--foo",
+	"name": [
+		[
+			"ident-token",
+			"--foo",
+			0,
+			4,
+			{
+				"value": "--foo"
+			}
+		]
+	],
+	"hasFalseKeyword": false,
+	"hasTrueKeyword": false,
+	"mediaQueryList": [
+		{
+			"type": "media-query-without-type",
+			"string": " (max-height: does-not-exist(foo))",
+			"media": {
+				"type": "media-condition",
+				"media": {
+					"type": "media-in-parens",
+					"media": {
+						"type": "general-enclosed",
+						"tokens": [
+							[
+								"(-token",
+								"(",
+								6,
+								6,
+								null
+							],
+							[
+								"ident-token",
+								"max-height",
+								7,
+								16,
+								{
+									"value": "max-height"
+								}
+							],
+							[
+								"colon-token",
+								":",
+								17,
+								17,
+								null
+							],
+							[
+								"whitespace-token",
+								" ",
+								18,
+								18,
+								null
+							],
+							[
+								"function-token",
+								"does-not-exist(",
+								19,
+								33,
+								{
+									"value": "does-not-exist"
+								}
+							],
+							[
+								"ident-token",
+								"foo",
+								34,
+								36,
+								{
+									"value": "foo"
+								}
+							],
+							[
+								")-token",
+								")",
+								37,
+								37,
+								null
+							],
+							[
+								")-token",
+								")",
+								38,
+								38,
+								null
+							]
+						]
+					},
+					"before": [
+						[
+							"whitespace-token",
+							" ",
+							5,
+							5,
+							null
+						]
+					],
+					"after": []
+				}
+			}
+		}
+	]
+}

@@ -133,7 +133,7 @@ export type Token<T extends TokenType, U> = [
 	U,
 ]
 
-export function mirrorVariantType(type: TokenType): TokenType|null {
+export function mirrorVariantType(type: TokenType): TokenType | null {
 	switch (type) {
 		case TokenType.OpenParen:
 			return TokenType.CloseParen;
@@ -149,6 +149,28 @@ export function mirrorVariantType(type: TokenType): TokenType|null {
 			return TokenType.CloseSquare;
 		case TokenType.CloseSquare:
 			return TokenType.OpenSquare;
+
+		default:
+			return null;
+	}
+}
+
+export function mirrorVariant(token: CSSToken): CSSToken | null {
+	switch (token[0]) {
+		case TokenType.OpenParen:
+			return [TokenType.CloseParen, ')', -1, -1, undefined];
+		case TokenType.CloseParen:
+			return [TokenType.OpenParen, '(', -1, -1, undefined];
+
+		case TokenType.OpenCurly:
+			return [TokenType.CloseCurly, '}', -1, -1, undefined];
+		case TokenType.CloseCurly:
+			return [TokenType.OpenCurly, '{', -1, -1, undefined];
+
+		case TokenType.OpenSquare:
+			return [TokenType.CloseSquare, ']', -1, -1, undefined];
+		case TokenType.CloseSquare:
+			return [TokenType.OpenSquare, '[', -1, -1, undefined];
 
 		default:
 			return null;

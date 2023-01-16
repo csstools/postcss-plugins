@@ -4,12 +4,11 @@ import { Context } from '../interfaces/context';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comments
 export function checkIfTwoCodePointsStartAComment(ctx: Context, reader: CodePointReader): boolean {
-	const peeked = reader.peekTwoCodePoints();
-	if (peeked[0] !== SOLIDUS) {
+	if (reader.codePointSource[reader.cursor] !== SOLIDUS) {
 		return false;
 	}
 
-	if (peeked[1] !== ASTERISK) {
+	if (reader.codePointSource[reader.cursor+1] !== ASTERISK) {
 		return false;
 	}
 

@@ -1,10 +1,10 @@
-import { CSSToken, mirrorVariantType, stringify, TokenType, isToken, TokenFunction } from '@csstools/css-tokenizer';
+import { CSSToken, mirrorVariantType, mirrorVariant, stringify, TokenType, isToken, TokenFunction, ParseError } from '@csstools/css-tokenizer';
 import { Context } from '../interfaces/context';
 import { ComponentValueType } from '../util/component-value-type';
 
 export type ContainerNode = FunctionNode | SimpleBlockNode;
 
-export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode | UnclosedSimpleBlockNode | UnclosedFunctionNode;
+export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode;
 
 // https://www.w3.org/TR/css-syntax-3/#consume-a-component-value
 export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: ComponentValue } {
@@ -64,11 +64,34 @@ export class FunctionNode {
 		this.value = value;
 	}
 
-	nameTokenValue(): string {
+	getName(): string {
 		return this.name[4].value;
 	}
 
+	/**
+	 * Normalize the current Function:
+	 * - if the "endToken" is EOF, replace with a ")-token"
+	 */
+	normalize() {
+		if (this.endToken[0] === TokenType.EOF) {
+			this.endToken = [TokenType.CloseParen, ')', -1, -1, undefined];
+		}
+	}
+
 	tokens(): Array<CSSToken> {
+		if (this.endToken[0] === TokenType.EOF) {
+			return [
+				this.name,
+				...this.value.flatMap((x) => {
+					if (isToken(x)) {
+						return x;
+					}
+
+					return x.tokens();
+				}),
+			];
+		}
+
 		return [
 			this.name,
 			...this.value.flatMap((x) => {
@@ -98,7 +121,7 @@ export class FunctionNode {
 		return this.value.indexOf(item);
 	}
 
-	at(index: number | string) {
+	at(index: number | string): ComponentValue | undefined {
 		if (typeof index === 'number') {
 			if (index < 0) {
 				index = this.value.length + index;
@@ -136,7 +159,7 @@ export class FunctionNode {
 	toJSON() {
 		return {
 			type: this.type,
-			name: this.nameTokenValue(),
+			name: this.getName(),
 			tokens: this.tokens(),
 			value: this.value.map((x) => x.toJSON()),
 		};
@@ -160,7 +183,7 @@ export class FunctionNode {
 }
 
 // https://www.w3.org/TR/css-syntax-3/#consume-function
-export function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: FunctionNode | UnclosedFunctionNode } {
+export function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: FunctionNode } {
 	const value: Array<ComponentValue> = [];
 
 	let i = 1;
@@ -169,19 +192,19 @@ export function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advanc
 	while (true) {
 		const token = tokens[i];
 		if (!token || token[0] === TokenType.EOF) {
-			ctx.onParseError({
-				message: 'Unexpected EOF while consuming a function.',
-				start: tokens[0][2],
-				end: tokens[tokens.length - 1][3],
-				state: [
+			ctx.onParseError(new ParseError(
+				'Unexpected EOF while consuming a function.',
+				tokens[0][2],
+				tokens[tokens.length - 1][3],
+				[
 					'5.4.9. Consume a function',
 					'Unexpected EOF',
 				],
-			});
+			));
 
 			return {
 				advance: tokens.length,
-				node: new UnclosedFunctionNode(tokens),
+				node: new FunctionNode(tokens[0] as TokenFunction, token, value),
 			};
 		}
 
@@ -218,7 +241,33 @@ export class SimpleBlockNode {
 		this.value = value;
 	}
 
+	/**
+	 * Normalize the current Simple Block:
+	 * - if the "endToken" is EOF, replace with the mirror token of the "startToken"
+	 */
+	normalize() {
+		if (this.endToken[0] === TokenType.EOF) {
+			const mirror = mirrorVariant(this.startToken);
+			if (mirror) {
+				this.endToken = mirror;
+			}
+		}
+	}
+
 	tokens(): Array<CSSToken> {
+		if (this.endToken[0] === TokenType.EOF) {
+			return [
+				this.startToken,
+				...this.value.flatMap((x) => {
+					if (isToken(x)) {
+						return x;
+					}
+
+					return x.tokens();
+				}),
+			];
+		}
+
 		return [
 			this.startToken,
 			...this.value.flatMap((x) => {
@@ -248,7 +297,7 @@ export class SimpleBlockNode {
 		return this.value.indexOf(item);
 	}
 
-	at(index: number | string) {
+	at(index: number | string): ComponentValue | undefined {
 		if (typeof index === 'number') {
 			if (index < 0) {
 				index = this.value.length + index;
@@ -310,7 +359,7 @@ export class SimpleBlockNode {
 }
 
 /** https://www.w3.org/TR/css-syntax-3/#consume-simple-block */
-export function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: SimpleBlockNode | UnclosedSimpleBlockNode } {
+export function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: SimpleBlockNode } {
 	const endingTokenType = mirrorVariantType(tokens[0][0]);
 	if (!endingTokenType) {
 		throw new Error('Failed to parse, a mirror variant must exist for all block open tokens.');
@@ -324,19 +373,19 @@ export function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { adv
 	while (true) {
 		const token = tokens[i];
 		if (!token || token[0] === TokenType.EOF) {
-			ctx.onParseError({
-				message: 'Unexpected EOF while consuming a simple block.',
-				start: tokens[0][2],
-				end: tokens[tokens.length - 1][3],
-				state: [
+			ctx.onParseError(new ParseError(
+				'Unexpected EOF while consuming a simple block.',
+				tokens[0][2],
+				tokens[tokens.length - 1][3],
+				[
 					'5.4.8. Consume a simple block',
 					'Unexpected EOF',
 				],
-			});
+			));
 
 			return {
 				advance: tokens.length,
-				node: new UnclosedSimpleBlockNode(tokens),
+				node: new SimpleBlockNode(tokens[0], token, value),
 			};
 		}
 
@@ -535,87 +584,5 @@ export class TokenNode {
 		}
 
 		return x.type === ComponentValueType.Token;
-	}
-}
-
-export class UnclosedFunctionNode {
-	type: ComponentValueType = ComponentValueType.UnclosedFunction;
-
-	value: Array<CSSToken>;
-
-	constructor(value: Array<CSSToken>) {
-		this.value = value;
-	}
-
-	tokens(): Array<CSSToken> {
-		return this.value;
-	}
-
-	toString(): string {
-		return stringify(...this.value);
-	}
-
-	toJSON() {
-		return {
-			type: this.type,
-			tokens: this.tokens(),
-		};
-	}
-
-	isUnclosedFunctionNode(): this is UnclosedFunctionNode {
-		return UnclosedFunctionNode.isUnclosedFunctionNode(this);
-	}
-
-	static isUnclosedFunctionNode(x: unknown): x is UnclosedFunctionNode {
-		if (!x) {
-			return false;
-		}
-
-		if (!(x instanceof UnclosedFunctionNode)) {
-			return false;
-		}
-
-		return x.type === ComponentValueType.UnclosedFunction;
-	}
-}
-
-export class UnclosedSimpleBlockNode {
-	type: ComponentValueType = ComponentValueType.UnclosedSimpleBlock;
-
-	value: Array<CSSToken>;
-
-	constructor(value: Array<CSSToken>) {
-		this.value = value;
-	}
-
-	tokens(): Array<CSSToken> {
-		return this.value;
-	}
-
-	toString(): string {
-		return stringify(...this.value);
-	}
-
-	toJSON() {
-		return {
-			type: this.type,
-			tokens: this.tokens(),
-		};
-	}
-
-	isUnclosedSimpleBlockNode(): this is UnclosedSimpleBlockNode {
-		return UnclosedSimpleBlockNode.isUnclosedSimpleBlockNode(this);
-	}
-
-	static isUnclosedSimpleBlockNode(x: unknown): x is UnclosedSimpleBlockNode {
-		if (!x) {
-			return false;
-		}
-
-		if (!(x instanceof UnclosedSimpleBlockNode)) {
-			return false;
-		}
-
-		return x.type === ComponentValueType.UnclosedSimpleBlock;
 	}
 }

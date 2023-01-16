@@ -1,0 +1,360 @@
+{
+	"type": "custom-media",
+	"string": "--foo screen and (min-width: 300px), print and (max-height: 500px)",
+	"nameValue": "--foo",
+	"name": [
+		[
+			"ident-token",
+			"--foo",
+			0,
+			4,
+			{
+				"value": "--foo"
+			}
+		]
+	],
+	"hasFalseKeyword": false,
+	"hasTrueKeyword": false,
+	"mediaQueryList": [
+		{
+			"type": "media-query-with-type",
+			"string": " screen and (min-width: 300px)",
+			"modifier": [],
+			"mediaType": [
+				[
+					"whitespace-token",
+					" ",
+					5,
+					5,
+					null
+				],
+				[
+					"ident-token",
+					"screen",
+					6,
+					11,
+					{
+						"value": "screen"
+					}
+				]
+			],
+			"and": [
+				[
+					"whitespace-token",
+					" ",
+					12,
+					12,
+					null
+				],
+				[
+					"ident-token",
+					"and",
+					13,
+					15,
+					{
+						"value": "and"
+					}
+				]
+			],
+			"media": {
+				"type": "media-condition",
+				"media": {
+					"type": "media-in-parens",
+					"media": {
+						"type": "media-feature",
+						"feature": {
+							"type": "mf-plain",
+							"name": {
+								"type": "mf-name",
+								"name": "min-width",
+								"tokens": [
+									[
+										"ident-token",
+										"min-width",
+										18,
+										26,
+										{
+											"value": "min-width"
+										}
+									]
+								]
+							},
+							"value": {
+								"type": "mf-value",
+								"value": {
+									"type": "token",
+									"tokens": [
+										[
+											"dimension-token",
+											"300px",
+											29,
+											33,
+											{
+												"value": 300,
+												"type": "integer",
+												"unit": "px"
+											}
+										]
+									]
+								},
+								"tokens": [
+									[
+										"whitespace-token",
+										" ",
+										28,
+										28,
+										null
+									],
+									[
+										"dimension-token",
+										"300px",
+										29,
+										33,
+										{
+											"value": 300,
+											"type": "integer",
+											"unit": "px"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"ident-token",
+									"min-width",
+									18,
+									26,
+									{
+										"value": "min-width"
+									}
+								],
+								[
+									"colon-token",
+									":",
+									27,
+									27,
+									null
+								],
+								[
+									"whitespace-token",
+									" ",
+									28,
+									28,
+									null
+								],
+								[
+									"dimension-token",
+									"300px",
+									29,
+									33,
+									{
+										"value": 300,
+										"type": "integer",
+										"unit": "px"
+									}
+								]
+							]
+						},
+						"before": [
+							[
+								"whitespace-token",
+								" ",
+								16,
+								16,
+								null
+							],
+							[
+								"(-token",
+								"(",
+								17,
+								17,
+								null
+							]
+						],
+						"after": [
+							[
+								")-token",
+								")",
+								34,
+								34,
+								null
+							]
+						]
+					},
+					"before": [],
+					"after": []
+				}
+			}
+		},
+		{
+			"type": "media-query-with-type",
+			"string": " print and (max-height: 500px)",
+			"modifier": [],
+			"mediaType": [
+				[
+					"whitespace-token",
+					" ",
+					36,
+					36,
+					null
+				],
+				[
+					"ident-token",
+					"print",
+					37,
+					41,
+					{
+						"value": "print"
+					}
+				]
+			],
+			"and": [
+				[
+					"whitespace-token",
+					" ",
+					42,
+					42,
+					null
+				],
+				[
+					"ident-token",
+					"and",
+					43,
+					45,
+					{
+						"value": "and"
+					}
+				]
+			],
+			"media": {
+				"type": "media-condition",
+				"media": {
+					"type": "media-in-parens",
+					"media": {
+						"type": "media-feature",
+						"feature": {
+							"type": "mf-plain",
+							"name": {
+								"type": "mf-name",
+								"name": "max-height",
+								"tokens": [
+									[
+										"ident-token",
+										"max-height",
+										48,
+										57,
+										{
+											"value": "max-height"
+										}
+									]
+								]
+							},
+							"value": {
+								"type": "mf-value",
+								"value": {
+									"type": "token",
+									"tokens": [
+										[
+											"dimension-token",
+											"500px",
+											60,
+											64,
+											{
+												"value": 500,
+												"type": "integer",
+												"unit": "px"
+											}
+										]
+									]
+								},
+								"tokens": [
+									[
+										"whitespace-token",
+										" ",
+										59,
+										59,
+										null
+									],
+									[
+										"dimension-token",
+										"500px",
+										60,
+										64,
+										{
+											"value": 500,
+											"type": "integer",
+											"unit": "px"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"ident-token",
+									"max-height",
+									48,
+									57,
+									{
+										"value": "max-height"
+									}
+								],
+								[
+									"colon-token",
+									":",
+									58,
+									58,
+									null
+								],
+								[
+									"whitespace-token",
+									" ",
+									59,
+									59,
+									null
+								],
+								[
+									"dimension-token",
+									"500px",
+									60,
+									64,
+									{
+										"value": 500,
+										"type": "integer",
+										"unit": "px"
+									}
+								]
+							]
+						},
+						"before": [
+							[
+								"whitespace-token",
+								" ",
+								46,
+								46,
+								null
+							],
+							[
+								"(-token",
+								"(",
+								47,
+								47,
+								null
+							]
+						],
+						"after": [
+							[
+								")-token",
+								")",
+								65,
+								65,
+								null
+							]
+						]
+					},
+					"before": [],
+					"after": []
+				}
+			}
+		}
+	]
+}

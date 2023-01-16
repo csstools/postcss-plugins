@@ -1,0 +1,104 @@
+{
+	"type": "custom-media",
+	"string": "--foo false or screen",
+	"nameValue": "--foo",
+	"name": [
+		[
+			"ident-token",
+			"--foo",
+			0,
+			4,
+			{
+				"value": "--foo"
+			}
+		]
+	],
+	"hasFalseKeyword": false,
+	"hasTrueKeyword": false,
+	"mediaQueryList": [
+		{
+			"type": "media-query-invalid",
+			"string": " false or screen",
+			"media": [
+				{
+					"type": "whitespace",
+					"tokens": [
+						[
+							"whitespace-token",
+							" ",
+							5,
+							5,
+							null
+						]
+					]
+				},
+				{
+					"type": "token",
+					"tokens": [
+						[
+							"ident-token",
+							"false",
+							6,
+							10,
+							{
+								"value": "false"
+							}
+						]
+					]
+				},
+				{
+					"type": "whitespace",
+					"tokens": [
+						[
+							"whitespace-token",
+							" ",
+							11,
+							11,
+							null
+						]
+					]
+				},
+				{
+					"type": "token",
+					"tokens": [
+						[
+							"ident-token",
+							"or",
+							12,
+							13,
+							{
+								"value": "or"
+							}
+						]
+					]
+				},
+				{
+					"type": "whitespace",
+					"tokens": [
+						[
+							"whitespace-token",
+							" ",
+							14,
+							14,
+							null
+						]
+					]
+				},
+				{
+					"type": "token",
+					"tokens": [
+						[
+							"ident-token",
+							"screen",
+							15,
+							20,
+							{
+								"value": "screen"
+							}
+						]
+					]
+				}
+			]
+		}
+	]
+}

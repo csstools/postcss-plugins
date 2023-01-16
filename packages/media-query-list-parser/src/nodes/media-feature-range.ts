@@ -1,6 +1,6 @@
 import { ComponentValue, ComponentValueType, TokenNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenDelim, TokenType } from '@csstools/css-tokenizer';
-import { comparisonFromTokens, matchesComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT } from './media-feature-comparison';
+import { comparisonFromTokens, matchesComparison, MediaFeatureComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT } from './media-feature-comparison';
 import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
 import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent, parseMediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
@@ -22,8 +22,16 @@ export class MediaFeatureRangeNameValue {
 		this.value = value;
 	}
 
-	operatorKind() {
+	operatorKind(): MediaFeatureComparison | false {
 		return comparisonFromTokens(this.operator);
+	}
+
+	getName(): string {
+		return this.name.getName();
+	}
+
+	getNameToken(): CSSToken {
+		return this.name.getNameToken();
 	}
 
 	tokens(): Array<CSSToken> {
@@ -50,7 +58,7 @@ export class MediaFeatureRangeNameValue {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaFeatureName | MediaFeatureValue | undefined {
 		if (index === 'name') {
 			return this.name;
 		}
@@ -109,8 +117,16 @@ export class MediaFeatureRangeValueName {
 		this.value = value;
 	}
 
-	operatorKind() {
+	operatorKind(): MediaFeatureComparison | false {
 		return comparisonFromTokens(this.operator);
+	}
+
+	getName(): string {
+		return this.name.getName();
+	}
+
+	getNameToken(): CSSToken {
+		return this.name.getNameToken();
 	}
 
 	tokens(): Array<CSSToken> {
@@ -137,7 +153,7 @@ export class MediaFeatureRangeValueName {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaFeatureName | MediaFeatureValue | undefined {
 		if (index === 'name') {
 			return this.name;
 		}
@@ -200,12 +216,20 @@ export class MediaFeatureRangeValueNameValue {
 		this.valueTwoOperator = valueTwoOperator;
 	}
 
-	valueOneOperatorKind() {
+	valueOneOperatorKind(): MediaFeatureComparison | false {
 		return comparisonFromTokens(this.valueOneOperator);
 	}
 
-	valueTwoOperatorKind() {
+	valueTwoOperatorKind(): MediaFeatureComparison | false {
 		return comparisonFromTokens(this.valueTwoOperator);
+	}
+
+	getName(): string {
+		return this.name.getName();
+	}
+
+	getNameToken(): CSSToken {
+		return this.name.getNameToken();
 	}
 
 	tokens(): Array<CSSToken> {
@@ -238,7 +262,7 @@ export class MediaFeatureRangeValueNameValue {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaFeatureName | MediaFeatureValue | undefined {
 		if (index === 'name') {
 			return this.name;
 		}
@@ -304,7 +328,7 @@ export class MediaFeatureRangeValueNameValue {
 export type MediaFeatureRangeWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
 export type MediaFeatureRangeWalkerParent = MediaFeatureValueWalkerParent | MediaFeatureRange;
 
-export function parseMediaFeatureRange(componentValues: Array<ComponentValue>) {
+export function parseMediaFeatureRange(componentValues: Array<ComponentValue>): MediaFeatureRange | false {
 	let comparisonOne: false | [number, number] = false;
 	let comparisonTwo: false | [number, number] = false;
 
@@ -461,6 +485,7 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>) {
 	);
 }
 
+// https://www.w3.org/TR/mediaqueries-5/#media-descriptor-table
 export const mediaDescriptors = new Set([
 	'any-hover',
 	'any-pointer',

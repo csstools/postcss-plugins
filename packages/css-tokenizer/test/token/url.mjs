@@ -259,3 +259,166 @@ url( 'mix-quoted" ' )\
 		],
 	);
 }
+
+{
+	const t1 = tokenizer({
+		css: 'background-image:url(foo)',
+	});
+
+	const t2 = tokenizer({
+		css: 'background-image:url(foo',
+	});
+
+	assert.deepEqual(
+		collectTokens(t1).map((x) => {
+			x[1] = '';
+			x[3] = 0;
+			return x;
+		}),
+		collectTokens(t2).map((x) => {
+			x[1] = '';
+			x[3] = 0;
+			return x;
+		}),
+	);
+}
+
+{
+	const t1 = tokenizer({
+		css: 'background-image:url()',
+	});
+
+	const t2 = tokenizer({
+		css: 'background-image:url(',
+	});
+
+	assert.deepEqual(
+		collectTokens(t1).map((x) => {
+			x[1] = '';
+			x[3] = 0;
+			return x;
+		}),
+		collectTokens(t2).map((x) => {
+			x[1] = '';
+			x[3] = 0;
+			return x;
+		}),
+	);
+}
+
+{
+	const t = tokenizer({
+		css: 'url(foo())',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['bad-url-token', 'url(foo()', 0, 8, undefined],
+			[')-token', ')', 9, 9, undefined],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+// Whitespace before contents
+// https://github.com/w3c/csswg-drafts/issues/8280
+{
+	{
+		const t = tokenizer({
+			css: 'url("foo")',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['function-token', 'url(', 0, 3, { value: 'url' }],
+				['string-token', '"foo"', 4, 8, { value: 'foo' }],
+				[')-token', ')', 9, 9, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: 'url( "foo")',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['function-token', 'url(', 0, 3, { value: 'url' }],
+				['whitespace-token', ' ', 4, 4, undefined],
+				['string-token', '"foo"', 5, 9, { value: 'foo' }],
+				[')-token', ')', 10, 10, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: 'url(  "foo")',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['function-token', 'url(', 0, 3, { value: 'url' }],
+				['whitespace-token', '  ', 4, 5, undefined],
+				['string-token', '"foo"', 6, 10, { value: 'foo' }],
+				[')-token', ')', 11, 11, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: 'not-url(  "foo")',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['function-token', 'not-url(', 0, 7, { value: 'not-url' }],
+				['whitespace-token', '  ', 8, 9, undefined],
+				['string-token', '"foo"', 10, 14, { value: 'foo' }],
+				[')-token', ')', 15, 15, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: 'url(   "foo")',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['function-token', 'url(', 0, 3, { value: 'url' }],
+				['whitespace-token', '   ', 4, 6, undefined],
+				['string-token', '"foo"', 7, 11, { value: 'foo' }],
+				[')-token', ')', 12, 12, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: 'url(   foo)',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['url-token', 'url(   foo)', 0, 10, { value: 'foo' }],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+}

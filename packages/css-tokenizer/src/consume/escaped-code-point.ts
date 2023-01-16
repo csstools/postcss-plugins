@@ -1,23 +1,22 @@
 import { MAXIMUM_ALLOWED_CODEPOINT, REPLACEMENT_CHARACTER } from '../code-points/code-points';
-import { codePointsToString } from '../code-points/code-points-to-string';
 import { isHexDigitCodePoint, isSurrogate, isWhitespace } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
+import { ParseError } from '../interfaces/error';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-escaped-code-point
 export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): number {
 	const codePoint = reader.readCodePoint();
 	if (codePoint === false) {
-		const representation = reader.representation();
-		ctx.onParseError({
-			message: 'Unexpected EOF while consuming an escaped code point.',
-			start: representation[0],
-			end: representation[1],
-			state: [
+		ctx.onParseError(new ParseError(
+			'Unexpected EOF while consuming an escaped code point.',
+			reader.representationStart,
+			reader.representationEnd,
+			[
 				'4.3.7. Consume an escaped code point',
 				'Unexpected EOF',
 			],
-		});
+		));
 
 		return REPLACEMENT_CHARACTER;
 	}
@@ -25,18 +24,16 @@ export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): 
 	if (isHexDigitCodePoint(codePoint)) {
 		const hexSequence: Array<number> = [codePoint];
 
-		let peeked = reader.peekOneCodePoint();
-		while (peeked !== false && isHexDigitCodePoint(peeked) && hexSequence.length < 6) {
-			reader.readCodePoint();
-			hexSequence.push(peeked);
-			peeked = reader.peekOneCodePoint();
+		while ((reader.codePointSource[reader.cursor] !== undefined) && isHexDigitCodePoint(reader.codePointSource[reader.cursor]) && hexSequence.length < 6) {
+			hexSequence.push(reader.codePointSource[reader.cursor]);
+			reader.advanceCodePoint();
 		}
 
-		if (peeked !== false && isWhitespace(peeked)) {
-			reader.readCodePoint();
+		if (isWhitespace(reader.codePointSource[reader.cursor])) {
+			reader.advanceCodePoint();
 		}
 
-		const codePointLiteral = parseInt(codePointsToString(hexSequence), 16);
+		const codePointLiteral = parseInt(String.fromCharCode(...hexSequence), 16);
 		if (codePointLiteral === 0) {
 			return REPLACEMENT_CHARACTER;
 		}

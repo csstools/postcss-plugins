@@ -1,8 +1,7 @@
-import { ParserError } from '../interfaces/error';
-import { CSSToken, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, ParseError, TokenType } from '@csstools/css-tokenizer';
 import { ComponentValue, consumeComponentValue } from '../consume/consume-component-block-function';
 
-export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParserError) => void }) {
+export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParseError) => void }) {
 	const ctx = {
 		onParseError: options?.onParseError ?? (() => { /* noop */ }),
 	};

@@ -425,3 +425,23 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 		],
 	);
 }
+
+{
+	const t = tokenizer({
+		css: `10\\1\\0
+`,
+	});
+
+	assert.deepEqual(
+		collectTokens(t).slice(0, -1),
+		[
+			[
+				'dimension-token',
+				'10\\1\\0\n',
+				0,
+				6,
+				{ value: 10, type: 'integer', unit: '\x01�' },
+			],
+		],
+	);
+}

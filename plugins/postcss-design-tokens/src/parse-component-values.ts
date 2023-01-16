@@ -4,16 +4,15 @@ import { CSSToken, tokenizer } from '@csstools/css-tokenizer';
 export function parseComponentValuesFromTokens(tokens: Array<CSSToken>) {
 	return parseListOfComponentValues(tokens, {
 		onParseError: (err) => {
-			throw new Error(JSON.stringify(err));
+			throw err;
 		},
 	});
 }
 
 export function parseComponentValues(source: string) {
 	const t = tokenizer({ css: source }, {
-		commentsAreTokens: true,
 		onParseError: (err) => {
-			throw new Error(JSON.stringify(err));
+			throw err;
 		},
 	});
 

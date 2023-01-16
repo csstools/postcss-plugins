@@ -6,7 +6,6 @@
 - [PostCSS CLI](#postcss-cli)
 - [PostCSS Load Config](#postcss-load-config)
 - [Webpack](#webpack)
-- [Create React App](#create-react-app)
 - [Next.js](#nextjs)
 - [Gulp](#gulp)
 - [Grunt](#grunt)
@@ -143,28 +142,6 @@ module.exports = {
 };
 ```
 
-## Create React App
-
-Add [React App Rewired] and [React App Rewire PostCSS] to your project:
-
-```bash
-npm install react-app-rewired react-app-rewire-postcss postcss-custom-selectors --save-dev
-```
-
-Use [React App Rewire PostCSS] and [PostCSS Custom Selectors] in your
-`config-overrides.js` file:
-
-```js
-const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssCustomSelectors = require('postcss-custom-selectors');
-
-module.exports = config => reactAppRewirePostcss(config, {
-	plugins: () => [
-		postcssCustomSelectors(/* pluginOptions */)
-	]
-});
-```
-
 ## Next.js
 
 Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
@@ -256,6 +233,4 @@ grunt.initConfig({
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Custom Selectors]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors
-[React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
-[React App Rewired]: https://github.com/timarney/react-app-rewired
 [Next.js]: https://nextjs.org

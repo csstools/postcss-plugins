@@ -1,0 +1,41 @@
+.foo {
+	margin: 10vh 20vw;
+	margin: 10vi 20vb;
+}
+
+.foo {
+	margin: calc(10vh + 5vw);
+	margin: calc(10vi + 5vb);
+}
+
+.vb {
+	left: 5vw;
+	left: 5vb;
+}
+
+.vi {
+	left: 5vh;
+	left: 5vi;
+}
+
+@supports (width: 100vb) {
+	.vi {
+		left: 5vi;
+	}
+}
+
+:root {
+	--var: 5vh;
+}
+
+@supports (top: 1vi) {
+
+:root {
+	--var: 5vi;
+}
+}
+
+.fallback {
+	left: 5vw;
+	left: 5vi;
+}

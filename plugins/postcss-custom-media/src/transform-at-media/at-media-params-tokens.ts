@@ -5,7 +5,6 @@ export function atMediaParamsTokens(params: string): Array<CSSToken> {
 	const t = tokenizer({
 		css: params,
 	}, {
-		commentsAreTokens: true,
 		onParseError: () => {
 			throw new Error(`Unable to parse media query "${params}"`);
 		},

@@ -8,23 +8,22 @@ import { consumeEscapedCodePoint } from './escaped-code-point';
 export function consumeBadURL(ctx: Context, reader: CodePointReader) {
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		const peeked = reader.peekOneCodePoint();
-		if (peeked === false) {
+		if (reader.codePointSource[reader.cursor] === undefined) {
 			return;
 		}
 
-		if (peeked === RIGHT_PARENTHESIS) {
-			reader.readCodePoint();
+		if (reader.codePointSource[reader.cursor] === RIGHT_PARENTHESIS) {
+			reader.advanceCodePoint();
 			return;
 		}
 
 		if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
-			reader.readCodePoint();
+			reader.advanceCodePoint();
 			consumeEscapedCodePoint(ctx, reader);
 			continue;
 		}
 
-		reader.readCodePoint();
+		reader.advanceCodePoint();
 		continue;
 	}
 }

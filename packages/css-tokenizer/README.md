@@ -42,35 +42,9 @@ while (true) {
 
 ```ts
 {
-	commentsAreTokens?: false,
-	onParseError?: (error: ParserError) => void
+	onParseError?: (error: ParseError) => void
 }
 ```
-
-#### `commentsAreTokens`
-
-Following the CSS specification comments are never returned by the tokenizer.
-For many tools however it is desirable to be able to convert tokens back to a string.
-
-```js
-import { tokenizer, TokenType } from '@csstools/css-tokenizer';
-
-const t = tokenizer({
-	css: `/* a comment */`,
-}, { commentsAreTokens: true });
-
-while (true) {
-	const token = t.nextToken();
-	if (token[0] === TokenType.EOF) {
-		break;
-	}
-
-	console.log(token);
-}
-```
-
-logs : `['comment', '/* a comment */', <start>, <end>, undefined]`
-
 
 #### `onParseError`
 
@@ -94,21 +68,8 @@ while (true) {
 }
 ```
 
-logs : 
-
-```js
-{
-	message: 'Unexpected EOF while consuming an escaped code point.',
-	start: 0,
-	end: 0,
-	state: ['4.3.7. Consume an escaped code point', 'Unexpected EOF'],
-}
-```
-
 Parser errors will try to inform you about the point in the tokenizer logic the error happened.
 This tells you the kind of error.
-
-`start` and `end` are the location in your CSS source code.
 
 ## Goals and non-goals
 
