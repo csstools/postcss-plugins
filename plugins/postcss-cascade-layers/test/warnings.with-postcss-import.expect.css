@@ -19,13 +19,13 @@
 		color: revert-layer;
 	}/* [postcss-cascade-layers]: handling different layer orders in conditional rules is unsupported by this plugin and will cause style differences between browser versions. */
 @media (min-width: 10px) {
-		.foo:not(#\#):not(#\#):not(#\#) {
+		.foo:not(#\#):not(_):not(#\#) {
 			color: red;
 		}
 }
-.foo:not(#\#):not(#\#):not(#\#):not(#\#) {
+.foo:not(#\#):not(_):not(_):not(#\#) {
 		color: pink;
 	}
-.foo:not(#\#):not(#\#):not(#\#) {
+.foo:not(#\#):not(_):not(#\#) {
 		color: red;
 	}

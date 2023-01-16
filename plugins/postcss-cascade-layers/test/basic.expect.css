@@ -3,14 +3,14 @@
 		color: red;
 	}
 
-#foo:not(#\#):not(#\#):not(#\#) #bar target::before:hover {
+#foo:not(#\#):not(_):not(#\#) #bar target::before:hover {
 		color: green;
 	}
 
-target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+target:not(#\#):not(_):not(_):not(_):not(_):not(#\#) {
 	color: purple;
 }
 
-target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):before {
+target:not(#\#):not(_):not(_):not(_):not(_):not(#\#):before {
 	color: pink;
 }

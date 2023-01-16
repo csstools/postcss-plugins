@@ -25,31 +25,31 @@ i:not(#\#) {
 		color: red;
 	}
 
-target:not(#\#):not(#\#):not(#\#) {
+target:not(#\#):not(_):not(#\#) {
 			color: yellow;
 		}
 
-target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+target:not(#\#):not(_):not(_):not(_):not(_):not(#\#) {
 			color: yellow;
 		}
 
 @mediA (prefers-color-scheme: dark) {
-		h1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		h1:not(#\#):not(_):not(_):not(_):not(_):not(_):not(#\#) {
 			color: red;
 			background: black;
 		}
 	}
 
 @mediA (prefers-color-scheme: dark) {
-			target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+			target:not(#\#):not(_):not(_):not(_):not(_):not(#\#) {
 				color: lime;
 			}
 	}
 
-target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+target:not(#\#):not(_):not(_):not(_):not(_):not(_):not(_):not(#\#) {
 			color: yellow;
 		}
 
-target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+target:not(#\#):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(#\#) {
 		color: red;
 	}

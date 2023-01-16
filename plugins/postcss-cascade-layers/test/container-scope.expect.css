@@ -18,25 +18,25 @@
 	}
 
 @container (min-width: 700px) {
-		#foo:not(#\#):not(#\#):not(#\#) #bar target::before:hover {
+		#foo:not(#\#):not(_):not(#\#) #bar target::before:hover {
 			color: green;
 		}
 }
 
-#target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+#target:not(#\#):not(_):not(_):not(_):not(_):not(#\#) {
 		color: orange;
 	}
 
 @scope (.media) to (.content) {
-		#target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		#target:not(#\#):not(_):not(_):not(_):not(_):not(#\#) {
 			color: yellow;
 		}
 }
 
-target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+target:not(#\#):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(#\#) {
 	color: purple;
 }
 
-target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):before {
+target:not(#\#):not(_):not(_):not(_):not(_):not(_):not(_):not(_):not(#\#):before {
 	color: pink;
 }

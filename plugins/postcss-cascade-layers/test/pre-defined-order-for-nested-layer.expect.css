@@ -14,7 +14,7 @@
 		order: 1;
 	}
 
-.test:not(#\#):not(#\#):not(#\#):not(#\#) {
+.test:not(#\#):not(_):not(_):not(#\#) {
 	/* Most specific */
 	order: 0;
 }

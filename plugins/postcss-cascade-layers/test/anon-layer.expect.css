@@ -11,10 +11,10 @@ target:not(#\#):not(#\#) {
 		color: yellow;
 	}
 
-target:not(#\#):not(#\#):not(#\#) {
+target:not(#\#):not(_):not(#\#) {
 		color: green;
 	}
 
-target:not(#\#):not(#\#):not(#\#):not(#\#) {
+target:not(#\#):not(_):not(_):not(#\#) {
 	color: purple;
 }

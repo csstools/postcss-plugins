@@ -22,13 +22,13 @@
 }
 
 @media screen {
-	target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	target:not(#\#):not(_):not(_):not(_):not(_):not(_):not(#\#) {
 		layered: no;
 		order: 3;
 	}
 
 	@container (min-width: 701px) {
-		target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		target:not(#\#):not(_):not(_):not(_):not(_):not(_):not(#\#) {
 			layered: no;
 			order: 3.1;
 		}
@@ -36,12 +36,12 @@
 }
 
 @media screen {
-		target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		target:not(#\#):not(_):not(_):not(_):not(#\#) {
 			order: 6;
 		}
 
 		@media screen {
-			target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+			target:not(#\#):not(_):not(_):not(_):not(#\#) {
 				order: 7;
 			}
 		}
@@ -50,12 +50,12 @@
 @media screen {
 
 		@media screen {
-				target:not(#\#):not(#\#):not(#\#) {
+				target:not(#\#):not(_):not(#\#) {
 					order: 8;
 				}
 
 				@media screen {
-					target:not(#\#):not(#\#):not(#\#) {
+					target:not(#\#):not(_):not(#\#) {
 						order: 9;
 					}
 				}
@@ -75,7 +75,7 @@
 }
 
 @media screen {
-	target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	target:not(#\#):not(_):not(_):not(_):not(_):not(_):not(#\#) {
 		layered: no;
 		order: 5;
 	}
