@@ -28,6 +28,7 @@ import postcss from 'postcss';
 							<h1>Cascade Layers Test</h1>
 							<ul>
 								<li><a href="/wpt/layer-basic.html">basic</a></li>
+								<li><a href="/wpt/layer-buckets.html">buckets</a></li>
 								<li><a href="/wpt/layer-counter-style-override.html">counter style override</a></li>
 								<li><a href="/wpt/layer-important.html">important</a></li>
 								<li><a href="/wpt/layer-keyframes-override.html">keyframes override</a></li>
@@ -40,6 +41,7 @@ import postcss from 'postcss';
 				`);
 				break;
 			case '/wpt/layer-basic.html':
+			case '/wpt/layer-buckets.html':
 			case '/wpt/layer-counter-style-override.html':
 			case '/wpt/layer-important.html':
 			case '/wpt/layer-keyframes-override.html':
@@ -76,7 +78,7 @@ import postcss from 'postcss';
 
 			// eslint-disable-next-line no-fallthrough
 			default:
-				res.setHeader('Content-type', 'text/plain' );
+				res.setHeader('Content-type', 'text/plain');
 				res.writeHead(404);
 				res.end('Not found');
 				break;
@@ -98,6 +100,7 @@ import postcss from 'postcss';
 
 		for (const url of [
 			'wpt/layer-basic.html',
+			'wpt/layer-buckets.html',
 			'wpt/layer-counter-style-override.html',
 			'wpt/layer-important.html',
 			'wpt/layer-keyframes-override.html',
