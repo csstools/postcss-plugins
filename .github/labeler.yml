@@ -137,8 +137,8 @@
   - experimental/postcss-logical/**
 
 "plugins/postcss-logical-float-and-clear":
-  - plugins/postcss-logical/**
-  - experimental/postcss-logical/**
+  - plugins/postcss-logical-float-and-clear/**
+  - experimental/postcss-logical-float-and-clear/**
 
 "plugins/media-queries-aspect-ratio-number-values":
   - plugins/postcss-media-queries-aspect-ratio-number-values/**
