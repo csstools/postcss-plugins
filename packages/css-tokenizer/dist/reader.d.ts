@@ -9,5 +9,5 @@ export declare class Reader implements CodePointReader {
     constructor(source: string);
     advanceCodePoint(n?: number): void;
     readCodePoint(n?: number): number | false;
-    unreadCodePoint(n?: number): boolean;
+    unreadCodePoint(n?: number): void;
 }

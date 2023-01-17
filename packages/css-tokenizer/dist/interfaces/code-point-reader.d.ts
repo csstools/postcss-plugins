@@ -6,5 +6,5 @@ export type CodePointReader = {
     source: string;
     advanceCodePoint(n?: number): void;
     readCodePoint(n?: number): number | false;
-    unreadCodePoint(n?: number): boolean;
+    unreadCodePoint(n?: number): any;
 };
