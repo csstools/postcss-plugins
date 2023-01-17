@@ -422,3 +422,17 @@ url( 'mix-quoted" ' )\
 		);
 	}
 }
+
+{
+	const t = tokenizer({
+		css: 'url( \\) )',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['url-token', 'url( \\) )', 0, 8, { value: ')' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
