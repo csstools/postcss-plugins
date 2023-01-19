@@ -1,9 +1,7 @@
 import type { PluginCreator } from 'postcss';
 import { DirectionFlow } from './lib/types';
-/** postcss-logical plugin options */
+/** postcss-logical-float-and-clear plugin options */
 export type pluginOptions = {
-    /** Sets the direction for block. default: top-to-bottom */
-    blockDirection?: DirectionFlow;
     /** Sets the direction for inline. default: left-to-right */
     inlineDirection?: DirectionFlow;
 };

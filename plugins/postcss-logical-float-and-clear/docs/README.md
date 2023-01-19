@@ -16,7 +16,7 @@
 
 <header>
 
-[<humanReadableName>]  lets you use logical, rather than physical, direction and dimension mappings in CSS, following the [CSS Logical Properties and Values] specification.
+[<humanReadableName>] lets you use logical, rather than physical, direction and dimension mappings in CSS, following the [CSS Logical Properties and Values] specification.
 
 ```pcss
 <example.css>
@@ -32,16 +32,15 @@
 
 ## Options
 
-### blockDirection & inlineDirection
+### inlineDirection
 
-The `blockDirection` and `inlineDirection` options allow you to specify the direction of the block and inline axes. The default values are `top-to-bottom` and `left-to-right` respectively which would match any latin language.
+The `inlineDirection` option allows you to specify the direction of the inline axe. The default value is `left-to-right` respectively which would match any latin language.
 
-You might want to tweak these values if you are using a different writing system, such as Arabic, Hebrew or Chinese for example.
+You might want to tweak these value if you are using a different writing system, such as Arabic, Hebrew or Chinese for example.
 
 ```js
 <exportName>({
-	blockDirection: 'right-to-left',
-	inlineDirection: 'top-to-bottom'
+	inlineDirection: 'right-to-left'
 })
 ```
 
@@ -50,7 +49,7 @@ You might want to tweak these values if you are using a different writing system
 
 /* becomes */
 
-<example.chinese.expect.css>
+<example.hebrew.expect.css>
 ```
 
 Each direction must be one of the following:
@@ -60,9 +59,7 @@ Each direction must be one of the following:
 - `left-to-right`
 - `right-to-left`
 
-You can't mix two vertical directions or two horizontal directions so for example `top-to-bottom` and `right-to-left` are valid, but `top-to-bottom` and `bottom-to-top` are not.
-
-Please do note that `text-align` won't be transformed if `inlineDirection` becomes vertical.
+Please do note that transformations won't run if `inlineDirection` becomes vertical.
 
 <linkList>
 [CSS Logical Properties and Values]: <specUrl>

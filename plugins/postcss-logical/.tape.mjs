@@ -41,16 +41,6 @@ postcssTape(plugin)({
 			inlineDirection: 'top-to-bottom'
 		},
 	},
-	'float-and-clear': {
-		message: 'supports logical "float" & "clear" properties',
-	},
-	'float-and-clear:chinese ': {
-		message: 'supports logical "float" & "clear" properties { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
-		options: {
-			blockDirection: 'right-to-left',
-			inlineDirection: 'top-to-bottom'
-		},
-	},
 	'text-align': {
 		message: 'supports logical "text-align" property',
 	},

@@ -93,6 +93,7 @@ export const externalsForPlugin = [
 	'@csstools/postcss-hwb-function',
 	'@csstools/postcss-ic-unit',
 	'@csstools/postcss-is-pseudo-class',
+	'@csstools/postcss-logical-float-and-clear',
 	'@csstools/postcss-media-queries-aspect-ratio-number-values',
 	'@csstools/postcss-nested-calc',
 	'@csstools/postcss-normalize-display-values',
