@@ -1,5 +1,5 @@
-import { HYPHEN_MINUS, LINE_FEED, REVERSE_SOLIDUS } from '../code-points/code-points';
-import { isIdentStartCodePoint } from '../code-points/ranges';
+import { HYPHEN_MINUS, REVERSE_SOLIDUS } from '../code-points/code-points';
+import { isIdentStartCodePoint, isNewLine } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
 import { checkIfTwoCodePointsAreAValidEscape } from './two-code-points-are-valid-escape';
@@ -19,7 +19,7 @@ export function checkIfThreeCodePointsWouldStartAnIdentSequence(ctx: Context, re
 		}
 
 		// If the second and third code points are a valid escape return true
-		if (reader.codePointSource[reader.cursor+1] === REVERSE_SOLIDUS && reader.codePointSource[reader.cursor + 2] !== LINE_FEED) {
+		if (reader.codePointSource[reader.cursor+1] === REVERSE_SOLIDUS && !isNewLine(reader.codePointSource[reader.cursor + 2])) {
 			return true;
 		}
 
