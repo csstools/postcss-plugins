@@ -14,7 +14,7 @@ export declare class MediaConditionListWithAnd {
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaInParens | MediaAnd): number | string;
-    at(index: number | string): MediaInParens | MediaAnd;
+    at(index: number | string): MediaInParens | MediaAnd | undefined;
     walk(cb: (entry: {
         node: MediaConditionListWithAndWalkerEntry;
         parent: MediaConditionListWithAndWalkerParent;
@@ -35,7 +35,7 @@ export declare class MediaConditionListWithOr {
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaInParens | MediaOr): number | string;
-    at(index: number | string): MediaInParens | MediaOr;
+    at(index: number | string): MediaInParens | MediaOr | undefined;
     walk(cb: (entry: {
         node: MediaConditionListWithOrWalkerEntry;
         parent: MediaConditionListWithOrWalkerParent;

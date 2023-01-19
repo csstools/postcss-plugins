@@ -8,7 +8,6 @@ eachTest((name, css) => {
 			css: css,
 		},
 		{
-			commentsAreTokens: true,
 			onParseError: (err) => {
 				// We only expect something like bootstrap to tokenize without parser errors.
 				throw new Error(JSON.stringify(err));

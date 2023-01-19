@@ -6,7 +6,6 @@
 - [PostCSS CLI](#postcss-cli)
 - [PostCSS Load Config](#postcss-load-config)
 - [Webpack](#webpack)
-- [Create React App](#create-react-app)
 - [Next.js](#nextjs)
 - [Gulp](#gulp)
 - [Grunt](#grunt)
@@ -142,28 +141,6 @@ module.exports = {
 };
 ```
 
-## Create React App
-
-Add [React App Rewired] and [React App Rewire PostCSS] to your project:
-
-```bash
-npm install react-app-rewired react-app-rewire-postcss css-prefers-color-scheme --save-dev
-```
-
-Use [React App Rewire PostCSS] and [Prefers Color Scheme] in your
-`config-overrides.js` file:
-
-```js
-const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const prefersColorScheme = require('css-prefers-color-scheme');
-
-module.exports = config => reactAppRewirePostcss(config, {
-	plugins: () => [
-		prefersColorScheme(/* pluginOptions */)
-	]
-});
-```
-
 ## Next.js
 
 Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
@@ -255,6 +232,4 @@ grunt.initConfig({
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [Prefers Color Scheme]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme
-[React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
-[React App Rewired]: https://github.com/timarney/react-app-rewired
 [Next.js]: https://nextjs.org

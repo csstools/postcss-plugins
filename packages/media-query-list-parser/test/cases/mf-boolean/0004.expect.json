@@ -10,7 +10,21 @@
 					"type": "media-feature",
 					"feature": {
 						"type": "mf-boolean",
-						"name": "false",
+						"name": {
+							"type": "mf-name",
+							"name": "false",
+							"tokens": [
+								[
+									"ident-token",
+									"false",
+									1,
+									5,
+									{
+										"value": "false"
+									}
+								]
+							]
+						},
 						"tokens": [
 							[
 								"ident-token",

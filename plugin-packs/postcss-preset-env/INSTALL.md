@@ -2,7 +2,7 @@
 
 [PostCSS Preset Env] runs in all Node environments, with special instructions for:
 
-| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) | [Rollup](#rollup) |
+| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Gulp](#gulp) | [Grunt](#grunt) | [Rollup](#rollup) |
 | --- | --- | --- | --- | --- | --- | --- |
 
 ## Node
@@ -91,31 +91,6 @@ module.exports = {
 };
 ```
 
-## Create React App
-
-**PostCSS Preset Env is already bundled with Create React App 2.**
-
-For Create React App 1, add [React App Rewired] and [React App Rewire PostCSS]
-to your project:
-
-```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
-```
-
-Use [React App Rewire PostCSS] and [PostCSS Preset Env] in your
-`config-overrides.js` file:
-
-```js
-const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssPresetEnv = require('postcss-preset-env');
-
-module.exports = config => reactAppRewirePostcss(config, {
-	plugins: () => [
-		postcssPresetEnv(/* pluginOptions */)
-	]
-});
-```
-
 ## Gulp
 
 Add [Gulp PostCSS] to your project:
@@ -198,6 +173,4 @@ module.exports = {
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Preset Env]: https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env
-[React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
-[React App Rewired]: https://github.com/timarney/react-app-rewired
 [Rollup Plugin PostCSS]: https://github.com/egoist/rollup-plugin-postcss

@@ -8,10 +8,11 @@ export declare class MediaFeatureName {
     after: Array<CSSToken>;
     constructor(name: ComponentValue, before?: Array<CSSToken>, after?: Array<CSSToken>);
     getName(): string;
+    getNameToken(): CSSToken;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: ComponentValue): number | string;
-    at(index: number | string): ComponentValue;
+    at(index: number | string): ComponentValue | undefined;
     toJSON(): {
         type: NodeType;
         name: string;
@@ -20,4 +21,4 @@ export declare class MediaFeatureName {
     isMediaFeatureName(): this is MediaFeatureName;
     static isMediaFeatureName(x: unknown): x is MediaFeatureName;
 }
-export declare function parseMediaFeatureName(componentValues: Array<ComponentValue>): false | MediaFeatureName;
+export declare function parseMediaFeatureName(componentValues: Array<ComponentValue>): MediaFeatureName | false;

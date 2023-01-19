@@ -17,6 +17,14 @@ export class MediaFeaturePlain {
 		this.value = value;
 	}
 
+	getName(): string {
+		return this.name.getName();
+	}
+
+	getNameToken(): CSSToken {
+		return this.name.getNameToken();
+	}
+
 	tokens(): Array<CSSToken> {
 		return [
 			...this.name.tokens(),
@@ -41,7 +49,7 @@ export class MediaFeaturePlain {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaFeatureName | MediaFeatureValue | undefined {
 		if (index === 'name') {
 			return this.name;
 		}
@@ -88,7 +96,7 @@ export class MediaFeaturePlain {
 export type MediaFeaturePlainWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
 export type MediaFeaturePlainWalkerParent = MediaFeatureValueWalkerParent | MediaFeaturePlain;
 
-export function parseMediaFeaturePlain(componentValues: Array<ComponentValue>) {
+export function parseMediaFeaturePlain(componentValues: Array<ComponentValue>): MediaFeaturePlain | false {
 	let a: Array<ComponentValue> = [];
 	let b: Array<ComponentValue> = [];
 	let colon: TokenColon | null = null;

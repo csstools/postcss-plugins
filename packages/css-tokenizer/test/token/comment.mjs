@@ -5,7 +5,7 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 {
 	const t = tokenizer({
 		css: 'a /* a comment */ b',
-	}, { commentsAreTokens : true });
+	});
 
 	assert.deepEqual(
 		collectTokens(t),
@@ -23,7 +23,7 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 {
 	const t = tokenizer({
 		css: 'a/* a comment */b',
-	}, { commentsAreTokens: true });
+	});
 
 	assert.deepEqual(
 		collectTokens(t),
@@ -39,7 +39,7 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 {
 	const t = tokenizer({
 		css: 'a /* a comment',
-	}, { commentsAreTokens: true });
+	});
 
 	assert.deepEqual(
 		collectTokens(t),
@@ -56,7 +56,7 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 	const t = tokenizer({
 		css: `a /* a comment
 */`,
-	}, { commentsAreTokens: true });
+	});
 
 	assert.deepEqual(
 		collectTokens(t),
@@ -72,7 +72,7 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 {
 	const t = tokenizer({
 		css: 'a /* a comment \\*/ b',
-	}, { commentsAreTokens: true });
+	});
 
 	assert.deepEqual(
 		collectTokens(t),

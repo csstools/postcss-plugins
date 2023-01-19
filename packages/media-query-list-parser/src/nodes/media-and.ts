@@ -32,7 +32,7 @@ export class MediaAnd {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): MediaInParens | null {
 		if (index === 'media') {
 			return this.media;
 		}

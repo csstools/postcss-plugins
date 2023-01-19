@@ -12,6 +12,7 @@ import { MediaInParens } from '../nodes/media-in-parens';
 import { MediaNot } from '../nodes/media-not';
 import { MediaOr } from '../nodes/media-or';
 import { MediaQuery, MediaQueryInvalid, MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
+export declare function isCustomMedia(x: unknown): x is GeneralEnclosed;
 export declare function isGeneralEnclosed(x: unknown): x is GeneralEnclosed;
 export declare function isMediaAnd(x: unknown): x is MediaAnd;
 export declare function isMediaConditionList(x: unknown): x is MediaConditionList;

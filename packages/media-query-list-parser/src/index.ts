@@ -1,6 +1,8 @@
 export { parse, parseFromTokens } from './parser/parse';
+export { parseCustomMedia, parseCustomMediaFromTokens } from './parser/parse-custom-media';
 export { NodeType } from './util/node-type';
 export {
+	isCustomMedia,
 	isGeneralEnclosed,
 	isMediaAnd,
 	isMediaCondition,
@@ -25,6 +27,7 @@ export {
 	isMediaQueryWithoutType,
 } from './util/type-predicates';
 
+export { CustomMedia } from './nodes/custom-media';
 export { GeneralEnclosed } from './nodes/general-enclosed';
 export { MediaAnd } from './nodes/media-and';
 export { MediaCondition } from './nodes/media-condition';

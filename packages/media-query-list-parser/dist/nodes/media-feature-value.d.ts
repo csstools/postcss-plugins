@@ -10,7 +10,7 @@ export declare class MediaFeatureValue {
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: ComponentValue): number | string;
-    at(index: number | string): ComponentValue | ComponentValue[];
+    at(index: number | string): ComponentValue | Array<ComponentValue> | undefined;
     walk(cb: (entry: {
         node: MediaFeatureValueWalkerEntry;
         parent: MediaFeatureValueWalkerParent;
@@ -25,6 +25,6 @@ export declare class MediaFeatureValue {
 }
 export type MediaFeatureValueWalkerEntry = ComponentValue | Array<ComponentValue>;
 export type MediaFeatureValueWalkerParent = ContainerNode | MediaFeatureValue;
-export declare function parseMediaFeatureValue(componentValues: Array<ComponentValue>): false | MediaFeatureValue;
+export declare function parseMediaFeatureValue(componentValues: Array<ComponentValue>): MediaFeatureValue | false;
 export declare function matchesRatioExactly(componentValues: Array<ComponentValue>): -1 | number[];
 export declare function matchesRatio(componentValues: Array<ComponentValue>): -1 | number[];

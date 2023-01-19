@@ -56,7 +56,6 @@ instructions for:
 - [PostCSS CLI](INSTALL.md#postcss-cli)
 - [PostCSS Load Config](INSTALL.md#postcss-load-config)
 - [Webpack](INSTALL.md#webpack)
-- [Create React App](INSTALL.md#create-react-app)
 - [Next.js](INSTALL.md#nextjs)
 - [Gulp](INSTALL.md#gulp)
 - [Grunt](INSTALL.md#grunt)
@@ -111,7 +110,7 @@ Each direction must be one of the following:
 
 You can't mix two vertical directions or two horizontal directions so for example `top-to-bottom` and `right-to-left` are valid, but `top-to-bottom` and `bottom-to-top` are not.
 
-Please do not that `text-align` won't be transformed if `inlineDirection` becomes vertical.
+Please do note that `text-align` won't be transformed if `inlineDirection` becomes vertical.
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#logical-properties-and-values

@@ -1,3 +1,4 @@
+import { isSimpleBlockNode } from '@csstools/css-parser-algorithms';
 import { ComponentValue, ComponentValueType, isCommentNode, isTokenNode, isWhitespaceNode, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, TokenIdent, TokenType } from '@csstools/css-tokenizer';
 import { GeneralEnclosed } from '../nodes/general-enclosed';
@@ -137,8 +138,9 @@ export function parseMediaConditionListWithOr(componentValues: Array<ComponentVa
 			return false;
 		}
 
-		if (leading === false && componentValue.type === ComponentValueType.SimpleBlock) {
-			leading = parseMediaInParensFromSimpleBlock(componentValue as SimpleBlockNode);
+		if (leading === false && isSimpleBlockNode(componentValue)) {
+			componentValue.normalize();
+			leading = parseMediaInParensFromSimpleBlock(componentValue);
 			if (leading === false) {
 				return false;
 			}
@@ -196,8 +198,9 @@ export function parseMediaConditionListWithAnd(componentValues: Array<ComponentV
 			return false;
 		}
 
-		if (leading === false && componentValue.type === ComponentValueType.SimpleBlock) {
-			leading = parseMediaInParensFromSimpleBlock(componentValue as SimpleBlockNode);
+		if (leading === false && isSimpleBlockNode(componentValue)) {
+			componentValue.normalize();
+			leading = parseMediaInParensFromSimpleBlock(componentValue);
 			if (leading === false) {
 				return false;
 			}
@@ -281,7 +284,7 @@ export function parseMediaInParens(componentValues: Array<ComponentValue>) {
 			continue;
 		}
 
-		if (componentValue.type === ComponentValueType.SimpleBlock) {
+		if (isSimpleBlockNode(componentValue)) {
 			if (singleSimpleBlockIndex !== -1) {
 				return false;
 			}
@@ -301,6 +304,8 @@ export function parseMediaInParens(componentValues: Array<ComponentValue>) {
 	if (simpleBlock.startToken[0] !== TokenType.OpenParen) {
 		return false;
 	}
+
+	simpleBlock.normalize();
 
 	const before = [
 		...componentValues.slice(0, singleSimpleBlockIndex).flatMap((x) => {
@@ -383,8 +388,9 @@ export function parseMediaNot(componentValues: Array<ComponentValue>) {
 			return false;
 		}
 
-		if (sawNot && componentValue.type === ComponentValueType.SimpleBlock) {
-			const media = parseMediaInParensFromSimpleBlock(componentValue as SimpleBlockNode);
+		if (sawNot && isSimpleBlockNode(componentValue)) {
+			componentValue.normalize();
+			const media = parseMediaInParensFromSimpleBlock(componentValue);
 			if (media === false) {
 				return false;
 			}
@@ -436,7 +442,8 @@ export function parseMediaOr(componentValues: Array<ComponentValue>) {
 			return false;
 		}
 
-		if (sawOr && componentValue.type === ComponentValueType.SimpleBlock) {
+		if (sawOr && isSimpleBlockNode(componentValue)) {
+			componentValue.normalize();
 			const media = parseMediaInParensFromSimpleBlock(componentValue as SimpleBlockNode);
 			if (media === false) {
 				return false;
@@ -486,7 +493,8 @@ export function parseMediaAnd(componentValues: Array<ComponentValue>) {
 			return false;
 		}
 
-		if (sawAnd && componentValue.type === ComponentValueType.SimpleBlock) {
+		if (sawAnd && isSimpleBlockNode(componentValue)) {
+			componentValue.normalize();
 			const media = parseMediaInParensFromSimpleBlock(componentValue as SimpleBlockNode);
 			if (media === false) {
 				return false;

@@ -30,7 +30,21 @@
 						"type": "media-feature",
 						"feature": {
 							"type": "mf-boolean",
-							"name": "color",
+							"name": {
+								"type": "mf-name",
+								"name": "color",
+								"tokens": [
+									[
+										"ident-token",
+										"color",
+										5,
+										9,
+										{
+											"value": "color"
+										}
+									]
+								]
+							},
 							"tokens": [
 								[
 									"ident-token",

@@ -10,7 +10,35 @@
 					"type": "media-feature",
 					"feature": {
 						"type": "mf-boolean",
-						"name": "color",
+						"name": {
+							"type": "mf-name",
+							"name": "color",
+							"tokens": [
+								[
+									"comment",
+									"/* comment 2 */",
+									16,
+									30,
+									null
+								],
+								[
+									"ident-token",
+									"color",
+									31,
+									35,
+									{
+										"value": "color"
+									}
+								],
+								[
+									"comment",
+									"/* comment 3 */",
+									36,
+									50,
+									null
+								]
+							]
+						},
 						"tokens": [
 							[
 								"comment",

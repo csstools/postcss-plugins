@@ -20,7 +20,7 @@ export declare class MediaInParens {
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaCondition | MediaFeature | GeneralEnclosed): number | string;
-    at(index: number | string): GeneralEnclosed | MediaFeature | MediaCondition;
+    at(index: number | string): MediaCondition | MediaFeature | GeneralEnclosed | undefined;
     walk(cb: (entry: {
         node: MediaInParensWalkerEntry;
         parent: MediaInParensWalkerParent;

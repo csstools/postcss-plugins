@@ -53,7 +53,7 @@ export class MediaFeatureValue {
 		return -1;
 	}
 
-	at(index: number | string) {
+	at(index: number | string): ComponentValue | Array<ComponentValue> | undefined {
 		if (index === 'value') {
 			return this.value;
 		}
@@ -105,7 +105,7 @@ export class MediaFeatureValue {
 export type MediaFeatureValueWalkerEntry = ComponentValue | Array<ComponentValue>;
 export type MediaFeatureValueWalkerParent = ContainerNode | MediaFeatureValue;
 
-export function parseMediaFeatureValue(componentValues: Array<ComponentValue>) {
+export function parseMediaFeatureValue(componentValues: Array<ComponentValue>): MediaFeatureValue | false {
 	let candidateIndexStart = -1;
 	let candidateIndexEnd = -1;
 

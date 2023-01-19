@@ -10,10 +10,12 @@ export declare class MediaFeature {
     before: Array<CSSToken>;
     after: Array<CSSToken>;
     constructor(feature: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange, before?: Array<CSSToken>, after?: Array<CSSToken>);
+    getName(): string;
+    getNameToken(): CSSToken;
     tokens(): Array<CSSToken>;
     toString(): string;
     indexOf(item: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange): number | string;
-    at(index: number | string): MediaFeatureBoolean | MediaFeaturePlain | MediaFeatureRange;
+    at(index: number | string): MediaFeatureBoolean | MediaFeaturePlain | MediaFeatureRange | undefined;
     walk(cb: (entry: {
         node: MediaFeatureWalkerEntry;
         parent: MediaFeatureWalkerParent;
@@ -22,36 +24,9 @@ export declare class MediaFeature {
         type: NodeType;
         feature: {
             type: NodeType;
-            name: string;
-            tokens: CSSToken[];
-        } | {
-            type: NodeType;
             name: {
                 type: NodeType;
                 name: string;
-                tokens: CSSToken[];
-            };
-            value: {
-                type: NodeType;
-                value: any;
-                tokens: CSSToken[];
-            };
-            tokens: CSSToken[];
-        } | {
-            type: NodeType;
-            name: {
-                type: NodeType;
-                name: string;
-                tokens: CSSToken[];
-            };
-            valueOne: {
-                type: NodeType;
-                value: any;
-                tokens: CSSToken[];
-            };
-            valueTwo: {
-                type: NodeType;
-                value: any;
                 tokens: CSSToken[];
             };
             tokens: CSSToken[];

@@ -3,13 +3,16 @@ import path from 'path';
 import { parseCommaSeparatedListOfComponentValues, parseListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { tokenizer } from '@csstools/css-tokenizer';
 
-export function runTest(source, testPath, assertEqual) {
+export function runTest(source, testPath, assertEqual, expectParseError = false) {
 	const onParseError = (err) => {
+		if (expectParseError) {
+			return;
+		}
+
 		console.warn(err);
 		throw new Error(`Unable to parse "${source}"`);
 	};
 	const t = tokenizer({ css: source }, {
-		commentsAreTokens: true,
 		onParseError: onParseError,
 	});
 

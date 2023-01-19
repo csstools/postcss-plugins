@@ -5,7 +5,7 @@ import { Reader } from '@csstools/css-tokenizer';
 	const r = new Reader('abc👨‍👨‍👧‍👦d');
 
 	{
-		const peeked = r.peekOneCodePoint();
+		const peeked = r.codePointSource[r.cursor];
 		assert.deepEqual(
 			peeked,
 			97,
@@ -17,7 +17,10 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			r.representation(),
+			[
+				r.representationStart,
+				r.representationEnd,
+			],
 			[
 				0,
 				-1,
@@ -26,7 +29,10 @@ import { Reader } from '@csstools/css-tokenizer';
 	}
 
 	{
-		const peeked = r.peekTwoCodePoints();
+		const peeked = [
+			r.codePointSource[r.cursor],
+			r.codePointSource[r.cursor+1],
+		];
 		assert.deepEqual(
 			peeked,
 			[97, 98],
@@ -43,7 +49,10 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			r.representation(),
+			[
+				r.representationStart,
+				r.representationEnd,
+			],
 			[
 				0,
 				-1,
@@ -52,7 +61,11 @@ import { Reader } from '@csstools/css-tokenizer';
 	}
 
 	{
-		const peeked = r.peekThreeCodePoints();
+		const peeked = [
+			r.codePointSource[r.cursor],
+			r.codePointSource[r.cursor+1],
+			r.codePointSource[r.cursor+2],
+		];
 		assert.deepEqual(
 			peeked,
 			[97, 98, 99],
@@ -74,7 +87,10 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			r.representation(),
+			[
+				r.representationStart,
+				r.representationEnd,
+			],
 			[
 				0,
 				-1,
@@ -95,7 +111,10 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			r.representation(),
+			[
+				r.representationStart,
+				r.representationEnd,
+			],
 			[
 				0,
 				0,
@@ -103,12 +122,13 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			r.representationString(),
+			r.source.slice(r.representationStart, r.representationEnd + 1),
 			'a',
 		);
 	}
 
-	r.resetRepresentation();
+	r.representationStart = r.cursor;
+	r.representationEnd = -1;
 
 	{
 		const read1 = r.readCodePoint();
@@ -146,7 +166,10 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			r.representation(),
+			[
+				r.representationStart,
+				r.representationEnd,
+			],
 			[
 				1,
 				4,
@@ -166,7 +189,10 @@ import { Reader } from '@csstools/css-tokenizer';
 		r.readCodePoint();
 
 		assert.deepEqual(
-			r.representation(),
+			[
+				r.representationStart,
+				r.representationEnd,
+			],
 			[
 				1,
 				14,
@@ -174,12 +200,7 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			r.slice(r.representation()[0], r.representation()[1] + 1),
-			'bc👨‍👨‍👧‍👦d',
-		);
-
-		assert.deepEqual(
-			r.representationString(),
+			r.source.slice(r.representationStart, r.representationEnd + 1),
 			'bc👨‍👨‍👧‍👦d',
 		);
 	}
