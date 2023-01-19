@@ -1,6 +1,6 @@
 # Changes to Selector Specificity
 
-### Unreleased
+### 2.1.0 (January 19, 2023)
 
 - Add support for `::slotted`
 - Add support for `:host`
