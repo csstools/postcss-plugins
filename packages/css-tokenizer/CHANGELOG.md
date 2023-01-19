@@ -1,4 +1,4 @@
-### Unreleased
+### 2.0.0
 
 - Simplify `Reader` interface (breaking)
 - Change the `ParseError` interface, this is now a subclass of `Error` (breaking)
