@@ -1,4 +1,4 @@
-### 2.0.0
+### 2.0.0 (January 19, 2023)
 
 - Simplify `Reader` interface (breaking)
 - Change the `ParseError` interface, this is now a subclass of `Error` (breaking)
