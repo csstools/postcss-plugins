@@ -57,16 +57,6 @@ postcssTape(plugin)({
 			inlineDirection: 'right-to-left',
 		}
 	},
-	'resize': {
-		message: 'supports logical "resize" property',
-	},
-	'resize:chinese': {
-		message: 'supports logical "resize" property { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
-		options: {
-			blockDirection: 'right-to-left',
-			inlineDirection: 'top-to-bottom'
-		},
-	},
 	'logical-size': {
 		message: 'supports logical "block-size" & "inline-size" properties',
 	},

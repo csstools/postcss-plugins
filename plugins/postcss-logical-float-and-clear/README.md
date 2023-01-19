@@ -44,7 +44,6 @@ instructions for:
 - [PostCSS CLI](INSTALL.md#postcss-cli)
 - [PostCSS Load Config](INSTALL.md#postcss-load-config)
 - [Webpack](INSTALL.md#webpack)
-- [Create React App](INSTALL.md#create-react-app)
 - [Next.js](INSTALL.md#nextjs)
 - [Gulp](INSTALL.md#gulp)
 - [Grunt](INSTALL.md#grunt)
@@ -84,7 +83,7 @@ Each direction must be one of the following:
 - `left-to-right`
 - `right-to-left`
 
-Please do not that transformations won't run if `inlineDirection` becomes vertical.
+Please do note that transformations won't run if `inlineDirection` becomes vertical.
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#float-clear-logical-values
