@@ -37,14 +37,10 @@ export class Reader implements CodePointReader {
 		return codePoint;
 	}
 
-	unreadCodePoint(n = 1): boolean {
-		if (this.cursor === 0) {
-			return false;
-		}
-
+	unreadCodePoint(n = 1) {
 		this.cursor -= n;
 		this.representationEnd = this.cursor - 1;
 
-		return true;
+		return;
 	}
 }

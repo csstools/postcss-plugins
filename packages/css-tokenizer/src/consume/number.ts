@@ -36,31 +36,19 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): NumberType
 	// 5. If the next 2 or 3 input code points are U+0045 LATIN CAPITAL LETTER E (E) or U+0065 LATIN SMALL LETTER E (e),
 	// optionally followed by U+002D HYPHEN-MINUS (-) or U+002B PLUS SIGN (+),
 	// followed by a digit, then:
-	if (
-		(reader.codePointSource[reader.cursor] === LATIN_SMALL_LETTER_E || reader.codePointSource[reader.cursor] === LATIN_CAPITAL_LETTER_E) &&
-			isDigitCodePoint(reader.codePointSource[reader.cursor+1])
-	) {
-		// 5.1. Consume them.
-		reader.advanceCodePoint(2);
-
-		// 5.3. Set type to "number".
-		type = NumberType.Number;
-
-		// 5.4. While the next input code point is a digit, consume it and append it to repr.
-		while (isDigitCodePoint(reader.codePointSource[reader.cursor])) {
-			reader.advanceCodePoint();
+	if (reader.codePointSource[reader.cursor] === LATIN_SMALL_LETTER_E || reader.codePointSource[reader.cursor] === LATIN_CAPITAL_LETTER_E) {
+		if (isDigitCodePoint(reader.codePointSource[reader.cursor + 1])) {
+			// 5.1. Consume them.
+			reader.advanceCodePoint(2);
+		} else if (
+			(reader.codePointSource[reader.cursor + 1] === HYPHEN_MINUS || reader.codePointSource[reader.cursor + 1] === PLUS_SIGN) &&
+			isDigitCodePoint(reader.codePointSource[reader.cursor + 2])
+		) {
+			// 5.1. Consume them.
+			reader.advanceCodePoint(3);
+		} else {
+			return type;
 		}
-	}
-
-	if (
-		(reader.codePointSource[reader.cursor] === LATIN_SMALL_LETTER_E || reader.codePointSource[reader.cursor] === LATIN_CAPITAL_LETTER_E) &&
-			(
-				(reader.codePointSource[reader.cursor+1] === HYPHEN_MINUS || reader.codePointSource[reader.cursor+1] === PLUS_SIGN) &&
-				isDigitCodePoint(reader.codePointSource[reader.cursor+2])
-			)
-	) {
-		// 5.1. Consume them.
-		reader.advanceCodePoint(3);
 
 		// 5.3. Set type to "number".
 		type = NumberType.Number;

@@ -24,13 +24,7 @@ export function checkIfThreeCodePointsWouldStartANumber(ctx: Context, reader: Co
 		// If the second code point is a digit, return true.
 		// Otherwise, return false.
 		return isDigitCodePoint(reader.codePointSource[reader.cursor+1]);
-
-	} else if (isDigitCodePoint(reader.codePointSource[reader.cursor])) { // digit
-		// Return true.
-		return true;
 	}
 
-	// anything else
-	// Return false.
-	return false;
+	return isDigitCodePoint(reader.codePointSource[reader.cursor]); // digit
 }

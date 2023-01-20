@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-tokenizer",
 	"description": "Tokenize CSS",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -38,7 +38,7 @@
 		"dist"
 	],
 	"devDependencies": {
-		"@rmenke/css-tokenizer-tests": "^1.0.1",
+		"@rmenke/css-tokenizer-tests": "^1.0.9",
 		"postcss-parser-tests": "^8.5.1"
 	},
 	"scripts": {

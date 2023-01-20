@@ -123,6 +123,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 
 		if (reader.codePointSource[reader.cursor] === REVERSE_SOLIDUS) {
 			if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
+				reader.advanceCodePoint();
 				string += String.fromCharCode(consumeEscapedCodePoint(ctx, reader));
 				continue;
 			}
