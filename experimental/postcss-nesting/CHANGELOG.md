@@ -1,5 +1,18 @@
 # Changes to PostCSS Nesting Experimental
 
+### Unreleased
+
+- Fix: Change how `&` is handled in functional pseudo classes in a non-nested context.
+
+```diff
+:has(&) {}
+
+/* becomes */
+
+- :has(:scope) {}
++ :has(:is(:root,:host)) {}
+```
+
 ### 1.1.1 (November 16, 2022)
 
 - Fix: Do not throw when a selector is invalid, show a warning instead.
