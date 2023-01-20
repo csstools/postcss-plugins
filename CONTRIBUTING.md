@@ -26,7 +26,7 @@ instructions:
 ### Quick start
 
 1. fork the repo and clone it locally
-2. `npm run setup-workspace` to install and build dependencies
+2. `npm run ci` to install dependencies
 3. `cd plugins/<plugin-name>`
 4. `npm run build && npm run test` to build and test the plugin after making changes
 5. open a pull request with the changes
@@ -111,8 +111,8 @@ That’s it! Now [open a pull request] with a clear title and description.
 ## Creating a new plugin here
 
 - Follow the guide for submitting a pull request
-- Run `npm run setup-workspace` if you want to start local development.
-- Run `npm run new-plugin` to create a new plugin.
+- Run `npm run ci` if you want to start local development.
+- Run `npm run new-plugin <Your Plugin Name>` to create a new plugin.
 
 ```bash
 npm run new-plugin
@@ -138,7 +138,7 @@ Your next steps:
 - Run : "cd plugins/postcss-cascade-layers"
 - Run : "npm run build" to build your plugin
 - Run : "npm run test" to test your plugin
-- Run : "npm run test:rewrite-expects" to update test expects
+- Run : "npm run test:rewrite-expects" to update test result files
 
 Change "blue" to "purple" in "src/index.ts" and see how it affects the test outcome
 ```

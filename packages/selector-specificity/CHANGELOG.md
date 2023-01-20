@@ -1,5 +1,11 @@
 # Changes to Selector Specificity
 
+### Unreleased
+
+- Add support for `::slotted`
+- Add support for `:host`
+- Add support for `:host-context`
+
 ### 2.0.2 (July 8, 2022)
 
 - Fix case insensitive matching.

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CSS Cascade Layers: test buckets of specificity created by the plugin</title>
+</head>
+
+<body id="body">
+	<target id="first" class="first"></target>
+	<target id="second" class="second"></target>
+
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			// In all test cases, the rule specified as "color: green" should win.
+			var testCases = [
+				{
+					title: '1 ID specificity',
+					style: `
+							@layer { target#first { color: red; } }
+							target { color: green; }
+					`,
+				},
+				{
+					title: '2 ID specificity',
+					style: `
+							@layer { #body target#first { color: red; } }
+							target { color: green; }
+					`,
+				},
+				{
+					title: '3 ID specificity',
+					style: `
+							@layer { #body#body target#first { color: red; } }
+							target { color: green; }
+					`,
+				},
+				{
+					title: '4 ID specificity',
+					style: `
+							@layer { #body#body#body target#first { color: red; } }
+							target { color: green; }
+					`,
+				},
+				{
+					title: '5 ID specificity',
+					style: `
+							@layer { #body#body#body#body target#first { color: red; } }
+							target { color: green; }
+					`,
+				},
+			];
+
+			for (let testCase of testCases) {
+				{
+					const styleElement = document.createElement('style');
+
+					const testCaseStyle = await (fetch(`/test/styles.css`, {
+						method: 'POST',
+						body: testCase['style'],
+					}).then((response) => response.text()));
+
+					styleElement.textContent = testCaseStyle;
+					document.head.append(styleElement);
+
+					var targets = document.querySelectorAll('target');
+					for (let target of targets) {
+						assert_equals(
+							window.getComputedStyle(target).color,
+							'rgb(0, 128, 0)',
+							testCase['title'] + " (processed), target '" + target.classList[0] + "'"
+						);
+					}
+
+					styleElement.remove();
+				}
+
+				{
+					const styleElement = document.createElement('style');
+
+					styleElement.textContent = testCase['style'];
+					document.head.append(styleElement);
+
+					var targets = document.querySelectorAll('target');
+					for (let target of targets) {
+						assert_equals(
+							window.getComputedStyle(target).color,
+							'rgb(0, 128, 0)',
+							testCase['title'] + " (native), target '" + target.classList[0] + "'"
+						);
+					}
+
+					styleElement.remove();
+				}
+			}
+
+			return true;
+		}
+	</script>
+</body>
+
+</html>

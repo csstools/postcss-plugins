@@ -73,8 +73,8 @@ the order in which layers are defined :
 | layer | previous adjustment | specificity adjustment | selector |
 | ------ | ------ | ----------- | --- |
 | `A` | `0` | `0 + 0 = 0` | N/A |
-| `B` | `0` | `0 + 3 = 3` | `:not(#/#):not(#/#):not(#/#)` |
-| `C` | `3` | `3 + 3 = 6` | `:not(#/#):not(#/#):not(#/#):not(#/#):not(#/#):not(#/#)` |
+| `B` | `0` | `0 + 3 = 3` | `:not(#\#):not(#\#):not(#\#)` |
+| `C` | `3` | `3 + 3 = 6` | `:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#)` |
 
 This approach lets more important (later) layers always override less important (earlier) layers.<br>
 And layers have enough room internally so that each selector works and overrides as expected.
@@ -110,7 +110,6 @@ instructions for:
 - [PostCSS CLI](INSTALL.md#postcss-cli)
 - [PostCSS Load Config](INSTALL.md#postcss-load-config)
 - [Webpack](INSTALL.md#webpack)
-- [Create React App](INSTALL.md#create-react-app)
 - [Next.js](INSTALL.md#nextjs)
 - [Gulp](INSTALL.md#gulp)
 - [Grunt](INSTALL.md#grunt)

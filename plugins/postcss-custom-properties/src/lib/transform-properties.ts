@@ -1,11 +1,11 @@
 import valuesParser from 'postcss-value-parser';
 import transformValueAST from './transform-value-ast';
-import { isRuleIgnored } from './is-ignored';
 import { Declaration } from 'postcss';
+import { isDeclarationIgnored } from './is-ignored';
 
 // transform custom pseudo selectors with custom selectors
 export default (decl, customProperties, opts) => {
-	if (isTransformableDecl(decl) && !isRuleIgnored(decl)) {
+	if (isTransformableDecl(decl) && !isDeclarationIgnored(decl)) {
 		const originalValue = decl.value;
 		const valueAST = valuesParser(originalValue);
 		let value = transformValueAST(valueAST, customProperties);

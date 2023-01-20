@@ -152,8 +152,8 @@ postcss([
 
 [PostCSS Preset Env] runs in all Node environments, with special instructions for:
 
-| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) | [Rollup](INSTALL.md#rollup) |
-| --- | --- | --- | --- | --- | --- | --- |
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) | [Rollup](INSTALL.md#rollup) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -462,7 +462,9 @@ The `debug` option enables debugging messages to stdout which should be useful t
 
 The `enableClientSidePolyfills` enables any feature that would need an extra browser library to be loaded into the page for it to work. Defaults to `true`.
 
-Note that manually enabling/disabling features via the "feature" option overrides this flag.
+- Note that manually enabling/disabling features via the "feature" option overrides this flag.
+- This only controls if the PostCSS plugins are enabled. It does not cause the browsers libraries to be included in your bundle.
+
 
 ## Stability and Portability
 

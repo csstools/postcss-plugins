@@ -43,10 +43,11 @@
 		"postcss": "^8.2"
 	},
 	"devDependencies": {
-		"@mrhenry/core-web": "^1.0.0",
-		"puppeteer": "^19.0.0"
+		"@mrhenry/core-web": "1.0.2",
+		"puppeteer": "^19.5.2"
 	},
 	"scripts": {
+		"prebuild": "npm run clean",
 		"build": "rollup -c ../../rollup/default.js",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
 		"lint": "npm run lint:eslint && npm run lint:package-json",

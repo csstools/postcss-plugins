@@ -4,8 +4,8 @@
 
 ⚠️ Experimental version of [CSS Has Pseudo](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo)
 
-| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
-| --- | --- | --- | --- | --- | --- |
+| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Gulp](#gulp) | [Grunt](#grunt) |
+| --- | --- | --- | --- | --- |
 
 ## Node
 
@@ -80,29 +80,6 @@ module.exports = {
 }
 ```
 
-## Create React App
-
-Add [React App Rewired] and [React App Rewire PostCSS] to your project:
-
-```bash
-npm install react-app-rewired react-app-rewire-postcss --save-dev
-```
-
-Use [React App Rewire PostCSS] and [CSS Has Pseudo] in your
-`config-overrides.js`
-file:
-
-```js
-const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const cssHasPseudoExperimental = require('@csstools/css-has-pseudo-experimental');
-
-module.exports = config => reactAppRewirePostcss(config, {
-	plugins: () => [
-		cssHasPseudoExperimental(/* pluginOptions */)
-	]
-});
-```
-
 ## Gulp
 
 Add [Gulp PostCSS] to your project:
@@ -161,5 +138,3 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
-[React App Rewired]: https://github.com/timarney/react-app-rewired

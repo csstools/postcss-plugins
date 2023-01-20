@@ -37,7 +37,37 @@ export function selectorSpecificity(node: Node): Specificity {
 	} else if (node.type === 'attribute') {
 		b += 1;
 	} else if (isPseudoElement(node)) {
-		c += 1;
+		node = node as parser.Pseudo;
+
+		switch (node.value.toLowerCase()) {
+			case '::slotted':
+				// “The specificity of ::slotted() is that of a pseudo-element, plus the specificity of its argument.”
+
+				{
+					c += 1;
+
+					if (node.nodes && node.nodes.length > 0) {
+						// We are more forgiving than the specification and use the most specific complex selector.
+						// This gives the community more options to do non-standard things.
+						//
+						// This code is correct for correct CSS.
+						// It is only different for invalid CSS.
+						const mostSpecificListItem = specificityOfMostSpecificListItem(node.nodes);
+
+						a += mostSpecificListItem.a;
+						b += mostSpecificListItem.b;
+						c += mostSpecificListItem.c;
+					}
+				}
+
+				break;
+
+			default:
+				c += 1;
+
+				break;
+		}
+
 	} else if (parser.isPseudoClass(node)) {
 		switch (node.value.toLowerCase()) {
 			case ':-moz-any':
@@ -110,6 +140,30 @@ export function selectorSpecificity(node: Node): Specificity {
 						b += specificity.b;
 						c += specificity.c;
 					});
+				}
+
+				break;
+
+			case ':host':
+			case ':host-context':
+				// “The specificity of :host is that of a pseudo-class. The specificity of :host() is that of a pseudo-class, plus the specificity of its argument.”
+				// “The specificity of :host-context() is that of a pseudo-class, plus the specificity of its argument.”
+
+				{
+					b += 1;
+
+					if (node.nodes && node.nodes.length > 0) {
+						const mostSpecificListItem = specificityOfMostSpecificListItem(node.nodes);
+
+						// We are more forgiving than the specification and use the most specific complex selector.
+						// This gives the community more options to do non-standard things.
+						//
+						// This code is correct for correct CSS.
+						// It is only different for invalid CSS.
+						a += mostSpecificListItem.a;
+						b += mostSpecificListItem.b;
+						c += mostSpecificListItem.c;
+					}
 				}
 
 				break;
