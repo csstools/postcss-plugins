@@ -7,7 +7,7 @@
 }
 
 
-.foo:has(:scope, :not(:scope)) {
+.foo:has(:is(:root,:host), :not(:is(:root,:host))) {
 	order: 3;
 }
 

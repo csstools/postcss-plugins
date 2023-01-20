@@ -24,7 +24,24 @@ export default function ampersandToScope(rule: Rule, result: Result) {
 	}
 
 	selectorAST.walkNesting((nesting) => {
-		nesting.replaceWith(parser.pseudo({value: ':scope'}));
+		if (nesting.parent?.parent?.type === 'root') {
+			nesting.replaceWith(parser.pseudo({
+				value: ':scope',
+			}));
+		} else {
+			// :has(&) != :has(:scope)
+			nesting.replaceWith(parser.pseudo({
+				value: ':is',
+				nodes: [
+					parser.pseudo({
+						value: ':root',
+					}),
+					parser.pseudo({
+						value: ':host',
+					}),
+				],
+			}));
+		}
 	});
 
 	rule.selector = selectorAST.toString();
