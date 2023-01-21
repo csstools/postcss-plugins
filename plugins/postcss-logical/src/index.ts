@@ -12,7 +12,6 @@ import {
 	transformOffsetShorthand,
 } from './lib/transform-offset';
 import { transformInset } from './lib/transform-inset';
-import { transformResize } from './lib/transform-resize';
 import {
 	transformSide,
 	transformSideShorthand,
@@ -101,8 +100,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					? transformTextAlign(directionConfig.inline)
 					: null,
 			),
-			// 2.4 Resize
-			'resize': makeTransform(transformResize(directionConfig)),
 			// 4.1 Block Size and Inline Size
 			'block-size': makeTransform(transformLogicalSize(directionConfig)),
 			'inline-size': makeTransform(transformLogicalSize(directionConfig)),
