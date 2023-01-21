@@ -62,17 +62,6 @@ postcss([
 | [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
 | --- | --- | --- | --- |
 
-### Deno
-
-You can also use [PostCSS Nesting] on [Deno]:
-
-```js
-import postcss from "https://deno.land/x/postcss/mod.js";
-import postcssNesting from "https://cdn.jsdelivr.net/npm/postcss-nesting@10/mod.js";
-
-await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
-```
-
 ## Options
 
 ### noIsPseudoSelector
@@ -189,7 +178,6 @@ interfere with PostCSS' plugin nature such as with `@mixin`
 [CSS Nesting]: https://drafts.csswg.org/css-nesting-1/
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Nesting]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting
-[Deno]: https://deno.land/x/postcss_nesting
 [PostCSS Nested]: https://github.com/postcss/postcss-nested
 [Sass]: https://sass-lang.com/
 [CSS Nesting Module]: https://www.w3.org/TR/css-nesting-1/

@@ -1,11 +1,10 @@
 # Changes to PostCSS Nesting
 
-⚠️ We will most likely not finish this release and switch over to the plugin being worked on in the experimental track.
-
 ### Unreleased (major)
 
 - Updated: Support for Node v14+ (major).
 - Fix: Do not throw when a selector is invalid, show a warning instead.
+- Removed: Support for Deno (breaking)
 
 ### 10.2.0 (September 14, 2022)
 

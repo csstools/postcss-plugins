@@ -144,5 +144,3 @@ export const externalsForPlugin = [
 ];
 
 export const externalsForBrowser = [];
-
-export const externalsForDeno = [];
