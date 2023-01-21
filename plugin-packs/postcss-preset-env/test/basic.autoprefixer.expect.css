@@ -195,6 +195,7 @@
 	table-layout: auto;
 	text-align: left;
 	text-align-last: auto;
+	-webkit-text-decoration: none;
 	text-decoration: none;
 	text-indent: 0;
 	text-shadow: none;
