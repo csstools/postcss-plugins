@@ -41,7 +41,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@csstools/css-tokenizer": "^1.0.0"
+		"@csstools/css-tokenizer": "^2.0.0"
 	},
 	"scripts": {
 		"prebuild": "npm run clean",

@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-parser-algorithms",
 	"description": "Algorithms to help you parse CSS from an array of tokens.",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -38,7 +38,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-tokenizer": "^1.0.0"
+		"@csstools/css-tokenizer": "^2.0.0"
 	},
 	"scripts": {
 		"prebuild": "npm run clean",

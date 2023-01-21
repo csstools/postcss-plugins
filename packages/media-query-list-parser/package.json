@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/media-query-list-parser",
 	"description": "Parse CSS media query lists.",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -38,8 +38,8 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^1.0.0",
-		"@csstools/css-tokenizer": "^1.0.0"
+		"@csstools/css-parser-algorithms": "^2.0.0",
+		"@csstools/css-tokenizer": "^2.0.0"
 	},
 	"scripts": {
 		"prebuild": "npm run clean",

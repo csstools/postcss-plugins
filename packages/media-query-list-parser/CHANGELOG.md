@@ -1,4 +1,4 @@
-### Unreleased
+### 2.0.0 (January 19, 2023)
 
 - Refactor `MediaFeatureBoolean` so that it follows the same structure as `MediaFeaturePlain` (breaking)
 - Change the `ParseError` interface, this is now a subclass of `Error` (breaking)

@@ -7,6 +7,7 @@
 }
 
 .b {
+	-webkit-text-decoration: overline;
 	text-decoration: overline;
 }
 
