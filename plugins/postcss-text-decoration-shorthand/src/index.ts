@@ -145,8 +145,24 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					const nonShortHandValue = valueParser.stringify(data.line);
 					if (decl.value.toLowerCase() === nonShortHandValue) {
+						const next = decl.next();
+						if (!next || next.type !== 'decl' || next.prop.toLowerCase() !== 'text-decoration') {
+
+							// "-webkit-text-decoration" is a shorthand and sets omitted constituent properties to their initial value.
+							// "text-decoration" is a longhand in older browsers and does not have this behavior.
+							decl.cloneBefore({
+								prop: '-webkit-text-decoration',
+								value: nonShortHandValue,
+							});
+						}
+
 						return;
 					}
+
+					decl.cloneBefore({
+						prop: 'text-decoration',
+						value: nonShortHandValue,
+					});
 
 					const shortHandValue = valueParser.stringify([
 						data.line,
@@ -161,11 +177,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						},
 						data.color,
 					]);
-
-					decl.cloneBefore({
-						prop: 'text-decoration',
-						value: nonShortHandValue,
-					});
 
 					// Construct a new shorthand value without thickness:
 					// - when thickness is set

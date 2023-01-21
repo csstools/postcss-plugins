@@ -4,6 +4,7 @@
 }
 
 .b {
+	-webkit-text-decoration: overline;
 	text-decoration: overline;
 }
 
@@ -13,6 +14,7 @@
 }
 
 .abc {
+	-webkit-text-decoration: overline;
 	text-decoration: overline;
 }
 
