@@ -18,6 +18,7 @@ assert.deepStrictEqual(
 			vendors_implementations: 1,
 		},
 		undefined,
+		undefined,
 		testLogger.logger,
 	),
 	{
@@ -51,6 +52,7 @@ assert.deepStrictEqual(
 			],
 			vendors_implementations: 1,
 		},
+		undefined,
 		undefined,
 		testLogger.logger,
 	),
@@ -88,6 +90,7 @@ assert.deepStrictEqual(
 		{
 			shared: true,
 		},
+		undefined,
 		testLogger.logger,
 	),
 	{
