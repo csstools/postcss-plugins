@@ -49,7 +49,7 @@
 		"css-blank-pseudo": "^4.1.1",
 		"css-has-pseudo": "^4.0.2",
 		"css-prefers-color-scheme": "^7.0.1",
-		"cssdb": "^7.2.0",
+		"cssdb": "^7.4.0",
 		"postcss-attribute-case-insensitive": "^5.0.2",
 		"postcss-clamp": "^4.1.0",
 		"postcss-color-functional-notation": "^4.2.4",
