@@ -166,7 +166,7 @@ assert.deepStrictEqual(
 		{
 			logical: {
 				inlineDirection: 'right-to-left',
-			}
+			},
 		},
 		testLogger.logger,
 	),
@@ -217,7 +217,7 @@ assert.deepStrictEqual(
 				{
 					logical: {
 						inlineDirection: 'right-to-left',
-					}
+					},
 				},
 				testLogger.logger,
 			),

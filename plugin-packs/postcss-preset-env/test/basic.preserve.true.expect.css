@@ -61,6 +61,19 @@
 	padding-bottom: 4px;
 }
 
+.test-logical-resize {
+	resize: horizontal;
+}
+
+.test-logical-viewport-units {
+	width: -webkit-calc(10vw + 5px);
+	width: -moz-calc(10vw + 5px);
+	width: calc(10vw + 5px);
+	width: -webkit-calc(10vi + 5px);
+	width: -moz-calc(10vi + 5px);
+	width: calc(10vi + 5px);
+}
+
 .test-nesting-rules {
 	-webkit-box-ordinal-group: 5;
 	-webkit-order: 4;

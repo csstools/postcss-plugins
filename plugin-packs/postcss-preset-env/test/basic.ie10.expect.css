@@ -42,6 +42,15 @@
 	padding-bottom: 4px;
 }
 
+.test-logical-resize {
+	resize: horizontal;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vw + 5px);
+	width: calc(10vi + 5px);
+}
+
 .test-nesting-rules {
 	-ms-flex-order: 4;
 	    order: 4;

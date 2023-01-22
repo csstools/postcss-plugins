@@ -82,13 +82,13 @@ export type pluginOptions = {
 	debug?: boolean
 
 	/**
-	 * The `logical` object allows to configure all the postcss-logical plugins at once. It accepts the same options
-	 * as each plugin: `inlineDirection` and `blockDirection`.
-	 * `inlineDirection` sets the direction for inline. The default on each plugin is: left-to-right
-	 * `blockDirection` sets the direction for block. The default on each plugin is: top-to-bottom
+	 * The `logical` object allows to configure all plugins related to logical document flow at once.
+	 * It accepts the same options as each plugin: `inlineDirection` and `blockDirection`.
 	 */
 	logical?: {
+		/** Set the inline flow direction. default: left-to-right */
 		inlineDirection?: DirectionFlow
+		/** Set the block flow direction. default: top-to-bottom */
 		blockDirection?: DirectionFlow
 	}
 }

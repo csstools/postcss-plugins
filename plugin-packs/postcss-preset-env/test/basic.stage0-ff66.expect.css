@@ -36,6 +36,15 @@
 	padding-block: 4px;
 }
 
+.test-logical-resize {
+	resize: inline;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vw + 5px);
+	width: calc(10vi + 5px);
+}
+
 .test-nesting-rules {
 	order: 4;
 }
