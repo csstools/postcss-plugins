@@ -126,6 +126,48 @@ assert.deepStrictEqual(
 		{
 			shared: true,
 		},
+		undefined,
+		testLogger.logger,
+	),
+	{
+		browsers: [
+			'ie >= 1',
+		],
+		vendors_implementations: 1,
+		plugin: true,
+		pluginOptions: {
+			subFeatures: {
+				areaHrefNeedsFixing: true,
+			},
+			enableProgressiveCustomProperties: false,
+			shared: true,
+		},
+		id: 'any-link-pseudo-class',
+	},
+);
+
+// Logical does not get passed to a non-logical plugin
+assert.deepStrictEqual(
+	formatStagedFeature(
+		[],
+		['ie >= 1'],
+		{},
+		{
+			id: 'any-link-pseudo-class',
+			plugin: true,
+			browsers: [
+				'ie >= 1',
+			],
+			vendors_implementations: 1,
+		},
+		{
+			shared: true,
+		},
+		{
+			logical: {
+				inlineDirection: 'right-to-left',
+			}
+		},
 		testLogger.logger,
 	),
 	{
