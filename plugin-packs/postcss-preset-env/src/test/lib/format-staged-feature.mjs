@@ -186,3 +186,54 @@ assert.deepStrictEqual(
 		id: 'any-link-pseudo-class',
 	},
 );
+
+
+{
+// Logical gets passed to a logical plugin
+	const logicalPlugins = [
+		'logical-properties-and-values',
+		'float-clear-logical-values',
+		'logical-resize',
+		'logical-viewport-units',
+	];
+
+	for (const plugin of logicalPlugins) {
+		assert.deepStrictEqual(
+			formatStagedFeature(
+				[],
+				['ie >= 1'],
+				{},
+				{
+					id: plugin,
+					plugin: true,
+					browsers: [
+						'ie >= 1',
+					],
+					vendors_implementations: 1,
+				},
+				{
+					shared: true,
+				},
+				{
+					logical: {
+						inlineDirection: 'right-to-left',
+					}
+				},
+				testLogger.logger,
+			),
+			{
+				browsers: [
+					'ie >= 1',
+				],
+				vendors_implementations: 1,
+				plugin: true,
+				pluginOptions: {
+					enableProgressiveCustomProperties: false,
+					shared: true,
+					inlineDirection: 'right-to-left',
+				},
+				id: plugin,
+			},
+		);
+	}
+}

@@ -13,6 +13,7 @@ import type { pluginOptions as postcssCustomSelectors } from 'postcss-custom-sel
 import type { pluginOptions as postcssDirPseudoClass } from 'postcss-dir-pseudo-class';
 import type { pluginOptions as postcssNormalizeDisplayValues } from '@csstools/postcss-normalize-display-values';
 import type { pluginOptions as postcssDoublePositionGradients } from 'postcss-double-position-gradients';
+import type { pluginOptions as postcssLogicalFloatAndClear } from '@csstools/postcss-logical-float-and-clear';
 import type { pluginOptions as postcssFocusVisible } from 'postcss-focus-visible';
 import type { pluginOptions as postcssFocusWithin } from 'postcss-focus-within';
 import type { pluginOptions as postcssFontFormatKeywords } from '@csstools/postcss-font-format-keywords';
@@ -25,7 +26,9 @@ import type { pluginOptions as postcssICUnit } from '@csstools/postcss-ic-unit';
 import type { pluginOptions as postcssImageSetFunction } from 'postcss-image-set-function';
 import type { pluginOptions as postcssIsPseudoClass } from '@csstools/postcss-is-pseudo-class';
 import type { pluginOptions as postcssLabFunction } from 'postcss-lab-function';
-import type { pluginOptions as postcssLogical } from '../types/postcss-logical/plugin-options';
+import type { pluginOptions as postcssLogical } from 'postcss-logical';
+import type { pluginOptions as postcssLogicalResize } from '@csstools/postcss-logical-resize';
+import type { pluginOptions as postcssLogicalViewportUnits } from '@csstools/postcss-logical-viewport-units';
 import type { pluginOptions as postcssMediaQueriesAspectRatioNumberValues } from '@csstools/postcss-media-queries-aspect-ratio-number-values';
 import type { pluginOptions as postcssMediaMinmax } from '../types/postcss-media-minmax/plugin-options';
 import type { pluginOptions as postcssNestedCalc } from '@csstools/postcss-nested-calc';
@@ -75,6 +78,8 @@ export type pluginsOptions = {
     'display-two-values'?: postcssNormalizeDisplayValues | boolean;
     /** plugin options for "postcss-double-position-gradients" */
     'double-position-gradients'?: postcssDoublePositionGradients | boolean;
+    /** plugin options for "@csstools/postcss-logical-float-and-clear" */
+    'float-clear-logical-values'?: postcssLogicalFloatAndClear | boolean;
     /** plugin options for "postcss-focus-visible" */
     'focus-visible-pseudo-class'?: postcssFocusVisible | boolean;
     /** plugin options for "postcss-focus-within" */
@@ -101,6 +106,10 @@ export type pluginsOptions = {
     'lab-function'?: postcssLabFunction | boolean;
     /** plugin options for "postcss-logical" */
     'logical-properties-and-values'?: postcssLogical | boolean;
+    /** plugin options for "@csstools/postcss-logical-resize" */
+    'logical-resize'?: postcssLogicalResize | boolean;
+    /** plugin options for "@csstools/postcss-logical-viewport-units" */
+    'logical-viewport-units'?: postcssLogicalViewportUnits | boolean;
     /** plugin options for "@csstools/postcss-media-queries-aspect-ratio-number-values" */
     'media-queries-aspect-ratio-number-values'?: postcssMediaQueriesAspectRatioNumberValues | boolean;
     /** plugin options for "postcss-media-minmax" */

@@ -26,11 +26,11 @@
 }
 
 .test-logical-properties-and-values {
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 1px;
+	margin-right: 2px;
 	order: 3;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 }
 
 .test-nesting-rules {
@@ -423,7 +423,7 @@
 }
 
 .logical-float {
-	float: left;
+	float: inline-start;
 }
 
 .color-function {

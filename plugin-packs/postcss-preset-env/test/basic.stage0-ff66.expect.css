@@ -30,9 +30,10 @@
 }
 
 .test-logical-properties-and-values {
-	margin-inline: auto;
+	margin-inline-start: 1px;
+	margin-inline-end: 2px;
 	order: 3;
-	padding-block: 5px;
+	padding-block: 4px;
 }
 
 .test-nesting-rules {

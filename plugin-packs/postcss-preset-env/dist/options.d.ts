@@ -1,5 +1,11 @@
 import type autoprefixer from 'autoprefixer';
 import { pluginsOptions } from './plugins/plugins-options';
+export declare enum DirectionFlow {
+    TopToBottom = "top-to-bottom",
+    BottomToTop = "bottom-to-top",
+    RightToLeft = "right-to-left",
+    LeftToRight = "left-to-right"
+}
 export type pluginOptions = {
     /**
      * Determine which CSS features to polyfill,
@@ -63,4 +69,14 @@ export type pluginOptions = {
      * default: false
      */
     debug?: boolean;
+    /**
+     * The `logical` object allows to configure all the postcss-logical plugins at once. It accepts the same options
+     * as each plugin: `inlineDirection` and `blockDirection`.
+     * `inlineDirection` sets the direction for inline. The default on each plugin is: left-to-right
+     * `blockDirection` sets the direction for block. The default on each plugin is: top-to-bottom
+     */
+    logical?: {
+        inlineDirection?: DirectionFlow;
+        blockDirection?: DirectionFlow;
+    };
 };

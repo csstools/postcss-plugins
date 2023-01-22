@@ -13,6 +13,7 @@ import postcssCustomSelectors from 'postcss-custom-selectors';
 import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
 import postcssNormalizeDisplayValues from '@csstools/postcss-normalize-display-values';
 import postcssDoublePositionGradients from 'postcss-double-position-gradients';
+import postcssLogicalFloatAndClear from '@csstools/postcss-logical-float-and-clear';
 import postcssFocusVisible from 'postcss-focus-visible';
 import postcssFocusWithin from 'postcss-focus-within';
 import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
@@ -26,6 +27,8 @@ import postcssImageSetFunction from 'postcss-image-set-function';
 import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 import postcssLabFunction from 'postcss-lab-function';
 import postcssLogical from 'postcss-logical';
+import postcssLogicalResize from '@csstools/postcss-logical-resize';
+import postcssLogicalViewportUnits from '@csstools/postcss-logical-viewport-units';
 import postcssMediaQueriesAspectRatioNumberValues from '@csstools/postcss-media-queries-aspect-ratio-number-values';
 import postcssMediaMinmax from 'postcss-media-minmax';
 import postcssNestedCalc from '@csstools/postcss-nested-calc';
@@ -63,6 +66,7 @@ export const pluginsById = new Map(
 		['dir-pseudo-class', postcssDirPseudoClass],
 		['display-two-values', postcssNormalizeDisplayValues],
 		['double-position-gradients', postcssDoublePositionGradients],
+		['float-clear-logical-values', postcssLogicalFloatAndClear],
 		['focus-visible-pseudo-class', postcssFocusVisible],
 		['focus-within-pseudo-class', postcssFocusWithin],
 		['font-format-keywords', postcssFontFormatKeywords],
@@ -76,6 +80,8 @@ export const pluginsById = new Map(
 		['is-pseudo-class', postcssIsPseudoClass],
 		['lab-function', postcssLabFunction],
 		['logical-properties-and-values', postcssLogical],
+		['logical-resize', postcssLogicalResize],
+		['logical-viewport-units', postcssLogicalViewportUnits],
 		['media-queries-aspect-ratio-number-values', postcssMediaQueriesAspectRatioNumberValues],
 		['media-query-ranges', postcssMediaMinmax],
 		['nested-calc', postcssNestedCalc],
