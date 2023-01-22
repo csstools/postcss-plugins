@@ -354,6 +354,30 @@ It should have `blockDirection` and/or `inlineDirection` which can be any of the
 - `left-to-right`
 - `right-to-left`
 
+```js
+postcssPresetEnv({
+  logical: { // instruct all logical plugins to set inline axis to right to left
+		inlineDirection: 'right-to-left',
+	},
+});
+```
+
+```pcss
+.element {
+	float: inline-start;
+	padding-inline-end: 10px;
+}
+```
+
+Becomes :
+
+```
+.element {
+	float: right;
+	padding-left: 10px;
+}
+```
+
 You can't mix two vertical directions or two horizontal directions so for example `top-to-bottom` and `right-to-left` are valid, but `top-to-bottom` and `bottom-to-top` are not.
 
 You might want to tweak these values if you are using a different writing system, such as Arabic, Hebrew or Chinese for example.
