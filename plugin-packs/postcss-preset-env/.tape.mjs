@@ -269,9 +269,6 @@ postcssTape(plugin)({
 		options: {
 			stage: 0,
 			features: {
-				'lab-function': true
-			},
-			features: {
 				'lab-function': true,
 				'color-function': false,
 			},
@@ -288,9 +285,6 @@ postcssTape(plugin)({
 		message: 'supports { insertBefore } usage when looking for a result',
 		options: {
 			stage: 0,
-			features: {
-				'lab-function': true
-			},
 			features: {
 				'lab-function': true,
 				'color-function': false,
