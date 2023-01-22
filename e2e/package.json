@@ -4,6 +4,7 @@
 	"version": "0.0.0",
 	"description": "",
 	"workspaces": [
+		"postcss-cli/*",
 		"typescript/*",
 		"webpack/*"
 	],
