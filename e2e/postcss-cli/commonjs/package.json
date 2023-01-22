@@ -1,0 +1,14 @@
+{
+	"name": "@csstools/e2e--postcss-cli--commonjs",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Can you use postcss-cli with one of our plugins?",
+	"scripts": {
+		"build": "postcss style.css -o ./result.css",
+		"test": "node ./test.mjs"
+	},
+	"devDependencies": {
+		"@csstools/postcss-ic-unit": "^1.0.1",
+		"postcss-cli": "^10.1.0"
+	}
+}
