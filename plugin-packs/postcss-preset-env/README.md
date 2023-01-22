@@ -218,7 +218,7 @@ postcssPresetEnv({
   /* use stage 3 features + custom-selectors (preserving the original CSS) */
   stage: 3,
   features: {
-    'custom-selectors': { preserve: true  }
+    'custom-selectors': { preserve: true }
   }
 })
 ```
