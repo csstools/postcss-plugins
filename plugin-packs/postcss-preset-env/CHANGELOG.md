@@ -4,7 +4,12 @@
 
 - Added: TypeScript support.
 - Added `@csstools/postcss-media-queries-aspect-ratio-number-values` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values#readme) for usage details.
+- Added `@csstools/postcss-logical-float-and-clear` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-float-and-clear#readme) for usage details.
+- Added `@csstools/postcss-logical-resize` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-resize#readme) for usage details.
+- Added `@csstools/postcss-logical-viewport-units` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units#readme) for usage details.
+- Added `logical` option to control all logical plugins.
 - Fixed: `all-property` and `overflow-wrap-property` now follow the `preserve` plugin option
+- Removed a workaround to consider `blank-pseudo-class` and `prefers-color-scheme-query` as `stage: 1` features when using default options.
 
 ### (8.0.0-alpha.1) (November 14, 2022)
 
