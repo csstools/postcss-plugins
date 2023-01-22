@@ -167,6 +167,15 @@ postcssTape(plugin)({
 			browsers: '> 0%'
 		},
 	},
+	'basic:hebrew': {
+		message: 'supports { logical: { inlineDirection: "right-to-left" }, stage: 0, browsers: "> 0%" } usage',
+		options: {
+			stage: 0,
+			logical: {
+				inlineDirection: 'right-to-left'
+			}
+		},
+	},
 	'layers-basic': {
 		message: 'supports layers usage',
 		options: {
