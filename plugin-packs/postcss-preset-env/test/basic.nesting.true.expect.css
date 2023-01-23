@@ -17,9 +17,20 @@
 }
 
 .test-logical-properties-and-values {
-	margin-inline: auto;
+	-webkit-margin-start: 1px;
+	        margin-inline-start: 1px;
+	-webkit-margin-end: 2px;
+	        margin-inline-end: 2px;
 	order: 3;
-	padding-block: 5px;
+	padding-block: 4px;
+}
+
+.test-logical-resize {
+	resize: inline;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {

@@ -32,11 +32,20 @@
 }
 
 .test-logical-properties-and-values {
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 1px;
+	margin-right: 2px;
 	order: 3;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.test-logical-resize {
+	resize: horizontal;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vw + 5px);
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
