@@ -4,8 +4,6 @@ import { promises as fsp } from 'fs';
 import plugin from '@csstools/postcss-cascade-layers';
 import postcss from 'postcss';
 
-// TODO : bring over more tests from WPT
-
 (async () => {
 	const requestListener = async function (req, res) {
 

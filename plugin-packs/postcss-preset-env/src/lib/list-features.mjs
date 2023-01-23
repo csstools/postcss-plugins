@@ -28,20 +28,6 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 
 	const stage = stageFromOptions(options, logger);
 
-	// TODO : remove this hack in the next major
-	// see : https://github.com/csstools/cssdb/pull/78
-	// These features require client side polyfills and changing their stage is breaking for everyone with `preserve : false`
-	if (stage === 2 && sharedOptions && sharedOptions.preserve === false) {
-		cssdbList = JSON.parse(JSON.stringify(cssdbList)); // deep clone;
-		cssdbList.forEach((feature) => {
-			if (feature.id === 'blank-pseudo-class') {
-				feature.stage = 1;
-			} else if (feature.id === 'prefers-color-scheme-query') {
-				feature.stage = 1;
-			}
-		});
-	}
-
 	// polyfillable features (those with an available postcss plugin)
 	const polyfillableFeatures = prepareFeaturesList(cssdbList, insertBefore, insertAfter).map((feature) => {
 		return formatPolyfillableFeature(feature);

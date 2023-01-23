@@ -70,7 +70,7 @@ body:
         - PostCSS Color Function
         - PostCSS Color Functional Notation
         - PostCSS Color Hex Alpha
-        - PostCSS Color Mod Function
+        - PostCSS Conditional Values
         - PostCSS Custom Media Queries
         - PostCSS Custom Properties
         - PostCSS Custom Selectors
@@ -109,7 +109,7 @@ body:
         - PostCSS Stepped Value Functions
         - PostCSS System Ui Font Family
         - PostCSS Text Decoration Shorthand
-        - PostCSS Trigonometric-Functions
+        - PostCSS Trigonometric Functions
         - PostCSS Unset Value
   - type: input
     id: version
