@@ -93,7 +93,7 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 
 		return isAllowedFeature;
 	}).map((feature) => {
-		return formatStagedFeature(cssdbList, browsers, features, feature, sharedOptions, logger);
+		return formatStagedFeature(cssdbList, browsers, features, feature, sharedOptions, options, logger);
 	});
 
 	// browsers supported by the configuration

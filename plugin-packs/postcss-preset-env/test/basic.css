@@ -16,9 +16,18 @@
 }
 
 .test-logical-properties-and-values {
-	margin: logical 1px 2px 3px 4px;
+	margin-inline-start: 1px;
+	margin-inline-end: 2px;
 	order: 3;
-	padding-block: 5px;
+	padding-block: 4px;
+}
+
+.test-logical-resize {
+	resize: inline;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
@@ -354,7 +363,7 @@
 	right: round(nearest, 2.5px, 1px);
 	bottom: round(up, 2.5px, 1px);
 	left: round(down, 2.5px, 1px);
-	inset: round(to-zero, 2.5px, 1px);
+	padding-left: round(to-zero, 2.5px, 1px);
 }
 
 .trigonometric {

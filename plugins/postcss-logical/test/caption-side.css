@@ -1,0 +1,27 @@
+.foo {
+	caption-side: block-start;
+}
+
+.foo {
+	caption-side: block-end;
+}
+
+.foo {
+	caption-side: inline-start;
+}
+
+.foo {
+	caption-side: inline-end;
+}
+
+.foo {
+	caption-side: top;
+}
+
+.foo {
+	caption-side: blOcK-START;
+}
+
+.foo {
+	caption-side: block-ending;
+}

@@ -30,18 +30,21 @@
 }
 }
 
-[dir="ltr"] .test-logical-properties-and-values {
-	margin: 1px 4px 3px 2px;
-}
-
-[dir="rtl"] .test-logical-properties-and-values {
-	margin: 1px 2px 3px 4px;
-}
-
 .test-logical-properties-and-values {
+	margin-left: 1px;
+	margin-right: 2px;
 	order: 3;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.test-logical-resize {
+	resize: horizontal;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vw + 5px);
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
@@ -352,12 +355,8 @@ h6.test-custom-selectors {
 	display: ruby-text flow;
 }
 
-[dir="ltr"] .logical-float {
+.logical-float {
 	float: left;
-}
-
-[dir="rtl"] .logical-float {
-	float: right;
 }
 
 .color-function {
@@ -465,10 +464,7 @@ h6.test-custom-selectors {
 	right: 3px;
 	bottom: 3px;
 	left: 2px;
-	top: 2px;
-	right: 2px;
-	bottom: 2px;
-	left: 2px;
+	padding-left: 2px;
 }
 
 .trigonometric {
@@ -516,12 +512,8 @@ h6.test-custom-selectors {
 	text-decoration: 3px wavy pink overline;
 }
 
-[dir="ltr"] .stage__container {
+.stage__container {
 	left: var(--size, 1rem);
-}
-
-[dir="rtl"] .stage__container {
-	right: var(--size, 1rem);
 }
 
 :scope {

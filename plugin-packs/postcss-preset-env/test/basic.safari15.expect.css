@@ -24,9 +24,19 @@
 }
 
 .test-logical-properties-and-values {
-	margin: logical 1px 2px 3px 4px;
+	margin-inline-start: 1px;
+	margin-inline-end: 2px;
 	order: 3;
-	padding-block: 5px;
+	padding-block: 4px;
+}
+
+.test-logical-resize {
+	resize: horizontal;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vw + 5px);
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
@@ -279,7 +289,7 @@
 }
 
 .logical-float {
-	float: inline-start;
+	float: left;
 }
 
 .color-function {
@@ -387,7 +397,7 @@
 	right: 3px;
 	bottom: 3px;
 	left: 2px;
-	inset: 2px;
+	padding-left: 2px;
 }
 
 .trigonometric {

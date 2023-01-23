@@ -2,113 +2,127 @@ import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'postcss-logical';
 
 postcssTape(plugin)({
-	'border': {
-		message: 'supports logical "border" property values'
+	'abstract': {
+		message: 'abstract test with default setting',
 	},
-	'border:ltr': {
-		message: 'supports logical "border" property values with { dir: "ltr" }',
+	'abstract:rtl': {
+		message: 'abstract test with rtl',
 		options: {
-			dir: 'ltr'
-		}
+			inlineDirection: 'right-to-left'
+		},
 	},
-	'border:preserve': {
-		message: 'supports logical "border" property values with { preserve: true }',
+	'abstract:bt': {
+		message: 'abstract test with bt',
 		options: {
-			preserve: true
-		}
+			blockDirection: 'bottom-to-top'
+		},
 	},
-	'clear': {
-		message: 'supports logical "clear" property values'
-	},
-	'clear:ltr': {
-		message: 'supports logical "clear" property values with { dir: "ltr" }',
+	'abstract:rtl-and-bt': {
+		message: 'abstract test with rtl and bt',
 		options: {
-			dir: 'ltr'
-		}
+			blockDirection: 'bottom-to-top',
+			inlineDirection: 'right-to-left'
+		},
 	},
-	'float': {
-		message: 'supports logical "float" property values'
-	},
-	'float:ltr': {
-		message: 'supports logical "float" property values with { dir: "ltr" }',
+	'abstract:chinese': {
+		message: 'abstract test with rtl and bt',
 		options: {
-			dir: 'ltr'
-		}
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
 	},
-	'inset': {
-		message: 'supports logical "inset" properties'
+	'caption-side': {
+		message: 'supports logical "caption-side" properties',
 	},
-	'inset:ltr': {
-		message: 'supports logical "inset" properties with { dir: "ltr" }',
+	'caption-side:chinese': {
+		message: 'supports logical "caption-side" properties { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
 		options: {
-			dir: 'ltr'
-		}
-	},
-	'margin': {
-		message: 'supports logical "margin" properties'
-	},
-	'margin:ltr': {
-		message: 'supports logical "margin" properties with { dir: "ltr" }',
-		options: {
-			dir: 'ltr'
-		}
-	},
-	'padding': {
-		message: 'supports logical "padding" properties'
-	},
-	'padding:ltr': {
-		message: 'supports logical "padding" properties with { dir: "ltr" }',
-		options: {
-			dir: 'ltr'
-		}
-	},
-	'resize': {
-		message: 'supports logical "resize" properties'
-	},
-	'size': {
-		message: 'supports logical "size" properties'
-	},
-	'size:preserve': {
-		message: 'supports logical "size" properties with { preserve: true }',
-		options: {
-			preserve: true
-		}
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
 	},
 	'text-align': {
-		message: 'supports logical "text-align" properties'
+		message: 'supports logical "text-align" property',
 	},
-	'text-align:ltr': {
-		message: 'supports logical "text-align" properties with { dir: "ltr" }',
+	'text-align:chinese': {
+		message: 'supports logical "text-align" property { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
 		options: {
-			dir: 'ltr'
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
+	},
+	'text-align:hebrew': {
+		message: 'supports logical "text-align" property { inlineDirection: "right-to-left" }',
+		options: {
+			inlineDirection: 'right-to-left',
 		}
 	},
-	'transition': {
-		message: 'supports logical "transition" properties'
+	'logical-size': {
+		message: 'supports logical "block-size" & "inline-size" properties',
 	},
-	'transition:ltr': {
-		message: 'supports logical "transition" properties with { dir: "ltr" }',
+	'logical-size:chinese': {
+		message: 'supports logical "block-size" & "inline-size" properties { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
 		options: {
-			dir: 'ltr'
-		}
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
 	},
-	'transition:preserve:ltr': {
-		message: 'supports logical "transition" properties with { dir: "ltr", preserve: true }',
-		options: {
-			dir: 'ltr',
-			preserve: true
-		}
+	margin: {
+		message: 'supports logical "margin" properties',
+		warnings: 1,
 	},
-	'generated-declaration-cases': {
-		message: 'correctly handles generated cases',
+	'margin:chinese': {
+		message: 'supports logical "margin" properties { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
+		warnings: 1,
 		options: {
-			preserve: false
-		}
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
 	},
-	'generated-declaration-cases:preserve': {
-		message: 'correctly handles generated cases',
+	offsets: {
+		message: 'supports logical "offsets" properties',
+		warnings: 3,
+	},
+	'offsets:chinese': {
+		message: 'supports logical "offsets" properties { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
+		warnings: 3,
 		options: {
-			preserve: true
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
+	},
+	padding: {
+		message: 'supports logical "padding" properties',
+		warnings: 1,
+	},
+	'padding:chinese': {
+		message: 'supports logical "padding" properties { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
+		warnings: 1,
+		options: {
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
+	},
+	border: {
+		message: 'supports logical "border" properties',
+		warnings: 6,
+	},
+	'border:chinese': {
+		message: 'supports logical "border" properties { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
+		warnings: 6,
+		options: {
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
+	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:chinese': {
+		message: 'minimal example',
+		options: {
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
 		}
 	},
 });

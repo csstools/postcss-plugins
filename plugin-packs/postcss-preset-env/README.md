@@ -218,7 +218,7 @@ postcssPresetEnv({
   /* use stage 3 features + custom-selectors (preserving the original CSS) */
   stage: 3,
   features: {
-    'custom-selectors': { preserve: true  }
+    'custom-selectors': { preserve: true }
   }
 })
 ```
@@ -337,6 +337,50 @@ The `enableClientSidePolyfills` enables any feature that would need an extra bro
 - Note that manually enabling/disabling features via the "feature" option overrides this flag.
 - This only controls if the PostCSS plugins are enabled. It does not cause the browsers libraries to be included in your bundle.
 
+### logical
+
+The `logical` option can hold an object which lets you specify direction of the inline and block axes and will affect the
+following features:
+
+- `logical-properties-and-values`: [PostCSS Logical](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme)
+- `float-clear-logical-values`: [PostCSS Logical Float And Clear](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme)
+- `logical-resize`: [PostCSS Logical Resize](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-resize#readme)
+- `logical-viewport-units`: [PostCSS Logical Viewport Units](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logica-viewport-unitsl#readme)
+
+It should have `blockDirection` and/or `inlineDirection` which can be any of the following:
+
+- `top-to-bottom`
+- `bottom-to-top`
+- `left-to-right`
+- `right-to-left`
+
+```js
+postcssPresetEnv({
+  logical: { // instruct all logical plugins to set inline axis to right to left
+		inlineDirection: 'right-to-left',
+	},
+});
+```
+
+```pcss
+.element {
+	float: inline-start;
+	padding-inline-end: 10px;
+}
+```
+
+Becomes :
+
+```
+.element {
+	float: right;
+	padding-left: 10px;
+}
+```
+
+You can't mix two vertical directions or two horizontal directions so for example `top-to-bottom` and `right-to-left` are valid, but `top-to-bottom` and `bottom-to-top` are not.
+
+You might want to tweak these values if you are using a different writing system, such as Arabic, Hebrew or Chinese for example.
 
 ## Stability and Portability
 

@@ -1,0 +1,73 @@
+.foo {
+	inset-block-start: 1px;
+	inset-block-end: 2px;
+	inset-inline-start: 3px;
+	inset-inline-end: 4px;
+}
+
+.foo {
+	inset-block-start: var(--var-1);
+	inset-block-end: var(--var-2);
+	inset-inline-start: var(--var-2);
+	inset-inline-end: var(--var-3);
+}
+
+.foo {
+	inset-block: 1px;
+}
+
+.foo {
+	inset-block: 1px var(--foo);
+}
+
+.foo {
+	inset-block: var(--foo);
+}
+
+.foo {
+	inset-block: 1px 2px 3px;
+}
+
+.foo {
+	inset-inline: 1px;
+}
+
+.foo {
+	inset-inline: 1px 2px;
+}
+
+.foo {
+	inset-inline: 1px 2px 3px;
+}
+
+.foo {
+	inset: 1px;
+}
+
+.foo {
+	inset: var(--foo);
+}
+
+.foo {
+	inset: 1px 2px;
+}
+
+.foo {
+	inset: var(--foo) 2px;
+}
+
+.foo {
+	inset: 1px 2px 3px;
+}
+
+.foo {
+	inset: 1px var(--foo) 3px;
+}
+
+.foo {
+	inset: 1px var(--foo) 3px 4px;
+}
+
+.foo {
+	inset: 1px 2px 3px 4px 5px;
+}

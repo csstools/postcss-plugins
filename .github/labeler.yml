@@ -136,6 +136,14 @@
   - plugins/postcss-logical/**
   - experimental/postcss-logical/**
 
+"plugins/postcss-logical-float-and-clear":
+  - plugins/postcss-logical-float-and-clear/**
+  - experimental/postcss-logical-float-and-clear/**
+
+"plugins/postcss-logical-resize":
+  - plugins/postcss-logical-resize/**
+  - experimental/postcss-logical-resize/**
+
 "plugins/postcss-logical-viewport-units":
   - plugins/postcss-logical-viewport-units/**
   - experimental/postcss-logical-viewport-units/**

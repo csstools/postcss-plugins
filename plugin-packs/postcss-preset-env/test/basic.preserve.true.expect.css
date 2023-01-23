@@ -49,32 +49,29 @@
 }
 }
 
-[dir="ltr"] .test-logical-properties-and-values {
-	margin: 1px 4px 3px 2px;
-}
-
-.test-logical-properties-and-values:dir(ltr) {
-	margin: 1px 4px 3px 2px;
-}
-
-[dir="rtl"] .test-logical-properties-and-values {
-	margin: 1px 2px 3px 4px;
-}
-
-.test-logical-properties-and-values:dir(rtl) {
-	margin: 1px 2px 3px 4px;
-}
-
 .test-logical-properties-and-values {
-	margin: logical 1px 2px 3px 4px;
+	margin-left: 1px;
+	margin-right: 2px;
 	-webkit-box-ordinal-group: 4;
 	-webkit-order: 3;
 	   -moz-box-ordinal-group: 4;
 	    -ms-flex-order: 3;
 	        order: 3;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-block: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.test-logical-resize {
+	resize: horizontal;
+}
+
+.test-logical-viewport-units {
+	width: -webkit-calc(10vw + 5px);
+	width: -moz-calc(10vw + 5px);
+	width: calc(10vw + 5px);
+	width: -webkit-calc(10vi + 5px);
+	width: -moz-calc(10vi + 5px);
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
@@ -799,24 +796,8 @@ h6.test-custom-selectors {
 	display: ruby-text flow;
 }
 
-[dir="ltr"] .logical-float {
-	float: left;
-}
-
-.logical-float:dir(ltr) {
-	float: left;
-}
-
-[dir="rtl"] .logical-float {
-	float: right;
-}
-
-.logical-float:dir(rtl) {
-	float: right;
-}
-
 .logical-float {
-	float: inline-start;
+	float: left;
 }
 
 .color-function {
@@ -1005,20 +986,8 @@ h6.test-custom-selectors {
 	bottom: round(up, 2.5px, 1px);
 	left: 2px;
 	left: round(down, 2.5px, 1px);
-	top: 2px;
-	right: 2px;
-	bottom: 2px;
-	left: 2px;
-	inset: 2px;
-	top: 2px;
-	top: round(to-zero, 2.5px, 1px);
-	right: 2px;
-	right: round(to-zero, 2.5px, 1px);
-	bottom: 2px;
-	bottom: round(to-zero, 2.5px, 1px);
-	left: 2px;
-	left: round(to-zero, 2.5px, 1px);
-	inset: round(to-zero, 2.5px, 1px);
+	padding-left: 2px;
+	padding-left: round(to-zero, 2.5px, 1px);
 }
 
 .trigonometric {
@@ -1099,55 +1068,9 @@ h6.test-custom-selectors {
 	        text-decoration: 3px wavy pink overline;
 }
 
-[dir="ltr"] .stage__container {
-	left: 1rem;
-	left: var(--size, 1rem);
-}
-
-[dir="ltr"] .stage__container {
-	left: 1rem;
-	left: var(--size, 1rem);
-}
-
-.stage__container:dir(ltr) {
-	left: 1rem;
-	left: var(--size, 1rem);
-}
-
-[dir="rtl"] .stage__container {
-	right: 1rem;
-	right: var(--size, 1rem);
-}
-
-[dir="rtl"] .stage__container {
-	right: 1rem;
-	right: var(--size, 1rem);
-}
-
-.stage__container:dir(rtl) {
-	right: 1rem;
-	right: var(--size, 1rem);
-}
-
-[dir="ltr"] .stage__container {
-	left: 1rem;
-}
-
-.stage__container:dir(ltr) {
-	left: 1rem;
-}
-
-[dir="rtl"] .stage__container {
-	right: 1rem;
-}
-
-.stage__container:dir(rtl) {
-	right: 1rem;
-}
-
 .stage__container {
-	inset-inline-start: 1rem;
-	inset-inline-start: var(--size, 1rem);
+	left: 1rem;
+	left: var(--size, 1rem);
 }
 
 :root {

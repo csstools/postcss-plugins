@@ -34,6 +34,9 @@
 		"@csstools/postcss-hwb-function": "^1.0.2",
 		"@csstools/postcss-ic-unit": "^1.0.1",
 		"@csstools/postcss-is-pseudo-class": "^2.0.7",
+		"@csstools/postcss-logical-float-and-clear": "^1.0.0",
+		"@csstools/postcss-logical-resize": "^1.0.0",
+		"@csstools/postcss-logical-viewport-units": "^1.0.0",
 		"@csstools/postcss-media-queries-aspect-ratio-number-values": "^1.0.0",
 		"@csstools/postcss-nested-calc": "^1.0.0",
 		"@csstools/postcss-normalize-display-values": "^1.0.1",
@@ -55,7 +58,7 @@
 		"postcss-color-functional-notation": "^4.2.4",
 		"postcss-color-hex-alpha": "^8.0.4",
 		"postcss-color-rebeccapurple": "^7.1.1",
-		"postcss-custom-media": "^9.0.0",
+		"postcss-custom-media": "^9.0.1",
 		"postcss-custom-properties": "^13.0.0",
 		"postcss-custom-selectors": "^7.0.0",
 		"postcss-dir-pseudo-class": "^6.0.5",
@@ -70,7 +73,7 @@
 		"postcss-logical": "^5.0.4",
 		"postcss-media-minmax": "^5.0.0",
 		"postcss-nesting": "^10.2.0",
-		"postcss-opacity-percentage": "^1.1.2",
+		"postcss-opacity-percentage": "^1.1.3",
 		"postcss-overflow-shorthand": "^3.0.4",
 		"postcss-page-break": "^3.0.4",
 		"postcss-place": "^7.0.5",
@@ -83,7 +86,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"postcss-simple-vars": "^7.0.0"
+		"postcss-simple-vars": "^7.0.1"
 	},
 	"scripts": {
 		"prebuild": "node ./scripts/generate-plugins-data.mjs && eslint --fix ./src/plugins/*.mjs && npm run clean",

@@ -1,0 +1,99 @@
+.foo {
+	right: 1px;
+	left: 2px;
+	top: 3px;
+	bottom: 4px;
+}
+
+.foo {
+	right: var(--var-1);
+	left: var(--var-2);
+	top: var(--var-2);
+	bottom: var(--var-3);
+}
+
+.foo {
+	right: 1px;
+	left: 1px;
+}
+
+.foo {
+	right: 1px;
+	left: var(--foo);
+}
+
+.foo {
+	right: var(--foo);
+	left: var(--foo);
+}
+
+.foo {
+	inset-block: 1px 2px 3px;
+}
+
+.foo {
+	top: 1px;
+	bottom: 1px;
+}
+
+.foo {
+	top: 1px;
+	bottom: 2px;
+}
+
+.foo {
+	inset-inline: 1px 2px 3px;
+}
+
+.foo {
+	top: 1px;
+	right: 1px;
+	bottom: 1px;
+	left: 1px;
+}
+
+.foo {
+	top: var(--foo);
+	right: var(--foo);
+	bottom: var(--foo);
+	left: var(--foo);
+}
+
+.foo {
+	top: 1px;
+	right: 2px;
+	bottom: 1px;
+	left: 2px;
+}
+
+.foo {
+	top: var(--foo);
+	right: 2px;
+	bottom: var(--foo);
+	left: 2px;
+}
+
+.foo {
+	top: 1px;
+	right: 2px;
+	bottom: 3px;
+	left: 2px;
+}
+
+.foo {
+	top: 1px;
+	right: var(--foo);
+	bottom: 3px;
+	left: var(--foo);
+}
+
+.foo {
+	top: 1px;
+	right: var(--foo);
+	bottom: 3px;
+	left: 4px;
+}
+
+.foo {
+	inset: 1px 2px 3px 4px 5px;
+}
