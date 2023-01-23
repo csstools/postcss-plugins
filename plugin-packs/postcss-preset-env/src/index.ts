@@ -20,9 +20,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const sharedOptions = initializeSharedOptions(options);
 
 	const features = listFeatures(cssdb, options, sharedOptions, logger);
-	const plugins = features.map((feature) => {
-		return feature.plugin;
-	});
+	const plugins = features.map((feature) => feature.plugin);
 
 	if (options.autoprefixer !== false) {
 		plugins.push(

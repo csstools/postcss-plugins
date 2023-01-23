@@ -1,6 +1,13 @@
 import type autoprefixer from 'autoprefixer';
 import { pluginsOptions } from './plugins/plugins-options';
 
+export enum DirectionFlow {
+	TopToBottom = 'top-to-bottom',
+	BottomToTop = 'bottom-to-top',
+	RightToLeft = 'right-to-left',
+	LeftToRight = 'left-to-right',
+}
+
 export type pluginOptions = {
 	/**
 	 * Determine which CSS features to polyfill,
@@ -73,4 +80,15 @@ export type pluginOptions = {
 	 * default: false
 	 */
 	debug?: boolean
+
+	/**
+	 * The `logical` object allows to configure all plugins related to logical document flow at once.
+	 * It accepts the same options as each plugin: `inlineDirection` and `blockDirection`.
+	 */
+	logical?: {
+		/** Set the inline flow direction. default: left-to-right */
+		inlineDirection?: DirectionFlow
+		/** Set the block flow direction. default: top-to-bottom */
+		blockDirection?: DirectionFlow
+	}
 }

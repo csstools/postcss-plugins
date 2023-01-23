@@ -3,6 +3,12 @@
 ### Unreleased (major)
 
 - Updated: Support for Node v14+ (major).
+- Added: TypeScript support.
+- Added: Support for `block-size`, `inline-size` and `caption-side`.
+- Removed: Support for the `logical` keyword within `margin`, `padding`, `border-width`, `border-style`, `border-color` properties. (major)
+- Removed support for `preserve` option. Changes are no longer preserved (major).
+- Removed support for transforming `float`, `clear` and `resize` properties. (major)
+- Updated: The plugin now requires block and inline direction to be configured (uses `top-to-bottom` and `left-to-right` respectively) and no longer introduces `:dir` (major).
 
 ### 5.0.4 (February 5, 2022)
 
@@ -33,7 +39,7 @@ making it impossible for end users to have a working setup.
 ### 4.0.2 (June 10, 2019)
 
 - Fixed: Restored transforms for `max-block-size`, `max-inline-size`,
-  `min-block-size`, and `min-inline-size`.
+	`min-block-size`, and `min-inline-size`.
 
 ### 4.0.1 (June 10, 2019)
 
@@ -42,13 +48,13 @@ making it impossible for end users to have a working setup.
 ### 4.0.0 (June 5, 2019)
 
 - Added: Logical border-radius properties, which include
-  `border-end-end-radius`, `border-end-start-radius`, `border-start-end-radius`,
-  and `border-start-start-radius`.
+	`border-end-end-radius`, `border-end-start-radius`, `border-start-end-radius`,
+	and `border-start-start-radius`.
 - Removed: All unknown logical properties, which include `border-end`,
-  `border-end-color`, `border-end-style`, `border-end-width`, `border-start`,
-  `border-start-color`, `border-start-style`, `border-start-width`, `inset-end`,
-  `inset-start`, `margin-end`, `margin-start`, `padding-end`, `padding-start`
-  and `border` with `logical`.
+	`border-end-color`, `border-end-style`, `border-end-width`, `border-start`,
+	`border-start-color`, `border-start-style`, `border-start-width`, `inset-end`,
+	`inset-start`, `margin-end`, `margin-start`, `padding-end`, `padding-start`
+	and `border` with `logical`.
 - Updated: `transition` and `transition-property` to support the changes.
 - Updated: `postcss` to 7.0.16 (patch)
 - Updated: Node 8+ compatibility (major)
@@ -56,9 +62,9 @@ making it impossible for end users to have a working setup.
 ### 3.0.0 (September 20, 2018)
 
 - Added: Support for logical properties within `transition` and
-  `transition-property`.
+	`transition-property`.
 - Changed: Physical rule fallbacks are written as full selectors rather than
-  as nesting selectors.
+	as nesting selectors.
 
 ### 2.0.0 (September 17, 2018)
 

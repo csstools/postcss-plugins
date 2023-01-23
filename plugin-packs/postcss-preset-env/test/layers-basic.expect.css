@@ -19,7 +19,7 @@
 		--firebrick: rgb(179, 35, 35);
 	}
 
-@supports (color: color(display-p3 0 0 0)){
+@supports (color: color(display-p3 0 0 0)) {
 .test-custom-property-fallbacks:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		--firebrick: color(display-p3 0.64331 0.19245 0.16771);
 	}
@@ -51,23 +51,16 @@
 		        order: 2;
 	}
 
-@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi){
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi) {
 
 	.test-image-set-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		background-image: url(img/test-2x.png);
 	}
 }
 
-[dir="ltr"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-logical-properties-and-values{
-		margin: 1px 4px 3px 2px;
-}
-
-[dir="rtl"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-logical-properties-and-values{
-		margin: 1px 2px 3px 4px;
-}
-
 .test-logical-properties-and-values:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		is-layer: C;
+		margin: logical 1px 2px 3px 4px;
 		-webkit-box-ordinal-group: 4;
 		-webkit-order: 3;
 		   -moz-box-ordinal-group: 4;
@@ -821,5 +814,4 @@ h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	top: 2px;
 	right: 2px;
 	bottom: 2px;
-	left: 2px;
 }

@@ -5,6 +5,9 @@
 - Updated: Support for Node v14+ (major).
 - Remove `postcss-env-function` (breaking).
 - Remove `importFrom` and `exportTo` plugin options (breaking).
+- Added `@csstools/postcss-logical-float-and-clear`
+- Added `@csstools/postcss-logical-resize`
+- Added `@csstools/postcss-logical-viewport-units`
 
 ### 1.4.0 (June 3, 2022)
 

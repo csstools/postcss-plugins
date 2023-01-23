@@ -17,18 +17,21 @@
 	order: 2;
 }
 
-.test-logical-properties-and-values:dir(ltr) {
-	margin: 1px 4px 3px 2px;
-}
-
-.test-logical-properties-and-values:dir(rtl) {
-	margin: 1px 2px 3px 4px;
-}
-
 .test-logical-properties-and-values {
+	margin-left: 1px;
+	margin-right: 2px;
 	order: 3;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.test-logical-resize {
+	resize: inline;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vw + 5px);
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
@@ -400,12 +403,8 @@
 	display: ruby-text flow;
 }
 
-.logical-float:dir(ltr) {
-	float: left;
-}
-
-.logical-float:dir(rtl) {
-	float: right;
+.logical-float {
+	float: inline-start;
 }
 
 .color-function {
@@ -486,10 +485,7 @@
 	right: round(nearest, 2.5px, 1px);
 	bottom: round(up, 2.5px, 1px);
 	left: round(down, 2.5px, 1px);
-	top: round(to-zero, 2.5px, 1px);
-	right: round(to-zero, 2.5px, 1px);
-	bottom: round(to-zero, 2.5px, 1px);
-	left: round(to-zero, 2.5px, 1px);
+	padding-left: round(to-zero, 2.5px, 1px);
 }
 
 .trigonometric {
@@ -543,22 +539,9 @@
 	        text-decoration: 3px wavy pink overline;
 }
 
-.stage__container:dir(ltr) {
+.stage__container {
 	left: 1rem;
 	left: var(--size, 1rem);
-}
-
-.stage__container:dir(rtl) {
-	right: 1rem;
-	right: var(--size, 1rem);
-}
-
-.stage__container:dir(ltr) {
-	left: 1rem;
-}
-
-.stage__container:dir(rtl) {
-	right: 1rem;
 }
 
 :root {

@@ -1,16 +1,7 @@
-test-text-align:dir(ltr) {
-	text-align: left;
-}
-test-text-align:dir(rtl) {
+.text {
 	text-align: right;
 }
-test-text-align:dir(ltr) {
-	text-align: right;
-}
-test-text-align:dir(rtl) {
+
+.other-text {
 	text-align: left;
-}
-test-text-align {
-	text-align: left;
-	text-align: right;
 }

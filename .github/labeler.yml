@@ -1,6 +1,10 @@
 "common-tools":
   - .github/**
   - packages/base-cli/**
+  - packages/cascade-layer-name-parser/**
+  - packages/css-parser-algorithms/**
+  - packages/css-tokenizer/**
+  - packages/media-query-list-parser/**
   - packages/postcss-tape/**
   - packages/selector-specificity/**
   - plugins/postcss-base-plugin/**
@@ -12,6 +16,9 @@
 "cli":
   - cli/csstools-cli/**
   - packages/base-cli/**
+
+"e2e":
+  - e2e/**
 
 "experimental":
   - experimental/**
@@ -52,9 +59,13 @@
   - plugins/postcss-color-hex-alpha/**
   - experimental/postcss-color-hex-alpha/**
 
-"plugins/postcss-color-mod-function":
-  - plugins/postcss-color-mod-function/**
-  - experimental/postcss-color-mod-function/**
+"plugins/postcss-color-rebeccapurple":
+  - plugins/postcss-color-rebeccapurple/**
+  - experimental/postcss-color-rebeccapurple/**
+
+"plugins/postcss-conditional-values":
+  - plugins/postcss-conditional-values/**
+  - experimental/postcss-conditional-values/**
 
 "plugins/postcss-custom-media":
   - plugins/postcss-custom-media/**
@@ -136,6 +147,14 @@
   - plugins/postcss-logical/**
   - experimental/postcss-logical/**
 
+"plugins/postcss-logical-float-and-clear":
+  - plugins/postcss-logical-float-and-clear/**
+  - experimental/postcss-logical-float-and-clear/**
+
+"plugins/postcss-logical-resize":
+  - plugins/postcss-logical-resize/**
+  - experimental/postcss-logical-resize/**
+
 "plugins/postcss-logical-viewport-units":
   - plugins/postcss-logical-viewport-units/**
   - experimental/postcss-logical-viewport-units/**
@@ -188,10 +207,6 @@
   - plugins/postcss-scope-pseudo-class/**
   - experimental/postcss-scope-pseudo-class/**
 
-"plugins/postcss-color-rebeccapurple":
-  - plugins/postcss-color-rebeccapurple/**
-  - experimental/postcss-color-rebeccapurple/**
-
 "plugins/postcss-replace-overflow-wrap":
   - plugins/postcss-replace-overflow-wrap/**
   - experimental/postcss-replace-overflow-wrap/**
@@ -204,10 +219,6 @@
   - plugins/postcss-system-ui-font-family/**
   - experimental/postcss-system-ui-font-family/**
 
-"plugins/postcss-unset-value":
-  - plugins/postcss-unset-value/**
-  - experimental/postcss-unset-value/**
-
 "plugins/postcss-stepped-value-functions":
   - plugins/postcss-stepped-value-functions/**
   - experimental/postcss-stepped-value-functions/**
@@ -219,6 +230,10 @@
 "plugins/postcss-trigonometric-functions":
   - plugins/postcss-trigonometric-functions/**
   - experimental/postcss-trigonometric-functions/**
+
+"plugins/postcss-unset-value":
+  - plugins/postcss-unset-value/**
+  - experimental/postcss-unset-value/**
 
 "sites/postcss-preset-env":
   - sites/postcss-preset-env/**

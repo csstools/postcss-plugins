@@ -167,6 +167,15 @@ postcssTape(plugin)({
 			browsers: '> 0%'
 		},
 	},
+	'basic:hebrew': {
+		message: 'supports { logical: { inlineDirection: "right-to-left" }, stage: 0, browsers: "> 0%" } usage',
+		options: {
+			stage: 0,
+			logical: {
+				inlineDirection: 'right-to-left'
+			}
+		},
+	},
 	'layers-basic': {
 		message: 'supports layers usage',
 		options: {
@@ -269,9 +278,6 @@ postcssTape(plugin)({
 		options: {
 			stage: 0,
 			features: {
-				'lab-function': true
-			},
-			features: {
 				'lab-function': true,
 				'color-function': false,
 			},
@@ -288,9 +294,6 @@ postcssTape(plugin)({
 		message: 'supports { insertBefore } usage when looking for a result',
 		options: {
 			stage: 0,
-			features: {
-				'lab-function': true
-			},
 			features: {
 				'lab-function': true,
 				'color-function': false,

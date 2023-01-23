@@ -22,6 +22,9 @@ import postcssImageSetFunction from './plugins/postcss-image-set-function';
 import postcssIsPseudoClass from './plugins/postcss-is-pseudo-class';
 import postcssLabFunction from './plugins/postcss-lab-function';
 import postcssLogical from './plugins/postcss-logical';
+import postcssLogicalFloatAndClear from './plugins/postcss-logical-float-and-clear';
+import postcssLogicalResize from './plugins/postcss-logical-resize';
+import postcssLogicalViewportUnits from './plugins/postcss-logical-viewport-units';
 import postcssNesting from './plugins/postcss-nesting';
 import postcssNormalizeDisplayValues from './plugins/postcss-normalize-display-values';
 import postcssOKLabFunction from './plugins/postcss-oklab-function';
@@ -108,6 +111,15 @@ function main() {
 			return;
 		case 'postcss-logical':
 			postcssLogical();
+			return;
+		case 'postcss-logical-float-and-clear':
+			postcssLogicalFloatAndClear();
+			return;
+		case 'postcss-logical-resize':
+			postcssLogicalResize();
+			return;
+		case 'postcss-logical-viewport-units':
+			postcssLogicalViewportUnits();
 			return;
 		case 'postcss-nesting':
 			postcssNesting();

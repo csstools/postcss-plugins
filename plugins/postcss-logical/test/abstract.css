@@ -1,0 +1,13 @@
+.abstract {
+	margin-block-start: block-start;
+	margin-inline-end: inline-end;
+	margin-block-end: block-end;
+	margin-inline-start: inline-start;
+}
+
+.abstract {
+	border-start-start-radius: block-start inline-start;
+	border-start-end-radius: block-start inline-end;
+	border-end-start-radius: block-end inline-start;
+	border-end-end-radius: block-end inline-end;
+}
