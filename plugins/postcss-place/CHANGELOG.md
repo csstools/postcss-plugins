@@ -1,6 +1,6 @@
 # Changes to PostCSS Place Properties
 
-### Unreleased (major)
+### 8.0.0 (January 24, 2023)
 
 - Updated: Support for Node v14+ (major).
 - Added: TypeScript support.
