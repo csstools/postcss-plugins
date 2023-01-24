@@ -1,6 +1,6 @@
 # Changes to PostCSS Design Tokens
 
-### Unreleased (major)
+### 2.0.0 (January 24, 2023)
 
 - Updated: Support for Node v14+ (major).
 - Added support for design tokens in at rules (`@media`, `@supports`, ...)
