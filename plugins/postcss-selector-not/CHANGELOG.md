@@ -1,6 +1,6 @@
 # Changes to PostCSS Selector Not
 
-### Unreleased (major)
+### 7.0.0 (January 24, 2023)
 
 - Updated: Support for Node v14+ (major).
 - Fix: Do not throw when a selector is invalid, show a warning instead.
