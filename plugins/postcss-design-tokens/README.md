@@ -14,7 +14,8 @@
 	"size": {
 		"spacing": {
 			"small": { "value": "16px" },
-			"medium": { "value": "18px" }
+			"medium": { "value": "18px" },
+			"medium-alias": { "value": "{size.spacing.medium}" }
 		}
 	},
 	"viewport": {
@@ -35,7 +36,7 @@
 
 @media (min-width: design-token('viewport.medium')) {
 	.foo {
-			padding-bottom: design-token('size.spacing.medium' to rem);
+		padding-bottom: design-token('size.spacing.medium-alias' to rem);
 	}
 }
 
@@ -50,7 +51,7 @@
 
 @media (min-width: 35rem) {
 	.foo {
-			padding-bottom: 1.1rem;
+		padding-bottom: 1.125rem;
 	}
 }
 ```
@@ -212,7 +213,7 @@ postcssDesignTokens({
 
 @media (min-width: design-token('viewport.medium')) {
 	.foo {
-			padding-bottom: design-token('size.spacing.medium' to rem);
+		padding-bottom: design-token('size.spacing.medium-alias' to rem);
 	}
 }
 
@@ -227,7 +228,7 @@ postcssDesignTokens({
 
 @media (min-width: 35rem) {
 	.foo {
-			padding-bottom: 0.9rem;
+		padding-bottom: 0.9rem;
 	}
 }
 ```
