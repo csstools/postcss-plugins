@@ -152,13 +152,7 @@ Change "blue" to "purple" in "src/index.ts" and see how it affects the test outc
 
 ## Trouble shooting
 
-This is a mono repo that contains unpublished packages.
-If you get warning about missing files, modules, packages you should do :
-
-- `npm install` -> get public dependencies
-- `npm run build` -> build private dependencies
-
-_if your issues is not mentioned here please open an issue so that we can extend the guides_
+If you encounter any issues not mentioned here, please open an issue so that we can extend the guides.
 
 [already been reported]: https://github.com/csstools/postcss-plugins/issues
 [fork this project]:     https://github.com/csstools/postcss-plugins/fork
