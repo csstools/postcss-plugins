@@ -1,6 +1,6 @@
 # Changes to PostCSS image-set() Function
 
-### Unreleased (major)
+### 5.0.0 (January 24, 2023)
 
 - Updated: Support for Node v14+ (major).
 - Changed: `oninvalid` plugin option to `onInvalid` to match other plugins with similar options (breaking).
