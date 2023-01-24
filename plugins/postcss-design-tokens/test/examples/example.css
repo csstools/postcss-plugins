@@ -9,6 +9,6 @@
 
 @media (min-width: design-token('viewport.medium')) {
 	.foo {
-			padding-bottom: design-token('size.spacing.medium' to rem);
+		padding-bottom: design-token('size.spacing.medium-alias' to rem);
 	}
 }

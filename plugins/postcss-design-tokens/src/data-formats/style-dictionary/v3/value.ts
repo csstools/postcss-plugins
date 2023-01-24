@@ -131,15 +131,17 @@ function formatFloat(value: number): string {
 	}
 
 	let fixedPrecision = value.toFixed(5);
-	for (let i = fixedPrecision.length; i > 0; i--) {
+	for (let i = fixedPrecision.length - 1; i >= 0; i--) {
 		if (fixedPrecision[i] === '.') {
 			break;
 		}
 
-		if (fixedPrecision[i] !== '0') {
-			fixedPrecision = fixedPrecision.slice(0, i + 1);
+		if (fixedPrecision[i] === '0') {
+			fixedPrecision = fixedPrecision.slice(0, i);
 			continue;
 		}
+
+		break;
 	}
 
 	return fixedPrecision;
