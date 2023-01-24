@@ -3,10 +3,20 @@
 	"private": true,
 	"version": "1.0.0",
 	"description": "",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"engines": {
-		"node": "16"
+		"node": "^14 || ^16 || >=18"
 	},
 	"workspaces": [
 		"postcss-preset-env"
