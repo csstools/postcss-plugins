@@ -1,7 +1,7 @@
 {
 	"name": "postcss-dir-pseudo-class",
 	"description": "Use the :dir pseudo-class in CSS",
-	"version": "6.0.5",
+	"version": "7.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
