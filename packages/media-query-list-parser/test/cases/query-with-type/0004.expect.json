@@ -1,0 +1,182 @@
+[
+	{
+		"type": "media-query-with-type",
+		"string": "only screen and (min-width: 300px)",
+		"modifier": [
+			[
+				"ident-token",
+				"only",
+				0,
+				3,
+				{
+					"value": "only"
+				}
+			]
+		],
+		"mediaType": [
+			[
+				"whitespace-token",
+				" ",
+				4,
+				4,
+				null
+			],
+			[
+				"ident-token",
+				"screen",
+				5,
+				10,
+				{
+					"value": "screen"
+				}
+			]
+		],
+		"and": [
+			[
+				"whitespace-token",
+				" ",
+				11,
+				11,
+				null
+			],
+			[
+				"ident-token",
+				"and",
+				12,
+				14,
+				{
+					"value": "and"
+				}
+			]
+		],
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-plain",
+						"name": {
+							"type": "mf-name",
+							"name": "min-width",
+							"tokens": [
+								[
+									"ident-token",
+									"min-width",
+									17,
+									25,
+									{
+										"value": "min-width"
+									}
+								]
+							]
+						},
+						"value": {
+							"type": "mf-value",
+							"value": {
+								"type": "token",
+								"tokens": [
+									[
+										"dimension-token",
+										"300px",
+										28,
+										32,
+										{
+											"value": 300,
+											"type": "integer",
+											"unit": "px"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									27,
+									27,
+									null
+								],
+								[
+									"dimension-token",
+									"300px",
+									28,
+									32,
+									{
+										"value": 300,
+										"type": "integer",
+										"unit": "px"
+									}
+								]
+							]
+						},
+						"tokens": [
+							[
+								"ident-token",
+								"min-width",
+								17,
+								25,
+								{
+									"value": "min-width"
+								}
+							],
+							[
+								"colon-token",
+								":",
+								26,
+								26,
+								null
+							],
+							[
+								"whitespace-token",
+								" ",
+								27,
+								27,
+								null
+							],
+							[
+								"dimension-token",
+								"300px",
+								28,
+								32,
+								{
+									"value": 300,
+									"type": "integer",
+									"unit": "px"
+								}
+							]
+						]
+					},
+					"before": [
+						[
+							"whitespace-token",
+							" ",
+							15,
+							15,
+							null
+						],
+						[
+							"(-token",
+							"(",
+							16,
+							16,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							33,
+							33,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

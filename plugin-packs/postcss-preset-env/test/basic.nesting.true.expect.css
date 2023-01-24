@@ -17,9 +17,20 @@
 }
 
 .test-logical-properties-and-values {
-	margin: logical 1px 2px 3px 4px;
+	-webkit-margin-start: 1px;
+	        margin-inline-start: 1px;
+	-webkit-margin-end: 2px;
+	        margin-inline-end: 2px;
 	order: 3;
-	padding-block: 5px;
+	padding-block: 4px;
+}
+
+.test-logical-resize {
+	resize: inline;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
@@ -336,7 +347,7 @@
 }
 
 .ic-unit {
-	--value-2ic: 'something';
+	--value-2ic: initial;
 	text-indent: 2ic;
 	content: var(--value-2ic);
 	left: var(--non-existing, 2ic);
@@ -366,7 +377,7 @@
 	right: round(nearest, 2.5px, 1px);
 	bottom: round(up, 2.5px, 1px);
 	left: round(down, 2.5px, 1px);
-	inset: round(to-zero, 2.5px, 1px);
+	padding-left: round(to-zero, 2.5px, 1px);
 }
 
 .trigonometric {
@@ -419,4 +430,24 @@
 
 .stage__container {
 	inset-inline-start: var(--size, 1rem);
+}
+
+:scope {
+	content: "plain :scope";
+}
+
+@scope (.foo) {
+	:scope {
+		content: ":scope in @scope";
+	}
+}
+
+:scope {
+	@scope (.foo) {
+		content: ":scope in @scope, but with nesting";
+	}
+}
+
+@media (min-aspect-ratio: 1.77) {
+	/* media query aspect ratio : <number> */
 }

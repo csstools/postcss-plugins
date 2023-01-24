@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="help" href="https://www.w3.org/TR/selectors-4/#blank">
+	<link rel="stylesheet" href="/test/browser.replacewith.expect.css">
+	<script src="/dist/browser-global.js"></script>
+	<script>self._cssBlankPseudoInit = cssBlankPseudoInit</script>
+</head>
+<body>
+	<input type="tel" id="tel-input" aria-label="">
+	<input type="text" id="text-input" aria-label="" value="something">
+	<input type="number" id="number-input" aria-label="">
+	<input type="password" id="password-input" aria-label="">
+	<textarea id="textarea" aria-label=""></textarea>
+	<select id="select" aria-label="">
+		<option value="" selected>Empty</option>
+		<option value="non-empty">Non Empty</option>
+	</select>
+
+	<script type="module">
+		const purple = 'rgb(128, 0, 128)';
+		const tel = document.getElementById('tel-input');
+		const text = document.getElementById('text-input');
+		const number = document.getElementById('number-input');
+		const password = document.getElementById('password-input');
+		const textarea = document.getElementById('textarea');
+		const select = document.getElementById('select');
+		const elements = {
+			tel,
+			text,
+			number,
+			password,
+			textarea,
+			select,
+		};
+
+		function rafP(callback) {
+			return new Promise((resolve) => {
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						callback();
+						resolve();
+					});
+				});
+			});
+		}
+
+		function isBlank(element) {
+			const containsAttribute = element.hasAttribute('blank') || element.classList.contains('css-blank');
+			const background = getComputedStyle(element).backgroundColor;
+
+			return containsAttribute && background === purple;
+		}
+
+		function isNotBlank(element) {
+			return !isBlank(element);
+		}
+
+		function testBlankState(testName, element, shouldBeBlank) {
+			const testFunction = shouldBeBlank ? isBlank : isNotBlank;
+			const wording = shouldBeBlank ? 'to be' : 'not to be';
+			const result = testFunction(element);
+
+			if (result !== true) {
+				throw new Error(testName + ': ' + element.id + ' expected ' + wording + ' blank');
+			}
+
+			return result;
+		}
+
+		self.runTest = async function runTest() {
+			self._cssBlankPseudoInit({ replaceWith: '.css-blank' });
+			return await testBlank();
+		}
+
+		async function testBlank() {
+			await rafP(() => {
+				testBlankState('replace with', tel, true);
+				testBlankState('replace with', text, false);
+				testBlankState('replace with', number, true);
+				testBlankState('replace with', password, true);
+				testBlankState('replace with', textarea, true);
+				testBlankState('replace with', select, true);
+			});
+
+			return true;
+		}
+	</script>
+</body>
+</html>

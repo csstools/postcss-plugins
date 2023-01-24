@@ -1,5 +1,10 @@
 # Changes to PostCSS Dir Pseudo Class
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+- Added: TypeScript support.
+
 ### 6.0.5 (July 8, 2022)
 
 - Fix case insensitive matching.

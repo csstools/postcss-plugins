@@ -1,5 +1,61 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased
+
+- Added: TypeScript support.
+- Added `@csstools/postcss-media-queries-aspect-ratio-number-values` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values#readme) for usage details.
+- Added `@csstools/postcss-logical-float-and-clear` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-float-and-clear#readme) for usage details.
+- Added `@csstools/postcss-logical-resize` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-resize#readme) for usage details.
+- Added `@csstools/postcss-logical-viewport-units` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units#readme) for usage details.
+- Added `logical` option to control all logical plugins.
+- Fixed: `all-property` and `overflow-wrap-property` now follow the `preserve` plugin option
+- Removed a workaround to consider `blank-pseudo-class` and `prefers-color-scheme-query` as `stage: 1` features when using default options.
+
+### (8.0.0-alpha.1) (November 14, 2022)
+
+- Updated Support for Node v14+ (major).
+- Removed `postcss-env-function` (breaking).
+- Removed `importFrom` and `exportTo` plugin options from multiple plugins. (breaking)
+  - `postcss-custom-media`
+  - `postcss-custom-properties`
+  - `postcss-custom-selectors`
+- Added `@csstools/postcss-scope-pseudo-class` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-scope-pseudo-class#readme) for usage details.
+- Updated `postcss-custom-media` to `9.0.0` (major)
+- Updated `postcss-custom-properties` to `13.0.0` (major)
+- Updated `postcss-custom-selectors` to `7.0.0` (major)
+- Updated `@csstools/postcss-cascade-layers` to `2.0.0` (major)
+- Updated `css-blank-pseudo` to `4.1.1` (minor)
+- Updated `css-has-pseudo` to `4.0.1` (patch)
+- Updated `css-prefers-color-scheme` to `7.0.1` (patch)
+- Updated `postcss-focus-visible` to `7.1.0` (minor)
+- Updated `postcss-focus-within` to `6.1.1` (minor)
+
+### 8.0.0-alpha.0 (July 8, 2022)
+
+- Breaking: `enableClientSidePolyfills` is now `false` by default (was `true`)
+- Updated `@csstools/postcss-stepped-value-functions` to `1.0.1` (patch)
+- Updated `@csstools/postcss-trigonometric-functions` to `1.0.2` (patch)
+- Updated `@csstools/postcss-unset-value` to `1.0.2` (patch)
+- Updated `browserslist` to `4.21.1` (patch)
+- Updated `css-blank-pseudo` to `4.0.0` (major)
+- Updated `css-has-pseudo` to `4.0.0` (major)
+- Updated `css-prefers-color-scheme` to `7.0.0` (major)
+- Updated `postcss-attribute-case-insensitive` to `5.0.2` (patch)
+- Updated `postcss-color-functional-notation` to `4.2.4` (patch)
+- Updated `postcss-color-rebeccapurple` to `7.1.1` (patch)
+- Updated `postcss-dir-pseudo-class` to `6.0.5` (patch)
+- Updated `postcss-double-position-gradients` to `3.1.2` (patch)
+- Updated `postcss-focus-visible` to `7.0.0` (major)
+- Updated `postcss-focus-within` to `6.0.0` (major)
+- Updated `postcss-gap-properties` to `3.0.4` (patch)
+- Updated `postcss-image-set-function` to `4.0.7` (patch)
+- Updated `postcss-lab-function` to `4.2.1` (patch)
+- Updated `postcss-nesting` to `10.1.10` (patch)
+- Updated `postcss-overflow-shorthand` to `3.0.4` (patch)
+- Updated `postcss-place` to `7.0.5` (patch)
+- Updated `postcss-pseudo-class-any-link` to `7.1.6` (patch)
+- Updated `postcss-selector-not` to `6.0.1` (patch)
+
 ### 7.8.3 (November 14, 2022)
 
 - Update `autoprefixer` to `10.4.13` (patch)

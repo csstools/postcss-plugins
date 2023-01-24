@@ -13,3 +13,35 @@
 [foobar=b],[foo=a],[foo=A],[bar=c],[bar=C]{
 	order: 4;
 }
+
+[foo="a"],[foo="A"] {
+	order: 5.0;
+}
+
+[foo="b"],[foo="B"] {
+	order: 5.1;
+}
+
+[foo="c"],[foo="C"] {
+	order: 5.2;
+}
+
+[foo="d"],[foo="D"] {
+	order: 5.3;
+}
+
+[foo="e"],[foo="E"] {
+	order: 5.4;
+}
+
+[foo="f"],[foo="F"] {
+	order: 5.5;
+}
+
+[foo="g"],[foo="G"] {
+	order: 5.6;
+}
+
+[foo="h"],[foo="H"] {
+	order: 5.7;
+}

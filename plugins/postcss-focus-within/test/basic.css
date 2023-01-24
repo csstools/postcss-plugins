@@ -36,3 +36,7 @@ test :matches(test :focus-within :focus-within test) test {
 .escaped\:times\:two:focus-within {
 	order: 5;
 }
+
+:FocuS-WithiN {
+	order: 6;
+}

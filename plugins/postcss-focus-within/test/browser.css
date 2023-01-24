@@ -1,0 +1,11 @@
+div {
+	padding: 2em;
+}
+
+div:focus-within {
+	background-color: rgb(128, 0, 128);
+}
+
+input:focus-within {
+	background-color: rgb(0, 128, 0);
+}

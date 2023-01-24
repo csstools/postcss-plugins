@@ -1,7 +1,11 @@
 import type { PluginCreator } from 'postcss';
 import walk from './lib/walk.js';
 
-type pluginOptions = { noIsPseudoSelector?: boolean };
+/** postcss-nesting plugin options */
+export type pluginOptions = {
+	/** Avoid the `:is()` pseudo class as much as possible. default: false */
+	noIsPseudoSelector?: boolean,
+};
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
@@ -15,8 +19,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-nesting',
-		Rule(rule) {
-			walk(rule, options);
+		Rule(rule, { result }) {
+			walk(rule, result, options);
 		},
 	};
 };

@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-cascade-layers",
 	"description": "Use cascade layers in CSS",
-	"version": "1.1.1",
+	"version": "2.0.0",
 	"contributors": [
 		{
 			"name": "Olu Niyi-Awosusi",
@@ -27,7 +27,7 @@
 		"url": "https://opencollective.com/csstools"
 	},
 	"engines": {
-		"node": "^12 || ^14 || >=16"
+		"node": "^14 || ^16 || >=18"
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
@@ -50,7 +50,7 @@
 		"postcss-selector-parser": "^6.0.10"
 	},
 	"peerDependencies": {
-		"postcss": "^8.2"
+		"postcss": "^8.4"
 	},
 	"devDependencies": {
 		"postcss-import": "^15.0.0",
@@ -58,8 +58,8 @@
 	},
 	"scripts": {
 		"prebuild": "npm run clean",
-		"build": "rollup -c ../../rollup/default.js",
-		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+		"build": "rollup -c ../../rollup/default.mjs",
+		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');\"",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
@@ -87,6 +87,7 @@
 		"specificity"
 	],
 	"csstools": {
+		"assumesToProcessBundledCSS": true,
 		"cssdbId": "cascade-layers",
 		"exportName": "postcssCascadeLayers",
 		"humanReadableName": "PostCSS Cascade Layers",

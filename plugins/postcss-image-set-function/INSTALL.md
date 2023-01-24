@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS image-set() Function] to your project:
@@ -21,8 +23,19 @@ npm install postcss postcss-image-set-function --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssImageSetFunction = require('postcss-image-set-function');
+
+postcss([
+	postcssImageSetFunction(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssImageSetFunction from 'postcss-image-set-function';
 
 postcss([
 	postcssImageSetFunction(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"postcss-image-set-function",
 										{

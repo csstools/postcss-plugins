@@ -1,0 +1,148 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "((color) and (pointer) or (hover))",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "general-enclosed",
+					"tokens": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						],
+						[
+							"(-token",
+							"(",
+							1,
+							1,
+							null
+						],
+						[
+							"ident-token",
+							"color",
+							2,
+							6,
+							{
+								"value": "color"
+							}
+						],
+						[
+							")-token",
+							")",
+							7,
+							7,
+							null
+						],
+						[
+							"whitespace-token",
+							" ",
+							8,
+							8,
+							null
+						],
+						[
+							"ident-token",
+							"and",
+							9,
+							11,
+							{
+								"value": "and"
+							}
+						],
+						[
+							"whitespace-token",
+							" ",
+							12,
+							12,
+							null
+						],
+						[
+							"(-token",
+							"(",
+							13,
+							13,
+							null
+						],
+						[
+							"ident-token",
+							"pointer",
+							14,
+							20,
+							{
+								"value": "pointer"
+							}
+						],
+						[
+							")-token",
+							")",
+							21,
+							21,
+							null
+						],
+						[
+							"whitespace-token",
+							" ",
+							22,
+							22,
+							null
+						],
+						[
+							"ident-token",
+							"or",
+							23,
+							24,
+							{
+								"value": "or"
+							}
+						],
+						[
+							"whitespace-token",
+							" ",
+							25,
+							25,
+							null
+						],
+						[
+							"(-token",
+							"(",
+							26,
+							26,
+							null
+						],
+						[
+							"ident-token",
+							"hover",
+							27,
+							31,
+							{
+								"value": "hover"
+							}
+						],
+						[
+							")-token",
+							")",
+							32,
+							32,
+							null
+						],
+						[
+							")-token",
+							")",
+							33,
+							33,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

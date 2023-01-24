@@ -9,6 +9,7 @@ type TestCaseOptions = {
     result?: string;
     before?: () => void;
     after?: () => void | Promise<void>;
+    postcssSyntaxHTML?: boolean;
 };
 export default function runner(currentPlugin: PluginCreator<unknown>): (options: Record<string, TestCaseOptions>) => Promise<void>;
 export {};

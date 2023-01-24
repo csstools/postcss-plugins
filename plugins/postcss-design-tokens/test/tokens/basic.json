@@ -44,5 +44,13 @@
 		"unitless": {
 			"value": "1.25"
 		}
+	},
+	"lists": {
+		"space": {
+			"value": "0.5rem 0.25rem"
+		},
+		"comma": {
+			"value": "255, 0, 255"
+		}
 	}
 }

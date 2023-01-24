@@ -1,0 +1,13 @@
+@media (color: 48842621) {
+	:root {
+		--site-bgcolor: #1b1b1b;
+		--site-color: #fff;
+	}
+}
+
+@media (color: 70318723) {
+	:root {
+		--site-bgcolor: #fff;
+		--site-color: #222;
+	}
+}

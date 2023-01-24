@@ -1,5 +1,32 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased
+
+- Added: Support for Cascade Layers.
+- Improve plugin performance (port of fixes in `v12.1.11`)
+
+### 13.0.0 (November 14, 2022)
+
+- Updated: Support for Node v14+ (major).
+- Removed : `importFrom` feature (breaking).
+- Removed : `exportTo` feature (breaking).
+- Added support for local custom property declarations.
+
+```css
+.example {
+	--a-value: 20px;
+	margin: var(--a-value);
+}
+
+/* becomes */
+
+.example {
+	--a-value: 20px;
+	margin: 20px;
+	margin: var(--a-value);
+}
+```
+
 ### 12.1.11 (December 1, 2022)
 
 - Improve plugin performance
@@ -8,7 +35,7 @@
 
 - Fix how `preserve: false` interacts with logic around duplicate code (see `12.1.9`).
 
-```diff
+```css
 :root {
 	--my-order: 1;
 }
@@ -84,7 +111,7 @@
 
 - Add `overrideImportFromWithRoot` option
 - Allow `.mjs` in `importFrom`
-- Converted to typescript
+- Converted to TypeScript
 - Correct typings for plugin options
 - Fix unicode support in custom property names
 

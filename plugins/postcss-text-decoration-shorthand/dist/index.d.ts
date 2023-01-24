@@ -1,6 +1,7 @@
 import type { PluginCreator } from 'postcss';
-type pluginOptions = {
-    color?: string;
+/** postcss-text-decoration-shorthand plugin options */
+export type pluginOptions = {
+    /** Preserve the original notation. default: false */
     preserve?: boolean;
 };
 declare const creator: PluginCreator<pluginOptions>;

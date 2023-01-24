@@ -23,18 +23,21 @@
 	order: 2;
 }
 
-[dir="ltr"] .test-logical-properties-and-values {
-	margin: 1px 4px 3px 2px;
-}
-
-[dir="rtl"] .test-logical-properties-and-values {
-	margin: 1px 2px 3px 4px;
-}
-
 .test-logical-properties-and-values {
+	margin-left: 1px;
+	margin-right: 2px;
 	order: 3;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.test-logical-resize {
+	resize: horizontal;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vw + 5px);
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
@@ -67,20 +70,6 @@
 @media (min-width: 480px) and (max-width: 767px) {
 	.test-media-query-ranges {
 		order: 11;
-	}
-}
-
-@media (color-index: 48) {
-	body {
-		background-color: black;
-		color: white;
-	}
-}
-
-@media (color: 48842621) {
-	body {
-		background-color: black;
-		color: white;
 	}
 }
 
@@ -167,10 +156,6 @@
 	overflow-wrap: break-word;
 }
 
-.test-focus-visible-pseudo-class.focus-visible {
-	order: 26;
-}
-
 .test-focus-visible-pseudo-class:focus-visible {
 	order: 26;
 }
@@ -180,15 +165,7 @@
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
 }
 
-.test-blank-pseudo-class[blank] {
-	background-color: yellow;
-}
-
 .test-blank-pseudo-class:blank {
-	background-color: yellow;
-}
-
-.test-has-pseudo-class[\:has\(.inner-class\)] {
 	background-color: yellow;
 }
 
@@ -351,12 +328,8 @@
 	display: ruby-text flow;
 }
 
-[dir="ltr"] .logical-float {
+.logical-float {
 	float: left;
-}
-
-[dir="rtl"] .logical-float {
-	float: right;
 }
 
 .color-function {
@@ -434,7 +407,7 @@
 }
 
 .ic-unit {
-	--value-2ic: 'something';
+	--value-2ic: initial;
 	text-indent: 2em;
 	content: var(--value-2ic);
 	left: 2em;
@@ -465,10 +438,7 @@
 	right: 3px;
 	bottom: 3px;
 	left: 2px;
-	top: 2px;
-	right: 2px;
-	bottom: 2px;
-	left: 2px;
+	padding-left: 2px;
 }
 
 .trigonometric {
@@ -523,20 +493,27 @@
 	text-decoration-thickness: 3px;
 }
 
-[dir="ltr"] .stage__container {
+.stage__container {
 	left: 1rem;
 	left: var(--size, 1rem);
 }
 
-[dir="rtl"] .stage__container {
-	right: 1rem;
-	right: var(--size, 1rem);
+:scope {
+	content: "plain :scope";
 }
 
-[dir="ltr"] .stage__container {
-	left: 1rem;
+@scope (.foo) {
+	:scope {
+		content: ":scope in @scope";
+	}
 }
 
-[dir="rtl"] .stage__container {
-	right: 1rem;
+:scope {
+	@scope (.foo) {
+		content: ":scope in @scope, but with nesting";
+	}
+}
+
+@media (min-aspect-ratio: 177/100) {
+	/* media query aspect ratio : <number> */
 }

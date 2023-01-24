@@ -1,0 +1,81 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(resolution(foo): infinite)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "general-enclosed",
+					"tokens": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						],
+						[
+							"function-token",
+							"resolution(",
+							1,
+							11,
+							{
+								"value": "resolution"
+							}
+						],
+						[
+							"ident-token",
+							"foo",
+							12,
+							14,
+							{
+								"value": "foo"
+							}
+						],
+						[
+							")-token",
+							")",
+							15,
+							15,
+							null
+						],
+						[
+							"colon-token",
+							":",
+							16,
+							16,
+							null
+						],
+						[
+							"whitespace-token",
+							" ",
+							17,
+							17,
+							null
+						],
+						[
+							"ident-token",
+							"infinite",
+							18,
+							25,
+							{
+								"value": "infinite"
+							}
+						],
+						[
+							")-token",
+							")",
+							26,
+							26,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

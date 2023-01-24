@@ -1,5 +1,5 @@
 import type { Node, Container } from 'postcss';
-import selectorParser from 'postcss-selector-parser';
+import type selectorParser from 'postcss-selector-parser';
 import type { NodeList } from './node-list';
 import { notPseudo } from './pseudos/not';
 import { adjacentSiblingCombinator } from './selector-engine/combinators/adjacent-sibling';

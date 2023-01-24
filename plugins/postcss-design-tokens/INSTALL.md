@@ -10,6 +10,9 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+⚠️ [PostCSS Design Tokens] assumes to process your complete CSS bundle.<br>If your build tool processes files individually or in parallel the output will be incorrect.<br>Using [`postcss-import`](https://www.npmjs.com/package/postcss-import) and `@import` statements is one way to make sure your CSS is bundled before it is processed by this plugin.
+
+
 ## Node
 
 Add [PostCSS Design Tokens] to your project:
@@ -21,8 +24,19 @@ npm install postcss @csstools/postcss-design-tokens --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssDesignTokens = require('@csstools/postcss-design-tokens');
+
+postcss([
+	postcssDesignTokens(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssDesignTokens from '@csstools/postcss-design-tokens';
 
 postcss([
 	postcssDesignTokens(/* pluginOptions */)
@@ -110,6 +124,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									["postcss-import"],
 									[
 										"@csstools/postcss-design-tokens",
 										{

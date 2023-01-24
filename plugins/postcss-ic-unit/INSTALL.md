@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS IC Unit] to your project:
@@ -21,8 +23,19 @@ npm install postcss @csstools/postcss-ic-unit --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssIcUnit = require('@csstools/postcss-ic-unit');
+
+postcss([
+	postcssIcUnit(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssIcUnit from '@csstools/postcss-ic-unit';
 
 postcss([
 	postcssIcUnit(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"@csstools/postcss-ic-unit",
 										{

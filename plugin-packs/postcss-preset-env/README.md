@@ -215,10 +215,10 @@ Passing an object to a specific feature ID will both enable and configure it.
 
 ```js
 postcssPresetEnv({
-  /* use stage 3 features + css color-mod (warning on unresolved) */
+  /* use stage 3 features + custom-selectors (preserving the original CSS) */
   stage: 3,
   features: {
-    'color-mod-function': { unresolved: 'warn' }
+    'custom-selectors': { preserve: true }
   }
 })
 ```
@@ -326,145 +326,61 @@ postcssPresetEnv({
 });
 ```
 
-### importFrom
-
-The `importFrom` option specifies sources where variables like Custom Media,
-Custom Properties, Custom Selectors, and Environment Variables can be imported
-from, which might be CSS, JS, and JSON files, functions, and directly passed
-objects.
-
-```js
-postcssPresetEnv({
-  /*
-    @custom-media --small-viewport (max-width: 30em);
-    @custom-selector :--heading h1, h2, h3;
-    :root { --color: red; }
-  */
-  importFrom: 'path/to/file.css'
-});
-```
-
-Multiple sources can be passed into this option, and they will be parsed in the
-order they are received. JavaScript files, JSON files, functions, and objects
-will use different namespaces to import different kinds of variables.
-
-```js
-postcssPresetEnv({
-  importFrom: [
-    /*
-      @custom-media --small-viewport (max-width: 30em);
-      @custom-selector :--heading h1, h2, h3;
-      :root { --color: red; }
-    */
-    'path/to/file.css',
-
-    /* module.exports = {
-      customMedia: { '--small-viewport': '(max-width: 30em)' },
-      customProperties: { '--color': 'red' },
-      customSelectors: { ':--heading': 'h1, h2, h3' },
-      environmentVariables: { '--branding-padding': '20px' }
-    } */
-    'and/then/this.js',
-
-    /* {
-      "custom-media": { "--small-viewport": "(max-width: 30em)" }
-      "custom-properties": { "--color": "red" },
-      "custom-selectors": { ":--heading": "h1, h2, h3" },
-      "environment-variables": { "--branding-padding": "20px" }
-    } */
-    'and/then/that.json',
-
-    {
-      customMedia: { '--small-viewport': '(max-width: 30em)' },
-      customProperties: { '--color': 'red' },
-      customSelectors: { ':--heading': 'h1, h2, h3' },
-      environmentVariables: { '--branding-padding': '20px' }
-    },
-    () => {
-      const customMedia = { '--small-viewport': '(max-width: 30em)' };
-      const customProperties = { '--color': 'red' };
-      const customSelectors = { ':--heading': 'h1, h2, h3' };
-      const environmentVariables = { '--branding-padding': '20px' };
-
-      return { customMedia, customProperties, customSelectors, environmentVariables };
-    }
-  ]
-});
-```
-
-### exportTo
-
-The `exportTo` option specifies destinations where variables like Custom Media,
-Custom Properties, Custom Selectors, and Environment Variables can be exported
-to, which might be CSS, JS, and JSON files, functions, and directly passed
-objects.
-
-```js
-postcssPresetEnv({
-  /*
-    @custom-media --small-viewport (max-width: 30em);
-    @custom-selector :--heading h1, h2, h3;
-    :root { --color: red; }
-  */
-  exportTo: 'path/to/file.css'
-});
-```
-
-Multiple destinations can be passed into this option as well, and they will be
-parsed in the order they are received. JavaScript files, JSON files, and
-objects will use different namespaces to import different kinds of variables.
-
-```js
-const cachedObject = {};
-
-postcssPresetEnv({
-  exportTo: [
-    /*
-      @custom-media --small-viewport (max-width: 30em);
-      @custom-selector :--heading h1, h2, h3;
-      :root { --color: red; }
-    */
-    'path/to/file.css',
-
-    /* module.exports = {
-      customMedia: { '--small-viewport': '(max-width: 30em)' },
-      customProperties: { '--color': 'red' },
-      customSelectors: { ':--heading': 'h1, h2, h3' },
-      environmentVariables: { '--branding-padding': '20px' }
-    } */
-    'and/then/this.js',
-
-    /* {
-      "custom-media": { "--small-viewport": "(max-width: 30em)" }
-      "custom-properties": { "--color": "red" },
-      "custom-selectors": { ":--heading": "h1, h2, h3" },
-      "environment-variables": { "--branding-padding": "20px" }
-    } */
-    'and/then/that.json',
-
-    cachedObject,
-    variables => {
-      if ('customProperties' in variables) {
-        // do something special with customProperties
-      }
-
-      Object.assign(cachedObject, variables);
-    }
-  ]
-});
-```
-
 ### debug
 
 The `debug` option enables debugging messages to stdout which should be useful to help you debug which features have been enabled/disabled and why.
 
 ### enableClientSidePolyfills
 
-The `enableClientSidePolyfills` enables any feature that would need an extra browser library to be loaded into the page for it to work. Defaults to `true`.
+The `enableClientSidePolyfills` enables any feature that would need an extra browser library to be loaded into the page for it to work. Defaults to `false`.
 
 - Note that manually enabling/disabling features via the "feature" option overrides this flag.
 - This only controls if the PostCSS plugins are enabled. It does not cause the browsers libraries to be included in your bundle.
 
+### logical
+
+The `logical` option can hold an object which lets you specify direction of the inline and block axes and will affect the
+following features:
+
+- `logical-properties-and-values`: [PostCSS Logical](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme)
+- `float-clear-logical-values`: [PostCSS Logical Float And Clear](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme)
+- `logical-resize`: [PostCSS Logical Resize](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-resize#readme)
+- `logical-viewport-units`: [PostCSS Logical Viewport Units](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logica-viewport-unitsl#readme)
+
+It should have `blockDirection` and/or `inlineDirection` which can be any of the following:
+
+- `top-to-bottom`
+- `bottom-to-top`
+- `left-to-right`
+- `right-to-left`
+
+```js
+postcssPresetEnv({
+  logical: { // instruct all logical plugins to set inline axis to right to left
+		inlineDirection: 'right-to-left',
+	},
+});
+```
+
+```pcss
+.element {
+	float: inline-start;
+	padding-inline-end: 10px;
+}
+```
+
+Becomes :
+
+```
+.element {
+	float: right;
+	padding-left: 10px;
+}
+```
+
+You can't mix two vertical directions or two horizontal directions so for example `top-to-bottom` and `right-to-left` are valid, but `top-to-bottom` and `bottom-to-top` are not.
+
+You might want to tweak these values if you are using a different writing system, such as Arabic, Hebrew or Chinese for example.
 
 ## Stability and Portability
 
@@ -499,8 +415,6 @@ Given they have no support they will always be enabled if they match by Stage:
 
 * `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md)
 * `custom-media-queries`: [Plugin](https://github.com/postcss/postcss-custom-media)
-* `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md)
-* `image-set-function`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function)
 * `media-query-ranges`: [Plugin](https://github.com/postcss/postcss-media-minmax)
 * `nesting-rules`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting)
 

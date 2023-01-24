@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Text Decoration Shorthand] to your project:
@@ -21,8 +23,19 @@ npm install postcss @csstools/postcss-text-decoration-shorthand --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssTextDecorationShorthand = require('@csstools/postcss-text-decoration-shorthand');
+
+postcss([
+	postcssTextDecorationShorthand(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssTextDecorationShorthand from '@csstools/postcss-text-decoration-shorthand';
 
 postcss([
 	postcssTextDecorationShorthand(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"@csstools/postcss-text-decoration-shorthand",
 										{

@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Progressive Custom Properties] to your project:
@@ -21,8 +23,19 @@ npm install postcss @csstools/postcss-progressive-custom-properties --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssProgressiveCustomProperties = require('@csstools/postcss-progressive-custom-properties');
+
+postcss([
+	postcssProgressiveCustomProperties(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 
 postcss([
 	postcssProgressiveCustomProperties(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"@csstools/postcss-progressive-custom-properties",
 										{

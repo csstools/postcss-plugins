@@ -1,0 +1,35 @@
+input[blank].js-blank-pseudo, .js-blank-pseudo input[blank] {
+	order: 1;
+}
+
+input:blank {
+	order: 1;
+}
+
+.js-has-pseudo [csstools-has-2p-1m-2w-2p-37-14-1q-w-2x-31-2v-15]:not(does-not-exist):not(does-not-exist) {
+	order: 2;
+}
+
+a:has(> img) {
+	order: 2;
+}
+
+@media (color: 48842621) {
+	p {
+		order: 3;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	p {
+		order: 3;
+	}
+}
+
+.my-form-field[focus-within].js-focus-within label, .js-focus-within .my-form-field[focus-within] label {
+	order: 4;
+}
+
+.my-form-field:focus-within label {
+	order: 4;
+}

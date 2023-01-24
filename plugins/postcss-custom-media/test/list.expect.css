@@ -1,0 +1,51 @@
+/* Custom media with a list */
+
+@media (min-width: 101px),(min-height: 102px) {
+
+@media screen and (max-color:2147477350) {
+	.a {
+		order: 1;
+	}
+}
+}
+
+@media not all and (min-width: 101px),not all and (min-height: 102px) {
+
+@media screen and (color:2147477350) {
+	.a {
+		order: 1;
+	}
+}
+}
+
+@media (min-width: 101px),(min-height: 102px) {
+
+@media ((other: feature) and (max-color:2147477350)) {
+	.a {
+		order: 2;
+	}
+}
+}
+
+@media not all and (min-width: 101px),not all and (min-height: 102px) {
+
+@media ((other: feature) and (color:2147477350)) {
+	.a {
+		order: 2;
+	}
+}
+}
+
+/* Custom media used in a list */
+
+@media (min-width: 201px),(min-width: 202px) {
+	.b {
+		order: 3;
+	}
+}
+
+@media screen and (min-width: 201px), not (min-width: 202px) {
+	.b {
+		order: 4;
+	}
+}

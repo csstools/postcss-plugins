@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Focus Visible] to your project:
@@ -21,8 +23,19 @@ npm install postcss postcss-focus-visible --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssFocusVisible = require('postcss-focus-visible');
+
+postcss([
+	postcssFocusVisible(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssFocusVisible from 'postcss-focus-visible';
 
 postcss([
 	postcssFocusVisible(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"postcss-focus-visible",
 										{

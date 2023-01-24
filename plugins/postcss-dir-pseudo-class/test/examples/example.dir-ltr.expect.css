@@ -1,0 +1,7 @@
+[dir="rtl"] article h3 {
+	margin-right: 10px;
+}
+
+html:not([dir="rtl"]) article h3 {
+	margin-left: 10px;
+}

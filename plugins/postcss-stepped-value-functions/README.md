@@ -122,7 +122,7 @@ postcssSteppedValueFunctions({ onInvalid: 'warn' })
 
 Will produce on the terminal:
 
-```bash
+```txt
 [postcss-stepped-value-functions]: Failed to transform mod(18px, 5rem) as the units don't match
 ```
 

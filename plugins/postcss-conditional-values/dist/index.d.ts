@@ -1,5 +1,5 @@
 import { PluginCreator } from 'postcss';
-type pluginOptions = {
+export type pluginOptions = {
     functionName: string;
 };
 declare const creator: PluginCreator<pluginOptions>;

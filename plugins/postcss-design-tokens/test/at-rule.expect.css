@@ -1,0 +1,17 @@
+@media screen and (min-width: 2rem) {
+	.foo {
+		order: 1;
+	}
+}
+
+@media screen and (min-width: calc(2rem * 10)) {
+	.foo {
+		order: 2;
+	}
+}
+
+@supports (color: rgb(255, 0, 255)) {
+	.foo {
+		order: 3;
+	}
+}

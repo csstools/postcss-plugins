@@ -1,5 +1,10 @@
 # Changes to PostCSS image-set() Function
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+- Changed: `oninvalid` plugin option to `onInvalid` to match other plugins with similar options (breaking).
+
 ### 4.0.7 (July 8, 2022)
 
 - Fix case insensitive matching.

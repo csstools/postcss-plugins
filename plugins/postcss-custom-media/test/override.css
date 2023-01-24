@@ -1,0 +1,30 @@
+@custom-media --mq-a (min-width: 101px);
+
+@scope (.a-scope) {
+	@custom-media --mq-a (min-width: 102px);
+}
+
+@media (--mq-a) {
+	.a {
+		order: 1;
+	}
+}
+
+@custom-media --mq-b (min-width: 201px);
+
+@media (--mq-b) {
+	@custom-media --mq-b (min-width: 202px);
+
+	.b {
+			order: 2;
+		}
+}
+
+@custom-media --mq-c (min-width: 301px);
+@custom-media --mq-c (min-width: 302px);
+
+@media (--mq-c) {
+	.c {
+		order: 3;
+	}
+}

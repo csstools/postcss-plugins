@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Trigonometric Functions] to your project:
@@ -21,8 +23,19 @@ npm install postcss @csstools/postcss-trigonometric-functions --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssTrigonometricFunctions = require('@csstools/postcss-trigonometric-functions');
+
+postcss([
+	postcssTrigonometricFunctions(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssTrigonometricFunctions from '@csstools/postcss-trigonometric-functions';
 
 postcss([
 	postcssTrigonometricFunctions(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"@csstools/postcss-trigonometric-functions",
 										{

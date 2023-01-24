@@ -30,18 +30,21 @@
 }
 }
 
-[dir="ltr"] .test-logical-properties-and-values {
-	margin: 1px 4px 3px 2px;
-}
-
-[dir="rtl"] .test-logical-properties-and-values {
-	margin: 1px 2px 3px 4px;
-}
-
 .test-logical-properties-and-values {
+	margin-left: 1px;
+	margin-right: 2px;
 	order: 3;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.test-logical-resize {
+	resize: horizontal;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vw + 5px);
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
@@ -91,7 +94,27 @@
 	}
 }
 
-h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.test-custom-selectors,h5.test-custom-selectors,h6.test-custom-selectors {
+h1.test-custom-selectors {
+	order:12;
+}
+
+h2.test-custom-selectors {
+	order:12;
+}
+
+h3.test-custom-selectors {
+	order:12;
+}
+
+h4.test-custom-selectors {
+	order:12;
+}
+
+h5.test-custom-selectors {
+	order:12;
+}
+
+h6.test-custom-selectors {
 	order:12;
 }
 
@@ -160,10 +183,6 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	overflow-wrap: break-word;
 }
 
-.test-focus-visible-pseudo-class.focus-visible {
-	order: 26;
-}
-
 .test-focus-visible-pseudo-class:focus-visible {
 	order: 26;
 }
@@ -173,15 +192,7 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
 }
 
-.test-blank-pseudo-class[blank] {
-	background-color: yellow;
-}
-
 .test-blank-pseudo-class:blank {
-	background-color: yellow;
-}
-
-.test-has-pseudo-class[\:has\(.inner-class\)] {
 	background-color: yellow;
 }
 
@@ -344,12 +355,8 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	display: ruby-text flow;
 }
 
-[dir="ltr"] .logical-float {
+.logical-float {
 	float: left;
-}
-
-[dir="rtl"] .logical-float {
-	float: right;
 }
 
 .color-function {
@@ -427,7 +434,7 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 }
 
 .ic-unit {
-	--value-2ic: 'something';
+	--value-2ic: initial;
 	text-indent: 2em;
 	content: var(--value-2ic);
 	left: var(--non-existing, 2em);
@@ -457,10 +464,7 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	right: 3px;
 	bottom: 3px;
 	left: 2px;
-	top: 2px;
-	right: 2px;
-	bottom: 2px;
-	left: 2px;
+	padding-left: 2px;
 }
 
 .trigonometric {
@@ -508,10 +512,26 @@ h1.test-custom-selectors,h2.test-custom-selectors,h3.test-custom-selectors,h4.te
 	text-decoration: 3px wavy pink overline;
 }
 
-[dir="ltr"] .stage__container {
+.stage__container {
 	left: var(--size, 1rem);
 }
 
-[dir="rtl"] .stage__container {
-	right: var(--size, 1rem);
+:scope {
+	content: "plain :scope";
+}
+
+@scope (.foo) {
+	:scope {
+		content: ":scope in @scope";
+	}
+}
+
+:scope {
+	@scope (.foo) {
+		content: ":scope in @scope, but with nesting";
+	}
+}
+
+@media (min-aspect-ratio: 177/100) {
+	/* media query aspect ratio : <number> */
 }

@@ -1,0 +1,153 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(100px <= width)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-range-value-name",
+						"name": {
+							"type": "mf-name",
+							"name": "width",
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									9,
+									9,
+									null
+								],
+								[
+									"ident-token",
+									"width",
+									10,
+									14,
+									{
+										"value": "width"
+									}
+								]
+							]
+						},
+						"value": {
+							"type": "mf-value",
+							"value": {
+								"type": "token",
+								"tokens": [
+									[
+										"dimension-token",
+										"100px",
+										1,
+										5,
+										{
+											"value": 100,
+											"type": "integer",
+											"unit": "px"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"dimension-token",
+									"100px",
+									1,
+									5,
+									{
+										"value": 100,
+										"type": "integer",
+										"unit": "px"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									6,
+									6,
+									null
+								]
+							]
+						},
+						"tokens": [
+							[
+								"dimension-token",
+								"100px",
+								1,
+								5,
+								{
+									"value": 100,
+									"type": "integer",
+									"unit": "px"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								6,
+								6,
+								null
+							],
+							[
+								"delim-token",
+								"<",
+								7,
+								7,
+								{
+									"value": "<"
+								}
+							],
+							[
+								"delim-token",
+								"=",
+								8,
+								8,
+								{
+									"value": "="
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								9,
+								9,
+								null
+							],
+							[
+								"ident-token",
+								"width",
+								10,
+								14,
+								{
+									"value": "width"
+								}
+							]
+						]
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							15,
+							15,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

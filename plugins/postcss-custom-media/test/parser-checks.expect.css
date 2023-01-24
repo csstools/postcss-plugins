@@ -1,0 +1,49 @@
+@media /*a comment */screen {
+	.one {
+		order: 1;
+	}
+}
+
+@media/*a comment */only screen/*a comment */{
+	.two {
+		order: 2;
+	}
+}
+
+@media (min-width: 300px) {
+	.three {
+		order: 3;
+	}
+}
+
+/* Double space is needed */
+
+@media (min-width: 300px) {
+	.four {
+		order: 4;
+	}
+}
+
+@media (width: calc(--five * 5)) {
+	.five {
+		order: 5.0;
+	}
+}
+
+@media calc(--five) {
+	.five {
+		order: 5.1;
+	}
+}
+
+@media (width: calc((--five) * 5)) {
+	.five {
+		order: 5.2;
+	}
+}
+
+@media (width: calc(env(--five) * 5)) {
+	.five {
+		order: 5.3;
+	}
+}

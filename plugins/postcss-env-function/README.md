@@ -7,6 +7,11 @@
 
 [PostCSS Environment Variables] lets you use `env()` variables in CSS, following the [CSS Environment Variables] specification.
 
+⚠️ Custom Environment Variables were never defined in a specification and we are no longer including this in `postcss-preset-env`.<br>
+In the future there might be renewed interest in Custom Environment Variables.
+
+We advice users of this plugin to seek alternatives such as [postcss-design-tokens](https://github.com/csstools/postcss-plugins/tree/postcss-preset-env--v8/plugins/postcss-design-tokens#readme)
+
 ```pcss
 @media (max-width: env(--branding-small)) {
   body {

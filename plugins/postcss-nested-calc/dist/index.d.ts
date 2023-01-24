@@ -1,5 +1,7 @@
 import type { PluginCreator } from 'postcss';
-type pluginOptions = {
+/** postcss-nested-calc plugin options */
+export type pluginOptions = {
+    /** Preserve the original notation. default: true */
     preserve?: boolean;
 };
 declare const creator: PluginCreator<pluginOptions>;

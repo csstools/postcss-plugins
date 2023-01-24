@@ -1,0 +1,153 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(-100px <= width)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-range-value-name",
+						"name": {
+							"type": "mf-name",
+							"name": "width",
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									10,
+									10,
+									null
+								],
+								[
+									"ident-token",
+									"width",
+									11,
+									15,
+									{
+										"value": "width"
+									}
+								]
+							]
+						},
+						"value": {
+							"type": "mf-value",
+							"value": {
+								"type": "token",
+								"tokens": [
+									[
+										"dimension-token",
+										"-100px",
+										1,
+										6,
+										{
+											"value": -100,
+											"type": "integer",
+											"unit": "px"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"dimension-token",
+									"-100px",
+									1,
+									6,
+									{
+										"value": -100,
+										"type": "integer",
+										"unit": "px"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									7,
+									7,
+									null
+								]
+							]
+						},
+						"tokens": [
+							[
+								"dimension-token",
+								"-100px",
+								1,
+								6,
+								{
+									"value": -100,
+									"type": "integer",
+									"unit": "px"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								7,
+								7,
+								null
+							],
+							[
+								"delim-token",
+								"<",
+								8,
+								8,
+								{
+									"value": "<"
+								}
+							],
+							[
+								"delim-token",
+								"=",
+								9,
+								9,
+								{
+									"value": "="
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								10,
+								10,
+								null
+							],
+							[
+								"ident-token",
+								"width",
+								11,
+								15,
+								{
+									"value": "width"
+								}
+							]
+						]
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							16,
+							16,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

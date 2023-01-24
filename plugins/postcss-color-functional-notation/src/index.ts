@@ -6,8 +6,14 @@ import onCSSFunction from './on-css-function';
 import type { PluginCreator } from 'postcss';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 
+/** postcss-color-functional-notation plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
+
 /** Transform lab() and lch() functions in CSS. */
-const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
+const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
 
 	return {

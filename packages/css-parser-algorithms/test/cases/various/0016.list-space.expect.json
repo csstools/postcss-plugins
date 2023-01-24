@@ -1,0 +1,170 @@
+[
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			0,
+			0,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				0,
+				0,
+				null
+			],
+			[
+				"dimension-token",
+				"10px",
+				1,
+				4,
+				{
+					"value": 10,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				"comma-token",
+				",",
+				5,
+				5,
+				null
+			],
+			[
+				"dimension-token",
+				"12px",
+				6,
+				9,
+				{
+					"value": 12,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				")-token",
+				")",
+				10,
+				10,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"10px",
+						1,
+						4,
+						{
+							"value": 10,
+							"type": "integer",
+							"unit": "px"
+						}
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"comma-token",
+						",",
+						5,
+						5,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"12px",
+						6,
+						9,
+						{
+							"value": 12,
+							"type": "integer",
+							"unit": "px"
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"comma-token",
+				",",
+				11,
+				11,
+				null
+			]
+		]
+	},
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			12,
+			12,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				12,
+				12,
+				null
+			],
+			[
+				"dimension-token",
+				"10px",
+				13,
+				16,
+				{
+					"value": 10,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				")-token",
+				")",
+				17,
+				17,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"10px",
+						13,
+						16,
+						{
+							"value": 10,
+							"type": "integer",
+							"unit": "px"
+						}
+					]
+				]
+			}
+		]
+	}
+]

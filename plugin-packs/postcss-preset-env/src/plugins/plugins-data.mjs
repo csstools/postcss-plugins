@@ -70,11 +70,6 @@ export default [
 		'importName': 'postcssDoublePositionGradients',
 	},
 	{
-		'packageName': 'postcss-env-function',
-		'id': 'environment-variables',
-		'importName': 'postcssEnvFunction',
-	},
-	{
 		'packageName': 'postcss-focus-visible',
 		'id': 'focus-visible-pseudo-class',
 		'importName': 'postcssFocusVisible',
@@ -125,6 +120,11 @@ export default [
 		'importName': 'postcssIsPseudoClass',
 	},
 	{
+		'packageName': '@csstools/postcss-scope-pseudo-class',
+		'id': 'scope-pseudo-class',
+		'importName': 'postcssScopePseudoClass',
+	},
+	{
 		'packageName': 'postcss-lab-function',
 		'id': 'lab-function',
 		'importName': 'postcssLabFunction',
@@ -135,9 +135,29 @@ export default [
 		'importName': 'postcssLogical',
 	},
 	{
+		'packageName': '@csstools/postcss-logical-float-and-clear',
+		'id': 'float-clear-logical-values',
+		'importName': 'postcssLogicalFloatAndClear',
+	},
+	{
+		'packageName': '@csstools/postcss-logical-resize',
+		'id': 'logical-resize',
+		'importName': 'postcssLogicalResize',
+	},
+	{
+		'packageName': '@csstools/postcss-logical-viewport-units',
+		'id': 'logical-viewport-units',
+		'importName': 'postcssLogicalViewportUnits',
+	},
+	{
 		'packageName': 'postcss-media-minmax',
 		'id': 'media-query-ranges',
 		'importName': 'postcssMediaMinmax',
+	},
+	{
+		'packageName': '@csstools/postcss-media-queries-aspect-ratio-number-values',
+		'id': 'media-queries-aspect-ratio-number-values',
+		'importName': 'postcssMediaQueriesAspectRatioNumberValues',
 	},
 	{
 		'packageName': 'postcss-nesting',

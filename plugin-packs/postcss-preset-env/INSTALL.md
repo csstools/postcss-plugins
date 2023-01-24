@@ -16,8 +16,19 @@ npm install postcss-preset-env --save-dev
 Use [PostCSS Preset Env] as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssPresetEnv = require('postcss-preset-env');
+
+postcss([
+	postcssPresetEnv(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssPresetEnv from 'postcss-preset-env';
 
 postcss([
 	postcssPresetEnv(/* pluginOptions */)

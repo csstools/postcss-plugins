@@ -1,5 +1,19 @@
 # Changes to PostCSS Focus Visible
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+- Fix: Do not throw when a selector is invalid, show a warning instead.
+
+### 7.1.0 (July 30, 2022)
+
+- Added: `disablePolyfillReadyClass` plugin option to prevent `.js-focus-visible` from being added.
+
+### 7.0.0 (July 8, 2022)
+
+- Breaking: Changed generated classes so it prepends `.js-focus-visible` to the 
+generated class so CSS is applied when the polyfill is known to be running.
+
 ### 6.0.4 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

@@ -1,0 +1,77 @@
+@media screen,print {
+	.a {
+		order: 1;
+	}
+}
+
+@media screen, (func(aa,(--list-2),cc)) {
+	.a {
+		order: 2;
+	}
+}
+
+@media screen, [aa,(--list-2),cc] {
+	.a {
+		order: 3;
+	}
+}
+
+@media screen, ([aa,(--list-2),cc]) {
+	.a {
+		order: 4;
+	}
+}
+
+@media screen, ([aa,[(--list-2)],cc]) {
+	.a {
+		order: 5;
+	}
+}
+
+@media screen, ({aa,(--list-2),cc}) {
+	.a {
+		order: 6;
+	}
+}
+
+@media screen, ({aa,{(--list-2)},cc}) {
+	.a {
+		order: 7;
+	}
+}
+
+@media screen {
+
+@media ((max-color:2147477350) or (min-width: 300px)) {
+	.a {
+		order: 8;
+	}
+}
+}
+
+@media not  screen {
+
+@media ((color:2147477350) or (min-width: 300px)) {
+	.a {
+		order: 8;
+	}
+}
+}
+
+@media print {
+
+@media ((max-color:2147477350) and (min-height: 300px)) {
+	.a {
+		order: 8;
+	}
+}
+}
+
+@media not  print {
+
+@media ((color:2147477350) and (min-height: 300px)) {
+	.a {
+		order: 8;
+	}
+}
+}

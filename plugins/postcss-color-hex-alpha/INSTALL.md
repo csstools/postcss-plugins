@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Color Hex Alpha] to your project:
@@ -21,8 +23,19 @@ npm install postcss postcss-color-hex-alpha --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssColorHexAlpha = require('postcss-color-hex-alpha');
+
+postcss([
+	postcssColorHexAlpha(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssColorHexAlpha from 'postcss-color-hex-alpha';
 
 postcss([
 	postcssColorHexAlpha(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"postcss-color-hex-alpha",
 										{

@@ -1,0 +1,110 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(1000px > height = 100px)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "general-enclosed",
+					"tokens": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						],
+						[
+							"dimension-token",
+							"1000px",
+							1,
+							6,
+							{
+								"value": 1000,
+								"type": "integer",
+								"unit": "px"
+							}
+						],
+						[
+							"whitespace-token",
+							" ",
+							7,
+							7,
+							null
+						],
+						[
+							"delim-token",
+							">",
+							8,
+							8,
+							{
+								"value": ">"
+							}
+						],
+						[
+							"whitespace-token",
+							" ",
+							9,
+							9,
+							null
+						],
+						[
+							"ident-token",
+							"height",
+							10,
+							15,
+							{
+								"value": "height"
+							}
+						],
+						[
+							"whitespace-token",
+							" ",
+							16,
+							16,
+							null
+						],
+						[
+							"delim-token",
+							"=",
+							17,
+							17,
+							{
+								"value": "="
+							}
+						],
+						[
+							"whitespace-token",
+							" ",
+							18,
+							18,
+							null
+						],
+						[
+							"dimension-token",
+							"100px",
+							19,
+							23,
+							{
+								"value": 100,
+								"type": "integer",
+								"unit": "px"
+							}
+						],
+						[
+							")-token",
+							")",
+							24,
+							24,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

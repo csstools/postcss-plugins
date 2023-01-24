@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Gap Properties] to your project:
@@ -21,8 +23,19 @@ npm install postcss postcss-gap-properties --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssGapProperties = require('postcss-gap-properties');
+
+postcss([
+	postcssGapProperties(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssGapProperties from 'postcss-gap-properties';
 
 postcss([
 	postcssGapProperties(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"postcss-gap-properties",
 										{

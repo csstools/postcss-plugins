@@ -1,3 +1,5 @@
 import type { PluginCreator } from 'postcss';
-declare const creator: PluginCreator<never>;
+/** postcss-selector-not plugin options */
+export type pluginOptions = Record<string, never>;
+declare const creator: PluginCreator<pluginOptions>;
 export default creator;

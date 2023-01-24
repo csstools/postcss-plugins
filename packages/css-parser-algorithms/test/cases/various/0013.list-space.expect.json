@@ -1,0 +1,72 @@
+[
+	{
+		"type": "function",
+		"name": "calc",
+		"tokens": [
+			[
+				"function-token",
+				"calc(",
+				0,
+				4,
+				{
+					"value": "calc"
+				}
+			],
+			[
+				"dimension-token",
+				"10px",
+				5,
+				8,
+				{
+					"value": 10,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				"whitespace-token",
+				" ",
+				9,
+				9,
+				null
+			],
+			[
+				")-token",
+				")",
+				10,
+				10,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"10px",
+						5,
+						8,
+						{
+							"value": 10,
+							"type": "integer",
+							"unit": "px"
+						}
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						9,
+						9,
+						null
+					]
+				]
+			}
+		]
+	}
+]

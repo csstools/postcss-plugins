@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Focus Within] to your project:
@@ -21,8 +23,19 @@ npm install postcss postcss-focus-within --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssFocusWithin = require('postcss-focus-within');
+
+postcss([
+	postcssFocusWithin(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssFocusWithin from 'postcss-focus-within';
 
 postcss([
 	postcssFocusWithin(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"postcss-focus-within",
 										{

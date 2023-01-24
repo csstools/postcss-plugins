@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Double Position Gradients] to your project:
@@ -21,8 +23,19 @@ npm install postcss postcss-double-position-gradients --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssDoublePositionGradients = require('postcss-double-position-gradients');
+
+postcss([
+	postcssDoublePositionGradients(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssDoublePositionGradients from 'postcss-double-position-gradients';
 
 postcss([
 	postcssDoublePositionGradients(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"postcss-double-position-gradients",
 										{

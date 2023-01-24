@@ -26,6 +26,54 @@
 <example.expect.css>
 ```
 
+## `true` and `false`
+
+With `@custom-media` you can use the constants `true` and `false`.
+These are especially handy when debugging.
+
+If you are unsure how your page is affected when a certain media query matches or not you can use these, to quickly toggle the results.
+This plugin downgrades these queries to something that works in all browsers.
+
+Quickly check the result as if the query matches:
+
+```pcss
+<true.css>
+
+/* becomes */
+
+<true.expect.css>
+```
+
+Quickly check the result as if the query does not match:
+
+```pcss
+<false.css>
+
+/* becomes */
+
+<false.expect.css>
+```
+
+## logical evaluation of complex media queries
+
+It is impossible to accurately and correctly resolve complex `@custom-media` queries
+as these depend on the browser the queries will eventually run in.
+
+_Some of these queries will have only one possible outcome but we have to account for all possible queries in this plugin._
+
+⚠️ When handling complex media queries you will see that your CSS is doubled for each level of complexity.<br>
+GZIP works great to de-dupe this but having a lot of complex media queries will have a performance impact.
+
+An example of a very complex (and artificial) use-case :
+
+```pcss
+<complex.css>
+
+/* becomes */
+
+<complex.expect.css>
+```
+
 <usage>
 
 <envSupport>
@@ -48,90 +96,6 @@ is preserved. By default, it is not preserved.
 
 <example.preserve.expect.css>
 ```
-
-
-### importFrom
-
-The `importFrom` option specifies sources where custom media can be imported
-from, which might be CSS, JS, and JSON files, functions, and directly passed
-objects.
-
-```js
-<exportName>({
-	importFrom: 'path/to/file.css' // => @custom-selector --small-viewport (max-width: 30em);
-});
-```
-
-```pcss
-@media (max-width: 30em) {
-	/* styles for small viewport */
-}
-
-@media (--small-viewport) {
-	/* styles for small viewport */
-}
-```
-
-Multiple sources can be passed into this option, and they will be parsed in the
-order they are received. JavaScript files, JSON files, functions, and objects
-will need to namespace custom media using the `customMedia` or
-`custom-media` key.
-
-```js
-<exportName>({
-	importFrom: [
-		'path/to/file.css',
-		'and/then/this.js',
-		'and/then/that.json',
-		{
-			customMedia: { '--small-viewport': '(max-width: 30em)' }
-		},
-		() => {
-			const customMedia = { '--small-viewport': '(max-width: 30em)' };
-
-			return { customMedia };
-		}
-	]
-});
-```
-
-### exportTo
-
-The `exportTo` option specifies destinations where custom media can be exported
-to, which might be CSS, JS, and JSON files, functions, and directly passed
-objects.
-
-```js
-<exportName>({
-	exportTo: 'path/to/file.css' // @custom-media --small-viewport (max-width: 30em);
-});
-```
-
-Multiple destinations can be passed into this option, and they will be parsed
-in the order they are received. JavaScript files, JSON files, and objects will
-need to namespace custom media using the `customMedia` or
-`custom-media` key.
-
-```js
-const cachedObject = { customMedia: {} };
-
-<exportName>({
-	exportTo: [
-		'path/to/file.css',   // @custom-media --small-viewport (max-width: 30em);
-		'and/then/this.js',   // module.exports = { customMedia: { '--small-viewport': '(max-width: 30em)' } }
-		'and/then/this.mjs',  // export const customMedia = { '--small-viewport': '(max-width: 30em)' } }
-		'and/then/that.json', // { "custom-media": { "--small-viewport": "(max-width: 30em)" } }
-		cachedObject,
-		customMedia => {
-			customMedia    // { '--small-viewport': '(max-width: 30em)' }
-		}
-	]
-});
-```
-
-See example exports written to [CSS](test/export-media.css),
-[JS](test/export-media.js), [MJS](test/export-media.mjs), and
-[JSON](test/export-media.json).
 
 <linkList>
 [Custom Media Specification]: <specUrl>

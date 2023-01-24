@@ -13,3 +13,37 @@
 [foo=a i],[foobar=b],[bar=c i]{
 	order: 4;
 }
+
+[foo="a" i] {
+	order: 5.0;
+}
+
+[foo="b" I] {
+	order: 5.1;
+}
+
+[foo="c"i] {
+	order: 5.2;
+}
+
+[foo="d"I] {
+	order: 5.3;
+}
+
+[foo="e" i ] {
+	order: 5.4;
+}
+
+[foo="f" I ] {
+	order: 5.5;
+}
+
+[foo="g" i
+] {
+	order: 5.6;
+}
+
+[foo="h" I
+] {
+	order: 5.7;
+}

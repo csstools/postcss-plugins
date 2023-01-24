@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [Prefers Color Scheme] to your project:
@@ -21,8 +23,19 @@ npm install postcss css-prefers-color-scheme --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const prefersColorScheme = require('css-prefers-color-scheme');
+
+postcss([
+	prefersColorScheme(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import prefersColorScheme from 'css-prefers-color-scheme';
 
 postcss([
 	prefersColorScheme(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"css-prefers-color-scheme",
 										{

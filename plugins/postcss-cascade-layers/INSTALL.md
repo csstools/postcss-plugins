@@ -10,6 +10,9 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+⚠️ [PostCSS Cascade Layers] assumes to process your complete CSS bundle.<br>If your build tool processes files individually or in parallel the output will be incorrect.<br>Using [`postcss-import`](https://www.npmjs.com/package/postcss-import) and `@import` statements is one way to make sure your CSS is bundled before it is processed by this plugin.
+
+
 ## Node
 
 Add [PostCSS Cascade Layers] to your project:
@@ -21,8 +24,19 @@ npm install postcss @csstools/postcss-cascade-layers --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssCascadeLayers = require('@csstools/postcss-cascade-layers');
+
+postcss([
+	postcssCascadeLayers(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssCascadeLayers from '@csstools/postcss-cascade-layers';
 
 postcss([
 	postcssCascadeLayers(/* pluginOptions */)
@@ -110,6 +124,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									["postcss-import"],
 									[
 										"@csstools/postcss-cascade-layers",
 										{

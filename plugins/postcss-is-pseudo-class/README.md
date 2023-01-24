@@ -96,7 +96,7 @@ button:focus {
 
 ### specificityMatchingName
 
-The `specificityMatchingName` option allows you to change to selector used to adjust specificity.
+The `specificityMatchingName` option allows you to change the selector used to adjust specificity.
 The default value is `does-not-exist`.
 If this is an actual class, id or tag name in your code, you will need to set a different option here.
 

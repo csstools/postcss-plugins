@@ -1,0 +1,199 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(not (color)) or (hover)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-condition-list-or",
+				"leading": {
+					"type": "media-in-parens",
+					"media": {
+						"type": "media-condition",
+						"media": {
+							"type": "media-not",
+							"modifier": [
+								[
+									"ident-token",
+									"not",
+									1,
+									3,
+									{
+										"value": "not"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									4,
+									4,
+									null
+								]
+							],
+							"media": {
+								"type": "media-in-parens",
+								"media": {
+									"type": "media-feature",
+									"feature": {
+										"type": "mf-boolean",
+										"name": {
+											"type": "mf-name",
+											"name": "color",
+											"tokens": [
+												[
+													"ident-token",
+													"color",
+													6,
+													10,
+													{
+														"value": "color"
+													}
+												]
+											]
+										},
+										"tokens": [
+											[
+												"ident-token",
+												"color",
+												6,
+												10,
+												{
+													"value": "color"
+												}
+											]
+										]
+									},
+									"before": [
+										[
+											"(-token",
+											"(",
+											5,
+											5,
+											null
+										]
+									],
+									"after": [
+										[
+											")-token",
+											")",
+											11,
+											11,
+											null
+										]
+									]
+								},
+								"before": [],
+								"after": []
+							}
+						}
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							12,
+							12,
+							null
+						]
+					]
+				},
+				"list": [
+					{
+						"type": "media-or",
+						"modifier": [
+							[
+								"whitespace-token",
+								" ",
+								13,
+								13,
+								null
+							],
+							[
+								"ident-token",
+								"or",
+								14,
+								15,
+								{
+									"value": "or"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								16,
+								16,
+								null
+							]
+						],
+						"media": {
+							"type": "media-in-parens",
+							"media": {
+								"type": "media-feature",
+								"feature": {
+									"type": "mf-boolean",
+									"name": {
+										"type": "mf-name",
+										"name": "hover",
+										"tokens": [
+											[
+												"ident-token",
+												"hover",
+												18,
+												22,
+												{
+													"value": "hover"
+												}
+											]
+										]
+									},
+									"tokens": [
+										[
+											"ident-token",
+											"hover",
+											18,
+											22,
+											{
+												"value": "hover"
+											}
+										]
+									]
+								},
+								"before": [
+									[
+										"(-token",
+										"(",
+										17,
+										17,
+										null
+									]
+								],
+								"after": [
+									[
+										")-token",
+										")",
+										23,
+										23,
+										null
+									]
+								]
+							},
+							"before": [],
+							"after": []
+						}
+					}
+				],
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

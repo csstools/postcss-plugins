@@ -16,7 +16,7 @@ type mediaByDpr = {
 	value: string;
 }
 
-export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl: Declaration, opts: { decl: Declaration, oninvalid: string, preserve: boolean, result: Result, postcss: Postcss }) => {
+export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl: Declaration, opts: { decl: Declaration, oninvalid: 'warn' | 'throw' | 'ignore' | false, preserve: boolean, result: Result, postcss: Postcss }) => {
 	const parent = decl.parent;
 	const mediasByDpr: Map<number, mediaByDpr> = new Map();
 	const declValue = decl.value;

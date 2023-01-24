@@ -1,5 +1,24 @@
 # Changes to PostCSS Focus Within
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+- Fix: Do not throw when a selector is invalid, show a warning instead.
+
+### 6.1.1 (August 23, 2022)
+
+- Fix: assign global browser polyfill to `window`, `self` or a blank object.
+
+### 6.1.0 (July 30, 2022)
+
+- Added: `disablePolyfillReadyClass` plugin option to prevent `.js-focus-within` from being added.
+
+### 6.0.0 (July 8, 2022)
+
+- Breaking: Changed generated classes so it prepends `.js-focus-within` to the
+generated class so CSS is applied when the polyfill is known to be running.
+- Added: Now bundling browser polyfill.
+
 ### 5.0.4 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

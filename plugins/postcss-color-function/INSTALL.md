@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Color Function] to your project:
@@ -21,8 +23,19 @@ npm install postcss @csstools/postcss-color-function --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssColorFunction = require('@csstools/postcss-color-function');
+
+postcss([
+	postcssColorFunction(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssColorFunction from '@csstools/postcss-color-function';
 
 postcss([
 	postcssColorFunction(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"@csstools/postcss-color-function",
 										{

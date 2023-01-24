@@ -1,0 +1,52 @@
+/* Most basic case */
+@media (min-width: 300px) {
+	.a {
+		order: 1;
+	}
+}
+
+@media (min-width: 300px) {
+	.a {
+		order: 1.1;
+	}
+}
+
+@media (min-width: 300px) {
+	.a {
+		order: 1.2;
+	}
+}
+
+/* Also a type condition */
+@media screen and (min-width: 300px) {
+	.a {
+		order: 2;
+	}
+}
+
+/* Negation */
+@media not (min-width: 300px) {
+	.a {
+		order: 3;
+	}
+}
+
+/* LightningCSS example */
+
+@media (color),(hover) {
+
+@media (max-color:2147477350) and (width > 1024px) {
+	.a {
+		color: green;
+	}
+}
+}
+
+@media not all and (color),not all and (hover) {
+
+@media (color:2147477350) and (width > 1024px) {
+	.a {
+		color: green;
+	}
+}
+}

@@ -1,0 +1,54 @@
+/* integer */
+@media (min-aspect-ratio: 1),(min-aspect-ratio: 1/1) {}
+
+/* integer */
+@media (min-aspect-ratio: 5),(min-aspect-ratio: 5/1) {}
+
+/* integer / integer */
+@media (min-aspect-ratio: 1/100) {}
+
+/* integer / number */
+@media (min-aspect-ratio: 1/0.01),(min-aspect-ratio: 100/1) {}
+
+/* integer / calc */
+@media (min-aspect-ratio: 1/calc(0.01)),(min-aspect-ratio: 100000/calc((0.01) * 100000)) {}
+
+
+/* number */
+@media (min-aspect-ratio: 1.77),(min-aspect-ratio: 177/100) {}
+/* number but with comments */
+@media (min-aspect-ratio: 0.0151987/* comment : 2 */),(min-aspect-ratio: 19/1250/* comment : 2 */) {}
+
+/* number / number */
+@media (min-aspect-ratio: 1.2541 / 543.324),(min-aspect-ratio: 12541 / 5433240) {}
+
+/* number / integer */
+@media (min-aspect-ratio: 0.01/1),(min-aspect-ratio: 1/100) {}
+
+/* number / calc */
+@media (min-aspect-ratio: 0.01/calc(1)),(min-aspect-ratio: 1000/calc((1) * 100000)) {}
+
+
+/* calc */
+@media (min-aspect-ratio: calc(1 / 100)),(min-aspect-ratio: calc((1 / 100) * 100000)/100000) {}
+
+/* calc */
+@media (min-aspect-ratio: calc(5)),(min-aspect-ratio: calc((5) * 100000)/100000) {}
+
+/* calc / calc */
+@media (min-aspect-ratio: calc(1/100) / calc(10*10)),(min-aspect-ratio: calc((1/100) * 100000) / calc((10*10) * 100000)) {}
+
+/* calc / integer */
+@media (min-aspect-ratio: calc(1/100) / 100),(min-aspect-ratio: calc((1/100) * 100000) / 10000000) {}
+
+/* calc / number */
+@media (min-aspect-ratio: calc(1/10) / 0.1),(min-aspect-ratio: calc((1/10) * 100000) / 10000) {}
+
+
+/* 0/0 */
+@media (min-aspect-ratio: 0/0),(min-aspect-ratio: 2147483647/1) {}
+/* 0/0 */
+@media (aspect-ratio >= 0/0),(aspect-ratio >= 2147483647/1) {}
+/* 0/0 */
+@media (max-aspect-ratio: 0/0),(max-aspect-ratio: 2147483647/1) {}
+

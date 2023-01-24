@@ -1,0 +1,8 @@
+.example {
+	align-self: center;
+	justify-self: center;
+	place-self: center;
+	align-content: space-between;
+	justify-content: center;
+	place-content: space-between center;
+}

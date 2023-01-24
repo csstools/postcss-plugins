@@ -1,0 +1,82 @@
+[blank], [blank] {
+	order: 1;
+}
+
+:blank {
+	order: 1;
+}
+
+[blank],
+[blank],
+[blank] test,
+[blank] test,
+test [blank],
+test [blank],
+test test[blank],
+test test[blank],
+test [blank] test,
+test [blank] test,
+test test[blank] test,
+test test[blank] test,
+test [blank] [blank] test,
+test [blank] [blank] test,
+test :matches([blank]) test,
+test :matches([blank]) test,
+test :matches([blank] test) test,
+test :matches([blank] test) test,
+test :matches(test [blank]) test,
+test :matches(test [blank]) test,
+test :matches(test test[blank]) test,
+test :matches(test test[blank]) test,
+test :matches(test [blank] test) test,
+test :matches(test [blank] test) test,
+test :matches(test test[blank] test) test,
+test :matches(test test[blank] test) test,
+test :matches(test [blank] [blank] test) test,
+test :matches(test [blank] [blank] test) test {
+	order: 2;
+}
+
+:blank,
+:blank test,
+test :blank,
+test test:blank,
+test :blank test,
+test test:blank test,
+test :blank :blank test,
+test :matches(:blank) test,
+test :matches(:blank test) test,
+test :matches(test :blank) test,
+test :matches(test test:blank) test,
+test :matches(test :blank test) test,
+test :matches(test test:blank test) test,
+test :matches(test :blank :blank test) test {
+	order: 2;
+}
+
+:ignore-blank,
+:blank-ignore,
+:ignoreblank,
+:blankignore {
+	order: 3;
+}
+
+:blank(ignore) {
+	order: 4;
+}
+
+test:not([blank]), test:not([blank]) {
+	order: 5;
+}
+
+test:not(:blank) {
+	order: 5;
+}
+
+uppercase [blank], uppercase [blank] {
+	order: 6;
+}
+
+uppercase :BLaNK {
+	order: 6;
+}

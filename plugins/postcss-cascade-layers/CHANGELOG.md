@@ -1,5 +1,18 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased
+
+- Run `postcss-cascade-layers` late compared to other PostCSS plugins (breaking)
+
+_This will be the last time we change this after several times back and forth.
+We are sticking with this configuration now._
+
+### 2.0.0 (November 14, 2022)
+
+- Run `postcss-cascade-layers` early compared to other PostCSS plugins (breaking)
+- Updated: Support for Node v14+ (major).
+- Fix: Do not throw when a selector is invalid, show a warning instead.
+
 ### 1.1.1 (September 17, 2022)
 
 - Fix pre-defined layer order in nested `@layer` rules.

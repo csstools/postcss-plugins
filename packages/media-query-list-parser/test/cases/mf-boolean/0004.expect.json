@@ -1,0 +1,64 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(false)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-boolean",
+						"name": {
+							"type": "mf-name",
+							"name": "false",
+							"tokens": [
+								[
+									"ident-token",
+									"false",
+									1,
+									5,
+									{
+										"value": "false"
+									}
+								]
+							]
+						},
+						"tokens": [
+							[
+								"ident-token",
+								"false",
+								1,
+								5,
+								{
+									"value": "false"
+								}
+							]
+						]
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							6,
+							6,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

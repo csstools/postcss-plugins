@@ -21,7 +21,10 @@ function cleanupWhitespace(node) {
 	}
 }
 
-const creator: PluginCreator<never> = () => {
+/** postcss-selector-not plugin options */
+export type pluginOptions = Record<string, never>;
+
+const creator: PluginCreator<pluginOptions> = () => {
 	return {
 		postcssPlugin: 'postcss-selector-not',
 		Rule: (rule, { result }) => {
@@ -61,11 +64,8 @@ const creator: PluginCreator<never> = () => {
 				if (modifiedSelector !== rule.selector) {
 					rule.replaceWith(rule.clone({selector: modifiedSelector}));
 				}
-			} catch (_) {
-				rule.warn(
-					result,
-					`Failed to parse selector "${rule.selector}"`,
-				);
+			} catch (err) {
+				rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
 			}
 		},
 	};

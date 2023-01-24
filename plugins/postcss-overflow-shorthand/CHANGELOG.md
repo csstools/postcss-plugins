@@ -1,5 +1,10 @@
 # Changes to PostCSS Overflow Shorthand
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+- Added: TypeScript support.
+
 ### 3.0.4 (July 8, 2022)
 
 - Fix case insensitive matching.

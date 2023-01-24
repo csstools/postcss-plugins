@@ -1,6 +1,12 @@
 import type { PluginCreator } from 'postcss';
 
-type pluginOptions = { color?: string, preserve?: boolean };
+/** postcss-base-plugin plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+	/** Replacement color */
+	color?: string,
+};
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
@@ -49,4 +55,3 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
-

@@ -1,5 +1,21 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased
+
+- Added: Support for Cascade Layers.
+
+### 9.0.1 (November 19, 2022)
+
+- Fixed: avoid complex generated CSS when `@custom-media` contains only a single simple media feature.
+
+### 9.0.0 (November 14, 2022)
+
+- Updated: Support for Node v14+ (major).
+- Removed: `importFrom` feature (breaking).
+- Removed: `exportTo` feature (breaking).
+- Fixed: implement logical evaluation of custom media queries.
+- Added: Support for `true` and `false` keywords in `@custom-media`.
+
 ### 8.0.2 (June 4, 2022)
 
 - Fixed: dependency declarations in package.json

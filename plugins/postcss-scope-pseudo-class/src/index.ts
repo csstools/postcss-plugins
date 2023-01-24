@@ -1,7 +1,11 @@
 import type { AtRule, Container, Node, PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
 
-type pluginOptions = { preserve?: boolean };
+/** postcss-scope-pseudo-class plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
@@ -51,7 +55,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 				modifiedSelector = selectorAST.toString();
 			} catch (err) {
-				rule.warn(result, `Unable to parse selector: "${rule.selector}"`);
+				rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
 			}
 
 			if (modifiedSelector === rule.selector) {

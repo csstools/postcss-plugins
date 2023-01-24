@@ -1,0 +1,13 @@
+input,
+select,
+textarea {
+	background-color: rgb(255, 192, 203);
+}
+
+.css-blank.js-blank-pseudo, .js-blank-pseudo .css-blank {
+	background-color: rgb(128, 0, 128);
+}
+
+:blank {
+	background-color: rgb(128, 0, 128);
+}

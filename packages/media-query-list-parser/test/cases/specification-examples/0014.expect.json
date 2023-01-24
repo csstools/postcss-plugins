@@ -1,0 +1,268 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "((color) and (pointer)) or (hover)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-condition-list-or",
+				"leading": {
+					"type": "media-in-parens",
+					"media": {
+						"type": "media-condition",
+						"media": {
+							"type": "media-condition-list-and",
+							"leading": {
+								"type": "media-in-parens",
+								"media": {
+									"type": "media-feature",
+									"feature": {
+										"type": "mf-boolean",
+										"name": {
+											"type": "mf-name",
+											"name": "color",
+											"tokens": [
+												[
+													"ident-token",
+													"color",
+													2,
+													6,
+													{
+														"value": "color"
+													}
+												]
+											]
+										},
+										"tokens": [
+											[
+												"ident-token",
+												"color",
+												2,
+												6,
+												{
+													"value": "color"
+												}
+											]
+										]
+									},
+									"before": [
+										[
+											"(-token",
+											"(",
+											1,
+											1,
+											null
+										]
+									],
+									"after": [
+										[
+											")-token",
+											")",
+											7,
+											7,
+											null
+										]
+									]
+								},
+								"before": [],
+								"after": []
+							},
+							"list": [
+								{
+									"type": "media-and",
+									"modifier": [
+										[
+											"whitespace-token",
+											" ",
+											8,
+											8,
+											null
+										],
+										[
+											"ident-token",
+											"and",
+											9,
+											11,
+											{
+												"value": "and"
+											}
+										],
+										[
+											"whitespace-token",
+											" ",
+											12,
+											12,
+											null
+										]
+									],
+									"media": {
+										"type": "media-in-parens",
+										"media": {
+											"type": "media-feature",
+											"feature": {
+												"type": "mf-boolean",
+												"name": {
+													"type": "mf-name",
+													"name": "pointer",
+													"tokens": [
+														[
+															"ident-token",
+															"pointer",
+															14,
+															20,
+															{
+																"value": "pointer"
+															}
+														]
+													]
+												},
+												"tokens": [
+													[
+														"ident-token",
+														"pointer",
+														14,
+														20,
+														{
+															"value": "pointer"
+														}
+													]
+												]
+											},
+											"before": [
+												[
+													"(-token",
+													"(",
+													13,
+													13,
+													null
+												]
+											],
+											"after": [
+												[
+													")-token",
+													")",
+													21,
+													21,
+													null
+												]
+											]
+										},
+										"before": [],
+										"after": []
+									}
+								}
+							],
+							"before": [],
+							"after": []
+						}
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							22,
+							22,
+							null
+						]
+					]
+				},
+				"list": [
+					{
+						"type": "media-or",
+						"modifier": [
+							[
+								"whitespace-token",
+								" ",
+								23,
+								23,
+								null
+							],
+							[
+								"ident-token",
+								"or",
+								24,
+								25,
+								{
+									"value": "or"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								26,
+								26,
+								null
+							]
+						],
+						"media": {
+							"type": "media-in-parens",
+							"media": {
+								"type": "media-feature",
+								"feature": {
+									"type": "mf-boolean",
+									"name": {
+										"type": "mf-name",
+										"name": "hover",
+										"tokens": [
+											[
+												"ident-token",
+												"hover",
+												28,
+												32,
+												{
+													"value": "hover"
+												}
+											]
+										]
+									},
+									"tokens": [
+										[
+											"ident-token",
+											"hover",
+											28,
+											32,
+											{
+												"value": "hover"
+											}
+										]
+									]
+								},
+								"before": [
+									[
+										"(-token",
+										"(",
+										27,
+										27,
+										null
+									]
+								],
+								"after": [
+									[
+										")-token",
+										")",
+										33,
+										33,
+										null
+									]
+								]
+							},
+							"before": [],
+							"after": []
+						}
+					}
+				],
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

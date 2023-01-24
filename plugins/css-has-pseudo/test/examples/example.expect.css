@@ -1,0 +1,6 @@
+.js-has-pseudo [csstools-has-1a-38-2x-38-30-2t-1m-2w-2p-37-14-17-w-34-15]:not(does-not-exist) {
+	margin-bottom: 1.5rem;
+}
+.title:has(+ p) {
+	margin-bottom: 1.5rem;
+}

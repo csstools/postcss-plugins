@@ -1,0 +1,44 @@
+@custom-media --truthy tRUe;
+@custom-media --falsy fAlsE;
+
+@media screen and (--truthy) {
+	.true {
+		order: 1;
+	}
+}
+
+@media screen and (--falsy) {
+	.false {
+		order: 2;
+	}
+}
+
+@custom-media --truthy-trailing-ws tRUe ;
+@custom-media --falsy-trailing-comment fAlsE/* a comment */ /* another comment */;
+
+@media (--truthy-trailing-ws) {
+	.true {
+		order: 3;
+	}
+}
+
+@media (--falsy-trailing-comment) {
+	.false {
+		order: 4;
+	}
+}
+
+@custom-media --truthy-broken tRUe and (min-width: 300px);
+@custom-media --falsy-broken fAlsE and (min-width: 300px);
+
+@media (--truthy-broken) {
+	.true {
+		order: 5;
+	}
+}
+
+@media (--falsy-broken) {
+	.false {
+		order: 6;
+	}
+}

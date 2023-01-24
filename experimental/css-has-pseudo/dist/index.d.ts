@@ -1,6 +1,3 @@
 import type { PluginCreator } from 'postcss';
-declare const creator: PluginCreator<{
-    preserve?: boolean;
-    specificityMatchingName?: string;
-}>;
+declare const creator: PluginCreator<unknown>;
 export default creator;

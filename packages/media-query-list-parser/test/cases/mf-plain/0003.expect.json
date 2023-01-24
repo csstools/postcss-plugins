@@ -1,0 +1,122 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(resolution: infinite)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-plain",
+						"name": {
+							"type": "mf-name",
+							"name": "resolution",
+							"tokens": [
+								[
+									"ident-token",
+									"resolution",
+									1,
+									10,
+									{
+										"value": "resolution"
+									}
+								]
+							]
+						},
+						"value": {
+							"type": "mf-value",
+							"value": {
+								"type": "token",
+								"tokens": [
+									[
+										"ident-token",
+										"infinite",
+										13,
+										20,
+										{
+											"value": "infinite"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									12,
+									12,
+									null
+								],
+								[
+									"ident-token",
+									"infinite",
+									13,
+									20,
+									{
+										"value": "infinite"
+									}
+								]
+							]
+						},
+						"tokens": [
+							[
+								"ident-token",
+								"resolution",
+								1,
+								10,
+								{
+									"value": "resolution"
+								}
+							],
+							[
+								"colon-token",
+								":",
+								11,
+								11,
+								null
+							],
+							[
+								"whitespace-token",
+								" ",
+								12,
+								12,
+								null
+							],
+							[
+								"ident-token",
+								"infinite",
+								13,
+								20,
+								{
+									"value": "infinite"
+								}
+							]
+						]
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							21,
+							21,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

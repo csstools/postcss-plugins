@@ -1,6 +1,6 @@
 import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'postcss-preset-env';
-import fs from 'fs';
+import postcssImport from 'postcss-import';
 
 const orderDetectionPlugin = (prop, changeWhenMatches) => {
 	return {
@@ -167,12 +167,22 @@ postcssTape(plugin)({
 			browsers: '> 0%'
 		},
 	},
+	'basic:hebrew': {
+		message: 'supports { logical: { inlineDirection: "right-to-left" }, stage: 0, browsers: "> 0%" } usage',
+		options: {
+			stage: 0,
+			logical: {
+				inlineDirection: 'right-to-left'
+			}
+		},
+	},
 	'layers-basic': {
 		message: 'supports layers usage',
 		options: {
 			stage: 0,
 			browsers: '> 0%'
 		},
+		warnings: 0
 	},
 	'layers-basic:preserve:true': {
 		message: 'supports layers usage with { preserve: true }',
@@ -181,6 +191,7 @@ postcssTape(plugin)({
 			stage: 0,
 			browsers: '> 0%'
 		},
+		warnings: 0
 	},
 	'client-side-polyfills:stage-1': {
 		message: 'stable client side polyfill behavior',
@@ -238,14 +249,14 @@ postcssTape(plugin)({
 			}
 		}
 	},
-	'disable-client-side-polyfills': {
+	'enable-client-side-polyfills': {
 		message: 'supports { enableClientSidePolyfills: false } usage',
 		options: {
 			enableClientSidePolyfills: false,
 			stage: 0,
 		}
 	},
-	'disable-client-side-polyfills:disabled': {
+	'enable-client-side-polyfills:enabled': {
 		message: 'supports { enableClientSidePolyfills: true } usage (default)',
 		options: {
 			enableClientSidePolyfills: true,
@@ -267,9 +278,6 @@ postcssTape(plugin)({
 		options: {
 			stage: 0,
 			features: {
-				'lab-function': true
-			},
-			features: {
 				'lab-function': true,
 				'color-function': false,
 			},
@@ -286,9 +294,6 @@ postcssTape(plugin)({
 		message: 'supports { insertBefore } usage when looking for a result',
 		options: {
 			stage: 0,
-			features: {
-				'lab-function': true
-			},
 			features: {
 				'lab-function': true,
 				'color-function': false,
@@ -383,128 +388,6 @@ postcssTape(plugin)({
 			}
 		}
 	},
-	'import': {
-		message: 'supports { importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',
-		warnings: 2,
-		options: {
-			importFrom: {
-				customMedia: {
-					'--narrow-window': '(max-width: env(--sm))'
-				},
-				customProperties: {
-					'--order': '1'
-				},
-				customSelectors: {
-					':--heading': 'h1, h2, h3, h4, h5, h6'
-				},
-				environmentVariables: {
-					'--sm': '40rem'
-				}
-			},
-			stage: 0
-		}
-	},
-	'import:ch87': {
-		message: 'supports { browsers: "chrome >= 87", importFrom: { customMedia, customProperties, customSelectors, environmentVariables } } usage',
-		warnings: 2,
-		options: {
-			browsers: 'chrome >= 87',
-			importFrom: {
-				customMedia: {
-					'--narrow-window': '(max-width: env(--sm))'
-				},
-				customProperties: {
-					'--order': '1'
-				},
-				customSelectors: {
-					':--heading': 'h1, h2, h3, h4, h5, h6'
-				},
-				environmentVariables: {
-					'--sm': '40rem'
-				}
-			},
-			stage: 0
-		}
-	},
-	'import:ch87:array': {
-		message: 'supports { browsers: "chrome >= 87", importFrom: [{ customMedia, customProperties, customSelectors, environmentVariables }] } usage',
-		warnings: 2,
-		options: {
-			browsers: 'chrome >= 87',
-			importFrom: [{
-				customMedia: {
-					'--narrow-window': '(max-width: env(--sm))'
-				},
-				customProperties: {
-					'--order': '1'
-				},
-				customSelectors: {
-					':--heading': 'h1, h2, h3, h4, h5, h6'
-				},
-				environmentVariables: {
-					'--sm': '40rem'
-				}
-			}],
-			stage: 0
-		}
-	},
-	'import:ch87:incorrect-options': {
-		message: 'supports { browsers: "chrome >= 87", importFrom: false } usage',
-		options: {
-			browsers: 'chrome >= 87',
-			importFrom: false,
-			stage: 0
-		}
-	},
-	'basic:export': {
-		message: 'supports { stage: 0 } usage',
-		warnings: 1,
-		options: {
-			stage: 0,
-			exportTo: [
-				'test/generated-custom-exports.css',
-				'test/generated-custom-exports.js',
-				'test/generated-custom-exports.json',
-				'test/generated-custom-exports.mjs'
-			]
-		},
-		expect: 'basic.stage0.expect.css',
-		result: 'basic.stage0.result.css',
-		before() {
-			try {
-				global.__exportTo = {
-					css: fs.readFileSync('test/generated-custom-exports.css', 'utf8'),
-					js: fs.readFileSync('test/generated-custom-exports.js', 'utf8'),
-					json: fs.readFileSync('test/generated-custom-exports.json', 'utf8'),
-					mjs: fs.readFileSync('test/generated-custom-exports.mjs', 'utf8')
-				};
-
-				fs.rmSync('test/generated-custom-exports.css');
-				fs.rmSync('test/generated-custom-exports.js');
-				fs.rmSync('test/generated-custom-exports.json');
-				fs.rmSync('test/generated-custom-exports.mjs');
-			} catch (_) {
-				// ignore errors here.
-				// If the files are removed manually test run will regenerate these.
-				// The after step will still fail.
-				// The real test is in the after step.
-			}
-		},
-		after() {
-			global.__exportAs = {
-				css: fs.readFileSync('test/generated-custom-exports.css', 'utf8'),
-				js: fs.readFileSync('test/generated-custom-exports.js', 'utf8'),
-				json: fs.readFileSync('test/generated-custom-exports.json', 'utf8'),
-				mjs: fs.readFileSync('test/generated-custom-exports.mjs', 'utf8')
-			};
-
-			Object.keys(global.__exportTo).forEach(key => {
-				if (global.__exportTo[key] !== global.__exportAs[key]) {
-					throw new Error(`The original ${key} file did not match the freshly exported copy`);
-				}
-			});
-		}
-	},
 	'progressive-custom-properties': {
 		message: 'supports progressive custom properties plugin',
 		options: {
@@ -524,4 +407,14 @@ postcssTape(plugin)({
 			}
 		},
 	},
+	'postcss-import/styles': {
+		message: 'works well with "postcss-import"',
+		plugins: [
+			postcssImport(),
+			plugin({
+				stage: 0,
+				browsers: '> 0%'
+			})
+		]
+	}
 });

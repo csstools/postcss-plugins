@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Nesting] to your project:
@@ -21,8 +23,19 @@ npm install postcss @csstools/postcss-nesting-experimental --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssNesting = require('@csstools/postcss-nesting-experimental');
+
+postcss([
+	postcssNesting(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssNesting from '@csstools/postcss-nesting-experimental';
 
 postcss([
 	postcssNesting(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"@csstools/postcss-nesting-experimental",
 										{

@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Color Functional Notation] to your project:
@@ -21,8 +23,19 @@ npm install postcss postcss-color-functional-notation --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssColorFunctionalNotation = require('postcss-color-functional-notation');
+
+postcss([
+	postcssColorFunctionalNotation(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssColorFunctionalNotation from 'postcss-color-functional-notation';
 
 postcss([
 	postcssColorFunctionalNotation(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"postcss-color-functional-notation",
 										{

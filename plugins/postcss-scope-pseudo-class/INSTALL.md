@@ -10,6 +10,8 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
+
+
 ## Node
 
 Add [PostCSS Scope Pseudo Class] to your project:
@@ -21,8 +23,19 @@ npm install postcss @csstools/postcss-scope-pseudo-class --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssScopePseudoClass = require('@csstools/postcss-scope-pseudo-class');
+
+postcss([
+	postcssScopePseudoClass(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssScopePseudoClass from '@csstools/postcss-scope-pseudo-class';
 
 postcss([
 	postcssScopePseudoClass(/* pluginOptions */)
@@ -110,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"@csstools/postcss-scope-pseudo-class",
 										{

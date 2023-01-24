@@ -1,0 +1,17 @@
+@media print {
+	@custom-media --foo screen;
+}
+
+@custom-media --foo screen {
+	/* has children */
+}
+
+@custom-media --foo;
+@custom-media screen;
+@custom-media ;
+
+@media (--foo) {
+	.a {
+		order: 1;
+	}
+}

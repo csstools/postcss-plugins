@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/selector-specificity",
 	"description": "Determine selector specificity with postcss-selector-parser",
-	"version": "2.0.2",
+	"version": "2.1.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -19,7 +19,7 @@
 		"url": "https://opencollective.com/csstools"
 	},
 	"engines": {
-		"node": "^12 || ^14 || >=16"
+		"node": "^14 || ^16 || >=18"
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
@@ -38,7 +38,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"postcss": "^8.2",
+		"postcss": "^8.4",
 		"postcss-selector-parser": "^6.0.10"
 	},
 	"devDependencies": {
@@ -46,8 +46,8 @@
 	},
 	"scripts": {
 		"prebuild": "npm run clean",
-		"build": "rollup -c ../../rollup/default.js",
-		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+		"build": "rollup -c ../../rollup/default.mjs",
+		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');\"",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",

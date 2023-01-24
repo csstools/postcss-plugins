@@ -1,0 +1,6 @@
+nav :link > span, nav :visited > span {
+	background-color: yellow;
+}
+nav :any-link > span {
+	background-color: yellow;
+}

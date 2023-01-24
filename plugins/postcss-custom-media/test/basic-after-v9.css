@@ -1,0 +1,43 @@
+@custom-media --simple-feature-test (min-width: 300px);
+
+/* Most basic case */
+@media (--simple-feature-test) {
+	.a {
+		order: 1;
+	}
+}
+
+@media ((--simple-feature-test)) {
+	.a {
+		order: 1.1;
+	}
+}
+
+@media (((--simple-feature-test))) {
+	.a {
+		order: 1.2;
+	}
+}
+
+/* Also a type condition */
+@media screen and (--simple-feature-test) {
+	.a {
+		order: 2;
+	}
+}
+
+/* Negation */
+@media not (--simple-feature-test) {
+	.a {
+		order: 3;
+	}
+}
+
+/* LightningCSS example */
+@custom-media --modern (color), (hover);
+
+@media (--modern) and (width > 1024px) {
+	.a {
+		color: green;
+	}
+}

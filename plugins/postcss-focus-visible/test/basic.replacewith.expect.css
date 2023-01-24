@@ -1,4 +1,4 @@
-[focus-visible] {
+[data-focus-visible-added].js-focus-visible, .js-focus-visible [data-focus-visible-added] {
 	order: 1;
 }
 
@@ -6,19 +6,36 @@
 	order: 1;
 }
 
-[focus-visible],[focus-visible] test,
-test [focus-visible],
-test test[focus-visible],
-test [focus-visible] test,
-test test[focus-visible] test,
-test [focus-visible] [focus-visible] test,
-test :matches([focus-visible]) test,
-test :matches([focus-visible] test) test,
-test :matches(test [focus-visible]) test,
-test :matches(test test[focus-visible]) test,
-test :matches(test [focus-visible] test) test,
-test :matches(test test[focus-visible] test) test,
-test :matches(test [focus-visible] [focus-visible] test) test {
+[data-focus-visible-added].js-focus-visible,
+.js-focus-visible [data-focus-visible-added],
+[data-focus-visible-added].js-focus-visible test,
+.js-focus-visible [data-focus-visible-added] test,
+test.js-focus-visible [data-focus-visible-added],
+.js-focus-visible test [data-focus-visible-added],
+test.js-focus-visible test[data-focus-visible-added],
+.js-focus-visible test test[data-focus-visible-added],
+html[dir="rtl"].js-focus-visible [data-focus-visible-added],
+.js-focus-visible html[dir="rtl"] [data-focus-visible-added],
+test.js-focus-visible [data-focus-visible-added] test,
+.js-focus-visible test [data-focus-visible-added] test,
+test.js-focus-visible test[data-focus-visible-added] test,
+.js-focus-visible test test[data-focus-visible-added] test,
+test.js-focus-visible [data-focus-visible-added] [data-focus-visible-added] test,
+.js-focus-visible test [data-focus-visible-added] [data-focus-visible-added] test,
+test.js-focus-visible :matches([data-focus-visible-added]) test,
+.js-focus-visible test :matches([data-focus-visible-added]) test,
+test.js-focus-visible :matches([data-focus-visible-added] test) test,
+.js-focus-visible test :matches([data-focus-visible-added] test) test,
+test.js-focus-visible :matches(test [data-focus-visible-added]) test,
+.js-focus-visible test :matches(test [data-focus-visible-added]) test,
+test.js-focus-visible :matches(test test[data-focus-visible-added]) test,
+.js-focus-visible test :matches(test test[data-focus-visible-added]) test,
+test.js-focus-visible :matches(test [data-focus-visible-added] test) test,
+.js-focus-visible test :matches(test [data-focus-visible-added] test) test,
+test.js-focus-visible :matches(test test[data-focus-visible-added] test) test,
+.js-focus-visible test :matches(test test[data-focus-visible-added] test) test,
+test.js-focus-visible :matches(test [data-focus-visible-added] [data-focus-visible-added] test) test,
+.js-focus-visible test :matches(test [data-focus-visible-added] [data-focus-visible-added] test) test {
 	order: 2;
 }
 
@@ -26,6 +43,7 @@ test :matches(test [focus-visible] [focus-visible] test) test {
 :focus-visible test,
 test :focus-visible,
 test test:focus-visible,
+html[dir="rtl"] :focus-visible,
 test :focus-visible test,
 test test:focus-visible test,
 test :focus-visible :focus-visible test,
@@ -52,8 +70,10 @@ test :matches(test :focus-visible :focus-visible test) test {
 
 .escaped\:focus-visible,
 .escaped\:times\:two\:focus-visible,
-.escaped\:focus-visible[focus-visible],
-.escaped\:times\:two[focus-visible] {
+.escaped\:focus-visible[data-focus-visible-added].js-focus-visible,
+.js-focus-visible .escaped\:focus-visible[data-focus-visible-added],
+.escaped\:times\:two[data-focus-visible-added].js-focus-visible,
+.js-focus-visible .escaped\:times\:two[data-focus-visible-added] {
 	order: 5;
 }
 
@@ -62,4 +82,92 @@ test :matches(test :focus-visible :focus-visible test) test {
 .escaped\:focus-visible:focus-visible,
 .escaped\:times\:two:focus-visible {
 	order: 5;
+}
+
+html.js-focus-visible [data-focus-visible-added], .js-focus-visible html [data-focus-visible-added] {
+	order: 6;
+}
+
+html :focus-visible {
+	order: 6;
+}
+
+html[data-focus-visible-added].js-focus-visible, .js-focus-visible html[data-focus-visible-added] {
+	order: 6.1;
+}
+
+html:focus-visible {
+	order: 6.1;
+}
+
+:not([data-focus-visible-added]).js-focus-visible, .js-focus-visible :not([data-focus-visible-added]) {
+	order: 7;
+}
+
+:not(:focus-visible) {
+	order: 7;
+}
+
+html.js-focus-visible :not([data-focus-visible-added]), .js-focus-visible html :not([data-focus-visible-added]) {
+	order: 8;
+}
+
+html :not(:focus-visible) {
+	order: 8;
+}
+
+[data-focus-visible-added].js-focus-visible::before, .js-focus-visible [data-focus-visible-added]::before {
+	order: 10.0;
+}
+
+:focus-visible::before {
+	order: 10.0;
+}
+
+[data-focus-visible-added].js-focus-visible .foo, .js-focus-visible [data-focus-visible-added] .foo {
+	order: 10.1;
+}
+
+:focus-visible .foo {
+	order: 10.1;
+}
+
+[data-focus-visible-added].js-focus-visible > .foo, .js-focus-visible [data-focus-visible-added] > .foo {
+	order: 10.2;
+}
+
+:focus-visible > .foo {
+	order: 10.2;
+}
+
+.js-focus-visible::before[data-focus-visible-added], .js-focus-visible ::before[data-focus-visible-added] {
+	order: 10.3;
+}
+
+::before:focus-visible {
+	order: 10.3;
+}
+
+.foo.js-focus-visible [data-focus-visible-added], .js-focus-visible .foo [data-focus-visible-added] {
+	order: 10.4;
+}
+
+.foo :focus-visible {
+	order: 10.4;
+}
+
+.foo.js-focus-visible > [data-focus-visible-added], .js-focus-visible .foo > [data-focus-visible-added] {
+	order: 10.5;
+}
+
+.foo > :focus-visible {
+	order: 10.5;
+}
+
+[data-focus-visible-added].js-focus-visible, .js-focus-visible [data-focus-visible-added] {
+	order: 11;
+}
+
+:FocuS-VisiblE {
+	order: 11;
 }

@@ -13,8 +13,12 @@
 	},
 	"size": {
 		"spacing": {
-			"small": { "value": "16px" }
+			"small": { "value": "16px" },
+			"medium": { "value": "18px" }
 		}
+	},
+	"viewport": {
+		"medium": { "value": "35rem" }
 	}
 }
 ```
@@ -29,6 +33,12 @@
 	padding-bottom: design-token('size.spacing.small' to rem);
 }
 
+@media (min-width: design-token('viewport.medium')) {
+	.foo {
+			padding-bottom: design-token('size.spacing.medium' to rem);
+	}
+}
+
 /* becomes */
 
 .foo {
@@ -36,6 +46,12 @@
 	padding-top: 16px;
 	padding-left: 16px;
 	padding-bottom: 1rem;
+}
+
+@media (min-width: 35rem) {
+	.foo {
+			padding-bottom: 1.1rem;
+	}
 }
 ```
 
@@ -194,6 +210,12 @@ postcssDesignTokens({
 	padding-bottom: design-token('size.spacing.small' to rem);
 }
 
+@media (min-width: design-token('viewport.medium')) {
+	.foo {
+			padding-bottom: design-token('size.spacing.medium' to rem);
+	}
+}
+
 /* becomes */
 
 .foo {
@@ -201,6 +223,12 @@ postcssDesignTokens({
 	padding-top: 16px;
 	padding-left: 16px;
 	padding-bottom: 0.8rem;
+}
+
+@media (min-width: 35rem) {
+	.foo {
+			padding-bottom: 0.9rem;
+	}
 }
 ```
 
@@ -289,7 +317,7 @@ The `@design-tokens` rule is used to import design tokens from a JSON file into 
 @design-tokens url('./tokens-dark-mode.json') format('style-dictionary3') when('dark');
 ```
 
-You can also import tokens from an `npm` pacakge:
+You can also import tokens from an `npm` package:
 
 ```pcss
 @design-tokens url('node_modules://my-npm-package/tokens.json') format('style-dictionary3');

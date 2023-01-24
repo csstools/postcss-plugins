@@ -5,6 +5,7 @@ browser.js
 *.log*
 *.result.css
 *.result.css.map
+*.result.html
 !.editorconfig
 !.gitignore
 !.rollup.js

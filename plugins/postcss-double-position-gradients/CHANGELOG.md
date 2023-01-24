@@ -1,12 +1,16 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 3.1.2 (July 8, 2022)
 
 - Fix case insensitive matching.
 
 ### 3.1.1 (March 7, 2022)
 
-- Add typescript support
+- Add TypeScript support
 - Fix color functions.
 - Fix `at` keyword with `at 20px 20px` being interpreted as a double position color stop.
 

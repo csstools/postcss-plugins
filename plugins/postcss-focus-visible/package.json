@@ -1,15 +1,25 @@
 {
 	"name": "postcss-focus-visible",
 	"description": "Use the :focus-visible pseudo-selector in CSS",
-	"version": "6.0.4",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"version": "7.1.0",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
 		"url": "https://opencollective.com/csstools"
 	},
 	"engines": {
-		"node": "^12 || ^14 || >=16"
+		"node": "^14 || ^16 || >=18"
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
@@ -31,18 +41,22 @@
 		"postcss-selector-parser": "^6.0.10"
 	},
 	"peerDependencies": {
-		"postcss": "^8.2"
+		"postcss": "^8.4"
+	},
+	"devDependencies": {
+		"puppeteer": "^19.5.2"
 	},
 	"scripts": {
 		"prebuild": "npm run clean",
-		"build": "rollup -c ../../rollup/default.js",
-		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"build": "rollup -c ../../rollup/default.mjs",
+		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');\"",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run clean && npm run build && npm run test",
 		"test": "node .tape.mjs && npm run test:exports",
+		"test:browser": "node ./test/_browser.mjs",
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
@@ -80,8 +94,10 @@
 		"trackpad"
 	],
 	"csstools": {
+		"cssdbId": "focus-visible-pseudo-class",
 		"exportName": "postcssFocusVisible",
-		"humanReadableName": "PostCSS Focus Visible"
+		"humanReadableName": "PostCSS Focus Visible",
+		"specUrl": "https://www.w3.org/TR/selectors-4/#the-focus-visible-pseudo"
 	},
 	"volta": {
 		"extends": "../../package.json"

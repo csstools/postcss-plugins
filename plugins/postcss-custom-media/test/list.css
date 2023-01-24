@@ -1,0 +1,30 @@
+/* Custom media with a list */
+@custom-media --mq-with-list-a (min-width: 101px), (min-height: 102px);
+
+@media screen and (--mq-with-list-a) {
+	.a {
+		order: 1;
+	}
+}
+
+@media ((other: feature) and (--mq-with-list-a)) {
+	.a {
+		order: 2;
+	}
+}
+
+/* Custom media used in a list */
+@custom-media --mq-without-a-list-a (min-width: 201px);
+@custom-media --mq-without-a-list-b (min-width: 202px);
+
+@media (--mq-without-a-list-a), (--mq-without-a-list-b) {
+	.b {
+		order: 3;
+	}
+}
+
+@media screen and (--mq-without-a-list-a), not (--mq-without-a-list-b) {
+	.b {
+		order: 4;
+	}
+}

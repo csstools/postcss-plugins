@@ -1,5 +1,61 @@
 # Changes to Prefers Color Scheme
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
+### 7.0.1 (August 23, 2022)
+
+- Fix: assign global browser polyfill to `window`, `self` or a blank object.
+
+### 7.0.0 (July 8, 2022)
+
+[Read the full changelog](https://github.com/csstools/postcss-plugins/wiki/PostCSS-Preset-Env-8)
+
+- Breaking: removed old CDN urls
+- Breaking: remove `color-depth` queries fallback
+- Breaking: remove 'no-preference' support as this was dropped from the spec
+- Breaking: remove old global object
+- Fix: case insensitive matching.
+
+#### How to migrate :
+
+##### Re-build your CSS with the new version of the library.
+
+##### If you use a CDN url, please update it.
+
+```diff
+- <script src="https://unpkg.com/css-prefers-color-scheme/browser"></script>
++ <script src="https://unpkg.com/css-prefers-color-scheme/dist/browser-global.js"></script>
+```
+
+```diff
+- <script src="https://unpkg.com/css-prefers-color-scheme/browser.min"></script>
++ <script src="https://unpkg.com/css-prefers-color-scheme/dist/browser-global.js"></script>
+```
+
+##### Use `prefersColorSchemeInit` to initialize the polyfill in the browser.
+
+```diff
+- initPrefersColorScheme()
++ prefersColorSchemeInit()
+```
+
+##### Remove `@media (prefer-color-scheme: no-preference)` from your CSS.
+
+`@media (prefers-color-scheme: no-preference)` was removed from the specification and should be equivalent to not having any media query.
+
+```diff
+- @media (prefers-color-scheme: no-preference) {
+- 	.some-selector {
+- 		/* your styles ... */
+- 	}
+- }
++ .some-selector {
++ 	/* your styles ... */
++ }
+```
+
 ### 6.0.3 (January 31, 2022)
 
 - Fix `preserve: false` option.

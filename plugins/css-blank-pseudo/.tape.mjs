@@ -17,11 +17,51 @@ postcssTape(plugin)({
 			preserve: false
 		}
 	},
-	'generated-selector-cases': {
-		message: 'correctly handles generated cases',
+	'basic:wrong-replacewith': {
+		message: 'correctly warns when replace with is invalid',
 		warnings: 1,
 		options: {
+			replaceWith: '#css-blank'
+		}
+	},
+	'basic:disable-polyfill-ready-class': {
+		message: 'supports { disablePolyfillReadyClass: true } usage',
+		options: {
+			disablePolyfillReadyClass: true
+		}
+	},
+	'invalid-selector': {
+		message: 'warns on invalid selectors',
+		warnings: 1
+	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-false': {
+		message: 'minimal example',
+		options: {
 			preserve: false
+		}
+	},
+	'examples/example:replacewith': {
+		message: 'minimal example',
+		options: {
+			replaceWith: '.css-blank'
+		}
+	},
+	'examples/example:disable-polyfill-ready-class': {
+		message: 'minimal example',
+		options: {
+			disablePolyfillReadyClass: true
+		}
+	},
+	'browser': {
+		message: 'css for browser tests',
+	},
+	'browser:replacewith': {
+		message: 'css for browser tests',
+		options: {
+			replaceWith: '.css-blank'
 		}
 	},
 });

@@ -16,5 +16,14 @@ postcssTape(plugin)({
 	},
 	'ignore-multicolumn': {
 		message: 'ignore multi column declarations'
-	}
+	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-false': {
+		message: 'minimal example',
+		options: {
+			preserve: false
+		}
+	},
 });

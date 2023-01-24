@@ -11,8 +11,10 @@ import { sortRootNodes } from './sort-root-nodes';
 import { recordLayerOrder } from './record-layer-order';
 import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, INVALID_LAYER_NAME } from './constants';
 import { splitImportantStyles } from './split-important-styles';
-import { pluginOptions } from './options';
+import type { pluginOptions } from './options';
 import { isProcessableLayerRule } from './is-processable-layer-rule';
+
+export type { pluginOptions } from './options';
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
@@ -69,8 +71,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			let highestASpecificity = 0;
 			root.walkRules((rule) => {
 				rule.selectors.forEach((selector) => {
-					const specificity = selectorSpecificity(selectorParser().astSync(selector));
-					highestASpecificity = Math.max(highestASpecificity, specificity.a + 1);
+					try {
+						const specificity = selectorSpecificity(selectorParser().astSync(selector));
+						highestASpecificity = Math.max(highestASpecificity, specificity.a + 1);
+					} catch (err) {
+						rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
+					}
 				});
 			});
 
@@ -93,7 +99,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				}
 
 				rule.selectors = rule.selectors.map((selector) => {
-					return adjustSelectorSpecificity(selector, model.layerCount * highestASpecificity);
+					try {
+						return adjustSelectorSpecificity(selector, model.layerCount * highestASpecificity);
+					} catch (err) {
+						rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
+					}
+
+					return selector;
 				});
 			});
 

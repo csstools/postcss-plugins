@@ -1,0 +1,244 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(not (color)) and (not (hover))",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-condition-list-and",
+				"leading": {
+					"type": "media-in-parens",
+					"media": {
+						"type": "media-condition",
+						"media": {
+							"type": "media-not",
+							"modifier": [
+								[
+									"ident-token",
+									"not",
+									1,
+									3,
+									{
+										"value": "not"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									4,
+									4,
+									null
+								]
+							],
+							"media": {
+								"type": "media-in-parens",
+								"media": {
+									"type": "media-feature",
+									"feature": {
+										"type": "mf-boolean",
+										"name": {
+											"type": "mf-name",
+											"name": "color",
+											"tokens": [
+												[
+													"ident-token",
+													"color",
+													6,
+													10,
+													{
+														"value": "color"
+													}
+												]
+											]
+										},
+										"tokens": [
+											[
+												"ident-token",
+												"color",
+												6,
+												10,
+												{
+													"value": "color"
+												}
+											]
+										]
+									},
+									"before": [
+										[
+											"(-token",
+											"(",
+											5,
+											5,
+											null
+										]
+									],
+									"after": [
+										[
+											")-token",
+											")",
+											11,
+											11,
+											null
+										]
+									]
+								},
+								"before": [],
+								"after": []
+							}
+						}
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							12,
+							12,
+							null
+						]
+					]
+				},
+				"list": [
+					{
+						"type": "media-and",
+						"modifier": [
+							[
+								"whitespace-token",
+								" ",
+								13,
+								13,
+								null
+							],
+							[
+								"ident-token",
+								"and",
+								14,
+								16,
+								{
+									"value": "and"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								17,
+								17,
+								null
+							]
+						],
+						"media": {
+							"type": "media-in-parens",
+							"media": {
+								"type": "media-condition",
+								"media": {
+									"type": "media-not",
+									"modifier": [
+										[
+											"ident-token",
+											"not",
+											19,
+											21,
+											{
+												"value": "not"
+											}
+										],
+										[
+											"whitespace-token",
+											" ",
+											22,
+											22,
+											null
+										]
+									],
+									"media": {
+										"type": "media-in-parens",
+										"media": {
+											"type": "media-feature",
+											"feature": {
+												"type": "mf-boolean",
+												"name": {
+													"type": "mf-name",
+													"name": "hover",
+													"tokens": [
+														[
+															"ident-token",
+															"hover",
+															24,
+															28,
+															{
+																"value": "hover"
+															}
+														]
+													]
+												},
+												"tokens": [
+													[
+														"ident-token",
+														"hover",
+														24,
+														28,
+														{
+															"value": "hover"
+														}
+													]
+												]
+											},
+											"before": [
+												[
+													"(-token",
+													"(",
+													23,
+													23,
+													null
+												]
+											],
+											"after": [
+												[
+													")-token",
+													")",
+													29,
+													29,
+													null
+												]
+											]
+										},
+										"before": [],
+										"after": []
+									}
+								}
+							},
+							"before": [
+								[
+									"(-token",
+									"(",
+									18,
+									18,
+									null
+								]
+							],
+							"after": [
+								[
+									")-token",
+									")",
+									30,
+									30,
+									null
+								]
+							]
+						}
+					}
+				],
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

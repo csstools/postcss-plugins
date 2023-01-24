@@ -26,7 +26,7 @@ jobs:
       fail-fast: false
       # Test node 14/16/18 on ubuntu
       # Test node 18 on macos/windows
-      # Enable annotations only for node 16 + ubuntu
+      # Enable annotations only for node 18 + ubuntu
       matrix:
         os: [ubuntu-latest]
         node: [14, 16, 18]

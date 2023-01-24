@@ -1,5 +1,10 @@
 # Changes to PostCSS Selector Not
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+- Fix: Do not throw when a selector is invalid, show a warning instead.
+
 ### 6.0.1 (July 8, 2022)
 
 - Fixed: Case insensitive `:not` matching.

@@ -1,12 +1,16 @@
 # Changes to PostCSS RebeccaPurple
 
+### Unreleased (major)
+
+- Updated: Support for Node v14+ (major).
+
 ### 7.1.1 (July 8, 2022)
 
 - Fix case insensitive matching.
 
 ### 7.1.0 (June 10, 2022)
 
-- Added: Typescript typings
+- Added: TypeScript typings
 
 ### 7.0.2 (January 2, 2022)
 

@@ -1,0 +1,128 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(min-width: 300px)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-plain",
+						"name": {
+							"type": "mf-name",
+							"name": "min-width",
+							"tokens": [
+								[
+									"ident-token",
+									"min-width",
+									1,
+									9,
+									{
+										"value": "min-width"
+									}
+								]
+							]
+						},
+						"value": {
+							"type": "mf-value",
+							"value": {
+								"type": "token",
+								"tokens": [
+									[
+										"dimension-token",
+										"300px",
+										12,
+										16,
+										{
+											"value": 300,
+											"type": "integer",
+											"unit": "px"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									11,
+									11,
+									null
+								],
+								[
+									"dimension-token",
+									"300px",
+									12,
+									16,
+									{
+										"value": 300,
+										"type": "integer",
+										"unit": "px"
+									}
+								]
+							]
+						},
+						"tokens": [
+							[
+								"ident-token",
+								"min-width",
+								1,
+								9,
+								{
+									"value": "min-width"
+								}
+							],
+							[
+								"colon-token",
+								":",
+								10,
+								10,
+								null
+							],
+							[
+								"whitespace-token",
+								" ",
+								11,
+								11,
+								null
+							],
+							[
+								"dimension-token",
+								"300px",
+								12,
+								16,
+								{
+									"value": 300,
+									"type": "integer",
+									"unit": "px"
+								}
+							]
+						]
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							17,
+							17,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

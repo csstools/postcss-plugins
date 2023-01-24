@@ -1,0 +1,300 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(1/5<aspect-ratio<3/2)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-range-value-name-value",
+						"name": {
+							"type": "mf-name",
+							"name": "aspect-ratio",
+							"tokens": [
+								[
+									"ident-token",
+									"aspect-ratio",
+									5,
+									16,
+									{
+										"value": "aspect-ratio"
+									}
+								]
+							]
+						},
+						"valueOne": {
+							"type": "mf-value",
+							"value": [
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"number-token",
+											"1",
+											1,
+											1,
+											{
+												"value": 1,
+												"type": "integer"
+											}
+										]
+									]
+								},
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"delim-token",
+											"/",
+											2,
+											2,
+											{
+												"value": "/"
+											}
+										]
+									]
+								},
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"number-token",
+											"5",
+											3,
+											3,
+											{
+												"value": 5,
+												"type": "integer"
+											}
+										]
+									]
+								}
+							],
+							"tokens": [
+								[
+									"number-token",
+									"1",
+									1,
+									1,
+									{
+										"value": 1,
+										"type": "integer"
+									}
+								],
+								[
+									"delim-token",
+									"/",
+									2,
+									2,
+									{
+										"value": "/"
+									}
+								],
+								[
+									"number-token",
+									"5",
+									3,
+									3,
+									{
+										"value": 5,
+										"type": "integer"
+									}
+								]
+							]
+						},
+						"valueTwo": {
+							"type": "mf-value",
+							"value": [
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"number-token",
+											"3",
+											18,
+											18,
+											{
+												"value": 3,
+												"type": "integer"
+											}
+										]
+									]
+								},
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"delim-token",
+											"/",
+											19,
+											19,
+											{
+												"value": "/"
+											}
+										]
+									]
+								},
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"number-token",
+											"2",
+											20,
+											20,
+											{
+												"value": 2,
+												"type": "integer"
+											}
+										]
+									]
+								}
+							],
+							"tokens": [
+								[
+									"number-token",
+									"3",
+									18,
+									18,
+									{
+										"value": 3,
+										"type": "integer"
+									}
+								],
+								[
+									"delim-token",
+									"/",
+									19,
+									19,
+									{
+										"value": "/"
+									}
+								],
+								[
+									"number-token",
+									"2",
+									20,
+									20,
+									{
+										"value": 2,
+										"type": "integer"
+									}
+								]
+							]
+						},
+						"tokens": [
+							[
+								"number-token",
+								"1",
+								1,
+								1,
+								{
+									"value": 1,
+									"type": "integer"
+								}
+							],
+							[
+								"delim-token",
+								"/",
+								2,
+								2,
+								{
+									"value": "/"
+								}
+							],
+							[
+								"number-token",
+								"5",
+								3,
+								3,
+								{
+									"value": 5,
+									"type": "integer"
+								}
+							],
+							[
+								"delim-token",
+								"<",
+								4,
+								4,
+								{
+									"value": "<"
+								}
+							],
+							[
+								"ident-token",
+								"aspect-ratio",
+								5,
+								16,
+								{
+									"value": "aspect-ratio"
+								}
+							],
+							[
+								"delim-token",
+								"<",
+								17,
+								17,
+								{
+									"value": "<"
+								}
+							],
+							[
+								"number-token",
+								"3",
+								18,
+								18,
+								{
+									"value": 3,
+									"type": "integer"
+								}
+							],
+							[
+								"delim-token",
+								"/",
+								19,
+								19,
+								{
+									"value": "/"
+								}
+							],
+							[
+								"number-token",
+								"2",
+								20,
+								20,
+								{
+									"value": 2,
+									"type": "integer"
+								}
+							]
+						]
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							21,
+							21,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

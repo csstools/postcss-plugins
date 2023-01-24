@@ -1,0 +1,93 @@
+[
+	{
+		"parts": [
+			[
+				"ident-token",
+				"abc",
+				0,
+				2,
+				{
+					"value": "abc"
+				}
+			],
+			[
+				"delim-token",
+				".",
+				3,
+				3,
+				{
+					"value": "."
+				}
+			],
+			[
+				"ident-token",
+				"def",
+				4,
+				6,
+				{
+					"value": "def"
+				}
+			]
+		],
+		"segments": [
+			"abc",
+			"def"
+		],
+		"name": "abc.def"
+	},
+	{
+		"parts": [
+			[
+				"ident-token",
+				"ghi",
+				8,
+				10,
+				{
+					"value": "ghi"
+				}
+			],
+			[
+				"delim-token",
+				".",
+				11,
+				11,
+				{
+					"value": "."
+				}
+			],
+			[
+				"ident-token",
+				"jkl",
+				12,
+				14,
+				{
+					"value": "jkl"
+				}
+			],
+			[
+				"delim-token",
+				".",
+				15,
+				15,
+				{
+					"value": "."
+				}
+			],
+			[
+				"ident-token",
+				"mno",
+				16,
+				18,
+				{
+					"value": "mno"
+				}
+			]
+		],
+		"segments": [
+			"ghi",
+			"jkl",
+			"mno"
+		],
+		"name": "ghi.jkl.mno"
+	}
+]
