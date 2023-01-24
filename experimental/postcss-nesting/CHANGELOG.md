@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting Experimental
 
-### Unreleased
+### 2.0.0 (January 24, 2023)
 
 - Fix: Change how `&` is handled in functional pseudo classes in a non-nested context.
 
@@ -12,6 +12,8 @@
 - :has(:scope) {}
 + :has(:is(:root,:host)) {}
 ```
+
+- Updated: Support for Node v14+ (major).
 
 ### 1.1.1 (November 16, 2022)
 
