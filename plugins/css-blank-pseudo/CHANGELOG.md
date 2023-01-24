@@ -1,12 +1,12 @@
 # Changes to CSS Blank Pseudo
 
-### Unreleased (major)
+### 5.0.0 (January 24, 2023)
 
 - Updated: Support for Node v14+ (major).
 - Fix: Do not throw when a selector is invalid, show a warning instead.
 - Updated: Export and document the plugin options types.
 
-### 4.1.1 (August, 23, 2022)
+### 4.1.1 (August 23, 2022)
 
 - Fix: assign global browser polyfill to `window`, `self` or a blank object.
 
