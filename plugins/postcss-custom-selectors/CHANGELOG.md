@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Selectors
 
-### Unreleased
+### 7.1.0 (January 24, 2023)
 
 - Added: Support for Cascade Layers.
 

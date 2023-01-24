@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased
+### 13.1.0 (January 24, 2023)
 
 - Added: Support for Cascade Layers.
 - Improve plugin performance (port of fixes in `v12.1.11`)
