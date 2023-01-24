@@ -30,7 +30,7 @@
 		"build:eleventy": "NODE_ENV=production eleventy"
 	},
 	"engines": {
-		"node": "^12 || ^14 || >=16"
+		"node": "^14 || ^16 || >=18"
 	},
 	"stylelint": {
 		"extends": "stylelint-config-standard",
@@ -70,37 +70,37 @@
 		"directory": "sites/postcss-preset-env"
 	},
 	"dependencies": {
-		"@11ty/eleventy": "^2.0.0-canary.25",
-		"@babel/core": "^7.18.2",
-		"@babel/preset-env": "^7.18.2",
-		"@rollup/plugin-babel": "^6.0.0",
-		"@rollup/plugin-commonjs": "^24.0.0",
-		"@rollup/plugin-node-resolve": "^15.0.0",
-		"@rollup/plugin-terser": "^0.3.0",
+		"@11ty/eleventy": "^2.0.0-beta.1",
+		"@babel/core": "^7.20.12",
+		"@babel/preset-env": "^7.20.2",
+		"@rollup/plugin-babel": "^6.0.3",
+		"@rollup/plugin-commonjs": "^24.0.1",
+		"@rollup/plugin-node-resolve": "^15.0.1",
+		"@rollup/plugin-terser": "^0.4.0",
 		"babel-eslint": "^10.1.0",
-		"cssdb": "^7.0.0",
-		"cssnano": "^5.1.10",
-		"eslint": "^8.16.0",
+		"cssdb": "^7.4.0",
+		"cssnano": "^5.1.14",
+		"eslint": "^8.32.0",
 		"eslint-config-airbnb": "^19.0.4",
-		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-import": "^2.27.5",
 		"hasha": "^5.2.2",
-		"markdown-it": "^13.0.0",
+		"markdown-it": "^13.0.1",
 		"npm-run-all": "^4.1.5",
-		"postcss": "^8.4.14",
-		"postcss-cli": "^10.0.0",
-		"postcss-import": "^15.0.0",
-		"postcss-preset-env": "^8.0.0-alpha.1",
-		"rollup": "^3.0.0",
+		"postcss": "^8.4.21",
+		"postcss-cli": "^10.1.0",
+		"postcss-import": "^15.1.0",
+		"postcss-preset-env": "^8.0.0",
+		"rollup": "^3.10.1",
 		"rollup-plugin-filesize": "^9.1.2",
 		"rollup-plugin-livereload": "^2.0.5",
-		"tslib": "^2.4.0",
-		"typescript": "^4.7.2"
+		"tslib": "^2.4.1",
+		"typescript": "^4.9.4"
 	},
 	"devDependencies": {
-		"@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
 		"@rollup/plugin-json": "^6.0.0",
-		"browser-sync": "^2.27.10",
-		"rollup-plugin-polyfill-node": "^0.11.0"
+		"browser-sync": "^2.27.11",
+		"rollup-plugin-polyfill-node": "^0.12.0"
 	},
 	"volta": {
 		"node": "16.14.0"

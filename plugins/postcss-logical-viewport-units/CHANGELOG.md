@@ -1,6 +1,6 @@
 # Changes to PostCSS Logical Viewport Units
 
-### Unreleased
+### 1.0.1 (January 24, 2023)
 
 - Correctly list dependencies in `package.json`
 
