@@ -37,11 +37,11 @@
 		"README.md",
 		"dist"
 	],
+	"dependencies": {
+		"@csstools/css-tokenizer": "^2.0.0"
+	},
 	"peerDependencies": {
 		"postcss": "^8.4"
-	},
-	"devDependencies": {
-		"@csstools/css-tokenizer": "^2.0.0"
 	},
 	"scripts": {
 		"prebuild": "npm run clean",

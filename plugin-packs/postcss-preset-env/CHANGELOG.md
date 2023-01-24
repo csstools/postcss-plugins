@@ -1,5 +1,62 @@
 # Changes to PostCSS Preset Env
 
+### 8.0.0 (January 24, 2023)
+
+- See [the dedicated Wiki page](https://github.com/csstools/postcss-plugins/wiki/PostCSS-Preset-Env-8) for more information.
+- Added: TypeScript support.
+- Added `@csstools/postcss-media-queries-aspect-ratio-number-values` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values#readme) for usage details.
+- Added `@csstools/postcss-logical-float-and-clear` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-float-and-clear#readme) for usage details.
+- Added `@csstools/postcss-logical-resize` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-resize#readme) for usage details.
+- Added `@csstools/postcss-logical-viewport-units` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units#readme) for usage details.
+- Added `logical` option to control all logical plugins.
+- Added `@csstools/postcss-scope-pseudo-class` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-scope-pseudo-class#readme) for usage details.
+- Updated Support for Node v14+ (major).
+- Fixed: `all-property` and `overflow-wrap-property` now follow the `preserve` plugin option
+- Removed a workaround to consider `blank-pseudo-class` and `prefers-color-scheme-query` as `stage: 1` features when using default options.
+- Removed `postcss-env-function` (breaking).
+- Removed `importFrom` and `exportTo` plugin options from multiple plugins. (breaking)
+	- `postcss-custom-media`
+	- `postcss-custom-properties`
+	- `postcss-custom-selectors`
+- Breaking: `enableClientSidePolyfills` is now `false` by default (was `true`)
+- Updated `@csstools/postcss-cascade-layers` to `3.0.0` (major)
+- Updated `@csstools/postcss-color-function` to `2.0.0` (major)
+- Updated `@csstools/postcss-font-format-keywords` to `2.0.0` (major)
+- Updated `@csstools/postcss-hwb-function` to `2.0.0` (major)
+- Updated `@csstools/postcss-ic-unit` to `2.0.0` (major)
+- Updated `@csstools/postcss-is-pseudo-class` to `3.0.0` (major)
+- Updated `@csstools/postcss-nested-calc` to `2.0.0` (major)
+- Updated `@csstools/postcss-normalize-display-values` to `2.0.0` (major)
+- Updated `@csstools/postcss-oklab-function` to `2.0.0` (major)
+- Updated `@csstools/postcss-scope-pseudo-class` to `2.0.0` (major)
+- Updated `@csstools/postcss-stepped-value-functions` to `2.0.0` (major)
+- Updated `@csstools/postcss-text-decoration-shorthand` to `2.0.0` (major)
+- Updated `@csstools/postcss-trigonometric-functions` to `2.0.0` (major)
+- Updated `@csstools/postcss-unset-value` to `2.0.0` (major)
+- Updated `css-blank-pseudo` to `5.0.0` (major)
+- Updated `css-has-pseudo` to `5.0.0` (major)
+- Updated `css-prefers-color-scheme` to `8.0.0` (major)
+- Updated `postcss-attribute-case-insensitive` to `6.0.0` (major)
+- Updated `postcss-color-functional-notation` to `5.0.0` (major)
+- Updated `postcss-color-hex-alpha` to `9.0.0` (major)
+- Updated `postcss-color-rebeccapurple` to `8.0.0` (major)
+- Updated `postcss-custom-media` to `9.1.0` (major)
+- Updated `postcss-custom-properties` to `13.1.0` (minor)
+- Updated `postcss-custom-selectors` to `7.1.0` (minor)
+- Updated `postcss-dir-pseudo-class` to `7.0.0` (major)
+- Updated `postcss-double-position-gradients` to `4.0.0` (major)
+- Updated `postcss-focus-visible` to `8.0.0` (major)
+- Updated `postcss-focus-within` to `7.0.0` (major)
+- Updated `postcss-gap-properties` to `4.0.0` (major)
+- Updated `postcss-image-set-function` to `5.0.0` (major)
+- Updated `postcss-lab-function` to `5.0.0` (major)
+- Updated `postcss-logical` to `6.0.0` (major)
+- Updated `postcss-nesting` to `11.0.0` (major)
+- Updated `postcss-overflow-shorthand` to `4.0.0` (major)
+- Updated `postcss-place` to `8.0.0` (major)
+- Updated `postcss-pseudo-class-any-link` to `8.0.0` (major)
+- Updated `postcss-selector-not` to `7.0.0` (major)
+
 ### (8.0.0-rc.0) (January 24, 2023)
 
 - Added: TypeScript support.
