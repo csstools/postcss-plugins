@@ -1,6 +1,6 @@
 # Changes to PostCSS Progressive Custom Properties
 
-### Unreleased (major)
+### 2.0.0 (January 24, 2022)
 
 - Updated: Support for Node v14+ (major).
 
