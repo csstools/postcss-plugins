@@ -1,3 +1,5 @@
+# Changes to Media Query List Parser
+
 ### 2.0.0 (January 19, 2023)
 
 - Refactor `MediaFeatureBoolean` so that it follows the same structure as `MediaFeaturePlain` (breaking)
