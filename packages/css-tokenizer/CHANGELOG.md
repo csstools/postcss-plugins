@@ -1,3 +1,5 @@
+# Changes to CSS Tokenizer
+
 ### 2.0.0 (January 19, 2023)
 
 - Simplify `Reader` interface (breaking)

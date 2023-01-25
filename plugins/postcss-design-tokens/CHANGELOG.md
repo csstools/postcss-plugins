@@ -1,6 +1,6 @@
 # Changes to PostCSS Design Tokens
 
-### Unreleased 
+### Unreleased
 
 - Fix unit conversion
 
