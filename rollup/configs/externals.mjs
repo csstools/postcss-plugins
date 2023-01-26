@@ -1,5 +1,6 @@
 export const externalsForCLI = [
 	'fs',
+	'https',
 	'path',
 	'url',
 	'vm',
@@ -76,6 +77,7 @@ export const externalsForCLI = [
 export const externalsForPlugin = [
 	'assert',
 	'fs',
+	'https',
 	'module',
 	'path',
 	'url',
