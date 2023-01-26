@@ -1,5 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased
+
+- Improve `types` declaration in `package.json`
+
 ### 3.0.0 (January 24, 2023)
 
 - Updated: Support for Node v14+ (major).

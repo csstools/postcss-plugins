@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased
+
+- Improve `types` declaration in `package.json`
+
 ### 8.0.0 (January 24, 2023)
 
 - See [the dedicated Wiki page](https://github.com/csstools/postcss-plugins/wiki/PostCSS-Preset-Env-8) for more information.

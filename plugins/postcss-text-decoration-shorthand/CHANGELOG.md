@@ -1,5 +1,9 @@
 # Changes to PostCSS Text Decoration Shorthand
 
+### Unreleased
+
+- Improve `types` declaration in `package.json`
+
 ### 2.0.0 (January 24, 2023)
 
 - Updated: Support for Node v14+ (major).

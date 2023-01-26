@@ -93,8 +93,19 @@ const formatted = {};
 	formatted.unpkg = packageJSONInfo.unpkg;
 	delete packageJSONInfo.unpkg;
 
-	formatted.exports = packageJSONInfo.exports;
-	delete packageJSONInfo.exports;
+	if (packageJSONInfo.exports) {
+		formatted.exports = packageJSONInfo.exports;
+		if (packageJSONInfo.exports['.'] && packageJSONInfo.exports['.'].types) {
+			formatted.exports['.'] = {
+				types: packageJSONInfo.exports['.'].types,
+				...formatted.exports['.'],
+			}
+		}
+		delete packageJSONInfo.exports;
+	} else if (packageJSONInfo.exports) {
+		formatted.exports = packageJSONInfo.exports;
+		delete packageJSONInfo.exports;
+	}
 
 	formatted.files = packageJSONInfo.files;
 	delete packageJSONInfo.files;
