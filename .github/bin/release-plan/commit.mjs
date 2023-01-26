@@ -7,7 +7,7 @@ export async function commit(newVersion, packageDirectory, packageName) {
 			[
 				'commit',
 				'-am',
-				`"${packageName} v${newVersion}"` // "@csstools/css-tokenizer v1.0.0"
+				`${packageName} v${newVersion}` // "@csstools/css-tokenizer v1.0.0"
 			],
 			{
 				cwd: packageDirectory
