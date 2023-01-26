@@ -65,7 +65,7 @@ if (isDryRun) {
 }
 
 for (const workspace of needsRelease.values()) {
-	console.log(`Releasing : ${workspace.name}...`);
+	console.log(`Releasing : ${workspace.name}`);
 	// Increment the version
 	workspace.newVersion = await npmVersion(workspace.increment, workspace.path);
 
@@ -77,17 +77,17 @@ for (const workspace of needsRelease.values()) {
 	await updateDocumentation(workspace.path);
 
 	// Publish to npm
-	// await npmPublish(workspace.path, workspace.name);
+	await npmPublish(workspace.path, workspace.name);
 
 	// Commit changes
-	// await commitAfterPackageRelease(workspace.newVersion, workspace.path, workspace.name);
+	await commitAfterPackageRelease(workspace.newVersion, workspace.path, workspace.name);
 
 	// TODO : remove this after the script proves to work ok.
-	// process.exit(0);
+	process.exit(0);
 }
 
 console.log(''); // empty line
-console.log('Preparing next batch...');
+console.log('Preparing next batch');
 
 for (const workspace of waitingOnDependencies.values()) {
 	const packageInfo = JSON.parse(await fs.readFile(path.join(workspace.path, 'package.json')));
@@ -117,7 +117,7 @@ for (const workspace of waitingOnDependencies.values()) {
 	}
 }
 
-console.log('\nUpdating lock file...');
+console.log('\nUpdating lock file');
 await npmInstall();
 
 console.log('\nDone 🎉');
