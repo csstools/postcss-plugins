@@ -73,11 +73,11 @@ for (const workspace of needsRelease.values()) {
 	// Update the documentation
 	await updateDocumentation(workspace.path);
 
-	// Commit changes
-	await commit(newVersion, workspace.path, workspace.name);
-
 	// Publish to npm
 	await publish(workspace.path, workspace.name);
+
+	// Commit changes
+	await commit(newVersion, workspace.path, workspace.name);
 
 	// TODO : remove this after the script proves to work ok.
 	process.exit(0);

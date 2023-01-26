@@ -46,6 +46,8 @@
 		"lint:licenses": "node .github/bin/license/check-license.mjs",
 		"lint:rollup-config": "eslint ./rollup --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"new-plugin": "node ./.github/bin/new-plugin.mjs",
+		"release-plan": ".github/bin/release-plan/release-plan.mjs",
+		"release-plan:dry-run": ".github/bin/release-plan/release-plan.mjs --dry-run",
 		"test": "npm run test --workspaces --if-present",
 		"test:browser": "npm run test:browser --workspaces --if-present"
 	},
