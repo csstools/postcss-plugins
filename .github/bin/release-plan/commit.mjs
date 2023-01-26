@@ -1,6 +1,6 @@
 import { spawn } from 'child_process';
 
-export async function commit(newVersion, packageDirectory, packageName) {
+export async function commitAfterPackageRelease(newVersion, packageDirectory, packageName) {
 	await new Promise((resolve, reject) => {
 		const commitCmd = spawn(
 			'git',

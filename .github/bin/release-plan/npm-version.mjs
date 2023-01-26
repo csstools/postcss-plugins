@@ -2,7 +2,7 @@ import { spawn } from 'child_process';
 import fs from 'fs/promises';
 import path from 'path';
 
-export async function version(increment, packageDirectory) {
+export async function npmVersion(increment, packageDirectory) {
 	await new Promise((resolve, reject) => {
 		const versionCmd = spawn(
 			'npm',
