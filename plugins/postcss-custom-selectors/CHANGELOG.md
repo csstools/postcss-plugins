@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Selectors
 
+### Unreleased
+
+- Improve `types` declaration in `package.json`
+
 ### 7.1.0 (January 24, 2023)
 
 - Added: Support for Cascade Layers.

@@ -1,5 +1,9 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased
+
+- Improve `types` declaration in `package.json`
+
 ### 3.0.0 (January 24, 2023)
 
 - Run `postcss-cascade-layers` late compared to other PostCSS plugins (breaking)

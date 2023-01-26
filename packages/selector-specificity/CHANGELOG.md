@@ -1,5 +1,9 @@
 # Changes to Selector Specificity
 
+### Unreleased
+
+- Improve `types` declaration in `package.json`
+
 ### 2.1.0 (January 19, 2023)
 
 - Add support for `::slotted`

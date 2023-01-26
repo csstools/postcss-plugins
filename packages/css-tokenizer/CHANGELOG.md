@@ -1,5 +1,9 @@
 # Changes to CSS Tokenizer
 
+### Unreleased
+
+- Improve `types` declaration in `package.json`
+
 ### 2.0.0 (January 19, 2023)
 
 - Simplify `Reader` interface (breaking)
