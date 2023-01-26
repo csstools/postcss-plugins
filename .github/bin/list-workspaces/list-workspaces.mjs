@@ -1,7 +1,7 @@
 import path from 'path';
 import { promises as fsp } from 'fs';
 import glob from 'glob';
-import { toposort } from './toposort.mjs';
+import { toposort } from '../util/toposort.mjs';
 
 export async function listWorkspaces() {
 	try {
@@ -32,9 +32,11 @@ export async function listWorkspaces() {
 			result.push({
 				path: packagePath,
 				name: packageJSON.name,
+				private: packageJSON.private,
 				dependencies: [
-					...Object.keys(Object(packageJSON.devDependencies)),
 					...Object.keys(Object(packageJSON.dependencies)),
+					...Object.keys(Object(packageJSON.devDependencies)),
+					...Object.keys(Object(packageJSON.peerDependencies)),
 				],
 			});
 		}

@@ -1,6 +1,6 @@
 # Changes to PostCSS Focus Visible
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

@@ -1,6 +1,6 @@
 # Changes to PostCSS Overflow Shorthand
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

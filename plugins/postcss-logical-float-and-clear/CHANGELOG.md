@@ -1,6 +1,6 @@
 # Changes to PostCSS Logical Float And Clear
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

@@ -1,6 +1,6 @@
 # Changes to PostCSS Logical Resize
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

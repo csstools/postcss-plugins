@@ -1,6 +1,6 @@
 # Changes to PostCSS image-set() Function
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

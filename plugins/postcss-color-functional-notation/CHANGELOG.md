@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Functional Notation
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

@@ -1,6 +1,6 @@
 # Changes to CSSTools CLI
 
-### Unreleased
+### Unreleased (patch)
 
 - Updated `postcss-preset-env` to`8.0.0`
 

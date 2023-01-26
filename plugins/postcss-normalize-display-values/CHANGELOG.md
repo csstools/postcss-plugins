@@ -1,6 +1,6 @@
 # Changes to PostCSS Normalize Display Values
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

@@ -1,6 +1,6 @@
 # Changes to PostCSS Logical Viewport Units
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

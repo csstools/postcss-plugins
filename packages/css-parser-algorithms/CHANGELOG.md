@@ -1,6 +1,6 @@
 # Changes to CSS Parser Algorithms
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

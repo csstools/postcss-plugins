@@ -1,6 +1,6 @@
 # Changes to PostCSS Logical Properties
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 
