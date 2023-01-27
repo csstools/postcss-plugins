@@ -1,7 +1,8 @@
 # Changes to PostCSS Text Decoration Shorthand
 
-### Unreleased
+### Unreleased (minor)
 
+- Add: support for multiple line values (`text-decoration: overline underline;`)
 - Improve `types` declaration in `package.json`
 
 ### 2.0.0 (January 24, 2023)
