@@ -201,3 +201,35 @@ a {
 		order: 74.1;
 	}
 }
+
+.mixed-declarations-and-rules--a {
+	& {
+		nested: 1;
+	}
+
+	declaration: 1;
+}
+
+.mixed-declarations-and-rules--b {
+	declaration: 1;
+
+	& {
+		nested: 1;
+	}
+
+	declaration: 2;
+
+	@media screen {
+		nested: 2;
+	}
+
+	declaration: 3;
+}
+
+.node-less-at-rule {
+	declaration: 1;
+
+	@layer foo;
+
+	declaration: 2;
+}

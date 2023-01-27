@@ -357,29 +357,29 @@ __bar.foo {
 /* Example 7 */
 article {
 	color: green;
-}
-article {
-		color: blue;
 
 	/*
 		NOTE : We are more forgiving than the spec
 		This declaration is preserved
 	*/
 	color: red;
+}
+article {
+		color: blue;
 	}
 
 article {
 	color: green;
-}
-
-article {
-		color: blue;
 
 	/*
 		NOTE : We are more forgiving than the spec
 		This declaration is preserved
 	*/
 	color: red;
+}
+
+article {
+		color: blue;
 	}
 
 article.foo {
