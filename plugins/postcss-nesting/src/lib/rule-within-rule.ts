@@ -10,7 +10,7 @@ export default function transformRuleWithinRule(node: Rule, parent: Rule, result
 
 	// update the selectors of the node to be merged with the parent
 	try {
-		node.selectors = mergeSelectors(parent.selectors, node.selectors, opts);
+		node.selectors = mergeSelectors(node, result, parent.selectors, node.selectors, opts, false);
 	} catch (err) {
 		node.warn(result, `Failed to parse selectors : "${parent.selector}" / "${node.selector}" with message: "${err.message}"`);
 		return;
@@ -29,7 +29,6 @@ export default function transformRuleWithinRule(node: Rule, parent: Rule, result
 
 export function isValidRuleWithinRule(node: Rule) {
 	return node.selectors.every((selector) => {
-		return selector.trim().indexOf('&') === 0 &&
-				selector.indexOf('|') === -1;
+		return selector.indexOf('|') === -1;
 	});
 }

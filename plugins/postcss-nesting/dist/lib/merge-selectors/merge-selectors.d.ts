@@ -1,2 +1,3 @@
 import { options } from '../options';
-export default function mergeSelectors(fromSelectors: Array<string>, toSelectors: Array<string>, opts: options): any[];
+import type { Node, Result } from 'postcss';
+export default function mergeSelectors(node: Node, postcssResult: Result, fromSelectors: Array<string>, toSelectors: Array<string>, opts: options, fromAtNest?: boolean): any[];

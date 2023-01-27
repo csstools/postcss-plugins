@@ -124,12 +124,14 @@ postcssTape(plugin)({
 	},
 	'ignore': {
 		message: 'ignores invalid entries',
+		warnings: 1
 	},
 	'ignore:no-is-pseudo-selector': {
 		message: 'ignores invalid entries { noIsPseudoSelector: true }',
 		options: {
 			noIsPseudoSelector: true,
 		},
+		warnings: 1
 	},
 	'mixin-declaration': {
 		message: 'supports other visitors (mixin declaration)',
@@ -161,6 +163,9 @@ postcssTape(plugin)({
 		options: {
 			noIsPseudoSelector: true,
 		},
+	},
+	'relative-selectors': {
+		message: 'supports relative selectors',
 	},
 	'requires-is-pseudo': {
 		message: 'examples of selector nesting that require :is to be correct',
