@@ -1,6 +1,6 @@
 # Changes to CSS Blank Pseudo
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

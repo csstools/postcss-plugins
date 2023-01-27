@@ -1,6 +1,6 @@
 # Changes to PostCSS Stepped Value Functions
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

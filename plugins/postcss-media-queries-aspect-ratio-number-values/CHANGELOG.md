@@ -1,6 +1,6 @@
 # Changes to PostCSS Media Queries Aspect-Ratio Number Values
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 - Updated `@csstools/css-parser-algorithms` to `2.0.0` (major)

@@ -1,6 +1,6 @@
 # Changes to PostCSS Attribute Case Insensitive
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

@@ -1,6 +1,6 @@
 # Changes to PostCSS Trigonometric Functions
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

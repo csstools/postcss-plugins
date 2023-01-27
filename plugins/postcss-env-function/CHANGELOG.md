@@ -1,6 +1,6 @@
 # Changes to PostCSS Environment Variables
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

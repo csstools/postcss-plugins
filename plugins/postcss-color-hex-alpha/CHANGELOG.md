@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Hex Alpha
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

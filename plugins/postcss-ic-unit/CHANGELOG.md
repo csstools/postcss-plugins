@@ -1,6 +1,6 @@
 # Changes to PostCSS IC Unit
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

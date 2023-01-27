@@ -1,6 +1,6 @@
 # Changes to Cascade Layer Name Parser
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

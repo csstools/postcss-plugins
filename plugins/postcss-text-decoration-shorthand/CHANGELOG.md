@@ -1,6 +1,6 @@
 # Changes to PostCSS Text Decoration Shorthand
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

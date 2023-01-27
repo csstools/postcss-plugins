@@ -1,6 +1,6 @@
 # Changes to Media Query List Parser
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

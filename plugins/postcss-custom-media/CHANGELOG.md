@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Media
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

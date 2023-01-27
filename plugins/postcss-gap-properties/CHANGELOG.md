@@ -1,6 +1,6 @@
 # Changes to PostCSS Gap Properties
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

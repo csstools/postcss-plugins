@@ -1,10 +1,10 @@
 # Changes to PostCSS Design Tokens
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 
-### Unreleased
+### Unreleased (patch)
 
 - Fix unit conversion
 

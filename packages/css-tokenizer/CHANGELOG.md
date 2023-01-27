@@ -1,6 +1,6 @@
 # Changes to CSS Tokenizer
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

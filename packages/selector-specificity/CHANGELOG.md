@@ -1,6 +1,6 @@
 # Changes to Selector Specificity
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

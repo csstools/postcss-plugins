@@ -1,6 +1,6 @@
 # Changes to PostCSS Scope Pseudo Class
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 

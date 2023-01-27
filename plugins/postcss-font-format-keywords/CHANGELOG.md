@@ -1,6 +1,6 @@
 # Changes to PostCSS Font Format
 
-### Unreleased
+### Unreleased (patch)
 
 - Improve `types` declaration in `package.json`
 
