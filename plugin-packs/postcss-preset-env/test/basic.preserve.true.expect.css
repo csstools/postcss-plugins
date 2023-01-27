@@ -80,17 +80,6 @@
 	   -moz-box-ordinal-group: 5;
 	    -ms-flex-order: 4;
 	        order: 4;
-}
-
-.test-nesting-rules p {
-		-webkit-box-ordinal-group: 6;
-		-webkit-order: 5;
-		   -moz-box-ordinal-group: 6;
-		    -ms-flex-order: 5;
-		        order: 5;
-	}
-
-.test-nesting-rules {
 
 	-webkit-box-ordinal-group: 7;
 
@@ -103,6 +92,14 @@
 	        order: 6;
 }
 
+.test-nesting-rules p {
+		-webkit-box-ordinal-group: 6;
+		-webkit-order: 5;
+		   -moz-box-ordinal-group: 6;
+		    -ms-flex-order: 5;
+		        order: 5;
+	}
+
 .test-nesting-rules,
 #test-is-pseudo {
 	-webkit-box-ordinal-group: 8;
@@ -110,18 +107,6 @@
 	   -moz-box-ordinal-group: 8;
 	    -ms-flex-order: 7;
 	        order: 7;
-}
-
-.test-nesting-rules + p, #test-is-pseudo + p {
-		-webkit-box-ordinal-group: 9;
-		-webkit-order: 8;
-		   -moz-box-ordinal-group: 9;
-		    -ms-flex-order: 8;
-		        order: 8;
-	}
-
-.test-nesting-rules,
-#test-is-pseudo {
 
 	-webkit-box-ordinal-group: 10;
 
@@ -133,6 +118,14 @@
 
 	        order: 9;
 }
+
+.test-nesting-rules + p, #test-is-pseudo + p {
+		-webkit-box-ordinal-group: 9;
+		-webkit-order: 8;
+		   -moz-box-ordinal-group: 9;
+		    -ms-flex-order: 8;
+		        order: 8;
+	}
 
 @custom-media --narrow-window (max-width: 30em);
 
