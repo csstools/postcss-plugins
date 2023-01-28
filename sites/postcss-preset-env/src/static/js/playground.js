@@ -2,6 +2,7 @@ import { EditorState, Transaction, Annotation } from '@codemirror/state';
 import { EditorView } from '@codemirror/view';
 import { basicSetup } from 'codemirror';
 import { css } from '@codemirror/lang-css';
+import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
 import postcss from 'postcss';
 import postcssPresetEnv from 'postcss-preset-env';
@@ -9,11 +10,13 @@ import postcssPresetEnv from 'postcss-preset-env';
 // hack to make browserslist work in a browser. (irony...)
 self.process = { env: {} };
 
-function processCss(source) {
-	return postcss([postcssPresetEnv({
-		browsers: ['chrome 30'],
-		stage: 0,
-	})]).process(
+const startConfig = {
+	browsers: ['chrome 70'],
+	stage: 0,
+};
+
+function processCss(source, config) {
+	return postcss([postcssPresetEnv(config)]).process(
 		source,
 		{
 			form: 'input',
@@ -26,6 +29,10 @@ function processCss(source) {
 	});
 }
 
+function renderConfig(config) {
+	return JSON.stringify(config, null, '\t').replaceAll('\n', '\n\t\t');
+}
+
 let inputState = EditorState.create({
 	doc: `:root {
 	--mainColor: #12345678;
@@ -33,7 +40,6 @@ let inputState = EditorState.create({
 
 body {
 	color: var(--mainColor);
-	font-family: system-ui;
 }
 
 a {
@@ -68,6 +74,23 @@ let outputState = EditorState.create({
 	],
 });
 
+let configState = EditorState.create({
+	doc: `const postcssPresetEnv = require('postcss-preset-env');
+
+module.exports = {
+	plugins: [
+		postcssPresetEnv(${renderConfig(startConfig)})
+	]
+}
+`,
+	extensions: [
+		basicSetup,
+		javascript(),
+		oneDark,
+		EditorView.editable.of(false),
+	],
+});
+
 let syncAnnotation = Annotation.define();
 
 function syncDispatch(tr, view, other) {
@@ -79,7 +102,7 @@ function syncDispatch(tr, view, other) {
 			annotations.push(Transaction.userEvent.of(userEvent));
 		}
 
-		processCss(view.state.doc).then((output) => {
+		processCss(view.state.doc, startConfig).then((output) => {
 			let update = other.state.update({ changes: { from: 0, to: other.state.doc.length, insert: output } });
 			other.update([update]);
 		});
@@ -88,16 +111,21 @@ function syncDispatch(tr, view, other) {
 
 let inputView = new EditorView({
 	state: inputState,
-	parent: document.querySelector('#editor1'),
+	parent: document.querySelector('#input-editor'),
 	dispatch: tr => syncDispatch(tr, inputView, outputView),
+});
+
+let configView = new EditorView({
+	state: configState,
+	parent: document.querySelector('#config-editor'),
 });
 
 let outputView = new EditorView({
 	state: outputState,
-	parent: document.querySelector('#editor2'),
+	parent: document.querySelector('#output-editor'),
 });
 
-processCss(inputState.doc).then((output) => {
+processCss(inputState.doc, startConfig).then((output) => {
 	let update = outputView.state.update({ changes: { from: 0, to: outputView.state.doc.length, insert: output } });
 	outputView.update([update]);
 });

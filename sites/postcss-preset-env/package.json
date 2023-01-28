@@ -74,6 +74,7 @@
 		"@babel/core": "^7.20.12",
 		"@babel/preset-env": "^7.20.2",
 		"@codemirror/lang-css": "^6.0.1",
+		"@codemirror/lang-javascript": "^6.1.2",
 		"@codemirror/state": "^6.2.0",
 		"@codemirror/theme-one-dark": "^6.1.0",
 		"@rollup/plugin-babel": "^6.0.3",
