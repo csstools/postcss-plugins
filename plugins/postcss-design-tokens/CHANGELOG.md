@@ -4,7 +4,7 @@
 
 - Improve `types` declaration in `package.json`
 
-### Unreleased (patch)
+### 2.0.2 (January 28, 2023)
 
 - Fix unit conversion
 
