@@ -19,5 +19,8 @@
 			"> 1%",
 			"not dead"
 		]
+	},
+	"volta": {
+		"extends": "../../package.json"
 	}
 }
