@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Selectors
 
-### Unreleased
+### 7.1.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
 

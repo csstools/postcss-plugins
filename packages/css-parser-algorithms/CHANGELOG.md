@@ -1,6 +1,6 @@
 # Changes to CSS Parser Algorithms
 
-### Unreleased
+### 2.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
 

@@ -3,6 +3,9 @@
 ### Unreleased (minor)
 
 - Add: support for multiple line values (`text-decoration: overline underline;`)
+
+### 2.0.1 (January 28, 2023)
+
 - Improve `types` declaration in `package.json`
 
 ### 2.0.0 (January 24, 2023)

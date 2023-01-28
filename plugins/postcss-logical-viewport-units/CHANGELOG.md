@@ -1,6 +1,6 @@
 # Changes to PostCSS Logical Viewport Units
 
-### Unreleased
+### 1.0.2 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
 
