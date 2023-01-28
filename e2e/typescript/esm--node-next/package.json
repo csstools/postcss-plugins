@@ -4,8 +4,7 @@
 	"private": true,
 	"description": "Can you use PostCSS with one of our plugins from a Typescript file?",
 	"scripts": {
-		"build": "tsc",
-		"test": "node ./index.js"
+		"build": "tsc"
 	},
 	"devDependencies": {
 		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env",
