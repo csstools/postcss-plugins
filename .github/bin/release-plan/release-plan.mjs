@@ -81,13 +81,9 @@ for (const workspace of needsRelease.values()) {
 
 	// Commit changes
 	await commitAfterPackageRelease(workspace.newVersion, workspace.path, workspace.name);
-
-	// TODO : remove this after the script proves to work ok.
-	process.exit(0);
 }
 
-console.log(''); // empty line
-console.log('Preparing next batch');
+console.log('\nPreparing next batch');
 
 for (const workspace of waitingOnDependencies.values()) {
 	const packageInfo = JSON.parse(await fs.readFile(path.join(workspace.path, 'package.json')));
