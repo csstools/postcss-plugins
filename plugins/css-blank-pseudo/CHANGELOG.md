@@ -1,6 +1,6 @@
 # Changes to CSS Blank Pseudo
 
-### Unreleased
+### 5.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
 

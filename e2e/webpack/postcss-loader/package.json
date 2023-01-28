@@ -15,5 +15,8 @@
 		"style-loader": "^3.3.1",
 		"css-loader": "^6.7.1",
 		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env"
+	},
+	"volta": {
+		"extends": "../../package.json"
 	}
 }
