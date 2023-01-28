@@ -11,7 +11,7 @@ import postcssPresetEnv from 'postcss-preset-env';
 self.process = { env: {} };
 
 const startConfig = {
-	browsers: ['chrome 70'],
+	browsers: ['last 5 versions', 'not dead'],
 	stage: 0,
 };
 
@@ -54,9 +54,14 @@ a {
 	}
 }
 
-:is(input, button):is(:hover, :focus) {
-	color: oklch(40% 0.268735435 34.568626);
-}`,
+@custom-media --tablet (min-width: 48rem);
+
+@media (--tablet) {
+	:is(input, button):is(:hover, :focus) {
+		color: oklch(40% 0.268735435 34.568626);
+	}
+}
+`,
 	extensions: [
 		basicSetup,
 		css(),
