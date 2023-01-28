@@ -1,5 +1,12 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (minor)
+
+- Implement latest specification
+  - relative selector syntax
+  - `@nest` is obsolete, all selectors can be written without it (sometimes you will need `:is()`)
+  - allow declarations after nested rules.
+
 ### 11.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

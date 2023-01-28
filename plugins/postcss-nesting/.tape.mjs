@@ -176,4 +176,7 @@ postcssTape(plugin)({
 			noIsPseudoSelector: true,
 		},
 	},
+	'examples/example': {
+		message: 'basic examples'
+	},
 });
