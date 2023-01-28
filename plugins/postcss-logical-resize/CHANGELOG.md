@@ -1,6 +1,6 @@
 # Changes to PostCSS Logical Resize
 
-### Unreleased
+### 1.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
 

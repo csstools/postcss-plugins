@@ -10,5 +10,8 @@
 	"devDependencies": {
 		"@csstools/postcss-ic-unit": "^1.0.1",
 		"postcss-cli": "^10.1.0"
+	},
+	"volta": {
+		"extends": "../../package.json"
 	}
 }
