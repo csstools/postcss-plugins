@@ -1,6 +1,6 @@
 .a {
+	-webkit-text-decoration: none;
 	text-decoration: none;
-	text-decoration: none wavy currentColor;
 }
 
 .b {
@@ -9,8 +9,8 @@
 }
 
 .ab {
+	-webkit-text-decoration: overline;
 	text-decoration: overline;
-	text-decoration: overline wavy currentColor;
 }
 
 .abc {
@@ -82,4 +82,49 @@
 	text-decoration: overline;
 	text-decoration: overline wavy purple;
 	text-decoration-thickness: calc(0.01em * 2);
+}
+
+.multiple-lines--a {
+	text-decoration: underline overline line-through;
+	text-decoration: underline overline line-through wavy pink;
+	text-decoration-thickness: 5px;
+}
+
+.multiple-lines--b {
+	-webkit-text-decoration: underline overline line-through;
+	text-decoration: underline overline line-through;
+}
+
+.auto {
+	text-decoration: overline;
+	text-decoration: overline wavy green;
+	text-decoration-thickness: auto;
+}
+
+.from-font {
+	text-decoration: overline;
+	text-decoration: overline wavy green;
+	text-decoration-thickness: from-font;
+}
+
+.calc {
+	text-decoration: overline;
+	text-decoration: overline wavy green;
+	text-decoration-thickness: calc(2px * 4);
+}
+
+.ignored--a {
+	text-decoration: green wavy overline calc(2px * 4) bogus;
+}
+
+.ignored--b {
+	text-decoration: underline bogus;
+}
+
+.ignored--c {
+	text-decoration: solid solid red underline;
+}
+
+.ignored--d {
+	text-decoration: underline red overline;
 }
