@@ -47,10 +47,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return node.type !== 'space' && node.type !== 'comment';
 					});
 
-					if (relevantNodes.length > 4) {
-						return;
-					}
-
 					if (relevantNodes.find((node) => {
 						return node.value.toLowerCase() === 'var' && node.type === 'function';
 					})) {
@@ -64,7 +60,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 
 					const data = {
-						line: null,
+						line: [],
 						style: null,
 						color: null,
 						thickness: null,
@@ -73,41 +69,94 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					for (let i = 0; i < relevantNodes.length; i++) {
 						const currentNode = relevantNodes[i];
 
-						if (currentNode.type === 'word' && lineKeywords.includes(currentNode.value.toLowerCase())) {
-							data.line = currentNode;
+						if (!data.line.length && currentNode.type === 'word' && lineKeywords.includes(currentNode.value.toLowerCase())) {
+							const startNode = currentNode;
+							let endNode = currentNode;
+
+							// eslint-disable-next-line no-constant-condition
+							while (true) {
+								const nextNode = relevantNodes[i + 1];
+								if (nextNode && nextNode.type === 'word' && lineKeywords.includes(nextNode.value.toLowerCase())) {
+									endNode = nextNode;
+									i++;
+									continue;
+								}
+
+								break;
+							}
+
+							data.line = valueAST.nodes.slice(
+								valueAST.nodes.indexOf(startNode),
+								valueAST.nodes.indexOf(endNode) + 1,
+							);
+
 							continue;
 						}
 
-						if (currentNode.type === 'word' && styleKeywords.includes(currentNode.value.toLowerCase())) {
+						if (!data.line.length && currentNode.type === 'word' && currentNode.value.toLowerCase() === 'none') {
+							data.line.push(currentNode);
+							continue;
+						}
+
+						if (!data.style && currentNode.type === 'word' && styleKeywords.includes(currentNode.value.toLowerCase())) {
 							data.style = currentNode;
 							continue;
 						}
 
-						if (nodeIsAColor(currentNode)) {
+						if (!data.thickness && currentNode.type === 'word' && thicknessKeywords.includes(currentNode.value.toLowerCase())) {
+							data.thickness = currentNode;
+							continue;
+						}
+
+						if (!data.thickness && currentNode.type === 'function' && currentNode.value.toLowerCase() === 'calc') {
+							data.thickness = currentNode;
+							continue;
+						}
+
+						if (!data.color && nodeIsAColor(currentNode)) {
 							data.color = currentNode;
 							continue;
 						}
 
-						if (currentNode.type === 'word' && currentNode.value.toLowerCase() === 'none') {
-							if (!data.color) {
-								data.color = currentNode;
+						if (currentNode.type === 'word') {
+							let valueAndUnit;
+							try {
+								valueAndUnit = valueParser.unit(currentNode.value);
+							} catch (_) {
+								return;
 							}
 
-							if (!data.line) {
-								data.line = currentNode;
+							if (!valueAndUnit || !valueAndUnit.unit) {
+								return;
+							}
+
+							data.thickness = currentNode;
+
+							if (valueAndUnit.unit === '%') {
+								data.thickness = {
+									type: 'function',
+									value: 'calc',
+									nodes: [
+										{ type: 'word', value: '0.01em' },
+										{ type: 'space', value: ' ' },
+										{ type: 'word', value: '*' },
+										{ type: 'space', value: ' ' },
+										{ type: 'word', value: valueAndUnit.number },
+									],
+								};
 							}
 
 							continue;
 						}
 
-						data.thickness = currentNode;
+						return;
 					}
 
-					if (!data.line) {
-						data.line = {
+					if (!data.line.length) {
+						data.line.push({
 							type: 'word',
 							value: 'none',
-						};
+						});
 					}
 
 					if (!data.style) {
@@ -124,27 +173,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						};
 					}
 
-					try {
-						const valueAndUnit = valueParser.unit(data.thickness.value);
-						if (valueAndUnit && valueAndUnit.unit === '%') {
-							data.thickness = {
-								type: 'function',
-								value: 'calc',
-								nodes: [
-									{ type: 'word',value: '0.01em' },
-									{ type: 'space', value: ' ' },
-									{ type: 'word', value: '*' },
-									{ type: 'space', value: ' ' },
-									{ type: 'word', value: valueAndUnit.number },
-								],
-							};
-						}
-					} catch (_) {
-						// Ignore errors.
-					}
-
 					const nonShortHandValue = valueParser.stringify(data.line);
-					if (decl.value.toLowerCase() === nonShortHandValue) {
+					if (decl.value.toLowerCase() === nonShortHandValue.toLowerCase()) {
 						const next = decl.next();
 						if (!next || next.type !== 'decl' || next.prop.toLowerCase() !== 'text-decoration') {
 
@@ -165,7 +195,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					});
 
 					const shortHandValue = valueParser.stringify([
-						data.line,
+						...data.line,
 						{
 							type: 'space',
 							value: ' ',
@@ -178,10 +208,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						data.color,
 					]);
 
-					// Construct a new shorthand value without thickness:
-					// - when thickness is set
-					// - when not all shorthand properties are set
-					if (data.thickness || relevantNodes.length !== 3) {
+					if (data.thickness) {
 						decl.cloneBefore({
 							prop: 'text-decoration',
 							value: shortHandValue,
@@ -258,6 +285,13 @@ const styleKeywords = [
 	'dotted',
 	'dashed',
 	'wavy',
+];
+
+// thickness
+// auto | from-font
+const thicknessKeywords = [
+	'auto',
+	'from-font',
 ];
 
 const colorFunctions = [

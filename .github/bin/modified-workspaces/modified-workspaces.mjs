@@ -1,5 +1,5 @@
 import { listModifiedFilesInPullRequest } from './list-modified-files.mjs';
-import { listWorkspaces } from './list-workspaces.mjs';
+import { listWorkspaces } from '../list-workspaces/list-workspaces.mjs';
 
 const privateRootDependencies = [
 	'packages/postcss-tape',

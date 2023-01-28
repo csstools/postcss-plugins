@@ -57,3 +57,39 @@
 .two-rules-with-same-transform--b {
 	text-decoration: 2% wavy overline purple;
 }
+
+.multiple-lines--a {
+	text-decoration: 5px underline overline line-through wavy pink;
+}
+
+.multiple-lines--b {
+	text-decoration: underline overline line-through;
+}
+
+.auto {
+	text-decoration: green wavy overline auto;
+}
+
+.from-font {
+	text-decoration: green wavy overline from-font;
+}
+
+.calc {
+	text-decoration: green wavy overline calc(2px * 4);
+}
+
+.ignored--a {
+	text-decoration: green wavy overline calc(2px * 4) bogus;
+}
+
+.ignored--b {
+	text-decoration: underline bogus;
+}
+
+.ignored--c {
+	text-decoration: solid solid red underline;
+}
+
+.ignored--d {
+	text-decoration: underline red overline;
+}

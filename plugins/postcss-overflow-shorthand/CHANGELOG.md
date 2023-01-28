@@ -1,6 +1,6 @@
 # Changes to PostCSS Overflow Shorthand
 
-### Unreleased
+### 4.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
 
