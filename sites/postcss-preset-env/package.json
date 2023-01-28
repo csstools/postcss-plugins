@@ -103,6 +103,7 @@
 		"rollup-plugin-polyfill-node": "^0.12.0"
 	},
 	"volta": {
-		"node": "16.14.0"
+		"node": "18.13.0",
+		"npm": "9.4.0"
 	}
 }
