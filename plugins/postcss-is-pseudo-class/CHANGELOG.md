@@ -1,6 +1,6 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased (patch)
+### 3.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
 
