@@ -8,8 +8,10 @@ description: Play with PostCSS Preset Env in your browser
 <main class="ppe-playground">
 	<h1 class="u-visually-hidden">Interactive playground for PostCSS Preset Env</h1>
 
-	<div id="editor1"></div>
-	<div id="editor2"></div>
+	<div style="display: flex; gap: 20px; margin: 20px;">
+		<div id="editor1" style="flex-basis: 45%; height: calc(90vh - 100px); overflow: scroll;"></div>
+		<div id="editor2" style="flex-basis: 45%; height: calc(90vh - 100px); overflow: scroll;"></div>
+	</div>
 </main>
 {% endblock %}
 

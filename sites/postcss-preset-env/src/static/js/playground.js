@@ -12,6 +12,7 @@ self.process = { env: {} };
 function processCss(source) {
 	return postcss([postcssPresetEnv({
 		browsers: ['chrome 30'],
+		stage: 0,
 	})]).process(
 		source,
 		{
