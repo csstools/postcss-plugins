@@ -27,6 +27,7 @@ import postcss from 'postcss';
 							<ul>
 								<li><a href="/wpt/conditional.html">conditional.html</a></li>
 								<li><a href="/wpt/implicit-nesting.html">implicit-nesting.html</a></li>
+								<li><a href="/wpt/nest-containing.html">nest-containing.html</a></li>
 								<li><a href="/wpt/nesting-basics.html">nesting-basics.html</a></li>
 							</ul>
 						</body>
@@ -35,6 +36,7 @@ import postcss from 'postcss';
 				break;
 			case '/wpt/conditional.html':
 			case '/wpt/implicit-nesting.html':
+			case '/wpt/nest-containing.html':
 			case '/wpt/nesting-basics.html':
 				res.setHeader('Content-type', 'text/html');
 				res.writeHead(200);
@@ -89,6 +91,7 @@ import postcss from 'postcss';
 		for (const url of [
 			'wpt/conditional.html',
 			'wpt/implicit-nesting.html',
+			'wpt/nest-containing.html',
 			'wpt/nesting-basics.html',
 		]) {
 			await page.goto('http://localhost:8080/' + url);
