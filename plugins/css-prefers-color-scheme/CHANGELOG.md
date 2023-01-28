@@ -1,6 +1,6 @@
 # Changes to Prefers Color Scheme
 
-### Unreleased (patch)
+### 8.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
 
