@@ -6,5 +6,6 @@ reports
 .vscode
 .DS_Store
 */**/package-lock.json
-!e2e/webpack/bundle-through/package-lock.json
+!e2e/package-lock.json
 !sites/*/package-lock.json
+.cached-commit

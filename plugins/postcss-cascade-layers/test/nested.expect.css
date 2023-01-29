@@ -9,10 +9,17 @@
 		}
 	}
 
-@keyframes slide-left {
-	}
+	@font-face {
+		font-family: "Open Sans";
+		src: url("/fonts/OpenSans-Regular-webfont.woff2#layered") format("woff2"),
+			url("/fonts/OpenSans-Regular-webfont.woff#layered") format("woff");
+	}@font-face {
+	font-family: "Open Sans";
+	src: url("/fonts/OpenSans-Regular-webfont.woff2#unlayered") format("woff2"),
+		url("/fonts/OpenSans-Regular-webfont.woff#unlayered") format("woff");
+}
 
-	target {
+target {
 			color: yellow;
 		}
 
@@ -36,8 +43,12 @@ target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 			color: yellow;
 		}
 
+h1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		color: pink;
+	}
+
 @media (prefers-color-scheme: dark) {
-		h1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		h2:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 			color: red;
 			background: black;
 		}

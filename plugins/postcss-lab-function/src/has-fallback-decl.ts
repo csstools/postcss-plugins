@@ -9,7 +9,7 @@ export function hasFallback(node: Declaration): boolean {
 	const currentNodeIndex = parent.index(node);
 	for (let i = 0; i < currentNodeIndex; i++) {
 		const precedingSibling = parent.nodes[i];
-		if (precedingSibling.type === 'decl' && precedingSibling.prop === node.prop) {
+		if (precedingSibling.type === 'decl' && precedingSibling.prop.toLowerCase() === node.prop.toLowerCase()) {
 			return true;
 		}
 	}

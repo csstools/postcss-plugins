@@ -1,0 +1,17 @@
+:root {
+	--dark-mode: false;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	:root {
+		--dark-mode: true;
+	}
+}
+
+.valid {
+	color: csstools-if(--dark-mode black else white);
+}
+
+.ignore {
+	color: csstools-if(--dark-mode black, red else green, blue);
+}

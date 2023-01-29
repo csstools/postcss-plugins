@@ -1,5 +1,5 @@
-@design-tokens url('./tokens-light.json') format('style-dictionary3');
-@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
+@design-tokens url('./tokens-brand-1.json') format('style-dictionary3');
+@design-tokens url('./tokens-brand-2.json') when('brand-2') format('style-dictionary3');
 
 .foo {
 	color: design-token('color.background.primary');

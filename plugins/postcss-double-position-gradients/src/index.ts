@@ -41,7 +41,7 @@ const basePlugin = (opts) => {
 	return {
 		postcssPlugin: 'postcss-double-position-gradients',
 		Declaration(decl, { result }) {
-			if (!includesGradientsFunction(decl.value)) {
+			if (!includesGradientsFunction(decl.value.toLowerCase())) {
 				return;
 			}
 
@@ -66,7 +66,7 @@ const basePlugin = (opts) => {
 			}
 
 			valueAST.walk(func => {
-				if (func.type !== 'function' || !isGradientsFunctions(func.value)) {
+				if (func.type !== 'function' || !isGradientsFunctions(func.value.toLowerCase())) {
 					return;
 				}
 
@@ -78,7 +78,7 @@ const basePlugin = (opts) => {
 				let inPrefix = false;
 
 				nodes.forEach((node, index, currentNodes) => {
-					if (node.type === 'word' && keywords.includes(node.value)) {
+					if (node.type === 'word' && keywords.includes(node.value.toLowerCase())) {
 						inPrefix = true;
 					}
 
@@ -122,13 +122,14 @@ const basePlugin = (opts) => {
 
 			const modifiedValue = valueAST.toString();
 
-			if (modifiedValue !== decl.value) {
-				if (opts.preserve) {
-					decl.cloneBefore({ value: modifiedValue });
-					return;
-				}
+			if (modifiedValue === decl.value) {
+				return;
+			}
 
-				decl.value = modifiedValue;
+			decl.cloneBefore({ value: modifiedValue });
+
+			if (!opts.preserve) {
+				decl.remove();
 			}
 		},
 	};
@@ -136,9 +137,12 @@ const basePlugin = (opts) => {
 
 basePlugin.postcss = true;
 
-type pluginOptions = {
-	preserve?: boolean;
-	enableProgressiveCustomProperties?: boolean;
+/** postcss-double-position-gradients plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+	/** Enable "@csstools/postcss-progressive-custom-properties". default: true */
+	enableProgressiveCustomProperties?: boolean,
 };
 
 // Transform double-position gradients in CSS.

@@ -1,0 +1,6 @@
+input.css-blank.js-blank-pseudo, .js-blank-pseudo input.css-blank {
+	background-color: yellow;
+}
+input:blank {
+	background-color: yellow;
+}

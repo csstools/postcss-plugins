@@ -1,0 +1,488 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "( 1 / 5 < aspect-ratio < 3 / 2 )",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-range-value-name-value",
+						"name": {
+							"type": "mf-name",
+							"name": "aspect-ratio",
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									9,
+									9,
+									null
+								],
+								[
+									"ident-token",
+									"aspect-ratio",
+									10,
+									21,
+									{
+										"value": "aspect-ratio"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									22,
+									22,
+									null
+								]
+							]
+						},
+						"valueOne": {
+							"type": "mf-value",
+							"value": [
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"number-token",
+											"1",
+											2,
+											2,
+											{
+												"value": 1,
+												"type": "integer"
+											}
+										]
+									]
+								},
+								{
+									"type": "whitespace",
+									"tokens": [
+										[
+											"whitespace-token",
+											" ",
+											3,
+											3,
+											null
+										]
+									]
+								},
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"delim-token",
+											"/",
+											4,
+											4,
+											{
+												"value": "/"
+											}
+										]
+									]
+								},
+								{
+									"type": "whitespace",
+									"tokens": [
+										[
+											"whitespace-token",
+											" ",
+											5,
+											5,
+											null
+										]
+									]
+								},
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"number-token",
+											"5",
+											6,
+											6,
+											{
+												"value": 5,
+												"type": "integer"
+											}
+										]
+									]
+								}
+							],
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									1,
+									1,
+									null
+								],
+								[
+									"number-token",
+									"1",
+									2,
+									2,
+									{
+										"value": 1,
+										"type": "integer"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									3,
+									3,
+									null
+								],
+								[
+									"delim-token",
+									"/",
+									4,
+									4,
+									{
+										"value": "/"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									5,
+									5,
+									null
+								],
+								[
+									"number-token",
+									"5",
+									6,
+									6,
+									{
+										"value": 5,
+										"type": "integer"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									7,
+									7,
+									null
+								]
+							]
+						},
+						"valueTwo": {
+							"type": "mf-value",
+							"value": [
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"number-token",
+											"3",
+											25,
+											25,
+											{
+												"value": 3,
+												"type": "integer"
+											}
+										]
+									]
+								},
+								{
+									"type": "whitespace",
+									"tokens": [
+										[
+											"whitespace-token",
+											" ",
+											26,
+											26,
+											null
+										]
+									]
+								},
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"delim-token",
+											"/",
+											27,
+											27,
+											{
+												"value": "/"
+											}
+										]
+									]
+								},
+								{
+									"type": "whitespace",
+									"tokens": [
+										[
+											"whitespace-token",
+											" ",
+											28,
+											28,
+											null
+										]
+									]
+								},
+								{
+									"type": "token",
+									"tokens": [
+										[
+											"number-token",
+											"2",
+											29,
+											29,
+											{
+												"value": 2,
+												"type": "integer"
+											}
+										]
+									]
+								}
+							],
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									24,
+									24,
+									null
+								],
+								[
+									"number-token",
+									"3",
+									25,
+									25,
+									{
+										"value": 3,
+										"type": "integer"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									26,
+									26,
+									null
+								],
+								[
+									"delim-token",
+									"/",
+									27,
+									27,
+									{
+										"value": "/"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									28,
+									28,
+									null
+								],
+								[
+									"number-token",
+									"2",
+									29,
+									29,
+									{
+										"value": 2,
+										"type": "integer"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									30,
+									30,
+									null
+								]
+							]
+						},
+						"tokens": [
+							[
+								"whitespace-token",
+								" ",
+								1,
+								1,
+								null
+							],
+							[
+								"number-token",
+								"1",
+								2,
+								2,
+								{
+									"value": 1,
+									"type": "integer"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								3,
+								3,
+								null
+							],
+							[
+								"delim-token",
+								"/",
+								4,
+								4,
+								{
+									"value": "/"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								5,
+								5,
+								null
+							],
+							[
+								"number-token",
+								"5",
+								6,
+								6,
+								{
+									"value": 5,
+									"type": "integer"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								7,
+								7,
+								null
+							],
+							[
+								"delim-token",
+								"<",
+								8,
+								8,
+								{
+									"value": "<"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								9,
+								9,
+								null
+							],
+							[
+								"ident-token",
+								"aspect-ratio",
+								10,
+								21,
+								{
+									"value": "aspect-ratio"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								22,
+								22,
+								null
+							],
+							[
+								"delim-token",
+								"<",
+								23,
+								23,
+								{
+									"value": "<"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								24,
+								24,
+								null
+							],
+							[
+								"number-token",
+								"3",
+								25,
+								25,
+								{
+									"value": 3,
+									"type": "integer"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								26,
+								26,
+								null
+							],
+							[
+								"delim-token",
+								"/",
+								27,
+								27,
+								{
+									"value": "/"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								28,
+								28,
+								null
+							],
+							[
+								"number-token",
+								"2",
+								29,
+								29,
+								{
+									"value": 2,
+									"type": "integer"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								30,
+								30,
+								null
+							]
+						]
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							31,
+							31,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

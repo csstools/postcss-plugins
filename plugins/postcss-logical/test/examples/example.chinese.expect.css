@@ -1,0 +1,12 @@
+.element {
+	width: 100px;
+	height: 200px;
+	padding-right: 10px;
+	padding-left: 20px;
+	margin-top: auto;
+	margin-bottom: auto;
+	border-right-width: 2px;
+	border-left-width: 2px;
+	border-right-style: solid;
+	border-left-style: solid;
+}

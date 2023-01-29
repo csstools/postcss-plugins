@@ -3,7 +3,7 @@
 		color: red;
 	}
 
-#foo #bar target:not(#\#):not(#\#):not(#\#)::before {
+#foo:not(#\#):not(#\#):not(#\#) #bar target::before:hover {
 		color: green;
 	}
 

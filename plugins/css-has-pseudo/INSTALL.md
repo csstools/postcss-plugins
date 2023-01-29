@@ -1,13 +1,20 @@
-# Installing CSS Has Pseudo
+# Installing PostCSS Has Pseudo
 
-[CSS Has Pseudo] runs in all Node environments, with special instructions for:
+[PostCSS Has Pseudo] runs in all Node environments, with special instructions for:
 
-| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
-| --- | --- | --- | --- | --- | --- |
+- [Node](#node)
+- [PostCSS CLI](#postcss-cli)
+- [PostCSS Load Config](#postcss-load-config)
+- [Webpack](#webpack)
+- [Next.js](#nextjs)
+- [Gulp](#gulp)
+- [Grunt](#grunt)
+
+
 
 ## Node
 
-Add [CSS Has Pseudo] to your project:
+Add [PostCSS Has Pseudo] to your project:
 
 ```bash
 npm install postcss css-has-pseudo --save-dev
@@ -16,8 +23,19 @@ npm install postcss css-has-pseudo --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssHasPseudo = require('css-has-pseudo');
+
+postcss([
+	postcssHasPseudo(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssHasPseudo from 'css-has-pseudo';
 
 postcss([
 	postcssHasPseudo(/* pluginOptions */)
@@ -32,7 +50,7 @@ Add [PostCSS CLI] to your project:
 npm install postcss-cli css-has-pseudo --save-dev
 ```
 
-Use [CSS Has Pseudo] in your `postcss.config.js` configuration file:
+Use [PostCSS Has Pseudo] in your `postcss.config.js` configuration file:
 
 ```js
 const postcssHasPseudo = require('css-has-pseudo');
@@ -44,6 +62,38 @@ module.exports = {
 }
 ```
 
+## PostCSS Load Config
+
+If your framework/CLI supports [`postcss-load-config`](https://github.com/postcss/postcss-load-config).
+
+```bash
+npm install css-has-pseudo --save-dev
+```
+
+`package.json`:
+
+```json
+{
+	"postcss": {
+		"plugins": {
+			"css-has-pseudo": {}
+		}
+	}
+}
+```
+
+`.postcssrc.json`:
+
+```json
+{
+	"plugins": {
+		"css-has-pseudo": {}
+	}
+}
+```
+
+_See the [README of `postcss-load-config`](https://github.com/postcss/postcss-load-config#usage) for more usage options._
+
 ## Webpack
 
 _Webpack version 5_
@@ -54,7 +104,7 @@ Add [PostCSS Loader] to your project:
 npm install postcss-loader css-has-pseudo --save-dev
 ```
 
-Use [CSS Has Pseudo] in your Webpack configuration:
+Use [PostCSS Has Pseudo] in your Webpack configuration:
 
 ```js
 module.exports = {
@@ -73,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"css-has-pseudo",
 										{
@@ -90,26 +141,35 @@ module.exports = {
 };
 ```
 
-## Create React App
+## Next.js
 
-Add [React App Rewired] and [React App Rewire PostCSS] to your project:
+Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss css-has-pseudo --save-dev
+npm install css-has-pseudo --save-dev
 ```
 
-Use [React App Rewire PostCSS] and [CSS Has Pseudo] in your
-`config-overrides.js` file:
+Use [PostCSS Has Pseudo] in your `postcss.config.json` file:
 
-```js
-const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssHasPseudo = require('css-has-pseudo');
-
-module.exports = config => reactAppRewirePostcss(config, {
-	plugins: () => [
-		postcssHasPseudo(/* pluginOptions */)
+```json
+{
+	"plugins": [
+		"css-has-pseudo"
 	]
-});
+}
+```
+
+```json5
+{
+	"plugins": [
+		[
+			"css-has-pseudo",
+			{
+				// Optionally add plugin options
+			}
+		]
+	]
+}
 ```
 
 ## Gulp
@@ -120,7 +180,7 @@ Add [Gulp PostCSS] to your project:
 npm install gulp-postcss css-has-pseudo --save-dev
 ```
 
-Use [CSS Has Pseudo] in your Gulpfile:
+Use [PostCSS Has Pseudo] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
@@ -145,7 +205,7 @@ Add [Grunt PostCSS] to your project:
 npm install grunt-postcss css-has-pseudo --save-dev
 ```
 
-Use [CSS Has Pseudo] in your Gruntfile:
+Use [PostCSS Has Pseudo] in your Gruntfile:
 
 ```js
 const postcssHasPseudo = require('css-has-pseudo');
@@ -171,6 +231,5 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[CSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
-[React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
-[React App Rewired]: https://github.com/timarney/react-app-rewired
+[PostCSS Has Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo
+[Next.js]: https://nextjs.org

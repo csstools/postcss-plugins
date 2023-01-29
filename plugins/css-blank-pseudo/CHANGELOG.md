@@ -1,5 +1,57 @@
 # Changes to CSS Blank Pseudo
 
+### 5.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 5.0.0 (January 24, 2023)
+
+- Updated: Support for Node v14+ (major).
+- Fix: Do not throw when a selector is invalid, show a warning instead.
+- Updated: Export and document the plugin options types.
+
+### 4.1.1 (August 23, 2022)
+
+- Fix: assign global browser polyfill to `window`, `self` or a blank object.
+
+### 4.1.0 (July 30, 2022)
+
+- Added: `disablePolyfillReadyClass` plugin option to prevent `.js-blank-pseudo` from being added.
+
+### 4.0.0 (July 8, 2022)
+
+- Updated: The polyfill now only attaches a single listener to the body so it's
+more efficient and also does less work at the MutationObserver handler.
+- Breaking: removed old CDN urls
+- Breaking: removed old CLI
+- Fix case insensitive matching.
+
+#### How to migrate:
+
+- If you use a CDN url, please update it.
+- Re-build your CSS with the new version of the library.
+
+```diff
+- <script src="https://unpkg.com/css-blank-pseudo/browser"></script>
+- <script src="https://unpkg.com/css-blank-pseudo/browser.min"></script>
++ <script src="https://unpkg.com/css-blank-pseudo/dist/browser-global.js"></script>
+```
+
+```diff
+- cssBlankPseudo(document)
++ cssBlankPseudoInit()
+```
+
+```diff
+- cssBlankPseudo({
+-  attr: false,
+-  className: 'blank'
+- })
++ cssBlankPseudoInit({
++  replaceWith: '.blank'
++ })
+```
+
 ### 3.0.3 (February 5, 2022)
 
 - Rebuild of browser polyfills

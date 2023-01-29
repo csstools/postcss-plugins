@@ -1,0 +1,7 @@
+:host-context([dir="rtl"]) article h3 {
+	margin-right: 10px;
+}
+
+:host-context([dir="ltr"]) article h3 {
+	margin-left: 10px;
+}

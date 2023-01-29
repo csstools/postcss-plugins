@@ -1,0 +1,33 @@
+.block-side {
+	margin-right: 1px;
+	margin-left: 2px;
+}
+
+.inline-side {
+	margin-top: 1px;
+	margin-bottom: 2px;
+}
+
+.block-single {
+	margin-right: 1px;
+	margin-left: 1px;
+}
+
+.block-double {
+	margin-right: 1px;
+	margin-left: 2px;
+}
+
+.inline-single {
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+.inline-double {
+	margin-top: 1px;
+	margin-bottom: 2px;
+}
+
+.error-1 {
+	margin-block: 1px 2px 3px 4px;
+}

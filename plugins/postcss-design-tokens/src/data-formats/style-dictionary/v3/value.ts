@@ -59,6 +59,8 @@ export function extractStyleDictionaryV3Token(node: Record<string, unknown>, key
 	};
 }
 
+const unitValidity : Map<string, boolean> = new Map();
+
 export function applyTransformsToValue(value: string|undefined|null, transformOptions?: TokenTransformOptions): string {
 	if (!value) {
 		return '';
@@ -68,19 +70,48 @@ export function applyTransformsToValue(value: string|undefined|null, transformOp
 		return value;
 	}
 
-	if (transformOptions.toUnit) {
-		const dimension = valueParser.unit(value ?? '');
-		if (!dimension || dimension.unit === transformOptions.toUnit) {
-			return `${value}`;
+	if (!transformOptions.toUnit) {
+		return value;
+	}
+
+	const dimension = valueParser.unit(value ?? '');
+	if (!dimension || dimension.unit === transformOptions.toUnit) {
+		return value;
+	}
+
+	if (!dimension.unit) {
+		if (unitValidity.has(transformOptions.toUnit)) {
+			if (unitValidity.get(transformOptions.toUnit)) {
+				return `${value}${transformOptions.toUnit}`;
+			} else {
+				throw new Error(`Invalid unit "${transformOptions.toUnit}" for "${value}"`);
+			}
 		}
 
-		if (dimension.unit === 'rem' && transformOptions.toUnit === 'px') {
-			return remToPx(parseFloat(dimension.number), transformOptions.pluginOptions?.rootFontSize ?? 16);
+		try {
+			// - concatenate the value and the desired unit.
+			// - try to parse the result as a CSS dimension (value + unit)
+			// - if the unit is not equal to the original we know that the input was incorrect.
+			const resultingDimension = valueParser.unit(`${value}${transformOptions.toUnit}`);
+			if (resultingDimension && resultingDimension.unit === transformOptions.toUnit) {
+				unitValidity.set(transformOptions.toUnit, true);
+				return `${value}${transformOptions.toUnit}`;
+			}
+
+			unitValidity.set(transformOptions.toUnit, false);
+		} catch (_) {
+			unitValidity.set(transformOptions.toUnit, false);
 		}
 
-		if (dimension.unit === 'px' && transformOptions.toUnit === 'rem') {
-			return pxToRem(parseFloat(dimension.number), transformOptions.pluginOptions?.rootFontSize ?? 16);
-		}
+		throw new Error(`Invalid unit "${transformOptions.toUnit}" for "${value}"`);
+	}
+
+	if (dimension.unit === 'rem' && transformOptions.toUnit === 'px') {
+		return remToPx(parseFloat(dimension.number), transformOptions.pluginOptions?.rootFontSize ?? 16);
+	}
+
+	if (dimension.unit === 'px' && transformOptions.toUnit === 'rem') {
+		return pxToRem(parseFloat(dimension.number), transformOptions.pluginOptions?.rootFontSize ?? 16);
 	}
 
 	return value;
@@ -100,15 +131,17 @@ function formatFloat(value: number): string {
 	}
 
 	let fixedPrecision = value.toFixed(5);
-	for (let i = fixedPrecision.length; i > 0; i--) {
+	for (let i = fixedPrecision.length - 1; i >= 0; i--) {
 		if (fixedPrecision[i] === '.') {
 			break;
 		}
 
-		if (fixedPrecision[i] !== '0') {
-			fixedPrecision = fixedPrecision.slice(0, i + 1);
+		if (fixedPrecision[i] === '0') {
+			fixedPrecision = fixedPrecision.slice(0, i);
 			continue;
 		}
+
+		break;
 	}
 
 	return fixedPrecision;

@@ -1,0 +1,207 @@
+[
+	{
+		"type": "media-query-with-type",
+		"string": "screen and (color)",
+		"modifier": [],
+		"mediaType": [
+			[
+				"ident-token",
+				"screen",
+				0,
+				5,
+				{
+					"value": "screen"
+				}
+			]
+		],
+		"and": [
+			[
+				"whitespace-token",
+				" ",
+				6,
+				6,
+				null
+			],
+			[
+				"ident-token",
+				"and",
+				7,
+				9,
+				{
+					"value": "and"
+				}
+			]
+		],
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-boolean",
+						"name": {
+							"type": "mf-name",
+							"name": "color",
+							"tokens": [
+								[
+									"ident-token",
+									"color",
+									12,
+									16,
+									{
+										"value": "color"
+									}
+								]
+							]
+						},
+						"tokens": [
+							[
+								"ident-token",
+								"color",
+								12,
+								16,
+								{
+									"value": "color"
+								}
+							]
+						]
+					},
+					"before": [
+						[
+							"whitespace-token",
+							" ",
+							10,
+							10,
+							null
+						],
+						[
+							"(-token",
+							"(",
+							11,
+							11,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							17,
+							17,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	},
+	{
+		"type": "media-query-with-type",
+		"string": " projection and (color)",
+		"modifier": [],
+		"mediaType": [
+			[
+				"whitespace-token",
+				" ",
+				19,
+				19,
+				null
+			],
+			[
+				"ident-token",
+				"projection",
+				20,
+				29,
+				{
+					"value": "projection"
+				}
+			]
+		],
+		"and": [
+			[
+				"whitespace-token",
+				" ",
+				30,
+				30,
+				null
+			],
+			[
+				"ident-token",
+				"and",
+				31,
+				33,
+				{
+					"value": "and"
+				}
+			]
+		],
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-boolean",
+						"name": {
+							"type": "mf-name",
+							"name": "color",
+							"tokens": [
+								[
+									"ident-token",
+									"color",
+									36,
+									40,
+									{
+										"value": "color"
+									}
+								]
+							]
+						},
+						"tokens": [
+							[
+								"ident-token",
+								"color",
+								36,
+								40,
+								{
+									"value": "color"
+								}
+							]
+						]
+					},
+					"before": [
+						[
+							"whitespace-token",
+							" ",
+							34,
+							34,
+							null
+						],
+						[
+							"(-token",
+							"(",
+							35,
+							35,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							41,
+							41,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

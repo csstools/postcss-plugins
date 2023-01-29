@@ -1,0 +1,26 @@
+{
+	"name": "@csstools/e2e--browserslist--package-json",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Can you use PostCSS Preset Env with a browserslist in package.json?",
+	"scripts": {
+		"test": "BROWSERSLIST_ENV=development node ./index.mjs && BROWSERSLIST_ENV=production node ./index.mjs"
+	},
+	"devDependencies": {
+		"postcss": "^8.4.19",
+		"postcss-preset-env": "^7.8.3"
+	},
+	"browserslist": {
+		"development": [
+			"chrome > 100"
+		],
+		"production": [
+			"last 1 version",
+			"> 1%",
+			"not dead"
+		]
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
+}

@@ -1,7 +1,11 @@
 import type { PluginCreator } from 'postcss';
 import valuesParser from 'postcss-value-parser';
 
-type pluginOptions = { preserve?: boolean };
+/** postcss-color-rebeccapurple plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
@@ -16,13 +20,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-color-rebeccapurple',
 		Declaration(decl) {
-			if (!decl.value.includes('rebeccapurple')) {
+			if (!decl.value.toLowerCase().includes('rebeccapurple')) {
 				return;
 			}
 
 			const valueAST = valuesParser(decl.value);
 			valueAST.walk(node => {
-				if (node.type === 'word' && node.value === 'rebeccapurple') {
+				if (node.type === 'word' && node.value.toLowerCase() === 'rebeccapurple') {
 					node.value = '#639';
 				}
 			});

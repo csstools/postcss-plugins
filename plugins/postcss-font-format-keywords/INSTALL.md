@@ -2,8 +2,15 @@
 
 [PostCSS Font Format Keywords] runs in all Node environments, with special instructions for:
 
-| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
-| --- | --- | --- | --- | --- | --- |
+- [Node](#node)
+- [PostCSS CLI](#postcss-cli)
+- [PostCSS Load Config](#postcss-load-config)
+- [Webpack](#webpack)
+- [Next.js](#nextjs)
+- [Gulp](#gulp)
+- [Grunt](#grunt)
+
+
 
 ## Node
 
@@ -16,8 +23,19 @@ npm install postcss @csstools/postcss-font-format-keywords --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssFontFormatKeywords = require('@csstools/postcss-font-format-keywords');
+
+postcss([
+	postcssFontFormatKeywords(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
 
 postcss([
 	postcssFontFormatKeywords(/* pluginOptions */)
@@ -43,6 +61,38 @@ module.exports = {
 	]
 }
 ```
+
+## PostCSS Load Config
+
+If your framework/CLI supports [`postcss-load-config`](https://github.com/postcss/postcss-load-config).
+
+```bash
+npm install @csstools/postcss-font-format-keywords --save-dev
+```
+
+`package.json`:
+
+```json
+{
+	"postcss": {
+		"plugins": {
+			"@csstools/postcss-font-format-keywords": {}
+		}
+	}
+}
+```
+
+`.postcssrc.json`:
+
+```json
+{
+	"plugins": {
+		"@csstools/postcss-font-format-keywords": {}
+	}
+}
+```
+
+_See the [README of `postcss-load-config`](https://github.com/postcss/postcss-load-config#usage) for more usage options._
 
 ## Webpack
 
@@ -73,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"@csstools/postcss-font-format-keywords",
 										{
@@ -90,26 +141,35 @@ module.exports = {
 };
 ```
 
-## Create React App
+## Next.js
 
-Add [React App Rewired] and [React App Rewire PostCSS] to your project:
+Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss @csstools/postcss-font-format-keywords --save-dev
+npm install @csstools/postcss-font-format-keywords --save-dev
 ```
 
-Use [React App Rewire PostCSS] and [PostCSS Font Format Keywords] in your
-`config-overrides.js` file:
+Use [PostCSS Font Format Keywords] in your `postcss.config.json` file:
 
-```js
-const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssFontFormatKeywords = require('@csstools/postcss-font-format-keywords');
-
-module.exports = config => reactAppRewirePostcss(config, {
-	plugins: () => [
-		postcssFontFormatKeywords(/* pluginOptions */)
+```json
+{
+	"plugins": [
+		"@csstools/postcss-font-format-keywords"
 	]
-});
+}
+```
+
+```json5
+{
+	"plugins": [
+		[
+			"@csstools/postcss-font-format-keywords",
+			{
+				// Optionally add plugin options
+			}
+		]
+	]
+}
 ```
 
 ## Gulp
@@ -172,5 +232,4 @@ grunt.initConfig({
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Font Format Keywords]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-font-format-keywords
-[React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
-[React App Rewired]: https://github.com/timarney/react-app-rewired
+[Next.js]: https://nextjs.org

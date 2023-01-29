@@ -1,8 +1,25 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### 8.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 8.0.0 (January 24, 2023)
+
+- Updated: Support for Node v14+ (major).
+- Fix: Do not throw when a selector is invalid, show a warning instead.
+
+### 7.1.6 (July 8, 2022)
+
+- Fix case insensitive `:any-link` matching.
+
+### 7.1.5 (June 23, 2022)
+
+- Fix selector order with any pseudo element. This plugin will no longer re-order selectors.
+
 ### 7.1.4 (May 17, 2022)
 
- - Fix selector order with `:before` and other pseudo elements.
+- Fix selector order with `:before` and other pseudo elements.
 
 ### 7.1.3 (May 6, 2022)
 

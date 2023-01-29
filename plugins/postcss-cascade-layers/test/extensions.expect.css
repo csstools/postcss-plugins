@@ -1,0 +1,20 @@
+
+	@custom-media --custom-media-query: layered;
+
+	@custom-selector --custom-selector: #layered;
+
+	@property --property {
+		syntax: '<color>';
+		inherits: false;
+		initial-value: layered;
+	}/* We expect unlayered extensions to appear later so that they override layered extensions */
+
+@custom-media --custom-media-query: unlayered;
+
+@custom-selector --custom-selector: #unlayered;
+
+@property --property {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: unlayered;
+}

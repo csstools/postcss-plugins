@@ -1,0 +1,37 @@
+
+
+.foo::before, ::before:focus {
+		order: 1;
+}
+
+.a:hover::before, .b:focus::before, .a:hover::after, .b:focus::after {
+		order: 2;
+	}
+
+.a::before {
+		order: 3;
+	}
+
+.a::after {
+		order: 4;
+	}
+
+.a::before {
+		order: 5;
+	}
+
+.a::before:focus {
+			order: 6;
+		}
+
+.a::after {
+		order: 7;
+	}
+
+.a::after:hover {
+			order: 8;
+		}
+
+.something_else > .anything::before {
+		order: 9;
+}

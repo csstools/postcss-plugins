@@ -1,0 +1,74 @@
+body > p, body > ul {
+	order: 1;
+
+	& ~ & {
+		order: 2;
+
+		&:hover,
+		&:focus {
+			order: 3;
+		}
+
+		& *:hover,
+		& *:focus {
+			order: 4;
+		}
+	}
+
+	& {
+		& > *:hover {
+			order: 5;
+		}
+	}
+
+	& & {
+		order: 6;
+	}
+
+	&& {
+		order: 7;
+	}
+
+	&&& {
+		order: 8;
+	}
+}
+
+
+body > p, body > .foo {
+	order: 101;
+
+	&~& {
+		order: 102;
+
+		&:hover,
+		&:focus {
+			order: 103;
+		}
+
+		& *:hover,
+		& *:focus {
+			order: 104;
+		}
+	}
+
+	& {
+		&>*:hover {
+			order: 105;
+		}
+	}
+
+	&& {
+		order: 106;
+	}
+
+	&&& {
+		order: 107;
+	}
+}
+
+body.foo, html.baz {
+	& + & {
+		order: 201;
+	}
+}

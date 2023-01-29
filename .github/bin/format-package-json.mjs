@@ -1,6 +1,29 @@
 import { promises as fsp, constants } from 'fs';
 import path from 'path';
 
+async function postcssPeerDependencyVersion() {
+	// "postcss-tape" is our reference for PostCSS versions.
+	// This package is our test suite.
+	// If CI passes it means the plugin is compatible with the lower version in "postcss-tape".
+	const packageJSONInfoForPostCSS_Tape = JSON.parse(await fsp.readFile('../../packages/postcss-tape/package.json', 'utf8'));
+
+	// "postcss-tape" package.json:
+	//
+	// "dependencies": {
+	//   "postcss": "~8.4",
+	//   "postcss-8.2": "npm:postcss@~8.2"
+	// }
+	//
+	const lowerPostCSS_VersionKey = Object.keys(packageJSONInfoForPostCSS_Tape.dependencies).find((x) => {
+		return x.startsWith('postcss-') && packageJSONInfoForPostCSS_Tape.dependencies[x].includes('npm:postcss@~');
+	});
+
+	const lowerPostCSS_Version = packageJSONInfoForPostCSS_Tape.dependencies[lowerPostCSS_VersionKey];
+
+	// "npm:postcss@~8.2" -> "8.2"
+	return lowerPostCSS_Version.split('~')[1];
+}
+
 const packageJSONInfo = JSON.parse(await fsp.readFile('./package.json', 'utf8'));
 const packageJSONInfoCopy = JSON.stringify(packageJSONInfo, null, '\t');
 const formatted = {};
@@ -28,6 +51,9 @@ const formatted = {};
 
 	formatted.license = packageJSONInfo.license;
 	delete packageJSONInfo.license;
+	if (formatted.license !== 'CC0-1.0' && formatted.license !== 'MIT') {
+		formatted.license = 'CC0-1.0';
+	}
 
 	formatted.funding = packageJSONInfo.funding;
 	delete packageJSONInfo.funding;
@@ -38,7 +64,9 @@ const formatted = {};
 	formatted.private = packageJSONInfo.private;
 	delete packageJSONInfo.private;
 
-	formatted.engines = packageJSONInfo.engines;
+	formatted.engines = {
+		node: '^14 || ^16 || >=18'
+	};
 	delete packageJSONInfo.engines;
 
 	formatted.type = packageJSONInfo.type;
@@ -65,8 +93,19 @@ const formatted = {};
 	formatted.unpkg = packageJSONInfo.unpkg;
 	delete packageJSONInfo.unpkg;
 
-	formatted.exports = packageJSONInfo.exports;
-	delete packageJSONInfo.exports;
+	if (packageJSONInfo.exports) {
+		formatted.exports = packageJSONInfo.exports;
+		if (packageJSONInfo.exports['.'] && packageJSONInfo.exports['.'].types) {
+			formatted.exports['.'] = {
+				types: packageJSONInfo.exports['.'].types,
+				...formatted.exports['.'],
+			}
+		}
+		delete packageJSONInfo.exports;
+	} else if (packageJSONInfo.exports) {
+		formatted.exports = packageJSONInfo.exports;
+		delete packageJSONInfo.exports;
+	}
 
 	formatted.files = packageJSONInfo.files;
 	delete packageJSONInfo.files;
@@ -98,6 +137,10 @@ const formatted = {};
 			formatted.peerDependencies[dependencyKeys[i]] = packageJSONInfo.peerDependencies[dependencyKeys[i]];
 		}
 		delete packageJSONInfo.peerDependencies;
+
+		if (formatted.peerDependencies['postcss']) {
+			formatted.peerDependencies['postcss'] = '^' + (await postcssPeerDependencyVersion());
+		}
 	}
 
 	if (Object.keys(packageJSONInfo.devDependencies ?? {}).length) {
@@ -176,7 +219,10 @@ const formatted = {};
 	delete packageJSONInfo.keywords;
 
 	if (formatted.keywords && formatted.keywords.length) {
-		formatted.keywords.sort();
+		const keywords = new Set(formatted.keywords);
+		keywords.forEach((keyword) => keywords.delete(keyword + 's')); // poor mans pluralize, we only want singular words as keywords
+		formatted.keywords = Array.from(keywords);
+		formatted.keywords.sort((a, b) => a.localeCompare(b));
 	}
 
 	if (Object.keys(packageJSONInfo.csstools ?? {}).length) {

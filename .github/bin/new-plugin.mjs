@@ -45,9 +45,6 @@ console.log(`- Creating new plugin ${pluginName}`);
 	await fsp.rm(path.join(pluginDir, 'node_modules'), { recursive: true, force: true });
 	await fsp.rm(path.join(pluginDir, 'stryker.conf.json'));
 
-	await fsp.rm(path.join(pluginDir, 'src', 'cli.ts'), { recursive: true, force: true });
-	await fsp.rm(path.join(pluginDir, 'test', 'cli'), { recursive: true, force: true });
-
 	console.log('- Cleaned up files and directories not required in a new plugin');
 }
 
@@ -79,13 +76,11 @@ console.log(`- Creating new plugin ${pluginName}`);
 	packageInfo.description = `TODO: Add description for ${pluginName}`;
 	packageInfo.version = '1.0.0';
 	packageInfo.homepage = `https://github.com/csstools/postcss-plugins/tree/main/plugins/${pluginSlug}#readme`;
-	packageInfo.bugs = `https://github.com/csstools/postcss-plugins/issues`;
+	packageInfo.bugs = 'https://github.com/csstools/postcss-plugins/issues';
 	packageInfo.csstools.exportName = exportName;
 	packageInfo.csstools.humanReadableName = humanReadableName;
 
 	delete packageInfo.private;
-	delete packageInfo.bin;
-	delete packageInfo.scripts['test:cli'];
 
 	packageInfo.repository.directory = `plugins/${pluginSlug}`;
 
@@ -113,7 +108,7 @@ async function replaceBasePluginReferencesForFilePath(filePath) {
 	await fsp.writeFile(
 		filePath,
 		replaceBasePluginReferences(
-			(await fsp.readFile(filePath, 'utf8')).toString()
+			(await fsp.readFile(filePath, 'utf8')).toString(),
 		),
 	);
 }

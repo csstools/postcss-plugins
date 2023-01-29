@@ -1,4 +1,4 @@
-# PostCSS Design Tokens [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
+# PostCSS Design Tokens [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-design-tokens.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
@@ -13,8 +13,13 @@
 	},
 	"size": {
 		"spacing": {
-			"small": { "value": "16px" }
+			"small": { "value": "16px" },
+			"medium": { "value": "18px" },
+			"medium-alias": { "value": "{size.spacing.medium}" }
 		}
+	},
+	"viewport": {
+		"medium": { "value": "35rem" }
 	}
 }
 ```
@@ -29,6 +34,12 @@
 	padding-bottom: design-token('size.spacing.small' to rem);
 }
 
+@media (min-width: design-token('viewport.medium')) {
+	.foo {
+		padding-bottom: design-token('size.spacing.medium-alias' to rem);
+	}
+}
+
 /* becomes */
 
 .foo {
@@ -36,6 +47,12 @@
 	padding-top: 16px;
 	padding-left: 16px;
 	padding-bottom: 1rem;
+}
+
+@media (min-width: 35rem) {
+	.foo {
+		padding-bottom: 1.125rem;
+	}
 }
 ```
 
@@ -61,8 +78,13 @@ postcss([
 [PostCSS Design Tokens] runs in all Node environments, with special
 instructions for:
 
-| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
-| --- | --- | --- | --- | --- | --- |
+- [Node](INSTALL.md#node)
+- [PostCSS CLI](INSTALL.md#postcss-cli)
+- [PostCSS Load Config](INSTALL.md#postcss-load-config)
+- [Webpack](INSTALL.md#webpack)
+- [Next.js](INSTALL.md#nextjs)
+- [Gulp](INSTALL.md#gulp)
+- [Grunt](INSTALL.md#grunt)
 
 ## Formats
 
@@ -76,10 +98,12 @@ Use `style-dictionary3` in `@design-tokens` rules to pick this format.
 
 ### is
 
-The `is` option determines which design tokens are used.
-This allows you to generate multiple themed stylesheets.
+The `is` option determines which design tokens are used.<br>
+This allows you to generate multiple themed stylesheets<br>by running PostCSS multiple times with different configurations.
 
 By default only `@design-tokens` without any `when('foo')` conditions are used.
+
+_This plugin itself does not produce multiple outputs, it only provides an API to change the output._
 
 #### Example usage
 
@@ -89,7 +113,7 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 {
 	"color": {
 		"background": {
-			"primary": { "value": "#fff" }
+			"primary": { "value": "#0ff" }
 		}
 	}
 }
@@ -99,7 +123,7 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 {
 	"color": {
 		"background": {
-			"primary": { "value": "#000" }
+			"primary": { "value": "#f0f" }
 		}
 	}
 }
@@ -108,8 +132,8 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 **And this CSS :**
 
 ```pcss
-@design-tokens url('./tokens-light.json') format('style-dictionary3');
-@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
+@design-tokens url('./tokens-brand-1.json') format('style-dictionary3');
+@design-tokens url('./tokens-brand-2.json') when('brand-2') format('style-dictionary3');
 
 .foo {
 	color: design-token('color.background.primary');
@@ -125,8 +149,8 @@ postcssDesignTokens()
 ```
 
 ```pcss
-@design-tokens url('./tokens-light.json') format('style-dictionary3');
-@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
+@design-tokens url('./tokens-brand-1.json') format('style-dictionary3');
+@design-tokens url('./tokens-brand-2.json') when('brand-2') format('style-dictionary3');
 
 .foo {
 	color: design-token('color.background.primary');
@@ -135,19 +159,19 @@ postcssDesignTokens()
 /* becomes */
 
 .foo {
-	color: #fff;
+	color: #0ff;
 }
 ```
 
-##### `is` option set to 'dark'.
+##### `is` option set to 'brand-2'.
 
 ```js
-postcssDesignTokens({ is: ['dark'] })
+postcssDesignTokens({ is: ['brand-2'] })
 ```
 
 ```pcss
-@design-tokens url('./tokens-light.json') format('style-dictionary3');
-@design-tokens url('./tokens-dark.json') when('dark') format('style-dictionary3');
+@design-tokens url('./tokens-brand-1.json') format('style-dictionary3');
+@design-tokens url('./tokens-brand-2.json') when('brand-2') format('style-dictionary3');
 
 .foo {
 	color: design-token('color.background.primary');
@@ -156,7 +180,7 @@ postcssDesignTokens({ is: ['dark'] })
 /* becomes */
 
 .foo {
-	color: #000;
+	color: #f0f;
 }
 ```
 
@@ -187,6 +211,12 @@ postcssDesignTokens({
 	padding-bottom: design-token('size.spacing.small' to rem);
 }
 
+@media (min-width: design-token('viewport.medium')) {
+	.foo {
+		padding-bottom: design-token('size.spacing.medium-alias' to rem);
+	}
+}
+
 /* becomes */
 
 .foo {
@@ -194,6 +224,70 @@ postcssDesignTokens({
 	padding-top: 16px;
 	padding-left: 16px;
 	padding-bottom: 0.8rem;
+}
+
+@media (min-width: 35rem) {
+	.foo {
+		padding-bottom: 0.9rem;
+	}
+}
+```
+
+### Customize function and at rule names
+
+#### importAtRuleName
+
+The `importAtRuleName` option allows you to set a custom alias for `@design-tokens`.
+
+```js
+postcssDesignTokens({ importAtRuleName: 'tokens' })
+```
+
+```pcss
+@tokens url('./tokens.json') format('style-dictionary3');
+
+.foo {
+	color: design-token('color.background.primary');
+	padding-top: design-token('size.spacing.small');
+	padding-left: design-token('size.spacing.small' to px);
+	padding-bottom: design-token('size.spacing.small' to rem);
+}
+
+/* becomes */
+
+.foo {
+	color: #fff;
+	padding-top: 16px;
+	padding-left: 16px;
+	padding-bottom: 1rem;
+}
+```
+
+#### valueFunctionName
+
+The `valueFunctionName` option allows you to set a custom alias for `design-token`.
+
+```js
+postcssDesignTokens({ valueFunctionName: 'token' })
+```
+
+```pcss
+@design-tokens url('./tokens.json') format('style-dictionary3');
+
+.foo {
+	color: token('color.background.primary');
+	padding-top: token('size.spacing.small');
+	padding-left: token('size.spacing.small' to px);
+	padding-bottom: token('size.spacing.small' to rem);
+}
+
+/* becomes */
+
+.foo {
+	color: #fff;
+	padding-top: 16px;
+	padding-left: 16px;
+	padding-bottom: 1rem;
 }
 ```
 
@@ -222,6 +316,13 @@ The `@design-tokens` rule is used to import design tokens from a JSON file into 
 ```pcss
 @design-tokens url('./tokens.json') format('style-dictionary3');
 @design-tokens url('./tokens-dark-mode.json') format('style-dictionary3') when('dark');
+```
+
+You can also import tokens from an `npm` package:
+
+```pcss
+@design-tokens url('node_modules://my-npm-package/tokens.json') format('style-dictionary3');
+@design-tokens url('node_modules://my-npm-package/tokens-dark-mode.json') format('style-dictionary3') when('dark');
 ```
 
 ```
@@ -272,8 +373,11 @@ The `design-token()` function takes a token path and returns the token value.
 design-token() = design-token( <token-path> [ to <unit> ]? )
 
 <token-path> = <string>
-<unit> = [ px | rem ]
+<unit> = [ px | rem | ... ]
 ```
+
+The plugin can convert `px` to `rem` and `rem` to `px` via the [`unitsandvalues`](#unitsandvalues) plugin options.
+When a design token is unit-less any `unit` can be assigned with `to`.
 
 ## Further reading
 
@@ -285,10 +389,7 @@ design-token() = design-token( <token-path> [ to <unit> ]? )
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/@csstools/postcss-design-tokens
 
-[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
-[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Design Tokens]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-design-tokens
 [Why we think PostCSS Design Tokens is needed]: https://github.com/csstools/postcss-plugins/wiki/Why-we-think-PostCSS-Design-Tokens-is-needed
 [About Design Tokens (Adobe Spectrum)]: https://spectrum.adobe.com/page/design-tokens/

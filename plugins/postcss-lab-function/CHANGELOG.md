@@ -1,5 +1,17 @@
 # Changes to PostCSS Lab Function
 
+### 5.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 5.0.0 (January 24, 2023)
+
+- Updated: Support for Node v14+ (major).
+
+### 4.2.1 (July 8, 2022)
+
+- Fix case insensitive matching.
+
 ### 4.2.0 (April 4, 2022)
 
 - Allow percentage and number units in more color components.

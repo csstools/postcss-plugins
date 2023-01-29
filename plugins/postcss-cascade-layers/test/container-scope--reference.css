@@ -1,0 +1,41 @@
+@keyframes slide-left {
+	from { margin-left: 0; }
+	to { margin-left: -100%; }
+}
+
+@layer A {
+	#target {
+		color: red;
+	}
+}
+
+@layer {
+	#foo #bar target::before:hover {
+		color: green;
+	}
+}
+
+@layer B {
+	#target {
+		color: orange;
+	}
+}
+
+@layer B {
+	#target {
+		color: yellow;
+	}
+
+	@keyframes slide-left {
+		from { translate: 0; }
+		to { translate: -100% 0; }
+	}
+}
+
+target {
+	color: purple;
+}
+
+target:before {
+	color: pink;
+}

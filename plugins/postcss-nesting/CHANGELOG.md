@@ -1,5 +1,46 @@
 # Changes to PostCSS Nesting
 
+### 11.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 11.0.0 (January 24, 2023)
+
+- Updated: Support for Node v14+ (major).
+- Fix: Do not throw when a selector is invalid, show a warning instead.
+- Removed: Support for Deno (breaking)
+
+### 10.2.0 (September 14, 2022)
+
+- Added: TypeScript typings
+
+### 10.1.10 (June 30, 2022)
+
+- Partially revert the changes to pseudo element selectors from 10.1.9.
+
+```diff
+.anything::before {
+	@nest .something_else > & {
+		order: 1;
+	}
+}
+
+/* becomes */
+
+- .something_else > :is(.anything::before) { /* 10.1.9 */
++ .something_else > .anything::before { /* previous and restored behavior */
+		order: 1;
+}
+```
+
+The exact behavior of this pattern is unspecified and might change in the future.
+We are reverting to the previous behavior until the specification is clarified.
+
+### 10.1.9 (June 23, 2022)
+
+- Fix selector order with any pseudo element.
+- Fix semicolons being removed [#497](https://github.com/csstools/postcss-plugins/issues/497).
+
 ### 10.1.8 (June 4, 2022)
 
 - Update `@csstools/selector-specificity` (major)

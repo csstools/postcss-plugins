@@ -1,8 +1,8 @@
-:link:link, :link:visited, area[href]:link, :visited:link, :visited:visited, area[href]:visited, area[href]:link, area[href]:visited, areaarea[href][href] {
+:link:link, :link:visited, area[href]:link, :visited:link, :visited:visited, area[href]:visited, area[href]:link, area[href]:visited, area[href]area[href] {
 	order: 0;
 }
 
-:link:link, :link:visited, area[href]:link, :visited:link, :visited:visited, area[href]:visited, area[href]:link, area[href]:visited, areaarea[href][href] {
+:link:link, :link:visited, area[href]:link, :visited:link, :visited:visited, area[href]:visited, area[href]:link, area[href]:visited, area[href]area[href] {
 	order: 1;
 }
 
@@ -166,11 +166,11 @@ button {
 	order: 39;
 }
 
-.🧑🏾‍🎤:link, .🧑🏾‍🎤:visited, area.🧑🏾‍🎤[href] {
+.🧑🏾‍🎤:link, .🧑🏾‍🎤:visited, area[href].🧑🏾‍🎤 {
 	order: 40;
 }
 
-.🧑🏾‍🎤:link, .🧑🏾‍🎤:visited, area.🧑🏾‍🎤[href] {
+:link.🧑🏾‍🎤, :visited.🧑🏾‍🎤, area[href].🧑🏾‍🎤 {
 	order: 41;
 }
 
@@ -254,11 +254,11 @@ button {
 	order: 59;
 }
 
-.foo:link, .foo:visited, area.foo[href] {
+.foo:link, .foo:visited, area[href].foo {
 	order: 60;
 }
 
-.foo:link, .foo:visited, area.foo[href] {
+:link.foo, :visited.foo, area[href].foo {
 	order: 61;
 }
 
@@ -342,11 +342,11 @@ button {
 	order: 79;
 }
 
-#foo:link, #foo:visited, area#foo[href] {
+#foo:link, #foo:visited, area[href]#foo {
 	order: 80;
 }
 
-#foo:link, #foo:visited, area#foo[href] {
+:link#foo, :visited#foo, area[href]#foo {
 	order: 81;
 }
 
@@ -606,11 +606,11 @@ __foo {
 	order: 139;
 }
 
-[foo="baz"]:link, [foo="baz"]:visited, area[foo="baz"][href] {
+[foo="baz"]:link, [foo="baz"]:visited, area[href][foo="baz"] {
 	order: 140;
 }
 
-[foo="baz"]:link, [foo="baz"]:visited, area[href][foo="baz"] {
+:link[foo="baz"], :visited[foo="baz"], area[href][foo="baz"] {
 	order: 141;
 }
 
@@ -694,11 +694,11 @@ __foo {
 	order: 159;
 }
 
-*:link, *:visited, *area[href] {
+*:link, *:visited, area[href]* {
 	order: 160;
 }
 
-*:link, *:visited, *area[href] {
+:link*, :visited*, area[href]* {
 	order: 161;
 }
 
@@ -870,7 +870,7 @@ __foo {
 	order: 199;
 }
 
-:link::before, :visited::before, area[href]::before {
+::before:link, ::before:visited, area[href]::before {
 	order: 200;
 }
 

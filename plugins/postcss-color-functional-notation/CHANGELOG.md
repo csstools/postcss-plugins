@@ -1,5 +1,17 @@
 # Changes to PostCSS Color Functional Notation
 
+### 5.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 5.0.0 (January 24, 2023)
+
+- Updated: Support for Node v14+ (major).
+
+### 4.2.4 (July 8, 2022)
+
+- Fix case insensitive matching.
+
 ### 4.2.3 (May 19, 2022)
 
 - Handle modern channel values in legacy notation (comma separated)

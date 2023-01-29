@@ -1,0 +1,113 @@
+[
+	[
+		{
+			"type": "simple-block",
+			"startToken": [
+				"(-token",
+				"(",
+				0,
+				0,
+				null
+			],
+			"tokens": [
+				[
+					"(-token",
+					"(",
+					0,
+					0,
+					null
+				],
+				[
+					"ident-token",
+					"min-width",
+					1,
+					9,
+					{
+						"value": "min-width"
+					}
+				],
+				[
+					"colon-token",
+					":",
+					10,
+					10,
+					null
+				],
+				[
+					"whitespace-token",
+					" ",
+					11,
+					11,
+					null
+				],
+				[
+					"dimension-token",
+					"300px",
+					12,
+					16,
+					{
+						"value": 300,
+						"type": "integer",
+						"unit": "px"
+					}
+				]
+			],
+			"value": [
+				{
+					"type": "token",
+					"tokens": [
+						[
+							"ident-token",
+							"min-width",
+							1,
+							9,
+							{
+								"value": "min-width"
+							}
+						]
+					]
+				},
+				{
+					"type": "token",
+					"tokens": [
+						[
+							"colon-token",
+							":",
+							10,
+							10,
+							null
+						]
+					]
+				},
+				{
+					"type": "whitespace",
+					"tokens": [
+						[
+							"whitespace-token",
+							" ",
+							11,
+							11,
+							null
+						]
+					]
+				},
+				{
+					"type": "token",
+					"tokens": [
+						[
+							"dimension-token",
+							"300px",
+							12,
+							16,
+							{
+								"value": 300,
+								"type": "integer",
+								"unit": "px"
+							}
+						]
+					]
+				}
+			]
+		}
+	]
+]

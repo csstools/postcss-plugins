@@ -1,0 +1,68 @@
+@layer extensions, components;
+@layer extensions.one,,invalid-layer-names..foo;
+
+:root{
+	--desktop: unlayered;
+}
+
+@layer layouts {
+	:root{
+		--dark: layouts;
+	}
+}
+
+@layer components {
+	:root{
+		--tablet: components;
+		--desktop: components;
+		--dark: components;
+	}
+}
+
+@layer extensions {
+	@layer one, two;
+
+	:root{
+		--mobile: extensions;
+		--tablet: extensions;
+		--desktop: extensions;
+	}
+
+	@layer two {
+		:root{
+			--light: extensions-two;
+		}
+	}
+
+	@layer {
+		:root{
+			--mobile: extensions.anon-1;
+		}
+	}
+}
+
+@layer extensions.one {
+	:root{
+		--light: extensions-one;
+	}
+}
+
+p {
+	prop-mobile: var(--mobile);
+}
+
+p {
+	prop-tablet: var(--tablet);
+}
+
+p {
+	prop-desktop: var(--desktop);
+}
+
+p {
+	prop-dark: var(--dark);
+}
+
+p {
+	prop-light: var(--light);
+}

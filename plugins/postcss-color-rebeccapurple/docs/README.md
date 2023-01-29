@@ -2,14 +2,16 @@
 <!-- <humanReadableName> PostCSS Your Plugin -->
 <!-- <exportName> postcssYourPlugin -->
 <!-- <packageName> @csstools/postcss-your-plugin -->
+<!-- <packageVersion> 1.0.0 -->
 <!-- <packagePath> plugins/postcss-your-plugin -->
 <!-- <cssdbId> your-feature -->
 <!-- <specUrl> https://www.w3.org/TR/css-color-4/#funcdef-color -->
 <!-- <example.css> file contents for examples/example.css -->
 <!-- <header> -->
 <!-- <usage> usage instructions -->
-<!-- <env-support> -->
-<!-- <link-list> -->
+<!-- <envSupport> -->
+<!-- <corsWarning> -->
+<!-- <linkList> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -32,7 +34,7 @@ In her memory, the hex color `#663399` is named `rebeccapurple` and [added to th
 
 <usage>
 
-<env-support>
+<envSupport>
 
 ## Options
 
@@ -53,4 +55,4 @@ is preserved. By default, it is not preserved.
 <example.preserve-true.expect.css>
 ```
 
-<link-list>
+<linkList>

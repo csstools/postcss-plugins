@@ -37,4 +37,31 @@ postcssTape(plugin)({
 			preserve: false
 		}
 	},
+	'examples/example': {
+		message: "supports examples",
+	},
+	'examples/example:preserve-true': {
+		message: "supports examples with { preserve: true }",
+		options: {
+			preserve: true
+		},
+	},
+	'examples/example:shadow-true': {
+		message: "supports examples with { shadow: true }",
+		options: {
+			shadow: true
+		},
+	},
+	'examples/example:dir-ltr': {
+		message: "supports examples with { dir: 'ltr' }",
+		options: {
+			dir: 'ltr'
+		},
+	},
+	'examples/example:dir-rtl': {
+		message: "supports examples with { dir: 'rtl' }",
+		options: {
+			dir: 'rtl'
+		},
+	},
 });

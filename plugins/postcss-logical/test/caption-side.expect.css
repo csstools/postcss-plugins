@@ -1,0 +1,27 @@
+.foo {
+	caption-side: top;
+}
+
+.foo {
+	caption-side: bottom;
+}
+
+.foo {
+	caption-side: left;
+}
+
+.foo {
+	caption-side: right;
+}
+
+.foo {
+	caption-side: top;
+}
+
+.foo {
+	caption-side: top;
+}
+
+.foo {
+	caption-side: block-ending;
+}

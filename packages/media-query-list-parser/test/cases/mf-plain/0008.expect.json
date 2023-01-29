@@ -1,0 +1,81 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(min-width: token('foo'))",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "general-enclosed",
+					"tokens": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						],
+						[
+							"ident-token",
+							"min-width",
+							1,
+							9,
+							{
+								"value": "min-width"
+							}
+						],
+						[
+							"colon-token",
+							":",
+							10,
+							10,
+							null
+						],
+						[
+							"whitespace-token",
+							" ",
+							11,
+							11,
+							null
+						],
+						[
+							"function-token",
+							"token(",
+							12,
+							17,
+							{
+								"value": "token"
+							}
+						],
+						[
+							"string-token",
+							"'foo'",
+							18,
+							22,
+							{
+								"value": "foo"
+							}
+						],
+						[
+							")-token",
+							")",
+							23,
+							23,
+							null
+						],
+						[
+							")-token",
+							")",
+							24,
+							24,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

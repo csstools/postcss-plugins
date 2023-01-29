@@ -1,6 +1,10 @@
 "common-tools":
   - .github/**
   - packages/base-cli/**
+  - packages/cascade-layer-name-parser/**
+  - packages/css-parser-algorithms/**
+  - packages/css-tokenizer/**
+  - packages/media-query-list-parser/**
   - packages/postcss-tape/**
   - packages/selector-specificity/**
   - plugins/postcss-base-plugin/**
@@ -12,6 +16,9 @@
 "cli":
   - cli/csstools-cli/**
   - packages/base-cli/**
+
+"e2e":
+  - e2e/**
 
 "experimental":
   - experimental/**
@@ -52,9 +59,13 @@
   - plugins/postcss-color-hex-alpha/**
   - experimental/postcss-color-hex-alpha/**
 
-"plugins/postcss-color-mod-function":
-  - plugins/postcss-color-mod-function/**
-  - experimental/postcss-color-mod-function/**
+"plugins/postcss-color-rebeccapurple":
+  - plugins/postcss-color-rebeccapurple/**
+  - experimental/postcss-color-rebeccapurple/**
+
+"plugins/postcss-conditional-values":
+  - plugins/postcss-conditional-values/**
+  - experimental/postcss-conditional-values/**
 
 "plugins/postcss-custom-media":
   - plugins/postcss-custom-media/**
@@ -68,6 +79,10 @@
   - plugins/postcss-custom-selectors/**
   - experimental/postcss-custom-selectors/**
 
+"plugins/postcss-design-tokens":
+  - plugins/postcss-design-tokens/**
+  - experimental/postcss-design-tokens/**
+
 "plugins/postcss-dir-pseudo-class":
   - plugins/postcss-dir-pseudo-class/**
   - experimental/postcss-dir-pseudo-class/**
@@ -79,6 +94,10 @@
 "plugins/postcss-env-function":
   - plugins/postcss-env-function/**
   - experimental/postcss-env-function/**
+
+"plugins/postcss-extract":
+  - plugins/postcss-extract/**
+  - experimental/postcss-extract/**
 
 "plugins/postcss-focus-visible":
   - plugins/postcss-focus-visible/**
@@ -128,9 +147,29 @@
   - plugins/postcss-logical/**
   - experimental/postcss-logical/**
 
+"plugins/postcss-logical-float-and-clear":
+  - plugins/postcss-logical-float-and-clear/**
+  - experimental/postcss-logical-float-and-clear/**
+
+"plugins/postcss-logical-resize":
+  - plugins/postcss-logical-resize/**
+  - experimental/postcss-logical-resize/**
+
+"plugins/postcss-logical-viewport-units":
+  - plugins/postcss-logical-viewport-units/**
+  - experimental/postcss-logical-viewport-units/**
+
+"plugins/media-queries-aspect-ratio-number-values":
+  - plugins/postcss-media-queries-aspect-ratio-number-values/**
+  - experimental/postcss-media-queries-aspect-ratio-number-values/**
+
 "plugins/postcss-media-query-ranges":
   - plugins/postcss-media-query-ranges/**
   - experimental/postcss-media-query-ranges/**
+
+"plugins/postcss-nested-calc":
+  - plugins/postcss-nested-calc/**
+  - experimental/postcss-nested-calc/**
 
 "plugins/postcss-nesting":
   - plugins/postcss-nesting/**
@@ -164,9 +203,9 @@
   - plugins/postcss-pseudo-class-any-link/**
   - experimental/postcss-pseudo-class-any-link/**
 
-"plugins/postcss-rebeccapurple":
-  - plugins/postcss-rebeccapurple/**
-  - experimental/postcss-rebeccapurple/**
+"plugins/postcss-scope-pseudo-class":
+  - plugins/postcss-scope-pseudo-class/**
+  - experimental/postcss-scope-pseudo-class/**
 
 "plugins/postcss-replace-overflow-wrap":
   - plugins/postcss-replace-overflow-wrap/**
@@ -180,17 +219,21 @@
   - plugins/postcss-system-ui-font-family/**
   - experimental/postcss-system-ui-font-family/**
 
-"plugins/postcss-unset-value":
-  - plugins/postcss-unset-value/**
-  - experimental/postcss-unset-value/**
-
 "plugins/postcss-stepped-value-functions":
   - plugins/postcss-stepped-value-functions/**
   - experimental/postcss-stepped-value-functions/**
 
+"plugins/postcss-text-decoration-shorthand":
+  - plugins/postcss-text-decoration-shorthand/**
+  - experimental/postcss-text-decoration-shorthand/**
+
 "plugins/postcss-trigonometric-functions":
   - plugins/postcss-trigonometric-functions/**
   - experimental/postcss-trigonometric-functions/**
+
+"plugins/postcss-unset-value":
+  - plugins/postcss-unset-value/**
+  - experimental/postcss-unset-value/**
 
 "sites/postcss-preset-env":
   - sites/postcss-preset-env/**

@@ -8,7 +8,13 @@ postcssTape(plugin)({
 	'basic:replacewith': {
 		message: 'supports { replaceWith: "[focus-visible]" } usage',
 		options: {
-			replaceWith: '[focus-visible]'
+			replaceWith: '[data-focus-visible-added]'
+		}
+	},
+	'basic:disable-polyfill-ready-class': {
+		message: 'supports { disablePolyfillReadyClass: true } usage',
+		options: {
+			disablePolyfillReadyClass: true
 		}
 	},
 	'basic:preserve': {
@@ -22,6 +28,30 @@ postcssTape(plugin)({
 		warnings: 1,
 		options: {
 			preserve: false
+		}
+	},
+	'browser': {
+		message: 'css for browser tests',
+	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-false': {
+		message: 'minimal example',
+		options: {
+			preserve: false
+		}
+	},
+	'examples/example:replacewith': {
+		message: 'minimal example',
+		options: {
+			replaceWith: '[focus-visible]'
+		}
+	},
+	'examples/example:disable-polyfill-ready-class': {
+		message: 'minimal example',
+		options: {
+			disablePolyfillReadyClass: true
 		}
 	},
 });

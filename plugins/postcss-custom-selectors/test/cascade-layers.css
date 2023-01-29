@@ -1,0 +1,54 @@
+@layer extensions, components;
+@layer extensions.one,,invalid-layer-names..foo;
+
+@custom-selector :--desktop :desktop(unlayered);
+
+@layer layouts {
+	@custom-selector :--dark :dark(layouts);
+}
+
+@layer components {
+	@custom-selector :--tablet :tablet(components);
+	@custom-selector :--desktop components;
+	@custom-selector :--dark components;
+}
+
+@layer extensions {
+	@layer one, two;
+
+	@custom-selector :--mobile :mobile(extensions);
+	@custom-selector :--tablet :tablet(extensions);
+	@custom-selector :--desktop :desktop(extensions);
+
+	@layer two {
+		@custom-selector :--light :light(extensions-two);
+	}
+
+	@layer {
+		@custom-selector :--mobile :mobile(extensions.anon-1);
+	}
+}
+
+@layer extensions.one {
+	@custom-selector :--light :light(extensions-one);
+}
+
+:--mobile {
+	color: yellow;
+}
+
+:--tablet {
+	color: green;
+}
+
+:--desktop {
+	color: blue;
+}
+
+:--dark {
+	color: pink;
+}
+
+:--light {
+	color: red;
+}

@@ -17,18 +17,21 @@
 	order: 2;
 }
 
-.test-logical-properties-and-values:dir(ltr) {
-	margin: 1px 4px 3px 2px;
-}
-
-.test-logical-properties-and-values:dir(rtl) {
-	margin: 1px 2px 3px 4px;
-}
-
 .test-logical-properties-and-values {
+	margin-left: 1px;
+	margin-right: 2px;
 	order: 3;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.test-logical-resize {
+	resize: inline;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vw + 5px);
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
@@ -118,8 +121,7 @@
 }
 
 .test-all-property {
-	-webkit-animation: none 0s ease 0s 1 normal none running;
-	        animation: none 0s ease 0s 1 normal none running;
+	animation: none 0s ease 0s 1 normal none running;
 	-webkit-backface-visibility: visible;
 	        backface-visibility: visible;
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
@@ -167,7 +169,6 @@
 	line-height: normal;
 	height: auto;
 	-webkit-hyphens: none;
-	    -ms-hyphens: none;
 	        hyphens: none;
 	left: auto;
 	letter-spacing: normal;
@@ -227,11 +228,7 @@
 	order: 22;
 }
 
-.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area.test-any-link-pseudo-class[href] {
-	order: 23;
-}
-
-.test-any-link-pseudo-class:-webkit-any-link {
+.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area[href].test-any-link-pseudo-class {
 	order: 23;
 }
 
@@ -406,6 +403,10 @@
 	display: ruby-text flow;
 }
 
+.logical-float {
+	float: inline-start;
+}
+
 .color-function {
 	prop-1: color(display-p3 0.00000 0.51872 0.36985);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
@@ -452,14 +453,14 @@
 }
 
 .ic-unit {
-	--value-2ic: 'something';
-	text-indent: 2ic;
+	--value-2ic: initial;
+	text-indent: 2em;
 	content: var(--value-2ic);
-	left: 2ic;
-	left: var(--non-existing, 2ic);
-	width: calc(8ic + 20px);
+	left: 2em;
+	left: var(--non-existing, 2em);
+	width: calc(8em + 20px);
 	height: 10px;
-	margin: 0.5ic 1ic .2ic;
+	margin: 0.5em 1em .2em;
 	padding: 2    ic;
 }
 
@@ -484,10 +485,7 @@
 	right: round(nearest, 2.5px, 1px);
 	bottom: round(up, 2.5px, 1px);
 	left: round(down, 2.5px, 1px);
-	top: round(to-zero, 2.5px, 1px);
-	right: round(to-zero, 2.5px, 1px);
-	bottom: round(to-zero, 2.5px, 1px);
-	left: round(to-zero, 2.5px, 1px);
+	padding-left: round(to-zero, 2.5px, 1px);
 }
 
 .trigonometric {
@@ -529,4 +527,39 @@
 	@nest :--view-m & {
 		background: red;
 	}
+}
+
+.nested-calc {
+	order: calc(1 * (8 / 3 + (5 * 10)));
+	order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+}
+
+.text-decoration-shorthand {
+	-webkit-text-decoration: 3px wavy pink overline;
+	        text-decoration: 3px wavy pink overline;
+}
+
+.stage__container {
+	left: 1rem;
+	left: var(--size, 1rem);
+}
+
+:root {
+	content: "plain :scope";
+}
+
+@scope (.foo) {
+	:scope {
+		content: ":scope in @scope";
+	}
+}
+
+:root {
+	@scope (.foo) {
+		content: ":scope in @scope, but with nesting";
+	}
+}
+
+@media (min-aspect-ratio: 1.77) {
+	/* media query aspect ratio : <number> */
 }

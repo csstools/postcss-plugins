@@ -1,0 +1,13 @@
+/* prevent regressions : https://github.com/csstools/postcss-nesting/issues/95 */
+body {color: blue;
+
+	background: red;
+	font-size: 1rem;
+
+	margin: 0;
+}
+@media (min-width: 64em) {
+body {
+		background: green;
+}
+	}

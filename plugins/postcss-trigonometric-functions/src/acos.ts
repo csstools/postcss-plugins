@@ -8,7 +8,7 @@ function transformAcosFunction(decl: Declaration): string | undefined {
 	const parsedValue = valueParser(decl.value);
 
 	parsedValue.walk(node => {
-		if (node.type !== 'function' || node.value !== 'acos') {
+		if (node.type !== 'function' || node.value.toLowerCase() !== 'acos') {
 			return;
 		}
 
@@ -26,7 +26,7 @@ function transformAcosFunction(decl: Declaration): string | undefined {
 		}
 
 		transformedNode.value = value + '';
-	});
+	}, true);
 
 	return parsedValue.toString();
 }

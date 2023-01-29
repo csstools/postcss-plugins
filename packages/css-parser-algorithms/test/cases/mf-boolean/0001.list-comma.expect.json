@@ -1,0 +1,55 @@
+[
+	[
+		{
+			"type": "simple-block",
+			"startToken": [
+				"(-token",
+				"(",
+				0,
+				0,
+				null
+			],
+			"tokens": [
+				[
+					"(-token",
+					"(",
+					0,
+					0,
+					null
+				],
+				[
+					"ident-token",
+					"color",
+					1,
+					5,
+					{
+						"value": "color"
+					}
+				],
+				[
+					")-token",
+					")",
+					6,
+					6,
+					null
+				]
+			],
+			"value": [
+				{
+					"type": "token",
+					"tokens": [
+						[
+							"ident-token",
+							"color",
+							1,
+							5,
+							{
+								"value": "color"
+							}
+						]
+					]
+				}
+			]
+		}
+	]
+]

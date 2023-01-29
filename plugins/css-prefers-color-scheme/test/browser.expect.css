@@ -1,0 +1,29 @@
+@media (prefers-color-scheme: no-preference) {
+	#fixture {
+		color: rgb(255, 255, 0);
+	}
+}
+
+@media (color: 48842621) {
+	#fixture {
+		color: rgb(128, 0, 128);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	#fixture {
+		color: rgb(128, 0, 128);
+	}
+}
+
+@MEDIA (color: 70318723) {
+	#fixture {
+		color: rgb(255, 192, 203);
+	}
+}
+
+@MEDIA (PREFERS-COLOR-SCHEME: LIGHT) {
+	#fixture {
+		color: rgb(255, 192, 203);
+	}
+}

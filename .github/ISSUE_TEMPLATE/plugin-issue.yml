@@ -70,13 +70,15 @@ body:
         - PostCSS Color Function
         - PostCSS Color Functional Notation
         - PostCSS Color Hex Alpha
-        - PostCSS Color Mod Function
+        - PostCSS Conditional Values
         - PostCSS Custom Media Queries
         - PostCSS Custom Properties
         - PostCSS Custom Selectors
+        - PostCSS Design Tokens
         - PostCSS Dir Pseudo Class
         - PostCSS Double Position Gradients
         - PostCSS Env Function
+        - PostCSS Extract
         - PostCSS Focus Visible
         - PostCSS Focus Within
         - PostCSS Font Variant
@@ -87,7 +89,12 @@ body:
         - PostCSS Is Pseudo Class
         - PostCSS Lab Function
         - PostCSS Logical
+        - PostCSS Logical Float and Clear
+        - PostCSS Logical Resize
+        - PostCSS Logical Viewport Units
+        - PostCSS Media Queries Aspect-Ratio Number Values
         - PostCSS Media Query Ranges
+        - PostCSS Nested Calc
         - PostCSS Nesting
         - PostCSS OKLab Function
         - PostCSS Overflow Shorthand
@@ -97,8 +104,12 @@ body:
         - PostCSS Pseudo Class Any Link
         - PostCSS Rebeccapurple
         - PostCSS Replace Overflow Wrap
+        - PostCSS Scope Pseudo Class
         - PostCSS Selector Not
+        - PostCSS Stepped Value Functions
         - PostCSS System Ui Font Family
+        - PostCSS Text Decoration Shorthand
+        - PostCSS Trigonometric Functions
         - PostCSS Unset Value
   - type: input
     id: version

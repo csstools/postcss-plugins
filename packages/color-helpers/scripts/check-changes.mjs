@@ -33,7 +33,7 @@ if (changes.length) {
 	changes.forEach(change => console.log('└ %s', change));
 
 	if (isRewriting) {
-		await fs.writeFile(hashesPath, JSON.stringify(newHashes));
+		await fs.writeFile(hashesPath, JSON.stringify(newHashes, null, '\t'));
 		console.log('Changes have been updated.');
 		process.exit(0);
 	} else {

@@ -1,3 +1,9 @@
 .theme-styles {
 	color:red;
 }
+
+@media screen and (prefers-color-scheme: dark) {
+	.theme-styles {
+			color: pink;
+		}
+}

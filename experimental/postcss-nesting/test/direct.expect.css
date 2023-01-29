@@ -1,0 +1,60 @@
+a, b {
+	order: 1;
+	order: 5;
+}
+:is(a,b) c, :is(a,b) d {
+		order: 2;
+		order: 4;
+	}
+:is(:is(a,b) c,:is(a,b) d) e, :is(:is(a,b) c,:is(a,b) d) f {
+			order: 3;
+		}
+a, b {
+	order: 1;
+	order: 5;
+}
+:is(a,b) c, :is(a,b) d {
+		order: 2;
+		order: 4;
+	}
+:is(:is(a,b) c,:is(a,b) d) e, :is(:is(a,b) c,:is(a,b) d) f {
+			order: 3;
+		}
+
+a,
+b {
+	order: 1;
+
+	order: 5;
+}
+
+:is(a,b) c,
+	:is(a,b) d {
+		order: 2;
+
+		order: 4;
+	}
+
+:is(:is(a,b) c,:is(a,b) d) e,
+		:is(:is(a,b) c,:is(a,b) d) f {
+			order: 3;
+		}
+
+.a,
+.b {
+	order: 6;
+
+	order: 10;
+}
+
+:is(.a,.b) .c,
+	:is(.a,.b) .d {
+		order: 7;
+
+		order: 9;
+	}
+
+:is(:is(.a,.b) .c,:is(.a,.b) .d) .e,
+		:is(:is(.a,.b) .c,:is(.a,.b) .d) .f {
+			order: 8;
+		}

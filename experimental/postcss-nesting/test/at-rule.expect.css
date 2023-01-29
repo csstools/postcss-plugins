@@ -1,0 +1,76 @@
+a {
+	order: 1;
+}
+:is(b) :is(a) {
+		order: 2;
+	}
+:id(c) :is(a) {
+		order: 3;
+	}
+:is(d) :is(a) {
+		order: 4;
+	}
+:is(e) :is(a) {
+		order: 5;
+	}
+a {
+	order: 1;
+}
+:is(a) b {
+		order: 2;
+	}
+:is(a) c {
+		order: 3;
+	}
+:is(a) d {
+		order: 4;
+	}
+:is(a) e {
+		order: 5;
+	}
+:is(a)[foo="& ,\'"] {
+		order: 6;
+	}
+:is(a)[a="& ,\'"][b='& . \\a &'] {
+		order: 7;
+	}
+:is(a)\\foo {
+		order: 8;
+	}
+
+:is(.foo)h1 {
+		color: red;
+	}
+
+:is(.foo)h1, :is(.foo)h2 {
+		color: red;
+	}
+
+:is(.foo).bar {
+		color: red;
+	}
+
+
+:is(.foo).bar, :is(.foo).baz {
+		color: red;
+	}
+
+.foo:is(h1) {
+		color: blue;
+	}
+
+.foo:is(h1) .baz :is(h1) {
+		color: blue;
+	}
+
+.foo:is(h1), .bar:is(h1) {
+		color: blue;
+	}
+
+article {
+	color: blue;
+}
+
+:where(:is(article)) {
+		color: red;
+	}

@@ -1,0 +1,60 @@
+a, b {
+	order: 1;
+	& c, & d {
+		order: 2;
+		& e, & f {
+			order: 3;
+		}
+		order: 4;
+	}
+	order: 5;
+}
+a, b {
+	order: 1;
+	& c, & d {
+		order: 2;
+		& e, & f {
+			order: 3;
+		}
+		order: 4;
+	}
+	order: 5;
+}
+
+a,
+b {
+	order: 1;
+
+	& c,
+	& d {
+		order: 2;
+
+		& e,
+		& f {
+			order: 3;
+		}
+
+		order: 4;
+	}
+
+	order: 5;
+}
+
+.a,
+.b {
+	order: 6;
+
+	& .c,
+	& .d {
+		order: 7;
+
+		& .e,
+		& .f {
+			order: 8;
+		}
+
+		order: 9;
+	}
+
+	order: 10;
+}

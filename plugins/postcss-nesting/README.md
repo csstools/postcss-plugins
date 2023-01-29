@@ -10,21 +10,31 @@ you might want to use [PostCSS Nested] instead.
 
 ```pcss
 a, b {
-  color: red;
+	color: red;
 
-  & c, & d {
-    color: white;
-  }
+	/* "&" comes first */
+	& c, & d {
+		color: white;
+	}
+
+	/* "&" comes later, requiring "@nest" */
+	@nest e & {
+		color: yellow;
+	}
 }
 
 /* becomes */
 
 a, b {
-  color: red;
+	color: red;
 }
 
 a c, a d, b c, b d {
-  color: white;
+	color: white;
+}
+
+e a, e b {
+	color: yellow;
 }
 ```
 
@@ -36,15 +46,7 @@ Add [PostCSS Nesting] to your project:
 npm install postcss-nesting --save-dev
 ```
 
-Use [PostCSS Nesting] to process your CSS:
-
-```js
-import postcssNesting from 'postcss-nesting';
-
-postcssNesting.process(YOUR_CSS /*, processOptions, pluginOptions */);
-```
-
-Or use it as a [PostCSS] plugin:
+Use [PostCSS Nesting] as a [PostCSS] plugin:
 
 ```js
 import postcss from 'postcss';
@@ -57,19 +59,8 @@ postcss([
 
 [PostCSS Nesting] runs in all Node environments, with special instructions for:
 
-| [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
-| --- | --- | --- | --- | --- |
-
-### Deno
-
-You can also use [PostCSS Nesting] on [Deno]:
-
-```js
-import postcss from "https://deno.land/x/postcss/mod.js";
-import postcssNesting from "https://cdn.jsdelivr.net/npm/postcss-nesting@10/mod.js";
-
-await postcss([postcssNesting]).process(YOUR_CSS /*, processOptions */);
-```
+| [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- |
 
 ## Options
 
@@ -174,8 +165,8 @@ _writing the selector without nesting is advised here_
 
 ### ⚠️ Spec disclaimer
 
-The [CSS Nesting Module] spec states on nesting that "Declarations occuring after a nested rule are invalid and ignored.".
-While we think it makes sense on browsers, enforcing this at the plugin level introduces several constrains that would
+The [CSS Nesting Module] spec states on nesting that "Declarations occurring after a nested rule are invalid and ignored.".
+While we think it makes sense on browsers, enforcing this at the plugin level introduces several constraints that would
 interfere with PostCSS' plugin nature such as with `@mixin`
 
 [css-img]: https://cssdb.org/images/badges/nesting-rules.svg
@@ -187,7 +178,6 @@ interfere with PostCSS' plugin nature such as with `@mixin`
 [CSS Nesting]: https://drafts.csswg.org/css-nesting-1/
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Nesting]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting
-[Deno]: https://deno.land/x/postcss_nesting
 [PostCSS Nested]: https://github.com/postcss/postcss-nested
 [Sass]: https://sass-lang.com/
 [CSS Nesting Module]: https://www.w3.org/TR/css-nesting-1/

@@ -1,0 +1,19 @@
+div {
+	padding: 2em;
+}
+
+div.focus-within.js-focus-within, .js-focus-within div.focus-within {
+	background-color: rgb(128, 0, 128);
+}
+
+div:focus-within {
+	background-color: rgb(128, 0, 128);
+}
+
+input.focus-within.js-focus-within, .js-focus-within input.focus-within {
+	background-color: rgb(0, 128, 0);
+}
+
+input:focus-within {
+	background-color: rgb(0, 128, 0);
+}

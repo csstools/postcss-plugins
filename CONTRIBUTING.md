@@ -23,10 +23,20 @@ instructions:
 
 - [Node.js](https://nodejs.org/) >= 16.0.0
 
+### Quick start
+
+1. fork the repo and clone it locally
+2. `npm run ci` to install dependencies
+3. `cd plugins/<plugin-name>`
+4. `npm run build && npm run test` to build and test the plugin after making changes
+5. open a pull request with the changes
+
 ## Submitting Pull Requests
 
-Pull requests are the greatest contributions, so be sure they are focused in
-scope and avoid unrelated commits.
+We try our best to create a safe and welcoming environment for contributors.
+
+Your changes do not have to be complete and tests do not have to pass before opening a pull request.
+Receiving early feedback on your work will help you iterate more quickly in the right direction.
 
 1. To begin; [fork this project], clone your fork, and add our upstream.
    ```bash
@@ -48,7 +58,7 @@ scope and avoid unrelated commits.
     # Install and build the needed things to start local development
     # This also does an initial test of everything.
     # If this gives errors please open an issue so that we can look into it.
-    npm run get-me-going
+    npm run setup-workspace
    ```
 
 * If you want to contribute to sites, you need to run the following command: 
@@ -57,7 +67,7 @@ scope and avoid unrelated commits.
     cd sites
     # Install the needed things to start local development
     # If this gives errors please open an issue so that we can look into it.
-    npm run get-me-going
+    npm run setup-workspace
    ```
 
 3. Create a branch for your feature or fix:
@@ -101,8 +111,8 @@ That’s it! Now [open a pull request] with a clear title and description.
 ## Creating a new plugin here
 
 - Follow the guide for submitting a pull request
-- Run `npm run get-me-going` if you want to start local development.
-- Run `npm run new-plugin` to create a new plugin.
+- Run `npm run ci` if you want to start local development.
+- Run `npm run new-plugin <Your Plugin Name>` to create a new plugin.
 
 ```bash
 npm run new-plugin
@@ -128,20 +138,21 @@ Your next steps:
 - Run : "cd plugins/postcss-cascade-layers"
 - Run : "npm run build" to build your plugin
 - Run : "npm run test" to test your plugin
-- Run : "npm run test:rewrite-expects" to update test expects
+- Run : "npm run test:rewrite-expects" to update test result files
 
 Change "blue" to "purple" in "src/index.ts" and see how it affects the test outcome
 ```
 
+## Read the guidelines and best practices for plugins
+
+- [PostCSS API documentation](https://postcss.org/api/)
+- [PostCSS guidelines for plugins](https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md)
+- [CSSTools technical guidelines for plugins](https://github.com/csstools/postcss-plugins/wiki/Plugin-best-practices)
+- [CSSTools authoring guidelines](https://github.com/csstools/postcss-plugins/blob/main/AUTHORING_GUIDELINES.md)
+
 ## Trouble shooting
 
-This is a mono repo that contains unpublished packages.
-If you get warning about missing files, modules, packages you should do :
-
-- `npm install` -> get public dependencies
-- `npm run build` -> build private dependencies
-
-_if your issues is not mentioned here please open an issue so that we can extend the guides_
+If you encounter any issues not mentioned here, please open an issue so that we can extend the guides.
 
 [already been reported]: https://github.com/csstools/postcss-plugins/issues
 [fork this project]:     https://github.com/csstools/postcss-plugins/fork

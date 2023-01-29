@@ -70,8 +70,8 @@ postcss([
 [PostCSS image-set() Function] runs in all Node environments, with special
 instructions for:
 
-| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
-| --- | --- | --- | --- | --- | --- |
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -115,18 +115,18 @@ postcssImageSetFunction({ preserve: false })
 }
 ```
 
-### onvalid
+### onInvalid
 
-The `oninvalid` option determines how invalid usage of `image-set()` should be
-handled. By default, invalid usages of `image-set()` are ignored. They can be
-configured to display a `warning` or `throw` an error.
+The `onInvalid` option determines how invalid usage of `image-set()` should be
+handled. By default, invalid usages of `image-set()` are ignored.
+They can be configured to emit a warning with `warn` or throw an exception with `throw`.
 
 ```js
-postcssImageSetFunction({ oninvalid: 'warning' }) // warn on invalid usages
+postcssImageSetFunction({ onInvalid: 'warn' }) // warn on invalid usages
 ```
 
 ```js
-postcssImageSetFunction({ oninvalid: 'throw' }) // throw on invalid usages
+postcssImageSetFunction({ onInvalid: 'throw' }) // throw on invalid usages
 ```
 
 ## Image Resolution

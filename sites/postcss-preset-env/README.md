@@ -16,7 +16,7 @@ Before you can contribute to the codebase, you will need to fork the repo.
    
    # Install the needed things to start local development
    # If this gives errors please open an issue so that we can look into it.
-   npm run get-me-going
+   npm run setup-workspace
    ```
 
 This site is built using the following awesome packages:

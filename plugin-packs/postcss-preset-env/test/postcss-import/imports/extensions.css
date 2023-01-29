@@ -1,0 +1,11 @@
+@custom-media --dark (prefers-color-scheme: dark);
+@custom-media --light (prefers-color-scheme: light);
+@custom-media --tablet (width >= 768px);
+
+@custom-selector :--h h1, h2, h3, h4, h5, h6;
+@custom-selector :--button button, input[type="submit"];
+
+:root {
+	--color-red: red;
+	--color-blue: blue;
+}

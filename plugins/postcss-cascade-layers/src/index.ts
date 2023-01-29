@@ -11,7 +11,10 @@ import { sortRootNodes } from './sort-root-nodes';
 import { recordLayerOrder } from './record-layer-order';
 import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, INVALID_LAYER_NAME } from './constants';
 import { splitImportantStyles } from './split-important-styles';
-import { pluginOptions } from './options';
+import type { pluginOptions } from './options';
+import { isProcessableLayerRule } from './is-processable-layer-rule';
+
+export type { pluginOptions } from './options';
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
@@ -27,15 +30,19 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			// Warnings
 			if (options.onRevertLayerKeyword) {
 				root.walkDecls((decl) => {
-					if (decl.value === 'revert-layer') {
+					if (decl.value.toLowerCase() === 'revert-layer') {
 						decl.warn(result, 'handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions.');
 					}
 				});
 			}
 
 			if (options.onImportLayerRule) {
-				root.walkAtRules('import', (atRule) => {
-					if (atRule.params.includes('layer')) {
+				root.walkAtRules((atRule) => {
+					if (atRule.name.toLowerCase() !== 'import') {
+						return;
+					}
+
+					if (atRule.params.toLowerCase().includes('layer')) {
 						atRule.warn(result, 'To use @import with layers, the postcss-import plugin is also required. This plugin alone will not support using the @import at-rule.');
 					}
 				},
@@ -64,8 +71,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			let highestASpecificity = 0;
 			root.walkRules((rule) => {
 				rule.selectors.forEach((selector) => {
-					const specificity = selectorSpecificity(selectorParser().astSync(selector));
-					highestASpecificity = Math.max(highestASpecificity, specificity.a + 1);
+					try {
+						const specificity = selectorSpecificity(selectorParser().astSync(selector));
+						highestASpecificity = Math.max(highestASpecificity, specificity.a + 1);
+					} catch (err) {
+						rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
+					}
 				});
 			});
 
@@ -73,7 +84,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			// transform unlayered styles - need highest specificity (layerCount)
 			root.walkRules((rule) => {
 				// Skip any at rules that do not contain regular declarations (@keyframes)
-				if (rule.parent && rule.parent.type === 'atrule' && ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS.includes((rule.parent as AtRule).name)) {
+				if (rule.parent && rule.parent.type === 'atrule' && ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS.includes((rule.parent as AtRule).name.toLowerCase())) {
 					return;
 				}
 
@@ -88,7 +99,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				}
 
 				rule.selectors = rule.selectors.map((selector) => {
-					return adjustSelectorSpecificity(selector, model.layerCount * highestASpecificity);
+					try {
+						return adjustSelectorSpecificity(selector, model.layerCount * highestASpecificity);
+					} catch (err) {
+						rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
+					}
+
+					return selector;
 				});
 			});
 
@@ -107,7 +124,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			//  - give selectors the specificity they need based on layerPriority state
 			root.walkRules((rule) => {
 				// Skip any at rules that do not contain regular declarations (@keyframes)
-				if (rule.parent && rule.parent.type === 'atrule' && ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS.includes((rule.parent as AtRule).name)) {
+				if (rule.parent && rule.parent.type === 'atrule' && ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS.includes((rule.parent as AtRule).name.toLowerCase())) {
 					return;
 				}
 
@@ -131,8 +148,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			// Remove all @layer at-rules
 			// Contained styles are inserted before
-			while (someAtRuleInTree(root, (node) => node.name === 'layer')) {
-				root.walkAtRules('layer', (atRule) => {
+			while (someAtRuleInTree(root, (node) => isProcessableLayerRule(node))) {
+				root.walkAtRules((atRule) => {
+					if (!isProcessableLayerRule(atRule)) {
+						return;
+					}
+
 					atRule.replaceWith(atRule.nodes);
 				});
 			}

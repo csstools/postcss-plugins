@@ -1,0 +1,153 @@
+{
+	"type": "custom-media",
+	"string": "--foo (min-width: 300px)",
+	"nameValue": "--foo",
+	"name": [
+		[
+			"ident-token",
+			"--foo",
+			0,
+			4,
+			{
+				"value": "--foo"
+			}
+		]
+	],
+	"hasFalseKeyword": false,
+	"hasTrueKeyword": false,
+	"mediaQueryList": [
+		{
+			"type": "media-query-without-type",
+			"string": " (min-width: 300px)",
+			"media": {
+				"type": "media-condition",
+				"media": {
+					"type": "media-in-parens",
+					"media": {
+						"type": "media-feature",
+						"feature": {
+							"type": "mf-plain",
+							"name": {
+								"type": "mf-name",
+								"name": "min-width",
+								"tokens": [
+									[
+										"ident-token",
+										"min-width",
+										7,
+										15,
+										{
+											"value": "min-width"
+										}
+									]
+								]
+							},
+							"value": {
+								"type": "mf-value",
+								"value": {
+									"type": "token",
+									"tokens": [
+										[
+											"dimension-token",
+											"300px",
+											18,
+											22,
+											{
+												"value": 300,
+												"type": "integer",
+												"unit": "px"
+											}
+										]
+									]
+								},
+								"tokens": [
+									[
+										"whitespace-token",
+										" ",
+										17,
+										17,
+										null
+									],
+									[
+										"dimension-token",
+										"300px",
+										18,
+										22,
+										{
+											"value": 300,
+											"type": "integer",
+											"unit": "px"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"ident-token",
+									"min-width",
+									7,
+									15,
+									{
+										"value": "min-width"
+									}
+								],
+								[
+									"colon-token",
+									":",
+									16,
+									16,
+									null
+								],
+								[
+									"whitespace-token",
+									" ",
+									17,
+									17,
+									null
+								],
+								[
+									"dimension-token",
+									"300px",
+									18,
+									22,
+									{
+										"value": 300,
+										"type": "integer",
+										"unit": "px"
+									}
+								]
+							]
+						},
+						"before": [
+							[
+								"whitespace-token",
+								" ",
+								5,
+								5,
+								null
+							],
+							[
+								"(-token",
+								"(",
+								6,
+								6,
+								null
+							]
+						],
+						"after": [
+							[
+								")-token",
+								")",
+								23,
+								23,
+								null
+							]
+						]
+					},
+					"before": [],
+					"after": []
+				}
+			}
+		}
+	]
+}

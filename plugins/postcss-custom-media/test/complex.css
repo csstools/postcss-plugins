@@ -21,12 +21,11 @@
 }
 
 /* #region https://github.com/csstools/postcss-custom-media/issues/51 */
-/* TODO: This is broken at the moment */
 @custom-media --screen only screen;
 @custom-media --md-and-larger1 --screen and (width >= 570px);
 @custom-media --md-and-larger2 (--screen) and (width >= 570px);
 @custom-media --md-and-larger3 only screen and (width >= 570px);
-@custom-media --md-larger4 (width >=570px);
+@custom-media --md-larger4 (width >= 570px);
 @custom-media --md-smaller4 (width < 1000px);
 
 @media (--md-and-larger1) {

@@ -1,5 +1,6 @@
 import type { AtRule, Node } from 'postcss';
 import { ANONYMOUS_LAYER_SUFFIX, IMPLICIT_LAYER_SUFFIX } from './constants';
+import { isProcessableLayerRule } from './is-processable-layer-rule';
 
 export class Model {
 	anonymousLayerCount = 0;
@@ -79,7 +80,7 @@ export class Model {
 				continue;
 			}
 
-			if ((parent as AtRule).name === 'layer') {
+			if (isProcessableLayerRule(parent as AtRule)) {
 				params.push(...this.layerParamsParsed.get((parent as AtRule).params));
 			}
 

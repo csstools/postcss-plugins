@@ -1,11 +1,11 @@
-.xl3 {
+:is(.xl3) {
 	order: 1;
 }
 
-.singer {
+:is(.singer) {
 	order: 2;
 }
 
-.dash {
+:is(.dash) {
 	order: 3;
 }

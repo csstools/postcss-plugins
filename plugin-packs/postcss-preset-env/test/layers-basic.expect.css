@@ -1,12 +1,12 @@
 
 
-		.test-nesting-rules p:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) p {
 				is-layer: C_D;
 				-webkit-box-ordinal-group: 6;
 				-webkit-order: 5.1;
 				   -moz-box-ordinal-group: 6;
 				    -ms-flex-order: 5.1;
-				        order: 5.1
+				        order: 5.1;
 		}
 
 :root:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
@@ -19,7 +19,7 @@
 		--firebrick: rgb(179, 35, 35);
 	}
 
-@supports (color: color(display-p3 0 0 0)){
+@supports (color: color(display-p3 0 0 0)) {
 .test-custom-property-fallbacks:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		--firebrick: color(display-p3 0.64331 0.19245 0.16771);
 	}
@@ -27,6 +27,11 @@
 
 .test-custom-properties:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		is-layer: C;
+		-webkit-box-ordinal-group: 2;
+		-webkit-order: 1;
+		   -moz-box-ordinal-group: 2;
+		    -ms-flex-order: 1;
+		        order: 1;
 		-webkit-box-ordinal-group: var(--order);
 		-webkit-order: var(--order);
 		   -moz-box-ordinal-group: var(--order);
@@ -46,23 +51,16 @@
 		        order: 2;
 	}
 
-@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi){
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi) {
 
 	.test-image-set-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		background-image: url(img/test-2x.png);
 	}
 }
 
-[dir="ltr"] .test-logical-properties-and-values:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){
-		margin: 1px 4px 3px 2px
-}
-
-[dir="rtl"] .test-logical-properties-and-values:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){
-		margin: 1px 2px 3px 4px
-}
-
 .test-logical-properties-and-values:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		is-layer: C;
+		margin: logical 1px 2px 3px 4px;
 		-webkit-box-ordinal-group: 4;
 		-webkit-order: 3;
 		   -moz-box-ordinal-group: 4;
@@ -81,13 +79,13 @@
 		        order: 4;
 	}
 
-.test-nesting-rules p:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) p {
 			is-layer: C;
 			-webkit-box-ordinal-group: 6;
 			-webkit-order: 5;
 			   -moz-box-ordinal-group: 6;
 			    -ms-flex-order: 5;
-			        order: 5
+			        order: 5;
 		}
 
 .test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
@@ -109,7 +107,7 @@
 	        order: 7;
 }
 
-.test-nesting-rules + p:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), #test-is-pseudo + p:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) + p, #test-is-pseudo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) + p {
 		-webkit-box-ordinal-group: 9;
 		-webkit-order: 8;
 		   -moz-box-ordinal-group: 9;
@@ -131,7 +129,7 @@
 	        order: 9;
 }
 
-@media (max-width: 30em) {
+@media (max-width: 500px) {
 	.test-custom-media-queries:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		-webkit-box-ordinal-group: 11;
 		-webkit-order: 10;
@@ -152,20 +150,6 @@
 		}
 }
 
-@media (color-index: 48) {
-	body:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-		background-color: black;
-		color: white;
-	}
-}
-
-@media (color: 48842621) {
-	body:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-		background-color: black;
-		color: white;
-	}
-}
-
 @media (prefers-color-scheme: dark) {
 	body:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		background-color: black;
@@ -173,7 +157,47 @@
 	}
 }
 
-h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h2.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h3.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h4.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h5.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	-webkit-box-ordinal-group:13;
+	-webkit-order:12;
+	   -moz-box-ordinal-group:13;
+	    -ms-flex-order:12;
+	        order:12;
+}
+
+h2.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	-webkit-box-ordinal-group:13;
+	-webkit-order:12;
+	   -moz-box-ordinal-group:13;
+	    -ms-flex-order:12;
+	        order:12;
+}
+
+h3.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	-webkit-box-ordinal-group:13;
+	-webkit-order:12;
+	   -moz-box-ordinal-group:13;
+	    -ms-flex-order:12;
+	        order:12;
+}
+
+h4.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	-webkit-box-ordinal-group:13;
+	-webkit-order:12;
+	   -moz-box-ordinal-group:13;
+	    -ms-flex-order:12;
+	        order:12;
+}
+
+h5.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	-webkit-box-ordinal-group:13;
+	-webkit-order:12;
+	   -moz-box-ordinal-group:13;
+	    -ms-flex-order:12;
+	        order:12;
+}
+
+h6.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	-webkit-box-ordinal-group:13;
 	-webkit-order:12;
 	   -moz-box-ordinal-group:13;
@@ -354,6 +378,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	text-align: left;
 	-moz-text-align-last: auto;
 	     text-align-last: auto;
+	-webkit-text-decoration: none;
 	text-decoration: none;
 	text-indent: 0;
 	text-shadow: none;
@@ -392,7 +417,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 20;
 }
 
-.test-matches-pseudo-class:matches( .special,:first-child):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-matches-pseudo-class:matches(:first-child, .special):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	-webkit-box-ordinal-group: 22;
 	-webkit-order: 21;
 	   -moz-box-ordinal-group: 22;
@@ -408,7 +433,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 22;
 }
 
-.test-any-link-pseudo-class:link:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), .test-any-link-pseudo-class:visited:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), area.test-any-link-pseudo-class[href]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+.test-any-link-pseudo-class:link:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), .test-any-link-pseudo-class:visited:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#), area[href].test-any-link-pseudo-class:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	-webkit-box-ordinal-group: 24;
 	-webkit-order: 23;
 	   -moz-box-ordinal-group: 24;
@@ -435,7 +460,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	        order: 23;
 }
 
-[dir="rtl"] .test-dir-pseudo-class:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+[dir="rtl"]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) .test-dir-pseudo-class {
 	-webkit-box-ordinal-group: 25;
 	-webkit-order: 24;
 	   -moz-box-ordinal-group: 25;
@@ -452,14 +477,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	word-wrap: break-word;
 }
 
-.test-focus-visible-pseudo-class.focus-visible:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	-webkit-box-ordinal-group: 27;
-	-webkit-order: 26;
-	   -moz-box-ordinal-group: 27;
-	    -ms-flex-order: 26;
-	        order: 26;
-}
-
 .test-focus-visible-pseudo-class:focus-visible:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	-webkit-box-ordinal-group: 27;
 	-webkit-order: 26;
@@ -473,15 +490,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
 }
 
-.test-blank-pseudo-class[blank]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	background-color: yellow;
-}
-
 .test-blank-pseudo-class:blank:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	background-color: yellow;
-}
-
-.test-has-pseudo-class[\:has\(.inner-class\)]:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	background-color: yellow;
 }
 
@@ -521,7 +530,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 		        order: 27;
 	}
 
-.a.c > .b + .d:not(#\#):not(#\#):not(#\#):not(#\#) {
+.a.c:not(#\#):not(#\#):not(#\#):not(#\#) > .b + .d {
 		-webkit-box-ordinal-group: 29;
 		-webkit-order: 28;
 		   -moz-box-ordinal-group: 29;
@@ -757,8 +766,8 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 .ic-unit:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	--value-2ic: 'something';
 	text-indent: 2em;
+	content: 'something';
 	content: var(--value-2ic);
-	left: 2em;
 	left: 2em;
 	left: var(--non-existing, 2em);
 	width: -webkit-calc(8em + 20px);
@@ -805,5 +814,4 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	top: 2px;
 	right: 2px;
 	bottom: 2px;
-	left: 2px;
 }

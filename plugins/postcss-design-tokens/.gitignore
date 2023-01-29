@@ -3,4 +3,4 @@ package-lock.json
 yarn.lock
 *.result.css
 *.result.css.map
-dist/*
+*.result.html

@@ -1,0 +1,64 @@
+@layer extensions, components;
+@layer extensions.one,,invalid-layer-names..foo;
+
+@custom-media --desktop (min-width:1280px) and (debug-layer: unlayered);
+
+@layer layouts {
+	@custom-media --dark (prefers-color-scheme: dark) and (debug-layer: layouts);
+}
+
+@layer components {
+	@custom-media --tablet (min-width:768px) and (debug-layer: components);
+	@custom-media --desktop (min-width:1280px) and (debug-layer: components);
+	@custom-media --dark (prefers-color-scheme: dark) and (debug-layer: components);
+}
+
+@layer extensions {
+	@layer one, two;
+
+	@custom-media --mobile (min-width:320px) and (debug-layer: extensions);
+	@custom-media --tablet (min-width:768px) and (debug-layer: extensions);
+	@custom-media --desktop (min-width:1280px) and (debug-layer: extensions);
+
+	@layer two {
+		@custom-media --light (prefers-color-scheme: light) and (debug-layer: extensions-two);
+	}
+
+	@layer {
+		@custom-media --mobile (min-width:320px) and (debug-layer: extensions.anon-1);
+	}
+}
+
+@layer extensions.one {
+	@custom-media --light (prefers-color-scheme: light) and (debug-layer: extensions-one);
+}
+
+@media (--mobile) {
+	p {
+		color: yellow;
+	}
+}
+
+@media (--tablet) {
+	p {
+		color: green;
+	}
+}
+
+@media (--desktop) {
+	p {
+		color: blue;
+	}
+}
+
+@media (--dark) {
+	p {
+		color: pink;
+	}
+}
+
+@media (--light) {
+	p {
+		color: red;
+	}
+}

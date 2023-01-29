@@ -2,14 +2,16 @@
 <!-- <humanReadableName> PostCSS Your Plugin -->
 <!-- <exportName> postcssYourPlugin -->
 <!-- <packageName> @csstools/postcss-your-plugin -->
+<!-- <packageVersion> 1.0.0 -->
 <!-- <packagePath> plugins/postcss-your-plugin -->
 <!-- <cssdbId> your-feature -->
 <!-- <specUrl> https://www.w3.org/TR/css-color-4/#funcdef-color -->
 <!-- <example.css> file contents for examples/example.css -->
 <!-- <header> -->
 <!-- <usage> usage instructions -->
-<!-- <env-support> -->
-<!-- <link-list> -->
+<!-- <envSupport> -->
+<!-- <corsWarning> -->
+<!-- <linkList> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -45,7 +47,7 @@ These are equivalent in PostCSS :
 
 <usage>
 
-<env-support>
+<envSupport>
 
 ## Options
 
@@ -87,5 +89,5 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 
 _Custom properties do not fallback to the previous declaration_
 
-<link-list>
+<linkList>
 [CSS Specification]: <specUrl>

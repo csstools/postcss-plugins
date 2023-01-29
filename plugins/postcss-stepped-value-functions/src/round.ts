@@ -1,7 +1,7 @@
 import type { Declaration, Result } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { functionNodeToWordNode, optionallyWarn } from './utils';
-import { pluginOptions } from './index';
+import type { pluginOptions } from './options';
 
 const roundFunctionCheck = 'round(';
 
@@ -23,7 +23,7 @@ function transformRoundFunction(
 	const parsedValue = valueParser(decl.value);
 
 	parsedValue.walk(node => {
-		if (node.type !== 'function' || node.value !== 'round') {
+		if (node.type !== 'function' || node.value.toLowerCase() !== 'round') {
 			return;
 		}
 
@@ -47,13 +47,13 @@ function transformRoundFunction(
 		let valueB;
 
 		// If the first argument is only letters, MUST be a matching Rounding Strategy
-		if (onlyRoundingRegex.test(firstValue)) {
-			const isValid = Object.values(RoundingStrategy).includes(
-				firstValue as RoundingStrategy,
+		if (onlyRoundingRegex.test(firstValue.toLowerCase())) {
+			const isValid = (Object.values(RoundingStrategy) as Array<string>).includes(
+				firstValue.toLowerCase(),
 			);
 
 			if (isValid) {
-				strategy = firstValue as RoundingStrategy;
+				strategy = firstValue.toLowerCase() as RoundingStrategy;
 			} else {
 				optionallyWarn(
 					decl,
@@ -92,17 +92,17 @@ function transformRoundFunction(
 
 		switch (strategy) {
 			case RoundingStrategy.Down:
-				roundedValue = Math.floor( numberA / numberB ) * numberB;
+				roundedValue = Math.floor(numberA / numberB) * numberB;
 				break;
 			case RoundingStrategy.Up:
-				roundedValue = Math.ceil( numberA / numberB ) * numberB;
+				roundedValue = Math.ceil(numberA / numberB) * numberB;
 				break;
 			case RoundingStrategy.ToZero:
-				roundedValue = Math.trunc( numberA / numberB ) * numberB;
+				roundedValue = Math.trunc(numberA / numberB) * numberB;
 				break;
 			case RoundingStrategy.Nearest:
 			default:
-				roundedValue = Math.round( numberA / numberB ) * numberB;
+				roundedValue = Math.round(numberA / numberB) * numberB;
 				break;
 		}
 
@@ -112,7 +112,7 @@ function transformRoundFunction(
 
 		const transformedNode = functionNodeToWordNode(node);
 		transformedNode.value = roundedValue === 0 ? '0' : `${roundedValue}${valueA.unit}`;
-	});
+	}, true);
 
 	return parsedValue.toString();
 }

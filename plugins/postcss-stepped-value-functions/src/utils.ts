@@ -1,10 +1,10 @@
 import valueParser from 'postcss-value-parser';
 import type { FunctionNode, Node, WordNode } from 'postcss-value-parser';
 import type { Declaration, Result } from 'postcss';
-import { pluginOptions } from './index';
+import type { pluginOptions } from './options';
 
 export function isVarNode(node: Node) {
-	return node.type === 'function' && node.value === 'var';
+	return node.type === 'function' && node.value.toLowerCase() === 'var';
 }
 
 export function validateArgumentsAndTypes(

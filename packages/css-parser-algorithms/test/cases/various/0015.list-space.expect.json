@@ -1,0 +1,345 @@
+[
+	{
+		"type": "function",
+		"name": "calc",
+		"tokens": [
+			[
+				"function-token",
+				"calc(",
+				0,
+				4,
+				{
+					"value": "calc"
+				}
+			],
+			[
+				"dimension-token",
+				"10px",
+				5,
+				8,
+				{
+					"value": 10,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				"comma-token",
+				",",
+				9,
+				9,
+				null
+			],
+			[
+				"whitespace-token",
+				" ",
+				10,
+				10,
+				null
+			],
+			[
+				"comment",
+				"/* a comment */",
+				11,
+				25,
+				null
+			],
+			[
+				"comma-token",
+				",",
+				26,
+				26,
+				null
+			],
+			[
+				"whitespace-token",
+				" ",
+				27,
+				27,
+				null
+			],
+			[
+				"(-token",
+				"(",
+				28,
+				28,
+				null
+			],
+			[
+				"ident-token",
+				"other",
+				29,
+				33,
+				{
+					"value": "other"
+				}
+			],
+			[
+				"whitespace-token",
+				" ",
+				34,
+				34,
+				null
+			],
+			[
+				"function-token",
+				"calc(",
+				35,
+				39,
+				{
+					"value": "calc"
+				}
+			],
+			[
+				"ident-token",
+				"more",
+				40,
+				43,
+				{
+					"value": "more"
+				}
+			],
+			[
+				")-token",
+				")",
+				44,
+				44,
+				null
+			],
+			[
+				")-token",
+				")",
+				45,
+				45,
+				null
+			],
+			[
+				")-token",
+				")",
+				46,
+				46,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"10px",
+						5,
+						8,
+						{
+							"value": 10,
+							"type": "integer",
+							"unit": "px"
+						}
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"comma-token",
+						",",
+						9,
+						9,
+						null
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						10,
+						10,
+						null
+					]
+				]
+			},
+			{
+				"type": "comment",
+				"tokens": [
+					[
+						"comment",
+						"/* a comment */",
+						11,
+						25,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"comma-token",
+						",",
+						26,
+						26,
+						null
+					]
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						27,
+						27,
+						null
+					]
+				]
+			},
+			{
+				"type": "simple-block",
+				"startToken": [
+					"(-token",
+					"(",
+					28,
+					28,
+					null
+				],
+				"tokens": [
+					[
+						"(-token",
+						"(",
+						28,
+						28,
+						null
+					],
+					[
+						"ident-token",
+						"other",
+						29,
+						33,
+						{
+							"value": "other"
+						}
+					],
+					[
+						"whitespace-token",
+						" ",
+						34,
+						34,
+						null
+					],
+					[
+						"function-token",
+						"calc(",
+						35,
+						39,
+						{
+							"value": "calc"
+						}
+					],
+					[
+						"ident-token",
+						"more",
+						40,
+						43,
+						{
+							"value": "more"
+						}
+					],
+					[
+						")-token",
+						")",
+						44,
+						44,
+						null
+					],
+					[
+						")-token",
+						")",
+						45,
+						45,
+						null
+					]
+				],
+				"value": [
+					{
+						"type": "token",
+						"tokens": [
+							[
+								"ident-token",
+								"other",
+								29,
+								33,
+								{
+									"value": "other"
+								}
+							]
+						]
+					},
+					{
+						"type": "whitespace",
+						"tokens": [
+							[
+								"whitespace-token",
+								" ",
+								34,
+								34,
+								null
+							]
+						]
+					},
+					{
+						"type": "function",
+						"name": "calc",
+						"tokens": [
+							[
+								"function-token",
+								"calc(",
+								35,
+								39,
+								{
+									"value": "calc"
+								}
+							],
+							[
+								"ident-token",
+								"more",
+								40,
+								43,
+								{
+									"value": "more"
+								}
+							],
+							[
+								")-token",
+								")",
+								44,
+								44,
+								null
+							]
+						],
+						"value": [
+							{
+								"type": "token",
+								"tokens": [
+									[
+										"ident-token",
+										"more",
+										40,
+										43,
+										{
+											"value": "more"
+										}
+									]
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+]

@@ -1,0 +1,203 @@
+[
+	{
+		"type": "media-query-with-type",
+		"string": "/* a comment 0 */only/* a comment 1 */screen/* a comment 2 */ /* a comment 3 */and/* a comment 4 */(min-width:/* a comment 5 */300px)",
+		"modifier": [
+			[
+				"comment",
+				"/* a comment 0 */",
+				0,
+				16,
+				null
+			],
+			[
+				"ident-token",
+				"only",
+				17,
+				20,
+				{
+					"value": "only"
+				}
+			]
+		],
+		"mediaType": [
+			[
+				"comment",
+				"/* a comment 1 */",
+				21,
+				37,
+				null
+			],
+			[
+				"ident-token",
+				"screen",
+				38,
+				43,
+				{
+					"value": "screen"
+				}
+			]
+		],
+		"and": [
+			[
+				"comment",
+				"/* a comment 2 */",
+				44,
+				60,
+				null
+			],
+			[
+				"whitespace-token",
+				" ",
+				61,
+				61,
+				null
+			],
+			[
+				"comment",
+				"/* a comment 3 */",
+				62,
+				78,
+				null
+			],
+			[
+				"ident-token",
+				"and",
+				79,
+				81,
+				{
+					"value": "and"
+				}
+			]
+		],
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-plain",
+						"name": {
+							"type": "mf-name",
+							"name": "min-width",
+							"tokens": [
+								[
+									"ident-token",
+									"min-width",
+									100,
+									108,
+									{
+										"value": "min-width"
+									}
+								]
+							]
+						},
+						"value": {
+							"type": "mf-value",
+							"value": {
+								"type": "token",
+								"tokens": [
+									[
+										"dimension-token",
+										"300px",
+										127,
+										131,
+										{
+											"value": 300,
+											"type": "integer",
+											"unit": "px"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"comment",
+									"/* a comment 5 */",
+									110,
+									126,
+									null
+								],
+								[
+									"dimension-token",
+									"300px",
+									127,
+									131,
+									{
+										"value": 300,
+										"type": "integer",
+										"unit": "px"
+									}
+								]
+							]
+						},
+						"tokens": [
+							[
+								"ident-token",
+								"min-width",
+								100,
+								108,
+								{
+									"value": "min-width"
+								}
+							],
+							[
+								"colon-token",
+								":",
+								109,
+								109,
+								null
+							],
+							[
+								"comment",
+								"/* a comment 5 */",
+								110,
+								126,
+								null
+							],
+							[
+								"dimension-token",
+								"300px",
+								127,
+								131,
+								{
+									"value": 300,
+									"type": "integer",
+									"unit": "px"
+								}
+							]
+						]
+					},
+					"before": [
+						[
+							"comment",
+							"/* a comment 4 */",
+							82,
+							98,
+							null
+						],
+						[
+							"(-token",
+							"(",
+							99,
+							99,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							132,
+							132,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

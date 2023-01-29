@@ -1,5 +1,18 @@
 # Changes to PostCSS Selector Not
 
+### 7.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 7.0.0 (January 24, 2023)
+
+- Updated: Support for Node v14+ (major).
+- Fix: Do not throw when a selector is invalid, show a warning instead.
+
+### 6.0.1 (July 8, 2022)
+
+- Fixed: Case insensitive `:not` matching.
+
 ### 6.0.0 (June 3, 2022)
 
 - Fixed: default export ([#409](https://github.com/csstools/postcss-plugins/issues/409))

@@ -3,14 +3,14 @@ import { CONDITIONAL_ATRULES } from './constants';
 
 export function removeEmptyDescendantBlocks(block: Container) {
 	block.walk((node) => {
-		if (node.type === 'rule' || (node.type === 'atrule' && ['layer', ...CONDITIONAL_ATRULES].includes(node.name))) {
-			if (!node.nodes || !node.nodes.length) {
+		if (node.type === 'rule' || (node.type === 'atrule' && ['layer', ...CONDITIONAL_ATRULES].includes(node.name.toLowerCase()))) {
+			if (node.nodes?.length === 0) {
 				node.remove();
 			}
 		}
 	});
 
-	if (!block.nodes || !block.nodes.length) {
+	if (block.nodes?.length === 0) {
 		block.remove();
 	}
 }
@@ -19,7 +19,11 @@ export function removeEmptyAncestorBlocks(block: Container) {
 	let currentNode: Document | Container<ChildNode> = block;
 
 	while (currentNode) {
-		if (currentNode.nodes && currentNode.nodes.length > 0) {
+		if (typeof currentNode.nodes === 'undefined') {
+			return;
+		}
+
+		if (currentNode.nodes.length > 0) {
 			return;
 		}
 

@@ -1,0 +1,92 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(height > = 100px)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "general-enclosed",
+					"tokens": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						],
+						[
+							"ident-token",
+							"height",
+							1,
+							6,
+							{
+								"value": "height"
+							}
+						],
+						[
+							"whitespace-token",
+							" ",
+							7,
+							7,
+							null
+						],
+						[
+							"delim-token",
+							">",
+							8,
+							8,
+							{
+								"value": ">"
+							}
+						],
+						[
+							"whitespace-token",
+							" ",
+							9,
+							9,
+							null
+						],
+						[
+							"delim-token",
+							"=",
+							10,
+							10,
+							{
+								"value": "="
+							}
+						],
+						[
+							"whitespace-token",
+							" ",
+							11,
+							11,
+							null
+						],
+						[
+							"dimension-token",
+							"100px",
+							12,
+							16,
+							{
+								"value": 100,
+								"type": "integer",
+								"unit": "px"
+							}
+						],
+						[
+							")-token",
+							")",
+							17,
+							17,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

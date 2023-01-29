@@ -33,19 +33,22 @@
 }
 }
 
-[dir="ltr"] .test-logical-properties-and-values {
-	margin: 1px 4px 3px 2px;
-}
-
-[dir="rtl"] .test-logical-properties-and-values {
-	margin: 1px 2px 3px 4px;
-}
-
 .test-logical-properties-and-values {
+	margin-left: 1px;
+	margin-right: 2px;
 	-ms-flex-order: 3;
 	    order: 3;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.test-logical-resize {
+	resize: horizontal;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vw + 5px);
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
@@ -88,20 +91,6 @@
 	.test-media-query-ranges {
 		-ms-flex-order: 11;
 		    order: 11;
-	}
-}
-
-@media (color-index: 48) {
-	body {
-		background-color: black;
-		color: white;
-	}
-}
-
-@media (color: 48842621) {
-	body {
-		background-color: black;
-		color: white;
 	}
 }
 
@@ -264,7 +253,7 @@
 	    order: 22;
 }
 
-.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area.test-any-link-pseudo-class[href] {
+.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area[href].test-any-link-pseudo-class {
 	-ms-flex-order: 23;
 	    order: 23;
 }
@@ -285,11 +274,6 @@
 	word-wrap: break-word;
 }
 
-.test-focus-visible-pseudo-class.focus-visible {
-	-ms-flex-order: 26;
-	    order: 26;
-}
-
 .test-focus-visible-pseudo-class:focus-visible {
 	-ms-flex-order: 26;
 	    order: 26;
@@ -300,15 +284,7 @@
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
 }
 
-.test-blank-pseudo-class[blank] {
-	background-color: yellow;
-}
-
 .test-blank-pseudo-class:blank {
-	background-color: yellow;
-}
-
-.test-has-pseudo-class[\:has\(.inner-class\)] {
 	background-color: yellow;
 }
 
@@ -478,6 +454,10 @@
 	display: ruby-text flow;
 }
 
+.logical-float {
+	float: left;
+}
+
 .color-function {
 	prop-1: rgb(0,132,94);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
@@ -553,10 +533,9 @@
 }
 
 .ic-unit {
-	--value-2ic: 'something';
+	--value-2ic: initial;
 	text-indent: 2em;
 	content: var(--value-2ic);
-	left: 2em;
 	left: 2em;
 	left: var(--non-existing, 2em);
 	width: calc(8em + 20px);
@@ -586,10 +565,7 @@
 	right: 3px;
 	bottom: 3px;
 	left: 2px;
-	top: 2px;
-	right: 2px;
-	bottom: 2px;
-	left: 2px;
+	padding-left: 2px;
 }
 
 .trigonometric {
@@ -631,4 +607,42 @@
 	@nest :--view-m & {
 		background: red;
 	}
+}
+
+.nested-calc {
+	-ms-flex-order: calc(1 * (8 / 3 + (5 * 10)));
+	    order: calc(1 * (8 / 3 + (5 * 10)));
+	-ms-flex-order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+	    order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+}
+
+.text-decoration-shorthand {
+	text-decoration: overline;
+	text-decoration: overline wavy pink;
+	text-decoration-thickness: 3px;
+}
+
+.stage__container {
+	left: 1rem;
+	left: var(--size, 1rem);
+}
+
+:root {
+	content: "plain :scope";
+}
+
+@scope (.foo) {
+	:scope {
+		content: ":scope in @scope";
+	}
+}
+
+:root {
+	@scope (.foo) {
+		content: ":scope in @scope, but with nesting";
+	}
+}
+
+@media (min-aspect-ratio: 177/100) {
+	/* media query aspect ratio : <number> */
 }

@@ -26,7 +26,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 			}
 
 			const originalValue = decl.value;
-			if (!(/(^|[^\w-])(lab|lch)\(/i.test(originalValue))) {
+			if (!(/(^|[^\w-])(lab|lch)\(/i.test(originalValue.toLowerCase()))) {
 				return;
 			}
 
@@ -56,10 +56,15 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 
 basePlugin.postcss = true;
 
-type pluginOptions = {
-	enableProgressiveCustomProperties?: boolean
+/** postcss-lab-function plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
 	preserve?: boolean,
+	/** Enable "@csstools/postcss-progressive-custom-properties". default: true */
+	enableProgressiveCustomProperties?: boolean,
+	/** Toggle sub features. default: { displayP3: true } */
 	subFeatures?: {
+		/** Enable displayP3 fallbacks. default: true */
 		displayP3?: boolean
 	}
 };

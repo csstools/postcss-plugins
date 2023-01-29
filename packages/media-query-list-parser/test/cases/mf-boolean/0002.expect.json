@@ -1,0 +1,106 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "/* comment 1 */(/* comment 2 */color/* comment 3 */)/* comment 4 */",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-boolean",
+						"name": {
+							"type": "mf-name",
+							"name": "color",
+							"tokens": [
+								[
+									"comment",
+									"/* comment 2 */",
+									16,
+									30,
+									null
+								],
+								[
+									"ident-token",
+									"color",
+									31,
+									35,
+									{
+										"value": "color"
+									}
+								],
+								[
+									"comment",
+									"/* comment 3 */",
+									36,
+									50,
+									null
+								]
+							]
+						},
+						"tokens": [
+							[
+								"comment",
+								"/* comment 2 */",
+								16,
+								30,
+								null
+							],
+							[
+								"ident-token",
+								"color",
+								31,
+								35,
+								{
+									"value": "color"
+								}
+							],
+							[
+								"comment",
+								"/* comment 3 */",
+								36,
+								50,
+								null
+							]
+						]
+					},
+					"before": [
+						[
+							"comment",
+							"/* comment 1 */",
+							0,
+							14,
+							null
+						],
+						[
+							"(-token",
+							"(",
+							15,
+							15,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							51,
+							51,
+							null
+						],
+						[
+							"comment",
+							"/* comment 4 */",
+							52,
+							66,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

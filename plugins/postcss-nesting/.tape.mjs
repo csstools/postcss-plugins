@@ -82,6 +82,10 @@ postcssTape(plugin)({
 			noIsPseudoSelector: true,
 		},
 	},
+	'invalid-selector': {
+		message: 'warns on invalid selectors',
+		warnings: 4
+	},
 	'media': {
 		message: 'supports nested @media',
 	},
@@ -90,6 +94,12 @@ postcssTape(plugin)({
 		options: {
 			noIsPseudoSelector: true,
 		},
+	},
+	'multiple-replacements': {
+		message: 'supports multiple replacements',
+	},
+	'pseudo-element': {
+		message: 'supports pseudo elements',
 	},
 	'supports': {
 		message: 'supports nested @supports',

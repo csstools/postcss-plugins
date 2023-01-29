@@ -1,0 +1,34 @@
+.unlayered {
+	contain: layout inline-size;
+}
+
+.partially-layered {
+	background-color: blue;
+	height: 100px;
+	width: 100px;
+
+	@layer A {
+		/* There is no definition for this behavior */
+		background-color: red;
+	}
+
+	.nested {
+		background-color: purple;
+
+		@layer B;
+
+		@layer C {}
+	}
+}
+
+@layer C {
+	.any {
+		order: 1;
+	}
+}
+
+@layer B {
+	.any {
+		order: 2;
+	}
+}

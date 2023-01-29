@@ -1,0 +1,32 @@
+a, b {
+	order: 1;
+}
+
+:is(a,b) c {
+		order: 2;
+	}
+
+:scope e {
+	order: 3;
+}
+
+:is(f)h {
+		order: 4;
+	}
+
+:is(f) &|i {
+		order: 5;
+	}
+
+
+:is(a) foo :bar {
+		order: 6;
+	}
+
+a {
+	order: 7;
+
+	foo :bar; {
+		order: 8;
+	}
+}

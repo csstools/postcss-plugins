@@ -1,8 +1,40 @@
 # Changes to PostCSS Custom Selectors
 
+### 7.1.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 7.1.0 (January 24, 2023)
+
+- Added: Support for Cascade Layers.
+
+### 7.0.0 (November 14, 2022)
+
+- Updated: Support for Node v14+ (major).
+- Removed: `importFrom` feature (breaking).
+- Removed: `exportTo` feature (breaking).
+- Fixed: follow the specification and use `:is()` in transformed selectors (breaking).
+- Added: Support for `@scope` and `@container` as parent rules of `@custom-selector`.
+- Fixed: Do not throw when a selector is invalid, show a warning instead.
+
+```diff
+@custom-selector :--heading h1, h2, h3;
+
+article :--heading + p {
+	margin-top: 0;
+}
+
+/* becomes */
+
+- article h1 + p,article h2 + p,article h3 + p {
++ article :is(h1, h2, h3) + p {
+	margin-top: 0;
+}
+```
+
 ### 6.0.3 (June 4, 2022)
 
-- Fixed: allow any valid ident in custom media (`@custom-selector :--🧑🏾‍🎤 .singer`)
+- Fixed: allow any valid ident in custom selectors (`@custom-selector :--🧑🏾‍🎤 .singer`)
 
 ### 6.0.2 (June 3, 2022)
 

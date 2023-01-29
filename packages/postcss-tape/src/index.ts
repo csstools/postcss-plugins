@@ -1,15 +1,18 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
-import postcss from 'postcss';
-import postcssOldestSupported, { AcceptedPlugin } from 'postcss-8.2';
 import path from 'path';
 import fs, { promises as fsp } from 'fs';
 import { strict as assert } from 'assert';
 
+import postcss from 'postcss';
 import type { PluginCreator, Plugin, Result } from 'postcss';
+
+import postcssOldestSupported, { AcceptedPlugin } from 'postcss-8.4';
+
+import syntaxHTML from 'postcss-html';
+
 import { formatGitHubActionAnnotation } from './github-annotations';
 import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts';
 import noopPlugin from './noop-plugin';
+import { reduceInformationInCssSyntaxError } from './reduce-css-syntax-error';
 
 const emitGitHubAnnotations = process.env.GITHUB_ACTIONS && process.env.ENABLE_ANNOTATIONS_FOR_NODE === 'true' && process.env.ENABLE_ANNOTATIONS_FOR_OS === 'true';
 
@@ -34,7 +37,18 @@ type TestCaseOptions = {
 	// Do something before the test is run.
 	before?: () => void,
 	// Do something after the test is run.
-	after?: () => void|Promise<void>,
+	after?: () => void | Promise<void>,
+
+	// Process the test cases with "postcss-html" as the syntax
+	postcssSyntaxHTML?: boolean,
+}
+
+function postcssSyntax(options: TestCaseOptions) {
+	if (options.postcssSyntaxHTML) {
+		return syntaxHTML();
+	}
+
+	return null;
 }
 
 export default function runner(currentPlugin: PluginCreator<unknown>) {
@@ -145,9 +159,14 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			const testSourceFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.split(':')[0]);
 			const testFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.replace(/:/g, '.'));
 
-			const testFilePath = `${testSourceFilePathWithoutExtension}.css`;
-			let expectFilePath = `${testFilePathWithoutExtension}.expect.css`;
-			let resultFilePath = `${testFilePathWithoutExtension}.result.css`;
+			let extension = 'css';
+			if (testCaseOptions.postcssSyntaxHTML) {
+				extension = 'html';
+			}
+
+			const testFilePath = `${testSourceFilePathWithoutExtension}.${extension}`;
+			let expectFilePath = `${testFilePathWithoutExtension}.expect.${extension}`;
+			let resultFilePath = `${testFilePathWithoutExtension}.result.${extension}`;
 
 			if (testCaseOptions.expect) {
 				expectFilePath = path.join('.', 'test', testCaseOptions.expect);
@@ -161,7 +180,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			const input = await fsp.readFile(testFilePath, 'utf8');
 
 			// Check errors on expect file being missing
-			let expected: string|false = '';
+			let expected: string | false = '';
 			try {
 				expected = await fsp.readFile(expectFilePath, 'utf8');
 			} catch (_) {
@@ -191,8 +210,10 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 						inline: false,
 						annotation: false,
 					},
+					syntax: postcssSyntax(testCaseOptions),
 				});
 			} catch (err) {
+				reduceInformationInCssSyntaxError(err);
 				sawException = true;
 				if (testCaseOptions.exception && testCaseOptions.exception.test(err.message)) {
 					// expected an exception and got one.
@@ -260,10 +281,13 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 			// Assert result sourcemaps with recent PostCSS.
 			{
 				try {
-					if (result.map.toJSON().sources.includes('<no source>')) {
+					if (
+						!testCaseOptions.postcssSyntaxHTML &&
+						result.map.toJSON().sources.includes('<no source>')
+					) {
 						throw new Error('Sourcemap is broken');
 					}
-				} catch (err) {
+				} catch (_) {
 					hasErrors = true;
 
 					const helpText = '\nThis is most likely a newly created PostCSS AST Node without a value for "source".\nsee :\n- https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#24-set-nodesource-for-new-nodes\n- https://postcss.org/api/#node-source';
@@ -296,6 +320,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 							inline: false,
 							annotation: false,
 						},
+						syntax: postcssSyntax(testCaseOptions),
 					});
 
 					if (secondPassResult.warnings().length) {
@@ -338,6 +363,7 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 				try {
 					assert.strictEqual(resultFromOldestPostCSS.css.toString(), resultString);
 				} catch (err) {
+					reduceInformationInCssSyntaxError(err);
 					hasErrors = true;
 
 					if (emitGitHubAnnotations) {

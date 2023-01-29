@@ -1,0 +1,85 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "not (color)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-not",
+				"modifier": [
+					[
+						"ident-token",
+						"not",
+						0,
+						2,
+						{
+							"value": "not"
+						}
+					],
+					[
+						"whitespace-token",
+						" ",
+						3,
+						3,
+						null
+					]
+				],
+				"media": {
+					"type": "media-in-parens",
+					"media": {
+						"type": "media-feature",
+						"feature": {
+							"type": "mf-boolean",
+							"name": {
+								"type": "mf-name",
+								"name": "color",
+								"tokens": [
+									[
+										"ident-token",
+										"color",
+										5,
+										9,
+										{
+											"value": "color"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"ident-token",
+									"color",
+									5,
+									9,
+									{
+										"value": "color"
+									}
+								]
+							]
+						},
+						"before": [
+							[
+								"(-token",
+								"(",
+								4,
+								4,
+								null
+							]
+						],
+						"after": [
+							[
+								")-token",
+								")",
+								10,
+								10,
+								null
+							]
+						]
+					},
+					"before": [],
+					"after": []
+				}
+			}
+		}
+	}
+]

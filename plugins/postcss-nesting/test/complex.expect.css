@@ -1,10 +1,10 @@
 body > p, body > ul {
-	order: 1
+	order: 1;
 }
 
 
 :is(body > p) ~ :is(body > p), :is(body > p) ~ :is(body > ul), :is(body > ul) ~ :is(body > p), :is(body > ul) ~ :is(body > ul) {
-		order: 2
+		order: 2;
 	}
 
 
@@ -53,12 +53,12 @@ body > p:is(body > p):is(body > p), body > p:is(body > p):is(body > ul), body > 
 
 
 body > p, body > .foo {
-	order: 101
+	order: 101;
 }
 
 
 :is(body > p,body > .foo)~:is(body > p,body > .foo) {
-		order: 102
+		order: 102;
 	}
 
 

@@ -35,7 +35,10 @@
 .round-complex {
 	left: round(nearest, mod(-18px, 5px), 2px);
 	top: round(nearest, mod(mod(-18px, 5px), 5px), 2px);
+	/* lower case */
 	right: round(up, rem(mod(mod(8px, 5px), 7px), 15px), 8px);
+	/* upper case */
+	right: ROUND(UP, REM(mod(MOD(8px, 5px), 7px), 15px), 8px);
 }
 
 .invalid {

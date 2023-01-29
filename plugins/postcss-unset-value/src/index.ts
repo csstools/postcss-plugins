@@ -1,11 +1,11 @@
 import type { PluginCreator } from 'postcss';
 import { inherited, nonInherited } from './property-def';
 
-type pluginOptions = {
-	// Preserve the original declaration.
-	// Default: false
-	preserve: boolean;
-}
+/** postcss-unset-value plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
 
 // Convert "unset" to "inherit" or "initial" based on the property definition.
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
@@ -14,14 +14,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-unset-value',
 		Declaration(decl) {
-			if (decl.value !== 'unset') {
+			if (decl.value.toLowerCase() !== 'unset') {
 				return;
 			}
 
 			let replacement : string|false = false;
-			if (inherited.has(decl.prop)) {
+			if (inherited.has(decl.prop.toLowerCase())) {
 				replacement = 'inherit';
-			} else if (nonInherited.has(decl.prop)) {
+			} else if (nonInherited.has(decl.prop.toLowerCase())) {
 				replacement = 'initial';
 			}
 
@@ -29,10 +29,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			if (options.preserve) {
-				decl.cloneBefore({ prop: decl.prop, value: replacement });
-			} else {
-				decl.value = replacement;
+			decl.cloneBefore({ prop: decl.prop, value: replacement });
+
+			if (!options.preserve) {
+				decl.remove();
 			}
 		},
 	};

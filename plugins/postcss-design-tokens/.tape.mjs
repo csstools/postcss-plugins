@@ -8,40 +8,55 @@ postcssTape(plugin)({
 		plugins: [
 			postcssImport(),
 			plugin()
-		]
+		],
+		warnings: 1
 	},
-	'basic:rootFontSize-20': {
-		message: "supports basic usage with { unitsAndValues { rootFontSize: 20 } }",
+	'at-rule': {
+		message: "supports at rules",
+	},
+	'at-rule-error': {
+		message: "supports at rules",
+		warnings: 1
+	},
+	'units': {
+		message: "supports units usage",
 		plugins: [
-			postcssImport(),
+			plugin()
+		],
+		warnings: 2
+	},
+	'units:rootFontSize-20': {
+		message: "supports units usage with { unitsAndValues { rootFontSize: 20 } }",
+		plugins: [
 			plugin({
 				unitsAndValues: {
 					rootFontSize: 20
 				}
 			})
-		]
+		],
+		warnings: 2
 	},
-	'basic:rootFontSize-NaN': {
-		message: "supports basic usage with { unitsAndValues { rootFontSize: NaN } }",
+	'units:rootFontSize-NaN': {
+		message: "supports units usage with { unitsAndValues { rootFontSize: NaN } }",
 		plugins: [
-			postcssImport(),
 			plugin({
 				unitsAndValues: {
 					rootFontSize: NaN
 				}
 			})
-		]
+		],
+		warnings: 2
 	},
-	'basic:rootFontSize-invalid': {
-		message: "supports basic usage with { unitsAndValues { rootFontSize: invalid } }",
+	'units:rootFontSize-invalid': {
+		message: "supports units usage with { unitsAndValues { rootFontSize: invalid } }",
 		plugins: [
-			postcssImport(),
 			plugin({
 				unitsAndValues: {
 					rootFontSize: 'invalid'
 				}
 			})
-		]
+		],
+		warnings: 2
 	},
 	'errors': {
 		message: "handles issues correctly",
@@ -87,10 +102,10 @@ postcssTape(plugin)({
 		message: 'minimal example with conditional imports : default',
 		options: {},
 	},
-	'examples/example-conditional:dark': {
-		message: 'minimal example with conditional imports : dark',
+	'examples/example-conditional:brand-2': {
+		message: 'minimal example with conditional imports : brand-2',
 		options: {
-			is: ['dark']
+			is: ['brand-2']
 		},
 	},
 	'examples/example:rootFontSize-20': {
@@ -100,5 +115,21 @@ postcssTape(plugin)({
 				rootFontSize: 20
 			}
 		}
+	},
+	'examples/example-custom-value-function-name': {
+		message: 'minimal example with { valueFunctionName: "token" }',
+		options: {
+			valueFunctionName: 'token'
+		}
+	},
+	'examples/example-custom-import-at-rule-name': {
+		message: 'minimal example with { importAtRuleName: "tokens" }',
+		options: {
+			importAtRuleName: 'tokens'
+		}
+	},
+	'issue-583': {
+		message: 'A meaningful error message is given and no stack overflow.',
+		warnings: 1
 	},
 });

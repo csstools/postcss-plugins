@@ -24,7 +24,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 			}
 
 			const originalValue = decl.value;
-			if (originalValue.indexOf('color(') === -1) {
+			if (!originalValue.toLowerCase().includes('color(')) {
 				return;
 			}
 
@@ -33,10 +33,10 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 				return;
 			}
 
-			if (preserve) {
-				decl.cloneBefore({ value: modified });
-			} else {
-				decl.value = modified;
+			decl.cloneBefore({ value: modified });
+
+			if (!preserve) {
+				decl.remove();
 			}
 		},
 	};
@@ -44,10 +44,13 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 
 basePlugin.postcss = true;
 
-type pluginOptions = {
+/** postcss-color-function plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
 	preserve?: boolean,
+	/** Enable "@csstools/postcss-progressive-custom-properties". default: true */
 	enableProgressiveCustomProperties?: boolean,
-}
+};
 
 /* Transform color() function in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {

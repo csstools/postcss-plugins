@@ -1,5 +1,18 @@
 # Changes to PostCSS Place Properties
 
+### 8.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 8.0.0 (January 24, 2023)
+
+- Updated: Support for Node v14+ (major).
+- Added: TypeScript support.
+
+### 7.0.5 (July 8, 2022)
+
+- Fix case insensitive matching.
+
 ### 7.0.4 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

@@ -1,0 +1,180 @@
+a {
+	order: 1;
+
+	order: 5;
+	order: 6;
+
+	order: 10;
+
+	order: 14;
+}
+
+@media screen, print {
+
+a {
+		order: 2;
+
+		order: 4;
+}
+	}
+
+@media screen and (min-width: 480px), print and (min-width: 480px) {
+
+a {
+			order: 3;
+}
+		}
+
+:is(a) b {
+		order: 7;
+
+		order: 9;
+	}
+
+:is(:is(a) b) c {
+			order: 8;
+		}
+
+:is(body) :is(a) {
+		order: 11;
+
+		order: 13;
+	}
+
+:is(html) :is(:is(body) :is(a)) {
+			order: 12;
+		}
+
+@media screen {
+
+a {
+		order: 15;
+}
+	}
+
+@media screen and (min-width: 480px) {
+
+a {
+			order: 16;
+}
+		}
+
+:is(body):is(a) {
+		order: 17;
+	}
+
+:is(html) body:is(a) {
+		order: 18;
+	}
+
+.foo:is(a) {
+		order: 19;
+	}
+
+.foo .bar:is(a) {
+		order: 20;
+	}
+
+.foo:is(a b) {
+		order: 21;
+	}
+
+.foo .bar:is(a b) {
+		order: 22;
+	}
+
+:is(.foo)h1,
+	:is(.foo)h2 {
+		color: red;
+	}
+
+:is(li)+:is(li) {
+		background: red;
+	}
+
+:is(.foo):where(h1) {
+		background: red;
+	}
+
+:is(a) b[a="a&b"] {
+		order: 31;
+	}
+
+:is(:is(.a,.b).c,:is(.a,.b).d)::before {
+			order: 41;
+		}
+
+:is(.a:hover,.b:focus)::before, :is(.a:hover,.b:focus)::after {
+		order: 51;
+	}
+
+/* leading : root */
+.comments {
+	/* leading : 1 */
+	order: 61;
+	order: 64;
+	/* trailing: 2 */
+}
+:is(.comments) .comment {
+		order: 62;
+	}
+/* loose comment */
+:is(.comments) .comment {
+		order: 63;
+	}
+/* leading : 4 */
+/* trailing: 5 */
+/* nested deeper */
+:is(:is(.comments) .comment) .comment {
+			order: 65;
+		}
+
+::before:is(.pseudo-element) {
+		order: 71;
+	}
+
+::before :is(.pseudo-element) {
+		order: 71.1;
+	}
+
+:before:is(.pseudo-element) {
+		order: 72;
+	}
+
+:before :is(.pseudo-element) {
+		order: 72.1;
+	}
+
+:is(.pseudo-element)::after {
+		order: 73;
+	}
+
+:is(.pseudo-element) ::after {
+		order: 73.1;
+	}
+
+:is(.pseudo-element):after {
+		order: 74;
+	}
+
+:is(.pseudo-element) :after {
+		order: 74.1;
+	}
+
+.has-semi-colons-on-the-last-decl {
+	order: 73;
+	/* a comment */
+}
+
+:is(.has-semi-colons-on-the-last-decl) .foo {
+		order: 73.1;
+	}
+
+.has-semi-colons-on-the-last-decl {
+	order: 74;
+	/* a comment */
+}
+
+:is(.has-semi-colons-on-the-last-decl) .foo {
+		order: 74.1;
+	}

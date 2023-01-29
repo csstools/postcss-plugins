@@ -1,0 +1,905 @@
+:root:root {
+	order: 0;
+}
+
+:root:root {
+	order: 1;
+}
+
+:root :root {
+	order: 2;
+}
+
+:root :root {
+	order: 3;
+}
+
+:root  :root {
+	order: 4;
+}
+
+:root  :root {
+	order: 5;
+}
+
+:root+:root {
+	order: 6;
+}
+
+:root+:root {
+	order: 7;
+}
+
+:root + :root {
+	order: 8;
+}
+
+:root + :root {
+	order: 9;
+}
+
+:root~:root {
+	order: 10;
+}
+
+:root~:root {
+	order: 11;
+}
+
+:root ~ :root {
+	order: 12;
+}
+
+:root ~ :root {
+	order: 13;
+}
+
+:root>:root {
+	order: 14;
+}
+
+:root>:root {
+	order: 15;
+}
+
+:root > :root {
+	order: 16;
+}
+
+:root > :root {
+	order: 17;
+}
+
+:root, :root {
+	order: 18;
+}
+
+:root, :root {
+	order: 19;
+}
+
+button:root {
+	order: 20;
+}
+
+:scopebutton {
+	order: 21;
+}
+
+button :root {
+	order: 22;
+}
+
+:root button {
+	order: 23;
+}
+
+button  :root {
+	order: 24;
+}
+
+:root  button {
+	order: 25;
+}
+
+button+:root {
+	order: 26;
+}
+
+:root+button {
+	order: 27;
+}
+
+button + :root {
+	order: 28;
+}
+
+:root + button {
+	order: 29;
+}
+
+button~:root {
+	order: 30;
+}
+
+:root~button {
+	order: 31;
+}
+
+button ~ :root {
+	order: 32;
+}
+
+:root ~ button {
+	order: 33;
+}
+
+button>:root {
+	order: 34;
+}
+
+:root>button {
+	order: 35;
+}
+
+button > :root {
+	order: 36;
+}
+
+:root > button {
+	order: 37;
+}
+
+button, :root {
+	order: 38;
+}
+
+:root, button {
+	order: 39;
+}
+
+.🧑🏾‍🎤:root {
+	order: 40;
+}
+
+:root.🧑🏾‍🎤 {
+	order: 41;
+}
+
+.🧑🏾‍🎤 :root {
+	order: 42;
+}
+
+:root .🧑🏾‍🎤 {
+	order: 43;
+}
+
+.🧑🏾‍🎤  :root {
+	order: 44;
+}
+
+:root  .🧑🏾‍🎤 {
+	order: 45;
+}
+
+.🧑🏾‍🎤+:root {
+	order: 46;
+}
+
+:root+.🧑🏾‍🎤 {
+	order: 47;
+}
+
+.🧑🏾‍🎤 + :root {
+	order: 48;
+}
+
+:root + .🧑🏾‍🎤 {
+	order: 49;
+}
+
+.🧑🏾‍🎤~:root {
+	order: 50;
+}
+
+:root~.🧑🏾‍🎤 {
+	order: 51;
+}
+
+.🧑🏾‍🎤 ~ :root {
+	order: 52;
+}
+
+:root ~ .🧑🏾‍🎤 {
+	order: 53;
+}
+
+.🧑🏾‍🎤>:root {
+	order: 54;
+}
+
+:root>.🧑🏾‍🎤 {
+	order: 55;
+}
+
+.🧑🏾‍🎤 > :root {
+	order: 56;
+}
+
+:root > .🧑🏾‍🎤 {
+	order: 57;
+}
+
+.🧑🏾‍🎤, :root {
+	order: 58;
+}
+
+:root, .🧑🏾‍🎤 {
+	order: 59;
+}
+
+.foo:root {
+	order: 60;
+}
+
+:root.foo {
+	order: 61;
+}
+
+.foo :root {
+	order: 62;
+}
+
+:root .foo {
+	order: 63;
+}
+
+.foo  :root {
+	order: 64;
+}
+
+:root  .foo {
+	order: 65;
+}
+
+.foo+:root {
+	order: 66;
+}
+
+:root+.foo {
+	order: 67;
+}
+
+.foo + :root {
+	order: 68;
+}
+
+:root + .foo {
+	order: 69;
+}
+
+.foo~:root {
+	order: 70;
+}
+
+:root~.foo {
+	order: 71;
+}
+
+.foo ~ :root {
+	order: 72;
+}
+
+:root ~ .foo {
+	order: 73;
+}
+
+.foo>:root {
+	order: 74;
+}
+
+:root>.foo {
+	order: 75;
+}
+
+.foo > :root {
+	order: 76;
+}
+
+:root > .foo {
+	order: 77;
+}
+
+.foo, :root {
+	order: 78;
+}
+
+:root, .foo {
+	order: 79;
+}
+
+#foo:root {
+	order: 80;
+}
+
+:root#foo {
+	order: 81;
+}
+
+#foo :root {
+	order: 82;
+}
+
+:root #foo {
+	order: 83;
+}
+
+#foo  :root {
+	order: 84;
+}
+
+:root  #foo {
+	order: 85;
+}
+
+#foo+:root {
+	order: 86;
+}
+
+:root+#foo {
+	order: 87;
+}
+
+#foo + :root {
+	order: 88;
+}
+
+:root + #foo {
+	order: 89;
+}
+
+#foo~:root {
+	order: 90;
+}
+
+:root~#foo {
+	order: 91;
+}
+
+#foo ~ :root {
+	order: 92;
+}
+
+:root ~ #foo {
+	order: 93;
+}
+
+#foo>:root {
+	order: 94;
+}
+
+:root>#foo {
+	order: 95;
+}
+
+#foo > :root {
+	order: 96;
+}
+
+:root > #foo {
+	order: 97;
+}
+
+#foo, :root {
+	order: 98;
+}
+
+:root, #foo {
+	order: 99;
+}
+
+__foo:root {
+	order: 100;
+}
+
+:scope__foo {
+	order: 101;
+}
+
+__foo :root {
+	order: 102;
+}
+
+:root __foo {
+	order: 103;
+}
+
+__foo  :root {
+	order: 104;
+}
+
+:root  __foo {
+	order: 105;
+}
+
+__foo+:root {
+	order: 106;
+}
+
+:root+__foo {
+	order: 107;
+}
+
+__foo + :root {
+	order: 108;
+}
+
+:root + __foo {
+	order: 109;
+}
+
+__foo~:root {
+	order: 110;
+}
+
+:root~__foo {
+	order: 111;
+}
+
+__foo ~ :root {
+	order: 112;
+}
+
+:root ~ __foo {
+	order: 113;
+}
+
+__foo>:root {
+	order: 114;
+}
+
+:root>__foo {
+	order: 115;
+}
+
+__foo > :root {
+	order: 116;
+}
+
+:root > __foo {
+	order: 117;
+}
+
+__foo, :root {
+	order: 118;
+}
+
+:root, __foo {
+	order: 119;
+}
+
+:--foo:root {
+	order: 120;
+}
+
+:root:--foo {
+	order: 121;
+}
+
+:--foo :root {
+	order: 122;
+}
+
+:root :--foo {
+	order: 123;
+}
+
+:--foo  :root {
+	order: 124;
+}
+
+:root  :--foo {
+	order: 125;
+}
+
+:--foo+:root {
+	order: 126;
+}
+
+:root+:--foo {
+	order: 127;
+}
+
+:--foo + :root {
+	order: 128;
+}
+
+:root + :--foo {
+	order: 129;
+}
+
+:--foo~:root {
+	order: 130;
+}
+
+:root~:--foo {
+	order: 131;
+}
+
+:--foo ~ :root {
+	order: 132;
+}
+
+:root ~ :--foo {
+	order: 133;
+}
+
+:--foo>:root {
+	order: 134;
+}
+
+:root>:--foo {
+	order: 135;
+}
+
+:--foo > :root {
+	order: 136;
+}
+
+:root > :--foo {
+	order: 137;
+}
+
+:--foo, :root {
+	order: 138;
+}
+
+:root, :--foo {
+	order: 139;
+}
+
+[foo="baz"]:root {
+	order: 140;
+}
+
+:root[foo="baz"] {
+	order: 141;
+}
+
+[foo="baz"] :root {
+	order: 142;
+}
+
+:root [foo="baz"] {
+	order: 143;
+}
+
+[foo="baz"]  :root {
+	order: 144;
+}
+
+:root  [foo="baz"] {
+	order: 145;
+}
+
+[foo="baz"]+:root {
+	order: 146;
+}
+
+:root+[foo="baz"] {
+	order: 147;
+}
+
+[foo="baz"] + :root {
+	order: 148;
+}
+
+:root + [foo="baz"] {
+	order: 149;
+}
+
+[foo="baz"]~:root {
+	order: 150;
+}
+
+:root~[foo="baz"] {
+	order: 151;
+}
+
+[foo="baz"] ~ :root {
+	order: 152;
+}
+
+:root ~ [foo="baz"] {
+	order: 153;
+}
+
+[foo="baz"]>:root {
+	order: 154;
+}
+
+:root>[foo="baz"] {
+	order: 155;
+}
+
+[foo="baz"] > :root {
+	order: 156;
+}
+
+:root > [foo="baz"] {
+	order: 157;
+}
+
+[foo="baz"], :root {
+	order: 158;
+}
+
+:root, [foo="baz"] {
+	order: 159;
+}
+
+*:root {
+	order: 160;
+}
+
+:root* {
+	order: 161;
+}
+
+* :root {
+	order: 162;
+}
+
+:root * {
+	order: 163;
+}
+
+*  :root {
+	order: 164;
+}
+
+:root  * {
+	order: 165;
+}
+
+*+:root {
+	order: 166;
+}
+
+:root+* {
+	order: 167;
+}
+
+* + :root {
+	order: 168;
+}
+
+:root + * {
+	order: 169;
+}
+
+*~:root {
+	order: 170;
+}
+
+:root~* {
+	order: 171;
+}
+
+* ~ :root {
+	order: 172;
+}
+
+:root ~ * {
+	order: 173;
+}
+
+*>:root {
+	order: 174;
+}
+
+:root>* {
+	order: 175;
+}
+
+* > :root {
+	order: 176;
+}
+
+:root > * {
+	order: 177;
+}
+
+*, :root {
+	order: 178;
+}
+
+:root, * {
+	order: 179;
+}
+
+:hover:root {
+	order: 180;
+}
+
+:root:hover {
+	order: 181;
+}
+
+:hover :root {
+	order: 182;
+}
+
+:root :hover {
+	order: 183;
+}
+
+:hover  :root {
+	order: 184;
+}
+
+:root  :hover {
+	order: 185;
+}
+
+:hover+:root {
+	order: 186;
+}
+
+:root+:hover {
+	order: 187;
+}
+
+:hover + :root {
+	order: 188;
+}
+
+:root + :hover {
+	order: 189;
+}
+
+:hover~:root {
+	order: 190;
+}
+
+:root~:hover {
+	order: 191;
+}
+
+:hover ~ :root {
+	order: 192;
+}
+
+:root ~ :hover {
+	order: 193;
+}
+
+:hover>:root {
+	order: 194;
+}
+
+:root>:hover {
+	order: 195;
+}
+
+:hover > :root {
+	order: 196;
+}
+
+:root > :hover {
+	order: 197;
+}
+
+:hover, :root {
+	order: 198;
+}
+
+:root, :hover {
+	order: 199;
+}
+
+::before:root {
+	order: 200;
+}
+
+:root::before {
+	order: 201;
+}
+
+::before :root {
+	order: 202;
+}
+
+:root ::before {
+	order: 203;
+}
+
+::before  :root {
+	order: 204;
+}
+
+:root  ::before {
+	order: 205;
+}
+
+::before+:root {
+	order: 206;
+}
+
+:root+::before {
+	order: 207;
+}
+
+::before + :root {
+	order: 208;
+}
+
+:root + ::before {
+	order: 209;
+}
+
+::before~:root {
+	order: 210;
+}
+
+:root~::before {
+	order: 211;
+}
+
+::before ~ :root {
+	order: 212;
+}
+
+:root ~ ::before {
+	order: 213;
+}
+
+::before>:root {
+	order: 214;
+}
+
+:root>::before {
+	order: 215;
+}
+
+::before > :root {
+	order: 216;
+}
+
+:root > ::before {
+	order: 217;
+}
+
+::before, :root {
+	order: 218;
+}
+
+:root, ::before {
+	order: 219;
+}
+
+foo[:scope] {
+	order: 220;
+}
+
+foo[baz=":scope"] {
+	order: 221;
+}
+
+:not(:root) {
+	order: 222;
+}
+
+::scope {
+	order: 223;
+}
+
+:--:root {
+	order: 224;
+}
+
+__:root {
+	order: 225;
+}
+
+/* :scope */

@@ -8,8 +8,14 @@ import type { PluginCreator } from 'postcss';
 
 const atSupportsHwbParams = '(color: hwb(0% 0 0))';
 
+/** postcss-hwb-function plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
+
 /** Transform hwb() functions in CSS. */
-const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
+const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
 
 	return {
@@ -20,7 +26,7 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 			}
 
 			const originalValue = decl.value;
-			if (!originalValue.includes('hwb')) {
+			if (!originalValue.toLowerCase().includes('hwb')) {
 				return;
 			}
 
@@ -41,12 +47,12 @@ const postcssPlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: 
 
 				insertAtSupportsAfterCorrectRule(atSupports, parent, atSupportsHwbParams);
 
-				decl.value = modified;
+				decl.replaceWith(decl.clone({ value: modified }));
 			} else if (preserve) {
 				decl.cloneBefore({ value: modified });
 
 			} else {
-				decl.value = modified;
+				decl.replaceWith(decl.clone({ value: modified }));
 			}
 		},
 	};
@@ -77,7 +83,7 @@ function modifiedValues(originalValue: string, decl: Declaration, result: Result
 			return;
 		}
 
-		if (node.value !== 'hwb') {
+		if (node.value.toLowerCase() !== 'hwb') {
 			return;
 		}
 
@@ -101,7 +107,7 @@ function insertAtSupportsAfterCorrectRule(atSupports: AtRule, parent: Container<
 		insertAfter &&
 		nextInsertAfter &&
 		nextInsertAfter.type === 'atrule' &&
-		nextInsertAfter.name === 'supports' &&
+		nextInsertAfter.name.toLowerCase() === 'supports' &&
 		nextInsertAfter.params === params
 	) {
 		insertAfter = nextInsertAfter;

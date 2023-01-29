@@ -1,0 +1,19 @@
+.foo {
+	clear: inline-start;
+	float: inline-end;
+}
+
+.foo {
+	clear: iNlInE-eNd;
+	float: iNlInE-sTaRt;
+}
+
+.foo {
+	clear: var(--inline-start);
+	float: var(--inline-end);
+}
+
+.foo {
+	clear: page;
+	float: contour;
+}

@@ -2,8 +2,15 @@
 
 [PostCSS Unset Value] runs in all Node environments, with special instructions for:
 
-| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
-| --- | --- | --- | --- | --- | --- |
+- [Node](#node)
+- [PostCSS CLI](#postcss-cli)
+- [PostCSS Load Config](#postcss-load-config)
+- [Webpack](#webpack)
+- [Next.js](#nextjs)
+- [Gulp](#gulp)
+- [Grunt](#grunt)
+
+
 
 ## Node
 
@@ -16,8 +23,19 @@ npm install postcss @csstools/postcss-unset-value --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssUnsetValue = require('@csstools/postcss-unset-value');
+
+postcss([
+	postcssUnsetValue(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssUnsetValue from '@csstools/postcss-unset-value';
 
 postcss([
 	postcssUnsetValue(/* pluginOptions */)
@@ -43,6 +61,38 @@ module.exports = {
 	]
 }
 ```
+
+## PostCSS Load Config
+
+If your framework/CLI supports [`postcss-load-config`](https://github.com/postcss/postcss-load-config).
+
+```bash
+npm install @csstools/postcss-unset-value --save-dev
+```
+
+`package.json`:
+
+```json
+{
+	"postcss": {
+		"plugins": {
+			"@csstools/postcss-unset-value": {}
+		}
+	}
+}
+```
+
+`.postcssrc.json`:
+
+```json
+{
+	"plugins": {
+		"@csstools/postcss-unset-value": {}
+	}
+}
+```
+
+_See the [README of `postcss-load-config`](https://github.com/postcss/postcss-load-config#usage) for more usage options._
 
 ## Webpack
 
@@ -73,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"@csstools/postcss-unset-value",
 										{
@@ -90,26 +141,35 @@ module.exports = {
 };
 ```
 
-## Create React App
+## Next.js
 
-Add [React App Rewired] and [React App Rewire PostCSS] to your project:
+Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss @csstools/postcss-unset-value --save-dev
+npm install @csstools/postcss-unset-value --save-dev
 ```
 
-Use [React App Rewire PostCSS] and [PostCSS Unset Value] in your
-`config-overrides.js` file:
+Use [PostCSS Unset Value] in your `postcss.config.json` file:
 
-```js
-const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssUnsetValue = require('@csstools/postcss-unset-value');
-
-module.exports = config => reactAppRewirePostcss(config, {
-	plugins: () => [
-		postcssUnsetValue(/* pluginOptions */)
+```json
+{
+	"plugins": [
+		"@csstools/postcss-unset-value"
 	]
-});
+}
+```
+
+```json5
+{
+	"plugins": [
+		[
+			"@csstools/postcss-unset-value",
+			{
+				// Optionally add plugin options
+			}
+		]
+	]
+}
 ```
 
 ## Gulp
@@ -172,5 +232,4 @@ grunt.initConfig({
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Unset Value]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-unset-value
-[React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
-[React App Rewired]: https://github.com/timarney/react-app-rewired
+[Next.js]: https://nextjs.org

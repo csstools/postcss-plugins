@@ -1,0 +1,35 @@
+@media screen and (max-color:2147477350) {
+	.true {
+		order: 1;
+	}
+}
+
+@media screen and (color:2147477350) {
+	.false {
+		order: 2;
+	}
+}
+
+@media (max-color:2147477350) {
+	.true {
+		order: 3;
+	}
+}
+
+@media (color:2147477350) {
+	.false {
+		order: 4;
+	}
+}
+
+@media tRUe and (min-width: 300px) {
+	.true {
+		order: 5;
+	}
+}
+
+@media fAlsE and (min-width: 300px) {
+	.false {
+		order: 6;
+	}
+}

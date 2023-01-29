@@ -33,31 +33,41 @@ export function formatPolyfillableFeature(feature) {
 	};
 }
 
-export function formatStagedFeature(cssdbList, browsers, features, feature, sharedOptions, logger) {
-	let options;
+export function formatStagedFeature(cssdbList, browsers, features, feature, sharedOptions, options, logger) {
+	let pluginOption;
 	let plugin;
 
-	options = getOptionsForBrowsersByFeature(browsers, feature, cssdbList, logger);
+	pluginOption = getOptionsForBrowsersByFeature(browsers, feature, cssdbList, options, logger);
 
 	if (features[feature.id] === true) {
 		if (sharedOptions) {
-			options = Object.assign({}, options, sharedOptions);
+			pluginOption = Object.assign({}, pluginOption, sharedOptions);
 		}
 	} else {
 		if (sharedOptions) {
-			options = Object.assign({}, options, sharedOptions, features[feature.id]);
+			pluginOption = Object.assign({}, pluginOption, sharedOptions, features[feature.id]);
 		} else {
-			options = Object.assign({}, options, features[feature.id]);
+			pluginOption = Object.assign({}, pluginOption, features[feature.id]);
 		}
 	}
 
 	// postcss-preset-env : option overrides
-	options.enableProgressiveCustomProperties = false;
+	pluginOption.enableProgressiveCustomProperties = false;
+
+	// https://github.com/maximkoretskiy/postcss-initial#replace
+	if (feature.id === 'all-property' && 'preserve' in pluginOption) {
+		pluginOption.replace = pluginOption.preserve;
+	}
+
+	// https://github.com/MattDiMu/postcss-replace-overflow-wrap/blob/ec9914e0b9473a75a5d1fe32ea4311555eb81b71/index.js#L10
+	if (feature.id === 'overflow-wrap-property' && 'preserve' in pluginOption) {
+		pluginOption.method = pluginOption.preserve ? 'copy' : 'replace';
+	}
 
 	if (feature.plugin.postcss && typeof feature.plugin === 'function') {
-		plugin = feature.plugin(options);
+		plugin = feature.plugin(pluginOption);
 	} else if (feature.plugin && feature.plugin.default && typeof feature.plugin.default === 'function' && feature.plugin.default.postcss) {
-		plugin = feature.plugin.default(options);
+		plugin = feature.plugin.default(pluginOption);
 	} else {
 		plugin = feature.plugin;
 	}
@@ -66,7 +76,7 @@ export function formatStagedFeature(cssdbList, browsers, features, feature, shar
 		browsers: feature.browsers,
 		vendors_implementations: feature.vendors_implementations,
 		plugin: plugin,
-		pluginOptions: options,
+		pluginOptions: pluginOption,
 		id: feature.id,
 	};
 }

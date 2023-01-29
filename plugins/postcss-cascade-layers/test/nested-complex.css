@@ -10,12 +10,25 @@
 			order: 2;
 		}
 	}
+
+	@container (min-width: 700px) {
+		target {
+			order: 2.1;
+		}
+	}
 }
 
 @media screen {
 	target {
 		layered: no;
 		order: 3;
+	}
+
+	@container (min-width: 701px) {
+		target {
+			layered: no;
+			order: 3.1;
+		}
 	}
 
 	@layer E {

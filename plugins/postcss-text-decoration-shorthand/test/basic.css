@@ -1,0 +1,95 @@
+.a {
+	text-decoration: wavy;
+}
+
+.b {
+	text-decoration: overline;
+}
+
+.ab {
+	text-decoration: wavy overline;
+}
+
+.abc {
+	text-decoration: wavy overline purple;
+}
+
+.bcd {
+	text-decoration: overline purple 4px;
+}
+
+.cd {
+	text-decoration: purple 4px;
+}
+
+.d {
+	text-decoration: wavy overline purple 4px;
+}
+
+.abcd {
+	text-decoration: wavy overline purple 4px;
+}
+
+.bcda {
+	text-decoration: overline purple 4px wavy;
+}
+
+.cdab {
+	text-decoration: purple 4px wavy overline;
+}
+
+.dabc {
+	text-decoration: 4px wavy overline purple;
+}
+
+.with-comment {
+	text-decoration: wavy /* a comment */ overline purple 4px;
+}
+
+.percentage-thickness {
+	text-decoration: 2% wavy overline purple;
+}
+
+.two-rules-with-same-transform--a {
+	text-decoration: 2% wavy overline purple;
+}
+
+.two-rules-with-same-transform--b {
+	text-decoration: 2% wavy overline purple;
+}
+
+.multiple-lines--a {
+	text-decoration: 5px underline overline line-through wavy pink;
+}
+
+.multiple-lines--b {
+	text-decoration: underline overline line-through;
+}
+
+.auto {
+	text-decoration: green wavy overline auto;
+}
+
+.from-font {
+	text-decoration: green wavy overline from-font;
+}
+
+.calc {
+	text-decoration: green wavy overline calc(2px * 4);
+}
+
+.ignored--a {
+	text-decoration: green wavy overline calc(2px * 4) bogus;
+}
+
+.ignored--b {
+	text-decoration: underline bogus;
+}
+
+.ignored--c {
+	text-decoration: solid solid red underline;
+}
+
+.ignored--d {
+	text-decoration: underline red overline;
+}

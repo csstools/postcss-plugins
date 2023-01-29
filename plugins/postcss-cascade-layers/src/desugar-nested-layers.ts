@@ -1,22 +1,27 @@
 import type { Container, AtRule, ChildNode } from 'postcss';
 import { removeEmptyAncestorBlocks, removeEmptyDescendantBlocks } from './clean-blocks';
+import { isProcessableLayerRule } from './is-processable-layer-rule';
 import type { Model } from './model';
 import { someAtRuleInTree } from './some-in-tree';
 
 export function desugarNestedLayers(root: Container<ChildNode>, model: Model) {
 	while (someAtRuleInTree(root, (node) => {
 		return node.nodes && someAtRuleInTree(node, (nested) => {
-			return nested.name === 'layer';
+			return isProcessableLayerRule(nested);
 		});
 	})) {
 		let foundUnexpectedLayerNesting = false;
 
-		root.walkAtRules('layer', (layerRule) => {
+		root.walkAtRules((layerRule) => {
+			if (!isProcessableLayerRule(layerRule)) {
+				return;
+			}
+
 			if (layerRule.parent === root) {
 				return;
 			}
 
-			if (layerRule.parent.type === 'atrule' && (layerRule.parent as AtRule).name === 'layer') {
+			if (layerRule.parent.type === 'atrule' && isProcessableLayerRule(layerRule.parent as AtRule)) {
 				const parent = layerRule.parent as AtRule;
 
 				// Concatenate the current layer params with those of the parent. Store the result in the data model.

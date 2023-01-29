@@ -12,23 +12,34 @@
 }
 
 .test-image-set-function {
+	background-image: url(img/test.png);
 	background-image: -webkit-image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 	background-image: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 	order: 2;
 }
 
-.test-logical-properties-and-values:dir(ltr) {
-	margin: 1px 4px 3px 2px;
-}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
-.test-logical-properties-and-values:dir(rtl) {
-	margin: 1px 2px 3px 4px;
+.test-image-set-function {
+	background-image: url(img/test-2x.png);
+}
 }
 
 .test-logical-properties-and-values {
+	margin-left: 1px;
+	margin-right: 2px;
 	order: 3;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.test-logical-resize {
+	resize: horizontal;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vw + 5px);
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
@@ -119,8 +130,7 @@
 }
 
 .test-all-property {
-	-webkit-animation: none 0s ease 0s 1 normal none running;
-	        animation: none 0s ease 0s 1 normal none running;
+	animation: none 0s ease 0s 1 normal none running;
 	-webkit-backface-visibility: visible;
 	        backface-visibility: visible;
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
@@ -168,7 +178,6 @@
 	line-height: normal;
 	height: auto;
 	-webkit-hyphens: none;
-	    -ms-hyphens: none;
 	        hyphens: none;
 	left: auto;
 	letter-spacing: normal;
@@ -199,6 +208,7 @@
 	text-align: left;
 	-moz-text-align-last: auto;
 	     text-align-last: auto;
+	-webkit-text-decoration: none;
 	text-decoration: none;
 	text-indent: 0;
 	text-shadow: none;
@@ -228,11 +238,7 @@
 	order: 22;
 }
 
-.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area.test-any-link-pseudo-class[href] {
-	order: 23;
-}
-
-.test-any-link-pseudo-class:-webkit-any-link {
+.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area[href].test-any-link-pseudo-class {
 	order: 23;
 }
 
@@ -425,6 +431,10 @@
 	display: ruby-text flow;
 }
 
+.logical-float {
+	float: inline-start;
+}
+
 .color-function {
 	prop-1: color(display-p3 0.00000 0.51872 0.36985);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
@@ -471,10 +481,9 @@
 }
 
 .ic-unit {
-	--value-2ic: 'something';
+	--value-2ic: initial;
 	text-indent: 2em;
 	content: var(--value-2ic);
-	left: 2em;
 	left: 2em;
 	left: var(--non-existing, 2em);
 	width: calc(8em + 20px);
@@ -504,23 +513,20 @@
 	right: round(nearest, 2.5px, 1px);
 	bottom: round(up, 2.5px, 1px);
 	left: round(down, 2.5px, 1px);
-	top: round(to-zero, 2.5px, 1px);
-	right: round(to-zero, 2.5px, 1px);
-	bottom: round(to-zero, 2.5px, 1px);
-	left: round(to-zero, 2.5px, 1px);
+	padding-left: round(to-zero, 2.5px, 1px);
 }
 
 .trigonometric {
-	left: sin(45deg);
-	left: cos(45deg);
-	left: tan(45deg);
-	left: asin(0.5);
-	left: acos(0.5);
-	left: atan(10);
-	left: atan2(-1, 1);
-	left: asin(sin(pi / 2));
-	left: atan2(infinity, -infinity);
-	left: sin((1deg + 3) + .25turn);
+	left: 0.70711;
+	left: 0.70711;
+	left: 1;
+	left: 30deg;
+	left: 60deg;
+	left: 84.29deg;
+	left: -45deg;
+	left: 90deg;
+	left: 135deg;
+	left: 0.90533;
 }
 
 .trigonometric-ignore-not-a-function {
@@ -549,4 +555,41 @@
 	@nest :--view-m & {
 		background: red;
 	}
+}
+
+.nested-calc {
+	order: calc(1 * (8 / 3 + (5 * 10)));
+	order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+}
+
+.text-decoration-shorthand {
+	text-decoration: overline;
+	-webkit-text-decoration: overline wavy pink;
+	        text-decoration: overline wavy pink;
+	text-decoration-thickness: 3px;
+}
+
+.stage__container {
+	left: 1rem;
+	left: var(--size, 1rem);
+}
+
+:root {
+	content: "plain :scope";
+}
+
+@scope (.foo) {
+	:scope {
+		content: ":scope in @scope";
+	}
+}
+
+:root {
+	@scope (.foo) {
+		content: ":scope in @scope, but with nesting";
+	}
+}
+
+@media (min-aspect-ratio: 177/100) {
+	/* media query aspect ratio : <number> */
 }

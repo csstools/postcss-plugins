@@ -15,7 +15,8 @@
 		"curly": "error",
 		"brace-style": "error",
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
-		"radix": "error"
+		"radix": "error",
+		"space-in-parens": ["error", "never"]
 	},
 	"overrides": [
 		{

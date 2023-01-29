@@ -17,9 +17,20 @@
 }
 
 .test-logical-properties-and-values {
-	margin: logical 1px 2px 3px 4px;
+	-webkit-margin-start: 1px;
+	        margin-inline-start: 1px;
+	-webkit-margin-end: 2px;
+	        margin-inline-end: 2px;
 	order: 3;
-	padding-block: 5px;
+	padding-block: 4px;
+}
+
+.test-logical-resize {
+	resize: inline;
+}
+
+.test-logical-viewport-units {
+	width: calc(10vi + 5px);
 }
 
 .test-nesting-rules {
@@ -126,10 +137,6 @@
 
 .test-not-pseudo-class:not(:first-child, .special) {
 	order: 22;
-}
-
-.test-any-link-pseudo-class:-webkit-any-link {
-	order: 23;
 }
 
 .test-any-link-pseudo-class:-moz-any-link {
@@ -290,6 +297,10 @@
 	display: ruby-text flow;
 }
 
+.logical-float {
+	float: inline-start;
+}
+
 .color-function {
 	prop-1: color(display-p3 0.00000 0.51872 0.36985);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
@@ -336,7 +347,7 @@
 }
 
 .ic-unit {
-	--value-2ic: 'something';
+	--value-2ic: initial;
 	text-indent: 2ic;
 	content: var(--value-2ic);
 	left: var(--non-existing, 2ic);
@@ -366,7 +377,7 @@
 	right: round(nearest, 2.5px, 1px);
 	bottom: round(up, 2.5px, 1px);
 	left: round(down, 2.5px, 1px);
-	inset: round(to-zero, 2.5px, 1px);
+	padding-left: round(to-zero, 2.5px, 1px);
 }
 
 .trigonometric {
@@ -405,5 +416,38 @@
 @custom-selector :--view-m [data-view-size=m];
 
 :--view-m .view {
-		background: red
+		background: red;
+}
+
+.nested-calc {
+	order: calc(1 * calc(8 / 3 + calc(5 * 10)));
+}
+
+.text-decoration-shorthand {
+	-webkit-text-decoration: 3px wavy pink overline;
+	        text-decoration: 3px wavy pink overline;
+}
+
+.stage__container {
+	inset-inline-start: var(--size, 1rem);
+}
+
+:scope {
+	content: "plain :scope";
+}
+
+@scope (.foo) {
+	:scope {
+		content: ":scope in @scope";
+	}
+}
+
+:scope {
+	@scope (.foo) {
+		content: ":scope in @scope, but with nesting";
+	}
+}
+
+@media (min-aspect-ratio: 1.77) {
+	/* media query aspect ratio : <number> */
 }

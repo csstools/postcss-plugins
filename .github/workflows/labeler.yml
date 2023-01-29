@@ -2,6 +2,10 @@ name: Pull Request Labeler
 on:
   - pull_request_target
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   triage:
     runs-on: ubuntu-latest

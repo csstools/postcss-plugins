@@ -7,7 +7,11 @@ import { acosFunctionCheck, transformAcosFunction } from './acos';
 import { atanFunctionCheck, transformAtanFunction } from './atan';
 import { atan2FunctionCheck, transformAtan2Function } from './atan2';
 
-type pluginOptions = { preserve?: boolean };
+/** postcss-trigonometric-functions plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
 
 const Transformations = [
 	{ check: asinFunctionCheck, transform: transformAsinFunction },
@@ -33,7 +37,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-trigonometric-functions',
 		Declaration(decl) {
 			const transformations = Transformations.filter(
-				transformation => decl.value.includes(transformation.check),
+				transformation => decl.value.toLowerCase().includes(transformation.check),
 			);
 
 			if (!decl || transformations.length === 0) {
@@ -50,12 +54,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				}
 			});
 
-			if (decl.value !== newDeclaration.value) {
-				if (options.preserve) {
-					decl.cloneBefore({ value: newDeclaration.value });
-				} else {
-					decl.value = newDeclaration.value;
-				}
+			if (decl.value === newDeclaration.value) {
+				return;
+			}
+
+			decl.before(newDeclaration);
+
+			if (!options.preserve) {
+				decl.remove();
 			}
 		},
 	};

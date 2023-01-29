@@ -2,8 +2,15 @@
 
 [PostCSS Attribute Case Insensitive] runs in all Node environments, with special instructions for:
 
-| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
-| --- | --- | --- | --- | --- | --- |
+- [Node](#node)
+- [PostCSS CLI](#postcss-cli)
+- [PostCSS Load Config](#postcss-load-config)
+- [Webpack](#webpack)
+- [Next.js](#nextjs)
+- [Gulp](#gulp)
+- [Grunt](#grunt)
+
+
 
 ## Node
 
@@ -16,8 +23,19 @@ npm install postcss postcss-attribute-case-insensitive --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssAttributeCaseInsensitive = require('postcss-attribute-case-insensitive');
+
+postcss([
+	postcssAttributeCaseInsensitive(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssAttributeCaseInsensitive from 'postcss-attribute-case-insensitive';
 
 postcss([
 	postcssAttributeCaseInsensitive(/* pluginOptions */)
@@ -43,6 +61,38 @@ module.exports = {
 	]
 }
 ```
+
+## PostCSS Load Config
+
+If your framework/CLI supports [`postcss-load-config`](https://github.com/postcss/postcss-load-config).
+
+```bash
+npm install postcss-attribute-case-insensitive --save-dev
+```
+
+`package.json`:
+
+```json
+{
+	"postcss": {
+		"plugins": {
+			"postcss-attribute-case-insensitive": {}
+		}
+	}
+}
+```
+
+`.postcssrc.json`:
+
+```json
+{
+	"plugins": {
+		"postcss-attribute-case-insensitive": {}
+	}
+}
+```
+
+_See the [README of `postcss-load-config`](https://github.com/postcss/postcss-load-config#usage) for more usage options._
 
 ## Webpack
 
@@ -73,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"postcss-attribute-case-insensitive",
 										{
@@ -90,26 +141,35 @@ module.exports = {
 };
 ```
 
-## Create React App
+## Next.js
 
-Add [React App Rewired] and [React App Rewire PostCSS] to your project:
+Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss postcss-attribute-case-insensitive --save-dev
+npm install postcss-attribute-case-insensitive --save-dev
 ```
 
-Use [React App Rewire PostCSS] and [PostCSS Attribute Case Insensitive] in your
-`config-overrides.js` file:
+Use [PostCSS Attribute Case Insensitive] in your `postcss.config.json` file:
 
-```js
-const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssAttributeCaseInsensitive = require('postcss-attribute-case-insensitive');
-
-module.exports = config => reactAppRewirePostcss(config, {
-	plugins: () => [
-		postcssAttributeCaseInsensitive(/* pluginOptions */)
+```json
+{
+	"plugins": [
+		"postcss-attribute-case-insensitive"
 	]
-});
+}
+```
+
+```json5
+{
+	"plugins": [
+		[
+			"postcss-attribute-case-insensitive",
+			{
+				// Optionally add plugin options
+			}
+		]
+	]
+}
 ```
 
 ## Gulp
@@ -172,5 +232,4 @@ grunt.initConfig({
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Attribute Case Insensitive]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-attribute-case-insensitive
-[React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
-[React App Rewired]: https://github.com/timarney/react-app-rewired
+[Next.js]: https://nextjs.org

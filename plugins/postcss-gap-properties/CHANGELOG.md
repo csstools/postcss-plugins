@@ -1,5 +1,22 @@
 # Changes to PostCSS Gap Properties
 
+### 4.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 4.0.0 (January 24, 2023)
+
+- Updated: Support for Node v14+ (major).
+- Added: TypeScript support.
+
+### 3.0.5 (July 12, 2022)
+
+- Fix detection of `display: grid;`
+
+### 3.0.4 (July 8, 2022)
+
+- Fix case insensitive matching.
+
 ### 3.0.3 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

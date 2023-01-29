@@ -1,0 +1,9 @@
+.js-has-pseudo [csstools-has-2p-1m-2w-2p-37-14-1a-2q-15]:not(does-not-exist) {
+	margin-left: 2px;
+}
+.js-has-pseudo [csstools-has-2p-1m-2w-2p-37-14-1a-2q-15]:not(does-not-exist) {
+	margin-left: 2px;
+}
+a:has(.b) {
+	margin-left: 2px;
+}

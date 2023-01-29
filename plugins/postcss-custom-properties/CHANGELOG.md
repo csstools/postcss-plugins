@@ -1,5 +1,80 @@
 # Changes to PostCSS Custom Properties
 
+### 13.1.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 13.1.0 (January 24, 2023)
+
+- Added: Support for Cascade Layers.
+- Improve plugin performance (port of fixes in `v12.1.11`)
+
+### 13.0.0 (November 14, 2022)
+
+- Updated: Support for Node v14+ (major).
+- Removed : `importFrom` feature (breaking).
+- Removed : `exportTo` feature (breaking).
+- Added support for local custom property declarations.
+
+```css
+.example {
+	--a-value: 20px;
+	margin: var(--a-value);
+}
+
+/* becomes */
+
+.example {
+	--a-value: 20px;
+	margin: 20px;
+	margin: var(--a-value);
+}
+```
+
+### 12.1.11 (December 1, 2022)
+
+- Improve plugin performance
+
+### 12.1.10 (October 20, 2022)
+
+- Fix how `preserve: false` interacts with logic around duplicate code (see `12.1.9`).
+
+```css
+:root {
+	--my-order: 1;
+}
+
+.foo {
+	order: 1;
+	order: var(--my-order);
+}
+
+/* With `preserve: false` : */
+
+.foo {
+	order: 1;
+}
+```
+
+### 12.1.9 (September 14, 2022)
+
+- Prevent duplicate code generation.
+
+```diff
+.foo {
+	order: 1;
+	order: var(--my-order, 1);
+}
+
+/* becomes */
+
+.foo {
+	order: 1;
+- 	order: 1;
+	order: var(--my-order, 1);
+}
+```
+
 ### 12.1.8 (June 10, 2022)
 
 - Remove some unneeded regular expressions.
@@ -40,7 +115,7 @@
 
 - Add `overrideImportFromWithRoot` option
 - Allow `.mjs` in `importFrom`
-- Converted to typescript
+- Converted to TypeScript
 - Correct typings for plugin options
 - Fix unicode support in custom property names
 

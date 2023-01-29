@@ -1,5 +1,13 @@
 # Changes to PostCSS Color Hex Alpha
 
+### 9.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 9.0.0 (January 24, 2023)
+
+- Updated: Support for Node v14+ (major).
+
 ### 8.0.4 (June 10, 2022)
 
 - Fixed: Issue with SVG hashes being interpreted as hex colors

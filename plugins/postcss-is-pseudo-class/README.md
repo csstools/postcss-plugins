@@ -52,8 +52,8 @@ postcss([
 
 [PostCSS Is Pseudo Class] runs in all Node environments, with special instructions for:
 
-| [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
-| --- | --- | --- | --- | --- |
+| [Node](INSTALL.md#node) | [Webpack](INSTALL.md#webpack) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- |
 
 ## Options
 
@@ -96,7 +96,7 @@ button:focus {
 
 ### specificityMatchingName
 
-The `specificityMatchingName` option allows you to change to selector used to adjust specificity.
+The `specificityMatchingName` option allows you to change the selector used to adjust specificity.
 The default value is `does-not-exist`.
 If this is an actual class, id or tag name in your code, you will need to set a different option here.
 
@@ -128,12 +128,36 @@ button:not(.something-random):hover {
 
 ### onComplexSelector
 
-Warn on complex selectors in `:is` pseudo classes.
+Warn on complex selectors in `:is` pseudo class functions.
 
 ```js
 postcss([
   postcssIsPseudoClass({ onComplexSelector: 'warning' })
 ]).process(YOUR_CSS /*, processOptions */);
+```
+
+### onPseudoElement
+
+Warn when pseudo elements are used in `:is` pseudo class functions.
+
+⚠️ Pseudo elements are always invalid and will be transformed to `::-csstools-invalid-<pseudo-name>`.
+
+```js
+postcss([
+  postcssIsPseudoClass({ onPseudoElement: 'warning' })
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```css
+:is(::after):hover {
+	order: 1.0;
+}
+
+/* becomes */
+
+::-csstools-invalid-after:hover {
+	order: 1.0;
+}
 ```
 
 ## ⚠️ Known shortcomings

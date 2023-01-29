@@ -3,8 +3,7 @@ import { Token } from './data-formats/base/token';
 import { tokensFromImport } from './data-formats/parse-import';
 import { mergeTokens } from './data-formats/token';
 import { parsePluginOptions, pluginOptions } from './options';
-import { onCSSValue } from './values';
-
+import { transform } from './transform';
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = parsePluginOptions(opts);
@@ -22,7 +21,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				},
 				Once: async (root, { result }) => {
 					const designTokenAtRules: Array<{filePath: string, params: string, node: Node}> = [];
-					root.walkAtRules('design-tokens', (atRule) => {
+					root.walkAtRules((atRule) => {
+						if (atRule.name.toLowerCase() !== options.importAtRuleName) {
+							return;
+						}
+
 						if (!atRule?.source?.input?.file) {
 							return;
 						}
@@ -61,16 +64,36 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 				},
 				Declaration(decl, { result }) {
-					if (decl.value.indexOf('design-token') === -1) {
+					if (!decl.value.toLowerCase().includes(options.valueFunctionName)) {
 						return;
 					}
 
-					const modifiedValue = onCSSValue(tokens, result, decl, options);
-					if (modifiedValue === decl.value) {
+					try {
+						const modifiedValue = transform(tokens, result, decl, decl.value, options);
+						if (modifiedValue === decl.value) {
+							return;
+						}
+
+						decl.value = modifiedValue;
+					} catch (err) {
+						decl.warn(result, `Failed to parse and transform "${decl.value}"`);
+					}
+				},
+				AtRule(atRule, { result }) {
+					if (!atRule.params.toLowerCase().includes(options.valueFunctionName)) {
 						return;
 					}
 
-					decl.value = modifiedValue;
+					try {
+						const modifiedValue = transform(tokens, result, atRule, atRule.params, options);
+						if (modifiedValue === atRule.params) {
+							return;
+						}
+
+						atRule.params = modifiedValue;
+					} catch(err) {
+						atRule.warn(result, `Failed to parse and transform "${atRule.params}"`);
+					}
 				},
 			};
 		},

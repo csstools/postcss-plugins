@@ -1,0 +1,385 @@
+/* https://www.w3.org/TR/css-nesting-1/ */
+
+/* Example 2 */
+:is(table.colortable) td {
+		text-align:center;
+	}
+:is(:is(table.colortable) td).c { text-transform:uppercase }
+:is(:is(table.colortable) td):first-child, :is(:is(table.colortable) td):first-child + td { border:1px solid black }
+:is(table.colortable) th {
+		text-align:center;
+		background:black;
+		color:white;
+	}
+
+/* Example 3 */
+.foo {
+	color: red;
+}
+:is(.foo) .bar {
+		color: blue;
+	}
+
+.foo {
+	color: red;
+}
+
+:is(.foo):hover {
+		color: blue;
+	}
+
+.foo {
+	color: red;
+}
+
+:is(.foo)+.bar {
+		color: blue;
+	}
+
+/* Example 4 */
+div {
+	color: red;
+}
+:is(div) input {
+		margin: 1em;
+	}
+
+div {
+	color: red;
+}
+
+:is(div) input { margin: 1em; }
+
+:is(div) :is(input) { margin: 1em; }
+
+/* Example 5 */
+/* & can be used on its own */
+.foo {
+	color: blue;
+}
+:is(.foo) > .bar { color: red; }
+:is(.foo)> .baz { color: green; }
+/* equivalent to
+	.foo { color: blue; }
+	.foo > .bar { color: red; }
+	.foo > .baz { color: green; }
+*/
+
+
+/* or in a compound selector,
+	refining the parent’s selector */
+.foo {
+	color: blue;
+}
+:is(.foo).bar { color: red; }
+/* equivalent to
+	.foo { color: blue; }
+	.foo.bar { color: red; }
+*/
+
+/* multiple selectors in the list are all
+	relative to the parent */
+.foo, .bar {
+	color: blue;
+}
+:is(.foo,.bar)+ .baz, :is(.foo,.bar).qux { color: red; }
+/* equivalent to
+	.foo, .bar { color: blue; }
+	:is(.foo, .bar) + .baz,
+	:is(.foo, .bar).qux { color: red; }
+*/
+
+/* & can be used multiple times in a single selector */
+.foo {
+	color: blue;
+}
+:is(.foo) .bar :is(.foo) .baz :is(.foo) .qux { color: red; }
+/* equivalent to
+	.foo { color: blue; }
+	.foo .bar .foo .baz .foo .qux { color: red; }
+*/
+
+/* & doesn’t have to be at the beginning of the selector */
+
+.foo {
+	color: red;
+}
+
+.parent :is(.foo) {
+		color: blue;
+	}
+/* equivalent to
+	.foo { color: red; }
+	.parent .foo { color: blue; }
+*/
+
+.foo {
+	color: red;
+}
+
+:not(:is(.foo)) {
+		color: blue;
+	}
+/* equivalent to
+	.foo { color: red; }
+	:not(.foo) { color: blue; }
+*/
+
+/* But if you use a relative selector,
+	an initial & is implied automatically */
+
+.foo {
+	color: red;
+}
+
++ .bar + :is(.foo) { color: blue; }
+
+/* equivalent to
+	.foo { color: red; }
+	.foo + .bar + .foo { color: blue; }
+*/
+
+/* Somewhat silly, but & can be used all on its own, as well. */
+.foo {
+	color: blue;
+}
+:is(.foo) { padding: 2ch; }
+/* equivalent to
+	.foo { color: blue; }
+	.foo { padding: 2ch; }
+
+	// or
+
+	.foo {
+		color: blue;
+		padding: 2ch;
+	}
+*/
+
+/* Again, silly, but can even be doubled up. */
+.foo {
+	color: blue;
+}
+:is(.foo):is(.foo) { padding: 2ch; }
+/* equivalent to
+	.foo { color: blue; }
+	.foo.foo { padding: 2ch; }
+*/
+
+/* The parent selector can be arbitrarily complicated */
+:is(.error,#404):hover > .baz { color: red; }
+/* equivalent to
+	:is(.error, #404):hover > .baz { color: red; }
+*/
+
+.other-ancestor :is(.ancestor .el) { color: red; }
+/* equivalent to
+	.other-ancestor :is(.ancestor .el) { color: red; }
+
+/* As can the nested selector */
+:is(.foo) :is(.bar,:is(.foo).baz) { color: red; }
+/* equivalent to
+	.foo :is(.bar, .foo.baz) { color: red; }
+*/
+
+/* Multiple levels of nesting "stack up" the selectors */
+figure {
+	margin: 0;
+}
+:is(figure)> figcaption {
+		background: hsl(0 0% 0% / 50%);
+	}
+:is(:is(figure)> figcaption)> p {
+			font-size: .9rem;
+		}
+/* equivalent to
+	figure { margin: 0; }
+	figure > figcaption { background: hsl(0 0% 0% / 50%); }
+	figure > figcaption > p { font-size: .9rem; }
+*/
+
+/* Example usage with Cascade Layers */
+@layer base {
+	html {
+		block-size: 100%;
+	}
+
+		:is(html) body {
+			min-block-size: 100%;
+		}
+}
+/* equivalent to
+	@layer base {
+		html { block-size: 100%; }
+		html body { min-block-size: 100%; }
+	}
+*/
+
+/* Example nesting Cascade Layers */
+@layer base {
+	html {
+		block-size: 100%;
+	}
+
+		@layer base.support {
+			:is(html) body {
+				min-block-size: 100%;
+			}
+		}
+}
+/* equivalent to
+	@layer base {
+		html { block-size: 100%; }
+	}
+	@layer base.support {
+		html body { min-block-size: 100%; }
+	}
+*/
+
+/* Example usage with Scoping */
+@scope (.card) to (> header) {
+	:scope {
+		inline-size: 40ch;
+		aspect-ratio: 3/4;
+	}
+
+		:is(:scope)> header {
+			border-block-end: 1px solid white;
+		}
+}
+/* equivalent to
+	@scope (.card) to (> header) {
+		:scope { inline-size: 40ch; aspect-ratio: 3/4; }
+		:scope > header { border-block-end: 1px solid white; }
+	}
+*/
+
+/* Example nesting Scoping */
+.card {
+	inline-size: 40ch;
+	aspect-ratio: 3/4;
+
+	@scope (&) to (> header > *) {
+		:scope > header {
+			border-block-end: 1px solid white;
+		}
+	}
+}
+
+/* equivalent to
+	.card { inline-size: 40ch; aspect-ratio: 3/4; }
+	@scope (.card) to (> header > *) {
+		:scope > header { border-block-end: 1px solid white; }
+	}
+*/
+
+/* Note about sass string concat */
+.foo {
+	color: blue;
+}
+:is(.foo)__bar {
+		color: red;
+	}
+
+/* In Sass, this is equivalent to
+	.foo { color: blue; }
+	.foo__bar { color: red; }
+*/
+
+.foo {
+	color: blue;
+}
+
+:is(.foo)__bar {
+		color: red;
+	}
+
+/* In CSS, this is instead equivalent to
+	.foo { color: blue; }
+	__bar.foo { color: red; }
+*/
+
+/* Example 6 */
+/* Properties can be directly used */
+.foo {
+	display: grid;
+}
+@media (orientation: landscape) {
+.foo {
+		grid-auto-flow: column;
+}
+	}
+
+/* equivalent to
+	.foo {
+		display: grid;
+
+		@media (orientation: landscape) {
+			& {
+				grid-auto-flow: column;
+			}
+		}
+	}
+*/
+
+/* finally equivalent to
+	.foo { display: grid; }
+
+	@media (orientation: landscape) {
+		.foo {
+			grid-auto-flow: column;
+		}
+	}
+*/
+
+/* Conditionals can be further nested */
+.foo {
+	display: grid;
+}
+@media (orientation: landscape) {
+.foo {
+		grid-auto-flow: column;
+}
+	}
+@media (orientation: landscape) and (min-width > 1024px) {
+.foo {
+			max-inline-size: 1024px;
+}
+		}
+
+/* equivalent to
+	.foo { display: grid; }
+
+	@media (orientation: landscape) {
+		.foo {
+			grid-auto-flow: column;
+		}
+	}
+
+	@media (orientation: landscape) and (min-width > 1024px) {
+		.foo {
+			max-inline-size: 1024px;
+		}
+	}
+*/
+
+/* Example 7 */
+article {
+	color: green;
+
+	color: red;
+}
+:is(article) {
+		color: blue;
+	}
+
+/* Example 8 */
+.foo, .foo::before, .foo::after {
+	color: red;
+}
+:is(.foo,.foo::before,.foo::after):hover { color: blue; }
+
+/* Example 9 */
+:is(#a,b) c { color: blue; }
+.foo c { color: red; }
+

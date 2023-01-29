@@ -1,0 +1,79 @@
+/* Media queries with modifiers (not|only) */
+
+@media not screen {
+
+@media screen and (max-color:2147477350) {
+	.a {
+		order: 1;
+	}
+}
+}
+
+@media screen {
+
+@media screen and (color:2147477350) {
+	.a {
+		order: 1;
+	}
+}
+}
+
+@media not screen {
+
+@media only print and (not (max-color:2147477350)) {
+	.a {
+		order: 2;
+	}
+}
+}
+
+@media screen {
+
+@media only print and (not (color:2147477350)) {
+	.a {
+		order: 2;
+	}
+}
+}
+
+@media only screen and (min-width: 200px) {
+
+@media print and (max-color:2147477350) {
+	.a {
+		order: 3;
+	}
+}
+}
+
+@media not screen and (min-width: 200px) {
+
+@media print and (color:2147477350) {
+	.a {
+		order: 3;
+	}
+}
+}
+
+@media only screen and (min-width: 200px) {
+	.a {
+		order: 4;
+	}
+}
+
+@media only screen and (min-width: 200px) {
+
+@media  (not (max-color:2147477350)) {
+	.a {
+		order: 4;
+	}
+}
+}
+
+@media not screen and (min-width: 200px) {
+
+@media  (not (color:2147477350)) {
+	.a {
+		order: 4;
+	}
+}
+}

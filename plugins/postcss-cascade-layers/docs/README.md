@@ -2,14 +2,16 @@
 <!-- <humanReadableName> PostCSS Your Plugin -->
 <!-- <exportName> postcssYourPlugin -->
 <!-- <packageName> @csstools/postcss-your-plugin -->
+<!-- <packageVersion> 1.0.0 -->
 <!-- <packagePath> plugins/postcss-your-plugin -->
 <!-- <cssdbId> your-feature -->
 <!-- <specUrl> https://www.w3.org/TR/css-color-4/#funcdef-color -->
 <!-- <example.css> file contents for examples/example.css -->
 <!-- <header> -->
 <!-- <usage> usage instructions -->
-<!-- <env-support> -->
-<!-- <link-list> -->
+<!-- <envSupport> -->
+<!-- <corsWarning> -->
+<!-- <linkList> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -26,19 +28,49 @@
 
 ## How it works
 
-[<humanReadableName>] creates "layers" of specificity.
+[PostCSS Cascade Layers] creates "layers" of specificity.
 
 It applies extra specificity on all your styles based on :
 - the most specific selector found
 - the order in which layers are defined
 
-for `@layer A, B, C`:
+```css
+@layer A, B;
 
-| layer | specificity adjustment | selector |
-| ------ | ----------- | --- |
-| `A` | 0 | N/A |
-| `B` | 3 | `:not(#/#):not(#/#):not(#/#)` |
-| `C` | 6 | `:not(#/#):not(#/#):not(#/#):not(#/#):not(#/#):not(#/#)` |
+@layer B {
+	.a-less-specific-selector {
+		/* styles */
+	}
+}
+
+@layer A {
+	#something #very-specific {
+		/* styles */
+	}
+}
+
+@layer C {
+	.a-less-specific-selector {
+		/* styles */
+	}
+}
+```
+
+most specific selector :
+- `#something #very-specific`
+- `[2, 0, 0]`
+- `2 + 1` -> `3` to ensure there is no overlap
+
+the order in which layers are defined :
+- `A`
+- `B`
+- `C`
+
+| layer | previous adjustment | specificity adjustment | selector |
+| ------ | ------ | ----------- | --- |
+| `A` | `0` | `0 + 0 = 0` | N/A |
+| `B` | `0` | `0 + 3 = 3` | `:not(#\#):not(#\#):not(#\#)` |
+| `C` | `3` | `3 + 3 = 6` | `:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#)` |
 
 This approach lets more important (later) layers always override less important (earlier) layers.<br>
 And layers have enough room internally so that each selector works and overrides as expected.
@@ -50,7 +82,7 @@ If you have different assets that are unaware of each other it will not work cor
 
 <usage>
 
-<env-support>
+<envSupport>
 
 ## Options
 
@@ -125,7 +157,7 @@ This plugin will warn you when it detects that [postcss-import] did not transfor
 ### Contributors
 The contributors to this plugin were [Olu Niyi-Awosusi] and [Sana Javed] from [Oddbird] and Romain Menke.
 
-<link-list>
+<linkList>
 [Cascade Layers Specification]: <specUrl>
 [A Complete Guide to CSS Cascade Layers]: https://css-tricks.com/css-cascade-layers/
 [Olu Niyi-Awosusi]: https://github.com/oluoluoxenfree

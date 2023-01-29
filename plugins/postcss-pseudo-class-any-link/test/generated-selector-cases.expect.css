@@ -170,7 +170,7 @@ button {
 	order: 40;
 }
 
-.🧑🏾‍🎤:link, .🧑🏾‍🎤:visited {
+:link.🧑🏾‍🎤, :visited.🧑🏾‍🎤 {
 	order: 41;
 }
 
@@ -258,7 +258,7 @@ button {
 	order: 60;
 }
 
-.foo:link, .foo:visited {
+:link.foo, :visited.foo {
 	order: 61;
 }
 
@@ -346,7 +346,7 @@ button {
 	order: 80;
 }
 
-#foo:link, #foo:visited {
+:link#foo, :visited#foo {
 	order: 81;
 }
 
@@ -610,7 +610,7 @@ __foo {
 	order: 140;
 }
 
-[foo="baz"]:link, [foo="baz"]:visited {
+:link[foo="baz"], :visited[foo="baz"] {
 	order: 141;
 }
 
@@ -698,7 +698,7 @@ __foo {
 	order: 160;
 }
 
-*:link, *:visited {
+:link*, :visited* {
 	order: 161;
 }
 
@@ -870,7 +870,7 @@ __foo {
 	order: 199;
 }
 
-:link::before, :visited::before {
+::before:link, ::before:visited {
 	order: 200;
 }
 

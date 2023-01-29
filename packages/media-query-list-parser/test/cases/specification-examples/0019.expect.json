@@ -1,0 +1,178 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "((color) and (width))",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-condition",
+					"media": {
+						"type": "media-condition-list-and",
+						"leading": {
+							"type": "media-in-parens",
+							"media": {
+								"type": "media-feature",
+								"feature": {
+									"type": "mf-boolean",
+									"name": {
+										"type": "mf-name",
+										"name": "color",
+										"tokens": [
+											[
+												"ident-token",
+												"color",
+												2,
+												6,
+												{
+													"value": "color"
+												}
+											]
+										]
+									},
+									"tokens": [
+										[
+											"ident-token",
+											"color",
+											2,
+											6,
+											{
+												"value": "color"
+											}
+										]
+									]
+								},
+								"before": [
+									[
+										"(-token",
+										"(",
+										1,
+										1,
+										null
+									]
+								],
+								"after": [
+									[
+										")-token",
+										")",
+										7,
+										7,
+										null
+									]
+								]
+							},
+							"before": [],
+							"after": []
+						},
+						"list": [
+							{
+								"type": "media-and",
+								"modifier": [
+									[
+										"whitespace-token",
+										" ",
+										8,
+										8,
+										null
+									],
+									[
+										"ident-token",
+										"and",
+										9,
+										11,
+										{
+											"value": "and"
+										}
+									],
+									[
+										"whitespace-token",
+										" ",
+										12,
+										12,
+										null
+									]
+								],
+								"media": {
+									"type": "media-in-parens",
+									"media": {
+										"type": "media-feature",
+										"feature": {
+											"type": "mf-boolean",
+											"name": {
+												"type": "mf-name",
+												"name": "width",
+												"tokens": [
+													[
+														"ident-token",
+														"width",
+														14,
+														18,
+														{
+															"value": "width"
+														}
+													]
+												]
+											},
+											"tokens": [
+												[
+													"ident-token",
+													"width",
+													14,
+													18,
+													{
+														"value": "width"
+													}
+												]
+											]
+										},
+										"before": [
+											[
+												"(-token",
+												"(",
+												13,
+												13,
+												null
+											]
+										],
+										"after": [
+											[
+												")-token",
+												")",
+												19,
+												19,
+												null
+											]
+										]
+									},
+									"before": [],
+									"after": []
+								}
+							}
+						],
+						"before": [],
+						"after": []
+					}
+				},
+				"before": [
+					[
+						"(-token",
+						"(",
+						0,
+						0,
+						null
+					]
+				],
+				"after": [
+					[
+						")-token",
+						")",
+						20,
+						20,
+						null
+					]
+				]
+			}
+		}
+	}
+]

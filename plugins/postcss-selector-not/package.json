@@ -1,7 +1,7 @@
 {
 	"name": "postcss-selector-not",
 	"description": "PostCSS plugin to transform :not() W3C CSS level 4 pseudo class to :not() CSS level 3 selectors",
-	"version": "6.0.0",
+	"version": "7.0.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -22,13 +22,14 @@
 		"url": "https://opencollective.com/csstools"
 	},
 	"engines": {
-		"node": "^12 || ^14 || >=16"
+		"node": "^14 || ^16 || >=18"
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
+			"types": "./dist/index.d.ts",
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.cjs",
 			"default": "./dist/index.mjs"
@@ -44,11 +45,12 @@
 		"postcss-selector-parser": "^6.0.10"
 	},
 	"peerDependencies": {
-		"postcss": "^8.3"
+		"postcss": "^8.4"
 	},
 	"scripts": {
-		"build": "rollup -c ../../rollup/default.js",
-		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+		"prebuild": "npm run clean",
+		"build": "rollup -c ../../rollup/default.mjs",
+		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');\"",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
@@ -69,8 +71,7 @@
 		"Not",
 		"postcss",
 		"postcss-plugin",
-		"selector",
-		"selectors"
+		"selector"
 	],
 	"csstools": {
 		"cssdbId": "not-pseudo-class",

@@ -8,7 +8,7 @@ function transformTanFunction(decl: Declaration): string | undefined {
 	const parsedValue = valueParser(decl.value);
 
 	parsedValue.walk(node => {
-		if (node.type !== 'function' || node.value !== 'tan') {
+		if (node.type !== 'function' || node.value.toLowerCase() !== 'tan') {
 			return;
 		}
 
@@ -37,7 +37,7 @@ function transformTanFunction(decl: Declaration): string | undefined {
 		}
 
 		transformedNode.value = formatResultingNumber(Math.tan(number), 5);
-	});
+	}, true);
 
 	return parsedValue.toString();
 }

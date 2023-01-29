@@ -1,0 +1,8 @@
+.foo {
+	src: url("\
+https: //\
+example.com\
+/some-path/\
+?query=param\
+&more-query=params");
+}

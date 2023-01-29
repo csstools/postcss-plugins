@@ -2,7 +2,7 @@ import browserslist from 'browserslist';
 import getUnsupportedBrowsersByFeature from './get-unsupported-browsers-by-feature.mjs';
 
 // add extra options for certain browsers by feature
-export default function getOptionsForBrowsersByFeature(browsers, feature, cssdbList, logger) {
+export default function getOptionsForBrowsersByFeature(browsers, feature, cssdbList, options, logger) {
 	const supportedBrowsers = browserslist(browsers, { ignoreUnknownVersions: true });
 
 	switch (feature.id) {
@@ -42,6 +42,17 @@ export default function getOptionsForBrowsersByFeature(browsers, feature, cssdbL
 							areaHrefNeedsFixing: true,
 						},
 					};
+				}
+			}
+
+			return {};
+		case 'logical-properties-and-values':
+		case 'float-clear-logical-values':
+		case 'logical-resize':
+		case 'logical-viewport-units':
+			{
+				if ('logical' in options) {
+					return options.logical;
 				}
 			}
 

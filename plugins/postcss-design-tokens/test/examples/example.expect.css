@@ -4,3 +4,9 @@
 	padding-left: 16px;
 	padding-bottom: 1rem;
 }
+
+@media (min-width: 35rem) {
+	.foo {
+		padding-bottom: 1.125rem;
+	}
+}

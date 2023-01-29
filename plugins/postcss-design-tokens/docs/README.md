@@ -2,14 +2,16 @@
 <!-- <humanReadableName> PostCSS Your Plugin -->
 <!-- <exportName> postcssYourPlugin -->
 <!-- <packageName> @csstools/postcss-your-plugin -->
+<!-- <packageVersion> 1.0.0 -->
 <!-- <packagePath> plugins/postcss-your-plugin -->
 <!-- <cssdbId> your-feature -->
 <!-- <specUrl> https://www.w3.org/TR/css-color-4/#funcdef-color -->
 <!-- <example.css> file contents for examples/example.css -->
 <!-- <header> -->
 <!-- <usage> usage instructions -->
-<!-- <env-support> -->
-<!-- <link-list> -->
+<!-- <envSupport> -->
+<!-- <corsWarning> -->
+<!-- <linkList> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -30,7 +32,7 @@
 
 <usage>
 
-<env-support>
+<envSupport>
 
 ## Formats
 
@@ -44,21 +46,23 @@ Use `style-dictionary3` in `@design-tokens` rules to pick this format.
 
 ### is
 
-The `is` option determines which design tokens are used.
-This allows you to generate multiple themed stylesheets.
+The `is` option determines which design tokens are used.<br>
+This allows you to generate multiple themed stylesheets<br>by running PostCSS multiple times with different configurations.
 
 By default only `@design-tokens` without any `when('foo')` conditions are used.
+
+_This plugin itself does not produce multiple outputs, it only provides an API to change the output._
 
 #### Example usage
 
 **For these two token files :**
 
 ```json
-<tokens-light.json>
+<tokens-brand-1.json>
 ```
 
 ```json
-<tokens-dark.json>
+<tokens-brand-2.json>
 ```
 
 **And this CSS :**
@@ -83,10 +87,10 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 <example-conditional.expect.css>
 ```
 
-##### `is` option set to 'dark'.
+##### `is` option set to 'brand-2'.
 
 ```js
-<exportName>({ is: ['dark'] })
+<exportName>({ is: ['brand-2'] })
 ```
 
 ```pcss
@@ -94,7 +98,7 @@ By default only `@design-tokens` without any `when('foo')` conditions are used.
 
 /* becomes */
 
-<example-conditional.dark.expect.css>
+<example-conditional.brand-2.expect.css>
 ```
 
 ### unitsAndValues
@@ -122,6 +126,40 @@ defaults to `16`
 <example.rootFontSize-20.expect.css>
 ```
 
+### Customize function and at rule names
+
+#### importAtRuleName
+
+The `importAtRuleName` option allows you to set a custom alias for `@design-tokens`.
+
+```js
+<exportName>({ importAtRuleName: 'tokens' })
+```
+
+```pcss
+<example-custom-import-at-rule-name.css>
+
+/* becomes */
+
+<example-custom-import-at-rule-name.expect.css>
+```
+
+#### valueFunctionName
+
+The `valueFunctionName` option allows you to set a custom alias for `design-token`.
+
+```js
+<exportName>({ valueFunctionName: 'token' })
+```
+
+```pcss
+<example-custom-value-function-name.css>
+
+/* becomes */
+
+<example-custom-value-function-name.expect.css>
+```
+
 ## Syntax
 
 [<humanReadableName>] is non-standard and is not part of any official CSS Specification.
@@ -147,6 +185,13 @@ The `@design-tokens` rule is used to import design tokens from a JSON file into 
 ```pcss
 @design-tokens url('./tokens.json') format('style-dictionary3');
 @design-tokens url('./tokens-dark-mode.json') format('style-dictionary3') when('dark');
+```
+
+You can also import tokens from an `npm` package:
+
+```pcss
+@design-tokens url('node_modules://my-npm-package/tokens.json') format('style-dictionary3');
+@design-tokens url('node_modules://my-npm-package/tokens-dark-mode.json') format('style-dictionary3') when('dark');
 ```
 
 ```
@@ -197,14 +242,17 @@ The `design-token()` function takes a token path and returns the token value.
 design-token() = design-token( <token-path> [ to <unit> ]? )
 
 <token-path> = <string>
-<unit> = [ px | rem ]
+<unit> = [ px | rem | ... ]
 ```
+
+The plugin can convert `px` to `rem` and `rem` to `px` via the [`unitsandvalues`](#unitsandvalues) plugin options.
+When a design token is unit-less any `unit` can be assigned with `to`.
 
 ## Further reading
 
 - [Why we think PostCSS Design Tokens is needed]
 - [About Design Tokens (Adobe Spectrum)]
 
-<link-list>
+<linkList>
 [Why we think PostCSS Design Tokens is needed]: https://github.com/csstools/postcss-plugins/wiki/Why-we-think-PostCSS-Design-Tokens-is-needed
 [About Design Tokens (Adobe Spectrum)]: https://spectrum.adobe.com/page/design-tokens/

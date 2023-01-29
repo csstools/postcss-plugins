@@ -1,0 +1,16 @@
+[
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"screen",
+				0,
+				5,
+				{
+					"value": "screen"
+				}
+			]
+		]
+	}
+]

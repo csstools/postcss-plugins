@@ -1,5 +1,4 @@
 import browserslist from 'browserslist';
-import { pluginHasSideEffects } from '../side-effects/plugins.mjs';
 import { featuresWithClientSide } from '../client-side-polyfills/plugins.mjs';
 import { stageFromOptions } from './stage.mjs';
 import { prepareFeaturesList } from './prepare-features-list.mjs';
@@ -11,7 +10,7 @@ import { insertAfterKey, insertBeforeKey } from '../own-keys/keys.mjs';
 export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	// initialize options
 	const features = Object(options.features);
-	const enableClientSidePolyfills = 'enableClientSidePolyfills' in options ? options.enableClientSidePolyfills : true;
+	const enableClientSidePolyfills = 'enableClientSidePolyfills' in options ? options.enableClientSidePolyfills : false;
 	const insertBefore = Object(options.insertBefore);
 	const insertAfter = Object(options.insertAfter);
 	const browsers = options.browsers;
@@ -29,20 +28,6 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 
 	const stage = stageFromOptions(options, logger);
 
-	// TODO : remove this hack in the next major
-	// see : https://github.com/csstools/cssdb/pull/78
-	// These features require client side polyfills and changing their stage is breaking for everyone with `preserve : false`
-	if (stage === 2 && sharedOptions && sharedOptions.preserve === false) {
-		cssdbList = JSON.parse(JSON.stringify(cssdbList)); // deep clone;
-		cssdbList.forEach((feature) => {
-			if (feature.id === 'blank-pseudo-class') {
-				feature.stage = 1;
-			} else if (feature.id === 'prefers-color-scheme-query') {
-				feature.stage = 1;
-			}
-		});
-	}
-
 	// polyfillable features (those with an available postcss plugin)
 	const polyfillableFeatures = prepareFeaturesList(cssdbList, insertBefore, insertAfter).map((feature) => {
 		return formatPolyfillableFeature(feature);
@@ -58,7 +43,7 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 			return true;
 		}
 
-		if ( minimumVendorImplementations <= feature.vendors_implementations ) {
+		if (minimumVendorImplementations <= feature.vendors_implementations) {
 			return true;
 		}
 
@@ -94,7 +79,7 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 
 		return isAllowedFeature;
 	}).map((feature) => {
-		return formatStagedFeature(cssdbList, browsers, features, feature, sharedOptions, logger);
+		return formatStagedFeature(cssdbList, browsers, features, feature, sharedOptions, options, logger);
 	});
 
 	// browsers supported by the configuration
@@ -103,14 +88,9 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	// - features supported by the stage
 	// - features with `true` or with options
 	// - required for the browsers
-	// - having "importFrom" or "exportTo" options
 	const supportedFeatures = stagedFeatures.filter((feature) => {
 		if (feature.id in features) {
 			return features[feature.id];
-		}
-
-		if (pluginHasSideEffects(feature)) {
-			return true;
 		}
 
 		const unsupportedBrowsers = browserslist(feature.browsers, {

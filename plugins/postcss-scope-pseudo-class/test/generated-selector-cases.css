@@ -1,0 +1,905 @@
+:scope:scope {
+	order: 0;
+}
+
+:scope:scope {
+	order: 1;
+}
+
+:scope :scope {
+	order: 2;
+}
+
+:scope :scope {
+	order: 3;
+}
+
+:scope  :scope {
+	order: 4;
+}
+
+:scope  :scope {
+	order: 5;
+}
+
+:scope+:scope {
+	order: 6;
+}
+
+:scope+:scope {
+	order: 7;
+}
+
+:scope + :scope {
+	order: 8;
+}
+
+:scope + :scope {
+	order: 9;
+}
+
+:scope~:scope {
+	order: 10;
+}
+
+:scope~:scope {
+	order: 11;
+}
+
+:scope ~ :scope {
+	order: 12;
+}
+
+:scope ~ :scope {
+	order: 13;
+}
+
+:scope>:scope {
+	order: 14;
+}
+
+:scope>:scope {
+	order: 15;
+}
+
+:scope > :scope {
+	order: 16;
+}
+
+:scope > :scope {
+	order: 17;
+}
+
+:scope, :scope {
+	order: 18;
+}
+
+:scope, :scope {
+	order: 19;
+}
+
+button:scope {
+	order: 20;
+}
+
+:scopebutton {
+	order: 21;
+}
+
+button :scope {
+	order: 22;
+}
+
+:scope button {
+	order: 23;
+}
+
+button  :scope {
+	order: 24;
+}
+
+:scope  button {
+	order: 25;
+}
+
+button+:scope {
+	order: 26;
+}
+
+:scope+button {
+	order: 27;
+}
+
+button + :scope {
+	order: 28;
+}
+
+:scope + button {
+	order: 29;
+}
+
+button~:scope {
+	order: 30;
+}
+
+:scope~button {
+	order: 31;
+}
+
+button ~ :scope {
+	order: 32;
+}
+
+:scope ~ button {
+	order: 33;
+}
+
+button>:scope {
+	order: 34;
+}
+
+:scope>button {
+	order: 35;
+}
+
+button > :scope {
+	order: 36;
+}
+
+:scope > button {
+	order: 37;
+}
+
+button, :scope {
+	order: 38;
+}
+
+:scope, button {
+	order: 39;
+}
+
+.🧑🏾‍🎤:scope {
+	order: 40;
+}
+
+:scope.🧑🏾‍🎤 {
+	order: 41;
+}
+
+.🧑🏾‍🎤 :scope {
+	order: 42;
+}
+
+:scope .🧑🏾‍🎤 {
+	order: 43;
+}
+
+.🧑🏾‍🎤  :scope {
+	order: 44;
+}
+
+:scope  .🧑🏾‍🎤 {
+	order: 45;
+}
+
+.🧑🏾‍🎤+:scope {
+	order: 46;
+}
+
+:scope+.🧑🏾‍🎤 {
+	order: 47;
+}
+
+.🧑🏾‍🎤 + :scope {
+	order: 48;
+}
+
+:scope + .🧑🏾‍🎤 {
+	order: 49;
+}
+
+.🧑🏾‍🎤~:scope {
+	order: 50;
+}
+
+:scope~.🧑🏾‍🎤 {
+	order: 51;
+}
+
+.🧑🏾‍🎤 ~ :scope {
+	order: 52;
+}
+
+:scope ~ .🧑🏾‍🎤 {
+	order: 53;
+}
+
+.🧑🏾‍🎤>:scope {
+	order: 54;
+}
+
+:scope>.🧑🏾‍🎤 {
+	order: 55;
+}
+
+.🧑🏾‍🎤 > :scope {
+	order: 56;
+}
+
+:scope > .🧑🏾‍🎤 {
+	order: 57;
+}
+
+.🧑🏾‍🎤, :scope {
+	order: 58;
+}
+
+:scope, .🧑🏾‍🎤 {
+	order: 59;
+}
+
+.foo:scope {
+	order: 60;
+}
+
+:scope.foo {
+	order: 61;
+}
+
+.foo :scope {
+	order: 62;
+}
+
+:scope .foo {
+	order: 63;
+}
+
+.foo  :scope {
+	order: 64;
+}
+
+:scope  .foo {
+	order: 65;
+}
+
+.foo+:scope {
+	order: 66;
+}
+
+:scope+.foo {
+	order: 67;
+}
+
+.foo + :scope {
+	order: 68;
+}
+
+:scope + .foo {
+	order: 69;
+}
+
+.foo~:scope {
+	order: 70;
+}
+
+:scope~.foo {
+	order: 71;
+}
+
+.foo ~ :scope {
+	order: 72;
+}
+
+:scope ~ .foo {
+	order: 73;
+}
+
+.foo>:scope {
+	order: 74;
+}
+
+:scope>.foo {
+	order: 75;
+}
+
+.foo > :scope {
+	order: 76;
+}
+
+:scope > .foo {
+	order: 77;
+}
+
+.foo, :scope {
+	order: 78;
+}
+
+:scope, .foo {
+	order: 79;
+}
+
+#foo:scope {
+	order: 80;
+}
+
+:scope#foo {
+	order: 81;
+}
+
+#foo :scope {
+	order: 82;
+}
+
+:scope #foo {
+	order: 83;
+}
+
+#foo  :scope {
+	order: 84;
+}
+
+:scope  #foo {
+	order: 85;
+}
+
+#foo+:scope {
+	order: 86;
+}
+
+:scope+#foo {
+	order: 87;
+}
+
+#foo + :scope {
+	order: 88;
+}
+
+:scope + #foo {
+	order: 89;
+}
+
+#foo~:scope {
+	order: 90;
+}
+
+:scope~#foo {
+	order: 91;
+}
+
+#foo ~ :scope {
+	order: 92;
+}
+
+:scope ~ #foo {
+	order: 93;
+}
+
+#foo>:scope {
+	order: 94;
+}
+
+:scope>#foo {
+	order: 95;
+}
+
+#foo > :scope {
+	order: 96;
+}
+
+:scope > #foo {
+	order: 97;
+}
+
+#foo, :scope {
+	order: 98;
+}
+
+:scope, #foo {
+	order: 99;
+}
+
+__foo:scope {
+	order: 100;
+}
+
+:scope__foo {
+	order: 101;
+}
+
+__foo :scope {
+	order: 102;
+}
+
+:scope __foo {
+	order: 103;
+}
+
+__foo  :scope {
+	order: 104;
+}
+
+:scope  __foo {
+	order: 105;
+}
+
+__foo+:scope {
+	order: 106;
+}
+
+:scope+__foo {
+	order: 107;
+}
+
+__foo + :scope {
+	order: 108;
+}
+
+:scope + __foo {
+	order: 109;
+}
+
+__foo~:scope {
+	order: 110;
+}
+
+:scope~__foo {
+	order: 111;
+}
+
+__foo ~ :scope {
+	order: 112;
+}
+
+:scope ~ __foo {
+	order: 113;
+}
+
+__foo>:scope {
+	order: 114;
+}
+
+:scope>__foo {
+	order: 115;
+}
+
+__foo > :scope {
+	order: 116;
+}
+
+:scope > __foo {
+	order: 117;
+}
+
+__foo, :scope {
+	order: 118;
+}
+
+:scope, __foo {
+	order: 119;
+}
+
+:--foo:scope {
+	order: 120;
+}
+
+:scope:--foo {
+	order: 121;
+}
+
+:--foo :scope {
+	order: 122;
+}
+
+:scope :--foo {
+	order: 123;
+}
+
+:--foo  :scope {
+	order: 124;
+}
+
+:scope  :--foo {
+	order: 125;
+}
+
+:--foo+:scope {
+	order: 126;
+}
+
+:scope+:--foo {
+	order: 127;
+}
+
+:--foo + :scope {
+	order: 128;
+}
+
+:scope + :--foo {
+	order: 129;
+}
+
+:--foo~:scope {
+	order: 130;
+}
+
+:scope~:--foo {
+	order: 131;
+}
+
+:--foo ~ :scope {
+	order: 132;
+}
+
+:scope ~ :--foo {
+	order: 133;
+}
+
+:--foo>:scope {
+	order: 134;
+}
+
+:scope>:--foo {
+	order: 135;
+}
+
+:--foo > :scope {
+	order: 136;
+}
+
+:scope > :--foo {
+	order: 137;
+}
+
+:--foo, :scope {
+	order: 138;
+}
+
+:scope, :--foo {
+	order: 139;
+}
+
+[foo="baz"]:scope {
+	order: 140;
+}
+
+:scope[foo="baz"] {
+	order: 141;
+}
+
+[foo="baz"] :scope {
+	order: 142;
+}
+
+:scope [foo="baz"] {
+	order: 143;
+}
+
+[foo="baz"]  :scope {
+	order: 144;
+}
+
+:scope  [foo="baz"] {
+	order: 145;
+}
+
+[foo="baz"]+:scope {
+	order: 146;
+}
+
+:scope+[foo="baz"] {
+	order: 147;
+}
+
+[foo="baz"] + :scope {
+	order: 148;
+}
+
+:scope + [foo="baz"] {
+	order: 149;
+}
+
+[foo="baz"]~:scope {
+	order: 150;
+}
+
+:scope~[foo="baz"] {
+	order: 151;
+}
+
+[foo="baz"] ~ :scope {
+	order: 152;
+}
+
+:scope ~ [foo="baz"] {
+	order: 153;
+}
+
+[foo="baz"]>:scope {
+	order: 154;
+}
+
+:scope>[foo="baz"] {
+	order: 155;
+}
+
+[foo="baz"] > :scope {
+	order: 156;
+}
+
+:scope > [foo="baz"] {
+	order: 157;
+}
+
+[foo="baz"], :scope {
+	order: 158;
+}
+
+:scope, [foo="baz"] {
+	order: 159;
+}
+
+*:scope {
+	order: 160;
+}
+
+:scope* {
+	order: 161;
+}
+
+* :scope {
+	order: 162;
+}
+
+:scope * {
+	order: 163;
+}
+
+*  :scope {
+	order: 164;
+}
+
+:scope  * {
+	order: 165;
+}
+
+*+:scope {
+	order: 166;
+}
+
+:scope+* {
+	order: 167;
+}
+
+* + :scope {
+	order: 168;
+}
+
+:scope + * {
+	order: 169;
+}
+
+*~:scope {
+	order: 170;
+}
+
+:scope~* {
+	order: 171;
+}
+
+* ~ :scope {
+	order: 172;
+}
+
+:scope ~ * {
+	order: 173;
+}
+
+*>:scope {
+	order: 174;
+}
+
+:scope>* {
+	order: 175;
+}
+
+* > :scope {
+	order: 176;
+}
+
+:scope > * {
+	order: 177;
+}
+
+*, :scope {
+	order: 178;
+}
+
+:scope, * {
+	order: 179;
+}
+
+:hover:scope {
+	order: 180;
+}
+
+:scope:hover {
+	order: 181;
+}
+
+:hover :scope {
+	order: 182;
+}
+
+:scope :hover {
+	order: 183;
+}
+
+:hover  :scope {
+	order: 184;
+}
+
+:scope  :hover {
+	order: 185;
+}
+
+:hover+:scope {
+	order: 186;
+}
+
+:scope+:hover {
+	order: 187;
+}
+
+:hover + :scope {
+	order: 188;
+}
+
+:scope + :hover {
+	order: 189;
+}
+
+:hover~:scope {
+	order: 190;
+}
+
+:scope~:hover {
+	order: 191;
+}
+
+:hover ~ :scope {
+	order: 192;
+}
+
+:scope ~ :hover {
+	order: 193;
+}
+
+:hover>:scope {
+	order: 194;
+}
+
+:scope>:hover {
+	order: 195;
+}
+
+:hover > :scope {
+	order: 196;
+}
+
+:scope > :hover {
+	order: 197;
+}
+
+:hover, :scope {
+	order: 198;
+}
+
+:scope, :hover {
+	order: 199;
+}
+
+::before:scope {
+	order: 200;
+}
+
+:scope::before {
+	order: 201;
+}
+
+::before :scope {
+	order: 202;
+}
+
+:scope ::before {
+	order: 203;
+}
+
+::before  :scope {
+	order: 204;
+}
+
+:scope  ::before {
+	order: 205;
+}
+
+::before+:scope {
+	order: 206;
+}
+
+:scope+::before {
+	order: 207;
+}
+
+::before + :scope {
+	order: 208;
+}
+
+:scope + ::before {
+	order: 209;
+}
+
+::before~:scope {
+	order: 210;
+}
+
+:scope~::before {
+	order: 211;
+}
+
+::before ~ :scope {
+	order: 212;
+}
+
+:scope ~ ::before {
+	order: 213;
+}
+
+::before>:scope {
+	order: 214;
+}
+
+:scope>::before {
+	order: 215;
+}
+
+::before > :scope {
+	order: 216;
+}
+
+:scope > ::before {
+	order: 217;
+}
+
+::before, :scope {
+	order: 218;
+}
+
+:scope, ::before {
+	order: 219;
+}
+
+foo[:scope] {
+	order: 220;
+}
+
+foo[baz=":scope"] {
+	order: 221;
+}
+
+:not(:scope) {
+	order: 222;
+}
+
+::scope {
+	order: 223;
+}
+
+:--:scope {
+	order: 224;
+}
+
+__:scope {
+	order: 225;
+}
+
+/* :scope */

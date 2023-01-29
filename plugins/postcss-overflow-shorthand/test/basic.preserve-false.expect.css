@@ -6,3 +6,17 @@ html.double-overflow {
 	overflow-x: hidden;
 	overflow-y: auto;
 }
+
+html.double-overflow {
+	overflow: auto;
+}
+
+html.double-overflow {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+html.double-overflow {
+	overflow-x: hidden;
+	overflow-y: auto;
+}

@@ -1,0 +1,41 @@
+@media screen {
+	@custom-selector :--a .a.media;
+}
+
+:is(.a) {
+	order: 1;
+}
+
+@supports (display: grid) {
+	@custom-selector :--b .b.supports;
+}
+
+:is(.b) {
+	order: 2;
+}
+
+@media screen {
+	@container (min-width: 500px) {
+		@custom-selector : --c .c.container.screen;
+	}
+}
+
+:is(.c.container) {
+	order: 3;
+}
+
+@media screen {
+	@scope (.foo) to (.bar) {
+		@custom-selector : --d .d.scope.screen;
+	}
+}
+
+@scope (.foo) to (.bar) {
+	@media screen {
+		@custom-selector : --d .d.screen.scope;
+	}
+}
+
+:is(.d.scope) {
+	order: 4;
+}

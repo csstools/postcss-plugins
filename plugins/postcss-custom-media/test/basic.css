@@ -10,31 +10,31 @@
 
 @media (--mq-b) {
 	body {
-		order: 1;
+		order: 2;
 	}
 }
 
 @media (--mq-a), (--mq-a) {
 	body {
-		order: 1;
+		order: 3;
 	}
 }
 
 @media not all and (--mq-a) {
 	body {
-		order: 2;
+		order: 4;
 	}
 }
 
 @media (--not-mq-a) {
 	body {
-		order: 1;
+		order: 5;
 	}
 }
 
 @media not all and (--not-mq-a) {
 	body {
-		order: 2;
+		order: 6;
 	}
 }
 
@@ -43,19 +43,19 @@
 
 @media (--circular-mq-a) {
 	body {
-		order: 3;
+		order: 7;
 	}
 }
 
 @media (--circular-mq-b) {
 	body {
-		order: 4;
+		order: 8;
 	}
 }
 
 @media (--unresolved-mq) {
 	body {
-		order: 5;
+		order: 9;
 	}
 }
 
@@ -64,7 +64,7 @@
 
 @media (--min) and (--max) {
 	body {
-		order: 6;
+		order: 10;
 	}
 }
 
@@ -72,13 +72,13 @@
 
 @media (--concat) {
 	body {
-		order: 7;
+		order: 11;
 	}
 }
 
 @media (--concat) and (min-aspect-ratio: 16/9) {
 	body {
-		order: 8;
+		order: 12;
 	}
 }
 

@@ -1,5 +1,51 @@
 # Changes to CSS Has Pseudo
 
+### 5.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 5.0.0 (January 24, 2023)
+
+- Updated: Support for Node v14+ (major).
+- Fix: Do not throw when a selector is invalid, show a warning instead.
+- Fix: make `:has()` unforgiving. `:has(.foo, :some-invalid-selector)` will no longer match elements that have children with `.foo`.
+
+### 4.0.2 (December 12, 2022)
+
+ - Fix: correctly cleanup style rules when a browser has native support. [backported](https://github.com/csstools/postcss-plugins/pull/752)
+
+### 4.0.1 (August 23, 2022)
+
+- Fix: assign global browser polyfill to `window`, `self` or a blank object.
+
+### 4.0.0 (July 8, 2022)
+
+[Read the full changelog](https://github.com/csstools/postcss-plugins/wiki/PostCSS-Preset-Env-8)
+
+- Breaking: removed old CDN urls
+- Added: 'hover' options for browser polyfill
+- Added: 'observedAttributes' options for browser polyfill
+- Added: 'forcePolyfill' options for browser polyfill
+- Added: Rules within `@supports selector(:has(something))` won't be transformed.
+- Fix: Use base36 encoding to support all possible selectors.
+- Fix: case insensitive matching.
+
+#### How to migrate :
+
+##### Re-build your CSS with the new version of the library.
+
+##### If you use a CDN url, please update it.
+
+```diff
+- <script src="https://unpkg.com/css-has-pseudo/browser"></script>
++ <script src="https://unpkg.com/css-has-pseudo/dist/browser-global.js"></script>
+```
+
+```diff
+- <script src="https://unpkg.com/css-has-pseudo/browser.min"></script>
++ <script src="https://unpkg.com/css-has-pseudo/dist/browser-global.js"></script>
+```
+
 ### 3.0.4 (February 5, 2022)
 
 - Rebuild of browser polyfills

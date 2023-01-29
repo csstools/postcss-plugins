@@ -1,13 +1,37 @@
 test {
 	display: grid;
-	order: 1;
 	grid-gap: 20px;
 	gap: 20px;
-	order: 2;
+	order: 1;
+}
+
+test {
+	display: grid;
 	grid-column-gap: 20px;
 	column-gap: 20px;
-	order: 3;
+	order: 2;
+}
+
+test {
+	display: grid;
 	grid-row-gap: 20px;
 	row-gap: 20px;
+	order: 3;
+}
+
+manual-fallback {
+	display: grid;
+	grid-gap: var(--fallback);
+	gap: var(--main-value);
 	order: 4;
+}
+
+.nested {
+	display: grid;
+	grid-column-gap:  0.5;
+	column-gap:  0.5;
+
+	& .descendant {
+		max-width: 100%;
+	}
 }

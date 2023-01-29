@@ -1,0 +1,36 @@
+@layer extensions, components;
+@layer extensions.one,,invalid-layer-names..foo;
+
+@layer extensions {
+	@layer one, two
+}
+
+@media (min-width:320px) and (debug-layer: extensions) {
+	p {
+		color: yellow;
+	}
+}
+
+@media (min-width:768px) and (debug-layer: components) {
+	p {
+		color: green;
+	}
+}
+
+@media (min-width:1280px) and (debug-layer: unlayered) {
+	p {
+		color: blue;
+	}
+}
+
+@media (prefers-color-scheme: dark) and (debug-layer: layouts) {
+	p {
+		color: pink;
+	}
+}
+
+@media (prefers-color-scheme: light) and (debug-layer: extensions-two) {
+	p {
+		color: red;
+	}
+}

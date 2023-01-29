@@ -1,0 +1,199 @@
+[
+	{
+		"type": "comment",
+		"tokens": [
+			[
+				"comment",
+				"/* comment 1 */",
+				0,
+				14,
+				null
+			]
+		]
+	},
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			15,
+			15,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				15,
+				15,
+				null
+			],
+			[
+				"comment",
+				"/* comment 2 */",
+				16,
+				30,
+				null
+			],
+			[
+				"ident-token",
+				"min-width",
+				31,
+				39,
+				{
+					"value": "min-width"
+				}
+			],
+			[
+				"comment",
+				"/* comment 3 */",
+				40,
+				54,
+				null
+			],
+			[
+				"colon-token",
+				":",
+				55,
+				55,
+				null
+			],
+			[
+				"comment",
+				"/* comment 4 */",
+				56,
+				70,
+				null
+			],
+			[
+				"dimension-token",
+				"300px",
+				71,
+				75,
+				{
+					"value": 300,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				"comment",
+				"/* comment 5 */",
+				76,
+				90,
+				null
+			],
+			[
+				")-token",
+				")",
+				91,
+				91,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "comment",
+				"tokens": [
+					[
+						"comment",
+						"/* comment 2 */",
+						16,
+						30,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"ident-token",
+						"min-width",
+						31,
+						39,
+						{
+							"value": "min-width"
+						}
+					]
+				]
+			},
+			{
+				"type": "comment",
+				"tokens": [
+					[
+						"comment",
+						"/* comment 3 */",
+						40,
+						54,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"colon-token",
+						":",
+						55,
+						55,
+						null
+					]
+				]
+			},
+			{
+				"type": "comment",
+				"tokens": [
+					[
+						"comment",
+						"/* comment 4 */",
+						56,
+						70,
+						null
+					]
+				]
+			},
+			{
+				"type": "token",
+				"tokens": [
+					[
+						"dimension-token",
+						"300px",
+						71,
+						75,
+						{
+							"value": 300,
+							"type": "integer",
+							"unit": "px"
+						}
+					]
+				]
+			},
+			{
+				"type": "comment",
+				"tokens": [
+					[
+						"comment",
+						"/* comment 5 */",
+						76,
+						90,
+						null
+					]
+				]
+			}
+		]
+	},
+	{
+		"type": "comment",
+		"tokens": [
+			[
+				"comment",
+				"/* comment 6 */",
+				92,
+				106,
+				null
+			]
+		]
+	}
+]

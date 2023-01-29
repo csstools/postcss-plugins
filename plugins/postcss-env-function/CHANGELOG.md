@@ -1,5 +1,13 @@
 # Changes to PostCSS Environment Variables
 
+### 5.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 5.0.0 (January 24, 2023)
+
+- Updated: Support for Node v14+ (major).
+
 ### 4.0.6 (March 19, 2022)
 
 - Add deprecation notice for `postcss-env-function`

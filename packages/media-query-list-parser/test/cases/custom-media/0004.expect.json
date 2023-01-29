@@ -1,0 +1,43 @@
+{
+	"type": "custom-media",
+	"string": "--foo f\\61 LSE",
+	"nameValue": "--foo",
+	"name": [
+		[
+			"ident-token",
+			"--foo",
+			0,
+			4,
+			{
+				"value": "--foo"
+			}
+		]
+	],
+	"hasFalseKeyword": true,
+	"hasTrueKeyword": false,
+	"trueOrFalseKeyword": [
+		[
+			"whitespace-token",
+			" ",
+			5,
+			5,
+			null
+		],
+		[
+			"ident-token",
+			"f\\61 LSE",
+			6,
+			13,
+			{
+				"value": "faLSE"
+			}
+		],
+		[
+			"EOF-token",
+			"",
+			-1,
+			-1,
+			null
+		]
+	]
+}

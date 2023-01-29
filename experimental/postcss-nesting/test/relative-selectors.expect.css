@@ -1,0 +1,49 @@
+
+	:is(.foo) .bar {
+		order: 1;
+	}
+
+
+:is(.foo)> .bar {
+		order: 2;
+	}
+
+
+:is(.foo)+ .bar {
+		order: 3;
+	}
+
+
+:is(.foo)~ .bar {
+		order: 4;
+	}
+
+
+:is(.foo) ::before {
+		order: 5;
+	}
+
+
+:is(.foo) .bar, :is(.foo) .other {
+		order: 11;
+	}
+
+
+:is(.foo)>.bar, :is(.foo) .other {
+		order: 12;
+	}
+
+
+:is(.foo)+.bar, :is(.foo) .other {
+		order: 13;
+	}
+
+
+:is(.foo)~.bar, :is(.foo) .other {
+		order: 14;
+	}
+
+
+:is(.foo) ::before, :is(.foo) .other {
+		order: 15;
+	}

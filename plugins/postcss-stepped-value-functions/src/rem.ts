@@ -1,7 +1,7 @@
 import type { Declaration, Result } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { functionNodeToWordNode, validateArgumentsAndTypes } from './utils';
-import { pluginOptions } from './index';
+import type { pluginOptions } from './options';
 
 const remFunctionCheck = 'rem(';
 
@@ -13,7 +13,7 @@ function transformRemFunction(
 	const parsedValue = valueParser(decl.value);
 
 	parsedValue.walk(node => {
-		if (node.type !== 'function' || node.value !== 'rem') {
+		if (node.type !== 'function' || node.value.toLowerCase() !== 'rem') {
 			return;
 		}
 
@@ -37,7 +37,7 @@ function transformRemFunction(
 
 		const transformedNode = functionNodeToWordNode(node);
 		transformedNode.value = remainder === 0 ? '0' : `${remainder}${valueA.unit}`;
-	});
+	}, true);
 
 	return parsedValue.toString();
 }

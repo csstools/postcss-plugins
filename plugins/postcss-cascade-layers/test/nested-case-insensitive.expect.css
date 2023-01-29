@@ -1,0 +1,55 @@
+
+	@KEYFRAMES slide-left {
+		from {
+			margin-left: 0;
+		}
+
+		to {
+			margin-left: -100%;
+		}
+	}
+
+	target {
+			color: yellow;
+		}
+
+target:not(#\#) {
+		color: red;
+	}
+
+p:not(#\#) {
+		color: blue;
+	}
+
+i:not(#\#) {
+		color: red;
+	}
+
+target:not(#\#):not(#\#):not(#\#) {
+			color: yellow;
+		}
+
+target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+			color: yellow;
+		}
+
+@mediA (prefers-color-scheme: dark) {
+		h1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+			color: red;
+			background: black;
+		}
+	}
+
+@mediA (prefers-color-scheme: dark) {
+			target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+				color: lime;
+			}
+	}
+
+target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+			color: yellow;
+		}
+
+target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+		color: red;
+	}

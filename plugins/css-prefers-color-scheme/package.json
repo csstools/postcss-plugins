@@ -1,23 +1,36 @@
 {
 	"name": "css-prefers-color-scheme",
 	"description": "Use light and dark color schemes in all browsers",
-	"version": "6.0.3",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"version": "8.0.1",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		},
+		{
+			"name": "Jonathan Neal",
+			"email": "jonathantneal@hotmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
 		"url": "https://opencollective.com/csstools"
 	},
 	"engines": {
-		"node": "^12 || ^14 || >=16"
+		"node": "^14 || ^16 || >=18"
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
-	"bin": {
-		"css-prefers-color-scheme": "dist/cli.cjs"
-	},
+	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
+			"types": "./dist/index.d.ts",
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.cjs",
 			"default": "./dist/index.mjs"
@@ -35,23 +48,25 @@
 		"CHANGELOG.md",
 		"LICENSE.md",
 		"README.md",
-		"browser.js",
-		"browser.min.js",
 		"dist"
 	],
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
+	"devDependencies": {
+		"puppeteer": "^19.5.2"
+	},
 	"scripts": {
-		"build": "rollup -c ../../rollup/default.js && npm run copy-browser-scripts-to-old-location",
-		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
-		"copy-browser-scripts-to-old-location": "node -e \"fs.copyFileSync('./dist/browser-global.js', './browser.js'); fs.copyFileSync('./dist/browser-global.js', './browser.min.js')\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"prebuild": "npm run clean",
+		"build": "rollup -c ../../rollup/default.mjs",
+		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');\"",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run clean && npm run build && npm run test",
 		"test": "node .tape.mjs && npm run test:exports",
+		"test:browser": "node ./test/_browser.mjs",
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
@@ -79,8 +94,10 @@
 		"scheme"
 	],
 	"csstools": {
+		"cssdbId": "prefers-color-scheme-query",
 		"exportName": "prefersColorScheme",
-		"humanReadableName": "Prefers Color Scheme"
+		"humanReadableName": "Prefers Color Scheme",
+		"specUrl": "https://www.w3.org/TR/mediaqueries-5/#prefers-color-scheme"
 	},
 	"volta": {
 		"extends": "../../package.json"

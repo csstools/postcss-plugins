@@ -11,51 +11,62 @@ const keywords = [
 	'svg',
 ];
 
-const creator: PluginCreator<{ preserve: boolean }> = (opts?: { preserve: boolean }) => {
+/** postcss-font-format-keywords plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
+
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
 
 	return {
 		postcssPlugin: 'postcss-font-format-keywords',
-		AtRule: {
-			'font-face'(atRule) {
-				if (atRule.name !== 'font-face') {
-					// Case sensitive
+		AtRule(atRule) {
+			if (atRule.name.toLowerCase() !== 'font-face') {
+				return;
+			}
+
+			atRule.walkDecls(decl => {
+				if (decl.prop.toLowerCase() !== 'src') {
 					return;
 				}
 
-				atRule.walkDecls('src', decl => {
-					if (!decl.value.includes('format(')) {
-						// No point in doing parsing if no format is specified
+				if (!decl.value.toLowerCase().includes('format(')) {
+					// No point in doing parsing if no format is specified
+					return;
+				}
+
+				const value = valueParser(decl.value);
+
+				value.walk((node) => {
+					if (node.type !== 'function' || node.value.toLowerCase() !== 'format') {
 						return;
 					}
 
-					const value = valueParser(decl.value);
-
-					value.walk((node) => {
-						if (node.type !== 'function' || node.value !== 'format') {
+					node.nodes.forEach((child) => {
+						if (child.type !== 'word' || !keywords.includes(child.value.toLowerCase())) {
 							return;
 						}
 
-						node.nodes.forEach((child) => {
-							if (child.type !== 'word' || !keywords.includes(child.value)) {
-								return;
-							}
-
-							child.value = valueParser.stringify({
-								type: 'string',
-								value: child.value,
-								quote: '"',
-							} as StringNode);
-						});
+						child.value = valueParser.stringify({
+							type: 'string',
+							value: child.value,
+							quote: '"',
+						} as StringNode);
 					});
-
-					if (preserve) {
-						decl.cloneBefore({ value: value.toString() });
-					} else {
-						decl.value = value.toString();
-					}
 				});
-			},
+
+				if (value.toString() === decl.value) {
+					return;
+				}
+
+				decl.cloneBefore({ value: value.toString() });
+
+				if (!preserve) {
+					decl.remove();
+				}
+			});
 		},
 	};
 };

@@ -1,0 +1,296 @@
+[
+	{
+		"type": "simple-block",
+		"startToken": [
+			"(-token",
+			"(",
+			0,
+			0,
+			null
+		],
+		"tokens": [
+			[
+				"(-token",
+				"(",
+				0,
+				0,
+				null
+			],
+			[
+				"(-token",
+				"(",
+				1,
+				1,
+				null
+			],
+			[
+				"function-token",
+				"calc(",
+				2,
+				6,
+				{
+					"value": "calc"
+				}
+			],
+			[
+				"dimension-token",
+				"10px",
+				7,
+				10,
+				{
+					"value": 10,
+					"type": "integer",
+					"unit": "px"
+				}
+			],
+			[
+				")-token",
+				")",
+				11,
+				11,
+				null
+			],
+			[
+				"comment",
+				"/* a comment */",
+				12,
+				26,
+				null
+			],
+			[
+				")-token",
+				")",
+				27,
+				27,
+				null
+			],
+			[
+				"whitespace-token",
+				" ",
+				28,
+				28,
+				null
+			],
+			[
+				"(-token",
+				"(",
+				29,
+				29,
+				null
+			],
+			[
+				"ident-token",
+				"other",
+				30,
+				34,
+				{
+					"value": "other"
+				}
+			],
+			[
+				")-token",
+				")",
+				35,
+				35,
+				null
+			],
+			[
+				")-token",
+				")",
+				36,
+				36,
+				null
+			]
+		],
+		"value": [
+			{
+				"type": "simple-block",
+				"startToken": [
+					"(-token",
+					"(",
+					1,
+					1,
+					null
+				],
+				"tokens": [
+					[
+						"(-token",
+						"(",
+						1,
+						1,
+						null
+					],
+					[
+						"function-token",
+						"calc(",
+						2,
+						6,
+						{
+							"value": "calc"
+						}
+					],
+					[
+						"dimension-token",
+						"10px",
+						7,
+						10,
+						{
+							"value": 10,
+							"type": "integer",
+							"unit": "px"
+						}
+					],
+					[
+						")-token",
+						")",
+						11,
+						11,
+						null
+					],
+					[
+						"comment",
+						"/* a comment */",
+						12,
+						26,
+						null
+					],
+					[
+						")-token",
+						")",
+						27,
+						27,
+						null
+					]
+				],
+				"value": [
+					{
+						"type": "function",
+						"name": "calc",
+						"tokens": [
+							[
+								"function-token",
+								"calc(",
+								2,
+								6,
+								{
+									"value": "calc"
+								}
+							],
+							[
+								"dimension-token",
+								"10px",
+								7,
+								10,
+								{
+									"value": 10,
+									"type": "integer",
+									"unit": "px"
+								}
+							],
+							[
+								")-token",
+								")",
+								11,
+								11,
+								null
+							]
+						],
+						"value": [
+							{
+								"type": "token",
+								"tokens": [
+									[
+										"dimension-token",
+										"10px",
+										7,
+										10,
+										{
+											"value": 10,
+											"type": "integer",
+											"unit": "px"
+										}
+									]
+								]
+							}
+						]
+					},
+					{
+						"type": "comment",
+						"tokens": [
+							[
+								"comment",
+								"/* a comment */",
+								12,
+								26,
+								null
+							]
+						]
+					}
+				]
+			},
+			{
+				"type": "whitespace",
+				"tokens": [
+					[
+						"whitespace-token",
+						" ",
+						28,
+						28,
+						null
+					]
+				]
+			},
+			{
+				"type": "simple-block",
+				"startToken": [
+					"(-token",
+					"(",
+					29,
+					29,
+					null
+				],
+				"tokens": [
+					[
+						"(-token",
+						"(",
+						29,
+						29,
+						null
+					],
+					[
+						"ident-token",
+						"other",
+						30,
+						34,
+						{
+							"value": "other"
+						}
+					],
+					[
+						")-token",
+						")",
+						35,
+						35,
+						null
+					]
+				],
+				"value": [
+					{
+						"type": "token",
+						"tokens": [
+							[
+								"ident-token",
+								"other",
+								30,
+								34,
+								{
+									"value": "other"
+								}
+							]
+						]
+					}
+				]
+			}
+		]
+	}
+]

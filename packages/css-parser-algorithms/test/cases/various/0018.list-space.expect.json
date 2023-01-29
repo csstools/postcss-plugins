@@ -1,0 +1,46 @@
+[
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"dimension-token",
+				"10px",
+				0,
+				3,
+				{
+					"value": 10,
+					"type": "integer",
+					"unit": "px"
+				}
+			]
+		]
+	},
+	{
+		"type": "whitespace",
+		"tokens": [
+			[
+				"whitespace-token",
+				" ",
+				4,
+				4,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"dimension-token",
+				"15px",
+				5,
+				8,
+				{
+					"value": 15,
+					"type": "integer",
+					"unit": "px"
+				}
+			]
+		]
+	}
+]

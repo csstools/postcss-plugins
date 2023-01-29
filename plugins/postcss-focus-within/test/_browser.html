@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="help" href="https://www.w3.org/TR/selectors-4/#the-focus-within-pseudo">
+	<link rel="stylesheet" href="/test/browser.expect.css">
+	<script src="/dist/browser-global.js"></script>
+	<script>self._focusWithinInit = focusWithinInit</script>
+	<script>self._focusWithinInit()</script>
+</head>
+<body>
+	<div id="a-grand-parent">
+		<input type="text" id="a-grand-parent-input">
+
+		<div id="a-parent">
+			<input type="text" id="a-parent-input">
+
+			<div id="a-child">
+				<input type="text" id="a-child-input">
+			</div>
+		</div>
+	</div>
+
+	<script type="module">
+		const purple = 'rgb(128, 0, 128)';
+		const green = 'rgb(0, 128, 0)';
+
+		self.checkElement = async function checkElement(testName, element, shouldBeStyled) {
+			const el = document.getElementById(element);
+			const bg = getComputedStyle(el).backgroundColor;
+			const matchingColor = el.tagName === 'INPUT' ? green : purple;
+
+			if (shouldBeStyled && bg !== matchingColor) {
+				throw new Error(`${testName}: ${element} should be styled`);
+			} else if (!shouldBeStyled && bg === matchingColor) {
+				throw new Error(`${testName}: ${element} should not be styled`);
+			}
+
+			return true;
+		};
+	</script>
+</body>
+</html>

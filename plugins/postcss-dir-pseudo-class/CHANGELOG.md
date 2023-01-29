@@ -1,5 +1,18 @@
 # Changes to PostCSS Dir Pseudo Class
 
+### 7.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
+
+### 7.0.0 (January 24, 2023)
+
+- Updated: Support for Node v14+ (major).
+- Added: TypeScript support.
+
+### 6.0.5 (July 8, 2022)
+
+- Fix case insensitive matching.
+
 ### 6.0.4 (February 5, 2022)
 
 - Improved `es module` and `commonjs` compatibility

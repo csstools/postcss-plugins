@@ -1,21 +1,25 @@
-:blank {
+[blank].js-blank-pseudo, .js-blank-pseudo [blank] {
 	order: 1;
 }
 
-.focus-visible {
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
 	order: 2;
 }
 
-[focus-within] {
+[focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 3;
 }
 
-[\:has\(.a\)] {
+.js-has-pseudo [csstools-has-1m-2w-2p-37-14-1a-2p-15] {
 	order: 4;
 }
 
-@media (prefers-color-scheme: light) {
+@media (color: 70318723) {
 	.b {
 		order: 5;
 	}
+}
+
+.js-has-pseudo [csstools-has-1m-2w-2p-37-14-1a-2u-33-33-w-1q-w-1m-37-2r-33-34-2t-w-17-w-1a-2q-2p-36-15]:not(.does-not-exist):not(.does-not-exist) {
+	content: ":scope in :has";
 }

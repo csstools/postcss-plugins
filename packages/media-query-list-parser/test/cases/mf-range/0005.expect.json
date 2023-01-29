@@ -1,0 +1,144 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(width = 50px)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-range-name-value",
+						"name": {
+							"type": "mf-name",
+							"name": "width",
+							"tokens": [
+								[
+									"ident-token",
+									"width",
+									1,
+									5,
+									{
+										"value": "width"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									6,
+									6,
+									null
+								]
+							]
+						},
+						"value": {
+							"type": "mf-value",
+							"value": {
+								"type": "token",
+								"tokens": [
+									[
+										"dimension-token",
+										"50px",
+										9,
+										12,
+										{
+											"value": 50,
+											"type": "integer",
+											"unit": "px"
+										}
+									]
+								]
+							},
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									8,
+									8,
+									null
+								],
+								[
+									"dimension-token",
+									"50px",
+									9,
+									12,
+									{
+										"value": 50,
+										"type": "integer",
+										"unit": "px"
+									}
+								]
+							]
+						},
+						"tokens": [
+							[
+								"ident-token",
+								"width",
+								1,
+								5,
+								{
+									"value": "width"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								6,
+								6,
+								null
+							],
+							[
+								"delim-token",
+								"=",
+								7,
+								7,
+								{
+									"value": "="
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								8,
+								8,
+								null
+							],
+							[
+								"dimension-token",
+								"50px",
+								9,
+								12,
+								{
+									"value": 50,
+									"type": "integer",
+									"unit": "px"
+								}
+							]
+						]
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							13,
+							13,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

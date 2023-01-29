@@ -1,5 +1,6 @@
 /* [postcss-cascade-layers]: To use the @import at-rule with layer, the postcss-import plugin is also required. This plugin alone will not support importing layers. */
-@import 'imports/theme.css' layer(utilities);
+@import 'imports/theme.css' layer(theme);
+@import 'imports/theme-overrides.css' layer;
 
 /* [postcss-cascade-layers]: handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions. */
 @layer {

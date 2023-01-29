@@ -431,6 +431,10 @@
 	color: inherit !important;
 }
 
+.mixed-case {
+	cOlOr: inherit;
+}
+
 .all {
 	all: unset;
 }

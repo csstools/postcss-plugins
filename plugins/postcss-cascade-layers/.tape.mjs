@@ -9,8 +9,17 @@ postcssTape(plugin)({
 	atrules: {
 		message: "supports @keyframes usage",
 	},
+	'container-scope--reference': {
+		message: "Layered styles without @container or @scope but with the same layers and layer order as the @container/@scope test",
+	},
+	'container-scope': {
+		message: "Layered styles with @container or @scope, these at rules are expected not to have any effect on the final order or specificity",
+	},
 	nested: {
 		message: "supports nested layer usage",
+	},
+	'nested-case-insensitive': {
+		message: "supports layer and other keywords written in any case",
 	},
 	'nested-complex': {
 		message: "supports nested layer usage",
@@ -21,8 +30,14 @@ postcssTape(plugin)({
 	'anon-layer': {
 		message: "supports anonymous layer usage",
 	},
-	'examples/example': {
-		message: "minimal example",
+	'invalid-nested-css': {
+		message: "ignores nested css",
+	},
+	'extensions': {
+		message: "css custom extensions",
+	},
+	'pre-defined-order-for-nested-layer': {
+		message: 'supports pre-defined orders for nested layers'
 	},
 	'unlayered-styles': {
 		message: 'supports unlayered styles alongside layers',
@@ -37,7 +52,7 @@ postcssTape(plugin)({
 			onConditionalRulesChangingLayerOrder: 'warn',
 			onImportLayerRule: 'warn'
 		},
-		warnings: 3,
+		warnings: 4,
 	},
 	'warnings:with-postcss-import': {
 		message: 'correctly handles warnings when postcss-import is used',
@@ -48,14 +63,24 @@ postcssTape(plugin)({
 		},
 		warnings: 2,
 		plugins: [
-			postcssImport(), /* postcss-import must run first */
+			postcssImport({
+				nameLayer: (index) => {
+					return `anon-layer-import--${index}`;
+				}
+			}), /* postcss-import must run first */
 			plugin(),
 		]
+	},
+	'where': {
+		message: "works with zero specificity selectors",
 	},
 	'specificity-buckets-a': {
 		message: "creates non overlapping specificity buckets",
 	},
 	'specificity-buckets-b': {
 		message: "creates non overlapping specificity buckets",
+	},
+	'examples/example': {
+		message: "minimal example",
 	},
 });

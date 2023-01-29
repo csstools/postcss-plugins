@@ -4,7 +4,8 @@ export default [
 	'custom-properties',
 	'environment-variables', // run environment-variables here to access transpiled custom media params and properties
 	'image-set-function', // run images-set-function before nesting-rules so that it may fix nested media
-	'media-query-ranges', // run media-query-range and
+	'media-query-ranges', // run media-query-range
+	'media-queries-aspect-ratio-number-values',
 	'prefers-color-scheme-query', // run prefers-color-scheme-query here to prevent duplicate transpilation after nesting-rules
 	'nesting-rules',
 	'custom-selectors', // run custom-selectors after nesting-rules to correctly transpile &:--custom-selector
@@ -26,13 +27,14 @@ export default [
 	'break-properties',
 	'font-variant-property',
 	'is-pseudo-class', // after other selector transforms, before :has()
+	'scope-pseudo-class',
 	'has-pseudo-class',
 	'gap-properties',
 	'overflow-property',
 	'overflow-wrap-property',
 	'place-properties',
 	'system-ui-font-family',
-	'cascade-layers',
 	'stepped-value-functions',
 	'trigonometric-functions',
+	'cascade-layers',
 ];

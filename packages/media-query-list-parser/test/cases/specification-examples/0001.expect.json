@@ -1,0 +1,19 @@
+[
+	{
+		"type": "media-query-with-type",
+		"string": "screen",
+		"modifier": [],
+		"mediaType": [
+			[
+				"ident-token",
+				"screen",
+				0,
+				5,
+				{
+					"value": "screen"
+				}
+			]
+		],
+		"media": null
+	}
+]

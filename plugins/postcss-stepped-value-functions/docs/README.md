@@ -2,14 +2,16 @@
 <!-- <humanReadableName> PostCSS Your Plugin -->
 <!-- <exportName> postcssYourPlugin -->
 <!-- <packageName> @csstools/postcss-your-plugin -->
+<!-- <packageVersion> 1.0.0 -->
 <!-- <packagePath> plugins/postcss-your-plugin -->
 <!-- <cssdbId> your-feature -->
 <!-- <specUrl> https://www.w3.org/TR/css-color-4/#funcdef-color -->
 <!-- <example.css> file contents for examples/example.css -->
 <!-- <header> -->
 <!-- <usage> usage instructions -->
-<!-- <env-support> -->
-<!-- <link-list> -->
+<!-- <envSupport> -->
+<!-- <corsWarning> -->
+<!-- <linkList> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -26,7 +28,7 @@
 
 <usage>
 
-<env-support>
+<envSupport>
 
 ## ⚠️ About custom properties
 
@@ -69,9 +71,9 @@ is preserved. By default, it is not preserved.
 
 Will produce on the terminal:
 
-```bash
+```txt
 [postcss-stepped-value-functions]: Failed to transform mod(18px, 5rem) as the units don't match
 ```
 
-<link-list>
+<linkList>
 [CSS Values 4]: <specUrl>

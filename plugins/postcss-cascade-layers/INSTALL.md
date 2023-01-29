@@ -2,8 +2,16 @@
 
 [PostCSS Cascade Layers] runs in all Node environments, with special instructions for:
 
-| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
-| --- | --- | --- | --- | --- | --- |
+- [Node](#node)
+- [PostCSS CLI](#postcss-cli)
+- [PostCSS Load Config](#postcss-load-config)
+- [Webpack](#webpack)
+- [Next.js](#nextjs)
+- [Gulp](#gulp)
+- [Grunt](#grunt)
+
+⚠️ [PostCSS Cascade Layers] assumes to process your complete CSS bundle.<br>If your build tool processes files individually or in parallel the output will be incorrect.<br>Using [`postcss-import`](https://www.npmjs.com/package/postcss-import) and `@import` statements is one way to make sure your CSS is bundled before it is processed by this plugin.
+
 
 ## Node
 
@@ -16,8 +24,19 @@ npm install postcss @csstools/postcss-cascade-layers --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssCascadeLayers = require('@csstools/postcss-cascade-layers');
+
+postcss([
+	postcssCascadeLayers(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssCascadeLayers from '@csstools/postcss-cascade-layers';
 
 postcss([
 	postcssCascadeLayers(/* pluginOptions */)
@@ -43,6 +62,38 @@ module.exports = {
 	]
 }
 ```
+
+## PostCSS Load Config
+
+If your framework/CLI supports [`postcss-load-config`](https://github.com/postcss/postcss-load-config).
+
+```bash
+npm install @csstools/postcss-cascade-layers --save-dev
+```
+
+`package.json`:
+
+```json
+{
+	"postcss": {
+		"plugins": {
+			"@csstools/postcss-cascade-layers": {}
+		}
+	}
+}
+```
+
+`.postcssrc.json`:
+
+```json
+{
+	"plugins": {
+		"@csstools/postcss-cascade-layers": {}
+	}
+}
+```
+
+_See the [README of `postcss-load-config`](https://github.com/postcss/postcss-load-config#usage) for more usage options._
 
 ## Webpack
 
@@ -73,6 +124,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									["postcss-import"],
 									[
 										"@csstools/postcss-cascade-layers",
 										{
@@ -90,26 +142,35 @@ module.exports = {
 };
 ```
 
-## Create React App
+## Next.js
 
-Add [React App Rewired] and [React App Rewire PostCSS] to your project:
+Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss @csstools/postcss-cascade-layers --save-dev
+npm install @csstools/postcss-cascade-layers --save-dev
 ```
 
-Use [React App Rewire PostCSS] and [PostCSS Cascade Layers] in your
-`config-overrides.js` file:
+Use [PostCSS Cascade Layers] in your `postcss.config.json` file:
 
-```js
-const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssCascadeLayers = require('@csstools/postcss-cascade-layers');
-
-module.exports = config => reactAppRewirePostcss(config, {
-	plugins: () => [
-		postcssCascadeLayers(/* pluginOptions */)
+```json
+{
+	"plugins": [
+		"@csstools/postcss-cascade-layers"
 	]
-});
+}
+```
+
+```json5
+{
+	"plugins": [
+		[
+			"@csstools/postcss-cascade-layers",
+			{
+				// Optionally add plugin options
+			}
+		]
+	]
+}
 ```
 
 ## Gulp
@@ -172,5 +233,4 @@ grunt.initConfig({
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Cascade Layers]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers
-[React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
-[React App Rewired]: https://github.com/timarney/react-app-rewired
+[Next.js]: https://nextjs.org

@@ -1,13 +1,20 @@
-# Installing CSS Blank Pseudo
+# Installing PostCSS Blank Pseudo
 
-[CSS Blank Pseudo] runs in all Node environments, with special instructions for:
+[PostCSS Blank Pseudo] runs in all Node environments, with special instructions for:
 
-| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Create React App](#create-react-app) | [Gulp](#gulp) | [Grunt](#grunt) |
-| --- | --- | --- | --- | --- | --- |
+- [Node](#node)
+- [PostCSS CLI](#postcss-cli)
+- [PostCSS Load Config](#postcss-load-config)
+- [Webpack](#webpack)
+- [Next.js](#nextjs)
+- [Gulp](#gulp)
+- [Grunt](#grunt)
+
+
 
 ## Node
 
-Add [CSS Blank Pseudo] to your project:
+Add [PostCSS Blank Pseudo] to your project:
 
 ```bash
 npm install postcss css-blank-pseudo --save-dev
@@ -16,8 +23,19 @@ npm install postcss css-blank-pseudo --save-dev
 Use it as a [PostCSS] plugin:
 
 ```js
+// commonjs
 const postcss = require('postcss');
 const postcssBlankPseudo = require('css-blank-pseudo');
+
+postcss([
+	postcssBlankPseudo(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+```js
+// esm
+import postcss from 'postcss';
+import postcssBlankPseudo from 'css-blank-pseudo';
 
 postcss([
 	postcssBlankPseudo(/* pluginOptions */)
@@ -32,7 +50,7 @@ Add [PostCSS CLI] to your project:
 npm install postcss-cli css-blank-pseudo --save-dev
 ```
 
-Use [CSS Blank Pseudo] in your `postcss.config.js` configuration file:
+Use [PostCSS Blank Pseudo] in your `postcss.config.js` configuration file:
 
 ```js
 const postcssBlankPseudo = require('css-blank-pseudo');
@@ -44,6 +62,38 @@ module.exports = {
 }
 ```
 
+## PostCSS Load Config
+
+If your framework/CLI supports [`postcss-load-config`](https://github.com/postcss/postcss-load-config).
+
+```bash
+npm install css-blank-pseudo --save-dev
+```
+
+`package.json`:
+
+```json
+{
+	"postcss": {
+		"plugins": {
+			"css-blank-pseudo": {}
+		}
+	}
+}
+```
+
+`.postcssrc.json`:
+
+```json
+{
+	"plugins": {
+		"css-blank-pseudo": {}
+	}
+}
+```
+
+_See the [README of `postcss-load-config`](https://github.com/postcss/postcss-load-config#usage) for more usage options._
+
 ## Webpack
 
 _Webpack version 5_
@@ -54,7 +104,7 @@ Add [PostCSS Loader] to your project:
 npm install postcss-loader css-blank-pseudo --save-dev
 ```
 
-Use [CSS Blank Pseudo] in your Webpack configuration:
+Use [PostCSS Blank Pseudo] in your Webpack configuration:
 
 ```js
 module.exports = {
@@ -73,6 +123,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
+									// Other plugins,
 									[
 										"css-blank-pseudo",
 										{
@@ -90,26 +141,35 @@ module.exports = {
 };
 ```
 
-## Create React App
+## Next.js
 
-Add [React App Rewired] and [React App Rewire PostCSS] to your project:
+Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
 
 ```bash
-npm install react-app-rewired react-app-rewire-postcss css-blank-pseudo --save-dev
+npm install css-blank-pseudo --save-dev
 ```
 
-Use [React App Rewire PostCSS] and [CSS Blank Pseudo] in your
-`config-overrides.js` file:
+Use [PostCSS Blank Pseudo] in your `postcss.config.json` file:
 
-```js
-const reactAppRewirePostcss = require('react-app-rewire-postcss');
-const postcssBlankPseudo = require('css-blank-pseudo');
-
-module.exports = config => reactAppRewirePostcss(config, {
-	plugins: () => [
-		postcssBlankPseudo(/* pluginOptions */)
+```json
+{
+	"plugins": [
+		"css-blank-pseudo"
 	]
-});
+}
+```
+
+```json5
+{
+	"plugins": [
+		[
+			"css-blank-pseudo",
+			{
+				// Optionally add plugin options
+			}
+		]
+	]
+}
 ```
 
 ## Gulp
@@ -120,7 +180,7 @@ Add [Gulp PostCSS] to your project:
 npm install gulp-postcss css-blank-pseudo --save-dev
 ```
 
-Use [CSS Blank Pseudo] in your Gulpfile:
+Use [PostCSS Blank Pseudo] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
@@ -145,7 +205,7 @@ Add [Grunt PostCSS] to your project:
 npm install grunt-postcss css-blank-pseudo --save-dev
 ```
 
-Use [CSS Blank Pseudo] in your Gruntfile:
+Use [PostCSS Blank Pseudo] in your Gruntfile:
 
 ```js
 const postcssBlankPseudo = require('css-blank-pseudo');
@@ -171,6 +231,5 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[CSS Blank Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo
-[React App Rewire PostCSS]: https://github.com/csstools/react-app-rewire-postcss
-[React App Rewired]: https://github.com/timarney/react-app-rewired
+[PostCSS Blank Pseudo]: https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo
+[Next.js]: https://nextjs.org
