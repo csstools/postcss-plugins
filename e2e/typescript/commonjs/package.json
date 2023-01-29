@@ -8,7 +8,10 @@
 		"test": "node ./index.cjs"
 	},
 	"devDependencies": {
-		"@csstools/postcss-ic-unit": "^1.0.1",
+		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env",
 		"typescript": "^4.9.4"
+	},
+	"volta": {
+		"extends": "../../package.json"
 	}
 }

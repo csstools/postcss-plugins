@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-color-function",
 	"description": "Use the color() function in CSS",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
 	"funding": {
@@ -36,7 +36,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"postcss-lab-function": "^4.0.3"
+		"postcss-lab-function": "^5.0.0"
 	},
 	"scripts": {
 		"prebuild": "npm run clean",

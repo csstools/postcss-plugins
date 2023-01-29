@@ -1,5 +1,5 @@
 const assert = require('assert');
-const plugin = require('@csstools/postcss-ic-unit');
+const plugin = require('postcss-preset-env');
 plugin({preserve: true});
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

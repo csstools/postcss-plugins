@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased
+### 13.1.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
 

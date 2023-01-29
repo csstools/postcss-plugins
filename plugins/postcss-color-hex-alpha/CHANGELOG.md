@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Hex Alpha
 
-### Unreleased
+### 9.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
 
