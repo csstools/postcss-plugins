@@ -1,5 +1,8 @@
 /**
  * @description Calculate deltaE OK which is the simple root sum of squares
+ * @param {number[]} reference - Array of OKLab values: L as 0..1, a and b as -1..1
+ * @param {number[]} sample - Array of OKLab values: L as 0..1, a and b as -1..1
+ * @return {number} How different a color sample is from reference
  *
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *

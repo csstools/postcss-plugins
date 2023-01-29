@@ -13,18 +13,16 @@ function clip(_){return _.map((_=>_<0?0:_>1?1:_))}
  */function OKLCH_to_OKLab(_){return[_[0],_[1]*Math.cos(_[2]*Math.PI/180),_[1]*Math.sin(_[2]*Math.PI/180)]}
 /**
  * @description Calculate deltaE OK which is the simple root sum of squares
+ * @param {number[]} reference - Array of OKLab values: L as 0..1, a and b as -1..1
+ * @param {number[]} sample - Array of OKLab values: L as 0..1, a and b as -1..1
+ * @return {number} How different a color sample is from reference
  *
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/deltaEOK.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/deltaEOK.js
- */function deltaEOK(_,t){const[o,n,a]=_,[i,l,r]=t,u=o-i,s=n-l,L=a-r;return Math.sqrt(u**2+s**2+L**2)}
-/**
- * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
- * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/map-gamut.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- */function binarySearchGamut(_,t,o){let n=0,a=_[1];const i=_;for(;a-n>1e-4;){const _=clip(t(i));deltaEOK(OKLCH_to_OKLab(i),OKLCH_to_OKLab(o(_)))-.02<1e-4?n=i[1]:a=i[1],i[1]=(a+n)/2}return clip(t([...i]))}
+ */function deltaEOK(_,t){const[o,a,n]=_,[i,e,l]=t,r=o-i,u=a-e,s=n-l;return Math.sqrt(r**2+u**2+s**2)}function binarySearchGamut(_,t,o){let a=0,n=_[1];const i=_;for(;n-a>1e-4;){const _=clip(t(i));deltaEOK(OKLCH_to_OKLab(i),OKLCH_to_OKLab(o(_)))-.02<1e-4?a=i[1]:n=i[1],i[1]=(n+a)/2}return clip(t([...i]))}
 /**
  * Given a color in a cylindical polar colorspace and an alpha value
  * return the premultiplied form. The index says which entry in the
@@ -38,13 +36,7 @@ function clip(_){return _.map((_=>_<0?0:_>1?1:_))}
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- */
-/**
- * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
- * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/map-gamut.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- */
-function mapGamut(_,t,o){return binarySearchGamut(_,t,o)}
+ */function mapGamut(_,t,o){return binarySearchGamut(_,t,o)}
 /**
  * Simple matrix (and vector) multiplication
  * Warning: No error handling for incompatible dimensions!
@@ -55,7 +47,7 @@ function mapGamut(_,t,o){return binarySearchGamut(_,t,o)}
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/multiply-matrices.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/multiply-matrices.js
- */function multiplyMatrices(_,t){const o=_.length;let n,a;n=Array.isArray(_[0])?_:[_],Array.isArray(t[0])||(a=t.map((_=>[_])));const i=a[0].length,l=a[0].map(((_,t)=>a.map((_=>_[t]))));let r=n.map((_=>l.map((t=>Array.isArray(_)?_.reduce(((_,o,n)=>_+o*(t[n]||0)),0):t.reduce(((t,o)=>t+o*_),0)))));return 1===o&&(r=r[0]),1===i?r.map((_=>_[0])):r}
+ */function multiplyMatrices(_,t){const o=_.length;let a,n;a=Array.isArray(_[0])?_:[_],Array.isArray(t[0])||(n=t.map((_=>[_])));const i=n[0].length,e=n[0].map(((_,t)=>n.map((_=>_[t]))));let l=a.map((_=>e.map((t=>Array.isArray(_)?_.reduce(((_,o,a)=>_+o*(t[a]||0)),0):t.reduce(((t,o)=>t+o*_),0)))));return 1===o&&(l=l[0]),1===i?l.map((_=>_[0])):l}
 /**
  * Convert an array of linear-light sRGB values to CIE XYZ
  * using sRGB's own white, D65 (no chromatic adaptation)
@@ -63,7 +55,7 @@ function mapGamut(_,t,o){return binarySearchGamut(_,t,o)}
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- */function lin_sRGB_to_XYZ(_){return multiplyMatrices([[.41239079926595934,.357584339383878,.1804807884018343],[.21263900587151027,.715168678767756,.07219231536073371],[.01933081871559182,.11919477979462598,.9505321522496607]],_)}
+ */function lin_sRGB_to_XYZ(_){return multiplyMatrices([[506752/1228815,87881/245763,12673/70218],[87098/409605,175762/245763,12673/175545],[7918/409605,87881/737289,1001167/1053270]],_)}
 /**
  * Convert an array of of sRGB values where in-gamut values are in the range
  * [0 - 1] to linear light (un-companded) form.
@@ -97,7 +89,7 @@ function mapGamut(_,t,o){return binarySearchGamut(_,t,o)}
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js
  * @see https://www.w3.org/TR/WCAG21/#dfn-contrast-ratio
- */var _=Object.freeze({__proto__:null,binarySearchGamut:binarySearchGamut,contrast:function contrast(_,t){const o=sRGB_to_luminance(_),n=sRGB_to_luminance(t);return o>n?(o+.05)/(n+.05):(n+.05)/(o+.05)},deltaEOK:deltaEOK,mapGamut:mapGamut,multiplyMatrices:multiplyMatrices,polarPremultiply:function polarPremultiply(_,t,o){return _.map(((_,n)=>_*(o===n?1:t)))}});
+ */var _=Object.freeze({__proto__:null,binarySearchGamut:binarySearchGamut,contrast:function contrast(_,t){const o=sRGB_to_luminance(_),a=sRGB_to_luminance(t);return o>a?(o+.05)/(a+.05):(a+.05)/(o+.05)},deltaEOK:deltaEOK,mapGamut:mapGamut,multiplyMatrices:multiplyMatrices,polarPremultiply:function polarPremultiply(_,t,o){return _.map(((_,a)=>_*(o===a?1:t)))}});
 /**
  * Convert an array of a98-rgb values in the range 0.0 - 1.0
  * to linear light (un-companded) form. Negative values are also now accepted
@@ -121,7 +113,7 @@ function mapGamut(_,t,o){return binarySearchGamut(_,t,o)}
  * @see http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
  * @see https://www.adobe.com/digitalimag/pdfs/AdobeRGB1998.pdf
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/matrixmaker.html
- */function lin_a98rgb_to_XYZ(_){return multiplyMatrices([[.5766690429101305,.1855582379065463,.1882286462349947],[.29734497525053605,.6273635662554661,.07529145849399788],[.02703136138641234,.07068885253582723,.9913375368376388]],_)}
+ */function lin_a98rgb_to_XYZ(_){return multiplyMatrices([[573536/994567,263643/1420810,187206/994567],[591459/1989134,6239551/9945670,374412/4972835],[53769/1989134,351524/4972835,4929758/4972835]],_)}
 /**
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
@@ -141,7 +133,7 @@ function mapGamut(_,t,o){return binarySearchGamut(_,t,o)}
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- */function XYZ_to_lin_sRGB(_){return multiplyMatrices([[3.2409699419045226,-1.537383177570094,-.4986107602930034],[-.9692436362808796,1.8759675015077202,.04155505740717559],[.05563007969699366,-.20397695888897652,1.0569715142428786]],_)}
+ */function XYZ_to_lin_sRGB(_){return multiplyMatrices([[12831/3959,-329/214,-1974/3959],[-851781/878810,1648619/878810,36519/878810],[705/12673,-2585/12673,705/667]],_)}
 /**
  * Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corrected form
  * Extended transfer function:
@@ -158,7 +150,7 @@ function mapGamut(_,t,o){return binarySearchGamut(_,t,o)}
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/map-gamut.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- */function inGamut(_){const[t,o,n]=_;return t>=-1e-4&&t<=1.0001&&o>=-1e-4&&o<=1.0001&&n>=-1e-4&&n<=1.0001}
+ */function inGamut(_){const[t,o,a]=_;return t>=-1e-4&&t<=1.0001&&o>=-1e-4&&o<=1.0001&&a>=-1e-4&&a<=1.0001}
 /**
  * Given OKLab, convert to XYZ relative to D65
  *
@@ -192,7 +184,7 @@ function D65_to_D50(_){return multiplyMatrices([[1.0479298208405488,.02294679334
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- */function gam_2020(_){const t=1.09929682680944;return _.map((function(_){const o=_<0?-1:1,n=Math.abs(_);return n>.018053968510807?o*(t*Math.pow(n,.45)-(t-1)):4.5*_}))}
+ */function gam_2020(_){const t=1.09929682680944;return _.map((function(_){const o=_<0?-1:1,a=Math.abs(_);return a>.018053968510807?o*(t*Math.pow(a,.45)-(t-1)):4.5*_}))}
 /**
  * Convert an array of linear-light a98-rgb in the range 0.0-1.0
  * to gamma corrected form. Negative values are also now accepted
@@ -253,14 +245,14 @@ function Lab_to_LCH(_){const t=180*Math.atan2(_[2],_[1])/Math.PI;return[_[0],Mat
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * @see http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
- */function Lab_to_XYZ(_){const o=24389/27,n=216/24389,a=[];a[1]=(_[0]+16)/116,a[0]=_[1]/500+a[1],a[2]=a[1]-_[2]/200;return[Math.pow(a[0],3)>n?Math.pow(a[0],3):(116*a[0]-16)/o,_[0]>8?Math.pow((_[0]+16)/116,3):_[0]/o,Math.pow(a[2],3)>n?Math.pow(a[2],3):(116*a[2]-16)/o].map(((_,o)=>_*t[o]))}
+ */function Lab_to_XYZ(_){const o=24389/27,a=216/24389,n=[];n[1]=(_[0]+16)/116,n[0]=_[1]/500+n[1],n[2]=n[1]-_[2]/200;return[Math.pow(n[0],3)>a?Math.pow(n[0],3):(116*n[0]-16)/o,_[0]>8?Math.pow((_[0]+16)/116,3):_[0]/o,Math.pow(n[2],3)>a?Math.pow(n[2],3):(116*n[2]-16)/o].map(((_,o)=>_*t[o]))}
 /**
  * Convert XYZ to linear-light P3
  *
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- */function XYZ_to_lin_P3(_){return multiplyMatrices([[2.493496911941425,-.9313836179191239,-.40271078445071684],[-.8294889695615747,1.7626640603183463,.023624685841943577],[.03584583024378447,-.07617238926804182,.9568845240076872]],_)}
+ */function XYZ_to_lin_P3(_){return multiplyMatrices([[446124/178915,-333277/357830,-72051/178915],[-14852/17905,63121/35810,423/17905],[11844/330415,-50337/660830,316169/330415]],_)}
 /**
  * Convert an array of display-p3 RGB values in the range 0.0 - 1.0
  * to linear light (un-companded) form.
@@ -278,7 +270,7 @@ function Lab_to_LCH(_){const t=180*Math.atan2(_[2],_[1])/Math.PI;return[_[0],Mat
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * @see http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
- */function lin_P3_to_XYZ(_){return multiplyMatrices([[.4865709486482162,.26566769316909306,.1982172852343625],[.2289745640697488,.6917385218365064,.079286914093745],[0,.04511338185890264,1.043944368900976]],_)}
+ */function lin_P3_to_XYZ(_){return multiplyMatrices([[608311/1250200,189793/714400,198249/1000160],[35783/156275,247089/357200,198249/2500400],[0,32229/714400,5220557/5000800]],_)}
 /**
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
@@ -292,7 +284,7 @@ function LCH_to_Lab(_){return[_[0],_[1]*Math.cos(_[2]*Math.PI/180),_[1]*Math.sin
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
-function XYZ_to_lin_2020(_){return multiplyMatrices([[1.7166511879712674,-.35567078377639233,-.25336628137365974],[-.6666843518324892,1.6164812366349395,.01576854581391113],[.017639857445310783,-.042770613257808524,.9421031212354738]],_)}
+function XYZ_to_lin_2020(_){return multiplyMatrices([[30757411/17917100,-6372589/17917100,-4539589/17917100],[-.666684351832489,1.616481236634939,467509/29648200],[792561/44930125,-1921689/44930125,.942103121235474]],_)}
 /**
  * Convert an array of CIE LCH values to CIE Lab, and then to XYZ, adapt from
  * D50 to D65, then convert XYZ to linear-light rec.2020 and finally to gamma
@@ -315,7 +307,7 @@ function XYZ_to_lin_2020(_){return multiplyMatrices([[1.7166511879712674,-.35567
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
-function lin_2020(_){const t=1.09929682680944;return _.map((function(_){const o=_<0?-1:1,n=Math.abs(_);return n<.08124285829863151?_/4.5:o*Math.pow((n+t-1)/t,1/.45)}))}
+function lin_2020(_){const t=1.09929682680944;return _.map((function(_){const o=_<0?-1:1,a=Math.abs(_);return a<.08124285829863151?_/4.5:o*Math.pow((a+t-1)/t,1/.45)}))}
 /**
  * Convert an array of linear-light rec2020 values to CIE XYZ
  * using  D65 (no chromatic adaptation)
@@ -325,7 +317,7 @@ function lin_2020(_){const t=1.09929682680944;return _.map((function(_){const o=
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * @see http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
- */function lin_2020_to_XYZ(_){return multiplyMatrices([[.6369580483012914,.14461690358620832,.1688809751641721],[.2627002120112671,.6779980715188708,.05930171646986196],[0,.028072693049087428,1.060985057710791]],_)}
+ */function lin_2020_to_XYZ(_){return multiplyMatrices([[63426534/99577255,20160776/139408157,47086771/278816314],[26158966/99577255,.677998071518871,8267143/139408157],[0,19567812/697040785,1.0609850577107909]],_)}
 /**
  * Convert an array of prophoto-rgb values where in-gamut Colors are in the
  * range [0.0 - 1.0] to linear light (un-companded) form. Transfer curve is
@@ -334,7 +326,7 @@ function lin_2020(_){const t=1.09929682680944;return _.map((function(_){const o=
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- */function lin_ProPhoto(_){return _.map((function(_){const t=_<0?-1:1;return Math.abs(_)<=.03125?_/16:t*Math.pow(_,1.8)}))}
+ */function lin_ProPhoto(_){return _.map((function(_){const t=_<0?-1:1,o=Math.abs(_);return o<=.03125?_/16:t*Math.pow(o,1.8)}))}
 /**
  * Convert an array of linear-light prophoto-rgb values to CIE XYZ
  * using D50 (so no chromatic adaptation needed afterwards)
@@ -376,7 +368,7 @@ function XYZ_to_Lab(_){const o=_.map(((_,o)=>_/t[o])).map((_=>_>.008856451679035
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js
- */var o=Object.freeze({__proto__:null,D50:t,D50_to_D65:D50_to_D65,D65:[.3127/.329,1,.3583/.329],D65_to_D50:D65_to_D50,HSLToRGB:function HSLToRGB(_){const[t,o,n]=_;let a;a=n<=.5?n*(o+1):n+o-n*o;const i=2*n-a;return[hueToRGB(i,a,t+2),hueToRGB(i,a,t),hueToRGB(i,a,t-2)]},LCH_to_Lab:LCH_to_Lab,LCH_to_P3:function LCH_to_P3(_){const[t,o,n]=_;let a=[Math.max(t,0),o,n%360];a=LCH_to_Lab(a),a=Lab_to_XYZ(a);let i=a.slice();return i=D50_to_D65(i),i=XYZ_to_OKLab(i),i=OKLab_to_OKLCH(i),i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),a=D50_to_D65(a),a=XYZ_to_lin_P3(a),a=gam_P3(a),inGamut(a)?[clip(a),!0]:[mapGamut(i,(_=>gam_P3(_=XYZ_to_lin_P3(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_P3_to_XYZ(_=lin_P3(_)))))),!1]},LCH_to_rec2020:function LCH_to_rec2020(_){return gam_2020(XYZ_to_lin_2020(D50_to_D65(Lab_to_XYZ(LCH_to_Lab(_)))))},LCH_to_sRGB:function LCH_to_sRGB(_){const[t,o,n]=_;let a=[Math.max(t,0),o,n%360];a=LCH_to_Lab(a),a=Lab_to_XYZ(a);let i=a.slice();return i=D50_to_D65(i),i=XYZ_to_OKLab(i),i=OKLab_to_OKLCH(i),i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),a=D50_to_D65(a),a=XYZ_to_lin_sRGB(a),a=gam_sRGB(a),inGamut(a)?clip(a).map((_=>Math.round(255*_))):mapGamut(i,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_)))))).map((_=>Math.round(255*_)))},Lab_to_LCH:Lab_to_LCH,Lab_to_P3:function Lab_to_P3(_){const[t,o,n]=_;let a=[Math.max(t,0),Math.min(Math.max(o,-160),160),Math.min(Math.max(n,-160),160)];a=Lab_to_XYZ(a);let i=a.slice();return i=D50_to_D65(i),i=XYZ_to_OKLab(i),i=OKLab_to_OKLCH(i),i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),a=D50_to_D65(a),a=XYZ_to_lin_P3(a),a=gam_P3(a),inGamut(a)?[clip(a),!0]:[mapGamut(i,(_=>gam_P3(_=XYZ_to_lin_P3(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_P3_to_XYZ(_=lin_P3(_)))))),!1]},Lab_to_XYZ:Lab_to_XYZ,Lab_to_sRGB:function Lab_to_sRGB(_){const[t,o,n]=_;let a=[Math.max(t,0),Math.min(Math.max(o,-160),160),Math.min(Math.max(n,-160),160)];a=Lab_to_XYZ(a);let i=a.slice();return i=D50_to_D65(i),i=XYZ_to_OKLab(i),i=OKLab_to_OKLCH(i),i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),a=D50_to_D65(a),a=XYZ_to_lin_sRGB(a),a=gam_sRGB(a),inGamut(a)?clip(a).map((_=>Math.round(255*_))):mapGamut(i,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_)))))).map((_=>Math.round(255*_)))},OKLCH_to_OKLab:OKLCH_to_OKLab,OKLCH_to_P3:function OKLCH_to_P3(_){const[t,o,n]=_,a=[Math.max(t,0),o,n%360];let i=a;return i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),i=OKLCH_to_OKLab(i),i=OKLab_to_XYZ(i),i=XYZ_to_lin_P3(i),i=gam_P3(i),inGamut(i)?[clip(i),!0]:[mapGamut(a,(_=>gam_P3(_=XYZ_to_lin_P3(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_P3_to_XYZ(_=lin_P3(_)))))),!1]},OKLCH_to_sRGB:function OKLCH_to_sRGB(_){const[t,o,n]=_,a=[Math.max(t,0),o,n%360];let i=a;return i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),i=OKLCH_to_OKLab(i),i=OKLab_to_XYZ(i),i=XYZ_to_lin_sRGB(i),i=gam_sRGB(i),inGamut(i)?clip(i).map((_=>Math.round(255*_))):mapGamut(a,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_)))))).map((_=>Math.round(255*_)))},OKLab_to_OKLCH:OKLab_to_OKLCH,OKLab_to_P3:function OKLab_to_P3(_){const[t,o,n]=_;let a=[Math.max(t,0),o,n],i=OKLab_to_OKLCH(a);return i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),a=OKLab_to_XYZ(a),a=XYZ_to_lin_P3(a),a=gam_P3(a),inGamut(a)?[clip(a),!0]:[mapGamut(i,(_=>gam_P3(_=XYZ_to_lin_P3(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_P3_to_XYZ(_=lin_P3(_)))))),!1]},OKLab_to_XYZ:OKLab_to_XYZ,OKLab_to_sRGB:function OKLab_to_sRGB(_){const[t,o,n]=_;let a=[Math.max(t,0),o,n],i=OKLab_to_OKLCH(a);return i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),a=OKLab_to_XYZ(a),a=XYZ_to_lin_sRGB(a),a=gam_sRGB(a),inGamut(a)?clip(a).map((_=>Math.round(255*_))):mapGamut(i,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_)))))).map((_=>Math.round(255*_)))},P3_to_LCH:function P3_to_LCH(_){return Lab_to_LCH(XYZ_to_Lab(D65_to_D50(lin_P3_to_XYZ(lin_P3(_)))))},XYZ_to_Lab:XYZ_to_Lab,XYZ_to_OKLab:XYZ_to_OKLab,XYZ_to_lin_2020:XYZ_to_lin_2020,XYZ_to_lin_P3:XYZ_to_lin_P3,XYZ_to_lin_ProPhoto:
+ */var o=Object.freeze({__proto__:null,D50:t,D50_to_D65:D50_to_D65,D65:[.3127/.329,1,.3583/.329],D65_to_D50:D65_to_D50,HSLToRGB:function HSLToRGB(_){const[t,o,a]=_;let n;n=a<=.5?a*(o+1):a+o-a*o;const i=2*a-n;return[hueToRGB(i,n,t+2),hueToRGB(i,n,t),hueToRGB(i,n,t-2)]},LCH_to_Lab:LCH_to_Lab,LCH_to_P3:function LCH_to_P3(_){const[t,o,a]=_;let n=[Math.max(t,0),o,a%360];n=LCH_to_Lab(n),n=Lab_to_XYZ(n);let i=n.slice();return i=D50_to_D65(i),i=XYZ_to_OKLab(i),i=OKLab_to_OKLCH(i),i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),n=D50_to_D65(n),n=XYZ_to_lin_P3(n),n=gam_P3(n),inGamut(n)?[clip(n),!0]:[mapGamut(i,(_=>gam_P3(_=XYZ_to_lin_P3(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_P3_to_XYZ(_=lin_P3(_)))))),!1]},LCH_to_rec2020:function LCH_to_rec2020(_){return gam_2020(XYZ_to_lin_2020(D50_to_D65(Lab_to_XYZ(LCH_to_Lab(_)))))},LCH_to_sRGB:function LCH_to_sRGB(_){const[t,o,a]=_;let n=[Math.max(t,0),o,a%360];n=LCH_to_Lab(n),n=Lab_to_XYZ(n);let i=n.slice();return i=D50_to_D65(i),i=XYZ_to_OKLab(i),i=OKLab_to_OKLCH(i),i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),n=D50_to_D65(n),n=XYZ_to_lin_sRGB(n),n=gam_sRGB(n),inGamut(n)?clip(n).map((_=>Math.round(255*_))):mapGamut(i,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_)))))).map((_=>Math.round(255*_)))},Lab_to_LCH:Lab_to_LCH,Lab_to_P3:function Lab_to_P3(_){const[t,o,a]=_;let n=[Math.max(t,0),Math.min(Math.max(o,-160),160),Math.min(Math.max(a,-160),160)];n=Lab_to_XYZ(n);let i=n.slice();return i=D50_to_D65(i),i=XYZ_to_OKLab(i),i=OKLab_to_OKLCH(i),i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),n=D50_to_D65(n),n=XYZ_to_lin_P3(n),n=gam_P3(n),inGamut(n)?[clip(n),!0]:[mapGamut(i,(_=>gam_P3(_=XYZ_to_lin_P3(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_P3_to_XYZ(_=lin_P3(_)))))),!1]},Lab_to_XYZ:Lab_to_XYZ,Lab_to_sRGB:function Lab_to_sRGB(_){const[t,o,a]=_;let n=[Math.max(t,0),Math.min(Math.max(o,-160),160),Math.min(Math.max(a,-160),160)];n=Lab_to_XYZ(n);let i=n.slice();return i=D50_to_D65(i),i=XYZ_to_OKLab(i),i=OKLab_to_OKLCH(i),i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),n=D50_to_D65(n),n=XYZ_to_lin_sRGB(n),n=gam_sRGB(n),inGamut(n)?clip(n).map((_=>Math.round(255*_))):mapGamut(i,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_)))))).map((_=>Math.round(255*_)))},OKLCH_to_OKLab:OKLCH_to_OKLab,OKLCH_to_P3:function OKLCH_to_P3(_){const[t,o,a]=_,n=[Math.max(t,0),o,a%360];let i=n;return i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),i=OKLCH_to_OKLab(i),i=OKLab_to_XYZ(i),i=XYZ_to_lin_P3(i),i=gam_P3(i),inGamut(i)?[clip(i),!0]:[mapGamut(n,(_=>gam_P3(_=XYZ_to_lin_P3(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_P3_to_XYZ(_=lin_P3(_)))))),!1]},OKLCH_to_sRGB:function OKLCH_to_sRGB(_){const[t,o,a]=_,n=[Math.max(t,0),o,a%360];let i=n;return i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),i=OKLCH_to_OKLab(i),i=OKLab_to_XYZ(i),i=XYZ_to_lin_sRGB(i),i=gam_sRGB(i),inGamut(i)?clip(i).map((_=>Math.round(255*_))):mapGamut(n,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_)))))).map((_=>Math.round(255*_)))},OKLab_to_OKLCH:OKLab_to_OKLCH,OKLab_to_P3:function OKLab_to_P3(_){const[t,o,a]=_;let n=[Math.max(t,0),o,a],i=OKLab_to_OKLCH(n);return i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),n=OKLab_to_XYZ(n),n=XYZ_to_lin_P3(n),n=gam_P3(n),inGamut(n)?[clip(n),!0]:[mapGamut(i,(_=>gam_P3(_=XYZ_to_lin_P3(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_P3_to_XYZ(_=lin_P3(_)))))),!1]},OKLab_to_XYZ:OKLab_to_XYZ,OKLab_to_sRGB:function OKLab_to_sRGB(_){const[t,o,a]=_;let n=[Math.max(t,0),o,a],i=OKLab_to_OKLCH(n);return i[0]<1e-6&&(i=[0,0,0]),i[0]>.999999&&(i=[1,0,0]),n=OKLab_to_XYZ(n),n=XYZ_to_lin_sRGB(n),n=gam_sRGB(n),inGamut(n)?clip(n).map((_=>Math.round(255*_))):mapGamut(i,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_)))))).map((_=>Math.round(255*_)))},P3_to_LCH:function P3_to_LCH(_){return Lab_to_LCH(XYZ_to_Lab(D65_to_D50(lin_P3_to_XYZ(lin_P3(_)))))},XYZ_to_Lab:XYZ_to_Lab,XYZ_to_OKLab:XYZ_to_OKLab,XYZ_to_lin_2020:XYZ_to_lin_2020,XYZ_to_lin_P3:XYZ_to_lin_P3,XYZ_to_lin_ProPhoto:
 /**
  * Convert XYZ to linear-light prophoto-rgb
  *
@@ -403,7 +395,7 @@ function XYZ_to_lin_ProPhoto(_){return multiplyMatrices([[1.3457989731028281,-.2
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
-function XYZ_to_lin_a98rgb(_){return multiplyMatrices([[2.0415879038107465,-.5650069742788596,-.34473135077832956],[-.9692436362808795,1.8759675015077202,.04155505740717557],[.013444280632031142,-.11836239223101838,1.0151749943912054]],_)},XYZ_to_lin_sRGB:XYZ_to_lin_sRGB,XYZ_to_uv:function XYZ_to_uv(_){const t=_[0],o=_[1],n=t+15*o+3*_[2];return[4*t/n,9*o/n]}
+function XYZ_to_lin_a98rgb(_){return multiplyMatrices([[1829569/896150,-506331/896150,-308931/896150],[-851781/878810,1648619/878810,36519/878810],[16779/1248040,-147721/1248040,1266979/1248040]],_)},XYZ_to_lin_sRGB:XYZ_to_lin_sRGB,XYZ_to_uv:function XYZ_to_uv(_){const t=_[0],o=_[1],a=t+15*o+3*_[2];return[4*t/a,9*o/a]}
 /**
  * Convert an array of three XYZ values to x,y chromaticity coordinates
  *
@@ -412,7 +404,7 @@ function XYZ_to_lin_a98rgb(_){return multiplyMatrices([[2.0415879038107465,-.565
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js
- */,XYZ_to_xy:function XYZ_to_xy(_){const t=_[0],o=_[1],n=t+o+_[2];return[t/n,o/n]},a98_RGB_to_sRGB:function a98_RGB_to_sRGB(_){let t=_.slice();t=lin_a98rgb(t),t=lin_a98rgb_to_XYZ(t);let o=t.slice();return o=XYZ_to_OKLab(o),o=OKLab_to_OKLCH(o),o[0]<1e-6&&(o=[0,0,0]),o[0]>.999999&&(o=[1,0,0]),t=XYZ_to_lin_sRGB(t),t=gam_sRGB(t),inGamut(t)?clip(t):mapGamut(o,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_))))))},cie_XYZ_50_to_sRGB:function cie_XYZ_50_to_sRGB(_){let t=_.slice();t=D50_to_D65(t);let o=t.slice();return o=XYZ_to_OKLab(o),o=OKLab_to_OKLCH(o),o[0]<1e-6&&(o=[0,0,0]),o[0]>.999999&&(o=[1,0,0]),t=XYZ_to_lin_sRGB(t),t=gam_sRGB(t),inGamut(t)?clip(t):mapGamut(o,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_))))))},cie_XYZ_65_to_sRGB:function cie_XYZ_65_to_sRGB(_){let t=_.slice(),o=t.slice();return o=XYZ_to_OKLab(o),o=OKLab_to_OKLCH(o),o[0]<1e-6&&(o=[0,0,0]),o[0]>.999999&&(o=[1,0,0]),t=XYZ_to_lin_sRGB(t),t=gam_sRGB(t),inGamut(t)?clip(t):mapGamut(o,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_))))))},gam_2020:gam_2020,gam_P3:gam_P3,gam_ProPhoto:function gam_ProPhoto(_){return _.map((function(_){const t=_<0?-1:1,o=Math.abs(_);return o>=.001953125?t*Math.pow(o,1/1.8):16*_}))},gam_a98rgb:function gam_a98rgb(_){return _.map((function(_){const t=_<0?-1:1,o=Math.abs(_);return t*Math.pow(o,256/563)}))},gam_sRGB:gam_sRGB,hueToRGB:hueToRGB,lin_2020:lin_2020,lin_2020_to_XYZ:lin_2020_to_XYZ,lin_P3:lin_P3,lin_P3_to_XYZ:lin_P3_to_XYZ,lin_ProPhoto:lin_ProPhoto,lin_ProPhoto_to_XYZ:lin_ProPhoto_to_XYZ,lin_a98rgb:lin_a98rgb,lin_a98rgb_to_XYZ:lin_a98rgb_to_XYZ,lin_sRGB:lin_sRGB,lin_sRGB_to_XYZ:lin_sRGB_to_XYZ,naive_CMYK_to_sRGB:function naive_CMYK_to_sRGB(_){const t=_[0],o=_[1],n=_[2],a=_[3];return[1-Math.min(1,t*(1-a)+a),1-Math.min(1,o*(1-a)+a),1-Math.min(1,n*(1-a)+a)]},p3_to_sRGB:function p3_to_sRGB(_){let t=_.slice();t=lin_P3(t),t=lin_P3_to_XYZ(t);let o=t.slice();return o=XYZ_to_OKLab(o),o=OKLab_to_OKLCH(o),o[0]<1e-6&&(o=[0,0,0]),o[0]>.999999&&(o=[1,0,0]),t=XYZ_to_lin_sRGB(t),t=gam_sRGB(t),inGamut(t)?clip(t):mapGamut(o,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_))))))},proPhoto_RGB_to_sRGB:function proPhoto_RGB_to_sRGB(_){let t=_.slice();t=lin_ProPhoto(t),t=lin_ProPhoto_to_XYZ(t),t=D50_to_D65(t);let o=t.slice();return o=XYZ_to_OKLab(o),o=OKLab_to_OKLCH(o),o[0]<1e-6&&(o=[0,0,0]),o[0]>.999999&&(o=[1,0,0]),t=XYZ_to_lin_sRGB(t),t=gam_sRGB(t),inGamut(t)?clip(t):mapGamut(o,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_))))))}
+ */,XYZ_to_xy:function XYZ_to_xy(_){const t=_[0],o=_[1],a=t+o+_[2];return[t/a,o/a]},a98_RGB_to_sRGB:function a98_RGB_to_sRGB(_){let t=_.slice();t=lin_a98rgb(t),t=lin_a98rgb_to_XYZ(t);let o=t.slice();return o=XYZ_to_OKLab(o),o=OKLab_to_OKLCH(o),o[0]<1e-6&&(o=[0,0,0]),o[0]>.999999&&(o=[1,0,0]),t=XYZ_to_lin_sRGB(t),t=gam_sRGB(t),inGamut(t)?clip(t):mapGamut(o,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_))))))},cie_XYZ_50_to_sRGB:function cie_XYZ_50_to_sRGB(_){let t=_.slice();t=D50_to_D65(t);let o=t.slice();return o=XYZ_to_OKLab(o),o=OKLab_to_OKLCH(o),o[0]<1e-6&&(o=[0,0,0]),o[0]>.999999&&(o=[1,0,0]),t=XYZ_to_lin_sRGB(t),t=gam_sRGB(t),inGamut(t)?clip(t):mapGamut(o,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_))))))},cie_XYZ_65_to_sRGB:function cie_XYZ_65_to_sRGB(_){let t=_.slice(),o=t.slice();return o=XYZ_to_OKLab(o),o=OKLab_to_OKLCH(o),o[0]<1e-6&&(o=[0,0,0]),o[0]>.999999&&(o=[1,0,0]),t=XYZ_to_lin_sRGB(t),t=gam_sRGB(t),inGamut(t)?clip(t):mapGamut(o,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_))))))},gam_2020:gam_2020,gam_P3:gam_P3,gam_ProPhoto:function gam_ProPhoto(_){return _.map((function(_){const t=_<0?-1:1,o=Math.abs(_);return o>=.001953125?t*Math.pow(o,1/1.8):16*_}))},gam_a98rgb:function gam_a98rgb(_){return _.map((function(_){const t=_<0?-1:1,o=Math.abs(_);return t*Math.pow(o,256/563)}))},gam_sRGB:gam_sRGB,hueToRGB:hueToRGB,lin_2020:lin_2020,lin_2020_to_XYZ:lin_2020_to_XYZ,lin_P3:lin_P3,lin_P3_to_XYZ:lin_P3_to_XYZ,lin_ProPhoto:lin_ProPhoto,lin_ProPhoto_to_XYZ:lin_ProPhoto_to_XYZ,lin_a98rgb:lin_a98rgb,lin_a98rgb_to_XYZ:lin_a98rgb_to_XYZ,lin_sRGB:lin_sRGB,lin_sRGB_to_XYZ:lin_sRGB_to_XYZ,naive_CMYK_to_sRGB:function naive_CMYK_to_sRGB(_){const t=_[0],o=_[1],a=_[2],n=_[3];return[1-Math.min(1,t*(1-n)+n),1-Math.min(1,o*(1-n)+n),1-Math.min(1,a*(1-n)+n)]},p3_to_sRGB:function p3_to_sRGB(_){let t=_.slice();t=lin_P3(t),t=lin_P3_to_XYZ(t);let o=t.slice();return o=XYZ_to_OKLab(o),o=OKLab_to_OKLCH(o),o[0]<1e-6&&(o=[0,0,0]),o[0]>.999999&&(o=[1,0,0]),t=XYZ_to_lin_sRGB(t),t=gam_sRGB(t),inGamut(t)?clip(t):mapGamut(o,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_))))))},proPhoto_RGB_to_sRGB:function proPhoto_RGB_to_sRGB(_){let t=_.slice();t=lin_ProPhoto(t),t=lin_ProPhoto_to_XYZ(t),t=D50_to_D65(t);let o=t.slice();return o=XYZ_to_OKLab(o),o=OKLab_to_OKLCH(o),o[0]<1e-6&&(o=[0,0,0]),o[0]>.999999&&(o=[1,0,0]),t=XYZ_to_lin_sRGB(t),t=gam_sRGB(t),inGamut(t)?clip(t):mapGamut(o,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_))))))}
 /**
  * Convert an array of gamma-corrected rec.2020 values in the 0.0 to 1.0 range
  * to linear-light sRGB, then to CIE XYZ, then adapt from D65 to D50, then
@@ -434,4 +426,4 @@ function XYZ_to_lin_a98rgb(_){return multiplyMatrices([[2.0415879038107465,-.565
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js
- */,sRGB_to_LCH:function sRGB_to_LCH(_){return Lab_to_LCH(XYZ_to_Lab(D65_to_D50(lin_sRGB_to_XYZ(lin_sRGB(_)))))},sRGB_to_luminance:sRGB_to_luminance,sRGB_to_sRGB:function sRGB_to_sRGB(_){let t=_.slice();t=lin_sRGB(t),t=lin_sRGB_to_XYZ(t);let o=t.slice();return o=XYZ_to_OKLab(o),o=OKLab_to_OKLCH(o),o[0]<1e-6&&(o=[0,0,0]),o[0]>.999999&&(o=[1,0,0]),t=XYZ_to_lin_sRGB(t),t=gam_sRGB(t),inGamut(t)?clip(t):mapGamut(o,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_))))))}}),n=Object.freeze({__proto__:null,clip:clip,inGamut:inGamut});export{_ as calculations,o as conversions,n as utils};
+ */,sRGB_to_LCH:function sRGB_to_LCH(_){return Lab_to_LCH(XYZ_to_Lab(D65_to_D50(lin_sRGB_to_XYZ(lin_sRGB(_)))))},sRGB_to_luminance:sRGB_to_luminance,sRGB_to_sRGB:function sRGB_to_sRGB(_){let t=_.slice();t=lin_sRGB(t),t=lin_sRGB_to_XYZ(t);let o=t.slice();return o=XYZ_to_OKLab(o),o=OKLab_to_OKLCH(o),o[0]<1e-6&&(o=[0,0,0]),o[0]>.999999&&(o=[1,0,0]),t=XYZ_to_lin_sRGB(t),t=gam_sRGB(t),inGamut(t)?clip(t):mapGamut(o,(_=>gam_sRGB(_=XYZ_to_lin_sRGB(_=OKLab_to_XYZ(_=OKLCH_to_OKLab(_))))),(_=>OKLab_to_OKLCH(_=XYZ_to_OKLab(_=lin_sRGB_to_XYZ(_=lin_sRGB(_))))))}}),a=Object.freeze({__proto__:null,clip:clip,inGamut:inGamut});const n={aliceblue:[240,248,255],antiquewhite:[250,235,215],aqua:[0,255,255],aquamarine:[127,255,212],azure:[240,255,255],beige:[245,245,220],bisque:[255,228,196],black:[0,0,0],blanchedalmond:[255,235,205],blue:[0,0,255],blueviolet:[138,43,226],brown:[165,42,42],burlywood:[222,184,135],cadetblue:[95,158,160],chartreuse:[127,255,0],chocolate:[210,105,30],coral:[255,127,80],cornflowerblue:[100,149,237],cornsilk:[255,248,220],crimson:[220,20,60],cyan:[0,255,255],darkblue:[0,0,139],darkcyan:[0,139,139],darkgoldenrod:[184,134,11],darkgray:[169,169,169],darkgreen:[0,100,0],darkgrey:[169,169,169],darkkhaki:[189,183,107],darkmagenta:[139,0,139],darkolivegreen:[85,107,47],darkorange:[255,140,0],darkorchid:[153,50,204],darkred:[139,0,0],darksalmon:[233,150,122],darkseagreen:[143,188,143],darkslateblue:[72,61,139],darkslategray:[47,79,79],darkslategrey:[47,79,79],darkturquoise:[0,206,209],darkviolet:[148,0,211],deeppink:[255,20,147],deepskyblue:[0,191,255],dimgray:[105,105,105],dimgrey:[105,105,105],dodgerblue:[30,144,255],firebrick:[178,34,34],floralwhite:[255,250,240],forestgreen:[34,139,34],fuchsia:[255,0,255],gainsboro:[220,220,220],ghostwhite:[248,248,255],gold:[255,215,0],goldenrod:[218,165,32],gray:[128,128,128],green:[0,128,0],greenyellow:[173,255,47],grey:[128,128,128],honeydew:[240,255,240],hotpink:[255,105,180],indianred:[205,92,92],indigo:[75,0,130],ivory:[255,255,240],khaki:[240,230,140],lavender:[230,230,250],lavenderblush:[255,240,245],lawngreen:[124,252,0],lemonchiffon:[255,250,205],lightblue:[173,216,230],lightcoral:[240,128,128],lightcyan:[224,255,255],lightgoldenrodyellow:[250,250,210],lightgray:[211,211,211],lightgreen:[144,238,144],lightgrey:[211,211,211],lightpink:[255,182,193],lightsalmon:[255,160,122],lightseagreen:[32,178,170],lightskyblue:[135,206,250],lightslategray:[119,136,153],lightslategrey:[119,136,153],lightsteelblue:[176,196,222],lightyellow:[255,255,224],lime:[0,255,0],limegreen:[50,205,50],linen:[250,240,230],magenta:[255,0,255],maroon:[128,0,0],mediumaquamarine:[102,205,170],mediumblue:[0,0,205],mediumorchid:[186,85,211],mediumpurple:[147,112,219],mediumseagreen:[60,179,113],mediumslateblue:[123,104,238],mediumspringgreen:[0,250,154],mediumturquoise:[72,209,204],mediumvioletred:[199,21,133],midnightblue:[25,25,112],mintcream:[245,255,250],mistyrose:[255,228,225],moccasin:[255,228,181],navajowhite:[255,222,173],navy:[0,0,128],oldlace:[253,245,230],olive:[128,128,0],olivedrab:[107,142,35],orange:[255,165,0],orangered:[255,69,0],orchid:[218,112,214],palegoldenrod:[238,232,170],palegreen:[152,251,152],paleturquoise:[175,238,238],palevioletred:[219,112,147],papayawhip:[255,239,213],peachpuff:[255,218,185],peru:[205,133,63],pink:[255,192,203],plum:[221,160,221],powderblue:[176,224,230],purple:[128,0,128],rebeccapurple:[102,51,153],red:[255,0,0],rosybrown:[188,143,143],royalblue:[65,105,225],saddlebrown:[139,69,19],salmon:[250,128,114],sandybrown:[244,164,96],seagreen:[46,139,87],seashell:[255,245,238],sienna:[160,82,45],silver:[192,192,192],skyblue:[135,206,235],slateblue:[106,90,205],slategray:[112,128,144],slategrey:[112,128,144],snow:[255,250,250],springgreen:[0,255,127],steelblue:[70,130,180],tan:[210,180,140],teal:[0,128,128],thistle:[216,191,216],tomato:[255,99,71],turquoise:[64,224,208],violet:[238,130,238],wheat:[245,222,179],white:[255,255,255],whitesmoke:[245,245,245],yellow:[255,255,0],yellowgreen:[154,205,50]};export{_ as calculations,o as conversions,n as namedColors,a as utils};
