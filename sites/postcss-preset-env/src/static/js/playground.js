@@ -11,7 +11,7 @@ import postcssPresetEnv from 'postcss-preset-env';
 self.process = { env: {} };
 
 const currentConfig = {
-	browsers: ['last 5 versions', 'not dead'],
+	browsers: ['> 0.2% and not dead'],
 	minimumVendorImplementations: 0,
 	stage: 2,
 	preserve: null,
