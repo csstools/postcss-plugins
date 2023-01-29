@@ -1,9 +1,13 @@
 .ppe-playground {
+	background-color: #1d1f25;
 	display: flex;
 	width: 100%;
 
-	& .editors-container {
+	@nest body:has(&) {
 		background-color: #1d1f25;
+	}
+
+	& .editors-container {
 		display: grid;
 		gap: var(--space-20);
 		grid-template-areas:
