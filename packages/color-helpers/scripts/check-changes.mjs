@@ -2,7 +2,6 @@ import crypto from 'crypto';
 import path from 'path';
 import { URL } from 'url';
 import fs from 'fs/promises';
-import fetch from 'node-fetch';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const hashesPath = path.resolve(__dirname, './hashes.json');

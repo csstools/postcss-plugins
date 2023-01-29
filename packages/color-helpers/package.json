@@ -37,9 +37,6 @@
 		"README.md",
 		"dist"
 	],
-	"devDependencies": {
-		"node-fetch": "^3.2.4"
-	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
 		"check-sources-integrity": "node ./scripts/check-changes.mjs",

@@ -17,6 +17,6 @@ export function lin_ProPhoto(RGB: Color): Color {
 			return val / 16;
 		}
 
-		return sign * Math.pow(val, 1.8);
+		return sign * Math.pow(abs, 1.8);
 	}) as Color;
 }
