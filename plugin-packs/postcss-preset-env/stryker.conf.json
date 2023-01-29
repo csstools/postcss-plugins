@@ -1,9 +1,9 @@
 {
 	"$schema": "../../node_modules/@stryker-mutator/core/schema/stryker-schema.json",
 	"mutate": [
-		"src/lib/*.mjs",
 		"src/lib/**/*.mjs"
 	],
+	"buildCommand": "npm run build",
 	"testRunner": "command",
 	"coverageAnalysis": "perTest",
 	"tempDirName": "../../.stryker-tmp",
