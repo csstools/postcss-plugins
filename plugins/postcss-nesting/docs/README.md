@@ -40,7 +40,7 @@ Previous iterations of the [CSS Nesting specification] required using `@nest` fo
 `@nest` was removed from the specification completely.
 Future versions of this plugin will first warn and then error if you use `@nest`.
 
-We advice everyone to migrate their code base **now** to nested CSS without `@nest`.
+We advice everyone to migrate their codebase **now** to nested CSS without `@nest`.
 
 
 ## Options
