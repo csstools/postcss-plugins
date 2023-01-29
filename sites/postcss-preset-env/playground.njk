@@ -9,17 +9,49 @@ description: Play with PostCSS Preset Env in your browser
 	<h1 class="u-visually-hidden">Interactive playground for PostCSS Preset Env</h1>
 
 	<style>
+		.playground {
+			width: 100%;
+		}
+
 		.editors-container {
 			background-color: #23262d;
 			display: grid;
 			gap: 20px;
 			grid-template-areas:
+				"controls controls"
 				"input output"
 				"config output";
-			grid-template-rows: calc(65% - 10px) calc(35% - 10px);
+			grid-template-rows: 40px calc(65% - 40px) calc(35% - 40px);
 			grid-template-columns: calc(50% - 10px) calc(50% - 10px);
 			height: calc(100vh - 80px);
 			width: 100%;
+		}
+
+		#controls {
+			grid-area: controls;
+			color: white;
+			background-color: #282c34;
+			padding-inline: var(--space-25);
+		}
+
+		#controls fieldset {
+			display: inline-block;
+			margin: 6px 0;
+			padding: 0;
+			border: none;
+			outline: none;
+		}
+
+		#controls fieldset:not(:last-child) {
+			margin-right: 50px;
+		}
+
+		#controls input[type="number"] {
+			width: 50px;
+		}
+
+		#browsers {
+			width: 250px;
 		}
 
 		#input-editor {
@@ -39,10 +71,37 @@ description: Play with PostCSS Preset Env in your browser
 		}
 	</style>
 
-	<div class="editors-container">
-		<div id="input-editor" class="editor"></div>
-		<div id="config-editor" class="editor"></div>
-		<div id="output-editor" class="editor"></div>
+	<div class="playground">
+		<div class="editors-container">
+			<div id="controls" class="controls">
+				<fieldset>
+					<label for="browsers">browserslist</label>
+					<input type="text" name="browsers" id="browsers">
+				</fieldset>
+
+				<fieldset>
+					<label for="minimumVendorImplementations">implementations</label>
+					<input type="number" name="minimumVendorImplementations" id="minimumVendorImplementations" max="4" min="0">
+				</fieldset>
+
+				<fieldset>
+					<label for="stage">stage</label>
+					<input type="number" name="stage" id="stage" max="4" min="0">
+				</fieldset>
+
+				<fieldset>
+					<label for="preserve">preserve</label>
+					<select id="preserve">
+						<option value="">not set</option>
+						<option value="true">true</option>
+						<option value="false">false</option>
+					</select>
+				</fieldset>
+			</div>
+			<div id="input-editor" class="editor"></div>
+			<div id="config-editor" class="editor"></div>
+			<div id="output-editor" class="editor"></div>
+		</div>
 	</div>
 </main>
 {% endblock %}
