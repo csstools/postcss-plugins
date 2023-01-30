@@ -1,5 +1,5 @@
 # Changes to Color Helpers
 
-### Unreleased
+### Unreleased (major)
 
 - Initial version

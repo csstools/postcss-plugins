@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/color-helpers",
 	"description": "Color helpers to ease transformation between formats, gamut, etc",
-	"version": "1.0.0",
+	"version": "0.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -38,10 +38,11 @@
 		"dist"
 	],
 	"scripts": {
+		"prebuild": "npm run clean",
 		"build": "rollup -c ../../rollup/default.mjs",
 		"check-sources-integrity": "node ./scripts/check-changes.mjs",
 		"check-sources-integrity:rewrite": "REWRITE_HASHES=true node ./scripts/check-changes.mjs",
-		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true });\"",
+		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');\"",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
@@ -59,8 +60,7 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"colors",
-		"css",
-		"specificity"
+		"css"
 	],
 	"volta": {
 		"extends": "../../package.json"
