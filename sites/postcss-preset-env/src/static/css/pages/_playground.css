@@ -23,7 +23,7 @@
 				"controls controls"
 				"input output"
 				"config output";
-			grid-template-rows: 40px calc(65% - 40px) calc(35% - 40px);
+			grid-template-rows: auto calc(65% - 40px) calc(35% - 40px);
 			grid-template-columns: calc(50% - var(--space-10)) calc(50% - var(--space-10));
 			height: calc(100vh - var(--heading-size-from-medium));
 		}
