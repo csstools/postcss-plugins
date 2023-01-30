@@ -1,4 +1,4 @@
-import { EditorState, Transaction, Annotation } from '@codemirror/state';
+import { EditorState } from '@codemirror/state';
 import { EditorView } from '@codemirror/view';
 import { basicSetup } from 'codemirror';
 import { css } from '@codemirror/lang-css';
@@ -148,17 +148,9 @@ let configState = EditorState.create({
 	],
 });
 
-let syncAnnotation = Annotation.define();
-
 function syncDispatch(tr, view, other) {
 	view.update([tr]);
-	if (!tr.changes.empty && !tr.annotation(syncAnnotation)) {
-		let annotations = [syncAnnotation.of(true)];
-		let userEvent = tr.annotation(Transaction.userEvent);
-		if (userEvent) {
-			annotations.push(Transaction.userEvent.of(userEvent));
-		}
-
+	if (!tr.changes.empty) {
 		processCss(view.state.doc, currentConfig).then((output) => {
 			other.update([
 				other.state.update({
