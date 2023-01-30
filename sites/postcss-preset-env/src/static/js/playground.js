@@ -15,6 +15,10 @@ const currentConfig = {
 	minimumVendorImplementations: 0,
 	stage: 2,
 	preserve: null,
+	logical: {
+		inlineDirection: 'left-to-right',
+		blockDirection: 'top-to-bottom',
+	},
 };
 
 function processCss(source, config) {
@@ -49,6 +53,18 @@ function renderConfig(config) {
 		delete copy.browsers;
 	}
 
+	if (copy.logical.inlineDirection === 'left-to-right') {
+		delete copy.logical.inlineDirection;
+	}
+
+	if (copy.logical.blockDirection === 'top-to-bottom') {
+		delete copy.logical.blockDirection;
+	}
+
+	if (Object.keys(copy.logical).length === 0) {
+		delete copy.logical;
+	}
+
 	return `const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = {
@@ -78,6 +94,15 @@ a {
 	& span {
 		font-weight: bold;
 	}
+}
+
+aside {
+	margin-block-start: 1rem;
+	margin-block-end: 2rem;
+	margin-inline-start: 3rem;
+	margin-inline-end: 4rem;
+	width: 10vi;
+	height: 20vb;
 }
 
 @custom-media --tablet (min-width: 48rem);
@@ -159,6 +184,8 @@ let controls = {
 	minimumVendorImplementations: document.getElementById('minimumVendorImplementations'),
 	stage: document.getElementById('stage'),
 	preserve: document.getElementById('preserve'),
+	inlineDirection: document.getElementById('inlineDirection'),
+	blockDirection: document.getElementById('blockDirection'),
 };
 
 controls.browsers.value = currentConfig.browsers.join(', ');
@@ -169,6 +196,8 @@ if (currentConfig.preserve === true) {
 } else if (currentConfig.preserve === false) {
 	controls.preserve.value = 'false';
 }
+controls.inlineDirection.value = currentConfig.logical.inlineDirection;
+controls.blockDirection.value = currentConfig.logical.blockDirection;
 
 for (const control of Object.values(controls)) {
 	control.addEventListener('change', () => {
@@ -183,6 +212,10 @@ for (const control of Object.values(controls)) {
 		currentConfig.minimumVendorImplementations = parseInt(controls.minimumVendorImplementations.value || '0', 10);
 		currentConfig.stage = parseInt(controls.stage.value || '0', 10);
 		currentConfig.preserve = preserve;
+		currentConfig.logical = {
+			inlineDirection: controls.inlineDirection.value || 'left-to-right',
+			blockDirection: controls.blockDirection.value || 'top-to-bottom',
+		};
 
 		processCss(inputState.doc, currentConfig).then((output) => {
 			configView.update([
