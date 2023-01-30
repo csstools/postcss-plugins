@@ -36,8 +36,8 @@
 		padding-inline: var(--space-10);
 
 		@media (--from-medium) {
-				padding-inline: var(--space-20);
-			}
+			padding-inline: var(--space-20);
+		}
 
 		@media (--from-wide) {
 			padding-inline: var(--space-25);
