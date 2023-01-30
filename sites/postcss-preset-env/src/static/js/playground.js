@@ -22,7 +22,15 @@ const currentConfig = {
 };
 
 function processCss(source, config) {
-	return postcss([postcssPresetEnv(config)]).process(
+	let presetEnv;
+	try {
+		presetEnv = postcssPresetEnv(config);
+	} catch (err) {
+		console.warn(err);
+		return Promise.resolve();
+	}
+
+	return postcss([presetEnv]).process(
 		source,
 		{
 			form: 'input',
@@ -36,7 +44,7 @@ function processCss(source, config) {
 }
 
 function renderConfig(config) {
-	const copy = Object.assign({}, config);
+	const copy = JSON.parse(JSON.stringify(config));
 	if (!copy.preserve) {
 		delete copy.preserve;
 	}
@@ -152,8 +160,15 @@ function syncDispatch(tr, view, other) {
 		}
 
 		processCss(view.state.doc, currentConfig).then((output) => {
-			let update = other.state.update({ changes: { from: 0, to: other.state.doc.length, insert: output } });
-			other.update([update]);
+			other.update([
+				other.state.update({
+					changes: {
+						from: 0,
+						to: other.state.doc.length,
+						insert: output ?? view.state.doc,
+					},
+				}),
+			]);
 		});
 	}
 }
@@ -175,8 +190,15 @@ let outputView = new EditorView({
 });
 
 processCss(inputState.doc, currentConfig).then((output) => {
-	let update = outputView.state.update({ changes: { from: 0, to: outputView.state.doc.length, insert: output } });
-	outputView.update([update]);
+	outputView.update([
+		outputView.state.update({
+			changes: {
+				from: 0,
+				to: outputView.state.doc.length,
+				insert: output ?? inputView.state.doc,
+			},
+		}),
+	]);
 });
 
 let controls = {
@@ -188,16 +210,19 @@ let controls = {
 	blockDirection: document.getElementById('blockDirection'),
 };
 
-controls.browsers.value = currentConfig.browsers.join(', ');
-controls.minimumVendorImplementations.value = currentConfig.minimumVendorImplementations.toString();
-controls.stage.value = currentConfig.stage.toString();
-if (currentConfig.preserve === true) {
-	controls.preserve.value = 'true';
-} else if (currentConfig.preserve === false) {
-	controls.preserve.value = 'false';
+{
+	controls.browsers.value = currentConfig.browsers.join(', ');
+	controls.minimumVendorImplementations.value = currentConfig.minimumVendorImplementations.toString();
+	controls.inlineDirection.value = currentConfig.logical.inlineDirection;
+	controls.blockDirection.value = currentConfig.logical.blockDirection;
+
+	controls.stage.value = currentConfig.stage.toString();
+	if (currentConfig.preserve === true) {
+		controls.preserve.value = 'true';
+	} else if (currentConfig.preserve === false) {
+		controls.preserve.value = 'false';
+	}
 }
-controls.inlineDirection.value = currentConfig.logical.inlineDirection;
-controls.blockDirection.value = currentConfig.logical.blockDirection;
 
 for (const control of Object.values(controls)) {
 	control.addEventListener('change', () => {
@@ -223,7 +248,13 @@ for (const control of Object.values(controls)) {
 			]);
 
 			outputView.update([
-				outputView.state.update({ changes: { from: 0, to: outputView.state.doc.length, insert: output } }),
+				outputView.state.update({
+					changes: {
+						from: 0,
+						to: outputView.state.doc.length,
+						insert: output ?? inputView.state.doc,
+					},
+				}),
 			]);
 		});
 	});
