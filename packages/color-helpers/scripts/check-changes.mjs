@@ -13,6 +13,8 @@ const WATCHED_FILES = [
 	'https://raw.githubusercontent.com/w3c/csswg-drafts/main/css-color-4/conversions.js',
 	'https://raw.githubusercontent.com/w3c/csswg-drafts/main/css-color-4/deltaEOK.js',
 	'https://raw.githubusercontent.com/w3c/csswg-drafts/main/css-color-4/multiply-matrices.js',
+	'https://raw.githubusercontent.com/w3c/csswg-drafts/main/css-color-4/hslToRgb.js',
+	'https://raw.githubusercontent.com/w3c/csswg-drafts/main/css-color-4/hwbToRgb.js',
 ];
 
 const newHashes = await Promise.all(WATCHED_FILES.map(async urlPath => {
