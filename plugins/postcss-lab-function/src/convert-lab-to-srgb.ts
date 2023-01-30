@@ -1,5 +1,4 @@
-import { D50_to_D65, gam_sRGB, Lab_to_XYZ, lin_sRGB, lin_sRGB_to_XYZ, OKLab_to_OKLCH, OKLab_to_XYZ, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab } from './css-color-4/conversions';
-import { clip, inGamut, mapGamut } from './css-color-4/map-gamut';
+import { calculations, conversions, utils } from '@csstools/color-helpers';
 
 type color = [number, number, number];
 
@@ -33,12 +32,12 @@ export function labToSRgb(labRaw: color): color {
 
 	// https://drafts.csswg.org/css-color-4/#oklab-lab-to-predefined
 	// 1. Convert Lab to(D50 - adapted) XYZ
-	conversion = Lab_to_XYZ(conversion);
+	conversion = conversions.Lab_to_XYZ(conversion);
 
 	let oklch = conversion.slice() as color;
-	oklch = D50_to_D65(oklch);
-	oklch = XYZ_to_OKLab(oklch);
-	oklch = OKLab_to_OKLCH(oklch);
+	oklch = conversions.D50_to_D65(oklch);
+	oklch = conversions.XYZ_to_OKLab(oklch);
+	oklch = conversions.OKLab_to_OKLCH(oklch);
 	if (oklch[0] < 0.000001) {
 		oklch = [0, 0, 0] as color;
 	}
@@ -48,28 +47,28 @@ export function labToSRgb(labRaw: color): color {
 	}
 
 	// 2. If needed, convert from a D50 whitepoint(used by Lab) to the D65 whitepoint used in sRGB and most other RGB spaces, with the Bradford transform.prophoto - rgb' does not require this step.
-	conversion = D50_to_D65(conversion);
+	conversion = conversions.D50_to_D65(conversion);
 	// 3. Convert from(D65 - adapted) CIE XYZ to linear RGB
-	conversion = XYZ_to_lin_sRGB(conversion);
+	conversion = conversions.XYZ_to_lin_sRGB(conversion);
 	// 4. Convert from linear - light RGB to RGB(do gamma encoding)
-	conversion = gam_sRGB(conversion);
+	conversion = conversions.gam_sRGB(conversion);
 
-	if (inGamut(conversion)) {
-		return clip(conversion).map((x) => {
+	if (utils.inGamut(conversion)) {
+		return utils.clip(conversion).map((x) => {
 			return Math.round(x * 255);
 		}) as color;
 	}
 
-	return mapGamut(oklch, (x: color) => {
-		x = OKLCH_to_OKLab(x);
-		x = OKLab_to_XYZ(x);
-		x = XYZ_to_lin_sRGB(x);
-		return gam_sRGB(x);
+	return calculations.mapGamut(oklch, (x: color) => {
+		x = conversions.OKLCH_to_OKLab(x);
+		x = conversions.OKLab_to_XYZ(x);
+		x = conversions.XYZ_to_lin_sRGB(x);
+		return conversions.gam_sRGB(x);
 	}, (x: color) => {
-		x = lin_sRGB(x);
-		x = lin_sRGB_to_XYZ(x);
-		x = XYZ_to_OKLab(x);
-		return OKLab_to_OKLCH(x);
+		x = conversions.lin_sRGB(x);
+		x = conversions.lin_sRGB_to_XYZ(x);
+		x = conversions.XYZ_to_OKLab(x);
+		return conversions.OKLab_to_OKLCH(x);
 	}).map((x) => {
 		return Math.round(x * 255);
 	}) as color;
