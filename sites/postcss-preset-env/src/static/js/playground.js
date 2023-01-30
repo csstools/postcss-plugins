@@ -1,4 +1,4 @@
-import { EditorState, Transaction, Annotation } from '@codemirror/state';
+import { EditorState } from '@codemirror/state';
 import { EditorView } from '@codemirror/view';
 import { basicSetup } from 'codemirror';
 import { css } from '@codemirror/lang-css';
@@ -15,10 +15,22 @@ const currentConfig = {
 	minimumVendorImplementations: 0,
 	stage: 2,
 	preserve: null,
+	logical: {
+		inlineDirection: 'left-to-right',
+		blockDirection: 'top-to-bottom',
+	},
 };
 
 function processCss(source, config) {
-	return postcss([postcssPresetEnv(config)]).process(
+	let presetEnv;
+	try {
+		presetEnv = postcssPresetEnv(config);
+	} catch (err) {
+		console.warn(err);
+		return Promise.resolve();
+	}
+
+	return postcss([presetEnv]).process(
 		source,
 		{
 			form: 'input',
@@ -32,7 +44,7 @@ function processCss(source, config) {
 }
 
 function renderConfig(config) {
-	const copy = Object.assign({}, config);
+	const copy = JSON.parse(JSON.stringify(config));
 	if (!copy.preserve) {
 		delete copy.preserve;
 	}
@@ -47,6 +59,18 @@ function renderConfig(config) {
 
 	if (copy.browsers.length === 0) {
 		delete copy.browsers;
+	}
+
+	if (copy.logical.inlineDirection === 'left-to-right') {
+		delete copy.logical.inlineDirection;
+	}
+
+	if (copy.logical.blockDirection === 'top-to-bottom') {
+		delete copy.logical.blockDirection;
+	}
+
+	if (Object.keys(copy.logical).length === 0) {
+		delete copy.logical;
 	}
 
 	return `const postcssPresetEnv = require('postcss-preset-env');
@@ -78,6 +102,15 @@ a {
 	& span {
 		font-weight: bold;
 	}
+}
+
+aside {
+	margin-block-start: 1rem;
+	margin-block-end: 2rem;
+	margin-inline-start: 3rem;
+	margin-inline-end: 4rem;
+	width: 10vi;
+	height: 20vb;
 }
 
 @custom-media --tablet (min-width: 48rem);
@@ -115,20 +148,19 @@ let configState = EditorState.create({
 	],
 });
 
-let syncAnnotation = Annotation.define();
-
 function syncDispatch(tr, view, other) {
 	view.update([tr]);
-	if (!tr.changes.empty && !tr.annotation(syncAnnotation)) {
-		let annotations = [syncAnnotation.of(true)];
-		let userEvent = tr.annotation(Transaction.userEvent);
-		if (userEvent) {
-			annotations.push(Transaction.userEvent.of(userEvent));
-		}
-
+	if (!tr.changes.empty) {
 		processCss(view.state.doc, currentConfig).then((output) => {
-			let update = other.state.update({ changes: { from: 0, to: other.state.doc.length, insert: output } });
-			other.update([update]);
+			other.update([
+				other.state.update({
+					changes: {
+						from: 0,
+						to: other.state.doc.length,
+						insert: output ?? view.state.doc,
+					},
+				}),
+			]);
 		});
 	}
 }
@@ -150,8 +182,15 @@ let outputView = new EditorView({
 });
 
 processCss(inputState.doc, currentConfig).then((output) => {
-	let update = outputView.state.update({ changes: { from: 0, to: outputView.state.doc.length, insert: output } });
-	outputView.update([update]);
+	outputView.update([
+		outputView.state.update({
+			changes: {
+				from: 0,
+				to: outputView.state.doc.length,
+				insert: output ?? inputView.state.doc,
+			},
+		}),
+	]);
 });
 
 let controls = {
@@ -159,15 +198,22 @@ let controls = {
 	minimumVendorImplementations: document.getElementById('minimumVendorImplementations'),
 	stage: document.getElementById('stage'),
 	preserve: document.getElementById('preserve'),
+	inlineDirection: document.getElementById('inlineDirection'),
+	blockDirection: document.getElementById('blockDirection'),
 };
 
-controls.browsers.value = currentConfig.browsers.join(', ');
-controls.minimumVendorImplementations.value = currentConfig.minimumVendorImplementations.toString();
-controls.stage.value = currentConfig.stage.toString();
-if (currentConfig.preserve === true) {
-	controls.preserve.value = 'true';
-} else if (currentConfig.preserve === false) {
-	controls.preserve.value = 'false';
+{
+	controls.browsers.value = currentConfig.browsers.join(', ');
+	controls.minimumVendorImplementations.value = currentConfig.minimumVendorImplementations.toString();
+	controls.inlineDirection.value = currentConfig.logical.inlineDirection;
+	controls.blockDirection.value = currentConfig.logical.blockDirection;
+
+	controls.stage.value = currentConfig.stage.toString();
+	if (currentConfig.preserve === true) {
+		controls.preserve.value = 'true';
+	} else if (currentConfig.preserve === false) {
+		controls.preserve.value = 'false';
+	}
 }
 
 for (const control of Object.values(controls)) {
@@ -183,6 +229,10 @@ for (const control of Object.values(controls)) {
 		currentConfig.minimumVendorImplementations = parseInt(controls.minimumVendorImplementations.value || '0', 10);
 		currentConfig.stage = parseInt(controls.stage.value || '0', 10);
 		currentConfig.preserve = preserve;
+		currentConfig.logical = {
+			inlineDirection: controls.inlineDirection.value || 'left-to-right',
+			blockDirection: controls.blockDirection.value || 'top-to-bottom',
+		};
 
 		processCss(inputState.doc, currentConfig).then((output) => {
 			configView.update([
@@ -190,7 +240,13 @@ for (const control of Object.values(controls)) {
 			]);
 
 			outputView.update([
-				outputView.state.update({ changes: { from: 0, to: outputView.state.doc.length, insert: output } }),
+				outputView.state.update({
+					changes: {
+						from: 0,
+						to: outputView.state.doc.length,
+						insert: output ?? inputView.state.doc,
+					},
+				}),
 			]);
 		});
 	});
