@@ -1,11 +1,20 @@
 a {
 	order: 1;
+
+	order: 5;
+	order: 6;
+
+	order: 10;
+
+	order: 14;
 }
 
 @media screen, print {
 
 a {
 		order: 2;
+
+		order: 4;
 }
 	}
 
@@ -16,37 +25,15 @@ a {
 }
 		}
 
-@media screen, print {
-
-a {
-
-		order: 4;
-}
-	}
-
-a {
-
-	order: 5;
-	order: 6;
-}
-
 a b {
 		order: 7;
+
+		order: 9;
 	}
 
 a b c {
 			order: 8;
 		}
-
-a b {
-
-		order: 9;
-	}
-
-a {
-
-	order: 10;
-}
 
 body a {
 		order: 11;
@@ -59,11 +46,6 @@ html :is(body a) {
 body a {
 
 		order: 13;
-}
-
-a {
-
-	order: 14;
 }
 
 @media screen {
@@ -133,6 +115,9 @@ a b[a="a&b"] {
 .comments {
 	/* leading : 1 */
 	order: 61;
+
+	/* leading : 4 */
+	order: 64;
 	/* trailing: 2 */
 }
 .comments .comment {
@@ -142,12 +127,7 @@ a b[a="a&b"] {
 .comments .comment {
 		order: 63;
 	}
-.comments {
-
-	/* leading : 4 */
-	order: 64;
-	/* trailing: 5 */
-}
+/* trailing: 5 */
 /* nested deeper */
 .comments .comment .comment {
 			order: 65;
@@ -202,3 +182,39 @@ a b[a="a&b"] {
 .has-semi-colons-on-the-last-decl .foo {
 		order: 74.1;
 }
+
+.mixed-declarations-and-rules--a {
+
+	declaration: 1;
+}
+
+.mixed-declarations-and-rules--a {
+		nested: 1;
+	}
+
+.mixed-declarations-and-rules--b {
+	declaration: 1;
+
+	declaration: 2;
+
+	declaration: 3;
+}
+
+.mixed-declarations-and-rules--b {
+		nested: 1;
+	}
+
+@media screen {
+
+.mixed-declarations-and-rules--b {
+		nested: 2;
+	}
+	}
+
+.node-less-at-rule {
+	declaration: 1;
+
+	declaration: 2;
+}
+
+@layer foo

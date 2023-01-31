@@ -2,7 +2,21 @@
 	"name": "postcss-nesting",
 	"description": "Nest rules inside each other in CSS",
 	"version": "11.0.1",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Jonathan Neal",
+			"email": "jonathantneal@hotmail.com"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
@@ -25,8 +39,10 @@
 		}
 	},
 	"files": [
-		"dist",
-		"mod.js"
+		"CHANGELOG.md",
+		"LICENSE.md",
+		"README.md",
+		"dist"
 	],
 	"dependencies": {
 		"@csstools/selector-specificity": "^2.0.0",
@@ -35,16 +51,20 @@
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
+	"devDependencies": {
+		"puppeteer": "^19.5.2"
+	},
 	"scripts": {
 		"prebuild": "npm run clean",
 		"build": "rollup -c ../../rollup/default.mjs",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');\"",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "npm run lint:eslint && npm run lint:package-json",
 		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
 		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run clean && npm run build && npm run test",
 		"test": "node .tape.mjs && npm run test:exports",
+		"test:browser": "node ./test/_browser.mjs",
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
@@ -74,8 +94,10 @@
 		"w3c"
 	],
 	"csstools": {
+		"cssdbId": "nesting-rules",
 		"exportName": "postcssNesting",
-		"humanReadableName": "PostCSS Nesting"
+		"humanReadableName": "PostCSS Nesting",
+		"specUrl": "https://www.w3.org/TR/css-nesting-1/"
 	},
 	"volta": {
 		"extends": "../../package.json"

@@ -1,18 +1,14 @@
 a, b {
 	order: 1;
+	order: 5;
 }
 a c, b c, a d, b d {
 		order: 2;
+		order: 4;
 	}
 a c e, b c e, a d e, b d e, a c f, b c f, a d f, b d f {
 			order: 3;
 		}
-a c, b c, a d, b d {
-		order: 4;
-	}
-a, b {
-	order: 5;
-}
 a, b {
 	order: 1;
 }
@@ -32,6 +28,8 @@ a, b {
 a,
 b {
 	order: 1;
+
+	order: 5;
 }
 
 a c,
@@ -39,6 +37,8 @@ a c,
 	a d,
 	b d {
 		order: 2;
+
+		order: 4;
 	}
 
 a c e,
@@ -51,20 +51,6 @@ a c e,
 		b d f {
 			order: 3;
 		}
-
-a c,
-	b c,
-	a d,
-	b d {
-
-		order: 4;
-	}
-
-a,
-b {
-
-	order: 5;
-}
 
 .a,
 .b {
