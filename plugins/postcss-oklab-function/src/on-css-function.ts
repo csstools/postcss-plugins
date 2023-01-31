@@ -1,10 +1,7 @@
 import valueParser from 'postcss-value-parser';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode, SpaceNode } from 'postcss-value-parser';
-import { oklabToDisplayP3 } from './convert-oklab-to-display-p3';
-import { oklchToDisplayP3 } from './convert-oklch-to-display-p3';
 import { Declaration, Result } from 'postcss';
-import { oklabToSRgb } from './convert-oklab-to-srgb';
-import { oklchToSRgb } from './convert-oklch-to-srgb';
+import { conversions } from '@csstools/color-helpers';
 
 export function onCSSFunctionSRgb(node: FunctionNode) {
 	const value = node.value.toLowerCase();
@@ -34,7 +31,7 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 	const [channelDimension1, channelDimension2, channelDimension3] = channelDimensions(nodes);
 
 	/** Corresponding Color transformer. */
-	const toRGB = value === 'oklab' ? oklabToSRgb : oklchToSRgb;
+	const toRGB = value === 'oklab' ? conversions.OKLab_to_sRGB : conversions.OKLCH_to_sRGB;
 
 	/** RGB channels from the source color. */
 	const channelNumbers: [number, number, number] = [
@@ -100,7 +97,7 @@ export function onCSSFunctionDisplayP3(node: FunctionNode, decl: Declaration, re
 	const [channelDimension1, channelDimension2, channelDimension3] = channelDimensions(nodes);
 
 	/** Corresponding Color transformer. */
-	const toDisplayP3 = value === 'oklab' ? oklabToDisplayP3 : oklchToDisplayP3;
+	const toDisplayP3 = value === 'oklab' ? conversions.OKLab_to_P3 : conversions.OKLCH_to_P3;
 
 	/** RGB channels from the source color. */
 	const channelNumbers: [number, number, number] = [

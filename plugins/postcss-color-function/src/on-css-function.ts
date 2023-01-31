@@ -1,15 +1,7 @@
 import type { Declaration, Result } from 'postcss';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
 import valueParser from 'postcss-value-parser';
-import { a98RgbToSRgb } from './convert-a98-rgb-to-srgb';
-import { cieXyz50ToSRgb } from './convert-cie-xyz-50-to-srgb';
-import { cieXyz65ToSRgb } from './convert-cie-xyz-65-to-srgb';
-import { displayP3ToSRgb } from './convert-display-p3-to-srgb';
-import { prophotoRgbToSRgb } from './convert-prophoto-rgb-to-srgb';
-import { rec2020ToSRgb } from './convert-rec2020-to-srgb';
-import { sRgbLinearToSRgb } from './convert-srgb-linear-to-srgb';
-import { sRgbToSRgb } from './convert-srgb-to-srgb';
-import { inGamut } from './css-color-4/map-gamut';
+import { conversions, utils } from '@csstools/color-helpers';
 
 export function onCSSFunctionSRgb(node: FunctionNode, decl: Declaration, result: Result, preserve: boolean) {
 	const originalForWarnings = valueParser.stringify(node);
@@ -38,31 +30,31 @@ export function onCSSFunctionSRgb(node: FunctionNode, decl: Declaration, result:
 	let toRGB: (x: [number, number, number]) => [number, number, number];
 	switch (nodes.colorSpace) {
 		case 'srgb':
-			toRGB = sRgbToSRgb;
+			toRGB = conversions.sRGB_to_sRGB;
 			break;
 		case 'srgb-linear':
-			toRGB = sRgbLinearToSRgb;
+			toRGB = conversions.sRGB_linear_to_sRGB;
 			break;
 		case 'a98-rgb':
-			toRGB = a98RgbToSRgb;
+			toRGB = conversions.a98_RGB_to_sRGB;
 			break;
 		case 'prophoto-rgb':
-			toRGB = prophotoRgbToSRgb;
+			toRGB = conversions.proPhoto_RGB_to_sRGB;
 			break;
 		case 'display-p3':
-			toRGB = displayP3ToSRgb;
+			toRGB = conversions.p3_to_sRGB;
 			break;
 		case 'rec2020':
-			toRGB = rec2020ToSRgb;
+			toRGB = conversions.rec_2020_to_sRGB;
 			break;
 		case 'xyz-d50':
-			toRGB = cieXyz50ToSRgb;
+			toRGB = conversions.cie_XYZ_50_to_sRGB;
 			break;
 		case 'xyz-d65':
-			toRGB = cieXyz65ToSRgb;
+			toRGB = conversions.cie_XYZ_65_to_sRGB;
 			break;
 		case 'xyz':
-			toRGB = cieXyz65ToSRgb;
+			toRGB = conversions.cie_XYZ_65_to_sRGB;
 			break;
 		default:
 			return;
@@ -77,7 +69,7 @@ export function onCSSFunctionSRgb(node: FunctionNode, decl: Declaration, result:
 		channelNumbers,
 	);
 
-	if (!inGamut(channelNumbers) && preserve) {
+	if (!utils.inGamut(channelNumbers) && preserve) {
 		decl.warn(
 			result,
 			`"${originalForWarnings}" is out of gamut for "${nodes.colorSpace}". Given "preserve: true" is set, this will lead to unexpected results in some browsers.`,
