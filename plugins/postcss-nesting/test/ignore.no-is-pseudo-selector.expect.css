@@ -1,9 +1,9 @@
 a, b {
 	order: 1;
-	c, d {
+}
+a c, b c, a d, b d {
 		order: 2;
 	}
-}
 & e {
 	order: 3;
 }

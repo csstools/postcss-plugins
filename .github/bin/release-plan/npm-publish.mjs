@@ -5,7 +5,9 @@ export async function npmPublish(packageDirectory, packageName) {
 		const publishCmd = spawn(
 			'npm',
 			[
-				'publish'
+				'publish',
+				'--access',
+				'public'
 			],
 			{
 				stdio: 'inherit',

@@ -161,31 +161,30 @@ __bar.foo {
 /* No & at all */
 .foo {
 	color: blue;
-
-	.bar {
+}
+.foo .bar {
 		color: red;
 	}
-}
 
 /* & isn’t the first simple selector */
 .foo {
 	color: blue;
-
-	.bar& {
+}
+.bar.foo {
 		color: red;
 	}
-}
 
 /* & isn’t the first selector of every one in the list */
 .foo,
 .bar {
 	color: blue;
-
-	&+.baz,
-	.qux {
+}
+.foo+.baz,
+	.bar+.baz,
+	.foo .qux,
+	.bar .qux {
 		color: red;
 	}
-}
 
 /* Example 4 */
 .foo {
@@ -333,13 +332,10 @@ __bar.foo {
 
 @media (min-width: 480px) {
 
-.foo {
-
-		& h1,
-		h2 {
+		.foo h1,
+		.foo h2 {
 			color: blue;
 		}
-}
 	}
 
 /* Invalid because not all selectors in the list
@@ -361,29 +357,29 @@ __bar.foo {
 /* Example 7 */
 article {
 	color: green;
-}
-article {
-		color: blue;
 
 	/*
 		NOTE : We are more forgiving than the spec
 		This declaration is preserved
 	*/
 	color: red;
+}
+article {
+		color: blue;
 	}
 
 article {
 	color: green;
-}
-
-article {
-		color: blue;
 
 	/*
 		NOTE : We are more forgiving than the spec
 		This declaration is preserved
 	*/
 	color: red;
+}
+
+article {
+		color: blue;
 	}
 
 article.foo {

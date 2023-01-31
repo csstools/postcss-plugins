@@ -37,7 +37,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"postcss-lab-function": "^4.0.3"
+		"postcss-lab-function": "^5.0.0"
 	},
 	"scripts": {
 		"prebuild": "npm run clean",

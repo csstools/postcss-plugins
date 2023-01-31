@@ -4,8 +4,9 @@ import { combinationsWithSizeN } from './combinations-of-size-n';
 import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
 import { nodesAreEquallySpecific } from './specificity';
 import { options } from '../options';
+import type { Node, Result } from 'postcss';
 
-export default function mergeSelectors(fromSelectors: Array<string>, toSelectors: Array<string>, opts: options) {
+export default function mergeSelectors(node: Node, postcssResult: Result, fromSelectors: Array<string>, toSelectors: Array<string>, opts: options, fromAtNest = false) {
 	const fromListHasUniformSpecificity = nodesAreEquallySpecific(fromSelectors);
 
 	let fromSelectorsAST = [];
@@ -21,7 +22,44 @@ export default function mergeSelectors(fromSelectors: Array<string>, toSelectors
 	const result = [];
 
 	for (let x = 0; x < toSelectors.length; x++) {
-		const toSelector = toSelectors[x];
+		let toSelector = toSelectors[x];
+
+		{
+			const toSelectorAST = parser().astSync(toSelector);
+
+			if (!fromAtNest) {
+				if (x === 0 && toSelectorAST.nodes?.[0]?.nodes?.[0]?.type === 'tag') {
+					node.warn(postcssResult, `Nested selectors must start with a symbol : "${toSelectors[x]}"`);
+				}
+			}
+
+			let isNestContaining = false;
+			toSelectorAST.walk((maybeNesting) => {
+				if (maybeNesting.type === 'nesting') {
+					isNestContaining = true;
+				}
+			});
+
+			const selectorAST = toSelectorAST.nodes[0];
+			let startsWithCombinator = false;
+			selectorAST.each((maybeCombinator) => {
+				if (maybeCombinator.type === 'combinator') {
+					startsWithCombinator = true;
+					return false;
+				}
+
+				return false;
+			});
+
+			if (!isNestContaining) {
+				selectorAST.insertBefore(selectorAST.at(0), parser.combinator({ value: ' ' }));
+				selectorAST.insertBefore(selectorAST.at(0), parser.nesting({}));
+			} else if (startsWithCombinator) {
+				selectorAST.insertBefore(selectorAST.at(0), parser.nesting({}));
+			}
+
+			toSelector = toSelectorAST.toString();
+		}
 
 		let iterations = 1;
 		let fromSelectorCombinations = [];

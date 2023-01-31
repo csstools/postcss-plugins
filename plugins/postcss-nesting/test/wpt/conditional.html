@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<title>Conditional</title>
+<link rel="author" title="Adam Argyle" href="mailto:argyle@google.com">
+<link rel="help" href="https://drafts.csswg.org/css-nesting-1/">
+<link rel="match" href="conditional-properties-ref.html">
+
+<!-- conditional-properties.html -->
+<!-- conditional-rules.html -->
+<style>
+	.test {
+		background-color: red;
+		width: 100px;
+		height: 100px;
+		display: grid;
+	}
+
+	body *+* {
+		margin-top: 8px;
+	}
+</style>
+
+<body>
+	<p>Tests pass if <strong>block is green</strong></p>
+	<target class="test test-5">
+		<div></div>
+	</target>
+	<target class="test test-10">
+		<div></div>
+	</target>
+
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			var testCases = [
+				{
+					title: 'Properties in nested conditional rules',
+					style: `
+						.test-5 {
+							@media (min-width: 50px) {
+								background-color: green;
+							}
+						}
+
+						.test-10 {
+							@supports (display: grid) {
+								background-color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Conditional rules with nesting',
+					style: `
+						.test-5 {
+							@media (min-width: 50px) {
+								& {
+									background-color: green;
+								}
+							}
+						}
+
+						.test-10 {
+							@supports (display: grid) {
+								& {
+									background-color: green;
+								}
+							}
+						}
+					`,
+				}
+			];
+
+			for (let testCase of testCases) {
+				const styleElement = document.createElement('style');
+
+				const testCaseStyle = await (fetch(`/test/styles.css`, {
+					method: 'POST',
+					body: testCase['style'],
+				}).then((response) => response.text()));
+
+				styleElement.textContent = testCaseStyle;
+				document.head.append(styleElement);
+
+				var targets = document.querySelectorAll('target');
+				for (let target of targets) {
+					const computedStyle = window.getComputedStyle(target);
+					assert_equals(
+						computedStyle.backgroundColor,
+						'rgb(0, 128, 0)',
+						testCase['title'] + ", target '" + target.className + "'"
+					);
+				}
+
+				styleElement.remove();
+			}
+
+			return true;
+		}
+	</script>
+</body>
