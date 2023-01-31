@@ -51,9 +51,3 @@
 	@todo-or-die before-date(3022 01 02), browserslist("last 10 Safari versions");
 	order: 6;
 }
-
-@todo-or-die issue-open("romainmenke/repository-with-an-open-issue" 1) {
-	.baz {
-		order: 7;
-	}
-}

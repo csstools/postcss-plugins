@@ -6,18 +6,14 @@ import { isCommentNode, isFunctionNode, isWhitespaceNode, parseCommaSeparatedLis
 import { matchBeforeDateCondition } from './match/before-date';
 import { matchBrowserslistCondition } from './match/browserslist';
 import { matchIfCondition } from './match/if';
-import { matchIssueOpenCondition } from './match/issue-open';
 import { matchNotCondition } from './match/not';
 import { parseBeforeDateCondition } from './parse/before-data';
 import { parseBrowserslistCondition } from './parse/browserslist';
 import { parseIfCondition } from './parse/if';
-import { parseIssueOpenCondition } from './parse/issue-open';
 import { parseNotCondition } from './parse/not';
 
 const creator: PluginCreator<never> = () => {
 	const browsers = new Set(browserslist());
-
-	const cache: Map<string, string> = new Map();
 
 	return {
 		postcssPlugin: 'postcss-todo-or-die',
@@ -132,20 +128,6 @@ const creator: PluginCreator<never> = () => {
 							}
 
 							const conditionResult = matchBeforeDateCondition(conditionParams.year, conditionParams.month, conditionParams.day);
-							if (died(conditionResult)) {
-								throw atRule.error(conditionResult);
-							}
-
-							break;
-						}
-						case 'issue-open': {
-							const conditionParams = parseIssueOpenCondition(todoOrDieCondition[0]);
-							if (!conditionParams) {
-								atRule.warn(result, 'Incorrect arguments in `issue-open()` function.');
-								return;
-							}
-
-							const conditionResult = await matchIssueOpenCondition(conditionParams.repository, conditionParams.issue, cache);
 							if (died(conditionResult)) {
 								throw atRule.error(conditionResult);
 							}

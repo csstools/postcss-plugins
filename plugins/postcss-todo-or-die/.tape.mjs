@@ -39,14 +39,3 @@ postcssTape(plugin)({
 		message: 'minimal example',
 	},
 });
-
-// In this seems to sometimes randomly fail.
-// Most likely because we are hitting a rate limiter.
-if (!process.env.GITHUB_ACTIONS) {
-	postcssTape(plugin)({
-		'issue-open': {
-			message: "throws",
-			exception: /Died because issue 2 in romainmenke\/repository-with-an-open-issue was closed/
-		},
-	});
-}
