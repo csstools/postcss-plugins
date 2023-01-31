@@ -1,5 +1,5 @@
 # Changes to PostCSS Todo or Die
 
-### 1.0.0 (Unreleased)
+### Unreleased (major)
 
 - Initial version
