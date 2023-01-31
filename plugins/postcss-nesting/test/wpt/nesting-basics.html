@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<title>Basic nesting</title>
+<link rel="author" title="Adam Argyle" href="mailto:argyle@google.com">
+<link rel="help" href="https://drafts.csswg.org/css-nesting-1/">
+<link rel="match" href="nesting-basic-ref.html">
+<style>
+	.test {
+		background-color: red;
+		width: 100px;
+		height: 100px;
+		display: grid;
+	}
+
+	body *+* {
+		margin-top: 8px;
+	}
+
+</style>
+
+<body>
+	<p>Tests pass if <strong>block is green</strong></p>
+	<div class="test test-1">
+		<target></target>
+	</div>
+	<div class="test test-2">
+		<target></target>
+	</div>
+	<div class="test test-3">
+		<target class="test-3-child"></target>
+	</div>
+	<div class="test test-4">
+		<section>
+			<span><target></target></span>
+		</section>
+	</div>
+	<target class="test test-6">
+		<div></div>
+	</target>
+	<target class="test t7- t7--">
+		<div class="test-7-child"></div>
+	</target>
+	<target class="test test-8">
+		<div></div>
+	</target>
+	<target class="test test-9 t9-- t9-">
+		<div></div>
+	</target>
+	<target class="test test-10">
+		<div></div>
+	</target>
+	<target class="test test-11">
+		<div></div>
+	</target>
+
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			var testCases = [
+				{
+					title: 'Nesting basics',
+					style: `
+							.test-1 {
+								&>target {
+									background-color: green;
+								}
+							}
+
+							.test-2 {
+								&>target {
+									background-color: green;
+								}
+							}
+
+							.test-3 {
+								& .test-3-child {
+									background-color: green;
+								}
+							}
+
+							span>target {
+								.test-4 section & {
+									display: inline-block;
+									background-color: green;
+									width: 100%;
+									height: 100%;
+								}
+
+								.test-4 section>& {
+									background-color: red;
+								}
+							}
+
+							.test-6 {
+								&.test {
+									background-color: green;
+								}
+							}
+
+							.test-7,
+							.t7- {
+
+								&+.test-7-child,
+								&.t7-- {
+									background-color: green;
+								}
+							}
+
+							.test-8 {
+								& {
+									background-color: green;
+								}
+							}
+
+							.test-9 {
+								&:is(.t9-, &.t9--) {
+									background-color: green;
+								}
+							}
+
+							.test-10 {
+								& {
+									background-color: green;
+								}
+
+								background-color: red;
+							}
+
+							.test-11 {
+								& {
+									background-color: red;
+								}
+
+								background-color: green !important;
+							}
+						`,
+				},
+			];
+
+			for (let testCase of testCases) {
+				const styleElement = document.createElement('style');
+
+				const testCaseStyle = await (fetch(`/test/styles.css`, {
+					method: 'POST',
+					body: testCase['style'],
+				}).then((response) => response.text()));
+
+				styleElement.textContent = testCaseStyle;
+				document.head.append(styleElement);
+
+				var targets = document.querySelectorAll('target');
+				for (let target of targets) {
+					const computedStyle = window.getComputedStyle(target);
+					assert_equals(
+						computedStyle.backgroundColor,
+						'rgb(0, 128, 0)',
+						testCase['title'] + ", target '" + target.className + "'"
+					);
+				}
+
+				styleElement.remove();
+			}
+
+			return true;
+		}
+	</script>
+</body>

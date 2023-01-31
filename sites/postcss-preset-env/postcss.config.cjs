@@ -12,12 +12,8 @@ module.exports = ctx => {
 			},
 			'postcss-preset-env': {
 				stage: 0,
-				preserve: true,
 				features: {
 					'custom-properties': false,
-					'custom-media-queries': {
-						preserve: false,
-					},
 				},
 			},
 			'cssnano': isProd ? {

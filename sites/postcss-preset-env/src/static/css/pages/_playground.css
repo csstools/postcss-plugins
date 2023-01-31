@@ -1,15 +1,98 @@
 .ppe-playground {
+	background-color: #1d1f25;
 	display: flex;
-}
-
-.ppe-codepen {
-	background-color: #1b2b34;
-	min-height: calc(100vh - var(--heading-size));
 	width: 100%;
-}
 
-@media (--from-medium) {
-	.ppe-codepen {
-		min-height: calc(100vh - var(--heading-size-from-medium));
+	@nest body:has(&) {
+		background-color: #1d1f25;
+	}
+
+	& .editors-container {
+		display: grid;
+		gap: var(--space-20);
+		grid-template-areas:
+			"controls"
+			"input"
+			"output"
+			"config";
+		grid-template-columns: 100%;
+		width: 100%;
+
+		@media (--from-wide) {
+			grid-template-areas:
+				"controls controls"
+				"input output"
+				"config output";
+			grid-template-rows: auto calc(65% - 40px) calc(35% - 40px);
+			grid-template-columns: calc(50% - var(--space-10)) calc(50% - var(--space-10));
+			height: calc(100vh - var(--heading-size-from-medium));
+		}
+	}
+
+	& #controls {
+		background-color: #282c34;
+		color: white;
+		grid-area: controls;
+		padding-inline: var(--space-10);
+
+		@media (--from-medium) {
+			padding-inline: var(--space-20);
+		}
+
+		@media (--from-wide) {
+			padding-inline: var(--space-25);
+		}
+	}
+
+	& #controls fieldset {
+		border: none;
+		display: inline-block;
+		margin: 7px 0;
+		outline: none;
+		padding: 0;
+	}
+
+	& #controls fieldset:not(:last-child) {
+		margin-right: var(--space-40);
+
+		@media (--from-wide) {
+			margin-right: var(--space-40);
+		}
+	}
+
+	& #controls input[type="number"] {
+		width: 50px;
+
+		@media (--from-wide) {
+			width: 50px;
+		}
+	}
+
+	& #browsers {
+		width: 250px;
+
+		@media (--from-wide) {
+			width: 250px;
+		}
+	}
+
+	& #input-editor {
+		grid-area: input;
+	}
+
+	& #config-editor {
+		grid-area: config;
+	}
+
+	& #output-editor {
+		grid-area: output;
+	}
+
+	& .cm-editor {
+		height: 100%;
+
+		@media (--from-wide) {
+			height: 100%;
+		}
 	}
 }

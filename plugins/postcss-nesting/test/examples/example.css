@@ -1,0 +1,15 @@
+.foo {
+	color: red;
+
+	&:hover {
+		color: green;
+	}
+
+	> .bar {
+		color: blue;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		color: cyan;
+	}
+}

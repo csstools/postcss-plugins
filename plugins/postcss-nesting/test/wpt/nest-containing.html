@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<title>Nest-containing</title>
+<link rel="author" title="Steinar H. Gunderson" href="mailto:sesse@chromium.org">
+<link rel="help" href="https://drafts.csswg.org/css-nesting-1/">
+<style>
+	.test {
+		background-color: red;
+		width: 100px;
+		height: 100px;
+		display: grid;
+	}
+
+	body *+* {
+		margin-top: 8px;
+	}
+</style>
+
+<body>
+	<p>Tests pass if <strong>block is green</strong></p>
+	<div class="test test-1">
+		<target></target>
+	</div>
+
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			var testCases = [
+				{
+					title: 'Nest containing (A)',
+					style: `
+						.test-1 target {
+							background-color: green;
+						}
+
+						.test-1 target {
+							:is(target, .does-not-exist) {
+								background-color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Nest containing (B)',
+					style: `
+						.test-1 target {
+							&:is(target, .does-not-exist) {
+								background-color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Nest containing (C)',
+					style: `
+						.test-1 target {
+							:is(&target, .does-not-exist) {
+								background-color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Nest-containing in forgiving parsing',
+					style: `
+						.does-not-exist {
+							:is(.test-1 target, &::unknown-pseudo-element) {
+								background-color: green;
+							}
+						}
+					`,
+				},
+			];
+
+			for (let testCase of testCases) {
+				const styleElement = document.createElement('style');
+
+				const testCaseStyle = await (fetch(`/test/styles.css`, {
+					method: 'POST',
+					body: testCase['style'],
+				}).then((response) => response.text()));
+
+				styleElement.textContent = testCaseStyle;
+				document.head.append(styleElement);
+
+				var targets = document.querySelectorAll('target');
+				for (let target of targets) {
+					const computedStyle = window.getComputedStyle(target);
+					assert_equals(
+						computedStyle.backgroundColor,
+						'rgb(0, 128, 0)',
+						testCase['title'] + ", target '" + target.className + "'"
+					);
+				}
+
+				styleElement.remove();
+			}
+
+			return true;
+		}
+	</script>
+</body>
