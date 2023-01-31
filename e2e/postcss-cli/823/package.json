@@ -1,0 +1,22 @@
+{
+	"name": "@csstools/e2e--issue-823",
+	"version": "0.0.0",
+	"private": true,
+	"description": "https://github.com/csstools/postcss-plugins/issues/823",
+	"scripts": {
+		"build": "postcss style.css -o ./result.css",
+		"test": "node ./test.mjs"
+	},
+	"devDependencies": {
+		"postcss-custom-media": "9.1.1",
+		"postcss-import": "15.1.0",
+		"postcss-modules-values": "4.0.0",
+		"postcss-normalize": "10.0.1",
+		"postcss-preset-env": "8.0.1",
+		"postcss": "8.4.21",
+		"postcss-cli": "^10.1.0"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
+}

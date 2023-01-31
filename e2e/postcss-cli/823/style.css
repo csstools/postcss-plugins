@@ -1,0 +1,7 @@
+@custom-media --md-min (min-width: 768px);
+
+@media (--md-min) {
+	.profile {
+		display: grid;
+	}
+}
