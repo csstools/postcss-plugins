@@ -1,5 +1,9 @@
 # Changes to PostCSS Text Decoration Shorthand
 
+### Unreleased (minor)
+
+- Add: `@csstools/color-helpers` dependency for the named colors list.
+
 ### 2.1.0 (January 28, 2023)
 
 - Add: support for multiple line values (`text-decoration: overline underline;`)

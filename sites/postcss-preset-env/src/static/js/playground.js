@@ -99,7 +99,7 @@ a {
 		color: oklch(40% 0.268735435 34.568626);
 	}
 
-	& span {
+	> span {
 		font-weight: bold;
 	}
 }

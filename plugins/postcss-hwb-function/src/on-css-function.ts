@@ -1,6 +1,6 @@
 import valueParser from 'postcss-value-parser';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode } from 'postcss-value-parser';
-import { hwbToRgb } from './hwb';
+import { conversions } from '@csstools/color-helpers';
 
 export function onCSSFunctionSRgb(node: FunctionNode) {
 	const rawNodes = node.nodes;
@@ -35,9 +35,9 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 		channelNumber => parseFloat(channelNumber),
 	) as [number, number, number];
 
-	const rgbValues = hwbToRgb(
+	const rgbValues = conversions.HWB_to_sRGB(
 		channelNumbers,
-	);
+	).map((x) => Math.round(x * 255));
 
 	node.nodes.splice(node.nodes.indexOf(channelNode1) + 1, 0, commaNode());
 	node.nodes.splice(node.nodes.indexOf(channelNode2) + 1, 0, commaNode());

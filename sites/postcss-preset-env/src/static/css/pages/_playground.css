@@ -3,7 +3,7 @@
 	display: flex;
 	width: 100%;
 
-	@nest body:has(&) {
+	:is(body):has(&) {
 		background-color: #1d1f25;
 	}
 

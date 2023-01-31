@@ -57,7 +57,7 @@ const allFiles = (await getFiles('./')).filter((file) => {
 
 		for (const line of lines) {
 			if (line.includes('@license')) {
-				if (line === ' * @license W3C') {
+				if (line.startsWith(' * @license W3C')) {
 					// W3C license is ok
 					continue;
 				}

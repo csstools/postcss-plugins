@@ -1,10 +1,7 @@
 import type { FunctionNode, Dimension, Node, DivNode, WordNode, SpaceNode } from 'postcss-value-parser';
 import valueParser from 'postcss-value-parser';
 import { Declaration, Result } from 'postcss';
-import { labToDisplayP3 } from './convert-lab-to-display-p3';
-import { labToSRgb } from './convert-lab-to-srgb';
-import { lchToDisplayP3 } from './convert-lch-to-display-p3';
-import { lchToSRgb } from './convert-lch-to-srgb';
+import { conversions } from '@csstools/color-helpers';
 
 export function onCSSFunctionSRgb(node: FunctionNode) {
 	const value = node.value.toLowerCase();
@@ -34,7 +31,7 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 	const [channelDimension1, channelDimension2, channelDimension3] = channelDimensions(nodes);
 
 	/** Corresponding Color transformer. */
-	const toRGB = value === 'lab' ? labToSRgb : lchToSRgb;
+	const toRGB = value === 'lab' ? conversions.Lab_to_sRGB : conversions.LCH_to_sRGB;
 
 	/** RGB channels from the source color. */
 	const channelNumbers: [number, number, number] = [
@@ -100,7 +97,7 @@ export function onCSSFunctionDisplayP3(node: FunctionNode, decl: Declaration, re
 	const [channelDimension1, channelDimension2, channelDimension3] = channelDimensions(nodes);
 
 	/** Corresponding Color transformer. */
-	const toDisplayP3 = value === 'lab' ? labToDisplayP3 : lchToDisplayP3;
+	const toDisplayP3 = value === 'lab' ? conversions.Lab_to_P3 : conversions.LCH_to_P3;
 
 	/** RGB channels from the source color. */
 	const channelNumbers: [number, number, number] = [
