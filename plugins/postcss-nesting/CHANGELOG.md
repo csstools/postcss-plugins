@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### Unreleased (minor)
+### 11.1.0 (January 31, 2023)
 
 - Implement latest specification
   - relative selector syntax
