@@ -138,29 +138,9 @@
 @supports (color: color(srgb 0 0 0)) {
 :root {
 	--color-1: color(srgb 0.64331 0.19245 0.16771);
-}
-}
-
-@supports (color: color(srgb 0 0 0)) {
-:root {
 	--color-2: color(srgb 0.64331 0.19245 0.16771 / 50);
-}
-}
-
-@supports (color: color(srgb 0 0 0)) {
-:root {
 	--color-3: color(srgb 0.64331 0.19245 0.16771 / var(--opacity-50));
-}
-}
-
-@supports (color: color(srgb 0 0 0)) {
-:root {
 	--color-4: color(srgb 0.64331 var(--point-5) 0.16771 / var(--opacity-50));
-}
-}
-
-@supports (color: color(srgb 0 0 0)) {
-:root {
 	--color-5: color(srgb 0.64331   0.19245 0.16771 / calc(1 / 2));
 }
 }
@@ -224,41 +204,11 @@
 @supports (color: color-mix(in oklch, #000, #fff)) {
 :root {
 	--color-mix-1: color-mix(in lch, purple 50%, plum 50%);
-}
-}
-
-@supports (color: color-mix(in oklch, #000, #fff)) {
-:root {
 	--color-mix-2: color-mix(in lch longer, purple 50%, plum 50%);
-}
-}
-
-@supports (color: color-mix(in oklch, #000, #fff)) {
-:root {
 	--color-mix-3: color-mix(in lab, purple 50%, plum 50%);
-}
-}
-
-@supports (color: color-mix(in oklch, #000, #fff)) {
-:root {
 	--color-mix-4: color-mix(in srgb, purple, plum 50%);
-}
-}
-
-@supports (color: color-mix(in oklch, #000, #fff)) {
-:root {
 	--color-mix-5: color-mix(in srgb-linear, purple 50%, plum);
-}
-}
-
-@supports (color: color-mix(in oklch, #000, #fff)) {
-:root {
 	--color-mix-6: color-mix(in xyz, purple, plum);
-}
-}
-
-@supports (color: color-mix(in oklch, #000, #fff)) {
-:root {
 	--color-mix-7: color-mix(
 		/* color space */
 		in xyz,

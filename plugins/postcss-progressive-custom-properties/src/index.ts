@@ -1,11 +1,12 @@
-import type { PluginCreator } from 'postcss';
+import type { AtRule, PluginCreator, Rule } from 'postcss';
 import { supportConditionsFromValue } from './support-conditions-from-values';
 
 const creator: PluginCreator<null> = () => {
 	return {
 		postcssPlugin: 'postcss-progressive-custom-properties',
 		RuleExit: (rule, { postcss }) => {
-			const atSupportsRules = [];
+			const atSupportsRules: Array<AtRule> = [];
+			const parentRuleClones: Map<AtRule, Rule> = new Map();
 			const variableNames = new Set<string>();
 
 			rule.each((decl) => {
@@ -38,10 +39,23 @@ const creator: PluginCreator<null> = () => {
 					return;
 				}
 
+				const params = supportConditions.join(' and ');
+
+				if (atSupportsRules.length && atSupportsRules[atSupportsRules.length - 1].params === params) {
+					const atSupports = atSupportsRules[atSupportsRules.length - 1];
+					const parentClone = parentRuleClones.get(atSupports);
+
+					if (parentClone) {
+						parentClone.append(decl.clone());
+						decl.remove();
+						return;
+					}
+				}
+
 				// Any subsequent properties are progressive enhancements.
 				const atSupports = postcss.atRule({
 					name: 'supports',
-					params: supportConditions.join(' and '),
+					params: params,
 					source: rule.source,
 					raws: {
 						before: '\n\n',
@@ -57,6 +71,7 @@ const creator: PluginCreator<null> = () => {
 				parentClone.append(decl.clone());
 				decl.remove();
 
+				parentRuleClones.set(atSupports, parentClone);
 				atSupports.append(parentClone);
 				atSupportsRules.push(atSupports);
 			});
