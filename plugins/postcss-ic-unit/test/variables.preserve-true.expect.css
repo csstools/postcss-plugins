@@ -7,11 +7,6 @@
 @supports (font-size: 1ic) {
 :root {
 	--one: 1ic;
-}
-}
-
-@supports (font-size: 1ic) {
-:root {
 	--two: .5ic;
 }
 }
