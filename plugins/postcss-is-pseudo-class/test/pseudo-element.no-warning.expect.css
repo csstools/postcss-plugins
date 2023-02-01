@@ -2,23 +2,19 @@
 	order: 1.0;
 }
 
-.some:focus {
-	order: 1.1;
-}
-
 ::-csstools-invalid-after:not(.does-not-exist):focus {
 	order: 1.1;
 }
 
 .some:focus {
-	order: 1.2;
-}
-
-.other:focus {
-	order: 1.2;
+	order: 1.1;
 }
 
 ::-csstools-invalid-after:not(.does-not-exist):focus {
+	order: 1.2;
+}
+
+.some:focus, .other:focus {
 	order: 1.2;
 }
 

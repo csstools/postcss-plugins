@@ -1,49 +1,5 @@
-input[active]:hover > b {
+input[active]:hover > b, input[active]:focus > b, button[active]:hover > b, button[active]:focus > b {
 	order: 1;
-}
-
-input[active]:focus > b {
-	order: 1;
-}
-
-button[active]:hover > b {
-	order: 1;
-}
-
-button[active]:focus > b {
-	order: 1;
-}
-
-input.a[active]:hover > b {
-	order: 2;
-}
-
-input.b[active]:hover > b {
-	order: 2;
-}
-
-input.c[active]:hover > b {
-	order: 2;
-}
-
-input.d[active]:hover > b {
-	order: 2;
-}
-
-input.a[active]:focus > b {
-	order: 2;
-}
-
-input.b[active]:focus > b {
-	order: 2;
-}
-
-input.c[active]:focus > b {
-	order: 2;
-}
-
-input.d[active]:focus > b {
-	order: 2;
 }
 
 input.a[active]:focus-within > b {
@@ -59,38 +15,6 @@ input.c[active]:focus-within > b {
 }
 
 input.d[active]:focus-within > b {
-	order: 2;
-}
-
-button.a[active]:hover > b {
-	order: 2;
-}
-
-button.b[active]:hover > b {
-	order: 2;
-}
-
-button.c[active]:hover > b {
-	order: 2;
-}
-
-button.d[active]:hover > b {
-	order: 2;
-}
-
-button.a[active]:focus > b {
-	order: 2;
-}
-
-button.b[active]:focus > b {
-	order: 2;
-}
-
-button.c[active]:focus > b {
-	order: 2;
-}
-
-button.d[active]:focus > b {
 	order: 2;
 }
 
@@ -110,83 +34,35 @@ button.d[active]:focus-within > b {
 	order: 2;
 }
 
-a:hover {
+input.a[active]:hover > b, input.b[active]:hover > b, input.c[active]:hover > b, input.d[active]:hover > b, input.a[active]:focus > b, input.b[active]:focus > b, input.c[active]:focus > b, input.d[active]:focus > b, button.a[active]:hover > b, button.b[active]:hover > b, button.c[active]:hover > b, button.d[active]:hover > b, button.a[active]:focus > b, button.b[active]:focus > b, button.c[active]:focus > b, button.d[active]:focus > b {
+	order: 2;
+}
+
+a:hover, a:focus, button:hover, button:focus {
 	order: 3;
 }
 
-a:focus {
-	order: 3;
-}
-
-button:hover {
-	order: 3;
-}
-
-button:focus {
-	order: 3;
-}
-
-a:hover {
+a:hover, button:hover, a:focus, button:focus {
 	order: 4;
-}
-
-button:hover {
-	order: 4;
-}
-
-a:focus {
-	order: 4;
-}
-
-button:focus {
-	order: 4;
-}
-
-button:hover {
-	order: 5;
-}
-
-button:focus {
-	order: 5;
 }
 
 button:focus-within {
 	order: 5;
 }
 
-:not(.some) {
+button:hover, button:focus {
+	order: 5;
+}
+
+:not(.some, .other) {
 	order: 6;
 }
 
-:not(.other) {
-	order: 6;
-}
-
-.button:hover {
+.button:hover, button:hover:not(.does-not-exist), .button:focus, button:focus:not(.does-not-exist) {
 	order: 7;
 }
 
-button:hover:not(.does-not-exist) {
-	order: 7;
-}
-
-.button:focus {
-	order: 7;
-}
-
-button:focus:not(.does-not-exist) {
-	order: 7;
-}
-
-button:hover {
-	order: 8;
-}
-
-button:focus {
-	order: 8;
-}
-
-input {
+button:hover, button:focus, input {
 	order: 8;
 }
 
@@ -218,19 +94,7 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 15;
 }
 
-.alpha:focus > .beta + .beta {
-	order: 16;
-}
-
-.alpha:focus > .beta + .two {
-	order: 16;
-}
-
-.one:focus > .two + .beta {
-	order: 16;
-}
-
-.one:focus > .two + .two {
+.alpha:focus > .beta + .beta, .alpha:focus > .beta + .two, .one:focus > .two + .beta, .one:focus > .two + .two {
 	order: 16;
 }
 
@@ -238,27 +102,7 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 17;
 }
 
-.alpha .beta > h1:not([attr*="foo-"]) {
-	order: 18;
-}
-
-.alpha .beta > h2:not([attr*="foo-"]) {
-	order: 18;
-}
-
-.alpha .beta > h3:not([attr*="foo-"]) {
-	order: 18;
-}
-
-.alpha .beta > h4:not([attr*="foo-"]) {
-	order: 18;
-}
-
-.alpha .beta > h5:not([attr*="foo-"]) {
-	order: 18;
-}
-
-.alpha .beta > h6:not([attr*="foo-"]) {
+.alpha .beta > h1:not([attr*="foo-"]), .alpha .beta > h2:not([attr*="foo-"]), .alpha .beta > h3:not([attr*="foo-"]), .alpha .beta > h4:not([attr*="foo-"]), .alpha .beta > h5:not([attr*="foo-"]), .alpha .beta > h6:not([attr*="foo-"]) {
 	order: 18;
 }
 
@@ -274,15 +118,7 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 21;
 }
 
-a:not(.does-not-exist) {
-	order: 22;
-}
-
-.e a {
-	order: 22;
-}
-
-.e b {
+a:not(.does-not-exist), .e a, .e b {
 	order: 22;
 }
 
@@ -294,19 +130,7 @@ a:not(.does-not-exist) {
 	order: 24;
 }
 
-a:hover {
-	order: 25;
-}
-
-a:focus {
-	order: 25;
-}
-
-button:hover {
-	order: 25;
-}
-
-button:focus {
+a:hover, a:focus, button:hover, button:focus {
 	order: 25;
 }
 
@@ -326,19 +150,7 @@ button:focus::before {
 	order: 26;
 }
 
-a:hover {
-	order: 27;
-}
-
-a:focus {
-	order: 27;
-}
-
-button:hover {
-	order: 27;
-}
-
-button:focus {
+a:hover, a:focus, button:hover, button:focus {
 	order: 27;
 }
 
@@ -358,11 +170,11 @@ button:focus:before {
 	order: 28;
 }
 
-.bar:not(.does-not-exist) {
+.foo:lang(ae, ar, arc, bcc, bqi, ckb, dv, fa, glk, he, ku, mzn, nqo, pnb, ps, sd, ug, ur, yi) {
 	order: 29;
 }
 
-.foo:lang(ae, ar, arc, bcc, bqi, ckb, dv, fa, glk, he, ku, mzn, nqo, pnb, ps, sd, ug, ur, yi) {
+.bar:not(.does-not-exist) {
 	order: 29;
 }
 
@@ -382,23 +194,7 @@ button:focus:before {
 	order: 31;
 }
 
-ol:hover > li.foo {
-	order: 32
-}
-
-ol:hover > li.bar {
-	order: 32
-}
-
-ol:focus > li.foo {
-	order: 32
-}
-
 ol:focus-visible > li.foo {
-	order: 32
-}
-
-ol:focus > li.bar {
 	order: 32
 }
 
@@ -406,23 +202,7 @@ ol:focus-visible > li.bar {
 	order: 32
 }
 
-ul:hover > li.foo {
-	order: 32
-}
-
-ul:hover > li.bar {
-	order: 32
-}
-
-ul:focus > li.foo {
-	order: 32
-}
-
 ul:focus-visible > li.foo {
-	order: 32
-}
-
-ul:focus > li.bar {
 	order: 32
 }
 
@@ -430,18 +210,30 @@ ul:focus-visible > li.bar {
 	order: 32
 }
 
-.all.mixed:not(.does-not-exist):not(.does-not-exist) {
+ol:hover > li.foo, ol:hover > li.bar, ol:focus > li.foo, ol:focus > li.bar, ul:hover > li.foo, ul:hover > li.bar, ul:focus > li.foo, ul:focus > li.bar {
+	order: 32
+}
+
+.all.mixed:not(.does-not-exist):not(.does-not-exist),.all.caps.nested:focus,.caps.mixed:not(.does-not-exist):not(.does-not-exist),.caps.caps.nested:focus {
 	order: 33;
 }
 
-.all.caps.nested:focus {
-	order: 33;
+:not(h1, h2, h3) {
+	order: 34;
 }
 
-.caps.mixed:not(.does-not-exist):not(.does-not-exist) {
-	order: 33;
+:not(h1, h2, h3) {
+	order: 35;
 }
 
-.caps.caps.nested:focus {
-	order: 33;
+:has(h1) {
+	order: 36;
+}
+
+:has(h2) {
+	order: 36;
+}
+
+:has(h3) {
+	order: 36;
 }

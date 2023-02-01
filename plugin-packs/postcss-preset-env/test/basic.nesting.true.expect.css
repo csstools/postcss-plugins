@@ -77,7 +77,7 @@
 	}
 }
 
-@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+@custom-selector :--heading h1, h2, h3, h4, h5, h6, .heading-7;
 
 .test-custom-selectors:--heading {
 	order:12;

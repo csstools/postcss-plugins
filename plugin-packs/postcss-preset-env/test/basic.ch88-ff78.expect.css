@@ -87,27 +87,7 @@
 	}
 }
 
-h1.test-custom-selectors {
-	order:12;
-}
-
-h2.test-custom-selectors {
-	order:12;
-}
-
-h3.test-custom-selectors {
-	order:12;
-}
-
-h4.test-custom-selectors {
-	order:12;
-}
-
-h5.test-custom-selectors {
-	order:12;
-}
-
-h6.test-custom-selectors {
+h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.does-not-exist), h3.test-custom-selectors:not(.does-not-exist), h4.test-custom-selectors:not(.does-not-exist), h5.test-custom-selectors:not(.does-not-exist), h6.test-custom-selectors:not(.does-not-exist), .test-custom-selectors.heading-7 {
 	order:12;
 }
 
@@ -193,19 +173,7 @@ h6.test-custom-selectors {
 	background-color: yellow;
 }
 
-.a:focus {
-	order: 27;
-}
-
-.a:hover {
-	order: 27;
-}
-
-.b:focus {
-	order: 27;
-}
-
-.b:hover {
+.a:focus, .a:hover, .b:focus, .b:hover {
 	order: 27;
 }
 
