@@ -175,9 +175,9 @@
 	}
 }
 
-@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+@custom-selector :--heading h1, h2, h3, h4, h5, h6, .heading-7;
 
-h1.test-custom-selectors {
+h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.does-not-exist), h3.test-custom-selectors:not(.does-not-exist), h4.test-custom-selectors:not(.does-not-exist), h5.test-custom-selectors:not(.does-not-exist), h6.test-custom-selectors:not(.does-not-exist), .test-custom-selectors.heading-7 {
 	-webkit-box-ordinal-group:13;
 	-webkit-order:12;
 	   -moz-box-ordinal-group:13;
@@ -185,47 +185,7 @@ h1.test-custom-selectors {
 	        order:12;
 }
 
-h2.test-custom-selectors {
-	-webkit-box-ordinal-group:13;
-	-webkit-order:12;
-	   -moz-box-ordinal-group:13;
-	    -ms-flex-order:12;
-	        order:12;
-}
-
-h3.test-custom-selectors {
-	-webkit-box-ordinal-group:13;
-	-webkit-order:12;
-	   -moz-box-ordinal-group:13;
-	    -ms-flex-order:12;
-	        order:12;
-}
-
-h4.test-custom-selectors {
-	-webkit-box-ordinal-group:13;
-	-webkit-order:12;
-	   -moz-box-ordinal-group:13;
-	    -ms-flex-order:12;
-	        order:12;
-}
-
-h5.test-custom-selectors {
-	-webkit-box-ordinal-group:13;
-	-webkit-order:12;
-	   -moz-box-ordinal-group:13;
-	    -ms-flex-order:12;
-	        order:12;
-}
-
-h6.test-custom-selectors {
-	-webkit-box-ordinal-group:13;
-	-webkit-order:12;
-	   -moz-box-ordinal-group:13;
-	    -ms-flex-order:12;
-	        order:12;
-}
-
-.test-custom-selectors:is(h1, h2, h3, h4, h5, h6) {
+.test-custom-selectors:is(h1, h2, h3, h4, h5, h6, .heading-7) {
 	-webkit-box-ordinal-group:13;
 	-webkit-order:12;
 	   -moz-box-ordinal-group:13;
@@ -556,31 +516,7 @@ h6.test-custom-selectors {
 	background-color: yellow;
 }
 
-.a:focus {
-	-webkit-box-ordinal-group: 28;
-	-webkit-order: 27;
-	   -moz-box-ordinal-group: 28;
-	    -ms-flex-order: 27;
-	        order: 27;
-}
-
-.a:hover {
-	-webkit-box-ordinal-group: 28;
-	-webkit-order: 27;
-	   -moz-box-ordinal-group: 28;
-	    -ms-flex-order: 27;
-	        order: 27;
-}
-
-.b:focus {
-	-webkit-box-ordinal-group: 28;
-	-webkit-order: 27;
-	   -moz-box-ordinal-group: 28;
-	    -ms-flex-order: 27;
-	        order: 27;
-}
-
-.b:hover {
+.a:focus, .a:hover, .b:focus, .b:hover {
 	-webkit-box-ordinal-group: 28;
 	-webkit-order: 27;
 	   -moz-box-ordinal-group: 28;

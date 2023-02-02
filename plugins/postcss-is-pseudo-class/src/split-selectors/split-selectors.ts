@@ -27,6 +27,16 @@ export default function splitSelectors(selectors: string[], pluginOptions: { spe
 				return;
 			}
 
+			if (pseudo.parent?.parent?.type === 'pseudo' && pseudo.parent?.parent?.value?.toLowerCase() === ':not') {
+				replacements.push([{
+					start: pseudo.parent.parent.sourceIndex,
+					end: pseudo.parent.parent.sourceIndex + pseudo.parent.parent.toString().length,
+					option: `:not(${pseudo.nodes.toString()})`,
+				}]);
+
+				return;
+			}
+
 			let parent = pseudo.parent;
 			while (parent) {
 				if (parent.value && parent.value.toLowerCase() === ':is' && parent.type === 'pseudo') {
@@ -116,7 +126,7 @@ function cartesianProduct(...args) {
 		for (let j = 0, l = args[i].length; j < l; j++) {
 			const a = arr.slice(0);
 			a.push(args[i][j]);
-			if (i == max) {
+			if (i === max) {
 				r.push(a);
 			} else {
 				helper(a, i + 1);

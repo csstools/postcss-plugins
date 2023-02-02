@@ -85,7 +85,7 @@
 	}
 }
 
-@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+@custom-selector :--heading h1, h2, h3, h4, h5, h6, .heading-7;
 
 .test-custom-selectors:--heading {
 	order:12;
@@ -172,19 +172,7 @@
 	background-color: yellow;
 }
 
-.a:focus {
-	order: 27;
-}
-
-.a:hover {
-	order: 27;
-}
-
-.b:focus {
-	order: 27;
-}
-
-.b:hover {
+.a:focus, .a:hover, .b:focus, .b:hover {
 	order: 27;
 }
 

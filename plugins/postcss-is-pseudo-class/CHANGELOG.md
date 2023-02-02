@@ -1,5 +1,10 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased (minor)
+
+- Fix is pseudo inside a not pseudo (`:not(:is(h1, h2, h3))`)
+- Reduce the output size when all selectors are known to be valid
+
 ### 3.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

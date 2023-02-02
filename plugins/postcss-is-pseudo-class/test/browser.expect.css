@@ -10,17 +10,12 @@
 	font-size: 20px;
 }
 
-#main_a *.e.e:not(.does-not-exist):not(.does-not-exist)+.d {
-	color: red;
-	font-size: 20px;
-}
-
 #main_a .e.e:is(.c>.e)+.d {
 	color: red;
 	font-size: 20px;
 }
 
-#main_a .e.e.g:not(.does-not-exist)+.d {
+#main_a *.e.e:not(.does-not-exist):not(.does-not-exist)+.d, #main_a .e.e.g:not(.does-not-exist)+.d {
 	color: red;
 	font-size: 20px;
 }
@@ -112,18 +107,12 @@
 }
 
 /*Simple selector arguments */
-#main_c .a .b {
-	color: red;
-}
-#main_c .a .c {
+#main_c .a .b, #main_c .a .c {
 	color: red;
 }
 
 /*Compound selector arguments */
-#main_c .a #d.c {
-	color: green;
-}
-#main_c .a .e:not(#does-not-exist) {
+#main_c .a #d.c, #main_c .a .e:not(#does-not-exist) {
 	color: green;
 }
 
