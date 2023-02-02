@@ -234,7 +234,7 @@ for (const control of Object.values(controls)) {
 			blockDirection: controls.blockDirection.value || 'top-to-bottom',
 		};
 
-		processCss(inputState.doc, currentConfig).then((output) => {
+		processCss(inputView.state.doc, currentConfig).then((output) => {
 			configView.update([
 				configView.state.update({ changes: { from: 0, to: configView.state.doc.length, insert: renderConfig(currentConfig) } }),
 			]);
