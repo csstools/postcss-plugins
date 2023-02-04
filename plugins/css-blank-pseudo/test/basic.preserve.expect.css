@@ -51,3 +51,7 @@ test:not([blank]).js-blank-pseudo, .js-blank-pseudo test:not([blank]) {
 uppercase.js-blank-pseudo [blank], .js-blank-pseudo uppercase [blank] {
 	order: 6;
 }
+
+[blank].js-blank-pseudo, .js-blank-pseudo [blank] {
+	to-clone: 1;
+}

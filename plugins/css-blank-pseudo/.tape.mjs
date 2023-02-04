@@ -1,4 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import { declarationClonerPlugin, postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'css-blank-pseudo';
 
 postcssTape(plugin)({
@@ -29,6 +29,13 @@ postcssTape(plugin)({
 		options: {
 			disablePolyfillReadyClass: true
 		}
+	},
+	'basic:with-cloned-declarations': {
+		message: 'doesn\'t cause duplicate CSS',
+		plugins: [
+			declarationClonerPlugin,
+			plugin
+		]
 	},
 	'invalid-selector': {
 		message: 'warns on invalid selectors',

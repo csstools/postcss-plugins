@@ -82,9 +82,11 @@ uppercase :BLaNK {
 }
 
 [blank].js-blank-pseudo, .js-blank-pseudo [blank] {
+	cloned: 1;
 	to-clone: 1;
 }
 
 :blank {
+	cloned: 1;
 	to-clone: 1;
 }

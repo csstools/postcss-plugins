@@ -80,3 +80,11 @@ uppercase.js-blank-pseudo .css-blank, .js-blank-pseudo uppercase .css-blank {
 uppercase :BLaNK {
 	order: 6;
 }
+
+.css-blank.js-blank-pseudo, .js-blank-pseudo .css-blank {
+	to-clone: 1;
+}
+
+:blank {
+	to-clone: 1;
+}
