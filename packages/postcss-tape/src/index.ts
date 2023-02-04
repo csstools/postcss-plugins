@@ -425,3 +425,23 @@ export const declarationClonerPlugin = {
 		}
 	},
 };
+
+export const ruleClonerPlugin = {
+	postcssPlugin: 'rule-cloner',
+	prepare() {
+		const transformedNodes = new WeakSet();
+
+		return {
+			Rule(rule) {
+				if (transformedNodes.has(rule)) {
+					return;
+				}
+
+				if (rule.selector === 'to-clone') {
+					transformedNodes.add(rule);
+					rule.cloneBefore({ selector: 'cloned' });
+				}
+			},
+		};
+	},
+};

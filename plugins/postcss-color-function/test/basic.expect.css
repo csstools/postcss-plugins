@@ -209,3 +209,7 @@
 		--one-a50-var: color(display-p3 0.1 0.1 0.1);
 	}
 }
+
+to-clone {
+	color: rgb(255,10,11);
+}

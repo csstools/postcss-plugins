@@ -16,4 +16,10 @@ export declare const declarationClonerPlugin: {
     postcssPlugin: string;
     Declaration(decl: any): void;
 };
+export declare const ruleClonerPlugin: {
+    postcssPlugin: string;
+    prepare(): {
+        Rule(rule: any): void;
+    };
+};
 export {};
