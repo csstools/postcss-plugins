@@ -20,14 +20,6 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-color-functional-notation',
 		Declaration: (decl: Declaration, { result, postcss }: { result: Result, postcss: Postcss }) => {
-			if (hasFallback(decl)) {
-				return;
-			}
-
-			if (hasSupportsAtRuleAncestor(decl)) {
-				return;
-			}
-
 			const originalValue = decl.value;
 			const lowerCaseValue = originalValue.toLowerCase();
 			if (
@@ -36,6 +28,14 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				!lowerCaseValue.includes('hsl') &&
 				!lowerCaseValue.includes('hsla')
 			) {
+				return;
+			}
+
+			if (hasFallback(decl)) {
+				return;
+			}
+
+			if (hasSupportsAtRuleAncestor(decl)) {
 				return;
 			}
 
