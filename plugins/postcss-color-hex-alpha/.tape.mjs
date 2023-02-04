@@ -1,4 +1,4 @@
-import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape, ruleClonerPlugin } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'postcss-color-hex-alpha';
 
 postcssTape(plugin)({
@@ -10,6 +10,15 @@ postcssTape(plugin)({
 		options: {
 			preserve: true
 		}
+	},
+	'basic:with-cloned-rules': {
+		message: 'doesn\'t cause duplicate CSS',
+		plugins: [
+			ruleClonerPlugin,
+			plugin({
+				preserve: true
+			})
+		]
 	},
 	'clip-path': {
 		message: 'ignores clip-path with hash in url'
