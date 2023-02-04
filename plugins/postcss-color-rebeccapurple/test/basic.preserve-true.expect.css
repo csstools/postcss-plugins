@@ -9,3 +9,13 @@ footer {
 	color: #639;
 	color: RebeccaPurple;
 }
+
+.test-manual-fallback {
+	color: purple;
+	color: rebeccapurple;
+}
+
+to-clone {
+	color: #639;
+	color: rebeccapurple;
+}
