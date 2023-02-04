@@ -24,11 +24,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-prefers-color-scheme',
 		prepare() {
-			const transformed = new WeakSet();
+			const transformedNodes = new WeakSet();
 
 			return {
 				AtRule: (atRule) => {
-					if (transformed.has(atRule)) {
+					if (transformedNodes.has(atRule)) {
 						return;
 					}
 
@@ -42,7 +42,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					transformed.add(atRule);
+					transformedNodes.add(atRule);
 					atRule.cloneBefore({ params: altParamsColorDepth });
 
 					if (!options.preserve) {

@@ -34,7 +34,9 @@ postcssTape(plugin)({
 		message: 'doesn\'t cause duplicate CSS',
 		plugins: [
 			declarationClonerPlugin,
-			plugin
+			plugin({
+				preserve: true
+			})
 		]
 	},
 	'invalid-selector': {

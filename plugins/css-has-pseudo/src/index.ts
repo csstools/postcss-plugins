@@ -26,11 +26,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'css-has-pseudo',
 		prepare() {
-			const transformed = new WeakSet();
+			const transformedNodes = new WeakSet();
 
 			return {
 				RuleExit: (rule, { result }) => {
-					if (transformed.has(rule)) {
+					if (transformedNodes.has(rule)) {
 						return;
 					}
 
@@ -189,7 +189,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					transformed.add(rule);
+					transformedNodes.add(rule);
 					rule.cloneBefore({ selectors: selectors });
 
 					if (!options.preserve) {
