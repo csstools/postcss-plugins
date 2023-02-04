@@ -1,4 +1,4 @@
-import postcssTape from '../dist/index.mjs';
+import { postcssTape } from '../dist/index.mjs';
 import plugin from './_b-plugin.mjs';
 
 postcssTape(plugin)({

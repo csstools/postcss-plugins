@@ -1,4 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from '@csstools/postcss-text-decoration-shorthand';
 import autoprefixer from 'autoprefixer';
 

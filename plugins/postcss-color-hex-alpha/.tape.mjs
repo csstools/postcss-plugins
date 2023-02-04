@@ -1,4 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'postcss-color-hex-alpha';
 
 postcssTape(plugin)({

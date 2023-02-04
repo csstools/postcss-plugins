@@ -1,4 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.cjs';
+import { postcssTape } from '../../packages/postcss-tape/dist/index.cjs';
 import plugin from 'postcss-custom-media';
 
 postcssTape(plugin)({

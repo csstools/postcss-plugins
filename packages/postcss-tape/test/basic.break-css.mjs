@@ -1,4 +1,4 @@
-import postcssTape from '../dist/index.mjs';
+import { postcssTape } from '../dist/index.mjs';
 import plugin from './_a-plugin.mjs';
 import { promises as fsp } from 'fs';
 
