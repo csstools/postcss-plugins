@@ -1,4 +1,4 @@
-import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
+import { declarationClonerPlugin, postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'postcss-dir-pseudo-class';
 
 postcssTape(plugin)({
@@ -29,6 +29,16 @@ postcssTape(plugin)({
 		options: {
 			shadow: true
 		},
+	},
+	'basic:with-cloned-declarations': {
+		message: 'doesn\'t cause duplicate CSS',
+		warnings: 2,
+		plugins: [
+			declarationClonerPlugin,
+			plugin({
+				preserve: true
+			})
+		]
 	},
 	'generated-selector-cases': {
 		message: 'correctly handles generated cases',

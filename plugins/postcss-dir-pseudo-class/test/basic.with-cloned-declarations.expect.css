@@ -191,9 +191,11 @@ html :dir(rtl) {
 }
 
 [dir="ltr"] {
+	cloned: 1;
 	to-clone: 1;
 }
 
 :dir(ltr) {
+	cloned: 1;
 	to-clone: 1;
 }
