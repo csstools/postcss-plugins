@@ -2,7 +2,15 @@
 	order: 1;
 }
 
+[data-foo=test i] {
+	order: 1;
+}
+
 [foo="a b"],[foo="A b"],[foo="a B"],[foo="A B"] {
+	order: 2;
+}
+
+[foo="a b" i] {
 	order: 2;
 }
 
@@ -14,7 +22,15 @@
 	order: 4;
 }
 
+[foo=a i],[foobar=b],[bar=c i]{
+	order: 4;
+}
+
 [foo="a"],[foo="A"] {
+	order: 5.0;
+}
+
+[foo="a" i] {
 	order: 5.0;
 }
 
@@ -22,7 +38,15 @@
 	order: 5.1;
 }
 
+[foo="b" I] {
+	order: 5.1;
+}
+
 [foo="c"],[foo="C"] {
+	order: 5.2;
+}
+
+[foo="c"i] {
 	order: 5.2;
 }
 
@@ -30,7 +54,15 @@
 	order: 5.3;
 }
 
+[foo="d"I] {
+	order: 5.3;
+}
+
 [foo="e"],[foo="E"] {
+	order: 5.4;
+}
+
+[foo="e" i ] {
 	order: 5.4;
 }
 
@@ -38,7 +70,16 @@
 	order: 5.5;
 }
 
+[foo="f" I ] {
+	order: 5.5;
+}
+
 [foo="g"],[foo="G"] {
+	order: 5.6;
+}
+
+[foo="g" i
+] {
 	order: 5.6;
 }
 
@@ -46,6 +87,17 @@
 	order: 5.7;
 }
 
+[foo="h" I
+] {
+	order: 5.7;
+}
+
 [foo="a b"],[foo="A b"],[foo="a B"],[foo="A B"] {
+	cloned: 1;
+	to-clone: 1;
+}
+
+[foo="a b" i] {
+	cloned: 1;
 	to-clone: 1;
 }

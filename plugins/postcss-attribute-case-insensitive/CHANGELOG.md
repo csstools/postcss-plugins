@@ -1,5 +1,9 @@
 # Changes to PostCSS Attribute Case Insensitive
 
+### Unreleased (patch)
+
+- Reduce the amount of duplicate fallback CSS.
+
 ### 6.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

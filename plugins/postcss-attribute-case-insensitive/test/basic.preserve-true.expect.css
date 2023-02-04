@@ -91,3 +91,11 @@
 ] {
 	order: 5.7;
 }
+
+[foo="a b"],[foo="A b"],[foo="a B"],[foo="A B"] {
+	to-clone: 1;
+}
+
+[foo="a b" i] {
+	to-clone: 1;
+}

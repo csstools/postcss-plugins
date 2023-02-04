@@ -47,3 +47,7 @@
 ] {
 	order: 5.7;
 }
+
+[foo="a b" i] {
+	to-clone: 1;
+}
