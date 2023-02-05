@@ -1,4 +1,8 @@
 {%- set siteTitle = title | default(metadata.title) | escape -%}
+{% if titleOverride %}
+	{%- set siteTitle = titleOverride | escape -%}
+{%- endif -%}
+
 {%- set siteDesc = description | default(metadata.description) | escape -%}
 <!doctype html>
 <html lang="en">
@@ -65,9 +69,6 @@
 {% block content %}
 {{ content | safe }}
 {% endblock %}
-
-<footer>
-</footer>
 
 <!-- Current page: {{ page.url | url }} -->
 <script async defer src="{{ "/static/js/scripts.js" | addHash }}"></script>

@@ -28,7 +28,79 @@
 
 	--heading-size-from-medium: 5rem;
 	--heading-size: 2.5rem;
+	--scroll-bar: 0px;
+	--full-width: calc(100vw - var(--scroll-bar));
 
 	--t-slow: .3s;
 	--transition: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+
+	/* #region:Fluid Typescale */
+	--fluid-min-width: 320;
+	--fluid-max-width: 1240;
+
+	--fluid-screen: 100vw;
+	--fluid-bp: calc(
+			(var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
+			(var(--fluid-max-width) - var(--fluid-min-width))
+	);
+	--f--2-min: 12.50;
+	--f--2-max: 12.80;
+	--step--2: calc(
+			((var(--f--2-min) / 16) * 1rem) + (var(--f--2-max) - var(--f--2-min)) *
+			var(--fluid-bp)
+	);
+
+	--f--1-min: 15.00;
+	--f--1-max: 16.00;
+	--step--1: calc(
+			((var(--f--1-min) / 16) * 1rem) + (var(--f--1-max) - var(--f--1-min)) *
+			var(--fluid-bp)
+	);
+
+	--f-0-min: 18.00;
+	--f-0-max: 20.00;
+	--step-0: calc(
+			((var(--f-0-min) / 16) * 1rem) + (var(--f-0-max) - var(--f-0-min)) *
+			var(--fluid-bp)
+	);
+
+	--f-1-min: 21.60;
+	--f-1-max: 25.00;
+	--step-1: calc(
+			((var(--f-1-min) / 16) * 1rem) + (var(--f-1-max) - var(--f-1-min)) *
+			var(--fluid-bp)
+	);
+
+	--f-2-min: 25.92;
+	--f-2-max: 31.25;
+	--step-2: calc(
+			((var(--f-2-min) / 16) * 1rem) + (var(--f-2-max) - var(--f-2-min)) *
+			var(--fluid-bp)
+	);
+
+	--f-3-min: 31.10;
+	--f-3-max: 39.06;
+	--step-3: calc(
+			((var(--f-3-min) / 16) * 1rem) + (var(--f-3-max) - var(--f-3-min)) *
+			var(--fluid-bp)
+	);
+
+	--f-4-min: 37.32;
+	--f-4-max: 48.83;
+	--step-4: calc(
+			((var(--f-4-min) / 16) * 1rem) + (var(--f-4-max) - var(--f-4-min)) *
+			var(--fluid-bp)
+	);
+
+	--f-5-min: 44.79;
+	--f-5-max: 61.04;
+	--step-5: calc(
+			((var(--f-5-min) / 16) * 1rem) + (var(--f-5-max) - var(--f-5-min)) *
+			var(--fluid-bp)
+	);
+
+	@media screen and (min-width: 1240px) {
+		--fluid-screen: calc(var(--fluid-max-width) * 1px);
+	}
+	/* #endregion:Fluid Typescale */
 }
