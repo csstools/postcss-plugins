@@ -1,0 +1,5 @@
+@todo-or-die before-date(2000 01 02) {
+	.baz {
+		order: 1;
+	}
+}
