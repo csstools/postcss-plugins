@@ -1,0 +1,36 @@
+
+	.baz {
+		order: 1;
+	}
+
+.baz {
+		order: 2;
+	}
+
+.baz {
+		order: 4;
+	}
+
+.baz {
+		order: 4.1;
+	}
+
+.baz {
+		order: 4.2;
+	}
+
+.baz {
+		order: 4.3;
+	}
+
+.baz {
+		order: 4.4;
+	}
+
+.baz {
+		order: 5;
+	}
+
+.baz {
+	order: 6;
+}
