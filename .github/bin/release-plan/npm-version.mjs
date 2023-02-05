@@ -3,6 +3,29 @@ import fs from 'fs/promises';
 import path from 'path';
 
 export async function npmVersion(increment, packageDirectory) {
+	{
+		const packageInfo = JSON.parse(await fs.readFile(path.join(packageDirectory, 'package.json')));
+		if (packageInfo.version === '0.0.0') {
+			switch (increment) {
+				case 'major':
+					packageInfo.version = '1.0.0';
+					break;
+				case 'minor':
+					packageInfo.version = '0.1.0';
+					break;
+				case 'patch':
+					packageInfo.version = '0.0.1';
+					break;
+
+				default:
+					throw new Error(`Unknown increment "${increment}"`);
+			}
+
+			await fs.writeFile(path.join(packageDirectory, 'package.json'), JSON.stringify(packageInfo, null, '\t'));
+			return packageInfo.version;
+		}
+	}
+
 	await new Promise((resolve, reject) => {
 		const versionCmd = spawn(
 			'npm',
