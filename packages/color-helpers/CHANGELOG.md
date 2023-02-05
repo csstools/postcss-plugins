@@ -1,5 +1,5 @@
 # Changes to Color Helpers
 
-### Unreleased (major)
+### 1.0.0 (February 2, 2023)
 
 - Initial version

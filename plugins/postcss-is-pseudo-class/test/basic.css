@@ -129,3 +129,15 @@ foo[baz=":is(.some, .other)"], .ok {
 :IS(.all,.caps):iS(.mixed,.caps:Is(.nested:focus)) {
 	order: 33;
 }
+
+:not(:is(h1, h2, h3)) {
+	order: 34;
+}
+
+:not(:is(:is(h1, h2, h3))) {
+	order: 35;
+}
+
+:has(:is(h1, h2, h3)) {
+	order: 36;
+}

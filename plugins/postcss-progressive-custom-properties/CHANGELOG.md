@@ -1,5 +1,9 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### 2.1.0 (February 2, 2023)
+
+- Group support rules with the same params to reduce the output size.
+
 ### 2.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

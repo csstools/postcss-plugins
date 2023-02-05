@@ -1,16 +1,4 @@
-.some.some {
-	order: 0;
-}
-
-.some.other {
-	order: 0;
-}
-
-.other.some {
-	order: 0;
-}
-
-.other.other {
+.some.some, .some.other, .other.some, .other.other {
 	order: 0;
 }
 
@@ -18,19 +6,7 @@
 	order: 0;
 }
 
-.some.some {
-	order: 1;
-}
-
-.some.other {
-	order: 1;
-}
-
-.other.some {
-	order: 1;
-}
-
-.other.other {
+.some.some, .some.other, .other.some, .other.other {
 	order: 1;
 }
 
@@ -38,19 +14,7 @@
 	order: 1;
 }
 
-.some.some {
-	order: 2;
-}
-
-.some.other {
-	order: 2;
-}
-
-.other.some {
-	order: 2;
-}
-
-.other.other {
+.some.some, .some.other, .other.some, .other.other {
 	order: 2;
 }
 
@@ -58,19 +22,7 @@
 	order: 2;
 }
 
-.some .some {
-	order: 3;
-}
-
-.some .other {
-	order: 3;
-}
-
-.other .some {
-	order: 3;
-}
-
-.other .other {
+.some .some, .some .other, .other .some, .other .other {
 	order: 3;
 }
 
@@ -78,19 +30,7 @@
 	order: 3;
 }
 
-.some .some {
-	order: 4;
-}
-
-.some .other {
-	order: 4;
-}
-
-.other .some {
-	order: 4;
-}
-
-.other .other {
+.some .some, .some .other, .other .some, .other .other {
 	order: 4;
 }
 
@@ -98,19 +38,7 @@
 	order: 4;
 }
 
-.some .some {
-	order: 5;
-}
-
-.some .other {
-	order: 5;
-}
-
-.other .some {
-	order: 5;
-}
-
-.other .other {
+.some .some, .some .other, .other .some, .other .other {
 	order: 5;
 }
 
@@ -118,19 +46,7 @@
 	order: 5;
 }
 
-.some  .some {
-	order: 6;
-}
-
-.some  .other {
-	order: 6;
-}
-
-.other  .some {
-	order: 6;
-}
-
-.other  .other {
+.some  .some, .some  .other, .other  .some, .other  .other {
 	order: 6;
 }
 
@@ -138,19 +54,7 @@
 	order: 6;
 }
 
-.some  .some {
-	order: 7;
-}
-
-.some  .other {
-	order: 7;
-}
-
-.other  .some {
-	order: 7;
-}
-
-.other  .other {
+.some  .some, .some  .other, .other  .some, .other  .other {
 	order: 7;
 }
 
@@ -158,19 +62,7 @@
 	order: 7;
 }
 
-.some  .some {
-	order: 8;
-}
-
-.some  .other {
-	order: 8;
-}
-
-.other  .some {
-	order: 8;
-}
-
-.other  .other {
+.some  .some, .some  .other, .other  .some, .other  .other {
 	order: 8;
 }
 
@@ -178,19 +70,7 @@
 	order: 8;
 }
 
-.some+.some {
-	order: 9;
-}
-
-.some+.other {
-	order: 9;
-}
-
-.other+.some {
-	order: 9;
-}
-
-.other+.other {
+.some+.some, .some+.other, .other+.some, .other+.other {
 	order: 9;
 }
 
@@ -198,19 +78,7 @@
 	order: 9;
 }
 
-.some+.some {
-	order: 10;
-}
-
-.some+.other {
-	order: 10;
-}
-
-.other+.some {
-	order: 10;
-}
-
-.other+.other {
+.some+.some, .some+.other, .other+.some, .other+.other {
 	order: 10;
 }
 
@@ -218,19 +86,7 @@
 	order: 10;
 }
 
-.some+.some {
-	order: 11;
-}
-
-.some+.other {
-	order: 11;
-}
-
-.other+.some {
-	order: 11;
-}
-
-.other+.other {
+.some+.some, .some+.other, .other+.some, .other+.other {
 	order: 11;
 }
 
@@ -238,19 +94,7 @@
 	order: 11;
 }
 
-.some + .some {
-	order: 12;
-}
-
-.some + .other {
-	order: 12;
-}
-
-.other + .some {
-	order: 12;
-}
-
-.other + .other {
+.some + .some, .some + .other, .other + .some, .other + .other {
 	order: 12;
 }
 
@@ -258,19 +102,7 @@
 	order: 12;
 }
 
-.some + .some {
-	order: 13;
-}
-
-.some + .other {
-	order: 13;
-}
-
-.other + .some {
-	order: 13;
-}
-
-.other + .other {
+.some + .some, .some + .other, .other + .some, .other + .other {
 	order: 13;
 }
 
@@ -278,19 +110,7 @@
 	order: 13;
 }
 
-.some + .some {
-	order: 14;
-}
-
-.some + .other {
-	order: 14;
-}
-
-.other + .some {
-	order: 14;
-}
-
-.other + .other {
+.some + .some, .some + .other, .other + .some, .other + .other {
 	order: 14;
 }
 
@@ -298,19 +118,7 @@
 	order: 14;
 }
 
-.some~.some {
-	order: 15;
-}
-
-.some~.other {
-	order: 15;
-}
-
-.other~.some {
-	order: 15;
-}
-
-.other~.other {
+.some~.some, .some~.other, .other~.some, .other~.other {
 	order: 15;
 }
 
@@ -318,19 +126,7 @@
 	order: 15;
 }
 
-.some~.some {
-	order: 16;
-}
-
-.some~.other {
-	order: 16;
-}
-
-.other~.some {
-	order: 16;
-}
-
-.other~.other {
+.some~.some, .some~.other, .other~.some, .other~.other {
 	order: 16;
 }
 
@@ -338,19 +134,7 @@
 	order: 16;
 }
 
-.some~.some {
-	order: 17;
-}
-
-.some~.other {
-	order: 17;
-}
-
-.other~.some {
-	order: 17;
-}
-
-.other~.other {
+.some~.some, .some~.other, .other~.some, .other~.other {
 	order: 17;
 }
 
@@ -358,19 +142,7 @@
 	order: 17;
 }
 
-.some ~ .some {
-	order: 18;
-}
-
-.some ~ .other {
-	order: 18;
-}
-
-.other ~ .some {
-	order: 18;
-}
-
-.other ~ .other {
+.some ~ .some, .some ~ .other, .other ~ .some, .other ~ .other {
 	order: 18;
 }
 
@@ -378,19 +150,7 @@
 	order: 18;
 }
 
-.some ~ .some {
-	order: 19;
-}
-
-.some ~ .other {
-	order: 19;
-}
-
-.other ~ .some {
-	order: 19;
-}
-
-.other ~ .other {
+.some ~ .some, .some ~ .other, .other ~ .some, .other ~ .other {
 	order: 19;
 }
 
@@ -398,19 +158,7 @@
 	order: 19;
 }
 
-.some ~ .some {
-	order: 20;
-}
-
-.some ~ .other {
-	order: 20;
-}
-
-.other ~ .some {
-	order: 20;
-}
-
-.other ~ .other {
+.some ~ .some, .some ~ .other, .other ~ .some, .other ~ .other {
 	order: 20;
 }
 
@@ -418,19 +166,7 @@
 	order: 20;
 }
 
-.some>.some {
-	order: 21;
-}
-
-.some>.other {
-	order: 21;
-}
-
-.other>.some {
-	order: 21;
-}
-
-.other>.other {
+.some>.some, .some>.other, .other>.some, .other>.other {
 	order: 21;
 }
 
@@ -438,19 +174,7 @@
 	order: 21;
 }
 
-.some>.some {
-	order: 22;
-}
-
-.some>.other {
-	order: 22;
-}
-
-.other>.some {
-	order: 22;
-}
-
-.other>.other {
+.some>.some, .some>.other, .other>.some, .other>.other {
 	order: 22;
 }
 
@@ -458,19 +182,7 @@
 	order: 22;
 }
 
-.some>.some {
-	order: 23;
-}
-
-.some>.other {
-	order: 23;
-}
-
-.other>.some {
-	order: 23;
-}
-
-.other>.other {
+.some>.some, .some>.other, .other>.some, .other>.other {
 	order: 23;
 }
 
@@ -478,19 +190,7 @@
 	order: 23;
 }
 
-.some > .some {
-	order: 24;
-}
-
-.some > .other {
-	order: 24;
-}
-
-.other > .some {
-	order: 24;
-}
-
-.other > .other {
+.some > .some, .some > .other, .other > .some, .other > .other {
 	order: 24;
 }
 
@@ -498,19 +198,7 @@
 	order: 24;
 }
 
-.some > .some {
-	order: 25;
-}
-
-.some > .other {
-	order: 25;
-}
-
-.other > .some {
-	order: 25;
-}
-
-.other > .other {
+.some > .some, .some > .other, .other > .some, .other > .other {
 	order: 25;
 }
 
@@ -518,19 +206,7 @@
 	order: 25;
 }
 
-.some > .some {
-	order: 26;
-}
-
-.some > .other {
-	order: 26;
-}
-
-.other > .some {
-	order: 26;
-}
-
-.other > .other {
+.some > .some, .some > .other, .other > .some, .other > .other {
 	order: 26;
 }
 
@@ -538,11 +214,7 @@
 	order: 26;
 }
 
-.some {
-	order: 27;
-}
-
-.other {
+.some, .other {
 	order: 27;
 }
 
@@ -550,11 +222,7 @@
 	order: 27;
 }
 
-.some {
-	order: 28;
-}
-
-.other {
+.some, .other {
 	order: 28;
 }
 
@@ -562,11 +230,7 @@
 	order: 28;
 }
 
-.some {
-	order: 29;
-}
-
-.other {
+.some, .other {
 	order: 29;
 }
 
@@ -574,11 +238,7 @@
 	order: 29;
 }
 
-button.some {
-	order: 30;
-}
-
-button.other {
+button.some, button.other {
 	order: 30;
 }
 
@@ -586,11 +246,7 @@ button:is(.some, .other) {
 	order: 30;
 }
 
-button.some {
-	order: 31;
-}
-
-button.other {
+button.some, button.other {
 	order: 31;
 }
 
@@ -606,11 +262,7 @@ buttonbutton {
 	order: 32;
 }
 
-button .some {
-	order: 33;
-}
-
-button .other {
+button .some, button .other {
 	order: 33;
 }
 
@@ -618,11 +270,7 @@ button :is(.some, .other) {
 	order: 33;
 }
 
-.some button {
-	order: 34;
-}
-
-.other button {
+.some button, .other button {
 	order: 34;
 }
 
@@ -638,11 +286,7 @@ button button {
 	order: 35;
 }
 
-button  .some {
-	order: 36;
-}
-
-button  .other {
+button  .some, button  .other {
 	order: 36;
 }
 
@@ -650,11 +294,7 @@ button  :is(.some, .other) {
 	order: 36;
 }
 
-.some  button {
-	order: 37;
-}
-
-.other  button {
+.some  button, .other  button {
 	order: 37;
 }
 
@@ -670,11 +310,7 @@ button  button {
 	order: 38;
 }
 
-button+.some {
-	order: 39;
-}
-
-button+.other {
+button+.some, button+.other {
 	order: 39;
 }
 
@@ -682,11 +318,7 @@ button+:is(.some, .other) {
 	order: 39;
 }
 
-.some+button {
-	order: 40;
-}
-
-.other+button {
+.some+button, .other+button {
 	order: 40;
 }
 
@@ -702,11 +334,7 @@ button+button {
 	order: 41;
 }
 
-button + .some {
-	order: 42;
-}
-
-button + .other {
+button + .some, button + .other {
 	order: 42;
 }
 
@@ -714,11 +342,7 @@ button + :is(.some, .other) {
 	order: 42;
 }
 
-.some + button {
-	order: 43;
-}
-
-.other + button {
+.some + button, .other + button {
 	order: 43;
 }
 
@@ -734,11 +358,7 @@ button + button {
 	order: 44;
 }
 
-button~.some {
-	order: 45;
-}
-
-button~.other {
+button~.some, button~.other {
 	order: 45;
 }
 
@@ -746,11 +366,7 @@ button~:is(.some, .other) {
 	order: 45;
 }
 
-.some~button {
-	order: 46;
-}
-
-.other~button {
+.some~button, .other~button {
 	order: 46;
 }
 
@@ -766,11 +382,7 @@ button~button {
 	order: 47;
 }
 
-button ~ .some {
-	order: 48;
-}
-
-button ~ .other {
+button ~ .some, button ~ .other {
 	order: 48;
 }
 
@@ -778,11 +390,7 @@ button ~ :is(.some, .other) {
 	order: 48;
 }
 
-.some ~ button {
-	order: 49;
-}
-
-.other ~ button {
+.some ~ button, .other ~ button {
 	order: 49;
 }
 
@@ -798,11 +406,7 @@ button ~ button {
 	order: 50;
 }
 
-button>.some {
-	order: 51;
-}
-
-button>.other {
+button>.some, button>.other {
 	order: 51;
 }
 
@@ -810,11 +414,7 @@ button>:is(.some, .other) {
 	order: 51;
 }
 
-.some>button {
-	order: 52;
-}
-
-.other>button {
+.some>button, .other>button {
 	order: 52;
 }
 
@@ -830,11 +430,7 @@ button>button {
 	order: 53;
 }
 
-button > .some {
-	order: 54;
-}
-
-button > .other {
+button > .some, button > .other {
 	order: 54;
 }
 
@@ -842,11 +438,7 @@ button > :is(.some, .other) {
 	order: 54;
 }
 
-.some > button {
-	order: 55;
-}
-
-.other > button {
+.some > button, .other > button {
 	order: 55;
 }
 
@@ -862,15 +454,7 @@ button > button {
 	order: 56;
 }
 
-.some {
-	order: 57;
-}
-
-.other {
-	order: 57;
-}
-
-button {
+button, .some, .other {
 	order: 57;
 }
 
@@ -878,15 +462,7 @@ button, :is(.some, .other) {
 	order: 57;
 }
 
-.some {
-	order: 58;
-}
-
-.other {
-	order: 58;
-}
-
-button {
+.some, .other, button {
 	order: 58;
 }
 
@@ -902,11 +478,7 @@ button {
 	order: 59;
 }
 
-.🧑🏾‍🎤.some {
-	order: 60;
-}
-
-.🧑🏾‍🎤.other {
+.🧑🏾‍🎤.some, .🧑🏾‍🎤.other {
 	order: 60;
 }
 
@@ -914,11 +486,7 @@ button {
 	order: 60;
 }
 
-.some.🧑🏾‍🎤 {
-	order: 61;
-}
-
-.other.🧑🏾‍🎤 {
+.some.🧑🏾‍🎤, .other.🧑🏾‍🎤 {
 	order: 61;
 }
 
@@ -934,11 +502,7 @@ button {
 	order: 62;
 }
 
-.🧑🏾‍🎤 .some {
-	order: 63;
-}
-
-.🧑🏾‍🎤 .other {
+.🧑🏾‍🎤 .some, .🧑🏾‍🎤 .other {
 	order: 63;
 }
 
@@ -946,11 +510,7 @@ button {
 	order: 63;
 }
 
-.some .🧑🏾‍🎤 {
-	order: 64;
-}
-
-.other .🧑🏾‍🎤 {
+.some .🧑🏾‍🎤, .other .🧑🏾‍🎤 {
 	order: 64;
 }
 
@@ -966,11 +526,7 @@ button {
 	order: 65;
 }
 
-.🧑🏾‍🎤  .some {
-	order: 66;
-}
-
-.🧑🏾‍🎤  .other {
+.🧑🏾‍🎤  .some, .🧑🏾‍🎤  .other {
 	order: 66;
 }
 
@@ -978,11 +534,7 @@ button {
 	order: 66;
 }
 
-.some  .🧑🏾‍🎤 {
-	order: 67;
-}
-
-.other  .🧑🏾‍🎤 {
+.some  .🧑🏾‍🎤, .other  .🧑🏾‍🎤 {
 	order: 67;
 }
 
@@ -998,11 +550,7 @@ button {
 	order: 68;
 }
 
-.🧑🏾‍🎤+.some {
-	order: 69;
-}
-
-.🧑🏾‍🎤+.other {
+.🧑🏾‍🎤+.some, .🧑🏾‍🎤+.other {
 	order: 69;
 }
 
@@ -1010,11 +558,7 @@ button {
 	order: 69;
 }
 
-.some+.🧑🏾‍🎤 {
-	order: 70;
-}
-
-.other+.🧑🏾‍🎤 {
+.some+.🧑🏾‍🎤, .other+.🧑🏾‍🎤 {
 	order: 70;
 }
 
@@ -1030,11 +574,7 @@ button {
 	order: 71;
 }
 
-.🧑🏾‍🎤 + .some {
-	order: 72;
-}
-
-.🧑🏾‍🎤 + .other {
+.🧑🏾‍🎤 + .some, .🧑🏾‍🎤 + .other {
 	order: 72;
 }
 
@@ -1042,11 +582,7 @@ button {
 	order: 72;
 }
 
-.some + .🧑🏾‍🎤 {
-	order: 73;
-}
-
-.other + .🧑🏾‍🎤 {
+.some + .🧑🏾‍🎤, .other + .🧑🏾‍🎤 {
 	order: 73;
 }
 
@@ -1062,11 +598,7 @@ button {
 	order: 74;
 }
 
-.🧑🏾‍🎤~.some {
-	order: 75;
-}
-
-.🧑🏾‍🎤~.other {
+.🧑🏾‍🎤~.some, .🧑🏾‍🎤~.other {
 	order: 75;
 }
 
@@ -1074,11 +606,7 @@ button {
 	order: 75;
 }
 
-.some~.🧑🏾‍🎤 {
-	order: 76;
-}
-
-.other~.🧑🏾‍🎤 {
+.some~.🧑🏾‍🎤, .other~.🧑🏾‍🎤 {
 	order: 76;
 }
 
@@ -1094,11 +622,7 @@ button {
 	order: 77;
 }
 
-.🧑🏾‍🎤 ~ .some {
-	order: 78;
-}
-
-.🧑🏾‍🎤 ~ .other {
+.🧑🏾‍🎤 ~ .some, .🧑🏾‍🎤 ~ .other {
 	order: 78;
 }
 
@@ -1106,11 +630,7 @@ button {
 	order: 78;
 }
 
-.some ~ .🧑🏾‍🎤 {
-	order: 79;
-}
-
-.other ~ .🧑🏾‍🎤 {
+.some ~ .🧑🏾‍🎤, .other ~ .🧑🏾‍🎤 {
 	order: 79;
 }
 
@@ -1126,11 +646,7 @@ button {
 	order: 80;
 }
 
-.🧑🏾‍🎤>.some {
-	order: 81;
-}
-
-.🧑🏾‍🎤>.other {
+.🧑🏾‍🎤>.some, .🧑🏾‍🎤>.other {
 	order: 81;
 }
 
@@ -1138,11 +654,7 @@ button {
 	order: 81;
 }
 
-.some>.🧑🏾‍🎤 {
-	order: 82;
-}
-
-.other>.🧑🏾‍🎤 {
+.some>.🧑🏾‍🎤, .other>.🧑🏾‍🎤 {
 	order: 82;
 }
 
@@ -1158,11 +670,7 @@ button {
 	order: 83;
 }
 
-.🧑🏾‍🎤 > .some {
-	order: 84;
-}
-
-.🧑🏾‍🎤 > .other {
+.🧑🏾‍🎤 > .some, .🧑🏾‍🎤 > .other {
 	order: 84;
 }
 
@@ -1170,11 +678,7 @@ button {
 	order: 84;
 }
 
-.some > .🧑🏾‍🎤 {
-	order: 85;
-}
-
-.other > .🧑🏾‍🎤 {
+.some > .🧑🏾‍🎤, .other > .🧑🏾‍🎤 {
 	order: 85;
 }
 
@@ -1190,15 +694,7 @@ button {
 	order: 86;
 }
 
-.some {
-	order: 87;
-}
-
-.other {
-	order: 87;
-}
-
-.🧑🏾‍🎤 {
+.🧑🏾‍🎤, .some, .other {
 	order: 87;
 }
 
@@ -1206,15 +702,7 @@ button {
 	order: 87;
 }
 
-.some {
-	order: 88;
-}
-
-.other {
-	order: 88;
-}
-
-.🧑🏾‍🎤 {
+.some, .other, .🧑🏾‍🎤 {
 	order: 88;
 }
 
@@ -1230,11 +718,7 @@ button {
 	order: 89;
 }
 
-.foo.some {
-	order: 90;
-}
-
-.foo.other {
+.foo.some, .foo.other {
 	order: 90;
 }
 
@@ -1242,11 +726,7 @@ button {
 	order: 90;
 }
 
-.some.foo {
-	order: 91;
-}
-
-.other.foo {
+.some.foo, .other.foo {
 	order: 91;
 }
 
@@ -1262,11 +742,7 @@ button {
 	order: 92;
 }
 
-.foo .some {
-	order: 93;
-}
-
-.foo .other {
+.foo .some, .foo .other {
 	order: 93;
 }
 
@@ -1274,11 +750,7 @@ button {
 	order: 93;
 }
 
-.some .foo {
-	order: 94;
-}
-
-.other .foo {
+.some .foo, .other .foo {
 	order: 94;
 }
 
@@ -1294,11 +766,7 @@ button {
 	order: 95;
 }
 
-.foo  .some {
-	order: 96;
-}
-
-.foo  .other {
+.foo  .some, .foo  .other {
 	order: 96;
 }
 
@@ -1306,11 +774,7 @@ button {
 	order: 96;
 }
 
-.some  .foo {
-	order: 97;
-}
-
-.other  .foo {
+.some  .foo, .other  .foo {
 	order: 97;
 }
 
@@ -1326,11 +790,7 @@ button {
 	order: 98;
 }
 
-.foo+.some {
-	order: 99;
-}
-
-.foo+.other {
+.foo+.some, .foo+.other {
 	order: 99;
 }
 
@@ -1338,11 +798,7 @@ button {
 	order: 99;
 }
 
-.some+.foo {
-	order: 100;
-}
-
-.other+.foo {
+.some+.foo, .other+.foo {
 	order: 100;
 }
 
@@ -1358,11 +814,7 @@ button {
 	order: 101;
 }
 
-.foo + .some {
-	order: 102;
-}
-
-.foo + .other {
+.foo + .some, .foo + .other {
 	order: 102;
 }
 
@@ -1370,11 +822,7 @@ button {
 	order: 102;
 }
 
-.some + .foo {
-	order: 103;
-}
-
-.other + .foo {
+.some + .foo, .other + .foo {
 	order: 103;
 }
 
@@ -1390,11 +838,7 @@ button {
 	order: 104;
 }
 
-.foo~.some {
-	order: 105;
-}
-
-.foo~.other {
+.foo~.some, .foo~.other {
 	order: 105;
 }
 
@@ -1402,11 +846,7 @@ button {
 	order: 105;
 }
 
-.some~.foo {
-	order: 106;
-}
-
-.other~.foo {
+.some~.foo, .other~.foo {
 	order: 106;
 }
 
@@ -1422,11 +862,7 @@ button {
 	order: 107;
 }
 
-.foo ~ .some {
-	order: 108;
-}
-
-.foo ~ .other {
+.foo ~ .some, .foo ~ .other {
 	order: 108;
 }
 
@@ -1434,11 +870,7 @@ button {
 	order: 108;
 }
 
-.some ~ .foo {
-	order: 109;
-}
-
-.other ~ .foo {
+.some ~ .foo, .other ~ .foo {
 	order: 109;
 }
 
@@ -1454,11 +886,7 @@ button {
 	order: 110;
 }
 
-.foo>.some {
-	order: 111;
-}
-
-.foo>.other {
+.foo>.some, .foo>.other {
 	order: 111;
 }
 
@@ -1466,11 +894,7 @@ button {
 	order: 111;
 }
 
-.some>.foo {
-	order: 112;
-}
-
-.other>.foo {
+.some>.foo, .other>.foo {
 	order: 112;
 }
 
@@ -1486,11 +910,7 @@ button {
 	order: 113;
 }
 
-.foo > .some {
-	order: 114;
-}
-
-.foo > .other {
+.foo > .some, .foo > .other {
 	order: 114;
 }
 
@@ -1498,11 +918,7 @@ button {
 	order: 114;
 }
 
-.some > .foo {
-	order: 115;
-}
-
-.other > .foo {
+.some > .foo, .other > .foo {
 	order: 115;
 }
 
@@ -1518,15 +934,7 @@ button {
 	order: 116;
 }
 
-.some {
-	order: 117;
-}
-
-.other {
-	order: 117;
-}
-
-.foo {
+.foo, .some, .other {
 	order: 117;
 }
 
@@ -1534,15 +942,7 @@ button {
 	order: 117;
 }
 
-.some {
-	order: 118;
-}
-
-.other {
-	order: 118;
-}
-
-.foo {
+.some, .other, .foo {
 	order: 118;
 }
 
@@ -1558,11 +958,7 @@ button {
 	order: 119;
 }
 
-#foo.some {
-	order: 120;
-}
-
-#foo.other {
+#foo.some, #foo.other {
 	order: 120;
 }
 
@@ -1570,11 +966,7 @@ button {
 	order: 120;
 }
 
-#foo.some {
-	order: 121;
-}
-
-#foo.other {
+#foo.some, #foo.other {
 	order: 121;
 }
 
@@ -1590,11 +982,7 @@ button {
 	order: 122;
 }
 
-#foo .some {
-	order: 123;
-}
-
-#foo .other {
+#foo .some, #foo .other {
 	order: 123;
 }
 
@@ -1602,11 +990,7 @@ button {
 	order: 123;
 }
 
-.some #foo {
-	order: 124;
-}
-
-.other #foo {
+.some #foo, .other #foo {
 	order: 124;
 }
 
@@ -1622,11 +1006,7 @@ button {
 	order: 125;
 }
 
-#foo  .some {
-	order: 126;
-}
-
-#foo  .other {
+#foo  .some, #foo  .other {
 	order: 126;
 }
 
@@ -1634,11 +1014,7 @@ button {
 	order: 126;
 }
 
-.some  #foo {
-	order: 127;
-}
-
-.other  #foo {
+.some  #foo, .other  #foo {
 	order: 127;
 }
 
@@ -1654,11 +1030,7 @@ button {
 	order: 128;
 }
 
-#foo+.some {
-	order: 129;
-}
-
-#foo+.other {
+#foo+.some, #foo+.other {
 	order: 129;
 }
 
@@ -1666,11 +1038,7 @@ button {
 	order: 129;
 }
 
-.some+#foo {
-	order: 130;
-}
-
-.other+#foo {
+.some+#foo, .other+#foo {
 	order: 130;
 }
 
@@ -1686,11 +1054,7 @@ button {
 	order: 131;
 }
 
-#foo + .some {
-	order: 132;
-}
-
-#foo + .other {
+#foo + .some, #foo + .other {
 	order: 132;
 }
 
@@ -1698,11 +1062,7 @@ button {
 	order: 132;
 }
 
-.some + #foo {
-	order: 133;
-}
-
-.other + #foo {
+.some + #foo, .other + #foo {
 	order: 133;
 }
 
@@ -1718,11 +1078,7 @@ button {
 	order: 134;
 }
 
-#foo~.some {
-	order: 135;
-}
-
-#foo~.other {
+#foo~.some, #foo~.other {
 	order: 135;
 }
 
@@ -1730,11 +1086,7 @@ button {
 	order: 135;
 }
 
-.some~#foo {
-	order: 136;
-}
-
-.other~#foo {
+.some~#foo, .other~#foo {
 	order: 136;
 }
 
@@ -1750,11 +1102,7 @@ button {
 	order: 137;
 }
 
-#foo ~ .some {
-	order: 138;
-}
-
-#foo ~ .other {
+#foo ~ .some, #foo ~ .other {
 	order: 138;
 }
 
@@ -1762,11 +1110,7 @@ button {
 	order: 138;
 }
 
-.some ~ #foo {
-	order: 139;
-}
-
-.other ~ #foo {
+.some ~ #foo, .other ~ #foo {
 	order: 139;
 }
 
@@ -1782,11 +1126,7 @@ button {
 	order: 140;
 }
 
-#foo>.some {
-	order: 141;
-}
-
-#foo>.other {
+#foo>.some, #foo>.other {
 	order: 141;
 }
 
@@ -1794,11 +1134,7 @@ button {
 	order: 141;
 }
 
-.some>#foo {
-	order: 142;
-}
-
-.other>#foo {
+.some>#foo, .other>#foo {
 	order: 142;
 }
 
@@ -1814,11 +1150,7 @@ button {
 	order: 143;
 }
 
-#foo > .some {
-	order: 144;
-}
-
-#foo > .other {
+#foo > .some, #foo > .other {
 	order: 144;
 }
 
@@ -1826,11 +1158,7 @@ button {
 	order: 144;
 }
 
-.some > #foo {
-	order: 145;
-}
-
-.other > #foo {
+.some > #foo, .other > #foo {
 	order: 145;
 }
 
@@ -1846,15 +1174,7 @@ button {
 	order: 146;
 }
 
-.some {
-	order: 147;
-}
-
-.other {
-	order: 147;
-}
-
-#foo {
+#foo, .some, .other {
 	order: 147;
 }
 
@@ -1862,15 +1182,7 @@ button {
 	order: 147;
 }
 
-.some {
-	order: 148;
-}
-
-.other {
-	order: 148;
-}
-
-#foo {
+.some, .other, #foo {
 	order: 148;
 }
 
@@ -1886,11 +1198,7 @@ button {
 	order: 149;
 }
 
-__foo.some {
-	order: 150;
-}
-
-__foo.other {
+__foo.some, __foo.other {
 	order: 150;
 }
 
@@ -1898,11 +1206,7 @@ __foo:is(.some, .other) {
 	order: 150;
 }
 
-__foo.some {
-	order: 151;
-}
-
-__foo.other {
+__foo.some, __foo.other {
 	order: 151;
 }
 
@@ -1918,11 +1222,7 @@ __foo__foo {
 	order: 152;
 }
 
-__foo .some {
-	order: 153;
-}
-
-__foo .other {
+__foo .some, __foo .other {
 	order: 153;
 }
 
@@ -1930,11 +1230,7 @@ __foo :is(.some, .other) {
 	order: 153;
 }
 
-.some __foo {
-	order: 154;
-}
-
-.other __foo {
+.some __foo, .other __foo {
 	order: 154;
 }
 
@@ -1950,11 +1246,7 @@ __foo __foo {
 	order: 155;
 }
 
-__foo  .some {
-	order: 156;
-}
-
-__foo  .other {
+__foo  .some, __foo  .other {
 	order: 156;
 }
 
@@ -1962,11 +1254,7 @@ __foo  :is(.some, .other) {
 	order: 156;
 }
 
-.some  __foo {
-	order: 157;
-}
-
-.other  __foo {
+.some  __foo, .other  __foo {
 	order: 157;
 }
 
@@ -1982,11 +1270,7 @@ __foo  __foo {
 	order: 158;
 }
 
-__foo+.some {
-	order: 159;
-}
-
-__foo+.other {
+__foo+.some, __foo+.other {
 	order: 159;
 }
 
@@ -1994,11 +1278,7 @@ __foo+:is(.some, .other) {
 	order: 159;
 }
 
-.some+__foo {
-	order: 160;
-}
-
-.other+__foo {
+.some+__foo, .other+__foo {
 	order: 160;
 }
 
@@ -2014,11 +1294,7 @@ __foo+__foo {
 	order: 161;
 }
 
-__foo + .some {
-	order: 162;
-}
-
-__foo + .other {
+__foo + .some, __foo + .other {
 	order: 162;
 }
 
@@ -2026,11 +1302,7 @@ __foo + :is(.some, .other) {
 	order: 162;
 }
 
-.some + __foo {
-	order: 163;
-}
-
-.other + __foo {
+.some + __foo, .other + __foo {
 	order: 163;
 }
 
@@ -2046,11 +1318,7 @@ __foo + __foo {
 	order: 164;
 }
 
-__foo~.some {
-	order: 165;
-}
-
-__foo~.other {
+__foo~.some, __foo~.other {
 	order: 165;
 }
 
@@ -2058,11 +1326,7 @@ __foo~:is(.some, .other) {
 	order: 165;
 }
 
-.some~__foo {
-	order: 166;
-}
-
-.other~__foo {
+.some~__foo, .other~__foo {
 	order: 166;
 }
 
@@ -2078,11 +1342,7 @@ __foo~__foo {
 	order: 167;
 }
 
-__foo ~ .some {
-	order: 168;
-}
-
-__foo ~ .other {
+__foo ~ .some, __foo ~ .other {
 	order: 168;
 }
 
@@ -2090,11 +1350,7 @@ __foo ~ :is(.some, .other) {
 	order: 168;
 }
 
-.some ~ __foo {
-	order: 169;
-}
-
-.other ~ __foo {
+.some ~ __foo, .other ~ __foo {
 	order: 169;
 }
 
@@ -2110,11 +1366,7 @@ __foo ~ __foo {
 	order: 170;
 }
 
-__foo>.some {
-	order: 171;
-}
-
-__foo>.other {
+__foo>.some, __foo>.other {
 	order: 171;
 }
 
@@ -2122,11 +1374,7 @@ __foo>:is(.some, .other) {
 	order: 171;
 }
 
-.some>__foo {
-	order: 172;
-}
-
-.other>__foo {
+.some>__foo, .other>__foo {
 	order: 172;
 }
 
@@ -2142,11 +1390,7 @@ __foo>__foo {
 	order: 173;
 }
 
-__foo > .some {
-	order: 174;
-}
-
-__foo > .other {
+__foo > .some, __foo > .other {
 	order: 174;
 }
 
@@ -2154,11 +1398,7 @@ __foo > :is(.some, .other) {
 	order: 174;
 }
 
-.some > __foo {
-	order: 175;
-}
-
-.other > __foo {
+.some > __foo, .other > __foo {
 	order: 175;
 }
 
@@ -2174,15 +1414,7 @@ __foo > __foo {
 	order: 176;
 }
 
-.some {
-	order: 177;
-}
-
-.other {
-	order: 177;
-}
-
-__foo {
+__foo, .some, .other {
 	order: 177;
 }
 
@@ -2190,15 +1422,7 @@ __foo, :is(.some, .other) {
 	order: 177;
 }
 
-.some {
-	order: 178;
-}
-
-.other {
-	order: 178;
-}
-
-__foo {
+.some, .other, __foo {
 	order: 178;
 }
 
@@ -2502,15 +1726,7 @@ __foo {
 	order: 206;
 }
 
-.some {
-	order: 207;
-}
-
-.other {
-	order: 207;
-}
-
-:--foo {
+:--foo, .some, .other {
 	order: 207;
 }
 
@@ -2518,15 +1734,7 @@ __foo {
 	order: 207;
 }
 
-.some {
-	order: 208;
-}
-
-.other {
-	order: 208;
-}
-
-:--foo {
+.some, .other, :--foo {
 	order: 208;
 }
 
@@ -2542,11 +1750,7 @@ __foo {
 	order: 209;
 }
 
-.some[foo="baz"] {
-	order: 210;
-}
-
-.other[foo="baz"] {
+.some[foo="baz"], .other[foo="baz"] {
 	order: 210;
 }
 
@@ -2554,11 +1758,7 @@ __foo {
 	order: 210;
 }
 
-.some[foo="baz"] {
-	order: 211;
-}
-
-.other[foo="baz"] {
+.some[foo="baz"], .other[foo="baz"] {
 	order: 211;
 }
 
@@ -2574,11 +1774,7 @@ __foo {
 	order: 212;
 }
 
-[foo="baz"] .some {
-	order: 213;
-}
-
-[foo="baz"] .other {
+[foo="baz"] .some, [foo="baz"] .other {
 	order: 213;
 }
 
@@ -2586,11 +1782,7 @@ __foo {
 	order: 213;
 }
 
-.some [foo="baz"] {
-	order: 214;
-}
-
-.other [foo="baz"] {
+.some [foo="baz"], .other [foo="baz"] {
 	order: 214;
 }
 
@@ -2606,11 +1798,7 @@ __foo {
 	order: 215;
 }
 
-[foo="baz"]  .some {
-	order: 216;
-}
-
-[foo="baz"]  .other {
+[foo="baz"]  .some, [foo="baz"]  .other {
 	order: 216;
 }
 
@@ -2618,11 +1806,7 @@ __foo {
 	order: 216;
 }
 
-.some  [foo="baz"] {
-	order: 217;
-}
-
-.other  [foo="baz"] {
+.some  [foo="baz"], .other  [foo="baz"] {
 	order: 217;
 }
 
@@ -2638,11 +1822,7 @@ __foo {
 	order: 218;
 }
 
-[foo="baz"]+.some {
-	order: 219;
-}
-
-[foo="baz"]+.other {
+[foo="baz"]+.some, [foo="baz"]+.other {
 	order: 219;
 }
 
@@ -2650,11 +1830,7 @@ __foo {
 	order: 219;
 }
 
-.some+[foo="baz"] {
-	order: 220;
-}
-
-.other+[foo="baz"] {
+.some+[foo="baz"], .other+[foo="baz"] {
 	order: 220;
 }
 
@@ -2670,11 +1846,7 @@ __foo {
 	order: 221;
 }
 
-[foo="baz"] + .some {
-	order: 222;
-}
-
-[foo="baz"] + .other {
+[foo="baz"] + .some, [foo="baz"] + .other {
 	order: 222;
 }
 
@@ -2682,11 +1854,7 @@ __foo {
 	order: 222;
 }
 
-.some + [foo="baz"] {
-	order: 223;
-}
-
-.other + [foo="baz"] {
+.some + [foo="baz"], .other + [foo="baz"] {
 	order: 223;
 }
 
@@ -2702,11 +1870,7 @@ __foo {
 	order: 224;
 }
 
-[foo="baz"]~.some {
-	order: 225;
-}
-
-[foo="baz"]~.other {
+[foo="baz"]~.some, [foo="baz"]~.other {
 	order: 225;
 }
 
@@ -2714,11 +1878,7 @@ __foo {
 	order: 225;
 }
 
-.some~[foo="baz"] {
-	order: 226;
-}
-
-.other~[foo="baz"] {
+.some~[foo="baz"], .other~[foo="baz"] {
 	order: 226;
 }
 
@@ -2734,11 +1894,7 @@ __foo {
 	order: 227;
 }
 
-[foo="baz"] ~ .some {
-	order: 228;
-}
-
-[foo="baz"] ~ .other {
+[foo="baz"] ~ .some, [foo="baz"] ~ .other {
 	order: 228;
 }
 
@@ -2746,11 +1902,7 @@ __foo {
 	order: 228;
 }
 
-.some ~ [foo="baz"] {
-	order: 229;
-}
-
-.other ~ [foo="baz"] {
+.some ~ [foo="baz"], .other ~ [foo="baz"] {
 	order: 229;
 }
 
@@ -2766,11 +1918,7 @@ __foo {
 	order: 230;
 }
 
-[foo="baz"]>.some {
-	order: 231;
-}
-
-[foo="baz"]>.other {
+[foo="baz"]>.some, [foo="baz"]>.other {
 	order: 231;
 }
 
@@ -2778,11 +1926,7 @@ __foo {
 	order: 231;
 }
 
-.some>[foo="baz"] {
-	order: 232;
-}
-
-.other>[foo="baz"] {
+.some>[foo="baz"], .other>[foo="baz"] {
 	order: 232;
 }
 
@@ -2798,11 +1942,7 @@ __foo {
 	order: 233;
 }
 
-[foo="baz"] > .some {
-	order: 234;
-}
-
-[foo="baz"] > .other {
+[foo="baz"] > .some, [foo="baz"] > .other {
 	order: 234;
 }
 
@@ -2810,11 +1950,7 @@ __foo {
 	order: 234;
 }
 
-.some > [foo="baz"] {
-	order: 235;
-}
-
-.other > [foo="baz"] {
+.some > [foo="baz"], .other > [foo="baz"] {
 	order: 235;
 }
 
@@ -2830,15 +1966,7 @@ __foo {
 	order: 236;
 }
 
-.some {
-	order: 237;
-}
-
-.other {
-	order: 237;
-}
-
-[foo="baz"] {
+[foo="baz"], .some, .other {
 	order: 237;
 }
 
@@ -2846,15 +1974,7 @@ __foo {
 	order: 237;
 }
 
-.some {
-	order: 238;
-}
-
-.other {
-	order: 238;
-}
-
-[foo="baz"] {
+.some, .other, [foo="baz"] {
 	order: 238;
 }
 
@@ -2870,11 +1990,7 @@ __foo {
 	order: 239;
 }
 
-*.some {
-	order: 240;
-}
-
-*.other {
+*.some, *.other {
 	order: 240;
 }
 
@@ -2882,11 +1998,7 @@ __foo {
 	order: 240;
 }
 
-*.some {
-	order: 241;
-}
-
-*.other {
+*.some, *.other {
 	order: 241;
 }
 
@@ -2902,11 +2014,7 @@ __foo {
 	order: 242;
 }
 
-* .some {
-	order: 243;
-}
-
-* .other {
+* .some, * .other {
 	order: 243;
 }
 
@@ -2914,11 +2022,7 @@ __foo {
 	order: 243;
 }
 
-.some * {
-	order: 244;
-}
-
-.other * {
+.some *, .other * {
 	order: 244;
 }
 
@@ -2934,11 +2038,7 @@ __foo {
 	order: 245;
 }
 
-*  .some {
-	order: 246;
-}
-
-*  .other {
+*  .some, *  .other {
 	order: 246;
 }
 
@@ -2946,11 +2046,7 @@ __foo {
 	order: 246;
 }
 
-.some  * {
-	order: 247;
-}
-
-.other  * {
+.some  *, .other  * {
 	order: 247;
 }
 
@@ -2966,11 +2062,7 @@ __foo {
 	order: 248;
 }
 
-*+.some {
-	order: 249;
-}
-
-*+.other {
+*+.some, *+.other {
 	order: 249;
 }
 
@@ -2978,11 +2070,7 @@ __foo {
 	order: 249;
 }
 
-.some+* {
-	order: 250;
-}
-
-.other+* {
+.some+*, .other+* {
 	order: 250;
 }
 
@@ -2998,11 +2086,7 @@ __foo {
 	order: 251;
 }
 
-* + .some {
-	order: 252;
-}
-
-* + .other {
+* + .some, * + .other {
 	order: 252;
 }
 
@@ -3010,11 +2094,7 @@ __foo {
 	order: 252;
 }
 
-.some + * {
-	order: 253;
-}
-
-.other + * {
+.some + *, .other + * {
 	order: 253;
 }
 
@@ -3030,11 +2110,7 @@ __foo {
 	order: 254;
 }
 
-*~.some {
-	order: 255;
-}
-
-*~.other {
+*~.some, *~.other {
 	order: 255;
 }
 
@@ -3042,11 +2118,7 @@ __foo {
 	order: 255;
 }
 
-.some~* {
-	order: 256;
-}
-
-.other~* {
+.some~*, .other~* {
 	order: 256;
 }
 
@@ -3062,11 +2134,7 @@ __foo {
 	order: 257;
 }
 
-* ~ .some {
-	order: 258;
-}
-
-* ~ .other {
+* ~ .some, * ~ .other {
 	order: 258;
 }
 
@@ -3074,11 +2142,7 @@ __foo {
 	order: 258;
 }
 
-.some ~ * {
-	order: 259;
-}
-
-.other ~ * {
+.some ~ *, .other ~ * {
 	order: 259;
 }
 
@@ -3094,11 +2158,7 @@ __foo {
 	order: 260;
 }
 
-*>.some {
-	order: 261;
-}
-
-*>.other {
+*>.some, *>.other {
 	order: 261;
 }
 
@@ -3106,11 +2166,7 @@ __foo {
 	order: 261;
 }
 
-.some>* {
-	order: 262;
-}
-
-.other>* {
+.some>*, .other>* {
 	order: 262;
 }
 
@@ -3126,11 +2182,7 @@ __foo {
 	order: 263;
 }
 
-* > .some {
-	order: 264;
-}
-
-* > .other {
+* > .some, * > .other {
 	order: 264;
 }
 
@@ -3138,11 +2190,7 @@ __foo {
 	order: 264;
 }
 
-.some > * {
-	order: 265;
-}
-
-.other > * {
+.some > *, .other > * {
 	order: 265;
 }
 
@@ -3158,15 +2206,7 @@ __foo {
 	order: 266;
 }
 
-.some {
-	order: 267;
-}
-
-.other {
-	order: 267;
-}
-
-* {
+*, .some, .other {
 	order: 267;
 }
 
@@ -3174,15 +2214,7 @@ __foo {
 	order: 267;
 }
 
-.some {
-	order: 268;
-}
-
-.other {
-	order: 268;
-}
-
-* {
+.some, .other, * {
 	order: 268;
 }
 
@@ -3198,11 +2230,7 @@ __foo {
 	order: 269;
 }
 
-.some:hover {
-	order: 270;
-}
-
-.other:hover {
+.some:hover, .other:hover {
 	order: 270;
 }
 
@@ -3210,11 +2238,7 @@ __foo {
 	order: 270;
 }
 
-.some:hover {
-	order: 271;
-}
-
-.other:hover {
+.some:hover, .other:hover {
 	order: 271;
 }
 
@@ -3230,11 +2254,7 @@ __foo {
 	order: 272;
 }
 
-:hover .some {
-	order: 273;
-}
-
-:hover .other {
+:hover .some, :hover .other {
 	order: 273;
 }
 
@@ -3242,11 +2262,7 @@ __foo {
 	order: 273;
 }
 
-.some :hover {
-	order: 274;
-}
-
-.other :hover {
+.some :hover, .other :hover {
 	order: 274;
 }
 
@@ -3262,11 +2278,7 @@ __foo {
 	order: 275;
 }
 
-:hover  .some {
-	order: 276;
-}
-
-:hover  .other {
+:hover  .some, :hover  .other {
 	order: 276;
 }
 
@@ -3274,11 +2286,7 @@ __foo {
 	order: 276;
 }
 
-.some  :hover {
-	order: 277;
-}
-
-.other  :hover {
+.some  :hover, .other  :hover {
 	order: 277;
 }
 
@@ -3294,11 +2302,7 @@ __foo {
 	order: 278;
 }
 
-:hover+.some {
-	order: 279;
-}
-
-:hover+.other {
+:hover+.some, :hover+.other {
 	order: 279;
 }
 
@@ -3306,11 +2310,7 @@ __foo {
 	order: 279;
 }
 
-.some+:hover {
-	order: 280;
-}
-
-.other+:hover {
+.some+:hover, .other+:hover {
 	order: 280;
 }
 
@@ -3326,11 +2326,7 @@ __foo {
 	order: 281;
 }
 
-:hover + .some {
-	order: 282;
-}
-
-:hover + .other {
+:hover + .some, :hover + .other {
 	order: 282;
 }
 
@@ -3338,11 +2334,7 @@ __foo {
 	order: 282;
 }
 
-.some + :hover {
-	order: 283;
-}
-
-.other + :hover {
+.some + :hover, .other + :hover {
 	order: 283;
 }
 
@@ -3358,11 +2350,7 @@ __foo {
 	order: 284;
 }
 
-:hover~.some {
-	order: 285;
-}
-
-:hover~.other {
+:hover~.some, :hover~.other {
 	order: 285;
 }
 
@@ -3370,11 +2358,7 @@ __foo {
 	order: 285;
 }
 
-.some~:hover {
-	order: 286;
-}
-
-.other~:hover {
+.some~:hover, .other~:hover {
 	order: 286;
 }
 
@@ -3390,11 +2374,7 @@ __foo {
 	order: 287;
 }
 
-:hover ~ .some {
-	order: 288;
-}
-
-:hover ~ .other {
+:hover ~ .some, :hover ~ .other {
 	order: 288;
 }
 
@@ -3402,11 +2382,7 @@ __foo {
 	order: 288;
 }
 
-.some ~ :hover {
-	order: 289;
-}
-
-.other ~ :hover {
+.some ~ :hover, .other ~ :hover {
 	order: 289;
 }
 
@@ -3422,11 +2398,7 @@ __foo {
 	order: 290;
 }
 
-:hover>.some {
-	order: 291;
-}
-
-:hover>.other {
+:hover>.some, :hover>.other {
 	order: 291;
 }
 
@@ -3434,11 +2406,7 @@ __foo {
 	order: 291;
 }
 
-.some>:hover {
-	order: 292;
-}
-
-.other>:hover {
+.some>:hover, .other>:hover {
 	order: 292;
 }
 
@@ -3454,11 +2422,7 @@ __foo {
 	order: 293;
 }
 
-:hover > .some {
-	order: 294;
-}
-
-:hover > .other {
+:hover > .some, :hover > .other {
 	order: 294;
 }
 
@@ -3466,11 +2430,7 @@ __foo {
 	order: 294;
 }
 
-.some > :hover {
-	order: 295;
-}
-
-.other > :hover {
+.some > :hover, .other > :hover {
 	order: 295;
 }
 
@@ -3486,15 +2446,7 @@ __foo {
 	order: 296;
 }
 
-.some {
-	order: 297;
-}
-
-.other {
-	order: 297;
-}
-
-:hover {
+:hover, .some, .other {
 	order: 297;
 }
 
@@ -3502,15 +2454,7 @@ __foo {
 	order: 297;
 }
 
-.some {
-	order: 298;
-}
-
-.other {
-	order: 298;
-}
-
-:hover {
+.some, .other, :hover {
 	order: 298;
 }
 
@@ -3814,15 +2758,7 @@ __foo {
 	order: 326;
 }
 
-.some {
-	order: 327;
-}
-
-.other {
-	order: 327;
-}
-
-::before {
+::before, .some, .other {
 	order: 327;
 }
 
@@ -3830,15 +2766,7 @@ __foo {
 	order: 327;
 }
 
-.some {
-	order: 328;
-}
-
-.other {
-	order: 328;
-}
-
-::before {
+.some, .other, ::before {
 	order: 328;
 }
 
@@ -3870,11 +2798,7 @@ foo[baz=":is(.some, .other)"] {
 	order: 332;
 }
 
-:not(.some) {
-	order: 333;
-}
-
-:not(.other) {
+:not(.some, .other) {
 	order: 333;
 }
 
@@ -3898,11 +2822,7 @@ foo[baz=":is(.some, .other)"] {
 	order: 335;
 }
 
-__.some {
-	order: 336;
-}
-
-__.other {
+__.some, __.other {
 	order: 336;
 }
 

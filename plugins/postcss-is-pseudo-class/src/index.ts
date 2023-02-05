@@ -1,4 +1,5 @@
 import type { PluginCreator } from 'postcss';
+import alwaysValidSelector from './split-selectors/always-valid';
 import complexSelectors from './split-selectors/complex';
 import splitSelectors from './split-selectors/split-selectors';
 
@@ -69,8 +70,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			};
 
 			try {
-				let didClone = false;
-				const untouched = [];
+				let didModifiy = false;
+				const selectorListOnOriginalNode = [];
 
 				// 1. List behavior.
 				const split = splitSelectors(
@@ -98,22 +99,28 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					// `::is()` is incorrect but can't be detected without parsing.
 					// It will be left as is and will eventually trigger this condition.
 					// This prevents an infinite loop.
-					// didClone is the signal to prevent the infinite loop.
+					// didModifiy is the signal to prevent the infinite loop.
 					if (rule.selectors.indexOf(modifiedSelector) > -1) {
-						untouched.push(modifiedSelector);
+						selectorListOnOriginalNode.push(modifiedSelector);
+						return;
+					}
+
+					if (alwaysValidSelector(modifiedSelector)) {
+						selectorListOnOriginalNode.push(modifiedSelector);
+						didModifiy = true;
 						return;
 					}
 
 					rule.cloneBefore({ selector: modifiedSelector });
-					didClone = true;
+					didModifiy = true;
 				});
 
-				if (untouched.length && didClone) {
-					rule.cloneBefore({ selectors: untouched });
+				if (selectorListOnOriginalNode.length && didModifiy) {
+					rule.cloneBefore({ selectors: selectorListOnOriginalNode });
 				}
 
 				if (!options.preserve) {
-					if (!didClone) {
+					if (!didModifiy) {
 						return;
 					}
 

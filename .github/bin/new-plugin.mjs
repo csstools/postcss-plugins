@@ -60,7 +60,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 		path.join(pluginDir, 'CHANGELOG.md'),
 		`# Changes to PostCSS ${pluginName}
 
-### 1.0.0 (Unreleased)
+### Unreleased (major)
 
 - Initial version
 `,
@@ -74,7 +74,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 	const packageInfo = JSON.parse(await fsp.readFile(path.join(pluginDir, 'package.json'), 'utf8'));
 	packageInfo.name = packageName;
 	packageInfo.description = `TODO: Add description for ${pluginName}`;
-	packageInfo.version = '1.0.0';
+	packageInfo.version = '0.0.0';
 	packageInfo.homepage = `https://github.com/csstools/postcss-plugins/tree/main/plugins/${pluginSlug}#readme`;
 	packageInfo.bugs = 'https://github.com/csstools/postcss-plugins/issues';
 	packageInfo.csstools.exportName = exportName;

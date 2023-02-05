@@ -1,6 +1,6 @@
 # Changes to PostCSS HWB Function
 
-### Unreleased (minor)
+### 2.1.0 (February 2, 2023)
 
 - Add: `@csstools/color-helpers` dependency for all color value transformations.
 
