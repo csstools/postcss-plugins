@@ -1,4 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from '@csstools/postcss-scope-pseudo-class';
 
 postcssTape(plugin)({

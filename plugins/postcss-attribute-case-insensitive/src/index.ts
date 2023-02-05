@@ -104,29 +104,40 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-attribute-case-insensitive',
-		Rule(rule, { result }) {
-			if (!(/i\s*]/gmi.test(rule.selector))) {
-				return;
-			}
+		prepare() {
+			const transformedNodes = new WeakSet();
 
-			let modifiedSelector = rule.selector;
+			return {
+				Rule(rule, { result }) {
+					if (transformedNodes.has(rule)) {
+						return;
+					}
 
-			try {
-				modifiedSelector = selectorParser(transform).processSync(rule.selector);
-			} catch (err) {
-				rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
-				return;
-			}
+					if (!(/i\s*]/gmi.test(rule.selector))) {
+						return;
+					}
 
-			if (modifiedSelector === rule.selector) {
-				return;
-			}
+					let modifiedSelector = rule.selector;
 
-			rule.cloneBefore({ selector: modifiedSelector });
+					try {
+						modifiedSelector = selectorParser(transform).processSync(rule.selector);
+					} catch (err) {
+						rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
+						return;
+					}
 
-			if (!options.preserve) {
-				rule.remove();
-			}
+					if (modifiedSelector === rule.selector) {
+						return;
+					}
+
+					transformedNodes.add(rule);
+					rule.cloneBefore({ selector: modifiedSelector });
+
+					if (!options.preserve) {
+						rule.remove();
+					}
+				},
+			};
 		},
 	};
 };

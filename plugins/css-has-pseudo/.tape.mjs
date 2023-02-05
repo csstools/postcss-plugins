@@ -1,4 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'css-has-pseudo';
 import postcssLogical from 'postcss-logical';
 import postcssNesting from 'postcss-nesting';

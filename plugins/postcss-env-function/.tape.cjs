@@ -1,7 +1,7 @@
 const postcssTape = require('../../packages/postcss-tape/dist/index.cjs');
 const plugin = require('postcss-env-function');
 
-postcssTape(plugin)({
+postcssTape.postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage',
 	},

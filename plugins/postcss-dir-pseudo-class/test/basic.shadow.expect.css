@@ -97,3 +97,7 @@ html[dir="rtl"] * {
 :dir(ignore) {
 	order: 21;
 }
+
+:host-context([dir="ltr"]) {
+	to-clone: 1;
+}

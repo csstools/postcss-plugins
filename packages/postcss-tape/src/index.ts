@@ -51,7 +51,7 @@ function postcssSyntax(options: TestCaseOptions) {
 	return null;
 }
 
-export default function runner(currentPlugin: PluginCreator<unknown>) {
+export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 	let hasErrors = false;
 
 	// Plugin conforms to https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md
@@ -416,3 +416,32 @@ export default function runner(currentPlugin: PluginCreator<unknown>) {
 		console.warn('pass ' + (currentPlugin() as Plugin).postcssPlugin);
 	};
 }
+
+export const declarationClonerPlugin = {
+	postcssPlugin: 'declaration-cloner',
+	Declaration(decl) {
+		if (decl.prop === 'to-clone') {
+			decl.cloneBefore({ prop: 'cloned' });
+		}
+	},
+};
+
+export const ruleClonerPlugin = {
+	postcssPlugin: 'rule-cloner',
+	prepare() {
+		const transformedNodes = new WeakSet();
+
+		return {
+			Rule(rule) {
+				if (transformedNodes.has(rule)) {
+					return;
+				}
+
+				if (rule.selector === 'to-clone') {
+					transformedNodes.add(rule);
+					rule.cloneBefore({ selector: 'cloned' });
+				}
+			},
+		};
+	},
+};

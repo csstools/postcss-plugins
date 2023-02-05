@@ -121,7 +121,7 @@ input:blank {
 
 /* becomes */
 
-input[blank], input[blank] {
+input[blank] {
 	background-color: yellow;
 }
 input:blank {

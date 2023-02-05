@@ -1,5 +1,6 @@
 import type { PluginCreator } from 'postcss';
 import valuesParser from 'postcss-value-parser';
+import { hasFallback } from './has-fallback-decl';
 
 /** postcss-color-rebeccapurple plugin options */
 export type pluginOptions = {
@@ -21,6 +22,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-color-rebeccapurple',
 		Declaration(decl) {
 			if (!decl.value.toLowerCase().includes('rebeccapurple')) {
+				return;
+			}
+
+			if (hasFallback(decl)) {
 				return;
 			}
 

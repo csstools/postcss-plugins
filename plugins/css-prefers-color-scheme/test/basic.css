@@ -32,3 +32,9 @@ body {
 	color: var(--site-color, #111);
 	font: 100%/1.5 system-ui;
 }
+
+@media (prefers-color-scheme: dark) {
+	.foo {
+		to-clone: 1;
+	}
+}

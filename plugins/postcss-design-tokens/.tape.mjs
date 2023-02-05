@@ -1,4 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from '@csstools/postcss-design-tokens';
 import postcssImport from 'postcss-import';
 

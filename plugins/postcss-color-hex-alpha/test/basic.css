@@ -14,3 +14,12 @@ body {
 	background-color: #f3f3f3f3;
 	color: #0003;
 }
+
+.test-manual-fallback {
+	color: purple;
+	color: #9823f8a9;
+}
+
+to-clone {
+	color: #9823f8a9;
+}

@@ -25,167 +25,178 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'css-has-pseudo',
-		RuleExit: (rule, { result }) => {
-			if (!rule.selector.toLowerCase().includes(':has(') || isWithinSupportCheck(rule)) {
-				return;
-			}
+		prepare() {
+			const transformedNodes = new WeakSet();
 
-			const selectors = rule.selectors.map((selector) => {
-				if (!selector.toLowerCase().includes(':has(')) {
-					return selector;
-				}
+			return {
+				RuleExit: (rule, { result }) => {
+					if (transformedNodes.has(rule)) {
+						return;
+					}
 
-				let selectorAST;
-				try {
-					selectorAST = parser().astSync(selector);
-				} catch (err) {
-					rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
-					return selector;
-				}
+					if (!rule.selector.toLowerCase().includes(':has(') || isWithinSupportCheck(rule)) {
+						return;
+					}
 
-				if (typeof selectorAST === 'undefined') {
-					return selector;
-				}
-
-				selectorAST.walkPseudos((node) => {
-					let parent = node.parent;
-					let insideHasPseudoClass = false;
-					while (parent) {
-						if (parser.isPseudoClass(parent) && parent.value.toLowerCase() === ':has') {
-							insideHasPseudoClass = true;
+					const selectors = rule.selectors.map((selector) => {
+						if (!selector.toLowerCase().includes(':has(')) {
+							return selector;
 						}
 
-						parent = parent.parent;
-					}
+						let selectorAST;
+						try {
+							selectorAST = parser().astSync(selector);
+						} catch (err) {
+							rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
+							return selector;
+						}
 
-					if (!insideHasPseudoClass) {
-						return;
-					}
+						if (typeof selectorAST === 'undefined') {
+							return selector;
+						}
 
-					// see : https://bugs.chromium.org/p/chromium/issues/detail?id=669058#c34
-					// When we have ':has(:visited) {...}', the subject elements of the rule
-					// are the ancestors of the visited link element.
+						selectorAST.walkPseudos((node) => {
+							let parent = node.parent;
+							let insideHasPseudoClass = false;
+							while (parent) {
+								if (parser.isPseudoClass(parent) && parent.value.toLowerCase() === ':has') {
+									insideHasPseudoClass = true;
+								}
 
-					// To prevent leaking visitedness to the link's ancestors, the ':visited'
-					// selector does not match if it is inside the ':has()' argument selector.
-					// So if a ':has()' argument selector requires a matching ':visited', the
-					// style rule are not applied.
-					if (node.value.toLowerCase() === ':visited') {
-						// We can't leave `:has` untouched as that might cause broken selector lists.
-						// Replacing with the specificity matching name as this should never match anything without `:not()`.
-						node.replaceWith(parser.className({
-							value: options.specificityMatchingName,
-						}));
-					}
+								parent = parent.parent;
+							}
 
-					if (node.value.toLowerCase() === ':any-link') {
-						// we can transform `:any-link` to `:link` as this is allowed
-						node.value = ':link';
-					}
-				});
+							if (!insideHasPseudoClass) {
+								return;
+							}
 
-				selectorAST.walkPseudos((node) => {
-					if (node.value.toLowerCase() !== ':has' || !node.nodes) {
-						return;
-					}
+							// see : https://bugs.chromium.org/p/chromium/issues/detail?id=669058#c34
+							// When we have ':has(:visited) {...}', the subject elements of the rule
+							// are the ancestors of the visited link element.
 
-					let container = node.parent ?? node;
+							// To prevent leaking visitedness to the link's ancestors, the ':visited'
+							// selector does not match if it is inside the ':has()' argument selector.
+							// So if a ':has()' argument selector requires a matching ':visited', the
+							// style rule are not applied.
+							if (node.value.toLowerCase() === ':visited') {
+								// We can't leave `:has` untouched as that might cause broken selector lists.
+								// Replacing with the specificity matching name as this should never match anything without `:not()`.
+								node.replaceWith(parser.className({
+									value: options.specificityMatchingName,
+								}));
+							}
 
-					// Split the selector at the pseudo element boundary
-					// - :has(...)::before  ->  :has(...) | ::before
-					// - :has(...) ~ span::before  ->  :has(...) ~ span | ::before
-					if (container !== node) {
-						let sliceIndex = container.nodes.length;
+							if (node.value.toLowerCase() === ':any-link') {
+								// we can transform `:any-link` to `:link` as this is allowed
+								node.value = ':link';
+							}
+						});
 
-						PSEUDO_ELEMENT_LOOP:
-						for (let i = 0; i < container.nodes.length; i++) {
-							const element = container.nodes[i];
+						selectorAST.walkPseudos((node) => {
+							if (node.value.toLowerCase() !== ':has' || !node.nodes) {
+								return;
+							}
 
-							if (parser.isPseudoElement(element)) {
-								for (let j = i - 1; j >= 0; j--) {
-									if (container.nodes[i].type === 'combinator' || container.nodes[i].type  === 'comment') {
-										continue;
+							let container = node.parent ?? node;
+
+							// Split the selector at the pseudo element boundary
+							// - :has(...)::before  ->  :has(...) | ::before
+							// - :has(...) ~ span::before  ->  :has(...) ~ span | ::before
+							if (container !== node) {
+								let sliceIndex = container.nodes.length;
+
+								PSEUDO_ELEMENT_LOOP:
+								for (let i = 0; i < container.nodes.length; i++) {
+									const element = container.nodes[i];
+
+									if (parser.isPseudoElement(element)) {
+										for (let j = i - 1; j >= 0; j--) {
+											if (container.nodes[i].type === 'combinator' || container.nodes[i].type === 'comment') {
+												continue;
+											}
+
+											sliceIndex = j + 1;
+											break PSEUDO_ELEMENT_LOOP;
+										}
 									}
+								}
 
-									sliceIndex = j + 1;
-									break PSEUDO_ELEMENT_LOOP;
+								if (sliceIndex < container.nodes.length) {
+									const a = parser.selector({
+										value: '',
+										nodes: [],
+									});
+
+									const aNodes = container.nodes.slice(0, sliceIndex);
+									aNodes.forEach((x) => {
+										delete x.parent;
+										a.append(x);
+									});
+
+									const b = parser.selector({
+										value: '',
+										nodes: [],
+									});
+
+									const bNodes = container.nodes.slice(sliceIndex);
+									bNodes.forEach((x) => {
+										delete x.parent;
+										b.append(x);
+									});
+
+									const newContainer = parser.selector({
+										value: '',
+										nodes: [],
+									});
+
+									newContainer.append(a);
+									newContainer.append(b);
+
+									container.replaceWith(newContainer);
+									container = a;
 								}
 							}
+
+							const encodedSelector = '[' + encodeCSS(container.toString()) + ']';
+							const abcSpecificity = selectorSpecificity(container);
+
+							let encodedSelectorWithSpecificity = encodedSelector;
+							for (let i = 0; i < abcSpecificity.a; i++) {
+								encodedSelectorWithSpecificity += specificityMatchingNameId;
+							}
+							const bSpecificity = Math.max(1, abcSpecificity.b) - 1;
+							for (let i = 0; i < bSpecificity; i++) {
+								encodedSelectorWithSpecificity += specificityMatchingNameClass;
+							}
+							for (let i = 0; i < abcSpecificity.c; i++) {
+								encodedSelectorWithSpecificity += specificityMatchingNameTag;
+							}
+
+							const encodedSelectorAST = parser().astSync(encodedSelectorWithSpecificity);
+
+							container.replaceWith(encodedSelectorAST.nodes[0]);
+						});
+
+						const modifiedSelector = selectorAST.toString();
+						if (modifiedSelector !== selector) {
+							return '.js-has-pseudo ' + modifiedSelector;
 						}
 
-						if (sliceIndex < container.nodes.length) {
-							const a = parser.selector({
-								value: '',
-								nodes: [],
-							});
+						return selector;
+					});
 
-							const aNodes = container.nodes.slice(0, sliceIndex);
-							aNodes.forEach((x) => {
-								delete x.parent;
-								a.append(x);
-							});
-
-							const b = parser.selector({
-								value: '',
-								nodes: [],
-							});
-
-							const bNodes = container.nodes.slice(sliceIndex);
-							bNodes.forEach((x) => {
-								delete x.parent;
-								b.append(x);
-							});
-
-							const newContainer = parser.selector({
-								value: '',
-								nodes: [],
-							});
-
-							newContainer.append(a);
-							newContainer.append(b);
-
-							container.replaceWith(newContainer);
-							container = a;
-						}
+					if (selectors.join(',') === rule.selectors.join(',')) {
+						return;
 					}
 
-					const encodedSelector = '[' + encodeCSS(container.toString()) + ']';
-					const abcSpecificity = selectorSpecificity(container);
+					transformedNodes.add(rule);
+					rule.cloneBefore({ selectors: selectors });
 
-					let encodedSelectorWithSpecificity = encodedSelector;
-					for (let i = 0; i < abcSpecificity.a; i++) {
-						encodedSelectorWithSpecificity += specificityMatchingNameId;
+					if (!options.preserve) {
+						rule.remove();
 					}
-					const bSpecificity = Math.max(1, abcSpecificity.b) - 1;
-					for (let i = 0; i < bSpecificity; i++) {
-						encodedSelectorWithSpecificity += specificityMatchingNameClass;
-					}
-					for (let i = 0; i < abcSpecificity.c; i++) {
-						encodedSelectorWithSpecificity += specificityMatchingNameTag;
-					}
-
-					const encodedSelectorAST = parser().astSync(encodedSelectorWithSpecificity);
-
-					container.replaceWith(encodedSelectorAST.nodes[0]);
-				});
-
-				const modifiedSelector = selectorAST.toString();
-				if (modifiedSelector !== selector) {
-					return '.js-has-pseudo ' + modifiedSelector;
-				}
-
-				return selector;
-			});
-
-			if (selectors.join(',') === rule.selectors.join(',')) {
-				return;
-			}
-
-			rule.cloneBefore({ selectors: selectors });
-
-			if (!options.preserve) {
-				rule.remove();
-			}
+				},
+			};
 		},
 	};
 };
