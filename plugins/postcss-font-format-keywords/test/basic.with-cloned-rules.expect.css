@@ -3,6 +3,7 @@
 	font-style: normal;
 	font-weight: 300;
 	font-display: swap;
+	src: url(a) format("woff2");
 	src: url(a) format(woff2);
 }
 
@@ -11,6 +12,7 @@
 	font-style: normal;
 	font-weight: 300;
 	font-display: swap;
+	src: url(a) format("woff2"), url(b) format("svg");
 	src: url(a) format(woff2), url(b) format(svg);
 }
 
@@ -19,6 +21,9 @@
 	font-style: normal;
 	font-weight: 300;
 	font-display: swap;
+	src: format("woff"), format("truetype"), format("opentype"),
+	format("woff2"), format("embedded-opentype"), format("collection"),
+	format("svg");
 	src: format(woff), format(truetype), format(opentype),
 	format(woff2), format(embedded-opentype), format(collection),
 	format(svg);
@@ -29,6 +34,7 @@
 	font-style: normal;
 	font-weight: 300;
 	font-display: swap;
+	src: format("woff");
 	src: format(woff)
 }
 
@@ -54,6 +60,12 @@
 	src: format(woff2)
 }
 
+@font-face cloned {
+	src: format("woff2");
+	src: format(woff2);
+}
+
 @font-face to-clone {
+	src: format("woff2");
 	src: format(woff2);
 }
