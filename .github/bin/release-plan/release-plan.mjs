@@ -109,7 +109,7 @@ for (const workspace of waitingOnDependencies.values()) {
 	}
 
 	if (didChange) {
-		await fs.writeFile(path.join(workspace.path, 'package.json'), JSON.stringify(packageInfo, null, '\t'));
+		await fs.writeFile(path.join(workspace.path, 'package.json'), JSON.stringify(packageInfo, null, '\t') + '\n');
 	}
 }
 
