@@ -1,0 +1,35 @@
+@media (--mq-a) {
+	body {
+		order: 1;
+	}
+}
+
+@media (--mq-b) {
+	body {
+		order: 2;
+	}
+}
+
+@media (--mq-a), (--mq-a) {
+	body {
+		order: 3;
+	}
+}
+
+@media not all and (--mq-a) {
+	body {
+		order: 4;
+	}
+}
+
+@media (--not-mq-a) {
+	body {
+		order: 5;
+	}
+}
+
+@media not all and (--not-mq-a) {
+	body {
+		order: 6;
+	}
+}
