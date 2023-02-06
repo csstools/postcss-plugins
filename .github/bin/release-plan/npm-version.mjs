@@ -1,4 +1,5 @@
 import { spawn } from 'child_process';
+import { npmInstall } from './npm-install.mjs';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -22,6 +23,7 @@ export async function npmVersion(increment, packageDirectory) {
 			}
 
 			await fs.writeFile(path.join(packageDirectory, 'package.json'), JSON.stringify(packageInfo, null, '\t'));
+			await npmInstall();
 			return packageInfo.version;
 		}
 	}
