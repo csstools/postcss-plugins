@@ -4,32 +4,12 @@
 	}
 }
 
-@media (--mq-b) {
-	body {
-		order: 2;
-	}
-}
-
-@media (--mq-a), (--mq-a) {
-	body {
-		order: 3;
-	}
-}
-
 @media not all and (--mq-a) {
 	body {
-		order: 4;
+		order: 1;
 	}
 }
 
-@media (--not-mq-a) {
-	body {
-		order: 5;
-	}
-}
-
-@media not all and (--not-mq-a) {
-	body {
-		order: 6;
-	}
+.foo {
+	background: green;
 }
