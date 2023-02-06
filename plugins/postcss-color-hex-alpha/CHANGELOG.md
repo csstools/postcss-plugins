@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Hex Alpha
 
-### Unreleased (patch)
+### 9.0.2 (February 6, 2023)
 
 - Reduce the amount of duplicate fallback CSS.
 
