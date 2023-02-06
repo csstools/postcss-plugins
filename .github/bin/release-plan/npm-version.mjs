@@ -22,7 +22,7 @@ export async function npmVersion(increment, packageDirectory) {
 					throw new Error(`Unknown increment "${increment}"`);
 			}
 
-			await fs.writeFile(path.join(packageDirectory, 'package.json'), JSON.stringify(packageInfo, null, '\t'));
+			await fs.writeFile(path.join(packageDirectory, 'package.json'), JSON.stringify(packageInfo, null, '\t') + '\n');
 			await npmInstall();
 			return packageInfo.version;
 		}
