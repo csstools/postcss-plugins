@@ -31,13 +31,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						}
 
 						const newCSS = parseImport(file, importedFiles);
-
-						if (newCSS) {
-							newCSS.each((node) => {
-								root.append(node);
-								importedCSS.add(node);
-							});
+						if (!newCSS) {
+							return;
 						}
+
+						newCSS.each((node) => {
+							root.append(node);
+							importedCSS.add(node);
+						});
 					});
 				},
 				OnceExit: () => {
