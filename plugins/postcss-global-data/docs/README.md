@@ -21,6 +21,9 @@ plugins might use data to generate CSS. For example, in the case of CSS Modules 
 are usually not imported by every single file so Custom Media cannot generate any code based on the available data. By
 providing a list of files, this plugin will inject the data into the CSS so that the plugin can generate the code.
 
+It is important that [<humanReadableName>] is used before the plugin that actually uses the data. The plugin runs 
+syncronously so it will inject the data before the other plugin runs.
+
 Please note that [<humanReadableName>] does not produce any CSS. It only injects data into PostCSS so that other plugins
 can actually use it.
 
