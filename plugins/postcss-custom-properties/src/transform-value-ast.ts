@@ -1,50 +1,76 @@
+import valueParser from 'postcss-value-parser';
+import type { FunctionNode, Node } from 'postcss-value-parser';
+import { isVarFunction } from './is-var-function';
+
 export default function transformValueAST(root, customProperties) {
 	if (root.nodes && root.nodes.length) {
-		root.nodes.slice().forEach((child) => {
-			if (isVarFunction(child)) {
-				const [propertyNode, ...fallbacks] = child.nodes.filter((node) => node.type !== 'div');
-				const { value: name } = propertyNode;
-				const index = root.nodes.indexOf(child);
+		const ancestry: Map<Node, FunctionNode> = new Map();
+		root.nodes.forEach((child) => {
+			ancestry.set(child, root);
+		});
 
-				if (customProperties.has(name)) {
-					// Direct match of a custom property to a parsed value
-					const nodes = customProperties.get(name).nodes;
-
-					// Re-transform nested properties without given one to avoid circular from keeping this forever
-					reTransformValueAST({ nodes }, customProperties, name);
-
-					if (index > -1) {
-						root.nodes.splice(index, 1, ...nodes);
-					}
-				} else if (fallbacks.length) {
-					// No match, but fallback available
-					if (index > -1) {
-						root.nodes.splice(index, 1, ...child.nodes.slice(child.nodes.indexOf(fallbacks[0])));
-					}
-
-					transformValueAST(root, customProperties);
-				}
-			} else {
-				// Transform child nodes of current child
-				transformValueAST(child, customProperties);
+		valueParser.walk(root.nodes, (child) => {
+			if (('nodes' in child) && child.nodes.length) {
+				child.nodes.forEach((grandChild) => {
+					ancestry.set(grandChild, child);
+				});
 			}
 		});
+
+		valueParser.walk(root.nodes, (child) => {
+			if (!isVarFunction(child)) {
+				return;
+			}
+
+			const [propertyNode, ...fallbacks] = child.nodes.filter((x) => x.type !== 'div');
+			const { value: name } = propertyNode;
+
+			const parent = ancestry.get(child);
+			const index = parent.nodes.indexOf(child);
+			if (index === -1) {
+				return;
+			}
+
+			let fallbackContainsUnknownVariables = false;
+			if (fallbacks) {
+				valueParser.walk(fallbacks, (childNodeInFallback) => {
+					if (isVarFunction(childNodeInFallback)) {
+						const [fallbackPropertyNode] = childNodeInFallback.nodes.filter((x) => x.type === 'word');
+						if (customProperties.has(fallbackPropertyNode.value)) {
+							return;
+						}
+
+						fallbackContainsUnknownVariables = true;
+						return false;
+					}
+				});
+			}
+
+			let nodes = [];
+			if (customProperties.has(name)) {
+				// Direct match of a custom property to a parsed value
+				nodes = customProperties.get(name).nodes;
+			} else if (fallbacks.length && !fallbackContainsUnknownVariables) {
+				// No match, but fallback available
+				nodes = child.nodes.slice(child.nodes.indexOf(fallbacks[0]));
+			} else {
+				return;
+			}
+
+			if (nodes.length) {
+				parent.nodes.splice(index, 1, ...nodes);
+			} else {
+				// `postcss-value-parser` throws when removing nodes.
+				// Inserting an empty comment produces equivalent CSS source code and avoids the exception.
+				parent.nodes.splice(index, 1, {
+					type: 'comment',
+					value: '',
+					sourceIndex: child.sourceIndex,
+					sourceEndIndex: child.sourceEndIndex,
+				});
+			}
+		}, true);
 	}
 
 	return root.toString();
 }
-
-// reTransform the current ast without a custom property (to prevent recursion)
-function reTransformValueAST(root, customProperties, withoutProperty) {
-	const nextCustomProperties = new Map(customProperties);
-
-	nextCustomProperties.delete(withoutProperty);
-
-	return transformValueAST(root, nextCustomProperties);
-}
-
-// match var() functions
-const varRegExp = /^var$/i;
-
-// whether the node is a var() function
-const isVarFunction = node => node.type === 'function' && varRegExp.test(node.value) && Object(node.nodes).length > 0;

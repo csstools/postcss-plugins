@@ -1,6 +1,6 @@
 import valuesParser from 'postcss-value-parser';
 import transformValueAST from './transform-value-ast';
-import { Declaration } from 'postcss';
+import type { Declaration } from 'postcss';
 import { isDeclarationIgnored } from './is-ignored';
 
 // transform custom pseudo selectors with custom selectors

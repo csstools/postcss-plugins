@@ -1,8 +1,10 @@
-import { Root } from 'postcss';
+import type { Root } from 'postcss';
 import valuesParser from 'postcss-value-parser';
 import { cascadeLayerNumberForNode, collectCascadeLayerOrder } from './cascade-layers';
 import { isBlockIgnored, isDeclarationIgnored } from './is-ignored';
 import { isHtmlRule, isProcessableRule, isRootRule } from './is-processable-rule';
+import { isVarFunction } from './is-var-function';
+import { removeCyclicReferences } from './toposort';
 
 // return custom selectors from the css root, conditionally removing them
 export default function getCustomPropertiesFromRoot(root: Root): Map<string, valuesParser.ParsedValue> {
@@ -81,10 +83,24 @@ export default function getCustomPropertiesFromRoot(root: Root): Map<string, val
 		customProperties.set(name, value);
 	}
 
+	const customPropertyGraph: Array<[string, string]> = [];
 	const out: Map<string, valuesParser.ParsedValue> = new Map();
+
 	for (const [name, value] of customProperties.entries()) {
+		const parsedValue = valuesParser(value);
+
+		valuesParser.walk(parsedValue.nodes, (node) => {
+			if (isVarFunction(node)) {
+				const [nestedVariableNode] = node.nodes.filter((x) => x.type === 'word');
+
+				customPropertyGraph.push([nestedVariableNode.value, name]);
+			}
+		});
+
 		out.set(name, valuesParser(value));
 	}
+
+	removeCyclicReferences(out, customPropertyGraph);
 
 	// return all custom properties, preferring :root properties over html properties
 	return out;
