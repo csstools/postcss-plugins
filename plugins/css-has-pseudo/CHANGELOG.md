@@ -1,6 +1,6 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased (patch)
+### 5.0.2 (February 6, 2023)
 
 - Reduce the amount of duplicate fallback CSS.
 
