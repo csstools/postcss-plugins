@@ -29,9 +29,10 @@ the [CSS Custom Properties] specification.
 <example.expect.css>
 ```
 
-**Note:** This plugin only processes variables that are defined in the `:root` or `html` selector.
-
-Locally defined custom properties will be used as fallbacks only within the same rule, but not elsewhere.
+**Note:** 
+- Only processes variables that were defined in the `:root` or `html` selector.
+- Locally defined variables will be used as fallbacks only within the same rule, but not elsewhere.
+- Fallback values in `var()` will be used if the variable was not defined in the `:root` or `html` selector.
 
 <usage>
 

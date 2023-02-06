@@ -1,0 +1,19 @@
+.must-ignore-a {
+	background: var(--var-unknown-in-root, var(--var-other-unknown));
+}
+
+.must-ignore-b {
+	width: var(--var-unknown-in-root, calc(10 * var(--var-other-unknown)));
+}
+
+:root {
+	--color: green;
+}
+
+.ok-a {
+	color: green;
+}
+
+.ok-b {
+	color: green;
+}

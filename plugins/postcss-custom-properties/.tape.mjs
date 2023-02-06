@@ -15,6 +15,12 @@ postcssTape(plugin)({
 	'cascade-layers': {
 		message: 'supports cascade layers'
 	},
+	'issue-838': {
+		message: 'prevent regressions of https://github.com/csstools/postcss-plugins/issues/838',
+		options: {
+			preserve: false
+		}
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},
