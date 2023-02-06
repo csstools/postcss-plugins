@@ -15,8 +15,6 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addPlugin(syntaxHighlight);
 
-	const now = new Date();
-
 	eleventyConfig.addFilter("postDate", (dateObj) => {
 		return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
 	});
