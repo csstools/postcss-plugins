@@ -4,7 +4,7 @@ description: This allows you to easily debug a condition without a major refacto
 date: 2023-01-25
 ---
 
-Since the release of PostCSS Custom Media version 9, you can now use `true` and `false` in your custom media queries. This allows you to easily debug a condition without a major refactor.
+Since the release of [PostCSS Custom Media](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media) version 9, you can now use `true` and `false` in your custom media queries. This allows you to easily debug a condition without a major refactor.
 
 ```css
 @custom-media --tablet (width >= 48rem);
