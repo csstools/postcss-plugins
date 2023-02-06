@@ -2,6 +2,7 @@ const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const addHash = require('./eleventy/filters/add-hash');
 const inlineMarkdown = require('./eleventy/filters/inline-markdown');
 const cleanMarkdown = require('./eleventy/filters/clean-markdown');
+const { DateTime } = require('luxon');
 
 module.exports = function (eleventyConfig) {
 	// Copy favicon to route of /_site
@@ -13,6 +14,13 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addFilter('cleanMarkdown', cleanMarkdown);
 
 	eleventyConfig.addPlugin(syntaxHighlight);
+
+	eleventyConfig.addFilter("postDate", (dateObj) => {
+		return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
+	});
+	eleventyConfig.addFilter("postDateISO", (dateObj) => {
+		return DateTime.fromJSDate(dateObj).toISODate();
+	});
 
 	// Override BrowserSync defaults (used only with --serve)
 	eleventyConfig.setBrowserSyncConfig({

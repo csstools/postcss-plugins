@@ -1,0 +1,16 @@
+{% set baseClass = 'ppe-blog' %}
+{% set titleOverride %}{{ title }} | CSSTools{% endset %}
+
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+	<article class="ppe-post">
+		<header class="ppe-blog-header">
+			<h1 class="ppe-blog-title">{{ title }}</h1>
+			<time class="ppe-post-date" datetime="{{ date | postDateISO }}">{{ date | postDate }}</time>
+			<p class="ppe-post-byline">By <a href="https://github.com/Antonio-Laguna">Antonio Laguna</a> and <a href="https://github.com/romainmenke">Romain Menke</a>.</p>
+		</header>
+
+		{{ content | safe }}
+	</article>
+{% endblock %}

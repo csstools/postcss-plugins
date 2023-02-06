@@ -1,0 +1,27 @@
+---
+layout: layouts/base.njk
+title: Blog - CSSTools
+description: Stay informed with the latest news and insights from our blog. Read articles and tips from our PostCSS plugins.
+baseClass: 'ppe-blog'
+---
+
+<main class="ppe-blog-list">
+	<header class="ppe-blog-header">
+		<h1 class="ppe-blog-title">Latest Posts</h1>
+	</header>
+
+	<div class="ppe-posts">
+		{%- for post in collections.post | reverse -%}
+			<article class="ppe-post-element">
+				<h2 class="ppe-post-title">
+					<a class="ppe-post-link" href="{{ post.url }}">{{ post.data.title }}</a>
+				</h2>
+				<time class="ppe-post-date" datetime="{{ post.data.date | postDateISO }}">
+					{{ post.data.date | postDate }}
+				</time>
+				<p class="ppe-post-excerpt">{{ post.data.description }}</p>
+				<a class="ppe-post-link" href="{{ post.url }}" tabindex="-1">Read more</a>
+			</article>
+		{%- endfor -%}
+	</div>
+</main>
