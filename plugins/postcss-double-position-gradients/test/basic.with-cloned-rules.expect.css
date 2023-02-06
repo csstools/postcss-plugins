@@ -114,6 +114,11 @@
 	background: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 }
 
+cloned {
+	background: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+	background: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+
 to-clone {
 	background: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
 	background: linear-gradient(90deg, black 25% 50%, blue 50% 75%);

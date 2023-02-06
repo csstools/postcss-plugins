@@ -1,6 +1,7 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
+import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { includesGradientsFunction, isGradientsFunctions } from './is-gradient';
 
@@ -42,6 +43,10 @@ const basePlugin = (opts) => {
 		postcssPlugin: 'postcss-double-position-gradients',
 		Declaration(decl, { result }) {
 			if (!includesGradientsFunction(decl.value.toLowerCase())) {
+				return;
+			}
+
+			if (hasFallback(decl)) {
 				return;
 			}
 

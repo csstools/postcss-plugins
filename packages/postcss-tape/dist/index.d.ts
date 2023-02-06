@@ -19,7 +19,7 @@ export declare const declarationClonerPlugin: {
 export declare const ruleClonerPlugin: {
     postcssPlugin: string;
     prepare(): {
-        Rule(rule: any): void;
+        RuleExit(rule: any): void;
     };
 };
 export {};

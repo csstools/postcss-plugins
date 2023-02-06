@@ -432,7 +432,7 @@ export const ruleClonerPlugin = {
 		const transformedNodes = new WeakSet();
 
 		return {
-			Rule(rule) {
+			RuleExit(rule) {
 				if (transformedNodes.has(rule)) {
 					return;
 				}
