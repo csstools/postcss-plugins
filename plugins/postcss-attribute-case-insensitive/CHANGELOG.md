@@ -1,6 +1,6 @@
 # Changes to PostCSS Attribute Case Insensitive
 
-### Unreleased (patch)
+### 6.0.2 (February 6, 2023)
 
 - Reduce the amount of duplicate fallback CSS.
 
