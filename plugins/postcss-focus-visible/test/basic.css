@@ -81,3 +81,7 @@ html :not(:focus-visible) {
 :FocuS-VisiblE {
 	order: 11;
 }
+
+:focus-visible {
+	to-clone: 1;
+}

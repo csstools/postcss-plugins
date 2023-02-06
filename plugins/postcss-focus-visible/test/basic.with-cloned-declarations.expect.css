@@ -173,9 +173,11 @@ html :not(:focus-visible) {
 }
 
 .focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
+	cloned: 1;
 	to-clone: 1;
 }
 
 :focus-visible {
+	cloned: 1;
 	to-clone: 1;
 }
