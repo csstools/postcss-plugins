@@ -59,6 +59,15 @@
 		@media (--from-medium) {
 			margin-block: 1.5rem 2rem;
 		}
+
+		& code {
+			background-color: rgba(222 221 227 / 70%);
+			border-radius: 0.3rem;
+			color: var(--black);
+			font-weight: 600;
+			line-height: 1.7;
+			padding: 0.2rem;
+		}
 	}
 }
 
