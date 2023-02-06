@@ -1,6 +1,6 @@
 # Changes to PostCSS Lab Function
 
-### Unreleased (minor)
+### 5.1.0 (February 6, 2023)
 
 - Add: `@csstools/color-helpers` dependency for all color value transformations.
 
