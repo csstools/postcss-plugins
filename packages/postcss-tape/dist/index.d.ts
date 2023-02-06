@@ -22,4 +22,10 @@ export declare const ruleClonerPlugin: {
         RuleExit(rule: any): void;
     };
 };
+export declare const atRuleClonerPlugin: {
+    postcssPlugin: string;
+    prepare(): {
+        AtRuleExit(atRule: any): void;
+    };
+};
 export {};
