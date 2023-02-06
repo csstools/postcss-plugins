@@ -7,6 +7,7 @@
 @import "_nav.css";
 @import "_prism.css";
 
+@import "pages/_blog.css";
 @import "pages/_landing.css";
 @import "pages/_playground.css";
 @import "pages/_features.css";
