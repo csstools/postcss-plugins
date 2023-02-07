@@ -61,13 +61,6 @@ function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<stri
 	const outgoingEdges = makeOutgoingEdges(edges);
 	const nodesHash = makeNodesHash(nodes);
 
-	// check for unknown nodes
-	edges.forEach(function (edge) {
-		if (!nodesHash.has(edge[0]) || !nodesHash.has(edge[1])) {
-			throw new Error('Unknown token. Make sure to provide all tokens used in aliases.');
-		}
-	});
-
 	while (i--) {
 		if (!visited[i]) {
 			visit(nodes[i], i, new Set());
@@ -85,7 +78,7 @@ function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<stri
 		}
 
 		if (!nodesHash.has(node)) {
-			throw new Error('Found unknown token. Make sure to provided all involved tokens. Unknown token: ' + JSON.stringify(node));
+			return;
 		}
 
 		if (visited[j]) {

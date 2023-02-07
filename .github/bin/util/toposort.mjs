@@ -31,7 +31,7 @@ export function toposort(nodes, edges) {
 	// check for unknown nodes
 	edges.forEach(function (edge) {
 		if (!nodesHash.has(edge[0]) || !nodesHash.has(edge[1])) {
-			throw new Error('Unknown token. Make sure to provide all tokens used in aliases.');
+			throw new Error('Unknown dependency.');
 		}
 	});
 
@@ -55,7 +55,7 @@ export function toposort(nodes, edges) {
 		}
 
 		if (!nodesHash.has(node)) {
-			throw new Error('Found unknown token. Make sure to provided all involved tokens. Unknown token: ' + JSON.stringify(node));
+			throw new Error('Found unknown dependency: ' + JSON.stringify(node));
 		}
 
 		if (visited[j]) {

@@ -130,3 +130,5 @@
 }
 
 @custom-media trailer-- (min-width: 320px);
+
+@custom-media --foo (--does-not-exist-1);
