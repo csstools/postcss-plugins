@@ -65,10 +65,10 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin",
-		"productivity",
+		"css injection",
 		"global data",
-		"css injection"
+		"postcss-plugin",
+		"productivity"
 	],
 	"csstools": {
 		"exportName": "postcssGlobalData",
