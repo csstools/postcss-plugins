@@ -5,9 +5,24 @@
 
 .test-changed-properties {
 	background-image-1: url(img/test.png);
+	background-image-1: image-set(
+		url(img/test.png) 1x
+	);
 	background-image-2: url(img/test.png);
+	background-image-2: image-set(
+		url(img/test.png) 2x
+	);
 	background-image-3: url(img/test.png);
+	background-image-3: image-set(
+		url(img/test.png) 1x,
+		url(img/test-2x.png) 2x
+	);
 	background-image-4: url(img/test.png);
+	background-image-4: image-set(
+		url(img/test.png) 1x,
+		url(img/test-2x.png) 2x,
+		url(my-img-print.png) 600dpi
+	);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -33,6 +48,11 @@
 
 .test-variables {
 	background-image: url(img/test.png);
+	background-image: image-set(
+		url(img/test.png) 1x,
+		var(--test-image-2x) 2x,
+		var(--test-image-3x, url(img/test-var-fallback-3x.png)) 3x
+	);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -51,7 +71,15 @@
 
 .test-mixed-units {
 	background-image-1: url(img/test.png);
+	background-image-1: image-set(
+		url(img/test.png) 1x,
+		url(img/test-2dppx.png) 2dppx
+	);
 	background-image-2: url(img/test-2dpcm.png);
+	background-image-2: image-set(
+		url(img/test.png) 1x,
+		url(img/test-2dpcm.png) 20dpcm
+	);
 }
 
 @media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
@@ -70,7 +98,17 @@
 
 .test-mixed-order {
 	background-1: url(../images/bck.png);
+	background-1: image-set(
+		url(../images/bck@3x.png) 3x,
+		url(../images/bck.png) 1x,
+		url(../images/bck@2x.png) 2x
+	);
 	background-2: url(../images/bck.png);
+	background-2: image-set(
+		url(../images/bck@2x.png) 2x,
+		url(../images/bck@3x.png) 3x,
+		url(../images/bck.png) 1x
+	);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -103,7 +141,16 @@
 
 .test-no-url {
 	background-image-1: url("img/test.png");
+	background-image-1: image-set(
+		"img/test.png" 1x,
+		"img/test-2x.png" 2x
+	);
 	background-image-2: url("img/test.png");
+	background-image-2: image-set(
+		"img/test.png" 1x,
+		"img/test-2x.png" 2x,
+		"my-img-print.png" 600dpi
+	);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -129,6 +176,11 @@
 
 .test-webkit-prefix {
 	background-image: url(img/test.png);
+	background-image: -webkit-image-set(
+		url(img/test.png) 1x,
+		url(img/test-2x.png) 2x,
+		url(my-img-print.png) 600dpi
+	);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -148,6 +200,11 @@
 @media (min-width: 1000px) {
 	.test-within-mq-1 {
 		background-image: url(img/test.png);
+		background-image: image-set(
+			url(img/test.png) 1x,
+			url(img/test-2x.png) 2x,
+			url(my-img-print.png) 600dpi
+		);
 	}
 	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	.test-within-mq-1 {
@@ -164,6 +221,11 @@
 @media (min-width: 768px) and (max-width: 1024px) {
 	.test-within-mq-2 {
 		background-image: url(img/test.png);
+		background-image: image-set(
+			url(img/test.png) 1x,
+			url(img/test-2x.png) 2x,
+			url(my-img-print.png) 600dpi
+		);
 	}
 	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	.test-within-mq-2 {
@@ -179,6 +241,7 @@
 
 .list-1 {
 	background-image: linear-gradient(#4444, #8888), url(img.png);
+	background-image: linear-gradient(#4444, #8888), image-set(url(img.png) 1x, url(img@2x.png) 2x);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -190,6 +253,7 @@
 
 .list-2 {
 	background-image: url(img-a.png), url(img-b.png);
+	background-image: image-set(url(img-a.png) 1x, url(img-a@2x.png) 2x), image-set(url(img-b.png) 1x, url(img-b@2x.png) 2x);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -201,6 +265,7 @@
 
 .test-valid-data-url {
 	background-image: url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==);
+	background-image: image-set(url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==) 1x, url(img/test-2x.png) 2x);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -214,11 +279,27 @@
 	background-image: image-set(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==, url(img/test-2x.png) 2x);
 }
 
+cloned {
+	background:url(img/test.png);
+	background:image-set(
+		url(img/test.png) 1x,
+		url(img/test-2x.png) 2x
+	);
+}
+
 to-clone {
 	background:url(img/test.png);
+	background:image-set(
+		url(img/test.png) 1x,
+		url(img/test-2x.png) 2x
+	);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+cloned {
+	background:url(img/test-2x.png);
+}
 
 to-clone {
 	background:url(img/test-2x.png);
