@@ -214,9 +214,11 @@ b,:--foobazz {
 }
 
 b,:is(.foo .baz) {
+	cloned: 1;
 	to-clone: 1;
 }
 
 b, :--foobazz {
+	cloned: 1;
 	to-clone: 1;
 }
