@@ -351,9 +351,11 @@ ol:hover > li.foo, ol:hover > li.bar, ol:focus > li.foo, ol:focus > li.bar, ul:h
 }
 
 input:hover, input:focus, button:hover, button:focus {
+	cloned: 1;
 	to-clone: 1;
 }
 
 :is(input, button):is(:hover, :focus) {
+	cloned: 1;
 	to-clone: 1;
 }
