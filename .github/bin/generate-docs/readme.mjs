@@ -6,7 +6,13 @@ const template = await fsp.readFile(path.join('docs', './README.md'), 'utf8');
 const corsTemplate = await fsp.readFile(path.join(path.dirname(fileURLToPath(import.meta.url)), './cors-template.md'), 'utf8');
 const packageJSONInfo = JSON.parse(await fsp.readFile('./package.json', 'utf8'));
 
-const exampleFilePaths = await fsp.readdir(path.join('test', 'examples'));
+let exampleFilePaths = [];
+
+try {
+	exampleFilePaths = await fsp.readdir(path.join('test', 'examples'));
+} catch(error) {
+	// No examples
+}
 
 let readmeDoc = template.toString();
 
