@@ -1,12 +1,19 @@
 {
-	"name": "postcss-custom-properties",
-	"description": "Use Custom Properties Queries in CSS",
-	"version": "13.1.2",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"name": "@csstools/postcss-global-data",
+	"description": "PostCSS plugin to define global data that will be injected into PostCSS for use in other plugins.",
+	"version": "1.0.0",
 	"contributors": [
-		"Maxime Thirouin"
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
 	],
-	"license": "MIT",
+	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
 		"url": "https://opencollective.com/csstools"
@@ -29,20 +36,13 @@
 		"CHANGELOG.md",
 		"LICENSE.md",
 		"README.md",
-		"dist",
-		"index.d.ts"
+		"dist"
 	],
-	"dependencies": {
-		"@csstools/cascade-layer-name-parser": "^1.0.0",
-		"@csstools/css-parser-algorithms": "^2.0.0",
-		"@csstools/css-tokenizer": "^2.0.0",
-		"postcss-value-parser": "^4.2.0"
-	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"postcss-import": "^15.0.0"
+		"postcss-custom-media": "^9.0.0"
 	},
 	"scripts": {
 		"prebuild": "npm run clean",
@@ -57,32 +57,22 @@
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties#readme",
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
-		"directory": "plugins/postcss-custom-properties"
+		"directory": "plugins/postcss-global-data"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"css",
-		"csswg",
-		"custom",
-		"declarations",
-		"postcss",
+		"css injection",
+		"global data",
 		"postcss-plugin",
-		"properties",
-		"specification",
-		"variables",
-		"vars",
-		"w3c"
+		"productivity"
 	],
 	"csstools": {
-		"assumesToProcessBundledCSS": true,
-		"cssdbId": "custom-properties",
-		"exportName": "postcssCustomProperties",
-		"humanReadableName": "PostCSS Custom Properties",
-		"specUrl": "https://www.w3.org/TR/css-variables-1/"
+		"exportName": "postcssGlobalData",
+		"humanReadableName": "PostCSS Global Data"
 	},
 	"volta": {
 		"extends": "../../package.json"
