@@ -13,6 +13,11 @@
 	padding: 2    ic;
 }
 
+cloned {
+	text-indent: 2em;
+	text-indent: 2ic;
+}
+
 to-clone {
 	text-indent: 2em;
 	text-indent: 2ic;
