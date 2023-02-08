@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Media
 
-### Unreleased (patch)
+### 9.1.2 (February 8, 2023)
 
 - Fixed: exception on missing media queries.
 - Reduce the amount of duplicate fallback CSS.
