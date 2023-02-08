@@ -22,6 +22,7 @@
 - Updated: Support for Node v14+ (major).
 - Removed: `importFrom` feature (breaking).
 - Removed: `exportTo` feature (breaking).
+- Removed: References without parenthesis `@media --foo {}` (breaking).
 - Fixed: implement logical evaluation of custom media queries.
 - Added: Support for `true` and `false` keywords in `@custom-media`.
 
