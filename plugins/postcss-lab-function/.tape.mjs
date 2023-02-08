@@ -1,4 +1,4 @@
-import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape, ruleClonerPlugin } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'postcss-lab-function';
 
 postcssTape(plugin)({
@@ -29,6 +29,16 @@ postcssTape(plugin)({
 			},
 			preserve: true
 		}
+	},
+	'basic:with-cloned-rules': {
+		message: 'doesn\'t cause duplicate CSS',
+		warnings: 9,
+		plugins: [
+			ruleClonerPlugin,
+			plugin({
+				preserve: true
+			})
+		]
 	},
 	'variables': {
 		message: 'supports variables',

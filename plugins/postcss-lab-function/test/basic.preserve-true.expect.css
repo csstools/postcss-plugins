@@ -344,3 +344,14 @@
 	lch-008: color(display-p3 0.00000 1.00000 0.00000);
 	lch-008: lch(86.6146% 148.1135 136.0089);
 }
+
+.manual_fallback {
+	color: red;
+	color: lab(40% 56.6 39);
+}
+
+to-clone {
+	color: rgb(179, 35, 35);
+	color: color(display-p3 0.64331 0.19245 0.16771);
+	color: lab(40% 56.6 39);
+}
