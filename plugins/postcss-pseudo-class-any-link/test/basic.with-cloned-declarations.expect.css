@@ -242,9 +242,11 @@ b {
 }
 
 :link, :visited, area[href] {
+	cloned: 1;
 	to-clone: 1;
 }
 
 :any-link {
+	cloned: 1;
 	to-clone: 1;
 }

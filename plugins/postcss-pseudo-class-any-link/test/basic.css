@@ -111,5 +111,9 @@ b {
 }
 
 .any + :any-link + .other {
-		order: 101.4;
-	}
+	order: 101.4;
+}
+
+:any-link {
+	to-clone: 1;
+}
