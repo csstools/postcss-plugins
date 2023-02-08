@@ -158,7 +158,7 @@ postcssCustomMedia({ preserve: true })
 
 If you're using Modular CSS such as, CSS Modules, `postcss-loader` or `vanilla-extract to name a few, you'll probably 
 notice that custom media queries are not being resolved. This happens because each file is processed separately so 
-unless you import the custom media query definition in each file, they won't be resolved.
+unless you import the custom media query definitions in each file, they won't be resolved.
 
 To overcome this, we recommend using the [PostCSS Global Data](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data#readme)
 plugin which allows you to pass a list of files that will be globally available. The plugin won't inject any extra code
