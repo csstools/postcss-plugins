@@ -85,7 +85,7 @@ because each file is processed separately so unless you import the custom media 
 won't be resolved.
 
 To overcome this, we recommend using the [PostCSS Global Data](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data#readme)
-plugin which allows you to pass a list of files that will globally be available. The plugin won't inject any extra code
+plugin which allows you to pass a list of files that will be globally available. The plugin won't inject any extra code
 in the output but will provide the context needed to resolve custom media queries.
 
 For it to run it needs to be placed before the [<humanReadableName>] plugin.
