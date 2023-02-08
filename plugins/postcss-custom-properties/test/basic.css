@@ -204,3 +204,7 @@ html {
 	right: var(--✅-size);
 	right: 2em;
 }
+
+:root {
+	--foo: var(--definitely-does-not-exist-3);
+}

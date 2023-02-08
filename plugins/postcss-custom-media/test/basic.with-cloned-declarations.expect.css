@@ -381,3 +381,5 @@
 		to-clone: 1;
 	}
 }
+
+@custom-media --foo (--does-not-exist-1);
