@@ -1,6 +1,6 @@
 # Changes to PostCSS HWB Function
 
-### Unreleased (patch)
+### 2.1.1 (February 8, 2023)
 
 - Reduce the amount of duplicate fallback CSS.
 
