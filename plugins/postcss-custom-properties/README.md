@@ -145,6 +145,33 @@ postcssCustomProperties({ preserve: false })
 }
 ```
 
+## Modular CSS Processing
+
+If you're using Modular CSS such as, CSS Modules, `postcss-loader` or `vanilla-extract` to name a few, you'll probably
+notice that custom properties are not being resolved. This happens because each file is processed separately so
+unless you import the custom properties definitions in each file, they won't be resolved.
+
+To overcome this, we recommend using the [PostCSS Global Data](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data#readme)
+plugin which allows you to pass a list of files that will be globally available. The plugin won't inject any extra code
+in the output but will provide the context needed to resolve custom properties.
+
+For it to run it needs to be placed before the [PostCSS Custom Properties] plugin.
+
+```js
+const postcss = require('postcss');
+const postcssCustomProperties = require('postcss-custom-properties');
+const postcssGlobalData = require('@csstools/postcss-global-data');
+
+postcss([
+	postcssGlobalData({
+		files: [
+			'path/to/your/custom-selectors.css'
+		]
+	}),
+	postcssCustomProperties(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#custom-properties
 [discord]: https://discord.gg/bUadyRwkJS
