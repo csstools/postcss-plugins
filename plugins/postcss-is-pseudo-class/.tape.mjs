@@ -1,4 +1,4 @@
-import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
+import { declarationClonerPlugin, postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from '@csstools/postcss-is-pseudo-class';
 
 postcssTape(plugin)({
@@ -26,6 +26,15 @@ postcssTape(plugin)({
 	},
 	'basic:oncomplex:no-warning': {
 		message: "can silence warnings on complex selectors",
+	},
+	'basic:with-cloned-declarations': {
+		message: 'doesn\'t cause duplicate CSS',
+		plugins: [
+			declarationClonerPlugin,
+			plugin({
+				preserve: true
+			})
+		]
 	},
 	'browser': {
 		message: "prepare CSS for chrome test",

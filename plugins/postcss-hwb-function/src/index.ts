@@ -5,6 +5,7 @@ import type { AtRule, Container, Declaration, Node, Postcss, Result } from 'post
 import { onCSSFunctionSRgb } from './on-css-function';
 
 import type { PluginCreator } from 'postcss';
+import { hasFallback } from './has-fallback-decl';
 
 const atSupportsHwbParams = '(color: hwb(0% 0 0))';
 
@@ -21,12 +22,16 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-hwb-function',
 		Declaration: (decl: Declaration, { result, postcss }: { result: Result, postcss: Postcss }) => {
+			const originalValue = decl.value;
+			if (!originalValue.toLowerCase().includes('hwb(')) {
+				return;
+			}
+
 			if (preserve && hasSupportsAtRuleAncestor(decl)) {
 				return;
 			}
 
-			const originalValue = decl.value;
-			if (!originalValue.toLowerCase().includes('hwb')) {
+			if (hasFallback(decl)) {
 				return;
 			}
 

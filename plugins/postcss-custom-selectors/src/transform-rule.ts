@@ -3,7 +3,7 @@ import type { Root, Selector } from 'postcss-selector-parser';
 import parser from 'postcss-selector-parser';
 
 // transform custom pseudo selectors with custom selectors
-export default (rule: Rule, result: Result, customSelectors: Map<string, Root>, opts: { preserve?: boolean }) => {
+export function transformRule(rule: Rule, result: Result, customSelectors: Map<string, Root>): null|string {
 	let selector = rule.selector;
 
 	try {
@@ -29,16 +29,8 @@ export default (rule: Rule, result: Result, customSelectors: Map<string, Root>, 
 		}).processSync(rule.selector);
 	} catch (err) {
 		rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
-		return;
+		return rule.selector;
 	}
 
-	if (selector === rule.selector) {
-		return;
-	}
-
-	rule.cloneBefore({ selector: selector });
-
-	if (!opts.preserve) {
-		rule.remove();
-	}
-};
+	return selector;
+}

@@ -237,3 +237,7 @@ ol:hover > li.foo, ol:hover > li.bar, ol:focus > li.foo, ol:focus > li.bar, ul:h
 :has(h3) {
 	order: 36;
 }
+
+input:hover, input:focus, button:hover, button:focus {
+	to-clone: 1;
+}

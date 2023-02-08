@@ -127,7 +127,7 @@ postcssFocusVisible({ disablePolyfillReadyClass: true })
 
 /* becomes */
 
-:focus:not(.focus-visible), :focus:not(.focus-visible) {
+:focus:not(.focus-visible) {
 	outline: none;
 }
 :focus:not(:focus-visible) {
