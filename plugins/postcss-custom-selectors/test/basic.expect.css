@@ -93,3 +93,7 @@ a,:is(.foo .baz) {
 b,:is(.foo .baz) {
 	order: 1022;
 }
+
+b,:is(.foo .baz) {
+	to-clone: 1;
+}

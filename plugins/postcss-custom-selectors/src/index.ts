@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 import getCustomSelectors from './custom-selectors-from-root';
-import transformRule from './transform-rule';
+import { transformRule } from './transform-rule';
 
 /** postcss-custom-selectors plugin options */
 export type pluginOptions = {
@@ -23,6 +23,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-custom-selectors',
 		prepare() {
+			const transformedNodes = new WeakSet();
 			let customSelectors = new Map();
 
 			return {
@@ -30,11 +31,25 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					customSelectors = getCustomSelectors(root, result, { preserve: preserve });
 				},
 				Rule: (rule, { result }) => {
-					if (!rule.selector.includes(':--')) {
+					if (transformedNodes.has(rule)) {
 						return;
 					}
 
-					transformRule(rule, result, customSelectors, { preserve: preserve });
+					if (!rule.selector?.includes(':--')) {
+						return;
+					}
+
+					const modifiedSelector = transformRule(rule, result, customSelectors);
+					if (modifiedSelector === rule.selector) {
+						return;
+					}
+
+					transformedNodes.add(rule);
+					rule.cloneBefore({ selector: modifiedSelector });
+
+					if (!preserve) {
+						rule.remove();
+					}
 				},
 			};
 		},

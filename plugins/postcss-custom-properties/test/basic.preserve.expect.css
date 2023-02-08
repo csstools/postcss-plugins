@@ -199,3 +199,7 @@ html {
 	right: 2em;
 	right: 2em;
 }
+
+:root {
+	--foo: var(--definitely-does-not-exist-3);
+}

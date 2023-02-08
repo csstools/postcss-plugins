@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased (patch)
+
+- Fixed: exception on missing media queries.
+- Reduce the amount of duplicate fallback CSS.
+
 ### 9.1.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

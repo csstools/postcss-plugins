@@ -56,3 +56,7 @@ test.js-focus-within :matches(test [focus-within] [focus-within] test) test,
 [focus-within].js-focus-within, .js-focus-within [focus-within] {
 	order: 6;
 }
+
+[focus-within].js-focus-within, .js-focus-within [focus-within] {
+	to-clone: 1;
+}
