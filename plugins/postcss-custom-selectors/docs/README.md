@@ -76,5 +76,5 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-<linkList>`
+<linkList>
 [Custom Selectors Specification]: <specUrl>

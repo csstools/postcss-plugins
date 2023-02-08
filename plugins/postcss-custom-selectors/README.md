@@ -112,5 +112,5 @@ postcss([
 [npm-url]: https://www.npmjs.com/package/postcss-custom-selectors
 
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Custom Selectors]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors`
+[PostCSS Custom Selectors]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors
 [Custom Selectors Specification]: https://drafts.csswg.org/css-extensions/#custom-selectors
