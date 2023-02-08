@@ -112,6 +112,33 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
+## CSS Modules
+
+If you're using CSS Modules, you'll probably notice that custom media queries are not being resolved. This happens
+because each file is processed separately so unless you import the custom media query definition in each file, they
+won't be resolved.
+
+To overcome this, we recommend using the [PostCSS Global Data](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data#readme) 
+plugin which allows you to pass a list of files that will globally be available. The plugin won't inject any extra code
+in the output but will provide the context needed to resolve custom media queries.
+
+For it to run it needs to be placed before the [PostCSS Custom Media] plugin.
+
+```js
+const postcss = require('postcss');
+const postcssCustomMedia = require('postcss-custom-media');
+const postcssGlobalData = require('@csstools/postcss-global-data');
+
+postcss([
+	postcssGlobalData({
+		files: [
+			'path/to/your/custom-media-queries.css'
+		]
+	}),
+	postcssCustomMedia(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
+```
+
 [PostCSS Custom Media] runs in all Node environments, with special
 instructions for:
 
