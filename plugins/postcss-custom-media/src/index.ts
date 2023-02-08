@@ -24,6 +24,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-custom-media',
 		prepare() {
+			const transformedNodes = new WeakSet();
 			let customMedia: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }> = new Map();
 
 			return {
@@ -31,10 +32,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					customMedia = getCustomMedia(root, result, { preserve: preserve });
 				},
 				AtRule: (atRule, { result }) => {
+					if (transformedNodes.has(atRule)) {
+						return;
+					}
+
 					if (atRule.name.toLowerCase() !== 'media') {
 						return;
 					}
-					
+
 					if (!atRule.params) {
 						return;
 					}
@@ -61,6 +66,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							return;
 						}
 
+						transformedNodes.add(atRule);
 						atRule.cloneBefore({ params: transformedParams[0].replaceWith.trim() });
 
 						if (!preserve) {
@@ -76,6 +82,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}));
 
 					if (!needsEncapsulation) {
+						transformedNodes.add(atRule);
 						atRule.cloneBefore({ params: transformedParams.map((x) => x.replaceWith).join(',').trim() });
 
 						if (!preserve) {
@@ -97,6 +104,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						clone.parent = null;
 						encapsulate.parent = null;
 
+						transformedNodes.add(atRule);
 						encapsulate.append(clone);
 						atRule.before(encapsulate);
 					});

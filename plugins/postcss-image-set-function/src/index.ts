@@ -2,6 +2,7 @@ import valueParser from 'postcss-value-parser';
 import { processImageSet } from './lib/process-image-set';
 import type { PluginCreator } from 'postcss';
 import { handleInvalidation } from './lib/handle-invalidation';
+import { hasFallback } from './has-fallback-decl';
 
 const imageSetValueMatchRegExp = /(^|[^\w-])(-webkit-)?image-set\(/i;
 const imageSetFunctionMatchRegExp = /^(-webkit-)?image-set$/i;
@@ -35,6 +36,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			// if a declaration likely uses an image-set() function
 			if (!imageSetValueMatchRegExp.test(value.toLowerCase())) {
+				return;
+			}
+
+			if (hasFallback(decl)) {
 				return;
 			}
 

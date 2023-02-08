@@ -349,3 +349,11 @@ ol:hover > li.foo, ol:hover > li.bar, ol:focus > li.foo, ol:focus > li.bar, ul:h
 :has(:is(h1, h2, h3)) {
 	order: 36;
 }
+
+input:hover, input:focus, button:hover, button:focus {
+	to-clone: 1;
+}
+
+:is(input, button):is(:hover, :focus) {
+	to-clone: 1;
+}

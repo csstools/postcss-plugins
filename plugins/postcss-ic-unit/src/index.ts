@@ -1,6 +1,7 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
+import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 
 type basePluginOptions = {
@@ -12,6 +13,10 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 		postcssPlugin: 'postcss-ic-unit',
 		Declaration(decl) {
 			if (!decl.value.toLowerCase().includes('ic')) {
+				return;
+			}
+
+			if (hasFallback(decl)) {
 				return;
 			}
 

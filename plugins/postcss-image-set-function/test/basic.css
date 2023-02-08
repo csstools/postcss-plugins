@@ -1,36 +1,27 @@
 .test-unchanged-properties {
-	order: 1;
-	background-image: url("img/test.png");
-	order: 2;
-	background: url(my-img-print.png) top left no-repeat red;
-	order: 3;
+	background-1: url("img/test.png");
+	background-2: url(my-img-print.png) top left no-repeat red;
 }
 
 .test-changed-properties {
-	order: 1;
-	background-image: image-set(
+	background-image-1: image-set(
 		url(img/test.png) 1x
 	);
-	order: 2;
-	background-image: image-set(
+	background-image-2: image-set(
 		url(img/test.png) 2x
 	);
-	order: 3;
-	background-image: image-set(
+	background-image-3: image-set(
 		url(img/test.png) 1x,
 		url(img/test-2x.png) 2x
 	);
-	order: 4;
-	background-image: image-set(
+	background-image-4: image-set(
 		url(img/test.png) 1x,
 		url(img/test-2x.png) 2x,
 		url(my-img-print.png) 600dpi
 	);
-	order: 5;
 }
 
 .test-variables {
-	order: 1;
 	background-image: image-set(
 		url(img/test.png) 1x,
 		var(--test-image-2x) 2x,
@@ -39,58 +30,47 @@
 }
 
 .test-mixed-units {
-	order: 1;
-	background-image: image-set(
+	background-image-1: image-set(
 		url(img/test.png) 1x,
 		url(img/test-2dppx.png) 2dppx
 	);
-	order: 2;
-	background-image: image-set(
+	background-image-2: image-set(
 		url(img/test.png) 1x,
 		url(img/test-2dpcm.png) 20dpcm
 	);
-	order: 3;
 }
 
 .test-mixed-order {
-	order: 1;
-	background: image-set(
+	background-1: image-set(
 		url(../images/bck@3x.png) 3x,
 		url(../images/bck.png) 1x,
 		url(../images/bck@2x.png) 2x
 	);
-	order: 2;
-	background: image-set(
+	background-2: image-set(
 		url(../images/bck@2x.png) 2x,
 		url(../images/bck@3x.png) 3x,
 		url(../images/bck.png) 1x
 	);
-	order: 3;
 }
 
 .test-no-url {
-	order: 1;
-	background-image: image-set(
+	background-image-1: image-set(
 		"img/test.png" 1x,
 		"img/test-2x.png" 2x
 	);
-	order: 2;
-	background-image: image-set(
+	background-image-2: image-set(
 		"img/test.png" 1x,
 		"img/test-2x.png" 2x,
 		"my-img-print.png" 600dpi
 	);
-	order: 3;
 }
 
 .test-webkit-prefix {
-	order: 1;
 	background-image: -webkit-image-set(
 		url(img/test.png) 1x,
 		url(img/test-2x.png) 2x,
 		url(my-img-print.png) 600dpi
 	);
-	order: 2;
 }
 
 @media (min-width: 1000px) {
@@ -127,4 +107,11 @@
 
 .test-invalid-data-url {
 	background-image: image-set(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==, url(img/test-2x.png) 2x);
+}
+
+to-clone {
+	background:image-set(
+		url(img/test.png) 1x,
+		url(img/test-2x.png) 2x
+	);
 }

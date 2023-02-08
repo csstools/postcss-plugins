@@ -128,7 +128,7 @@ postcssFocusWithin({ disablePolyfillReadyClass: true })
 
 /* becomes */
 
-.my-form-field[focus-within] label, .my-form-field[focus-within] label {
+.my-form-field[focus-within] label {
 	background-color: yellow;
 }
 .my-form-field:focus-within label {

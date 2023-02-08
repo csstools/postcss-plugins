@@ -191,3 +191,9 @@
 }
 
 @custom-media trailer-- (min-width: 320px);
+
+@media (max-width: 30em),(max-height: 30em) {
+	body {
+		to-clone: 1;
+	}
+}

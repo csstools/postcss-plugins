@@ -68,3 +68,12 @@
 		hsl(200, 100%, 60%) 10deg 30deg
 	);
 }
+
+.test-manual-fallback {
+	background: purple;
+	background: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+
+to-clone {
+	background: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}

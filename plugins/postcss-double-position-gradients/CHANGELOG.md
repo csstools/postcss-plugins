@@ -1,5 +1,9 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased (patch)
+
+- Reduce the amount of duplicate fallback CSS.
+
 ### 4.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
