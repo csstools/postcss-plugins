@@ -51,7 +51,7 @@ is preserved. By default, it is not preserved.
 
 ## Modular CSS Processing
 
-If you're using Modular CSS such as, CSS Modules, `postcss-loader` or `vanilla-extract to name a few, you'll probably
+If you're using Modular CSS such as, CSS Modules, `postcss-loader` or `vanilla-extract` to name a few, you'll probably
 notice that custom selectors are not being resolved. This happens because each file is processed separately so
 unless you import the custom selector definitions in each file, they won't be resolved.
 
@@ -76,5 +76,5 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-<linkList>
+<linkList>`
 [Custom Selectors Specification]: <specUrl>

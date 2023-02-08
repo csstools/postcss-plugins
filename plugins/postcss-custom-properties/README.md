@@ -147,7 +147,7 @@ postcssCustomProperties({ preserve: false })
 
 ## Modular CSS Processing
 
-If you're using Modular CSS such as, CSS Modules, `postcss-loader` or `vanilla-extract to name a few, you'll probably
+If you're using Modular CSS such as, CSS Modules, `postcss-loader` or `vanilla-extract` to name a few, you'll probably
 notice that custom properties are not being resolved. This happens because each file is processed separately so
 unless you import the custom properties definitions in each file, they won't be resolved.
 

@@ -81,7 +81,7 @@ article :--heading + p {
 
 ## Modular CSS Processing
 
-If you're using Modular CSS such as, CSS Modules, `postcss-loader` or `vanilla-extract to name a few, you'll probably
+If you're using Modular CSS such as, CSS Modules, `postcss-loader` or `vanilla-extract` to name a few, you'll probably
 notice that custom selectors are not being resolved. This happens because each file is processed separately so
 unless you import the custom selector definitions in each file, they won't be resolved.
 
@@ -112,5 +112,5 @@ postcss([
 [npm-url]: https://www.npmjs.com/package/postcss-custom-selectors
 
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Custom Selectors]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors
+[PostCSS Custom Selectors]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors`
 [Custom Selectors Specification]: https://drafts.csswg.org/css-extensions/#custom-selectors
