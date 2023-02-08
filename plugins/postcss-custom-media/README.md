@@ -112,13 +112,24 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
+[PostCSS Custom Media] runs in all Node environments, with special
+instructions for:
+
+- [Node](INSTALL.md#node)
+- [PostCSS CLI](INSTALL.md#postcss-cli)
+- [PostCSS Load Config](INSTALL.md#postcss-load-config)
+- [Webpack](INSTALL.md#webpack)
+- [Next.js](INSTALL.md#nextjs)
+- [Gulp](INSTALL.md#gulp)
+- [Grunt](INSTALL.md#grunt)
+
 ## CSS Modules
 
 If you're using CSS Modules, you'll probably notice that custom media queries are not being resolved. This happens
 because each file is processed separately so unless you import the custom media query definition in each file, they
 won't be resolved.
 
-To overcome this, we recommend using the [PostCSS Global Data](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data#readme) 
+To overcome this, we recommend using the [PostCSS Global Data](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data#readme)
 plugin which allows you to pass a list of files that will globally be available. The plugin won't inject any extra code
 in the output but will provide the context needed to resolve custom media queries.
 
@@ -138,17 +149,6 @@ postcss([
 	postcssCustomMedia(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
-
-[PostCSS Custom Media] runs in all Node environments, with special
-instructions for:
-
-- [Node](INSTALL.md#node)
-- [PostCSS CLI](INSTALL.md#postcss-cli)
-- [PostCSS Load Config](INSTALL.md#postcss-load-config)
-- [Webpack](INSTALL.md#webpack)
-- [Next.js](INSTALL.md#nextjs)
-- [Gulp](INSTALL.md#gulp)
-- [Grunt](INSTALL.md#grunt)
 
 ## Options
 

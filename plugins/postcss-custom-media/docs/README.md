@@ -76,13 +76,15 @@ An example of a very complex (and artificial) use-case :
 
 <usage>
 
+<envSupport>
+
 ## CSS Modules
 
 If you're using CSS Modules, you'll probably notice that custom media queries are not being resolved. This happens
 because each file is processed separately so unless you import the custom media query definition in each file, they
 won't be resolved.
 
-To overcome this, we recommend using the [PostCSS Global Data](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data#readme) 
+To overcome this, we recommend using the [PostCSS Global Data](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data#readme)
 plugin which allows you to pass a list of files that will globally be available. The plugin won't inject any extra code
 in the output but will provide the context needed to resolve custom media queries.
 
@@ -102,8 +104,6 @@ postcss([
 	<exportName>(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
-
-<envSupport>
 
 ## Options
 
