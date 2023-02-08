@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased (patch)
+### 13.1.3 (February 8, 2023)
 
 - Fixed: exception on missing variables.
 
