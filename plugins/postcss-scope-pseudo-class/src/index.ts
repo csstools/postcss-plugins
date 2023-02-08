@@ -19,56 +19,67 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-scope-pseudo-class',
-		Rule(rule, { result }) {
-			if (!rule.selector.toLowerCase().includes(':scope')) {
-				return;
-			}
+		prepare() {
+			const transformedNodes = new WeakSet();
 
-			{
-				// We ignore rules withing `@scope`
-				let parent: Container<Node> = rule.parent;
-				while (parent) {
-					if (parent.type === 'atrule' && (parent as AtRule).name.toLowerCase() === 'scope') {
+			return {
+				Rule(rule, { result }) {
+					if (!rule.selector.toLowerCase().includes(':scope')) {
 						return;
 					}
 
-					parent = parent.parent;
-				}
-			}
-
-			let modifiedSelector = rule.selector;
-			try {
-				const selectorAST = parser().astSync(modifiedSelector);
-				if (!selectorAST) {
-					return;
-				}
-
-				selectorAST.walkPseudos((pseudo) => {
-					if (pseudo.value.toLowerCase() === ':has') {
-						return false;
+					if (transformedNodes.has(rule)) {
+						return;
 					}
 
-					if (pseudo.value.toLowerCase() === ':scope') {
-						pseudo.value = ':root';
+					{
+						// We ignore rules withing `@scope`
+						let parent: Container<Node> = rule.parent;
+						while (parent) {
+							if (parent.type === 'atrule' && (parent as AtRule).name.toLowerCase() === 'scope') {
+								return;
+							}
+
+							parent = parent.parent;
+						}
 					}
-				});
 
-				modifiedSelector = selectorAST.toString();
-			} catch (err) {
-				rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
-			}
+					let modifiedSelector = rule.selector;
+					try {
+						const selectorAST = parser().astSync(modifiedSelector);
+						if (!selectorAST) {
+							return;
+						}
 
-			if (modifiedSelector === rule.selector) {
-				return;
-			}
+						selectorAST.walkPseudos((pseudo) => {
+							if (pseudo.value.toLowerCase() === ':has') {
+								return false;
+							}
 
-			rule.cloneBefore({
-				selector: modifiedSelector,
-			});
+							if (pseudo.value.toLowerCase() === ':scope') {
+								pseudo.value = ':root';
+							}
+						});
 
-			if (!options.preserve) {
-				rule.remove();
-			}
+						modifiedSelector = selectorAST.toString();
+					} catch (err) {
+						rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
+					}
+
+					if (modifiedSelector === rule.selector) {
+						return;
+					}
+
+					transformedNodes.add(rule);
+					rule.cloneBefore({
+						selector: modifiedSelector,
+					});
+
+					if (!options.preserve) {
+						rule.remove();
+					}
+				},
+			};
 		},
 	};
 };

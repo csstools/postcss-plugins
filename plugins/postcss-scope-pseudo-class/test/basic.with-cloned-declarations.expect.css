@@ -2,6 +2,10 @@
 	order: 1;
 }
 
+:scope {
+	order: 1;
+}
+
 @scope (.foo) {
 	:scope {
 		order: 2;
@@ -10,6 +14,9 @@
 
 @media screen {
 	:root {
+		order: 3;
+	}
+	:scope {
 		order: 3;
 	}
 }
@@ -23,5 +30,11 @@
 }
 
 :root {
+	cloned: 1;
+	to-clone: 1;
+}
+
+:scope {
+	cloned: 1;
 	to-clone: 1;
 }
