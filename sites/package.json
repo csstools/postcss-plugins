@@ -25,6 +25,9 @@
 		"stylelint": "^14.3.0",
 		"stylelint-config-standard": "^29.0.0"
 	},
+	"overrides": {
+		"ua-parser-js": "^1.0.33"
+	},
 	"scripts": {
 		"clean": "git clean -dfx",
 		"setup-workspace": "npm run clean && npm i",
