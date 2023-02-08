@@ -31,6 +31,18 @@ instructions:
 4. `npm run build && npm run test` to build and test the plugin after making changes
 5. open a pull request with the changes
 
+### Handy commands
+
+Always check `package.json` in the directory you are working in.
+This file has a `scripts` field with all the available commands.
+
+These are some of the common commands you will find there :
+- `npm run build` For things like TypeScript, bundling,... Most plugins and packages need to be build after a code change.
+- `npm run test` To run the test suite.
+- `npm run test:rewrite-expects` Most of our tests have files with the expected output and others with the actual output. To update the expected output you can run this command.
+- `npm run lint` To manually run the linters.
+- `npm run docs` Most of our plugins have generated docs. Update the source file under `./docs` and then run this command.
+
 ## Submitting Pull Requests
 
 We try our best to create a safe and welcoming environment for contributors.
