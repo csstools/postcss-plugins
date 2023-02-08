@@ -116,7 +116,7 @@ Then we can investigate and maybe fix these.
 ## Browser
 
 ```js
-// initialize prefersColorScheme (applies the current OS color scheme, if available)
+// initialize cssHasPseudo
 import cssHasPseudo from '<packageName>/browser';
 cssHasPseudo(document);
 ```
