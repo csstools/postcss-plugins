@@ -1,6 +1,6 @@
 # Changes to PostCSS Double Position Gradients
 
-### Unreleased (patch)
+### 4.0.2 (February 8, 2023)
 
 - Reduce the amount of duplicate fallback CSS.
 
