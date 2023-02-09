@@ -1,8 +1,8 @@
 import path from 'path';
 import fs from 'fs';
-import postcss from 'postcss';
+import type { Postcss } from 'postcss';
 
-export function parseImport(filePath: string, alreadyImported: Set<string>) {
+export function parseImport(postcss: Postcss, filePath: string, alreadyImported: Set<string>) {
 	let resolvedPath = '';
 
 	if (filePath.startsWith('node_modules://')) {
@@ -26,5 +26,5 @@ export function parseImport(filePath: string, alreadyImported: Set<string>) {
 	alreadyImported.add(resolvedPath);
 
 	const fileContents = fs.readFileSync(resolvedPath, 'utf8');
-	return postcss.parse(fileContents);
+	return postcss.parse(fileContents, {from: filePath});
 }
