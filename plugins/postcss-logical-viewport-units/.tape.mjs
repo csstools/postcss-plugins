@@ -1,4 +1,4 @@
-import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape, ruleClonerPlugin } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from '@csstools/postcss-logical-viewport-units';
 
 postcssTape(plugin)({
@@ -16,6 +16,15 @@ postcssTape(plugin)({
 		options: {
 			inlineDirection: 'top-to-bottom'
 		}
+	},
+	'basic:with-cloned-rules': {
+		message: 'doesn\'t cause duplicate CSS',
+		plugins: [
+			ruleClonerPlugin,
+			plugin({
+				preserve: true
+			})
+		]
 	},
 	'examples/example': {
 		message: 'minimal example',

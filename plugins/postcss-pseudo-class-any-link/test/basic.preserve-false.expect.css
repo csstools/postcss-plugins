@@ -121,5 +121,9 @@ b {
 }
 
 .any + :link + .other, .any + :visited + .other {
-		order: 101.4;
-	}
+	order: 101.4;
+}
+
+:link, :visited {
+	to-clone: 1;
+}

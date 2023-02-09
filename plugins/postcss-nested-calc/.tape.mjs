@@ -1,4 +1,4 @@
-import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape, ruleClonerPlugin } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from '@csstools/postcss-nested-calc';
 
 postcssTape(plugin)({
@@ -10,6 +10,15 @@ postcssTape(plugin)({
 		options: {
 			preserve: false
 		}
+	},
+	'basic:with-cloned-rules': {
+		message: 'doesn\'t cause duplicate CSS',
+		plugins: [
+			ruleClonerPlugin,
+			plugin({
+				preserve: true
+			})
+		]
 	},
 	'examples/example': {
 		message: 'minimal example',

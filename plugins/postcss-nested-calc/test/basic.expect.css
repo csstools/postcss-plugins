@@ -54,3 +54,13 @@
 .custom-props {
 	--order: calc(1 + calc(2 * 2));
 }
+
+.manual_fallback {
+	width: 10px;
+	width: calc(10px + calc(2px * 2));
+}
+
+to-clone {
+	width: calc(10px + (2px * 2));
+	width: calc(10px + calc(2px * 2));
+}

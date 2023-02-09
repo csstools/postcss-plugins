@@ -2,6 +2,7 @@ import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import type { ParsedValue } from 'postcss-value-parser';
 import { numberOfCalcOccurrences } from './occurrences';
+import { hasFallback } from './has-fallback-decl';
 
 /** postcss-nested-calc plugin options */
 export type pluginOptions = {
@@ -30,6 +31,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			if (decl.variable) {
 				// We can not determine if something will become a nested calc after variable substitution.
 				// Not touching variables at all is safest for now.
+				return;
+			}
+
+			if (hasFallback(decl)) {
 				return;
 			}
 
@@ -76,10 +81,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			if (options.preserve) {
-				decl.cloneBefore({ value: modifiedValue });
-			} else {
-				decl.replaceWith(decl.clone({ value: modifiedValue }));
+			decl.cloneBefore({ value: modifiedValue });
+
+			if (!options.preserve) {
+				decl.remove();
 			}
 		},
 	};

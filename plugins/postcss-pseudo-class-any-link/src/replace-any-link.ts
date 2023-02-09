@@ -6,7 +6,7 @@ const visitedAST = parser().astSync(':visited').nodes[0];
 const areaHrefAST = parser().astSync('area[href]').nodes[0];
 const hrefAST = parser().astSync('[href]').nodes[0];
 
-export function replaceAnyLink(rule: Rule, result: Result, preserve: boolean, areaHrefNeedsFixing: boolean) {
+export function replaceAnyLink(rule: Rule, result: Result, preserve: boolean, areaHrefNeedsFixing: boolean): boolean {
 	const updatedSelectors = [];
 	const untouchedSelectors = [];
 
@@ -23,11 +23,11 @@ export function replaceAnyLink(rule: Rule, result: Result, preserve: boolean, ar
 		}
 	} catch (err) {
 		rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
-		return;
+		return false;
 	}
 
 	if (!updatedSelectors.length) {
-		return;
+		return false;
 	}
 
 	rule.cloneBefore({
@@ -43,6 +43,8 @@ export function replaceAnyLink(rule: Rule, result: Result, preserve: boolean, ar
 	if (!preserve) {
 		rule.remove();
 	}
+
+	return true;
 }
 
 function modifiedSelector(selector, areaHrefNeedsFixing) {
