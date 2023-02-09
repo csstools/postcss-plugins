@@ -24,13 +24,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			let importedCSS = new Set<ChildNode>();
 
 			return {
-				Once: (root) => {
+				Once: (root, { postcss }) => {
 					options.files.forEach((file) => {
 						if (importedFiles.has(file)) {
 							return;
 						}
 
-						const newCSS = parseImport(file, importedFiles);
+						const newCSS = parseImport(postcss, file, importedFiles);
 						if (!newCSS) {
 							return;
 						}

@@ -4,6 +4,8 @@
 	"version": "0.0.0",
 	"description": "",
 	"workspaces": [
+		"browserslist/*",
+		"interop/*",
 		"postcss-cli/*",
 		"typescript/*",
 		"webpack/*"

@@ -1,0 +1,3 @@
+@design-tokens url('./tokens.json') format('style-dictionary3');
+
+@custom-media --tablet (min-width: design-token('viewport-tablet' to px));
