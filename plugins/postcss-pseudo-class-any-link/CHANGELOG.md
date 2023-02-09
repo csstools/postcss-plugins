@@ -1,6 +1,6 @@
 # Changes to PostCSS Pseudo Class Any Link
 
-### Unreleased (patch)
+### 8.0.2 (February 9, 2023)
 
 - Reduce the amount of duplicate fallback CSS.
 
