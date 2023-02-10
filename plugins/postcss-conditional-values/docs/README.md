@@ -73,6 +73,25 @@ color: csstools-if(--a-condition yellow else red);
 csstools-if(<custom-property-name> <declaration-value> else <declaration-value>);
 ```
 
+#### [Stylelint](https://stylelint.io/user-guide/rules/declaration-property-value-no-unknown/#propertiessyntax--property-syntax-)
+
+Stylelint is able to check for unknown property values.
+Setting the correct configuration for this rule makes it possible to check even non-standard syntax.
+
+```js
+	// Disallow unknown values for properties within declarations.
+	'declaration-property-value-no-unknown': [
+		true,
+		{
+			propertiesSyntax: {
+				color: '| csstools-if( <custom-property-name> <\'color\'> else <\'color\'> )',
+				'background-color': '| csstools-if( <custom-property-name> <\'background-color\'> else <\'background-color\'> )',
+				// ... more properties ...
+			},
+		},
+	],
+```
+
 ### `true` and `false` keywords
 
 The `true` and `false` keywords are syntactic sugar for `initial` and `<space>`.
