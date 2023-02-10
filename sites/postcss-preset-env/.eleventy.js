@@ -1,4 +1,5 @@
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const pluginRss = require('@11ty/eleventy-plugin-rss');
 const addHash = require('./eleventy/filters/add-hash');
 const inlineMarkdown = require('./eleventy/filters/inline-markdown');
 const cleanMarkdown = require('./eleventy/filters/clean-markdown');
@@ -14,6 +15,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addFilter('cleanMarkdown', cleanMarkdown);
 
 	eleventyConfig.addPlugin(syntaxHighlight);
+	eleventyConfig.addPlugin(pluginRss);
 
 	eleventyConfig.addFilter('postDate', (dateObj) => {
 		return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
