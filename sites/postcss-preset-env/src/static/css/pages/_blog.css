@@ -59,6 +59,10 @@
 		@media (--from-medium) {
 			margin-block: 1.5rem 2rem;
 		}
+	}
+
+	& > p,
+	& > :is(h1, h2, h3, h4, h5) {
 
 		& code {
 			background-color: rgba(222 221 227 / 70%);
@@ -127,5 +131,27 @@
 
 	& .ppe-post-excerpt {
 		font-size: var(--step-0);
+	}
+}
+
+.ppe-blog-footer {
+	display: flex;
+	flex-direction: column;
+	font-size: var(--step--1);
+	justify-content: space-between;
+	margin-top: 3rem;
+
+	@media (--from-medium) {
+		flex-direction: row;
+	}
+
+	& p {
+		margin-top: 0;
+		text-align: center;
+
+		@media (--from-medium) {
+			text-align: left;
+			margin-bottom: 0;
+		}
 	}
 }

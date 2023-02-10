@@ -15,11 +15,14 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addPlugin(syntaxHighlight);
 
-	eleventyConfig.addFilter("postDate", (dateObj) => {
+	eleventyConfig.addFilter('postDate', (dateObj) => {
 		return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
 	});
-	eleventyConfig.addFilter("postDateISO", (dateObj) => {
+	eleventyConfig.addFilter('postDateISO', (dateObj) => {
 		return DateTime.fromJSDate(dateObj).toISODate();
+	});
+	eleventyConfig.addFilter('ghPath', (inputPath) => {
+		return inputPath.replace('./', 'https://github.com/csstools/postcss-plugins/tree/main/sites/postcss-preset-env/');
 	});
 
 	// Override BrowserSync defaults (used only with --serve)
