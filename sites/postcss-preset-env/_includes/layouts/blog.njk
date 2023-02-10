@@ -12,5 +12,10 @@
 		</header>
 
 		{{ content | safe }}
+
+		<footer class="ppe-blog-footer">
+			<p>Published on <time class="ppe-post-date" datetime="{{ date | postDateISO }}">{{ date | postDate }}</time></p>
+			<p><a href="{{ page.inputPath | ghPath }}" target="_blank" aria-label="View this file in GitHub, opens in a new tab">View in GitHub</a></p>
+		</footer>
 	</article>
 {% endblock %}
