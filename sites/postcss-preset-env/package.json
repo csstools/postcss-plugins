@@ -71,6 +71,7 @@
 	},
 	"dependencies": {
 		"@11ty/eleventy": "^2.0.0-beta.3",
+		"@11ty/eleventy-plugin-rss": "^1.2.0",
 		"@babel/core": "^7.20.12",
 		"@babel/preset-env": "^7.20.2",
 		"@codemirror/lang-css": "^6.0.1",

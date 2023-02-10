@@ -1,2 +1,7 @@
 [build]
 	ignore = "exit 0"
+
+[[redirects]]
+	from = "/feed/"
+	to = "/feed/feed.xml"
+	status = 200
