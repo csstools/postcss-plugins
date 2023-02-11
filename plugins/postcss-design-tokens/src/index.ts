@@ -19,7 +19,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					tokens = new Map<string, Token>();
 					importedFiles = new Set<string>();
 				},
-				Once: async (root, { result }) => {
+				Once: async (root, postcssHelpers) => {
 					const designTokenAtRules: Array<{filePath: string, params: string, node: Node}> = [];
 					root.walkAtRules((atRule) => {
 						if (atRule.name.toLowerCase() !== options.importAtRuleName) {
@@ -44,16 +44,16 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					for (const atRule of designTokenAtRules.values()) {
 						let importResult: { filePath: string, tokens: Map<string, Token> }|false;
 						try {
-							importResult = await tokensFromImport(options.is, atRule.filePath, atRule.params, importedFiles);
+							importResult = await tokensFromImport(root, postcssHelpers, options.is, atRule.filePath, atRule.params, importedFiles);
 							if (!importResult) {
 								continue;
 							}
 						} catch (e) {
-							atRule.node.warn(result, `Failed to import design tokens from "${atRule.params}" with error:\n\t` + (e as Error).message);
+							atRule.node.warn(postcssHelpers.result, `Failed to import design tokens from "${atRule.params}" with error:\n\t` + (e as Error).message);
 							continue;
 						}
 
-						result.messages.push({
+						postcssHelpers.result.messages.push({
 							type: 'dependency',
 							plugin: 'postcss-design-tokens',
 							file: importResult.filePath,
