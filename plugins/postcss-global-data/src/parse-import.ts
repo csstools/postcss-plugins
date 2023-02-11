@@ -1,8 +1,8 @@
 import path from 'path';
 import fs from 'fs';
-import type { Postcss } from 'postcss';
+import type { Helpers, Root } from 'postcss';
 
-export function parseImport(postcss: Postcss, filePath: string, alreadyImported: Set<string>) {
+export function parseImport(root: Root, postcssHelpers: Helpers, filePath: string, alreadyImported: Set<string>) {
 	let resolvedPath = '';
 
 	if (filePath.startsWith('node_modules://')) {
@@ -25,6 +25,13 @@ export function parseImport(postcss: Postcss, filePath: string, alreadyImported:
 
 	alreadyImported.add(resolvedPath);
 
+	postcssHelpers.result.messages.push({
+		type: 'dependency',
+		plugin: 'postcss-global-data',
+		file: resolvedPath,
+		parent: root.source?.input?.file,
+	});
+
 	const fileContents = fs.readFileSync(resolvedPath, 'utf8');
-	return postcss.parse(fileContents, {from: filePath});
+	return postcssHelpers.postcss.parse(fileContents, { from: resolvedPath });
 }

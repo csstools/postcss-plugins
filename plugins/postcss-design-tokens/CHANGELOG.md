@@ -1,5 +1,9 @@
 # Changes to PostCSS Design Tokens
 
+### Unreleased (patch)
+
+- Fixed: file watching with PostCSS CLI
+
 ### 2.0.2 (January 28, 2023)
 
 - Fix unit conversion

@@ -5,6 +5,7 @@ import path from 'path';
 import { promises as fsp } from 'fs';
 import { DEFAULT_CONDITION } from '../constants';
 import module from 'module';
+import type { Helpers, Root } from 'postcss';
 
 const require = module.createRequire(import.meta.url);
 
@@ -40,7 +41,7 @@ function parseImport(statement: string): { filePath: string, format: string, con
 	return result;
 }
 
-export async function tokensFromImport(buildIs: Array<string>, sourceFilePath: string, statement: string, alreadyImported: Set<string>): Promise<{ filePath: string, tokens: Map<string, Token> }|false> {
+export async function tokensFromImport(root: Root, postcssHelpers: Helpers, buildIs: Array<string>, sourceFilePath: string, statement: string, alreadyImported: Set<string>): Promise<{ filePath: string, tokens: Map<string, Token> }|false> {
 	const { filePath, format, conditions } = parseImport(statement);
 	if (!conditions.every((condition) => buildIs.includes(condition))) {
 		return false;
@@ -64,6 +65,13 @@ export async function tokensFromImport(buildIs: Array<string>, sourceFilePath: s
 	if (alreadyImported.has(resolvedPath)) {
 		return false;
 	}
+
+	postcssHelpers.result.messages.push({
+		type: 'dependency',
+		plugin: 'postcss-design-tokens',
+		file: resolvedPath,
+		parent: root.source?.input?.file,
+	});
 
 	alreadyImported.add(resolvedPath);
 
