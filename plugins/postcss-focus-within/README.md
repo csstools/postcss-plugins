@@ -128,7 +128,7 @@ postcssFocusWithin({ disablePolyfillReadyClass: true })
 
 /* becomes */
 
-.my-form-field[focus-within] label, .my-form-field[focus-within] label {
+.my-form-field[focus-within] label {
 	background-color: yellow;
 }
 .my-form-field:focus-within label {
@@ -148,7 +148,7 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/postcss-focus-within@7.0.1/dist/browser-global.js"></script>
+<script src="https://unpkg.com/postcss-focus-within@7.0.2/dist/browser-global.js"></script>
 <script>focusWithinInit()</script>
 ```
 

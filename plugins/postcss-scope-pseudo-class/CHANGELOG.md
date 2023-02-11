@@ -1,5 +1,9 @@
 # Changes to PostCSS Scope Pseudo Class
 
+### 2.0.2 (February 9, 2023)
+
+- Reduce the amount of duplicate fallback CSS.
+
 ### 2.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

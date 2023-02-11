@@ -1,4 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import { declarationClonerPlugin, postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'postcss-pseudo-class-any-link';
 
 postcssTape(plugin)({
@@ -18,6 +18,18 @@ postcssTape(plugin)({
 				areaHrefNeedsFixing: true
 			}
 		}
+	},
+	'basic:with-cloned-declarations': {
+		message: 'doesn\'t cause duplicate CSS',
+		plugins: [
+			declarationClonerPlugin,
+			plugin({
+				preserve: true,
+				subFeatures: {
+					areaHrefNeedsFixing: true
+				}
+			})
+		]
 	},
 	'generated-selector-cases': {
 		message: 'correctly handles generated cases',

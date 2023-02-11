@@ -1,4 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'postcss-custom-properties';
 import postcssImport from 'postcss-import';
 
@@ -14,6 +14,12 @@ postcssTape(plugin)({
 	},
 	'cascade-layers': {
 		message: 'supports cascade layers'
+	},
+	'issue-838': {
+		message: 'prevent regressions of https://github.com/csstools/postcss-plugins/issues/838',
+		options: {
+			preserve: false
+		}
 	},
 	'examples/example': {
 		message: 'minimal example',

@@ -24,19 +24,32 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-pseudo-class-any-link',
-		Rule(rule, { result }) {
-			if (!rule.selector.toLowerCase().includes(':any-link')) {
-				return;
-			}
+		prepare() {
+			const transformedNodes = new WeakSet();
 
-			const rawSelector = rule.raws.selector && rule.raws.selector.raw || rule.selector;
+			return {
+				Rule(rule, { result }) {
+					if (!rule.selector.toLowerCase().includes(':any-link')) {
+						return;
+					}
 
-			// workaround for https://github.com/postcss/postcss-selector-parser/issues/28#issuecomment-171910556
-			if (rawSelector.endsWith(':')) {
-				return;
-			}
+					if (transformedNodes.has(rule)) {
+						return;
+					}
 
-			replaceAnyLink(rule, result, options.preserve, subFeatures.areaHrefNeedsFixing);
+					const rawSelector = rule.raws.selector && rule.raws.selector.raw || rule.selector;
+
+					// workaround for https://github.com/postcss/postcss-selector-parser/issues/28#issuecomment-171910556
+					if (rawSelector.endsWith(':')) {
+						return;
+					}
+
+					const didReplace = replaceAnyLink(rule, result, options.preserve, subFeatures.areaHrefNeedsFixing);
+					if (didReplace) {
+						transformedNodes.add(rule);
+					}
+				},
+			};
 		},
 	};
 };

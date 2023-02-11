@@ -1,4 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape, ruleClonerPlugin } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from '@csstools/postcss-hwb-function';
 
 postcssTape(plugin)({
@@ -10,6 +10,15 @@ postcssTape(plugin)({
 		options: {
 			preserve: true
 		}
+	},
+	'basic:with-cloned-rules': {
+		message: 'doesn\'t cause duplicate CSS',
+		plugins: [
+			ruleClonerPlugin,
+			plugin({
+				preserve: true
+			})
+		]
 	},
 	'variables': {
 		message: 'supports variables',

@@ -171,3 +171,11 @@ html :not(:focus-visible) {
 :FocuS-VisiblE {
 	order: 11;
 }
+
+.focus-visible.js-focus-visible, .js-focus-visible .focus-visible {
+	to-clone: 1;
+}
+
+:focus-visible {
+	to-clone: 1;
+}

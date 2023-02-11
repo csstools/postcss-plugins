@@ -1,5 +1,6 @@
 export const externalsForCLI = [
 	'fs',
+	'https',
 	'path',
 	'url',
 	'vm',
@@ -17,6 +18,7 @@ export const externalsForCLI = [
 	'@csstools/postcss-cascade-layers',
 	'@csstools/postcss-color-function',
 	'@csstools/postcss-font-format-keywords',
+	'@csstools/postcss-global-data',
 	'@csstools/postcss-hwb-function',
 	'@csstools/postcss-ic-unit',
 	'@csstools/postcss-is-pseudo-class',
@@ -77,6 +79,7 @@ export const externalsForCLI = [
 export const externalsForPlugin = [
 	'assert',
 	'fs',
+	'https',
 	'module',
 	'path',
 	'url',

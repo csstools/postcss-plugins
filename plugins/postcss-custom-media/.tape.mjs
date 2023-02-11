@@ -1,4 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.cjs';
+import { declarationClonerPlugin, postcssTape } from '../../packages/postcss-tape/dist/index.cjs';
 import plugin from 'postcss-custom-media';
 
 postcssTape(plugin)({
@@ -14,6 +14,16 @@ postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage (old)',
 		warnings: 1,
+	},
+	'basic:with-cloned-declarations': {
+		message: 'doesn\'t cause duplicate CSS',
+		warnings: 1,
+		plugins: [
+			declarationClonerPlugin,
+			plugin({
+				preserve: true
+			})
+		]
 	},
 	'cascade-layers': {
 		message: 'supports cascade layers',

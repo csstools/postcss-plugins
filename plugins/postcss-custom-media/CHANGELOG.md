@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Media
 
+### 9.1.2 (February 8, 2023)
+
+- Fixed: exception on missing media queries.
+- Reduce the amount of duplicate fallback CSS.
+
 ### 9.1.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
@@ -17,6 +22,7 @@
 - Updated: Support for Node v14+ (major).
 - Removed: `importFrom` feature (breaking).
 - Removed: `exportTo` feature (breaking).
+- Removed: References without parenthesis `@media --foo {}` (breaking).
 - Fixed: implement logical evaluation of custom media queries.
 - Added: Support for `true` and `false` keywords in `@custom-media`.
 

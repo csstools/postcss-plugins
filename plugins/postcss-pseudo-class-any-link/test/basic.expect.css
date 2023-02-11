@@ -229,9 +229,17 @@ b {
 }
 
 .any + :link + .other, .any + :visited + .other {
-		order: 101.4;
-	}
+	order: 101.4;
+}
 
 .any + :any-link + .other {
-		order: 101.4;
-	}
+	order: 101.4;
+}
+
+:link, :visited {
+	to-clone: 1;
+}
+
+:any-link {
+	to-clone: 1;
+}

@@ -11,5 +11,21 @@ type TestCaseOptions = {
     after?: () => void | Promise<void>;
     postcssSyntaxHTML?: boolean;
 };
-export default function runner(currentPlugin: PluginCreator<unknown>): (options: Record<string, TestCaseOptions>) => Promise<void>;
+export declare function postcssTape(currentPlugin: PluginCreator<unknown>): (options: Record<string, TestCaseOptions>) => Promise<void>;
+export declare const declarationClonerPlugin: {
+    postcssPlugin: string;
+    Declaration(decl: any): void;
+};
+export declare const ruleClonerPlugin: {
+    postcssPlugin: string;
+    prepare(): {
+        RuleExit(rule: any): void;
+    };
+};
+export declare const atRuleClonerPlugin: {
+    postcssPlugin: string;
+    prepare(): {
+        AtRuleExit(atRule: any): void;
+    };
+};
 export {};

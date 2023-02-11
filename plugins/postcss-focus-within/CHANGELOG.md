@@ -1,5 +1,9 @@
 # Changes to PostCSS Focus Within
 
+### 7.0.2 (February 8, 2023)
+
+- Reduce the amount of duplicate fallback CSS.
+
 ### 7.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

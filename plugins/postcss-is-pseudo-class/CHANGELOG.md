@@ -1,5 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
+### 3.1.1 (February 8, 2023)
+
+- Reduce the amount of duplicate fallback CSS.
+
 ### 3.1.0 (February 2, 2023)
 
 - Fix is pseudo inside a not pseudo (`:not(:is(h1, h2, h3))`)

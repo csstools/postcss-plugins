@@ -212,3 +212,11 @@ b,:is(.foo .baz) {
 b,:--foobazz {
 	order: 1022;
 }
+
+b,:is(.foo .baz) {
+	to-clone: 1;
+}
+
+b, :--foobazz {
+	to-clone: 1;
+}

@@ -1,5 +1,9 @@
 # Changes to PostCSS HWB Function
 
+### 2.1.1 (February 8, 2023)
+
+- Reduce the amount of duplicate fallback CSS.
+
 ### 2.1.0 (February 2, 2023)
 
 - Add: `@csstools/color-helpers` dependency for all color value transformations.

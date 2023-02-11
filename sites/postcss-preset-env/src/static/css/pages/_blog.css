@@ -1,0 +1,157 @@
+.ppe-blog {
+
+	& .ppe-heading {
+		background: transparent;
+	}
+}
+
+.ppe-blog-list,
+.ppe-post {
+	width: min(80ch, calc(100vw - var(--scroll-bar) - 1.25rem));
+	margin-inline: auto;
+
+	& a {
+		text-decoration: underline;
+		transition: text-decoration-color 0.2s;
+
+		&:is(:hover, :focus) {
+			text-decoration-color: transparent;
+		}
+	}
+}
+
+.ppe-post {
+	font-size: var(--step-0);
+	line-height: 1.5;
+	padding-bottom: 4rem;
+
+	& h1 {
+		font-size: var(--step-4);
+		line-height: 1.1;
+	}
+
+	& h2 {
+		font-size: var(--step-3);
+		line-height: 1.2;
+	}
+
+	& h3 {
+		font-size: var(--step-2);
+		line-height: 1.2;
+	}
+
+	& h4 {
+		font-size: var(--step-1);
+		line-height: 1.2;
+	}
+
+	& :is(h1, h2, h3, h4) {
+		margin-block: 2.5rem 1rem;
+
+		@media (--from-wide) {
+			margin-block: 4rem 1.5rem;
+		}
+	}
+
+	& > p {
+		margin-block: 1.5rem;
+
+		@media (--from-medium) {
+			margin-block: 1.5rem 2rem;
+		}
+	}
+
+	& > p,
+	& > :is(h1, h2, h3, h4, h5) {
+
+		& code {
+			background-color: rgba(222 221 227 / 70%);
+			border-radius: 0.3rem;
+			color: var(--black);
+			font-weight: 600;
+			line-height: 1.7;
+			padding: 0.2rem;
+		}
+	}
+}
+
+.ppe-blog-header {
+	color: var(--color-white);
+	margin-bottom: 4rem;
+	padding-block: 2rem;
+	position: relative;
+
+	@media (--from-medium) {
+		padding-block: 2rem 3rem;
+		text-align: center;
+	}
+
+	&::before {
+		background-image: linear-gradient(90deg, var(--color-purple), var(--color-blue));
+		bottom: 0;
+		content: "";
+		left: 50%;
+		position: absolute;
+		top: calc(var(--heading-size) * -1);
+		transform: translateX(-50%);
+		width: var(--full-width);
+		z-index: -1;
+
+		@media (--from-medium) {
+			top: calc(var(--heading-size-from-medium) * -1);
+		}
+	}
+
+	& .ppe-blog-title {
+		margin-top: 0;
+	}
+}
+
+.ppe-post-byline {
+	font-style: italic;
+	font-size: var(--step--1);
+}
+
+.ppe-post-element {
+
+	&:not(:last-child) {
+		margin-bottom: 3rem;
+	}
+
+	& .ppe-post-title {
+		font-size: var(--step-2);
+		line-height: 1.2;
+		margin: 0 0 1rem;
+	}
+
+	& .ppe-post-date {
+		font-size: var(--step--1);
+		margin-bottom: 1rem;
+	}
+
+	& .ppe-post-excerpt {
+		font-size: var(--step-0);
+	}
+}
+
+.ppe-blog-footer {
+	display: flex;
+	flex-direction: column;
+	font-size: var(--step--1);
+	justify-content: space-between;
+	margin-top: 3rem;
+
+	@media (--from-medium) {
+		flex-direction: row;
+	}
+
+	& p {
+		margin-top: 0;
+		text-align: center;
+
+		@media (--from-medium) {
+			text-align: left;
+			margin-bottom: 0;
+		}
+	}
+}

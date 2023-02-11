@@ -124,3 +124,7 @@ a, :--foobazz {
 b,:--foobazz {
 	order: 1022;
 }
+
+b, :--foobazz {
+	to-clone: 1;
+}

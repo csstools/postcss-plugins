@@ -1,0 +1,15 @@
+@media (max-width: 30em) {
+	body {
+		order: 1;
+	}
+}
+
+@media not all and (max-width: 30em) {
+	body {
+		order: 1;
+	}
+}
+
+.foo {
+	background: green;
+}

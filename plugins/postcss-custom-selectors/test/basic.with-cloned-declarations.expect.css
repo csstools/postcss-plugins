@@ -1,0 +1,224 @@
+@custom-selector :--foo .bar, .baz;
+
+.foo:is(.foo) {
+	margin-top: 16px;
+}
+
+.foo:--foo {
+	margin-top: 16px;
+}
+
+@custom-selector :--any-heading h1, h2, h3, h4, h5, h6;
+
+:is(h1, h2, h3, h4, h5, h6) + p {}
+
+:--any-heading + p {}
+
+@custom-selector :--foobar .foo, .bar;
+@custom-selector :--baz .baz;
+@custom-selector :--fizzbuzz .fizz, .buzz;
+@custom-selector :--button-types
+	.btn-primary,
+	.btn-success,
+	.btn-info,
+	.btn-warning,
+	.btn-danger;
+
+:is(.foo) > :is(.baz) {}
+
+:--foobar > :--baz {}
+:is(.fizz, .buzz) > :is(.foo) {}
+:--fizzbuzz > :--foobar {}
+:is(.btn-primary,
+	.btn-success,
+	.btn-info,
+	.btn-warning,
+	.btn-danger),:is(.btn-primary,
+	.btn-success,
+	.btn-info,
+	.btn-warning,
+	.btn-danger):active {}
+:--button-types, :--button-types:active {}
+
+@custom-selector :--commented-foo
+	/* comment */
+	.foo,
+	.bar > .baz;
+
+:is(.foo,
+	.bar > .baz) + p {
+	display: block;
+}
+
+:--commented-foo + p {
+	display: block;
+}
+
+@custom-selector :--pseudo ::before, ::after;
+
+.foo > a:is(::before, ::after) img {
+	display: block;
+}
+
+.foo > a:--pseudo img {
+	display: block;
+}
+
+@custom-selector :--foo .foo;
+
+:is(.foo),:is(.foo).bar {
+	color: white;
+}
+
+:--foo, :--foo.bar {
+	color: white;
+}
+
+:is(.foo) :is(.foo):hover {
+	color: white;
+}
+
+:--foo :--foo:hover {
+	color: white;
+}
+
+@custom-selector :--fo-----o h1, h2, h3;
+@custom-selector :--ba-----r h4, h5, h6;
+
+.fo--oo > :is(h1, h2, h3) {
+	margin: auto;
+}
+
+.fo--oo > :--fo-----o {
+	margin: auto;
+}
+
+:is(h4, h5, h6):hover .ba--z {
+	display: block;
+}
+
+:--ba-----r:hover .ba--z {
+	display: block;
+}
+
+/* comment */
+
+article :--heading + p {
+	margin-top: 0;
+}
+
+@custom-selector :--multiline
+	.foo,
+	.bar > .baz;
+
+:is(.foo,
+	.bar > .baz) {
+	display: block;
+}
+
+:--multiline {
+	display: block;
+}
+
+/* should works with collapsed custom selectors */
+
+@custom-selector :--button button, .button;
+@custom-selector :--enter :hover, :focus;
+
+:is(button, .button):is(:hover, :focus) {}
+
+:--button:--enter {}
+
+@custom-selector :--any-foobar .foo, .bar;
+
+:is(.foo, .bar) h1 {
+	margin-top: 16px;
+}
+
+:--any-foobar h1 {
+	margin-top: 16px;
+}
+
+main :is(.foo) + p {
+	margin-top: 16px;
+}
+
+main :--foo + p {
+	margin-top: 16px;
+}
+
+@custom-selector :--foobar .foo;
+
+:is(.foo) {
+	order: 1000;
+}
+
+:--foobar {
+	order: 1000;
+}
+a,:is(.foo) {
+	order: 1001;
+}
+a, :--foobar {
+	order: 1001;
+}
+b,:is(.foo) {
+	order: 1002;
+}
+b,:--foobar {
+	order: 1002;
+}
+
+@custom-selector :--foobaz .foo.baz;
+
+:is(.foo.baz) {
+	order: 1010;
+}
+
+:--foobaz {
+	order: 1010;
+}
+a,:is(.foo.baz) {
+	order: 1011;
+}
+a, :--foobaz {
+	order: 1011;
+}
+b,:is(.foo.baz) {
+	order: 1012;
+}
+b,:--foobaz {
+	order: 1012;
+}
+
+@custom-selector :--foobazz .foo .baz;
+
+:is(.foo .baz) {
+	order: 1020;
+}
+
+:--foobazz {
+	order: 1020;
+}
+a,:is(.foo .baz) {
+	order: 1021;
+}
+a, :--foobazz {
+	order: 1021;
+}
+b,:is(.foo .baz) {
+	order: 1022;
+}
+b,:--foobazz {
+	order: 1022;
+}
+
+b,:is(.foo .baz) {
+	cloned: 1;
+	to-clone: 1;
+}
+
+b, :--foobazz {
+	cloned: 1;
+	to-clone: 1;
+}

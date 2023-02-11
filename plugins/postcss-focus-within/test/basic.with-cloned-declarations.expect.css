@@ -1,0 +1,100 @@
+[focus-within].js-focus-within, .js-focus-within [focus-within] {
+	order: 1;
+}
+
+:focus-within {
+	order: 1;
+}
+
+[focus-within].js-focus-within,
+.js-focus-within [focus-within],
+[focus-within].js-focus-within test,
+.js-focus-within [focus-within] test,
+test.js-focus-within [focus-within],
+.js-focus-within test [focus-within],
+test.js-focus-within test[focus-within],
+.js-focus-within test test[focus-within],
+test.js-focus-within [focus-within] test,
+.js-focus-within test [focus-within] test,
+test.js-focus-within test[focus-within] test,
+.js-focus-within test test[focus-within] test,
+test.js-focus-within [focus-within] [focus-within] test,
+.js-focus-within test [focus-within] [focus-within] test,
+test.js-focus-within :matches([focus-within]) test,
+.js-focus-within test :matches([focus-within]) test,
+test.js-focus-within :matches([focus-within] test) test,
+.js-focus-within test :matches([focus-within] test) test,
+test.js-focus-within :matches(test [focus-within]) test,
+.js-focus-within test :matches(test [focus-within]) test,
+test.js-focus-within :matches(test test[focus-within]) test,
+.js-focus-within test :matches(test test[focus-within]) test,
+test.js-focus-within :matches(test [focus-within] test) test,
+.js-focus-within test :matches(test [focus-within] test) test,
+test.js-focus-within :matches(test test[focus-within] test) test,
+.js-focus-within test :matches(test test[focus-within] test) test,
+test.js-focus-within :matches(test [focus-within] [focus-within] test) test,
+.js-focus-within test :matches(test [focus-within] [focus-within] test) test {
+	order: 2;
+}
+
+:focus-within,
+:focus-within test,
+test :focus-within,
+test test:focus-within,
+test :focus-within test,
+test test:focus-within test,
+test :focus-within :focus-within test,
+test :matches(:focus-within) test,
+test :matches(:focus-within test) test,
+test :matches(test :focus-within) test,
+test :matches(test test:focus-within) test,
+test :matches(test :focus-within test) test,
+test :matches(test test:focus-within test) test,
+test :matches(test :focus-within :focus-within test) test {
+	order: 2;
+}
+
+:ignore-focus-within,
+:focus-within-ignore,
+:ignorefocus-within,
+:focus-withinignore {
+	order: 3;
+}
+
+:focus-within(.ignore) {
+	order: 4;
+}
+
+.escaped\:focus-within,
+.escaped\:times\:two\:focus-within,
+.escaped\:focus-within[focus-within].js-focus-within,
+.js-focus-within .escaped\:focus-within[focus-within],
+.escaped\:times\:two[focus-within].js-focus-within,
+.js-focus-within .escaped\:times\:two[focus-within] {
+	order: 5;
+}
+
+.escaped\:focus-within,
+.escaped\:times\:two\:focus-within,
+.escaped\:focus-within:focus-within,
+.escaped\:times\:two:focus-within {
+	order: 5;
+}
+
+[focus-within].js-focus-within, .js-focus-within [focus-within] {
+	order: 6;
+}
+
+:FocuS-WithiN {
+	order: 6;
+}
+
+[focus-within].js-focus-within, .js-focus-within [focus-within] {
+	cloned: 1;
+	to-clone: 1;
+}
+
+:focus-within {
+	cloned: 1;
+	to-clone: 1;
+}

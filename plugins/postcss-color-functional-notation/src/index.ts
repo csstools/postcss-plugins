@@ -5,6 +5,7 @@ import onCSSFunction from './on-css-function';
 
 import type { PluginCreator } from 'postcss';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasFallback } from './has-fallback-decl';
 
 /** postcss-color-functional-notation plugin options */
 export type pluginOptions = {
@@ -19,10 +20,6 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-color-functional-notation',
 		Declaration: (decl: Declaration, { result, postcss }: { result: Result, postcss: Postcss }) => {
-			if (hasSupportsAtRuleAncestor(decl)) {
-				return;
-			}
-
 			const originalValue = decl.value;
 			const lowerCaseValue = originalValue.toLowerCase();
 			if (
@@ -31,6 +28,14 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				!lowerCaseValue.includes('hsl') &&
 				!lowerCaseValue.includes('hsla')
 			) {
+				return;
+			}
+
+			if (hasFallback(decl)) {
+				return;
+			}
+
+			if (hasSupportsAtRuleAncestor(decl)) {
 				return;
 			}
 

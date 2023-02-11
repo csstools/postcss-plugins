@@ -379,6 +379,27 @@ design-token() = design-token( <token-path> [ to <unit> ]? )
 The plugin can convert `px` to `rem` and `rem` to `px` via the [`unitsandvalues`](#unitsandvalues) plugin options.
 When a design token is unit-less any `unit` can be assigned with `to`.
 
+#### [Stylelint](https://stylelint.io/user-guide/rules/declaration-property-value-no-unknown/#propertiessyntax--property-syntax-)
+
+Stylelint is able to check for unknown property values.
+Setting the correct configuration for this rule makes it possible to check even non-standard syntax.
+
+```js
+	// Disallow unknown values for properties within declarations.
+	'declaration-property-value-no-unknown': [
+		true,
+		{
+			propertiesSyntax: {
+				color: '| <design-token()>',
+				// ... more properties ...
+			},
+			typesSyntax: {
+				'<design-token()>': 'design-token( <string> [ to <ident> ]? )',
+			},
+		},
+	],
+```
+
 ## Further reading
 
 - [Why we think PostCSS Design Tokens is needed]

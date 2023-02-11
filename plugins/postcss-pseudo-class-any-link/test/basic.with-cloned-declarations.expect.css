@@ -1,0 +1,252 @@
+:link, :visited, area[href] {
+	order: 1;
+}
+
+:any-link {
+	order: 1;
+}
+
+:link, :visited, area[href] {
+	order: 1.1;
+}
+
+:aNy-LiNK {
+	order: 1.1;
+}
+
+:link,
+:visited,
+area[href],
+ul a:link > span,
+ul a:visited > span {
+	order: 2;
+}
+
+:any-link,
+ul a:any-link > span {
+	order: 2;
+}
+
+:link :link, :link :visited, :link area[href], :visited :link, :visited :visited, :visited area[href], area[href] :link, area[href] :visited, area[href] area[href] {
+	order: 3;
+}
+
+:any-link :any-link {
+	order: 3;
+}
+
+:any-link(.ignore) {
+	order: 4;
+}
+
+.foo :link, .foo :visited, .foo area[href] {
+	order: 5;
+}
+
+.foo :any-link {
+	order: 5;
+}
+
+.foo:link, .foo:visited, area[href].foo {
+	order: 6;
+}
+
+.foo:any-link {
+	order: 6;
+}
+
+.foo:is(:link), .foo:is(:visited), .foo:is(area[href]) {
+	order: 7;
+}
+
+.foo:is(:any-link) {
+	order: 7;
+}
+
+:link::before,
+:visited::before,
+area[href]::before,
+:link:before,
+:visited:before,
+area[href]:before {
+	order: 8;
+}
+
+:any-link::before,
+:any-link:before {
+	order: 8;
+}
+
+::before:link,
+::before:visited,
+area[href]::before,
+:before:link,
+:before:visited,
+area[href]:before {
+	order: 8.1;
+}
+
+::before:any-link,
+:before:any-link {
+	order: 8.1;
+}
+
+a:link, a:visited {
+	order: 9;
+}
+
+a:any-link {
+	order: 9;
+}
+
+area:link, area:visited, area[href] {
+	order: 10;
+}
+
+area:any-link {
+	order: 10;
+}
+
+[hidden]area:link, [hidden]area:visited, [hidden][href]area {
+	order: 10.1;
+}
+
+[hidden]area:any-link {
+	order: 10.1;
+}
+
+AREA:link, AREA:visited, AREA[href] {
+	order: 10.2;
+}
+
+AREA:any-link {
+	order: 10.2;
+}
+
+area :link, area :visited, area area[href] {
+	order: 11;
+}
+
+area :any-link {
+	order: 11;
+}
+
+area > :link, area > :visited, area > area[href] {
+	order: 12;
+}
+
+area > :any-link {
+	order: 12;
+}
+
+div:link, div:visited {
+	order: 13;
+}
+
+div:any-link {
+	order: 13;
+}
+
+:link + input[type=file]:hover::file-selector-button, :visited + input[type=file]:hover::file-selector-button, area[href] + input[type=file]:hover::file-selector-button {
+	order: 14;
+}
+
+:any-link + input[type=file]:hover::file-selector-button {
+	order: 14;
+}
+
+:link + input[type=file]::file-selector-button:hover, :visited + input[type=file]::file-selector-button:hover, area[href] + input[type=file]::file-selector-button:hover {
+	order: 15;
+}
+
+:any-link + input[type=file]::file-selector-button:hover {
+	order: 15;
+}
+
+a:link,
+a:visited {
+	order: 16;
+}
+
+b {
+	order: 16;
+}
+
+a:any-link,
+b {
+	order: 16;
+}
+
+.any > .class:link[attr]::before:focus, .any > .class:visited[attr]::before:focus, .any > area[href].class[attr]::before:focus {
+	order: 100.1;
+}
+
+.any > .class:any-link[attr]::before:focus {
+	order: 100.1;
+}
+
+.any > .class[attr]:link::before:focus, .any > .class[attr]:visited::before:focus, .any > area[href].class[attr]::before:focus {
+	order: 100.2;
+}
+
+.any > .class[attr]:any-link::before:focus {
+	order: 100.2;
+}
+
+.any > .class[attr]:link::before:focus, .any > .class[attr]:visited::before:focus, .any > area[href].class[attr]::before:focus {
+	order: 100.3;
+}
+
+.any > .class[attr]:any-link::before:focus {
+	order: 100.3;
+}
+
+.any > .class:link[attr]:focus::before, .any > .class:visited[attr]:focus::before, .any > area[href].class[attr]:focus::before {
+	order: 101.1;
+}
+
+.any > .class:any-link[attr]:focus::before {
+	order: 101.1;
+}
+
+.any > .class[attr]:link:focus::before, .any > .class[attr]:visited:focus::before, .any > area[href].class[attr]:focus::before {
+	order: 101.2;
+}
+
+.any > .class[attr]:any-link:focus::before {
+	order: 101.2;
+}
+
+.any > .class[attr]:link:focus::before, .any > .class[attr]:visited:focus::before, .any > area[href].class[attr]:focus::before {
+	order: 101.3;
+}
+
+.any > .class[attr]:any-link:focus::before {
+	order: 101.3;
+}
+
+.any > .class[attr]:focus:link::before, .any > .class[attr]:focus:visited::before, .any > area[href].class[attr]:focus::before {
+	order: 101.3;
+}
+
+.any > .class[attr]:focus:any-link::before {
+	order: 101.3;
+}
+
+.any + :link + .other, .any + :visited + .other, .any + area[href] + .other {
+	order: 101.4;
+}
+
+.any + :any-link + .other {
+	order: 101.4;
+}
+
+:link, :visited, area[href] {
+	cloned: 1;
+	to-clone: 1;
+}
+
+:any-link {
+	cloned: 1;
+	to-clone: 1;
+}

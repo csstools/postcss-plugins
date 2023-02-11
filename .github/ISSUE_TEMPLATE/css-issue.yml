@@ -81,6 +81,7 @@ body:
         - PostCSS Focus Within
         - PostCSS Font Variant
         - PostCSS Gap Properties
+        - PostCSS Global Data
         - PostCSS Gradients Interpolation Method
         - PostCSS HWB Function
         - PostCSS Image Set Function

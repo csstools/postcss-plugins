@@ -1,12 +1,12 @@
 # Changes to PostCSS Design Tokens
 
-### 2.0.1 (January 28, 2023)
-
-- Improve `types` declaration in `package.json`
-
 ### 2.0.2 (January 28, 2023)
 
 - Fix unit conversion
+
+### 2.0.1 (January 28, 2023)
+
+- Improve `types` declaration in `package.json`
 
 ### 2.0.0 (January 24, 2023)
 

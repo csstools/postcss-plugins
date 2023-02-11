@@ -1,0 +1,51 @@
+.foo {
+	margin: 10vw 20vh;
+	margin: 10vi 20vb;
+}
+
+.foo {
+	margin: calc(10vw + 5vh);
+	margin: calc(10vi + 5vb);
+}
+
+.vb {
+	left: 5vh;
+	left: 5vb;
+}
+
+.vi {
+	left: 5vw;
+	left: 5vi;
+}
+
+@supports (width: 100vb) {
+	.vi {
+		left: 5vi;
+	}
+}
+
+:root {
+	--var: 5vw;
+}
+
+@supports (top: 1vi) {
+
+:root {
+	--var: 5vi;
+}
+}
+
+.fallback {
+	left: 5vw;
+	left: 5vi;
+}
+
+cloned {
+	left: 5vw;
+	left: 5vi;
+}
+
+to-clone {
+	left: 5vw;
+	left: 5vi;
+}

@@ -21,3 +21,7 @@
 :has(.foo > :not(:scope) + .bar) {
 	order: 4;
 }
+
+:scope {
+	to-clone: 1;
+}

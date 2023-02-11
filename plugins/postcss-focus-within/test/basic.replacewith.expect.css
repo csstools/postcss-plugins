@@ -88,3 +88,11 @@ test :matches(test :focus-within :focus-within test) test {
 :FocuS-WithiN {
 	order: 6;
 }
+
+.focus-within.js-focus-within, .js-focus-within .focus-within {
+	to-clone: 1;
+}
+
+:focus-within {
+	to-clone: 1;
+}

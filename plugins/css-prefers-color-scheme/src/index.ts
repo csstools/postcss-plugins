@@ -23,22 +23,33 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-prefers-color-scheme',
-		AtRule: (atRule) => {
-			if (atRule.name.toLowerCase() !== 'media') {
-				return;
-			}
+		prepare() {
+			const transformedNodes = new WeakSet();
 
-			const { params } = atRule;
-			const altParamsColorDepth = params.replace(prefersInterfaceRegExp, prefersInterfaceColorDepthReplacer);
-			if (params === altParamsColorDepth) {
-				return;
-			}
+			return {
+				AtRule: (atRule) => {
+					if (transformedNodes.has(atRule)) {
+						return;
+					}
 
-			atRule.cloneBefore({ params: altParamsColorDepth });
+					if (atRule.name.toLowerCase() !== 'media') {
+						return;
+					}
 
-			if (!options.preserve) {
-				atRule.remove();
-			}
+					const { params } = atRule;
+					const altParamsColorDepth = params.replace(prefersInterfaceRegExp, prefersInterfaceColorDepthReplacer);
+					if (params === altParamsColorDepth) {
+						return;
+					}
+
+					transformedNodes.add(atRule);
+					atRule.cloneBefore({ params: altParamsColorDepth });
+
+					if (!options.preserve) {
+						atRule.remove();
+					}
+				},
+			};
 		},
 	};
 };

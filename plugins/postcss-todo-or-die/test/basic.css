@@ -1,0 +1,53 @@
+@todo-or-die before-date(3022 01 02) {
+	.baz {
+		@todo-or-die before-date(3022 01 02);
+		order: 1;
+	}
+}
+
+@todo-or-die browserslist("last 10 Safari versions") {
+	.baz {
+		order: 2;
+	}
+}
+
+@todo-or-die if(20 > 16) {
+	.baz {
+		order: 4;
+	}
+}
+
+@todo-or-die if(20px > 16px) {
+	.baz {
+		order: 4.1;
+	}
+}
+
+@todo-or-die if(10rem > 16px) {
+	.baz {
+		order: 4.2;
+	}
+}
+
+@todo-or-die if(20% > 16%) {
+	.baz {
+		order: 4.3;
+	}
+}
+
+@todo-or-die if(auto = auto) {
+	.baz {
+		order: 4.4;
+	}
+}
+
+@todo-or-die not(9 = 10) {
+	.baz {
+		order: 5;
+	}
+}
+
+.baz {
+	@todo-or-die before-date(3022 01 02), browserslist("last 10 Safari versions");
+	order: 6;
+}

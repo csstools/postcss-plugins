@@ -1,46 +1,37 @@
 .test-unchanged-properties {
-	order: 1;
-	background-image: url("img/test.png");
-	order: 2;
-	background: url(my-img-print.png) top left no-repeat red;
-	order: 3;
+	background-1: url("img/test.png");
+	background-2: url(my-img-print.png) top left no-repeat red;
 }
 
 .test-changed-properties {
-	order: 1;
-	background-image: url(img/test.png);
-	order: 2;
-	background-image: url(img/test.png);
-	order: 3;
-	background-image: url(img/test.png);
-	order: 4;
-	background-image: url(img/test.png);
-	order: 5;
+	background-image-1: url(img/test.png);
+	background-image-2: url(img/test.png);
+	background-image-3: url(img/test.png);
+	background-image-4: url(img/test.png);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-changed-properties {
-	background-image: url(img/test-2x.png);
+	background-image-4: url(img/test-2x.png);
 }
 }
 
 @media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
 
 .test-changed-properties {
-	background-image: url(my-img-print.png);
+	background-image-4: url(my-img-print.png);
 }
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-changed-properties {
-	background-image: url(img/test-2x.png);
+	background-image-3: url(img/test-2x.png);
 }
 }
 
 .test-variables {
-	order: 1;
 	background-image: url(img/test.png);
 }
 
@@ -59,96 +50,85 @@
 }
 
 .test-mixed-units {
-	order: 1;
-	background-image: url(img/test.png);
-	order: 2;
-	background-image: url(img/test-2dpcm.png);
-	order: 3;
+	background-image-1: url(img/test.png);
+	background-image-2: url(img/test-2dpcm.png);
 }
 
 @media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi) {
 
 .test-mixed-units {
-	background-image: url(img/test.png);
+	background-image-2: url(img/test.png);
 }
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-mixed-units {
-	background-image: url(img/test-2dppx.png);
+	background-image-1: url(img/test-2dppx.png);
 }
 }
 
 .test-mixed-order {
-	order: 1;
-	background: url(../images/bck.png);
-	order: 2;
-	background: url(../images/bck.png);
-	order: 3;
+	background-1: url(../images/bck.png);
+	background-2: url(../images/bck.png);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-mixed-order {
-	background: url(../images/bck@2x.png);
+	background-2: url(../images/bck@2x.png);
 }
 }
 
 @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
 
 .test-mixed-order {
-	background: url(../images/bck@3x.png);
+	background-2: url(../images/bck@3x.png);
 }
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-mixed-order {
-	background: url(../images/bck@2x.png);
+	background-1: url(../images/bck@2x.png);
 }
 }
 
 @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
 
 .test-mixed-order {
-	background: url(../images/bck@3x.png);
+	background-1: url(../images/bck@3x.png);
 }
 }
 
 .test-no-url {
-	order: 1;
-	background-image: url("img/test.png");
-	order: 2;
-	background-image: url("img/test.png");
-	order: 3;
+	background-image-1: url("img/test.png");
+	background-image-2: url("img/test.png");
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-no-url {
-	background-image: url("img/test-2x.png");
+	background-image-2: url("img/test-2x.png");
 }
 }
 
 @media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
 
 .test-no-url {
-	background-image: url("my-img-print.png");
+	background-image-2: url("my-img-print.png");
 }
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-no-url {
-	background-image: url("img/test-2x.png");
+	background-image-1: url("img/test-2x.png");
 }
 }
 
 .test-webkit-prefix {
-	order: 1;
 	background-image: url(img/test.png);
-	order: 2;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -232,4 +212,15 @@
 
 .test-invalid-data-url {
 	background-image: image-set(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==, url(img/test-2x.png) 2x);
+}
+
+to-clone {
+	background:url(img/test.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+to-clone {
+	background:url(img/test-2x.png);
+}
 }

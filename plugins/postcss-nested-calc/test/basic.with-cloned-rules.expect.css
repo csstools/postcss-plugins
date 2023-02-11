@@ -1,0 +1,71 @@
+.basic {
+	order: calc(1 + (2 * 2));
+	order: calc(1 + calc(2 * 2));
+}
+
+.mixed-casing {
+	order: calc(1 + (2 * 2));
+	order: calc(1 + cAlC(2 * 2));
+}
+
+.multi-line {
+	order: calc(1 +
+		(2 * 2)
+	);
+	order: calc(1 +
+		calc(2 * 2)
+	);
+}
+
+.multiple-nested {
+	order: calc(2 + (2 * 2) + (2 * 2));
+	order: calc(2 + calc(2 * 2) + calc(2 * 2));
+}
+
+.triple-nested {
+	order: calc(3 + (2 * (2 * 2)));
+	order: calc(3 + calc(2 * calc(2 * 2)));
+}
+
+.triple-nested-in-other-func {
+	order: var(--foo, calc(4 + (2 * (2 * 2))));
+	order: var(--foo, calc(4 + calc(2 * calc(2 * 2))));
+}
+
+.complex {
+	order: calc(5 + (2 * (
+		2 * var(
+			--foo,
+			calc(6 + (2 * (2 * 2)))))
+		)
+	);
+	order: calc(5 + calc(2 * calc(
+		2 * var(
+			--foo,
+			calc(6 + calc(2 * calc(2 * 2)))))
+		)
+	);
+}
+
+.ignore {
+	order: calc(1 + var(--foo, calc(2 * 2)));
+}
+
+.custom-props {
+	--order: calc(1 + calc(2 * 2));
+}
+
+.manual_fallback {
+	width: 10px;
+	width: calc(10px + calc(2px * 2));
+}
+
+cloned {
+	width: calc(10px + (2px * 2));
+	width: calc(10px + calc(2px * 2));
+}
+
+to-clone {
+	width: calc(10px + (2px * 2));
+	width: calc(10px + calc(2px * 2));
+}

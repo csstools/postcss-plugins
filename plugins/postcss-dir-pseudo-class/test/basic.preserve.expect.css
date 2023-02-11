@@ -189,3 +189,11 @@ html :dir(rtl) {
 :dir(ignore) {
 	order: 21;
 }
+
+[dir="ltr"] {
+	to-clone: 1;
+}
+
+:dir(ltr) {
+	to-clone: 1;
+}

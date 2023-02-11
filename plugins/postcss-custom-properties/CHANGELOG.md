@@ -1,5 +1,13 @@
 # Changes to PostCSS Custom Properties
 
+### 13.1.3 (February 8, 2023)
+
+- Fixed: exception on missing variables.
+
+### 13.1.2 (February 7, 2023)
+
+- Do not apply fallback values when these contain unresolvable custom properties.
+
 ### 13.1.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

@@ -1,0 +1,158 @@
+.test-rgb {
+	color-1: rgb(178, 34, 34);
+	color-1: rgb(178 34 34);
+	color-2: rgba(178, 34, 34, 1);
+	color-2: rgb(178 34 34 / 1);
+	color-3: rgba(178, 34, 34, .5);
+	color-3: rGB(178 34 34 / .5);
+	color-4: rgba(178, 34, 34, 1);
+	color-4: rgb(178 34 34 / 100%);
+	color-5: rgba(178, 34, 34, 0.5);
+	color-5: rgb(178 34 34 / 50%);
+	color-6: rgba(178, 34, 34, var(--alpha-50));
+	color-6: rgb(178 34 34 / var(--alpha-50));
+	color-7: rgba(178, 34, 34, calc(1 / 2));
+	color-7: rgb(178 34 34 / calc(1 / 2));
+}
+
+.test-rgba {
+	color-1: rgb(178, 34, 34);
+	color-1: rgba(178 34 34);
+	color-2: rgba(178, 34, 34, 1);
+	color-2: rgbA(178 34 34 / 1);
+	color-3: rgba(178, 34, 34, .5);
+	color-3: rgba(178 34 34 / .5);
+	color-4: rgba(178, 34, 34, VaR(--alpha-50));
+	color-4: rgba(178 34 34 / VaR(--alpha-50));
+	color-5: rgba(178, 34, 34, CaLC(1 / 2));
+	color-5: rgba(178 34 34 / CaLC(1 / 2));
+}
+
+.test-rgb-percentages {
+	color-1: rgb(178, 34, 34);
+	color-1: rgba(70% 13.5% 13.5%);
+	color-2: rgba(178, 34, 34, 1);
+	color-2: rgba(70% 13.5% 13.5% / 100%);
+	color-3: rgba(178, 34, 34, 0.5);
+	color-3: rgba(70% 13.5% 13.5% / 50%);
+}
+
+.test-hsl {
+	color-1: hsl(0, 0%, 100%);
+	color-1: hsl(0 0% 100%);
+	color-2: hsl(120, 100%, 50%);
+	color-2: hsl(120deg 100% 50%);
+	color-3: hsl(120, 100%, 50%);
+	color-3: hsl(120 100% 50%);
+	color-4: hsla(120, 100%, 50%, 1);
+	color-4: HSL(120 100% 50% / 1);
+	color-5: hsla(120, 100%, 50%, .5);
+	color-5: hsl(120 100% 50% / .5);
+	color-6: hsla(120, 100%, 50%, 1);
+	color-6: hsl(120 100% 50% / 100%);
+	color-7: hsla(120, 100%, 50%, 0.5);
+	color-7: hsl(120 100% 50% / 50%);
+	color-8: hsl(120, 100%, 50%);
+	color-8: hslA(120deg 100% 50%);
+
+	color-9: hsl(180, 100%, 50%);
+
+	color-9: hsl(0.5turn 100% 50%);
+	color-10: hsl(180, 100%, 50%);
+	color-10: hsl(200grad 100% 50%);
+	color-11: hsl(180, 100%, 50%);
+	color-11: hsl(3.14159rad 100% 50%);
+	color-12: hsla(180, 100%, 50, var(--alpha-50));
+	color-12: hsl(3.14159rad 100% 50 / var(--alpha-50));
+	color-13: hsla(180, 100%, 50, calc(1 / 2));
+	color-13: hsl(3.14159rad 100% 50 / calc(1 / 2));
+}
+
+.test-hsla {
+	color-1: hsl(120, 100%, 50%);
+	color-1: hsla(120 100% 50%);
+	color-2: hsla(120, 100%, 50%, 1);
+	color-2: hsla(120 100% 50% / 1);
+	color-3: hsla(120, 100%, 50%, .5);
+	color-3: hsla(120 100% 50% / .5);
+	color-4: hsla(120, 100%, 50%, 1);
+	color-4: hsla(120 100% 50% / 100%);
+	color-5: hsla(120, 100%, 50%, 0.5);
+	color-5: hsla(120 100% 50% / 50%);
+	color-6: hsla(120, 100%, 50%, var(--alpha-50));
+	color-6: hsla(120 100% 50% / var(--alpha-50));
+	color-7: hsla(120, 100%, 50%, calc(1 / 2));
+	color-7: hsla(120 100% 50% / calc(1 / 2));
+}
+
+.test-hwb {
+	color-1: hwb(0deg 0% 0%);
+	color-2: hwb(0 0% 0%);
+	color-3: hwb(0 0% 0% / 1);
+	color-4: hwb(0 0% 0% / .5);
+	color-5: hwb(0 0% 0% / 100%);
+	color-6: hwb(0 0% 0% / 50%);
+}
+
+.test-unparseable-color-function {
+	color-1: rgb(; );
+}
+
+.rgb-with-alpha {
+	color-1: rgba(178, 34, 34, 0.5);
+	color-1: rgb(70% 13.5% 13.5% / 50%);
+	color-2: rgb(0, 0, 0, 0);
+}
+
+.hsl-with-alpha {
+	color-1: hsla(120, 100%, 50%, 0.5);
+	color-1: hsl(120 100% 50% / 50%);
+	color-2: hsl(120, 100%, 50%, 0);
+}
+
+.test-legacy-notation-with-modern-components--rgb {
+	color-1: rgb(127, 34, 34);
+	color-1: rgb(50%, 34, 34);
+	color-2: rgb(178, 25, 34);
+	color-2: rgb(178, 10%, 34);
+	color-3: rgb(178, 34, 25);
+	color-3: rgb(178, 34, 10%);
+}
+
+.test-legacy-notation-with-modern-components--rgba {
+	color-1: rgba(127, 34, 34, 1);
+	color-1: rgba(50%, 34, 34, 1);
+	color-2: rgba(178, 25, 34, 1);
+	color-2: rgba(178, 10%, 34, 1);
+	color-3: rgba(178, 34, 25, 1);
+	color-3: rgba(178, 34, 10%, 1);
+	color-4: rgba(178, 34, 34, 1);
+	color-4: rgba(178, 34, 34, 100%);
+}
+
+.test-legacy-notation-with-modern-components--hsla {
+	color-1: hsla(120, 100%, 50%, 1);
+	color-1: hsla(120, 100%, 50%, 100%);
+}
+
+.test-ignore {
+	/* this plugin shouldn't format */
+	color-1: rgba(0,0,0,0.1); /* spaceless */
+	color-2: rgba(0, 0, 0, 0.2); /* with spaces */
+	color-3: rGB(178, 34, 34); /* legacy format, but with capitals */
+}
+
+.test-manual-fallback {
+	color: red;
+	color: rgb(255 0 0);
+}
+
+cloned {
+	color: rgb(255, 0, 0);
+	color: rgb(255 0 0);
+}
+
+to-clone {
+	color: rgb(255, 0, 0);
+	color: rgb(255 0 0);
+}

@@ -1,0 +1,17 @@
+.baz {
+	/* "hwb" is fully supported */
+	@todo-or-die browserslist("chrome < 101, safari < 15, firefox < 96");
+	color: pink;
+	color: hwb(350 75% 0%);
+
+	/* do something after a date */
+	@todo-or-die before-date(3000 01 01);
+	content: "2000";
+}
+
+/* You can also wrap large chunks of CSS */
+@todo-or-die if(20 > 16) {
+	.baz {
+		color: green;
+	}
+}

@@ -1,4 +1,4 @@
-.focus-visible, .focus-visible {
+.focus-visible {
 	order: 1;
 }
 
@@ -7,34 +7,19 @@
 }
 
 .focus-visible,
-.focus-visible,
-.focus-visible test,
 .focus-visible test,
 test .focus-visible,
-test .focus-visible,
-test test.focus-visible,
 test test.focus-visible,
 html[dir="rtl"] .focus-visible,
-html[dir="rtl"] .focus-visible,
-test .focus-visible test,
 test .focus-visible test,
 test test.focus-visible test,
-test test.focus-visible test,
-test .focus-visible .focus-visible test,
 test .focus-visible .focus-visible test,
 test :matches(.focus-visible) test,
-test :matches(.focus-visible) test,
-test :matches(.focus-visible test) test,
 test :matches(.focus-visible test) test,
 test :matches(test .focus-visible) test,
-test :matches(test .focus-visible) test,
-test :matches(test test.focus-visible) test,
 test :matches(test test.focus-visible) test,
 test :matches(test .focus-visible test) test,
-test :matches(test .focus-visible test) test,
 test :matches(test test.focus-visible test) test,
-test :matches(test test.focus-visible test) test,
-test :matches(test .focus-visible .focus-visible test) test,
 test :matches(test .focus-visible .focus-visible test) test {
 	order: 2;
 }
@@ -71,8 +56,6 @@ test :matches(test :focus-visible :focus-visible test) test {
 .escaped\:focus-visible,
 .escaped\:times\:two\:focus-visible,
 .escaped\:focus-visible.focus-visible,
-.escaped\:focus-visible.focus-visible,
-.escaped\:times\:two.focus-visible,
 .escaped\:times\:two.focus-visible {
 	order: 5;
 }
@@ -84,7 +67,7 @@ test :matches(test :focus-visible :focus-visible test) test {
 	order: 5;
 }
 
-html .focus-visible, html .focus-visible {
+html .focus-visible {
 	order: 6;
 }
 
@@ -92,7 +75,7 @@ html :focus-visible {
 	order: 6;
 }
 
-html.focus-visible, html.focus-visible {
+html.focus-visible {
 	order: 6.1;
 }
 
@@ -100,7 +83,7 @@ html:focus-visible {
 	order: 6.1;
 }
 
-:not(.focus-visible), :not(.focus-visible) {
+:not(.focus-visible) {
 	order: 7;
 }
 
@@ -108,7 +91,7 @@ html:focus-visible {
 	order: 7;
 }
 
-html :not(.focus-visible), html :not(.focus-visible) {
+html :not(.focus-visible) {
 	order: 8;
 }
 
@@ -116,7 +99,7 @@ html :not(:focus-visible) {
 	order: 8;
 }
 
-.focus-visible::before, .focus-visible::before {
+.focus-visible::before {
 	order: 10.0;
 }
 
@@ -124,7 +107,7 @@ html :not(:focus-visible) {
 	order: 10.0;
 }
 
-.focus-visible .foo, .focus-visible .foo {
+.focus-visible .foo {
 	order: 10.1;
 }
 
@@ -132,7 +115,7 @@ html :not(:focus-visible) {
 	order: 10.1;
 }
 
-.focus-visible > .foo, .focus-visible > .foo {
+.focus-visible > .foo {
 	order: 10.2;
 }
 
@@ -140,7 +123,7 @@ html :not(:focus-visible) {
 	order: 10.2;
 }
 
-::before.focus-visible, ::before.focus-visible {
+::before.focus-visible {
 	order: 10.3;
 }
 
@@ -148,7 +131,7 @@ html :not(:focus-visible) {
 	order: 10.3;
 }
 
-.foo .focus-visible, .foo .focus-visible {
+.foo .focus-visible {
 	order: 10.4;
 }
 
@@ -156,7 +139,7 @@ html :not(:focus-visible) {
 	order: 10.4;
 }
 
-.foo > .focus-visible, .foo > .focus-visible {
+.foo > .focus-visible {
 	order: 10.5;
 }
 
@@ -164,10 +147,18 @@ html :not(:focus-visible) {
 	order: 10.5;
 }
 
-.focus-visible, .focus-visible {
+.focus-visible {
 	order: 11;
 }
 
 :FocuS-VisiblE {
 	order: 11;
+}
+
+.focus-visible {
+	to-clone: 1;
+}
+
+:focus-visible {
+	to-clone: 1;
 }

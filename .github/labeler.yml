@@ -119,6 +119,10 @@
   - plugins/postcss-gap-properties/**
   - experimental/postcss-gap-properties/**
 
+"plugins/postcss-global-data":
+  - plugins/postcss-global-data/**
+  - experimental/postcss-global-data/**
+
 "plugins/postcss-gradients-interpolation-method":
   - plugins/postcss-gradients-interpolation-method/**
   - experimental/postcss-gradients-interpolation-method/**

@@ -54,3 +54,13 @@
 	src: format(foo)
 }
 
+@font-face {
+	font-family: 'manual-fallback';
+	src: format("woff2");
+	src: format(woff2)
+}
+
+@font-face to-clone {
+	src: format("woff2");
+	src: format(woff2);
+}

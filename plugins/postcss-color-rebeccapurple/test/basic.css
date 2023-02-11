@@ -6,3 +6,12 @@ body {
 footer {
 	color: RebeccaPurple;
 }
+
+.test-manual-fallback {
+	color: purple;
+	color: rebeccapurple;
+}
+
+to-clone {
+	color: rebeccapurple;
+}

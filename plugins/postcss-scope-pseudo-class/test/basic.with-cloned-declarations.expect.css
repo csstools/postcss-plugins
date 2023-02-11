@@ -1,0 +1,40 @@
+:root {
+	order: 1;
+}
+
+:scope {
+	order: 1;
+}
+
+@scope (.foo) {
+	:scope {
+		order: 2;
+	}
+}
+
+@media screen {
+	:root {
+		order: 3;
+	}
+	:scope {
+		order: 3;
+	}
+}
+
+:has(.foo > :scope + .bar) {
+	order: 3;
+}
+
+:has(.foo > :not(:scope) + .bar) {
+	order: 4;
+}
+
+:root {
+	cloned: 1;
+	to-clone: 1;
+}
+
+:scope {
+	cloned: 1;
+	to-clone: 1;
+}

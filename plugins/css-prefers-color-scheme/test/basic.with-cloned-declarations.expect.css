@@ -1,0 +1,69 @@
+@media (prefers-color-scheme: no-preference) {
+	/* ignored now, this was removed from the specification */
+	:root {
+		--site-bgcolor: #f9f9f9;
+		--site-color: #111;
+	}
+}
+
+@media (color: 48842621) {
+	:root {
+		--site-bgcolor: #1b1b1b;
+		--site-color: #fff;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--site-bgcolor: #1b1b1b;
+		--site-color: #fff;
+	}
+}
+
+@media (color: 70318723) {
+	:root {
+		--site-bgcolor: #fff;
+		--site-color: #222;
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--site-bgcolor: #fff;
+		--site-color: #222;
+	}
+}
+
+@media only screen and ((color: 70318723) and (min-width: 300px)) or ((color: 48842621) and (max-width: 299px)) {
+	:root {
+		--site-bgcolor: #fff;
+		--site-color: #222;
+	}
+}
+
+@media only screen and ((prefers-color-scheme: light) and (min-width: 300px)) or ((prefers-color-scheme: dark) and (max-width: 299px)) {
+	:root {
+		--site-bgcolor: #fff;
+		--site-color: #222;
+	}
+}
+
+body {
+	background-color: var(--site-bgcolor, #f9f9f9);
+	color: var(--site-color, #111);
+	font: 100%/1.5 system-ui;
+}
+
+@media (color: 48842621) {
+	.foo {
+		cloned: 1;
+		to-clone: 1;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.foo {
+		cloned: 1;
+		to-clone: 1;
+	}
+}

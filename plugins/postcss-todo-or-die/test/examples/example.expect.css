@@ -1,0 +1,13 @@
+.baz {
+	/* "hwb" is fully supported */
+	color: pink;
+	color: hwb(350 75% 0%);
+
+	/* do something after a date */
+	content: "2000";
+}
+
+/* You can also wrap large chunks of CSS */
+.baz {
+		color: green;
+	}

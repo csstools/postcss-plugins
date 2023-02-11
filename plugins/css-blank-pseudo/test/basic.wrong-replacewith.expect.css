@@ -37,3 +37,7 @@ test:not(:blank) {
 uppercase :BLaNK {
 	order: 6;
 }
+
+:blank {
+	to-clone: 1;
+}

@@ -1,4 +1,4 @@
-[focus-within], [focus-within] {
+[focus-within] {
 	order: 1;
 }
 
@@ -7,32 +7,18 @@
 }
 
 [focus-within],
-[focus-within],
-[focus-within] test,
 [focus-within] test,
 test [focus-within],
-test [focus-within],
-test test[focus-within],
 test test[focus-within],
 test [focus-within] test,
-test [focus-within] test,
-test test[focus-within] test,
 test test[focus-within] test,
 test [focus-within] [focus-within] test,
-test [focus-within] [focus-within] test,
-test :matches([focus-within]) test,
 test :matches([focus-within]) test,
 test :matches([focus-within] test) test,
-test :matches([focus-within] test) test,
-test :matches(test [focus-within]) test,
 test :matches(test [focus-within]) test,
 test :matches(test test[focus-within]) test,
-test :matches(test test[focus-within]) test,
-test :matches(test [focus-within] test) test,
 test :matches(test [focus-within] test) test,
 test :matches(test test[focus-within] test) test,
-test :matches(test test[focus-within] test) test,
-test :matches(test [focus-within] [focus-within] test) test,
 test :matches(test [focus-within] [focus-within] test) test {
 	order: 2;
 }
@@ -68,8 +54,6 @@ test :matches(test :focus-within :focus-within test) test {
 .escaped\:focus-within,
 .escaped\:times\:two\:focus-within,
 .escaped\:focus-within[focus-within],
-.escaped\:focus-within[focus-within],
-.escaped\:times\:two[focus-within],
 .escaped\:times\:two[focus-within] {
 	order: 5;
 }
@@ -81,10 +65,18 @@ test :matches(test :focus-within :focus-within test) test {
 	order: 5;
 }
 
-[focus-within], [focus-within] {
+[focus-within] {
 	order: 6;
 }
 
 :FocuS-WithiN {
 	order: 6;
+}
+
+[focus-within] {
+	to-clone: 1;
+}
+
+:focus-within {
+	to-clone: 1;
 }

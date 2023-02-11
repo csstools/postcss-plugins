@@ -1,0 +1,19 @@
+{
+	"name": "@csstools/interop--custom-media--design-tokens--global-data",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Can you use custom-media, design-tokens and global-data together?",
+	"scripts": {
+		"build": "postcss style.css -o ./result.css",
+		"test": "node ./test.mjs"
+	},
+	"devDependencies": {
+		"@csstools/postcss-design-tokens": "file:../../../plugins/postcss-design-tokens",
+		"@csstools/postcss-global-data": "file:../../../plugins/postcss-global-data",
+		"postcss-cli": "^10.1.0",
+		"postcss-custom-media": "file:../../../plugins/postcss-custom-media"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
+}

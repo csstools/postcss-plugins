@@ -97,3 +97,7 @@ html:not([dir="rtl"]) :is([dir="rtl"] html:not([dir="rtl"]) * + *) {
 :dir(ignore) {
 	order: 21;
 }
+
+html:not([dir="rtl"]) {
+	to-clone: 1;
+}

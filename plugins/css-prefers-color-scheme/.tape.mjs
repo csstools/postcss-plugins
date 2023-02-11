@@ -1,4 +1,4 @@
-import postcssTape from '../../packages/postcss-tape/dist/index.mjs';
+import { declarationClonerPlugin, postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
 import plugin from 'css-prefers-color-scheme';
 
 postcssTape(plugin)({
@@ -16,6 +16,15 @@ postcssTape(plugin)({
 		options: {
 			preserve: false
 		}
+	},
+	'basic:with-cloned-declarations': {
+		message: 'doesn\'t cause duplicate CSS',
+		plugins: [
+			declarationClonerPlugin,
+			plugin({
+				preserve: true
+			})
+		]
 	},
 	'examples/example': {
 		message: 'minimal example',

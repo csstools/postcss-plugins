@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Hex Alpha
 
+### 9.0.2 (February 6, 2023)
+
+- Reduce the amount of duplicate fallback CSS.
+
 ### 9.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

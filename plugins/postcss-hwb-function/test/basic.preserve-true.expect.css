@@ -1,22 +1,27 @@
 .test-hwb {
-	color: rgb(0, 195, 255);
-	color: hwb(194 0% 0%); /* #00c3ff */
-	color: rgba(0, 195, 255, .5);
-	color: hwb(194 0% 0% / .5); /* #00c3ff with 50% opacity */
-	color: rgb(26, 26, 26);
-	color: hwb(0 10% 90%);
-	color: rgb(51, 51, 51);
-	color: hwb(0 20% 80%);
-	color: rgb(77, 77, 77);
-	color: hwb(0 30% 70%);
-	color: rgb(102, 102, 102);
-	color: hwb(0 40% 60%);
-	color: rgb(128, 128, 128);
-	color: hwb(0 50% 50%);
-	color: rgb(153, 153, 153);
-	color: hwb(0 60% 40%);
+	color-1: rgb(0, 195, 255);
+	color-1: hwb(194 0% 0%); /* #00c3ff */
+	color-2: rgba(0, 195, 255, .5);
+	color-2: hwb(194 0% 0% / .5); /* #00c3ff with 50% opacity */
+	color-3: rgb(26, 26, 26);
+	color-3: hwb(0 10% 90%);
+	color-4: rgb(51, 51, 51);
+	color-4: hwb(0 20% 80%);
+	color-5: rgb(77, 77, 77);
+	color-5: hwb(0 30% 70%);
+	color-6: rgb(102, 102, 102);
+	color-6: hwb(0 40% 60%);
+	color-7: rgb(128, 128, 128);
+	color-7: hwb(0 50% 50%);
+	color-8: rgb(153, 153, 153);
+	color-8: hwb(0 60% 40%);
 }
 
 .test-ignore {
 	color: hwb(194, 0%, 0%, .5); /* with comma-separated values */
+}
+
+to-clone {
+	color: rgb(153, 153, 153);
+	color: hwb(0 60% 40%);
 }

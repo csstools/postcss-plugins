@@ -178,3 +178,12 @@
 	lch-007: rgb(33, 135, 237);
 	lch-008: rgb(0, 251, 41);
 }
+
+.manual_fallback {
+	color: red;
+	color: lab(40% 56.6 39);
+}
+
+to-clone {
+	color: rgb(179, 35, 35);
+}

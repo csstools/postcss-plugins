@@ -1,0 +1,92 @@
+[blank].js-blank-pseudo, .js-blank-pseudo [blank] {
+	order: 1;
+}
+
+:blank {
+	order: 1;
+}
+
+[blank].js-blank-pseudo,
+.js-blank-pseudo [blank],
+[blank].js-blank-pseudo test,
+.js-blank-pseudo [blank] test,
+test.js-blank-pseudo [blank],
+.js-blank-pseudo test [blank],
+test.js-blank-pseudo test[blank],
+.js-blank-pseudo test test[blank],
+test.js-blank-pseudo [blank] test,
+.js-blank-pseudo test [blank] test,
+test.js-blank-pseudo test[blank] test,
+.js-blank-pseudo test test[blank] test,
+test.js-blank-pseudo [blank] [blank] test,
+.js-blank-pseudo test [blank] [blank] test,
+test.js-blank-pseudo :matches([blank]) test,
+.js-blank-pseudo test :matches([blank]) test,
+test.js-blank-pseudo :matches([blank] test) test,
+.js-blank-pseudo test :matches([blank] test) test,
+test.js-blank-pseudo :matches(test [blank]) test,
+.js-blank-pseudo test :matches(test [blank]) test,
+test.js-blank-pseudo :matches(test test[blank]) test,
+.js-blank-pseudo test :matches(test test[blank]) test,
+test.js-blank-pseudo :matches(test [blank] test) test,
+.js-blank-pseudo test :matches(test [blank] test) test,
+test.js-blank-pseudo :matches(test test[blank] test) test,
+.js-blank-pseudo test :matches(test test[blank] test) test,
+test.js-blank-pseudo :matches(test [blank] [blank] test) test,
+.js-blank-pseudo test :matches(test [blank] [blank] test) test {
+	order: 2;
+}
+
+:blank,
+:blank test,
+test :blank,
+test test:blank,
+test :blank test,
+test test:blank test,
+test :blank :blank test,
+test :matches(:blank) test,
+test :matches(:blank test) test,
+test :matches(test :blank) test,
+test :matches(test test:blank) test,
+test :matches(test :blank test) test,
+test :matches(test test:blank test) test,
+test :matches(test :blank :blank test) test {
+	order: 2;
+}
+
+:ignore-blank,
+:blank-ignore,
+:ignoreblank,
+:blankignore {
+	order: 3;
+}
+
+:blank(ignore) {
+	order: 4;
+}
+
+test:not([blank]).js-blank-pseudo, .js-blank-pseudo test:not([blank]) {
+	order: 5;
+}
+
+test:not(:blank) {
+	order: 5;
+}
+
+uppercase.js-blank-pseudo [blank], .js-blank-pseudo uppercase [blank] {
+	order: 6;
+}
+
+uppercase :BLaNK {
+	order: 6;
+}
+
+[blank].js-blank-pseudo, .js-blank-pseudo [blank] {
+	cloned: 1;
+	to-clone: 1;
+}
+
+:blank {
+	cloned: 1;
+	to-clone: 1;
+}
