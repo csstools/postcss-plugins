@@ -1,6 +1,6 @@
 {
 	"name": "@csstools/css-calc",
-	"description": "Convert CSS expressions to a Javascript function",
+	"description": "Convert CSS expressions to a JavaScript function",
 	"version": "0.0.0",
 	"contributors": [
 		{
@@ -55,11 +55,11 @@
 		"test": "npm run test:exports && node ./test/test.mjs",
 		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer#readme",
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
-		"directory": "packages/css-tokenizer"
+		"directory": "packages/css-calc"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
