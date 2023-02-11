@@ -63,8 +63,8 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"css",
-		"calc"
+		"calc",
+		"css"
 	],
 	"volta": {
 		"extends": "../../package.json"
