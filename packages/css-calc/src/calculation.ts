@@ -6,6 +6,10 @@ export type Calculation = {
 	operation: Operation;
 }
 
+export function isCalculation(x): x is Calculation {
+	return ('inputs' in x) && Array.isArray(x.inputs) && ('operation' in x);
+}
+
 export function solve(calculation: Calculation) {
 	const inputs: Array<TokenNode> = [];
 	for (let i = 0; i < calculation.inputs.length; i++) {
