@@ -5,6 +5,7 @@
 	"description": "Can you use custom-media, design-tokens and global-data together?",
 	"scripts": {
 		"build": "postcss style.css -o ./result.css",
+		"watch": "postcss style.css -w -o ./result.css",
 		"test": "node ./test.mjs"
 	},
 	"devDependencies": {
