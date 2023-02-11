@@ -1,5 +1,5 @@
-import { tokenizer, TokenType } from '@csstools/css-tokenizer';
-import { FunctionNode, isCommentNode, isFunctionNode, isWhitespaceNode, parseComponentValue, TokenNode } from '@csstools/css-parser-algorithms';
+import { tokenizer } from '@csstools/css-tokenizer';
+import { FunctionNode, isCommentNode, isFunctionNode, isWhitespaceNode, parseComponentValue } from '@csstools/css-parser-algorithms';
 
 export function convert(css: string, callback) {
 	const t = tokenizer({
@@ -36,8 +36,6 @@ export function convert(css: string, callback) {
 		if (!isFunctionNode(node) || node.getName().toLowerCase() !== 'calc') {
 			return;
 		}
-
-		console.log(node);
 	});
 }
 
@@ -50,6 +48,10 @@ function calcHandler(calcNode: FunctionNode) {
 			continue;
 		}
 
+
+
+		// todo math constants
+
 		// nested expressions
 
 		// * and /
@@ -58,14 +60,10 @@ function calcHandler(calcNode: FunctionNode) {
 	}
 }
 
-function sum(a: TokenNode, b: TokenNode) {
-	if (a.value[0] === TokenType.Percentage && b.value[0] === TokenType.Percentage) {
-		const aToken = a.value;
-		const bToken = b.value;
-		const sumResult = a.value[4].value + b.value[4].value;
-
-		return new TokenNode([TokenType.Percentage, sumResult.toString() + '%', aToken[2], bToken[3], {
-			value: sumResult,
-		}]);
-	}
-}
+// 2 + 3 * 4
+//
+//     +
+//    / \
+//   2   *
+//      / \
+//     3   4
