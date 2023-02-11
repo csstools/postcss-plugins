@@ -1,1 +1,1 @@
-export declare function convert(css: string, callback: any): void;
+export declare function convert(css: string, globals?: Map<string, number>): string;
