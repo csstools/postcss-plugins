@@ -4,7 +4,7 @@ import valueParser from 'postcss-value-parser';
 
 /** postcss-text-decoration-shorthand plugin options */
 export type pluginOptions = {
-	/** Preserve the original notation. default: false */
+	/** Preserve the original notation. default: true */
 	preserve?: boolean,
 };
 
@@ -12,7 +12,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
 		// Default options
 		{
-			preserve: false,
+			preserve: true,
 		},
 		// Provided options
 		opts,

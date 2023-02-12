@@ -584,6 +584,8 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-text-decoration: overline wavy pink;
 	        text-decoration: overline wavy pink;
 	text-decoration-thickness: 3px;
+	-webkit-text-decoration: 3px wavy pink overline;
+	        text-decoration: 3px wavy pink overline;
 }
 
 .stage__container {

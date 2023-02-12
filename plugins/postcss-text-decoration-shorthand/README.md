@@ -15,6 +15,7 @@
 	text-decoration: underline;
 	text-decoration: underline wavy purple;
 	text-decoration-thickness: calc(0.01em * 25);
+	text-decoration: wavy underline purple 25%;
 }
 ```
 
@@ -53,10 +54,10 @@ instructions for:
 ### preserve
 
 The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
+is preserved. By default, it is preserved.
 
 ```js
-postcssTextDecorationShorthand({ preserve: true })
+postcssTextDecorationShorthand({ preserve: false })
 ```
 
 ```pcss
@@ -70,7 +71,6 @@ postcssTextDecorationShorthand({ preserve: true })
 	text-decoration: underline;
 	text-decoration: underline wavy purple;
 	text-decoration-thickness: calc(0.01em * 25);
-	text-decoration: wavy underline purple 25%;
 }
 ```
 
