@@ -1,4 +1,5 @@
 import type { PluginCreator } from 'postcss';
+import ampersandToScope from './lib/ampersand-to-scope.js';
 import walk from './lib/walk.js';
 
 /** postcss-nesting plugin options */
@@ -21,6 +22,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-nesting',
 		Rule(rule, { result }) {
 			walk(rule, result, options);
+
+			if (rule.selector.includes('&')) {
+				ampersandToScope(rule, result);
+			}
 		},
 	};
 };

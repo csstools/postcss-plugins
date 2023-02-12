@@ -4,7 +4,7 @@ a, b {
 a c, b c, a d, b d {
 		order: 2;
 	}
-& e {
+:scope e {
 	order: 3;
 }
 f:is(g) {

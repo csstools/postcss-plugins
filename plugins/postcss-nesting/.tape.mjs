@@ -37,6 +37,9 @@ postcssTape(plugin)({
 			noIsPseudoSelector: true,
 		},
 	},
+	'ampersand-everywhere': {
+		message: 'supports & at the root',
+	},
 	'complex': {
 		message: 'supports complex entries',
 	},
@@ -72,6 +75,9 @@ postcssTape(plugin)({
 		options: {
 			noIsPseudoSelector: true,
 		},
+	},
+	'decl-order': {
+		message: 'resolves to the correct order',
 	},
 	'document': {
 		message: 'supports nested @document',
