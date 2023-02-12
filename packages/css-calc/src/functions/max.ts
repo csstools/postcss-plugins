@@ -2,6 +2,7 @@ import { NumberType, TokenDimension, TokenNumber, TokenPercentage, TokenType } f
 import { ComponentValue, FunctionNode, isTokenNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { Calculation } from '../calculation';
 import { unary } from '../operation/unary';
+import { convertUnit } from '../unit-conversions';
 
 export function solveMax(maxNode: FunctionNode, solvedNodes: Array<ComponentValue>): Calculation | -1 {
 	const firstSolvedNode = solvedNodes[0];
@@ -30,12 +31,14 @@ export function solveMax(maxNode: FunctionNode, solvedNodes: Array<ComponentValu
 		return -1;
 	}
 
-	const units = new Set(solvedNodes.map((x) => ((x as TokenNode).value[4]['unit'] ?? '').toLowerCase()));
+	const tokens = solvedNodes.map((x) => convertUnit(firstSolvedToken, (x as TokenNode).value));
+
+	const units = new Set(tokens.map((x) => (x[4]['unit'] ?? '').toLowerCase()));
 	if (units.size !== 1) {
 		return -1;
 	}
 
-	const values = solvedNodes.map((x) => ((x as TokenNode).value as TokenDimension | TokenNumber | TokenPercentage)[4].value);
+	const values = tokens.map((x) => (x as TokenDimension | TokenNumber | TokenPercentage)[4].value);
 
 	const result = Math.max(...values);
 	const maxTokens = maxNode.tokens();

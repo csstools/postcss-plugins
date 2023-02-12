@@ -2,6 +2,7 @@ import { NumberType, TokenDimension, TokenType } from '@csstools/css-tokenizer';
 import { FunctionNode, isTokenNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { Calculation } from '../calculation';
 import { unary } from '../operation/unary';
+import { convertUnit } from '../unit-conversions';
 
 export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, central: TokenNode | -1, maximum: TokenNode | -1): Calculation | -1 {
 	if (
@@ -13,8 +14,8 @@ export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, cen
 	}
 
 	const minimumToken = minimum.value;
-	const centralToken = central.value;
-	const maximumToken = maximum.value;
+	const centralToken = convertUnit(minimumToken, central.value);
+	const maximumToken = convertUnit(minimumToken, maximum.value);
 
 	if (
 		!(

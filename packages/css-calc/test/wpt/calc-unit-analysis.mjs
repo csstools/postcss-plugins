@@ -33,5 +33,15 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('calc(2px * 2)'),
-	'4px', // invalid, so input is not modified
+	'4px',
+);
+
+assert.strictEqual(
+	convert('calc(2 * 2px)'),
+	'4px',
+);
+
+assert.strictEqual(
+	convert('calc(2px * 1px)'),
+	'calc(2px * 1px)', // invalid, so input is not modified
 );
