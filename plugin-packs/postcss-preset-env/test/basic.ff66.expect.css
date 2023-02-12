@@ -476,6 +476,7 @@
 	text-decoration: overline;
 	text-decoration: overline wavy pink;
 	text-decoration-thickness: 3px;
+	text-decoration: 3px wavy pink overline;
 }
 
 .stage__container {
