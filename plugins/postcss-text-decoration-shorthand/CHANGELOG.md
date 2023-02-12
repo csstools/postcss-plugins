@@ -1,5 +1,9 @@
 # Changes to PostCSS Text Decoration Shorthand
 
+### Unreleased (patch)
+
+- Updated: `preserve` option defaults to `true`
+
 ### 2.2.0 (February 2, 2023)
 
 - Add: `@csstools/color-helpers` dependency for the named colors list.

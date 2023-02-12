@@ -8,7 +8,7 @@
 	},
 	"devDependencies": {
 		"postcss": "^8.4.19",
-		"postcss-preset-env": "^7.8.3"
+		"postcss-preset-env": "^8.0.0"
 	},
 	"browserslist": {
 		"development": [
