@@ -6,17 +6,26 @@ postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
 	},
-	'basic:preserve-true': {
-		message: 'supports basic usage with { preserve: true }',
+	'basic:preserve-false': {
+		message: 'supports basic usage with { preserve: false }',
 		options: {
-			preserve: true
+			preserve: false
 		}
 	},
 	'basic:autoprefixer': {
-		message: 'supports basic usage with autoprefixer and { preserve: true }',
+		message: 'supports basic usage with autoprefixer',
+		plugins: [
+			plugin(),
+			autoprefixer({
+				overrideBrowserslist: ['Safari >= 8']
+			})
+		]
+	},
+	'basic:autoprefixer:preserve-false': {
+		message: 'supports basic usage with autoprefixer and { preserve: false }',
 		plugins: [
 			plugin({
-				preserve: true
+				preserve: false
 			}),
 			autoprefixer({
 				overrideBrowserslist: ['Safari >= 8']
@@ -26,10 +35,10 @@ postcssTape(plugin)({
 	'examples/example': {
 		message: 'minimal example',
 	},
-	'examples/example:preserve-true': {
+	'examples/example:preserve-false': {
 		message: 'minimal example',
 		options: {
-			preserve: true
+			preserve: false
 		}
 	},
 });
