@@ -14,7 +14,7 @@ export function division(inputs: Array<TokenNode>): TokenNode | -1 {
 	if (aToken[0] === TokenType.Number && bToken[0] === TokenType.Number) {
 		const result = aToken[4].value / bToken[4].value;
 
-		return NaN_Token(result, aToken, bToken) ?? new TokenNode([TokenType.Number, result.toString(), aToken[2], bToken[3], {
+		return NaN_Token(result, aToken, bToken) ?? Infinity_Token(result, aToken, bToken) ?? new TokenNode([TokenType.Number, result.toString(), aToken[2], bToken[3], {
 			value: result,
 			type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
 		}]);
@@ -24,7 +24,7 @@ export function division(inputs: Array<TokenNode>): TokenNode | -1 {
 	if (aToken[0] === TokenType.Percentage && bToken[0] === TokenType.Number) {
 		const result = aToken[4].value / bToken[4].value;
 
-		return NaN_Token(result, aToken, bToken) ?? new TokenNode([TokenType.Percentage, result.toString() + '%', aToken[2], bToken[3], {
+		return NaN_Token(result, aToken, bToken) ?? Infinity_Token(result, aToken, bToken) ?? new TokenNode([TokenType.Percentage, result.toString() + '%', aToken[2], bToken[3], {
 			value: result,
 		}]);
 	}
@@ -33,7 +33,7 @@ export function division(inputs: Array<TokenNode>): TokenNode | -1 {
 	if (aToken[0] === TokenType.Dimension && bToken[0] === TokenType.Number) {
 		const result = aToken[4].value / bToken[4].value;
 
-		return NaN_Token(result, aToken, bToken) ?? new TokenNode([TokenType.Dimension, result.toString() + aToken[4].unit, aToken[2], bToken[3], {
+		return NaN_Token(result, aToken, bToken) ?? Infinity_Token(result, aToken, bToken) ?? new TokenNode([TokenType.Dimension, result.toString() + aToken[4].unit, aToken[2], bToken[3], {
 			value: result,
 			type: (aToken[4].type === NumberType.Integer && bToken[4].type === NumberType.Integer) ? NumberType.Integer : NumberType.Number,
 			unit: aToken[4].unit,
@@ -48,6 +48,38 @@ function NaN_Token(result: number, a: CSSToken, b: CSSToken): TokenNode | null {
 		return new TokenNode([TokenType.Ident, 'NaN', a[2], b[3], {
 			value: 'NaN',
 		}]);
+	}
+
+	return;
+}
+
+function Infinity_Token(result: number, a: CSSToken, b: CSSToken): TokenNode | null {
+	if (!Number.isFinite(result)) {
+		let signStr = '';
+		let value = Number.POSITIVE_INFINITY;
+		if (Number.NEGATIVE_INFINITY === result) {
+			signStr = '-';
+			value = Number.NEGATIVE_INFINITY;
+		}
+
+		if (a[0] === TokenType.Number) {
+			return new TokenNode([a[0], signStr + Number.MAX_SAFE_INTEGER.toString(), a[2], b[3], {
+				value: value,
+				type: NumberType.Integer,
+			}]);
+		}
+		if (a[0] === TokenType.Percentage) {
+			return new TokenNode([a[0], signStr + Number.MAX_SAFE_INTEGER.toString() + '%', a[2], b[3], {
+				value: value,
+			}]);
+		}
+		if (a[0] === TokenType.Dimension) {
+			return new TokenNode([a[0], signStr + Number.MAX_SAFE_INTEGER.toString() + a[4].unit, a[2], b[3], {
+				value: value,
+				unit: a[4].unit,
+				type: NumberType.Integer,
+			}]);
+		}
 	}
 
 	return;

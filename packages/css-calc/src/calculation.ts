@@ -10,7 +10,11 @@ export function isCalculation(x): x is Calculation {
 	return ('inputs' in x) && Array.isArray(x.inputs) && ('operation' in x);
 }
 
-export function solve(calculation: Calculation): TokenNode | -1 {
+export function solve(calculation: Calculation | -1): TokenNode | -1 {
+	if (calculation === -1) {
+		return -1;
+	}
+
 	const inputs: Array<TokenNode> = [];
 	for (let i = 0; i < calculation.inputs.length; i++) {
 		const input = calculation.inputs[i];

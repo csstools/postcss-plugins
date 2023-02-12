@@ -45,3 +45,8 @@ assert.strictEqual(
 	convert('rgb(rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', new Map([['r', 50], ['g', 100], ['b', 150]])),
 	`rgb(rgb(50 100 150) ${(50 * 2).toString()} ${(100 / 2).toString()} ${(150 / 3).toString()})`,
 );
+
+assert.strictEqual(
+	convert('clamp(10, 20, 15)'),
+	(15).toString(),
+);

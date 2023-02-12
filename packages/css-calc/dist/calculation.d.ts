@@ -5,4 +5,4 @@ export type Calculation = {
     operation: Operation;
 };
 export declare function isCalculation(x: any): x is Calculation;
-export declare function solve(calculation: Calculation): TokenNode | -1;
+export declare function solve(calculation: Calculation | -1): TokenNode | -1;
