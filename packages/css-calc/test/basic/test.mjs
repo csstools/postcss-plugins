@@ -27,6 +27,11 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
+	convert('calc(((2 * 3) + 7) * 5)'),
+	(((2 * 3) + 7) * 5).toString(),
+);
+
+assert.strictEqual(
 	convert('foo(something calc(2 * 3 + 7 * 5) something-else)'),
 	`foo(something ${(2 * 3 + 7 * 5).toString()} something-else)`,
 );

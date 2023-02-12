@@ -31,7 +31,7 @@ export function addition(inputs: Array<TokenNode>): TokenNode | -1 {
 	// 10px + 5px
 	if (
 		aToken[0] === TokenType.Dimension && bToken[0] === TokenType.Dimension &&
-		aToken[4].unit === bToken[4].unit
+		aToken[4].unit.toLowerCase() === bToken[4].unit.toLowerCase()
 	) {
 		const result = aToken[4].value + bToken[4].value;
 

@@ -22,7 +22,7 @@ export function division(inputs: Array<TokenNode>): TokenNode | -1 {
 
 	// 10% / 5
 	if (aToken[0] === TokenType.Percentage && bToken[0] === TokenType.Number) {
-		const result = aToken[4].value * bToken[4].value;
+		const result = aToken[4].value / bToken[4].value;
 
 		return NaN_Token(result, aToken, bToken) ?? new TokenNode([TokenType.Percentage, result.toString() + '%', aToken[2], bToken[3], {
 			value: result,

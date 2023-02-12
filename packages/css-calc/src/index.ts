@@ -1,5 +1,5 @@
-import { NumberType, tokenizer, TokenType } from '@csstools/css-tokenizer';
-import { ComponentValue, FunctionNode, isCommentNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode, parseComponentValue, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
+import { NumberType, stringify, tokenizer, TokenType } from '@csstools/css-tokenizer';
+import { ComponentValue, FunctionNode, isCommentNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { Calculation, isCalculation, solve } from './calculation';
 import { unary } from './operation/unary';
 import { multiplication } from './operation/multiplication';
@@ -28,53 +28,66 @@ export function convert(css: string, globals?: Map<string, number>) {
 		}),
 	};
 
-	const result = parseComponentValue(tokens, options);
-	if (!('walk' in result)) {
-		return;
+	const result = parseCommaSeparatedListOfComponentValues(tokens, options);
+
+	for (let i = 0; i < result.length; i++) {
+		const componentValues = result[i];
+
+		for (let j = 0; j < componentValues.length; j++) {
+			const componentValue = componentValues[j];
+
+			if (isFunctionNode(componentValue) && componentValue.getName().toLowerCase() === 'calc') {
+				const calculation = calcHandler(componentValue, globals ?? new Map());
+				if (calculation === -1) {
+					return css;
+				}
+
+				const calcResult = solve(calculation);
+				if (calcResult === -1) {
+					return css;
+				}
+
+				componentValues.splice(j, 1, calcResult);
+				continue;
+			}
+
+			if (!isSimpleBlockNode(componentValue) && !isFunctionNode(componentValue)) {
+				continue;
+			}
+
+			componentValue.walk((entry, index) => {
+				if (typeof index !== 'number') {
+					return;
+				}
+
+				const node = entry.node;
+				if (!isFunctionNode(node) || node.getName().toLowerCase() !== 'calc') {
+					return;
+				}
+
+				const calculation = calcHandler(node, globals ?? new Map());
+				if (calculation === -1) {
+					return;
+				}
+
+				const calcResult = solve(calculation);
+				if (calcResult === -1) {
+					return;
+				}
+
+				entry.parent.value.splice(index, 1, calcResult);
+			});
+		}
 	}
 
-	if (isFunctionNode(result) && result.getName().toLowerCase() === 'calc') {
-		const calculation = calcHandler(result, globals ?? new Map());
-		if (calculation === -1) {
-			return css;
-		}
-
-		const calcResult = solve(calculation);
-		if (calcResult === -1) {
-			return css;
-		}
-
-		return calcResult.toString();
-	}
-
-	result.walk((entry, index) => {
-		if (typeof index !== 'number') {
-			return;
-		}
-
-		const node = entry.node;
-		if (!isFunctionNode(node) || node.getName().toLowerCase() !== 'calc') {
-			return;
-		}
-
-		const calculation = calcHandler(node, globals ?? new Map());
-		if (calculation === -1) {
-			return;
-		}
-
-		const calcResult = solve(calculation);
-		if (calcResult === -1) {
-			return;
-		}
-
-		entry.parent.value.splice(index, 1, calcResult);
-	});
-
-	return result.toString();
+	return result.map((componentValues) => {
+		return componentValues.map((x) => stringify(...x.tokens())).join('');
+	}).join(',');
 }
 
 function calcHandler(calcNode: FunctionNode | SimpleBlockNode, globals: Map<string, number>): Calculation | -1 {
 	const nodes: Array<ComponentValue | Calculation> = [...(calcNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
+
 	for (let i = 0; i < nodes.length; i++) {
 		const node = nodes[i];
 		if (!isTokenNode(node)) {
@@ -120,7 +133,9 @@ function calcHandler(calcNode: FunctionNode | SimpleBlockNode, globals: Map<stri
 		};
 	}
 
-	for (let i = 0; i < nodes.length; i++) {
+	let i = 0;
+
+	while (i < nodes.length) {
 		const child = nodes[i];
 		if (isSimpleBlockNode(child) && child.startToken[0] === TokenType.OpenParen) {
 			const subCalc = calcHandler(child, globals);
@@ -149,25 +164,33 @@ function calcHandler(calcNode: FunctionNode | SimpleBlockNode, globals: Map<stri
 
 			continue;
 		}
+
+		i++;
 	}
+
+	i = 0;
 
 	if (nodes.length === 1 && isCalculation(nodes[0])) {
 		return nodes[0];
 	}
 
-	for (let i = 0; i < nodes.length; i++) {
+	while (i < nodes.length) {
 		const firstInput = nodes[i];
 		if (!firstInput || (!isTokenNode(firstInput) && !isCalculation(firstInput))) {
-			return -1;
+			i++;
+			continue;
 		}
 
 		const operator = nodes[i + 1];
-		if (!operator) {
-			break;
+		if (!operator || !isTokenNode(operator)) {
+			i++;
+			continue;
 		}
 
-		if (!isTokenNode(operator)) {
-			return -1;
+		const token = operator.value;
+		if (token[0] !== TokenType.Delim || !(token[4].value === '*' || token[4].value === '/')) {
+			i++;
+			continue;
 		}
 
 		const secondInput = nodes[i + 2];
@@ -175,45 +198,51 @@ function calcHandler(calcNode: FunctionNode | SimpleBlockNode, globals: Map<stri
 			return -1;
 		}
 
-		const token = operator.value;
-		if (token[0] === TokenType.Delim && token[4].value === '*') {
+		if (token[4].value === '*') {
 			nodes.splice(i, 3, {
 				inputs: [firstInput, secondInput],
 				operation: multiplication,
 			});
-			i--;
 
 			continue;
 		}
 
-		if (token[0] === TokenType.Delim && token[4].value === '/') {
+		if (token[4].value === '/') {
 			nodes.splice(i, 3, {
 				inputs: [firstInput, secondInput],
 				operation: division,
 			});
-			i--;
 
 			continue;
 		}
+
+		i++;
+		continue;
 	}
+
+	i = 0;
 
 	if (nodes.length === 1 && isCalculation(nodes[0])) {
 		return nodes[0];
 	}
 
-	for (let i = 0; i < nodes.length; i++) {
+	while (i < nodes.length) {
 		const firstInput = nodes[i];
 		if (!firstInput || (!isTokenNode(firstInput) && !isCalculation(firstInput))) {
-			return -1;
+			i++;
+			continue;
 		}
 
 		const operator = nodes[i + 1];
-		if (!operator) {
-			break;
+		if (!operator || !isTokenNode(operator)) {
+			i++;
+			continue;
 		}
 
-		if (!isTokenNode(operator)) {
-			return -1;
+		const token = operator.value;
+		if (token[0] !== TokenType.Delim || !(token[4].value === '+' || token[4].value === '-')) {
+			i++;
+			continue;
 		}
 
 		const secondInput = nodes[i + 2];
@@ -221,26 +250,26 @@ function calcHandler(calcNode: FunctionNode | SimpleBlockNode, globals: Map<stri
 			return -1;
 		}
 
-		const token = operator.value;
-		if (token[0] === TokenType.Delim && token[4].value === '+') {
+		if (token[4].value === '+') {
 			nodes.splice(i, 3, {
 				inputs: [firstInput, secondInput],
 				operation: addition,
 			});
-			i--;
 
 			continue;
 		}
 
-		if (token[0] === TokenType.Delim && token[4].value === '-') {
+		if (token[4].value === '-') {
 			nodes.splice(i, 3, {
 				inputs: [firstInput, secondInput],
 				operation: subtraction,
 			});
-			i--;
 
 			continue;
 		}
+
+		i++;
+		continue;
 	}
 
 	if (nodes.length === 1 && isCalculation(nodes[0])) {
