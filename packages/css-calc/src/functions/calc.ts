@@ -1,4 +1,4 @@
-import { NumberType, TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
+import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import { ComponentValue, FunctionNode, isCommentNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { Calculation, isCalculation, solve } from '../calculation';
 import { unary } from '../operation/unary';
@@ -6,6 +6,9 @@ import { multiplication } from '../operation/multiplication';
 import { division } from '../operation/division';
 import { addition } from '../operation/addition';
 import { subtraction } from '../operation/subtraction';
+import { solveMin } from './min';
+import { solveMax } from './max';
+import { solveClamp } from './clamp';
 
 export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Map<string, number>): Calculation | -1 {
 	const nodes: Array<ComponentValue | Calculation> = [...(calcNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
@@ -292,110 +295,11 @@ export function clamp(clampNode: FunctionNode, globals: Map<string, number>): Ca
 		return -1;
 	}
 
-	if (
-		!isTokenNode(minimum) ||
-		!isTokenNode(central) ||
-		!isTokenNode(maximum)
-	) {
-		return -1;
-	}
-
-	const minimumToken = minimum.value;
-	const centralToken = central.value;
-	const maximumToken = maximum.value;
-
-	if (
-		!(
-			minimumToken[0] === TokenType.Dimension ||
-			minimumToken[0] === TokenType.Number ||
-			minimumToken[0] === TokenType.Percentage
-		)
-	) {
-		return -1;
-	}
-
-	if (minimumToken[0] !== centralToken[0]) {
-		return -1;
-	}
-
-	if (minimumToken[0] !== maximumToken[0]) {
-		return -1;
-	}
-
-	if (minimumToken[0] === TokenType.Dimension) {
-		if (minimumToken[4].unit.toLowerCase() !== (centralToken as TokenDimension)[4].unit.toLowerCase()) {
-			return -1;
-		}
-
-		if (minimumToken[4].unit.toLowerCase() !== (maximumToken as TokenDimension)[4].unit.toLowerCase()) {
-			return -1;
-		}
-	}
-
-	const result = Math.max(minimumToken[4].value, Math.min(centralToken[4].value, maximumToken[4].value));
-	const clampTokens = clampNode.tokens();
-
-	if (minimumToken[0] === TokenType.Dimension) {
-		return {
-			inputs: [
-				new TokenNode(
-					[
-						TokenType.Dimension,
-						result.toString() + minimumToken[4].unit,
-						clampTokens[0][2],
-						clampTokens[clampTokens.length - 1][3],
-						{
-							value: result,
-							type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-							unit: minimumToken[4].unit,
-						},
-					],
-				),
-			],
-			operation: unary,
-		};
-	}
-
-	if (minimumToken[0] === TokenType.Percentage) {
-		return {
-			inputs: [
-				new TokenNode(
-					[
-						TokenType.Percentage,
-						result.toString() + '%',
-						clampTokens[0][2],
-						clampTokens[clampTokens.length - 1][3],
-						{
-							value: result,
-						},
-					],
-				),
-			],
-			operation: unary,
-		};
-	}
-
-	return {
-		inputs: [
-			new TokenNode(
-				[
-					TokenType.Number,
-					result.toString(),
-					clampTokens[0][2],
-					clampTokens[clampTokens.length - 1][3],
-					{
-						value: result,
-						type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-					},
-				],
-			),
-		],
-		operation: unary,
-	};
+	return solveClamp(clampNode, minimum, central, maximum);
 }
 
-export function max(maxNodes: FunctionNode, globals: Map<string, number>): Calculation | -1 {
-	const nodes: Array<ComponentValue> = [...(maxNodes.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
+export function max(maxNode: FunctionNode, globals: Map<string, number>): Calculation | -1 {
+	const nodes: Array<ComponentValue> = [...(maxNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
 
 	const solvedNodes: Array<ComponentValue> = [];
 
@@ -429,103 +333,11 @@ export function max(maxNodes: FunctionNode, globals: Map<string, number>): Calcu
 		}
 	}
 
-	const firstSolvedNode = solvedNodes[0];
-	if (!firstSolvedNode || !isTokenNode(firstSolvedNode)) {
-		return -1;
-	}
-
-	const componentTypes = new Set(solvedNodes.map((x) => x.type));
-	if (componentTypes.size !== 1) {
-		return -1;
-	}
-
-	const firstSolvedToken = solvedNodes[0].value;
-	if (
-		!(
-			firstSolvedToken[0] === TokenType.Dimension ||
-			firstSolvedToken[0] === TokenType.Number ||
-			firstSolvedToken[0] === TokenType.Percentage
-		)
-	) {
-		return -1;
-	}
-
-	const tokenTypes = new Set(solvedNodes.map((x) => (x as TokenNode).value[0]));
-	if (tokenTypes.size !== 1) {
-		return -1;
-	}
-
-	const units = new Set(solvedNodes.map((x) => ((x as TokenNode).value[4]['unit'] ?? '').toLowerCase()));
-	if (units.size !== 1) {
-		return -1;
-	}
-
-	const values = solvedNodes.map((x) => ((x as TokenNode).value as TokenDimension | TokenNumber | TokenPercentage)[4].value);
-
-	const result = Math.max(...values);
-	const maxTokens = maxNodes.tokens();
-
-	if (firstSolvedToken[0] === TokenType.Dimension) {
-		return {
-			inputs: [
-				new TokenNode(
-					[
-						TokenType.Dimension,
-						result.toString() + firstSolvedToken[4].unit,
-						maxTokens[0][2],
-						maxTokens[maxTokens.length - 1][3],
-						{
-							value: result,
-							type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-							unit: firstSolvedToken[4].unit,
-						},
-					],
-				),
-			],
-			operation: unary,
-		};
-	}
-
-	if (firstSolvedToken[0] === TokenType.Percentage) {
-		return {
-			inputs: [
-				new TokenNode(
-					[
-						TokenType.Percentage,
-						result.toString() + '%',
-						maxTokens[0][2],
-						maxTokens[maxTokens.length - 1][3],
-						{
-							value: result,
-						},
-					],
-				),
-			],
-			operation: unary,
-		};
-	}
-
-	return {
-		inputs: [
-			new TokenNode(
-				[
-					TokenType.Number,
-					result.toString(),
-					maxTokens[0][2],
-					maxTokens[maxTokens.length - 1][3],
-					{
-						value: result,
-						type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-					},
-				],
-			),
-		],
-		operation: unary,
-	};
+	return solveMax(maxNode, solvedNodes);
 }
 
-export function min(minNodes: FunctionNode, globals: Map<string, number>): Calculation | -1 {
-	const nodes: Array<ComponentValue> = [...(minNodes.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
+export function min(minNode: FunctionNode, globals: Map<string, number>): Calculation | -1 {
+	const nodes: Array<ComponentValue> = [...(minNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
 
 	const solvedNodes: Array<ComponentValue> = [];
 
@@ -559,97 +371,5 @@ export function min(minNodes: FunctionNode, globals: Map<string, number>): Calcu
 		}
 	}
 
-	const firstSolvedNode = solvedNodes[0];
-	if (!firstSolvedNode || !isTokenNode(firstSolvedNode)) {
-		return -1;
-	}
-
-	const componentTypes = new Set(solvedNodes.map((x) => x.type));
-	if (componentTypes.size !== 1) {
-		return -1;
-	}
-
-	const firstSolvedToken = solvedNodes[0].value;
-	if (
-		!(
-			firstSolvedToken[0] === TokenType.Dimension ||
-			firstSolvedToken[0] === TokenType.Number ||
-			firstSolvedToken[0] === TokenType.Percentage
-		)
-	) {
-		return -1;
-	}
-
-	const tokenTypes = new Set(solvedNodes.map((x) => (x as TokenNode).value[0]));
-	if (tokenTypes.size !== 1) {
-		return -1;
-	}
-
-	const units = new Set(solvedNodes.map((x) => ((x as TokenNode).value[4]['unit'] ?? '').toLowerCase()));
-	if (units.size !== 1) {
-		return -1;
-	}
-
-	const values = solvedNodes.map((x) => ((x as TokenNode).value as TokenDimension | TokenNumber | TokenPercentage)[4].value);
-
-	const result = Math.min(...values);
-	const minTokens = minNodes.tokens();
-
-	if (firstSolvedToken[0] === TokenType.Dimension) {
-		return {
-			inputs: [
-				new TokenNode(
-					[
-						TokenType.Dimension,
-						result.toString() + firstSolvedToken[4].unit,
-						minTokens[0][2],
-						minTokens[minTokens.length - 1][3],
-						{
-							value: result,
-							type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-							unit: firstSolvedToken[4].unit,
-						},
-					],
-				),
-			],
-			operation: unary,
-		};
-	}
-
-	if (firstSolvedToken[0] === TokenType.Percentage) {
-		return {
-			inputs: [
-				new TokenNode(
-					[
-						TokenType.Percentage,
-						result.toString() + '%',
-						minTokens[0][2],
-						minTokens[minTokens.length - 1][3],
-						{
-							value: result,
-						},
-					],
-				),
-			],
-			operation: unary,
-		};
-	}
-
-	return {
-		inputs: [
-			new TokenNode(
-				[
-					TokenType.Number,
-					result.toString(),
-					minTokens[0][2],
-					minTokens[minTokens.length - 1][3],
-					{
-						value: result,
-						type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-					},
-				],
-			),
-		],
-		operation: unary,
-	};
+	return solveMin(minNode, solvedNodes);
 }
