@@ -7,7 +7,7 @@
 		background-color: #1d1f25;
 	}
 
-	& .editors-container {
+	.editors-container {
 		display: grid;
 		gap: var(--space-20);
 		grid-template-areas:
@@ -23,13 +23,17 @@
 				"controls controls"
 				"input output"
 				"config output";
-			grid-template-rows: auto calc(65% - 40px) calc(35% - 40px);
+			grid-template-rows: 80px calc(65% - 60px) calc(35% - 60px);
 			grid-template-columns: calc(50% - var(--space-10)) calc(50% - var(--space-10));
 			height: calc(100vh - var(--heading-size-from-medium));
 		}
+
+		@media (width >= 1440px) {
+			grid-template-rows: 40px calc(65% - 40px) calc(35% - 40px);
+		}
 	}
 
-	& #controls {
+	#controls {
 		background-color: #282c34;
 		color: white;
 		grid-area: controls;
@@ -44,7 +48,7 @@
 		}
 	}
 
-	& #controls fieldset {
+	#controls fieldset {
 		border: none;
 		display: inline-block;
 		margin: 7px 0;
@@ -52,7 +56,7 @@
 		padding: 0;
 	}
 
-	& #controls fieldset:not(:last-child) {
+	#controls fieldset:not(:last-child) {
 		margin-right: var(--space-40);
 
 		@media (--from-wide) {
@@ -60,7 +64,7 @@
 		}
 	}
 
-	& #controls input[type="number"] {
+	#controls input[type="number"] {
 		width: 50px;
 
 		@media (--from-wide) {
@@ -68,27 +72,27 @@
 		}
 	}
 
-	& #browsers {
+	#browsers {
 		width: 250px;
 
 		@media (--from-wide) {
-			width: 250px;
+			width: 240px;
 		}
 	}
 
-	& #input-editor {
+	#input-editor {
 		grid-area: input;
 	}
 
-	& #config-editor {
+	#config-editor {
 		grid-area: config;
 	}
 
-	& #output-editor {
+	#output-editor {
 		grid-area: output;
 	}
 
-	& .cm-editor {
+	.cm-editor {
 		height: 100%;
 
 		@media (--from-wide) {
