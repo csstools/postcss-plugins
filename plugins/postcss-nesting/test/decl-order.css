@@ -1,0 +1,41 @@
+.alpha {
+	/* comment 0 */
+	prop-1: 1;
+	prop-2: 2;
+
+	/* comment 1 */
+	/* comment 2 */
+
+	.rule-1 {}
+	.rule-2 {}
+
+	/* comment 3 */
+	/* comment 4 */
+
+	@layer foo-1;
+	@layer foo-2;
+
+	/* comment 5 */
+	/* comment 6 */
+
+	@media (min-width: 3px) {}
+	@media (min-width: 4px) {}
+}
+
+.beta {
+	/* comment 0 */
+	prop-1: 1;
+	/* comment 1 */
+	.rule-1 {}
+	/* comment 2 */
+	@layer foo-1;
+	/* comment 3 */
+	@layer foo-2;
+	prop-2: 2;
+	/* comment 4 */
+	.rule-2 {}
+	/* comment 5 */
+	@media (min-width: 3px) {}
+	/* comment 6 */
+	@media (min-width: 4px) {}
+}
