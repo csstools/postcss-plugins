@@ -445,3 +445,28 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 		],
 	);
 }
+
+{
+	const t = tokenizer({
+		css: 'calc(-infinity * 1px)',
+	});
+
+	assert.deepEqual(
+		collectTokens(t).slice(0, -1),
+		[
+			['function-token', 'calc(', 0, 4, { value: 'calc' }],
+			['ident-token', '-infinity', 5, 13, { value: '-infinity' }],
+			['whitespace-token', ' ', 14, 14, undefined],
+			['delim-token', '*', 15, 15, { value: '*' }],
+			['whitespace-token', ' ', 16, 16, undefined],
+			[
+				'dimension-token',
+				'1px',
+				17,
+				19,
+				{ value: 1, type: 'integer', unit: 'px' },
+			],
+			[')-token', ')', 20, 20, undefined],
+		],
+	);
+}
