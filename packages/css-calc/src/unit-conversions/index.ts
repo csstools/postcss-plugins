@@ -1,9 +1,13 @@
 import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
 import { convert_cm } from './cm';
+import { convert_deg } from './deg';
+import { convert_grad } from './grad';
 import { convert_in } from './inch';
 import { convert_mm } from './mm';
 import { convert_ms } from './ms';
+import { convert_rad } from './rad';
 import { convert_s } from './s';
+import { convert_turn } from './turn';
 
 export const conversions: Map<string, Map<string, (number) => number>> = new Map([
 	[
@@ -49,6 +53,22 @@ export const conversions: Map<string, Map<string, (number) => number>> = new Map
 	[
 		's',
 		convert_s,
+	],
+	[
+		'deg',
+		convert_deg,
+	],
+	[
+		'grad',
+		convert_grad,
+	],
+	[
+		'rad',
+		convert_rad,
+	],
+	[
+		'turn',
+		convert_turn,
 	],
 ]);
 

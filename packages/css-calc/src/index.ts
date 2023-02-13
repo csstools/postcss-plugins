@@ -22,11 +22,7 @@ export function convert(css: string, globals?: GlobalsWithStrings) {
 		tokens.push(t.nextToken()); // EOF-token
 	}
 
-	const options = {
-		onParseError: ((err) => {
-			throw err;
-		}),
-	};
+	const options = {};
 
 	const result = parseCommaSeparatedListOfComponentValues(tokens, options);
 
