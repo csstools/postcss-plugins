@@ -1,1 +1,2 @@
-export declare function convert(css: string, globals?: Map<string, number>): string;
+import { GlobalsWithStrings } from './util/globals';
+export declare function convert(css: string, globals?: GlobalsWithStrings): string;

@@ -3,8 +3,11 @@ import { isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentVa
 import { solve } from './calculation';
 
 import { calc, clamp, max, min } from './functions/calc';
+import { GlobalsWithStrings, tokenizeGlobals } from './util/globals';
 
-export function convert(css: string, globals?: Map<string, number>) {
+export function convert(css: string, globals?: GlobalsWithStrings) {
+	const tokenizedGlobals = tokenizeGlobals(globals);
+
 	const t = tokenizer({
 		css: css,
 	});
@@ -35,25 +38,25 @@ export function convert(css: string, globals?: Map<string, number>) {
 
 			if (isFunctionNode(componentValue)) {
 				if (componentValue.getName().toLowerCase() === 'calc') {
-					const calcResult = solve(calc(componentValue, globals ?? new Map()));
+					const calcResult = solve(calc(componentValue, tokenizedGlobals));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
 				} else if (componentValue.getName().toLowerCase() === 'clamp') {
-					const calcResult = solve(clamp(componentValue, globals ?? new Map()));
+					const calcResult = solve(clamp(componentValue, tokenizedGlobals));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
 				} else if (componentValue.getName().toLowerCase() === 'min') {
-					const calcResult = solve(min(componentValue, globals ?? new Map()));
+					const calcResult = solve(min(componentValue, tokenizedGlobals));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
 				} else if (componentValue.getName().toLowerCase() === 'max') {
-					const calcResult = solve(max(componentValue, globals ?? new Map()));
+					const calcResult = solve(max(componentValue, tokenizedGlobals));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
@@ -73,25 +76,25 @@ export function convert(css: string, globals?: Map<string, number>) {
 				const node = entry.node;
 				if (isFunctionNode(node)) {
 					if (node.getName().toLowerCase() === 'calc') {
-						const calcResult = solve(calc(node, globals ?? new Map()));
+						const calcResult = solve(calc(node, tokenizedGlobals));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
 					} else if (node.getName().toLowerCase() === 'clamp') {
-						const calcResult = solve(clamp(node, globals ?? new Map()));
+						const calcResult = solve(clamp(node, tokenizedGlobals));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
 					} else if (node.getName().toLowerCase() === 'min') {
-						const calcResult = solve(min(node, globals ?? new Map()));
+						const calcResult = solve(min(node, tokenizedGlobals));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
 					} else if (node.getName().toLowerCase() === 'max') {
-						const calcResult = solve(max(node, globals ?? new Map()));
+						const calcResult = solve(max(node, tokenizedGlobals));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;

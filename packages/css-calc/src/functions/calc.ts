@@ -9,8 +9,9 @@ import { subtraction } from '../operation/subtraction';
 import { solveMin } from './min';
 import { solveMax } from './max';
 import { solveClamp } from './clamp';
+import { Globals } from '../util/globals';
 
-export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Map<string, number>): Calculation | -1 {
+export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calculation | -1 {
 	const nodes: Array<ComponentValue | Calculation> = [...(calcNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
 
 	for (let i = 0; i < nodes.length; i++) {
@@ -42,10 +43,7 @@ export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Map<stri
 			default:
 				if (globals.has(ident)) {
 					const replacement = globals.get(ident);
-					nodes.splice(i, 1, new TokenNode([TokenType.Number, replacement.toString(), token[2], token[3], {
-						value: replacement,
-						type: NumberType.Number,
-					}]));
+					nodes.splice(i, 1, new TokenNode(replacement));
 				}
 				break;
 		}
@@ -231,7 +229,7 @@ export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Map<stri
 	return -1;
 }
 
-export function clamp(clampNode: FunctionNode, globals: Map<string, number>): Calculation | -1 {
+export function clamp(clampNode: FunctionNode, globals: Globals): Calculation | -1 {
 	const nodes: Array<ComponentValue> = [...(clampNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
 
 	const minimumValue: Array<ComponentValue> = [];
@@ -298,7 +296,7 @@ export function clamp(clampNode: FunctionNode, globals: Map<string, number>): Ca
 	return solveClamp(clampNode, minimum, central, maximum);
 }
 
-export function max(maxNode: FunctionNode, globals: Map<string, number>): Calculation | -1 {
+export function max(maxNode: FunctionNode, globals: Globals): Calculation | -1 {
 	const nodes: Array<ComponentValue> = [...(maxNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
 
 	const solvedNodes: Array<ComponentValue> = [];
@@ -336,7 +334,7 @@ export function max(maxNode: FunctionNode, globals: Map<string, number>): Calcul
 	return solveMax(maxNode, solvedNodes);
 }
 
-export function min(minNode: FunctionNode, globals: Map<string, number>): Calculation | -1 {
+export function min(minNode: FunctionNode, globals: Globals): Calculation | -1 {
 	const nodes: Array<ComponentValue> = [...(minNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
 
 	const solvedNodes: Array<ComponentValue> = [];
