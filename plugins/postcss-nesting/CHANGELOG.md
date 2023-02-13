@@ -1,5 +1,10 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (minor)
+
+- Added: support for `&` at the root
+- Improved: support for mixins
+
 ### 11.1.0 (January 31, 2023)
 
 - Implement latest specification
