@@ -1,6 +1,6 @@
 # Changes to PostCSS Text Decoration Shorthand
 
-### Unreleased (patch)
+### 2.2.1 (February 13, 2023)
 
 - Updated: `preserve` option defaults to `true`
 
