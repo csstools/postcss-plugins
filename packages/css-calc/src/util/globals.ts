@@ -1,4 +1,4 @@
-import { TokenDimension, tokenizer, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
+import { isToken, TokenDimension, tokenizer, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
 
 export type Globals = Map<string, TokenDimension | TokenNumber | TokenPercentage>;
 export type GlobalsWithStrings = Map<string, TokenDimension | TokenNumber | TokenPercentage | string>;
@@ -10,6 +10,11 @@ export function tokenizeGlobals(x: GlobalsWithStrings): Globals {
 	}
 
 	for (const [key, value] of x) {
+		if (isToken(value)) {
+			copy.set(key, value);
+			continue;
+		}
+
 		if (typeof value === 'string') {
 			const t = tokenizer({
 				css: value,
@@ -35,8 +40,6 @@ export function tokenizeGlobals(x: GlobalsWithStrings): Globals {
 			copy.set(key, token);
 			continue;
 		}
-
-		copy.set(key, value);
 	}
 
 	return copy;
