@@ -177,6 +177,8 @@ export function mirrorVariant(token: CSSToken): CSSToken | null {
 	}
 }
 
+const tokenTypes = Object.values(TokenType);
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isToken(x: any): x is CSSToken {
 	if (!Array.isArray(x)) {
@@ -187,7 +189,7 @@ export function isToken(x: any): x is CSSToken {
 		return false;
 	}
 
-	if (!(x[0] in TokenType)) {
+	if (!tokenTypes.includes(x[0])) {
 		return false;
 	}
 
