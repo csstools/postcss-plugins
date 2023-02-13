@@ -1,35 +1,102 @@
-import { TokenNode } from '@csstools/css-parser-algorithms';
+import { FunctionNode, isFunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import type { CSSToken } from '@csstools/css-tokenizer/dist/interfaces/token';
 
-export function Infinity_Token(result: number, a: CSSToken, b: CSSToken): TokenNode | null {
-	if (!Number.isFinite(result)) {
-		let signStr = '';
-		let value = Number.POSITIVE_INFINITY;
-		if (Number.NEGATIVE_INFINITY === result) {
-			signStr = '-';
-			value = Number.NEGATIVE_INFINITY;
-		}
-
-		if (a[0] === TokenType.Number) {
-			return new TokenNode([a[0], signStr + Number.MAX_SAFE_INTEGER.toString(), a[2], b[3], {
-				value: value,
-				type: NumberType.Integer,
-			}]);
-		}
-		if (a[0] === TokenType.Percentage) {
-			return new TokenNode([a[0], signStr + Number.MAX_SAFE_INTEGER.toString() + '%', a[2], b[3], {
-				value: value,
-			}]);
-		}
-		if (a[0] === TokenType.Dimension) {
-			return new TokenNode([a[0], signStr + Number.MAX_SAFE_INTEGER.toString() + a[4].unit, a[2], b[3], {
-				value: value,
-				unit: a[4].unit,
-				type: NumberType.Integer,
-			}]);
-		}
+export function patchInfinity(x: TokenNode | FunctionNode | -1): TokenNode | FunctionNode | -1 {
+	if (x === -1) {
+		return -1;
 	}
 
-	return;
+	if (isFunctionNode(x)) {
+		return x;
+	}
+
+	const token = x.value;
+	if (
+		token[0] !== TokenType.Number &&
+		token[0] !== TokenType.Percentage &&
+		token[0] !== TokenType.Dimension
+	) {
+		return x;
+	}
+
+	if (Number.isFinite(token[4].value)) {
+		return x;
+	}
+
+	let signStr = '';
+	if (Number.NEGATIVE_INFINITY === token[4].value) {
+		signStr = '-';
+	}
+
+	if (token[0] === TokenType.Number) {
+		return new FunctionNode(
+			[TokenType.Function, 'calc(', token[2], token[3], { value: 'calc' }],
+			[TokenType.CloseParen, ')', token[2], token[3], undefined],
+			[
+				new TokenNode([TokenType.Ident, signStr+'infinity', token[2], token[3], {
+					value: signStr + 'infinity',
+				}]),
+			],
+		);
+	}
+
+	if (token[0] === TokenType.Dimension) {
+		return new FunctionNode(
+			[TokenType.Function, 'calc(', token[2], token[3], { value: 'calc' }],
+			[TokenType.CloseParen, ')', token[2], token[3], undefined],
+			[
+				new TokenNode([TokenType.Ident, signStr + 'infinity', token[2], token[3], {
+					value: signStr + 'infinity',
+				}]),
+				new WhitespaceNode(
+					[
+						[TokenType.Whitespace, ' ', token[2], token[3], undefined],
+					],
+				),
+				new TokenNode([TokenType.Delim, '*', token[2], token[3], {
+					value: '*',
+				}]),
+				new WhitespaceNode(
+					[
+						[TokenType.Whitespace, ' ', token[2], token[3], undefined],
+					],
+				),
+				new TokenNode([TokenType.Dimension, '1' + token[4].unit, token[2], token[3], {
+					value: 1,
+					type: NumberType.Integer,
+					unit: token[4].unit,
+				}]),
+			],
+		);
+	}
+
+	if (token[0] === TokenType.Percentage) {
+		return new FunctionNode(
+			[TokenType.Function, 'calc(', token[2], token[3], { value: 'calc' }],
+			[TokenType.CloseParen, ')', token[2], token[3], undefined],
+			[
+				new TokenNode([TokenType.Ident, signStr + 'infinity', token[2], token[3], {
+					value: signStr + 'infinity',
+				}]),
+				new WhitespaceNode(
+					[
+						[TokenType.Whitespace, ' ', token[2], token[3], undefined],
+					],
+				),
+				new TokenNode([TokenType.Delim, '*', token[2], token[3], {
+					value: '*',
+				}]),
+				new WhitespaceNode(
+					[
+						[TokenType.Whitespace, ' ', token[2], token[3], undefined],
+					],
+				),
+				new TokenNode([TokenType.Percentage, '1%', token[2], token[3], {
+					value: 1,
+				}]),
+			],
+		);
+	}
+
+	return -1;
 }

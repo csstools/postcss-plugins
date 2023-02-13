@@ -2,9 +2,13 @@ import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
 import { convert_cm } from './cm';
 import { convert_deg } from './deg';
 import { convert_grad } from './grad';
-import { convert_in } from './inch';
+import { convert_in } from './in';
 import { convert_mm } from './mm';
 import { convert_ms } from './ms';
+import { convert_pc } from './pc';
+import { convert_pt } from './pt';
+import { convert_px } from './px';
+import { convert_q } from './q';
 import { convert_rad } from './rad';
 import { convert_s } from './s';
 import { convert_turn } from './turn';
@@ -18,34 +22,26 @@ export const conversions: Map<string, Map<string, (number) => number>> = new Map
 		'mm',
 		convert_mm,
 	],
-	// [
-	// 	'q',
-	// 	(x: number) => {
-	// 		return x * 40;
-	// 	},
-	// ],
+	[
+		'q',
+		convert_q,
+	],
 	[
 		'in',
 		convert_in,
 	],
-	// [
-	// 	'pc',
-	// 	(x: number) => {
-	// 		return (x / 2.54) * 6;
-	// 	},
-	// ],
-	// [
-	// 	'pt',
-	// 	(x: number) => {
-	// 		return (x / 2.54) * 72;
-	// 	},
-	// ],
-	// [
-	// 	'px',
-	// 	(x: number) => {
-	// 		return (x / 2.54) * 96;
-	// 	},
-	// ],
+	[
+		'pc',
+		convert_pc,
+	],
+	[
+		'pt',
+		convert_pt,
+	],
+	[
+		'px',
+		convert_px,
+	],
 	[
 		'ms',
 		convert_ms,

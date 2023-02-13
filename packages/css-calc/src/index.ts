@@ -1,9 +1,10 @@
 import { stringify, tokenizer } from '@csstools/css-tokenizer';
 import { isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { solve } from './calculation';
-
 import { calc, clamp, max, min } from './functions/calc';
 import { GlobalsWithStrings, tokenizeGlobals } from './util/globals';
+import { patchNaN } from './util/nan';
+import { patchInfinity } from './util/infinity';
 
 export function convert(css: string, globals?: GlobalsWithStrings) {
 	const tokenizedGlobals = tokenizeGlobals(globals);
@@ -34,25 +35,25 @@ export function convert(css: string, globals?: GlobalsWithStrings) {
 
 			if (isFunctionNode(componentValue)) {
 				if (componentValue.getName().toLowerCase() === 'calc') {
-					const calcResult = solve(calc(componentValue, tokenizedGlobals));
+					const calcResult = patchInfinity(patchNaN(solve(calc(componentValue, tokenizedGlobals))));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
 				} else if (componentValue.getName().toLowerCase() === 'clamp') {
-					const calcResult = solve(clamp(componentValue, tokenizedGlobals));
+					const calcResult = patchInfinity(patchNaN(solve(clamp(componentValue, tokenizedGlobals))));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
 				} else if (componentValue.getName().toLowerCase() === 'min') {
-					const calcResult = solve(min(componentValue, tokenizedGlobals));
+					const calcResult = patchInfinity(patchNaN(solve(min(componentValue, tokenizedGlobals))));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
 				} else if (componentValue.getName().toLowerCase() === 'max') {
-					const calcResult = solve(max(componentValue, tokenizedGlobals));
+					const calcResult = patchInfinity(patchNaN(solve(max(componentValue, tokenizedGlobals))));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
@@ -72,25 +73,25 @@ export function convert(css: string, globals?: GlobalsWithStrings) {
 				const node = entry.node;
 				if (isFunctionNode(node)) {
 					if (node.getName().toLowerCase() === 'calc') {
-						const calcResult = solve(calc(node, tokenizedGlobals));
+						const calcResult = patchInfinity(patchNaN(solve(calc(node, tokenizedGlobals))));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
 					} else if (node.getName().toLowerCase() === 'clamp') {
-						const calcResult = solve(clamp(node, tokenizedGlobals));
+						const calcResult = patchInfinity(patchNaN(solve(clamp(node, tokenizedGlobals))));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
 					} else if (node.getName().toLowerCase() === 'min') {
-						const calcResult = solve(min(node, tokenizedGlobals));
+						const calcResult = patchInfinity(patchNaN(solve(min(node, tokenizedGlobals))));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
 					} else if (node.getName().toLowerCase() === 'max') {
-						const calcResult = solve(max(node, tokenizedGlobals));
+						const calcResult = patchInfinity(patchNaN(solve(max(node, tokenizedGlobals))));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;

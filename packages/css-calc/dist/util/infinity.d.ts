@@ -1,3 +1,2 @@
-import { TokenNode } from '@csstools/css-parser-algorithms';
-import type { CSSToken } from '@csstools/css-tokenizer/dist/interfaces/token';
-export declare function Infinity_Token(result: number, a: CSSToken, b: CSSToken): TokenNode | null;
+import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
+export declare function patchInfinity(x: TokenNode | FunctionNode | -1): TokenNode | FunctionNode | -1;

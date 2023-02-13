@@ -209,7 +209,12 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('calc(500px/0)'),
-	'9007199254740991px',
+	'calc(infinity * 1px)',
+);
+
+assert.strictEqual(
+	convert('calc(500px/-0)'),
+	'calc(-infinity * 1px)',
 );
 
 assert.strictEqual(

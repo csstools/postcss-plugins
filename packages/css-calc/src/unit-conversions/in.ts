@@ -14,7 +14,7 @@ export const convert_in: Map<string, (number) => number> = new Map([
 	[
 		'q',
 		(x: number) => {
-			return x * 25.4 * 4;
+			return (x * 25.4) * 4;
 		},
 	],
 	[
