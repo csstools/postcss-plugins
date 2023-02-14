@@ -2,7 +2,9 @@ import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
 import { convert_cm } from './cm';
 import { convert_deg } from './deg';
 import { convert_grad } from './grad';
+import { convert_hz } from './hz';
 import { convert_in } from './in';
+import { convert_khz } from './khz';
 import { convert_mm } from './mm';
 import { convert_ms } from './ms';
 import { convert_pc } from './pc';
@@ -65,6 +67,14 @@ export const conversions: Map<string, Map<string, (number) => number>> = new Map
 	[
 		'turn',
 		convert_turn,
+	],
+	[
+		'hz',
+		convert_hz,
+	],
+	[
+		'khz',
+		convert_khz,
 	],
 ]);
 

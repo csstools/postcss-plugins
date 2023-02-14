@@ -1,5 +1,5 @@
-import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { ComponentValue, FunctionNode, isCommentNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
+import { TokenType } from '@csstools/css-tokenizer';
+import { ComponentValue, FunctionNode, isCommentNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import { Calculation, isCalculation, solve } from '../calculation';
 import { unary } from '../operation/unary';
 import { multiplication } from '../operation/multiplication';
@@ -10,44 +10,13 @@ import { solveMin } from './min';
 import { solveMax } from './max';
 import { solveClamp } from './clamp';
 import { Globals } from '../util/globals';
+import { resolveGlobalsAndConstants } from './globals-and-constants';
 
 export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calculation | -1 {
-	const nodes: Array<ComponentValue | Calculation> = [...(calcNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
-
-	for (let i = 0; i < nodes.length; i++) {
-		const node = nodes[i];
-		if (!isTokenNode(node)) {
-			continue;
-		}
-
-		const token = node.value;
-		if (token[0] !== TokenType.Ident) {
-			continue;
-		}
-
-		const ident = token[4].value.toLowerCase();
-		switch (ident) {
-			case 'e':
-				nodes.splice(i, 1, new TokenNode([TokenType.Number, Math.E.toString(), token[2], token[3], {
-					value: Math.E,
-					type: NumberType.Number,
-				}]));
-				break;
-			case 'pi':
-				nodes.splice(i, 1, new TokenNode([TokenType.Number, Math.PI.toString(), token[2], token[3], {
-					value: Math.PI,
-					type: NumberType.Number,
-				}]));
-				break;
-
-			default:
-				if (globals.has(ident)) {
-					const replacement = globals.get(ident);
-					nodes.splice(i, 1, new TokenNode(replacement));
-				}
-				break;
-		}
-	}
+	const nodes: Array<ComponentValue | Calculation> = resolveGlobalsAndConstants(
+		[...(calcNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
 
 	if (nodes.length === 1 && isTokenNode(nodes[0])) {
 		return {
@@ -230,7 +199,10 @@ export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals)
 }
 
 export function clamp(clampNode: FunctionNode, globals: Globals): Calculation | -1 {
-	const nodes: Array<ComponentValue> = [...(clampNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(clampNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
 
 	const minimumValue: Array<ComponentValue> = [];
 	const centralValue: Array<ComponentValue> = [];
@@ -297,7 +269,10 @@ export function clamp(clampNode: FunctionNode, globals: Globals): Calculation | 
 }
 
 export function max(maxNode: FunctionNode, globals: Globals): Calculation | -1 {
-	const nodes: Array<ComponentValue> = [...(maxNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(maxNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
 
 	const solvedNodes: Array<ComponentValue> = [];
 
@@ -335,7 +310,10 @@ export function max(maxNode: FunctionNode, globals: Globals): Calculation | -1 {
 }
 
 export function min(minNode: FunctionNode, globals: Globals): Calculation | -1 {
-	const nodes: Array<ComponentValue> = [...(minNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))];
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(minNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
 
 	const solvedNodes: Array<ComponentValue> = [];
 
