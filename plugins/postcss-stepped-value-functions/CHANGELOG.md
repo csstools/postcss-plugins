@@ -2,8 +2,9 @@
 
 ### Unreleased (minor)
 
-- Remove warnings
-- Add `@csstools/css-calc`
+- Removed: warnings on `var()` or otherwise unconvertible values (doesn't affect the output, non-breaking)
+- Added: `@csstools/css-calc`
+- Added: unit conversions (`mod(735ms, 0.1s)`)
 
 ### 2.0.1 (January 28, 2023)
 
