@@ -11,6 +11,7 @@
 	"workspaces": [
 		"packages/css-tokenizer",
 		"packages/css-parser-algorithms",
+		"packages/css-calc",
 		"packages/cascade-layer-name-parser",
 		"packages/media-query-list-parser",
 		"packages/*",

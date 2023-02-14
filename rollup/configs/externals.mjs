@@ -12,6 +12,7 @@ export const externalsForCLI = [
 
 	'@csstools/cascade-layer-name-parser',
 	'@csstools/color-helpers',
+	'@csstools/css-calc',
 	'@csstools/css-parser-algorithms',
 	'@csstools/css-tokenizer',
 	'@csstools/media-query-list-parser',
@@ -92,6 +93,7 @@ export const externalsForPlugin = [
 
 	'@csstools/cascade-layer-name-parser',
 	'@csstools/color-helpers',
+	'@csstools/css-calc',
 	'@csstools/css-parser-algorithms',
 	'@csstools/css-tokenizer',
 	'@csstools/media-query-list-parser',
