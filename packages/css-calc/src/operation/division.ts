@@ -34,7 +34,7 @@ export function division(inputs: Array<TokenNode>): TokenNode | -1 {
 
 		return new TokenNode([TokenType.Dimension, result.toString() + aToken[4].unit, aToken[2], bToken[3], {
 			value: result,
-			type: (aToken[4].type === NumberType.Integer && bToken[4].type === NumberType.Integer) ? NumberType.Integer : NumberType.Number,
+			type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
 			unit: aToken[4].unit,
 		}]);
 	}

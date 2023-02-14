@@ -28,6 +28,24 @@ export function resolveGlobalsAndConstants(nodes: Array<ComponentValue>, globals
 					type: NumberType.Number,
 				}]));
 				break;
+			case 'infinity':
+				nodes.splice(i, 1, new TokenNode([TokenType.Number, 'infinity', token[2], token[3], {
+					value: Infinity,
+					type: NumberType.Number,
+				}]));
+				break;
+			case '-infinity':
+				nodes.splice(i, 1, new TokenNode([TokenType.Number, '-infinity', token[2], token[3], {
+					value: -Infinity,
+					type: NumberType.Number,
+				}]));
+				break;
+			case 'nan':
+				nodes.splice(i, 1, new TokenNode([TokenType.Number, 'NaN', token[2], token[3], {
+					value: Number.NaN,
+					type: NumberType.Number,
+				}]));
+				break;
 
 			default:
 				if (globals.has(ident)) {

@@ -29,7 +29,7 @@ export function solveMod(modNodes: FunctionNode, a: TokenNode, b: TokenNode): Ca
 
 	const result = ((aToken[4].value % bToken[4].value) + bToken[4].value) % bToken[4].value;
 
-	const maxTokens = modNodes.tokens();
+	const modTokens = modNodes.tokens();
 	if (aToken[0] === TokenType.Dimension) {
 		return {
 			inputs: [
@@ -37,8 +37,8 @@ export function solveMod(modNodes: FunctionNode, a: TokenNode, b: TokenNode): Ca
 					[
 						TokenType.Dimension,
 						result.toString() + aToken[4].unit,
-						maxTokens[0][2],
-						maxTokens[maxTokens.length - 1][3],
+						modTokens[0][2],
+						modTokens[modTokens.length - 1][3],
 						{
 							value: result,
 							type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
@@ -58,8 +58,8 @@ export function solveMod(modNodes: FunctionNode, a: TokenNode, b: TokenNode): Ca
 					[
 						TokenType.Percentage,
 						result.toString() + '%',
-						maxTokens[0][2],
-						maxTokens[maxTokens.length - 1][3],
+						modTokens[0][2],
+						modTokens[modTokens.length - 1][3],
 						{
 							value: result,
 						},
@@ -76,8 +76,8 @@ export function solveMod(modNodes: FunctionNode, a: TokenNode, b: TokenNode): Ca
 				[
 					TokenType.Number,
 					result.toString(),
-					maxTokens[0][2],
-					maxTokens[maxTokens.length - 1][3],
+					modTokens[0][2],
+					modTokens[modTokens.length - 1][3],
 					{
 						value: result,
 						type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,

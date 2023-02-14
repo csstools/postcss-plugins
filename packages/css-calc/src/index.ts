@@ -5,6 +5,7 @@ import { calc, clamp, max, min, mod, rem, round } from './functions/calc';
 import { GlobalsWithStrings, tokenizeGlobals } from './util/globals';
 import { patchNaN } from './util/nan';
 import { patchInfinity } from './util/infinity';
+import { patchMinusZero } from './util/minus-zero';
 
 export function convert(css: string, globals?: GlobalsWithStrings) {
 	const tokenizedGlobals = tokenizeGlobals(globals);
@@ -35,43 +36,43 @@ export function convert(css: string, globals?: GlobalsWithStrings) {
 
 			if (isFunctionNode(componentValue)) {
 				if (componentValue.getName().toLowerCase() === 'calc') {
-					const calcResult = patchInfinity(patchNaN(solve(calc(componentValue, tokenizedGlobals))));
+					const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(calc(componentValue, tokenizedGlobals)))));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
 				} else if (componentValue.getName().toLowerCase() === 'clamp') {
-					const calcResult = patchInfinity(patchNaN(solve(clamp(componentValue, tokenizedGlobals))));
+					const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(clamp(componentValue, tokenizedGlobals)))));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
 				} else if (componentValue.getName().toLowerCase() === 'min') {
-					const calcResult = patchInfinity(patchNaN(solve(min(componentValue, tokenizedGlobals))));
+					const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(min(componentValue, tokenizedGlobals)))));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
 				} else if (componentValue.getName().toLowerCase() === 'max') {
-					const calcResult = patchInfinity(patchNaN(solve(max(componentValue, tokenizedGlobals))));
+					const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(max(componentValue, tokenizedGlobals)))));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
 				} else if (componentValue.getName().toLowerCase() === 'round') {
-					const calcResult = patchInfinity(patchNaN(solve(round(componentValue, tokenizedGlobals))));
+					const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(round(componentValue, tokenizedGlobals)))));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
 				} else if (componentValue.getName().toLowerCase() === 'mod') {
-					const calcResult = patchInfinity(patchNaN(solve(mod(componentValue, tokenizedGlobals))));
+					const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(mod(componentValue, tokenizedGlobals)))));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
 				} else if (componentValue.getName().toLowerCase() === 'rem') {
-					const calcResult = patchInfinity(patchNaN(solve(rem(componentValue, tokenizedGlobals))));
+					const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(rem(componentValue, tokenizedGlobals)))));
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
@@ -91,43 +92,43 @@ export function convert(css: string, globals?: GlobalsWithStrings) {
 				const node = entry.node;
 				if (isFunctionNode(node)) {
 					if (node.getName().toLowerCase() === 'calc') {
-						const calcResult = patchInfinity(patchNaN(solve(calc(node, tokenizedGlobals))));
+						const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(calc(node, tokenizedGlobals)))));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
 					} else if (node.getName().toLowerCase() === 'clamp') {
-						const calcResult = patchInfinity(patchNaN(solve(clamp(node, tokenizedGlobals))));
+						const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(clamp(node, tokenizedGlobals)))));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
 					} else if (node.getName().toLowerCase() === 'min') {
-						const calcResult = patchInfinity(patchNaN(solve(min(node, tokenizedGlobals))));
+						const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(min(node, tokenizedGlobals)))));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
 					} else if (node.getName().toLowerCase() === 'max') {
-						const calcResult = patchInfinity(patchNaN(solve(max(node, tokenizedGlobals))));
+						const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(max(node, tokenizedGlobals)))));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
 					} else if (node.getName().toLowerCase() === 'round') {
-						const calcResult = patchInfinity(patchNaN(solve(round(node, tokenizedGlobals))));
+						const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(round(node, tokenizedGlobals)))));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
 					} else if (node.getName().toLowerCase() === 'mod') {
-						const calcResult = patchInfinity(patchNaN(solve(mod(node, tokenizedGlobals))));
+						const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(mod(node, tokenizedGlobals)))));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
 					} else if (node.getName().toLowerCase() === 'rem') {
-						const calcResult = patchInfinity(patchNaN(solve(rem(node, tokenizedGlobals))));
+						const calcResult = patchMinusZero(patchInfinity(patchNaN(solve(rem(node, tokenizedGlobals)))));
 						if (calcResult !== -1) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;

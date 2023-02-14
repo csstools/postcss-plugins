@@ -198,25 +198,126 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('round(infinity, infinity)'),
-	'round(infinity, infinity)',
+	'calc(NaN)',
 );
 
 assert.strictEqual(
 	convert('round(infinity, -infinity)'),
-	'round(infinity, -infinity)',
+	'calc(NaN)',
 );
 
 assert.strictEqual(
 	convert('round(-infinity, infinity)'),
-	'round(-infinity, infinity)',
+	'calc(NaN)',
 );
 
 assert.strictEqual(
 	convert('round(-infinity, -infinity)'),
-	'round(-infinity, -infinity)',
+	'calc(NaN)',
+);
+
+// infinite value with finite step is the same infinity
+assert.strictEqual(
+	convert('round(infinity, 5)'),
+	'calc(infinity)',
+);
+
+assert.strictEqual(
+	convert('round(infinity, -5)'),
+	'calc(infinity)',
+);
+
+assert.strictEqual(
+	convert('round(-infinity, 5)'),
+	'calc(-infinity)',
+);
+
+assert.strictEqual(
+	convert('round(-infinity, -5)'),
+	'calc(-infinity)',
+);
+
+
+// Finite value with infinite step depends on rounding strategy.
+// 'nearest' and 'to-zero': pos and +0 go to +0, neg and -0 go to -0
+assert.strictEqual(
+	convert('round(5, infinity)'),
+	'0',
+);
+
+assert.strictEqual(
+	convert('round(5, -infinity)'),
+	'0',
+);
+
+assert.strictEqual(
+	convert('round(-5, infinity)'),
+	'-0',
+);
+
+assert.strictEqual(
+	convert('round(-5, -infinity)'),
+	'-0',
 );
 
 assert.strictEqual(
 	convert('round(to-zero, 5, infinity)'),
-	'round(to-zero, 5, infinity)',
+	'0',
+);
+
+assert.strictEqual(
+	convert('round(to-zero, 5, -infinity)'),
+	'0',
+);
+
+assert.strictEqual(
+	convert('round(to-zero, -5, infinity)'),
+	'-0',
+);
+
+assert.strictEqual(
+	convert('round(to-zero, -5, -infinity)'),
+	'-0',
+);
+
+// 'up': pos goes to +inf, 0+ goes to 0+, else 0-
+assert.strictEqual(
+	convert('round(up, 1, infinity)'),
+	'calc(infinity)',
+);
+
+assert.strictEqual(
+	convert('round(up, 0, infinity)'),
+	'0',
+);
+
+assert.strictEqual(
+	convert('round(up, -1 * 0, infinity)'),
+	'-0',
+);
+
+assert.strictEqual(
+	convert('round(up, -1, infinity)'),
+	'-0',
+);
+
+// 'down': neg goes to -inf, -0 goes to -0, else 0+
+assert.strictEqual(
+	convert('round(down, -1, infinity)'),
+	'calc(-infinity)',
+);
+
+assert.strictEqual(
+	convert('round(down, -1 * 0, infinity)'),
+	'-0',
+);
+
+assert.strictEqual(
+	convert('round(down, 0, infinity)'),
+	'0',
+);
+
+assert.strictEqual(
+	convert('round(down, 1, infinity)'),
+	'0',
 );
