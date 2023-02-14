@@ -9,3 +9,8 @@ import './calc-time-values.mjs';
 import './calc-unit-analysis.mjs';
 import './clamp-length-computed.mjs';
 import './clamp-length-invalid.mjs';
+import './max-20-arguments.mjs';
+import './minmax-angle-computed.mjs';
+import './minmax-integer-computed.mjs';
+import './minmax-percentage-computed.mjs';
+import './minmax-time-computed.mjs';
