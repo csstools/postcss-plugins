@@ -56,8 +56,8 @@ assert.strictEqual(
 	]);
 
 	assert.strictEqual(
-		convert('rgb(rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', globals),
-		`rgb(rgb(50 100 150) ${(50 * 2).toString()} ${(100 / 2).toString()} ${(150 / 3).toString()})`,
+		convert('rgb(from rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', globals),
+		`rgb(from rgb(50 100 150) ${(50 * 2).toString()} ${(100 / 2).toString()} ${(150 / 3).toString()})`,
 	);
 }
 
@@ -69,8 +69,8 @@ assert.strictEqual(
 	]);
 
 	assert.strictEqual(
-		convert('rgb(rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', globals),
-		`rgb(rgb(50 100 150) ${(50 * 2).toString()} ${(100 / 2).toString()} ${(150 / 3).toString()})`,
+		convert('rgb(from rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', globals),
+		`rgb(from rgb(50 100 150) ${(50 * 2).toString()} ${(100 / 2).toString()} ${(150 / 3).toString()})`,
 	);
 }
 
