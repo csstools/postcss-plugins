@@ -11,6 +11,7 @@ import { solveMax } from './max';
 import { solveClamp } from './clamp';
 import { Globals } from '../util/globals';
 import { resolveGlobalsAndConstants } from './globals-and-constants';
+import { solveRound } from './round';
 
 export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calculation | -1 {
 	const nodes: Array<ComponentValue | Calculation> = resolveGlobalsAndConstants(
@@ -69,6 +70,15 @@ export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals)
 
 				case 'max': {
 					const subCalc = max(child, globals);
+					if (subCalc === -1) {
+						return -1;
+					}
+					nodes.splice(i, 1, subCalc);
+					break;
+				}
+
+				case 'round': {
+					const subCalc = round(child, globals);
 					if (subCalc === -1) {
 						return -1;
 					}
@@ -293,6 +303,10 @@ export function max(maxNode: FunctionNode, globals: Globals): Calculation | -1 {
 		chunks.push(chunk);
 
 		for (let i = 0; i < chunks.length; i++) {
+			if (chunks[i].length === 0) {
+				return -1;
+			}
+
 			const solvedChunk = solve(calc(new FunctionNode(
 				[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
 				[TokenType.CloseParen, ')', -1, -1, undefined],
@@ -334,6 +348,10 @@ export function min(minNode: FunctionNode, globals: Globals): Calculation | -1 {
 		chunks.push(chunk);
 
 		for (let i = 0; i < chunks.length; i++) {
+			if (chunks[i].length === 0) {
+				return -1;
+			}
+
 			const solvedChunk = solve(calc(new FunctionNode(
 				[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
 				[TokenType.CloseParen, ')', -1, -1, undefined],
@@ -348,4 +366,82 @@ export function min(minNode: FunctionNode, globals: Globals): Calculation | -1 {
 	}
 
 	return solveMin(minNode, solvedNodes);
+}
+
+const roundingStrategies = new Set([
+	'nearest',
+	'up',
+	'down',
+	'to-zero',
+]);
+
+export function round(roundNode: FunctionNode, globals: Globals): Calculation | -1 {
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(roundNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
+
+	let roundingStrategy = '';
+	const aValue: Array<ComponentValue> = [];
+	const bValue: Array<ComponentValue> = [];
+
+	{
+		let focus = aValue;
+
+		for (let i = 0; i < nodes.length; i++) {
+			const node = nodes[i];
+			if (!roundingStrategy && aValue.length === 0 && bValue.length === 0 && isTokenNode(node) && node.value[0] === TokenType.Ident) {
+				const token = node.value;
+				if (roundingStrategies.has(token[4].value.toLowerCase())) {
+					roundingStrategy = token[4].value.toLowerCase();
+					continue;
+				}
+			}
+
+			if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
+				if (focus === bValue) {
+					return -1;
+				}
+
+				if (focus === aValue && roundingStrategy && aValue.length === 0) {
+					continue;
+				}
+
+				if (focus === aValue) {
+					focus = bValue;
+					continue;
+				}
+
+				return -1;
+			}
+
+			focus.push(node);
+		}
+	}
+
+	const a = solve(calc(new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		aValue,
+	), globals));
+
+	if (a === -1) {
+		return -1;
+	}
+
+	const b = solve(calc(new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		bValue,
+	), globals));
+
+	if (b === -1) {
+		return -1;
+	}
+
+	if (!roundingStrategy) {
+		roundingStrategy = 'nearest';
+	}
+
+	return solveRound(roundNode, roundingStrategy, a, b);
 }

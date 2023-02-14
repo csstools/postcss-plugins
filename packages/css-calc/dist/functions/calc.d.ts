@@ -5,3 +5,4 @@ export declare function calc(calcNode: FunctionNode | SimpleBlockNode, globals: 
 export declare function clamp(clampNode: FunctionNode, globals: Globals): Calculation | -1;
 export declare function max(maxNode: FunctionNode, globals: Globals): Calculation | -1;
 export declare function min(minNode: FunctionNode, globals: Globals): Calculation | -1;
+export declare function round(roundNode: FunctionNode, globals: Globals): Calculation | -1;
