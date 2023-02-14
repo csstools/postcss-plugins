@@ -9,8 +9,14 @@ import { updateDocumentation } from './docs.mjs';
 import { npmInstall } from './npm-install.mjs';
 
 const workspaces = await listWorkspaces();
+// Things to release
 const needsRelease = new Map();
-const waitingOnDependencies = new Map();
+// Things that should be released after this plan
+const maybeNextPlan = new Map();
+// Things not to release
+const notReleasableNow = new Map();
+// Downstream dependents
+let didChangeDownstreamPackages = false;
 
 const isDryRun = process.argv.slice(2).includes('--dry-run');
 
@@ -21,8 +27,13 @@ for (const workspace of workspaces) {
 	}
 
 	for (const dependency of workspace.dependencies) {
-		if (needsRelease.has(dependency) || waitingOnDependencies.has(dependency)) {
-			waitingOnDependencies.set(workspace.name, workspace);
+		if (needsRelease.has(dependency) || notReleasableNow.has(dependency)) {
+			notReleasableNow.set(workspace.name, workspace);
+
+			let changelog = (await fs.readFile(path.join(workspace.path, 'CHANGELOG.md'))).toString();
+			if (changelog.includes('Unreleased')) {
+				maybeNextPlan.set(workspace.name, workspace);
+			}
 			// Can not be released before all modified dependencies have been released.
 			continue WORKSPACES_LOOP;
 		}
@@ -39,7 +50,7 @@ for (const workspace of workspaces) {
 			increment = 'major';
 		} else {
 			console.warn("Invalid CHANGELOG.md in", workspace.name);
-			waitingOnDependencies.set(workspace.name, workspace);
+			notReleasableNow.set(workspace.name, workspace);
 			continue WORKSPACES_LOOP;
 		}
 
@@ -53,6 +64,12 @@ if (needsRelease.size === 0) {
 	console.log('Nothing to release');
 	process.exit(0);
 }
+
+console.log('Excluded:');
+for (const workspace of maybeNextPlan.values()) {
+	console.log(`  - ${workspace.name}`);
+}
+console.log(''); // empty line
 
 console.log('Release plan:');
 for (const workspace of needsRelease.values()) {
@@ -83,9 +100,9 @@ for (const workspace of needsRelease.values()) {
 	await commitAfterPackageRelease(workspace.newVersion, workspace.path, workspace.name);
 }
 
-console.log('\nPreparing next batch');
+console.log('\nPreparing next plan');
 
-for (const workspace of waitingOnDependencies.values()) {
+for (const workspace of notReleasableNow.values()) {
 	const packageInfo = JSON.parse(await fs.readFile(path.join(workspace.path, 'package.json')));
 	let didChange = false;
 
@@ -109,6 +126,7 @@ for (const workspace of waitingOnDependencies.values()) {
 	}
 
 	if (didChange) {
+		didChangeDownstreamPackages = true;
 		await fs.writeFile(path.join(workspace.path, 'package.json'), JSON.stringify(packageInfo, null, '\t') + '\n');
 	}
 }
@@ -117,3 +135,13 @@ console.log('\nUpdating lock file');
 await npmInstall();
 
 console.log('\nDone 🎉');
+
+if (didChangeDownstreamPackages || maybeNextPlan.size > 0) {
+	console.log('\nNotes:'); // empty line
+	if (didChangeDownstreamPackages) {
+		console.log('  - updated "package.json" files of downstream packages.');
+	}
+	if (maybeNextPlan.size) {
+		console.log('  - some packages where excluded from this plan. A next plan of releases might be available now.');
+	}
+}
