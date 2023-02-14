@@ -91,3 +91,8 @@ assert.strictEqual(
 	convert('clamp(10, 20, 15)'),
 	(15).toString(),
 );
+
+assert.strictEqual(
+	convert('calc(15 / unknown(5 / 3))'),
+	'calc(15 / unknown(5 / 3))',
+);
