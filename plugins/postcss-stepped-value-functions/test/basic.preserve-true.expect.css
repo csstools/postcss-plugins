@@ -21,7 +21,7 @@
 	width: rem(-18px, 5px);
 	transform: rotateX(-40deg) rotateY(50deg);
 	transform: rotateX(mod(140deg, -90deg)) rotateY(rem(140deg, -90deg));
-	height: 0;
+	height: 0px;
 	height: rem(mod(mod(-18px, 5px), 5px), 2px);
 }
 
@@ -68,6 +68,7 @@
 	font-size: mod(18px, 5rem);
 	width: rem(var(--foo), 5px);
 	padding: mod(Fo0px, 5px);
+	left: calc(NaN * 1px);
 	left: mod(1px, 0px);
 	right: 1px;
 	right: mod(1px, 200px);

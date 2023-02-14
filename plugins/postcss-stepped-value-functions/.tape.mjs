@@ -5,13 +5,6 @@ postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
 	},
-	'basic:on-invalid-warn': {
-		message: 'supports { onInvalid: "warn" } usage',
-		options: {
-			onInvalid: 'warn'
-		},
-		warnings: 11,
-	},
 	'basic:preserve-true': {
 		message: 'supports { preserve: true } usage',
 		options: {

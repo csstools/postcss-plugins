@@ -6,3 +6,5 @@ export declare function clamp(clampNode: FunctionNode, globals: Globals): Calcul
 export declare function max(maxNode: FunctionNode, globals: Globals): Calculation | -1;
 export declare function min(minNode: FunctionNode, globals: Globals): Calculation | -1;
 export declare function round(roundNode: FunctionNode, globals: Globals): Calculation | -1;
+export declare function mod(modNodes: FunctionNode, globals: Globals): Calculation | -1;
+export declare function rem(remNodes: FunctionNode, globals: Globals): Calculation | -1;

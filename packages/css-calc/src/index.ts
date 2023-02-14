@@ -1,7 +1,7 @@
 import { stringify, tokenizer } from '@csstools/css-tokenizer';
 import { isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { solve } from './calculation';
-import { calc, clamp, max, min, round } from './functions/calc';
+import { calc, clamp, max, min, mod, rem, round } from './functions/calc';
 import { GlobalsWithStrings, tokenizeGlobals } from './util/globals';
 import { patchNaN } from './util/nan';
 import { patchInfinity } from './util/infinity';
@@ -64,6 +64,18 @@ export function convert(css: string, globals?: GlobalsWithStrings) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
 					}
+				} else if (componentValue.getName().toLowerCase() === 'mod') {
+					const calcResult = patchInfinity(patchNaN(solve(mod(componentValue, tokenizedGlobals))));
+					if (calcResult !== -1) {
+						componentValues.splice(j, 1, calcResult);
+						continue;
+					}
+				} else if (componentValue.getName().toLowerCase() === 'rem') {
+					const calcResult = patchInfinity(patchNaN(solve(rem(componentValue, tokenizedGlobals))));
+					if (calcResult !== -1) {
+						componentValues.splice(j, 1, calcResult);
+						continue;
+					}
 				}
 			}
 
@@ -108,6 +120,18 @@ export function convert(css: string, globals?: GlobalsWithStrings) {
 							entry.parent.value.splice(index, 1, calcResult);
 							return;
 						}
+					} else if (node.getName().toLowerCase() === 'mod') {
+						const calcResult = patchInfinity(patchNaN(solve(mod(node, tokenizedGlobals))));
+						if (calcResult !== -1) {
+							entry.parent.value.splice(index, 1, calcResult);
+							return;
+						}
+					} else if (node.getName().toLowerCase() === 'rem') {
+						const calcResult = patchInfinity(patchNaN(solve(rem(node, tokenizedGlobals))));
+						if (calcResult !== -1) {
+							entry.parent.value.splice(index, 1, calcResult);
+							return;
+						}
 					}
 				}
 			});
@@ -118,4 +142,3 @@ export function convert(css: string, globals?: GlobalsWithStrings) {
 		return componentValues.map((x) => stringify(...x.tokens())).join('');
 	}).join(',');
 }
-

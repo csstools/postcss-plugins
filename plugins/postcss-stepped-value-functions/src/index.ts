@@ -1,9 +1,11 @@
 import type { PluginCreator } from 'postcss';
-import { transformModFunction, modFunctionCheck } from './mod';
-import { transformRemFunction, remFunctionCheck } from './rem';
-import { transformRoundFunction, roundFunctionCheck } from './round';
-import type { pluginOptions } from './options';
-export type { pluginOptions } from './options';
+import { convert } from '@csstools/css-calc';
+
+/** postcss-stepped-value-functions plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+};
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
@@ -18,49 +20,30 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-stepped-value-functions',
-		Declaration(decl, { result }) {
+		Declaration(decl) {
 			const checks = [
-				modFunctionCheck,
-				remFunctionCheck,
-				roundFunctionCheck,
+				'mod(',
+				'rem(',
+				'round(',
 			];
+
 			const hasSupportedFunction = checks.some(functionCheck => decl.value.toLowerCase().includes(functionCheck));
 
 			if (!decl || !hasSupportedFunction) {
 				return;
 			}
 
-			const newDeclaration = decl.clone();
-
-			if (newDeclaration.value.toLowerCase().includes(modFunctionCheck)) {
-				const modValue = transformModFunction(newDeclaration, result, options);
-
-				if (modValue) {
-					newDeclaration.value = modValue;
-				}
-			}
-
-			if (newDeclaration.value.toLowerCase().includes(remFunctionCheck)) {
-				const modValue = transformRemFunction(newDeclaration, result, options);
-
-				if (modValue) {
-					newDeclaration.value = modValue;
-				}
-			}
-
-			if (newDeclaration.value.toLowerCase().includes(roundFunctionCheck)) {
-				const modValue = transformRoundFunction(newDeclaration, result, options);
-
-				if (modValue) {
-					newDeclaration.value = modValue;
-				}
-			}
-
-			if (decl.value === newDeclaration.value) {
+			const modifiedValue = convert(decl.value);
+			if (modifiedValue === decl.value) {
 				return;
 			}
 
-			decl.before(newDeclaration);
+			const stillHasSupportedFunction = checks.some(functionCheck => modifiedValue.toLowerCase().includes(functionCheck));
+			if (stillHasSupportedFunction) {
+				return;
+			}
+
+			decl.cloneBefore({ value: modifiedValue });
 
 			if (!options.preserve) {
 				decl.remove();
