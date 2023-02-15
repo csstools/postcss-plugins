@@ -27,7 +27,16 @@ export function solveRem(remNodes: FunctionNode, a: TokenNode, b: TokenNode): Ca
 		}
 	}
 
-	const result = aToken[4].value % bToken[4].value;
+	let result;
+	if (bToken[4].value === 0) {
+		result = Number.NaN;
+	} else if (!Number.isFinite(aToken[4].value)) {
+		result = Number.NaN;
+	} else if (!Number.isFinite(bToken[4].value)) {
+		result = aToken[4].value;
+	} else {
+		result = aToken[4].value % bToken[4].value;
+	}
 
 	const remTokens = remNodes.tokens();
 	if (aToken[0] === TokenType.Dimension) {

@@ -64,6 +64,8 @@ export function solveRound(roundNodes: FunctionNode, roundingStrategy: string, a
 				}
 			}
 		}
+	} else if (!Number.isFinite(bToken[4].value)) {
+		result = aToken[4].value;
 	} else {
 		switch (roundingStrategy) {
 			case 'down':
