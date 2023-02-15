@@ -1,8 +1,8 @@
-import { NumberType, TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
+import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
 import { ComponentValue, FunctionNode, isTokenNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { Calculation } from '../calculation';
-import { unary } from '../operation/unary';
 import { convertUnit } from '../unit-conversions';
+import { resultToCalculation } from './result-to-calculation';
 
 export function solveMin(minNode: FunctionNode, solvedNodes: Array<ComponentValue>): Calculation | -1 {
 	const firstSolvedNode = solvedNodes[0];
@@ -41,63 +41,6 @@ export function solveMin(minNode: FunctionNode, solvedNodes: Array<ComponentValu
 	const values = tokens.map((x) => (x as TokenDimension | TokenNumber | TokenPercentage)[4].value);
 
 	const result = Math.min(...values);
-	const minTokens = minNode.tokens();
 
-	if (firstSolvedToken[0] === TokenType.Dimension) {
-		return {
-			inputs: [
-				new TokenNode(
-					[
-						TokenType.Dimension,
-						result.toString() + firstSolvedToken[4].unit,
-						minTokens[0][2],
-						minTokens[minTokens.length - 1][3],
-						{
-							value: result,
-							type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-							unit: firstSolvedToken[4].unit,
-						},
-					],
-				),
-			],
-			operation: unary,
-		};
-	}
-
-	if (firstSolvedToken[0] === TokenType.Percentage) {
-		return {
-			inputs: [
-				new TokenNode(
-					[
-						TokenType.Percentage,
-						result.toString() + '%',
-						minTokens[0][2],
-						minTokens[minTokens.length - 1][3],
-						{
-							value: result,
-						},
-					],
-				),
-			],
-			operation: unary,
-		};
-	}
-
-	return {
-		inputs: [
-			new TokenNode(
-				[
-					TokenType.Number,
-					result.toString(),
-					minTokens[0][2],
-					minTokens[minTokens.length - 1][3],
-					{
-						value: result,
-						type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-					},
-				],
-			),
-		],
-		operation: unary,
-	};
+	return resultToCalculation(minNode, firstSolvedToken, result);
 }

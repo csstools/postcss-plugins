@@ -1,8 +1,8 @@
-import { NumberType, TokenDimension, TokenType } from '@csstools/css-tokenizer';
+import { TokenDimension, TokenType } from '@csstools/css-tokenizer';
 import { FunctionNode, isTokenNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { Calculation } from '../calculation';
-import { unary } from '../operation/unary';
 import { convertUnit } from '../unit-conversions';
+import { resultToCalculation } from './result-to-calculation';
 
 export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, central: TokenNode | -1, maximum: TokenNode | -1): Calculation | -1 {
 	if (
@@ -46,63 +46,6 @@ export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, cen
 	}
 
 	const result = Math.max(minimumToken[4].value, Math.min(centralToken[4].value, maximumToken[4].value));
-	const clampTokens = clampNode.tokens();
 
-	if (minimumToken[0] === TokenType.Dimension) {
-		return {
-			inputs: [
-				new TokenNode(
-					[
-						TokenType.Dimension,
-						result.toString() + minimumToken[4].unit,
-						clampTokens[0][2],
-						clampTokens[clampTokens.length - 1][3],
-						{
-							value: result,
-							type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-							unit: minimumToken[4].unit,
-						},
-					],
-				),
-			],
-			operation: unary,
-		};
-	}
-
-	if (minimumToken[0] === TokenType.Percentage) {
-		return {
-			inputs: [
-				new TokenNode(
-					[
-						TokenType.Percentage,
-						result.toString() + '%',
-						clampTokens[0][2],
-						clampTokens[clampTokens.length - 1][3],
-						{
-							value: result,
-						},
-					],
-				),
-			],
-			operation: unary,
-		};
-	}
-
-	return {
-		inputs: [
-			new TokenNode(
-				[
-					TokenType.Number,
-					result.toString(),
-					clampTokens[0][2],
-					clampTokens[clampTokens.length - 1][3],
-					{
-						value: result,
-						type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-					},
-				],
-			),
-		],
-		operation: unary,
-	};
+	return resultToCalculation(clampNode, minimumToken, result);
 }
