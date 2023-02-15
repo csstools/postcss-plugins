@@ -8,3 +8,5 @@ export declare function min(minNode: FunctionNode, globals: Globals): Calculatio
 export declare function round(roundNode: FunctionNode, globals: Globals): Calculation | -1;
 export declare function mod(modNodes: FunctionNode, globals: Globals): Calculation | -1;
 export declare function rem(remNodes: FunctionNode, globals: Globals): Calculation | -1;
+export declare function abs(absNodes: FunctionNode, globals: Globals): Calculation | -1;
+export declare function sign(signNodes: FunctionNode, globals: Globals): Calculation | -1;

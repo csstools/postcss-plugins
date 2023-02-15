@@ -17,3 +17,4 @@ import './minmax-time-computed.mjs';
 import './round-function.mjs';
 import './round-mod-rem-computed.mjs';
 import './round-mod-rem-invalid.mjs';
+import './signs-abs-computed.mjs';

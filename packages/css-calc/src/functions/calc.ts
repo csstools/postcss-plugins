@@ -14,6 +14,20 @@ import { resolveGlobalsAndConstants } from './globals-and-constants';
 import { solveRound } from './round';
 import { solveMod } from './mod';
 import { solveRem } from './rem';
+import { solveAbs } from './abs';
+import { solveSign } from './sign';
+
+const mathFunctions = new Map([
+	['abs', abs],
+	['calc', calc],
+	['clamp', clamp],
+	['max', max],
+	['min', min],
+	['mod', mod],
+	['rem', rem],
+	['round', round],
+	['sign', sign],
+]);
 
 export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calculation | -1 {
 	const nodes: Array<ComponentValue | Calculation> = resolveGlobalsAndConstants(
@@ -42,73 +56,16 @@ export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals)
 		}
 
 		if (isFunctionNode(child)) {
-			switch (child.getName().toLowerCase()) {
-				case 'calc': {
-					const subCalc = calc(child, globals);
-					if (subCalc === -1) {
-						return -1;
-					}
-					nodes.splice(i, 1, subCalc);
-					break;
-				}
-
-				case 'clamp': {
-					const subCalc = clamp(child, globals);
-					if (subCalc === -1) {
-						return -1;
-					}
-					nodes.splice(i, 1, subCalc);
-					break;
-				}
-
-				case 'min': {
-					const subCalc = min(child, globals);
-					if (subCalc === -1) {
-						return -1;
-					}
-					nodes.splice(i, 1, subCalc);
-					break;
-				}
-
-				case 'max': {
-					const subCalc = max(child, globals);
-					if (subCalc === -1) {
-						return -1;
-					}
-					nodes.splice(i, 1, subCalc);
-					break;
-				}
-
-				case 'round': {
-					const subCalc = round(child, globals);
-					if (subCalc === -1) {
-						return -1;
-					}
-					nodes.splice(i, 1, subCalc);
-					break;
-				}
-
-				case 'mod': {
-					const subCalc = mod(child, globals);
-					if (subCalc === -1) {
-						return -1;
-					}
-					nodes.splice(i, 1, subCalc);
-					break;
-				}
-
-				case 'rem': {
-					const subCalc = rem(child, globals);
-					if (subCalc === -1) {
-						return -1;
-					}
-					nodes.splice(i, 1, subCalc);
-					break;
-				}
-
-				default:
-					// TODO : implement other math functions
+			const mathFunction = mathFunctions.get(child.getName().toLowerCase());
+			if (mathFunction) {
+				const subCalc = mathFunction(child, globals);
+				if (subCalc === -1) {
 					return -1;
+				}
+				nodes.splice(i, 1, subCalc);
+			} else {
+				// TODO : implement other math functions
+				return -1;
 			}
 
 			continue;
@@ -574,4 +531,42 @@ export function rem(remNodes: FunctionNode, globals: Globals): Calculation | -1 
 	}
 
 	return solveRem(remNodes, a, b);
+}
+
+export function abs(absNodes: FunctionNode, globals: Globals): Calculation | -1 {
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(absNodes.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
+
+	const a = solve(calc(new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		nodes,
+	), globals));
+
+	if (a === -1) {
+		return -1;
+	}
+
+	return solveAbs(absNodes, a);
+}
+
+export function sign(signNodes: FunctionNode, globals: Globals): Calculation | -1 {
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(signNodes.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
+
+	const a = solve(calc(new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		nodes,
+	), globals));
+
+	if (a === -1) {
+		return -1;
+	}
+
+	return solveSign(signNodes, a);
 }
