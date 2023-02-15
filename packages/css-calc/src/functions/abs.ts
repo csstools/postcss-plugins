@@ -8,8 +8,7 @@ export function solveAbs(absNodes: FunctionNode, a): Calculation | -1 {
 	if (
 		!(
 			aToken[0] === TokenType.Dimension ||
-			aToken[0] === TokenType.Number ||
-			aToken[0] === TokenType.Percentage
+			aToken[0] === TokenType.Number
 		)
 	) {
 		return -1;
