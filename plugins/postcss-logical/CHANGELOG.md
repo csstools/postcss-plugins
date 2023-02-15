@@ -1,6 +1,6 @@
 # Changes to PostCSS Logical Properties
 
-### Unreleased (minor)
+### 6.1.0 (February 15, 2023)
 
 - Adding support for `max-block-size`, `min-block-size`, `max-inline-size` and `min-inline-size`.
 
