@@ -19,9 +19,17 @@ import { solveSign } from './sign';
 import { solveSin } from './sin';
 import { solveCos } from './cos';
 import { solveTan } from './tan';
+import { solveASin } from './asin';
+import { solveACos } from './acos';
+import { solveATan } from './atan';
+import { solveATan2 } from './atan2';
 
 const mathFunctions = new Map([
 	['abs', abs],
+	['acos', acos],
+	['asin', asin],
+	['atan', atan],
+	['atan2', atan2],
 	['calc', calc],
 	['clamp', clamp],
 	['cos', cos],
@@ -632,4 +640,116 @@ export function tan(tanNodes: FunctionNode, globals: Globals): Calculation | -1 
 	}
 
 	return solveTan(tanNodes, a);
+}
+
+export function asin(asinNodes: FunctionNode, globals: Globals): Calculation | -1 {
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(asinNodes.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
+
+	const a = solve(calc(new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		nodes,
+	), globals));
+
+	if (a === -1) {
+		return -1;
+	}
+
+	return solveASin(asinNodes, a);
+}
+
+export function acos(acosNodes: FunctionNode, globals: Globals): Calculation | -1 {
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(acosNodes.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
+
+	const a = solve(calc(new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		nodes,
+	), globals));
+
+	if (a === -1) {
+		return -1;
+	}
+
+	return solveACos(acosNodes, a);
+}
+
+export function atan(atanNodes: FunctionNode, globals: Globals): Calculation | -1 {
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(atanNodes.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
+
+	const a = solve(calc(new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		nodes,
+	), globals));
+
+	if (a === -1) {
+		return -1;
+	}
+
+	return solveATan(atanNodes, a);
+}
+
+export function atan2(atan2Nodes: FunctionNode, globals: Globals): Calculation | -1 {
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(atan2Nodes.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
+
+	const aValue: Array<ComponentValue> = [];
+	const bValue: Array<ComponentValue> = [];
+
+	{
+		let focus = aValue;
+
+		for (let i = 0; i < nodes.length; i++) {
+			const node = nodes[i];
+
+			if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
+				if (focus === bValue) {
+					return -1;
+				}
+
+				if (focus === aValue) {
+					focus = bValue;
+					continue;
+				}
+
+				return -1;
+			}
+
+			focus.push(node);
+		}
+	}
+
+	const a = solve(calc(new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		aValue,
+	), globals));
+
+	if (a === -1) {
+		return -1;
+	}
+
+	const b = solve(calc(new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		bValue,
+	), globals));
+
+	if (b === -1) {
+		return -1;
+	}
+
+	return solveATan2(atan2Nodes, a, b);
 }

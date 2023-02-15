@@ -58,7 +58,7 @@
 	order: tan(tan(0.785398));
 	order: tan(tan(tan(tan(0.785398))));
 	order: tan(61deg); /* 61deg */
-	order: tan(1 + 2 * 3 * 10deg); /* 61deg should be similar to above */
+	order: tan(1deg + (2 * 3 * 10deg)); /* 61deg should be similar to above */
 	/* Asymptotes */
 	order: tan(90deg);
 	order: tan(100grad);

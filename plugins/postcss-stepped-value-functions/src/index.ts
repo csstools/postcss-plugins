@@ -33,7 +33,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			const modifiedValue = convert(decl.value, { precision: 5 });
+			const modifiedValue = convert(decl.value, { precision: 5, toCanonicalUnits: true });
 			if (modifiedValue === decl.value) {
 				return;
 			}

@@ -13,3 +13,7 @@ export declare function sign(signNodes: FunctionNode, globals: Globals): Calcula
 export declare function sin(sinNodes: FunctionNode, globals: Globals): Calculation | -1;
 export declare function cos(cosNodes: FunctionNode, globals: Globals): Calculation | -1;
 export declare function tan(tanNodes: FunctionNode, globals: Globals): Calculation | -1;
+export declare function asin(asinNodes: FunctionNode, globals: Globals): Calculation | -1;
+export declare function acos(acosNodes: FunctionNode, globals: Globals): Calculation | -1;
+export declare function atan(atanNodes: FunctionNode, globals: Globals): Calculation | -1;
+export declare function atan2(atan2Nodes: FunctionNode, globals: Globals): Calculation | -1;

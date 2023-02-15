@@ -3,12 +3,20 @@ import { patchInfinity } from './infinity';
 import { patchMinusZero } from './minus-zero';
 import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { patchPrecision } from './precision';
+import { patchCanonicalUnit } from './canonical-unit';
+import { conversionOptions } from '../options';
 
-export function patchCalcResult(x: TokenNode | FunctionNode | -1, precision: number): TokenNode | FunctionNode | -1 {
-	const postNaN = patchNaN(x);
-	const postInfinity = patchInfinity(postNaN);
-	const postPrecision = patchPrecision(postInfinity, precision);
-	const postMinusZero = patchMinusZero(postPrecision);
+export function patchCalcResult(x: TokenNode | FunctionNode | -1, options?: conversionOptions): TokenNode | FunctionNode | -1 {
+	let y = x;
+	y = patchNaN(x);
+	y = patchInfinity(y);
 
-	return postMinusZero;
+	if (options?.toCanonicalUnits) {
+		y = patchCanonicalUnit(y);
+	}
+
+	y = patchPrecision(y, options?.precision);
+	y = patchMinusZero(y);
+
+	return y;
 }

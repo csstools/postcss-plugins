@@ -486,7 +486,7 @@
 	left: atan2(-1, 1);
 	left: asin(sin(pi / 2));
 	left: atan2(infinity, -infinity);
-	left: sin((1deg + 3) + .25turn);
+	left: sin((1deg * 3) + .25turn);
 }
 
 .trigonometric-ignore-not-a-function {

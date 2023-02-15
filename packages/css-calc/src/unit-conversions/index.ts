@@ -1,4 +1,5 @@
 import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
+import { canonicalUnits } from './canonical';
 import { convert_cm } from './cm';
 import { convert_deg } from './deg';
 import { convert_grad } from './grad';
@@ -113,6 +114,42 @@ export function convertUnit<T extends CSSToken>(a: CSSToken, b: T): T {
 		{
 			value: value,
 			unit: a[4].unit,
+			type: Number.isInteger(value) ? NumberType.Integer : NumberType.Number,
+		},
+	] as T;
+}
+
+export function toCanonicalUnit<T extends CSSToken>(a: T): T {
+	if (a[0] !== TokenType.Dimension) {
+		return a;
+	}
+
+	const aUnit = a[4].unit.toLowerCase();
+	const bUnit = canonicalUnits[aUnit];
+
+	if (aUnit === bUnit) {
+		return a;
+	}
+
+	const conversionTable = conversions.get(aUnit);
+	if (!conversionTable) {
+		return a;
+	}
+
+	const conversion = conversionTable.get(bUnit);
+	if (!conversion) {
+		return a;
+	}
+
+	const value = conversion(a[4].value);
+	return [
+		TokenType.Dimension,
+		value.toString() + bUnit,
+		a[2],
+		a[3],
+		{
+			value: value,
+			unit: bUnit,
 			type: Number.isInteger(value) ? NumberType.Integer : NumberType.Number,
 		},
 	] as T;

@@ -1,2 +1,3 @@
 import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
-export declare function patchCalcResult(x: TokenNode | FunctionNode | -1, precision: number): TokenNode | FunctionNode | -1;
+import { conversionOptions } from '../options';
+export declare function patchCalcResult(x: TokenNode | FunctionNode | -1, options?: conversionOptions): TokenNode | FunctionNode | -1;

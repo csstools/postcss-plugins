@@ -1,12 +1,19 @@
 import { stringify, tokenizer } from '@csstools/css-tokenizer';
 import { isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { solve } from './calculation';
-import { abs, calc, clamp, cos, max, min, mod, rem, round, sign, sin, tan } from './functions/calc';
-import { GlobalsWithStrings, tokenizeGlobals } from './util/globals';
+import { abs, acos, asin, atan, atan2, calc, clamp, cos, max, min, mod, rem, round, sign, sin, tan } from './functions/calc';
+import { tokenizeGlobals } from './util/globals';
 import { patchCalcResult } from './util/patch-result';
+
+import type { conversionOptions } from './options';
+export type { conversionOptions } from './options';
 
 const mathFunctions = new Map([
 	['abs', abs],
+	['acos', acos],
+	['asin', asin],
+	['atan', atan],
+	['atan2', atan2],
 	['calc', calc],
 	['clamp', clamp],
 	['cos', cos],
@@ -20,12 +27,7 @@ const mathFunctions = new Map([
 	['tan', tan],
 ]);
 
-export type options = {
-	globals?: GlobalsWithStrings,
-	precision: number,
-};
-
-export function convert(css: string, options?: options) {
+export function convert(css: string, options?: conversionOptions) {
 	const tokenizedGlobals = tokenizeGlobals(options?.globals);
 
 	const t = tokenizer({
@@ -53,7 +55,7 @@ export function convert(css: string, options?: options) {
 			if (isFunctionNode(componentValue)) {
 				const mathFunction = mathFunctions.get(componentValue.getName().toLowerCase());
 				if (mathFunction) {
-					const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals)), options?.precision);
+					const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals)), options);
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
@@ -77,7 +79,7 @@ export function convert(css: string, options?: options) {
 						return;
 					}
 
-					const calcResult = patchCalcResult(solve(mathFunction(node, tokenizedGlobals)), options?.precision);
+					const calcResult = patchCalcResult(solve(mathFunction(node, tokenizedGlobals)), options);
 					if (calcResult !== -1) {
 						entry.parent.value.splice(index, 1, calcResult);
 						return;
