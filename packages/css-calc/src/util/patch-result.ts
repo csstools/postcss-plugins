@@ -5,5 +5,10 @@ import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { patchPrecision } from './precision';
 
 export function patchCalcResult(x: TokenNode | FunctionNode | -1): TokenNode | FunctionNode | -1 {
-	return patchPrecision(patchMinusZero(patchInfinity(patchNaN(x))));
+	const postNaN = patchNaN(x);
+	const postInfinity = patchInfinity(postNaN);
+	const postMinusZero = patchMinusZero(postInfinity);
+	const postPrecision = patchPrecision(postMinusZero);
+
+	return postPrecision;
 }
