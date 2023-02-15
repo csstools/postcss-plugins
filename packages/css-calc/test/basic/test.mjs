@@ -43,7 +43,7 @@ assert.strictEqual(
 	]);
 
 	assert.strictEqual(
-		convert('foo(something calc(2 * r + 7 * 5) something-else)', globals),
+		convert('foo(something calc(2 * r + 7 * 5) something-else)', { globals: globals }),
 		`foo(something ${(2 * 3 + 7 * 5).toString()} something-else)`,
 	);
 }
@@ -56,7 +56,7 @@ assert.strictEqual(
 	]);
 
 	assert.strictEqual(
-		convert('rgb(from rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', globals),
+		convert('rgb(from rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', { globals: globals }),
 		`rgb(from rgb(50 100 150) ${(50 * 2).toString()} ${(100 / 2).toString()} ${(150 / 3).toString()})`,
 	);
 }
@@ -69,7 +69,7 @@ assert.strictEqual(
 	]);
 
 	assert.strictEqual(
-		convert('rgb(from rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', globals),
+		convert('rgb(from rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', { globals: globals }),
 		`rgb(from rgb(50 100 150) ${(50 * 2).toString()} ${(100 / 2).toString()} ${(150 / 3).toString()})`,
 	);
 }
@@ -82,7 +82,7 @@ assert.strictEqual(
 	]);
 
 	assert.strictEqual(
-		convert('calc(a * 2) calc(b / 2) calc(c / 3)', globals),
+		convert('calc(a * 2) calc(b / 2) calc(c / 3)', { globals: globals }),
 		`${(50 * 2).toString()}s ${(100 / 2).toString()}in ${(150 / 3).toString()}q`,
 	);
 }

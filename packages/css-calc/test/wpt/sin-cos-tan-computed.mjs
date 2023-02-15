@@ -33,12 +33,12 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('calc(sin(30deg + 1.0471967rad ) )'),
-	'0.999999999999638',
+	'0.9999999999996',
 );
 
 assert.strictEqual(
 	convert('calc(cos(30deg - 0.523599rad ) )'),
-	'0.999999999999975',
+	'1',
 );
 
 assert.strictEqual(
@@ -58,12 +58,12 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('calc(tan(30deg + 0.261799rad ) )'),
-	'0.999999224402002',
+	'0.999999224402',
 );
 
 assert.strictEqual(
 	convert('calc(tan(0.7853975rad ) )'),
-	'0.999998673205984',
+	'0.999998673206',
 );
 
 assert.strictEqual(

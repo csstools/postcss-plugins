@@ -1,7 +1,7 @@
 import { FunctionNode, isFunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { TokenType } from '@csstools/css-tokenizer';
 
-export function patchPrecision(x: TokenNode | FunctionNode | -1): TokenNode | FunctionNode | -1 {
+export function patchPrecision(x: TokenNode | FunctionNode | -1, precision = 13): TokenNode | FunctionNode | -1 {
 	if (x === -1) {
 		return -1;
 	}
@@ -23,7 +23,7 @@ export function patchPrecision(x: TokenNode | FunctionNode | -1): TokenNode | Fu
 		return x;
 	}
 
-	const result = Number(token[4].value.toPrecision(15)).toString();
+	const result = Number(token[4].value.toFixed(precision)).toString();
 	if (token[0] === TokenType.Number) {
 		token[1] = result;
 	} else if (token[0] === TokenType.Percentage) {

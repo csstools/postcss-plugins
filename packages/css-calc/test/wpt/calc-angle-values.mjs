@@ -8,7 +8,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('calc(45deg + 1rad)'),
-	'102.295779513082deg',
+	'102.2957795130823deg',
 );
 
 assert.strictEqual(
@@ -33,12 +33,12 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('calc(1rad + 0.5turn)'),
-	'4.14159265358979rad',
+	'4.1415926535898rad',
 );
 
 assert.strictEqual(
 	convert('calc(0deg + (1rad + 0.5turn))'),
-	'237.295779513082deg',
+	'237.2957795130823deg',
 );
 
 assert.strictEqual(
@@ -103,17 +103,17 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('rotate(calc(0deg + (30rad - 10grad)))'),
-	'rotate(1709.87338539247deg)',
+	'rotate(1709.8733853924696deg)',
 );
 
 assert.strictEqual(
 	convert('rotate(calc(4rad - 0.1turn))'),
-	'rotate(3.37168146928204rad)',
+	'rotate(3.371681469282rad)',
 );
 
 assert.strictEqual(
 	convert('rotate(calc(0deg + (4rad - 0.1turn)))'),
-	'rotate(193.183118052329deg)',
+	'rotate(193.1831180523293deg)',
 );
 
 assert.strictEqual(

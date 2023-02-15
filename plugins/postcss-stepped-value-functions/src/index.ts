@@ -33,7 +33,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			const modifiedValue = convert(decl.value);
+			const modifiedValue = convert(decl.value, { precision: 5 });
 			if (modifiedValue === decl.value) {
 				return;
 			}
@@ -55,4 +55,3 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
-

@@ -1,2 +1,6 @@
 import { GlobalsWithStrings } from './util/globals';
-export declare function convert(css: string, globals?: GlobalsWithStrings): string;
+export type options = {
+    globals?: GlobalsWithStrings;
+    precision: number;
+};
+export declare function convert(css: string, options?: options): string;

@@ -20,8 +20,13 @@ const mathFunctions = new Map([
 	['tan', tan],
 ]);
 
-export function convert(css: string, globals?: GlobalsWithStrings) {
-	const tokenizedGlobals = tokenizeGlobals(globals);
+export type options = {
+	globals?: GlobalsWithStrings,
+	precision: number,
+};
+
+export function convert(css: string, options?: options) {
+	const tokenizedGlobals = tokenizeGlobals(options?.globals);
 
 	const t = tokenizer({
 		css: css,
@@ -37,9 +42,7 @@ export function convert(css: string, globals?: GlobalsWithStrings) {
 		tokens.push(t.nextToken()); // EOF-token
 	}
 
-	const options = {};
-
-	const result = parseCommaSeparatedListOfComponentValues(tokens, options);
+	const result = parseCommaSeparatedListOfComponentValues(tokens, {});
 
 	for (let i = 0; i < result.length; i++) {
 		const componentValues = result[i];
@@ -50,7 +53,7 @@ export function convert(css: string, globals?: GlobalsWithStrings) {
 			if (isFunctionNode(componentValue)) {
 				const mathFunction = mathFunctions.get(componentValue.getName().toLowerCase());
 				if (mathFunction) {
-					const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals)));
+					const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals)), options?.precision);
 					if (calcResult !== -1) {
 						componentValues.splice(j, 1, calcResult);
 						continue;
@@ -74,7 +77,7 @@ export function convert(css: string, globals?: GlobalsWithStrings) {
 						return;
 					}
 
-					const calcResult = patchCalcResult(solve(mathFunction(node, tokenizedGlobals)));
+					const calcResult = patchCalcResult(solve(mathFunction(node, tokenizedGlobals)), options?.precision);
 					if (calcResult !== -1) {
 						entry.parent.value.splice(index, 1, calcResult);
 						return;

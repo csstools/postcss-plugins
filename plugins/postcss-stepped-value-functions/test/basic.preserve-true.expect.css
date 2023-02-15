@@ -65,9 +65,9 @@
 }
 
 .unit {
-	top: 37.7952755905512px;
+	top: 37.79528px;
 	top: round(up, 25px, 1cm);
-	bottom: 24.8708333333333cm;
+	bottom: 24.87083cm;
 	bottom: round(down, 25cm, 10px);
 	left: 35ms;
 	left: mod(735ms, 0.1s);

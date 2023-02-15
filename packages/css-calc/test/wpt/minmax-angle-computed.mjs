@@ -103,7 +103,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('min(270deg, max(0.25turn, 3.14rad))'),
-	'179.908747671079deg',
+	'179.9087476710785deg',
 );
 
 assert.strictEqual(
@@ -113,7 +113,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('max(0.25turn, min(270deg, 3.14rad))'),
-	'0.499746521308551turn',
+	'0.4997465213086turn',
 );
 
 assert.strictEqual(

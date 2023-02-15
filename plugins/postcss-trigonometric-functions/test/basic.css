@@ -4,7 +4,7 @@
 	order: sin(.125turn); /* 45deg */
 	order: sin(1 / 8turn); /* 45deg */
 	order: sin(50grad); /* 45deg */
-	order: sin(10 + 4 * 10grad); /* 45deg */
+	order: sin((1 + 4) * 10grad); /* 45deg */
 	order: sin(0.785398rad); /* 45deg */
 	order: sin(0.785398); /* 45deg */
 	order: sin(-45deg); /* -45deg */
