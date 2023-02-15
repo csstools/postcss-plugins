@@ -1,5 +1,6 @@
 .element {
 	height: 100px;
+	max-width: 400px;
 	width: 200px;
 	padding-top: 10px;
 	padding-bottom: 20px;
