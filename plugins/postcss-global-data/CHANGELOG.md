@@ -1,6 +1,6 @@
 # Changes to PostCSS global-data
 
-### Unreleased (patch)
+### 1.0.2 (February 15, 2023)
 
 - Fixed: file watching with PostCSS CLI
 
