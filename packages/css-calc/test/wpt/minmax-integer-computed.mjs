@@ -23,7 +23,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('calc(min(0.1, 0.2) + 0.05)'),
-	'0.15000000000000002',
+	'0.15',
 );
 
 assert.strictEqual(
@@ -48,7 +48,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('calc(max(0.1, 0.2) - 0.05)'),
-	'0.15000000000000002',
+	'0.15',
 );
 
 assert.strictEqual(

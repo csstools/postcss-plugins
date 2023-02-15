@@ -43,7 +43,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('calc(abs(0.1 + 0.2) + 0.05)'),
-	'0.35000000000000003',
+	'0.35',
 );
 
 assert.strictEqual(
@@ -53,7 +53,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('calc(abs(0.1 + 0.2) * 2)'),
-	'0.6000000000000001',
+	'0.6',
 );
 
 assert.strictEqual(
@@ -63,7 +63,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	convert('calc(abs(0.1 + 0.2) * -2)'),
-	'-0.6000000000000001',
+	'-0.6',
 );
 
 assert.strictEqual(
