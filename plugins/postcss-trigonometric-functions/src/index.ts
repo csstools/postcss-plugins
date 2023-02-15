@@ -31,18 +31,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			];
 
 			const hasSupportedFunction = checks.some(functionCheck => decl.value.toLowerCase().includes(functionCheck));
-
-			if (!decl || !hasSupportedFunction) {
+			if (!hasSupportedFunction) {
 				return;
 			}
 
 			const modifiedValue = convert(decl.value, { precision: 5, toCanonicalUnits: true });
 			if (modifiedValue === decl.value) {
-				return;
-			}
-
-			const stillHasSupportedFunction = checks.some(functionCheck => modifiedValue.toLowerCase().includes(functionCheck));
-			if (stillHasSupportedFunction) {
 				return;
 			}
 
