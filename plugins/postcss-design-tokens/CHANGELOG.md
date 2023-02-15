@@ -1,6 +1,6 @@
 # Changes to PostCSS Design Tokens
 
-### Unreleased (patch)
+### 2.0.3 (February 15, 2023)
 
 - Fixed: file watching with PostCSS CLI
 
