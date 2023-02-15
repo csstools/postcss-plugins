@@ -9,7 +9,9 @@ export function transformLogicalSize(
 		const { value } = declaration;
 		const inlineProp = directionConfig.inlineIsHorizontal ? 'width' : 'height';
 		const blockProp = directionConfig.inlineIsHorizontal ? 'height' : 'width';
-		const prop = declaration.prop === 'block-size' ? blockProp : inlineProp;
+		const prop = declaration.prop.toLowerCase()
+			.replace('inline-size', inlineProp)
+			.replace('block-size', blockProp);
 
 		cloneDeclaration(
 			declaration,
