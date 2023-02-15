@@ -16,17 +16,23 @@ import { solveMod } from './mod';
 import { solveRem } from './rem';
 import { solveAbs } from './abs';
 import { solveSign } from './sign';
+import { solveSin } from './sin';
+import { solveCos } from './cos';
+import { solveTan } from './tan';
 
 const mathFunctions = new Map([
 	['abs', abs],
 	['calc', calc],
 	['clamp', clamp],
+	['cos', cos],
 	['max', max],
 	['min', min],
 	['mod', mod],
 	['rem', rem],
 	['round', round],
 	['sign', sign],
+	['sin', sin],
+	['tan', tan],
 ]);
 
 export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calculation | -1 {
@@ -569,4 +575,61 @@ export function sign(signNodes: FunctionNode, globals: Globals): Calculation | -
 	}
 
 	return solveSign(signNodes, a);
+}
+
+export function sin(sinNodes: FunctionNode, globals: Globals): Calculation | -1 {
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(sinNodes.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
+
+	const a = solve(calc(new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		nodes,
+	), globals));
+
+	if (a === -1) {
+		return -1;
+	}
+
+	return solveSin(sinNodes, a);
+}
+
+export function cos(cosNodes: FunctionNode, globals: Globals): Calculation | -1 {
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(cosNodes.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
+
+	const a = solve(calc(new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		nodes,
+	), globals));
+
+	if (a === -1) {
+		return -1;
+	}
+
+	return solveCos(cosNodes, a);
+}
+
+export function tan(tanNodes: FunctionNode, globals: Globals): Calculation | -1 {
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(tanNodes.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		globals,
+	);
+
+	const a = solve(calc(new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		nodes,
+	), globals));
+
+	if (a === -1) {
+		return -1;
+	}
+
+	return solveTan(tanNodes, a);
 }

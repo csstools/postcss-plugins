@@ -10,3 +10,6 @@ export declare function mod(modNodes: FunctionNode, globals: Globals): Calculati
 export declare function rem(remNodes: FunctionNode, globals: Globals): Calculation | -1;
 export declare function abs(absNodes: FunctionNode, globals: Globals): Calculation | -1;
 export declare function sign(signNodes: FunctionNode, globals: Globals): Calculation | -1;
+export declare function sin(sinNodes: FunctionNode, globals: Globals): Calculation | -1;
+export declare function cos(cosNodes: FunctionNode, globals: Globals): Calculation | -1;
+export declare function tan(tanNodes: FunctionNode, globals: Globals): Calculation | -1;

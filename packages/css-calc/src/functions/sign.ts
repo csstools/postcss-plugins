@@ -3,7 +3,7 @@ import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { Calculation } from '../calculation';
 import { unary } from '../operation/unary';
 
-export function solveSign(signNodes: FunctionNode, a): Calculation | -1 {
+export function solveSign(signNodes: FunctionNode, a: TokenNode): Calculation | -1 {
 	const aToken = a.value;
 	if (
 		!(

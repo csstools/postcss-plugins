@@ -1,9 +1,9 @@
 import { TokenType } from '@csstools/css-tokenizer';
-import { FunctionNode } from '@csstools/css-parser-algorithms';
+import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { Calculation } from '../calculation';
 import { resultToCalculation } from './result-to-calculation';
 
-export function solveAbs(absNodes: FunctionNode, a): Calculation | -1 {
+export function solveAbs(absNodes: FunctionNode, a: TokenNode): Calculation | -1 {
 	const aToken = a.value;
 	if (
 		!(
