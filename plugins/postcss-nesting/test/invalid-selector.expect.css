@@ -4,10 +4,10 @@
 	}
 }
 
-@nest &.child {
-	}
-
 .foo : bar {
+	@nest &.child {
+		order: 2;
+	}
 }
 
 .foo {
@@ -16,8 +16,8 @@
 	}
 }
 
-@nest &.child : bar {
-	}
-
 .foo {
+	@nest &.child : bar {
+		order: 4;
+	}
 }
