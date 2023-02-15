@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Ignore invalid nested rules
+- Ignore invalid nested rules that begin with a letter
 - Better warning when nested selectors begin with a letter
 
 ### 11.2.0 (February 13, 2023)
