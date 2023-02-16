@@ -9,8 +9,7 @@ export function solveATan2(atan2Nodes: FunctionNode, a: TokenNode, b: TokenNode)
 	if (
 		!(
 			aToken[0] === TokenType.Dimension ||
-			aToken[0] === TokenType.Number ||
-			aToken[0] === TokenType.Percentage
+			aToken[0] === TokenType.Number
 		)
 	) {
 		return -1;
