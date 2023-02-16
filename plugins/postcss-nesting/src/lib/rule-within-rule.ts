@@ -16,6 +16,10 @@ export default function transformRuleWithinRule(node: Rule, parent: Rule, result
 		return;
 	}
 
+	if (!selectors.length) {
+		return;
+	}
+
 	// Group all declarations after the first one.
 	groupDeclarations(parent);
 
