@@ -30,7 +30,7 @@ export default function mergeSelectors(node: Node, postcssResult: Result, fromSe
 			if (!fromAtNest) {
 				if (x === 0 && toSelectorAST.nodes?.[0]?.nodes?.[0]?.type === 'tag') {
 					node.warn(postcssResult, `Nested selectors must start with a symbol and "${toSelectors[x]}" begins with a letter.`);
-					return result;
+					return [];
 				}
 			}
 
