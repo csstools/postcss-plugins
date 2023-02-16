@@ -93,4 +93,5 @@
 	font-size: round;
 	font-size: round();
 	font-size: round(1px);
+	color: color-mod(calc(1 + 1), 1);
 }

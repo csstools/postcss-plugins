@@ -1,5 +1,6 @@
 import type { PluginCreator } from 'postcss';
-import { convert } from '@csstools/css-calc';
+import { checks } from './checks';
+import { calc } from './calc';
 
 /** postcss-trigonometric-functions plugin options */
 export type pluginOptions = {
@@ -20,22 +21,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-trigonometric-functions',
 		Declaration(decl) {
-			const checks = [
-				'asin(',
-				'acos(',
-				'atan(',
-				'atan2(',
-				'sin(',
-				'cos(',
-				'tan(',
-			];
-
 			const hasSupportedFunction = checks.some(functionCheck => decl.value.toLowerCase().includes(functionCheck));
 			if (!hasSupportedFunction) {
 				return;
 			}
 
-			const modifiedValue = convert(decl.value, { precision: 5, toCanonicalUnits: true });
+			const modifiedValue = calc(decl.value);
 			if (modifiedValue === decl.value) {
 				return;
 			}

@@ -1,3 +1,3 @@
-import { convert } from '@csstools/css-calc';
+import { calc } from '@csstools/css-calc';
 
-convert('calc(10 * 2)');
+calc('calc(10 * 2)');

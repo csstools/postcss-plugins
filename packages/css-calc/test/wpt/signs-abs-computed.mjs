@@ -1,707 +1,707 @@
-import { convert } from '@csstools/css-calc';
+import { calc } from '@csstools/css-calc';
 import assert from 'assert';
 
 assert.strictEqual(
-	convert('calc(45deg + 45deg)'),
+	calc('calc(45deg + 45deg)'),
 	'90deg',
 );
 
 assert.strictEqual(
-	convert('abs(1)'),
+	calc('abs(1)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1)'),
+	calc('sign(1)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('abs(-1)'),
+	calc('abs(-1)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(-1)'),
+	calc('sign(-1)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('abs(sign(1))'),
+	calc('abs(sign(1))'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('abs(sign(sign(1)))'),
+	calc('abs(sign(sign(1)))'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(sign(sign(1) + sign(1)))'),
+	calc('sign(sign(sign(1) + sign(1)))'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('calc(abs(0.1 + 0.2) + 0.05)'),
+	calc('calc(abs(0.1 + 0.2) + 0.05)'),
 	'0.35',
 );
 
 assert.strictEqual(
-	convert('calc(sign(0.1 + 0.2) - 0.05)'),
+	calc('calc(sign(0.1 + 0.2) - 0.05)'),
 	'0.95',
 );
 
 assert.strictEqual(
-	convert('calc(abs(0.1 + 0.2) * 2)'),
+	calc('calc(abs(0.1 + 0.2) * 2)'),
 	'0.6',
 );
 
 assert.strictEqual(
-	convert('calc(abs(sign(0.1) + 0.2) / 2)'),
+	calc('calc(abs(sign(0.1) + 0.2) / 2)'),
 	'0.6',
 );
 
 assert.strictEqual(
-	convert('calc(abs(0.1 + 0.2) * -2)'),
+	calc('calc(abs(0.1 + 0.2) * -2)'),
 	'-0.6',
 );
 
 assert.strictEqual(
-	convert('calc(sign(0.1 - 0.2) - 0.05)'),
+	calc('calc(sign(0.1 - 0.2) - 0.05)'),
 	'-1.05',
 );
 
 assert.strictEqual(
-	convert('calc(sign(1) + sign(1) - 0.05)'),
+	calc('calc(sign(1) + sign(1) - 0.05)'),
 	'1.95',
 );
 
 assert.strictEqual(
-	convert('calc(sign(-0))'),
+	calc('calc(sign(-0))'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('calc(sign(0))'),
+	calc('calc(sign(0))'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(1px)'),
+	calc('sign(1px)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1cm)'),
+	calc('sign(1cm)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1mm)'),
+	calc('sign(1mm)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1Q)'),
+	calc('sign(1Q)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1in)'),
+	calc('sign(1in)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1pc)'),
+	calc('sign(1pc)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1pt)'),
+	calc('sign(1pt)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1em)'),
+	calc('sign(1em)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1ex)'),
+	calc('sign(1ex)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1ch)'),
+	calc('sign(1ch)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1rem)'),
+	calc('sign(1rem)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1vh)'),
+	calc('sign(1vh)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1vw)'),
+	calc('sign(1vw)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1vmin)'),
+	calc('sign(1vmin)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1vmax)'),
+	calc('sign(1vmax)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(-1px)'),
+	calc('sign(-1px)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1cm)'),
+	calc('sign(-1cm)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1mm)'),
+	calc('sign(-1mm)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1Q)'),
+	calc('sign(-1Q)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1in)'),
+	calc('sign(-1in)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1pc)'),
+	calc('sign(-1pc)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1pt)'),
+	calc('sign(-1pt)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1em)'),
+	calc('sign(-1em)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1ex)'),
+	calc('sign(-1ex)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1ch)'),
+	calc('sign(-1ch)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1rem)'),
+	calc('sign(-1rem)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1vh)'),
+	calc('sign(-1vh)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1vw)'),
+	calc('sign(-1vw)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1vmin)'),
+	calc('sign(-1vmin)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1vmax)'),
+	calc('sign(-1vmax)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(1s)'),
+	calc('sign(1s)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1ms)'),
+	calc('sign(1ms)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(-1s)'),
+	calc('sign(-1s)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1ms)'),
+	calc('sign(-1ms)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(1deg)'),
+	calc('sign(1deg)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1grad)'),
+	calc('sign(1grad)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1rad)'),
+	calc('sign(1rad)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(1turn)'),
+	calc('sign(1turn)'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('sign(-1deg)'),
+	calc('sign(-1deg)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1grad)'),
+	calc('sign(-1grad)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1rad)'),
+	calc('sign(-1rad)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(-1turn)'),
+	calc('sign(-1turn)'),
 	'-1',
 );
 
 assert.strictEqual(
-	convert('sign(0px)'),
+	calc('sign(0px)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0cm)'),
+	calc('sign(0cm)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0mm)'),
+	calc('sign(0mm)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0Q)'),
+	calc('sign(0Q)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0in)'),
+	calc('sign(0in)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0pc)'),
+	calc('sign(0pc)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0pt)'),
+	calc('sign(0pt)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0em)'),
+	calc('sign(0em)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0ex)'),
+	calc('sign(0ex)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0ch)'),
+	calc('sign(0ch)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0rem)'),
+	calc('sign(0rem)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0vh)'),
+	calc('sign(0vh)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0vw)'),
+	calc('sign(0vw)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0vmin)'),
+	calc('sign(0vmin)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0vmax)'),
+	calc('sign(0vmax)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(-0px)'),
+	calc('sign(-0px)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0cm)'),
+	calc('sign(-0cm)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0mm)'),
+	calc('sign(-0mm)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0Q)'),
+	calc('sign(-0Q)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0in)'),
+	calc('sign(-0in)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0pc)'),
+	calc('sign(-0pc)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0pt)'),
+	calc('sign(-0pt)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0em)'),
+	calc('sign(-0em)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0ex)'),
+	calc('sign(-0ex)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0ch)'),
+	calc('sign(-0ch)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0rem)'),
+	calc('sign(-0rem)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0vh)'),
+	calc('sign(-0vh)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0vw)'),
+	calc('sign(-0vw)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0vmin)'),
+	calc('sign(-0vmin)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0vmax)'),
+	calc('sign(-0vmax)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(0s)'),
+	calc('sign(0s)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0ms)'),
+	calc('sign(0ms)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0deg)'),
+	calc('sign(0deg)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0grad)'),
+	calc('sign(0grad)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0rad)'),
+	calc('sign(0rad)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(0turn)'),
+	calc('sign(0turn)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('sign(-0deg)'),
+	calc('sign(-0deg)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0grad)'),
+	calc('sign(-0grad)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0rad)'),
+	calc('sign(-0rad)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('sign(-0turn)'),
+	calc('sign(-0turn)'),
 	'-0',
 );
 
 assert.strictEqual(
-	convert('abs(1px)'),
+	calc('abs(1px)'),
 	'1px',
 );
 
 assert.strictEqual(
-	convert('abs(1cm)'),
+	calc('abs(1cm)'),
 	'1cm',
 );
 
 assert.strictEqual(
-	convert('abs(1mm)'),
+	calc('abs(1mm)'),
 	'1mm',
 );
 
 assert.strictEqual(
-	convert('abs(1Q)'),
+	calc('abs(1Q)'),
 	'1Q',
 );
 
 assert.strictEqual(
-	convert('abs(1in)'),
+	calc('abs(1in)'),
 	'1in',
 );
 
 assert.strictEqual(
-	convert('abs(1pc)'),
+	calc('abs(1pc)'),
 	'1pc',
 );
 
 assert.strictEqual(
-	convert('abs(1pt)'),
+	calc('abs(1pt)'),
 	'1pt',
 );
 
 assert.strictEqual(
-	convert('abs(1em)'),
+	calc('abs(1em)'),
 	'1em',
 );
 
 assert.strictEqual(
-	convert('abs(1ex)'),
+	calc('abs(1ex)'),
 	'1ex',
 );
 
 assert.strictEqual(
-	convert('abs(1ch)'),
+	calc('abs(1ch)'),
 	'1ch',
 );
 
 assert.strictEqual(
-	convert('abs(1rem)'),
+	calc('abs(1rem)'),
 	'1rem',
 );
 
 assert.strictEqual(
-	convert('abs(1vh)'),
+	calc('abs(1vh)'),
 	'1vh',
 );
 
 assert.strictEqual(
-	convert('abs(1vw)'),
+	calc('abs(1vw)'),
 	'1vw',
 );
 
 assert.strictEqual(
-	convert('abs(1vmin)'),
+	calc('abs(1vmin)'),
 	'1vmin',
 );
 
 assert.strictEqual(
-	convert('abs(1vmax)'),
+	calc('abs(1vmax)'),
 	'1vmax',
 );
 
 assert.strictEqual(
-	convert('abs(-1px)'),
+	calc('abs(-1px)'),
 	'1px',
 );
 
 assert.strictEqual(
-	convert('abs(-1cm)'),
+	calc('abs(-1cm)'),
 	'1cm',
 );
 
 assert.strictEqual(
-	convert('abs(-1mm)'),
+	calc('abs(-1mm)'),
 	'1mm',
 );
 
 assert.strictEqual(
-	convert('abs(-1Q)'),
+	calc('abs(-1Q)'),
 	'1Q',
 );
 
 assert.strictEqual(
-	convert('abs(-1in)'),
+	calc('abs(-1in)'),
 	'1in',
 );
 
 assert.strictEqual(
-	convert('abs(-1pc)'),
+	calc('abs(-1pc)'),
 	'1pc',
 );
 
 assert.strictEqual(
-	convert('abs(-1pt)'),
+	calc('abs(-1pt)'),
 	'1pt',
 );
 
 assert.strictEqual(
-	convert('abs(-1em)'),
+	calc('abs(-1em)'),
 	'1em',
 );
 
 assert.strictEqual(
-	convert('abs(-1ex)'),
+	calc('abs(-1ex)'),
 	'1ex',
 );
 
 assert.strictEqual(
-	convert('abs(-1ch)'),
+	calc('abs(-1ch)'),
 	'1ch',
 );
 
 assert.strictEqual(
-	convert('abs(-1rem)'),
+	calc('abs(-1rem)'),
 	'1rem',
 );
 
 assert.strictEqual(
-	convert('abs(-1vh)'),
+	calc('abs(-1vh)'),
 	'1vh',
 );
 
 assert.strictEqual(
-	convert('abs(-1vw)'),
+	calc('abs(-1vw)'),
 	'1vw',
 );
 
 assert.strictEqual(
-	convert('abs(-1vmin)'),
+	calc('abs(-1vmin)'),
 	'1vmin',
 );
 
 assert.strictEqual(
-	convert('abs(-1vmax)'),
+	calc('abs(-1vmax)'),
 	'1vmax',
 );
 
 assert.strictEqual(
-	convert('abs(1s)'),
+	calc('abs(1s)'),
 	'1s',
 );
 
 assert.strictEqual(
-	convert('abs(1ms)'),
+	calc('abs(1ms)'),
 	'1ms',
 );
 
 assert.strictEqual(
-	convert('abs(-1s)'),
+	calc('abs(-1s)'),
 	'1s',
 );
 
 assert.strictEqual(
-	convert('abs(-1ms)'),
+	calc('abs(-1ms)'),
 	'1ms',
 );
 
 assert.strictEqual(
-	convert('abs(1deg)'),
+	calc('abs(1deg)'),
 	'1deg',
 );
 
 assert.strictEqual(
-	convert('abs(1grad)'),
+	calc('abs(1grad)'),
 	'1grad',
 );
 
 assert.strictEqual(
-	convert('abs(1rad)'),
+	calc('abs(1rad)'),
 	'1rad',
 );
 
 assert.strictEqual(
-	convert('abs(1turn)'),
+	calc('abs(1turn)'),
 	'1turn',
 );
 
 assert.strictEqual(
-	convert('abs(-1deg)'),
+	calc('abs(-1deg)'),
 	'1deg',
 );
 
 assert.strictEqual(
-	convert('abs(-1grad)'),
+	calc('abs(-1grad)'),
 	'1grad',
 );
 
 assert.strictEqual(
-	convert('abs(-1rad)'),
+	calc('abs(-1rad)'),
 	'1rad',
 );
 
 assert.strictEqual(
-	convert('abs(-1turn)'),
+	calc('abs(-1turn)'),
 	'1turn',
 );

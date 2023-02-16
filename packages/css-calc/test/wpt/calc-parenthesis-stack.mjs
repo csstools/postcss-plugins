@@ -1,7 +1,7 @@
-import { convert } from '@csstools/css-calc';
+import { calc } from '@csstools/css-calc';
 import assert from 'assert';
 
 assert.strictEqual(
-	convert('calc((((((((((((((((((((((((((((((((100%))))))))))))))))))))))))))))))))'),
+	calc('calc((((((((((((((((((((((((((((((((100%))))))))))))))))))))))))))))))))'),
 	'100%',
 );

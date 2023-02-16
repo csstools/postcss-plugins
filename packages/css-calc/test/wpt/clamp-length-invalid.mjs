@@ -1,63 +1,63 @@
-import { convert } from '@csstools/css-calc';
+import { calc } from '@csstools/css-calc';
 import assert from 'assert';
 
 assert.strictEqual(
-	convert('clamp()'),
+	calc('clamp()'),
 	'clamp()',
 );
 
 assert.strictEqual(
-	convert('clamp( )'),
+	calc('clamp( )'),
 	'clamp( )',
 );
 
 assert.strictEqual(
-	convert('clamp(,)'),
+	calc('clamp(,)'),
 	'clamp(,)',
 );
 
 assert.strictEqual(
-	convert('clamp(1px, )'),
+	calc('clamp(1px, )'),
 	'clamp(1px, )',
 );
 
 assert.strictEqual(
-	convert('clamp(, 1px)'),
+	calc('clamp(, 1px)'),
 	'clamp(, 1px)',
 );
 
 assert.strictEqual(
-	convert('clamp(1px, 1px)'),
+	calc('clamp(1px, 1px)'),
 	'clamp(1px, 1px)',
 );
 
 assert.strictEqual(
-	convert('clamp(1px, , 1px)'),
+	calc('clamp(1px, , 1px)'),
 	'clamp(1px, , 1px)',
 );
 
 assert.strictEqual(
-	convert('clamp(, 1px, 1px)'),
+	calc('clamp(, 1px, 1px)'),
 	'clamp(, 1px, 1px)',
 );
 
 assert.strictEqual(
-	convert('clamp(1px, 1px, )'),
+	calc('clamp(1px, 1px, )'),
 	'clamp(1px, 1px, )',
 );
 
 assert.strictEqual(
-	convert('clamp(1px, 1px, 1px, )'),
+	calc('clamp(1px, 1px, 1px, )'),
 	'clamp(1px, 1px, 1px, )',
 );
 
 assert.strictEqual(
-	convert('clamp(1px 1px 1px)'),
+	calc('clamp(1px 1px 1px)'),
 	'clamp(1px 1px 1px)',
 );
 
 assert.strictEqual(
-	convert('clamp(0, 10rem, 100%)'),
+	calc('clamp(0, 10rem, 100%)'),
 	'clamp(0, 10rem, 100%)',
 );
 

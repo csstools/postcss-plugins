@@ -38,7 +38,7 @@
 		"README.md",
 		"dist"
 	],
-	"dependencies": {
+	"peerDependencies": {
 		"@csstools/css-parser-algorithms": "^2.0.1",
 		"@csstools/css-tokenizer": "^2.0.1"
 	},

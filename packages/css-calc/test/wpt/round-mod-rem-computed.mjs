@@ -1,585 +1,585 @@
-import { convert } from '@csstools/css-calc';
+import { calc } from '@csstools/css-calc';
 import assert from 'assert';
 
 assert.strictEqual(
-	convert('calc(45deg + 45deg)'),
+	calc('calc(45deg + 45deg)'),
 	'90deg',
 );
 
 // Simple tests
 assert.strictEqual(
-	convert('round(10,10)'),
+	calc('round(10,10)'),
 	'10',
 );
 
 assert.strictEqual(
-	convert('mod(1,1)'),
+	calc('mod(1,1)'),
 	'0',
 );
 
 assert.strictEqual(
-	convert('rem(1,1)'),
+	calc('rem(1,1)'),
 	'0',
 );
 
 
 //Test basic round
 assert.strictEqual(
-	convert('calc(round(100,10))'),
+	calc('calc(round(100,10))'),
 	'100',
 );
 
 assert.strictEqual(
-	convert('calc(round(up, 101,10))'),
+	calc('calc(round(up, 101,10))'),
 	'110',
 );
 
 assert.strictEqual(
-	convert('calc(round(down, 106,10))'),
+	calc('calc(round(down, 106,10))'),
 	'100',
 );
 
 assert.strictEqual(
-	convert('calc(round(to-zero,105, 10))'),
+	calc('calc(round(to-zero,105, 10))'),
 	'100',
 );
 
 assert.strictEqual(
-	convert('calc(round(to-zero,-105, 10))'),
+	calc('calc(round(to-zero,-105, 10))'),
 	'-100',
 );
 
 assert.strictEqual(
-	convert('calc(round(-100,10))'),
+	calc('calc(round(-100,10))'),
 	'-100',
 );
 
 assert.strictEqual(
-	convert('calc(round(up, -103,10))'),
+	calc('calc(round(up, -103,10))'),
 	'-100',
 );
 
 
 //Test basic mod/rem
 assert.strictEqual(
-	convert('mod(18,5)'),
+	calc('mod(18,5)'),
 	'3',
 );
 
 assert.strictEqual(
-	convert('rem(18,5)'),
+	calc('rem(18,5)'),
 	'3',
 );
 
 assert.strictEqual(
-	convert('mod(-140,-90)'),
+	calc('mod(-140,-90)'),
 	'-50',
 );
 
 assert.strictEqual(
-	convert('mod(-18,5)'),
+	calc('mod(-18,5)'),
 	'2',
 );
 
 assert.strictEqual(
-	convert('rem(-18,5)'),
+	calc('rem(-18,5)'),
 	'-3',
 );
 
 assert.strictEqual(
-	convert('mod(140,-90)'),
+	calc('mod(140,-90)'),
 	'-40',
 );
 
 assert.strictEqual(
-	convert('rem(140,-90)'),
+	calc('rem(140,-90)'),
 	'50',
 );
 
 
 //Test basic calculations
 assert.strictEqual(
-	convert('calc(round(round(100,10), 10))'),
+	calc('calc(round(round(100,10), 10))'),
 	'100',
 );
 
 assert.strictEqual(
-	convert('calc(round(up, round(100,10) + 1,10))'),
+	calc('calc(round(up, round(100,10) + 1,10))'),
 	'110',
 );
 
 assert.strictEqual(
-	convert('calc(round(down, round(100,10) + 2 * 3,10))'),
+	calc('calc(round(down, round(100,10) + 2 * 3,10))'),
 	'100',
 );
 
 assert.strictEqual(
-	convert('calc(round(to-zero,round(100,10) * 2 - 95, 10))'),
+	calc('calc(round(to-zero,round(100,10) * 2 - 95, 10))'),
 	'100',
 );
 
 assert.strictEqual(
-	convert('calc(round(round(100,10)* -1,10))'),
+	calc('calc(round(round(100,10)* -1,10))'),
 	'-100',
 );
 
 assert.strictEqual(
-	convert('calc(round(up, -103 + -103 / -103 - 1,10))'),
+	calc('calc(round(up, -103 + -103 / -103 - 1,10))'),
 	'-100',
 );
 
 assert.strictEqual(
-	convert('calc(mod(18,5) * 2 + mod(17,5))'),
+	calc('calc(mod(18,5) * 2 + mod(17,5))'),
 	'8',
 );
 
 assert.strictEqual(
-	convert('calc(rem(mod(18,5),5))'),
+	calc('calc(rem(mod(18,5),5))'),
 	'3',
 );
 
 assert.strictEqual(
-	convert('calc(rem(mod(18,5),mod(17,5)))'),
+	calc('calc(rem(mod(18,5),mod(17,5)))'),
 	'1',
 );
 
 assert.strictEqual(
-	convert('calc(mod(-140,-90))'),
+	calc('calc(mod(-140,-90))'),
 	'-50',
 );
 
 assert.strictEqual(
-	convert('calc(mod(rem(1,18)* -1,5))'),
+	calc('calc(mod(rem(1,18)* -1,5))'),
 	'4',
 );
 
 
 // Type check
 assert.strictEqual(
-	convert('round(10px,6px)'),
+	calc('round(10px,6px)'),
 	'12px',
 );
 
 assert.strictEqual(
-	convert('round(10cm,6cm)'),
+	calc('round(10cm,6cm)'),
 	'12cm',
 );
 
 assert.strictEqual(
-	convert('round(10mm,6mm)'),
+	calc('round(10mm,6mm)'),
 	'12mm',
 );
 
 assert.strictEqual(
-	convert('round(10Q, 6Q)'),
+	calc('round(10Q, 6Q)'),
 	'12Q',
 );
 
 assert.strictEqual(
-	convert('round(10in,6in)'),
+	calc('round(10in,6in)'),
 	'12in',
 );
 
 assert.strictEqual(
-	convert('round(10pc,6pc)'),
+	calc('round(10pc,6pc)'),
 	'12pc',
 );
 
 assert.strictEqual(
-	convert('round(10pt,6pt)'),
+	calc('round(10pt,6pt)'),
 	'12pt',
 );
 
 assert.strictEqual(
-	convert('round(10em,6em)'),
+	calc('round(10em,6em)'),
 	'12em',
 );
 
 assert.strictEqual(
-	convert('round(10ex,6ex)'),
+	calc('round(10ex,6ex)'),
 	'12ex',
 );
 
 assert.strictEqual(
-	convert('round(10ch,6ch)'),
+	calc('round(10ch,6ch)'),
 	'12ch',
 );
 
 assert.strictEqual(
-	convert('round(10rem,6rem)'),
+	calc('round(10rem,6rem)'),
 	'12rem',
 );
 
 assert.strictEqual(
-	convert('round(10vh,6vh)'),
+	calc('round(10vh,6vh)'),
 	'12vh',
 );
 
 assert.strictEqual(
-	convert('round(10vw,6vw)'),
+	calc('round(10vw,6vw)'),
 	'12vw',
 );
 
 assert.strictEqual(
-	convert('round(10vmin,6vmin)'),
+	calc('round(10vmin,6vmin)'),
 	'12vmin',
 );
 
 assert.strictEqual(
-	convert('round(10vmax,6vmax)'),
+	calc('round(10vmax,6vmax)'),
 	'12vmax',
 );
 
 assert.strictEqual(
-	convert('round(10s,6s)'),
+	calc('round(10s,6s)'),
 	'12s',
 );
 
 assert.strictEqual(
-	convert('round(10ms,6ms)'),
+	calc('round(10ms,6ms)'),
 	'12ms',
 );
 
 assert.strictEqual(
-	convert('round(10deg,6deg)'),
+	calc('round(10deg,6deg)'),
 	'12deg',
 );
 
 assert.strictEqual(
-	convert('round(10grad,6grad)'),
+	calc('round(10grad,6grad)'),
 	'12grad',
 );
 
 assert.strictEqual(
-	convert('round(10rad,6rad)'),
+	calc('round(10rad,6rad)'),
 	'12rad',
 );
 
 assert.strictEqual(
-	convert('round(10turn,6turn)'),
+	calc('round(10turn,6turn)'),
 	'12turn',
 );
 
 
 assert.strictEqual(
-	convert('mod(10px,6px)'),
+	calc('mod(10px,6px)'),
 	'4px',
 );
 
 assert.strictEqual(
-	convert('mod(10cm,6cm)'),
+	calc('mod(10cm,6cm)'),
 	'4cm',
 );
 
 assert.strictEqual(
-	convert('mod(10mm,6mm)'),
+	calc('mod(10mm,6mm)'),
 	'4mm',
 );
 
 assert.strictEqual(
-	convert('mod(10Q, 6Q)'),
+	calc('mod(10Q, 6Q)'),
 	'4Q',
 );
 
 assert.strictEqual(
-	convert('mod(10in,6in)'),
+	calc('mod(10in,6in)'),
 	'4in',
 );
 
 assert.strictEqual(
-	convert('mod(10pc,6pc)'),
+	calc('mod(10pc,6pc)'),
 	'4pc',
 );
 
 assert.strictEqual(
-	convert('mod(10em,6em)'),
+	calc('mod(10em,6em)'),
 	'4em',
 );
 
 assert.strictEqual(
-	convert('mod(10ex,6ex)'),
+	calc('mod(10ex,6ex)'),
 	'4ex',
 );
 
 assert.strictEqual(
-	convert('mod(10ch,6ch)'),
+	calc('mod(10ch,6ch)'),
 	'4ch',
 );
 
 assert.strictEqual(
-	convert('mod(10rem,6rem)'),
+	calc('mod(10rem,6rem)'),
 	'4rem',
 );
 
 assert.strictEqual(
-	convert('mod(10vh,6vh)'),
+	calc('mod(10vh,6vh)'),
 	'4vh',
 );
 
 assert.strictEqual(
-	convert('mod(10vw,6vw)'),
+	calc('mod(10vw,6vw)'),
 	'4vw',
 );
 
 assert.strictEqual(
-	convert('mod(10vmin,6vmin)'),
+	calc('mod(10vmin,6vmin)'),
 	'4vmin',
 );
 
 assert.strictEqual(
-	convert('mod(10vmax,6vmax)'),
+	calc('mod(10vmax,6vmax)'),
 	'4vmax',
 );
 
 assert.strictEqual(
-	convert('mod(10s,6s)'),
+	calc('mod(10s,6s)'),
 	'4s',
 );
 
 assert.strictEqual(
-	convert('mod(10ms,6ms)'),
+	calc('mod(10ms,6ms)'),
 	'4ms',
 );
 
 assert.strictEqual(
-	convert('mod(10deg,6deg)'),
+	calc('mod(10deg,6deg)'),
 	'4deg',
 );
 
 assert.strictEqual(
-	convert('mod(10grad,6grad)'),
+	calc('mod(10grad,6grad)'),
 	'4grad',
 );
 
 assert.strictEqual(
-	convert('mod(10rad,6rad)'),
+	calc('mod(10rad,6rad)'),
 	'4rad',
 );
 
 assert.strictEqual(
-	convert('mod(10turn,6turn)'),
+	calc('mod(10turn,6turn)'),
 	'4turn',
 );
 
 
 assert.strictEqual(
-	convert('rem(10px,6px)'),
+	calc('rem(10px,6px)'),
 	'4px',
 );
 
 assert.strictEqual(
-	convert('rem(10cm,6cm)'),
+	calc('rem(10cm,6cm)'),
 	'4cm',
 );
 
 assert.strictEqual(
-	convert('rem(10mm,6mm)'),
+	calc('rem(10mm,6mm)'),
 	'4mm',
 );
 
 assert.strictEqual(
-	convert('rem(10Q, 6Q)'),
+	calc('rem(10Q, 6Q)'),
 	'4Q',
 );
 
 assert.strictEqual(
-	convert('rem(10in,6in)'),
+	calc('rem(10in,6in)'),
 	'4in',
 );
 
 assert.strictEqual(
-	convert('rem(10pc,6pc)'),
+	calc('rem(10pc,6pc)'),
 	'4pc',
 );
 
 assert.strictEqual(
-	convert('rem(10em,6em)'),
+	calc('rem(10em,6em)'),
 	'4em',
 );
 
 assert.strictEqual(
-	convert('rem(10ex,6ex)'),
+	calc('rem(10ex,6ex)'),
 	'4ex',
 );
 
 assert.strictEqual(
-	convert('rem(10ch,6ch)'),
+	calc('rem(10ch,6ch)'),
 	'4ch',
 );
 
 assert.strictEqual(
-	convert('rem(10rem,6rem)'),
+	calc('rem(10rem,6rem)'),
 	'4rem',
 );
 
 assert.strictEqual(
-	convert('rem(10vh,6vh)'),
+	calc('rem(10vh,6vh)'),
 	'4vh',
 );
 
 assert.strictEqual(
-	convert('rem(10vw,6vw)'),
+	calc('rem(10vw,6vw)'),
 	'4vw',
 );
 
 assert.strictEqual(
-	convert('rem(10vmin,6vmin)'),
+	calc('rem(10vmin,6vmin)'),
 	'4vmin',
 );
 
 assert.strictEqual(
-	convert('rem(10vmax,6vmax)'),
+	calc('rem(10vmax,6vmax)'),
 	'4vmax',
 );
 
 assert.strictEqual(
-	convert('rem(10s,6s)'),
+	calc('rem(10s,6s)'),
 	'4s',
 );
 
 assert.strictEqual(
-	convert('rem(10ms,6ms)'),
+	calc('rem(10ms,6ms)'),
 	'4ms',
 );
 
 assert.strictEqual(
-	convert('rem(10deg,6deg)'),
+	calc('rem(10deg,6deg)'),
 	'4deg',
 );
 
 assert.strictEqual(
-	convert('rem(10grad,6grad)'),
+	calc('rem(10grad,6grad)'),
 	'4grad',
 );
 
 assert.strictEqual(
-	convert('rem(10rad,6rad)'),
+	calc('rem(10rad,6rad)'),
 	'4rad',
 );
 
 assert.strictEqual(
-	convert('rem(10turn,6turn)'),
+	calc('rem(10turn,6turn)'),
 	'4turn',
 );
 
 //Test percentage and mixed units
 assert.strictEqual(
-	convert('round(10%,5px)'),
+	calc('round(10%,5px)'),
 	'round(10%,5px)',
 );
 
 assert.strictEqual(
-	convert('round(2rem,5px)'),
+	calc('round(2rem,5px)'),
 	'round(2rem,5px)',
 );
 
 assert.strictEqual(
-	convert('round(100px,1rem)'),
+	calc('round(100px,1rem)'),
 	'round(100px,1rem)',
 );
 
 assert.strictEqual(
-	convert('round(10s,6000ms)'),
+	calc('round(10s,6000ms)'),
 	'12s',
 );
 
 assert.strictEqual(
-	convert('round(10000ms,6s)'),
+	calc('round(10000ms,6s)'),
 	'12000ms',
 );
 
 assert.strictEqual(
-	convert('mod(10%,1px)'),
+	calc('mod(10%,1px)'),
 	'mod(10%,1px)',
 );
 
 assert.strictEqual(
-	convert('mod(10%,5px)'),
+	calc('mod(10%,5px)'),
 	'mod(10%,5px)',
 );
 
 assert.strictEqual(
-	convert('mod(10s,6000ms)'),
+	calc('mod(10s,6000ms)'),
 	'4s',
 );
 
 assert.strictEqual(
-	convert('mod(10000ms,6s)'),
+	calc('mod(10000ms,6s)'),
 	'4000ms',
 );
 
 assert.strictEqual(
-	convert('mod(18px,100% / 15)'),
+	calc('mod(18px,100% / 15)'),
 	'mod(18px,100% / 15)',
 );
 
 assert.strictEqual(
-	convert('mod(18%,5%)'),
+	calc('mod(18%,5%)'),
 	'3%',
 );
 
 assert.strictEqual(
-	convert('mod(-18%,5%)'),
+	calc('mod(-18%,5%)'),
 	'2%',
 );
 
 assert.strictEqual(
-	convert('mod(18vw,5vw)'),
+	calc('mod(18vw,5vw)'),
 	'3vw',
 );
 
 assert.strictEqual(
-	convert('mod(-18vw,5vw)'),
+	calc('mod(-18vw,5vw)'),
 	'2vw',
 );
 
 assert.strictEqual(
-	convert('rem(10%,1px)'),
+	calc('rem(10%,1px)'),
 	'rem(10%,1px)',
 );
 
 assert.strictEqual(
-	convert('rem(10%,5px)'),
+	calc('rem(10%,5px)'),
 	'rem(10%,5px)',
 );
 
 assert.strictEqual(
-	convert('rem(2rem,5px)'),
+	calc('rem(2rem,5px)'),
 	'rem(2rem,5px)',
 );
 
 assert.strictEqual(
-	convert('rem(100px,1rem)'),
+	calc('rem(100px,1rem)'),
 	'rem(100px,1rem)',
 );
 
 assert.strictEqual(
-	convert('rem(10s,6000ms)'),
+	calc('rem(10s,6000ms)'),
 	'4s',
 );
 
 assert.strictEqual(
-	convert('rem(10000ms,6s)'),
+	calc('rem(10000ms,6s)'),
 	'4000ms',
 );
 
 assert.strictEqual(
-	convert('rem(18px,100% / 15)'),
+	calc('rem(18px,100% / 15)'),
 	'rem(18px,100% / 15)',
 );
 
 assert.strictEqual(
-	convert('rem(-18px,100% / 15)'),
+	calc('rem(-18px,100% / 15)'),
 	'rem(-18px,100% / 15)',
 );
 
 assert.strictEqual(
-	convert('rem(18vw,5vw)'),
+	calc('rem(18vw,5vw)'),
 	'3vw',
 );
 
 assert.strictEqual(
-	convert('rem(-18vw,5vw)'),
+	calc('rem(-18vw,5vw)'),
 	'-3vw',
 );
 

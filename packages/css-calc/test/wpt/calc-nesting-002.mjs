@@ -1,32 +1,32 @@
-import { convert } from '@csstools/css-calc';
+import { calc } from '@csstools/css-calc';
 import assert from 'assert';
 
 assert.strictEqual(
-	convert('calc(20px + calc(80px))'),
+	calc('calc(20px + calc(80px))'),
 	'100px',
 );
 
 assert.strictEqual(
-	convert('calc(calc(100px))'),
+	calc('calc(calc(100px))'),
 	'100px',
 );
 
 assert.strictEqual(
-	convert('calc(calc(2) * calc(50px)'),
+	calc('calc(calc(2) * calc(50px)'),
 	'100px',
 );
 
 assert.strictEqual(
-	convert('calc(calc(150px*2/3)'),
+	calc('calc(calc(150px*2/3)'),
 	'100px',
 );
 
 assert.strictEqual(
-	convert('calc(calc(2 * calc(calc(3)) + 4) * 10px)'),
+	calc('calc(calc(2 * calc(calc(3)) + 4) * 10px)'),
 	'100px',
 );
 
 assert.strictEqual(
-	convert('calc(50px + calc(40%))'),
+	calc('calc(50px + calc(40%))'),
 	'calc(50px + 40%)',
 );

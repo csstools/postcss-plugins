@@ -1,39 +1,39 @@
-import { convert } from '@csstools/css-calc';
+import { calc } from '@csstools/css-calc';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import assert from 'assert';
 
 assert.strictEqual(
-	convert('calc(10 * 2)'),
+	calc('calc(10 * 2)'),
 	(10 * 2).toString(),
 );
 
 assert.strictEqual(
-	convert('calc(15 / 5 / 3)'),
+	calc('calc(15 / 5 / 3)'),
 	(15 / 5 / 3).toString(),
 );
 
 assert.strictEqual(
-	convert('calc(15 / (5 / 3))'),
+	calc('calc(15 / (5 / 3))'),
 	(15 / (5 / 3)).toString(),
 );
 
 assert.strictEqual(
-	convert('calc(15 / (3 / 5))'),
+	calc('calc(15 / (3 / 5))'),
 	(15 / (3 / 5)).toString(),
 );
 
 assert.strictEqual(
-	convert('calc(2 * 3 + 7 * 5)'),
+	calc('calc(2 * 3 + 7 * 5)'),
 	(2 * 3 + 7 * 5).toString(),
 );
 
 assert.strictEqual(
-	convert('calc(((2 * 3) + 7) * 5)'),
+	calc('calc(((2 * 3) + 7) * 5)'),
 	(((2 * 3) + 7) * 5).toString(),
 );
 
 assert.strictEqual(
-	convert('foo(something calc(2 * 3 + 7 * 5) something-else)'),
+	calc('foo(something calc(2 * 3 + 7 * 5) something-else)'),
 	`foo(something ${(2 * 3 + 7 * 5).toString()} something-else)`,
 );
 
@@ -43,7 +43,7 @@ assert.strictEqual(
 	]);
 
 	assert.strictEqual(
-		convert('foo(something calc(2 * r + 7 * 5) something-else)', { globals: globals }),
+		calc('foo(something calc(2 * r + 7 * 5) something-else)', { globals: globals }),
 		`foo(something ${(2 * 3 + 7 * 5).toString()} something-else)`,
 	);
 }
@@ -56,7 +56,7 @@ assert.strictEqual(
 	]);
 
 	assert.strictEqual(
-		convert('rgb(from rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', { globals: globals }),
+		calc('rgb(from rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', { globals: globals }),
 		`rgb(from rgb(50 100 150) ${(50 * 2).toString()} ${(100 / 2).toString()} ${(150 / 3).toString()})`,
 	);
 }
@@ -69,7 +69,7 @@ assert.strictEqual(
 	]);
 
 	assert.strictEqual(
-		convert('rgb(from rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', { globals: globals }),
+		calc('rgb(from rgb(50 100 150) calc(r * 2) calc(g / 2) calc(b / 3))', { globals: globals }),
 		`rgb(from rgb(50 100 150) ${(50 * 2).toString()} ${(100 / 2).toString()} ${(150 / 3).toString()})`,
 	);
 }
@@ -82,17 +82,17 @@ assert.strictEqual(
 	]);
 
 	assert.strictEqual(
-		convert('calc(a * 2) calc(b / 2) calc(c / 3)', { globals: globals }),
+		calc('calc(a * 2) calc(b / 2) calc(c / 3)', { globals: globals }),
 		`${(50 * 2).toString()}s ${(100 / 2).toString()}in ${(150 / 3).toString()}q`,
 	);
 }
 
 assert.strictEqual(
-	convert('clamp(10, 20, 15)'),
+	calc('clamp(10, 20, 15)'),
 	(15).toString(),
 );
 
 assert.strictEqual(
-	convert('calc(15 / unknown(5 / 3))'),
+	calc('calc(15 / unknown(5 / 3))'),
 	'calc(15 / unknown(5 / 3))',
 );

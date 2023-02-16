@@ -1,7 +1,7 @@
 import { stringify, tokenizer } from '@csstools/css-tokenizer';
-import { isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
+import { ComponentValue, isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { solve } from './calculation';
-import { abs, acos, asin, atan, atan2, calc, clamp, cos, max, min, mod, rem, round, sign, sin, tan } from './functions/calc';
+import { abs, acos, asin, atan, atan2, calc as calcInternal, clamp, cos, max, min, mod, rem, round, sign, sin, tan } from './functions/calc';
 import { tokenizeGlobals } from './util/globals';
 import { patchCalcResult } from './util/patch-result';
 
@@ -14,7 +14,7 @@ const mathFunctions = new Map([
 	['asin', asin],
 	['atan', atan],
 	['atan2', atan2],
-	['calc', calc],
+	['calc', calcInternal],
 	['clamp', clamp],
 	['cos', cos],
 	['max', max],
@@ -27,9 +27,7 @@ const mathFunctions = new Map([
 	['tan', tan],
 ]);
 
-export function convert(css: string, options?: conversionOptions) {
-	const tokenizedGlobals = tokenizeGlobals(options?.globals);
-
+export function calc(css: string, options?: conversionOptions) {
 	const t = tokenizer({
 		css: css,
 	});
@@ -46,8 +44,16 @@ export function convert(css: string, options?: conversionOptions) {
 
 	const result = parseCommaSeparatedListOfComponentValues(tokens, {});
 
-	for (let i = 0; i < result.length; i++) {
-		const componentValues = result[i];
+	return calcFromComponentValues(result, options).map((componentValues) => {
+		return componentValues.map((x) => stringify(...x.tokens())).join('');
+	}).join(',');
+}
+
+export function calcFromComponentValues(componentValuesList: Array<Array<ComponentValue>>, options?: conversionOptions) {
+	const tokenizedGlobals = tokenizeGlobals(options?.globals);
+
+	for (let i = 0; i < componentValuesList.length; i++) {
+		const componentValues = componentValuesList[i];
 
 		for (let j = 0; j < componentValues.length; j++) {
 			const componentValue = componentValues[j];
@@ -89,7 +95,5 @@ export function convert(css: string, options?: conversionOptions) {
 		}
 	}
 
-	return result.map((componentValues) => {
-		return componentValues.map((x) => stringify(...x.tokens())).join('');
-	}).join(',');
+	return componentValuesList;
 }

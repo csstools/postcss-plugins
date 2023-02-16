@@ -1,8 +1,8 @@
-import { convert } from '@csstools/css-calc';
+import { calc } from '@csstools/css-calc';
 import assert from 'assert';
 
 assert.strictEqual(
-	convert(`calc(
+	calc(`calc(
 				1
 				* clamp(
 						1 ,
