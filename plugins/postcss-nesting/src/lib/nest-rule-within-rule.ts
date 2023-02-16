@@ -7,6 +7,19 @@ import { walkFunc } from './walk-func.js';
 import { options } from './options.js';
 
 export default function transformNestRuleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc, opts: options) {
+	let selectors = [];
+
+	try {
+		selectors = mergeSelectors(node, result, parent.selectors, comma(node.params), opts, true);
+	} catch (err) {
+		node.warn(result, `Failed to parse selectors : "${parent.selector}" / "${node.params}" with message: "${err.message}"`);
+		return;
+	}
+
+	if (!selectors.length) {
+		return;
+	}
+
 	// move previous siblings and the node to before the parent
 	shiftNodesBeforeParent(node, parent);
 
@@ -15,12 +28,7 @@ export default function transformNestRuleWithinRule(node: AtRule, parent: Rule, 
 	rule.raws.semicolon = true; /* nested rules end with "}" and do not have this flag set */
 
 	// update the selectors of the node to be merged with the parent
-	try {
-		rule.selectors = mergeSelectors(node, result, parent.selectors, comma(node.params), opts, true);
-	} catch (err) {
-		node.warn(result, `Failed to parse selectors : "${parent.selector}" / "${node.params}" with message: "${err.message}"`);
-		return;
-	}
+	rule.selectors = selectors;
 
 	// replace the node with the new rule
 	node.replaceWith(rule);

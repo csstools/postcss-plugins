@@ -1,9 +1,9 @@
 a, b {
 	order: 1;
-}
-a c, b c, a d, b d {
+	c, d {
 		order: 2;
 	}
+}
 :scope e {
 	order: 3;
 }
