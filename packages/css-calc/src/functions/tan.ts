@@ -49,7 +49,7 @@ export function solveTan(tanNodes: FunctionNode, a: TokenNode): Calculation | -1
 
 	let result;
 	if (isAsymptote) {
-		result = timesNinety > 0 ?  Infinity : -Infinity;
+		result = timesNinety > 0 ? Infinity : -Infinity;
 	} else {
 		result = Math.tan(aToken[4].value);
 	}

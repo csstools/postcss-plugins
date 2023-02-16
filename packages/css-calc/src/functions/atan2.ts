@@ -29,7 +29,7 @@ export function solveATan2(atan2Nodes: FunctionNode, a: TokenNode, b: TokenNode)
 
 	const result = Math.atan2(aToken[4].value, bToken[4].value);
 
-	const atanTokens = atan2Nodes.tokens();
+	const atan2Tokens = atan2Nodes.tokens();
 
 	return {
 		inputs: [
@@ -37,8 +37,8 @@ export function solveATan2(atan2Nodes: FunctionNode, a: TokenNode, b: TokenNode)
 				[
 					TokenType.Dimension,
 					result.toString() + 'rad',
-					atanTokens[0][2],
-					atanTokens[atanTokens.length - 1][3],
+					atan2Tokens[0][2],
+					atan2Tokens[atan2Tokens.length - 1][3],
 					{
 						value: result,
 						type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
