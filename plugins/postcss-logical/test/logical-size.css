@@ -1,4 +1,8 @@
 .foo {
 	block-size: 1px;
 	inline-size: 2px;
+	min-block-size: 3px;
+	max-block-size: 4px;
+	min-inline-size: 5px;
+	max-inline-size: 6px;
 }

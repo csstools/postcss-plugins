@@ -1,5 +1,10 @@
 # Changes to PostCSS Nesting
 
+### 11.2.1 (February 16, 2023)
+
+- Skip nested rules that have a selector that begins with a letter
+- Better warning when nested rules have a selector that begins with a letter
+
 ### 11.2.0 (February 13, 2023)
 
 - Added: support for `&` at the root

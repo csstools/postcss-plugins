@@ -103,6 +103,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			// 4.1 Block Size and Inline Size
 			'block-size': makeTransform(transformLogicalSize(directionConfig)),
 			'inline-size': makeTransform(transformLogicalSize(directionConfig)),
+			'min-block-size': makeTransform(transformLogicalSize(directionConfig)),
+			'max-block-size': makeTransform(transformLogicalSize(directionConfig)),
+			'min-inline-size': makeTransform(transformLogicalSize(directionConfig)),
+			'max-inline-size': makeTransform(transformLogicalSize(directionConfig)),
 			// 4.2 Margins
 			'margin-block-start': makeTransform(
 				transformSide('margin', blockStart),

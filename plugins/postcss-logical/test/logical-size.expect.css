@@ -1,4 +1,8 @@
 .foo {
 	height: 1px;
 	width: 2px;
+	min-height: 3px;
+	max-height: 4px;
+	min-width: 5px;
+	max-width: 6px;
 }

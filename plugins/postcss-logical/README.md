@@ -7,6 +7,7 @@
 ```pcss
 .element {
 	block-size: 100px;
+	max-inline-size: 400px;
 	inline-size: 200px;
 	padding-block: 10px 20px;
 	margin-inline: auto;
@@ -18,6 +19,7 @@
 
 .element {
 	height: 100px;
+	max-width: 400px;
 	width: 200px;
 	padding-top: 10px;
 	padding-bottom: 20px;
@@ -78,6 +80,7 @@ postcssLogical({
 ```pcss
 .element {
 	block-size: 100px;
+	max-inline-size: 400px;
 	inline-size: 200px;
 	padding-block: 10px 20px;
 	margin-inline: auto;
@@ -89,6 +92,7 @@ postcssLogical({
 
 .element {
 	width: 100px;
+	max-height: 400px;
 	height: 200px;
 	padding-right: 10px;
 	padding-left: 20px;
