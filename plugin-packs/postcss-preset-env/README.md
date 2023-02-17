@@ -332,7 +332,7 @@ The `debug` option enables debugging messages to stdout which should be useful t
 
 ### enableClientSidePolyfills
 
-The `enableClientSidePolyfills` enables any feature that would need an extra browser library to be loaded into the page for it to work. Defaults to `false`.
+The `enableClientSidePolyfills` enables all features that also need an extra browser library to be loaded into the page for it to work. Defaults to `false`.
 
 - Note that manually enabling/disabling features via the "feature" option overrides this flag.
 - This only controls if the PostCSS plugins are enabled. It does not cause the browsers libraries to be included in your bundle.
@@ -407,7 +407,7 @@ to the polyfill's library.
 * `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md)
 * `prefers-color-scheme-query`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme/README-BROWSER.md)
 
-If you want to disable these types of features, please check the [`enableClientSidePolyfills` option](#enableclientsidepolyfills).
+If you want to enable all these types of features, please check the [`enableClientSidePolyfills` option](#enableclientsidepolyfills).
 
 ### Plugins not affected by Browser Support
 
