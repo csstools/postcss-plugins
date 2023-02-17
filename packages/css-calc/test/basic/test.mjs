@@ -93,6 +93,21 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
+	calc('clamp(100px, 80px, 50px)'),
+	'100px',
+);
+
+assert.strictEqual(
+	calc('clamp(100px, -1px, 50px)'),
+	'100px',
+);
+
+assert.strictEqual(
+	calc('clamp(100px, 101px, 50px)'),
+	'100px',
+);
+
+assert.strictEqual(
 	calc('calc(15 / unknown(5 / 3))'),
 	'calc(15 / unknown(5 / 3))',
 );

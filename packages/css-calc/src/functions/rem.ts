@@ -1,10 +1,11 @@
-import { TokenDimension, TokenType } from '@csstools/css-tokenizer';
-import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { Calculation } from '../calculation';
+import type { Calculation } from '../calculation';
+import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
+import type { TokenDimension } from '@csstools/css-tokenizer';
+import { TokenType } from '@csstools/css-tokenizer';
 import { convertUnit } from '../unit-conversions';
 import { resultToCalculation } from './result-to-calculation';
 
-export function solveRem(remNodes: FunctionNode, a: TokenNode, b: TokenNode): Calculation | -1 {
+export function solveRem(remNode: FunctionNode, a: TokenNode, b: TokenNode): Calculation | -1 {
 	const aToken = a.value;
 	if (
 		!(
@@ -38,5 +39,5 @@ export function solveRem(remNodes: FunctionNode, a: TokenNode, b: TokenNode): Ca
 		result = aToken[4].value % bToken[4].value;
 	}
 
-	return resultToCalculation(remNodes, aToken, result);
+	return resultToCalculation(remNode, aToken, result);
 }

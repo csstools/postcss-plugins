@@ -4,46 +4,67 @@ import { Calculation } from '../calculation';
 import { unary } from '../operation/unary';
 
 export function resultToCalculation(node: FunctionNode, aToken: CSSToken, result: number): Calculation | -1 {
-	const tokens = node.tokens();
 	if (aToken[0] === TokenType.Dimension) {
-		return {
-			inputs: [
-				new TokenNode(
-					[
-						TokenType.Dimension,
-						result.toString() + aToken[4].unit,
-						tokens[0][2],
-						tokens[tokens.length - 1][3],
-						{
-							value: result,
-							type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-							unit: aToken[4].unit,
-						},
-					],
-				),
-			],
-			operation: unary,
-		};
+		return dimensionToCalculation(node, aToken[4].unit, result);
 	}
 
 	if (aToken[0] === TokenType.Percentage) {
-		return {
-			inputs: [
-				new TokenNode(
-					[
-						TokenType.Percentage,
-						result.toString() + '%',
-						tokens[0][2],
-						tokens[tokens.length - 1][3],
-						{
-							value: result,
-						},
-					],
-				),
-			],
-			operation: unary,
-		};
+		return percentageToCalculation(node, result);
 	}
+
+	if (aToken[0] === TokenType.Number) {
+		return numberToCalculation(node, result);
+	}
+
+	return -1;
+}
+
+export function dimensionToCalculation(node: FunctionNode, unit: string, result: number): Calculation | -1 {
+	const tokens = node.tokens();
+
+	return {
+		inputs: [
+			new TokenNode(
+				[
+					TokenType.Dimension,
+					result.toString() + unit,
+					tokens[0][2],
+					tokens[tokens.length - 1][3],
+					{
+						value: result,
+						type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
+						unit: unit,
+					},
+				],
+			),
+		],
+		operation: unary,
+	};
+}
+
+export function percentageToCalculation(node: FunctionNode, result: number): Calculation | -1 {
+	const tokens = node.tokens();
+
+	return {
+		inputs: [
+			new TokenNode(
+				[
+					TokenType.Percentage,
+					result.toString() + '%',
+					tokens[0][2],
+					tokens[tokens.length - 1][3],
+					{
+						value: result,
+					},
+				],
+			),
+		],
+		operation: unary,
+	};
+}
+
+export function numberToCalculation(node: FunctionNode, result: number): Calculation | -1 {
+	const tokens = node.tokens();
 
 	return {
 		inputs: [

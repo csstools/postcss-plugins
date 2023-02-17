@@ -1,7 +1,9 @@
-import { TokenDimension, TokenType } from '@csstools/css-tokenizer';
-import { FunctionNode, isTokenNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { Calculation } from '../calculation';
+import type { Calculation } from '../calculation';
+import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
+import type { TokenDimension } from '@csstools/css-tokenizer';
+import { TokenType } from '@csstools/css-tokenizer';
 import { convertUnit } from '../unit-conversions';
+import { isTokenNode } from '@csstools/css-parser-algorithms';
 import { resultToCalculation } from './result-to-calculation';
 
 export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, central: TokenNode | -1, maximum: TokenNode | -1): Calculation | -1 {

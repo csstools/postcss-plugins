@@ -1,10 +1,11 @@
-import { TokenDimension, TokenType } from '@csstools/css-tokenizer';
-import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { Calculation } from '../calculation';
+import type { Calculation } from '../calculation';
+import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
+import type { TokenDimension } from '@csstools/css-tokenizer';
+import { TokenType } from '@csstools/css-tokenizer';
 import { convertUnit } from '../unit-conversions';
 import { resultToCalculation } from './result-to-calculation';
 
-export function solveMod(modNodes: FunctionNode, a: TokenNode, b: TokenNode): Calculation | -1 {
+export function solveMod(modNode: FunctionNode, a: TokenNode, b: TokenNode): Calculation | -1 {
 	const aToken = a.value;
 	if (
 		!(
@@ -52,5 +53,5 @@ export function solveMod(modNodes: FunctionNode, a: TokenNode, b: TokenNode): Ca
 		result = ((aToken[4].value % bToken[4].value) + bToken[4].value) % bToken[4].value;
 	}
 
-	return resultToCalculation(modNodes, aToken, result);
+	return resultToCalculation(modNode, aToken, result);
 }

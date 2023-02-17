@@ -1,31 +1,12 @@
 import { stringify, tokenizer } from '@csstools/css-tokenizer';
 import { ComponentValue, isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { solve } from './calculation';
-import { abs, acos, asin, atan, atan2, calc as calcInternal, clamp, cos, max, min, mod, rem, round, sign, sin, tan } from './functions/calc';
+import { mathFunctions } from './functions/calc';
 import { tokenizeGlobals } from './util/globals';
 import { patchCalcResult } from './util/patch-result';
 
 import type { conversionOptions } from './options';
 export type { conversionOptions } from './options';
-
-const mathFunctions = new Map([
-	['abs', abs],
-	['acos', acos],
-	['asin', asin],
-	['atan', atan],
-	['atan2', atan2],
-	['calc', calcInternal],
-	['clamp', clamp],
-	['cos', cos],
-	['max', max],
-	['min', min],
-	['mod', mod],
-	['rem', rem],
-	['round', round],
-	['sign', sign],
-	['sin', sin],
-	['tan', tan],
-]);
 
 export function calc(css: string, options?: conversionOptions) {
 	const t = tokenizer({

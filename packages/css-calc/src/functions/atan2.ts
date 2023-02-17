@@ -1,10 +1,11 @@
-import { NumberType, TokenDimension, TokenType } from '@csstools/css-tokenizer';
-import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { Calculation } from '../calculation';
+import type { Calculation } from '../calculation';
+import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
+import type { TokenDimension } from '@csstools/css-tokenizer';
+import { TokenType } from '@csstools/css-tokenizer';
 import { convertUnit } from '../unit-conversions';
-import { unary } from '../operation/unary';
+import { dimensionToCalculation } from './result-to-calculation';
 
-export function solveATan2(atan2Nodes: FunctionNode, a: TokenNode, b: TokenNode): Calculation | -1 {
+export function solveATan2(atan2Node: FunctionNode, a: TokenNode, b: TokenNode): Calculation | -1 {
 	const aToken = a.value;
 	if (
 		!(
@@ -28,24 +29,5 @@ export function solveATan2(atan2Nodes: FunctionNode, a: TokenNode, b: TokenNode)
 
 	const result = Math.atan2(aToken[4].value, bToken[4].value);
 
-	const atan2Tokens = atan2Nodes.tokens();
-
-	return {
-		inputs: [
-			new TokenNode(
-				[
-					TokenType.Dimension,
-					result.toString() + 'rad',
-					atan2Tokens[0][2],
-					atan2Tokens[atan2Tokens.length - 1][3],
-					{
-						value: result,
-						type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-						unit: 'rad',
-					},
-				],
-			),
-		],
-		operation: unary,
-	};
+	return dimensionToCalculation(atan2Node, 'rad', result);
 }

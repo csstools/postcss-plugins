@@ -1,12 +1,12 @@
-import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { Calculation } from '../calculation';
-import { unary } from '../operation/unary';
+import type { Calculation } from '../calculation';
+import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
+import { TokenType } from '@csstools/css-tokenizer';
 import { convert_deg } from '../unit-conversions/deg';
 import { convert_grad } from '../unit-conversions/grad';
 import { convert_turn } from '../unit-conversions/turn';
+import { numberToCalculation } from './result-to-calculation';
 
-export function solveSin(sinNodes: FunctionNode, a: TokenNode): Calculation | -1 {
+export function solveSin(sinNode: FunctionNode, a: TokenNode): Calculation | -1 {
 	const aToken = a.value;
 	if (
 		!(
@@ -37,23 +37,5 @@ export function solveSin(sinNodes: FunctionNode, a: TokenNode): Calculation | -1
 
 	const result = Math.sin(aToken[4].value);
 
-	const sinTokens = sinNodes.tokens();
-
-	return {
-		inputs: [
-			new TokenNode(
-				[
-					TokenType.Number,
-					result.toString(),
-					sinTokens[0][2],
-					sinTokens[sinTokens.length - 1][3],
-					{
-						value: result,
-						type: Number.isInteger(result) ? NumberType.Integer : NumberType.Number,
-					},
-				],
-			),
-		],
-		operation: unary,
-	};
+	return numberToCalculation(sinNode, result);
 }

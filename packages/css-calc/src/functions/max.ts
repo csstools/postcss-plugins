@@ -1,7 +1,9 @@
-import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
-import { ComponentValue, FunctionNode, isTokenNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { Calculation } from '../calculation';
+import type { Calculation } from '../calculation';
+import type { ComponentValue, FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
+import type { TokenDimension, TokenNumber, TokenPercentage } from '@csstools/css-tokenizer';
+import { TokenType } from '@csstools/css-tokenizer';
 import { convertUnit } from '../unit-conversions';
+import { isTokenNode } from '@csstools/css-parser-algorithms';
 import { resultToCalculation } from './result-to-calculation';
 
 export function solveMax(maxNode: FunctionNode, solvedNodes: Array<ComponentValue>): Calculation | -1 {
