@@ -1,6 +1,6 @@
 {
 	"name": "@csstools/css-calc",
-	"description": "Convert CSS expressions to a JavaScript function",
+	"description": "Solve CSS math expressions",
 	"version": "0.0.0",
 	"contributors": [
 		{
