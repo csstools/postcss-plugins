@@ -111,3 +111,43 @@ assert.strictEqual(
 	calc('calc(15 / unknown(5 / 3))'),
 	'calc(15 / unknown(5 / 3))',
 );
+
+assert.strictEqual(
+	calc('calc(1 / 3)', { precision: 1 }),
+	'0.3',
+);
+
+assert.strictEqual(
+	calc('calc(1 / 3)', { precision: 2 }),
+	'0.33',
+);
+
+assert.strictEqual(
+	calc('calc(10hz + 10hz)', { toCanonicalUnits: true }),
+	'20hz',
+);
+
+assert.strictEqual(
+	calc('calc(0.01khz + 10hz)', { toCanonicalUnits: true }),
+	'20hz',
+);
+
+assert.strictEqual(
+	calc('calc(10hz + 0.01khz)', { toCanonicalUnits: true }),
+	'20hz',
+);
+
+assert.strictEqual(
+	calc('calc(10hz + 10hz)', { toCanonicalUnits: false }),
+	'20hz',
+);
+
+assert.strictEqual(
+	calc('calc(0.01khz + 10hz)', { toCanonicalUnits: false }),
+	'0.02khz',
+);
+
+assert.strictEqual(
+	calc('calc(10hz + 0.01khz)', { toCanonicalUnits: false }),
+	'20hz',
+);

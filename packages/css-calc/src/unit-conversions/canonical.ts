@@ -17,5 +17,5 @@ export const canonicalUnits = {
 	's': 's',
 	// hz
 	'hz': 'hz',
-	'khz': 'khz',
+	'khz': 'hz',
 };
