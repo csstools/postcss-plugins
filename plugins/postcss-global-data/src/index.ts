@@ -4,7 +4,7 @@ import { parseImport } from './parse-import';
 /** postcss-global-data plugin options */
 export type pluginOptions = {
 	/** List of files to be used as context */
-	files?: string[],
+	files?: Array<string>,
 };
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
