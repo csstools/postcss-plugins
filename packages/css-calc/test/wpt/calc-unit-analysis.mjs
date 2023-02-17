@@ -13,22 +13,22 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('calc(1px + 2)'),
-	'calc(1px + 2)', // invalid, so input is not modified
+	'calc(1px + 2)',
 );
 
 assert.strictEqual(
 	calc('calc(2 + 1px)'),
-	'calc(2 + 1px)', // invalid, so input is not modified
+	'calc(2 + 1px)',
 );
 
 assert.strictEqual(
 	calc('calc(1px - 2)'),
-	'calc(1px - 2)', // invalid, so input is not modified
+	'calc(1px - 2)',
 );
 
 assert.strictEqual(
 	calc('calc(2 - 1px)'),
-	'calc(2 - 1px)', // invalid, so input is not modified
+	'calc(2 - 1px)',
 );
 
 assert.strictEqual(
@@ -43,5 +43,5 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('calc(2px * 1px)'),
-	'calc(2px * 1px)', // invalid, so input is not modified
+	'calc(2px * 1px)',
 );

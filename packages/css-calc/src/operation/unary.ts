@@ -1,4 +1,4 @@
-import { TokenNode } from '@csstools/css-parser-algorithms';
+import type { TokenNode } from '@csstools/css-parser-algorithms';
 import { TokenType } from '@csstools/css-tokenizer';
 
 export function unary(inputs: Array<TokenNode>): TokenNode | -1 {

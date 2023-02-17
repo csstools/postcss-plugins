@@ -6,7 +6,6 @@ assert.strictEqual(
 	'90deg',
 );
 
-// Simple tests
 assert.strictEqual(
 	calc('round(10,10)'),
 	'10',
@@ -22,8 +21,6 @@ assert.strictEqual(
 	'0',
 );
 
-
-//Test basic round
 assert.strictEqual(
 	calc('calc(round(100,10))'),
 	'100',
@@ -59,8 +56,6 @@ assert.strictEqual(
 	'-100',
 );
 
-
-//Test basic mod/rem
 assert.strictEqual(
 	calc('mod(18,5)'),
 	'3',
@@ -96,8 +91,6 @@ assert.strictEqual(
 	'50',
 );
 
-
-//Test basic calculations
 assert.strictEqual(
 	calc('calc(round(round(100,10), 10))'),
 	'100',
@@ -153,8 +146,6 @@ assert.strictEqual(
 	'4',
 );
 
-
-// Type check
 assert.strictEqual(
 	calc('round(10px,6px)'),
 	'12px',
@@ -260,7 +251,6 @@ assert.strictEqual(
 	'12turn',
 );
 
-
 assert.strictEqual(
 	calc('mod(10px,6px)'),
 	'4px',
@@ -360,7 +350,6 @@ assert.strictEqual(
 	calc('mod(10turn,6turn)'),
 	'4turn',
 );
-
 
 assert.strictEqual(
 	calc('rem(10px,6px)'),
@@ -462,7 +451,6 @@ assert.strictEqual(
 	'4turn',
 );
 
-//Test percentage and mixed units
 assert.strictEqual(
 	calc('round(10%,5px)'),
 	'round(10%,5px)',
@@ -582,4 +570,3 @@ assert.strictEqual(
 	calc('rem(-18vw,5vw)'),
 	'-3vw',
 );
-

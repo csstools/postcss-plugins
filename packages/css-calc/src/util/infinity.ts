@@ -33,7 +33,7 @@ export function patchInfinity(x: TokenNode | FunctionNode | -1): TokenNode | Fun
 			[TokenType.Function, 'calc(', token[2], token[3], { value: 'calc' }],
 			[TokenType.CloseParen, ')', token[2], token[3], undefined],
 			[
-				new TokenNode([TokenType.Ident, signStr+'infinity', token[2], token[3], {
+				new TokenNode([TokenType.Ident, signStr + 'infinity', token[2], token[3], {
 					value: signStr + 'infinity',
 				}]),
 			],

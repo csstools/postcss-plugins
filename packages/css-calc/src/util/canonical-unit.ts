@@ -1,4 +1,5 @@
-import { FunctionNode, isFunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
+import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
+import { isFunctionNode } from '@csstools/css-parser-algorithms';
 import { TokenType } from '@csstools/css-tokenizer';
 import { toCanonicalUnit } from '../unit-conversions';
 

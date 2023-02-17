@@ -1,4 +1,4 @@
-import { TokenNode } from '@csstools/css-parser-algorithms';
+import type { TokenNode } from '@csstools/css-parser-algorithms';
 import { Operation } from './operation/operation';
 export type Calculation = {
     inputs: Array<Calculation | TokenNode>;

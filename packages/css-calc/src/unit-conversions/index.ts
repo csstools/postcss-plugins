@@ -1,4 +1,5 @@
-import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
+import type { CSSToken } from '@csstools/css-tokenizer';
+import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import { canonicalUnits } from './canonical';
 import { convert_cm } from './cm';
 import { convert_deg } from './deg';

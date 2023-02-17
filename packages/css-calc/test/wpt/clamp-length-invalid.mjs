@@ -60,4 +60,3 @@ assert.strictEqual(
 	calc('clamp(0, 10rem, 100%)'),
 	'clamp(0, 10rem, 100%)',
 );
-

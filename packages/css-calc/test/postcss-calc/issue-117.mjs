@@ -10,4 +10,3 @@ assert.strictEqual(
 	calc('calc(min(max(5, 0), 100))'),
 	'5',
 );
-

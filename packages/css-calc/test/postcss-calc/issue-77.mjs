@@ -10,4 +10,3 @@ assert.strictEqual(
 	calc('calc(var(--b, calc(10 * 1)))'),
 	'calc(var(--b, 10))',
 );
-

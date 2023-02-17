@@ -1,4 +1,5 @@
-import { isToken, TokenDimension, tokenizer, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
+import type { TokenDimension, TokenNumber, TokenPercentage } from '@csstools/css-tokenizer';
+import { isToken, tokenizer, TokenType } from '@csstools/css-tokenizer';
 
 export type Globals = Map<string, TokenDimension | TokenNumber | TokenPercentage>;
 export type GlobalsWithStrings = Map<string, TokenDimension | TokenNumber | TokenPercentage | string>;

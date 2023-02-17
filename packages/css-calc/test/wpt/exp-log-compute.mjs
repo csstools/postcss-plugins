@@ -85,4 +85,3 @@ assert.strictEqual(
 	calc('calc(log(exp(log(e))))'),
 	'1',
 );
-

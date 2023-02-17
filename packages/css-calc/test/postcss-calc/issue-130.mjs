@@ -12,4 +12,3 @@ assert.strictEqual(
 		)`),
 	'1',
 );
-
