@@ -1,6 +1,7 @@
-import { ComponentValue, FunctionNode, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { Calculation } from '../calculation';
-import { Globals } from '../util/globals';
+import type { Calculation } from '../calculation';
+import type { ComponentValue, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
+import type { Globals } from '../util/globals';
+import { FunctionNode } from '@csstools/css-parser-algorithms';
 export declare const mathFunctions: Map<string, typeof abs>;
 export declare function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calculation | -1;
 export declare function singleNodeSolver(fnNode: FunctionNode, globals: Globals, solveFn: (node: FunctionNode, a: TokenNode) => Calculation | -1): Calculation | -1;
@@ -23,3 +24,6 @@ export declare function atan(atanNode: FunctionNode, globals: Globals): Calculat
 export declare function atan2(atan2Node: FunctionNode, globals: Globals): Calculation | -1;
 export declare function exp(expNode: FunctionNode, globals: Globals): Calculation | -1;
 export declare function sqrt(sqrtNode: FunctionNode, globals: Globals): Calculation | -1;
+export declare function pow(powNode: FunctionNode, globals: Globals): Calculation | -1;
+export declare function hypot(hypotNode: FunctionNode, globals: Globals): Calculation | -1;
+export declare function log(logNode: FunctionNode, globals: Globals): Calculation | -1;

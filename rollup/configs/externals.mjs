@@ -3,7 +3,6 @@ export const externalsForCLI = [
 	'https',
 	'path',
 	'url',
-	'vm',
 
 	'postcss',
 	/^postcss-\d\.\d$/,
@@ -84,7 +83,6 @@ export const externalsForPlugin = [
 	'module',
 	'path',
 	'url',
-	'vm',
 
 	'postcss',
 	/^postcss-\d\.\d$/,

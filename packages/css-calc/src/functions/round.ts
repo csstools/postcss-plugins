@@ -93,7 +93,7 @@ export function solveRound(roundNode: FunctionNode, roundingStrategy: string, a:
 
 				if (downDiff === upDiff) {
 					result = up;
-				} if (downDiff < upDiff) {
+				} else if (downDiff < upDiff) {
 					result = down;
 				} else {
 					result = up;

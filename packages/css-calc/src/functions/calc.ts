@@ -1,30 +1,35 @@
+import type { Calculation } from '../calculation';
+import type { ComponentValue, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
+import type { Globals } from '../util/globals';
 import { TokenType } from '@csstools/css-tokenizer';
-import { ComponentValue, FunctionNode, isCommentNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { Calculation, isCalculation, solve } from '../calculation';
-import { unary } from '../operation/unary';
-import { multiplication } from '../operation/multiplication';
-import { division } from '../operation/division';
 import { addition } from '../operation/addition';
-import { subtraction } from '../operation/subtraction';
-import { solveMin } from './min';
-import { solveMax } from './max';
-import { solveClamp } from './clamp';
-import { Globals } from '../util/globals';
+import { division } from '../operation/division';
+import { isCalculation, solve } from '../calculation';
+import { isCommentNode, FunctionNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import { multiplication } from '../operation/multiplication';
 import { resolveGlobalsAndConstants } from './globals-and-constants';
-import { solveRound } from './round';
-import { solveMod } from './mod';
-import { solveRem } from './rem';
-import { solveAbs } from './abs';
-import { solveSign } from './sign';
-import { solveSin } from './sin';
-import { solveCos } from './cos';
-import { solveTan } from './tan';
-import { solveASin } from './asin';
 import { solveACos } from './acos';
+import { solveASin } from './asin';
 import { solveATan } from './atan';
 import { solveATan2 } from './atan2';
+import { solveAbs } from './abs';
+import { solveClamp } from './clamp';
+import { solveCos } from './cos';
 import { solveExp } from './exp';
+import { solveHypot } from './hypot';
+import { solveMax } from './max';
+import { solveMin } from './min';
+import { solveMod } from './mod';
+import { solvePow } from './pow';
+import { solveRem } from './rem';
+import { solveRound } from './round';
+import { solveSign } from './sign';
+import { solveSin } from './sin';
 import { solveSqrt } from './sqrt';
+import { solveTan } from './tan';
+import { subtraction } from '../operation/subtraction';
+import { unary } from '../operation/unary';
+import { solveLog } from './log';
 
 export const mathFunctions = new Map([
 	['abs', abs],
@@ -36,9 +41,12 @@ export const mathFunctions = new Map([
 	['clamp', clamp],
 	['cos', cos],
 	['exp', exp],
+	['hypot', hypot],
+	['log', log],
 	['max', max],
 	['min', min],
 	['mod', mod],
+	['pow', pow],
 	['rem', rem],
 	['round', round],
 	['sign', sign],
@@ -82,7 +90,6 @@ export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals)
 				}
 				nodes.splice(i, 1, subCalc);
 			} else {
-				// TODO : implement other math functions
 				return -1;
 			}
 
@@ -528,4 +535,16 @@ export function exp(expNode: FunctionNode, globals: Globals): Calculation | -1 {
 
 export function sqrt(sqrtNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return singleNodeSolver(sqrtNode, globals, solveSqrt);
+}
+
+export function pow(powNode: FunctionNode, globals: Globals): Calculation | -1 {
+	return twoCommaSeparatedNodesSolver(powNode, globals, solvePow);
+}
+
+export function hypot(hypotNode: FunctionNode, globals: Globals): Calculation | -1 {
+	return variadicNodesSolver(hypotNode, globals, solveHypot);
+}
+
+export function log(logNode: FunctionNode, globals: Globals): Calculation | -1 {
+	return variadicNodesSolver(logNode, globals, solveLog);
 }
