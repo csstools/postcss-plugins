@@ -1,13 +1,13 @@
-import valuesParser from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
 import transformValueAST from './transform-value-ast';
 import type { Declaration } from 'postcss';
 import { isDeclarationIgnored } from './is-ignored';
 
 // transform custom pseudo selectors with custom selectors
-export default (decl, customProperties, opts) => {
+export default (decl: Declaration, customProperties: Map<string, valueParser.ParsedValue>, opts: { preserve?: boolean }) => {
 	if (isTransformableDecl(decl) && !isDeclarationIgnored(decl)) {
 		const originalValue = decl.value;
-		const valueAST = valuesParser(originalValue);
+		const valueAST = valueParser(originalValue);
 		let value = transformValueAST(valueAST, customProperties);
 
 		// protect against circular references
@@ -15,7 +15,7 @@ export default (decl, customProperties, opts) => {
 
 		while (value.includes('--') && value.toLowerCase().includes('var(') && !valueSet.has(value)) {
 			valueSet.add(value);
-			const parsedValueAST = valuesParser(value);
+			const parsedValueAST = valueParser(value);
 			value = transformValueAST(parsedValueAST, customProperties);
 		}
 
@@ -32,14 +32,14 @@ export default (decl, customProperties, opts) => {
 			if (opts.preserve) {
 				const beforeDecl = decl.cloneBefore({ value });
 
-				if (hasTrailingComment(beforeDecl)) {
+				if (hasTrailingComment(beforeDecl) && beforeDecl.raws?.value) {
 					beforeDecl.raws.value.value = beforeDecl.value.replace(trailingCommentRegExp, '$1');
 					beforeDecl.raws.value.raw = beforeDecl.raws.value.value + beforeDecl.raws.value.raw.replace(trailingCommentRegExp, '$2');
 				}
 			} else {
 				decl.value = value;
 
-				if (hasTrailingComment(decl)) {
+				if (hasTrailingComment(decl) && decl.raws?.value) {
 					decl.raws.value.value = decl.value.replace(trailingCommentRegExp, '$1');
 					decl.raws.value.raw = decl.raws.value.value + decl.raws.value.raw.replace(trailingCommentRegExp, '$2');
 				}
@@ -51,10 +51,10 @@ export default (decl, customProperties, opts) => {
 // match custom properties
 
 // whether the declaration should be potentially transformed
-const isTransformableDecl = decl => !decl.variable && decl.value.includes('--') && decl.value.toLowerCase().includes('var(');
+const isTransformableDecl = (decl: Declaration) => !decl.variable && decl.value.includes('--') && decl.value.toLowerCase().includes('var(');
 
 // whether the declaration has a trailing comment
-const hasTrailingComment = decl => 'value' in Object(Object(decl.raws).value) && 'raw' in decl.raws.value && trailingCommentRegExp.test(decl.raws.value.raw);
+const hasTrailingComment = (decl: Declaration) => 'value' in Object(Object(decl.raws).value) && ('raw' in (decl.raws?.value ?? {})) && trailingCommentRegExp.test(decl.raws.value?.raw ?? '');
 const trailingCommentRegExp = /^([\W\w]+)(\s*\/\*[\W\w]+?\*\/)$/;
 
 function parentHasExactFallback(decl: Declaration, value: string): boolean {

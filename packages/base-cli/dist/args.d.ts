@@ -2,8 +2,8 @@ export type Arguments = {
     stdin: boolean;
     stdout: boolean;
     inputs: Array<string>;
-    output: string | null;
-    outputDir: string | null;
+    output: string | undefined;
+    outputDir: string | undefined;
     externalMap: boolean;
     inlineMap: boolean;
     replace: boolean;

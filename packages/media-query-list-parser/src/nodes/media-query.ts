@@ -12,10 +12,10 @@ export class MediaQueryWithType {
 
 	modifier: Array<CSSToken>;
 	mediaType: Array<CSSToken>;
-	and: Array<CSSToken>;
-	media: MediaCondition | null = null;
+	and: Array<CSSToken> | undefined = undefined;
+	media: MediaCondition | undefined = undefined;
 
-	constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, and?: Array<CSSToken>, media?: MediaCondition | null) {
+	constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, and?: Array<CSSToken> | undefined, media?: MediaCondition | undefined) {
 		this.modifier = modifier;
 		this.mediaType = mediaType;
 
@@ -59,8 +59,8 @@ export class MediaQueryWithType {
 			}
 
 			if (token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'only') {
-				copy.modifier[i][1] = 'not';
-				copy.modifier[i][4].value = 'not';
+				token[1] = 'not';
+				token[4].value = 'not';
 				break;
 			}
 		}
@@ -121,13 +121,13 @@ export class MediaQueryWithType {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaQueryWithTypeWalkerEntry, parent: MediaQueryWithTypeWalkerParent }, index: number | string) => boolean | void) {
-		if (cb({ node: this.media, parent: this }, 'media') === false) {
-			return false;
-		}
-
+	walk(cb: (entry: { node: MediaQueryWithTypeWalkerEntry, parent: MediaQueryWithTypeWalkerParent }, index: number | string) => boolean | void): false | undefined {
 		if (!this.media) {
 			return;
+		}
+
+		if (cb({ node: this.media, parent: this }, 'media') === false) {
+			return false;
 		}
 
 		return this.media.walk(cb);

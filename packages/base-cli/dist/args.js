@@ -11,8 +11,8 @@ export function parseArguments(args, allowedPluginOpts, helpLogger) {
     const parsedArgs = {
         stdin: false,
         stdout: false,
-        output: null,
-        outputDir: null,
+        output: undefined,
+        outputDir: undefined,
         inputs: [],
         inlineMap: true,
         externalMap: false,
@@ -20,7 +20,7 @@ export function parseArguments(args, allowedPluginOpts, helpLogger) {
         pluginOptions: {},
         debug: false,
     };
-    let pluginOpts = null;
+    let pluginOpts = undefined;
     let encounteredFlagsOrArgs = false;
     // Stryker disable next-line UpdateOperator,EqualityOperator
     for (let i = 0; i < flatArgs.length; i++) {
@@ -85,11 +85,11 @@ export function parseArguments(args, allowedPluginOpts, helpLogger) {
         }
     }
     if (parsedArgs.replace) {
-        parsedArgs.output = null;
-        parsedArgs.outputDir = null;
+        parsedArgs.output = undefined;
+        parsedArgs.outputDir = undefined;
     }
     if (parsedArgs.outputDir) {
-        parsedArgs.output = null;
+        parsedArgs.output = undefined;
     }
     if (parsedArgs.inputs.length > 1 && parsedArgs.output) {
         // Stryker disable next-line all

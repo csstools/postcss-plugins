@@ -31,7 +31,7 @@ export default function getCustomSelectors(root: PostCSSRoot, result: Result, op
 			const thisCascadeLayer = cascadeLayerNumberForNode(atRule, cascadeLayersOrder);
 			const existingCascadeLayer = customSelectorsCascadeLayerMapping.get(name) ?? -1;
 
-			if (thisCascadeLayer >= existingCascadeLayer) {
+			if (thisCascadeLayer && thisCascadeLayer >= existingCascadeLayer) {
 				customSelectorsCascadeLayerMapping.set(name, thisCascadeLayer);
 				// re-parsing is important to obtain the correct AST shape
 				customSelectors.set(name, parser().astSync(source.slice(name.length).trim()));

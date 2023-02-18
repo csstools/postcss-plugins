@@ -13,8 +13,17 @@ export declare class MediaOr {
     walk(cb: (entry: {
         node: MediaOrWalkerEntry;
         parent: MediaOrWalkerParent;
-    }, index: number | string) => boolean | void): any;
-    toJSON(): any;
+    }, index: number | string) => boolean | void): false | undefined;
+    toJSON(): {
+        type: NodeType;
+        modifier: CSSToken[];
+        media: {
+            type: NodeType;
+            media: unknown;
+            before: CSSToken[];
+            after: CSSToken[];
+        };
+    };
     isMediaOr(): this is MediaOr;
     static isMediaOr(x: unknown): x is MediaOr;
 }

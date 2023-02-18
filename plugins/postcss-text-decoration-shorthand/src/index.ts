@@ -32,12 +32,17 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					const ownIndex = decl.parent.index(decl);
-					const hasFallbacksOrOverrides = decl.parent.nodes.some((node) => {
+					const parent = decl.parent;
+					if (!parent) {
+						return;
+					}
+
+					const ownIndex = parent.index(decl);
+					const hasFallbacksOrOverrides = parent.nodes.some((node) => {
 						return node.type === 'decl' &&
 							node.prop.toLowerCase() === 'text-decoration' &&
 							convertedValues.get(decl.value) === node.value &&
-							decl.parent.index(node) !== ownIndex;
+							parent.index(node) !== ownIndex;
 					});
 					if (hasFallbacksOrOverrides) {
 						return;
@@ -60,7 +65,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					const data = {
+					const data: {
+						line: Array<valueParser.Node>,
+						style: valueParser.Node|null,
+						color: valueParser.Node|null,
+						thickness: valueParser.Node|null,
+					} = {
 						line: [],
 						style: null,
 						color: null,
@@ -135,14 +145,15 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 							if (valueAndUnit.unit === '%') {
 								data.thickness = {
+									...genericNodeParts(),
 									type: 'function',
 									value: 'calc',
 									nodes: [
-										{ type: 'word', value: '0.01em' },
-										{ type: 'space', value: ' ' },
-										{ type: 'word', value: '*' },
-										{ type: 'space', value: ' ' },
-										{ type: 'word', value: valueAndUnit.number },
+										{ ...genericNodeParts(), type: 'word', value: '0.01em' },
+										{ ...genericNodeParts(), type: 'space', value: ' ' },
+										{ ...genericNodeParts(), type: 'word', value: '*' },
+										{ ...genericNodeParts(), type: 'space', value: ' ' },
+										{ ...genericNodeParts(), type: 'word', value: valueAndUnit.number },
 									],
 								};
 							}
@@ -155,6 +166,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					if (!data.line.length) {
 						data.line.push({
+							...genericNodeParts(),
 							type: 'word',
 							value: 'none',
 						});
@@ -162,6 +174,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					if (!data.style) {
 						data.style = {
+							...genericNodeParts(),
 							type: 'word',
 							value: 'solid',
 						};
@@ -169,6 +182,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					if (!data.color) {
 						data.color = {
+							...genericNodeParts(),
 							type: 'word',
 							value: 'currentColor',
 						};
@@ -198,11 +212,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					const shortHandValue = valueParser.stringify([
 						...data.line,
 						{
+							...genericNodeParts(),
 							type: 'space',
 							value: ' ',
 						},
 						data.style,
 						{
+							...genericNodeParts(),
 							type: 'space',
 							value: ' ',
 						},
@@ -241,7 +257,7 @@ creator.postcss = true;
 
 export default creator;
 
-function nodeIsAColor(node) {
+function nodeIsAColor(node: valueParser.Node) {
 	if ('word' === node.type && node.value.startsWith('#')) {
 		return true;
 	}
@@ -314,3 +330,12 @@ const colorNames = [
 
 	...Object.keys(namedColors),
 ];
+
+function genericNodeParts() {
+	return {
+		before: '',
+		after: '',
+		sourceIndex: 0,
+		sourceEndIndex: 0,
+	};
+}

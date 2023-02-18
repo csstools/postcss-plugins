@@ -4,7 +4,7 @@ import { childAdjacentChild } from './complex/child-adjacent-child';
 import { isInCompoundWithOneOtherElement } from './complex/is-in-compound';
 import type { Container } from 'postcss-selector-parser';
 
-export default function complexSelectors(selectors: string[], pluginOptions: { onComplexSelector?: 'warning' }, warnOnComplexSelector: () => void, warnOnPseudoElements: () => void) {
+export default function complexSelectors(selectors: Array<string>, pluginOptions: { onComplexSelector?: 'warning' }, warnOnComplexSelector: () => void, warnOnPseudoElements: () => void) {
 	return selectors.flatMap((selector) => {
 		if (selector.indexOf(':-csstools-matches') === -1 && selector.toLowerCase().indexOf(':is') === -1) {
 			return selector;

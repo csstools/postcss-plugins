@@ -97,6 +97,10 @@ export function transformBorderRadius(
 			}
 		}
 
+		if (!prop) {
+			return false;
+		}
+
 		cloneDeclaration(
 			declaration,
 			declaration.value,

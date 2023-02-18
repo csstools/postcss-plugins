@@ -13,7 +13,7 @@ type basePluginOptions = {
 };
 
 /* Transform lab() and lch() functions in CSS. */
-const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) => {
+const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-lab-function',
 		Declaration: (decl: Declaration, { result }: { result: Result }) => {
@@ -30,21 +30,21 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 				return;
 			}
 
-			const modified = modifiedValues(originalValue, decl, result, opts.preserve);
+			const modified = modifiedValues(originalValue, decl, result, opts?.preserve ?? false);
 			if (typeof modified === 'undefined') {
 				return;
 			}
 
-			if (opts.preserve) {
+			if (opts?.preserve) {
 				decl.cloneBefore({ value: modified.rgb });
 
-				if (opts.subFeatures.displayP3) {
+				if (opts?.subFeatures.displayP3) {
 					decl.cloneBefore({ value: modified.displayP3 });
 				}
 			} else {
 				decl.cloneBefore({ value: modified.rgb });
 
-				if (opts.subFeatures.displayP3) {
+				if (opts?.subFeatures.displayP3) {
 					decl.cloneBefore({ value: modified.displayP3 });
 				}
 

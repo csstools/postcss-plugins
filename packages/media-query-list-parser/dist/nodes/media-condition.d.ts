@@ -14,8 +14,8 @@ export declare class MediaCondition {
     walk(cb: (entry: {
         node: MediaConditionWalkerEntry;
         parent: MediaConditionWalkerParent;
-    }, index: number | string) => boolean | void): any;
-    toJSON(): any;
+    }, index: number | string) => boolean | void): false | undefined;
+    toJSON(): unknown;
     isMediaCondition(): this is MediaCondition;
     static isMediaCondition(x: unknown): x is MediaCondition;
 }

@@ -55,7 +55,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			let transformed = false;
+			let transformed: boolean | null = false;
 
 			try {
 				transformed = transform(decl);

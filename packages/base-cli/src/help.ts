@@ -1,5 +1,5 @@
 export function helpTextLogger(command: string, name: string, description: string, exampleOptions: Record<string, unknown> | null = null) {
-	let pluginOptions = [];
+	let pluginOptions: Array<string> = [];
 	if (exampleOptions) {
 		const longestPluginOptionLength = Math.max(...Object.keys(exampleOptions).map((x) => x.length));
 		const spaces = new Array(longestPluginOptionLength).fill(' ').join('');

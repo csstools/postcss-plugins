@@ -1,6 +1,6 @@
-import { promises as fsp } from 'fs';
 import path from 'path';
 import postcss from 'postcss';
+import { promises as fsp } from 'fs';
 // Read from one or more files and write to as many files
 export async function fsToFs(plugin, argo) {
     try {
@@ -11,6 +11,10 @@ export async function fsToFs(plugin, argo) {
             }
             if (argo.replace) {
                 output = input;
+            }
+            if (!output) {
+                // no outputs, nothing to do
+                process.exit(0);
             }
             const css = await fsp.readFile(input);
             const result = await postcss([plugin]).process(css, {

@@ -18,8 +18,8 @@ export declare class MediaConditionListWithAnd {
     walk(cb: (entry: {
         node: MediaConditionListWithAndWalkerEntry;
         parent: MediaConditionListWithAndWalkerParent;
-    }, index: number | string) => boolean | void): boolean;
-    toJSON(): any;
+    }, index: number | string) => boolean | void): false | undefined;
+    toJSON(): unknown;
     isMediaConditionListWithAnd(): this is MediaConditionListWithAnd;
     static isMediaConditionListWithAnd(x: unknown): x is MediaConditionListWithAnd;
 }
@@ -39,8 +39,8 @@ export declare class MediaConditionListWithOr {
     walk(cb: (entry: {
         node: MediaConditionListWithOrWalkerEntry;
         parent: MediaConditionListWithOrWalkerParent;
-    }, index: number | string) => boolean | void): boolean;
-    toJSON(): any;
+    }, index: number | string) => boolean | void): false | undefined;
+    toJSON(): unknown;
     isMediaConditionListWithOr(): this is MediaConditionListWithOr;
     static isMediaConditionListWithOr(x: unknown): x is MediaConditionListWithOr;
 }

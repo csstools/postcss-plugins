@@ -1,5 +1,4 @@
-import { PluginCreator } from 'postcss';
-import type { Rule } from 'postcss';
+import type { Rule, PluginCreator } from 'postcss';
 import valuesParser from 'postcss-value-parser';
 
 export type pluginOptions = {
@@ -25,9 +24,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					const valueAST = valuesParser(decl.value);
 
 					let conditionalVarName = '';
-					const truthyValueBuffer = [];
+					const truthyValueBuffer: Array<valuesParser.Node> = [];
 					let sawElseNode = false;
-					const falsyValueBuffer = [];
+					const falsyValueBuffer: Array<valuesParser.Node> = [];
 
 					// Gather values:
 					{

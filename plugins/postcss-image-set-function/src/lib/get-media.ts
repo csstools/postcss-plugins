@@ -1,16 +1,22 @@
+import type { Declaration, Postcss } from 'postcss';
 import type { Node } from 'postcss-value-parser';
 import valueParser from 'postcss-value-parser';
 
-const dpiRatios = { dpcm: 2.54, dpi: 1, dppx: 96, x: 96 };
+const dpiRatios: Map<string, number> = new Map([
+	['dpcm', 2.54],
+	['dpi', 1],
+	['dppx', 96],
+	['x', 96],
+]);
 
 // return a valid @media rule
-export function getMedia(dpi: number | false, postcss, decl) {
+export function getMedia(dpi: number | false, postcss: Postcss, decl: Declaration) {
 	if (typeof dpi === 'boolean') {
 		return false;
 	}
 
 	// calculate min-device-pixel-ratio and min-resolution
-	const dpr = Math.floor(dpi / dpiRatios.x * 100) / 100;
+	const dpr = Math.floor(dpi / 96 * 100) / 100;
 
 	const media = postcss.atRule({
 		name: 'media',
@@ -39,15 +45,16 @@ export function getMediaDPI(node: Node) {
 		return false;
 	}
 
-	if (unitAndValue.unit.toLowerCase() in dpiRatios) {
+	const ratio = dpiRatios.get(unitAndValue.unit.toLowerCase());
+	if (ratio) {
 		// calculate min-device-pixel-ratio and min-resolution
-		return Number(unitAndValue.number) * dpiRatios[unitAndValue.unit.toLowerCase()];
+		return Number(unitAndValue.number) * ratio;
 	} else {
 		return false;
 	}
 }
 
-function isNumericNode(node): boolean {
+function isNumericNode(node: valueParser.Node): boolean {
 	if (!node || !node.value) {
 		return false;
 	}

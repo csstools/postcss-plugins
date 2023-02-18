@@ -18,7 +18,7 @@ export declare class MediaFeaturePlain {
     walk(cb: (entry: {
         node: MediaFeaturePlainWalkerEntry;
         parent: MediaFeaturePlainWalkerParent;
-    }, index: number | string) => boolean | void): boolean;
+    }, index: number | string) => boolean | void): false | undefined;
     toJSON(): {
         type: NodeType;
         name: {
@@ -28,7 +28,7 @@ export declare class MediaFeaturePlain {
         };
         value: {
             type: NodeType;
-            value: any;
+            value: unknown;
             tokens: CSSToken[];
         };
         tokens: CSSToken[];

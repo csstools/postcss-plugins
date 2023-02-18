@@ -1,7 +1,11 @@
 import type { ChildNode, Container, Document } from 'postcss';
 import { CONDITIONAL_ATRULES } from './constants';
 
-export function removeEmptyDescendantBlocks(block: Container) {
+export function removeEmptyDescendantBlocks(block: Container | undefined) {
+	if (!block) {
+		return;
+	}
+
 	block.walk((node) => {
 		if (node.type === 'rule' || (node.type === 'atrule' && ['layer', ...CONDITIONAL_ATRULES].includes(node.name.toLowerCase()))) {
 			if (node.nodes?.length === 0) {
@@ -15,8 +19,12 @@ export function removeEmptyDescendantBlocks(block: Container) {
 	}
 }
 
-export function removeEmptyAncestorBlocks(block: Container) {
-	let currentNode: Document | Container<ChildNode> = block;
+export function removeEmptyAncestorBlocks(block: Container | undefined) {
+	if (!block) {
+		return;
+	}
+
+	let currentNode: Document | Container<ChildNode> | undefined = block;
 
 	while (currentNode) {
 		if (typeof currentNode.nodes === 'undefined') {
@@ -27,7 +35,7 @@ export function removeEmptyAncestorBlocks(block: Container) {
 			return;
 		}
 
-		const parent = currentNode.parent;
+		const parent: Document | Container<ChildNode> | undefined = currentNode.parent;
 		currentNode.remove();
 		currentNode = parent;
 	}

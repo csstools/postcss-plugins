@@ -38,7 +38,7 @@ export class MediaOr {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaOrWalkerEntry, parent: MediaOrWalkerParent }, index: number | string) => boolean | void) {
+	walk(cb: (entry: { node: MediaOrWalkerEntry, parent: MediaOrWalkerParent }, index: number | string) => boolean | void): false | undefined {
 		if (cb({ node: this.media, parent: this }, 'media') === false) {
 			return false;
 		}

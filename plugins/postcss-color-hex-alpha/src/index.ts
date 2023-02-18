@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { Declaration, PluginCreator } from 'postcss';
 import valuesParser from 'postcss-value-parser';
 import { hasFallback } from './has-fallback-decl';
 
@@ -66,13 +66,13 @@ export default creator;
 
 
 /** Returns whether a node has a hexa. */
-function hasAlphaHex(node) {
+function hasAlphaHex(node: Declaration) {
 	/** Expresssion to match any hexa */
 	return /#([0-9A-Fa-f]{4}(?:[0-9A-Fa-f]{4})?)\b/.test(node.value);
 }
 
 /** Returns whether a node matches a hexa node. */
-function isAlphaHex(node) {
+function isAlphaHex(node: valuesParser.Node) {
 	/** Expresssion to match an exact hexa */
 	return node.type === 'word' && /^#([0-9A-Fa-f]{4}(?:[0-9A-Fa-f]{4})?)$/.test(node.value);
 }
@@ -80,7 +80,7 @@ function isAlphaHex(node) {
 /** Decimal precision. */
 const alphaDecimalPrecision = 100000;
 
-const hexa2rgba = (node) => {
+const hexa2rgba = (node: valuesParser.Node) => {
 	// hex is the node value
 	const hex = node.value;
 

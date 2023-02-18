@@ -1,4 +1,3 @@
 import type { Container, Declaration } from 'postcss';
-declare function isBlockIgnored(container: Container): any;
-declare function isDeclarationIgnored(decl: Declaration): boolean;
-export { isBlockIgnored, isDeclarationIgnored, };
+export declare function isBlockIgnored(container: Container | undefined): any;
+export declare function isDeclarationIgnored(decl: Declaration | undefined): boolean;

@@ -11,7 +11,11 @@ export function splitImportantStyles(root: Container) {
 		}
 
 		const parent = decl.parent;
-		if (parent.parent && parent.parent.type === 'atrule' && ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS.includes((parent.parent as AtRule).name.toLowerCase())) {
+		if (!parent) {
+			return;
+		}
+
+		if (parent?.parent?.type === 'atrule' && ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS.includes((parent.parent as AtRule).name.toLowerCase())) {
 			return;
 		}
 

@@ -10,4 +10,4 @@
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/hslToRgb.js
  */
-export declare function HSL_to_sRGB(HSL: Color): number[];
+export declare function HSL_to_sRGB(HSL: Color): Color;

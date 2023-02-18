@@ -12,7 +12,7 @@ export class CustomMedia {
 	constructor(name: Array<CSSToken>, mediaQueryList: Array<MediaQuery> | null, trueOrFalseKeyword?: Array<CSSToken>) {
 		this.name = name;
 		this.mediaQueryList = mediaQueryList;
-		this.trueOrFalseKeyword = trueOrFalseKeyword;
+		this.trueOrFalseKeyword = trueOrFalseKeyword ?? null;
 	}
 
 	getName(): string {
@@ -96,6 +96,12 @@ export class CustomMedia {
 			return [
 				...this.name,
 				...this.trueOrFalseKeyword,
+			];
+		}
+
+		if (!this.mediaQueryList) {
+			return [
+				...this.name,
 			];
 		}
 

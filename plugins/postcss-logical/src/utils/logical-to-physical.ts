@@ -16,5 +16,7 @@ export function logicalToPhysical(logical: string, config: DirectionConfig): str
 
 		case DirectionValues.InlineEnd:
 			return inlineEnd;
+		default:
+			throw new Error('Unsupported logical direction');
 	}
 }

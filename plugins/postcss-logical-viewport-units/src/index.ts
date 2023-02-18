@@ -86,7 +86,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			});
 
 			const parent = decl.parent;
-			const parentClone = decl.parent.cloneAfter({ nodes: [] });
+			if (!parent) {
+				return;
+			}
+
+			const parentClone = parent.cloneAfter({ nodes: [] });
 
 			parentClone.append(decl);
 			supports.append(parentClone);

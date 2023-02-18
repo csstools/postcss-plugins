@@ -15,7 +15,7 @@ export type pluginOptions = {
 
 /** Transform lab() and lch() functions in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
+	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : false;
 
 	return {
 		postcssPlugin: 'postcss-color-functional-notation',
@@ -78,7 +78,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			if (preserve && decl.variable) {
+			if (preserve && decl.variable && decl.parent) {
 				const parent = decl.parent;
 				const atSupportsParams = '(color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5))';
 				const atSupports = postcss.atRule({ name: 'supports', params: atSupportsParams, source: decl.source });

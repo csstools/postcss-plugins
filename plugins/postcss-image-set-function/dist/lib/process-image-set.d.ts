@@ -6,7 +6,7 @@ type imageSetFunction = {
 };
 export declare const processImageSet: (imageSetFunctions: Array<imageSetFunction>, decl: Declaration, opts: {
     decl: Declaration;
-    oninvalid: 'warn' | 'throw' | 'ignore' | false;
+    oninvalid: 'warn' | 'throw' | 'ignore' | false | undefined;
     preserve: boolean;
     result: Result;
     postcss: Postcss;

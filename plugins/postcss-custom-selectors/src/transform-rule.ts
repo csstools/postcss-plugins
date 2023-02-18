@@ -1,6 +1,6 @@
-import { Result, Rule } from 'postcss';
-import type { Root, Selector } from 'postcss-selector-parser';
 import parser from 'postcss-selector-parser';
+import type { Result, Rule } from 'postcss';
+import type { Root, Selector } from 'postcss-selector-parser';
 
 // transform custom pseudo selectors with custom selectors
 export function transformRule(rule: Rule, result: Result, customSelectors: Map<string, Root>): null|string {

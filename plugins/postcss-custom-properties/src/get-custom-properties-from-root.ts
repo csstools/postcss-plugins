@@ -45,7 +45,7 @@ export default function getCustomPropertiesFromRoot(root: Root): Map<string, val
 				const thisCascadeLayer = cascadeLayerNumberForNode(decl, cascadeLayersOrder);
 				const existingCascadeLayer = customPropertiesHtmlElementCascadeLayerMapping.get(decl.prop) ?? -1;
 
-				if (thisCascadeLayer >= existingCascadeLayer) {
+				if (thisCascadeLayer && thisCascadeLayer >= existingCascadeLayer) {
 					customPropertiesHtmlElementCascadeLayerMapping.set(decl.prop, thisCascadeLayer);
 					customPropertiesFromHtmlElement.set(decl.prop, decl.value);
 				}
@@ -67,7 +67,7 @@ export default function getCustomPropertiesFromRoot(root: Root): Map<string, val
 				const thisCascadeLayer = cascadeLayerNumberForNode(decl, cascadeLayersOrder);
 				const existingCascadeLayer = customPropertiesRootPseudoCascadeLayerMapping.get(decl.prop) ?? -1;
 
-				if (thisCascadeLayer >= existingCascadeLayer) {
+				if (thisCascadeLayer && thisCascadeLayer >= existingCascadeLayer) {
 					customPropertiesRootPseudoCascadeLayerMapping.set(decl.prop, thisCascadeLayer);
 					customPropertiesFromRootPseudo.set(decl.prop, decl.value);
 				}

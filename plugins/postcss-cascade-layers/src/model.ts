@@ -35,7 +35,7 @@ export class Model {
 	}
 
 	createImplicitLayerName(layerName: string): string {
-		const parts = this.layerNameParts.get(layerName);
+		const parts = this.layerNameParts.get(layerName) ?? [];
 		const last = parts[parts.length - 1];
 		const name = `implicit-${last}-${IMPLICIT_LAYER_SUFFIX}`;
 
@@ -71,9 +71,9 @@ export class Model {
 	}
 
 	getLayerParams(layer: AtRule): Array<string> {
-		const params: Array<string> = [...this.layerParamsParsed.get(layer.params)];
+		const params: Array<string> = [...(this.layerParamsParsed.get(layer.params) ?? [])];
 
-		let parent: Node = layer.parent;
+		let parent: Node | undefined = layer.parent;
 		while (parent) {
 			if (parent.type !== 'atrule') {
 				parent = parent.parent;
@@ -81,7 +81,7 @@ export class Model {
 			}
 
 			if (isProcessableLayerRule(parent as AtRule)) {
-				params.push(...this.layerParamsParsed.get((parent as AtRule).params));
+				params.push(...(this.layerParamsParsed.get((parent as AtRule).params) ?? []));
 			}
 
 			parent = parent.parent;
@@ -91,12 +91,12 @@ export class Model {
 		params.reverse();
 
 		return params.flatMap((param) => {
-			return this.layerNameParts.get(param);
+			return this.layerNameParts.get(param) ?? [];
 		});
 	}
 
 	getLayerNameList(layerName: string): Array<string> {
-		const parts = this.layerNameParts.get(layerName);
+		const parts = this.layerNameParts.get(layerName) ?? [];
 		const layerNameList = [];
 		for (let i = 0; i < parts.length; i++) {
 			const partialLayerName = parts.slice(0, i + 1).join('.');
@@ -116,7 +116,7 @@ export class Model {
 
 	sortLayerNames() {
 		for (const [layerName, layerIndex] of this.layerOrder) {
-			const parts = this.layerNameParts.get(layerName);
+			const parts = this.layerNameParts.get(layerName) ?? [];
 
 			for (let i = 1; i < (parts.length); i++) {
 				const parentLayer = parts.slice(0, i).join('.');
@@ -128,10 +128,10 @@ export class Model {
 
 		let layerOrderStructured = Array.from(this.layerOrder.entries());
 		layerOrderStructured = layerOrderStructured.sort((a, b) => {
-			const aParts = this.layerNameParts.get(a[0]);
-			const bParts = this.layerNameParts.get(b[0]);
+			const aParts = this.layerNameParts.get(a[0]) ?? [];
+			const bParts = this.layerNameParts.get(b[0]) ?? [];
 			if (aParts[0] !== bParts[0]) {
-				return this.layerOrder.get(aParts[0]) - this.layerOrder.get(bParts[0]);
+				return (this.layerOrder.get(aParts[0]) ?? 0) - (this.layerOrder.get(bParts[0]) ?? 0);
 			}
 
 			const len = Math.max(aParts.length, bParts.length);
@@ -150,8 +150,10 @@ export class Model {
 					return -1;
 				}
 
-				return this.layerOrder.get(aParts.slice(0, i).join('.')) - this.layerOrder.get(bParts.slice(0, i).join('.'));
+				return (this.layerOrder.get(aParts.slice(0, i).join('.')) ?? 0) - (this.layerOrder.get(bParts.slice(0, i).join('.')) ?? 0);
 			}
+
+			return 0;
 		});
 
 		this.layerOrder.clear();

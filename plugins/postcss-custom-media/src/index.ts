@@ -101,8 +101,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						const clone = atRule.clone({ params: transformed.replaceWith });
 						const encapsulate = atRule.clone({ params: transformed.encapsulateWith.trim(), nodes: [] });
 
-						clone.parent = null;
-						encapsulate.parent = null;
+						clone.parent = undefined;
+						encapsulate.parent = undefined;
 
 						transformedNodes.add(atRule);
 						encapsulate.append(clone);

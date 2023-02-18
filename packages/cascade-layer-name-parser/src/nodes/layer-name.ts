@@ -49,16 +49,16 @@ export class LayerName {
 	segments(): Array<string> {
 		return this.parts.filter((x) => {
 			return x[0] === TokenType.Ident;
-		}).map((x: TokenIdent) => {
-			return x[4].value;
+		}).map((x) => {
+			return (x as TokenIdent)[4].value;
 		});
 	}
 
 	name(): string {
 		return this.parts.filter((x) => {
 			return x[0] === TokenType.Ident || x[0] === TokenType.Delim;
-		}).map((x: TokenIdent) => {
-			return x[1];
+		}).map((x) => {
+			return (x as TokenIdent | TokenDelim)[1];
 		}).join('');
 	}
 

@@ -12,7 +12,7 @@ export declare class GeneralEnclosed {
     walk(cb: (entry: {
         node: GeneralEnclosedWalkerEntry;
         parent: GeneralEnclosedWalkerParent;
-    }, index: number | string) => boolean | void): boolean;
+    }, index: number | string) => boolean | void): false | undefined;
     toJSON(): {
         type: NodeType;
         tokens: CSSToken[];

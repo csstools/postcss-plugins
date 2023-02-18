@@ -2,9 +2,9 @@ import valueParser from 'postcss-value-parser';
 import type { FunctionNode, Node } from 'postcss-value-parser';
 import { isVarFunction } from './is-var-function';
 
-export default function transformValueAST(root, customProperties) {
+export default function transformValueAST(root: valueParser.ParsedValue, customProperties: Map<string, valueParser.ParsedValue>) {
 	if (root.nodes && root.nodes.length) {
-		const ancestry: Map<Node, FunctionNode> = new Map();
+		const ancestry: Map<Node, FunctionNode | valueParser.ParsedValue> = new Map();
 		root.nodes.forEach((child) => {
 			ancestry.set(child, root);
 		});
@@ -26,6 +26,10 @@ export default function transformValueAST(root, customProperties) {
 			const { value: name } = propertyNode;
 
 			const parent = ancestry.get(child);
+			if (!parent) {
+				return;
+			}
+
 			const index = parent.nodes.indexOf(child);
 			if (index === -1) {
 				return;
@@ -49,7 +53,7 @@ export default function transformValueAST(root, customProperties) {
 			let nodes = [];
 			if (customProperties.has(name)) {
 				// Direct match of a custom property to a parsed value
-				nodes = customProperties.get(name).nodes;
+				nodes = customProperties.get(name)?.nodes ?? [];
 			} else if (fallbacks.length && !fallbackContainsUnknownVariables) {
 				// No match, but fallback available
 				nodes = child.nodes.slice(child.nodes.indexOf(fallbacks[0]));

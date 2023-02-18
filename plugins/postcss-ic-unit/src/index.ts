@@ -8,7 +8,7 @@ type basePluginOptions = {
 	preserve: boolean,
 }
 
-const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) => {
+const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-ic-unit',
 		Declaration(decl) {
@@ -46,7 +46,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) =
 
 			decl.cloneBefore({ value: modifiedValue });
 
-			if (!opts.preserve) {
+			if (!opts?.preserve) {
 				decl.remove();
 			}
 		},

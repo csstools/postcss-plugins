@@ -19,7 +19,7 @@ const interpolationMethods = [
  * @param {{preserve?: boolean}} opts
  * @returns {import('postcss').Plugin}
  */
-const basePlugin = (opts) => {
+const basePlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve?: boolean }) => {
 	return {
 		postcssPlugin: 'postcss-gradients-interpolation-method',
 		Declaration(decl, { result }) {
@@ -116,14 +116,18 @@ const basePlugin = (opts) => {
 
 				if (gradient.argumentsRemainder.length) {
 					func.nodes.push(
-						...gradient.argumentsRemainder.flatMap((x) => {
-							return [x, { type: 'space', value: ' ' }];
+						...gradient.argumentsRemainder.flatMap((x): Array<valueParser.Node> => {
+							return [x, { type: 'space', value: ' ', sourceIndex: 0, sourceEndIndex: 0 }];
 						}),
 					);
 
 					func.nodes.push({
 						type: 'div',
 						value: ',',
+						before: '',
+						after: '',
+						sourceIndex: 0,
+						sourceEndIndex: 0,
 					});
 				}
 
@@ -138,7 +142,7 @@ const basePlugin = (opts) => {
 					// Last color stop.
 					if (!end) {
 						func.nodes.push(
-							valueParser(`${start.color} ${start.colorStopLength}`),
+							...valueParser(`${start.color} ${start.colorStopLength}`).nodes,
 						);
 
 						continue;
@@ -147,8 +151,15 @@ const basePlugin = (opts) => {
 					// Two equal colors.
 					if (start.color === end.color) {
 						func.nodes.push(
-							valueParser(`${start.color} ${start.colorStopLength}`),
-							{ type: 'div', value: ',' },
+							...valueParser(`${start.color} ${start.colorStopLength}`).nodes,
+							{
+								type: 'div',
+								value: ',',
+								before: '',
+								after: '',
+								sourceIndex: 0,
+								sourceEndIndex: 0,
+							},
 						);
 
 						continue;
@@ -158,8 +169,15 @@ const basePlugin = (opts) => {
 					for (let j = 0; j < 10; j++) {
 						if (j === 0) {
 							func.nodes.push(
-								valueParser(`${start.color} ${start.colorStopLength}`),
-								{ type: 'div', value: ',' },
+								...valueParser(`${start.color} ${start.colorStopLength}`).nodes,
+								{
+									type: 'div',
+									value: ',',
+									before: '',
+									after: '',
+									sourceIndex: 0,
+									sourceEndIndex: 0,
+								},
 							);
 
 							continue;
@@ -169,8 +187,15 @@ const basePlugin = (opts) => {
 						const position = `calc(${start.colorStopLength} + ((${end.colorStopLength} - ${start.colorStopLength}) * ${j / 10}))`;
 
 						func.nodes.push(
-							valueParser(`${color} ${position}`),
-							{ type: 'div', value: ',' },
+							...valueParser(`${color} ${position}`).nodes,
+							{
+								type: 'div',
+								value: ',',
+								before: '',
+								after: '',
+								sourceIndex: 0,
+								sourceEndIndex: 0,
+							},
 						);
 					}
 				}
@@ -185,12 +210,12 @@ const basePlugin = (opts) => {
 				return;
 			}
 
-			const modifiedValue = valueParser.stringify(valueAST);
+			const modifiedValue = valueParser.stringify(valueAST.nodes);
 			if (modifiedValue === decl.value) {
 				return;
 			}
 
-			if (opts.preserve) {
+			if (opts?.preserve) {
 				decl.cloneBefore({
 					prop: decl.prop,
 					value: modifiedValue,
@@ -198,7 +223,6 @@ const basePlugin = (opts) => {
 			} else {
 				decl.value = modifiedValue;
 			}
-
 		},
 	};
 };

@@ -15,6 +15,7 @@
 	],
 	"hasFalseKeyword": false,
 	"hasTrueKeyword": false,
+	"trueOrFalseKeyword": null,
 	"mediaQueryList": [
 		{
 			"type": "media-query-with-type",
@@ -37,8 +38,7 @@
 						"value": "screen"
 					}
 				]
-			],
-			"media": null
+			]
 		}
 	]
 }

@@ -26,8 +26,8 @@ export declare class FunctionNode {
     walk(cb: (entry: {
         node: ComponentValue;
         parent: ContainerNode;
-    }, index: number | string) => boolean | void): boolean;
-    toJSON(): any;
+    }, index: number | string) => boolean | void): false | undefined;
+    toJSON(): unknown;
     isFunctionNode(): this is FunctionNode;
     static isFunctionNode(x: unknown): x is FunctionNode;
 }
@@ -53,8 +53,8 @@ export declare class SimpleBlockNode {
     walk(cb: (entry: {
         node: ComponentValue;
         parent: ContainerNode;
-    }, index: number | string) => boolean | void): boolean;
-    toJSON(): any;
+    }, index: number | string) => boolean | void): false | undefined;
+    toJSON(): unknown;
     isSimpleBlockNode(): this is SimpleBlockNode;
     static isSimpleBlockNode(x: unknown): x is SimpleBlockNode;
 }

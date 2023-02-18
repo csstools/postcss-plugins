@@ -13,8 +13,17 @@ export declare class MediaNot {
     walk(cb: (entry: {
         node: MediaNotWalkerEntry;
         parent: MediaNotWalkerParent;
-    }, index: number | string) => boolean | void): any;
-    toJSON(): any;
+    }, index: number | string) => boolean | void): false | undefined;
+    toJSON(): {
+        type: NodeType;
+        modifier: CSSToken[];
+        media: {
+            type: NodeType;
+            media: unknown;
+            before: CSSToken[];
+            after: CSSToken[];
+        };
+    };
     isMediaNot(): this is MediaNot;
     static isMediaNot(x: unknown): x is MediaNot;
 }
