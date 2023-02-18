@@ -1,21 +1,24 @@
-import { stringify, tokenizer } from '@csstools/css-tokenizer';
-import { isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
+import type { CSSToken } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { checks } from './checks';
+import { isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
+import { stringify, tokenizer } from '@csstools/css-tokenizer';
 
 export function calc(css: string) {
 	const t = tokenizer({
 		css: css,
 	});
 
-	const tokens = [];
+	const tokens: Array<CSSToken> = [];
 
 	{
 		while (!t.endOfFile()) {
-			tokens.push(t.nextToken());
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			tokens.push(t.nextToken()!);
 		}
 
-		tokens.push(t.nextToken()); // EOF-token
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		tokens.push(t.nextToken()!); // EOF-token
 	}
 
 	const result = parseCommaSeparatedListOfComponentValues(tokens, {});

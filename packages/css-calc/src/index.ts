@@ -17,10 +17,12 @@ export function calc(css: string, options?: conversionOptions) {
 
 	{
 		while (!t.endOfFile()) {
-			tokens.push(t.nextToken());
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			tokens.push(t.nextToken()!);
 		}
 
-		tokens.push(t.nextToken()); // EOF-token
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		tokens.push(t.nextToken()!); // EOF-token
 	}
 
 	const result = parseCommaSeparatedListOfComponentValues(tokens, {});

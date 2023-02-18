@@ -24,19 +24,25 @@ export function solveTan(tanNode: FunctionNode, a: TokenNode): Calculation | -1 
 	if (aToken[0] === TokenType.Dimension) {
 		switch (aToken[4].unit.toLowerCase()) {
 			case 'rad':
-				degrees = convert_rad.get('deg')(startingValue);
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				degrees = convert_rad.get('deg')!(startingValue);
 				break;
 			case 'deg':
 				degrees = startingValue;
-				aToken[4].value = convert_deg.get('rad')(startingValue);
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				aToken[4].value = convert_deg.get('rad')!(startingValue);
 				break;
 			case 'grad':
-				degrees = convert_grad.get('deg')(startingValue);
-				aToken[4].value = convert_grad.get('rad')(startingValue);
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				degrees = convert_grad.get('deg')!(startingValue);
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				aToken[4].value = convert_grad.get('rad')!(startingValue);
 				break;
 			case 'turn':
-				degrees = convert_turn.get('deg')(startingValue);
-				aToken[4].value = convert_turn.get('rad')(startingValue);
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				degrees = convert_turn.get('deg')!(startingValue);
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				aToken[4].value = convert_turn.get('rad')!(startingValue);
 				break;
 			default:
 				return -1;

@@ -1,4 +1,4 @@
-export const canonicalUnits = {
+export const canonicalUnits: Record<string, string> = {
 	// px
 	'cm': 'px',
 	'in': 'px',

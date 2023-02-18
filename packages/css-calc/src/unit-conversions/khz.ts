@@ -1,4 +1,4 @@
-export const convert_khz: Map<string, (number) => number> = new Map([
+export const convert_khz: Map<string, (number: number) => number> = new Map([
 	[
 		'hz',
 		(x: number) => {

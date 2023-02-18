@@ -7,8 +7,8 @@ export type Calculation = {
 	operation: Operation;
 }
 
-export function isCalculation(x): x is Calculation {
-	return ('inputs' in x) && Array.isArray(x.inputs) && ('operation' in x);
+export function isCalculation(x: unknown): x is Calculation {
+	return !!(x) && (typeof x === 'object') && ('inputs' in x) && Array.isArray(x.inputs) && ('operation' in x);
 }
 
 export function solve(calculation: Calculation | -1): TokenNode | -1 {

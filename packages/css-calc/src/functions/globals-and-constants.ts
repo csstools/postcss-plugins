@@ -49,7 +49,8 @@ export function resolveGlobalsAndConstants(nodes: Array<ComponentValue>, globals
 
 			default:
 				if (globals.has(ident)) {
-					const replacement = globals.get(ident);
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					const replacement = globals.get(ident)!;
 					nodes.splice(i, 1, new TokenNode(replacement));
 				}
 				break;

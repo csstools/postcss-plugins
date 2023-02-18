@@ -4,7 +4,7 @@ import { isToken, tokenizer, TokenType } from '@csstools/css-tokenizer';
 export type Globals = Map<string, TokenDimension | TokenNumber | TokenPercentage>;
 export type GlobalsWithStrings = Map<string, TokenDimension | TokenNumber | TokenPercentage | string>;
 
-export function tokenizeGlobals(x: GlobalsWithStrings): Globals {
+export function tokenizeGlobals(x: GlobalsWithStrings | undefined): Globals {
 	const copy: Globals = new Map();
 	if (!x) {
 		return copy;
@@ -27,6 +27,10 @@ export function tokenizeGlobals(x: GlobalsWithStrings): Globals {
 			// If it isn't EOF after a single token, we skip this pair
 			t.nextToken();
 			if (!t.endOfFile()) {
+				continue;
+			}
+
+			if (!token) {
 				continue;
 			}
 

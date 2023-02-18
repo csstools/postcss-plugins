@@ -22,13 +22,16 @@ export function solveCos(cosNode: FunctionNode, a: TokenNode): Calculation | -1 
 			case 'rad':
 				break;
 			case 'deg':
-				aToken[4].value = convert_deg.get('rad')(aToken[4].value);
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				aToken[4].value = convert_deg.get('rad')!(aToken[4].value);
 				break;
 			case 'grad':
-				aToken[4].value = convert_grad.get('rad')(aToken[4].value);
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				aToken[4].value = convert_grad.get('rad')!(aToken[4].value);
 				break;
 			case 'turn':
-				aToken[4].value = convert_turn.get('rad')(aToken[4].value);
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				aToken[4].value = convert_turn.get('rad')!(aToken[4].value);
 				break;
 			default:
 				return -1;

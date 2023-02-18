@@ -1,4 +1,4 @@
-export const convert_s: Map<string, (number) => number> = new Map([
+export const convert_s: Map<string, (number: number) => number> = new Map([
 	[
 		'ms',
 		(x: number) => {

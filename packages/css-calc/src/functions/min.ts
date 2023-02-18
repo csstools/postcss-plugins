@@ -35,7 +35,13 @@ export function solveMin(minNode: FunctionNode, solvedNodes: Array<ComponentValu
 
 	const tokens = solvedNodes.map((x) => convertUnit(firstSolvedToken, (x as TokenNode).value));
 
-	const units = new Set(tokens.map((x) => (x[4]['unit'] ?? '').toLowerCase()));
+	const units = new Set(tokens.map((x) => {
+		if (x[0] === TokenType.Dimension) {
+			return x[4].unit.toLowerCase();
+		}
+
+		return '';
+	}));
 	if (units.size !== 1) {
 		return -1;
 	}

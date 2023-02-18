@@ -1,1 +1,1 @@
-export declare const convert_s: Map<string, (number: any) => number>;
+export declare const convert_s: Map<string, (number: number) => number>;
