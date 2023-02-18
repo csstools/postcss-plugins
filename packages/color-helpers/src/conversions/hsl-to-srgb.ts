@@ -10,7 +10,7 @@
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/hslToRgb.js
  */
-export function HSL_to_sRGB(HSL: Color) {
+export function HSL_to_sRGB(HSL: Color): Color {
 	let hue = HSL[0];
 	let sat = HSL[1];
 	let light = HSL[2];
@@ -24,7 +24,7 @@ export function HSL_to_sRGB(HSL: Color) {
 	sat /= 100;
 	light /= 100;
 
-	function f(n) {
+	function f(n: number) {
 		const k = (n + hue / 30) % 12;
 		const a = sat * Math.min(light, 1 - light);
 		return light - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));

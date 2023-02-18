@@ -1,1 +1,2 @@
-export declare function getImage(node: any): string | false;
+import valueParser from 'postcss-value-parser';
+export declare function getImage(node: valueParser.Node): string | false;

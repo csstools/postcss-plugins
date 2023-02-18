@@ -1,1 +1,1 @@
-export declare function formatGitHubActionAnnotation(message: any, level?: string, options?: {}): string;
+export declare function formatGitHubActionAnnotation(message: string, level?: string, options?: Record<string, unknown>): string;

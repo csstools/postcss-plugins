@@ -129,10 +129,10 @@ type Hsl = {
 	l: Dimension,
 	lNode: Node,
 	slash?: DivNode,
-	alpha?: WordNode|FunctionNode,
+	alpha?: WordNode | FunctionNode,
 }
 
-function hslFunctionContents(nodes): Hsl|null {
+function hslFunctionContents(nodes: Array<valueParser.Node>): Hsl | null {
 	if (!isNumericNodeHueLike(nodes[0])) {
 		return null;
 	}
@@ -183,7 +183,7 @@ type Rgb = {
 	alpha?: WordNode | FunctionNode,
 }
 
-function rgbFunctionContents(nodes): Rgb|null {
+function rgbFunctionContents(nodes: Array<valueParser.Node>): Rgb | null {
 	if (!isNumericNodePercentageOrNumber(nodes[0])) {
 		return null;
 	}
@@ -308,7 +308,7 @@ function normalizeHueNode(dimension: Dimension) {
 	}
 }
 
-function canParseAsUnit(node : Node): boolean {
+function canParseAsUnit(node: Node): boolean {
 	if (!node || !node.value) {
 		return false;
 	}
@@ -343,7 +343,7 @@ function convertOldSyntaxToNewSyntaxBeforeTransform(nodes: Array<Node>): Array<N
 			}
 
 			if (commaCounter > 2) {
-				return;
+				return [];
 			}
 
 			commaCounter++;

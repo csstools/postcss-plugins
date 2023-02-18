@@ -22,8 +22,8 @@ export type pluginOptions = {
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	// prepare options
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
-	const oninvalid = 'onInvalid' in Object(opts) ? opts.onInvalid : 'ignore';
+	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : true;
+	const oninvalid = 'onInvalid' in Object(opts) ? opts?.onInvalid : 'ignore';
 
 	if ('oninvalid' in Object(opts)) {
 		throw new Error('"oninvalid" was changed to "onInvalid" to match other plugins with similar options');
@@ -59,7 +59,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			}
 
 			// process every image-set() function
-			const imageSetFunctions = [];
+			const imageSetFunctions: Array<{
+				imageSetFunction: valueParser.FunctionNode,
+				imageSetOptionNodes: Array<valueParser.Node>,
+			}> = [];
 
 			valueAST.walk((node) => {
 				if (node.type !== 'function') {

@@ -134,8 +134,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				}
 
 				const fullLayerName = model.getLayerParams(layerForCurrentRule).join('.');
-
-				let specificityAdjustment = model.layerOrder.get(fullLayerName) * highestASpecificity;
+				const layerOrder = model.layerOrder.get(fullLayerName) ?? 0;
+				let specificityAdjustment = layerOrder * highestASpecificity;
 				if (rule.some((decl) => decl.type === 'decl' && decl.important)) {
 					// !important declarations have inverse priority in layers
 					specificityAdjustment = model.layerCount - specificityAdjustment;

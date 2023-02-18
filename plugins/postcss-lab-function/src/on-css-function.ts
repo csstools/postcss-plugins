@@ -1,6 +1,6 @@
+import type { Declaration, Result } from 'postcss';
 import type { FunctionNode, Dimension, Node, DivNode, WordNode, SpaceNode } from 'postcss-value-parser';
 import valueParser from 'postcss-value-parser';
-import { Declaration, Result } from 'postcss';
 import { conversions } from '@csstools/color-helpers';
 
 export function onCSSFunctionSRgb(node: FunctionNode) {
@@ -249,7 +249,7 @@ type Lch = {
 	alpha?: WordNode|FunctionNode,
 }
 
-function lchFunctionContents(nodes): Lch|null {
+function lchFunctionContents(nodes: Array<valueParser.Node>): Lch|null {
 	if (!isNumericNodePercentageOrNumber(nodes[0])) {
 		return null;
 	}
@@ -313,7 +313,7 @@ type Lab = {
 	alpha?: WordNode | FunctionNode,
 }
 
-function labFunctionContents(nodes): Lab|null {
+function labFunctionContents(nodes: Array<valueParser.Node>): Lab|null {
 	if (!isNumericNodePercentageOrNumber(nodes[0])) {
 		return null;
 	}

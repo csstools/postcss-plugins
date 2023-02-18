@@ -1,5 +1,5 @@
 export interface walkable {
-	walk(cb: (entry: { node: Array<unknown> | unknown, parent: unknown }, index: number | string) => boolean | void)
+	walk(cb: (entry: { node: Array<unknown> | unknown, parent: unknown }, index: number | string) => boolean | void): false | undefined
 }
 
 export function gatherNodeAncestry(node: walkable) {

@@ -16,8 +16,12 @@ type mediaByDpr = {
 	value: string;
 }
 
-export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl: Declaration, opts: { decl: Declaration, oninvalid: 'warn' | 'throw' | 'ignore' | false, preserve: boolean, result: Result, postcss: Postcss }) => {
+export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl: Declaration, opts: { decl: Declaration, oninvalid: 'warn' | 'throw' | 'ignore' | false | undefined, preserve: boolean, result: Result, postcss: Postcss }) => {
 	const parent = decl.parent;
+	if (!parent) {
+		return;
+	}
+
 	const mediasByDpr: Map<number, mediaByDpr> = new Map();
 	const declValue = decl.value;
 
@@ -50,7 +54,8 @@ export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl
 			mediasByDprPerItem.set(mediaDPI, media);
 
 			if (mediasByDpr.has(mediaDPI)) {
-				const m = mediasByDpr.get(mediaDPI);
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				const m = mediasByDpr.get(mediaDPI)!;
 				m.value = m.value.replace(valueParser.stringify(imageSetFunction), value.trim());
 				mediasByDpr.set(mediaDPI, m);
 			} else {
@@ -73,9 +78,10 @@ export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl
 		atRule.append(parentClone);
 	}
 
-	const medias = Array.from(mediasByDpr.keys())
+	const medias: Array<AtRule> = Array.from(mediasByDpr.keys())
 		.sort((a, b) => a - b)
-		.map(params => mediasByDpr.get(params).atRule);
+		.map(params => mediasByDpr.get(params)?.atRule)
+		.filter((x) => !!x) as Array<AtRule>;
 
 	if (!medias.length) {
 		return;

@@ -11,6 +11,8 @@ import { MediaFeaturePlain } from './media-feature-plain';
 import { MediaFeatureRange } from './media-feature-range';
 import { MediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
+import { MediaNot } from './media-not';
+import { MediaOr } from './media-or';
 export declare class MediaInParens {
     type: NodeType;
     media: MediaCondition | MediaFeature | GeneralEnclosed;
@@ -24,10 +26,15 @@ export declare class MediaInParens {
     walk(cb: (entry: {
         node: MediaInParensWalkerEntry;
         parent: MediaInParensWalkerParent;
-    }, index: number | string) => boolean | void): any;
-    toJSON(): any;
+    }, index: number | string) => boolean | void): false | undefined;
+    toJSON(): {
+        type: NodeType;
+        media: unknown;
+        before: CSSToken[];
+        after: CSSToken[];
+    };
     isMediaInParens(): this is MediaInParens;
     static isMediaInParens(x: unknown): x is MediaInParens;
 }
-export type MediaInParensWalkerEntry = ComponentValue | Array<ComponentValue> | GeneralEnclosed | MediaAnd | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
-export type MediaInParensWalkerParent = ContainerNode | GeneralEnclosed | MediaAnd | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
+export type MediaInParensWalkerEntry = ComponentValue | Array<ComponentValue> | GeneralEnclosed | MediaAnd | MediaNot | MediaOr | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
+export type MediaInParensWalkerParent = ContainerNode | GeneralEnclosed | MediaAnd | MediaNot | MediaOr | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;

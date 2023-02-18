@@ -28,14 +28,16 @@ export function parse(source: string, options?: Options) {
 		onParseError: options?.onParseError,
 	});
 
-	const tokens = [];
+	const tokens: Array<CSSToken> = [];
 
 	{
 		while (!t.endOfFile()) {
-			tokens.push(t.nextToken());
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			tokens.push(t.nextToken()!);
 		}
 
-		tokens.push(t.nextToken()); // EOF-token
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		tokens.push(t.nextToken()!); // EOF-token
 	}
 
 	return parseFromTokens(tokens, options);

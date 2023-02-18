@@ -62,8 +62,8 @@ export function transformMediaFeatureValue(value: MediaFeatureValue) {
 			return;
 		}
 
-		let firstValueModified: ComponentValue|null;
-		let secondValueModified: ComponentValue|null;
+		let firstValueModified: ComponentValue | null = null;
+		let secondValueModified: ComponentValue | null = null;
 
 		// Calc
 		{

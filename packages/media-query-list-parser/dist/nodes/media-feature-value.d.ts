@@ -14,10 +14,10 @@ export declare class MediaFeatureValue {
     walk(cb: (entry: {
         node: MediaFeatureValueWalkerEntry;
         parent: MediaFeatureValueWalkerParent;
-    }, index: number | string) => boolean | void): boolean;
+    }, index: number | string) => boolean | void): false | undefined;
     toJSON(): {
         type: NodeType;
-        value: any;
+        value: unknown;
         tokens: CSSToken[];
     };
     isMediaFeatureValue(): this is MediaFeatureValue;

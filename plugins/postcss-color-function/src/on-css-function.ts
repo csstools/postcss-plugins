@@ -204,7 +204,7 @@ type Color = {
 	alpha?: WordNode | FunctionNode,
 }
 
-function colorFunctionContents(nodes): Color|null {
+function colorFunctionContents(nodes: Array<valueParser.Node>): Color|null {
 	if (!isColorSpaceNode(nodes[0])) {
 		return null;
 	}
@@ -216,30 +216,31 @@ function colorFunctionContents(nodes): Color|null {
 	};
 
 	for (let i = 1; i < nodes.length; i++) {
-		if (isSlashNode(nodes[i])) {
-			out.slash = nodes[i];
+		const node = nodes[i];
+		if (isSlashNode(node)) {
+			out.slash = node;
 			continue;
 		}
 
 		if (out.slash) {
-			if ((isNumericNodePercentageOrNumber(nodes[i]) || isCalcNode(nodes[i]) || isVarNode(nodes[i]))) {
-				out.alpha = nodes[i];
+			if ((isNumericNodePercentageOrNumber(node) || isCalcNode(node) || isVarNode(node))) {
+				out.alpha = node;
 				break;
 			}
 		}
 
-		if (isNumericNodePercentageOrNumber(nodes[i])) {
-			const unitAndValue = valueParser.unit(nodes[i].value) as Dimension;
+		if (isNumericNodePercentageOrNumber(node)) {
+			const unitAndValue = valueParser.unit(node.value) as Dimension;
 			if (unitAndValue.unit === '%') {
 				// transform the channel from a Percentage to (0-1) Number
 				unitAndValue.number = String(parseFloat(unitAndValue.number) / 100);
 				unitAndValue.unit = '';
-				nodes[i].value = String(unitAndValue.number);
+				node.value = String(unitAndValue.number);
 			}
 
 			out.parameters.push({
 				value: unitAndValue,
-				node: nodes[i],
+				node: node,
 			});
 		} else {
 			return null;

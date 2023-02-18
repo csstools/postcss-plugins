@@ -1,6 +1,7 @@
-import { promises as fsp } from 'fs';
+import postcss from 'postcss';
+import type { Plugin } from 'postcss';
 import { Arguments } from './args';
-import postcss, { Plugin } from 'postcss';
+import { promises as fsp } from 'fs';
 
 // Read from one or more files and write to stdout
 export async function fsToStdout(plugin: Plugin, argo: Arguments): Promise<never> {

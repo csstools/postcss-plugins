@@ -114,7 +114,7 @@ export function parseMediaFeaturePlain(componentValues: Array<ComponentValue>): 
 		}
 	}
 
-	if (!a.length || !b.length) {
+	if (!a.length || !b.length || !colon) {
 		return false;
 	}
 

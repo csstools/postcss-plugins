@@ -19,7 +19,7 @@ export type pluginOptions = {
 };
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
+	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : false;
 
 	return {
 		postcssPlugin: 'postcss-font-format-keywords',

@@ -3,7 +3,10 @@ import valueParser from 'postcss-value-parser';
 
 export function onCSSDeclaration(decl: Declaration, result: Result , options: { preserve: boolean }) {
 	// alignment
-	const alignment = decl.prop.toLowerCase().match(placeMatch)[1];
+	const alignment = decl.prop.toLowerCase().match(placeMatch)?.[1];
+	if (!alignment) {
+		return;
+	}
 
 	// value ast and child nodes
 	let value;
@@ -21,10 +24,10 @@ export function onCSSDeclaration(decl: Declaration, result: Result , options: { 
 		return;
 	}
 
-	let alignmentValues = [];
+	let alignmentValues: Array<string> = [];
 
 	if (!value.nodes.length) {
-		alignmentValues = [valueParser.stringify(value)];
+		alignmentValues = [valueParser.stringify(value.nodes)];
 	} else {
 		alignmentValues = value.nodes.filter((node) => {
 			return node.type === 'word' || node.type === 'function';

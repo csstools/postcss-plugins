@@ -4,7 +4,7 @@ import { alwaysTrue, neverTrue } from './always-true-or-false';
 
 export function replaceTrueAndFalseTokens(tokens: Array<CSSToken>): Array<CSSToken> {
 	let booleanToken;
-	let remainder;
+	let remainder : Array<CSSToken> = [];
 
 	for (let i = 0; i < tokens.length; i++) {
 		if (tokens[i][0] === TokenType.Comment) {

@@ -17,7 +17,7 @@ export type pluginOptions = {
 
 /** Transform hwb() functions in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
+	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : false;
 
 	return {
 		postcssPlugin: 'postcss-hwb-function',
@@ -40,7 +40,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			if (decl.variable && preserve) {
+			if (decl.variable && preserve && decl.parent) {
 				const parent = decl.parent;
 				const atSupports = postcss.atRule({ name: 'supports', params: atSupportsHwbParams, source: decl.source });
 

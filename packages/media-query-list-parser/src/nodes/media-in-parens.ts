@@ -11,6 +11,8 @@ import { MediaFeaturePlain } from './media-feature-plain';
 import { MediaFeatureRange } from './media-feature-range';
 import { MediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
+import { MediaNot } from './media-not';
+import { MediaOr } from './media-or';
 
 export class MediaInParens {
 	type = NodeType.MediaInParens;
@@ -51,7 +53,7 @@ export class MediaInParens {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaInParensWalkerEntry, parent: MediaInParensWalkerParent }, index: number | string) => boolean | void) {
+	walk(cb: (entry: { node: MediaInParensWalkerEntry, parent: MediaInParensWalkerParent }, index: number | string) => boolean | void): false | undefined {
 		if (cb({ node: this.media, parent: this }, 'media') === false) {
 			return false;
 		}
@@ -87,5 +89,5 @@ export class MediaInParens {
 	}
 }
 
-export type MediaInParensWalkerEntry = ComponentValue | Array<ComponentValue> | GeneralEnclosed | MediaAnd | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
-export type MediaInParensWalkerParent = ContainerNode | GeneralEnclosed | MediaAnd | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
+export type MediaInParensWalkerEntry = ComponentValue | Array<ComponentValue> | GeneralEnclosed | MediaAnd | MediaNot | MediaOr | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
+export type MediaInParensWalkerParent = ContainerNode | GeneralEnclosed | MediaAnd | MediaNot | MediaOr | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;

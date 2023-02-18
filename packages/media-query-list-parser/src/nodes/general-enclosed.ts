@@ -33,7 +33,7 @@ export class GeneralEnclosed {
 		}
 	}
 
-	walk(cb: (entry: { node: GeneralEnclosedWalkerEntry, parent: GeneralEnclosedWalkerParent }, index: number | string) => boolean | void) {
+	walk(cb: (entry: { node: GeneralEnclosedWalkerEntry, parent: GeneralEnclosedWalkerParent }, index: number | string) => boolean | void): false | undefined {
 		if (cb({ node: this.value, parent: this }, 'value') === false) {
 			return false;
 		}

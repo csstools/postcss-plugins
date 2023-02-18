@@ -7,9 +7,9 @@ export declare class MediaQueryWithType {
     type: NodeType;
     modifier: Array<CSSToken>;
     mediaType: Array<CSSToken>;
-    and: Array<CSSToken>;
-    media: MediaCondition | null;
-    constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, and?: Array<CSSToken>, media?: MediaCondition | null);
+    and: Array<CSSToken> | undefined;
+    media: MediaCondition | undefined;
+    constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, and?: Array<CSSToken> | undefined, media?: MediaCondition | undefined);
     getModifier(): string;
     negateQuery(): MediaQuery;
     getMediaType(): string;
@@ -20,14 +20,14 @@ export declare class MediaQueryWithType {
     walk(cb: (entry: {
         node: MediaQueryWithTypeWalkerEntry;
         parent: MediaQueryWithTypeWalkerParent;
-    }, index: number | string) => boolean | void): any;
+    }, index: number | string) => boolean | void): false | undefined;
     toJSON(): {
         type: NodeType;
         string: string;
         modifier: CSSToken[];
         mediaType: CSSToken[];
-        and: CSSToken[];
-        media: MediaCondition;
+        and: CSSToken[] | undefined;
+        media: MediaCondition | undefined;
     };
     isMediaQueryWithType(): this is MediaQueryWithType;
     static isMediaQueryWithType(x: unknown): x is MediaQueryWithType;
@@ -46,7 +46,7 @@ export declare class MediaQueryWithoutType {
     walk(cb: (entry: {
         node: MediaQueryWithoutTypeWalkerEntry;
         parent: MediaQueryWithoutTypeWalkerParent;
-    }, index: number | string) => boolean | void): any;
+    }, index: number | string) => boolean | void): false | undefined;
     toJSON(): {
         type: NodeType;
         string: string;
@@ -67,7 +67,7 @@ export declare class MediaQueryInvalid {
     walk(cb: (entry: {
         node: MediaQueryInvalidWalkerEntry;
         parent: MediaQueryInvalidWalkerParent;
-    }, index: number | string) => boolean | void): boolean;
+    }, index: number | string) => boolean | void): false | undefined;
     toJSON(): {
         type: NodeType;
         string: string;

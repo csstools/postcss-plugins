@@ -9,7 +9,7 @@ export type pluginOptions = {
 };
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const options = Object.assign(
+	const options: pluginOptions = Object.assign(
 		// Default options
 		{
 			color: null,

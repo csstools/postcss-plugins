@@ -30,7 +30,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			const isNotDisplayGrid = !(decl.parent.some((node) => {
+			const isNotDisplayGrid = !(decl.parent?.some((node) => {
 				if (node.type !== 'decl') {
 					return false;
 				}
@@ -42,7 +42,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			}
 
 			const replacement = `grid-${decl.prop.toLowerCase()}`;
-			const hasGridPrefixedDeclaration = decl.parent.some((node) => {
+			const hasGridPrefixedDeclaration = decl.parent?.some((node) => {
 				if (node.type !== 'decl') {
 					return false;
 				}

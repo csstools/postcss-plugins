@@ -21,12 +21,20 @@ export function desugarNestedLayers(root: Container<ChildNode>, model: Model) {
 				return;
 			}
 
-			if (layerRule.parent.type === 'atrule' && isProcessableLayerRule(layerRule.parent as AtRule)) {
+			if (layerRule.parent?.type === 'atrule' && isProcessableLayerRule(layerRule.parent as AtRule)) {
 				const parent = layerRule.parent as AtRule;
 
-				// Concatenate the current layer params with those of the parent. Store the result in the data model.
-				model.layerNameParts.set(`${parent.params}.${layerRule.params}`, [...model.layerNameParts.get(parent.params), ...model.layerNameParts.get(layerRule.params)]);
-				model.layerParamsParsed.set(`${parent.params}.${layerRule.params}`, [`${parent.params}.${layerRule.params}`]);
+				{
+					// Concatenate the current layer params with those of the parent. Store the result in the data model.
+					const parentParamsLayerNameParts = model.layerNameParts.get(parent.params);
+					const currentParamsLayerNameParts = model.layerNameParts.get(layerRule.params);
+					if (!parentParamsLayerNameParts || !currentParamsLayerNameParts) {
+						return;
+					}
+
+					model.layerNameParts.set(`${parent.params}.${layerRule.params}`, [...parentParamsLayerNameParts, ...currentParamsLayerNameParts]);
+					model.layerParamsParsed.set(`${parent.params}.${layerRule.params}`, [`${parent.params}.${layerRule.params}`]);
+				}
 
 				layerRule.params = `${parent.params}.${layerRule.params}`;
 
@@ -37,7 +45,7 @@ export function desugarNestedLayers(root: Container<ChildNode>, model: Model) {
 				return;
 			}
 
-			if (layerRule.parent.type === 'atrule') {
+			if (layerRule.parent?.type === 'atrule') {
 				const parent = layerRule.parent as AtRule;
 				const parentClone = parent.clone();
 				const layerRuleClone = layerRule.clone();

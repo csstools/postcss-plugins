@@ -83,10 +83,6 @@ export class FunctionNode {
 			return [
 				this.name,
 				...this.value.flatMap((x) => {
-					if (isToken(x)) {
-						return x;
-					}
-
 					return x.tokens();
 				}),
 			];
@@ -95,10 +91,6 @@ export class FunctionNode {
 		return [
 			this.name,
 			...this.value.flatMap((x) => {
-				if (isToken(x)) {
-					return x;
-				}
-
 				return x.tokens();
 			}),
 			this.endToken,
@@ -130,7 +122,7 @@ export class FunctionNode {
 		}
 	}
 
-	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number | string) => boolean | void) {
+	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number | string) => boolean | void): false | undefined {
 		let aborted = false;
 
 		this.value.forEach((child, index) => {
@@ -156,7 +148,7 @@ export class FunctionNode {
 		}
 	}
 
-	toJSON() {
+	toJSON(): unknown {
 		return {
 			type: this.type,
 			name: this.getName(),
@@ -259,10 +251,6 @@ export class SimpleBlockNode {
 			return [
 				this.startToken,
 				...this.value.flatMap((x) => {
-					if (isToken(x)) {
-						return x;
-					}
-
 					return x.tokens();
 				}),
 			];
@@ -271,10 +259,6 @@ export class SimpleBlockNode {
 		return [
 			this.startToken,
 			...this.value.flatMap((x) => {
-				if (isToken(x)) {
-					return x;
-				}
-
 				return x.tokens();
 			}),
 			this.endToken,
@@ -306,7 +290,7 @@ export class SimpleBlockNode {
 		}
 	}
 
-	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number | string) => boolean | void) {
+	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number | string) => boolean | void): false | undefined {
 		let aborted = false;
 
 		this.value.forEach((child, index) => {
@@ -332,7 +316,7 @@ export class SimpleBlockNode {
 		}
 	}
 
-	toJSON() {
+	toJSON(): unknown {
 		return {
 			type: this.type,
 			startToken: this.startToken,

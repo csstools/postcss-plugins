@@ -6,7 +6,7 @@ export class ParseError extends Error {
 	/** The parser steps that preceded the error. */
 	parserState: Array<string>;
 
-	constructor(message, sourceStart: number, sourceEnd: number, parserState: Array<string>) {
+	constructor(message: string, sourceStart: number, sourceEnd: number, parserState: Array<string>) {
 		super(message);
 		this.name = 'ParseError';
 

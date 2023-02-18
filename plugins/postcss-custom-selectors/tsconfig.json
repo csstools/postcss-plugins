@@ -2,8 +2,7 @@
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
 		"outDir": "dist",
-		"declarationDir": ".",
-		"module": "es2020"
+		"declarationDir": "."
 	},
 	"include": ["./src/**/*"],
 	"exclude": ["dist"],

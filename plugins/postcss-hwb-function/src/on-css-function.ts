@@ -35,9 +35,9 @@ export function onCSSFunctionSRgb(node: FunctionNode) {
 		channelNumber => parseFloat(channelNumber),
 	) as [number, number, number];
 
-	const rgbValues = conversions.HWB_to_sRGB(
+	const rgbValues: [number, number, number] = conversions.HWB_to_sRGB(
 		channelNumbers,
-	).map((x) => Math.round(x * 255));
+	).map((x: number): number => Math.round(x * 255));
 
 	node.nodes.splice(node.nodes.indexOf(channelNode1) + 1, 0, commaNode());
 	node.nodes.splice(node.nodes.indexOf(channelNode2) + 1, 0, commaNode());
@@ -151,7 +151,7 @@ type Hwb = {
 	alpha?: WordNode|FunctionNode,
 }
 
-function hwbFunctionContents(nodes): Hwb | null {
+function hwbFunctionContents(nodes: Array<valueParser.Node>): Hwb | null {
 	if (!isNumericNodeHueLike(nodes[0])) {
 		return null;
 	}

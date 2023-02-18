@@ -23,9 +23,9 @@ const keywords = [
 	'top',
 ];
 
-const isPunctuationCommaNode = node => node.type === 'div' && node.value === ',';
+const isPunctuationCommaNode = (node: valueParser.Node) => node.type === 'div' && node.value === ',';
 
-function isNumericNode(node) {
+function isNumericNode(node: valueParser.Node) {
 	try {
 		return valueParser.unit(node?.value) !== false;
 	} catch (e) {
@@ -38,7 +38,7 @@ function isNumericNode(node) {
  * @param {{preserve?: boolean}} opts
  * @returns {import('postcss').Plugin}
  */
-const basePlugin = (opts) => {
+const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: boolean }) => {
 	return {
 		postcssPlugin: 'postcss-double-position-gradients',
 		Declaration(decl, { result }) {
@@ -104,11 +104,13 @@ const basePlugin = (opts) => {
 					if (isDoublePositionLength) {
 						// insert the fallback colors
 						const color = twoValuesBack;
-						const comma = {
+						const comma: valueParser.Node = {
 							type: 'div',
 							value: ',',
 							before: isPunctuationCommaNode(nextNode) ? nextNode.before : '',
 							after: isPunctuationCommaNode(nextNode) ? '' : ' ',
+							sourceIndex: 0,
+							sourceEndIndex: 0,
 						};
 
 						func.nodes.splice(
@@ -117,7 +119,8 @@ const basePlugin = (opts) => {
 							// remove none
 							0,
 							// insert these :
-							comma, color,
+							comma,
+							color,
 						);
 					}
 				});
@@ -133,7 +136,7 @@ const basePlugin = (opts) => {
 
 			decl.cloneBefore({ value: modifiedValue });
 
-			if (!opts.preserve) {
+			if (!opts?.preserve) {
 				decl.remove();
 			}
 		},

@@ -1,4 +1,14 @@
-export function matches(a, b) {
+type MatcherNode = {
+	type: string,
+	value?: string,
+	nodes?: Array<MatcherNode>,
+	dimension?: {
+		unit?: string
+	},
+	isVariable?: boolean
+}
+
+export function matches(a: MatcherNode, b: MatcherNode) {
 	if (a.isVariable && !!b) {
 		return true;
 	}
@@ -39,10 +49,10 @@ export function matches(a, b) {
 	return true;
 }
 
-function doesNotMatchValue(a, b) {
+function doesNotMatchValue(a: MatcherNode, b: MatcherNode) {
 	if (
 		a.type === 'space' && b.type === 'space' &&
-		a.value.trim() === b.value.trim()
+		a.value?.trim() === b.value?.trim()
 	) {
 		return false;
 	}
@@ -59,7 +69,7 @@ function doesNotMatchValue(a, b) {
 		return false;
 	}
 
-	if (a.value.toLowerCase() !== b.value.toLowerCase()) {
+	if (a.value?.toLowerCase() !== b.value?.toLowerCase()) {
 		return true;
 	}
 

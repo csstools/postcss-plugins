@@ -32,7 +32,7 @@ export type pluginOptions = {
      *
      * The `browsers` option should only be used when a standard browserslist configuration is not available.
      */
-    browsers?: string | readonly string[] | null;
+    browsers?: string | Array<string> | null;
     /**
      * Determine whether all plugins should receive a `preserve` option,
      * which may preserve or remove the original and now polyfilled CSS.

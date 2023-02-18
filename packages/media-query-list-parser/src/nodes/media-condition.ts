@@ -35,7 +35,7 @@ export class MediaCondition {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaConditionWalkerEntry, parent: MediaConditionWalkerParent }, index: number | string) => boolean | void) {
+	walk(cb: (entry: { node: MediaConditionWalkerEntry, parent: MediaConditionWalkerParent }, index: number | string) => boolean | void): false | undefined {
 		if (cb({ node: this.media, parent: this }, 'media') === false) {
 			return false;
 		}
@@ -43,7 +43,7 @@ export class MediaCondition {
 		return this.media.walk(cb);
 	}
 
-	toJSON() {
+	toJSON(): unknown {
 		return {
 			type: this.type,
 			media: this.media.toJSON(),

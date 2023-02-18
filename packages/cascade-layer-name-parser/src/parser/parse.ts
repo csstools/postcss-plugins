@@ -50,7 +50,7 @@ export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
 
 		let inLayerNameSequence = false;
 		let sawWhiteSpaceAfterIdent = false;
-		let lastToken: CSSToken;
+		let lastToken: CSSToken | null = null;
 		for (let j = 0; j < componentValueTokens.length; j++) {
 			const token = componentValueTokens[j];
 			if (!(
@@ -106,7 +106,7 @@ export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
 					return [];
 				}
 
-				if (lastToken[0] === TokenType.Ident) {
+				if (lastToken && lastToken[0] === TokenType.Ident) {
 					if (token[0] === TokenType.Ident) {
 						onParseError(new ParseError(
 							'Invalid cascade layer name. Layer name parts must be separated by dots.',
@@ -119,7 +119,7 @@ export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
 					}
 				}
 
-				if (lastToken[0] === TokenType.Delim) {
+				if (lastToken && lastToken[0] === TokenType.Delim) {
 					if (token[0] === TokenType.Delim) {
 						onParseError(new ParseError(
 							'Invalid cascade layer name. Layer name parts must not be empty.',
@@ -175,14 +175,16 @@ export function parse(source: string, options?: Options) {
 		onParseError: options?.onParseError,
 	});
 
-	const tokens = [];
+	const tokens: Array<CSSToken> = [];
 
 	{
 		while (!t.endOfFile()) {
-			tokens.push(t.nextToken());
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			tokens.push(t.nextToken()!);
 		}
 
-		tokens.push(t.nextToken()); // EOF-token
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		tokens.push(t.nextToken()!); // EOF-token
 	}
 
 	return parseFromTokens(tokens, options);

@@ -6,6 +6,7 @@
 		"lib": ["ES2022"],
 		"allowSyntheticDefaultImports": true,
 		"module": "ES2022",
-		"declaration": true
+		"declaration": true,
+		"useUnknownInCatchVariables": false
 	}
 }

@@ -1,6 +1,6 @@
 import path from 'path';
 
-export function formatGitHubActionAnnotation(message, level = 'error', options = {}) {
+export function formatGitHubActionAnnotation(message: string, level = 'error', options: Record<string, unknown> = {}) {
 	let output = '::' + level;
 
 	const outputOptions = Object.keys(options).map((key) => {
@@ -21,11 +21,11 @@ export function formatGitHubActionAnnotation(message, level = 'error', options =
 	return `${output}::${escapeData(message || '')}`;
 }
 
-function escapeData(s) {
+function escapeData(s: string) {
 	return s.replace(/\r/g, '%0D').replace(/\n/g, '%0A');
 }
 
-function escapeValue(s) {
+function escapeValue(s: string) {
 	return s.replace(/\r/g, '%0D')
 		.replace(/\n/g, '%0A')
 		.replace(/]/g, '%5D')

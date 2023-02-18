@@ -12,7 +12,7 @@ export type pluginOptions = {
 };
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
+	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : true;
 
 	if ('importFrom' in Object(opts)) {
 		throw new Error('[postcss-custom-properties] "importFrom" is no longer supported');

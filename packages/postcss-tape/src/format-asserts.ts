@@ -1,8 +1,9 @@
 import type { Warning } from 'postcss';
+import type { TestCaseOptions } from './test-case-options';
 
 export const dashesSeparator = '----------------------------------------';
 
-export function formatCSSAssertError(testCaseLabel, testCaseOptions, err, forGithubAnnotation = false) {
+export function formatCSSAssertError(testCaseLabel: string, testCaseOptions: TestCaseOptions, err: Error, forGithubAnnotation = false) {
 	let formatted = '';
 	formatted += `\n${testCaseLabel}\n\n`;
 
@@ -27,7 +28,7 @@ export function formatCSSAssertError(testCaseLabel, testCaseOptions, err, forGit
 	return formatted;
 }
 
-export function formatWarningsAssertError(testCaseLabel, testCaseOptions, actual: Array<Warning>, expected: number, forGithubAnnotation = false) {
+export function formatWarningsAssertError(testCaseLabel: string, testCaseOptions: TestCaseOptions, actual: Array<Warning>, expected: number, forGithubAnnotation = false) {
 	let formatted = '';
 	formatted += `\n${testCaseLabel}\n\n`;
 

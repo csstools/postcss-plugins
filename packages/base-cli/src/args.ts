@@ -2,8 +2,8 @@ export type Arguments = {
 	stdin: boolean,
 	stdout: boolean,
 	inputs: Array<string>,
-	output: string | null,
-	outputDir: string | null,
+	output: string | undefined,
+	outputDir: string | undefined,
 	externalMap: boolean,
 	inlineMap: boolean,
 	replace: boolean,
@@ -25,8 +25,8 @@ export function parseArguments(args: Array<string>, allowedPluginOpts: Array<str
 	const parsedArgs: Arguments = {
 		stdin: false,
 		stdout: false,
-		output: null,
-		outputDir: null,
+		output: undefined,
+		outputDir: undefined,
 		inputs: [],
 		inlineMap: true,
 		externalMap: false,
@@ -35,7 +35,7 @@ export function parseArguments(args: Array<string>, allowedPluginOpts: Array<str
 		debug: false,
 	};
 
-	let pluginOpts = null;
+	let pluginOpts = undefined;
 
 	let encounteredFlagsOrArgs = false;
 
@@ -113,12 +113,12 @@ export function parseArguments(args: Array<string>, allowedPluginOpts: Array<str
 	}
 
 	if (parsedArgs.replace) {
-		parsedArgs.output = null;
-		parsedArgs.outputDir = null;
+		parsedArgs.output = undefined;
+		parsedArgs.outputDir = undefined;
 	}
 
 	if (parsedArgs.outputDir) {
-		parsedArgs.output = null;
+		parsedArgs.output = undefined;
 	}
 
 	if (parsedArgs.inputs.length > 1 && parsedArgs.output) {
@@ -141,7 +141,7 @@ export function parseArguments(args: Array<string>, allowedPluginOpts: Array<str
 		parsedArgs.externalMap = false;
 	}
 
-	let parsedPluginOpts = {};
+	let parsedPluginOpts: Record<string, unknown> = {};
 	// Stryker disable next-line ConditionalExpression
 	if (pluginOpts) {
 		try {

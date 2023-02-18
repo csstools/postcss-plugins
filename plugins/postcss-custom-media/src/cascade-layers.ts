@@ -20,7 +20,7 @@ export function collectCascadeLayerOrder(root: Root) {
 			// and maybe `@layer` rules inside other `@later` rules.
 			//
 			// Traverse up the tree and abort when we find something unexpected
-			let parent: Container | Document = node.parent;
+			let parent: Container | Document | undefined = node.parent;
 			while (parent) {
 				if (parent.type === 'atrule' && (parent as AtRule).name.toLowerCase() === 'layer') {
 					parent = parent.parent;
@@ -53,7 +53,7 @@ export function collectCascadeLayerOrder(root: Root) {
 			// Stitch the layer names of the current node together with those of ancestors.
 			// @layer foo { @layer bar { .any {} } }
 			// -> "foo.bar"
-			let parent: Container | Document = node.parent;
+			let parent: Container | Document | undefined = node.parent;
 			while (parent && parent.type === 'atrule' && (parent as AtRule).name.toLowerCase() === 'layer') {
 				const parentLayerName = referencesForLayerNames.get(parent);
 				if (!parentLayerName) {
@@ -118,7 +118,7 @@ export function cascadeLayerNumberForNode(node: Node, layers: WeakMap<Node, numb
 	return Infinity;
 }
 
-function normalizeLayerName(layerName, counter) {
+function normalizeLayerName(layerName: string, counter: number) {
 	if (layerName.trim()) {
 		return layerName;
 	}
