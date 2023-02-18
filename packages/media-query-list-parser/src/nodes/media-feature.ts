@@ -54,7 +54,7 @@ export class MediaFeature {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaFeatureWalkerEntry, parent: MediaFeatureWalkerParent }, index: number | string) => boolean | void) {
+	walk(cb: (entry: { node: MediaFeatureWalkerEntry, parent: MediaFeatureWalkerParent }, index: number | string) => boolean | void): false | undefined {
 		if (cb({ node: this.feature, parent: this }, 'feature') === false) {
 			return false;
 		}

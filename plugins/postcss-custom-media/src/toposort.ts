@@ -72,6 +72,7 @@ function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<stri
 	function visit(node: string, j: number, predecessors: Set<string>) {
 		if (predecessors.has(node)) {
 			const err = new Error('Cyclic dependency' + JSON.stringify(node));
+			// @ts-expect-error custom field on object
 			err['_graphNode'] = node; /* a hack to communicate which node is causing the cyclic error */
 
 			throw err;

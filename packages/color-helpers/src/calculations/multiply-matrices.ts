@@ -25,6 +25,8 @@ export function multiplyMatrices(a: Array<Array<number>> | Array<number>, b: Arr
 	if (!Array.isArray(b[0])) {
 		// B is vector, convert to [[a], [b], [c], ...]]
 		B = (b as Array<number>).map(x => [x]);
+	} else {
+		B = b as Array<Array<number>>;
 	}
 
 	const p = B[0].length;
@@ -42,7 +44,7 @@ export function multiplyMatrices(a: Array<Array<number>> | Array<number>, b: Arr
 	}
 
 	if (p === 1) {
-		return product.map(x => x[0]); // Avoid [[a], [b], [c], ...]]
+		return (product as Array<Array<number>>).map(x => x[0]); // Avoid [[a], [b], [c], ...]]
 	}
 
 	return product;

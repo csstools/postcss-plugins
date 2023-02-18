@@ -6,7 +6,7 @@ import { doublePositionGradients } from './custom/double-position-gradients';
 export function supportConditionsFromValue(value: string): Array<string> {
 	const supportConditions: Array<string> = [];
 
-	const relevantMatchers = [];
+	const relevantMatchers: typeof matchers = [];
 
 	matchers.forEach((matcher) => {
 		if (value.indexOf(matcher.sniff) > -1) {
@@ -18,9 +18,12 @@ export function supportConditionsFromValue(value: string): Array<string> {
 		const ast = valueParser(value);
 		ast.walk((node) => {
 			try {
+				// @ts-expect-error We need to extend this type.
 				node['dimension'] = valueParser.unit(node.value);
 			} finally {
+				// @ts-expect-error We need to extend this type.
 				if (node['dimension'] === false) {
+					// @ts-expect-error We need to extend this type.
 					delete node['dimension'];
 				}
 			}

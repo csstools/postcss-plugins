@@ -5,5 +5,5 @@ export declare class ParseError extends Error {
     sourceEnd: number;
     /** The parser steps that preceded the error. */
     parserState: Array<string>;
-    constructor(message: any, sourceStart: number, sourceEnd: number, parserState: Array<string>);
+    constructor(message: string, sourceStart: number, sourceEnd: number, parserState: Array<string>);
 }

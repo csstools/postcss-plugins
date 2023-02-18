@@ -14,5 +14,5 @@ export type CodePointReader = {
 
 	advanceCodePoint(n?: number): void
 	readCodePoint(n?: number): number | false
-	unreadCodePoint(n?: number)
+	unreadCodePoint(n?: number): void
 }

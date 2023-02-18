@@ -19,7 +19,7 @@ export declare class MediaFeature {
     walk(cb: (entry: {
         node: MediaFeatureWalkerEntry;
         parent: MediaFeatureWalkerParent;
-    }, index: number | string) => boolean | void): boolean;
+    }, index: number | string) => boolean | void): false | undefined;
     toJSON(): {
         type: NodeType;
         feature: {

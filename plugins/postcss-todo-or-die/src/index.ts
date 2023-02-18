@@ -1,6 +1,6 @@
 import type { AtRule, PluginCreator } from 'postcss';
 import browserslist from 'browserslist';
-import { ParseError, tokenizer } from '@csstools/css-tokenizer';
+import { CSSToken, ParseError, tokenizer } from '@csstools/css-tokenizer';
 import { died } from './died';
 import { isCommentNode, isFunctionNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { matchBeforeDateCondition } from './match/before-date';
@@ -43,14 +43,16 @@ const creator: PluginCreator<never> = () => {
 					onParseError: errorHandler,
 				});
 
-				const tokens = [];
+				const tokens: Array<CSSToken> = [];
 
 				{
 					while (!t.endOfFile()) {
-						tokens.push(t.nextToken());
+						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+						tokens.push(t.nextToken()!);
 					}
 
-					tokens.push(t.nextToken()); // EOF-token
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					tokens.push(t.nextToken()!); // EOF-token
 				}
 
 				const todoOrDieConditions = parseCommaSeparatedListOfComponentValues(tokens, {

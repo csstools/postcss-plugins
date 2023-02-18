@@ -2,8 +2,7 @@ import type { PluginCreator } from 'postcss';
 
 const prefersInterfaceRegExp = /\(\s*prefers-color-scheme\s*:\s*(dark|light)\s*\)/gi;
 
-const colorDepthByStyle = { dark: '48842621', light: '70318723' };
-const prefersInterfaceColorDepthReplacer = ($0, style) => `(color: ${colorDepthByStyle[style.toLowerCase()]})`;
+const colorDepthByStyle = { dark: '(color: 48842621)', light: '(color: 70318723)' };
 
 /** postcss-prefers-color-scheme plugin options */
 export type pluginOptions = {
@@ -37,7 +36,17 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 
 					const { params } = atRule;
-					const altParamsColorDepth = params.replace(prefersInterfaceRegExp, prefersInterfaceColorDepthReplacer);
+					const altParamsColorDepth = params.replace(prefersInterfaceRegExp, ($0, style) => {
+						if (style.toLowerCase() === 'dark') {
+							return colorDepthByStyle.dark;
+						}
+
+						if (style.toLowerCase() === 'light') {
+							return colorDepthByStyle.light;
+						}
+
+						return $0;
+					});
 					if (params === altParamsColorDepth) {
 						return;
 					}

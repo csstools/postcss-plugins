@@ -74,7 +74,9 @@ export function sortRootNodes(root: Container, model: Model) {
 		const aIsLayer = a.type === 'atrule' && a.name.toLowerCase() === 'layer';
 		const bIsLayer = b.type === 'atrule' && b.name.toLowerCase() === 'layer';
 		if (aIsLayer && bIsLayer) {
-			return model.layerOrder.get(a.params) - model.layerOrder.get(b.params);
+			const layerOrderA = model.layerOrder.get(a.params) ?? 0;
+			const layerOrderB = model.layerOrder.get(b.params) ?? 0;
+			return layerOrderA - layerOrderB;
 		} else if (aIsLayer !== bIsLayer) {
 			return aIsLayer ? -1 : 1;
 		}

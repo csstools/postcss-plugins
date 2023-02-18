@@ -77,7 +77,7 @@ function isFiniteNumber(number: number) {
  * simplify inner nodes.
  * @see https://www.w3.org/TR/css-values-4/#trig-funcs
  */
-export function computeCalculation(nodes: Node[], ignoreUnit = false) {
+export function computeCalculation(nodes: Array<Node>, ignoreUnit = false) {
 	let isValid = true;
 	const expression = [];
 

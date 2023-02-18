@@ -35,7 +35,7 @@ export declare function filterOnlyWords(node: Node): boolean;
  * simplify inner nodes.
  * @see https://www.w3.org/TR/css-values-4/#trig-funcs
  */
-export declare function computeCalculation(nodes: Node[], ignoreUnit?: boolean): Node[];
+export declare function computeCalculation(nodes: Array<Node>, ignoreUnit?: boolean): Node[];
 export declare function functionNodeToWordNode(fn: FunctionNode): WordNode;
 /**
  * Formats a number that's intended to be put into CSS.

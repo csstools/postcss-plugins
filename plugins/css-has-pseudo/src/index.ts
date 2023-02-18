@@ -1,8 +1,8 @@
-import type { PluginCreator } from 'postcss';
-import parser from 'postcss-selector-parser';
-import { selectorSpecificity } from '@csstools/selector-specificity';
 import encodeCSS from './encode/encode.mjs';
+import parser from 'postcss-selector-parser';
+import type { AtRule, ChildNode, Container, Document, PluginCreator, Rule } from 'postcss';
 import { isGuardedByAtSupportsFromAtRuleParams } from './is-guarded-by-at-supports.js';
+import { selectorSpecificity } from '@csstools/selector-specificity';
 
 /** css-has-pseudo plugin options */
 export type pluginOptions = {
@@ -205,13 +205,13 @@ creator.postcss = true;
 
 export default creator;
 
-function isWithinSupportCheck(rule) {
-	let ruleParent = rule.parent;
+function isWithinSupportCheck(rule: Rule) {
+	let ruleParent: Container<ChildNode> | Document | undefined = rule.parent;
 
 	while (ruleParent) {
 		if (
 			ruleParent.type === 'atrule' &&
-			isGuardedByAtSupportsFromAtRuleParams(ruleParent.params)
+			isGuardedByAtSupportsFromAtRuleParams((ruleParent as AtRule).params)
 		) {
 			return true;
 		}

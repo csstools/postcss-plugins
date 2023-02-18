@@ -72,7 +72,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			let transformed = false;
+			let transformed: boolean | null = false;
 
 			try {
 				transformed = transform(decl);
@@ -98,7 +98,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			'text-align': makeTransform(
 				directionConfig.inlineIsHorizontal
 					? transformTextAlign(directionConfig.inline)
-					: null,
+					: () => {
+						return null;
+					},
 			),
 			// 4.1 Block Size and Inline Size
 			'block-size': makeTransform(transformLogicalSize(directionConfig)),

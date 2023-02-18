@@ -94,7 +94,7 @@ export function desugarAndParseLayerNames(root: Container, model: Model) {
 		const hasNestedLayers = someAtRuleInTree(layerRule, (node) => isProcessableLayerRule(node));
 		const hasUnlayeredStyles = someInTree(layerRule, (node) => {
 			if (node.type !== 'rule') {
-				return;
+				return false;
 			}
 
 			const closestLayer = getLayerAtRuleAncestor(node);

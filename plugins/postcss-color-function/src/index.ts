@@ -10,8 +10,8 @@ type basePluginOptions = {
 }
 
 /** Transform color() function in CSS. */
-const basePlugin: PluginCreator<basePluginOptions> = (opts: basePluginOptions) => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : false;
+const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
+	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : false;
 	return {
 		postcssPlugin: 'postcss-color-function',
 		Declaration: (decl: Declaration, { result }: { result: Result }) => {

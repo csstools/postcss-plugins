@@ -4,7 +4,7 @@ import { selectorSpecificity } from '@csstools/selector-specificity';
 // splitSelectors handles the forgiving list behavior of ":is".
 // After created all combinations it wraps the individual selectors in ":-csstools-matches".
 // This makes it easy to recursively resolve all ":is" selectors without infinite loops.
-export default function splitSelectors(selectors: string[], pluginOptions: { specificityMatchingName: string }, recursionDepth = 0) {
+export default function splitSelectors(selectors: Array<string>, pluginOptions: { specificityMatchingName: string }, recursionDepth = 0) {
 	const specificityMatchingNameId = ':not(#' + pluginOptions.specificityMatchingName + ')';
 	const specificityMatchingNameClass = ':not(.' + pluginOptions.specificityMatchingName + ')';
 	const specificityMatchingNameTag = ':not(' + pluginOptions.specificityMatchingName + ')';

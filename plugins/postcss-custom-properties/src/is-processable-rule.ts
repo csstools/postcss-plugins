@@ -7,7 +7,7 @@ export function isProcessableRule(rule: Rule): boolean {
 		return false;
 	}
 
-	let parent: Container<ChildNode> | Document = rule.parent;
+	let parent: Container<ChildNode> | Document | undefined = rule.parent;
 	while (parent) {
 		if (parent.type === 'atrule' && !allowedParentAtRules.has((parent as AtRule).name.toLowerCase())) {
 			return false;

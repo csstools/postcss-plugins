@@ -21,8 +21,15 @@ export declare class CustomMedia {
         name: CSSToken[];
         hasFalseKeyword: boolean;
         hasTrueKeyword: boolean;
-        trueOrFalseKeyword: CSSToken[];
+        trueOrFalseKeyword: CSSToken[] | null;
         mediaQueryList: ({
+            type: NodeType;
+            string: string;
+            modifier: CSSToken[];
+            mediaType: CSSToken[];
+            and: CSSToken[] | undefined;
+            media: import("./media-condition").MediaCondition | undefined;
+        } | {
             type: NodeType;
             string: string;
             media: import("./media-condition").MediaCondition;
@@ -30,7 +37,7 @@ export declare class CustomMedia {
             type: NodeType;
             string: string;
             media: import("@csstools/css-parser-algorithms").ComponentValue[];
-        })[];
+        })[] | undefined;
     };
     isCustomMedia(): this is CustomMedia;
     static isCustomMedia(x: unknown): x is CustomMedia;

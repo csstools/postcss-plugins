@@ -1,1 +1,2 @@
-export declare function getComma(node: any): boolean;
+import valueParser from 'postcss-value-parser';
+export declare function getComma(node: valueParser.Node): boolean;

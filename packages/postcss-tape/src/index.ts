@@ -1,47 +1,18 @@
-import path from 'path';
 import fs, { promises as fsp } from 'fs';
+import noopPlugin from './noop-plugin';
+import path from 'path';
+import postcss from 'postcss';
+import postcssOldestSupported, { AcceptedPlugin } from 'postcss-8.4';
+import syntaxHTML from 'postcss-html';
+import type { AtRule, Declaration, Rule } from 'postcss';
+import type { PluginCreator, Plugin, Result } from 'postcss';
+import type { TestCaseOptions } from './test-case-options';
+import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts';
+import { formatGitHubActionAnnotation } from './github-annotations';
+import { reduceInformationInCssSyntaxError } from './reduce-css-syntax-error';
 import { strict as assert } from 'assert';
 
-import postcss from 'postcss';
-import type { PluginCreator, Plugin, Result } from 'postcss';
-
-import postcssOldestSupported, { AcceptedPlugin } from 'postcss-8.4';
-
-import syntaxHTML from 'postcss-html';
-
-import { formatGitHubActionAnnotation } from './github-annotations';
-import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from './format-asserts';
-import noopPlugin from './noop-plugin';
-import { reduceInformationInCssSyntaxError } from './reduce-css-syntax-error';
-
 const emitGitHubAnnotations = process.env.GITHUB_ACTIONS && process.env.ENABLE_ANNOTATIONS_FOR_NODE === 'true' && process.env.ENABLE_ANNOTATIONS_FOR_OS === 'true';
-
-type TestCaseOptions = {
-	// Debug message
-	message?: string,
-	// Plugin options. Only used if `plugins` is not specified.
-	options?: unknown,
-	// Plugins to use. When specified the original plugin is not used.
-	plugins?: Array<Plugin>,
-	// The expected number of warnings.
-	warnings?: number,
-	// Expected exception
-	// NOTE: plugins should not throw exceptions, this goes against best practices. Use `errors` instead.
-	exception?: RegExp,
-
-	// Override the file name of the "expect" file.
-	expect?: string,
-	// Override the file name of the "result" file.
-	result?: string,
-
-	// Do something before the test is run.
-	before?: () => void,
-	// Do something after the test is run.
-	after?: () => void | Promise<void>,
-
-	// Process the test cases with "postcss-html" as the syntax
-	postcssSyntaxHTML?: boolean,
-}
 
 function postcssSyntax(options: TestCaseOptions) {
 	if (options.postcssSyntaxHTML) {
@@ -390,13 +361,13 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 
 					if (emitGitHubAnnotations) {
 						console.log(formatGitHubActionAnnotation(
-							formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings(), testCaseOptions.warnings, true),
+							formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings(), testCaseOptions.warnings ?? 0, true),
 							'error',
 							{ file: expectFilePath, line: 1, col: 1 },
 						));
 					} else {
 						failureSummary.add(testCaseLabel);
-						console.error(formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings(), testCaseOptions.warnings));
+						console.error(formatWarningsAssertError(testCaseLabel, testCaseOptions, result.warnings(), testCaseOptions.warnings ?? 0));
 					}
 				}
 			}
@@ -419,7 +390,7 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 
 export const declarationClonerPlugin = {
 	postcssPlugin: 'declaration-cloner',
-	Declaration(decl) {
+	Declaration(decl: Declaration) {
 		if (decl.prop === 'to-clone') {
 			decl.cloneBefore({ prop: 'cloned' });
 		}
@@ -432,7 +403,7 @@ export const ruleClonerPlugin = {
 		const transformedNodes = new WeakSet();
 
 		return {
-			RuleExit(rule) {
+			RuleExit(rule: Rule) {
 				if (transformedNodes.has(rule)) {
 					return;
 				}
@@ -452,7 +423,7 @@ export const atRuleClonerPlugin = {
 		const transformedNodes = new WeakSet();
 
 		return {
-			AtRuleExit(atRule) {
+			AtRuleExit(atRule: AtRule) {
 				if (transformedNodes.has(atRule)) {
 					return;
 				}

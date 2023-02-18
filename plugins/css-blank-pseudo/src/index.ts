@@ -108,7 +108,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 									}
 
 									if (i === selectorAST.nodes[0].nodes.length - 1) {
-										// Append the class to the end of the selector if not combinator or pseudo element was found.
+										// Append the class to the end of the selector if no combinator or pseudo element was found.
 										selectorAST.nodes[0].append(parser.className({ value: POLYFILL_READY_CLASSNAME }));
 										break;
 									}
@@ -146,4 +146,3 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
-

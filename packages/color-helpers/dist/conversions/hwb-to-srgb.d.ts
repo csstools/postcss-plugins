@@ -10,4 +10,4 @@
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/hwbToRgb.js
  */
-export declare function HWB_to_sRGB(HWB: Color): number[];
+export declare function HWB_to_sRGB(HWB: Color): Color;

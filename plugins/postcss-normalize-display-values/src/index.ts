@@ -2,7 +2,7 @@ import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import mappings from './mappings';
 
-function transform(value) {
+function transform(value: string) {
 	const { nodes } = valueParser(value);
 
 	if (nodes.length === 1) {
@@ -33,7 +33,7 @@ export type pluginOptions = {
 };
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts.preserve) : true;
+	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : true;
 
 	return {
 		postcssPlugin: 'postcss-normalize-display-values',

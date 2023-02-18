@@ -2,7 +2,7 @@ import valueParser from 'postcss-value-parser';
 
 const imageFuncRegexp = /^(cross-fade|image|(repeating-)?(conic|linear|radial)-gradient|url|var)$/i;
 
-export function getImage(node) {
+export function getImage(node: valueParser.Node) {
 	// <url> | <image()> | <cross-fade()> | <gradient>
 	// the image-set() function can not be nested inside of itself
 	if (!node || !node.type) {

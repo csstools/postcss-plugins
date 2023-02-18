@@ -129,6 +129,10 @@ export function transformComplexMediaQuery(mediaQuery: MediaQuery, replacements:
 					}
 				});
 
+				// TypeScript is unable to detect that `walk` is a synchronous function that is immediately called.
+				// TypeScript things the actual type is `never`
+				mediaFeature = mediaFeature as MediaFeature | null;
+
 				if (mediaFeature && mediaFeature.feature) {
 					parent.feature = mediaFeature.feature;
 					candidate = [
@@ -142,7 +146,7 @@ export function transformComplexMediaQuery(mediaQuery: MediaQuery, replacements:
 			}
 
 			const replaceWithTrue = newMediaFeaturePlain(
-				alwaysTrue[0][4].value as string,
+				alwaysTrue[0][4].value,
 				alwaysTrue[2],
 			);
 
@@ -150,7 +154,7 @@ export function transformComplexMediaQuery(mediaQuery: MediaQuery, replacements:
 			const replaceWithTrueString = mediaQuery.toString();
 
 			const replaceWithFalse = newMediaFeaturePlain(
-				neverTrue[0][4].value as string,
+				neverTrue[0][4].value,
 				neverTrue[2],
 			);
 

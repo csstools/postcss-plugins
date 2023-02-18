@@ -12,7 +12,7 @@ export function validateArgumentsAndTypes(
 	decl: Declaration,
 	result: Result,
 	options: pluginOptions,
-): valueParser.Dimension[] | undefined {
+): Array<valueParser.Dimension> | undefined {
 	const wordNodes = [];
 	let hasVars = false;
 

@@ -59,7 +59,7 @@ export class MediaConditionListWithAnd {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaConditionListWithAndWalkerEntry, parent: MediaConditionListWithAndWalkerParent }, index: number | string) => boolean | void) {
+	walk(cb: (entry: { node: MediaConditionListWithAndWalkerEntry, parent: MediaConditionListWithAndWalkerParent }, index: number | string) => boolean | void): false | undefined {
 		if (cb({ node: this.leading, parent: this }, 'leading') === false) {
 			return false;
 		}
@@ -95,7 +95,7 @@ export class MediaConditionListWithAnd {
 		}
 	}
 
-	toJSON() {
+	toJSON(): unknown {
 		return {
 			type: this.type,
 			leading: this.leading.toJSON(),
@@ -178,7 +178,7 @@ export class MediaConditionListWithOr {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaConditionListWithOrWalkerEntry, parent: MediaConditionListWithOrWalkerParent }, index: number | string) => boolean | void) {
+	walk(cb: (entry: { node: MediaConditionListWithOrWalkerEntry, parent: MediaConditionListWithOrWalkerParent }, index: number | string) => boolean | void): false | undefined {
 		if (cb({ node: this.leading, parent: this }, 'leading') === false) {
 			return false;
 		}
@@ -214,7 +214,7 @@ export class MediaConditionListWithOr {
 		}
 	}
 
-	toJSON() {
+	toJSON(): unknown {
 		return {
 			type: this.type,
 			leading: this.leading.toJSON(),

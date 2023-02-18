@@ -21,7 +21,7 @@ export declare class MediaFeatureRangeNameValue {
     walk(cb: (entry: {
         node: MediaFeatureRangeWalkerEntry;
         parent: MediaFeatureRangeWalkerParent;
-    }, index: number | string) => boolean | void): boolean;
+    }, index: number | string) => boolean | void): false | undefined;
     toJSON(): {
         type: NodeType;
         name: {
@@ -31,7 +31,7 @@ export declare class MediaFeatureRangeNameValue {
         };
         value: {
             type: NodeType;
-            value: any;
+            value: unknown;
             tokens: CSSToken[];
         };
         tokens: CSSToken[];
@@ -55,7 +55,7 @@ export declare class MediaFeatureRangeValueName {
     walk(cb: (entry: {
         node: MediaFeatureRangeWalkerEntry;
         parent: MediaFeatureRangeWalkerParent;
-    }, index: number | string) => boolean | void): boolean;
+    }, index: number | string) => boolean | void): false | undefined;
     toJSON(): {
         type: NodeType;
         name: {
@@ -65,7 +65,7 @@ export declare class MediaFeatureRangeValueName {
         };
         value: {
             type: NodeType;
-            value: any;
+            value: unknown;
             tokens: CSSToken[];
         };
         tokens: CSSToken[];
@@ -92,7 +92,7 @@ export declare class MediaFeatureRangeValueNameValue {
     walk(cb: (entry: {
         node: MediaFeatureRangeWalkerEntry;
         parent: MediaFeatureRangeWalkerParent;
-    }, index: number | string) => boolean | void): boolean;
+    }, index: number | string) => boolean | void): false | undefined;
     toJSON(): {
         type: NodeType;
         name: {
@@ -102,12 +102,12 @@ export declare class MediaFeatureRangeValueNameValue {
         };
         valueOne: {
             type: NodeType;
-            value: any;
+            value: unknown;
             tokens: CSSToken[];
         };
         valueTwo: {
             type: NodeType;
-            value: any;
+            value: unknown;
             tokens: CSSToken[];
         };
         tokens: CSSToken[];

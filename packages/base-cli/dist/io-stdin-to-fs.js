@@ -1,12 +1,16 @@
-import { promises as fsp } from 'fs';
 import path from 'path';
 import postcss from 'postcss';
 import { getStdin } from './get-stdin';
+import { promises as fsp } from 'fs';
 // Read from stdin and write to a file
 export async function stdinToFs(plugin, argo, helpLogger) {
     let output = argo.output;
     if (!output && argo.outputDir) {
         output = path.join(argo.outputDir, 'output.css');
+    }
+    if (!output) {
+        // no outputs, nothing to do
+        process.exit(0);
     }
     try {
         const css = await getStdin();

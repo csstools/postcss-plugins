@@ -8,6 +8,10 @@ export function transform(source: string, replacements: { vi: 'vw' | 'vh', vb: '
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const token = t.nextToken();
+		if (!token) {
+			break;
+		}
+
 		tokens.push(token);
 
 		if (token[0] === TokenType.EOF) {
@@ -19,7 +23,12 @@ export function transform(source: string, replacements: { vi: 'vw' | 'vh', vb: '
 		}
 
 		const unit = token[4].unit.toLowerCase();
-		const replacement = replacements[unit];
+		let replacement;
+		if (unit === 'vi') {
+			replacement = replacements.vi;
+		} else if (unit === 'vb') {
+			replacement = replacements.vb;
+		}
 		if (!replacement) {
 			continue;
 		}

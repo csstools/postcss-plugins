@@ -13,8 +13,8 @@ export declare class MediaAnd {
     walk(cb: (entry: {
         node: MediaAndWalkerEntry;
         parent: MediaAndWalkerParent;
-    }, index: number | string) => boolean | void): any;
-    toJSON(): any;
+    }, index: number | string) => boolean | void): false | undefined;
+    toJSON(): unknown;
     isMediaAnd(): this is MediaAnd;
     static isMediaAnd(x: unknown): x is MediaAnd;
 }

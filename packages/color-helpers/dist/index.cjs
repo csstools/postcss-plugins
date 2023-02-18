@@ -47,7 +47,7 @@
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/multiply-matrices.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/multiply-matrices.js
- */function multiplyMatrices(_,t){const o=_.length;let a,n;a=Array.isArray(_[0])?_:[_],Array.isArray(t[0])||(n=t.map((_=>[_])));const i=n[0].length,e=n[0].map(((_,t)=>n.map((_=>_[t]))));let l=a.map((_=>e.map((t=>Array.isArray(_)?_.reduce(((_,o,a)=>_+o*(t[a]||0)),0):t.reduce(((t,o)=>t+o*_),0)))));return 1===o&&(l=l[0]),1===i?l.map((_=>_[0])):l}
+ */function multiplyMatrices(_,t){const o=_.length;let a,n;a=Array.isArray(_[0])?_:[_],n=Array.isArray(t[0])?t:t.map((_=>[_]));const i=n[0].length,e=n[0].map(((_,t)=>n.map((_=>_[t]))));let l=a.map((_=>e.map((t=>Array.isArray(_)?_.reduce(((_,o,a)=>_+o*(t[a]||0)),0):t.reduce(((t,o)=>t+o*_),0)))));return 1===o&&(l=l[0]),1===i?l.map((_=>_[0])):l}
 /**
  * Convert an array of linear-light sRGB values to CIE XYZ
  * using sRGB's own white, D65 (no chromatic adaptation)

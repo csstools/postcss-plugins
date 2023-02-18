@@ -36,9 +36,11 @@ export class MediaAnd {
 		if (index === 'media') {
 			return this.media;
 		}
+
+		return null;
 	}
 
-	walk(cb: (entry: { node: MediaAndWalkerEntry, parent: MediaAndWalkerParent }, index: number | string) => boolean | void) {
+	walk(cb: (entry: { node: MediaAndWalkerEntry, parent: MediaAndWalkerParent }, index: number | string) => boolean | void): false | undefined {
 		if (cb({ node: this.media, parent: this }, 'media') === false) {
 			return false;
 		}
@@ -46,7 +48,7 @@ export class MediaAnd {
 		return this.media.walk(cb);
 	}
 
-	toJSON() {
+	toJSON(): unknown {
 		return {
 			type: this.type,
 			modifier: this.modifier,
