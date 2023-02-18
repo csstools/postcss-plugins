@@ -1,5 +1,9 @@
 # Changes to CSS Tokenizer
 
+### Unreleased (minor)
+
+- Add `tokenize` helper function
+
 ### 2.0.2 (February 13, 2023)
 
 - Relax `isToken` to match artificial tokens that correctly follow the interface.
