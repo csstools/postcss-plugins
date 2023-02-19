@@ -81,7 +81,7 @@ Future versions of this plugin will first warn and then error if you use `@nest`
 
 We advice everyone to migrate their codebase **now** to nested CSS without `@nest`.
 
-## ⚠️ Nested selectors cannot start with a identifier (tag name)
+## ⚠️ Nested selectors cannot start with a letter
 
 The [CSS Nesting specification](https://www.w3.org/TR/css-nesting-1/#example-34e8e94f) disallows nested selectors to start with an identifier (i.e. a tag name or element selector). To write such selectors, they need to be prefixed with `& ` or wrapped with `:is()`.
 
