@@ -63,6 +63,7 @@ export default function transformValueAST(root: valueParser.ParsedValue, customP
 
 			if (nodes.length) {
 				parent.nodes.splice(index, 1, ...nodes);
+				parent.nodes.forEach((x) => ancestry.set(x, parent));
 			} else {
 				// `postcss-value-parser` throws when removing nodes.
 				// Inserting an empty comment produces equivalent CSS source code and avoids the exception.
@@ -72,6 +73,7 @@ export default function transformValueAST(root: valueParser.ParsedValue, customP
 					sourceIndex: child.sourceIndex,
 					sourceEndIndex: child.sourceEndIndex,
 				});
+				parent.nodes.forEach((x) => ancestry.set(x, parent));
 			}
 		}, true);
 	}

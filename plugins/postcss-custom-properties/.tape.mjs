@@ -15,6 +15,9 @@ postcssTape(plugin)({
 	'cascade-layers': {
 		message: 'supports cascade layers'
 	},
+	'chained': {
+		message: 'supports chained variables'
+	},
 	'issue-838': {
 		message: 'prevent regressions of https://github.com/csstools/postcss-plugins/issues/838',
 		options: {
