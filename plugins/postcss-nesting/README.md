@@ -83,7 +83,10 @@ We advice everyone to migrate their codebase **now** to nested CSS without `@nes
 
 ## ⚠️ Nested selectors cannot start with a letter
 
-The [CSS Nesting specification](https://www.w3.org/TR/css-nesting-1/#example-34e8e94f) disallows nested selectors to start with an identifier (i.e. a tag name or element selector). To write such selectors, they need to be prefixed with `& ` or wrapped with `:is()`.
+The [CSS Nesting specification](https://www.w3.org/TR/css-nesting-1/#example-34e8e94f) disallows nested selectors to start with a letter (i.e. a tag name or element selector). To write such selectors, they need to be prefixed with `& ` or wrapped with `:is()`.
+
+You will get a warning when selectors start with a letter:
+> Nested selectors must start with a symbol and "span" begins with a letter.
 
 ```pcss
 .foo {
@@ -97,8 +100,13 @@ The [CSS Nesting specification](https://www.w3.org/TR/css-nesting-1/#example-34e
 		color: hotpink;
 	}
 
+	/* ❌ invalid */
+	span & {
+		color: hotpink;
+	}
+
 	/* ✅ valid */
-	:is(span) {
+	:is(span) & {
 		color: hotpink;
 	}
 }	
