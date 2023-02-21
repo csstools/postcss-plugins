@@ -82,7 +82,7 @@ console.log(calc('calc(1 / 3)', { precision: 2 }));
 
 Pass global values as a map of key value pairs.
 
-> Example : Relative color syntax (`lch(from pink calc(l / 2) c h)`) exposes color chanel information as ident tokens.
+> Example : Relative color syntax (`lch(from pink calc(l / 2) c h)`) exposes color channel information as ident tokens.
 > By passing globals for `l`, `c` and `h` it is possible to solve nested `calc()`'s.
 
 ```mjs

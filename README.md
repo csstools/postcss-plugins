@@ -44,7 +44,7 @@ Thanks for being willing to contribute! Please read our [contributing guide]!
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Plugins]: https://github.com/csstools/postcss-plugins
 [CLI]: https://github.com/csstools/postcss-plugins/cli/csstools-cli
-[sites]: https://github.com/csstools/postcss-plugins/sites
+[sites]: https://github.com/csstools/postcss-plugins/tree/main/sites
 [PostCSS Preset Env]: https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env
 [NPM Workspaces]: https://docs.npmjs.com/cli/v7/using-npm/workspaces/
 [contributing guide]: https://github.com/csstools/postcss-plugins/CONTRIBUTING.md
