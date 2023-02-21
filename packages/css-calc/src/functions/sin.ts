@@ -5,15 +5,11 @@ import { convert_deg } from '../unit-conversions/deg';
 import { convert_grad } from '../unit-conversions/grad';
 import { convert_turn } from '../unit-conversions/turn';
 import { numberToCalculation } from './result-to-calculation';
+import { isDimensionOrNumber } from '../util/kind-of-number';
 
 export function solveSin(sinNode: FunctionNode, a: TokenNode): Calculation | -1 {
 	const aToken = a.value;
-	if (
-		!(
-			aToken[0] === TokenType.Dimension ||
-			aToken[0] === TokenType.Number
-		)
-	) {
+	if (!isDimensionOrNumber(aToken)) {
 		return -1;
 	}
 

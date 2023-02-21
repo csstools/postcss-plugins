@@ -1,10 +1,9 @@
 import type { Calculation } from '../calculation';
 import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
-import type { TokenDimension } from '@csstools/css-tokenizer';
-import { TokenType } from '@csstools/css-tokenizer';
 import { convertUnit } from '../unit-conversions';
 import { isTokenNode } from '@csstools/css-parser-algorithms';
 import { resultToCalculation } from './result-to-calculation';
+import { isNumeric, twoOfSameNumeric } from '../util/kind-of-number';
 
 export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, central: TokenNode | -1, maximum: TokenNode | -1): Calculation | -1 {
 	if (
@@ -16,35 +15,18 @@ export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, cen
 	}
 
 	const minimumToken = minimum.value;
+	if (!isNumeric(minimumToken)) {
+		return -1;
+	}
+
 	const centralToken = convertUnit(minimumToken, central.value);
+	if (!twoOfSameNumeric(minimumToken, centralToken)) {
+		return -1;
+	}
+
 	const maximumToken = convertUnit(minimumToken, maximum.value);
-
-	if (
-		!(
-			minimumToken[0] === TokenType.Dimension ||
-			minimumToken[0] === TokenType.Number ||
-			minimumToken[0] === TokenType.Percentage
-		)
-	) {
+	if (!twoOfSameNumeric(minimumToken, maximumToken)) {
 		return -1;
-	}
-
-	if (minimumToken[0] !== centralToken[0]) {
-		return -1;
-	}
-
-	if (minimumToken[0] !== maximumToken[0]) {
-		return -1;
-	}
-
-	if (minimumToken[0] === TokenType.Dimension) {
-		if (minimumToken[4].unit.toLowerCase() !== (centralToken as TokenDimension)[4].unit.toLowerCase()) {
-			return -1;
-		}
-
-		if (minimumToken[4].unit.toLowerCase() !== (maximumToken as TokenDimension)[4].unit.toLowerCase()) {
-			return -1;
-		}
 	}
 
 	const result = Math.max(minimumToken[4].value, Math.min(centralToken[4].value, maximumToken[4].value));

@@ -6,15 +6,11 @@ import { convert_grad } from '../unit-conversions/grad';
 import { convert_rad } from '../unit-conversions/rad';
 import { convert_turn } from '../unit-conversions/turn';
 import { numberToCalculation } from './result-to-calculation';
+import { isDimensionOrNumber } from '../util/kind-of-number';
 
 export function solveTan(tanNode: FunctionNode, a: TokenNode): Calculation | -1 {
 	const aToken = a.value;
-	if (
-		!(
-			aToken[0] === TokenType.Dimension ||
-			aToken[0] === TokenType.Number
-		)
-	) {
+	if (!isDimensionOrNumber(aToken)) {
 		return -1;
 	}
 
