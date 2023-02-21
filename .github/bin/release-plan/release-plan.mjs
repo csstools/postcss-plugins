@@ -7,6 +7,7 @@ import { commitAfterPackageRelease } from './commit.mjs';
 import { npmPublish } from './npm-publish.mjs';
 import { updateDocumentation } from './docs.mjs';
 import { npmInstall } from './npm-install.mjs';
+import { discordAnnounce } from './discord-announce.mjs';
 
 const workspaces = await listWorkspaces();
 // Things to release
@@ -87,14 +88,17 @@ for (const workspace of needsRelease.values()) {
 	workspace.newVersion = await npmVersion(workspace.increment, workspace.path);
 
 	// Update the changelog
-	workspace.changelog = workspace.changelog.replace(`Unreleased (${workspace.increment})`, `${workspace.newVersion} (${nowFormatted()})`)
-	await fs.writeFile(path.join(workspace.path, 'CHANGELOG.md'), workspace.changelog);
+	const changelog = workspace.changelog.replace(`Unreleased (${workspace.increment})`, `${workspace.newVersion} (${nowFormatted()})`);
+	await fs.writeFile(path.join(workspace.path, 'CHANGELOG.md'), changelog);
 
 	// Update the documentation
 	await updateDocumentation(workspace.path);
 
 	// Publish to npm
 	await npmPublish(workspace.path, workspace.name);
+
+	// Announce on discord
+	await discordAnnounce(workspace);
 
 	// Commit changes
 	await commitAfterPackageRelease(workspace.newVersion, workspace.path, workspace.name);
