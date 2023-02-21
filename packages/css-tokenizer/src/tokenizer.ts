@@ -21,6 +21,28 @@ interface Stringer {
 	valueOf(): string
 }
 
+export function tokenize(input: { css: Stringer }, options?: { onParseError?: (error: ParseError) => void }): Array<CSSToken> {
+	const t = tokenizer(input, options);
+
+	const tokens: Array<CSSToken> = [];
+
+	{
+		while (!t.endOfFile()) {
+			const token = t.nextToken();
+			if (token) {
+				tokens.push(token);
+			}
+		}
+
+		const token = t.nextToken(); // EOF-token
+		if (token) {
+			tokens.push(token);
+		}
+	}
+
+	return tokens;
+}
+
 export function tokenizer(input: { css: Stringer }, options?: { onParseError?: (error: ParseError) => void }) {
 	const css = input.css.valueOf();
 

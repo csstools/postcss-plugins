@@ -1,4 +1,4 @@
-import { tokenizer } from '@csstools/css-tokenizer';
+import { tokenizer, tokenize } from '@csstools/css-tokenizer';
 import assert from 'assert';
 import { collectTokens } from '../util/collect-tokens.mjs';
 
@@ -9,6 +9,21 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 
 	assert.deepEqual(
 		collectTokens(t),
+		[
+			['at-keyword-token', '@charset', 0, 7, { value: 'charset' }],
+			['whitespace-token', ' ', 8, 8, undefined],
+			['string-token', '"utf-8"', 9, 15, { value: 'utf-8' }],
+			['semicolon-token', ';', 16, 16, undefined],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	assert.deepEqual(
+		tokenize({
+			css: '@charset "utf-8";',
+		}),
 		[
 			['at-keyword-token', '@charset', 0, 7, { value: 'charset' }],
 			['whitespace-token', ' ', 8, 8, undefined],
