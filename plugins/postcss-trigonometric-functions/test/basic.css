@@ -1,5 +1,6 @@
 .sin {
 	order: sin(45deg); /* 45deg */
+	order: sin(30deg + (.125turn / 3)); /* 45deg */
 	order: sin(15 * 3deg); /* 45deg */
 	order: sin(.125turn); /* 45deg */
 	order: sin(1 / 8turn); /* 45deg */
