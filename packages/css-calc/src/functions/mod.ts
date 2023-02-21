@@ -1,31 +1,18 @@
 import type { Calculation } from '../calculation';
 import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
-import type { TokenDimension } from '@csstools/css-tokenizer';
-import { TokenType } from '@csstools/css-tokenizer';
 import { convertUnit } from '../unit-conversions';
 import { resultToCalculation } from './result-to-calculation';
+import { isNumeric, twoOfSameNumeric } from '../util/kind-of-number';
 
 export function solveMod(modNode: FunctionNode, a: TokenNode, b: TokenNode): Calculation | -1 {
 	const aToken = a.value;
-	if (
-		!(
-			aToken[0] === TokenType.Dimension ||
-			aToken[0] === TokenType.Number ||
-			aToken[0] === TokenType.Percentage
-		)
-	) {
+	if (!isNumeric(aToken)) {
 		return -1;
 	}
 
 	const bToken = convertUnit(aToken, b.value);
-	if (aToken[0] !== bToken[0]) {
+	if (!twoOfSameNumeric(aToken, bToken)) {
 		return -1;
-	}
-
-	if (aToken[0] === TokenType.Dimension) {
-		if (aToken[4].unit !== (bToken as TokenDimension)[4].unit) {
-			return -1;
-		}
 	}
 
 	let result;
