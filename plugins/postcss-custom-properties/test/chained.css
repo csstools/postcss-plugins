@@ -1,0 +1,16 @@
+:root {
+	--a: a;
+	--b: b;
+	--c: c;
+	--one-a: one var(--a);
+	--a-one: var(--a) one;
+	--one-a-two: one var(--a) two;
+	--a-one-b: var(--a) one var(--b);
+	--a-a-a: var(--a) var(--a) var(--a);
+	--a-b-c: var(--a) var(--b) var(--c);
+	--one-a-b-c-two: one var(--a) var(--b) var(--c) two;
+}
+
+.chained {
+	chain: var(--one-a) / var(--a-one) / var(--one-a-two) / var(--a-one-b) / var(--a-a-a) / var(--a-b-c) / var(--one-a-b-c-two);
+}

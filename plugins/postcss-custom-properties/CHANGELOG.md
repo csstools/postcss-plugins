@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased (patch)
+
+- Fixed: exception on chained variable declarations.
+
 ### 13.1.3 (February 8, 2023)
 
 - Fixed: exception on missing variables.
