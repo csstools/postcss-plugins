@@ -67,7 +67,7 @@ console.log(calcResultStr);
 The default precision is fairly high.
 It aims to be high enough to make rounding unnoticeable in the browser.
 
-You can set it to a lower number to suite your needs.
+You can set it to a lower number to suit your needs.
 
 ```mjs
 import { calc } from '@csstools/css-calc';
