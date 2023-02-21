@@ -13,7 +13,7 @@
 	font-size: 2px;
 	width: -3px;
 	transform: rotateX(-40deg) rotateY(50deg);
-	height: 0;
+	height: 0px;
 }
 
 .round {
@@ -41,11 +41,17 @@
 	right: 8px;
 }
 
+.unit {
+	top: 37.79528px;
+	bottom: 940px;
+	left: 0.035s;
+}
+
 .invalid {
 	font-size: mod(18px, 5rem);
 	width: rem(var(--foo), 5px);
 	padding: mod(Fo0px, 5px);
-	left: mod(1px, 0px);
+	left: calc(NaN * 1px);
 	right: 1px;
 	inset: round(something, 15px, 4px);
 	margin-top: round(nearest, 15px, 4px, 50px);
@@ -59,4 +65,5 @@
 	font-size: round;
 	font-size: round();
 	font-size: round(1px);
+	color: color-mod(calc(1 + 1), 1);
 }

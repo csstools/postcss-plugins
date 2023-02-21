@@ -106,26 +106,6 @@ postcssSteppedValueFunctions({ preserve: true })
 }
 ```
 
-### onInvalid
-
-`onInvalid` option allows you to assign the `warn` value so you can get warnings when the usage of the functions is wrong.
-
-```js
-postcssSteppedValueFunctions({ onInvalid: 'warn' })
-```
-
-```pcss
-.invalid {
-	font-size: mod(18px, 5rem);
-}
-```
-
-Will produce on the terminal:
-
-```txt
-[postcss-stepped-value-functions]: Failed to transform mod(18px, 5rem) as the units don't match
-```
-
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#stepped-value-functions
 [discord]: https://discord.gg/bUadyRwkJS

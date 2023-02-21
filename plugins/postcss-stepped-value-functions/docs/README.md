@@ -55,25 +55,5 @@ is preserved. By default, it is not preserved.
 <example.preserve-true.expect.css>
 ```
 
-### onInvalid
-
-`onInvalid` option allows you to assign the `warn` value so you can get warnings when the usage of the functions is wrong.
-
-```js
-<exportName>({ onInvalid: 'warn' })
-```
-
-```pcss
-.invalid {
-	font-size: mod(18px, 5rem);
-}
-```
-
-Will produce on the terminal:
-
-```txt
-[postcss-stepped-value-functions]: Failed to transform mod(18px, 5rem) as the units don't match
-```
-
 <linkList>
 [CSS Values 4]: <specUrl>

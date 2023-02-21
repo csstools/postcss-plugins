@@ -1,5 +1,11 @@
 # Changes to PostCSS Stepped Value Functions
 
+### Unreleased (minor)
+
+- Removed: warnings on `var()` or otherwise unconvertible values (doesn't affect the output, non-breaking)
+- Added: `@csstools/css-calc`
+- Added: unit conversions (`mod(735ms, 0.1s)`)
+
 ### 2.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

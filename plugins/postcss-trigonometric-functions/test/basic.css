@@ -4,7 +4,7 @@
 	order: sin(.125turn); /* 45deg */
 	order: sin(1 / 8turn); /* 45deg */
 	order: sin(50grad); /* 45deg */
-	order: sin(10 + 4 * 10grad); /* 45deg */
+	order: sin((1 + 4) * 10grad); /* 45deg */
 	order: sin(0.785398rad); /* 45deg */
 	order: sin(0.785398); /* 45deg */
 	order: sin(-45deg); /* -45deg */
@@ -58,7 +58,7 @@
 	order: tan(tan(0.785398));
 	order: tan(tan(tan(tan(0.785398))));
 	order: tan(61deg); /* 61deg */
-	order: tan(1 + 2 * 3 * 10deg); /* 61deg should be similar to above */
+	order: tan(1deg + (2 * 3 * 10deg)); /* 61deg should be similar to above */
 	/* Asymptotes */
 	order: tan(90deg);
 	order: tan(100grad);

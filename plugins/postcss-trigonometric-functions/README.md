@@ -28,7 +28,7 @@
 	line-height: 0.70711;
 	line-height: 1;
 	transform: rotate(-90deg);
-	transform: rotate(90deg);
+	transform: rotate(89.99995deg);
 	transform: rotate(180deg);
 	transform: rotate(0deg);
 	transform: rotate(90deg);
@@ -36,7 +36,7 @@
 	transform: rotate(-135deg);
 	transform: rotate(-45deg);
 	transform: rotate(-45deg);
-	transform: rotate(80.54deg);
+	transform: rotate(80.53768deg);
 }
 ```
 
@@ -127,13 +127,11 @@ postcssTrigonometricFunctions({ preserve: true })
 	line-height: tan(50grad);
 	transform: rotate(-90deg);
 	transform: rotate(asin(-1));
-	transform: rotate(90deg);
-	transform: rotate(asin(1));
+	transform: rotate(89.99995deg);
 	transform: rotate(asin(sin(30deg + 1.0471967rad)));
 	transform: rotate(180deg);
 	transform: rotate(acos(-1));
 	transform: rotate(0deg);
-	transform: rotate(acos(1));
 	transform: rotate(acos(cos(0 / 2 + 1 - 1)));
 	transform: rotate(90deg);
 	transform: rotate(atan(infinity));
@@ -145,7 +143,7 @@ postcssTrigonometricFunctions({ preserve: true })
 	transform: rotate(atan2(-infinity,infinity));
 	transform: rotate(-45deg);
 	transform: rotate(atan2(-infinity,infinity));
-	transform: rotate(80.54deg);
+	transform: rotate(80.53768deg);
 	transform: rotate(atan2(90, 15));
 }
 ```

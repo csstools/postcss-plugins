@@ -41,6 +41,12 @@
 	right: ROUND(UP, REM(mod(MOD(8px, 5px), 7px), 15px), 8px);
 }
 
+.unit {
+	top: round(up, 25px, 1cm);
+	bottom: round(down, 25cm, 10px);
+	left: mod(735ms, 0.1s);
+}
+
 .invalid {
 	font-size: mod(18px, 5rem);
 	width: rem(var(--foo), 5px);
@@ -59,4 +65,5 @@
 	font-size: round;
 	font-size: round();
 	font-size: round(1px);
+	color: color-mod(calc(1 + 1), 1);
 }
