@@ -1,6 +1,6 @@
 # Changes to PostCSS global-data
 
-### Unreleased (patch)
+### 1.0.3 (February 21, 2023)
 
 - Fixed: TypeScript definition of the plugin options.
 
