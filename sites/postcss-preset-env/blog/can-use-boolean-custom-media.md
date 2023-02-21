@@ -12,9 +12,9 @@ Since the release of [PostCSS Custom Media](https://github.com/csstools/postcss-
 @custom-media --dark true;
 
 @media (--tablet) and (--dark) {
-  body {
-    color: cyan;
-  }
+	body {
+		color: cyan;
+	}
 }
 ```
 
@@ -28,8 +28,8 @@ Just remember to remove the `true` and `false` values before you ship your code!
 @custom-media --dark (prefers-color-scheme: dark);
 
 @media (--tablet) and (--dark) {
-  body {
-    color: cyan;
-  }
+	body {
+		color: cyan;
+	}
 }
 ```
