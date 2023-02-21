@@ -33,7 +33,7 @@ export function arrayOfSameNumeric<T extends TokenDimension | TokenPercentage | 
 		return true;
 	}
 
-	const firstToken = x[0]
+	const firstToken = x[0];
 	if (!isNumeric(firstToken)) {
 		return false;
 	}
