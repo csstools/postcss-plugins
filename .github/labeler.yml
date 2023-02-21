@@ -2,6 +2,7 @@
   - .github/**
   - packages/base-cli/**
   - packages/cascade-layer-name-parser/**
+  - packages/css-calc/**
   - packages/css-parser-algorithms/**
   - packages/css-tokenizer/**
   - packages/media-query-list-parser/**
