@@ -23,7 +23,6 @@ export async function npmVersion(increment, packageDirectory) {
 			}
 
 			await fs.writeFile(path.join(packageDirectory, 'package.json'), JSON.stringify(packageInfo, null, '\t') + '\n');
-			await npmInstall();
 			return packageInfo.version;
 		}
 	}
