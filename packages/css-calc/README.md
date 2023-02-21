@@ -31,7 +31,7 @@ import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-a
 import { calcFromComponentValues } from '@csstools/css-calc';
 
 const t = tokenizer({
-	css: 'calc(10 * 2),
+	css: 'calc(10 * 2)',
 });
 
 const tokens = [];

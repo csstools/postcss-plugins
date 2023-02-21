@@ -22,21 +22,21 @@ Let's see an example:
 
 ```css
 .foo {
-  @nest .parent & {
-    color: green;
-  }
+	@nest .parent & {
+		color: green;
+	}
 }
 ```
 
 Has to be written as:
 
-````css
+```css
 .foo {
-  .parent & {
-    color: green;
-  }
+	.parent & {
+		color: green;
+	}
 }
-````
+```
 
 ### Making `&` optional (sometimes)
 
@@ -155,13 +155,13 @@ Let's see this strange (yet valid) example:
 
 ```css
 .foo {
-  color: pink;
+	color: pink;
 
-  & {
-    color: green;
-  }
+	& {
+		color: green;
+	}
 
-  color: red;
+	color: red;
 }
 ```
 
@@ -169,12 +169,12 @@ Intuitively, you'd think that an element `.foo` with the above CSS should be `re
 
 ```css
 .foo {
-  color: pink;
-  color: red;
+	color: pink;
+	color: red;
 
-  & {
-    color: green;
-  }
+	& {
+		color: green;
+	}
 }
 ```
 
