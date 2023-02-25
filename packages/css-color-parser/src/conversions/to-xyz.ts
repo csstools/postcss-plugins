@@ -4,13 +4,16 @@ export const to_LAB: Map<string, (x: [number, number, number]) => [number, numbe
 	[
 		'lab',
 		(x: [number, number, number]) => {
-			return x;
+			return conversions.Lab_to_XYZ(x);
 		},
 	],
 	[
 		'lch',
 		(x: [number, number, number]) => {
-			return conversions.LCH_to_Lab(x);
+			let y = x;
+			y = conversions.LCH_to_Lab(y);
+			y = conversions.Lab_to_XYZ(y);
+			return y;
 		},
 	],
 	[
@@ -18,7 +21,6 @@ export const to_LAB: Map<string, (x: [number, number, number]) => [number, numbe
 		(x: [number, number, number]) => {
 			let y = x;
 			y = conversions.OKLab_to_XYZ(y);
-			y = conversions.XYZ_to_Lab(y);
 			return y;
 		},
 	],
@@ -28,7 +30,6 @@ export const to_LAB: Map<string, (x: [number, number, number]) => [number, numbe
 			let y = x;
 			y = conversions.OKLCH_to_OKLab(y);
 			y = conversions.OKLab_to_XYZ(y);
-			y = conversions.XYZ_to_Lab(y);
 			return y;
 		},
 	],
@@ -39,7 +40,6 @@ export const to_LAB: Map<string, (x: [number, number, number]) => [number, numbe
 			y = conversions.lin_sRGB(y);
 			y = conversions.lin_sRGB_to_XYZ(y);
 			y = conversions.D65_to_D50(y);
-			y = conversions.XYZ_to_Lab(y);
 			return y;
 		},
 	],
@@ -51,7 +51,6 @@ export const to_LAB: Map<string, (x: [number, number, number]) => [number, numbe
 			y = conversions.lin_sRGB(y);
 			y = conversions.lin_sRGB_to_XYZ(y);
 			y = conversions.D65_to_D50(y);
-			y = conversions.XYZ_to_Lab(y);
 			return y;
 		},
 	],
@@ -63,7 +62,6 @@ export const to_LAB: Map<string, (x: [number, number, number]) => [number, numbe
 			y = conversions.lin_sRGB(y);
 			y = conversions.lin_sRGB_to_XYZ(y);
 			y = conversions.D65_to_D50(y);
-			y = conversions.XYZ_to_Lab(y);
 			return y;
 		},
 	],
