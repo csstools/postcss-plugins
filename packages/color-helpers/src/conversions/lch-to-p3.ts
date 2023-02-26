@@ -1,17 +1,18 @@
-import { gam_P3 } from 'conversions/gam-p3';
-import { XYZ_to_lin_P3 } from 'conversions/xyz-to-lin-p3';
+import type { Color } from 'types/color';
 import { D50_to_D65 } from 'conversions/d50-to-d65';
-import { Lab_to_XYZ } from 'conversions/lab-to-xyz';
 import { LCH_to_Lab } from 'conversions/lch-to-lab';
-import { inGamut } from 'utils/in-gamut';
-import { clip } from 'utils/clip';
-import { mapGamut } from 'calculations/map-gamut';
+import { Lab_to_XYZ } from 'conversions/lab-to-xyz';
 import { OKLCH_to_OKLab } from 'conversions/oklch-to-oklab';
+import { OKLab_to_OKLCH } from 'conversions/oklab-to-oklch';
 import { OKLab_to_XYZ } from 'conversions/oklab-to-xyz';
+import { XYZ_to_OKLab } from 'conversions/xyz-to-oklab';
+import { XYZ_to_lin_P3 } from 'conversions/xyz-to-lin-p3';
+import { clip } from 'utils/clip';
+import { gam_P3 } from 'conversions/gam-p3';
+import { inGamut } from 'utils/in-gamut';
 import { lin_P3 } from 'conversions/lin-p3';
 import { lin_P3_to_XYZ } from 'conversions/lin-p3-to-xyz';
-import { XYZ_to_OKLab } from 'conversions/xyz-to-oklab';
-import { OKLab_to_OKLCH } from 'conversions/oklab-to-oklch';
+import { mapGamut } from 'calculations/map-gamut';
 
 export function LCH_to_P3(lchRaw: Color): [Color, boolean] {
 	const [lchLRaw, lchCRaw, lchHRaw] = lchRaw;

@@ -1,14 +1,15 @@
+import type { Color } from 'types/color';
+import { OKLCH_to_OKLab } from 'conversions/oklch-to-oklab';
 import { OKLab_to_OKLCH } from 'conversions/oklab-to-oklch';
 import { OKLab_to_XYZ } from 'conversions/oklab-to-xyz';
+import { XYZ_to_OKLab } from 'conversions/xyz-to-oklab';
 import { XYZ_to_lin_P3 } from 'conversions/xyz-to-lin-p3';
+import { clip } from 'utils/clip';
 import { gam_P3 } from 'conversions/gam-p3';
 import { inGamut } from 'utils/in-gamut';
-import { clip } from 'utils/clip';
-import { mapGamut } from 'calculations/map-gamut';
-import { OKLCH_to_OKLab } from 'conversions/oklch-to-oklab';
 import { lin_P3 } from 'conversions/lin-p3';
 import { lin_P3_to_XYZ } from 'conversions/lin-p3-to-xyz';
-import { XYZ_to_OKLab } from 'conversions/xyz-to-oklab';
+import { mapGamut } from 'calculations/map-gamut';
 
 export function OKLab_to_P3(oklabRaw: Color): [Color, boolean] {
 	const [oklabLRaw, oklabARaw, oklabBRaw] = oklabRaw;

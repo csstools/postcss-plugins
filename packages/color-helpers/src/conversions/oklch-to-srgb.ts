@@ -1,14 +1,15 @@
+import type { Color } from 'types/color';
 import { OKLCH_to_OKLab } from 'conversions/oklch-to-oklab';
+import { OKLab_to_OKLCH } from 'conversions/oklab-to-oklch';
 import { OKLab_to_XYZ } from 'conversions/oklab-to-xyz';
+import { XYZ_to_OKLab } from 'conversions/xyz-to-oklab';
 import { XYZ_to_lin_sRGB } from 'conversions/xyz-to-lin-srgb';
+import { clip } from 'utils/clip';
 import { gam_sRGB } from 'conversions/gam-srgb';
 import { inGamut } from 'utils/in-gamut';
-import { clip } from 'utils/clip';
-import { mapGamut } from 'calculations/map-gamut';
 import { lin_sRGB } from 'conversions/lin-srgb';
 import { lin_sRGB_to_XYZ } from 'conversions/lin-srgb-to-xyz';
-import { XYZ_to_OKLab } from 'conversions/xyz-to-oklab';
-import { OKLab_to_OKLCH } from 'conversions/oklab-to-oklch';
+import { mapGamut } from 'calculations/map-gamut';
 
 export function OKLCH_to_sRGB(oklchRaw: Color): Color {
 	const [oklchLRaw, oklchCRaw, oklchHRaw] = oklchRaw;

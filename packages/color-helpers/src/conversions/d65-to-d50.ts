@@ -1,3 +1,6 @@
+import type { Color } from 'types/color';
+import { multiplyMatrices } from 'calculations/multiply-matrices';
+
 /**
  * Bradford chromatic adaptation from D65 to D50
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
@@ -6,8 +9,6 @@
  *
  * @see http://www.brucelindbloom.com/index.html?Eqn_ChromAdapt.html
  */
-import { multiplyMatrices } from 'calculations/multiply-matrices';
-
 export function D65_to_D50(XYZ: Color): Color {
 	// The matrix below is the result of three operations:
 	// - convert from XYZ to retinal cone domain

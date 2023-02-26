@@ -1,3 +1,5 @@
+import type { Color } from 'types/color';
+
 /**
  * Convert an array of three XYZ values to u*,v* chromaticity coordinates
  *

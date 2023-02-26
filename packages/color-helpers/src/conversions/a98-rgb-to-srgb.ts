@@ -1,16 +1,17 @@
-import { lin_a98rgb } from 'conversions/lin-a98rgb';
-import { lin_a98rgb_to_XYZ } from 'conversions/lin-a98rgb-to-xyz';
-import { XYZ_to_OKLab } from 'conversions/xyz-to-oklab';
+import type { Color } from 'types/color';
+import { OKLCH_to_OKLab } from 'conversions/oklch-to-oklab';
 import { OKLab_to_OKLCH } from 'conversions/oklab-to-oklch';
+import { OKLab_to_XYZ } from 'conversions/oklab-to-xyz';
+import { XYZ_to_OKLab } from 'conversions/xyz-to-oklab';
 import { XYZ_to_lin_sRGB } from 'conversions/xyz-to-lin-srgb';
+import { clip } from 'utils/clip';
 import { gam_sRGB } from 'conversions/gam-srgb';
 import { inGamut } from 'utils/in-gamut';
-import { clip } from 'utils/clip';
-import { mapGamut } from 'calculations/map-gamut';
-import { OKLab_to_XYZ } from 'conversions/oklab-to-xyz';
+import { lin_a98rgb } from 'conversions/lin-a98rgb';
+import { lin_a98rgb_to_XYZ } from 'conversions/lin-a98rgb-to-xyz';
 import { lin_sRGB } from 'conversions/lin-srgb';
 import { lin_sRGB_to_XYZ } from 'conversions/lin-srgb-to-xyz';
-import { OKLCH_to_OKLab } from 'conversions/oklch-to-oklab';
+import { mapGamut } from 'calculations/map-gamut';
 
 export function a98_RGB_to_sRGB(a98: Color): Color {
 	let conversion = a98.slice() as Color;

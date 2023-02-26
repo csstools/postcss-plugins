@@ -1,3 +1,5 @@
+import type { Color } from 'types/color';
+
 /**
  * Assuming XYZ is relative to D50, convert to CIE Lab
  * from CIE standard, which now defines these as a rational fraction

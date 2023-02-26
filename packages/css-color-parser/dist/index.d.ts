@@ -1,5 +1,3 @@
-import { ComponentValue } from '@csstools/css-parser-algorithms';
-import type { conversionOptions } from './options';
-export type { conversionOptions } from './options';
-export declare function calc(css: string, options?: conversionOptions): string;
-export declare function calcFromComponentValues(componentValuesList: Array<Array<ComponentValue>>, options?: conversionOptions): ComponentValue[][];
+import { FunctionNode } from '@csstools/css-parser-algorithms';
+export { ColorSpace } from './color-space';
+export declare function color(colorFunction: FunctionNode): import("./color").ColorData | -1;

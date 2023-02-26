@@ -1,3 +1,5 @@
+import type { Color } from 'types/color';
+
 /**
  * Given OKLab, convert to XYZ relative to D65
  *

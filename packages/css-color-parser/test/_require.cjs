@@ -1,3 +1,3 @@
-const { calc } = require('@csstools/css-calc');
+const { color } = require('@csstools/css-color-parser');
 
-calc('calc(10 * 2)');
+color();

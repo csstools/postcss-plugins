@@ -1,5 +1,8 @@
-export type Color = {
-	channels: Array<number>,
-	channelLabels: Array<string>,
-	colorSpace: string,
+import type { Color } from '@csstools/color-helpers';
+
+export type ColorData = {
+	channels: Color,
+	alpha: number,
+	sourceColorSpace: string,
+	currentColorSpace: string,
 }

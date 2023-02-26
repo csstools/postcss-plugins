@@ -1,3 +1,3 @@
-import { calc } from '@csstools/css-calc';
+import { color } from '@csstools/css-color-parser';
 
-calc('calc(10 * 2)');
+color();

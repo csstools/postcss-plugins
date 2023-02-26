@@ -1,3 +1,4 @@
+import type { Color } from 'types/color';
 /**
  * Given a color in a cylindical polar colorspace and an alpha value
  * return the premultiplied form. The index says which entry in the

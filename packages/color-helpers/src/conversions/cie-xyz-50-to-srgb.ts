@@ -1,15 +1,16 @@
-import { XYZ_to_OKLab } from 'conversions/xyz-to-oklab';
-import { OKLab_to_OKLCH } from 'conversions/oklab-to-oklch';
+import type { Color } from 'types/color';
 import { D50_to_D65 } from 'conversions/d50-to-d65';
+import { OKLCH_to_OKLab } from 'conversions/oklch-to-oklab';
+import { OKLab_to_OKLCH } from 'conversions/oklab-to-oklch';
+import { OKLab_to_XYZ } from 'conversions/oklab-to-xyz';
+import { XYZ_to_OKLab } from 'conversions/xyz-to-oklab';
 import { XYZ_to_lin_sRGB } from 'conversions/xyz-to-lin-srgb';
+import { clip } from 'utils/clip';
 import { gam_sRGB } from 'conversions/gam-srgb';
 import { inGamut } from 'utils/in-gamut';
-import { clip } from 'utils/clip';
-import { mapGamut } from 'calculations/map-gamut';
-import { OKLCH_to_OKLab } from 'conversions/oklch-to-oklab';
-import { OKLab_to_XYZ } from 'conversions/oklab-to-xyz';
 import { lin_sRGB } from 'conversions/lin-srgb';
 import { lin_sRGB_to_XYZ } from 'conversions/lin-srgb-to-xyz';
+import { mapGamut } from 'calculations/map-gamut';
 
 export function cie_XYZ_50_to_sRGB(xyz: Color): Color {
 	let conversion = xyz.slice() as Color;

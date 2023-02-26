@@ -1,8 +1,9 @@
-import { gam_2020 } from 'conversions/gam-2020';
-import { XYZ_to_lin_2020 } from 'conversions/xyz-to-lin-2020';
+import type { Color } from 'types/color';
 import { D50_to_D65 } from 'conversions/d50-to-d65';
-import { Lab_to_XYZ } from 'conversions/lab-to-xyz';
 import { LCH_to_Lab } from 'conversions/lch-to-lab';
+import { Lab_to_XYZ } from 'conversions/lab-to-xyz';
+import { XYZ_to_lin_2020 } from 'conversions/xyz-to-lin-2020';
+import { gam_2020 } from 'conversions/gam-2020';
 
 /**
  * Convert an array of CIE LCH values to CIE Lab, and then to XYZ, adapt from

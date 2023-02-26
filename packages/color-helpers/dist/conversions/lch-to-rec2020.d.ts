@@ -1,3 +1,4 @@
+import type { Color } from 'types/color';
 /**
  * Convert an array of CIE LCH values to CIE Lab, and then to XYZ, adapt from
  * D50 to D65, then convert XYZ to linear-light rec.2020 and finally to gamma

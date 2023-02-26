@@ -1,3 +1,4 @@
+import type { Color } from 'types/color';
 /**
  * Convert an array of gamma-corrected display-p3 values in the 0.0 to 1.0
  * range to linear-light display-p3, then to CIE XYZ, then adapt from D65

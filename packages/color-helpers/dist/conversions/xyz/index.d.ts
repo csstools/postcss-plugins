@@ -1,0 +1,15 @@
+import { Color } from 'types/color';
+export declare function HSL_to_XYZ_D50(x: Color): Color;
+export declare function HWB_to_XYZ_D50(x: Color): Color;
+export declare function Lab_to_XYZ_D50(x: Color): Color;
+export declare function LCH_to_XYZ_D50(x: Color): Color;
+export declare function OKLab_to_XYZ_D50(x: Color): Color;
+export declare function OKLCH_to_XYZ_D50(x: Color): Color;
+export declare function sRGB_to_XYZ_D50(x: Color): Color;
+export declare function lin_sRGB_to_XYZ_D50(x: Color): Color;
+export declare function a98_RGB_to_XYZ_D50(x: Color): Color;
+export declare function P3_to_XYZ_D50(x: Color): Color;
+export declare function rec_2020_to_XYZ_D50(x: Color): Color;
+export declare function proPhoto_RGB_to_XYZ_D50(x: Color): Color;
+export declare function XYZ_D65_to_XYZ_D50(x: Color): Color;
+export declare function XYZ_D50_to_XYZ_D50(x: Color): Color;

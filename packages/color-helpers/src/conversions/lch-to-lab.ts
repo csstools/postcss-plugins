@@ -1,3 +1,5 @@
+import type { Color } from 'types/color';
+
 /**
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
