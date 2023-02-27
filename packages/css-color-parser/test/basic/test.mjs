@@ -1,6 +1,7 @@
 import { color } from '@csstools/css-color-parser';
 import assert from 'assert';
 import { parse } from '../util/parse.mjs';
+import { serialize_sRGB_data } from '../util/serialize.mjs';
 
 [
 	'rgb( )',
@@ -19,6 +20,11 @@ import { parse } from '../util/parse.mjs';
 
 [
 	'rgb(20%, 0, 0)',
+	'rgb(20% 0 0)',
+	'rgb( 20%, 0, 0)',
+	'rgb(/**/20%, 0, 0)',
+	'rgb( 20% 0 0)',
+	'rgb(/**/20% 0 0)',
 	'rgb(calc(10% * 2), 0, 0)',
 ].forEach((testCase) => {
 	assert.deepStrictEqual(
@@ -59,3 +65,66 @@ import { parse } from '../util/parse.mjs';
 	);
 });
 
+// [
+// 	'rgb(from pink calc((r + b) / 2) 0 0 / 1)',
+// ].forEach((testCase) => {
+// 	assert.deepStrictEqual(
+// 		color(parse(testCase)),
+// 		{
+// 			channels: [
+// 				0.34167398909318164,
+// 				0.17433182409829598,
+// 				0.010909905382090898,
+// 			],
+// 			alpha: 1,
+// 			currentColorSpace: 'xyz-d50',
+// 			sourceColorSpace: 'srgb',
+// 		},
+// 	);
+// });
+
+// [
+// 	'rgb(from pink calc((r + b) / 2) g b / alpha)',
+// ].forEach((testCase) => {
+// 	assert.deepStrictEqual(
+// 		color(parse(testCase)),
+// 		{
+// 			channels: [
+// 				0.630139862860809,
+// 				0.5884160809099763,
+// 				0.4885443333856765,
+// 			],
+// 			alpha: 1,
+// 			currentColorSpace: 'xyz-d50',
+// 			sourceColorSpace: 'srgb',
+// 		},
+// 	);
+// });
+
+// [
+// 	'rgb(from pink calc((r + b) / 2) g b / alpha)',
+// ].forEach((testCase) => {
+// 	assert.deepStrictEqual(
+// 		color(parse(testCase)),
+// 		{
+// 			channels: [
+// 				0.630139862860809,
+// 				0.5884160809099763,
+// 				0.4885443333856765,
+// 			],
+// 			alpha: 1,
+// 			currentColorSpace: 'xyz-d50',
+// 			sourceColorSpace: 'srgb',
+// 		},
+// 	);
+// });
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('rgb(20%, 40%, 60%, 80%)'))),
+	'rgba(51, 102, 153, 0.8)',
+);
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('rgb(51, 102, 153, 0.8)'))),
+	'rgba(51, 102, 153, 0.8)',
+);

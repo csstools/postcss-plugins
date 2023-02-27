@@ -16,13 +16,16 @@ import { lin_a98rgb } from 'conversions/lin-a98rgb';
 import { lin_a98rgb_to_XYZ } from 'conversions/lin-a98rgb-to-xyz';
 import { lin_sRGB } from 'conversions/lin-srgb';
 import { lin_sRGB_to_XYZ } from 'conversions/lin-srgb-to-xyz';
+import { D50_to_D65 } from 'conversions/d50-to-d65';
+import { XYZ_to_lin_sRGB } from 'conversions/xyz-to-lin-srgb';
+import { gam_sRGB } from 'conversions/gam-srgb';
 
 /**
  * @param {Color} color [h, s, l]
  * - Hue as degrees 0..360;
  * - Saturation as number 0..100;
  * - Lightness as number 0..100;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function HSL_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -38,7 +41,7 @@ export function HSL_to_XYZ_D50(x: Color): Color {
  * - Hue as degrees 0..360;
  * - Whiteness as number 0..100;
  * - Blackness as number 0..100;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function HWB_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -54,7 +57,7 @@ export function HWB_to_XYZ_D50(x: Color): Color {
  * - Lightness as number 0..100;
  * - a as number -160..160;
  * - b as number -160..160;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function Lab_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -67,7 +70,7 @@ export function Lab_to_XYZ_D50(x: Color): Color {
  * - Lightness as number 0..100;
  * - Chroma as number 0..230;
  * - Hue as degrees 0..360;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function LCH_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -81,7 +84,7 @@ export function LCH_to_XYZ_D50(x: Color): Color {
  * - Lightness as number 0..1;
  * - a as number 0..0.5;
  * - b as number 0..0.5;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function OKLab_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -95,7 +98,7 @@ export function OKLab_to_XYZ_D50(x: Color): Color {
  * - Lightness as number 0..1;
  * - Chroma as number 0..0.5;
  * - Hue as degrees 0..360;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function OKLCH_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -109,7 +112,7 @@ export function OKLCH_to_XYZ_D50(x: Color): Color {
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function sRGB_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -124,7 +127,7 @@ export function sRGB_to_XYZ_D50(x: Color): Color {
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function lin_sRGB_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -138,7 +141,7 @@ export function lin_sRGB_to_XYZ_D50(x: Color): Color {
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function a98_RGB_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -153,7 +156,7 @@ export function a98_RGB_to_XYZ_D50(x: Color): Color {
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function P3_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -168,7 +171,7 @@ export function P3_to_XYZ_D50(x: Color): Color {
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function rec_2020_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -183,7 +186,7 @@ export function rec_2020_to_XYZ_D50(x: Color): Color {
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function proPhoto_RGB_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -197,7 +200,7 @@ export function proPhoto_RGB_to_XYZ_D50(x: Color): Color {
  * - X as number 0..1;
  * - Y as number 0..1;
  * - Z as number 0..1;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function XYZ_D65_to_XYZ_D50(x: Color): Color {
 	let y = x;
@@ -210,8 +213,26 @@ export function XYZ_D65_to_XYZ_D50(x: Color): Color {
  * - X as number 0..1;
  * - Y as number 0..1;
  * - Z as number 0..1;
- * @return {Color} D50 XYZ
+ * @return {Color} D50 XYZ [x, y, z]
  */
 export function XYZ_D50_to_XYZ_D50(x: Color): Color {
 	return x;
+}
+
+/**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} sRGB [r, g, b]
+ * - Red as number 0..1;
+ * - Green as number 0..1;
+ * - Blue as number 0..1;
+ */
+export function XYZ_D50_to_sRGB(x: Color): Color {
+	let y = x;
+	y = D50_to_D65(y);
+	y = XYZ_to_lin_sRGB(y);
+	y = gam_sRGB(y);
+	return y;
 }
