@@ -101,6 +101,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
+		"@csstools/postcss-tape": "*",
 		"postcss-simple-vars": "^7.0.1"
 	},
 	"scripts": {

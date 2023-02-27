@@ -1,4 +1,4 @@
-import { atRuleClonerPlugin, postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
+import { atRuleClonerPlugin, postcssTape } from '@csstools/postcss-tape';
 import plugin from '@csstools/postcss-font-format-keywords';
 
 postcssTape(plugin)({

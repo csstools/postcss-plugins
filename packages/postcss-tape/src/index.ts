@@ -84,7 +84,13 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 			'@csstools/css-has-pseudo-experimental',
 		].includes(packageInfo.name);
 
-		if (!packageInfo.name.startsWith('postcss-') && !packageInfo.name.startsWith('@csstools/postcss-') && !isOlderPackageName) {
+		let packageName = packageInfo.name;
+		if (packageName.startsWith('@')) {
+			const parts = packageInfo.name.split('/');
+			packageName = parts.slice(1).join('/');
+		}
+
+		if (!packageName.startsWith('postcss-') && !isOlderPackageName) {
 			hasErrors = true;
 
 			if (emitGitHubAnnotations) {

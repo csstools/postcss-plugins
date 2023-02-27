@@ -46,6 +46,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
+		"@csstools/postcss-tape": "*",
 		"autoprefixer": "^10.4.8"
 	},
 	"scripts": {

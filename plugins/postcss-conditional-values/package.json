@@ -42,6 +42,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
+		"@csstools/postcss-tape": "*",
 		"postcss-value-parser": "^4.2.0"
 	},
 	"scripts": {
