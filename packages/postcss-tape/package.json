@@ -1,6 +1,6 @@
 {
 	"name": "@csstools/postcss-tape",
-	"description": "Quickly test PostCSS plugins in csstools/postcss-plugins",
+	"description": "Quickly test PostCSS plugins",
 	"version": "1.0.0",
 	"contributors": [
 		{
@@ -22,7 +22,6 @@
 		"type": "opencollective",
 		"url": "https://opencollective.com/csstools"
 	},
-	"private": true,
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},

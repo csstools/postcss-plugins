@@ -1,7 +1,5 @@
 # PostCSS Tape for csstools/postcss-plugins
 
-_Internal package_
-
 See [.tape.mjs](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-base-plugin/.tape.mjs) in the base plugin for a minimal example.
 
 ```js
@@ -24,4 +22,17 @@ postcssTape(plugin)({
 });
 ```
 
-Browse the source code and tests here or see tests in plugins for more usage details.
+Browse the [source code and tests here](https://github.com/csstools/postcss-plugins/tree/main/packages/postcss-tape) or see [tests in plugins](https://github.com/csstools/postcss-plugins/tree/main/plugins) for more usage details.
+
+## Quickly update all `expect.css` files.
+
+Set an env variable `REWRITE_EXPECTS` to `true` to update all `expect` files.
+
+example :
+
+```json
+	"scripts": {
+		"test": "node .tape.mjs ",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+	},
+```
