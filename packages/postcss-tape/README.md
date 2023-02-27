@@ -1,11 +1,9 @@
 # PostCSS Tape for csstools/postcss-plugins
 
-_Internal package_
-
 See [.tape.mjs](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-base-plugin/.tape.mjs) in the base plugin for a minimal example.
 
 ```js
-import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape } from '@csstools/postcss-tape';
 import plugin from '@csstools/postcss-base-plugin';
 
 postcssTape(plugin)({
@@ -24,13 +22,17 @@ postcssTape(plugin)({
 });
 ```
 
-Browse the source code and tests here or see tests in plugins for more usage details.
+Browse the [source code and tests here](https://github.com/csstools/postcss-plugins/tree/main/packages/postcss-tape) or see [tests in plugins](https://github.com/csstools/postcss-plugins/tree/main/plugins) for more usage details.
 
-------------
+## Quickly update all `expect.css` files.
 
-## After node 20 is released do a find/replace to migrate fully to workspaces :
+Set an env variable `REWRITE_EXPECTS` to `true` to update all `expect` files.
 
-- `import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';`
-- `import { postcssTape } from '@csstools/postcss-tape';`
+example :
 
-Then add `@csstools/postcss-tape` the each `package.json` as a dev dependency.
+```json
+	"scripts": {
+		"test": "node .tape.mjs ",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+	},
+```

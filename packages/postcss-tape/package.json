@@ -1,14 +1,27 @@
 {
 	"name": "@csstools/postcss-tape",
-	"description": "Quickly test PostCSS plugins in csstools/postcss-plugins",
+	"description": "Quickly test PostCSS plugins",
 	"version": "1.0.0",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Jonathan Neal",
+			"email": "jonathantneal@hotmail.com"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": {
 		"type": "opencollective",
 		"url": "https://opencollective.com/csstools"
 	},
-	"private": true,
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},

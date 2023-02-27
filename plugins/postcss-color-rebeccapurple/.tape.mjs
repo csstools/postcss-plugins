@@ -1,4 +1,4 @@
-import { postcssTape, ruleClonerPlugin } from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape, ruleClonerPlugin } from '@csstools/postcss-tape';
 import plugin from 'postcss-color-rebeccapurple';
 
 postcssTape(plugin)({

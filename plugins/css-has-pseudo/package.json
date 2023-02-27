@@ -59,6 +59,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
+		"@csstools/postcss-tape": "*",
 		"@mrhenry/core-web": "^1.0.4",
 		"puppeteer": "^19.5.2"
 	},

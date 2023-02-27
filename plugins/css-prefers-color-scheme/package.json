@@ -54,6 +54,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
+		"@csstools/postcss-tape": "*",
 		"puppeteer": "^19.5.2"
 	},
 	"scripts": {
