@@ -1,4 +1,4 @@
-import { postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
+import { postcssTape } from '@csstools/postcss-tape';
 import plugin from '@csstools/postcss-oklab-function';
 
 postcssTape(plugin)({

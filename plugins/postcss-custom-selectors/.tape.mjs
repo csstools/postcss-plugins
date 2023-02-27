@@ -1,4 +1,4 @@
-import { declarationClonerPlugin, postcssTape } from '../../packages/postcss-tape/dist/index.mjs';
+import { declarationClonerPlugin, postcssTape } from '@csstools/postcss-tape';
 import plugin from 'postcss-custom-selectors';
 
 postcssTape(plugin)({

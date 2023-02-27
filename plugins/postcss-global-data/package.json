@@ -42,6 +42,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
+		"@csstools/postcss-tape": "*",
 		"postcss-custom-media": "^9.0.0"
 	},
 	"scripts": {
