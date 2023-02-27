@@ -1,0 +1,23 @@
+{
+	"name": "@csstools/interop--global-data--webpack",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Can you use webpack + postcss-loader with postcss-global-data?",
+	"main": "index.js",
+	"scripts": {
+		"build": "webpack --config webpack.config.js"
+	},
+	"dependencies": {
+		"@csstools/postcss-global-data": "file:../../../plugins/postcss-global-data",
+		"css-loader": "^6.7.1",
+		"postcss": "^8.4.20",
+		"postcss-loader": "^7.0.0",
+		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env",
+		"style-loader": "^3.3.1",
+		"webpack": "^5.75.0",
+		"webpack-cli": "^5.0.1"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
+}
