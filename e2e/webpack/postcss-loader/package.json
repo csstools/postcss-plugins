@@ -2,7 +2,7 @@
 	"name": "@csstools/e2e--webpack--postcss-loader",
 	"version": "0.0.0",
 	"private": true,
-	"description": "Can you user webpack + postcss-loader with out plugins?",
+	"description": "Can you use webpack + postcss-loader with our plugins?",
 	"main": "index.js",
 	"scripts": {
 		"build": "webpack --config webpack.config.js"
