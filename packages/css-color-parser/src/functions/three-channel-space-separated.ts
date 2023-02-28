@@ -6,7 +6,7 @@ import { TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { normalizeChannelValueFn } from './normalize-channel-value';
 
-export function threeChannelLegacySyntax(
+export function threeChannelSpaceSeparated(
 	colorFunctionNode: FunctionNode,
 	normalizeChannelValue: normalizeChannelValueFn,
 	sourceColorSpace: ColorSpace,
@@ -21,10 +21,15 @@ export function threeChannelLegacySyntax(
 	for (let i = 0; i < colorFunctionNode.value.length; i++) {
 		let node = colorFunctionNode.value[i];
 		if (isWhitespaceNode(node) || isCommentNode(node)) {
-			continue;
-		}
+			// consume as much whitespace as possible
+			while (isWhitespaceNode(colorFunctionNode.value[i + 1]) || isCommentNode(colorFunctionNode.value[i + 1])) {
+				i++;
+			}
 
-		if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
+			if (!channel1.length) {
+				continue;
+			}
+
 			if (focus === channel1) {
 				focus = channel2;
 				continue;
@@ -35,14 +40,16 @@ export function threeChannelLegacySyntax(
 				continue;
 			}
 
-			if (focus === channel3) {
-				focus = channelAlpha;
-				continue;
-			}
+			continue;
+		}
 
+		if (isTokenNode(node) && node.value[0] === TokenType.Delim && node.value[4].value === '/') {
 			if (focus === channelAlpha) {
 				return -1;
 			}
+
+			focus = channelAlpha;
+			continue;
 		}
 
 		if (isFunctionNode(node)) {
