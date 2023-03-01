@@ -19,13 +19,10 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 });
 
 [
-	'rgb(20%, 0, 0)',
-	'rgb(20% 0 0)',
-	'rgb( 20%, 0, 0)',
-	'rgb(/**/20%, 0, 0)',
-	'rgb( 20% 0 0)',
-	'rgb(/**/20% 0 0)',
-	'rgb(calc(10% * 2), 0, 0)',
+	'rgb(20%, 0%, 0%)',
+	'rgb( 20%, 0%, 0%)',
+	'rgb(/**/20%, 0%, 0%)',
+	'rgb(calc(10% * 2), 0%, 0%)',
 ].forEach((testCase) => {
 	assert.deepStrictEqual(
 		color(parse(testCase)),
@@ -36,16 +33,58 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 				0.00046094760825903035,
 			],
 			alpha: 1,
+			missingComponents: [false, false, false, false],
 			currentColorSpace: 'xyz-d50',
 			sourceColorSpace: 'srgb',
+			syntaxFlags: new Set(['legacy-rgb', 'has-percentage-values']),
 		},
 	);
 });
 
 [
-	'rgb(20%, 0, 0, 50%)',
-	'rgb(20%, 0, 0, 0.5)',
-	'rgb(calc(10% * 2), 0, 0, 50%)',
+	'rgb(20% 0 0)',
+	'rgb( 20% 0 0)',
+	'rgb(/**/20% 0 0)',
+].forEach((testCase) => {
+	assert.deepStrictEqual(
+		color(parse(testCase)),
+		{
+			channels: [
+				0.014435854625774971,
+				0.007365585176701401,
+				0.00046094760825903035,
+			],
+			alpha: 1,
+			missingComponents: [false, false, false, false],
+			currentColorSpace: 'xyz-d50',
+			sourceColorSpace: 'srgb',
+			syntaxFlags: new Set(['has-number-values', 'has-percentage-values']),
+		},
+	);
+});
+
+[
+	'rgb(20%, 0%, 0%, 0.5)',
+	'rgb(calc(10% * 2), 0%, 0%, 0.5)',
+].forEach((testCase) => {
+	assert.deepStrictEqual(
+		color(parse(testCase)),
+		{
+			channels: [
+				0.014435854625774971,
+				0.007365585176701401,
+				0.00046094760825903035,
+			],
+			alpha: 0.5,
+			missingComponents: [false, false, false, false],
+			currentColorSpace: 'xyz-d50',
+			sourceColorSpace: 'srgb',
+			syntaxFlags: new Set(['legacy-rgb', 'has-alpha', 'has-percentage-values']),
+		},
+	);
+});
+
+[
 	'rgb(20% 0 0 / 0.5)',
 	'rgb(calc(10% * 2) 0 0 / 50%)',
 	'rgb(calc(10% * 2)/**/0/**/ /**/0 / 50%)',
@@ -59,8 +98,10 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 				0.00046094760825903035,
 			],
 			alpha: 0.5,
+			missingComponents: [false, false, false, false],
 			currentColorSpace: 'xyz-d50',
 			sourceColorSpace: 'srgb',
+			syntaxFlags: new Set(['has-number-values', 'has-percentage-values', 'has-alpha']),
 		},
 	);
 });

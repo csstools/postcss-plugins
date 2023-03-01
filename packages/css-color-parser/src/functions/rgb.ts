@@ -2,12 +2,12 @@ import { FunctionNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceN
 import { NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { namedColors, xyz } from '@csstools/color-helpers';
-import { ColorData, colorDataChannelsToCalcGlobals } from '../color';
+import { ColorData, colorDataChannelsToCalcGlobals, SyntaxFlag } from '../color';
 import { ColorSpace } from '../color-space';
 import { ColorParser } from '../color-parser';
 import { threeChannelLegacySyntax } from './three-channel-legacy-syntax';
 import { threeChannelSpaceSeparated } from './three-channel-space-separated';
-import { normalize_sRGB_ChannelValue } from './normalize-channel-value';
+import { normalize_legacy_sRGB_ChannelValues, normalize_modern_sRGB_ChannelValues } from './normalize-channel-values';
 
 export function rgb(rgbNode: FunctionNode, colorParser: ColorParser): ColorData | -1 {
 	{
@@ -37,18 +37,22 @@ export function rgb(rgbNode: FunctionNode, colorParser: ColorParser): ColorData 
 function rgbCommaSeparated(rgbNode: FunctionNode): ColorData | -1 {
 	return threeChannelLegacySyntax(
 		rgbNode,
-		normalize_sRGB_ChannelValue,
+		normalize_legacy_sRGB_ChannelValues,
 		ColorSpace.sRGB,
 		xyz.sRGB_to_XYZ_D50,
+		[
+			SyntaxFlag.LegacyRGB,
+		],
 	);
 }
 
 function rgbSpaceSeparated(rgbNode: FunctionNode): ColorData | -1 {
 	return threeChannelSpaceSeparated(
 		rgbNode,
-		normalize_sRGB_ChannelValue,
+		normalize_modern_sRGB_ChannelValues,
 		ColorSpace.sRGB,
 		xyz.sRGB_to_XYZ_D50,
+		[],
 	);
 }
 
@@ -108,8 +112,10 @@ function rgbSpaceSeparated_RCS(rgbNode: FunctionNode, colorParser: ColorParser):
 					globals = colorDataChannelsToCalcGlobals({
 						channels: [0, 0, 0],
 						alpha: 0,
+						missingComponents: [],
 						currentColorSpace: ColorSpace.sRGB,
 						sourceColorSpace: ColorSpace.sRGB,
+						syntaxFlags: new Set(),
 					});
 					alpha = 0;
 
@@ -133,8 +139,10 @@ function rgbSpaceSeparated_RCS(rgbNode: FunctionNode, colorParser: ColorParser):
 						namedColor[2] / 255,
 					],
 					alpha: 1,
+					missingComponents: [],
 					currentColorSpace: ColorSpace.sRGB,
 					sourceColorSpace: ColorSpace.sRGB,
+					syntaxFlags: new Set(),
 				});
 				alpha = 1;
 
@@ -155,8 +163,10 @@ function rgbSpaceSeparated_RCS(rgbNode: FunctionNode, colorParser: ColorParser):
 				globals = colorDataChannelsToCalcGlobals({
 					channels: xyz.XYZ_D50_to_sRGB(fromColor.channels),
 					alpha: fromColor.alpha,
+					missingComponents: [],
 					currentColorSpace: ColorSpace.sRGB,
 					sourceColorSpace: fromColor.sourceColorSpace,
+					syntaxFlags: new Set(),
 				});
 				alpha = fromColor.alpha;
 
@@ -262,7 +272,12 @@ function rgbSpaceSeparated_RCS(rgbNode: FunctionNode, colorParser: ColorParser):
 			b[0][4].value,
 		]),
 		alpha: a.length === 1 ? a[0][4].value : alpha,
+		missingComponents: [],
 		currentColorSpace: ColorSpace.XYZ_D50,
 		sourceColorSpace: ColorSpace.sRGB,
+		syntaxFlags: new Set([
+			// TODO : has alpha flag
+			SyntaxFlag.RelativeColorSyntax,
+		]),
 	};
 }

@@ -1,21 +1,32 @@
 import type { Color } from '@csstools/color-helpers';
 import type { ColorData } from '../color';
+import { SyntaxFlag } from '../color';
 import { ColorSpace } from '../color-space';
 import { FunctionNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { TokenNumber, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, TokenType } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
-import { normalizeChannelValueFn } from './normalize-channel-value';
+import { normalizeChannelValuesFn } from './normalize-channel-values';
 
 export function threeChannelSpaceSeparated(
 	colorFunctionNode: FunctionNode,
-	normalizeChannelValue: normalizeChannelValueFn,
+	normalizeChannelValues: normalizeChannelValuesFn,
 	sourceColorSpace: ColorSpace,
 	sourceColorTo_XYZ: (color: Color) => Color,
+	syntaxFlags: Array<SyntaxFlag>,
 ): ColorData | -1 {
-	const channel1: Array<TokenNumber> = [];
-	const channel2: Array<TokenNumber> = [];
-	const channel3: Array<TokenNumber> = [];
-	const channelAlpha: Array<TokenNumber> = [];
+	const channel1: Array<CSSToken> = [];
+	const channel2: Array<CSSToken> = [];
+	const channel3: Array<CSSToken> = [];
+	const channelAlpha: Array<CSSToken> = [];
+
+	const colorData: ColorData = {
+		channels: [0, 0, 0],
+		alpha: 0,
+		missingComponents: [false, false, false, false],
+		currentColorSpace: ColorSpace.XYZ_D50,
+		sourceColorSpace: sourceColorSpace,
+		syntaxFlags: (new Set(syntaxFlags)),
+	};
 
 	let focus = channel1;
 	for (let i = 0; i < colorFunctionNode.value.length; i++) {
@@ -66,25 +77,7 @@ export function threeChannelSpaceSeparated(
 		}
 
 		if (isTokenNode(node)) {
-			let index = 0;
-			if (focus === channel1) {
-				index = 0;
-			} else if (focus === channel2) {
-				index = 1;
-			} else if (focus === channel3) {
-				index = 2;
-			} else if (focus === channelAlpha) {
-				index = 3;
-			} else {
-				return -1;
-			}
-
-			const normalized = normalizeChannelValue(node.value, index);
-			if (normalized === -1) {
-				return -1;
-			}
-
-			focus.push(normalized);
+			focus.push(node.value);
 			continue;
 		}
 
@@ -103,14 +96,29 @@ export function threeChannelSpaceSeparated(
 		return -1;
 	}
 
-	return {
-		channels: sourceColorTo_XYZ([
-			channel1[0][4].value,
-			channel2[0][4].value,
-			channel3[0][4].value,
-		]),
-		alpha: channelAlpha.length === 1 ? channelAlpha[0][4].value : 1,
-		currentColorSpace: ColorSpace.XYZ_D50,
-		sourceColorSpace: sourceColorSpace,
-	};
+	const channelValues: Array<CSSToken> = [
+		channel1[0],
+		channel2[0],
+		channel3[0],
+	];
+
+	const hasAlpha = channelAlpha.length === 1;
+	if (hasAlpha) {
+		colorData.syntaxFlags.add(SyntaxFlag.HasAlpha);
+		channelValues.push(channelAlpha[0]);
+	}
+
+	const normalizedChannelValues = normalizeChannelValues(channelValues, colorData);
+	if (normalizedChannelValues === -1) {
+		return -1;
+	}
+
+	colorData.channels = sourceColorTo_XYZ([
+		normalizedChannelValues[0][4].value,
+		normalizedChannelValues[1][4].value,
+		normalizedChannelValues[2][4].value,
+	]);
+	colorData.alpha = hasAlpha ? normalizedChannelValues[3][4].value : 1;
+
+	return colorData;
 }
