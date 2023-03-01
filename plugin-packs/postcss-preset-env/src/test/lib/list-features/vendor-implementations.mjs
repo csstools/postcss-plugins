@@ -35,9 +35,9 @@ testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
 	[
-		'Using features with 2 or more vendor implementations',
-		'Using features from Stage 0',
-		'  blank-pseudo-class with 0 vendor implementations has been disabled',
+		'Using features with 2 or more vendor implementations\n' +
+		'Using features from Stage 0\n' +
+		'  blank-pseudo-class with 0 vendor implementations has been disabled\n' +
 		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
 	],
 );
@@ -85,9 +85,9 @@ testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
 	[
-		'Using features with 2 or more vendor implementations',
-		'Using features from Stage 0',
-		'  blank-pseudo-class with 0 vendor implementations has been disabled',
+		'Using features with 2 or more vendor implementations\n' +
+		'Using features from Stage 0\n' +
+		'  blank-pseudo-class with 0 vendor implementations has been disabled\n' +
 		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
 	],
 );
@@ -151,10 +151,10 @@ testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
 	[
-		'Using features with 2 or more vendor implementations',
-		'Using features from Stage 0',
-		'  blank-pseudo-class does not meet the required vendor implementations but has been enabled by options',
-		'  blank-pseudo-class has been disabled by "enableClientSidePolyfills: false".',
+		'Using features with 2 or more vendor implementations\n' +
+		'Using features from Stage 0\n' +
+		'  blank-pseudo-class does not meet the required vendor implementations but has been enabled by options\n' +
+		'  blank-pseudo-class has been disabled by "enableClientSidePolyfills: false".\n' +
 		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
 	],
 );

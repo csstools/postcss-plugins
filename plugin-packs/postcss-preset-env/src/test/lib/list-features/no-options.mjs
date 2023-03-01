@@ -37,8 +37,8 @@ testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
 	[
-		'Using features from Stage 2 (default)',
-		'  blank-pseudo-class with stage 1 has been disabled',
+		'Using features from Stage 2 (default)\n' +
+		'  blank-pseudo-class with stage 1 has been disabled\n' +
 		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
 	],
 );

@@ -37,8 +37,8 @@ testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
 	[
-		'Using features from Stage 0',
-		'  blank-pseudo-class has been disabled by "enableClientSidePolyfills: false".',
+		'Using features from Stage 0\n' +
+		'  blank-pseudo-class has been disabled by "enableClientSidePolyfills: false".\n' +
 		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
 	],
 );
@@ -89,7 +89,7 @@ testLogger.logger.dumpLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
 	[
-		'Using features from Stage 0',
+		'Using features from Stage 0\n' +
 		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
 	],
 );
