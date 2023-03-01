@@ -3,6 +3,7 @@
 ### Unreleased (unknown)
 
 - Updated `postcss-opacity-percentage` to `2.0.0` (major)
+- Improve `debug` message format
 
 ### 8.0.1 (January 28, 2023)
 
