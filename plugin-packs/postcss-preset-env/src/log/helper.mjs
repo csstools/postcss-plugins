@@ -13,7 +13,7 @@ class Logger {
 
 	dumpLogs(result) {
 		if (result) {
-			this.logs.forEach(line => result.warn(line));
+			result.warn(this.logs.join('\n'));
 		}
 
 		this.resetLogger();
