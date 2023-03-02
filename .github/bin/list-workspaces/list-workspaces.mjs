@@ -1,6 +1,6 @@
 import path from 'path';
-import { promises as fsp } from 'fs';
-import { globSync } from 'glob';
+import { getFiles } from '../util/get-files.mjs';
+import fs, { promises as fsp } from 'fs';
 import { toposort } from '../util/toposort.mjs';
 
 export async function listWorkspaces() {
@@ -9,19 +9,26 @@ export async function listWorkspaces() {
 		const workspaces = rootPackageJSON.workspaces;
 
 		const packages = new Set();
-		workspaces.forEach((workspace) => {
-			// minimatch glob v5 does not allow backslashes in paths and therefor doesn't work correctly on windows.
-			// it is absurd that a package mainly used to match paths is using backslashes as an escape character.
-			// only way around it is to join as posix before globbing.
-			globSync((path.posix ?? path).join(workspace, 'package.json')).forEach((packageJSONPath) => {
-
-				if (packages.has(packageJSONPath)) {
-					return;
+		for (const workspace of workspaces) {
+			if (workspace.endsWith('/*')) {
+				const packageDirs = await getFiles(workspace.slice(0, -2), false);
+				for (const packageDir of packageDirs) {
+					packages.add(
+						path.resolve((path.posix ?? path).join(packageDir, 'package.json'))
+					);
 				}
+			} else {
+				packages.add(
+					path.resolve((path.posix ?? path).join(workspace, 'package.json'))
+				);
+			}
+		}
 
-				packages.add(packageJSONPath);
-			});
-		});
+		for (const packagePath of packages.values()) {
+			if (!fs.existsSync(packagePath)) {
+				packages.delete(packagePath);
+			}
+		}
 
 		const result = [];
 

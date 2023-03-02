@@ -1,6 +1,6 @@
 import path from 'path';
 import { promises as fsp } from 'fs';
-import { getFiles } from './get-files.mjs';
+import { getFiles } from '../util/get-files.mjs';
 import { parseLicenseField } from './parse-license-field.mjs';
 import { licenseIsOkByException, osiApprovedWithCCO } from './allowed.mjs';
 
