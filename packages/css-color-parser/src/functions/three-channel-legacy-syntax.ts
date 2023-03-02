@@ -1,6 +1,6 @@
 import type { Color } from '@csstools/color-helpers';
-import type { ColorData } from '../color';
-import { SyntaxFlag } from '../color';
+import type { ColorData } from '../color-data';
+import { SyntaxFlag } from '../color-data';
 import { ColorSpace } from '../color-space';
 import { FunctionNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, TokenType } from '@csstools/css-tokenizer';
@@ -20,11 +20,12 @@ export function threeChannelLegacySyntax(
 	const channelAlpha: Array<CSSToken> = [];
 
 	const colorData: ColorData = {
+		colorSpace: ColorSpace.XYZ_D50,
 		channels: [0, 0, 0],
+
+		sourceColorSpace: sourceColorSpace,
 		alpha: 0,
 		missingComponents: [false, false, false, false],
-		currentColorSpace: ColorSpace.XYZ_D50,
-		sourceColorSpace: sourceColorSpace,
 		syntaxFlags: (new Set(syntaxFlags)),
 	};
 

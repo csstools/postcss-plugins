@@ -27,16 +27,16 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 	assert.deepStrictEqual(
 		color(parse(testCase)),
 		{
+			colorSpace: 'xyz-d50',
 			channels: [
 				0.014435854625774971,
 				0.007365585176701401,
 				0.00046094760825903035,
 			],
+			sourceColorSpace: 'srgb',
 			alpha: 1,
 			missingComponents: [false, false, false, false],
-			currentColorSpace: 'xyz-d50',
-			sourceColorSpace: 'srgb',
-			syntaxFlags: new Set(['legacy-rgb', 'has-percentage-values']),
+			syntaxFlags: new Set([ 'legacy-rgb', 'has-percentage-values' ]),
 		},
 	);
 });
@@ -49,15 +49,15 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 	assert.deepStrictEqual(
 		color(parse(testCase)),
 		{
+			colorSpace: 'xyz-d50',
 			channels: [
 				0.014435854625774971,
 				0.007365585176701401,
 				0.00046094760825903035,
 			],
+			sourceColorSpace: 'srgb',
 			alpha: 1,
 			missingComponents: [false, false, false, false],
-			currentColorSpace: 'xyz-d50',
-			sourceColorSpace: 'srgb',
 			syntaxFlags: new Set(['has-number-values', 'has-percentage-values']),
 		},
 	);
@@ -70,15 +70,15 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 	assert.deepStrictEqual(
 		color(parse(testCase)),
 		{
+			colorSpace: 'xyz-d50',
 			channels: [
 				0.014435854625774971,
 				0.007365585176701401,
 				0.00046094760825903035,
 			],
+			sourceColorSpace: 'srgb',
 			alpha: 0.5,
 			missingComponents: [false, false, false, false],
-			currentColorSpace: 'xyz-d50',
-			sourceColorSpace: 'srgb',
 			syntaxFlags: new Set(['legacy-rgb', 'has-alpha', 'has-percentage-values']),
 		},
 	);
@@ -92,15 +92,15 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 	assert.deepStrictEqual(
 		color(parse(testCase)),
 		{
+			colorSpace: 'xyz-d50',
 			channels: [
 				0.014435854625774971,
 				0.007365585176701401,
 				0.00046094760825903035,
 			],
+			sourceColorSpace: 'srgb',
 			alpha: 0.5,
 			missingComponents: [false, false, false, false],
-			currentColorSpace: 'xyz-d50',
-			sourceColorSpace: 'srgb',
 			syntaxFlags: new Set(['has-number-values', 'has-percentage-values', 'has-alpha']),
 		},
 	);
