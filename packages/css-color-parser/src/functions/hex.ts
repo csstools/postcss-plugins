@@ -58,6 +58,8 @@ export function hex(hexToken: TokenHash): ColorData | -1 {
 
 		colorData.alpha = parseInt(a + a, 16) / 255;
 
+		colorData.syntaxFlags.add(SyntaxFlag.HasAlpha);
+
 		return colorData;
 	} else if (length === 8) {
 		const r = hexValue[0] + hexValue[1];
@@ -72,6 +74,8 @@ export function hex(hexToken: TokenHash): ColorData | -1 {
 		]);
 
 		colorData.alpha = parseInt(a, 16) / 255;
+
+		colorData.syntaxFlags.add(SyntaxFlag.HasAlpha);
 
 		return colorData;
 	}

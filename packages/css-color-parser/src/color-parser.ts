@@ -1,4 +1,4 @@
-import { FunctionNode } from '@csstools/css-parser-algorithms';
+import { ComponentValue } from '@csstools/css-parser-algorithms';
 import { ColorData } from './color-data';
 
-export type ColorParser = (x: FunctionNode) => ColorData | -1;
+export type ColorParser = (x: ComponentValue) => ColorData | -1;
