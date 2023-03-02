@@ -6,9 +6,9 @@ import { ColorSpace } from '../color-space';
 import { normalize_modern_HWB_ChannelValues } from './hwb-normalize-channel-values';
 import { threeChannelSpaceSeparated } from './three-channel-space-separated';
 
-export function hwb(hslNode: FunctionNode, colorParser: ColorParser): ColorData | -1 {
+export function hwb(hwbNode: FunctionNode, colorParser: ColorParser): ColorData | -1 {
 	{
-		const output = hwbSpaceSeparated(hslNode);
+		const output = hwbSpaceSeparated(hwbNode);
 		if (output !== -1) {
 			return output;
 		}
@@ -17,9 +17,9 @@ export function hwb(hslNode: FunctionNode, colorParser: ColorParser): ColorData 
 	return -1;
 }
 
-function hwbSpaceSeparated(hslNode: FunctionNode): ColorData | -1 {
+function hwbSpaceSeparated(hwbNode: FunctionNode): ColorData | -1 {
 	return threeChannelSpaceSeparated(
-		hslNode,
+		hwbNode,
 		normalize_modern_HWB_ChannelValues,
 		ColorSpace.sRGB,
 		xyz.HWB_to_XYZ_D50,
