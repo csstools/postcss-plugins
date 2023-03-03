@@ -9,9 +9,11 @@
 		"node": "^14 || ^16 || >=18"
 	},
 	"workspaces": [
+		"packages/color-helpers",
 		"packages/css-tokenizer",
 		"packages/css-parser-algorithms",
 		"packages/css-calc",
+		"packages/css-color-parser",
 		"packages/cascade-layer-name-parser",
 		"packages/media-query-list-parser",
 		"packages/*",
