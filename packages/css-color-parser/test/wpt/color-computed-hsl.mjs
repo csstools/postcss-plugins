@@ -25,7 +25,10 @@ const tests = [
 	['hsl(120 100% 50% / 0)', 'rgba(0, 255, 0, 0)'],
 	['hsl(120 100% 50% / 0%)', 'rgba(0, 255, 0, 0)'],
 	['hsl(none 100% 50%)', 'rgb(255, 0, 0)'],
-	['hsl(0 100% 50%)', 'rgb(255, 0, 0)'],
+
+	['hsl(0 100% 50)', 'rgb(255, 0, 0)'],
+	['hsl(0 100 50%)', 'rgb(255, 0, 0)'],
+	['hsl(0 100 50)', 'rgb(255, 0, 0)'],
 
 	['HSL(0, 0%, 0%)', 'rgb(0, 0, 0)', 'Capitalization should not affect parsing'],
 	['hsL(0, 100%, 50%)', 'rgb(255, 0, 0)', 'Capitalization should not affect parsing'],

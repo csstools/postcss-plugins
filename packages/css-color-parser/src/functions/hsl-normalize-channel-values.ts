@@ -168,9 +168,5 @@ export function normalize_modern_HSL_ChannelValues(tokens: Array<CSSToken>, colo
 		return -1;
 	}
 
-	if (colorData.syntaxFlags.has(SyntaxFlag.HasNumberValues)) {
-		return -1;
-	}
-
 	return result;
 }
