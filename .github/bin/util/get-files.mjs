@@ -5,7 +5,7 @@ import { promises as fsp } from 'fs';
 // - skip directories
 // - skip symlinks
 // - do not follow links outside of the start dir
-export async function getFiles(dir) {
+export async function getFiles(dir, recursive = true) {
 	dir = path.resolve(dir);
 	const dirents = await fsp.readdir(dir, { withFileTypes: true });
 	const files = await Promise.all(dirents.map((dirent) => {
@@ -18,7 +18,7 @@ export async function getFiles(dir) {
 			return [];
 		}
 
-		if (dirent.isDirectory()) {
+		if (recursive && dirent.isDirectory()) {
 			return getFiles(res);
 		}
 
