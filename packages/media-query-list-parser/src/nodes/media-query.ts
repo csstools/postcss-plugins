@@ -1,6 +1,7 @@
 import { ComponentValue } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { MediaCondition, MediaConditionWalkerEntry, MediaConditionWalkerParent } from './media-condition';
 import { MediaInParens } from './media-in-parens';
 import { MediaNot } from './media-not';
@@ -53,12 +54,12 @@ export class MediaQueryWithType {
 
 		for (let i = 0; i < copy.modifier.length; i++) {
 			const token = copy.modifier[i];
-			if (token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'not') {
+			if (token[0] === TokenType.Ident && toLowerCaseAZ(token[4].value) === 'not') {
 				copy.modifier.splice(i, 1);
 				break;
 			}
 
-			if (token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'only') {
+			if (token[0] === TokenType.Ident && toLowerCaseAZ(token[4].value) === 'only') {
 				token[1] = 'not';
 				token[4].value = 'not';
 				break;

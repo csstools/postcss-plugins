@@ -1,4 +1,5 @@
 import { CSSToken, NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function normalizeHue(token : CSSToken): TokenNumber | -1 {
 	if (token[0] === TokenType.Number) {
@@ -10,7 +11,7 @@ export function normalizeHue(token : CSSToken): TokenNumber | -1 {
 	if (token[0] === TokenType.Dimension) {
 		let value = token[4].value;
 
-		switch (token[4].unit.toLowerCase()) {
+		switch (toLowerCaseAZ(token[4].unit)) {
 			case 'deg':
 				break;
 			case 'rad':

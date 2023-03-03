@@ -7,6 +7,7 @@ import { convert_rad } from '../unit-conversions/rad';
 import { convert_turn } from '../unit-conversions/turn';
 import { numberToCalculation } from './result-to-calculation';
 import { isDimensionOrNumber } from '../util/kind-of-number';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function solveTan(tanNode: FunctionNode, a: TokenNode): Calculation | -1 {
 	const aToken = a.value;
@@ -18,7 +19,7 @@ export function solveTan(tanNode: FunctionNode, a: TokenNode): Calculation | -1 
 
 	let degrees = 0;
 	if (aToken[0] === TokenType.Dimension) {
-		switch (aToken[4].unit.toLowerCase()) {
+		switch (toLowerCaseAZ(aToken[4].unit)) {
 			case 'rad':
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 				degrees = convert_rad.get('deg')!(startingValue);

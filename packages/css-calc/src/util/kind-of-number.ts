@@ -1,4 +1,5 @@
 import { CSSToken, TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
+import { toLowerCaseAZ } from './to-lower-case-a-z';
 
 export function isNumeric(x: CSSToken): x is TokenDimension | TokenPercentage | TokenNumber {
 	if (x[0] === TokenType.Dimension) {
@@ -43,7 +44,7 @@ export function arrayOfSameNumeric<T extends TokenDimension | TokenPercentage | 
 	}
 
 	if (firstToken[0] === TokenType.Dimension) {
-		const unit = firstToken[4].unit.toLowerCase();
+		const unit = toLowerCaseAZ(firstToken[4].unit);
 
 		for (let i = 1; i < x.length; i++) {
 			const otherToken = x[i];
@@ -51,7 +52,7 @@ export function arrayOfSameNumeric<T extends TokenDimension | TokenPercentage | 
 				return false;
 			}
 
-			if (unit !== otherToken[4].unit.toLowerCase()) {
+			if (unit !== toLowerCaseAZ(otherToken[4].unit)) {
 				return false;
 			}
 		}
@@ -79,7 +80,7 @@ export function twoOfSameNumeric<T extends TokenDimension | TokenPercentage | To
 			return false;
 		}
 
-		if (x[4].unit.toLowerCase() !== y[4].unit.toLowerCase()) {
+		if (toLowerCaseAZ(x[4].unit) !== toLowerCaseAZ(y[4].unit)) {
 			return false;
 		}
 

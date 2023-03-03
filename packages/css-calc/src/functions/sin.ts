@@ -6,6 +6,7 @@ import { convert_grad } from '../unit-conversions/grad';
 import { convert_turn } from '../unit-conversions/turn';
 import { numberToCalculation } from './result-to-calculation';
 import { isDimensionOrNumber } from '../util/kind-of-number';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function solveSin(sinNode: FunctionNode, a: TokenNode): Calculation | -1 {
 	const aToken = a.value;
@@ -14,7 +15,7 @@ export function solveSin(sinNode: FunctionNode, a: TokenNode): Calculation | -1 
 	}
 
 	if (aToken[0] === TokenType.Dimension) {
-		switch (aToken[4].unit.toLowerCase()) {
+		switch (toLowerCaseAZ(aToken[4].unit)) {
 			case 'rad':
 				break;
 			case 'deg':

@@ -2,14 +2,15 @@ import type { ColorData } from '../color-data';
 import { ColorSpace } from '../color-space';
 import { SyntaxFlag } from '../color-data';
 import { namedColors, xyz } from '@csstools/color-helpers';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 const namedColorsMap = new Map();
 for (const [name, color] of Object.entries(namedColors)) {
-	namedColorsMap.set(name.toLowerCase(), color);
+	namedColorsMap.set(name, color);
 }
 
 export function namedColor(name: string): ColorData | -1 {
-	const x = namedColorsMap.get(name);
+	const x = namedColorsMap.get(toLowerCaseAZ(name));
 	if (!x) {
 		return -1;
 	}

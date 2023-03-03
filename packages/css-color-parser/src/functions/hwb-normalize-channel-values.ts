@@ -1,5 +1,6 @@
 import { CSSToken, NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { ColorData, SyntaxFlag } from '../color-data';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { normalizeHue } from './hue-normalize-channel-value';
 
 export function normalize_modern_HWB_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | -1 {
@@ -8,7 +9,7 @@ export function normalize_modern_HWB_ChannelValues(tokens: Array<CSSToken>, colo
 	for (let index = 0; index < tokens.length; index++) {
 		const token = tokens[index];
 
-		if (token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'none') {
+		if (token[0] === TokenType.Ident && toLowerCaseAZ(token[4].value) === 'none') {
 			colorData.syntaxFlags.add(SyntaxFlag.HasNoneKeywords);
 			colorData.missingComponents[index] = true;
 

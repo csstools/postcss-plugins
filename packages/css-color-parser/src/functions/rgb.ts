@@ -10,6 +10,7 @@ import { normalize_legacy_sRGB_ChannelValues, normalize_modern_sRGB_ChannelValue
 import { threeChannelLegacySyntax } from './three-channel-legacy-syntax';
 import { threeChannelSpaceSeparated } from './three-channel-space-separated';
 import { xyz } from '@csstools/color-helpers';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function rgb(rgbNode: FunctionNode, colorParser: ColorParser): ColorData | -1 {
 	{
@@ -106,7 +107,7 @@ function rgbSpaceSeparated_RCS(rgbNode: FunctionNode, colorParser: ColorParser):
 			isTokenNode(node) &&
 			!globals &&
 			node.value[0] === TokenType.Ident &&
-			node.value[4].value.toLowerCase() === 'from'
+			toLowerCaseAZ(node.value[4].value) === 'from'
 		) {
 			// consume as much whitespace as possible
 			while (isWhitespaceNode(rgbNode.value[i + 1]) || isCommentNode(rgbNode.value[i + 1])) {
@@ -140,7 +141,7 @@ function rgbSpaceSeparated_RCS(rgbNode: FunctionNode, colorParser: ColorParser):
 		}
 
 		if (isFunctionNode(node)) {
-			if (node.getName().toLowerCase() !== 'calc') {
+			if (toLowerCaseAZ(node.getName()) !== 'calc') {
 				return -1;
 			}
 
@@ -155,7 +156,7 @@ function rgbSpaceSeparated_RCS(rgbNode: FunctionNode, colorParser: ColorParser):
 		if (isTokenNode(node)) {
 			if (node.value[0] === TokenType.Ident) {
 				const token = node.value;
-				const value = globals.get(token[4].value.toLowerCase());
+				const value = globals.get(toLowerCaseAZ(token[4].value));
 				if (!value) {
 					return -1;
 				}

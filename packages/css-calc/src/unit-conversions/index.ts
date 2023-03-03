@@ -1,5 +1,6 @@
 import type { CSSToken } from '@csstools/css-tokenizer';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { canonicalUnits } from './canonical';
 import { convert_cm } from './cm';
 import { convert_deg } from './deg';
@@ -89,8 +90,8 @@ export function convertUnit<T extends CSSToken>(a: CSSToken, b: T): T {
 		return b;
 	}
 
-	const aUnit = a[4].unit.toLowerCase();
-	const bUnit = b[4].unit.toLowerCase();
+	const aUnit = toLowerCaseAZ(a[4].unit);
+	const bUnit = toLowerCaseAZ(b[4].unit);
 
 	if (aUnit === bUnit) {
 		return b;
@@ -125,7 +126,7 @@ export function toCanonicalUnit<T extends CSSToken>(a: T): T {
 		return a;
 	}
 
-	const aUnit = a[4].unit.toLowerCase();
+	const aUnit = toLowerCaseAZ(a[4].unit);
 	const bUnit = canonicalUnits[aUnit];
 
 	if (aUnit === bUnit) {

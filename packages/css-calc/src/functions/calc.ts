@@ -30,6 +30,7 @@ import { solveTan } from './tan';
 import { subtraction } from '../operation/subtraction';
 import { unary } from '../operation/unary';
 import { solveLog } from './log';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export const mathFunctions = new Map([
 	['abs', abs],
@@ -82,7 +83,7 @@ export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals)
 		}
 
 		if (isFunctionNode(child)) {
-			const mathFunction = mathFunctions.get(child.getName().toLowerCase());
+			const mathFunction = mathFunctions.get(toLowerCaseAZ(child.getName()));
 			if (mathFunction) {
 				const subCalc = mathFunction(child, globals);
 				if (subCalc === -1) {
@@ -431,8 +432,9 @@ export function round(roundNode: FunctionNode, globals: Globals): Calculation | 
 			const node = nodes[i];
 			if (!roundingStrategy && aValue.length === 0 && bValue.length === 0 && isTokenNode(node) && node.value[0] === TokenType.Ident) {
 				const token = node.value;
-				if (roundingStrategies.has(token[4].value.toLowerCase())) {
-					roundingStrategy = token[4].value.toLowerCase();
+				const tokenStr = toLowerCaseAZ(token[4].value);
+				if (roundingStrategies.has(tokenStr)) {
+					roundingStrategy = tokenStr;
 					continue;
 				}
 			}

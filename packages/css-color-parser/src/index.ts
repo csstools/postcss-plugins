@@ -7,11 +7,12 @@ import { hwb } from './functions/hwb';
 import { rgb } from './functions/rgb';
 import { namedColor } from './functions/named-color';
 import { colorKeyword } from './functions/color-keyword';
+import { toLowerCaseAZ } from './util/to-lower-case-a-z';
 export { ColorSpace } from './color-space';
 
 export function color(colorNode: ComponentValue): ColorData | -1 {
 	if (isFunctionNode(colorNode)) {
-		const colorFunctionName = colorNode.getName().toLowerCase();
+		const colorFunctionName = toLowerCaseAZ(colorNode.getName());
 
 		if (colorFunctionName === 'rgb' || colorFunctionName === 'rgba') {
 			return rgb(colorNode, color);
@@ -34,12 +35,12 @@ export function color(colorNode: ComponentValue): ColorData | -1 {
 		}
 
 		if (colorNode.value[0] === TokenType.Ident) {
-			const namedColorData = namedColor(colorNode.value[4].value.toLowerCase());
+			const namedColorData = namedColor(colorNode.value[4].value);
 			if (namedColorData !== -1) {
 				return namedColorData;
 			}
 
-			const keywordColorData = colorKeyword(colorNode.value[4].value.toLowerCase());
+			const keywordColorData = colorKeyword(colorNode.value[4].value);
 			if (keywordColorData !== -1) {
 				return keywordColorData;
 			}

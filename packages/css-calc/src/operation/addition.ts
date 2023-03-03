@@ -1,6 +1,7 @@
 import { TokenNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import { convertUnit } from '../unit-conversions';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function addition(inputs: Array<TokenNode>): TokenNode | -1 {
 	if (inputs.length !== 2) {
@@ -35,9 +36,7 @@ export function addition(inputs: Array<TokenNode>): TokenNode | -1 {
 	) {
 		bToken = convertUnit(aToken, bToken);
 
-		if (
-			aToken[4].unit.toLowerCase() === bToken[4].unit.toLowerCase()
-		) {
+		if (toLowerCaseAZ(aToken[4].unit) === toLowerCaseAZ(bToken[4].unit)) {
 			const result = aToken[4].value + bToken[4].value;
 
 			return new TokenNode([TokenType.Dimension, result.toString() + aToken[4].unit, aToken[2], bToken[3], {

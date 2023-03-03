@@ -1,5 +1,9 @@
 # Changes to Selector Specificity
 
+### Unreleased (patch)
+
+- Improve case insensitive string matching.
+
 ### 2.1.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

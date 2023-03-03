@@ -2,9 +2,10 @@ import { xyz } from '@csstools/color-helpers';
 import type { TokenHash } from '@csstools/css-tokenizer';
 import { ColorData, SyntaxFlag } from '../color-data';
 import { ColorSpace } from '../color-space';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function hex(hexToken: TokenHash): ColorData | -1 {
-	const hexValue = hexToken[4].value.toLowerCase();
+	const hexValue = toLowerCaseAZ(hexToken[4].value);
 	if (hexValue.match(/[^a-f0-9]/)) {
 		return -1;
 	}

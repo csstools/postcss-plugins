@@ -1,5 +1,6 @@
 import { CSSToken, tokenizer, ParseError, TokenType, TokenIdent, cloneTokens } from '@csstools/css-tokenizer';
 import { CustomMedia } from '../nodes/custom-media';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { parseFromTokens } from './parse';
 
 export type Options = {
@@ -41,7 +42,7 @@ export function parseCustomMediaFromTokens(tokens: Array<CSSToken>, options?: Op
 
 		if (remainder[i][0] === TokenType.Ident) {
 			const identToken = remainder[i] as TokenIdent;
-			const identValue = identToken[4].value.toLowerCase();
+			const identValue = toLowerCaseAZ(identToken[4].value);
 			if (identValue === 'false') {
 				continue;
 			}

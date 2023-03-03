@@ -1,5 +1,6 @@
 import { CSSToken, NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { ColorData, SyntaxFlag } from '../color-data';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function normalize_legacy_sRGB_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | -1 {
 	const result: Array<TokenNumber> = [];
@@ -110,7 +111,7 @@ export function normalize_modern_sRGB_ChannelValues(tokens: Array<CSSToken>, col
 			continue;
 		}
 
-		if (token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'none') {
+		if (token[0] === TokenType.Ident && toLowerCaseAZ(token[4].value) === 'none') {
 			colorData.syntaxFlags.add(SyntaxFlag.HasNoneKeywords);
 			colorData.missingComponents[index] = true;
 

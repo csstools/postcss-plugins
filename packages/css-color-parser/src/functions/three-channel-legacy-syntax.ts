@@ -6,6 +6,7 @@ import { FunctionNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceN
 import { CSSToken, TokenType } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { normalizeChannelValuesFn } from './normalize-channel-values';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function threeChannelLegacySyntax(
 	colorFunctionNode: FunctionNode,
@@ -58,7 +59,7 @@ export function threeChannelLegacySyntax(
 		}
 
 		if (isFunctionNode(node)) {
-			if (node.getName().toLowerCase() !== 'calc') {
+			if (toLowerCaseAZ(node.getName()) !== 'calc') {
 				return -1;
 			}
 
