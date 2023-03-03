@@ -5,6 +5,8 @@ import { hex } from './functions/hex';
 import { hsl } from './functions/hsl';
 import { hwb } from './functions/hwb';
 import { rgb } from './functions/rgb';
+import { namedColor } from './functions/named-color';
+import { colorKeyword } from './functions/color-keyword';
 export { ColorSpace } from './color-space';
 
 export function color(colorNode: ComponentValue): ColorData | -1 {
@@ -26,8 +28,26 @@ export function color(colorNode: ComponentValue): ColorData | -1 {
 		return -1;
 	}
 
-	if (isTokenNode(colorNode) && colorNode.value[0] === TokenType.Hash) {
-		return hex(colorNode.value);
+	if (isTokenNode(colorNode)) {
+		if (colorNode.value[0] === TokenType.Hash) {
+			return hex(colorNode.value);
+		}
+
+		if (colorNode.value[0] === TokenType.Ident) {
+			const namedColorData = namedColor(colorNode.value[4].value.toLowerCase());
+			if (namedColorData !== -1) {
+				return namedColorData;
+			}
+
+			const keywordColorData = colorKeyword(colorNode.value[4].value.toLowerCase());
+			if (keywordColorData !== -1) {
+				return keywordColorData;
+			}
+
+			return -1;
+		}
+
+		return -1;
 	}
 
 	return -1;

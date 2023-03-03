@@ -112,14 +112,12 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 // 	assert.deepStrictEqual(
 // 		color(parse(testCase)),
 // 		{
-// 			channels: [
-// 				0.34167398909318164,
-// 				0.17433182409829598,
-// 				0.010909905382090898,
-// 			],
-// 			alpha: 1,
-// 			currentColorSpace: 'xyz-d50',
+// 			channels: [0.3416739564730045, 0.1743318074545503, 0.010909904340504302],
+// 			colorSpace: 'xyz-d50',
 // 			sourceColorSpace: 'srgb',
+// 			alpha: 1,
+// 			missingComponents: [false, false, false, false],
+// 			syntaxFlags: new Set(['relative-color-syntax']),
 // 		},
 // 	);
 // });
@@ -130,14 +128,12 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 // 	assert.deepStrictEqual(
 // 		color(parse(testCase)),
 // 		{
-// 			channels: [
-// 				0.630139862860809,
-// 				0.5884160809099763,
-// 				0.4885443333856765,
-// 			],
-// 			alpha: 1,
-// 			currentColorSpace: 'xyz-d50',
+// 			channels: [0.630139848161484, 0.5884161176241673, 0.488544270929198],
+// 			colorSpace: 'xyz-d50',
 // 			sourceColorSpace: 'srgb',
+// 			alpha: 1,
+// 			missingComponents: [false, false, false, false],
+// 			syntaxFlags: new Set(['relative-color-syntax']),
 // 		},
 // 	);
 // });
@@ -148,14 +144,12 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 // 	assert.deepStrictEqual(
 // 		color(parse(testCase)),
 // 		{
-// 			channels: [
-// 				0.630139862860809,
-// 				0.5884160809099763,
-// 				0.4885443333856765,
-// 			],
-// 			alpha: 1,
-// 			currentColorSpace: 'xyz-d50',
+// 			channels: [0.630139848161484, 0.5884161176241673, 0.488544270929198],
+// 			colorSpace: 'xyz-d50',
 // 			sourceColorSpace: 'srgb',
+// 			alpha: 1,
+// 			missingComponents: [false, false, false, false],
+// 			syntaxFlags: new Set(['relative-color-syntax']),
 // 		},
 // 	);
 // });

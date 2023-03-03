@@ -11,7 +11,7 @@ export function colorKeyword(name: string): ColorData | -1 {
 			sourceColorSpace: ColorSpace.sRGB,
 			alpha: 0,
 			missingComponents: [false, false, false, false],
-			syntaxFlags: (new Set([SyntaxFlag.ColorKeyword, SyntaxFlag.NamedColor])),
+			syntaxFlags: (new Set([SyntaxFlag.ColorKeyword])),
 		};
 	}
 

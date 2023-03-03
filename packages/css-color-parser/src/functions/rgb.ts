@@ -5,9 +5,7 @@ import { ColorSpace } from '../color-space';
 import { NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { colorDataChannelsToCalcGlobals, colorDataToColorSpace, SyntaxFlag } from '../color-data';
-import { colorKeyword } from './color-keyword';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { namedColor } from './named-color';
 import { normalize_legacy_sRGB_ChannelValues, normalize_modern_sRGB_ChannelValues } from './rgb-normalize-channel-values';
 import { threeChannelLegacySyntax } from './three-channel-legacy-syntax';
 import { threeChannelSpaceSeparated } from './three-channel-space-separated';
@@ -116,50 +114,16 @@ function rgbSpaceSeparated_RCS(rgbNode: FunctionNode, colorParser: ColorParser):
 			}
 
 			const nextNode = rgbNode.value[i + 1];
-			if (isTokenNode(nextNode) && nextNode.value[0] === TokenType.Ident) {
-				const colorName = nextNode.value[4].value.toLowerCase();
-
-				{
-					const colorKeywordData = colorDataToColorSpace(colorKeyword(colorName), ColorSpace.sRGB);
-					if (colorKeywordData !== -1) {
-						globals = colorDataChannelsToCalcGlobals(colorKeywordData);
-						alpha = colorKeywordData.alpha;
-
-						i++;
-						continue;
-					}
-				}
-
-				{
-					const namedColorData = colorDataToColorSpace(namedColor(colorName), ColorSpace.sRGB);
-					if (namedColorData !== -1) {
-						globals = colorDataChannelsToCalcGlobals(namedColorData);
-						alpha = namedColorData.alpha;
-
-						i++;
-						continue;
-					}
-				}
-
+			const fromColor = colorDataToColorSpace(colorParser(nextNode), ColorSpace.sRGB);
+			if (fromColor === -1) {
 				return -1;
 			}
 
-			if (isFunctionNode(nextNode)) {
-				if (nextNode.getName().toLowerCase() === 'var') {
-					return -1;
-				}
+			globals = colorDataChannelsToCalcGlobals(fromColor);
+			alpha = fromColor.alpha;
 
-				const fromColor = colorDataToColorSpace(colorParser(nextNode), ColorSpace.sRGB);
-				if (fromColor === -1) {
-					return -1;
-				}
-
-				globals = colorDataChannelsToCalcGlobals(fromColor);
-				alpha = fromColor.alpha;
-
-				i++;
-				continue;
-			}
+			i++;
+			continue;
 		}
 
 		if (!globals) {
