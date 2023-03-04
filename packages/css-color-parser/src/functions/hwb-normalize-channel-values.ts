@@ -3,7 +3,7 @@ import { ColorData, SyntaxFlag } from '../color-data';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { normalizeHue } from './hue-normalize-channel-value';
 
-export function normalize_modern_HWB_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | -1 {
+export function normalize_modern_HWB_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | false {
 	const result: Array<TokenNumber> = [];
 
 	for (let index = 0; index < tokens.length; index++) {
@@ -28,8 +28,8 @@ export function normalize_modern_HWB_ChannelValues(tokens: Array<CSSToken>, colo
 
 		if (index === 0) {
 			const hueToken = normalizeHue(token);
-			if (hueToken === -1) {
-				return -1;
+			if (hueToken === false) {
+				return false;
 			}
 
 			if (token[0] === TokenType.Dimension) {
@@ -67,7 +67,7 @@ export function normalize_modern_HWB_ChannelValues(tokens: Array<CSSToken>, colo
 
 		if (token[0] === TokenType.Number) {
 			if (index !== 3) {
-				return -1;
+				return false;
 			}
 
 			result.push([
@@ -83,7 +83,7 @@ export function normalize_modern_HWB_ChannelValues(tokens: Array<CSSToken>, colo
 			continue;
 		}
 
-		return -1;
+		return false;
 	}
 
 	return result;

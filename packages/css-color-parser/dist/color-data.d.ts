@@ -1,11 +1,12 @@
 import type { Color } from '@csstools/color-helpers';
 import { ColorSpace } from './color-space';
 import { TokenNumber } from '@csstools/css-tokenizer';
+import { ComponentValue } from '@csstools/css-parser-algorithms';
 export type ColorData = {
     colorSpace: ColorSpace;
     channels: Color;
     sourceColorSpace: ColorSpace;
-    alpha: number;
+    alpha: number | ComponentValue;
     missingComponents: Array<boolean>;
     syntaxFlags: Set<SyntaxFlag>;
 };
@@ -17,6 +18,7 @@ export declare enum SyntaxFlag {
     HasNumberValues = "has-number-values",
     HasPercentageAlpha = "has-percentage-alpha",
     HasPercentageValues = "has-percentage-values",
+    HasVariableAlpha = "has-variable-alpha",
     Hex = "hex",
     LegacyHSL = "legacy-hsl",
     LegacyRGB = "legacy-rgb",
@@ -24,4 +26,4 @@ export declare enum SyntaxFlag {
     RelativeColorSyntax = "relative-color-syntax"
 }
 export declare function colorDataChannelsToCalcGlobals(x: ColorData): Map<string, TokenNumber>;
-export declare function colorDataToColorSpace(x: ColorData | -1, colorSpace: ColorSpace): ColorData | -1;
+export declare function colorDataToColorSpace(x: ColorData | false, colorSpace: ColorSpace): ColorData | false;

@@ -6,18 +6,19 @@ import { ColorSpace } from '../color-space';
 import { normalize_modern_HWB_ChannelValues } from './hwb-normalize-channel-values';
 import { threeChannelSpaceSeparated } from './three-channel-space-separated';
 
-export function hwb(hwbNode: FunctionNode, colorParser: ColorParser): ColorData | -1 {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function hwb(hwbNode: FunctionNode, colorParser: ColorParser): ColorData | false {
 	{
 		const output = hwbSpaceSeparated(hwbNode);
-		if (output !== -1) {
+		if (output !== false) {
 			return output;
 		}
 	}
 
-	return -1;
+	return false;
 }
 
-function hwbSpaceSeparated(hwbNode: FunctionNode): ColorData | -1 {
+function hwbSpaceSeparated(hwbNode: FunctionNode): ColorData | false {
 	return threeChannelSpaceSeparated(
 		hwbNode,
 		normalize_modern_HWB_ChannelValues,

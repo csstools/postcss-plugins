@@ -2,7 +2,7 @@ import type { Color } from '@csstools/color-helpers';
 import type { ColorData } from '../color-data';
 import { SyntaxFlag } from '../color-data';
 import { ColorSpace } from '../color-space';
-import { FunctionNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import { ComponentValue, FunctionNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, TokenType } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { normalizeChannelValuesFn } from './normalize-channel-values';
@@ -14,18 +14,18 @@ export function threeChannelLegacySyntax(
 	sourceColorSpace: ColorSpace,
 	sourceColorTo_XYZ: (color: Color) => Color,
 	syntaxFlags: Array<SyntaxFlag>,
-): ColorData | -1 {
-	const channel1: Array<CSSToken> = [];
-	const channel2: Array<CSSToken> = [];
-	const channel3: Array<CSSToken> = [];
-	const channelAlpha: Array<CSSToken> = [];
+): ColorData | false {
+	const channel1: Array<ComponentValue> = [];
+	const channel2: Array<ComponentValue> = [];
+	const channel3: Array<ComponentValue> = [];
+	const channelAlpha: Array<ComponentValue> = [];
 
 	const colorData: ColorData = {
 		colorSpace: ColorSpace.XYZ_D50,
 		channels: [0, 0, 0],
 
 		sourceColorSpace: sourceColorSpace,
-		alpha: 0,
+		alpha: 1,
 		missingComponents: [false, false, false, false],
 		syntaxFlags: (new Set(syntaxFlags)),
 	};
@@ -54,33 +54,39 @@ export function threeChannelLegacySyntax(
 			}
 
 			if (focus === channelAlpha) {
-				return -1;
+				return false;
 			}
 		}
 
 		if (isFunctionNode(node)) {
+			if (focus === channelAlpha && toLowerCaseAZ(node.getName()) === 'var') {
+				colorData.syntaxFlags.add(SyntaxFlag.HasVariableAlpha);
+				focus.push(node);
+				continue;
+			}
+
 			if (toLowerCaseAZ(node.getName()) !== 'calc') {
-				return -1;
+				return false;
 			}
 
 			const [[result]] = calcFromComponentValues([[node]], { toCanonicalUnits: true, precision: 100 });
 			if (!result || !isTokenNode(result)) {
-				return -1;
+				return false;
 			}
 
 			node = result;
 		}
 
 		if (isTokenNode(node)) {
-			focus.push(node.value);
+			focus.push(node);
 			continue;
 		}
 
-		return -1;
+		return false;
 	}
 
 	if (focus.length !== 1) {
-		return -1;
+		return false;
 	}
 
 	if (
@@ -88,24 +94,36 @@ export function threeChannelLegacySyntax(
 		channel2.length !== 1 ||
 		channel3.length !== 1
 	) {
-		return -1;
+		return false;
+	}
+
+	if (
+		!isTokenNode(channel1[0]) ||
+		!isTokenNode(channel2[0]) ||
+		!isTokenNode(channel3[0])
+	) {
+		return false;
 	}
 
 	const channelValues: Array<CSSToken> = [
-		channel1[0],
-		channel2[0],
-		channel3[0],
+		channel1[0].value,
+		channel2[0].value,
+		channel3[0].value,
 	];
 
-	const hasAlpha = channelAlpha.length === 1;
-	if (hasAlpha) {
+	if (channelAlpha.length === 1) {
 		colorData.syntaxFlags.add(SyntaxFlag.HasAlpha);
-		channelValues.push(channelAlpha[0]);
+
+		if (isTokenNode(channelAlpha[0])) {
+			channelValues.push(channelAlpha[0].value);
+		} else {
+			colorData.alpha = channelAlpha[0];
+		}
 	}
 
 	const normalizedChannelValues = normalizeChannelValues(channelValues, colorData);
-	if (normalizedChannelValues === -1) {
-		return -1;
+	if (normalizedChannelValues === false) {
+		return false;
 	}
 
 	colorData.channels = sourceColorTo_XYZ([
@@ -113,7 +131,10 @@ export function threeChannelLegacySyntax(
 		normalizedChannelValues[1][4].value,
 		normalizedChannelValues[2][4].value,
 	]);
-	colorData.alpha = hasAlpha ? normalizedChannelValues[3][4].value : 1;
+
+	if (normalizedChannelValues.length === 4) {
+		colorData.alpha = normalizedChannelValues[3][4].value;
+	}
 
 	return colorData;
 }

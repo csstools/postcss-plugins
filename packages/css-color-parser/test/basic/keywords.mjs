@@ -23,6 +23,6 @@ import { parse } from '../util/parse.mjs';
 ].forEach((testCase) => {
 	assert.deepStrictEqual(
 		color(parse(testCase)),
-		-1,
+		false,
 	);
 });

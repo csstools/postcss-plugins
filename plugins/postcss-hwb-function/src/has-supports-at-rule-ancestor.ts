@@ -1,5 +1,7 @@
 import type { Node, AtRule } from 'postcss';
 
+export const atSupportsHwbParams = '(color: hwb(0 0% 0%))';
+
 export function hasSupportsAtRuleAncestor(node: Node): boolean {
 	let parent = node.parent;
 	while (parent) {
@@ -8,7 +10,7 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 			continue;
 		}
 
-		if ((parent as AtRule).name.toLowerCase() === 'supports' && (parent as AtRule).params.toLowerCase().indexOf('(color: hwb(0% 0 0))') !== -1) {
+		if ((parent as AtRule).name.toLowerCase() === 'supports' && (parent as AtRule).params.includes(atSupportsHwbParams)) {
 			return true;
 		}
 

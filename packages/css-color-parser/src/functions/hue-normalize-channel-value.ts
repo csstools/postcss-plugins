@@ -1,7 +1,7 @@
 import { CSSToken, NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
-export function normalizeHue(token : CSSToken): TokenNumber | -1 {
+export function normalizeHue(token : CSSToken): TokenNumber | false {
 	if (token[0] === TokenType.Number) {
 		token[4].value = token[4].value % 360;
 		token[1] = token[4].value.toString();
@@ -29,7 +29,7 @@ export function normalizeHue(token : CSSToken): TokenNumber | -1 {
 				value = token[4].value * 360;
 				break;
 			default:
-				return -1;
+				return false;
 		}
 
 		value = value % 360;
@@ -46,5 +46,5 @@ export function normalizeHue(token : CSSToken): TokenNumber | -1 {
 		];
 	}
 
-	return -1;
+	return false;
 }

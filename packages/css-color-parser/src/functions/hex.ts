@@ -4,10 +4,10 @@ import { ColorData, SyntaxFlag } from '../color-data';
 import { ColorSpace } from '../color-space';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
-export function hex(hexToken: TokenHash): ColorData | -1 {
+export function hex(hexToken: TokenHash): ColorData | false {
 	const hexValue = toLowerCaseAZ(hexToken[4].value);
 	if (hexValue.match(/[^a-f0-9]/)) {
-		return -1;
+		return false;
 	}
 
 	const colorData: ColorData = {
@@ -81,5 +81,5 @@ export function hex(hexToken: TokenHash): ColorData | -1 {
 		return colorData;
 	}
 
-	return -1;
+	return false;
 }

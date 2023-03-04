@@ -1,4 +1,4 @@
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { atSupportsHwbParams, hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import valueParser from 'postcss-value-parser';
 import type { ParsedValue, FunctionNode } from 'postcss-value-parser';
 import type { AtRule, Container, Declaration, Node, Postcss, Result } from 'postcss';
@@ -6,8 +6,12 @@ import { onCSSFunctionSRgb } from './on-css-function';
 
 import type { PluginCreator } from 'postcss';
 import { hasFallback } from './has-fallback-decl';
+import { tokenize } from '@csstools/css-tokenizer';
+import { isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
+import { color } from '@csstools/css-color-parser';
 
-const atSupportsHwbParams = '(color: hwb(0% 0 0))';
+const hwbFunctionRegex = /hwb\(/i;
+const hwbNameRegex = /hwb/i;
 
 /** postcss-hwb-function plugin options */
 export type pluginOptions = {
@@ -23,7 +27,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-hwb-function',
 		Declaration: (decl: Declaration, { result, postcss }: { result: Result, postcss: Postcss }) => {
 			const originalValue = decl.value;
-			if (!originalValue.toLowerCase().includes('hwb(')) {
+			if (!hwbFunctionRegex.test(originalValue)) {
 				return;
 			}
 
@@ -33,6 +37,18 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			if (hasFallback(decl)) {
 				return;
+			}
+
+			{
+				const tokens = tokenize({ css: originalValue });
+				const componentValueLists = parseCommaSeparatedListOfComponentValues(tokens);
+				const replaced = replaceComponentValues(componentValueLists, (componentValue) => {
+					if (isFunctionNode(componentValue) && hwbNameRegex.test(componentValue.getName())) {
+						console.log(color(componentValue));
+					}
+				});
+
+				const modified = stringify(replaced);
 			}
 
 			const modified = modifiedValues(originalValue, decl, result);

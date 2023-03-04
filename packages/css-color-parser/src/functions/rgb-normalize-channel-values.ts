@@ -2,7 +2,7 @@ import { CSSToken, NumberType, TokenNumber, TokenType } from '@csstools/css-toke
 import { ColorData, SyntaxFlag } from '../color-data';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
-export function normalize_legacy_sRGB_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | -1 {
+export function normalize_legacy_sRGB_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | false {
 	const result: Array<TokenNumber> = [];
 
 	for (let index = 0; index < tokens.length; index++) {
@@ -51,20 +51,20 @@ export function normalize_legacy_sRGB_ChannelValues(tokens: Array<CSSToken>, col
 			continue;
 		}
 
-		return -1;
+		return false;
 	}
 
 	if (
 		colorData.syntaxFlags.has(SyntaxFlag.HasNumberValues) &&
 		colorData.syntaxFlags.has(SyntaxFlag.HasPercentageValues)
 	) {
-		return -1;
+		return false;
 	}
 
 	return result;
 }
 
-export function normalize_modern_sRGB_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | -1 {
+export function normalize_modern_sRGB_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | false {
 	const result: Array<TokenNumber> = [];
 
 	for (let index = 0; index < tokens.length; index++) {
@@ -128,7 +128,7 @@ export function normalize_modern_sRGB_ChannelValues(tokens: Array<CSSToken>, col
 			continue;
 		}
 
-		return -1;
+		return false;
 	}
 
 	return result;

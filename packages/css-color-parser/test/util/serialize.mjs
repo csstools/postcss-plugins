@@ -1,7 +1,7 @@
 import { xyz } from '@csstools/color-helpers';
 
 export function serialize_sRGB_data(x) {
-	if (!x || x === -1) {
+	if (!x) {
 		return '';
 	}
 

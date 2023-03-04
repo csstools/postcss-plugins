@@ -9,10 +9,10 @@ for (const [name, color] of Object.entries(namedColors)) {
 	namedColorsMap.set(name, color);
 }
 
-export function namedColor(name: string): ColorData | -1 {
+export function namedColor(name: string): ColorData | false {
 	const x = namedColorsMap.get(toLowerCaseAZ(name));
 	if (!x) {
-		return -1;
+		return false;
 	}
 
 	return {

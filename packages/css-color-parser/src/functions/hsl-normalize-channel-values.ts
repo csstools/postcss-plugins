@@ -3,7 +3,7 @@ import { ColorData, SyntaxFlag } from '../color-data';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { normalizeHue } from './hue-normalize-channel-value';
 
-export function normalize_legacy_HSL_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | -1 {
+export function normalize_legacy_HSL_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | false {
 	const result: Array<TokenNumber> = [];
 
 	for (let index = 0; index < tokens.length; index++) {
@@ -11,8 +11,8 @@ export function normalize_legacy_HSL_ChannelValues(tokens: Array<CSSToken>, colo
 
 		if (index === 0) {
 			const hueToken = normalizeHue(token);
-			if (hueToken === -1) {
-				return -1;
+			if (hueToken === false) {
+				return false;
 			}
 
 			if (token[0] === TokenType.Dimension) {
@@ -71,17 +71,17 @@ export function normalize_legacy_HSL_ChannelValues(tokens: Array<CSSToken>, colo
 			continue;
 		}
 
-		return -1;
+		return false;
 	}
 
 	if (colorData.syntaxFlags.has(SyntaxFlag.HasNumberValues)) {
-		return -1;
+		return false;
 	}
 
 	return result;
 }
 
-export function normalize_modern_HSL_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | -1 {
+export function normalize_modern_HSL_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | false {
 	const result: Array<TokenNumber> = [];
 
 	for (let index = 0; index < tokens.length; index++) {
@@ -106,8 +106,8 @@ export function normalize_modern_HSL_ChannelValues(tokens: Array<CSSToken>, colo
 
 		if (index === 0) {
 			const hueToken = normalizeHue(token);
-			if (hueToken === -1) {
-				return -1;
+			if (hueToken === false) {
+				return false;
 			}
 
 			if (token[0] === TokenType.Dimension) {
@@ -166,7 +166,7 @@ export function normalize_modern_HSL_ChannelValues(tokens: Array<CSSToken>, colo
 			continue;
 		}
 
-		return -1;
+		return false;
 	}
 
 	return result;

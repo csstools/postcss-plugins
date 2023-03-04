@@ -3,7 +3,7 @@ import { ColorSpace } from '../color-space';
 import { SyntaxFlag } from '../color-data';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
-export function colorKeyword(name: string): ColorData | -1 {
+export function colorKeyword(name: string): ColorData | false {
 	if (toLowerCaseAZ(name) === 'transparent') {
 		return {
 			colorSpace: ColorSpace.XYZ_D50,
@@ -16,5 +16,5 @@ export function colorKeyword(name: string): ColorData | -1 {
 		};
 	}
 
-	return -1;
+	return false;
 }

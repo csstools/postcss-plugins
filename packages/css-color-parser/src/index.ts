@@ -10,7 +10,7 @@ import { colorKeyword } from './functions/color-keyword';
 import { toLowerCaseAZ } from './util/to-lower-case-a-z';
 export { ColorSpace } from './color-space';
 
-export function color(colorNode: ComponentValue): ColorData | -1 {
+export function color(colorNode: ComponentValue): ColorData | false {
 	if (isFunctionNode(colorNode)) {
 		const colorFunctionName = toLowerCaseAZ(colorNode.getName());
 
@@ -26,7 +26,7 @@ export function color(colorNode: ComponentValue): ColorData | -1 {
 			return hwb(colorNode, color);
 		}
 
-		return -1;
+		return false;
 	}
 
 	if (isTokenNode(colorNode)) {
@@ -36,20 +36,20 @@ export function color(colorNode: ComponentValue): ColorData | -1 {
 
 		if (colorNode.value[0] === TokenType.Ident) {
 			const namedColorData = namedColor(colorNode.value[4].value);
-			if (namedColorData !== -1) {
+			if (namedColorData !== false) {
 				return namedColorData;
 			}
 
 			const keywordColorData = colorKeyword(colorNode.value[4].value);
-			if (keywordColorData !== -1) {
+			if (keywordColorData !== false) {
 				return keywordColorData;
 			}
 
-			return -1;
+			return false;
 		}
 
-		return -1;
+		return false;
 	}
 
-	return -1;
+	return false;
 }
