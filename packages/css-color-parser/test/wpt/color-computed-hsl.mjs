@@ -3750,5 +3750,6 @@ for (const test of tests) {
 	assert.deepStrictEqual(
 		serialize_sRGB_data(color(parse(test[0]))),
 		test[1],
+		`"${test[0]}" : ${test[2]}`,
 	);
 }

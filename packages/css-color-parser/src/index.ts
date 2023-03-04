@@ -1,14 +1,17 @@
 import { ColorData } from './color-data';
 import { ComponentValue, isFunctionNode, isTokenNode } from '@csstools/css-parser-algorithms';
 import { TokenType } from '@csstools/css-tokenizer';
+import { colorKeyword } from './functions/color-keyword';
 import { hex } from './functions/hex';
 import { hsl } from './functions/hsl';
 import { hwb } from './functions/hwb';
-import { rgb } from './functions/rgb';
 import { namedColor } from './functions/named-color';
-import { colorKeyword } from './functions/color-keyword';
+import { rgb } from './functions/rgb';
 import { toLowerCaseAZ } from './util/to-lower-case-a-z';
+
 export { ColorSpace } from './color-space';
+export { SyntaxFlag } from './color-data';
+export { serializeRGB } from './serialize/rgb';
 
 export function color(colorNode: ComponentValue): ColorData | false {
 	if (isFunctionNode(colorNode)) {

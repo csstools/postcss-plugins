@@ -1,14 +1,11 @@
-import { atSupportsHwbParams, hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-import valueParser from 'postcss-value-parser';
-import type { ParsedValue, FunctionNode } from 'postcss-value-parser';
 import type { AtRule, Container, Declaration, Node, Postcss, Result } from 'postcss';
-import { onCSSFunctionSRgb } from './on-css-function';
-
 import type { PluginCreator } from 'postcss';
-import { hasFallback } from './has-fallback-decl';
-import { tokenize } from '@csstools/css-tokenizer';
-import { isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
+import { atSupportsHwbParams, hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { color } from '@csstools/css-color-parser';
+import { hasFallback } from './has-fallback-decl';
+import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
+import { serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
+import { tokenize } from '@csstools/css-tokenizer';
 
 const hwbFunctionRegex = /hwb\(/i;
 const hwbNameRegex = /hwb/i;
@@ -25,7 +22,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-hwb-function',
-		Declaration: (decl: Declaration, { result, postcss }: { result: Result, postcss: Postcss }) => {
+		Declaration: (decl: Declaration, { postcss }: { result: Result, postcss: Postcss }) => {
 			const originalValue = decl.value;
 			if (!hwbFunctionRegex.test(originalValue)) {
 				return;
@@ -39,20 +36,26 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			{
-				const tokens = tokenize({ css: originalValue });
-				const componentValueLists = parseCommaSeparatedListOfComponentValues(tokens);
-				const replaced = replaceComponentValues(componentValueLists, (componentValue) => {
+			const replaced = replaceComponentValues(
+				parseCommaSeparatedListOfComponentValues(tokenize({ css: originalValue })),
+				(componentValue) => {
 					if (isFunctionNode(componentValue) && hwbNameRegex.test(componentValue.getName())) {
-						console.log(color(componentValue));
+						const colorData = color(componentValue);
+						if (!colorData) {
+							return;
+						}
+
+						if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
+							return;
+						}
+
+						return serializeRGB(colorData);
 					}
-				});
+				},
+			);
 
-				const modified = stringify(replaced);
-			}
-
-			const modified = modifiedValues(originalValue, decl, result);
-			if (typeof modified === 'undefined') {
+			const modified = stringify(replaced);
+			if (modified === originalValue) {
 				return;
 			}
 
@@ -82,42 +85,6 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 postcssPlugin.postcss = true;
 
 export default postcssPlugin;
-
-function modifiedValues(originalValue: string, decl: Declaration, result: Result): string | undefined {
-	let valueASTSRgb: ParsedValue | undefined;
-
-	try {
-		valueASTSRgb = valueParser(originalValue);
-	} catch (error) {
-		decl.warn(
-			result,
-			`Failed to parse value '${originalValue}' as a hwb function. Leaving the original value intact.`,
-		);
-	}
-
-	if (typeof valueASTSRgb === 'undefined') {
-		return;
-	}
-
-	valueASTSRgb.walk((node) => {
-		if (!node.type || node.type !== 'function') {
-			return;
-		}
-
-		if (node.value.toLowerCase() !== 'hwb') {
-			return;
-		}
-
-		onCSSFunctionSRgb(node as FunctionNode);
-	});
-	const modifiedValueSRgb = String(valueASTSRgb);
-
-	if (modifiedValueSRgb === originalValue) {
-		return;
-	}
-
-	return modifiedValueSRgb;
-}
 
 function insertAtSupportsAfterCorrectRule(atSupports: AtRule, parent: Container<Node>, params: string) {
 	// Ensure correct order of @supports rules
