@@ -1,3 +1,4 @@
+import { calculations, Color, conversions, utils } from '@csstools/color-helpers';
 import type { TokenCloseParen }from '@csstools/css-tokenizer';
 import { ColorData } from '../color-data';
 import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
@@ -6,7 +7,7 @@ import { toPrecision } from './to-precision';
 import { xyz } from '@csstools/color-helpers';
 
 export function serializeRGB(color: ColorData): FunctionNode {
-	const srgb = xyz.XYZ_D50_to_sRGB(color.channels);
+	const srgb = XYZ_D50_to_sRGB_Gamut(color.channels);
 	const r = Math.min(255, Math.max(0, Math.round(toPrecision(srgb[0]) * 255)));
 	const g = Math.min(255, Math.max(0, Math.round(toPrecision(srgb[1]) * 255)));
 	const b = Math.min(255, Math.max(0, Math.round(toPrecision(srgb[2]) * 255)));
@@ -55,4 +56,35 @@ export function serializeRGB(color: ColorData): FunctionNode {
 			color.alpha,
 		],
 	);
+}
+
+export function XYZ_D50_to_sRGB_Gamut(color: Color): Color {
+	const srgb = xyz.XYZ_D50_to_sRGB(color);
+	if (utils.inGamut(srgb)) {
+		return utils.clip(srgb);
+	}
+
+	let oklch = color.slice() as Color;
+	oklch = conversions.D50_to_D65(oklch);
+	oklch = conversions.XYZ_to_OKLab(oklch);
+	oklch = conversions.OKLab_to_OKLCH(oklch);
+	if (oklch[0] < 0.000001) {
+		oklch = [0, 0, 0] as Color;
+	}
+
+	if (oklch[0] > 0.999999) {
+		oklch = [1, 0, 0] as Color;
+	}
+
+	return calculations.mapGamut(oklch, (x: Color) => {
+		x = conversions.OKLCH_to_OKLab(x);
+		x = conversions.OKLab_to_XYZ(x);
+		x = conversions.XYZ_to_lin_sRGB(x);
+		return conversions.gam_sRGB(x);
+	}, (x: Color) => {
+		x = conversions.lin_sRGB(x);
+		x = conversions.lin_sRGB_to_XYZ(x);
+		x = conversions.XYZ_to_OKLab(x);
+		return conversions.OKLab_to_OKLCH(x);
+	});
 }

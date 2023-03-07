@@ -8,6 +8,7 @@ import { hwb } from './functions/hwb';
 import { namedColor } from './functions/named-color';
 import { rgb } from './functions/rgb';
 import { toLowerCaseAZ } from './util/to-lower-case-a-z';
+import { lab } from './functions/lab';
 
 export { ColorSpace } from './color-space';
 export { SyntaxFlag } from './color-data';
@@ -27,6 +28,10 @@ export function color(colorNode: ComponentValue): ColorData | false {
 
 		if (colorFunctionName === 'hwb') {
 			return hwb(colorNode, color);
+		}
+
+		if (colorFunctionName === 'lab') {
+			return lab(colorNode, color);
 		}
 
 		return false;

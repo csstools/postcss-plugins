@@ -19,6 +19,7 @@ import { lin_sRGB_to_XYZ } from 'conversions/lin-srgb-to-xyz';
 import { D50_to_D65 } from 'conversions/d50-to-d65';
 import { XYZ_to_lin_sRGB } from 'conversions/xyz-to-lin-srgb';
 import { gam_sRGB } from 'conversions/gam-srgb';
+import { sRGB_to_HSL } from 'conversions/srgb-to-hsl';
 
 /**
  * @param {Color} color [h, s, l]
@@ -234,5 +235,24 @@ export function XYZ_D50_to_sRGB(x: Color): Color {
 	y = D50_to_D65(y);
 	y = XYZ_to_lin_sRGB(y);
 	y = gam_sRGB(y);
+	return y;
+}
+
+/**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} sRGB [r, g, b]
+ * - H as number 0..1;
+ * - Green as number 0..1;
+ * - Blue as number 0..1;
+ */
+export function XYZ_D50_to_HSL(x: Color): Color {
+	let y = x;
+	y = D50_to_D65(y);
+	y = XYZ_to_lin_sRGB(y);
+	y = gam_sRGB(y);
+	y = sRGB_to_HSL(y);
 	return y;
 }

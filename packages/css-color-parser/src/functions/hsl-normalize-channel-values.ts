@@ -2,6 +2,7 @@ import { CSSToken, NumberType, TokenNumber, TokenType } from '@csstools/css-toke
 import { ColorData, SyntaxFlag } from '../color-data';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { normalizeHue } from './hue-normalize-channel-value';
+import { normalize } from './normalize';
 
 export function normalize_legacy_HSL_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | false {
 	const result: Array<TokenNumber> = [];
@@ -30,18 +31,18 @@ export function normalize_legacy_HSL_ChannelValues(tokens: Array<CSSToken>, colo
 				colorData.syntaxFlags.add(SyntaxFlag.HasPercentageValues);
 			}
 
-			let scale = 1;
+			let value = normalize(token[4].value, 1, 0, 100);
 			if (index === 3) {
-				scale = 100;
+				value = normalize(token[4].value, 100, 0, 1);
 			}
 
 			result.push([
 				TokenType.Number,
-				(token[4].value / scale).toString(),
+				value.toString(),
 				token[2],
 				token[3],
 				{
-					value: token[4].value / scale,
+					value: value,
 					type: NumberType.Number,
 				},
 			]);
@@ -53,18 +54,18 @@ export function normalize_legacy_HSL_ChannelValues(tokens: Array<CSSToken>, colo
 				colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 			}
 
-			let scale = 1;
+			let value = normalize(token[4].value, 1, 0, 100);
 			if (index === 3) {
-				scale = 1;
+				value = normalize(token[4].value, 1, 0, 1);
 			}
 
 			result.push([
 				TokenType.Number,
-				(token[4].value / scale).toString(),
+				value.toString(),
 				token[2],
 				token[3],
 				{
-					value: token[4].value / scale,
+					value: value,
 					type: NumberType.Number,
 				},
 			]);
@@ -125,18 +126,18 @@ export function normalize_modern_HSL_ChannelValues(tokens: Array<CSSToken>, colo
 				colorData.syntaxFlags.add(SyntaxFlag.HasPercentageValues);
 			}
 
-			let scale = 1;
+			let value = normalize(token[4].value, 1, 0, 100);
 			if (index === 3) {
-				scale = 100;
+				value = normalize(token[4].value, 100, 0, 1);
 			}
 
 			result.push([
 				TokenType.Number,
-				(token[4].value / scale).toString(),
+				value.toString(),
 				token[2],
 				token[3],
 				{
-					value: token[4].value / scale,
+					value: value,
 					type: NumberType.Number,
 				},
 			]);
@@ -148,18 +149,18 @@ export function normalize_modern_HSL_ChannelValues(tokens: Array<CSSToken>, colo
 				colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 			}
 
-			let scale = 1;
+			let value = normalize(token[4].value, 1, 0, 100);
 			if (index === 3) {
-				scale = 1;
+				value = normalize(token[4].value, 1, 0, 1);
 			}
 
 			result.push([
 				TokenType.Number,
-				(token[4].value / scale).toString(),
+				value.toString(),
 				token[2],
 				token[3],
 				{
-					value: token[4].value / scale,
+					value: value,
 					type: NumberType.Number,
 				},
 			]);

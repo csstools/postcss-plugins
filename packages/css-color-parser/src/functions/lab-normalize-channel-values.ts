@@ -1,10 +1,9 @@
 import { CSSToken, NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { ColorData, SyntaxFlag } from '../color-data';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
-import { normalizeHue } from './hue-normalize-channel-value';
 import { normalize } from './normalize';
 
-export function normalize_HWB_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | false {
+export function normalize_Lab_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | false {
 	const result: Array<TokenNumber> = [];
 
 	for (let index = 0; index < tokens.length; index++) {
@@ -27,29 +26,15 @@ export function normalize_HWB_ChannelValues(tokens: Array<CSSToken>, colorData: 
 			continue;
 		}
 
-		if (index === 0) {
-			const hueToken = normalizeHue(token);
-			if (hueToken === false) {
-				return false;
-			}
-
-			if (token[0] === TokenType.Dimension) {
-				colorData.syntaxFlags.add(SyntaxFlag.HasDimensionValues);
-			}
-
-			result.push(hueToken);
-			continue;
-		}
-
 		if (token[0] === TokenType.Percentage) {
-			if (index === 3) {
-				colorData.syntaxFlags.add(SyntaxFlag.HasPercentageAlpha);
-			} else {
+			if (index !== 3) {
 				colorData.syntaxFlags.add(SyntaxFlag.HasPercentageValues);
 			}
 
 			let value = normalize(token[4].value, 1, 0, 100);
-			if (index === 3) {
+			if (index === 1 || index === 2) {
+				value = normalize(token[4].value, 0.8, -Infinity, Infinity);
+			} else if (index === 3) {
 				value = normalize(token[4].value, 100, 0, 1);
 			}
 
@@ -68,10 +53,15 @@ export function normalize_HWB_ChannelValues(tokens: Array<CSSToken>, colorData: 
 
 		if (token[0] === TokenType.Number) {
 			if (index !== 3) {
-				return false;
+				colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 			}
 
-			const value = normalize(token[4].value, 1, 0, 1);
+			let value = normalize(token[4].value, 1, 0, 100);
+			if (index === 1 || index === 2) {
+				value = normalize(token[4].value, 1, -Infinity, Infinity);
+			} else if (index === 3) {
+				value = normalize(token[4].value, 1, 0, 1);
+			}
 
 			result.push([
 				TokenType.Number,
@@ -79,7 +69,7 @@ export function normalize_HWB_ChannelValues(tokens: Array<CSSToken>, colorData: 
 				token[2],
 				token[3],
 				{
-					value: value,
+					value: token[4].value,
 					type: NumberType.Number,
 				},
 			]);

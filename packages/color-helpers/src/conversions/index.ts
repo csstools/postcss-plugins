@@ -44,6 +44,7 @@ export * from './pro-photo-rgb-to-srgb';
 export * from './rec2020-to-lch';
 export * from './rec2020-to-srgb';
 export * from './srgb-linear-to-srgb';
+export * from './srgb-to-hsl';
 export * from './srgb-to-lch';
 export * from './srgb-to-luminance';
 export * from './srgb-to-srgb';

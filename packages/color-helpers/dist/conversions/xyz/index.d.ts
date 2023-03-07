@@ -122,3 +122,14 @@ export declare function XYZ_D50_to_XYZ_D50(x: Color): Color;
  * - Blue as number 0..1;
  */
 export declare function XYZ_D50_to_sRGB(x: Color): Color;
+/**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} sRGB [r, g, b]
+ * - H as number 0..1;
+ * - Green as number 0..1;
+ * - Blue as number 0..1;
+ */
+export declare function XYZ_D50_to_HSL(x: Color): Color;
