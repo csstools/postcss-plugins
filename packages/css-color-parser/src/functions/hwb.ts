@@ -8,17 +8,6 @@ import { threeChannelSpaceSeparated } from './three-channel-space-separated';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function hwb(hwbNode: FunctionNode, colorParser: ColorParser): ColorData | false {
-	{
-		const output = hwbSpaceSeparated(hwbNode);
-		if (output !== false) {
-			return output;
-		}
-	}
-
-	return false;
-}
-
-function hwbSpaceSeparated(hwbNode: FunctionNode): ColorData | false {
 	return threeChannelSpaceSeparated(
 		hwbNode,
 		normalize_HWB_ChannelValues,

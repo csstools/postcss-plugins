@@ -9,6 +9,7 @@ import { namedColor } from './functions/named-color';
 import { rgb } from './functions/rgb';
 import { toLowerCaseAZ } from './util/to-lower-case-a-z';
 import { lab } from './functions/lab';
+import { colorMix } from './functions/color-mix';
 
 export { ColorSpace } from './color-space';
 export { SyntaxFlag } from './color-data';
@@ -32,6 +33,10 @@ export function color(colorNode: ComponentValue): ColorData | false {
 
 		if (colorFunctionName === 'lab') {
 			return lab(colorNode, color);
+		}
+
+		if (colorFunctionName === 'color-mix') {
+			return colorMix(colorNode, color);
 		}
 
 		return false;

@@ -28,6 +28,7 @@ export enum SyntaxFlag {
 	LegacyRGB = 'legacy-rgb',
 	NamedColor = 'named-color',
 	RelativeColorSyntax = 'relative-color-syntax',
+	ColorMix = 'color-mix',
 }
 
 export function colorDataChannelsToCalcGlobals(x: ColorData /*, zeroPercentRef: number, hundredPercentRef: number */): Map<string, TokenNumber> {

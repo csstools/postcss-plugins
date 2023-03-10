@@ -8,17 +8,6 @@ import { normalize_Lab_ChannelValues } from './lab-normalize-channel-values';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function lab(labNode: FunctionNode, colorParser: ColorParser): ColorData | false {
-	{
-		const output = labSpaceSeparated(labNode);
-		if (output !== false) {
-			return output;
-		}
-	}
-
-	return false;
-}
-
-function labSpaceSeparated(labNode: FunctionNode): ColorData | false {
 	return threeChannelSpaceSeparated(
 		labNode,
 		normalize_Lab_ChannelValues,

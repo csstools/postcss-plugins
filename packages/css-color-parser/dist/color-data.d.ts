@@ -23,7 +23,8 @@ export declare enum SyntaxFlag {
     LegacyHSL = "legacy-hsl",
     LegacyRGB = "legacy-rgb",
     NamedColor = "named-color",
-    RelativeColorSyntax = "relative-color-syntax"
+    RelativeColorSyntax = "relative-color-syntax",
+    ColorMix = "color-mix"
 }
 export declare function colorDataChannelsToCalcGlobals(x: ColorData): Map<string, TokenNumber>;
 export declare function colorDataToColorSpace(x: ColorData | false, colorSpace: ColorSpace): ColorData | false;
