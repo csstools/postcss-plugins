@@ -114,15 +114,30 @@ for (const workspace of notReleasableNow.values()) {
 		if (needsRelease.has(dependency)) {
 			const updated = needsRelease.get(dependency);
 
-			if (packageInfo.dependencies && packageInfo.dependencies[updated.name] && updated.newVersion) {
+			if (
+				packageInfo.dependencies &&
+				packageInfo.dependencies[updated.name] &&
+				packageInfo.dependencies[updated.name] !== '*' &&
+				updated.newVersion
+			) {
 				packageInfo.dependencies[updated.name] = '^' + updated.newVersion;
 				didChange = true;
 			}
-			if (packageInfo.devDependencies && packageInfo.devDependencies[updated.name] && updated.newVersion) {
+			if (
+				packageInfo.devDependencies &&
+				packageInfo.devDependencies[updated.name] &&
+				packageInfo.devDependencies[updated.name] !== '*' &&
+				updated.newVersion
+			) {
 				packageInfo.devDependencies[updated.name] = '^' + updated.newVersion;
 				didChange = true;
 			}
-			if (packageInfo.peerDependencies && packageInfo.peerDependencies[updated.name] && updated.newVersion) {
+			if (
+				packageInfo.peerDependencies &&
+				packageInfo.peerDependencies[updated.name] &&
+				packageInfo.peerDependencies[updated.name] !== '*' &&
+				updated.newVersion
+			) {
 				packageInfo.peerDependencies[updated.name] = '^' + updated.newVersion;
 				didChange = true;
 			}
