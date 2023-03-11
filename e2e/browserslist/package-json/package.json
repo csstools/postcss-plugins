@@ -15,8 +15,8 @@
 			"chrome > 100"
 		],
 		"production": [
-			"last 1 version",
-			"> 1%",
+			"last 2 version",
+			"> 0.1%",
 			"not dead"
 		]
 	},

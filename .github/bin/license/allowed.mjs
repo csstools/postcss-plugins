@@ -152,6 +152,11 @@ const licenseExceptions = [
 		file: 'node_modules/caniuse-lite/package.json',
 		license: 'CC-BY-4.0',
 	},
+	{
+		// see : https://github.com/isaacs/path-scurry/issues/7
+		file: 'node_modules/path-scurry/package.json',
+		license: 'BlueOak-1.0.0',
+	},
 ];
 
 export function licenseIsOkByException(file, license) {

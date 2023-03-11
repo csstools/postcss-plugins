@@ -8,6 +8,7 @@ if (process.env.BROWSERSLIST_ENV === 'production') {
 	assert.equal(
 		result,
 		':link, :visited, area[href] { color: blue; }\n' +
+		':-webkit-any-link { color: blue; }\n' +
 		':-moz-any-link { color: blue; }\n' +
 		':any-link { color: blue; }',
 	);
