@@ -1,7 +1,7 @@
 import type { ColorData } from '../color-data';
-import { ColorSpace } from '../color-space';
+import { ColorNotation } from '../color-notation';
 import { SyntaxFlag } from '../color-data';
-import { namedColors, xyz } from '@csstools/color-helpers';
+import { namedColors } from '@csstools/color-helpers';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 const namedColorsMap = new Map();
@@ -16,16 +16,13 @@ export function namedColor(name: string): ColorData | false {
 	}
 
 	return {
-		colorSpace: ColorSpace.XYZ_D50,
-		channels: xyz.sRGB_to_XYZ_D50([
+		colorNotation: ColorNotation.RGB,
+		channels: [
 			x[0] / 255,
 			x[1] / 255,
 			x[2] / 255,
-		]),
-
-		sourceColorSpace: ColorSpace.sRGB,
+		],
 		alpha: 1,
-		missingComponents: [false, false, false, false],
 		syntaxFlags: (new Set([SyntaxFlag.ColorKeyword, SyntaxFlag.NamedColor])),
 	};
 }

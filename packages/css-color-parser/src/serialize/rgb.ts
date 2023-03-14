@@ -1,13 +1,20 @@
-import { calculations, Color, conversions, utils } from '@csstools/color-helpers';
 import type { TokenCloseParen }from '@csstools/css-tokenizer';
-import { ColorData } from '../color-data';
+import { ColorData, colorData_to_XYZ_D50 } from '../color-data';
+import { ColorNotation } from '../color-notation';
 import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
+import { calculations, Color, conversions, utils, xyz } from '@csstools/color-helpers';
 import { toPrecision } from './to-precision';
-import { xyz } from '@csstools/color-helpers';
 
 export function serializeRGB(color: ColorData): FunctionNode {
-	const srgb = XYZ_D50_to_sRGB_Gamut(color.channels);
+	let srgb = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
+	if (
+		color.colorNotation !== ColorNotation.RGB &&
+		color.colorNotation !== ColorNotation.HEX
+	) {
+		srgb = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(color).channels);
+	}
+
 	const r = Math.min(255, Math.max(0, Math.round(toPrecision(srgb[0]) * 255)));
 	const g = Math.min(255, Math.max(0, Math.round(toPrecision(srgb[1]) * 255)));
 	const b = Math.min(255, Math.max(0, Math.round(toPrecision(srgb[2]) * 255)));
@@ -25,7 +32,7 @@ export function serializeRGB(color: ColorData): FunctionNode {
 	];
 
 	if (typeof color.alpha === 'number') {
-		const a = Math.min(1, Math.max(0, toPrecision(color.alpha)));
+		const a = Math.min(1, Math.max(0, toPrecision(Number.isNaN(color.alpha) ? 0 : color.alpha)));
 		if (a === 1) {
 			return new FunctionNode(
 				[TokenType.Function, 'rgb(', -1, -1, { value: 'rgb' }],

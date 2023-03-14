@@ -42,3 +42,13 @@ assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('lab(86.6146% -106.5599 102.8717)'))),
 	'rgb(0, 251, 41)',
 );
+
+assert.deepStrictEqual(
+	color(parse('lab(55% 0 -60)')),
+	{
+		colorNotation: 'lab',
+		channels: [55, 0, -60],
+		alpha: 1,
+		syntaxFlags: new Set(['has-percentage-values', 'has-number-values']),
+	},
+);

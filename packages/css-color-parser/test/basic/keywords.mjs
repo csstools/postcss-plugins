@@ -8,11 +8,9 @@ import { parse } from '../util/parse.mjs';
 	assert.deepStrictEqual(
 		color(parse(testCase)),
 		{
-			colorSpace: 'xyz-d50',
+			colorNotation: 'rgb',
 			channels: [0, 0, 0],
-			sourceColorSpace: 'srgb',
 			alpha: 0,
-			missingComponents: [false, false, false, false],
 			syntaxFlags: new Set(['color-keyword']),
 		},
 	);

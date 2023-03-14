@@ -1,13 +1,11 @@
-import { xyz } from '@csstools/color-helpers';
-import { calcFromComponentValues } from '@csstools/css-calc';
+import type { ColorParser } from '../color-parser';
+import { Color } from '@csstools/color-helpers';
+import { ColorData, colorDataTo, fillInMissingComponents, SyntaxFlag } from '../color-data';
+import { ColorNotation } from '../color-notation';
 import { ComponentValue, FunctionNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { TokenType } from '@csstools/css-tokenizer';
-import { ColorData, SyntaxFlag } from '../color-data';
-import type { ColorParser } from '../color-parser';
-import { ColorSpace } from '../color-space';
+import { calcFromComponentValues } from '@csstools/css-calc';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
-import { normalize_HWB_ChannelValues } from './hwb-normalize-channel-values';
-import { threeChannelSpaceSeparated } from './three-channel-space-separated';
 
 const rectangularColorSpaces = new Set(['srgb', 'srgb-linear', 'lab', 'oklab', 'xyz', 'xyz-d50', 'xyz-d65']);
 const polarColorSpaces = new Set(['hsl', 'hwb', 'lch', 'oklch']);
@@ -124,7 +122,7 @@ type ColorMixColors = {
 }
 
 function colorMixComponents(componentValues: Array<ComponentValue>, colorParser: ColorParser): ColorMixColors | false {
-	const colors: Array<{color: ColorData, percentage: number | false}> = [];
+	const colors: Array<{ color: ColorData, percentage: number | false }> = [];
 
 	let alphaMultiplier = 1;
 
@@ -157,12 +155,10 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 
 		if (!color) {
 			const parsedColor = colorParser(node);
-			if (!parsedColor) {
-				return false;
+			if (parsedColor) {
+				color = parsedColor;
+				continue;
 			}
-
-			color = parsedColor;
-			continue;
 		}
 
 		if (
@@ -225,9 +221,10 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 	}
 
 	if ((p1 + p2) < 100) {
+		alphaMultiplier = (p1 + p2) / 100;
+
 		p1 = p1 / (p1 + p2) * 100;
 		p2 = p2 / (p1 + p2) * 100;
-		alphaMultiplier = (p1 + p2) / 100;
 	}
 
 	return {
@@ -256,76 +253,209 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 		return false;
 	}
 
-	let a_channels = colors.a.color.channels;
-	let b_channels = colors.b.color.channels;
+	const a_color = colors.a.color;
+	const b_color = colors.b.color;
 
-	let a_hue_channel = 0;
-	let b_hue_channel = 0;
+	const ratio = colors.a.percentage / 100;
 
-	const a_alpha = colors.a.color.alpha;
+	let a_channels = a_color.channels;
+	let b_channels = b_color.channels;
+
+	let a_hue = 0;
+	let b_hue = 0;
+
+	let a_first = 0;
+	let b_first = 0;
+
+	let a_second = 0;
+	let b_second = 0;
+
+	let a_alpha = a_color.alpha;
 	if (typeof a_alpha !== 'number') {
 		return false;
 	}
-	const b_alpha = colors.b.color.alpha;
+
+	let b_alpha = b_color.alpha;
 	if (typeof b_alpha !== 'number') {
 		return false;
 	}
 
+	a_alpha = Number.isNaN(a_alpha) ? b_alpha : a_alpha;
+	b_alpha = Number.isNaN(b_alpha) ? a_alpha : b_alpha;
+
 	switch (colorSpace) {
 		case 'hsl':
-			a_channels = xyz.XYZ_D50_to_HSL(a_channels);
-			b_channels = xyz.XYZ_D50_to_HSL(b_channels);
+			if (a_color.colorNotation !== ColorNotation.HSL) {
+				a_channels = colorDataTo(a_color, ColorNotation.HSL).channels;
+			}
 
-			a_hue_channel = a_channels[0];
-			b_hue_channel = b_channels[0];
+			if (b_color.colorNotation !== ColorNotation.HSL) {
+				b_channels = colorDataTo(b_color, ColorNotation.HSL).channels;
+			}
+
+			a_channels = fillInMissingComponents(a_channels, b_channels);
+			b_channels = fillInMissingComponents(b_channels, a_channels);
+
+			a_hue = a_channels[0];
+			b_hue = b_channels[0];
+
+			a_first = a_channels[1];
+			b_first = b_channels[1];
+
+			a_second = a_channels[2];
+			b_second = b_channels[2];
+			break;
+
+		case 'hwb':
+			if (a_color.colorNotation !== ColorNotation.HWB) {
+				a_channels = colorDataTo(a_color, ColorNotation.HWB).channels;
+			}
+
+			if (b_color.colorNotation !== ColorNotation.HWB) {
+				b_channels = colorDataTo(b_color, ColorNotation.HWB).channels;
+			}
+
+			a_channels = fillInMissingComponents(a_channels, b_channels);
+			b_channels = fillInMissingComponents(b_channels, a_channels);
+
+			a_hue = a_channels[0];
+			b_hue = b_channels[0];
+
+			a_first = a_channels[1];
+			b_first = b_channels[1];
+
+			a_second = a_channels[2];
+			b_second = b_channels[2];
+
 			break;
 
 		default:
 			break;
 	}
 
+	const angleDiff = b_hue - a_hue;
+
 	switch (hueInterpolationMethod) {
 		case 'shorter':
-			if (Math.abs(a_hue_channel - b_hue_channel) > 180) {
-				if (a_hue_channel > b_hue_channel) {
-					b_hue_channel += 360;
+			if (angleDiff > 180) {
+				a_hue += 360;
+			} else if (angleDiff < -180) {
+				b_hue += 360;
+			}
+
+			break;
+		case 'longer':
+			if (-180 < angleDiff && angleDiff < 180) {
+				if (angleDiff > 0) {
+					a_hue += 360;
 				} else {
-					a_hue_channel += 360;
+					b_hue += 360;
 				}
 			}
 
 			break;
+		case 'increasing':
+			if (angleDiff < 0) {
+				b_hue += 360;
+			}
 
+			break;
+		case 'decreasing':
+			if (angleDiff > 0) {
+				a_hue += 360;
+			}
+
+			break;
+		default:
+			throw new Error('Unknown hue interpolation method');
+	}
+
+	a_first = premultiply(a_first, a_alpha);
+	a_second = premultiply(a_second, a_alpha);
+	b_first = premultiply(b_first, b_alpha);
+	b_second = premultiply(b_second, b_alpha);
+
+	let outputColorNotation: ColorNotation = ColorNotation.RGB;
+	let outputChannels: Color = [0, 0, 0];
+	let alpha = 1;
+
+	switch (colorSpace) {
+		case 'hsl': {
+			alpha = interpolate(a_alpha, b_alpha, ratio);
+			const hue = interpolate(a_hue, b_hue, ratio);
+			let saturation = interpolate(a_first, b_first, ratio);
+			let lightness = interpolate(a_second, b_second, ratio);
+
+			saturation = un_premultiply(saturation, alpha);
+			lightness = un_premultiply(lightness, alpha);
+
+			outputChannels = [hue, saturation, lightness];
+			outputColorNotation = ColorNotation.HSL;
+			break;
+		}
+		case 'hwb': {
+			alpha = interpolate(a_alpha, b_alpha, ratio);
+			const hue = interpolate(a_hue, b_hue, ratio);
+			let whiteness = interpolate(a_first, b_first, ratio);
+			let blackness = interpolate(a_second, b_second, ratio);
+
+			whiteness = un_premultiply(whiteness, alpha);
+			blackness = un_premultiply(blackness, alpha);
+
+			outputChannels = [hue, whiteness, blackness];
+			outputColorNotation = ColorNotation.HWB;
+			break;
+		}
 		default:
 			break;
 	}
 
-	const hue = interpolate(a_hue_channel, b_hue_channel, colors.a.percentage / 100);
-	const saturation = interpolate(a_channels[1], b_channels[1], colors.a.percentage / 100);
-	const lightness = interpolate(a_channels[2], b_channels[2], colors.a.percentage / 100);
-	const alpha = interpolate(a_alpha, b_alpha, colors.a.percentage / 100);
-
 	const colorData: ColorData = {
-		colorSpace: ColorSpace.XYZ_D50,
-		channels: xyz.HSL_to_XYZ_D50([hue, saturation, lightness]),
-
-		sourceColorSpace: ColorSpace.sRGB,
-		alpha: alpha,
-		missingComponents: [false, false, false, false],
+		colorNotation: outputColorNotation,
+		channels: outputChannels,
+		alpha: alpha * colors.alphaMultiplier,
 		syntaxFlags: (new Set([SyntaxFlag.ColorMix])),
 	};
 
 	return colorData;
 }
 
-function interpolate(start: number, end: number, p: number) {
-	if (isNaN(start)) {
+function interpolate(start: number, end: number, p: number): number {
+	if (Number.isNaN(start)) {
 		return end;
 	}
 
-	if (isNaN(end)) {
+	if (Number.isNaN(end)) {
 		return start;
 	}
 
-	return start + ((end - start) * p);
+	return (start * p) + end * (1 - p);
+}
+
+function premultiply(x: number, alpha: number): number {
+	if (Number.isNaN(alpha)) {
+		return x;
+	}
+
+	if (Number.isNaN(x)) {
+		return NaN;
+	}
+
+	return x * alpha;
+}
+
+function un_premultiply(x: number, alpha: number): number {
+	if (alpha === 0) {
+		return x;
+	}
+
+	if (Number.isNaN(alpha)) {
+		return x;
+	}
+
+	if (Number.isNaN(x)) {
+		return NaN;
+	}
+
+	return x / alpha;
 }

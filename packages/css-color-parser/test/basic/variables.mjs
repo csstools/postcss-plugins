@@ -27,10 +27,8 @@ import { parse } from '../util/parse.mjs';
 		assert.deepStrictEqual(
 			result,
 			{
-				colorSpace: 'xyz-d50',
-				channels: [0.5192047315068763, 0.3772407897198402, 0.03487991937645182],
-				sourceColorSpace: 'srgb',
-				missingComponents: [false, false, false, false],
+				colorNotation: 'rgb',
+				channels: [1, 0.5019607843137255, 0],
 				syntaxFlags: new Set([
 					'legacy-rgb',
 					'has-variable-alpha',
@@ -72,10 +70,8 @@ import { parse } from '../util/parse.mjs';
 		assert.deepStrictEqual(
 			result,
 			{
-				colorSpace: 'xyz-d50',
-				channels: [0.5192047315068763, 0.3772407897198402, 0.03487991937645182],
-				sourceColorSpace: 'srgb',
-				missingComponents: [false, false, false, false],
+				colorNotation: 'rgb',
+				channels: [1, 0.5019607843137255, 0],
 				syntaxFlags: new Set([
 					'has-variable-alpha',
 					'has-alpha',

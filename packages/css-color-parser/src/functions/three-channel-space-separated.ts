@@ -1,7 +1,6 @@
-import type { Color } from '@csstools/color-helpers';
 import type { ColorData } from '../color-data';
 import { SyntaxFlag } from '../color-data';
-import { ColorSpace } from '../color-space';
+import { ColorNotation } from '../color-notation';
 import { ComponentValue, FunctionNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, TokenType } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
@@ -11,8 +10,7 @@ import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 export function threeChannelSpaceSeparated(
 	colorFunctionNode: FunctionNode,
 	normalizeChannelValues: normalizeChannelValuesFn,
-	sourceColorSpace: ColorSpace,
-	sourceColorTo_XYZ: (color: Color) => Color,
+	colorNotation: ColorNotation,
 	syntaxFlags: Array<SyntaxFlag>,
 ): ColorData | false {
 	const channel1: Array<ComponentValue> = [];
@@ -21,12 +19,9 @@ export function threeChannelSpaceSeparated(
 	const channelAlpha: Array<ComponentValue> = [];
 
 	const colorData: ColorData = {
-		colorSpace: ColorSpace.XYZ_D50,
+		colorNotation: colorNotation,
 		channels: [0, 0, 0],
-
-		sourceColorSpace: sourceColorSpace,
 		alpha: 1,
-		missingComponents: [false, false, false, false],
 		syntaxFlags: (new Set(syntaxFlags)),
 	};
 
@@ -133,11 +128,11 @@ export function threeChannelSpaceSeparated(
 		return false;
 	}
 
-	colorData.channels = sourceColorTo_XYZ([
+	colorData.channels = [
 		normalizedChannelValues[0][4].value,
 		normalizedChannelValues[1][4].value,
 		normalizedChannelValues[2][4].value,
-	]);
+	];
 
 	if (normalizedChannelValues.length === 4) {
 		colorData.alpha = normalizedChannelValues[3][4].value;

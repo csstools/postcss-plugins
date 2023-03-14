@@ -11,7 +11,7 @@ import { toLowerCaseAZ } from './util/to-lower-case-a-z';
 import { lab } from './functions/lab';
 import { colorMix } from './functions/color-mix';
 
-export { ColorSpace } from './color-space';
+export { ColorNotation } from './color-notation';
 export { SyntaxFlag } from './color-data';
 export { serializeRGB } from './serialize/rgb';
 

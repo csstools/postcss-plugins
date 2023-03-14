@@ -75,15 +75,14 @@ export function normalize_modern_sRGB_ChannelValues(tokens: Array<CSSToken>, col
 
 		if (token[0] === TokenType.Ident && toLowerCaseAZ(token[4].value) === 'none') {
 			colorData.syntaxFlags.add(SyntaxFlag.HasNoneKeywords);
-			colorData.missingComponents[index] = true;
 
 			result.push([
 				TokenType.Number,
-				'0',
+				'none',
 				token[2],
 				token[3],
 				{
-					value: 0,
+					value: NaN,
 					type: NumberType.Number,
 				},
 			]);

@@ -20,12 +20,12 @@ const tests = [
 
 	['color-mix(in hsl, hsl(120deg 10% 20% / .4), hsl(30deg 30% 40% / .8))', 'rgba(95, 105, 65, 0.6)'],
 	['color-mix(in hsl, hsl(120deg 10% 20%) 25%, hsl(30deg 30% 40% / .8))', 'rgba(108, 103, 66, 0.85)'],
-	['color-mix(in hsl, 25% hsl(120deg 10% 20% / .4), hsl(30deg 30% 40% / .8))', 'rgba(121, 114, 69, 0.7)'],
+	['color-mix(in hsl, 25% hsl(120deg 10% 20% / .4), hsl(30deg 30% 40% / .8))', 'rgba(120, 114, 69, 0.7)'],
 	['color-mix(in hsl, hsl(120deg 10% 20% / .4), 25% hsl(30deg 30% 40% / .8))', 'rgba(68, 84, 59, 0.5)'],
 	['color-mix(in hsl, hsl(120deg 10% 20% / .4), hsl(30deg 30% 40% / .8) 25%)', 'rgba(68, 84, 59, 0.5)'],
-	['color-mix(in hsl, hsl(120deg 10% 20% / .4) 25%, hsl(30deg 30% 40% / .8) 75%)', 'rgba(121, 114, 69, 0.7)'],
-	['color-mix(in hsl, hsl(120deg 10% 20% / .4) 30%, hsl(30deg 30% 40% / .8) 90%)', 'rgba(121, 114, 69, 0.7)'], // Scale down > 100% sum.
-	['color-mix(in hsl, hsl(120deg 10% 20% / .4) 12.5%, hsl(30deg 30% 40% / .8) 37.5%)', 'rgba(121, 114, 69, 0.35)'], // Scale up < 100% sum, causes alpha multiplication.
+	['color-mix(in hsl, hsl(120deg 10% 20% / .4) 25%, hsl(30deg 30% 40% / .8) 75%)', 'rgba(120, 114, 69, 0.7)'],
+	['color-mix(in hsl, hsl(120deg 10% 20% / .4) 30%, hsl(30deg 30% 40% / .8) 90%)', 'rgba(120, 114, 69, 0.7)'], // Scale down > 100% sum.
+	['color-mix(in hsl, hsl(120deg 10% 20% / .4) 12.5%, hsl(30deg 30% 40% / .8) 37.5%)', 'rgba(120, 114, 69, 0.35)'], // Scale up < 100% sum, causes alpha multiplication.
 	['color-mix(in hsl, hsl(120deg 10% 20% / .4) 0%, hsl(30deg 30% 40% / .8))', 'rgba(133, 102, 71, 0.8)'],
 
 	['color-mix(in hsl, hsl(40deg 50% 50%), hsl(60deg 50% 50%))', canonicalize('hsl(50deg 50% 50%)')],
@@ -74,24 +74,24 @@ const tests = [
 	['color-mix(in hsl, hsl(120deg 40% 40% / none), hsl(0deg 40% 40% / 0.5))', canonicalize('hsl(60deg 40% 40% / 0.5)')],
 	['color-mix(in hsl, hsl(120deg 40% 40% / none), hsl(0deg 40% 40% / none))', canonicalize('hsl(60deg 40% 40% / none)')],
 
-	['color-mix(in hwb, hwb(120deg 10% 20%), hwb(30deg 30% 40%))', 'rgb(147, 179, 52)'],
+	['color-mix(in hwb, hwb(120deg 10% 20%), hwb(30deg 30% 40%))', 'rgb(147, 179, 51)'],
 	['color-mix(in hwb, hwb(120deg 10% 20%) 25%, hwb(30deg 30% 40%))', 'rgb(166, 153, 64)'],
 	['color-mix(in hwb, 25% hwb(120deg 10% 20%), hwb(30deg 30% 40%))', 'rgb(166, 153, 64)'],
-	['color-mix(in hwb, hwb(120deg 10% 20%), 25% hwb(30deg 30% 40%))', 'rgb(96, 191, 39)'],
-	['color-mix(in hwb, hwb(120deg 10% 20%), hwb(30deg 30% 40%) 25%)', 'rgb(96, 191, 39)'],
+	['color-mix(in hwb, hwb(120deg 10% 20%), 25% hwb(30deg 30% 40%))', 'rgb(96, 191, 38)'],
+	['color-mix(in hwb, hwb(120deg 10% 20%), hwb(30deg 30% 40%) 25%)', 'rgb(96, 191, 38)'],
 	['color-mix(in hwb, hwb(120deg 10% 20%) 25%, hwb(30deg 30% 40%) 75%)', 'rgb(166, 153, 64)'],
 	['color-mix(in hwb, hwb(120deg 10% 20%) 30%, hwb(30deg 30% 40%) 90%)', 'rgb(166, 153, 64)'], // Scale down > 100% sum.
 	['color-mix(in hwb, hwb(120deg 10% 20%) 12.5%, hwb(30deg 30% 40%) 37.5%)', 'rgba(166, 153, 64, 0.5)'], // Scale up < 100% sum, causes alpha multiplication.
 	['color-mix(in hwb, hwb(120deg 10% 20%) 0%, hwb(30deg 30% 40%))', 'rgb(153, 115, 77)'],
 
-	['color-mix(in hwb, hwb(120deg 10% 20% / .4), hwb(30deg 30% 40% / .8))', 'rgba(143, 170, 60, 0.6)'],
-	['color-mix(in hwb, hwb(120deg 10% 20% / .4) 25%, hwb(30deg 30% 40% / .8))', 'rgba(160, 149, 70, 0.7)'],
-	['color-mix(in hwb, 25% hwb(120deg 10% 20% / .4), hwb(30deg 30% 40% / .8))', 'rgba(160, 149, 70, 0.7)'],
-	['color-mix(in hwb, hwb(120deg 10% 20%), 25% hwb(30deg 30% 40% / .8))', 'rgba(95, 193, 37, 0.95)'],
+	['color-mix(in hwb, hwb(120deg 10% 20% / .4), hwb(30deg 30% 40% / .8))', 'rgba(142, 170, 59, 0.6)'],
+	['color-mix(in hwb, hwb(120deg 10% 20% / .4) 25%, hwb(30deg 30% 40% / .8))', 'rgba(160, 149, 69, 0.7)'],
+	['color-mix(in hwb, 25% hwb(120deg 10% 20% / .4), hwb(30deg 30% 40% / .8))', 'rgba(160, 149, 69, 0.7)'],
+	['color-mix(in hwb, hwb(120deg 10% 20%), 25% hwb(30deg 30% 40% / .8))', 'rgba(95, 193, 36, 0.95)'],
 	['color-mix(in hwb, hwb(120deg 10% 20% / .4), hwb(30deg 30% 40% / .8) 25%)', 'rgba(98, 184, 46, 0.5)'],
-	['color-mix(in hwb, hwb(120deg 10% 20% / .4) 25%, hwb(30deg 30% 40% / .8) 75%)', 'rgba(160, 149, 70, 0.7)'],
-	['color-mix(in hwb, hwb(120deg 10% 20% / .4) 30%, hwb(30deg 30% 40% / .8) 90%)', 'rgba(160, 149, 70, 0.7)'], // Scale down > 100% sum.
-	['color-mix(in hwb, hwb(120deg 10% 20% / .4) 12.5%, hwb(30deg 30% 40% / .8) 37.5%)', 'rgba(160, 149, 70, 0.35)'], // Scale up < 100% sum, causes alpha multiplication.
+	['color-mix(in hwb, hwb(120deg 10% 20% / .4) 25%, hwb(30deg 30% 40% / .8) 75%)', 'rgba(160, 149, 69, 0.7)'],
+	['color-mix(in hwb, hwb(120deg 10% 20% / .4) 30%, hwb(30deg 30% 40% / .8) 90%)', 'rgba(160, 149, 69, 0.7)'], // Scale down > 100% sum.
+	['color-mix(in hwb, hwb(120deg 10% 20% / .4) 12.5%, hwb(30deg 30% 40% / .8) 37.5%)', 'rgba(160, 149, 69, 0.35)'], // Scale up < 100% sum, causes alpha multiplication.
 	['color-mix(in hwb, hwb(120deg 10% 20% / .4) 0%, hwb(30deg 30% 40% / .8))', 'rgba(153, 115, 77, 0.8)'],
 
 	['color-mix(in hwb, hwb(40deg 30% 40%), hwb(60deg 30% 40%))', canonicalize('hwb(50deg 30% 40%)')],

@@ -1,8 +1,7 @@
-import { xyz } from '@csstools/color-helpers';
 import type { FunctionNode } from '@csstools/css-parser-algorithms';
 import { ColorData, SyntaxFlag } from '../color-data';
 import type { ColorParser } from '../color-parser';
-import { ColorSpace } from '../color-space';
+import { ColorNotation } from '../color-notation';
 import { normalize_legacy_HSL_ChannelValues, normalize_modern_HSL_ChannelValues } from './hsl-normalize-channel-values';
 import { threeChannelLegacySyntax } from './three-channel-legacy-syntax';
 import { threeChannelSpaceSeparated } from './three-channel-space-separated';
@@ -30,8 +29,7 @@ function hslCommaSeparated(hslNode: FunctionNode): ColorData | false {
 	return threeChannelLegacySyntax(
 		hslNode,
 		normalize_legacy_HSL_ChannelValues,
-		ColorSpace.sRGB,
-		xyz.HSL_to_XYZ_D50,
+		ColorNotation.HSL,
 		[
 			SyntaxFlag.LegacyHSL,
 		],
@@ -42,8 +40,7 @@ function hslSpaceSeparated(hslNode: FunctionNode): ColorData | false {
 	return threeChannelSpaceSeparated(
 		hslNode,
 		normalize_modern_HSL_ChannelValues,
-		ColorSpace.sRGB,
-		xyz.HSL_to_XYZ_D50,
+		ColorNotation.HSL,
 		[],
 	);
 }

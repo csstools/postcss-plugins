@@ -61,15 +61,9 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 	assert.deepStrictEqual(
 		color(parse(testCase)),
 		{
-			colorSpace: 'xyz-d50',
-			channels: [
-				0.014435854625774971,
-				0.007365585176701401,
-				0.00046094760825903035,
-			],
-			sourceColorSpace: 'srgb',
+			colorNotation: 'rgb',
+			channels: [0.2, 0, 0],
 			alpha: 1,
-			missingComponents: [false, false, false, false],
 			syntaxFlags: new Set([ 'legacy-rgb', 'has-percentage-values' ]),
 		},
 		testCase,
@@ -84,15 +78,9 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 	assert.deepStrictEqual(
 		color(parse(testCase)),
 		{
-			colorSpace: 'xyz-d50',
-			channels: [
-				0.014435854625774971,
-				0.007365585176701401,
-				0.00046094760825903035,
-			],
-			sourceColorSpace: 'srgb',
+			colorNotation: 'rgb',
+			channels: [0.2, 0, 0],
 			alpha: 1,
-			missingComponents: [false, false, false, false],
 			syntaxFlags: new Set(['has-number-values', 'has-percentage-values']),
 		},
 	);
@@ -105,15 +93,9 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 	assert.deepStrictEqual(
 		color(parse(testCase)),
 		{
-			colorSpace: 'xyz-d50',
-			channels: [
-				0.014435854625774971,
-				0.007365585176701401,
-				0.00046094760825903035,
-			],
-			sourceColorSpace: 'srgb',
+			colorNotation: 'rgb',
+			channels: [0.2, 0, 0],
 			alpha: 0.5,
-			missingComponents: [false, false, false, false],
 			syntaxFlags: new Set(['legacy-rgb', 'has-alpha', 'has-percentage-values']),
 		},
 	);
@@ -127,15 +109,9 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 	assert.deepStrictEqual(
 		color(parse(testCase)),
 		{
-			colorSpace: 'xyz-d50',
-			channels: [
-				0.014435854625774971,
-				0.007365585176701401,
-				0.00046094760825903035,
-			],
-			sourceColorSpace: 'srgb',
+			colorNotation: 'rgb',
+			channels: [0.2, 0, 0],
 			alpha: 0.5,
-			missingComponents: [false, false, false, false],
 			syntaxFlags: new Set(['has-number-values', 'has-percentage-values', 'has-alpha']),
 		},
 	);
@@ -151,7 +127,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 // 			colorSpace: 'xyz-d50',
 // 			sourceColorSpace: 'srgb',
 // 			alpha: 1,
-// 			missingComponents: [false, false, false, false],
+// 			missingComponents: {},
 // 			syntaxFlags: new Set(['relative-color-syntax']),
 // 		},
 // 	);
@@ -167,7 +143,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 // 			colorSpace: 'xyz-d50',
 // 			sourceColorSpace: 'srgb',
 // 			alpha: 1,
-// 			missingComponents: [false, false, false, false],
+// 			missingComponents: {},
 // 			syntaxFlags: new Set(['relative-color-syntax']),
 // 		},
 // 	);
@@ -183,7 +159,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 // 			colorSpace: 'xyz-d50',
 // 			sourceColorSpace: 'srgb',
 // 			alpha: 1,
-// 			missingComponents: [false, false, false, false],
+// 			missingComponents: {},
 // 			syntaxFlags: new Set(['relative-color-syntax']),
 // 		},
 // 	);

@@ -1,12 +1,11 @@
 import type { ColorData } from '../color-data';
 import type { ColorParser } from '../color-parser';
 import type { FunctionNode } from '@csstools/css-parser-algorithms';
-import { ColorSpace } from '../color-space';
+import { ColorNotation } from '../color-notation';
 import { SyntaxFlag } from '../color-data';
 import { normalize_legacy_sRGB_ChannelValues, normalize_modern_sRGB_ChannelValues } from './rgb-normalize-channel-values';
 import { threeChannelLegacySyntax } from './three-channel-legacy-syntax';
 import { threeChannelSpaceSeparated } from './three-channel-space-separated';
-import { xyz } from '@csstools/color-helpers';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function rgb(rgbNode: FunctionNode, colorParser: ColorParser): ColorData | false {
@@ -38,8 +37,7 @@ function rgbCommaSeparated(rgbNode: FunctionNode): ColorData | false {
 	return threeChannelLegacySyntax(
 		rgbNode,
 		normalize_legacy_sRGB_ChannelValues,
-		ColorSpace.sRGB,
-		xyz.sRGB_to_XYZ_D50,
+		ColorNotation.RGB,
 		[
 			SyntaxFlag.LegacyRGB,
 		],
@@ -50,8 +48,7 @@ function rgbSpaceSeparated(rgbNode: FunctionNode): ColorData | false {
 	return threeChannelSpaceSeparated(
 		rgbNode,
 		normalize_modern_sRGB_ChannelValues,
-		ColorSpace.sRGB,
-		xyz.sRGB_to_XYZ_D50,
+		ColorNotation.RGB,
 		[],
 	);
 }

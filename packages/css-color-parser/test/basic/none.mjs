@@ -5,11 +5,9 @@ import { parse } from '../util/parse.mjs';
 assert.deepStrictEqual(
 	color(parse('rgb(none none none / none)')),
 	{
-		colorSpace: 'xyz-d50',
-		channels: [0, 0, 0],
-		sourceColorSpace: 'srgb',
-		alpha: 0,
-		missingComponents: [true, true, true, true],
+		colorNotation: 'rgb',
+		channels: [NaN, NaN, NaN],
+		alpha: NaN,
 		syntaxFlags: new Set(['has-alpha', 'has-none-keywords']),
 	},
 );
@@ -17,11 +15,9 @@ assert.deepStrictEqual(
 assert.deepStrictEqual(
 	color(parse('rgb(255 none none / none)')),
 	{
-		colorSpace: 'xyz-d50',
-		channels: [0.43606574282481125, 0.22249319175623722, 0.013923904500943501],
-		sourceColorSpace: 'srgb',
-		alpha: 0,
-		missingComponents: [false, true, true, true],
+		colorNotation: 'rgb',
+		channels: [1, NaN, NaN],
+		alpha: NaN,
 		syntaxFlags: new Set(['has-number-values', 'has-alpha', 'has-none-keywords']),
 	},
 );
@@ -29,11 +25,23 @@ assert.deepStrictEqual(
 assert.deepStrictEqual(
 	color(parse('rgb(255 none none / 1)')),
 	{
-		colorSpace: 'xyz-d50',
-		channels: [0.43606574282481125, 0.22249319175623722, 0.013923904500943501],
-		sourceColorSpace: 'srgb',
+		colorNotation: 'rgb',
+		channels: [1, NaN, NaN],
 		alpha: 1,
-		missingComponents: [false, true, true, false],
 		syntaxFlags: new Set(['has-number-values', 'has-alpha', 'has-none-keywords']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hsl(120deg 20% none)')),
+	{
+		colorNotation: 'hsl',
+		channels: [120, 20, NaN],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'has-dimension-values',
+			'has-percentage-values',
+			'has-none-keywords',
+		]),
 	},
 );
