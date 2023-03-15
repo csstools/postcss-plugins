@@ -8,7 +8,7 @@ import { serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
 import { tokenize } from '@csstools/css-tokenizer';
 
 const hwbFunctionRegex = /hwb\(/i;
-const hwbNameRegex = /hwb/i;
+const hwbNameRegex = /^hwb$/i;
 
 /** postcss-hwb-function plugin options */
 export type pluginOptions = {

@@ -61,6 +61,7 @@ export function serializeP3(color: ColorData): FunctionNode {
 		close,
 		[
 			...channels,
+			new TokenNode(space),
 			new TokenNode([TokenType.Delim, '/', -1, -1, { value: '/' }]),
 			new TokenNode(space),
 			color.alpha,

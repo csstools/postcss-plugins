@@ -1,11 +1,11 @@
 .test-lab {
 	color-1: rgb(179, 35, 35);
 	color-1: lab(40% 56.6 39);
-	color-2: rgba(179, 35, 35, 1);
+	color-2: rgb(179, 35, 35);
 	color-2: lab(40% 56.6 39 / 1);
-	color-3: rgba(179, 35, 35, .5);
+	color-3: rgba(179, 35, 35, 0.5);
 	color-3: lab(40% 56.6 39 / .5);
-	color-4: rgba(179, 35, 35, 1);
+	color-4: rgb(179, 35, 35);
 	color-4: lab(40% 56.6 39 / 100%);
 	color-5: rgba(179, 35, 35, 0.5);
 	color-5: lab(40% 56.6 39 / 50%);
@@ -17,11 +17,11 @@
 .test-lch {
 	color-1: rgb(179, 35, 35);
 	color-1: lch(40% 68.735435 34.568626);
-	color-2: rgba(179, 35, 35, 1);
+	color-2: rgb(179, 35, 35);
 	color-2: lch(40% 68.735435 34.568626 / 1);
-	color-3: rgba(179, 35, 35, .5);
+	color-3: rgba(179, 35, 35, 0.5);
 	color-3: lch(40% 68.735435 34.568626 / .5);
-	color-4: rgba(179, 35, 35, 1);
+	color-4: rgb(179, 35, 35);
 	color-4: lch(40% 68.735435 34.568626 / 100%);
 	color-5: rgba(179, 35, 35, 0.5);
 	color-5: lch(40% 68.735435 34.568626 / 50%);
@@ -67,8 +67,12 @@
 }
 
 .test-percentages {
+	color-1-ref: rgb(163, 57, 35);
+	color-1-ref: lab(40 43.75 37.5);
 	color-1: rgb(163, 57, 35);
 	color-1: lab(40% 35% 30%);
+	color-2-ref: rgb(181, 30, 19);
+	color-2-ref: lch(40 75 39);
 	color-2: rgb(181, 30, 19);
 	color-2: lch(40% 50% 39);
 }
@@ -93,27 +97,31 @@
 }
 
 .test-alpha-lab {
-	color-1: rgba(7, 3, 1, 1);
+	color-1: rgb(7, 3, 1);
 	color-1: lab(1% 1 1 / 1);
-	color-2: rgba(7, 3, 1, calc(33 / 22));
+	color-2: rgb(7, 3, 1);
 	color-2: lab(1% 1 1 / calc(33 / 22));
-	color-3: rgba(7, 3, 1, calc(20% * 5));
+	color-3: rgb(7, 3, 1);
 	color-3: lab(1% 1 1 / calc(20% * 5));
 	color-4: rgba(7, 3, 1, var(--foo));
 	color-4: lab(1% 1 1 / var(--foo));
 	color-5: lab(1% 1 1 /);
+	color-6: rgba(7, 3, 1, 0.6);
+	color-6: lab(1% 1 1 / calc(20% * 3));
 }
 
 .test-alpha-lch {
-	color-1: rgba(6, 3, 4, 1);
+	color-1: rgb(6, 3, 4);
 	color-1: lch(1% 1 1 / 1);
-	color-2: rgba(6, 3, 4, calc(33 / 22));
+	color-2: rgb(6, 3, 4);
 	color-2: lch(1% 1 1 / calc(33 / 22));
-	color-3: rgba(6, 3, 4, calc(20% * 5));
+	color-3: rgb(6, 3, 4);
 	color-3: lch(1% 1 1 / calc(20% * 5));
 	color-4: rgba(6, 3, 4, var(--foo));
 	color-4: lch(1% 1 1 / var(--foo));
 	color-5: lch(1% 1 1 /);
+	color-6: rgba(6, 3, 4, 0.6);
+	color-6: lch(1% 1 1 / calc(20% * 3));
 }
 
 .test-ignore {

@@ -54,7 +54,13 @@ export function colorData_to_XYZ_D50(colorData: ColorData): ColorData {
 				colorNotation: ColorNotation.XYZ_D50,
 				channels: xyz.Lab_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x)),
 			};
-		case ColorNotation.OKLab:
+		case ColorNotation.LCH:
+			return {
+				...colorData,
+				colorNotation: ColorNotation.XYZ_D50,
+				channels: xyz.LCH_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x)),
+			};
+		case ColorNotation.Oklab:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
@@ -83,8 +89,11 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					carryForwardMissingComponents(colorData.channels, [0], outputColorData.channels, [0]);
 					break;
 				case ColorNotation.Lab:
-				case ColorNotation.OKLab:
+				case ColorNotation.Oklab:
 					carryForwardMissingComponents(colorData.channels, [2], outputColorData.channels, [0]);
+					break;
+				case ColorNotation.LCH:
+					carryForwardMissingComponents(colorData.channels, [0, 1, 2], outputColorData.channels, [2, 1, 0]);
 					break;
 				default:
 					break;
@@ -105,6 +114,9 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					break;
 				case ColorNotation.HWB:
 					carryForwardMissingComponents(colorData.channels, [0, 1, 2], outputColorData.channels, [0, 1, 2]);
+					break;
+				case ColorNotation.LCH:
+					carryForwardMissingComponents(colorData.channels, [0], outputColorData.channels, [2]);
 					break;
 				default:
 					break;

@@ -1,14 +1,14 @@
 .test-lab {
 	color-1: rgb(179, 35, 35);
 	color-1: color(display-p3 0.64331 0.19245 0.16771);
-	color-2: rgba(179, 35, 35, 1);
-	color-2: color(display-p3 0.64331 0.19245 0.16771 / 1);
-	color-3: rgba(179, 35, 35, .5);
-	color-3: color(display-p3 0.64331 0.19245 0.16771 / .5);
-	color-4: rgba(179, 35, 35, 1);
-	color-4: color(display-p3 0.64331 0.19245 0.16771 / 100%);
+	color-2: rgb(179, 35, 35);
+	color-2: color(display-p3 0.64331 0.19245 0.16771);
+	color-3: rgba(179, 35, 35, 0.5);
+	color-3: color(display-p3 0.64331 0.19245 0.16771 / 0.5);
+	color-4: rgb(179, 35, 35);
+	color-4: color(display-p3 0.64331 0.19245 0.16771);
 	color-5: rgba(179, 35, 35, 0.5);
-	color-5: color(display-p3 0.64331 0.19245 0.16771 / 50%);
+	color-5: color(display-p3 0.64331 0.19245 0.16771 / 0.5);
 	color-6: rgb(222, 105, 147);
 	color-6: color(display-p3 0.81388 0.43646 0.57322);
 	color-7: lab(60% 50 0 foo);
@@ -17,14 +17,14 @@
 .test-lch {
 	color-1: rgb(179, 35, 35);
 	color-1: color(display-p3 0.64331 0.19245 0.16771);
-	color-2: rgba(179, 35, 35, 1);
-	color-2: color(display-p3 0.64331 0.19245 0.16771 / 1);
-	color-3: rgba(179, 35, 35, .5);
-	color-3: color(display-p3 0.64331 0.19245 0.16771 / .5);
-	color-4: rgba(179, 35, 35, 1);
-	color-4: color(display-p3 0.64331 0.19245 0.16771 / 100%);
+	color-2: rgb(179, 35, 35);
+	color-2: color(display-p3 0.64331 0.19245 0.16771);
+	color-3: rgba(179, 35, 35, 0.5);
+	color-3: color(display-p3 0.64331 0.19245 0.16771 / 0.5);
+	color-4: rgb(179, 35, 35);
+	color-4: color(display-p3 0.64331 0.19245 0.16771);
 	color-5: rgba(179, 35, 35, 0.5);
-	color-5: color(display-p3 0.64331 0.19245 0.16771 / 50%);
+	color-5: color(display-p3 0.64331 0.19245 0.16771 / 0.5);
 	color-6: rgb(222, 105, 147);
 	color-6: color(display-p3 0.81388 0.43646 0.57322);
 
@@ -67,8 +67,12 @@
 }
 
 .test-percentages {
+	color-1-ref: rgb(163, 57, 35);
+	color-1-ref: color(display-p3 0.59266 0.25309 0.17075);
 	color-1: rgb(163, 57, 35);
 	color-1: color(display-p3 0.59266 0.25309 0.17075);
+	color-2-ref: rgb(181, 30, 19);
+	color-2-ref: color(display-p3 0.65205 0.18193 0.12753);
 	color-2: rgb(181, 30, 19);
 	color-2: color(display-p3 0.65205 0.18193 0.12753);
 }
@@ -88,32 +92,36 @@
 /* this will most likely be a mistake by the author */
 .test-author-provided-override {
 	color: rgb(255, 255, 255);
-	color: color(display-p3 1.00000 1.00000 1.00000);
+	color: color(display-p3 1 1 1);
 	color: rgb(0, 0, 0);
 }
 
 .test-alpha-lab {
-	color-1: rgba(7, 3, 1, 1);
-	color-1: color(display-p3 0.02472 0.01150 0.00574 / 1);
-	color-2: rgba(7, 3, 1, calc(33 / 22));
-	color-2: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
-	color-3: rgba(7, 3, 1, calc(20% * 5));
-	color-3: color(display-p3 0.02472 0.01150 0.00574 / calc(20% * 5));
+	color-1: rgb(7, 3, 1);
+	color-1: color(display-p3 0.02472 0.0115 0.00574);
+	color-2: rgb(7, 3, 1);
+	color-2: color(display-p3 0.02472 0.0115 0.00574);
+	color-3: rgb(7, 3, 1);
+	color-3: color(display-p3 0.02472 0.0115 0.00574);
 	color-4: rgba(7, 3, 1, var(--foo));
-	color-4: color(display-p3 0.02472 0.01150 0.00574 / var(--foo));
+	color-4: color(display-p3 0.02472 0.0115 0.00574 / var(--foo));
 	color-5: lab(1% 1 1 /);
+	color-6: rgba(7, 3, 1, 0.6);
+	color-6: color(display-p3 0.02472 0.0115 0.00574 / 0.6);
 }
 
 .test-alpha-lch {
-	color-1: rgba(6, 3, 4, 1);
-	color-1: color(display-p3 0.02204 0.01161 0.01431 / 1);
-	color-2: rgba(6, 3, 4, calc(33 / 22));
-	color-2: color(display-p3 0.02204 0.01161 0.01431 / calc(33 / 22));
-	color-3: rgba(6, 3, 4, calc(20% * 5));
-	color-3: color(display-p3 0.02204 0.01161 0.01431 / calc(20% * 5));
+	color-1: rgb(6, 3, 4);
+	color-1: color(display-p3 0.02204 0.01161 0.01431);
+	color-2: rgb(6, 3, 4);
+	color-2: color(display-p3 0.02204 0.01161 0.01431);
+	color-3: rgb(6, 3, 4);
+	color-3: color(display-p3 0.02204 0.01161 0.01431);
 	color-4: rgba(6, 3, 4, var(--foo));
 	color-4: color(display-p3 0.02204 0.01161 0.01431 / var(--foo));
 	color-5: lch(1% 1 1 /);
+	color-6: rgba(6, 3, 4, 0.6);
+	color-6: color(display-p3 0.02204 0.01161 0.01431 / 0.6);
 }
 
 .test-ignore {
@@ -124,21 +132,21 @@
 
 .test-high-luminance {
 	prop-1: rgb(255, 255, 255);
-	prop-1: color(display-p3 1.00000 1.00000 1.00000);
+	prop-1: color(display-p3 1 1 1);
 	prop-2: rgb(255, 255, 255);
-	prop-2: color(display-p3 1.00000 1.00000 1.00000);
+	prop-2: color(display-p3 1 1 1);
 }
 
 .test-low-luminance {
 	/* not teal */
 	prop-1: rgb(0, 0, 0);
-	prop-1: color(display-p3 0.00000 0.00000 0.00000);
+	prop-1: color(display-p3 0 0 0);
 	/* teal */
 	prop-2: rgb(0, 40, 42);
-	prop-2: color(display-p3 0.00000 0.15794 0.16926);
+	prop-2: color(display-p3 0 0.15794 0.16926);
 	/* teal */
 	prop-3: rgb(0, 45, 46);
-	prop-3: color(display-p3 0.00000 0.17680 0.18827);
+	prop-3: color(display-p3 0 0.1768 0.18827);
 }
 
 .test-multiple-colors {
@@ -154,7 +162,7 @@
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B48%2C-53%2C12%5D%2C%5B58%2C-54%2C69%5D%5D */
 	/* out */
 	prop-1: rgb(0, 132, 94);
-	prop-1: color(display-p3 0.00000 0.51872 0.36985);
+	prop-1: color(display-p3 0 0.51872 0.36985);
 	/* out */
 	prop-2: rgb(38, 161, 0);
 	prop-2: color(display-p3 0.31275 0.62335 0.08647);
@@ -218,48 +226,48 @@
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B78%2C-64%2C-44%5D%2C%5B76%2C81%2C-11%5D%5D */
 	/* out */
 	prop-17: rgb(0, 214, 243);
-	prop-17: color(display-p3 0.00000 0.84601 0.99536);
+	prop-17: color(display-p3 0 0.84601 0.99536);
 	/* out */
 	prop-18: rgb(255, 156, 205);
-	prop-18: color(display-p3 1.00000 0.58561 0.80442);
+	prop-18: color(display-p3 1 0.58561 0.80442);
 }
 
 .test-wpt-lab {
 	lab-001: rgb(0, 128, 0);
 	lab-001: color(display-p3 0.21595 0.49419 0.13153);
 	lab-002: rgb(0, 0, 0);
-	lab-002: color(display-p3 0.00000 0.00000 0.00000);
+	lab-002: color(display-p3 0 0 0);
 	lab-003: rgb(255, 255, 255);
-	lab-003: color(display-p3 1.00000 1.00000 1.00000);
+	lab-003: color(display-p3 1 1 1);
 	lab-004: rgb(193, 78, 121);
 	lab-004: color(display-p3 0.70225 0.33296 0.47259);
 	lab-005: rgb(27, 193, 169);
-	lab-005: color(display-p3 0.35511 0.74450 0.66623);
+	lab-005: color(display-p3 0.35511 0.7445 0.66623);
 	lab-006: rgb(195, 169, 14);
-	lab-006: color(display-p3 0.74935 0.66735 0.22730);
+	lab-006: color(display-p3 0.74935 0.66735 0.2273);
 	lab-007: rgb(33, 135, 237);
 	lab-007: color(display-p3 0.26152 0.52336 0.89912);
 	lab-008: rgb(0, 251, 41);
-	lab-008: color(display-p3 0.00000 1.00000 0.00000);
+	lab-008: color(display-p3 0 1 0);
 }
 
 .test-wpt-lch {
 	lch-001: rgb(0, 128, 0);
 	lch-001: color(display-p3 0.21595 0.49419 0.13153);
 	lch-002: rgb(0, 0, 0);
-	lch-002: color(display-p3 0.00000 0.00000 0.00000);
+	lch-002: color(display-p3 0 0 0);
 	lch-003: rgb(255, 255, 255);
-	lch-003: color(display-p3 1.00000 1.00000 1.00000);
+	lch-003: color(display-p3 1 1 1);
 	lch-004: rgb(193, 78, 121);
 	lch-004: color(display-p3 0.70225 0.33296 0.47259);
 	lch-005: rgb(27, 193, 169);
-	lch-005: color(display-p3 0.35511 0.74450 0.66623);
+	lch-005: color(display-p3 0.35511 0.7445 0.66623);
 	lch-006: rgb(195, 169, 14);
-	lch-006: color(display-p3 0.74935 0.66735 0.22730);
+	lch-006: color(display-p3 0.74935 0.66735 0.2273);
 	lch-007: rgb(33, 135, 237);
 	lch-007: color(display-p3 0.26152 0.52336 0.89912);
 	lch-008: rgb(0, 251, 41);
-	lch-008: color(display-p3 0.00000 1.00000 0.00000);
+	lch-008: color(display-p3 0 1 0);
 }
 
 .manual_fallback {

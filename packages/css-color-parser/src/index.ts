@@ -11,6 +11,7 @@ import { toLowerCaseAZ } from './util/to-lower-case-a-z';
 import { lab } from './functions/lab';
 import { colorMix } from './functions/color-mix';
 import { oklab } from './functions/oklab';
+import { lch } from './functions/lch';
 
 export { ColorNotation } from './color-notation';
 export { SyntaxFlag } from './color-data';
@@ -32,6 +33,8 @@ export function color(colorNode: ComponentValue): ColorData | false {
 				return hwb(colorNode, color);
 			case 'lab':
 				return lab(colorNode, color);
+			case 'lch':
+				return lch(colorNode, color);
 			case 'oklab':
 				return oklab(colorNode, color);
 			case 'color-mix':

@@ -1,9 +1,11 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { Declaration, Result } from 'postcss';
+import type { Declaration } from 'postcss';
 import type { PluginCreator } from 'postcss';
+import { cloneTokens, tokenize } from '@csstools/css-tokenizer';
+import { color, serializeP3, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
 import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-import { modifiedValues } from './modified-values';
+import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 
 type basePluginOptions = {
 	preserve: boolean,
@@ -12,11 +14,14 @@ type basePluginOptions = {
 	}
 };
 
+const lab_lch_functionRegex = /(^|[^\w-])(lab|lch)\(/i;
+const lab_lch_nameRegex = /^(lab|lch)$/i;
+
 /* Transform lab() and lch() functions in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-lab-function',
-		Declaration: (decl: Declaration, { result }: { result: Result }) => {
+		Declaration: (decl: Declaration) => {
 			if (hasFallback(decl)) {
 				return;
 			}
@@ -26,26 +31,66 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 			}
 
 			const originalValue = decl.value;
-			if (!(/(^|[^\w-])(lab|lch)\(/i.test(originalValue.toLowerCase()))) {
+			if (!(lab_lch_functionRegex.test(originalValue.toLowerCase()))) {
 				return;
 			}
 
-			const modified = modifiedValues(originalValue, decl, result, opts?.preserve ?? false);
-			if (typeof modified === 'undefined') {
+			const tokens = tokenize({ css: originalValue });
+			const replacedRGB = replaceComponentValues(
+				parseCommaSeparatedListOfComponentValues(tokens),
+				(componentValue) => {
+					if (isFunctionNode(componentValue) && lab_lch_nameRegex.test(componentValue.getName())) {
+						const colorData = color(componentValue);
+						if (!colorData) {
+							return;
+						}
+
+						if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
+							return;
+						}
+
+						return serializeRGB(colorData);
+					}
+				},
+			);
+
+			const modifiedRGB = stringify(replacedRGB);
+			if (modifiedRGB === originalValue) {
 				return;
+			}
+
+			let modifiedP3 = modifiedRGB;
+			if (opts?.subFeatures.displayP3) {
+				modifiedP3 = stringify(replaceComponentValues(
+					parseCommaSeparatedListOfComponentValues(cloneTokens(tokens)),
+					(componentValue) => {
+						if (isFunctionNode(componentValue) && lab_lch_nameRegex.test(componentValue.getName())) {
+							const colorData = color(componentValue);
+							if (!colorData) {
+								return;
+							}
+
+							if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
+								return;
+							}
+
+							return serializeP3(colorData);
+						}
+					},
+				));
 			}
 
 			if (opts?.preserve) {
-				decl.cloneBefore({ value: modified.rgb });
+				decl.cloneBefore({ value: modifiedRGB });
 
 				if (opts?.subFeatures.displayP3) {
-					decl.cloneBefore({ value: modified.displayP3 });
+					decl.cloneBefore({ value: modifiedP3 });
 				}
 			} else {
-				decl.cloneBefore({ value: modified.rgb });
+				decl.cloneBefore({ value: modifiedRGB });
 
 				if (opts?.subFeatures.displayP3) {
-					decl.cloneBefore({ value: modified.displayP3 });
+					decl.cloneBefore({ value: modifiedP3 });
 				}
 
 				decl.remove();

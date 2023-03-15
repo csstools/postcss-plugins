@@ -7,7 +7,6 @@ postcssTape(plugin)({
 	},
 	'basic:preserve-true': {
 		message: 'supports { preserve: true } usage',
-		warnings: 9,
 		options: {
 			preserve: true
 		}
@@ -22,7 +21,6 @@ postcssTape(plugin)({
 	},
 	'basic:display-p3-false:preserve-true': {
 		message: 'supports { subFeatures: { displayP3: false }, preserve: true } usage',
-		warnings: 9,
 		options: {
 			subFeatures: {
 				displayP3: false
@@ -32,7 +30,6 @@ postcssTape(plugin)({
 	},
 	'basic:with-cloned-rules': {
 		message: 'doesn\'t cause duplicate CSS',
-		warnings: 9,
 		plugins: [
 			ruleClonerPlugin,
 			plugin({
