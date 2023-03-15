@@ -128,8 +128,30 @@ export declare function XYZ_D50_to_sRGB(x: Color): Color;
  * - Y as number 0..1;
  * - Z as number 0..1;
  * @return {Color} sRGB [r, g, b]
- * - H as number 0..1;
- * - Green as number 0..1;
- * - Blue as number 0..1;
+ * - Hue as degrees 0..360;
+ * - Saturation as number 0..100;
+ * - Lightness as number 0..100;
  */
 export declare function XYZ_D50_to_HSL(x: Color): Color;
+/**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} sRGB [r, g, b]
+ * - Hue as degrees 0..360;
+ * - Whiteness as number 0..100;
+ * - Blackness as number 0..100;
+ */
+export declare function XYZ_D50_to_HWB(x: Color): Color;
+/**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} P3 [r, g, b]
+ * - R as number 0..1;
+ * - G as number 0..1;
+ * - B as number 0..1;
+ */
+export declare function XYZ_D50_to_P3(x: Color): Color;

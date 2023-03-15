@@ -54,6 +54,12 @@ export function colorData_to_XYZ_D50(colorData: ColorData): ColorData {
 				colorNotation: ColorNotation.XYZ_D50,
 				channels: xyz.Lab_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x)),
 			};
+		case ColorNotation.OKLab:
+			return {
+				...colorData,
+				colorNotation: ColorNotation.XYZ_D50,
+				channels: xyz.OKLab_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x)),
+			};
 		default:
 			throw new Error('Unsupported color notation');
 	}
@@ -77,6 +83,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					carryForwardMissingComponents(colorData.channels, [0], outputColorData.channels, [0]);
 					break;
 				case ColorNotation.Lab:
+				case ColorNotation.OKLab:
 					carryForwardMissingComponents(colorData.channels, [2], outputColorData.channels, [0]);
 					break;
 				default:

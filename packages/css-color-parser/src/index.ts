@@ -10,36 +10,35 @@ import { rgb } from './functions/rgb';
 import { toLowerCaseAZ } from './util/to-lower-case-a-z';
 import { lab } from './functions/lab';
 import { colorMix } from './functions/color-mix';
+import { oklab } from './functions/oklab';
 
 export { ColorNotation } from './color-notation';
 export { SyntaxFlag } from './color-data';
 export { serializeRGB } from './serialize/rgb';
+export { serializeP3 } from './serialize/p3';
 
 export function color(colorNode: ComponentValue): ColorData | false {
 	if (isFunctionNode(colorNode)) {
 		const colorFunctionName = toLowerCaseAZ(colorNode.getName());
 
-		if (colorFunctionName === 'rgb' || colorFunctionName === 'rgba') {
-			return rgb(colorNode, color);
+		switch (colorFunctionName) {
+			case 'rgb':
+			case 'rgba':
+				return rgb(colorNode, color);
+			case 'hsl':
+			case 'hsla':
+				return hsl(colorNode, color);
+			case 'hwb':
+				return hwb(colorNode, color);
+			case 'lab':
+				return lab(colorNode, color);
+			case 'oklab':
+				return oklab(colorNode, color);
+			case 'color-mix':
+				return colorMix(colorNode, color);
+			default:
+				return false;
 		}
-
-		if (colorFunctionName === 'hsl' || colorFunctionName === 'hsla') {
-			return hsl(colorNode, color);
-		}
-
-		if (colorFunctionName === 'hwb') {
-			return hwb(colorNode, color);
-		}
-
-		if (colorFunctionName === 'lab') {
-			return lab(colorNode, color);
-		}
-
-		if (colorFunctionName === 'color-mix') {
-			return colorMix(colorNode, color);
-		}
-
-		return false;
 	}
 
 	if (isTokenNode(colorNode)) {

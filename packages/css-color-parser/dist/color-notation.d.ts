@@ -1,8 +1,9 @@
 export declare enum ColorNotation {
-    RGB = "rgb",
+    HEX = "hex",
     HSL = "hsl",
     HWB = "hwb",
-    HEX = "hex",
     Lab = "lab",
+    OKLab = "oklab",
+    RGB = "rgb",
     XYZ_D50 = "xyz-d50"
 }

@@ -20,6 +20,8 @@ import { D50_to_D65 } from 'conversions/d50-to-d65';
 import { XYZ_to_lin_sRGB } from 'conversions/xyz-to-lin-srgb';
 import { gam_sRGB } from 'conversions/gam-srgb';
 import { sRGB_to_HSL } from 'conversions/srgb-to-hsl';
+import { XYZ_to_lin_P3 } from 'conversions/xyz-to-lin-p3';
+import { gam_P3 } from 'conversions/gam-p3';
 
 /**
  * @param {Color} color [h, s, l]
@@ -244,9 +246,9 @@ export function XYZ_D50_to_sRGB(x: Color): Color {
  * - Y as number 0..1;
  * - Z as number 0..1;
  * @return {Color} sRGB [r, g, b]
- * - H as number 0..1;
- * - Green as number 0..1;
- * - Blue as number 0..1;
+ * - Hue as degrees 0..360;
+ * - Saturation as number 0..100;
+ * - Lightness as number 0..100;
  */
 export function XYZ_D50_to_HSL(x: Color): Color {
 	let y = x;
@@ -254,5 +256,45 @@ export function XYZ_D50_to_HSL(x: Color): Color {
 	y = XYZ_to_lin_sRGB(y);
 	y = gam_sRGB(y);
 	y = sRGB_to_HSL(y);
+	return y;
+}
+
+/**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} sRGB [r, g, b]
+ * - Hue as degrees 0..360;
+ * - Whiteness as number 0..100;
+ * - Blackness as number 0..100;
+ */
+export function XYZ_D50_to_HWB(x: Color): Color {
+	let y = x;
+	y = D50_to_D65(y);
+	y = XYZ_to_lin_sRGB(y);
+	const srgb = gam_sRGB(y);
+	y = sRGB_to_HSL(srgb);
+
+	const white = Math.min(srgb[0], srgb[1], srgb[2]);
+	const black = 1 - Math.max(srgb[0], srgb[1], srgb[2]);
+	return ([y[0], white * 100, black * 100]);
+}
+
+/**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} P3 [r, g, b]
+ * - R as number 0..1;
+ * - G as number 0..1;
+ * - B as number 0..1;
+ */
+export function XYZ_D50_to_P3(x: Color): Color {
+	let y = x;
+	y = D50_to_D65(y);
+	y = XYZ_to_lin_P3(y);
+	y = gam_P3(y);
 	return y;
 }
