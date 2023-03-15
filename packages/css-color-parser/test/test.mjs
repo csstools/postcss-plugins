@@ -1,6 +1,7 @@
 import './basic/basic.mjs';
 import './basic/keywords.mjs';
 import './basic/lab.mjs';
+import './basic/lch.mjs';
 import './basic/named-colors.mjs';
 import './basic/none.mjs';
 import './basic/variables.mjs';

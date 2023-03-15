@@ -10,7 +10,7 @@ export function oklab(oklabNode: FunctionNode, colorParser: ColorParser): ColorD
 	return threeChannelSpaceSeparated(
 		oklabNode,
 		normalize_OKLab_ChannelValues,
-		ColorNotation.Oklab,
+		ColorNotation.OKLab,
 		[],
 	);
 }
