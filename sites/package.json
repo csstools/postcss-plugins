@@ -22,8 +22,8 @@
 		"postcss-preset-env"
 	],
 	"devDependencies": {
-		"stylelint": "^14.3.0",
-		"stylelint-config-standard": "^29.0.0"
+		"stylelint": "^15.0.0",
+		"stylelint-config-standard": "^30.0.0"
 	},
 	"overrides": {
 		"ua-parser-js": "^1.0.33"
