@@ -14,7 +14,7 @@ type basePluginOptions = {
 	}
 };
 
-const lab_lch_functionRegex = /(^|[^\w-])(lab|lch)\(/i;
+const lab_lch_functionRegex = /(lab|lch)\(/i;
 const lab_lch_nameRegex = /^(lab|lch)$/i;
 
 /* Transform lab() and lch() functions in CSS. */
@@ -80,19 +80,13 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				));
 			}
 
-			if (opts?.preserve) {
-				decl.cloneBefore({ value: modifiedRGB });
+			decl.cloneBefore({ value: modifiedRGB });
 
-				if (opts?.subFeatures.displayP3) {
-					decl.cloneBefore({ value: modifiedP3 });
-				}
-			} else {
-				decl.cloneBefore({ value: modifiedRGB });
+			if (opts?.subFeatures.displayP3) {
+				decl.cloneBefore({ value: modifiedP3 });
+			}
 
-				if (opts?.subFeatures.displayP3) {
-					decl.cloneBefore({ value: modifiedP3 });
-				}
-
+			if (!opts?.preserve) {
 				decl.remove();
 			}
 		},

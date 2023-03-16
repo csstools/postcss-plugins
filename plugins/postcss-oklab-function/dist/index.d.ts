@@ -11,6 +11,5 @@ export type pluginOptions = {
         displayP3?: boolean;
     };
 };
-/** Transform oklab() and oklch() functions in CSS. */
 declare const postcssPlugin: PluginCreator<pluginOptions>;
 export default postcssPlugin;

@@ -12,7 +12,7 @@
 @supports (color: color(display-p3 0 0 0)) {
 :root {
 	--firebrick: color(display-p3 0.33927 0.26183 0.19371);
-	--firebrick-a50: color(display-p3 0.31481 0.26364 0.27826 / 50%);
+	--firebrick-a50: color(display-p3 0.31481 0.26364 0.27826 / 0.5);
 	--firebrick-a50-var: color(display-p3 0.31481 0.26364 0.27826 / var(--opacity-50));
 }
 }

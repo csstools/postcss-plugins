@@ -235,6 +235,7 @@ export function OKLCH_to_XYZ_D50(x: Color): Color {
 	let y = x;
 	y = OKLCH_to_OKLab(y);
 	y = OKLab_to_XYZ(y);
+	y = D65_to_D50(y);
 	return y;
 }
 

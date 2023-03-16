@@ -2,7 +2,7 @@
 
 ### Unreleased (minor)
 
-- Add: `@csstools/css-color-parser` dependency for all color value transformations.
+- Add `@csstools/css-color-parser` dependency for all color value transformations.
 - Add support for `calc` expressions in color components.
 
 ### 2.1.1 (February 8, 2023)

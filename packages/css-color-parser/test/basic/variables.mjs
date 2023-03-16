@@ -86,3 +86,16 @@ import { parse } from '../util/parse.mjs';
 		);
 	}
 }
+
+// Color Mix
+{
+	assert.deepStrictEqual(
+		color(parse('color-mix(in hsl, hsl(120deg 10% 20% / var(--a)), hsl(30deg 30% 40%))')),
+		false,
+	);
+
+	assert.deepStrictEqual(
+		color(parse('color-mix(in hsl, hsl(120deg 10% 20%), hsl(30deg 30% 40% / var(--a)))')),
+		false,
+	);
+}

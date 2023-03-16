@@ -1,5 +1,10 @@
 # Changes to PostCSS OKLab Function
 
+### Unreleased (minor)
+
+- Add `@csstools/css-color-parser` dependency for all color value transformations.
+- Add support for `calc` expressions in color components.
+
 ### 2.1.0 (February 6, 2023)
 
 - Add: `@csstools/color-helpers` dependency for all color value transformations.
