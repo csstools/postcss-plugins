@@ -293,19 +293,7 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 				b_channels = colorDataTo(b_color, ColorNotation.HSL).channels;
 			}
 
-			a_channels = fillInMissingComponents(a_channels, b_channels);
-			b_channels = fillInMissingComponents(b_channels, a_channels);
-
-			a_hue = a_channels[0];
-			b_hue = b_channels[0];
-
-			a_first = a_channels[1];
-			b_first = b_channels[1];
-
-			a_second = a_channels[2];
-			b_second = b_channels[2];
 			break;
-
 		case 'hwb':
 			if (a_color.colorNotation !== ColorNotation.HWB) {
 				a_channels = colorDataTo(a_color, ColorNotation.HWB).channels;
@@ -315,6 +303,34 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 				b_channels = colorDataTo(b_color, ColorNotation.HWB).channels;
 			}
 
+			break;
+		case 'lch':
+			if (a_color.colorNotation !== ColorNotation.LCH) {
+				a_channels = colorDataTo(a_color, ColorNotation.LCH).channels;
+			}
+
+			if (b_color.colorNotation !== ColorNotation.LCH) {
+				b_channels = colorDataTo(b_color, ColorNotation.LCH).channels;
+			}
+
+			break;
+		case 'oklch':
+			if (a_color.colorNotation !== ColorNotation.OKLCH) {
+				a_channels = colorDataTo(a_color, ColorNotation.OKLCH).channels;
+			}
+
+			if (b_color.colorNotation !== ColorNotation.OKLCH) {
+				b_channels = colorDataTo(b_color, ColorNotation.OKLCH).channels;
+			}
+
+			break;
+		default:
+			break;
+	}
+
+	switch (colorSpace) {
+		case 'hsl':
+		case 'hwb':
 			a_channels = fillInMissingComponents(a_channels, b_channels);
 			b_channels = fillInMissingComponents(b_channels, a_channels);
 
@@ -328,7 +344,21 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 			b_second = b_channels[2];
 
 			break;
+		case 'lch':
+		case 'oklch':
+			a_channels = fillInMissingComponents(a_channels, b_channels);
+			b_channels = fillInMissingComponents(b_channels, a_channels);
 
+			a_first = a_channels[0];
+			b_first = b_channels[0];
+
+			a_second = a_channels[1];
+			b_second = b_channels[1];
+
+			a_hue = a_channels[2];
+			b_hue = b_channels[2];
+
+			break;
 		default:
 			break;
 	}
@@ -377,35 +407,44 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 
 	let outputColorNotation: ColorNotation = ColorNotation.RGB;
 	let outputChannels: Color = [0, 0, 0];
-	let alpha = 1;
+	const alpha = interpolate(a_alpha, b_alpha, ratio);
 
 	switch (colorSpace) {
-		case 'hsl': {
-			alpha = interpolate(a_alpha, b_alpha, ratio);
-			const hue = interpolate(a_hue, b_hue, ratio);
-			let saturation = interpolate(a_first, b_first, ratio);
-			let lightness = interpolate(a_second, b_second, ratio);
-
-			saturation = un_premultiply(saturation, alpha);
-			lightness = un_premultiply(lightness, alpha);
-
-			outputChannels = [hue, saturation, lightness];
+		case 'hsl':
 			outputColorNotation = ColorNotation.HSL;
 			break;
-		}
-		case 'hwb': {
-			alpha = interpolate(a_alpha, b_alpha, ratio);
-			const hue = interpolate(a_hue, b_hue, ratio);
-			let whiteness = interpolate(a_first, b_first, ratio);
-			let blackness = interpolate(a_second, b_second, ratio);
-
-			whiteness = un_premultiply(whiteness, alpha);
-			blackness = un_premultiply(blackness, alpha);
-
-			outputChannels = [hue, whiteness, blackness];
+		case 'hwb':
 			outputColorNotation = ColorNotation.HWB;
 			break;
-		}
+		case 'lch':
+			outputColorNotation = ColorNotation.LCH;
+			break;
+		case 'oklch':
+			outputColorNotation = ColorNotation.OKLCH;
+			break;
+		default:
+			break;
+	}
+
+	switch (colorSpace) {
+		case 'hsl':
+		case 'hwb':
+			outputChannels = [
+				interpolate(a_hue, b_hue, ratio),
+				un_premultiply(interpolate(a_first, b_first, ratio), alpha),
+				un_premultiply(interpolate(a_second, b_second, ratio), alpha),
+			];
+
+			break;
+		case 'lch':
+		case 'oklch':
+			outputChannels = [
+				un_premultiply(interpolate(a_first, b_first, ratio), alpha),
+				un_premultiply(interpolate(a_second, b_second, ratio), alpha),
+				interpolate(a_hue, b_hue, ratio),
+			];
+
+			break;
 		default:
 			break;
 	}
