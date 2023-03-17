@@ -1,11 +1,8 @@
 import { color } from '@csstools/css-color-parser';
 import assert from 'assert';
+import { canonicalize } from '../util/canonical.mjs';
 import { parse } from '../util/parse.mjs';
 import { serialize_sRGB_data } from '../util/serialize.mjs';
-
-function canonicalize(x) {
-	return serialize_sRGB_data(color(parse(x)));
-}
 
 {
 	const tests = [

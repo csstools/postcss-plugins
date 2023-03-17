@@ -13,6 +13,7 @@ import { colorMix } from './functions/color-mix';
 import { oklab } from './functions/oklab';
 import { lch } from './functions/lch';
 import { oklch } from './functions/oklch';
+import { color as colorFn } from './functions/color';
 
 export { ColorNotation } from './color-notation';
 export { SyntaxFlag } from './color-data';
@@ -40,6 +41,8 @@ export function color(colorNode: ComponentValue): ColorData | false {
 				return oklab(colorNode, color);
 			case 'oklch':
 				return oklch(colorNode, color);
+			case 'color':
+				return colorFn(colorNode, color);
 			case 'color-mix':
 				return colorMix(colorNode, color);
 			default:

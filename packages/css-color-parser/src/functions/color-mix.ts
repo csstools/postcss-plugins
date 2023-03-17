@@ -198,6 +198,13 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 	let p1 = colors[0].percentage;
 	let p2 = colors[1].percentage;
 
+	if (p1 !== false && (p1 < 0 || p1 > 100)) {
+		return false;
+	}
+	if (p2 !== false && (p2 < 0 || p2 > 100)) {
+		return false;
+	}
+
 	if (p1 === false && p2 === false) {
 		p1 = 50;
 		p2 = 50;
