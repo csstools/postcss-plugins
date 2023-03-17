@@ -1,5 +1,10 @@
 .foo {
-	color: rgb(175, 92, 174)
+	color: rgb(175, 92, 174);
+}
+
+.complex {
+	color: rgba(255, 99, 0, 0.339833);
+	color: color(display-p3 0.9361 0.42808 0.14191 / 0.339833);
 }
 
 :root {

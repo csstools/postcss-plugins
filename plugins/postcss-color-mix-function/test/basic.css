@@ -1,5 +1,17 @@
 .foo {
-	color: color-mix(in lch, purple 50%, plum 50%)
+	color: color-mix(in lch, purple 50%, plum 50%);
+}
+
+.complex {
+	color: color-mix(
+		in lch,
+		purple calc(100% * sin(0.1)),
+		color-mix(
+			in oklch,
+			#4fe calc(100% / 3),
+			color(display-p3 calc(33% * 3) calc(1 / 2) -0.1) calc(100% / 3 * 2)
+		) calc(20% + 4%)
+	);
 }
 
 :root {

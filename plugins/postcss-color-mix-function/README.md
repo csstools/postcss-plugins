@@ -13,7 +13,6 @@
 
 .purple_plum {
 	color: rgb(175, 92, 174);
-	color: color(display-p3 0.64232 0.37684 0.66604);
 }
 ```
 
@@ -67,7 +66,6 @@ postcssColorMixFunction({ preserve: true })
 
 .purple_plum {
 	color: rgb(175, 92, 174);
-	color: color(display-p3 0.64232 0.37684 0.66604);
 	color: color-mix(in lch, purple 50%, plum 50%);
 }
 ```
