@@ -204,8 +204,10 @@
 }
 
 .test-multiple-colors {
-	background: linear-gradient(rgb(94, 83, 77), rgb(136, 126, 121));
-	background: linear-gradient(oklab(45% 0.012 0.0129), oklch(60% 0.014 45deg));
+	background-1: linear-gradient(rgb(94, 83, 77), rgb(136, 126, 121));
+	background-1: linear-gradient(oklab(45% 0.012 0.0129), oklch(60% 0.014 45deg));
+	background-2: linear-gradient(rgb(164, 0, 74), rgb(136, 126, 121));
+	background-2: linear-gradient(oklab(45% 0.22 0.0129), oklch(60% 0.014 45deg));
 }
 
 .test-unparseable-lab-function {

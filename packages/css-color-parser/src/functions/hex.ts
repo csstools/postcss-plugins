@@ -1,6 +1,7 @@
+import type { ColorData } from '../color-data';
 import type { TokenHash } from '@csstools/css-tokenizer';
-import { ColorData, SyntaxFlag } from '../color-data';
 import { ColorNotation } from '../color-notation';
+import { SyntaxFlag } from '../color-data';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function hex(hexToken: TokenHash): ColorData | false {

@@ -1,7 +1,8 @@
+import type { ColorData } from '../color-data';
 import { CSSToken, NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
-import { ColorData, SyntaxFlag } from '../color-data';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
+import { SyntaxFlag } from '../color-data';
 import { normalize } from './normalize';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function normalize_Color_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | false {
 	const result: Array<TokenNumber> = [];

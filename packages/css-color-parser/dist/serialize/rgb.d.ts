@@ -1,4 +1,4 @@
-import { ColorData } from '../color-data';
+import type { ColorData } from '../color-data';
 import { FunctionNode } from '@csstools/css-parser-algorithms';
 import { Color } from '@csstools/color-helpers';
 export declare function serializeRGB(color: ColorData): FunctionNode;

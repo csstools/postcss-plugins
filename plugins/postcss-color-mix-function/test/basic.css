@@ -1,0 +1,7 @@
+.foo {
+	color: color-mix(in lch, purple 50%, plum 50%)
+}
+
+:root {
+	--purple-plum: color-mix(in lch, purple 50%, plum 50%);
+}

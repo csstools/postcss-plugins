@@ -1,9 +1,10 @@
-import type { TokenCloseParen, TokenComma, TokenWhitespace }from '@csstools/css-tokenizer';
-import { ColorData, colorData_to_XYZ_D50 } from '../color-data';
+import type { ColorData } from '../color-data';
+import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css-tokenizer';
 import { ColorNotation } from '../color-notation';
 import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import { calculations, Color, conversions, utils, xyz } from '@csstools/color-helpers';
+import { colorData_to_XYZ_D50 } from '../color-data';
 import { toPrecision } from './to-precision';
 
 export function serializeRGB(color: ColorData): FunctionNode {

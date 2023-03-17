@@ -64,6 +64,10 @@
   - plugins/postcss-color-rebeccapurple/**
   - experimental/postcss-color-rebeccapurple/**
 
+"plugins/postcss-color-mix-function":
+  - plugins/postcss-color-mix-function/**
+  - experimental/postcss-color-mix-function/**
+
 "plugins/postcss-conditional-values":
   - plugins/postcss-conditional-values/**
   - experimental/postcss-conditional-values/**

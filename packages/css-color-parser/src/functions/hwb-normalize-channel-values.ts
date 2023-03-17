@@ -1,8 +1,10 @@
-import { CSSToken, NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
-import { ColorData, SyntaxFlag } from '../color-data';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
-import { normalizeHue } from './hue-normalize-channel-value';
+import type { ColorData } from '../color-data';
+import type { TokenNumber } from '@csstools/css-tokenizer';
+import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
+import { SyntaxFlag } from '../color-data';
 import { normalize } from './normalize';
+import { normalizeHue } from './hue-normalize-channel-value';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function normalize_HWB_ChannelValues(tokens: Array<CSSToken>, colorData: ColorData): Array<TokenNumber> | false {
 	const result: Array<TokenNumber> = [];

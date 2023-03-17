@@ -1,0 +1,7 @@
+.foo {
+	color: rgb(175, 92, 174)
+}
+
+:root {
+	--purple-plum: rgb(175, 92, 174);
+}

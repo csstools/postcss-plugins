@@ -70,6 +70,7 @@ body:
         - PostCSS Color Function
         - PostCSS Color Functional Notation
         - PostCSS Color Hex Alpha
+        - PostCSS Color Mix Function
         - PostCSS Conditional Values
         - PostCSS Custom Media Queries
         - PostCSS Custom Properties

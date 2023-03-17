@@ -98,7 +98,8 @@
 }
 
 .test-multiple-colors {
-	background: linear-gradient(lab(45% -13 29), lch(60% 50 45deg));
+	background-1: linear-gradient(lab(45% -13 29), lch(60% 50 45deg));
+	background-2: linear-gradient(lab(45% -50 29), lch(60% 50 45deg));
 }
 
 .test-unparseable-lab-function {

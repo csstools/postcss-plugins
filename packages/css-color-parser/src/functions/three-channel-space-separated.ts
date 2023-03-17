@@ -1,9 +1,10 @@
 import type { ColorData } from '../color-data';
-import { SyntaxFlag } from '../color-data';
-import { ColorNotation } from '../color-notation';
-import { ComponentValue, FunctionNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, TokenType } from '@csstools/css-tokenizer';
+import { ColorNotation } from '../color-notation';
+import { SyntaxFlag } from '../color-data';
 import { calcFromComponentValues } from '@csstools/css-calc';
+import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { normalizeChannelValuesFn } from './normalize-channel-values';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 

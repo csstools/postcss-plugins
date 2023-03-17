@@ -4,6 +4,7 @@
 
 - Add `@csstools/css-color-parser` dependency for all color value transformations.
 - Add support for `calc` expressions in color components.
+- Skip `color(display-p3 0 0 0)` fallbacks when the color is already in the `srgb` gamut.
 
 ### 5.1.0 (February 6, 2023)
 

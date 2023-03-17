@@ -1,7 +1,7 @@
-import { Color } from '@csstools/color-helpers';
+import type { Color } from '@csstools/color-helpers';
+import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from './color-notation';
 import { TokenNumber } from '@csstools/css-tokenizer';
-import { ComponentValue } from '@csstools/css-parser-algorithms';
 export type ColorData = {
     colorNotation: ColorNotation;
     channels: Color;

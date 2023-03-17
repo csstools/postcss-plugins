@@ -1,0 +1,14 @@
+.foo {
+	color: rgb(175, 92, 174);
+	color: color-mix(in lch, purple 50%, plum 50%)
+}
+
+:root {
+	--purple-plum: rgb(175, 92, 174);
+}
+
+@supports (color: color-mix(in oklch, #000, #fff)) {
+:root {
+	--purple-plum: color-mix(in lch, purple 50%, plum 50%);
+}
+}

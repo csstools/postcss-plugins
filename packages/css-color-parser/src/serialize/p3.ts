@@ -1,5 +1,6 @@
-import type { TokenCloseParen, TokenFunction, TokenWhitespace }from '@csstools/css-tokenizer';
-import { ColorData, colorData_to_XYZ_D50 } from '../color-data';
+import type { ColorData } from '../color-data';
+import type { TokenCloseParen, TokenFunction, TokenWhitespace } from '@csstools/css-tokenizer';
+import {  colorData_to_XYZ_D50 } from '../color-data';
 import { ColorNotation } from '../color-notation';
 import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';

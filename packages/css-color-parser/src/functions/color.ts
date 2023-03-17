@@ -1,11 +1,11 @@
 import type { ColorData } from '../color-data';
 import type { ColorParser } from '../color-parser';
-import { FunctionNode, isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from '../color-notation';
-import { threeChannelSpaceSeparated } from './three-channel-space-separated';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
+import { FunctionNode, isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { TokenType } from '@csstools/css-tokenizer';
 import { normalize_Color_ChannelValues } from './color-normalize-channel-values';
+import { threeChannelSpaceSeparated } from './three-channel-space-separated';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 const colorSpaces = new Set(['srgb', 'srgb-linear', 'display-p3', 'a98-rgb', 'prophoto-rgb', 'rec2020', 'xyz', 'xyz-d50', 'xyz-d65']);
 

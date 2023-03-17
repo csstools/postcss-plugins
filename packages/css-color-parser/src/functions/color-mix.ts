@@ -1,10 +1,12 @@
+import type { ColorData } from '../color-data';
 import type { ColorParser } from '../color-parser';
+import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import { Color } from '@csstools/color-helpers';
-import { ColorData, colorDataTo, fillInMissingComponents, SyntaxFlag } from '../color-data';
 import { ColorNotation } from '../color-notation';
-import { ComponentValue, FunctionNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { TokenType } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
+import { colorDataTo, fillInMissingComponents, SyntaxFlag } from '../color-data';
+import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 const rectangularColorSpaces = new Set(['srgb', 'srgb-linear', 'lab', 'oklab', 'xyz', 'xyz-d50', 'xyz-d65']);

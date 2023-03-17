@@ -1,7 +1,8 @@
-import { CSSToken, NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
+import type { TokenNumber } from '@csstools/css-tokenizer';
+import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
-export function normalizeHue(token : CSSToken): TokenNumber | false {
+export function normalizeHue(token: CSSToken): TokenNumber | false {
 	if (token[0] === TokenType.Number) {
 		token[4].value = token[4].value % 360;
 		token[1] = token[4].value.toString();

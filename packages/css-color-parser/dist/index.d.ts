@@ -1,7 +1,9 @@
-import { ColorData } from './color-data';
-import { ComponentValue } from '@csstools/css-parser-algorithms';
+import type { ColorData } from './color-data';
+import type { ComponentValue } from '@csstools/css-parser-algorithms';
+export type { ColorData } from './color-data';
 export { ColorNotation } from './color-notation';
 export { SyntaxFlag } from './color-data';
-export { serializeRGB } from './serialize/rgb';
+export { colorDataTo } from './color-data';
 export { serializeP3 } from './serialize/p3';
+export { serializeRGB } from './serialize/rgb';
 export declare function color(colorNode: ComponentValue): ColorData | false;
