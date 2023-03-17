@@ -1,5 +1,9 @@
 # Changes to PostCSS Text Decoration Shorthand
 
+### Unreleased (patch)
+
+- Add `color-mix` as a known color function.
+
 ### 2.2.1 (February 13, 2023)
 
 - Updated: `preserve` option defaults to `true`

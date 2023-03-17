@@ -26,6 +26,12 @@ import { XYZ_to_Lab } from 'conversions/xyz-to-lab';
 import { XYZ_to_OKLab } from 'conversions/xyz-to-oklab';
 import { Lab_to_LCH } from 'conversions/lab-to-lch';
 import { OKLab_to_OKLCH } from 'conversions/oklab-to-oklch';
+import { XYZ_to_lin_a98rgb } from 'conversions/xyz-to-lin-a98rgb';
+import { gam_a98rgb } from 'conversions/gam-a98rgb';
+import { XYZ_to_lin_2020 } from 'conversions/xyz-to-lin-2020';
+import { gam_2020 } from 'conversions/gam-2020';
+import { XYZ_to_lin_ProPhoto } from 'conversions/xyz-to-lin-pro-photo';
+import { gam_ProPhoto } from 'conversions/gam-pro-photo';
 
 /**
  * @param {Color} color [r, g, b]
@@ -81,7 +87,7 @@ export function HSL_to_XYZ_D50(x: Color): Color {
  * - X as number 0..1;
  * - Y as number 0..1;
  * - Z as number 0..1;
- * @return {Color} sRGB [r, g, b]
+ * @return {Color} HSL [r, g, b]
  * - Hue as degrees 0..360;
  * - Saturation as number 0..100;
  * - Lightness as number 0..100;
@@ -116,7 +122,7 @@ export function HWB_to_XYZ_D50(x: Color): Color {
  * - X as number 0..1;
  * - Y as number 0..1;
  * - Z as number 0..1;
- * @return {Color} sRGB [r, g, b]
+ * @return {Color} HWB [r, g, b]
  * - Hue as degrees 0..360;
  * - Whiteness as number 0..100;
  * - Blackness as number 0..100;
@@ -151,7 +157,7 @@ export function Lab_to_XYZ_D50(x: Color): Color {
  * - X as number 0..1;
  * - Y as number 0..1;
  * - Z as number 0..1;
- * @return {Color} P3 [r, g, b]
+ * @return {Color} Lab [r, g, b]
  * - Lightness as number 0..100;
  * - a as number -160..160;
  * - b as number -160..160;
@@ -181,7 +187,7 @@ export function LCH_to_XYZ_D50(x: Color): Color {
  * - X as number 0..1;
  * - Y as number 0..1;
  * - Z as number 0..1;
- * @return {Color} P3 [r, g, b]
+ * @return {Color} LCH [r, g, b]
  * - Lightness as number 0..100;
  * - Chroma as number 0..230;
  * - Hue as degrees 0..360;
@@ -212,7 +218,7 @@ export function OKLab_to_XYZ_D50(x: Color): Color {
  * - X as number 0..1;
  * - Y as number 0..1;
  * - Z as number 0..1;
- * @return {Color} P3 [r, g, b]
+ * @return {Color} OKLab [r, g, b]
  * - Lightness as number 0..1;
  * - a as number 0..0.5;
  * - b as number 0..0.5;
@@ -244,7 +250,7 @@ export function OKLCH_to_XYZ_D50(x: Color): Color {
  * - X as number 0..1;
  * - Y as number 0..1;
  * - Z as number 0..1;
- * @return {Color} P3 [r, g, b]
+ * @return {Color} OKLCH [r, g, b]
  * - Lightness as number 0..1;
  * - Chroma as number 0..0.5;
  * - Hue as degrees 0..360;
@@ -272,12 +278,11 @@ export function lin_sRGB_to_XYZ_D50(x: Color): Color {
 }
 
 /**
-/**
  * @param {Color} color [x, y, z]
  * - X as number 0..1;
  * - Y as number 0..1;
  * - Z as number 0..1;
- * @return {Color} sRGB [r, g, b]
+ * @return {Color} linear sRGB [r, g, b]
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
@@ -301,6 +306,24 @@ export function a98_RGB_to_XYZ_D50(x: Color): Color {
 	y = lin_a98rgb(y);
 	y = lin_a98rgb_to_XYZ(y);
 	y = D65_to_D50(y);
+	return y;
+}
+
+/**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} a98 sRGB [r, g, b]
+ * - Red as number 0..1;
+ * - Green as number 0..1;
+ * - Blue as number 0..1;
+ */
+export function XYZ_D50_to_a98_RGB(x: Color): Color {
+	let y = x;
+	y = D50_to_D65(y);
+	y = XYZ_to_lin_a98rgb(y);
+	y = gam_a98rgb(y);
 	return y;
 }
 
@@ -354,16 +377,52 @@ export function rec_2020_to_XYZ_D50(x: Color): Color {
 }
 
 /**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} rec 2020 [r, g, b]
+ * - Red as number 0..1;
+ * - Green as number 0..1;
+ * - Blue as number 0..1;
+ */
+export function XYZ_D50_to_rec_2020(x: Color): Color {
+	let y = x;
+	y = D50_to_D65(y);
+	y = XYZ_to_lin_2020(y);
+	y = gam_2020(y);
+	return y;
+}
+
+/**
  * @param {Color} color [r, g, b]
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
  * @return {Color} D50 XYZ [x, y, z]
  */
-export function proPhoto_RGB_to_XYZ_D50(x: Color): Color {
+export function ProPhoto_RGB_to_XYZ_D50(x: Color): Color {
 	let y = x;
 	y = lin_ProPhoto(y);
 	y = lin_ProPhoto_to_XYZ(y);
+	return y;
+}
+
+/**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} ProPhoto [r, g, b]
+ * - Red as number 0..1;
+ * - Green as number 0..1;
+ * - Blue as number 0..1;
+ */
+export function XYZ_D50_to_ProPhoto(x: Color): Color {
+	let y = x;
+	y = D50_to_D65(y);
+	y = XYZ_to_lin_ProPhoto(y);
+	y = gam_ProPhoto(y);
 	return y;
 }
 

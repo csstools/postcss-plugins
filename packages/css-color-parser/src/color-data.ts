@@ -64,7 +64,7 @@ export function colorData_to_XYZ_D50(colorData: ColorData): ColorData {
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.proPhoto_RGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x)),
+				channels: xyz.ProPhoto_RGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x)),
 			};
 		case ColorNotation.HSL:
 			return {
@@ -149,6 +149,22 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 			outputColorData.colorNotation = ColorNotation.Linear_RGB;
 			outputColorData.channels = xyz.XYZ_D50_to_lin_sRGB(xyzColorData.channels);
 			break;
+		case ColorNotation.Display_P3:
+			outputColorData.colorNotation = ColorNotation.Display_P3;
+			outputColorData.channels = xyz.XYZ_D50_to_P3(xyzColorData.channels);
+			break;
+		case ColorNotation.Rec2020:
+			outputColorData.colorNotation = ColorNotation.Rec2020;
+			outputColorData.channels = xyz.XYZ_D50_to_rec_2020(xyzColorData.channels);
+			break;
+		case ColorNotation.ProPhoto_RGB:
+			outputColorData.colorNotation = ColorNotation.ProPhoto_RGB;
+			outputColorData.channels = xyz.XYZ_D50_to_ProPhoto(xyzColorData.channels);
+			break;
+		case ColorNotation.A98_RGB:
+			outputColorData.colorNotation = ColorNotation.A98_RGB;
+			outputColorData.channels = xyz.XYZ_D50_to_a98_RGB(xyzColorData.channels);
+			break;
 		case ColorNotation.HSL:
 			outputColorData.colorNotation = ColorNotation.HSL;
 			outputColorData.channels = xyz.XYZ_D50_to_HSL(xyzColorData.channels);
@@ -165,18 +181,6 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 			outputColorData.colorNotation = ColorNotation.LCH;
 			outputColorData.channels = xyz.XYZ_D50_to_LCH(xyzColorData.channels);
 			break;
-		case ColorNotation.XYZ_D50:
-			outputColorData.colorNotation = ColorNotation.XYZ_D50;
-			outputColorData.channels = xyz.XYZ_D50_to_XYZ_D50(xyzColorData.channels);
-			break;
-		case ColorNotation.XYZ_D65:
-			outputColorData.colorNotation = ColorNotation.XYZ_D65;
-			outputColorData.channels = xyz.XYZ_D50_to_XYZ_D65(xyzColorData.channels);
-			break;
-		case ColorNotation.Display_P3:
-			outputColorData.colorNotation = ColorNotation.Display_P3;
-			outputColorData.channels = xyz.XYZ_D50_to_P3(xyzColorData.channels);
-			break;
 		case ColorNotation.OKLCH:
 			outputColorData.colorNotation = ColorNotation.OKLCH;
 			outputColorData.channels = xyz.XYZ_D50_to_OKLCH(xyzColorData.channels);
@@ -185,6 +189,16 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 			outputColorData.colorNotation = ColorNotation.OKLab;
 			outputColorData.channels = xyz.XYZ_D50_to_OKLab(xyzColorData.channels);
 			break;
+		case ColorNotation.XYZ_D50:
+			outputColorData.colorNotation = ColorNotation.XYZ_D50;
+			outputColorData.channels = xyz.XYZ_D50_to_XYZ_D50(xyzColorData.channels);
+			break;
+		case ColorNotation.XYZ_D65:
+			outputColorData.colorNotation = ColorNotation.XYZ_D65;
+			outputColorData.channels = xyz.XYZ_D50_to_XYZ_D65(xyzColorData.channels);
+			break;
+		default:
+			throw new Error('Unsupported color notation');
 	}
 
 	// 2. Carry forward missing components
