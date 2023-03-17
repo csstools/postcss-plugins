@@ -245,7 +245,133 @@ function colorMixRectangular(colorSpace: string, colors: ColorMixColors | false)
 		return false;
 	}
 
-	return false;
+	const a_color = colors.a.color;
+	const b_color = colors.b.color;
+
+	const ratio = colors.a.percentage / 100;
+
+	let a_channels = a_color.channels;
+	let b_channels = b_color.channels;
+
+	let outputColorNotation: ColorNotation = ColorNotation.RGB;
+
+	let a_alpha = a_color.alpha;
+	if (typeof a_alpha !== 'number') {
+		return false;
+	}
+
+	let b_alpha = b_color.alpha;
+	if (typeof b_alpha !== 'number') {
+		return false;
+	}
+
+	a_alpha = Number.isNaN(a_alpha) ? b_alpha : a_alpha;
+	b_alpha = Number.isNaN(b_alpha) ? a_alpha : b_alpha;
+
+	switch (colorSpace) {
+		case 'srgb':
+			outputColorNotation = ColorNotation.RGB;
+
+			if (a_color.colorNotation !== ColorNotation.RGB) {
+				a_channels = colorDataTo(a_color, ColorNotation.RGB).channels;
+			}
+
+			if (b_color.colorNotation !== ColorNotation.RGB) {
+				b_channels = colorDataTo(b_color, ColorNotation.RGB).channels;
+			}
+
+			break;
+		case 'srgb-linear':
+			outputColorNotation = ColorNotation.Linear_RGB;
+
+			if (a_color.colorNotation !== ColorNotation.Linear_RGB) {
+				a_channels = colorDataTo(a_color, ColorNotation.Linear_RGB).channels;
+			}
+
+			if (b_color.colorNotation !== ColorNotation.Linear_RGB) {
+				b_channels = colorDataTo(b_color, ColorNotation.Linear_RGB).channels;
+			}
+
+			break;
+		case 'lab':
+			outputColorNotation = ColorNotation.Lab;
+
+			if (a_color.colorNotation !== ColorNotation.Lab) {
+				a_channels = colorDataTo(a_color, ColorNotation.Lab).channels;
+			}
+
+			if (b_color.colorNotation !== ColorNotation.Lab) {
+				b_channels = colorDataTo(b_color, ColorNotation.Lab).channels;
+			}
+
+			break;
+		case 'oklab':
+			outputColorNotation = ColorNotation.OKLab;
+
+			if (a_color.colorNotation !== ColorNotation.OKLab) {
+				a_channels = colorDataTo(a_color, ColorNotation.OKLab).channels;
+			}
+
+			if (b_color.colorNotation !== ColorNotation.OKLab) {
+				b_channels = colorDataTo(b_color, ColorNotation.OKLab).channels;
+			}
+
+			break;
+		case 'xyz-d50':
+			outputColorNotation = ColorNotation.XYZ_D50;
+
+			if (a_color.colorNotation !== ColorNotation.XYZ_D50) {
+				a_channels = colorDataTo(a_color, ColorNotation.XYZ_D50).channels;
+			}
+
+			if (b_color.colorNotation !== ColorNotation.XYZ_D50) {
+				b_channels = colorDataTo(b_color, ColorNotation.XYZ_D50).channels;
+			}
+
+			break;
+		case 'xyz':
+		case 'xyz-d65':
+			outputColorNotation = ColorNotation.XYZ_D65;
+
+			if (a_color.colorNotation !== ColorNotation.XYZ_D65) {
+				a_channels = colorDataTo(a_color, ColorNotation.XYZ_D65).channels;
+			}
+
+			if (b_color.colorNotation !== ColorNotation.XYZ_D65) {
+				b_channels = colorDataTo(b_color, ColorNotation.XYZ_D65).channels;
+			}
+
+			break;
+		default:
+			break;
+	}
+
+	a_channels = fillInMissingComponents(a_channels, b_channels);
+	b_channels = fillInMissingComponents(b_channels, a_channels);
+
+	a_channels[0] = premultiply(a_channels[0], a_alpha);
+	a_channels[1] = premultiply(a_channels[1], a_alpha);
+	a_channels[2] = premultiply(a_channels[2], a_alpha);
+
+	b_channels[0] = premultiply(b_channels[0], b_alpha);
+	b_channels[1] = premultiply(b_channels[1], b_alpha);
+	b_channels[2] = premultiply(b_channels[2], b_alpha);
+
+	const alpha = interpolate(a_alpha, b_alpha, ratio);
+	const outputChannels: Color = [
+		un_premultiply(interpolate(a_channels[0], b_channels[0], ratio), alpha),
+		un_premultiply(interpolate(a_channels[1], b_channels[1], ratio), alpha),
+		un_premultiply(interpolate(a_channels[2], b_channels[2], ratio), alpha),
+	];
+
+	const colorData: ColorData = {
+		colorNotation: outputColorNotation,
+		channels: outputChannels,
+		alpha: alpha * colors.alphaMultiplier,
+		syntaxFlags: (new Set([SyntaxFlag.ColorMix])),
+	};
+
+	return colorData;
 }
 
 function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, colors: ColorMixColors | false): ColorData | false {
@@ -270,6 +396,8 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 	let a_second = 0;
 	let b_second = 0;
 
+	let outputColorNotation: ColorNotation = ColorNotation.RGB;
+
 	let a_alpha = a_color.alpha;
 	if (typeof a_alpha !== 'number') {
 		return false;
@@ -285,6 +413,8 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 
 	switch (colorSpace) {
 		case 'hsl':
+			outputColorNotation = ColorNotation.HSL;
+
 			if (a_color.colorNotation !== ColorNotation.HSL) {
 				a_channels = colorDataTo(a_color, ColorNotation.HSL).channels;
 			}
@@ -295,6 +425,8 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 
 			break;
 		case 'hwb':
+			outputColorNotation = ColorNotation.HWB;
+
 			if (a_color.colorNotation !== ColorNotation.HWB) {
 				a_channels = colorDataTo(a_color, ColorNotation.HWB).channels;
 			}
@@ -305,6 +437,8 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 
 			break;
 		case 'lch':
+			outputColorNotation = ColorNotation.LCH;
+
 			if (a_color.colorNotation !== ColorNotation.LCH) {
 				a_channels = colorDataTo(a_color, ColorNotation.LCH).channels;
 			}
@@ -315,6 +449,8 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 
 			break;
 		case 'oklch':
+			outputColorNotation = ColorNotation.OKLCH;
+
 			if (a_color.colorNotation !== ColorNotation.OKLCH) {
 				a_channels = colorDataTo(a_color, ColorNotation.OKLCH).channels;
 			}
@@ -328,12 +464,12 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 			break;
 	}
 
+	a_channels = fillInMissingComponents(a_channels, b_channels);
+	b_channels = fillInMissingComponents(b_channels, a_channels);
+
 	switch (colorSpace) {
 		case 'hsl':
 		case 'hwb':
-			a_channels = fillInMissingComponents(a_channels, b_channels);
-			b_channels = fillInMissingComponents(b_channels, a_channels);
-
 			a_hue = a_channels[0];
 			b_hue = b_channels[0];
 
@@ -346,9 +482,6 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 			break;
 		case 'lch':
 		case 'oklch':
-			a_channels = fillInMissingComponents(a_channels, b_channels);
-			b_channels = fillInMissingComponents(b_channels, a_channels);
-
 			a_first = a_channels[0];
 			b_first = b_channels[0];
 
@@ -405,26 +538,8 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 	b_first = premultiply(b_first, b_alpha);
 	b_second = premultiply(b_second, b_alpha);
 
-	let outputColorNotation: ColorNotation = ColorNotation.RGB;
 	let outputChannels: Color = [0, 0, 0];
 	const alpha = interpolate(a_alpha, b_alpha, ratio);
-
-	switch (colorSpace) {
-		case 'hsl':
-			outputColorNotation = ColorNotation.HSL;
-			break;
-		case 'hwb':
-			outputColorNotation = ColorNotation.HWB;
-			break;
-		case 'lch':
-			outputColorNotation = ColorNotation.LCH;
-			break;
-		case 'oklch':
-			outputColorNotation = ColorNotation.OKLCH;
-			break;
-		default:
-			break;
-	}
 
 	switch (colorSpace) {
 		case 'hsl':
