@@ -2,7 +2,7 @@ import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-cu
 import type { Declaration } from 'postcss';
 import type { PluginCreator } from 'postcss';
 import { cloneTokens, tokenize } from '@csstools/css-tokenizer';
-import { color, colorDataTo, ColorNotation, serializeP3, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
+import { color, colorDataFitsRGB_Gamut, serializeP3, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
 import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
@@ -74,8 +74,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 								return;
 							}
 
-							const srgb = colorDataTo(colorData, ColorNotation.RGB);
-							if (!srgb.channels.find((x) => x <= 0.00001 || x >= 0.99999)) {
+							if (colorDataFitsRGB_Gamut(colorData)) {
 								return serializeRGB(colorData);
 							}
 

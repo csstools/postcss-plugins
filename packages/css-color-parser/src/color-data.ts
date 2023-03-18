@@ -385,16 +385,16 @@ function dummyNumberToken(x: number): TokenNumber {
 	return [TokenType.Number, x.toString(), -1, -1, { value: x, type: NumberType.Number }];
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function colorDataToColorNotation(x: ColorData | false, colorNotation: ColorNotation): ColorData | false {
-	if (x === false) {
-		return false;
-	}
-
-	return false;
-}
-
 function reducePrecision(x: number, precision = 7): number {
 	const factor = Math.pow(10, precision);
 	return Math.round(x * factor) / factor;
+}
+
+export function colorDataFitsRGB_Gamut(x: ColorData): boolean {
+	const srgb = colorDataTo(x, ColorNotation.RGB);
+	if (!srgb.channels.find((y) => y <= 0.00001 || y >= 0.99999)) {
+		return true;
+	}
+
+	return false;
 }

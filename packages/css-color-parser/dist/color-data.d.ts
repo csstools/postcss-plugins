@@ -28,4 +28,4 @@ export declare function colorData_to_XYZ_D50(colorData: ColorData): ColorData;
 export declare function colorDataTo(colorData: ColorData, toNotation: ColorNotation): ColorData;
 export declare function fillInMissingComponents(a: Color, b: Color): Color;
 export declare function colorDataChannelsToCalcGlobals(x: ColorData): Map<string, TokenNumber>;
-export declare function colorDataToColorNotation(x: ColorData | false, colorNotation: ColorNotation): ColorData | false;
+export declare function colorDataFitsRGB_Gamut(x: ColorData): boolean;
