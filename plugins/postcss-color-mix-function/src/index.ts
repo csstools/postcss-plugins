@@ -45,10 +45,6 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 							return;
 						}
 
-						if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
-							return;
-						}
-
 						return serializeRGB(colorData);
 					}
 				},
@@ -67,10 +63,6 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 						if (isFunctionNode(componentValue) && colorMixNameRegex.test(componentValue.getName())) {
 							const colorData = color(componentValue);
 							if (!colorData) {
-								return;
-							}
-
-							if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
 								return;
 							}
 
