@@ -66,7 +66,18 @@ export function threeChannelLegacySyntax(
 			}
 
 			const [[result]] = calcFromComponentValues([[node]], { toCanonicalUnits: true, precision: 100 });
-			if (!result || !isTokenNode(result)) {
+			if (
+				!result ||
+				!isTokenNode(result) ||
+				(
+					(
+						result.value[0] === TokenType.Percentage ||
+						result.value[0] === TokenType.Number ||
+						result.value[0] === TokenType.Dimension
+					) &&
+					Number.isNaN(result.value[4].value)
+				)
+			) {
 				return false;
 			}
 

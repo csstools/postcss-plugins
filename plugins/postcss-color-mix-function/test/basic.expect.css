@@ -64,3 +64,63 @@
 	color-1: rgba(137, 118, 0, 0.26);
 	color-1: color(display-p3 0.53846 0.46154 0 / 0.26);
 }
+
+.wpt-mix-percents-1 {
+	color-1: rgb(175, 92, 174);
+	color-2: rgb(175, 92, 174);
+	color-3: rgb(175, 92, 174);
+	color-4: rgb(175, 92, 174);
+	color-5: rgb(175, 92, 174);
+	/* must be ignored */
+	color-6: color-mix(in lch, purple 125%, plum 125%);
+	/* must be ignored */
+	color-7: color-mix(in lch, purple 9999%, plum 9999%);
+}
+
+.wpt-mix-percents-2 {
+	color-1: rgb(175, 92, 174);
+	color-2: rgb(175, 92, 174);
+	color-3: rgb(175, 92, 174);
+	color-4: rgb(175, 92, 174);
+	color-5: rgb(175, 92, 174);
+	color-6: rgb(175, 92, 174);
+	color-7: rgb(175, 92, 174);
+}
+
+.color-mix-non-srgb-001 {
+	/* rgb(188, 92, 0) */
+	color-1: rgb(188, 92, 0);
+	color-1: color(display-p3 0.6875 0.38252 0.13508);
+
+	/* rgb(161, 108, 0 */
+	color-2: rgb(161, 108, 0);
+	color-2: color(display-p3 0.60204 0.43193 0.12323);
+
+	/* rgb(143, 117, 0) */
+	color-3: rgb(143, 117, 0);
+	color-3: color(display-p3 0.55128 0.45926 0);
+
+	/* rgb(89, 122, 0) */
+	color-4: rgb(89, 122, 0);
+	color-4: color(display-p3 0.37611 0.47444 0.13223);
+
+	/* rgb(65, 126, 0) */
+	color-5: rgb(65, 126, 0);
+	color-5: color(display-p3 0.3137 0.48778 0.12828);
+
+	/* rgb(49, 128, 0) */
+	color-6: rgb(49, 128, 0);
+	color-6: color(display-p3 0.2789 0.49535 0.06321);
+
+	/* rgb(243, 40, 0) */
+	color-7: rgb(243, 40, 0);
+	color-7: color(display-p3 0.87772 0.24967 0.13787);
+
+	/* rgb(237, 55, 0) */
+	color-8: rgb(237, 55, 0);
+	color-8: color(display-p3 0.85526 0.28166 0.13354);
+
+	/* rgb(235, 59, 0) */
+	color-9: rgb(235, 59, 0);
+	color-9: color(display-p3 0.84845 0.29298 0.07064);
+}

@@ -65,3 +65,54 @@
 .spec-example-9 {
 	color-1: color-mix(in srgb, rgb(100% 0% 0% / 0.7) 20%, rgb(0% 100% 0% / 0.2) 60%);
 }
+
+.wpt-mix-percents-1 {
+	color-1: rgb(175, 92, 174);
+	color-2: color-mix(in lch, purple 50%, plum 50%);
+	color-3: color-mix(in lch, purple 55%, plum 55%);
+	color-4: color-mix(in lch, purple 70%, plum 70%);
+	color-5: color-mix(in lch, purple 95%, plum 95%);
+	/* must be ignored */
+	color-6: color-mix(in lch, purple 125%, plum 125%);
+	/* must be ignored */
+	color-7: color-mix(in lch, purple 9999%, plum 9999%);
+}
+
+.wpt-mix-percents-2 {
+	color-1: rgb(175, 92, 174);
+	color-2: color-mix(in lch, purple 50%, plum 50%);
+	color-3: color-mix(in lch, purple 50%, plum);
+	color-4: color-mix(in lch, purple, plum 50%);
+	color-5: color-mix(in lch, purple, plum);
+	color-6: color-mix(in lch, plum, purple);
+	color-7: color-mix(in lch, purple 80%, plum 80%);
+}
+
+.color-mix-non-srgb-001 {
+	/* rgb(188, 92, 0) */
+	color-1: color-mix(in xyz, red, green);
+
+	/* rgb(161, 108, 0 */
+	color-2: color-mix(in lab, red, green);
+
+	/* rgb(143, 117, 0) */
+	color-3: color-mix(in lch, red, green);
+
+	/* rgb(89, 122, 0) */
+	color-4: color-mix(in xyz, red, green 90%);
+
+	/* rgb(65, 126, 0) */
+	color-5: color-mix(in lab, red, green 90%);
+
+	/* rgb(49, 128, 0) */
+	color-6: color-mix(in lch, red, green 90%);
+
+	/* rgb(243, 40, 0) */
+	color-7: color-mix(in xyz, red 90%, green);
+
+	/* rgb(237, 55, 0) */
+	color-8: color-mix(in lab, red 90%, green);
+
+	/* rgb(235, 59, 0) */
+	color-9: color-mix(in lch, red 90%, green);
+}

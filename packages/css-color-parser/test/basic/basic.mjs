@@ -184,3 +184,18 @@ assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('color(srgb 1 1 1)'))),
 	'rgb(255, 255, 255)',
 );
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('rgb(255 255 calc(0 / 0))'))),
+	'',
+);
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('rgb(255 255 calc(1 / 0))'))),
+	'',
+);
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('rgb(255 255 calc(0 / 1))'))),
+	'rgb(255, 255, 0)',
+);

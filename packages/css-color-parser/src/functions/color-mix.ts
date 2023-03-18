@@ -171,6 +171,21 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 				toLowerCaseAZ(node.getName()) === 'calc'
 			) {
 				[[node]] = calcFromComponentValues([[node]], { toCanonicalUnits: true, precision: 100 });
+
+				if (
+					!node ||
+					!isTokenNode(node) ||
+					(
+						(
+							node.value[0] === TokenType.Percentage ||
+							node.value[0] === TokenType.Number ||
+							node.value[0] === TokenType.Dimension
+						) &&
+						Number.isNaN(node.value[4].value)
+					)
+				) {
+					return false;
+				}
 			}
 
 			if (
