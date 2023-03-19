@@ -7,9 +7,9 @@
 	"coverageAnalysis": "perTest",
 	"tempDirName": "../../.stryker-tmp",
 	"commandRunner": {
-		"command": "npm run test"
+		"command": "node ./test/test.mjs"
 	},
-	"buildCommand": "npm run build",
+	"buildCommand": "tsc",
 	"thresholds": {
 		"high": 100,
 		"low": 100,

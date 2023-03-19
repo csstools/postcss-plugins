@@ -12,7 +12,7 @@ on:
         required: true
 
 concurrency:
-  group: branch-node-${{ github.ref }}
+  group: branch-node--test--${{ github.ref }}
   cancel-in-progress: true
 
 defaults:
@@ -66,16 +66,12 @@ jobs:
           GITHUB_ACTION_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-        # Build, lint and PostCSS Tape tests must all work and pass :
+        # Build and PostCSS Tape tests must all work and pass :
         # - with exact dependencies from package-lock.json
         # - without requiring postinstall scripts from dependencies to run
       - name: build
         run: |
           npm run build --if-present $MODIFIED_WORKSPACES
-        if: matrix.is_base_node_version && matrix.is_base_os_version
-
-      - name: lint
-        run: npm run lint --if-present $MODIFIED_WORKSPACES
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
       - name: docs

@@ -4,7 +4,7 @@
 	"private": true,
 	"description": "Can you use postcss-cli with one of our plugins?",
 	"scripts": {
-		"build": "postcss style.css -o ./result.css",
+		"build": "postcss style.css -o ./dist/result.css",
 		"test": "node ./test.mjs"
 	},
 	"devDependencies": {

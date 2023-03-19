@@ -8,6 +8,7 @@
 		"ecmaVersion": 2022,
 		"sourceType": "module"
 	},
+	"ignorePatterns": ["**/dist/*"],
 	"rules": {
 		"quotes": ["error", "single"],
 		"comma-dangle": ["error", "always-multiline"],
@@ -21,7 +22,9 @@
 	"overrides": [
 		{
 			"files": [
-				"**/*.ts"
+				"**/*.ts",
+				"**/*.mts",
+				"**/*.cts"
 			],
 			"extends": [
 				"plugin:@typescript-eslint/eslint-recommended",

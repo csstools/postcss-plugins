@@ -1,0 +1,38 @@
+name: lint
+on:
+  push:
+    branches:
+    - 'main'
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      build_and_test_all_packages:
+        type: boolean
+        description: Lint all packages
+        required: true
+
+concurrency:
+  group: branch-node--lint--${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: npm ci
+        run: |
+          npm ci --ignore-scripts
+
+      - name: lint
+        run: npm run lint
