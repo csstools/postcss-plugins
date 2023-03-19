@@ -117,54 +117,6 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 	);
 });
 
-// [
-// 	'rgb(from pink calc((r + b) / 2) 0 0 / 1)',
-// ].forEach((testCase) => {
-// 	assert.deepStrictEqual(
-// 		color(parse(testCase)),
-// 		{
-// 			channels: [0.3416739564730045, 0.1743318074545503, 0.010909904340504302],
-// 			colorSpace: 'xyz-d50',
-// 			sourceColorSpace: 'srgb',
-// 			alpha: 1,
-// 			missingComponents: {},
-// 			syntaxFlags: new Set(['relative-color-syntax']),
-// 		},
-// 	);
-// });
-
-// [
-// 	'rgb(from pink calc((r + b) / 2) g b / alpha)',
-// ].forEach((testCase) => {
-// 	assert.deepStrictEqual(
-// 		color(parse(testCase)),
-// 		{
-// 			channels: [0.630139848161484, 0.5884161176241673, 0.488544270929198],
-// 			colorSpace: 'xyz-d50',
-// 			sourceColorSpace: 'srgb',
-// 			alpha: 1,
-// 			missingComponents: {},
-// 			syntaxFlags: new Set(['relative-color-syntax']),
-// 		},
-// 	);
-// });
-
-// [
-// 	'rgb(from pink calc((r + b) / 2) g b / alpha)',
-// ].forEach((testCase) => {
-// 	assert.deepStrictEqual(
-// 		color(parse(testCase)),
-// 		{
-// 			channels: [0.630139848161484, 0.5884161176241673, 0.488544270929198],
-// 			colorSpace: 'xyz-d50',
-// 			sourceColorSpace: 'srgb',
-// 			alpha: 1,
-// 			missingComponents: {},
-// 			syntaxFlags: new Set(['relative-color-syntax']),
-// 		},
-// 	);
-// });
-
 assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('rgb(20%, 40%, 60%, 80%)'))),
 	'rgba(51, 102, 153, 0.8)',
