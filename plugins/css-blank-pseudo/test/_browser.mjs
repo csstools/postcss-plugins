@@ -37,7 +37,7 @@ import { promises as fsp } from 'fs';
 				res.end(await fsp.readFile('dist/browser-global.js', 'utf8'));
 				break;
 			default:
-				res.setHeader('Content-type', 'text/plain' );
+				res.setHeader('Content-type', 'text/plain');
 				res.writeHead(404);
 				res.end('Not found');
 				break;
@@ -58,7 +58,7 @@ import { promises as fsp } from 'fs';
 			throw msg;
 		});
 
-		const clearInput = async (page, selector ) => {
+		const clearInput = async (page, selector) => {
 			const input = await page.$(selector);
 			await input.click({ clickCount: 3 });
 			await page.keyboard.press('Backspace');

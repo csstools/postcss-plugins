@@ -3,12 +3,12 @@
 	"mutate": [
 		"src/**/*.ts"
 	],
-	"buildCommand": "npm run build",
+	"buildCommand": "rollup -c ../../rollup/default.mjs",
 	"testRunner": "command",
 	"coverageAnalysis": "perTest",
 	"tempDirName": "../../.stryker-tmp",
 	"commandRunner": {
-		"command": "npm run test"
+		"command": "node ./test/index.mjs"
 	},
 	"thresholds": {
 		"high": 100,

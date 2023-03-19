@@ -43,16 +43,11 @@
 		"@csstools/css-tokenizer": "^2.0.0"
 	},
 	"scripts": {
-		"prebuild": "npm run clean",
 		"build": "rollup -c ../../rollup/default.mjs",
-		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');\"",
-		"lint": "npm run lint:eslint && npm run lint:package-json",
-		"lint:eslint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern",
-		"lint:package-json": "node ../../.github/bin/format-package-json.mjs",
-		"prepublishOnly": "npm run clean && npm run build && npm run test",
+		"lint": "node ../../.github/bin/format-package-json.mjs",
+		"prepublishOnly": "npm run build && npm run test",
 		"stryker": "stryker run --logLevel error",
-		"test": "node ./test/test.mjs",
-		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs",
+		"test": "node ./test/test.mjs && node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node ./test/test.mjs"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser#readme",

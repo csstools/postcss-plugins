@@ -29,9 +29,9 @@
 		"ua-parser-js": "^1.0.33"
 	},
 	"scripts": {
-		"clean": "git clean -dfx",
-		"setup-workspace": "npm run clean && npm i",
+		"setup-workspace": "npm ci",
 		"build": "npm run build --workspaces --if-present",
+		"clean": "npm run clean --workspaces --if-present",
 		"lint": "npm run lint --workspaces --if-present",
 		"start": "npm run build --workspaces --if-present"
 	},
