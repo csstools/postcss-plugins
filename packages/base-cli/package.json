@@ -24,7 +24,7 @@
 	"scripts": {
 		"prebuild": "node -e \"fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');\"",
 		"build": "tsc",
-		"lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern && node ../../.github/bin/format-package-json.mjs",
+		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"stryker": "stryker run --logLevel error",
 		"test": "node ./test/test.mjs"

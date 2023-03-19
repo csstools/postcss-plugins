@@ -3,7 +3,7 @@
 	"mutate": [
 		"src/lib/**/*.mjs"
 	],
-	"buildCommand": "npm run build",
+	"buildCommand": "rollup -c ../../rollup/default.mjs",
 	"testRunner": "command",
 	"coverageAnalysis": "perTest",
 	"tempDirName": "../../.stryker-tmp",

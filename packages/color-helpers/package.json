@@ -41,9 +41,8 @@
 		"build": "rollup -c ../../rollup/default.mjs",
 		"check-sources-integrity": "node ./scripts/check-changes.mjs",
 		"check-sources-integrity:rewrite": "REWRITE_HASHES=true node ./scripts/check-changes.mjs",
-		"lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern && node ../../.github/bin/format-package-json.mjs",
+		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
-		"stryker": "stryker run --logLevel error",
 		"test": "node ./test/_import.mjs && node ./test/_require.cjs"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers#readme",

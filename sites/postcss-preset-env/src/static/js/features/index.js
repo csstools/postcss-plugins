@@ -60,25 +60,25 @@
 	}
 
 	function updateStage(number) {
-		omittedElements.forEach( element => {
+		omittedElements.forEach(element => {
 			element.hidden = false;
-		} );
-		const omittedStages = stages.slice( 0, stages.indexOf( Number( number ) ) );
-		const selector = omittedStages.map( stage => `[data-stage="${ stage }"]` ).join( ',' );
+		});
+		const omittedStages = stages.slice(0, stages.indexOf(Number(number)));
+		const selector = omittedStages.map(stage => `[data-stage="${ stage }"]`).join(',');
 
 		omittedElements.splice(
 			0,
 			omittedElements.length,
 			...Array.prototype.slice.call(
-				selector ? document.querySelectorAll( selector ) : [],
+				selector ? document.querySelectorAll(selector) : [],
 			),
 		);
 
-		omittedElements.forEach( element => {
+		omittedElements.forEach(element => {
 			element.hidden = true;
-		} );
+		});
 
-		if ( stageSelect ) {
+		if (stageSelect) {
 			stageSelect.value = number;
 		}
 	}

@@ -40,7 +40,7 @@ import { promises as fsp } from 'fs';
 				break;
 
 			default:
-				res.setHeader('Content-type', 'text/plain' );
+				res.setHeader('Content-type', 'text/plain');
 				res.writeHead(404);
 				res.end('Not found');
 				break;

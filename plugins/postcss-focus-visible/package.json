@@ -51,7 +51,7 @@
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
-		"lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern && node ../../.github/bin/format-package-json.mjs",
+		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"test": "node .tape.mjs && node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:browser": "node ./test/_browser.mjs",
