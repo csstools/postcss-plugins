@@ -12,7 +12,7 @@ on:
         required: true
 
 concurrency:
-  group: branch-node-${{ github.ref }}
+  group: branch-node--lint--${{ github.ref }}
   cancel-in-progress: true
 
 defaults:

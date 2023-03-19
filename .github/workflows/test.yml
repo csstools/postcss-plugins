@@ -12,7 +12,7 @@ on:
         required: true
 
 concurrency:
-  group: branch-node-${{ github.ref }}
+  group: branch-node--test--${{ github.ref }}
   cancel-in-progress: true
 
 defaults:
