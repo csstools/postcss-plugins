@@ -130,3 +130,13 @@
 	--color-functional-notation-percentage-alpha: rgba(0, 0, 0, 1);
 	--color-functional-notation-percentage-alpha: rgba(0, 0, 0, 100%);
 }
+
+:root {
+	/* color-mix() */
+	--color-mix-1: plum;
+	--color-mix-1: color(display-p3 0.64331 0.19245 0.16771);
+	--color-mix-1: color-mix(in lch, purple 50%, plum 50%);
+	--color-mix-2: plum;
+	--color-mix-2: color-mix(in lch longer, purple 50%, plum 50%);
+	--color-mix-2: color(display-p3 0.64331 0.19245 0.16771);
+}

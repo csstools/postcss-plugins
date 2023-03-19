@@ -1,0 +1,10 @@
+:root {
+	--firebrick: color-mix(in lch, red 90%, green);
+	--firebrick-a50: color-mix(in lch, red 90%, green);
+
+	--opacity-50: 50%;
+	--firebrick-a50-var: color-mix(in lch, red, green var(--opacity-50));
+
+	--fifty: 50;
+	--firebrick-var: color-mix(in lch, red, hwb(40% var(--fifty) 34.5 / var(--opacity-50)));
+}

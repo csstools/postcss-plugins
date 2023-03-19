@@ -2,7 +2,7 @@ import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-cu
 import type { Declaration } from 'postcss';
 import type { PluginCreator } from 'postcss';
 import { cloneTokens, tokenize } from '@csstools/css-tokenizer';
-import { color, colorDataFitsRGB_Gamut, serializeP3, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
+import { color, colorDataFitsRGB_Gamut, serializeP3, serializeRGB } from '@csstools/css-color-parser';
 import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';

@@ -1294,7 +1294,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color-mix(in oklch, #000, #fff)',
+		'supports': 'color-mix(in lch, red, blue)',
 		'property': 'color',
 		'sniff': 'color-mix',
 		'matchers': [

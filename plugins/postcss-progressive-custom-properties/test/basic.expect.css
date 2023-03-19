@@ -201,7 +201,7 @@
 	--color-mix-7: plum;
 }
 
-@supports (color: color-mix(in oklch, #000, #fff)) {
+@supports (color: color-mix(in lch, red, blue)) {
 :root {
 	--color-mix-1: color-mix(in lch, purple 50%, plum 50%);
 	--color-mix-2: color-mix(in lch longer, purple 50%, plum 50%);
@@ -224,4 +224,29 @@
 	/* Not expected to be handled here at the moment, but might be needed in the future */
 	--color-functional-notation-percentage-alpha: rgba(0, 0, 0, 1);
 	--color-functional-notation-percentage-alpha: rgba(0, 0, 0, 100%);
+}
+
+:root {
+	/* color-mix() */
+	--color-mix-1: plum;
+	--color-mix-2: plum;
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+:root {
+	--color-mix-1: color(display-p3 0.64331 0.19245 0.16771);
+}
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+:root {
+	--color-mix-1: color-mix(in lch, purple 50%, plum 50%);
+	--color-mix-2: color-mix(in lch longer, purple 50%, plum 50%);
+}
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+:root {
+	--color-mix-2: color(display-p3 0.64331 0.19245 0.16771);
+}
 }

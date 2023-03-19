@@ -1,5 +1,9 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (patch)
+
+- Smaller `@supports` check for `color-mix`.
+
 ### 2.1.0 (February 2, 2023)
 
 - Group support rules with the same params to reduce the output size.
