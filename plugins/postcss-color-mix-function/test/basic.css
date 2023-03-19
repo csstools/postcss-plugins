@@ -1,4 +1,4 @@
-.foo {
+.basic {
 	color: color-mix(in lch, purple 50%, plum 50%);
 }
 
@@ -115,4 +115,32 @@
 
 	/* rgb(235, 59, 0) */
 	color-9: color-mix(in lch, red 90%, green);
+}
+
+.transparent-rectangular {
+	color-1: color-mix(in srgb, transparent, blue 65%);
+	color-2: color-mix(in lab, transparent, blue 65%);
+	color-3: color-mix(in xyz, transparent, blue 65%);
+}
+
+.transparent-polar {
+	color-1: color-mix(in srgb, transparent, blue 65%);
+	color-2: color-mix(in lab, transparent, blue 65%);
+	color-3: color-mix(in xyz, transparent, blue 65%);
+}
+
+.zero-alpha-rectangular {
+	color-1: color-mix(in srgb, rgb(255 0 0 / 0), blue 65%);
+	color-2: color-mix(in lab, rgb(255 0 0 / 0), blue 65%);
+	color-3: color-mix(in xyz, rgb(255 0 0 / 0), blue 65%);
+}
+
+.zero-alpha-cylindrical {
+	color-4: color-mix(in oklch, rgb(255 0 0 / 0), blue 65%);
+	color-5: color-mix(in lch, rgb(255 0 0 / 0), blue 65%);
+	color-6: color-mix(in hsl, rgb(255 0 0 / 0), blue 65%);
+}
+
+.foo {
+	color: color-mix(in srgb, blue, blue 65%);
 }

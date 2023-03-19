@@ -72,7 +72,6 @@
 /* this will most likely be a mistake by the author */
 .test-author-provided-override {
 	color: rgb(255, 255, 255);
-	color: color(display-p3 1 1 1);
 	color: rgb(0, 0, 0);
 }
 
@@ -112,7 +111,6 @@
 	color-8: rgb(190, 190, 190);
 	color-9: rgb(222, 222, 222);
 	color-10: rgb(255, 255, 255);
-	color-10: color(display-p3 1 1 1);
 }
 
 .test-powerless-hue-90 {
@@ -127,7 +125,6 @@
 	color-8: rgb(190, 190, 190);
 	color-9: rgb(222, 222, 222);
 	color-10: rgb(255, 255, 255);
-	color-10: color(display-p3 1 1 1);
 }
 
 .test-ignore {
@@ -174,9 +171,7 @@
 .test-lime {
 	/* PR 0.45840159019103005, 0.9852645833250543, 0.29829470783345835 */
 	color-1: rgb(0, 255, 0);
-	color-1: color(display-p3 0.4584 0.98526 0.29829);
 	color-2: rgb(0, 255, 0);
-	color-2: color(display-p3 0.4584 0.98526 0.29829);
 }
 
 .test-blue-teal {

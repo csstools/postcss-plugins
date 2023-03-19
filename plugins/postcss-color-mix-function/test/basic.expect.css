@@ -1,4 +1,4 @@
-.foo {
+.basic {
 	color: rgb(175, 92, 174);
 }
 
@@ -46,7 +46,6 @@
 	color-2: rgb(113, 162, 255);
 	color-2: color(display-p3 0.4712 0.62627 1);
 	color-3: rgb(128, 128, 255);
-	color-3: color(display-p3 0.5 0.5 1);
 }
 
 .spec-example-7 {
@@ -57,12 +56,10 @@
 
 .spec-example-8 {
 	color-1: rgba(137, 118, 0, 0.325);
-	color-1: color(display-p3 0.53846 0.46154 0 / 0.325);
 }
 
 .spec-example-9 {
 	color-1: rgba(137, 118, 0, 0.26);
-	color-1: color(display-p3 0.53846 0.46154 0 / 0.26);
 }
 
 .wpt-mix-percents-1 {
@@ -90,7 +87,6 @@
 .color-mix-non-srgb-001 {
 	/* rgb(188, 92, 0) */
 	color-1: rgb(188, 92, 0);
-	color-1: color(display-p3 0.6875 0.38252 0.13508);
 
 	/* rgb(161, 108, 0 */
 	color-2: rgb(161, 108, 0);
@@ -102,7 +98,6 @@
 
 	/* rgb(89, 122, 0) */
 	color-4: rgb(89, 122, 0);
-	color-4: color(display-p3 0.37611 0.47444 0.13223);
 
 	/* rgb(65, 126, 0) */
 	color-5: rgb(65, 126, 0);
@@ -114,7 +109,6 @@
 
 	/* rgb(243, 40, 0) */
 	color-7: rgb(243, 40, 0);
-	color-7: color(display-p3 0.87772 0.24967 0.13787);
 
 	/* rgb(237, 55, 0) */
 	color-8: rgb(237, 55, 0);
@@ -123,4 +117,34 @@
 	/* rgb(235, 59, 0) */
 	color-9: rgb(235, 59, 0);
 	color-9: color(display-p3 0.84845 0.29298 0.07064);
+}
+
+.transparent-rectangular {
+	color-1: rgba(0, 0, 255, 0.65);
+	color-2: rgba(0, 0, 255, 0.65);
+	color-3: rgba(0, 0, 255, 0.65);
+}
+
+.transparent-polar {
+	color-1: rgba(0, 0, 255, 0.65);
+	color-2: rgba(0, 0, 255, 0.65);
+	color-3: rgba(0, 0, 255, 0.65);
+}
+
+.zero-alpha-rectangular {
+	color-1: rgba(0, 0, 255, 0.65);
+	color-2: rgba(0, 0, 255, 0.65);
+	color-3: rgba(0, 0, 255, 0.65);
+}
+
+.zero-alpha-cylindrical {
+	color-4: rgba(125, 0, 190, 0.65);
+	color-4: color(display-p3 0.45007 0 0.73452 / 0.65);
+	color-5: rgba(153, 0, 125, 0.65);
+	color-5: color(display-p3 0.56492 0 0.48893 / 0.65);
+	color-6: rgba(179, 0, 255, 0.65);
+}
+
+.foo {
+	color: rgb(0, 0, 255);
 }

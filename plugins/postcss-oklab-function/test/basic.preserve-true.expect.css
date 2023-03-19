@@ -112,7 +112,6 @@
 /* this will most likely be a mistake by the author */
 .test-author-provided-override {
 	color: rgb(255, 255, 255);
-	color: color(display-p3 1 1 1);
 	color: oklch(100% 0 0);
 	color: rgb(0, 0, 0);
 }
@@ -171,7 +170,6 @@
 	color-9: rgb(222, 222, 222);
 	color-9: oklch(90% 0 0);
 	color-10: rgb(255, 255, 255);
-	color-10: color(display-p3 1 1 1);
 	color-10: oklch(100% 0 0);
 }
 
@@ -197,7 +195,6 @@
 	color-9: rgb(222, 222, 222);
 	color-9: oklch(90% 0 90);
 	color-10: rgb(255, 255, 255);
-	color-10: color(display-p3 1 1 1);
 	color-10: oklch(100% 0 90);
 }
 
@@ -252,10 +249,8 @@
 .test-lime {
 	/* PR 0.45840159019103005, 0.9852645833250543, 0.29829470783345835 */
 	color-1: rgb(0, 255, 0);
-	color-1: color(display-p3 0.4584 0.98526 0.29829);
 	color-1: oklab(86.64396115356694% -0.23388757418790818 0.17949847989672985);
 	color-2: rgb(0, 255, 0);
-	color-2: color(display-p3 0.4584 0.98526 0.29829);
 	color-2: oklch(86.64396115356694% 0.2948272403370167 142.49533888780996);
 }
 

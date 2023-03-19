@@ -103,7 +103,6 @@
 /* this will most likely be a mistake by the author */
 .test-author-provided-override {
 	color: rgb(255, 255, 255);
-	color: color(display-p3 1 1 1);
 	color: lch(100% 0 0);
 	color: rgb(0, 0, 0);
 }
@@ -273,7 +272,6 @@
 	lab-002: rgb(0, 0, 0);
 	lab-002: lab(0% 0 0);
 	lab-003: rgb(255, 255, 255);
-	lab-003: color(display-p3 1 1 1);
 	lab-003: lab(100% 0 0);
 	lab-004: rgb(193, 78, 121);
 	lab-004: lab(50% 50 0);
@@ -295,7 +293,6 @@
 	lch-002: rgb(0, 0, 0);
 	lch-002: lch(0% 0 0);
 	lch-003: rgb(255, 255, 255);
-	lch-003: color(display-p3 1 1 1);
 	lch-003: lch(100% 0 0);
 	lch-004: rgb(193, 78, 121);
 	lch-004: lch(50% 50 0);

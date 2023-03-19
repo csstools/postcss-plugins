@@ -392,7 +392,7 @@ function reducePrecision(x: number, precision = 7): number {
 
 export function colorDataFitsRGB_Gamut(x: ColorData): boolean {
 	const srgb = colorDataTo(x, ColorNotation.RGB);
-	if (!srgb.channels.find((y) => y <= 0.00001 || y >= 0.99999)) {
+	if (!srgb.channels.find((y) => y < -0.00001 || y > 1.00001)) {
 		return true;
 	}
 

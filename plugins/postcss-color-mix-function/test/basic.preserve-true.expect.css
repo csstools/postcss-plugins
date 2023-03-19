@@ -1,4 +1,4 @@
-.foo {
+.basic {
 	color: rgb(175, 92, 174);
 	color: color-mix(in lch, purple 50%, plum 50%);
 }
@@ -77,7 +77,6 @@
 	color-2: color(display-p3 0.4712 0.62627 1);
 	color-2: color-mix(in oklch, white, blue);
 	color-3: rgb(128, 128, 255);
-	color-3: color(display-p3 0.5 0.5 1);
 	color-3: color-mix(in srgb, white, blue);
 }
 
@@ -90,13 +89,11 @@
 
 .spec-example-8 {
 	color-1: rgba(137, 118, 0, 0.325);
-	color-1: color(display-p3 0.53846 0.46154 0 / 0.325);
 	color-1: color-mix(in srgb, rgb(100% 0% 0% / 0.7) 25%, rgb(0% 100% 0% / 0.2));
 }
 
 .spec-example-9 {
 	color-1: rgba(137, 118, 0, 0.26);
-	color-1: color(display-p3 0.53846 0.46154 0 / 0.26);
 	color-1: color-mix(in srgb, rgb(100% 0% 0% / 0.7) 20%, rgb(0% 100% 0% / 0.2) 60%);
 }
 
@@ -135,7 +132,6 @@
 .color-mix-non-srgb-001 {
 	/* rgb(188, 92, 0) */
 	color-1: rgb(188, 92, 0);
-	color-1: color(display-p3 0.6875 0.38252 0.13508);
 	color-1: color-mix(in xyz, red, green);
 
 	/* rgb(161, 108, 0 */
@@ -150,7 +146,6 @@
 
 	/* rgb(89, 122, 0) */
 	color-4: rgb(89, 122, 0);
-	color-4: color(display-p3 0.37611 0.47444 0.13223);
 	color-4: color-mix(in xyz, red, green 90%);
 
 	/* rgb(65, 126, 0) */
@@ -165,7 +160,6 @@
 
 	/* rgb(243, 40, 0) */
 	color-7: rgb(243, 40, 0);
-	color-7: color(display-p3 0.87772 0.24967 0.13787);
 	color-7: color-mix(in xyz, red 90%, green);
 
 	/* rgb(237, 55, 0) */
@@ -177,4 +171,47 @@
 	color-9: rgb(235, 59, 0);
 	color-9: color(display-p3 0.84845 0.29298 0.07064);
 	color-9: color-mix(in lch, red 90%, green);
+}
+
+.transparent-rectangular {
+	color-1: rgba(0, 0, 255, 0.65);
+	color-1: color-mix(in srgb, transparent, blue 65%);
+	color-2: rgba(0, 0, 255, 0.65);
+	color-2: color-mix(in lab, transparent, blue 65%);
+	color-3: rgba(0, 0, 255, 0.65);
+	color-3: color-mix(in xyz, transparent, blue 65%);
+}
+
+.transparent-polar {
+	color-1: rgba(0, 0, 255, 0.65);
+	color-1: color-mix(in srgb, transparent, blue 65%);
+	color-2: rgba(0, 0, 255, 0.65);
+	color-2: color-mix(in lab, transparent, blue 65%);
+	color-3: rgba(0, 0, 255, 0.65);
+	color-3: color-mix(in xyz, transparent, blue 65%);
+}
+
+.zero-alpha-rectangular {
+	color-1: rgba(0, 0, 255, 0.65);
+	color-1: color-mix(in srgb, rgb(255 0 0 / 0), blue 65%);
+	color-2: rgba(0, 0, 255, 0.65);
+	color-2: color-mix(in lab, rgb(255 0 0 / 0), blue 65%);
+	color-3: rgba(0, 0, 255, 0.65);
+	color-3: color-mix(in xyz, rgb(255 0 0 / 0), blue 65%);
+}
+
+.zero-alpha-cylindrical {
+	color-4: rgba(125, 0, 190, 0.65);
+	color-4: color(display-p3 0.45007 0 0.73452 / 0.65);
+	color-4: color-mix(in oklch, rgb(255 0 0 / 0), blue 65%);
+	color-5: rgba(153, 0, 125, 0.65);
+	color-5: color(display-p3 0.56492 0 0.48893 / 0.65);
+	color-5: color-mix(in lch, rgb(255 0 0 / 0), blue 65%);
+	color-6: rgba(179, 0, 255, 0.65);
+	color-6: color-mix(in hsl, rgb(255 0 0 / 0), blue 65%);
+}
+
+.foo {
+	color: rgb(0, 0, 255);
+	color: color-mix(in srgb, blue, blue 65%);
 }

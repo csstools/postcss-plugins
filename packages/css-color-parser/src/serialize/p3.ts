@@ -10,8 +10,7 @@ import { toPrecision } from './to-precision';
 export function serializeP3(color: ColorData): FunctionNode {
 	let p3 = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
 	if (
-		color.colorNotation !== ColorNotation.RGB &&
-		color.colorNotation !== ColorNotation.HEX
+		color.colorNotation !== ColorNotation.Display_P3
 	) {
 		p3 = XYZ_D50_to_P3_Gamut(colorData_to_XYZ_D50(color).channels);
 	}
