@@ -1,5 +1,5 @@
-import parser, { Selector } from 'postcss-selector-parser';
-import type { Node } from 'postcss-selector-parser';
+import parser from 'postcss-selector-parser';
+import type { Node, Selector } from 'postcss-selector-parser';
 
 export type Specificity = {
 	a: number,
