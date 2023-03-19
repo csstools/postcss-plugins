@@ -4,6 +4,9 @@ import { cliTypescript } from './presets/cli-typescript.mjs';
 import { packageJavascript } from './presets/package-javascript.mjs';
 import { packageTypescript } from './presets/package-typescript.mjs';
 
+// Always clean the dist folder before building.
+fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');
+
 const packageInfo = JSON.parse(fs.readFileSync('./package.json'));
 
 const isTypescript = (() => {
