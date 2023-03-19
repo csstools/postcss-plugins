@@ -44,8 +44,7 @@
 		"lint": "eslint ./src --ext .js --ext .ts --ext .mjs --no-error-on-unmatched-pattern && node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"stryker": "stryker run --logLevel error",
-		"test": "npm run test:exports",
-		"test:exports": "node ./test/_import.mjs && node ./test/_require.cjs"
+		"test": "node ./test/_import.mjs && node ./test/_require.cjs"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers#readme",
 	"repository": {
