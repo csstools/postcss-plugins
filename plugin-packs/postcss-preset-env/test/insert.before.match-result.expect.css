@@ -1,5 +1,4 @@
 .test-lab {
-	background-color: rgba(255, 255, 255, 0);
-	background-color: color(display-p3 1 1 1 / 0);
+	background-color: rgb(166, 98, 120);
 	before: changed-this-declaration;
 }

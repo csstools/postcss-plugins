@@ -301,7 +301,7 @@ postcssTape(plugin)({
 			insertBefore: {
 				'lab-function': [
 					orderDetectionPlugin('before', (decl) => {
-						return decl.prop === 'color' && decl.value.indexOf('rgba(') === 0;
+						return decl.prop === 'color' && decl.value.indexOf('rgb(') === 0;
 					})
 				]
 			}
@@ -335,7 +335,7 @@ postcssTape(plugin)({
 			insertAfter: {
 				'lab-function': [
 					orderDetectionPlugin('after', (decl) => {
-						return decl.prop === 'color' && decl.value.indexOf('rgba(') === 0;
+						return decl.prop === 'color' && decl.value.indexOf('rgb(') === 0;
 					})
 				]
 			}
@@ -351,7 +351,7 @@ postcssTape(plugin)({
 			},
 			insertAfter: {
 				'lab-function': orderDetectionPlugin('after', (decl) => {
-					return decl.prop === 'color' && decl.value.indexOf('rgba(') === 0;
+					return decl.prop === 'color' && decl.value.indexOf('rgb(') === 0;
 				})
 			}
 		},
