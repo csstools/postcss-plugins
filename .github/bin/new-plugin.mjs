@@ -43,7 +43,6 @@ console.log(`- Creating new plugin ${pluginName}`);
 {
 	await fsp.rm(path.join(pluginDir, 'dist'), { recursive: true, force: true });
 	await fsp.rm(path.join(pluginDir, 'node_modules'), { recursive: true, force: true });
-	await fsp.rm(path.join(pluginDir, 'stryker.conf.json'));
 
 	console.log('- Cleaned up files and directories not required in a new plugin');
 }
