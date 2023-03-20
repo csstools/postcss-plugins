@@ -1,0 +1,19 @@
+.example-1 {
+	background: linear-gradient(red 50%, blue calc(50% + +1px));
+	background: linear-gradient(red 50%, blue ++1px);
+}
+
+.example-2 {
+	background: conic-gradient(red +60deg, blue 70deg 120deg, green 180deg, yellow 240deg);
+	background: conic-gradient(red ++60deg, blue ++10deg ++50deg, green ++60deg, yellow ++60deg);
+}
+
+.example-3 {
+	background: conic-gradient(pink +60deg, cyan 0 80deg, gold 0 90deg);
+	background: conic-gradient(pink ++60deg, cyan 0 ++20deg, gold 0 ++10deg);
+}
+
+.example-4 {
+	background: linear-gradient(orange 20px, magenta 2vi, aqua calc(max(20px, 2vi) + +2vw));
+	background: linear-gradient(orange 20px, magenta 2vi, aqua ++2vw);
+}
