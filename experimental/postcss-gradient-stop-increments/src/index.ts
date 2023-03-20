@@ -83,12 +83,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						}
 
 						if (isNumericLargerThanZero(node)) {
-							lastLengthNode = progressLengthNode(lastLengthNode, node);
+							lastLengthNode = maxOfLastAndCurrentLengthNode(lastLengthNode, node);
 							continue;
 						}
 
 						if (isFunctionNode(node) && mathFunctionNameRegex.test(node.getName())) {
-							lastLengthNode = progressLengthNode(lastLengthNode, node);
+							lastLengthNode = maxOfLastAndCurrentLengthNode(lastLengthNode, node);
 							continue;
 						}
 					}
@@ -180,7 +180,7 @@ function incrementLengthNode(lastLengthNode: ComponentValue | null, operatorNode
 	return solvedLengthNode;
 }
 
-function progressLengthNode(lastLengthNode: ComponentValue | null, newLengthNode: ComponentValue): ComponentValue {
+function maxOfLastAndCurrentLengthNode(lastLengthNode: ComponentValue | null, newLengthNode: ComponentValue): ComponentValue {
 	if (!lastLengthNode) {
 		return newLengthNode;
 	}
