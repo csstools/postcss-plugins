@@ -1,4 +1,4 @@
-import { ComponentValue } from '../consume/consume-component-block-function';
+import type { ComponentValue } from '../consume/consume-component-block-function';
 import { isFunctionNode, isSimpleBlockNode } from './type-predicates';
 
 export function replaceComponentValues(

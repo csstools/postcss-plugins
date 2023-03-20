@@ -1,4 +1,4 @@
-import { ComponentValue } from '../consume/consume-component-block-function';
+import type { ComponentValue } from '../consume/consume-component-block-function';
 import { stringify as stringifyTokens } from '@csstools/css-tokenizer';
 
 export function stringify(componentValueLists: Array<Array<ComponentValue>>): string {
