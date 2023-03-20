@@ -93,3 +93,13 @@ assert.deepEqual(calculate(':is(.a + .a + .a, .b + .b + b.b)'), { a: 0, b: 3, c:
 
 assert.deepEqual(calculate(':is(#a + #a + #a, #b + #b + b#b)'), { a: 3, b: 0, c: 1 });
 assert.deepEqual(calculate(':is(#a + #a + #a, #b + #b + #b.b)'), { a: 3, b: 1, c: 0 });
+
+assert.deepEqual(calculate('::view-transition'), { a: 0, b: 0, c: 1 });
+assert.deepEqual(calculate('::view-transition-group(foo)'), { a: 0, b: 0, c: 1 });
+assert.deepEqual(calculate('::view-transition-group(*)'), { a: 0, b: 0, c: 0 });
+assert.deepEqual(calculate('::view-transition-image-pair(foo)'), { a: 0, b: 0, c: 1 });
+assert.deepEqual(calculate('::view-transition-image-pair(*)'), { a: 0, b: 0, c: 0 });
+assert.deepEqual(calculate('::view-transition-old(foo)'), { a: 0, b: 0, c: 1 });
+assert.deepEqual(calculate('::view-transition-old(*)'), { a: 0, b: 0, c: 0 });
+assert.deepEqual(calculate('::view-transition-new(foo)'), { a: 0, b: 0, c: 1 });
+assert.deepEqual(calculate('::view-transition-new(*)'), { a: 0, b: 0, c: 0 });

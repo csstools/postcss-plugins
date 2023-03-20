@@ -1,8 +1,14 @@
 # Changes to Selector Specificity
 
-### Unreleased (patch)
+### Unreleased (minor)
 
 - Improve case insensitive string matching.
+- Add support for:
+	- `::view-transition`
+	- `::view-transition-group(*)` and `::view-transition-group(name)`
+	- `::view-transition-image-par(*)` and `::view-transition-image-par(name)`
+	- `::view-transition-old(*)` and `::view-transition-old(name)`
+	- `::view-transition-new(*)` and `::view-transition-new(name)`
 
 ### 2.1.1 (January 28, 2023)
 

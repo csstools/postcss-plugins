@@ -1,5 +1,5 @@
 import parser from 'postcss-selector-parser';
-import type { Node } from 'postcss-selector-parser';
+import type { Node, Selector } from 'postcss-selector-parser';
 import { toLowerCaseAZ } from './to-lower-case-a-z';
 
 export type Specificity = {
@@ -7,6 +7,16 @@ export type Specificity = {
 	b: number,
 	c: number,
 };
+
+export function compare(s1: Specificity, s2: Specificity): number {
+	if (s1.a === s2.a) {
+		if (s1.b === s2.b) {
+			return s1.c - s2.c;
+		}
+		return s1.b - s2.b;
+	}
+	return s1.a - s2.a;
+}
 
 export function selectorSpecificity(node: Node): Specificity {
 	// https://www.w3.org/TR/selectors-4/#specificity-rules
@@ -58,6 +68,31 @@ export function selectorSpecificity(node: Node): Specificity {
 						a += mostSpecificListItem.a;
 						b += mostSpecificListItem.b;
 						c += mostSpecificListItem.c;
+					}
+				}
+
+				break;
+
+			case '::view-transition-group':
+			case '::view-transition-image-pair':
+			case '::view-transition-old':
+			case '::view-transition-new':
+				// https://drafts.csswg.org/css-view-transitions-1/#named-view-transition-pseudo
+
+				{
+					if (
+						node.nodes &&
+						node.nodes.length === 1 &&
+						node.nodes[0].type === 'selector' &&
+						selectorNodeContainsOnlyUniversal(node.nodes[0])
+					) {
+						return {
+							a: 0,
+							b: 0,
+							c: 0,
+						};
+					} else {
+						c += 1;
 					}
 				}
 
@@ -226,12 +261,22 @@ function isPseudoElement(node: Node): boolean {
 	return parser.isPseudoElement(node);
 }
 
-export function compare(s1: Specificity, s2: Specificity): number {
-	if (s1.a === s2.a) {
-		if (s1.b === s2.b) {
-			return s1.c - s2.c;
-		}
-		return s1.b - s2.b;
+function selectorNodeContainsOnlyUniversal(node: Selector): boolean {
+	if (!node) {
+		return false;
 	}
-	return s1.a - s2.a;
+
+	if (!node.nodes) {
+		return false;
+	}
+
+	const relevantNodes = node.nodes.filter((x) => {
+		return x.type !== 'comment';
+	});
+
+	if (relevantNodes.length !== 1) {
+		return false;
+	}
+
+	return relevantNodes[0].type === 'universal';
 }

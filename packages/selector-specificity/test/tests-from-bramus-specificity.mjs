@@ -69,12 +69,15 @@ assert.deepEqual(calculate('header:has(#top) nav li:nth-last-child(2n + 1 of #ba
 assert.deepEqual(calculate('::after'), { a: 0, b: 0, c: 1 }, '::after');
 assert.deepEqual(calculate('::cue'), { a: 0, b: 0, c: 1 }, '::cue');
 assert.deepEqual(calculate('::before'), { a: 0, b: 0, c: 1 }, '::before');
+assert.deepEqual(calculate('::BEFORE'), { a: 0, b: 0, c: 1 }, '::BEFORE');
 assert.deepEqual(calculate('::first-line'), { a: 0, b: 0, c: 1 }, '::first-line');
 assert.deepEqual(calculate('::first-letter'), { a: 0, b: 0, c: 1 }, '::first-letter');
 
 // Pseudo-Element improperly used as Pseudo-Class Selector = (0,0,1)// @ref https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements#index
 assert.deepEqual(calculate(':before'), { a: 0, b: 0, c: 1 }, ':before');
+assert.deepEqual(calculate(':BEFORE'), { a: 0, b: 0, c: 1 }, ':BEFORE');
 assert.deepEqual(calculate(':after'), { a: 0, b: 0, c: 1 }, ':after');
+assert.deepEqual(calculate(':AFTER'), { a: 0, b: 0, c: 1 }, ':AFTER');
 assert.deepEqual(calculate(':first-line'), { a: 0, b: 0, c: 1 }, ':first-line');
 assert.deepEqual(calculate(':first-letter'), { a: 0, b: 0, c: 1 }, ':first-letter');
 
