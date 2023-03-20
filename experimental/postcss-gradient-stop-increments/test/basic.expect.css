@@ -45,3 +45,11 @@
 .calc-2 {
 	background: repeating-linear-gradient(red round(11px, 10px), blue 15px);
 }
+
+.calc-3 {
+	background: repeating-linear-gradient(red 10px blue 25px);
+}
+
+.var-1 {
+	background: repeating-linear-gradient(red 10px blue calc(10px + var(--foo)));
+}
