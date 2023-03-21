@@ -36,7 +36,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			let modifiedParams = atRule.params;
+			let modifiedParams: string;
 			try {
 				modifiedParams = transformMediaQueryList(atRule.params, options.preserve);
 				if (modifiedParams === atRule.params) {

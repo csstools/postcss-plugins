@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (patch)
+
+- Improved: support for mixins
+
 ### 11.2.1 (February 16, 2023)
 
 - Skip nested rules that have a selector that begins with a letter

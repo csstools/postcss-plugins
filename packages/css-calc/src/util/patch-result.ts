@@ -7,7 +7,7 @@ import { patchCanonicalUnit } from './canonical-unit';
 import { conversionOptions } from '../options';
 
 export function patchCalcResult(x: TokenNode | FunctionNode | -1, options?: conversionOptions): TokenNode | FunctionNode | -1 {
-	let y = x;
+	let y: TokenNode | FunctionNode | -1;
 	y = patchNaN(x);
 	y = patchInfinity(y);
 

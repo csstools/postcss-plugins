@@ -59,10 +59,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 									return;
 								}
 
-								if (sawElseNode) {
-									falsyValueBuffer.push(node);
-									return;
-								}
+								falsyValueBuffer.push(node);
+								return;
 							});
 
 							return false;

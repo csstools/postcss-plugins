@@ -11,3 +11,60 @@ body {
 		background: green;
 }
 	}
+
+
+:root {
+	/* a comment */color: blue;
+
+	background: red;
+	font-size: 1rem;
+
+	margin: 0;
+}
+
+
+@media (min-width: 64em) {
+
+
+:root {
+		background: green;
+}
+	}
+
+html {
+	color: pink;color: blue;
+
+	background: red;
+	font-size: 1rem;
+
+	margin: 0;
+}
+
+@media (min-width: 64em) {
+
+html {
+		background: green;
+}
+	}
+
+.other {
+
+	background: red;
+	font-size: 1rem;
+
+	margin: 0;
+}
+
+.other .a-rule {
+		color: cyan;
+	}
+
+.other {color: blue;
+}
+
+@media (min-width: 64em) {
+
+.other {
+		background: green;
+}
+	}
