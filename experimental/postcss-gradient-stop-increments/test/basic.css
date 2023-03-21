@@ -1,0 +1,55 @@
+.basic-1 {
+	background: linear-gradient(red 50%, blue ++1px);
+}
+
+.basic-2 {
+	background: linear-gradient(red 20%, blue ++20px, green ++20px);
+}
+
+.basic-3 {
+	background: conic-gradient(red 60deg, blue ++60deg, green ++60deg, yellow ++60deg);
+}
+
+.basic-4 {
+	background: conic-gradient(red ++60deg, blue ++60deg, green ++60deg, yellow ++60deg);
+}
+
+.basic-5 {
+	background: repeating-linear-gradient(red 0 10px, blue 0 ++10px);
+}
+
+.basic-6 {
+	background: repeating-linear-gradient(red 0 ++10px, blue 0 ++10px);
+}
+
+.basic-7 {
+	background: repeating-linear-gradient(red 20px, blue 0 10vi, green 0 ++10vw);
+}
+
+.basic-8 {
+	background: repeating-linear-gradient(red 20px, blue 0 +-10px, green 0 ++5px);
+}
+
+.basic-9 {
+	background: repeating-linear-gradient(red 20px, blue 0 10vi, green 0 ++10vw, yellow ++5rem, orange ++10ex);
+}
+
+.basic-10 {
+	background: repeating-linear-gradient(red 20px, blue 0 10vi, green 0 ++10vw, yellow 5rem, orange ++10ex);
+}
+
+.calc-1 {
+	background: repeating-linear-gradient(red calc(10px * 2), blue ++5px);
+}
+
+.calc-2 {
+	background: repeating-linear-gradient(red round(11px, 10px), blue ++5px);
+}
+
+.calc-3 {
+	background: repeating-linear-gradient(red 10px blue +calc(5px * 3));
+}
+
+.var-1 {
+	background: repeating-linear-gradient(red 10px blue +var(--foo));
+}
