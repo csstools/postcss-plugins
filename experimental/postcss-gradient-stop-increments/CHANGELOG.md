@@ -1,5 +1,5 @@
 # Changes to PostCSS Gradient Stop Increments
 
-### Unreleased (major)
+### 1.0.0 (March 21, 2023)
 
 - Initial version
