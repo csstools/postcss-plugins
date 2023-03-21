@@ -62,7 +62,7 @@ export default function mergeSelectors(node: Node, postcssResult: Result, fromSe
 			toSelector = toSelectorAST.toString();
 		}
 
-		let iterations = 1;
+		let iterations: number;
 		let fromSelectorCombinations = [];
 
 		let nestingCounter = 0;

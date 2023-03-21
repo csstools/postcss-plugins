@@ -74,7 +74,7 @@ export function applyTransformsToValue(value: string|undefined|null, transformOp
 		return value;
 	}
 
-	const dimension = valueParser.unit(value ?? '');
+	const dimension = valueParser.unit(value);
 	if (!dimension || dimension.unit === transformOptions.toUnit) {
 		return value;
 	}

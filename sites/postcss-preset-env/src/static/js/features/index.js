@@ -16,9 +16,12 @@
 	}
 
 	!function d() {
-		/c/.test(document.readyState) && document.body
-			? document.removeEventListener('readystatechange', d) | onParsed()
-			: document.addEventListener('readystatechange', d);
+		if (/c/.test(document.readyState) && document.body) {
+			document.removeEventListener('readystatechange', d);
+			onParsed();
+		} else {
+			document.addEventListener('readystatechange', d);
+		}
 	}();
 
 	window.addEventListener('hashchange', onHashChange);

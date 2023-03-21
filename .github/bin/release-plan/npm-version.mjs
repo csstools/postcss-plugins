@@ -1,5 +1,4 @@
 import { spawn } from 'child_process';
-import { npmInstall } from './npm-install.mjs';
 import fs from 'fs/promises';
 import path from 'path';
 
