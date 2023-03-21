@@ -1,4 +1,4 @@
-import type { ColorData } from '../color-data';
+import { ColorData, setPowerlessComponents } from '../color-data';
 import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css-tokenizer';
 import { ColorNotation } from '../color-notation';
 import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
@@ -8,7 +8,9 @@ import { colorData_to_XYZ_D50 } from '../color-data';
 import { toPrecision } from './to-precision';
 
 export function serializeRGB(color: ColorData): FunctionNode {
+	color.channels = setPowerlessComponents(color.channels, color.colorNotation);
 	let srgb = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
+
 	if (
 		color.colorNotation !== ColorNotation.RGB &&
 		color.colorNotation !== ColorNotation.HEX

@@ -219,7 +219,7 @@
 	prop-1: oklch(0% 0.02 90);
 	/* teal */
 	prop-2: rgb(0, 0, 0);
-	prop-2: color(display-p3 0.00002 0 0.00029);
+	prop-2: color(display-p3 0 0 0);
 	prop-2: oklch(0% 0.02 285);
 	/* teal */
 	prop-3: rgb(0, 0, 2);

@@ -281,58 +281,66 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 	}
 
 	// 3. Convert powerless components to missing components
-	switch (toNotation) {
+	outputColorData.channels = setPowerlessComponents(outputColorData.channels, toNotation);
+
+	return outputColorData;
+}
+
+export function setPowerlessComponents(a: Color, colorNotation: ColorNotation): Color {
+	const out: Color = [...a];
+
+	switch (colorNotation) {
 		case ColorNotation.HSL:
-			if (reducePrecision(outputColorData.channels[2]) <= 0 || reducePrecision(outputColorData.channels[2]) >= 100) {
-				outputColorData.channels[0] = NaN;
-				outputColorData.channels[1] = NaN;
+			if (reducePrecision(out[2]) <= 0 || reducePrecision(out[2]) >= 100) {
+				out[0] = NaN;
+				out[1] = NaN;
 			}
 
-			if (outputColorData.channels[1] <= 0) {
-				outputColorData.channels[0] = NaN;
+			if (out[1] <= 0) {
+				out[0] = NaN;
 			}
 
 			break;
 		case ColorNotation.HWB:
-			if ((Math.max(0, reducePrecision(outputColorData.channels[1])) + Math.max(0, reducePrecision(outputColorData.channels[2]))) >= 100) {
-				outputColorData.channels[0] = NaN;
+			if ((Math.max(0, reducePrecision(out[1])) + Math.max(0, reducePrecision(out[2]))) >= 100) {
+				out[0] = NaN;
 			}
 			break;
 		case ColorNotation.Lab:
-			if (reducePrecision(outputColorData.channels[0]) <= 0 || reducePrecision(outputColorData.channels[0]) >= 100) {
-				outputColorData.channels[1] = NaN;
-				outputColorData.channels[2] = NaN;
+			if (reducePrecision(out[0]) <= 0 || reducePrecision(out[0]) >= 100) {
+				out[1] = NaN;
+				out[2] = NaN;
 			}
 			break;
 		case ColorNotation.LCH:
-			if (reducePrecision(outputColorData.channels[1]) <= 0) {
-				outputColorData.channels[2] = NaN;
+			if (reducePrecision(out[1]) <= 0) {
+				out[2] = NaN;
 			}
 
-			if (reducePrecision(outputColorData.channels[0]) <= 0 || reducePrecision(outputColorData.channels[0]) >= 100) {
-				outputColorData.channels[1] = NaN;
-				outputColorData.channels[2] = NaN;
+			if (reducePrecision(out[0]) <= 0 || reducePrecision(out[0]) >= 100) {
+				out[1] = NaN;
+				out[2] = NaN;
 			}
 			break;
 		case ColorNotation.OKLab:
-			if (reducePrecision(outputColorData.channels[0]) <= 0 || reducePrecision(outputColorData.channels[0]) >= 1) {
-				outputColorData.channels[1] = NaN;
-				outputColorData.channels[2] = NaN;
+			if (reducePrecision(out[0]) <= 0 || reducePrecision(out[0]) >= 1) {
+				out[1] = NaN;
+				out[2] = NaN;
 			}
 			break;
 		case ColorNotation.OKLCH:
-			if (reducePrecision(outputColorData.channels[1]) <= 0) {
-				outputColorData.channels[2] = NaN;
+			if (reducePrecision(out[1]) <= 0) {
+				out[2] = NaN;
 			}
 
-			if (reducePrecision(outputColorData.channels[0]) <= 0 || reducePrecision(outputColorData.channels[0]) >= 1) {
-				outputColorData.channels[1] = NaN;
-				outputColorData.channels[2] = NaN;
+			if (reducePrecision(out[0]) <= 0 || reducePrecision(out[0]) >= 1) {
+				out[1] = NaN;
+				out[2] = NaN;
 			}
 			break;
 	}
 
-	return outputColorData;
+	return out;
 }
 
 function carryForwardMissingComponents(a: Color, aIndices: Array<number>, b: Color, bIndices: Array<number>): Color {
