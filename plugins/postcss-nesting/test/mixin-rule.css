@@ -2,5 +2,16 @@ a {
 	& b {
 		color: red;
 	}
+
+	@mixin;
+}
+
+f {
+	& g {
+		color: red;
+	}
+
+	/* a comment */
+
 	@mixin;
 }

@@ -11,3 +11,38 @@ body {
 		background: green;
 }
 	}
+
+
+:root {
+	/* a comment */
+
+	background: red;
+	font-size: 1rem;
+
+	margin: 0;color: blue;
+}
+
+
+@media (min-width: 64em) {
+
+
+:root {
+		background: green;
+}
+	}
+
+html {
+	color: pink;
+
+	background: red;
+	font-size: 1rem;
+
+	margin: 0;color: blue;
+}
+
+@media (min-width: 64em) {
+
+html {
+		background: green;
+}
+	}
