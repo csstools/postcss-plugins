@@ -99,11 +99,8 @@ const formatted = {};
 			formatted.exports['.'] = {
 				types: packageJSONInfo.exports['.'].types,
 				...formatted.exports['.'],
-			}
+			};
 		}
-		delete packageJSONInfo.exports;
-	} else if (packageJSONInfo.exports) {
-		formatted.exports = packageJSONInfo.exports;
 		delete packageJSONInfo.exports;
 	}
 

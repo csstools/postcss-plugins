@@ -21,6 +21,7 @@ export default function groupDeclarations(node: Container<ChildNode>) {
 			child.remove();
 			node.insertAfter(indexOfLastDeclarationInFirstDeclarationList, child);
 			indexOfLastDeclarationInFirstDeclarationList = node.index(child);
+			return;
 		}
 
 		if (child.type === 'atrule' && child.name.toLowerCase() === 'mixin') {
@@ -29,11 +30,11 @@ export default function groupDeclarations(node: Container<ChildNode>) {
 			// - a mixin after declarations will resolve to more declarations
 			// - a mixin after rules or at-rules will resolve to more rules or at-rules
 			while (prev) {
-				if (prev && (prev.type === 'rule' || prev.type === 'atrule')) {
+				if ((prev.type === 'rule' || prev.type === 'atrule')) {
 					return;
 				}
 
-				prev = prev.next();
+				prev = prev.prev();
 			}
 
 			if (indexOfLastDeclarationInFirstDeclarationList === index - 1) {
@@ -44,6 +45,7 @@ export default function groupDeclarations(node: Container<ChildNode>) {
 			child.remove();
 			node.insertAfter(indexOfLastDeclarationInFirstDeclarationList, child);
 			indexOfLastDeclarationInFirstDeclarationList = node.index(child);
+			return;
 		}
 
 		if (child.type === 'comment') {
@@ -60,6 +62,7 @@ export default function groupDeclarations(node: Container<ChildNode>) {
 			child.remove();
 			node.insertAfter(indexOfLastDeclarationInFirstDeclarationList, child);
 			indexOfLastDeclarationInFirstDeclarationList = node.index(child);
+			return;
 		}
 	});
 }

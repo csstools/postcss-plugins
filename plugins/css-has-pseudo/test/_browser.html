@@ -72,9 +72,6 @@
 			const red = 'rgb(255, 0, 0)';
 			const green = 'rgb(0, 128, 0)';
 			const blue = 'rgb(0, 0, 255)';
-			const yellow = 'rgb(255, 255, 0)';
-			const purple = 'rgb(128, 0, 128)';
-			const pink = 'rgb(255, 192, 203)';
 
 			function testColor(test_name, el, color) {
 				var actual = getComputedStyle(el).color;
@@ -250,7 +247,7 @@
 
 			async function testElementInsertionBefore(beforeElement, expectedColor) {
 				const newElement = document.createElement('div');
-				newElement.classList.add('c_test')
+				newElement.classList.add('c_test');
 
 				beforeElement.before(newElement);
 				await rafP(() => {
@@ -319,7 +316,7 @@
 
 			async function testElementInsertionAfter(afterElement, expectedColor) {
 				const newElement = document.createElement('div');
-				newElement.classList.add('c_test')
+				newElement.classList.add('c_test');
 
 				afterElement.after(newElement);
 				await rafP(() => {
@@ -603,7 +600,6 @@
 			const blue = 'rgb(0, 0, 255)';
 			const yellow = 'rgb(255, 255, 0)';
 			const purple = 'rgb(128, 0, 128)';
-			const pink = 'rgb(255, 192, 203)';
 
 			function testColor(test_name, color) {
 				var actual = getComputedStyle(a_subject).backgroundColor;
@@ -625,7 +621,7 @@
 
 			async function testElementInsertionBefore(beforeElement, expectedColor) {
 				const newElement = document.createElement('div');
-				newElement.classList.add('a_Test')
+				newElement.classList.add('a_Test');
 
 				beforeElement.before(newElement);
 				await rafP(() => {
@@ -696,7 +692,7 @@
 
 			async function testElementInsertionAfter(afterElement, expectedColor) {
 				const newElement = document.createElement('div');
-				newElement.classList.add('a_Test')
+				newElement.classList.add('a_Test');
 
 				afterElement.after(newElement);
 				await rafP(() => {
@@ -1198,7 +1194,6 @@
 				</main>
 			`;
 
-			const red = 'rgb(255, 0, 0)';
 			var green = 'rgb(0, 128, 0)';
 
 			function testColor(el, pseudo, color) {

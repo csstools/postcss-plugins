@@ -44,7 +44,7 @@ function createSensitiveAttributes(attribute) {
 }
 
 function createNewSelectors(selector) {
-	let newSelectors = [selectorParser.selector({value: '', nodes: []})];
+	let newSelectors = [selectorParser.selector({ value: '', nodes: [] })];
 
 	selector.walk(node => {
 		if (!nodeIsInsensitiveAttribute(node)) {
@@ -117,7 +117,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					let modifiedSelector = rule.selector;
+					let modifiedSelector: string;
 
 					try {
 						modifiedSelector = selectorParser(transform).processSync(rule.selector);

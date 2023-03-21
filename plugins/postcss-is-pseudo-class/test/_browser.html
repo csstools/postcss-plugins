@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<title></title>
 	<link rel="help" href="https://drafts.csswg.org/selectors-4/#matches">
 	<link rel="stylesheet" href="/test/browser.expect.css">
 </head>
+
 <body>
 	<the-fixture id="fixture"></the-fixture>
 
@@ -30,7 +32,10 @@
 		}
 
 		self.runTest = function runTest() {
-			return testNested() && testSpecificity() && testInvalidation();
+			testNested();
+			testSpecificity();
+			testInvalidation();
+			return true;
 		}
 
 		function testNested() {
@@ -72,7 +77,7 @@
 				assert_equals(getComputedStyle(e1).color, red);
 			}, "Test nested :is() specificity for class within arguments.");
 
-			return true;
+			return;
 		}
 
 		function testSpecificity() {
@@ -94,7 +99,7 @@
 				assert_equals(getComputedStyle(target).fontSize, "10px", "fontSize");
 			}, "Test :is() uses highest possible specificity");
 
-			return true;
+			return;
 		}
 
 		function testInvalidation() {
@@ -191,8 +196,9 @@
 				assert_equals(getComputedStyle(h1).color, blue);
 			}, "Test specificity of :is().");
 
-			return true;
+			return;
 		}
 	</script>
 </body>
+
 </html>

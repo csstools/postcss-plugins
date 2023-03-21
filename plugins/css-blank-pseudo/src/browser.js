@@ -144,7 +144,7 @@ export default function cssBlankPseudoInit(opts) {
 	observeValueOfHTMLElement(self.HTMLInputElement, handler);
 	observeValueOfHTMLElement(self.HTMLSelectElement, handler);
 	observeValueOfHTMLElement(self.HTMLTextAreaElement, handler);
-	observeSelectedOfHTMLElement(self.HTMLOptionElement, handler);
+	observeSelectedOfHTMLElement(self.HTMLOptionElement);
 
 	// conditionally update all form control elements
 	updateAllCandidates();
