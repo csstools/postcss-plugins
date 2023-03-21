@@ -1,6 +1,6 @@
 # Changes to Selector Specificity
 
-### Unreleased (minor)
+### 2.2.0 (March 21, 2023)
 
 - Add support for:
 	- `::view-transition`
