@@ -41,3 +41,20 @@ html {
 
 	margin: 0;
 }
+
+.other {
+	.a-rule {
+		color: cyan;
+	}
+
+	@mixin;
+
+	background: red;
+	font-size: 1rem;
+
+	@media (min-width: 64em) {
+		background: green;
+	}
+
+	margin: 0;
+}
