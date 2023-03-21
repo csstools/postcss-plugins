@@ -1,6 +1,6 @@
 # Changes to PostCSS Trigonometric Functions
 
-### Unreleased (minor)
+### 2.1.0 (March 21, 2023)
 
 - Added: `@csstools/css-calc`
 - Added: unit conversions (`sin(30deg + (.125turn / 3))`)
