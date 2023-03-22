@@ -9,7 +9,7 @@
 Add [Color Helpers] to your project:
 
 ```bash
-npm install postcss @csstools/color-helpers --save-dev
+npm install @csstools/color-helpers --save-dev
 ```
 
 This package exists to join all the different color functions scattered among the Colors 4 and Colors 5 plugins we maintain such as:

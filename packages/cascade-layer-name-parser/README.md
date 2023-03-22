@@ -9,7 +9,7 @@
 Add [Cascade Layer Name Parser] to your project:
 
 ```bash
-npm install postcss @csstools/cascade-layer-name-parser @csstools/css-parser-algorithms @csstools/css-tokenizer --save-dev
+npm install @csstools/cascade-layer-name-parser @csstools/css-parser-algorithms @csstools/css-tokenizer --save-dev
 ```
 
 [Cascade Layer Name Parser] depends on our CSS tokenizer and parser algorithms.

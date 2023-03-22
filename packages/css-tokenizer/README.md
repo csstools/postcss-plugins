@@ -11,7 +11,7 @@ Implemented from : https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/
 Add [CSS Tokenizer] to your project:
 
 ```bash
-npm install postcss @csstools/css-tokenizer --save-dev
+npm install @csstools/css-tokenizer --save-dev
 ```
 
 ```js

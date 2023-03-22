@@ -9,7 +9,25 @@
 Add [CSS Color Parser] to your project:
 
 ```bash
-npm install postcss @csstools/css-color-parser @csstools/css-parser-algorithms @csstools/css-tokenizer --save-dev
+npm install @csstools/css-color-parser @csstools/css-parser-algorithms @csstools/css-tokenizer --save-dev
+```
+
+```ts
+import { color } from '@csstools/css-color-parser';
+import { isFunctionNode, parseComponentValue } from '@csstools/css-parser-algorithms';
+import { serializeRGB } from '@csstools/css-color-parser';
+import { tokenize } from '@csstools/css-tokenizer';
+
+// color() expects a parsed component value.
+const hwbComponentValue = parseComponentValue(tokenize({ css: 'hwb(10deg 10% 20%)' }));
+const colorData = color(hwbComponentValue);
+if (colorData) {
+	console.log(colorData);
+
+	// serializeRGB() returns a component value.
+	const rgbComponentValue = serializeRGB(colorData);
+	console.log(rgbComponentValue.toString());
+}
 ```
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
