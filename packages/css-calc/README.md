@@ -11,7 +11,7 @@ Implemented from : https://drafts.csswg.org/css-values-4/ on 2023-02-17
 Add [CSS calc] to your project:
 
 ```bash
-npm install postcss @csstools/css-calc @csstools/css-parser-algorithms @csstools/css-tokenizer --save-dev
+npm install @csstools/css-calc @csstools/css-parser-algorithms @csstools/css-tokenizer --save-dev
 ```
 
 ### With string values :

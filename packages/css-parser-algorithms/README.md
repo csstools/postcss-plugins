@@ -11,7 +11,7 @@ Implemented from : https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/
 Add [CSS Parser Algorithms] to your project:
 
 ```bash
-npm install postcss @csstools/css-parser-algorithms @csstools/css-tokenizer --save-dev
+npm install @csstools/css-parser-algorithms @csstools/css-tokenizer --save-dev
 ```
 
 [CSS Parser Algorithms] only accepts tokenized CSS.

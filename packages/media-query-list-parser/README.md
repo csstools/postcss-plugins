@@ -11,7 +11,7 @@ Implemented from : https://www.w3.org/TR/mediaqueries-5/
 Add [Media Query List Parser] to your project:
 
 ```bash
-npm install postcss @csstools/media-query-list-parser @csstools/css-parser-algorithms @csstools/css-tokenizer --save-dev
+npm install @csstools/media-query-list-parser @csstools/css-parser-algorithms @csstools/css-tokenizer --save-dev
 ```
 
 [Media Query List Parser] depends on our CSS tokenizer and parser algorithms.
