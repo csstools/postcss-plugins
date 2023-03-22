@@ -115,6 +115,22 @@ postcssTape(plugin)({
 			inlineDirection: 'top-to-bottom'
 		},
 	},
+	'transition': {
+		message: 'supports logical "transition" property',
+	},
+	'transition:chinese': {
+		message: 'supports logical "transition" property { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
+		options: {
+			blockDirection: 'right-to-left',
+			inlineDirection: 'top-to-bottom'
+		},
+	},
+	'transition:hebrew': {
+		message: 'supports logical "transition" property { inlineDirection: "right-to-left" }',
+		options: {
+			inlineDirection: 'right-to-left',
+		}
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

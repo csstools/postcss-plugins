@@ -19,6 +19,7 @@ import {
 import { transformTextAlign } from './lib/transform-text-align';
 import { transformValue } from './lib/transform-value';
 import { directionFlowToAxes } from './utils/direction-flow-to-axes';
+import { transformTransition } from './lib/transform-transition';
 
 /** postcss-logical plugin options */
 export type pluginOptions = {
@@ -244,6 +245,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			),
 			'border-end-end-radius': makeTransform(
 				transformBorderRadius(directionConfig),
+			),
+			'transition': makeTransform(
+				transformTransition(directionConfig),
 			),
 		},
 	};

@@ -1,0 +1,3 @@
+.foo {
+	transition: color 1s, margin-inline 4s 1s ease-in-out, inline-size 2s 1s, padding-block 3s 1s;
+}
