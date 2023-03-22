@@ -1,4 +1,6 @@
 import './basic/basic.mjs';
+import './basic/color-function.mjs';
+import './basic/color-mix-function.mjs';
 import './basic/keywords.mjs';
 import './basic/lab.mjs';
 import './basic/lch.mjs';

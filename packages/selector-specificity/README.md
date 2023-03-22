@@ -9,7 +9,7 @@
 Add [Selector Specificity] to your project:
 
 ```bash
-npm install postcss @csstools/selector-specificity --save-dev
+npm install @csstools/selector-specificity --save-dev
 ```
 
 ```js
