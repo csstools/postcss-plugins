@@ -22,12 +22,6 @@
 		--firebrick: rgb(179, 35, 35);
 	}
 
-@supports (color: color(display-p3 0 0 0)){
-.test-custom-property-fallbacks:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-		--firebrick: color(display-p3 0.64331 0.19245 0.16771);
-	}
-}
-
 @supports (color: lab(0% 0 0)){
 .test-custom-property-fallbacks:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		--firebrick: lab(40% 56.6 39);
@@ -254,10 +248,8 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 
 .test-lab-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	background-color: rgb(179, 35, 35);
-	background-color: color(display-p3 0.64331 0.19245 0.16771);
 	background-color: lab(40% 56.6 39);
 	color: rgba(179, 34, 35, 0.5);
-	color: color(display-p3 0.64368 0.19188 0.16791 / 50%);
 	color: lch(40% 68.8 34.5 / 50%);
 	-webkit-box-ordinal-group: 18;
 	-webkit-order: 17;
@@ -552,7 +544,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	}
 
 .test-hwb-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	background-color: rgba(0, 195, 255, .5);
+	background-color: rgba(0, 196, 255, 0.5);
 	background-color: hwb(194 0% 0% / .5);
 }
 
@@ -729,76 +721,56 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 }
 
 .color-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	prop-1: rgb(0,132,94);
+	prop-1: rgb(0, 132, 94);
 	prop-1: color(display-p3 0.00000 0.51872 0.36985);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
-	prop-3: rgba(7,3,1,1);
+	prop-3: rgb(7, 3, 1);
 	prop-3: color(display-p3 0.02472 0.01150 0.00574 / 1);
-	prop-4: rgba(7,3,1,-webkit-calc(33 / 22));
-	prop-4: rgba(7,3,1,-moz-calc(33 / 22));
-	prop-4: rgba(7,3,1,calc(33 / 22));
+	prop-4: rgb(7, 3, 1);
 	prop-4: color(display-p3 0.02472 0.01150 0.00574 / -webkit-calc(33 / 22));
 	prop-4: color(display-p3 0.02472 0.01150 0.00574 / -moz-calc(33 / 22));
 	prop-4: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
-	prop-5: rgb(255,255,255);
 	prop-5: color(display-p3 1 1 1 1);
 }
 
 .oklab:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	color-1: rgb(73, 71, 69);
-	color-1: color(display-p3 0.28515 0.27983 0.27246);
 	color-1: oklab(40% 0.001236 0.0039);
-	color-2: rgba(121, 34, 67, 1);
-	color-2: color(display-p3 0.43853 0.16014 0.26019 / 1);
+	color-2: rgb(121, 34, 67);
 	color-2: oklab(40% 0.1236 0.0039 / 1);
-	color-3: rgba(121, 34, 67, .5);
-	color-3: color(display-p3 0.43853 0.16014 0.26019 / .5);
+	color-3: rgba(121, 34, 67, 0.5);
 	color-3: oklab(40% 0.1236 0.0039 / .5);
-	color-4: rgba(121, 34, 67, 1);
-	color-4: color(display-p3 0.43853 0.16014 0.26019 / 100%);
+	color-4: rgb(121, 34, 67);
 	color-4: oklab(40% 0.1236 0.0039 / 100%);
 	color-5: rgba(121, 34, 67, 0.5);
-	color-5: color(display-p3 0.43853 0.16014 0.26019 / 50%);
 	color-5: oklab(40% 0.1236 0.0039 / 50%);
 	color-6: rgb(177, 102, 126);
-	color-6: color(display-p3 0.65225 0.41303 0.49110);
 	color-6: oklab(60% 0.1 0);
 	color-7: oklab(60% 0.1 0 foo);
 	color-8: rgb(125, 35, 41);
-	color-8: color(display-p3 0.45163 0.16556 0.17021);
 	color-8: oklab(40.101% 0.1147 0.0453);
 	color-9: rgb(198, 93, 7);
-	color-9: color(display-p3 0.72414 0.38678 0.14879);
 	color-9: oklab(59.686% 0.1009 0.1192);
 	color-10: rgb(157, 147, 24);
-	color-10: color(display-p3 0.60930 0.57658 0.20615);
 	color-10: oklab(65.125% -0.0320 0.1274);
 	color-11: rgb(104, 166, 57);
-	color-11: color(display-p3 0.46287 0.64491 0.28775);
 	color-11: oklab(66.016% -0.1084 0.1114);
 	color-12: rgb(98, 172, 239);
-	color-12: color(display-p3 0.45207 0.66555 0.91656);
 	color-12: oklab(72.322% -0.0465 -0.1150);
 }
 
 .oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	color-1: rgb(126, 37, 15);
-	color-1: color(display-p3 0.45368 0.16978 0.09411);
 	color-1: oklch(40% 0.1268735435 34.568626);
-	color-2: rgba(126, 37, 15, 1);
-	color-2: color(display-p3 0.45368 0.16978 0.09411 / 1);
+	color-2: rgb(126, 37, 15);
 	color-2: oklch(40% 0.1268735435 34.568626 / 1);
-	color-3: rgba(126, 37, 15, .5);
-	color-3: color(display-p3 0.45368 0.16978 0.09411 / .5);
+	color-3: rgba(126, 37, 15, 0.5);
 	color-3: oklch(40% 0.1268735435 34.568626 / .5);
-	color-4: rgba(126, 37, 15, 1);
-	color-4: color(display-p3 0.45368 0.16978 0.09411 / 100%);
+	color-4: rgb(126, 37, 15);
 	color-4: oklch(40% 0.1268735435 34.568626 / 100%);
 	color-5: rgba(126, 37, 15, 0.5);
-	color-5: color(display-p3 0.45368 0.16978 0.09411 / 50%);
 	color-5: oklch(40% 0.1268735435 34.568626 / 50%);
 	color-6: rgb(197, 84, 124);
-	color-6: color(display-p3 0.71738 0.35446 0.48551);
 	color-6: oklch(60% 0.150 0);
 
 	color-7: rgb(0, 152, 131);
@@ -821,20 +793,14 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 
 	color-12: rgb(188, 101, 59);
 
-	color-12: color(display-p3 0.69260 0.41373 0.26821);
-
 	color-12: oklch(60% 0.1250 45);
 	color-13: rgb(188, 101, 59);
-	color-13: color(display-p3 0.69260 0.41373 0.26821);
 	color-13: oklch(60% 0.1250 45deg);
 	color-14: rgb(188, 101, 59);
-	color-14: color(display-p3 0.69260 0.41373 0.26821);
 	color-14: oklch(60% 0.1250 0.125turn);
 	color-15: rgb(188, 101, 59);
-	color-15: color(display-p3 0.69260 0.41373 0.26821);
 	color-15: oklch(60% 0.1250 50grad);
 	color-16: rgb(188, 101, 59);
-	color-16: color(display-p3 0.69260 0.41373 0.26821);
 	color-16: oklch(60% 0.1250 0.785398rad);
 	color-17: oklch(60% 0.1250 0.785398unknown);
 }

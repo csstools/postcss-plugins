@@ -1,6 +1,7 @@
 import { clip } from 'utils/clip';
 import { OKLCH_to_OKLab } from 'conversions/oklch-to-oklab';
 import { deltaEOK } from 'calculations/delta-EOK';
+import type { Color } from 'types/color';
 
 export function binarySearchGamut(
 	startOKLCH: Color,

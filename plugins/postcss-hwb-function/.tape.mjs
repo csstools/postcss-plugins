@@ -6,7 +6,7 @@ postcssTape(plugin)({
 		message: 'supports basic usage',
 	},
 	'basic:preserve-true': {
-		message: 'supports variables with { preserve: true } usage',
+		message: 'supports basic usage with { preserve: true }',
 		options: {
 			preserve: true
 		}

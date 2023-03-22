@@ -1,5 +1,6 @@
 import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { MediaQuery } from './media-query';
 
 export class CustomMedia {
@@ -57,7 +58,7 @@ export class CustomMedia {
 			}
 
 			if (token[0] === TokenType.Ident) {
-				return token[4].value.toLowerCase() === 'true';
+				return toLowerCaseAZ(token[4].value) === 'true';
 			}
 
 			return false;
@@ -82,7 +83,7 @@ export class CustomMedia {
 			}
 
 			if (token[0] === TokenType.Ident) {
-				return token[4].value.toLowerCase() === 'false';
+				return toLowerCaseAZ(token[4].value) === 'false';
 			}
 
 			return false;

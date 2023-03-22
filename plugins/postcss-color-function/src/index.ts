@@ -1,25 +1,24 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { Declaration, Result } from 'postcss';
+import type { Declaration } from 'postcss';
 import type { PluginCreator } from 'postcss';
+import { tokenize } from '@csstools/css-tokenizer';
+import { color, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
 import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-import { modifiedValues } from './modified-value';
+import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 
 type basePluginOptions = {
 	preserve: boolean,
 }
 
-/** Transform color() function in CSS. */
+const colorFunctionRegex = /(color)\(/i;
+const colorNameRegex = /^(color)$/i;
+
+/* Transform the color() function in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : false;
 	return {
 		postcssPlugin: 'postcss-color-function',
-		Declaration: (decl: Declaration, { result }: { result: Result }) => {
-			const originalValue = decl.value;
-			if (!originalValue.toLowerCase().includes('color(')) {
-				return;
-			}
-
+		Declaration: (decl: Declaration) => {
 			if (hasFallback(decl)) {
 				return;
 			}
@@ -28,14 +27,38 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				return;
 			}
 
-			const modified = modifiedValues(originalValue, decl, result, preserve);
-			if (typeof modified === 'undefined') {
+			const originalValue = decl.value;
+			if (!(colorFunctionRegex.test(originalValue.toLowerCase()))) {
+				return;
+			}
+
+			const tokens = tokenize({ css: originalValue });
+			const replacedRGB = replaceComponentValues(
+				parseCommaSeparatedListOfComponentValues(tokens),
+				(componentValue) => {
+					if (isFunctionNode(componentValue) && colorNameRegex.test(componentValue.getName())) {
+						const colorData = color(componentValue);
+						if (!colorData) {
+							return;
+						}
+
+						if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
+							return;
+						}
+
+						return serializeRGB(colorData);
+					}
+				},
+			);
+
+			const modified = stringify(replacedRGB);
+			if (modified === originalValue) {
 				return;
 			}
 
 			decl.cloneBefore({ value: modified });
 
-			if (!preserve) {
+			if (!opts?.preserve) {
 				decl.remove();
 			}
 		},
@@ -52,7 +75,7 @@ export type pluginOptions = {
 	enableProgressiveCustomProperties?: boolean,
 };
 
-/* Transform color() function in CSS. */
+/* Transform the color() function in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		preserve: false,
@@ -75,4 +98,3 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 postcssPlugin.postcss = true;
 
 export default postcssPlugin;
-

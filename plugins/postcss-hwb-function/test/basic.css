@@ -1,12 +1,14 @@
 .test-hwb {
-	color-1: hwb(194 0% 0%); /* #00c3ff */
-	color-2: hwb(194 0% 0% / .5); /* #00c3ff with 50% opacity */
+	color-1: hwb(194 0% 0%);
+	color-2: hwb(194 0% 0% / .5);
 	color-3: hwb(0 10% 90%);
 	color-4: hwb(0 20% 80%);
 	color-5: hwb(0 30% 70%);
 	color-6: hwb(0 40% 60%);
 	color-7: hwb(0 50% 50%);
 	color-8: hwb(0 60% 40%);
+	color-9: hwb(none 60% 40%);
+	color-10: hwb(0 60% 40% / var(--alpha));
 }
 
 .test-ignore {

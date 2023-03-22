@@ -2,6 +2,7 @@
 
 ### 2.2.0 (March 21, 2023)
 
+- Improve case insensitive string matching.
 - Add support for:
 	- `::view-transition`
 	- `::view-transition-group(*)` and `::view-transition-group(name)`

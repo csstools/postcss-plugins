@@ -1,3 +1,5 @@
+import type { Color } from 'types/color';
+
 /**
  * Convert an array of linear-light rec2020 RGB  in the range 0.0-1.0
  * to gamma corrected form ITU-R BT.2020-2 p.4

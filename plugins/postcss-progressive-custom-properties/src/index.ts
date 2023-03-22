@@ -92,4 +92,3 @@ const creator: PluginCreator<null> = () => {
 creator.postcss = true;
 
 export default creator;
-

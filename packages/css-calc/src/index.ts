@@ -1,31 +1,16 @@
-import { stringify, tokenizer } from '@csstools/css-tokenizer';
-import { ComponentValue, isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
-import { solve } from './calculation';
-import { mathFunctions } from './functions/calc';
-import { tokenizeGlobals } from './util/globals';
-import { patchCalcResult } from './util/patch-result';
-
-import type { conversionOptions } from './options';
 export type { conversionOptions } from './options';
+import type { conversionOptions } from './options';
+import { ComponentValue, isFunctionNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
+import { mathFunctions } from './functions/calc';
+import { patchCalcResult } from './util/patch-result';
+import { replaceComponentValues } from '@csstools/css-parser-algorithms';
+import { solve } from './calculation';
+import { stringify, tokenize } from '@csstools/css-tokenizer';
+import { toLowerCaseAZ } from './util/to-lower-case-a-z';
+import { tokenizeGlobals } from './util/globals';
 
-export function calc(css: string, options?: conversionOptions) {
-	const t = tokenizer({
-		css: css,
-	});
-
-	const tokens = [];
-
-	{
-		while (!t.endOfFile()) {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			tokens.push(t.nextToken()!);
-		}
-
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		tokens.push(t.nextToken()!); // EOF-token
-	}
-
-	const result = parseCommaSeparatedListOfComponentValues(tokens, {});
+export function calc(css: string, options?: conversionOptions): string {
+	const result = parseCommaSeparatedListOfComponentValues(tokenize({css: css}), {});
 
 	return calcFromComponentValues(result, options).map((componentValues) => {
 		return componentValues.map((x) => stringify(...x.tokens())).join('');
@@ -35,48 +20,15 @@ export function calc(css: string, options?: conversionOptions) {
 export function calcFromComponentValues(componentValuesList: Array<Array<ComponentValue>>, options?: conversionOptions) {
 	const tokenizedGlobals = tokenizeGlobals(options?.globals);
 
-	for (let i = 0; i < componentValuesList.length; i++) {
-		const componentValues = componentValuesList[i];
-
-		for (let j = 0; j < componentValues.length; j++) {
-			const componentValue = componentValues[j];
-
-			if (isFunctionNode(componentValue)) {
-				const mathFunction = mathFunctions.get(componentValue.getName().toLowerCase());
-				if (mathFunction) {
-					const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals)), options);
-					if (calcResult !== -1) {
-						componentValues.splice(j, 1, calcResult);
-						continue;
-					}
+	return replaceComponentValues(componentValuesList, (componentValue) => {
+		if (isFunctionNode(componentValue)) {
+			const mathFunction = mathFunctions.get(toLowerCaseAZ(componentValue.getName()));
+			if (mathFunction) {
+				const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals)), options);
+				if (calcResult !== -1) {
+					return calcResult;
 				}
 			}
-
-			if (!isSimpleBlockNode(componentValue) && !isFunctionNode(componentValue)) {
-				continue;
-			}
-
-			componentValue.walk((entry, index) => {
-				if (typeof index !== 'number') {
-					return;
-				}
-
-				const node = entry.node;
-				if (isFunctionNode(node)) {
-					const mathFunction = mathFunctions.get(node.getName().toLowerCase());
-					if (!mathFunction) {
-						return;
-					}
-
-					const calcResult = patchCalcResult(solve(mathFunction(node, tokenizedGlobals)), options);
-					if (calcResult !== -1) {
-						entry.parent.value.splice(index, 1, calcResult);
-						return;
-					}
-				}
-			});
 		}
-	}
-
-	return componentValuesList;
+	});
 }

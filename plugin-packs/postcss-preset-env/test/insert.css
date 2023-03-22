@@ -1,4 +1,4 @@
 .test-lab {
-	background-color: lab(100% 0 0 / 0%);
-	color: lab(0% 0 0 / 0%);
+	background-color: lab(50% 30 0 / 100%);
+	color: lab(50% -30 30 / 100%);
 }

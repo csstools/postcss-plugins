@@ -1,3 +1,5 @@
+import type { Color } from 'types/color';
+
 /**
  * @param {number} hue - Hue as degrees 0..360
  * @param {number} sat - Saturation as percentage 0..100
@@ -18,11 +20,11 @@ export function HSL_to_sRGB(HSL: Color): Color {
 	hue = hue % 360;
 
 	if (hue < 0) {
-		hue += 360;
+		hue =  hue + 360;
 	}
 
-	sat /= 100;
-	light /= 100;
+	sat = sat / 100;
+	light = light / 100;
 
 	function f(n: number) {
 		const k = (n + hue / 30) % 12;

@@ -312,16 +312,17 @@ const thicknessKeywords = [
 ];
 
 const colorFunctions = [
-	'rgb',
-	'rgba',
+	'color',
+	'color-mix',
 	'hsl',
 	'hsla',
 	'hwb',
-	'lch',
 	'lab',
-	'color',
-	'oklch',
+	'lch',
 	'oklab',
+	'oklch',
+	'rgb',
+	'rgba',
 ];
 
 const colorNames = [

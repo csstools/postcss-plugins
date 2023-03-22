@@ -12,6 +12,7 @@ import { MediaOr } from '../nodes/media-or';
 import { MediaQuery, MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
 import { modifierFromToken } from '../nodes/media-query-modifier';
 import { isIdent } from '../util/component-value-is';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function parseMediaQuery(componentValues: Array<ComponentValue>): MediaQuery | false {
 	{
@@ -48,7 +49,7 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>): MediaQu
 					continue;
 				}
 
-				if (andIndex === -1 && token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'and') {
+				if (andIndex === -1 && token[0] === TokenType.Ident && toLowerCaseAZ(token[4].value) === 'and') {
 					andIndex = i;
 					const condition = parseMediaConditionWithoutOr(componentValues.slice(i+1));
 					if (condition === false) {
@@ -376,7 +377,7 @@ export function parseMediaNot(componentValues: Array<ComponentValue>): MediaNot 
 
 		if (isIdent(componentValue)) {
 			const token = (componentValue.value as TokenIdent);
-			if (token[4].value.toLowerCase() === 'not') {
+			if (toLowerCaseAZ(token[4].value) === 'not') {
 				if (sawNot) {
 					return false;
 				}
@@ -430,7 +431,7 @@ export function parseMediaOr(componentValues: Array<ComponentValue>) {
 
 		if (isIdent(componentValue)) {
 			const token = (componentValue.value as TokenIdent);
-			if (token[4].value.toLowerCase() === 'or') {
+			if (toLowerCaseAZ(token[4].value) === 'or') {
 				if (sawOr) {
 					return false;
 				}
@@ -481,7 +482,7 @@ export function parseMediaAnd(componentValues: Array<ComponentValue>) {
 
 		if (isIdent(componentValue)) {
 			const token = (componentValue.value as TokenIdent);
-			if (token[4].value.toLowerCase() === 'and') {
+			if (toLowerCaseAZ(token[4].value) === 'and') {
 				if (sawAnd) {
 					return false;
 				}

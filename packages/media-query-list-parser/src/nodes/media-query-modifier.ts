@@ -1,4 +1,5 @@
 import { TokenIdent, TokenType } from '@csstools/css-tokenizer';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export enum MediaQueryModifier {
 	Not = 'not',
@@ -10,7 +11,7 @@ export function modifierFromToken(token: TokenIdent): MediaQueryModifier | false
 		return false;
 	}
 
-	const matchingValue = token[4].value.toLowerCase();
+	const matchingValue = toLowerCaseAZ(token[4].value);
 	switch (matchingValue) {
 		case MediaQueryModifier.Not:
 			return MediaQueryModifier.Not;

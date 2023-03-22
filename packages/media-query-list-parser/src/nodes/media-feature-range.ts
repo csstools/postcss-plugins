@@ -4,6 +4,7 @@ import { comparisonFromTokens, matchesComparison, MediaFeatureComparison, MediaF
 import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
 import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent, parseMediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export type MediaFeatureRange = MediaFeatureRangeNameValue |
 	MediaFeatureRangeValueName |
@@ -383,7 +384,7 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>): 
 
 		if (
 			(nameA && !nameB) ||
-			nameA && mediaDescriptors.has(nameA.getName().toLowerCase())
+			nameA && mediaDescriptors.has(toLowerCaseAZ(nameA.getName()))
 		) {
 			const value = parseMediaFeatureValue(b);
 			if (!value) {
@@ -395,7 +396,7 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>): 
 
 		if (
 			(!nameA && nameB) ||
-			nameB && mediaDescriptors.has(nameB.getName().toLowerCase())
+			nameB && mediaDescriptors.has(toLowerCaseAZ(nameB.getName()))
 		) {
 			const value = parseMediaFeatureValue(a);
 			if (!value) {

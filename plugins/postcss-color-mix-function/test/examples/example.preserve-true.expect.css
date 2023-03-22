@@ -1,0 +1,4 @@
+.purple_plum {
+	color: rgb(175, 92, 174);
+	color: color-mix(in lch, purple 50%, plum 50%);
+}

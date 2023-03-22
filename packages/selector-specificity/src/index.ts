@@ -1,5 +1,6 @@
 import parser from 'postcss-selector-parser';
 import type { Node, Selector } from 'postcss-selector-parser';
+import { toLowerCaseAZ } from './to-lower-case-a-z';
 
 export type Specificity = {
 	a: number,
@@ -49,7 +50,7 @@ export function selectorSpecificity(node: Node): Specificity {
 	} else if (isPseudoElement(node)) {
 		node = node as parser.Pseudo;
 
-		switch (node.value.toLowerCase()) {
+		switch (toLowerCaseAZ(node.value)) {
 			case '::slotted':
 				// “The specificity of ::slotted() is that of a pseudo-element, plus the specificity of its argument.”
 
@@ -104,7 +105,7 @@ export function selectorSpecificity(node: Node): Specificity {
 		}
 
 	} else if (parser.isPseudoClass(node)) {
-		switch (node.value.toLowerCase()) {
+		switch (toLowerCaseAZ(node.value)) {
 			case ':-moz-any':
 			case ':-webkit-any':
 			case ':any':
@@ -139,7 +140,7 @@ export function selectorSpecificity(node: Node): Specificity {
 
 					if (node.nodes && node.nodes.length > 0) {
 						const ofSeparatorIndex = node.nodes[0].nodes.findIndex((x) => {
-							return x.type === 'tag' && x.value.toLowerCase() === 'of';
+							return x.type === 'tag' && toLowerCaseAZ(x.value) === 'of';
 						});
 
 						if (ofSeparatorIndex > -1) {

@@ -1,3 +1,4 @@
+import type { Color } from 'types/color';
 /**
  * Convert an array of linear-light sRGB values to CIE XYZ
  * using sRGB's own white, D65 (no chromatic adaptation)

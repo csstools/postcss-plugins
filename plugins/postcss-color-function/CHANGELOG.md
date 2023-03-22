@@ -1,5 +1,11 @@
 # Changes to PostCSS Color Function
 
+### Unreleased (minor)
+
+- Add `@csstools/css-color-parser` dependency for all color value transformations.
+- Add support for `calc` expressions in color components.
+- Remove support for missing channel values (`color(display-p3 1)`). This was never documented and was removed from the specification.
+
 ### 2.1.0 (February 6, 2023)
 
 - Add: `@csstools/color-helpers` dependency for all color value transformations.

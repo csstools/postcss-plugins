@@ -1,6 +1,7 @@
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import { ComponentValue, isTokenNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { Globals } from '../util/globals';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function resolveGlobalsAndConstants(nodes: Array<ComponentValue>, globals: Globals): Array<ComponentValue> {
 	for (let i = 0; i < nodes.length; i++) {
@@ -14,7 +15,7 @@ export function resolveGlobalsAndConstants(nodes: Array<ComponentValue>, globals
 			continue;
 		}
 
-		const ident = token[4].value.toLowerCase();
+		const ident = toLowerCaseAZ(token[4].value);
 		switch (ident) {
 			case 'e':
 				nodes.splice(i, 1, new TokenNode([TokenType.Number, Math.E.toString(), token[2], token[3], {

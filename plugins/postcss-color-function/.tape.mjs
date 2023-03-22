@@ -8,14 +8,12 @@ postcssTape(plugin)({
 	},
 	'basic:preserve-true': {
 		message: 'supports { preserve: true } usage',
-		warnings: 6,
 		options: {
 			preserve: true
 		}
 	},
 	'basic:with-cloned-rules': {
 		message: 'doesn\'t cause duplicate CSS',
-		warnings: 6,
 		plugins: [
 			ruleClonerPlugin,
 			plugin({

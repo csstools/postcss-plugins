@@ -1,5 +1,10 @@
 # Changes to PostCSS HWB Function
 
+### Unreleased (minor)
+
+- Add `@csstools/css-color-parser` dependency for all color value transformations.
+- Add support for `calc` expressions in color components.
+
 ### 2.1.1 (February 8, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

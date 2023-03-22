@@ -37,7 +37,9 @@
 }
 
 .test-percentages {
+	color-1-ref: lab(40 43.75 37.5);
 	color-1: lab(40% 35% 30%);
+	color-2-ref: lch(40 75 39);
 	color-2: lch(40% 50% 39);
 }
 
@@ -63,6 +65,7 @@
 	color-3: lab(1% 1 1 / calc(20% * 5));
 	color-4: lab(1% 1 1 / var(--foo));
 	color-5: lab(1% 1 1 /);
+	color-6: lab(1% 1 1 / calc(20% * 3));
 }
 
 .test-alpha-lch {
@@ -71,6 +74,7 @@
 	color-3: lch(1% 1 1 / calc(20% * 5));
 	color-4: lch(1% 1 1 / var(--foo));
 	color-5: lch(1% 1 1 /);
+	color-6: lch(1% 1 1 / calc(20% * 3));
 }
 
 .test-ignore {
@@ -94,7 +98,8 @@
 }
 
 .test-multiple-colors {
-	background: linear-gradient(lab(45% -13 29), lch(60% 50 45deg));
+	background-1: linear-gradient(lab(45% -13 29), lch(60% 50 45deg));
+	background-2: linear-gradient(lab(45% -50 29), lch(60% 50 45deg));
 }
 
 .test-unparseable-lab-function {

@@ -1,9 +1,11 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { Declaration, Result } from 'postcss';
+import type { Declaration } from 'postcss';
 import type { PluginCreator } from 'postcss';
+import { cloneTokens, tokenize } from '@csstools/css-tokenizer';
+import { color, colorDataFitsRGB_Gamut, serializeP3, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
 import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-import { modifiedValues } from './modified-values';
+import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 
 type basePluginOptions = {
 	preserve: boolean,
@@ -12,11 +14,14 @@ type basePluginOptions = {
 	}
 };
 
-/** Transform oklab() and oklch() functions in CSS. */
+const oklab_oklch_functionRegex = /(oklab|oklch)\(/i;
+const oklab_oklch_nameRegex = /^(oklab|oklch)$/i;
+
+/* Transform oklab() and oklch() functions in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-oklab-function',
-		Declaration: (decl: Declaration, { result }: { result: Result }) => {
+		Declaration: (decl: Declaration) => {
 			if (hasFallback(decl)) {
 				return;
 			}
@@ -26,28 +31,66 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 			}
 
 			const originalValue = decl.value;
-			if (!(/(^|[^\w-])(oklab|oklch)\(/i.test(originalValue.toLowerCase()))) {
+			if (!(oklab_oklch_functionRegex.test(originalValue.toLowerCase()))) {
 				return;
 			}
 
-			const modified = modifiedValues(originalValue, decl, result, opts?.preserve ?? false);
-			if (typeof modified === 'undefined') {
+			const tokens = tokenize({ css: originalValue });
+			const replacedRGB = replaceComponentValues(
+				parseCommaSeparatedListOfComponentValues(tokens),
+				(componentValue) => {
+					if (isFunctionNode(componentValue) && oklab_oklch_nameRegex.test(componentValue.getName())) {
+						const colorData = color(componentValue);
+						if (!colorData) {
+							return;
+						}
+
+						if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
+							return;
+						}
+
+						return serializeRGB(colorData);
+					}
+				},
+			);
+
+			const modifiedRGB = stringify(replacedRGB);
+			if (modifiedRGB === originalValue) {
 				return;
 			}
 
-			if (opts?.preserve) {
-				decl.cloneBefore({ value: modified.rgb });
+			let modifiedP3 = modifiedRGB;
+			if (opts?.subFeatures.displayP3) {
+				modifiedP3 = stringify(replaceComponentValues(
+					parseCommaSeparatedListOfComponentValues(cloneTokens(tokens)),
+					(componentValue) => {
+						if (isFunctionNode(componentValue) && oklab_oklch_nameRegex.test(componentValue.getName())) {
+							const colorData = color(componentValue);
+							if (!colorData) {
+								return;
+							}
 
-				if (opts?.subFeatures.displayP3) {
-					decl.cloneBefore({ value: modified.displayP3 });
-				}
-			} else {
-				decl.cloneBefore({ value: modified.rgb });
+							if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
+								return;
+							}
 
-				if (opts?.subFeatures.displayP3) {
-					decl.cloneBefore({ value: modified.displayP3 });
-				}
+							if (colorDataFitsRGB_Gamut(colorData)) {
+								return serializeRGB(colorData);
+							}
 
+							return serializeP3(colorData);
+						}
+					},
+				));
+			}
+
+			decl.cloneBefore({ value: modifiedRGB });
+
+			if (opts?.subFeatures.displayP3 && modifiedP3 !== modifiedRGB) {
+				decl.cloneBefore({ value: modifiedP3 });
+			}
+
+			if (!opts?.preserve) {
 				decl.remove();
 			}
 		},
@@ -69,17 +112,15 @@ export type pluginOptions = {
 	}
 };
 
-/** Transform oklab() and oklch() functions in CSS. */
+/* Transform oklab() and oklch() functions in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const options = Object.assign(
-		{
-			enableProgressiveCustomProperties: true,
-			preserve: false,
-			subFeatures: {
-				displayP3: true,
-			},
-		}, opts,
-	);
+	const options = Object.assign({
+		enableProgressiveCustomProperties: true,
+		preserve: false,
+		subFeatures: {
+			displayP3: true,
+		},
+	}, opts);
 
 	// deep merge
 	options.subFeatures = Object.assign({

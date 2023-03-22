@@ -1,8 +1,8 @@
 .test-lab {
 	color-1: rgb(179, 35, 35);
-	color-2: rgba(179, 35, 35, 1);
-	color-3: rgba(179, 35, 35, .5);
-	color-4: rgba(179, 35, 35, 1);
+	color-2: rgb(179, 35, 35);
+	color-3: rgba(179, 35, 35, 0.5);
+	color-4: rgb(179, 35, 35);
 	color-5: rgba(179, 35, 35, 0.5);
 	color-6: rgb(222, 105, 147);
 	color-7: lab(60% 50 0 foo);
@@ -10,9 +10,9 @@
 
 .test-lch {
 	color-1: rgb(179, 35, 35);
-	color-2: rgba(179, 35, 35, 1);
-	color-3: rgba(179, 35, 35, .5);
-	color-4: rgba(179, 35, 35, 1);
+	color-2: rgb(179, 35, 35);
+	color-3: rgba(179, 35, 35, 0.5);
+	color-4: rgb(179, 35, 35);
 	color-5: rgba(179, 35, 35, 0.5);
 	color-6: rgb(222, 105, 147);
 
@@ -37,7 +37,9 @@
 }
 
 .test-percentages {
+	color-1-ref: rgb(163, 57, 35);
 	color-1: rgb(163, 57, 35);
+	color-2-ref: rgb(181, 30, 19);
 	color-2: rgb(181, 30, 19);
 }
 
@@ -58,19 +60,21 @@
 }
 
 .test-alpha-lab {
-	color-1: rgba(7, 3, 1, 1);
-	color-2: rgba(7, 3, 1, calc(33 / 22));
-	color-3: rgba(7, 3, 1, calc(20% * 5));
+	color-1: rgb(7, 3, 1);
+	color-2: rgb(7, 3, 1);
+	color-3: rgb(7, 3, 1);
 	color-4: rgba(7, 3, 1, var(--foo));
 	color-5: lab(1% 1 1 /);
+	color-6: rgba(7, 3, 1, 0.6);
 }
 
 .test-alpha-lch {
-	color-1: rgba(6, 3, 4, 1);
-	color-2: rgba(6, 3, 4, calc(33 / 22));
-	color-3: rgba(6, 3, 4, calc(20% * 5));
+	color-1: rgb(6, 3, 4);
+	color-2: rgb(6, 3, 4);
+	color-3: rgb(6, 3, 4);
 	color-4: rgba(6, 3, 4, var(--foo));
 	color-5: lch(1% 1 1 /);
+	color-6: rgba(6, 3, 4, 0.6);
 }
 
 .test-ignore {
@@ -88,13 +92,14 @@
 	/* not teal */
 	prop-1: rgb(0, 0, 0);
 	/* teal */
-	prop-2: rgb(0, 40, 42);
+	prop-2: rgb(0, 0, 0);
 	/* teal */
 	prop-3: rgb(0, 45, 46);
 }
 
 .test-multiple-colors {
-	background: linear-gradient(rgb(97, 112, 56), rgb(212, 118, 84));
+	background-1: linear-gradient(rgb(97, 112, 56), rgb(212, 118, 84));
+	background-2: linear-gradient(rgb(0, 126, 53), rgb(212, 118, 84));
 }
 
 .test-unparseable-lab-function {

@@ -7,7 +7,7 @@
 	--gradient-prop-5: repeating-linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
 	--gradient-prop-6: repeating-radial-gradient(red 0,red 8%, yellow 8%,yellow 16%, blue 16%, blue 24%);
 
-	--hwb: rgb(230, 93, 26);
+	--hwb: rgb(230, 94, 26);
 }
 
 @supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) {
@@ -40,7 +40,7 @@
 }
 }
 
-@supports (color: hwb(0% 0 0)) {:root {
+@supports (color: hwb(0 0% 0%)) {:root {
 
 	--hwb: hwb(20 10% 10%);
 }

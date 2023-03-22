@@ -1,11 +1,11 @@
 .test-oklab {
 	color-1: rgb(73, 71, 69);
 	color-1: oklab(40% 0.001236 0.0039);
-	color-2: rgba(121, 34, 67, 1);
+	color-2: rgb(121, 34, 67);
 	color-2: oklab(40% 0.1236 0.0039 / 1);
-	color-3: rgba(121, 34, 67, .5);
+	color-3: rgba(121, 34, 67, 0.5);
 	color-3: oklab(40% 0.1236 0.0039 / .5);
-	color-4: rgba(121, 34, 67, 1);
+	color-4: rgb(121, 34, 67);
 	color-4: oklab(40% 0.1236 0.0039 / 100%);
 	color-5: rgba(121, 34, 67, 0.5);
 	color-5: oklab(40% 0.1236 0.0039 / 50%);
@@ -27,11 +27,11 @@
 .test-oklch {
 	color-1: rgb(126, 37, 15);
 	color-1: oklch(40% 0.1268735435 34.568626);
-	color-2: rgba(126, 37, 15, 1);
+	color-2: rgb(126, 37, 15);
 	color-2: oklch(40% 0.1268735435 34.568626 / 1);
-	color-3: rgba(126, 37, 15, .5);
+	color-3: rgba(126, 37, 15, 0.5);
 	color-3: oklch(40% 0.1268735435 34.568626 / .5);
-	color-4: rgba(126, 37, 15, 1);
+	color-4: rgb(126, 37, 15);
 	color-4: oklch(40% 0.1268735435 34.568626 / 100%);
 	color-5: rgba(126, 37, 15, 0.5);
 	color-5: oklch(40% 0.1268735435 34.568626 / 50%);
@@ -105,11 +105,11 @@
 }
 
 .test-alpha-oklab {
-	color-1: rgba(0, 0, 0, 1);
+	color-1: rgb(0, 0, 0);
 	color-1: oklab(1% 0.01 0.01 / 1);
-	color-2: rgba(0, 0, 0, calc(33 / 22));
+	color-2: rgb(0, 0, 0);
 	color-2: oklab(1% 0.01 0.01 / calc(33 / 22));
-	color-3: rgba(0, 0, 0, calc(20% * 5));
+	color-3: rgb(0, 0, 0);
 	color-3: oklab(1% 0.01 0.01 / calc(20% * 5));
 	color-4: rgba(0, 0, 0, var(--foo));
 	color-4: oklab(1% 0.01 0.01 / var(--foo));
@@ -117,11 +117,11 @@
 }
 
 .test-alpha-oklch {
-	color-1: rgba(0, 0, 0, 1);
+	color-1: rgb(0, 0, 0);
 	color-1: oklch(1% 0.01 0.01 / 1);
-	color-2: rgba(0, 0, 0, calc(33 / 22));
+	color-2: rgb(0, 0, 0);
 	color-2: oklch(1% 0.01 0.01 / calc(33 / 22));
-	color-3: rgba(0, 0, 0, calc(20% * 5));
+	color-3: rgb(0, 0, 0);
 	color-3: oklch(1% 0.01 0.01 / calc(20% * 5));
 	color-4: rgba(0, 0, 0, var(--foo));
 	color-4: oklch(1% 0.01 0.01 / var(--foo));
@@ -204,8 +204,10 @@
 }
 
 .test-multiple-colors {
-	background: linear-gradient(rgb(94, 83, 77), rgb(136, 126, 121));
-	background: linear-gradient(oklab(45% 0.012 0.0129), oklch(60% 0.014 45deg));
+	background-1: linear-gradient(rgb(94, 83, 77), rgb(136, 126, 121));
+	background-1: linear-gradient(oklab(45% 0.012 0.0129), oklch(60% 0.014 45deg));
+	background-2: linear-gradient(rgb(164, 0, 74), rgb(136, 126, 121));
+	background-2: linear-gradient(oklab(45% 0.22 0.0129), oklch(60% 0.014 45deg));
 }
 
 .test-unparseable-lab-function {

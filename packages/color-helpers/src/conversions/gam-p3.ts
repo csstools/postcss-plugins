@@ -1,3 +1,4 @@
+import type { Color } from 'types/color';
 import { gam_sRGB } from 'conversions/gam-srgb';
 
 /**

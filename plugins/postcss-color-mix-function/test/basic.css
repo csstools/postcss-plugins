@@ -1,0 +1,146 @@
+.basic {
+	color: color-mix(in lch, purple 50%, plum 50%);
+}
+
+.complex {
+	color: color-mix(
+		in lch,
+		purple calc(100% * sin(0.1)),
+		color-mix(
+			in oklch,
+			#4fe calc(100% / 3),
+			color(display-p3 calc(33% * 3) calc(1 / 2) -0.1) calc(100% / 3 * 2)
+		) calc(20% + 4%)
+	);
+}
+
+:root {
+	--purple-plum: color-mix(in lch, purple 50%, plum 50%);
+}
+
+.spec-example-1 {
+	color-1: color-mix(in lch, purple 50%, plum 50%);
+	color-2: color-mix(in lch, purple 50%, plum);
+	color-3: color-mix(in lch, purple, plum 50%);
+	color-4: color-mix(in lch, purple, plum);
+	color-5: color-mix(in lch, plum, purple);
+	color-6: color-mix(in lch, purple 80%, plum 80%);
+	color-7: color-mix(in lch, purple 30%, plum 30%);
+}
+
+.spec-example-2 {
+	color-1: color-mix(in lch, peru 40%, palegoldenrod);
+}
+
+.spec-example-3 {
+	color-2: color-mix(in lch, teal 65%, olive);
+}
+
+.spec-example-4 {
+	color-1: color-mix(in lch, white, black);
+	color-2: color-mix(in xyz, white, black);
+	color-3: color-mix(in srgb, white, black);
+}
+
+.spec-example-5 {
+	color-1: color-mix(in xyz, rgb(82.02% 30.21% 35.02%) 75.23%, rgb(5.64% 55.94% 85.31%));
+}
+
+.spec-example-6 {
+	color-1: color-mix(in lch, white, blue);
+	/* TODO : https://github.com/w3c/csswg-drafts/issues/8609 */
+	color-2: color-mix(in oklch, white, blue);
+	color-3: color-mix(in srgb, white, blue);
+}
+
+.spec-example-7 {
+	/* TODO : https://github.com/w3c/csswg-drafts/issues/8444 */
+	color-1: color-mix(in hsl, color(display-p3 0 1 0) 80%, yellow);
+}
+
+.spec-example-8 {
+	color-1: color-mix(in srgb, rgb(100% 0% 0% / 0.7) 25%, rgb(0% 100% 0% / 0.2));
+}
+
+.spec-example-9 {
+	color-1: color-mix(in srgb, rgb(100% 0% 0% / 0.7) 20%, rgb(0% 100% 0% / 0.2) 60%);
+}
+
+.wpt-mix-percents-1 {
+	color-1: rgb(175, 92, 174);
+	color-2: color-mix(in lch, purple 50%, plum 50%);
+	color-3: color-mix(in lch, purple 55%, plum 55%);
+	color-4: color-mix(in lch, purple 70%, plum 70%);
+	color-5: color-mix(in lch, purple 95%, plum 95%);
+	/* must be ignored */
+	color-6: color-mix(in lch, purple 125%, plum 125%);
+	/* must be ignored */
+	color-7: color-mix(in lch, purple 9999%, plum 9999%);
+}
+
+.wpt-mix-percents-2 {
+	color-1: rgb(175, 92, 174);
+	color-2: color-mix(in lch, purple 50%, plum 50%);
+	color-3: color-mix(in lch, purple 50%, plum);
+	color-4: color-mix(in lch, purple, plum 50%);
+	color-5: color-mix(in lch, purple, plum);
+	color-6: color-mix(in lch, plum, purple);
+	color-7: color-mix(in lch, purple 80%, plum 80%);
+}
+
+.color-mix-non-srgb-001 {
+	/* rgb(188, 92, 0) */
+	color-1: color-mix(in xyz, red, green);
+
+	/* rgb(161, 108, 0 */
+	color-2: color-mix(in lab, red, green);
+
+	/* rgb(143, 117, 0) */
+	color-3: color-mix(in lch, red, green);
+
+	/* rgb(89, 122, 0) */
+	color-4: color-mix(in xyz, red, green 90%);
+
+	/* rgb(65, 126, 0) */
+	color-5: color-mix(in lab, red, green 90%);
+
+	/* rgb(49, 128, 0) */
+	color-6: color-mix(in lch, red, green 90%);
+
+	/* rgb(243, 40, 0) */
+	color-7: color-mix(in xyz, red 90%, green);
+
+	/* rgb(237, 55, 0) */
+	color-8: color-mix(in lab, red 90%, green);
+
+	/* rgb(235, 59, 0) */
+	color-9: color-mix(in lch, red 90%, green);
+}
+
+.transparent-rectangular {
+	color-1: color-mix(in srgb, transparent, blue 65%);
+	color-2: color-mix(in lab, transparent, blue 65%);
+	color-3: color-mix(in xyz, transparent, blue 65%);
+}
+
+.transparent-polar {
+	color-1: color-mix(in srgb, transparent, blue 65%);
+	color-2: color-mix(in lab, transparent, blue 65%);
+	color-3: color-mix(in xyz, transparent, blue 65%);
+}
+
+.zero-alpha-rectangular {
+	color-1: color-mix(in srgb, rgb(255 0 0 / 0), blue 65%);
+	color-2: color-mix(in lab, rgb(255 0 0 / 0), blue 65%);
+	color-3: color-mix(in xyz, rgb(255 0 0 / 0), blue 65%);
+}
+
+.zero-alpha-cylindrical {
+	color-4: color-mix(in oklch, rgb(255 0 0 / 0), blue 65%);
+	color-5: color-mix(in lch, rgb(255 0 0 / 0), blue 65%);
+	color-6: color-mix(in hsl, rgb(255 0 0 / 0), blue 65%);
+}
+
+.foo {
+	color: color-mix(in srgb, blue, blue 65%);
+}

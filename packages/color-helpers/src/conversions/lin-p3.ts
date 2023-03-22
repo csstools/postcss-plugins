@@ -1,3 +1,4 @@
+import type { Color } from 'types/color';
 import { lin_sRGB } from 'conversions/lin-srgb';
 
 /**

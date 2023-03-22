@@ -1,3 +1,4 @@
+import type { Color } from 'types/color';
 /**
  * Convert an array of linear-light prophoto-rgb values to CIE XYZ
  * using D50 (so no chromatic adaptation needed afterwards)
