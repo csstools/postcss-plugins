@@ -1,8 +1,8 @@
-import { ComponentValue, TokenNode } from '@csstools/css-parser-algorithms';
+import { ComponentValue, replaceComponentValues, stringify, TokenNode } from '@csstools/css-parser-algorithms';
 import type { PluginCreator } from 'postcss';
-import { FunctionNode, isCommentNode, isTokenNode, WhitespaceNode, isFunctionNode, isSimpleBlockNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
+import { FunctionNode, isCommentNode, isTokenNode, WhitespaceNode, isFunctionNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { calcFromComponentValues } from '@csstools/css-calc';
-import { NumberType, stringify as stringifyTokens } from '@csstools/css-tokenizer';
+import { NumberType } from '@csstools/css-tokenizer';
 import { tokenize, TokenType } from '@csstools/css-tokenizer';
 
 /** postcss-gradient-stop-increments plugin options */
@@ -199,39 +199,4 @@ function maxOfLastAndCurrentLengthNode(lastLengthNode: ComponentValue | null, ne
 	const [[solvedLengthNode]] = calcFromComponentValues([[maxLengthNode]]);
 
 	return solvedLengthNode;
-}
-
-// TODO : this should be in css-parser-algorithms, will be present in an upcoming release
-function replaceComponentValues(
-	componentValuesList: Array<Array<ComponentValue>>,
-	visitor: (componentValue: ComponentValue) => ComponentValue | void,
-) {
-	for (let i = 0; i < componentValuesList.length; i++) {
-		const componentValues = componentValuesList[i];
-
-		for (let j = 0; j < componentValues.length; j++) {
-			const componentValue = componentValues[j];
-
-			visitor(componentValue);
-
-			if (isSimpleBlockNode(componentValue) || isFunctionNode(componentValue)) {
-				componentValue.walk((entry, index) => {
-					if (typeof index !== 'number') {
-						return;
-					}
-
-					visitor(entry.node);
-				});
-			}
-		}
-	}
-
-	return componentValuesList;
-}
-
-// TODO : this should be in css-parser-algorithms, will be present in an upcoming release
-function stringify(componentValueLists: Array<Array<ComponentValue>>): string {
-	return componentValueLists.map((componentValues) => {
-		return componentValues.map((x) => stringifyTokens(...x.tokens())).join('');
-	}).join(',');
 }
