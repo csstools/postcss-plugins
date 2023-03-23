@@ -27,6 +27,11 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		['color-mix(in hsl, hsl(120deg 10% 20% / .4) 12.5%, hsl(30deg 30% 40% / .8) 37.5%)', 'rgba(120, 114, 69, 0.35)'], // Scale up < 100% sum, causes alpha multiplication.
 		['color-mix(in hsl, hsl(120deg 10% 20% / .4) 0%, hsl(30deg 30% 40% / .8))', 'rgba(133, 102, 71, 0.8)'],
 
+		['color-mix(in hsl, transparent, hsl(30deg 30% 40%))', canonicalize('hsl(30deg 30% 40% / 0.5)')],
+		['color-mix(in hsl, transparent 10%, hsl(30deg 30% 40%))', canonicalize('hsl(30deg 30% 40% / 0.9)')],
+		['color-mix(in hsl, hsl(120deg 10% 20% / 0), hsl(30deg 30% 40%))', canonicalize('hsl(75deg 30% 40% / 0.5)')],
+		['color-mix(in hsl, hsl(120deg 10% 20% / 0) 10%, hsl(30deg 30% 40%))', canonicalize('hsl(39deg 30% 40% / 0.9)')],
+
 		['color-mix(in hsl, hsl(40deg 50% 50%), hsl(60deg 50% 50%))', canonicalize('hsl(50deg 50% 50%)')],
 		['color-mix(in hsl, hsl(60deg 50% 50%), hsl(40deg 50% 50%))', canonicalize('hsl(50deg 50% 50%)')],
 		['color-mix(in hsl, hsl(50deg 50% 50%), hsl(330deg 50% 50%))', canonicalize('hsl(10deg 50% 50%)')],
@@ -93,6 +98,11 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		['color-mix(in hwb, hwb(120deg 10% 20% / .4) 12.5%, hwb(30deg 30% 40% / .8) 37.5%)', 'rgba(160, 149, 69, 0.35)'], // Scale up < 100% sum, causes alpha multiplication.
 		['color-mix(in hwb, hwb(120deg 10% 20% / .4) 0%, hwb(30deg 30% 40% / .8))', 'rgba(153, 115, 77, 0.8)'],
 
+		['color-mix(in hwb, transparent, hwb(30deg 30% 40%))', canonicalize('hwb(30deg 30% 40% / 0.5)')],
+		['color-mix(in hwb, transparent 10%, hwb(30deg 30% 40%))', canonicalize('hwb(30deg 30% 40% / 0.9)')],
+		['color-mix(in hwb, hwb(120deg 10% 20% / 0), hwb(30deg 30% 40%))', canonicalize('hwb(75deg 30% 40% / 0.5)')],
+		['color-mix(in hwb, hwb(120deg 10% 20% / 0) 10%, hwb(30deg 30% 40%))', canonicalize('hwb(39deg 30% 40% / 0.9)')],
+
 		['color-mix(in hwb, hwb(40deg 30% 40%), hwb(60deg 30% 40%))', canonicalize('hwb(50deg 30% 40%)')],
 		['color-mix(in hwb, hwb(60deg 30% 40%), hwb(40deg 30% 40%))', canonicalize('hwb(50deg 30% 40%)')],
 		['color-mix(in hwb, hwb(50deg 30% 40%), hwb(330deg 30% 40%))', canonicalize('hwb(10deg 30% 40%)')],
@@ -157,6 +167,11 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		['color-mix(in lch, lch(10 20 30deg / .4) 30%, lch(50 60 70deg / .8) 90%)', canonicalize('lch(44.285713 54.285717 60 / 0.7)')],
 		['color-mix(in lch, lch(10 20 30deg / .4) 12.5%, lch(50 60 70deg / .8) 37.5%)', canonicalize('lch(44.285713 54.285717 60 / 0.35)')],
 		['color-mix(in lch, lch(10 20 30deg / .4) 0%, lch(50 60 70deg / .8))', canonicalize('lch(50 60 70 / 0.8)')],
+
+		['color-mix(in lch, transparent, lch(30 40 30deg))', canonicalize('lch(30 40 30deg / 0.5)')],
+		['color-mix(in lch, transparent 10%, lch(30 40 30deg))', canonicalize('lch(30 40 30deg / 0.9)')],
+		['color-mix(in lch, lch(10 20 120deg / 0), lch(30 40 30deg))', canonicalize('lch(30 40 75deg / 0.5)')],
+		['color-mix(in lch, lch(10 20 120deg / 0) 10%, lch(30 40 30deg))', canonicalize('lch(30 40 39deg / 0.9)')],
 
 		['color-mix(in lch, lch(100 0 40deg), lch(100 0 60deg))', canonicalize('lch(100 0 50)')],
 		['color-mix(in lch, lch(100 0 60deg), lch(100 0 40deg))', canonicalize('lch(100 0 50)')],
@@ -223,6 +238,11 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		['color-mix(in oklch, oklch(10 20 30deg / .4) 12.5%, oklch(50 60 70deg / .8) 37.5%)', canonicalize('oklch(44.285713 54.285717 60 / 0.35)')],
 		['color-mix(in oklch, oklch(10 20 30deg / .4) 0%, oklch(50 60 70deg / .8))', canonicalize('oklch(50 60 70 / 0.8)')],
 
+		['color-mix(in oklch, transparent, oklch(0.3 0.4 30deg))', canonicalize('oklch(0.3 0.4 30deg / 0.5)')],
+		['color-mix(in oklch, transparent 10%, oklch(0.3 0.4 30deg))', canonicalize('oklch(0.3 0.4 30deg / 0.9)')],
+		['color-mix(in oklch, oklch(0.1 0.2 120deg / 0), oklch(0.3 0.4 30deg))', canonicalize('oklch(0.3 0.4 75deg / 0.5)')],
+		['color-mix(in oklch, oklch(0.1 0.2 120deg / 0) 10%, oklch(0.3 0.4 30deg))', canonicalize('oklch(0.3 0.4 39deg / 0.9)')],
+
 		['color-mix(in oklch, oklch(100 0 40deg), oklch(100 0 60deg))', canonicalize('oklch(100 0 50)')],
 		['color-mix(in oklch, oklch(100 0 60deg), oklch(100 0 40deg))', canonicalize('oklch(100 0 50)')],
 		['color-mix(in oklch, oklch(100 0 50deg), oklch(100 0 330deg))', canonicalize('oklch(100 0 10)')],
@@ -276,6 +296,28 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		['color-mix(in oklch, hsl(90deg 100% none), oklch(89% 0.265 135.9))', canonicalize('oklch(89% 0.1325 135.9)')],
 		['color-mix(in oklch, oklch(89% 0 135.9), oklch(89% 0.265 135.9))', canonicalize('oklch(89% 0.1325 135.9)')],
 		['color-mix(in oklch, oklch(89% none 135.9), oklch(89% 0.265 135.9))', canonicalize('oklch(89% 0.265 135.9)')],
+	];
+
+	for (const test of tests) {
+		assert.deepStrictEqual(
+			serialize_sRGB_data(color(parse(test[0]))),
+			test[1],
+			`"${test[0]}" : ${test[1]}`,
+		);
+	}
+}
+
+{
+	const tests = [
+		['color-mix(in lab, transparent, lab(30 40 50))', canonicalize('lab(30 40 50 / 0.5)')],
+		['color-mix(in lab, transparent 10%, lab(30 40 50))', canonicalize('lab(30 40 50 / 0.9)')],
+		['color-mix(in lab, lab(10 20 30 / 0), lab(30 40 50))', canonicalize('lab(30 40 50 / 0.5)')],
+		['color-mix(in lab, lab(10 20 30 / 0) 10%, lab(30 40 50))', canonicalize('lab(30 40 50 / 0.9)')],
+
+		['color-mix(in oklab, transparent, oklab(0.3 0.4 0.5))', canonicalize('oklab(0.3 0.4 0.5 / 0.5)')],
+		['color-mix(in oklab, transparent 10%, oklab(0.3 0.4 0.5))', canonicalize('oklab(0.3 0.4 0.5 / 0.9)')],
+		['color-mix(in oklab, oklab(0.1 0.2 0.3 / 0), oklab(0.3 0.4 0.5))', canonicalize('oklab(0.3 0.4 0.5 / 0.5)')],
+		['color-mix(in oklab, oklab(0.1 0.2 0.3 / 0) 10%, oklab(0.3 0.4 0.5))', canonicalize('oklab(0.3 0.4 0.5 / 0.9)')],
 	];
 
 	for (const test of tests) {
@@ -353,6 +395,11 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3 / .4) 30%, color(${colorSpace} .5 .6 .7 / .8) 90%)`, canonicalize(`color(${colorSpace} 0.44285715 0.54285717 0.64285713 / 0.7)`)],
 			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3 / .4) 12.5%, color(${colorSpace} .5 .6 .7 / .8) 37.5%)`, canonicalize(`color(${colorSpace} 0.44285715 0.54285717 0.64285713 / 0.35)`)],
 			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3 / .4) 0%, color(${colorSpace} .5 .6 .7 / .8))`, canonicalize(`color(${colorSpace} 0.5 0.6 0.7 / 0.8)`)],
+
+			[`color-mix(in ${colorSpace}, transparent, color(${colorSpace} 0.3 0.4 0.5))`, canonicalize(`color(${colorSpace} 0.3 0.4 0.5 / 0.5)`)],
+			[`color-mix(in ${colorSpace}, transparent 10%, color(${colorSpace} 0.3 0.4 0.5))`, canonicalize(`color(${colorSpace} 0.3 0.4 0.5 / 0.9)`)],
+			[`color-mix(in ${colorSpace}, color(${colorSpace} 0.1 0.2 0.3 / 0), color(${colorSpace} 0.3 0.4 0.5))`, canonicalize(`color(${colorSpace} 0.3 0.4 0.5 / 0.5)`)],
+			[`color-mix(in ${colorSpace}, color(${colorSpace} 0.1 0.2 0.3 / 0) 10%, color(${colorSpace} 0.3 0.4 0.5))`, canonicalize(`color(${colorSpace} 0.3 0.4 0.5 / 0.9)`)],
 
 			[`color-mix(in ${colorSpace}, color(${colorSpace} 2 3 4 / 5), color(${colorSpace} 4 6 8 / 10))`, canonicalize(`color(${colorSpace} 3 4.5 6)`)],
 			[`color-mix(in ${colorSpace}, color(${colorSpace} -2 -3 -4), color(${colorSpace} -4 -6 -8))`, canonicalize(`color(${colorSpace} -3 -4.5 -6)`)],
