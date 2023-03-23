@@ -40,9 +40,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			}
 
 			const modified = stringify(replaceComponentValues(
-				parseCommaSeparatedListOfComponentValues(tokenize({
-					css: decl.value,
-				})),
+				parseCommaSeparatedListOfComponentValues(tokens),
 				(componentValue) => {
 					if (!isFunctionNode(componentValue)) {
 						return;

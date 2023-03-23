@@ -296,11 +296,11 @@ function colorMixRectangular(colorSpace: string, colors: ColorMixColors | false)
 		case 'srgb':
 			outputColorNotation = ColorNotation.RGB;
 
-			if (a_color.colorNotation !== ColorNotation.RGB) {
+			if (a_color.colorNotation !== ColorNotation.RGB && a_color.colorNotation !== ColorNotation.HEX) {
 				a_channels = colorDataTo(a_color, ColorNotation.RGB).channels;
 			}
 
-			if (b_color.colorNotation !== ColorNotation.RGB) {
+			if (b_color.colorNotation !== ColorNotation.RGB && a_color.colorNotation !== ColorNotation.HEX) {
 				b_channels = colorDataTo(b_color, ColorNotation.RGB).channels;
 			}
 
