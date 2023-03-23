@@ -1,19 +1,34 @@
-.test-linear-gradient {
+.test-1 {
 	--perc-50: 50%;
 	background-image: linear-gradient(in oklch 90deg, black 20% var(--perc-50),blue 70% 75%);
+}
 
-	background-image: linear-gradient(in oklch shorter 90deg, black 25% 50%, blue 70% 75%);
+.test-2-0 {
+	background-image: linear-gradient(in oklch shorter hue 90deg, red 25% 50%, blue 70% 75%);
+}
 
+.test-2-1 {
+	background-image: linear-gradient(in oklab 90deg, red 25% 50%, blue 70% 75%);
+}
+
+.test-2-2 {
+	background-image: linear-gradient(in hsl longer hue 90deg, red 25% 50%, blue 70% 75%);
+}
+
+.test-3 {
 	--red: red;
 	/* Color stop variable */
 	background-image: linear-gradient(in oklch 90deg, black, var(--red), blue);
+}
+
+.test-4 {
 	--perc-10: 10%;
 	/* Interpolation hint */
 	background-image: linear-gradient(in oklch 90deg, black, var(--perc-10), blue);
 }
 
 :root {
-	--gradient-prop-1: conic-gradient(in oklch, yellowgreen 0deg, gold 15deg, gold 50deg, #f06 180deg);
+	--gradient-prop-1: conic-gradient(in oklch, cyan 0deg, gold 45deg, gold 50deg, #f06 180deg, blue 100%);
 	--gradient-prop-2: linear-gradient(in oklch 90deg, black 25%, red 45%, blue 50% 75%);
 	--gradient-prop-3: radial-gradient(in oklch, cyan 0%, transparent 20% 30%, salmon 40%);
 	--gradient-prop-4: repeating-conic-gradient(in oklch from 0deg, yellowgreen 40deg, gold 60deg 75deg, #f06 0deg);

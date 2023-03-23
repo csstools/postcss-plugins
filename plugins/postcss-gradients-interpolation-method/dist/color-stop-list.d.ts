@@ -1,8 +1,7 @@
-import type { Node } from 'postcss-value-parser';
+import type { ComponentValue } from '@csstools/css-parser-algorithms';
+import { TokenNode } from '@csstools/css-parser-algorithms';
 export type ColorStop = {
-    color: string;
-    colorStopLength: string;
-    colorHintBetween: Array<ColorStop>;
-    nodes: Array<Node>;
+    color: ComponentValue;
+    position: ComponentValue;
 };
-export declare function colorStopList(nodes: Array<Node>, interpolationArguments: string): Array<ColorStop> | false;
+export declare function interpolateColorsInColorStopsList(colorStops: Array<ColorStop>, colorSpace: TokenNode, hueInterpolationMethod: TokenNode | null): Array<ComponentValue> | false;
