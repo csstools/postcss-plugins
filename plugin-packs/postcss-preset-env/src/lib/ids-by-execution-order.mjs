@@ -17,6 +17,7 @@ export default [
 	'logical-properties-and-values', // run logical-properties-and-values before dir-pseudo-class
 	'dir-pseudo-class',
 	'all-property', // run all-property before other property polyfills
+	'color-mix', // run before any other color functions
 	'color-functional-notation',
 	'double-position-gradients',
 	'hexadecimal-alpha-notation',

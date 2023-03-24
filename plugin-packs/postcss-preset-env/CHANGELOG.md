@@ -2,6 +2,7 @@
 
 ### Unreleased (unknown)
 
+- Added `@csstools/postcss-color-mix-function` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function#readme) for usage details.
 - Updated `cssdb` to `7.5.1` (minor)
 - Updated `postcss-opacity-percentage` to `2.0.0` (major)
 - Improve `debug` message format

@@ -579,3 +579,14 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 @media (min-aspect-ratio: 177/100) {
 	/* media query aspect ratio : <number> */
 }
+
+.color-mix {
+	color-1: rgba(0, 0, 255, 0.65);
+	color-2: rgba(0, 0, 255, 0.65);
+	color-3: rgba(0, 0, 255, 0.65);
+	color-4: rgba(125, 0, 190, 0.65);
+	color-4: color(display-p3 0.45007 0 0.73452 / 0.65);
+	color-5: rgba(153, 0, 125, 0.65);
+	color-5: color(display-p3 0.56492 0 0.48893 / 0.65);
+	color-6: rgba(179, 0, 255, 0.65);
+}

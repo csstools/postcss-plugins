@@ -551,3 +551,12 @@
 @media (min-aspect-ratio: 1.77) {
 	/* media query aspect ratio : <number> */
 }
+
+.color-mix {
+	color-1: color-mix(in srgb, rgba(255, 0, 0, 0), blue 65%);
+	color-2: color-mix(in lab, rgba(255, 0, 0, 0), blue 65%);
+	color-3: color-mix(in xyz, rgba(255, 0, 0, 0), blue 65%);
+	color-4: color-mix(in oklch, rgba(255, 0, 0, 0), blue 65%);
+	color-5: color-mix(in lch, rgba(255, 0, 0, 0), blue 65%);
+	color-6: color-mix(in hsl, rgba(255, 0, 0, 0), blue 65%);
+}

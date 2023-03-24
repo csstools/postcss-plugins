@@ -7,6 +7,7 @@ import postcssAttributeCaseInsensitive from 'postcss-attribute-case-insensitive'
 import postcssClamp from 'postcss-clamp';
 import postcssColorFunction from '@csstools/postcss-color-function';
 import postcssColorFunctionalNotation from 'postcss-color-functional-notation';
+import postcssColorMixFunction from '@csstools/postcss-color-mix-function';
 import postcssCustomMedia from 'postcss-custom-media';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomSelectors from 'postcss-custom-selectors';
@@ -60,6 +61,7 @@ export const pluginsById = new Map(
 		['clamp', postcssClamp],
 		['color-function', postcssColorFunction],
 		['color-functional-notation', postcssColorFunctionalNotation],
+		['color-mix', postcssColorMixFunction],
 		['custom-media-queries', postcssCustomMedia],
 		['custom-properties', postcssCustomProperties],
 		['custom-selectors', postcssCustomSelectors],
