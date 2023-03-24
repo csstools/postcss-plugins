@@ -22,16 +22,16 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 	return {
 		postcssPlugin: 'postcss-oklab-function',
 		Declaration: (decl: Declaration) => {
+			const originalValue = decl.value;
+			if (!(oklab_oklch_functionRegex.test(originalValue.toLowerCase()))) {
+				return;
+			}
+
 			if (hasFallback(decl)) {
 				return;
 			}
 
 			if (hasSupportsAtRuleAncestor(decl)) {
-				return;
-			}
-
-			const originalValue = decl.value;
-			if (!(oklab_oklch_functionRegex.test(originalValue.toLowerCase()))) {
 				return;
 			}
 

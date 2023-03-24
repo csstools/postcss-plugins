@@ -1,5 +1,9 @@
 # Changes to PostCSS Gradients Interpolation Method
 
+### 3.0.0 Unreleased (major)
+
+- Handle `color-mix()` internally with `@csstools/css-color-parser`
+
 ### 2.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
