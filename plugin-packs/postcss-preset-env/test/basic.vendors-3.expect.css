@@ -477,16 +477,16 @@
 }
 
 .trigonometric {
-	left: sin(45deg);
-	left: cos(45deg);
-	left: tan(45deg);
-	left: asin(0.5);
-	left: acos(0.5);
-	left: atan(10);
-	left: atan2(-1, 1);
-	left: asin(sin(pi / 2));
-	left: atan2(infinity, -infinity);
-	left: sin((1deg * 3) + .25turn);
+	left: 0.70711;
+	left: 0.70711;
+	left: 1;
+	left: 30deg;
+	left: 60deg;
+	left: 84.28941deg;
+	left: -45deg;
+	left: 90deg;
+	left: 135deg;
+	left: 0.99863;
 }
 
 .trigonometric-ignore-not-a-function {
