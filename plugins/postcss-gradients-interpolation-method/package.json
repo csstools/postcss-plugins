@@ -69,7 +69,7 @@
 		"syntax"
 	],
 	"csstools": {
-		"cssdbId": "TODO",
+		"cssdbId": "gradients-interpolation-method",
 		"exportName": "postcssGradientsInterpolationMethod",
 		"humanReadableName": "PostCSS Gradients Interpolation Method",
 		"specUrl": "https://drafts.csswg.org/css-images-4/#linear-gradients"
