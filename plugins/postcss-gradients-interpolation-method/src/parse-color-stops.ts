@@ -1,8 +1,9 @@
-import { color, ColorData } from '@csstools/css-color-parser';
-import { ComponentValue, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { isCommentNode } from '@csstools/css-parser-algorithms';
-import { TokenType } from '@csstools/css-tokenizer';
 import type { ColorStop } from './color-stop-list';
+import type { ComponentValue } from '@csstools/css-parser-algorithms';
+import { TokenType } from '@csstools/css-tokenizer';
+import { color, ColorData } from '@csstools/css-color-parser';
+import { isCommentNode } from '@csstools/css-parser-algorithms';
+import { isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 
 export function parseColorStops(componentValues: Array<ComponentValue>): Array<ColorStop> | false {
 	const colorStops: Array<ColorStop> = [];

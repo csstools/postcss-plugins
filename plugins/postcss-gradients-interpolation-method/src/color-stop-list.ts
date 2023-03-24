@@ -1,7 +1,8 @@
-import { color, ColorData, colorDataFitsRGB_Gamut, serializeP3, serializeRGB } from '@csstools/css-color-parser';
+import type { ColorData } from '@csstools/css-color-parser';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { TokenType } from '@csstools/css-tokenizer';
+import { color, colorDataFitsRGB_Gamut, serializeP3, serializeRGB } from '@csstools/css-color-parser';
 
 export type ColorStop = {
 	color: ComponentValue,
@@ -112,4 +113,3 @@ export function interpolateColorsInColorStopsList(colorStops: Array<ColorStop>, 
 
 	return result;
 }
-

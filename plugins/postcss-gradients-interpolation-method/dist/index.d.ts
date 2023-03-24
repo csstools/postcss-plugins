@@ -1,7 +1,7 @@
 import type { PluginCreator } from 'postcss';
 /** postcss-gradients-interpolation-method plugin options */
 export type pluginOptions = {
-    /** Preserve the original notation. default: true */
+    /** Preserve the original notation. default: false */
     preserve?: boolean;
     /** Enable "@csstools/postcss-progressive-custom-properties". default: true */
     enableProgressiveCustomProperties?: boolean;

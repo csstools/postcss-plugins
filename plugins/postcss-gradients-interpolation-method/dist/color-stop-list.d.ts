@@ -1,4 +1,4 @@
-import { ColorData } from '@csstools/css-color-parser';
+import type { ColorData } from '@csstools/css-color-parser';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { TokenNode } from '@csstools/css-parser-algorithms';
 export type ColorStop = {

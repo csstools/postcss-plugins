@@ -1,27 +1,18 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { PluginCreator } from 'postcss';
-import { ComponentValue, WhitespaceNode } from '@csstools/css-parser-algorithms';
-import { gradientFunctionRegex, gradientNameRegex } from './is-gradient';
+import { gradientFunctionRegex } from './is-gradient';
 import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-import { interpolateColorsInColorStopsList } from './color-stop-list';
-import { isCommentNode, isTokenNode, isWhitespaceNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
-import { parseColorStops } from './parse-color-stops';
-import { tokenize, TokenType } from '@csstools/css-tokenizer';
+import { modifyGradientFunctionComponentValues } from './modify-gradient-component-values';
+import { tokenize } from '@csstools/css-tokenizer';
 
-const colorSpaceRegex = /^(srgb|srgb-linear|lab|oklab|xyz|xyz-d50|xyz-d65|hsl|hwb|lch|oklch)$/i;
-const polarColorSpaceRegex = /^(hsl|hwb|lch|oklch)$/i;
-const hueInterpolationMethodRegex = /^(shorter|longer|increasing|decreasing)$/i;
-const inKeywordRegex = /^in$/i;
-const hueKeywordRegex = /^hue$/i;
+type basePluginOptions = {
+	preserve: boolean,
+};
 
-/**
- * Transform double-position gradients in CSS.
- * @param {{preserve?: boolean}} opts
- * @returns {import('postcss').Plugin}
- */
-const basePlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve?: boolean }) => {
+/* Transform gradients with interpolation methods in CSS. */
+const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-gradients-interpolation-method',
 		Declaration(decl) {
@@ -37,162 +28,17 @@ const basePlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve?: bo
 				return;
 			}
 
-			const tokens = tokenize({
-				css: decl.value,
-			});
-
 			const modified = stringify(replaceComponentValues(
-				parseCommaSeparatedListOfComponentValues(tokens),
+				parseCommaSeparatedListOfComponentValues(tokenize({ css: decl.value })),
 				(componentValue) => {
 					if (!isFunctionNode(componentValue)) {
 						return;
 					}
 
-					const functionName = componentValue.getName();
-					if (!gradientNameRegex.test(functionName)) {
-						return;
+					const modifiedComponentValues = modifyGradientFunctionComponentValues(componentValue);
+					if (modifiedComponentValues) {
+						componentValue.value = modifiedComponentValues;
 					}
-
-					let colorSpaceName = 'srgb';
-
-					let inKeyword: TokenNode | null = null;
-					let colorSpace: TokenNode | null = null;
-					let hueInterpolationMethod: TokenNode | null = null;
-					let hueKeyword: TokenNode | null = null;
-					let firstComma: TokenNode | null = null;
-
-					let remainder: Array<ComponentValue> = [];
-
-					{
-						let i = 0;
-						let node = componentValue.value[i];
-
-						{
-							// Advance to "in" keyword
-							while (!(isTokenNode(node) && node.value[0] === TokenType.Ident && inKeywordRegex.test(node.value[4].value))) {
-								if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
-									// comma before "in" keyword
-									return;
-								}
-
-								i++;
-								node = componentValue.value[i];
-							}
-
-							inKeyword = node;
-							i++;
-							node = componentValue.value[i];
-						}
-
-						while (isCommentNode(node) || isWhitespaceNode(node)) {
-							i++;
-							node = componentValue.value[i];
-						}
-
-						// color space
-						if (
-							isTokenNode(node) &&
-							node.value[0] === TokenType.Ident &&
-							colorSpaceRegex.test(node.value[4].value)
-						) {
-							if (colorSpace) {
-								return;
-							}
-
-							colorSpace = node;
-							colorSpaceName = node.value[4].value;
-
-							i++;
-							node = componentValue.value[i];
-						}
-
-						while (isCommentNode(node) || isWhitespaceNode(node)) {
-							i++;
-							node = componentValue.value[i];
-						}
-
-						// hue interpolation method
-						if (
-							isTokenNode(node) &&
-								node.value[0] === TokenType.Ident &&
-								hueInterpolationMethodRegex.test(node.value[4].value) &&
-								polarColorSpaceRegex.test(colorSpaceName)
-						) {
-							if (hueInterpolationMethod || !colorSpace) {
-								return;
-							}
-
-							hueInterpolationMethod = node;
-
-							i++;
-							node = componentValue.value[i];
-						}
-
-						while (isCommentNode(node) || isWhitespaceNode(node)) {
-							i++;
-							node = componentValue.value[i];
-						}
-
-						// "hue" keyword
-						if (
-							isTokenNode(node) &&
-								node.value[0] === TokenType.Ident &&
-								hueKeywordRegex.test(node.value[4].value)
-						) {
-							if (hueKeyword || !colorSpace || !hueInterpolationMethod) {
-								return;
-							}
-
-							hueKeyword = node;
-
-							i++;
-							node = componentValue.value[i];
-						}
-
-						// Find first comma
-						while (!isTokenNode(node) || node.value[0] !== TokenType.Comma) {
-							i++;
-							node = componentValue.value[i];
-						}
-
-						firstComma = node;
-						remainder = componentValue.value.slice(i + 1);
-					}
-
-					if (!colorSpace) {
-						return;
-					} else if (hueInterpolationMethod && !hueKeyword) {
-						return;
-					} else if (hueKeyword && !hueInterpolationMethod) {
-						return;
-					}
-
-					const colorStops = parseColorStops(remainder);
-					if (!colorStops) {
-						return;
-					}
-
-					const modifiedColorStops = interpolateColorsInColorStopsList(colorStops, colorSpace, hueInterpolationMethod);
-					if (!modifiedColorStops) {
-						return;
-					}
-
-					const beforeColorStops = [
-						...componentValue.value.slice(0, componentValue.value.indexOf(inKeyword)),
-						...componentValue.value.slice(componentValue.value.indexOf(hueKeyword || colorSpace) + 1, componentValue.value.indexOf(firstComma)),
-					];
-					const hasMeaningfulPrefix = beforeColorStops.length > 0 && beforeColorStops.some((node) => !isCommentNode(node) && !isWhitespaceNode(node));
-					if (hasMeaningfulPrefix) {
-						beforeColorStops.push(
-							new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
-							new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
-						);
-					}
-
-					componentValue.value = [
-						...beforeColorStops,
-						...modifiedColorStops,
-					];
 				},
 			));
 
@@ -215,13 +61,13 @@ basePlugin.postcss = true;
 
 /** postcss-gradients-interpolation-method plugin options */
 export type pluginOptions = {
-	/** Preserve the original notation. default: true */
+	/** Preserve the original notation. default: false */
 	preserve?: boolean,
 	/** Enable "@csstools/postcss-progressive-custom-properties". default: true */
 	enableProgressiveCustomProperties?: boolean,
 };
 
-// Transform gradient interpolation methods.
+/* Transform gradients with interpolation methods in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		enableProgressiveCustomProperties: true,
