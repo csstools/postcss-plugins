@@ -1,12 +1,13 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import type { PluginCreator } from 'postcss';
-import { ColorStop, interpolateColorsInColorStopsList } from './color-stop-list';
-import { color } from '@csstools/css-color-parser';
+import { ComponentValue, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { gradientFunctionRegex, gradientNameRegex } from './is-gradient';
+import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { interpolateColorsInColorStopsList } from './color-stop-list';
 import { isCommentNode, isTokenNode, isWhitespaceNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
+import { parseColorStops } from './parse-color-stops';
 import { tokenize, TokenType } from '@csstools/css-tokenizer';
 
 const colorSpaceRegex = /^(srgb|srgb-linear|lab|oklab|xyz|xyz-d50|xyz-d65|hsl|hwb|lch|oklch)$/i;
@@ -25,6 +26,10 @@ const basePlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve?: bo
 		postcssPlugin: 'postcss-gradients-interpolation-method',
 		Declaration(decl) {
 			if (!gradientFunctionRegex.test(decl.value)) {
+				return;
+			}
+
+			if (hasFallback(decl)) {
 				return;
 			}
 
@@ -162,66 +167,9 @@ const basePlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve?: bo
 						return;
 					}
 
-
-					const colorStops: Array<ColorStop> = [];
-
-					let currentColorStop: {
-						color?: ComponentValue,
-						positionA?: ComponentValue,
-						positionB?: ComponentValue,
-					} = {};
-
-					for (let i = 0; i < remainder.length; i++) {
-						const node = remainder[i];
-						if (isCommentNode(node) || isWhitespaceNode(node)) {
-							continue;
-						}
-
-						if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
-							if (currentColorStop.color && currentColorStop.positionA) {
-								colorStops.push({ color: currentColorStop.color, position: currentColorStop.positionA });
-
-								if (currentColorStop.positionB) {
-									colorStops.push({ color: currentColorStop.color, position: currentColorStop.positionB });
-								}
-
-								currentColorStop = {};
-								continue;
-							}
-
-							return;
-						}
-
-						const colorData = color(node);
-						if (colorData && currentColorStop.color) {
-							return;
-						}
-
-						if (colorData) {
-							currentColorStop.color = node;
-							continue;
-						}
-
-						if (!currentColorStop.positionA) {
-							currentColorStop.positionA = node;
-							continue;
-						}
-
-						if (currentColorStop.positionA && !currentColorStop.positionB) {
-							currentColorStop.positionB = node;
-						}
-
+					const colorStops = parseColorStops(remainder);
+					if (!colorStops) {
 						return;
-					}
-
-					if (!currentColorStop.color || !currentColorStop.positionA) {
-						return;
-					}
-
-					colorStops.push({ color: currentColorStop.color, position: currentColorStop.positionA });
-
-					if (currentColorStop.positionB) {
-						colorStops.push({ color: currentColorStop.color, position: currentColorStop.positionB });
 					}
 
 					const modifiedColorStops = interpolateColorsInColorStopsList(colorStops, colorSpace, hueInterpolationMethod);
@@ -237,6 +185,7 @@ const basePlugin: PluginCreator<{ preserve: boolean }> = (opts?: { preserve?: bo
 					if (hasMeaningfulPrefix) {
 						beforeColorStops.push(
 							new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
+							new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
 						);
 					}
 

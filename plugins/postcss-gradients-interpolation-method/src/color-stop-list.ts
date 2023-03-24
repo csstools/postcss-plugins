@@ -1,83 +1,115 @@
-import { color, serializeRGB } from '@csstools/css-color-parser';
+import { color, ColorData, colorDataFitsRGB_Gamut, serializeP3, serializeRGB } from '@csstools/css-color-parser';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { TokenType } from '@csstools/css-tokenizer';
 
 export type ColorStop = {
 	color: ComponentValue,
+	colorData: ColorData,
 	position: ComponentValue,
 }
 
 export function interpolateColorsInColorStopsList(colorStops: Array<ColorStop>, colorSpace: TokenNode, hueInterpolationMethod: TokenNode | null): Array<ComponentValue> | false {
 	const result: Array<ComponentValue> = [];
+	const interpolatedColorStops: Array<{
+		color?: ComponentValue,
+		colorData: ColorData,
+		position?: ComponentValue,
+	}> = [];
 
 	for (let i = 0; i < (colorStops.length - 1); i++) {
 		const colorStop = colorStops[i];
 		const nextColorStop = colorStops[i + 1];
 
-		result.push(
-			colorStop.color,
-			new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
-			colorStop.position,
-			new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
-			new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
-		);
+		interpolatedColorStops.push(colorStop);
 
-		for (let j = 1; j <= 9; j++) {
-			const multiplier = j * 10;
+		if (
+			serializeP3(colorStop.colorData).toString() !== serializeP3(nextColorStop.colorData).toString() &&
+			colorStop.position.toString() !== nextColorStop.position.toString()
+		) {
+			for (let j = 1; j <= 9; j++) {
+				const multiplier = j * 10;
 
-			let hueParts: Array<ComponentValue> = [];
-			if (hueInterpolationMethod) {
-				hueParts = [
-					new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
-					hueInterpolationMethod,
-					new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
-					new TokenNode([TokenType.Ident, 'hue', -1, -1, { value: 'hue' }]),
-				];
+				let hueParts: Array<ComponentValue> = [];
+				if (hueInterpolationMethod) {
+					hueParts = [
+						new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
+						hueInterpolationMethod,
+						new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
+						new TokenNode([TokenType.Ident, 'hue', -1, -1, { value: 'hue' }]),
+					];
+				}
+
+				const colorMix = new FunctionNode(
+					[TokenType.Function, 'color-mix(', -1, -1, { value: 'color-mix' }],
+					[TokenType.CloseParen, ')', -1, -1, undefined],
+					[
+						new TokenNode([TokenType.Ident, 'in', -1, -1, { value: 'in' }]),
+						new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
+						colorSpace,
+						...hueParts,
+						new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
+						new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
+						colorStop.color,
+						new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
+						new TokenNode([TokenType.Percentage, `${100 - multiplier}%`, -1, -1, { value: 100 - multiplier }]),
+						new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
+						new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
+						nextColorStop.color,
+						new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
+						new TokenNode([TokenType.Percentage, `${multiplier}%`, -1, -1, { value: multiplier }]),
+					],
+				);
+
+				const mixedColor = color(colorMix);
+				if (!mixedColor) {
+					return false;
+				}
+
+				interpolatedColorStops.push({
+					colorData: mixedColor,
+				});
 			}
-
-			const colorMix = new FunctionNode(
-				[TokenType.Function, 'color-mix(', -1, -1, { value: 'color-mix' }],
-				[TokenType.CloseParen, ')', -1, -1, undefined],
-				[
-					new TokenNode([TokenType.Ident, 'in', -1, -1, { value: 'in' }]),
-					new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
-					colorSpace,
-					...hueParts,
-					new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
-					new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
-					colorStop.color,
-					new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
-					new TokenNode([TokenType.Percentage, `${100 - multiplier}%`, -1, -1, { value: 100 - multiplier }]),
-					new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
-					new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
-					nextColorStop.color,
-					new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
-					new TokenNode([TokenType.Percentage, `${multiplier}%`, -1, -1, { value: multiplier }]),
-				],
-			);
-
-			const mixedColor = color(colorMix);
-			if (!mixedColor) {
-				return false;
-			}
-
-			const rgbColor = serializeRGB(mixedColor);
-			result.push(
-				rgbColor,
-				new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
-				new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
-			);
 		}
 
 		if (i === (colorStops.length - 2)) {
+			interpolatedColorStops.push(nextColorStop);
+		}
+	}
+
+	for (let i = 0; i < interpolatedColorStops.length; i++) {
+		if (colorDataFitsRGB_Gamut(interpolatedColorStops[i].colorData)) {
+			interpolatedColorStops[i].color = serializeRGB(interpolatedColorStops[i].colorData);
+		} else {
+			interpolatedColorStops[i].color = serializeP3(interpolatedColorStops[i].colorData);
+		}
+	}
+
+	for (let i = 0; i < interpolatedColorStops.length; i++) {
+		const colorStop = interpolatedColorStops[i];
+		if (colorStop.position) {
 			result.push(
-				nextColorStop.color,
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				colorStop.color!,
 				new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
-				nextColorStop.position,
+				colorStop.position,
+
+			);
+		} else {
+			result.push(
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				colorStop.color!,
+			);
+		}
+
+		if (i !== (interpolatedColorStops.length - 1)) {
+			result.push(
+				new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
+				new WhitespaceNode([[TokenType.Whitespace, ' ', -1, -1, undefined]]),
 			);
 		}
 	}
 
 	return result;
 }
+
