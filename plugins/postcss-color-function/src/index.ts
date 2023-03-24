@@ -19,16 +19,16 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 	return {
 		postcssPlugin: 'postcss-color-function',
 		Declaration: (decl: Declaration) => {
+			const originalValue = decl.value;
+			if (!(colorFunctionRegex.test(originalValue.toLowerCase()))) {
+				return;
+			}
+
 			if (hasFallback(decl)) {
 				return;
 			}
 
 			if (hasSupportsAtRuleAncestor(decl)) {
-				return;
-			}
-
-			const originalValue = decl.value;
-			if (!(colorFunctionRegex.test(originalValue.toLowerCase()))) {
 				return;
 			}
 
