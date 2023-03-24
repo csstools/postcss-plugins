@@ -2,6 +2,7 @@
 
 ### Unreleased (unknown)
 
+- Updated `cssdb` to `7.5.1` (minor)
 - Updated `postcss-opacity-percentage` to `2.0.0` (major)
 - Improve `debug` message format
 
