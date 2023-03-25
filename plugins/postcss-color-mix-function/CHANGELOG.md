@@ -1,5 +1,5 @@
 # Changes to PostCSS Color Mix Function
 
-### Unreleased (major)
+### 1.0.0 (March 25, 2023)
 
 - Initial version
