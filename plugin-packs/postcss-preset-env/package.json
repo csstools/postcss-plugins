@@ -45,7 +45,7 @@
 	"dependencies": {
 		"@csstools/postcss-cascade-layers": "^3.0.1",
 		"@csstools/postcss-color-function": "^2.1.0",
-		"@csstools/postcss-color-mix-function": "^0.0.0",
+		"@csstools/postcss-color-mix-function": "^1.0.0",
 		"@csstools/postcss-font-format-keywords": "^2.0.2",
 		"@csstools/postcss-hwb-function": "^2.1.1",
 		"@csstools/postcss-ic-unit": "^2.0.2",
