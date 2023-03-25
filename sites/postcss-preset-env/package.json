@@ -80,6 +80,7 @@
 		"@codemirror/theme-one-dark": "^6.1.0",
 		"@codemirror/view": "^6.7.3",
 		"@csstools/css-calc": "^1.0.1",
+		"@csstools/css-color-parser": "^1.0.0",
 		"@csstools/css-parser-algorithms": "^2.1.0",
 		"@csstools/css-tokenizer": "^2.1.0",
 		"@rollup/plugin-babel": "^6.0.3",
