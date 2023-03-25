@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 8.1.0 (March 25, 2023)
 
 - Added `@csstools/postcss-color-mix-function` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function#readme) for usage details.
 - Improve `debug` message format
