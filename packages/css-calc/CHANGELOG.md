@@ -1,6 +1,6 @@
 # Changes to CSS Calc
 
-### Unreleased (patch)
+### 1.0.1 (March 25, 2023)
 
 - Improve case insensitive string matching.
 
