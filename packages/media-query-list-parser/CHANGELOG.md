@@ -1,6 +1,6 @@
 # Changes to Media Query List Parser
 
-### Unreleased (patch)
+### 2.0.2 (March 25, 2023)
 
 - Improve case insensitive string matching.
 
