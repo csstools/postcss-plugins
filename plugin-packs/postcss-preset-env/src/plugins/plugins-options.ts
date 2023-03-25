@@ -7,6 +7,7 @@ import type { pluginOptions as postcssAttributeCaseInsensitive } from 'postcss-a
 import type { pluginOptions as postcssClamp } from '../types/postcss-clamp/plugin-options';
 import type { pluginOptions as postcssColorFunction } from '@csstools/postcss-color-function';
 import type { pluginOptions as postcssColorFunctionalNotation } from 'postcss-color-functional-notation';
+import type { pluginOptions as postcssColorMixFunction } from '@csstools/postcss-color-mix-function';
 import type { pluginOptions as postcssCustomMedia } from 'postcss-custom-media';
 import type { pluginOptions as postcssCustomProperties } from 'postcss-custom-properties';
 import type { pluginOptions as postcssCustomSelectors } from 'postcss-custom-selectors';
@@ -67,6 +68,8 @@ export type pluginsOptions = {
 	'color-function'?: postcssColorFunction | boolean
 	/** plugin options for "postcss-color-functional-notation" */
 	'color-functional-notation'?: postcssColorFunctionalNotation | boolean
+	/** plugin options for "@csstools/postcss-color-mix-function" */
+	'color-mix'?: postcssColorMixFunction | boolean
 	/** plugin options for "postcss-custom-media" */
 	'custom-media-queries'?: postcssCustomMedia | boolean
 	/** plugin options for "postcss-custom-properties" */
