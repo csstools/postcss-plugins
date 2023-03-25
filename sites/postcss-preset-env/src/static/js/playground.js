@@ -101,7 +101,6 @@ a {
 
 	> span {
 		color: color-mix(in oklch, cyan, green 25%);
-		font-weight: bold;
 	}
 }
 
