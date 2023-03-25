@@ -1,5 +1,5 @@
 # Changes to CSS Color Parser
 
-### Unreleased (major)
+### 1.0.0 (March 25, 2023)
 
 - Initial version
