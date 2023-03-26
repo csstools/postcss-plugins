@@ -12,7 +12,7 @@ export default [
 	'scripts',
 	'playground',
 	'blog_calc_2023_02_21',
-	'blog_color_2023_03_27',
+	'blog_color_parser_2023_03_27',
 ].map(name => ({
 	input: `src/static/js/${name}.js`,
 	output: [
