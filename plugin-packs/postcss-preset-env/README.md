@@ -37,11 +37,11 @@ CSSDB exposes the browser support that each feature has which can come from [Can
 
 By providing a list of browser targets for your project, plugins that aren't needed will be skipped. Over time your targets might change and by updating the settings your CSS bundle will only ever contain the needed fallbacks.
 
-What [PostCSS Preset Env] does is to take the support data that comes from MDN and Can I Use and determine from a [browserlist](https://github.com/browserslist/browserslist) whether those transformations are needed. It also packs [Autoprefixer](https://github.com/postcss/autoprefixer) within and shares the list with it, so prefixes are only applied when you're going to need them given your browser support list.
+What [PostCSS Preset Env] does is to take the support data that comes from MDN and Can I Use and determine from a [browserslist](https://github.com/browserslist/browserslist) whether those transformations are needed. It also packs [Autoprefixer](https://github.com/postcss/autoprefixer) within and shares the list with it, so prefixes are only applied when you're going to need them given your browser support list.
 
 ### Glossary:
 
-* **Browser list option**: [Browserlist](https://github.com/browserslist/browserslist) is a package that gives you a list of browsers for a given query. For example, `chrome < 42` will give you a list of every Chrome version that has been released up to, but not including, 42.
+* **Browser list option**: [Browserslist](https://github.com/browserslist/browserslist) is a package that gives you a list of browsers for a given query. For example, `chrome < 42` will give you a list of every Chrome version that has been released up to, but not including, 42.
 * **Browser support stats**: Features get introduced on browsers at certain versions. They're often visible on [MDN](https://developer.mozilla.org/en-US/) and [Can I Use](https://caniuse.com/). Comparing these stats with the needed _support_ for your project tells you if it's safe to use a feature or not.
 * **CSS Feature**: A CSS feature is often part of some spec that enables a specific feature. For example, `hwb` functional notation lets you express a given color according to its hue, whiteness, and blackness. This is part of the CSS Color 4 Spec.
 * **CSS Spec**: A Spec is a document that collects new features, what problems are they trying to solve and how it's intended to be solved (generally). This is usually an evolving document that goes over lengthy discussions between several people from different companies.
