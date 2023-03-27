@@ -3,6 +3,8 @@ import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { TokenType } from '@csstools/css-tokenizer';
 import { color, serializeRGB } from '@csstools/css-color-parser';
+import { colorDataFitsRGB_Gamut } from '@csstools/css-color-parser';
+import { serializeP3 } from '@csstools/css-color-parser';
 
 export type ColorStop = {
 	color: ComponentValue,
@@ -10,7 +12,7 @@ export type ColorStop = {
 	position: ComponentValue,
 }
 
-export function interpolateColorsInColorStopsList(colorStops: Array<ColorStop>, colorSpace: TokenNode, hueInterpolationMethod: TokenNode | null): Array<ComponentValue> | false {
+export function interpolateColorsInColorStopsList(colorStops: Array<ColorStop>, colorSpace: TokenNode, hueInterpolationMethod: TokenNode | null, wideGamut = false): Array<ComponentValue> | false {
 	const result: Array<ComponentValue> = [];
 	const interpolatedColorStops: Array<{
 		color?: ComponentValue,
@@ -79,7 +81,11 @@ export function interpolateColorsInColorStopsList(colorStops: Array<ColorStop>, 
 	}
 
 	for (let i = 0; i < interpolatedColorStops.length; i++) {
-		interpolatedColorStops[i].color = serializeRGB(interpolatedColorStops[i].colorData, false);
+		if (wideGamut && !colorDataFitsRGB_Gamut(interpolatedColorStops[i].colorData)) {
+			interpolatedColorStops[i].color = serializeP3(interpolatedColorStops[i].colorData, false);
+		} else {
+			interpolatedColorStops[i].color = serializeRGB(interpolatedColorStops[i].colorData, false);
+		}
 	}
 
 	for (let i = 0; i < interpolatedColorStops.length; i++) {
