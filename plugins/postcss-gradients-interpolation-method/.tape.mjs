@@ -11,13 +11,6 @@ postcssTape(plugin)({
 			preserve: false
 		}
 	},
-	'basic:preserve-true:progressive-false': {
-		message: 'supports { preserve: true, enableProgressiveCustomProperties: false } usage',
-		options: {
-			preserve: true,
-			enableProgressiveCustomProperties: false,
-		}
-	},
 	'basic:with-cloned-rules': {
 		message: 'doesn\'t cause duplicate CSS',
 		plugins: [
@@ -34,6 +27,16 @@ postcssTape(plugin)({
 		message: 'supports variables with { preserve: false } usage',
 		options: {
 			preserve: false
+		}
+	},
+	'variables:preserve-true': {
+		message: 'supports { preserve: true, enableProgressiveCustomProperties: true } usage',
+	},
+	'variables:preserve-true:progressive-false': {
+		message: 'supports { preserve: true, enableProgressiveCustomProperties: false } usage',
+		options: {
+			preserve: true,
+			enableProgressiveCustomProperties: false,
 		}
 	},
 	'examples/example': {

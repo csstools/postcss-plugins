@@ -92,7 +92,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		preserve: true,
 	}, opts);
 
-	if (options.enableProgressiveCustomProperties && options.preserve) {
+	if (options.enableProgressiveCustomProperties) {
 		return {
 			postcssPlugin: 'postcss-gradients-interpolation-method',
 			plugins: [

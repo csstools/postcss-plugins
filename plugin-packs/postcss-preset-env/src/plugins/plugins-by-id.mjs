@@ -20,6 +20,7 @@ import postcssFocusWithin from 'postcss-focus-within';
 import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
 import postcssFontVariant from 'postcss-font-variant';
 import postcssGapProperties from 'postcss-gap-properties';
+import postcssGradientsInterpolationMethod from '@csstools/postcss-gradients-interpolation-method';
 import postcssHasPseudo from 'css-has-pseudo';
 import postcssColorHexAlpha from 'postcss-color-hex-alpha';
 import postcssHWBFunction from '@csstools/postcss-hwb-function';
@@ -74,6 +75,7 @@ export const pluginsById = new Map(
 		['font-format-keywords', postcssFontFormatKeywords],
 		['font-variant-property', postcssFontVariant],
 		['gap-properties', postcssGapProperties],
+		['gradients-interpolation-method', postcssGradientsInterpolationMethod],
 		['has-pseudo-class', postcssHasPseudo],
 		['hexadecimal-alpha-notation', postcssColorHexAlpha],
 		['hwb-function', postcssHWBFunction],

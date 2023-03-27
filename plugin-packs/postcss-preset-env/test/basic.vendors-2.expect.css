@@ -598,3 +598,7 @@
 	color-5: color-mix(in lch, rgba(255, 0, 0, 0), blue 65%);
 	color-6: color-mix(in hsl, rgba(255, 0, 0, 0), blue 65%);
 }
+
+.gradients-interpolation-method {
+	--background-image: linear-gradient(in oklch decreasing hue, hsl(0, 85%, 75%) 0%, hsl(180, 80%, 65%) 100%);
+}

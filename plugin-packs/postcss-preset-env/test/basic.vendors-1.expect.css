@@ -600,3 +600,7 @@
 	color-5: color(display-p3 0.56492 0 0.48893 / 0.65);
 	color-6: rgba(179, 0, 255, 0.65);
 }
+
+.gradients-interpolation-method {
+	--background-image: linear-gradient(in oklch decreasing hue, hsl(0, 85%, 75%) 0%, hsl(180, 80%, 65%) 100%);
+}
