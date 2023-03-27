@@ -281,3 +281,7 @@
 to-clone {
 	background-image: linear-gradient(in hwb longer hue, hsl(96, 42%, 24%) 0%, hsl(302, 67%, 25%) 100%);
 }
+
+.test-visual-effect-1-1 {
+	background-image: linear-gradient(in oklch longer hue to right, red 0%, blue 100%);
+}
