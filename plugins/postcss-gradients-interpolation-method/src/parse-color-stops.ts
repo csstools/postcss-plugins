@@ -37,14 +37,19 @@ export function parseColorStops(componentValues: Array<ComponentValue>): Array<C
 		}
 
 		const colorData = color(node);
-		if (colorData && currentColorStop.color) {
-			return false;
-		}
-
 		if (colorData) {
+			if (currentColorStop.color) {
+				return false;
+			}
+
 			currentColorStop.color = node;
 			currentColorStop.colorData = colorData;
 			continue;
+		}
+
+		if (!currentColorStop.color) {
+			// Positions before colors are not allowed.
+			return false;
 		}
 
 		if (!currentColorStop.positionA) {
