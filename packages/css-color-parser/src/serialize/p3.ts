@@ -17,7 +17,7 @@ export function serializeP3(color: ColorData, gamutMapping = true): FunctionNode
 		if (gamutMapping) {
 			p3 = XYZ_D50_to_P3_Gamut(colorData_to_XYZ_D50(color).channels);
 		} else {
-			p3 = xyz.XYZ_D50_to_sRGB(colorData_to_XYZ_D50(color).channels);
+			p3 = xyz.XYZ_D50_to_P3(colorData_to_XYZ_D50(color).channels);
 		}
 	}
 
