@@ -100,6 +100,11 @@ export default [
 		'importName': 'postcssGapProperties',
 	},
 	{
+		'packageName': '@csstools/postcss-gradients-interpolation-method',
+		'id': 'gradients-interpolation-method',
+		'importName': 'postcssGradientsInterpolationMethod',
+	},
+	{
 		'packageName': '@csstools/postcss-hwb-function',
 		'id': 'hwb-function',
 		'importName': 'postcssHWBFunction',

@@ -1,6 +1,6 @@
 # Changes to PostCSS Gradients Interpolation Method
 
-### 3.0.1 (patch)
+### Unreleased (patch)
 
 - Skip gamut mapping for interpolation color hints.
 

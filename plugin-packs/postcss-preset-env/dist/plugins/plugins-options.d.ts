@@ -20,6 +20,7 @@ import type { pluginOptions as postcssFocusWithin } from 'postcss-focus-within';
 import type { pluginOptions as postcssFontFormatKeywords } from '@csstools/postcss-font-format-keywords';
 import type { pluginOptions as postcssFontVariant } from '../types/postcss-font-variant/plugin-options';
 import type { pluginOptions as postcssGapProperties } from 'postcss-gap-properties';
+import type { pluginOptions as postcssGradientsInterpolationMethod } from '@csstools/postcss-gradients-interpolation-method';
 import type { pluginOptions as postcssHasPseudo } from 'css-has-pseudo';
 import type { pluginOptions as postcssColorHexAlpha } from 'postcss-color-hex-alpha';
 import type { pluginOptions as postcssHWBFunction } from '@csstools/postcss-hwb-function';
@@ -93,6 +94,8 @@ export type pluginsOptions = {
     'font-variant-property'?: postcssFontVariant | boolean;
     /** plugin options for "postcss-gap-properties" */
     'gap-properties'?: postcssGapProperties | boolean;
+    /** plugin options for "@csstools/postcss-gradients-interpolation-method" */
+    'gradients-interpolation-method'?: postcssGradientsInterpolationMethod | boolean;
     /** plugin options for "css-has-pseudo" */
     'has-pseudo-class'?: postcssHasPseudo | boolean;
     /** plugin options for "postcss-color-hex-alpha" */

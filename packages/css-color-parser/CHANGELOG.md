@@ -1,6 +1,6 @@
 # Changes to CSS Color Parser
 
-### 1.1.0 (minor)
+### Unreleased (minor)
 
 - Add a flag to `serializeP3` and `serializeRGB` to skip gamut mapping.
 
