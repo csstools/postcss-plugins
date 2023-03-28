@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 8.2.0 (March 28, 2023)
 
 - Added `@csstools/postcss-gradients-interpolation-method` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method#readme) for usage details.
 - Updated `cssdb` to `7.5.2` (patch)
