@@ -116,6 +116,10 @@ date: 2023-03-27
 		z-index: 4;
 	}
 
+	#output-color-mix {
+		transition: background-color 0.5s ease;
+	}
+
 	#output-color-mix::before {
 		clip-path: circle(75px at 175px 75px);
 		z-index: 5;
@@ -123,6 +127,7 @@ date: 2023-03-27
 
 	#output-color-mix::after {
 		background-color: var(--color, rgb(128, 0, 128));
+		transition: inherit;
 		clip-path: circle(75px at 175px 75px);
 		z-index: 6;
 	}
@@ -134,12 +139,13 @@ date: 2023-03-27
 		color: white;
 		display: block;
 		font-size: 0.875em;
+		font-family: monospace;
 		line-height: 2;
 		margin: 1rem auto;
 		max-width: calc(100% - 3rem);
 		padding: 2px 8px;
 		position: relative;
 		text-align: left;
-		width: 400px;
+		width: 525px;
 	}
 </style>
