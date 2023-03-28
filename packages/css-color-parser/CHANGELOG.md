@@ -1,6 +1,6 @@
 # Changes to CSS Color Parser
 
-### Unreleased (minor)
+### 1.1.0 (March 28, 2023)
 
 - Add a flag to `serializeP3` and `serializeRGB` to skip gamut mapping.
 
