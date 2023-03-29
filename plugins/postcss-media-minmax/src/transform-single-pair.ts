@@ -86,7 +86,7 @@ export function transformSingleNameValuePair(name: string, operator: MediaFeatur
 
 	let isRatio = false;
 	let valueNode: ComponentValue | undefined;
-	let valueRemainder: Array<ComponentValue>;
+	let valueRemainder: Array<CSSToken>;
 
 	if (Array.isArray(value.value)) {
 		if (!matchesRatioExactly(value.value)) {
@@ -104,7 +104,9 @@ export function transformSingleNameValuePair(name: string, operator: MediaFeatur
 
 		isRatio = true;
 		valueNode = value.value[ratioValues[0]];
-		valueRemainder = value.value.slice(ratioValues[0] + 1);
+		valueRemainder = [
+			...value.value.slice(ratioValues[0] + 1).flatMap(x => x.tokens()),
+		];
 	} else {
 		valueNode = value.value;
 		valueRemainder = [];
@@ -146,24 +148,6 @@ export function transformSingleNameValuePair(name: string, operator: MediaFeatur
 				valueToken = [TokenType.Number, tokenValue.toString(), -1, -1, { value: tokenValue, type: NumberType.Integer }];
 			}
 
-			if (isRatio) {
-				return newMediaFeaturePlain(
-					featureNamePrefix(operator) + name,
-					...tokensBefore,
-					[TokenType.Function, 'calc(', -1, -1, { value: 'calc(' }],
-					[TokenType.OpenParen, '(', -1, -1, undefined],
-					...valueNode.tokens().slice(1),
-					[TokenType.Whitespace, ' ', -1, -1, undefined],
-					[TokenType.Delim, '+', -1, -1, { value: '+' }],
-					[TokenType.Whitespace, ' ', -1, -1, undefined],
-					valueToken,
-					[TokenType.CloseParen, ')', -1, -1, undefined],
-					[TokenType.Whitespace, ' ', -1, -1, undefined],
-					...valueRemainder.flatMap(x => x.tokens()),
-					...tokensAfter,
-				);
-			}
-
 			return newMediaFeaturePlain(
 				featureNamePrefix(operator) + name,
 				...tokensBefore,
@@ -175,6 +159,7 @@ export function transformSingleNameValuePair(name: string, operator: MediaFeatur
 				[TokenType.Whitespace, ' ', -1, -1, undefined],
 				valueToken,
 				[TokenType.CloseParen, ')', -1, -1, undefined],
+				...valueRemainder,
 				...tokensAfter,
 			);
 		}
@@ -238,21 +223,11 @@ export function transformSingleNameValuePair(name: string, operator: MediaFeatur
 			token[1] = token[4].value.toString();
 		}
 
-		if (isRatio) {
-			return newMediaFeaturePlain(
-				featureNamePrefix(operator) + name,
-				...tokensBefore,
-				token,
-				[TokenType.Whitespace, ' ', -1, -1, undefined],
-				...valueRemainder.flatMap(x => x.tokens()),
-				...tokensAfter,
-			);
-		}
-
 		return newMediaFeaturePlain(
 			featureNamePrefix(operator) + name,
 			...tokensBefore,
 			token,
+			...valueRemainder,
 			...tokensAfter,
 		);
 	}
