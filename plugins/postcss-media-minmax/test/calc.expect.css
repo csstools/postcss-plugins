@@ -1,0 +1,111 @@
+/* px */
+@media (max-width: 499.98px) {}
+
+@media (max-width: calc(10px * 50)) {}
+
+@media (width: calc(10px * 50)) {}
+
+@media (min-width: 500.02px) {}
+
+@media (min-width: calc(10px * 50)) {}
+
+@media (min-width: 500.02px) {}
+
+@media (min-width: calc(10px * 50)) {}
+
+@media (width: calc(10px * 50)) {}
+
+@media (max-width: 499.98px) {}
+
+@media (max-width: calc(10px * 50)) {}
+
+@media (min-width: 500.02px) and (max-width: 999.98px) {}
+
+@media (min-width: calc(10px * 50)) and (max-width: 999.98px) {}
+
+@media (min-width: 500.02px) and (max-width: calc(100px * 10)) {}
+
+@media (min-width: calc(10px * 50)) and (max-width: calc(100px * 10)) {}
+
+@media (min-width: 1000.02px) and (max-width: 499.98px) {}
+
+@media (min-width: 1000.02px) and (max-width: calc(10px * 50)) {}
+
+@media (min-width: calc(100px * 10)) and (max-width: 499.98px) {}
+
+@media (min-width: calc(100px * 10)) and (max-width: calc(10px * 50)) {}
+
+
+/* rem */
+@media (max-width: 49.999rem) {}
+
+@media (max-width: calc(1rem * 50)) {}
+
+@media (width: calc(1rem * 50)) {}
+
+@media (min-width: 50.001rem) {}
+
+@media (min-width: calc(1rem * 50)) {}
+
+@media (min-width: 50.001rem) {}
+
+@media (min-width: calc(1rem * 50)) {}
+
+@media (width: calc(1rem * 50)) {}
+
+@media (max-width: 49.999rem) {}
+
+@media (max-width: calc(1rem * 50)) {}
+
+@media (min-width: 50.001rem) and (max-width: 99.999rem) {}
+
+@media (min-width: calc(1rem * 50)) and (max-width: 99.999rem) {}
+
+@media (min-width: 50.001rem) and (max-width: calc(10rem * 10)) {}
+
+@media (min-width: calc(1rem * 50)) and (max-width: calc(10rem * 10)) {}
+
+@media (min-width: 100.001rem) and (max-width: 49.999rem) {}
+
+@media (min-width: 100.001rem) and (max-width: calc(1rem * 50)) {}
+
+@media (min-width: calc(10rem * 10)) and (max-width: 49.999rem) {}
+
+@media (min-width: calc(10rem * 10)) and (max-width: calc(1rem * 50)) {}
+
+/* not an integer */
+@media (max-width: calc((10px / 3) + -0.02px)) {}
+
+@media (max-width: calc(10px / 3)) {}
+
+@media (width: calc(10px / 3)) {}
+
+@media (min-width: calc((10px / 3) + 0.02px)) {}
+
+@media (min-width: calc(10px / 3)) {}
+
+@media (min-width: calc((10px / 3) + 0.02px)) {}
+
+@media (min-width: calc(10px / 3)) {}
+
+@media (width: calc(10px / 3)) {}
+
+@media (max-width: calc((10px / 3) + -0.02px)) {}
+
+@media (max-width: calc(10px / 3)) {}
+
+@media (min-width: calc((10px / 3) + 0.02px)) and (max-width: calc((100px / 3) + -0.02px)) {}
+
+@media (min-width: calc(10px / 3)) and (max-width: calc((100px / 3) + -0.02px)) {}
+
+@media (min-width: calc((10px / 3) + 0.02px)) and (max-width: calc(100px / 3)) {}
+
+@media (min-width: calc(10px / 3)) and (max-width: calc(100px / 3)) {}
+
+@media (min-width: calc((100px / 3) + 0.02px)) and (max-width: calc((10px / 3) + -0.02px)) {}
+
+@media (min-width: calc((100px / 3) + 0.02px)) and (max-width: calc(10px / 3)) {}
+
+@media (min-width: calc(100px / 3)) and (max-width: calc((10px / 3) + -0.02px)) {}
+
+@media (min-width: calc(100px / 3)) and (max-width: calc(10px / 3)) {}

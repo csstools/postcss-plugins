@@ -1,0 +1,5 @@
+@media screen and (monochrome >= 0) and (monochrome <= 1000) {}
+
+@media screen and (0 <= monochrome <= 1000) {}
+
+@media screen and (monochrome) and (1 <= monochrome <= 300) {}

@@ -1,0 +1,5 @@
+@media screen and (min-monochrome: 0) and (max-monochrome: 1000) {}
+
+@media screen and (min-monochrome: 0) and (max-monochrome: 1000) {}
+
+@media screen and (monochrome) and (min-monochrome: 1) and (max-monochrome: 300) {}

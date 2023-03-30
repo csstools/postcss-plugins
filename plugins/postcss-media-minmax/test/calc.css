@@ -1,0 +1,111 @@
+/* px */
+@media (width < calc(10px * 50)) {}
+
+@media (width <= calc(10px * 50)) {}
+
+@media (width = calc(10px * 50)) {}
+
+@media (width > calc(10px * 50)) {}
+
+@media (width >= calc(10px * 50)) {}
+
+@media (calc(10px * 50) < width) {}
+
+@media (calc(10px * 50) <= width) {}
+
+@media (calc(10px * 50) = width) {}
+
+@media (calc(10px * 50) > width) {}
+
+@media (calc(10px * 50) >= width) {}
+
+@media (calc(10px * 50) < width < calc(100px * 10)) {}
+
+@media (calc(10px * 50) <= width < calc(100px * 10)) {}
+
+@media (calc(10px * 50) < width <= calc(100px * 10)) {}
+
+@media (calc(10px * 50) <= width <= calc(100px * 10)) {}
+
+@media (calc(10px * 50) > width > calc(100px * 10)) {}
+
+@media (calc(10px * 50) >= width > calc(100px * 10)) {}
+
+@media (calc(10px * 50) > width >= calc(100px * 10)) {}
+
+@media (calc(10px * 50) >= width >= calc(100px * 10)) {}
+
+
+/* rem */
+@media (width < calc(1rem * 50)) {}
+
+@media (width <= calc(1rem * 50)) {}
+
+@media (width = calc(1rem * 50)) {}
+
+@media (width > calc(1rem * 50)) {}
+
+@media (width >= calc(1rem * 50)) {}
+
+@media (calc(1rem * 50) < width) {}
+
+@media (calc(1rem * 50) <= width) {}
+
+@media (calc(1rem * 50) = width) {}
+
+@media (calc(1rem * 50) > width) {}
+
+@media (calc(1rem * 50) >= width) {}
+
+@media (calc(1rem * 50) < width < calc(10rem * 10)) {}
+
+@media (calc(1rem * 50) <= width < calc(10rem * 10)) {}
+
+@media (calc(1rem * 50) < width <= calc(10rem * 10)) {}
+
+@media (calc(1rem * 50) <= width <= calc(10rem * 10)) {}
+
+@media (calc(1rem * 50) > width > calc(10rem * 10)) {}
+
+@media (calc(1rem * 50) >= width > calc(10rem * 10)) {}
+
+@media (calc(1rem * 50) > width >= calc(10rem * 10)) {}
+
+@media (calc(1rem * 50) >= width >= calc(10rem * 10)) {}
+
+/* not an integer */
+@media (width < calc(10px / 3)) {}
+
+@media (width <= calc(10px / 3)) {}
+
+@media (width = calc(10px / 3)) {}
+
+@media (width > calc(10px / 3)) {}
+
+@media (width >= calc(10px / 3)) {}
+
+@media (calc(10px / 3) < width) {}
+
+@media (calc(10px / 3) <= width) {}
+
+@media (calc(10px / 3) = width) {}
+
+@media (calc(10px / 3) > width) {}
+
+@media (calc(10px / 3) >= width) {}
+
+@media (calc(10px / 3) < width < calc(100px / 3)) {}
+
+@media (calc(10px / 3) <= width < calc(100px / 3)) {}
+
+@media (calc(10px / 3) < width <= calc(100px / 3)) {}
+
+@media (calc(10px / 3) <= width <= calc(100px / 3)) {}
+
+@media (calc(10px / 3) > width > calc(100px / 3)) {}
+
+@media (calc(10px / 3) >= width > calc(100px / 3)) {}
+
+@media (calc(10px / 3) > width >= calc(100px / 3)) {}
+
+@media (calc(10px / 3) >= width >= calc(100px / 3)) {}

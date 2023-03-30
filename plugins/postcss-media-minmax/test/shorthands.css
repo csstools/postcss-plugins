@@ -1,0 +1,13 @@
+@media (1024px > width >= 768px) {}
+@media (768px <= width < 1024px) {}
+
+@media (1024px >= width > 768px) {}
+@media (768px < width <= 1024px) {}
+
+@media (1024px >= width >= 768px) {}
+@media (768px <= width <= 1024px) {}
+
+@media (1024px > width > 768px) {}
+@media (768px < width < 1024px) {}
+
+@media (1024px > width > 768px), (768px < width < 1024px) {}

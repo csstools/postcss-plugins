@@ -174,9 +174,9 @@
   - plugins/postcss-media-queries-aspect-ratio-number-values/**
   - experimental/postcss-media-queries-aspect-ratio-number-values/**
 
-"plugins/postcss-media-query-ranges":
-  - plugins/postcss-media-query-ranges/**
-  - experimental/postcss-media-query-ranges/**
+"plugins/postcss-media-minmax":
+  - plugins/postcss-media-minmax/**
+  - experimental/postcss-media-minmax/**
 
 "plugins/postcss-nested-calc":
   - plugins/postcss-nested-calc/**

@@ -1,0 +1,16 @@
+@media screen and (min-device-width: 500px) and (max-device-width: 1200px) {}
+
+@media screen and (min-device-width: 500px) and (max-device-width: 1200px) {}
+
+@media screen and (min-device-width: 0) and (max-device-width: 500.58px) {}
+
+@media screen and (device-width) and (min-device-width: .08px) and (max-device-width: 0.68px) {}
+
+/* device-height */
+@media screen and (min-device-height: 500px) and (max-device-height: 1200px) {}
+
+@media screen and (min-device-height: 500px) and (max-device-height: 1200px) {}
+
+@media screen and (min-device-height: 0) and (max-device-height: 500.58px) {}
+
+@media screen and (device-height) and (min-device-height: .08px) and (max-device-height: 0.68px) {}
