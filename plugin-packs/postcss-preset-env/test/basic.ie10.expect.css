@@ -81,7 +81,7 @@
 	}
 }
 
-@media (min-width: 480px) and (max-width: 767px) {
+@media (min-width: 480px) and (max-width: 767.98px) {
 	.test-media-query-ranges {
 		-ms-flex-order: 11;
 		    order: 11;

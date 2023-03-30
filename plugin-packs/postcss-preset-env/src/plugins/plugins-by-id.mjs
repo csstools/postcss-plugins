@@ -32,7 +32,7 @@ import postcssLogical from 'postcss-logical';
 import postcssLogicalResize from '@csstools/postcss-logical-resize';
 import postcssLogicalViewportUnits from '@csstools/postcss-logical-viewport-units';
 import postcssMediaQueriesAspectRatioNumberValues from '@csstools/postcss-media-queries-aspect-ratio-number-values';
-import postcssMediaMinmax from 'postcss-media-minmax';
+import postcssMediaMinmax from '@csstools/postcss-media-minmax';
 import postcssNestedCalc from '@csstools/postcss-nested-calc';
 import postcssNesting from 'postcss-nesting';
 import postcssSelectorNot from 'postcss-selector-not';

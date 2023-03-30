@@ -113,7 +113,7 @@ aside {
 	height: 20vb;
 }
 
-@custom-media --tablet (min-width: 48rem);
+@custom-media --tablet (48rem <= width < 64rem);
 
 @media (--tablet) {
 	:is(input, button):is(:hover, :focus) {
