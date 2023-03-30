@@ -44,7 +44,7 @@ function processCss(source, config) {
 
 function renderConfig(config) {
 	const copy = JSON.parse(JSON.stringify(config));
-	if (!copy.preserve) {
+	if (typeof copy.preserve !== 'boolean') {
 		delete copy.preserve;
 	}
 
