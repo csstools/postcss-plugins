@@ -122,8 +122,7 @@ a:hover {
 Without any configuration options, [PostCSS Preset Env] enables **Stage 2**
 features and supports **all** browsers.
 
-[![Transform with Preset Env][readme-transform-with-preset-env-img]][readme-transform-with-preset-env-url]
-[![Style with Preset Env][readme-style-with-preset-env-img]][readme-style-with-preset-env-url]
+[**Try it out in the Playground!**](https://preset-env.cssdb.org/playground/)
 
 ⚠️ Please note that some features need a companion library that makes 
 the feature work. While we try to avoid this requirement, there are instances
@@ -432,7 +431,3 @@ Given they have no support they will always be enabled if they match by Stage:
 [cssdb]: https://cssdb.org/
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Preset Env]: https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env
-[readme-style-with-preset-env-img]: https://csstools.github.io/postcss-preset-env/readme-style-with-preset-env.svg
-[readme-style-with-preset-env-url]: https://codepen.io/pen?template=OZRovK
-[readme-transform-with-preset-env-img]: https://csstools.github.io/postcss-preset-env/readme-transform-with-preset-env.svg
-[readme-transform-with-preset-env-url]: https://csstools.github.io/postcss-preset-env/
