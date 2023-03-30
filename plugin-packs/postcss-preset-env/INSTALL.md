@@ -2,18 +2,25 @@
 
 [PostCSS Preset Env] runs in all Node environments, with special instructions for:
 
-| [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Gulp](#gulp) | [Grunt](#grunt) | [Rollup](#rollup) |
-| --- | --- | --- | --- | --- | --- | --- |
+- [Node](#node)
+- [PostCSS CLI](#postcss-cli)
+- [PostCSS Load Config](#postcss-load-config)
+- [Webpack](#webpack)
+- [Next.js](#nextjs)
+- [Gulp](#gulp)
+- [Grunt](#grunt)
+
+
 
 ## Node
 
 Add [PostCSS Preset Env] to your project:
 
 ```bash
-npm install postcss-preset-env --save-dev
+npm install postcss postcss-preset-env --save-dev
 ```
 
-Use [PostCSS Preset Env] as a [PostCSS] plugin:
+Use it as a [PostCSS] plugin:
 
 ```js
 // commonjs
@@ -40,7 +47,7 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli --save-dev
+npm install postcss-cli postcss-preset-env --save-dev
 ```
 
 Use [PostCSS Preset Env] in your `postcss.config.js` configuration file:
@@ -55,32 +62,75 @@ module.exports = {
 }
 ```
 
+## PostCSS Load Config
+
+If your framework/CLI supports [`postcss-load-config`](https://github.com/postcss/postcss-load-config).
+
+```bash
+npm install postcss-preset-env --save-dev
+```
+
+`package.json`:
+
+```json
+{
+	"postcss": {
+		"plugins": {
+			"postcss-preset-env": {}
+		}
+	}
+}
+```
+
+`.postcssrc.json`:
+
+```json
+{
+	"plugins": {
+		"postcss-preset-env": {}
+	}
+}
+```
+
+_See the [README of `postcss-load-config`](https://github.com/postcss/postcss-load-config#usage) for more usage options._
+
 ## Webpack
+
+_Webpack version 5_
 
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader --save-dev
+npm install postcss-loader postcss-preset-env --save-dev
 ```
 
 Use [PostCSS Preset Env] in your Webpack configuration:
 
 ```js
-const postcssPresetEnv = require('postcss-preset-env');
-
 module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.css$/,
+				test: /\.css$/i,
 				use: [
-					'style-loader',
-					{ loader: 'css-loader', options: { importLoaders: 1 } },
+					"style-loader",
 					{
-						loader: 'postcss-loader',
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
 						options: {
 							postcssOptions: {
-								plugins: [postcssPresetEnv(/* pluginOptions */)],
+								plugins: [
+									// Other plugins,
+									[
+										"postcss-preset-env",
+										{
+											// Options
+										},
+									],
+								],
 							},
 						},
 					},
@@ -91,12 +141,43 @@ module.exports = {
 };
 ```
 
+## Next.js
+
+Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
+
+```bash
+npm install postcss-preset-env --save-dev
+```
+
+Use [PostCSS Preset Env] in your `postcss.config.json` file:
+
+```json
+{
+	"plugins": [
+		"postcss-preset-env"
+	]
+}
+```
+
+```json5
+{
+	"plugins": [
+		[
+			"postcss-preset-env",
+			{
+				// Optionally add plugin options
+			}
+		]
+	]
+}
+```
+
 ## Gulp
 
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss --save-dev
+npm install gulp-postcss postcss-preset-env --save-dev
 ```
 
 Use [PostCSS Preset Env] in your Gulpfile:
@@ -105,13 +186,15 @@ Use [PostCSS Preset Env] in your Gulpfile:
 const postcss = require('gulp-postcss');
 const postcssPresetEnv = require('postcss-preset-env');
 
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-	postcss([
+gulp.task('css', function () {
+	var plugins = [
 		postcssPresetEnv(/* pluginOptions */)
-	])
-).pipe(
-	gulp.dest('.')
-));
+	];
+
+	return gulp.src('./src/*.css')
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest('.'));
+});
 ```
 
 ## Grunt
@@ -119,7 +202,7 @@ gulp.task('css', () => gulp.src('./src/*.css').pipe(
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss --save-dev
+npm install grunt-postcss postcss-preset-env --save-dev
 ```
 
 Use [PostCSS Preset Env] in your Gruntfile:
@@ -143,34 +226,10 @@ grunt.initConfig({
 });
 ```
 
-## Rollup
-
-Complete [PostCSS CLI](#postcss-cli) setup.
-
-Add [Rollup Plugin PostCSS] to your project:
-
-```bash
-npm install rollup-plugin-postcss --save-dev
-```
-
-Use [Rollup Plugin PostCSS] in your rollup.config.js:
-
-```js
-import postcss from 'rollup-plugin-postcss';
-
-module.exports = {
-	input: '...',
-	output: {...},
-	plugins: [
-		postcss({/* options */ })
-	]
-};
-```
-
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS Preset Env]: https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env
-[Rollup Plugin PostCSS]: https://github.com/egoist/rollup-plugin-postcss
+[Next.js]: https://nextjs.org
