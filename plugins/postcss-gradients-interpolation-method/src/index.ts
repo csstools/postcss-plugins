@@ -64,7 +64,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 
 			decl.cloneBefore({ value: modifiedRGB });
 
-			if (modifiedRGB != modifiedP3) {
+			if (modifiedRGB !== modifiedP3) {
 				decl.cloneBefore({ value: modifiedP3 });
 			}
 
