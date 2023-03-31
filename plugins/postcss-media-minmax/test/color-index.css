@@ -1,0 +1,11 @@
+@media screen and (color-index >= 0) and (color-index <= 8) {}
+
+@media screen and (0 <= color-index <= 8) {}
+
+@media screen and (color-index) and (6 <= color-index <= 256) {}
+
+@media screen and (color-index > 0) and (color-index < 8) {}
+
+@media screen and (0 < color-index < 8) {}
+
+@media screen and (color-index) and (6 < color-index < 256) {}

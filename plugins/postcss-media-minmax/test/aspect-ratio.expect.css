@@ -1,0 +1,20 @@
+@media screen and (min-aspect-ratio: 1/1000) and (max-aspect-ratio: 16/9) {}
+
+@media screen and (min-aspect-ratio: 1 / 1000) and (max-aspect-ratio: 16  /  9) {}
+
+@media screen and (min-aspect-ratio: 0/0) and (max-aspect-ratio: 16/9) {}
+
+@media screen and (aspect-ratio) and (min-aspect-ratio: 1 / 1000) and (max-aspect-ratio: 16  /  9) {}
+
+@media screen and (min-aspect-ratio: 1/0) and (max-aspect-ratio: 15.999/9) {}
+
+
+@media screen and (min-aspect-ratio: calc(0.33 + 0.66) / 1000) and (max-aspect-ratio: calc(11.1 + 5.9) / 9) {}
+
+@media screen and (min-aspect-ratio: calc(0.33 + 0.66) / 1000) and (max-aspect-ratio: calc(11.1 + 5.9)  /  9) {}
+
+@media screen and (min-aspect-ratio: 0/0) and (max-aspect-ratio: calc(11.1 + 5.9)/9) {}
+
+@media screen and (aspect-ratio) and (min-aspect-ratio: calc(0.33 + 0.66) / 1000) and (max-aspect-ratio: calc(11.1 + 5.9)  /  9) {}
+
+@media screen and (min-aspect-ratio: 1/0) and (max-aspect-ratio: 16.999/9) {}

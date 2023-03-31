@@ -1,0 +1,7 @@
+@media screen and (min-device-aspect-ratio: 1/1000) and (max-device-aspect-ratio: 16/9) {}
+
+@media screen and (min-device-aspect-ratio: 1 / 1000) and (max-device-aspect-ratio: 16  /  9) {}
+
+@media screen and (min-device-aspect-ratio: 0/0) and (max-device-aspect-ratio: 16/9) {}
+
+@media screen and (device-aspect-ratio) and (min-device-aspect-ratio: 1 / 1000) and (max-device-aspect-ratio: 16  /  9) {}

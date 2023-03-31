@@ -1,0 +1,14 @@
+@media screen and (not (200px <=width < 500px)) {}
+
+@media (min-height: 500px) and (200px <= width < 500px) {}
+
+@media screen and not (200px <=width < 500px) {}
+
+@media (not (200px <=width < 500px)) {}
+
+@media ((min-width: 300px) or (200px <=width < 500px)) {}
+
+@media screen and (not (200px <=width < 500px)),
+	screen and not (200px <=width < 500px),
+	(not (200px <=width < 500px)),
+	((min-width: 300px) or (200px <=width < 500px)) {}

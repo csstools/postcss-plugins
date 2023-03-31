@@ -65,6 +65,8 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"aspect-ratio",
+		"media queries",
 		"postcss-plugin"
 	],
 	"csstools": {

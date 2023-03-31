@@ -6,4 +6,4 @@ export type ColorStop = {
     colorData: ColorData;
     position: ComponentValue;
 };
-export declare function interpolateColorsInColorStopsList(colorStops: Array<ColorStop>, colorSpace: TokenNode, hueInterpolationMethod: TokenNode | null): Array<ComponentValue> | false;
+export declare function interpolateColorsInColorStopsList(colorStops: Array<ColorStop>, colorSpace: TokenNode, hueInterpolationMethod: TokenNode | null, wideGamut?: boolean): Array<ComponentValue> | false;

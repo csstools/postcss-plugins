@@ -1,4 +1,4 @@
-import { ColorData, setPowerlessComponents } from '../color-data';
+import { ColorData, convertPowerlessComponentsToMissingComponents } from '../color-data';
 import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css-tokenizer';
 import { ColorNotation } from '../color-notation';
 import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
@@ -7,15 +7,19 @@ import { calculations, Color, conversions, utils, xyz } from '@csstools/color-he
 import { colorData_to_XYZ_D50 } from '../color-data';
 import { toPrecision } from './to-precision';
 
-export function serializeRGB(color: ColorData): FunctionNode {
-	color.channels = setPowerlessComponents(color.channels, color.colorNotation);
+export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNode {
+	color.channels = convertPowerlessComponentsToMissingComponents(color.channels, color.colorNotation);
 	let srgb = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
 
 	if (
 		color.colorNotation !== ColorNotation.RGB &&
 		color.colorNotation !== ColorNotation.HEX
 	) {
-		srgb = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(color).channels);
+		if (gamutMapping) {
+			srgb = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(color).channels);
+		} else {
+			srgb = xyz.XYZ_D50_to_sRGB(colorData_to_XYZ_D50(color).channels);
+		}
 	}
 
 	const r = Math.min(255, Math.max(0, Math.round(toPrecision(srgb[0]) * 255)));
