@@ -63,7 +63,7 @@
 	}
 }
 
-@media (480px <= width < 768px) {
+@media (min-width: 480px) and (max-width: 767.98px) {
 	.test-media-query-ranges {
 		order: 11;
 	}
@@ -548,7 +548,7 @@
 	}
 }
 
-@media (min-aspect-ratio: 1.77) {
+@media (min-aspect-ratio: 177/100) {
 	/* media query aspect ratio : <number> */
 }
 
