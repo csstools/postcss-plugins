@@ -32,7 +32,7 @@ import type { pluginOptions as postcssLogical } from 'postcss-logical';
 import type { pluginOptions as postcssLogicalResize } from '@csstools/postcss-logical-resize';
 import type { pluginOptions as postcssLogicalViewportUnits } from '@csstools/postcss-logical-viewport-units';
 import type { pluginOptions as postcssMediaQueriesAspectRatioNumberValues } from '@csstools/postcss-media-queries-aspect-ratio-number-values';
-import type { pluginOptions as postcssMediaMinmax } from '../types/postcss-media-minmax/plugin-options';
+import type { pluginOptions as postcssMediaMinmax } from '@csstools/postcss-media-minmax';
 import type { pluginOptions as postcssNestedCalc } from '@csstools/postcss-nested-calc';
 import type { pluginOptions as postcssNesting } from 'postcss-nesting';
 import type { pluginOptions as postcssSelectorNot } from 'postcss-selector-not';
@@ -119,7 +119,7 @@ export type pluginsOptions = {
 	'logical-viewport-units'?: postcssLogicalViewportUnits | boolean
 	/** plugin options for "@csstools/postcss-media-queries-aspect-ratio-number-values" */
 	'media-queries-aspect-ratio-number-values'?: postcssMediaQueriesAspectRatioNumberValues | boolean
-	/** plugin options for "postcss-media-minmax" */
+	/** plugin options for "@csstools/postcss-media-minmax" */
 	'media-query-ranges'?: postcssMediaMinmax | boolean
 	/** plugin options for "@csstools/postcss-nested-calc" */
 	'nested-calc'?: postcssNestedCalc | boolean

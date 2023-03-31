@@ -160,7 +160,7 @@ export default [
 		'importName': 'postcssLogicalViewportUnits',
 	},
 	{
-		'packageName': 'postcss-media-minmax',
+		'packageName': '@csstools/postcss-media-minmax',
 		'id': 'media-query-ranges',
 		'importName': 'postcssMediaMinmax',
 	},

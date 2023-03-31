@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (minor)
+
+- Replace `postcss-media-minmax` with `@csstools/postcss-media-minmax` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax#readme) for usage details. _We hope to revert this in the future when maintenance is resumed upstream._
+
 ### 8.2.0 (March 28, 2023)
 
 - Added `@csstools/postcss-gradients-interpolation-method` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method#readme) for usage details.
