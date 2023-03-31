@@ -46,6 +46,10 @@ Try it out in this interactive demo :
 
 <output id="output-color-mix-css" for="color-space interpolation-method color-mix-percentage color-a color-b">color-mix(in srgb, #ff0000, #0000ff 50%)</output>
 
+Definitely check out the [awesome blog post by Una on color-mix](https://una.im/color-mix-opacity/). It showcases a similar widget but purely using native `color-mix()`, so it's a great way to compare the two.
+
+------
+
 After `color-mix()` we will focus on bringing relative color syntax to PostCSS but we are still waiting for a few specification issues to be resolved. [Subscribe to this issue to follow along](https://github.com/csstools/postcss-plugins/issues/177).
 
 {% block scripts %}<script async defer src="{{ '/static/js/blog_color_mix_2023_03_27.js' | addHash }}"></script>{% endblock %}
