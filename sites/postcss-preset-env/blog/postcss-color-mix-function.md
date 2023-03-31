@@ -19,7 +19,7 @@ date: 2023-03-27
 			<option value="lch">lch</option>
 			<option value="oklch">oklch</option>
 		</select>
-		<select id="interpolation-method">
+		<select id="interpolation-method" hidden>
 			<option value="shorter" selected>shorter</option>
 			<option value="longer">longer</option>
 			<option value="increasing">increasing</option>

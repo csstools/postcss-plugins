@@ -16,6 +16,18 @@ function renderResult() {
 		return;
 	}
 
+	switch (colorSpaceInput.value) {
+		case 'hsl':
+		case 'hwb':
+		case 'lch':
+		case 'oklch':
+			interpolationMethodInput.hidden = false;
+			break;
+		default:
+			interpolationMethodInput.hidden = true;
+			break;
+	}
+
 	const colorMixOutput = document.getElementById('output-color-mix');
 	if (!colorMixOutput) {
 		return;
