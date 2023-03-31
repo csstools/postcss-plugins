@@ -1,8 +1,16 @@
 ---
 title: PostCSS Color Mix Function
 description: Use the color-mix function in CSS.
-date: 2023-03-27
+date: 2023-03-31
 ---
+
+We are happy to announce the release of [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function#readme), a PostCSS plugin to use the [`color-mix()`](https://drafts.csswg.org/css-color-5/#color-mix) function in any browser.
+
+This plugin uses [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser#readme) under the hood to parse the color values, checkout [the blog post](/blog/css-color-parser-v1.0.0/) for all the technical details.
+
+_If you are using [`postcss-preset-env`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#readme) you will already have this plugin when using the latest version._
+
+Try it out in this interactive demo :
 
 <div class="color-mix-wrapper">
 	<div class="color-mix-settings">
@@ -37,6 +45,8 @@ date: 2023-03-27
 </div>
 
 <output id="output-color-mix-css" for="color-space interpolation-method color-mix-percentage color-a color-b">color-mix(in srgb, #ff0000, #0000ff 50%)</output>
+
+After `color-mix()` we will focus on bringing relative color syntax to PostCSS but we are still waiting for a few specification issues to be resolved. [Subscribe to this issue to follow along](https://github.com/csstools/postcss-plugins/issues/177).
 
 {% block scripts %}<script async defer src="{{ '/static/js/blog_color_mix_2023_03_27.js' | addHash }}"></script>{% endblock %}
 
