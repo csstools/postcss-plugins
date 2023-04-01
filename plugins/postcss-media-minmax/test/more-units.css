@@ -1,0 +1,15 @@
+@media screen and (color-index) { }
+@media screen and (color-index > 0) and (color-index < 1000) { }
+@media screen and (monochrome > 0) and (monochrome < 1000) { }
+
+
+@media screen and (resolution > 96dpi) and (resolution < 3dppx) { }
+@media screen and (width > -200px) and (width < 900.56px) { }
+@media screen and (width > -0.58px) and (width < .99px) { }
+@media screen and (width > 3rem) and (width < 5em) { }
+
+
+@media screen and (resolution) { }
+@media screen and (resolution > 1000dpi) and (resolution < 3dppx) { }
+@media screen and (1000000dpi < resolution < 1000000dpcm) { }
+@media screen and (1 / 1000 < resolution < 16 /9) { }

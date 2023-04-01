@@ -11,7 +11,7 @@ const hueInterpolationMethodRegex = /^(shorter|longer|increasing|decreasing)$/i;
 const inKeywordRegex = /^in$/i;
 const hueKeywordRegex = /^hue$/i;
 
-export function modifyGradientFunctionComponentValues(gradientFunction: FunctionNode): Array<ComponentValue> | false {
+export function modifyGradientFunctionComponentValues(gradientFunction: FunctionNode, wideGamut = false): Array<ComponentValue> | false {
 	const functionName = gradientFunction.getName();
 	if (!gradientNameRegex.test(functionName)) {
 		return false;
@@ -136,16 +136,16 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 		return false;
 	}
 
-	const modifiedColorStops = interpolateColorsInColorStopsList(colorStops, colorSpace, hueInterpolationMethod);
+	const modifiedColorStops = interpolateColorsInColorStopsList(colorStops, colorSpace, hueInterpolationMethod, wideGamut);
 	if (!modifiedColorStops) {
 		return false;
 	}
 
-	const beforeColorStops = [
+	const beforeColorStops = trim([
 		...gradientFunction.value.slice(0, gradientFunction.value.indexOf(inKeyword)),
 		...gradientFunction.value.slice(gradientFunction.value.indexOf(hueKeyword || colorSpace) + 1, gradientFunction.value.indexOf(firstComma)),
-	];
-	const hasMeaningfulPrefix = beforeColorStops.length > 0 && beforeColorStops.some((node) => !isCommentNode(node) && !isWhitespaceNode(node));
+	]);
+	const hasMeaningfulPrefix = beforeColorStops.length > 0 && beforeColorStops.some((node) => !isCommentNode(node));
 	if (hasMeaningfulPrefix) {
 		beforeColorStops.push(
 			new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
@@ -153,8 +153,33 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 		);
 	}
 
-	return [
+	return trim([
 		...beforeColorStops,
-		...modifiedColorStops,
-	];
+		...trim(modifiedColorStops),
+	]);
+}
+
+function trim(x: Array<ComponentValue>): Array<ComponentValue> {
+	let firstMeaningfulIndex = 0;
+	let lastMeaningfulIndex = x.length - 1;
+
+	for (let i = 0; i < x.length; i++) {
+		if (isWhitespaceNode(x[i])) {
+			continue;
+		}
+
+		firstMeaningfulIndex = i;
+		break;
+	}
+
+	for (let i = x.length - 1; i >= 0; i--) {
+		if (isWhitespaceNode(x[i])) {
+			continue;
+		}
+
+		lastMeaningfulIndex = i;
+		break;
+	}
+
+	return x.slice(firstMeaningfulIndex, lastMeaningfulIndex + 1);
 }

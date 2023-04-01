@@ -19,7 +19,7 @@ Plenty of plugins in `postcss-preset-env` interact with CSS color values.
 We provide fallbacks for modern notations like `rgb(255 0 255 / 50%)` and new color functions like `color(display-p3 0.5 0 0.5 / 0.5)`.
 
 In the past, each package had its own implementation of the needed conversion logic.
-This was fine for a while, but as the number of plugins grew, so did the amount of duplicated code.
+This was fine for a while, but as the number of plugins grew, so did the amount of duplicate code.
 This was harder to maintain and plugins were larger than they needed to be.
 
 _We had initially hoped to use an existing package (e.g. [color.js](https://colorjs.io) or [culori](https://culorijs.org)), but no package was designed specifically to parse and convert CSS colors exactly as a browser would. We hope that our modular approach allows others to reuse bits even if their use case is different._
@@ -36,7 +36,7 @@ _A recursive example :_<br>
 		color-mix(
 			in srgb,
 			purple,
-			rgb(from maroon r 10 15)
+			rgb(230 10 15) 10%
 		)
 	);
 }

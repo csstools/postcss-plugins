@@ -1,0 +1,11 @@
+@media screen and (min-color-index: 0) and (max-color-index: 8) {}
+
+@media screen and (min-color-index: 0) and (max-color-index: 8) {}
+
+@media screen and (color-index) and (min-color-index: 6) and (max-color-index: 256) {}
+
+@media screen and (min-color-index: 1) and (max-color-index: 7) {}
+
+@media screen and (min-color-index: 1) and (max-color-index: 7) {}
+
+@media screen and (color-index) and (min-color-index: 7) and (max-color-index: 255) {}

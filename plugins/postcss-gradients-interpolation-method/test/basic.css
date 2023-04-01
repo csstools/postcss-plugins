@@ -19,28 +19,32 @@
 	background-image: linear-gradient(90deg in oklab, red 25% 50%, blue 70% 75%);
 }
 
-.test-3 {
+.unknown-color-stop-variable {
 	--red: red;
 	/* Color stop variable */
 	background-image: linear-gradient(in oklch 90deg, black, var(--red), blue);
 }
 
-.test-4 {
+.unknown-interpolation-hint {
 	--perc-10: 10%;
 	/* Interpolation hint */
 	background-image: linear-gradient(in oklch 90deg, black, var(--perc-10), blue);
 }
 
-.test-missing-position-1 {
+.unknown-position-1 {
 	background-image: linear-gradient(in oklch, red, green 45%, blue);
 }
 
-.test-missing-position-2 {
+.unknown-position-2 {
 	background-image: linear-gradient(in oklch, red 0%, green, blue 100%);
 }
 
-.test-missing-color {
+.unknown-color {
 	background-image: linear-gradient(in oklch, red 0%, 25%, blue 100%);
+}
+
+.invalid-order {
+	background-image: linear-gradient(in oklch, red 0%, 100% blue);
 }
 
 .test-visual-effect-1-1 {
@@ -280,4 +284,24 @@
 
 to-clone {
 	background-image: linear-gradient(in hwb longer hue, hsl(96, 42%, 24%) 0%, hsl(302, 67%, 25%) 100%);
+}
+
+.test-teal-dead-zone {
+	background-image: linear-gradient(in oklch longer hue to right, red 0%, blue 100%);
+}
+
+.wpt-oklab-gradient {
+	background: linear-gradient(to right in oklab, rgb(255, 0, 0) 0%, rgb(0, 255, 0) 100%);
+}
+
+.wpt-srgb-gradient {
+	background: linear-gradient(to right in srgb, rgb(255 0 0) 0%, rgb(0 255 0) 100%);
+}
+
+.wpt-srgb-linear-gradient {
+	background: linear-gradient(to right in srgb-linear, rgb(255, 0, 0) 0%, rgb(0, 255, 0) 100%);
+}
+
+.wpt-xyz-gradient {
+	background: linear-gradient(to right in xyz, rgb(255, 0, 0) 0%, rgb(0, 255, 0) 100%);
 }
