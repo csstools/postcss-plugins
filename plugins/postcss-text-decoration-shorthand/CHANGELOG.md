@@ -1,6 +1,6 @@
 # Changes to PostCSS Text Decoration Shorthand
 
-### Unreleaed (patch)
+### Unreleased (patch)
 
 - Updated: `@csstools/color-helpers` to `v2.0.0`
 
