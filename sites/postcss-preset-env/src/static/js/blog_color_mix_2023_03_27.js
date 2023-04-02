@@ -4,15 +4,53 @@ import { tokenize } from '@csstools/css-tokenizer';
 
 const cylindrical = new Set(['hsl', 'hwb', 'lch', 'oklch']);
 const supportsP3AndP3Gamut = CSS.supports('(color: color(display-p3 0 0 0))') && window.matchMedia('(color-gamut: p3)').matches;
+const colorSpaceInput = document.getElementById('color-space');
+const interpolationMethodInput = document.getElementById('interpolation-method');
+const colorMixOutput = document.getElementById('output-color-mix');
+const colorMixOutputCSS = document.getElementById('output-color-mix-css');
+const colorMixPercentage = document.getElementById('color-mix-percentage');
+const colorInputA = document.getElementById('color-a');
+const colorOutputA = document.getElementById('output-color-a');
+const colorInputB = document.getElementById('color-b');
+const colorOutputB = document.getElementById('output-color-b');
+
+function debounce(fn, wait = 1) {
+	let timeout;
+
+	return function (...args) {
+		clearTimeout(timeout);
+		timeout = setTimeout(() => fn.call(this, ...args), wait);
+	};
+}
+
+function disableTransition() {
+	colorMixOutput.style.setProperty('transition', 'none');
+}
+
+function reEnableTransition() {
+	colorMixOutput.style.setProperty('transition', null);
+}
+
+const debouncedReenable = debounce(reEnableTransition, 200);
+
+function handleSliderInput() {
+	disableTransition();
+	renderResult();
+	debouncedReenable();
+}
 
 function renderResult() {
-	const colorSpaceInput = document.getElementById('color-space');
-	if (!colorSpaceInput) {
-		return;
-	}
-
-	const interpolationMethodInput = document.getElementById('interpolation-method');
-	if (!interpolationMethodInput) {
+	if (
+		!colorSpaceInput ||
+		!interpolationMethodInput ||
+		!colorMixOutput ||
+		!colorMixOutputCSS ||
+		!colorMixPercentage ||
+		!colorInputA ||
+		!colorOutputA ||
+		!colorInputB ||
+		!colorOutputB
+	) {
 		return;
 	}
 
@@ -22,45 +60,12 @@ function renderResult() {
 		case 'lch':
 		case 'oklch':
 			interpolationMethodInput.hidden = false;
+			interpolationMethodInput.labels[0].hidden = false;
 			break;
 		default:
 			interpolationMethodInput.hidden = true;
+			interpolationMethodInput.labels[0].hidden = true;
 			break;
-	}
-
-	const colorMixOutput = document.getElementById('output-color-mix');
-	if (!colorMixOutput) {
-		return;
-	}
-
-	const colorMixOutputCSS = document.getElementById('output-color-mix-css');
-	if (!colorMixOutputCSS) {
-		return;
-	}
-
-	const colorMixPercentage = document.getElementById('color-mix-percentage');
-	if (!colorMixPercentage) {
-		return;
-	}
-
-	const colorInputA = document.getElementById('color-a');
-	if (!colorInputA) {
-		return;
-	}
-
-	const colorOutputA = document.getElementById('output-color-a');
-	if (!colorOutputA) {
-		return;
-	}
-
-	const colorInputB = document.getElementById('color-b');
-	if (!colorInputB) {
-		return;
-	}
-
-	const colorOutputB = document.getElementById('output-color-b');
-	if (!colorOutputB) {
-		return;
 	}
 
 	colorOutputA.value = colorInputA.value;
@@ -76,6 +81,7 @@ function renderResult() {
 	colorMixOutputCSS.value = colorMix;
 
 	const parsedColorValue = color(parseComponentValue(tokenize({ css: colorMix })));
+
 	if (!parsedColorValue) {
 		colorMixOutput.style.outline = '1px solid rgb(255 0 0 / 25%)';
 		return;
@@ -94,6 +100,8 @@ function renderResult() {
 		colorMixOutput.style.setProperty('--color', outputColorValueRGB);
 	}
 }
+
+colorMixPercentage.addEventListener('input', handleSliderInput);
 
 addEventListener('change', renderResult);
 addEventListener('keyup', renderResult);
