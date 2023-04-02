@@ -31,33 +31,51 @@ Usage:
   @csstools/csstools-cli postcss-preset-env <input.css>... [OPTIONS] --replace
 
 Available Plugins:
+  postcss-preset-env
   css-blank-pseudo
   css-has-pseudo
   css-prefers-color-scheme
+  postcss-attribute-case-insensitive
+  postcss-cascade-layers
   postcss-color-function
   postcss-color-functional-notation
   postcss-color-hex-alpha
+  postcss-color-mix-function
   postcss-color-rebeccapurple
+  postcss-custom-media
   postcss-custom-properties
+  postcss-custom-selectors
   postcss-dir-pseudo-class
   postcss-double-position-gradients
-  postcss-env-function
   postcss-focus-visible
   postcss-focus-within
   postcss-font-format-keywords
   postcss-gap-properties
+  postcss-gradients-interpolation-method
   postcss-hwb-function
   postcss-ic-unit
   postcss-image-set-function
   postcss-is-pseudo-class
   postcss-lab-function
   postcss-logical
+  postcss-logical-float-and-clear
+  postcss-logical-resize
+  postcss-logical-viewport-units
+  postcss-media-minmax
+  postcss-media-queries-aspect-ratio-number-values
+  postcss-nested-calc
   postcss-nesting
   postcss-normalize-display-values
   postcss-oklab-function
   postcss-overflow-shorthand
   postcss-place
   postcss-pseudo-class-any-link
+  postcss-scope-pseudo-class
+  postcss-selector-not
+  postcss-stepped-value-functions
+  postcss-text-decoration-shorthand
+  postcss-trigonometric-functions
+  postcss-unset-value
 
 Plugin Help:
   @csstools/csstools-cli <plugin-name>
