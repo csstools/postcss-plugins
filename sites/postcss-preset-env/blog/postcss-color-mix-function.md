@@ -208,7 +208,7 @@ After `color-mix()` we will focus on bringing relative color syntax to PostCSS P
 		padding: 2px 8px;
 		position: relative;
 		text-align: left;
-		width: 525px;
+		width: fit-content;
 	}
 
 	input[type="color"] {
@@ -287,7 +287,7 @@ After `color-mix()` we will focus on bringing relative color syntax to PostCSS P
 		width: 20px;
 		height: 20px;
 		border-radius: 50%;
-		background-color: #0077ff;
+		background-color: var(--color-brand);
 		cursor: pointer;
 	}
 </style>
