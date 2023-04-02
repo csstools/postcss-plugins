@@ -92,7 +92,7 @@ After `color-mix()` we will focus on bringing relative color syntax to PostCSS P
 	}
 
 	.color-mix-settings__percent,
-  .color-mix-settings__colors {
+	.color-mix-settings__colors {
 		margin-top: 32px;
 	}
 
