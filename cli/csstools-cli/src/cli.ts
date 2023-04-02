@@ -6,6 +6,7 @@ import postcssCascadeLayers from './plugins/postcss-cascade-layers';
 import postcssColorFunction from './plugins/postcss-color-function';
 import postcssColorFunctionalNotation from './plugins/postcss-color-functional-notation';
 import postcssColorHexAlpha from './plugins/postcss-color-hex-alpha';
+import postcssColorMixFunction from './plugins/postcss-color-mix-function';
 import postcssColorRebeccaPurple from './plugins/postcss-color-rebeccapurple';
 import postcssCustomMedia from './plugins/postcss-custom-media';
 import postcssCustomProperties from './plugins/postcss-custom-properties';
@@ -16,6 +17,7 @@ import postcssFocusVisible from './plugins/postcss-focus-visible';
 import postcssFocusWithin from './plugins/postcss-focus-within';
 import postcssFontFormatKeywords from './plugins/postcss-font-format-keywords';
 import postcssGapProperties from './plugins/postcss-gap-properties';
+import postcssGradientsInterpolationMethod from './plugins/postcss-gradients-interpolation-method';
 import postcssHWBFunction from './plugins/postcss-hwb-function';
 import postcssICUnit from './plugins/postcss-ic-unit';
 import postcssImageSetFunction from './plugins/postcss-image-set-function';
@@ -25,6 +27,9 @@ import postcssLogical from './plugins/postcss-logical';
 import postcssLogicalFloatAndClear from './plugins/postcss-logical-float-and-clear';
 import postcssLogicalResize from './plugins/postcss-logical-resize';
 import postcssLogicalViewportUnits from './plugins/postcss-logical-viewport-units';
+import postcssMediaMinMax from './plugins/postcss-media-minmax';
+import postcssMediaQueriesAspectRatioNumberValues from './plugins/postcss-media-queries-aspect-ratio-number-values';
+import postcssNestedCalc from './plugins/postcss-nested-calc';
 import postcssNesting from './plugins/postcss-nesting';
 import postcssNormalizeDisplayValues from './plugins/postcss-normalize-display-values';
 import postcssOKLabFunction from './plugins/postcss-oklab-function';
@@ -32,8 +37,10 @@ import postcssOverflowShorthand from './plugins/postcss-overflow-shorthand';
 import postcssPlace from './plugins/postcss-place';
 import postcssPresetEnv from './plugins/postcss-preset-env';
 import postcssPseudoClassAnyLink from './plugins/postcss-pseudo-class-any-link';
+import postcssScopePseudoClass from './plugins/postcss-scope-pseudo-class';
 import postcssSelectorNot from './plugins/postcss-selector-not';
 import postcssSteppedValueFunctions from './plugins/postcss-stepped-value-functions';
+import postcssTextDecorationShorthand from './plugins/postcss-text-decoration-shorthand';
 import postcssTrigonometricFunctions from './plugins/postcss-trigonometric-functions';
 import postcssUnsetValue from './plugins/postcss-unset-value';
 
@@ -57,6 +64,9 @@ function main() {
 			return;
 		case 'postcss-color-function':
 			postcssColorFunction();
+			return;
+		case 'postcss-color-mix-function':
+			postcssColorMixFunction();
 			return;
 		case 'postcss-color-functional-notation':
 			postcssColorFunctionalNotation();
@@ -94,6 +104,9 @@ function main() {
 		case 'postcss-gap-properties':
 			postcssGapProperties();
 			return;
+		case 'postcss-gradients-interpolation-method':
+			postcssGradientsInterpolationMethod();
+			return;
 		case 'postcss-hwb-function':
 			postcssHWBFunction();
 			return;
@@ -121,6 +134,15 @@ function main() {
 		case 'postcss-logical-viewport-units':
 			postcssLogicalViewportUnits();
 			return;
+		case 'postcss-media-minmax':
+			postcssMediaMinMax();
+			return;
+		case 'postcss-media-queries-aspect-ratio-number-values':
+			postcssMediaQueriesAspectRatioNumberValues();
+			return;
+		case 'postcss-nested-calc':
+			postcssNestedCalc();
+			return;
 		case 'postcss-nesting':
 			postcssNesting();
 			return;
@@ -142,11 +164,17 @@ function main() {
 		case 'postcss-pseudo-class-any-link':
 			postcssPseudoClassAnyLink();
 			return;
+		case 'postcss-scope-pseudo-class':
+			postcssScopePseudoClass();
+			return;
 		case 'postcss-selector-not':
 			postcssSelectorNot();
 			return;
 		case 'postcss-stepped-value-functions':
 			postcssSteppedValueFunctions();
+			return;
+		case 'postcss-text-decoration-shorthand':
+			postcssTextDecorationShorthand();
 			return;
 		case 'postcss-trigonometric-functions':
 			postcssTrigonometricFunctions();
@@ -166,6 +194,7 @@ function main() {
 				'  @csstools/csstools-cli postcss-preset-env <input.css>... [OPTIONS] --replace',
 
 				'\nAvailable Plugins:',
+				'  postcss-preset-env',
 				'  css-blank-pseudo',
 				'  css-has-pseudo',
 				'  css-prefers-color-scheme',
@@ -174,31 +203,40 @@ function main() {
 				'  postcss-color-function',
 				'  postcss-color-functional-notation',
 				'  postcss-color-hex-alpha',
+				'  postcss-color-mix-function',
 				'  postcss-color-rebeccapurple',
 				'  postcss-custom-media',
 				'  postcss-custom-properties',
 				'  postcss-custom-selectors',
 				'  postcss-dir-pseudo-class',
 				'  postcss-double-position-gradients',
-				'  postcss-env-function',
 				'  postcss-focus-visible',
 				'  postcss-focus-within',
 				'  postcss-font-format-keywords',
 				'  postcss-gap-properties',
+				'  postcss-gradients-interpolation-method',
 				'  postcss-hwb-function',
 				'  postcss-ic-unit',
 				'  postcss-image-set-function',
 				'  postcss-is-pseudo-class',
 				'  postcss-lab-function',
 				'  postcss-logical',
+				'  postcss-logical-float-and-clear',
+				'  postcss-logical-resize',
+				'  postcss-logical-viewport-units',
+				'  postcss-media-minmax',
+				'  postcss-media-queries-aspect-ratio-number-values',
+				'  postcss-nested-calc',
 				'  postcss-nesting',
 				'  postcss-normalize-display-values',
 				'  postcss-oklab-function',
 				'  postcss-overflow-shorthand',
 				'  postcss-place',
 				'  postcss-pseudo-class-any-link',
+				'  postcss-scope-pseudo-class',
 				'  postcss-selector-not',
 				'  postcss-stepped-value-functions',
+				'  postcss-text-decoration-shorthand',
 				'  postcss-trigonometric-functions',
 				'  postcss-unset-value',
 
