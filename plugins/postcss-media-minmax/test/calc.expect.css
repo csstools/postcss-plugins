@@ -109,3 +109,41 @@
 @media (min-width: calc(100px / 3)) and (max-width: calc((10px / 3) + -0.02px)) {}
 
 @media (min-width: calc(100px / 3)) and (max-width: calc(10px / 3)) {}
+
+/* color */
+/* px */
+@media (max-color: 0) {}
+
+@media (max-color: sin(90deg)) {}
+
+@media (color: sin(90deg)) {}
+
+@media (min-color: 2) {}
+
+@media (min-color: sin(90deg)) {}
+
+@media (min-color: 2) {}
+
+@media (min-color: sin(90deg)) {}
+
+@media (color: sin(90deg)) {}
+
+@media (max-color: 0) {}
+
+@media (max-color: sin(90deg)) {}
+
+@media (min-color: 2) and (max-color: 2) {}
+
+@media (min-color: sin(90deg)) and (max-color: 2) {}
+
+@media (min-color: 2) and (max-color: max(2, 3)) {}
+
+@media (min-color: sin(90deg)) and (max-color: max(2, 3)) {}
+
+@media (min-color: 4) and (max-color: 0) {}
+
+@media (min-color: 4) and (max-color: sin(90deg)) {}
+
+@media (min-color: max(2, 3)) and (max-color: 0) {}
+
+@media (min-color: max(2, 3)) and (max-color: sin(90deg)) {}

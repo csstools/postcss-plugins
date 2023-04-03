@@ -151,3 +151,28 @@ assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('rgb(255 255 calc(0 / 1))'))),
 	'rgb(255, 255, 0)',
 );
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('rgb(255, 255, sin(90deg))'))),
+	'rgb(255, 255, 1)',
+);
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('rgb(255 255 sin(90deg))'))),
+	'rgb(255, 255, 1)',
+);
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('hsl(sin(90deg), 100%, 50%)'))),
+	'rgb(255, 4, 0)',
+);
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('hsl(sin(90deg) 100% 50%)'))),
+	'rgb(255, 4, 0)',
+);
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('color-mix(in srgb, red min(10%, 20%), blue)'))),
+	'rgb(26, 0, 230)',
+);

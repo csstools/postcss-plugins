@@ -151,3 +151,8 @@ assert.strictEqual(
 	calc('calc(10hz + 0.01khz)', { toCanonicalUnits: false }),
 	'20hz',
 );
+
+assert.strictEqual(
+	calc('sin(90deg)', { toCanonicalUnits: false }),
+	'1',
+);

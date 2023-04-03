@@ -109,3 +109,41 @@
 @media (calc(10px / 3) > width >= calc(100px / 3)) {}
 
 @media (calc(10px / 3) >= width >= calc(100px / 3)) {}
+
+/* color */
+/* px */
+@media (color < sin(90deg)) {}
+
+@media (color <= sin(90deg)) {}
+
+@media (color = sin(90deg)) {}
+
+@media (color > sin(90deg)) {}
+
+@media (color >= sin(90deg)) {}
+
+@media (sin(90deg) < color) {}
+
+@media (sin(90deg) <= color) {}
+
+@media (sin(90deg) = color) {}
+
+@media (sin(90deg) > color) {}
+
+@media (sin(90deg) >= color) {}
+
+@media (sin(90deg) < color < max(2, 3)) {}
+
+@media (sin(90deg) <= color < max(2, 3)) {}
+
+@media (sin(90deg) < color <= max(2, 3)) {}
+
+@media (sin(90deg) <= color <= max(2, 3)) {}
+
+@media (sin(90deg) > color > max(2, 3)) {}
+
+@media (sin(90deg) >= color > max(2, 3)) {}
+
+@media (sin(90deg) > color >= max(2, 3)) {}
+
+@media (sin(90deg) >= color >= max(2, 3)) {}

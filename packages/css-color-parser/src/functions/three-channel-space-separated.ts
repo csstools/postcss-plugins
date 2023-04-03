@@ -7,6 +7,7 @@ import { calcFromComponentValues } from '@csstools/css-calc';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { normalizeChannelValuesFn } from './normalize-channel-values';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
+import { mathFunctionNames } from '@csstools/css-calc';
 
 export function threeChannelSpaceSeparated(
 	colorFunctionNode: FunctionNode,
@@ -68,7 +69,7 @@ export function threeChannelSpaceSeparated(
 				continue;
 			}
 
-			if (toLowerCaseAZ(node.getName()) !== 'calc') {
+			if (!mathFunctionNames.has(toLowerCaseAZ(node.getName()))) {
 				return false;
 			}
 
