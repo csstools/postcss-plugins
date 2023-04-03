@@ -27,8 +27,11 @@ export function interpolateColorsInColorStopsList(colorStops: Array<ColorStop>, 
 		interpolatedColorStops.push(colorStop);
 
 		if (
-			serializeP3(colorStop.colorData, false).toString() !== serializeP3(nextColorStop.colorData, false).toString() &&
-			colorStop.position.toString() !== nextColorStop.position.toString()
+			hueInterpolationMethod ||
+			(
+				serializeP3(colorStop.colorData, false).toString() !== serializeP3(nextColorStop.colorData, false).toString() &&
+				colorStop.position.toString() !== nextColorStop.position.toString()
+			)
 		) {
 			for (let j = 1; j <= 9; j++) {
 				const multiplier = j * 10;
