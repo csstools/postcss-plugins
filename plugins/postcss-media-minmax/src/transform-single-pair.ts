@@ -1,7 +1,8 @@
-import { calcFromComponentValues } from '@csstools/css-calc';
+import { calcFromComponentValues, mathFunctionNames } from '@csstools/css-calc';
 import { ComponentValue, isFunctionNode, isTokenNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
 import { invertComparison, matchesRatio, matchesRatioExactly, MediaFeature, MediaFeatureComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT, MediaFeatureValue, newMediaFeaturePlain } from '@csstools/media-query-list-parser';
+import { toLowerCaseAZ } from './to-lower-case-a-z';
 
 const unitsForFeature: Record<string, string | undefined> = {
 	'width': 'px',
@@ -115,7 +116,7 @@ export function transformSingleNameValuePair(name: string, operator: MediaFeatur
 	const featureUnit: string | undefined = unitsForFeature[name.toLowerCase()];
 
 	// 1. If the value is a calc() function, try to evaluate it.
-	if (isFunctionNode(valueNode) && valueNode.getName().toLowerCase() === 'calc') {
+	if (isFunctionNode(valueNode) && mathFunctionNames.has(toLowerCaseAZ(valueNode.getName()))) {
 		const [[result]] = calcFromComponentValues([[valueNode]], { precision: 5, toCanonicalUnits: true });
 		if (
 			result &&
