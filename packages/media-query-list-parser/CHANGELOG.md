@@ -1,5 +1,9 @@
 # Changes to Media Query List Parser
 
+### Unreleased (patch)
+
+- Improve the detection of math function in media queries.
+
 ### 2.0.2 (March 25, 2023)
 
 - Improve case insensitive string matching.

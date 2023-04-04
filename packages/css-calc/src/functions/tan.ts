@@ -18,6 +18,7 @@ export function solveTan(tanNode: FunctionNode, a: TokenNode): Calculation | -1 
 	const startingValue = aToken[4].value;
 
 	let degrees = 0;
+	let result = aToken[4].value;
 	if (aToken[0] === TokenType.Dimension) {
 		switch (toLowerCaseAZ(aToken[4].unit)) {
 			case 'rad':
@@ -27,19 +28,19 @@ export function solveTan(tanNode: FunctionNode, a: TokenNode): Calculation | -1 
 			case 'deg':
 				degrees = startingValue;
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				aToken[4].value = convert_deg.get('rad')!(startingValue);
+				result = convert_deg.get('rad')!(startingValue);
 				break;
 			case 'grad':
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 				degrees = convert_grad.get('deg')!(startingValue);
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				aToken[4].value = convert_grad.get('rad')!(startingValue);
+				result = convert_grad.get('rad')!(startingValue);
 				break;
 			case 'turn':
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 				degrees = convert_turn.get('deg')!(startingValue);
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				aToken[4].value = convert_turn.get('rad')!(startingValue);
+				result = convert_turn.get('rad')!(startingValue);
 				break;
 			default:
 				return -1;
@@ -50,11 +51,10 @@ export function solveTan(tanNode: FunctionNode, a: TokenNode): Calculation | -1 
 	const timesNinety = degrees / 90;
 	const isAsymptote = isNinetyMultiple && timesNinety % 2 !== 0;
 
-	let result;
 	if (isAsymptote) {
 		result = timesNinety > 0 ? Infinity : -Infinity;
 	} else {
-		result = Math.tan(aToken[4].value);
+		result = Math.tan(result);
 	}
 
 	return numberToCalculation(tanNode, result);

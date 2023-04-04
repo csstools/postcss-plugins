@@ -32,3 +32,6 @@ export function calcFromComponentValues(componentValuesList: Array<Array<Compone
 		}
 	});
 }
+
+// Exposed so upstream dependents can use the same set of math functions.
+export const mathFunctionNames = new Set(mathFunctions.keys());
