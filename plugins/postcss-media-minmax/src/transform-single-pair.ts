@@ -116,60 +116,63 @@ export function transformSingleNameValuePair(name: string, operator: MediaFeatur
 	const featureUnit: string | undefined = unitsForFeature[name.toLowerCase()];
 
 	// 1. If the value is a calc() function, try to evaluate it.
-	if (isFunctionNode(valueNode) && mathFunctionNames.has(toLowerCaseAZ(valueNode.getName()))) {
-		const [[result]] = calcFromComponentValues([[valueNode]], { precision: 5, toCanonicalUnits: true });
-		if (
-			result &&
-			isTokenNode(result) &&
-			(
-				result.value[0] === TokenType.Number ||
-				result.value[0] === TokenType.Percentage ||
-				result.value[0] === TokenType.Dimension
-			) &&
-			Number.isInteger(result.value[4].value)
-		) {
-			// 1.a. If the result is an integer it is safe to use the result as the value and proceed as if there was no calc() function.
+	if (isFunctionNode(valueNode)) {
+		const functionName = toLowerCaseAZ(valueNode.getName());
+		if (mathFunctionNames.has(functionName) || functionName === 'env') {
+			const [[result]] = calcFromComponentValues([[valueNode]], { precision: 5, toCanonicalUnits: true });
+			if (
+				result &&
+				isTokenNode(result) &&
+				(
+					result.value[0] === TokenType.Number ||
+					result.value[0] === TokenType.Percentage ||
+					result.value[0] === TokenType.Dimension
+				) &&
+				Number.isInteger(result.value[4].value)
+			) {
+				// 1.a. If the result is an integer it is safe to use the result as the value and proceed as if there was no calc() function.
 
-			valueNode = result;
-		} else {
-			// 1.b. If the result is not an integer, it is not safe to use the result as the value.
-			// Wrap the value in an additional calc() function and adjust with the appropriate step.
-
-			let valueToken: CSSToken;
-
-			if (typeof featureUnit !== 'undefined') {
-				const tokenValue = power[operator] * (featureUnit === 'px' ? pixelStep : step);
-
-				valueToken = [TokenType.Dimension, `${tokenValue.toString()}${featureUnit}`, -1, -1, { value: tokenValue, unit: featureUnit, type: NumberType.Integer }];
-			} else if (integerFeatures[name] === true) {
-				const tokenValue = power[operator];
-
-				valueToken = [TokenType.Number, tokenValue.toString(), -1, -1, { value: tokenValue, type: NumberType.Integer }];
-			} else if (isRatio) {
-				const tokenValue = power[operator] * step;
-
-				valueToken = [TokenType.Number, tokenValue.toString(), -1, -1, { value: tokenValue, type: NumberType.Integer }];
+				valueNode = result;
 			} else {
-				const tokenValue = power[operator];
+				// 1.b. If the result is not an integer, it is not safe to use the result as the value.
+				// Wrap the value in an additional calc() function and adjust with the appropriate step.
 
-				valueToken = [TokenType.Number, tokenValue.toString(), -1, -1, { value: tokenValue, type: NumberType.Integer }];
+				let valueToken: CSSToken;
+
+				if (typeof featureUnit !== 'undefined') {
+					const tokenValue = power[operator] * (featureUnit === 'px' ? pixelStep : step);
+
+					valueToken = [TokenType.Dimension, `${tokenValue.toString()}${featureUnit}`, -1, -1, { value: tokenValue, unit: featureUnit, type: NumberType.Integer }];
+				} else if (integerFeatures[name] === true) {
+					const tokenValue = power[operator];
+
+					valueToken = [TokenType.Number, tokenValue.toString(), -1, -1, { value: tokenValue, type: NumberType.Integer }];
+				} else if (isRatio) {
+					const tokenValue = power[operator] * step;
+
+					valueToken = [TokenType.Number, tokenValue.toString(), -1, -1, { value: tokenValue, type: NumberType.Integer }];
+				} else {
+					const tokenValue = power[operator];
+
+					valueToken = [TokenType.Number, tokenValue.toString(), -1, -1, { value: tokenValue, type: NumberType.Integer }];
+				}
+
+				// 1.c. return a new media feature with the adjusted value.
+				return newMediaFeaturePlain(
+					featureNamePrefix(operator) + name,
+					...tokensBefore,
+					[TokenType.Function, 'calc(', -1, -1, { value: 'calc(' }],
+					[TokenType.OpenParen, '(', -1, -1, undefined],
+					...valueNode.tokens().slice(1),
+					[TokenType.Whitespace, ' ', -1, -1, undefined],
+					[TokenType.Delim, '+', -1, -1, { value: '+' }],
+					[TokenType.Whitespace, ' ', -1, -1, undefined],
+					valueToken,
+					[TokenType.CloseParen, ')', -1, -1, undefined],
+					...valueRemainder,
+					...tokensAfter,
+				);
 			}
-
-			// 1.c. return a new media feature with the adjusted value.
-			return newMediaFeaturePlain(
-				featureNamePrefix(operator) + name,
-				...tokensBefore,
-				[TokenType.Function, 'calc(', -1, -1, { value: 'calc(' }],
-				[TokenType.OpenParen, '(', -1, -1, undefined],
-				...valueNode.tokens().slice(1),
-				[TokenType.Whitespace, ' ', -1, -1, undefined],
-				[TokenType.Delim, '+', -1, -1, { value: '+' }],
-				[TokenType.Whitespace, ' ', -1, -1, undefined],
-				valueToken,
-				[TokenType.CloseParen, ')', -1, -1, undefined],
-				...valueRemainder,
-				...tokensAfter,
-			);
 		}
 	}
 

@@ -28,6 +28,7 @@ import './cases/mf-plain/0005.mjs';
 import './cases/mf-plain/0006.mjs';
 import './cases/mf-plain/0007.mjs';
 import './cases/mf-plain/0008.mjs';
+import './cases/mf-plain/0009.mjs';
 
 import './cases/mf-range/0001.mjs';
 import './cases/mf-range/0002.mjs';
@@ -45,6 +46,7 @@ import './cases/mf-range/0013.mjs';
 import './cases/mf-range/0014.mjs';
 import './cases/mf-range/0015.mjs';
 import './cases/mf-range/0016.mjs';
+import './cases/mf-range/0017.mjs';
 
 import './cases/query-with-type/0001.mjs';
 import './cases/query-with-type/0002.mjs';

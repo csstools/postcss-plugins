@@ -1,6 +1,6 @@
 import { ComponentValue, ComponentValueType, ContainerNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
-import { isDimension, isIdent, isNumber } from '../util/component-value-is';
+import { isDimension, isEnvironmentVariable, isIdent, isNumber } from '../util/component-value-is';
 import { NodeType } from '../util/node-type';
 
 export class MediaFeatureValue {
@@ -132,6 +132,12 @@ export function parseMediaFeatureValue(componentValues: Array<ComponentValue>): 
 				continue;
 			}
 
+			candidateIndexStart = i;
+			candidateIndexEnd = i;
+			continue;
+		}
+
+		if (isEnvironmentVariable(componentValue)) {
 			candidateIndexStart = i;
 			candidateIndexEnd = i;
 			continue;
