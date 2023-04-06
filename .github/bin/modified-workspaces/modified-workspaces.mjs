@@ -67,7 +67,6 @@ export async function listModifiedWorkspaces() {
 
 		let isNonWorkspaceFile = true;
 		for (const workspace of workspaces) {
-			console.error('workspace', workspace.path);
 			if (modifiedFile.startsWith(workspace.path)) {
 				isNonWorkspaceFile = false;
 
