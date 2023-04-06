@@ -3,10 +3,10 @@ import { listWorkspaces } from '../list-workspaces/list-workspaces.mjs';
 import path from 'path';
 
 const internalDependencies = [
-	'.github/',
+	'.github' + path.sep,
 	'package-lock.json',
 	'package.json',
-	'rollup/',
+	'rollup' + path.sep,
 	'tsconfig.json',
 ];
 
@@ -46,13 +46,12 @@ export async function listModifiedWorkspaces() {
 
 	for (const modifiedFile of modifiedFiles) {
 		const modifiedFilePath = path.relative(process.cwd(), path.format(path.posix.parse(modifiedFile)));
-		console.error('modified file -  ', modifiedFilePath);
 
-		if (modifiedFile.startsWith('e2e/')) {
+		if (modifiedFile.startsWith('e2e' + path.sep)) {
 			continue;
 		}
 
-		if (modifiedFile.startsWith('sites/')) {
+		if (modifiedFile.startsWith('sites' + path.sep)) {
 			continue;
 		}
 
