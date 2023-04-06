@@ -16,12 +16,12 @@ export async function listWorkspaces() {
 				const packageDirs = await getFiles(workspace.slice(0, -2), false);
 				for (const packageDir of packageDirs) {
 					packages.add(
-						p.resolve(p.join(packageDir, 'package.json'))
+						path.resolve(path.join(packageDir, 'package.json'))
 					);
 				}
 			} else {
 				packages.add(
-					p.resolve(p.join(workspace, 'package.json'))
+					path.resolve(path.join(workspace, 'package.json'))
 				);
 			}
 		}
@@ -41,7 +41,7 @@ export async function listWorkspaces() {
 
 		for (const packageJSONPath of Array.from(packages)) {
 			const packageJSON = JSON.parse(await fsp.readFile(packageJSONPath));
-			const packagePath = p.relative(process.cwd(), p.dirname(packageJSONPath));
+			const packagePath = p.relative(process.cwd(), path.dirname(packageJSONPath));
 
 			console.error(packagePath);
 
