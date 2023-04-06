@@ -3,11 +3,16 @@ import { listWorkspaces } from '../list-workspaces/list-workspaces.mjs';
 import path from 'path';
 
 const internalDependencies = [
-	'.github' + path.sep,
-	'package-lock.json',
-	'package.json',
-	'rollup' + path.sep,
-	'tsconfig.json',
+	path.relative(process.cwd(), path.resolve('.github')),
+	path.relative(process.cwd(), path.resolve('package-lock.json')),
+	path.relative(process.cwd(), path.resolve('package.json')),
+	path.relative(process.cwd(), path.resolve('rollup')),
+	path.relative(process.cwd(), path.resolve('tsconfig.json')),
+];
+
+const knownNotRelevant = [
+	path.relative(process.cwd(), path.resolve('e2e')),
+	path.relative(process.cwd(), path.resolve('sites')),
 ];
 
 export async function listModifiedWorkspaces() {
@@ -44,15 +49,14 @@ export async function listModifiedWorkspaces() {
 
 	const modifiedWorkspaces = new Set();
 
+	MODIFIED_FILED_LOOP:
 	for (const modifiedFile of modifiedFiles) {
 		const modifiedFilePath = path.relative(process.cwd(), path.format(path.posix.parse(modifiedFile)));
 
-		if (modifiedFile.startsWith('e2e' + path.sep)) {
-			continue;
-		}
-
-		if (modifiedFile.startsWith('sites' + path.sep)) {
-			continue;
+		for (const notRelevant of knownNotRelevant) {
+			if (modifiedFile.startsWith(notRelevant)) {
+				continue MODIFIED_FILED_LOOP;
+			}
 		}
 
 		for (const internalDependency of internalDependencies) {
