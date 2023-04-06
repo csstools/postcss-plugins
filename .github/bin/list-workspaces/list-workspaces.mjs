@@ -32,6 +32,11 @@ export async function listWorkspaces() {
 			}
 		}
 
+		console.error('---- workspaces ----')
+		console.error(Array.from(packages.values()));
+		console.error('----  ----')
+
+
 		const result = [];
 
 		for (const packageJSONPath of Array.from(packages)) {
