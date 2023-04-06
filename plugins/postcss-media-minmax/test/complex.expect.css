@@ -1,0 +1,14 @@
+@media screen and (not ( (min-width: 200px) and (max-width: 499.98px))) {}
+
+@media (min-height: 500px) and (min-width: 200px) and (max-width: 499.98px) {}
+
+@media screen and not ( (min-width: 200px) and (max-width: 499.98px)) {}
+
+@media (not ( (min-width: 200px) and (max-width: 499.98px))) {}
+
+@media ((min-width: 300px) or ( (min-width: 200px) and (max-width: 499.98px))) {}
+
+@media screen and (not ( (min-width: 200px) and (max-width: 499.98px))),
+	screen and not ( (min-width: 200px) and (max-width: 499.98px)),
+	(not ( (min-width: 200px) and (max-width: 499.98px))),
+	((min-width: 300px) or ( (min-width: 200px) and (max-width: 499.98px))) {}

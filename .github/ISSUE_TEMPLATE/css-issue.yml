@@ -93,7 +93,7 @@ body:
         - PostCSS Logical Resize
         - PostCSS Logical Viewport Units
         - PostCSS Media Queries Aspect-Ratio Number Values
-        - PostCSS Media Query Ranges
+        - PostCSS Media MinMax
         - PostCSS Nested Calc
         - PostCSS Nesting
         - PostCSS OKLab Function

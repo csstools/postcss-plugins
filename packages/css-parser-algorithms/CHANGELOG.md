@@ -1,6 +1,6 @@
 # Changes to CSS Parser Algorithms
 
-### Unreleased (minor)
+### 2.1.0 (March 25, 2023)
 
 - Add `replaceComponentValues` utility function.
 - Add `stringify` utility function.

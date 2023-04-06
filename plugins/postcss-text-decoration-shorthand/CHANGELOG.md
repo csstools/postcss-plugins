@@ -2,6 +2,10 @@
 
 ### Unreleased (patch)
 
+- Updated: `@csstools/color-helpers` to `v2.0.0`
+
+### 2.2.2 (March 25, 2023)
+
 - Add `color-mix` as a known color function.
 
 ### 2.2.1 (February 13, 2023)

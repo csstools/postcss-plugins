@@ -1,0 +1,11 @@
+@media screen and  (min-width: 500px)  and (max-width: 1200px) /* comment */{
+	.bar {
+		display: block;
+	}
+}
+
+@media screen and (min-width: 500px) and (max-width: 1200px/* comment */) /* comment */{
+	.bar {
+		display: block;
+	}
+}

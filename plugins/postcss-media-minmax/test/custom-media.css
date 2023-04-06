@@ -1,0 +1,9 @@
+@custom-media --one (width < 300px) {}
+
+@custom-media --two (width <= 300px), (width=300px) {}
+
+@custom-media --three (width = 300px) {}
+
+@custom-media /* a comment */ --four (width > 300px) {}
+
+@custom-media /* a comment */ --five /* a comment */ (width >= 300px) /* a comment */ {}

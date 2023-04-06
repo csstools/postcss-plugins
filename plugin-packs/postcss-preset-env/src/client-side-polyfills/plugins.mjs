@@ -1,9 +1,9 @@
 const clientSideDocumentation = {
-	'blank-pseudo-class': 'https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md',
+	'blank-pseudo-class': 'https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README.md#browser',
 	'focus-visible-pseudo-class': 'https://github.com/WICG/focus-visible',
-	'focus-within-pseudo-class': 'https://github.com/jsxtools/focus-within/blob/master/README-BROWSER.md',
-	'has-pseudo-class': 'https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md',
-	'prefers-color-scheme-query': 'https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme/README-BROWSER.md',
+	'focus-within-pseudo-class': 'https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-focus-within/README.md#browser',
+	'has-pseudo-class': 'https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README.md#browser',
+	'prefers-color-scheme-query': 'https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme/README.md#browser',
 };
 
 const featuresWithClientSide = [

@@ -1,0 +1,16 @@
+@media screen and (device-width >= 500px) and (device-width <= 1200px) {}
+
+@media screen and (500px <= device-width <= 1200px) {}
+
+@media screen and (0 <= device-width <= 500.58px) {}
+
+@media screen and (device-width) and (.08px <= device-width <= 0.68px) {}
+
+/* device-height */
+@media screen and (device-height >= 500px) and (device-height <= 1200px) {}
+
+@media screen and (500px <= device-height <= 1200px) {}
+
+@media screen and (0 <= device-height <= 500.58px) {}
+
+@media screen and (device-height) and (.08px <= device-height <= 0.68px) {}

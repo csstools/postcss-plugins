@@ -29,7 +29,7 @@ a {
   }
 
   > span {
-    font-weight: bold;
+    color: color-mix(in oklch, cyan, green 25%);
   }
 }
 
@@ -66,7 +66,8 @@ a:hover {
   }
 
 a > span {
-    font-weight: bold;
+    color: rgb(0, 225, 200);
+    color: color(display-p3 0.33498 0.86864 0.78466);
   }
 
 input:hover, input:focus, button:hover, button:focus {
@@ -114,10 +115,11 @@ module.exports = {
 						<li><code>:is</code> pseudo class</li>
 						<li>media query ranges</li>
 						<li>nesting rules</li>
-						<li><code>lab()</code> function</li>
+						<li><code>oklab()</code> function</li>
 						<li><code>system-ui</code> font family</li>
 						<li>custom selectors</li>
 						<li><code>color()</code> function</li>
+						<li><code>color-mix()</code> function</li>
 					</ul>
 				</div>
 			</div>

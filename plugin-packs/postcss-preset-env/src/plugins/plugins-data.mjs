@@ -25,6 +25,11 @@ export default [
 		'importName': 'postcssClamp',
 	},
 	{
+		'packageName': '@csstools/postcss-color-mix-function',
+		'id': 'color-mix',
+		'importName': 'postcssColorMixFunction',
+	},
+	{
 		'packageName': '@csstools/postcss-color-function',
 		'id': 'color-function',
 		'importName': 'postcssColorFunction',
@@ -95,6 +100,11 @@ export default [
 		'importName': 'postcssGapProperties',
 	},
 	{
+		'packageName': '@csstools/postcss-gradients-interpolation-method',
+		'id': 'gradients-interpolation-method',
+		'importName': 'postcssGradientsInterpolationMethod',
+	},
+	{
 		'packageName': '@csstools/postcss-hwb-function',
 		'id': 'hwb-function',
 		'importName': 'postcssHWBFunction',
@@ -150,7 +160,7 @@ export default [
 		'importName': 'postcssLogicalViewportUnits',
 	},
 	{
-		'packageName': 'postcss-media-minmax',
+		'packageName': '@csstools/postcss-media-minmax',
 		'id': 'media-query-ranges',
 		'importName': 'postcssMediaMinmax',
 	},

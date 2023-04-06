@@ -1,5 +1,13 @@
 # Changes to PostCSS Gradients Interpolation Method
 
+### 3.0.1 (March 28, 2023)
+
+- Skip gamut mapping for interpolation color hints.
+
+### 3.0.0 (March 25, 2023)
+
+- Handle `color-mix()` internally with `@csstools/css-color-parser`
+
 ### 2.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

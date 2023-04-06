@@ -1,4 +1,4 @@
-import { ColorData, setPowerlessComponents } from '../color-data';
+import { ColorData, convertPowerlessComponentsToMissingComponents } from '../color-data';
 import type { TokenCloseParen, TokenFunction, TokenWhitespace } from '@csstools/css-tokenizer';
 import {  colorData_to_XYZ_D50 } from '../color-data';
 import { ColorNotation } from '../color-notation';
@@ -7,13 +7,18 @@ import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import { calculations, Color, conversions, utils, xyz } from '@csstools/color-helpers';
 import { toPrecision } from './to-precision';
 
-export function serializeP3(color: ColorData): FunctionNode {
-	color.channels = setPowerlessComponents(color.channels, color.colorNotation);
+export function serializeP3(color: ColorData, gamutMapping = true): FunctionNode {
+	color.channels = convertPowerlessComponentsToMissingComponents(color.channels, color.colorNotation);
 	let p3 = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
+
 	if (
 		color.colorNotation !== ColorNotation.Display_P3
 	) {
-		p3 = XYZ_D50_to_P3_Gamut(colorData_to_XYZ_D50(color).channels);
+		if (gamutMapping) {
+			p3 = XYZ_D50_to_P3_Gamut(colorData_to_XYZ_D50(color).channels);
+		} else {
+			p3 = xyz.XYZ_D50_to_P3(colorData_to_XYZ_D50(color).channels);
+		}
 	}
 
 	const r = toPrecision(p3[0], 6);

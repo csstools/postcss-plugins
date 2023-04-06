@@ -8,6 +8,7 @@ import { calcFromComponentValues } from '@csstools/css-calc';
 import { colorDataTo, fillInMissingComponents, SyntaxFlag } from '../color-data';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
+import { mathFunctionNames } from '@csstools/css-calc';
 
 const rectangularColorSpaces = new Set(['srgb', 'srgb-linear', 'lab', 'oklab', 'xyz', 'xyz-d50', 'xyz-d65']);
 const polarColorSpaces = new Set(['hsl', 'hwb', 'lch', 'oklch']);
@@ -168,7 +169,7 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 		) {
 			if (
 				isFunctionNode(node) &&
-				toLowerCaseAZ(node.getName()) === 'calc'
+				mathFunctionNames.has(toLowerCaseAZ(node.getName()))
 			) {
 				[[node]] = calcFromComponentValues([[node]], { toCanonicalUnits: true, precision: 100 });
 
@@ -296,11 +297,11 @@ function colorMixRectangular(colorSpace: string, colors: ColorMixColors | false)
 		case 'srgb':
 			outputColorNotation = ColorNotation.RGB;
 
-			if (a_color.colorNotation !== ColorNotation.RGB) {
+			if (a_color.colorNotation !== ColorNotation.RGB && a_color.colorNotation !== ColorNotation.HEX) {
 				a_channels = colorDataTo(a_color, ColorNotation.RGB).channels;
 			}
 
-			if (b_color.colorNotation !== ColorNotation.RGB) {
+			if (b_color.colorNotation !== ColorNotation.RGB && a_color.colorNotation !== ColorNotation.HEX) {
 				b_channels = colorDataTo(b_color, ColorNotation.RGB).channels;
 			}
 

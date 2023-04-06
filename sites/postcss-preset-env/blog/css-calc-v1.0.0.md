@@ -29,7 +29,7 @@ It can not do everything a browser would be able to, but it can still do enough 
 
 This new tool will enable us to create better PostCSS plugins for [Relative Color Syntax], [Color Mix] and any other feature that interacts with `calc()`.
 
-{% block scripts %}<script async defer src="{{ "/static/js/blog_calc_2023_02_21.js" | addHash }}"></script>{% endblock %}
+{% block scripts %}<script async defer src="{{ '/static/js/blog_calc_2023_02_21.js' | addHash }}"></script>{% endblock %}
 
 [CSS Calc]: https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc#readme
 [Relative Color Syntax]: https://css-tricks.com/new-css-color-features-preview/#aa-the-relative-color-syntax-is-super-useful

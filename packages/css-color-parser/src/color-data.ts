@@ -280,13 +280,12 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 		}
 	}
 
-	// 3. Convert powerless components to missing components
-	outputColorData.channels = setPowerlessComponents(outputColorData.channels, toNotation);
+	outputColorData.channels = convertPowerlessComponentsToMissingComponents(outputColorData.channels, toNotation);
 
 	return outputColorData;
 }
 
-export function setPowerlessComponents(a: Color, colorNotation: ColorNotation): Color {
+export function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: ColorNotation): Color {
 	const out: Color = [...a];
 
 	switch (colorNotation) {

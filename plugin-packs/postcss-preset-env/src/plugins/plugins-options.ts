@@ -7,6 +7,7 @@ import type { pluginOptions as postcssAttributeCaseInsensitive } from 'postcss-a
 import type { pluginOptions as postcssClamp } from '../types/postcss-clamp/plugin-options';
 import type { pluginOptions as postcssColorFunction } from '@csstools/postcss-color-function';
 import type { pluginOptions as postcssColorFunctionalNotation } from 'postcss-color-functional-notation';
+import type { pluginOptions as postcssColorMixFunction } from '@csstools/postcss-color-mix-function';
 import type { pluginOptions as postcssCustomMedia } from 'postcss-custom-media';
 import type { pluginOptions as postcssCustomProperties } from 'postcss-custom-properties';
 import type { pluginOptions as postcssCustomSelectors } from 'postcss-custom-selectors';
@@ -19,6 +20,7 @@ import type { pluginOptions as postcssFocusWithin } from 'postcss-focus-within';
 import type { pluginOptions as postcssFontFormatKeywords } from '@csstools/postcss-font-format-keywords';
 import type { pluginOptions as postcssFontVariant } from '../types/postcss-font-variant/plugin-options';
 import type { pluginOptions as postcssGapProperties } from 'postcss-gap-properties';
+import type { pluginOptions as postcssGradientsInterpolationMethod } from '@csstools/postcss-gradients-interpolation-method';
 import type { pluginOptions as postcssHasPseudo } from 'css-has-pseudo';
 import type { pluginOptions as postcssColorHexAlpha } from 'postcss-color-hex-alpha';
 import type { pluginOptions as postcssHWBFunction } from '@csstools/postcss-hwb-function';
@@ -30,7 +32,7 @@ import type { pluginOptions as postcssLogical } from 'postcss-logical';
 import type { pluginOptions as postcssLogicalResize } from '@csstools/postcss-logical-resize';
 import type { pluginOptions as postcssLogicalViewportUnits } from '@csstools/postcss-logical-viewport-units';
 import type { pluginOptions as postcssMediaQueriesAspectRatioNumberValues } from '@csstools/postcss-media-queries-aspect-ratio-number-values';
-import type { pluginOptions as postcssMediaMinmax } from '../types/postcss-media-minmax/plugin-options';
+import type { pluginOptions as postcssMediaMinmax } from '@csstools/postcss-media-minmax';
 import type { pluginOptions as postcssNestedCalc } from '@csstools/postcss-nested-calc';
 import type { pluginOptions as postcssNesting } from 'postcss-nesting';
 import type { pluginOptions as postcssSelectorNot } from 'postcss-selector-not';
@@ -67,6 +69,8 @@ export type pluginsOptions = {
 	'color-function'?: postcssColorFunction | boolean
 	/** plugin options for "postcss-color-functional-notation" */
 	'color-functional-notation'?: postcssColorFunctionalNotation | boolean
+	/** plugin options for "@csstools/postcss-color-mix-function" */
+	'color-mix'?: postcssColorMixFunction | boolean
 	/** plugin options for "postcss-custom-media" */
 	'custom-media-queries'?: postcssCustomMedia | boolean
 	/** plugin options for "postcss-custom-properties" */
@@ -91,6 +95,8 @@ export type pluginsOptions = {
 	'font-variant-property'?: postcssFontVariant | boolean
 	/** plugin options for "postcss-gap-properties" */
 	'gap-properties'?: postcssGapProperties | boolean
+	/** plugin options for "@csstools/postcss-gradients-interpolation-method" */
+	'gradients-interpolation-method'?: postcssGradientsInterpolationMethod | boolean
 	/** plugin options for "css-has-pseudo" */
 	'has-pseudo-class'?: postcssHasPseudo | boolean
 	/** plugin options for "postcss-color-hex-alpha" */
@@ -113,7 +119,7 @@ export type pluginsOptions = {
 	'logical-viewport-units'?: postcssLogicalViewportUnits | boolean
 	/** plugin options for "@csstools/postcss-media-queries-aspect-ratio-number-values" */
 	'media-queries-aspect-ratio-number-values'?: postcssMediaQueriesAspectRatioNumberValues | boolean
-	/** plugin options for "postcss-media-minmax" */
+	/** plugin options for "@csstools/postcss-media-minmax" */
 	'media-query-ranges'?: postcssMediaMinmax | boolean
 	/** plugin options for "@csstools/postcss-nested-calc" */
 	'nested-calc'?: postcssNestedCalc | boolean

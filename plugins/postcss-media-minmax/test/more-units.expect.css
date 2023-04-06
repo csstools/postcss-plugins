@@ -1,0 +1,15 @@
+@media screen and (color-index) { }
+@media screen and (min-color-index: 1) and (max-color-index: 999) { }
+@media screen and (min-monochrome: 1) and (max-monochrome: 999) { }
+
+
+@media screen and (min-resolution: 96.001dpi) and (max-resolution: 2.999dppx) { }
+@media screen and (min-width: -199.98px) and (max-width: 900.559px) { }
+@media screen and (min-width: -0.579px) and (max-width: 0.989px) { }
+@media screen and (min-width: 3.001rem) and (max-width: 4.999em) { }
+
+
+@media screen and (resolution) { }
+@media screen and (min-resolution: 1000.001dpi) and (max-resolution: 2.999dppx) { }
+@media screen and (min-resolution: 1000000.001dpi) and (max-resolution: 999999.999dpcm) { }
+@media screen and (1 / 1000 < resolution < 16 /9) { }

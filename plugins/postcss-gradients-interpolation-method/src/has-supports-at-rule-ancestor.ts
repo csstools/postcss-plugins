@@ -1,4 +1,4 @@
-import { includesGradientsFunction } from './is-gradient';
+import { gradientFunctionRegex } from './is-gradient';
 import type { AtRule, Node } from 'postcss';
 
 export function hasSupportsAtRuleAncestor(node: Node): boolean {
@@ -9,7 +9,7 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 			continue;
 		}
 
-		if ((parent as AtRule).name === 'supports' && includesGradientsFunction((parent as AtRule).params)) {
+		if ((parent as AtRule).name === 'supports' && gradientFunctionRegex.test((parent as AtRule).params)) {
 			return true;
 		}
 

@@ -1,9 +1,66 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (unknown)
+### 8.3.0 (March 31, 2023)
 
-- Updated `postcss-opacity-percentage` to `2.0.0` (major)
+- Replace `postcss-media-minmax` with `@csstools/postcss-media-minmax` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax#readme) for usage details. _We hope to revert this in the future when maintenance is resumed upstream._
+- - Updated `cssdb` to `7.5.3` (patch)
+
+### 8.2.0 (March 28, 2023)
+
+- Added `@csstools/postcss-gradients-interpolation-method` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method#readme) for usage details.
+- Updated `cssdb` to `7.5.2` (patch)
+
+### 8.1.0 (March 25, 2023)
+
+- Added `@csstools/postcss-color-mix-function` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function#readme) for usage details.
 - Improve `debug` message format
+- Updated `@csstools/postcss-cascade-layers` to `3.0.1` (patch)
+- Updated `@csstools/postcss-color-function` to `2.2.0` (minor)
+- Updated `@csstools/postcss-font-format-keywords` to `2.0.2` (patch)
+- Updated `@csstools/postcss-hwb-function` to `2.2.0` (minor)
+- Updated `@csstools/postcss-ic-unit` to `2.0.2` (patch)
+- Updated `@csstools/postcss-is-pseudo-class` to `3.1.1` (minor)
+- Updated `@csstools/postcss-logical-float-and-clear` to `1.0.1` (patch)
+- Updated `@csstools/postcss-logical-resize` to `1.0.1` (patch)
+- Updated `@csstools/postcss-logical-viewport-units` to `1.0.2` (patch)
+- Updated `@csstools/postcss-media-queries-aspect-ratio-number-values` to `1.0.1` (patch)
+- Updated `@csstools/postcss-nested-calc` to `2.0.2` (patch)
+- Updated `@csstools/postcss-normalize-display-values` to `2.0.1` (patch)
+- Updated `@csstools/postcss-oklab-function` to `2.1.0` (minor)
+- Updated `@csstools/postcss-progressive-custom-properties` to `2.1.0` (minor)
+- Updated `@csstools/postcss-scope-pseudo-class` to `2.0.2` (patch)
+- Updated `@csstools/postcss-stepped-value-functions` to `2.1.0` (minor)
+- Updated `@csstools/postcss-text-decoration-shorthand` to `2.2.1` (minor)
+- Updated `@csstools/postcss-trigonometric-functions` to `2.1.0` (minor)
+- Updated `@csstools/postcss-unset-value` to `2.0.1` (patch)
+- Updated `autoprefixer` to `10.4.14` (patch)
+- Updated `browserslist` to `4.21.5` (patch)
+- Updated `css-blank-pseudo` to `5.0.2` (patch)
+- Updated `css-has-pseudo` to `5.0.2` (patch)
+- Updated `css-prefers-color-scheme` to `8.0.2` (patch)
+- Updated `cssdb` to `7.5.1` (minor)
+- Updated `postcss-attribute-case-insensitive` to `6.0.2` (patch)
+- Updated `postcss-color-functional-notation` to `5.0.2` (patch)
+- Updated `postcss-color-hex-alpha` to `9.0.2` (patch)
+- Updated `postcss-color-rebeccapurple` to `8.0.2` (patch)
+- Updated `postcss-custom-media` to `9.1.2` (patch)
+- Updated `postcss-custom-properties` to `13.1.4` (patch)
+- Updated `postcss-custom-selectors` to `7.1.2` (patch)
+- Updated `postcss-dir-pseudo-class` to `7.0.2` (patch)
+- Updated `postcss-double-position-gradients` to `4.0.2` (patch)
+- Updated `postcss-focus-visible` to `8.0.2` (patch)
+- Updated `postcss-focus-within` to `7.0.2` (patch)
+- Updated `postcss-gap-properties` to `4.0.1` (patch)
+- Updated `postcss-image-set-function` to `5.0.2` (patch)
+- Updated `postcss-lab-function` to `5.2.0` (minor)
+- Updated `postcss-logical` to `6.1.0` (minor)
+- Updated `postcss-nesting` to `11.2.1` (minor)
+- Updated `postcss-opacity-percentage` to `2.0.0` (major)
+- Updated `postcss-overflow-shorthand` to `4.0.1` (patch)
+- Updated `postcss-page-break` to `3.0.4` (patch)
+- Updated `postcss-place` to `8.0.1` (patch)
+- Updated `postcss-pseudo-class-any-link` to `8.0.2` (patch)
+- Updated `postcss-selector-not` to `7.0.1` (patch)
 
 ### 8.0.1 (January 28, 2023)
 

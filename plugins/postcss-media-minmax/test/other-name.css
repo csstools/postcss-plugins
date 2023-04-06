@@ -1,0 +1,23 @@
+@media screen and (width >= 500px) and (height) {
+	.bar {
+		display: block;
+	}
+}
+
+@media screen and (500px <= width <= 1200px) and (height) {
+	.bar {
+		display: block;
+	}
+}
+
+@media screen and (any-hover) and (width >= 500px) and (device-width) {
+	.bar {
+		display: block;
+	}
+}
+
+@media screen and (any-hover) and (width >= 500px) and (device-width) {
+	.bar {
+		display: block;
+	}
+}

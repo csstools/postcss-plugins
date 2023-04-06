@@ -1,0 +1,16 @@
+@media screen and (min-width: 500px) and (max-width: 1200px) {}
+
+@media screen and (min-width: 500px) and (max-width: 1200px) {}
+
+@media screen and (min-width: 0) and (max-width: 500.58px) {}
+
+@media screen and (width) and (min-width: .08px) and (max-width: 0.68px) {}
+
+/* height */
+@media screen and (min-height: 500px) and (max-height: 1200px) {}
+
+@media screen and (min-height: 500px) and (max-height: 1200px) {}
+
+@media screen and (min-height: 0) and (max-height: 500.58px) {}
+
+@media screen and (height) and (min-height: .08px) and (max-height: 0.68px) {}

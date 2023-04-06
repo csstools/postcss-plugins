@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-color-mix-function",
 	"description": "Use the color-mix function in CSS",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -39,7 +39,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^0.0.0",
+		"@csstools/css-color-parser": "^1.1.0",
 		"@csstools/css-parser-algorithms": "^2.0.1",
 		"@csstools/css-tokenizer": "^2.1.0",
 		"@csstools/postcss-progressive-custom-properties": "^2.0.0"
@@ -66,7 +66,18 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"color-mix",
+		"css",
+		"display-p3",
+		"interpolation",
+		"postcss-plugin",
+		"prophoto-rgb",
+		"rec2020",
+		"rgb",
+		"rgba",
+		"srgb-linear",
+		"syntax",
+		"xyz"
 	],
 	"csstools": {
 		"cssdbId": "color-mix",

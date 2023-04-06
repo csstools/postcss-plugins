@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### Unreleased (patch)
+### 11.2.2 (March 25, 2023)
 
 - Improved: support for mixins
 

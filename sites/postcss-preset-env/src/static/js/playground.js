@@ -14,7 +14,6 @@ const currentConfig = {
 	browsers: ['> 0.2% and not dead'],
 	minimumVendorImplementations: 0,
 	stage: 2,
-	preserve: null,
 	logical: {
 		inlineDirection: 'left-to-right',
 		blockDirection: 'top-to-bottom',
@@ -45,7 +44,7 @@ function processCss(source, config) {
 
 function renderConfig(config) {
 	const copy = JSON.parse(JSON.stringify(config));
-	if (!copy.preserve) {
+	if (typeof copy.preserve !== 'boolean') {
 		delete copy.preserve;
 	}
 
@@ -100,7 +99,7 @@ a {
 	}
 
 	> span {
-		font-weight: bold;
+		color: color-mix(in oklch, cyan, green 25%);
 	}
 }
 
@@ -113,7 +112,7 @@ aside {
 	height: 20vb;
 }
 
-@custom-media --tablet (min-width: 48rem);
+@custom-media --tablet (48rem <= width < 64rem);
 
 @media (--tablet) {
 	:is(input, button):is(:hover, :focus) {
@@ -213,12 +212,14 @@ let controls = {
 		controls.preserve.value = 'true';
 	} else if (currentConfig.preserve === false) {
 		controls.preserve.value = 'false';
+	} else {
+		controls.preserve.value = '';
 	}
 }
 
 for (const control of Object.values(controls)) {
 	control.addEventListener('change', () => {
-		let preserve = null;
+		let preserve = undefined;
 		if (controls.preserve.value === 'true') {
 			preserve = true;
 		} else if (controls.preserve.value === 'false') {
@@ -228,7 +229,13 @@ for (const control of Object.values(controls)) {
 		currentConfig.browsers = controls.browsers.value.split(',').filter((x) => !!x);
 		currentConfig.minimumVendorImplementations = parseInt(controls.minimumVendorImplementations.value || '0', 10);
 		currentConfig.stage = parseInt(controls.stage.value || '0', 10);
-		currentConfig.preserve = preserve;
+
+		if (typeof preserve !== 'undefined') {
+			currentConfig.preserve = preserve;
+		} else {
+			delete currentConfig.preserve;
+		}
+
 		currentConfig.logical = {
 			inlineDirection: controls.inlineDirection.value || 'left-to-right',
 			blockDirection: controls.blockDirection.value || 'top-to-bottom',

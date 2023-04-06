@@ -37,11 +37,11 @@ CSSDB exposes the browser support that each feature has which can come from [Can
 
 By providing a list of browser targets for your project, plugins that aren't needed will be skipped. Over time your targets might change and by updating the settings your CSS bundle will only ever contain the needed fallbacks.
 
-What [PostCSS Preset Env] does is to take the support data that comes from MDN and Can I Use and determine from a [browserlist](https://github.com/browserslist/browserslist) whether those transformations are needed. It also packs [Autoprefixer](https://github.com/postcss/autoprefixer) within and shares the list with it, so prefixes are only applied when you're going to need them given your browser support list.
+What [PostCSS Preset Env] does is to take the support data that comes from MDN and Can I Use and determine from a [browserslist](https://github.com/browserslist/browserslist) whether those transformations are needed. It also packs [Autoprefixer](https://github.com/postcss/autoprefixer) within and shares the list with it, so prefixes are only applied when you're going to need them given your browser support list.
 
 ### Glossary:
 
-* **Browser list option**: [Browserlist](https://github.com/browserslist/browserslist) is a package that gives you a list of browsers for a given query. For example, `chrome < 42` will give you a list of every Chrome version that has been released up to, but not including, 42.
+* **Browser list option**: [Browserslist](https://github.com/browserslist/browserslist) is a package that gives you a list of browsers for a given query. For example, `chrome < 42` will give you a list of every Chrome version that has been released up to, but not including, 42.
 * **Browser support stats**: Features get introduced on browsers at certain versions. They're often visible on [MDN](https://developer.mozilla.org/en-US/) and [Can I Use](https://caniuse.com/). Comparing these stats with the needed _support_ for your project tells you if it's safe to use a feature or not.
 * **CSS Feature**: A CSS feature is often part of some spec that enables a specific feature. For example, `hwb` functional notation lets you express a given color according to its hue, whiteness, and blackness. This is part of the CSS Color 4 Spec.
 * **CSS Spec**: A Spec is a document that collects new features, what problems are they trying to solve and how it's intended to be solved (generally). This is usually an evolving document that goes over lengthy discussions between several people from different companies.
@@ -122,8 +122,7 @@ a:hover {
 Without any configuration options, [PostCSS Preset Env] enables **Stage 2**
 features and supports **all** browsers.
 
-[![Transform with Preset Env][readme-transform-with-preset-env-img]][readme-transform-with-preset-env-url]
-[![Style with Preset Env][readme-style-with-preset-env-img]][readme-style-with-preset-env-url]
+[**Try it out in the Playground!**](https://preset-env.cssdb.org/playground/)
 
 ⚠️ Please note that some features need a companion library that makes 
 the feature work. While we try to avoid this requirement, there are instances
@@ -152,8 +151,13 @@ postcss([
 
 [PostCSS Preset Env] runs in all Node environments, with special instructions for:
 
-| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) | [Rollup](INSTALL.md#rollup) |
-| --- | --- | --- | --- | --- | --- |
+- [Node](INSTALL.md#node)
+- [PostCSS CLI](INSTALL.md#postcss-cli)
+- [PostCSS Load Config](INSTALL.md#postcss-load-config)
+- [Webpack](INSTALL.md#webpack)
+- [Next.js](INSTALL.md#nextjs)
+- [Gulp](INSTALL.md#gulp)
+- [Grunt](INSTALL.md#grunt)
 
 ## Options
 
@@ -345,7 +349,7 @@ following features:
 - `logical-properties-and-values`: [PostCSS Logical](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme)
 - `float-clear-logical-values`: [PostCSS Logical Float And Clear](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme)
 - `logical-resize`: [PostCSS Logical Resize](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-resize#readme)
-- `logical-viewport-units`: [PostCSS Logical Viewport Units](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logica-viewport-unitsl#readme)
+- `logical-viewport-units`: [PostCSS Logical Viewport Units](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units#readme)
 
 It should have `blockDirection` and/or `inlineDirection` which can be any of the following:
 
@@ -401,11 +405,11 @@ A side effect of staying close to the standard is that you can more easily migra
 This is the current list of features that need a client library with a link
 to the polyfill's library.
 
-* `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md)
+* `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo#browser)
 * `focus-visible-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-visible) / [Polyfill](https://github.com/WICG/focus-visible)
-* `focus-within-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within) / [Library](https://github.com/jsxtools/focus-within) / [Polyfill](https://github.com/jsxtools/focus-within/blob/master/README-BROWSER.md)
-* `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md)
-* `prefers-color-scheme-query`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme/README-BROWSER.md)
+* `focus-within-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-focus-within#browser)
+* `has-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo#browser)
+* `prefers-color-scheme-query`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme#browser)
 
 If you want to enable all these types of features, please check the [`enableClientSidePolyfills` option](#enableclientsidepolyfills).
 
@@ -413,9 +417,8 @@ If you want to enable all these types of features, please check the [`enableClie
 
 Given they have no support they will always be enabled if they match by Stage:
 
-* `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md)
+* `blank-pseudo-class`: [Plugin](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo) / [Polyfill](https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo#browser)
 * `custom-media-queries`: [Plugin](https://github.com/postcss/postcss-custom-media)
-* `media-query-ranges`: [Plugin](https://github.com/postcss/postcss-media-minmax)
 * `nesting-rules`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting)
 
 [cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
@@ -432,7 +435,3 @@ Given they have no support they will always be enabled if they match by Stage:
 [cssdb]: https://cssdb.org/
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Preset Env]: https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env
-[readme-style-with-preset-env-img]: https://csstools.github.io/postcss-preset-env/readme-style-with-preset-env.svg
-[readme-style-with-preset-env-url]: https://codepen.io/pen?template=OZRovK
-[readme-transform-with-preset-env-img]: https://csstools.github.io/postcss-preset-env/readme-transform-with-preset-env.svg
-[readme-transform-with-preset-env-url]: https://csstools.github.io/postcss-preset-env/

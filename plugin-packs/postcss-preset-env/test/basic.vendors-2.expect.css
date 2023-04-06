@@ -3,7 +3,7 @@
 }
 
 .test-custom-property-fallbacks {
-	--firebrick: lab(40% 56.6 39);
+	--firebrick: rgb(179, 35, 35);
 }
 
 .test-custom-properties {
@@ -71,7 +71,7 @@
 	}
 }
 
-@media (480px <= width < 768px) {
+@media (min-width: 480px) and (max-width: 767.98px) {
 	.test-media-query-ranges {
 		order: 11;
 	}
@@ -113,8 +113,8 @@
 }
 
 .test-lab-function {
-	background-color: lab(40% 56.6 39);
-	color: lch(40% 68.8 34.5 / 50%);
+	background-color: rgb(179, 35, 35);
+	color: rgba(179, 34, 35, 0.5);
 	order: 17;
 }
 
@@ -131,8 +131,7 @@
 
 .test-all-property {
 	animation: none 0s ease 0s 1 normal none running;
-	-webkit-backface-visibility: visible;
-	        backface-visibility: visible;
+	backface-visibility: visible;
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
 	border: medium none currentColor;
 	border-collapse: separate;
@@ -424,47 +423,53 @@
 }
 
 .color-function {
-	prop-1: color(display-p3 0.00000 0.51872 0.36985);
+	prop-1: rgb(0, 132, 94);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
-	prop-3: color(display-p3 0.02472 0.01150 0.00574 / 1);
-	prop-4: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
+	prop-3: rgb(7, 3, 1);
+	prop-4: rgb(7, 3, 1);
 	prop-5: color(display-p3 1 1 1 1);
 }
 
 .oklab {
-	color-1: oklab(40% 0.001236 0.0039);
-	color-2: oklab(40% 0.1236 0.0039 / 1);
-	color-3: oklab(40% 0.1236 0.0039 / .5);
-	color-4: oklab(40% 0.1236 0.0039 / 100%);
-	color-5: oklab(40% 0.1236 0.0039 / 50%);
-	color-6: oklab(60% 0.1 0);
+	color-1: rgb(73, 71, 69);
+	color-2: rgb(121, 34, 67);
+	color-3: rgba(121, 34, 67, 0.5);
+	color-4: rgb(121, 34, 67);
+	color-5: rgba(121, 34, 67, 0.5);
+	color-6: rgb(177, 102, 126);
 	color-7: oklab(60% 0.1 0 foo);
-	color-8: oklab(40.101% 0.1147 0.0453);
-	color-9: oklab(59.686% 0.1009 0.1192);
-	color-10: oklab(65.125% -0.0320 0.1274);
-	color-11: oklab(66.016% -0.1084 0.1114);
-	color-12: oklab(72.322% -0.0465 -0.1150);
+	color-8: rgb(125, 35, 41);
+	color-9: rgb(198, 93, 7);
+	color-10: rgb(157, 147, 24);
+	color-11: rgb(104, 166, 57);
+	color-12: rgb(98, 172, 239);
 }
 
 .oklch {
-	color-1: oklch(40% 0.1268735435 34.568626);
-	color-2: oklch(40% 0.1268735435 34.568626 / 1);
-	color-3: oklch(40% 0.1268735435 34.568626 / .5);
-	color-4: oklch(40% 0.1268735435 34.568626 / 100%);
-	color-5: oklch(40% 0.1268735435 34.568626 / 50%);
-	color-6: oklch(60% 0.150 0);
+	color-1: rgb(126, 37, 15);
+	color-2: rgb(126, 37, 15);
+	color-3: rgba(126, 37, 15, 0.5);
+	color-4: rgb(126, 37, 15);
+	color-5: rgba(126, 37, 15, 0.5);
+	color-6: rgb(197, 84, 124);
 
-	color-7: oklch(60% 0.1250 180);
-	color-8: oklch(60% 0.1250 180deg);
-	color-9: oklch(60% 0.1250 0.5turn);
-	color-10: oklch(60% 0.1250 200grad);
-	color-11: oklch(60% 0.1250 3.14159rad);
+	color-7: rgb(0, 152, 131);
 
-	color-12: oklch(60% 0.1250 45);
-	color-13: oklch(60% 0.1250 45deg);
-	color-14: oklch(60% 0.1250 0.125turn);
-	color-15: oklch(60% 0.1250 50grad);
-	color-16: oklch(60% 0.1250 0.785398rad);
+	color-7: color(display-p3 0.19244 0.58461 0.51559);
+	color-8: rgb(0, 152, 131);
+	color-8: color(display-p3 0.19244 0.58461 0.51559);
+	color-9: rgb(0, 152, 131);
+	color-9: color(display-p3 0.19244 0.58461 0.51559);
+	color-10: rgb(0, 152, 131);
+	color-10: color(display-p3 0.19244 0.58461 0.51559);
+	color-11: rgb(0, 152, 131);
+	color-11: color(display-p3 0.19244 0.58461 0.51559);
+
+	color-12: rgb(188, 101, 59);
+	color-13: rgb(188, 101, 59);
+	color-14: rgb(188, 101, 59);
+	color-15: rgb(188, 101, 59);
+	color-16: rgb(188, 101, 59);
 	color-17: oklch(60% 0.1250 0.785398unknown);
 }
 
@@ -582,4 +587,31 @@
 
 @media (min-aspect-ratio: 177/100) {
 	/* media query aspect ratio : <number> */
+}
+
+.color-mix {
+	color-1: rgba(0, 0, 255, 0.65);
+	color-2: rgba(0, 0, 255, 0.65);
+	color-3: rgba(0, 0, 255, 0.65);
+	color-4: rgba(125, 0, 190, 0.65);
+	color-4: color(display-p3 0.45007 0 0.73452 / 0.65);
+	color-5: rgba(153, 0, 125, 0.65);
+	color-5: color(display-p3 0.56492 0 0.48893 / 0.65);
+	color-6: rgba(179, 0, 255, 0.65);
+}
+
+.gradients-interpolation-method {
+	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), rgb(188, 179, 255), rgb(164, 192, 255), rgb(137, 206, 255), rgb(111, 218, 255), rgb(93, 229, 255), rgb(94, 237, 237) 100%);
+}
+
+@supports (color: rgb(0 0 0 / 0)) and (color: color(display-p3 0 0 0)) {
+.gradients-interpolation-method {
+	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), color(display-p3 0.73255 0.7035 1.03328), color(display-p3 0.66377 0.75145 1.06652), color(display-p3 0.59643 0.80011 1.0696), color(display-p3 0.54198 0.8462 1.04382), color(display-p3 0.51578 0.88643 0.99318), rgb(94, 237, 237) 100%);
+}
+}
+
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0% / 0)) {
+.gradients-interpolation-method {
+	--background-image: linear-gradient(in oklch decreasing hue, hsl(0, 85%, 75%) 0%, hsl(180, 80%, 65%) 100%);
+}
 }

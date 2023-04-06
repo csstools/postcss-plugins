@@ -1,16 +1,41 @@
 import { ComponentValue, ComponentValueType, FunctionNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, TokenFunction, TokenType } from '@csstools/css-tokenizer';
+import { toLowerCaseAZ } from './to-lower-case-a-z';
 
 export function isNumber(componentValue: ComponentValue) {
 	if (
 		(componentValue.type === ComponentValueType.Token && (componentValue.value as CSSToken)[0] === TokenType.Number) ||
-		(componentValue.type === ComponentValueType.Function && ((componentValue as FunctionNode).name as TokenFunction)[4].value === 'calc')
+		(componentValue.type === ComponentValueType.Function && mathFunctions.has(toLowerCaseAZ(((componentValue as FunctionNode).name as TokenFunction)[4].value)))
 	) {
 		return true;
 	}
 
 	return false;
 }
+
+const mathFunctions = new Set([
+	'abs',
+	'acos',
+	'asin',
+	'atan',
+	'atan2',
+	'calc',
+	'clamp',
+	'cos',
+	'exp',
+	'hypot',
+	'log',
+	'max',
+	'min',
+	'mod',
+	'pow',
+	'rem',
+	'round',
+	'sign',
+	'sin',
+	'sqrt',
+	'tan',
+]);
 
 export function isDimension(componentValue: ComponentValue) {
 	if (componentValue.type === ComponentValueType.Token && (componentValue.value as CSSToken)[0] === TokenType.Dimension) {

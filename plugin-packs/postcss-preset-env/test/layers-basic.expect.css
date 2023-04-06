@@ -126,7 +126,7 @@
 	}
 }
 
-@media (min-width: 480px) and (max-width: 767px) {
+@media (min-width: 480px) and (max-width: 767.98px) {
 		.test-media-query-ranges {
 			is-layer: A;
 			-webkit-box-ordinal-group: 12;

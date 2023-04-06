@@ -68,7 +68,7 @@
 	}
 }
 
-@media (min-width: 480px) and (max-width: 767px) {
+@media (min-width: 480px) and (max-width: 767.98px) {
 	.test-media-query-ranges {
 		order: 11;
 	}
@@ -564,4 +564,31 @@
 
 @media (min-aspect-ratio: 177/100) {
 	/* media query aspect ratio : <number> */
+}
+
+.color-mix {
+	color-1: rgba(0, 0, 255, 0.65);
+	color-2: rgba(0, 0, 255, 0.65);
+	color-3: rgba(0, 0, 255, 0.65);
+	color-4: rgba(125, 0, 190, 0.65);
+	color-4: color(display-p3 0.45007 0 0.73452 / 0.65);
+	color-5: rgba(153, 0, 125, 0.65);
+	color-5: color(display-p3 0.56492 0 0.48893 / 0.65);
+	color-6: rgba(179, 0, 255, 0.65);
+}
+
+.gradients-interpolation-method {
+	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), rgb(188, 179, 255), rgb(164, 192, 255), rgb(137, 206, 255), rgb(111, 218, 255), rgb(93, 229, 255), rgb(94, 237, 237) 100%);
+}
+
+@supports (color: rgb(0 0 0 / 0)) and (color: color(display-p3 0 0 0)) {
+.gradients-interpolation-method {
+	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), color(display-p3 0.73255 0.7035 1.03328), color(display-p3 0.66377 0.75145 1.06652), color(display-p3 0.59643 0.80011 1.0696), color(display-p3 0.54198 0.8462 1.04382), color(display-p3 0.51578 0.88643 0.99318), rgb(94, 237, 237) 100%);
+}
+}
+
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0% / 0)) {
+.gradients-interpolation-method {
+	--background-image: linear-gradient(in oklch decreasing hue, hsl(0, 85%, 75%) 0%, hsl(180, 80%, 65%) 100%);
+}
 }

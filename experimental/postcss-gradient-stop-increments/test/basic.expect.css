@@ -53,3 +53,19 @@
 .var-1 {
 	background: repeating-linear-gradient(red 10px blue calc(10px + var(--foo)));
 }
+
+.omitted-length-1 {
+	background: linear-gradient(red, orange, yellow +10%, green, blue);
+}
+
+.omitted-length-2 {
+	background: linear-gradient(red, orange +10%, yellow, green, blue);
+}
+
+.omitted-length-3 {
+	background: linear-gradient(red, orange, yellow, green +10%, blue);
+}
+
+.omitted-length-4 {
+	background: linear-gradient(red, orange 10%, gold, yellow 20%, green, blue);
+}

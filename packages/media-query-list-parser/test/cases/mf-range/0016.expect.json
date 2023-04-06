@@ -1,0 +1,211 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(color > sin(90deg))",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-range-name-value",
+						"name": {
+							"type": "mf-name",
+							"name": "color",
+							"tokens": [
+								[
+									"ident-token",
+									"color",
+									1,
+									5,
+									{
+										"value": "color"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									6,
+									6,
+									null
+								]
+							]
+						},
+						"value": {
+							"type": "mf-value",
+							"value": {
+								"type": "function",
+								"name": "sin",
+								"tokens": [
+									[
+										"function-token",
+										"sin(",
+										9,
+										12,
+										{
+											"value": "sin"
+										}
+									],
+									[
+										"dimension-token",
+										"90deg",
+										13,
+										17,
+										{
+											"value": 90,
+											"type": "integer",
+											"unit": "deg"
+										}
+									],
+									[
+										")-token",
+										")",
+										18,
+										18,
+										null
+									]
+								],
+								"value": [
+									{
+										"type": "token",
+										"tokens": [
+											[
+												"dimension-token",
+												"90deg",
+												13,
+												17,
+												{
+													"value": 90,
+													"type": "integer",
+													"unit": "deg"
+												}
+											]
+										]
+									}
+								]
+							},
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									8,
+									8,
+									null
+								],
+								[
+									"function-token",
+									"sin(",
+									9,
+									12,
+									{
+										"value": "sin"
+									}
+								],
+								[
+									"dimension-token",
+									"90deg",
+									13,
+									17,
+									{
+										"value": 90,
+										"type": "integer",
+										"unit": "deg"
+									}
+								],
+								[
+									")-token",
+									")",
+									18,
+									18,
+									null
+								]
+							]
+						},
+						"tokens": [
+							[
+								"ident-token",
+								"color",
+								1,
+								5,
+								{
+									"value": "color"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								6,
+								6,
+								null
+							],
+							[
+								"delim-token",
+								">",
+								7,
+								7,
+								{
+									"value": ">"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								8,
+								8,
+								null
+							],
+							[
+								"function-token",
+								"sin(",
+								9,
+								12,
+								{
+									"value": "sin"
+								}
+							],
+							[
+								"dimension-token",
+								"90deg",
+								13,
+								17,
+								{
+									"value": 90,
+									"type": "integer",
+									"unit": "deg"
+								}
+							],
+							[
+								")-token",
+								")",
+								18,
+								18,
+								null
+							]
+						]
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							19,
+							19,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

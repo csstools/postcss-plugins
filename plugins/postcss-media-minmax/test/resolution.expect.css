@@ -1,0 +1,7 @@
+@media screen and (min-resolution: 1dpi) and (max-resolution: 192dpi) {}
+
+@media screen and (min-resolution: 1.5dppx) and (max-resolution: 3dppx) {}
+
+@media screen and (min-resolution: .5dppx) and (max-resolution: 2.5dppx) {}
+
+@media screen and (resolution) and (min-resolution: 10dpi) and (max-resolution: 118dpcm) {}

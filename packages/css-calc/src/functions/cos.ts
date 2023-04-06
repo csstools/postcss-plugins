@@ -14,28 +14,29 @@ export function solveCos(cosNode: FunctionNode, a: TokenNode): Calculation | -1 
 		return - 1;
 	}
 
+	let result = aToken[4].value;
 	if (aToken[0] === TokenType.Dimension) {
 		switch (toLowerCaseAZ(aToken[4].unit)) {
 			case 'rad':
 				break;
 			case 'deg':
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				aToken[4].value = convert_deg.get('rad')!(aToken[4].value);
+				result = convert_deg.get('rad')!(aToken[4].value);
 				break;
 			case 'grad':
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				aToken[4].value = convert_grad.get('rad')!(aToken[4].value);
+				result = convert_grad.get('rad')!(aToken[4].value);
 				break;
 			case 'turn':
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				aToken[4].value = convert_turn.get('rad')!(aToken[4].value);
+				result = convert_turn.get('rad')!(aToken[4].value);
 				break;
 			default:
 				return -1;
 		}
 	}
 
-	const result = Math.cos(aToken[4].value);
+	result = Math.cos(result);
 
 	return numberToCalculation(cosNode, result);
 }

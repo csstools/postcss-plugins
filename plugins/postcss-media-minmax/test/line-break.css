@@ -1,0 +1,19 @@
+@media screen and
+
+(width >= 500px)
+and
+(width <= 1200px) {
+	.foo {
+		display: block;
+	}
+}
+
+@media screen and
+
+(1200px <= width <= 500px)
+and
+(hover) {
+	.bar {
+		display: block;
+	}
+}

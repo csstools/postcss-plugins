@@ -63,7 +63,7 @@
 	}
 }
 
-@media (480px <= width < 768px) {
+@media (min-width: 480px) and (max-width: 767.98px) {
 	.test-media-query-ranges {
 		order: 11;
 	}
@@ -122,8 +122,7 @@
 
 .test-all-property {
 	animation: none 0s ease 0s 1 normal none running;
-	-webkit-backface-visibility: visible;
-	        backface-visibility: visible;
+	backface-visibility: visible;
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
 	border: medium none currentColor;
 	border-collapse: separate;
@@ -477,16 +476,16 @@
 }
 
 .trigonometric {
-	left: sin(45deg);
-	left: cos(45deg);
-	left: tan(45deg);
-	left: asin(0.5);
-	left: acos(0.5);
-	left: atan(10);
-	left: atan2(-1, 1);
-	left: asin(sin(pi / 2));
-	left: atan2(infinity, -infinity);
-	left: sin((1deg * 3) + .25turn);
+	left: 0.70711;
+	left: 0.70711;
+	left: 1;
+	left: 30deg;
+	left: 60deg;
+	left: 84.28941deg;
+	left: -45deg;
+	left: 90deg;
+	left: 135deg;
+	left: 0.99863;
 }
 
 .trigonometric-ignore-not-a-function {
@@ -548,6 +547,19 @@
 	}
 }
 
-@media (min-aspect-ratio: 1.77) {
+@media (min-aspect-ratio: 177/100) {
 	/* media query aspect ratio : <number> */
+}
+
+.color-mix {
+	color-1: color-mix(in srgb, rgba(255, 0, 0, 0), blue 65%);
+	color-2: color-mix(in lab, rgba(255, 0, 0, 0), blue 65%);
+	color-3: color-mix(in xyz, rgba(255, 0, 0, 0), blue 65%);
+	color-4: color-mix(in oklch, rgba(255, 0, 0, 0), blue 65%);
+	color-5: color-mix(in lch, rgba(255, 0, 0, 0), blue 65%);
+	color-6: color-mix(in hsl, rgba(255, 0, 0, 0), blue 65%);
+}
+
+.gradients-interpolation-method {
+	--background-image: linear-gradient(in oklch decreasing hue, hsl(0, 85%, 75%) 0%, hsl(180, 80%, 65%) 100%);
 }

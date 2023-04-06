@@ -167,6 +167,14 @@ postcssTape(plugin)({
 			browsers: '> 0%'
 		},
 	},
+	'basic:preserve:false': {
+		message: 'supports { preserve: false, stage: 0, browsers: "> 0%" } usage',
+		options: {
+			preserve: false,
+			stage: 0,
+			browsers: '> 0%'
+		},
+	},
 	'basic:hebrew': {
 		message: 'supports { logical: { inlineDirection: "right-to-left" }, stage: 0, browsers: "> 0%" } usage',
 		options: {

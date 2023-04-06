@@ -23,7 +23,7 @@
 	],
 	"devDependencies": {
 		"stylelint": "^15.0.0",
-		"stylelint-config-standard": "^30.0.0"
+		"stylelint-config-standard": "^32.0.0"
 	},
 	"overrides": {
 		"ua-parser-js": "^1.0.33"

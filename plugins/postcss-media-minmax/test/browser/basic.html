@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS Media Queries 4</title>
+	<style>
+		target {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<target class="first"></target>
+	<target class="second"></target>
+
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			// In all test cases, the rule specified as "color: green" should win.
+			var testCases = [
+				// width feature
+				{
+					title: '1000px is width',
+					style: `
+						@media (1000px = width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width is 1000px',
+					style: `
+						@media (width = 1000px) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width greater than 1000px',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (width > 1000px) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: '1000px less than width',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (1000px < width) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width greater than 999px',
+					style: `
+						@media (width > 999px) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '999px less than width',
+					style: `
+						@media (999px < width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width less than 1001px',
+					style: `
+						@media (width < 1001px) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '1001px greater than width',
+					style: `
+						@media (1001px > width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width greater than or equal to 1000px',
+					style: `
+						@media (width >= 1000px) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '1000px less than or equal to width',
+					style: `
+						@media (1000px <= width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width greater than or equal to 999px',
+					style: `
+						@media (width >= 999px) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '999px less than or equal to width',
+					style: `
+						@media (999px <= width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width less than or equal to 1001px',
+					style: `
+						@media (width <= 1001px) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '1001px greater than or equal to width',
+					style: `
+						@media (1001px >= width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '999px < width < 1001px',
+					style: `
+						@media (999px < width < 1001px) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '1000px < width < 1500px',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (1000px < width < 1500px) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: '500px < width < 1000px',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (500px < width < 1000px) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: '1000px <= width <= 1500px',
+					style: `
+						@media (1000px <= width <= 1500px) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '500px <= width <= 1000px',
+					style: `
+						@media (500px <= width <= 1000px) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'width > 0',
+					style: `
+						@media (width > 0) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'width >= 0',
+					style: `
+						@media (width >= 0) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+
+
+				// width feature with calc
+				{
+					title: 'calc(500px * 2) is width',
+					style: `
+						@media (calc(500px * 2) = width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width is calc(500px * 2)',
+					style: `
+						@media (width = calc(500px * 2)) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width greater than calc(500px * 2)',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (width > calc(500px * 2)) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: 'calc(500px * 2) less than width',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (calc(500px * 2) < width) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width greater than calc(1000px - 1px)',
+					style: `
+						@media (width > calc(1000px - 1px)) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'calc(1000px - 1px) less than width',
+					style: `
+						@media (calc(1000px - 1px) < width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width less than calc(1000px + 1px)',
+					style: `
+						@media (width < calc(1000px + 1px)) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'calc(1000px + 1px) greater than width',
+					style: `
+						@media (calc(1000px + 1px) > width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width greater than or equal to calc(500px * 2)',
+					style: `
+						@media (width >= calc(500px * 2)) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'calc(500px * 2) less than or equal to width',
+					style: `
+						@media (calc(500px * 2) <= width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width greater than or equal to calc(1000px - 1px)',
+					style: `
+						@media (width >= calc(1000px - 1px)) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'calc(1000px - 1px) less than or equal to width',
+					style: `
+						@media (calc(1000px - 1px) <= width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width less than or equal to calc(1000px + 1px)',
+					style: `
+						@media (width <= calc(1000px + 1px)) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'calc(1000px + 1px) greater than or equal to width',
+					style: `
+						@media (calc(1000px + 1px) >= width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'calc(1000px - 1px) < width < calc(1000px + 1px)',
+					style: `
+						@media (calc(1000px - 1px) < width < calc(1000px + 1px)) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'calc(500px * 2) < width < 1500px',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (calc(500px * 2) < width < 1500px) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: 'calc(1000px / 2) < width < calc(500px * 2)',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (calc(1000px / 2) < width < calc(500px * 2)) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: 'calc(500px * 2) <= width <= calc(3000px / 2)',
+					style: `
+						@media (calc(500px * 2) <= width <= calc(3000px / 2)) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'calc(1000px / 2) <= width <= calc(500px * 2)',
+					style: `
+						@media (calc(1000px / 2) <= width <= calc(500px * 2)) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'width > calc(1999px / 2)',
+					style: `
+						@media (width > calc(1999px / 2)) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'width < calc(2001px / 2)',
+					style: `
+						@media (width < calc(2001px / 2)) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+
+				// width feature in rem
+				{
+					title: '62.5rem is width',
+					style: `
+						@media (62.5rem = width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width is 62.5rem',
+					style: `
+						@media (width = 62.5rem) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width greater than 62.5rem',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (width > 62.5rem) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: '62.5rem less than width',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (62.5rem < width) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width greater than 62.4375rem',
+					style: `
+						@media (width > 62.4375rem) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '62.4375rem less than width',
+					style: `
+						@media (62.4375rem < width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width less than 62.5625rem',
+					style: `
+						@media (width < 62.5625rem) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '62.5625rem greater than width',
+					style: `
+						@media (62.5625rem > width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width greater than or equal to 62.5rem',
+					style: `
+						@media (width >= 62.5rem) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '62.5rem less than or equal to width',
+					style: `
+						@media (62.5rem <= width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width greater than or equal to 62.4375rem',
+					style: `
+						@media (width >= 62.4375rem) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '62.4375rem less than or equal to width',
+					style: `
+						@media (62.4375rem <= width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Width less than or equal to 62.5625rem',
+					style: `
+						@media (width <= 62.5625rem) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '62.5625rem greater than or equal to width',
+					style: `
+						@media (62.5625rem >= width) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '62.4375rem < width < 62.5625rem',
+					style: `
+						@media (62.4375rem < width < 62.5625rem) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '62.5rem < width < 93.75rem',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (62.5rem < width < 93.75rem) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: '500px < width < 62.5rem',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (500px < width < 62.5rem) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: '62.5rem <= width <= 93.75rem',
+					style: `
+						@media (62.5rem <= width <= 93.75rem) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '500px <= width <= 62.5rem',
+					style: `
+						@media (500px <= width <= 62.5rem) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+
+
+				// height feature
+				{
+					title: '500px is height',
+					style: `
+						@media (500px = height) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Height is 500px',
+					style: `
+						@media (height = 500px) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Height greater than 500px',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (height > 500px) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: '500px less than height',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (500px < height) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Height greater than 499px',
+					style: `
+						@media (height > 499px) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '499px less than height',
+					style: `
+						@media (499px < height) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'Height less than 501px',
+					style: `
+						@media (height < 501px) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: '501px greater than height',
+					style: `
+						@media (501px > height) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+
+				// aspect-ratio feature
+				{
+					title: '2 / 1 = aspect-ratio',
+					style: `
+						@media (2 / 1 = aspect-ratio) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio = 2 / 1',
+					style: `
+						@media (aspect-ratio = 2 / 1) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio > 199 / 100',
+					style: `
+						@media (aspect-ratio > 199 / 100) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio > 1.99 / 1',
+					style: `
+						@media (aspect-ratio > 1.99 / 1) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio < 201 / 100',
+					style: `
+						@media (aspect-ratio < 201 / 100) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio < 2.01 / 1',
+					style: `
+						@media (aspect-ratio < 2.01 / 1) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio >= 2 / 1',
+					style: `
+						@media (aspect-ratio >= 2 / 1) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio <= 2 / 1',
+					style: `
+						@media (aspect-ratio <= 2 / 1) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio > 2 / 1',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (aspect-ratio > 2 / 1) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio < 2 / 1',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (aspect-ratio < 2 / 1) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+
+				{
+					title: 'calc(1 + 1) / 1 = aspect-ratio',
+					style: `
+						@media (calc(1 + 1) / 1 = aspect-ratio) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio = calc(1 + 1) / 1',
+					style: `
+						@media (aspect-ratio = calc(1 + 1) / 1) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio > calc(200 - 1) / 100',
+					style: `
+						@media (aspect-ratio > calc(200 - 1) / 100) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio < calc(200 + 1) / 100',
+					style: `
+						@media (aspect-ratio < calc(200 + 1) / 100) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio >= calc(1 + 1) / 1',
+					style: `
+						@media (aspect-ratio >= calc(1 + 1) / 1) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio <= calc(1 + 1) / 1',
+					style: `
+						@media (aspect-ratio <= calc(1 + 1) / 1) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio > calc(1 + 1) / 1',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (aspect-ratio > calc(1 + 1) / 1) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: 'aspect-ratio < calc(1 + 1) / 1',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (aspect-ratio < calc(1 + 1) / 1) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+
+
+				// color feature
+				{
+					title: 'color > 2',
+					style: `
+						@media (color > 2) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'color >= 2',
+					style: `
+						@media (color >= 2) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'color < 100',
+					style: `
+						@media (color < 100) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'color <= 100',
+					style: `
+						@media (color <= 100) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'color = 100',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (color = 100) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+				{
+					title: 'color = 1',
+					style: `
+						target {
+							color: green;
+						}
+
+						@media (color = 1) {
+							target {
+								color: red;
+							}
+						}
+					`,
+				},
+
+
+				// resolution feature
+				{
+					title: 'resolution > 191dpi',
+					style: `
+						@media (resolution > 191dpi) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'resolution >= 192dpi',
+					style: `
+						@media (resolution >= 192dpi) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'resolution = 192dpi',
+					style: `
+						@media (resolution = 192dpi) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'resolution < 193dpi',
+					style: `
+						@media (resolution < 193dpi) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'resolution <= 192dpi',
+					style: `
+						@media (resolution <= 192dpi) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+
+				{
+					title: 'resolution > 1dppx',
+					style: `
+						@media (resolution > 1dppx) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'resolution >= 2dppx',
+					style: `
+						@media (resolution >= 2dppx) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'resolution = 2dppx',
+					style: `
+						@media (resolution = 2dppx) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'resolution < 3dppx',
+					style: `
+						@media (resolution < 3dppx) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+				{
+					title: 'resolution <= 2dppx',
+					style: `
+						@media (resolution <= 2dppx) {
+							target {
+								color: green;
+							}
+						}
+					`,
+				},
+
+			];
+
+			for (let testCase of testCases) {
+				// Native
+				{
+					const styleElement = document.createElement('style');
+					styleElement.textContent = testCase['style'];
+					document.head.append(styleElement);
+
+					var targets = document.querySelectorAll('target');
+					for (let target of targets) {
+						assert_equals(
+							window.getComputedStyle(target).color,
+							'rgb(0, 128, 0)',
+							testCase['title'] + ", target '" + target.classList[0] + "'"
+						);
+					}
+
+					styleElement.remove();
+				}
+
+				// Fallback
+				{
+					const styleElement = document.createElement('style');
+
+					const testCaseStyle = await (fetch(`/test/styles.css`, {
+						method: 'POST',
+						body: testCase['style'],
+					}).then((response) => response.text()));
+
+					if (testCaseStyle === testCase['style']) {
+						throw new Error(`Fallback failed for "${testCase['title']}"`);
+					}
+
+					styleElement.textContent = testCaseStyle;
+					document.head.append(styleElement);
+
+					var targets = document.querySelectorAll('target');
+					for (let target of targets) {
+						assert_equals(
+							window.getComputedStyle(target).color,
+							'rgb(0, 128, 0)',
+							testCase['title'] + ", target '" + target.classList[0] + "'"
+						);
+					}
+
+					styleElement.remove();
+				}
+			}
+
+			return true;
+		}
+	</script>
+</body>
+
+</html>

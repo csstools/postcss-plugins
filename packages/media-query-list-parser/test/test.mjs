@@ -44,6 +44,7 @@ import './cases/mf-range/0012.mjs';
 import './cases/mf-range/0013.mjs';
 import './cases/mf-range/0014.mjs';
 import './cases/mf-range/0015.mjs';
+import './cases/mf-range/0016.mjs';
 
 import './cases/query-with-type/0001.mjs';
 import './cases/query-with-type/0002.mjs';

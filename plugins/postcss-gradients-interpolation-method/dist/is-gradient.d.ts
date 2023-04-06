@@ -1,2 +1,2 @@
-export declare function includesGradientsFunction(str: string): boolean;
-export declare function isGradientsFunctions(str: string): boolean;
+export declare const gradientFunctionRegex: RegExp;
+export declare const gradientNameRegex: RegExp;

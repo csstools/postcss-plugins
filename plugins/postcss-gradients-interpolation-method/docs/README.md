@@ -26,23 +26,32 @@
 <example.expect.css>
 ```
 
-## Warnings
+## Shortcomings
 
-⚠️ This plugin assumes you have a separate plugin to transform `color-mix()` to something older browsers can understand.
+⚠️ Color stops with only a color or only an interpolation hint are not supported.
 
-⚠️ Color stops with only a color and Interpolation hints are not supported.
-We can not statically check if a certain value is a single color or an interpolation hint.
-
-These are equivalent in PostCSS :
+For best results you should always provide at least the color and position for each color stop.
+Double position color stops are supported.
 
 ```pcss
-	--red: red;
-	/* Color stop variable */
-	background-image: linear-gradient(90deg, black, var(--red), blue);
+.foo {
+	/* Only a color: can't transform */
+	background-image: linear-gradient(in oklch, black 0%, green, blue 100%);
 
-	--perc-10: 10%;
-	/* Interpolation hint */
-	background-image: linear-gradient(90deg, black, var(--perc-10), blue);
+	/* Only an interpolation hint: can't transform */
+	background-image: linear-gradient(in oklch, black 0%, 25%, blue 100%);
+}
+```
+
+⚠️ Variable colors are also not supported.
+We can not mix colors when the color is a variable.
+
+```pcss
+.foo {
+	--red: red;
+	/* Color stop variable : can't transform */
+	background-image: linear-gradient(in oklch, black 0%, var(--red), blue 100%);
+}
 ```
 
 <usage>
@@ -54,10 +63,10 @@ These are equivalent in PostCSS :
 ### preserve
 
 The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
+is preserved. By default, it is preserved.
 
 ```js
-<exportName>({ preserve: true })
+<exportName>({ preserve: false })
 ```
 
 ```pcss
@@ -65,7 +74,7 @@ is preserved. By default, it is not preserved.
 
 /* becomes */
 
-<example.preserve-true.expect.css>
+<example.preserve-false.expect.css>
 ```
 
 ### enableProgressiveCustomProperties
@@ -84,7 +93,7 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 
 /* becomes */
 
-<example.preserve-true.progressive-false.expect.css>
+<example.progressive-false.expect.css>
 ```
 
 _Custom properties do not fallback to the previous declaration_

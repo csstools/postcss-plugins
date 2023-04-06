@@ -1,0 +1,7 @@
+@media screen and (resolution >= 1dpi) and (resolution <= 192dpi) {}
+
+@media screen and (1.5dppx <= resolution <= 3dppx) {}
+
+@media screen and (.5dppx <= resolution <= 2.5dppx) {}
+
+@media screen and (resolution) and (10dpi <= resolution <= 118dpcm) {}
