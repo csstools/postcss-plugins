@@ -125,8 +125,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .test-all-property {
 	animation: none 0s ease 0s 1 normal none running;
-	-webkit-backface-visibility: visible;
-	        backface-visibility: visible;
+	backface-visibility: visible;
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
 	border: medium none currentColor;
 	border-collapse: separate;
