@@ -34,7 +34,7 @@ if (process.env.GITHUB_STEP_SUMMARY) {
 }
 
 // Output modified workspaces
-if (modifiedWorkspaces.all) {
+if (modifiedWorkspaces.all || (modifiedWorkspaces.modified && modifiedWorkspaces.modified.length >= 20)) {
 	// root package.json will take over.
 	process.stdout.write('');
 	process.exit(0);
