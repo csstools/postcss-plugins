@@ -1,11 +1,12 @@
 import { listModifiedFilesInPullRequest } from './list-modified-files.mjs';
 import { listWorkspaces } from '../list-workspaces/list-workspaces.mjs';
+import path from 'path';
 
 const internalDependencies = [
-	'.github/',
+	'.github' + path.sep,
 	'package-lock.json',
 	'package.json',
-	'rollup/',
+	'rollup' + path.sep,
 	'tsconfig.json',
 ];
 
@@ -44,11 +45,13 @@ export async function listModifiedWorkspaces() {
 	const modifiedWorkspaces = new Set();
 
 	for (const modifiedFile of modifiedFiles) {
-		if (modifiedFile.startsWith('e2e/')) {
+		const modifiedFilePath = path.relative(process.cwd(), path.format(path.posix.parse(modifiedFile)));
+
+		if (modifiedFile.startsWith('e2e' + path.sep)) {
 			continue;
 		}
 
-		if (modifiedFile.startsWith('sites/')) {
+		if (modifiedFile.startsWith('sites' + path.sep)) {
 			continue;
 		}
 
@@ -67,7 +70,7 @@ export async function listModifiedWorkspaces() {
 
 		let isNonWorkspaceFile = true;
 		for (const workspace of workspaces) {
-			if (modifiedFile.startsWith(workspace.path)) {
+			if (modifiedFilePath.startsWith(workspace.path)) {
 				isNonWorkspaceFile = false;
 
 				modifiedWorkspaces.add(workspace.name);
