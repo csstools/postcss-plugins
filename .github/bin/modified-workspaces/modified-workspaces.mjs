@@ -46,7 +46,7 @@ export async function listModifiedWorkspaces() {
 	for (const modifiedFile of modifiedFiles) {
 		for (const internalDependency of internalDependencies) {
 			if (modifiedFile.startsWith(internalDependency)) {
-				console.log('modified a private dependency', modifiedFile);
+				console.error('modified a private dependency', modifiedFile);
 				// this file can influence anything
 				// anything or everything might have changed
 				return {
@@ -67,7 +67,7 @@ export async function listModifiedWorkspaces() {
 				continue;
 			}
 
-			console.log('modifiedFile outside of workspaces', modifiedFile);
+			console.error('modifiedFile outside of workspaces', modifiedFile);
 
 			if (modifiedFile.startsWith(workspace.path)) {
 				isNonWorkspaceFile = false;
