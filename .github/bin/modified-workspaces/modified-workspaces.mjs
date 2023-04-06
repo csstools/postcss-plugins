@@ -32,7 +32,7 @@ export async function listModifiedWorkspaces() {
 		};
 	}
 
-	const modifiedFiles = (await listModifiedFilesInPullRequest(repository, pullRequestNumber));
+	const modifiedFiles = await listModifiedFilesInPullRequest(repository, pullRequestNumber);
 	if (modifiedFiles.length === 0) {
 		return {
 			nothing: true,
