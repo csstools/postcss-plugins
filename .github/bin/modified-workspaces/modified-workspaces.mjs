@@ -44,6 +44,14 @@ export async function listModifiedWorkspaces() {
 	const modifiedWorkspaces = new Set();
 
 	for (const modifiedFile of modifiedFiles) {
+		if (modifiedFile.startsWith('e2e/')) {
+			continue;
+		}
+
+		if (modifiedFile.startsWith('sites/')) {
+			continue;
+		}
+
 		for (const internalDependency of internalDependencies) {
 			if (modifiedFile.startsWith(internalDependency)) {
 				console.error('modified a private dependency', modifiedFile);
@@ -59,16 +67,6 @@ export async function listModifiedWorkspaces() {
 
 		let isNonWorkspaceFile = true;
 		for (const workspace of workspaces) {
-			if (modifiedFile.startsWith('e2e/')) {
-				continue;
-			}
-
-			if (modifiedFile.startsWith('sites/')) {
-				continue;
-			}
-
-			console.error('modifiedFile outside of workspaces', modifiedFile);
-
 			if (modifiedFile.startsWith(workspace.path)) {
 				isNonWorkspaceFile = false;
 
@@ -77,6 +75,7 @@ export async function listModifiedWorkspaces() {
 		}
 
 		if (isNonWorkspaceFile) {
+			console.error('modifiedFile outside of workspaces', modifiedFile);
 			// files outside of workspaces include "package-lock.json", rollup config, ...
 			// anything or everything might have changed
 			return {
