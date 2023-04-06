@@ -1,8 +1,18 @@
 import { listModifiedFilesInPullRequest } from './list-modified-files.mjs';
 import { listWorkspaces } from '../list-workspaces/list-workspaces.mjs';
+import path from 'path';
 
-const privateRootDependencies = [
-	'packages/postcss-tape',
+const internalDependencies = [
+	path.relative(process.cwd(), path.resolve('.github')),
+	path.relative(process.cwd(), path.resolve('package-lock.json')),
+	path.relative(process.cwd(), path.resolve('package.json')),
+	path.relative(process.cwd(), path.resolve('rollup')),
+	path.relative(process.cwd(), path.resolve('tsconfig.json')),
+];
+
+const knownNotRelevant = [
+	path.relative(process.cwd(), path.resolve('e2e')),
+	path.relative(process.cwd(), path.resolve('sites')),
 ];
 
 export async function listModifiedWorkspaces() {
@@ -39,9 +49,19 @@ export async function listModifiedWorkspaces() {
 
 	const modifiedWorkspaces = new Set();
 
+	MODIFIED_FILED_LOOP:
 	for (const modifiedFile of modifiedFiles) {
-		for (const privateRootDependency of privateRootDependencies) {
-			if (modifiedFile.startsWith(privateRootDependency)) {
+		const modifiedFilePath = path.relative(process.cwd(), path.format(path.posix.parse(modifiedFile)));
+
+		for (const notRelevant of knownNotRelevant) {
+			if (modifiedFile.startsWith(notRelevant)) {
+				continue MODIFIED_FILED_LOOP;
+			}
+		}
+
+		for (const internalDependency of internalDependencies) {
+			if (modifiedFile.startsWith(internalDependency)) {
+				console.error('modified a private dependency', modifiedFile);
 				// this file can influence anything
 				// anything or everything might have changed
 				return {
@@ -54,7 +74,7 @@ export async function listModifiedWorkspaces() {
 
 		let isNonWorkspaceFile = true;
 		for (const workspace of workspaces) {
-			if (modifiedFile.startsWith(workspace.path)) {
+			if (modifiedFilePath.startsWith(workspace.path)) {
 				isNonWorkspaceFile = false;
 
 				modifiedWorkspaces.add(workspace.name);
@@ -62,6 +82,7 @@ export async function listModifiedWorkspaces() {
 		}
 
 		if (isNonWorkspaceFile) {
+			console.error('modifiedFile outside of workspaces', modifiedFile);
 			// files outside of workspaces include "package-lock.json", rollup config, ...
 			// anything or everything might have changed
 			return {
@@ -78,6 +99,14 @@ export async function listModifiedWorkspaces() {
 				modifiedWorkspaces.add(workspace.name);
 			}
 		}
+	}
+
+	if (modifiedWorkspaces.size === 0) {
+		return {
+			nothing: true,
+			all: false,
+			modified: [],
+		};
 	}
 
 	return {
