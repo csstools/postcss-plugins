@@ -1,7 +1,7 @@
 import parser from 'postcss-selector-parser';
 
 export function sortCompoundSelectorsInsideComplexSelector(node) {
-	if (!node || !node.nodes) {
+	if (!node || !node.nodes || node.nodes.length === 1) {
 		return;
 	}
 
@@ -61,8 +61,27 @@ export function sortCompoundSelectorsInsideComplexSelector(node) {
 	}
 
 	for (let i = sortedCompoundSelectors.length - 1; i >= 0; i--) {
+		const previous = sortedCompoundSelectors[i - 1];
+
 		sortedCompoundSelectors[i].remove();
-		node.prepend(sortedCompoundSelectors[i]);
+
+		if (previous && previous.type === 'tag' && sortedCompoundSelectors[i].type === 'tag') {
+			const wrapped = parser.pseudo({
+				value: ':is',
+				nodes: [
+					parser.selector({
+						value: '',
+						nodes: [
+							sortedCompoundSelectors[i],
+						],
+					}),
+				],
+			});
+
+			node.prepend(wrapped);
+		} else {
+			node.prepend(sortedCompoundSelectors[i]);
+		}
 	}
 }
 

@@ -1,6 +1,13 @@
 // :-csstools-matches(.a > .b) + :-csstools-matches(.c > .d)
 // equivalent to
 // .a.c > .b + .d
+//
+// and
+//
+// :-csstools-matches(.a > .b) ~ :-csstools-matches(.c > .d)
+// equivalent to
+// .a.c ~ .b + .d
+//
 // because adjacent elements have the same parent element.
 export function childAdjacentChild(selector): boolean {
 	if (!selector || !selector.nodes) {
@@ -19,7 +26,7 @@ export function childAdjacentChild(selector): boolean {
 	}
 
 	// adjacent combinator
-	if (!selector.nodes[1] || selector.nodes[1].type !== 'combinator' || selector.nodes[1].value !== '+') {
+	if (!selector.nodes[1] || selector.nodes[1].type !== 'combinator' || (selector.nodes[1].value !== '+' && selector.nodes[1].value !== '~')) {
 		return false;
 	}
 
