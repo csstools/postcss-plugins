@@ -34,13 +34,13 @@ if (process.env.GITHUB_STEP_SUMMARY) {
 }
 
 // Output modified workspaces
-if (modifiedWorkspaces.all) {
+if (modifiedWorkspaces.all || (modifiedWorkspaces.modified && modifiedWorkspaces.modified.length >= 20)) {
 	// root package.json will take over.
 	process.stdout.write('');
 	process.exit(0);
 }
 
-if (modifiedWorkspaces.nothing || (modifiedWorkspaces.modified && modifiedWorkspaces.modified.length === 0)) {
+if (modifiedWorkspaces.nothing) {
 	// in the current form we always need to do something.
 	// building/testing any package prevents error states if nothing actually changed.
 	process.stdout.write('--workspace=@csstools/postcss-tape');
