@@ -40,7 +40,7 @@ if (modifiedWorkspaces.all) {
 	process.exit(0);
 }
 
-if (modifiedWorkspaces.nothing) {
+if (modifiedWorkspaces.nothing || modifiedWorkspaces.modified.length === 0) {
 	// in the current form we always need to do something.
 	// building/testing any package prevents error states if nothing actually changed.
 	process.stdout.write('--workspace=@csstools/postcss-tape');
