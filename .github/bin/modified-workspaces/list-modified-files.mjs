@@ -36,7 +36,7 @@ async function getPullRequestFiles(repository, pullRequestNumber, page) {
 			headers: headers
 		}, (res) => {
 			if (!res.statusCode || (Math.floor(res.statusCode / 100) !== 2)) {
-				throw new Error(`Unepected response code "${res.statusCode}" with message "${res.statusMessage}"`)
+				throw new Error(`Unexpected response code "${res.statusCode}" with message "${res.statusMessage}"`)
 			}
 
 			let data = [];
