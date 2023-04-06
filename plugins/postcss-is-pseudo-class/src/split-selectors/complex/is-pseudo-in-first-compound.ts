@@ -1,7 +1,7 @@
 // :-csstools-matches(.a > .b) > .c
 // equivalent to
 // .a > .b > .c
-// because the right side is a compound selector
+// because `:is()` is in the left-most compound selector
 export function isPseudoInFirstCompound(selector): boolean {
 	if (!selector || !selector.nodes) {
 		return false;

@@ -2,7 +2,7 @@
 
 ### Unreleased (minor)
 
-- Add support for more complex selector patterns. In particular anything where `:is()` is in the left most compound selector.
+- Add support for more complex selector patterns. In particular anything where `:is()` is in the left-most compound selector.
 
 ### 3.1.1 (February 8, 2023)
 
