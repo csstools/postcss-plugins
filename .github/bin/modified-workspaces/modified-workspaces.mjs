@@ -1,8 +1,12 @@
 import { listModifiedFilesInPullRequest } from './list-modified-files.mjs';
 import { listWorkspaces } from '../list-workspaces/list-workspaces.mjs';
 
-const privateRootDependencies = [
-	'packages/postcss-tape',
+const internalDependencies = [
+	'.github/',
+	'package-lock.json',
+	'package.json',
+	'rollup/',
+	'tsconfig.json',
 ];
 
 export async function listModifiedWorkspaces() {
@@ -28,7 +32,7 @@ export async function listModifiedWorkspaces() {
 		};
 	}
 
-	const modifiedFiles = await listModifiedFilesInPullRequest(repository, pullRequestNumber);
+	const modifiedFiles = (await listModifiedFilesInPullRequest(repository, pullRequestNumber));
 	if (modifiedFiles.length === 0) {
 		return {
 			nothing: true,
@@ -40,8 +44,9 @@ export async function listModifiedWorkspaces() {
 	const modifiedWorkspaces = new Set();
 
 	for (const modifiedFile of modifiedFiles) {
-		for (const privateRootDependency of privateRootDependencies) {
-			if (modifiedFile.startsWith(privateRootDependency)) {
+		for (const internalDependency of internalDependencies) {
+			if (modifiedFile.startsWith(internalDependency)) {
+				console.log('modified a private dependency', modifiedFile);
 				// this file can influence anything
 				// anything or everything might have changed
 				return {
@@ -54,6 +59,16 @@ export async function listModifiedWorkspaces() {
 
 		let isNonWorkspaceFile = true;
 		for (const workspace of workspaces) {
+			if (modifiedFile.startsWith('e2e/')) {
+				continue;
+			}
+
+			if (modifiedFile.startsWith('sites/')) {
+				continue;
+			}
+
+			console.log('modifiedFile outside of workspaces', modifiedFile);
+
 			if (modifiedFile.startsWith(workspace.path)) {
 				isNonWorkspaceFile = false;
 
