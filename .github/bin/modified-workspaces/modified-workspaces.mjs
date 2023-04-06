@@ -94,6 +94,14 @@ export async function listModifiedWorkspaces() {
 		}
 	}
 
+	if (modifiedWorkspaces.size === 0) {
+		return {
+			nothing: true,
+			all: false,
+			modified: [],
+		};
+	}
+
 	return {
 		nothing: false,
 		all: false,
