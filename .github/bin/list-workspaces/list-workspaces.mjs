@@ -34,7 +34,7 @@ export async function listWorkspaces() {
 
 		for (const packageJSONPath of Array.from(packages)) {
 			const packageJSON = JSON.parse(await fsp.readFile(packageJSONPath));
-			const packagePath = packageJSONPath.slice(0, -1 * '/package.json'.length);
+			const packagePath = path.relative(process.cwd(), path.dirname(packageJSONPath));
 
 			result.push({
 				path: packagePath,
