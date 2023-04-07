@@ -39,8 +39,8 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^2.0.0",
-		"@csstools/css-tokenizer": "^2.0.0"
+		"@csstools/css-parser-algorithms": "^2.1.0",
+		"@csstools/css-tokenizer": "^2.1.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

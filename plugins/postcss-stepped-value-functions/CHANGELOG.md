@@ -1,5 +1,9 @@
 # Changes to PostCSS Stepped Value Functions
 
+### Unreleased (patch)
+
+- Updated dependencies
+
 ### 2.1.0 (February 21, 2023)
 
 - Removed: warnings on `var()` or otherwise unconvertible values (doesn't affect the output, non-breaking)

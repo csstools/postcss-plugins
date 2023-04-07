@@ -24,19 +24,19 @@
 		"experimental/*"
 	],
 	"devDependencies": {
-		"@babel/core": "^7.20.7",
-		"@babel/preset-env": "^7.19.3",
-		"@rollup/plugin-babel": "^6.0.0",
-		"@rollup/plugin-commonjs": "^24.0.0",
-		"@rollup/plugin-node-resolve": "^15.0.0",
+		"@babel/core": "^7.21.4",
+		"@babel/preset-env": "^7.21.4",
+		"@rollup/plugin-babel": "^6.0.3",
+		"@rollup/plugin-commonjs": "^24.0.1",
+		"@rollup/plugin-node-resolve": "^15.0.2",
 		"@rollup/plugin-terser": "^0.4.0",
-		"@rollup/plugin-typescript": "^11.0.0",
-		"@stryker-mutator/core": "^6.0.2",
-		"@typescript-eslint/eslint-plugin": "^5.48.1",
-		"eslint": "^8.32.0",
-		"rollup": "^3.17.1",
-		"tslib": "^2.4.1",
-		"typescript": "^5.0.0"
+		"@rollup/plugin-typescript": "^11.1.0",
+		"@stryker-mutator/core": "^6.4.2",
+		"@typescript-eslint/eslint-plugin": "^5.57.1",
+		"eslint": "^8.37.0",
+		"rollup": "^3.20.2",
+		"tslib": "^2.5.0",
+		"typescript": "^5.0.4"
 	},
 	"scripts": {
 		"build": "npm run build --workspaces --if-present",

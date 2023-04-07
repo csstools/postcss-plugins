@@ -1,5 +1,9 @@
 # Changes to PostCSS Scope Pseudo Class
 
+### Unreleased (patch)
+
+- Updated dependencies
+
 ### 2.0.2 (February 9, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

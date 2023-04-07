@@ -30,16 +30,16 @@
 	],
 	"dependencies": {
 		"@csstools/css-color-parser": "^1.1.0",
-		"@csstools/css-parser-algorithms": "^2.0.1",
+		"@csstools/css-parser-algorithms": "^2.1.0",
 		"@csstools/css-tokenizer": "^2.1.0",
-		"@csstools/postcss-progressive-custom-properties": "^2.0.0"
+		"@csstools/postcss-progressive-custom-properties": "^2.1.1"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"postcss-lab-function": "^5.0.0"
+		"postcss-lab-function": "^5.2.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

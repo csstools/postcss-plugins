@@ -51,8 +51,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/selector-specificity": "^2.0.1",
-		"postcss-selector-parser": "^6.0.10",
+		"@csstools/selector-specificity": "^2.2.0",
+		"postcss-selector-parser": "^6.0.11",
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {
@@ -60,8 +60,8 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"@mrhenry/core-web": "^1.0.4",
-		"puppeteer": "^19.5.2"
+		"@mrhenry/core-web": "^1.1.0",
+		"puppeteer": "^19.8.5"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

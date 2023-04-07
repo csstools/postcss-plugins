@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting Experimental
 
+### Unreleased (patch)
+
+- Updated dependencies
+
 ### 2.0.0 (January 24, 2023)
 
 - Fix: Change how `&` is handled in functional pseudo classes in a non-nested context.

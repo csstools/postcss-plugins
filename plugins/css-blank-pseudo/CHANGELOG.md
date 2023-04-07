@@ -1,5 +1,9 @@
 # Changes to CSS Blank Pseudo
 
+### Unreleased (patch)
+
+- Updated dependencies
+
 ### 5.0.2 (February 6, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

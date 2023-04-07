@@ -45,15 +45,15 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/selector-specificity": "^2.0.0",
-		"postcss-selector-parser": "^6.0.10"
+		"@csstools/selector-specificity": "^2.2.0",
+		"postcss-selector-parser": "^6.0.11"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^19.5.2"
+		"puppeteer": "^19.8.5"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

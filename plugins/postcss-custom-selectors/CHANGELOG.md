@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Selectors
 
+### Unreleased (patch)
+
+- Updated dependencies
+
 ### 7.1.2 (February 8, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

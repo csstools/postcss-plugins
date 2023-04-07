@@ -1,5 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased (patch)
+
+- Updated dependencies
+
 ### 3.1.1 (February 8, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

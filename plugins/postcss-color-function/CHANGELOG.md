@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Function
 
+### Unreleased (patch)
+
+- Updated dependencies
+
 ### 2.2.0 (March 25, 2023)
 
 - Add `@csstools/css-color-parser` dependency for all color value transformations.

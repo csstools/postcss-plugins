@@ -1,5 +1,9 @@
 # Changes to PostCSS Focus Visible
 
+### Unreleased (patch)
+
+- Updated dependencies
+
 ### 8.0.2 (February 8, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

@@ -38,9 +38,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^2.0.0",
-		"@csstools/css-tokenizer": "^2.0.0",
-		"browserslist": "^4.21.4"
+		"@csstools/css-parser-algorithms": "^2.1.0",
+		"@csstools/css-tokenizer": "^2.1.0",
+		"browserslist": "^4.21.5"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

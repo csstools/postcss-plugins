@@ -39,8 +39,8 @@
 		"dist"
 	],
 	"devDependencies": {
-		"@rmenke/css-tokenizer-tests": "^1.0.9",
-		"postcss-parser-tests": "^8.5.1"
+		"@rmenke/css-tokenizer-tests": "^1.0.10",
+		"postcss-parser-tests": "^8.5.2"
 	},
 	"scripts": {
 		"benchmark": "node ./test/benchmark.mjs",

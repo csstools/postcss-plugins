@@ -1,5 +1,9 @@
 # Changes to PostCSS Trigonometric Functions
 
+### Unreleased (patch)
+
+- Updated dependencies
+
 ### 2.1.0 (March 21, 2023)
 
 - Added: `@csstools/css-calc`

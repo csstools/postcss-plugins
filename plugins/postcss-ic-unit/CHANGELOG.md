@@ -1,5 +1,9 @@
 # Changes to PostCSS IC Unit
 
+### Unreleased (patch)
+
+- Updated dependencies
+
 ### 2.0.2 (February 8, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

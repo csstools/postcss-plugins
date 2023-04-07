@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated dependencies
+
 ### 8.3.0 (March 31, 2023)
 
 - Replace `postcss-media-minmax` with `@csstools/postcss-media-minmax` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax#readme) for usage details. _We hope to revert this in the future when maintenance is resumed upstream._

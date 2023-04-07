@@ -1,5 +1,9 @@
 # Changes to PostCSS Selector Not
 
+### Unreleased (patch)
+
+- Updated dependencies
+
 ### 7.0.1 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`
