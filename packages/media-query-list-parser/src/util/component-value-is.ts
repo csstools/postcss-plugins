@@ -52,3 +52,13 @@ export function isIdent(componentValue: ComponentValue) {
 
 	return false;
 }
+
+export function isEnvironmentVariable(componentValue: ComponentValue) {
+	if (componentValue.type === ComponentValueType.Function &&
+		toLowerCaseAZ(((componentValue as FunctionNode).name as TokenFunction)[4].value) === 'env'
+	) {
+		return true;
+	}
+
+	return false;
+}

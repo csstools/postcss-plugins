@@ -1,0 +1,187 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(min-width: env(safe-area-inset-top))",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-plain",
+						"name": {
+							"type": "mf-name",
+							"name": "min-width",
+							"tokens": [
+								[
+									"ident-token",
+									"min-width",
+									1,
+									9,
+									{
+										"value": "min-width"
+									}
+								]
+							]
+						},
+						"value": {
+							"type": "mf-value",
+							"value": {
+								"type": "function",
+								"name": "env",
+								"tokens": [
+									[
+										"function-token",
+										"env(",
+										12,
+										15,
+										{
+											"value": "env"
+										}
+									],
+									[
+										"ident-token",
+										"safe-area-inset-top",
+										16,
+										34,
+										{
+											"value": "safe-area-inset-top"
+										}
+									],
+									[
+										")-token",
+										")",
+										35,
+										35,
+										null
+									]
+								],
+								"value": [
+									{
+										"type": "token",
+										"tokens": [
+											[
+												"ident-token",
+												"safe-area-inset-top",
+												16,
+												34,
+												{
+													"value": "safe-area-inset-top"
+												}
+											]
+										]
+									}
+								]
+							},
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									11,
+									11,
+									null
+								],
+								[
+									"function-token",
+									"env(",
+									12,
+									15,
+									{
+										"value": "env"
+									}
+								],
+								[
+									"ident-token",
+									"safe-area-inset-top",
+									16,
+									34,
+									{
+										"value": "safe-area-inset-top"
+									}
+								],
+								[
+									")-token",
+									")",
+									35,
+									35,
+									null
+								]
+							]
+						},
+						"tokens": [
+							[
+								"ident-token",
+								"min-width",
+								1,
+								9,
+								{
+									"value": "min-width"
+								}
+							],
+							[
+								"colon-token",
+								":",
+								10,
+								10,
+								null
+							],
+							[
+								"whitespace-token",
+								" ",
+								11,
+								11,
+								null
+							],
+							[
+								"function-token",
+								"env(",
+								12,
+								15,
+								{
+									"value": "env"
+								}
+							],
+							[
+								"ident-token",
+								"safe-area-inset-top",
+								16,
+								34,
+								{
+									"value": "safe-area-inset-top"
+								}
+							],
+							[
+								")-token",
+								")",
+								35,
+								35,
+								null
+							]
+						]
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							36,
+							36,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]

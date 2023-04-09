@@ -1,8 +1,9 @@
 # Changes to Media Query List Parser
 
-### Unreleased (patch)
+### Unreleased (minor)
 
-- Improve the detection of math function in media queries.
+- Add support for `env()` functions as values in media queries.
+- Improve the detection of math function as values in media queries.
 - Updated dependencies
 
 ### 2.0.2 (March 25, 2023)

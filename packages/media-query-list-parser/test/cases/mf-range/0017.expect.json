@@ -1,0 +1,203 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(height > env(safe-area-inset-top))",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "media-feature",
+					"feature": {
+						"type": "mf-range-name-value",
+						"name": {
+							"type": "mf-name",
+							"name": "height",
+							"tokens": [
+								[
+									"ident-token",
+									"height",
+									1,
+									6,
+									{
+										"value": "height"
+									}
+								],
+								[
+									"whitespace-token",
+									" ",
+									7,
+									7,
+									null
+								]
+							]
+						},
+						"value": {
+							"type": "mf-value",
+							"value": {
+								"type": "function",
+								"name": "env",
+								"tokens": [
+									[
+										"function-token",
+										"env(",
+										10,
+										13,
+										{
+											"value": "env"
+										}
+									],
+									[
+										"ident-token",
+										"safe-area-inset-top",
+										14,
+										32,
+										{
+											"value": "safe-area-inset-top"
+										}
+									],
+									[
+										")-token",
+										")",
+										33,
+										33,
+										null
+									]
+								],
+								"value": [
+									{
+										"type": "token",
+										"tokens": [
+											[
+												"ident-token",
+												"safe-area-inset-top",
+												14,
+												32,
+												{
+													"value": "safe-area-inset-top"
+												}
+											]
+										]
+									}
+								]
+							},
+							"tokens": [
+								[
+									"whitespace-token",
+									" ",
+									9,
+									9,
+									null
+								],
+								[
+									"function-token",
+									"env(",
+									10,
+									13,
+									{
+										"value": "env"
+									}
+								],
+								[
+									"ident-token",
+									"safe-area-inset-top",
+									14,
+									32,
+									{
+										"value": "safe-area-inset-top"
+									}
+								],
+								[
+									")-token",
+									")",
+									33,
+									33,
+									null
+								]
+							]
+						},
+						"tokens": [
+							[
+								"ident-token",
+								"height",
+								1,
+								6,
+								{
+									"value": "height"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								7,
+								7,
+								null
+							],
+							[
+								"delim-token",
+								">",
+								8,
+								8,
+								{
+									"value": ">"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								9,
+								9,
+								null
+							],
+							[
+								"function-token",
+								"env(",
+								10,
+								13,
+								{
+									"value": "env"
+								}
+							],
+							[
+								"ident-token",
+								"safe-area-inset-top",
+								14,
+								32,
+								{
+									"value": "safe-area-inset-top"
+								}
+							],
+							[
+								")-token",
+								")",
+								33,
+								33,
+								null
+							]
+						]
+					},
+					"before": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						]
+					],
+					"after": [
+						[
+							")-token",
+							")",
+							34,
+							34,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]
