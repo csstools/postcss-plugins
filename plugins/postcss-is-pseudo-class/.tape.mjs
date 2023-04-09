@@ -19,7 +19,7 @@ postcssTape(plugin)({
 	},
 	'basic:oncomplex:warning': {
 		message: "warns on complex selectors",
-		warnings: 10,
+		warnings: 8,
 		options: {
 			onComplexSelector: 'warning'
 		}
@@ -38,6 +38,12 @@ postcssTape(plugin)({
 	},
 	'browser': {
 		message: "prepare CSS for chrome test",
+		options: {
+			preserve: false
+		}
+	},
+	'compound-after-complex-is': {
+		message: "can handle compound selectors after complex selectors in :is()",
 		options: {
 			preserve: false
 		}
