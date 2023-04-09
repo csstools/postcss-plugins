@@ -2,6 +2,7 @@
 
 ### Unreleased (patch)
 
+- Fix interpolation method `longer`, `increasing`,... for color stops with the same color.
 - Updated dependencies
 
 ### 3.0.1 (March 28, 2023)
