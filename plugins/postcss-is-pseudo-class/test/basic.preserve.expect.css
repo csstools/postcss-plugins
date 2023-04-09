@@ -110,6 +110,10 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 10;
 }
 
+.alpha > .beta.pre + :is(:focus > .beta) {
+	order: 11;
+}
+
 .pre:is(.alpha > .beta) + :is(:focus > .beta) {
 	order: 11;
 }
@@ -118,7 +122,7 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 12;
 }
 
-.post:is(.alpha > .beta) + :is(:focus > .beta) {
+.alpha > .beta.post + :is(:focus > .beta) {
 	order: 13;
 }
 
@@ -126,11 +130,15 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 13;
 }
 
+.alpha > .beta .post + :is(:focus > .beta) {
+	order: 14;
+}
+
 :is(.alpha > .beta) .post + :is(:focus > .beta) {
 	order: 14;
 }
 
-:is(.alpha ~ .delta):focus > .beta + .beta {
+.alpha ~ .delta:focus > .beta + .beta {
 	order: 15;
 }
 
@@ -144,6 +152,10 @@ foo[baz=":is(.some, .other)"], .ok {
 
 :is(.alpha > .beta, .one > .two) + :is(:focus > .beta, :focus > .two) {
 	order: 16;
+}
+
+.alpha:focus > .beta ~ .beta {
+	order: 17;
 }
 
 :is(.alpha > .beta) ~ :is(:focus > .beta) {
@@ -164,6 +176,10 @@ foo[baz=":is(.some, .other)"], .ok {
 
 .alpha:is(.one > .two) {
 	order: 19;
+}
+
+.one > .two.pre.alpha {
+	order: 20;
 }
 
 .pre.alpha:is(.one > .two) {
@@ -348,6 +364,26 @@ ol:hover > li.foo, ol:hover > li.bar, ol:focus > li.foo, ol:focus > li.bar, ul:h
 
 :has(:is(h1, h2, h3)) {
 	order: 36;
+}
+
+input:is(select) {
+	order: 37;
+}
+
+input:is(textarea) {
+	order: 37;
+}
+
+button:is(select) {
+	order: 37;
+}
+
+button:is(textarea) {
+	order: 37;
+}
+
+:is(input, button):is(select, textarea) {
+	order: 37;
 }
 
 input:hover, input:focus, button:hover, button:focus {

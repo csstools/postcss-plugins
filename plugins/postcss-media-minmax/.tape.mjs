@@ -29,6 +29,9 @@ postcssTape(plugin)({
 	'device-width-height': {
 		message: 'device-width-height feature'
 	},
+	'env': {
+		message: 'handling of `env()` function values',
+	},
 	'line-break': {
 		message: 'line breaks in range notation',
 	},
