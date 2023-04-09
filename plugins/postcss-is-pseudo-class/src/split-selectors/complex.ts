@@ -3,6 +3,7 @@ import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-
 import { childAdjacentChild } from './complex/child-adjacent-child';
 import { isInCompoundWithOneOtherElement } from './complex/is-in-compound';
 import type { Container } from 'postcss-selector-parser';
+import { isPseudoInFirstCompound } from './complex/is-pseudo-in-first-compound';
 
 export default function complexSelectors(selectors: Array<string>, pluginOptions: { onComplexSelector?: 'warning' }, warnOnComplexSelector: () => void, warnOnPseudoElements: () => void) {
 	return selectors.flatMap((selector) => {
@@ -80,7 +81,8 @@ export default function complexSelectors(selectors: Array<string>, pluginOptions
 
 			if (
 				childAdjacentChild(pseudo.parent) ||
-				isInCompoundWithOneOtherElement(pseudo.parent)
+				isInCompoundWithOneOtherElement(pseudo.parent) ||
+				isPseudoInFirstCompound(pseudo.parent)
 			) {
 				return;
 			}

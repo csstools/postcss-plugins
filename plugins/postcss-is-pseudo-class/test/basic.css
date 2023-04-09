@@ -142,6 +142,10 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 36;
 }
 
+:is(input, button):is(select, textarea) {
+	order: 37;
+}
+
 :is(input, button):is(:hover, :focus) {
 	to-clone: 1;
 }
