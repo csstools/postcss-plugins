@@ -6,8 +6,8 @@
 }
 
 .test-2-0 {
-	background-image: linear-gradient(90deg, rgb(255, 0, 0) 25%, rgb(255, 0, 0) 50%, rgb(249, 0, 71), rgb(239, 0, 107), rgb(225, 0, 138), rgb(207, 0, 167), rgb(186, 0, 194), rgb(163, 0, 217), rgb(136, 0, 236), rgb(107, 0, 250), rgb(73, 0, 255), rgb(0, 0, 255) 70%, rgb(0, 0, 255) 75%);
-	background-image: linear-gradient(90deg, rgb(255, 0, 0) 25%, rgb(255, 0, 0) 50%, color(display-p3 0.89484 0.11059 0.29739), color(display-p3 0.85721 -0.0003 0.41862), color(display-p3 0.80547 -0.0635 0.53001), color(display-p3 0.74092 -0.0802 0.63538), color(display-p3 0.66511 -0.0895 0.7332), color(display-p3 0.57951 -0.1015 0.81971), color(display-p3 0.4848 -0.1135 0.89016), color(display-p3 0.37932 -0.1162 0.93966), color(display-p3 0.25342 -0.0953 0.96388), rgb(0, 0, 255) 70%, rgb(0, 0, 255) 75%);
+	background-image: linear-gradient(90deg, rgb(255, 0, 0) 25%, rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0) 50%, rgb(249, 0, 71), rgb(239, 0, 107), rgb(225, 0, 138), rgb(207, 0, 167), rgb(186, 0, 194), rgb(163, 0, 217), rgb(136, 0, 236), rgb(107, 0, 250), rgb(73, 0, 255), rgb(0, 0, 255) 70%, rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255) 75%);
+	background-image: linear-gradient(90deg, rgb(255, 0, 0) 25%, rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0) 50%, color(display-p3 0.89484 0.11059 0.29739), color(display-p3 0.85721 -0.0003 0.41862), color(display-p3 0.80547 -0.0635 0.53001), color(display-p3 0.74092 -0.0802 0.63538), color(display-p3 0.66511 -0.0895 0.7332), color(display-p3 0.57951 -0.1015 0.81971), color(display-p3 0.4848 -0.1135 0.89016), color(display-p3 0.37932 -0.1162 0.93966), color(display-p3 0.25342 -0.0953 0.96388), rgb(0, 0, 255) 70%, rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255) 75%);
 	background-image: linear-gradient(in oklch shorter hue 90deg, red 25% 50%, blue 70% 75%);
 }
 
@@ -17,7 +17,7 @@
 }
 
 .test-2-2 {
-	background-image: linear-gradient(90deg, rgb(255, 0, 0) 25%, rgb(255, 0, 0) 50%, rgb(255, 102, 0), rgb(255, 204, 0), rgb(204, 255, 0), rgb(102, 255, 0), rgb(0, 255, 0), rgb(0, 255, 102), rgb(0, 255, 204), rgb(0, 204, 255), rgb(0, 102, 255), rgb(0, 0, 255) 70%, rgb(0, 0, 255) 75%);
+	background-image: linear-gradient(90deg, rgb(255, 0, 0) 25%, rgb(255, 153, 0), rgb(204, 255, 0), rgb(51, 255, 0), rgb(0, 255, 102), rgb(0, 255, 255), rgb(0, 102, 255), rgb(51, 0, 255), rgb(204, 0, 255), rgb(255, 0, 153), rgb(255, 0, 0) 50%, rgb(255, 102, 0), rgb(255, 204, 0), rgb(204, 255, 0), rgb(102, 255, 0), rgb(0, 255, 0), rgb(0, 255, 102), rgb(0, 255, 204), rgb(0, 204, 255), rgb(0, 102, 255), rgb(0, 0, 255) 70%, rgb(153, 0, 255), rgb(255, 0, 204), rgb(255, 0, 51), rgb(255, 102, 0), rgb(255, 255, 0), rgb(102, 255, 0), rgb(0, 255, 51), rgb(0, 255, 204), rgb(0, 153, 255), rgb(0, 0, 255) 75%);
 	background-image: linear-gradient(in hsl longer hue 90deg, red 25% 50%, blue 70% 75%);
 }
 
@@ -348,7 +348,7 @@
 	background:
 		conic-gradient(at 20px calc(100% - 20px), rgba(0, 0, 0, 0) 270deg, rgba(192, 107, 41, 0.1), rgba(187, 192, 41, 0.2), rgba(96, 192, 41, 0.3), rgba(41, 192, 76, 0.4), rgba(41, 192, 167, 0.5), rgba(41, 126, 192, 0.6), rgba(46, 41, 192, 0.7), rgba(137, 41, 192, 0.8), rgba(192, 41, 157, 0.9), rgb(192, 41, 66) 0) calc(20px + 15px) 0,
 		linear-gradient(#53777A 20px, #0000 0) 0 15px,
-		conic-gradient(at 20px calc(100% - 20px), rgba(0, 0, 0, 0) 90deg, rgba(83, 96, 122, 0.1), rgba(94, 83, 122, 0.2), rgba(117, 83, 122, 0.3), rgba(122, 83, 103, 0.4), rgba(122, 86, 83, 0.5), rgba(122, 109, 83, 0.6), rgba(111, 122, 83, 0.7), rgba(88, 122, 83, 0.8), rgba(83, 122, 102, 0.9), rgb(83, 119, 122) 0, rgb(83, 119, 122) 180deg, rgb(79, 128, 116), rgb(76, 135, 101), rgb(72, 142, 79), rgb(86, 148, 68), rgb(114, 155, 64), rgb(149, 162, 59), rgb(170, 148, 55), rgb(177, 112, 50), rgb(184, 68, 46), rgb(192, 41, 66) 0),
+		conic-gradient(at 20px calc(100% - 20px), rgba(0, 0, 0, 0) 90deg, rgba(83, 96, 122, 0.1), rgba(94, 83, 122, 0.2), rgba(117, 83, 122, 0.3), rgba(122, 83, 103, 0.4), rgba(122, 86, 83, 0.5), rgba(122, 109, 83, 0.6), rgba(111, 122, 83, 0.7), rgba(88, 122, 83, 0.8), rgba(83, 122, 102, 0.9), rgb(83, 119, 122) 0, rgb(83, 96, 122), rgb(94, 83, 122), rgb(117, 83, 122), rgb(122, 83, 103), rgb(122, 86, 83), rgb(122, 109, 83), rgb(111, 122, 83), rgb(88, 122, 83), rgb(83, 122, 102), rgb(83, 119, 122) 180deg, rgb(79, 128, 116), rgb(76, 135, 101), rgb(72, 142, 79), rgb(86, 148, 68), rgb(114, 155, 64), rgb(149, 162, 59), rgb(170, 148, 55), rgb(177, 112, 50), rgb(184, 68, 46), rgb(192, 41, 66) 0),
 		#ECD078;
 	background:
 		conic-gradient(in hsl longer hue at 20px calc(100% - 20px), #0000 270deg, #C02942 0) calc(20px + 15px) 0,
@@ -391,4 +391,10 @@ to-clone {
 .wpt-xyz-gradient {
 	background: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(243, 89, 0), rgb(231, 124, 0), rgb(218, 149, 0), rgb(203, 170, 0), rgb(188, 188, 0), rgb(170, 203, 0), rgb(149, 218, 0), rgb(124, 231, 0), rgb(89, 243, 0), rgb(0, 255, 0) 100%);
 	background: linear-gradient(to right in xyz, rgb(255, 0, 0) 0%, rgb(0, 255, 0) 100%);
+}
+
+.color-with-longer-interpolation-method {
+	background: conic-gradient(rgb(255, 150, 150) 0deg, rgb(246, 162, 100), rgb(213, 182, 78), rgb(160, 200, 109), rgb(93, 210, 163), rgb(41, 208, 217), rgb(93, 196, 254), rgb(157, 179, 255), rgb(207, 162, 246), rgb(241, 150, 204), rgb(255, 150, 150) 360deg);
+	background: conic-gradient(rgb(255, 150, 150) 0deg, rgb(246, 162, 100), rgb(213, 182, 78), rgb(160, 200, 109), rgb(93, 210, 163), rgb(41, 208, 217), rgb(93, 196, 254), color(display-p3 0.63036 0.6977 1.01537), rgb(207, 162, 246), rgb(241, 150, 204), rgb(255, 150, 150) 360deg);
+	background: conic-gradient(in oklch longer hue, rgb(255 150 150) 0deg, rgb(255 150 150) 360deg);
 }

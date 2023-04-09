@@ -305,3 +305,7 @@ to-clone {
 .wpt-xyz-gradient {
 	background: linear-gradient(to right in xyz, rgb(255, 0, 0) 0%, rgb(0, 255, 0) 100%);
 }
+
+.color-with-longer-interpolation-method {
+	background: conic-gradient(in oklch longer hue, rgb(255 150 150) 0deg, rgb(255 150 150) 360deg);
+}
