@@ -1,6 +1,6 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased (minor)
+### 3.2.0 (April 10, 2023)
 
 - Add support for more complex selector patterns. In particular anything where `:is()` is in the left-most compound selector.
 
