@@ -72,7 +72,7 @@ function renderConfig(config) {
 		delete copy.logical;
 	}
 
-	let presetVersionPlayground = document.getElementById('config-editor').getAttribute('data-preset-env-version');
+	let presetVersionPlayground = document.getElementById('config-editor')?.getAttribute('data-preset-env-version') ?? '';
 	if (presetVersionPlayground) {
 		presetVersionPlayground = ` // v${presetVersionPlayground}`;
 	}
