@@ -4,6 +4,10 @@
 
 [Prefers Color Scheme] lets you use light and dark color schemes in all browsers, following the [Media Queries] specification.
 
+To use this feature you need to do two things :
+- add the [PostCSS plugin](#usage) that transforms the media queries
+- add the [browser polyfill](#browser) that triggers specific queries in a browser
+
 ```pcss
 @media (prefers-color-scheme: dark) {
 	:root {
