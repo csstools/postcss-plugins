@@ -1,6 +1,6 @@
 # Changes to PostCSS Stepped Value Functions
 
-### Unreleased (patch)
+### 2.1.1 (April 10, 2023)
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
 - Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
