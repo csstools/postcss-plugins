@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-color-parser",
 	"description": "Parse CSS color values",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
