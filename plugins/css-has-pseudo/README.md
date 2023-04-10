@@ -106,6 +106,16 @@ After :
 
 ## ⚠️ Known shortcomings
 
+### Performance
+
+Determining which elements match a `:has` selector is relatively slow through a polyfill compared to the native feature.
+
+A very large DOM or many and complex `:has` selectors can cause performance issues.  
+JavaScript frameworks that rewrite the DOM will be particularly affected by this.
+
+_Any contributions to speedup matching are welcome.  
+Please open an issue to discuss proposed changes if you are interested in contributing._
+
 ### Specificity
 
 `:has` transforms will result in at least one attribute selector with specificity `0, 1, 0`.<br>
