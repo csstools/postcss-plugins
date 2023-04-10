@@ -4,6 +4,7 @@
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
 - Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
+- Updated `@csstools/css-color-parser` to `1.1.2` (patch)
 
 ### 3.0.2 (April 10, 2023)
 
