@@ -1,5 +1,9 @@
 # Changes to CSS Tokenizer
 
+### Unreleased (patch)
+
+- Document `tokenize` helper function
+
 ### 2.1.0 (February 21, 2023)
 
 - Add `tokenize` helper function
