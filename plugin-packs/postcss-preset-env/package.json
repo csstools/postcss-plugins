@@ -54,7 +54,7 @@
 		"@csstools/postcss-logical-float-and-clear": "^1.0.1",
 		"@csstools/postcss-logical-resize": "^1.0.1",
 		"@csstools/postcss-logical-viewport-units": "^1.0.2",
-		"@csstools/postcss-media-minmax": "^1.0.0",
+		"@csstools/postcss-media-minmax": "^1.0.1",
 		"@csstools/postcss-media-queries-aspect-ratio-number-values": "^1.0.1",
 		"@csstools/postcss-nested-calc": "^2.0.2",
 		"@csstools/postcss-normalize-display-values": "^2.0.1",

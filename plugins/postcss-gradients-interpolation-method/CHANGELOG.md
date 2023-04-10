@@ -1,6 +1,6 @@
 # Changes to PostCSS Gradients Interpolation Method
 
-### Unreleased (patch)
+### 3.0.2 (April 10, 2023)
 
 - Fix interpolation method `longer`, `increasing`,... for color stops with the same color.
 

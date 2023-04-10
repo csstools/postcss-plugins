@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-gradients-interpolation-method",
 	"description": "Use interpolation methods in CSS gradient functions",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
 	"funding": {
@@ -29,7 +29,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^1.1.0",
+		"@csstools/css-color-parser": "^1.1.1",
 		"@csstools/css-parser-algorithms": "^2.1.0",
 		"@csstools/css-tokenizer": "^2.1.0",
 		"@csstools/postcss-progressive-custom-properties": "^2.0.0"

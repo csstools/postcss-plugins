@@ -30,7 +30,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^1.1.0",
+		"@csstools/css-color-parser": "^1.1.1",
 		"@csstools/css-parser-algorithms": "^2.0.1",
 		"@csstools/css-tokenizer": "^2.1.0"
 	},
