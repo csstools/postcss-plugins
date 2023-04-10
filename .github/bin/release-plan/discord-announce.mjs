@@ -19,7 +19,11 @@ const getChangelog = (changelog) => {
 
 export async function discordAnnounce(workspace) {
 	const discordArgument = process.argv.slice(2).find(arg => arg.includes('--discord='));
-	const [,webHookUrl] = discordArgument.split('=');
+	if (!discordArgument) {
+		return;
+	}
+
+	const [, webHookUrl] = discordArgument.split('=');
 
 	if (!webHookUrl || workspace.increment === 'patch') {
 		return;
@@ -29,14 +33,14 @@ export async function discordAnnounce(workspace) {
 	const payload = { ...defaultPayload };
 
 	if (isNew) {
-		payload.content = `:tada: New package: ${ workspace.name } :tada:`;
+		payload.content = `:tada: New package: ${workspace.name} :tada:`;
 	} else {
-		payload.content = `:rocket: New release: ${ workspace.name }@${ workspace.newVersion } :rocket:`;
+		payload.content = `:rocket: New release: ${workspace.name}@${workspace.newVersion} :rocket:`;
 	}
 
 	const relativePath = workspace.path.split('/postcss-plugins/')[1];
 	payload.embeds[0].title = workspace.name;
-	payload.embeds[0].url = `${ BASE_URL }/${ relativePath }`;
+	payload.embeds[0].url = `${BASE_URL}/${relativePath}`;
 	payload.embeds[0].description = getChangelog(workspace.changelog);
 
 	return fetch(webHookUrl, {
