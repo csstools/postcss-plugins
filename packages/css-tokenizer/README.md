@@ -38,6 +38,25 @@ while (true) {
 }
 ```
 
+Or use the `tokenize` helper function:
+
+```js
+import { tokenize } from '@csstools/css-tokenizer';
+
+const myCSS =  `@media only screen and (min-width: 768rem) {
+	.foo {
+		content: 'Some content!' !important;
+	}
+}
+`;
+
+const tokens = tokenize({
+	css: myCSS,
+});
+
+console.log(tokens);
+```
+
 ### Options
 
 ```ts
