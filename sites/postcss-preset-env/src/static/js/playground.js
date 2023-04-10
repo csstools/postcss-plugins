@@ -72,7 +72,12 @@ function renderConfig(config) {
 		delete copy.logical;
 	}
 
-	return `const postcssPresetEnv = require('postcss-preset-env');
+	let presetVersionPlayground = document.getElementById('config-editor').getAttribute('data-preset-env-version');
+	if (presetVersionPlayground) {
+		presetVersionPlayground = ` // v${presetVersionPlayground}`;
+	}
+
+	return `const postcssPresetEnv = require('postcss-preset-env');${presetVersionPlayground}
 
 module.exports = {
 	plugins: [
@@ -166,18 +171,18 @@ function syncDispatch(tr, view, other) {
 
 let inputView = new EditorView({
 	state: inputState,
-	parent: document.querySelector('#input-editor'),
+	parent: document.getElementById('input-editor'),
 	dispatch: tr => syncDispatch(tr, inputView, outputView),
 });
 
 let configView = new EditorView({
 	state: configState,
-	parent: document.querySelector('#config-editor'),
+	parent: document.getElementById('config-editor'),
 });
 
 let outputView = new EditorView({
 	state: outputState,
-	parent: document.querySelector('#output-editor'),
+	parent: document.getElementById('output-editor'),
 });
 
 processCss(inputState.doc, currentConfig).then((output) => {
