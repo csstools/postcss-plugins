@@ -36,7 +36,7 @@
 		"eslint": "^8.38.0",
 		"rollup": "^3.17.1",
 		"tslib": "^2.4.1",
-		"typescript": "^5.0.0"
+		"typescript": "^5.0.4"
 	},
 	"scripts": {
 		"build": "npm run build --workspaces --if-present",
