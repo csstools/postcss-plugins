@@ -4,6 +4,7 @@
 
 - Updated `@csstools/postcss-logical-viewport-units` to `1.0.3` (patch)
 - Updated `@csstools/postcss-media-minmax` to `1.0.2` (patch)- Updated `@csstools/postcss-media-queries-aspect-ratio-number-values` to `1.0.2` (patch)- Updated `@csstools/postcss-stepped-value-functions` to `2.1.1` (patch)- Updated `@csstools/postcss-trigonometric-functions` to `2.1.1` (patch)- Updated `postcss-custom-media` to `9.1.3` (patch)- Updated `postcss-custom-properties` to `13.1.5` (patch)- Updated `postcss-custom-selectors` to `7.1.3` (patch)
+- Updated `@csstools/postcss-color-function` to `2.2.1` (patch)- Updated `@csstools/postcss-color-mix-function` to `1.0.1` (patch)- Updated `@csstools/postcss-gradients-interpolation-method` to `3.0.3` (patch)- Updated `@csstools/postcss-hwb-function` to `2.2.1` (patch)- Updated `@csstools/postcss-oklab-function` to `2.2.1` (patch)- Updated `postcss-lab-function` to `5.2.1` (patch)
 
 ### 2.1.0 (April 2, 2023)
 
