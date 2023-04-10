@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased (patch)
+
+- Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
+
 ### 13.1.4 (February 21, 2023)
 
 - Fixed: exception on chained variable declarations.

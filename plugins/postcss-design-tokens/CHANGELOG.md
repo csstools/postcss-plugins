@@ -1,5 +1,9 @@
 # Changes to PostCSS Design Tokens
 
+### Unreleased (patch)
+
+- Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
+
 ### 2.0.3 (February 15, 2023)
 
 - Fixed: file watching with PostCSS CLI

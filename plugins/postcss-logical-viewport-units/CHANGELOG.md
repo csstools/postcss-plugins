@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Viewport Units
 
+### Unreleased (patch)
+
+- Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
+
 ### 1.0.2 (January 28, 2023)
 
 - Improve `types` declaration in `package.json`

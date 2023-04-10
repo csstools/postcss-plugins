@@ -1,5 +1,9 @@
 # Changes to PostCSS OKLab Function
 
+### Unreleased (patch)
+
+- Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
+
 ### 2.2.0 (March 25, 2023)
 
 - Add `@csstools/css-color-parser` dependency for all color value transformations.

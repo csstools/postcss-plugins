@@ -1,5 +1,9 @@
 # Changes to PostCSS Todo or Die
 
+### Unreleased (patch)
+
+- Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
+
 ### 1.0.0 (February 6, 2023)
 
 - Initial version

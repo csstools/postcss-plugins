@@ -1,5 +1,10 @@
 # Changes to CSS Parser Algorithms
 
+### Unreleased (patch)
+
+- Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
+
+
 ### 2.1.0 (March 25, 2023)
 
 - Add `replaceComponentValues` utility function.
