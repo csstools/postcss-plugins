@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
+- Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
 
 ### 9.1.2 (February 8, 2023)
 

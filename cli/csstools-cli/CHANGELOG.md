@@ -1,5 +1,9 @@
 # Changes to CSSTools CLI
 
+### Unreleased (patch)
+
+- Updated `@csstools/postcss-logical-viewport-units` to `1.0.3` (patch)
+
 ### 2.1.0 (April 2, 2023)
 
 - Added `@csstools/postcss-color-mix-function`
