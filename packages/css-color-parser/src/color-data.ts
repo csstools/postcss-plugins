@@ -481,11 +481,11 @@ function dummyNumberToken(x: number): TokenNumber {
 }
 
 function dummyPercentageToken(x: number): TokenPercentage {
-	return [TokenType.Percentage, x.toString(), -1, -1, { value: x }];
+	return [TokenType.Percentage, x.toString() + '%', -1, -1, { value: x }];
 }
 
 function dummyAngleToken(x: number): TokenDimension {
-	return [TokenType.Dimension, x.toString(), -1, -1, { value: x, type: NumberType.Number, unit: 'deg' }];
+	return [TokenType.Dimension, x.toString() + 'deg', -1, -1, { value: x, type: NumberType.Number, unit: 'deg' }];
 }
 
 function reducePrecision(x: number, precision = 7): number {
