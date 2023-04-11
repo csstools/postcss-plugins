@@ -5,8 +5,6 @@
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
 - Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
 
-
-
 ### 1.1.0 (April 10, 2023)
 
 - Expose the list of supported math functions.
