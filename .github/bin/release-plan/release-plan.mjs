@@ -124,7 +124,7 @@ for (const workspace of notReleasableNow.values()) {
 				updated.newVersion
 			) {
 				packageInfo.dependencies[updated.name] = '^' + updated.newVersion;
-				changeLogAdditions += `- Updated \`${updated.name}\` to \`${updated.newVersion}\` (${updated.increment})`;
+				changeLogAdditions += `- Updated \`${updated.name}\` to \`${updated.newVersion}\` (${updated.increment})\n`;
 				didChange = true;
 			}
 			if (

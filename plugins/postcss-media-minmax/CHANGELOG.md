@@ -4,7 +4,8 @@
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
 - Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
-- Updated `@csstools/css-calc` to `1.1.1` (patch)- Updated `@csstools/media-query-list-parser` to `2.0.4` (patch)
+- Updated `@csstools/css-calc` to `1.1.1` (patch)
+- Updated `@csstools/media-query-list-parser` to `2.0.4` (patch)
 
 ### 1.0.1 (April 10, 2023)
 
