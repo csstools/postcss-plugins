@@ -13,6 +13,7 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 
 	if (
 		color.colorNotation !== ColorNotation.RGB &&
+		color.colorNotation !== ColorNotation.sRGB &&
 		color.colorNotation !== ColorNotation.HEX
 	) {
 		if (gamutMapping) {

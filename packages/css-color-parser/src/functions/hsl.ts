@@ -8,7 +8,6 @@ import { threeChannelLegacySyntax } from './three-channel-legacy-syntax';
 import { threeChannelSpaceSeparated } from './three-channel-space-separated';
 import { TokenType } from '@csstools/css-tokenizer';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function hsl(hslNode: FunctionNode, colorParser: ColorParser): ColorData | false {
 	if (hslNode.value.some((x) => isTokenNode(x) && x.value[0] === TokenType.Comma)) {
 		const output = hslCommaSeparated(hslNode);
@@ -18,7 +17,7 @@ export function hsl(hslNode: FunctionNode, colorParser: ColorParser): ColorData 
 	}
 
 	{
-		const output = hslSpaceSeparated(hslNode);
+		const output = hslSpaceSeparated(hslNode, colorParser);
 		if (output !== false) {
 			return output;
 		}
@@ -38,11 +37,12 @@ function hslCommaSeparated(hslNode: FunctionNode): ColorData | false {
 	);
 }
 
-function hslSpaceSeparated(hslNode: FunctionNode): ColorData | false {
+function hslSpaceSeparated(hslNode: FunctionNode, colorParser: ColorParser): ColorData | false {
 	return threeChannelSpaceSeparated(
 		hslNode,
 		normalize_modern_HSL_ChannelValues,
 		ColorNotation.HSL,
 		[],
+		colorParser,
 	);
 }

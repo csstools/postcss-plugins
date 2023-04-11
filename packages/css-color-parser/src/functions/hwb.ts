@@ -5,12 +5,12 @@ import { ColorNotation } from '../color-notation';
 import { normalize_HWB_ChannelValues } from './hwb-normalize-channel-values';
 import { threeChannelSpaceSeparated } from './three-channel-space-separated';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function hwb(hwbNode: FunctionNode, colorParser: ColorParser): ColorData | false {
 	return threeChannelSpaceSeparated(
 		hwbNode,
 		normalize_HWB_ChannelValues,
 		ColorNotation.HWB,
 		[],
+		colorParser,
 	);
 }

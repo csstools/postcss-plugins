@@ -297,24 +297,32 @@ function colorMixRectangular(colorSpace: string, colors: ColorMixColors | false)
 		case 'srgb':
 			outputColorNotation = ColorNotation.RGB;
 
-			if (a_color.colorNotation !== ColorNotation.RGB && a_color.colorNotation !== ColorNotation.HEX) {
+			if (
+				a_color.colorNotation !== ColorNotation.RGB &&
+				a_color.colorNotation !== ColorNotation.sRGB &&
+				a_color.colorNotation !== ColorNotation.HEX
+			) {
 				a_channels = colorDataTo(a_color, ColorNotation.RGB).channels;
 			}
 
-			if (b_color.colorNotation !== ColorNotation.RGB && a_color.colorNotation !== ColorNotation.HEX) {
+			if (
+				b_color.colorNotation !== ColorNotation.RGB &&
+				b_color.colorNotation !== ColorNotation.sRGB &&
+				b_color.colorNotation !== ColorNotation.HEX
+			) {
 				b_channels = colorDataTo(b_color, ColorNotation.RGB).channels;
 			}
 
 			break;
 		case 'srgb-linear':
-			outputColorNotation = ColorNotation.Linear_RGB;
+			outputColorNotation = ColorNotation.Linear_sRGB;
 
-			if (a_color.colorNotation !== ColorNotation.Linear_RGB) {
-				a_channels = colorDataTo(a_color, ColorNotation.Linear_RGB).channels;
+			if (a_color.colorNotation !== ColorNotation.Linear_sRGB) {
+				a_channels = colorDataTo(a_color, ColorNotation.Linear_sRGB).channels;
 			}
 
-			if (b_color.colorNotation !== ColorNotation.Linear_RGB) {
-				b_channels = colorDataTo(b_color, ColorNotation.Linear_RGB).channels;
+			if (b_color.colorNotation !== ColorNotation.Linear_sRGB) {
+				b_channels = colorDataTo(b_color, ColorNotation.Linear_sRGB).channels;
 			}
 
 			break;
