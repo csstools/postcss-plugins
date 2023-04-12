@@ -49,6 +49,10 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 							return;
 						}
 
+						if (colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)) {
+							return;
+						}
+
 						return serializeRGB(colorData);
 					}
 				},
@@ -71,6 +75,10 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 							}
 
 							if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
+								return;
+							}
+
+							if (colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)) {
 								return;
 							}
 

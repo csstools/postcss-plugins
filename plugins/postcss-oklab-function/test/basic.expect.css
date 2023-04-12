@@ -21,16 +21,16 @@
 	color-5: rgba(126, 37, 15, 0.5);
 	color-6: rgb(197, 84, 124);
 
-	color-7: rgb(0, 152, 131);
+	color-7: rgb(0, 149, 131);
 
 	color-7: color(display-p3 0.19244 0.58461 0.51559);
-	color-8: rgb(0, 152, 131);
+	color-8: rgb(0, 149, 131);
 	color-8: color(display-p3 0.19244 0.58461 0.51559);
-	color-9: rgb(0, 152, 131);
+	color-9: rgb(0, 149, 131);
 	color-9: color(display-p3 0.19244 0.58461 0.51559);
-	color-10: rgb(0, 152, 131);
+	color-10: rgb(0, 149, 131);
 	color-10: color(display-p3 0.19244 0.58461 0.51559);
-	color-11: rgb(0, 152, 131);
+	color-11: rgb(0, 149, 131);
 	color-11: color(display-p3 0.19244 0.58461 0.51559);
 
 	color-12: rgb(188, 101, 59);
@@ -41,16 +41,16 @@
 	color-17: oklch(60% 0.1250 0.785398unknown);
 	color-18: rgb(188, 101, 59);
 
-	color-20: rgb(0, 152, 131);
+	color-20: rgb(0, 149, 131);
 
 	color-20: color(display-p3 0.19244 0.58461 0.51559);
-	color-21: rgb(0, 152, 131);
+	color-21: rgb(0, 149, 131);
 	color-21: color(display-p3 0.19244 0.58461 0.51559);
-	color-22: rgb(0, 152, 131);
+	color-22: rgb(0, 149, 131);
 	color-22: color(display-p3 0.19244 0.58461 0.51559);
-	color-23: rgb(0, 152, 131);
+	color-23: rgb(0, 149, 131);
 	color-23: color(display-p3 0.19244 0.58461 0.51559);
-	color-24: rgb(0, 152, 131);
+	color-24: rgb(0, 149, 131);
 	color-24: color(display-p3 0.19244 0.58461 0.51559);
 }
 
@@ -152,8 +152,8 @@
 
 .test-multiple-colors {
 	background-1: linear-gradient(rgb(94, 83, 77), rgb(136, 126, 121));
-	background-2: linear-gradient(rgb(164, 0, 74), rgb(136, 126, 121));
-	background-2: linear-gradient(color(display-p3 0.60733 0 0.28326), rgb(136, 126, 121));
+	background-2: linear-gradient(rgb(161, 0, 74), rgb(136, 126, 121));
+	background-2: linear-gradient(color(display-p3 0.59283 0 0.2865), rgb(136, 126, 121));
 }
 
 .test-unparseable-lab-function {
@@ -176,9 +176,9 @@
 
 .test-blue-teal {
 	/* PR 0.18049383596973165, 0.5091259470889729, 0.5339002129941043 */
-	color-1: rgb(0, 132, 138);
+	color-1: rgb(0, 131, 136);
 	color-1: color(display-p3 0.18049 0.50913 0.5339);
-	color-2: rgb(0, 132, 138);
+	color-2: rgb(0, 131, 136);
 	color-2: color(display-p3 0.18049 0.50913 0.5339);
 }
 

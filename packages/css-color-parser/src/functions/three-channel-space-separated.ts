@@ -1,4 +1,4 @@
-import { ColorData, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
+import { ColorData, colorData_to_XYZ_D50, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
 import { ComponentValue, FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { CSSToken, TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
 import { ColorNotation } from '../color-notation';
@@ -10,6 +10,7 @@ import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { mathFunctionNames } from '@csstools/css-calc';
 import { ColorParser } from '../color-parser';
 import { colorDataTo } from '../color-data';
+import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
 
 export function threeChannelSpaceSeparated(
 	colorFunctionNode: FunctionNode,
@@ -115,8 +116,14 @@ export function threeChannelSpaceSeparated(
 				return false;
 			}
 
+			syntaxFlags.push(SyntaxFlag.RelativeColorSyntax);
+
 			if (relativeToColor.colorNotation !== colorNotation) {
 				relativeToColor = colorDataTo(relativeToColor, colorNotation);
+			}
+
+			if (colorNotation === ColorNotation.HEX || colorNotation === ColorNotation.RGB) {
+				relativeToColor.channels = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(relativeToColor).channels);
 			}
 
 			relativeColorChannels = normalizeRelativeColorDataChannels(relativeToColor);

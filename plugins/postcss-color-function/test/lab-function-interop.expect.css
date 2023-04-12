@@ -1,7 +1,7 @@
 .test-lab-interop {
 	/* rgb(196, 0, 48); from postcss-lab-function */
-	color-1: rgb(196, 0, 48);
-	color-1: color(display-p3 0.73296 0 0.17714);
+	color-1: rgb(194, 0, 49);
+	color-1: color(display-p3 0.71499 0 0.19398);
 	color-1: lab(40% 80 39);
 }
 

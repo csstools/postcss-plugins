@@ -722,7 +722,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .color-function {
-	prop-1: rgb(0, 132, 94);
+	prop-1: rgb(0, 129, 96);
 	prop-1: color(display-p3 0.00000 0.51872 0.36985);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
 	prop-3: rgb(7, 3, 1);
@@ -774,21 +774,21 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	color-6: rgb(197, 84, 124);
 	color-6: oklch(60% 0.150 0);
 
-	color-7: rgb(0, 152, 131);
+	color-7: rgb(0, 149, 131);
 
 	color-7: color(display-p3 0.19244 0.58461 0.51559);
 
 	color-7: oklch(60% 0.1250 180);
-	color-8: rgb(0, 152, 131);
+	color-8: rgb(0, 149, 131);
 	color-8: color(display-p3 0.19244 0.58461 0.51559);
 	color-8: oklch(60% 0.1250 180deg);
-	color-9: rgb(0, 152, 131);
+	color-9: rgb(0, 149, 131);
 	color-9: color(display-p3 0.19244 0.58461 0.51559);
 	color-9: oklch(60% 0.1250 0.5turn);
-	color-10: rgb(0, 152, 131);
+	color-10: rgb(0, 149, 131);
 	color-10: color(display-p3 0.19244 0.58461 0.51559);
 	color-10: oklch(60% 0.1250 200grad);
-	color-11: rgb(0, 152, 131);
+	color-11: rgb(0, 149, 131);
 	color-11: color(display-p3 0.19244 0.58461 0.51559);
 	color-11: oklch(60% 0.1250 3.14159rad);
 
@@ -1003,11 +1003,11 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	color-2: color-mix(in lab, rgb(255 0 0 / 0), blue 65%);
 	color-3: rgba(0, 0, 255, 0.65);
 	color-3: color-mix(in xyz, rgb(255 0 0 / 0), blue 65%);
-	color-4: rgba(125, 0, 190, 0.65);
-	color-4: color(display-p3 0.45007 0 0.73452 / 0.65);
+	color-4: rgba(122, 0, 182, 0.65);
+	color-4: color(display-p3 0.44471 0 0.71665 / 0.65);
 	color-4: color-mix(in oklch, rgb(255 0 0 / 0), blue 65%);
-	color-5: rgba(153, 0, 125, 0.65);
-	color-5: color(display-p3 0.56492 0 0.48893 / 0.65);
+	color-5: rgba(149, 0, 122, 0.65);
+	color-5: color(display-p3 0.55417 0 0.48083 / 0.65);
 	color-5: color-mix(in lch, rgb(255 0 0 / 0), blue 65%);
 	color-6: rgba(179, 0, 255, 0.65);
 	color-6: color-mix(in hsl, rgb(255 0 0 / 0), blue 65%);

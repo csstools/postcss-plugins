@@ -99,6 +99,8 @@ export function color(colorFunctionNode: FunctionNode, colorParser: ColorParser)
 				return false;
 			}
 
+			syntaxFlags.push(SyntaxFlag.RelativeColorSyntax);
+
 			colorSpace = toLowerCaseAZ(node.value[4].value);
 			colorData.colorNotation = colorSpaceNameToColorNotation(colorSpace);
 
