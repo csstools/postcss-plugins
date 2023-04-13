@@ -33,4 +33,3 @@ for (const property of properties) {
 }
 
 await fs.writeFile('test/logical-properties.css', buffer);
-
