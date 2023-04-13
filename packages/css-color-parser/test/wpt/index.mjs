@@ -7,7 +7,7 @@ import './color-computed-hwb.mjs';
 import './color-computed-lab.mjs';
 import './color-computed-named-color.mjs';
 import './color-computed-oklab.mjs';
-// import './color-computed-relative-color.mjs';
+import './color-computed-relative-color.mjs';
 import './color-computed-rgb.mjs';
 import './color-invalid-color-function.mjs';
 import './color-invalid-color-mix-function.mjs';

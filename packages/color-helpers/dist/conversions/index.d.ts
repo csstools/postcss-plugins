@@ -27,6 +27,7 @@ export * from './oklab-to-oklch';
 export * from './oklab-to-xyz';
 export * from './oklch-to-oklab';
 export * from './srgb-to-hsl';
+export * from './srgb-to-hwb';
 export * from './srgb-to-luminance';
 export * from './xyz-to-lab';
 export * from './xyz-to-lin-2020';

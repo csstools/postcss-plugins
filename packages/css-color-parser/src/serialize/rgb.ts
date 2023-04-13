@@ -43,7 +43,7 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 
 	if (typeof color.alpha === 'number') {
 		const a = Math.min(1, Math.max(0, toPrecision(Number.isNaN(color.alpha) ? 0 : color.alpha)));
-		if (a === 1) {
+		if (toPrecision(a, 4) === 1) {
 			return new FunctionNode(
 				[TokenType.Function, 'rgb(', -1, -1, { value: 'rgb' }],
 				close,
@@ -58,7 +58,7 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 				...channels,
 				new TokenNode(comma),
 				new TokenNode(space),
-				new TokenNode([TokenType.Number, a.toString(), -1, -1, { value: color.alpha, type: NumberType.Integer }]),
+				new TokenNode([TokenType.Number, toPrecision(a, 4).toString(), -1, -1, { value: color.alpha, type: NumberType.Number }]),
 			],
 		);
 	}

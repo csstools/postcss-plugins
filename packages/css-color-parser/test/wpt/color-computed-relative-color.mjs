@@ -66,21 +66,22 @@ const tests = [
 
 	// Testing permutation.
 	['rgb(from rebeccapurple g b r)', 'rgb(51, 153, 102)'],
-	['rgb(from rebeccapurple b alpha r / g)', 'rgba(153, 255, 102, 0.2)'],
-	['rgb(from rebeccapurple r r r / r)', 'rgba(102, 102, 102, 0.4)'],
-	['rgb(from rebeccapurple alpha alpha alpha / alpha)', 'rgb(255, 255, 255)'],
-	['rgb(from rgb(20%, 40%, 60%, 80%) g b r)', 'rgb(102, 153, 51)'],
-	['rgb(from rgb(20%, 40%, 60%, 80%) b alpha r / g)', 'rgba(153, 204, 51, 0.4)'],
-	['rgb(from rgb(20%, 40%, 60%, 80%) r r r / r)', 'rgba(51, 51, 51, 0.2)'],
-	['rgb(from rgb(20%, 40%, 60%, 80%) alpha alpha alpha / alpha)', 'rgba(204, 204, 204, 0.8)'],
+	['rgb(from rebeccapurple b alpha r / g)', 'rgb(153, 1, 102)'],
+	['rgb(from rebeccapurple r r r / r)', 'rgb(102, 102, 102)'],
+	['rgb(from rebeccapurple alpha alpha alpha / alpha)', 'rgb(1, 1, 1)'],
+	['rgb(from rgb(20%, 40%, 60%, 80%) g b r)', 'rgb(102, 153, 51, 0.8)'],
+	['rgb(from rgb(20%, 40%, 60%, 80%) b alpha r / g)', 'rgb(153, 1, 51)'],
+	['rgb(from rgb(20%, 40%, 60%, 80%) r r r / r)', 'rgba(51, 51, 51)'],
+	['rgb(from rgb(20%, 40%, 60%, 80%) alpha alpha alpha / alpha)', 'rgba(1, 1, 1, 0.8)'],
+	['rgb(from rgb(20%, 40%, 60%, 80%) calc(255 * alpha) calc(255 * alpha) calc(255 * alpha) / alpha)', 'rgba(204, 204, 204, 0.8)'],
 
 	// Testing mixes of number and percentage. (These would not be allowed in the non-relative syntax).
 	['rgb(from rebeccapurple r 20% 10)', 'rgb(102, 51, 10)'],
 	['rgb(from rebeccapurple r 10 20%)', 'rgb(102, 10, 51)'],
 	['rgb(from rebeccapurple 0% 10 10)', 'rgb(0, 10, 10)'],
-	['rgb(from rgb(20%, 40%, 60%, 80%) r 20% 10)', 'rgb(51, 51, 10)'],
-	['rgb(from rgb(20%, 40%, 60%, 80%) r 10 20%)', 'rgb(51, 10, 51)'],
-	['rgb(from rgb(20%, 40%, 60%, 80%) 0% 10 10)', 'rgb(0, 10, 10)'],
+	['rgb(from rgb(20%, 40%, 60%, 80%) r 20% 10)', 'rgb(51, 51, 10, 0.8)'],
+	['rgb(from rgb(20%, 40%, 60%, 80%) r 10 20%)', 'rgb(51, 10, 51, 0.8)'],
+	['rgb(from rgb(20%, 40%, 60%, 80%) 0% 10 10)', 'rgb(0, 10, 10, 0.8)'],
 
 	// r    g    b
 	// 102  51   153
@@ -150,23 +151,23 @@ const tests = [
 	['hsl(from rebeccapurple 25 s l / alpha)', 'rgb(153, 94, 51)'],
 	['hsl(from rebeccapurple 25deg s l / alpha)', 'rgb(153, 94, 51)'],
 	['hsl(from rebeccapurple h 20% l / alpha)', 'rgb(102, 82, 122)'],
-	['hsl(from rebeccapurple h s 20% / alpha)', 'rgb(51, 25, 77)'],
+	['hsl(from rebeccapurple h s 20% / alpha)', 'rgb(51, 26, 77)'],
 	['hsl(from rebeccapurple h s l / .25)', 'rgba(102, 51, 153, 0.25)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) 25 s l / alpha)', 'rgba(153, 94, 51, 0.8)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) 25deg s l / alpha)', 'rgba(153, 94, 51, 0.8)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) h 20% l / alpha)', 'rgba(82, 102, 122, 0.8)'],
-	['hsl(from rgb(20%, 40%, 60%, 80%) h s 20% / alpha)', 'rgba(25, 51, 77, 0.8)'],
+	['hsl(from rgb(20%, 40%, 60%, 80%) h s 20% / alpha)', 'rgba(26, 51, 77, 0.8)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) h s l / .2)', 'rgba(51, 102, 153, 0.2)'],
 
 	// Testing valid permutation (types match).
 	['hsl(from rebeccapurple h l s)', 'rgb(128, 77, 179)'],
-	['hsl(from rebeccapurple h alpha l / s)', 'rgba(102, 0, 204, 0.5)'],
+	['hsl(from rebeccapurple h alpha l / s)', 'rgba(102, 101, 103, 0.5)'],
 	['hsl(from rebeccapurple h l l / l)', 'rgba(102, 61, 143, 0.4)'],
-	['hsl(from rebeccapurple h alpha alpha / alpha)', 'rgb(255, 255, 255)'],
-	['hsl(from rgb(20%, 40%, 60%, 80%) h l s)', 'rgb(77, 128, 179)'],
-	['hsl(from rgb(20%, 40%, 60%, 80%) h alpha l / s)', 'rgba(20, 102, 184, 0.5)'],
+	['hsl(from rebeccapurple h alpha alpha / alpha)', 'rgb(3, 3, 3)'],
+	['hsl(from rgb(20%, 40%, 60%, 80%) h l s)', 'rgba(77, 127, 178, 0.8)'],
+	['hsl(from rgb(20%, 40%, 60%, 80%) h alpha l / s)', 'rgba(101, 102, 103, 0.5)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) h l l / l)', 'rgba(61, 102, 143, 0.4)'],
-	['hsl(from rgb(20%, 40%, 60%, 80%) h alpha alpha / alpha)', 'rgba(163, 204, 245, 0.8)'],
+	['hsl(from rgb(20%, 40%, 60%, 80%) h alpha alpha / alpha)', 'rgba(2, 2, 2, 0.8)'],
 
 	// Testing with calc().
 	['hsl(from rebeccapurple calc(h) calc(s) calc(l))', 'rgb(102, 51, 153)'],
@@ -185,7 +186,7 @@ const tests = [
 	// FIXME: Clarify with spec editors if 'none' should pass through to the constants.
 	['hsl(from hsl(none none none) h s l)', 'rgb(0, 0, 0)'],
 	['hsl(from hsl(none none none / none) h s l / alpha)', 'rgba(0, 0, 0, 0)'],
-	['hsl(from hsl(120deg none 50% / .5) h s l)', 'rgb(128, 128, 128)'],
+	['hsl(from hsl(120deg none 50% / .5) h s l)', 'rgb(128, 128, 128, 0.5)'],
 	['hsl(from hsl(120deg 20% 50% / none) h s l / alpha)', 'rgba(102, 153, 102, 0)'],
 	['hsl(from hsl(none 20% 50% / .5) h s l / alpha)', 'rgba(153, 102, 102, 0.5)'],
 

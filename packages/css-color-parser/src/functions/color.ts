@@ -184,6 +184,10 @@ export function color(colorFunctionNode: FunctionNode, colorParser: ColorParser)
 		return false;
 	}
 
+	if (relativeColorChannels && !relativeColorChannels.has('alpha')) {
+		return false;
+	}
+
 	const channelValues: Array<CSSToken> = [
 		channel1[0].value,
 		channel2[0].value,

@@ -11,6 +11,7 @@ import { mathFunctionNames } from '@csstools/css-calc';
 import { ColorParser } from '../color-parser';
 import { colorDataTo } from '../color-data';
 import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
+import { conversions } from '@csstools/color-helpers';
 
 export function threeChannelSpaceSeparated(
 	colorFunctionNode: FunctionNode,
@@ -122,8 +123,19 @@ export function threeChannelSpaceSeparated(
 				relativeToColor = colorDataTo(relativeToColor, colorNotation);
 			}
 
-			if (colorNotation === ColorNotation.HEX || colorNotation === ColorNotation.RGB) {
+			if (
+				colorNotation === ColorNotation.HEX ||
+				colorNotation === ColorNotation.RGB
+			) {
 				relativeToColor.channels = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(relativeToColor).channels);
+			} else if (
+				colorNotation === ColorNotation.HSL
+			) { // https://github.com/w3c/csswg-drafts/issues/8444
+				relativeToColor.channels = conversions.sRGB_to_HSL(XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(relativeToColor).channels));
+			} else if (
+				colorNotation === ColorNotation.HWB
+			) { // https://github.com/w3c/csswg-drafts/issues/8444
+				relativeToColor.channels = conversions.sRGB_to_HWB(XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(relativeToColor).channels));
 			}
 
 			relativeColorChannels = normalizeRelativeColorDataChannels(relativeToColor);
@@ -163,6 +175,10 @@ export function threeChannelSpaceSeparated(
 		!isTokenNode(channel2[0]) ||
 		!isTokenNode(channel3[0])
 	) {
+		return false;
+	}
+
+	if (relativeColorChannels && !relativeColorChannels.has('alpha')) {
 		return false;
 	}
 

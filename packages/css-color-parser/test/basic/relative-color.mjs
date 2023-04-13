@@ -82,3 +82,13 @@ assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('color(from rebeccapurple srgb calc(r + 0.1) calc(g + 0.1) calc(b + 0.1))'))),
 	'rgb(128, 77, 179)',
 );
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('hsl(from rgb(50 50 50 / calc(10px + 10)) h s l)'))),
+	'',
+);
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('hsl(from rgb(50 50 50 / var(--foo)) h s l)'))),
+	'',
+);
