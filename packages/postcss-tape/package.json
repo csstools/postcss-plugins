@@ -45,7 +45,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"postcss": "~8.4",
+		"postcss": "remcohaszing/postcss#fix-types",
 		"postcss-8.4": "npm:postcss@~8.4",
 		"postcss-html": "^1.5.0"
 	},
