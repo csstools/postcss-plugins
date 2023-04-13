@@ -1,0 +1,562 @@
+/* This test aims to make it easy to find new logical properties that don't have a transform. */
+
+.background-position {
+	/* background-position-block */
+	background-position-block: inherit;
+}
+
+.background-position {
+	/* background-position-inline */
+	background-position-inline: inherit;
+}
+
+.background-position {
+	/* background-position-x */
+	background-position-x: inherit;
+}
+
+.background-position {
+	/* background-position-y */
+	background-position-y: inherit;
+}
+
+.border-color {
+	/* border-block-end-color */
+	border-bottom-color: inherit;
+}
+
+.border-color {
+	/* border-block-start-color */
+	border-top-color: inherit;
+}
+
+.border-color {
+	/* border-bottom-color */
+	border-bottom-color: inherit;
+}
+
+.border-color {
+	/* border-bottom-color */
+	border-bottom-color: inherit;
+}
+
+.border-color {
+	/* border-inline-end-color */
+	border-right-color: inherit;
+}
+
+.border-color {
+	/* border-inline-start-color */
+	border-left-color: inherit;
+}
+
+.border-color {
+	/* border-left-color */
+	border-left-color: inherit;
+}
+
+.border-color {
+	/* border-left-color */
+	border-left-color: inherit;
+}
+
+.border-color {
+	/* border-right-color */
+	border-right-color: inherit;
+}
+
+.border-color {
+	/* border-right-color */
+	border-right-color: inherit;
+}
+
+.border-color {
+	/* border-top-color */
+	border-top-color: inherit;
+}
+
+.border-color {
+	/* border-top-color */
+	border-top-color: inherit;
+}
+
+.border-radius {
+	/* border-bottom-left-radius */
+	border-bottom-left-radius: inherit;
+}
+
+.border-radius {
+	/* border-bottom-right-radius */
+	border-bottom-right-radius: inherit;
+}
+
+.border-radius {
+	/* border-end-end-radius */
+	border-bottom-right-radius: inherit;
+}
+
+.border-radius {
+	/* border-end-start-radius */
+	border-bottom-left-radius: inherit;
+}
+
+.border-radius {
+	/* border-start-end-radius */
+	border-top-right-radius: inherit;
+}
+
+.border-radius {
+	/* border-start-start-radius */
+	border-top-left-radius: inherit;
+}
+
+.border-radius {
+	/* border-top-left-radius */
+	border-top-left-radius: inherit;
+}
+
+.border-radius {
+	/* border-top-right-radius */
+	border-top-right-radius: inherit;
+}
+
+.border-style {
+	/* border-block-end-style */
+	border-bottom-style: inherit;
+}
+
+.border-style {
+	/* border-block-start-style */
+	border-top-style: inherit;
+}
+
+.border-style {
+	/* border-bottom-style */
+	border-bottom-style: inherit;
+}
+
+.border-style {
+	/* border-inline-end-style */
+	border-right-style: inherit;
+}
+
+.border-style {
+	/* border-inline-start-style */
+	border-left-style: inherit;
+}
+
+.border-style {
+	/* border-left-style */
+	border-left-style: inherit;
+}
+
+.border-style {
+	/* border-right-style */
+	border-right-style: inherit;
+}
+
+.border-style {
+	/* border-top-style */
+	border-top-style: inherit;
+}
+
+.border-width {
+	/* border-block-end-width */
+	border-bottom-width: inherit;
+}
+
+.border-width {
+	/* border-block-start-width */
+	border-top-width: inherit;
+}
+
+.border-width {
+	/* border-bottom-width */
+	border-bottom-width: inherit;
+}
+
+.border-width {
+	/* border-inline-end-width */
+	border-right-width: inherit;
+}
+
+.border-width {
+	/* border-inline-start-width */
+	border-left-width: inherit;
+}
+
+.border-width {
+	/* border-left-width */
+	border-left-width: inherit;
+}
+
+.border-width {
+	/* border-right-width */
+	border-right-width: inherit;
+}
+
+.border-width {
+	/* border-top-width */
+	border-top-width: inherit;
+}
+
+.contain-intrinsic-size {
+	/* contain-intrinsic-block-size */
+	contain-intrinsic-block-size: inherit;
+}
+
+.contain-intrinsic-size {
+	/* contain-intrinsic-height */
+	contain-intrinsic-height: inherit;
+}
+
+.contain-intrinsic-size {
+	/* contain-intrinsic-inline-size */
+	contain-intrinsic-inline-size: inherit;
+}
+
+.contain-intrinsic-size {
+	/* contain-intrinsic-width */
+	contain-intrinsic-width: inherit;
+}
+
+.inset {
+	/* bottom */
+	bottom: inherit;
+}
+
+.inset {
+	/* inset-block-end */
+	bottom: inherit;
+}
+
+.inset {
+	/* inset-block-start */
+	top: inherit;
+}
+
+.inset {
+	/* inset-inline-end */
+	right: inherit;
+}
+
+.inset {
+	/* inset-inline-start */
+	left: inherit;
+}
+
+.inset {
+	/* left */
+	left: inherit;
+}
+
+.inset {
+	/* right */
+	right: inherit;
+}
+
+.inset {
+	/* top */
+	top: inherit;
+}
+
+.margin {
+	/* margin-block-end */
+	margin-bottom: inherit;
+}
+
+.margin {
+	/* margin-block-start */
+	margin-top: inherit;
+}
+
+.margin {
+	/* margin-bottom */
+	margin-bottom: inherit;
+}
+
+.margin {
+	/* margin-inline-end */
+	margin-right: inherit;
+}
+
+.margin {
+	/* margin-inline-start */
+	margin-left: inherit;
+}
+
+.margin {
+	/* margin-left */
+	margin-left: inherit;
+}
+
+.margin {
+	/* margin-right */
+	margin-right: inherit;
+}
+
+.margin {
+	/* margin-top */
+	margin-top: inherit;
+}
+
+.max-size {
+	/* max-block-size */
+	max-height: inherit;
+}
+
+.max-size {
+	/* max-height */
+	max-height: inherit;
+}
+
+.max-size {
+	/* max-inline-size */
+	max-width: inherit;
+}
+
+.max-size {
+	/* max-width */
+	max-width: inherit;
+}
+
+.min-size {
+	/* min-block-size */
+	min-height: inherit;
+}
+
+.min-size {
+	/* min-height */
+	min-height: inherit;
+}
+
+.min-size {
+	/* min-inline-size */
+	min-width: inherit;
+}
+
+.min-size {
+	/* min-width */
+	min-width: inherit;
+}
+
+.overflow {
+	/* overflow-block */
+	overflow-block: inherit;
+}
+
+.overflow {
+	/* overflow-inline */
+	overflow-inline: inherit;
+}
+
+.overflow {
+	/* overflow-x */
+	overflow-x: inherit;
+}
+
+.overflow {
+	/* overflow-y */
+	overflow-y: inherit;
+}
+
+.overflow-clip-margin {
+	/* overflow-clip-margin-block-end */
+	overflow-clip-margin-block-end: inherit;
+}
+
+.overflow-clip-margin {
+	/* overflow-clip-margin-block-start */
+	overflow-clip-margin-block-start: inherit;
+}
+
+.overflow-clip-margin {
+	/* overflow-clip-margin-bottom */
+	overflow-clip-margin-bottom: inherit;
+}
+
+.overflow-clip-margin {
+	/* overflow-clip-margin-inline-end */
+	overflow-clip-margin-inline-end: inherit;
+}
+
+.overflow-clip-margin {
+	/* overflow-clip-margin-inline-start */
+	overflow-clip-margin-inline-start: inherit;
+}
+
+.overflow-clip-margin {
+	/* overflow-clip-margin-left */
+	overflow-clip-margin-left: inherit;
+}
+
+.overflow-clip-margin {
+	/* overflow-clip-margin-right */
+	overflow-clip-margin-right: inherit;
+}
+
+.overflow-clip-margin {
+	/* overflow-clip-margin-top */
+	overflow-clip-margin-top: inherit;
+}
+
+.overscroll-behavior {
+	/* overscroll-behavior-block */
+	overscroll-behavior-block: inherit;
+}
+
+.overscroll-behavior {
+	/* overscroll-behavior-inline */
+	overscroll-behavior-inline: inherit;
+}
+
+.overscroll-behavior {
+	/* overscroll-behavior-x */
+	overscroll-behavior-x: inherit;
+}
+
+.overscroll-behavior {
+	/* overscroll-behavior-y */
+	overscroll-behavior-y: inherit;
+}
+
+.padding {
+	/* padding-block-end */
+	padding-bottom: inherit;
+}
+
+.padding {
+	/* padding-block-start */
+	padding-top: inherit;
+}
+
+.padding {
+	/* padding-bottom */
+	padding-bottom: inherit;
+}
+
+.padding {
+	/* padding-inline-end */
+	padding-right: inherit;
+}
+
+.padding {
+	/* padding-inline-start */
+	padding-left: inherit;
+}
+
+.padding {
+	/* padding-left */
+	padding-left: inherit;
+}
+
+.padding {
+	/* padding-right */
+	padding-right: inherit;
+}
+
+.padding {
+	/* padding-top */
+	padding-top: inherit;
+}
+
+.scroll-margin {
+	/* scroll-margin-block-end */
+	scroll-margin-block-end: inherit;
+}
+
+.scroll-margin {
+	/* scroll-margin-block-start */
+	scroll-margin-block-start: inherit;
+}
+
+.scroll-margin {
+	/* scroll-margin-bottom */
+	scroll-margin-bottom: inherit;
+}
+
+.scroll-margin {
+	/* scroll-margin-inline-end */
+	scroll-margin-inline-end: inherit;
+}
+
+.scroll-margin {
+	/* scroll-margin-inline-start */
+	scroll-margin-inline-start: inherit;
+}
+
+.scroll-margin {
+	/* scroll-margin-left */
+	scroll-margin-left: inherit;
+}
+
+.scroll-margin {
+	/* scroll-margin-right */
+	scroll-margin-right: inherit;
+}
+
+.scroll-margin {
+	/* scroll-margin-top */
+	scroll-margin-top: inherit;
+}
+
+.scroll-padding {
+	/* scroll-padding-block-end */
+	scroll-padding-block-end: inherit;
+}
+
+.scroll-padding {
+	/* scroll-padding-block-start */
+	scroll-padding-block-start: inherit;
+}
+
+.scroll-padding {
+	/* scroll-padding-bottom */
+	scroll-padding-bottom: inherit;
+}
+
+.scroll-padding {
+	/* scroll-padding-inline-end */
+	scroll-padding-inline-end: inherit;
+}
+
+.scroll-padding {
+	/* scroll-padding-inline-start */
+	scroll-padding-inline-start: inherit;
+}
+
+.scroll-padding {
+	/* scroll-padding-left */
+	scroll-padding-left: inherit;
+}
+
+.scroll-padding {
+	/* scroll-padding-right */
+	scroll-padding-right: inherit;
+}
+
+.scroll-padding {
+	/* scroll-padding-top */
+	scroll-padding-top: inherit;
+}
+
+.size {
+	/* block-size */
+	height: inherit;
+}
+
+.size {
+	/* height */
+	height: inherit;
+}
+
+.size {
+	/* inline-size */
+	width: inherit;
+}
+
+.size {
+	/* width */
+	width: inherit;
+}
+
