@@ -105,6 +105,7 @@ body:
         - PostCSS Progressive Custom Properties
         - PostCSS Pseudo Class Any Link
         - PostCSS Rebeccapurple
+        - PostCSS Relative Color Syntax
         - PostCSS Replace Overflow Wrap
         - PostCSS Scope Pseudo Class
         - PostCSS Selector Not
