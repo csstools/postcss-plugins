@@ -245,3 +245,10 @@
 	color-2: rgb(229, 125, 245);
 	color-2: oklch(74.68857553279259% 0.19576927401321545 322.2386199047718);
 }
+
+.test-css-color-5-interop {
+	color-1: oklab(from rgb(141, 0, 0) l a b);
+	color-1: oklab(from oklab(40% 0.566 0.39) l a b);
+	color-2: oklch(from rgb(130, 31, 0) l c h);
+	color-2: oklch(from oklch(40% 0.566 39deg) l c h);
+}

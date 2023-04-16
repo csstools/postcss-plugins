@@ -24,8 +24,10 @@
 }
 
 .test-css-color-5-interop {
-	color-1: color(from rgb(196, 129, 72) a98-rgb r g b / none);
-	color-2: color(from rgb(234, 133, 82) prophoto-rgb r g none);
+	color-1: color(from rgb(196, 129, 72) a98-rgb r g b / alpha);
+	color-2: color(from rgb(196, 129, 72) a98-rgb r g b / none);
+	color-3: color(from rgb(234, 133, 82) prophoto-rgb r g b);
+	color-4: color(from rgb(234, 133, 82) prophoto-rgb r g none);
 }
 
 .test-unknown-space {

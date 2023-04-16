@@ -49,6 +49,10 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							return;
 						}
 
+						if (colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)) {
+							return;
+						}
+
 						return serializeRGB(colorData);
 					}
 				},

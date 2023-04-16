@@ -457,3 +457,15 @@
 .gradients-interpolation-method {
 	--background-image: linear-gradient(in oklch decreasing hue, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
 }
+
+.test-css-color-5-interop {
+	color-1: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / alpha);
+	color-2: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / none);
+	color-3: color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g b);
+	color-4: color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g none);
+	color-5: hwb(from hwb(50deg 20% 30%) h w b);
+	color-6: lab(from lab(40% 56.6 39) l a b);
+	color-7: lch(from lch(40% 56.6 39) l c h);
+	color-8: oklab(from oklab(40% 0.566 0.39) l a b);
+	color-9: oklch(from oklch(40% 0.566 39deg) l c h);
+}

@@ -592,3 +592,17 @@
 	--background-image: linear-gradient(in oklch decreasing hue, hsl(0, 85%, 75%) 0%, hsl(180, 80%, 65%) 100%);
 }
 }
+
+.test-css-color-5-interop {
+	color-1: color(from rgb(196, 129, 72) a98-rgb r g b / alpha);
+	color-2: color(from rgb(196, 129, 72) a98-rgb r g b / none);
+	color-3: color(from rgb(234, 133, 82) prophoto-rgb r g b);
+	color-4: color(from rgb(234, 133, 82) prophoto-rgb r g none);
+	color-5: hwb(from rgb(179, 157, 51) h w b);
+	color-6: lab(from rgb(179, 35, 35) l a b);
+	color-7: lch(from rgb(163, 57, 39) l c h);
+	color-8: oklab(from rgb(141, 0, 0) l a b);
+	color-8: oklab(from color(display-p3 0.50566 0.0781 0) l a b);
+	color-9: oklch(from rgb(130, 31, 0) l c h);
+	color-9: oklch(from color(display-p3 0.48896 0.1211 0) l c h);
+}

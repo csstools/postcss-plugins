@@ -242,13 +242,13 @@ const tests = [
 
 	// Testing valid permutation (types match).
 	['hwb(from rebeccapurple h b w)', 'rgb(153, 102, 204)'],
-	['hwb(from rebeccapurple h alpha w / b)', 'rgba(213, 213, 213, 0.4)'],
+	['hwb(from rebeccapurple h calc(100% * alpha) w / b)', 'rgba(212, 212, 212, 0.4)'],
 	['hwb(from rebeccapurple h w w / w)', 'rgba(128, 51, 204, 0.2)'],
-	['hwb(from rebeccapurple h alpha alpha / alpha)', 'rgb(128, 128, 128)'],
-	['hwb(from rgb(20%, 40%, 60%, 80%) h b w)', 'rgb(102, 153, 204)'],
-	['hwb(from rgb(20%, 40%, 60%, 80%) h alpha w / b)', 'rgba(204, 204, 204, 0.4)'],
+	['hwb(from rebeccapurple h calc(100% * alpha) calc(100% * alpha) / alpha)', 'rgb(128, 128, 128)'],
+	['hwb(from rgb(20%, 40%, 60%, 80%) h b w)', 'rgba(102, 153, 204, 0.8)'],
+	['hwb(from rgb(20%, 40%, 60%, 80%) h calc(100% * alpha) w / b)', 'rgba(204, 204, 204, 0.4)'],
 	['hwb(from rgb(20%, 40%, 60%, 80%) h w w / w)', 'rgba(51, 128, 204, 0.2)'],
-	['hwb(from rgb(20%, 40%, 60%, 80%) h alpha alpha / alpha)', 'rgba(128, 128, 128, 0.8)'],
+	['hwb(from rgb(20%, 40%, 60%, 80%) h calc(100% * alpha) calc(100% * alpha) / alpha)', 'rgba(128, 128, 128, 0.8)'],
 
 	// Testing with calc().
 	['hwb(from rebeccapurple calc(h) calc(w) calc(b))', 'rgb(102, 51, 153)'],
@@ -267,7 +267,7 @@ const tests = [
 	// FIXME: Clarify with spec editors if 'none' should pass through to the constants.
 	['hwb(from hwb(none none none) h w b)', 'rgb(255, 0, 0)'],
 	['hwb(from hwb(none none none / none) h w b / alpha)', 'rgba(255, 0, 0, 0)'],
-	['hwb(from hwb(120deg none 50% / .5) h w b)', 'rgb(0, 128, 0)'],
+	['hwb(from hwb(120deg none 50% / .5) h w b)', 'rgba(0, 128, 0, 0.5)'],
 	['hwb(from hwb(120deg 20% 50% / none) h w b / alpha)', 'rgba(51, 128, 51, 0)'],
 	['hwb(from hwb(none 20% 50% / .5) h w b / alpha)', 'rgba(128, 51, 51, 0.5)'],
 
@@ -313,7 +313,7 @@ const tests = [
 	// Testing valid permutation (types match).
 	['lab(from lab(25 20 50) l b a)', 'lab(25 50 20)'],
 	['lab(from lab(25 20 50) l a a / a)', 'lab(25 20 20)'],
-	['lab(from lab(25 20 50 / 40%) l b a)', 'lab(25 50 20)'],
+	['lab(from lab(25 20 50 / 40%) l b a)', 'lab(25 50 20 / 0.4)'],
 	['lab(from lab(25 20 50 / 40%) l a a / a)', 'lab(25 20 20)'],
 
 	// Testing with calc().
@@ -376,7 +376,7 @@ const tests = [
 	// Testing valid permutation (types match).
 	['oklab(from oklab(0.25 0.2 0.5) l b a)', 'oklab(0.25 0.5 0.2)'],
 	['oklab(from oklab(0.25 0.2 0.5) l a a / a)', 'oklab(0.25 0.2 0.2 / 0.2)'],
-	['oklab(from oklab(0.25 0.2 0.5 / 40%) l b a)', 'oklab(0.25 0.5 0.2)'],
+	['oklab(from oklab(0.25 0.2 0.5 / 40%) l b a)', 'oklab(0.25 0.5 0.2 / 0.4)'],
 	['oklab(from oklab(0.25 0.2 0.5 / 40%) l a a / a)', 'oklab(0.25 0.2 0.2 / 0.2)'],
 
 	// Testing with calc().
@@ -398,12 +398,12 @@ const tests = [
 	['oklab(from oklab(0.25 0.2 0.5 / none) l a b / alpha)', 'oklab(0.25 0.2 0.5 / 0)'],
 
 	// lab and oklab tests that require different results due to percent scaling differences.
-	['lab(from lab(.7 45 30) alpha b a / l)', 'lab(100 30 45 / 0.7)'],
-	['lab(from lab(.7 45 30) alpha a b / alpha)', 'lab(100 45 30)'],
-	['lab(from lab(.7 45 30) alpha a a / alpha)', 'lab(100 45 45)'],
-	['lab(from lab(.7 45 30 / 40%) alpha b a / l)', 'lab(40 30 45 / 0.7)'],
-	['lab(from lab(.7 45 30 / 40%) alpha a b / alpha)', 'lab(40 45 30 / 0.4)'],
-	['lab(from lab(.7 45 30 / 40%) alpha a a / alpha)', 'lab(40 45 45 / 0.4)'],
+	['lab(from lab(.7 45 30) calc(100 * alpha) b a / l)', 'lab(100 30 45 / 0.7)'],
+	['lab(from lab(.7 45 30) calc(100 * alpha) a b / alpha)', 'lab(100 45 30)'],
+	['lab(from lab(.7 45 30) calc(100 * alpha) a a / alpha)', 'lab(100 45 45)'],
+	['lab(from lab(.7 45 30 / 40%) calc(100 * alpha) b a / l)', 'lab(40 30 45 / 0.7)'],
+	['lab(from lab(.7 45 30 / 40%) calc(100 * alpha) a b / alpha)', 'lab(40 45 30 / 0.4)'],
+	['lab(from lab(.7 45 30 / 40%) calc(100 * alpha) a a / alpha)', 'lab(40 45 45 / 0.4)'],
 
 	['oklab(from oklab(.7 0.45 0.3) alpha b a / l)', 'oklab(1 0.3 0.45 / 0.7)'],
 	['oklab(from oklab(.7 0.45 0.3) alpha a b / alpha)', 'oklab(1 0.45 0.3)'],
@@ -556,12 +556,12 @@ const tests = [
 	['oklch(from oklch(0.7 0.45 30 / none) l c h / alpha)', 'oklch(0.7 0.45 30 / 0)'],
 
 	// lch and oklch tests that require different results due to percent scaling differences.
-	['lch(from lch(.7 45 30) alpha c h / l)', 'lch(100 45 30 / 0.7)'],
-	['lch(from lch(.7 45 30) alpha c h / alpha)', 'lch(100 45 30)'],
-	['lch(from lch(.7 45 30) alpha c c / alpha)', 'lch(100 45 45)'],
-	['lch(from lch(.7 45 30 / 40%) alpha c h / l)', 'lch(40 45 30 / 0.7)'],
-	['lch(from lch(.7 45 30 / 40%) alpha c h / alpha)', 'lch(40 45 30 / 0.4)'],
-	['lch(from lch(.7 45 30 / 40%) alpha c c / alpha)', 'lch(40 45 45 / 0.4)'],
+	['lch(from lch(.7 45 30) calc(100 * alpha) c h / l)', 'lch(100 45 30 / 0.7)'],
+	['lch(from lch(.7 45 30) calc(100 * alpha) c h / alpha)', 'lch(100 45 30)'],
+	['lch(from lch(.7 45 30) calc(100 * alpha) c c / alpha)', 'lch(100 45 45)'],
+	['lch(from lch(.7 45 30 / 40%) calc(100 * alpha) c h / l)', 'lch(40 45 30 / 0.7)'],
+	['lch(from lch(.7 45 30 / 40%) calc(100 * alpha) c h / alpha)', 'lch(40 45 30 / 0.4)'],
+	['lch(from lch(.7 45 30 / 40%) calc(100 * alpha) c c / alpha)', 'lch(40 45 45 / 0.4)'],
 
 	['oklch(from oklch(.7 0.45 30) alpha c h / l)', 'oklch(1 0.45 30 / 0.7)'],
 	['oklch(from oklch(.7 0.45 30) alpha c h / alpha)', 'oklch(1 0.45 30)'],
@@ -572,7 +572,7 @@ const tests = [
 
 	['color(from color(srgb 0.7 0.5 0.3) srgb r g b)', 'color(srgb 0.7 0.5 0.3)'],
 	['color(from color(srgb 0.7 0.5 0.3) srgb r g b / alpha)', 'color(srgb 0.7 0.5 0.3)'],
-	['color(from color(srgb 0.7 0.5 0.3 / 40%) srgb r g b)', 'color(srgb 0.7 0.5 0.3)'],
+	['color(from color(srgb 0.7 0.5 0.3 / 40%) srgb r g b)', 'color(srgb 0.7 0.5 0.3 / 0.4)'],
 	['color(from color(srgb 0.7 0.5 0.3 / 40%) srgb r g b / alpha)', 'color(srgb 0.7 0.5 0.3 / 0.4)'],
 
 	// Test nesting relative colors.
@@ -621,7 +621,7 @@ const tests = [
 	['color(from color(srgb 0.7 0.5 0.3) srgb b alpha r / g)', 'color(srgb 0.3 1 0.7 / 0.5)'],
 	['color(from color(srgb 0.7 0.5 0.3) srgb r r r / r)', 'color(srgb 0.7 0.7 0.7 / 0.7)'],
 	['color(from color(srgb 0.7 0.5 0.3) srgb alpha alpha alpha / alpha)', 'color(srgb 1 1 1)'],
-	['color(from color(srgb 0.7 0.5 0.3 / 40%) srgb g b r)', 'color(srgb 0.5 0.3 0.7)'],
+	['color(from color(srgb 0.7 0.5 0.3 / 40%) srgb g b r)', 'color(srgb 0.5 0.3 0.7 / 0.4)'],
 	['color(from color(srgb 0.7 0.5 0.3 / 40%) srgb b alpha r / g)', 'color(srgb 0.3 0.4 0.7 / 0.5)'],
 	['color(from color(srgb 0.7 0.5 0.3 / 40%) srgb r r r / r)', 'color(srgb 0.7 0.7 0.7 / 0.7)'],
 	['color(from color(srgb 0.7 0.5 0.3 / 40%) srgb alpha alpha alpha / alpha)', 'color(srgb 0.4 0.4 0.4 / 0.4)'],
@@ -633,7 +633,7 @@ const tests = [
 	['color(from color(srgb 1.7 1.5 1.3 / 140%) srgb r g b / alpha)', 'color(srgb 1.7 1.5 1.3)'],
 	['color(from color(srgb -0.7 -0.5 -0.3) srgb r g b)', 'color(srgb -0.7 -0.5 -0.3)'],
 	['color(from color(srgb -0.7 -0.5 -0.3) srgb r g b / alpha)', 'color(srgb -0.7 -0.5 -0.3)'],
-	['color(from color(srgb -0.7 -0.5 -0.3 / -40%) srgb r g b)', 'color(srgb -0.7 -0.5 -0.3)'],
+	['color(from color(srgb -0.7 -0.5 -0.3 / -40%) srgb r g b)', 'color(srgb -0.7 -0.5 -0.3 / 0)'],
 	['color(from color(srgb -0.7 -0.5 -0.3 / -40%) srgb r g b / alpha)', 'color(srgb -0.7 -0.5 -0.3 / 0)'],
 
 	// Testing with calc().
@@ -656,7 +656,7 @@ const tests = [
 
 	['color(from color(srgb-linear 0.7 0.5 0.3) srgb-linear r g b)', 'color(srgb-linear 0.7 0.5 0.3)'],
 	['color(from color(srgb-linear 0.7 0.5 0.3) srgb-linear r g b / alpha)', 'color(srgb-linear 0.7 0.5 0.3)'],
-	['color(from color(srgb-linear 0.7 0.5 0.3 / 40%) srgb-linear r g b)', 'color(srgb-linear 0.7 0.5 0.3)'],
+	['color(from color(srgb-linear 0.7 0.5 0.3 / 40%) srgb-linear r g b)', 'color(srgb-linear 0.7 0.5 0.3 / 0.4)'],
 	['color(from color(srgb-linear 0.7 0.5 0.3 / 40%) srgb-linear r g b / alpha)', 'color(srgb-linear 0.7 0.5 0.3 / 0.4)'],
 
 	// Test nesting relative colors.
@@ -705,7 +705,7 @@ const tests = [
 	['color(from color(srgb-linear 0.7 0.5 0.3) srgb-linear b alpha r / g)', 'color(srgb-linear 0.3 1 0.7 / 0.5)'],
 	['color(from color(srgb-linear 0.7 0.5 0.3) srgb-linear r r r / r)', 'color(srgb-linear 0.7 0.7 0.7 / 0.7)'],
 	['color(from color(srgb-linear 0.7 0.5 0.3) srgb-linear alpha alpha alpha / alpha)', 'color(srgb-linear 1 1 1)'],
-	['color(from color(srgb-linear 0.7 0.5 0.3 / 40%) srgb-linear g b r)', 'color(srgb-linear 0.5 0.3 0.7)'],
+	['color(from color(srgb-linear 0.7 0.5 0.3 / 40%) srgb-linear g b r)', 'color(srgb-linear 0.5 0.3 0.7 / 0.4)'],
 	['color(from color(srgb-linear 0.7 0.5 0.3 / 40%) srgb-linear b alpha r / g)', 'color(srgb-linear 0.3 0.4 0.7 / 0.5)'],
 	['color(from color(srgb-linear 0.7 0.5 0.3 / 40%) srgb-linear r r r / r)', 'color(srgb-linear 0.7 0.7 0.7 / 0.7)'],
 	['color(from color(srgb-linear 0.7 0.5 0.3 / 40%) srgb-linear alpha alpha alpha / alpha)', 'color(srgb-linear 0.4 0.4 0.4 / 0.4)'],
@@ -717,7 +717,7 @@ const tests = [
 	['color(from color(srgb-linear 1.7 1.5 1.3 / 140%) srgb-linear r g b / alpha)', 'color(srgb-linear 1.7 1.5 1.3)'],
 	['color(from color(srgb-linear -0.7 -0.5 -0.3) srgb-linear r g b)', 'color(srgb-linear -0.7 -0.5 -0.3)'],
 	['color(from color(srgb-linear -0.7 -0.5 -0.3) srgb-linear r g b / alpha)', 'color(srgb-linear -0.7 -0.5 -0.3)'],
-	['color(from color(srgb-linear -0.7 -0.5 -0.3 / -40%) srgb-linear r g b)', 'color(srgb-linear -0.7 -0.5 -0.3)'],
+	['color(from color(srgb-linear -0.7 -0.5 -0.3 / -40%) srgb-linear r g b)', 'color(srgb-linear -0.7 -0.5 -0.3 / 0)'],
 	['color(from color(srgb-linear -0.7 -0.5 -0.3 / -40%) srgb-linear r g b / alpha)', 'color(srgb-linear -0.7 -0.5 -0.3 / 0)'],
 
 	// Testing with calc().
@@ -740,7 +740,7 @@ const tests = [
 
 	['color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b)', 'color(a98-rgb 0.7 0.5 0.3)'],
 	['color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / alpha)', 'color(a98-rgb 0.7 0.5 0.3)'],
-	['color(from color(a98-rgb 0.7 0.5 0.3 / 40%) a98-rgb r g b)', 'color(a98-rgb 0.7 0.5 0.3)'],
+	['color(from color(a98-rgb 0.7 0.5 0.3 / 40%) a98-rgb r g b)', 'color(a98-rgb 0.7 0.5 0.3 / 0.4)'],
 	['color(from color(a98-rgb 0.7 0.5 0.3 / 40%) a98-rgb r g b / alpha)', 'color(a98-rgb 0.7 0.5 0.3 / 0.4)'],
 
 	// Test nesting relative colors.
@@ -789,7 +789,7 @@ const tests = [
 	['color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb b alpha r / g)', 'color(a98-rgb 0.3 1 0.7 / 0.5)'],
 	['color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r r r / r)', 'color(a98-rgb 0.7 0.7 0.7 / 0.7)'],
 	['color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb alpha alpha alpha / alpha)', 'color(a98-rgb 1 1 1)'],
-	['color(from color(a98-rgb 0.7 0.5 0.3 / 40%) a98-rgb g b r)', 'color(a98-rgb 0.5 0.3 0.7)'],
+	['color(from color(a98-rgb 0.7 0.5 0.3 / 40%) a98-rgb g b r)', 'color(a98-rgb 0.5 0.3 0.7 / 0.4)'],
 	['color(from color(a98-rgb 0.7 0.5 0.3 / 40%) a98-rgb b alpha r / g)', 'color(a98-rgb 0.3 0.4 0.7 / 0.5)'],
 	['color(from color(a98-rgb 0.7 0.5 0.3 / 40%) a98-rgb r r r / r)', 'color(a98-rgb 0.7 0.7 0.7 / 0.7)'],
 	['color(from color(a98-rgb 0.7 0.5 0.3 / 40%) a98-rgb alpha alpha alpha / alpha)', 'color(a98-rgb 0.4 0.4 0.4 / 0.4)'],
@@ -801,7 +801,7 @@ const tests = [
 	['color(from color(a98-rgb 1.7 1.5 1.3 / 140%) a98-rgb r g b / alpha)', 'color(a98-rgb 1.7 1.5 1.3)'],
 	['color(from color(a98-rgb -0.7 -0.5 -0.3) a98-rgb r g b)', 'color(a98-rgb -0.7 -0.5 -0.3)'],
 	['color(from color(a98-rgb -0.7 -0.5 -0.3) a98-rgb r g b / alpha)', 'color(a98-rgb -0.7 -0.5 -0.3)'],
-	['color(from color(a98-rgb -0.7 -0.5 -0.3 / -40%) a98-rgb r g b)', 'color(a98-rgb -0.7 -0.5 -0.3)'],
+	['color(from color(a98-rgb -0.7 -0.5 -0.3 / -40%) a98-rgb r g b)', 'color(a98-rgb -0.7 -0.5 -0.3 / 0)'],
 	['color(from color(a98-rgb -0.7 -0.5 -0.3 / -40%) a98-rgb r g b / alpha)', 'color(a98-rgb -0.7 -0.5 -0.3 / 0)'],
 
 	// Testing with calc().
@@ -824,7 +824,7 @@ const tests = [
 
 	['color(from color(rec2020 0.7 0.5 0.3) rec2020 r g b)', 'color(rec2020 0.7 0.5 0.3)'],
 	['color(from color(rec2020 0.7 0.5 0.3) rec2020 r g b / alpha)', 'color(rec2020 0.7 0.5 0.3)'],
-	['color(from color(rec2020 0.7 0.5 0.3 / 40%) rec2020 r g b)', 'color(rec2020 0.7 0.5 0.3)'],
+	['color(from color(rec2020 0.7 0.5 0.3 / 40%) rec2020 r g b)', 'color(rec2020 0.7 0.5 0.3 / 0.4)'],
 	['color(from color(rec2020 0.7 0.5 0.3 / 40%) rec2020 r g b / alpha)', 'color(rec2020 0.7 0.5 0.3 / 0.4)'],
 
 	// Test nesting relative colors.
@@ -873,7 +873,7 @@ const tests = [
 	['color(from color(rec2020 0.7 0.5 0.3) rec2020 b alpha r / g)', 'color(rec2020 0.3 1 0.7 / 0.5)'],
 	['color(from color(rec2020 0.7 0.5 0.3) rec2020 r r r / r)', 'color(rec2020 0.7 0.7 0.7 / 0.7)'],
 	['color(from color(rec2020 0.7 0.5 0.3) rec2020 alpha alpha alpha / alpha)', 'color(rec2020 1 1 1)'],
-	['color(from color(rec2020 0.7 0.5 0.3 / 40%) rec2020 g b r)', 'color(rec2020 0.5 0.3 0.7)'],
+	['color(from color(rec2020 0.7 0.5 0.3 / 40%) rec2020 g b r)', 'color(rec2020 0.5 0.3 0.7 / 0.4)'],
 	['color(from color(rec2020 0.7 0.5 0.3 / 40%) rec2020 b alpha r / g)', 'color(rec2020 0.3 0.4 0.7 / 0.5)'],
 	['color(from color(rec2020 0.7 0.5 0.3 / 40%) rec2020 r r r / r)', 'color(rec2020 0.7 0.7 0.7 / 0.7)'],
 	['color(from color(rec2020 0.7 0.5 0.3 / 40%) rec2020 alpha alpha alpha / alpha)', 'color(rec2020 0.4 0.4 0.4 / 0.4)'],
@@ -885,7 +885,7 @@ const tests = [
 	['color(from color(rec2020 1.7 1.5 1.3 / 140%) rec2020 r g b / alpha)', 'color(rec2020 1.7 1.5 1.3)'],
 	['color(from color(rec2020 -0.7 -0.5 -0.3) rec2020 r g b)', 'color(rec2020 -0.7 -0.5 -0.3)'],
 	['color(from color(rec2020 -0.7 -0.5 -0.3) rec2020 r g b / alpha)', 'color(rec2020 -0.7 -0.5 -0.3)'],
-	['color(from color(rec2020 -0.7 -0.5 -0.3 / -40%) rec2020 r g b)', 'color(rec2020 -0.7 -0.5 -0.3)'],
+	['color(from color(rec2020 -0.7 -0.5 -0.3 / -40%) rec2020 r g b)', 'color(rec2020 -0.7 -0.5 -0.3 / 0)'],
 	['color(from color(rec2020 -0.7 -0.5 -0.3 / -40%) rec2020 r g b / alpha)', 'color(rec2020 -0.7 -0.5 -0.3 / 0)'],
 
 	// Testing with calc().
@@ -908,7 +908,7 @@ const tests = [
 
 	['color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g b)', 'color(prophoto-rgb 0.7 0.5 0.3)'],
 	['color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g b / alpha)', 'color(prophoto-rgb 0.7 0.5 0.3)'],
-	['color(from color(prophoto-rgb 0.7 0.5 0.3 / 40%) prophoto-rgb r g b)', 'color(prophoto-rgb 0.7 0.5 0.3)'],
+	['color(from color(prophoto-rgb 0.7 0.5 0.3 / 40%) prophoto-rgb r g b)', 'color(prophoto-rgb 0.7 0.5 0.3 / 0.4)'],
 	['color(from color(prophoto-rgb 0.7 0.5 0.3 / 40%) prophoto-rgb r g b / alpha)', 'color(prophoto-rgb 0.7 0.5 0.3 / 0.4)'],
 
 	// Test nesting relative colors.
@@ -957,7 +957,7 @@ const tests = [
 	['color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb b alpha r / g)', 'color(prophoto-rgb 0.3 1 0.7 / 0.5)'],
 	['color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r r r / r)', 'color(prophoto-rgb 0.7 0.7 0.7 / 0.7)'],
 	['color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb alpha alpha alpha / alpha)', 'color(prophoto-rgb 1 1 1)'],
-	['color(from color(prophoto-rgb 0.7 0.5 0.3 / 40%) prophoto-rgb g b r)', 'color(prophoto-rgb 0.5 0.3 0.7)'],
+	['color(from color(prophoto-rgb 0.7 0.5 0.3 / 40%) prophoto-rgb g b r)', 'color(prophoto-rgb 0.5 0.3 0.7 / 0.4)'],
 	['color(from color(prophoto-rgb 0.7 0.5 0.3 / 40%) prophoto-rgb b alpha r / g)', 'color(prophoto-rgb 0.3 0.4 0.7 / 0.5)'],
 	['color(from color(prophoto-rgb 0.7 0.5 0.3 / 40%) prophoto-rgb r r r / r)', 'color(prophoto-rgb 0.7 0.7 0.7 / 0.7)'],
 	['color(from color(prophoto-rgb 0.7 0.5 0.3 / 40%) prophoto-rgb alpha alpha alpha / alpha)', 'color(prophoto-rgb 0.4 0.4 0.4 / 0.4)'],
@@ -969,7 +969,7 @@ const tests = [
 	['color(from color(prophoto-rgb 1.7 1.5 1.3 / 140%) prophoto-rgb r g b / alpha)', 'color(prophoto-rgb 1.7 1.5 1.3)'],
 	['color(from color(prophoto-rgb -0.7 -0.5 -0.3) prophoto-rgb r g b)', 'color(prophoto-rgb -0.7 -0.5 -0.3)'],
 	['color(from color(prophoto-rgb -0.7 -0.5 -0.3) prophoto-rgb r g b / alpha)', 'color(prophoto-rgb -0.7 -0.5 -0.3)'],
-	['color(from color(prophoto-rgb -0.7 -0.5 -0.3 / -40%) prophoto-rgb r g b)', 'color(prophoto-rgb -0.7 -0.5 -0.3)'],
+	['color(from color(prophoto-rgb -0.7 -0.5 -0.3 / -40%) prophoto-rgb r g b)', 'color(prophoto-rgb -0.7 -0.5 -0.3 / 0)'],
 	['color(from color(prophoto-rgb -0.7 -0.5 -0.3 / -40%) prophoto-rgb r g b / alpha)', 'color(prophoto-rgb -0.7 -0.5 -0.3 / 0)'],
 
 	// Testing with calc().
@@ -992,7 +992,7 @@ const tests = [
 
 	['color(from color(display-p3 0.7 0.5 0.3) display-p3 r g b)', 'color(display-p3 0.7 0.5 0.3)'],
 	['color(from color(display-p3 0.7 0.5 0.3) display-p3 r g b / alpha)', 'color(display-p3 0.7 0.5 0.3)'],
-	['color(from color(display-p3 0.7 0.5 0.3 / 40%) display-p3 r g b)', 'color(display-p3 0.7 0.5 0.3)'],
+	['color(from color(display-p3 0.7 0.5 0.3 / 40%) display-p3 r g b)', 'color(display-p3 0.7 0.5 0.3 / 0.4)'],
 	['color(from color(display-p3 0.7 0.5 0.3 / 40%) display-p3 r g b / alpha)', 'color(display-p3 0.7 0.5 0.3 / 0.4)'],
 
 	// Test nesting relative colors.
@@ -1041,7 +1041,7 @@ const tests = [
 	['color(from color(display-p3 0.7 0.5 0.3) display-p3 b alpha r / g)', 'color(display-p3 0.3 1 0.7 / 0.5)'],
 	['color(from color(display-p3 0.7 0.5 0.3) display-p3 r r r / r)', 'color(display-p3 0.7 0.7 0.7 / 0.7)'],
 	['color(from color(display-p3 0.7 0.5 0.3) display-p3 alpha alpha alpha / alpha)', 'color(display-p3 1 1 1)'],
-	['color(from color(display-p3 0.7 0.5 0.3 / 40%) display-p3 g b r)', 'color(display-p3 0.5 0.3 0.7)'],
+	['color(from color(display-p3 0.7 0.5 0.3 / 40%) display-p3 g b r)', 'color(display-p3 0.5 0.3 0.7 / 0.4)'],
 	['color(from color(display-p3 0.7 0.5 0.3 / 40%) display-p3 b alpha r / g)', 'color(display-p3 0.3 0.4 0.7 / 0.5)'],
 	['color(from color(display-p3 0.7 0.5 0.3 / 40%) display-p3 r r r / r)', 'color(display-p3 0.7 0.7 0.7 / 0.7)'],
 	['color(from color(display-p3 0.7 0.5 0.3 / 40%) display-p3 alpha alpha alpha / alpha)', 'color(display-p3 0.4 0.4 0.4 / 0.4)'],
@@ -1053,7 +1053,7 @@ const tests = [
 	['color(from color(display-p3 1.7 1.5 1.3 / 140%) display-p3 r g b / alpha)', 'color(display-p3 1.7 1.5 1.3)'],
 	['color(from color(display-p3 -0.7 -0.5 -0.3) display-p3 r g b)', 'color(display-p3 -0.7 -0.5 -0.3)'],
 	['color(from color(display-p3 -0.7 -0.5 -0.3) display-p3 r g b / alpha)', 'color(display-p3 -0.7 -0.5 -0.3)'],
-	['color(from color(display-p3 -0.7 -0.5 -0.3 / -40%) display-p3 r g b)', 'color(display-p3 -0.7 -0.5 -0.3)'],
+	['color(from color(display-p3 -0.7 -0.5 -0.3 / -40%) display-p3 r g b)', 'color(display-p3 -0.7 -0.5 -0.3 / 0)'],
 	['color(from color(display-p3 -0.7 -0.5 -0.3 / -40%) display-p3 r g b / alpha)', 'color(display-p3 -0.7 -0.5 -0.3 / 0)'],
 
 	// Testing with calc().
@@ -1076,7 +1076,7 @@ const tests = [
 
 	['color(from color(xyz 7 -20.5 100) xyz x y z)', 'color(xyz-d65 7 -20.5 100)'],
 	['color(from color(xyz 7 -20.5 100) xyz x y z / alpha)', 'color(xyz-d65 7 -20.5 100)'],
-	['color(from color(xyz 7 -20.5 100 / 40%) xyz x y z)', 'color(xyz-d65 7 -20.5 100)'],
+	['color(from color(xyz 7 -20.5 100 / 40%) xyz x y z)', 'color(xyz-d65 7 -20.5 100 / 0.4)'],
 	['color(from color(xyz 7 -20.5 100 / 40%) xyz x y z / alpha)', 'color(xyz-d65 7 -20.5 100 / 0.4)'],
 
 	// Test nesting relative colors.
@@ -1108,7 +1108,7 @@ const tests = [
 	// Testing valid permutation (types match).
 	['color(from color(xyz 7 -20.5 100) xyz y z x)', 'color(xyz-d65 -20.5 100 7)'],
 	['color(from color(xyz 7 -20.5 100) xyz x x x / x)', 'color(xyz-d65 7 7 7)'],
-	['color(from color(xyz 7 -20.5 100 / 40%) xyz y z x)', 'color(xyz-d65 -20.5 100 7)'],
+	['color(from color(xyz 7 -20.5 100 / 40%) xyz y z x)', 'color(xyz-d65 -20.5 100 7 / 0.4)'],
 	['color(from color(xyz 7 -20.5 100 / 40%) xyz x x x / x)', 'color(xyz-d65 7 7 7)'],
 
 	// Testing with calc().
@@ -1131,7 +1131,7 @@ const tests = [
 
 	['color(from color(xyz-d65 7 -20.5 100) xyz-d65 x y z)', 'color(xyz-d65 7 -20.5 100)'],
 	['color(from color(xyz-d65 7 -20.5 100) xyz-d65 x y z / alpha)', 'color(xyz-d65 7 -20.5 100)'],
-	['color(from color(xyz-d65 7 -20.5 100 / 40%) xyz-d65 x y z)', 'color(xyz-d65 7 -20.5 100)'],
+	['color(from color(xyz-d65 7 -20.5 100 / 40%) xyz-d65 x y z)', 'color(xyz-d65 7 -20.5 100 / 0.4)'],
 	['color(from color(xyz-d65 7 -20.5 100 / 40%) xyz-d65 x y z / alpha)', 'color(xyz-d65 7 -20.5 100 / 0.4)'],
 
 	// Test nesting relative colors.
@@ -1163,7 +1163,7 @@ const tests = [
 	// Testing valid permutation (types match).
 	['color(from color(xyz-d65 7 -20.5 100) xyz-d65 y z x)', 'color(xyz-d65 -20.5 100 7)'],
 	['color(from color(xyz-d65 7 -20.5 100) xyz-d65 x x x / x)', 'color(xyz-d65 7 7 7)'],
-	['color(from color(xyz-d65 7 -20.5 100 / 40%) xyz-d65 y z x)', 'color(xyz-d65 -20.5 100 7)'],
+	['color(from color(xyz-d65 7 -20.5 100 / 40%) xyz-d65 y z x)', 'color(xyz-d65 -20.5 100 7 / 0.4)'],
 	['color(from color(xyz-d65 7 -20.5 100 / 40%) xyz-d65 x x x / x)', 'color(xyz-d65 7 7 7)'],
 
 	// Testing with calc().
@@ -1186,7 +1186,7 @@ const tests = [
 
 	['color(from color(xyz-d50 7 -20.5 100) xyz-d50 x y z)', 'color(xyz-d50 7 -20.5 100)'],
 	['color(from color(xyz-d50 7 -20.5 100) xyz-d50 x y z / alpha)', 'color(xyz-d50 7 -20.5 100)'],
-	['color(from color(xyz-d50 7 -20.5 100 / 40%) xyz-d50 x y z)', 'color(xyz-d50 7 -20.5 100)'],
+	['color(from color(xyz-d50 7 -20.5 100 / 40%) xyz-d50 x y z)', 'color(xyz-d50 7 -20.5 100 / 0.4)'],
 	['color(from color(xyz-d50 7 -20.5 100 / 40%) xyz-d50 x y z / alpha)', 'color(xyz-d50 7 -20.5 100 / 0.4)'],
 
 	// Test nesting relative colors.
@@ -1218,7 +1218,7 @@ const tests = [
 	// Testing valid permutation (types match).
 	['color(from color(xyz-d50 7 -20.5 100) xyz-d50 y z x)', 'color(xyz-d50 -20.5 100 7)'],
 	['color(from color(xyz-d50 7 -20.5 100) xyz-d50 x x x / x)', 'color(xyz-d50 7 7 7)'],
-	['color(from color(xyz-d50 7 -20.5 100 / 40%) xyz-d50 y z x)', 'color(xyz-d50 -20.5 100 7)'],
+	['color(from color(xyz-d50 7 -20.5 100 / 40%) xyz-d50 y z x)', 'color(xyz-d50 -20.5 100 7 / 0.4)'],
 	['color(from color(xyz-d50 7 -20.5 100 / 40%) xyz-d50 x x x / x)', 'color(xyz-d50 7 7 7)'],
 
 	// Testing with calc().

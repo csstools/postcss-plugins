@@ -316,3 +316,10 @@ to-clone {
 	color: rgb(179, 35, 35);
 	color: lab(40% 56.6 39);
 }
+
+.test-css-color-5-interop {
+	color-1: lab(from rgb(179, 35, 35) l a b);
+	color-1: lab(from lab(40% 56.6 39) l a b);
+	color-2: lch(from rgb(163, 57, 39) l c h);
+	color-2: lch(from lch(40% 56.6 39) l c h);
+}

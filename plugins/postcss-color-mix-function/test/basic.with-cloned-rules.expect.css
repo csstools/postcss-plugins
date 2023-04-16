@@ -4,8 +4,8 @@
 }
 
 .complex {
-	color: rgba(255, 102, 0, 0.339833);
-	color: color(display-p3 0.9361 0.42808 0.14191 / 0.339833);
+	color: rgba(255, 102, 0, 0.34);
+	color: color(display-p3 0.9361 0.42808 0.14191 / 0.34);
 	color: color-mix(
 		in lch,
 		purple calc(100% * sin(0.1)),
@@ -82,7 +82,7 @@
 
 .spec-example-7 {
 	/* TODO : https://github.com/w3c/csswg-drafts/issues/8444 */
-	color-1: rgb(151, 255, 117);
+	color-1: rgb(0, 255, 0);
 	color-1: color(display-p3 0.63217 1 0.41255);
 	color-1: color-mix(in hsl, color(display-p3 0 1 0) 80%, yellow);
 }
@@ -214,4 +214,9 @@
 .foo {
 	color: rgb(0, 0, 255);
 	color: color-mix(in srgb, blue, blue 65%);
+}
+
+.test-css-color-5-interop {
+	color-1: rgba(92, 133, 74, 0.325);
+	color-1: color-mix(in oklch, rgb(from red r 0 0 / 0), rgb(from hsl(180deg 80% 30% / 0.5) 0 g b) 65%)
 }

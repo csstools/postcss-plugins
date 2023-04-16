@@ -3,7 +3,7 @@ import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css
 import { ColorNotation } from '../color-notation';
 import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { xyz } from '@csstools/color-helpers';
+import { conversions, xyz } from '@csstools/color-helpers';
 import { colorData_to_XYZ_D50 } from '../color-data';
 import { toPrecision } from './to-precision';
 import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
@@ -12,7 +12,11 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 	color.channels = convertPowerlessComponentsToMissingComponents(color.channels, color.colorNotation);
 	let srgb = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
 
-	if (
+	if (color.colorNotation === ColorNotation.HWB) {
+		srgb = conversions.HWB_to_sRGB(srgb);
+	} else if(color.colorNotation === ColorNotation.HSL) {
+		srgb = conversions.HSL_to_sRGB(srgb);
+	} else if (
 		color.colorNotation !== ColorNotation.RGB &&
 		color.colorNotation !== ColorNotation.HEX
 	) {

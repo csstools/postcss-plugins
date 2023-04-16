@@ -187,3 +187,10 @@
 	color-1: rgb(229, 125, 245);
 	color-2: rgb(229, 125, 245);
 }
+
+.test-css-color-5-interop {
+	color-1: oklab(from rgb(141, 0, 0) l a b);
+	color-1: oklab(from color(display-p3 0.50566 0.0781 0) l a b);
+	color-2: oklch(from rgb(130, 31, 0) l c h);
+	color-2: oklch(from color(display-p3 0.48896 0.1211 0) l c h);
+}

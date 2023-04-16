@@ -117,7 +117,7 @@ export function threeChannelSpaceSeparated(
 				return false;
 			}
 
-			syntaxFlags.push(SyntaxFlag.RelativeColorSyntax);
+			colorData.syntaxFlags.add(SyntaxFlag.RelativeColorSyntax);
 
 			if (relativeToColor.colorNotation !== colorNotation) {
 				relativeToColor = colorDataTo(relativeToColor, colorNotation);
