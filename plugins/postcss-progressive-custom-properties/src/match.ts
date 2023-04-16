@@ -9,7 +9,16 @@ type MatcherNode = {
 }
 
 export function matches(a: MatcherNode, b: MatcherNode) {
-	if (a.isVariable && !!b) {
+	if (
+		a.isVariable &&
+		(
+			!!b && (
+				b.type === 'word' ||
+				b.type === 'string' ||
+				b.type === 'function'
+			)
+		)
+	) {
 		return true;
 	}
 
@@ -22,7 +31,7 @@ export function matches(a: MatcherNode, b: MatcherNode) {
 	}
 
 	if (a.nodes && b.nodes) {
-		for (let i = 0; i < a.nodes.length; i++) {
+		for (let i = 0; i < Math.max(a.nodes.length, b.nodes.length); i++) {
 			let ia = i;
 			let ib = i;
 
@@ -38,9 +47,11 @@ export function matches(a: MatcherNode, b: MatcherNode) {
 				return false;
 			}
 
-			if (!matches(a.nodes[ia], b.nodes[ib])) {
-				return false;
+			if (matches(a.nodes[ia], b.nodes[ib])) {
+				continue;
 			}
+
+			return false;
 		}
 
 		return true;

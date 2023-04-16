@@ -63,9 +63,11 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"color",
+		"color space interpolation",
 		"conic",
 		"css",
 		"gradients",
+		"hue interpolation method",
 		"interpolation",
 		"linear",
 		"postcss",

@@ -141,7 +141,7 @@
 	color-6: color-mix(in hsl, rgb(255 0 0 / 0), blue 65%);
 }
 
-.foo {
+.same-color {
 	color: color-mix(in srgb, blue, blue 65%);
 }
 

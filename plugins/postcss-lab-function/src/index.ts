@@ -23,7 +23,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 		postcssPlugin: 'postcss-lab-function',
 		Declaration: (decl: Declaration) => {
 			const originalValue = decl.value;
-			if (!(lab_lch_functionRegex.test(originalValue.toLowerCase()))) {
+			if (!(lab_lch_functionRegex.test(originalValue))) {
 				return;
 			}
 

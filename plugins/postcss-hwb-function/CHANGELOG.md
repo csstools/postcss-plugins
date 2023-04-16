@@ -1,5 +1,9 @@
 # Changes to PostCSS HWB Function
 
+### Unreleased (patch)
+
+- Ignore relative color syntax
+
 ### 2.2.1 (April 10, 2023)
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)

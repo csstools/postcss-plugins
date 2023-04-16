@@ -1,0 +1,85 @@
+.valid {
+	--color-rcs-1: rgb(196, 129, 72);
+	--color-rcs-3: rgb(234, 133, 82);
+	--color-rcs-5: rgb(179, 157, 51);
+	--color-rcs-6: rgb(179, 35, 35);
+	--color-rcs-7: rgb(163, 57, 39);
+	--color-rcs-8: rgb(141, 0, 0);
+	--color-rcs-9: rgb(130, 31, 0);
+	--color-rcs-10: rgb(0, 0, 255);
+	--color-rcs-11: rgb(0, 0, 255);
+	--color-rcs-12: rgb(0, 0, 255);
+}
+
+@supports (color: rgb(from red r g b)) and (color: color(a98-rgb 0 0 0)) {
+.valid {
+	--color-rcs-1: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / alpha);
+}
+}
+
+@supports (color: rgb(from red r g b)) and (color: color(prophoto-rgb 0 0 0)) {
+.valid {
+	--color-rcs-3: color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g b);
+}
+}
+
+@supports (color: rgb(from red r g b)) and (color: hwb(0 0% 0%)) {
+.valid {
+	--color-rcs-5: hwb(from hwb(50deg 20% 30%) h w b);
+}
+}
+
+@supports (color: rgb(from red r g b)) and (color: lab(0% 0 0)) {
+.valid {
+	--color-rcs-6: lab(from lab(40% 56.6 39) l a b);
+}
+}
+
+@supports (color: rgb(from red r g b)) and (color: lch(0% 0 0)) {
+.valid {
+	--color-rcs-7: lch(from lch(40% 56.6 39) l c h);
+}
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+.valid {
+	--color-rcs-8: color(display-p3 0.50566 0.0781 0);
+}
+}
+
+@supports (color: rgb(from red r g b)) and (color: oklab(0% 0 0)) {
+.valid {
+	--color-rcs-8: oklab(from oklab(40% 0.566 0.39) l a b);
+}
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+.valid {
+	--color-rcs-9: color(display-p3 0.48896 0.1211 0);
+}
+}
+
+@supports (color: rgb(from red r g b)) and (color: oklch(0% 0 0)) {
+.valid {
+	--color-rcs-9: oklch(from oklch(40% 0.566 39deg) l c h);
+}
+}
+
+@supports (color: rgb(from red r g b)) {
+.valid {
+	--color-rcs-10: rgb(from blue r g b);
+	--color-rcs-11: rgb(from blue r g b / alpha);
+	--color-rcs-12: hsl(from blue h s l / alpha);
+}
+}
+
+.invalid {
+	--color-rcs-invalid-1: rgba(from blue r g b);
+	--color-rcs-invalid-2: hsla(from blue h s l);
+	--color-rcs-invalid-3: rgba(from blue r g b / alpha);
+	--color-rcs-invalid-4: hsla(from blue h s l / alpha);
+	--color-rcs-invalid-5: rgb(from blue r, g, b);
+	--color-rcs-invalid-6: hsl(from blue h, s, l);
+	--color-rcs-invalid-7: rgb(from blue r, g, b, alpha);
+	--color-rcs-invalid-8: hsl(from blue h, s, l, alpha);
+}

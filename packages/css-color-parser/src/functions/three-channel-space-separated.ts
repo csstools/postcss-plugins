@@ -20,6 +20,8 @@ export function threeChannelSpaceSeparated(
 	syntaxFlags: Array<SyntaxFlag>,
 	colorParser: ColorParser,
 ): ColorData | false {
+	const functionName = toLowerCaseAZ(colorFunctionNode.getName());
+
 	const channel1: Array<ComponentValue> = [];
 	const channel2: Array<ComponentValue> = [];
 	const channel3: Array<ComponentValue> = [];
@@ -99,7 +101,9 @@ export function threeChannelSpaceSeparated(
 			channel1.length === 0 &&
 			isTokenNode(node) &&
 			node.value[0] === TokenType.Ident &&
-			toLowerCaseAZ(node.value[4].value) === 'from'
+			toLowerCaseAZ(node.value[4].value) === 'from' &&
+			functionName !== 'hsla' &&
+			functionName !== 'rgba'
 		) {
 			if (relativeToColor) {
 				return false;

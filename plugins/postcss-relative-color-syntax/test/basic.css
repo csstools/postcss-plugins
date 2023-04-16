@@ -1,0 +1,23 @@
+.valid {
+	--color-rcs-1: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / alpha);
+	--color-rcs-3: color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g b);
+	--color-rcs-5: hwb(from hwb(50deg 20% 30%) h w b);
+	--color-rcs-6: lab(from lab(40% 56.6 39) l a b);
+	--color-rcs-7: lch(from lch(40% 56.6 39) l c h);
+	--color-rcs-8: oklab(from oklab(40% 0.566 0.39) l a b);
+	--color-rcs-9: oklch(from oklch(40% 0.566 39deg) l c h);
+	--color-rcs-10: rgb(from blue r g b);
+	--color-rcs-11: rgb(from blue r g b / alpha);
+	--color-rcs-12: hsl(from blue h s l / alpha);
+}
+
+.invalid {
+	--color-rcs-invalid-1: rgba(from blue r g b);
+	--color-rcs-invalid-2: hsla(from blue h s l);
+	--color-rcs-invalid-3: rgba(from blue r g b / alpha);
+	--color-rcs-invalid-4: hsla(from blue h s l / alpha);
+	--color-rcs-invalid-5: rgb(from blue r, g, b);
+	--color-rcs-invalid-6: hsl(from blue h, s, l);
+	--color-rcs-invalid-7: rgb(from blue r, g, b, alpha);
+	--color-rcs-invalid-8: hsl(from blue h, s, l, alpha);
+}
