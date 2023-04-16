@@ -110,11 +110,12 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
+		"@webref/css": "^6.5.1",
 		"postcss-simple-vars": "^7.0.1"
 	},
 	"scripts": {
 		"prebuild": "node ./scripts/generate-plugins-data.mjs && eslint --fix ./src/plugins/*.mjs",
-		"build": "rollup -c ../../rollup/default.mjs",
+		"build": "rollup -c ../../rollup/default.mjs && node ./scripts/update-logical-properties-test.mjs",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ./docs/generate.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
