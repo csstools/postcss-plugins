@@ -24,7 +24,7 @@
 	--background-image: linear-gradient(rgb(56, 87, 35) 0%, rgb(64, 83, 46), rgb(70, 79, 54), rgb(76, 74, 62), rgb(82, 69, 68), rgb(86, 64, 75), rgb(91, 58, 81), rgb(95, 51, 87), rgb(99, 44, 93), rgb(103, 34, 98), rgb(106, 21, 104) 100%);
 }
 
-@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0% / 0)) {
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) {
 :root {
 	--background-image: linear-gradient(in oklab, hsl(96, 42%, 24%) 0%, hsl(302, 67%, 25%) 100%);
 }
