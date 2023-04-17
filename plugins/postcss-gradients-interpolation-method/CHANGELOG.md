@@ -1,6 +1,6 @@
 # Changes to PostCSS Gradients Interpolation Method
 
-### Unreleased (patch)
+### 3.0.4 (April 17, 2023)
 
 - Fix infinite loop when parsing gradient functions. (see : https://github.com/csstools/postcss-plugins/issues/948)
 
