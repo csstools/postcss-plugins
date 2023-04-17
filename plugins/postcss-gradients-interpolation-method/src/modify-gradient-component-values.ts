@@ -33,7 +33,7 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 
 		{
 			// Advance to "in" keyword
-			while (!(isTokenNode(node) && node.value[0] === TokenType.Ident && inKeywordRegex.test(node.value[4].value))) {
+			while (node && !(isTokenNode(node) && node.value[0] === TokenType.Ident && inKeywordRegex.test(node.value[4].value))) {
 				if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
 					// comma before "in" keyword
 					return false;
@@ -114,12 +114,16 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 		}
 
 		// Find first comma
-		while (!isTokenNode(node) || node.value[0] !== TokenType.Comma) {
+		while (node && (!isTokenNode(node) || node.value[0] !== TokenType.Comma)) {
 			i++;
 			node = gradientFunction.value[i];
 		}
 
 		firstComma = node;
+		if (!firstComma) {
+			return false;
+		}
+
 		remainder = gradientFunction.value.slice(i + 1);
 	}
 

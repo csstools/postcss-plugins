@@ -1,5 +1,9 @@
 # Changes to PostCSS Gradients Interpolation Method
 
+### Unreleased (patch)
+
+- Fix infinite loop when parsing gradient functions. (see : https://github.com/csstools/postcss-plugins/issues/948)
+
 ### 3.0.3 (April 10, 2023)
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
