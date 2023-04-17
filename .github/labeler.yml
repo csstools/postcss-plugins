@@ -11,6 +11,7 @@
   - packages/postcss-tape/**
   - packages/selector-specificity/**
   - plugins/postcss-base-plugin/**
+  - plugins/postcss-debug-logger/**
   - rollup/**
 
 "plugin-packs/postcss-preset-env":

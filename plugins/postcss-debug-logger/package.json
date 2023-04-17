@@ -1,8 +1,18 @@
 {
-	"name": "@csstools/postcss-gradients-interpolation-method",
-	"description": "Use interpolation methods in CSS gradient functions",
-	"version": "3.0.4",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"name": "@csstools/postcss-debug-logger",
+	"description": "Log the AST nodes PostCSS is processing",
+	"version": "1.0.0",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "CC0-1.0",
 	"funding": [
 		{
@@ -34,12 +44,6 @@
 		"README.md",
 		"dist"
 	],
-	"dependencies": {
-		"@csstools/css-color-parser": "^1.1.2",
-		"@csstools/css-parser-algorithms": "^2.1.1",
-		"@csstools/css-tokenizer": "^2.1.1",
-		"@csstools/postcss-progressive-custom-properties": "^2.0.0"
-	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
@@ -54,33 +58,21 @@
 		"test": "node .tape.mjs && node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method#readme",
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-debug-logger#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
-		"directory": "plugins/postcss-gradients-interpolation-method"
+		"directory": "plugins/postcss-debug-logger"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"color",
-		"color space interpolation",
-		"conic",
-		"css",
-		"gradients",
-		"hue interpolation method",
-		"interpolation",
-		"linear",
-		"postcss",
+		"debug",
 		"postcss-plugin",
-		"radial",
-		"repeating",
-		"syntax"
+		"utility"
 	],
 	"csstools": {
-		"cssdbId": "gradients-interpolation-method",
-		"exportName": "postcssGradientsInterpolationMethod",
-		"humanReadableName": "PostCSS Gradients Interpolation Method",
-		"specUrl": "https://drafts.csswg.org/css-images-4/#linear-gradients"
+		"exportName": "postcssDebugLogger",
+		"humanReadableName": "PostCSS Debug Logger"
 	},
 	"volta": {
 		"extends": "../../package.json"

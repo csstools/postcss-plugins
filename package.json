@@ -18,6 +18,7 @@
 		"packages/media-query-list-parser",
 		"packages/*",
 		"plugins/postcss-progressive-custom-properties",
+		"plugins/postcss-debug-logger",
 		"plugins/*",
 		"plugin-packs/*",
 		"cli/*",
