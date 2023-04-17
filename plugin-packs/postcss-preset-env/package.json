@@ -53,7 +53,7 @@
 		"@csstools/postcss-color-function": "^2.2.1",
 		"@csstools/postcss-color-mix-function": "^1.0.1",
 		"@csstools/postcss-font-format-keywords": "^2.0.2",
-		"@csstools/postcss-gradients-interpolation-method": "^3.0.3",
+		"@csstools/postcss-gradients-interpolation-method": "^3.0.4",
 		"@csstools/postcss-hwb-function": "^2.2.1",
 		"@csstools/postcss-ic-unit": "^2.0.2",
 		"@csstools/postcss-is-pseudo-class": "^3.2.0",
