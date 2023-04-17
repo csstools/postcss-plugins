@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-debug-logger",
 	"description": "Log the AST nodes PostCSS is processing",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
