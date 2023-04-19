@@ -49,8 +49,6 @@ export function color(colorNode: ComponentValue): ColorData | false {
 				return colorFn(colorNode, color);
 			case 'color-mix':
 				return colorMix(colorNode, color);
-			default:
-				return false;
 		}
 	}
 
@@ -65,15 +63,8 @@ export function color(colorNode: ComponentValue): ColorData | false {
 				return namedColorData;
 			}
 
-			const keywordColorData = colorKeyword(colorNode.value[4].value);
-			if (keywordColorData !== false) {
-				return keywordColorData;
-			}
-
-			return false;
+			return colorKeyword(colorNode.value[4].value);
 		}
-
-		return false;
 	}
 
 	return false;

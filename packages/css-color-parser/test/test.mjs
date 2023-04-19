@@ -3,6 +3,7 @@ import './basic/color-function.mjs';
 import './basic/color-mix-function.mjs';
 import './basic/keywords.mjs';
 import './basic/lab.mjs';
+import './basic/invalid.mjs';
 import './basic/lch.mjs';
 import './basic/named-colors.mjs';
 import './basic/none.mjs';

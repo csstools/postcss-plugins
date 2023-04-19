@@ -3,6 +3,7 @@
 ### Unreleased (minor)
 
 - Fix gamut mapping
+- Fix `XYZ_D50_to_ProPhoto`
 - Export `sRGB_to_HWB`
 
 ### 2.0.0 (March 25, 2023)

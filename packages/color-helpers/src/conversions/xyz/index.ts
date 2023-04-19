@@ -420,7 +420,6 @@ export function ProPhoto_RGB_to_XYZ_D50(x: Color): Color {
  */
 export function XYZ_D50_to_ProPhoto(x: Color): Color {
 	let y = x;
-	y = D50_to_D65(y);
 	y = XYZ_to_lin_ProPhoto(y);
 	y = gam_ProPhoto(y);
 	return y;
