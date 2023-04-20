@@ -444,7 +444,7 @@
 	text-indent: 2em;
 	content: var(--value-2ic);
 	left: 2em;
-	left: var(--non-existing, 2em);
+	left: var(--non-existing, 2ic);
 	width: calc(8em + 20px);
 	height: 10px;
 	margin: 0.5em 1em .2em;
@@ -562,4 +562,6 @@
 
 .gradients-interpolation-method {
 	--background-image: linear-gradient(in oklch decreasing hue, hsl(0, 85%, 75%) 0%, hsl(180, 80%, 65%) 100%);
+
+	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, oklch(80% .3 34) 0%, oklch(90% .3 200) 100%);
 }
