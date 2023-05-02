@@ -146,6 +146,10 @@ foo[baz=":is(.some, .other)"], .ok {
 	order: 37;
 }
 
+:is(.a, .a *):is(h1, h2, h3, h4, h5, h6) {
+	order: 38;
+}
+
 :is(input, button):is(:hover, :focus) {
 	to-clone: 1;
 }

@@ -1,5 +1,18 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased (patch)
+
+- Fix compound selectors with `*`.
+
+```diff
+:is(.a *):is(h1, h2, h3) {}
+
+/* becomes : */
+
+- .a *h1, .a *h2, .a *h3 {}
++ .a h1, .a h2, .a h3 {}
+```
+
 ### 3.2.0 (April 10, 2023)
 
 - Add support for more complex selector patterns. In particular anything where `:is()` is in the left-most compound selector.

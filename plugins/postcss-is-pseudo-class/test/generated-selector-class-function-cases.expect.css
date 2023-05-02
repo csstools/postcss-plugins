@@ -1990,7 +1990,7 @@ __foo {
 	order: 239;
 }
 
-*.some, *.other {
+.some, .other {
 	order: 240;
 }
 
@@ -1998,7 +1998,7 @@ __foo {
 	order: 240;
 }
 
-*.some, *.other {
+.some, .other {
 	order: 241;
 }
 

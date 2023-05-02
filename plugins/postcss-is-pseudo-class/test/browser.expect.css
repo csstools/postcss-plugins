@@ -15,7 +15,7 @@
 	font-size: 20px;
 }
 
-#main_a *.e.e:not(.does-not-exist):not(.does-not-exist)+.d, #main_a .e.e.g:not(.does-not-exist)+.d {
+#main_a .e.e:not(.does-not-exist):not(.does-not-exist)+.d, #main_a .e.e.g:not(.does-not-exist)+.d {
 	color: red;
 	font-size: 20px;
 }
