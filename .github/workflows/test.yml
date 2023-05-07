@@ -32,12 +32,12 @@ jobs:
         node: [14, 16, 18, 20]
         include:
         - os: macos-latest
-          node: 20
+          node: 18
         - os: windows-latest
-          node: 20
+          node: 18
         - os: ubuntu-latest
           is_base_os_version: true
-        - node: 20
+        - node: 18
           is_base_node_version: true
         - node: 14
           needs_npm_update: true
