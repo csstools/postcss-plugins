@@ -29,18 +29,16 @@ jobs:
       # Enable annotations only for node 20 + ubuntu
       matrix:
         os: [ubuntu-latest]
-        node: [14, 16, 18, 20]
+        node: [16, 18, 20]
         include:
         - os: macos-latest
-          node: 20
+          node: 18
         - os: windows-latest
-          node: 20
+          node: 18
         - os: ubuntu-latest
           is_base_os_version: true
-        - node: 20
+        - node: 18
           is_base_node_version: true
-        - node: 14
-          needs_npm_update: true
     steps:
       - uses: actions/checkout@v3
         with:
@@ -48,12 +46,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-
-      - name: npm update
-        run: |
-          npm install -g npm@8
-          npm --version
-        if: matrix.needs_npm_update
 
       - name: npm ci
         run: |
