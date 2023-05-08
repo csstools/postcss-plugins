@@ -386,6 +386,14 @@ button:is(textarea) {
 	order: 37;
 }
 
+h1.a, h2.a, h3.a, h4.a, h5.a, h6.a, .a h1, .a h2, .a h3, .a h4, .a h5, .a h6 {
+	order: 38;
+}
+
+:is(.a, .a *):is(h1, h2, h3, h4, h5, h6) {
+	order: 38;
+}
+
 input:hover, input:focus, button:hover, button:focus {
 	cloned: 1;
 	to-clone: 1;
