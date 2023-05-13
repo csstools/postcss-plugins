@@ -9,19 +9,19 @@ you might want to use [PostCSS Nested] instead.
 
 ```pcss
 .foo {
-	color: red;
+  color: red;
 
-	&:hover {
-		color: green;
-	}
+  &:hover {
+    color: green;
+  }
 
-	> .bar {
-		color: blue;
-	}
+  > .bar {
+    color: blue;
+  }
 
-	@media (prefers-color-scheme: dark) {
-		color: cyan;
-	}
+  @media (prefers-color-scheme: dark) {
+    color: cyan;
+  }
 }
 
 /* becomes */
@@ -30,16 +30,16 @@ you might want to use [PostCSS Nested] instead.
 	color: red;
 }
 .foo:hover {
-		color: green;
-	}
-.foo > .bar {
-		color: blue;
-	}
-@media (prefers-color-scheme: dark) {
-	.foo {
-		color: cyan;
+  color: green;
 }
-	}
+.foo > .bar {
+  color: blue;
+}
+@media (prefers-color-scheme: dark) {
+  .foo {
+    color: cyan;
+  }
+}
 ```
 
 ## Usage
@@ -57,7 +57,7 @@ const postcss = require('postcss');
 const postcssNesting = require('postcss-nesting');
 
 postcss([
-	postcssNesting(/* pluginOptions */)
+  postcssNesting(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -90,25 +90,25 @@ You will get a warning when selectors start with a letter:
 
 ```pcss
 .foo {
-	/* ❌ invalid */
-	span {
-		color: hotpink;
-	}
+  /* ❌ invalid */
+  span {
+    color: hotpink;
+  }
 
-	/* ✅ valid */
-	& span {
-		color: hotpink;
-	}
+  /* ✅ valid */
+  & span {
+    color: hotpink;
+  }
 
-	/* ❌ invalid */
-	span & {
-		color: hotpink;
-	}
+  /* ❌ invalid */
+  span & {
+    color: hotpink;
+  }
 
-	/* ✅ valid */
-	:is(span) & {
-		color: hotpink;
-	}
+  /* ✅ valid */
+  :is(span) & {
+    color: hotpink;
+  }
 }	
 ```
 
@@ -123,9 +123,9 @@ Before :
 ```css
 #alpha,
 .beta {
-	&:hover {
-		order: 1;
-	}
+  &:hover {
+    order: 1;
+  }
 }
 ```
 
@@ -137,7 +137,7 @@ postcssNesting()
 
 ```css
 :is(#alpha,.beta):hover {
-	order: 1;
+  order: 1;
 }
 ```
 
@@ -149,13 +149,13 @@ After **with** the option :
 
 ```js
 postcssNesting({
-	noIsPseudoSelector: true
+  noIsPseudoSelector: true
 })
 ```
 
 ```css
 #alpha:hover, .beta:hover {
-	order: 1;
+  order: 1;
 }
 ```
 
@@ -170,9 +170,9 @@ Before :
 
 ```css
 .alpha > .beta {
-	& + & {
-		order: 2;
-	}
+  & + & {
+    order: 2;
+  }
 }
 ```
 
@@ -184,7 +184,7 @@ postcssNesting()
 
 ```css
 :is(.alpha > .beta) + :is(.alpha > .beta) {
-	order: 2;
+  order: 2;
 }
 ```
 
@@ -192,13 +192,13 @@ After **with** the option :
 
 ```js
 postcssNesting({
-	noIsPseudoSelector: true
+  noIsPseudoSelector: true
 })
 ```
 
 ```css
 .alpha > .beta + .alpha > .beta {
-	order: 2;
+  order: 2;
 }
 ```
 
@@ -209,7 +209,7 @@ _writing the selector without nesting is advised here_
 ```css
 /* without nesting */
 .alpha > .beta + .beta {
-	order: 2;
+  order: 2;
 }
 ```
 
@@ -223,3 +223,4 @@ _writing the selector without nesting is advised here_
 [PostCSS Nested]: https://github.com/postcss/postcss-nested
 [Sass]: https://sass-lang.com/
 [CSS Nesting specification]: https://www.w3.org/TR/css-nesting-1/
+
