@@ -191,10 +191,10 @@ function csstoolsTinySource() {
 	for (let i = 0; i < 1000; i++) {
 		tokenStreamLength = 0;
 
+		const start = performance.now();
+
 		for (let j = 0; j < tinySources.length; j++) {
 			const source = tinySources[j];
-
-			const start = performance.now();
 
 			const t = tokenizer(
 				{
@@ -216,10 +216,10 @@ function csstoolsTinySource() {
 
 				tokenStreamLength++;
 			}
-
-			const end = performance.now();
-			results.push(end - start);
 		}
+
+		const end = performance.now();
+		results.push(end - start);
 	}
 
 	results.sort((a, b) => {
@@ -310,10 +310,10 @@ function postcssTinySource() {
 	for (let i = 0; i < 1000; i++) {
 		tokenStreamLength = 0;
 
+		const start = performance.now();
+
 		for (let j = 0; j < tinySources.length; j++) {
 			const source = tinySources[j];
-
-			const start = performance.now();
 
 			const t = postcssTokenizer(
 				{
@@ -330,10 +330,10 @@ function postcssTinySource() {
 
 				tokenStreamLength++;
 			}
-
-			const end = performance.now();
-			results.push(end - start);
 		}
+
+		const end = performance.now();
+		results.push(end - start);
 	}
 
 	results.sort((a, b) => {
