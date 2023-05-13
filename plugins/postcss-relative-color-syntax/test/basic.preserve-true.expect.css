@@ -9,6 +9,8 @@
 	--color-rcs-10: rgb(0, 0, 255);
 	--color-rcs-11: rgb(0, 0, 255);
 	--color-rcs-12: rgb(0, 0, 255);
+	--color-rcs-13: rgba(from blue r g b / alpha);
+	--color-rcs-14: hsla(from blue h s l / alpha);
 }
 
 @supports (color: rgb(from red r g b)) and (color: color(a98-rgb 0 0 0)) {
@@ -82,4 +84,134 @@
 	--color-rcs-invalid-6: hsl(from blue h, s, l);
 	--color-rcs-invalid-7: rgb(from blue r, g, b, alpha);
 	--color-rcs-invalid-8: hsl(from blue h, s, l, alpha);
+}
+
+
+.spec-example-10 {
+	background: rgb(12, 100, 100);
+	background: oklab(from oklab(54.3% -22.5% -5%) calc(1.0 - l) calc(a * 0.8) b);
+}
+
+.spec-example-11 {
+	background: rgb(77, 121, 47);
+	background: oklch(from oklch(52.6% 0.115 44.6deg) l c calc(h + 90deg));
+}
+
+.spec-example-12 {
+	color: rgb(1, 64, 0);
+	color: color(display-p3 0.06186 0.25379 0);
+	color: lch(from green calc(l / 2) c h);
+}
+
+.spec-example-13 {
+	background: rgba(0, 0, 255, 0.8);
+	background: rgb(from blue r g b / 80%);
+}
+
+.spec-example-14 {
+	--blue-into-gray: rgb(28, 28, 28);
+	--red-into-gray: rgb(77, 77, 77);
+	--line-into-gray: rgb(150, 150, 150);
+	--darkolivegreen-into-gray: rgb(94, 94, 94);
+}
+
+@supports (color: rgb(from red r g b)) {
+.spec-example-14 {
+	--blue-into-gray: rgb(from blue calc(r * .3 + g * .59 + b * .11) calc(r * .3 + g * .59 + b * .11) calc(r * .3 + g * .59 + b * .11));
+	--red-into-gray: rgb(from red calc(r * .3 + g * .59 + b * .11) calc(r * .3 + g * .59 + b * .11) calc(r * .3 + g * .59 + b * .11));
+	--line-into-gray: rgb(from lime calc(r * .3 + g * .59 + b * .11) calc(r * .3 + g * .59 + b * .11) calc(r * .3 + g * .59 + b * .11));
+	--darkolivegreen-into-gray: rgb(from darkolivegreen calc(r * .3 + g * .59 + b * .11) calc(r * .3 + g * .59 + b * .11) calc(r * .3 + g * .59 + b * .11));
+}
+}
+
+.spec-example-15 {
+	color: rgba(153, 153, 153, 0.9);
+	color: color(from color(srgb 0 0 0 / 60%) srgb alpha 0.6 0.6 / 0.9);
+}
+
+.spec-example-15 {
+	color: rgba(153, 153, 153, 0.9);
+	color: color(from color(srgb 0 0 0 / 60%) srgb alpha 0.6 0.6 / 0.9);
+}
+
+.spec-example-16 {
+	background: linear-gradient(in Oklab to right, rgb(97, 90, 91), #4C3);
+	background: linear-gradient(in Oklab to right, oklch(from hsl(none 3% 50%) calc(l * 0.8) c h), #4C3);
+}
+
+.spec-example-17 {
+	color: rgb(255, 92, 92);
+	color: rgb(from indianred 255 g b);
+}
+
+.spec-example-18 {
+	color: rgba(from darkblue 16, 32, b, 0.5);
+}
+
+.spec-example-19 {
+	color: rgba(16, 32, 139, 0.5);
+	color: rgb(from darkblue 16 32 b / 0.5);
+}
+
+.spec-example-20 {
+	color: rgb(178, 32, 40);
+	color: hsl(from lightseagreen calc(h + 180deg) s l);
+}
+
+.spec-example-21{
+	color-1: rgb(20, 30, 40);
+	color-1: lab(from rgb(20 30 40 / 50%) l a b / 100%);
+	color-2: rgba(20, 30, 40, 0.4);
+	color-2: lab(from rgb(20 30 40 / 50%) l a b / calc(alpha * 0.8))
+}
+
+.spec-example-22 {
+	--mygray: rgb(152, 152, 152);
+}
+
+@supports (color: rgb(from red r g b)) {
+.spec-example-22 {
+	--mygray: lab(from orchid l 0 0);
+}
+}
+
+.spec-example-23 {
+	color: rgb(169, 101, 32);
+	color: lch(from peru calc(l * 0.8) c h);
+}
+
+.spec-example-24 {
+	--complement: rgb(225, 130, 149);
+}
+
+@supports (color: rgb(from red r g b)) {
+.spec-example-24 {
+	--complement: lch(from lightseagreen l c calc(h + 180deg));
+}
+}
+
+.spec-example-25 {
+	--mygray: rgb(152, 152, 152);
+	--mymuted: rgb(185, 136, 182);
+}
+
+@supports (color: rgb(from red r g b)) {
+.spec-example-25 {
+	--mygray: lch(from orchid l 0 h);
+	--mymuted: lch(from lch(from orchid l 0 h) l 30 h);
+}
+}
+
+.spec-example-26 {
+	color: rgb(0, 159, 164);
+	color: color(display-p3 0 0.63049 0.66369);
+	color: lch(from lch(60% 90 320) l c calc(h - 120deg));
+	color-2: rgb(85, 249, 219);
+	color-2: hsl(from lch(60% 90 320) calc(h - 120deg) s l);
+}
+
+.spec-example-27 {
+	color: rgb(0, 178, 186);
+	color: color(display-p3 0 0.71015 0.76142);
+	color: oklch(from lch(60% 90 320) l c calc(h - 120deg));
 }
