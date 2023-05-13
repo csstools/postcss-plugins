@@ -35,7 +35,7 @@ import { promises as fsp } from 'fs';
 
 	if (!process.env.DEBUG) {
 		const browser = await puppeteer.launch({
-			headless: true,
+			headless: 'new',
 		});
 
 		const page = await browser.newPage();

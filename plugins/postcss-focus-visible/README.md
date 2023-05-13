@@ -5,9 +5,9 @@
 [PostCSS Focus Visible] lets you use the `:focus-visible` pseudo-class in CSS, 
 following the [Selectors Level 4 specification].
 
-It is the companion to the [focus-visible polyfill]. Note that this plugin
-alone **is not** sufficient to polyfill for `:focus-visible` and that you need
-the browser's polyfill as well.
+To use this feature you need to do two things :
+- add the [PostCSS plugin](#usage) that transforms the selector into a class or attribute
+- add the [focus-visible polyfill] that sets the attribute or class on elements in a browser
 
 [!['Can I use' table](https://caniuse.bitsofco.de/image/css-focus-visible.png)](https://caniuse.com/#feat=css-focus-visible)
 

@@ -32,7 +32,7 @@ function processCss(source, config) {
 	return postcss([presetEnv]).process(
 		source,
 		{
-			form: 'input',
+			from: 'input',
 			to: 'output',
 		},
 	).then((result) => {

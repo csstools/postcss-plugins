@@ -50,7 +50,7 @@ import { promises as fsp } from 'fs';
 
 	if (!process.env.DEBUG) {
 		const browser = await puppeteer.launch({
-			headless: true,
+			headless: 'new',
 		});
 
 		const page = await browser.newPage();
@@ -96,7 +96,7 @@ import { promises as fsp } from 'fs';
 			await page.evaluate(async () => window.checkElement('default', 'a-child', true));
 			await page.evaluate(async () => window.checkElement('default', 'a-child-input', true));
 
-			await page.keyboard.press('Tab');
+			await page.click('body');
 			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', false));
 			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
 			await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
@@ -143,7 +143,7 @@ import { promises as fsp } from 'fs';
 			await page.evaluate(async () => window.checkElement('default', 'a-child', true));
 			await page.evaluate(async () => window.checkElement('default', 'a-child-input', true));
 
-			await page.keyboard.press('Tab');
+			await page.click('body');
 			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', false));
 			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
 			await page.evaluate(async () => window.checkElement('default', 'a-parent', false));

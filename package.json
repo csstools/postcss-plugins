@@ -28,14 +28,14 @@
 		"@babel/core": "^7.20.7",
 		"@babel/preset-env": "^7.19.3",
 		"@rollup/plugin-babel": "^6.0.0",
-		"@rollup/plugin-commonjs": "^24.0.0",
+		"@rollup/plugin-commonjs": "^25.0.0",
 		"@rollup/plugin-node-resolve": "^15.0.0",
 		"@rollup/plugin-terser": "^0.4.1",
 		"@rollup/plugin-typescript": "^11.0.0",
 		"@stryker-mutator/core": "^6.0.2",
 		"@typescript-eslint/eslint-plugin": "^5.48.1",
 		"eslint": "^8.38.0",
-		"rollup": "^3.17.1",
+		"rollup": "^3.21.0",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.4"
 	},
@@ -51,7 +51,7 @@
 		"test:browser": "npm run test:browser --workspaces --if-present"
 	},
 	"volta": {
-		"node": "18.13.0",
-		"npm": "9.4.0"
+		"node": "20.0.0",
+		"npm": "9.6.5"
 	}
 }

@@ -665,7 +665,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	content: 'something';
 	content: var(--value-2ic);
 	left: 2em;
-	left: var(--non-existing, 2em);
+	left: var(--non-existing, 2ic);
 	width: -webkit-calc(8em + 20px);
 	width: -moz-calc(8em + 20px);
 	width: calc(8em + 20px);

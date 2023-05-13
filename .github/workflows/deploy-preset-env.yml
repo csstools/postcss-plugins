@@ -5,6 +5,7 @@ on:
     branches:
       - 'main'
     paths:
+      -  'sites/package-lock.json'
       -  'sites/postcss-preset-env/**'
 
 defaults:

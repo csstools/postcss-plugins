@@ -15,16 +15,21 @@ export default [
 	'focus-within-pseudo-class',
 	'not-pseudo-class', // run not-pseudo-class after other selectors have been transpiled
 	'logical-properties-and-values', // run logical-properties-and-values before dir-pseudo-class
+	'float-clear-logical-values',
+	'logical-resize',
+	'logical-viewport-units',
 	'dir-pseudo-class',
 	'all-property', // run all-property before other property polyfills
 	'gradients-interpolation-method', // run before all color functions
 	'color-mix', // run before any other color functions
-	'color-functional-notation',
-	'double-position-gradients',
-	'hexadecimal-alpha-notation',
-	'hwb-function',
 	'lab-function',
+	'oklab-function',
+	'color-function',
+	'hwb-function',
+	'color-functional-notation',
 	'rebeccapurple-color',
+	'hexadecimal-alpha-notation',
+	'double-position-gradients',
 	'blank-pseudo-class',
 	'break-properties',
 	'font-variant-property',
@@ -36,7 +41,19 @@ export default [
 	'overflow-wrap-property',
 	'place-properties',
 	'system-ui-font-family',
+	'font-format-keywords',
+	'display-two-values',
+	'ic-unit',
+	'opacity-percentage',
+	'text-decoration-shorthand',
+	'unset-value',
+
+	// Math functions.
 	'stepped-value-functions',
 	'trigonometric-functions',
+	'clamp',
+	'nested-calc',
+	// Math functions.
+
 	'cascade-layers',
 ];
