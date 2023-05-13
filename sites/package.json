@@ -25,9 +25,6 @@
 		"stylelint": "^15.0.0",
 		"stylelint-config-standard": "^32.0.0"
 	},
-	"overrides": {
-		"ua-parser-js": "^1.0.33"
-	},
 	"scripts": {
 		"setup-workspace": "npm ci",
 		"build": "npm run build --workspaces --if-present",
