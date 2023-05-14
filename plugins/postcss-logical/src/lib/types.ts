@@ -1,3 +1,5 @@
+import type { Declaration } from 'postcss';
+
 export enum Direction {
 	Block = 'block',
 	Inline = 'inline',
@@ -34,3 +36,5 @@ export type DirectionConfig = {
 	[Direction.Inline]: [Axes, Axes];
 	inlineIsHorizontal: boolean;
 };
+
+export type TransformFunction = (decl: Declaration) => Array<Declaration>

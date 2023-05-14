@@ -4,7 +4,7 @@ import { DirectionConfig, DirectionValues } from './types';
 import { logicalToPhysical } from '../utils/logical-to-physical';
 import { cloneDeclaration } from './clone-declaration';
 
-function doTransform(declaration: Declaration, directionValues: Array<string>, config: DirectionConfig) {
+function doTransform(declaration: Declaration, directionValues: Array<string>, config: DirectionConfig): Array<Declaration> {
 	const { prop, value } = declaration;
 	const valueAST = valueParser(value);
 
@@ -19,16 +19,15 @@ function doTransform(declaration: Declaration, directionValues: Array<string>, c
 
 	const modifiedValued = valueAST.toString();
 	if (modifiedValued !== value) {
-		cloneDeclaration(declaration, modifiedValued, prop);
-		return true;
+		return cloneDeclaration(declaration, modifiedValued, prop);
 	}
 
-	return false;
+	return [];
 }
 
 export function transformValue(
 	config: DirectionConfig,
-): (declaration: Declaration) => boolean {
+): (declaration: Declaration) => Array<Declaration> {
 	return (declaration: Declaration) => {
 		return doTransform(declaration, Object.values(DirectionValues), config);
 	};

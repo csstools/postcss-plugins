@@ -3,7 +3,7 @@ import { cloneDeclaration } from './clone-declaration';
 import valueParser from 'postcss-value-parser';
 
 export function transformInset(
-): (declaration: Declaration) => boolean {
+): (declaration: Declaration) => Array<Declaration> {
 	return (declaration: Declaration) => {
 		const valuesAST = valueParser(declaration.value);
 		const values = valuesAST.nodes.filter((node) => node.type !== 'space' && node.type !== 'comment');
@@ -38,14 +38,14 @@ export function transformInset(
 			bottom = valueParser.stringify(values[2]);
 			left = valueParser.stringify(values[3]);
 		} else {
-			return false;
+			return [];
 		}
 
-		cloneDeclaration(declaration, top, 'top');
-		cloneDeclaration(declaration, right, 'right');
-		cloneDeclaration(declaration, bottom, 'bottom');
-		cloneDeclaration(declaration, left, 'left');
-
-		return true;
+		return [
+			...cloneDeclaration(declaration, top, 'top'),
+			...cloneDeclaration(declaration, right, 'right'),
+			...cloneDeclaration(declaration, bottom, 'bottom'),
+			...cloneDeclaration(declaration, left, 'left'),
+		];
 	};
 }
