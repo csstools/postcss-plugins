@@ -77,10 +77,10 @@
 		"relative color syntax"
 	],
 	"csstools": {
-		"cssdbId": "TODO",
+		"cssdbId": "relative-color-syntax",
 		"exportName": "postcssRelativeColorSyntax",
 		"humanReadableName": "PostCSS Relative Color Syntax",
-		"specUrl": "https://www.w3.org/TR/css-color-5/"
+		"specUrl": "https://www.w3.org/TR/css-color-5/#relative-colors"
 	},
 	"volta": {
 		"extends": "../../package.json"

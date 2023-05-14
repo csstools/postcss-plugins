@@ -1,6 +1,6 @@
 # PostCSS Relative Color Syntax [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-relative-color-syntax.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/TODO.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-relative-color-syntax.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/relative-color-syntax.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 [PostCSS Relative Color Syntax] lets you use the relative color syntax in CSS color functions following [CSS Color Module 5].
 
@@ -71,10 +71,10 @@ postcssRelativeColorSyntax({ preserve: true })
 ```
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[css-url]: https://cssdb.org/#TODO
+[css-url]: https://cssdb.org/#relative-color-syntax
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/@csstools/postcss-relative-color-syntax
 
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Relative Color Syntax]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax
-[CSS Color Module 5]: https://www.w3.org/TR/css-color-5/
+[CSS Color Module 5]: https://www.w3.org/TR/css-color-5/#relative-colors
