@@ -1,13 +1,14 @@
 import { listWorkspaces } from '../list-workspaces/list-workspaces.mjs';
 import fs from 'fs/promises'
 import path from 'path'
-import { npmVersion } from './npm-version.mjs';
-import { nowFormatted } from './date-format.mjs';
-import { commitAfterPackageRelease } from './commit.mjs';
-import { npmPublish } from './npm-publish.mjs';
-import { updateDocumentation } from './docs.mjs';
-import { npmInstall } from './npm-install.mjs';
+import { addUpdatedPackagesToChangelog } from './add-to-changelog.mjs';
+import { commitAfterDependencyUpdates, commitAfterPackageRelease } from './commit.mjs';
 import { discordAnnounce } from './discord-announce.mjs';
+import { nowFormatted } from './date-format.mjs';
+import { npmInstall } from './npm-install.mjs';
+import { npmPublish } from './npm-publish.mjs';
+import { npmVersion } from './npm-version.mjs';
+import { updateDocumentation } from './docs.mjs';
 
 const workspaces = await listWorkspaces();
 // Things to release
@@ -110,6 +111,8 @@ for (const workspace of notReleasableNow.values()) {
 	const packageInfo = JSON.parse(await fs.readFile(path.join(workspace.path, 'package.json')));
 	let didChange = false;
 
+	let changeLogAdditions = '';
+
 	for (const dependency of workspace.dependencies) {
 		if (needsRelease.has(dependency)) {
 			const updated = needsRelease.get(dependency);
@@ -121,6 +124,7 @@ for (const workspace of notReleasableNow.values()) {
 				updated.newVersion
 			) {
 				packageInfo.dependencies[updated.name] = '^' + updated.newVersion;
+				changeLogAdditions += `- Updated \`${updated.name}\` to \`${updated.newVersion}\` (${updated.increment})\n`;
 				didChange = true;
 			}
 			if (
@@ -130,6 +134,7 @@ for (const workspace of notReleasableNow.values()) {
 				updated.newVersion
 			) {
 				packageInfo.devDependencies[updated.name] = '^' + updated.newVersion;
+				// dev dependencies are not included in the changelog
 				didChange = true;
 			}
 			if (
@@ -139,6 +144,7 @@ for (const workspace of notReleasableNow.values()) {
 				updated.newVersion
 			) {
 				packageInfo.peerDependencies[updated.name] = '^' + updated.newVersion;
+				changeLogAdditions += `- Updated \`${updated.name}\` to \`${updated.newVersion}\` (${updated.increment})\n`;
 				didChange = true;
 			}
 		}
@@ -148,10 +154,22 @@ for (const workspace of notReleasableNow.values()) {
 		didChangeDownstreamPackages = true;
 		await fs.writeFile(path.join(workspace.path, 'package.json'), JSON.stringify(packageInfo, null, '\t') + '\n');
 	}
+
+	if (didChange && changeLogAdditions) {
+		let changelog = (await fs.readFile(path.join(workspace.path, 'CHANGELOG.md'))).toString();
+		changelog = addUpdatedPackagesToChangelog(workspace, changelog, changeLogAdditions);
+
+		await fs.writeFile(path.join(workspace.path, 'CHANGELOG.md'), changelog);
+	}
 }
 
 console.log('\nUpdating lock file');
 await npmInstall();
+
+if (didChangeDownstreamPackages) {
+	await npmInstall();
+	await commitAfterDependencyUpdates();
+}
 
 console.log('\nDone 🎉');
 

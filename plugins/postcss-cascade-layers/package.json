@@ -22,10 +22,16 @@
 		}
 	],
 	"license": "CC0-1.0",
-	"funding": {
-		"type": "opencollective",
-		"url": "https://opencollective.com/csstools"
-	},
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},
@@ -56,7 +62,7 @@
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
 		"postcss-import": "^15.0.0",
-		"puppeteer": "^19.5.2"
+		"puppeteer": "^20.1.1"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

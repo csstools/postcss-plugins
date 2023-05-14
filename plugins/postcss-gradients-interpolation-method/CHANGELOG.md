@@ -1,5 +1,19 @@
 # Changes to PostCSS Gradients Interpolation Method
 
+### 3.0.4 (April 17, 2023)
+
+- Fix infinite loop when parsing gradient functions. (see : https://github.com/csstools/postcss-plugins/issues/948)
+
+### 3.0.3 (April 10, 2023)
+
+- Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
+- Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
+- Updated `@csstools/css-color-parser` to `1.1.2` (patch)
+
+### 3.0.2 (April 10, 2023)
+
+- Fix interpolation method `longer`, `increasing`,... for color stops with the same color.
+
 ### 3.0.1 (March 28, 2023)
 
 - Skip gamut mapping for interpolation color hints.

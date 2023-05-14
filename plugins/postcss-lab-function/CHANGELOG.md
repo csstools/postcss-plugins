@@ -1,5 +1,11 @@
 # Changes to PostCSS Lab Function
 
+### 5.2.1 (April 10, 2023)
+
+- Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
+- Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
+- Updated `@csstools/css-color-parser` to `1.1.2` (patch)
+
 ### 5.2.0 (March 25, 2023)
 
 - Add `@csstools/css-color-parser` dependency for all color value transformations.

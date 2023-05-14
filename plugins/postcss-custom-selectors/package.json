@@ -1,7 +1,7 @@
 {
 	"name": "postcss-custom-selectors",
 	"description": "Use Custom Selectors in CSS",
-	"version": "7.1.2",
+	"version": "7.1.3",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -24,10 +24,16 @@
 		}
 	],
 	"license": "MIT",
-	"funding": {
-		"type": "opencollective",
-		"url": "https://opencollective.com/csstools"
-	},
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},
@@ -49,9 +55,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/cascade-layer-name-parser": "^1.0.0",
-		"@csstools/css-parser-algorithms": "^2.0.0",
-		"@csstools/css-tokenizer": "^2.0.0",
+		"@csstools/cascade-layer-name-parser": "^1.0.2",
+		"@csstools/css-parser-algorithms": "^2.1.1",
+		"@csstools/css-tokenizer": "^2.1.1",
 		"postcss-selector-parser": "^6.0.4"
 	},
 	"peerDependencies": {

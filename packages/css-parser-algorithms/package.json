@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-parser-algorithms",
 	"description": "Algorithms to help you parse CSS from an array of tokens.",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -14,10 +14,16 @@
 		}
 	],
 	"license": "MIT",
-	"funding": {
-		"type": "opencollective",
-		"url": "https://opencollective.com/csstools"
-	},
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},
@@ -39,7 +45,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-tokenizer": "^2.0.0"
+		"@csstools/css-tokenizer": "^2.1.1"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

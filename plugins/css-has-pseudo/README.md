@@ -4,6 +4,10 @@
 
 [PostCSS Has Pseudo] lets you style elements relative to other elements in CSS, following the [Selectors Level 4] specification.
 
+To use this feature you need to do two things :
+- add the [PostCSS plugin](#usage) that transforms the selector into a class or attribute
+- add the [browser polyfill](#browser) that sets the attribute or class on elements in a browser
+
 ```pcss
 .title:has(+ p) {
 	margin-bottom: 1.5rem;
@@ -105,6 +109,16 @@ After :
 ```
 
 ## ⚠️ Known shortcomings
+
+### Performance
+
+Determining which elements match a `:has` selector is relatively slow through a polyfill compared to the native feature.
+
+A very large DOM or many and complex `:has` selectors can cause performance issues.  
+JavaScript frameworks that rewrite the DOM will be particularly affected by this.
+
+_Any contributions to speedup matching are welcome.  
+Please open an issue to discuss proposed changes if you are interested in contributing._
 
 ### Specificity
 

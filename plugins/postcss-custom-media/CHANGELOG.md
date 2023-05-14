@@ -1,5 +1,12 @@
 # Changes to PostCSS Custom Media
 
+### 9.1.3 (April 10, 2023)
+
+- Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
+- Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
+- Updated `@csstools/cascade-layer-name-parser` to `1.0.2` (patch)
+- Updated `@csstools/media-query-list-parser` to `2.0.4` (patch)
+
 ### 9.1.2 (February 8, 2023)
 
 - Fixed: exception on missing media queries.

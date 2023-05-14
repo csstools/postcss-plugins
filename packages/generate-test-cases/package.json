@@ -4,10 +4,16 @@
 	"version": "1.0.0",
 	"author": "",
 	"license": "CC0-1.0",
-	"funding": {
-		"type": "opencollective",
-		"url": "https://opencollective.com/csstools"
-	},
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
 	"private": true,
 	"engines": {
 		"node": "^14 || ^16 || >=18"

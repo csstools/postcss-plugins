@@ -5,6 +5,10 @@
 [PostCSS Focus Within] lets you use the `:focus-within` pseudo-class in CSS, 
 following the [Selectors Level 4 specification].
 
+To use this feature you need to do two things :
+- add the [PostCSS plugin](#usage) that transforms the selector into a class or attribute
+- add the [browser polyfill](#browser) that sets the attribute or class on elements in a browser
+
 ```pcss
 .my-form-field:focus-within label {
 	background-color: yellow;

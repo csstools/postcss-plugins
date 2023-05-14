@@ -396,6 +396,14 @@ postcssTape(plugin)({
 			}
 		}
 	},
+	'logical-properties': {
+		message: 'supports all known logical properties',
+		options: {
+			autoprefixer: false,
+			stage: 0,
+			browsers: '> 0%'
+		},
+	},
 	'progressive-custom-properties': {
 		message: 'supports progressive custom properties plugin',
 		options: {

@@ -5,6 +5,10 @@
 [PostCSS Blank Pseudo] lets you style form elements when they are empty, following 
 the [Selectors Level 4] specification.
 
+To use this feature you need to do two things :
+- add the [PostCSS plugin](#usage) that transforms the selector into a class or attribute
+- add the [browser polyfill](#browser) that sets the attribute or class on elements in a browser
+
 ```pcss
 input:blank {
 	background-color: yellow;

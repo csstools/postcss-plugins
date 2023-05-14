@@ -1,13 +1,19 @@
 {
 	"name": "@csstools/postcss-hwb-function",
 	"description": "Use hwb() color functions in CSS",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
-	"funding": {
-		"type": "opencollective",
-		"url": "https://opencollective.com/csstools"
-	},
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},
@@ -30,9 +36,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^1.1.0",
-		"@csstools/css-parser-algorithms": "^2.0.1",
-		"@csstools/css-tokenizer": "^2.1.0"
+		"@csstools/css-color-parser": "^1.1.2",
+		"@csstools/css-parser-algorithms": "^2.1.1",
+		"@csstools/css-tokenizer": "^2.1.1"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

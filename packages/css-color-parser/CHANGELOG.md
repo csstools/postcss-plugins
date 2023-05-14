@@ -1,6 +1,12 @@
 # Changes to CSS Color Parser
 
-### Unreleased (patch)
+### 1.1.2 (April 10, 2023)
+
+- Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
+- Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
+- Updated `@csstools/css-calc` to `1.1.1` (patch)
+
+### 1.1.1 (April 10, 2023)
 
 - Improve the detection of math function in color notations.
 

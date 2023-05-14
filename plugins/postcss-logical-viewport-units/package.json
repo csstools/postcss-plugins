@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-logical-viewport-units",
 	"description": "Use vb and vi length units in CSS",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -14,10 +14,16 @@
 		}
 	],
 	"license": "CC0-1.0",
-	"funding": {
-		"type": "opencollective",
-		"url": "https://opencollective.com/csstools"
-	},
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},
@@ -39,7 +45,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-tokenizer": "^2.0.0"
+		"@csstools/css-tokenizer": "^2.1.1"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

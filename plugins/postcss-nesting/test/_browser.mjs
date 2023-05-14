@@ -80,7 +80,7 @@ import postcss from 'postcss';
 
 	if (!process.env.DEBUG) {
 		const browser = await puppeteer.launch({
-			headless: true,
+			headless: 'new',
 		});
 
 		const page = await browser.newPage();

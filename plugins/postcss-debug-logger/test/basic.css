@@ -1,0 +1,15 @@
+.foo {
+	color: red;
+}
+
+.baz {
+	/* A comment */
+	color: green;
+}
+
+
+@media (min-width: 600px) {
+	.foo {
+		color: blue;
+	}
+}

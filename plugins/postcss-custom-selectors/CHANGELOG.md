@@ -1,5 +1,11 @@
 # Changes to PostCSS Custom Selectors
 
+### 7.1.3 (April 10, 2023)
+
+- Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
+- Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
+- Updated `@csstools/cascade-layer-name-parser` to `1.0.2` (patch)
+
 ### 7.1.2 (February 8, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

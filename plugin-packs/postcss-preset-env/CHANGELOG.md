@@ -1,5 +1,30 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Update plugin order to preserve more original values.
+
+### 8.3.2 (April 17, 2023)
+
+- Updated `@csstools/postcss-gradients-interpolation-method` to `3.0.4` (patch)
+
+### 8.3.1 (April 10, 2023)
+
+- Updated `@csstools/postcss-logical-viewport-units` to `1.0.3` (patch)
+- Updated `@csstools/postcss-media-minmax` to `1.0.2` (patch)
+- Updated `@csstools/postcss-media-queries-aspect-ratio-number-values` to `1.0.2` (patch)
+- Updated `@csstools/postcss-stepped-value-functions` to `2.1.1` (patch)
+- Updated `@csstools/postcss-trigonometric-functions` to `2.1.1` (patch)
+- Updated `postcss-custom-media` to `9.1.3` (patch)
+- Updated `postcss-custom-properties` to `13.1.5` (patch)
+- Updated `postcss-custom-selectors` to `7.1.3` (patch)
+- Updated `@csstools/postcss-color-function` to `2.2.1` (patch)
+- Updated `@csstools/postcss-color-mix-function` to `1.0.1` (patch)
+- Updated `@csstools/postcss-gradients-interpolation-method` to `3.0.3` (patch)
+- Updated `@csstools/postcss-hwb-function` to `2.2.1` (patch)
+- Updated `@csstools/postcss-oklab-function` to `2.2.1` (patch)
+- Updated `postcss-lab-function` to `5.2.1` (patch)
+
 ### 8.3.0 (March 31, 2023)
 
 - Replace `postcss-media-minmax` with `@csstools/postcss-media-minmax` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax#readme) for usage details. _We hope to revert this in the future when maintenance is resumed upstream._
