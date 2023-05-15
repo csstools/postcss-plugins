@@ -5,7 +5,7 @@ import { cloneDeclaration } from './clone-declaration';
 
 export function transformTextAlign(
 	inlineValues: [string, string],
-): (declaration: Declaration) => boolean {
+): (declaration: Declaration) => Array<Declaration> {
 	return (declaration: Declaration) => {
 		const { prop, value } = declaration;
 		const valueAST = valueParser(value);
@@ -28,10 +28,9 @@ export function transformTextAlign(
 
 		const modifiedValued = valueAST.toString();
 		if (modifiedValued !== value) {
-			cloneDeclaration(declaration, modifiedValued, prop);
-			return true;
+			return cloneDeclaration(declaration, modifiedValued, prop);
 		}
 
-		return false;
+		return [];
 	};
 }

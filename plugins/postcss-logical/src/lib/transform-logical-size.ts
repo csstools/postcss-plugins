@@ -4,7 +4,7 @@ import { DirectionConfig } from './types';
 
 export function transformLogicalSize(
 	directionConfig: DirectionConfig,
-): (declaration: Declaration) => boolean {
+): (declaration: Declaration) => Array<Declaration> {
 	return (declaration: Declaration) => {
 		const { value } = declaration;
 		const inlineProp = directionConfig.inlineIsHorizontal ? 'width' : 'height';
@@ -13,12 +13,10 @@ export function transformLogicalSize(
 			.replace('inline-size', inlineProp)
 			.replace('block-size', blockProp);
 
-		cloneDeclaration(
+		return cloneDeclaration(
 			declaration,
 			value,
 			prop,
 		);
-
-		return true;
 	};
 }

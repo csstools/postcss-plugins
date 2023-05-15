@@ -1,0 +1,18 @@
+.reference {
+	inset: 10px;
+	transition: inset 4s 1s ease-in-out;
+}
+
+.transition-1 {
+	transition: color 1s, margin-inline 4s 1s ease-in-out, inline-size 2s 1s, padding-block 3s 1s;
+}
+
+.transition-props-with-logical-values-1 {
+	text-align: start;
+	transition: text-align 1s;
+}
+
+.transition-props-with-logical-values-2 {
+	caption-side: block-end;
+	transition: caption-side 1s;
+}
