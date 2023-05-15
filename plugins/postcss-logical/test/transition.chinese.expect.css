@@ -1,0 +1,21 @@
+.reference {
+	top: 10px;
+	right: 10px;
+	bottom: 10px;
+	left: 10px;
+	transition: top 4s 1s ease-in-out, right 4s 1s ease-in-out, bottom 4s 1s ease-in-out, left 4s 1s ease-in-out;
+}
+
+.transition-1 {
+	transition: color 1s, margin-top 4s 1s ease-in-out, margin-bottom 4s 1s ease-in-out, height 2s 1s, padding-right 3s 1s, padding-left 3s 1s;
+}
+
+.transition-props-with-logical-values-1 {
+	text-align: start;
+	transition: text-align 1s;
+}
+
+.transition-props-with-logical-values-2 {
+	caption-side: left;
+	transition: caption-side 1s;
+}

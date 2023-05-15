@@ -1,24 +1,8 @@
 import type { Declaration, PluginCreator, Result } from 'postcss';
-import { Axes, DirectionConfig, DirectionFlow } from './lib/types';
-import {
-	transformBorder,
-	transformBorderProperty,
-	transformBorderShorthand,
-	transformBorderRadius,
-} from './lib/transform-borders';
-import { transformLogicalSize } from './lib/transform-logical-size';
-import {
-	transformOffset,
-	transformOffsetShorthand,
-} from './lib/transform-offset';
-import { transformInset } from './lib/transform-inset';
-import {
-	transformSide,
-	transformSideShorthand,
-} from './lib/transform-side';
-import { transformTextAlign } from './lib/transform-text-align';
-import { transformValue } from './lib/transform-value';
+import { Axes, DirectionConfig, DirectionFlow, TransformFunction } from './lib/types';
 import { directionFlowToAxes } from './utils/direction-flow-to-axes';
+import { transformTransition } from './lib/transform-transition';
+import { prepareTransforms } from './lib/transforms';
 
 /** postcss-logical plugin options */
 export type pluginOptions = {
@@ -63,7 +47,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		inlineIsHorizontal: [DirectionFlow.LeftToRight, DirectionFlow.RightToLeft].includes(options.inlineDirection),
 	};
 
-	const makeTransform = (transform: (decl: Declaration) => boolean | null) => {
+	const makeTransform = (transform: TransformFunction | null) => {
 		return (
 			decl: Declaration,
 			{ result }: { result: Result },
@@ -72,7 +56,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			let transformed: boolean | null = false;
+			let transformed: Array<Declaration> = [];
 
 			try {
 				transformed = transform(decl);
@@ -81,170 +65,110 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			if (!transformed) {
+			if (!transformed?.length) {
 				return;
 			}
+
+			transformed.forEach((transformedDecl) => {
+				decl.cloneBefore(transformedDecl);
+			});
 
 			decl.remove();
 		};
 	};
 
+	const transforms = prepareTransforms(directionConfig, blockStart, blockEnd, inlineStart, inlineEnd);
+
 	return {
 		postcssPlugin: 'postcss-logical',
 		Declaration: {
 			// 2.1 Caption
-			'caption-side': makeTransform(transformValue(directionConfig)),
+			'caption-side': makeTransform(transforms['caption-side']),
 			// 2.3 Text Align
-			'text-align': makeTransform(
-				directionConfig.inlineIsHorizontal
-					? transformTextAlign(directionConfig.inline)
-					: () => {
-						return null;
-					},
-			),
+			'text-align': makeTransform(transforms['text-align']),
 			// 4.1 Block Size and Inline Size
-			'block-size': makeTransform(transformLogicalSize(directionConfig)),
-			'inline-size': makeTransform(transformLogicalSize(directionConfig)),
-			'min-block-size': makeTransform(transformLogicalSize(directionConfig)),
-			'max-block-size': makeTransform(transformLogicalSize(directionConfig)),
-			'min-inline-size': makeTransform(transformLogicalSize(directionConfig)),
-			'max-inline-size': makeTransform(transformLogicalSize(directionConfig)),
+			'block-size': makeTransform(transforms['block-size']),
+			'inline-size': makeTransform(transforms['inline-size']),
+			'min-block-size': makeTransform(transforms['min-block-size']),
+			'max-block-size': makeTransform(transforms['max-block-size']),
+			'min-inline-size': makeTransform(transforms['min-inline-size']),
+			'max-inline-size': makeTransform(transforms['max-inline-size']),
 			// 4.2 Margins
-			'margin-block-start': makeTransform(
-				transformSide('margin', blockStart),
-			),
-			'margin-block-end': makeTransform(
-				transformSide('margin', blockEnd),
-			),
-			'margin-inline-start': makeTransform(
-				transformSide('margin', inlineStart),
-			),
-			'margin-inline-end': makeTransform(
-				transformSide('margin', inlineEnd),
-			),
-			'margin-block': makeTransform(
-				transformSideShorthand('margin', directionConfig.block),
-			),
-			'margin-inline': makeTransform(
-				transformSideShorthand('margin', directionConfig.inline),
-			),
+			'margin-block-start': makeTransform(transforms['margin-block-start']),
+			'margin-block-end': makeTransform(transforms['margin-block-end']),
+			'margin-inline-start': makeTransform(transforms['margin-inline-start']),
+			'margin-inline-end': makeTransform(transforms['margin-inline-end']),
+			'margin-block': makeTransform(transforms['margin-block']),
+			'margin-inline': makeTransform(transforms['margin-inline']),
 			// 4.3 Offsets
-			'inset-block': makeTransform(transformOffsetShorthand(directionConfig.block)),
-			'inset-block-start': makeTransform(transformOffset(blockStart)),
-			'inset-block-end': makeTransform(transformOffset(blockEnd)),
-			'inset-inline': makeTransform(transformOffsetShorthand(directionConfig.inline)),
-			'inset-inline-start': makeTransform(transformOffset(inlineStart)),
-			'inset-inline-end': makeTransform(transformOffset(inlineEnd)),
-			'inset': makeTransform(transformInset()),
+			'inset-block': makeTransform(transforms['inset-block']),
+			'inset-block-start': makeTransform(transforms['inset-block-start']),
+			'inset-block-end': makeTransform(transforms['inset-block-end']),
+			'inset-inline': makeTransform(transforms['inset-inline']),
+			'inset-inline-start': makeTransform(transforms['inset-inline-start']),
+			'inset-inline-end': makeTransform(transforms['inset-inline-end']),
+			'inset': makeTransform(transforms['inset']),
 			// 4.4 Paddings
-			'padding-block-start': makeTransform(
-				transformSide('padding', blockStart),
-			),
-			'padding-block-end': makeTransform(
-				transformSide('padding', blockEnd),
-			),
-			'padding-inline-start': makeTransform(
-				transformSide('padding', inlineStart),
-			),
-			'padding-inline-end': makeTransform(
-				transformSide('padding', inlineEnd),
-			),
-			'padding-block': makeTransform(
-				transformSideShorthand('padding', directionConfig.block),
-			),
-			'padding-inline': makeTransform(
-				transformSideShorthand('padding', directionConfig.inline),
-			),
+			'padding-block-start': makeTransform(transforms['padding-block-start']),
+			'padding-block-end': makeTransform(transforms['padding-block-end']),
+			'padding-inline-start': makeTransform(transforms['padding-inline-start']),
+			'padding-inline-end': makeTransform(transforms['padding-inline-end']),
+			'padding-block': makeTransform(transforms['padding-block']),
+			'padding-inline': makeTransform(transforms['padding-inline']),
 			// 4.5 Borders
 			// 4.5.1 Border Width
-			'border-block-start-width': makeTransform(
-				transformBorder('width', blockStart),
-			),
-			'border-block-end-width': makeTransform(
-				transformBorder('width', blockEnd),
-			),
-			'border-inline-start-width': makeTransform(
-				transformBorder('width', inlineStart),
-			),
-			'border-inline-end-width': makeTransform(
-				transformBorder('width', inlineEnd),
-			),
-			'border-block-width': makeTransform(
-				transformBorderProperty('width', directionConfig.block),
-			),
-			'border-inline-width': makeTransform(
-				transformBorderProperty('width', directionConfig.inline),
-			),
+			'border-block-start-width': makeTransform(transforms['border-block-start-width']),
+			'border-block-end-width': makeTransform(transforms['border-block-end-width']),
+			'border-inline-start-width': makeTransform(transforms['border-inline-start-width']),
+			'border-inline-end-width': makeTransform(transforms['border-inline-end-width']),
+			'border-block-width': makeTransform(transforms['border-block-width']),
+			'border-inline-width': makeTransform(transforms['border-inline-width']),
 			// 4.5.2 Border Style
-			'border-block-start-style': makeTransform(
-				transformBorder('style', blockStart),
-			),
-			'border-block-end-style': makeTransform(
-				transformBorder('style', blockEnd),
-			),
-			'border-inline-start-style': makeTransform(
-				transformBorder('style', inlineStart),
-			),
-			'border-inline-end-style': makeTransform(
-				transformBorder('style', inlineEnd),
-			),
-			'border-block-style': makeTransform(
-				transformBorderProperty('style', directionConfig.block),
-			),
-			'border-inline-style': makeTransform(
-				transformBorderProperty('style', directionConfig.inline),
-			),
+			'border-block-start-style': makeTransform(transforms['border-block-start-style']),
+			'border-block-end-style': makeTransform(transforms['border-block-end-style']),
+			'border-inline-start-style': makeTransform(transforms['border-inline-start-style']),
+			'border-inline-end-style': makeTransform(transforms['border-inline-end-style']),
+			'border-block-style': makeTransform(transforms['border-block-style']),
+			'border-inline-style': makeTransform(transforms['border-inline-style']),
 			// 4.5.3 Border Color
-			'border-block-start-color': makeTransform(
-				transformBorder('color', blockStart),
-			),
-			'border-block-end-color': makeTransform(
-				transformBorder('color', blockEnd),
-			),
-			'border-inline-start-color': makeTransform(
-				transformBorder('color', inlineStart),
-			),
-			'border-inline-end-color': makeTransform(
-				transformBorder('color', inlineEnd),
-			),
-			'border-block-color': makeTransform(
-				transformBorderProperty('color', directionConfig.block),
-			),
-			'border-inline-color': makeTransform(
-				transformBorderProperty('color', directionConfig.inline),
-			),
+			'border-block-start-color': makeTransform(transforms['border-block-start-color']),
+			'border-block-end-color': makeTransform(transforms['border-block-end-color']),
+			'border-inline-start-color': makeTransform(transforms['border-inline-start-color']),
+			'border-inline-end-color': makeTransform(transforms['border-inline-end-color']),
+			'border-block-color': makeTransform(transforms['border-block-color']),
+			'border-inline-color': makeTransform(transforms['border-inline-color']),
 			// 4.5.4 Border Shorthand
-			'border-block': makeTransform(
-				transformBorderShorthand(directionConfig.block),
-			),
-			'border-block-start': makeTransform(
-				transformBorderShorthand([blockStart]),
-			),
-			'border-block-end': makeTransform(
-				transformBorderShorthand([blockEnd]),
-			),
-			'border-inline': makeTransform(
-				transformBorderShorthand(directionConfig.inline),
-			),
-			'border-inline-start': makeTransform(
-				transformBorderShorthand([inlineStart]),
-			),
-			'border-inline-end': makeTransform(
-				transformBorderShorthand([inlineEnd]),
-			),
+			'border-block': makeTransform(transforms['border-block']),
+			'border-block-start': makeTransform(transforms['border-block-start']),
+			'border-block-end': makeTransform(transforms['border-block-end']),
+			'border-inline': makeTransform(transforms['border-inline']),
+			'border-inline-start': makeTransform(transforms['border-inline-start']),
+			'border-inline-end': makeTransform(transforms['border-inline-end']),
 			// 4.6 Border Radius
-			'border-start-start-radius': makeTransform(
-				transformBorderRadius(directionConfig),
-			),
-			'border-start-end-radius': makeTransform(
-				transformBorderRadius(directionConfig),
-			),
-			'border-end-start-radius': makeTransform(
-				transformBorderRadius(directionConfig),
-			),
-			'border-end-end-radius': makeTransform(
-				transformBorderRadius(directionConfig),
-			),
+			'border-start-start-radius': makeTransform(transforms['border-start-start-radius']),
+			'border-start-end-radius': makeTransform(transforms['border-start-end-radius']),
+			'border-end-start-radius': makeTransform(transforms['border-end-start-radius']),
+			'border-end-end-radius': makeTransform(transforms['border-end-end-radius']),
+			'transition': (decl, { result, postcss }) => {
+				let transformed: Array<Declaration> = [];
+
+				try {
+					transformed = transformTransition(decl, postcss, transforms);
+				} catch (error) {
+					decl.warn(result, error.message);
+					return;
+				}
+
+				if (!transformed?.length) {
+					return;
+				}
+
+				transformed.forEach((transformedDecl) => {
+					decl.cloneBefore(transformedDecl);
+				});
+
+				decl.remove();
+			},
 		},
 	};
 };
