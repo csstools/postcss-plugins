@@ -6,59 +6,56 @@ import { DirectionConfig } from './types';
 export function transformBorder(
 	borderSetting: string,
 	side: string,
-): (declaration: Declaration) => boolean {
+): (declaration: Declaration) => Array<Declaration> {
 	return (declaration: Declaration) => {
-		cloneDeclaration(
+		return cloneDeclaration(
 			declaration,
 			declaration.value,
 			`border-${side}-${borderSetting}`,
 		);
-
-		return true;
 	};
 }
 
 export function transformBorderProperty(
 	borderSetting: string,
 	side: [string, string],
-): (declaration: Declaration) => boolean {
+): (declaration: Declaration) => Array<Declaration> {
 	return (declaration: Declaration) => {
 		const [sideA, sideB] = side;
 		const [valueA, valueB] = parseValueCouple(declaration);
 
-		cloneDeclaration(
-			declaration,
-			valueA,
-			`border-${sideA}-${borderSetting}`,
-		);
-
-		cloneDeclaration(
-			declaration,
-			valueB,
-			`border-${sideB}-${borderSetting}`,
-		);
-
-		return true;
+		return [
+			...cloneDeclaration(
+				declaration,
+				valueA,
+				`border-${sideA}-${borderSetting}`,
+			),
+			...cloneDeclaration(
+				declaration,
+				valueB,
+				`border-${sideB}-${borderSetting}`,
+			),
+		];
 	};
 }
 
 export function transformBorderShorthand(
 	side: [string] | [string, string],
-): (declaration: Declaration) => boolean {
+): (declaration: Declaration) => Array<Declaration> {
 	return (declaration: Declaration) => {
-		side.forEach((sidePart) => cloneDeclaration(
-			declaration,
-			declaration.value,
-			`border-${sidePart}`,
-		));
-
-		return true;
+		return side.flatMap((sidePart) => {
+			return cloneDeclaration(
+				declaration,
+				declaration.value,
+				`border-${sidePart}`,
+			);
+		});
 	};
 }
 
 export function transformBorderRadius(
 	config: DirectionConfig,
-): (declaration: Declaration) => boolean {
+): (declaration: Declaration) => Array<Declaration> {
 	return (declaration: Declaration) => {
 		let prop;
 
@@ -98,15 +95,13 @@ export function transformBorderRadius(
 		}
 
 		if (!prop) {
-			return false;
+			return [];
 		}
 
-		cloneDeclaration(
+		return cloneDeclaration(
 			declaration,
 			declaration.value,
 			prop,
 		);
-
-		return true;
 	};
 }
