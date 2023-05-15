@@ -249,7 +249,7 @@
 	order: 23;
 }
 
-.test-dir-pseudo-class:dir(rtl) {
+[dir="rtl"] .test-dir-pseudo-class {
 	order: 24;
 }
 
@@ -419,7 +419,7 @@
 }
 
 .logical-float {
-	float: inline-start;
+	float: left;
 }
 
 .color-function {

@@ -37,23 +37,23 @@
 .test-nesting-rules {
 	order: 4;
 
-	& p {
-		order: 5;
-	}
-
 	order: 6;
 }
+
+.test-nesting-rules p {
+		order: 5;
+	}
 
 .test-nesting-rules,
 #test-is-pseudo {
 	order: 7;
 
-	& + p {
-		order: 8;
-	}
-
 	order: 9;
 }
+
+.test-nesting-rules + p, #test-is-pseudo + p {
+		order: 8;
+	}
 
 @media (max-width: 30em) {
 	.test-custom-media-queries {
@@ -215,7 +215,7 @@
 	font-style: normal;
 	font-weight: 300;
 	font-display: swap;
-	src: url(a) format(woff2);
+	src: url(a) format("woff2");
 }
 
 .block-flow {
@@ -433,10 +433,8 @@
 
 @custom-selector :--view-m [data-view-size=m];
 
-.view {
-	@nest :--view-m & {
+:--view-m .view {
 		background: red;
-	}
 }
 
 .nested-calc {

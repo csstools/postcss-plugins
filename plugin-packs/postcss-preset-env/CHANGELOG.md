@@ -1,8 +1,10 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### Unreleased (minor)
 
+- Added `@csstools/postcss-relative-color-syntax` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax#readme) for usage details.
 - Update plugin order to preserve more original values.
+- Updated `cssdb` to `7.6.0.` (minor)
 
 ### 8.3.2 (April 17, 2023)
 
@@ -28,7 +30,7 @@
 ### 8.3.0 (March 31, 2023)
 
 - Replace `postcss-media-minmax` with `@csstools/postcss-media-minmax` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax#readme) for usage details. _We hope to revert this in the future when maintenance is resumed upstream._
-- - Updated `cssdb` to `7.5.3` (patch)
+- Updated `cssdb` to `7.5.3` (patch)
 
 ### 8.2.0 (March 28, 2023)
 

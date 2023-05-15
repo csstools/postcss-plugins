@@ -42,23 +42,23 @@
 .test-nesting-rules {
 	order: 4;
 
-	& p {
-		order: 5;
-	}
-
 	order: 6;
 }
+
+.test-nesting-rules p {
+		order: 5;
+	}
 
 .test-nesting-rules,
 #test-is-pseudo {
 	order: 7;
 
-	& + p {
-		order: 8;
-	}
-
 	order: 9;
 }
+
+:is(.test-nesting-rules,#test-is-pseudo) + p {
+		order: 8;
+	}
 
 @media (max-width: 30em) {
 	.test-custom-media-queries {
@@ -289,7 +289,7 @@
 }
 
 .logical-float {
-	float: left;
+	float: inline-start;
 }
 
 .color-function {
@@ -412,10 +412,8 @@
 
 @custom-selector :--view-m [data-view-size=m];
 
-.view {
-	@nest :--view-m & {
+:--view-m .view {
 		background: red;
-	}
 }
 
 .nested-calc {

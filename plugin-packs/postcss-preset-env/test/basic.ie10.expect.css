@@ -49,30 +49,30 @@
 	-ms-flex-order: 4;
 	    order: 4;
 
-	& p {
-		-ms-flex-order: 5;
-		    order: 5;
-	}
-
 	-ms-flex-order: 6;
 
 	    order: 6;
 }
+
+.test-nesting-rules p {
+		-ms-flex-order: 5;
+		    order: 5;
+	}
 
 .test-nesting-rules,
 #test-is-pseudo {
 	-ms-flex-order: 7;
 	    order: 7;
 
-	& + p {
-		-ms-flex-order: 8;
-		    order: 8;
-	}
-
 	-ms-flex-order: 9;
 
 	    order: 9;
 }
+
+.test-nesting-rules + p, #test-is-pseudo + p {
+		-ms-flex-order: 8;
+		    order: 8;
+	}
 
 @media (max-width: 30em) {
 	.test-custom-media-queries {
@@ -336,7 +336,7 @@
 	font-style: normal;
 	font-weight: 300;
 	font-display: swap;
-	src: url(a) format(woff2);
+	src: url(a) format("woff2");
 }
 
 .block-flow {
@@ -557,10 +557,8 @@
 
 @custom-selector :--view-m [data-view-size=m];
 
-.view {
-	@nest :--view-m & {
+:--view-m .view {
 		background: red;
-	}
 }
 
 .nested-calc {
