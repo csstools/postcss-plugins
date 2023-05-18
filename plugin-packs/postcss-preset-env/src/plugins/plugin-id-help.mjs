@@ -14,7 +14,7 @@ export function pluginIdHelp(featureNamesInOptions, root, result) {
 		const byPackage = mostSimilar(featureName, packageNames);
 
 		if (Math.min(byId.distance, byPackage.distance) > 10) {
-			root.warn(result`Unknown feature: "${featureName}", see the list of features https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md`);
+			root.warn(result, `Unknown feature: "${featureName}", see the list of features https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md`);
 			return;
 		}
 

@@ -414,12 +414,13 @@ postcssTape(plugin)({
 	},
 	'unknown-feature': {
 		message: 'warns on unknown features',
-		warnings: 3,
+		warnings: 4,
 		options: {
 			features: {
 				'custom-media': true,
 				'postcss-logical': true,
 				'postcss-logica': true,
+				'environment-variables': true
 			}
 		},
 	},
