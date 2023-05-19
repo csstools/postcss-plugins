@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-ic-unit",
 	"description": "Use the ic length unit",
-	"version": "2.0.2",
+	"version": "2.0.3",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
 	"funding": [
