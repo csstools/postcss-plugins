@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Update plugin order to preserve more original values.
+- Fix exception on unknown features [#969](https://github.com/csstools/postcss-plugins/issues/969)
 
 ### 8.3.2 (April 17, 2023)
 
