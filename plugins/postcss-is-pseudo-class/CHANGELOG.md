@@ -1,6 +1,6 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased (patch)
+### 3.2.1 (May 19, 2023)
 
 - Fix compound selectors with `*`.
 
