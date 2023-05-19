@@ -3,6 +3,8 @@
 ### Unreleased (patch)
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
+- Updated `@csstools/css-color-parser` to `1.2.0` (minor)
+
 
 
 ### 3.0.4 (April 17, 2023)

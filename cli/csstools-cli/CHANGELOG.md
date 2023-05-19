@@ -1,5 +1,12 @@
 # Changes to CSSTools CLI
 
+### Unreleased (patch)
+
+- Updated `@csstools/postcss-ic-unit` to `2.0.3` (patch)
+- Updated `@csstools/postcss-text-decoration-shorthand` to `2.2.4` (patch)
+- Updated `postcss-double-position-gradients` to `4.0.3` (patch)
+
+
 ### 2.1.3 (May 19, 2023)
 
 - Updated `@csstools/postcss-is-pseudo-class` to `3.2.1` (patch)

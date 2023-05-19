@@ -5,6 +5,10 @@
 - Added `@csstools/postcss-relative-color-syntax` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax#readme) for usage details.
 - Updated `cssdb` to `7.6.0.` (minor)
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
+- Updated `@csstools/postcss-ic-unit` to `2.0.3` (patch)
+- Updated `@csstools/postcss-text-decoration-shorthand` to `2.2.4` (patch)
+- Updated `postcss-double-position-gradients` to `4.0.3` (patch)
+
 
 
 ### 8.3.3 (May 19, 2023)
