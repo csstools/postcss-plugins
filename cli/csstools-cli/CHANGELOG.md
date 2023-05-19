@@ -4,6 +4,8 @@
 
 - Updated `@csstools/postcss-is-pseudo-class` to `3.2.1` (patch)
 - Updated `postcss-logical` to `6.2.0` (minor)
+- Updated `postcss-preset-env` to `8.3.3` (patch)
+
 
 
 ### 2.1.2 (April 17, 2023)
