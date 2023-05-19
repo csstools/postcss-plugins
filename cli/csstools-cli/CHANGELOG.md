@@ -1,6 +1,6 @@
 # Changes to CSSTools CLI
 
-### Unreleased (patch)
+### 2.1.3 (May 19, 2023)
 
 - Updated `@csstools/postcss-is-pseudo-class` to `3.2.1` (patch)
 - Updated `postcss-logical` to `6.2.0` (minor)
