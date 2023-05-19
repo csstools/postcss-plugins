@@ -1,6 +1,6 @@
 # Changes to PostCSS Logical Properties
 
-### Unreleased (minor)
+### 6.2.0 (May 19, 2023)
 
 - Added: Support for logical properties in `transition`
 

@@ -1,5 +1,13 @@
 # Changes to CSSTools CLI
 
+### 2.1.3 (May 19, 2023)
+
+- Updated `@csstools/postcss-is-pseudo-class` to `3.2.1` (patch)
+- Updated `postcss-logical` to `6.2.0` (minor)
+- Updated `postcss-preset-env` to `8.3.3` (patch)
+
+
+
 ### 2.1.2 (April 17, 2023)
 
 - Updated `@csstools/postcss-gradients-interpolation-method` to `3.0.4` (patch)
