@@ -5,6 +5,7 @@
 - Added `@csstools/postcss-relative-color-syntax` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax#readme) for usage details.
 - Update plugin order to preserve more original values.
 - Updated `cssdb` to `7.6.0.` (minor)
+- Fix exception on unknown features [#969](https://github.com/csstools/postcss-plugins/issues/969)
 
 ### 8.3.2 (April 17, 2023)
 
