@@ -5,12 +5,12 @@ import { ColorNotation } from '../color-notation';
 import { normalize_OKLCH_ChannelValues } from './oklch-normalize-channel-values';
 import { threeChannelSpaceSeparated } from './three-channel-space-separated';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function oklch(oklchNode: FunctionNode, colorParser: ColorParser): ColorData | false {
 	return threeChannelSpaceSeparated(
 		oklchNode,
 		normalize_OKLCH_ChannelValues,
 		ColorNotation.OKLCH,
 		[],
+		colorParser,
 	);
 }

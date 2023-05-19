@@ -1,5 +1,1053 @@
 export const matchers = [
 	{
+		'supports': 'color-mix(in lch, red, blue)',
+		'property': 'color',
+		'sniff': 'color-mix',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color-mix',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'in',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+		],
+	},
+	{
+		'supports': 'rgb(from red r g b)',
+		'property': 'color',
+		'sniff': 'from ',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'rgb',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'rgb',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'hsl',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'hsl',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'hwb',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'hwb',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'lch',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'lch',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'oklch',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'oklch',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'lab',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'lab',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'oklab',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'oklab',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'color',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+		],
+	},
+	{
 		'supports': 'color(srgb 0 0 0)',
 		'property': 'color',
 		'sniff': 'color',
@@ -1284,361 +2332,6 @@ export const matchers = [
 					{
 						'type': 'div',
 						'value': '/',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-				],
-			},
-		],
-	},
-	{
-		'supports': 'color-mix(in lch, red, blue)',
-		'property': 'color',
-		'sniff': 'color-mix',
-		'matchers': [
-			{
-				'type': 'function',
-				'value': 'color-mix',
-				'nodes': [
-					{
-						'type': 'word',
-						'value': 'in',
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-				],
-			},
-			{
-				'type': 'function',
-				'value': 'color-mix',
-				'nodes': [
-					{
-						'type': 'word',
-						'value': 'in',
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-				],
-			},
-			{
-				'type': 'function',
-				'value': 'color-mix',
-				'nodes': [
-					{
-						'type': 'word',
-						'value': 'in',
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-				],
-			},
-			{
-				'type': 'function',
-				'value': 'color-mix',
-				'nodes': [
-					{
-						'type': 'word',
-						'value': 'in',
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-				],
-			},
-			{
-				'type': 'function',
-				'value': 'color-mix',
-				'nodes': [
-					{
-						'type': 'word',
-						'value': 'in',
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-				],
-			},
-			{
-				'type': 'function',
-				'value': 'color-mix',
-				'nodes': [
-					{
-						'type': 'word',
-						'value': 'in',
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-				],
-			},
-			{
-				'type': 'function',
-				'value': 'color-mix',
-				'nodes': [
-					{
-						'type': 'word',
-						'value': 'in',
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-				],
-			},
-			{
-				'type': 'function',
-				'value': 'color-mix',
-				'nodes': [
-					{
-						'type': 'word',
-						'value': 'in',
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'space',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'div',
-						'value': ',',
-					},
-					{
-						'type': 'word',
-						'isVariable': true,
-					},
-					{
-						'type': 'space',
 					},
 					{
 						'type': 'word',

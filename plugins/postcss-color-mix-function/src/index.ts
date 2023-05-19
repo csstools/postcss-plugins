@@ -23,7 +23,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 		postcssPlugin: 'postcss-color-mix-function',
 		Declaration: (decl: Declaration) => {
 			const originalValue = decl.value;
-			if (!(colorMixFunctionRegex.test(originalValue.toLowerCase()))) {
+			if (!(colorMixFunctionRegex.test(originalValue))) {
 				return;
 			}
 

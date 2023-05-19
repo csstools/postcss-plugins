@@ -3,15 +3,20 @@ import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css
 import { ColorNotation } from '../color-notation';
 import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { calculations, Color, conversions, utils, xyz } from '@csstools/color-helpers';
+import { conversions, xyz } from '@csstools/color-helpers';
 import { colorData_to_XYZ_D50 } from '../color-data';
 import { toPrecision } from './to-precision';
+import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
 
 export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNode {
 	color.channels = convertPowerlessComponentsToMissingComponents(color.channels, color.colorNotation);
 	let srgb = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
 
-	if (
+	if (color.colorNotation === ColorNotation.HWB) {
+		srgb = conversions.HWB_to_sRGB(srgb);
+	} else if(color.colorNotation === ColorNotation.HSL) {
+		srgb = conversions.HSL_to_sRGB(srgb);
+	} else if (
 		color.colorNotation !== ColorNotation.RGB &&
 		color.colorNotation !== ColorNotation.HEX
 	) {
@@ -42,7 +47,7 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 
 	if (typeof color.alpha === 'number') {
 		const a = Math.min(1, Math.max(0, toPrecision(Number.isNaN(color.alpha) ? 0 : color.alpha)));
-		if (a === 1) {
+		if (toPrecision(a, 4) === 1) {
 			return new FunctionNode(
 				[TokenType.Function, 'rgb(', -1, -1, { value: 'rgb' }],
 				close,
@@ -57,7 +62,7 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 				...channels,
 				new TokenNode(comma),
 				new TokenNode(space),
-				new TokenNode([TokenType.Number, a.toString(), -1, -1, { value: color.alpha, type: NumberType.Integer }]),
+				new TokenNode([TokenType.Number, toPrecision(a, 4).toString(), -1, -1, { value: color.alpha, type: NumberType.Number }]),
 			],
 		);
 	}
@@ -72,35 +77,4 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 			color.alpha,
 		],
 	);
-}
-
-export function XYZ_D50_to_sRGB_Gamut(color: Color): Color {
-	const srgb = xyz.XYZ_D50_to_sRGB(color);
-	if (utils.inGamut(srgb)) {
-		return utils.clip(srgb);
-	}
-
-	let oklch = color.slice() as Color;
-	oklch = conversions.D50_to_D65(oklch);
-	oklch = conversions.XYZ_to_OKLab(oklch);
-	oklch = conversions.OKLab_to_OKLCH(oklch);
-	if (oklch[0] < 0.000001) {
-		oklch = [0, 0, 0] as Color;
-	}
-
-	if (oklch[0] > 0.999999) {
-		oklch = [1, 0, 0] as Color;
-	}
-
-	return calculations.mapGamut(oklch, (x: Color) => {
-		x = conversions.OKLCH_to_OKLab(x);
-		x = conversions.OKLab_to_XYZ(x);
-		x = conversions.XYZ_to_lin_sRGB(x);
-		return conversions.gam_sRGB(x);
-	}, (x: Color) => {
-		x = conversions.lin_sRGB(x);
-		x = conversions.lin_sRGB_to_XYZ(x);
-		x = conversions.XYZ_to_OKLab(x);
-		return conversions.OKLab_to_OKLCH(x);
-	});
 }

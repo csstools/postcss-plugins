@@ -33,3 +33,8 @@ to-clone {
 	color: rgb(153, 153, 153);
 	color: hwb(0 60% 40%);
 }
+
+.test-css-color-5-interop {
+	color-1: hwb(from rgb(179, 157, 51) h w b);
+	color-1: hwb(from hwb(50deg 20% 30%) h w b);
+}

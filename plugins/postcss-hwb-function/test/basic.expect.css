@@ -18,3 +18,7 @@
 to-clone {
 	color: rgb(153, 153, 153);
 }
+
+.test-css-color-5-interop {
+	color-1: hwb(from rgb(179, 157, 51) h w b);
+}

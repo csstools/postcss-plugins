@@ -6,11 +6,12 @@ export declare enum ColorNotation {
     HWB = "hwb",
     LCH = "lch",
     Lab = "lab",
-    Linear_RGB = "srgb-linear",
+    Linear_sRGB = "srgb-linear",
     OKLCH = "oklch",
     OKLab = "oklab",
     ProPhoto_RGB = "prophoto-rgb",
     RGB = "rgb",
+    sRGB = "srgb",
     Rec2020 = "rec2020",
     XYZ_D50 = "xyz-d50",
     XYZ_D65 = "xyz-d65"

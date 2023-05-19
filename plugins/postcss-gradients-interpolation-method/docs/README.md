@@ -16,7 +16,7 @@
 
 <header>
 
-[<humanReadableName>] lets you use different interpolation methods in CSS gradient functions following [CSS Specification].
+[<humanReadableName>] lets you use different interpolation methods in CSS gradient functions following [CSS Images Module 4].
 
 ```pcss
 <example.css>
@@ -99,4 +99,4 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 _Custom properties do not fallback to the previous declaration_
 
 <linkList>
-[CSS Specification]: <specUrl>
+[CSS Images Module 4]: <specUrl>

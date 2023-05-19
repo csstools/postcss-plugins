@@ -1,7 +1,7 @@
 import type { Color } from '@csstools/color-helpers';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from './color-notation';
-import { TokenNumber } from '@csstools/css-tokenizer';
+import { TokenDimension, TokenNumber, TokenPercentage } from '@csstools/css-tokenizer';
 export type ColorData = {
     colorNotation: ColorNotation;
     channels: Color;
@@ -28,5 +28,6 @@ export declare function colorData_to_XYZ_D50(colorData: ColorData): ColorData;
 export declare function colorDataTo(colorData: ColorData, toNotation: ColorNotation): ColorData;
 export declare function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: ColorNotation): Color;
 export declare function fillInMissingComponents(a: Color, b: Color): Color;
-export declare function colorDataChannelsToCalcGlobals(x: ColorData): Map<string, TokenNumber>;
+export declare function normalizeRelativeColorDataChannels(x: ColorData): Map<string, TokenNumber | TokenPercentage | TokenDimension>;
+export declare function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber | TokenPercentage | TokenDimension>): Map<string, TokenNumber | TokenPercentage | TokenDimension>;
 export declare function colorDataFitsRGB_Gamut(x: ColorData): boolean;

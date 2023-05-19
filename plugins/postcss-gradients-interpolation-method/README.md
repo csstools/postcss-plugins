@@ -2,7 +2,7 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-gradients-interpolation-method.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/gradients-interpolation-method.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-[PostCSS Gradients Interpolation Method] lets you use different interpolation methods in CSS gradient functions following [CSS Specification].
+[PostCSS Gradients Interpolation Method] lets you use different interpolation methods in CSS gradient functions following [CSS Images Module 4].
 
 ```pcss
 .example {
@@ -24,7 +24,7 @@
 	--background-image: linear-gradient(rgb(56, 87, 35) 0%, rgb(64, 83, 46), rgb(70, 79, 54), rgb(76, 74, 62), rgb(82, 69, 68), rgb(86, 64, 75), rgb(91, 58, 81), rgb(95, 51, 87), rgb(99, 44, 93), rgb(103, 34, 98), rgb(106, 21, 104) 100%);
 }
 
-@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0% / 0)) {
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) {
 :root {
 	--background-image: linear-gradient(in oklab, hsl(96, 42%, 24%) 0%, hsl(302, 67%, 25%) 100%);
 }
@@ -162,4 +162,4 @@ _Custom properties do not fallback to the previous declaration_
 
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Gradients Interpolation Method]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method
-[CSS Specification]: https://drafts.csswg.org/css-images-4/#linear-gradients
+[CSS Images Module 4]: https://drafts.csswg.org/css-images-4/#linear-gradients

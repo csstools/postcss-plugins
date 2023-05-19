@@ -215,13 +215,17 @@
   - plugins/postcss-pseudo-class-any-link/**
   - experimental/postcss-pseudo-class-any-link/**
 
-"plugins/postcss-scope-pseudo-class":
-  - plugins/postcss-scope-pseudo-class/**
-  - experimental/postcss-scope-pseudo-class/**
+"plugins/postcss-relative-color-syntax":
+  - plugins/postcss-relative-color-syntax/**
+  - experimental/postcss-relative-color-syntax/**
 
 "plugins/postcss-replace-overflow-wrap":
   - plugins/postcss-replace-overflow-wrap/**
   - experimental/postcss-replace-overflow-wrap/**
+
+"plugins/postcss-scope-pseudo-class":
+  - plugins/postcss-scope-pseudo-class/**
+  - experimental/postcss-scope-pseudo-class/**
 
 "plugins/postcss-selector-not":
   - plugins/postcss-selector-not/**

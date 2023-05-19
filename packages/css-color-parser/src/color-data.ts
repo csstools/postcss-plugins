@@ -1,7 +1,7 @@
 import type { Color } from '@csstools/color-helpers';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from './color-notation';
-import { NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
+import { NumberType, TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
 import { xyz } from '@csstools/color-helpers';
 
 export type ColorData = {
@@ -32,12 +32,13 @@ export function colorData_to_XYZ_D50(colorData: ColorData): ColorData {
 	switch (colorData.colorNotation) {
 		case ColorNotation.HEX:
 		case ColorNotation.RGB:
+		case ColorNotation.sRGB:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
 				channels: xyz.sRGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x)),
 			};
-		case ColorNotation.Linear_RGB:
+		case ColorNotation.Linear_sRGB:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
@@ -124,9 +125,10 @@ const predefinedRGB_or_XYZ_Spaces = new Set([
 	ColorNotation.A98_RGB,
 	ColorNotation.Display_P3,
 	ColorNotation.HEX,
-	ColorNotation.Linear_RGB,
+	ColorNotation.Linear_sRGB,
 	ColorNotation.ProPhoto_RGB,
 	ColorNotation.RGB,
+	ColorNotation.sRGB,
 	ColorNotation.Rec2020,
 	ColorNotation.XYZ_D50,
 	ColorNotation.XYZ_D65,
@@ -146,8 +148,12 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 			outputColorData.colorNotation = ColorNotation.RGB;
 			outputColorData.channels = xyz.XYZ_D50_to_sRGB(xyzColorData.channels);
 			break;
-		case ColorNotation.Linear_RGB:
-			outputColorData.colorNotation = ColorNotation.Linear_RGB;
+		case ColorNotation.sRGB:
+			outputColorData.colorNotation = ColorNotation.sRGB;
+			outputColorData.channels = xyz.XYZ_D50_to_sRGB(xyzColorData.channels);
+			break;
+		case ColorNotation.Linear_sRGB:
+			outputColorData.colorNotation = ColorNotation.Linear_sRGB;
 			outputColorData.channels = xyz.XYZ_D50_to_lin_sRGB(xyzColorData.channels);
 			break;
 		case ColorNotation.Display_P3:
@@ -366,8 +372,8 @@ export function fillInMissingComponents(a: Color, b: Color): Color {
 	return output;
 }
 
-export function colorDataChannelsToCalcGlobals(x: ColorData): Map<string, TokenNumber> {
-	const globals: Map<string, TokenNumber> = new Map();
+export function normalizeRelativeColorDataChannels(x: ColorData): Map<string, TokenNumber | TokenPercentage | TokenDimension> {
+	const globals: Map<string, TokenNumber | TokenPercentage | TokenDimension> = new Map();
 
 	switch (x.colorNotation) {
 		case ColorNotation.RGB:
@@ -381,6 +387,74 @@ export function colorDataChannelsToCalcGlobals(x: ColorData): Map<string, TokenN
 			}
 
 			break;
+		case ColorNotation.HSL:
+			globals.set('h', dummyAngleToken(x.channels[0]));
+			globals.set('s', dummyPercentageToken(x.channels[1]));
+			globals.set('l', dummyPercentageToken(x.channels[2]));
+
+			if (typeof x.alpha === 'number') {
+				globals.set('alpha', dummyNumberToken(x.alpha));
+			}
+
+			break;
+		case ColorNotation.HWB:
+			globals.set('h', dummyAngleToken(x.channels[0]));
+			globals.set('w', dummyPercentageToken(x.channels[1]));
+			globals.set('b', dummyPercentageToken(x.channels[2]));
+
+			if (typeof x.alpha === 'number') {
+				globals.set('alpha', dummyNumberToken(x.alpha));
+			}
+
+			break;
+		case ColorNotation.Lab:
+		case ColorNotation.OKLab:
+			globals.set('l', dummyNumberToken(x.channels[0]));
+			globals.set('a', dummyNumberToken(x.channels[1]));
+			globals.set('b', dummyNumberToken(x.channels[2]));
+
+			if (typeof x.alpha === 'number') {
+				globals.set('alpha', dummyNumberToken(x.alpha));
+			}
+
+			break;
+		case ColorNotation.LCH:
+		case ColorNotation.OKLCH:
+			globals.set('l', dummyNumberToken(x.channels[0]));
+			globals.set('c', dummyNumberToken(x.channels[1]));
+			globals.set('h', dummyAngleToken(x.channels[2]));
+
+			if (typeof x.alpha === 'number') {
+				globals.set('alpha', dummyNumberToken(x.alpha));
+			}
+
+			break;
+		case ColorNotation.sRGB:
+		case ColorNotation.A98_RGB:
+		case ColorNotation.Display_P3:
+		case ColorNotation.Rec2020:
+		case ColorNotation.Linear_sRGB:
+		case ColorNotation.ProPhoto_RGB:
+			globals.set('r', dummyNumberToken(x.channels[0]));
+			globals.set('g', dummyNumberToken(x.channels[1]));
+			globals.set('b', dummyNumberToken(x.channels[2]));
+
+			if (typeof x.alpha === 'number') {
+				globals.set('alpha', dummyNumberToken(x.alpha));
+			}
+
+			break;
+		case ColorNotation.XYZ_D50:
+		case ColorNotation.XYZ_D65:
+			globals.set('x', dummyNumberToken(x.channels[0]));
+			globals.set('y', dummyNumberToken(x.channels[1]));
+			globals.set('z', dummyNumberToken(x.channels[2]));
+
+			if (typeof x.alpha === 'number') {
+				globals.set('alpha', dummyNumberToken(x.alpha));
+			}
+
+			break;
 		default:
 			break;
 	}
@@ -388,8 +462,30 @@ export function colorDataChannelsToCalcGlobals(x: ColorData): Map<string, TokenN
 	return globals;
 }
 
+export function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber | TokenPercentage | TokenDimension>): Map<string, TokenNumber | TokenPercentage | TokenDimension> {
+	const globals: Map<string, TokenNumber | TokenPercentage | TokenDimension> = new Map();
+
+	for (const [key, value] of x) {
+		if (Number.isNaN(value[4].value)) {
+			globals.set(key, dummyNumberToken(0));
+		} else {
+			globals.set(key, value);
+		}
+	}
+
+	return globals;
+}
+
 function dummyNumberToken(x: number): TokenNumber {
 	return [TokenType.Number, x.toString(), -1, -1, { value: x, type: NumberType.Number }];
+}
+
+function dummyPercentageToken(x: number): TokenPercentage {
+	return [TokenType.Percentage, x.toString() + '%', -1, -1, { value: x }];
+}
+
+function dummyAngleToken(x: number): TokenDimension {
+	return [TokenType.Dimension, x.toString() + 'deg', -1, -1, { value: x, type: NumberType.Number, unit: 'deg' }];
 }
 
 function reducePrecision(x: number, precision = 7): number {

@@ -4,8 +4,8 @@
 }
 
 .complex {
-	color: rgba(255, 99, 0, 0.339833);
-	color: color(display-p3 0.9361 0.42808 0.14191 / 0.339833);
+	color: rgba(255, 102, 0, 0.34);
+	color: color(display-p3 0.9361 0.42808 0.14191 / 0.34);
 	color: color-mix(
 		in lch,
 		purple calc(100% * sin(0.1)),
@@ -69,12 +69,12 @@
 }
 
 .spec-example-6 {
-	color-1: rgb(165, 155, 255);
-	color-1: color(display-p3 0.6399 0.60128 1);
+	color-1: rgb(166, 158, 255);
+	color-1: color(display-p3 0.64126 0.60728 1);
 	color-1: color-mix(in lch, white, blue);
 	/* TODO : https://github.com/w3c/csswg-drafts/issues/8609 */
-	color-2: rgb(113, 162, 255);
-	color-2: color(display-p3 0.4712 0.62627 1);
+	color-2: rgb(116, 163, 255);
+	color-2: color(display-p3 0.49247 0.63302 1);
 	color-2: color-mix(in oklch, white, blue);
 	color-3: rgb(128, 128, 255);
 	color-3: color-mix(in srgb, white, blue);
@@ -82,8 +82,8 @@
 
 .spec-example-7 {
 	/* TODO : https://github.com/w3c/csswg-drafts/issues/8444 */
-	color-1: rgb(126, 255, 77);
-	color-1: color(display-p3 0.60393 1 0.34812);
+	color-1: rgb(0, 255, 0);
+	color-1: color(display-p3 0.63217 1 0.41255);
 	color-1: color-mix(in hsl, color(display-p3 0 1 0) 80%, yellow);
 }
 
@@ -140,8 +140,8 @@
 	color-2: color-mix(in lab, red, green);
 
 	/* rgb(143, 117, 0) */
-	color-3: rgb(143, 117, 0);
-	color-3: color(display-p3 0.55128 0.45926 0);
+	color-3: rgb(142, 117, 0);
+	color-3: color(display-p3 0.54586 0.46077 0);
 	color-3: color-mix(in lch, red, green);
 
 	/* rgb(89, 122, 0) */
@@ -154,7 +154,7 @@
 	color-5: color-mix(in lab, red, green 90%);
 
 	/* rgb(49, 128, 0) */
-	color-6: rgb(49, 128, 0);
+	color-6: rgb(54, 127, 0);
 	color-6: color(display-p3 0.2789 0.49535 0.06321);
 	color-6: color-mix(in lch, red, green 90%);
 
@@ -163,12 +163,12 @@
 	color-7: color-mix(in xyz, red 90%, green);
 
 	/* rgb(237, 55, 0) */
-	color-8: rgb(237, 55, 0);
+	color-8: rgb(236, 56, 0);
 	color-8: color(display-p3 0.85526 0.28166 0.13354);
 	color-8: color-mix(in lab, red 90%, green);
 
 	/* rgb(235, 59, 0) */
-	color-9: rgb(235, 59, 0);
+	color-9: rgb(229, 68, 0);
 	color-9: color(display-p3 0.84845 0.29298 0.07064);
 	color-9: color-mix(in lch, red 90%, green);
 }
@@ -201,17 +201,22 @@
 }
 
 .zero-alpha-cylindrical {
-	color-4: rgba(125, 0, 190, 0.65);
-	color-4: color(display-p3 0.45007 0 0.73452 / 0.65);
+	color-4: rgba(122, 0, 182, 0.65);
+	color-4: color(display-p3 0.44471 0 0.71665 / 0.65);
 	color-4: color-mix(in oklch, rgb(255 0 0 / 0), blue 65%);
-	color-5: rgba(153, 0, 125, 0.65);
-	color-5: color(display-p3 0.56492 0 0.48893 / 0.65);
+	color-5: rgba(149, 0, 122, 0.65);
+	color-5: color(display-p3 0.55417 0 0.48083 / 0.65);
 	color-5: color-mix(in lch, rgb(255 0 0 / 0), blue 65%);
 	color-6: rgba(179, 0, 255, 0.65);
 	color-6: color-mix(in hsl, rgb(255 0 0 / 0), blue 65%);
 }
 
-.foo {
+.same-color {
 	color: rgb(0, 0, 255);
 	color: color-mix(in srgb, blue, blue 65%);
+}
+
+.test-css-color-5-interop {
+	color-1: rgba(92, 133, 74, 0.325);
+	color-1: color-mix(in oklch, rgb(from red r 0 0 / 0), rgb(from hsl(180deg 80% 30% / 0.5) 0 g b) 65%)
 }

@@ -2,27 +2,39 @@ import { clip } from 'utils/clip';
 import { OKLCH_to_OKLab } from 'conversions/oklch-to-oklab';
 import { deltaEOK } from 'calculations/delta-EOK';
 import type { Color } from 'types/color';
+import { inGamut } from 'utils';
+
+const JND = 0.02;
+const EPSILON = 0.00001;
 
 export function binarySearchGamut(
 	startOKLCH: Color,
 	toDestination: (x: Color) => Color,
 	fromDestination: (x: Color) => Color,
 ): Color {
-	let min = 0;
-	let max = startOKLCH[1];
+
 	const current = startOKLCH;
 
-	while (max - min > 0.0001) {
-		const clipped = clip(toDestination(current));
-		const deltaE = deltaEOK(OKLCH_to_OKLab(current), OKLCH_to_OKLab(fromDestination(clipped)));
-		// are we inside the gamut (or very close to the boundary, outside)
-		if (deltaE - 0.02 < 0.0001) {
-			min = current[1];
-		} else {
-			max = current[1];
+	let min = 0.0;
+	let max = current[1];
+
+	while ((max - min) > EPSILON) {
+		const chroma = (min + max) / 2.0;
+		current[1] = chroma;
+
+		const converted = toDestination(current);
+		if (inGamut(converted)) {
+			min = chroma;
+			continue;
 		}
-		// binary search
-		current[1] = (max + min) / 2;
+
+		const clipped = clip(converted);
+		const delta_e = deltaEOK(OKLCH_to_OKLab(fromDestination(clipped)), OKLCH_to_OKLab(current));
+		if (delta_e < JND) {
+			return clipped;
+		}
+
+		max = chroma;
 	}
 
 	return clip(toDestination([...current]));

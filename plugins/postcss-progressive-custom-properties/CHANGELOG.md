@@ -1,5 +1,10 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (minor)
+
+- Add relative color syntax support.
+- Fix false positive matches for `rgb` and `hsl` modern function notations.
+
 ### 2.1.1 (March 25, 2023)
 
 - Smaller `@supports` check for `color-mix`.

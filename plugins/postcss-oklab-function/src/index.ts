@@ -23,7 +23,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 		postcssPlugin: 'postcss-oklab-function',
 		Declaration: (decl: Declaration) => {
 			const originalValue = decl.value;
-			if (!(oklab_oklch_functionRegex.test(originalValue.toLowerCase()))) {
+			if (!(oklab_oklch_functionRegex.test(originalValue))) {
 				return;
 			}
 
@@ -49,6 +49,10 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 							return;
 						}
 
+						if (colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)) {
+							return;
+						}
+
 						return serializeRGB(colorData);
 					}
 				},
@@ -71,6 +75,10 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 							}
 
 							if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
+								return;
+							}
+
+							if (colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)) {
 								return;
 							}
 

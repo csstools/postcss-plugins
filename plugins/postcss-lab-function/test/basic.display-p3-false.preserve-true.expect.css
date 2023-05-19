@@ -28,16 +28,16 @@
 	color-6: rgb(222, 105, 147);
 	color-6: lch(60% 50 0);
 
-	color-7: rgb(0, 166, 143);
+	color-7: rgb(0, 164, 142);
 
 	color-7: lch(60% 50 180);
-	color-8: rgb(0, 166, 143);
+	color-8: rgb(0, 164, 142);
 	color-8: lch(60% 50 180deg);
-	color-9: rgb(0, 166, 143);
+	color-9: rgb(0, 164, 142);
 	color-9: lch(60% 50 0.5turn);
-	color-10: rgb(0, 166, 143);
+	color-10: rgb(0, 164, 142);
 	color-10: lch(60% 50 200grad);
-	color-11: rgb(0, 166, 143);
+	color-11: rgb(0, 164, 142);
 	color-11: lch(60% 50 3.14159rad);
 
 	color-12: rgb(212, 118, 84);
@@ -55,14 +55,14 @@
 	color-18: rgb(212, 118, 84);
 	color-18: lch(60% 50 405);
 
-	color-20: rgb(0, 166, 143);
+	color-20: rgb(0, 164, 142);
 
 	color-20: LCH(60% 50 180DEG);
-	color-21: rgb(0, 166, 143);
+	color-21: rgb(0, 164, 142);
 	color-21: Lch(60% 50 0.5TURN);
-	color-22: rgb(0, 166, 143);
+	color-22: rgb(0, 164, 142);
 	color-22: lCh(60% 50 200GRAD);
-	color-23: rgb(0, 166, 143);
+	color-23: rgb(0, 164, 142);
 	color-23: lcH(60% 50 3.14159RAD);
 }
 
@@ -145,14 +145,14 @@
 	prop-2: rgb(0, 0, 0);
 	prop-2: lch(0% 210 285);
 	/* teal */
-	prop-3: rgb(0, 45, 46);
+	prop-3: rgb(0, 44, 45);
 	prop-3: lch(5% 210 285);
 }
 
 .test-multiple-colors {
 	background-1: linear-gradient(rgb(97, 112, 56), rgb(212, 118, 84));
 	background-1: linear-gradient(lab(45% -13 29), lch(60% 50 45deg));
-	background-2: linear-gradient(rgb(0, 126, 53), rgb(212, 118, 84));
+	background-2: linear-gradient(rgb(0, 123, 61), rgb(212, 118, 84));
 	background-2: linear-gradient(lab(45% -50 29), lch(60% 50 45deg));
 }
 
@@ -163,10 +163,10 @@
 .test-gamut {
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B48%2C-53%2C12%5D%2C%5B58%2C-54%2C69%5D%5D */
 	/* out */
-	prop-1: rgb(0, 132, 94);
+	prop-1: rgb(0, 129, 96);
 	prop-1: lab(48% -53 12);
 	/* out */
-	prop-2: rgb(38, 161, 0);
+	prop-2: rgb(50, 160, 0);
 	prop-2: lab(58% -54 69);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B45%2C-13%2C29%5D%2C%5B77%2C33%2C97%5D%5D */
@@ -174,7 +174,7 @@
 	prop-3: rgb(97, 112, 56);
 	prop-3: lab(45% -13 29);
 	/* out */
-	prop-4: rgb(255, 165, 0);
+	prop-4: rgb(255, 169, 30);
 	prop-4: lab(77% 33 97);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B76%2C-29%2C-23%5D%2C%5B16%2C-32%2C24%5D%5D */
@@ -182,7 +182,7 @@
 	prop-5: rgb(85, 204, 229);
 	prop-5: lab(76% -29 -23);
 	/* out */
-	prop-6: rgb(0, 50, 0);
+	prop-6: rgb(0, 47, 8);
 	prop-6: lab(16% -32 24);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B85%2C16%2C29%5D%2C%5B55%2C-42%2C58%5D%5D */
@@ -190,12 +190,12 @@
 	prop-7: rgb(255, 201, 158);
 	prop-7: lab(85% 16 29);
 	/* out */
-	prop-8: rgb(70, 149, 0);
+	prop-8: rgb(71, 149, 0);
 	prop-8: lab(55% -42 58);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B87%2C-94%2C103%5D%2C%5B88%2C-9%2C62%5D%5D */
 	/* out */
-	prop-9: rgb(0, 253, 0);
+	prop-9: rgb(0, 252, 0);
 	prop-9: lab(87% -94 103);
 	/* in */
 	prop-10: rgb(231, 224, 96);
@@ -203,18 +203,18 @@
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B69%2C-35%2C-39%5D%2C%5B68%2C61%2C39%5D%5D */
 	/* out */
-	prop-11: rgb(0, 187, 234);
+	prop-11: rgb(0, 186, 229);
 	prop-11: lab(69% -35 -39);
 	/* out */
-	prop-12: rgb(255, 117, 105);
+	prop-12: rgb(255, 122, 110);
 	prop-12: lab(68% 61 39);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B60%2C-28%2C74%5D%2C%5B65%2C81%2C-13%5D%5D */
 	/* out */
-	prop-13: rgb(119, 157, 0);
+	prop-13: rgb(121, 156, 0);
 	prop-13: lab(60% -28 74);
 	/* out */
-	prop-14: rgb(255, 89, 183);
+	prop-14: rgb(255, 92, 182);
 	prop-14: lab(65% 81 -13);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B60%2C-28%2C15%5D%2C%5B65%2C81%2C-11%5D%5D */
@@ -222,15 +222,15 @@
 	prop-15: rgb(96, 158, 117);
 	prop-15: lab(60% -28 15);
 	/* out */
-	prop-16: rgb(255, 90, 179);
+	prop-16: rgb(255, 92, 179);
 	prop-16: lab(65% 81 -11);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B78%2C-64%2C-44%5D%2C%5B76%2C81%2C-11%5D%5D */
 	/* out */
-	prop-17: rgb(0, 214, 243);
+	prop-17: rgb(0, 214, 242);
 	prop-17: lab(78% -64 -44);
 	/* out */
-	prop-18: rgb(255, 156, 205);
+	prop-18: rgb(255, 162, 204);
 	prop-18: lab(76% 81 -11);
 }
 
@@ -249,7 +249,7 @@
 	lab-006: lab(70% 0 70);
 	lab-007: rgb(33, 135, 237);
 	lab-007: lab(55% 0 -60);
-	lab-008: rgb(0, 251, 41);
+	lab-008: rgb(0, 249, 66);
 	lab-008: lab(86.6146% -106.5599 102.8717);
 }
 
@@ -268,7 +268,7 @@
 	lch-006: lch(70% 70 90);
 	lch-007: rgb(33, 135, 237);
 	lch-007: lch(55% 60 270);
-	lch-008: rgb(0, 251, 41);
+	lch-008: rgb(0, 249, 66);
 	lch-008: lch(86.6146% 148.1135 136.0089);
 }
 
@@ -280,4 +280,11 @@
 to-clone {
 	color: rgb(179, 35, 35);
 	color: lab(40% 56.6 39);
+}
+
+.test-css-color-5-interop {
+	color-1: lab(from rgb(179, 35, 35) l a b);
+	color-1: lab(from lab(40% 56.6 39) l a b);
+	color-2: lch(from rgb(163, 57, 39) l c h);
+	color-2: lch(from lch(40% 56.6 39) l c h);
 }
