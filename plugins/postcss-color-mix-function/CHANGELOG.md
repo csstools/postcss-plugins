@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Mix Function
 
-### Unreleased (patch)
+### 1.0.2 (May 19, 2023)
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
 - Updated `@csstools/css-color-parser` to `1.2.0` (minor)
