@@ -43,6 +43,7 @@ import type { pluginOptions as postcssReplaceOverflowWrap } from '../types/postc
 import type { pluginOptions as postcssPlace } from 'postcss-place';
 import type { pluginOptions as postcssPrefersColorScheme } from 'css-prefers-color-scheme';
 import type { pluginOptions as postcssColorRebeccapurple } from 'postcss-color-rebeccapurple';
+import type { pluginOptions as postcssRelativeColorSyntax } from '@csstools/postcss-relative-color-syntax';
 import type { pluginOptions as postcssScopePseudoClass } from '@csstools/postcss-scope-pseudo-class';
 import type { pluginOptions as postcssSteppedValueFunctions } from '@csstools/postcss-stepped-value-functions';
 import type { pluginOptions as postcssFontFamilySystemUI } from '../types/postcss-system-ui-font-family/plugin-options';
@@ -140,6 +141,8 @@ export type pluginsOptions = {
     'prefers-color-scheme-query'?: postcssPrefersColorScheme | boolean;
     /** plugin options for "postcss-color-rebeccapurple" */
     'rebeccapurple-color'?: postcssColorRebeccapurple | boolean;
+    /** plugin options for "@csstools/postcss-relative-color-syntax" */
+    'relative-color-syntax'?: postcssRelativeColorSyntax | boolean;
     /** plugin options for "@csstools/postcss-scope-pseudo-class" */
     'scope-pseudo-class'?: postcssScopePseudoClass | boolean;
     /** plugin options for "@csstools/postcss-stepped-value-functions" */

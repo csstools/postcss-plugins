@@ -613,15 +613,15 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .test-css-color-5-interop {
-	color-1: color(from rgb(196, 129, 72) a98-rgb r g b / alpha);
+	color-1: rgb(196, 129, 72);
 	color-2: color(from rgb(196, 129, 72) a98-rgb r g b / none);
-	color-3: color(from rgb(234, 133, 82) prophoto-rgb r g b);
+	color-3: rgb(234, 133, 82);
 	color-4: color(from rgb(234, 133, 82) prophoto-rgb r g none);
-	color-5: hwb(from rgb(179, 157, 51) h w b);
-	color-6: lab(from rgb(179, 35, 35) l a b);
-	color-7: lch(from rgb(163, 57, 39) l c h);
-	color-8: oklab(from rgb(141, 0, 0) l a b);
-	color-8: oklab(from color(display-p3 0.50566 0.0781 0) l a b);
-	color-9: oklch(from rgb(130, 31, 0) l c h);
-	color-9: oklch(from color(display-p3 0.48896 0.1211 0) l c h);
+	color-5: rgb(179, 157, 51);
+	color-6: rgb(179, 35, 35);
+	color-7: rgb(163, 57, 39);
+	color-8: rgb(141, 0, 0);
+	color-8: color(display-p3 0.50566 0.0781 0);
+	color-9: rgb(130, 31, 0);
+	color-9: color(display-p3 0.48896 0.1211 0);
 }

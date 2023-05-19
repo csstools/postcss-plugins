@@ -185,6 +185,11 @@ export default [
 		'importName': 'postcssOKLabFunction',
 	},
 	{
+		'packageName': '@csstools/postcss-relative-color-syntax',
+		'id': 'relative-color-syntax',
+		'importName': 'postcssRelativeColorSyntax',
+	},
+	{
 		'packageName': 'postcss-opacity-percentage',
 		'id': 'opacity-percentage',
 		'importName': 'postcssOpacityPercentage',
