@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 8.3.3 (May 19, 2023)
 
 - Update plugin order to preserve more original values.
 - Fix exception on unknown features [#969](https://github.com/csstools/postcss-plugins/issues/969)
