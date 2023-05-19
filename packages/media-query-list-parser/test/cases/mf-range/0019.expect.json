@@ -1,0 +1,92 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(width >/* a comment */= 50px)",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-in-parens",
+				"media": {
+					"type": "general-enclosed",
+					"tokens": [
+						[
+							"(-token",
+							"(",
+							0,
+							0,
+							null
+						],
+						[
+							"ident-token",
+							"width",
+							1,
+							5,
+							{
+								"value": "width"
+							}
+						],
+						[
+							"whitespace-token",
+							" ",
+							6,
+							6,
+							null
+						],
+						[
+							"delim-token",
+							">",
+							7,
+							7,
+							{
+								"value": ">"
+							}
+						],
+						[
+							"comment",
+							"/* a comment */",
+							8,
+							22,
+							null
+						],
+						[
+							"delim-token",
+							"=",
+							23,
+							23,
+							{
+								"value": "="
+							}
+						],
+						[
+							"whitespace-token",
+							" ",
+							24,
+							24,
+							null
+						],
+						[
+							"dimension-token",
+							"50px",
+							25,
+							28,
+							{
+								"value": 50,
+								"type": "integer",
+								"unit": "px"
+							}
+						],
+						[
+							")-token",
+							")",
+							29,
+							29,
+							null
+						]
+					]
+				},
+				"before": [],
+				"after": []
+			}
+		}
+	}
+]
