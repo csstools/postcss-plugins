@@ -1,6 +1,6 @@
 # Changes to PostCSS Relative Color Syntax
 
-### Unreleased (major)
+### 1.0.0 (May 19, 2023)
 
 - Initial version
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
