@@ -1,6 +1,6 @@
 # Changes to CSSTools CLI
 
-### Unreleased (patch)
+### 2.1.4 (May 19, 2023)
 
 - Updated `@csstools/postcss-ic-unit` to `2.0.3` (patch)
 - Updated `@csstools/postcss-text-decoration-shorthand` to `2.2.4` (patch)
