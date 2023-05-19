@@ -11,6 +11,8 @@
 - Updated `@csstools/postcss-hwb-function` to `2.2.2` (patch)
 - Updated `@csstools/postcss-oklab-function` to `2.2.2` (patch)
 - Updated `postcss-lab-function` to `5.2.2` (patch)
+- Updated `postcss-preset-env` to `8.4.0` (minor)
+
 
 
 
