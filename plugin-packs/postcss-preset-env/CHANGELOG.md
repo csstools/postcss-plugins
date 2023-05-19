@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 8.4.0 (May 19, 2023)
 
 - Added `@csstools/postcss-relative-color-syntax` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax#readme) for usage details.
 - Updated `cssdb` to `7.6.0.` (minor)
