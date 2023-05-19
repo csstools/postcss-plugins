@@ -1,6 +1,6 @@
 # Changes to CSS Color Parser
 
-### Unreleased (minor)
+### 1.2.0 (May 19, 2023)
 
 - Add support for relative color syntax.
 - Updated `@csstools/color-helpers` to `2.1.0` (minor)
