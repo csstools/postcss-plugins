@@ -106,6 +106,10 @@ a {
 	> span {
 		color: color-mix(in oklch, cyan, green 25%);
 	}
+
+	@media (prefers-color-scheme: dark) {
+		color: oklab(from oklab(54.3% -22.5% -5%) calc(1.0 - l) calc(a * 0.8) b);
+	}
 }
 
 aside {

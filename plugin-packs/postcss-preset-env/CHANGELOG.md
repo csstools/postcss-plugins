@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Added `@csstools/postcss-relative-color-syntax` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax#readme) for usage details (really this time).
+
 ### 8.4.0 (May 19, 2023)
 
 - Added `@csstools/postcss-relative-color-syntax` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax#readme) for usage details.
@@ -14,9 +18,6 @@
 - Updated `@csstools/postcss-hwb-function` to `2.2.2` (patch)
 - Updated `@csstools/postcss-oklab-function` to `2.2.2` (patch)
 - Updated `postcss-lab-function` to `5.2.2` (patch)
-
-
-
 
 ### 8.3.3 (May 19, 2023)
 

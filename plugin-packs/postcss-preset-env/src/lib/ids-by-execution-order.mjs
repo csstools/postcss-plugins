@@ -22,6 +22,7 @@ export default [
 	'all-property', // run all-property before other property polyfills
 	'gradients-interpolation-method', // run before all color functions
 	'color-mix', // run before any other color functions
+	'relative-color-syntax',
 	'lab-function',
 	'oklab-function',
 	'color-function',

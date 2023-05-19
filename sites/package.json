@@ -23,7 +23,7 @@
 	],
 	"devDependencies": {
 		"stylelint": "^15.0.0",
-		"stylelint-config-standard": "^32.0.0"
+		"stylelint-config-standard": "^33.0.0"
 	},
 	"scripts": {
 		"setup-workspace": "npm ci",
