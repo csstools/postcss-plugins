@@ -1,6 +1,6 @@
 # Changes to Color Helpers
 
-### Unreleased (minor)
+### 2.1.0 (May 19, 2023)
 
 - Fix gamut mapping
 - Fix `XYZ_D50_to_ProPhoto`
