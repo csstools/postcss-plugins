@@ -1,5 +1,9 @@
 # Changes to CSS Tokenizer
 
+### Unreleased (minor)
+
+- Add support for `unicode-range-token`
+
 ### 2.1.1 (April 10, 2023)
 
 - Document `tokenize` helper function

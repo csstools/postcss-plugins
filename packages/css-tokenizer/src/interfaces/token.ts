@@ -53,6 +53,10 @@ export enum TokenType {
 	OpenCurly = '{-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-close-curly */
 	CloseCurly = '}-token',
+
+	/** https://drafts.csswg.org/css-syntax/#typedef-unicode-range-token */
+	UnicodeRange = 'unicode-range-token',
+
 }
 
 export enum NumberType {
@@ -93,6 +97,8 @@ export type TokenCloseSquare = Token<TokenType.CloseSquare, undefined>;
 export type TokenOpenCurly = Token<TokenType.OpenCurly, undefined>;
 export type TokenCloseCurly = Token<TokenType.CloseCurly, undefined>;
 
+export type TokenUnicodeRange = Token<TokenType.UnicodeRange, { startOfRange: number, endOfRange: number }>;
+
 export type CSSToken = TokenAtKeyword |
 	TokenBadString |
 	TokenBadURL |
@@ -118,7 +124,8 @@ export type CSSToken = TokenAtKeyword |
 	TokenOpenSquare |
 	TokenCloseSquare |
 	TokenOpenCurly |
-	TokenCloseCurly;
+	TokenCloseCurly |
+	TokenUnicodeRange;
 
 export type Token<T extends TokenType, U> = [
 	/** The type of token */

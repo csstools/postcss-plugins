@@ -3,7 +3,7 @@ import { checkIfThreeCodePointsWouldStartAnIdentSequence } from './checks/three-
 import { checkIfThreeCodePointsWouldStartANumber } from './checks/three-code-points-would-start-number';
 import { checkIfTwoCodePointsStartAComment } from './checks/two-code-points-start-comment';
 import { checkIfThreeCodePointsWouldStartCDC } from './checks/three-code-points-would-start-cdc';
-import { APOSTROPHE, CARRIAGE_RETURN, CHARACTER_TABULATION, COLON, COMMA, COMMERCIAL_AT, FORM_FEED, FULL_STOP, HYPHEN_MINUS, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, LINE_FEED, NUMBER_SIGN, PLUS_SIGN, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON, SPACE } from './code-points/code-points';
+import { APOSTROPHE, CARRIAGE_RETURN, CHARACTER_TABULATION, COLON, COMMA, COMMERCIAL_AT, FORM_FEED, FULL_STOP, HYPHEN_MINUS, LATIN_CAPITAL_LETTER_U, LATIN_SMALL_LETTER_U, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, LINE_FEED, NUMBER_SIGN, PLUS_SIGN, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON, SPACE } from './code-points/code-points';
 import { isDigitCodePoint, isIdentStartCodePoint } from './code-points/ranges';
 import { consumeComment } from './consume/comment';
 import { consumeHashToken } from './consume/hash-token';
@@ -16,12 +16,14 @@ import { consumeStringToken } from './consume/string-token';
 import { consumeIdentLikeToken } from './consume/ident-like-token';
 import { checkIfTwoCodePointsAreAValidEscape } from './checks/two-code-points-are-valid-escape';
 import { ParseError } from './interfaces/error';
+import { checkIfThreeCodePointsWouldStartAUnicodeRange } from './checks/three-code-points-would-start-unicode-range';
+import { consumeUnicodeRangeToken } from './consume/unicode-range-token';
 
 interface Stringer {
 	valueOf(): string
 }
 
-export function tokenize(input: { css: Stringer }, options?: { onParseError?: (error: ParseError) => void }): Array<CSSToken> {
+export function tokenize(input: { css: Stringer, unicodeRangesAllowed?: boolean }, options?: { onParseError?: (error: ParseError) => void }): Array<CSSToken> {
 	const t = tokenizer(input, options);
 
 	const tokens: Array<CSSToken> = [];
@@ -43,8 +45,9 @@ export function tokenize(input: { css: Stringer }, options?: { onParseError?: (e
 	return tokens;
 }
 
-export function tokenizer(input: { css: Stringer }, options?: { onParseError?: (error: ParseError) => void }) {
+export function tokenizer(input: { css: Stringer, unicodeRangesAllowed?: boolean }, options?: { onParseError?: (error: ParseError) => void }) {
 	const css = input.css.valueOf();
+	const unicodeRangesAllowed = input.unicodeRangesAllowed ?? false;
 
 	const reader = new Reader(css);
 
@@ -67,6 +70,16 @@ export function tokenizer(input: { css: Stringer }, options?: { onParseError?: (
 		const peeked = reader.codePointSource[reader.cursor];
 		if (peeked === undefined) {
 			return [TokenType.EOF, '', -1, -1, undefined];
+		}
+
+		if (
+			unicodeRangesAllowed && (
+				peeked === LATIN_SMALL_LETTER_U ||
+				peeked === LATIN_CAPITAL_LETTER_U
+			) &&
+			checkIfThreeCodePointsWouldStartAUnicodeRange(ctx, reader)
+		) {
+			return consumeUnicodeRangeToken(ctx, reader);
 		}
 
 		if (isIdentStartCodePoint(peeked)) {
