@@ -1,6 +1,6 @@
 # Changes to PostCSS HWB Function
 
-### Unreleased (patch)
+### 2.2.2 (May 19, 2023)
 
 - Ignore relative color syntax
 - Updated `@csstools/css-color-parser` to `1.2.0` (minor)
