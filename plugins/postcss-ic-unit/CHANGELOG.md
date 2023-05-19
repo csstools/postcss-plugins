@@ -1,5 +1,10 @@
 # Changes to PostCSS IC Unit
 
+### Unreleased (patch)
+
+- Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
+
+
 ### 2.0.2 (February 8, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

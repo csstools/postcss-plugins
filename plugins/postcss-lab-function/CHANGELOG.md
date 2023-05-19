@@ -3,6 +3,8 @@
 ### Unreleased (patch)
 
 - Ignore relative color syntax
+- Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
+
 
 ### 5.2.1 (April 10, 2023)
 

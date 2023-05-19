@@ -1,5 +1,10 @@
 # Changes to PostCSS Color Mix Function
 
+### Unreleased (patch)
+
+- Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
+
+
 ### 1.0.1 (April 10, 2023)
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)

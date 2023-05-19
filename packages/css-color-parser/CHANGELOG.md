@@ -3,6 +3,8 @@
 ### Unreleased (minor)
 
 - Add support for relative color syntax.
+- Updated `@csstools/color-helpers` to `2.1.0` (minor)
+
 
 ### 1.1.2 (April 10, 2023)
 
