@@ -8,6 +8,13 @@
 - Updated `@csstools/postcss-ic-unit` to `2.0.3` (patch)
 - Updated `@csstools/postcss-text-decoration-shorthand` to `2.2.4` (patch)
 - Updated `postcss-double-position-gradients` to `4.0.3` (patch)
+- Updated `@csstools/postcss-color-function` to `2.2.2` (patch)
+- Updated `@csstools/postcss-color-mix-function` to `1.0.2` (patch)
+- Updated `@csstools/postcss-gradients-interpolation-method` to `3.0.5` (patch)
+- Updated `@csstools/postcss-hwb-function` to `2.2.2` (patch)
+- Updated `@csstools/postcss-oklab-function` to `2.2.2` (patch)
+- Updated `postcss-lab-function` to `5.2.2` (patch)
+
 
 
 
