@@ -1,6 +1,6 @@
 # Changes to PostCSS Color Function
 
-### Unreleased (patch)
+### 2.2.2 (May 19, 2023)
 
 - Ignore relative color syntax
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
