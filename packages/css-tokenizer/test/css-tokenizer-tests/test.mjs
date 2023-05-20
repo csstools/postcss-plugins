@@ -18,6 +18,11 @@ import { tokenizer } from '@csstools/css-tokenizer';
 }
 
 export function toUniversal(token) {
+	if (token[4]) {
+		// TODO: update @rmenke/css-tokenizer-tests
+		delete token[4].signCharacter;
+	}
+
 	return {
 		type: token[0],
 		raw: token[1],

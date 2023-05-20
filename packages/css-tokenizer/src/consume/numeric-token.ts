@@ -1,5 +1,5 @@
 import { checkIfThreeCodePointsWouldStartAnIdentSequence } from '../checks/three-code-points-would-start-ident-sequence';
-import { PERCENTAGE_SIGN } from '../code-points/code-points';
+import { HYPHEN_MINUS, PERCENTAGE_SIGN, PLUS_SIGN } from '../code-points/code-points';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
 import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '../interfaces/token';
@@ -10,6 +10,12 @@ import { consumeNumber } from './number';
 export function consumeNumericToken(ctx: Context, reader: CodePointReader): TokenPercentage|TokenNumber|TokenDimension {
 	const numberType = consumeNumber(ctx, reader);
 	const numberValue = parseFloat(reader.source.slice(reader.representationStart, reader.representationEnd + 1));
+	let signCharacter: undefined | '+' | '-' = undefined;
+	if (reader.codePointSource[reader.representationStart] === HYPHEN_MINUS) {
+		signCharacter = '-';
+	} else if (reader.codePointSource[reader.representationStart] === PLUS_SIGN) {
+		signCharacter = '+';
+	}
 
 	if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 		const unit = consumeIdentSequence(ctx, reader);
@@ -20,6 +26,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 			reader.representationEnd,
 			{
 				value: numberValue,
+				signCharacter: signCharacter,
 				type: numberType,
 				unit: String.fromCharCode(...unit),
 			},
@@ -36,6 +43,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 			reader.representationEnd,
 			{
 				value: numberValue,
+				signCharacter: signCharacter,
 			},
 		];
 	}
@@ -47,6 +55,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 		reader.representationEnd,
 		{
 			value: numberValue,
+			signCharacter: signCharacter,
 			type: numberType,
 		},
 	];

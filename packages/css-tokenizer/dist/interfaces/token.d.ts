@@ -77,6 +77,7 @@ export type TokenDelim = Token<TokenType.Delim, {
 }>;
 export type TokenDimension = Token<TokenType.Dimension, {
     value: number;
+    signCharacter?: '+' | '-';
     unit: string;
     type: NumberType;
 }>;
@@ -93,10 +94,12 @@ export type TokenIdent = Token<TokenType.Ident, {
 }>;
 export type TokenNumber = Token<TokenType.Number, {
     value: number;
+    signCharacter?: '+' | '-';
     type: NumberType;
 }>;
 export type TokenPercentage = Token<TokenType.Percentage, {
     value: number;
+    signCharacter?: '+' | '-';
 }>;
 export type TokenSemicolon = Token<TokenType.Semicolon, undefined>;
 export type TokenString = Token<TokenType.String, {

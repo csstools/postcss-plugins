@@ -3,6 +3,7 @@
 ### Unreleased (minor)
 
 - Add support for `unicode-range-token`
+- Add `signCharacter` to `DimensionToken`, `NumberToken` and `PercentageToken`
 
 ### 2.1.1 (April 10, 2023)
 
