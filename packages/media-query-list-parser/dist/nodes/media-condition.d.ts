@@ -11,10 +11,11 @@ export declare class MediaCondition {
     toString(): string;
     indexOf(item: MediaNot | MediaInParens | MediaConditionListWithAnd | MediaConditionListWithOr): number | string;
     at(index: number | string): MediaNot | MediaInParens | MediaConditionListWithAnd | MediaConditionListWithOr | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaConditionWalkerEntry;
         parent: MediaConditionWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): unknown;
     isMediaCondition(): this is MediaCondition;
     static isMediaCondition(x: unknown): x is MediaCondition;

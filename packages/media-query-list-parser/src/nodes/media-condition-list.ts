@@ -59,13 +59,20 @@ export class MediaConditionListWithAnd {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaConditionListWithAndWalkerEntry, parent: MediaConditionListWithAndWalkerParent }, index: number | string) => boolean | void): false | undefined {
-		if (cb({ node: this.leading, parent: this }, 'leading') === false) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaConditionListWithAndWalkerEntry, parent: MediaConditionListWithAndWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
+		let stateClone: T | undefined = undefined;
+		if (state) {
+			stateClone = {
+				...state,
+			};
+		}
+
+		if (cb({ node: this.leading, parent: this, state: stateClone }, 'leading') === false) {
 			return false;
 		}
 
 		if ('walk' in this.leading) {
-			if (this.leading.walk(cb) === false) {
+			if (this.leading.walk(cb, stateClone) === false) {
 				return false;
 			}
 		}
@@ -77,13 +84,19 @@ export class MediaConditionListWithAnd {
 				return;
 			}
 
-			if (cb({ node: child, parent: this }, index) === false) {
+			if (state) {
+				stateClone = {
+					...state,
+				};
+			}
+
+			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
 				aborted = true;
 				return;
 			}
 
 			if ('walk' in child) {
-				if (child.walk(cb) === false) {
+				if (child.walk(cb, stateClone) === false) {
 					aborted = true;
 					return;
 				}
@@ -178,13 +191,20 @@ export class MediaConditionListWithOr {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaConditionListWithOrWalkerEntry, parent: MediaConditionListWithOrWalkerParent }, index: number | string) => boolean | void): false | undefined {
-		if (cb({ node: this.leading, parent: this }, 'leading') === false) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaConditionListWithOrWalkerEntry, parent: MediaConditionListWithOrWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
+		let stateClone: T | undefined = undefined;
+		if (state) {
+			stateClone = {
+				...state,
+			};
+		}
+
+		if (cb({ node: this.leading, parent: this, state: stateClone }, 'leading') === false) {
 			return false;
 		}
 
 		if ('walk' in this.leading) {
-			if (this.leading.walk(cb) === false) {
+			if (this.leading.walk(cb, stateClone) === false) {
 				return false;
 			}
 		}
@@ -196,13 +216,19 @@ export class MediaConditionListWithOr {
 				return;
 			}
 
-			if (cb({ node: child, parent: this }, index) === false) {
+			if (state) {
+				stateClone = {
+					...state,
+				};
+			}
+
+			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
 				aborted = true;
 				return;
 			}
 
 			if ('walk' in child) {
-				if (child.walk(cb) === false) {
+				if (child.walk(cb, stateClone) === false) {
 					aborted = true;
 					return;
 				}

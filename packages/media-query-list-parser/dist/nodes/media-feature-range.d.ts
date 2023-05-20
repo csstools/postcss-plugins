@@ -18,10 +18,11 @@ export declare class MediaFeatureRangeNameValue {
     toString(): string;
     indexOf(item: MediaFeatureName | MediaFeatureValue): number | string;
     at(index: number | string): MediaFeatureName | MediaFeatureValue | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaFeatureRangeWalkerEntry;
         parent: MediaFeatureRangeWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): {
         type: NodeType;
         name: {
@@ -52,10 +53,11 @@ export declare class MediaFeatureRangeValueName {
     toString(): string;
     indexOf(item: MediaFeatureName | MediaFeatureValue): number | string;
     at(index: number | string): MediaFeatureName | MediaFeatureValue | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaFeatureRangeWalkerEntry;
         parent: MediaFeatureRangeWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): {
         type: NodeType;
         name: {
@@ -89,10 +91,11 @@ export declare class MediaFeatureRangeValueNameValue {
     toString(): string;
     indexOf(item: MediaFeatureName | MediaFeatureValue): number | string;
     at(index: number | string): MediaFeatureName | MediaFeatureValue | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaFeatureRangeWalkerEntry;
         parent: MediaFeatureRangeWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): {
         type: NodeType;
         name: {

@@ -40,6 +40,8 @@ import './cases/various/0019.mjs';
 import './cases/various/0020.mjs';
 import './cases/various/0021.mjs';
 
+import './cases/walker/0001.mjs';
+
 import './cases/wpt/0001.mjs';
 import './cases/wpt/0002.mjs';
 import './cases/wpt/0003.mjs';
