@@ -6,6 +6,7 @@ export declare function isLetterCodePoint(search: number): boolean;
 export declare function isNonASCIICodePoint(search: number): boolean;
 export declare function isIdentStartCodePoint(search: number): boolean;
 export declare function isIdentCodePoint(search: number): boolean;
+export declare function isNonASCII_IdentCodePoint(search: number): boolean;
 export declare function isNonPrintableCodePoint(search: number): boolean;
 export declare function isNewLine(search: number): boolean;
 export declare function isWhitespace(search: number): boolean;

@@ -45,6 +45,37 @@ export function isIdentCodePoint(search: number): boolean {
 	return isIdentStartCodePoint(search) || isDigitCodePoint(search) || search === HYPHEN_MINUS;
 }
 
+// https://drafts.csswg.org/css-syntax/#non-ascii-ident-code-point
+// TODO : https://github.com/w3c/csswg-drafts/issues/8862
+export function isNonASCII_IdentCodePoint(search: number): boolean {
+	if (
+		search === 0x00B7 ||
+		search === 0x200C ||
+		search === 0x200D ||
+		search === 0x203F ||
+		search === 0x2040 ||
+		search === 0x200C
+	) {
+		return true;
+	}
+
+	if (
+		(0x00C0 <= search && search <= 0x00D6) ||
+		(0x00D8 <= search && search <= 0x00F6) ||
+		(0x00F8 <= search && search <= 0x037D) ||
+		(0x037F <= search && search <= 0x1FFF) ||
+		(0x2070 <= search && search <= 0x218F) ||
+		(0x2C00 <= search && search <= 0x2FEF) ||
+		(0x3001 <= search && search <= 0xD7FF) ||
+		(0xF900 <= search && search <= 0xFDCF) ||
+		(0xFDF0 <= search && search <= 0xFFFD)
+	) {
+		return true;
+	}
+
+	return search >= 0x10000;
+}
+
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#non-printable-code-point
 export function isNonPrintableCodePoint(search: number): boolean {
 	return (
