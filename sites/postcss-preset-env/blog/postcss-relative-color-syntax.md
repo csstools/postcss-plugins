@@ -34,7 +34,7 @@ All surrounding colors are generated from that single color.
 		<input name="relative-color-syntax-main-hue" id="relative-color-syntax-main-hue" type="range" min="0" max="360" value="215">
 
 		<label for="relative-color-syntax-chroma-factor">Chroma</label>
-		<input name="relative-color-syntax-chroma-factor" id="relative-color-syntax-chroma-factor" type="range" min="0" max="12" value="5.4" step="0.1">
+		<input name="relative-color-syntax-chroma-factor" id="relative-color-syntax-chroma-factor" type="range" min="0" max="10" value="5.4" step="0.1">
 
 		<label for="relative-color-syntax-hue-separation">Distance to secondary colors</label>
 		<input name="relative-color-syntax-hue-separation" id="relative-color-syntax-hue-separation" type="range" min="0" max="180" value="20">
