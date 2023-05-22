@@ -16,10 +16,11 @@ export declare class MediaFeature {
     toString(): string;
     indexOf(item: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange): number | string;
     at(index: number | string): MediaFeatureBoolean | MediaFeaturePlain | MediaFeatureRange | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaFeatureWalkerEntry;
         parent: MediaFeatureWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): {
         type: NodeType;
         feature: {

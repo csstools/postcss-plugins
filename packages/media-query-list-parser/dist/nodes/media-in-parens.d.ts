@@ -23,10 +23,11 @@ export declare class MediaInParens {
     toString(): string;
     indexOf(item: MediaCondition | MediaFeature | GeneralEnclosed): number | string;
     at(index: number | string): MediaCondition | MediaFeature | GeneralEnclosed | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaInParensWalkerEntry;
         parent: MediaInParensWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): {
         type: NodeType;
         media: unknown;

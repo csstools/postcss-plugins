@@ -9,10 +9,11 @@ export declare class GeneralEnclosed {
     toString(): string;
     indexOf(item: ComponentValue): number | string;
     at(index: number | string): ComponentValue | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: GeneralEnclosedWalkerEntry;
         parent: GeneralEnclosedWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): {
         type: NodeType;
         tokens: CSSToken[];

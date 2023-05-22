@@ -40,12 +40,20 @@ export class MediaAnd {
 		return null;
 	}
 
-	walk(cb: (entry: { node: MediaAndWalkerEntry, parent: MediaAndWalkerParent }, index: number | string) => boolean | void): false | undefined {
-		if (cb({ node: this.media, parent: this }, 'media') === false) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaAndWalkerEntry, parent: MediaAndWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
+		let stateClone: T | undefined = undefined;
+		if (state) {
+			stateClone = {
+				...state,
+			};
+		}
+
+		if (cb({ node: this.media, parent: this, state: stateClone }, 'media') === false) {
 			return false;
 		}
 
-		return this.media.walk(cb);
+
+		return this.media.walk(cb, stateClone);
 	}
 
 	toJSON(): unknown {

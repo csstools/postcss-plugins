@@ -17,10 +17,11 @@ export declare class MediaQueryWithType {
     toString(): string;
     indexOf(item: MediaCondition): number | string;
     at(index: number | string): MediaCondition | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaQueryWithTypeWalkerEntry;
         parent: MediaQueryWithTypeWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): {
         type: NodeType;
         string: string;
@@ -43,10 +44,11 @@ export declare class MediaQueryWithoutType {
     toString(): string;
     indexOf(item: MediaCondition): number | string;
     at(index: number | string): MediaCondition | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaQueryWithoutTypeWalkerEntry;
         parent: MediaQueryWithoutTypeWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): {
         type: NodeType;
         string: string;
@@ -64,10 +66,11 @@ export declare class MediaQueryInvalid {
     negateQuery(): MediaQuery;
     tokens(): Array<CSSToken>;
     toString(): string;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaQueryInvalidWalkerEntry;
         parent: MediaQueryInvalidWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): {
         type: NodeType;
         string: string;

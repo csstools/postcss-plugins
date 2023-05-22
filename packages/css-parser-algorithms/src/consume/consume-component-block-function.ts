@@ -122,7 +122,7 @@ export class FunctionNode {
 		}
 	}
 
-	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number | string) => boolean | void): false | undefined {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: ComponentValue, parent: ContainerNode, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
 		let aborted = false;
 
 		this.value.forEach((child, index) => {
@@ -130,13 +130,20 @@ export class FunctionNode {
 				return;
 			}
 
-			if (cb({ node: child, parent: this }, index) === false) {
+			let stateClone: T | undefined = undefined;
+			if (state) {
+				stateClone = {
+					...state,
+				};
+			}
+
+			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
 				aborted = true;
 				return;
 			}
 
 			if ('walk' in child) {
-				if (child.walk(cb) === false) {
+				if (child.walk(cb, stateClone) === false) {
 					aborted = true;
 					return;
 				}
@@ -290,7 +297,7 @@ export class SimpleBlockNode {
 		}
 	}
 
-	walk(cb: (entry: { node: ComponentValue, parent: ContainerNode }, index: number | string) => boolean | void): false | undefined {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: ComponentValue, parent: ContainerNode, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
 		let aborted = false;
 
 		this.value.forEach((child, index) => {
@@ -298,13 +305,20 @@ export class SimpleBlockNode {
 				return;
 			}
 
-			if (cb({ node: child, parent: this }, index) === false) {
+			let stateClone: T | undefined = undefined;
+			if (state) {
+				stateClone = {
+					...state,
+				};
+			}
+
+			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
 				aborted = true;
 				return;
 			}
 
 			if ('walk' in child) {
-				if (child.walk(cb) === false) {
+				if (child.walk(cb, stateClone) === false) {
 					aborted = true;
 					return;
 				}

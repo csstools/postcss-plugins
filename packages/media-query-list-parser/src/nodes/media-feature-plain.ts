@@ -59,12 +59,19 @@ export class MediaFeaturePlain {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaFeaturePlainWalkerEntry, parent: MediaFeaturePlainWalkerParent }, index: number | string) => boolean | void) {
-		if (cb({ node: this.value, parent: this }, 'value') === false) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeaturePlainWalkerEntry, parent: MediaFeaturePlainWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T) {
+		let stateClone: T | undefined = undefined;
+		if (state) {
+			stateClone = {
+				...state,
+			};
+		}
+
+		if (cb({ node: this.value, parent: this, state: stateClone }, 'value') === false) {
 			return false;
 		}
 
-		return this.value.walk(cb);
+		return this.value.walk(cb, stateClone);
 	}
 
 	toJSON() {
