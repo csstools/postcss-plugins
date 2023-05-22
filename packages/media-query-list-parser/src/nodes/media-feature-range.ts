@@ -69,13 +69,20 @@ export class MediaFeatureRangeNameValue {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean | void): false | undefined {
-		if (cb({ node: this.value, parent: this }, 'value') === false) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
+		let stateClone: T | undefined = undefined;
+		if (state) {
+			stateClone = {
+				...state,
+			};
+		}
+
+		if (cb({ node: this.value, parent: this, state: stateClone }, 'value') === false) {
 			return false;
 		}
 
 		if ('walk' in this.value) {
-			return this.value.walk(cb);
+			return this.value.walk(cb, stateClone);
 		}
 	}
 
@@ -164,13 +171,20 @@ export class MediaFeatureRangeValueName {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean | void) {
-		if (cb({ node: this.value, parent: this }, 'value') === false) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T) {
+		let stateClone: T | undefined = undefined;
+		if (state) {
+			stateClone = {
+				...state,
+			};
+		}
+
+		if (cb({ node: this.value, parent: this, state: stateClone }, 'value') === false) {
 			return false;
 		}
 
 		if ('walk' in this.value) {
-			return this.value.walk(cb);
+			return this.value.walk(cb, stateClone);
 		}
 	}
 
@@ -277,23 +291,36 @@ export class MediaFeatureRangeValueNameValue {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent }, index: number | string) => boolean | void) {
-		if (cb({ node: this.valueOne, parent: this }, 'valueOne') === false) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T) {
+		let stateClone: T | undefined = undefined;
+		if (state) {
+			stateClone = {
+				...state,
+			};
+		}
+
+		if (cb({ node: this.valueOne, parent: this, state: stateClone }, 'valueOne') === false) {
 			return false;
 		}
 
 		if ('walk' in this.valueOne) {
-			if (this.valueOne.walk(cb) === false) {
+			if (this.valueOne.walk(cb, stateClone) === false) {
 				return false;
 			}
 		}
 
-		if (cb({ node: this.valueTwo, parent: this }, 'valueTwo') === false) {
+		if (state) {
+			stateClone = {
+				...state,
+			};
+		}
+
+		if (cb({ node: this.valueTwo, parent: this, state: stateClone }, 'valueTwo') === false) {
 			return false;
 		}
 
 		if ('walk' in this.valueTwo) {
-			if (this.valueTwo.walk(cb) === false) {
+			if (this.valueTwo.walk(cb, stateClone) === false) {
 				return false;
 			}
 		}

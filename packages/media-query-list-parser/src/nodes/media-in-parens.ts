@@ -53,13 +53,20 @@ export class MediaInParens {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaInParensWalkerEntry, parent: MediaInParensWalkerParent }, index: number | string) => boolean | void): false | undefined {
-		if (cb({ node: this.media, parent: this }, 'media') === false) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaInParensWalkerEntry, parent: MediaInParensWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
+		let stateClone: T | undefined = undefined;
+		if (state) {
+			stateClone = {
+				...state,
+			};
+		}
+
+		if (cb({ node: this.media, parent: this, state: stateClone }, 'media') === false) {
 			return false;
 		}
 
 		if ('walk' in this.media) {
-			return this.media.walk(cb);
+			return this.media.walk(cb, stateClone);
 		}
 	}
 

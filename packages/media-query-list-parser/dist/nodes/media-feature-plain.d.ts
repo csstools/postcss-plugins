@@ -15,10 +15,11 @@ export declare class MediaFeaturePlain {
     toString(): string;
     indexOf(item: MediaFeatureName | MediaFeatureValue): number | string;
     at(index: number | string): MediaFeatureName | MediaFeatureValue | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaFeaturePlainWalkerEntry;
         parent: MediaFeaturePlainWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): {
         type: NodeType;
         name: {

@@ -15,10 +15,11 @@ export declare class MediaConditionListWithAnd {
     toString(): string;
     indexOf(item: MediaInParens | MediaAnd): number | string;
     at(index: number | string): MediaInParens | MediaAnd | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaConditionListWithAndWalkerEntry;
         parent: MediaConditionListWithAndWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): unknown;
     isMediaConditionListWithAnd(): this is MediaConditionListWithAnd;
     static isMediaConditionListWithAnd(x: unknown): x is MediaConditionListWithAnd;
@@ -36,10 +37,11 @@ export declare class MediaConditionListWithOr {
     toString(): string;
     indexOf(item: MediaInParens | MediaOr): number | string;
     at(index: number | string): MediaInParens | MediaOr | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaConditionListWithOrWalkerEntry;
         parent: MediaConditionListWithOrWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): unknown;
     isMediaConditionListWithOr(): this is MediaConditionListWithOr;
     static isMediaConditionListWithOr(x: unknown): x is MediaConditionListWithOr;

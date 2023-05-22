@@ -23,10 +23,11 @@ export declare class FunctionNode {
     toString(): string;
     indexOf(item: ComponentValue): number | string;
     at(index: number | string): ComponentValue | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: ComponentValue;
         parent: ContainerNode;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): unknown;
     isFunctionNode(): this is FunctionNode;
     static isFunctionNode(x: unknown): x is FunctionNode;
@@ -50,10 +51,11 @@ export declare class SimpleBlockNode {
     toString(): string;
     indexOf(item: ComponentValue): number | string;
     at(index: number | string): ComponentValue | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: ComponentValue;
         parent: ContainerNode;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): unknown;
     isSimpleBlockNode(): this is SimpleBlockNode;
     static isSimpleBlockNode(x: unknown): x is SimpleBlockNode;

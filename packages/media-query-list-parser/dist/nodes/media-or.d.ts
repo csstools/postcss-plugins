@@ -10,10 +10,11 @@ export declare class MediaOr {
     toString(): string;
     indexOf(item: MediaInParens): number | string;
     at(index: number | string): MediaInParens | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaOrWalkerEntry;
         parent: MediaOrWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): {
         type: NodeType;
         modifier: CSSToken[];

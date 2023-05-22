@@ -10,10 +10,11 @@ export declare class MediaAnd {
     toString(): string;
     indexOf(item: MediaInParens): number | string;
     at(index: number | string): MediaInParens | null;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaAndWalkerEntry;
         parent: MediaAndWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): unknown;
     isMediaAnd(): this is MediaAnd;
     static isMediaAnd(x: unknown): x is MediaAnd;
