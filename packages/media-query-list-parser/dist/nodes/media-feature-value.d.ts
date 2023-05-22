@@ -11,10 +11,11 @@ export declare class MediaFeatureValue {
     toString(): string;
     indexOf(item: ComponentValue): number | string;
     at(index: number | string): ComponentValue | Array<ComponentValue> | undefined;
-    walk(cb: (entry: {
+    walk<T extends Record<string, unknown>>(cb: (entry: {
         node: MediaFeatureValueWalkerEntry;
         parent: MediaFeatureValueWalkerParent;
-    }, index: number | string) => boolean | void): false | undefined;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): {
         type: NodeType;
         value: unknown;

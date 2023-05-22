@@ -59,13 +59,20 @@ export class MediaFeatureValue {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaFeatureValueWalkerEntry, parent: MediaFeatureValueWalkerParent }, index: number | string) => boolean | void): false | undefined {
-		if (cb({ node: this.value, parent: this }, 'value') === false) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeatureValueWalkerEntry, parent: MediaFeatureValueWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
+		let stateClone: T | undefined = undefined;
+		if (state) {
+			stateClone = {
+				...state,
+			};
+		}
+
+		if (cb({ node: this.value, parent: this, state: stateClone }, 'value') === false) {
 			return false;
 		}
 
 		if ('walk' in this.value) {
-			return this.value.walk(cb);
+			return this.value.walk(cb, stateClone);
 		}
 	}
 

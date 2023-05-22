@@ -122,16 +122,23 @@ export class MediaQueryWithType {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaQueryWithTypeWalkerEntry, parent: MediaQueryWithTypeWalkerParent }, index: number | string) => boolean | void): false | undefined {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaQueryWithTypeWalkerEntry, parent: MediaQueryWithTypeWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
+		let stateClone: T | undefined = undefined;
+		if (state) {
+			stateClone = {
+				...state,
+			};
+		}
+
 		if (!this.media) {
 			return;
 		}
 
-		if (cb({ node: this.media, parent: this }, 'media') === false) {
+		if (cb({ node: this.media, parent: this, state: stateClone }, 'media') === false) {
 			return false;
 		}
 
-		return this.media.walk(cb);
+		return this.media.walk(cb, stateClone);
 	}
 
 	toJSON() {
@@ -239,12 +246,19 @@ export class MediaQueryWithoutType {
 		}
 	}
 
-	walk(cb: (entry: { node: MediaQueryWithoutTypeWalkerEntry, parent: MediaQueryWithoutTypeWalkerParent }, index: number | string) => boolean | void) {
-		if (cb({ node: this.media, parent: this }, 'media') === false) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaQueryWithoutTypeWalkerEntry, parent: MediaQueryWithoutTypeWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
+		let stateClone: T | undefined = undefined;
+		if (state) {
+			stateClone = {
+				...state,
+			};
+		}
+
+		if (cb({ node: this.media, parent: this, state: stateClone }, 'media') === false) {
 			return false;
 		}
 
-		return this.media.walk(cb);
+		return this.media.walk(cb, stateClone);
 	}
 
 	toJSON() {
@@ -296,7 +310,7 @@ export class MediaQueryInvalid {
 		return this.media.map((x) => x.toString()).join('');
 	}
 
-	walk(cb: (entry: { node: MediaQueryInvalidWalkerEntry, parent: MediaQueryInvalidWalkerParent }, index: number | string) => boolean | void) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaQueryInvalidWalkerEntry, parent: MediaQueryInvalidWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
 		let aborted = false;
 
 		this.media.forEach((child, index) => {
@@ -304,13 +318,20 @@ export class MediaQueryInvalid {
 				return;
 			}
 
-			if (cb({ node: child, parent: this }, index) === false) {
+			let stateClone: T | undefined = undefined;
+			if (state) {
+				stateClone = {
+					...state,
+				};
+			}
+
+			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
 				aborted = true;
 				return;
 			}
 
 			if ('walk' in child) {
-				if (child.walk(cb) === false) {
+				if (child.walk(cb, stateClone) === false) {
 					aborted = true;
 					return;
 				}

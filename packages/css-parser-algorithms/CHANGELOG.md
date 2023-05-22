@@ -1,5 +1,12 @@
 # Changes to CSS Parser Algorithms
 
+### Unreleased (minor)
+
+- Add `state` to `walk` methods.
+
+This makes it possible pass down information from a parent structure to children.  
+e.g. you can set `entry.state.isInCalcExpression = true` for `calc((10 + 5) / 2)` when walking the `FunctionNode` for `calc`.
+
 ### 2.1.1 (April 10, 2023)
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
