@@ -8,16 +8,10 @@ export function mutateIdent(ident: TokenIdent, newValue: string): void {
 	const codePoints: Array<number> = [];
 
 	{
-		let index = 0;
-		let codePoint: number | undefined;
-		// eslint-disable-next-line no-constant-condition
-		while (true) {
-			codePoint = newValue.codePointAt(index++);
-			if (codePoint === undefined) {
-				break;
-			}
-
-			codePoints.push(codePoint);
+		let codePoint = '';
+		for (codePoint of newValue) {
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			codePoints.push(codePoint.codePointAt(0)!);
 		}
 	}
 
