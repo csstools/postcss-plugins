@@ -8,14 +8,19 @@ import { consumeNumber } from './number';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-numeric-token
 export function consumeNumericToken(ctx: Context, reader: CodePointReader): TokenPercentage|TokenNumber|TokenDimension {
+	let signCharacter: undefined | '+' | '-' = undefined;
+
+	{
+		const peeked = reader.codePointSource[reader.cursor];
+		if (peeked === HYPHEN_MINUS) {
+			signCharacter = '-';
+		} else if (peeked === PLUS_SIGN) {
+			signCharacter = '+';
+		}
+	}
+
 	const numberType = consumeNumber(ctx, reader);
 	const numberValue = parseFloat(reader.source.slice(reader.representationStart, reader.representationEnd + 1));
-	let signCharacter: undefined | '+' | '-' = undefined;
-	if (reader.codePointSource[reader.representationStart] === HYPHEN_MINUS) {
-		signCharacter = '-';
-	} else if (reader.codePointSource[reader.representationStart] === PLUS_SIGN) {
-		signCharacter = '+';
-	}
 
 	if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 		const unit = consumeIdentSequence(ctx, reader);
