@@ -67,7 +67,7 @@ export function consumeUnicodeRangeToken(ctx: Context, reader: CodePointReader):
 
 	if (!secondSegment.length) {
 		// Interpret the consumed code points as a hexadecimal number.
-		const startOfRange = parseInt(String.fromCharCode(...firstSegment), 16);
+		const startOfRange = parseInt(String.fromCodePoint(...firstSegment), 16);
 
 		// Return a new <unicode-range-token> both starting and ending at start of range.
 		return [
@@ -83,8 +83,8 @@ export function consumeUnicodeRangeToken(ctx: Context, reader: CodePointReader):
 	}
 
 	// Interpret the consumed code points as a hexadecimal number.
-	const startOfRange = parseInt(String.fromCharCode(...firstSegment), 16);
-	const endOfRange = parseInt(String.fromCharCode(...secondSegment), 16);
+	const startOfRange = parseInt(String.fromCodePoint(...firstSegment), 16);
+	const endOfRange = parseInt(String.fromCodePoint(...secondSegment), 16);
 
 	// Return a new <unicode-range-token> starting at start of range and ending at end of range.
 	return [

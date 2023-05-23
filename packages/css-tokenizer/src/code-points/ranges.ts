@@ -37,7 +37,7 @@ export function isNonASCIICodePoint(search: number): boolean {
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#ident-start-code-point
 export function isIdentStartCodePoint(search: number): boolean {
-	return isLetterCodePoint(search) || isNonASCIICodePoint(search) || search === LOW_LINE;
+	return isLetterCodePoint(search) || isNonASCII_IdentCodePoint(search) || search === LOW_LINE;
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#ident-code-point
@@ -46,7 +46,6 @@ export function isIdentCodePoint(search: number): boolean {
 }
 
 // https://drafts.csswg.org/css-syntax/#non-ascii-ident-code-point
-// TODO : https://github.com/w3c/csswg-drafts/issues/8862
 export function isNonASCII_IdentCodePoint(search: number): boolean {
 	if (
 		search === 0x00B7 ||

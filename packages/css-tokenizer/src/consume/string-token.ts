@@ -58,10 +58,10 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 				continue;
 			}
 
-			result += String.fromCharCode(consumeEscapedCodePoint(ctx, reader));
+			result += String.fromCodePoint(consumeEscapedCodePoint(ctx, reader));
 			continue;
 		}
 
-		result += String.fromCharCode(next);
+		result += String.fromCodePoint(next);
 	}
 }

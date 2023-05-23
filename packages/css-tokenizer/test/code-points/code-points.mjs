@@ -19,11 +19,11 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 		],
 		[
 			'§',
-			[['ident-token', '§', 0, 0, { value: '§' }]],
+			[['delim-token', '§', 0, 0, { value: '§' }]],
 		],
 		[
 			'±',
-			[['ident-token', '±', 0, 0, { value: '±' }]],
+			[['delim-token', '±', 0, 0, { value: '±' }]],
 		],
 		[
 			'!',
@@ -181,11 +181,17 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 		],
 		[
 			'§a',
-			[['ident-token', '§a', 0, 1, { value: '§a' }]],
+			[
+				['delim-token', '§', 0, 0, { value: '§' }],
+				['ident-token', 'a', 1, 1, { value: 'a' }],
+			],
 		],
 		[
 			'±a',
-			[['ident-token', '±a', 0, 1, { value: '±a' }]],
+			[
+				['delim-token', '±', 0, 0, { value: '±' }],
+				['ident-token', 'a', 1, 1, { value: 'a' }],
+			],
 		],
 		[
 			'!a',

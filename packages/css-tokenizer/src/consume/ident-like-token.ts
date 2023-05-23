@@ -18,7 +18,7 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 			reader.representationStart,
 			reader.representationEnd,
 			{
-				value: String.fromCharCode(...codePoints),
+				value: String.fromCodePoint(...codePoints),
 			},
 		];
 	}
@@ -50,7 +50,7 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 					reader.representationStart,
 					reader.representationEnd,
 					{
-						value: String.fromCharCode(...codePoints),
+						value: String.fromCodePoint(...codePoints),
 					},
 				];
 			}
@@ -68,7 +68,7 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 		reader.representationStart,
 		reader.representationEnd,
 		{
-			value: String.fromCharCode(...codePoints),
+			value: String.fromCodePoint(...codePoints),
 		},
 	];
 }

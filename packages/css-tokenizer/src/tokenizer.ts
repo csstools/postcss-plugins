@@ -60,8 +60,7 @@ export function tokenizer(input: { css: Stringer, unicodeRangesAllowed?: boolean
 	}
 
 	function nextToken(): CSSToken | undefined {
-		reader.representationStart = reader.cursor;
-		reader.representationEnd = -1;
+		reader.resetRepresentation();
 
 		if (checkIfTwoCodePointsStartAComment(ctx, reader)) {
 			return consumeComment(ctx, reader);
@@ -191,7 +190,7 @@ export function tokenizer(input: { css: Stringer, unicodeRangesAllowed?: boolean
 					const identSequence = consumeIdentSequence(ctx, reader);
 
 					return [TokenType.AtKeyword, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, {
-						value: String.fromCharCode(...identSequence),
+						value: String.fromCodePoint(...identSequence),
 					}];
 				}
 

@@ -33,7 +33,7 @@ export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): 
 			reader.advanceCodePoint();
 		}
 
-		const codePointLiteral = parseInt(String.fromCharCode(...hexSequence), 16);
+		const codePointLiteral = parseInt(String.fromCodePoint(...hexSequence), 16);
 		if (codePointLiteral === 0) {
 			return REPLACEMENT_CHARACTER;
 		}

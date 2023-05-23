@@ -5,9 +5,20 @@ import { TokenIdent } from '../interfaces/token';
 export function mutateIdent(ident: TokenIdent, newValue: string): void {
 	let result = '';
 
-	const codePoints = new Array(newValue.length);
-	for (let i = 0; i < newValue.length; i++) {
-		codePoints[i] = newValue.charCodeAt(i);
+	const codePoints: Array<number> = [];
+
+	{
+		let index = 0;
+		let codePoint: number | undefined;
+		// eslint-disable-next-line no-constant-condition
+		while (true) {
+			codePoint = newValue.codePointAt(index++);
+			if (codePoint === undefined) {
+				break;
+			}
+
+			codePoints.push(codePoint);
+		}
 	}
 
 	let remainderStartIndex = 0;

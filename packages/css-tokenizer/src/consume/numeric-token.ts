@@ -28,7 +28,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 				value: numberValue,
 				signCharacter: signCharacter,
 				type: numberType,
-				unit: String.fromCharCode(...unit),
+				unit: String.fromCodePoint(...unit),
 			},
 		];
 	}
