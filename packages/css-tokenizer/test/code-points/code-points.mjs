@@ -405,3 +405,116 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 		);
 	});
 }
+
+// Complex codepoints
+{
+	const testCases = [
+		[
+			'🤲🏽',
+			[['ident-token', '🤲🏽', 0, 3, { value: '🤲🏽' }]],
+		],
+		[
+			'🤲🏽🤲🏽',
+			[['ident-token', '🤲🏽🤲🏽', 0, 7, { value: '🤲🏽🤲🏽' }]],
+		],
+		[
+			'🤲🏽 🤲🏽',
+			[
+				['ident-token', '🤲🏽', 0, 3, { value: '🤲🏽' }],
+				['whitespace-token', ' ', 4, 4, undefined],
+				['ident-token', '🤲🏽', 5, 8, { value: '🤲🏽' }],
+			],
+		],
+		[
+			'🤲🏽/🤲🏽',
+			[
+				['ident-token', '🤲🏽', 0, 3, { value: '🤲🏽' }],
+				['delim-token', '/', 4, 4, { value: '/' }],
+				['ident-token', '🤲🏽', 5, 8, { value: '🤲🏽' }],
+			],
+		],
+		[
+			'😀',
+			[['ident-token', '😀', 0, 1, { value: '😀' }]],
+		],
+		[
+			'😀😀',
+			[['ident-token', '😀😀', 0, 3, { value: '😀😀' }]],
+		],
+		[
+			'😀 😀',
+			[
+				['ident-token', '😀', 0, 1, { value: '😀' }],
+				['whitespace-token', ' ', 2, 2, undefined],
+				['ident-token', '😀', 3, 4, { value: '😀' }],
+			],
+		],
+		[
+			'😀/😀',
+			[
+				['ident-token', '😀', 0, 1, { value: '😀' }],
+				['delim-token', '/', 2, 2, { value: '/' }],
+				['ident-token', '😀', 3, 4, { value: '😀' }],
+			],
+		],
+		[
+			'å',
+			[['ident-token', 'å', 0, 1, { value: 'å' }]],
+		],
+		[
+			'åå',
+			[['ident-token', 'åå', 0, 3, { value: 'åå' }]],
+		],
+		[
+			'å å',
+			[
+				['ident-token', 'å', 0, 1, { value: 'å' }],
+				['whitespace-token', ' ', 2, 2, undefined],
+				['ident-token', 'å', 3, 4, { value: 'å' }],
+			],
+		],
+		[
+			'å/å',
+			[
+				['ident-token', 'å', 0, 1, { value: 'å' }],
+				['delim-token', '/', 2, 2, { value: '/' }],
+				['ident-token', 'å', 3, 4, { value: 'å' }],
+			],
+		],
+		[
+			'café',
+			[['ident-token', 'café', 0, 4, { value: 'café' }]],
+		],
+		[
+			'cafécafé',
+			[['ident-token', 'cafécafé', 0, 9, { value: 'cafécafé' }]],
+		],
+		[
+			'café café',
+			[
+				['ident-token', 'café', 0, 4, { value: 'café' }],
+				['whitespace-token', ' ', 5, 5, undefined],
+				['ident-token', 'café', 6, 10, { value: 'café' }],
+			],
+		],
+		[
+			'café/café',
+			[
+				['ident-token', 'café', 0, 4, { value: 'café' }],
+				['delim-token', '/', 5, 5, { value: '/' }],
+				['ident-token', 'café', 6, 10, { value: 'café' }],
+			],
+		],
+	];
+
+	testCases.forEach((testCase) => {
+		const t = tokenizer({
+			css: testCase[0],
+		});
+
+		assert.deepEqual(
+			collectTokens(t).slice(0, -1),
+			testCase[1],
+		);
+	});
+}
