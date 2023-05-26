@@ -9,7 +9,7 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 		}
 
 		if ((parent as AtRule).name.toLowerCase() === 'supports') {
-			if (/\(font-size: \d+ic\)/i.test((parent as AtRule).params)) {
+			if (/([^\w]var\()|(\(top: var\(--f\))/i.test((parent as AtRule).params)) {
 				return true;
 			}
 		}

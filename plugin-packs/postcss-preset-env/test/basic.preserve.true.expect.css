@@ -813,7 +813,6 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	content: var(--value-2ic);
 	left: 2em;
 	left: 2ic;
-	left: var(--non-existing, 2ic);
 	width: -webkit-calc(8em + 20px);
 	width: -moz-calc(8em + 20px);
 	width: calc(8em + 20px);
@@ -824,6 +823,12 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	margin: 0.5em 1em .2em;
 	margin: 0.5ic 1ic .2ic;
 	padding: 2    ic;
+}
+
+@supports (font-size: 1ic) and (top: var(--f)) {
+.ic-unit {
+	left: var(--non-existing, 2ic);
+}
 }
 
 .unset {
@@ -1048,13 +1053,8 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 @supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0% / 0)) {
 .gradients-interpolation-method {
-	--background-image: linear-gradient(in oklch decreasing hue, hsl(0, 85%, 75%) 0%, hsl(180, 80%, 65%) 100%);
-}
-@supports (color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5)) {
-.gradients-interpolation-method {
 	--background-image: linear-gradient(in oklch decreasing hue, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
 }
-	}
 }
 
 .test-css-color-5-interop {
@@ -1078,4 +1078,16 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	color-9: rgb(130, 31, 0);
 	color-9: color(display-p3 0.48896 0.1211 0);
 	color-9: oklch(from oklch(40% 0.566 39deg) l c h);
+}
+
+.test-property-with-var {
+	--opacity: 1;
+	color: rgba(87, 107, 149, 1);
+	color: rgba(87 107 149 / 1);
+}
+
+@supports (color: rgba(0 0 0 / 0)) and (top: var(--f)) {
+.test-property-with-var {
+	color: rgba(87 107 149 / var(--opacity));
+}
 }

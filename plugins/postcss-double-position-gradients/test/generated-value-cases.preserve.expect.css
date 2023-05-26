@@ -5,17 +5,32 @@
 
 .order-1 {
 	order: var(1, linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%));
+}
+
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) and (top: var(--f)) {
+.order-1 {
 	order: var(1, linear-gradient(90deg, black 25% 50%, blue 50% 75%));
+}
 }
 
 .order-2 {
 	order: var(linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%), 1);
+}
+
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) and (top: var(--f)) {
+.order-2 {
 	order: var(linear-gradient(90deg, black 25% 50%, blue 50% 75%), 1);
+}
 }
 
 .order-3 {
 	order: var(linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%), linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%));
+}
+
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) and (top: var(--f)) {
+.order-3 {
 	order: var(linear-gradient(90deg, black 25% 50%, blue 50% 75%), linear-gradient(90deg, black 25% 50%, blue 50% 75%));
+}
 }
 
 .order-4 {

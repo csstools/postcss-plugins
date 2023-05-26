@@ -665,13 +665,18 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	content: 'something';
 	content: var(--value-2ic);
 	left: 2em;
-	left: var(--non-existing, 2ic);
 	width: -webkit-calc(8em + 20px);
 	width: -moz-calc(8em + 20px);
 	width: calc(8em + 20px);
 	height: 10px;
 	margin: 0.5em 1em .2em;
 	padding: 2    ic;
+}
+
+@supports (font-size: 1ic) and (top: var(--f)) {
+.ic-unit:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	left: var(--non-existing, 2ic);
+}
 }
 
 .unset:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {

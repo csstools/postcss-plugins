@@ -104,10 +104,15 @@
 	color-3: rgb(7, 3, 1);
 	color-3: lab(1% 1 1 / calc(20% * 5));
 	color-4: rgba(7, 3, 1, var(--foo));
-	color-4: lab(1% 1 1 / var(--foo));
 	color-5: lab(1% 1 1 /);
 	color-6: rgba(7, 3, 1, 0.6);
 	color-6: lab(1% 1 1 / calc(20% * 3));
+}
+
+@supports (color: lab(0% 0 0)) and (top: var(--f)) {
+.test-alpha-lab {
+	color-4: lab(1% 1 1 / var(--foo));
+}
 }
 
 .test-alpha-lch {
@@ -118,10 +123,15 @@
 	color-3: rgb(6, 3, 4);
 	color-3: lch(1% 1 1 / calc(20% * 5));
 	color-4: rgba(6, 3, 4, var(--foo));
-	color-4: lch(1% 1 1 / var(--foo));
 	color-5: lch(1% 1 1 /);
 	color-6: rgba(6, 3, 4, 0.6);
 	color-6: lch(1% 1 1 / calc(20% * 3));
+}
+
+@supports (color: lch(0% 0 0)) and (top: var(--f)) {
+.test-alpha-lch {
+	color-4: lch(1% 1 1 / var(--foo));
+}
 }
 
 .test-ignore {

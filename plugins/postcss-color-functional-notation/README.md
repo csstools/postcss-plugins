@@ -58,7 +58,7 @@ The `preserve` option determines whether the original functional color notation
 is preserved. By default, it is not preserved.
 
 ```js
-postcssImageSetFunction({ preserve: true })
+postcssColorFunctionalNotation({ preserve: true })
 ```
 
 ```pcss
@@ -81,6 +81,17 @@ postcssImageSetFunction({ preserve: true })
   --firebrick-hsl-a50: hsla(0, 68%, 42%, .5);
   --firebrick-hsl-a50: hsl(0 68% 42% / 50%);
 }
+```
+
+### enableProgressiveCustomProperties
+
+The `enableProgressiveCustomProperties` option determines whether the original notation
+is wrapped with `@supports` when used in Custom Properties. By default, it is enabled.
+
+⚠️ We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties. See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
+
+```js
+postcssColorFunctionalNotation({ enableProgressiveCustomProperties: false })
 ```
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test

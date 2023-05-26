@@ -5,7 +5,4 @@ postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
 	},
-	example: {
-		message: "minimal example",
-	},
 });

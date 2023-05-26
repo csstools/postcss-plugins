@@ -1,1 +1,1 @@
-export declare function supportConditionsFromValue(value: string): Array<string>;
+export declare function supportConditionsFromValue(value: string, mustContainVar?: boolean): Array<string>;

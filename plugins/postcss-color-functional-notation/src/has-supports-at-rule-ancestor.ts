@@ -1,5 +1,7 @@
 import type { Node, AtRule } from 'postcss';
 
+const supportsCheck = /(\(color: rgb(a?)\(0 0 0 \/ 0)|(\(color: hsl(a?)\(0 0% 0% \/ 0)/i;
+
 export function hasSupportsAtRuleAncestor(node: Node): boolean {
 	let parent = node.parent;
 	while (parent) {
@@ -8,7 +10,7 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 			continue;
 		}
 
-		if ((parent as AtRule).name === 'supports' && (parent as AtRule).params.toLowerCase().indexOf('(color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5))') !== -1) {
+		if ((parent as AtRule).name === 'supports' && supportsCheck.test((parent as AtRule).params)) {
 			return true;
 		}
 

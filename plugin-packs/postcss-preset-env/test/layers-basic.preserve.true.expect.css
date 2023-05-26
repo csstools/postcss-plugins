@@ -813,7 +813,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	content: var(--value-2ic);
 	left: 2em;
 	left: 2ic;
-	left: var(--non-existing, 2ic);
 	width: -webkit-calc(8em + 20px);
 	width: -moz-calc(8em + 20px);
 	width: calc(8em + 20px);
@@ -824,6 +823,12 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	margin: 0.5em 1em .2em;
 	margin: 0.5ic 1ic .2ic;
 	padding: 2    ic;
+}
+
+@supports (font-size: 1ic) and (top: var(--f)){
+.ic-unit:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	left: var(--non-existing, 2ic);
+}
 }
 
 .unset:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {

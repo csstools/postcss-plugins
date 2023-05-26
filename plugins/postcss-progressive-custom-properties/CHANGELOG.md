@@ -1,5 +1,27 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (minor)
+
+- Add support for regular properties whose values contain `var()`
+
+```css
+.property-with-var--1 {
+	color: rgba(87, 107, 149, var(--opacity));
+	color: rgb(87 107 149 / var(--opacity));
+}
+
+/* becomes */
+.property-with-var--1 {
+	color: rgba(87, 107, 149, var(--opacity));
+}
+
+@supports (color: rgb(0 0 0 / 0)) and (top: var(--f)) {
+	.property-with-var--1 {
+		color: rgb(87 107 149 / var(--opacity));
+	}
+}
+```
+
 ### 2.2.0 (May 19, 2023)
 
 - Add relative color syntax support.
