@@ -812,6 +812,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	text-indent: 2ic;
 	content: var(--value-2ic);
 	left: 2em;
+	left: var(--non-existing, 2em);
 	left: 2ic;
 	width: -webkit-calc(8em + 20px);
 	width: -moz-calc(8em + 20px);
@@ -1083,6 +1084,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 .test-property-with-var {
 	--opacity: 1;
 	color: rgba(87, 107, 149, 1);
+	color: rgba(87, 107, 149, var(--opacity));
 	color: rgba(87 107 149 / 1);
 }
 

@@ -457,16 +457,11 @@
 	text-indent: 2em;
 	content: var(--value-2ic);
 	left: 2em;
+	left: var(--non-existing, 2em);
 	width: calc(8em + 20px);
 	height: 10px;
 	margin: 0.5em 1em .2em;
 	padding: 2    ic;
-}
-
-@supports (font-size: 1ic) and (top: var(--f)) {
-.ic-unit {
-	left: var(--non-existing, 2ic);
-}
 }
 
 .unset {
@@ -619,10 +614,5 @@
 .test-property-with-var {
 	--opacity: 1;
 	color: rgba(87, 107, 149, 1);
-}
-
-@supports (color: rgba(0 0 0 / 0)) and (top: var(--f)) {
-.test-property-with-var {
-	color: rgba(87 107 149 / var(--opacity));
-}
+	color: rgba(87, 107, 149, var(--opacity));
 }
