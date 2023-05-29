@@ -111,7 +111,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"@webref/css": "^6.5.1",
+		"@webref/css": "^6.5.7",
 		"postcss-simple-vars": "^7.0.1"
 	},
 	"scripts": {
