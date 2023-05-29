@@ -13,7 +13,7 @@
 		"webpack-cli": "^5.1.0",
 		"postcss-loader": "^7.2.4",
 		"style-loader": "^3.3.1",
-		"css-loader": "^6.7.1",
+		"css-loader": "^6.8.1",
 		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env"
 	},
 	"volta": {
