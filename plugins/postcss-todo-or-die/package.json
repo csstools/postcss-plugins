@@ -46,7 +46,7 @@
 	"dependencies": {
 		"@csstools/css-parser-algorithms": "^2.1.1",
 		"@csstools/css-tokenizer": "^2.1.1",
-		"browserslist": "^4.21.4"
+		"browserslist": "^4.21.6"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
