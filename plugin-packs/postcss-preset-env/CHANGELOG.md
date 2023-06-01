@@ -4,6 +4,19 @@
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
 - Updated `postcss-custom-properties` to `13.2.0` (minor)
+- Updated `@csstools/postcss-color-function` to `2.2.3` (patch)
+- Updated `@csstools/postcss-color-mix-function` to `1.0.3` (patch)
+- Updated `@csstools/postcss-gradients-interpolation-method` to `3.0.6` (patch)
+- Updated `@csstools/postcss-ic-unit` to `2.0.4` (patch)
+- Updated `@csstools/postcss-media-minmax` to `1.0.3` (patch)
+- Updated `@csstools/postcss-media-queries-aspect-ratio-number-values` to `1.0.3` (patch)
+- Updated `@csstools/postcss-oklab-function` to `2.2.3` (patch)
+- Updated `@csstools/postcss-relative-color-syntax` to `1.0.1` (patch)
+- Updated `postcss-color-functional-notation` to `5.1.0` (minor)
+- Updated `postcss-custom-media` to `9.1.4` (patch)
+- Updated `postcss-double-position-gradients` to `4.0.4` (patch)
+- Updated `postcss-lab-function` to `5.2.3` (patch)
+
 
 
 ### 8.4.1 (May 19, 2023)
