@@ -1,5 +1,11 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
+- Updated `postcss-custom-properties` to `13.2.0` (minor)
+
+
 ### 8.4.1 (May 19, 2023)
 
 - Added `@csstools/postcss-relative-color-syntax` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax#readme) for usage details (really this time).

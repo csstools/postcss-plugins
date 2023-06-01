@@ -1,5 +1,10 @@
 # Changes to PostCSS Lab Function
 
+### Unreleased (patch)
+
+- Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
+
+
 ### 5.2.2 (May 19, 2023)
 
 - Ignore relative color syntax

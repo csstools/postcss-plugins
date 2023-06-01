@@ -1,5 +1,10 @@
 # Changes to CSSTools CLI
 
+### Unreleased (patch)
+
+- Updated `postcss-custom-properties` to `13.2.0` (minor)
+
+
 ### 2.1.5 (May 19, 2023)
 
 - Updated `postcss-preset-env` to `8.4.1` (patch)

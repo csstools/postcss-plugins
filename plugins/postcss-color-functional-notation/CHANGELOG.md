@@ -3,6 +3,8 @@
 ### Unreleased (minor)
 
 - Added `@csstools/postcss-progressive-custom-properties` for improved support of custom properties.
+- Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
+
 
 ### 5.0.2 (February 6, 2023)
 
