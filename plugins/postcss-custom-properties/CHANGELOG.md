@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased (minor)
+### 13.2.0 (June 1, 2023)
 
 - Do not generate fallback values when the rule is wrapped in `@supports (top: var(--f))`.
 
