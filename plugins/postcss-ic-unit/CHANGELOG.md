@@ -1,6 +1,6 @@
 # Changes to PostCSS IC Unit
 
-### Unreleased (patch)
+### 2.0.4 (June 1, 2023)
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
 
