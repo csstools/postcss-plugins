@@ -1,6 +1,6 @@
 # Changes to Media Query List Parser
 
-### Unreleased (minor)
+### 2.1.0 (June 1, 2023)
 
 - Fix `walk` for `MediaFeatureValue` with complex component values.
 - Add `state` to `walk` methods.
