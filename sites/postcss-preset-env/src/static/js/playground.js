@@ -17,7 +17,7 @@ const stateAtLoad = (() => {
 			return {};
 		}
 
-		const maybeState = JSON.parse(window.decodeURIComponent(hash));
+		const maybeState = JSON.parse(atob(window.decodeURIComponent(hash)));
 		if (!maybeState.config) {
 			return {};
 		}
@@ -45,10 +45,10 @@ const currentConfig = stateAtLoad.config ?? {
 
 function processCss(source, config, isDefaultState = false) {
 	if (!isDefaultState) {
-		window.location.hash = window.encodeURIComponent(JSON.stringify({
+		window.location.hash = window.encodeURIComponent(btoa(JSON.stringify({
 			source: source,
 			config: config,
-		}));
+		})));
 	}
 
 	let presetEnv;
