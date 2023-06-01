@@ -1,6 +1,6 @@
 # Changes to CSSTools CLI
 
-### Unreleased (patch)
+### 2.1.6 (June 1, 2023)
 
 - Updated `postcss-custom-properties` to `13.2.0` (minor)
 - Updated `@csstools/postcss-color-function` to `2.2.3` (patch)
