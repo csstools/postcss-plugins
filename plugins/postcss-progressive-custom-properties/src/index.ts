@@ -1,20 +1,37 @@
 import type { AtRule, PluginCreator, Rule } from 'postcss';
 import { supportConditionsFromValue } from './support-conditions-from-values';
 
+const hasVariableFunction = /var\(/i;
+
 const creator: PluginCreator<null> = () => {
 	return {
 		postcssPlugin: 'postcss-progressive-custom-properties',
 		RuleExit: (rule, { postcss }) => {
 			const atSupportsRules: Array<AtRule> = [];
 			const parentRuleClones: Map<AtRule, Rule> = new Map();
-			const variableNames = new Set<string>();
+			const propNames = new Set<string>();
 
 			rule.each((decl) => {
 				if (decl.type !== 'decl') {
 					return;
 				}
 
-				if (!decl.variable) {
+				// The first encountered property is the fallback for the oldest targets.
+				if (decl.variable) {
+					// custom properties are case-sensitive
+					if (!propNames.has(decl.prop.toString())) {
+						propNames.add(decl.prop.toString());
+						return;
+					}
+				} else {
+					// regular properties are case-insensitive
+					if (!propNames.has(decl.prop.toString().toLowerCase())) {
+						propNames.add(decl.prop.toString().toLowerCase());
+						return;
+					}
+				}
+
+				if (!(decl.variable || hasVariableFunction.test(decl.value))) {
 					return;
 				}
 
@@ -28,13 +45,10 @@ const creator: PluginCreator<null> = () => {
 					return;
 				}
 
-				// The first encountered property is the fallback for the oldest targets.
-				if (!variableNames.has(decl.prop.toString().toLowerCase())) {
-					variableNames.add(decl.prop.toString().toLowerCase());
-					return;
-				}
+				// if the property itself isn't a custom property, the value must contain a var() function
+				const mustContainVar = !decl.variable;
 
-				const supportConditions = supportConditionsFromValue(decl.value);
+				const supportConditions = supportConditionsFromValue(decl.value, mustContainVar);
 				if (!supportConditions.length) {
 					return;
 				}

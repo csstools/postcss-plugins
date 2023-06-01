@@ -83,8 +83,13 @@
 	color-3: rgb(0, 0, 0);
 	color-3: color(display-p3 0.00015 0 0);
 	color-4: rgba(0, 0, 0, var(--foo));
-	color-4: color(display-p3 0.00015 0 0 / var(--foo));
 	color-5: oklab(1% 0.01 0.01 /);
+}
+
+@supports (color: color(display-p3 0 0 0)) and (top: var(--f)) {
+.test-alpha-oklab {
+	color-4: color(display-p3 0.00015 0 0 / var(--foo));
+}
 }
 
 .test-alpha-oklch {
@@ -95,8 +100,13 @@
 	color-3: rgb(0, 0, 0);
 	color-3: color(display-p3 0.00009 0 0.00001);
 	color-4: rgba(0, 0, 0, var(--foo));
-	color-4: color(display-p3 0.00009 0 0.00001 / var(--foo));
 	color-5: oklch(1% 0.01 0.01 /);
+}
+
+@supports (color: color(display-p3 0 0 0)) and (top: var(--f)) {
+.test-alpha-oklch {
+	color-4: color(display-p3 0.00009 0 0.00001 / var(--foo));
+}
 }
 
 .test-powerless-hue-0 {

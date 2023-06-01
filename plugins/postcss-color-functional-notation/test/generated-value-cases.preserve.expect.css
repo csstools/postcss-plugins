@@ -5,17 +5,32 @@
 
 .order-1 {
 	order: var(1, rgba(178, 34, 34, 1));
+}
+
+@supports (color: rgba(0 0 0 / 0)) and (top: var(--f)) {
+.order-1 {
 	order: var(1, rgba(178 34 34 / 1));
+}
 }
 
 .order-2 {
 	order: var(rgba(178, 34, 34, 1), 1);
+}
+
+@supports (color: rgba(0 0 0 / 0)) and (top: var(--f)) {
+.order-2 {
 	order: var(rgba(178 34 34 / 1), 1);
+}
 }
 
 .order-3 {
 	order: var(rgba(178, 34, 34, 1), rgba(178, 34, 34, 1));
+}
+
+@supports (color: rgba(0 0 0 / 0)) and (top: var(--f)) {
+.order-3 {
 	order: var(rgba(178 34 34 / 1), rgba(178 34 34 / 1));
+}
 }
 
 .order-4 {
@@ -53,8 +68,7 @@
 	--some-var: rgba(178, 34, 34, 1);
 }
 
-@supports (color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5)) {
-
+@supports (color: rgba(0 0 0 / 0)) {
 :root {
 	--some-var: rgba(178 34 34 / 1);
 }
@@ -78,17 +92,32 @@
 
 .order-1 {
 	order: var(1, hsla(120, 100%, 50%, 1));
+}
+
+@supports (color: hsl(0 0% 0% / 0)) and (top: var(--f)) {
+.order-1 {
 	order: var(1, hsl(120 100% 50% / 1));
+}
 }
 
 .order-2 {
 	order: var(hsla(120, 100%, 50%, 1), 1);
+}
+
+@supports (color: hsl(0 0% 0% / 0)) and (top: var(--f)) {
+.order-2 {
 	order: var(hsl(120 100% 50% / 1), 1);
+}
 }
 
 .order-3 {
 	order: var(hsla(120, 100%, 50%, 1), hsla(120, 100%, 50%, 1));
+}
+
+@supports (color: hsl(0 0% 0% / 0)) and (top: var(--f)) {
+.order-3 {
 	order: var(hsl(120 100% 50% / 1), hsl(120 100% 50% / 1));
+}
 }
 
 .order-4 {
@@ -126,8 +155,7 @@
 	--some-var: hsla(120, 100%, 50%, 1);
 }
 
-@supports (color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5)) {
-
+@supports (color: hsl(0 0% 0% / 0)) {
 :root {
 	--some-var: hsl(120 100% 50% / 1);
 }

@@ -208,3 +208,17 @@ html {
 :root {
 	--foo: var(--definitely-does-not-exist-3);
 }
+
+@supports (left: var(--bar)) {
+	.has-supports-ancestor {
+		--something-local: 1;
+		left: var(--something-local);
+	}
+}
+
+@supports (top: var(--f)) {
+	.has-supports-ancestor {
+		--something-local: 1;
+		left: var(--something-local);
+	}
+}

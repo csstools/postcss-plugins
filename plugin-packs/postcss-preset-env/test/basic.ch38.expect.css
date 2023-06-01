@@ -368,7 +368,7 @@
 	text-indent: 2em;
 	content: var(--value-2ic);
 	left: 2em;
-	left: var(--non-existing, 2ic);
+	left: var(--non-existing, 2em);
 	width: calc(8em + 20px);
 	height: 10px;
 	margin: 0.5em 1em .2em;
@@ -503,7 +503,7 @@
 
 @supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0% / 0)) {
 .gradients-interpolation-method {
-	--background-image: linear-gradient(in oklch decreasing hue, hsl(0, 85%, 75%) 0%, hsl(180, 80%, 65%) 100%);
+	--background-image: linear-gradient(in oklch decreasing hue, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
 }
 }
 
@@ -519,4 +519,10 @@
 	color-8: color(display-p3 0.50566 0.0781 0);
 	color-9: rgb(130, 31, 0);
 	color-9: color(display-p3 0.48896 0.1211 0);
+}
+
+.test-property-with-var {
+	--opacity: 1;
+	color: rgba(87, 107, 149, 1);
+	color: rgba(87, 107, 149, var(--opacity));
 }

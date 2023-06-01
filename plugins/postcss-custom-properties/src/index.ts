@@ -4,6 +4,7 @@ import valuesParser from 'postcss-value-parser';
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
 import { isDeclarationIgnored } from './is-ignored';
 import transformProperties from './transform-properties';
+import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 
 /** postcss-custom-properties plugin options */
 export type pluginOptions = {
@@ -32,6 +33,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					customProperties = getCustomPropertiesFromRoot(root);
 				},
 				Declaration: (decl) => {
+					if (hasSupportsAtRuleAncestor(decl)) {
+						return;
+					}
+
 					let localCustomProperties = customProperties;
 					if (preserve && decl.parent) {
 						let didCopy = false;
