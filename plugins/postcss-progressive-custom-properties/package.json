@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-progressive-custom-properties",
 	"description": "Correctly declare progressive enhancements for CSS Custom Properties.",
-	"version": "2.2.0",
+	"version": "2.3.0",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
 	"funding": [
