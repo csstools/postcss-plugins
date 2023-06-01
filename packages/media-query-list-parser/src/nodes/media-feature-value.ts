@@ -57,22 +57,62 @@ export class MediaFeatureValue {
 		if (index === 'value') {
 			return this.value;
 		}
+
+		if (Array.isArray(this.value) && (typeof index === 'number')) {
+			if (index < 0) {
+				index = this.value.length + index;
+			}
+			return this.value[index];
+		}
 	}
 
 	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeatureValueWalkerEntry, parent: MediaFeatureValueWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
-		let stateClone: T | undefined = undefined;
-		if (state) {
-			stateClone = {
-				...state,
-			};
-		}
+		if (Array.isArray(this.value)) {
+			let aborted = false;
 
-		if (cb({ node: this.value, parent: this, state: stateClone }, 'value') === false) {
-			return false;
-		}
+			this.value.forEach((child, index) => {
+				if (aborted) {
+					return;
+				}
 
-		if ('walk' in this.value) {
-			return this.value.walk(cb, stateClone);
+				let stateClone: T | undefined = undefined;
+				if (state) {
+					stateClone = {
+						...state,
+					};
+				}
+
+				if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
+					aborted = true;
+					return;
+				}
+
+				if ('walk' in child) {
+					if (child.walk(cb, stateClone) === false) {
+						aborted = true;
+						return;
+					}
+				}
+			});
+
+			if (aborted) {
+				return false;
+			}
+		} else {
+			let stateClone: T | undefined = undefined;
+			if (state) {
+				stateClone = {
+					...state,
+				};
+			}
+
+			if (cb({ node: this.value, parent: this, state: stateClone }, 'value') === false) {
+				return false;
+			}
+
+			if ('walk' in this.value) {
+				return this.value.walk(cb, stateClone);
+			}
 		}
 	}
 
@@ -109,7 +149,7 @@ export class MediaFeatureValue {
 	}
 }
 
-export type MediaFeatureValueWalkerEntry = ComponentValue | Array<ComponentValue>;
+export type MediaFeatureValueWalkerEntry = ComponentValue;
 export type MediaFeatureValueWalkerParent = ContainerNode | MediaFeatureValue;
 
 export function parseMediaFeatureValue(componentValues: Array<ComponentValue>): MediaFeatureValue | false {

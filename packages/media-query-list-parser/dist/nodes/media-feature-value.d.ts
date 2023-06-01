@@ -24,7 +24,7 @@ export declare class MediaFeatureValue {
     isMediaFeatureValue(): this is MediaFeatureValue;
     static isMediaFeatureValue(x: unknown): x is MediaFeatureValue;
 }
-export type MediaFeatureValueWalkerEntry = ComponentValue | Array<ComponentValue>;
+export type MediaFeatureValueWalkerEntry = ComponentValue;
 export type MediaFeatureValueWalkerParent = ContainerNode | MediaFeatureValue;
 export declare function parseMediaFeatureValue(componentValues: Array<ComponentValue>): MediaFeatureValue | false;
 export declare function matchesRatioExactly(componentValues: Array<ComponentValue>): number[] | -1;
