@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-gradients-interpolation-method",
 	"description": "Use interpolation methods in CSS gradient functions",
-	"version": "3.0.5",
+	"version": "3.0.6",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
 	"funding": [
