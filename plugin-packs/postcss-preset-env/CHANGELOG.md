@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 8.4.2 (June 1, 2023)
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
 - Updated `postcss-custom-properties` to `13.2.0` (minor)
