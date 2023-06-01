@@ -2,6 +2,7 @@
 
 ### Unreleased (minor)
 
+- Fix `walk` for `MediaFeatureValue` with complex component values.
 - Add `state` to `walk` methods.
 
 This makes it possible pass down information from a parent structure to children.  
