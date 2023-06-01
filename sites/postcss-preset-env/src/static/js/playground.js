@@ -12,7 +12,12 @@ self.process = { env: {} };
 
 const stateAtLoad = (() => {
 	try {
-		const maybeState = JSON.parse(window.decodeURIComponent(window.location.hash.slice(1)));
+		const hash = window.location.hash.slice(1);
+		if (!hash) {
+			return {};
+		}
+
+		const maybeState = JSON.parse(window.decodeURIComponent(hash));
 		if (!maybeState.config) {
 			return {};
 		}
