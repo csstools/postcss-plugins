@@ -186,3 +186,33 @@
 	--color-rcs-invalid-8: green;
 	--color-rcs-invalid-8: hsl(from blue h, s, l, alpha);
 }
+
+.property-with-var--1 {
+	--opacity: 1;
+	color: rgba(87, 107, 149, 1);
+	color: rgb(87 107 149 / var(--opacity));
+}
+
+.property-with-var--1-1 {
+	--opacity: 1;
+	color: rgba(87, 107, 149, var(--opacity));
+	color: rgb(87 107 149 / var(--opacity));
+}
+
+.property-with-var--2 {
+	--opacity: 1;
+	color: rgba(87, 107, 149, 1);
+	color: rgb(87 107 149 / calc(var(--opacity) / 2));
+}
+
+.property-with-var--3 {
+	--length: 1px;
+	top: 2px;
+	top: var(--length);
+}
+
+.property-with-notvar--1 {
+	--opacity: 1;
+	color: rgba(87, 107, 149, 1);
+	color: rgb(87 107 149 / notvar(--opacity));
+}

@@ -13,7 +13,12 @@
 	color-3: rgb(0, 0, 0);
 	color-3: color(display-P3 0 0 0 / CALC(1 + 1));
 	color-4: rgba(255, 255, 255, VAR(--ALPHA));
+}
+
+@supports (color: color(display-p3 0 0 0)) and (top: var(--f)) {
+.test-case {
 	color-4: color(Display-P3 1 1 1 / VAR(--ALPHA));
+}
 }
 
 .test-color-none {
@@ -127,8 +132,13 @@
 	color-3: rgb(7, 3, 1);
 	color-3: color(display-p3 0.02472 0.01150 0.00574 / calc(20% * 5));
 	color-4: rgba(7, 3, 1, var(--foo));
-	color-4: color(display-p3 0.02472 0.01150 0.00574 / var(--foo));
 	color-5: color(display-p3 0.02472 0.01150 0.00574 /);
+}
+
+@supports (color: color(display-p3 0 0 0)) and (top: var(--f)) {
+.test-alpha {
+	color-4: color(display-p3 0.02472 0.01150 0.00574 / var(--foo));
+}
 }
 
 

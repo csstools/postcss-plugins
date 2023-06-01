@@ -1,7 +1,6 @@
 // ids ordered by required execution, then alphabetically
 export default [
 	'custom-media-queries',
-	'custom-properties',
 	'environment-variables', // run environment-variables here to access transpiled custom media params and properties
 	'image-set-function', // run images-set-function before nesting-rules so that it may fix nested media
 	'media-query-ranges', // run media-query-range
@@ -55,6 +54,9 @@ export default [
 	'clamp',
 	'nested-calc',
 	// Math functions.
+
+	// must be after all value related rules
+	'custom-properties',
 
 	'cascade-layers',
 ];

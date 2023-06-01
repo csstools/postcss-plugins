@@ -1,25 +1,22 @@
+import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import valueParser from 'postcss-value-parser';
 import type { ParsedValue, FunctionNode } from 'postcss-value-parser';
-import type { Declaration, Postcss, Result } from 'postcss';
+import type { Declaration, Result } from 'postcss';
 import onCSSFunction from './on-css-function';
 
 import type { PluginCreator } from 'postcss';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { hasFallback } from './has-fallback-decl';
 
-/** postcss-color-functional-notation plugin options */
-export type pluginOptions = {
-	/** Preserve the original notation. default: false */
-	preserve?: boolean,
-};
+type basePluginOptions = {
+	preserve: boolean,
+}
 
-/** Transform lab() and lch() functions in CSS. */
-const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : false;
-
+/* Transform the color functional notation in CSS. */
+const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
-		postcssPlugin: 'postcss-color-functional-notation',
-		Declaration: (decl: Declaration, { result, postcss }: { result: Result, postcss: Postcss }) => {
+		postcssPlugin: 'postcss-color-function',
+		Declaration: (decl: Declaration, { result }: { result: Result }) => {
 			const originalValue = decl.value;
 			const lowerCaseValue = originalValue.toLowerCase();
 			if (
@@ -39,7 +36,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			let valueAST: ParsedValue|undefined;
+			let valueAST: ParsedValue | undefined;
 
 			try {
 				valueAST = valueParser(originalValue);
@@ -78,42 +75,43 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			if (preserve && decl.variable && decl.parent) {
-				const parent = decl.parent;
-				const atSupportsParams = '(color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5))';
-				const atSupports = postcss.atRule({ name: 'supports', params: atSupportsParams, source: decl.source });
+			decl.cloneBefore({ value: modifiedValue });
 
-				const parentClone = parent.clone();
-				parentClone.removeAll();
-
-				parentClone.append(decl.clone());
-				atSupports.append(parentClone);
-
-				// Ensure correct order of @supports rules
-				// Find the last one created by us or the current parent and insert after.
-				let insertAfter = parent;
-				let nextInsertAfter = parent.next();
-				while (
-					insertAfter &&
-					nextInsertAfter &&
-					nextInsertAfter.type === 'atrule' &&
-					nextInsertAfter.name === 'supports' &&
-					nextInsertAfter.params === atSupportsParams
-				) {
-					insertAfter = nextInsertAfter;
-					nextInsertAfter = nextInsertAfter.next();
-				}
-
-				insertAfter.after(atSupports);
-
-				decl.replaceWith(decl.clone({ value: modifiedValue }));
-			} else if (preserve) {
-				decl.cloneBefore({ value: modifiedValue });
-			} else {
-				decl.replaceWith(decl.clone({ value: modifiedValue }));
+			if (!opts?.preserve) {
+				decl.remove();
 			}
 		},
 	};
+};
+
+basePlugin.postcss = true;
+
+/** postcss-color-functional-notation plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: false */
+	preserve?: boolean,
+	/** Enable "@csstools/postcss-progressive-custom-properties". default: true */
+	enableProgressiveCustomProperties?: boolean,
+};
+
+/* Transform the color() function in CSS. */
+const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign({
+		preserve: false,
+		enableProgressiveCustomProperties: true,
+	}, opts);
+
+	if (options.enableProgressiveCustomProperties && options.preserve) {
+		return {
+			postcssPlugin: 'postcss-color-function',
+			plugins: [
+				postcssProgressiveCustomProperties(),
+				basePlugin(options),
+			],
+		};
+	}
+
+	return basePlugin(options);
 };
 
 postcssPlugin.postcss = true;

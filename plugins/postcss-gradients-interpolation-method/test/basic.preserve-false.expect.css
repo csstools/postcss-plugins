@@ -1,7 +1,12 @@
 .test-1 {
 	--perc-50: 50%;
 	background-image: linear-gradient(90deg, rgb(0, 0, 0) 20%, rgb(0, 0, 0) var(--perc-50), rgb(39, 0, 110), rgb(42, 0, 126), rgb(43, 0, 141), rgb(41, 0, 157), rgb(38, 0, 173), rgb(33, 0, 189), rgb(27, 0, 206), rgb(19, 0, 222), rgb(9, 0, 238), rgb(0, 0, 255) 70%, rgb(0, 0, 255) 75%);
+}
+
+@supports (color: color(display-p3 0 0 0)) and (top: var(--f)) {
+.test-1 {
 	background-image: linear-gradient(90deg, rgb(0, 0, 0) 20%, rgb(0, 0, 0) var(--perc-50), color(display-p3 0.10591 -0.185 0.41007), color(display-p3 0.11458 -0.2081 0.4685), color(display-p3 0.11174 -0.2252 0.52777), color(display-p3 0.10009 -0.236 0.58774), color(display-p3 0.08062 -0.2403 0.64834), color(display-p3 0.05297 -0.2367 0.70952), color(display-p3 0.01802 -0.2235 0.77126), color(display-p3 -0.0079 -0.1966 0.83353), color(display-p3 -0.0163 -0.1455 0.89631), rgb(0, 0, 255) 70%, rgb(0, 0, 255) 75%);
+}
 }
 
 .test-2-0 {

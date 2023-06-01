@@ -10,9 +10,14 @@
 	color-5: rgba(178, 34, 34, 0.5);
 	color-5: rgb(178 34 34 / 50%);
 	color-6: rgba(178, 34, 34, var(--alpha-50));
-	color-6: rgb(178 34 34 / var(--alpha-50));
 	color-7: rgba(178, 34, 34, calc(1 / 2));
 	color-7: rgb(178 34 34 / calc(1 / 2));
+}
+
+@supports (color: rgb(0 0 0 / 0)) and (top: var(--f)) {
+.test-rgb {
+	color-6: rgb(178 34 34 / var(--alpha-50));
+}
 }
 
 .test-rgba {
@@ -23,9 +28,14 @@
 	color-3: rgba(178, 34, 34, .5);
 	color-3: rgba(178 34 34 / .5);
 	color-4: rgba(178, 34, 34, VaR(--alpha-50));
-	color-4: rgba(178 34 34 / VaR(--alpha-50));
 	color-5: rgba(178, 34, 34, CaLC(1 / 2));
 	color-5: rgba(178 34 34 / CaLC(1 / 2));
+}
+
+@supports (color: rgba(0 0 0 / 0)) and (top: var(--f)) {
+.test-rgba {
+	color-4: rgba(178 34 34 / VaR(--alpha-50));
+}
 }
 
 .test-rgb-percentages {
@@ -63,9 +73,14 @@
 	color-11: hsl(180, 100%, 50%);
 	color-11: hsl(3.14159rad 100% 50%);
 	color-12: hsla(180, 100%, 50, var(--alpha-50));
-	color-12: hsl(3.14159rad 100% 50 / var(--alpha-50));
 	color-13: hsla(180, 100%, 50, calc(1 / 2));
 	color-13: hsl(3.14159rad 100% 50 / calc(1 / 2));
+}
+
+@supports (color: hsl(0 0% 0% / 0)) and (top: var(--f)) {
+.test-hsl {
+	color-12: hsl(3.14159rad 100% 50 / var(--alpha-50));
+}
 }
 
 .test-hsla {
@@ -80,9 +95,14 @@
 	color-5: hsla(120, 100%, 50%, 0.5);
 	color-5: hsla(120 100% 50% / 50%);
 	color-6: hsla(120, 100%, 50%, var(--alpha-50));
-	color-6: hsla(120 100% 50% / var(--alpha-50));
 	color-7: hsla(120, 100%, 50%, calc(1 / 2));
 	color-7: hsla(120 100% 50% / calc(1 / 2));
+}
+
+@supports (color: hsla(0 0% 0% / 0)) and (top: var(--f)) {
+.test-hsla {
+	color-6: hsla(120 100% 50% / var(--alpha-50));
+}
 }
 
 .test-hwb {

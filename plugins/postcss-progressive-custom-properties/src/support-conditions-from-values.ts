@@ -3,7 +3,9 @@ import { matchers } from './matchers';
 import { matches } from './match';
 import { doublePositionGradients } from './custom/double-position-gradients';
 
-export function supportConditionsFromValue(value: string): Array<string> {
+const varFunctionName = /^var$/i;
+
+export function supportConditionsFromValue(value: string, mustContainVar = false): Array<string> {
 	const supportConditions: Array<string> = [];
 
 	const relevantMatchers: typeof matchers = [];
@@ -14,9 +16,15 @@ export function supportConditionsFromValue(value: string): Array<string> {
 		}
 	});
 
+	let hasVar = false;
+
 	try {
 		const ast = valueParser(value);
 		ast.walk((node) => {
+			if (node.type === 'function' && varFunctionName.test(node.value)) {
+				hasVar = true;
+			}
+
 			try {
 				// @ts-expect-error We need to extend this type.
 				node['dimension'] = valueParser.unit(node.value);
@@ -47,6 +55,15 @@ export function supportConditionsFromValue(value: string): Array<string> {
 
 	} catch (_) {
 		/* ignore */
+	}
+
+	if (mustContainVar && !hasVar) {
+		return [];
+	}
+
+	if (hasVar && supportConditions.length > 0) {
+		// Only where there are other conditions and a `var()` is present.
+		supportConditions.push('(top: var(--f))');
 	}
 
 	return Array.from(new Set(supportConditions)); // list with unique items.

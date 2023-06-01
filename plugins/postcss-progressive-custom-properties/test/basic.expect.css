@@ -24,7 +24,7 @@
 	--prop-9: red;
 }
 
-@supports (color: oklch(0% 0 0)) {
+@supports (color: oklch(0% 0 0)) and (top: var(--f)) {
 :root {
 	--prop-1: oklch(40% 0.234 0.39 / var(--opacity-50));
 }
@@ -81,7 +81,7 @@
 }
 }
 
-@supports (color: oklch(0% 0 0)) {
+@supports (color: oklch(0% 0 0)) and (top: var(--f)) {
 :root {
 	--prop-8: 1px solid oklch(40% 0.234 0.39 / var(--opacity-50));
 }
@@ -139,8 +139,18 @@
 :root {
 	--color-1: color(srgb 0.64331 0.19245 0.16771);
 	--color-2: color(srgb 0.64331 0.19245 0.16771 / 50);
+}
+}
+
+@supports (color: color(srgb 0 0 0)) and (top: var(--f)) {
+:root {
 	--color-3: color(srgb 0.64331 0.19245 0.16771 / var(--opacity-50));
 	--color-4: color(srgb 0.64331 var(--point-5) 0.16771 / var(--opacity-50));
+}
+}
+
+@supports (color: color(srgb 0 0 0)) {
+:root {
 	--color-5: color(srgb 0.64331   0.19245 0.16771 / calc(1 / 2));
 }
 }
@@ -335,4 +345,49 @@
 	--color-rcs-invalid-7: rgb(from blue r, g, b, alpha);
 	--color-rcs-invalid-8: green;
 	--color-rcs-invalid-8: hsl(from blue h, s, l, alpha);
+}
+
+.property-with-var--1 {
+	--opacity: 1;
+	color: rgba(87, 107, 149, 1);
+}
+
+@supports (color: rgb(0 0 0 / 0)) and (top: var(--f)) {
+.property-with-var--1 {
+	color: rgb(87 107 149 / var(--opacity));
+}
+}
+
+.property-with-var--1-1 {
+	--opacity: 1;
+	color: rgba(87, 107, 149, var(--opacity));
+}
+
+@supports (color: rgb(0 0 0 / 0)) and (top: var(--f)) {
+.property-with-var--1-1 {
+	color: rgb(87 107 149 / var(--opacity));
+}
+}
+
+.property-with-var--2 {
+	--opacity: 1;
+	color: rgba(87, 107, 149, 1);
+}
+
+@supports (color: rgb(0 0 0 / 0)) and (top: var(--f)) {
+.property-with-var--2 {
+	color: rgb(87 107 149 / calc(var(--opacity) / 2));
+}
+}
+
+.property-with-var--3 {
+	--length: 1px;
+	top: 2px;
+	top: var(--length);
+}
+
+.property-with-notvar--1 {
+	--opacity: 1;
+	color: rgba(87, 107, 149, 1);
+	color: rgb(87 107 149 / notvar(--opacity));
 }

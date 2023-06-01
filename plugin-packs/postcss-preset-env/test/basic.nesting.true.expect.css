@@ -471,3 +471,8 @@
 	color-8: oklab(from oklab(40% 0.566 0.39) l a b);
 	color-9: oklch(from oklch(40% 0.566 39deg) l c h);
 }
+
+.test-property-with-var {
+	--opacity: 1;
+	color: rgba(87 107 149 / var(--opacity));
+}

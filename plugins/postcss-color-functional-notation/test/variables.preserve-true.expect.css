@@ -8,16 +8,23 @@
 
 	--fifty: 50%;
 	--firebrick-var: hsl(40 var(--fifty) 34.5% / var(--opacity-50));
-}@supports (color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5)) {:root {
-	--firebrick: rgb(40% 56.6 39);
 }
-}@supports (color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5)) {:root {
+
+@supports (color: rgb(0 0 0 / 0)) {
+:root {
+	--firebrick: rgb(40% 56.6 39);
 	--firebrick-a50: rgb(40% 68.8 34.5 / 50%);
 }
-}@supports (color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5)) {:root {
+}
+
+@supports (color: hsl(0 0% 0% / 0)) and (top: var(--f)) {
+:root {
 	--firebrick-a50-var: hsl(40 68.8% 34.5% / var(--opacity-50));
 }
-}@supports (color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5)) {:root {
+}
+
+@supports (color: rgb(0 0 0 / 0)) and (top: var(--f)) {
+:root {
 	--firebrick-rgb-a50-var: rgb(40% 68.8 34.5 / var(--opacity-50));
 }
 }
@@ -25,21 +32,9 @@
 :root {
 	/* Not expected to be handled here at the moment, but might be needed in the future */
 	--rgba-functional-notation-percentage-alpha: rgba(0, 0, 0, 1);
+	--rgba-functional-notation-percentage-alpha: rgba(0, 0, 0, 100%);
 
 	--hsla-functional-notation-percentage-alpha: hsla(0, 0%, 0%, 1);
-}
-
-@supports (color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5)) {
-
-:root {
-	--rgba-functional-notation-percentage-alpha: rgba(0, 0, 0, 100%);
-}
-}
-
-@supports (color: rgb(0 0 0 / 0.5)) and (color: hsl(0 0% 0% / 0.5)) {
-
-:root {
 
 	--hsla-functional-notation-percentage-alpha: hsla(0, 0%, 0%, 100%);
-}
 }
