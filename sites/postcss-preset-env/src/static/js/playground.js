@@ -10,7 +10,25 @@ import postcssPresetEnv from 'postcss-preset-env';
 // hack to make browserslist work in a browser. (irony...)
 self.process = { env: {} };
 
-const currentConfig = {
+const stateAtLoad = (() => {
+	try {
+		const maybeState = JSON.parse(window.decodeURIComponent(window.location.hash.slice(1)));
+		if (!maybeState.config) {
+			return {};
+		}
+
+		if (!maybeState.source || (typeof maybeState.source !== 'string')) {
+			return {};
+		}
+
+		return maybeState;
+	} catch (err) {
+		console.warn(err);
+		return {};
+	}
+})();
+
+const currentConfig = stateAtLoad.config ?? {
 	browsers: ['> 0.2% and not dead'],
 	minimumVendorImplementations: 0,
 	stage: 2,
@@ -20,7 +38,14 @@ const currentConfig = {
 	},
 };
 
-function processCss(source, config) {
+function processCss(source, config, isDefaultState = false) {
+	if (!isDefaultState) {
+		window.location.hash = window.encodeURIComponent(JSON.stringify({
+			source: source,
+			config: config,
+		}));
+	}
+
 	let presetEnv;
 	try {
 		presetEnv = postcssPresetEnv(config);
@@ -88,7 +113,7 @@ module.exports = {
 }
 
 let inputState = EditorState.create({
-	doc: `:root {
+	doc: stateAtLoad.source ?? `:root {
 	--mainColor: #12345678;
 }
 
@@ -159,7 +184,7 @@ let configState = EditorState.create({
 function syncDispatch(tr, view, other) {
 	view.update([tr]);
 	if (!tr.changes.empty) {
-		processCss(view.state.doc, currentConfig).then((output) => {
+		processCss(view.state.doc.toString(), currentConfig).then((output) => {
 			other.update([
 				other.state.update({
 					changes: {
@@ -189,7 +214,7 @@ let outputView = new EditorView({
 	parent: document.getElementById('output-editor'),
 });
 
-processCss(inputState.doc, currentConfig).then((output) => {
+processCss(inputState.doc.toString(), currentConfig, true).then((output) => {
 	outputView.update([
 		outputView.state.update({
 			changes: {
@@ -250,7 +275,7 @@ for (const control of Object.values(controls)) {
 			blockDirection: controls.blockDirection.value || 'top-to-bottom',
 		};
 
-		processCss(inputView.state.doc, currentConfig).then((output) => {
+		processCss(inputView.state.doc.toString(), currentConfig).then((output) => {
 			configView.update([
 				configView.state.update({ changes: { from: 0, to: configView.state.doc.length, insert: renderConfig(currentConfig) } }),
 			]);
