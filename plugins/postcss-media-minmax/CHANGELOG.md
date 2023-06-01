@@ -1,6 +1,6 @@
 # Changes to PostCSS Media MinMax
 
-### Unreleased (patch)
+### 1.0.3 (June 1, 2023)
 
 - Updated `@csstools/media-query-list-parser` to `2.1.0` (minor)
 
