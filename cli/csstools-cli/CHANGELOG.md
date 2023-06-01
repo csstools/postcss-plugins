@@ -14,6 +14,8 @@
 - Updated `postcss-custom-media` to `9.1.4` (patch)
 - Updated `postcss-double-position-gradients` to `4.0.4` (patch)
 - Updated `postcss-lab-function` to `5.2.3` (patch)
+- Updated `postcss-preset-env` to `8.4.2` (patch)
+
 
 
 
