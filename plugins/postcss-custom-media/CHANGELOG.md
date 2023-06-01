@@ -1,6 +1,6 @@
 # Changes to PostCSS Custom Media
 
-### Unreleased (patch)
+### 9.1.4 (June 1, 2023)
 
 - Updated `@csstools/media-query-list-parser` to `2.1.0` (minor)
 
