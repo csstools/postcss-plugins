@@ -1,6 +1,6 @@
 # Changes to CSS Parser Algorithms
 
-### Unreleased (minor)
+### 2.2.0 (June 1, 2023)
 
 - Add `state` to `walk` methods.
 

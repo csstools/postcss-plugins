@@ -1,8 +1,10 @@
 # Changes to PostCSS Color Functional Notation
 
-### Unreleased (minor)
+### 5.1.0 (June 1, 2023)
 
 - Added `@csstools/postcss-progressive-custom-properties` for improved support of custom properties.
+- Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
+
 
 ### 5.0.2 (February 6, 2023)
 
