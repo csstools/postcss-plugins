@@ -388,7 +388,7 @@ export function normalizeRelativeColorDataChannels(x: ColorData): Map<string, To
 
 			break;
 		case ColorNotation.HSL:
-			globals.set('h', dummyAngleToken(x.channels[0]));
+			globals.set('h', dummyNumberToken(x.channels[0]));
 			globals.set('s', dummyPercentageToken(x.channels[1]));
 			globals.set('l', dummyPercentageToken(x.channels[2]));
 
@@ -398,7 +398,7 @@ export function normalizeRelativeColorDataChannels(x: ColorData): Map<string, To
 
 			break;
 		case ColorNotation.HWB:
-			globals.set('h', dummyAngleToken(x.channels[0]));
+			globals.set('h', dummyNumberToken(x.channels[0]));
 			globals.set('w', dummyPercentageToken(x.channels[1]));
 			globals.set('b', dummyPercentageToken(x.channels[2]));
 
@@ -422,7 +422,7 @@ export function normalizeRelativeColorDataChannels(x: ColorData): Map<string, To
 		case ColorNotation.OKLCH:
 			globals.set('l', dummyNumberToken(x.channels[0]));
 			globals.set('c', dummyNumberToken(x.channels[1]));
-			globals.set('h', dummyAngleToken(x.channels[2]));
+			globals.set('h', dummyNumberToken(x.channels[2]));
 
 			if (typeof x.alpha === 'number') {
 				globals.set('alpha', dummyNumberToken(x.alpha));
@@ -482,10 +482,6 @@ function dummyNumberToken(x: number): TokenNumber {
 
 function dummyPercentageToken(x: number): TokenPercentage {
 	return [TokenType.Percentage, x.toString() + '%', -1, -1, { value: x }];
-}
-
-function dummyAngleToken(x: number): TokenDimension {
-	return [TokenType.Dimension, x.toString() + 'deg', -1, -1, { value: x, type: NumberType.Number, unit: 'deg' }];
 }
 
 function reducePrecision(x: number, precision = 7): number {
