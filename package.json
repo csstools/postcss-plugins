@@ -22,7 +22,8 @@
 		"plugins/*",
 		"plugin-packs/*",
 		"cli/*",
-		"experimental/*"
+		"experimental/*",
+		"plugins-stylelint/*"
 	],
 	"devDependencies": {
 		"@babel/core": "^7.20.7",

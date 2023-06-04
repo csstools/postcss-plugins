@@ -1,0 +1,54 @@
+{
+	"name": "@csstools/stylelint-no-at-nest-rule",
+	"version": "0.0.0",
+	"description": "Do not allow @nest rules",
+	"main": "index.js",
+	"scripts": {
+		"test": "npm run test:jest",
+		"test:jest": "c8 --100 jest"
+	},
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
+	"license": "MIT-0",
+	"homepage": "https://github.com/csstools/postcss-plugins/blob/main/plugins-stylelint/no-at-nest-rule#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/csstools/postcss-plugins.git",
+		"directory": "plugins-stylelint/no-at-nest-rule"
+	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
+	"files": [
+		"index.js",
+		"LICENSE",
+		"README.md"
+	],
+	"jest": {
+		"preset": "jest-preset-stylelint"
+	},
+	"keywords": [
+		"stylelint",
+		"stylelint-plugin"
+	],
+	"dependencies": {
+		"postcss-selector-parser": "^6.0.11"
+	},
+	"peerDependencies": {
+		"postcss": "^8.4.24",
+		"stylelint": "^15.0.0"
+	},
+	"devDependencies": {
+		"c8": "^7.13.0",
+		"jest": "^29.4.3",
+		"jest-preset-stylelint": "^6.1.0",
+		"stylelint": "^15.6.0"
+	}
+}
