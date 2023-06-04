@@ -1,12 +1,7 @@
 {
 	"name": "@csstools/stylelint-no-at-nest-rule",
-	"version": "0.0.0",
 	"description": "Do not allow @nest rules",
-	"main": "index.js",
-	"scripts": {
-		"test": "npm run test:jest",
-		"test:jest": "c8 --100 jest"
-	},
+	"version": "0.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -19,6 +14,40 @@
 		}
 	],
 	"license": "MIT-0",
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
+	"engines": {
+		"node": "^14 || ^16 || >=18"
+	},
+	"main": "index.js",
+	"files": [
+		"LICENSE",
+		"README.md",
+		"index.js"
+	],
+	"peerDependencies": {
+		"postcss": "^8.4",
+		"stylelint": "^15.0.0"
+	},
+	"devDependencies": {
+		"c8": "^7.13.0",
+		"jest": "^29.4.3",
+		"jest-preset-stylelint": "^6.1.0",
+		"postcss": "^8.4",
+		"stylelint": "^15.6.0"
+	},
+	"scripts": {
+		"lint": "node ../../.github/bin/format-package-json.mjs",
+		"test": "c8 --100 jest"
+	},
 	"homepage": "https://github.com/csstools/postcss-plugins/blob/main/plugins-stylelint/no-at-nest-rule#readme",
 	"repository": {
 		"type": "git",
@@ -26,29 +55,11 @@
 		"directory": "plugins-stylelint/no-at-nest-rule"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
-	"files": [
-		"index.js",
-		"LICENSE",
-		"README.md"
-	],
-	"jest": {
-		"preset": "jest-preset-stylelint"
-	},
 	"keywords": [
 		"stylelint",
 		"stylelint-plugin"
 	],
-	"dependencies": {
-		"postcss-selector-parser": "^6.0.11"
-	},
-	"peerDependencies": {
-		"postcss": "^8.4.24",
-		"stylelint": "^15.0.0"
-	},
-	"devDependencies": {
-		"c8": "^7.13.0",
-		"jest": "^29.4.3",
-		"jest-preset-stylelint": "^6.1.0",
-		"stylelint": "^15.6.0"
+	"jest": {
+		"preset": "jest-preset-stylelint"
 	}
 }

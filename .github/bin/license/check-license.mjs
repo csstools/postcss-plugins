@@ -86,14 +86,14 @@ const allFiles = (await getFiles('./')).filter((file) => {
 		const data = await fsp.readFile(file, 'utf8');
 		const packageJson = JSON.parse(data);
 
-		if (!packageJson.license) {
+		if (!packageJson.license && !packageJson.licenses) {
 			withoutLicense.add(file);
 			continue;
 		}
 
-		withLicense.set(file, parseLicenseField(packageJson.license));
+		withLicense.set(file, parseLicenseField(packageJson));
 
-		parseLicenseField(packageJson.license).forEach((license) => {
+		parseLicenseField(packageJson).forEach((license) => {
 			if (osiApprovedWithCCO.includes(license) || licenseIsOkByException(file, license)) {
 				return;
 			}
