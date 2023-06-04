@@ -10,6 +10,14 @@ export default function walk(node: Container, result: Result, opts: options) {
 	node.each((child) => {
 		const parent = child.parent;
 
+		if (isNestRule(child) && !opts.silenceAtNestWarning) {
+			node.warn(
+				result,
+				'`@nest` was removed from the CSS Nesting specification and will be removed from PostCSS Nesting in the next major version.\n' +
+				`Change \`@nest ${child.params} {}\` to \`${child.params} {}\` to migrate to the latest standard.`,
+			);
+		}
+
 		if (
 			isRule(child) &&
 			isRule(parent) &&

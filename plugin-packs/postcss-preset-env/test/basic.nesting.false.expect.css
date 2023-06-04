@@ -537,7 +537,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .view {
-	@nest :--view-m & {
+	[data-view-size=m] & {
 		background: red;
 	}
 }

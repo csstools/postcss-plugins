@@ -891,15 +891,15 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 [data-view-size=m] .view {
 		background: red;
-}
+	}
 
 :is([data-view-size=m]) .view {
 		background: red;
-}
+	}
 
 :--view-m .view {
 		background: red;
-}
+	}
 
 .nested-calc {
 	-webkit-box-ordinal-group: NaN;

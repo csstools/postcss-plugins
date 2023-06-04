@@ -38,15 +38,15 @@ a {
 }
 		}
 @media (min-width: 100px) and (max-width: 200px) {
-a b {
+		a b {
 				order: 4;
-}
+		}
 			}
 @media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and speech and (max-width: 300px), print and speech and (min-aspect-ratio: 16/9) {
 a {
 			order: 5;
 }
-a c {
+			a c {
 				order: 6;
-}
+			}
 		}

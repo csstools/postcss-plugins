@@ -1,8 +1,7 @@
 
-
-.foo::before, ::before:focus {
+	.foo::before, ::before:focus {
 		order: 1;
-}
+	}
 
 .a:hover::before, .b:focus::before, .a:hover::after, .b:focus::after {
 		order: 2;
@@ -34,4 +33,4 @@
 
 .something_else > .anything::before {
 		order: 9;
-}
+	}

@@ -38,40 +38,13 @@ you might want to use [PostCSS Nested] instead.
 Previous iterations of the [CSS Nesting specification] required using `@nest` for certain selectors.
 
 `@nest` was removed from the specification completely.
-Future versions of this plugin will first warn and then error if you use `@nest`.
+Future versions of this plugin will error if you use `@nest`.
 
 We advice everyone to migrate their codebase **now** to nested CSS without `@nest`.
 
-## ⚠️ Nested selectors must start with a symbol
-
-The current version of the [CSS Nesting specification](https://www.w3.org/TR/2023/WD-css-nesting-1-20230214/#example-34e8e94f) disallows nested selectors to start with a letter (i.e. a tag name or element selector). To write such selectors, they need to be prefixed with `& ` or wrapped with `:is()`.
-
-You will get a warning when selectors start with a letter:
-> Nested selectors must start with a symbol and "span" begins with a letter.
-
-```pcss
-.foo {
-	/* ❌ invalid */
-	span {
-		color: hotpink;
-	}
-
-	/* ✅ valid */
-	& span {
-		color: hotpink;
-	}
-
-	/* ❌ invalid */
-	span & {
-		color: hotpink;
-	}
-
-	/* ✅ valid */
-	:is(span) & {
-		color: hotpink;
-	}
-}	
-```
+example warning:
+> `@nest` was removed from the CSS Nesting specification and will be removed from PostCSS Nesting in the next major version.
+> Change `@nest foo & {}` to `foo & {}` to migrate to the latest standard.
 
 ## Options
 

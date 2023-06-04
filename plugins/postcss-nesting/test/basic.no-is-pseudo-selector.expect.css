@@ -37,16 +37,13 @@ a b c {
 
 body a {
 		order: 11;
-}
+
+		order: 13;
+	}
 
 html body a {
 			order: 12;
-}
-
-body a {
-
-		order: 13;
-}
+		}
 
 @media screen {
 
@@ -64,27 +61,27 @@ a {
 
 body:is(a) {
 		order: 17;
-}
+	}
 
 html body:is(a) {
 		order: 18;
-}
+	}
 
 a.foo {
 		order: 19;
-}
+	}
 
 .foo a.bar {
 		order: 20;
-}
+	}
 
 a.foo b {
 		order: 21;
-}
+	}
 
 .foo a.bar b {
 		order: 22;
-}
+	}
 
 h1.foo,
 	h2.foo {
@@ -135,35 +132,35 @@ a b[a="a&b"] {
 
 ::before.pseudo-element {
 		order: 71;
-}
+	}
 
 ::before .pseudo-element {
 		order: 71.1;
-}
+	}
 
 :before.pseudo-element {
 		order: 72;
-}
+	}
 
 :before .pseudo-element {
 		order: 72.1;
-}
+	}
 
 .pseudo-element::after {
 		order: 73;
-}
+	}
 
 .pseudo-element ::after {
 		order: 73.1;
-}
+	}
 
 .pseudo-element:after {
 		order: 74;
-}
+	}
 
 .pseudo-element :after {
 		order: 74.1;
-}
+	}
 
 .has-semi-colons-on-the-last-decl {
 	order: 73;
@@ -181,7 +178,7 @@ a b[a="a&b"] {
 
 .has-semi-colons-on-the-last-decl .foo {
 		order: 74.1;
-}
+	}
 
 .mixed-declarations-and-rules--a {
 

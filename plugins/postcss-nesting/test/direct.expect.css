@@ -11,19 +11,15 @@ a c e, b c e, a d e, b d e, a c f, b c f, a d f, b d f {
 		}
 a, b {
 	order: 1;
+	order: 5;
 }
 a c, b c, a d, b d {
 		order: 2;
-}
+		order: 4;
+	}
 a c e, b c e, a d e, b d e, a c f, b c f, a d f, b d f {
 			order: 3;
-}
-a c, b c, a d, b d {
-		order: 4;
-}
-a, b {
-	order: 5;
-}
+		}
 
 a,
 b {
@@ -55,36 +51,26 @@ a c e,
 .a,
 .b {
 	order: 6;
-}
-
-.a .c,
-.b .c,
-.a .d,
-.b .d {
-		order: 7;
-}
-
-.a .c .e,
-.b .c .e,
-.a .d .e,
-.b .d .e,
-.a .c .f,
-.b .c .f,
-.a .d .f,
-.b .d .f {
-			order: 8;
-}
-
-.a .c,
-.b .c,
-.a .d,
-.b .d {
-
-		order: 9;
-}
-
-.a,
-.b {
 
 	order: 10;
 }
+
+.a .c,
+	.b .c,
+	.a .d,
+	.b .d {
+		order: 7;
+
+		order: 9;
+	}
+
+.a .c .e,
+		.b .c .e,
+		.a .d .e,
+		.b .d .e,
+		.a .c .f,
+		.b .c .f,
+		.a .d .f,
+		.b .d .f {
+			order: 8;
+		}
