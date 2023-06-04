@@ -51,7 +51,7 @@
 		"test:browser": "npm run test:browser --workspaces --if-present"
 	},
 	"volta": {
-		"node": "20.0.0",
-		"npm": "9.6.5"
+		"node": "20.2.0",
+		"npm": "9.6.7"
 	}
 }
