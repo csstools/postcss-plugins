@@ -30,7 +30,7 @@
 }
 
 .spec-example-11 {
-	background: oklch(from oklch(52.6% 0.115 44.6deg) l c calc(h + 90deg));
+	background: oklch(from oklch(52.6% 0.115 44.6deg) l c calc(h + 90));
 }
 
 .spec-example-12 {
