@@ -10,8 +10,8 @@ Prevent usage of `@nest` in CSS.
 	article & {}
 }
 
-/* invalid, the nested rule can be written without `@nest` in native css nesting */
-.foo {
+/* invalid */
+.element {
 	@nest article & {}
 }
 ```
@@ -23,20 +23,19 @@ Since it will never be valid CSS in browsers it is important to migrate away fro
 
 ```css
 .element {
-	foo {}
+	article {}
 
-	foo & {}
+	article & {}
 }
 ```
 
 **Invalid CSS :**
 
 ```css
-/* invalid, the nested selector is not a "filter" on the elements matched by the parent */
 .foo {
-	@nest foo {}
+	@nest article {}
 
-	@nest foo & {}
+	@nest article & {}
 }
 ```
 
