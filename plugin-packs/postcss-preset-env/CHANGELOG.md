@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (minor)
+
+- Add warning when using the deprecated `@nest` rule
+
 ### 8.4.2 (June 1, 2023)
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)

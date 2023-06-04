@@ -1,5 +1,10 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (minor)
+
+- Add warning when using the deprecated `@nest` rule
+- Add support for nested selectors that that begin with a letter
+
 ### 11.2.2 (March 25, 2023)
 
 - Improved: support for mixins
