@@ -55,7 +55,17 @@ const formatted = {};
 		formatted.license = 'CC0-1.0';
 	}
 
-	formatted.funding = packageJSONInfo.funding;
+	formatted.funding = [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	];
+
 	delete packageJSONInfo.funding;
 }
 
