@@ -5,11 +5,6 @@ on:
     - 'main'
   pull_request:
   workflow_dispatch:
-    inputs:
-      build_and_test_all_packages:
-        type: boolean
-        description: Build and test all packages
-        required: true
 
 concurrency:
   group: branch-node--test--${{ github.ref }}
