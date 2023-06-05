@@ -301,7 +301,7 @@ export function convertPowerlessComponentsToMissingComponents(a: Color, colorNot
 				out[1] = NaN;
 			}
 
-			if (out[1] <= 0) {
+			if (reducePrecision(out[1]) <= 0) {
 				out[0] = NaN;
 			}
 
