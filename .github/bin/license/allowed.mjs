@@ -157,6 +157,11 @@ const licenseExceptions = [
 		file: 'node_modules/path-scurry/package.json',
 		license: 'BlueOak-1.0.0',
 	},
+	{
+		// see : https://github.com/isaacs/path-scurry/issues/7
+		file: 'node_modules/jackspeak/package.json',
+		license: 'BlueOak-1.0.0',
+	},
 ];
 
 export function licenseIsOkByException(file, license) {
