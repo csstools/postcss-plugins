@@ -40,11 +40,20 @@ Previous iterations of the [CSS Nesting specification] required using `@nest` fo
 `@nest` was removed from the specification completely.
 Future versions of this plugin will error if you use `@nest`.
 
-We advice everyone to migrate their codebase **now** to nested CSS without `@nest`.
+We advice everyone to migrate their codebase **now** to nested CSS without `@nest`.  
+We published a [Stylelint Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins-stylelint/no-at-nest-rule#csstoolsstylelint-no-at-nest-rule) to help you migrate.
 
 example warning:
 > `@nest` was removed from the CSS Nesting specification and will be removed from PostCSS Nesting in the next major version.
 > Change `@nest foo & {}` to `foo & {}` to migrate to the latest standard.
+
+You can silence this warning with a new `silenceAtNestWarning` plugin option.
+
+```js
+<exportName>({
+	silenceAtNestWarning: true
+})
+```
 
 ## Options
 

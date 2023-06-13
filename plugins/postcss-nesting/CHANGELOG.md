@@ -2,8 +2,10 @@
 
 ### Unreleased (minor)
 
-- Add warning when using the deprecated `@nest` rule
 - Add support for nested selectors that that begin with a letter
+- Add warning when using the deprecated `@nest` rule
+	- you can silence this warning with a new `silenceAtNestWarning` plugin option
+	- you can migrate your code to the latest syntax with our [Stylelint Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins-stylelint/no-at-nest-rule#csstoolsstylelint-no-at-nest-rule)
 
 ### 11.2.2 (March 25, 2023)
 
