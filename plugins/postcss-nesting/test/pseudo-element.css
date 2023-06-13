@@ -1,5 +1,5 @@
 ::before {
-	@nest .foo&, &:focus {
+	.foo&, &:focus {
 		order: 1;
 	}
 }
@@ -39,7 +39,7 @@
 }
 
 .anything::before {
-	@nest .something_else > & {
+	.something_else > & {
 		order: 9;
 	}
 }

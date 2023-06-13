@@ -434,7 +434,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 [data-view-size=m] .view {
 		background: red;
-}
+	}
 
 .nested-calc {
 	order: calc(1 * calc(8 / 3 + calc(5 * 10)));

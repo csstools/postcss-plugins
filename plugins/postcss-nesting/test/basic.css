@@ -26,10 +26,10 @@ a {
 
 	order: 10;
 
-	@nest body & {
+	body & {
 		order: 11;
 
-		@nest html & {
+		html & {
 			order: 12;
 		}
 
@@ -46,31 +46,31 @@ a {
 		}
 	}
 
-	@nest body& {
+	body& {
 		order: 17;
 	}
 
-	@nest html body& {
+	html body& {
 		order: 18;
 	}
 }
 
 a {
-	@nest .foo& {
+	.foo& {
 		order: 19;
 	}
 
-	@nest .foo .bar& {
+	.foo .bar& {
 		order: 20;
 	}
 }
 
 a b {
-	@nest .foo& {
+	.foo& {
 		order: 21;
 	}
 
-	@nest .foo .bar& {
+	.foo .bar& {
 		order: 22;
 	}
 }
@@ -145,41 +145,41 @@ a {
 }
 
 .pseudo-element {
-	@nest ::before& {
+	::before& {
 		order: 71;
 	}
 
-	@nest ::before & {
+	::before & {
 		order: 71.1;
 	}
 }
 
 .pseudo-element {
-	@nest :before& {
+	:before& {
 		order: 72;
 	}
 
-	@nest :before & {
+	:before & {
 		order: 72.1;
 	}
 }
 
 .pseudo-element {
-	@nest &::after {
+	&::after {
 		order: 73;
 	}
 
-	@nest & ::after {
+	& ::after {
 		order: 73.1;
 	}
 }
 
 .pseudo-element {
-	@nest &:after {
+	&:after {
 		order: 74;
 	}
 
-	@nest & :after {
+	& :after {
 		order: 74.1;
 	}
 }
@@ -197,7 +197,7 @@ a {
 	order: 74;
 	/* a comment */
 
-	@nest & .foo {
+	& .foo {
 		order: 74.1;
 	}
 }

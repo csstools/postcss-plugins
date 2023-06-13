@@ -51,8 +51,8 @@ const formatted = {};
 
 	formatted.license = packageJSONInfo.license;
 	delete packageJSONInfo.license;
-	if (formatted.license !== 'CC0-1.0' && formatted.license !== 'MIT') {
-		formatted.license = 'CC0-1.0';
+	if (formatted.license !== 'CC0-1.0' && formatted.license !== 'MIT' && formatted.license !== 'MIT-0') {
+		formatted.license = 'MIT-0';
 	}
 
 	formatted.funding = [

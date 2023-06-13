@@ -58,11 +58,20 @@ postcssTape(plugin)({
 			noIsPseudoSelector: true,
 		},
 	},
-	'at-rule': {
-		message: 'supports at-rule usage',
+	'at-nest': {
+		message: 'supports at-nest usage',
+		warnings: 64,
 	},
-	'at-rule:no-is-pseudo-selector': {
-		message: 'supports at-rule usage { noIsPseudoSelector: true }',
+	'at-nest:silent': {
+		message: 'supports at-nest usage { silenceAtNestWarning: true }',
+		warnings: 4,
+		options: {
+			silenceAtNestWarning: true,
+		}
+	},
+	'at-nest:no-is-pseudo-selector': {
+		message: 'supports at-nest usage { noIsPseudoSelector: true }',
+		warnings: 64,
 		options: {
 			noIsPseudoSelector: true,
 		},
@@ -130,14 +139,12 @@ postcssTape(plugin)({
 	},
 	'ignore': {
 		message: 'ignores invalid entries',
-		warnings: 1
 	},
 	'ignore:no-is-pseudo-selector': {
 		message: 'ignores invalid entries { noIsPseudoSelector: true }',
 		options: {
 			noIsPseudoSelector: true,
 		},
-		warnings: 1
 	},
 	'mixin-declaration': {
 		message: 'supports other visitors (mixin declaration)',

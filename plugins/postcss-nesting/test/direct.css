@@ -11,9 +11,9 @@ a, b {
 }
 a, b {
 	order: 1;
-	@nest & c, & d {
+	& c, & d {
 		order: 2;
-		@nest & e, & f {
+		& e, & f {
 			order: 3;
 		}
 		order: 4;
@@ -44,11 +44,11 @@ b {
 .b {
 	order: 6;
 
-	@nest & .c,
+	& .c,
 	& .d {
 		order: 7;
 
-		@nest & .e,
+		& .e,
 		& .f {
 			order: 8;
 		}

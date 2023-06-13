@@ -27,10 +27,8 @@ const tests = [
 	// Testing invalid permutation (types don't match).
 	['hsl(from rebeccapurple s h l)'],
 	['hsl(from rebeccapurple s s s / s)'],
-	['hsl(from rebeccapurple h h h / h)'],
 	['hsl(from rgb(10%, 20%, 30%, 40%) s h l)'],
 	['hsl(from rgb(10%, 20%, 30%, 40%) s s s / s)'],
-	['hsl(from rgb(10%, 20%, 30%, 40%) h h h / h)'],
 
 	// Testing invalid values.
 	['hsl(from rebeccapurple 10% s l)'],
@@ -50,11 +48,9 @@ const tests = [
 	// Testing invalid permutation (types don't match).
 	['hwb(from rebeccapurple w h b)'],
 	['hwb(from rebeccapurple b b b / b)'],
-	['hwb(from rebeccapurple h h h / h)'],
 	['hwb(from rebeccapurple alpha alpha alpha / alpha)'],
 	['hwb(from rgb(10%, 20%, 30%, 40%) w b h)'],
 	['hwb(from rgb(10%, 20%, 30%, 40%) b b b / b)'],
-	['hwb(from rgb(10%, 20%, 30%, 40%) h h h / h)'],
 	['hwb(from rgb(10%, 20%, 30%, 40%) alpha alpha alpha / alpha)'],
 
 	// Testing invalid values.
@@ -85,10 +81,6 @@ const tests = [
 	['lab(from lab(.25 20 50) h g b)'],
 
 
-
-	// Testing invalid permutation (types don't match).
-	['lch(from lch(.70 45 30) h l c / alpha)'],
-	['lch(from lch(.70 45 30 / 40%) h l c / alpha)'],
 
 	// Testing invalid values.
 	['lch(from lch(.70 45 30) l 10deg h)'],

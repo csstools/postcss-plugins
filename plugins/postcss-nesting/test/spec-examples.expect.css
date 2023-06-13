@@ -192,7 +192,7 @@ __bar.foo {
 }
 .foo>.bar {
 		color: blue;
-}
+	}
 
 /* equivalent to
   .foo { color: red; }
@@ -205,7 +205,7 @@ __bar.foo {
 
 .parent .foo {
 		color: blue;
-}
+	}
 
 /* equivalent to
   .foo { color: red; }
@@ -218,7 +218,7 @@ __bar.foo {
 
 :not(.foo) {
 		color: blue;
-}
+	}
 
 /* equivalent to
   .foo { color: red; }
@@ -227,22 +227,22 @@ __bar.foo {
 
 .foo {
 	color: red;
+}
 
-	@nest .bar {
+.foo .bar {
 		color: blue;
 	}
-}
 
 /* Invalid because there’s no nesting selector */
 
 .foo {
 	color: red;
+}
 
-	@nest & .bar,
-	.baz {
+.foo .bar,
+	.foo .baz {
 		color: blue;
 	}
-}
 
 /* Invalid because not all selectors in the list
   contain a nesting selector */
@@ -253,7 +253,7 @@ __bar.foo {
 }
 .bar .foo {
 		color: red;
-}
+	}
 .bar .foo.baz {
 			color: green;
 		}
@@ -343,15 +343,15 @@ __bar.foo {
 
 .foo {
 	color: red;
+}
 
-	@nest @media (min-width: 480px) {
-		& {
+@media (min-width: 480px) {
+		.foo {
 			color: blue;
 		}
 	}
-}
 
-/* Invalid because @nest expects a selector prelude,
+/* Invalid because expects a selector prelude,
   instead a conditional group rule was provided */
 
 /* Example 7 */

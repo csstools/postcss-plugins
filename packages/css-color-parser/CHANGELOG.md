@@ -1,10 +1,13 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix value calculation for `hue` components in relative color syntax.
+
 ### 1.2.0 (May 19, 2023)
 
 - Add support for relative color syntax.
 - Updated `@csstools/color-helpers` to `2.1.0` (minor)
-
 
 ### 1.1.2 (April 10, 2023)
 

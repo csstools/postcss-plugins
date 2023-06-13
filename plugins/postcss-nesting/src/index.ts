@@ -6,6 +6,8 @@ import walk from './lib/walk.js';
 export type pluginOptions = {
 	/** Avoid the `:is()` pseudo class as much as possible. default: false */
 	noIsPseudoSelector?: boolean,
+	/** Silence the `@nest` warning. */
+	silenceAtNestWarning?: boolean,
 };
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
@@ -13,6 +15,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		// Default options
 		{
 			noIsPseudoSelector: false,
+			silenceAtNestWarning: false,
 		},
 		// Provided options
 		opts,

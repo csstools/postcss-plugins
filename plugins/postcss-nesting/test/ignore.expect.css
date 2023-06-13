@@ -1,9 +1,9 @@
 a, b {
 	order: 1;
-	c, d {
+}
+a c, b c, a d, b d {
 		order: 2;
 	}
-}
 :scope e {
 	order: 3;
 }
@@ -12,18 +12,18 @@ f:is(g) {
 	}
 a, b {
 	order: 1;
-	@nest c, d {
+}
+a c, b c, a d, b d {
 		order: 2;
 	}
-}
-@nest & e {
+:scope e {
 	order: 3;
 }
 f:is(h) {
 		order: 5;
-}
+	}
 f {
-	@nest &|i {
+	&|i {
 		order: 6;
 	}
 }

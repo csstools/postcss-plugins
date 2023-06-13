@@ -1,0 +1,1032 @@
+/* This entire file can be deleted after removing support for "@nest" */
+
+/* basic.css */
+a {
+	order: 1;
+
+	order: 5;
+	order: 6;
+
+	order: 10;
+
+	order: 14;
+}
+@media screen, print {
+a {
+		order: 2;
+
+		order: 4;
+}
+	}
+@media screen and (min-width: 480px), print and (min-width: 480px) {
+a {
+			order: 3;
+}
+		}
+a b {
+		order: 7;
+
+		order: 9;
+	}
+a b c {
+			order: 8;
+		}
+body a {
+		order: 11;
+}
+html :is(body a) {
+			order: 12;
+}
+body a {
+
+		order: 13;
+}
+@media screen {
+a {
+		order: 15;
+}
+	}
+@media screen and (min-width: 480px) {
+a {
+			order: 16;
+}
+		}
+body:is(a) {
+		order: 17;
+}
+html body:is(a) {
+		order: 18;
+}
+
+a.foo {
+		order: 19;
+}
+
+.foo a.bar {
+		order: 20;
+}
+
+.foo:is(a b) {
+		order: 21;
+}
+
+.foo .bar:is(a b) {
+		order: 22;
+}
+
+h1.foo,
+	h2.foo {
+		color: red;
+	}
+
+li+li {
+		background: red;
+	}
+
+.foo:where(h1) {
+		background: red;
+	}
+
+a b[a="a&b"] {
+		order: 31;
+	}
+
+.a.c::before, .b.c::before, .a.d::before, .b.d::before {
+			order: 41;
+		}
+
+.a:hover::before, .b:focus::before, .a:hover::after, .b:focus::after {
+		order: 51;
+	}
+
+/* leading : root */
+.comments {
+	/* leading : 1 */
+	order: 61;
+
+	/* leading : 4 */
+	order: 64;
+	/* trailing: 2 */
+}
+.comments .comment {
+		order: 62;
+	}
+/* loose comment */
+.comments .comment {
+		order: 63;
+	}
+/* trailing: 5 */
+/* nested deeper */
+.comments .comment .comment {
+			order: 65;
+		}
+
+::before.pseudo-element {
+		order: 71;
+}
+
+::before .pseudo-element {
+		order: 71.1;
+}
+
+:before.pseudo-element {
+		order: 72;
+}
+
+:before .pseudo-element {
+		order: 72.1;
+}
+
+.pseudo-element::after {
+		order: 73;
+}
+
+.pseudo-element ::after {
+		order: 73.1;
+}
+
+.pseudo-element:after {
+		order: 74;
+}
+
+.pseudo-element :after {
+		order: 74.1;
+}
+
+.has-semi-colons-on-the-last-decl {
+	order: 73;
+	/* a comment */
+}
+
+.has-semi-colons-on-the-last-decl .foo {
+		order: 73.1;
+	}
+
+.has-semi-colons-on-the-last-decl {
+	order: 74;
+	/* a comment */
+}
+
+.has-semi-colons-on-the-last-decl .foo {
+		order: 74.1;
+}
+
+.mixed-declarations-and-rules--a {
+
+	declaration: 1;
+}
+
+.mixed-declarations-and-rules--a {
+		nested: 1;
+	}
+
+.mixed-declarations-and-rules--b {
+	declaration: 1;
+
+	declaration: 2;
+
+	declaration: 3;
+}
+
+.mixed-declarations-and-rules--b {
+		nested: 1;
+	}
+
+@media screen {
+
+.mixed-declarations-and-rules--b {
+		nested: 2;
+	}
+	}
+
+.node-less-at-rule {
+	declaration: 1;
+
+	declaration: 2;
+}
+
+@layer foo;
+
+
+/* at-rule.css */
+a {
+	order: 1;
+}
+b a {
+		order: 2;
+}
+c a {
+		order: 3;
+}
+d a {
+		order: 4;
+}
+e a {
+		order: 5;
+}
+
+a {
+	order: 1;
+}
+
+a b {
+		order: 2;
+}
+
+a c {
+		order: 3;
+}
+
+a d {
+		order: 4;
+}
+
+a e {
+		order: 5;
+}
+
+a[foo="& ,\'"] {
+		order: 6;
+}
+
+a[a="& ,\'"][b='& . \\a &'] {
+		order: 7;
+}
+
+a:is(\\foo) {
+		order: 8;
+}
+
+h1.foo {
+		color: red;
+}
+
+h1.foo, h2.foo {
+		color: red;
+}
+
+.foo.bar {
+		color: red;
+}
+
+
+.foo.bar, .foo.baz {
+		color: red;
+}
+
+h1.foo {
+		color: blue;
+}
+
+h1.foo .baz h1 {
+		color: blue;
+}
+
+h1.foo, h1.bar {
+		color: blue;
+}
+
+article {
+	color: blue;
+}
+
+:where(article) {
+		color: red;
+}
+
+/* direct.css */
+a,
+b {
+	order: 1;
+
+	order: 5;
+}
+a c,
+	b c,
+	a d,
+	b d {
+		order: 2;
+
+		order: 4;
+	}
+a c e,
+		b c e,
+		a d e,
+		b d e,
+		a c f,
+		b c f,
+		a d f,
+		b d f {
+			order: 3;
+		}
+
+a,
+b {
+	order: 1;
+}
+
+a c,
+b c,
+a d,
+b d {
+		order: 2;
+}
+
+a c e,
+b c e,
+a d e,
+b d e,
+a c f,
+b c f,
+a d f,
+b d f {
+			order: 3;
+}
+
+a c,
+b c,
+a d,
+b d {
+
+		order: 4;
+}
+
+a,
+b {
+
+	order: 5;
+}
+
+a,
+b {
+	order: 1;
+
+	order: 5;
+}
+
+a c,
+	b c,
+	a d,
+	b d {
+		order: 2;
+
+		order: 4;
+	}
+
+a c e,
+		b c e,
+		a d e,
+		b d e,
+		a c f,
+		b c f,
+		a d f,
+		b d f {
+			order: 3;
+		}
+
+.a,
+.b {
+	order: 6;
+}
+
+.a .c,
+.b .c,
+.a .d,
+.b .d {
+		order: 7;
+}
+
+.a .c .e,
+.b .c .e,
+.a .d .e,
+.b .d .e,
+.a .c .f,
+.b .c .f,
+.a .d .f,
+.b .d .f {
+			order: 8;
+}
+
+.a .c,
+.b .c,
+.a .d,
+.b .d {
+
+		order: 9;
+}
+
+.a,
+.b {
+
+	order: 10;
+}
+
+/* empty.css */
+a b c {
+			order: 1;
+		}
+
+d {
+	order: 2;
+}
+
+d e {
+		order: 3;
+	}
+
+f {
+
+	order: 5;
+}
+
+f g {
+		order: 4;
+	}
+
+a b c {
+			order: 1;
+}
+
+d {
+	order: 2;
+}
+
+d e {
+		order: 3;
+}
+
+f g {
+		order: 4;
+}
+
+f {
+
+	order: 5;
+}
+
+/* ignore.css */
+a,
+b {
+	order: 1;
+}
+a c,
+	b c,
+	a d,
+	b d {
+		order: 2;
+	}
+
+:scope e {
+	order: 3;
+}
+
+f:is(g) {
+		order: 5;
+	}
+
+a,
+b {
+	order: 1;
+
+	@nest c,
+	d {
+		order: 2;
+	}
+}
+
+@nest & e {
+	order: 3;
+}
+
+f:is(h) {
+		order: 5;
+}
+
+f {
+
+	@nest &|i {
+		order: 6;
+	}
+}
+
+/* invalid-selector.css */
+.foo : bar {
+	&.child {
+		order: 1;
+	}
+}
+
+.foo : bar {
+	@nest &.child {
+		order: 2;
+	}
+}
+
+.foo {
+	&.child : bar {
+		order: 3;
+	}
+}
+
+.foo {
+	@nest &.child : bar {
+		order: 4;
+	}
+}
+
+/* media.css */
+a {
+	order: 1;
+}
+@media (min-width: 100px) {
+a {
+		order: 2;
+}
+	}
+@media (min-width: 100px) and (max-width: 200px) {
+a {
+			order: 3;
+}
+		}
+@media (min-width: 100px) and (max-width: 200px) {
+
+		a b {
+				order: 4;
+		}
+			}
+@media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and speech and (max-width: 300px), print and speech and (min-aspect-ratio: 16/9) {
+a {
+			order: 5;
+}
+
+			a c {
+				order: 6;
+			}
+		}
+
+a {
+	order: 1;
+}
+
+@media (min-width: 100px) {
+
+a {
+		order: 2;
+}
+	}
+
+@media (min-width: 100px) and (max-width: 200px) {
+
+a {
+			order: 3;
+}
+		}
+
+@media (min-width: 100px) and (max-width: 200px) {
+
+a b {
+				order: 4;
+}
+			}
+
+@media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and speech and (max-width: 300px), print and speech and (min-aspect-ratio: 16/9) {
+
+a {
+			order: 5;
+}
+
+a c {
+				order: 6;
+}
+		}
+
+/* pseudo-element.css */
+.foo::before, ::before:focus {
+		order: 1;
+}
+
+.a:hover::before,
+	.b:focus::before,
+	.a:hover::after,
+	.b:focus::after {
+		order: 2;
+	}
+
+.a::before {
+		order: 3;
+	}
+
+.a::after {
+		order: 4;
+	}
+
+.a::before {
+		order: 5;
+	}
+
+.a::before:focus {
+			order: 6;
+		}
+
+.a::after {
+		order: 7;
+	}
+
+.a::after:hover {
+			order: 8;
+		}
+
+.something_else>.anything::before {
+		order: 9;
+}
+
+/* spec-examples.css */
+/* https://www.w3.org/TR/css-nesting-1/ */
+
+/* Example 2 */
+
+table.colortable td {
+		text-align: center;
+	}
+
+table.colortable td.c {
+			text-transform: uppercase
+		}
+
+table.colortable td:first-child,
+		:is(table.colortable td):first-child+td {
+			border: 1px solid black
+		}
+
+table.colortable th {
+		text-align: center;
+		background: black;
+		color: white;
+	}
+
+/* Example 3 */
+/* & can be used on its own */
+.foo {
+	color: blue;
+}
+.foo>.bar {
+		color: red;
+	}
+
+/* equivalent to
+  .foo { color: blue; }
+  .foo > .bar { color: red; }
+*/
+
+
+/* or in a compound selector,
+   refining the parent’s selector */
+.foo {
+	color: blue;
+}
+.foo.bar {
+		color: red;
+	}
+
+/* equivalent to
+  .foo { color: blue; }
+  .foo.bar { color: red; }
+*/
+
+/* multiple selectors in the list must all
+   start with & */
+.foo,
+.bar {
+	color: blue;
+}
+.foo+.baz,
+	.bar+.baz,
+	.foo.qux,
+	.bar.qux {
+		color: red;
+	}
+
+/* equivalent to
+  .foo, .bar { color: blue; }
+  :is(.foo, .bar) + .baz,
+  :is(.foo, .bar).qux { color: red; }
+*/
+
+/* & can be used multiple times in a single selector */
+.foo {
+	color: blue;
+}
+.foo .bar .foo .baz .foo .qux {
+		color: red;
+	}
+
+/* equivalent to
+  .foo { color: blue; }
+  .foo .bar .foo .baz .foo .qux { color: red; }
+*/
+
+/* Somewhat silly, but can be used all on its own, as well. */
+.foo {
+	color: blue;
+}
+.foo {
+		padding: 2ch;
+	}
+
+/* equivalent to
+  .foo { color: blue; }
+  .foo { padding: 2ch; }
+
+  // or
+
+  .foo {
+    color: blue;
+    padding: 2ch;
+  }
+*/
+
+/* Again, silly, but can even be doubled up. */
+.foo {
+	color: blue;
+}
+.foo.foo {
+		padding: 2ch;
+	}
+
+/* equivalent to
+  .foo { color: blue; }
+  .foo.foo { padding: 2ch; }
+*/
+
+/* The parent selector can be arbitrarily complicated */
+:is(.error,#404):hover>.baz {
+		color: red;
+	}
+
+/* equivalent to
+  :is(.error, #404):hover > .baz { color: red; }
+*/
+
+/* As can the nested selector */
+.foo:is(.bar,.foo.baz) {
+		color: red;
+	}
+
+/* equivalent to
+  .foo:is(.bar, .foo.baz) { color: red; }
+*/
+
+/* Multiple levels of nesting "stack up" the selectors */
+figure {
+	margin: 0;
+}
+figure>figcaption {
+		background: hsl(0 0% 0% / 50%);
+	}
+figure>figcaption>p {
+			font-size: .9rem;
+		}
+
+/* equivalent to
+  figure { margin: 0; }
+  figure > figcaption { background: hsl(0 0% 0% / 50%); }
+  figure > figcaption > p { font-size: .9rem; }
+*/
+
+/* No concatenation */
+.foo {
+	color: blue;
+}
+__bar.foo {
+		color: red;
+	}
+
+/* No & at all */
+.foo {
+	color: blue;
+}
+.foo .bar {
+		color: red;
+	}
+
+/* & isn’t the first simple selector */
+.foo {
+	color: blue;
+}
+.bar.foo {
+		color: red;
+	}
+
+/* & isn’t the first selector of every one in the list */
+.foo,
+.bar {
+	color: blue;
+}
+.foo+.baz,
+	.bar+.baz,
+	.foo .qux,
+	.bar .qux {
+		color: red;
+	}
+
+/* Example 4 */
+.foo {
+	color: red;
+}
+.foo>.bar {
+		color: blue;
+}
+
+/* equivalent to
+  .foo { color: red; }
+  .foo > .bar { color: blue; }
+*/
+
+.foo {
+	color: red;
+}
+
+.parent .foo {
+		color: blue;
+}
+
+/* equivalent to
+  .foo { color: red; }
+  .parent .foo { color: blue; }
+*/
+
+.foo {
+	color: red;
+}
+
+:not(.foo) {
+		color: blue;
+}
+
+/* equivalent to
+  .foo { color: red; }
+  :not(.foo) { color: blue; }
+*/
+
+.foo {
+	color: red;
+
+	@nest .bar {
+		color: blue;
+	}
+}
+
+/* Invalid because there’s no nesting selector */
+
+.foo {
+	color: red;
+
+	@nest & .bar,
+	.baz {
+		color: blue;
+	}
+}
+
+/* Invalid because not all selectors in the list
+  contain a nesting selector */
+
+/* Example 5 */
+.foo {
+	color: blue;
+}
+.bar .foo {
+		color: red;
+}
+.bar .foo.baz {
+			color: green;
+		}
+
+/* equivalent to
+  .foo { color: blue; }
+  .bar .foo { color: red; }
+  .bar .foo.baz { color: green; }
+*/
+
+/* Example 6 */
+/* Properties can be directly used */
+.foo {
+	display: grid;
+}
+@media (orientation: landscape) {
+.foo {
+		grid-auto-flow: column;
+}
+	}
+
+/* equivalent to
+  .foo { display: grid; }
+
+  @media (orientation: landscape) {
+    & {
+      grid-auto-flow: column;
+    }
+  }
+*/
+
+/* finally equivalent to
+  .foo { display: grid; }
+
+  @media (orientation: landscape) {
+    .foo {
+      grid-auto-flow: column;
+    }
+  }
+*/
+
+/* Conditionals can be further nested */
+.foo {
+	display: grid;
+}
+@media (orientation: landscape) {
+.foo {
+		grid-auto-flow: column;
+}
+	}
+@media (orientation: landscape) and (min-inline-size > 1024px) {
+.foo {
+			max-inline-size: 1024px;
+}
+		}
+
+/* equivalent to
+  .foo { display: grid; }
+
+  @media (orientation: landscape) {
+    .foo {
+      grid-auto-flow: column;
+    }
+  }
+
+  @media (orientation: landscape) and (min-inline-size > 1024px) {
+    .foo {
+      max-inline-size: 1024px;
+    }
+  }
+*/
+
+.foo {
+	color: red;
+}
+
+@media (min-width: 480px) {
+
+		.foo h1,
+		.foo h2 {
+			color: blue;
+		}
+	}
+
+/* Invalid because not all selectors in the list
+  contain a nesting selector */
+
+.foo {
+	color: red;
+
+	@nest @media (min-width: 480px) {
+		& {
+			color: blue;
+		}
+	}
+}
+
+/* Invalid because @nest expects a selector prelude,
+  instead a conditional group rule was provided */
+
+/* Example 7 */
+article {
+	color: green;
+
+	/*
+		NOTE : We are more forgiving than the spec
+		This declaration is preserved
+	*/
+	color: red;
+}
+article {
+		color: blue;
+	}
+
+article {
+	color: green;
+
+	/*
+		NOTE : We are more forgiving than the spec
+		This declaration is preserved
+	*/
+	color: red;
+
+	/* valid! */
+}
+
+article {
+		color: blue;
+	}
+
+article.foo {
+		color: yellow;
+	}

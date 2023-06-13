@@ -44,7 +44,7 @@ assert.deepStrictEqual(
 );
 
 assert.deepStrictEqual(
-	serialize_sRGB_data(color(parse('hsl(from rebeccapurple calc(h - 10deg) s l)'))),
+	serialize_sRGB_data(color(parse('hsl(from rebeccapurple calc(h - 10) s l)'))),
 	'rgb(85, 51, 153)',
 );
 
