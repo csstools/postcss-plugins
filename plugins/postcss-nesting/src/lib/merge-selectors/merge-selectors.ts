@@ -4,9 +4,8 @@ import { combinationsWithSizeN } from './combinations-of-size-n';
 import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
 import { nodesAreEquallySpecific } from './specificity';
 import { options } from '../options';
-import type { Node, Result } from 'postcss';
 
-export default function mergeSelectors(node: Node, postcssResult: Result, fromSelectors: Array<string>, toSelectors: Array<string>, opts: options, fromAtNest = false) {
+export default function mergeSelectors(fromSelectors: Array<string>, toSelectors: Array<string>, opts: options) {
 	const fromListHasUniformSpecificity = nodesAreEquallySpecific(fromSelectors);
 
 	let fromSelectorsAST = [];
@@ -26,13 +25,6 @@ export default function mergeSelectors(node: Node, postcssResult: Result, fromSe
 
 		{
 			const toSelectorAST = parser().astSync(toSelector);
-
-			if (!fromAtNest) {
-				if (x === 0 && toSelectorAST.nodes?.[0]?.nodes?.[0]?.type === 'tag') {
-					node.warn(postcssResult, `Nested selectors must start with a symbol and "${toSelectors[x]}" begins with a letter.`);
-					return [];
-				}
-			}
 
 			let isNestContaining = false;
 			toSelectorAST.walk((maybeNesting) => {

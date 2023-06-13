@@ -438,7 +438,7 @@
 
 :--view-m .view {
 		background: red;
-}
+	}
 
 .nested-calc {
 	order: calc(1 * calc(8 / 3 + calc(5 * 10)));

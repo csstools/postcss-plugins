@@ -10,7 +10,7 @@ export default function transformNestRuleWithinRule(node: AtRule, parent: Rule, 
 	let selectors = [];
 
 	try {
-		selectors = mergeSelectors(node, result, parent.selectors, comma(node.params), opts, true);
+		selectors = mergeSelectors(parent.selectors, comma(node.params), opts);
 	} catch (err) {
 		node.warn(result, `Failed to parse selectors : "${parent.selector}" / "${node.params}" with message: "${err.message}"`);
 		return;

@@ -27,7 +27,7 @@ a {
 		@media (max-width: 200px) {
 			order: 3;
 		}
-		@nest & b {
+		& b {
 			@media (max-width: 200px) {
 				order: 4;
 			}
@@ -36,7 +36,7 @@ a {
 	@media screen, print and speech {
 		@media (max-width: 300px), (min-aspect-ratio: 16/9) {
 			order: 5;
-			@nest & c {
+			& c {
 				order: 6;
 			}
 		}

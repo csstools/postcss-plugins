@@ -10,7 +10,7 @@ export default function transformRuleWithinRule(node: Rule, parent: Rule, result
 
 	// update the selectors of the node to be merged with the parent
 	try {
-		selectors = mergeSelectors(node, result, parent.selectors, node.selectors, opts, false);
+		selectors = mergeSelectors(parent.selectors, node.selectors, opts);
 	} catch (err) {
 		node.warn(result, `Failed to parse selectors : "${parent.selector}" / "${node.selector}" with message: "${err.message}"`);
 		return;

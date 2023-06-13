@@ -14,18 +14,18 @@ f {
 }
 a, b {
 	order: 1;
-	@nest c, d {
+	c, d {
 		order: 2;
 	}
 }
-@nest & e {
+& e {
 	order: 3;
 }
 f {
-	@nest &h {
+	&h {
 		order: 5;
 	}
-	@nest &|i {
+	&|i {
 		order: 6;
 	}
 }
