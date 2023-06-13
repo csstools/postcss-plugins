@@ -148,6 +148,11 @@ export const osiApprovedWithCCO = [
 
 const licenseExceptions = [
 	{
+		// because ... irony? 🤷
+		file: 'node_modules/spdx-exceptions/package.json',
+		license: 'CC-BY-3.0',
+	},
+	{
 		// see : https://github.com/Fyrd/caniuse/issues/4062
 		file: 'node_modules/caniuse-lite/package.json',
 		license: 'CC-BY-4.0',

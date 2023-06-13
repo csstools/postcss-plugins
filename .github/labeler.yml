@@ -27,6 +27,9 @@
 "experimental":
   - experimental/**
 
+"stylelint-plugin":
+  - plugins-stylelint/**
+
 "plugins/css-all-property":
   - plugins/css-all-property/**
   - experimental/css-all-property/**

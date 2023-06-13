@@ -30,7 +30,7 @@
 }
 
 .spec-example-11 {
-	background: oklch(from oklch(52.6% 0.115 44.6deg) l c calc(h + 90deg));
+	background: oklch(from oklch(52.6% 0.115 44.6deg) l c calc(h + 90));
 }
 
 .spec-example-12 {
@@ -73,7 +73,7 @@
 }
 
 .spec-example-20 {
-	color: hsl(from lightseagreen calc(h + 180deg) s l);
+	color: hsl(from lightseagreen calc(h + 180) s l);
 }
 
 .spec-example-21{
@@ -90,7 +90,7 @@
 }
 
 .spec-example-24 {
-	--complement: lch(from lightseagreen l c calc(h + 180deg));
+	--complement: lch(from lightseagreen l c calc(h + 180));
 }
 
 .spec-example-25 {
@@ -99,10 +99,10 @@
 }
 
 .spec-example-26 {
-	color: lch(from lch(60% 90 320) l c calc(h - 120deg));
-	color-2: hsl(from lch(60% 90 320) calc(h - 120deg) s l);
+	color: lch(from lch(60% 90 320) l c calc(h - 120));
+	color-2: hsl(from lch(60% 90 320) calc(h - 120) s l);
 }
 
 .spec-example-27 {
-	color: oklch(from lch(60% 90 320) l c calc(h - 120deg));
+	color: oklch(from lch(60% 90 320) l c calc(h - 120));
 }
