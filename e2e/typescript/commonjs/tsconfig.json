@@ -6,7 +6,7 @@
 		"declarationDir": "./dist",
 		"lib": ["es2020"],
 		"module": "CommonJS",
-		"moduleResolution": "classic",
+		"moduleResolution": "node",
 		"outDir": "./dist",
 		"target": "es2020",
 		"strict": true
