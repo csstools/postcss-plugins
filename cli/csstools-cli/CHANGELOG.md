@@ -1,5 +1,10 @@
 # Changes to CSSTools CLI
 
+### Unreleased (patch)
+
+- Updated `postcss-nesting` to `11.3.0` (minor)
+
+
 ### 2.1.6 (June 1, 2023)
 
 - Updated `postcss-custom-properties` to `13.2.0` (minor)
