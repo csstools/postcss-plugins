@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 8.5.0 (June 14, 2023)
 
 - Add warning when using the deprecated `@nest` rule
 - Updated `@csstools/postcss-relative-color-syntax` to `1.0.2` (patch)
