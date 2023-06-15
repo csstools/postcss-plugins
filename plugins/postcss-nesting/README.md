@@ -30,16 +30,16 @@ you might want to use [PostCSS Nested] instead.
 	color: red;
 }
 .foo:hover {
-		color: green;
-	}
+	color: green;
+}
 .foo > .bar {
-		color: blue;
-	}
+	color: blue;
+}
 @media (prefers-color-scheme: dark) {
 	.foo {
 		color: cyan;
-}
 	}
+}
 ```
 
 ## Usage
