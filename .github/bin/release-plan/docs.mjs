@@ -12,7 +12,7 @@ export async function updateDocumentation(packageDirectory) {
 			],
 			{
 				cwd: packageDirectory,
-				shell: platform == 'win32'
+				shell: platform === 'win32'
 			}
 		);
 

@@ -36,7 +36,7 @@ export async function npmVersion(increment, packageDirectory) {
 			],
 			{
 				cwd: packageDirectory,
-				shell: platform == 'win32'
+				shell: platform === 'win32'
 			}
 		);
 

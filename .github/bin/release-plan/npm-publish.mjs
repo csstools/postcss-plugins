@@ -13,7 +13,7 @@ export async function npmPublish(packageDirectory, packageName) {
 			{
 				stdio: 'inherit',
 				cwd: packageDirectory,
-				shell: platform == 'win32'
+				shell: platform === 'win32'
 			}
 		);
 

@@ -9,7 +9,7 @@ export async function npmInstall() {
 				'install'
 			],
 			{
-				shell: platform == 'win32'
+				shell: platform === 'win32'
 			}
 		);
 
