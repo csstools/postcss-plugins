@@ -1,4 +1,5 @@
 import { spawn } from 'child_process';
+import { platform } from 'process';
 
 export async function updateDocumentation(packageDirectory) {
 	await new Promise((resolve, reject) => {
@@ -10,7 +11,8 @@ export async function updateDocumentation(packageDirectory) {
 				'--if-present'
 			],
 			{
-				cwd: packageDirectory
+				cwd: packageDirectory,
+				shell: platform === 'win32'
 			}
 		);
 
