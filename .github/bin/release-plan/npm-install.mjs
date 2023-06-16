@@ -1,4 +1,5 @@
 import { spawn } from 'child_process';
+import { platform } from 'process';
 
 export async function npmInstall() {
 	await new Promise((resolve, reject) => {
@@ -7,6 +8,9 @@ export async function npmInstall() {
 			[
 				'install'
 			],
+			{
+				shell: platform == 'win32'
+			}
 		);
 
 		installCmd.on('close', (code) => {

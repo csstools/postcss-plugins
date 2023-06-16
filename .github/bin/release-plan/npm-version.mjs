@@ -1,4 +1,5 @@
 import { spawn } from 'child_process';
+import { platform } from 'process';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -34,7 +35,8 @@ export async function npmVersion(increment, packageDirectory) {
 				increment
 			],
 			{
-				cwd: packageDirectory
+				cwd: packageDirectory,
+				shell: platform == 'win32'
 			}
 		);
 

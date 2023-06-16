@@ -1,4 +1,5 @@
 import { spawn } from 'child_process';
+import { platform } from 'process';
 
 export async function npmPublish(packageDirectory, packageName) {
 	await new Promise((resolve, reject) => {
@@ -11,7 +12,8 @@ export async function npmPublish(packageDirectory, packageName) {
 			],
 			{
 				stdio: 'inherit',
-				cwd: packageDirectory
+				cwd: packageDirectory,
+				shell: platform == 'win32'
 			}
 		);
 
