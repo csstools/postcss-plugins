@@ -1,7 +1,7 @@
 {
 	"name": "postcss-preset-env",
 	"description": "Convert modern CSS into something browsers understand",
-	"version": "8.4.2",
+	"version": "8.5.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -66,7 +66,7 @@
 		"@csstools/postcss-normalize-display-values": "^2.0.1",
 		"@csstools/postcss-oklab-function": "^2.2.3",
 		"@csstools/postcss-progressive-custom-properties": "^2.3.0",
-		"@csstools/postcss-relative-color-syntax": "^1.0.1",
+		"@csstools/postcss-relative-color-syntax": "^1.0.2",
 		"@csstools/postcss-scope-pseudo-class": "^2.0.2",
 		"@csstools/postcss-stepped-value-functions": "^2.1.1",
 		"@csstools/postcss-text-decoration-shorthand": "^2.2.4",
@@ -96,7 +96,7 @@
 		"postcss-initial": "^4.0.1",
 		"postcss-lab-function": "^5.2.3",
 		"postcss-logical": "^6.2.0",
-		"postcss-nesting": "^11.2.1",
+		"postcss-nesting": "^11.3.0",
 		"postcss-opacity-percentage": "^2.0.0",
 		"postcss-overflow-shorthand": "^4.0.1",
 		"postcss-page-break": "^3.0.4",

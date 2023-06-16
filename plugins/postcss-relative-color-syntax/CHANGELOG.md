@@ -1,6 +1,6 @@
 # Changes to PostCSS Relative Color Syntax
 
-### Unreleased (patch)
+### 1.0.2 (June 14, 2023)
 
 - Fix value calculation for `hue` components in relative color syntax.
 

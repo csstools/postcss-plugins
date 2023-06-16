@@ -38,7 +38,7 @@ function generatePluginOptions(data) {
 		const plugin = plugins[i];
 
 		if (existsSync(path.join('./src/types/', plugin.packageName, 'plugin-options.ts'))) {
-			result += `import type { pluginOptions as ${plugin.importName} } from '${path.join('../types/', plugin.packageName, 'plugin-options')}';\n`;
+			result += `import type { pluginOptions as ${plugin.importName} } from '${path.posix.join('../types/', plugin.packageName, 'plugin-options')}';\n`;
 		} else {
 			result += `import type { pluginOptions as ${plugin.importName} } from '${plugin.packageName}';\n`;
 		}

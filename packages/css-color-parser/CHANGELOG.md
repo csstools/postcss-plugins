@@ -1,6 +1,6 @@
 # Changes to CSS Color Parser
 
-### Unreleased (patch)
+### 1.2.1 (June 14, 2023)
 
 - Fix value calculation for `hue` components in relative color syntax.
 

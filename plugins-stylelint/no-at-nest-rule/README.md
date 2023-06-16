@@ -16,7 +16,7 @@ Prevent usage of `@nest` in CSS.
 }
 ```
 
-The CSS Nesting specification has changed and `@nest` is not longer required and has been removed from the specification.  
+The CSS Nesting specification has changed and `@nest` is no longer required and has been removed from the specification.  
 Since it will never be valid CSS in browsers it is important to migrate away from it.
 
 **Valid CSS :**

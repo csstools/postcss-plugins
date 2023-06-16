@@ -1,6 +1,6 @@
 # Changes to PostCSS Nesting
 
-### Unreleased (minor)
+### 11.3.0 (June 14, 2023)
 
 - Add support for nested selectors that that begin with a letter
 - Add warning when using the deprecated `@nest` rule
