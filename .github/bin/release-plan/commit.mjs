@@ -1,5 +1,4 @@
 import { spawn } from 'child_process';
-import { platform } from 'process';
 
 export async function commitAfterPackageRelease(newVersion, packageDirectory, packageName) {
 	await new Promise((resolve, reject) => {
@@ -11,8 +10,7 @@ export async function commitAfterPackageRelease(newVersion, packageDirectory, pa
 				`${packageName} v${newVersion}` // "@csstools/css-tokenizer v1.0.0"
 			],
 			{
-				cwd: packageDirectory,
-				shell: platform === 'win32'
+				cwd: packageDirectory
 			}
 		);
 
