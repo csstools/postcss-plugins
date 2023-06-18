@@ -73,7 +73,7 @@
 		"@csstools/postcss-trigonometric-functions": "^2.1.1",
 		"@csstools/postcss-unset-value": "^2.0.1",
 		"autoprefixer": "^10.4.14",
-		"browserslist": "^4.21.5",
+		"browserslist": "^4.21.9",
 		"css-blank-pseudo": "^5.0.2",
 		"css-has-pseudo": "^5.0.2",
 		"css-prefers-color-scheme": "^8.0.2",

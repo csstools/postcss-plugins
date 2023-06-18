@@ -35,8 +35,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^1.2.0",
-		"@csstools/css-parser-algorithms": "^2.1.1",
+		"@csstools/css-color-parser": "^1.2.1",
+		"@csstools/css-parser-algorithms": "^2.2.0",
 		"@csstools/css-tokenizer": "^2.1.1",
 		"@csstools/postcss-progressive-custom-properties": "^2.3.0"
 	},
@@ -45,7 +45,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"postcss-lab-function": "^5.0.0"
+		"postcss-lab-function": "^5.2.3"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

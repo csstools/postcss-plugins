@@ -45,7 +45,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^2.1.1",
+		"@csstools/css-parser-algorithms": "^2.2.0",
 		"@csstools/css-tokenizer": "^2.1.1",
 		"postcss-value-parser": "^4.2.0"
 	},
@@ -54,7 +54,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"postcss-import": "^15.0.0",
+		"postcss-import": "^15.1.0",
 		"style-dictionary-design-tokens-example": "^1.1.0"
 	},
 	"scripts": {
