@@ -131,6 +131,9 @@ postcssTape(plugin)({
 			inlineDirection: 'right-to-left',
 		}
 	},
+	'generated-declaration-cases': {
+		message: 'generated test cases',
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

@@ -45,10 +45,10 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"postcss-selector-parser": "^6.0.10"
+		"postcss-selector-parser": "^6.0.13"
 	},
 	"devDependencies": {
-		"postcss-selector-parser": "^6.0.10"
+		"postcss-selector-parser": "^6.0.13"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
