@@ -1,5 +1,9 @@
 # Changes to Media Query List Parser
 
+### Unreleased (patch)
+
+- Fix parsing of `(width == 100px)`. This was erroneously parsed as a range query and will now instead be a general enclosed node.
+
 ### 2.1.0 (June 1, 2023)
 
 - Fix `walk` for `MediaFeatureValue` with complex component values.

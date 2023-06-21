@@ -30,8 +30,7 @@ export function matchesComparison(componentValues: Array<ComponentValue>): false
 						return [firstTokenIndex, i];
 					}
 
-					firstTokenIndex = i;
-					continue;
+					return [i, i];
 				}
 				if (token[4].value === MediaFeatureLT.LT) {
 					firstTokenIndex = i;
