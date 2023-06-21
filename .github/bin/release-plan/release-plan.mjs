@@ -117,6 +117,10 @@ for (const workspace of notReleasableNow.values()) {
 		if (needsRelease.has(dependency)) {
 			const updated = needsRelease.get(dependency);
 
+			const dependencyLink = `/${updated.path.replaceAll('\\', '/')}`;
+			const nameAsLink = `[\`${updated.name}\`](${dependencyLink})`;
+			const versionAsLink = `[\`${updated.newVersion}\`](${dependencyLink}/CHANGELOG.md)`;
+
 			if (
 				packageInfo.dependencies &&
 				packageInfo.dependencies[updated.name] &&
@@ -124,7 +128,7 @@ for (const workspace of notReleasableNow.values()) {
 				updated.newVersion
 			) {
 				packageInfo.dependencies[updated.name] = '^' + updated.newVersion;
-				changeLogAdditions += `- Updated \`${updated.name}\` to \`${updated.newVersion}\` (${updated.increment})\n`;
+				changeLogAdditions += `- Updated ${nameAsLink} to ${versionAsLink} (${updated.increment})\n`;
 				didChange = true;
 			}
 			if (
@@ -144,7 +148,7 @@ for (const workspace of notReleasableNow.values()) {
 				updated.newVersion
 			) {
 				packageInfo.peerDependencies[updated.name] = '^' + updated.newVersion;
-				changeLogAdditions += `- Updated \`${updated.name}\` to \`${updated.newVersion}\` (${updated.increment})\n`;
+				changeLogAdditions += `- Updated ${nameAsLink} to ${versionAsLink} (${updated.increment})\n`;
 				didChange = true;
 			}
 		}
