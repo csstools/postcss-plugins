@@ -1,6 +1,6 @@
 # Changes to Media Query List Parser
 
-### Unreleased (patch)
+### 2.1.1 (June 21, 2023)
 
 - Fix parsing of `(width == 100px)`. This was erroneously parsed as a range query and will now instead be a general enclosed node.
 
