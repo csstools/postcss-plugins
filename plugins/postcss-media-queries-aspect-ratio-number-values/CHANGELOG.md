@@ -1,6 +1,6 @@
 # Changes to PostCSS Media Queries Aspect-Ratio Number Values
 
-### Unreleased (patch)
+### 1.0.4 (June 21, 2023)
 
 - Updated `@csstools/media-query-list-parser` to `2.1.1` (patch)
 
