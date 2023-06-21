@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 8.5.1 (June 21, 2023)
 
 - Updated `@csstools/postcss-media-minmax` to `1.0.4` (patch)
 - Updated `@csstools/postcss-media-queries-aspect-ratio-number-values` to `1.0.4` (patch)
