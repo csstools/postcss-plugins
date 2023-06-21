@@ -1,5 +1,12 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated `@csstools/postcss-media-minmax` to `1.0.4` (patch)
+- Updated `@csstools/postcss-media-queries-aspect-ratio-number-values` to `1.0.4` (patch)
+- Updated `postcss-custom-media` to `9.1.5` (patch)
+
+
 ### 8.5.0 (June 14, 2023)
 
 - Add warning when using the deprecated `@nest` rule

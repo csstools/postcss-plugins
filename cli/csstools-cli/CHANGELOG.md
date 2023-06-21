@@ -1,5 +1,12 @@
 # Changes to CSSTools CLI
 
+### Unreleased (patch)
+
+- Updated `@csstools/postcss-media-minmax` to `1.0.4` (patch)
+- Updated `@csstools/postcss-media-queries-aspect-ratio-number-values` to `1.0.4` (patch)
+- Updated `postcss-custom-media` to `9.1.5` (patch)
+
+
 ### 2.1.7 (June 14, 2023)
 
 - Updated `postcss-nesting` to `11.3.0` (minor)
