@@ -1,40 +1,56 @@
 # Changes to PostCSS Custom Media
 
-### 9.1.5 (June 21, 2023)
+### 9.1.5
+
+_June 21, 2023_
 
 - Updated `@csstools/media-query-list-parser` to `2.1.1` (patch)
 
 
-### 9.1.4 (June 1, 2023)
+### 9.1.4
+
+_June 1, 2023_
 
 - Updated `@csstools/media-query-list-parser` to `2.1.0` (minor)
 
 
-### 9.1.3 (April 10, 2023)
+### 9.1.3
+
+_April 10, 2023_
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
 - Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
 - Updated `@csstools/cascade-layer-name-parser` to `1.0.2` (patch)
 - Updated `@csstools/media-query-list-parser` to `2.0.4` (patch)
 
-### 9.1.2 (February 8, 2023)
+### 9.1.2
+
+_February 8, 2023_
 
 - Fixed: exception on missing media queries.
 - Reduce the amount of duplicate fallback CSS.
 
-### 9.1.1 (January 28, 2023)
+### 9.1.1
+
+_January 28, 2023_
 
 - Improve `types` declaration in `package.json`
 
-### 9.1.0 (January 24, 2023)
+### 9.1.0
+
+_January 24, 2023_
 
 - Added: Support for Cascade Layers.
 
-### 9.0.1 (November 19, 2022)
+### 9.0.1
+
+_November 19, 2022_
 
 - Fixed: avoid complex generated CSS when `@custom-media` contains only a single simple media feature.
 
-### 9.0.0 (November 14, 2022)
+### 9.0.0
+
+_November 14, 2022_
 
 - Updated: Support for Node v14+ (major).
 - Removed: `importFrom` feature (breaking).
@@ -43,56 +59,80 @@
 - Fixed: implement logical evaluation of custom media queries.
 - Added: Support for `true` and `false` keywords in `@custom-media`.
 
-### 8.0.2 (June 4, 2022)
+### 8.0.2
+
+_June 4, 2022_
 
 - Fixed: dependency declarations in package.json
 
-### 8.0.1 (June 3, 2022)
+### 8.0.1
+
+_June 3, 2022_
 
 - Updated: use specific AtRule visitor
 - Fixed: allow any valid ident in custom media (`@custom-media --🧑🏾‍🎤 (min-width: 320px);`)
 - Fixed: allow white space around custom media (`@media ( --mq-1   );`) (https://github.com/csstools/postcss-custom-media/pull/59) (https://github.com/csstools/postcss-custom-media/pull/71)
 
-### 8.0.0 (January 12, 2021)
+### 8.0.0
+
+_January 12, 2021_
 
 - Added: Support for PostCSS v8
 
-### 7.0.8 (March 30, 2019)
+### 7.0.8
+
+_March 30, 2019_
 
 - Fixed: Issue importing from `.pcss` files
 - Updated: `postcss` to 7.0.14 (patch)
 
-### 7.0.7 (October 19, 2018)
+### 7.0.7
+
+_October 19, 2018_
 
 - Fixed: Issue combining custom media media queries with `and`
 
-### 7.0.6 (October 12, 2018)
+### 7.0.6
+
+_October 12, 2018_
 
 - Fixed: Issue combining multiple custom media
 
-### 7.0.5 (October 5, 2018)
+### 7.0.5
+
+_October 5, 2018_
 
 - Fixed: Possible issues resolving paths to imports and exports
 - Added: Imports from `customMedia` and `custom-media` simultaneously
 - Updated: `postcss` to 7.0.5
 
-### 7.0.4 (September 23, 2018)
+### 7.0.4
+
+_September 23, 2018_
 
 - Added: `importFromPlugins` option to process imports
 
-### 7.0.3 (September 20, 2018)
+### 7.0.3
+
+_September 20, 2018_
 
 - Fixed: Do not break on an empty `importFrom` object
 
-### 7.0.2 (September 15, 2018)
+### 7.0.2
+
+_September 15, 2018_
 
 - Fixed: An issue with re-assigning params as a non-string
 
-### 7.0.1 (September 14, 2018)
+### 7.0.1
+
+_September 14, 2018_
 
 - Fixed: An issue with how opposing queries are resolved.
 
-### 7.0.0 (September 14, 2018)
+### 7.0.0
+
+_September 14, 2018_
 
 - Added: New `preserve` option to preserve custom media and atrules using them
 - Added: New `exportTo` function to specify where to export custom media

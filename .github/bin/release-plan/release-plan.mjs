@@ -87,7 +87,7 @@ for (const workspace of needsRelease.values()) {
 	console.log(`Releasing : ${workspace.name}`);
 	// Increment the version
 	workspace.newVersion = await npmVersion(workspace.increment, workspace.path);
-	workspace.newVersionChangeLogID = workspace.newVersion.replaceAll('.', '-');
+	workspace.newVersionChangeLogHeadingID = workspace.newVersion.replaceAll('.', '-');
 
 	// Update the changelog
 	const changelog = workspace.changelog.replace(`Unreleased (${workspace.increment})`, `${workspace.newVersion}\n\n_${nowFormatted()}_`);
@@ -120,7 +120,7 @@ for (const workspace of notReleasableNow.values()) {
 
 			const dependencyLink = `/${updated.path.replaceAll('\\', '/')}`;
 			const nameAsLink = `[\`${updated.name}\`](${dependencyLink})`;
-			const versionAsLink = `[\`${updated.newVersion}\`](${dependencyLink}/CHANGELOG.md#${updated.newVersionChangeLogID})`;
+			const versionAsLink = `[\`${updated.newVersion}\`](${dependencyLink}/CHANGELOG.md#${updated.newVersionChangeLogHeadingID})`;
 
 			if (
 				packageInfo.dependencies &&

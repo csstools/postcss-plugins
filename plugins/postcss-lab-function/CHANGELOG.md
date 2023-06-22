@@ -1,11 +1,15 @@
 # Changes to PostCSS Lab Function
 
-### 5.2.3 (June 1, 2023)
+### 5.2.3
+
+_June 1, 2023_
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
 
 
-### 5.2.2 (May 19, 2023)
+### 5.2.2
+
+_May 19, 2023_
 
 - Ignore relative color syntax
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
@@ -13,35 +17,49 @@
 
 
 
-### 5.2.1 (April 10, 2023)
+### 5.2.1
+
+_April 10, 2023_
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
 - Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
 - Updated `@csstools/css-color-parser` to `1.1.2` (patch)
 
-### 5.2.0 (March 25, 2023)
+### 5.2.0
+
+_March 25, 2023_
 
 - Add `@csstools/css-color-parser` dependency for all color value transformations.
 - Add support for `calc` expressions in color components.
 - Skip `color(display-p3 0 0 0)` fallbacks when the color is already in the `srgb` gamut.
 
-### 5.1.0 (February 6, 2023)
+### 5.1.0
+
+_February 6, 2023_
 
 - Add: `@csstools/color-helpers` dependency for all color value transformations.
 
-### 5.0.1 (January 28, 2023)
+### 5.0.1
+
+_January 28, 2023_
 
 - Improve `types` declaration in `package.json`
 
-### 5.0.0 (January 24, 2023)
+### 5.0.0
+
+_January 24, 2023_
 
 - Updated: Support for Node v14+ (major).
 
-### 4.2.1 (July 8, 2022)
+### 4.2.1
+
+_July 8, 2022_
 
 - Fix case insensitive matching.
 
-### 4.2.0 (April 4, 2022)
+### 4.2.0
+
+_April 4, 2022_
 
 - Allow percentage and number units in more color components.
 
@@ -71,16 +89,22 @@
 }
 ```
 
-### 4.1.2 (March 8, 2022)
+### 4.1.2
+
+_March 8, 2022_
 
 - Fix gamut mapping giving overly unsaturated colors.
 - Implement powerless color components in gamut mapping.
 
-### 4.1.1 (February 15, 2022)
+### 4.1.1
+
+_February 15, 2022_
 
 - Fix plugin name
 
-### 4.1.0 (February 12, 2022)
+### 4.1.0
+
+_February 12, 2022_
 
 - Add gamut mapping for out of gamut colors.
 - Add conversion to `display-p3` as a wider gamut fallback.
@@ -101,16 +125,22 @@
 }
 ```
 
-### 4.0.4 (February 5, 2022)
+### 4.0.4
+
+_February 5, 2022_
 
 - Improved `es module` and `commonjs` compatibility
 
-### 4.0.3 (January 2, 2022)
+### 4.0.3
+
+_January 2, 2022_
 
 - Removed Sourcemaps from package tarball.
 - Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
 
-### 4.0.2 (December 13, 2021)
+### 4.0.2
+
+_December 13, 2021_
 
 - Changed: now uses `postcss-value-parser` for parsing.
 - Updated: documentation
@@ -118,56 +148,80 @@
 - Fixed: Hue values with units in `lch` functions are now correctly handled.
 - Fixed: Rounding of values to match current browser behavior.
 
-### 4.0.1 (November 18, 2021)
+### 4.0.1
+
+_November 18, 2021_
 
 - Added: Safeguards against postcss-values-parser potentially throwing an error.
 - Updated: postcss-value-parser to 6.0.1 (patch)
 
-### 4.0.0 (September 17, 2021)
+### 4.0.0
+
+_September 17, 2021_
 
 - Updated: Support for PostCS 8+ (major).
 - Updated: Support for Node 12+ (major).
 
-### 3.1.2 (April 25, 2020)
+### 3.1.2
+
+_April 25, 2020_
 
 - Updated: Publish
 
-### 3.1.1 (April 25, 2020)
+### 3.1.1
+
+_April 25, 2020_
 
 - Updated: Using `walkType` to evade walker bug in `postcss-values-parser`
 
-### 3.1.0 (April 25, 2020)
+### 3.1.0
+
+_April 25, 2020_
 
 - Updated: `postcss-values-parser` to 3.2.0 (minor).
 
-### 3.0.1 (April 12, 2020)
+### 3.0.1
+
+_April 12, 2020_
 
 - Updated: Ownership moved to CSSTools.
 
-### 3.0.0 (April 12, 2020)
+### 3.0.0
+
+_April 12, 2020_
 
 - Updated: `postcss-values-parser` to 3.1.1 (major).
 - Updated: Node support to 10.0.0 (major).
 - Updated: Feature to use new percentage syntax.
 - Removed: Support for the removed `gray()` function.
 
-### 2.0.1 (September 18, 2018)
+### 2.0.1
+
+_September 18, 2018_
 
 - Updated: PostCSS Values Parser 2.0.0
 
-### 2.0.0 (September 17, 2018)
+### 2.0.0
+
+_September 17, 2018_
 
 - Updated: Support for PostCSS 7+
 - Updated: Support for Node 6+
 
-### 1.1.0 (July 24, 2018)
+### 1.1.0
+
+_July 24, 2018_
 
 - Added: Support for `gray(a / b)` as `lab(a 0 0 / b)`
 
-### 1.0.1 (May 11, 2018)
+### 1.0.1
+
+_May 11, 2018_
 
 - Fixed: Values beyond the acceptable 0-255 RGB range
 
-### 1.0.0 (May 11, 2018)
+### 1.0.0
+
+_May 11, 2018_
 
 - Initial version

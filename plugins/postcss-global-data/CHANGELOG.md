@@ -1,17 +1,25 @@
 # Changes to PostCSS global-data
 
-### 1.0.3 (February 21, 2023)
+### 1.0.3
+
+_February 21, 2023_
 
 - Fixed: TypeScript definition of the plugin options.
 
-### 1.0.2 (February 15, 2023)
+### 1.0.2
+
+_February 15, 2023_
 
 - Fixed: file watching with PostCSS CLI
 
-### 1.0.1 (February 9, 2023)
+### 1.0.1
+
+_February 9, 2023_
 
 - Fixed: set the source file on injected data.
 
-### 1.0.0 (February 7, 2023)
+### 1.0.0
+
+_February 7, 2023_
 
 - Initial version

@@ -1,28 +1,40 @@
 # Changes to CSS Has Pseudo
 
-### 5.0.2 (February 6, 2023)
+### 5.0.2
+
+_February 6, 2023_
 
 - Reduce the amount of duplicate fallback CSS.
 
-### 5.0.1 (January 28, 2023)
+### 5.0.1
+
+_January 28, 2023_
 
 - Improve `types` declaration in `package.json`
 
-### 5.0.0 (January 24, 2023)
+### 5.0.0
+
+_January 24, 2023_
 
 - Updated: Support for Node v14+ (major).
 - Fix: Do not throw when a selector is invalid, show a warning instead.
 - Fix: make `:has()` unforgiving. `:has(.foo, :some-invalid-selector)` will no longer match elements that have children with `.foo`.
 
-### 4.0.2 (December 12, 2022)
+### 4.0.2
+
+_December 12, 2022_
 
  - Fix: correctly cleanup style rules when a browser has native support. [backported](https://github.com/csstools/postcss-plugins/pull/752)
 
-### 4.0.1 (August 23, 2022)
+### 4.0.1
+
+_August 23, 2022_
 
 - Fix: assign global browser polyfill to `window`, `self` or a blank object.
 
-### 4.0.0 (July 8, 2022)
+### 4.0.0
+
+_July 8, 2022_
 
 [Read the full changelog](https://github.com/csstools/postcss-plugins/wiki/PostCSS-Preset-Env-8)
 
@@ -50,27 +62,37 @@
 + <script src="https://unpkg.com/css-has-pseudo/dist/browser-global.js"></script>
 ```
 
-### 3.0.4 (February 5, 2022)
+### 3.0.4
+
+_February 5, 2022_
 
 - Rebuild of browser polyfills
 
-### 3.0.3 (January 12, 2022)
+### 3.0.3
+
+_January 12, 2022_
 
 - Fix compatibility with PostCSS `v8.2.x` [#147](https://github.com/csstools/postcss-plugins/issues/147)
 
 This version is not officially supported but some tool providers pinned PostCSS to `v8.2.x`,
 making it impossible for end users to have a working setup.
 
-### 3.0.2 (January 2, 2022)
+### 3.0.2
+
+_January 2, 2022_
 
 - Removed Sourcemaps from package tarball.
 - Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
 
-### 3.0.1 (December 27, 2021)
+### 3.0.1
+
+_December 27, 2021_
 
 - Fixed: require/import paths for browser script
 
-### 3.0.0 (December 13, 2021)
+### 3.0.0
+
+_December 13, 2021_
 
 - Breaking: require/import paths have changed
 - Changed: new polyfill CDN urls.
@@ -100,55 +122,79 @@ _It will continue to work for now._
 + <script src="https://unpkg.com/css-has-pseudo/dist/browser-global.js"></script>
 ```
 
-### 2.0.0 (September 16, 2021)
+### 2.0.0
+
+_September 16, 2021_
 
 - Updated: Support for PostCS 8+ (major).
 - Updated: Support for Node 12+ (major).
 
-### 1.0.0 (June 10, 2019)
+### 1.0.0
+
+_June 10, 2019_
 
 - Updated: `postcss-selector-parser` to 6.0.2 (major)
 - Updated: `postcss` to 7.0.16 (patch)
 - Updated: Node 8+ compatibility (major)
 
-### 0.10.0 (December 11, 2018)
+### 0.10.0
+
+_December 11, 2018_
 
 - Fixed an issue where inaccessible rules would crash the library
 
-### 0.9.0 (November 26, 2018)
+### 0.9.0
+
+_November 26, 2018_
 
 - Improved CLI usage
 
-### 0.8.0 (November 26, 2018)
+### 0.8.0
+
+_November 26, 2018_
 
 - Fixed an issue where attribute names were not being properly encoded
 
-### 0.7.0 (November 25, 2018)
+### 0.7.0
+
+_November 25, 2018_
 
 - Replaced `setImmediate` with `requestAnimationFrame` for future compatibility
 
-### 0.6.0 (November 25, 2018)
+### 0.6.0
+
+_November 25, 2018_
 
 - Fixed an issue where nested rules were not supported
 
-### 0.5.0 (November 21, 2018)
+### 0.5.0
+
+_November 21, 2018_
 
 - Further optimize script; from 775 bytes to 757 bytes
 
-### 0.4.0 (November 21, 2018)
+### 0.4.0
+
+_November 21, 2018_
 
 - Fixed an issue with the browser script not picking up added nodes
 
-### 0.3.0 (November 21, 2018)
+### 0.3.0
+
+_November 21, 2018_
 
 - Fixed the misnamed function name for the browser-ready script
 
-### 0.2.0 (November 21, 2018)
+### 0.2.0
+
+_November 21, 2018_
 
 - Improved browser compatibility with updated parsers, encoders, and decoders
 - Improved performance by walking the DOM less
 - Reduced script size by 9%; from 855 bytes to 775 bytes
 
-### 0.1.0 (November 20, 2018)
+### 0.1.0
+
+_November 20, 2018_
 
 - Initial version

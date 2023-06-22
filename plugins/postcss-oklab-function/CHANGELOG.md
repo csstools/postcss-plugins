@@ -1,11 +1,15 @@
 # Changes to PostCSS OKLab Function
 
-### 2.2.3 (June 1, 2023)
+### 2.2.3
+
+_June 1, 2023_
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
 
 
-### 2.2.2 (May 19, 2023)
+### 2.2.2
+
+_May 19, 2023_
 
 - Ignore relative color syntax
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
@@ -13,35 +17,49 @@
 
 
 
-### 2.2.1 (April 10, 2023)
+### 2.2.1
+
+_April 10, 2023_
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
 - Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
 - Updated `@csstools/css-color-parser` to `1.1.2` (patch)
 
-### 2.2.0 (March 25, 2023)
+### 2.2.0
+
+_March 25, 2023_
 
 - Add `@csstools/css-color-parser` dependency for all color value transformations.
 - Add support for `calc` expressions in color components.
 - Skip `color(display-p3 0 0 0)` fallbacks when the color is already in the `srgb` gamut.
 
-### 2.1.0 (February 6, 2023)
+### 2.1.0
+
+_February 6, 2023_
 
 - Add: `@csstools/color-helpers` dependency for all color value transformations.
 
-### 2.0.1 (January 28, 2023)
+### 2.0.1
+
+_January 28, 2023_
 
 - Improve `types` declaration in `package.json`
 
-### 2.0.0 (January 24, 2023)
+### 2.0.0
+
+_January 24, 2023_
 
 - Updated: Support for Node v14+ (major).
 
-### 1.1.1 (July 8, 2022)
+### 1.1.1
+
+_July 8, 2022_
 
 - Fix case insensitive matching.
 
-### 1.1.0 (April 4, 2022)
+### 1.1.0
+
+_April 4, 2022_
 
 - Allow percentage and number units in more color components.
 
@@ -71,15 +89,21 @@
 }
 ```
 
-### 1.0.2 (March 8, 2022)
+### 1.0.2
+
+_March 8, 2022_
 
 - Fix gamut mapping giving overly unsaturated colors.
 - Implement powerless color components in gamut mapping.
 
-### 1.0.1 (February 12, 2022)
+### 1.0.1
+
+_February 12, 2022_
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `1.1.0`.
 
-### 1.0.0 (February 11, 2022)
+### 1.0.0
+
+_February 11, 2022_
 
 - Initial version
