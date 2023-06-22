@@ -1,5 +1,11 @@
 # Changes to Color Helpers
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 2.1.0 (May 19, 2023)
 
 - Fix gamut mapping

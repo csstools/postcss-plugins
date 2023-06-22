@@ -1,5 +1,11 @@
 # Changes to PostCSS Logical Properties
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 6.2.0 (May 19, 2023)
 
 - Added: Support for logical properties in `transition`

@@ -1,5 +1,11 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 3.2.1 (May 19, 2023)
 
 - Fix compound selectors with `*`.

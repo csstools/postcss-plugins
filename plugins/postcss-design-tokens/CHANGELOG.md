@@ -1,5 +1,11 @@
 # Changes to PostCSS Design Tokens
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 2.0.4 (April 10, 2023)
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)

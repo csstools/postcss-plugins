@@ -1,5 +1,11 @@
 # Changes to PostCSS Scope Pseudo Class
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 2.0.2 (February 9, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

@@ -1,1 +1,1 @@
-# Changes to PostCSS Base Plugin
+# Changes to PostCSS Base CLI

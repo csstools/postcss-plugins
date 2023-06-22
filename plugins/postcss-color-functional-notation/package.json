@@ -3,7 +3,7 @@
 	"description": "Use space and slash separated color notation in CSS",
 	"version": "5.1.0",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
-	"license": "CC0-1.0",
+	"license": "MIT-0",
 	"funding": [
 		{
 			"type": "github",

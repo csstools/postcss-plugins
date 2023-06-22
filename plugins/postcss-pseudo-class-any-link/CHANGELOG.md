@@ -1,5 +1,11 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 8.0.2 (February 9, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

@@ -1,5 +1,11 @@
 # Changes to PostCSS Focus Within
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 7.0.2 (February 8, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

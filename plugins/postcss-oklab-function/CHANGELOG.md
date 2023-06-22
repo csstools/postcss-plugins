@@ -1,5 +1,11 @@
 # Changes to PostCSS OKLab Function
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 2.2.3 (June 1, 2023)
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)

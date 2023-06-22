@@ -1,6 +1,6 @@
 MIT No Attribution (MIT-0)
 
-Copyright 2022 Antonio Laguna, Jonathan Neal, Romain Menke
+Copyright 2023 Romain Menke, Antonio Laguna <antonio@laguna.es>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the “Software”), to deal in

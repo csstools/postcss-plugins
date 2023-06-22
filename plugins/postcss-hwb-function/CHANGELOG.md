@@ -1,5 +1,11 @@
 # Changes to PostCSS HWB Function
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 2.2.2 (May 19, 2023)
 
 - Ignore relative color syntax

@@ -1,5 +1,11 @@
 # Changes to PostCSS Relative Color Syntax
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 1.0.2 (June 14, 2023)
 
 - Fix value calculation for `hue` components in relative color syntax.

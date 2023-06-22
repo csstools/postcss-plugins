@@ -1,11 +1,16 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 8.5.0 (June 14, 2023)
 
 - Add warning when using the deprecated `@nest` rule
 - Updated `@csstools/postcss-relative-color-syntax` to `1.0.2` (patch)
 - Updated `postcss-nesting` to `11.3.0` (minor)
-
 
 ### 8.4.2 (June 1, 2023)
 
@@ -23,8 +28,6 @@
 - Updated `postcss-custom-media` to `9.1.4` (patch)
 - Updated `postcss-double-position-gradients` to `4.0.4` (patch)
 - Updated `postcss-lab-function` to `5.2.3` (patch)
-
-
 
 ### 8.4.1 (May 19, 2023)
 

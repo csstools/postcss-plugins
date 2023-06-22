@@ -1,5 +1,11 @@
 # Changes to Selector Specificity
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 2.2.0 (March 21, 2023)
 
 - Improve case insensitive string matching.

@@ -1,5 +1,11 @@
 # Changes to PostCSS global-data
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 1.0.3 (February 21, 2023)
 
 - Fixed: TypeScript definition of the plugin options.

@@ -1,5 +1,11 @@
 # Changes to CSS Blank Pseudo
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 5.0.2 (February 6, 2023)
 
 - Reduce the amount of duplicate fallback CSS.

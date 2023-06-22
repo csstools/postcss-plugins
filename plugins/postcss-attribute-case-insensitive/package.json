@@ -43,7 +43,7 @@
 	},
 	"files": [
 		"CHANGELOG.md",
-		"LICENSE",
+		"LICENSE.md",
 		"README.md",
 		"dist"
 	],

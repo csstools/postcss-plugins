@@ -3,7 +3,7 @@
 	"description": "Use two values display syntax for inner and outer display types.",
 	"version": "2.0.1",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
-	"license": "CC0-1.0",
+	"license": "MIT-0",
 	"funding": [
 		{
 			"type": "github",

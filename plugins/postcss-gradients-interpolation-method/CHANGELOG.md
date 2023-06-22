@@ -1,5 +1,11 @@
 # Changes to PostCSS Gradients Interpolation Method
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 3.0.6 (June 1, 2023)
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)

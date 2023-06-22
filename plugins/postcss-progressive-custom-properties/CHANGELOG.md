@@ -1,5 +1,11 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 2.3.0 (June 1, 2023)
 
 - Add support for regular properties whose values contain `var()`

@@ -1,5 +1,11 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 11.3.0 (June 14, 2023)
 
 - Add support for nested selectors that that begin with a letter

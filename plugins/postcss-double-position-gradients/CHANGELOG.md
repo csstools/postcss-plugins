@@ -1,14 +1,18 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 4.0.4 (June 1, 2023)
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
 
-
 ### 4.0.3 (May 19, 2023)
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
-
 
 ### 4.0.2 (February 8, 2023)
 

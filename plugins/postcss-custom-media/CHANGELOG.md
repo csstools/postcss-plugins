@@ -1,9 +1,14 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased (major)
+
+- Re-license to `MIT-0`
+
+TODO : add link to blog post
+
 ### 9.1.4 (June 1, 2023)
 
 - Updated `@csstools/media-query-list-parser` to `2.1.0` (minor)
-
 
 ### 9.1.3 (April 10, 2023)
 
