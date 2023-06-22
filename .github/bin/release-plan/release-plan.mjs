@@ -87,7 +87,7 @@ for (const workspace of needsRelease.values()) {
 	console.log(`Releasing : ${workspace.name}`);
 	// Increment the version
 	workspace.newVersion = await npmVersion(workspace.increment, workspace.path);
-	workspace.newVersionChangeLogHeadingID = workspace.newVersion.replaceAll('.', '-');
+	workspace.newVersionChangeLogHeadingID = workspace.newVersion.replaceAll('.', '');
 
 	// Update the changelog
 	const changelog = workspace.changelog.replace(`Unreleased (${workspace.increment})`, `${workspace.newVersion}\n\n_${nowFormatted()}_`);
