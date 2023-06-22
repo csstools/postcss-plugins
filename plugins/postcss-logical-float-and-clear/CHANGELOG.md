@@ -2,14 +2,16 @@
 
 ### Unreleased (major)
 
-- Re-license to `MIT-0`
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
 
-TODO : add link to blog post
+### 1.0.1
 
-### 1.0.1 (January 28, 2023)
+_January 28, 2023_
 
 - Improve `types` declaration in `package.json`
 
-### 1.0.0 (January 19, 2023)
+### 1.0.0
+
+_January 19, 2023_
 
 - Initial version

@@ -1,35 +1,55 @@
 # Changes to PostCSS Attribute Case Insensitive
 
-### 6.0.2 (February 6, 2023)
+### 6.0.2
+
+_February 6, 2023_
 
 - Reduce the amount of duplicate fallback CSS.
 
-### 6.0.1 (January 28, 2023)
+### 6.0.1
+
+_January 28, 2023_
 
 - Improve `types` declaration in `package.json`
 
-### 6.0.0 (January 24, 2023)
+### 6.0.0
+
+_January 24, 2023_
 
 - Updated: Support for Node v14+ (major).
 - Fix: Do not throw when a selector is invalid, show a warning instead.
 - Added: `preserve` plugin option.
 
-### 5.0.2 (July 8, 2022)
+### 5.0.2
+
+_July 8, 2022_
 
 - Fix incorrect selector AST updates
 
-### 5.0.1 (June 3, 2022)
+### 5.0.1
+
+_June 3, 2022_
 
 - Prevent exponential backtracking when checking for selectors with case insensitive value matching.
 
-### 5.0.0 (September 15, 2020)
+### 5.0.0
+
+_September 15, 2020_
 
 - Postcss 8.x support
 
-### 4.0.1 (January 10, 2019)
+### 4.0.1
 
-### 2.0.0 (May 06, 2017)
+_January 10, 2019_
 
-### 1.0.1 (August 19, 2016)
+### 2.0.0
 
-### 1.0.0 (August 10, 2016)
+_May 06, 2017_
+
+### 1.0.1
+
+_August 19, 2016_
+
+### 1.0.0
+
+_August 10, 2016_

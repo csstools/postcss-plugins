@@ -120,6 +120,38 @@ Receiving early feedback on your work will help you iterate more quickly in the 
 
 That’s it! Now [open a pull request] with a clear title and description.
 
+### Adding a change log entry.
+
+Each public package has a `CHANGELOG.md` file.  
+We use a structured format to indicate which packages have unreleased changes.
+
+If you open a pull request you may add a new change log entry describing your change.
+
+The structured format is :
+
+```md
+# `<package name>`
+
+### Unreleased (`<semver version bump>`)
+
+- `<your change>`
+- `<another change>`
+```
+
+for example :
+
+```md
+# Changes to PostCSS Attribute Case Insensitive
+
+### Unreleased (patch)
+
+- Reduce the amount of duplicate fallback CSS.
+```
+
+_Adding change log entries is not required for opening pull requests and maintainers can add these for you._
+
+_The change description itself is freeform, we do not have a fixed format._
+
 ## Creating a new plugin here
 
 - Follow the guide for submitting a pull request

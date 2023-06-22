@@ -87,9 +87,10 @@ for (const workspace of needsRelease.values()) {
 	console.log(`Releasing : ${workspace.name}`);
 	// Increment the version
 	workspace.newVersion = await npmVersion(workspace.increment, workspace.path);
+	workspace.newVersionChangeLogHeadingID = workspace.newVersion.replaceAll('.', '');
 
 	// Update the changelog
-	const changelog = workspace.changelog.replace(`Unreleased (${workspace.increment})`, `${workspace.newVersion} (${nowFormatted()})`);
+	const changelog = workspace.changelog.replace(`Unreleased (${workspace.increment})`, `${workspace.newVersion}\n\n_${nowFormatted()}_`);
 	await fs.writeFile(path.join(workspace.path, 'CHANGELOG.md'), changelog);
 
 	// Update the documentation
@@ -117,6 +118,10 @@ for (const workspace of notReleasableNow.values()) {
 		if (needsRelease.has(dependency)) {
 			const updated = needsRelease.get(dependency);
 
+			const dependencyLink = `/${updated.path.replaceAll('\\', '/')}`;
+			const nameAsLink = `[\`${updated.name}\`](${dependencyLink})`;
+			const versionAsLink = `[\`${updated.newVersion}\`](${dependencyLink}/CHANGELOG.md#${updated.newVersionChangeLogHeadingID})`;
+
 			if (
 				packageInfo.dependencies &&
 				packageInfo.dependencies[updated.name] &&
@@ -124,7 +129,7 @@ for (const workspace of notReleasableNow.values()) {
 				updated.newVersion
 			) {
 				packageInfo.dependencies[updated.name] = '^' + updated.newVersion;
-				changeLogAdditions += `- Updated \`${updated.name}\` to \`${updated.newVersion}\` (${updated.increment})\n`;
+				changeLogAdditions += `- Updated ${nameAsLink} to ${versionAsLink} (${updated.increment})\n`;
 				didChange = true;
 			}
 			if (
@@ -144,7 +149,7 @@ for (const workspace of notReleasableNow.values()) {
 				updated.newVersion
 			) {
 				packageInfo.peerDependencies[updated.name] = '^' + updated.newVersion;
-				changeLogAdditions += `- Updated \`${updated.name}\` to \`${updated.newVersion}\` (${updated.increment})\n`;
+				changeLogAdditions += `- Updated ${nameAsLink} to ${versionAsLink} (${updated.increment})\n`;
 				didChange = true;
 			}
 		}

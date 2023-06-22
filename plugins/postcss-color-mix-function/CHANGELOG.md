@@ -2,25 +2,32 @@
 
 ### Unreleased (major)
 
-- Re-license to `MIT-0`
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
 
-TODO : add link to blog post
+### 1.0.3
 
-### 1.0.3 (June 1, 2023)
+_June 1, 2023_
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
 
-### 1.0.2 (May 19, 2023)
+
+### 1.0.2
+
+_May 19, 2023_
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
 - Updated `@csstools/css-color-parser` to `1.2.0` (minor)
 
-### 1.0.1 (April 10, 2023)
+### 1.0.1
+
+_April 10, 2023_
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
 - Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
 - Updated `@csstools/css-color-parser` to `1.1.2` (patch)
 
-### 1.0.0 (March 25, 2023)
+### 1.0.0
+
+_March 25, 2023_
 
 - Initial version

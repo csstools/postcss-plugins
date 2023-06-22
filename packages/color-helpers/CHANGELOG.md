@@ -2,21 +2,25 @@
 
 ### Unreleased (major)
 
-- Re-license to `MIT-0`
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
 
-TODO : add link to blog post
+### 2.1.0
 
-### 2.1.0 (May 19, 2023)
+_May 19, 2023_
 
 - Fix gamut mapping
 - Fix `XYZ_D50_to_ProPhoto`
 - Export `sRGB_to_HWB`
 
-### 2.0.0 (March 25, 2023)
+### 2.0.0
+
+_March 25, 2023_
 
 - Removed certain implementation specific helpers. Keeping this package more focussed on general purpose color transformations.
 - Added `xyz` specific helpers. These make it easy to transform to and from `xyz-d50` and any other color space.
 
-### 1.0.0 (February 2, 2023)
+### 1.0.0
+
+_February 2, 2023_
 
 - Initial version

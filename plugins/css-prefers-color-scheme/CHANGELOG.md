@@ -2,27 +2,35 @@
 
 ### Unreleased (major)
 
-- Re-license to `MIT-0`
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
 
-TODO : add link to blog post
+### 8.0.2
 
-### 8.0.2 (February 6, 2023)
+_February 6, 2023_
 
 - Reduce the amount of duplicate fallback CSS.
 
-### 8.0.1 (January 28, 2023)
+### 8.0.1
+
+_January 28, 2023_
 
 - Improve `types` declaration in `package.json`
 
-### 8.0.0 (January 24, 2023)
+### 8.0.0
+
+_January 24, 2023_
 
 - Updated: Support for Node v14+ (major).
 
-### 7.0.1 (August 23, 2022)
+### 7.0.1
+
+_August 23, 2022_
 
 - Fix: assign global browser polyfill to `window`, `self` or a blank object.
 
-### 7.0.0 (July 8, 2022)
+### 7.0.0
+
+_July 8, 2022_
 
 [Read the full changelog](https://github.com/csstools/postcss-plugins/wiki/PostCSS-Preset-Env-8)
 
@@ -70,20 +78,28 @@ TODO : add link to blog post
 + }
 ```
 
-### 6.0.3 (January 31, 2022)
+### 6.0.3
+
+_January 31, 2022_
 
 - Fix `preserve: false` option.
 
-### 6.0.2 (January 2, 2022)
+### 6.0.2
+
+_January 2, 2022_
 
 - Removed Sourcemaps from package tarball.
 - Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
 
-### 6.0.1 (December 27, 2021)
+### 6.0.1
+
+_December 27, 2021_
 
 - Fixed: require/import paths for browser script
 
-### 6.0.0 (December 13, 2021)
+### 6.0.0
+
+_December 13, 2021_
 
 - Breaking: require/import paths have changed
 - Changed: new polyfill CDN urls.
@@ -115,31 +131,43 @@ _It will continue to work for now._
 + <script src="https://unpkg.com/css-prefers-color-scheme/dist/browser-global.js"></script>
 ```
 
-### 5.0.0 (September 17, 2021)
+### 5.0.0
+
+_September 17, 2021_
 
 - Updated: Support for PostCS 8+ (major).
 - Updated: Support for Node 12+ (major).
 
-### 4.0.0 (May 24, 2019)
+### 4.0.0
+
+_May 24, 2019_
 
 - Updated: `postcss` to 7.0.16 (patch)
 - Updated: Node 8+ compatibility (major)
 
-### 3.1.1 (November 10, 2018)
+### 3.1.1
+
+_November 10, 2018_
 
 - Updated: Project organization. No functional changes.
 
-### 3.1.0 (November 10, 2018)
+### 3.1.0
+
+_November 10, 2018_
 
 - Include CLI tool for transforming CSS without any installation
 - Update documentation
 
-### 3.0.0 (November 4, 2018)
+### 3.0.0
+
+_November 4, 2018_
 
 - Preserve `prefers-color-scheme` queries by default for non-JS environments
 - Remove `prefers-color-scheme` queries on the frontend for JS environments
 
-### 2.0.0 (November 3, 2018)
+### 2.0.0
+
+_November 3, 2018_
 
 - The client library now returns an object with various features, including:
   - `scheme` to get or set the preferred color scheme
@@ -147,6 +175,8 @@ _It will continue to work for now._
   - `onChange` to listen for when the preferred color scheme changes
   - `removeListener` to destroy the native `prefers-color-scheme` listener
 
-### 1.0.0 (September 24, 2018)
+### 1.0.0
+
+_September 24, 2018_
 
 - Initial version

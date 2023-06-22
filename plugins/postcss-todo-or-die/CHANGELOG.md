@@ -2,15 +2,17 @@
 
 ### Unreleased (major)
 
-- Re-license to `MIT-0`
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
 
-TODO : add link to blog post
+### 1.0.1
 
-### 1.0.1 (April 10, 2023)
+_April 10, 2023_
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
 - Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
 
-### 1.0.0 (February 6, 2023)
+### 1.0.0
+
+_February 6, 2023_
 
 - Initial version

@@ -2,10 +2,10 @@
 
 ### Unreleased (major)
 
-- Re-license to `MIT-0`
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
 
-TODO : add link to blog post
+### 1.0.0
 
-### 1.0.0 (April 17, 2023)
+_April 17, 2023_
 
 - Initial version

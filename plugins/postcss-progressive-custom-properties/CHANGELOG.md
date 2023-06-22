@@ -2,11 +2,11 @@
 
 ### Unreleased (major)
 
-- Re-license to `MIT-0`
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
 
-TODO : add link to blog post
+### 2.3.0
 
-### 2.3.0 (June 1, 2023)
+_June 1, 2023_
 
 - Add support for regular properties whose values contain `var()`
 
@@ -28,24 +28,34 @@ TODO : add link to blog post
 }
 ```
 
-### 2.2.0 (May 19, 2023)
+### 2.2.0
+
+_May 19, 2023_
 
 - Add relative color syntax support.
 - Fix false positive matches for `rgb` and `hsl` modern function notations.
 
-### 2.1.1 (March 25, 2023)
+### 2.1.1
+
+_March 25, 2023_
 
 - Smaller `@supports` check for `color-mix`.
 
-### 2.1.0 (February 2, 2023)
+### 2.1.0
+
+_February 2, 2023_
 
 - Group support rules with the same params to reduce the output size.
 
-### 2.0.1 (January 28, 2023)
+### 2.0.1
+
+_January 28, 2023_
 
 - Improve `types` declaration in `package.json`
 
-### 2.0.0 (January 24, 2023)
+### 2.0.0
+
+_January 24, 2023_
 
 - Updated: Support for Node v14+ (major).
 

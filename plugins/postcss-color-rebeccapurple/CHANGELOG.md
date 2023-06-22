@@ -2,46 +2,62 @@
 
 ### Unreleased (major)
 
-- Re-license to `MIT-0`
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
 
-TODO : add link to blog post
+### 8.0.2
 
-### 8.0.2 (February 6, 2023)
+_February 6, 2023_
 
 - Reduce the amount of duplicate fallback CSS.
 
-### 8.0.1 (January 28, 2023)
+### 8.0.1
+
+_January 28, 2023_
 
 - Improve `types` declaration in `package.json`
 
-### 8.0.0 (January 24, 2023)
+### 8.0.0
+
+_January 24, 2023_
 
 - Updated: Support for Node v14+ (major).
 
-### 7.1.1 (July 8, 2022)
+### 7.1.1
+
+_July 8, 2022_
 
 - Fix case insensitive matching.
 
-### 7.1.0 (June 10, 2022)
+### 7.1.0
+
+_June 10, 2022_
 
 - Added: TypeScript typings
 
-### 7.0.2 (January 2, 2022)
+### 7.0.2
+
+_January 2, 2022_
 
 - Removed Sourcemaps from package tarball.
 - Moved CLI to CLI Package. See [announcement](https://github.com/csstools/postcss-plugins/discussions/121).
 
-### 7.0.1 (December 16, 2021)
+### 7.0.1
+
+_December 16, 2021_
 
 - Changed: now uses `postcss-value-parser` for parsing.
 - Updated: documentation
 
-### 7.0.0 (September 17, 2021)
+### 7.0.0
+
+_September 17, 2021_
 
 - Updated: Support for PostCSS 8+ (major).
 - Updated: Support for Node v12+ (major).
 
-### 6.0.0 (April 25, 2020)
+### 6.0.0
+
+_April 25, 2020_
 
 - Updated: `postcss-values-parser` to 3.2.0 (major)
 
