@@ -1,5 +1,9 @@
 # Changes to CSS Calc
 
+### Unreleased (patch)
+
+- Correctly serialize negative zero `-0` values as `calc(-1 * 0px)`
+
 ### 1.1.1
 
 _April 10, 2023_

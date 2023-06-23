@@ -4,6 +4,7 @@
 
 - Add support for `unicode-range-token`
 - Add `signCharacter` to `DimensionToken`, `NumberToken` and `PercentageToken`
+- Correctly tokenize negative zero `-0`
 
 ### 2.1.1
 

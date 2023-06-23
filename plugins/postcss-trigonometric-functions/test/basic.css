@@ -124,7 +124,7 @@
 	order: atan(-infinity);
 	order: atan(1);
 	order: atan(0);
-	order: atan(-0);
+	order: atan(calc(-1 * 0));
 	order: atan(tan(45deg)); /* 45deg */
 	order: atan(tan(.125turn)); /* 45deg */
 	order: atan(tan(50grad)); /* 45deg */
@@ -140,42 +140,42 @@
 .atan2 {
 	order: atan2(-infinity, -infinity);
 	order: atan2(-infinity, -1);
-	order: atan2(-infinity, -0);
+	order: atan2(-infinity, calc(-1 * 0));
 	order: atan2(-infinity, 0);
 	order: atan2(-infinity, 1);
 	order: atan2(-infinity, infinity);
 
 	order: atan2(-1, -infinity);
 	order: atan2(-1, -1);
-	order: atan2(-1, -0);
+	order: atan2(-1, calc(-1 * 0));
 	order: atan2(-1, 0);
 	order: atan2(-1, 1);
 	order: atan2(-1, infinity);
 
-	order: atan2(-0, -infinity);
-	order: atan2(-0, -1);
-	order: atan2(-0, -0);
-	order: atan2(-0, 0);
-	order: atan2(-0, 1);
-	order: atan2(-0, infinity);
+	order: atan2(calc(-1 * 0), -infinity);
+	order: atan2(calc(-1 * 0), -1);
+	order: atan2(calc(-1 * 0), calc(-1 * 0));
+	order: atan2(calc(-1 * 0), 0);
+	order: atan2(calc(-1 * 0), 1);
+	order: atan2(calc(-1 * 0), infinity);
 
 	order: atan2(0, -infinity);
 	order: atan2(0, -1);
-	order: atan2(0, -0);
+	order: atan2(0, calc(-1 * 0));
 	order: atan2(0, 0);
 	order: atan2(0, 1);
 	order: atan2(0, infinity);
 
 	order: atan2(1, -infinity);
 	order: atan2(1, -1);
-	order: atan2(1, -0);
+	order: atan2(1, calc(-1 * 0));
 	order: atan2(1, 0);
 	order: atan2(1, 1);
 	order: atan2(1, infinity);
 
 	order: atan2(infinity, -infinity);
 	order: atan2(infinity, -1);
-	order: atan2(infinity, -0);
+	order: atan2(infinity, calc(-1 * 0));
 	order: atan2(infinity, 0);
 	order: atan2(infinity, 1);
 	order: atan2(infinity, infinity);
