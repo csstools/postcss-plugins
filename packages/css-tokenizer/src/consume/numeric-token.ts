@@ -20,11 +20,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 	}
 
 	const numberType = consumeNumber(ctx, reader);
-	let numberValue = parseFloat(reader.source.slice(reader.representationStart, reader.representationEnd + 1));
-	if (numberValue === 0) {
-		// fix for -0
-		numberValue = 0;
-	}
+	const numberValue = parseFloat(reader.source.slice(reader.representationStart, reader.representationEnd + 1)) || 0;
 
 	if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 		const unit = consumeIdentSequence(ctx, reader);
