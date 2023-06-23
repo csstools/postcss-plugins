@@ -1,5 +1,9 @@
 # Changes to PostCSS IC Unit
 
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+
 ### 2.0.4
 
 _June 1, 2023_

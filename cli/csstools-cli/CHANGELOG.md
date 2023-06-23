@@ -1,5 +1,9 @@
 # Changes to CSSTools CLI
 
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+
 ### 2.1.8
 
 _June 21, 2023_
@@ -9,16 +13,12 @@ _June 21, 2023_
 - Updated `postcss-custom-media` to `9.1.5` (patch)
 - Updated `postcss-preset-env` to `8.5.1` (patch)
 
-
-
 ### 2.1.7
 
 _June 14, 2023_
 
 - Updated `postcss-nesting` to `11.3.0` (minor)
 - Updated `postcss-preset-env` to `8.5.0` (minor)
-
-
 
 ### 2.1.6
 
@@ -38,15 +38,11 @@ _June 1, 2023_
 - Updated `postcss-lab-function` to `5.2.3` (patch)
 - Updated `postcss-preset-env` to `8.4.2` (patch)
 
-
-
-
 ### 2.1.5
 
 _May 19, 2023_
 
 - Updated `postcss-preset-env` to `8.4.1` (patch)
-
 
 ### 2.1.4
 
@@ -63,9 +59,6 @@ _May 19, 2023_
 - Updated `postcss-lab-function` to `5.2.2` (patch)
 - Updated `postcss-preset-env` to `8.4.0` (minor)
 
-
-
-
 ### 2.1.3
 
 _May 19, 2023_
@@ -74,16 +67,12 @@ _May 19, 2023_
 - Updated `postcss-logical` to `6.2.0` (minor)
 - Updated `postcss-preset-env` to `8.3.3` (patch)
 
-
-
 ### 2.1.2
 
 _April 17, 2023_
 
 - Updated `@csstools/postcss-gradients-interpolation-method` to `3.0.4` (patch)
 - Updated `postcss-preset-env` to `8.3.2` (patch)
-
-
 
 ### 2.1.1
 

@@ -1,5 +1,9 @@
 # Changes to PostCSS Scope Pseudo Class
 
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+
 ### 2.0.2
 
 _February 9, 2023_
