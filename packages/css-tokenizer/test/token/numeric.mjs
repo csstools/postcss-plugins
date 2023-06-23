@@ -85,17 +85,71 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 }
 
 {
-	const t = tokenizer({
-		css: '-0.0 ',
-	});
+	{
+		const t = tokenizer({
+			css: '-0.0 ',
+		});
 
-	assert.deepEqual(
-		collectTokens(t).slice(0, -1),
-		[
-			['number-token', '-0.0', 0, 3, { value: -0, signCharacter: '-', type: 'number' }],
-			['whitespace-token', ' ', 4, 4, undefined],
-		],
-	);
+		assert.deepEqual(
+			collectTokens(t).slice(0, -1),
+			[
+				['number-token', '-0.0', 0, 3, { value: 0, signCharacter: '-', type: 'number' }],
+				['whitespace-token', ' ', 4, 4, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: '-0.0 ',
+		});
+
+		assert.ok(Object.is(0, collectTokens(t)[0][4].value));
+	}
+
+	{
+		const t = tokenizer({
+			css: '-0 ',
+		});
+
+		assert.ok(Object.is(0, collectTokens(t)[0][4].value));
+	}
+
+	{
+		const t = tokenizer({
+			css: '+0.0 ',
+		});
+
+		assert.deepEqual(
+			collectTokens(t).slice(0, -1),
+			[
+				['number-token', '+0.0', 0, 3, { value: 0, signCharacter: '+', type: 'number' }],
+				['whitespace-token', ' ', 4, 4, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: '0.0 ',
+		});
+
+		assert.ok(Object.is(0, collectTokens(t)[0][4].value));
+	}
+
+	{
+		const t = tokenizer({
+			css: '0.0 ',
+		});
+
+		assert.deepEqual(
+			collectTokens(t).slice(0, -1),
+			[
+				['number-token', '0.0', 0, 2, { value: 0, signCharacter: undefined, type: 'number' }],
+				['whitespace-token', ' ', 3, 3, undefined],
+			],
+		);
+	}
 }
 
 {
