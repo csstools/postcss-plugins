@@ -2,6 +2,12 @@ import { spawn } from 'child_process';
 
 export async function commitAfterPackageRelease(newVersion, packageDirectory, packageName) {
 	await new Promise((resolve, reject) => {
+		if (process.env.DEBUG) {
+			resolve('not a real commit');
+
+			return;
+		}
+
 		const commitCmd = spawn(
 			'git',
 			[
@@ -43,6 +49,12 @@ export async function commitAfterPackageRelease(newVersion, packageDirectory, pa
 
 export async function commitAfterDependencyUpdates() {
 	await new Promise((resolve, reject) => {
+		if (process.env.DEBUG) {
+			resolve('not a real commit');
+
+			return;
+		}
+
 		const commitCmd = spawn(
 			'git',
 			[

@@ -1,6 +1,8 @@
 # Changes to PostCSS Nesting Experimental
 
-### 2.0.0 (January 24, 2023)
+### 2.0.0
+
+_January 24, 2023_
 
 - Fix: Change how `&` is handled in functional pseudo classes in a non-nested context.
 
@@ -15,7 +17,9 @@
 
 - Updated: Support for Node v14+ (major).
 
-### 1.1.1 (November 16, 2022)
+### 1.1.1
+
+_November 16, 2022_
 
 - Fix: Do not throw when a selector is invalid, show a warning instead.
 - Fix: Correctly handle declarations after nested rules.
@@ -38,7 +42,9 @@ article {
 - }
 ```
 
-### 1.1.0 (November 3, 2022)
+### 1.1.0
+
+_November 3, 2022_
 
 - match Chrome's behavior for pseudo elements.
 - add support for `&` everywhere.
@@ -53,7 +59,9 @@ article {
 .foo ::before {}
 ```
 
-### 1.0.0 (October 29, 2022)
+### 1.0.0
+
+_October 29, 2022_
 
 Implement the 28 October version of [css-nestng-1](https://drafts.csswg.org/css-nesting/)
 

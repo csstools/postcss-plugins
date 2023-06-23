@@ -1,28 +1,40 @@
 # Changes to PostCSS Design Tokens
 
-### 2.0.4 (April 10, 2023)
+### 2.0.4
+
+_April 10, 2023_
 
 - Updated `@csstools/css-tokenizer` to `2.1.1` (patch)
 - Updated `@csstools/css-parser-algorithms` to `2.1.1` (patch)
 
-### 2.0.3 (February 15, 2023)
+### 2.0.3
+
+_February 15, 2023_
 
 - Fixed: file watching with PostCSS CLI
 
-### 2.0.2 (January 28, 2023)
+### 2.0.2
+
+_January 28, 2023_
 
 - Fix unit conversion
 
-### 2.0.1 (January 28, 2023)
+### 2.0.1
+
+_January 28, 2023_
 
 - Improve `types` declaration in `package.json`
 
-### 2.0.0 (January 24, 2023)
+### 2.0.0
+
+_January 24, 2023_
 
 - Updated: Support for Node v14+ (major).
 - Added support for design tokens in at rules (`@media`, `@supports`, ...)
 
-### 1.2.0 (September 7, 2022)
+### 1.2.0
+
+_September 7, 2022_
 
 - Added support for design token file imports from npm packages.
 - Added support for arbitrary unit assignment to unit-less design tokens.
@@ -46,15 +58,21 @@ npm package : `@your-org/your-tokens`
 }
 ```
 
-### 1.1.1 (August 23, 2022)
+### 1.1.1
+
+_August 23, 2022_
 
 - Prevent stack overflow failures when importing files with format `style-dictionary3` that are not of that format.
 
-### 1.1.0 (August 2, 2022)
+### 1.1.0
+
+_August 2, 2022_
 
 - Added `valueFunctionName` option to control the `design-token` function name.
 - Added `importAtRuleName` option to control the `design-tokens` at-rule name.
 
-### 1.0.0 (May 23, 2022)
+### 1.0.0
+
+_May 23, 2022_
 
 - Initial version

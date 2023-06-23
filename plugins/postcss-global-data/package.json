@@ -49,7 +49,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"postcss-custom-media": "^9.1.4"
+		"postcss-custom-media": "^9.1.5"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

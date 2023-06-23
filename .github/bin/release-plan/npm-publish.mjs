@@ -3,6 +3,12 @@ import { platform } from 'process';
 
 export async function npmPublish(packageDirectory, packageName) {
 	await new Promise((resolve, reject) => {
+		if (process.env.DEBUG) {
+			resolve(true);
+
+			return;
+		}
+
 		const publishCmd = spawn(
 			'npm',
 			[
