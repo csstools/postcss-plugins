@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+
 ### 9.1.5
 
 _June 21, 2023_

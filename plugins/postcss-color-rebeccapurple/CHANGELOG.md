@@ -1,5 +1,9 @@
 # Changes to PostCSS RebeccaPurple
 
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+
 ### 8.0.2
 
 _February 6, 2023_

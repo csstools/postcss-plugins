@@ -14,7 +14,7 @@
 			"email": "romainmenke@gmail.com"
 		}
 	],
-	"license": "CC0-1.0",
+	"license": "MIT-0",
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/sites/postcss-preset-env#readme",
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"scripts": {

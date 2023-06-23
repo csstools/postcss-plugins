@@ -1,11 +1,14 @@
 # Changes to PostCSS Lab Function
 
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+
 ### 5.2.3
 
 _June 1, 2023_
 
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
-
 
 ### 5.2.2
 
@@ -14,8 +17,6 @@ _May 19, 2023_
 - Ignore relative color syntax
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.2.0` (minor)
 - Updated `@csstools/css-color-parser` to `1.2.0` (minor)
-
-
 
 ### 5.2.1
 

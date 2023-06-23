@@ -14,7 +14,7 @@
 			"email": "romainmenke@gmail.com"
 		}
 	],
-	"license": "CC0-1.0",
+	"license": "MIT-0",
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},

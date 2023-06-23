@@ -3,7 +3,7 @@
 	"description": "Use oklab() and oklch() color functions in CSS",
 	"version": "2.2.3",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
-	"license": "CC0-1.0",
+	"license": "MIT-0",
 	"funding": [
 		{
 			"type": "github",

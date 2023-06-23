@@ -1,5 +1,9 @@
 # Changes to PostCSS Trigonometric Functions
 
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+
 ### 2.1.1
 
 _April 10, 2023_

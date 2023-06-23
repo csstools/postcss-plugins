@@ -29,7 +29,7 @@
 	},
 	"main": "index.js",
 	"files": [
-		"LICENSE",
+		"LICENSE.md",
 		"README.md",
 		"index.js"
 	],

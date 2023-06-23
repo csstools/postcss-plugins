@@ -1,12 +1,15 @@
 # Changes to PostCSS Color Functional Notation
 
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+
 ### 5.1.0
 
 _June 1, 2023_
 
 - Added `@csstools/postcss-progressive-custom-properties` for improved support of custom properties.
 - Updated `@csstools/postcss-progressive-custom-properties` to `2.3.0` (minor)
-
 
 ### 5.0.2
 

@@ -3,7 +3,7 @@
 	"description": "PostCSS test case generator",
 	"version": "1.0.0",
 	"author": "",
-	"license": "CC0-1.0",
+	"license": "MIT-0",
 	"funding": [
 		{
 			"type": "github",

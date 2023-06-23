@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+
 ### 11.3.0
 
 _June 14, 2023_

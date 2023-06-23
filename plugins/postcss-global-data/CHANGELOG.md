@@ -1,5 +1,9 @@
 # Changes to PostCSS global-data
 
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+
 ### 1.0.3
 
 _February 21, 2023_

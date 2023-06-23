@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+
 ### 8.5.1
 
 _June 21, 2023_
@@ -8,7 +12,6 @@ _June 21, 2023_
 - Updated `@csstools/postcss-media-queries-aspect-ratio-number-values` to `1.0.4` (patch)
 - Updated `postcss-custom-media` to `9.1.5` (patch)
 
-
 ### 8.5.0
 
 _June 14, 2023_
@@ -16,7 +19,6 @@ _June 14, 2023_
 - Add warning when using the deprecated `@nest` rule
 - Updated `@csstools/postcss-relative-color-syntax` to `1.0.2` (patch)
 - Updated `postcss-nesting` to `11.3.0` (minor)
-
 
 ### 8.4.2
 
@@ -36,8 +38,6 @@ _June 1, 2023_
 - Updated `postcss-custom-media` to `9.1.4` (patch)
 - Updated `postcss-double-position-gradients` to `4.0.4` (patch)
 - Updated `postcss-lab-function` to `5.2.3` (patch)
-
-
 
 ### 8.4.1
 

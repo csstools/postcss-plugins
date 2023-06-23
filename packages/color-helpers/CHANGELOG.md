@@ -1,5 +1,9 @@
 # Changes to Color Helpers
 
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+
 ### 2.1.0
 
 _May 19, 2023_
