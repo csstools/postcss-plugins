@@ -243,6 +243,7 @@ configured. If not set, Browserslist will use the `production` environment.
 ```js
 /* use the environment named `development`, instead of the default environment of `production` */
 postcssPresetEnv({ env: 'development' })
+```
 
 ### browsers
 
