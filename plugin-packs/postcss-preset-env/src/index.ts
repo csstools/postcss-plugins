@@ -16,7 +16,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	// initialize options
 	const options = Object(opts);
 	const featureNamesInOptions = Object.keys(Object(options.features));
-	const env = options.env;
+	const env = options.browsers ? undefined : options.env; // When `browsers` is set, ignore `env`
 	const browsers = options.browsers;
 	const sharedOptions = initializeSharedOptions(options);
 

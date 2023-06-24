@@ -13,7 +13,7 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	const enableClientSidePolyfills = 'enableClientSidePolyfills' in options ? options.enableClientSidePolyfills : false;
 	const insertBefore = Object(options.insertBefore);
 	const insertAfter = Object(options.insertAfter);
-	const env = options.env;
+	const env = options.browsers ? undefined : options.env; // When `browsers` is set, ignore `env`
 	const browsers = options.browsers;
 
 	// defaults to 0

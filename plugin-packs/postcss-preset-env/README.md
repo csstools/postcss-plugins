@@ -250,7 +250,8 @@ postcssPresetEnv({ env: 'development' })
 The `browsers` option overrides any existing [browserslist] configuration.
 
 The `browsers` option should only be used when a standard browserslist
-configuration is not available.
+configuration is not available.  
+When the `browsers` option is used the `env` option will be ignored.
 
 ```js
 postcssPresetEnv({ browsers: 'last 2 versions' })

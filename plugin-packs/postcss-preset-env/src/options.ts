@@ -46,6 +46,7 @@ export type pluginOptions = {
 	 * or `browserslist` environment variables.
 	 *
 	 * The `browsers` option should only be used when a standard browserslist configuration is not available.
+	 * When the `browsers` option is used the `env` option is ignored.
 	 */
 	browsers?: string | Array<string> | null
 

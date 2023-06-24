@@ -27,6 +27,7 @@ export default function postcssPresetEnv() {
 					'blank-pseudo-class': { preserve: false },
 					'color-functional-notation': { preserve: true },
 				},
+				env: 'production',
 				browsers: 'last 2 versions',
 				autoprefixer: { grid: true },
 				preserve: false,
