@@ -113,6 +113,7 @@ Options:
 Plugin Options:
   stage         number
   features      object
+  env           string
   browsers      string
   autoprefixer  object
   preserve      boolean

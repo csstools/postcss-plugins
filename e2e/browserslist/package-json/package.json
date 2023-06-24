@@ -4,7 +4,7 @@
 	"private": true,
 	"description": "Can you use PostCSS Preset Env with a browserslist in package.json?",
 	"scripts": {
-		"test": "BROWSERSLIST_ENV=development node ./index.mjs && BROWSERSLIST_ENV=production node ./index.mjs"
+		"test": "BROWSERSLIST_ENV=development node ./index.mjs && BROWSERSLIST_ENV=production node ./index.mjs && node ./use-plugin-option.mjs"
 	},
 	"devDependencies": {
 		"postcss": "^8.4.19",

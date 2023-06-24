@@ -3,6 +3,7 @@
 ### Unreleased (major)
 
 - Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+- Added `env` option to control which [browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to target
 
 ### 8.5.1
 

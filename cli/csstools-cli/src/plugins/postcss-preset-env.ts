@@ -8,6 +8,7 @@ export default function postcssPresetEnv() {
 			'stage',
 			'minimumVendorImplementations',
 			'features',
+			'env',
 			'browsers',
 			'autoprefixer',
 			'preserve',
