@@ -232,22 +232,21 @@ determined by the [`stage`](#stage) option.
 
 ### env
 
-[PostCSS Preset Env] supports standard [browserslist] configuration, which
-can be a `.browserslistrc` file, a `browserslist` key in `package.json`, or
+[PostCSS Preset Env] supports standard [browserslist] configuration, which can
+be a `.browserslistrc` file, a `browserslist` key in `package.json`, or
 `browserslist` environment variables.
 
-The `env` option is used by browserslist to determine the named environment
-it should use in the event that you have [multiple browserslist environments](https://github.com/browserslist/browserslist#configuring-for-different-environments) 
+The `env` option is used by [browserslist] to determine the named environment
+that should be used when you have [multiple browserslist environments](https://github.com/browserslist/browserslist#configuring-for-different-environments)
 configured. If not set, Browserslist will use the `production` environment.
 
 ```js
-/* use the environment named `baseline`, instead of the default environment of  `production` */
-postcssPresetEnv({ env: 'baseline' })
-```
+/* use the environment named `development`, instead of the default environment of `production` */
+postcssPresetEnv({ env: 'development' })
 
 ### browsers
 
-The browsers key shall override any existing [browserslist] configuration, and force the usage of certain browsers.
+The `browsers` option overrides any existing [browserslist] configuration.
 
 The `browsers` option should only be used when a standard browserslist
 configuration is not available.
@@ -279,7 +278,7 @@ postcssPresetEnv({
 
 ### autoprefixer
 
-[PostCSS Preset Env] includes [autoprefixer]; the [`env`](#env) and [`browsers`](#browsers) optionwill be passed to it automatically.
+[PostCSS Preset Env] includes [autoprefixer]; the [`env`](#env) and [`browsers`](#browsers) options will be passed to it automatically.
 
 Specifying the `autoprefixer` option enables passing
 [additional options](https://github.com/postcss/autoprefixer#options)

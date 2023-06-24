@@ -25,7 +25,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	if (options.autoprefixer !== false) {
 		plugins.push(
-			autoprefixer(Object.assign({ env, overrideBrowserslist: browsers }, options.autoprefixer)),
+			autoprefixer(Object.assign({ env: env, overrideBrowserslist: browsers }, options.autoprefixer)),
 		);
 	}
 

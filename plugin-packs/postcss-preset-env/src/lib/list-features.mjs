@@ -84,7 +84,7 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	});
 
 	// browsers supported by the configuration
-	const supportedBrowsers = browserslist(browsers, { env, ignoreUnknownVersions: true });
+	const supportedBrowsers = browserslist(browsers, { env: env, ignoreUnknownVersions: true });
 
 	// - features supported by the stage
 	// - features with `true` or with options
