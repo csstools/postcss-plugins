@@ -259,5 +259,10 @@
 		"packageName": "@csstools/postcss-text-decoration-shorthand",
 		"id": "text-decoration-shorthand",
 		"importName": "postcssTextDecorationShorthand"
+	},
+	{
+		"packageName": "postcss-src",
+		"id": "src-function",
+		"importName": "postcssSrc"
 	}
 ]

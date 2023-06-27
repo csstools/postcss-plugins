@@ -104,6 +104,7 @@
 		"postcss-pseudo-class-any-link": "^8.0.2",
 		"postcss-replace-overflow-wrap": "^4.0.0",
 		"postcss-selector-not": "^7.0.1",
+		"postcss-src": "^1.0.1",
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {

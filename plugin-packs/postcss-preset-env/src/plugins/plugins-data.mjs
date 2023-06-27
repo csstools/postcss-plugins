@@ -260,4 +260,9 @@ export default [
 		'id': 'text-decoration-shorthand',
 		'importName': 'postcssTextDecorationShorthand',
 	},
+	{
+		'packageName': 'postcss-src',
+		'id': 'src-function',
+		'importName': 'postcssSrc',
+	},
 ];

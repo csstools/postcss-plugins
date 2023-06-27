@@ -45,6 +45,7 @@ import type { pluginOptions as postcssPrefersColorScheme } from 'css-prefers-col
 import type { pluginOptions as postcssColorRebeccapurple } from 'postcss-color-rebeccapurple';
 import type { pluginOptions as postcssRelativeColorSyntax } from '@csstools/postcss-relative-color-syntax';
 import type { pluginOptions as postcssScopePseudoClass } from '@csstools/postcss-scope-pseudo-class';
+import type { pluginOptions as postcssSrc } from '../types/postcss-src/plugin-options';
 import type { pluginOptions as postcssSteppedValueFunctions } from '@csstools/postcss-stepped-value-functions';
 import type { pluginOptions as postcssFontFamilySystemUI } from '../types/postcss-system-ui-font-family/plugin-options';
 import type { pluginOptions as postcssTextDecorationShorthand } from '@csstools/postcss-text-decoration-shorthand';
@@ -146,6 +147,8 @@ export type pluginsOptions = {
 	'relative-color-syntax'?: postcssRelativeColorSyntax | boolean
 	/** plugin options for "@csstools/postcss-scope-pseudo-class" */
 	'scope-pseudo-class'?: postcssScopePseudoClass | boolean
+	/** plugin options for "postcss-src" */
+	'src-function'?: postcssSrc | boolean
 	/** plugin options for "@csstools/postcss-stepped-value-functions" */
 	'stepped-value-functions'?: postcssSteppedValueFunctions | boolean
 	/** plugin options for "postcss-system-ui-font-family" */

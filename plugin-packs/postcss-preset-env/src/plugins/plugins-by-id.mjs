@@ -45,6 +45,7 @@ import postcssPrefersColorScheme from 'css-prefers-color-scheme';
 import postcssColorRebeccapurple from 'postcss-color-rebeccapurple';
 import postcssRelativeColorSyntax from '@csstools/postcss-relative-color-syntax';
 import postcssScopePseudoClass from '@csstools/postcss-scope-pseudo-class';
+import postcssSrc from 'postcss-src';
 import postcssSteppedValueFunctions from '@csstools/postcss-stepped-value-functions';
 import postcssFontFamilySystemUI from '../patch/postcss-system-ui-font-family.mjs';
 import postcssTextDecorationShorthand from '@csstools/postcss-text-decoration-shorthand';
@@ -101,6 +102,7 @@ export const pluginsById = new Map(
 		['rebeccapurple-color', postcssColorRebeccapurple],
 		['relative-color-syntax', postcssRelativeColorSyntax],
 		['scope-pseudo-class', postcssScopePseudoClass],
+		['src-function', postcssSrc],
 		['stepped-value-functions', postcssSteppedValueFunctions],
 		['system-ui-font-family', postcssFontFamilySystemUI],
 		['text-decoration-shorthand', postcssTextDecorationShorthand],

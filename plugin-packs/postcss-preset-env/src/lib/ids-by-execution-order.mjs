@@ -47,6 +47,7 @@ export default [
 	'opacity-percentage',
 	'text-decoration-shorthand',
 	'unset-value',
+	'src-function',
 
 	// Math functions.
 	'stepped-value-functions',
