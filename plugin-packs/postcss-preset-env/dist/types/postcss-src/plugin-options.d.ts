@@ -1,10 +1,10 @@
 /** postcss-src plugin options */
 export type pluginOptions = {
     /**
-     * If postcss-src encounters a `src()` that it can't safely convert to a `url()` it will throw an error.
+     * If a `src()` function is encountered that can not be safely convert to a `url()` function an error will be thrown.
      * example: `src(var(--foo))`
      *
-     * If this is `true`, it will emit the `src()` unchanged instead.
+     * If this is set to `true`, it will emit the `src()` unchanged instead.
      */
     allowNativeSrc?: boolean;
 };
