@@ -18,7 +18,9 @@ export function sourceIndices(x: TokenConvertible | Array<TokenConvertible>): [n
 		const lastNode = x[x.length - 1] || firstNode;
 
 		return [
+			// start index of the first node
 			sourceIndices(firstNode)[0],
+			// end index of the last node
 			sourceIndices(lastNode)[1],
 		];
 	}
@@ -33,7 +35,10 @@ export function sourceIndices(x: TokenConvertible | Array<TokenConvertible>): [n
 	}
 
 	return [
+		// CSSTokens have this layout : [type, raw, start, end]
+		// start index of the first token
 		firstToken[2],
+		// end index of the last token
 		lastToken[3],
 	];
 }
