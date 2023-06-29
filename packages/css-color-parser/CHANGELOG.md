@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch) 
+
+- Allow number values in `hwb`.
+
 ### 1.2.1
 
 _June 14, 2023_

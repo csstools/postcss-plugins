@@ -48,17 +48,11 @@ const tests = [
 	// Testing invalid permutation (types don't match).
 	['hwb(from rebeccapurple w h b)'],
 	['hwb(from rebeccapurple b b b / b)'],
-	['hwb(from rebeccapurple alpha alpha alpha / alpha)'],
 	['hwb(from rgb(10%, 20%, 30%, 40%) w b h)'],
 	['hwb(from rgb(10%, 20%, 30%, 40%) b b b / b)'],
-	['hwb(from rgb(10%, 20%, 30%, 40%) alpha alpha alpha / alpha)'],
 
 	// Testing invalid values.
-	['hwb(from rebeccapurple h 10% 10)'],
-	['hwb(from rebeccapurple h 10 10%)'],
 	['hwb(from rebeccapurple 10% w b)'],
-	['hwb(from rgb(10%, 20%, 30%, 40%) h 10% 10)'],
-	['hwb(from rgb(10%, 20%, 30%, 40%) h 10 10%)'],
 	['hwb(from rgb(10%, 20%, 30%, 40%) 10% w b)'],
 
 	// Testing invalid component names
