@@ -18,6 +18,8 @@ import './cases/query-with-type/0003.mjs';
 
 import './cases/replacer/0001.mjs';
 
+import './cases/source-indices/0001.mjs';
+
 import './cases/various/0001.mjs';
 import './cases/various/0002.mjs';
 import './cases/various/0003.mjs';
