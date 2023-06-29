@@ -180,7 +180,6 @@ module.exports = {
 			},
 		],
 		// ...
-		// other plugins that expect standard CSS features
 		// maybe a minifier?
 	],
 };
