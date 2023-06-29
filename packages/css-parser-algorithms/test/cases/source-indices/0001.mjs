@@ -7,49 +7,27 @@ const onParseError = (err) => {
 };
 
 {
-	const indices = [
-		[52, 65],
-		[51, 51],
-		[51, 65],
-		[45, 48],
-		[44, 44],
-		[43, 43],
-		[39, 40],
-		[38, 38],
-		[37, 37],
-		[36, 36],
-		[35, 35],
-		[30, 41],
-		[29, 29],
-		[16, 27],
-		[12, 28],
-		[11, 11],
-		[1, 42],
-		[0, 49],
-		[0, 49],
-	];
-
-	const parts = [
-		'something-else',
-		' ',
-		' something-else',
-		'50px',
-		' ',
-		',',
-		'1x',
-		' ',
-		'*',
-		' ',
-		'2',
-		'calc(2 * 1x)',
-		' ',
-		'"image1.jpg"',
-		'url("image1.jpg")',
-		' ',
-		'image-set( url("image1.jpg") calc(2 * 1x))',
-		'(image-set( url("image1.jpg") calc(2 * 1x)), 50px)',
-		'(image-set( url("image1.jpg") calc(2 * 1x)), 50px)',
-	];
+	const indicesAndParts = [
+		[[0, 49], '(image-set( url("image1.jpg") calc(2 * 1x)), 50px)'],
+		[[0, 49], '(image-set( url("image1.jpg") calc(2 * 1x)), 50px)'],
+		[[1, 42], 'image-set( url("image1.jpg") calc(2 * 1x))'],
+		[[11, 11], ' '],
+		[[12, 28], 'url("image1.jpg")'],
+		[[16, 27], '"image1.jpg"'],
+		[[29, 29], ' '],
+		[[30, 41], 'calc(2 * 1x)'],
+		[[35, 35], '2'],
+		[[36, 36], ' '],
+		[[37, 37], '*'],
+		[[38, 38], ' '],
+		[[39, 40], '1x'],
+		[[43, 43], ','],
+		[[44, 44], ' '],
+		[[45, 48], '50px'],
+		[[51, 65], ' something-else'],
+		[[51, 51], ' '],
+		[[52, 65], 'something-else'],
+	].reverse();
 
 	const source = '(image-set( url("image1.jpg") calc(2 * 1x)), 50px), something-else';
 
@@ -57,23 +35,26 @@ const onParseError = (err) => {
 	const list = parseCommaSeparatedListOfComponentValues(tokens, { onParseError: onParseError });
 	list.forEach((listItem) => {
 		{
+			const [y, part] = indicesAndParts.pop();
 			const x = sourceIndices(listItem);
-			assert.deepStrictEqual(x, indices.pop());
-			assert.deepStrictEqual(source.slice(x[0], x[1] + 1), parts.pop());
+			assert.deepStrictEqual(x, y);
+			assert.deepStrictEqual(source.slice(x[0], x[1] + 1), part);
 		}
 
 		listItem.forEach((componentValue) => {
 			{
+				const [y, part] = indicesAndParts.pop();
 				const x = sourceIndices(componentValue);
-				assert.deepStrictEqual(x, indices.pop());
-				assert.deepStrictEqual(source.slice(x[0], x[1] + 1), parts.pop());
+				assert.deepStrictEqual(x, y);
+				assert.deepStrictEqual(source.slice(x[0], x[1] + 1), part);
 			}
 
 			if ('walk' in componentValue) {
 				componentValue.walk((entry) => {
+					const [y, part] = indicesAndParts.pop();
 					const x = sourceIndices(entry.node);
-					assert.deepStrictEqual(x, indices.pop());
-					assert.deepStrictEqual(source.slice(x[0], x[1] + 1), parts.pop());
+					assert.deepStrictEqual(x, y);
+					assert.deepStrictEqual(source.slice(x[0], x[1] + 1), part);
 				});
 			}
 		});
