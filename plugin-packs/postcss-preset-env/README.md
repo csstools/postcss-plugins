@@ -215,6 +215,8 @@ postcssPresetEnv({
 })
 ```
 
+> **Note:** `nesting-rules` uses `postcss-nesting` under the hood and is not compatible in combinaison with `postcss-nested`
+
 Passing an object to a specific feature ID will both enable and configure it.
 
 ```js
