@@ -1,5 +1,12 @@
 # Changes to CSS Parser Algorithms
 
+### Unreleased (minor)
+
+- Add `sourceIndices` helper function.
+
+This makes it easier to get the start and end indices of a node in the source string.  
+This function accepts any node that can be converted to an array of tokens.
+
 ### 2.2.0
 
 _June 1, 2023_
