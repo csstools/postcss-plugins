@@ -6,6 +6,10 @@ updates:
     interval: weekly
     time: "01:00"
     timezone: "Europe/Brussels"
+  groups:
+    all-dependencies:
+      patterns:
+        - "*"
   open-pull-requests-limit: 10
   versioning-strategy: increase
   rebase-strategy: auto
@@ -15,6 +19,10 @@ updates:
     interval: weekly
     time: "01:00"
     timezone: Europe/Brussels
+  groups:
+    all-dependencies:
+      patterns:
+        - "*"
   open-pull-requests-limit: 10
   rebase-strategy: auto
 - package-ecosystem: "npm"
@@ -23,6 +31,10 @@ updates:
     interval: weekly
     time: "01:00"
     timezone: "Europe/Brussels"
+  groups:
+    all-dependencies:
+      patterns:
+        - "*"
   open-pull-requests-limit: 10
   versioning-strategy: increase
   rebase-strategy: auto
