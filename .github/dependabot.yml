@@ -6,7 +6,37 @@ updates:
     interval: weekly
     time: "01:00"
     timezone: "Europe/Brussels"
-  open-pull-requests-limit: 10
+  groups:
+    all-dependencies:
+      patterns:
+        - "*"
+  open-pull-requests-limit: 2
+  versioning-strategy: increase
+  rebase-strategy: auto
+- package-ecosystem: "npm"
+  directory: "/e2e"
+  schedule:
+    interval: weekly
+    time: "01:00"
+    timezone: "Europe/Brussels"
+  groups:
+    all-dependencies:
+      patterns:
+        - "*"
+  open-pull-requests-limit: 2
+  versioning-strategy: increase
+  rebase-strategy: auto
+- package-ecosystem: "npm"
+  directory: "/sites"
+  schedule:
+    interval: weekly
+    time: "01:00"
+    timezone: "Europe/Brussels"
+  groups:
+    all-dependencies:
+      patterns:
+        - "*"
+  open-pull-requests-limit: 2
   versioning-strategy: increase
   rebase-strategy: auto
 - package-ecosystem: "github-actions"
@@ -15,14 +45,9 @@ updates:
     interval: weekly
     time: "01:00"
     timezone: Europe/Brussels
-  open-pull-requests-limit: 10
-  rebase-strategy: auto
-- package-ecosystem: "npm"
-  directory: "/e2e"
-  schedule:
-    interval: weekly
-    time: "01:00"
-    timezone: "Europe/Brussels"
-  open-pull-requests-limit: 10
-  versioning-strategy: increase
+  groups:
+    all-dependencies:
+      patterns:
+        - "*"
+  open-pull-requests-limit: 2
   rebase-strategy: auto
