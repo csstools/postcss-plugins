@@ -94,7 +94,7 @@
 		"codemirror": "^6.0.1",
 		"cssdb": "^7.5.1",
 		"cssnano": "^6.0.0",
-		"eslint": "^8.36.0",
+		"eslint": "^8.44.0",
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-plugin-import": "^2.27.5",
 		"hasha": "^5.2.2",
@@ -105,12 +105,12 @@
 		"postcss-cli": "^10.1.0",
 		"postcss-import": "^15.1.0",
 		"postcss-preset-env": "^8.4.0",
-		"rollup": "^3.20.2",
+		"rollup": "^3.26.0",
 		"rollup-plugin-filesize": "^10.0.0",
 		"rollup-plugin-livereload": "^2.0.5",
 		"rollup-plugin-polyfill-node": "^0.12.0",
-		"tslib": "^2.5.0",
-		"typescript": "^5.0.2"
+		"tslib": "^2.6.0",
+		"typescript": "^5.1.6"
 	},
 	"volta": {
 		"node": "18.13.0",
