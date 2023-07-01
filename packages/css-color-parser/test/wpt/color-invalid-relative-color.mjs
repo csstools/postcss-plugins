@@ -24,12 +24,6 @@ const tests = [
 
 	// hsl(from ...)
 
-	// Testing invalid permutation (types don't match).
-	['hsl(from rebeccapurple s h l)'],
-	['hsl(from rebeccapurple s s s / s)'],
-	['hsl(from rgb(10%, 20%, 30%, 40%) s h l)'],
-	['hsl(from rgb(10%, 20%, 30%, 40%) s s s / s)'],
-
 	// Testing invalid values.
 	['hsl(from rebeccapurple 10% s l)'],
 	['hsl(from rgb(10%, 20%, 30%, 40%) 10% s l)'],
@@ -44,12 +38,6 @@ const tests = [
 	['hsla(from rgb(10%, 20%, 30%, 40%) h s l / alpha)'],
 
 	// hwb(from ...)
-
-	// Testing invalid permutation (types don't match).
-	['hwb(from rebeccapurple w h b)'],
-	['hwb(from rebeccapurple b b b / b)'],
-	['hwb(from rgb(10%, 20%, 30%, 40%) w b h)'],
-	['hwb(from rgb(10%, 20%, 30%, 40%) b b b / b)'],
 
 	// Testing invalid values.
 	['hwb(from rebeccapurple 10% w b)'],

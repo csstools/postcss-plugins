@@ -3,6 +3,7 @@
 ### Unreleased (patch) 
 
 - Allow number values in `hwb`.
+- Fix value calculation for `s`, `l` (`hsl`) and `w`, `b` (`hwb`) components in relative color syntax.
 
 ### 1.2.1
 
