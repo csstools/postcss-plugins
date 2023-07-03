@@ -1,7 +1,7 @@
 {
 	"name": "css-prefers-color-scheme",
 	"description": "Use light and dark color schemes in all browsers",
-	"version": "8.0.2",
+	"version": "9.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -61,7 +61,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^20.7.2"
+		"puppeteer": "^20.7.4"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

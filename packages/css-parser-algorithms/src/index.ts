@@ -13,3 +13,4 @@ export {
 	isTokenNode,
 	isWhitespaceNode,
 } from './util/type-predicates';
+export { sourceIndices } from './util/source-indices';

@@ -4,6 +4,12 @@
 
 - Correctly serialize negative zero `-0` values as `calc(-1 * 0px)`
 
+### 1.1.2
+
+_July 3, 2023_
+
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.3.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#230) (minor)
+
 ### 1.1.1
 
 _April 10, 2023_

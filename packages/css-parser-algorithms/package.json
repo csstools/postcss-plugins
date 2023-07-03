@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-parser-algorithms",
 	"description": "Algorithms to help you parse CSS from an array of tokens.",
-	"version": "2.2.0",
+	"version": "2.3.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",

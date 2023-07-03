@@ -118,7 +118,7 @@ for (const workspace of notReleasableNow.values()) {
 		if (needsRelease.has(dependency)) {
 			const updated = needsRelease.get(dependency);
 
-			const dependencyLink = `/${updated.path.replaceAll('\\', '/')}`;
+			const dependencyLink = `https://github.com/csstools/postcss-plugins/tree/main/${updated.path.replaceAll('\\', '/')}`;
 			const nameAsLink = `[\`${updated.name}\`](${dependencyLink})`;
 			const versionAsLink = `[\`${updated.newVersion}\`](${dependencyLink}/CHANGELOG.md#${updated.newVersionChangeLogHeadingID})`;
 

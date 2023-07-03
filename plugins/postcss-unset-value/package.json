@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-unset-value",
 	"description": "Use the unset keyword in CSS.",
-	"version": "2.0.1",
+	"version": "3.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
