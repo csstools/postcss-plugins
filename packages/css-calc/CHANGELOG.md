@@ -1,6 +1,8 @@
 # Changes to CSS Calc
 
-### Unreleased (patch)
+### 1.1.2
+
+_July 3, 2023_
 
 - Updated [`@csstools/css-parser-algorithms`](/packages/css-parser-algorithms) to [`2.3.0`](/packages/css-parser-algorithms/CHANGELOG.md#230) (minor)
 
