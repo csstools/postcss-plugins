@@ -142,11 +142,11 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/css-prefers-color-scheme@8.0.2/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-prefers-color-scheme@9.0.0/dist/browser-global.js"></script>
 <script>prefersColorSchemeInit()</script>
 ```
 
-⚠️ Please use a versioned url, like this : `https://unpkg.com/css-prefers-color-scheme@8.0.2/dist/browser-global.js`
+⚠️ Please use a versioned url, like this : `https://unpkg.com/css-prefers-color-scheme@9.0.0/dist/browser-global.js`
 Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
 [Prefers Color Scheme] works in all major browsers, including Safari 6+ and
@@ -220,7 +220,7 @@ const prefersColorScheme = prefersColorSchemeInit('light', { debug: true });
 ```
 
 ```html
-<script src="https://unpkg.com/css-prefers-color-scheme@8.0.2/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-prefers-color-scheme@9.0.0/dist/browser-global.js"></script>
 <script>prefersColorSchemeInit('light', { debug: true })</script>
 ```
 
