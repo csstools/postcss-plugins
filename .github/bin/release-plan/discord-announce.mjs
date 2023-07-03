@@ -14,7 +14,12 @@ const getChangelog = (changelog) => {
 	const firstUnreleasedIndex = changelog.indexOf('### Unreleased');
 	const firstLineBreakIndex = changelog.indexOf('\n', firstUnreleasedIndex);
 	const secondRelease = changelog.indexOf('###', firstLineBreakIndex);
-	return changelog.slice(firstLineBreakIndex + 1, secondRelease === -1 ? undefined : secondRelease).trim();
+
+	// Get the text between the first line break after the unreleased heading and the next release heading
+	const text = changelog.slice(firstLineBreakIndex + 1, secondRelease === -1 ? undefined : secondRelease).trim();
+
+	// Replace relative links with absolute links
+	return text.replace( /]\(\//g, `${ BASE_URL }/` );
 }
 
 export async function discordAnnounce(workspace) {
