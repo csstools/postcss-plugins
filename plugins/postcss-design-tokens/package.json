@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-design-tokens",
 	"description": "Use design tokens in your CSS",
-	"version": "2.0.4",
+	"version": "3.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
