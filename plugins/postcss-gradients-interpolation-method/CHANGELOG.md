@@ -4,6 +4,7 @@
 
 - Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
 - Updated [`@csstools/css-parser-algorithms`](/packages/css-parser-algorithms) to [`2.3.0`](/packages/css-parser-algorithms/CHANGELOG.md#230) (minor)
+- Updated [`@csstools/postcss-progressive-custom-properties`](/plugins/postcss-progressive-custom-properties) to [`3.0.0`](/plugins/postcss-progressive-custom-properties/CHANGELOG.md#300) (major)
 
 ### 3.0.6
 

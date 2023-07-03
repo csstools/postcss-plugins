@@ -4,6 +4,7 @@
 
 - Updated [`@csstools/color-helpers`](/packages/color-helpers) to [`3.0.0`](/packages/color-helpers/CHANGELOG.md#300) (major)
 - Updated [`@csstools/css-parser-algorithms`](/packages/css-parser-algorithms) to [`2.3.0`](/packages/css-parser-algorithms/CHANGELOG.md#230) (minor)
+- Updated [`@csstools/css-calc`](/packages/css-calc) to [`1.1.2`](/packages/css-calc/CHANGELOG.md#112) (patch)
 
 ### 1.2.1
 

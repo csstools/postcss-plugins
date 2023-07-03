@@ -47,7 +47,7 @@
 	"dependencies": {
 		"@csstools/css-parser-algorithms": "^2.3.0",
 		"@csstools/css-tokenizer": "^2.1.1",
-		"@csstools/media-query-list-parser": "^2.1.1"
+		"@csstools/media-query-list-parser": "^2.1.2"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

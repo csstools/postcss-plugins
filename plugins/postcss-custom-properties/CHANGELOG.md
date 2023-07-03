@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Updated [`@csstools/css-parser-algorithms`](/packages/css-parser-algorithms) to [`2.3.0`](/packages/css-parser-algorithms/CHANGELOG.md#230) (minor)
+- Updated [`@csstools/cascade-layer-name-parser`](/packages/cascade-layer-name-parser) to [`1.0.3`](/packages/cascade-layer-name-parser/CHANGELOG.md#103) (patch)
 
 ### 13.2.0
 

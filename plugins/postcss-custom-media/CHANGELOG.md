@@ -4,6 +4,8 @@
 
 - Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
 - Updated [`@csstools/css-parser-algorithms`](/packages/css-parser-algorithms) to [`2.3.0`](/packages/css-parser-algorithms/CHANGELOG.md#230) (minor)
+- Updated [`@csstools/cascade-layer-name-parser`](/packages/cascade-layer-name-parser) to [`1.0.3`](/packages/cascade-layer-name-parser/CHANGELOG.md#103) (patch)
+- Updated [`@csstools/media-query-list-parser`](/packages/media-query-list-parser) to [`2.1.2`](/packages/media-query-list-parser/CHANGELOG.md#212) (patch)
 
 ### 9.1.5
 
