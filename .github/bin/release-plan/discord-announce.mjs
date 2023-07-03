@@ -19,7 +19,7 @@ const getChangelog = (changelog) => {
 	const text = changelog.slice(firstLineBreakIndex + 1, secondRelease === -1 ? undefined : secondRelease).trim();
 
 	// Replace relative links with absolute links
-	return text.replace( /]\(\//g, `${ BASE_URL }/` );
+	return text.replace( /]\(\//g, `](${ BASE_URL }/` );
 }
 
 export async function discordAnnounce(workspace) {
