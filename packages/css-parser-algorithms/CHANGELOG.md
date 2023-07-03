@@ -1,6 +1,8 @@
 # Changes to CSS Parser Algorithms
 
-### Unreleased (minor)
+### 2.3.0
+
+_July 3, 2023_
 
 - Add `sourceIndices` helper function.
 
