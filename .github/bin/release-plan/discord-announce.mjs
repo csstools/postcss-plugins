@@ -43,7 +43,9 @@ export async function discordAnnounce(workspace) {
 	}
 
 	const relativePath = workspace.path.split('/postcss-plugins/')[1];
+	console.log('----');
 	console.log(workspace.path);
+	console.log('----');
 	payload.embeds[0].title = workspace.name;
 	payload.embeds[0].url = `${BASE_URL}/${relativePath}`;
 	payload.embeds[0].description = getChangelog(workspace.changelog);
