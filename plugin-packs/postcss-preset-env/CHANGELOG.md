@@ -29,6 +29,16 @@
 - Updated [`postcss-overflow-shorthand`](/plugins/postcss-overflow-shorthand) to [`5.0.0`](/plugins/postcss-overflow-shorthand/CHANGELOG.md#500) (major)
 - Updated [`postcss-place`](/plugins/postcss-place) to [`9.0.0`](/plugins/postcss-place/CHANGELOG.md#900) (major)
 - Updated [`postcss-pseudo-class-any-link`](/plugins/postcss-pseudo-class-any-link) to [`9.0.0`](/plugins/postcss-pseudo-class-any-link/CHANGELOG.md#900) (major)
+- Updated [`@csstools/postcss-ic-unit`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit/CHANGELOG.md#300) (major)
+- Updated [`@csstools/postcss-media-minmax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax) to [`1.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax/CHANGELOG.md#105) (patch)
+- Updated [`@csstools/postcss-media-queries-aspect-ratio-number-values`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values) to [`2.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values/CHANGELOG.md#200) (major)
+- Updated [`@csstools/postcss-stepped-value-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions/CHANGELOG.md#300) (major)
+- Updated [`@csstools/postcss-trigonometric-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions/CHANGELOG.md#300) (major)
+- Updated [`postcss-color-functional-notation`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation) to [`6.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation/CHANGELOG.md#600) (major)
+- Updated [`postcss-custom-media`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media) to [`10.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media/CHANGELOG.md#1000) (major)
+- Updated [`postcss-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties) to [`13.2.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties/CHANGELOG.md#1321) (patch)
+- Updated [`postcss-custom-selectors`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors) to [`7.1.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors/CHANGELOG.md#714) (patch)
+- Updated [`postcss-double-position-gradients`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients) to [`5.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients/CHANGELOG.md#500) (major)
 
 ### 8.5.1
 
