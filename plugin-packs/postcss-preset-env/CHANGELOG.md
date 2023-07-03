@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (major)
+### 9.0.0
+
+_July 3, 2023_
 
 - Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
 - Updated [`@csstools/postcss-cascade-layers`](/plugins/postcss-cascade-layers) to [`4.0.0`](/plugins/postcss-cascade-layers/CHANGELOG.md#400) (major)
