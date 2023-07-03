@@ -45,11 +45,11 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/color-helpers": "^2.1.0",
+		"@csstools/color-helpers": "^3.0.0",
 		"@csstools/css-calc": "^1.1.1"
 	},
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^2.2.0",
+		"@csstools/css-parser-algorithms": "^2.3.0",
 		"@csstools/css-tokenizer": "^2.1.1"
 	},
 	"scripts": {

@@ -3,6 +3,7 @@
 ### Unreleased (major)
 
 - Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+- Updated [`@csstools/color-helpers`](/packages/color-helpers) to [`3.0.0`](/packages/color-helpers/CHANGELOG.md#300) (major)
 
 ### 2.2.4
 

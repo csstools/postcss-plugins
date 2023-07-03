@@ -1,5 +1,9 @@
 # Changes to Cascade Layer Name Parser
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-parser-algorithms`](/packages/css-parser-algorithms) to [`2.3.0`](/packages/css-parser-algorithms/CHANGELOG.md#230) (minor)
+
 ### 1.0.2
 
 _April 10, 2023_

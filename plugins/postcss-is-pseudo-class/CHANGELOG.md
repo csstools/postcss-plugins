@@ -3,6 +3,7 @@
 ### Unreleased (major)
 
 - Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+- Updated [`@csstools/selector-specificity`](/packages/selector-specificity) to [`3.0.0`](/packages/selector-specificity/CHANGELOG.md#300) (major)
 
 ### 3.2.1
 
