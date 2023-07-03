@@ -42,6 +42,7 @@
 - Updated [`@csstools/postcss-hwb-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function/CHANGELOG.md#300) (major)
 - Updated [`@csstools/postcss-oklab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function/CHANGELOG.md#300) (major)
 - Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`6.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#600) (major)
+- Updated [`postcss-preset-env`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) to [`9.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env/CHANGELOG.md#900) (major)
 
 ### 2.1.8
 
