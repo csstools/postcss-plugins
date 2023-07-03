@@ -42,12 +42,8 @@ export async function discordAnnounce(workspace) {
 		payload.content = `:rocket: New release: ${workspace.name}@${workspace.newVersion} :rocket:`;
 	}
 
-	const relativePath = workspace.path.split('/postcss-plugins/')[1];
-	console.log('----');
-	console.log(workspace.path);
-	console.log('----');
 	payload.embeds[0].title = workspace.name;
-	payload.embeds[0].url = `${BASE_URL}/${relativePath}`;
+	payload.embeds[0].url = `${BASE_URL}/${workspace.path}`;
 	payload.embeds[0].description = getChangelog(workspace.changelog);
 
 	return fetch(webHookUrl, {
