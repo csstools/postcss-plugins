@@ -1,6 +1,8 @@
 # Changes to Media Query List Parser
 
-### Unreleased (patch)
+### 2.1.2
+
+_July 3, 2023_
 
 - Updated [`@csstools/css-parser-algorithms`](/packages/css-parser-algorithms) to [`2.3.0`](/packages/css-parser-algorithms/CHANGELOG.md#230) (minor)
 
