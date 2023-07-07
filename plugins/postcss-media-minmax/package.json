@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-media-minmax",
 	"description": "Use the range notation in CSS media queries",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,10 +48,10 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-calc": "^1.1.1",
-		"@csstools/css-parser-algorithms": "^2.2.0",
+		"@csstools/css-calc": "^1.1.2",
+		"@csstools/css-parser-algorithms": "^2.3.0",
 		"@csstools/css-tokenizer": "^2.1.1",
-		"@csstools/media-query-list-parser": "^2.1.1"
+		"@csstools/media-query-list-parser": "^2.1.2"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

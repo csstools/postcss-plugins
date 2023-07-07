@@ -1,8 +1,11 @@
 # Changes to PostCSS Double Position Gradients
 
-### Unreleased (major)
+### 5.0.0
+
+_July 3, 2023_
 
 - Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#300) (major)
 
 ### 4.0.4
 
