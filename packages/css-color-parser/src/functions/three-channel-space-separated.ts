@@ -144,7 +144,7 @@ export function threeChannelSpaceSeparated(
 				colorNotation === ColorNotation.HWB
 			) {
 				// https://github.com/w3c/csswg-drafts/issues/8444
-				// Removing this gives unexpected resultsfor us and we don't have a good solution for it yet.
+				// Removing this gives unexpected results for us and we don't have a good solution for it yet.
 				// Maybe we are holding it wrong.
 				// The results we get for HSL/HWB are good at this time, so keeping the code as is until we receive a bug report about this.
 				relativeToColor.channels = conversions.sRGB_to_HWB(XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(relativeToColor).channels));
