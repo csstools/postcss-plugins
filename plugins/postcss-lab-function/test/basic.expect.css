@@ -98,16 +98,13 @@
 	prop-1: rgb(255, 255, 255);
 	prop-1: color(display-p3 1 1 1);
 	prop-2: rgb(255, 255, 255);
-	prop-2: color(display-p3 1 1 1);
 }
 
 .test-low-luminance {
 	/* not teal */
 	prop-1: rgb(0, 0, 0);
-	prop-1: color(display-p3 0 0 0);
 	/* teal */
 	prop-2: rgb(0, 0, 0);
-	prop-2: color(display-p3 0 0 0);
 	/* teal */
 	prop-3: rgb(0, 44, 45);
 	prop-3: color(display-p3 0 0.17286 0.18189);
