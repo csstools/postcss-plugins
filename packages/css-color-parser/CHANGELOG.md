@@ -1,5 +1,11 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- `a` and `b` components in `lab` and `oklab` are analogous.
+- powerless components are limited to achromatic colors and only affect `hue` unless otherwise specified.
+- Fix value normalization.
+
 ### 1.2.2
 
 _July 3, 2023_

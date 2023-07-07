@@ -1,4 +1,4 @@
-import { ColorData, convertPowerlessComponentsToMissingComponents } from '../color-data';
+import { ColorData, convertPowerlessComponentsToZeroValuesForDisplay } from '../color-data';
 import type { TokenCloseParen, TokenFunction, TokenWhitespace } from '@csstools/css-tokenizer';
 import {  colorData_to_XYZ_D50 } from '../color-data';
 import { ColorNotation } from '../color-notation';
@@ -9,7 +9,7 @@ import { toPrecision } from './to-precision';
 import { XYZ_D50_to_P3_Gamut } from '../gamut-mapping/p3';
 
 export function serializeP3(color: ColorData, gamutMapping = true): FunctionNode {
-	color.channels = convertPowerlessComponentsToMissingComponents(color.channels, color.colorNotation);
+	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);
 	let p3 = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
 
 	if (
