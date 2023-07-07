@@ -254,7 +254,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 						break;
 					case ColorNotation.Lab:
 					case ColorNotation.OKLab:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], outputColorData.channels, [0]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], outputColorData.channels, [0, 1, 2]);
 						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
@@ -292,6 +292,44 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 }
 
 export function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: ColorNotation): Color {
+	const out: Color = [...a];
+
+	switch (colorNotation) {
+		case ColorNotation.HSL:
+			if (reducePrecision(out[2], 4) <= 0 || reducePrecision(out[2], 4) >= 100) {
+				out[0] = NaN;
+				out[1] = NaN;
+			}
+
+			if (reducePrecision(out[1], 4) <= 0) {
+				out[0] = NaN;
+			}
+
+			break;
+		case ColorNotation.HWB:
+			if ((Math.max(0, reducePrecision(out[1], 4)) + Math.max(0, reducePrecision(out[2], 4))) >= 100) {
+				out[0] = NaN;
+			}
+
+			break;
+		case ColorNotation.LCH:
+			if (reducePrecision(out[1], 4) <= 0) {
+				out[2] = NaN;
+			}
+
+			break;
+		case ColorNotation.OKLCH:
+			if (reducePrecision(out[1], 6) <= 0) {
+				out[2] = NaN;
+			}
+
+			break;
+	}
+
+	return out;
+}
+
+export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, colorNotation: ColorNotation): Color {
 	const out: Color = [...a];
 
 	switch (colorNotation) {
@@ -486,7 +524,10 @@ function reducePrecision(x: number, precision = 7): number {
 }
 
 export function colorDataFitsRGB_Gamut(x: ColorData): boolean {
-	const srgb = colorDataTo(x, ColorNotation.RGB);
+	const copy = JSON.parse(JSON.stringify(x)) as ColorData;
+
+	copy.channels = convertPowerlessComponentsToZeroValuesForDisplay(copy.channels, copy.colorNotation);
+	const srgb = colorDataTo(copy, ColorNotation.RGB);
 	if (!srgb.channels.find((y) => y < -0.00001 || y > 1.00001)) {
 		return true;
 	}

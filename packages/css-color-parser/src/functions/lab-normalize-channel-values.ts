@@ -70,7 +70,7 @@ export function normalize_Lab_ChannelValues(tokens: Array<CSSToken>, colorData: 
 				token[2],
 				token[3],
 				{
-					value: token[4].value,
+					value: value,
 					type: NumberType.Number,
 				},
 			]);

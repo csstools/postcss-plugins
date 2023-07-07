@@ -156,18 +156,15 @@
 	prop-1: color(display-p3 1 1 1);
 	prop-1: lch(95% 210 285);
 	prop-2: rgb(255, 255, 255);
-	prop-2: color(display-p3 1 1 1);
 	prop-2: lch(100% 210 285);
 }
 
 .test-low-luminance {
 	/* not teal */
 	prop-1: rgb(0, 0, 0);
-	prop-1: color(display-p3 0 0 0);
 	prop-1: lch(0% 210 90);
 	/* teal */
 	prop-2: rgb(0, 0, 0);
-	prop-2: color(display-p3 0 0 0);
 	prop-2: lch(0% 210 285);
 	/* teal */
 	prop-3: rgb(0, 44, 45);
