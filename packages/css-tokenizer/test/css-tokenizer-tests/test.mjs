@@ -18,8 +18,7 @@ import { tokenizer } from '@csstools/css-tokenizer';
 }
 
 export function toUniversal(token) {
-	if (token[4]) {
-		// TODO: update @rmenke/css-tokenizer-tests
+	if (token[4] && !token[4].signCharacter) {
 		delete token[4].signCharacter;
 	}
 
