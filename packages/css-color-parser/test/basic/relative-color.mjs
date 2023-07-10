@@ -49,12 +49,12 @@ assert.deepStrictEqual(
 );
 
 assert.deepStrictEqual(
-	serialize_sRGB_data(color(parse('hsl(from rebeccapurple h calc(s - 1%) l)'))),
+	serialize_sRGB_data(color(parse('hsl(from rebeccapurple h calc(s - 1) l)'))),
 	'rgb(102, 52, 152)',
 );
 
 assert.deepStrictEqual(
-	serialize_sRGB_data(color(parse('hsl(from rebeccapurple h s calc(l - 1%))'))),
+	serialize_sRGB_data(color(parse('hsl(from rebeccapurple h s calc(l - 1))'))),
 	'rgb(99, 50, 149)',
 );
 

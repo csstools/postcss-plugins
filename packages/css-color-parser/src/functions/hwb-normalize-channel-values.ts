@@ -69,10 +69,13 @@ export function normalize_HWB_ChannelValues(tokens: Array<CSSToken>, colorData: 
 
 		if (token[0] === TokenType.Number) {
 			if (index !== 3) {
-				return false;
+				colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 			}
 
-			const value = normalize(token[4].value, 1, 0, 1);
+			let value = normalize(token[4].value, 1, 0, 100);
+			if (index === 3) {
+				value = normalize(token[4].value, 1, 0, 1);
+			}
 
 			result.push([
 				TokenType.Number,
