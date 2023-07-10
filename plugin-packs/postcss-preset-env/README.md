@@ -175,7 +175,7 @@ module.exports = {
 		[
 			"postcss-preset-env",
 			{
-				stage: 2,
+				// plugin options
 			},
 		],
 		// ...
