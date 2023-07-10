@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-relative-color-syntax",
 	"description": "Use the relative color syntax in CSS",
-	"version": "1.0.2",
+	"version": "2.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -45,10 +45,10 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^1.2.1",
-		"@csstools/css-parser-algorithms": "^2.2.0",
+		"@csstools/css-color-parser": "^1.2.2",
+		"@csstools/css-parser-algorithms": "^2.3.0",
 		"@csstools/css-tokenizer": "^2.1.1",
-		"@csstools/postcss-progressive-custom-properties": "^2.3.0"
+		"@csstools/postcss-progressive-custom-properties": "^3.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

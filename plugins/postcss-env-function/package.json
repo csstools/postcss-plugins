@@ -1,7 +1,7 @@
 {
 	"name": "postcss-env-function",
 	"description": "Use env() variables in CSS",
-	"version": "5.0.1",
+	"version": "6.0.0",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [

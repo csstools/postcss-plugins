@@ -69,12 +69,12 @@
 }
 
 .spec-example-6 {
-	color-1: rgb(166, 158, 255);
-	color-1: color(display-p3 0.64126 0.60728 1);
+	color-1: rgb(174, 138, 255);
+	color-1: color(display-p3 0.66273 0.5437 0.98509);
 	color-1: color-mix(in lch, white, blue);
 	/* TODO : https://github.com/w3c/csswg-drafts/issues/8609 */
-	color-2: rgb(116, 163, 255);
-	color-2: color(display-p3 0.49247 0.63302 1);
+	color-2: rgb(119, 163, 255);
+	color-2: color(display-p3 0.49508 0.63377 1);
 	color-2: color-mix(in oklch, white, blue);
 	color-3: rgb(128, 128, 255);
 	color-3: color-mix(in srgb, white, blue);

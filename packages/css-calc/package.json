@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-calc",
 	"description": "Solve CSS math expressions",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -45,7 +45,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^2.2.0",
+		"@csstools/css-parser-algorithms": "^2.3.0",
 		"@csstools/css-tokenizer": "^2.1.1"
 	},
 	"scripts": {

@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-logical-float-and-clear",
 	"description": "Use flow-relative (inline-start and inline-end) values for float and clear",
-	"version": "1.0.1",
+	"version": "2.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
