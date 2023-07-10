@@ -159,6 +159,33 @@ postcss([
 - [Gulp](INSTALL.md#gulp)
 - [Grunt](INSTALL.md#grunt)
 
+### Position in your PostCSS plugins list
+
+[PostCSS Preset Env] only contains polyfills and fallbacks for standard CSS features and is unable to handle non-standard features and syntactic sugar.
+
+If you also have PostCSS plugins for non-standard features and syntactic sugar,  
+you should place these first in the PostCSS plugins list.
+
+```js
+module.exports = {
+	plugins: [
+		"postcss-syntactic-sugar",
+		"postcss-non-standard",
+		// ...
+		[
+			"postcss-preset-env",
+			{
+				// plugin options
+			},
+		],
+		// ...
+		// maybe a minifier?
+	],
+};
+```
+
+You can also use the [`insertBefore` / `insertAfter`](#insertbefore--insertafter) plugin options for more fine grained control.
+
 ## Options
 
 ### stage
