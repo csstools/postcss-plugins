@@ -8,7 +8,7 @@
 	},
 	"devDependencies": {
 		"postcss": "^8.4.25",
-		"postcss-preset-env": "^9.0.0"
+		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env"
 	},
 	"browserslist": {
 		"development": [
