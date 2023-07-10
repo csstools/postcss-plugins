@@ -7,8 +7,8 @@
 		"test": "BROWSERSLIST_ENV=development node ./index.mjs && BROWSERSLIST_ENV=production node ./index.mjs"
 	},
 	"devDependencies": {
-		"postcss": "^8.4.19",
-		"postcss-preset-env": "^8.0.0"
+		"postcss": "^8.4.25",
+		"postcss-preset-env": "^9.0.0"
 	},
 	"browserslist": {
 		"development": [
