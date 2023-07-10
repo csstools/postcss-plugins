@@ -161,12 +161,12 @@ const tests = [
 
 	// Testing valid permutation (types match).
 	['hsl(from rebeccapurple h l s)', 'rgb(128, 77, 179)'],
-	['hsl(from rebeccapurple h alpha l / s)', 'rgba(102, 101, 103, 0.5)'],
-	['hsl(from rebeccapurple h l l / l)', 'rgba(102, 61, 143, 0.4)'],
+	['hsl(from rebeccapurple h alpha l / s)', 'rgba(102, 101, 103)'],
+	['hsl(from rebeccapurple h l l / l)', 'rgba(102, 61, 143)'],
 	['hsl(from rebeccapurple h alpha alpha / alpha)', 'rgb(3, 3, 3)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) h l s)', 'rgba(77, 127, 178, 0.8)'],
-	['hsl(from rgb(20%, 40%, 60%, 80%) h alpha l / s)', 'rgba(101, 102, 103, 0.5)'],
-	['hsl(from rgb(20%, 40%, 60%, 80%) h l l / l)', 'rgba(61, 102, 143, 0.4)'],
+	['hsl(from rgb(20%, 40%, 60%, 80%) h alpha l / s)', 'rgba(101, 102, 103)'],
+	['hsl(from rgb(20%, 40%, 60%, 80%) h l l / l)', 'rgba(61, 102, 143)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) h alpha alpha / alpha)', 'rgba(2, 2, 2, 0.8)'],
 
 	// Testing with calc().
@@ -242,12 +242,12 @@ const tests = [
 
 	// Testing valid permutation (types match).
 	['hwb(from rebeccapurple h b w)', 'rgb(153, 102, 204)'],
-	['hwb(from rebeccapurple h calc(100% * alpha) w / b)', 'rgba(212, 212, 212, 0.4)'],
-	['hwb(from rebeccapurple h w w / w)', 'rgba(128, 51, 204, 0.2)'],
+	['hwb(from rebeccapurple h calc(100% * alpha) w / b)', 'rgba(212, 212, 212)'],
+	['hwb(from rebeccapurple h w w / w)', 'rgba(128, 51, 204)'],
 	['hwb(from rebeccapurple h calc(100% * alpha) calc(100% * alpha) / alpha)', 'rgb(128, 128, 128)'],
 	['hwb(from rgb(20%, 40%, 60%, 80%) h b w)', 'rgba(102, 153, 204, 0.8)'],
-	['hwb(from rgb(20%, 40%, 60%, 80%) h calc(100% * alpha) w / b)', 'rgba(204, 204, 204, 0.4)'],
-	['hwb(from rgb(20%, 40%, 60%, 80%) h w w / w)', 'rgba(51, 128, 204, 0.2)'],
+	['hwb(from rgb(20%, 40%, 60%, 80%) h calc(100% * alpha) w / b)', 'rgba(204, 204, 204)'],
+	['hwb(from rgb(20%, 40%, 60%, 80%) h w w / w)', 'rgba(51, 128, 204)'],
 	['hwb(from rgb(20%, 40%, 60%, 80%) h calc(100% * alpha) calc(100% * alpha) / alpha)', 'rgba(128, 128, 128, 0.8)'],
 
 	// Testing with calc().
