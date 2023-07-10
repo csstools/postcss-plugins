@@ -1,4 +1,4 @@
-import { ColorData, convertPowerlessComponentsToMissingComponents } from '../color-data';
+import { ColorData, convertPowerlessComponentsToZeroValuesForDisplay } from '../color-data';
 import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css-tokenizer';
 import { ColorNotation } from '../color-notation';
 import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
@@ -9,7 +9,7 @@ import { toPrecision } from './to-precision';
 import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
 
 export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNode {
-	color.channels = convertPowerlessComponentsToMissingComponents(color.channels, color.colorNotation);
+	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);
 	let srgb = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
 
 	if (color.colorNotation === ColorNotation.HWB) {

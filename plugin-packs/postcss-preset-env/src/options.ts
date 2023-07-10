@@ -35,7 +35,18 @@ export type pluginOptions = {
 	 * a `browserslist` key in `package.json`,
 	 * or `browserslist` environment variables.
 	 *
+	 * The `env` option is used to select a specific browserslist environment in the event that you have more than one.
+	 */
+	env?: string;
+
+	/**
+	 * PostCSS Preset Env supports any standard browserslist configuration,
+	 * which can be a `.browserslistrc` file,
+	 * a `browserslist` key in `package.json`,
+	 * or `browserslist` environment variables.
+	 *
 	 * The `browsers` option should only be used when a standard browserslist configuration is not available.
+	 * When the `browsers` option is used the `env` option is ignored.
 	 */
 	browsers?: string | Array<string> | null
 

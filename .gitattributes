@@ -1,6 +1,6 @@
 * text=auto eol=lf
 
 # 1. reduce noise when running "git diff" by not showing a full diff for "/dist" contents
-# 2. make it easier to merge by doing a dumb union for everything in "/dist"
+# 2. make it easier to merge by doing a union for everything in "/dist"
 **/dist/** -diff
 **/dist/** merge=union

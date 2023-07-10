@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-is-pseudo-class",
 	"description": "A pseudo-class for matching elements in a selector list",
-	"version": "3.2.1",
+	"version": "4.0.0",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
@@ -35,7 +35,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/selector-specificity": "^2.2.0",
+		"@csstools/selector-specificity": "^3.0.0",
 		"postcss-selector-parser": "^6.0.13"
 	},
 	"peerDependencies": {
@@ -43,7 +43,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^20.7.3"
+		"puppeteer": "^20.7.4"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

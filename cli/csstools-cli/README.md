@@ -111,14 +111,20 @@ Options:
   -p, --plugin-options  Stringified JSON object with plugin options
 
 Plugin Options:
-  stage         number
-  features      object
-  browsers      string
-  autoprefixer  object
-  preserve      boolean
+  stage                         number
+  minimumVendorImplementations  number
+  features                      object
+  env                           string
+  browsers                      string
+  autoprefixer                  object
+  preserve                      boolean
+  logical                       object
+  enableClientSidePolyfills     boolean
+  debug                         boolean
 
   {
     "stage": 0,
+    "minimumVendorImplementations": 2,
     "features": {
       "blank-pseudo-class": {
         "preserve": false
@@ -127,11 +133,18 @@ Plugin Options:
         "preserve": true
       }
     },
+    "env": "production",
     "browsers": "last 2 versions",
     "autoprefixer": {
       "grid": true
     },
     "preserve": false,
+    "logical": {
+      "inlineDirection": "left-to-right",
+      "blockDirection": "top-to-bottom"
+    },
+    "enableClientSidePolyfills": false,
+    "debug": false
   }
 ```
 

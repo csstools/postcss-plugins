@@ -1,7 +1,7 @@
 {
 	"name": "postcss-focus-visible",
 	"description": "Use the :focus-visible pseudo-selector in CSS",
-	"version": "8.0.2",
+	"version": "9.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -52,7 +52,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^20.7.3"
+		"puppeteer": "^20.7.4"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

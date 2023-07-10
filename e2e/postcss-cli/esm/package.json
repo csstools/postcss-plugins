@@ -8,7 +8,7 @@
 		"test": "node ./test.mjs"
 	},
 	"devDependencies": {
-		"@csstools/postcss-ic-unit": "^2.0.1",
+		"@csstools/postcss-ic-unit": "file:../../../plugins/postcss-ic-unit",
 		"postcss-cli": "^10.1.0"
 	},
 	"volta": {
