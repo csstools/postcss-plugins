@@ -16,6 +16,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	// initialize options
 	const options = Object(opts);
 	const featureNamesInOptions = Object.keys(Object(options.features));
+	const env = options.browsers ? undefined : options.env; // When `browsers` is set, ignore `env`
 	const browsers = options.browsers;
 	const sharedOptions = initializeSharedOptions(options);
 
@@ -24,7 +25,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	if (options.autoprefixer !== false) {
 		plugins.push(
-			autoprefixer(Object.assign({ overrideBrowserslist: browsers }, options.autoprefixer)),
+			autoprefixer(Object.assign({ env: env, overrideBrowserslist: browsers }, options.autoprefixer)),
 		);
 	}
 
