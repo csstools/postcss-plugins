@@ -159,7 +159,7 @@ postcss([
 - [Gulp](INSTALL.md#gulp)
 - [Grunt](INSTALL.md#grunt)
 
-### Position in your PostCSS config list
+### Position in your PostCSS plugins list
 
 [PostCSS Preset Env] only contains polyfills and fallbacks for standard CSS features.  
 [PostCSS Preset Env] is unable to handle non-standard features and syntactic sugar.
