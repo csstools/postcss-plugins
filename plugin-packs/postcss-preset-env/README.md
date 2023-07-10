@@ -159,6 +159,33 @@ postcss([
 - [Gulp](INSTALL.md#gulp)
 - [Grunt](INSTALL.md#grunt)
 
+### Position in your PostCSS plugins list
+
+[PostCSS Preset Env] only contains polyfills and fallbacks for standard CSS features and is unable to handle non-standard features and syntactic sugar.
+
+If you also have PostCSS plugins for non-standard features and syntactic sugar,  
+you should place these first in the PostCSS plugins list.
+
+```js
+module.exports = {
+	plugins: [
+		"postcss-syntactic-sugar",
+		"postcss-non-standard",
+		// ...
+		[
+			"postcss-preset-env",
+			{
+				// plugin options
+			},
+		],
+		// ...
+		// maybe a minifier?
+	],
+};
+```
+
+You can also use the [`insertBefore` / `insertAfter`](#insertbefore--insertafter) plugin options for more fine grained control.
+
 ## Options
 
 ### stage
@@ -230,17 +257,28 @@ postcssPresetEnv({
 Any polyfills not explicitly enabled or disabled through `features` are
 determined by the [`stage`](#stage) option.
 
-### browsers
+### env
 
-The `browsers` option determines which polyfills are required based upon the
-browsers you are supporting.
-
-[PostCSS Preset Env] supports any standard [browserslist] configuration, which
-can be a `.browserslistrc` file, a `browserslist` key in `package.json`, or
+[PostCSS Preset Env] supports standard [browserslist] configuration, which can
+be a `.browserslistrc` file, a `browserslist` key in `package.json`, or
 `browserslist` environment variables.
 
+The `env` option is used by [browserslist] to determine the named environment
+that should be used when you have [multiple browserslist environments](https://github.com/browserslist/browserslist#configuring-for-different-environments)
+configured. If not set, Browserslist will use the `production` environment.
+
+```js
+/* use the environment named `development`, instead of the default environment of `production` */
+postcssPresetEnv({ env: 'development' })
+```
+
+### browsers
+
+The `browsers` option overrides any existing [browserslist] configuration.
+
 The `browsers` option should only be used when a standard browserslist
-configuration is not available.
+configuration is not available.  
+When the `browsers` option is used the `env` option will be ignored.
 
 ```js
 postcssPresetEnv({ browsers: 'last 2 versions' })
@@ -269,8 +307,7 @@ postcssPresetEnv({
 
 ### autoprefixer
 
-[PostCSS Preset Env] includes [autoprefixer] and [`browsers`](#browsers) option
-will be passed to it automatically.
+[PostCSS Preset Env] includes [autoprefixer]; the [`env`](#env) and [`browsers`](#browsers) options will be passed to it automatically.
 
 Specifying the `autoprefixer` option enables passing
 [additional options](https://github.com/postcss/autoprefixer#options)

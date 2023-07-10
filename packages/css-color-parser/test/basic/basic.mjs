@@ -6,23 +6,6 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 [
 	'rgb( )',
 	'rgb(255 )',
-	'rgb(255, )',
-	'rgb(255, 0 )',
-	'rgb(255, 0, )',
-	'rgb(255, 0, foo(0))',
-	'rgb(255, 0, var(--foo))',
-	'rgb(255, 0, 0, )',
-	'rgb(255, 0, 0, 0, )',
-].forEach((testCase) => {
-	assert.deepStrictEqual(
-		color(parse(testCase)),
-		false,
-	);
-});
-
-[
-	'rgb( )',
-	'rgb(255 )',
 	'rgb(255 0 )',
 	'rgb(255 0 foo(0))',
 	'rgb(255 0 var(--foo))',

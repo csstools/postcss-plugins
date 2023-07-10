@@ -228,18 +228,15 @@
 	prop-1: rgb(237, 237, 252);
 	prop-1: oklch(95% 0.02 285);
 	prop-2: rgb(255, 255, 255);
-	prop-2: color(display-p3 1 1 1);
 	prop-2: oklch(100% 0.02 285);
 }
 
 .test-low-luminance {
 	/* not teal */
 	prop-1: rgb(0, 0, 0);
-	prop-1: color(display-p3 0 0 0);
 	prop-1: oklch(0% 0.02 90);
 	/* teal */
 	prop-2: rgb(0, 0, 0);
-	prop-2: color(display-p3 0 0 0);
 	prop-2: oklch(0% 0.02 285);
 	/* teal */
 	prop-3: rgb(0, 0, 2);

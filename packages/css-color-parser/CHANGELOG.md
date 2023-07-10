@@ -1,5 +1,13 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch) 
+
+- Allow number values in `hwb`.
+- Fix value calculation for `s`, `l` (`hsl`) and `w`, `b` (`hwb`) components in relative color syntax.
+- `a` and `b` components in `lab` and `oklab` are analogous.
+- Powerless components are limited to achromatic colors and only affect `hue` unless otherwise specified.
+- Fix value normalization.
+
 ### 1.2.2
 
 _July 3, 2023_
