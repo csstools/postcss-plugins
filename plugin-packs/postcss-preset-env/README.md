@@ -161,11 +161,10 @@ postcss([
 
 ### Position in your PostCSS plugins list
 
-[PostCSS Preset Env] only contains polyfills and fallbacks for standard CSS features.  
-[PostCSS Preset Env] is unable to handle non-standard features and syntactic sugar.
+[PostCSS Preset Env] only contains polyfills and fallbacks for standard CSS features and is unable to handle non-standard features and syntactic sugar.
 
 If you also have PostCSS plugins for non-standard features and syntactic sugar,  
-you should place these first in the PostCSS config list.
+you should place these first in the PostCSS plugins list.
 
 ```js
 module.exports = {
