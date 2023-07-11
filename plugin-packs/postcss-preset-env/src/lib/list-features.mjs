@@ -6,6 +6,7 @@ import { formatPolyfillableFeature, formatStagedFeature } from './format-feature
 import { clamp } from '../util/clamp.mjs';
 import { intOrZero } from '../util/int-or-zero.mjs';
 import { insertAfterKey, insertBeforeKey } from '../own-keys/keys.mjs';
+import { browsersWithSupportStats } from './browsers-with-supports-stats.mjs';
 
 export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	// initialize options
@@ -84,7 +85,9 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	});
 
 	// browsers supported by the configuration
-	const supportedBrowsers = browserslist(browsers, { env: env, ignoreUnknownVersions: true });
+	const supportedBrowsers = browserslist(browsers, { env: env, ignoreUnknownVersions: true }).filter((x) => {
+		return browsersWithSupportStats.includes(x.split(' ')[0]);
+	});
 
 	// - features supported by the stage
 	// - features with `true` or with options

@@ -3,6 +3,7 @@
 ### Unreleased (minor)
 
 - Added `env` option to control which [browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to target
+- Fix [browserslist supports queries](https://github.com/browserslist/browserslist#full-list)
 
 ### 9.0.0
 

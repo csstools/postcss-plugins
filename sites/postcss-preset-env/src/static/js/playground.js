@@ -55,6 +55,10 @@ function processCss(source, config, isDefaultState = false) {
 	try {
 		presetEnv = postcssPresetEnv(config);
 	} catch (err) {
+		if (err.browserslist) {
+			alert(`${err.message}\n\nTry changing the browserslist config.`);
+		}
+
 		console.warn(err);
 		return Promise.resolve();
 	}

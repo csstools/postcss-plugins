@@ -1,5 +1,5 @@
 import browserslist from 'browserslist';
-import getUnsupportedBrowsersByFeature from './get-unsupported-browsers-by-feature.mjs';
+import { getUnsupportedBrowsersByFeature } from './get-unsupported-browsers-by-feature.mjs';
 
 // add extra options for certain browsers by feature
 export default function getOptionsForBrowsersByFeature(browsers, feature, cssdbList, options, logger) {

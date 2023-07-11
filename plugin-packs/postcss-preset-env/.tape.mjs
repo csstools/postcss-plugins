@@ -83,6 +83,12 @@ postcssTape(plugin)({
 			stage: 0
 		}
 	},
+	'basic:supports-query': {
+		message: 'supports { browsers: "defaults and supports css-variables" } usage',
+		options: {
+			browsers: 'defaults and supports css-variables'
+		}
+	},
 	'basic:stage0': {
 		message: 'supports { stage: 0 } usage',
 		options: {
