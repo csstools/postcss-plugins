@@ -1,5 +1,5 @@
 import getOptionsForBrowsersByFeature from './get-options-for-browsers-by-feature.mjs';
-import getUnsupportedBrowsersByFeature from './get-unsupported-browsers-by-feature.mjs';
+import { getUnsupportedBrowsersByFeature } from './get-unsupported-browsers-by-feature.mjs';
 import { OUT_OF_RANGE_STAGE } from './stage.mjs';
 import { insertAfterKey, insertBeforeKey, pluginKey } from '../own-keys/keys.mjs';
 import { pluginsById } from '../plugins/plugins-by-id.mjs';
