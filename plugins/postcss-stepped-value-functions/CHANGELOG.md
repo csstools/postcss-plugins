@@ -1,5 +1,9 @@
 # Changes to PostCSS Stepped Value Functions
 
+### Unreleased (patch)
+
+- Use the latest utilities from `@csstools/css-tokenizer` to reduce the bundle size.
+
 ### 3.0.0
 
 _July 3, 2023_

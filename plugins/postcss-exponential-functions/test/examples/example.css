@@ -1,0 +1,7 @@
+.foo {
+	top: calc(1px * pow(2, 3));
+	line-height: sqrt(1.2);
+	padding: hypot(3px, 4px);
+	order: log(10, 10);
+	min-height: calc(e - exp(1));
+}
