@@ -1,26 +1,25 @@
 import type { PluginCreator } from 'postcss';
-import { calc } from './calc';
 import { FUNCTION_CALL_REGEXP } from './checks';
+import { calc } from '@csstools/css-calc';
 
-/** postcss-stepped-value-functions plugin options */
+/** postcss-exponential-functions plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: false */
 	preserve?: boolean,
 };
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const options = Object.assign(
+	const options: pluginOptions = Object.assign(
 		// Default options
 		{
 			preserve: false,
-			onInvalid: '',
 		},
 		// Provided options
 		opts,
 	);
 
 	return {
-		postcssPlugin: 'postcss-stepped-value-functions',
+		postcssPlugin: 'postcss-exponential-functions',
 		Declaration(decl) {
 			if (!FUNCTION_CALL_REGEXP.test(decl.value)) {
 				return;

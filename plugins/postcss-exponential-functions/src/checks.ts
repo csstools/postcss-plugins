@@ -1,11 +1,9 @@
 const functionNames = [
-	'asin',
-	'acos',
-	'atan',
-	'atan2',
-	'sin',
-	'cos',
-	'tan',
+	'exp',
+	'hypot',
+	'log',
+	'pow',
+	'sqrt',
 ];
 
 export const FUNCTION_NAME_REGEXP = new RegExp(`^(${functionNames.join('|')})$`, 'i');
