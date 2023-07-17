@@ -1,5 +1,5 @@
 import type { PluginCreator } from 'postcss';
-import { checks } from './checks';
+import { FUNCTION_CALL_REGEXP } from './checks';
 import { calc } from './calc';
 
 /** postcss-trigonometric-functions plugin options */
@@ -21,8 +21,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-trigonometric-functions',
 		Declaration(decl) {
-			const hasSupportedFunction = checks.some(functionCheck => decl.value.toLowerCase().includes(functionCheck));
-			if (!hasSupportedFunction) {
+			if (!FUNCTION_CALL_REGEXP.test(decl.value)) {
 				return;
 			}
 

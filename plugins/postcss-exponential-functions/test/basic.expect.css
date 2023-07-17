@@ -1,0 +1,196 @@
+.computed {
+	/* Identity tests */
+	--prop-001: 1;
+	--prop-002: 1;
+	--prop-003: 1;
+
+	/* Nestings */
+	--prop-004: 1;
+	--prop-005: 1;
+	--prop-006: 1;
+
+	/* General calculations */
+	--prop-007: 1600px;
+	--prop-008: 8px;
+	--prop-009: 1000px;
+	--prop-010: 1024px;
+	--prop-011: 5px;
+	--prop-012: 5000000000px;
+	--prop-013: 500px;
+	--prop-014: 5px;
+	--prop-015: 5px;
+	--prop-016: 10000px;
+	--prop-017: 20000px;
+	--prop-018: 480000px;
+	--prop-019: -10px;
+	--prop-020: hypot(0% + 3px, 0% + 4px);
+	--prop-021: hypot(0% + 772.333px);
+	--prop-022: hypot(0% + 772.35px);
+	--prop-023: hypot(0% + 600px, 0% + 800px);
+
+	/* Type checking hypot */
+	--prop-024: 1px;
+	--prop-025: 1cm;
+	--prop-026: 1mm;
+	--prop-027: 1Q;
+	--prop-028: 1in;
+	--prop-029: 1pc;
+	--prop-030: 1pt;
+	--prop-031: 1em;
+	--prop-032: 1ex;
+	--prop-033: 1ch;
+	--prop-034: 1rem;
+	--prop-035: 1vh;
+	--prop-036: 1vw;
+	--prop-037: 1vmin;
+	--prop-038: 1vmax;
+	--prop-039: 1s;
+	--prop-040: 1ms;
+	--prop-041: 1deg;
+	--prop-042: 1grad;
+	--prop-043: 1rad;
+	--prop-044: 1turn;
+}
+
+.invalid {
+	/* Syntax checking */
+	--prop-001: hypot();
+	--prop-002: hypot( );
+	--prop-003: hypot(,);
+	--prop-004: hypot(1, );
+	--prop-005: hypot(, 1);
+	--prop-006: hypot(1 + );
+	--prop-007: hypot(1 - );
+	--prop-008: hypot(1 * );
+	--prop-009: hypot(1 / );
+	--prop-010: hypot(1 2);
+	--prop-011: hypot(1, , 2);
+	--prop-012: sqrt();
+	--prop-013: sqrt( );
+	--prop-014: sqrt(,);
+	--prop-015: sqrt(1, );
+	--prop-016: sqrt(, 1);
+	--prop-017: sqrt(1 + );
+	--prop-018: sqrt(1 - );
+	--prop-019: sqrt(1 * );
+	--prop-020: sqrt(1 / );
+	--prop-021: sqrt(1 2);
+	--prop-022: sqrt(1, , 2);
+	--prop-023: sqrt(1, 2);
+	--prop-024: pow( );
+	--prop-025: pow(,);
+	--prop-026: pow(1, );
+	--prop-027: pow(, 1);
+	--prop-028: pow(1 + );
+	--prop-029: pow(1 - );
+	--prop-030: pow(1 * );
+	--prop-031: pow(1 / );
+	--prop-032: pow(1 2);
+	--prop-033: pow(1, , 2);
+
+	/* General tests */
+	--prop-034: calc(1px * pow(1));
+	--prop-035: calc(1px * pow(2px, 3px));
+	--prop-036: calc(sqrt(100px));
+	--prop-037: hypot(2px, 40%);
+	--prop-038: hypot(2px, 3);
+	--prop-039: hypot(3, ,4);
+	--prop-040: calc(1px * pow(2 3));
+	--prop-041: hypot();
+	--prop-042: calc(pow(2));
+	--prop-043: pow();
+	--prop-044: calc(sqrt());
+	--prop-045: calc(sqrt(100, 200));
+}
+
+.computed {
+	/* Simple tests */
+	--prop-001: 0;
+	--prop-002: 1;
+	--prop-003: 1;
+
+	/* Test e */
+	--prop-004: 1;
+	--prop-005: 0;
+
+	/* General calculations */
+	--prop-006: 0;
+	--prop-007: 1;
+	--prop-008: 7.3890560989307;
+	--prop-009: 2.302585092994;
+	--prop-010: 1.301029995664;
+	--prop-011: 3;
+	--prop-012: 2;
+	--prop-013: 3;
+	--prop-014: 3;
+	--prop-015: 2;
+
+	/* Test nesting */
+	--prop-016: 1;
+	--prop-017: 1;
+}
+
+.invalid {
+	/* Syntax checking */
+	--prop-001: exp();
+	--prop-002: exp();
+	--prop-003: exp(, );
+	--prop-004: exp(1, );
+	--prop-005: exp(, 1);
+	--prop-006: exp(1 +);
+	--prop-007: exp(1 -);
+	--prop-008: exp(1 *);
+	--prop-009: exp(1 /);
+	--prop-010: exp(1 2);
+	--prop-011: exp(1, , 2);
+	--prop-012: log();
+	--prop-013: log();
+	--prop-014: log(, );
+	--prop-015: log(1, );
+	--prop-016: log(, 1);
+	--prop-017: log(1 +);
+	--prop-018: log(1 -);
+	--prop-019: log(1 *);
+	--prop-020: log(1 /);
+	--prop-021: log(1 2);
+	--prop-022: log(1, , 2);
+
+	/* Type checking */
+	--prop-023: exp(0px);
+	--prop-024: exp(0s);
+	--prop-025: exp(0deg);
+	--prop-026: exp(0Hz);
+	--prop-027: exp(0dpi);
+	--prop-028: exp(0fr);
+	--prop-029: exp(1, 1%);
+	--prop-030: exp(1, 0px);
+	--prop-031: exp(1, 0s);
+	--prop-032: exp(1, 0deg);
+	--prop-033: exp(1, 0Hz);
+	--prop-034: exp(1, 0dpi);
+	--prop-035: exp(1, 0fr);
+	--prop-036: log(0px);
+	--prop-037: log(0s);
+	--prop-038: log(0deg);
+	--prop-039: log(0Hz);
+	--prop-040: log(0dpi);
+	--prop-041: log(0fr);
+	--prop-042: log(1, 1%);
+	--prop-043: log(1, 0px);
+	--prop-044: log(1, 0s);
+	--prop-045: log(1, 0deg);
+	--prop-046: log(1, 0Hz);
+	--prop-047: log(1, 0dpi);
+	--prop-048: log(1, 0fr);
+}
+
+.mixed {
+	border: 1600px wavy pink;
+}
+
+.ignore {
+	--prop-001: powa(1, 1);
+	--prop-002: apow(1, 1);
+	--prop-003: pow-a(1, 1);
+	--prop-004: a-pow(1, 1);
+}

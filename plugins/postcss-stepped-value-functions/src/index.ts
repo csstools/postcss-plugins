@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 import { calc } from './calc';
-import { checks } from './checks';
+import { FUNCTION_CALL_REGEXP } from './checks';
 
 /** postcss-stepped-value-functions plugin options */
 export type pluginOptions = {
@@ -22,8 +22,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-stepped-value-functions',
 		Declaration(decl) {
-			const hasSupportedFunction = checks.some(functionCheck => decl.value.toLowerCase().includes(functionCheck));
-			if (!hasSupportedFunction) {
+			if (!FUNCTION_CALL_REGEXP.test(decl.value)) {
 				return;
 			}
 

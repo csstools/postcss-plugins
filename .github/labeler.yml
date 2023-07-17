@@ -106,6 +106,10 @@
   - plugins/postcss-env-function/**
   - experimental/postcss-env-function/**
 
+"plugins/postcss-exponential-functions":
+  - plugins/postcss-exponential-functions/**
+  - experimental/postcss-exponential-functions/**
+
 "plugins/postcss-extract":
   - plugins/postcss-extract/**
   - experimental/postcss-extract/**
