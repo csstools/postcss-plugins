@@ -126,11 +126,15 @@ for (const workspace of notReleasableNow.values()) {
 				packageInfo.dependencies &&
 				packageInfo.dependencies[updated.name] &&
 				packageInfo.dependencies[updated.name] !== '*' &&
-				updated.newVersion &&
-				updated.newVersion !== '1.0.0' // initial releases are not mentioned as updates
+				updated.newVersion
 			) {
 				packageInfo.dependencies[updated.name] = '^' + updated.newVersion;
-				changeLogAdditions += `- Updated ${nameAsLink} to ${versionAsLink} (${updated.increment})\n`;
+
+				if (updated.newVersion !== '1.0.0') {
+					// initial releases are not mentioned as updates
+					changeLogAdditions += `- Updated ${nameAsLink} to ${versionAsLink} (${updated.increment})\n`;
+				}
+
 				didChange = true;
 			}
 			if (
