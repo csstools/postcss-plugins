@@ -9,6 +9,7 @@ import { npmInstall } from './npm-install.mjs';
 import { npmPublish } from './npm-publish.mjs';
 import { npmVersion } from './npm-version.mjs';
 import { updateDocumentation } from './docs.mjs';
+import { currentVersion } from './current-version.mjs';
 
 const workspaces = await listWorkspaces();
 // Things to release
@@ -64,8 +65,9 @@ for (const workspace of workspaces) {
 
 // Only do a single initial publish at a time
 for (const [workspaceName, workspace] of needsRelease) {
-	const newVersion = await npmVersion(workspace.increment, workspace.path);
-	if (newVersion === '1.0.0') {
+	const version = await currentVersion(workspace.path);
+
+	if (version === '0.0.0') {
 		const allWorkspaces = new Map(needsRelease);
 		allWorkspaces.delete(workspaceName);
 
