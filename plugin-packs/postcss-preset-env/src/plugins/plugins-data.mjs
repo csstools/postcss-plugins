@@ -75,6 +75,11 @@ export default [
 		'importName': 'postcssDoublePositionGradients',
 	},
 	{
+		'packageName': '@csstools/postcss-exponential-functions',
+		'id': 'exponential-functions',
+		'importName': 'postcssExponentialFunctions',
+	},
+	{
 		'packageName': 'postcss-focus-visible',
 		'id': 'focus-visible-pseudo-class',
 		'importName': 'postcssFocusVisible',

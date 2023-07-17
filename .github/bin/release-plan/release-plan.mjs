@@ -126,7 +126,8 @@ for (const workspace of notReleasableNow.values()) {
 				packageInfo.dependencies &&
 				packageInfo.dependencies[updated.name] &&
 				packageInfo.dependencies[updated.name] !== '*' &&
-				updated.newVersion
+				updated.newVersion &&
+				updated.newVersion !== '1.0.0' // initial releases are not mentioned as updates
 			) {
 				packageInfo.dependencies[updated.name] = '^' + updated.newVersion;
 				changeLogAdditions += `- Updated ${nameAsLink} to ${versionAsLink} (${updated.increment})\n`;

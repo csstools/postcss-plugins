@@ -474,3 +474,7 @@
 	--opacity: 1;
 	color: rgba(87 107 149 / var(--opacity));
 }
+
+.exponential-functions {
+	width: calc(1px * pow(2, 3));
+}
