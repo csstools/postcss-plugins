@@ -62,6 +62,25 @@ for (const workspace of workspaces) {
 	}
 }
 
+// Only do a single initial publish at a time
+for (const [workspaceName, workspace] of needsRelease) {
+	const newVersion = await npmVersion(workspace.increment, workspace.path);
+	if (newVersion === '1.0.0') {
+		const allWorkspaces = new Map(needsRelease);
+		allWorkspaces.delete(workspaceName);
+
+		needsRelease.clear();
+		needsRelease.set(workspaceName, workspace);
+
+		for (const [workspaceName, workspace] of allWorkspaces) {
+			maybeNextPlan.set(workspaceName, workspace);
+			notReleasableNow.set(workspaceName, workspace);
+		}
+
+		break;
+	}
+}
+
 if (needsRelease.size === 0) {
 	console.log('Nothing to release');
 	process.exit(0);
