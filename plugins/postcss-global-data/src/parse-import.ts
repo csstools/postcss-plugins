@@ -1,6 +1,9 @@
 import path from 'path';
 import fs from 'fs';
 import type { Helpers, Root } from 'postcss';
+import module from 'module';
+
+const require = module.createRequire(import.meta.url);
 
 export function parseImport(root: Root, postcssHelpers: Helpers, filePath: string, alreadyImported: Set<string>) {
 	let resolvedPath = '';
