@@ -31,12 +31,12 @@ const yourConfig = {
 ## Overview
 
 - [packages](https://github.com/csstools/postcss-plugins/tree/main/packages)
-  - css tokenizers and parsers
+	- css tokenizers and parsers
 	- common utilities
 - [PostCSS plugins](https://github.com/csstools/postcss-plugins/tree/main/plugins)
 - [PostCSS Preset Env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 - [Stylelint plugins](https://github.com/csstools/postcss-plugins/tree/main/plugins-stylelint)
-- [cli](https://github.com/csstools/postcss-plugins/tree/main/cli)
+- [cli's](https://github.com/csstools/postcss-plugins/tree/main/cli)
 - [sites](https://github.com/csstools/postcss-plugins/tree/main/sites)
 
 ## Our current focus
