@@ -41,7 +41,7 @@ const yourConfig = {
 
 ## Our current focus
 
-### CSS "polyfills"
+### Standard CSS transforms
 
 We're trying to bring every reasonable CSS Spec into all the browsers. 
 
