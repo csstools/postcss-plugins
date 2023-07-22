@@ -57,39 +57,12 @@ Receiving early feedback on your work will help you iterate more quickly in the 
 
    # Navigate to the newly cloned directory
    cd postcss-plugins
-
-   # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/csstools/postcss-plugins.git
    ```
 
-2. Where are you contributing?
-
-* If you want to contribute to plugins, plugin-packs or the CLI, run the following command:
-
-   ```bash
-    # Install and build the needed things to start local development
-    # This also does an initial test of everything.
-    # If this gives errors please open an issue so that we can look into it.
-    npm run setup-workspace
-   ```
-
-* If you want to contribute to sites, you need to run the following command: 
-
-   ```bash
-    cd sites
-    # Install the needed things to start local development
-    # If this gives errors please open an issue so that we can look into it.
-    npm run setup-workspace
-   ```
-
-3. Create a branch for your feature or fix:
+2. Create a branch for your feature or fix:
    ```bash
    # Move into a new branch for your feature
-   git checkout -b feature/thing
-   ```
-   ```bash
-   # Move into a new branch for your fix
-   git checkout -b fix/something
+   git checkout -b your-thing
    ```
 
 3. Navigate to the plugin you want to contribute to.
@@ -111,11 +84,7 @@ Receiving early feedback on your work will help you iterate more quickly in the 
    ```
    ```bash
    # Push the branch for your new feature
-   git push origin feature/thing
-   ```
-   ```bash
-   # Or, push the branch for your update
-   git push origin update/something
+   git push origin your-thing
    ```
 
 That’s it! Now [open a pull request] with a clear title and description.
@@ -200,6 +169,6 @@ If you encounter any issues not mentioned here, please open an issue so that we 
 
 [already been reported]: https://github.com/csstools/postcss-plugins/issues
 [fork this project]:     https://github.com/csstools/postcss-plugins/fork
-[live example]:          https://codepen.io/pen
+[live example]:          https://preset-env.cssdb.org/playground/
 [open a pull request]:   https://help.github.com/articles/using-pull-requests/
 [reduced test case]:     https://css-tricks.com/reduced-test-cases/
