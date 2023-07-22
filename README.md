@@ -38,6 +38,7 @@ const yourConfig = {
 - [Stylelint plugins](https://github.com/csstools/postcss-plugins/tree/main/plugins-stylelint)
 - [cli's](https://github.com/csstools/postcss-plugins/tree/main/cli)
 - [sites](https://github.com/csstools/postcss-plugins/tree/main/sites)
+- [PostCSS recipes](https://github.com/csstools/postcss-plugins/tree/main/postcss-recipes)
 
 ## Our current focus
 
