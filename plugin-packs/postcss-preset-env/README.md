@@ -15,14 +15,19 @@ browsers or runtime environments.
 If you are already using [PostCSS] to build your CSS, you can simply add [PostCSS Preset Env] to your configuration.
 
 - Install `postcss-preset-env` from npm.
-- Add `postcss-preset-env` to your configuration:
+- Add `postcss-preset-env` to your configuration.
+- Explore the [features list](https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md).
 
 ```js
 const postcssPresetEnv = require('postcss-preset-env');
 
 const yourConfig = {
 	plugins: [
-		postcssPresetEnv(/* pluginOptions */)
+		/* other plugins */
+		/* remove autoprefixer if you had it here, it's part of postcss-preset-env */
+		postcssPresetEnv({
+			/* pluginOptions */
+		})
 	]
 }
 ```
@@ -202,6 +207,9 @@ The `stage` can be `0` (experimental) through `4` (stable), or `false`. Setting
 if you intended to exclusively use the [`features`](#features) option.
 
 Default: `2`
+
+**It is very rare for features to progress beyond stage `2`.**  
+**Use `minimumVendorImplementations` if you prefer to keep up with modern features.**
 
 ### minimumVendorImplementations
 
