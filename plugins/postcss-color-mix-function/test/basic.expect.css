@@ -152,3 +152,7 @@
 .test-css-color-5-interop {
 	color-1: rgba(92, 133, 74, 0.325)
 }
+
+.foo {
+	color: rgb(123, 137, 142);
+}

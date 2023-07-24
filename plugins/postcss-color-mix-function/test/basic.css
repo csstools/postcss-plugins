@@ -148,3 +148,7 @@
 .test-css-color-5-interop {
 	color-1: color-mix(in oklch, rgb(from red r 0 0 / 0), rgb(from hsl(180deg 80% 30% / 0.5) 0 g b) 65%)
 }
+
+.foo {
+	color: color-mix(in oklab, #09232c, white 50%);
+}
