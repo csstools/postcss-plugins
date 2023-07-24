@@ -1,0 +1,25 @@
+.foo {
+	background: url('../images/green.png');
+}
+
+.bar {
+	background: url(green.png);
+}
+
+.quote {
+	background: url("../images/\".png");
+	background: url(../images/\22.png);
+	background: url(../images/\27.png);
+}
+
+.url-modifier {
+	background: url("../images/green.png" something);
+}
+
+.fragment {
+	background: url("../images/green.png#foo");
+}
+
+.search {
+	background: url("../images/green.png?foo=bar");
+}
