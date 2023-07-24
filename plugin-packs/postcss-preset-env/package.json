@@ -52,7 +52,7 @@
 		"@csstools/postcss-cascade-layers": "^4.0.0",
 		"@csstools/postcss-color-function": "^2.2.3",
 		"@csstools/postcss-color-mix-function": "^1.0.3",
-		"@csstools/postcss-exponential-functions": "^0.0.0",
+		"@csstools/postcss-exponential-functions": "^1.0.0",
 		"@csstools/postcss-font-format-keywords": "^3.0.0",
 		"@csstools/postcss-gradients-interpolation-method": "^4.0.0",
 		"@csstools/postcss-hwb-function": "^3.0.0",
