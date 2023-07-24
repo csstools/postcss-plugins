@@ -6,6 +6,7 @@
 - Added `env` option to control which [browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to target
 - Fix [browserslist supports queries](https://github.com/browserslist/browserslist#full-list)
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.7.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#770-july-24-2023) (major)
+- Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#201) (patch)
 
 ### 9.0.0
 
