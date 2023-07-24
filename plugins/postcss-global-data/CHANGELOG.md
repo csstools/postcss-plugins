@@ -1,5 +1,9 @@
 # Changes to PostCSS global-data
 
+### Unreleased (patch)
+
+- Fixed: loading of files from npm packages found in `node_modules/`
+
 ### 2.0.0
 
 _July 3, 2023_

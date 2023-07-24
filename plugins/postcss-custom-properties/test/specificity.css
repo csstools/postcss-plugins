@@ -1,0 +1,92 @@
+/* in order of specificity */
+:where(html) {
+	--prop-1-in-specificity-order: ':where(html)';
+	--prop-2-in-specificity-order: ':where(html)';
+	--prop-3-in-specificity-order: ':where(html)';
+	--prop-4-in-specificity-order: ':where(html)';
+}
+
+:where(:root) {
+	--prop-1-in-specificity-order: ':where(:root)';
+	--prop-2-in-specificity-order: ':where(:root)';
+	--prop-3-in-specificity-order: ':where(:root)';
+}
+
+html {
+	--prop-1-in-specificity-order: 'html';
+	--prop-2-in-specificity-order: 'html';
+}
+
+:root {
+	--prop-1-in-specificity-order: ':root';
+}
+
+.specificity-order {
+	prop-1-in-specificity-order: var(--prop-1-in-specificity-order);
+	prop-2-in-specificity-order: var(--prop-2-in-specificity-order);
+	prop-3-in-specificity-order: var(--prop-3-in-specificity-order);
+	prop-4-in-specificity-order: var(--prop-4-in-specificity-order);
+}
+
+/* in reverse order */
+:root {
+	--prop-1-in-reverse-order: ':root';
+	--prop-2-in-reverse-order: ':root';
+	--prop-3-in-reverse-order: ':root';
+	--prop-4-in-reverse-order: ':root';
+}
+
+html {
+	--prop-1-in-reverse-order: 'html';
+	--prop-2-in-reverse-order: 'html';
+	--prop-3-in-reverse-order: 'html';
+}
+
+:where(:root) {
+	--prop-1-in-reverse-order: ':where(:root)';
+	--prop-2-in-reverse-order: ':where(:root)';
+}
+
+:where(html) {
+	--prop-1-in-reverse-order: ':where(html)';
+}
+
+.reverse-order {
+	prop-1-in-reverse-order: var(--prop-1-in-reverse-order);
+	prop-2-in-reverse-order: var(--prop-2-in-reverse-order);
+	prop-3-in-reverse-order: var(--prop-3-in-reverse-order);
+	prop-4-in-reverse-order: var(--prop-4-in-reverse-order);
+}
+
+
+/* layered */
+@layer {
+	:root {
+			--prop-1-in-layered: ':root';
+			--prop-2-in-layered: ':root';
+			--prop-3-in-layered: ':root';
+			--prop-4-in-layered: ':root';
+		}
+
+		html {
+			--prop-1-in-layered: 'html';
+			--prop-2-in-layered: 'html';
+			--prop-3-in-layered: 'html';
+		}
+}
+
+:where(:root) {
+	--prop-1-in-layered: ':where(:root)';
+	--prop-2-in-layered: ':where(:root)';
+}
+
+:where(html) {
+	--prop-1-in-layered: ':where(html)';
+}
+
+.layered {
+	prop-1-in-layered: var(--prop-1-in-layered);
+	prop-2-in-layered: var(--prop-2-in-layered);
+	prop-3-in-layered: var(--prop-3-in-layered);
+	prop-4-in-layered: var(--prop-4-in-layered);
+}

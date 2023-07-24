@@ -24,6 +24,9 @@ postcssTape(plugin)({
 			preserve: false
 		}
 	},
+	'specificity': {
+		message: 'supports different specificities of html and :root selectors'
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

@@ -103,19 +103,19 @@ export function collectCascadeLayerOrder(root: Root) {
 	return out;
 }
 
-// -1          : node was not found
+// 0          : node was not found
 // any number  : node was found, higher numbers have higher priority
-// Infinity    : node wasn't layered, highest priority
-export function cascadeLayerNumberForNode(node: Node, layers: WeakMap<Node, number>) {
+// a very large number    : node wasn't layered, highest priority
+export function cascadeLayerNumberForNode(node: Node, layers: WeakMap<Node, number>): number {
 	if (node.parent && node.parent.type === 'atrule' && (node.parent as AtRule).name.toLowerCase() === 'layer') {
 		if (!layers.has(node.parent)) {
-			return -1;
+			return 0;
 		}
 
-		return layers.get(node.parent);
+		return layers.get(node.parent)! + 1;
 	}
 
-	return Infinity;
+	return 10_000_000;
 }
 
 function normalizeLayerName(layerName: string, counter: number) {

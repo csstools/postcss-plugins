@@ -48,26 +48,26 @@
 }
 
 p {
-	prop-mobile: extensions.anon-1;
+	prop-mobile: extensions;
 	prop-mobile: var(--mobile);
 }
 
 p {
-	prop-tablet: extensions;
+	prop-tablet: components;
 	prop-tablet: var(--tablet);
 }
 
 p {
-	prop-desktop: extensions;
+	prop-desktop: unlayered;
 	prop-desktop: var(--desktop);
 }
 
 p {
-	prop-dark: components;
+	prop-dark: layouts;
 	prop-dark: var(--dark);
 }
 
 p {
-	prop-light: extensions-one;
+	prop-light: extensions-two;
 	prop-light: var(--light);
 }
