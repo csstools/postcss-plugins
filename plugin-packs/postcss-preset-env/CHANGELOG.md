@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 9.1.0
+
+_July 24, 2023_
 
 - Added `@csstools/postcss-exponential-functions` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions#readme) for usage details.
 - Added `env` option to control which [browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to target
