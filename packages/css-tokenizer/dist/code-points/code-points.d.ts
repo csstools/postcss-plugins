@@ -76,3 +76,21 @@ export declare const SHIFT_OUT = 14;
 export declare const SOLIDUS = 47;
 /** \u20 */
 export declare const SPACE = 32;
+/** u */
+export declare const LATIN_SMALL_LETTER_U = 117;
+/** U */
+export declare const LATIN_CAPITAL_LETTER_U = 85;
+/** r */
+export declare const LATIN_SMALL_LETTER_R = 114;
+/** R */
+export declare const LATIN_CAPITAL_LETTER_R = 82;
+/** l */
+export declare const LATIN_SMALL_LETTER_L = 108;
+/** L */
+export declare const LATIN_CAPITAL_LETTER_L = 76;
+/** ? */
+export declare const QUESTION_MARK = 63;
+/** 0 */
+export declare const DIGIT_ZERO = 48;
+/** F */
+export declare const LATIN_CAPITAL_LETTER_F = 70;

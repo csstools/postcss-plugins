@@ -76,3 +76,21 @@ export const SHIFT_OUT = 0x00e;
 export const SOLIDUS = 0x002f;
 /** \u20 */
 export const SPACE = 0x0020;
+/** u */
+export const LATIN_SMALL_LETTER_U = 0x0075;
+/** U */
+export const LATIN_CAPITAL_LETTER_U = 0x0055;
+/** r */
+export const LATIN_SMALL_LETTER_R = 0x0072;
+/** R */
+export const LATIN_CAPITAL_LETTER_R = 0x0052;
+/** l */
+export const LATIN_SMALL_LETTER_L = 0x006c;
+/** L */
+export const LATIN_CAPITAL_LETTER_L = 0x004c;
+/** ? */
+export const QUESTION_MARK = 0x003f;
+/** 0 */
+export const DIGIT_ZERO = 0x0030;
+/** F */
+export const LATIN_CAPITAL_LETTER_F = 0x0046;

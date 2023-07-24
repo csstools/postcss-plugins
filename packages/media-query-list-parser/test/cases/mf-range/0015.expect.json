@@ -44,6 +44,7 @@
 										6,
 										{
 											"value": -100,
+											"signCharacter": "-",
 											"type": "integer",
 											"unit": "px"
 										}
@@ -58,6 +59,7 @@
 									6,
 									{
 										"value": -100,
+										"signCharacter": "-",
 										"type": "integer",
 										"unit": "px"
 									}
@@ -79,6 +81,7 @@
 								6,
 								{
 									"value": -100,
+									"signCharacter": "-",
 									"type": "integer",
 									"unit": "px"
 								}

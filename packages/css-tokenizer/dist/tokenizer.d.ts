@@ -5,11 +5,13 @@ interface Stringer {
 }
 export declare function tokenize(input: {
     css: Stringer;
+    unicodeRangesAllowed?: boolean;
 }, options?: {
     onParseError?: (error: ParseError) => void;
 }): Array<CSSToken>;
 export declare function tokenizer(input: {
     css: Stringer;
+    unicodeRangesAllowed?: boolean;
 }, options?: {
     onParseError?: (error: ParseError) => void;
 }): {

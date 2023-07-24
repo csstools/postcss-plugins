@@ -28,6 +28,6 @@ export function patchMinusZero(x: TokenNode | FunctionNode | -1): TokenNode | Fu
 		return x;
 	}
 
-	token[1] = '-0';
+	token[1] = `calc(-1 * ${token[1]})`;
 	return x;
 }

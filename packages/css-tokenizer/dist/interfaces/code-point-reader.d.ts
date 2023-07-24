@@ -3,8 +3,10 @@ export type CodePointReader = {
     representationEnd: number;
     cursor: number;
     codePointSource: Array<number>;
+    representationIndices: Array<number>;
     source: string;
     advanceCodePoint(n?: number): void;
     readCodePoint(n?: number): number | false;
     unreadCodePoint(n?: number): void;
+    resetRepresentation(): void;
 };

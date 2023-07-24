@@ -12,7 +12,7 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			String.fromCharCode(peeked),
+			String.fromCodePoint(peeked),
 			'a',
 		);
 
@@ -39,12 +39,12 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			String.fromCharCode(peeked[0]),
+			String.fromCodePoint(peeked[0]),
 			'a',
 		);
 
 		assert.deepEqual(
-			String.fromCharCode(peeked[1]),
+			String.fromCodePoint(peeked[1]),
 			'b',
 		);
 
@@ -72,17 +72,17 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			String.fromCharCode(peeked[0]),
+			String.fromCodePoint(peeked[0]),
 			'a',
 		);
 
 		assert.deepEqual(
-			String.fromCharCode(peeked[1]),
+			String.fromCodePoint(peeked[1]),
 			'b',
 		);
 
 		assert.deepEqual(
-			String.fromCharCode(peeked[2]),
+			String.fromCodePoint(peeked[2]),
 			'c',
 		);
 
@@ -106,7 +106,7 @@ import { Reader } from '@csstools/css-tokenizer';
 		);
 
 		assert.deepEqual(
-			String.fromCharCode(read),
+			String.fromCodePoint(read),
 			'a',
 		);
 
@@ -146,23 +146,23 @@ import { Reader } from '@csstools/css-tokenizer';
 		const read3 = r.readCodePoint();
 		assert.deepEqual(
 			read3,
-			55357,
+			128104,
 		);
 
 		assert.deepEqual(
-			String.fromCharCode(read3),
-			'\uD83D',
+			String.fromCodePoint(read3),
+			'👨',
 		);
 
 		const read4 = r.readCodePoint();
 		assert.deepEqual(
 			read4,
-			56424,
+			8205,
 		);
 
 		assert.deepEqual(
-			String.fromCharCode(read4),
-			'\uDC68',
+			String.fromCodePoint(read4),
+			'‍',
 		);
 
 		assert.deepEqual(
@@ -172,15 +172,11 @@ import { Reader } from '@csstools/css-tokenizer';
 			],
 			[
 				1,
-				4,
+				5,
 			],
 		);
 
 		// Read to the end
-		r.readCodePoint();
-		r.readCodePoint();
-		r.readCodePoint();
-		r.readCodePoint();
 		r.readCodePoint();
 		r.readCodePoint();
 		r.readCodePoint();
@@ -203,5 +199,27 @@ import { Reader } from '@csstools/css-tokenizer';
 			r.source.slice(r.representationStart, r.representationEnd + 1),
 			'bc👨‍👨‍👧‍👦d',
 		);
+
+		{
+			// Reader should be exhausted.
+			// Extra reads do not change the representation.
+
+			r.readCodePoint();
+			assert.deepEqual(
+				[
+					r.representationStart,
+					r.representationEnd,
+				],
+				[
+					1,
+					14,
+				],
+			);
+
+			assert.deepEqual(
+				r.source.slice(r.representationStart, r.representationEnd + 1),
+				'bc👨‍👨‍👧‍👦d',
+			);
+		}
 	}
 }
