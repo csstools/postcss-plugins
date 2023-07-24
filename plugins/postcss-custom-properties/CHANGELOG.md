@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased (minor)
+### 13.3.0
+
+_July 24, 2023_
 
 - Added: support for `:where(html)` and `:where(:root)` selectors
 - Fixed: cascade layers support
