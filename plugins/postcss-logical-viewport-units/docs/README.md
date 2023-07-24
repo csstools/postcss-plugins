@@ -32,34 +32,34 @@
 
 ## Options
 
- ### inlineDirection
+### inlineDirection
 
- The `inlineDirection` option allows you to specify the direction of the inline axe. The default value is `left-to-right` respectively which would match any latin language.
+The `inlineDirection` option allows you to specify the direction of the inline axe. The default value is `left-to-right`, which would match any latin language.
 
- You might want to tweak these value if you are using a different writing system, such as Arabic, Hebrew or Chinese for example.
+**You should tweak this value so that it is specific to your language and writing mode.**
 
- ```js
- <exportName>({
- 	inlineDirection: 'top-to-bottom'
- })
- ```
+```js
+<exportName>({
+	inlineDirection: 'top-to-bottom'
+})
+```
 
- ```pcss
- <example.css>
+```pcss
+<example.css>
 
- /* becomes */
+/* becomes */
 
- <example.vertical.expect.css>
- ```
+<example.vertical.expect.css>
+```
 
- Each direction must be one of the following:
+Each direction must be one of the following:
 
- - `top-to-bottom`
- - `bottom-to-top`
- - `left-to-right`
- - `right-to-left`
+- `top-to-bottom`
+- `bottom-to-top`
+- `left-to-right`
+- `right-to-left`
 
- Please do note that transformations won't do anything particular for `right-to-left` or `bottom-to-top`.
+Please do note that transformations won't do anything particular for `right-to-left` or `bottom-to-top`.
 
 ### preserve
 
