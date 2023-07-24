@@ -34,9 +34,9 @@
 
 ### inlineDirection
 
-The `inlineDirection` option allows you to specify the direction of the inline axe. The default value is `left-to-right` respectively which would match any latin language.
+The `inlineDirection` option allows you to specify the direction of the inline axe. The default value is `left-to-right`, which would match any latin language.
 
-You might want to tweak these value if you are using a different writing system, such as Arabic, Hebrew or Chinese for example.
+**You should tweak this value so that it is specific to your language and writing mode.**
 
 ```js
 <exportName>({

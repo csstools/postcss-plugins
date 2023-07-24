@@ -34,9 +34,9 @@
 
 ### blockDirection & inlineDirection
 
-The `blockDirection` and `inlineDirection` options allow you to specify the direction of the block and inline axes. The default values are `top-to-bottom` and `left-to-right` respectively which would match any latin language.
+The `blockDirection` and `inlineDirection` options allow you to specify the direction of the block and inline axes. The default values are `top-to-bottom` and `left-to-right` respectively, which would match any latin language.
 
-You might want to tweak these values if you are using a different writing system, such as Arabic, Hebrew or Chinese for example.
+**You should tweak these values so that they are specific to your language and writing mode.**
 
 ```js
 <exportName>({
