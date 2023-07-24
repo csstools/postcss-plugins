@@ -2,6 +2,7 @@
 
 ### Unreleased (minor)
 
+- Added `@csstools/postcss-exponential-functions` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions#readme) for usage details.
 - Added `env` option to control which [browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to target
 - Fix [browserslist supports queries](https://github.com/browserslist/browserslist#full-list)
 

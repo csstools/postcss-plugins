@@ -9,6 +9,7 @@ import { npmInstall } from './npm-install.mjs';
 import { npmPublish } from './npm-publish.mjs';
 import { npmVersion } from './npm-version.mjs';
 import { updateDocumentation } from './docs.mjs';
+import { currentVersion } from './current-version.mjs';
 
 const workspaces = await listWorkspaces();
 // Things to release
@@ -59,6 +60,26 @@ for (const workspace of workspaces) {
 		workspace.increment = increment;
 		workspace.changelog = changelog;
 		needsRelease.set(workspace.name, workspace);
+	}
+}
+
+// Only do a single initial publish at a time
+for (const [workspaceName, workspace] of needsRelease) {
+	const version = await currentVersion(workspace.path);
+
+	if (version === '0.0.0') {
+		const allWorkspaces = new Map(needsRelease);
+		allWorkspaces.delete(workspaceName);
+
+		needsRelease.clear();
+		needsRelease.set(workspaceName, workspace);
+
+		for (const [workspaceName, workspace] of allWorkspaces) {
+			maybeNextPlan.set(workspaceName, workspace);
+			notReleasableNow.set(workspaceName, workspace);
+		}
+
+		break;
 	}
 }
 
@@ -129,7 +150,12 @@ for (const workspace of notReleasableNow.values()) {
 				updated.newVersion
 			) {
 				packageInfo.dependencies[updated.name] = '^' + updated.newVersion;
-				changeLogAdditions += `- Updated ${nameAsLink} to ${versionAsLink} (${updated.increment})\n`;
+
+				if (updated.newVersion !== '1.0.0') {
+					// initial releases are not mentioned as updates
+					changeLogAdditions += `- Updated ${nameAsLink} to ${versionAsLink} (${updated.increment})\n`;
+				}
+
 				didChange = true;
 			}
 			if (

@@ -14,6 +14,8 @@ export default function getOptionsForBrowsersByFeature(browsers, feature, cssdbL
 			};
 		case 'nesting-rules':
 			{
+				// TODO : remove this in a next major release
+
 				// Nesting rules can transform selectors to use :is pseudo.
 				// This is more spec compliant but it's not supported by all browsers.
 				// If we can't use :is pseudo according to preset-env options, we add an extra option to avoid :is pseudo.

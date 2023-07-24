@@ -22,7 +22,7 @@
 		"postcss-preset-env"
 	],
 	"devDependencies": {
-		"stylelint": "^15.0.0",
+		"stylelint": "^15.10.2",
 		"stylelint-config-standard": "^34.0.0"
 	},
 	"scripts": {

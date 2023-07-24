@@ -3,7 +3,7 @@
 }
 
 .test-custom-property-fallbacks {
-	--firebrick: rgb(179, 35, 35);
+	--firebrick: lab(40% 56.6 39);
 }
 
 .test-custom-properties {
@@ -11,25 +11,15 @@
 }
 
 .test-image-set-function {
-	background-image: url(img/test.png);
-	background-image: -webkit-image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 	background-image: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 	order: 2;
 }
 
-@media (min-resolution: 192dpi) {
-
-.test-image-set-function {
-	background-image: url(img/test-2x.png);
-}
-}
-
 .test-logical-properties-and-values {
-	margin-left: 1px;
-	margin-right: 2px;
+	margin-inline-start: 1px;
+	margin-inline-end: 2px;
 	order: 3;
-	padding-top: 4px;
-	padding-bottom: 4px;
+	padding-block: 4px;
 }
 
 .test-logical-resize {
@@ -37,7 +27,6 @@
 }
 
 .test-logical-viewport-units {
-	width: calc(10vw + 5px);
 	width: calc(10vi + 5px);
 }
 
@@ -58,7 +47,7 @@
 	order: 9;
 }
 
-.test-nesting-rules + p, #test-is-pseudo + p {
+:is(.test-nesting-rules,#test-is-pseudo) + p {
 		order: 8;
 	}
 
@@ -68,7 +57,7 @@
 	}
 }
 
-@media (min-width: 480px) and (max-width: 767.98px) {
+@media (480px <= width < 768px) {
 	.test-media-query-ranges {
 		order: 11;
 	}
@@ -81,7 +70,7 @@
 	}
 }
 
-h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.does-not-exist), h3.test-custom-selectors:not(.does-not-exist), h4.test-custom-selectors:not(.does-not-exist), h5.test-custom-selectors:not(.does-not-exist), h6.test-custom-selectors:not(.does-not-exist), .test-custom-selectors.heading-7 {
+.test-custom-selectors:is(h1, h2, h3, h4, h5, h6, .heading-7) {
 	order:12;
 }
 
@@ -106,13 +95,13 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .test-lab-function {
-	background-color: rgb(179, 35, 35);
-	color: rgba(179, 34, 35, 0.5);
+	background-color: lab(40% 56.6 39);
+	color: lch(40% 68.8 34.5 / 50%);
 	order: 17;
 }
 
 .test-system-ui-font-family {
-	font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+	font-family: system-ui;
 	order: 18;
 }
 
@@ -131,7 +120,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	order: 21;
 }
 
-.test-not-pseudo-class:not(:first-child):not(.special) {
+.test-not-pseudo-class:not(:first-child, .special) {
 	order: 22;
 }
 
@@ -153,7 +142,6 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .test-double-position-gradients {
-	background-image: conic-gradient(yellowgreen 40%, gold 0deg,gold 75%, #f06 0deg);
 	background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
 }
 
@@ -165,16 +153,16 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	background-color: yellow;
 }
 
-.a:focus, .a:hover, .b:focus, .b:hover {
+:is(.a, .b):is(:focus, :hover) {
 	order: 27;
 }
 
-.a.c > .b + .d {
+:is(.a > .b) + :is(.c > .d) {
 	order: 28;
 }
 
 .test-hwb-function {
-	background-color: rgba(0, 196, 255, 0.5);
+	background-color: hwb(194 0% 0% / .5);
 }
 
 .test-opacity-percent {
@@ -309,68 +297,62 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .logical-float {
-	float: left;
+	float: right;
 }
 
 .color-function {
-	prop-1: rgb(0, 129, 96);
+	prop-1: color(display-p3 0.00000 0.51872 0.36985);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
-	prop-3: rgb(7, 3, 1);
-	prop-4: rgb(7, 3, 1);
+	prop-3: color(display-p3 0.02472 0.01150 0.00574 / 1);
+	prop-4: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
 	prop-5: color(display-p3 1 1 1 1);
 }
 
 .oklab {
-	color-1: rgb(73, 71, 69);
-	color-2: rgb(121, 34, 67);
-	color-3: rgba(121, 34, 67, 0.5);
-	color-4: rgb(121, 34, 67);
-	color-5: rgba(121, 34, 67, 0.5);
-	color-6: rgb(177, 102, 126);
+	color-1: oklab(40% 0.001236 0.0039);
+	color-2: oklab(40% 0.1236 0.0039 / 1);
+	color-3: oklab(40% 0.1236 0.0039 / .5);
+	color-4: oklab(40% 0.1236 0.0039 / 100%);
+	color-5: oklab(40% 0.1236 0.0039 / 50%);
+	color-6: oklab(60% 0.1 0);
 	color-7: oklab(60% 0.1 0 foo);
-	color-8: rgb(125, 35, 41);
-	color-9: rgb(198, 93, 7);
-	color-10: rgb(157, 147, 24);
-	color-11: rgb(104, 166, 57);
-	color-12: rgb(98, 172, 239);
+	color-8: oklab(40.101% 0.1147 0.0453);
+	color-9: oklab(59.686% 0.1009 0.1192);
+	color-10: oklab(65.125% -0.0320 0.1274);
+	color-11: oklab(66.016% -0.1084 0.1114);
+	color-12: oklab(72.322% -0.0465 -0.1150);
 }
 
 .oklch {
-	color-1: rgb(126, 37, 15);
-	color-2: rgb(126, 37, 15);
-	color-3: rgba(126, 37, 15, 0.5);
-	color-4: rgb(126, 37, 15);
-	color-5: rgba(126, 37, 15, 0.5);
-	color-6: rgb(197, 84, 124);
+	color-1: oklch(40% 0.1268735435 34.568626);
+	color-2: oklch(40% 0.1268735435 34.568626 / 1);
+	color-3: oklch(40% 0.1268735435 34.568626 / .5);
+	color-4: oklch(40% 0.1268735435 34.568626 / 100%);
+	color-5: oklch(40% 0.1268735435 34.568626 / 50%);
+	color-6: oklch(60% 0.150 0);
 
-	color-7: rgb(0, 149, 131);
+	color-7: oklch(60% 0.1250 180);
+	color-8: oklch(60% 0.1250 180deg);
+	color-9: oklch(60% 0.1250 0.5turn);
+	color-10: oklch(60% 0.1250 200grad);
+	color-11: oklch(60% 0.1250 3.14159rad);
 
-	color-7: color(display-p3 0.19244 0.58461 0.51559);
-	color-8: rgb(0, 149, 131);
-	color-8: color(display-p3 0.19244 0.58461 0.51559);
-	color-9: rgb(0, 149, 131);
-	color-9: color(display-p3 0.19244 0.58461 0.51559);
-	color-10: rgb(0, 149, 131);
-	color-10: color(display-p3 0.19244 0.58461 0.51559);
-	color-11: rgb(0, 149, 131);
-	color-11: color(display-p3 0.19244 0.58461 0.51559);
-
-	color-12: rgb(188, 101, 59);
-	color-13: rgb(188, 101, 59);
-	color-14: rgb(188, 101, 59);
-	color-15: rgb(188, 101, 59);
-	color-16: rgb(188, 101, 59);
+	color-12: oklch(60% 0.1250 45);
+	color-13: oklch(60% 0.1250 45deg);
+	color-14: oklch(60% 0.1250 0.125turn);
+	color-15: oklch(60% 0.1250 50grad);
+	color-16: oklch(60% 0.1250 0.785398rad);
 	color-17: oklch(60% 0.1250 0.785398unknown);
 }
 
 .ic-unit {
 	--value-2ic: initial;
-	text-indent: 2em;
+	text-indent: 2ic;
 	content: var(--value-2ic);
-	left: var(--non-existing, 2em);
-	width: calc(8em + 20px);
+	left: var(--non-existing, 2ic);
+	width: calc(8ic + 20px);
 	height: 10px;
-	margin: 0.5em 1em .2em;
+	margin: 0.5ic 1ic .2ic;
 	padding: 2    ic;
 }
 
@@ -398,16 +380,16 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .trigonometric {
-	left: 0.70711;
-	left: 0.70711;
-	left: 1;
-	left: 30deg;
-	left: 60deg;
-	left: 84.28941deg;
-	left: -45deg;
-	left: 90deg;
-	left: 135deg;
-	left: 0.99863;
+	left: sin(45deg);
+	left: cos(45deg);
+	left: tan(45deg);
+	left: asin(0.5);
+	left: acos(0.5);
+	left: atan(10);
+	left: atan2(-1, 1);
+	left: asin(sin(pi / 2));
+	left: atan2(infinity, -infinity);
+	left: sin((1deg * 3) + .25turn);
 }
 
 .trigonometric-ignore-not-a-function {
@@ -430,7 +412,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	left: atan2();
 }
 
-[data-view-size=m] .view {
+:is([data-view-size=m]) .view {
 		background: red;
 	}
 
@@ -443,7 +425,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .stage__container {
-	left: var(--size, 1rem);
+	inset-inline-start: var(--size, 1rem);
 }
 
 :scope {
@@ -462,48 +444,30 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	}
 }
 
-@media (min-aspect-ratio: 177/100) {
+@media (min-aspect-ratio: 1.77) {
 	/* media query aspect ratio : <number> */
 }
 
 .color-mix {
-	color-1: rgba(0, 0, 255, 0.65);
-	color-2: rgba(0, 0, 255, 0.65);
-	color-3: rgba(0, 0, 255, 0.65);
-	color-4: rgba(122, 0, 182, 0.65);
-	color-4: color(display-p3 0.44471 0 0.71665 / 0.65);
-	color-5: rgba(149, 0, 122, 0.65);
-	color-5: color(display-p3 0.55417 0 0.48083 / 0.65);
-	color-6: rgba(179, 0, 255, 0.65);
+	color-1: color-mix(in srgb, rgb(255 0 0 / 0), blue 65%);
+	color-2: color-mix(in lab, rgb(255 0 0 / 0), blue 65%);
+	color-3: color-mix(in xyz, rgb(255 0 0 / 0), blue 65%);
+	color-4: color-mix(in oklch, rgb(255 0 0 / 0), blue 65%);
+	color-5: color-mix(in lch, rgb(255 0 0 / 0), blue 65%);
+	color-6: color-mix(in hsl, rgb(255 0 0 / 0), blue 65%);
 }
 
 .gradients-interpolation-method {
-	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), rgb(188, 179, 255), rgb(164, 192, 255), rgb(137, 206, 255), rgb(111, 218, 255), rgb(93, 229, 255), rgb(94, 237, 237) 100%);
-
-	background-image: radial-gradient(farthest-corner circle at 50% 115%, rgb(255, 71, 0) 0%, rgb(255, 103, 0), rgb(255, 137, 0), rgb(255, 169, 0), rgb(250, 199, 0), rgb(197, 225, 0), rgb(116, 246, 0), rgb(0, 255, 86), rgb(0, 255, 171), rgb(0, 255, 239), rgb(0, 255, 255) 100%);
-
-	background-image: radial-gradient(farthest-corner circle at 50% 115%, color(display-p3 1.2198 0.38716 0.16814) 0%, color(display-p3 1.20289 0.47522 -0.3004), color(display-p3 1.15167 0.57912 -0.3946), color(display-p3 1.06645 0.68611 -0.4296), color(display-p3 0.94738 0.78766 -0.4263), color(display-p3 0.79233 0.87807 -0.3707), color(display-p3 0.59026 0.95319 -0.1467), color(display-p3 0.27082 1.00972 0.43521), color(display-p3 -0.3983 1.04501 0.69996), color(display-p3 -0.5392 1.05733 0.93686), color(display-p3 -0.5777 1.04644 1.15396) 100%);
+	--background-image: linear-gradient(in oklch decreasing hue, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
 
 	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, oklch(80% .3 34) 0%, oklch(90% .3 200) 100%);
 }
 
-@supports (color: color(display-p3 0 0 0)) {
-.gradients-interpolation-method {
-	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), color(display-p3 0.73255 0.7035 1.03328), color(display-p3 0.66377 0.75145 1.06652), color(display-p3 0.59643 0.80011 1.0696), color(display-p3 0.54198 0.8462 1.04382), color(display-p3 0.51578 0.88643 0.99318), rgb(94, 237, 237) 100%);
-}
-}
-
-@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0% / 0)) {
-.gradients-interpolation-method {
-	--background-image: linear-gradient(in oklch decreasing hue, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
-}
-}
-
 .test-css-color-5-interop {
 	color-1: rgb(196, 129, 72);
-	color-2: color(from rgb(196, 129, 72) a98-rgb r g b / none);
+	color-2: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / none);
 	color-3: rgb(234, 133, 82);
-	color-4: color(from rgb(234, 133, 82) prophoto-rgb r g none);
+	color-4: color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g none);
 	color-5: rgb(179, 157, 51);
 	color-6: rgb(179, 35, 35);
 	color-7: rgb(163, 57, 39);

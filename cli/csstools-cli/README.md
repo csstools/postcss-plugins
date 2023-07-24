@@ -47,6 +47,7 @@ Available Plugins:
   postcss-custom-selectors
   postcss-dir-pseudo-class
   postcss-double-position-gradients
+  postcss-exponential-functions
   postcss-focus-visible
   postcss-focus-within
   postcss-font-format-keywords
