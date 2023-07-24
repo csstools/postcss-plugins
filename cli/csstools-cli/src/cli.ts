@@ -13,6 +13,7 @@ import postcssCustomProperties from './plugins/postcss-custom-properties';
 import postcssCustomSelectors from './plugins/postcss-custom-selectors';
 import postcssDirPseudoClass from './plugins/postcss-dir-pseudo-class';
 import postcssDoublePositionGradients from './plugins/postcss-double-position-gradients';
+import postcssExponentialFunctions from './plugins/postcss-exponential-functions';
 import postcssFocusVisible from './plugins/postcss-focus-visible';
 import postcssFocusWithin from './plugins/postcss-focus-within';
 import postcssFontFormatKeywords from './plugins/postcss-font-format-keywords';
@@ -91,6 +92,9 @@ function main() {
 			return;
 		case 'postcss-double-position-gradients':
 			postcssDoublePositionGradients();
+			return;
+		case 'postcss-exponential-functions':
+			postcssExponentialFunctions();
 			return;
 		case 'postcss-focus-visible':
 			postcssFocusVisible();
@@ -210,6 +214,7 @@ function main() {
 				'  postcss-custom-selectors',
 				'  postcss-dir-pseudo-class',
 				'  postcss-double-position-gradients',
+				'  postcss-exponential-functions',
 				'  postcss-focus-visible',
 				'  postcss-focus-within',
 				'  postcss-font-format-keywords',

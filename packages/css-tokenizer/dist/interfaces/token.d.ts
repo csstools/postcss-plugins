@@ -50,7 +50,9 @@ export declare enum TokenType {
     /** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-open-curly */
     OpenCurly = "{-token",
     /** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-close-curly */
-    CloseCurly = "}-token"
+    CloseCurly = "}-token",
+    /** https://drafts.csswg.org/css-syntax/#typedef-unicode-range-token */
+    UnicodeRange = "unicode-range-token"
 }
 export declare enum NumberType {
     Integer = "integer",
@@ -75,6 +77,7 @@ export type TokenDelim = Token<TokenType.Delim, {
 }>;
 export type TokenDimension = Token<TokenType.Dimension, {
     value: number;
+    signCharacter?: '+' | '-';
     unit: string;
     type: NumberType;
 }>;
@@ -91,10 +94,12 @@ export type TokenIdent = Token<TokenType.Ident, {
 }>;
 export type TokenNumber = Token<TokenType.Number, {
     value: number;
+    signCharacter?: '+' | '-';
     type: NumberType;
 }>;
 export type TokenPercentage = Token<TokenType.Percentage, {
     value: number;
+    signCharacter?: '+' | '-';
 }>;
 export type TokenSemicolon = Token<TokenType.Semicolon, undefined>;
 export type TokenString = Token<TokenType.String, {
@@ -110,7 +115,11 @@ export type TokenOpenSquare = Token<TokenType.OpenSquare, undefined>;
 export type TokenCloseSquare = Token<TokenType.CloseSquare, undefined>;
 export type TokenOpenCurly = Token<TokenType.OpenCurly, undefined>;
 export type TokenCloseCurly = Token<TokenType.CloseCurly, undefined>;
-export type CSSToken = TokenAtKeyword | TokenBadString | TokenBadURL | TokenCDC | TokenCDO | TokenColon | TokenComma | TokenComment | TokenDelim | TokenDimension | TokenEOF | TokenFunction | TokenHash | TokenIdent | TokenNumber | TokenPercentage | TokenSemicolon | TokenString | TokenURL | TokenWhitespace | TokenOpenParen | TokenCloseParen | TokenOpenSquare | TokenCloseSquare | TokenOpenCurly | TokenCloseCurly;
+export type TokenUnicodeRange = Token<TokenType.UnicodeRange, {
+    startOfRange: number;
+    endOfRange: number;
+}>;
+export type CSSToken = TokenAtKeyword | TokenBadString | TokenBadURL | TokenCDC | TokenCDO | TokenColon | TokenComma | TokenComment | TokenDelim | TokenDimension | TokenEOF | TokenFunction | TokenHash | TokenIdent | TokenNumber | TokenPercentage | TokenSemicolon | TokenString | TokenURL | TokenWhitespace | TokenOpenParen | TokenCloseParen | TokenOpenSquare | TokenCloseSquare | TokenOpenCurly | TokenCloseCurly | TokenUnicodeRange;
 export type Token<T extends TokenType, U> = [
     /** The type of token */
     T,

@@ -49,39 +49,39 @@ instructions for:
 
 ## Options
 
- ### inlineDirection
+### inlineDirection
 
- The `inlineDirection` option allows you to specify the direction of the inline axe. The default value is `left-to-right` respectively which would match any latin language.
+The `inlineDirection` option allows you to specify the direction of the inline axe. The default value is `left-to-right`, which would match any latin language.
 
- You might want to tweak these value if you are using a different writing system, such as Arabic, Hebrew or Chinese for example.
+**You should tweak this value so that it is specific to your language and writing mode.**
 
- ```js
- postcssLogicalViewportUnits({
- 	inlineDirection: 'top-to-bottom'
- })
- ```
+```js
+postcssLogicalViewportUnits({
+	inlineDirection: 'top-to-bottom'
+})
+```
 
- ```pcss
- .foo {
+```pcss
+.foo {
 	margin: 10vi 20vb;
 }
 
- /* becomes */
+/* becomes */
 
- .foo {
+.foo {
 	margin: 10vh 20vw;
 	margin: 10vi 20vb;
 }
- ```
+```
 
- Each direction must be one of the following:
+Each direction must be one of the following:
 
- - `top-to-bottom`
- - `bottom-to-top`
- - `left-to-right`
- - `right-to-left`
+- `top-to-bottom`
+- `bottom-to-top`
+- `left-to-right`
+- `right-to-left`
 
- Please do note that transformations won't do anything particular for `right-to-left` or `bottom-to-top`.
+Please do note that transformations won't do anything particular for `right-to-left` or `bottom-to-top`.
 
 ### preserve
 

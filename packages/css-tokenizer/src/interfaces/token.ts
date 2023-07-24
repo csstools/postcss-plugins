@@ -53,6 +53,10 @@ export enum TokenType {
 	OpenCurly = '{-token',
 	/** https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-close-curly */
 	CloseCurly = '}-token',
+
+	/** https://drafts.csswg.org/css-syntax/#typedef-unicode-range-token */
+	UnicodeRange = 'unicode-range-token',
+
 }
 
 export enum NumberType {
@@ -74,13 +78,13 @@ export type TokenColon = Token<TokenType.Colon, undefined>;
 export type TokenComma = Token<TokenType.Comma, undefined>;
 export type TokenComment = Token<TokenType.Comment, undefined>;
 export type TokenDelim = Token<TokenType.Delim, { value: string }>;
-export type TokenDimension = Token<TokenType.Dimension, { value: number, unit: string, type: NumberType }>;
+export type TokenDimension = Token<TokenType.Dimension, { value: number, signCharacter?: '+' | '-', unit: string, type: NumberType }>;
 export type TokenEOF = Token<TokenType.EOF, undefined>;
 export type TokenFunction = Token<TokenType.Function, { value: string }>;
 export type TokenHash = Token<TokenType.Hash, { value: string, type: HashType }>;
 export type TokenIdent = Token<TokenType.Ident, { value: string }>;
-export type TokenNumber = Token<TokenType.Number, { value: number, type: NumberType }>;
-export type TokenPercentage = Token<TokenType.Percentage, { value: number }>;
+export type TokenNumber = Token<TokenType.Number, { value: number, signCharacter?: '+' | '-', type: NumberType }>;
+export type TokenPercentage = Token<TokenType.Percentage, { value: number, signCharacter?: '+' | '-' }>;
 export type TokenSemicolon = Token<TokenType.Semicolon, undefined>;
 export type TokenString = Token<TokenType.String, { value: string }>;
 export type TokenURL = Token<TokenType.URL, { value: string }>;
@@ -92,6 +96,8 @@ export type TokenOpenSquare = Token<TokenType.OpenSquare, undefined>;
 export type TokenCloseSquare = Token<TokenType.CloseSquare, undefined>;
 export type TokenOpenCurly = Token<TokenType.OpenCurly, undefined>;
 export type TokenCloseCurly = Token<TokenType.CloseCurly, undefined>;
+
+export type TokenUnicodeRange = Token<TokenType.UnicodeRange, { startOfRange: number, endOfRange: number }>;
 
 export type CSSToken = TokenAtKeyword |
 	TokenBadString |
@@ -118,7 +124,8 @@ export type CSSToken = TokenAtKeyword |
 	TokenOpenSquare |
 	TokenCloseSquare |
 	TokenOpenCurly |
-	TokenCloseCurly;
+	TokenCloseCurly |
+	TokenUnicodeRange;
 
 export type Token<T extends TokenType, U> = [
 	/** The type of token */

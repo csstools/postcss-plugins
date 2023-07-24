@@ -1,12 +1,17 @@
 # Changes to CSS Color Parser
 
-### Unreleased (patch) 
+### 1.2.3
+
+_July 24, 2023_ 
 
 - Allow number values in `hwb`.
 - Fix value calculation for `s`, `l` (`hsl`) and `w`, `b` (`hwb`) components in relative color syntax.
 - `a` and `b` components in `lab` and `oklab` are analogous.
 - Powerless components are limited to achromatic colors and only affect `hue` unless otherwise specified.
 - Fix value normalization.
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#220) (minor)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.3.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#231) (patch)
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`1.1.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#113) (patch)
 
 ### 1.2.2
 

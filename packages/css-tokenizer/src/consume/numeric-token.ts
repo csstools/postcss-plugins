@@ -1,5 +1,5 @@
 import { checkIfThreeCodePointsWouldStartAnIdentSequence } from '../checks/three-code-points-would-start-ident-sequence';
-import { PERCENTAGE_SIGN } from '../code-points/code-points';
+import { HYPHEN_MINUS, PERCENTAGE_SIGN, PLUS_SIGN } from '../code-points/code-points';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
 import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '../interfaces/token';
@@ -8,8 +8,19 @@ import { consumeNumber } from './number';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-numeric-token
 export function consumeNumericToken(ctx: Context, reader: CodePointReader): TokenPercentage|TokenNumber|TokenDimension {
+	let signCharacter: undefined | '+' | '-' = undefined;
+
+	{
+		const peeked = reader.codePointSource[reader.cursor];
+		if (peeked === HYPHEN_MINUS) {
+			signCharacter = '-';
+		} else if (peeked === PLUS_SIGN) {
+			signCharacter = '+';
+		}
+	}
+
 	const numberType = consumeNumber(ctx, reader);
-	const numberValue = parseFloat(reader.source.slice(reader.representationStart, reader.representationEnd + 1));
+	const numberValue = parseFloat(reader.source.slice(reader.representationStart, reader.representationEnd + 1)) || 0;
 
 	if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
 		const unit = consumeIdentSequence(ctx, reader);
@@ -20,8 +31,9 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 			reader.representationEnd,
 			{
 				value: numberValue,
+				signCharacter: signCharacter,
 				type: numberType,
-				unit: String.fromCharCode(...unit),
+				unit: String.fromCodePoint(...unit),
 			},
 		];
 	}
@@ -36,6 +48,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 			reader.representationEnd,
 			{
 				value: numberValue,
+				signCharacter: signCharacter,
 			},
 		];
 	}
@@ -47,6 +60,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 		reader.representationEnd,
 		{
 			value: numberValue,
+			signCharacter: signCharacter,
 			type: numberType,
 		},
 	];

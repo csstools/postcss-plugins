@@ -1040,3 +1040,10 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	color: rgba(87 107 149 / var(--opacity));
 }
 }
+
+.exponential-functions {
+	width: 8px;
+	width: -webkit-calc(1px * pow(2, 3));
+	width: -moz-calc(1px * pow(2, 3));
+	width: calc(1px * pow(2, 3));
+}

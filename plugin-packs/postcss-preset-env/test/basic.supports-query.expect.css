@@ -182,7 +182,7 @@
 }
 
 .test-opacity-percent {
-	opacity: 0.42;
+	opacity: 42%;
 }
 
 .clamp-same-unit {
@@ -527,4 +527,8 @@
 .test-property-with-var {
 	--opacity: 1;
 	color: rgba(87 107 149 / var(--opacity));
+}
+
+.exponential-functions {
+	width: 8px;
 }

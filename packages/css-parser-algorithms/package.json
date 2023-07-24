@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-parser-algorithms",
 	"description": "Algorithms to help you parse CSS from an array of tokens.",
-	"version": "2.3.0",
+	"version": "2.3.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -45,7 +45,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-tokenizer": "^2.1.1"
+		"@csstools/css-tokenizer": "^2.2.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

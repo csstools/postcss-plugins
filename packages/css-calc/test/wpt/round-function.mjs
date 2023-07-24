@@ -252,12 +252,12 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('round(-5, infinity)'),
-	'-0',
+	'calc(-1 * 0)',
 );
 
 assert.strictEqual(
 	calc('round(-5, -infinity)'),
-	'-0',
+	'calc(-1 * 0)',
 );
 
 assert.strictEqual(
@@ -272,12 +272,12 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('round(to-zero, -5, infinity)'),
-	'-0',
+	'calc(-1 * 0)',
 );
 
 assert.strictEqual(
 	calc('round(to-zero, -5, -infinity)'),
-	'-0',
+	'calc(-1 * 0)',
 );
 
 // 'up': pos goes to +inf, 0+ goes to 0+, else 0-
@@ -293,12 +293,12 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('round(up, -1 * 0, infinity)'),
-	'-0',
+	'calc(-1 * 0)',
 );
 
 assert.strictEqual(
 	calc('round(up, -1, infinity)'),
-	'-0',
+	'calc(-1 * 0)',
 );
 
 // 'down': neg goes to -inf, -0 goes to -0, else 0+
@@ -309,7 +309,12 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('round(down, -1 * 0, infinity)'),
-	'-0',
+	'calc(-1 * 0)',
+);
+
+assert.strictEqual(
+	calc('round(down, -1 * 0px, calc(1px * infinity))'),
+	'calc(-1 * 0px)',
 );
 
 assert.strictEqual(

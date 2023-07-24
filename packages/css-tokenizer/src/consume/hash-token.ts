@@ -29,7 +29,7 @@ export function consumeHashToken(ctx: Context, reader: CodePointReader): TokenDe
 			reader.representationStart,
 			reader.representationEnd,
 			{
-				value: String.fromCharCode(...identSequence),
+				value: String.fromCodePoint(...identSequence),
 				type: hashType,
 			},
 		];

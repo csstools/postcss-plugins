@@ -1,5 +1,13 @@
 # Changes to CSS Tokenizer
 
+### 2.2.0
+
+_July 24, 2023_
+
+- Add support for `unicode-range-token`
+- Add `signCharacter` to `DimensionToken`, `NumberToken` and `PercentageToken`
+- Correctly tokenize negative zero `-0`
+
 ### 2.1.1
 
 _April 10, 2023_
