@@ -14,6 +14,7 @@ import type { pluginOptions as postcssCustomSelectors } from 'postcss-custom-sel
 import type { pluginOptions as postcssDirPseudoClass } from 'postcss-dir-pseudo-class';
 import type { pluginOptions as postcssNormalizeDisplayValues } from '@csstools/postcss-normalize-display-values';
 import type { pluginOptions as postcssDoublePositionGradients } from 'postcss-double-position-gradients';
+import type { pluginOptions as postcssExponentialFunctions } from '@csstools/postcss-exponential-functions';
 import type { pluginOptions as postcssLogicalFloatAndClear } from '@csstools/postcss-logical-float-and-clear';
 import type { pluginOptions as postcssFocusVisible } from 'postcss-focus-visible';
 import type { pluginOptions as postcssFocusWithin } from 'postcss-focus-within';
@@ -83,6 +84,8 @@ export type pluginsOptions = {
     'display-two-values'?: postcssNormalizeDisplayValues | boolean;
     /** plugin options for "postcss-double-position-gradients" */
     'double-position-gradients'?: postcssDoublePositionGradients | boolean;
+    /** plugin options for "@csstools/postcss-exponential-functions" */
+    'exponential-functions'?: postcssExponentialFunctions | boolean;
     /** plugin options for "@csstools/postcss-logical-float-and-clear" */
     'float-clear-logical-values'?: postcssLogicalFloatAndClear | boolean;
     /** plugin options for "postcss-focus-visible" */

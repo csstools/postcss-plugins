@@ -65,6 +65,8 @@ const tests = [
 	['color-mix(in oklch, green 40%, hsl(292deg 85.71% 72.55%))', 'rgb(0, 148, 253)'],
 
 	['color-mix(in srgb, color(xyz 1 none 0) 30%, rgb(none 255 128))', 'rgb(255, 255, 110)'],
+
+	['color-mix(in oklab, #09232c, white 50%)', 'rgb(123, 137, 142)'],
 ];
 
 for (const test of tests) {

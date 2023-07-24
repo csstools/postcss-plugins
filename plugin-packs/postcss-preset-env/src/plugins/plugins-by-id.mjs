@@ -14,6 +14,7 @@ import postcssCustomSelectors from 'postcss-custom-selectors';
 import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
 import postcssNormalizeDisplayValues from '@csstools/postcss-normalize-display-values';
 import postcssDoublePositionGradients from 'postcss-double-position-gradients';
+import postcssExponentialFunctions from '@csstools/postcss-exponential-functions';
 import postcssLogicalFloatAndClear from '@csstools/postcss-logical-float-and-clear';
 import postcssFocusVisible from 'postcss-focus-visible';
 import postcssFocusWithin from 'postcss-focus-within';
@@ -70,6 +71,7 @@ export const pluginsById = new Map(
 		['dir-pseudo-class', postcssDirPseudoClass],
 		['display-two-values', postcssNormalizeDisplayValues],
 		['double-position-gradients', postcssDoublePositionGradients],
+		['exponential-functions', postcssExponentialFunctions],
 		['float-clear-logical-values', postcssLogicalFloatAndClear],
 		['focus-visible-pseudo-class', postcssFocusVisible],
 		['focus-within-pseudo-class', postcssFocusWithin],

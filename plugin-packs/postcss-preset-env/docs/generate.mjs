@@ -12,12 +12,8 @@ ids.sort();
 
 for (const id of ids) {
 	const cssdbFeature = cssdb.find(feature => feature.id === id);
-	const polyfills = cssdbFeature.polyfills || [];
-	const cssdbPlugins = polyfills.filter(polyfill => polyfill.type === 'PostCSS Plugin');
-
-	if (cssdbPlugins.length === 0) {
-		continue;
-	}
+	const polyfills = cssdbFeature?.polyfills || [];
+	const cssdbPlugins = polyfills?.filter(polyfill => polyfill.type === 'PostCSS Plugin');
 
 	cssdbPlugins.sort((a) => {
 		if (a.link.indexOf('https://github.com/csstools') === 0) {
@@ -31,10 +27,17 @@ for (const id of ids) {
 		return 1;
 	});
 
-	featuresTable = featuresTable + `| \`${id}\` `;
-	featuresTable = featuresTable + `| ${cssdbFeature.title} `;
-	featuresTable = featuresTable + `| [example](https://preset-env.cssdb.org/features/#${id}) `;
-	featuresTable = featuresTable + `| [docs](${cssdbPlugins[0].link}#readme) |\n`;
+	if (cssdbFeature && cssdbPlugins.length > 0) {
+		featuresTable = featuresTable + `| \`${id}\` `;
+		featuresTable = featuresTable + `| ${cssdbFeature.title} `;
+		featuresTable = featuresTable + `| [example](https://preset-env.cssdb.org/features/#${id}) `;
+		featuresTable = featuresTable + `| [docs](${cssdbPlugins[0].link}#readme) |\n`;
+	} else {
+		featuresTable = featuresTable + `| \`${id}\` `;
+		featuresTable = featuresTable + '|   ';
+		featuresTable = featuresTable + '|   ';
+		featuresTable = featuresTable + '|   |\n';
+	}
 }
 
 let featuresDoc = (await fsp.readFile('./docs/FEATURES.md', 'utf8')).toString();
