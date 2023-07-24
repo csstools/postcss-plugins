@@ -7,6 +7,7 @@
 - `a` and `b` components in `lab` and `oklab` are analogous.
 - Powerless components are limited to achromatic colors and only affect `hue` unless otherwise specified.
 - Fix value normalization.
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#220) (minor)
 
 ### 1.2.2
 

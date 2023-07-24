@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Use the latest utilities from `@csstools/css-tokenizer` to reduce the bundle size.
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#220) (minor)
 
 ### 3.0.0
 
