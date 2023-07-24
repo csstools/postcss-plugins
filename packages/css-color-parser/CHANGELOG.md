@@ -1,6 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (patch) 
+### 1.2.3
+
+_July 24, 2023_ 
 
 - Allow number values in `hwb`.
 - Fix value calculation for `s`, `l` (`hsl`) and `w`, `b` (`hwb`) components in relative color syntax.
