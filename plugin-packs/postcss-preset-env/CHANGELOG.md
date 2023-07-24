@@ -5,6 +5,7 @@
 - Added `@csstools/postcss-exponential-functions` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions#readme) for usage details.
 - Added `env` option to control which [browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to target
 - Fix [browserslist supports queries](https://github.com/browserslist/browserslist#full-list)
+- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.7.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#770-july-24-2023) (major)
 
 ### 9.0.0
 
