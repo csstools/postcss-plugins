@@ -14,6 +14,7 @@ import './token/cdo.mjs';
 import './token/comment.mjs';
 import './token/numeric.mjs';
 import './token/string.mjs';
+import './token/unicode-range.mjs';
 import './token/url.mjs';
 
 // Complex

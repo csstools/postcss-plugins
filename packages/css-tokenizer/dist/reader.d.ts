@@ -3,6 +3,7 @@ export declare class Reader implements CodePointReader {
     cursor: number;
     source: string;
     codePointSource: Array<number>;
+    representationIndices: Array<number>;
     length: number;
     representationStart: number;
     representationEnd: number;
@@ -10,4 +11,5 @@ export declare class Reader implements CodePointReader {
     advanceCodePoint(n?: number): void;
     readCodePoint(n?: number): number | false;
     unreadCodePoint(n?: number): void;
+    resetRepresentation(): void;
 }

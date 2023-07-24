@@ -11,7 +11,7 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 		assert.deepEqual(
 			collectTokens(t),
 			[
-				['number-token', i.toString(), 0, 0, { value: i, type: 'integer' }],
+				['number-token', i.toString(), 0, 0, { value: i, signCharacter: undefined, type: 'integer' }],
 				['EOF-token', '', -1, -1, undefined],
 			],
 		);
@@ -25,7 +25,7 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 		assert.deepEqual(
 			collectTokens(t),
 			[
-				['number-token', i.toString(), 0, 1, { value: i, type: 'integer' }],
+				['number-token', i.toString(), 0, 1, { value: i, signCharacter: undefined, type: 'integer' }],
 				['EOF-token', '', -1, -1, undefined],
 			],
 		);

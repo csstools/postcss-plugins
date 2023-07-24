@@ -124,7 +124,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 		if (reader.codePointSource[reader.cursor] === REVERSE_SOLIDUS) {
 			if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
 				reader.advanceCodePoint();
-				string += String.fromCharCode(consumeEscapedCodePoint(ctx, reader));
+				string += String.fromCodePoint(consumeEscapedCodePoint(ctx, reader));
 				continue;
 			}
 
@@ -150,7 +150,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			];
 		}
 
-		string += String.fromCharCode(reader.codePointSource[reader.cursor]);
+		string += String.fromCodePoint(reader.codePointSource[reader.cursor]);
 		reader.advanceCodePoint();
 	}
 }
