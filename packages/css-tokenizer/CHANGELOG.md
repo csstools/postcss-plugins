@@ -1,6 +1,8 @@
 # Changes to CSS Tokenizer
 
-### Unreleased (minor)
+### 2.2.0
+
+_July 24, 2023_
 
 - Add support for `unicode-range-token`
 - Add `signCharacter` to `DimensionToken`, `NumberToken` and `PercentageToken`
