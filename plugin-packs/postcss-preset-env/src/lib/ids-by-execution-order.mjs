@@ -51,6 +51,7 @@ export default [
 	// Math functions.
 	'stepped-value-functions',
 	'trigonometric-functions',
+	'exponential-functions',
 	'clamp',
 	'nested-calc',
 	// Math functions.

@@ -142,6 +142,17 @@ postcssTape(plugin)({
 			}
 		}
 	},
+	'basic:nesting:noIsPseudoSelector:false': {
+		message: 'supports { stage: false, features: { "nesting-rules": { "noIsPseudoSelector": false } } } usage',
+		options: {
+			stage: false,
+			features: {
+				'nesting-rules': {
+					noIsPseudoSelector: false
+				}
+			}
+		}
+	},
 	'basic:nesting:false': {
 		message: 'supports { stage: 0, features: { "nesting-rules": false } } usage',
 		options: {
@@ -185,6 +196,16 @@ postcssTape(plugin)({
 		message: 'supports { logical: { inlineDirection: "right-to-left" }, stage: 0, browsers: "> 0%" } usage',
 		options: {
 			stage: 0,
+			logical: {
+				inlineDirection: 'right-to-left'
+			}
+		},
+	},
+	'basic:hebrew:all-browsers-have-support': {
+		message: 'supports { logical: { inlineDirection: "right-to-left" }, stage: 0, browsers: "> 0%" } usage',
+		options: {
+			stage: 0,
+			browsers: 'Chrome 114',
 			logical: {
 				inlineDirection: 'right-to-left'
 			}
