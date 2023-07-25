@@ -1,4 +1,5 @@
 export const externalsForCLI = [
+	'crypto',
 	'fs',
 	'https',
 	'path',
@@ -35,6 +36,7 @@ export const externalsForCLI = [
 	'@csstools/postcss-normalize-display-values',
 	'@csstools/postcss-oklab-function',
 	'@csstools/postcss-progressive-custom-properties',
+	'@csstools/postcss-rebase-url',
 	'@csstools/postcss-relative-color-syntax',
 	'@csstools/postcss-scope-pseudo-class',
 	'@csstools/postcss-stepped-value-functions',
@@ -65,6 +67,7 @@ export const externalsForCLI = [
 	'postcss-font-variant',
 	'postcss-gap-properties',
 	'postcss-image-set-function',
+	'postcss-import',
 	'postcss-initial',
 	'postcss-lab-function',
 	'postcss-logical',
@@ -84,6 +87,7 @@ export const externalsForCLI = [
 
 export const externalsForPlugin = [
 	'assert',
+	'crypto',
 	'fs',
 	'https',
 	'module',
@@ -120,6 +124,7 @@ export const externalsForPlugin = [
 	'@csstools/postcss-normalize-display-values',
 	'@csstools/postcss-oklab-function',
 	'@csstools/postcss-progressive-custom-properties',
+	'@csstools/postcss-rebase-url',
 	'@csstools/postcss-relative-color-syntax',
 	'@csstools/postcss-scope-pseudo-class',
 	'@csstools/postcss-stepped-value-functions',
@@ -150,6 +155,7 @@ export const externalsForPlugin = [
 	'postcss-font-variant',
 	'postcss-gap-properties',
 	'postcss-image-set-function',
+	'postcss-import',
 	'postcss-initial',
 	'postcss-lab-function',
 	'postcss-logical',

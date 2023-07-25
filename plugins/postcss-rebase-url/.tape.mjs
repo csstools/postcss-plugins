@@ -1,6 +1,6 @@
-import plugin from '@csstools/postcss-url';
-import postcssImport from 'postcss-import';
 import { postcssTape } from '@csstools/postcss-tape';
+import plugin from '@csstools/postcss-rebase-url';
+import postcssImport from 'postcss-import';
 
 import './test/unit/index.mjs';
 

@@ -16,11 +16,13 @@
 
 <header>
 
-[<humanReadableName>] rebases `url()` functions when transforming CSS.
+[<humanReadableName>] bundles your CSS without changing the way you write CSS.
 
-This plugin is only intended to help with bundling CSS and only in a way that you author CSS as if there was no bundling or url rebasing.
+This plugin pack contains : 
+- [`postcss-import`](https://github.com/postcss/postcss-import)
+- [`@csstools/postcss-rebase-url`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url)
 
-If you need something with more knobs and dials, please checkout [`postcss-url`](https://www.npmjs.com/package/postcss-url)
+It configures these plugins so that the default behavior is very similar to native CSS.
 
 ```pcss
 /* test/examples/example.css */
@@ -38,5 +40,20 @@ If you need something with more knobs and dials, please checkout [`postcss-url`]
 <usage>
 
 <envSupport>
+
+## Options
+
+### preserve
+
+The `import` option is passed to `postcss-import`
+
+```js
+<exportName>({ 
+	import: {
+		// any postcss-import options:
+		// https://github.com/postcss/postcss-import
+	}
+})
+```
 
 <linkList>

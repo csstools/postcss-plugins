@@ -4,7 +4,7 @@ import { TokenType, tokenize } from '@csstools/css-tokenizer';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { rebase } from './rebase';
 
-/** postcss-url plugin options */
+/** postcss-rebase-url plugin options */
 export type pluginOptions = never;
 
 const URL_FUNCTION_CALL = /url\(/i;
@@ -12,7 +12,7 @@ const URL_FUNCTION_NAME = /url/i;
 
 const creator: PluginCreator<pluginOptions> = () => {
 	return {
-		postcssPlugin: 'postcss-url',
+		postcssPlugin: 'postcss-rebase-url',
 		prepare() {
 			const visited = new WeakSet();
 

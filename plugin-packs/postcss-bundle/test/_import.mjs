@@ -1,5 +1,5 @@
 import assert from 'assert';
-import plugin from '@csstools/postcss-url';
+import plugin from '@csstools/postcss-bundle';
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

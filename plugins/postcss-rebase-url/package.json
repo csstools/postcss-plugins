@@ -1,5 +1,5 @@
 {
-	"name": "@csstools/postcss-url",
+	"name": "@csstools/postcss-rebase-url",
 	"description": "Rebase url() functions when transforming CSS",
 	"version": "0.0.0",
 	"contributors": [
@@ -63,19 +63,19 @@
 		"test": "node .tape.mjs && node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-url#readme",
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
-		"directory": "plugins/postcss-url"
+		"directory": "plugins/postcss-rebase-url"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"postcss-plugin"
 	],
 	"csstools": {
-		"exportName": "postcssURL",
-		"humanReadableName": "PostCSS URL"
+		"exportName": "postcssRebaseURL",
+		"humanReadableName": "PostCSS Rebase URL"
 	},
 	"volta": {
 		"extends": "../../package.json"

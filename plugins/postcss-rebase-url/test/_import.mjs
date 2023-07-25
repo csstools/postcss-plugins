@@ -1,5 +1,5 @@
-const assert = require('assert');
-const plugin = require('@csstools/postcss-url');
+import assert from 'assert';
+import plugin from '@csstools/postcss-rebase-url';
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');
