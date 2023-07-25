@@ -1,5 +1,5 @@
 {
-	"name": "@csstools/postcss-bundle",
+	"name": "@csstools/postcss-bundler",
 	"description": "Bundle CSS",
 	"version": "0.0.0",
 	"contributors": [
@@ -62,19 +62,22 @@
 		"test": "node .tape.mjs && node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-bundle#readme",
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-bundler#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/csstools/postcss-plugins.git",
-		"directory": "plugins/postcss-bundle"
+		"directory": "plugins/postcss-bundler"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"bundler",
+		"import",
+		"postcss-plugin",
+		"url"
 	],
 	"csstools": {
-		"exportName": "postcssBundle",
-		"humanReadableName": "PostCSS Bundle"
+		"exportName": "postcssBundler",
+		"humanReadableName": "PostCSS Bundler"
 	},
 	"volta": {
 		"extends": "../../package.json"

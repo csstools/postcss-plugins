@@ -21,13 +21,13 @@ export function packageTypescript() {
 					extensions: ['.js', '.ts'],
 					presets: packageBabelPreset,
 				}),
-				// terser({
-				// 	compress: {
-				// 		reduce_funcs: false, // https://github.com/terser/terser/issues/1305
-				// 	},
-				// 	keep_classnames: true,
-				// 	keep_fnames: true,
-				// }),
+				terser({
+					compress: {
+						reduce_funcs: false, // https://github.com/terser/terser/issues/1305
+					},
+					keep_classnames: true,
+					keep_fnames: true,
+				}),
 			],
 		},
 	];

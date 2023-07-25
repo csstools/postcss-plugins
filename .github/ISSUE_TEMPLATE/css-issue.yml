@@ -59,6 +59,7 @@ body:
       multiple: true
       options:
         - PostCSS Preset Env
+        - PostCSS Bundler
         - CSS All Property
         - CSS Blank Pseudo
         - CSS Has Pseudo
@@ -69,6 +70,7 @@ body:
         - PostCSS Color Functional Notation
         - PostCSS Color Hex Alpha
         - PostCSS Color Mix Function
+        - PostCSS Color Rebeccapurple
         - PostCSS Conditional Values
         - PostCSS Custom Media Queries
         - PostCSS Custom Properties
@@ -103,7 +105,7 @@ body:
         - PostCSS Place
         - PostCSS Progressive Custom Properties
         - PostCSS Pseudo Class Any Link
-        - PostCSS Rebeccapurple
+        - PostCSS Rebase URL
         - PostCSS Relative Color Syntax
         - PostCSS Replace Overflow Wrap
         - PostCSS Scope Pseudo Class

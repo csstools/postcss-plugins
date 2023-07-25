@@ -1,6 +1,6 @@
-# Installing PostCSS Bundle
+# Installing PostCSS Bundler
 
-[PostCSS Bundle] runs in all Node environments, with special instructions for:
+[PostCSS Bundler] runs in all Node environments, with special instructions for:
 
 - [Node](#node)
 - [PostCSS CLI](#postcss-cli)
@@ -14,10 +14,10 @@
 
 ## Node
 
-Add [PostCSS Bundle] to your project:
+Add [PostCSS Bundler] to your project:
 
 ```bash
-npm install postcss @csstools/postcss-bundle --save-dev
+npm install postcss @csstools/postcss-bundler --save-dev
 ```
 
 Use it as a [PostCSS] plugin:
@@ -25,20 +25,20 @@ Use it as a [PostCSS] plugin:
 ```js
 // commonjs
 const postcss = require('postcss');
-const postcssBundle = require('@csstools/postcss-bundle');
+const postcssBundler = require('@csstools/postcss-bundler');
 
 postcss([
-	postcssBundle(/* pluginOptions */)
+	postcssBundler(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
 ```js
 // esm
 import postcss from 'postcss';
-import postcssBundle from '@csstools/postcss-bundle';
+import postcssBundler from '@csstools/postcss-bundler';
 
 postcss([
-	postcssBundle(/* pluginOptions */)
+	postcssBundler(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -47,17 +47,17 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-bundle --save-dev
+npm install postcss-cli @csstools/postcss-bundler --save-dev
 ```
 
-Use [PostCSS Bundle] in your `postcss.config.js` configuration file:
+Use [PostCSS Bundler] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssBundle = require('@csstools/postcss-bundle');
+const postcssBundler = require('@csstools/postcss-bundler');
 
 module.exports = {
 	plugins: [
-		postcssBundle(/* pluginOptions */)
+		postcssBundler(/* pluginOptions */)
 	]
 }
 ```
@@ -67,7 +67,7 @@ module.exports = {
 If your framework/CLI supports [`postcss-load-config`](https://github.com/postcss/postcss-load-config).
 
 ```bash
-npm install @csstools/postcss-bundle --save-dev
+npm install @csstools/postcss-bundler --save-dev
 ```
 
 `package.json`:
@@ -76,7 +76,7 @@ npm install @csstools/postcss-bundle --save-dev
 {
 	"postcss": {
 		"plugins": {
-			"@csstools/postcss-bundle": {}
+			"@csstools/postcss-bundler": {}
 		}
 	}
 }
@@ -87,7 +87,7 @@ npm install @csstools/postcss-bundle --save-dev
 ```json
 {
 	"plugins": {
-		"@csstools/postcss-bundle": {}
+		"@csstools/postcss-bundler": {}
 	}
 }
 ```
@@ -101,10 +101,10 @@ _Webpack version 5_
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader @csstools/postcss-bundle --save-dev
+npm install postcss-loader @csstools/postcss-bundler --save-dev
 ```
 
-Use [PostCSS Bundle] in your Webpack configuration:
+Use [PostCSS Bundler] in your Webpack configuration:
 
 ```js
 module.exports = {
@@ -125,7 +125,7 @@ module.exports = {
 								plugins: [
 									// Other plugins,
 									[
-										"@csstools/postcss-bundle",
+										"@csstools/postcss-bundler",
 										{
 											// Options
 										},
@@ -146,15 +146,15 @@ module.exports = {
 Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
 
 ```bash
-npm install @csstools/postcss-bundle --save-dev
+npm install @csstools/postcss-bundler --save-dev
 ```
 
-Use [PostCSS Bundle] in your `postcss.config.json` file:
+Use [PostCSS Bundler] in your `postcss.config.json` file:
 
 ```json
 {
 	"plugins": [
-		"@csstools/postcss-bundle"
+		"@csstools/postcss-bundler"
 	]
 }
 ```
@@ -163,7 +163,7 @@ Use [PostCSS Bundle] in your `postcss.config.json` file:
 {
 	"plugins": [
 		[
-			"@csstools/postcss-bundle",
+			"@csstools/postcss-bundler",
 			{
 				// Optionally add plugin options
 			}
@@ -177,18 +177,18 @@ Use [PostCSS Bundle] in your `postcss.config.json` file:
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss @csstools/postcss-bundle --save-dev
+npm install gulp-postcss @csstools/postcss-bundler --save-dev
 ```
 
-Use [PostCSS Bundle] in your Gulpfile:
+Use [PostCSS Bundler] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssBundle = require('@csstools/postcss-bundle');
+const postcssBundler = require('@csstools/postcss-bundler');
 
 gulp.task('css', function () {
 	var plugins = [
-		postcssBundle(/* pluginOptions */)
+		postcssBundler(/* pluginOptions */)
 	];
 
 	return gulp.src('./src/*.css')
@@ -202,13 +202,13 @@ gulp.task('css', function () {
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss @csstools/postcss-bundle --save-dev
+npm install grunt-postcss @csstools/postcss-bundler --save-dev
 ```
 
-Use [PostCSS Bundle] in your Gruntfile:
+Use [PostCSS Bundler] in your Gruntfile:
 
 ```js
-const postcssBundle = require('@csstools/postcss-bundle');
+const postcssBundler = require('@csstools/postcss-bundler');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -216,7 +216,7 @@ grunt.initConfig({
 	postcss: {
 		options: {
 			processors: [
-			postcssBundle(/* pluginOptions */)
+			postcssBundler(/* pluginOptions */)
 			]
 		},
 		dist: {
@@ -231,5 +231,5 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Bundle]: https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-bundle
+[PostCSS Bundler]: https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-bundler
 [Next.js]: https://nextjs.org

@@ -1,5 +1,5 @@
 const assert = require('assert');
-const plugin = require('@csstools/postcss-bundle');
+const plugin = require('@csstools/postcss-bundler');
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

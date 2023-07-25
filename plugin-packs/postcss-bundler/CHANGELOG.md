@@ -1,4 +1,4 @@
-# Changes to PostCSS Bundle
+# Changes to PostCSS Bundler
 
 ### Unreleased (major)
 

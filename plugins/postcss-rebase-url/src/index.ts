@@ -3,6 +3,7 @@ import { posix as path } from 'path';
 import { TokenType, tokenize } from '@csstools/css-tokenizer';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { rebase } from './rebase';
+import { serializeString } from './serialize-string';
 
 /** postcss-rebase-url plugin options */
 export type pluginOptions = never;
@@ -52,7 +53,9 @@ const creator: PluginCreator<pluginOptions> = () => {
 								const rebased = rebase(componentValue.value[4].value, fromDir, fromEntryPointDir, toDir);
 								if (rebased) {
 									componentValue.value[4].value = rebased;
-									componentValue.value[1] = `url(./${rebased.replaceAll(/"/g, '\\22').replaceAll(/'/g, '\\27')})`;
+
+									// Files with quotes
+									componentValue.value[1] = `url(./${serializeString(rebased)})`;
 									return componentValue;
 								}
 							}
@@ -70,7 +73,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 										const rebased = rebase(x.value[4].value, fromDir, fromEntryPointDir, toDir);
 										if (rebased) {
 											x.value[4].value = rebased;
-											x.value[1] = '"./' + rebased.replaceAll(/"/g, '\\"') + '"';
+											x.value[1] = `"./${serializeString(rebased)}"`;
 											return componentValue;
 										}
 

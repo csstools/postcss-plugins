@@ -3,7 +3,7 @@ import postcssImport from 'postcss-import';
 import postcssRebaseURL from '@csstools/postcss-rebase-url';
 import { hashLayerName } from './hash-layer-name';
 
-/** postcss-bundle plugin options */
+/** postcss-bundler plugin options */
 export type pluginOptions = {
 	/** plugin options for `@csstools/postcss-rebase-url` */
 	rebaseURL: never,
@@ -89,7 +89,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	}, opts?.import || {});
 
 	return {
-		postcssPlugin: 'postcss-bundle',
+		postcssPlugin: 'postcss-bundler',
 		plugins: [
 			// @ts-expect-error `postcss-import` types are missing
 			postcssImport(postcssImportOptions),

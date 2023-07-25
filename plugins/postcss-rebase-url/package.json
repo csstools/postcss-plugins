@@ -71,7 +71,9 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"postcss-plugin",
+		"rebase",
+		"url"
 	],
 	"csstools": {
 		"exportName": "postcssRebaseURL",
