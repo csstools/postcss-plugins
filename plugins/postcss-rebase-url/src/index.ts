@@ -38,10 +38,12 @@ const creator: PluginCreator<pluginOptions> = () => {
 					const fromDir = path.parse(path.resolve(from)).dir;
 					const fromEntryPointDir = path.parse(path.resolve(fromEntryPoint)).dir;
 
-					console.log('to\n ', toDir);
-					console.log('from\n ', fromDir);
-					console.log('fromEntryPoint\n ', fromEntryPointDir);
+					console.log('----------------------');
 
+					console.log('toDir\n ', toDir);
+					console.log('fromDir\n ', fromDir);
+					console.log('from\n ', from);
+					console.log('fromEntryPointDir\n ', fromEntryPointDir);
 
 					if (!URL_FUNCTION_CALL.test(decl.value)) {
 						return;

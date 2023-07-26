@@ -1,4 +1,22 @@
-@import "imports/basic.css";
+.foo {
+	background: url("./images/green.png");
+}
+
+.bar {
+	background: url(./imports/green.png);
+}
+
+.url-modifier {
+	background: url("./images/green.png" something);
+}
+
+.fragment {
+	background: url("./images/green.png#foo");
+}
+
+.search {
+	background: url("./images/green.png?foo=bar");
+}
 
 .root {
 	background: url(./images/green.png);
