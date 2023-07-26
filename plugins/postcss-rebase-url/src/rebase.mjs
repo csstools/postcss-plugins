@@ -29,15 +29,15 @@ export function rebase(url, fromDir, fromEntryPointDir, toDir) {
 		} catch { } // eslint-disable-line no-empty
 	}
 
-	const assetPath = path.resolve(
-		path.join(
+	const assetPath = path.posix.resolve(
+		path.posix.join(
 			fromDir.replace(new RegExp(`^${fromEntryPointDir}`), toDir),
 			url,
 		),
 	);
 
-	return path.normalize(
-		path.relative(
+	return path.posix.normalize(
+		path.posix.relative(
 			toDir,
 			assetPath,
 		),
