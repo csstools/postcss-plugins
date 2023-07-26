@@ -29,15 +29,15 @@ const creator: PluginCreator<pluginOptions> = () => {
 						return;
 					}
 
-					const toDir = path.parse(path.resolve(toPosixPath(to))).dir;
+					const toDir = path.parse(toPosixPath(path.resolve(to))).dir;
 
 					const from = decl.source?.input.from;
 					if (!from) {
 						return;
 					}
 
-					const fromDir = path.parse(path.resolve(toPosixPath(from))).dir;
-					const fromEntryPointDir = path.parse(path.resolve(toPosixPath(fromEntryPoint))).dir;
+					const fromDir = path.parse(toPosixPath(path.resolve(from))).dir;
+					const fromEntryPointDir = path.parse(toPosixPath(path.resolve(fromEntryPoint))).dir;
 
 					if (!URL_FUNCTION_CALL.test(decl.value)) {
 						return;
