@@ -45,10 +45,8 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 					console.log('----------------------');
 
+					console.log('to\n ', to);
 					console.log('toDir\n ', toDir);
-					console.log('fromDir\n ', fromDir);
-					console.log('from\n ', from);
-					console.log('fromEntryPointDir\n ', fromEntryPointDir);
 
 					if (!URL_FUNCTION_CALL.test(decl.value)) {
 						return;
