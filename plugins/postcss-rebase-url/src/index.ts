@@ -4,7 +4,6 @@ import { TokenType, tokenize } from '@csstools/css-tokenizer';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { rebase } from './rebase';
 import { serializeString } from './serialize-string';
-import { toPosixPath } from './posix-path';
 
 /** postcss-rebase-url plugin options */
 export type pluginOptions = never;
