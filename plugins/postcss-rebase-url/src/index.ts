@@ -4,6 +4,7 @@ import { TokenType, tokenize } from '@csstools/css-tokenizer';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { rebase } from './rebase';
 import { serializeString } from './serialize-string';
+import { toPosixPath } from './posix-path';
 
 /** postcss-rebase-url plugin options */
 export type pluginOptions = never;
@@ -28,15 +29,15 @@ const creator: PluginCreator<pluginOptions> = () => {
 						return;
 					}
 
-					const toDir = path.parse(path.resolve(to)).dir;
+					const toDir = path.parse(path.resolve(toPosixPath(to))).dir;
 
 					const from = decl.source?.input.from;
 					if (!from) {
 						return;
 					}
 
-					const fromDir = path.parse(path.resolve(from)).dir;
-					const fromEntryPointDir = path.parse(path.resolve(fromEntryPoint)).dir;
+					const fromDir = path.parse(path.resolve(toPosixPath(from))).dir;
+					const fromEntryPointDir = path.parse(path.resolve(toPosixPath(fromEntryPoint))).dir;
 
 					if (!URL_FUNCTION_CALL.test(decl.value)) {
 						return;
