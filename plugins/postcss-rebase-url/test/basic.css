@@ -1,1 +1,5 @@
 @import "imports/basic.css";
+
+.root {
+	background: url(./images/green.png);
+}

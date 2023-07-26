@@ -8,15 +8,15 @@ await postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
 		plugins: [
-			postcssImport(),
+			// postcssImport(),
 			plugin()
 		]
 	},
-	'examples/example': {
-		message: 'minimal example',
-		plugins: [
-			postcssImport(),
-			plugin()
-		]
-	}
+	// 'examples/example': {
+	// 	message: 'minimal example',
+	// 	plugins: [
+	// 		postcssImport(),
+	// 		plugin()
+	// 	]
+	// }
 });

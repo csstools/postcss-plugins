@@ -29,19 +29,19 @@ const creator: PluginCreator<pluginOptions> = () => {
 						return;
 					}
 
-					const toDir = path.parse(toPosixPath(path.resolve(to))).dir;
+					const toDir = path.parse(path.resolve(to)).dir;
 
 					const from = decl.source?.input.from;
 					if (!from) {
 						return;
 					}
 
-					const fromDir = path.parse(toPosixPath(path.resolve(from))).dir;
-					const fromEntryPointDir = path.parse(toPosixPath(path.resolve(fromEntryPoint))).dir;
+					const fromDir = path.parse(path.resolve(from)).dir;
+					const fromEntryPointDir = path.parse(path.resolve(fromEntryPoint)).dir;
 
-					console.log('to\n ', to);
-					console.log('from\n ', from);
-					console.log('fromEntryPoint\n ', fromEntryPoint);
+					console.log('to\n ', toDir);
+					console.log('from\n ', fromDir);
+					console.log('fromEntryPoint\n ', fromEntryPointDir);
 
 
 					if (!URL_FUNCTION_CALL.test(decl.value)) {
