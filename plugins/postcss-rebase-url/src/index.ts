@@ -1,9 +1,10 @@
 import type { PluginCreator } from 'postcss';
-import { posix as path } from 'path';
+import path from 'path';
 import { TokenType, tokenize } from '@csstools/css-tokenizer';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { rebase } from './rebase';
 import { serializeString } from './serialize-string';
+import { toPosix } from './to-posix';
 
 /** postcss-rebase-url plugin options */
 export type pluginOptions = never;
@@ -28,15 +29,19 @@ const creator: PluginCreator<pluginOptions> = () => {
 						return;
 					}
 
-					const toDir = path.parse(path.resolve(to)).dir;
+					if (!decl.source?.input.from) {
+						return;
+					}
 
-					const from = decl.source?.input.from;
+					const toDir = path.posix.parse(path.posix.resolve(to.trim())).dir;
+					const fromEntryPointDir = path.posix.parse(path.posix.resolve(fromEntryPoint.trim())).dir;
+
+					const from = toPosix(decl.source.input.from.trim(), fromEntryPointDir);
 					if (!from) {
 						return;
 					}
 
-					const fromDir = path.parse(path.resolve(from)).dir;
-					const fromEntryPointDir = path.parse(path.resolve(fromEntryPoint)).dir;
+					const fromDir = path.posix.parse(from).dir;
 
 					console.log('----------------------');
 

@@ -29,9 +29,11 @@ export function rebase(url, fromDir, fromEntryPointDir, toDir) {
 		} catch { } // eslint-disable-line no-empty
 	}
 
-	const assetPath = path.join(
-		fromDir.replace(new RegExp(`^${fromEntryPointDir}`), toDir),
-		url,
+	const assetPath = path.resolve(
+		path.join(
+			fromDir.replace(new RegExp(`^${fromEntryPointDir}`), toDir),
+			url,
+		),
 	);
 
 	return path.normalize(
