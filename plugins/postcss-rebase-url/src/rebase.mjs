@@ -1,4 +1,4 @@
-import { posix as path } from 'path';
+import path from 'path';
 
 const hasProtocol = /^([a-z0-9.+-]+:)?\/\//i;
 

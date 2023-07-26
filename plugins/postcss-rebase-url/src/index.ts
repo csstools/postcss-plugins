@@ -4,7 +4,6 @@ import { TokenType, tokenize } from '@csstools/css-tokenizer';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { rebase } from './rebase';
 import { serializeString } from './serialize-string';
-import { toPosix } from './to-posix';
 
 /** postcss-rebase-url plugin options */
 export type pluginOptions = never;
@@ -33,24 +32,19 @@ const creator: PluginCreator<pluginOptions> = () => {
 						return;
 					}
 
-					const toDir = path.posix.parse(path.posix.resolve(to.trim())).dir;
-					const fromEntryPointDir = path.posix.parse(path.posix.resolve(fromEntryPoint.trim())).dir;
+					if (!URL_FUNCTION_CALL.test(decl.value)) {
+						return;
+					}
 
-					const from = toPosix(decl.source.input.from.trim(), fromEntryPointDir);
+					const toDir = path.parse(path.resolve(to.trim())).dir.split(path.sep).join(path.posix.sep);
+					const fromEntryPointDir = path.parse(path.resolve(fromEntryPoint.trim())).dir.split(path.sep).join(path.posix.sep);
+
+					const from = decl.source.input.from.trim();
 					if (!from) {
 						return;
 					}
 
-					const fromDir = path.posix.parse(from).dir;
-
-					console.log('----------------------');
-
-					console.log('to\n ', to);
-					console.log('toDir\n ', toDir);
-
-					if (!URL_FUNCTION_CALL.test(decl.value)) {
-						return;
-					}
+					const fromDir = path.parse(path.resolve(from)).dir.split(path.sep).join(path.posix.sep);
 
 					const componentValuesList = parseCommaSeparatedListOfComponentValues(tokenize({ css: decl.value }));
 					const modifiedComponentValuesList = replaceComponentValues(
