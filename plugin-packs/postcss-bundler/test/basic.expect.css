@@ -11,9 +11,9 @@
 }
 
 .fragment {
-	background: url("./images/green.png#foo#foo");
+	background: url("./images/green.png#foo");
 }
 
 .search {
-	background: url("./images/green.png?foo=bar?foo=bar");
+	background: url("./images/green.png?foo=bar");
 }

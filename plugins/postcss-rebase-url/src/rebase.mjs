@@ -29,8 +29,6 @@ export function rebase(url, fromDir, fromEntryPointDir, toDir) {
 		} catch { } // eslint-disable-line no-empty
 	}
 
-	const { hash, search } = new URL(url, 'https://example.com/');
-
 	const assetPath = path.resolve(
 		path.join(
 			fromDir.replace(new RegExp(`^${fromEntryPointDir}`), toDir),
@@ -43,5 +41,5 @@ export function rebase(url, fromDir, fromEntryPointDir, toDir) {
 			toDir,
 			assetPath,
 		),
-	) + search + hash;
+	);
 }
