@@ -17,3 +17,15 @@
 .search {
 	background: url("./images/green.png?foo=bar");
 }
+
+.foo { --var: /* a comment */; bar: red }
+
+.foo { color: red }
+
+.foo { color: red }
+
+.foo { color: rgb(0 0 0) }
+
+.foo { color: rgb(0 0 0) }
+
+.foo { color: rgb(0 0 0) }

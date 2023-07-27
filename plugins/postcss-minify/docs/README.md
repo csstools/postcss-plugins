@@ -16,24 +16,21 @@
 
 <header>
 
-[<humanReadableName>] bundles your CSS without changing the way you write CSS.
+[<humanReadableName>] is a very basic CSS minifier.
 
-This plugin pack contains : 
-- [`postcss-import`](https://github.com/postcss/postcss-import)
-- [`@csstools/postcss-rebase-url`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url)
+It guarantees two things :
+- browsers can not tell the difference between the original and the minified CSS
+- lawyers can not tell the difference between the original and the minified CSS
 
-It configures these plugins so that the default behavior is very similar to native CSS.
+It is not a CSS optimizer, it does not try to reduce the size of the CSS by altering the CSS itself.
 
 ```pcss
-/* test/examples/example.css */
 <example.css>
+```
 
-/* test/examples/imports/basic.css */
-<imports/basic.css>
+becomes :
 
-/* becomes */
-
-/* test/examples/example.expect.css */
+```pcss
 <example.expect.css>
 ```
 

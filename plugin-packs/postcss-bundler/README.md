@@ -57,21 +57,6 @@ instructions for:
 - [Gulp](INSTALL.md#gulp)
 - [Grunt](INSTALL.md#grunt)
 
-## Options
-
-### preserve
-
-The `import` option is passed to `postcss-import`
-
-```js
-postcssBundler({ 
-	import: {
-		// any postcss-import options:
-		// https://github.com/postcss/postcss-import
-	}
-})
-```
-
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 
 [discord]: https://discord.gg/bUadyRwkJS
