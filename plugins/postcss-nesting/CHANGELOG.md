@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (patch)
+
+- Fix nesting of `@starting-style` rules
+
 ### 12.0.0
 
 _July 3, 2023_

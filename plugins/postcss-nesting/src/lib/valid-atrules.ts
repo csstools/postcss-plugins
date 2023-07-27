@@ -1,1 +1,1 @@
-export default ['container', 'document', 'media', 'supports', 'layer'];
+export default ['container', 'document', 'media', 'supports', 'layer', 'starting-style'];
