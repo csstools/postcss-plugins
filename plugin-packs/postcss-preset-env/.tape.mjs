@@ -18,7 +18,7 @@ orderDetectionPlugin.postcss = true
 
 postcssTape(plugin)({
 	'basic': {
-		message: 'supports basic usage'
+		message: 'supports basic usage',
 	},
 	'basic:ff49': {
 		message: 'supports { browsers: "ff >= 49" } usage',
