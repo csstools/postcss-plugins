@@ -3,3 +3,7 @@
 .root {
 	background: url(./images/green.png);
 }
+
+.outside_root {
+	background: url("../../../images/green.png");
+}

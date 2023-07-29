@@ -23,7 +23,7 @@ If you need something with more knobs and dials, please checkout [`postcss-url`]
 
 /* test/examples/example.expect.css */
 .foo {
-	background: url("./../images/green.png");
+	background: url("../images/green.png");
 }
 ```
 

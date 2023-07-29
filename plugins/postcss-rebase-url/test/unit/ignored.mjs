@@ -31,7 +31,6 @@ import { rebase } from '../../src/rebase.mjs';
 			'example.com:8080/foo.png',
 			'/assets/css/components',
 			'/assets/css',
-			'/assets/css',
 		),
 		false,
 	);
@@ -44,7 +43,6 @@ import { rebase } from '../../src/rebase.mjs';
 			'example.com/foo.png',
 			'/assets/css/components',
 			'/assets/css',
-			'/assets/css',
 		),
 		'components/example.com/foo.png',
 	);
@@ -55,7 +53,6 @@ import { rebase } from '../../src/rebase.mjs';
 		rebase(
 			'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==',
 			'/assets/css/components',
-			'/assets/css',
 			'/assets/css',
 		),
 		false,

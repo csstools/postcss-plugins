@@ -23,7 +23,7 @@ It configures these plugins so that the default behavior is very similar to nati
 
 /* test/examples/example.expect.css */
 .foo {
-	background: url("./../images/green.png");
+	background: url("../images/green.png");
 }
 ```
 

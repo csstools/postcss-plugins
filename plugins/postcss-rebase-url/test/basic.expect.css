@@ -1,23 +1,43 @@
 .foo {
-	background: url("./images/green.png");
+	background: url("images/green.png");
 }
 
 .bar {
-	background: url(./imports/green.png);
+	background: url(imports/green.png);
 }
 
 .url-modifier {
-	background: url("./images/green.png" something);
+	background: url("images/green.png" something);
 }
 
 .fragment {
-	background: url("./images/green.png#foo");
+	background: url("images/green.png#foo");
 }
 
 .search {
-	background: url("./images/green.png?foo=bar");
+	background: url("images/green.png?foo=bar");
+}
+
+.leading_slash {
+	background: url("/test/images/green.png");
+}
+
+.full_url {
+	background: url("https://example.com/images/green.png");
+}
+
+.unknown_protocol {
+	background: url("foo://example.com/images/green.png");
+}
+
+.node_modules_protocol {
+	background: url("node_modules://images/green.png");
 }
 
 .root {
-	background: url(./images/green.png);
+	background: url(images/green.png);
+}
+
+.outside_root {
+	background: url("../../../images/green.png");
 }

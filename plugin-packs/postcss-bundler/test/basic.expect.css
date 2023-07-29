@@ -1,21 +1,21 @@
 .foo {
-	background: url("./images/green.png");
+	background: url("images/green.png");
 }
 
 .bar {
-	background: url(./imports/green.png);
+	background: url(imports/green.png);
 }
 
 .url-modifier {
-	background: url("./images/green.png" something);
+	background: url("images/green.png" something);
 }
 
 .fragment {
-	background: url("./images/green.png#foo");
+	background: url("images/green.png#foo");
 }
 
 .search {
-	background: url("./images/green.png?foo=bar");
+	background: url("images/green.png?foo=bar");
 }
 
 .foo { --var: /* a comment */; bar: red }
