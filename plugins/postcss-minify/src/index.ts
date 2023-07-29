@@ -134,6 +134,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 						before: minify(node.raws?.before),
 						after: minify(node.raws?.after),
 						between: minify(node.raws?.between),
+						semicolons: node.raws?.semicolons,
 					};
 
 					node.selector = minify(node.selector)!;
@@ -145,9 +146,9 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 					node.raws = {
 						before: minify(node.raws?.before),
-						between: minify(node.raws?.between),
+						between: ':',
 						semicolons: node.raws?.semicolons,
-						important: (node.type === 'decl' && node.important) ? '!important' : '',
+						important: node.important ? '!important' : '',
 					};
 
 					node.value = minify(node.value)!;
