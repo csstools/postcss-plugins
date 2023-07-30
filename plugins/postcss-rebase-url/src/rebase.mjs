@@ -23,6 +23,10 @@ export function rebase(url, fromDir, fromEntryPointDir) {
 		return url;
 	}
 
+	if (url.startsWith('#')) {
+		return url;
+	}
+
 	try {
 		const x = new URL(url);
 		if (x.port || x.protocol) {

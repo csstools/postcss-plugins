@@ -12,6 +12,7 @@
 
 .fragment {
 	background: url("images/green.png#foo");
+	background: url("#foo");
 }
 
 .search {

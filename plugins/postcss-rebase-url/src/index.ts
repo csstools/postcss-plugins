@@ -53,7 +53,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 								isTokenNode(componentValue) &&
 								componentValue.value[0] === TokenType.URL
 							) {
-								const rebased = rebase(componentValue.value[4].value, fromDir, fromEntryPointDir);
+								const rebased = rebase(componentValue.value[4].value.trim(), fromDir, fromEntryPointDir);
 								if (rebased) {
 									componentValue.value[4].value = rebased;
 
@@ -73,7 +73,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 									}
 
 									if (isTokenNode(x) && x.value[0] === TokenType.String) {
-										const rebased = rebase(x.value[4].value, fromDir, fromEntryPointDir);
+										const rebased = rebase(x.value[4].value.trim(), fromDir, fromEntryPointDir);
 										if (rebased) {
 											x.value[4].value = rebased;
 											x.value[1] = `"${serializeString(rebased)}"`;
