@@ -156,3 +156,16 @@
 .foo {
 	color: rgb(123, 137, 142);
 }
+
+/* https: //github.com/w3c/csswg-drafts/issues/8794#issuecomment-1657218470 */
+/* We expect these to be pure white because we are not calculating colors in memory for a real display */
+.white-points {
+	color-1: rgb(255, 255, 255);
+	color-2: rgb(255, 255, 255);
+	color-3: rgb(255, 255, 255);
+	color-4: rgb(255, 255, 255);
+	color-5: rgb(255, 255, 255);
+	color-5: color(display-p3 1 1 1);
+	color-6: rgb(255, 255, 255);
+	color-6: color(display-p3 1 1 1);
+}
