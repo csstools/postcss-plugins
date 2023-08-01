@@ -3,7 +3,8 @@ import { getUnsupportedBrowsersByFeature } from './get-unsupported-browsers-by-f
 
 // add extra options for certain browsers by feature
 export default function getOptionsForBrowsersByFeature(browsers, feature, cssdbList, options, logger) {
-	const supportedBrowsers = browserslist(browsers, { ignoreUnknownVersions: true });
+	const env = browsers ? undefined : options.env; // When `browsers` is set, ignore `env`
+	const supportedBrowsers = browserslist(browsers, { env: env, ignoreUnknownVersions: true });
 
 	switch (feature.id) {
 		case 'is-pseudo-class':
