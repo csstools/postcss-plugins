@@ -35,6 +35,9 @@
 		"dist"
 	],
 	"dependencies": {
+		"@csstools/css-color-parser": "^1.2.3",
+		"@csstools/css-parser-algorithms": "2.3.1",
+		"@csstools/css-tokenizer": "^2.2.0",
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {

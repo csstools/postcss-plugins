@@ -1,5 +1,5 @@
-import type { AtRule, PluginCreator, Rule } from 'postcss';
-import { supportConditionsFromValue } from './support-conditions-from-values';
+import { type AtRule, type PluginCreator, type Rule } from 'postcss';
+import { conditionsFromValue } from './conditions-from-values';
 
 const hasVariableFunction = /var\(/i;
 
@@ -9,8 +9,16 @@ const creator: PluginCreator<null> = () => {
 		OnceExit: (root, { postcss }) => {
 			root.walkRules((rule) => {
 				const atSupportsRules: Array<AtRule> = [];
-				const parentRuleClones: Map<AtRule, Rule> = new Map();
 				const propNames = new Set<string>();
+
+				const lastConditionParams: {
+					support: string | undefined,
+					media: string | undefined,
+				} = {
+					support: undefined,
+					media: undefined,
+				};
+				let lastConditionalRule: Rule | undefined = undefined;
 
 				rule.each((decl) => {
 					if (decl.type !== 'decl') {
@@ -49,34 +57,75 @@ const creator: PluginCreator<null> = () => {
 					// if the property itself isn't a custom property, the value must contain a var() function
 					const mustContainVar = !decl.variable;
 
-					const supportConditions = supportConditionsFromValue(decl.value, mustContainVar);
-					if (!supportConditions.length) {
+					const conditions = conditionsFromValue(decl.value, mustContainVar);
+
+					let supportParams: string | undefined = undefined;
+					let mediaParams: string | undefined = undefined;
+
+					if (conditions.support.length) {
+						supportParams = conditions.support.join(' and ');
+					}
+
+					if (conditions.media.length) {
+						mediaParams = conditions.media.join(' and ');
+					}
+
+					if (!mediaParams && !supportParams) {
 						return;
 					}
 
-					const params = supportConditions.join(' and ');
-
-					if (atSupportsRules.length && atSupportsRules[atSupportsRules.length - 1].params === params) {
-						const atSupports = atSupportsRules[atSupportsRules.length - 1];
-						const parentClone = parentRuleClones.get(atSupports);
-
-						if (parentClone) {
-							parentClone.append(decl.clone());
-							decl.remove();
-							return;
-						}
+					if (
+						(lastConditionParams.support !== supportParams) ||
+						(lastConditionParams.media !== mediaParams)
+					) {
+						lastConditionalRule = undefined;
 					}
 
-					// Any subsequent properties are progressive enhancements.
-					const atSupports = postcss.atRule({
-						name: 'supports',
-						params: params,
-						source: rule.source,
-						raws: {
-							before: '\n\n',
-							after: '\n',
-						},
-					});
+					if (lastConditionalRule) {
+						lastConditionalRule.append(decl.clone());
+						decl.remove();
+						return;
+					}
+
+					const atRules = [];
+
+					if (supportParams) {
+						atRules.push(postcss.atRule({
+							name: 'supports',
+							params: supportParams,
+							source: rule.source,
+							raws: {
+								before: '\n\n',
+								after: '\n',
+							},
+						}));
+					}
+
+					if (mediaParams) {
+						atRules.push(postcss.atRule({
+							name: 'media',
+							params: mediaParams,
+							source: rule.source,
+							raws: {
+								before: '\n\n',
+								after: '\n',
+							},
+						}));
+					}
+
+					if (!atRules.length) {
+						return;
+					}
+
+					for (let i = 0; i < (atRules.length - 1); i++) {
+						const x = atRules[i];
+						const y = atRules[i + 1];
+
+						x.append(y);
+					}
+
+					const outerAtRule = atRules[0];
+					const innerAtRule = atRules[atRules.length - 1];
 
 					const parentClone = rule.clone();
 					parentClone.removeAll();
@@ -86,9 +135,12 @@ const creator: PluginCreator<null> = () => {
 					parentClone.append(decl.clone());
 					decl.remove();
 
-					parentRuleClones.set(atSupports, parentClone);
-					atSupports.append(parentClone);
-					atSupportsRules.push(atSupports);
+					lastConditionParams.support = supportParams;
+					lastConditionParams.media = mediaParams;
+					lastConditionalRule = parentClone;
+
+					innerAtRule.append(parentClone);
+					atSupportsRules.push(outerAtRule);
 				});
 
 				if (atSupportsRules.length === 0) {

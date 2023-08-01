@@ -534,3 +534,15 @@ export function colorDataFitsRGB_Gamut(x: ColorData): boolean {
 
 	return false;
 }
+
+export function colorDataFitsDisplayP3_Gamut(x: ColorData): boolean {
+	const copy = JSON.parse(JSON.stringify(x)) as ColorData;
+
+	copy.channels = convertPowerlessComponentsToZeroValuesForDisplay(copy.channels, copy.colorNotation);
+	const displayP3 = colorDataTo(copy, ColorNotation.Display_P3);
+	if (!displayP3.channels.find((y) => y < -0.00001 || y > 1.00001)) {
+		return true;
+	}
+
+	return false;
+}

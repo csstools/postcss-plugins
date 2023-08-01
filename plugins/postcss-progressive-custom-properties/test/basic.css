@@ -84,6 +84,15 @@
 
 	--color-6: orange;
 	--color-6: color(rec2020 0.64331 0.19245 0.16771);
+
+	--color-7: pink;
+	--color-7: color(srgb 0.999 0.95 0.95);
+
+	--color-8: pink;
+	--color-8: color(display-p3 0.999 0.95 0.95);
+
+	--color-9: pink;
+	--color-9: color(rec2020 0.999 0.95 0.95);
 }
 
 :root {
