@@ -152,3 +152,14 @@
 .foo {
 	color: color-mix(in oklab, #09232c, white 50%);
 }
+
+/* https: //github.com/w3c/csswg-drafts/issues/8794#issuecomment-1657218470 */
+/* We expect these to be pure white because we are not calculating colors in memory for a real display */
+.white-points {
+	color-1: color-mix(in lab, color(srgb 1 1 1) 100%, black);
+	color-2: color-mix(in lch, color(srgb 1 1 1) 100%, black);
+	color-3: color-mix(in lab, color(xyz-d50 1 1 1) 100%, black);
+	color-4: color-mix(in lch, color(xyz-d50 1 1 1) 100%, black);
+	color-5: color-mix(in lab, color(xyz-d65 1 1 1) 100%, black);
+	color-6: color-mix(in lch, color(xyz-d65 1 1 1) 100%, black);
+}
