@@ -7,6 +7,9 @@ import { whoami } from './npm-whoami.mjs';
 
 export async function prepareCurrentReleasePlan() {
 	const iam = await whoami();
+	if (!iam) {
+		throw new Error("Could not determine current npm user");
+	}
 
 	const workspaces = await listWorkspaces();
 	// Things to release
