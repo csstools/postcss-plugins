@@ -7,12 +7,12 @@ const result = (await postcss([plugin()]).process(
 	{from: undefined},
 )).css;
 
-assert.ok(['production', 'development'].includes(process.env.BROWSERSLIST_ENV));
+assert.ok(['production', 'development', 'legacy-edge'].includes(process.env.BROWSERSLIST_ENV));
 
 if (process.env.BROWSERSLIST_ENV === 'production') {
 	assert.equal(
 		result,
-		':link, :visited, area[href] { color: blue; }\n' +
+		':link, :visited { color: blue; }\n' +
 		':-webkit-any-link { color: blue; }\n' +
 		':-moz-any-link { color: blue; }\n' +
 		':any-link { color: blue; }',
@@ -21,4 +21,12 @@ if (process.env.BROWSERSLIST_ENV === 'production') {
 
 if (process.env.BROWSERSLIST_ENV === 'development') {
 	assert.equal(result, ':any-link { color: blue; }');
+}
+
+if (process.env.BROWSERSLIST_ENV === 'legacy-edge') {
+	assert.equal(
+		result,
+		':link, :visited, area[href] { color: blue; }\n' +
+		':any-link { color: blue; }',
+	);
 }

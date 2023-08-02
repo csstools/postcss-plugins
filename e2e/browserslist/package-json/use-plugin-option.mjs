@@ -12,11 +12,22 @@ const resultDevelopment = (await postcss([plugin({env: 'development'})]).process
 	{from: undefined},
 )).css;
 
+const resultLegacyEdge = (await postcss([plugin({env: 'legacy-edge'})]).process(
+	':any-link { color: blue; }',
+	{from: undefined},
+)).css;
+
 assert.equal(
 	resultProduction,
-	':link, :visited, area[href] { color: blue; }\n' +
+	':link, :visited { color: blue; }\n' +
 	':-webkit-any-link { color: blue; }\n' +
 	':-moz-any-link { color: blue; }\n' +
+	':any-link { color: blue; }',
+);
+
+assert.equal(
+	resultLegacyEdge,
+	':link, :visited, area[href] { color: blue; }\n' +
 	':any-link { color: blue; }',
 );
 

@@ -2,9 +2,7 @@ import browserslist from 'browserslist';
 import { getUnsupportedBrowsersByFeature } from './get-unsupported-browsers-by-feature.mjs';
 
 // add extra options for certain browsers by feature
-export default function getOptionsForBrowsersByFeature(browsers, feature, cssdbList, options, logger) {
-	const supportedBrowsers = browserslist(browsers, { ignoreUnknownVersions: true });
-
+export default function getOptionsForBrowsersByFeature(supportedBrowsers, feature, cssdbList, options, logger) {
 	switch (feature.id) {
 		case 'is-pseudo-class':
 			// Emit a warning to avoid making unresolved removal of `:is()` a feature.
@@ -67,14 +65,13 @@ export default function getOptionsForBrowsersByFeature(browsers, feature, cssdbL
 
 function needsOptionFor(feature, supportedBrowsers) {
 	const unsupportedIn = getUnsupportedBrowsersByFeature(feature);
+	const unsupportedBrowsers = browserslist(unsupportedIn, {
+		ignoreUnknownVersions: true,
+	});
 
-	if (supportedBrowsers.some(
-		supportedBrowser => browserslist(unsupportedIn, {
-			ignoreUnknownVersions: true,
-		}).some(
-			polyfillBrowser => polyfillBrowser === supportedBrowser,
-		),
-	)) {
+	if (supportedBrowsers.some((supportedBrowser) => {
+		return unsupportedBrowsers.some(polyfillBrowser => polyfillBrowser === supportedBrowser);
+	})) {
 		return true;
 	}
 
