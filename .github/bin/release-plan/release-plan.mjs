@@ -1,7 +1,5 @@
-import { listWorkspaces } from '../list-workspaces/list-workspaces.mjs';
 import fs from 'fs/promises'
 import path from 'path'
-import { addUpdatedPackagesToChangelog } from './add-to-changelog.mjs';
 import { commitAfterDependencyUpdates, commitAfterPackageRelease } from './commit.mjs';
 import { discordAnnounce } from './discord-announce.mjs';
 import { nowFormatted } from './date-format.mjs';
@@ -9,112 +7,14 @@ import { npmInstall } from './npm-install.mjs';
 import { npmPublish } from './npm-publish.mjs';
 import { npmVersion } from './npm-version.mjs';
 import { updateDocumentation } from './docs.mjs';
-import { currentVersion } from './current-version.mjs';
-import { canPublish } from './npm-can-publish.mjs';
+import { prepareCurrentReleasePlan } from './prepare-current-release-plan.mjs';
+import { prepareNextReleasePlan } from './prepare-next-release-plan.mjs';
 
-const workspaces = await listWorkspaces();
-// Things to release
-const needsRelease = new Map();
-// Things that should be released after this plan
-const maybeNextPlan = new Map();
-// Things not to release
-const notReleasableNow = new Map();
-// Downstream dependents
-let didChangeDownstreamPackages = false;
-
-const isDryRun = process.argv.slice(2).includes('--dry-run');
-
-WORKSPACES_LOOP:
-for (const workspace of workspaces) {
-	if (workspace.private) {
-		continue;
-	}
-
-	for (const dependency of workspace.dependencies) {
-		if (needsRelease.has(dependency) || notReleasableNow.has(dependency)) {
-			notReleasableNow.set(workspace.name, workspace);
-
-			let changelog = (await fs.readFile(path.join(workspace.path, 'CHANGELOG.md'))).toString();
-			if (changelog.includes('Unreleased')) {
-				maybeNextPlan.set(workspace.name, workspace);
-			}
-			// Can not be released before all modified dependencies have been released.
-			continue WORKSPACES_LOOP;
-		}
-	}
-
-	let changelog = (await fs.readFile(path.join(workspace.path, 'CHANGELOG.md'))).toString();
-	if (changelog.includes('Unreleased')) {
-		const canPublishPackage = await canPublish(workspace.name);
-		if (!canPublishPackage) {
-			console.warn("Current npm user does not have write access for", workspace.name);
-			notReleasableNow.set(workspace.name, workspace);
-			continue WORKSPACES_LOOP;
-		}
-
-		let increment = '';
-		if (changelog.includes('Unreleased (patch)')) {
-			increment = 'patch';
-		} else if (changelog.includes('Unreleased (minor)')) {
-			increment = 'minor';
-		} else if (changelog.includes('Unreleased (major)')) {
-			increment = 'major';
-		} else {
-			console.warn("Invalid CHANGELOG.md in", workspace.name);
-			notReleasableNow.set(workspace.name, workspace);
-			continue WORKSPACES_LOOP;
-		}
-
-		workspace.increment = increment;
-		workspace.changelog = changelog;
-		needsRelease.set(workspace.name, workspace);
-	}
-}
-
-// Only do a single initial publish at a time
-for (const [workspaceName, workspace] of needsRelease) {
-	const version = await currentVersion(workspace.path);
-
-	if (version === '0.0.0') {
-		const allWorkspaces = new Map(needsRelease);
-		allWorkspaces.delete(workspaceName);
-
-		needsRelease.clear();
-		needsRelease.set(workspaceName, workspace);
-
-		for (const [workspaceName, workspace] of allWorkspaces) {
-			maybeNextPlan.set(workspaceName, workspace);
-			notReleasableNow.set(workspaceName, workspace);
-		}
-
-		break;
-	}
-}
-
-if (needsRelease.size === 0) {
-	console.log('Nothing to release');
-	process.exit(0);
-}
-
-if (maybeNextPlan.size) {
-	console.log('Excluded:');
-	for (const workspace of maybeNextPlan.values()) {
-		console.log(`  - ${workspace.name}`);
-	}
-	console.log(''); // empty line
-}
-
-if (needsRelease.size) {
-	console.log('Release plan:');
-	for (const workspace of needsRelease.values()) {
-		console.log(`  - ${workspace.name} (${workspace.increment})`);
-	}
-	console.log(''); // empty line
-}
-
-if (isDryRun) {
-	process.exit(0);
-}
+const {
+	needsRelease,
+	notReleasableNow,
+	maybeNextPlan
+} = await prepareCurrentReleasePlan();
 
 for (const workspace of needsRelease.values()) {
 	console.log(`Releasing : ${workspace.name}`);
@@ -129,88 +29,22 @@ for (const workspace of needsRelease.values()) {
 	// Update the documentation
 	await updateDocumentation(workspace.path);
 
+	// Commit changes
+	await commitAfterPackageRelease(workspace.newVersion, workspace.path, workspace.name);
+
 	// Publish to npm
 	await npmPublish(workspace.path, workspace.name);
 
 	// Announce on discord
 	await discordAnnounce(workspace);
-
-	// Commit changes
-	await commitAfterPackageRelease(workspace.newVersion, workspace.path, workspace.name);
 }
 
-console.log('\nPreparing next plan');
-
-for (const workspace of notReleasableNow.values()) {
-	const packageInfo = JSON.parse(await fs.readFile(path.join(workspace.path, 'package.json')));
-	let didChange = false;
-
-	let changeLogAdditions = '';
-
-	for (const dependency of workspace.dependencies) {
-		if (needsRelease.has(dependency)) {
-			const updated = needsRelease.get(dependency);
-
-			const dependencyLink = `https://github.com/csstools/postcss-plugins/tree/main/${updated.path.replaceAll('\\', '/')}`;
-			const nameAsLink = `[\`${updated.name}\`](${dependencyLink})`;
-			const versionAsLink = `[\`${updated.newVersion}\`](${dependencyLink}/CHANGELOG.md#${updated.newVersionChangeLogHeadingID})`;
-
-			if (
-				packageInfo.dependencies &&
-				packageInfo.dependencies[updated.name] &&
-				packageInfo.dependencies[updated.name] !== '*' &&
-				updated.newVersion
-			) {
-				packageInfo.dependencies[updated.name] = '^' + updated.newVersion;
-
-				if (updated.newVersion !== '1.0.0') {
-					// initial releases are not mentioned as updates
-					changeLogAdditions += `- Updated ${nameAsLink} to ${versionAsLink} (${updated.increment})\n`;
-				}
-
-				didChange = true;
-			}
-			if (
-				packageInfo.devDependencies &&
-				packageInfo.devDependencies[updated.name] &&
-				packageInfo.devDependencies[updated.name] !== '*' &&
-				updated.newVersion
-			) {
-				packageInfo.devDependencies[updated.name] = '^' + updated.newVersion;
-				// dev dependencies are not included in the changelog
-				didChange = true;
-			}
-			if (
-				packageInfo.peerDependencies &&
-				packageInfo.peerDependencies[updated.name] &&
-				packageInfo.peerDependencies[updated.name] !== '*' &&
-				updated.newVersion
-			) {
-				packageInfo.peerDependencies[updated.name] = '^' + updated.newVersion;
-				changeLogAdditions += `- Updated ${nameAsLink} to ${versionAsLink} (${updated.increment})\n`;
-				didChange = true;
-			}
-		}
-	}
-
-	if (didChange) {
-		didChangeDownstreamPackages = true;
-		await fs.writeFile(path.join(workspace.path, 'package.json'), JSON.stringify(packageInfo, null, '\t') + '\n');
-	}
-
-	if (didChange && changeLogAdditions) {
-		let changelog = (await fs.readFile(path.join(workspace.path, 'CHANGELOG.md'))).toString();
-		changelog = addUpdatedPackagesToChangelog(workspace, changelog, changeLogAdditions);
-
-		await fs.writeFile(path.join(workspace.path, 'CHANGELOG.md'), changelog);
-	}
-}
+const didChangeDownstreamPackages = await prepareNextReleasePlan(needsRelease, notReleasableNow, maybeNextPlan);
 
 console.log('\nUpdating lock file');
 await npmInstall();
 
 if (didChangeDownstreamPackages) {
-	await npmInstall();
 	await commitAfterDependencyUpdates();
 }
 
