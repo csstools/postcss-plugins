@@ -10,6 +10,7 @@ import { npmPublish } from './npm-publish.mjs';
 import { npmVersion } from './npm-version.mjs';
 import { updateDocumentation } from './docs.mjs';
 import { currentVersion } from './current-version.mjs';
+import { canPublish } from './npm-can-publish.mjs';
 
 const workspaces = await listWorkspaces();
 // Things to release
@@ -44,6 +45,13 @@ for (const workspace of workspaces) {
 
 	let changelog = (await fs.readFile(path.join(workspace.path, 'CHANGELOG.md'))).toString();
 	if (changelog.includes('Unreleased')) {
+		const canPublishPackage = await canPublish(workspace.name);
+		if (!canPublishPackage) {
+			console.warn("Current npm user does not have write access for", workspace.name);
+			notReleasableNow.set(workspace.name, workspace);
+			continue WORKSPACES_LOOP;
+		}
+
 		let increment = '';
 		if (changelog.includes('Unreleased (patch)')) {
 			increment = 'patch';
@@ -88,17 +96,21 @@ if (needsRelease.size === 0) {
 	process.exit(0);
 }
 
-console.log('Excluded:');
-for (const workspace of maybeNextPlan.values()) {
-	console.log(`  - ${workspace.name}`);
+if (maybeNextPlan.size) {
+	console.log('Excluded:');
+	for (const workspace of maybeNextPlan.values()) {
+		console.log(`  - ${workspace.name}`);
+	}
+	console.log(''); // empty line
 }
-console.log(''); // empty line
 
-console.log('Release plan:');
-for (const workspace of needsRelease.values()) {
-	console.log(`  - ${workspace.name} (${workspace.increment})`);
+if (needsRelease.size) {
+	console.log('Release plan:');
+	for (const workspace of needsRelease.values()) {
+		console.log(`  - ${workspace.name} (${workspace.increment})`);
+	}
+	console.log(''); // empty line
 }
-console.log(''); // empty line
 
 if (isDryRun) {
 	process.exit(0);
