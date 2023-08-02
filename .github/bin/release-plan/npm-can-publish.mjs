@@ -22,13 +22,17 @@ export async function canPublish(packageName) {
 
 		whoamiCmd.on('close', (code) => {
 			if (0 !== code) {
-				reject(new Error(`'npm install' exited with code ${code}`));
+				reject(new Error(`'npm whoami' exited with code ${code}`));
 				return;
 			}
 
 			resolve(result.trim());
 		});
 	});
+
+	if (!myName) {
+		return false;
+	}
 
 	return new Promise((resolve, reject) => {
 		const accessListCmd = spawn(
@@ -54,7 +58,7 @@ export async function canPublish(packageName) {
 
 		accessListCmd.on('close', (code) => {
 			if (0 !== code) {
-				reject(new Error(`'npm install' exited with code ${code}`));
+				reject(new Error(`'npm ${['access', 'list', 'collaborators', packageName, myName].join(' ')}' exited with code ${code}`));
 				return;
 			}
 
