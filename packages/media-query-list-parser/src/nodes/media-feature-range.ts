@@ -413,7 +413,7 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>): 
 			(nameA && !nameB) ||
 			nameA && mediaDescriptors.has(toLowerCaseAZ(nameA.getName()))
 		) {
-			const value = parseMediaFeatureValue(b);
+			const value = parseMediaFeatureValue(b, true);
 			if (!value) {
 				return false;
 			}
@@ -425,7 +425,7 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>): 
 			(!nameA && nameB) ||
 			nameB && mediaDescriptors.has(toLowerCaseAZ(nameB.getName()))
 		) {
-			const value = parseMediaFeatureValue(a);
+			const value = parseMediaFeatureValue(a, true);
 			if (!value) {
 				return false;
 			}
@@ -449,9 +449,9 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>): 
 	const b = componentValues.slice(comparisonOne[1] + 1, comparisonTwo[0]);
 	const c = componentValues.slice(comparisonTwo[1] + 1);
 
-	const valueA = parseMediaFeatureValue(a);
+	const valueA = parseMediaFeatureValue(a, true);
 	const nameB = parseMediaFeatureName(b);
-	const valueC = parseMediaFeatureValue(c);
+	const valueC = parseMediaFeatureValue(c, true);
 
 	if (!valueA || !nameB || !valueC) {
 		return false;
