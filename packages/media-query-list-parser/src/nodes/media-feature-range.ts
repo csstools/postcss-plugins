@@ -4,7 +4,6 @@ import { comparisonFromTokens, matchesComparison, MediaFeatureComparison, MediaF
 import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
 import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent, parseMediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export type MediaFeatureRange = MediaFeatureRangeNameValue |
 	MediaFeatureRangeValueName |
