@@ -9,7 +9,7 @@ const packageJSONInfo = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 let exampleFilePaths = [];
 
 try {
-	exampleFilePaths = await fsp.readdir(path.join('test', 'examples'));
+	exampleFilePaths = fs.readdirSync(path.join('test', 'examples'));
 } catch(error) {
 	// No examples
 }
