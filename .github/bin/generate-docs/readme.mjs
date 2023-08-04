@@ -1,10 +1,10 @@
-import { promises as fsp } from 'fs';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const template = await fsp.readFile(path.join('docs', './README.md'), 'utf8');
-const corsTemplate = await fsp.readFile(path.join(path.dirname(fileURLToPath(import.meta.url)), './cors-template.md'), 'utf8');
-const packageJSONInfo = JSON.parse(await fsp.readFile('./package.json', 'utf8'));
+const template = fs.readFileSync(path.join('docs', './README.md'), 'utf8');
+const corsTemplate = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), './cors-template.md'), 'utf8');
+const packageJSONInfo = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 
 let exampleFilePaths = [];
 
@@ -106,8 +106,8 @@ readmeDoc = readmeDoc.replaceAll('<specUrl>', packageJSONInfo.csstools.specUrl);
 for (const exampleFilePath of exampleFilePaths) {
 	readmeDoc = readmeDoc.replaceAll(
 		`<${exampleFilePath}>`,
-		(await fsp.readFile(path.join('test', 'examples', exampleFilePath), 'utf8')).toString().slice(0, -1), // trim final newline
+		(fs.readFileSync(path.join('test', 'examples', exampleFilePath), 'utf8')).toString().slice(0, -1), // trim final newline
 	);
 }
 
-await fsp.writeFile('./README.md', readmeDoc);
+fs.writeFileSync('./README.md', readmeDoc);

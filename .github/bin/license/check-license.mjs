@@ -1,5 +1,5 @@
 import path from 'path';
-import { promises as fsp } from 'fs';
+import fs from 'fs';
 import { getFiles } from '../util/get-files.mjs';
 import { parseLicenseField } from './parse-license-field.mjs';
 import { licenseIsOkByException, osiApprovedWithCCO } from './allowed.mjs';
@@ -52,7 +52,7 @@ const allFiles = (await getFiles('./')).filter((file) => {
 	});
 
 	for (const file of allDistFiles) {
-		const contents = await fsp.readFile(file, 'utf8');
+		const contents = fs.readFileSync(file, 'utf8');
 		const lines = contents.split('\n');
 
 		for (const line of lines) {
@@ -83,7 +83,7 @@ const allFiles = (await getFiles('./')).filter((file) => {
 
 	// Read all "package.json" files and try to locate the license field
 	for (const file of packageJsonFiles) {
-		const data = await fsp.readFile(file, 'utf8');
+		const data = fs.readFileSync(file, 'utf8');
 		const packageJson = JSON.parse(data);
 
 		if (!packageJson.license && !packageJson.licenses) {

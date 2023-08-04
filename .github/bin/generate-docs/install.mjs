@@ -1,9 +1,9 @@
-import { promises as fsp } from 'fs';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const template = await fsp.readFile(path.join(path.dirname(fileURLToPath(import.meta.url)), './install-template.md'), 'utf8');
-const packageJSONInfo = JSON.parse(await fsp.readFile('./package.json', 'utf8'));
+const template = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), './install-template.md'), 'utf8');
+const packageJSONInfo = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 
 let installDoc = template.toString();
 installDoc = installDoc.replaceAll('<exportName>', packageJSONInfo.csstools.exportName);
@@ -21,4 +21,4 @@ if (packageJSONInfo?.csstools?.assumesToProcessBundledCSS) {
 	installDoc = installDoc.replaceAll('<otherPluginsInWebpack>', `// Other plugins`);
 }
 
-await fsp.writeFile('./INSTALL.md', installDoc);
+fs.writeFileSync('./INSTALL.md', installDoc);

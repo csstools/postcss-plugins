@@ -7,7 +7,7 @@ import { packageTypescript } from './presets/package-typescript.mjs';
 // Always clean the dist folder before building.
 fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');
 
-const packageInfo = JSON.parse(fs.readFileSync('./package.json'));
+const packageInfo = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 
 const isTypescript = (() => {
 	if (packageInfo.types) {
