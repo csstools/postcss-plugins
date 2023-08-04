@@ -1,4 +1,4 @@
-import fs, { constants } from 'fs';
+import fs from 'fs';
 import path from 'path';
 
 function postcssPeerDependencyVersion() {
@@ -203,9 +203,7 @@ const formatted = {};
 		}
 		delete packageJSONInfo.scripts;
 
-		try {
-			await fsp.access('./stryker.conf.json', constants.R_OK | constants.W_OK);
-		} catch (_) {
+		if (!fs.existsSync('./stryker.conf.json')) {
 			delete formatted.scripts.stryker;
 		}
 	}
@@ -257,4 +255,4 @@ if (process.env.GITHUB_ACTIONS && JSON.stringify(formatted, null, '\t') !== pack
 	process.exit(1);
 }
 
-await fsp.writeFile('./package.json', JSON.stringify(formatted, null, '\t') + '\n');
+fs.writeFileSync('./package.json', JSON.stringify(formatted, null, '\t') + '\n');
