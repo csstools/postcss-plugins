@@ -1,6 +1,8 @@
 # Changes to Media Query List Parser
 
-### Unreleased (patch)
+### 2.1.4
+
+_August 5, 2023_
 
 - Do not allow keywords as media feature values in range context queries.
 
