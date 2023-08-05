@@ -97,7 +97,7 @@
 		"postcss-initial": "^4.0.1",
 		"postcss-lab-function": "^6.0.1",
 		"postcss-logical": "^7.0.0",
-		"postcss-nesting": "^12.0.0",
+		"postcss-nesting": "^12.0.1",
 		"postcss-opacity-percentage": "^2.0.0",
 		"postcss-overflow-shorthand": "^5.0.0",
 		"postcss-page-break": "^3.0.4",

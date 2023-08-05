@@ -4,6 +4,7 @@
 
 - Display multiple feature suggestions when an unknown feature is used in plugin options
 - Fix `env` option for plugin specific options by @BPScott
+- Updated [`postcss-nesting`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) to [`12.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting/CHANGELOG.md#1201) (patch)
 
 ### 9.1.0
 
