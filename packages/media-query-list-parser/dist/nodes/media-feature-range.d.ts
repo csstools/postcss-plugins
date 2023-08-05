@@ -121,4 +121,3 @@ export declare class MediaFeatureRangeValueNameValue {
 export type MediaFeatureRangeWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
 export type MediaFeatureRangeWalkerParent = MediaFeatureValueWalkerParent | MediaFeatureRange;
 export declare function parseMediaFeatureRange(componentValues: Array<ComponentValue>): MediaFeatureRange | false;
-export declare const mediaDescriptors: Set<string>;
