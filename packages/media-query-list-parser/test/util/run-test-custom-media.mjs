@@ -13,7 +13,7 @@ export function runTestCustomMedia(source, testPath, assertEqual, expectGeneralE
 		fs.writeFileSync(path.join(process.cwd(), `./test/cases/${testPath}.expect.json`), resultAST_JSON);
 		fs.writeFileSync(path.join(process.cwd(), `./test/cases/${testPath}.result.json`), resultAST_JSON);
 	} else {
-		const expectData = JSON.parse(fs.readFileSync(path.join(process.cwd(), `./test/cases/${testPath}.expect.json`)).toString());
+		const expectData = JSON.parse(fs.readFileSync(path.join(process.cwd(), `./test/cases/${testPath}.expect.json`), 'utf-8').toString());
 		if (resultAST === false) {
 			assertEqual(resultAST, expectData);
 			return;
