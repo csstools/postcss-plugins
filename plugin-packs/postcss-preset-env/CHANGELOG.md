@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 9.1.1
+
+_August 5, 2023_
 
 - Display multiple feature suggestions when an unknown feature is used in plugin options
 - Fix `env` option for plugin specific options by @BPScott
