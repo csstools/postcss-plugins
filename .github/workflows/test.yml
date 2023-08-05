@@ -27,12 +27,12 @@ jobs:
         node: [16, 18, 20]
         include:
         - os: macos-latest
-          node: 18
+          node: 20
         - os: windows-latest
-          node: 18
+          node: 20
         - os: ubuntu-latest
           is_base_os_version: true
-        - node: 18
+        - node: 20
           is_base_node_version: true
     steps:
       - uses: actions/checkout@v3

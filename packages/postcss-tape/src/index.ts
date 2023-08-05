@@ -1,4 +1,4 @@
-import fs, { promises as fsp } from 'fs';
+import fs from 'fs';
 import noopPlugin from './noop-plugin';
 import path from 'path';
 import postcss from 'postcss';
@@ -60,7 +60,7 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 
 		// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#54-include-postcss-plugin-keyword-in-packagejson
 		// Include postcss-plugin keyword in package.json
-		const packageInfo = JSON.parse(fs.readFileSync('./package.json').toString());
+		const packageInfo = JSON.parse(fs.readFileSync('./package.json', 'utf-8').toString());
 		if (!packageInfo.keywords || !packageInfo.keywords.includes('postcss-plugin')) {
 			hasErrors = true;
 
@@ -154,12 +154,12 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 
 			const plugins = testCaseOptions.plugins ?? [currentPlugin(testCaseOptions.options)];
 
-			const input = await fsp.readFile(testFilePath, 'utf8');
+			const input = fs.readFileSync(testFilePath, 'utf8');
 
 			// Check errors on expect file being missing
 			let expected: string | false = '';
 			try {
-				expected = await fsp.readFile(expectFilePath, 'utf8');
+				expected = fs.readFileSync(expectFilePath, 'utf8');
 			} catch (_) {
 				hasErrors = true;
 				expected = false;
@@ -220,11 +220,11 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 			// This helps writing new tests for plugins.
 			// Taking the result file as a starting point for the expect file.
 			const resultString = result.css.toString();
-			await fsp.writeFile(resultFilePath, resultString, 'utf8');
+			fs.writeFileSync(resultFilePath, resultString, 'utf8');
 
 			// Allow contributors to rewrite `.expect.css` files through postcss-tape.
 			if (process.env.REWRITE_EXPECTS) {
-				fsp.writeFile(expectFilePath, resultString, 'utf8');
+				fs.writeFileSync(expectFilePath, resultString, 'utf8');
 			}
 
 			// Can't do further checks if "expect" is missing.
@@ -289,7 +289,7 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 			// Assert that the result can be passed back to PostCSS and still parses.
 			{
 				try {
-					const resultContents = await fsp.readFile(resultFilePath, 'utf8');
+					const resultContents = fs.readFileSync(resultFilePath, 'utf8');
 					const secondPassResult = await postcss([noopPlugin()]).process(resultContents, {
 						from: resultFilePath,
 						to: resultFilePath,
