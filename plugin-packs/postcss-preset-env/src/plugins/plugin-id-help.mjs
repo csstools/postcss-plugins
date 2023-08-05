@@ -10,38 +10,38 @@ export function pluginIdHelp(featureNamesInOptions, root, result) {
 			return;
 		}
 
-		const byId = mostSimilar(featureName, featureNames);
-		const byPackage = mostSimilar(featureName, packageNames);
+		const suggestions = [
+			...featureNames.map((x) => {
+				return [x, levenshteinDistance(featureName, x)];
+			}),
+			...packageNames.map((x) => {
+				return [packageNamesToIds[x], levenshteinDistance(featureName, x)];
+			}),
+		].sort((a, b) => {
+			return a[1] - b[1];
+		}).filter((x) => x[1] < 10);
 
-		if (Math.min(byId.distance, byPackage.distance) > 10) {
+		const uniqueSuggestions = new Set();
+
+		for (let i = 0; i < suggestions.length; i++) {
+			uniqueSuggestions.add(suggestions[i][0]);
+
+			if (uniqueSuggestions.size >= 3) {
+				break;
+			}
+		}
+
+		if (!uniqueSuggestions.size) {
 			root.warn(result, `Unknown feature: "${featureName}", see the list of features https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md`);
 			return;
 		}
 
-		if (byId.distance < byPackage.distance) {
-			root.warn(result, `Unknown feature: "${featureName}", did you mean: "${byId.mostSimilar}"`);
-		} else {
-			root.warn(result, `Unknown feature: "${featureName}", did you mean: "${packageNamesToIds[byPackage.mostSimilar]}"`);
-		}
+		let formattedSuggestions = '"';
+		formattedSuggestions += Array.from(uniqueSuggestions).join('", "');
+		formattedSuggestions += '"';
+
+		root.warn(result, `Unknown feature: "${featureName}", did you mean one of: ${formattedSuggestions}`);
 	});
-}
-
-function mostSimilar(a, b) {
-	let mostSimilar = 'unknown';
-	let leastDistance = Infinity;
-
-	for (let j = 0; j < b.length; j++) {
-		const distance = levenshteinDistance(a, b[j]);
-		if (distance < leastDistance) {
-			leastDistance = distance;
-			mostSimilar = b[j];
-		}
-	}
-
-	return {
-		mostSimilar: mostSimilar,
-		distance: leastDistance,
-	};
 }
 
 function levenshteinDistance(s, t) {

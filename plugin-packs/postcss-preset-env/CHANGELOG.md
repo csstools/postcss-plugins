@@ -2,6 +2,7 @@
 
 ### Unreleased (patch)
 
+- Display multiple feature suggestions when an unknown feature is used in plugin options
 - Fix `env` option for plugin specific options by @BPScott
 
 ### 9.1.0
