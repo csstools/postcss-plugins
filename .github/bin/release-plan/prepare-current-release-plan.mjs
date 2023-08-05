@@ -19,8 +19,6 @@ export async function prepareCurrentReleasePlan() {
 	// Things not to release
 	const notReleasableNow = new Map();
 
-	const isDryRun = process.argv.slice(2).includes('--dry-run');
-
 	WORKSPACES_LOOP:
 	for (const workspace of workspaces) {
 		if (workspace.private) {
@@ -107,10 +105,6 @@ export async function prepareCurrentReleasePlan() {
 			console.log(`  - ${workspace.name} (${workspace.increment})`);
 		}
 		console.log(''); // empty line
-	}
-
-	if (isDryRun) {
-		process.exit(0);
 	}
 
 	return {

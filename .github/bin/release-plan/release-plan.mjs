@@ -1,6 +1,6 @@
 import fs from 'fs/promises'
 import path from 'path'
-import { commitAfterDependencyUpdates, commitAfterPackageRelease } from './commit.mjs';
+import { commitAfterDependencyUpdates, commitSingleDirectory } from './commit.mjs';
 import { discordAnnounce } from './discord-announce.mjs';
 import { nowFormatted } from './date-format.mjs';
 import { npmInstall } from './npm-install.mjs';
@@ -9,12 +9,17 @@ import { npmVersion } from './npm-version.mjs';
 import { updateDocumentation } from './docs.mjs';
 import { prepareCurrentReleasePlan } from './prepare-current-release-plan.mjs';
 import { prepareNextReleasePlan } from './prepare-next-release-plan.mjs';
+import { runAndPrintDebugOnFail } from './run-and-print-debug-on-fail.mjs';
 
 const {
 	needsRelease,
 	notReleasableNow,
 	maybeNextPlan
 } = await prepareCurrentReleasePlan();
+
+if (process.argv.slice(2).includes('--dry-run')) {
+	process.exit(0);
+}
 
 for (const workspace of needsRelease.values()) {
 	console.log(`Releasing : ${workspace.name}`);
@@ -27,16 +32,40 @@ for (const workspace of needsRelease.values()) {
 	await fs.writeFile(path.join(workspace.path, 'CHANGELOG.md'), changelog);
 
 	// Update the documentation
-	await updateDocumentation(workspace.path);
+	await runAndPrintDebugOnFail(
+		updateDocumentation(workspace.path),
+		`When releasing ${workspace.name} an error occurred.`,
+		'This happened during the documentation update and before committing and publishing changes.\n' +
+		'Please fix the error and try again from a clean git state.'
+	);
 
 	// Commit changes
-	await commitAfterPackageRelease(workspace.newVersion, workspace.path, workspace.name);
+	await runAndPrintDebugOnFail(
+		commitSingleDirectory(
+			`${workspace.name} v${workspace.newVersion}`, // "@csstools/css-tokenizer v1.0.0"
+			workspace.path,
+		),
+		`When releasing ${workspace.name} an error occurred.`,
+		'This happened when committing changes.\n' +
+		'Please fix the error and try again from a clean git state.'
+	);
 
 	// Publish to npm
-	await npmPublish(workspace.path, workspace.name);
+	await runAndPrintDebugOnFail(
+		npmPublish(workspace.path, workspace.name),
+		`When releasing ${workspace.name} an error occurred.`,
+		'This happened when publishing to npm.\n' +
+		'A commit with changes relevant to this release has already been made.\n' +
+		'Please fix the error and try again.'
+	);
 
 	// Announce on discord
-	await discordAnnounce(workspace);
+	await runAndPrintDebugOnFail(
+		discordAnnounce(workspace),
+		`When releasing ${workspace.name} an error occurred.`,
+		'This happened when announcing the update on Discord.\n' +
+		'Committing relevant changes and publishing to npm succeeded.'
+	);
 }
 
 const didChangeDownstreamPackages = await prepareNextReleasePlan(needsRelease, notReleasableNow, maybeNextPlan);

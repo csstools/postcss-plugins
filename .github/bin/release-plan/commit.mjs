@@ -1,6 +1,6 @@
 import { spawn } from 'child_process';
 
-export async function commitAfterPackageRelease(newVersion, packageDirectory, packageName) {
+export async function commitSingleDirectory(commitMessage, dir) {
 	await new Promise((resolve, reject) => {
 		if (process.env.DEBUG) {
 			resolve('not a real commit');
@@ -13,10 +13,10 @@ export async function commitAfterPackageRelease(newVersion, packageDirectory, pa
 			[
 				'commit',
 				'-am',
-				`${packageName} v${newVersion}` // "@csstools/css-tokenizer v1.0.0"
+				commitMessage
 			],
 			{
-				cwd: packageDirectory
+				cwd: dir
 			}
 		);
 
