@@ -40,12 +40,6 @@ export async function prepareCurrentReleasePlan() {
 
 		let changelog = (await fs.readFile(path.join(workspace.path, 'CHANGELOG.md'))).toString();
 		if (changelog.includes('Unreleased')) {
-			const canPublishPackage = await canPublish(workspace.name, iam);
-			if (!canPublishPackage) {
-				console.warn("Current npm user does not have write access for", workspace.name);
-				notReleasableNow.set(workspace.name, workspace);
-				continue WORKSPACES_LOOP;
-			}
 
 			let increment = '';
 			if (changelog.includes('Unreleased (patch)')) {
@@ -57,6 +51,17 @@ export async function prepareCurrentReleasePlan() {
 			} else {
 				console.warn("Invalid CHANGELOG.md in", workspace.name);
 				notReleasableNow.set(workspace.name, workspace);
+				continue WORKSPACES_LOOP;
+			}
+
+			if (!(await canPublish(workspace.name, iam))) {
+				if (increment !== 'patch') {
+					// Patch releases that we can not publish are safe to skip.
+					// Only new features and breaking changes are important down stream.
+					notReleasableNow.set(workspace.name, workspace);
+				}
+
+				console.warn("Current npm user does not have write access for", workspace.name);
 				continue WORKSPACES_LOOP;
 			}
 
