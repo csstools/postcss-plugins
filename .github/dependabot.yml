@@ -7,7 +7,12 @@ updates:
     time: "01:00"
     timezone: "Europe/Brussels"
   groups:
-    all-dependencies:
+    production-dependencies:
+      dependency-type: "production"
+      patterns:
+        - "*"
+    development-dependencies:
+      dependency-type: "development"
       patterns:
         - "*"
   open-pull-requests-limit: 2
