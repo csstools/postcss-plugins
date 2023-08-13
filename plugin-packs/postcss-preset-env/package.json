@@ -73,7 +73,7 @@
 		"@csstools/postcss-text-decoration-shorthand": "^3.0.0",
 		"@csstools/postcss-trigonometric-functions": "^3.0.1",
 		"@csstools/postcss-unset-value": "^3.0.0",
-		"autoprefixer": "^10.4.14",
+		"autoprefixer": "^10.4.15",
 		"browserslist": "^4.21.10",
 		"css-blank-pseudo": "^6.0.0",
 		"css-has-pseudo": "^6.0.0",
