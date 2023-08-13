@@ -1,7 +1,7 @@
 {
 	"name": "postcss-nesting",
 	"description": "Nest rules inside each other in CSS",
-	"version": "12.0.0",
+	"version": "12.0.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -59,7 +59,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^20.9.0"
+		"puppeteer": "^21.0.3"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

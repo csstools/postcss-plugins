@@ -1,5 +1,11 @@
 # Changes to PostCSS Media Queries Aspect-Ratio Number Values
 
+### 2.0.2
+
+_August 5, 2023_
+
+- Updated [`@csstools/media-query-list-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser) to [`2.1.4`](https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser/CHANGELOG.md#214) (patch)
+
 ### 2.0.1
 
 _July 24, 2023_

@@ -26,6 +26,6 @@ export declare class MediaFeatureValue {
 }
 export type MediaFeatureValueWalkerEntry = ComponentValue;
 export type MediaFeatureValueWalkerParent = ContainerNode | MediaFeatureValue;
-export declare function parseMediaFeatureValue(componentValues: Array<ComponentValue>): MediaFeatureValue | false;
+export declare function parseMediaFeatureValue(componentValues: Array<ComponentValue>, inRangeContext?: boolean): MediaFeatureValue | false;
 export declare function matchesRatioExactly(componentValues: Array<ComponentValue>): number[] | -1;
 export declare function matchesRatio(componentValues: Array<ComponentValue>): number[] | -1;

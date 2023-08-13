@@ -1,7 +1,7 @@
 {
 	"name": "postcss-preset-env",
 	"description": "Convert modern CSS into something browsers understand",
-	"version": "9.1.0",
+	"version": "9.1.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -61,8 +61,8 @@
 		"@csstools/postcss-logical-float-and-clear": "^2.0.0",
 		"@csstools/postcss-logical-resize": "^2.0.0",
 		"@csstools/postcss-logical-viewport-units": "^2.0.1",
-		"@csstools/postcss-media-minmax": "^1.0.6",
-		"@csstools/postcss-media-queries-aspect-ratio-number-values": "^2.0.1",
+		"@csstools/postcss-media-minmax": "^1.0.7",
+		"@csstools/postcss-media-queries-aspect-ratio-number-values": "^2.0.2",
 		"@csstools/postcss-nested-calc": "^3.0.0",
 		"@csstools/postcss-normalize-display-values": "^3.0.0",
 		"@csstools/postcss-oklab-function": "^3.0.1",
@@ -74,7 +74,7 @@
 		"@csstools/postcss-trigonometric-functions": "^3.0.1",
 		"@csstools/postcss-unset-value": "^3.0.0",
 		"autoprefixer": "^10.4.14",
-		"browserslist": "^4.21.9",
+		"browserslist": "^4.21.10",
 		"css-blank-pseudo": "^6.0.0",
 		"css-has-pseudo": "^6.0.0",
 		"css-prefers-color-scheme": "^9.0.0",
@@ -97,7 +97,7 @@
 		"postcss-initial": "^4.0.1",
 		"postcss-lab-function": "^6.0.1",
 		"postcss-logical": "^7.0.0",
-		"postcss-nesting": "^12.0.0",
+		"postcss-nesting": "^12.0.1",
 		"postcss-opacity-percentage": "^2.0.0",
 		"postcss-overflow-shorthand": "^5.0.0",
 		"postcss-page-break": "^3.0.4",

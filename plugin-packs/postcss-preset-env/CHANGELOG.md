@@ -1,11 +1,21 @@
 # Changes to PostCSS Preset Env
 
+### 9.1.1
+
+_August 5, 2023_
+
+- Display multiple feature suggestions when an unknown feature is used in plugin options
+- Fix `env` option for plugin specific options by @BPScott
+- Updated [`postcss-nesting`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) to [`12.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting/CHANGELOG.md#1201) (patch)
+- Updated [`@csstools/postcss-media-minmax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax) to [`1.0.7`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax/CHANGELOG.md#107) (patch)
+- Updated [`@csstools/postcss-media-queries-aspect-ratio-number-values`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values) to [`2.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values/CHANGELOG.md#202) (patch)
+
 ### 9.1.0
 
 _July 24, 2023_
 
 - Added `@csstools/postcss-exponential-functions` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions#readme) for usage details.
-- Added `env` option to control which [browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to target
+- Added `env` option to control which [browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to target by @BPScott
 - Fix [browserslist supports queries](https://github.com/browserslist/browserslist#full-list)
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.7.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#770-july-24-2023) (minor)
 - Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#201) (patch)

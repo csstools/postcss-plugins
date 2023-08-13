@@ -25,15 +25,15 @@ This plugin pack contains :
 It configures these plugins so that the default behavior is very similar to native CSS.
 
 ```pcss
-/* test/examples/example.css */
+/* examples/example.css */
 <example.css>
 
-/* test/examples/imports/basic.css */
+/* examples/imports/basic.css */
 <imports/basic.css>
 
 /* becomes */
 
-/* test/examples/example.expect.css */
+/* examples/example.expect.css */
 <example.expect.css>
 ```
 

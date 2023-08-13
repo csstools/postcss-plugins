@@ -152,7 +152,7 @@ export class MediaFeatureValue {
 export type MediaFeatureValueWalkerEntry = ComponentValue;
 export type MediaFeatureValueWalkerParent = ContainerNode | MediaFeatureValue;
 
-export function parseMediaFeatureValue(componentValues: Array<ComponentValue>): MediaFeatureValue | false {
+export function parseMediaFeatureValue(componentValues: Array<ComponentValue>, inRangeContext: boolean = false): MediaFeatureValue | false {
 	let candidateIndexStart = -1;
 	let candidateIndexEnd = -1;
 
@@ -196,7 +196,7 @@ export function parseMediaFeatureValue(componentValues: Array<ComponentValue>): 
 			continue;
 		}
 
-		if (isIdent(componentValue)) {
+		if (!inRangeContext && isIdent(componentValue)) {
 			candidateIndexStart = i;
 			candidateIndexEnd = i;
 			continue;

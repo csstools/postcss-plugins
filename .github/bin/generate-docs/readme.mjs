@@ -1,16 +1,16 @@
-import { promises as fsp } from 'fs';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const template = await fsp.readFile(path.join('docs', './README.md'), 'utf8');
-const corsTemplate = await fsp.readFile(path.join(path.dirname(fileURLToPath(import.meta.url)), './cors-template.md'), 'utf8');
-const packageJSONInfo = JSON.parse(await fsp.readFile('./package.json', 'utf8'));
+const template = fs.readFileSync(path.join('docs', './README.md'), 'utf8');
+const corsTemplate = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), './cors-template.md'), 'utf8');
+const packageJSONInfo = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 
 let exampleFilePaths = [];
 
 try {
 	exampleFilePaths = (
-		await fsp.readdir(path.join('test', 'examples'), { recursive: true, withFileTypes: true })
+		await fs.promises.readdir(path.join('test', 'examples'), { recursive: true, withFileTypes: true })
 	).filter(x => x.isFile()).map(x => path.join(x.path, x.name));
 } catch(error) {
 	// No examples
@@ -108,8 +108,8 @@ readmeDoc = readmeDoc.replaceAll('<specUrl>', packageJSONInfo.csstools.specUrl);
 for (const exampleFilePath of exampleFilePaths) {
 	readmeDoc = readmeDoc.replaceAll(
 		`<${path.relative(path.join('test', 'examples'), exampleFilePath)}>`,
-		(await fsp.readFile(exampleFilePath, 'utf8')).toString().slice(0, -1), // trim final newline
+		(await fs.readFileSync(exampleFilePath, 'utf8')).toString().slice(0, -1), // trim final newline
 	);
 }
 
-await fsp.writeFile('./README.md', readmeDoc);
+fs.writeFileSync('./README.md', readmeDoc);

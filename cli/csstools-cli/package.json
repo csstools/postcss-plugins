@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/csstools-cli",
 	"description": "Transform CSS with any plugin from csstools/postcss-plugins",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -50,8 +50,8 @@
 		"@csstools/postcss-logical-float-and-clear": "^2.0.0",
 		"@csstools/postcss-logical-resize": "^2.0.0",
 		"@csstools/postcss-logical-viewport-units": "^2.0.1",
-		"@csstools/postcss-media-minmax": "^1.0.6",
-		"@csstools/postcss-media-queries-aspect-ratio-number-values": "^2.0.1",
+		"@csstools/postcss-media-minmax": "^1.0.7",
+		"@csstools/postcss-media-queries-aspect-ratio-number-values": "^2.0.2",
 		"@csstools/postcss-nested-calc": "^3.0.0",
 		"@csstools/postcss-normalize-display-values": "^3.0.0",
 		"@csstools/postcss-oklab-function": "^3.0.1",
@@ -80,10 +80,10 @@
 		"postcss-image-set-function": "^6.0.0",
 		"postcss-lab-function": "^6.0.1",
 		"postcss-logical": "^7.0.0",
-		"postcss-nesting": "^12.0.0",
+		"postcss-nesting": "^12.0.1",
 		"postcss-overflow-shorthand": "^5.0.0",
 		"postcss-place": "^9.0.0",
-		"postcss-preset-env": "^9.1.0",
+		"postcss-preset-env": "^9.1.1",
 		"postcss-pseudo-class-any-link": "^9.0.0",
 		"postcss-selector-not": "^7.0.1"
 	},

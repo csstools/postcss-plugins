@@ -11,17 +11,17 @@ This plugin pack contains :
 It configures these plugins so that the default behavior is very similar to native CSS.
 
 ```pcss
-/* test/examples/example.css */
+/* examples/example.css */
 @import url("imports/basic.css");
 
-/* test/examples/imports/basic.css */
+/* examples/imports/basic.css */
 .foo {
 	background: url('../../images/green.png');
 }
 
 /* becomes */
 
-/* test/examples/example.expect.css */
+/* examples/example.expect.css */
 .foo {
 	background: url("../images/green.png");
 }

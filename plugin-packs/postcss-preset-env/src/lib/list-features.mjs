@@ -59,6 +59,11 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 		return false;
 	});
 
+	// browsers supported by the configuration
+	const supportedBrowsers = browserslist(browsers, { env: env, ignoreUnknownVersions: true }).filter((x) => {
+		return browsersWithSupportStats.includes(x.split(' ')[0]);
+	});
+
 	// staged features (those at or above the selected stage)
 	const stagedFeatures = vendorImplementedFeatures.filter((feature) => {
 		// TODO : this filter needs to be split up.
@@ -81,12 +86,7 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 
 		return isAllowedFeature;
 	}).map((feature) => {
-		return formatStagedFeature(cssdbList, browsers, features, feature, sharedOptions, options, logger);
-	});
-
-	// browsers supported by the configuration
-	const supportedBrowsers = browserslist(browsers, { env: env, ignoreUnknownVersions: true }).filter((x) => {
-		return browsersWithSupportStats.includes(x.split(' ')[0]);
+		return formatStagedFeature(cssdbList, supportedBrowsers, features, feature, sharedOptions, options, logger);
 	});
 
 	// - features supported by the stage

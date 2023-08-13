@@ -38,8 +38,8 @@
 		"stylelint": "^15.0.0"
 	},
 	"devDependencies": {
-		"jest": "^29.6.1",
-		"jest-preset-stylelint": "^6.1.0",
+		"jest": "^29.6.2",
+		"jest-preset-stylelint": "^6.2.0",
 		"postcss": "^8.4",
 		"stylelint": "^15.10.2"
 	},
