@@ -3,15 +3,13 @@ import fs from 'fs';
 import path from 'path';
 import module from 'module';
 
-const require = module.createRequire(import.meta.url);
-
 export function resolveId(id: string, base: string, node: Node): string {
 	let resolvedPath = '';
 	if (id.startsWith('node_modules:')) {
 		try {
-			resolvedPath = require.resolve(id.slice(13), {
-				paths: [base],
-			});
+			const require = module.createRequire(base);
+
+			resolvedPath = require.resolve(id.slice(13));
 		} catch (e) {
 			throw node.error(
 				`Failed to find '${id}'`,
