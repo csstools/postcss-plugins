@@ -5,7 +5,7 @@
 [PostCSS Bundler] bundles your CSS without changing the way you write CSS.
 
 This plugin pack contains : 
-- [`postcss-import`](https://github.com/postcss/postcss-import)
+- A ported and heavily modified version of [`postcss-import`](https://github.com/postcss/postcss-import)
 - [`@csstools/postcss-rebase-url`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url)
 
 It configures these plugins so that the default behavior is very similar to native CSS.
@@ -13,7 +13,7 @@ It configures these plugins so that the default behavior is very similar to nati
 ```pcss
 /* examples/example.css */
 @import url("imports/basic.css");
-@import url("node_modules://open-props/red");
+@import url("node_modules:open-props/red");
 
 /* examples/imports/basic.css */
 .foo {

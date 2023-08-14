@@ -3,12 +3,7 @@ import postcssImport from './postcss-import/index';
 import postcssRebaseURL from '@csstools/postcss-rebase-url';
 
 /** postcss-bundler plugin options */
-export type pluginOptions = {
-	/** plugin options for `@csstools/postcss-rebase-url` */
-	rebaseURL: never,
-	/** plugin options for `postcss-import` */
-	import: never,
-};
+export type pluginOptions = never;
 
 const creator: PluginCreator<pluginOptions> = () => {
 	return {
