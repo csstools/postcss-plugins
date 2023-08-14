@@ -46,13 +46,16 @@
 	],
 	"dependencies": {
 		"@csstools/postcss-rebase-url": "^0.0.0",
-		"postcss-import": "^15.1.0"
+		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@csstools/postcss-tape": "*"
+		"@csstools/postcss-tape": "*",
+		"@rmenke/css-package-main": "^1.0.0",
+		"@rmenke/css-package-conditional-3": "^1.0.0",
+		"open-props": "^1.5.11"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

@@ -19,7 +19,7 @@ function postcssSyntax(options: TestCaseOptions) {
 		return syntaxHTML();
 	}
 
-	return null;
+	return undefined;
 }
 
 export function postcssTape(currentPlugin: PluginCreator<unknown>) {
