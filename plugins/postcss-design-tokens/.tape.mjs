@@ -94,6 +94,9 @@ postcssTape(plugin)({
 		message: "supports value parsing (G)",
 		warnings: 2
 	},
+	'imported-double-slash': {
+		message: "supports 'node_modules://'",
+	},
 	'examples/example': {
 		message: 'minimal example',
 		options: {},
