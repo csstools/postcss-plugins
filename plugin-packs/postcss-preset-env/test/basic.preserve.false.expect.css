@@ -21,7 +21,7 @@
 	        order: 2;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .test-image-set-function {
 	background-image: url(img/test-2x.png);
@@ -295,18 +295,15 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-transform: none;
 	   -moz-transform: none;
 	    -ms-transform: none;
-	     -o-transform: none;
 	        transform: none;
 	-webkit-transform-origin: 50% 50% 0;
 	   -moz-transform-origin: 50% 50% 0;
 	    -ms-transform-origin: 50% 50% 0;
-	     -o-transform-origin: 50% 50% 0;
 	        transform-origin: 50% 50% 0;
 	-webkit-transform-style: flat;
 	   -moz-transform-style: flat;
 	        transform-style: flat;
 	-webkit-transition: none 0s ease 0s;
-	-o-transition: none 0s ease 0s;
 	-moz-transition: none 0s ease 0s;
 	transition: none 0s ease 0s;
 	unicode-bidi: normal;
@@ -602,7 +599,6 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-transform: rotate(-50deg);
 	   -moz-transform: rotate(-50deg);
 	    -ms-transform: rotate(-50deg);
-	     -o-transform: rotate(-50deg);
 	        transform: rotate(-50deg);
 	width: 2px;
 }
@@ -614,7 +610,6 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-transform: rotate(-50deg);
 	   -moz-transform: rotate(-50deg);
 	    -ms-transform: rotate(-50deg);
-	     -o-transform: rotate(-50deg);
 	        transform: rotate(-50deg);
 }
 
