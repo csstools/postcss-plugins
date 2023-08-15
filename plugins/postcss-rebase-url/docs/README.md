@@ -23,7 +23,7 @@ This plugin is only intended to help with bundling CSS and only in a way that yo
 If you need something with more knobs and dials, please checkout [`postcss-url`](https://www.npmjs.com/package/postcss-url)
 
 ```pcss
-/* when used with a bundler like `postcs-import` */
+/* when used with a bundler like `postcss-import` */
 
 /* test/examples/example.css */
 <example.css>
