@@ -1,32 +1,40 @@
-const cssTokenizer = require('@csstools/css-tokenizer');
-const parsingAlgorithms = require('@csstools/css-parser-algorithms');
+const parserAlgorithms = require('@csstools/css-parser-algorithms');
+const tokenizer = require('@csstools/css-tokenizer');
+
+const { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, parseListOfComponentValues, stringify, sourceIndices } = parserAlgorithms;
+const { TokenType, tokenize } = tokenizer;
 
 const IS_LAYER = /^layer$/i;
 const IS_SUPPORTS = /^supports$/i;
 const IS_URL = /^url$/i;
 
 module.exports = function parseAtImport(params) {
-	const componentValues = parsingAlgorithms.parseListOfComponentValues(
-		cssTokenizer.tokenize({ css: params }),
+	const componentValues = parseListOfComponentValues(
+		tokenize({ css: params }),
 	);
 
 	let uri = '';
-	let layer = [];
-	let media = [];
-	let supports = [];
+	let uriSourceIndices;
+	let fullUri = '';
+	const layer = [];
+	let layerSourceIndices = [];
+	const media = [];
+	let mediaSourceIndices = [];
+	const supports = [];
+	let supportsSourceIndices = [];
 
 	PARSING_LOOP:
 	for (let i = 0; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];
-		if (parsingAlgorithms.isWhitespaceNode(componentValue) || parsingAlgorithms.isCommentNode(componentValue)) {
+		if (isWhitespaceNode(componentValue) || isCommentNode(componentValue)) {
 			continue;
 		}
 
 		if (
-			parsingAlgorithms.isTokenNode(componentValue) &&
+			isTokenNode(componentValue) &&
 			(
-				componentValue.value[0] === cssTokenizer.TokenType.String ||
-				componentValue.value[0] === cssTokenizer.TokenType.URL
+				componentValue.value[0] === TokenType.String ||
+				componentValue.value[0] === TokenType.URL
 			)
 		) {
 			if (uri) {
@@ -34,11 +42,13 @@ module.exports = function parseAtImport(params) {
 			}
 
 			uri = componentValue.value[4].value;
+			fullUri = componentValue.value[1];
+			uriSourceIndices = sourceIndices(componentValue);
 			continue;
 		}
 
 		if (
-			parsingAlgorithms.isFunctionNode(componentValue) &&
+			isFunctionNode(componentValue) &&
 			IS_URL.test(componentValue.getName())
 		) {
 			if (uri) {
@@ -47,15 +57,17 @@ module.exports = function parseAtImport(params) {
 
 			for (let j = 0; j < componentValue.value.length; j++) {
 				const childComponentValue = componentValue.value[j];
-				if (parsingAlgorithms.isWhitespaceNode(childComponentValue) || parsingAlgorithms.isCommentNode(childComponentValue)) {
+				if (isWhitespaceNode(childComponentValue) || isCommentNode(childComponentValue)) {
 					continue;
 				}
 
 				if (
-					parsingAlgorithms.isTokenNode(childComponentValue) &&
-					childComponentValue.value[0] === cssTokenizer.TokenType.String
+					isTokenNode(childComponentValue) &&
+					childComponentValue.value[0] === TokenType.String
 				) {
-					uri = componentValue.value[4].value;
+					uri = childComponentValue.value[4].value;
+					fullUri = stringify([[componentValue]]);
+					uriSourceIndices = sourceIndices(componentValue);
 					continue PARSING_LOOP;
 				}
 
@@ -64,8 +76,8 @@ module.exports = function parseAtImport(params) {
 		}
 
 		if (
-			parsingAlgorithms.isTokenNode(componentValue) &&
-			componentValue.value[0] === cssTokenizer.TokenType.Ident &&
+			isTokenNode(componentValue) &&
+			componentValue.value[0] === TokenType.Ident &&
 			IS_LAYER.test(componentValue.value[4].value)
 		) {
 			if (layer.length > 0 || supports.length > 0) {
@@ -73,37 +85,46 @@ module.exports = function parseAtImport(params) {
 			}
 
 			layer.push('');
+			layerSourceIndices = sourceIndices(componentValue);
 			continue;
 		}
 
 		if (
-			parsingAlgorithms.isFunctionNode(componentValue) &&
+			isFunctionNode(componentValue) &&
 			IS_LAYER.test(componentValue.getName())
 		) {
 			if (layer.length > 0 || supports.length > 0) {
 				return false;
 			}
 
-			layer.push(parsingAlgorithms.stringify([trim(componentValue.value)]));
+			layer.push(stringify([trim(componentValue.value)]));
+			layerSourceIndices = sourceIndices(componentValue);
 			continue;
 		}
 
 		if (
-			parsingAlgorithms.isFunctionNode(componentValue) &&
+			isFunctionNode(componentValue) &&
 			IS_SUPPORTS.test(componentValue.getName())
 		) {
 			if (supports.length > 0) {
 				return false;
 			}
 
-			supports.push(parsingAlgorithms.stringify([trim(componentValue.value)]));
+			supports.push(stringify([trim(componentValue.value)]));
+			supportsSourceIndices = sourceIndices(componentValue);
 			continue;
 		}
 
 		const remainder = trim(componentValues.slice(i));
-		media.push(parsingAlgorithms.stringify([remainder]));
+		const remainderTokens = remainder.flatMap(x => x.tokens());
+		const list = parseCommaSeparatedListOfComponentValues(remainderTokens);
+		const serializedList = list.map((x) => stringify([trim(x)]));
+		media.push(...serializedList);
+		mediaSourceIndices = sourceIndices(remainder);
 		break;
 	}
+
+	uri = stripHash(uri);
 
 	if (!uri) {
 		return false;
@@ -111,9 +132,14 @@ module.exports = function parseAtImport(params) {
 
 	return {
 		uri,
-		layer: layer.length > 0 ? layer[0] : null,
-		media: media.length > 0 ? media[0] : null,
-		supports: supports.length > 0 ? supports[0] : null,
+		uriSourceIndices,
+		fullUri,
+		layer,
+		layerSourceIndices,
+		media,
+		mediaSourceIndices,
+		supports,
+		supportsSourceIndices,
 	};
 };
 
@@ -123,7 +149,7 @@ function trim(componentValues) {
 
 	for (let i = 0; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];
-		if (parsingAlgorithms.isWhitespaceNode(componentValue) || parsingAlgorithms.isCommentNode(componentValue)) {
+		if (isWhitespaceNode(componentValue) || isCommentNode(componentValue)) {
 			continue;
 		}
 
@@ -133,7 +159,7 @@ function trim(componentValues) {
 
 	for (let i = componentValues.length - 1; i >= 0; i--) {
 		const componentValue = componentValues[i];
-		if (parsingAlgorithms.isWhitespaceNode(componentValue) || parsingAlgorithms.isCommentNode(componentValue)) {
+		if (isWhitespaceNode(componentValue) || isCommentNode(componentValue)) {
 			continue;
 		}
 
@@ -142,4 +168,17 @@ function trim(componentValues) {
 	}
 
 	return componentValues.slice(start, end);
+}
+
+function stripHash(str) {
+	try {
+		const url = new URL(str, 'http://example.com');
+		if (!url.hash) {
+			return str;
+		}
+
+		return str.slice(0, str.length - url.hash.length);
+	} catch {
+		return str;
+	}
 }
