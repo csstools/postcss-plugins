@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Fix processor options
+- Completely skip sourcemaps for `postcss-html`
 
 ### 3.0.0
 

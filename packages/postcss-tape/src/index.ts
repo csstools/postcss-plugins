@@ -22,6 +22,14 @@ function postcssSyntax(options: TestCaseOptions) {
 	return undefined;
 }
 
+function postcssSyntaxSupportsSourceMaps(options: TestCaseOptions) {
+	if (options.postcssSyntaxHTML) {
+		return false;
+	}
+
+	return true;
+}
+
 export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 	let hasErrors = false;
 
@@ -183,10 +191,10 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 				result = await postcss(plugins).process(input, {
 					from: testFilePath,
 					to: resultFilePath,
-					map: {
+					map: postcssSyntaxSupportsSourceMaps(testCaseOptions) ? {
 						inline: false,
 						annotation: false,
-					},
+					} : false,
 					syntax: postcssSyntax(testCaseOptions),
 				});
 			} catch (err) {
@@ -293,10 +301,10 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 					const secondPassResult = await postcss([noopPlugin()]).process(resultContents, {
 						from: resultFilePath,
 						to: resultFilePath,
-						map: {
+						map: postcssSyntaxSupportsSourceMaps(testCaseOptions) ? {
 							inline: false,
 							annotation: false,
-						},
+						} : false,
 						syntax: postcssSyntax(testCaseOptions),
 					});
 
@@ -331,10 +339,10 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 				const resultFromOldestPostCSS = await postcssOldestSupported(plugins as Array<AcceptedPlugin>).process(input, {
 					from: testFilePath,
 					to: resultFilePath,
-					map: {
+					map: postcssSyntaxSupportsSourceMaps(testCaseOptions) ? {
 						inline: false,
 						annotation: false,
-					},
+					} : false,
 				});
 
 				try {
