@@ -24,7 +24,7 @@ const testCases = {
 		message: `passes 'css-import-tests' case : ${path.relative('./test/css-import-tests', dirent.path).split(path.sep).join(' - ')}`,
 	}
 
-	switch (dirent.path) {
+	switch (dirent.path.split(path.sep).join(path.posix.sep)) {
 		case 'test/css-import-tests/003-should-fail/001-core-features/before-other-styles/002':
 			testCases[key].warnings = 1;
 			break;
@@ -47,7 +47,7 @@ const testCases = {
 			break;
 	}
 
-	switch (dirent.path) {
+	switch (dirent.path.split(path.sep).join(path.posix.sep)) {
 		case 'test/css-import-tests/003-should-fail/001-core-features/before-other-styles/001':
 			testCases[key].exception = /At-rule without name/;
 			break;
