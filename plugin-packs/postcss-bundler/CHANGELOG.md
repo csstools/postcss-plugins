@@ -4,6 +4,12 @@
 
 - Initial major version
 
+### 0.1.0-alpha.5
+
+_August 15, 2023_
+
+- Stricter parsing algorithm
+
 ### 0.1.0-alpha.4
 
 _August 15, 2023_

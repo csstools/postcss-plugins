@@ -1,8 +1,8 @@
 import type { AtRule, ChildNode, Document, Result, Root, Warning } from 'postcss';
-import valueParser from 'postcss-value-parser';
 import { Condition } from './conditions';
 import { CharsetStatement, ImportStatement, Statement } from './statement';
-import { IS_CHARSET, IS_IMPORT, IS_LAYER, IS_SUPPORTS, IS_URL } from './names';
+import { IS_CHARSET, IS_IMPORT, IS_LAYER } from './names';
+import { parseAtImport } from './parse-at-import';
 
 export function parseStatements(result: Result, styles: Root | Document, importingNode: AtRule | null, conditions: Array<Condition>, from: Array<string>): Array<Statement> {
 	const statements: Array<Statement> = [];
@@ -125,7 +125,6 @@ function parseImport(result: Result, atRule: AtRule, importingNode: AtRule | nul
 		);
 	}
 
-	const params = valueParser(atRule.params).nodes;
 	const stmt = {
 		type: 'import',
 		uri: '',
@@ -136,89 +135,17 @@ function parseImport(result: Result, atRule: AtRule, importingNode: AtRule | nul
 		importingNode,
 	};
 
-	let layer: Array<string> = [];
-	let media: Array<string> = [];
-	let supports: Array<string> = [];
-
-	for (let i = 0; i < params.length; i++) {
-		const node = params[i];
-
-		if (node.type === 'space' || node.type === 'comment') {
-			continue;
-		}
-
-		if (node.type === 'string') {
-			if (stmt.uri) {
-				return result.warn(`Multiple url's in '${atRule.toString()}'`, {
-					node: atRule,
-				});
-			}
-
-			if (!node.value) {
-				return result.warn(`Unable to find uri in '${atRule.toString()}'`, {
-					node: atRule,
-				});
-			}
-
-			stmt.uri = node.value;
-			stmt.fullUri = valueParser.stringify(node);
-			continue;
-		}
-
-		if (node.type === 'function' && IS_URL.test(node.value)) {
-			if (stmt.uri) {
-				return result.warn(`Multiple url's in '${atRule.toString()}'`, {
-					node: atRule,
-				});
-			}
-
-			if (!node.nodes?.[0]?.value) {
-				return result.warn(`Unable to find uri in '${atRule.toString()}'`, {
-					node: atRule,
-				});
-			}
-
-			stmt.uri = node.nodes[0].value;
-			stmt.fullUri = valueParser.stringify(node);
-			continue;
-		}
-
-		if (!stmt.uri) {
-			return result.warn(`Unable to find uri in '${atRule.toString()}'`, {
-				node: atRule,
-			});
-		}
-
-		if (
-			(node.type === 'word' || node.type === 'function') &&
-			IS_LAYER.test(node.value)
-		) {
-			if (node.type === 'function' && node.nodes) {
-				layer = [valueParser.stringify(node.nodes)];
-			} else {
-				layer = [''];
-			}
-
-			continue;
-		}
-
-		if (node.type === 'function' && IS_SUPPORTS.test(node.value)) {
-			supports = [valueParser.stringify(node.nodes)];
-
-			continue;
-		}
-
-		media = split(params, i);
-		break;
-	}
-
-	if (!stmt.uri) {
-		return result.warn(`Unable to find uri in '${atRule.toString()}'`, {
+	const parsed = parseAtImport(atRule.params);
+	if (!parsed) {
+		return result.warn(`Invalid @import statement in '${atRule.toString()}'`, {
 			node: atRule,
 		});
 	}
 
-	stmt.uri = stripHash(stmt.uri);
+	const { layer, media, supports, uri, fullUri } = parsed;
+
+	stmt.uri = uri;
+	stmt.fullUri = fullUri;
 
 	if (media.length > 0 || layer.length > 0 || supports.length > 0) {
 		stmt.conditions.push({
@@ -229,33 +156,4 @@ function parseImport(result: Result, atRule: AtRule, importingNode: AtRule | nul
 	}
 
 	return stmt;
-}
-
-function split(params: Array<valueParser.Node>, start: number) {
-	const list = [];
-	const last = params.reduce((item, node, index) => {
-		if (index < start) {
-			return '';
-		}
-		if (node.type === 'div' && node.value === ',') {
-			list.push(item);
-			return '';
-		}
-		return item + valueParser.stringify(node);
-	}, '');
-	list.push(last);
-	return list;
-}
-
-function stripHash(str: string) {
-	try {
-		const url = new URL(str, 'http://example.com');
-		if (!url.hash) {
-			return str;
-		}
-
-		return str.slice(0, str.length - url.hash.length);
-	} catch {
-		return str;
-	}
 }
