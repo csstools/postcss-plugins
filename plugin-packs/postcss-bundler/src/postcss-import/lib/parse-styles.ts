@@ -115,7 +115,7 @@ async function resolveImportId(result: Result, stmt: ImportStatement, postcss: P
 
 	result.messages.push({
 		type: 'dependency',
-		plugin: 'postcss-import',
+		plugin: 'postcss-bundler',
 		resolved,
 		parent: sourceFile,
 	});
