@@ -4,11 +4,13 @@
 
 [PostCSS Bundler] bundles your CSS without changing the way you write CSS.
 
-This plugin pack contains : 
-- A ported and heavily modified version of [`postcss-import`](https://github.com/postcss/postcss-import)
-- [`@csstools/postcss-rebase-url`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url)
+This plugin pack contains :
+- a bundler based on standard CSS `@import` statements.
+- a rebaser that rewrites URLs in your CSS.
 
-It configures these plugins so that the default behavior is very similar to native CSS.
+Goal and focus :
+- if your CSS works without bundling it **should** work with [PostCSS Bundler]
+- if your CSS works as a bundle it **must** work without bundling
 
 ```pcss
 /* examples/example.css */
@@ -23,9 +25,12 @@ It configures these plugins so that the default behavior is very similar to nati
 /* becomes */
 
 /* examples/example.expect.css */
+/* imports/basic.css */
 .foo {
 	background: url("../images/green.png");
-}:where(html){--red-0:#fff5f5;--red-1:#ffe3e3;--red-2:#ffc9c9;--red-3:#ffa8a8;--red-4:#ff8787;--red-5:#ff6b6b;--red-6:#fa5252;--red-7:#f03e3e;--red-8:#e03131;--red-9:#c92a2a;--red-10:#b02525;--red-11:#962020;--red-12:#7d1a1a}
+}
+/* node_modules:open-props/red */
+:where(html){--red-0:#fff5f5;--red-1:#ffe3e3;--red-2:#ffc9c9;--red-3:#ffa8a8;--red-4:#ff8787;--red-5:#ff6b6b;--red-6:#fa5252;--red-7:#f03e3e;--red-8:#e03131;--red-9:#c92a2a;--red-10:#b02525;--red-11:#962020;--red-12:#7d1a1a}
 ```
 
 ## Usage
@@ -57,6 +62,15 @@ instructions for:
 - [Next.js](INSTALL.md#nextjs)
 - [Gulp](INSTALL.md#gulp)
 - [Grunt](INSTALL.md#grunt)
+
+## `postcss-import`
+
+[`postcss-import`](https://github.com/postcss/postcss-import) is also a CSS bundler and parts of [PostCSS Bundler] are based on it.  
+While creating this plugin we also submitted patches to [`postcss-import`](https://github.com/postcss/postcss-import) where possible.  
+
+[PostCSS Bundler] is tuned differently and lacks configuration options that are present in [`postcss-import`](https://github.com/postcss/postcss-import).
+
+[PostCSS Bundler] is intended to just work and to be a drop-in replacement for native CSS `@import` statements.
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 

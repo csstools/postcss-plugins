@@ -62,7 +62,7 @@ export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: At
 				const mediaNode = atRule({
 					name: 'media',
 					params: condition.media.join(', '),
-					source: parent.source,
+					source: stmt.importingNode?.source ?? parent.source,
 				});
 
 				atRules.push(mediaNode);
@@ -75,7 +75,7 @@ export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: At
 						condition.supports.length === 1
 							? `(${condition.supports[0]})`
 							: condition.supports.map(x => `(${x})`).join(' and '),
-					source: parent.source,
+					source: stmt.importingNode?.source ?? parent.source,
 				});
 
 				atRules.push(supportsNode);
@@ -85,7 +85,7 @@ export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: At
 				const layerNode = atRule({
 					name: 'layer',
 					params: condition.layer.join('.'),
-					source: parent.source,
+					source: stmt.importingNode?.source ?? parent.source,
 				});
 
 				atRules.push(layerNode);
@@ -121,6 +121,7 @@ export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: At
 			nodes: [outerAtRule],
 			conditions: stmt.conditions,
 			from: stmt.from,
+			importingNode: stmt.importingNode,
 		};
 	});
 }

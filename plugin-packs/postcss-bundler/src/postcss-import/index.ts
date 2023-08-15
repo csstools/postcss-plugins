@@ -8,11 +8,12 @@ export type pluginOptions = never;
 
 const creator: PluginCreator<pluginOptions> = () => {
 	return {
-		postcssPlugin: 'postcss-import',
+		postcssPlugin: 'postcss-bundler',
 		async Once(styles, { result, atRule, postcss }) {
 			const bundle = await parseStyles(
 				result,
 				styles,
+				null,
 				[],
 				[],
 				postcss,

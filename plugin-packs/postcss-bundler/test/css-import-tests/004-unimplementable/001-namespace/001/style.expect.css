@@ -1,0 +1,8 @@
+/* ./green.css */
+div {
+	background-color: green;
+}
+@namespace url('http://www.w3.org/2000/svg');
+div {
+	background-color: red;
+}

@@ -2,14 +2,15 @@ import type { AtRule, ChildNode, Document, Result, Root, Warning } from 'postcss
 import valueParser from 'postcss-value-parser';
 import { Condition } from './conditions';
 import { CharsetStatement, ImportStatement, Statement } from './statement';
+import { IS_CHARSET, IS_IMPORT, IS_LAYER, IS_SUPPORTS, IS_URL } from './names';
 
-export function parseStatements(result: Result, styles: Root | Document, conditions: Array<Condition>, from: Array<string>): Array<Statement> {
+export function parseStatements(result: Result, styles: Root | Document, importingNode: AtRule | null, conditions: Array<Condition>, from: Array<string>): Array<Statement> {
 	const statements: Array<Statement> = [];
 
 	if (styles.type === 'document') {
 		styles.each((root) => {
 			statements.push(
-				...parseStatements(result, root, conditions, from),
+				...parseStatements(result, root, importingNode, conditions, from),
 			);
 		});
 
@@ -21,10 +22,10 @@ export function parseStatements(result: Result, styles: Root | Document, conditi
 	styles.each(node => {
 		let stmt;
 		if (node.type === 'atrule') {
-			if (node.name === 'import') {
-				stmt = parseImport(result, node, conditions, from);
-			} else if (node.name === 'charset') {
-				stmt = parseCharset(result, node, conditions, from);
+			if (IS_IMPORT.test(node.name)) {
+				stmt = parseImport(result, node, importingNode, conditions, from);
+			} else if (IS_CHARSET.test(node.name)) {
+				stmt = parseCharset(result, node, importingNode, conditions, from);
 			}
 		}
 
@@ -35,6 +36,7 @@ export function parseStatements(result: Result, styles: Root | Document, conditi
 					nodes,
 					conditions: [...conditions],
 					from,
+					importingNode,
 				});
 				nodes = [];
 			}
@@ -50,27 +52,30 @@ export function parseStatements(result: Result, styles: Root | Document, conditi
 			nodes,
 			conditions: [...conditions],
 			from,
+			importingNode,
 		});
 	}
 
 	return statements;
 }
 
-function parseCharset(result: Result, atRule: AtRule, conditions: Array<Condition>, from: Array<string>): Warning | CharsetStatement {
+function parseCharset(result: Result, atRule: AtRule, importingNode: AtRule | null, conditions: Array<Condition>, from: Array<string>): Warning | CharsetStatement {
 	if (atRule.prev()) {
 		return result.warn('@charset must precede all other statements', {
 			node: atRule,
 		});
 	}
+
 	return {
 		type: 'charset',
 		node: atRule,
 		conditions: [...conditions],
 		from,
+		importingNode,
 	};
 }
 
-function parseImport(result: Result, atRule: AtRule, conditions: Array<Condition>, from: Array<string>): Warning | ImportStatement {
+function parseImport(result: Result, atRule: AtRule, importingNode: AtRule | null, conditions: Array<Condition>, from: Array<string>): Warning | ImportStatement {
 	let prev = atRule.prev();
 
 	// `@import` statements may follow other `@import` statements.
@@ -80,7 +85,7 @@ function parseImport(result: Result, atRule: AtRule, conditions: Array<Condition
 			continue;
 		}
 
-		if (prev.type === 'atrule' && prev.name === 'import') {
+		if (prev.type === 'atrule' && IS_IMPORT.test(prev.name)) {
 			prev = prev.prev();
 			continue;
 		}
@@ -96,12 +101,12 @@ function parseImport(result: Result, atRule: AtRule, conditions: Array<Condition
 			continue;
 		}
 
-		if (prev.type === 'atrule' && prev.name === 'charset') {
+		if (prev.type === 'atrule' && IS_CHARSET.test(prev.name)) {
 			prev = prev.prev();
 			continue;
 		}
 
-		if (prev.type === 'atrule' && prev.name === 'layer' && !prev.nodes) {
+		if (prev.type === 'atrule' && IS_LAYER.test(prev.name) && !prev.nodes) {
 			prev = prev.prev();
 			continue;
 		}
@@ -128,6 +133,7 @@ function parseImport(result: Result, atRule: AtRule, conditions: Array<Condition
 		node: atRule,
 		conditions: [...conditions],
 		from,
+		importingNode,
 	};
 
 	let layer: Array<string> = [];
@@ -159,7 +165,7 @@ function parseImport(result: Result, atRule: AtRule, conditions: Array<Condition
 			continue;
 		}
 
-		if (node.type === 'function' && /^url$/i.test(node.value)) {
+		if (node.type === 'function' && IS_URL.test(node.value)) {
 			if (stmt.uri) {
 				return result.warn(`Multiple url's in '${atRule.toString()}'`, {
 					node: atRule,
@@ -185,7 +191,7 @@ function parseImport(result: Result, atRule: AtRule, conditions: Array<Condition
 
 		if (
 			(node.type === 'word' || node.type === 'function') &&
-			/^layer$/i.test(node.value)
+			IS_LAYER.test(node.value)
 		) {
 			if (node.type === 'function' && node.nodes) {
 				layer = [valueParser.stringify(node.nodes)];
@@ -196,7 +202,7 @@ function parseImport(result: Result, atRule: AtRule, conditions: Array<Condition
 			continue;
 		}
 
-		if (node.type === 'function' && /^supports$/i.test(node.value)) {
+		if (node.type === 'function' && IS_SUPPORTS.test(node.value)) {
 			supports = [valueParser.stringify(node.nodes)];
 
 			continue;

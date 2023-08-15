@@ -1,5 +1,11 @@
 # Changes to PostCSS Bundler
 
+### 0.1.0-alpha.4
+
+_August 15, 2023_
+
+- Fix sourcemaps
+
 ### 0.1.0-alpha.3
 
 _August 14, 2023_

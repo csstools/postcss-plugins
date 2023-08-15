@@ -1,3 +1,5 @@
+/* imports/basic.css */
+
 .foo {
 	background: url("images/green.png");
 }
@@ -18,6 +20,8 @@
 	background: url("images/green.png?foo=bar");
 }
 
+/* ./imports/minified-source.css */
+
 .foo { --var: /* a comment */; bar: red }
 
 .foo { color: red }
@@ -30,9 +34,13 @@
 
 .foo { color: rgb(0 0 0) }
 
+/* node_modules:@rmenke/css-package-main */
+
 .box {
 	background-color: green;
 }
+
+/* node_modules:@rmenke/css-package-conditional-3/styles */
 
 .box {
 	background-color: green;

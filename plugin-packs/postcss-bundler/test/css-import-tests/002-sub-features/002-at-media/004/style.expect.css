@@ -1,0 +1,16 @@
+/* c.css */
+.box {
+	background-color: green;
+}
+@media print {
+/* a.css */
+}
+@media print {
+	@media print {
+/* b.css */
+		.box {
+	background-color: red;
+}
+	}
+}
+

@@ -1,7 +1,9 @@
 import { postcssTape } from '@csstools/postcss-tape';
 import plugin from '@csstools/postcss-bundler';
+import fs from 'fs/promises';
+import path from 'path';
 
-postcssTape(plugin)({
+const testCases = {
 	basic: {
 		message: "supports basic usage",
 	},
@@ -12,4 +14,56 @@ postcssTape(plugin)({
 	'examples/example': {
 		message: 'minimal example',
 	},
+}
+
+;(await fs.readdir('./test/css-import-tests', { withFileTypes: true, recursive: true })).filter(dirent => {
+	return dirent.isFile() && dirent.name === 'style.css'
+}).sort().forEach(dirent => {
+	const key = path.join(path.relative('./test', dirent.path), 'style');
+	testCases[key] = {
+		message: `passes 'css-import-tests' case : ${path.relative('./test/css-import-tests', dirent.path).split(path.sep).join(' - ')}`,
+	}
+
+	switch (dirent.path) {
+		case 'test/css-import-tests/003-should-fail/001-core-features/before-other-styles/002':
+			testCases[key].warnings = 1;
+			break;
+		case 'test/css-import-tests/002-sub-features/003-at-layer/011':
+			testCases[key].warnings = 1;
+			break;
+		case 'test/css-import-tests/002-sub-features/001-data-urls/004':
+			testCases[key].warnings = 1;
+			break;
+		case 'test/css-import-tests/001-core-features/namespace/002':
+			testCases[key].warnings = 1;
+			break;
+		case 'test/css-import-tests/001-core-features/before-other-styles/001':
+			testCases[key].warnings = 1;
+			break;
+		case 'test/css-import-tests/001-core-features/before-other-styles/002':
+			testCases[key].warnings = 1;
+			break;
+		default:
+			break;
+	}
+
+	switch (dirent.path) {
+		case 'test/css-import-tests/003-should-fail/001-core-features/before-other-styles/001':
+			testCases[key].exception = /At-rule without name/;
+			break;
+		case 'test/css-import-tests/005-implementation-specific/leading-slash-is-import-root/001':
+			testCases[key].exception = /Failed to find '\/a.css'/;
+			break;
+		case 'test/css-import-tests/005-implementation-specific/leading-slash-is-import-root/002':
+			testCases[key].exception = /Failed to find '\/b.css'/;
+			break;
+		case 'test/css-import-tests/999-irrelevant/url-format/002':
+			testCases[key].exception = /Unclosed string/;
+			break;
+
+		default:
+			break;
+	}
 });
+
+postcssTape(plugin)(testCases);

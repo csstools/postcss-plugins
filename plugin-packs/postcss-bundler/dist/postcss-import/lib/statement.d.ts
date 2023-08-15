@@ -7,6 +7,7 @@ export type NodesStatement = {
     conditions: Array<Condition>;
     from: Array<string>;
     parent?: Statement;
+    importingNode: AtRule | null;
 };
 export type CharsetStatement = {
     type: string;
@@ -14,6 +15,7 @@ export type CharsetStatement = {
     conditions: Array<Condition>;
     from: Array<string>;
     parent?: Statement;
+    importingNode: AtRule | null;
 };
 export type ImportStatement = {
     type: string;
@@ -24,6 +26,7 @@ export type ImportStatement = {
     from: Array<string>;
     parent?: Statement;
     children?: Array<Statement>;
+    importingNode: AtRule | null;
 };
 export declare function isWarning(stmt: Statement): stmt is Warning;
 export declare function isNodesStatement(stmt: Statement): stmt is NodesStatement;

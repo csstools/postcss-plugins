@@ -10,6 +10,8 @@ export type NodesStatement = {
 	from: Array<string>
 
 	parent?: Statement
+
+	importingNode: AtRule | null
 }
 
 export type CharsetStatement = {
@@ -19,6 +21,8 @@ export type CharsetStatement = {
 	from: Array<string>
 
 	parent?: Statement
+
+	importingNode: AtRule | null
 }
 
 export type ImportStatement = {
@@ -31,6 +35,8 @@ export type ImportStatement = {
 
 	parent?: Statement
 	children?: Array<Statement>
+
+	importingNode: AtRule | null
 }
 
 export function isWarning(stmt: Statement): stmt is Warning {

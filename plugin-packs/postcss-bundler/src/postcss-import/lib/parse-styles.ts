@@ -1,5 +1,5 @@
 import path from 'path';
-import type { Document, Postcss, Result, Root } from 'postcss';
+import type { Document, Postcss, Result, Root, AtRule } from 'postcss';
 import { CharsetStatement, ImportStatement, Statement, isCharsetStatement, isImportStatement } from './statement';
 import { Condition } from './conditions';
 import { isValidDataURL } from './data-url';
@@ -7,15 +7,17 @@ import { parseStatements } from './parse-statements';
 import { resolveId } from './resolve-id';
 import { loadContent } from './load-content';
 import noopPlugin from './noop-plugin';
+import { IS_CHARSET } from './names';
 
 export async function parseStyles(
 	result: Result,
 	styles: Root | Document,
+	importingNode: AtRule | null,
 	conditions: Array<Condition>,
 	from: Array<string>,
 	postcss: Postcss,
 ) {
-	const statements = parseStatements(result, styles, conditions, from);
+	const statements = parseStatements(result, styles, importingNode, conditions, from);
 
 	for (const stmt of statements) {
 		if (!isImportStatement(stmt) || !isProcessableURL(stmt.uri)) {
@@ -128,7 +130,7 @@ async function loadImportContent(
 	filename: string,
 	postcss: Postcss,
 ) {
-	const { conditions, from } = stmt;
+	const { conditions, from, node } = stmt;
 
 	if (from.includes(filename)) {
 		return;
@@ -147,10 +149,17 @@ async function loadImportContent(
 	const styles = importedResult.root;
 	result.messages = result.messages.concat(importedResult.messages);
 
+	if (styles.first?.type === 'atrule' && IS_CHARSET.test(styles.first.name)) {
+		styles.first.after(postcss.comment({ text: `${stmt.uri}`, source: node.source }));
+	} else {
+		styles.prepend(postcss.comment({ text: `${stmt.uri}`, source: node.source }));
+	}
+
 	// recursion: import @import from imported file
 	return parseStyles(
 		result,
 		styles,
+		node,
 		conditions,
 		[...from, filename],
 		postcss,
