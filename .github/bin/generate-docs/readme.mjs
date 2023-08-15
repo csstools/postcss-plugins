@@ -9,7 +9,9 @@ const packageJSONInfo = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 let exampleFilePaths = [];
 
 try {
-	exampleFilePaths = fs.readdirSync(path.join('test', 'examples'));
+	exampleFilePaths = (
+		await fs.promises.readdir(path.join('test', 'examples'), { recursive: true, withFileTypes: true })
+	).filter(x => x.isFile()).map(x => path.join(x.path, x.name));
 } catch(error) {
 	// No examples
 }
@@ -105,8 +107,8 @@ readmeDoc = readmeDoc.replaceAll('<specUrl>', packageJSONInfo.csstools.specUrl);
 
 for (const exampleFilePath of exampleFilePaths) {
 	readmeDoc = readmeDoc.replaceAll(
-		`<${exampleFilePath}>`,
-		(fs.readFileSync(path.join('test', 'examples', exampleFilePath), 'utf8')).toString().slice(0, -1), // trim final newline
+		`<${path.relative(path.join('test', 'examples'), exampleFilePath)}>`,
+		(await fs.readFileSync(exampleFilePath, 'utf8')).toString().slice(0, -1), // trim final newline
 	);
 }
 
