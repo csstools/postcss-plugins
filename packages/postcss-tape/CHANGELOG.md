@@ -1,5 +1,9 @@
 # Changes to PostCSS Tape
 
+### Unreleased (patch)
+
+- Completely skip sourcemaps for `postcss-html`
+
 ### 3.0.0
 
 _July 3, 2023_
