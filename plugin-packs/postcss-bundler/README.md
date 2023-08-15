@@ -12,19 +12,21 @@ Goal and focus :
 - if your CSS works without bundling it **should** work with [PostCSS Bundler]
 - if your CSS works as a bundle it **must** work without bundling
 
+`examples/example.css` :
 ```pcss
-/* examples/example.css */
 @import url("imports/basic.css");
 @import url("node_modules:open-props/red");
+```
 
-/* examples/imports/basic.css */
+`examples/imports/basic.css`:
+```pcss
 .foo {
 	background: url('../../images/green.png');
 }
+```
 
-/* becomes */
-
-/* examples/example.expect.css */
+when bundled :
+```pcss
 /* imports/basic.css */
 .foo {
 	background: url("../images/green.png");

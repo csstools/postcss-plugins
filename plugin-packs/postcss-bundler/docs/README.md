@@ -26,16 +26,18 @@ Goal and focus :
 - if your CSS works without bundling it **should** work with [<humanReadableName>]
 - if your CSS works as a bundle it **must** work without bundling
 
+`examples/example.css` :
 ```pcss
-/* examples/example.css */
 <example.css>
+```
 
-/* examples/imports/basic.css */
+`examples/imports/basic.css`:
+```pcss
 <imports/basic.css>
+```
 
-/* becomes */
-
-/* examples/example.expect.css */
+when bundled :
+```pcss
 <example.expect.css>
 ```
 
