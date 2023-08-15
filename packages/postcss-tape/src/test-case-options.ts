@@ -22,7 +22,4 @@ export type TestCaseOptions = {
 	before?: () => void,
 	/** Do something after the test is run. */
 	after?: () => void | Promise<void>,
-
-	/** Process the test cases with "postcss-html" as the syntax */
-	postcssSyntaxHTML?: boolean,
 }

@@ -3,7 +3,6 @@ import noopPlugin from './noop-plugin';
 import path from 'path';
 import postcss from 'postcss';
 import postcssOldestSupported, { AcceptedPlugin } from 'postcss-8.4';
-import syntaxHTML from 'postcss-html';
 import type { AtRule, Declaration, Rule } from 'postcss';
 import type { PluginCreator, Plugin, Result } from 'postcss';
 import type { TestCaseOptions } from './test-case-options';
@@ -13,14 +12,6 @@ import { reduceInformationInCssSyntaxError } from './reduce-css-syntax-error';
 import { strict as assert } from 'assert';
 
 const emitGitHubAnnotations = process.env.GITHUB_ACTIONS && process.env.ENABLE_ANNOTATIONS_FOR_NODE === 'true' && process.env.ENABLE_ANNOTATIONS_FOR_OS === 'true';
-
-function postcssSyntax(options: TestCaseOptions) {
-	if (options.postcssSyntaxHTML) {
-		return syntaxHTML();
-	}
-
-	return null;
-}
 
 export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 	let hasErrors = false;
@@ -136,10 +127,7 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 			const testSourceFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.split(':')[0]);
 			const testFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.replace(/:/g, '.'));
 
-			let extension = 'css';
-			if (testCaseOptions.postcssSyntaxHTML) {
-				extension = 'html';
-			}
+			const extension = 'css';
 
 			const testFilePath = `${testSourceFilePathWithoutExtension}.${extension}`;
 			let expectFilePath = `${testFilePathWithoutExtension}.expect.${extension}`;
@@ -187,7 +175,6 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 						inline: false,
 						annotation: false,
 					},
-					syntax: postcssSyntax(testCaseOptions),
 				});
 			} catch (err) {
 				reduceInformationInCssSyntaxError(err);
@@ -258,10 +245,7 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 			// Assert result sourcemaps with recent PostCSS.
 			{
 				try {
-					if (
-						!testCaseOptions.postcssSyntaxHTML &&
-						result.map.toJSON().sources.includes('<no source>')
-					) {
+					if (result.map.toJSON().sources.includes('<no source>')) {
 						throw new Error('Sourcemap is broken');
 					}
 				} catch (_) {
@@ -297,7 +281,6 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>) {
 							inline: false,
 							annotation: false,
 						},
-						syntax: postcssSyntax(testCaseOptions),
 					});
 
 					if (secondPassResult.warnings().length) {

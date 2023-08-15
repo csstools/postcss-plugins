@@ -7,7 +7,6 @@ export const externalsForCLI = [
 	'postcss',
 	/^postcss-\d\.\d$/,
 	/^postcss\/lib\/*/,
-	'postcss-html',
 
 	'@csstools/cascade-layer-name-parser',
 	'@csstools/color-helpers',
@@ -93,7 +92,6 @@ export const externalsForPlugin = [
 	'postcss',
 	/^postcss-\d\.\d$/,
 	/^postcss\/lib\/*/,
-	'postcss-html',
 
 	'@csstools/cascade-layer-name-parser',
 	'@csstools/color-helpers',

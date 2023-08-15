@@ -1,5 +1,9 @@
 # Changes to PostCSS Tape
 
+### Unreleased (major)
+
+- Drop support for `postcss-html`
+
 ### 3.0.0
 
 _July 3, 2023_

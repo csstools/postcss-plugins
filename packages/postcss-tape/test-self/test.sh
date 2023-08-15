@@ -91,16 +91,3 @@ set -e
 git --no-pager diff --no-index --word-diff ./test-self/basic.break-css.expect.log ./test-self/basic.break-css.result.log
 git --no-pager diff --no-index --word-diff ./test-self/basic.break-css.expect.code ./test-self/basic.break-css.result.code
 # endregion:Basic with broken result CSS
-
-# region:Document
-set +e
-
-echo "" > ./test-self/document.result.log
-
-node ./test/document.mjs > ./test-self/document.result.log 2>&1
-echo "$?" > ./test-self/document.result.code
-
-set -e
-git --no-pager diff --no-index --word-diff ./test-self/document.expect.log ./test-self/document.result.log
-git --no-pager diff --no-index --word-diff ./test-self/document.expect.code ./test-self/document.result.code
-# endregion:Document
