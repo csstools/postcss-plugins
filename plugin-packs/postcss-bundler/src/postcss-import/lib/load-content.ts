@@ -1,10 +1,10 @@
-import fs from 'fs';
+import fs from 'fs/promises';
 import { dataURLContents, isValidDataURL } from './data-url';
 
-export function loadContent(filename: string): string|false {
+export async function loadContent(filename: string) {
 	if (isValidDataURL(filename)) {
 		return dataURLContents(filename);
 	}
 
-	return fs.readFileSync(filename, 'utf-8');
+	return fs.readFile(filename, 'utf-8');
 }

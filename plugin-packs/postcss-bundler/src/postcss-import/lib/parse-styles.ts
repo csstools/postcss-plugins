@@ -136,7 +136,15 @@ async function loadImportContent(
 		return;
 	}
 
-	const content = await loadContent(filename);
+	let content: string;
+
+	try {
+		content = await loadContent(filename);
+	} catch {
+		throw node.error(
+			`Failed to find '${stmt.uri}'`,
+		);
+	}
 
 	const importedResult = await postcss([noopPlugin()]).process(
 		content,

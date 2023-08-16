@@ -4,6 +4,12 @@
 
 - Initial major version
 
+### 0.1.0-alpha.6
+
+_August 16, 2023_
+
+- Reduce filesystem access
+
 ### 0.1.0-alpha.5
 
 _August 15, 2023_

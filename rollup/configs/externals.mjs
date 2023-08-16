@@ -1,6 +1,7 @@
 export const externalsForCLI = [
 	'crypto',
 	'fs',
+	'fs/promises',
 	'https',
 	'path',
 	'url',
@@ -89,6 +90,7 @@ export const externalsForPlugin = [
 	'assert',
 	'crypto',
 	'fs',
+	'fs/promises',
 	'https',
 	'module',
 	'path',

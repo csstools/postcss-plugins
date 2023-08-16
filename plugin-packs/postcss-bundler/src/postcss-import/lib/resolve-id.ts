@@ -1,5 +1,4 @@
 import type { Node } from 'postcss';
-import fs from 'fs';
 import path from 'path';
 import module from 'module';
 
@@ -17,12 +16,6 @@ export function resolveId(id: string, base: string, node: Node): string {
 		}
 	} else {
 		resolvedPath = path.resolve(base, id);
-	}
-
-	if (!fs.existsSync(resolvedPath)) {
-		throw node.error(
-			`Failed to find '${id}'`,
-		);
 	}
 
 	return resolvedPath;

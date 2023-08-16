@@ -1,1 +1,1 @@
-export declare function loadContent(filename: string): string | false;
+export declare function loadContent(filename: string): Promise<string>;
