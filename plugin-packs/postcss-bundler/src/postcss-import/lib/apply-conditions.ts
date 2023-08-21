@@ -93,15 +93,15 @@ export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: At
 		}
 
 		// Add nodes to AST
-		const outerAtRule = atRules.shift();
+		const outerAtRule = atRules[0];
 		if (!outerAtRule) {
 			return;
 		}
 
-		const innerAtRule = atRules.reduce((previous, next) => {
-			previous.append(next);
-			return next;
-		}, outerAtRule);
+		for (let i = 0; i < atRules.length - 1; i++) {
+			atRules[i].append(atRules[i + 1]);
+		}
+		const innerAtRule = atRules[atRules.length - 1];
 
 		parent.insertBefore(nodes[0], outerAtRule);
 
