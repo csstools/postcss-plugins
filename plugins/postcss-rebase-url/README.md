@@ -4,9 +4,12 @@
 
 [PostCSS Rebase URL] rebases `url()` functions when transforming CSS.
 
-This plugin is only intended to help with bundling CSS and only in a way that you author CSS as if there was no bundling or url rebasing.
+When bundling CSS, the location of the final stylesheet file will be different than the individual source files.
+[PostCSS Rebase URL] rewrites the contents of `url()` functions so that relative paths continue to work.
 
-If you need something with more knobs and dials, please checkout [`postcss-url`](https://www.npmjs.com/package/postcss-url)
+Instead of manually mapping where the files will be in the final output you can use this plugin and simply use the relative paths to the source files.
+
+_If you need something with more knobs and dials, please checkout [`postcss-url`](https://www.npmjs.com/package/postcss-url)_
 
 ```pcss
 /* when used with a bundler like `postcss-import` */
