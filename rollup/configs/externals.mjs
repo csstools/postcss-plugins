@@ -1,5 +1,4 @@
 export const externalsForCLI = [
-	'crypto',
 	'fs',
 	'fs/promises',
 	'https',
@@ -68,7 +67,6 @@ export const externalsForCLI = [
 	'postcss-font-variant',
 	'postcss-gap-properties',
 	'postcss-image-set-function',
-	'postcss-import',
 	'postcss-initial',
 	'postcss-lab-function',
 	'postcss-logical',
@@ -88,7 +86,6 @@ export const externalsForCLI = [
 
 export const externalsForPlugin = [
 	'assert',
-	'crypto',
 	'fs',
 	'fs/promises',
 	'https',
@@ -157,7 +154,6 @@ export const externalsForPlugin = [
 	'postcss-font-variant',
 	'postcss-gap-properties',
 	'postcss-image-set-function',
-	'postcss-import',
 	'postcss-initial',
 	'postcss-lab-function',
 	'postcss-logical',
