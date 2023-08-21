@@ -22,7 +22,10 @@ It guarantees two things :
 - browsers can not tell the difference between the original and the minified CSS
 - lawyers can not tell the difference between the original and the minified CSS
 
-It is not a CSS optimizer, it does not try to reduce the size of the CSS by altering the CSS itself.
+Compared to other minifiers, [<humanReadableName>] is purely focused on correctness and fidelity.  
+[<humanReadableName>] only collapses whitespace and comments while preserving those comments that are important for legal compliance.
+
+[<humanReadableName>] is not a CSS optimizer, it does not try to reduce the size of the CSS file by altering the CSS itself.
 
 ```pcss
 <example.css>

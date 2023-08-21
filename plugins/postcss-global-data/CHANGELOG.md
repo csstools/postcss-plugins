@@ -1,5 +1,10 @@
 # Changes to PostCSS global-data
 
+### Unreleased (minor)
+
+- Add support for the shorter `node_modules:package` syntax
+- Fix node module resolution
+
 ### 2.0.1
 
 _July 24, 2023_
