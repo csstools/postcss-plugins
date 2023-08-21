@@ -18,12 +18,16 @@
 
 [<humanReadableName>] rebases `url()` functions when transforming CSS.
 
-This plugin is only intended to help with bundling CSS and only in a way that you author CSS as if there was no bundling or url rebasing.
+When bundling CSS, the location of the final stylesheet file will be different than the individual source files.  
+[<humanReadableName>] rewrites the contents of `url()` functions so that relative paths continue to work.
 
-If you need something with more knobs and dials, please checkout [`postcss-url`](https://www.npmjs.com/package/postcss-url)
+Instead of manually mapping where the files will be in the final output you can use this plugin  
+and simply use the relative paths to each source file.
+
+_If you need something with more knobs and dials, please checkout [`postcss-url`](https://www.npmjs.com/package/postcss-url)_
 
 ```pcss
-/* when used with a bundler like `postcs-import` */
+/* when used with a bundler like `postcss-import` */
 
 /* test/examples/example.css */
 <example.css>
