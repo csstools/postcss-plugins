@@ -72,7 +72,6 @@ body:
         - PostCSS Color Functional Notation
         - PostCSS Color Hex Alpha
         - PostCSS Color Mix Function
-        - PostCSS Color Rebeccapurple
         - PostCSS Conditional Values
         - PostCSS Custom Media Queries
         - PostCSS Custom Properties
@@ -109,6 +108,7 @@ body:
         - PostCSS Progressive Custom Properties
         - PostCSS Pseudo Class Any Link
         - PostCSS Rebase URL
+        - PostCSS Rebeccapurple
         - PostCSS Relative Color Syntax
         - PostCSS Replace Overflow Wrap
         - PostCSS Scope Pseudo Class
