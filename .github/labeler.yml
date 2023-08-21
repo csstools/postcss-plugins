@@ -227,8 +227,8 @@
   - experimental/postcss-pseudo-class-any-link/**
 
 "plugins/postcss-rebase-url":
-   - plugins/postcss-rebase-url/**
-   - experimental/postcss-rebase-url/**
+  - plugins/postcss-rebase-url/**
+  - experimental/postcss-rebase-url/**
 
 "plugins/postcss-relative-color-syntax":
   - plugins/postcss-relative-color-syntax/**
