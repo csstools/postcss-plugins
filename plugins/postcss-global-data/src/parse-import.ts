@@ -3,23 +3,23 @@ import fs from 'fs';
 import type { Helpers, Root } from 'postcss';
 import module from 'module';
 
-const require = module.createRequire(import.meta.url);
-
 export function parseImport(root: Root, postcssHelpers: Helpers, filePath: string, alreadyImported: Set<string>) {
 	let resolvedPath = '';
 
-	if (filePath.startsWith('node_modules://')) {
-		try {
-			resolvedPath = require.resolve(filePath.slice(15), {
-				paths: [
-					path.dirname(filePath),
-				],
-			});
-		} catch (e) {
-			throw new Error(`Failed to read ${filePath} with error ${(e as Error).message}`);
+	try {
+		if (filePath.startsWith('node_modules://')) {
+			const require = module.createRequire(process.cwd());
+
+			resolvedPath = require.resolve(filePath.slice(15));
+		} else if (filePath.startsWith('node_modules:')) {
+			const require = module.createRequire(process.cwd());
+
+			resolvedPath = require.resolve(filePath.slice(13));
+		} else {
+			resolvedPath = path.resolve(filePath);
 		}
-	} else {
-		resolvedPath = path.resolve(filePath);
+	} catch (e) {
+		throw new Error(`Failed to read ${filePath} with error ${(e as Error).message}`);
 	}
 
 	if (alreadyImported.has(resolvedPath)) {
