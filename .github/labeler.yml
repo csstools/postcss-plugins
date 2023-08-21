@@ -187,8 +187,8 @@
   - experimental/postcss-media-minmax/**
 
 "plugins/postcss-minify":
-   - plugins/postcss-minify/**
-   - experimental/postcss-minify/**
+  - plugins/postcss-minify/**
+  - experimental/postcss-minify/**
 
 "plugins/postcss-nested-calc":
   - plugins/postcss-nested-calc/**
