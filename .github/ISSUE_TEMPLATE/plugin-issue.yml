@@ -106,6 +106,7 @@ body:
         - PostCSS Place
         - PostCSS Progressive Custom Properties
         - PostCSS Pseudo Class Any Link
+        - PostCSS Rebase URL
         - PostCSS Rebeccapurple
         - PostCSS Relative Color Syntax
         - PostCSS Replace Overflow Wrap
