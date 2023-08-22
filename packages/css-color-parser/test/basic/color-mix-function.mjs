@@ -2,6 +2,7 @@ import { color } from '@csstools/css-color-parser';
 import assert from 'assert';
 import { parse } from '../util/parse.mjs';
 import { serialize_sRGB_data } from '../util/serialize.mjs';
+import { canonicalize } from '../util/canonical.mjs';
 
 const tests = [
 	['color-mix(in srgb, green 40%, color(srgb 0.8978862558205767 0.4885001647805462 0.9594359763905097))', 'rgb(137, 126, 147)'],
@@ -67,6 +68,16 @@ const tests = [
 	['color-mix(in srgb, color(xyz 1 none 0) 30%, rgb(none 255 128))', 'rgb(255, 255, 110)'],
 
 	['color-mix(in oklab, #09232c, white 50%)', 'rgb(123, 137, 142)'],
+
+	['color-mix(in hsl longer hue, hsl(90deg 50% 50%), hsl(0deg 50% 50%)', canonicalize('hsl(225deg 50% 50%)')],
+	['color-mix(in hsl longer hue, hsl(90deg 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
+	['color-mix(in hsl shorter hue, hsl(90deg 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
+	['color-mix(in hsl increasing hue, hsl(90deg 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
+	['color-mix(in hsl decreasing hue, hsl(90deg 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
+	['color-mix(in hsl longer hue, hsl(none 50% 50%), hsl(90deg 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
+	['color-mix(in hsl shorter hue, hsl(none 50% 50%), hsl(90deg 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
+	['color-mix(in hsl increasing hue, hsl(none 50% 50%), hsl(90deg 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
+	['color-mix(in hsl decreasing hue, hsl(none 50% 50%), hsl(90deg 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
 ];
 
 for (const test of tests) {

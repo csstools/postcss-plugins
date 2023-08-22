@@ -1,5 +1,11 @@
 # Changes to CSS Color Parser
 
+### Unreleased (minor)
+
+- Add a `serializeOKLCH` function.
+- Always convert to the target color space, even when the input color is already in that specific color space.
+- Correctly apply the hue interpolation method when either angle is missing.
+
 ### 1.2.3
 
 _July 24, 2023_ 
