@@ -431,41 +431,43 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 			break;
 	}
 
-	const angleDiff = b_hue - a_hue;
+	if (!Number.isNaN(a_hue) && !Number.isNaN(b_hue)) {
+		const angleDiff = b_hue - a_hue;
 
-	switch (hueInterpolationMethod) {
-		case 'shorter':
-			if (angleDiff > 180) {
-				a_hue += 360;
-			} else if (angleDiff < -180) {
-				b_hue += 360;
-			}
-
-			break;
-		case 'longer':
-			if (-180 < angleDiff && angleDiff < 180) {
-				if (angleDiff > 0) {
+		switch (hueInterpolationMethod) {
+			case 'shorter':
+				if (angleDiff > 180) {
 					a_hue += 360;
-				} else {
+				} else if (angleDiff < -180) {
 					b_hue += 360;
 				}
-			}
 
-			break;
-		case 'increasing':
-			if (angleDiff < 0) {
-				b_hue += 360;
-			}
+				break;
+			case 'longer':
+				if (-180 < angleDiff && angleDiff < 180) {
+					if (angleDiff > 0) {
+						a_hue += 360;
+					} else {
+						b_hue += 360;
+					}
+				}
 
-			break;
-		case 'decreasing':
-			if (angleDiff > 0) {
-				a_hue += 360;
-			}
+				break;
+			case 'increasing':
+				if (angleDiff < 0) {
+					b_hue += 360;
+				}
 
-			break;
-		default:
-			throw new Error('Unknown hue interpolation method');
+				break;
+			case 'decreasing':
+				if (angleDiff > 0) {
+					a_hue += 360;
+				}
+
+				break;
+			default:
+				throw new Error('Unknown hue interpolation method');
+		}
 	}
 
 	a_first = premultiply(a_first, a_alpha);
