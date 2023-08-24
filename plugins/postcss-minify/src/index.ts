@@ -1,4 +1,4 @@
-import type { AtRule, Container, Document, PluginCreator } from 'postcss';
+import type { AtRule, Container, Document, PluginCreator, Rule } from 'postcss';
 import { TokenType, stringify, tokenize } from '@csstools/css-tokenizer';
 
 const HAS_LEGAL_KEYWORDS = /(?:license|copyright)/i;
@@ -85,6 +85,15 @@ function removeEmptyNodes(node: Container | Document): boolean {
 	return false;
 }
 
+function setSemicolon(node: AtRule | Rule) {
+	if (node.raws.semicolon) {
+		const last = node.last;
+		if (last?.type !== 'decl' || !last.variable) {
+			node.raws.semicolon = false;
+		}
+	}
+}
+
 /** postcss-minify plugin options */
 export type pluginOptions = never;
 
@@ -133,12 +142,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 							node.raws.between = '';
 							node.raws.params = undefined;
 
-							if (node.raws.semicolon) {
-								const last = node.last;
-								if (last?.type !== 'decl' || !last.variable) {
-									node.raws.semicolon = false;
-								}
-							}
+							setSemicolon(node);
 
 							node.params = minify(cache, node.params)!;
 
@@ -156,12 +160,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 							node.raws.between = '';
 							node.raws.selector = undefined;
 
-							if (node.raws.semicolon) {
-								const last = node.last;
-								if (last?.type !== 'decl' || !last.variable) {
-									node.raws.semicolon = false;
-								}
-							}
+							setSemicolon(node);
 
 							node.selector = minify(cache, node.selector)!;
 
@@ -180,7 +179,6 @@ const creator: PluginCreator<pluginOptions> = () => {
 							node.raws.before = '';
 							node.raws.between = ':';
 							node.raws.important = node.important ? '!important' : '';
-							node.raws.semicolons = false;
 							node.raws.value = undefined;
 
 							node.value = minify(cache, node.value)!;
