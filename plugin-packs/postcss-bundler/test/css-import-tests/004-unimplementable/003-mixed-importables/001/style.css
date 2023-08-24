@@ -1,5 +1,0 @@
-@import url("a.css");
-@import url("b.css");
-@import url("http://localhost:8080/c.css");
-@import url("green.css") layer(b);
-@import url("red.css") layer(a);

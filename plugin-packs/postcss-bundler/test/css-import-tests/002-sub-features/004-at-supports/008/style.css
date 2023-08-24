@@ -1,3 +1,0 @@
-@import url("green.css");
-@import url("red.css") (min-width: 1px) supports(display: block);
-@import url("red.css") screen supports(display: block);

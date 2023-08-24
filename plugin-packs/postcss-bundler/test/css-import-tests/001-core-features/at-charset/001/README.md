@@ -1,1 +1,0 @@
-All the same charset
