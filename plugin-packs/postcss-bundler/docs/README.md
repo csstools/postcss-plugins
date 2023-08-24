@@ -16,15 +16,11 @@
 
 <header>
 
-[<humanReadableName>] bundles your CSS without changing the way you write CSS.
+[<humanReadableName>] bundles your CSS.
 
 This plugin pack contains :
 - a bundler based on standard CSS `@import` statements.
-- a rebaser that rewrites URLs in your CSS.
-
-Goal and focus :
-- if your CSS works without bundling it **should** work with [<humanReadableName>]
-- if your CSS works as a bundle it **must** work without bundling
+- [a rebaser that rewrites URLs in your CSS.](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url)
 
 `examples/example.css` :
 ```pcss

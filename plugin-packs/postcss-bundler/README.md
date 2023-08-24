@@ -2,15 +2,11 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-bundler.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-[PostCSS Bundler] bundles your CSS without changing the way you write CSS.
+[PostCSS Bundler] bundles your CSS.
 
 This plugin pack contains :
 - a bundler based on standard CSS `@import` statements.
-- a rebaser that rewrites URLs in your CSS.
-
-Goal and focus :
-- if your CSS works without bundling it **should** work with [PostCSS Bundler]
-- if your CSS works as a bundle it **must** work without bundling
+- [a rebaser that rewrites URLs in your CSS.](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url)
 
 `examples/example.css` :
 ```pcss
