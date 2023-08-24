@@ -14,9 +14,12 @@ const ruleFunction = (primaryOption) => {
 			return;
 		}
 
+		let localImportCounter = 0;
+
 		postcssRoot.walkAtRules(/^import$/i, (atRule) => {
 			const parsed = parseAtImport(atRule.params);
 			if (!parsed) {
+				// Invalid `@import` statement, best left to a Stylelint core rule
 				return;
 			}
 
@@ -25,7 +28,7 @@ const ruleFunction = (primaryOption) => {
 			{
 				// Validate the uri
 
-				if (uri.startsWith('/')) {
+				if (uri.startsWith('/') && !uri.startsWith('//')) {
 					stylelint.utils.report({
 						message: 'URL\'s that start with a slash are ambiguous when bundling, use a relative URL instead.',
 						node: atRule,
@@ -36,13 +39,39 @@ const ruleFunction = (primaryOption) => {
 					});
 				}
 
+				if (uri.startsWith('#')) {
+					stylelint.utils.report({
+						message: 'URL\'s that start with a number sign (#) are invalid when bundling.',
+						node: atRule,
+						index: atRuleParamIndex(atRule) + uriSourceIndices[0],
+						endIndex: atRuleParamIndex(atRule) + uriSourceIndices[1] + 1,
+						result: postcssResult,
+						ruleName,
+					});
+				}
+
 				{
 					// uri as URL
-					try {
-						const url = parseAsURLOnlyWhenRelative(uri);
-						if (url.search.length) {
+					const { url, remote } = parseAsURL(uri);
+					if (url) {
+						if (remote) {
+							if (localImportCounter > 0) {
+								stylelint.utils.report({
+									message: 'Imports for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
+									node: atRule,
+									index: atRuleParamIndex(atRule) + uriSourceIndices[0],
+									endIndex: atRuleParamIndex(atRule) + uriSourceIndices[1] + 1,
+									result: postcssResult,
+									ruleName,
+								});
+							}
+						} else {
+							localImportCounter++;
+						}
+
+						if (!remote && url.search.length) {
 							stylelint.utils.report({
-								message: 'URL\'s that have query params can not be bundled correctly. Avoid these or add a \'http\' scheme and domain name.',
+								message: 'URL\'s that have query params can not be bundled correctly. Avoid these or add a \'http(s)\' scheme and domain name.',
 								node: atRule,
 								index: atRuleParamIndex(atRule) + uriSourceIndices[0],
 								endIndex: atRuleParamIndex(atRule) + uriSourceIndices[1] + 1,
@@ -50,8 +79,6 @@ const ruleFunction = (primaryOption) => {
 								ruleName,
 							});
 						}
-					} catch {
-						// noop
 					}
 				}
 			}
@@ -70,27 +97,28 @@ function atRuleParamIndex(atRule) {
 	return index;
 }
 
-function parseAsURLOnlyWhenRelative(uri) {
-	try {
-		const url = new URL(uri);
-		if (url.host) {
-			return false;
-		}
-
-		if (url.protocol) {
-			return false;
-		}
-	} catch {
-		// noop
-	}
+function parseAsURL(uri) {
+	const localProtocols = ['npm', 'node_modules'];
 
 	try {
-		return new URL(uri, 'http://example.com');
-	} catch {
-		// noop
-	}
+		const url = new URL(uri, 'https://454c178c-dadf-429e-8d9c-88e032826008.com');
+		if (url.host && url.host !== '454c178c-dadf-429e-8d9c-88e032826008.com') {
+			return {
+				url: url,
+				remote: !localProtocols.includes(url.protocol),
+			};
+		}
 
-	return false;
+		return {
+			url: url,
+			remote: false,
+		};
+	} catch {
+		return {
+			url: null,
+			remote: false,
+		};
+	}
 }
 
 ruleFunction.ruleName = ruleName;
