@@ -5,7 +5,7 @@ import { Color } from '@csstools/color-helpers';
 import { ColorNotation } from '../color-notation';
 import { TokenType } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
-import { colorDataTo, fillInMissingComponents, SyntaxFlag } from '../color-data';
+import { colorDataTo, SyntaxFlag } from '../color-data';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { mathFunctionNames } from '@csstools/css-calc';
@@ -296,91 +296,29 @@ function colorMixRectangular(colorSpace: string, colors: ColorMixColors | false)
 	switch (colorSpace) {
 		case 'srgb':
 			outputColorNotation = ColorNotation.RGB;
-
-			if (
-				a_color.colorNotation !== ColorNotation.RGB &&
-				a_color.colorNotation !== ColorNotation.sRGB &&
-				a_color.colorNotation !== ColorNotation.HEX
-			) {
-				a_channels = colorDataTo(a_color, ColorNotation.RGB).channels;
-			}
-
-			if (
-				b_color.colorNotation !== ColorNotation.RGB &&
-				b_color.colorNotation !== ColorNotation.sRGB &&
-				b_color.colorNotation !== ColorNotation.HEX
-			) {
-				b_channels = colorDataTo(b_color, ColorNotation.RGB).channels;
-			}
-
 			break;
 		case 'srgb-linear':
 			outputColorNotation = ColorNotation.Linear_sRGB;
-
-			if (a_color.colorNotation !== ColorNotation.Linear_sRGB) {
-				a_channels = colorDataTo(a_color, ColorNotation.Linear_sRGB).channels;
-			}
-
-			if (b_color.colorNotation !== ColorNotation.Linear_sRGB) {
-				b_channels = colorDataTo(b_color, ColorNotation.Linear_sRGB).channels;
-			}
-
 			break;
 		case 'lab':
 			outputColorNotation = ColorNotation.Lab;
-
-			if (a_color.colorNotation !== ColorNotation.Lab) {
-				a_channels = colorDataTo(a_color, ColorNotation.Lab).channels;
-			}
-
-			if (b_color.colorNotation !== ColorNotation.Lab) {
-				b_channels = colorDataTo(b_color, ColorNotation.Lab).channels;
-			}
-
 			break;
 		case 'oklab':
 			outputColorNotation = ColorNotation.OKLab;
-
-			if (a_color.colorNotation !== ColorNotation.OKLab) {
-				a_channels = colorDataTo(a_color, ColorNotation.OKLab).channels;
-			}
-
-			if (b_color.colorNotation !== ColorNotation.OKLab) {
-				b_channels = colorDataTo(b_color, ColorNotation.OKLab).channels;
-			}
-
 			break;
 		case 'xyz-d50':
 			outputColorNotation = ColorNotation.XYZ_D50;
-
-			if (a_color.colorNotation !== ColorNotation.XYZ_D50) {
-				a_channels = colorDataTo(a_color, ColorNotation.XYZ_D50).channels;
-			}
-
-			if (b_color.colorNotation !== ColorNotation.XYZ_D50) {
-				b_channels = colorDataTo(b_color, ColorNotation.XYZ_D50).channels;
-			}
-
 			break;
 		case 'xyz':
 		case 'xyz-d65':
 			outputColorNotation = ColorNotation.XYZ_D65;
-
-			if (a_color.colorNotation !== ColorNotation.XYZ_D65) {
-				a_channels = colorDataTo(a_color, ColorNotation.XYZ_D65).channels;
-			}
-
-			if (b_color.colorNotation !== ColorNotation.XYZ_D65) {
-				b_channels = colorDataTo(b_color, ColorNotation.XYZ_D65).channels;
-			}
-
 			break;
 		default:
 			break;
 	}
 
-	a_channels = fillInMissingComponents(a_channels, b_channels);
-	b_channels = fillInMissingComponents(b_channels, a_channels);
+	a_channels = colorDataTo(a_color, outputColorNotation).channels;
+	b_channels = colorDataTo(b_color, outputColorNotation).channels;
 
 	a_channels[0] = premultiply(a_channels[0], a_alpha);
 	a_channels[1] = premultiply(a_channels[1], a_alpha);
@@ -447,58 +385,22 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 	switch (colorSpace) {
 		case 'hsl':
 			outputColorNotation = ColorNotation.HSL;
-
-			if (a_color.colorNotation !== ColorNotation.HSL) {
-				a_channels = colorDataTo(a_color, ColorNotation.HSL).channels;
-			}
-
-			if (b_color.colorNotation !== ColorNotation.HSL) {
-				b_channels = colorDataTo(b_color, ColorNotation.HSL).channels;
-			}
-
 			break;
 		case 'hwb':
 			outputColorNotation = ColorNotation.HWB;
-
-			if (a_color.colorNotation !== ColorNotation.HWB) {
-				a_channels = colorDataTo(a_color, ColorNotation.HWB).channels;
-			}
-
-			if (b_color.colorNotation !== ColorNotation.HWB) {
-				b_channels = colorDataTo(b_color, ColorNotation.HWB).channels;
-			}
-
 			break;
 		case 'lch':
 			outputColorNotation = ColorNotation.LCH;
-
-			if (a_color.colorNotation !== ColorNotation.LCH) {
-				a_channels = colorDataTo(a_color, ColorNotation.LCH).channels;
-			}
-
-			if (b_color.colorNotation !== ColorNotation.LCH) {
-				b_channels = colorDataTo(b_color, ColorNotation.LCH).channels;
-			}
-
 			break;
 		case 'oklch':
 			outputColorNotation = ColorNotation.OKLCH;
-
-			if (a_color.colorNotation !== ColorNotation.OKLCH) {
-				a_channels = colorDataTo(a_color, ColorNotation.OKLCH).channels;
-			}
-
-			if (b_color.colorNotation !== ColorNotation.OKLCH) {
-				b_channels = colorDataTo(b_color, ColorNotation.OKLCH).channels;
-			}
-
 			break;
 		default:
 			break;
 	}
 
-	a_channels = fillInMissingComponents(a_channels, b_channels);
-	b_channels = fillInMissingComponents(b_channels, a_channels);
+	a_channels = colorDataTo(a_color, outputColorNotation).channels;
+	b_channels = colorDataTo(b_color, outputColorNotation).channels;
 
 	switch (colorSpace) {
 		case 'hsl':
@@ -529,41 +431,43 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 			break;
 	}
 
-	const angleDiff = b_hue - a_hue;
+	if (!Number.isNaN(a_hue) && !Number.isNaN(b_hue)) {
+		const angleDiff = b_hue - a_hue;
 
-	switch (hueInterpolationMethod) {
-		case 'shorter':
-			if (angleDiff > 180) {
-				a_hue += 360;
-			} else if (angleDiff < -180) {
-				b_hue += 360;
-			}
-
-			break;
-		case 'longer':
-			if (-180 < angleDiff && angleDiff < 180) {
-				if (angleDiff > 0) {
+		switch (hueInterpolationMethod) {
+			case 'shorter':
+				if (angleDiff > 180) {
 					a_hue += 360;
-				} else {
+				} else if (angleDiff < -180) {
 					b_hue += 360;
 				}
-			}
 
-			break;
-		case 'increasing':
-			if (angleDiff < 0) {
-				b_hue += 360;
-			}
+				break;
+			case 'longer':
+				if (-180 < angleDiff && angleDiff < 180) {
+					if (angleDiff > 0) {
+						a_hue += 360;
+					} else {
+						b_hue += 360;
+					}
+				}
 
-			break;
-		case 'decreasing':
-			if (angleDiff > 0) {
-				a_hue += 360;
-			}
+				break;
+			case 'increasing':
+				if (angleDiff < 0) {
+					b_hue += 360;
+				}
 
-			break;
-		default:
-			throw new Error('Unknown hue interpolation method');
+				break;
+			case 'decreasing':
+				if (angleDiff > 0) {
+					a_hue += 360;
+				}
+
+				break;
+			default:
+				throw new Error('Unknown hue interpolation method');
+		}
 	}
 
 	a_first = premultiply(a_first, a_alpha);

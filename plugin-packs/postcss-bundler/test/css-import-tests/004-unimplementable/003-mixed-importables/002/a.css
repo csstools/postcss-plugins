@@ -1,0 +1,13 @@
+.box {
+	animation: BOX;
+	animation-duration: 0s;
+	animation-fill-mode: both;
+}
+
+@keyframes BOX {
+
+	0%,
+	100% {
+		background-color: red;
+	}
+}

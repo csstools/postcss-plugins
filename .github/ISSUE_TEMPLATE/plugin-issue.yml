@@ -61,6 +61,7 @@ body:
       multiple: true
       options:
         - PostCSS Preset Env
+        - PostCSS Bundler
         - CSS All Property
         - CSS Blank Pseudo
         - CSS Has Pseudo
@@ -97,6 +98,7 @@ body:
         - PostCSS Logical Viewport Units
         - PostCSS Media Queries Aspect-Ratio Number Values
         - PostCSS Media MinMax
+        - PostCSS Minify
         - PostCSS Nested Calc
         - PostCSS Nesting
         - PostCSS OKLab Function
@@ -105,6 +107,7 @@ body:
         - PostCSS Place
         - PostCSS Progressive Custom Properties
         - PostCSS Pseudo Class Any Link
+        - PostCSS Rebase URL
         - PostCSS Rebeccapurple
         - PostCSS Relative Color Syntax
         - PostCSS Replace Overflow Wrap

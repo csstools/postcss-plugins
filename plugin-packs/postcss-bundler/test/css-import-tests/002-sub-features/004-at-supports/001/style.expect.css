@@ -1,0 +1,6 @@
+@supports (display: block) {
+/* a.css */
+.box {
+	background-color: green;
+}
+}

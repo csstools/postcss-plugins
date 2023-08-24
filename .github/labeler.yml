@@ -17,6 +17,9 @@
 "plugin-packs/postcss-preset-env":
   - plugin-packs/postcss-preset-env/**
 
+"plugin-packs/postcss-bundler":
+  - plugin-packs/postcss-bundler/**
+
 "cli":
   - cli/csstools-cli/**
   - packages/base-cli/**
@@ -186,6 +189,10 @@
   - plugins/postcss-media-minmax/**
   - experimental/postcss-media-minmax/**
 
+"plugins/postcss-minify":
+  - plugins/postcss-minify/**
+  - experimental/postcss-minify/**
+
 "plugins/postcss-nested-calc":
   - plugins/postcss-nested-calc/**
   - experimental/postcss-nested-calc/**
@@ -221,6 +228,10 @@
 "plugins/postcss-pseudo-class-any-link":
   - plugins/postcss-pseudo-class-any-link/**
   - experimental/postcss-pseudo-class-any-link/**
+
+"plugins/postcss-rebase-url":
+  - plugins/postcss-rebase-url/**
+  - experimental/postcss-rebase-url/**
 
 "plugins/postcss-relative-color-syntax":
   - plugins/postcss-relative-color-syntax/**
