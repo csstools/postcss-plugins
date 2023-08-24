@@ -1,12 +1,13 @@
 import { ColorData, convertPowerlessComponentsToZeroValuesForDisplay } from '../color-data';
-import type { TokenCloseParen, TokenFunction, TokenWhitespace } from '@csstools/css-tokenizer';
+import type { TokenFunction, TokenWhitespace } from '@csstools/css-tokenizer';
 import {  colorData_to_XYZ_D50 } from '../color-data';
 import { ColorNotation } from '../color-notation';
-import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
+import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import { xyz } from '@csstools/color-helpers';
 import { toPrecision } from './to-precision';
 import { XYZ_D50_to_P3_Gamut } from '../gamut-mapping/p3';
+import { serializeWithAlpha } from './with-alpha';
 
 export function serializeP3(color: ColorData, gamutMapping = true): FunctionNode {
 	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);
@@ -27,51 +28,17 @@ export function serializeP3(color: ColorData, gamutMapping = true): FunctionNode
 	const b = toPrecision(p3[2], 6);
 
 	const fn: TokenFunction = [TokenType.Function, 'color(', -1, -1, { value: 'color' }];
-	const close: TokenCloseParen = [TokenType.CloseParen, ')', -1, -1, undefined];
 	const space: TokenWhitespace = [TokenType.Whitespace, ' ', -1, -1, undefined];
 
 	const channels = [
 		new TokenNode([TokenType.Ident, 'display-p3', -1, -1, { value: 'display-p3' }]),
-		new TokenNode(space),
+		new WhitespaceNode([space]),
 		new TokenNode([TokenType.Number, r.toString(), -1, -1, { value: p3[0], type: NumberType.Number }]),
-		new TokenNode(space),
+		new WhitespaceNode([space]),
 		new TokenNode([TokenType.Number, g.toString(), -1, -1, { value: p3[1], type: NumberType.Number }]),
-		new TokenNode(space),
+		new WhitespaceNode([space]),
 		new TokenNode([TokenType.Number, b.toString(), -1, -1, { value: p3[2], type: NumberType.Number }]),
 	];
 
-	if (typeof color.alpha === 'number') {
-		const a = Math.min(1, Math.max(0, toPrecision(Number.isNaN(color.alpha) ? 0 : color.alpha)));
-		if (toPrecision(a, 4) === 1) {
-			return new FunctionNode(
-				fn,
-				close,
-				channels,
-			);
-		}
-
-		return new FunctionNode(
-			fn,
-			close,
-			[
-				...channels,
-				new TokenNode(space),
-				new TokenNode([TokenType.Delim, '/', -1, -1, { value: '/' }]),
-				new TokenNode(space),
-				new TokenNode([TokenType.Number, toPrecision(a, 4).toString(), -1, -1, { value: color.alpha, type: NumberType.Integer }]),
-			],
-		);
-	}
-
-	return new FunctionNode(
-		fn,
-		close,
-		[
-			...channels,
-			new TokenNode(space),
-			new TokenNode([TokenType.Delim, '/', -1, -1, { value: '/' }]),
-			new TokenNode(space),
-			color.alpha,
-		],
-	);
+	return serializeWithAlpha(color, fn, space, channels);
 }
