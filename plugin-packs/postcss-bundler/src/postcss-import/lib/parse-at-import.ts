@@ -151,6 +151,10 @@ function trim(componentValues: Array<ComponentValue>) {
 }
 
 function stripHash(str: string) {
+	if (str.startsWith('#')) {
+		return '';
+	}
+
 	try {
 		const url = new URL(str, 'http://example.com');
 		if (!url.hash) {
