@@ -71,7 +71,13 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"exp",
+		"exponential",
+		"hypot",
+		"log",
+		"postcss-plugin",
+		"pow",
+		"sqrt"
 	],
 	"csstools": {
 		"cssdbId": "exponential-functions",
