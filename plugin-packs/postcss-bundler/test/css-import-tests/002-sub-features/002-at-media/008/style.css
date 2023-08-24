@@ -1,0 +1,14 @@
+@import url("a.css") layer(alpha) all;
+@import url("b.css") layer(beta) all;
+
+@layer beta {
+	.box {
+		background-color: green;
+	}
+}
+
+@layer alpha {
+	.box {
+		background-color: red;
+	}
+}
