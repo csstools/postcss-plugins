@@ -17,6 +17,9 @@
 "plugin-packs/postcss-preset-env":
   - plugin-packs/postcss-preset-env/**
 
+"plugin-packs/postcss-bundler":
+  - plugin-packs/postcss-bundler/**
+
 "cli":
   - cli/csstools-cli/**
   - packages/base-cli/**

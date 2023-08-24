@@ -61,6 +61,7 @@ body:
       multiple: true
       options:
         - PostCSS Preset Env
+        - PostCSS Bundler
         - CSS All Property
         - CSS Blank Pseudo
         - CSS Has Pseudo
