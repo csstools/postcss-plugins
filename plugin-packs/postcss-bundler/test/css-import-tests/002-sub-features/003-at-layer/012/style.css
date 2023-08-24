@@ -1,0 +1,10 @@
+@layer a;
+@import url("green.css") layer(b);
+@layer c;
+
+@layer a {
+	.box {
+		color: red;
+	}
+}
+

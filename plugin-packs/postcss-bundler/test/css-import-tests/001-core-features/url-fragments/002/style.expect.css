@@ -1,0 +1,12 @@
+/* ./a.css */
+.box {
+	background-color: green;
+}
+/* ./b.css */
+.box {
+	background-color: red;
+}
+/* ./a.css */
+.box {
+	background-color: green;
+}

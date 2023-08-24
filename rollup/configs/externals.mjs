@@ -1,5 +1,6 @@
 export const externalsForCLI = [
 	'fs',
+	'fs/promises',
 	'https',
 	'path',
 	'url',
@@ -35,6 +36,7 @@ export const externalsForCLI = [
 	'@csstools/postcss-normalize-display-values',
 	'@csstools/postcss-oklab-function',
 	'@csstools/postcss-progressive-custom-properties',
+	'@csstools/postcss-rebase-url',
 	'@csstools/postcss-relative-color-syntax',
 	'@csstools/postcss-scope-pseudo-class',
 	'@csstools/postcss-stepped-value-functions',
@@ -85,6 +87,7 @@ export const externalsForCLI = [
 export const externalsForPlugin = [
 	'assert',
 	'fs',
+	'fs/promises',
 	'https',
 	'module',
 	'path',
@@ -120,6 +123,7 @@ export const externalsForPlugin = [
 	'@csstools/postcss-normalize-display-values',
 	'@csstools/postcss-oklab-function',
 	'@csstools/postcss-progressive-custom-properties',
+	'@csstools/postcss-rebase-url',
 	'@csstools/postcss-relative-color-syntax',
 	'@csstools/postcss-scope-pseudo-class',
 	'@csstools/postcss-stepped-value-functions',
