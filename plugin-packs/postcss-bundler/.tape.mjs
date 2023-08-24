@@ -32,6 +32,9 @@ const testCases = {
 		case 'test/css-import-tests/003-should-fail/001-core-features/before-other-styles/002':
 			testCases[key].warnings = 1;
 			break;
+		case 'test/css-import-tests/002-sub-features/004-at-supports/007':
+			testCases[key].warnings = 1;
+			break;
 		case 'test/css-import-tests/002-sub-features/003-at-layer/011':
 			testCases[key].warnings = 1;
 			break;
@@ -45,6 +48,9 @@ const testCases = {
 			testCases[key].warnings = 1;
 			break;
 		case 'test/css-import-tests/001-core-features/before-other-styles/002':
+			testCases[key].warnings = 1;
+			break;
+		case 'test/css-import-tests/001-core-features/url-fragments/004':
 			testCases[key].warnings = 1;
 			break;
 		default:
