@@ -1,16 +1,11 @@
 import type { AtRule, Container, Document, PluginCreator } from 'postcss';
 import { TokenType, stringify, tokenize } from '@csstools/css-tokenizer';
 
-/** postcss-minify plugin options */
-export type pluginOptions = never;
-
 const HAS_LEGAL_KEYWORDS = /(?:license|copyright)/i;
 const HAS_SOURCE_MAP = /sourceMappingURL/i;
 const HAS_WHITESPACE_OR_COMMENTS = /(?:[\s]|\/\*)/;
 
-const cache = new Map<string, string>();
-
-function minify(x: string | undefined): string | undefined {
+function minify(cache: Map<string, string>, x: string | undefined): string | undefined {
 	if (!x) {
 		return x;
 	}
@@ -90,100 +85,109 @@ function removeEmptyNodes(node: Container | Document): boolean {
 	return false;
 }
 
+/** postcss-minify plugin options */
+export type pluginOptions = never;
+
 const creator: PluginCreator<pluginOptions> = () => {
 	return {
 		postcssPlugin: 'postcss-minify',
-		OnceExit(css) {
-			css.raws = {
-				before: '',
-				after: '\n',
+		prepare() {
+			const cache = new Map<string, string>();
+
+			return {
+				OnceExit(css) {
+					css.raws = {
+						before: '',
+						after: '\n',
+					};
+
+					css.walk((node) => {
+						if (node.type === 'comment') {
+							if (HAS_LEGAL_KEYWORDS.test(node.text) || HAS_SOURCE_MAP.test(node.text)) {
+								return;
+							}
+
+							node.remove();
+							return;
+						}
+
+						if (node.type === 'decl') {
+							if (node.variable) {
+								node.raws.before = '';
+
+								// never minify or modify variables
+								// browsers and CSSOM in particular handle these differently
+								return;
+							}
+						}
+
+						if (node.type === 'atrule') {
+
+							if (removeEmptyNodes(node)) {
+								return;
+							}
+
+							node.raws.after = '';
+							node.raws.afterName = ' ';
+							node.raws.before = '';
+							node.raws.between = '';
+							node.raws.params = undefined;
+
+							if (node.raws.semicolon) {
+								const last = node.last;
+								if (last?.type !== 'decl' || !last.variable) {
+									node.raws.semicolon = false;
+								}
+							}
+
+							node.params = minify(cache, node.params)!;
+
+							return;
+						}
+
+						if (node.type === 'rule') {
+
+							if (removeEmptyNodes(node)) {
+								return;
+							}
+
+							node.raws.after = '';
+							node.raws.before = '';
+							node.raws.between = '';
+							node.raws.selector = undefined;
+
+							if (node.raws.semicolon) {
+								const last = node.last;
+								if (last?.type !== 'decl' || !last.variable) {
+									node.raws.semicolon = false;
+								}
+							}
+
+							node.selector = minify(cache, node.selector)!;
+
+							return;
+						}
+
+						if (node.type === 'decl') {
+							if (node.variable) {
+								node.raws.before = '';
+
+								// never minify or modify variables
+								// browsers and CSSOM in particular handle these differently
+								return;
+							}
+
+							node.raws.before = '';
+							node.raws.between = ':';
+							node.raws.important = node.important ? '!important' : '';
+							node.raws.semicolons = false;
+							node.raws.value = undefined;
+
+							node.value = minify(cache, node.value)!;
+						}
+					});
+				},
 			};
-
-			css.walk((node) => {
-				if (node.type === 'comment') {
-					if (HAS_LEGAL_KEYWORDS.test(node.text) || HAS_SOURCE_MAP.test(node.text)) {
-						return;
-					}
-
-					node.remove();
-					return;
-				}
-
-				if (node.type === 'decl') {
-					if (node.variable) {
-						node.raws.before = '';
-
-						// never minify or modify variables
-						// browsers and CSSOM in particular handle these differently
-						return;
-					}
-				}
-
-				if (node.type === 'atrule') {
-
-					if (removeEmptyNodes(node)) {
-						return;
-					}
-
-					node.raws.after = '';
-					node.raws.afterName = ' ';
-					node.raws.before = '';
-					node.raws.between = '';
-					node.raws.params = undefined;
-
-					if (node.raws.semicolon) {
-						const last = node.last;
-						if (last?.type !== 'decl' || !last.variable) {
-							node.raws.semicolon = false;
-						}
-					}
-
-					node.params = minify(node.params)!;
-
-					return;
-				}
-
-				if (node.type === 'rule') {
-
-					if (removeEmptyNodes(node)) {
-						return;
-					}
-
-					node.raws.after = '';
-					node.raws.before = '';
-					node.raws.between = '';
-					node.raws.selector = undefined;
-
-					if (node.raws.semicolon) {
-						const last = node.last;
-						if (last?.type !== 'decl' || !last.variable) {
-							node.raws.semicolon = false;
-						}
-					}
-
-					node.selector = minify(node.selector)!;
-
-					return;
-				}
-
-				if (node.type === 'decl') {
-					if (node.variable) {
-						node.raws.before = '';
-
-						// never minify or modify variables
-						// browsers and CSSOM in particular handle these differently
-						return;
-					}
-
-					node.raws.before = '';
-					node.raws.between = ':';
-					node.raws.important = node.important ? '!important' : '';
-					node.raws.semicolons = false;
-					node.raws.value = undefined;
-
-					node.value = minify(node.value)!;
-				}
-			});
 		},
 	};
 };
