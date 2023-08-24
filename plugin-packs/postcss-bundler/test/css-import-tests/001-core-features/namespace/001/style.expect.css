@@ -1,0 +1,9 @@
+/* ./red.css */
+.box {
+	background-color: red;
+}
+/* ./green.css */
+.box {
+	background-color: green;
+}
+@namespace url(http://www.w3.org/1999/xhtml);
