@@ -14,10 +14,4 @@ await postcssTape(plugin)({
 	'examples/example': {
 		message: 'minimal example',
 	},
-	'examples/example:preserve-true': {
-		message: 'minimal example',
-		options: {
-			preserve: true
-		}
-	},
 });

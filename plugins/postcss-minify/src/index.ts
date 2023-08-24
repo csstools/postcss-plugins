@@ -8,12 +8,24 @@ const HAS_LEGAL_KEYWORDS = /(?:license|copyright)/i;
 const HAS_SOURCE_MAP = /sourceMappingURL/i;
 const HAS_WHITESPACE_OR_COMMENTS = /(?:[\s]|\/\*)/;
 
+const cache = new Map<string, string>();
+
 function minify(x: string | undefined): string | undefined {
-	if (!x || !HAS_WHITESPACE_OR_COMMENTS.test(x)) {
+	if (!x) {
+		return x;
+	}
+
+	if (cache.has(x)) {
+		return cache.get(x);
+	}
+
+	if (!HAS_WHITESPACE_OR_COMMENTS.test(x)) {
+		cache.set(x, x);
 		return x;
 	}
 
 	if (x.trim() === '') {
+		cache.set(x, ' ');
 		return ' ';
 	}
 
@@ -43,7 +55,10 @@ function minify(x: string | undefined): string | undefined {
 		}
 	}
 
-	return stringify(...tokens);
+	const minified = stringify(...tokens);
+	cache.set(x, minified);
+
+	return minified;
 }
 
 function removeEmptyNodes(node: Container | Document): boolean {
@@ -94,15 +109,14 @@ const creator: PluginCreator<pluginOptions> = () => {
 					return;
 				}
 
-				if (node.type === 'decl' && node.variable) {
-					node.raws = {
-						...node.raws,
-						before: minify(node.raws?.before),
-					};
+				if (node.type === 'decl') {
+					if (node.variable) {
+						node.raws.before = '';
 
-					// never minify or modify variables
-					// browsers and CSSOM in particular handle these differently
-					return;
+						// never minify or modify variables
+						// browsers and CSSOM in particular handle these differently
+						return;
+					}
 				}
 
 				if (node.type === 'atrule') {
@@ -111,13 +125,18 @@ const creator: PluginCreator<pluginOptions> = () => {
 						return;
 					}
 
-					node.raws = {
-						before: minify(node.raws?.before),
-						after: minify(node.raws?.after),
-						between: minify(node.raws?.between),
-						semicolons: node.raws?.semicolons,
-						afterName: minify(node.raws?.afterName),
-					};
+					node.raws.after = '';
+					node.raws.afterName = ' ';
+					node.raws.before = '';
+					node.raws.between = '';
+					node.raws.params = undefined;
+
+					if (node.raws.semicolon) {
+						const last = node.last;
+						if (last?.type !== 'decl' || !last.variable) {
+							node.raws.semicolon = false;
+						}
+					}
 
 					node.params = minify(node.params)!;
 
@@ -130,12 +149,17 @@ const creator: PluginCreator<pluginOptions> = () => {
 						return;
 					}
 
-					node.raws = {
-						before: minify(node.raws?.before),
-						after: minify(node.raws?.after),
-						between: minify(node.raws?.between),
-						semicolons: node.raws?.semicolons,
-					};
+					node.raws.after = '';
+					node.raws.before = '';
+					node.raws.between = '';
+					node.raws.selector = undefined;
+
+					if (node.raws.semicolon) {
+						const last = node.last;
+						if (last?.type !== 'decl' || !last.variable) {
+							node.raws.semicolon = false;
+						}
+					}
 
 					node.selector = minify(node.selector)!;
 
@@ -143,16 +167,21 @@ const creator: PluginCreator<pluginOptions> = () => {
 				}
 
 				if (node.type === 'decl') {
+					if (node.variable) {
+						node.raws.before = '';
 
-					node.raws = {
-						before: minify(node.raws?.before),
-						between: ':',
-						semicolons: node.raws?.semicolons,
-						important: node.important ? '!important' : '',
-					};
+						// never minify or modify variables
+						// browsers and CSSOM in particular handle these differently
+						return;
+					}
+
+					node.raws.before = '';
+					node.raws.between = ':';
+					node.raws.important = node.important ? '!important' : '';
+					node.raws.semicolons = false;
+					node.raws.value = undefined;
 
 					node.value = minify(node.value)!;
-
 				}
 			});
 		},
