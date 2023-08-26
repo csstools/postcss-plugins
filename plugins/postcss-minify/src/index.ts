@@ -4,6 +4,7 @@ import { TokenType, stringify, tokenize } from '@csstools/css-tokenizer';
 const HAS_LEGAL_KEYWORDS = /(?:license|copyright)/i;
 const HAS_SOURCE_MAP = /sourceMappingURL/i;
 const HAS_WHITESPACE_OR_COMMENTS = /(?:[\s]|\/\*)/;
+const IS_LAYER = /^layer$/i;
 
 function minify(cache: Map<string, string>, x: string | undefined): string | undefined {
 	if (!x) {
@@ -14,17 +15,18 @@ function minify(cache: Map<string, string>, x: string | undefined): string | und
 		return cache.get(x);
 	}
 
-	if (!HAS_WHITESPACE_OR_COMMENTS.test(x)) {
-		cache.set(x, x);
-		return x;
+	const y = x.trim();
+	if (y === '') {
+		cache.set(x, '');
+		return '';
 	}
 
-	if (x.trim() === '') {
-		cache.set(x, ' ');
-		return ' ';
+	if (!HAS_WHITESPACE_OR_COMMENTS.test(y)) {
+		cache.set(x, y);
+		return y;
 	}
 
-	const tokens = tokenize({ css: x });
+	const tokens = tokenize({ css: y });
 
 	for (let i = 0; i < tokens.length; i++) {
 		const token = tokens[i];
@@ -60,23 +62,25 @@ function removeEmptyNodes(node: Container | Document): boolean {
 	if (node.type === 'rule') {
 		if (node.nodes?.length === 0) {
 			const parent = node.parent;
-			node.remove();
-
-			if (parent?.nodes?.length === 0) {
-				removeEmptyNodes(parent);
+			if (!parent) {
+				return false;
 			}
+
+			node.remove();
+			removeEmptyNodes(parent);
 
 			return true;
 		}
 
 	} else if (node.type === 'atrule') {
-		if (node.nodes?.length === 0 && (node as AtRule).name.toLowerCase() !== 'layer') {
+		if (node.nodes?.length === 0 && !IS_LAYER.test((node as AtRule).name)) {
 			const parent = node.parent;
-			node.remove();
-
-			if (parent?.nodes?.length === 0) {
-				removeEmptyNodes(parent);
+			if (!parent) {
+				return false;
 			}
+
+			node.remove();
+			removeEmptyNodes(parent);
 
 			return true;
 		}
@@ -98,94 +102,78 @@ function setSemicolon(node: AtRule | Rule) {
 export type pluginOptions = never;
 
 const creator: PluginCreator<pluginOptions> = () => {
+	const cache = new Map<string, string>();
+
 	return {
 		postcssPlugin: 'postcss-minify',
-		prepare() {
-			const cache = new Map<string, string>();
+		OnceExit(css) {
+			css.raws.before = '';
+			css.raws.after = '\n';
 
-			return {
-				OnceExit(css) {
-					css.raws = {
-						before: '',
-						after: '\n',
-					};
+			css.walk((node) => {
+				if (node.type === 'comment') {
+					if (HAS_LEGAL_KEYWORDS.test(node.text) || HAS_SOURCE_MAP.test(node.text)) {
+						return;
+					}
 
-					css.walk((node) => {
-						if (node.type === 'comment') {
-							if (HAS_LEGAL_KEYWORDS.test(node.text) || HAS_SOURCE_MAP.test(node.text)) {
-								return;
-							}
+					node.remove();
+					return;
+				}
 
-							node.remove();
-							return;
-						}
+				if (node.type === 'atrule') {
 
-						if (node.type === 'decl') {
-							if (node.variable) {
-								node.raws.before = '';
+					if (removeEmptyNodes(node)) {
+						return;
+					}
 
-								// never minify or modify variables
-								// browsers and CSSOM in particular handle these differently
-								return;
-							}
-						}
+					node.raws.after = '';
+					node.raws.afterName = ' ';
+					node.raws.before = '';
+					node.raws.between = '';
+					node.raws.params = undefined;
 
-						if (node.type === 'atrule') {
+					setSemicolon(node);
 
-							if (removeEmptyNodes(node)) {
-								return;
-							}
+					node.params = minify(cache, node.params)!;
 
-							node.raws.after = '';
-							node.raws.afterName = ' ';
-							node.raws.before = '';
-							node.raws.between = '';
-							node.raws.params = undefined;
+					return;
+				}
 
-							setSemicolon(node);
+				if (node.type === 'rule') {
 
-							node.params = minify(cache, node.params)!;
+					if (removeEmptyNodes(node)) {
+						return;
+					}
 
-							return;
-						}
+					node.raws.after = '';
+					node.raws.before = '';
+					node.raws.between = '';
+					node.raws.selector = undefined;
 
-						if (node.type === 'rule') {
+					setSemicolon(node);
 
-							if (removeEmptyNodes(node)) {
-								return;
-							}
+					node.selector = minify(cache, node.selector)!;
 
-							node.raws.after = '';
-							node.raws.before = '';
-							node.raws.between = '';
-							node.raws.selector = undefined;
+					return;
+				}
 
-							setSemicolon(node);
+				if (node.type === 'decl') {
+					if (node.variable) {
+						node.raws.before = '';
 
-							node.selector = minify(cache, node.selector)!;
+						// never minify or modify variables
+						// browsers and CSSOM in particular handle these differently
+						return;
+					}
 
-							return;
-						}
+					node.raws.before = '';
+					node.raws.between = ':';
+					node.raws.important = node.important ? '!important' : '';
+					node.raws.value = undefined;
 
-						if (node.type === 'decl') {
-							if (node.variable) {
-								node.raws.before = '';
-
-								// never minify or modify variables
-								// browsers and CSSOM in particular handle these differently
-								return;
-							}
-
-							node.raws.before = '';
-							node.raws.between = ':';
-							node.raws.important = node.important ? '!important' : '';
-							node.raws.value = undefined;
-
-							node.value = minify(cache, node.value)!;
-						}
-					});
-				},
-			};
+					node.value = minify(cache, node.value)!;
+				}
+			});
 		},
 	};
 };
