@@ -14,7 +14,6 @@ const rectangularColorSpaces = new Set(['srgb', 'srgb-linear', 'lab', 'oklab', '
 const polarColorSpaces = new Set(['hsl', 'hwb', 'lch', 'oklch']);
 const hueInterpolationMethods = new Set(['shorter', 'longer', 'increasing', 'decreasing']);
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function colorMix(colorMixNode: FunctionNode, colorParser: ColorParser): ColorData | false {
 	let inNode: ComponentValue | null = null;
 
@@ -342,6 +341,13 @@ function colorMixRectangular(colorSpace: string, colors: ColorMixColors | false)
 		syntaxFlags: (new Set([SyntaxFlag.ColorMix])),
 	};
 
+	if (
+		colors.a.color.syntaxFlags.has(SyntaxFlag.Experimental) ||
+		colors.b.color.syntaxFlags.has(SyntaxFlag.Experimental)
+	) {
+		colorData.syntaxFlags.add(SyntaxFlag.Experimental);
+	}
+
 	return colorData;
 }
 
@@ -507,6 +513,13 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 		alpha: alpha * colors.alphaMultiplier,
 		syntaxFlags: (new Set([SyntaxFlag.ColorMix])),
 	};
+
+	if (
+		colors.a.color.syntaxFlags.has(SyntaxFlag.Experimental) ||
+		colors.b.color.syntaxFlags.has(SyntaxFlag.Experimental)
+	) {
+		colorData.syntaxFlags.add(SyntaxFlag.Experimental);
+	}
 
 	return colorData;
 }

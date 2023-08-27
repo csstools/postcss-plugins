@@ -3,6 +3,7 @@
 ### Unreleased (minor)
 
 - Add a `serializeOKLCH` function.
+- Add experimental support for the `contrast-color()` CSS function.
 - Always convert to the target color space, even when the input color is already in that specific color space.
 - Correctly apply the hue interpolation method when either angle is missing.
 

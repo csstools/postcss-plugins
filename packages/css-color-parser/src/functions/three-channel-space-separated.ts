@@ -34,7 +34,7 @@ export function threeChannelSpaceSeparated(
 		colorNotation: colorNotation,
 		channels: [0, 0, 0],
 		alpha: 1,
-		syntaxFlags: (new Set(syntaxFlags)),
+		syntaxFlags: new Set(syntaxFlags),
 	};
 
 	let focus = channel1;
@@ -119,6 +119,10 @@ export function threeChannelSpaceSeparated(
 			relativeToColor = colorParser(node);
 			if (relativeToColor === false) {
 				return false;
+			}
+
+			if (relativeToColor.syntaxFlags.has(SyntaxFlag.Experimental)) {
+				colorData.syntaxFlags.add(SyntaxFlag.Experimental);
 			}
 
 			colorData.syntaxFlags.add(SyntaxFlag.RelativeColorSyntax);

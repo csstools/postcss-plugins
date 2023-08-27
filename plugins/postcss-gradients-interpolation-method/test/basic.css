@@ -314,3 +314,7 @@ to-clone {
 	background-1: linear-gradient(#fff 0 0);
 	background-2: linear-gradient(in #fff 0 0); /* incorrect syntax, but omitting the comma to catch regressions */
 }
+
+.experimental-features-from-the-color-parser {
+	background-image: linear-gradient(in oklab 90deg, contrast-color(pink) 25% 50%, blue 70% 75%);
+}

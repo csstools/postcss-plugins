@@ -24,7 +24,7 @@ export function threeChannelLegacySyntax(
 		colorNotation: colorNotation,
 		channels: [0, 0, 0],
 		alpha: 1,
-		syntaxFlags: (new Set(syntaxFlags)),
+		syntaxFlags: new Set(syntaxFlags),
 	};
 
 	let focus = channel1;

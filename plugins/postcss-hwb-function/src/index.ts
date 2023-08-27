@@ -45,6 +45,10 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							return;
 						}
 
+						if (colorData.syntaxFlags.has(SyntaxFlag.Experimental)) {
+							return;
+						}
+
 						if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
 							return;
 						}

@@ -215,3 +215,7 @@
 	color: color(display-p3 0 0.71015 0.76142);
 	color: oklch(from lch(60% 90 320) l c calc(h - 120));
 }
+
+.experimental-features-from-the-color-parser {
+	color: hsla(from contrast-color(pink) h s l / alpha);
+}

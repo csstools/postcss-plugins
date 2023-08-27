@@ -141,6 +141,10 @@ export function color(colorFunctionNode: FunctionNode, colorParser: ColorParser)
 				return false;
 			}
 
+			if (relativeToColor.syntaxFlags.has(SyntaxFlag.Experimental)) {
+				colorData.syntaxFlags.add(SyntaxFlag.Experimental);
+			}
+
 			colorData.syntaxFlags.add(SyntaxFlag.RelativeColorSyntax);
 			continue;
 		}

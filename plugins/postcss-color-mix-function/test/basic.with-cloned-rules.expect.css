@@ -244,3 +244,7 @@
 	color-6: color(display-p3 1 1 1);
 	color-6: color-mix(in lch, color(xyz-d65 1 1 1) 100%, black);
 }
+
+.experimental-features-from-the-color-parser {
+	color: color-mix(in srgb, contrast-color(pink) 30%, yellow);
+}

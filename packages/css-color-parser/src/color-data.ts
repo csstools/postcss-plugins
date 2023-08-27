@@ -26,6 +26,8 @@ export enum SyntaxFlag {
 	NamedColor = 'named-color',
 	RelativeColorSyntax = 'relative-color-syntax',
 	ColorMix = 'color-mix',
+	ContrastColor = 'contrast-color',
+	Experimental = 'experimental',
 }
 
 export function colorData_to_XYZ_D50(colorData: ColorData): ColorData {

@@ -1,7 +1,7 @@
 import type { ColorStop } from './color-stop-list';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { TokenType } from '@csstools/css-tokenizer';
-import { color, ColorData } from '@csstools/css-color-parser';
+import { color, ColorData, SyntaxFlag } from '@csstools/css-color-parser';
 import { isCommentNode } from '@csstools/css-parser-algorithms';
 import { isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 
@@ -39,6 +39,10 @@ export function parseColorStops(componentValues: Array<ComponentValue>): Array<C
 		const colorData = color(node);
 		if (colorData) {
 			if (currentColorStop.color) {
+				return false;
+			}
+
+			if (colorData.syntaxFlags.has(SyntaxFlag.Experimental)) {
 				return false;
 			}
 
