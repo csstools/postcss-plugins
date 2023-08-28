@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 9.1.2
+
+_August 28, 2023_
 
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.7.1`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#771-august-20-2023) (patch)
 - Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#301) (patch)
