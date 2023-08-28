@@ -1,6 +1,8 @@
 # Changes to PostCSS Design Tokens
 
-### Unreleased (minor)
+### 3.1.0
+
+_August 28, 2023_
 
 - Add support for the shorter `node_modules:package` syntax
 - Fix node module resolution
