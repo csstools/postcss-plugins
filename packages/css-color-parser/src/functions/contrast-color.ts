@@ -36,6 +36,10 @@ export function contrastColor(colorMixNode: FunctionNode, colorParser: ColorPars
 		return false;
 	}
 
+	// 1. Convert to OKLCH
+	// 2. Resolve all missing and powerless components to zero
+	// 3. Above 0.72 L (lightness) use black, below use white
+
 	// Convert to APCA supported color spaces
 	switch (backgroundColor.colorNotation) {
 		case ColorNotation.HEX:
