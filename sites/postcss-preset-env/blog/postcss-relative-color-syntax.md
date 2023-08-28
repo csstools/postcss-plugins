@@ -97,7 +97,7 @@ Using `sin` to control the chroma, we can have a lower chroma when nearing black
 
 #### keeping contrast high
 
-For the text color we actually want to use [`color-contrast()`](https://drafts.csswg.org/css-color-6/#colorcontrast) but the specification isn't final yet. 
+For the text color we actually want to use [`contrast-color()`](https://drafts.csswg.org/css-color-6/#colorcontrast) but the specification isn't final yet. 
 So we use something simpler that will work often enough.
 
 When the color has a lightness over `0.5` we toggle to black, when it is under `0.5` we toggle to white.

@@ -1,4 +1,4 @@
-import { color, serializeP3, serializeRGB } from '@csstools/css-color-parser';
+import { color, serializeOKLCH, serializeP3, serializeRGB } from '@csstools/css-color-parser';
 import { parseComponentValue } from '@csstools/css-parser-algorithms';
 import { tokenize } from '@csstools/css-tokenizer';
 
@@ -11,6 +11,11 @@ function renderResult() {
 
 		const outputElP3 = document.querySelector(`.color-output-p3[for="${inputEl.id}"]`);
 		if (!outputElP3) {
+			return;
+		}
+
+		const outputElOKLCH = document.querySelector(`.color-output-oklch[for="${inputEl.id}"]`);
+		if (!outputElOKLCH) {
 			return;
 		}
 
@@ -29,11 +34,14 @@ function renderResult() {
 
 		const outputColorValueRGB = serializeRGB(parsedColorValue);
 		const outputColorValueP3 = serializeP3(parsedColorValue);
+		const outputColorValueOKLCH = serializeOKLCH(parsedColorValue);
 
 		outputElRGB.value = outputColorValueRGB;
 		outputElRGB.style.setProperty('--color', outputColorValueRGB);
 		outputElP3.value = outputColorValueP3;
 		outputElP3.style.setProperty('--color', outputColorValueP3);
+		outputElOKLCH.value = outputColorValueOKLCH;
+		outputElOKLCH.style.setProperty('--color', outputColorValueOKLCH);
 	});
 }
 
