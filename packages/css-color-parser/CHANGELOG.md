@@ -5,6 +5,7 @@
 - Add a `serializeOKLCH` function.
 - Always convert to the target color space, even when the input color is already in that specific color space.
 - Correctly apply the hue interpolation method when either angle is missing.
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#301) (patch)
 
 ### 1.2.3
 
