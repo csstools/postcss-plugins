@@ -32,3 +32,12 @@
 		@layer bar {}
 	}
 }
+
+/* Looks like a nested rule, but is missing a semicolon */
+.b {
+	width: auto
+
+	c {
+		color: red;
+	}
+}

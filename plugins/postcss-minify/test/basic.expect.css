@@ -1,1 +1,1 @@
-@charset "UTF-8"; @layer foo; .foo { --var: /* a comment */; bar:red } .foo { color:red } .foo { color:red } .foo { color:rgb(0 0 0) } .foo { color:rgb(0 0 0) } .foo { color:rgb(0 0 0) } @media screen and (min-width: 700px) { .foo { color:red; @layer bar {} } }
+@charset "UTF-8";@layer foo;.foo{--var: /* a comment */;bar:red}.foo{color:red}.foo{color:red}.foo{color:rgb(0 0 0)}.foo{color:rgb(0 0 0)}.foo{color:rgb(0 0 0)}@media screen and (min-width: 700px){.foo{color:red;@layer bar{}}}.b{width: auto c{color:red}}
