@@ -1,5 +1,9 @@
 # Changes to PostCSS Bundler
 
+### Unreleased (patch)
+
+- Fix `dependency` PostCSS message
+
 ### 1.0.0
 
 _August 28, 2023_
