@@ -1,6 +1,8 @@
 # Changes to Color Helpers
 
-### Unreleased (patch)
+### 3.0.1
+
+_August 28, 2023_
 
 - Clamp negative saturation in `hsl` to `0`.
 
