@@ -1,6 +1,8 @@
 # Changes to PostCSS Rebase URL
 
-### Unreleased (major)
+### 1.0.0
+
+_August 28, 2023_
 
 - Initial major version
 
