@@ -1,5 +1,9 @@
 # Changes to CSSTools CLI
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#301) (patch)
+
 ### 3.0.2
 
 _August 5, 2023_

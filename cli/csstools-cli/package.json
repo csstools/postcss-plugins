@@ -58,7 +58,7 @@
 		"@csstools/postcss-relative-color-syntax": "^2.0.1",
 		"@csstools/postcss-scope-pseudo-class": "^3.0.0",
 		"@csstools/postcss-stepped-value-functions": "^3.0.1",
-		"@csstools/postcss-text-decoration-shorthand": "^3.0.0",
+		"@csstools/postcss-text-decoration-shorthand": "^3.0.1",
 		"@csstools/postcss-trigonometric-functions": "^3.0.1",
 		"@csstools/postcss-unset-value": "^3.0.0",
 		"css-blank-pseudo": "^6.0.0",
