@@ -1,6 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (minor)
+### 1.3.0
+
+_August 28, 2023_
 
 - Add a `serializeOKLCH` function.
 - Always convert to the target color space, even when the input color is already in that specific color space.
