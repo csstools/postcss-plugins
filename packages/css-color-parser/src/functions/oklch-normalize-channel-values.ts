@@ -39,12 +39,10 @@ export function normalize_OKLCH_ChannelValues(token: CSSToken, index: number, co
 			colorData.syntaxFlags.add(SyntaxFlag.HasPercentageValues);
 		}
 
-		let value: number;
+		let value = normalize(token[4].value, 100, 0, 1);
 		if (index === 1) {
 			value = normalize(token[4].value, 250, 0, Infinity);
 		} else if (index === 3) {
-			value = normalize(token[4].value, 100, 0, 1);
-		} else {
 			value = normalize(token[4].value, 100, 0, 1);
 		}
 
@@ -65,12 +63,10 @@ export function normalize_OKLCH_ChannelValues(token: CSSToken, index: number, co
 			colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 		}
 
-		let value: number;
+		let value = normalize(token[4].value, 1, 0, 1);
 		if (index === 1) {
 			value = normalize(token[4].value, 1, 0, Infinity);
 		} else if (index === 3) {
-			value = normalize(token[4].value, 1, 0, 1);
-		} else {
 			value = normalize(token[4].value, 1, 0, 1);
 		}
 

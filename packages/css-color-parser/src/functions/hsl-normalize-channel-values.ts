@@ -26,11 +26,9 @@ export function normalize_legacy_HSL_ChannelValues(token: CSSToken, index: numbe
 			colorData.syntaxFlags.add(SyntaxFlag.HasPercentageValues);
 		}
 
-		let value: number;
+		let value = normalize(token[4].value, 1, 0, 100);
 		if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
-		} else {
-			value = normalize(token[4].value, 1, 0, 100);
 		}
 
 		return [
@@ -50,11 +48,9 @@ export function normalize_legacy_HSL_ChannelValues(token: CSSToken, index: numbe
 			return false;
 		}
 
-		let value: number;
+		let value = normalize(token[4].value, 1, 0, 100);
 		if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
-		} else {
-			value = normalize(token[4].value, 1, 0, 100);
 		}
 
 		return [
@@ -108,11 +104,9 @@ export function normalize_modern_HSL_ChannelValues(token: CSSToken, index: numbe
 			colorData.syntaxFlags.add(SyntaxFlag.HasPercentageValues);
 		}
 
-		let value: number;
+		let value = token[4].value;
 		if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
-		} else {
-			value = token[4].value;
 		}
 
 		return [
@@ -132,11 +126,9 @@ export function normalize_modern_HSL_ChannelValues(token: CSSToken, index: numbe
 			colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 		}
 
-		let value: number;
+		let value = token[4].value;
 		if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
-		} else {
-			value = token[4].value;
 		}
 
 		return [
