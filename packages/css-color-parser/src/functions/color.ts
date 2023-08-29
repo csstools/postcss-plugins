@@ -2,7 +2,7 @@ import { ColorData, SyntaxFlag, colorDataTo, noneToZeroInRelativeColorDataChanne
 import type { ColorParser } from '../color-parser';
 import { ColorNotation } from '../color-notation';
 import { ComponentValue, FunctionNode, TokenNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
+import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
 import { normalize_Color_ChannelValues } from './color-normalize-channel-values';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { calcFromComponentValues, mathFunctionNames } from '@csstools/css-calc';
@@ -187,38 +187,58 @@ export function color(colorFunctionNode: FunctionNode, colorParser: ColorParser)
 		return false;
 	}
 
-	const channelValues: Array<CSSToken> = [
-		channel1[0].value,
-		channel2[0].value,
-		channel3[0].value,
+	const channelValue1 = normalize_Color_ChannelValues(channel1[0].value, 0, colorData);
+	if (!channelValue1 || channelValue1[0] !== TokenType.Number) {
+		return false;
+	}
+
+	const channelValue2 = normalize_Color_ChannelValues(channel2[0].value, 1, colorData);
+	if (!channelValue2 || channelValue2[0] !== TokenType.Number) {
+		return false;
+	}
+
+	const channelValue3 = normalize_Color_ChannelValues(channel3[0].value, 2, colorData);
+	if (!channelValue3 || channelValue3[0] !== TokenType.Number) {
+		return false;
+	}
+
+	const channelValues: Array<TokenNumber> = [
+		channelValue1,
+		channelValue2,
+		channelValue3,
 	];
 
 	if (channelAlpha.length === 1) {
 		colorData.syntaxFlags.add(SyntaxFlag.HasAlpha);
 
 		if (isTokenNode(channelAlpha[0])) {
-			channelValues.push(channelAlpha[0].value);
+			const channelValueAlpha = normalize_Color_ChannelValues(channelAlpha[0].value, 3, colorData);
+			if (!channelValueAlpha || channelValueAlpha[0] !== TokenType.Number) {
+				return false;
+			}
+
+			channelValues.push(channelValueAlpha);
 		} else {
 			colorData.alpha = channelAlpha[0];
 		}
 	} else if (relativeColorChannels && relativeColorChannels.has('alpha')) {
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		channelValues.push(relativeColorChannels.get('alpha')!);
-	}
+		const channelValueAlpha = normalize_Color_ChannelValues(relativeColorChannels.get('alpha')!, 3, colorData);
+		if (!channelValueAlpha || channelValueAlpha[0] !== TokenType.Number) {
+			return false;
+		}
 
-	const normalizedChannelValues = normalize_Color_ChannelValues(channelValues, colorData);
-	if (normalizedChannelValues === false) {
-		return false;
+		channelValues.push(channelValueAlpha);
 	}
 
 	colorData.channels = [
-		normalizedChannelValues[0][4].value,
-		normalizedChannelValues[1][4].value,
-		normalizedChannelValues[2][4].value,
+		channelValues[0][4].value,
+		channelValues[1][4].value,
+		channelValues[2][4].value,
 	];
 
-	if (normalizedChannelValues.length === 4) {
-		colorData.alpha = normalizedChannelValues[3][4].value;
+	if (channelValues.length === 4) {
+		colorData.alpha = channelValues[3][4].value;
 	}
 
 	return colorData;
