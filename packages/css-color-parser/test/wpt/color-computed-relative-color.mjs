@@ -131,6 +131,17 @@ const tests = [
 	['hsl(from oklch(1 0.399 336.3) h s l)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 91, 255).
 	['hsl(from oklch(0 0.399 336.3) h s l)', 'rgb(0, 0, 0)'], // Naive clip based mapping would give rgb(20, 0, 24).
 
+	// Normalization of components
+	['hsl(from lab(0 104.3 -50.9) h s l)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(from lab(0 104.3 -50.9) h calc(s) l)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(from lab(0 104.3 -50.9) h s l)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(305.510247383001deg 411.27657550111127% 6.872314424171214%)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(305.510247383001deg calc(411.27657550111127%) 6.872314424171214%)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(from lab(100 104.3 -50.9) 305.510247383001deg 411.27657550111127% 6.872314424171214%)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(from white 305.510247383001deg 411.27657550111127% 6.872314424171214%)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(from white 305.510247383001deg calc(411.27657550111127%) 6.872314424171214%)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(from white 305.510247383001deg calc(s + 411.27657550111127) 6.872314424171214%)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+
 	// Testing replacement with 0.
 	['hsl(from rebeccapurple 0 0% 0%)', 'rgb(0, 0, 0)'],
 	['hsl(from rebeccapurple 0deg 0% 0%)', 'rgb(0, 0, 0)'],
@@ -164,7 +175,7 @@ const tests = [
 	['hsl(from rebeccapurple h alpha l / s)', 'rgba(102, 101, 103)'],
 	['hsl(from rebeccapurple h l l / l)', 'rgba(102, 61, 143)'],
 	['hsl(from rebeccapurple h alpha alpha / alpha)', 'rgb(3, 3, 3)'],
-	['hsl(from rgb(20%, 40%, 60%, 80%) h l s)', 'rgba(77, 127, 178, 0.8)'],
+	['hsl(from rgb(20%, 40%, 60%, 80%) h l s)', 'rgba(77, 128, 179, 0.8)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) h alpha l / s)', 'rgba(101, 102, 103)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) h l l / l)', 'rgba(61, 102, 143)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) h alpha alpha / alpha)', 'rgba(2, 2, 2, 0.8)'],

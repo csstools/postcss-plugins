@@ -1,7 +1,7 @@
 import type { Color } from '@csstools/color-helpers';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from './color-notation';
-import { NumberType, TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
+import { NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { xyz } from '@csstools/color-helpers';
 
 export type ColorData = {
@@ -397,8 +397,8 @@ function carryForwardMissingComponents(a: Color, aIndices: Array<number>, b: Col
 	return output;
 }
 
-export function normalizeRelativeColorDataChannels(x: ColorData): Map<string, TokenNumber | TokenPercentage | TokenDimension> {
-	const globals: Map<string, TokenNumber | TokenPercentage | TokenDimension> = new Map();
+export function normalizeRelativeColorDataChannels(x: ColorData): Map<string, TokenNumber> {
+	const globals: Map<string, TokenNumber> = new Map();
 
 	switch (x.colorNotation) {
 		case ColorNotation.RGB:
@@ -487,8 +487,8 @@ export function normalizeRelativeColorDataChannels(x: ColorData): Map<string, To
 	return globals;
 }
 
-export function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber | TokenPercentage | TokenDimension>): Map<string, TokenNumber | TokenPercentage | TokenDimension> {
-	const globals: Map<string, TokenNumber | TokenPercentage | TokenDimension> = new Map();
+export function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber>): Map<string, TokenNumber> {
+	const globals: Map<string, TokenNumber> = new Map();
 
 	for (const [key, value] of x) {
 		if (Number.isNaN(value[4].value)) {

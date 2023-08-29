@@ -2,7 +2,7 @@ import { ColorData, SyntaxFlag, colorDataTo, noneToZeroInRelativeColorDataChanne
 import type { ColorParser } from '../color-parser';
 import { ColorNotation } from '../color-notation';
 import { ComponentValue, FunctionNode, TokenNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
+import { TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { normalize_Color_ChannelValues } from './color-normalize-channel-values';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { calcFromComponentValues, mathFunctionNames } from '@csstools/css-calc';
@@ -19,8 +19,8 @@ export function color(colorFunctionNode: FunctionNode, colorParser: ColorParser)
 
 	let colorSpace: string | false = false;
 	let relativeToColor: ColorData | false = false;
-	let relativeColorChannels: Map<string, TokenNumber | TokenPercentage | TokenDimension> | undefined = undefined;
-	let relativeColorChannelsWithoutNone: Map<string, TokenNumber | TokenPercentage | TokenDimension> | undefined = undefined;
+	let relativeColorChannels: Map<string, TokenNumber> | undefined = undefined;
+	let relativeColorChannelsWithoutNone: Map<string, TokenNumber> | undefined = undefined;
 
 	const colorData: ColorData = {
 		colorNotation: ColorNotation.sRGB,

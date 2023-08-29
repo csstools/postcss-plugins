@@ -1,6 +1,6 @@
-import { ColorData, colorData_to_XYZ_D50, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
-import { ComponentValue, FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
+import { ColorData, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
+import { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
+import { TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { ColorNotation } from '../color-notation';
 import { SyntaxFlag } from '../color-data';
 import { calcFromComponentValues } from '@csstools/css-calc';
@@ -10,8 +10,7 @@ import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { mathFunctionNames } from '@csstools/css-calc';
 import { ColorParser } from '../color-parser';
 import { colorDataTo } from '../color-data';
-import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
-import { conversions } from '@csstools/color-helpers';
+import { TokenNode } from '@csstools/css-parser-algorithms';
 
 export function threeChannelSpaceSeparated(
 	colorFunctionNode: FunctionNode,
@@ -27,8 +26,8 @@ export function threeChannelSpaceSeparated(
 	const channel3: Array<ComponentValue> = [];
 	const channelAlpha: Array<ComponentValue> = [];
 	let relativeToColor: ColorData | false = false;
-	let relativeColorChannels: Map<string, TokenNumber | TokenPercentage | TokenDimension> | undefined = undefined;
-	let relativeColorChannelsWithoutNone: Map<string, TokenNumber | TokenPercentage | TokenDimension> | undefined = undefined;
+	let relativeColorChannels: Map<string, TokenNumber> | undefined = undefined;
+	let relativeColorChannelsWithoutNone: Map<string, TokenNumber> | undefined = undefined;
 
 	const colorData: ColorData = {
 		colorNotation: colorNotation,
@@ -125,29 +124,6 @@ export function threeChannelSpaceSeparated(
 
 			if (relativeToColor.colorNotation !== colorNotation) {
 				relativeToColor = colorDataTo(relativeToColor, colorNotation);
-			}
-
-			if (
-				colorNotation === ColorNotation.HEX ||
-				colorNotation === ColorNotation.RGB
-			) {
-				relativeToColor.channels = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(relativeToColor).channels);
-			} else if (
-				colorNotation === ColorNotation.HSL
-			) {
-				// https://github.com/w3c/csswg-drafts/issues/8444
-				// Removing this gives unexpected results for us and we don't have a good solution for it yet.
-				// Maybe we are holding it wrong.
-				// The results we get for HSL/HWB are good at this time, so keeping the code as is until we receive a bug report about this.
-				relativeToColor.channels = conversions.sRGB_to_HSL(XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(relativeToColor).channels));
-			} else if (
-				colorNotation === ColorNotation.HWB
-			) {
-				// https://github.com/w3c/csswg-drafts/issues/8444
-				// Removing this gives unexpected results for us and we don't have a good solution for it yet.
-				// Maybe we are holding it wrong.
-				// The results we get for HSL/HWB are good at this time, so keeping the code as is until we receive a bug report about this.
-				relativeToColor.channels = conversions.sRGB_to_HWB(XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(relativeToColor).channels));
 			}
 
 			relativeColorChannels = normalizeRelativeColorDataChannels(relativeToColor);

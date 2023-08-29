@@ -25,11 +25,13 @@ export function normalize_Lab_ChannelValues(token: CSSToken, index: number, colo
 			colorData.syntaxFlags.add(SyntaxFlag.HasPercentageValues);
 		}
 
-		let value = normalize(token[4].value, 1, 0, 100);
+		let value: number;
 		if (index === 1 || index === 2) {
 			value = normalize(token[4].value, 0.8, -Infinity, Infinity);
 		} else if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
+		} else {
+			value = normalize(token[4].value, 1, 0, 100);
 		}
 
 		return [
@@ -49,11 +51,13 @@ export function normalize_Lab_ChannelValues(token: CSSToken, index: number, colo
 			colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 		}
 
-		let value = normalize(token[4].value, 1, 0, 100);
+		let value: number;
 		if (index === 1 || index === 2) {
-			value = normalize(token[4].value, 1, -Infinity, Infinity);
+			value = token[4].value;
 		} else if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
+		} else {
+			value = normalize(token[4].value, 1, 0, 100);
 		}
 
 		return [

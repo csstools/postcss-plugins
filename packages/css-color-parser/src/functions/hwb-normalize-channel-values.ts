@@ -41,9 +41,11 @@ export function normalize_HWB_ChannelValues(token: CSSToken, index: number, colo
 			colorData.syntaxFlags.add(SyntaxFlag.HasPercentageValues);
 		}
 
-		let value = normalize(token[4].value, 1, 0, 100);
+		let value: number;
 		if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
+		} else {
+			value = token[4].value;
 		}
 
 		return [
@@ -63,9 +65,11 @@ export function normalize_HWB_ChannelValues(token: CSSToken, index: number, colo
 			colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 		}
 
-		let value = normalize(token[4].value, 1, 0, 100);
+		let value: number;
 		if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
+		} else {
+			value = token[4].value;
 		}
 
 		return [
