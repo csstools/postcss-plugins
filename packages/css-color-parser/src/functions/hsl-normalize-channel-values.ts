@@ -30,7 +30,7 @@ export function normalize_legacy_HSL_ChannelValues(token: CSSToken, index: numbe
 		if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
 		} else {
-			value = token[4].value;
+			value = normalize(token[4].value, 1, 0, 100);
 		}
 
 		return [
@@ -54,7 +54,7 @@ export function normalize_legacy_HSL_ChannelValues(token: CSSToken, index: numbe
 		if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
 		} else {
-			value = token[4].value;
+			value = normalize(token[4].value, 1, 0, 100);
 		}
 
 		return [
