@@ -530,3 +530,22 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 		],
 	);
 }
+
+{
+	const t = tokenizer({
+		css: '+1_2.3_4e+5_6',
+	});
+
+	assert.deepEqual(
+		collectTokens(t).slice(0, -1),
+		[
+			[
+				'number-token',
+				'+1_2.3_4e+5_6',
+				0,
+				12,
+				{ value: 1.234e+57, signCharacter: '+', type: 'number' },
+			],
+		],
+	);
+}
