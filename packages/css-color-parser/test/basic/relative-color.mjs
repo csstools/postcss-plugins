@@ -2,6 +2,7 @@ import { color } from '@csstools/css-color-parser';
 import assert from 'assert';
 import { parse } from '../util/parse.mjs';
 import { serialize_sRGB_data } from '../util/serialize.mjs';
+import { canonicalize } from '../util/canonical.mjs';
 
 assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('rgb(from indianred 255 G b)'))),
@@ -186,6 +187,17 @@ assert.deepStrictEqual(
 	['color(from color(a98-rgb 0 1 0) display-p3 r g none)', 'rgb(0, 233, 108)'],
 	['color(from color(prophoto-rgb 0 1 0) display-p3 r g none)', 'rgb(0, 243, 137)'],
 	['color(from color(rec2020 0 1 0) display-p3 r g none)', 'rgb(0, 240, 123)'],
+
+	// clipping of components (or lack thereof)
+	['hsl(from lab(0 104.3 -50.9) h s l)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(from lab(0 104.3 -50.9) h calc(s) l)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(from lab(0 104.3 -50.9) h s l)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(305.510247383001deg 411.27657550111127% 6.872314424171214%)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(305.510247383001deg calc(411.27657550111127%) 6.872314424171214%)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(from lab(100 104.3 -50.9) 305.510247383001deg 411.27657550111127% 6.872314424171214%)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(from white 305.510247383001deg 411.27657550111127% 6.872314424171214%)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(from white 305.510247383001deg calc(411.27657550111127%) 6.872314424171214%)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
+	['hsl(from white 305.510247383001deg calc(s + 411.27657550111127) 6.872314424171214%)', canonicalize('color(srgb 0.351376 -0.213938 0.299501)')],
 ].forEach(([input, expected]) => {
 	assert.deepStrictEqual(
 		serialize_sRGB_data(color(parse(input))),

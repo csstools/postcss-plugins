@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix clipping of values in `hsl`, `hwb` and `rgb` color notations.
+
 ### 1.3.0
 
 _August 28, 2023_
