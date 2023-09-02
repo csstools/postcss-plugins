@@ -401,3 +401,15 @@ input:hover, input:focus, button:hover, button:focus {
 :is(input, button):is(:hover, :focus) {
 	to-clone: 1;
 }
+
+.a header.b {
+	color: green;
+}
+
+header:is(.a .b) {
+	color: green;
+}
+
+>:is(.a .b) {
+	color: green;
+}

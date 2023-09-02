@@ -47,8 +47,12 @@ export function isInCompoundWithOneOtherElement(selector): boolean {
 		}
 	}
 
-	selector.nodes[isPseudoIndex].append(selector.nodes[simpleSelectorIndex].clone());
-	selector.nodes[isPseudoIndex].replaceWith(...selector.nodes[isPseudoIndex].nodes);
+	if (selector.nodes[simpleSelectorIndex].type === 'combinator') {
+		return false;
+	}
+
+	selector.nodes[isPseudoIndex].nodes[0].append(selector.nodes[simpleSelectorIndex].clone());
+	selector.nodes[isPseudoIndex].replaceWith(...selector.nodes[isPseudoIndex].nodes[0].nodes);
 	selector.nodes[simpleSelectorIndex].remove();
 
 	return true;
