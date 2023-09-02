@@ -1,6 +1,8 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased (patch)
+### 4.0.1
+
+_September 2, 2023_
 
 - Fix substitution when selectors have mixed types for compound selectors where one of two parts is a `:is()` pseudo class.
 
