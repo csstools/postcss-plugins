@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { PluginCreator, Declaration } from 'postcss';
 import { TokenType, tokenize } from '@csstools/css-tokenizer';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { rebase } from './rebase';
@@ -16,10 +16,36 @@ const creator: PluginCreator<pluginOptions> = () => {
 		postcssPlugin: 'postcss-rebase-url',
 		prepare() {
 			const visited = new WeakSet();
+			const registeredPropsWithURL_Type = new Set();
 
 			return {
+				Once(root) {
+					root.walkAtRules(/property/i, (atRule) => {
+						if (!atRule.nodes) {
+							return;
+						}
+
+						const syntaxDescriptor = atRule.nodes.find((x) => {
+							if (x.type === 'decl' && /syntax/i.test(x.prop)) {
+								return true;
+							}
+						}) as Declaration | undefined;
+
+						if (!syntaxDescriptor) {
+							return;
+						}
+
+						if (/<url>/i.test(syntaxDescriptor.value)) {
+							registeredPropsWithURL_Type.add(atRule.params.trim());
+						}
+					});
+				},
 				Declaration(decl, { result }) {
 					if (visited.has(decl)) {
+						return;
+					}
+
+					if (decl.variable && !registeredPropsWithURL_Type.has(decl.prop)) {
 						return;
 					}
 

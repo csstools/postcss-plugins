@@ -403,3 +403,15 @@ input:hover, input:focus, button:hover, button:focus {
 	cloned: 1;
 	to-clone: 1;
 }
+
+.a header.b {
+	color: green;
+}
+
+header:is(.a .b) {
+	color: green;
+}
+
+>:is(.a .b) {
+	color: green;
+}

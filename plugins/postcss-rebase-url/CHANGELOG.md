@@ -1,5 +1,11 @@
 # Changes to PostCSS Rebase URL
 
+### 1.0.1
+
+_September 2, 2023_
+
+- Fix handling of typed vs untyped custom properties that contain url values.
+
 ### 1.0.0
 
 _August 28, 2023_
