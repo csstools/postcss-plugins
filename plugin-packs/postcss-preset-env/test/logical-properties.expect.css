@@ -36,11 +36,6 @@
 }
 
 .border-color {
-	/* border-bottom-color */
-	border-bottom-color: inherit;
-}
-
-.border-color {
 	/* border-inline-end-color */
 	border-right-color: inherit;
 }
@@ -56,23 +51,8 @@
 }
 
 .border-color {
-	/* border-left-color */
-	border-left-color: inherit;
-}
-
-.border-color {
 	/* border-right-color */
 	border-right-color: inherit;
-}
-
-.border-color {
-	/* border-right-color */
-	border-right-color: inherit;
-}
-
-.border-color {
-	/* border-top-color */
-	border-top-color: inherit;
 }
 
 .border-color {

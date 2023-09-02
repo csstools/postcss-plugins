@@ -308,7 +308,7 @@ to-clone {
 }
 
 .wpt-srgb-gradient {
-	background: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(230, 26, 0), rgb(204, 51, 0), rgb(179, 77, 0), rgb(153, 102, 0), rgb(128, 128, 0), rgb(102, 153, 0), rgb(77, 179, 0), rgb(51, 204, 0), rgb(26, 230, 0), rgb(0, 255, 0) 100%);
+	background: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(230, 26, 0), rgb(204, 51, 0), rgb(179, 77, 0), rgb(153, 102, 0), rgb(128, 128, 0), rgb(102, 153, 0), rgb(77, 179, 0), rgb(51, 204, 0), rgb(25, 230, 0), rgb(0, 255, 0) 100%);
 }
 
 .wpt-srgb-linear-gradient {
