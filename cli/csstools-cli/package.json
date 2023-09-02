@@ -46,7 +46,7 @@
 		"@csstools/postcss-gradients-interpolation-method": "^4.0.2",
 		"@csstools/postcss-hwb-function": "^3.0.2",
 		"@csstools/postcss-ic-unit": "^3.0.0",
-		"@csstools/postcss-is-pseudo-class": "^4.0.0",
+		"@csstools/postcss-is-pseudo-class": "^4.0.1",
 		"@csstools/postcss-logical-float-and-clear": "^2.0.0",
 		"@csstools/postcss-logical-resize": "^2.0.0",
 		"@csstools/postcss-logical-viewport-units": "^2.0.1",

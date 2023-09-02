@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Fix clipping of values in `hsl`, `hwb` and `rgb` color notations.
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#302) (patch)
 
 ### 1.3.0
 
