@@ -1,6 +1,8 @@
 # Changes to Color Helpers
 
-### Unreleased (patch)
+### 3.0.2
+
+_September 2, 2023_
 
 - Undo the changes from `3.0.1`.
 
