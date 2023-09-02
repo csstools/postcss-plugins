@@ -35,6 +35,24 @@
 	background: url("node_modules://images/green.png");
 }
 
+@property --background-image--strictly-typed {
+	syntax: '<url> | none';
+	inherits: true;
+	initial-value: none;
+}
+
+@property --background-image--loosely-typed {
+	syntax: '*';
+	inherits: true;
+	initial-value: none;
+}
+
+.box {
+	--background-image--strictly-typed: url(imports/green.png#1);
+	--background-image--loosely-typed: url(./green.png#2);
+	--background-image--untyped: url(./green.png#3);
+}
+
 .root {
 	background: url(images/green.png);
 }

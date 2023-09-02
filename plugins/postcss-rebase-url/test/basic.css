@@ -1,4 +1,5 @@
 @import "imports/basic.css";
+@import "imports/props.css";
 
 .root {
 	background: url(./images/green.png);
