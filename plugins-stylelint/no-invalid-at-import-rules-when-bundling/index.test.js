@@ -82,6 +82,15 @@ testRule({
 			endLine: 3,
 			endColumn: 36,
 		},
+		{
+			code: '@import "fOO.css";',
+			description: 'Case sensitivity',
+			message: 'URL\'s with uppercase characters might give conflicts between users on case sensitive or insensitive file systems. Use lower case characters only to avoid potential issues.',
+			line: 1,
+			column: 9,
+			endLine: 1,
+			endColumn: 18,
+		},
 	],
 });
 

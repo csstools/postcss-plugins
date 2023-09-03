@@ -79,6 +79,17 @@ const ruleFunction = (primaryOption) => {
 								ruleName,
 							});
 						}
+
+						if (!remote && uri.toLowerCase() !== uri) {
+							stylelint.utils.report({
+								message: 'URL\'s with uppercase characters might give conflicts between users on case sensitive or insensitive file systems. Use lower case characters only to avoid potential issues.',
+								node: atRule,
+								index: atRuleParamIndex(atRule) + uriSourceIndices[0],
+								endIndex: atRuleParamIndex(atRule) + uriSourceIndices[1] + 1,
+								result: postcssResult,
+								ruleName,
+							});
+						}
 					}
 				}
 			}
