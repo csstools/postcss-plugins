@@ -19,12 +19,23 @@ export async function canPublish(packageName, myName) {
 		);
 
 		let result = '';
+		let error = '';
 
 		accessListCmd.stdout.on('data', (data) => {
 			result += data;
 		});
 
+		accessListCmd.stderr.on('data', (data) => {
+			error += data;
+		});
+
 		accessListCmd.on('close', (code) => {
+			if (error.includes('code E404')) {
+				// Package does not exist yet
+				resolve(true);
+				return;
+			}
+
 			if (0 !== code) {
 				reject(new Error(`'npm ${['access', 'list', 'collaborators', packageName, myName].join(' ')}' exited with code ${code}`));
 				return;

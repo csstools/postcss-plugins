@@ -12,6 +12,13 @@ export function rgb(rgbNode: FunctionNode, colorParser: ColorParser): ColorData 
 	if (rgbNode.value.some((x) => isTokenNode(x) && x.value[0] === TokenType.Comma)) {
 		const output = rgbCommaSeparated(rgbNode);
 		if (output !== false) {
+			if (
+				output.syntaxFlags.has(SyntaxFlag.HasNumberValues) &&
+				output.syntaxFlags.has(SyntaxFlag.HasPercentageValues)
+			) {
+				return false;
+			}
+
 			return output;
 		}
 	} else {

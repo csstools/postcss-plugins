@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { PluginCreator, Declaration, AtRule } from 'postcss';
 import { TokenType, tokenize } from '@csstools/css-tokenizer';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { rebase } from './rebase';
@@ -8,18 +8,56 @@ import { normalizedDir } from './normalized-dir';
 /** postcss-rebase-url plugin options */
 export type pluginOptions = never;
 
+const INITIAL_VALUE_PROPERTY = /^initial-value$/i;
+const PROPERTY_NAME = /^property$/i;
+const SYNTAX_PROPERTY = /^syntax$/i;
 const URL_FUNCTION_CALL = /url\(/i;
-const URL_FUNCTION_NAME = /url/i;
+const URL_FUNCTION_NAME = /^url$/i;
+const URL_SYNTAX = /<url>/i;
 
 const creator: PluginCreator<pluginOptions> = () => {
 	return {
 		postcssPlugin: 'postcss-rebase-url',
 		prepare() {
 			const visited = new WeakSet();
+			const registeredPropsWithURL_Type = new Set();
 
 			return {
+				Once(root) {
+					root.walkAtRules(PROPERTY_NAME, (atRule) => {
+						if (!atRule.nodes) {
+							return;
+						}
+
+						const syntaxDescriptor = atRule.nodes.find((x) => {
+							if (x.type === 'decl' && SYNTAX_PROPERTY.test(x.prop)) {
+								return true;
+							}
+						}) as Declaration | undefined;
+
+						if (!syntaxDescriptor) {
+							return;
+						}
+
+						if (URL_SYNTAX.test(syntaxDescriptor.value)) {
+							registeredPropsWithURL_Type.add(atRule.params.trim());
+						}
+					});
+				},
 				Declaration(decl, { result }) {
 					if (visited.has(decl)) {
+						return;
+					}
+
+					if (decl.variable && !registeredPropsWithURL_Type.has(decl.prop)) {
+						return;
+					}
+
+					if (
+						INITIAL_VALUE_PROPERTY.test(decl.prop) &&
+						decl.parent?.type === 'atrule' &&
+						PROPERTY_NAME.test((decl.parent as AtRule).name)
+					) {
 						return;
 					}
 

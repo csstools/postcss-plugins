@@ -1,14 +1,14 @@
-const cssnano = require('cssnano');
 const openProps = require('open-props');
+const postcssBundler = require('@csstools/postcss-bundler');
 const postcssCustomMedia = require('postcss-custom-media');
 const postcssGlobalData = require('@csstools/postcss-global-data');
-const postcssImport = require('postcss-import');
 const postcssJitProps = require('postcss-jit-props');
+const postcssMinify = require('@csstools/postcss-minify');
 const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = {
 	plugins: [
-		postcssImport(),
+		postcssBundler(),
 		postcssGlobalData({
 			files: [
 				'node_modules://open-props/media.min.css',
@@ -24,6 +24,6 @@ module.exports = {
 				'custom-media-queries': false,
 			},
 		}),
-		cssnano(),
+		postcssMinify(),
 	],
 };

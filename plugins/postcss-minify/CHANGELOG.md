@@ -1,5 +1,7 @@
 # Changes to PostCSS Minify
 
-### Unreleased (major)
+### 1.0.0
+
+_August 28, 2023_
 
 - Initial version

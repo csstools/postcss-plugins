@@ -5,8 +5,8 @@
 		"declaration": true,
 		"declarationDir": "./dist",
 		"lib": ["es2020"],
-		"module": "ES6",
-		"moduleResolution": "nodenext",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
 		"outDir": "./dist",
 		"target": "es2020",
 		"strict": true
