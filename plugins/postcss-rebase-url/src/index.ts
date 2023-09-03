@@ -1,4 +1,4 @@
-import type { PluginCreator, Declaration } from 'postcss';
+import type { PluginCreator, Declaration, AtRule } from 'postcss';
 import { TokenType, tokenize } from '@csstools/css-tokenizer';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { rebase } from './rebase';
@@ -8,8 +8,12 @@ import { normalizedDir } from './normalized-dir';
 /** postcss-rebase-url plugin options */
 export type pluginOptions = never;
 
+const INITIAL_VALUE_PROPERTY = /^initial-value$/i;
+const PROPERTY_NAME = /^property$/i;
+const SYNTAX_PROPERTY = /^syntax$/i;
 const URL_FUNCTION_CALL = /url\(/i;
-const URL_FUNCTION_NAME = /url/i;
+const URL_FUNCTION_NAME = /^url$/i;
+const URL_SYNTAX = /<url>/i;
 
 const creator: PluginCreator<pluginOptions> = () => {
 	return {
@@ -20,13 +24,13 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 			return {
 				Once(root) {
-					root.walkAtRules(/property/i, (atRule) => {
+					root.walkAtRules(PROPERTY_NAME, (atRule) => {
 						if (!atRule.nodes) {
 							return;
 						}
 
 						const syntaxDescriptor = atRule.nodes.find((x) => {
-							if (x.type === 'decl' && /syntax/i.test(x.prop)) {
+							if (x.type === 'decl' && SYNTAX_PROPERTY.test(x.prop)) {
 								return true;
 							}
 						}) as Declaration | undefined;
@@ -35,7 +39,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 							return;
 						}
 
-						if (/<url>/i.test(syntaxDescriptor.value)) {
+						if (URL_SYNTAX.test(syntaxDescriptor.value)) {
 							registeredPropsWithURL_Type.add(atRule.params.trim());
 						}
 					});
@@ -46,6 +50,14 @@ const creator: PluginCreator<pluginOptions> = () => {
 					}
 
 					if (decl.variable && !registeredPropsWithURL_Type.has(decl.prop)) {
+						return;
+					}
+
+					if (
+						INITIAL_VALUE_PROPERTY.test(decl.prop) &&
+						decl.parent?.type === 'atrule' &&
+						PROPERTY_NAME.test((decl.parent as AtRule).name)
+					) {
 						return;
 					}
 
