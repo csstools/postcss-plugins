@@ -1,6 +1,8 @@
 # Changes to PostCSS Rebase URL
 
-### Unreleased (patch)
+### 1.0.2
+
+_September 3, 2023_
 
 - Do not rebase `url()` values in `initial-value` declarations for `@property`.
 
