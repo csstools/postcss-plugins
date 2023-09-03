@@ -8,11 +8,11 @@ import { normalizedDir } from './normalized-dir';
 /** postcss-rebase-url plugin options */
 export type pluginOptions = never;
 
-const INITIAL_VALUE_PROPERTY = /initial-value/i;
-const PROPERTY_NAME = /property/i;
-const SYNTAX_PROPERTY = /syntax/i;
+const INITIAL_VALUE_PROPERTY = /^initial-value$/i;
+const PROPERTY_NAME = /^property$/i;
+const SYNTAX_PROPERTY = /^syntax$/i;
 const URL_FUNCTION_CALL = /url\(/i;
-const URL_FUNCTION_NAME = /url/i;
+const URL_FUNCTION_NAME = /^url$/i;
 const URL_SYNTAX = /<url>/i;
 
 const creator: PluginCreator<pluginOptions> = () => {
