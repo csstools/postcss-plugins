@@ -6,10 +6,6 @@ on:
   pull_request:
   workflow_dispatch:
 
-concurrency:
-  group: branch-node--test--${{ github.ref }}
-  cancel-in-progress: true
-
 defaults:
   run:
     shell: bash

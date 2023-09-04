@@ -6,10 +6,6 @@ on:
   pull_request:
   workflow_dispatch:
 
-concurrency:
-  group: branch-node--lint--${{ github.ref }}
-  cancel-in-progress: true
-
 defaults:
   run:
     shell: bash
