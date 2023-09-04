@@ -18,7 +18,8 @@
 
 [<humanReadableName>] lets you easily check which plugins have the most impact on your build duration.
 
-PostCSS is incredibly fast but adding too many plugins or a few slow ones can still cause issues.  
+PostCSS is incredibly fast but adding too many plugins or a few slow ones can still cause issues.
+
 Typical causes of slow PostCSS setups are :
 - you have a lot of CSS
 - you have a lot of plugins
@@ -82,7 +83,7 @@ Most impactful to remove, ordered by drop in duration when excluded:
 │    9    │ '7.332ms'  │ '1.366kb/ms' │ '3.361ms' │            'postcss-ic-unit'             │          19           │
 │   10    │ '7.342ms'  │ '1.364kb/ms' │ '3.350ms' │          'postcss-lab-function'          │          12           │
 └─────────┴────────────┴──────────────┴───────────┴──────────────────────────────────────────┴───────────────────────┘
-Most impactful to remove, ordered by increased in duration when running alone:
+Most impactful to remove, ordered by increase in duration when running alone:
 ┌─────────┬───────────┬──────────────┬──────────────────────────────────────────┬───────────────────────┐
 │ (index) │ duration  │ kb's per ms  │                   name                   │ index in plugins list │
 ├─────────┼───────────┼──────────────┼──────────────────────────────────────────┼───────────────────────┤

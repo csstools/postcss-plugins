@@ -131,7 +131,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					return x;
 				});
 
-				console.log('Most impactful to remove, ordered by increased in duration when running alone:');
+				console.log('Most impactful to remove, ordered by increase in duration when running alone:');
 				console.table(results.slice(0, 11));
 			}
 		},
