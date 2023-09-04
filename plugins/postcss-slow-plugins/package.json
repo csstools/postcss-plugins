@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-slow-plugins",
 	"description": "Identify slow plugins in your PostCSS config",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",

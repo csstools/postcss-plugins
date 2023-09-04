@@ -17,7 +17,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const inputCSS = root.source?.input.css ?? '';
 
 			const plugins = [
-				...result.processor.plugins.filter((x) => 'postcssPlugin' in x && x.postcssPlugin !== 'postcss-slow-plugins'),
+				...result.processor.plugins.filter((x) => ('postcssPlugin' in x) && x.postcssPlugin !== 'postcss-slow-plugins'),
 			];
 
 			const outputCSS_KB = (await postcss(plugins).process(inputCSS ?? '', result.opts)).css.length / 1024;
@@ -47,7 +47,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				}> = [];
 
 				for (let i = 0; i < plugins.length; i++) {
-					const name = 'postcssPlugin' in plugins[i] ? (plugins[i] as Plugin | Transformer).postcssPlugin : 'unknown plugin';
+					const name = ('postcssPlugin' in plugins[i]) ? (plugins[i] as Plugin | Transformer).postcssPlugin : 'unknown plugin';
 					if (ignore.includes(name)) {
 						continue;
 					}
@@ -102,12 +102,20 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				}> = [];
 
 				for (let i = 0; i < plugins.length; i++) {
-					const name = 'postcssPlugin' in plugins[i] ? (plugins[i] as Plugin | Transformer).postcssPlugin : 'unknown plugin';
+					const name = ('postcssPlugin' in plugins[i]) ? (plugins[i] as Plugin | Transformer).postcssPlugin : 'unknown plugin';
 					if (ignore.includes(name)) {
 						continue;
 					}
 
-					const pluginsWithOnlyCurrent = [plugins[i]];
+					const pluginsWithOnlyCurrent = [
+						...plugins.filter((x) => {
+							if (x === plugins[i]) {
+								return true;
+							}
+
+							return ('postcssPlugin' in x) && ignore.includes(x.postcssPlugin);
+						}),
+					];
 
 					const durationWithOnlyPlugin = await medianDuration(async () => {
 						(await postcss(pluginsWithOnlyCurrent).process(inputCSS ?? '', result.opts)).css;
