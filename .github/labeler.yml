@@ -249,6 +249,10 @@
   - plugins/postcss-selector-not/**
   - experimental/postcss-selector-not/**
 
+"plugins/postcss-slow-plugins":
+  - plugins/postcss-slow-plugins/**
+  - experimental/postcss-slow-plugins/**
+
 "plugins/postcss-system-ui-font-family":
   - plugins/postcss-system-ui-font-family/**
   - experimental/postcss-system-ui-font-family/**
