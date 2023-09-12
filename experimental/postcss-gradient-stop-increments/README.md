@@ -2,6 +2,10 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-gradient-stop-increments-experimental.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
+```bash
+npm install @csstools/postcss-gradient-stop-increments-experimental --save-dev
+```
+
 [PostCSS Gradient Stop Increments] lets you increment gradient stops following the [CSSWG 8616 proposal].
 
 ```pcss
