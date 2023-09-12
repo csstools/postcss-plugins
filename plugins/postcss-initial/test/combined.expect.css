@@ -1,0 +1,24 @@
+a {
+  animation: none 0s ease 0s 1 normal none running;
+  animation: initial;
+  background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
+  background: initial;
+  border: medium none currentColor;
+  border: initial;
+  column-rule: medium none currentColor;
+  column-rule: initial;
+  font-family: serif;
+  font-size: medium;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: normal;
+  font: initial;
+  list-style: disc outside none;
+  list-style: initial;
+  outline: medium none invert;
+  outline: initial;
+  text-decoration: none;
+  text-decoration: initial;
+}

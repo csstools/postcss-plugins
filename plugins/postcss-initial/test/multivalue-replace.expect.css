@@ -1,0 +1,7 @@
+div {
+  background-repeat: repeat repeat;
+}
+
+div {
+  background-repeat: repeat no-repeat;
+}
