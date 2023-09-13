@@ -3,9 +3,6 @@
 	"version": "0.0.0",
 	"private": true,
 	"description": "Can you use yarn with our plugins?",
-	"scripts": {
-		"build": "yarn install && node ./build.mjs"
-	},
 	"devDependencies": {
 		"postcss-preset-env": "^9.1.3",
 		"postcss": "^8.4.29"
