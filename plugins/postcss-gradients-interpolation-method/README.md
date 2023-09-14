@@ -2,6 +2,10 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-gradients-interpolation-method.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/gradients-interpolation-method.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
+```bash
+npm install @csstools/postcss-gradients-interpolation-method --save-dev
+```
+
 [PostCSS Gradients Interpolation Method] lets you use different interpolation methods in CSS gradient functions following [CSS Images Module 4].
 
 ```pcss

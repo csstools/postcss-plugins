@@ -50,7 +50,12 @@ readmeDoc = readmeDoc.replace('<header>', `# <humanReadableName> [<img src="http
 		''
 }` +
 '[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] ' +
-'[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]');
+	'[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]' +
+`\n
+\`\`\`bash
+npm install <packageName> --save-dev
+\`\`\``
+);
 
 // Insert "Usage" section
 readmeDoc = readmeDoc.replace('<usage>', `## Usage

@@ -95,3 +95,9 @@ jobs:
           npm run build
           npm run test
         if: matrix.is_base_node_version && matrix.is_base_os_version
+
+        # E2E Package Managers Tests
+      - name: test:e2e-package-managers
+        run: |
+          cd e2e-package-managers/yarn && bash test.sh
+        if: matrix.is_base_node_version && matrix.is_base_os_version

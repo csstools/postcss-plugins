@@ -2,6 +2,10 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/postcss-color-hex-alpha.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/hexadecimal-alpha-notation.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
+```bash
+npm install postcss-color-hex-alpha --save-dev
+```
+
 [PostCSS Color Hex Alpha] lets you use 4 & 8 character hex color notation in
 CSS, following the [CSS Color Module] specification.
 
