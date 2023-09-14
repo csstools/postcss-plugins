@@ -1,12 +1,12 @@
 ---
 title: PostCSS Bundler
-description: A better bundler for CSS
-date: 2023-09-10
+description: A standards compliant reference CSS bundler
+date: 2023-09-15
 ---
 
-[PostCSS Bundler] is a standards compliant CSS bundler.
+[PostCSS Bundler] is a standards compliant reference CSS bundler.
 
-It is built around `@import` statements, similarly to [esbuild](https://esbuild.github.io), [postcss-import](https://www.npmjs.com/package/postcss-import) or [lightningcss](https://lightningcss.dev).
+It is built around `@import` statements, similarly to how [esbuild](https://esbuild.github.io), [postcss-import](https://www.npmjs.com/package/postcss-import) or [lightningcss](https://lightningcss.dev) bundle CSS.
 
 ```css
 @import url('variables.css');
@@ -14,13 +14,10 @@ It is built around `@import` statements, similarly to [esbuild](https://esbuild.
 @import url('components/not-a-card.css');
 ```
 
-It however is much stricter and complete in it's implementation.  
-Allowing you to do more with it.
-
 
 ## Why this is matters now
 
-Previously CSS `@import` was relatively simple.
+Previously bundling CSS based on `@import` was relatively simple.
 
 There were always a few features (`@namespace`, `@charset`, ...) that weren't or couldn't be implemented correctly in bundlers but these also happened to be obscure and rarely used features.
 
@@ -30,7 +27,7 @@ Even with duplicate and cyclical imports it was largely invisible if a bundler i
 Today however this is no longer true.
 
 We now have cascade layers, support conditions and soon even scoping in `@import` statements.  
-With the addition of these features the source order is more important than ever and bundlers need to be updated so that you can use all of CSS.
+With the addition of these features the source order is more important than ever and bundlers need to be updated so that you can use all of the features in CSS.
 
 ```css
 @import url('all-the-styles.css')
@@ -42,7 +39,7 @@ With the addition of these features the source order is more important than ever
 
 ## `css-import-tests`
 
-We created an [extensive test suite](https://github.com/romainmenke/css-import-tests) for the behavior of `@import` in browsers and how these can be mimicked by bundlers. It is not limited to testing what bundlers can do, it also tests what can not be implemented.
+We created an [extensive test suite](https://github.com/romainmenke/css-import-tests) for the behavior of `@import` in browsers and how these can be mimicked by bundlers. It is not limited to testing what bundlers can do, it also tests some things that can not be implemented by bundlers.
 
 The goal of this test suite is not to score different bundlers against each other, but to **promote interop.**  
 We reached out to the maintainers of [esbuild](https://esbuild.github.io) and [lightningcss](https://lightningcss.dev) so that they are aware of this effort and so that we can coordinate our efforts.
@@ -58,7 +55,7 @@ By sharing [`css-import-tests`](https://github.com/romainmenke/css-import-tests)
 
 a.k.a [PostCSS Bundler]
 
-This is our implementation of a bundler that passes as many tests from [`css-import-tests`](https://github.com/romainmenke/css-import-tests) as possible.
+This is our reference implementation of a bundler that passes as many tests from [`css-import-tests`](https://github.com/romainmenke/css-import-tests) as possible.
 
 Our vision and goal for this package is that you should be able to turn it on or off and that your CSS should just work either way.
 
@@ -123,6 +120,16 @@ postcss([
 	postcssBundler()
 ]).process(YOUR_CSS /*, processOptions */);
 ```
+
+
+## Comparison with any other tool
+
+Given the current state of "tech twitter" we feel the need to call out specifically that non of this effort is adversarial.  
+We do not care about market share and we are not "disrupting" anything.
+
+Our only intention is to make all tools better for all CSS authors.  
+That is why we did not only create a new bundler, but we also created the means for all other bundlers to improve.  
+We care deeply about diversity in tooling and interop between those tools.
 
 
 [PostCSS Bundler]: https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-bundler
