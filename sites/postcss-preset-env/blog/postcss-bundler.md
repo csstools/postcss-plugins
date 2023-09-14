@@ -15,7 +15,7 @@ It is built around `@import` statements, similarly to how [esbuild](https://esbu
 ```
 
 
-## Why this is matters now
+## Why this matters now
 
 Previously bundling CSS based on `@import` was relatively simple.
 
@@ -26,8 +26,8 @@ Even with duplicate and cyclical imports it was largely invisible if a bundler i
 
 Today however this is no longer true.
 
-We now have cascade layers, support conditions and soon even scoping in `@import` statements.  
-With the addition of these features the source order is more important than ever and bundlers need to be updated so that you can use all of the features in CSS.
+We now have cascade layers, support conditions, and soon even scoping in `@import` statements.  
+With the addition of these features, the source order is more important than ever and bundlers need to be updated so that you can use all of the features in CSS.
 
 ```css
 @import url('all-the-styles.css')
@@ -46,9 +46,9 @@ We reached out to the maintainers of [esbuild](https://esbuild.github.io) and [l
 
 _If there are other CSS bundlers that we haven't thought of, please let us know in a [GitHub issue](https://github.com/csstools/postcss-plugins/issues)_
 
-In particular we want to thank Evan from [esbuild](https://esbuild.github.io) as they immediately jumped on this and also contributed back to the test suite. In a very short time they fixed a large number of small discrepancies in [esbuild](https://esbuild.github.io). They also provided insights and very neat tricks that made sub-features possible that we had already given up on.
+In particular, we want to thank Evan from [esbuild](https://esbuild.github.io) as they immediately jumped on this and also contributed back to the test suite. In a very short time they fixed a large number of small discrepancies in [esbuild](https://esbuild.github.io). They also provided insights and very neat tricks that made sub-features possible that we had already given up on.
 
-By sharing [`css-import-tests`](https://github.com/romainmenke/css-import-tests) and working together with other tool creators we take away part of the workload of each individual maintainer.
+By sharing [`css-import-tests`](https://github.com/romainmenke/css-import-tests) and working together with other tool creators we take away part of the workload of each maintainer.
 
 
 ## `@csstools/postcss-bundler`
@@ -72,7 +72,7 @@ This gives a better dev experience because your file links will actually work in
 ### imports of node modules
 
 Importing npm packages is not a standard feature and we decided not to add magic for it.  
-Instead we added an explicit and expressive API to reference packages found in `node_modules` directories.
+Instead, we added an explicit and expressive API to reference packages found in `node_modules` directories.
 
 ```css
 @import url("node_modules:open-props/red");
@@ -81,7 +81,7 @@ Instead we added an explicit and expressive API to reference packages found in `
 By adding the `node_modules:` url scheme you make it clear to [PostCSS Bundler] that it should use the module resolution algorithms to find your CSS. This also supports conditional exports.
 
 We decided against the `npm:` url scheme because this is already used in Deno.  
-In Deno it also implies an automatic download which is not something we can or want to implement.  
+In Deno, it also implies an automatic download which is not something we can or want to implement.  
 You still need to use your regular JavaScript tooling to download and manage npm packages even when they contain CSS files.
 
 `node_modules:` is a bit longer but it is absolutely clear in its meaning and purpose.
@@ -124,11 +124,11 @@ postcss([
 
 ## Comparison with any other tool
 
-Given the current state of "tech twitter" we feel the need to call out specifically that non of this effort is adversarial.  
+Given the current state of "tech Twitter", we feel the need to call out specifically that none of this effort is adversarial.  
 We do not care about market share and we are not "disrupting" anything.
 
 Our only intention is to make all tools better for all CSS authors.  
-That is why we did not only create a new bundler, but we also created the means for all other bundlers to improve.  
+That is why we did not only create a new bundler but also created the means for all other bundlers to improve.  
 We care deeply about diversity in tooling and interop between those tools.
 
 
