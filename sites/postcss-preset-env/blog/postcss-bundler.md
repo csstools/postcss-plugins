@@ -124,8 +124,8 @@ postcss([
 
 ## Comparison with any other tool
 
-Given the current state of "tech Twitter", we feel the need to call out specifically that none of this effort is adversarial.  
-We do not care about market share and we are not "disrupting" anything.
+Given the current state of "tech Twitter", we feel the need to call out specifically that none of this effort is competitive.  
+We do not care about download numbers and we are not "disrupting" anything.
 
 Our only intention is to make all tools better for all CSS authors.  
 That is why we did not only create a new bundler but also created the means for all other bundlers to improve.  
