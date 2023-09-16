@@ -1,3 +1,21 @@
 a {
-  animation: initiallyHidden 1s linear 0s 1;
+	animation: initiallyHidden 1s linear 0s 1;
+}
+
+b {
+	/* not ignored */
+	font-family: serif;
+	font-family: initial;
+
+	/* ignored */
+	font-family: 'initial';
+}
+
+c {
+	/* not ignored */
+	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
+	background: initial;
+
+	/* ignored */
+	background: url(initial);
 }

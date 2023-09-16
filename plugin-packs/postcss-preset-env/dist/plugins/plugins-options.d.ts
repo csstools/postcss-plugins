@@ -1,4 +1,4 @@
-import type { pluginOptions as postcssInitial } from '../types/postcss-initial/plugin-options';
+import type { pluginOptions as postcssInitial } from '@csstools/postcss-initial';
 import type { pluginOptions as postcssPseudoClassAnyLink } from 'postcss-pseudo-class-any-link';
 import type { pluginOptions as postcssBlankPseudo } from 'css-blank-pseudo';
 import type { pluginOptions as postcssPageBreak } from '../types/postcss-page-break/plugin-options';
@@ -52,7 +52,7 @@ import type { pluginOptions as postcssTextDecorationShorthand } from '@csstools/
 import type { pluginOptions as postcssTrigonometricFunctions } from '@csstools/postcss-trigonometric-functions';
 import type { pluginOptions as postcssUnsetValue } from '@csstools/postcss-unset-value';
 export type pluginsOptions = {
-    /** plugin options for "postcss-initial" */
+    /** plugin options for "@csstools/postcss-initial" */
     'all-property'?: postcssInitial | boolean;
     /** plugin options for "postcss-pseudo-class-any-link" */
     'any-link-pseudo-class'?: postcssPseudoClassAnyLink | boolean;

@@ -25,20 +25,20 @@ Use it as a [PostCSS] plugin:
 ```js
 // commonjs
 const postcss = require('postcss');
-const postcssBasePlugin = require('@csstools/postcss-initial');
+const postcssInitial = require('@csstools/postcss-initial');
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssInitial(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
 ```js
 // esm
 import postcss from 'postcss';
-import postcssBasePlugin from '@csstools/postcss-initial';
+import postcssInitial from '@csstools/postcss-initial';
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssInitial(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -53,11 +53,11 @@ npm install postcss-cli @csstools/postcss-initial --save-dev
 Use [PostCSS Initial] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-initial');
+const postcssInitial = require('@csstools/postcss-initial');
 
 module.exports = {
 	plugins: [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssInitial(/* pluginOptions */)
 	]
 }
 ```
@@ -184,11 +184,11 @@ Use [PostCSS Initial] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssBasePlugin = require('@csstools/postcss-initial');
+const postcssInitial = require('@csstools/postcss-initial');
 
 gulp.task('css', function () {
 	var plugins = [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssInitial(/* pluginOptions */)
 	];
 
 	return gulp.src('./src/*.css')
@@ -208,7 +208,7 @@ npm install grunt-postcss @csstools/postcss-initial --save-dev
 Use [PostCSS Initial] in your Gruntfile:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-initial');
+const postcssInitial = require('@csstools/postcss-initial');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -216,7 +216,7 @@ grunt.initConfig({
 	postcss: {
 		options: {
 			processors: [
-			postcssBasePlugin(/* pluginOptions */)
+			postcssInitial(/* pluginOptions */)
 			]
 		},
 		dist: {

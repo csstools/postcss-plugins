@@ -1,10 +1,10 @@
 a {
-  background-position: 0 0;
-  background-position: initial;
-  margin: 0;
-  margin: initial;
-  padding-left: 0;
-  padding-left: initial;
-  height: auto;
-  height: initial;
+	background-position: 0 0;
+	background-position: initial;
+	margin: 0;
+	margin: initial;
+	padding-left: 0;
+	padding-left: initial;
+	height: auto;
+	height: initial;
 }

@@ -1,7 +1,14 @@
 .foo {
-	color: blue;
+	--var: initial;
+
+	border: medium none currentcolor;
+
+	border: initial;
+	color: #000;
+	color: initial;
 }
 
-.baz {
-	color: green;
+.bar {
+	outline: medium none currentcolor;
+	outline: initial;
 }

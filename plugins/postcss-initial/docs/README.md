@@ -16,7 +16,7 @@
 
 <header>
 
-[<humanReadableName>] lets you easily create new plugins following some [CSS Specification].
+[<humanReadableName>] fallback the `initial` keyword following the [CSS Cascade 4 Specification].
 
 ```pcss
 <example.css>
@@ -35,10 +35,10 @@
 ### preserve
 
 The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
+is preserved. By default, it is preserved.
 
 ```js
-<exportName>({ preserve: true })
+<exportName>({ preserve: false })
 ```
 
 ```pcss
@@ -46,8 +46,8 @@ is preserved. By default, it is not preserved.
 
 /* becomes */
 
-<example.preserve-true.expect.css>
+<example.preserve-false.expect.css>
 ```
 
 <linkList>
-[CSS Specification]: <specUrl>
+[CSS Cascade 4 Specification]: <specUrl>

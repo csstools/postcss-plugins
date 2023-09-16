@@ -1,6 +1,19 @@
 a {
-  overflow: visible;
-  overflow: initial;
-  width: auto;
-  width: initial;
+	overflow: visible;
+	overflow: initial;
+	width: auto;
+	width: initial;
+}
+
+b {
+	width: auto;
+	width: 10px;
+	width: auto;
+	width: initial;
+}
+
+c {
+	width: auto;
+	color: red;
+	width: initial;
 }

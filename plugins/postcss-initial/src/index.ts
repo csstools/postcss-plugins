@@ -1,4 +1,6 @@
 import type { PluginCreator } from 'postcss';
+import { allProperties, properties } from './properties';
+import { hasExactFallback } from './has-fallback-decl';
 
 /** postcss-initial plugin options */
 export type pluginOptions = {
@@ -6,14 +8,25 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const HAS_INITIAL = /\binitial\b/i;
-const IS_INITIAL = /^initial$/i;
+const IS_INITIAL = /^\s?initial\s?$/i;
+const IS_FONT = /^font$/i;
+const IS_ALL = /^all$/i;
+
+const fontProperties = [
+	'font-family',
+	'font-size',
+	'font-style',
+	'font-variant',
+	'font-weight',
+	'font-stretch',
+	'line-height',
+];
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options: pluginOptions = Object.assign(
 		// Default options
 		{
-			preserve: false,
+			preserve: true,
 		},
 		// Provided options
 		opts,
@@ -22,11 +35,42 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-initial',
 		Declaration(decl) {
-			if (!HAS_INITIAL.test(decl.value)) {
+			if (decl.variable) {
 				return;
 			}
 
+			if (!IS_INITIAL.test(decl.value)) {
+				return;
+			}
 
+			let lookupProperties;
+			if (IS_FONT.test(decl.prop)) {
+				lookupProperties = fontProperties;
+			} else if (IS_ALL.test(decl.prop)) {
+				lookupProperties = allProperties;
+			} else {
+				lookupProperties = [decl.prop.toLowerCase()];
+			}
+
+			lookupProperties.forEach((prop) => {
+				const replacement = properties.get(prop);
+				if (!replacement) {
+					return;
+				}
+
+				if (hasExactFallback(decl, replacement)) {
+					return;
+				}
+
+				decl.cloneBefore({
+					prop: prop,
+					value: replacement,
+				});
+			});
+
+			if (!options.preserve) {
+				decl.remove();
+			}
 		},
 	};
 };

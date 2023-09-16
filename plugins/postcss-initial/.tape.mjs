@@ -8,10 +8,7 @@ postcssTape(plugin)({
 	'all-initial-default': {
 		message: "all default",
 	},
-	'all-initial-inherited': {
-		message: "all inherited"
-	},
-	'combined-replace': {
+	'combined:preserve-false': {
 		message: "combined",
 		options: {
 			preserve: false,
@@ -20,11 +17,8 @@ postcssTape(plugin)({
 	'combined': {
 		message: "combined"
 	},
-	'multivalue-replace': {
-		message: "multi value",
-		options: {
-			preserve: false,
-		}
+	'multivalue': {
+		message: "multi value"
 	},
 	'negative': {
 		message: "negative"
@@ -32,7 +26,7 @@ postcssTape(plugin)({
 	'no-duplication': {
 		message: "no duplication"
 	},
-	'simple-replace': {
+	'simple:preserve-false': {
 		message: "simple",
 		options: {
 			preserve: false,
@@ -47,10 +41,10 @@ postcssTape(plugin)({
 	'examples/example': {
 		message: 'minimal example',
 	},
-	'examples/example:preserve-true': {
+	'examples/example:preserve-false': {
 		message: 'minimal example',
 		options: {
-			preserve: true
+			preserve: false
 		}
 	},
 });
