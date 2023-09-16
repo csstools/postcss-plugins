@@ -33,10 +33,6 @@
 "stylelint-plugin":
   - plugins-stylelint/**
 
-"plugins/css-all-property":
-  - plugins/css-all-property/**
-  - experimental/css-all-property/**
-
 "plugins/css-blank-pseudo":
   - plugins/css-blank-pseudo/**
   - experimental/css-blank-pseudo/**
@@ -156,6 +152,10 @@
 "plugins/postcss-image-set-function":
   - plugins/postcss-image-set-function/**
   - experimental/postcss-image-set-function/**
+
+"plugins/postcss-initial":
+  - plugins/postcss-initial/**
+  - experimental/postcss-initial/**
 
 "plugins/postcss-is-pseudo-class":
   - plugins/postcss-is-pseudo-class/**

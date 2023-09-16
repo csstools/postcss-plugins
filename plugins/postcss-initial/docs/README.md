@@ -26,6 +26,9 @@
 <example.expect.css>
 ```
 
+_See prior work by [maximkoretskiy](https://github.com/maximkoretskiy) here [postcss-initial](https://github.com/maximkoretskiy/postcss-initial)
+To ensure long term maintenance and to provide the needed features this plugin was recreated based on maximkoretskiy's work._
+
 <usage>
 
 <envSupport>
