@@ -63,7 +63,7 @@ jobs:
 
       - name: repo is clean after "build", "lint" and "docs" steps
         run: |
-          git diff --exit-code
+          git diff --name-only --exit-code
 
         # Basic tests
       - name: test
