@@ -31,7 +31,7 @@ jobs:
         - node: 20
           is_base_node_version: true
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
       - uses: actions/setup-node@v3
@@ -94,4 +94,10 @@ jobs:
           npm install
           npm run build
           npm run test
+        if: matrix.is_base_node_version && matrix.is_base_os_version
+
+        # E2E Package Managers Tests
+      - name: test:e2e-package-managers
+        run: |
+          cd e2e-package-managers/yarn && bash test.sh
         if: matrix.is_base_node_version && matrix.is_base_os_version

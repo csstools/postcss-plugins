@@ -2,6 +2,10 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-slow-plugins.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
+```bash
+npm install @csstools/postcss-slow-plugins --save-dev
+```
+
 [PostCSS Slow Plugins] lets you easily check which plugins have the most impact on your build duration.
 
 PostCSS is incredibly fast but adding too many plugins or a few slow ones can still cause issues.

@@ -23,7 +23,7 @@ See `package.json` for the full list of dependencies and the scripts.
 
 The `watch` script runs everything as normal, this will use the `development` `browserslist` config that you can see in `package.json`.
 
-The `build` script however sets `NODE_ENV=production` and which will use the `production` `browserslist` config.  
+The `build` script however sets `NODE_ENV=production` which will use the `production` `browserslist` config.  
 Many build tools and stack frameworks will set `NODE_ENV=production` for you when you run a build script.
 
 This example shows how you can use this mechanic to run fewer plugins in development.  
