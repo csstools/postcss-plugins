@@ -2,6 +2,7 @@ import valuesParser from 'postcss-value-parser';
 import transformValueAST from './transform-value-ast';
 import type { Declaration } from 'postcss';
 import { isDeclarationIgnored } from './is-ignored';
+import { HAS_VAR_FUNCTION } from './is-var-function';
 
 // transform custom pseudo selectors with custom selectors
 export function transformProperties(decl: Declaration, customProperties: Map<string, valuesParser.ParsedValue>, localCustomProperties: Map<string, valuesParser.ParsedValue>, parsedValuesCache: Map<string, valuesParser.ParsedValue>, opts: { preserve?: boolean }) {
@@ -13,7 +14,7 @@ export function transformProperties(decl: Declaration, customProperties: Map<str
 		// protect against circular references
 		const valueSet = new Set();
 
-		while (value.includes('--') && value.toLowerCase().includes('var(') && !valueSet.has(value)) {
+		while (HAS_VAR_FUNCTION.test(value) && !valueSet.has(value)) {
 			valueSet.add(value);
 			const parsedValueAST = valuesParser(value);
 			value = transformValueAST(parsedValueAST, customProperties, localCustomProperties);

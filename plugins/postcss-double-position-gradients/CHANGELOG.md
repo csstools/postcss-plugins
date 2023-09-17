@@ -1,5 +1,9 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased (patch)
+
+- Improve performance
+
 ### 5.0.0
 
 _July 3, 2023_

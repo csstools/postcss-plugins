@@ -3,7 +3,7 @@ import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-import { includesGradientsFunction, isGradientsFunctions } from './is-gradient';
+import { HAS_GRADIENT_FUNCTION, IS_GRADIENT_FUNCTION } from './is-gradient';
 
 const keywords = [
 	'at',
@@ -42,7 +42,7 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 	return {
 		postcssPlugin: 'postcss-double-position-gradients',
 		Declaration(decl, { result }) {
-			if (!includesGradientsFunction(decl.value.toLowerCase())) {
+			if (!HAS_GRADIENT_FUNCTION.test(decl.value)) {
 				return;
 			}
 
@@ -71,7 +71,7 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 			}
 
 			valueAST.walk(func => {
-				if (func.type !== 'function' || !isGradientsFunctions(func.value.toLowerCase())) {
+				if (func.type !== 'function' || !IS_GRADIENT_FUNCTION.test(func.value)) {
 					return;
 				}
 

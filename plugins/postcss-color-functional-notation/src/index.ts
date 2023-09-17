@@ -12,19 +12,15 @@ type basePluginOptions = {
 	preserve: boolean,
 }
 
+const HAS_COLOR_FUNCTION = /(?:rgb|hsl)a?\(/i;
+
 /* Transform the color functional notation in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-color-function',
 		Declaration: (decl: Declaration, { result }: { result: Result }) => {
 			const originalValue = decl.value;
-			const lowerCaseValue = originalValue.toLowerCase();
-			if (
-				!lowerCaseValue.includes('rgb') &&
-				!lowerCaseValue.includes('rgba') &&
-				!lowerCaseValue.includes('hsl') &&
-				!lowerCaseValue.includes('hsla')
-			) {
+			if (!HAS_COLOR_FUNCTION.test(originalValue)) {
 				return;
 			}
 
