@@ -79,6 +79,5 @@ export default function transformValueAST(root: valuesParser.ParsedValue, custom
 		}
 	}, true);
 
-
 	return valuesParser.stringify(root.nodes);
 }
