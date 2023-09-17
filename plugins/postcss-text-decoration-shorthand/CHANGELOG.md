@@ -1,5 +1,9 @@
 # Changes to PostCSS Text Decoration Shorthand
 
+### Unreleased (patch)
+
+- Improve performance
+
 ### 3.0.2
 
 _September 2, 2023_
