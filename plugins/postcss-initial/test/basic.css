@@ -8,3 +8,11 @@
 .bar {
 	outline: initial;
 }
+
+.direction {
+	direction: initial;
+}
+
+.unicode-bidi {
+	unicode-bidi: initial;
+}

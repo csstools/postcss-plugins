@@ -12,3 +12,13 @@
 	outline: medium none currentcolor;
 	outline: initial;
 }
+
+.direction {
+	direction: ltr;
+	direction: initial;
+}
+
+.unicode-bidi {
+	unicode-bidi: normal;
+	unicode-bidi: initial;
+}

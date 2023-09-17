@@ -159,6 +159,10 @@ const properties = [
 		'inherited': true,
 	},
 	{
+		'prop': 'direction', 'initial': 'ltr',
+		'inherited': true,
+	},
+	{
 		'prop': 'display', 'initial': 'inline',
 		'basic': true,
 	},
@@ -382,6 +386,9 @@ const properties = [
 	{ 'prop': 'transition-duration', 'initial': '0s' },
 	{ 'prop': 'transition-property', 'initial': 'none' },
 	{ 'prop': 'transition-timing-function', 'initial': 'ease' },
+	{
+		'prop': 'unicode-bidi', 'initial': 'normal',
+	},
 	{
 		'prop': 'vertical-align', 'initial': 'baseline',
 		'basic': true,
