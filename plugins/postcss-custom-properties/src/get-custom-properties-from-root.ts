@@ -5,9 +5,10 @@ import { isBlockIgnored, isDeclarationIgnored } from './is-ignored';
 import { HTML_SELECTOR_REGEXP, HTML_WHERE_SELECTOR_REGEXP, MAYBE_HTML_OR_ROOT_RULE_REGEXP, ROOT_SELECTOR_REGEXP, ROOT_WHERE_SELECTOR_REGEXP, isProcessableRule } from './is-processable-rule';
 import { isVarFunction } from './is-var-function';
 import { removeCyclicReferences } from './toposort';
+import { parseOrCached } from './parse-or-cached';
 
 // return custom selectors from the css root, conditionally removing them
-export default function getCustomPropertiesFromRoot(root: Root): Map<string, valuesParser.ParsedValue> {
+export default function getCustomPropertiesFromRoot(root: Root, parsedValuesCache: Map<string, valuesParser.ParsedValue>): Map<string, valuesParser.ParsedValue> {
 	const customProperties: Map<string, string> = new Map();
 	const customPropertiesPriorityMapping: Map<string, number> = new Map();
 
@@ -70,7 +71,7 @@ export default function getCustomPropertiesFromRoot(root: Root): Map<string, val
 	const out: Map<string, valuesParser.ParsedValue> = new Map();
 
 	for (const [name, value] of customProperties.entries()) {
-		const parsedValue = valuesParser(value);
+		const parsedValue = parseOrCached(value, parsedValuesCache);
 
 		valuesParser.walk(parsedValue.nodes, (node) => {
 			if (isVarFunction(node)) {
@@ -80,7 +81,7 @@ export default function getCustomPropertiesFromRoot(root: Root): Map<string, val
 			}
 		});
 
-		out.set(name, valuesParser(value));
+		out.set(name, parsedValue);
 	}
 
 	removeCyclicReferences(out, customPropertyGraph);

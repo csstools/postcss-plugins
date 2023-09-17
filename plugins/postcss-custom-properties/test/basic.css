@@ -180,9 +180,28 @@ html {
 	color: var(--color);
 }
 
-.local-variable {
+:root {
+	--local: 0;
+}
+
+.local-variable-1 {
 	--local: 1;
 	order: var(--local);
+}
+
+.local-variable-2 {
+	--local: 2;
+	order: var(--local);
+}
+
+.local-variable-3 {
+	--local: 3;
+	order: var(--local);
+}
+
+.local-only {
+	--local-only: 4;
+	order: var(--local-only);
 }
 
 .ignores-declarations-that-have-an-exact-fallback-a {
