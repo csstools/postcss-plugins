@@ -1,10 +1,11 @@
 import type { PluginCreator } from 'postcss';
-import valuesParser from 'postcss-value-parser';
+import type valuesParser from 'postcss-value-parser';
 
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
 import { isDeclarationIgnored } from './is-ignored';
-import transformProperties from './transform-properties';
+import { transformProperties } from './transform-properties';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { parseOrCached } from './parse-or-cached';
 
 /** postcss-custom-properties plugin options */
 export type pluginOptions = {
@@ -27,36 +28,31 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-custom-properties',
 		prepare: () => {
 			let customProperties: Map<string, valuesParser.ParsedValue> = new Map();
+			const parsedValuesCache: Map<string, valuesParser.ParsedValue> = new Map();
 
 			return {
 				Once: (root) => {
-					customProperties = getCustomPropertiesFromRoot(root);
+					customProperties = getCustomPropertiesFromRoot(root, parsedValuesCache);
 				},
 				Declaration: (decl) => {
 					if (hasSupportsAtRuleAncestor(decl)) {
 						return;
 					}
 
-					let localCustomProperties = customProperties;
+					const localCustomProperties : Map<string, valuesParser.ParsedValue> = new Map();
 					if (preserve && decl.parent) {
-						let didCopy = false;
 
 						decl.parent.each((siblingDecl) => {
+							if (siblingDecl.type !== 'decl' || !siblingDecl.variable) {
+								return;
+							}
+
 							if (decl === siblingDecl) {
 								return;
 							}
 
-							if (siblingDecl.type !== 'decl') {
+							if (isDeclarationIgnored(siblingDecl)) {
 								return;
-							}
-
-							if (!siblingDecl.variable || isDeclarationIgnored(siblingDecl)) {
-								return;
-							}
-
-							if (!didCopy) {
-								localCustomProperties = new Map(customProperties);
-								didCopy = true;
 							}
 
 							if (siblingDecl.value.toLowerCase().trim() === 'initial') {
@@ -64,11 +60,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 								return;
 							}
 
-							localCustomProperties.set(siblingDecl.prop, valuesParser(siblingDecl.value));
+							localCustomProperties.set(siblingDecl.prop, parseOrCached(siblingDecl.value, parsedValuesCache));
 						});
 					}
 
-					transformProperties(decl, localCustomProperties, { preserve: preserve });
+					transformProperties(decl, customProperties, localCustomProperties, parsedValuesCache, { preserve: preserve });
 				},
 			};
 		},
