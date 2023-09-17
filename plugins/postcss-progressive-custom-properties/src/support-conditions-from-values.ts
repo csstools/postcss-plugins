@@ -8,12 +8,8 @@ const varFunctionName = /^var$/i;
 export function supportConditionsFromValue(value: string, mustContainVar = false): Array<string> {
 	const supportConditions: Array<string> = [];
 
-	const relevantMatchers: typeof matchers = [];
-
-	matchers.forEach((matcher) => {
-		if (value.indexOf(matcher.sniff) > -1) {
-			relevantMatchers.push(matcher);
-		}
+	const relevantMatchers = matchers.filter((matcher) => {
+		return value.includes(matcher.sniff);
 	});
 
 	let hasVar = false;
@@ -26,15 +22,12 @@ export function supportConditionsFromValue(value: string, mustContainVar = false
 			}
 
 			try {
-				// @ts-expect-error We need to extend this type.
-				node['dimension'] = valueParser.unit(node.value);
-			} finally {
-				// @ts-expect-error We need to extend this type.
-				if (node['dimension'] === false) {
+				const dimension = valueParser.unit(node.value);
+				if (dimension !== false) {
 					// @ts-expect-error We need to extend this type.
-					delete node['dimension'];
+					node['dimension'] = dimension;
 				}
-			}
+			} catch { } // eslint-disable-line no-empty
 
 			for (let i = 0; i < relevantMatchers.length; i++) {
 				const propertyValueMatcher = relevantMatchers[i];

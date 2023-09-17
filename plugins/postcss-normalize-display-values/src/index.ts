@@ -26,6 +26,8 @@ function transform(value: string) {
 	return match;
 }
 
+const IS_DISPLAY = /^display$/i;
+
 /** postcss-normalize-display-values plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: true */
@@ -41,7 +43,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const cache = new Map();
 			return {
 				Declaration(decl) {
-					if (decl.prop.toLowerCase() !== 'display') {
+					if (!IS_DISPLAY.test(decl.prop)) {
 						return;
 					}
 

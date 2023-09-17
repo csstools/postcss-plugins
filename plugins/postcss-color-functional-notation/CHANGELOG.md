@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Functional Notation
 
+### Unreleased (patch)
+
+- Improve performance
+
 ### 6.0.0
 
 _July 3, 2023_
