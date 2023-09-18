@@ -62,7 +62,6 @@ body:
       options:
         - PostCSS Preset Env
         - PostCSS Bundler
-        - CSS All Property
         - CSS Blank Pseudo
         - CSS Has Pseudo
         - CSS Prefers Color Scheme
@@ -89,7 +88,9 @@ body:
         - PostCSS Global Data
         - PostCSS Gradients Interpolation Method
         - PostCSS HWB Function
+        - PostCSS IC Unit
         - PostCSS Image Set Function
+        - PostCSS Initial
         - PostCSS Is Pseudo Class
         - PostCSS Lab Function
         - PostCSS Logical

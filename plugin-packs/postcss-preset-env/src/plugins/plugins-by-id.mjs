@@ -1,4 +1,4 @@
-import postcssInitial from 'postcss-initial';
+import postcssInitial from '@csstools/postcss-initial';
 import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
 import postcssBlankPseudo from 'css-blank-pseudo';
 import postcssPageBreak from 'postcss-page-break';

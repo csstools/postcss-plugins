@@ -205,7 +205,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	   -moz-backface-visibility: visible;
 	        backface-visibility: visible;
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
-	border: medium none currentColor;
+	border: medium none currentcolor;
 	border-collapse: separate;
 	-webkit-border-image: none;
 	   -moz-border-image: none;
@@ -235,9 +235,9 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	-webkit-column-gap: normal;
 	   -moz-column-gap: normal;
 	        column-gap: normal;
-	-webkit-column-rule: medium none currentColor;
-	   -moz-column-rule: medium none currentColor;
-	        column-rule: medium none currentColor;
+	-webkit-column-rule: medium none currentcolor;
+	   -moz-column-rule: medium none currentcolor;
+	        column-rule: medium none currentcolor;
 	-webkit-column-span: 1;
 	   -moz-column-span: 1;
 	        column-span: 1;
@@ -248,7 +248,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	counter-increment: none;
 	counter-reset: none;
 	cursor: auto;
-	direction: ltr;
 	display: inline;
 	empty-cells: show;
 	float: none;
@@ -274,7 +273,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	min-width: 0;
 	opacity: 1;
 	orphans: 2;
-	outline: medium none invert;
+	outline: medium none currentcolor;
 	overflow: visible;
 	overflow-x: visible;
 	overflow-y: visible;
@@ -317,7 +316,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	-webkit-transition: none 0s ease 0s;
 	-moz-transition: none 0s ease 0s;
 	transition: none 0s ease 0s;
-	unicode-bidi: normal;
 	vertical-align: baseline;
 	visibility: visible;
 	white-space: normal;

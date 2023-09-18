@@ -125,7 +125,7 @@
 		"importName": "postcssImageSetFunction"
 	},
 	{
-		"packageName": "postcss-initial",
+		"packageName": "@csstools/postcss-initial",
 		"id": "all-property",
 		"importName": "postcssInitial"
 	},
