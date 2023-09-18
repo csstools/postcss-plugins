@@ -1,6 +1,8 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased (patch)
+### 4.0.2
+
+_September 18, 2023_
 
 - Improve performance
 
