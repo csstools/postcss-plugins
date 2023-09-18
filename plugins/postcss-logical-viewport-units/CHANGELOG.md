@@ -1,6 +1,8 @@
 # Changes to PostCSS Logical Viewport Units
 
-### Unreleased (patch)
+### 2.0.2
+
+_September 18, 2023_
 
 - Improve performance
 
