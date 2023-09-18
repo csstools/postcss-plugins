@@ -28,7 +28,6 @@
 }
 
 .test-logical-viewport-units {
-	width: calc(10vw + 5px);
 	width: calc(10vi + 5px);
 }
 
