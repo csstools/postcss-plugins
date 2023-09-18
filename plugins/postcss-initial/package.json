@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-initial",
 	"description": "PostCSS plugin to fallback initial keyword.",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",

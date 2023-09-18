@@ -1,5 +1,7 @@
 # Changes to PostCSS Initial
 
-### Unreleased (major)
+### 1.0.0
+
+_September 18, 2023_
 
 - Initial version
