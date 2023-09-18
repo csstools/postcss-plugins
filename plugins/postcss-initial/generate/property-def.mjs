@@ -312,7 +312,7 @@ const properties = [
 	},
 	{
 		'prop': 'quotes',
-		'initial': '\u201C \u201D \u2018 \u2019',
+		'initial': '"\u201C" "\u201D" "\u2018" "\u2019"',
 	},
 	{
 		'prop': 'right', 'initial': 'auto',
@@ -342,7 +342,6 @@ const properties = [
 		'initial': '${text-decoration-line}',
 		'combined': true,
 	},
-	{ 'prop': 'text-decoration-color', 'initial': 'inherited' },
 	{ 'prop': 'text-decoration-color', 'initial': 'currentcolor' },
 	{ 'prop': 'text-decoration-line', 'initial': 'none' },
 	{ 'prop': 'text-decoration-style', 'initial': 'solid' },
@@ -474,6 +473,6 @@ allProperties.splice(
 
 await fs.writeFile(
 	path.join('src', 'properties.ts'),
-	`export const properties = new Map(${JSON.stringify(mapConstructorArgument)})\n` +
-	`export const allProperties = ${JSON.stringify(allProperties)}\n`,
+	`export const properties = new Map(${JSON.stringify(mapConstructorArgument, null, '\t')})\n\n` +
+	`export const allProperties = ${JSON.stringify(allProperties, null, '\t')}\n`,
 );

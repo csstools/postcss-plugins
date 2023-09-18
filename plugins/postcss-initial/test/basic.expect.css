@@ -22,3 +22,8 @@
 	unicode-bidi: normal;
 	unicode-bidi: initial;
 }
+
+.quotes {
+	quotes: "“" "”" "‘" "’";
+	quotes: initial;
+}
