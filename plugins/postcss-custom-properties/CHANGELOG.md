@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased (patch)
+### 13.3.1
+
+_September 18, 2023_
 
 - Improve performance
 
