@@ -1,6 +1,8 @@
 # Changes to PostCSS RebeccaPurple
 
-### Unreleased (patch)
+### 9.0.1
+
+_September 18, 2023_
 
 - Improve performance
 
