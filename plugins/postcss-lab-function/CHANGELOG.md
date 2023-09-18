@@ -1,6 +1,8 @@
 # Changes to PostCSS Lab Function
 
-### Unreleased (patch)
+### 6.0.4
+
+_September 18, 2023_
 
 - Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#301) (patch)
 
