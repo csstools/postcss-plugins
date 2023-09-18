@@ -1,5 +1,16 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-is-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class/CHANGELOG.md#402) (patch)
+- Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#202) (patch)
+- Updated [`@csstools/postcss-normalize-display-values`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-normalize-display-values) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-normalize-display-values/CHANGELOG.md#301) (patch)
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#301) (patch)
+- Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`3.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#303) (patch)
+- Updated [`postcss-color-rebeccapurple`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple/CHANGELOG.md#901) (patch)
+- Updated [`postcss-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties) to [`13.3.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties/CHANGELOG.md#1331) (patch)
+- Updated [`postcss-image-set-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function) to [`6.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function/CHANGELOG.md#601) (patch)
+
 ### 9.1.3
 
 _September 2, 2023_
