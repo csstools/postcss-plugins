@@ -1,6 +1,8 @@
 # Changes to PostCSS image-set() Function
 
-### Unreleased (patch)
+### 6.0.1
+
+_September 18, 2023_
 
 - Improve performance
 
