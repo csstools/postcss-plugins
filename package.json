@@ -26,8 +26,8 @@
 		"plugins-stylelint/*"
 	],
 	"devDependencies": {
-		"@babel/core": "^7.22.17",
-		"@babel/preset-env": "^7.22.15",
+		"@babel/core": "^7.22.20",
+		"@babel/preset-env": "^7.22.20",
 		"@rollup/plugin-babel": "^6.0.3",
 		"@rollup/plugin-commonjs": "^25.0.4",
 		"@rollup/plugin-node-resolve": "^15.2.1",
@@ -36,7 +36,7 @@
 		"@stryker-mutator/core": "^7.1.1",
 		"@typescript-eslint/eslint-plugin": "^6.7.0",
 		"eslint": "^8.49.0",
-		"rollup": "^3.29.1",
+		"rollup": "^3.29.2",
 		"tslib": "^2.6.2",
 		"typescript": "^5.2.2"
 	},
