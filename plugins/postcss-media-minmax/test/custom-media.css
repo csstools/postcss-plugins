@@ -7,3 +7,5 @@
 @custom-media /* a comment */ --four (width > 300px) {}
 
 @custom-media /* a comment */ --five /* a comment */ (width >= 300px) /* a comment */ {}
+
+@custom-media /* a comment */ --six /* a comment */ (width >= 300px) /* a comment */, screen and (width = 400px) /* a comment */ {}
