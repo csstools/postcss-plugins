@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Small performance improvements
+
 ### 1.3.1
 
 _September 2, 2023_

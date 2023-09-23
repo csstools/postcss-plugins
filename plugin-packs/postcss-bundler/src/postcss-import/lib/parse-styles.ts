@@ -1,10 +1,9 @@
-import path from 'path';
 import type { Document, Postcss, Result, Root, AtRule } from 'postcss';
 import { CharsetStatement, ImportStatement, Statement, isCharsetStatement, isImportStatement } from './statement';
 import { Condition } from './conditions';
 import { isValidDataURL } from './data-url';
 import { parseStatements } from './parse-statements';
-import { resolveId } from './resolve-id';
+import { createRequire, resolveId } from './resolve-id';
 import { loadContent } from './load-content';
 import noopPlugin from './noop-plugin';
 import { IS_CHARSET } from './names';
@@ -19,12 +18,24 @@ export async function parseStyles(
 ) {
 	const statements = parseStatements(result, styles, importingNode, conditions, from);
 
+	// Lazy because the current stylesheet might not contain any further @import statements
+	let require: NodeRequire | undefined;
+	let sourceFile: string | undefined;
+	let base: string | undefined;
+
 	for (const stmt of statements) {
 		if (!isImportStatement(stmt) || !isProcessableURL(stmt.uri)) {
 			continue;
 		}
 
-		await resolveImportId(result, stmt, postcss);
+		if (!require || !sourceFile || !base) {
+			[require, sourceFile, base] = createRequire(stmt.node, result);
+			if (!require || !sourceFile || !base) {
+				continue;
+			}
+		}
+
+		await resolveImportId(result, stmt, postcss, require, sourceFile, base);
 	}
 
 	let charset: CharsetStatement | null = null;
@@ -71,7 +82,7 @@ export async function parseStyles(
 	return charset ? [charset, ...imports.concat(bundle)] : imports.concat(bundle);
 }
 
-async function resolveImportId(result: Result, stmt: ImportStatement, postcss: Postcss) {
+async function resolveImportId(result: Result, stmt: ImportStatement, postcss: Postcss, require: NodeRequire, sourceFile: string, base: string) {
 	if (isValidDataURL(stmt.uri)) {
 		// eslint-disable-next-line require-atomic-updates
 		stmt.children = await loadImportContent(
@@ -95,23 +106,7 @@ async function resolveImportId(result: Result, stmt: ImportStatement, postcss: P
 		return;
 	}
 
-	const atRule = stmt.node;
-	let sourceFile: string;
-	if (atRule.source?.input?.file) {
-		sourceFile = atRule.source.input.file;
-	} else {
-		stmt.children = [];
-		result.warn(
-			'The current PostCSS AST Node is lacking a source file reference. This is most likely a bug in a PostCSS plugin.',
-			{
-				node: stmt.node,
-			},
-		);
-		return;
-	}
-
-	const base = path.dirname(sourceFile);
-	const resolved = resolveId(stmt.uri, base, atRule);
+	const resolved = resolveId(stmt.node, require, stmt.uri, base);
 
 	result.messages.push({
 		type: 'dependency',

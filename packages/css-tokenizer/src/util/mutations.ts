@@ -25,9 +25,9 @@ export function mutateIdent(ident: TokenIdent, newValue: string): void {
 		remainderStartIndex = 2;
 
 		if (!isIdentStartCodePoint(codePoints[1])) {
-			result += `\\${codePoints[1].toString(16)} `;
+			result = result + `\\${codePoints[1].toString(16)} `;
 		} else {
-			result += newValue[1];
+			result = result + newValue[1];
 		}
 	} else if (isIdentStartCodePoint(codePoints[0])) {
 		result = newValue[0];
@@ -39,11 +39,11 @@ export function mutateIdent(ident: TokenIdent, newValue: string): void {
 
 	for (let i = remainderStartIndex; i < codePoints.length; i++) {
 		if (isIdentCodePoint(codePoints[i])) {
-			result += newValue[i];
+			result = result + newValue[i];
 			continue;
 		}
 
-		result += `\\${codePoints[i].toString(16)} `;
+		result = result + `\\${codePoints[i].toString(16)} `;
 	}
 
 	ident[1] = result;

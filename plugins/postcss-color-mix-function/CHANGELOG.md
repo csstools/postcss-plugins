@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Mix Function
 
+### Unreleased (patch)
+
+- Small performance improvements
+
 ### 2.0.4
 
 _September 18, 2023_

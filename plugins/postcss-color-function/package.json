@@ -45,7 +45,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"postcss-lab-function": "^5.2.3"
+		"postcss-lab-function": "^6.0.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

@@ -1,5 +1,9 @@
 # Changes to PostCSS Bundler
 
+### Unreleased (patch)
+
+- Small performance improvements
+
 ### 1.0.3
 
 _September 3, 2023_
