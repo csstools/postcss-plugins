@@ -488,13 +488,11 @@ export function normalizeRelativeColorDataChannels(x: ColorData): Map<string, To
 }
 
 export function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber>): Map<string, TokenNumber> {
-	const globals: Map<string, TokenNumber> = new Map();
+	const globals: Map<string, TokenNumber> = new Map(x);
 
 	for (const [key, value] of x) {
 		if (Number.isNaN(value[4].value)) {
 			globals.set(key, dummyNumberToken(0));
-		} else {
-			globals.set(key, value);
 		}
 	}
 

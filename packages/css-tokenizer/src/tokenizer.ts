@@ -3,7 +3,7 @@ import { checkIfThreeCodePointsWouldStartAnIdentSequence } from './checks/three-
 import { checkIfThreeCodePointsWouldStartANumber } from './checks/three-code-points-would-start-number';
 import { checkIfTwoCodePointsStartAComment } from './checks/two-code-points-start-comment';
 import { checkIfThreeCodePointsWouldStartCDC } from './checks/three-code-points-would-start-cdc';
-import { APOSTROPHE, CARRIAGE_RETURN, CHARACTER_TABULATION, COLON, COMMA, COMMERCIAL_AT, FORM_FEED, FULL_STOP, HYPHEN_MINUS, LATIN_CAPITAL_LETTER_U, LATIN_SMALL_LETTER_U, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, LINE_FEED, NUMBER_SIGN, PLUS_SIGN, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON, SPACE } from './code-points/code-points';
+import { APOSTROPHE, CARRIAGE_RETURN, CHARACTER_TABULATION, COLON, COMMA, COMMERCIAL_AT, FORM_FEED, FULL_STOP, HYPHEN_MINUS, LATIN_CAPITAL_LETTER_U, LATIN_SMALL_LETTER_U, LEFT_CURLY_BRACKET, LEFT_PARENTHESIS, LEFT_SQUARE_BRACKET, LESS_THAN_SIGN, LINE_FEED, NUMBER_SIGN, PLUS_SIGN, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_CURLY_BRACKET, RIGHT_PARENTHESIS, RIGHT_SQUARE_BRACKET, SEMICOLON, SOLIDUS, SPACE } from './code-points/code-points';
 import { isDigitCodePoint, isIdentStartCodePoint } from './code-points/ranges';
 import { consumeComment } from './consume/comment';
 import { consumeHashToken } from './consume/hash-token';
@@ -62,13 +62,13 @@ export function tokenizer(input: { css: Stringer, unicodeRangesAllowed?: boolean
 	function nextToken(): CSSToken | undefined {
 		reader.resetRepresentation();
 
-		if (checkIfTwoCodePointsStartAComment(ctx, reader)) {
-			return consumeComment(ctx, reader);
-		}
-
 		const peeked = reader.codePointSource[reader.cursor];
 		if (peeked === undefined) {
 			return [TokenType.EOF, '', -1, -1, undefined];
+		}
+
+		if (peeked === SOLIDUS && checkIfTwoCodePointsStartAComment(reader)) {
+			return consumeComment(ctx, reader);
 		}
 
 		if (
@@ -76,7 +76,7 @@ export function tokenizer(input: { css: Stringer, unicodeRangesAllowed?: boolean
 				peeked === LATIN_SMALL_LETTER_U ||
 				peeked === LATIN_CAPITAL_LETTER_U
 			) &&
-			checkIfThreeCodePointsWouldStartAUnicodeRange(ctx, reader)
+			checkIfThreeCodePointsWouldStartAUnicodeRange(reader)
 		) {
 			return consumeUnicodeRangeToken(ctx, reader);
 		}
@@ -136,7 +136,7 @@ export function tokenizer(input: { css: Stringer, unicodeRangesAllowed?: boolean
 
 			case PLUS_SIGN:
 			case FULL_STOP:
-				if (checkIfThreeCodePointsWouldStartANumber(ctx, reader)) {
+				if (checkIfThreeCodePointsWouldStartANumber(reader)) {
 					return consumeNumericToken(ctx, reader);
 				}
 
@@ -150,14 +150,14 @@ export function tokenizer(input: { css: Stringer, unicodeRangesAllowed?: boolean
 			case FORM_FEED:
 			case CHARACTER_TABULATION:
 			case SPACE:
-				return consumeWhiteSpace(ctx, reader);
+				return consumeWhiteSpace(reader);
 
 			case HYPHEN_MINUS:
-				if (checkIfThreeCodePointsWouldStartANumber(ctx, reader)) {
+				if (checkIfThreeCodePointsWouldStartANumber(reader)) {
 					return consumeNumericToken(ctx, reader);
 				}
 
-				if (checkIfThreeCodePointsWouldStartCDC(ctx, reader)) {
+				if (checkIfThreeCodePointsWouldStartCDC(reader)) {
 					reader.advanceCodePoint(3);
 
 					return [TokenType.CDC, '-->', reader.representationStart, reader.representationEnd, undefined];
@@ -173,7 +173,7 @@ export function tokenizer(input: { css: Stringer, unicodeRangesAllowed?: boolean
 				}];
 
 			case LESS_THAN_SIGN:
-				if (checkIfFourCodePointsWouldStartCDO(ctx, reader)) {
+				if (checkIfFourCodePointsWouldStartCDO(reader)) {
 					reader.advanceCodePoint(4);
 
 					return [TokenType.CDO, '<!--', reader.representationStart, reader.representationEnd, undefined];
@@ -199,7 +199,7 @@ export function tokenizer(input: { css: Stringer, unicodeRangesAllowed?: boolean
 				}];
 
 			case REVERSE_SOLIDUS:
-				if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
+				if (checkIfTwoCodePointsAreAValidEscape(reader)) {
 					return consumeIdentLikeToken(ctx, reader);
 				}
 

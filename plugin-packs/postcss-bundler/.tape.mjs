@@ -11,6 +11,10 @@ const testCases = {
 		message: "does not infer a root to resolve leading slash imports",
 		exception: /Failed to find \'\/imports\/basic.css\'/,
 	},
+	'charset-utf8': {
+		message: "errors on mismatched charset",
+		exception: /Incompatible @charset statements/,
+	},
 	'does-not-exist': {
 		message: "throws on files that don't exist",
 		exception: /Failed to find 'imports\/does-not-exist.css'/,

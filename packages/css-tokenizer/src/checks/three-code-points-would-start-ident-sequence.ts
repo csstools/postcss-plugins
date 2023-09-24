@@ -9,17 +9,17 @@ export function checkIfThreeCodePointsWouldStartAnIdentSequence(ctx: Context, re
 	// // U+002D HYPHEN-MINUS
 	if (reader.codePointSource[reader.cursor] === HYPHEN_MINUS) {
 		// If the second code point is a U+002D HYPHEN-MINUS return true
-		if (reader.codePointSource[reader.cursor+1] === HYPHEN_MINUS) {
+		if (reader.codePointSource[reader.cursor + 1] === HYPHEN_MINUS) {
 			return true;
 		}
 
 		// If the second code point is an ident-start code point return true
-		if (isIdentStartCodePoint(reader.codePointSource[reader.cursor+1])) {
+		if (isIdentStartCodePoint(reader.codePointSource[reader.cursor + 1])) {
 			return true;
 		}
 
 		// If the second and third code points are a valid escape return true
-		if (reader.codePointSource[reader.cursor+1] === REVERSE_SOLIDUS && !isNewLine(reader.codePointSource[reader.cursor + 2])) {
+		if (reader.codePointSource[reader.cursor + 1] === REVERSE_SOLIDUS && !isNewLine(reader.codePointSource[reader.cursor + 2])) {
 			return true;
 		}
 
@@ -33,5 +33,5 @@ export function checkIfThreeCodePointsWouldStartAnIdentSequence(ctx: Context, re
 	}
 
 	// U+005C REVERSE SOLIDUS (\)
-	return checkIfTwoCodePointsAreAValidEscape(ctx, reader);
+	return checkIfTwoCodePointsAreAValidEscape(reader);
 }

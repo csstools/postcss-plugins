@@ -16,7 +16,7 @@ export function consumeIdentSequence(ctx: Context, reader: CodePointReader): Arr
 			continue;
 		}
 
-		if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
+		if (checkIfTwoCodePointsAreAValidEscape(reader)) {
 			reader.advanceCodePoint();
 			result.push(consumeEscapedCodePoint(ctx, reader));
 			continue;

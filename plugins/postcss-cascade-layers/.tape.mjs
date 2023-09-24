@@ -1,6 +1,6 @@
 import { postcssTape } from '@csstools/postcss-tape';
 import plugin from '@csstools/postcss-cascade-layers';
-import postcssImport from 'postcss-import';
+import postcssBundler from '@csstools/postcss-bundler';
 
 postcssTape(plugin)({
 	basic: {
@@ -63,11 +63,7 @@ postcssTape(plugin)({
 		},
 		warnings: 2,
 		plugins: [
-			postcssImport({
-				nameLayer: (index) => {
-					return `anon-layer-import--${index}`;
-				}
-			}), /* postcss-import must run first */
+			postcssBundler(),
 			plugin(),
 		]
 	},

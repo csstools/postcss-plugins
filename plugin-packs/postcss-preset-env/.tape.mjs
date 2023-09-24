@@ -1,6 +1,6 @@
 import { postcssTape } from '@csstools/postcss-tape';
 import plugin from 'postcss-preset-env';
-import postcssImport from 'postcss-import';
+import postcssBundler from '@csstools/postcss-bundler';
 
 const orderDetectionPlugin = (prop, changeWhenMatches) => {
 	return {
@@ -452,9 +452,9 @@ postcssTape(plugin)({
 		},
 	},
 	'postcss-import/styles': {
-		message: 'works well with "postcss-import"',
+		message: 'works well with "postcss-bundler"',
 		plugins: [
-			postcssImport(),
+			postcssBundler(),
 			plugin({
 				stage: 0,
 				browsers: '> 0%'

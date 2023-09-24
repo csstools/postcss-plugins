@@ -1,5 +1,9 @@
 # Changes to PostCSS Lab Function
 
+### Unreleased (patch)
+
+- Small performance improvements
+
 ### 6.0.4
 
 _September 18, 2023_
