@@ -1,5 +1,7 @@
 
-
+/* ./imports/extensions.css */
+/* ./imports/components.css */
+/* ./imports/extensions.css */
 :root {
 	--color-red: red;
 	--color-blue: blue;
@@ -7,12 +9,13 @@
 button:not(.does-not-exist):not(#\#), input[type="submit"]:not(#\#) {
 		text-align: left;
 }
+/* ./imports/components.css */
 button:not(.does-not-exist):not(#\#):not(#\#), input[type="submit"]:not(#\#):not(#\#) {
 	color: red;
 	color: var(--color-red);
 }
 @media (prefers-color-scheme: dark) {
-button:not(.does-not-exist):not(#\#):not(#\#), input[type="submit"]:not(#\#):not(#\#) {
+	button:not(.does-not-exist):not(#\#):not(#\#), input[type="submit"]:not(#\#):not(#\#) {
 		color: blue;
 		color: var(--color-blue);
 }

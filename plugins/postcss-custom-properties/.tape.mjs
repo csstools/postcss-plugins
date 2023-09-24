@@ -1,6 +1,6 @@
 import { postcssTape } from '@csstools/postcss-tape';
 import plugin from 'postcss-custom-properties';
-import postcssImport from 'postcss-import';
+import postcssBundler from '@csstools/postcss-bundler';
 
 postcssTape(plugin)({
 	'basic': {
@@ -37,7 +37,7 @@ postcssTape(plugin)({
 		}
 	},
 	'import': {
-		message: 'supports "postcss-import"',
-		plugins: [postcssImport(), plugin()]
+		message: 'supports "postcss-bundler"',
+		plugins: [postcssBundler(), plugin()]
 	}
 });
