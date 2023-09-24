@@ -1,5 +1,9 @@
 # Changes to PostCSS Media MinMax
 
+### Unreleased (minor)
+
+- Add support for `@custom-media` queries.
+
 ### 1.0.7
 
 _August 5, 2023_
