@@ -1,5 +1,9 @@
 # Changes to PostCSS Gradients Interpolation Method
 
+### Unreleased (patch)
+
+- Small performance improvements
+
 ### 4.0.4
 
 _September 18, 2023_

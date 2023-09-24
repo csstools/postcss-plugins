@@ -13,7 +13,7 @@ export function consumeHashToken(ctx: Context, reader: CodePointReader): TokenDe
 	if (
 		(reader.codePointSource[reader.cursor] !== undefined) && (
 			isIdentCodePoint(reader.codePointSource[reader.cursor]) ||
-			checkIfTwoCodePointsAreAValidEscape(ctx, reader)
+			checkIfTwoCodePointsAreAValidEscape(reader)
 		)
 	) {
 		let hashType = HashType.Unrestricted;

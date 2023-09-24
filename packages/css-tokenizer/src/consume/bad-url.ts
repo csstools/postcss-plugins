@@ -17,7 +17,7 @@ export function consumeBadURL(ctx: Context, reader: CodePointReader) {
 			return;
 		}
 
-		if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
+		if (checkIfTwoCodePointsAreAValidEscape(reader)) {
 			reader.advanceCodePoint();
 			consumeEscapedCodePoint(ctx, reader);
 			continue;

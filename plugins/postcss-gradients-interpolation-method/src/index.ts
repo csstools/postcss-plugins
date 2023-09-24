@@ -6,7 +6,6 @@ import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { modifyGradientFunctionComponentValues } from './modify-gradient-component-values';
 import { tokenize } from '@csstools/css-tokenizer';
-import { cloneTokens } from '@csstools/css-tokenizer';
 
 type basePluginOptions = {
 	preserve: boolean,
@@ -49,7 +48,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 			}
 
 			const modifiedP3 = stringify(replaceComponentValues(
-				parseCommaSeparatedListOfComponentValues(cloneTokens(tokens)),
+				parseCommaSeparatedListOfComponentValues(tokens),
 				(componentValue) => {
 					if (!isFunctionNode(componentValue)) {
 						return;

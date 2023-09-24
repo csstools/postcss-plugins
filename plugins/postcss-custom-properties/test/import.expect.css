@@ -1,7 +1,7 @@
+/* ./imported-file.css */
 :root {
 	--color: blue;
 }
-
 a {
 	color: blue;
 	color: var(--color);

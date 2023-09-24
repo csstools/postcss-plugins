@@ -1,10 +1,9 @@
-import path from 'path';
 import type { Document, Postcss, Result, Root, AtRule } from 'postcss';
 import { CharsetStatement, ImportStatement, Statement, isCharsetStatement, isImportStatement } from './statement';
 import { Condition } from './conditions';
 import { isValidDataURL } from './data-url';
 import { parseStatements } from './parse-statements';
-import { resolveId } from './resolve-id';
+import { createRequire, resolveId } from './resolve-id';
 import { loadContent } from './load-content';
 import noopPlugin from './noop-plugin';
 import { IS_CHARSET } from './names';
@@ -19,43 +18,46 @@ export async function parseStyles(
 ) {
 	const statements = parseStatements(result, styles, importingNode, conditions, from);
 
-	for (const stmt of statements) {
-		if (!isImportStatement(stmt) || !isProcessableURL(stmt.uri)) {
-			continue;
+	{
+		// Lazy because the current stylesheet might not contain any further @import statements
+		let require: NodeRequire | undefined;
+		let sourceFile: string | undefined;
+		let base: string | undefined;
+
+		const jobs: Array<Promise<void>> = [];
+		for (const stmt of statements) {
+			if (!isImportStatement(stmt) || !isProcessableURL(stmt.uri)) {
+				continue;
+			}
+
+			if (!require || !sourceFile || !base) {
+				[require, sourceFile, base] = createRequire(stmt.node, result);
+				if (!require || !sourceFile || !base) {
+					continue;
+				}
+			}
+
+			jobs.push(resolveImportId(result, stmt, postcss, require, sourceFile, base));
 		}
 
-		await resolveImportId(result, stmt, postcss);
+		await Promise.all(jobs);
 	}
 
 	let charset: CharsetStatement | null = null;
 	const imports: Array<Statement> = [];
 	const bundle: Array<Statement> = [];
 
-	function handleCharset(stmt: CharsetStatement) {
-		if (!charset) {
-			charset = stmt;
-		} else if (
-			stmt.node.params.toLowerCase() !== charset.node.params.toLowerCase()
-		) {
-			throw stmt.node.error(
-				`Incompatible @charset statements:
-  ${stmt.node.params} specified in ${stmt.node.source?.input.file}
-  ${charset.node.params} specified in ${charset.node.source?.input.file}`,
-			);
-		}
-	}
-
 	// squash statements and their children
 	statements.forEach(stmt => {
 		if (isCharsetStatement(stmt)) {
-			handleCharset(stmt);
+			charset = handleCharset(stmt, charset);
 		} else if (isImportStatement(stmt)) {
 			if (stmt.children) {
 				stmt.children.forEach((child) => {
 					if (isImportStatement(child)) {
 						imports.push(child);
 					} else if (isCharsetStatement(child)) {
-						handleCharset(child);
+						charset = handleCharset(child, charset);
 					} else {
 						bundle.push(child);
 					}
@@ -71,7 +73,7 @@ export async function parseStyles(
 	return charset ? [charset, ...imports.concat(bundle)] : imports.concat(bundle);
 }
 
-async function resolveImportId(result: Result, stmt: ImportStatement, postcss: Postcss) {
+async function resolveImportId(result: Result, stmt: ImportStatement, postcss: Postcss, require: NodeRequire, sourceFile: string, base: string) {
 	if (isValidDataURL(stmt.uri)) {
 		// eslint-disable-next-line require-atomic-updates
 		stmt.children = await loadImportContent(
@@ -95,23 +97,7 @@ async function resolveImportId(result: Result, stmt: ImportStatement, postcss: P
 		return;
 	}
 
-	const atRule = stmt.node;
-	let sourceFile: string;
-	if (atRule.source?.input?.file) {
-		sourceFile = atRule.source.input.file;
-	} else {
-		stmt.children = [];
-		result.warn(
-			'The current PostCSS AST Node is lacking a source file reference. This is most likely a bug in a PostCSS plugin.',
-			{
-				node: stmt.node,
-			},
-		);
-		return;
-	}
-
-	const base = path.dirname(sourceFile);
-	const resolved = resolveId(stmt.uri, base, atRule);
+	const resolved = resolveId(stmt.node, require, stmt.uri, base);
 
 	result.messages.push({
 		type: 'dependency',
@@ -193,4 +179,20 @@ function isProcessableURL(uri: string): boolean {
 	}
 
 	return true;
+}
+
+function handleCharset(stmt: CharsetStatement, ref: CharsetStatement | null = null): CharsetStatement {
+	if (!ref) {
+		return stmt;
+	} else if (
+		stmt.node.params.toLowerCase() !== ref.node.params.toLowerCase()
+	) {
+		throw stmt.node.error(
+			`Incompatible @charset statements:
+  ${stmt.node.params} specified in ${stmt.node.source?.input.file}
+  ${ref.node.params} specified in ${ref.node.source?.input.file}`,
+		);
+	}
+
+	return ref;
 }

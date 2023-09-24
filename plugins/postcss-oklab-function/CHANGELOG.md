@@ -1,5 +1,9 @@
 # Changes to PostCSS OKLab Function
 
+### Unreleased (patch)
+
+- Small performance improvements
+
 ### 3.0.4
 
 _September 18, 2023_

@@ -1,9 +1,10 @@
 import type { AtRule, Container, Document, PluginCreator, Rule } from 'postcss';
-import { TokenType, stringify, tokenize } from '@csstools/css-tokenizer';
+import type { CSSToken } from '@csstools/css-tokenizer';
+import { TokenType, tokenize } from '@csstools/css-tokenizer';
 
 const HAS_LEGAL_KEYWORDS = /(?:license|copyright)/i;
 const HAS_SOURCE_MAP = /sourceMappingURL/i;
-const HAS_WHITESPACE_OR_COMMENTS = /(?:[\s]|\/\*)/;
+const HAS_WHITESPACE_OR_COMMENTS = /(?:\s|\/\*)/;
 const IS_LAYER = /^layer$/i;
 
 function minify(cache: Map<string, string>, x: string | undefined): string | undefined {
@@ -28,31 +29,31 @@ function minify(cache: Map<string, string>, x: string | undefined): string | und
 
 	const tokens = tokenize({ css: y });
 
+	let lastWasWhitespace = false;
+	let token: CSSToken;
 	for (let i = 0; i < tokens.length; i++) {
-		const token = tokens[i];
+		token = tokens[i];
 		if (
 			token[0] === TokenType.Comment ||
 			token[0] === TokenType.Whitespace
 		) {
-			token[1] = ' ';
-
-			let nextToken = tokens[i + 1];
-			while (
-				nextToken &&
-				(
-					nextToken[0] === TokenType.Comment ||
-					nextToken[0] === TokenType.Whitespace
-				)
-			) {
-				nextToken[1] = '';
-
-				i++;
-				nextToken = tokens[i + 1];
+			if (lastWasWhitespace) {
+				token[1] = '';
+			} else {
+				token[1] = ' ';
 			}
+
+			lastWasWhitespace = true;
+		} else {
+			lastWasWhitespace = false;
 		}
 	}
 
-	const minified = stringify(...tokens);
+	let minified = '';
+	for (let i = 0; i < tokens.length; i++) {
+		minified = minified + tokens[i][1];
+	}
+
 	cache.set(x, minified);
 
 	return minified;
@@ -111,67 +112,72 @@ const creator: PluginCreator<pluginOptions> = () => {
 			css.raws.after = '\n';
 
 			css.walk((node) => {
-				if (node.type === 'comment') {
-					if (HAS_LEGAL_KEYWORDS.test(node.text) || HAS_SOURCE_MAP.test(node.text)) {
-						return;
-					}
+				switch (node.type) {
+					case 'atrule':
+						if (removeEmptyNodes(node)) {
+							return;
+						}
 
-					node.remove();
-					return;
-				}
-
-				if (node.type === 'atrule') {
-
-					if (removeEmptyNodes(node)) {
-						return;
-					}
-
-					node.raws.after = '';
-					node.raws.afterName = ' ';
-					node.raws.before = '';
-					node.raws.between = '';
-					node.raws.params = undefined;
-
-					setSemicolon(node);
-
-					node.params = minify(cache, node.params)!;
-
-					return;
-				}
-
-				if (node.type === 'rule') {
-
-					if (removeEmptyNodes(node)) {
-						return;
-					}
-
-					node.raws.after = '';
-					node.raws.before = '';
-					node.raws.between = '';
-					node.raws.selector = undefined;
-
-					setSemicolon(node);
-
-					node.selector = minify(cache, node.selector)!;
-
-					return;
-				}
-
-				if (node.type === 'decl') {
-					if (node.variable) {
+						node.raws.after = '';
+						node.raws.afterName = ' ';
 						node.raws.before = '';
+						node.raws.between = '';
+						node.raws.params = undefined;
 
-						// never minify or modify variables
-						// browsers and CSSOM in particular handle these differently
+						setSemicolon(node);
+
+						node.params = minify(cache, node.params)!;
+
 						return;
-					}
 
-					node.raws.before = '';
-					node.raws.between = ':';
-					node.raws.important = node.important ? '!important' : '';
-					node.raws.value = undefined;
+					case 'rule':
 
-					node.value = minify(cache, node.value)!;
+						if (removeEmptyNodes(node)) {
+							return;
+						}
+
+						node.raws.after = '';
+						node.raws.before = '';
+						node.raws.between = '';
+						node.raws.selector = undefined;
+
+						setSemicolon(node);
+
+						node.selector = minify(cache, node.selector)!;
+
+						return;
+
+					case 'decl':
+
+						if (node.prop.startsWith('--')) {
+							node.raws.before = '';
+
+							// never minify or modify variables
+							// browsers and CSSOM in particular handle these differently
+							return;
+						}
+
+						node.raws.before = '';
+						node.raws.between = ':';
+						node.raws.important = node.important ? '!important' : '';
+						node.raws.value = undefined;
+
+						node.value = minify(cache, node.value)!;
+
+						return;
+
+					case 'comment':
+
+						if (HAS_LEGAL_KEYWORDS.test(node.text) || HAS_SOURCE_MAP.test(node.text)) {
+							return;
+						}
+
+						node.remove();
+
+						return;
+
+					default:
+						break;
 				}
 			});
 		},
