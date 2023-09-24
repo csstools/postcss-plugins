@@ -49,7 +49,7 @@
 		"@csstools/postcss-is-pseudo-class": "^4.0.2",
 		"@csstools/postcss-logical-float-and-clear": "^2.0.0",
 		"@csstools/postcss-logical-resize": "^2.0.0",
-		"@csstools/postcss-logical-viewport-units": "^2.0.2",
+		"@csstools/postcss-logical-viewport-units": "^2.0.3",
 		"@csstools/postcss-media-minmax": "^1.0.7",
 		"@csstools/postcss-media-queries-aspect-ratio-number-values": "^2.0.2",
 		"@csstools/postcss-nested-calc": "^3.0.0",
