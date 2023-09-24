@@ -1,6 +1,8 @@
 # Changes to PostCSS Media MinMax
 
-### Unreleased (minor)
+### 1.1.0
+
+_September 24, 2023_
 
 - Add support for `@custom-media` queries.
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#221) (patch)
