@@ -77,6 +77,7 @@ function parseCharset(result: Result, atRule: AtRule, importingNode: AtRule | nu
 
 function parseImport(result: Result, atRule: AtRule, importingNode: AtRule | null, conditions: Array<Condition>, from: Array<string>): Warning | ImportStatement {
 	let prev = atRule.prev();
+	let prevIsImport = false;
 
 	// `@import` statements may follow other `@import` statements.
 	while (prev) {
@@ -86,35 +87,33 @@ function parseImport(result: Result, atRule: AtRule, importingNode: AtRule | nul
 		}
 
 		if (prev.type === 'atrule' && IS_IMPORT.test(prev.name)) {
-			prev = prev.prev();
-			continue;
+			// If the previous rule is an `@import` rule is always valid when that preceding rule is valid.
+			// And equally also always invalid when it is invalid.
+			prevIsImport = true;
+			break;
 		}
 
 		break;
 	}
 
-	// All `@import` statements may be preceded by `@charset` or `@layer` statements.
-	// But the `@import` statements must be consecutive.
-	while (prev) {
-		if (prev.type === 'comment') {
-			prev = prev.prev();
-			continue;
-		}
+	if (!prevIsImport) {
+		// All `@import` statements may be preceded by `@charset` or `@layer` statements.
+		// But the `@import` statements must be consecutive.
+		while (prev) {
+			if (
+				prev.type === 'comment' ||
+				(prev.type === 'atrule' && IS_CHARSET.test(prev.name)) ||
+				(prev.type === 'atrule' && IS_LAYER.test(prev.name) && !prev.nodes)
+			) {
+				prev = prev.prev();
+				continue;
+			}
 
-		if (prev.type === 'atrule' && IS_CHARSET.test(prev.name)) {
-			prev = prev.prev();
-			continue;
+			return result.warn(
+				'@import must precede all other statements (besides @charset or empty @layer)',
+				{ node: atRule },
+			);
 		}
-
-		if (prev.type === 'atrule' && IS_LAYER.test(prev.name) && !prev.nodes) {
-			prev = prev.prev();
-			continue;
-		}
-
-		return result.warn(
-			'@import must precede all other statements (besides @charset or empty @layer)',
-			{ node: atRule },
-		);
 	}
 
 	if (atRule.nodes) {
